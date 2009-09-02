@@ -112,4 +112,4 @@ suite_accessors <- local({
   list(get = get, set = set)
 })
 test_suite <- suite_accessors$get
-change_suite <- suite_accessors$get
+change_suite_to <- suite_accessors$set
