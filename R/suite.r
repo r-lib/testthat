@@ -10,7 +10,7 @@ Suite <- Object$clone()$do({
   
   # start_context, end_context
   # start_test, end_test
-  # Use with either block scope, or no scope - whichever you want!
+  # Use with either block scope, or no scope - whichever you want?
   
 })
 
@@ -23,10 +23,7 @@ StopSuite <- Suite$clone()$do({
     if (result$passed) return()
     
     stop(result$message, call. = FALSE)
-  }
-  # cat("  ", desc, ": ", sep = "")
-  # cat("\n") 
-  
+  }  
 })
 
 ChattySuite <- Suite$clone()$do({
@@ -43,7 +40,11 @@ ChattySuite <- Suite$clone()$do({
     if (result$passed) {
       cat(".")
     } else {
-      cat("F")
+      if (result$failed) {
+        cat("F")
+      } else {
+        cat("E")
+      }
     }
   }
   self$end_test <- function() {
@@ -93,4 +94,4 @@ SuiteCase <- Suite$clone()$do({
 # suite$new_result(is_a("character")("Hello"))
 # suite$new_result(is_a("character")(6))
 # 
-test_suite <- StopSuite$clone()
+test_suite <- ChattySuite$clone()
