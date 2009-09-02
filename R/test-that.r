@@ -9,7 +9,7 @@ test_that <- function(desc, code) {
     # msg <- paste(as.character(res), trace, sep = "\n")
 
     line <- paste(rep("-", getOption("width")), collapse = "")
-    msg <- paste(line, "\n",  as.character(res), line, "\n", sep = "")
+    msg <- paste("\n", line, "\n",  as.character(res), line, sep = "")
     
     test_suite$add_result(expectation(NA, msg))
   }
