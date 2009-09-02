@@ -1,9 +1,9 @@
 expectation <- function(passed, message) {
-  failed <- is.na(passed)
+  error <- is.na(passed)
   passed <- passed & !is.na(passed)
   
   structure(
-    list(passed = passed, failed = failed, message = message), 
+    list(passed = passed, error = error, message = message), 
     class = "expectation"
   )
 }

@@ -40,10 +40,10 @@ ChattySuite <- Suite$clone()$do({
     if (result$passed) {
       cat(".")
     } else {
-      if (result$failed) {
-        cat("F")
-      } else {
+      if (result$error) {
         cat("E")
+      } else {
+        cat("F")
       }
     }
   }
