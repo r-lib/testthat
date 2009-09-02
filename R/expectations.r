@@ -1,6 +1,6 @@
 is_a <- function(class) {
   function(x) {
-    expect_result(
+    expectation(
       inherits(x, class),
       paste("is not a ", class, sep = "")
     )
@@ -10,7 +10,7 @@ is_a <- function(class) {
 
 is_true <- function() {
   function(x) {
-    expect_result(
+    expectation(
       identical(x, TRUE),
       "isn't true"
     )
@@ -20,7 +20,7 @@ is_true <- function() {
 
 is_false <- function() {
   function(x) {
-    expect_result(
+    expectation(
       identical(x, FALSE),
       "isn't false"
     )
@@ -31,7 +31,7 @@ is_false <- function() {
 equals <- function(expected) {
   name <- deparse(substitute(expected))
   function(actual) {
-    expect_result(
+    expectation(
       identical(all.equal(expected, actual), TRUE),
       paste("does not equal ", name, sep = "")
     )
@@ -41,7 +41,7 @@ equals <- function(expected) {
 is_identical <- function(expected) {
   name <- deparse(substitute(expected))
   function(actual) {
-    expect_result(
+    expectation(
       identical(actual, TRUE),
       paste("is not not identical to ", name, sep = "")
     )
@@ -51,7 +51,7 @@ is_identical <- function(expected) {
 
 matches <- function(regexp) {
   function(char) {
-    expect_result(
+    expectation(
       all(grepl(regexp, char)),
       paste("does not match ", regexp, sep = "")
     )
