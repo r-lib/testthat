@@ -45,6 +45,7 @@ ChattySuite <- Suite$clone()$do({
       } else {
         cat("F")
       }
+      cat("\n", result$message, "\n  ", sep = "")
     }
   }
   self$end_test <- function() {

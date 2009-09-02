@@ -5,8 +5,11 @@ test_that <- function(desc, code) {
   
   res <- try(eval(substitute(code), env), silent = TRUE)
   if (inherits(res, "try-error")) {
-    trace <- paste(capture.output(traceback()), collapse = "\n")
-    msg <- paste(as.character(res), trace, sep = "\n")
+    # trace <- paste(capture.output(traceback()), collapse = "\n")
+    # msg <- paste(as.character(res), trace, sep = "\n")
+
+    line <- paste(rep("-", getOption("width")), collapse = "")
+    msg <- paste(line, "\n",  as.character(res), line, "\n", sep = "")
     
     test_suite$add_result(expectation(NA, msg))
   }
