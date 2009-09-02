@@ -21,8 +21,8 @@ is_true <- function() {
 is_false <- function() {
   function(x) {
     expect_result(
-      passed = identical(x, FALSE),
-      message = "isn't false"
+      identical(x, FALSE),
+      "isn't false"
     )
   }
 }
@@ -32,8 +32,18 @@ equals <- function(expected) {
   name <- deparse(substitute(expected))
   function(actual) {
     expect_result(
-      passed = identical(all.equal(expected, actual), TRUE),
-      message = paste("does not equal ", name, sep = "")
+      identical(all.equal(expected, actual), TRUE),
+      paste("does not equal ", name, sep = "")
+    )
+  }
+}
+
+is_identical <- function(expected) {
+  name <- deparse(substitute(expected))
+  function(actual) {
+    expect_result(
+      identical(actual, TRUE),
+      paste("is not not identical to ", name, sep = "")
     )
   }
 }
@@ -42,8 +52,8 @@ equals <- function(expected) {
 matches <- function(regexp) {
   function(char) {
     expect_result(
-      passed = all(grepl(regexp, char)),
-      message = paste("does not match ", regexp, sep = "")
+      all(grepl(regexp, char)),
+      paste("does not match ", regexp, sep = "")
     )
   }  
 }
@@ -57,11 +67,11 @@ prints <- function(regexp) {
 }
 
 
-throws_error <- function(message = NULL) {
+throws_error <- function(regexp = NULL) {
   function(expr) {
     res <- try(force(expr), TRUE)
-    if (!is.null(message)) {
-      matches(message)(res)
+    if (!is.null(regexp)) {
+      matches(regexp)(res)
     } else {
       is_a("try-error")(res)
     }
