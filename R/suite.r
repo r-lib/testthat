@@ -71,7 +71,7 @@ SuiteCase <- Suite$clone()$do({
   }
   
   # Results is a list of contexts, each of which contain a list of tests, 
-  # each of which containg a list of expectations
+  # each of which contain a list of expectations
   self$results <- list()
   self$context <- NULL
   self$test <- NULL
@@ -95,4 +95,21 @@ SuiteCase <- Suite$clone()$do({
 # suite$new_result(is_a("character")("Hello"))
 # suite$new_result(is_a("character")(6))
 # 
-test_suite <- ChattySuite$clone()
+# test_suite <- ChattySuite$clone()
+
+suite_accessors <- local({
+  # Default has to be the stop suite, since it is this that will be run by
+  # default from the command line and in R CMD test.
+  suite <- StopSuite$clone()
+  
+  set <- function(value) {
+    suite <<- value
+  }
+  get <- function() {
+    suite
+  }
+  
+  list(get = get, set = set)
+})
+test_suite <- suite_accessors$get
+change_suite <- suite_accessors$get
