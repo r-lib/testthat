@@ -1,4 +1,5 @@
-#' Run all of the tests in a directory.  Test files start with test-
+#' Run all of the tests in a directory.  Test files start with test- and are
+# executed in alphabetical order (but they shouldn't have dependencies)
 test_dir <- function(path) {
   files <- dir(path, "^test-.*\\.[rR]", full.names = TRUE)
   files <- sort(files)
