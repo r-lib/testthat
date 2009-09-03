@@ -1,29 +1,24 @@
-catcol <- function(..., fg = "black", bg = NA, sep =" ") {
-  if (Sys.getenv()["TERM"] != "xterm-color") {
-    cat(..., sep = sep)
-    return()
-  }
-  
-  cat("\033[", fg_colours[tolower(fg)], "m", sep = "")
-  if (!is.na(bg)) {
-    cat("\033[", bg_colours[tolower(bg)], "m", sep = "")    
-  }
-  cat(..., sep = sep)
-  cat("\033[0;30m", sep = "")
-}
-
-colourise <- function(text, fg = "black") {
+colourise <- function(text, fg = "black", bg = NULL) {
   if (Sys.getenv()["TERM"] != "xterm-color") {
     return(text)
   }
   
-  fg_start <- paste("\033[", fg_colours[tolower(fg)], "m", sep = "")
-  fg_end <- "\033[0;30m"
+  col_escape <- function(col) {
+    paste("\033[", col, "m", sep = "")
+  }
   
-  paste(fg_start, text, fg_end, sep = "")
+  col <- .fg_colours[tolower(fg)]
+  if (!is.null(bg)) {
+    col <- paste(col, .bg_colours[tolower(bg)], sep = ";")
+  }
+  
+  init <- col_escape(col)
+  reset <- col_escape("0")
+  paste(init, text, reset, sep = "")
 }
-                   
-fg_colours <- c(
+
+           
+.fg_colours <- c(
   "black" = "0;30",
   "blue" = "0;34",
   "green" = "0;32",
@@ -42,7 +37,7 @@ fg_colours <- c(
   "white" = "1;37"
 )
 
-bg_colours <- c(
+.bg_colours <- c(
   "black" = "40",
   "red" = "41",
   "green" = "42",

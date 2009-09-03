@@ -16,17 +16,17 @@ SummarySuite$do({
   
   self$add_result <- function(result) {
     if (result$passed) {
-      catcol(".", fg = "light green")
+      cat(colourise(".", fg = "light green"))
     } else {
       self$n <- self$n + 1
       
       if (self$n > length(labels)) {
         self$n <- length(labels)
-        catcol("F", fg = "red")
+        cat(colourise("F", fg = "red"))
       } else {
         result$test <- self$test
         self$failures[[self$n]] <- result
-        catcol(labels[self$n], fg = "red")        
+        cat(colourise(labels[self$n], fg = "red"))
       }
       
     }

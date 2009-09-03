@@ -7,12 +7,12 @@
 MinimalSuite$do({
   self$add_result <- function(result) { 
     if (result$passed) {
-      catcol(".", fg = "light green")
+      cat(colourise(".", fg = "light green"))
     } else {
       if (result$error) {
-        catcol("F", fg = "red")      
+        cat(colourise("F", fg = "red"))
       } else {
-        catcol("E", fg = "red")
+        cat(colourise("E", fg = "red"))
       }
     }
   }
