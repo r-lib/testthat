@@ -30,18 +30,18 @@ auto_test <- function(code_path, test_path) {
     changed <- c(added, modified)
     
     tests <- changed[starts_with(changed, test_path)]
-    code <- changed[starts_with(changed, code_path)]  
+    code <- changed[starts_with(changed, code_path)] 
     
     if (length(code) > 0) {
       # Reload code and rerun all tests
       cat("Changed code: ", paste(basename(code), collapse = ", "), "\n")
       cat("Rerunning all tests\n")
-      lapply(source, code, chdir = TRUE)
+      lapply(code, source, chdir = TRUE)
       test_dir(test_path)
     } else if (length(tests) > 0) {
       # If test changes, rerun just that test
       cat("Rerunning tests: ", paste(basename(tests), collapse = ", "), "\n")      
-      with(SuiteSummary$clone(), lapply(source, tests, chdir = TRUE))
+      with_suite(SummarySuite$clone(), lapply(tests, source, chdir = TRUE))
     }
     
     TRUE
@@ -51,5 +51,5 @@ auto_test <- function(code_path, test_path) {
 }
 
 starts_with <- function(string, prefix) {
-  substr(string, 1, length(prefix)) == prefix
+  substr(string, 1, nchar(prefix)) == prefix
 }

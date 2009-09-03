@@ -15,12 +15,16 @@ watch <- function(path, callback, pattern = NULL) {
   while(TRUE) {
     Sys.sleep(1)
     
-    curr <- dir_start(path, pattern)
+    curr <- dir_state(path, pattern)
     changes <- compare_state(curr, prev)
     
     if (changes$n > 0) {
+      # cat("C")
       keep_going <- with(changes, callback(added, deleted, modified))
       if (!keep_going) return(invisible())
+    } else {
+      # cat(".")
+      
     }
 
     prev <- curr
@@ -42,7 +46,7 @@ compare_state <- function(old, new) {
   deleted <- setdiff(names(old), names(new))
 
   same <- intersect(names(old), names(new))
-  modified <- new[new[same] != old[same]]
+  modified <- names(new)[new[same] != old[same]]
   
   n <- length(added) + length(deleted) + length(modified)
   

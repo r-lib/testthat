@@ -19,7 +19,15 @@ test_that("compare state works correctly", {
   write.table(mtcars, file.path(loc, "test-1.txt"))
   diff <- compare_state(one, dir_state(loc))
   expect_that(diff$n, equals(1))
-  expect_that(basename(names(diff$modified)), equals("test-1.txt"))
+  expect_that(basename(diff$modified), equals("test-1.txt"))
+})
+
+test_that("start_withs works", {
+  expect_that(starts_with("hadley", "had"), is_true())
+  expect_that(starts_with("hadley", "hadley"), is_true())
+  expect_that(starts_with("hadley", "h"), is_true())
+  expect_that(starts_with("hadley", "a"), is_false())
+  expect_that(starts_with("hadley", "hadley1"), is_false())
 })
 
 
