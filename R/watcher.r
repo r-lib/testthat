@@ -1,52 +1,33 @@
-# Should watch both code and test directories.
-# 
-# To start with, should re-source everything when either changes.  Guarantees
-# that everything will be up-to-date.  (Ideally should also clear environment
-# and unload package, so it's just like a clean R session). Time loading a 
-# separate R process and executing tests
-#
-# The next step is to figure out which tests to run based on the changed code
-# and tests.  Would require substantially more parsing of R code (and use of 
-# code tools), but would reap substantial savings for large amounts of code.
-# This might be better as part of a code coverage set of tools.
-# library(codetools)
-# findGlobals(findGlobals, FALSE)$functions
-# 
-# Autotest reruns failing tests until they pass, and then reruns global test
-# suite.  Keyboard shortcut to rerun entire suite
-# 
-# Colour coding?
-# 
-# Should always give a succinct summary of the file changes, followed by any 
-# changes in the test status.  Separate subsequent runs with -----------
-#
-#
-
-watch <- function(path, callback) {
+#' Watch a directory for changes (additions, deletions & modifications).
+#'
+#' @param path character vector of paths to watch.  Omit trailing backslash.
+#' @param pattern file pattern passed to \code{\link{dir}}
+#' @param callback function called everytime a change occurs.  It should
+#'   have three parameters: added, deleted, modified, and should return
+#'   TRUE to keep watching, or FALSE to stop.  
+watch <- function(path, callback, pattern = NULL) {
   
-  prev <- dir()
+  prev <- dir(path, pattern, full.names = TRUE)
   prev_changed <- file.info(prev)$mtime
   names(prev_changed) <- prev
 
   while(TRUE) {
     Sys.sleep(1)
 
-    curr <- dir()
+    curr <- dir(path, pattern, full.names = TRUE)
     curr_changed <- file.info(curr)$mtime
     names(curr_changed) <- curr
 
     added <- setdiff(curr, prev)
-    if (length(added) > 0)
-      cat("Added:   ", paste(added, collapse = ", "), "\n")
     deleted <- setdiff(prev, curr)
-    if (length(deleted) > 0)
-      cat("Deleted: ", paste(deleted, collapse = ", "), "\n")
 
     same <- intersect(curr, prev)
-    modified <- curr_changed[same] > prev_changed[same]
-
-    if (any(modified)) 
-      cat("Changed: ", same[modified], "\n")
+    modified <- curr[curr_changed[same] > prev_changed[same]]
+    
+    if (length(added) + length(deleted) + length(modified) > 0) {
+      keep_going <- callback(added, deleted, modified)
+      if (!keep_going) return(invisible())
+    }
 
     prev <- curr
     prev_changed <- curr_changed
