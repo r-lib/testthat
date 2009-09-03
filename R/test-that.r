@@ -22,8 +22,7 @@ test_that <- function(desc, code) {
     user_calls <- gsub("\n", "\n   ", user_calls)
     user_calls <- paste(user_calls, collapse = "\n")
     
-    line <- paste(rep("-", getOption("width")), collapse = "")
-    msg <- paste("\n", line, "\n",  as.character(res), user_calls, "\n", line, sep = "")
+    msg <- paste(as.character(res), user_calls, sep = "")
     
     test_suite()$add_result(expectation(NA, msg))
   }

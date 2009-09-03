@@ -3,7 +3,7 @@ context("Errors")
 f <- function() g() 
 g <- function() stop("I made a mistake", call. = FALSE)
 
-test_that("errors are captured: should be E", {
+test_that("errors are captured (should be E)", {
   f()
 })
 

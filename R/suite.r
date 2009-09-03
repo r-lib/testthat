@@ -45,7 +45,9 @@ ChattySuite <- Suite$clone()$do({
       } else {
         cat("F")
       }
-      cat("\n", result$message, "\n  ", sep = "")
+      line <- paste(rep("-", getOption("width")), collapse = "")
+      
+      cat("\n", line, "\n", result$message, "\n", line, "\n  ", sep = "")
     }
   }
   self$end_test <- function() {
