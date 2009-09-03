@@ -1,4 +1,4 @@
-Package: test_that
+Package: testthat
 Type: Package
 Title: Tools for splitting, applying and combining data
 Version: 0.1
