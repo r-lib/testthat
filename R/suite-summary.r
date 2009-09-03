@@ -1,6 +1,14 @@
 SummarySuite$do({
   labels <- c(1:9, letters, LETTERS)
   
+  self$start_context <- function(desc) {
+    cat(desc, ": ", sep = "")
+  }
+  
+  self$end_context <- function() {
+    cat("\n")
+  }
+  
   self$start_suite <- function() {
     self$failures <- list()
     self$n <- 0
@@ -29,7 +37,7 @@ SummarySuite$do({
     line <- paste(rep("-", getOption("width") - 2), collapse = "")
     
     cat("\n", paste(
-      label, " ", line, "\n", 
+      colourise(label, "red"), " ", line, "\n", 
       message, "\n", sep = "", collapse = "\n"), sep = "")
     
   }
