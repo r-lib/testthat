@@ -28,13 +28,21 @@ auto_test <- function(code_path, test_path) {
   # Next set up watcher to monitor changes
   watcher <- function(added, deleted, modified) {
     changed <- c(added, modified)
+    
     tests <- changed[starts_with(changed, test_path)]
-    code <- changed[starts_with(changed, code_path)]
-
-    # If test changes, rerun just that test
-    cat("Changed tests: ", paste(basename(tests), collapse = ", "))
-    # If code changes, rerun all tests
-    cat("Changed code: ", paste(basename(code), collapse = ", "))
+    code <- changed[starts_with(changed, code_path)]  
+    
+    if (length(code) > 0) {
+      # Reload code and rerun all tests
+      cat("Changed code: ", paste(basename(code), collapse = ", "), "\n")
+      cat("Rerunning all tests\n")
+      lapply(source, code, chdir = TRUE)
+      test_dir(test_path)
+    } else if (length(tests) > 0) {
+      # If test changes, rerun just that test
+      cat("Rerunning tests: ", paste(basename(tests), collapse = ", "), "\n")      
+      with(SuiteSummary$clone(), lapply(source, tests, chdir = TRUE))
+    }
     
     TRUE
   }
