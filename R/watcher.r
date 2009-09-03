@@ -1,21 +1,20 @@
 #' Watch a directory for changes (additions, deletions & modifications).
 #'
-#' The code computes hashes of each file so is optimised for small files
-#' (like R code!)
-#'
 #' @param path character vector of paths to watch.  Omit trailing backslash.
 #' @param pattern file pattern passed to \code{\link{dir}}
 #' @param callback function called everytime a change occurs.  It should
 #'   have three parameters: added, deleted, modified, and should return
-#'   TRUE to keep watching, or FALSE to stop.  
-watch <- function(path, callback, pattern = NULL) {
+#'   TRUE to keep watching, or FALSE to stop. 
+#' @param hashes are more accurate at detecting changes, but are slower for 
+#'   large files.  When FALSE, uses modification time stamps 
+watch <- function(path, callback, pattern = NULL, hash = TRUE) {
   
-  prev <- dir_state(path, pattern)
+  prev <- dir_state(path, pattern, hash = hash)
 
   while(TRUE) {
     Sys.sleep(1)
     
-    curr <- dir_state(path, pattern)
+    curr <- dir_state(path, pattern, hash = hash)
     changes <- compare_state(curr, prev)
     
     if (changes$n > 0) {
