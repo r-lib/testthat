@@ -1,25 +1,24 @@
-# Autotest watches both code and test directories for changes.
+# Watches code and tests for changes, rerunning tests as appropriate.
 # 
-# To start with, should re-source everything when either changes.  Guarantees
-# that everything will be up-to-date.  (Ideally should also clear environment
-# and unload package, so it's just like a clean R session). Time loading a 
-# separate R process and executing tests
-#
-# The next step is to figure out which tests to run based on the changed code
-# and tests.  Would require substantially more parsing of R code (and use of 
-# code tools), but would reap substantial savings for large amounts of code.
-# This might be better as part of a code coverage set of tools.
-# library(codetools)
-# findGlobals(findGlobals, FALSE)$functions
+# The idea behind \code{auto_test} is that you just leave it running while you
+# develop your code.  Everytime you save a file it will be automatically 
+# tested and you can easily see if your changes have caused any test failures.
 # 
-# Autotest reruns failing tests until they pass, and then reruns global test
-# suite.  Keyboard shortcut to rerun entire suite
+# The current strategy for rerunning tests is as follows:
 # 
-# Should always give a succinct summary of the file changes, followed by any 
-# changes in the test status.  Separate subsequent runs with -----------
-#
-#
-
+#  * if any code has changed, then those files are reloaded and all tests
+#    rerun
+#  * otherwise, each new or modified test is run
+# 
+# In the future, \code{auto_test} might implement on of the following more 
+# intelligent alternatives:
+# 
+# * Use codetools to build up dependency tree and then rerun tests only when
+#   a dependency changes.
+# 
+# * Mimic ruby's autotest and rerun only failing tests until they parse, and
+#   then rerun all test.
+# 
 auto_test <- function(code_path, test_path, suite = SummarySuite) {
   # Start by loading all code and running all tests
   source_dir(code_path)
