@@ -38,11 +38,11 @@ equals <- function(expected) {
   }
 }
 
-is_identical <- function(expected) {
+is_identical_to <- function(expected) {
   name <- deparse(substitute(expected))
   function(actual) {
     expectation(
-      identical(actual, TRUE),
+      identical(actual, expected),
       paste("is not not identical to ", name, sep = "")
     )
   }
