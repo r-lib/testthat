@@ -26,3 +26,15 @@ suite_accessors <- local({
 })
 test_suite <- suite_accessors$get
 change_suite_to <- suite_accessors$set
+
+with_suite <- function(suite, code) {
+  cur_suite <- test_suite()
+  change_suite_to(suite)
+  
+  suite$start_suite()
+  force(code)
+  suite$end_suite()
+    
+  change_suite_to(cur_suite)
+  invisible(suite)
+}
