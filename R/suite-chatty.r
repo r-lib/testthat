@@ -10,12 +10,12 @@ ChattySuite$do({
   
   self$add_result <- function(result) {
     if (result$passed) {
-      cat(".")
+      catcol(".", bg = "green")
     } else {
       if (result$error) {
-        cat("E")
+        catcol("E", bg = "red")
       } else {
-        cat("F")
+        catcol("F", bg = "red")
       }
       line <- paste(rep("-", getOption("width")), collapse = "")
       
