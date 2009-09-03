@@ -1,0 +1,11 @@
+Package: test_that
+Type: Package
+Title: Tools for splitting, applying and combining data
+Version: 0.1
+Author: Hadley Wickham <h.wickham@gmail.com>
+Maintainer: Hadley Wickham <h.wickham@gmail.com>
+Description: Test_that code.  Tools to make testing fun :)
+URL: http://had.co.nz/
+Depends: R (>= 2.8), mutatr
+License: GPL
+LazyData: true
