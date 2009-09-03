@@ -6,21 +6,25 @@ test_that <- function(desc, code) {
   
   if (inherits(res, "error")) {
     traceback <- create_traceback(res$calls)
-    if (length(traceback) > 0) {
-      user_calls <- paste(traceback, collapse = "\n")      
-      msg <- paste(as.character(res), user_calls, sep = "")
-    } else {
-      # Need to remove trailing newline from error message to be consistent
-      # with other messages
-      msg <- gsub("\n$", "", as.character(res))
-    }
-
-    test_suite()$add_result(expectation(NA, msg))
+    report <- error_report(res, traceback)
+    test_suite()$add_result(report)
   }
   
   test_suite()$end_test()
 }
 
+error_report <- function(error, traceback) {
+  if (length(traceback) > 0) {
+    user_calls <- paste(traceback, collapse = "\n")      
+    msg <- paste(as.character(error), user_calls, sep = "")
+  } else {
+    # Need to remove trailing newline from error message to be consistent
+    # with other messages
+    msg <- gsub("\n$", "", as.character(error))
+  }
+  
+  expectation(NA, msg)
+}
 
 create_traceback <- function(callstack) {
   calls <- lapply(callstack, deparse)
