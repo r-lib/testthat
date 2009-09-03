@@ -4,15 +4,23 @@ catcol <- function(..., fg = "black", bg = NA, sep =" ") {
     return()
   }
   
-  escape_fg <- 
-  escape_bg <- 
-  
   cat("\033[", fg_colours[tolower(fg)], "m", sep = "")
   if (!is.na(bg)) {
     cat("\033[", bg_colours[tolower(bg)], "m", sep = "")    
   }
   cat(..., sep = sep)
   cat("\033[0;30m", sep = "")
+}
+
+colourise <- function(text, fg = "black") {
+  if (Sys.getenv()["TERM"] != "xterm-color") {
+    return(text)
+  }
+  
+  fg_start <- paste("\033[", fg_colours[tolower(fg)], "m", sep = "")
+  fg_end <- "\033[0;30m"
+  
+  paste(fg_start, text, fg_end, sep = "")
 }
                    
 fg_colours <- c(
