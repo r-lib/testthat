@@ -4,8 +4,9 @@
 #' (but they shouldn't have dependencies). Helper files start with 
 #' \code{helper-} and loaded before any tests are run.
 test_dir <- function(path) {    
+  source_dir(path, "^helper-.*\\.[rR]$")
+
   with_suite(SummarySuite$clone(), {
-    source_dir(path, "^helper-.*\\.[rR]$")
     source_dir(path, "^test-.*\\.[rR]$")    
   })
 }
