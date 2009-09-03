@@ -10,27 +10,41 @@
 #'   TRUE to keep watching, or FALSE to stop.  
 watch <- function(path, callback, pattern = NULL) {
   
-  prev <- dir(path, pattern, full.names = TRUE)
-  prev_hash <- sapply(prev, digest, file = TRUE)
+  prev <- dir_state(path, pattern)
 
   while(TRUE) {
     Sys.sleep(1)
-
-    curr <- dir(path, pattern, full.names = TRUE)
-    curr_hash <- sapply(curr, digest, file = TRUE)
-
-    added <- setdiff(curr, prev)
-    deleted <- setdiff(prev, curr)
-
-    same <- intersect(curr, prev)
-    modified <- curr[curr_hash[same] > prev_hash[same]]
     
-    if (length(added) + length(deleted) + length(modified) > 0) {
-      keep_going <- callback(added, deleted, modified)
+    curr <- dir_start(path, pattern)
+    changes <- compare_state(curr, prev)
+    
+    if (changes$n > 0) {
+      keep_going <- with(changes, callback(added, deleted, modified))
       if (!keep_going) return(invisible())
     }
 
     prev <- curr
-    prev_hash <- curr_hash
   }  
+}
+
+dir_state <- function(path, pattern = NULL, hash = TRUE) {
+  files <- dir(path, pattern, full.names = TRUE)
+  
+  if (hash) {
+    sapply(files, digest, file = TRUE)    
+  } else {
+    setNames(file.info(files)$mtime, files)
+  }
+}
+
+compare_state <- function(old, new) {
+  added <- setdiff(names(new), names(old))
+  deleted <- setdiff(names(old), names(new))
+
+  same <- intersect(names(old), names(new))
+  modified <- new[new[same] != old[same]]
+  
+  n <- length(added) + length(deleted) + length(modified)
+  
+  list(n = n, added = added, deleted = deleted, modified = modified)
 }
