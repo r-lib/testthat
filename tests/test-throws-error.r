@@ -3,7 +3,7 @@ context("Errors")
 f <- function() g() 
 g <- function() stop("I made a mistake", call. = FALSE)
 
-test_that("errors are captured (should be E)", {
+test_that("errors are captured (should err)", {
   f()
 })
 
@@ -19,6 +19,6 @@ test_that("errors are caught with throws_error", {
   expect_that(res$passed, is_false())
 })
 
-test_that("random errors are caught", {
+test_that("random errors are caught (should err)", {
   function_that_doesnt_exist()
 })

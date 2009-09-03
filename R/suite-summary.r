@@ -24,6 +24,7 @@ SummarySuite$do({
         self$n <- length(labels)
         catcol("F", fg = "red")
       } else {
+        result$test <- self$test
         self$failures[[self$n]] <- result
         catcol(labels[self$n], fg = "red")        
       }
@@ -34,7 +35,8 @@ SummarySuite$do({
   self$end_suite <- function() {
     label <- labels[seq_len(self$n)]
     type <- ifelse(sapply(self$failures, "[[", "error"), "Error", "Failure")
-    header <- paste(label, ": ", type, " ", sep = "")
+    tests <- sapply(self$failures, "[[", "test")
+    header <- paste(label, ". ", type, ": ", tests, " ", sep = "")
     line <- charrep("-", getOption("width") - nchar(header))
 
     message <- sapply(self$failures, "[[", "message")

@@ -1,3 +1,5 @@
+#' Stop on errors
+#'
 #' The default suite, executed when \code{expect_that} is run interactively,
 #' or when the test files are executed by R CMD check. It responds by
 #' stop()ing on failures and doing nothing otherwise. This will ensure
@@ -10,6 +12,10 @@ StopSuite$do({
   self$add_result <- function(result) {
     if (result$passed) return()
     
-    stop(result$message, call. = FALSE)
+    type <- if (result$error) "error" else failure
+    msg <- paste(
+      "Test ", type, ": ", self$test, "\n", 
+      result$message, sep = "")
+    stop(msg, call. = FALSE)
   }  
 })

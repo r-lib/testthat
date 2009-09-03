@@ -1,3 +1,7 @@
+#' Test
+#' 
+#' Test names should be kept as brief as possible, as their are often used as 
+#' line prefixes.
 test_that <- function(desc, code) {
   test_suite()$start_test(desc)
   
