@@ -14,13 +14,15 @@ test_that <- function(desc, code) {
 }
 
 error_report <- function(error, traceback) {
+  msg <- gsub("Error.*?: ", "", as.character(error))
+  
   if (length(traceback) > 0) {
     user_calls <- paste(traceback, collapse = "\n")      
-    msg <- paste(as.character(error), user_calls, sep = "")
+    msg <- paste(msg, user_calls, sep = "")
   } else {
     # Need to remove trailing newline from error message to be consistent
     # with other messages
-    msg <- gsub("\n$", "", as.character(error))
+    msg <- gsub("\n$", "", msg)
   }
   
   expectation(NA, msg)

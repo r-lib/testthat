@@ -33,14 +33,20 @@ SummarySuite$do({
   
   self$end_suite <- function() {
     label <- labels[seq_len(self$n)]
+    type <- ifelse(sapply(self$failures, "[[", "error"), "Error", "Failure")
+    header <- paste(label, ": ", type, " ", sep = "")
+    line <- charrep("-", getOption("width") - nchar(header))
+
     message <- sapply(self$failures, "[[", "message")
-    line <- paste(rep("-", getOption("width") - 2), collapse = "")
-    
-    cat("\n", paste(
-      colourise(label, "red"), " ", line, "\n", 
-      message, "\n", sep = "", collapse = "\n"), sep = "")
-    
+
+    cat("\n\n")
+    cat(paste(
+      colourise(header, "red"), line, "\n", 
+      message, "\n", sep = "", collapse = "\n"))
   }
   
 })
 
+charrep <- function(char, times) {
+  sapply(times, function(i) paste(rep.int(char, i), collapse = ""))
+}
