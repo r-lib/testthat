@@ -77,3 +77,14 @@ throws_error <- function(regexp = NULL) {
     }
   }
 } 
+
+takes_less_than <- function(amount, unit) {
+  function(expr) {
+    duration <- system.time(force(expr))["elapsed"]
+    
+    expectation(
+      duration < amount,
+      paste("took more than ", amount, " seconds", sep = "")
+    )
+  }
+}
