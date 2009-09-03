@@ -18,3 +18,7 @@ test_that("errors are caught with throws_error", {
   res <- throws_error("Yes")(stop("No"))
   expect_that(res$passed, is_false())
 })
+
+test_that("random errors are caught", {
+  function_that_doesnt_exist()
+})
