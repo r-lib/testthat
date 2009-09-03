@@ -1,14 +1,16 @@
-catcol <- function(..., fg = "black", bg = "white", sep =" ") {
+catcol <- function(..., fg = "black", bg = NA, sep =" ") {
   if (Sys.getenv()["TERM"] != "xterm-color") {
     cat(..., sep = sep)
     return()
   }
   
-  escape_fg <- fg_colours[tolower(fg)]
-  escape_bg <- bg_colours[tolower(bg)]
+  escape_fg <- 
+  escape_bg <- 
   
-  cat("\033[", escape_fg, "m", sep = "")
-  cat("\033[", escape_bg, "m", sep = "")
+  cat("\033[", fg_colours[tolower(fg)], "m", sep = "")
+  if (!is.na(bg)) {
+    cat("\033[", bg_colours[tolower(bg)], "m", sep = "")    
+  }
   cat(..., sep = sep)
   cat("\033[0;30m", sep = "")
 }
