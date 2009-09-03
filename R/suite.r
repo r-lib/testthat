@@ -1,11 +1,13 @@
 #' Stub object for managing a suite of tests.
 #' Do not clone directly from this file
 Suite$do({  
+  self$start_suite <- function() {}
   self$start_context <- function(desc) {}
   self$start_test <- function(desc) {}
-  self$end_context <- function() {}
-  self$end_test <- function() {}
   self$add_result <- function(result) {}
+  self$end_test <- function() {}
+  self$end_context <- function() {}
+  self$end_suite <- function() {}
 })
 
 suite_accessors <- local({

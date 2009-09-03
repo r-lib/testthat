@@ -10,11 +10,13 @@ test_dir <- function(path) {
   helpers <- dir(path, "^helper-.*\\.[rR]", full.names = TRUE)
   
   cur_suite <- test_suite()
-  new_suite <- ChattySuite$clone()
+  new_suite <- SummarySuite$clone()
   change_suite_to(new_suite)
   
+  new_suite$start_suite()
   lapply(helpers, source)
   lapply(tests, source)
+  new_suite$end_suite()
   
   change_suite_to(cur_suite)
   invisible(new_suite)
