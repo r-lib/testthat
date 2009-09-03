@@ -4,4 +4,5 @@ if (!exists("Suite")) {
     ChattySuite <- Suite$clone()
       SummarySuite <- ChattySuite$clone()
     StopSuite <- Suite$clone()  
+    MinimalSuite <- Suite$clone()  
 }
