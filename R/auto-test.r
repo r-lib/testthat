@@ -20,7 +20,7 @@
 #
 #
 
-auto_test <- function(code_path, test_path) {
+auto_test <- function(code_path, test_path, suite = SummarySuite) {
   # Start by loading all code and running all tests
   source_dir(code_path)
   test_dir(test_path)

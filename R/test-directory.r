@@ -3,10 +3,10 @@
 #' Test files start with \code{test-} and are executed in alphabetical order 
 #' (but they shouldn't have dependencies). Helper files start with 
 #' \code{helper-} and loaded before any tests are run.
-test_dir <- function(path) {    
+test_dir <- function(path, suite = SummarySuite) {    
   source_dir(path, "^helper-.*\\.[rR]$")
 
-  with_suite(SummarySuite$clone(), {
+  with_suite(suite$clone(), {
     source_dir(path, "^test-.*\\.[rR]$")    
   })
 }
