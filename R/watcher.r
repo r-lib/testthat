@@ -1,5 +1,8 @@
 #' Watch a directory for changes (additions, deletions & modifications).
 #'
+#' The code computes hashes of each file so is optimised for small files
+#' (like R code!)
+#'
 #' @param path character vector of paths to watch.  Omit trailing backslash.
 #' @param pattern file pattern passed to \code{\link{dir}}
 #' @param callback function called everytime a change occurs.  It should
@@ -8,21 +11,19 @@
 watch <- function(path, callback, pattern = NULL) {
   
   prev <- dir(path, pattern, full.names = TRUE)
-  prev_changed <- file.info(prev)$mtime
-  names(prev_changed) <- prev
+  prev_hash <- sapply(prev, digest, file = TRUE)
 
   while(TRUE) {
     Sys.sleep(1)
 
     curr <- dir(path, pattern, full.names = TRUE)
-    curr_changed <- file.info(curr)$mtime
-    names(curr_changed) <- curr
+    curr_hash <- sapply(curr, digest, file = TRUE)
 
     added <- setdiff(curr, prev)
     deleted <- setdiff(prev, curr)
 
     same <- intersect(curr, prev)
-    modified <- curr[curr_changed[same] > prev_changed[same]]
+    modified <- curr[curr_hash[same] > prev_hash[same]]
     
     if (length(added) + length(deleted) + length(modified) > 0) {
       keep_going <- callback(added, deleted, modified)
@@ -30,6 +31,6 @@ watch <- function(path, callback, pattern = NULL) {
     }
 
     prev <- curr
-    prev_changed <- curr_changed
+    prev_hash <- curr_hash
   }  
 }

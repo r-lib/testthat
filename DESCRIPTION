@@ -6,6 +6,6 @@ Author: Hadley Wickham <h.wickham@gmail.com>
 Maintainer: Hadley Wickham <h.wickham@gmail.com>
 Description: Test_that code.  Tools to make testing fun :)
 URL: http://had.co.nz/
-Depends: R (>= 2.8), mutatr
+Depends: R (>= 2.8), mutatr, digest
 License: GPL
 LazyData: true

@@ -1,4 +1,5 @@
 l(mutatr)
+library(digest)
 library(plyr, warn.conflicts = FALSE)
 
 frame_files <- compact(llply(sys.frames(), function(x) x$ofile))
