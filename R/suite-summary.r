@@ -33,18 +33,22 @@ SummarySuite$do({
   }
   
   self$end_suite <- function() {
-    label <- labels[seq_len(self$n)]
-    type <- ifelse(sapply(self$failures, "[[", "error"), "Error", "Failure")
-    tests <- sapply(self$failures, "[[", "test")
-    header <- paste(label, ". ", type, ": ", tests, " ", sep = "")
-    line <- charrep("-", getOption("width") - nchar(header))
+    if (self$n == 0) {
+      cat("\n", colourise(sample(.praise, 1), "light green"), "\n", sep = "")
+    } else {
+      label <- labels[seq_len(self$n)]
+      type <- ifelse(sapply(self$failures, "[[", "error"), "Error", "Failure")
+      tests <- sapply(self$failures, "[[", "test")
+      header <- paste(label, ". ", type, ": ", tests, " ", sep = "")
+      line <- charrep("-", getOption("width") - nchar(header))
 
-    message <- sapply(self$failures, "[[", "message")
+      message <- sapply(self$failures, "[[", "message")
 
-    cat("\n\n")
-    cat(paste(
-      colourise(header, "red"), line, "\n", 
-      message, "\n", sep = "", collapse = "\n"))
+      cat("\n\n")
+      cat(paste(
+        colourise(header, "red"), line, "\n", 
+        message, "\n", sep = "", collapse = "\n"))      
+    }
   }
   
 })
@@ -52,3 +56,14 @@ SummarySuite$do({
 charrep <- function(char, times) {
   sapply(times, function(i) paste(rep.int(char, i), collapse = ""))
 }
+
+.praise <- c(
+  "You rock!",
+  "You are a coding rockstar!",
+  "Keep up the good work.",
+  ":)",
+  "Woot!",
+  "Way to go!",
+  "Nice code.",
+  ""
+)
