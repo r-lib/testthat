@@ -19,7 +19,9 @@ watch <- function(path, callback, pattern = NULL, hash = TRUE) {
     
     if (changes$n > 0) {
       # cat("C")
-      keep_going <- with(changes, callback(added, deleted, modified))
+      keep_going <- TRUE
+      try(keep_going <- with(changes, callback(added, deleted, modified)))
+      
       if (!keep_going) return(invisible())
     } else {
       # cat(".")
@@ -27,7 +29,7 @@ watch <- function(path, callback, pattern = NULL, hash = TRUE) {
     }
 
     prev <- curr
-  }  
+  } 
 }
 
 dir_state <- function(path, pattern = NULL, hash = TRUE) {
