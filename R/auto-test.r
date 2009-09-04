@@ -49,6 +49,10 @@ auto_test <- function(code_path, test_path, suite = SummarySuite) {
   
 }
 
+auto_test_package <- function(path, suite = SummarySuite) {
+  auto_test(file.path(path, "R"), file.path(path, "tests"), suite)
+}
+
 starts_with <- function(string, prefix) {
   substr(string, 1, nchar(prefix)) == prefix
 }
