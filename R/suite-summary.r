@@ -34,7 +34,10 @@ SummarySuite$do({
   
   self$end_suite <- function() {
     if (self$n == 0) {
-      cat("\n", colourise(sample(.praise, 1), "light green"), "\n", sep = "")
+      cat("\n")
+      if (sample(10, 1) == 1) {
+        cat(colourise(sample(.praise, 1), "light green"), "\n", sep = "")
+      }
     } else {
       label <- labels[seq_len(self$n)]
       type <- ifelse(sapply(self$failures, "[[", "error"), "Error", "Failure")
