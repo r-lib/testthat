@@ -33,7 +33,7 @@ equals <- function(expected) {
   function(actual) {
     expectation(
       identical(all.equal(expected, actual), TRUE),
-      paste("does not equal ", name, sep = "")
+      paste("not equal to ", name, sep = "")
     )
   }
 }
