@@ -59,7 +59,7 @@ matches <- function(regexp) {
 }
 
 
-prints <- function(regexp) {
+prints_text <- function(regexp) {
   function(expr) {
     output <- capture.output(force(expr))
     matches(regexp)(output)

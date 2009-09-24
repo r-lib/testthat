@@ -12,7 +12,7 @@ expect_that(b, equals(2))
 expect_that(b, throws_error("Field b not found"))
 # expect_that(b, gives_warning("Field b not found"))
 # expect_that(b, gives_message("Field b not found"))
-expect_that(print(b), prints("Field b not found"))
+expect_that(print(b), prints_text("Field b not found"))
 
 expect_that(TRUE, is_true())
 expect_that(FALSE, is_false())
