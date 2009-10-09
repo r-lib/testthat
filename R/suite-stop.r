@@ -12,7 +12,7 @@ StopSuite$do({
   self$add_result <- function(result) {
     if (result$passed) return()
     
-    type <- if (result$error) "error" else failure
+    type <- if (result$error) "error" else "failure"
     msg <- paste(
       "Test ", type, ": ", self$test, "\n", 
       result$message, sep = "")
