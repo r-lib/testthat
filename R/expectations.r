@@ -28,11 +28,11 @@ is_false <- function() {
 }
 
 
-equals <- function(expected) {
+equals <- function(expected, ...) {
   name <- deparse(substitute(expected))
   function(actual) {
     expectation(
-      identical(all.equal(expected, actual), TRUE),
+      identical(all.equal(expected, actual, ...), TRUE),
       paste("not equal to ", name, sep = "")
     )
   }
@@ -49,20 +49,20 @@ is_identical_to <- function(expected) {
 }
 
 
-matches <- function(regexp) {
+matches <- function(regexp, ...) {
   function(char) {
     expectation(
-      all(grepl(regexp, char)),
+      all(grepl(regexp, char, ...)),
       paste("does not match ", regexp, sep = "")
     )
   }  
 }
 
 
-prints_text <- function(regexp) {
+prints_text <- function(regexp, ...) {
   function(expr) {
-    output <- capture.output(force(expr))
-    matches(regexp)(output)
+    output <- paste(capture.output(force(expr)), collapse = "")
+    matches(regexp, ...)(output)
   }  
 }
 
