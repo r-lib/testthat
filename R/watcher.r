@@ -1,5 +1,12 @@
 #' Watch a directory for changes (additions, deletions & modifications).
 #'
+#' This is used to power the \code{\link{auto_test}} and 
+#' \code{link{auto_test_package}} functions which are used to rerun tests 
+#' whenever source code changes.
+#' 
+#' Use Ctrl + break (windows), Esc (mac gui) or Ctrl + C (command line) to
+#' stop the watcher.
+#' 
 #' @param path character vector of paths to watch.  Omit trailing backslash.
 #' @param pattern file pattern passed to \code{\link{dir}}
 #' @param callback function called everytime a change occurs.  It should
@@ -32,6 +39,13 @@ watch <- function(path, callback, pattern = NULL, hash = TRUE) {
   } 
 }
 
+#' Capture the state of a directory
+#'
+#' @param path path to directory
+#' @param pattern regular expression with which to filter files
+#' @param hash use hash (slow but accurate) or time stamp (fast but less 
+#'   accurate)
+#' @keywords internal
 dir_state <- function(path, pattern = NULL, hash = TRUE) {
   files <- dir(path, pattern, full.names = TRUE)
   
@@ -42,6 +56,13 @@ dir_state <- function(path, pattern = NULL, hash = TRUE) {
   }
 }
 
+#' Compare two directory states.
+#' 
+#' @param old previous state
+#' @param new current state
+#' @return list containing number of changes and files which have been 
+#'   \code{added}, \code{deleted} and \code{modified}
+#' @keywords internal
 compare_state <- function(old, new) {
   added <- setdiff(names(new), names(old))
   deleted <- setdiff(names(old), names(new))

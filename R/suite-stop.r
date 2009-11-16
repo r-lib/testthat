@@ -1,4 +1,4 @@
-#' Stop on errors
+#' Test reporter: stop on error
 #'
 #' The default suite, executed when \code{expect_that} is run interactively,
 #' or when the test files are executed by R CMD check. It responds by
@@ -8,6 +8,8 @@
 #' This should be used when doing a quick and dirty test, or during the final
 #' automated testing of R CMD check.  Otherwise, use a suite that runs all
 #' tests and gives you more context about the problem.
+#'
+#' @alias StopSuite
 StopSuite$do({
   self$add_result <- function(result) {
     if (result$passed) return()

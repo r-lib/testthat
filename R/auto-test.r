@@ -1,29 +1,38 @@
-# Watches code and tests for changes, rerunning tests as appropriate.
-# 
-# The idea behind \code{auto_test} is that you just leave it running while you
-# develop your code.  Everytime you save a file it will be automatically 
-# tested and you can easily see if your changes have caused any test failures.
-# 
-# The current strategy for rerunning tests is as follows:
-# 
-#  * if any code has changed, then those files are reloaded and all tests
-#    rerun
-#  * otherwise, each new or modified test is run
-# 
-# In the future, \code{auto_test} might implement on of the following more 
-# intelligent alternatives:
-# 
-# * Use codetools to build up dependency tree and then rerun tests only when
-#   a dependency changes.
-# 
-# * Mimic ruby's autotest and rerun only failing tests until they parse, and
-#   then rerun all test.
-#
-# '@seealso \code{\link{auto_test_package}}
+#' Watches code and tests for changes, rerunning tests as appropriate.
+#' 
+#' The idea behind \code{auto_test} is that you just leave it running while
+#' you develop your code.  Everytime you save a file it will be automatically 
+#' tested and you can easily see if your changes have caused any test
+#'  failures.
+#' 
+#' The current strategy for rerunning tests is as follows:
+#' 
+#'  * if any code has changed, then those files are reloaded and all tests
+#'    rerun
+#'  * otherwise, each new or modified test is run
+#' 
+#' In the future, \code{auto_test} might implement on of the following more 
+#' intelligent alternatives:
+#' 
+#' * Use codetools to build up dependency tree and then rerun tests only when
+#'   a dependency changes.
+#' 
+#' * Mimic ruby's autotest and rerun only failing tests until they parse, and
+#'   then rerun all test.
+#'
+#' @seealso \code{\link{auto_test_package}}
+#' @param code_path path to directory containing code
+#' @param test_path path to directory containing tests
+#' @param suite test reporter to use
+#' @keywords debugging
 auto_test <- function(code_path, test_path, suite = SummarySuite) {
   # Start by loading all code and running all tests
   source_dir(code_path)
   test_dir(test_path)
+  
+  starts_with <- function(string, prefix) {
+    substr(string, 1, nchar(prefix)) == prefix
+  }
   
   # Next set up watcher to monitor changes
   watcher <- function(added, deleted, modified) {
@@ -50,10 +59,13 @@ auto_test <- function(code_path, test_path, suite = SummarySuite) {
   
 }
 
+#' Watches a package for changes, rerunning tests as appropriate.
+#' 
+#' @param path path to package 
+#' @param suite test reporter to use
+#' @keywords debugging
+#' @seealso \code{\link{auto_test}} for details on how method works
 auto_test_package <- function(path, suite = SummarySuite) {
   auto_test(file.path(path, "R"), file.path(path, "tests"), suite)
 }
 
-starts_with <- function(string, prefix) {
-  substr(string, 1, nchar(prefix)) == prefix
-}

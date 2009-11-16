@@ -1,5 +1,10 @@
 #' Stub object for managing a suite of tests.
-#' Do not clone directly from this file
+#'
+#' Do not clone directly from this object - children should implement all
+#' methods.
+#'
+#' @keywords internal.
+#' @alias Suite
 Suite$do({
   self$context <- ""
   self$test <- ""
@@ -17,31 +22,3 @@ Suite$do({
   self$end_suite <- function() {}
 })
 
-suite_accessors <- local({
-  # Default has to be the stop suite, since it is this that will be run by
-  # default from the command line and in R CMD test.
-  suite <- StopSuite$clone()
-  
-  set <- function(value) {
-    suite <<- value
-  }
-  get <- function() {
-    suite
-  }
-  
-  list(get = get, set = set)
-})
-test_suite <- suite_accessors$get
-change_suite_to <- suite_accessors$set
-
-with_suite <- function(suite, code) {
-  cur_suite <- test_suite()
-  change_suite_to(suite)
-  on.exit(change_suite_to(cur_suite))
-  
-  suite$start_suite()
-  force(code)
-  suite$end_suite()
-  
-  invisible(suite)
-}

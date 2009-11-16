@@ -1,3 +1,11 @@
+#' Test reporter: summary of errors.
+#' 
+#' This is the most useful reporting suite as it lets you know both which
+#' tests have run successfully, as well as fully reporting information about
+#' failures and errors.  It is the default reporting suite used by 
+#' \code{\link{test_dir}} and \code{\link{test_file}}.
+#'
+#' @alias SummarySuite
 SummarySuite$do({
   labels <- c(1:9, letters, LETTERS)
   
@@ -33,6 +41,10 @@ SummarySuite$do({
   }
   
   self$end_suite <- function() {
+    charrep <- function(char, times) {
+      sapply(times, function(i) paste(rep.int(char, i), collapse = ""))
+    }
+    
     if (self$n == 0) {
       cat("\n")
       if (sample(10, 1) == 1) {
@@ -56,9 +68,6 @@ SummarySuite$do({
   
 })
 
-charrep <- function(char, times) {
-  sapply(times, function(i) paste(rep.int(char, i), collapse = ""))
-}
 
 .praise <- c(
   "You rock!",
