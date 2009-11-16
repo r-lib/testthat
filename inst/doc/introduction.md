@@ -1,6 +1,7 @@
-Testing your code is normally painful and boring.  `test_that` aims to make the task as pleasant and fun as possible, so that you get a visceral satisfaction from writing tests.
+Introduction
+============
 
-Unlike other testing approaches in R, `testthat`:
+Testing your code is normally painful and boring. `test_that` aims to make the task as pleasant and fun as possible, so that you get a visceral satisfaction from writing tests. Unlike other testing approaches in R, `testthat`:
 
  * Uses a natural language interface that make tests a pleasure to read
  
@@ -8,11 +9,11 @@ Unlike other testing approaches in R, `testthat`:
  
  * Gives a visual indication of every single test expectation that you have
  
- * Without changes to your tests works both interactively and with R CMD check
+ * The same code works interactively, as part of a test suite and with R 
+   CMD check
  
  * Provides tools to automatically rerun your tests each time you change
-   either your code or your tests
-
+   your code (or your tests)
 
 `testthat` draws inspiration from the xUnit family of testing packages, as well as the many innovative ruby testing libraries (e.g. bacon, cucumber).  I have used what I think works for R, and abandoned what doesn't, creating a testing package that is philosophically centred in R.
 
@@ -25,24 +26,38 @@ I wrote `testthat` because I discovered I was spending way too much time recreat
 
 In part, this is because previously creating tests required a lot of extra up front work, and none of the existing testing frameworks intermixed seamlessly with the existing R testing framework (e.g. `stopifnot` and the `tests` subdirectory).  One of the aims of the `testthat` package is to make it so easy (and so fun!) to systematise your tests that you do it all the time.
 
-Personally, I have found a small investment in upfront testing pays off in the following ways:
+Of course, it's going to require a little bit of extra effort to turn your casual interactive tests into reproducible scripts.  However, this small investment can pay off in the following ways:
 
- * Decreased frustration.  It seems that whenever I'm working to a strict
-   deadline I discover a bug in old code.  Having to stop what I'm doing
-   to fix the bug is a real pain.  This happens less when I do more testing
-   and the tests are also helpful for showing me which parts of my code are
-   well tested.
-   
- * Better code structure. Code that's easy to test is usually better designed.
-   I have found writing tests makes me extract out the complicated parts of 
-   my code in separate functions that work in isolation.  These are easier to
-   test, easier to understand and easier to combine in new ways. Ultimately
-   this leads to less duplication and more agile code.
+ * Decreased long-term frustration. It seems that whenever I'm working to a
+   strict deadline I discover a bug in old code. Having to stop what I'm doing
+   to fix the bug is a real pain. This happens less when I do more testing and
+   the tests are also helpful for showing me which parts of my code are well
+   tested.
+
+ * Better code structure. Code that's easy to test is usually better
+   designed. I have found writing tests makes me extract out the complicated
+   parts of my code in separate functions that work in isolation. These are
+   easier to test, easier to understand and easier to combine in new ways.
+   Ultimately this leads to less duplication and more agile code.
+
+ * Easier to pick up development after a break. If you always finished a 
+   session of coding by creating some tests that don't pass (i.e. for the 
+   feature you want to implement next) it's easy to pick up where you left
+   off: your failing tests will let you know exactly what you need to do next.
+ 
+ * Can more confidently make big changes. Because you know that all major
+   functionality has a test associated with it, you can more confidently 
+   make changes and check that you haven't broken anything.  For me, this is 
+   particularly useful when I think of a simpler way to accomplish a task -  
+   often my simpler solution is only simpler because I've forgotten an 
+   important use case!
+
+Additionally, `testthat` does everything it can to make testing fun - it has an easy to remember (and read) natural language interface, it has colours and it'll even occasionally give you some positive reinforcement if all your tests pass.
 
 Dive in
 ========
 
-Here is what a `testthat` test file looks like.
+Here is what a test file looks like.
 
 
 There are three ways to run this test:
@@ -158,3 +173,5 @@ Future work
 ============
 
 Code coverage = combination of RProf and code tools.
+
+GUI or graphics widget that display output of tests.  Green squares = pass, red = failure.  Click on a red square to get more information.
