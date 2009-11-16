@@ -2,7 +2,7 @@
 #'
 #' 
 #' @aliases expectation print.expectation format.expectation
-#' @keyword internal
+#' @keywords internal
 expectation <- function(passed, message) {
   error <- is.na(passed)
   passed <- passed & !is.na(passed)

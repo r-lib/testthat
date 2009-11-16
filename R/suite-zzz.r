@@ -1,3 +1,7 @@
+#' Access current reporter
+#' 
+#' @keywords internal
+#' @aliases suite_accessors test_suite change_suite_to
 suite_accessors <- local({
   # Default has to be the stop suite, since it is this that will be run by
   # default from the command line and in R CMD test.
@@ -12,15 +16,7 @@ suite_accessors <- local({
   
   list(get = get, set = set)
 })
-
-#' Access current reporter
-#' 
-#' @keywords internal
 test_suite <- suite_accessors$get
-
-#' Change current reporter
-#' 
-#' @keywords internal
 change_suite_to <- suite_accessors$set
 
 #' Execute code in specified suite

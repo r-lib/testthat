@@ -4,7 +4,7 @@
 #' \pkg{testthat} currently provides the following expectations.  See their
 #' documentation for more details
 #'
-#' \itemise{
+#' \itemize{
 #'  \item \code{\link{is_true}}: truth
 #'  \item \code{\link{is_false}}: falsehood
 #'  \item \code{\link{is_a}}: inheritance

@@ -12,8 +12,8 @@
 #' @param callback function called everytime a change occurs.  It should
 #'   have three parameters: added, deleted, modified, and should return
 #'   TRUE to keep watching, or FALSE to stop. 
-#' @param hashes are more accurate at detecting changes, but are slower for 
-#'   large files.  When FALSE, uses modification time stamps 
+#' @param hash hashes are more accurate at detecting changes, but are slower
+#'   for large files.  When FALSE, uses modification time stamps 
 watch <- function(path, callback, pattern = NULL, hash = TRUE) {
   
   prev <- dir_state(path, pattern, hash = hash)

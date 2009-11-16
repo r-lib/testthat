@@ -21,7 +21,7 @@ test_dir <- function(path, suite = SummarySuite) {
 #' @param path path to tests
 #' @param pattern regular expression used to filter files
 #' @param chdir change working directory to path?
-#' @keyword internal
+#' @keywords internal
 source_dir <- function(path, pattern = "\\.[rR]$", chdir = TRUE) {
   files <- sort(dir(path, pattern, full.names = TRUE))
   

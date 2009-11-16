@@ -4,7 +4,7 @@
 #' methods.
 #'
 #' @keywords internal.
-#' @alias Suite
+#' @aliases Suite
 Suite$do({
   self$context <- ""
   self$test <- ""

@@ -4,11 +4,3 @@ if (!exists("Suite")) {
     StopSuite <- Suite$clone()  
     MinimalSuite <- Suite$clone()  
 }
-
-# create_class_hierarchy("
-# Suite
-# |- SummarySuite
-#    `- SpecialSummary
-# |- StopSuite
-# `- MinimalSuite
-# ")

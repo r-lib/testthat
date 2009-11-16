@@ -9,3 +9,7 @@ URL: http://had.co.nz/
 Depends: R (>= 2.8), mutatr, digest
 License: GPL
 LazyData: true
+Collate: 'aaa-classes.r' 'auto-test.r' 'colour-text.r' 'context.r'
+    'expect-that.r' 'expectation.r' 'expectations.r' 'library.r'
+    'suite-minimal.r' 'suite-stop.r' 'suite-summary.r' 'suite-zzz.r'
+    'suite.r' 'test-files.r' 'test-that.r' 'watcher.r'
