@@ -18,7 +18,8 @@
 # 
 # * Mimic ruby's autotest and rerun only failing tests until they parse, and
 #   then rerun all test.
-# 
+#
+# '@seealso \code{\link{auto_test_package}}
 auto_test <- function(code_path, test_path, suite = SummarySuite) {
   # Start by loading all code and running all tests
   source_dir(code_path)
