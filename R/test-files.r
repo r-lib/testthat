@@ -6,7 +6,8 @@
 #'
 #' @param path path to tests
 #' @param reporter reporter to use
-test_dir <- function(path, reporter = SummaryReporter) {    
+test_dir <- function(path, reporter = "summary") {    
+  reporter <- find_reporter(reporter)
   source_dir(path, "^helper-.*\\.[rR]$")
 
   with_reporter(reporter$clone(), {
@@ -32,6 +33,7 @@ source_dir <- function(path, pattern = "\\.[rR]$", chdir = TRUE) {
 #' 
 #' @param path path to file
 #' @param reporter reporter to use
-test_file <- function(path, reporter = SummaryReporter) {    
+test_file <- function(path, reporter = "summary") {    
+  reporter <- find_reporter(reporter)
   with_reporter(reporter$clone(), source(path))
 }

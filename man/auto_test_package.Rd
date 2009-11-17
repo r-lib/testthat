@@ -1,7 +1,7 @@
 \name{auto_test_package}
 \alias{auto_test_package}
 \title{Watches a package for changes, rerunning tests as appropriate.}
-\usage{auto_test_package(path, reporter=SummaryReporter)}
+\usage{auto_test_package(path, reporter="summary")}
 
 \description{
   Watches a package for changes, rerunning tests as appropriate.

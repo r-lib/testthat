@@ -28,6 +28,8 @@ change_reporter_to <- reporter_accessors$set
 #' @param reporter test reporter to use
 #' @param code code block to execute
 with_reporter <- function(reporter, code) {
+  reporter <- find_reporter(reporter)
+  
   cur_reporter <- test_reporter()
   change_reporter_to(reporter)
   on.exit(change_reporter_to(cur_reporter))
@@ -37,4 +39,24 @@ with_reporter <- function(reporter, code) {
   reporter$end_reporter()
   
   invisible(reporter)
+}
+
+#' Find reporter object given name
+#'
+#' If not found, will return informative error message
+#'
+#' @param reporter name of reporter
+#' @keywords internal
+find_reporter <- function(reporter) {
+  if (is.mutatr(reporter)) return(reporter)
+  
+  name <- reporter
+  substr(name, 1, 1) <- toupper(substr(name, 1, 1))
+  name <- paste(name, "Reporter", sep = "")
+  
+  if (!exists(name)) {
+    stop("Can not find test reporter ", reporter, call. = FALSE)
+  }
+  
+  get(name)
 }

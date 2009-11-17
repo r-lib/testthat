@@ -28,7 +28,9 @@
 #' @param test_path path to directory containing tests
 #' @param reporter test reporter to use
 #' @keywords debugging
-auto_test <- function(code_path, test_path, reporter = SummaryReporter) {
+auto_test <- function(code_path, test_path, reporter = "summary") {
+  reporter <- find_reporter(reporter)
+
   # Start by loading all code and running all tests
   source_dir(code_path)
   test_dir(test_path)
@@ -53,7 +55,7 @@ auto_test <- function(code_path, test_path, reporter = SummaryReporter) {
     } else if (length(tests) > 0) {
       # If test changes, rerun just that test
       cat("Rerunning tests: ", paste(basename(tests), collapse = ", "), "\n")      
-      with_reporter(SummaryReporter$clone(), lapply(tests, source, chdir = TRUE))
+      with_reporter(reporter$clone(), lapply(tests, source, chdir = TRUE))
     }
     
     TRUE
@@ -68,7 +70,7 @@ auto_test <- function(code_path, test_path, reporter = SummaryReporter) {
 #' @param reporter test reporter to use
 #' @keywords debugging
 #' @seealso \code{\link{auto_test}} for details on how method works
-auto_test_package <- function(path, reporter = SummaryReporter) {
+auto_test_package <- function(path, reporter = "summary") {
   auto_test(file.path(path, "R"), file.path(path, "tests"), reporter)
 }
 

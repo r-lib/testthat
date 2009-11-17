@@ -1,7 +1,7 @@
 \name{auto_test}
 \alias{auto_test}
 \title{Watches code and tests for changes, rerunning tests as appropriate.}
-\usage{auto_test(code_path, test_path, reporter=SummaryReporter)}
+\usage{auto_test(code_path, test_path, reporter="summary")}
 
 \description{
   Watches code and tests for changes, rerunning tests as appropriate.

@@ -1,7 +1,7 @@
 \name{test_dir}
 \alias{test_dir}
 \title{Run all of the tests in a directory.}
-\usage{test_dir(path, reporter=SummaryReporter)}
+\usage{test_dir(path, reporter="summary")}
 
 \description{
   Run all of the tests in a directory.
