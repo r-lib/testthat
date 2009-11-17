@@ -9,7 +9,10 @@
 #' automated testing of R CMD check.  Otherwise, use a suite that runs all
 #' tests and gives you more context about the problem.
 #'
-#' @aliases StopSuite
+#' @name StopSuite
+#' @keywords debugging
+NULL
+
 StopSuite$do({
   self$add_result <- function(result) {
     if (result$passed) return()

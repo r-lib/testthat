@@ -5,7 +5,10 @@
 #' an error.  If you want to find out what the failures and errors actually
 #' were, you'll need to run a more informative test suite.
 #'
-#' @aliases MinimalSuite
+#' @name MinimalSuite
+#' @keywords debugging
+NULL
+
 MinimalSuite$do({
   self$add_result <- function(result) { 
     if (result$passed) {

@@ -1,0 +1,15 @@
+\name{SummarySuite}
+\alias{SummarySuite}
+\title{Test reporter: summary of errors.}
+
+\description{
+  Test reporter: summary of errors.
+}
+
+\details{
+  This is the most useful reporting suite as it lets you know both
+  which tests have run successfully, as well as fully reporting
+  information about failures and errors.  It is the default reporting
+  suite used by \code{\link{test_dir}} and \code{\link{test_file}}.
+}
+\keyword{debugging}

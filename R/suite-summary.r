@@ -5,7 +5,10 @@
 #' failures and errors.  It is the default reporting suite used by 
 #' \code{\link{test_dir}} and \code{\link{test_file}}.
 #'
-#' @aliases SummarySuite
+#' @name SummarySuite
+#' @keywords debugging
+NULL
+
 SummarySuite$do({
   labels <- c(1:9, letters, LETTERS)
   
