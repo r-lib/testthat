@@ -3,28 +3,24 @@ Introduction
 
 Testing your code is normally painful and boring. `test_that` aims to make the task as pleasant and fun as possible, so that you get a visceral satisfaction from writing tests. Unlike other testing approaches in R, `testthat`:
 
- * Uses a natural language interface that make tests a pleasure to read
+ * Uses a natural language interface that makes tests easy to read.
  
- * Uses blocks instead of functions to encapsulate the expectations of a test
+ * Gives a visual indication of all your test expectations.
  
- * Gives a visual indication of every single test expectation that you have
- 
- * The same code works interactively, as part of a test reporter and with R 
-   CMD check
+ * Ensures that the same code works interactively, as part of a test reporter
+   and with R CMD check.
  
  * Provides tools to automatically rerun your tests each time you change
-   your code (or your tests)
+   your code or tests.
 
-`testthat` draws inspiration from the xUnit family of testing packages, as well as the many innovative ruby testing libraries (e.g. bacon, cucumber).  I have used what I think works for R, and abandoned what doesn't, creating a testing package that is philosophically centred in R.
-
-However, most R is not object-oriented in the same way that java and ruby code is, so `testthat` is not based around testing objects, but instead around testing contexts, groups of interrelated functions.
+`testthat` draws inspiration from the xUnit family of testing packages, as well as the many innovative ruby testing libraries (e.g. bacon, cucumber).  I have used what I think works for R, and abandoned what doesn't, creating a testing package that is philosophically centred in R.  Most R is not object-oriented in the same way that java and ruby code is, so `testthat` is not based around testing objects, but instead around testing contexts, groups of interrelated functions.  This means that `testthat` is rather different from the existing test packages `RUnit` and `svUnit`.
 
 Why?
 ====
 
-I wrote `testthat` because I discovered I was spending way too much time recreating bugs that I had previously fixed.  While when I was writing the original code or fixing the bug, I performed many interactive tests to make sure the code was working, I never had a system for retaining these tests and running then multiple times.  I think this reflects a common development pattern in R users - it's not that you don't test your code, but it's that you don't store the test.
+I wrote `testthat` because I discovered I was spending way too much time recreating bugs that I had previously fixed. When I was writing the original code or fixing the bug, I would perform plenty of interactive tests to ensure that the code was working, but I never had a system for retaining these tests and running again in the future. I think this reflects a common development pattern in R users - it's not that we don't test our code, but it's that we don't store and rerun the tests.
 
-In part, this is because previously creating tests required a lot of extra up front work, and none of the existing testing frameworks intermixed seamlessly with the existing R testing framework (e.g. `stopifnot` and the `tests` subdirectory).  One of the aims of the `testthat` package is to make it so easy (and so fun!) to systematise your tests that you do it all the time.
+This is partly because creating tests requires extra up front work, and none of the existing testing frameworks intermixes seamlessly with the existing R testing framework (i.e. `stopifnot()` and the `tests` subdirectory). One of the aims of the `testthat` package is to make it so easy (and so fun!) to systematise your tests that you do it all the time.
 
 Of course, it's going to require a little bit of extra effort to turn your casual interactive tests into reproducible scripts.  However, this small investment can pay off in the following ways:
 
@@ -40,14 +36,14 @@ Of course, it's going to require a little bit of extra effort to turn your casua
    easier to test, easier to understand and easier to combine in new ways.
    Ultimately this leads to less duplication and more agile code.
 
- * Easier to pick up development after a break. If you always finished a 
+ * Easier to pick up development after a break. If you always finish a 
    session of coding by creating some tests that don't pass (i.e. for the 
    feature you want to implement next) it's easy to pick up where you left
    off: your failing tests will let you know exactly what you need to do next.
  
  * Can more confidently make big changes. Because you know that all major
    functionality has a test associated with it, you can more confidently 
-   make changes and check that you haven't broken anything.  For me, this is 
+   make changes and know that you haven't broken anything.  For me, this is 
    particularly useful when I think of a simpler way to accomplish a task -  
    often my simpler solution is only simpler because I've forgotten an 
    important use case!
@@ -60,11 +56,11 @@ Dive in
 Here is what a test file looks like.
 
 
-There are three ways to run this test:
+It has a hierarchical structure made up of three components:
 
- * just source it in!
- * run it with `test_file()` 
- * run it during R CMD check (see section)
+ * contexts
+ * tests
+ * expectations
 
 
 Test structure
@@ -129,26 +125,36 @@ You can also write your own expectations.  An expectation should return a functi
     }
 
 
-Reporting
-==========
+Running tests
+=============
 
-`testthat` comes with three reporting reporters.  The default, `StopReporter` just `stop()`s whenever a failure is encountered.  This is designed to work with R CMD test, so you can submit a package to CRAN if it has a failing test.
+There are four ways to run tests:
+
+ * just `source()` it in!
+ * run it with `test_file()` or `test_dir()`
+ * run it during R CMD check
+ * run it automatically whenever your code changes, with `auto_test()`
+
+Each of these techniques is described more in the following sections, but first it's necessary to learn a little more about how test results are reported.
+
+`testthat` comes with three reporters.  The default, `StopReporter` just `stop()`s whenever a failure is encountered.  This is designed to work interactively and with R CMD test, so you can not submit a package to CRAN if it has a failing test.
 
 `ReporterMinimal` will run all the tests (not just stopping at the first error), and will print `.` for each successful test, `E` for an error and `F` a failure.  It really is minimal!
 
-`ReporterSummary` is the most verbose.  Like `ReporterMinimal` it will print a `.` for successful tests, but for failures or errors it will print a number.  Once all tests have been number, all errors and failures will be listed by that number so you can see exactly what's going on.  
+`ReporterSummary` is the most verbose.  Like `ReporterMinimal` it will print a `.` for successful tests, but for failures or errors it will print a number.  Once all tests have been run, all errors and failures will be listed by that number so you can see where the problems are.
 
 If you're using R from the terminal, both `ReporterMinimal` and `ReporterSummary` will colour successes green and failures and errors red.  Soon you will become addicted to getting a line of green dots!
 
-Watching
-========
+Executing a single test file
+-------------------------------
 
-Tests are most useful when run frequently, so `testthat` provides a method that will watch your code and test files and automatically rerun your tests when needed.  
+If you just `source()` in a file containing tests, they will be run automatically with the default reporter which will throw an error if any tests fail.  This is useful to double-check that everything is working, but it gives you little information about what went wrong.  To get more details use `test_file()`.  It works like `source()` but it changes the default reporter to `SummaryReport` so you get a lot more information.
 
-This promotes a workflow where the _only_ way you test your code is through tests. Instead of modify-save-source-check you just modify and save, then watch the automated test output for problems.
+Executing multiple test files
+-----------------------------
 
 R CMD check
-============
+-----------
 
 To have tests automatically run by `R CMD check` they need to satisfy the following conditions:
 
@@ -168,6 +174,12 @@ The final conditional creates a slight conflict with the usual testthat testing 
   I recommend this set up because once you've set up the test file there's nothing else to remember.
   
 The default behaviour of `testthat` expectation is to `stop()` when a failure (or error) is encountered.  This means that if a test file is sourced, and there is a failure, `R CMD check` will report it.
+
+Auto testing
+--------------------
+
+Tests are most useful when run frequently, so `testthat` provides a method that will watch your code and test files and automatically rerun your tests when needed, `auto_test`. This promotes a workflow where the _only_ way you test your code is through tests. Instead of modify-save-source-check you just modify and save, then watch the automated test output for problems.
+
 
 Future work
 ============
