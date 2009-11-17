@@ -15,17 +15,16 @@
 
   The current strategy for rerunning tests is as follows:
 
-  * if any code has changed, then those files are reloaded and all
-  tests rerun * otherwise, each new or modified test is run
+  \itemize{ \item if any code has changed, then those files are
+  reloaded and all tests rerun \item otherwise, each new or modified
+  test is run } In the future, \code{auto_test} might implement on of
+  the following more intelligent alternatives:
 
-  In the future, \code{auto_test} might implement on of the following
-  more intelligent alternatives:
+  \itemize{ \item Use codetools to build up dependency tree and then
+  rerun tests only when a dependency changes.
 
-  * Use codetools to build up dependency tree and then rerun tests only
-  when a dependency changes.
-
-  * Mimic ruby's autotest and rerun only failing tests until they
-  parse, and then rerun all test.
+  \item Mimic ruby's autotest and rerun only failing tests until they
+  pass, and then rerun all test. }
 }
 \seealso{\code{\link{auto_test_package}}}
 \keyword{debugging}

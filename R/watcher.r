@@ -39,7 +39,7 @@ watch <- function(path, callback, pattern = NULL, hash = TRUE) {
   } 
 }
 
-#' Capture the state of a directory
+#' Capture the state of a directory.
 #'
 #' @param path path to directory
 #' @param pattern regular expression with which to filter files

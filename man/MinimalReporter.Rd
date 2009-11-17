@@ -1,9 +1,9 @@
 \name{MinimalReporter}
 \alias{MinimalReporter}
-\title{Test reporter: minimal...}
+\title{Test reporter: minimal.}
 
 \description{
-  Test reporter: minimal
+  Test reporter: minimal.
 }
 
 \details{

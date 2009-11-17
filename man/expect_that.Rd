@@ -1,10 +1,10 @@
 \name{expect_that}
 \alias{expect_that}
-\title{Expect that a condition holds...}
+\title{Expect that a condition holds.}
 \usage{expect_that(object, condition)}
 
 \description{
-  Expect that a condition holds
+  Expect that a condition holds.
 }
 
 \details{

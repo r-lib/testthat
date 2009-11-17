@@ -1,10 +1,10 @@
 \name{context}
 \alias{context}
-\title{Set the context for a set of tests...}
+\title{Describe the context of a set of tests.}
 \usage{context(desc)}
 
 \description{
-  Set the context for a set of tests
+  Describe the context of a set of tests.
 }
 
 \details{
@@ -15,3 +15,5 @@
 \arguments{
   \item{desc}{description of context.  Should start with a capital letter.}
 }
+\examples{context("String processing")
+context("Remote procedure calls")}

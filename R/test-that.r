@@ -1,4 +1,4 @@
-#' Create a test
+#' Create a test.
 #' 
 #' A test encapsulates a series of expectations about small, self-contained
 #' set of functionality.  Each test is contained in a \link{context} and
@@ -79,7 +79,7 @@ create_traceback <- function(callstack) {
   
 }
 
-#' Try, capture stack on error
+#' Try, capture stack on error.
 #'
 #' This is a variant of \code{\link{tryCatch}} that also captures the call
 #' stack if an error occurs.

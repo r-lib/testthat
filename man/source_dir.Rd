@@ -1,7 +1,7 @@
 \name{source_dir}
 \alias{source_dir}
 \title{Load all source files in a directory.}
-\usage{source_dir(path, pattern="\\.[rR]$", chdir=TRUE)}
+\usage{source_dir(path, pattern="\\\\.[rR]$", chdir=TRUE)}
 
 \description{
   Load all source files in a directory.

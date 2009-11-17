@@ -1,10 +1,10 @@
 \name{dir_state}
 \alias{dir_state}
-\title{Capture the state of a directory...}
+\title{Capture the state of a directory.}
 \usage{dir_state(path, pattern, hash=TRUE)}
 
 \description{
-  Capture the state of a directory
+  Capture the state of a directory.
 }
 \keyword{internal}
 \arguments{

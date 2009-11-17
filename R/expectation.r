@@ -1,5 +1,4 @@
-#' Expectation class
-#'
+#' Expectation class.
 #' 
 #' @aliases expectation print.expectation format.expectation
 #' @keywords internal

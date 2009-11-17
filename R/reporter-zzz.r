@@ -1,4 +1,4 @@
-#' Access current reporter
+#' Access current reporter.
 #' 
 #' @keywords internal
 #' @aliases reporter_accessors test_reporter change_reporter_to
@@ -19,7 +19,7 @@ reporter_accessors <- local({
 test_reporter <- reporter_accessors$get
 change_reporter_to <- reporter_accessors$set
 
-#' Execute code in specified reporter
+#' Execute code in specified reporter.
 #'
 #' Changes global reporter to that specified, runs code and the returns
 #' global reporter back to previous value.

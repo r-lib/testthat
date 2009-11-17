@@ -1,10 +1,10 @@
 \name{try_capture_stack}
 \alias{try_capture_stack}
-\title{Try, capture stack on error...}
+\title{Try, capture stack on error.}
 \usage{try_capture_stack(quoted_code, env)}
 
 \description{
-  Try, capture stack on error
+  Try, capture stack on error.
 }
 
 \details{

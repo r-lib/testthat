@@ -1,10 +1,10 @@
 \name{with_reporter}
 \alias{with_reporter}
-\title{Execute code in specified reporter...}
+\title{Execute code in specified reporter.}
 \usage{with_reporter(reporter, code)}
 
 \description{
-  Execute code in specified reporter
+  Execute code in specified reporter.
 }
 
 \details{

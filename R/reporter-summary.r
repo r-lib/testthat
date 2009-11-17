@@ -4,6 +4,9 @@
 #' tests have run successfully, as well as fully reporting information about
 #' failures and errors.  It is the default reporting reporter used by 
 #' \code{\link{test_dir}} and \code{\link{test_file}}.
+#' 
+#' As an additional benefit, this reporter will praise you from time-to-time
+#' if all your tests pass.
 #'
 #' @name SummaryReporter
 #' @keywords debugging

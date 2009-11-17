@@ -1,9 +1,9 @@
 \name{expectation}
-\title{Expectation class...}
+\title{Expectation class.}
 \usage{expectation(passed, message)}
 
 \description{
-  Expectation class
+  Expectation class.
 }
 \alias{expectation}
 \alias{print.expectation}

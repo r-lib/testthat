@@ -1,10 +1,10 @@
 \name{test_that}
 \alias{test_that}
-\title{Create a test...}
+\title{Create a test.}
 \usage{test_that(desc, code)}
 
 \description{
-  Create a test
+  Create a test.
 }
 
 \details{

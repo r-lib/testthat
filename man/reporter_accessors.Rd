@@ -1,8 +1,8 @@
 \name{reporter_accessors}
-\title{Access current reporter...}
+\title{Access current reporter.}
 
 \description{
-  Access current reporter
+  Access current reporter.
 }
 \keyword{internal}
 \alias{reporter_accessors}

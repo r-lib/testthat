@@ -1,4 +1,4 @@
-#' Expect that a condition holds
+#' Expect that a condition holds.
 #' 
 #' An expectation checks whether a single condition holds true.  
 #' \pkg{testthat} currently provides the following expectations.  See their
