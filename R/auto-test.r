@@ -23,9 +23,9 @@
 #' @seealso \code{\link{auto_test_package}}
 #' @param code_path path to directory containing code
 #' @param test_path path to directory containing tests
-#' @param suite test reporter to use
+#' @param reporter test reporter to use
 #' @keywords debugging
-auto_test <- function(code_path, test_path, suite = SummarySuite) {
+auto_test <- function(code_path, test_path, reporter = SummaryReporter) {
   # Start by loading all code and running all tests
   source_dir(code_path)
   test_dir(test_path)
@@ -50,7 +50,7 @@ auto_test <- function(code_path, test_path, suite = SummarySuite) {
     } else if (length(tests) > 0) {
       # If test changes, rerun just that test
       cat("Rerunning tests: ", paste(basename(tests), collapse = ", "), "\n")      
-      with_suite(SummarySuite$clone(), lapply(tests, source, chdir = TRUE))
+      with_reporter(SummaryReporter$clone(), lapply(tests, source, chdir = TRUE))
     }
     
     TRUE
@@ -62,10 +62,10 @@ auto_test <- function(code_path, test_path, suite = SummarySuite) {
 #' Watches a package for changes, rerunning tests as appropriate.
 #' 
 #' @param path path to package 
-#' @param suite test reporter to use
+#' @param reporter test reporter to use
 #' @keywords debugging
 #' @seealso \code{\link{auto_test}} for details on how method works
-auto_test_package <- function(path, suite = SummarySuite) {
-  auto_test(file.path(path, "R"), file.path(path, "tests"), suite)
+auto_test_package <- function(path, reporter = SummaryReporter) {
+  auto_test(file.path(path, "R"), file.path(path, "tests"), reporter)
 }
 

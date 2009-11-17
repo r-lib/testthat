@@ -1,7 +1,7 @@
 \name{auto_test}
 \alias{auto_test}
 \title{Watches code and tests for changes, rerunning tests as appropriate.}
-\usage{auto_test(code_path, test_path, suite=SummarySuite)}
+\usage{auto_test(code_path, test_path, reporter=SummaryReporter)}
 
 \description{
   Watches code and tests for changes, rerunning tests as appropriate.
@@ -32,5 +32,5 @@
 \arguments{
   \item{code_path}{path to directory containing code}
   \item{test_path}{path to directory containing tests}
-  \item{suite}{test reporter to use}
+  \item{reporter}{test reporter to use}
 }

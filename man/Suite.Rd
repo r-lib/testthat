@@ -1,9 +1,9 @@
-\name{Suite}
-\alias{Suite}
-\title{Stub object for managing a suite of tests.}
+\name{Reporter}
+\alias{Reporter}
+\title{Stub object for managing a reporter of tests.}
 
 \description{
-  Stub object for managing a suite of tests.
+  Stub object for managing a reporter of tests.
 }
 
 \details{

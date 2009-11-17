@@ -1,7 +1,7 @@
 \name{test_dir}
 \alias{test_dir}
 \title{Run all of the tests in a directory.}
-\usage{test_dir(path, suite=SummarySuite)}
+\usage{test_dir(path, reporter=SummaryReporter)}
 
 \description{
   Run all of the tests in a directory.
@@ -14,5 +14,5 @@
 }
 \arguments{
   \item{path}{path to tests}
-  \item{suite}{reporter to use}
+  \item{reporter}{reporter to use}
 }

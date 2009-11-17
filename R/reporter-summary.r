@@ -1,15 +1,15 @@
 #' Test reporter: summary of errors.
 #' 
-#' This is the most useful reporting suite as it lets you know both which
+#' This is the most useful reporting reporter as it lets you know both which
 #' tests have run successfully, as well as fully reporting information about
-#' failures and errors.  It is the default reporting suite used by 
+#' failures and errors.  It is the default reporting reporter used by 
 #' \code{\link{test_dir}} and \code{\link{test_file}}.
 #'
-#' @name SummarySuite
+#' @name SummaryReporter
 #' @keywords debugging
 NULL
 
-SummarySuite$do({
+SummaryReporter$do({
   labels <- c(1:9, letters, LETTERS)
   
   self$start_context <- function(desc) {
@@ -20,7 +20,7 @@ SummarySuite$do({
     cat("\n")
   }
   
-  self$start_suite <- function() {
+  self$start_reporter <- function() {
     self$failures <- list()
     self$n <- 0
   }
@@ -43,7 +43,7 @@ SummarySuite$do({
     }
   }
   
-  self$end_suite <- function() {
+  self$end_reporter <- function() {
     charrep <- function(char, times) {
       sapply(times, function(i) paste(rep.int(char, i), collapse = ""))
     }

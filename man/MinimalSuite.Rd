@@ -1,5 +1,5 @@
-\name{MinimalSuite}
-\alias{MinimalSuite}
+\name{MinimalReporter}
+\alias{MinimalReporter}
 \title{Test reporter: minimal...}
 
 \description{
@@ -7,10 +7,10 @@
 }
 
 \details{
-  The minimal test suite provides the absolutely minimum amount of
+  The minimal test reporter provides the absolutely minimum amount of
   information: whether each expectation has succeeded, failed or
   experienced an error.  If you want to find out what the failures and
   errors actually were, you'll need to run a more informative test
-  suite.
+  reporter.
 }
 \keyword{debugging}

@@ -1,17 +1,17 @@
-#' Stub object for managing a suite of tests.
+#' Stub object for managing a reporter of tests.
 #'
 #' Do not clone directly from this object - children should implement all
 #' methods.
 #'
 #' @keywords internal.
-#' @name Suite
+#' @name Reporter
 NULL
 
-Suite$do({
+Reporter$do({
   self$context <- ""
   self$test <- ""
     
-  self$start_suite <- function() {}
+  self$start_reporter <- function() {}
   self$start_context <- function(desc) {
     self$context <- desc
   }
@@ -21,6 +21,6 @@ Suite$do({
   self$add_result <- function(result) {}
   self$end_test <- function() {}
   self$end_context <- function() {}
-  self$end_suite <- function() {}
+  self$end_reporter <- function() {}
 })
 

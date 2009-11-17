@@ -34,7 +34,7 @@ expect_that <- function(object, condition) {
   
   results$message <- paste(name, results$message)
   
-  test_suite()$add_result(results)
+  test_reporter()$add_result(results)
   invisible()
 }
 

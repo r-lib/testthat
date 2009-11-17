@@ -1,6 +1,6 @@
-if (!exists("Suite")) {
-  Suite <- Object$clone()
-    SummarySuite <- Suite$clone()
-    StopSuite <- Suite$clone()  
-    MinimalSuite <- Suite$clone()  
+if (!exists("Reporter")) {
+  Reporter <- Object$clone()
+    SummaryReporter <- Reporter$clone()
+    StopReporter <- Reporter$clone()  
+    MinimalReporter <- Reporter$clone()  
 }

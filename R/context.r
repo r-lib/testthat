@@ -6,7 +6,7 @@
 #'
 #' @param desc description of context.  Should start with a capital letter.
 context <- function(desc) {
-  test_suite()$end_context()
-  test_suite()$start_context(desc)
+  test_reporter()$end_context()
+  test_reporter()$start_context(desc)
 }
 

@@ -11,5 +11,5 @@ License: GPL
 LazyData: true
 Collate: 'aaa-classes.r' 'auto-test.r' 'colour-text.r' 'context.r'
     'expect-that.r' 'expectation.r' 'expectations.r' 'library.r'
-    'suite-minimal.r' 'suite-stop.r' 'suite-summary.r' 'suite-zzz.r'
-    'suite.r' 'test-files.r' 'test-that.r' 'watcher.r'
+    'reporter-minimal.r' 'reporter-stop.r' 'reporter-summary.r' 'reporter-zzz.r'
+    'reporter.r' 'test-files.r' 'test-that.r' 'watcher.r'

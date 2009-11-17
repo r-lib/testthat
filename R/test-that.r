@@ -26,7 +26,7 @@
 #' })
 #' }
 test_that <- function(desc, code) {
-  test_suite()$start_test(desc)
+  test_reporter()$start_test(desc)
   
   env <- new.env(parent = globalenv())  
   res <- try_capture_stack(substitute(code), env)
@@ -34,10 +34,10 @@ test_that <- function(desc, code) {
   if (inherits(res, "error")) {
     traceback <- create_traceback(res$calls)
     report <- error_report(res, traceback)
-    test_suite()$add_result(report)
+    test_reporter()$add_result(report)
   }
   
-  test_suite()$end_test()
+  test_reporter()$end_test()
 }
 
 #' Generate error report from traceback.

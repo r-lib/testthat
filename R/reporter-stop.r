@@ -1,19 +1,19 @@
 #' Test reporter: stop on error
 #'
-#' The default suite, executed when \code{expect_that} is run interactively,
+#' The default reporter, executed when \code{expect_that} is run interactively,
 #' or when the test files are executed by R CMD check. It responds by
 #' stop()ing on failures and doing nothing otherwise. This will ensure
-#' that a failing test suite will raise an error.
+#' that a failing test reporter will raise an error.
 #'
 #' This should be used when doing a quick and dirty test, or during the final
-#' automated testing of R CMD check.  Otherwise, use a suite that runs all
+#' automated testing of R CMD check.  Otherwise, use a reporter that runs all
 #' tests and gives you more context about the problem.
 #'
-#' @name StopSuite
+#' @name StopReporter
 #' @keywords debugging
 NULL
 
-StopSuite$do({
+StopReporter$do({
   self$add_result <- function(result) {
     if (result$passed) return()
     

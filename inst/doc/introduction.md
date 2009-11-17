@@ -9,7 +9,7 @@ Testing your code is normally painful and boring. `test_that` aims to make the t
  
  * Gives a visual indication of every single test expectation that you have
  
- * The same code works interactively, as part of a test suite and with R 
+ * The same code works interactively, as part of a test reporter and with R 
    CMD check
  
  * Provides tools to automatically rerun your tests each time you change
@@ -132,13 +132,13 @@ You can also write your own expectations.  An expectation should return a functi
 Reporting
 ==========
 
-`testthat` comes with three reporting suites.  The default, `StopSuite` just `stop()`s whenever a failure is encountered.  This is designed to work with R CMD test, so you can submit a package to CRAN if it has a failing test.
+`testthat` comes with three reporting reporters.  The default, `StopReporter` just `stop()`s whenever a failure is encountered.  This is designed to work with R CMD test, so you can submit a package to CRAN if it has a failing test.
 
-`SuiteMinimal` will run all the tests (not just stopping at the first error), and will print `.` for each successful test, `E` for an error and `F` a failure.  It really is minimal!
+`ReporterMinimal` will run all the tests (not just stopping at the first error), and will print `.` for each successful test, `E` for an error and `F` a failure.  It really is minimal!
 
-`SuiteSummary` is the most verbose.  Like `SuiteMinimal` it will print a `.` for successful tests, but for failures or errors it will print a number.  Once all tests have been number, all errors and failures will be listed by that number so you can see exactly what's going on.  
+`ReporterSummary` is the most verbose.  Like `ReporterMinimal` it will print a `.` for successful tests, but for failures or errors it will print a number.  Once all tests have been number, all errors and failures will be listed by that number so you can see exactly what's going on.  
 
-If you're using R from the terminal, both `SuiteMinimal` and `SuiteSummary` will colour successes green and failures and errors red.  Soon you will become addicted to getting a line of green dots!
+If you're using R from the terminal, both `ReporterMinimal` and `ReporterSummary` will colour successes green and failures and errors red.  Soon you will become addicted to getting a line of green dots!
 
 Watching
 ========

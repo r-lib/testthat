@@ -5,11 +5,11 @@
 #' \code{helper-} and loaded before any tests are run.
 #'
 #' @param path path to tests
-#' @param suite reporter to use
-test_dir <- function(path, suite = SummarySuite) {    
+#' @param reporter reporter to use
+test_dir <- function(path, reporter = SummaryReporter) {    
   source_dir(path, "^helper-.*\\.[rR]$")
 
-  with_suite(suite$clone(), {
+  with_reporter(reporter$clone(), {
     source_dir(path, "^test-.*\\.[rR]$")    
   })
 }
@@ -31,7 +31,7 @@ source_dir <- function(path, pattern = "\\.[rR]$", chdir = TRUE) {
 #' Run all tests in specified file.
 #' 
 #' @param path path to file
-#' @param suite reporter to use
-test_file <- function(path, suite = SummarySuite) {    
-  with_suite(suite$clone(), source(path))
+#' @param reporter reporter to use
+test_file <- function(path, reporter = SummaryReporter) {    
+  with_reporter(reporter$clone(), source(path))
 }

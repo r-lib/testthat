@@ -1,15 +1,15 @@
 #' Test reporter: minimal
 #' 
-#' The minimal test suite provides the absolutely minimum amount of 
+#' The minimal test reporter provides the absolutely minimum amount of 
 #' information: whether each expectation has succeeded, failed or experienced
 #' an error.  If you want to find out what the failures and errors actually
-#' were, you'll need to run a more informative test suite.
+#' were, you'll need to run a more informative test reporter.
 #'
-#' @name MinimalSuite
+#' @name MinimalReporter
 #' @keywords debugging
 NULL
 
-MinimalSuite$do({
+MinimalReporter$do({
   self$add_result <- function(result) { 
     if (result$passed) {
       cat(colourise(".", fg = "light green"))
@@ -22,7 +22,7 @@ MinimalSuite$do({
     }
   }
   
-  self$end_suite <- function() {
+  self$end_reporter <- function() {
     cat("\n")
   }
 })
