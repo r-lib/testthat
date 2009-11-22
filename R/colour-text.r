@@ -15,7 +15,9 @@
 #' cat(colourise("Red", "red"), "\n")
 #' cat(colourise("White on red", "white", "red"), "\n")
 colourise <- function(text, fg = "black", bg = NULL) {
-  if (Sys.getenv()["TERM"] != "xterm-color") {
+  term <- Sys.getenv()["TERM"]
+  
+  if (is.na(term) || term != "xterm-color") {
     return(text)
   }
   
