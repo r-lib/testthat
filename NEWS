@@ -1,0 +1,3 @@
+testthat 0.2
+
+* now looks for any files starting with test (not test- as before)

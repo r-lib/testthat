@@ -1,17 +1,17 @@
 #' Run all of the tests in a directory.  
 #' 
-#' Test files start with \code{test-} and are executed in alphabetical order 
+#' Test files start with \code{test} and are executed in alphabetical order 
 #' (but they shouldn't have dependencies). Helper files start with 
-#' \code{helper-} and loaded before any tests are run.
+#' \code{helper} and loaded before any tests are run.
 #'
 #' @param path path to tests
 #' @param reporter reporter to use
 test_dir <- function(path, reporter = "summary") {    
   reporter <- find_reporter(reporter)
-  source_dir(path, "^helper-.*\\.[rR]$")
+  source_dir(path, "^helper.*\\.[rR]$")
 
   with_reporter(reporter$clone(), {
-    source_dir(path, "^test-.*\\.[rR]$")    
+    source_dir(path, "^test.*\\.[rR]$")    
   })
 }
 
