@@ -22,7 +22,7 @@ watch <- function(path, callback, pattern = NULL, hash = TRUE) {
     Sys.sleep(1)
     
     curr <- dir_state(path, pattern, hash = hash)
-    changes <- compare_state(curr, prev)
+    changes <- compare_state(prev, curr)
     
     if (changes$n > 0) {
       # cat("C")
