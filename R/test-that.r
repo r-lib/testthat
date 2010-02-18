@@ -66,7 +66,7 @@ error_report <- function(error, traceback) {
 #'   \code{\link[base]{sys.calls}}
 #' @keywords internal
 create_traceback <- function(callstack) {
-  calls <- lapply(callstack, deparse)
+  calls <- lapply(callstack, deparse, width = 500)
   calls <- sapply(calls, paste, collapse = "\n")
   first_eval <- match("eval(expr, envir, enclos)", calls, 0)[1]
   

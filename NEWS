@@ -3,3 +3,4 @@ testthat 0.2
 * now looks for any files starting with test (not test- as before)
 * also colourise in screen terminal
 * library_if_available now works! (thanks to report and fix from Felix Andrews)
+* specify larger width and join pieces back together whenever deparse used (thanks to report and fix from Felix Andrews)

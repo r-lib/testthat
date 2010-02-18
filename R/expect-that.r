@@ -29,7 +29,7 @@
 #' expect_that(sqrt(2) ^ 2, is_identical_to(2))
 #' }
 expect_that <- function(object, condition) {
-  name <- deparse(substitute(object))
+  name <- paste(deparse(substitute(object), width = 500), collapse = "\n")
   results <- condition(object)
   
   results$message <- paste(name, results$message)
