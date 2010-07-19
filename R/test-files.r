@@ -25,6 +25,7 @@ test_dir <- function(path, reporter = "summary") {
 #' @param chdir change working directory to path?
 #' @keywords internal
 #' @export
+#' @usage source_dir(path, pattern="\\\\.[rR]$", chdir=TRUE)
 source_dir <- function(path, pattern = "\\.[rR]$", chdir = TRUE) {
   files <- sort(dir(path, pattern, full.names = TRUE))
   
