@@ -5,7 +5,7 @@ Version: 0.2
 Author: Hadley Wickham <h.wickham@gmail.com>
 Maintainer: Hadley Wickham <h.wickham@gmail.com>
 Description: A testing package specifically tailored for R that's fun,
- flexible and easy to set up.
+    flexible and easy to set up.
 URL: http://had.co.nz/
 Depends: R (>= 2.8), mutatr, digest
 License: GPL

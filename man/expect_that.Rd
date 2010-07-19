@@ -1,7 +1,7 @@
 \name{expect_that}
 \alias{expect_that}
 \title{Expect that a condition holds.}
-\usage{expect_that(object, condition)}
+\usage{expect_that(object, condition, info)}
 
 \description{
   Expect that a condition holds.
@@ -15,7 +15,8 @@
   \itemize{ \item \code{\link{is_true}}: truth \item
   \code{\link{is_false}}: falsehood \item \code{\link{is_a}}:
   inheritance \item \code{\link{equals}}: equality with numerical
-  tolerance \item \code{\link{is_identical_to}}: exact identity \item
+  tolerance \item \code{\link{is_equivalent_to}}: equality ignoring
+  attributes \item \code{\link{is_identical_to}}: exact identity \item
   \code{\link{matches}}: string matching \item
   \code{\link{prints_text}}: output matching \item
   \code{\link{throws_error}}: error matching \item
@@ -28,6 +29,8 @@
   \item{object}{object to test}
   \item{condition,}{a function that returns whether or not the condition
 is met, and if not, an error message to display.}
+  \item{info}{extra information to be included in the message (useful when
+writing tests in loops)}
 }
 \examples{expect_that(5 * 2, equals(10))
 expect_that(sqrt(2) ^ 2, equals(2))

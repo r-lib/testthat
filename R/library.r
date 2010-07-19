@@ -7,6 +7,7 @@
 #' CHECK.
 #'
 #' @param package package name (without quotes)
+#' @export
 #' @examples
 #' library_if_available(testthat)
 #' library_if_available(packagethatdoesntexist)

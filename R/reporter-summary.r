@@ -9,6 +9,7 @@
 #' if all your tests pass.
 #'
 #' @name SummaryReporter
+#' @export
 #' @keywords debugging
 NULL
 

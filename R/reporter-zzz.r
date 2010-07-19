@@ -1,7 +1,3 @@
-#' Access current reporter.
-#' 
-#' @keywords internal
-#' @aliases reporter_accessors test_reporter change_reporter_to
 reporter_accessors <- local({
   # Default has to be the stop reporter, since it is this that will be run by
   # default from the command line and in R CMD test.

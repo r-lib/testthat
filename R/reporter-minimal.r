@@ -6,6 +6,7 @@
 #' were, you'll need to run a more informative test reporter.
 #'
 #' @name MinimalReporter
+#' @export
 #' @keywords debugging
 NULL
 

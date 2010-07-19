@@ -9,6 +9,7 @@
 #' automated testing of R CMD check.  Otherwise, use a reporter that runs all
 #' tests and gives you more context about the problem.
 #'
+#' @export
 #' @name StopReporter
 #' @keywords debugging
 NULL

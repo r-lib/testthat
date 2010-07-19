@@ -10,6 +10,7 @@
 #' @param text character vector
 #' @param fg foreground colour, defaults to white
 #' @param bg background colour, defaults to transparent
+#' @export
 #' @examples
 #' print(colourise("Red", "red"))
 #' cat(colourise("Red", "red"), "\n")
@@ -36,7 +37,6 @@ colourise <- function(text, fg = "black", bg = NULL) {
   paste(init, text, reset, sep = "")
 }
 
-           
 .fg_colours <- c(
   "black" = "0;30",
   "blue" = "0;34",

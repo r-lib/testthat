@@ -25,6 +25,7 @@
 #'   is met, and if not, an error message to display.
 #' @param info extra information to be included in the message (useful when
 #'   writing tests in loops)
+#' @export
 #' @examples
 #' expect_that(5 * 2, equals(10))
 #' expect_that(sqrt(2) ^ 2, equals(2))

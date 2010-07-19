@@ -5,6 +5,7 @@
 #' in a single file if you so choose.
 #'
 #' @param desc description of context.  Should start with a capital letter.
+#' @export
 #' @examples
 #' context("String processing")
 #' context("Remote procedure calls")

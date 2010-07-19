@@ -2,6 +2,8 @@
 #' 
 #' @aliases expectation print.expectation format.expectation
 #' @keywords internal
+#' @S3method print expectation 
+#' @S3method format expectation 
 expectation <- function(passed, message) {
   error <- is.na(passed)
   passed <- passed & !is.na(passed)

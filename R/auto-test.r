@@ -24,6 +24,7 @@
 #' }
 # 
 #' @seealso \code{\link{auto_test_package}}
+#' @export
 #' @param code_path path to directory containing code
 #' @param test_path path to directory containing tests
 #' @param reporter test reporter to use
@@ -67,6 +68,7 @@ auto_test <- function(code_path, test_path, reporter = "summary") {
 #' Watches a package for changes, rerunning tests as appropriate.
 #' 
 #' @param path path to package 
+#' @export
 #' @param reporter test reporter to use
 #' @keywords debugging
 #' @seealso \code{\link{auto_test}} for details on how method works
