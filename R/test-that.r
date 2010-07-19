@@ -29,7 +29,7 @@ test_that <- function(desc, code) {
   test_reporter()$start_test(desc)
   
   env <- new.env(parent = globalenv())  
-  res <- try_capture_stack(substitute(code), env)
+  res <- suppressMessages(try_capture_stack(substitute(code), env))
   
   if (inherits(res, "error")) {
     traceback <- create_traceback(res$calls)
