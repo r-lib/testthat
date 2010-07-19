@@ -1,14 +1,20 @@
-testthat 0.2 -----------------------------------------------------------------
+Changes in version 0.2 -----------------------------------------------------------------
 
 * colourise also works in screen terminal
+
 * equals expectation provides more information about failure
+
 * expect_that has extra info argument to allow you to pass in any extra
   information you'd like included in the message - this is very helpful if
   you're using a loop to run tests
+
 * is_equivalent_to: new expectation that tests for equality ignoring
   attributes
+
 * library_if_available now works! (thanks to report and fix from Felix
   Andrews)
+
 * specify larger width and join pieces back together whenever deparse used
   (thanks to report and fix from Felix Andrews)
+
 * test_dir now looks for any files starting with test (not test- as before)
