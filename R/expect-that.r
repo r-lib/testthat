@@ -9,6 +9,7 @@
 #'  \item \code{\link{is_false}}: falsehood
 #'  \item \code{\link{is_a}}: inheritance
 #'  \item \code{\link{equals}}: equality with numerical tolerance
+#'  \item \code{\link{is_equivalent_to}}: equality ignoring attributes
 #'  \item \code{\link{is_identical_to}}: exact identity
 #'  \item \code{\link{matches}}: string matching
 #'  \item \code{\link{prints_text}}: output matching
