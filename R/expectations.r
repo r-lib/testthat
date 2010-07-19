@@ -93,12 +93,23 @@ is_false <- function() {
 equals <- function(expected, ...) {
   name <- paste(deparse(substitute(object), width = 500), collapse = "\n")
   function(actual) {
+    same <- all.equal(expected, actual, ...)
     expectation(
-      identical(all.equal(expected, actual, ...), TRUE),
-      paste("not equal to ", name, sep = "")
+      identical(same, TRUE),
+      str_c("not equal to ", name, "\n", str_c(same, collapse = "\n"))
     )
   }
 }
+
+#' Expectation: is the object equivalent to a value?
+#' This expectation tests for equivalency: are two objects equal once their
+#' attributes have been removed.
+is_equivalent_to <- function(expected) {
+  function(actual) {
+    equals(expected, check.attributes = FALSE)(actual)
+  } 
+}
+
 
 #' Expectation: is the object identical to another?
 #'
@@ -159,7 +170,6 @@ prints_text <- function(regexp, ...) {
 }
 
 #' Expectation: does expression throw an error?
-#' 
 #' 
 #' @param regexp optional regular expression to match. If not specified, just
 #'   asserts that expression throws some error.

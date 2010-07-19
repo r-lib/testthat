@@ -1,5 +1,7 @@
 testthat 0.2
 
+* equals expectation provides more information about failure
+* new is_equivalent_to expectation that tests for equality ignoring attributes
 * expect_that has extra info argument to allow you to pass in any extra information you'd like included in the message - this is very helpful if you're using a loop to run tests
 * now looks for any files starting with test (not test- as before)
 * also colourise in screen terminal
