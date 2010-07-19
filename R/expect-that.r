@@ -22,17 +22,22 @@
 #' @param object object to test
 #' @param condition, a function that returns whether or not the condition
 #'   is met, and if not, an error message to display.
+#' @param info extra information to be included in the message (useful when
+#'   writing tests in loops)
 #' @examples
 #' expect_that(5 * 2, equals(10))
 #' expect_that(sqrt(2) ^ 2, equals(2))
 #' \dontrun{
 #' expect_that(sqrt(2) ^ 2, is_identical_to(2))
 #' }
-expect_that <- function(object, condition) {
+expect_that <- function(object, condition, info = NULL) {
   name <- paste(deparse(substitute(object), width = 500), collapse = "\n")
   results <- condition(object)
   
   results$message <- paste(name, results$message)
+  if (!is.null(info)) {
+    results$message <- paste(results$message, "\n", info, sep = "")
+  }
   
   test_reporter()$add_result(results)
   invisible()
