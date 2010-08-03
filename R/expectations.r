@@ -95,7 +95,7 @@ is_false <- function() {
 #' expect_that(sqrt(2) ^ 2, is_identical_to(2))
 #' }
 equals <- function(expected, ...) {
-  name <- paste(deparse(substitute(object), width = 500), collapse = "\n")
+  name <- paste(deparse(substitute(expected), width = 500), collapse = "\n")
   function(actual) {
     same <- all.equal(expected, actual, ...)
     expectation(

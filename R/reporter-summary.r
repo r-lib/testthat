@@ -62,7 +62,8 @@ SummaryReporter$do({
       type <- ifelse(sapply(self$failures, "[[", "error"), "Error", "Failure")
       tests <- sapply(self$failures, "[[", "test")
       header <- paste(label, ". ", type, ": ", tests, " ", sep = "")
-      line <- charrep("-", getOption("width") - nchar(header))
+      linewidth <- ifelse(nchar(header) > getOption("width"),0,getOption("width") - nchar(header))
+      line <- charrep("-", linewidth )
 
       message <- sapply(self$failures, "[[", "message")
 
