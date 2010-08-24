@@ -18,6 +18,8 @@ StopReporter$do({
   self$add_result <- function(result) {
     if (result$passed) return()
     
+    if (is.null(self$test)) stop(result$message, call. = FALSE)
+    
     type <- if (result$error) "error" else "failure"
     msg <- paste(
       "Test ", type, ": ", self$test, "\n", 

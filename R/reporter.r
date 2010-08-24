@@ -9,7 +9,7 @@ NULL
 
 Reporter$do({
   self$context <- ""
-  self$test <- ""
+  self$test <- NULL
     
   self$start_reporter <- function() {}
   self$start_context <- function(desc) {
@@ -19,7 +19,9 @@ Reporter$do({
     self$test <- desc
   }
   self$add_result <- function(result) {}
-  self$end_test <- function() {}
+  self$end_test <- function() {
+    self$test <- NULL
+  }
   self$end_context <- function() {}
   self$end_reporter <- function() {}
 })
