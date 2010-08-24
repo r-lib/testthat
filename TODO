@@ -1,1 +1,22 @@
-Ensure that test files are sourced independently into their own environments. A test should not be able to rely on objects created by another test.
+* Environments:
+  * should not be able to access variables created by other tests
+  * should be able to turn off access to variables in global environment
+  * objects created by test should not appear in global environment
+
+* Other side effects:
+  * set graphics device?
+  * switch into temporary directory
+  * capture output to screen
+  * setup and tear down functions
+
+* Better failure messages
+
+* Option stop on error param for reporters?  Would then work more naturally with R CMD check
+
+* Convert depends to imports
+
+* New expectations:
+  * gives_warning
+  * shows_message
+
+* Add readme
