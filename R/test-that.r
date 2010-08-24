@@ -51,6 +51,8 @@ error_report <- function(error, traceback) {
   msg <- gsub("Error.*?: ", "", as.character(error))
   
   if (length(traceback) > 0) {
+    
+    
     user_calls <- paste(traceback, collapse = "\n")      
     msg <- paste(msg, user_calls, sep = "")
   } else {

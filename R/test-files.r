@@ -9,10 +9,11 @@
 #' @export
 test_dir <- function(path, reporter = "summary") {    
   reporter <- find_reporter(reporter)
-  source_dir(path, "^helper.*\\.[rR]$")
-
+  env <- new.env(parent = globalenv())
+  
+  source_dir(path, "^helper.*\\.[rR]$", env = env)
   with_reporter(reporter$clone(), {
-    source_dir(path, "^test.*\\.[rR]$")    
+    source_dir(path, "^test.*\\.[rR]$", env = env)    
   })
 }
 
@@ -26,10 +27,13 @@ test_dir <- function(path, reporter = "summary") {
 #' @keywords internal
 #' @export
 #' @usage source_dir(path, pattern="\\\\.[rR]$", chdir=TRUE)
-source_dir <- function(path, pattern = "\\.[rR]$", chdir = TRUE) {
+source_dir <- function(path, pattern = "\\.[rR]$", env = NULL, chdir = TRUE) {
   files <- sort(dir(path, pattern, full.names = TRUE))
+  if (is.null(env)) {
+    env <- new.env(parent = globalenv())
+  }
   
-  lapply(files, source, chdir = chdir)
+  lapply(files, sys.source, chdir = chdir, envir = env)
 }
 
 #' Run all tests in specified file.
@@ -39,5 +43,6 @@ source_dir <- function(path, pattern = "\\.[rR]$", chdir = TRUE) {
 #' @export
 test_file <- function(path, reporter = "summary") {    
   reporter <- find_reporter(reporter)
-  with_reporter(reporter$clone(), source(path))
+  with_reporter(reporter$clone(), 
+    sys.source(path, new.env(parent = globalenv(), chdir = TRUE)))
 }
