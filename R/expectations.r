@@ -16,9 +16,10 @@
 #' # doesn't read quite as nicely
 is_a <- function(class) {
   function(x) {
+    actual <- paste(class(x), collapse = ", ")
     expectation(
       inherits(x, class),
-      paste("is not a ", class, sep = "")
+      paste("inherits from ", actual, " not ", class, sep = "")
     )
   }
 }
@@ -133,11 +134,18 @@ is_equivalent_to <- function(expected) {
 #' expect_that(sqrt(2) ^ 2, is_identical_to(2))
 #' }
 is_identical_to <- function(expected) {
-  name <- paste(deparse(substitute(object), width = 500), collapse = "\n")
+  name <- paste(deparse(substitute(expected), width = 500), collapse = "\n")
   function(actual) {
+    same <- all.equal(expected, actual)
+    if (isTRUE(same)) {
+      diff <- "Objects equal but not identical"
+    } else {
+      diff <- str_c(same, collapse = "\n")
+    }
+    
     expectation(
       identical(actual, expected),
-      paste("is not not identical to ", name, sep = "")
+      str_c("is not identical to ", name, ". Differences: \n", diff)
     )
   }
 }
@@ -158,7 +166,7 @@ matches <- function(regexp, ...) {
   function(char) {
     expectation(
       all(grepl(regexp, char, ...)),
-      paste("does not match ", regexp, sep = "")
+      paste("does not match '", regexp, "'. Actual value: \n", char, sep = "")
     )
   }  
 }
@@ -210,7 +218,8 @@ takes_less_than <- function(amount) {
     
     expectation(
       duration < amount,
-      paste("took more than ", amount, " seconds", sep = "")
+      paste("took ", duration, " seconds, which is more than ", amount, 
+        sep = "")
     )
   }
 }

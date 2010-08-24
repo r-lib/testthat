@@ -1,5 +1,7 @@
 Changes in version 0.3 -----------------------------------------------------------------
 
+* all expectations now give more information on failure to make it 
+  easier to track down the problem.
 * test_package makes it easier to run all test in an installed package
 
 Changes in version 0.2 -----------------------------------------------------------------
