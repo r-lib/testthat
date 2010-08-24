@@ -1,5 +1,6 @@
 Changes in version 0.3 -----------------------------------------------------------------
 
+* test_package makes it easier to run all test in an installed package
 
 Changes in version 0.2 -----------------------------------------------------------------
 
