@@ -22,23 +22,24 @@
 #' })
 #' # Failing test:
 #' \dontrun{
-#' test_that("trigonometric functions match identies", {
+#' test_that("trigonometric functions match identities", {
 #'   expect_that(sin(pi / 4), equals(1))
 #' })
 #' }
 test_that <- function(desc, code) {
   test_reporter()$start_test(desc)
+  on.exit(test_reporter()$end_test())
   
   env <- new.env(parent = globalenv())  
   res <- suppressMessages(try_capture_stack(substitute(code), env))
   
-  if (inherits(res, "error")) {
+  if (is.error(res)) {
     traceback <- create_traceback(res$calls)
     report <- error_report(res, traceback)
     test_reporter()$add_result(report)
   }
   
-  test_reporter()$end_test()
+  invisible()
 }
 
 #' Generate error report from traceback.

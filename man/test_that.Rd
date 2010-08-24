@@ -31,7 +31,7 @@ expect_that(tan(pi / 4), equals(1))
 })
 # Failing test:
 \dontrun{
-test_that("trigonometric functions match identies", {
+test_that("trigonometric functions match identities", {
 expect_that(sin(pi / 4), equals(1))
 })
 }}
