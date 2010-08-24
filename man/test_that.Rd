@@ -17,7 +17,7 @@
   global state.
 
   When run from the command line, tests return \code{NULL} if all
-  expectations are met, otherwise it returns
+  expectations are met, otherwise it raises an error.
 }
 \arguments{
   \item{desc}{test name.  Names should be kept as brief as possible, as they
