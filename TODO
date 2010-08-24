@@ -5,7 +5,6 @@
   * set graphics device?
   * switch into temporary directory
   * capture output to screen
-  * setup and tear down functions
 
 * Option stop on error param for reporters?  Would then work more naturally with R CMD check
 
@@ -16,3 +15,14 @@
   * shows_message
 
 * Add readme
+
+* Shortcuts?
+  * expect_equal(x, y) expect_that(x, equal_to(y))
+  * expect_identical
+  * expect_equivalent
+  * expect_output
+  * expect_message
+  * expect_error
+  * expect_warning
+  * expect_true
+  * expect_false
