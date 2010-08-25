@@ -24,7 +24,6 @@ is_a <- function(class) {
   }
 }
 
-
 #' Expectation: is the object true?
 #' 
 #' This is a fall-back expectation that you can use when none of the other
@@ -96,7 +95,7 @@ is_false <- function() {
 #' expect_that(sqrt(2) ^ 2, is_identical_to(2))
 #' }
 equals <- function(expected, ...) {
-  name <- paste(deparse(substitute(expected), width = 500), collapse = "\n")
+  name <- find_expr("expected")
   function(actual) {
     same <- all.equal(expected, actual, ...)
     expectation(
@@ -134,7 +133,7 @@ is_equivalent_to <- function(expected) {
 #' expect_that(sqrt(2) ^ 2, is_identical_to(2))
 #' }
 is_identical_to <- function(expected) {
-  name <- paste(deparse(substitute(expected), width = 500), collapse = "\n")
+  name <- find_expr("expected")
   function(actual) {
     same <- all.equal(expected, actual)
     if (isTRUE(same)) {

@@ -12,10 +12,10 @@
 #' library_if_available(testthat)
 #' library_if_available(packagethatdoesntexist)
 library_if_available <- function(package) {
-  package <- deparse(substitute(package))
+  package <- find_expr("package")
   
   suppressWarnings(suppressPackageStartupMessages(
-    require(package, quietly = TRUE, 
+    require(package, quietly = TRUE,  
       warn.conflicts = FALSE, character.only = TRUE)
   ))
 }

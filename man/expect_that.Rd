@@ -1,7 +1,7 @@
 \name{expect_that}
 \alias{expect_that}
 \title{Expect that a condition holds.}
-\usage{expect_that(object, condition, info)}
+\usage{expect_that(object, condition, info, name)}
 
 \description{
   Expect that a condition holds.
@@ -29,8 +29,9 @@
   \item{object}{object to test}
   \item{condition,}{a function that returns whether or not the condition
 is met, and if not, an error message to display.}
+  \item{name}{object name. When \code{NULL}, computed from deparsed object.}
   \item{info}{extra information to be included in the message (useful when
-writing tests in loops)}
+writing tests in loops).}
 }
 \examples{expect_that(5 * 2, equals(10))
 expect_that(sqrt(2) ^ 2, equals(2))
