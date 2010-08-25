@@ -10,8 +10,11 @@ NULL
 Reporter$do({
   self$context <- ""
   self$test <- NULL
+  self$failed <- FALSE
     
-  self$start_reporter <- function() {}
+  self$start_reporter <- function() {
+    self$failed <- FALSE
+  }
   self$start_context <- function(desc) {
     self$context <- desc
   }

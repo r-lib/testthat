@@ -15,6 +15,7 @@ MinimalReporter$do({
     if (result$passed) {
       cat(colourise(".", fg = "light green"))
     } else {
+      self$failed <- TRUE
       if (result$error) {
         cat(colourise("F", fg = "red"))
       } else {

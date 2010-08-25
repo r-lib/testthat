@@ -33,6 +33,7 @@ SummaryReporter$do({
     if (result$passed) {
       cat(colourise(".", fg = "light green"))
     } else {
+      self$failed <- TRUE
       self$n <- self$n + 1
       
       if (self$n > length(labels)) {

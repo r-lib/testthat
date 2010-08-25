@@ -3,8 +3,6 @@
   * switch into temporary directory
   * capture output to screen
 
-* Option stop on error param for reporters?  Would then work more naturally with R CMD check
-
 * New expectations:
   * gives_warning
   * shows_message

@@ -54,5 +54,5 @@ find_reporter <- function(reporter) {
     stop("Can not find test reporter ", reporter, call. = FALSE)
   }
   
-  get(name)
+  get(name)$clone()
 }

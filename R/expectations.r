@@ -149,7 +149,7 @@ expect_equal <- function(actual, expected) {
 #' @export  is_equivalent_to expect_equivalent
 #' @examples
 #' a <- b <- 1:3
-#' labels(b) <- letters[1:3]
+#' names(b) <- letters[1:3]
 #' expect_that(a, is_equivalent_to(b, label = b))
 #' expect_equivalent(a, b)
 is_equivalent_to <- function(expected, label = NULL) {
