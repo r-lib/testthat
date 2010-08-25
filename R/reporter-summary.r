@@ -17,7 +17,7 @@ SummaryReporter$do({
   labels <- c(1:9, letters, LETTERS)
   
   self$start_context <- function(desc) {
-    cat(desc, ": ", sep = "")
+    cat(desc, ": ")
   }
   
   self$end_context <- function() {
@@ -49,28 +49,28 @@ SummaryReporter$do({
   
   self$end_reporter <- function() {
     charrep <- function(char, times) {
-      sapply(times, function(i) paste(rep.int(char, i), collapse = ""))
+      sapply(times, function(i) str_c(rep.int(char, i), collapse = ""))
     }
     
     if (self$n == 0) {
       cat("\n")
       if (sample(10, 1) == 1) {
-        cat(colourise(sample(.praise, 1), "light green"), "\n", sep = "")
+        cat(colourise(sample(.praise, 1), "light green"), "\n")
       }
     } else {
       label <- labels[seq_len(self$n)]
       type <- ifelse(sapply(self$failures, "[[", "error"), "Error", "Failure")
       tests <- sapply(self$failures, "[[", "test")
-      header <- paste(label, ". ", type, ": ", tests, " ", sep = "")
+      header <- str_c(label, ". ", type, ": ", tests, " ")
       linewidth <- ifelse(nchar(header) > getOption("width"),0,getOption("width") - nchar(header))
       line <- charrep("-", linewidth )
 
       message <- sapply(self$failures, "[[", "message")
 
       cat("\n\n")
-      cat(paste(
+      cat(str_c(
         colourise(header, "red"), line, "\n", 
-        message, "\n", sep = "", collapse = "\n"))      
+        message, "\n", collapse = "\n"))      
     }
   }
   
@@ -84,6 +84,5 @@ SummaryReporter$do({
   ":)",
   "Woot!",
   "Way to go!",
-  "Nice code.",
-  ""
+  "Nice code."
 )

@@ -19,7 +19,7 @@ format.expectation <- function(x, ...) {
   if (x$passed) {
     "As expected."
   } else {
-    paste("Not expected: ", x$message, ".", sep = "")
+    str_c("Not expected: ", x$message, ".")
   }
 }
 

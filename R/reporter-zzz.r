@@ -47,8 +47,8 @@ find_reporter <- function(reporter) {
   if (is.mutatr(reporter)) return(reporter)
   
   name <- reporter
-  substr(name, 1, 1) <- toupper(substr(name, 1, 1))
-  name <- paste(name, "Reporter", sep = "")
+  str_sub(name, 1, 1) <- toupper(str_sub(name, 1, 1))
+  name <- str_c(name, "Reporter")
   
   if (!exists(name)) {
     stop("Can not find test reporter ", reporter, call. = FALSE)

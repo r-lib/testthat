@@ -40,15 +40,15 @@ test_that("watcher works correctly", {
     dir.create(test_path)
     
     delayed.bash.cmd <- function(command) {
-      system(paste("sleep 1;", command), wait=FALSE)
+      system(str_c("sleep 1;", command), wait=FALSE)
     }
 
     add.code.file <- function(file.name) {
-      delayed.bash.cmd(paste("touch", file.path(code_path, file.name)))
+      delayed.bash.cmd(str_c("touch ", file.path(code_path, file.name)))
     }
 
     remove.code.file <- function(file.name) {
-      delayed.bash.cmd(paste("rm", file.path(code_path, file.name)))
+      delayed.bash.cmd(str_c("rm ", file.path(code_path, file.name)))
     }
 
     test.added <- function(added, deleted, modified) {

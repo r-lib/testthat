@@ -18,10 +18,10 @@
 #' # doesn't read quite as nicely
 is_a <- function(class) {
   function(x) {
-    actual <- paste(class(x), collapse = ", ")
+    actual <- str_c(class(x), collapse = ", ")
     expectation(
       inherits(x, class),
-      paste("inherits from ", actual, " not ", class, sep = "")
+      str_c("inherits from ", actual, " not ", class)
     )
   }
 }
@@ -219,18 +219,19 @@ expect_identical <- function(actual, expected) {
 #' the vector must match the pattern in order to pass.
 #'
 #' @param regexp regular expression to test against
-#' @param ... other arguments passed to \code{\link{grepl}}
+#' @seealso \code{\link[string]{str_detect}} for the function that powers
+#'   the string matching
 #' @aliases matches expect_match
 #' @export  matches expect_match
 #' @examples 
 #' expect_that("Testing is fun", matches("fun"))
 #' expect_that("Testing is fun", matches("f.n"))
 #' expect_match("Testing is fun", "f.n")
-matches <- function(regexp, ...) {
+matches <- function(regexp) {
   function(char) {
     expectation(
-      all(grepl(regexp, char, ...)),
-      paste("does not match '", regexp, "'. Actual value: \n", char, sep = "")
+      all(str_detect(char, regexp)),
+      str_c("does not match '", regexp, "'. Actual value: \n", char)
     )
   }  
 }
@@ -251,7 +252,7 @@ expect_match <- function(actual, expected) {
 #' expect_output(str(mtcars), "11 variables")
 prints_text <- function(regexp, ...) {
   function(expr) {
-    output <- paste(capture.output(force(expr)), collapse = "")
+    output <- str_c(capture.output(force(expr)), collapse = "")
     matches(regexp, ...)(output)
   }
 }
@@ -297,8 +298,7 @@ takes_less_than <- function(amount) {
     
     expectation(
       duration < amount,
-      paste("took ", duration, " seconds, which is more than ", amount, 
-        sep = "")
+      str_c("took ", duration, " seconds, which is more than ", amount)
     )
   }
 }

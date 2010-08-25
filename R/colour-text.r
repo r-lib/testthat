@@ -24,17 +24,17 @@ colourise <- function(text, fg = "black", bg = NULL) {
   }
   
   col_escape <- function(col) {
-    paste("\033[", col, "m", sep = "")
+    str_c("\033[", col, "m")
   }
   
   col <- .fg_colours[tolower(fg)]
   if (!is.null(bg)) {
-    col <- paste(col, .bg_colours[tolower(bg)], sep = ";")
+    col <- str_c(col, .bg_colours[tolower(bg)], sep = ";")
   }
   
   init <- col_escape(col)
   reset <- col_escape("0")
-  paste(init, text, reset, sep = "")
+  str_c(init, text, reset)
 }
 
 .fg_colours <- c(

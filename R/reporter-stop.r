@@ -21,9 +21,9 @@ StopReporter$do({
     if (is.null(self$test)) stop(result$message, call. = FALSE)
     
     type <- if (result$error) "error" else "failure"
-    msg <- paste(
+    msg <- str_c(
       "Test ", type, ": ", self$test, "\n", 
-      result$message, sep = "")
+      result$message)
     stop(msg, call. = FALSE)
   }  
 })

@@ -39,9 +39,9 @@ expect_that <- function(object, condition, info = NULL, label = NULL) {
   }
   results <- condition(object)
   
-  results$message <- paste(label, results$message)
+  results$message <- str_c(label, " ", results$message)
   if (!is.null(info)) {
-    results$message <- paste(results$message, "\n", info, sep = "")
+    results$message <- str_c(results$message, "\n", info)
   }
   
   test_reporter()$add_result(results)
