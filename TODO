@@ -1,6 +1,3 @@
-* Environments:
-  * should be able to turn off access to variables in global environment
-
 * Other side effects:
   * set graphics device?
   * switch into temporary directory
