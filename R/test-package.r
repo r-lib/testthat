@@ -2,6 +2,7 @@
 #' 
 #' @param package package name
 #' @export
+#' @examples
 #' test_package("testthat")
 test_package <- function(package) {
   test_path <- system.file("tests", package = package)

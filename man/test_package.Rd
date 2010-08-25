@@ -9,3 +9,4 @@
 \arguments{
   \item{package}{package name}
 }
+\examples{test_package("testthat")}
