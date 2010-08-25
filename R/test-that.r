@@ -31,10 +31,10 @@ test_that <- function(desc, code) {
   on.exit(test_reporter()$end_test())
   
   env <- new.env(parent = parent.frame())  
-  res <- suppressMessages(try_capture_stack(substitute(code), env))
+  res <- suppressMessages(evaluate::try_capture_stack(substitute(code), env))
   
-  if (is.error(res)) {
-    traceback <- create_traceback(res$calls)
+  if (evaluate::is.error(res)) {
+    traceback <- evaluate::create_traceback(res$calls)
     report <- error_report(res, traceback)
     test_reporter()$add_result(report)
   }
