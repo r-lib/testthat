@@ -5,8 +5,6 @@
 
 * Option stop on error param for reporters?  Would then work more naturally with R CMD check
 
-* Convert depends to imports
-
 * New expectations:
   * gives_warning
   * shows_message
