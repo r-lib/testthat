@@ -15,5 +15,6 @@
 \arguments{
   \item{path}{path to tests}
   \item{pattern}{regular expression used to filter files}
+  \item{env}{environment in which to execute test suite. Defaults to new}
   \item{chdir}{change working directory to path?}
 }

@@ -30,7 +30,7 @@ test_that <- function(desc, code) {
   test_reporter()$start_test(desc)
   on.exit(test_reporter()$end_test())
   
-  env <- new.env(parent = globalenv())  
+  env <- new.env(parent = parent.frame())  
   res <- suppressMessages(try_capture_stack(substitute(code), env))
   
   if (is.error(res)) {

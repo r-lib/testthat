@@ -13,12 +13,13 @@ Changes in version 0.3 ---------------------------------------------------------
      expect_identical(a, b)
 
 * test_file and test_dir now run in code in separate environment to avoid
-  pollution of global environment
+  pollution of global environment.
 
 * all expectations now give more information on failure to make it 
   easier to track down the problem.
 
-* test_package makes it easier to run all test in an installed package
+* test_package makes it easier to run all test in an installed package.
+  Code run in this manner has access to non-exported functions and objects.
 
 Changes in version 0.2 -----------------------------------------------------------------
 

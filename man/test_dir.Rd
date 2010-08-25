@@ -1,7 +1,7 @@
 \name{test_dir}
 \alias{test_dir}
 \title{Run all of the tests in a directory.}
-\usage{test_dir(path, reporter="summary")}
+\usage{test_dir(path, reporter="summary", env)}
 
 \description{
   Run all of the tests in a directory.
@@ -14,5 +14,6 @@
 }
 \arguments{
   \item{path}{path to tests}
+  \item{env}{environment in which to execute test suite. Defaults to new}
   \item{reporter}{reporter to use}
 }

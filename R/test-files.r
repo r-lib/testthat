@@ -5,11 +5,15 @@
 #' \code{helper} and loaded before any tests are run.
 #'
 #' @param path path to tests
+#' @param env environment in which to execute test suite. Defaults to new
+#    environment inheriting from the global environment.
 #' @param reporter reporter to use
 #' @export
-test_dir <- function(path, reporter = "summary") {    
+test_dir <- function(path, reporter = "summary", env = NULL) {
   reporter <- find_reporter(reporter)
-  env <- new.env(parent = globalenv())
+  if (is.null(env)) {
+    env <- new.env(parent = globalenv())    
+  }
   
   source_dir(path, "^helper.*\\.[rR]$", env = env)
   with_reporter(reporter$clone(), {
@@ -23,6 +27,8 @@ test_dir <- function(path, reporter = "summary") {
 #'
 #' @param path path to tests
 #' @param pattern regular expression used to filter files
+#' @param env environment in which to execute test suite. Defaults to new
+#    environment inheriting from the global environment.
 #' @param chdir change working directory to path?
 #' @keywords internal
 #' @export
