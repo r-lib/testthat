@@ -3,8 +3,4 @@
   * switch into temporary directory
   * capture output to screen
 
-* New expectations:
-  * gives_warning
-  * shows_message
-
 * Add readme

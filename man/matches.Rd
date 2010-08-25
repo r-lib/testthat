@@ -1,6 +1,6 @@
 \name{matches}
 \title{Expectation: does string match regular expression?}
-\usage{matches(regexp)}
+\usage{matches(regexp, all=TRUE)}
 
 \description{
   Expectation: does string match regular expression?
@@ -16,6 +16,8 @@ the string matching}
 \alias{expect_match}
 \arguments{
   \item{regexp}{regular expression to test against}
+  \item{all}{should all elements of actual value match \code{regexp} (TRUE),
+or does only one need to match (FALSE)}
 }
 \examples{expect_that("Testing is fun", matches("fun"))
 expect_that("Testing is fun", matches("f.n"))

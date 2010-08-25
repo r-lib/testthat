@@ -20,5 +20,5 @@ if (interactive()) {
   test_that("errors are captured (should err)", {
     f()
   })
-
+  
 }

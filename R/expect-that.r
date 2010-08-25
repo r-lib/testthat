@@ -14,6 +14,8 @@
 #'  \item \code{\link{matches}}: string matching
 #'  \item \code{\link{prints_text}}: output matching
 #'  \item \code{\link{throws_error}}: error matching
+#'  \item \code{\link{gives_warning}}: warning matching
+#'  \item \code{\link{shows_message}}: message matching
 #'  \item \code{\link{takes_less_than}}: performance
 #' }
 #'

@@ -219,6 +219,8 @@ expect_identical <- function(actual, expected) {
 #' the vector must match the pattern in order to pass.
 #'
 #' @param regexp regular expression to test against
+#' @param all should all elements of actual value match \code{regexp} (TRUE),
+#'    or does only one need to match (FALSE)
 #' @seealso \code{\link[string]{str_detect}} for the function that powers
 #'   the string matching
 #' @aliases matches expect_match
@@ -227,10 +229,11 @@ expect_identical <- function(actual, expected) {
 #' expect_that("Testing is fun", matches("fun"))
 #' expect_that("Testing is fun", matches("f.n"))
 #' expect_match("Testing is fun", "f.n")
-matches <- function(regexp) {
+matches <- function(regexp, all = TRUE) {
   function(char) {
-    expectation(
-      all(str_detect(char, regexp)),
+    matches <- str_detect(char, regexp)
+    expectation( 
+      if (all) all(matches) else any(matches),
       str_c("does not match '", regexp, "'. Actual value: \n", char)
     )
   }  
@@ -283,6 +286,66 @@ throws_error <- function(regexp = NULL) {
 } 
 expect_error <- function(actual, expected = NULL) {
   expect_that(actual, label = find_expr("actual"), throws_error(expected))
+}
+
+#' Expectation: does expression give a warning?
+#'
+#' Needs to match at least one of the warnings produced by the expression.
+#' 
+#' @param regexp optional regular expression to match. If not specified, just
+#'   asserts that expression gives some warning.
+#' @export  gives_warning expect_warning
+#' @aliases gives_warning expect_warning
+#' @importFrom evaluate is.warning
+#' @examples
+#' expect_that(warning("a"), gives_warning())
+#' expect_that(warning("a"), gives_warning("a"))
+gives_warning <- function(regexp = NULL) {
+  function(expr) {
+    res <- evaluate(substitute(expr), parent.frame())
+    warnings <- sapply(Filter(is.warning, res), "[[", "message")
+    if (!is.null(regexp)) {
+      matches(regexp, all = FALSE)(warnings)
+    } else {
+      expectation(
+        length(warnings) > 0,
+        "no warnings given"
+      )
+    }
+  }
+} 
+expect_warning <- function(actual, expected = NULL) {
+  expect_that(actual, label = find_expr("actual"), throws_warning(expected))
+}
+
+#' Expectation: does expression show a message?
+#'
+#' Needs to match at least one of the messages produced by the expression.
+#' 
+#' @param regexp optional regular expression to match. If not specified, just
+#'   asserts that expression shows some message.
+#' @export  shows_message expect_message
+#' @aliases shows_message expect_message
+#' @importFrom evaluate evaluate is.message
+#' @examples
+#' expect_that(message("a"), shows_message())
+#' expect_that(message("a"), shows_message("a"))
+shows_message <- function(regexp = NULL) {
+  function(expr) {
+    res <- evaluate(substitute(expr), parent.frame())
+    warnings <- sapply(Filter(is.message, res), "[[", "message")
+    if (!is.null(regexp)) {
+      matches(regexp, all = FALSE)(warnings)
+    } else {
+      expectation(
+        length(warnings) > 0,
+        "no warnings given"
+      )
+    }
+  }
+} 
+expect_message <- function(actual, expected = NULL) {
+  expect_that(actual, label = find_expr("actual"), shows_message(expected))
 }
 
 

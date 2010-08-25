@@ -13,6 +13,7 @@
 #' @param desc test name.  Names should be kept as brief as possible, as they
 #'   are often used as line prefixes.
 #' @param code test code containing expectations
+#' @importFrom evaluate try_capture_stack create_traceback is.error
 #' @export
 #' @examples
 #' test_that("trigonometric functions match identies", {
@@ -31,10 +32,10 @@ test_that <- function(desc, code) {
   on.exit(test_reporter()$end_test())
   
   env <- new.env(parent = parent.frame())  
-  res <- suppressMessages(evaluate::try_capture_stack(substitute(code), env))
+  res <- suppressMessages(try_capture_stack(substitute(code), env))
   
-  if (evaluate::is.error(res)) {
-    traceback <- evaluate::create_traceback(res$calls)
+  if (is.error(res)) {
+    traceback <- create_traceback(res$calls)
     report <- error_report(res, traceback)
     test_reporter()$add_result(report)
   }
