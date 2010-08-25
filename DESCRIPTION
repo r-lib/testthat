@@ -7,7 +7,8 @@ Maintainer: Hadley Wickham <h.wickham@gmail.com>
 Description: A testing package specifically tailored for R that's fun,
     flexible and easy to set up.
 URL: http://had.co.nz/
-Depends: R (>= 2.8), mutatr, digest, stringr, evaluate
+Depends: R (>= 2.8), mutatr, evaluate
+Imports: digest, stringr
 License: GPL
 LazyData: true
 Collate: 'aaa-classes.r' 'auto-test.r' 'colour-text.r' 'context.r'

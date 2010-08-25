@@ -27,6 +27,7 @@
 #' @param info extra information to be included in the message (useful when
 #'   writing tests in loops).
 #' @export
+#' @import stringr
 #' @examples
 #' expect_that(5 * 2, equals(10))
 #' expect_that(sqrt(2) ^ 2, equals(2))

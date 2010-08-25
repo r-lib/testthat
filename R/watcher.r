@@ -51,7 +51,7 @@ dir_state <- function(path, pattern = NULL, hash = TRUE) {
   files <- dir(path, pattern, full.names = TRUE)
   
   if (hash) {
-    sapply(files, digest, file = TRUE)    
+    sapply(files, digest::digest, file = TRUE)    
   } else {
     setNames(file.info(files)$mtime, files)
   }
