@@ -23,7 +23,7 @@
 #' @param object object to test
 #' @param condition, a function that returns whether or not the condition
 #'   is met, and if not, an error message to display.
-#' @param name object name. When \code{NULL}, computed from deparsed object.
+#' @param label object label. When \code{NULL}, computed from deparsed object.
 #' @param info extra information to be included in the message (useful when
 #'   writing tests in loops).
 #' @export
@@ -33,13 +33,13 @@
 #' \dontrun{
 #' expect_that(sqrt(2) ^ 2, is_identical_to(2))
 #' }
-expect_that <- function(object, condition, info = NULL, name = NULL) {
-  if (is.null(name)) {
-    name <- find_expr("object")
+expect_that <- function(object, condition, info = NULL, label = NULL) {
+  if (is.null(label)) {
+    label <- find_expr("object")
   }
   results <- condition(object)
   
-  results$message <- paste(name, results$message)
+  results$message <- paste(label, results$message)
   if (!is.null(info)) {
     results$message <- paste(results$message, "\n", info, sep = "")
   }

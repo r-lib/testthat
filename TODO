@@ -15,14 +15,3 @@
   * shows_message
 
 * Add readme
-
-* Shortcuts?
-  * expect_equal(x, y) expect_that(x, equal_to(y))
-  * expect_identical
-  * expect_equivalent
-  * expect_output
-  * expect_message
-  * expect_error
-  * expect_warning
-  * expect_true
-  * expect_false

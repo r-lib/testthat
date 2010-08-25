@@ -1,5 +1,4 @@
 \name{is_true}
-\alias{is_true}
 \title{Expectation: is the object true?}
 
 \description{
@@ -12,7 +11,10 @@
   may get a less informative error message.
 }
 \seealso{\code{\link{is_false}} for complement}
+\alias{is_true}
+\alias{expect_true}
 \examples{expect_that(2 == 2, is_true())
+expect_true(2 == 2)
 # Failed expectations will throw an error
 \dontrun{
 expect_that(2 != 2, is_true())
