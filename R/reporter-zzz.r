@@ -44,7 +44,7 @@ with_reporter <- function(reporter, code) {
 #' @param reporter name of reporter
 #' @keywords internal
 find_reporter <- function(reporter) {
-  if (is.mutatr(reporter)) return(reporter)
+  if (mutatr::is.mutatr(reporter)) return(reporter)
   
   name <- reporter
   str_sub(name, 1, 1) <- toupper(str_sub(name, 1, 1))
