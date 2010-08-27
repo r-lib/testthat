@@ -1,32 +1,32 @@
 Changes in version 0.3 -----------------------------------------------------------------
 
-* executing bare tests gives nicer output
+* all expectations now have a shortcut form, so instead of 
+     expect_that(a, is_identical_to(b))
+  you can do
+     expect_identical(a, b)
 
 * new shows_message and gives_warning expectations to test warnings and
   messages
 
 * expect_that, equals, is_identical_to and is_equivalent to now have
   additional label argument which allows you to control the appearance of the
-  text used for the expected object (for expect_that) and actual object 
-  (for all other functions) in failure messages.  This is useful when you have
-  loops that run tests as otherwise all the variable names are identical, and 
-  it's difficult to tell which iteration caused the failure.
+  text used for the expected object (for expect_that) and actual object (for
+  all other functions) in failure messages. This is useful when you have loops
+  that run tests as otherwise all the variable names are identical, and it's
+  difficult to tell which iteration caused the failure.
 
-* all expectations now have a shortcut form, so instead of 
-     expect_that(a, is_identical_to(b))
-  you can do
-     expect_identical(a, b)
+* executing bare tests gives nicer output
+
+* all expectations now give more information on failure to make it easier to
+  track down the problem.
 
 * test_file and test_dir now run in code in separate environment to avoid
   pollution of global environment.
 
-* all expectations now give more information on failure to make it 
-  easier to track down the problem.
-
-* test_package makes it easier to run all test in an installed package.
-  Code run in this manner has access to non-exported functions and objects.
-  If any errors or failures occur, test_package will throw an error, making
-  it suitable for use with R CMD check.
+* test_package makes it easier to run all tests in an installed package. Code
+  run in this manner has access to non-exported functions and objects. If any
+  errors or failures occur, test_package will throw an error, making it
+  suitable for use with R CMD check.
 
 Changes in version 0.2 -----------------------------------------------------------------
 
