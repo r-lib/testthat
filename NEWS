@@ -1,5 +1,7 @@
 Changes in version 0.3 -----------------------------------------------------------------
 
+* executing bare tests gives nicer output
+
 * new shows_message and gives_warning expectations to test warnings and
   messages
 

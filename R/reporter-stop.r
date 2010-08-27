@@ -15,15 +15,35 @@
 NULL
 
 StopReporter$do({
+  self$failures <- list()
+  
+  self$start_test <- function(desc) {
+    self$test <- desc
+  }
+  
+  self$end_test <- function() {
+    test <- self$test
+    self$test <- NULL
+    if (length(self$failures) == 0) return()
+    
+    messages <- vapply(self$failures, "[[", "", "message")
+    if (length(messages) > 1) {
+      messages <- str_c("* ", messages, collapse = "\n")
+    }
+    self$failures <- list()
+    
+    msg <- str_c("Test failure in '", test, "'\n", messages)
+    stop(msg, call. = FALSE)      
+  }
+  
   self$add_result <- function(result) {
     if (result$passed) return()
-    
-    if (is.null(self$test)) stop(result$message, call. = FALSE)
-    
-    type <- if (result$error) "error" else "failure"
-    msg <- str_c(
-      "Test ", type, ": ", self$test, "\n", 
-      result$message)
-    stop(msg, call. = FALSE)
+
+    # If running in test suite, store, otherwise raise immediately.
+    if (is.null(self$test)) {
+      stop(result$message, call. = FALSE)
+    } else {
+      self$failures <- c(self$failures, list(result))
+    }
   }  
 })

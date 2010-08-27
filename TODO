@@ -2,3 +2,5 @@
   * set graphics device?
   * switch into temporary directory
   * capture output to screen
+
+* Remove cruft from tracebacks
