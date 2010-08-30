@@ -10,7 +10,7 @@
   If the object to be tested has length greater than one, all elements
   of the vector must match the pattern in order to pass.
 }
-\seealso{\code{\link[string]{str_detect}} for the function that powers
+\seealso{\code{\link[stringr]{str_detect}} for the function that powers
 the string matching}
 \alias{matches}
 \alias{expect_match}

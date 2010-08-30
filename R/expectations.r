@@ -221,7 +221,7 @@ expect_identical <- function(actual, expected) {
 #' @param regexp regular expression to test against
 #' @param all should all elements of actual value match \code{regexp} (TRUE),
 #'    or does only one need to match (FALSE)
-#' @seealso \code{\link[string]{str_detect}} for the function that powers
+#' @seealso \code{\link[stringr]{str_detect}} for the function that powers
 #'   the string matching
 #' @aliases matches expect_match
 #' @export  matches expect_match
@@ -315,7 +315,7 @@ gives_warning <- function(regexp = NULL) {
   }
 } 
 expect_warning <- function(actual, expected = NULL) {
-  expect_that(actual, label = find_expr("actual"), throws_warning(expected))
+  expect_that(actual, label = find_expr("actual"), gives_warning(expected))
 }
 
 #' Expectation: does expression show a message?
