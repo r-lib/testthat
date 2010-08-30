@@ -21,7 +21,8 @@ Changes in version 0.3 ---------------------------------------------------------
   track down the problem.
 
 * test_file and test_dir now run in code in separate environment to avoid
-  pollution of global environment.
+  pollution of global environment. They also temporary change the working 
+  directory so tests can use relative paths.
 
 * test_package makes it easier to run all tests in an installed package. Code
   run in this manner has access to non-exported functions and objects. If any
