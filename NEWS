@@ -1,4 +1,5 @@
-Changes in version 0.3 -----------------------------------------------------------------
+Changes in version 0.3
+------------------------------------------------------------------------------
 
 * all expectations now have a shortcut form, so instead of 
      expect_that(a, is_identical_to(b))
@@ -29,7 +30,9 @@ Changes in version 0.3 ---------------------------------------------------------
   errors or failures occur, test_package will throw an error, making it
   suitable for use with R CMD check.
 
-Changes in version 0.2 -----------------------------------------------------------------
+Changes in version 0.2
+------------------------------------------------------------------------------
+
 
 * colourise also works in screen terminal
 

@@ -110,7 +110,7 @@ expect_false <- function(actual) {
 #' sqrt(2) ^ 2 - 1
 #' expect_that(sqrt(2) ^ 2, equals(2))
 #' expect_equal(sqrt(2) ^ 2, 2)
-#' # Neither of these forms taken floating point representation errors into
+#' # Neither of these forms take floating point representation errors into
 #' # account
 #' \dontrun{
 #' expect_that(sqrt(2) ^ 2 == 2, is_true())

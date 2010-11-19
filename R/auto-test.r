@@ -12,7 +12,7 @@
 #'    rerun
 #'  \item otherwise, each new or modified test is run
 #' }
-#' In the future, \code{auto_test} might implement on of the following more 
+#' In the future, \code{auto_test} might implement one of the following more 
 #' intelligent alternatives:
 #' 
 #' \itemize{
@@ -20,7 +20,7 @@
 #'    when a dependency changes.
 #' 
 #'  \item Mimic ruby's autotest and rerun only failing tests until they pass,
-#'    and then rerun all test.
+#'    and then rerun all tests.
 #' }
 # 
 #' @seealso \code{\link{auto_test_package}}
