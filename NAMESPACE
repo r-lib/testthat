@@ -1,7 +1,7 @@
 export(auto_test)
 export(auto_test_package)
 export(colourise)
-export(context)
+export(start_context, end_context, next_context, context)
 export(expect_that)
 import(stringr)
 S3method(print, expectation)
