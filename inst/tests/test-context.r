@@ -28,9 +28,11 @@ CountReporter <- Reporter$clone()$do({
   }
 })
 
-test_that("contexts are closed before they are opened", {
+test_that("contexts are opened, then closed", {
   reporter <- CountReporter$clone()
   test_file("context.r", reporter)
   expect_that(report$context_count, equals(2))
+  expect_that(report$context, equals(0))
   expect_that(report$test_count, equals(2))
+  expect_that(report$test, equals(0))
 })
