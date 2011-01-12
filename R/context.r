@@ -10,7 +10,10 @@
 #' context("String processing")
 #' context("Remote procedure calls")
 context <- function(desc) {
-  test_reporter()$end_context()
-  test_reporter()$start_context(desc)
+  rep <- test_reporter()
+  if (rep$context_open) {
+    rep$end_context()
+  }
+  rep$context_open <- TRUE
+  rep$start_context(desc)
 }
-
