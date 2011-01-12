@@ -1,6 +1,11 @@
 Changes in version 0.4
 ------------------------------------------------------------------------------
 
+* contexts are never closed before they are opened, and always closed at the
+  end of file
+
+* fixed small bug in `test_dir` where each test was not given its own
+  environment
 
 Changes in version 0.3
 ------------------------------------------------------------------------------

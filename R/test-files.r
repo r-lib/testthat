@@ -16,9 +16,12 @@ test_dir <- function(path, reporter = "summary", env = NULL) {
   }
   
   source_dir(path, "^helper.*\\.[rR]$", env = env)
-  with_reporter(reporter, {
-    source_dir(path, "^test.*\\.[rR]$", env = env)    
-  })
+  
+  files <- dir(path, "^test.*\\.[rR]$", full.names = TRUE)
+  with_reporter(reporter, lapply(files, function(file) {
+    sys.source(file, chdir = TRUE, envir = new.env(parent = env))
+    end_context()
+  }))
 }
 
 #' Load all source files in a directory.
@@ -49,6 +52,8 @@ source_dir <- function(path, pattern = "\\.[rR]$", env = NULL, chdir = TRUE) {
 #' @export
 test_file <- function(path, reporter = "summary") {    
   reporter <- find_reporter(reporter)
-  with_reporter(reporter, 
-    sys.source(path, new.env(parent = globalenv()), chdir = TRUE))
+  with_reporter(reporter, {
+    sys.source(path, new.env(parent = globalenv()), chdir = TRUE)
+    end_context()
+  })
 }
