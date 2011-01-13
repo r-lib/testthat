@@ -19,7 +19,7 @@ colourise <- function(text, fg = "black", bg = NULL) {
   term <- Sys.getenv()["TERM"]
   colour_terms <- c("xterm-color","xterm-256color", "screen", "screen-256color")
   
-  if (!interactive() || !any(term %in% colour_terms, na.rm = TRUE)) {
+  if ((str_length(Sys.getenv('R_TESTS')) != 0) || !any(term %in% colour_terms, na.rm = TRUE)) {
     return(text)
   }
   
