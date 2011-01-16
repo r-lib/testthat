@@ -29,12 +29,15 @@
 #' @param test_path path to directory containing tests
 #' @param reporter test reporter to use
 #' @keywords debugging
-auto_test <- function(code_path, test_path, reporter = "summary") {
+auto_test <- function(code_path, test_path, reporter = "summary", env = NULL) {
   reporter <- find_reporter(reporter)
 
   # Start by loading all code and running all tests
-  source_dir(code_path)
-  test_dir(test_path)
+  if (is.null(env)) {
+    env <- new.env(parent = globalenv())
+  }
+  source_dir(code_path, env)
+  test_dir(test_path, env)
   
   starts_with <- function(string, prefix) {
     str_sub(string, 1, str_length(prefix)) == prefix
@@ -51,12 +54,13 @@ auto_test <- function(code_path, test_path, reporter = "summary") {
       # Reload code and rerun all tests
       cat("Changed code: ", str_c(basename(code), collapse = ", "), "\n")
       cat("Rerunning all tests\n")
-      lapply(code, source, chdir = TRUE)
-      test_dir(test_path)
+      source_dir(code_path, env)
+      test_dir(test_path, env)
     } else if (length(tests) > 0) {
       # If test changes, rerun just that test
       cat("Rerunning tests: ", str_c(basename(tests), collapse = ", "), "\n")      
-      with_reporter(reporter$clone(), lapply(tests, source, chdir = TRUE))
+      with_reporter(reporter$clone(), lapply(tests, sys.source, 
+        env = new.envir(parent = env), chdir = TRUE))
     }
     
     TRUE
