@@ -140,12 +140,16 @@ equals <- function(expected, label = NULL, ...) {
     )
   }
 }
-expect_equal <- function(actual, expected, info = NULL, label = NULL) {
+expect_equal <- function(actual, expected, info = NULL, label = NULL,
+                         expected.label = NULL) {
   if (is.null(label)) {
     label <- find_expr("actual")
   }
-  expect_that(actual, info = info, label = find_expr("actual"),
-    equals(expected, label = find_expr("expected")))
+  if (is.null(expected.label)) {
+    expected.label <- find_expr("expected")
+  }
+  expect_that(actual, info = info, label = label,
+    equals(expected, label = expected.label))
 }
 
 
@@ -174,12 +178,16 @@ is_equivalent_to <- function(expected, label = NULL) {
     equals(expected, check.attributes = FALSE)(actual)
   } 
 }
-expect_equivalent <- function(actual, expected, info = NULL, label = NULL) {
+expect_equivalent <- function(actual, expected, info = NULL, label = NULL,
+                              expected.label=NULL) {
   if (is.null(label)) {
     label <- find_expr("actual")
   }
+  if (is.null(expected.label)) {
+    expected.label <- find_expr("expected")
+  }
   expect_that(actual, info = info, label = label,
-    is_equivalent_to(expected, label = find_expr("expected")))
+    is_equivalent_to(expected, label = expected.label))
 }
 
 #' Expectation: is the object identical to another?
@@ -223,12 +231,16 @@ is_identical_to <- function(expected, label = NULL) {
     )
   }
 }
-expect_identical <- function(actual, expected, info = NULL, label = NULL) {
+expect_identical <- function(actual, expected, info = NULL, label = NULL,
+                             expected.label = NULL) {
   if (is.null(label)) {
     label <- find_expr("actual")
   }
-  expect_that(actual, info = info, label = find_expr("actual"),
-    is_identical_to(expected, label = find_expr("expected")))
+  if (is.null(expected.label)) {
+    expected.label <- find_expr("expected")
+  }
+  expect_that(actual, info = info, label = label,
+    is_identical_to(expected, label = expected.label))
 }
 
 #' Expectation: does string match regular expression?
@@ -256,11 +268,12 @@ matches <- function(regexp, all = TRUE) {
     )
   }  
 }
-expect_match <- function(actual, expected, info = NULL, label = NULL) {
+expect_match <- function(actual, expected, info = NULL, label = NULL,
+                         all = TRUE) {
   if (is.null(label)) {
     label <- find_expr("actual")
   }
-  expect_that(actual, matches(expected), info = info, label = label)
+  expect_that(actual, matches(expected, all = all), info = info, label = label)
 }
 
 #' Expectation: does printed output match a regular expression?
@@ -341,7 +354,8 @@ gives_warning <- function(regexp = NULL) {
     }
   }
 } 
-expect_warning <- function(actual, expected = NULL) {
+expect_warning <- function(actual, expected = NULL, info = NULL,
+                           label = NULL) {
   if (is.null(label)) {
     label <- find_expr("actual")
   }
