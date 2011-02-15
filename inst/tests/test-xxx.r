@@ -21,4 +21,6 @@ if (interactive()) {
     f()
   })
   
+  expect_that(1, equals(2))
+  
 }
