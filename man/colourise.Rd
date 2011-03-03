@@ -8,12 +8,12 @@
 }
 
 \details{
-  If R is not currently running in a system that supports terminal
-  colours the text will be returned unchanged.
+  If R is not currently running in a system that supports
+  terminal colours the text will be returned unchanged.
 
-  Allowed colours are: black, blue, brown, cyan, dark gray, green,
-  light blue, light cyan, light gray, light green, light purple, light
-  red, purple, red, white, yellow
+  Allowed colours are: black, blue, brown, cyan, dark gray,
+  green, light blue, light cyan, light gray, light green,
+  light purple, light red, purple, red, white, yellow
 }
 \arguments{
   \item{text}{character vector}

@@ -7,7 +7,7 @@
 }
 
 \details{
-  Do not clone directly from this object - children should implement
-  all methods.
+  Do not clone directly from this object - children should
+  implement all methods.
 }
 \keyword{internal.}

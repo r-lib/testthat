@@ -7,8 +7,8 @@
 }
 
 \details{
-  Needs to match at least one of the warnings produced by the
-  expression.
+  Needs to match at least one of the warnings produced by
+  the expression.
 }
 \alias{gives_warning}
 \alias{expect_warning}

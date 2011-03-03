@@ -8,8 +8,8 @@
 }
 
 \details{
-  The expectation is that the files can be sourced in alphabetical
-  order.
+  The expectation is that the files can be sourced in
+  alphabetical order.
 }
 \keyword{internal}
 \arguments{

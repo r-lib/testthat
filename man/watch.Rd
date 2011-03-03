@@ -4,16 +4,17 @@
 \usage{watch(path, callback, pattern, hash=TRUE)}
 
 \description{
-  Watch a directory for changes (additions, deletions & modifications).
+  Watch a directory for changes (additions, deletions &
+  modifications).
 }
 
 \details{
   This is used to power the \code{\link{auto_test}} and
-  \code{link{auto_test_package}} functions which are used to rerun
-  tests whenever source code changes.
+  \code{link{auto_test_package}} functions which are used
+  to rerun tests whenever source code changes.
 
-  Use Ctrl + break (windows), Esc (mac gui) or Ctrl + C (command line)
-  to stop the watcher.
+  Use Ctrl + break (windows), Esc (mac gui) or Ctrl + C
+  (command line) to stop the watcher.
 }
 \arguments{
   \item{path}{character vector of paths to watch.  Omit trailing backslash.}

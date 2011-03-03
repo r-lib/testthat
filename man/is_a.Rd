@@ -7,8 +7,8 @@
 }
 
 \details{
-  Tests whether or not an object inherits from any of a list of
-  classes.
+  Tests whether or not an object inherits from any of a
+  list of classes.
 }
 \seealso{\code{\link{inherits}}}
 \alias{is_a}

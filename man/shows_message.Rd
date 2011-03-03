@@ -7,8 +7,8 @@
 }
 
 \details{
-  Needs to match at least one of the messages produced by the
-  expression.
+  Needs to match at least one of the messages produced by
+  the expression.
 }
 \alias{shows_message}
 \alias{expect_message}

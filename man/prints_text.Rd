@@ -3,7 +3,8 @@
 \usage{prints_text(regexp, ...)}
 
 \description{
-  Expectation: does printed output match a regular expression?
+  Expectation: does printed output match a regular
+  expression?
 }
 \alias{prints_text}
 \alias{expect_output}

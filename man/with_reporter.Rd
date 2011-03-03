@@ -8,8 +8,8 @@
 }
 
 \details{
-  Changes global reporter to that specified, runs code and the returns
-  global reporter back to previous value.
+  Changes global reporter to that specified, runs code and
+  the returns global reporter back to previous value.
 }
 \keyword{internal}
 \arguments{

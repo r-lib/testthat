@@ -4,8 +4,8 @@
 \usage{takes_less_than(amount)}
 
 \description{
-  Expectation: does expression take less than a fixed amount of time to
-  run?
+  Expectation: does expression take less than a fixed
+  amount of time to run?
 }
 
 \details{

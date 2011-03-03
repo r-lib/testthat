@@ -3,9 +3,9 @@
 \usage{is_equivalent_to(expected, label)}
 
 \description{
-  Expectation: is the object equivalent to a value? This expectation
-  tests for equivalency: are two objects equal once their attributes
-  have been removed.
+  Expectation: is the object equivalent to a value? This
+  expectation tests for equivalency: are two objects equal
+  once their attributes have been removed.
 }
 \alias{is_equivalent_to}
 \alias{expect_equivalent}

@@ -4,7 +4,8 @@
 \usage{auto_test_package(path, reporter="summary")}
 
 \description{
-  Watches a package for changes, rerunning tests as appropriate.
+  Watches a package for changes, rerunning tests as
+  appropriate.
 }
 \keyword{debugging}
 \seealso{\code{\link{auto_test}} for details on how method works}

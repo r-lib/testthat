@@ -6,9 +6,10 @@
 }
 
 \details{
-  This is a fall-back expectation that you can use when none of the
-  other more specific expectations apply. The disadvantage is that you
-  may get a less informative error message.
+  This is a fall-back expectation that you can use when
+  none of the other more specific expectations apply. The
+  disadvantage is that you may get a less informative error
+  message.
 }
 \seealso{\code{\link{is_false}} for complement}
 \alias{is_true}

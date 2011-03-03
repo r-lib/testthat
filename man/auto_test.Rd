@@ -1,30 +1,32 @@
 \name{auto_test}
 \alias{auto_test}
 \title{Watches code and tests for changes, rerunning tests as appropriate.}
-\usage{auto_test(code_path, test_path, reporter="summary")}
+\usage{auto_test(code_path, test_path, reporter="summary", env)}
 
 \description{
-  Watches code and tests for changes, rerunning tests as appropriate.
+  Watches code and tests for changes, rerunning tests as
+  appropriate.
 }
 
 \details{
-  The idea behind \code{auto_test} is that you just leave it running
-  while you develop your code.  Everytime you save a file it will be
-  automatically tested and you can easily see if your changes have
-  caused any test failures.
+  The idea behind \code{auto_test} is that you just leave
+  it running while you develop your code.  Everytime you
+  save a file it will be automatically tested and you can
+  easily see if your changes have caused any test failures.
 
   The current strategy for rerunning tests is as follows:
 
-  \itemize{ \item if any code has changed, then those files are
-  reloaded and all tests rerun \item otherwise, each new or modified
-  test is run } In the future, \code{auto_test} might implement on of
-  the following more intelligent alternatives:
+  \itemize{ \item if any code has changed, then those files
+  are reloaded and all tests rerun \item otherwise, each
+  new or modified test is run } In the future,
+  \code{auto_test} might implement one of the following
+  more intelligent alternatives:
 
-  \itemize{ \item Use codetools to build up dependency tree and then
-  rerun tests only when a dependency changes.
+  \itemize{ \item Use codetools to build up dependency tree
+  and then rerun tests only when a dependency changes.
 
-  \item Mimic ruby's autotest and rerun only failing tests until they
-  pass, and then rerun all test. }
+  \item Mimic ruby's autotest and rerun only failing tests
+  until they pass, and then rerun all tests. }
 }
 \seealso{\code{\link{auto_test_package}}}
 \keyword{debugging}
@@ -32,4 +34,6 @@
   \item{code_path}{path to directory containing code}
   \item{test_path}{path to directory containing tests}
   \item{reporter}{test reporter to use}
+  \item{env}{environment in which to execute test suite. Defaults to new
+environment inheriting from the global environment.}
 }
