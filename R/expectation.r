@@ -1,7 +1,11 @@
 #' Expectation class.
 #' 
+#' Any expectation should return objects of this class - see the built in
+#' expectations for details.
+#'
 #' @aliases expectation print.expectation format.expectation
 #' @keywords internal
+#' @export
 #' @S3method print expectation 
 #' @S3method format expectation 
 expectation <- function(passed, message) {
