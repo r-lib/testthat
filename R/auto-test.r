@@ -62,7 +62,7 @@ auto_test <- function(code_path, test_path, reporter = "summary", env = NULL) {
       # If test changes, rerun just that test
       cat("Rerunning tests: ", str_c(basename(tests), collapse = ", "), "\n")      
       with_reporter(reporter$clone(), lapply(tests, sys.source, 
-        env = new.envir(parent = env), chdir = TRUE))
+        env = new.env(parent = env), chdir = TRUE))
     }
     
     TRUE
