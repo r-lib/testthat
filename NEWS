@@ -9,6 +9,9 @@ Changes in version 0.4
 * fixed small bug in `test_dir` where each test was not given its own
   environment
 
+* all `expect_*` short cut functions gain a label argument, thanks to Steve
+  Lianoglou
+
 Changes in version 0.3
 ------------------------------------------------------------------------------
 
