@@ -15,6 +15,7 @@
 NULL
 
 StopReporter$do({
+  self$test <- NULL
   self$failures <- list()
   
   self$start_test <- function(desc) {
