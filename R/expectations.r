@@ -314,10 +314,17 @@ expect_output <- function(actual, expected, ..., info = NULL, label = NULL) {
 throws_error <- function(regexp = NULL) {
   function(expr) {
     res <- try(force(expr), TRUE)
+    
+    no_error <- !inherits(res, "try-error")
+    if (no_error) {
+      return(expectation(FALSE, "code did not generate an error"))
+      
+    } 
+    
     if (!is.null(regexp)) {
       matches(regexp)(res)
     } else {
-      is_a("try-error")(res)
+      expectation(TRUE, "")
     }
   }
 } 

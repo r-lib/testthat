@@ -11,6 +11,21 @@ test_that("errors are caught with throws_error", {
   expect_that(res$passed, is_false())
 })
 
+test_that("failure to throw an error is a failure", {
+  res <- throws_error()(log(1))
+  expect_that(res$passed, is_false())  
+
+  res <- throws_error("error")(log(1))
+  expect_that(res$passed, is_false())  
+
+  res <- throws_error()(NULL)
+  expect_that(res$passed, is_false())  
+  
+  res <- throws_error("error")(NULL)
+  expect_that(res$passed, is_false())  
+  
+})
+
 test_that("warnings are caught by gives_warning", {
   f <- function() {
     warning("a")
