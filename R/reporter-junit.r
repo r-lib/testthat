@@ -4,15 +4,15 @@
 #' written (to standard out) in jUnit XML format. This can be read by
 #' the Jenkins Continuous Integration System to report on a dashboard etc.
 #' Requires the XML package.
-#' 
-#' http://ant.1045680.n5.nabble.com/schema-for-junit-xml-output-td1375274.html
 #'
+#' References for the jUnit XML format:
+#' http://ant.1045680.n5.nabble.com/schema-for-junit-xml-output-td1375274.html
 #' http://windyroad.org/dl/Open%20Source/JUnit.xsd
 #'
-#' https://r-forge.r-project.org/scm/viewvc.php/pkg/svUnit/R/svTestData.R?view=markup&root=sciviews
-#' 
 #' @name JUnitReporter
 #' @export
+#' @examples
+#' test_package("testthat", reporter = JUnitReporter$clone()$do(self$file <- "testjunit.xml"))
 #' @keywords debugging
 NULL
 
@@ -50,7 +50,7 @@ JUnitReporter$do({
     result$time <- round((proc.time() - self$timer)[["elapsed"]], 2)
     self$timer <- proc.time()
     self$n <- self$n + 1
-    result$test <- self$test
+    result$test <- if (self$test == "") "(unnamed)" else self$test
     self$results[[self$context]][[toString(self$n)]] <-
       result
   }
@@ -63,20 +63,29 @@ JUnitReporter$do({
         attrs <- sapply(attrs, function(x) toString(xmlTextNode(x)))
       xmlNode(name, ..., attrs = attrs)
     }
+    classnameOK <- function(text) {
+      gsub("[ \\.]", "_", text)
+    }
     suites <- lapply(names(self$results), function(context) {
       x <- self$results[[context]]
+      xnames <- sapply(x, function(xi) {
+        if (is.null(xi$call)) "(unexpected)" else xi$call
+      })
+      xnames <- make.unique(xnames, sep = "_")
+      for (i in seq_along(x))
+        x[[i]]$call <- xnames[[i]]
       testcases <- lapply(x, function(result) {
         failnode <- NULL
         if (!result$passed)
           failnode <-
             xmlNodeOK("failure", attrs =
                       c(type = ifelse(result$error, "error", "failure"),
-                        message = result$message),
+                        message = gsub("\n.*", "", result$message)),
                       .children = list(xmlTextNode(result$message)))
         xmlNodeOK("testcase", attrs =
-                  c(classname = paste(gsub("[ \\.]", "_", context),
-                        gsub("[ \\.]", "_", result$test), sep = "."),
-                    name = sub("\n.*", "", result$message),
+                  c(classname = paste(classnameOK(context),
+                        classnameOK(result$test), sep = "."),
+                    name = result$call,
                     time = result$time),
                   .children = if (!result$passed) list(failnode))
       })

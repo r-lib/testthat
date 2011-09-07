@@ -46,6 +46,11 @@ expect_that <- function(object, condition, info = NULL, label = NULL) {
   if (!is.null(info)) {
     results$message <- str_c(results$message, "\n", info)
   }
+  call <- sys.call()
+  if (!is.null(info))
+    call <- do.call("substitute",
+                    list(call, list(info = info)))
+  results$call <- str_c(deparse(call, width = 500), collapse = "")
   
   test_reporter()$add_result(results)
   invisible()
