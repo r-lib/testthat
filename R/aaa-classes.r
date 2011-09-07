@@ -3,4 +3,5 @@ if (!exists("Reporter")) {
     SummaryReporter <- Reporter$clone()
     StopReporter <- Reporter$clone()  
     MinimalReporter <- Reporter$clone()  
+    JUnitReporter <- Reporter$clone()
 }

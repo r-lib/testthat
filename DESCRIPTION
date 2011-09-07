@@ -10,11 +10,13 @@ URL: http://had.co.nz/
 Depends: R (>= 2.8)
 Imports: digest, stringr (>= 0.4), mutatr, evaluate (>=
     0.3)
+Suggests: XML
 License: GPL
 LazyData: true
 Collate: 'aaa-classes.r' 'auto-test.r' 'colour-text.r'
     'context.r' 'expect-that.r' 'expectation.r'
     'expectations.r' 'library.r' 'reporter-minimal.r'
-    'reporter-stop.r' 'reporter-summary.r' 'reporter-zzz.r'
+    'reporter-stop.r' 'reporter-summary.r'
+    'reporter-junit.r' 'reporter-zzz.r'
     'reporter.r' 'test-files.r' 'test-package.r'
     'test-that.r' 'utils.r' 'watcher.r'
