@@ -12,7 +12,7 @@
 #' @name JUnitReporter
 #' @export
 #' @examples
-#' test_package("testthat", reporter = JUnitReporter$clone()$do(self$file <- "testjunit.xml"))
+#' test_package("testthat", reporter = newJUnitReporter("testjunit.xml"))
 #' @keywords debugging
 NULL
 
@@ -107,3 +107,11 @@ JUnitReporter$do({
   }
   
 })
+
+#' Wrapper function to help write jUnit reporter output to a file.
+#'
+#' @name newJUnitReporter
+#' @export
+newJUnitReporter <- function(file = "junit_out.xml") {
+  JUnitReporter$clone()$do(self$file <- file)
+}
