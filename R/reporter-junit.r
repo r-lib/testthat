@@ -1,9 +1,21 @@
 #' Test reporter: summary of errors in jUnit XML format.
 #' 
 #' This reporter includes detailed results about each test and summaries,
-#' written (to standard out) in jUnit XML format. This can be read by
+#' written to a file (or stdout) in jUnit XML format. This can be read by
 #' the Jenkins Continuous Integration System to report on a dashboard etc.
 #' Requires the XML package.
+#'
+#' This works for \code{\link{expect_that}} but not for the wrappers like
+#' \code{\link{expect_equals}} etc.
+#'
+#' To fit into the jUnit structure, context() becomes the \code{<testsuite>}
+#' name as well as the base of the \code{<testcase> classname}. The
+#' test_that() name becomes the rest of the \code{<testcase> classname}.
+#' The deparsed expect_that() call becomes the \code{<testcase>} name.
+#' On failure, the message goes into the \code{<failure>} node message
+#' argument (first line only) and into its text content (full message).
+#'
+#' Execution time and some other details are also recorded.
 #'
 #' References for the jUnit XML format:
 #' http://ant.1045680.n5.nabble.com/schema-for-junit-xml-output-td1375274.html
@@ -12,7 +24,9 @@
 #' @name JUnitReporter
 #' @export
 #' @examples
-#' test_package("testthat", reporter = newJUnitReporter("testjunit.xml"))
+#' if (require("XML")) {
+#'   test_package("testthat", reporter = newJUnitReporter("testjunit.xml"))
+#' }
 #' @keywords debugging
 NULL
 
@@ -20,9 +34,10 @@ JUnitReporter$do({
   self$file <- ""
   
   self$start_reporter <- function() {
-    library("XML")
+    if (!require("XML", quietly = TRUE)) {
+      stop("Please install the XML package", call. = F)
+    }
     self$results <- list()
-    self$n <- 0
     self$context <- "(ungrouped)"
     self$timer <- proc.time()
   }
@@ -49,18 +64,21 @@ JUnitReporter$do({
     }
     result$time <- round((proc.time() - self$timer)[["elapsed"]], 2)
     self$timer <- proc.time()
-    self$n <- self$n + 1
-    result$test <- if (self$test == "") "(unnamed)" else self$test
-    self$results[[self$context]][[toString(self$n)]] <-
-      result
+    result$test <-
+      ifelse(self$test == "", "(unnamed)", self$test)
+    result$call <-
+      ifelse(is.null(result$call), "(unexpected)", result$call)
+    self$results[[self$context]] <-
+      append(self$results[[self$context]], list(result))
   }
   
   self$end_reporter <- function() {
     cat("\n", file = stderr())
     xmlNodeOK <- function(name, ..., attrs = NULL) {
       ## do XML entity substitutions
-      if (!is.null(attrs))
+      if (!is.null(attrs)) {
         attrs <- sapply(attrs, function(x) toString(xmlTextNode(x)))
+      }
       xmlNode(name, ..., attrs = attrs)
     }
     classnameOK <- function(text) {
@@ -68,20 +86,20 @@ JUnitReporter$do({
     }
     suites <- lapply(names(self$results), function(context) {
       x <- self$results[[context]]
-      xnames <- sapply(x, function(xi) {
-        if (is.null(xi$call)) "(unexpected)" else xi$call
-      })
+      xnames <- vapply(x, "[[", "call", FUN.VALUE = character(1))
       xnames <- make.unique(xnames, sep = "_")
-      for (i in seq_along(x))
+      for (i in seq_along(x)) {
         x[[i]]$call <- xnames[[i]]
+      }
       testcases <- lapply(x, function(result) {
         failnode <- NULL
-        if (!result$passed)
+        if (!result$passed) {
           failnode <-
             xmlNodeOK("failure", attrs =
                       c(type = ifelse(result$error, "error", "failure"),
                         message = gsub("\n.*", "", result$message)),
                       .children = list(xmlTextNode(result$message)))
+        }
         xmlNodeOK("testcase", attrs =
                   c(classname = paste(classnameOK(context),
                         classnameOK(result$test), sep = "."),
