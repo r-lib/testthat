@@ -57,3 +57,9 @@ test_that("messages are caught by shows_message", {
   expect_that(g(), shows_message("b"))
   
 })
+
+test_that("shows_mesage / gives_warning work when no messages are generated", {
+  expect_that(gives_warning("a")(1)$message, is_identical_to("no warnings given"))
+  expect_that(shows_message("a")(1)$message, is_identical_to("no messages shown"))
+})
+
