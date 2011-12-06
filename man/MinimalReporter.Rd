@@ -1,12 +1,7 @@
 \name{MinimalReporter}
 \alias{MinimalReporter}
 \title{Test reporter: minimal.}
-
 \description{
-  Test reporter: minimal.
-}
-
-\details{
   The minimal test reporter provides the absolutely minimum
   amount of information: whether each expectation has
   succeeded, failed or experienced an error.  If you want
@@ -14,3 +9,4 @@
   you'll need to run a more informative test reporter.
 }
 \keyword{debugging}
+
