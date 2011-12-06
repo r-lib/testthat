@@ -12,12 +12,11 @@ Depends:
 Imports:
     digest,
     stringr (>= 0.4),
-    mutatr,
-    evaluate (>= 0.3)
+    evaluate (>= 0.3),
+    methods
 License: GPL
 LazyData: true
 Collate:
-    'aaa-classes.r'
     'auto-test.r'
     'colour-text.r'
     'context.r'
@@ -25,11 +24,11 @@ Collate:
     'expectation.r'
     'expectations.r'
     'library.r'
+    'reporter.r'
     'reporter-minimal.r'
     'reporter-stop.r'
     'reporter-summary.r'
     'reporter-zzz.r'
-    'reporter.r'
     'test-files.r'
     'test-package.r'
     'test-that.r'

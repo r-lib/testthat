@@ -1,3 +1,6 @@
+#' @include reporter.r
+NULL
+
 #' Test reporter: stop on error.
 #'
 #' The default reporter, executed when \code{expect_that} is run
@@ -10,41 +13,42 @@
 #' tests and gives you more context about the problem.
 #'
 #' @export
-#' @name StopReporter
 #' @keywords debugging
-NULL
+StopReporter <- setRefClass("StopReporter", contains = "Reporter", 
+  fields = c("failures"),
+  methods = list(
+    initialize = function() {
+      failures <<- list()
+      callSuper()
+    },
+    start_test = function(desc) {
+      test <<- desc
+    },
 
-StopReporter$do({
-  self$test <- NULL
-  self$failures <- list()
-  
-  self$start_test <- function(desc) {
-    self$test <- desc
-  }
-  
-  self$end_test <- function() {
-    test <- self$test
-    self$test <- NULL
-    if (length(self$failures) == 0) return()
-    
-    messages <- vapply(self$failures, "[[", "", "message")
-    if (length(messages) > 1) {
-      messages <- str_c("* ", messages, collapse = "\n")
-    }
-    self$failures <- list()
-    
-    msg <- str_c("Test failure in '", test, "'\n", messages)
-    stop(msg, call. = FALSE)      
-  }
-  
-  self$add_result <- function(result) {
-    if (result$passed) return()
+    end_test = function() {
+      cur_test <- test
+      test <<- NULL
+      if (length(failures) == 0) return()
 
-    # If running in test suite, store, otherwise raise immediately.
-    if (is.null(self$test)) {
-      stop(result$message, call. = FALSE)
-    } else {
-      self$failures <- c(self$failures, list(result))
-    }
-  }  
-})
+      messages <- vapply(failures, "[[", "", "message")
+      if (length(messages) > 1) {
+        messages <- str_c("* ", messages, collapse = "\n")
+      }
+      failures <<- list()
+
+      msg <- str_c("Test failure in '", cur_test, "'\n", messages)
+      stop(msg, call. = FALSE)
+    },
+
+    add_result = function(result) {
+      if (result$passed) return()
+
+      # If running in test suite, store, otherwise raise immediately.
+      if (is.null(test)) {
+        stop(result$message, call. = FALSE)
+      } else {
+        failures <<- c(failures, list(result))
+      }
+    }    
+  )
+)

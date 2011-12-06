@@ -1,3 +1,6 @@
+#' @include reporter.r
+NULL
+
 #' Test reporter: summary of errors.
 #' 
 #' This is the most useful reporting reporter as it lets you know both which
@@ -8,75 +11,72 @@
 #' As an additional benefit, this reporter will praise you from time-to-time
 #' if all your tests pass.
 #'
-#' @name SummaryReporter
 #' @export
 #' @keywords debugging
-NULL
+SummaryReporter <- setRefClass("SummaryReporter", contains = "Reporter", 
+  fields = list("failures" = "list", "n" = "integer"),
+  methods = list(
+  
+    start_context = function(desc) {
+      cat(desc, ": ")
+    },
 
-SummaryReporter$do({
-  labels <- c(1:9, letters, LETTERS)
-  
-  self$start_context <- function(desc) {
-    cat(desc, ": ")
-  }
-  
-  self$end_context <- function() {
-    cat("\n")
-  }
-  
-  self$start_reporter <- function() {
-    self$failures <- list()
-    self$n <- 0
-  }
-  
-  self$add_result <- function(result) {
-    if (result$passed) {
-      cat(colourise(".", fg = "light green"))
-    } else {
-      self$failed <- TRUE
-      self$n <- self$n + 1
-      
-      if (self$n > length(labels)) {
-        self$n <- length(labels)
-        cat(colourise("F", fg = "red"))
-      } else {
-        result$test <- self$test
-        self$failures[[self$n]] <- result
-        cat(colourise(labels[self$n], fg = "red"))
-      }
-      
-    }
-  }
-  
-  self$end_reporter <- function() {
-    charrep <- function(char, times) {
-      sapply(times, function(i) str_c(rep.int(char, i), collapse = ""))
-    }
-    
-    if (self$n == 0) {
+    end_context = function() {
       cat("\n")
-      if (sample(10, 1) == 1) {
-        cat(colourise(sample(.praise, 1), "light green"), "\n")
+    },
+
+    start_reporter = function() {
+      failures <<- list()
+      n <<- 0L
+    },
+
+    add_result = function(result) {
+      if (result$passed) {
+        cat(colourise(".", fg = "light green"))
+      } else {
+        failed <<- TRUE
+        n <<- n + 1L
+
+        if (n > length(labels)) {
+          n <<- length(labels)
+          cat(colourise("F", fg = "red"))
+        } else {
+          result$test <- test
+          failures[[n]] <<- result
+          cat(colourise(labels[n], fg = "red"))
+        }
+
       }
-    } else {
-      label <- labels[seq_len(self$n)]
-      type <- ifelse(sapply(self$failures, "[[", "error"), "Error", "Failure")
-      tests <- sapply(self$failures, "[[", "test")
-      header <- str_c(label, ". ", type, ": ", tests, " ")
-      linewidth <- ifelse(nchar(header) > getOption("width"),0,getOption("width") - nchar(header))
-      line <- charrep("-", linewidth )
+    },
 
-      message <- sapply(self$failures, "[[", "message")
+    end_reporter = function() {
+      charrep <- function(char, times) {
+        sapply(times, function(i) str_c(rep.int(char, i), collapse = ""))
+      }
 
-      cat("\n\n")
-      cat(str_c(
-        colourise(header, "red"), line, "\n", 
-        message, "\n", collapse = "\n"))      
+      if (n == 0) {
+        cat("\n")
+        if (sample(10, 1) == 1) {
+          cat(colourise(sample(.praise, 1), "light green"), "\n")
+        }
+      } else {
+        label <- labels[seq_len(n)]
+        type <- ifelse(sapply(failures, "[[", "error"), "Error", "Failure")
+        tests <- sapply(failures, "[[", "test")
+        header <- str_c(label, ". ", type, ": ", tests, " ")
+        linewidth <- ifelse(nchar(header) > getOption("width"),0,getOption("width") - nchar(header))
+        line <- charrep("-", linewidth )
+
+        message <- sapply(failures, "[[", "message")
+
+        cat("\n\n")
+        cat(str_c(
+          colourise(header, "red"), line, "\n", 
+          message, "\n", collapse = "\n"))      
+      }
     }
-  }
-  
-})
-
+  )
+)
 
 .praise <- c(
   "You rock!",
@@ -87,3 +87,4 @@ SummaryReporter$do({
   "Way to go!",
   "Nice code."
 )
+labels <- c(1:9, letters, LETTERS)

@@ -1,7 +1,8 @@
+#' @include reporter-stop.r
 reporter_accessors <- local({
   # Default has to be the stop reporter, since it is this that will be run by
   # default from the command line and in R CMD test.
-  reporter <- StopReporter$clone()
+  reporter <- StopReporter$new()
   
   set <- function(value) {
     reporter <<- value
@@ -44,7 +45,7 @@ with_reporter <- function(reporter, code) {
 #' @param reporter name of reporter
 #' @keywords internal
 find_reporter <- function(reporter) {
-  if (mutatr::is.mutatr(reporter)) return(reporter)
+  if (inherits(reporter, "Reporter")) return(reporter)
   
   name <- reporter
   str_sub(name, 1, 1) <- toupper(str_sub(name, 1, 1))
@@ -54,5 +55,5 @@ find_reporter <- function(reporter) {
     stop("Can not find test reporter ", reporter, call. = FALSE)
   }
   
-  get(name)$clone()
+  get(name)$new()
 }
