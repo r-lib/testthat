@@ -5,11 +5,14 @@
 #' \code{helper} and loaded before any tests are run.
 #'
 #' @param path path to tests
+#' @param reporter reporter to use
+#' @param filter If not \code{NULL}, only tests with file names matching this
+#'   regular expression will be executed.  Matching will take on the file
+#'   name after it has been stripped of \code{"test-"} and \code{".r"}.
 #' @param env environment in which to execute test suite. Defaults to new
 #    environment inheriting from the global environment.
-#' @param reporter reporter to use
 #' @export
-test_dir <- function(path, reporter = "summary", env = NULL) {
+test_dir <- function(path, filter = NULL, reporter = "summary", env = NULL) {
   reporter <- find_reporter(reporter)
   if (is.null(env)) {
     env <- new.env(parent = globalenv())    
@@ -18,6 +21,13 @@ test_dir <- function(path, reporter = "summary", env = NULL) {
   source_dir(path, "^helper.*\\.[rR]$", env = env)
   
   files <- dir(path, "^test.*\\.[rR]$", full.names = TRUE)
+  if (!is.null(filter)) {
+    test_names <- basename(files)
+    test_names <- str_replace(test_names, "test-?", "")
+    test_names <- str_replace(test_names, "\\.[rR]", "")
+  
+    files <- files[str_detect(test_names, filter)]
+  }
   with_reporter(reporter, lapply(files, function(file) {
     sys.source(file, chdir = TRUE, envir = new.env(parent = env))
     end_context()

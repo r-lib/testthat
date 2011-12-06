@@ -2,10 +2,16 @@
 \alias{test_package}
 \title{Run all tests in an installed package}
 \usage{
-  test_package(package, reporter = "summary")
+  test_package(package, filter = NULL,
+    reporter = "summary")
 }
 \arguments{
   \item{package}{package name}
+
+  \item{filter}{If not \code{NULL}, only tests with file
+  names matching this regular expression will be executed.
+  Matching will take on the file name after it has been
+  stripped of \code{"test-"} and \code{".r"}.}
 
   \item{reporter}{reporter to use}
 }

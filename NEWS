@@ -1,3 +1,6 @@
+* `test_dir` and `test_package` gain new `filter` argument which allows you to
+   restrict which tests are run.
+
 Version 0.5
 ------------------------------------------------------------------------------
 
