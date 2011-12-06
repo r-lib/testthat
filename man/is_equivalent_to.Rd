@@ -6,6 +6,9 @@ This expectation tests for equivalency: are two objects equal once their
 attributes have been removed.}
 \usage{
   is_equivalent_to(expected, label = NULL)
+
+  expect_equivalent(actual, expected, info = NULL,
+    label = NULL, expected.label = NULL)
 }
 \arguments{
   \item{expected}{expected value}
@@ -13,6 +16,9 @@ attributes have been removed.}
   \item{label}{label of expected object used in error
   messages.  Useful to override default (deparsed expected
   expression) when doing tests in a loop.}
+
+  \item{info}{extra information to be included in the
+  message (useful when writing tests in loops).}
 }
 \description{
   Expectation: is the object equivalent to a value? This
@@ -24,5 +30,19 @@ a <- b <- 1:3
 names(b) <- letters[1:3]
 expect_that(a, is_equivalent_to(b, label = b))
 expect_equivalent(a, b)
+}
+\seealso{
+  Other expectations: \code{\link{equals}},
+  \code{\link{expect_equal}}, \code{\link{expect_error}},
+  \code{\link{expect_false}},
+  \code{\link{expect_identical}}, \code{\link{expect_is}},
+  \code{\link{expect_match}}, \code{\link{expect_message}},
+  \code{\link{expect_output}}, \code{\link{expect_true}},
+  \code{\link{expect_warning}},
+  \code{\link{gives_warning}}, \code{\link{is_a}},
+  \code{\link{is_false}}, \code{\link{is_identical_to}},
+  \code{\link{is_true}}, \code{\link{matches}},
+  \code{\link{prints_text}}, \code{\link{shows_message}},
+  \code{\link{takes_less_than}}, \code{\link{throws_error}}
 }
 

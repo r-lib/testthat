@@ -4,9 +4,17 @@
 \title{Expectation: does the object inherit from a class?}
 \usage{
   is_a(class)
+
+  expect_is(actual, expected, info = NULL, label = NULL)
 }
 \arguments{
   \item{class}{character vector of class names}
+
+  \item{info}{extra information to be included in the
+  message (useful when writing tests in loops).}
+
+  \item{label}{object label. When \code{NULL}, computed
+  from deparsed object.}
 }
 \description{
   Tests whether or not an object inherits from any of a
@@ -25,5 +33,20 @@ expect_that(is.data.frame(mtcars), is_true())
 }
 \seealso{
   \code{\link{inherits}}
+
+  Other expectations: \code{\link{equals}},
+  \code{\link{expect_equal}},
+  \code{\link{expect_equivalent}},
+  \code{\link{expect_error}}, \code{\link{expect_false}},
+  \code{\link{expect_identical}},
+  \code{\link{expect_match}}, \code{\link{expect_message}},
+  \code{\link{expect_output}}, \code{\link{expect_true}},
+  \code{\link{expect_warning}},
+  \code{\link{gives_warning}},
+  \code{\link{is_equivalent_to}}, \code{\link{is_false}},
+  \code{\link{is_identical_to}}, \code{\link{is_true}},
+  \code{\link{matches}}, \code{\link{prints_text}},
+  \code{\link{shows_message}},
+  \code{\link{takes_less_than}}, \code{\link{throws_error}}
 }
 

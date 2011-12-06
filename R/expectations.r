@@ -4,8 +4,8 @@
 #'
 #' @param class character vector of class names
 #' @seealso \code{\link{inherits}}
-#' @export  is_a expect_is
-#' @aliases is_a expect_is
+#' @family expectations
+#' @export
 #' @examples
 #' expect_that(1, is_a("numeric"))
 #' a <- matrix(1:10, nrow = 5)
@@ -25,6 +25,9 @@ is_a <- function(class) {
     )
   }
 }
+#' @export
+#' @rdname is_a
+#' @inheritParams expect_that
 expect_is <- function(actual, expected, info = NULL, label = NULL) {
   if (is.null(label)) {
     label <- find_expr("actual")
@@ -39,8 +42,8 @@ expect_is <- function(actual, expected, info = NULL, label = NULL) {
 #' a less informative error message.
 #'
 #' @seealso \code{\link{is_false}} for complement
-#' @aliases is_true expect_true
-#' @export  is_true expect_true
+#' @family expectations
+#' @export
 #' @examples
 #' expect_that(2 == 2, is_true())
 #' expect_true(2 == 2)
@@ -64,6 +67,9 @@ is_true <- function() {
     )
   }
 }
+#' @export
+#' @rdname is_true
+#' @inheritParams expect_that
 expect_true <- function(actual, info = NULL, label = NULL) {
   if (is.null(label)) {
     label <- find_expr("actual")
@@ -75,8 +81,8 @@ expect_true <- function(actual, info = NULL, label = NULL) {
 #' 
 #' A useful fall-back expectation like \code{\link{is_true}}
 #' 
-#' @export  is_false expect_false
-#' @aliases is_false expect_false
+#' @family expectations
+#' @export
 #' @examples
 #' expect_that(3 == 2, is_false())
 #' expect_false(3 == 2)
@@ -91,6 +97,9 @@ is_false <- function() {
     )
   }
 }
+#' @export
+#' @rdname is_false
+#' @inheritParams expect_that
 expect_false <- function(actual, info = NULL, label = NULL) {
   if (is.null(label)) {
     label <- find_expr("actual")
@@ -108,8 +117,8 @@ expect_false <- function(actual, info = NULL, label = NULL) {
 #'   override default (deparsed expected expression) when doing tests in a
 #'   loop.
 #' @param ... other values passed to \code{\link{all.equal}}
-#' @aliases equals expect_equal
-#' @export  equals expect_equal
+#' @family expectations
+#' @export
 #' @examples
 #' a <- 10
 #' expect_that(a, equals(10))
@@ -140,6 +149,9 @@ equals <- function(expected, label = NULL, ...) {
     )
   }
 }
+#' @export
+#' @rdname equals
+#' @inheritParams expect_that
 expect_equal <- function(actual, expected, ..., info = NULL, label = NULL,
                          expected.label = NULL) {
   if (is.null(label)) {
@@ -161,8 +173,8 @@ expect_equal <- function(actual, expected, ..., info = NULL, label = NULL,
 #' @param label label of expected object used in error messages.  Useful to 
 #'   override default (deparsed expected expression) when doing tests in a
 #'   loop.
-#' @aliases is_equivalent_to expect_equivalent
-#' @export  is_equivalent_to expect_equivalent
+#' @family expectations
+#' @export
 #' @examples
 #' a <- b <- 1:3
 #' names(b) <- letters[1:3]
@@ -178,6 +190,9 @@ is_equivalent_to <- function(expected, label = NULL) {
     equals(expected, check.attributes = FALSE)(actual)
   } 
 }
+#' @export
+#' @rdname is_equivalent_to
+#' @inheritParams expect_that
 expect_equivalent <- function(actual, expected, info = NULL, label = NULL,
                               expected.label=NULL) {
   if (is.null(label)) {
@@ -198,8 +213,8 @@ expect_equivalent <- function(actual, expected, info = NULL, label = NULL,
 #' @param label label of expected object used in error messages.  Useful to 
 #'   override default (deparsed expected expression) when doing tests in a
 #'   loop.
-#' @export  is_identical_to expect_identical
-#' @aliases is_identical_to expect_identical
+#' @family expectations
+#' @export
 #' @examples
 #' a <- letters[1:3]
 #' expect_that(a, is_identical_to(c("a", "b", "c")))
@@ -231,6 +246,9 @@ is_identical_to <- function(expected, label = NULL) {
     )
   }
 }
+#' @export
+#' @rdname is_identical_to
+#' @inheritParams expect_that
 expect_identical <- function(actual, expected, info = NULL, label = NULL,
                              expected.label = NULL) {
   if (is.null(label)) {
@@ -253,8 +271,8 @@ expect_identical <- function(actual, expected, info = NULL, label = NULL,
 #'    or does only one need to match (FALSE)
 #' @seealso \code{\link[stringr]{str_detect}} for the function that powers
 #'   the string matching
-#' @aliases matches expect_match
-#' @export  matches expect_match
+#' @family expectations
+#' @export
 #' @examples 
 #' expect_that("Testing is fun", matches("fun"))
 #' expect_that("Testing is fun", matches("f.n"))
@@ -268,6 +286,9 @@ matches <- function(regexp, all = TRUE) {
     )
   }  
 }
+#' @export
+#' @rdname matches
+#' @inheritParams expect_that
 expect_match <- function(actual, expected, all = TRUE, info = NULL,
                          label = NULL) {
   if (is.null(label)) {
@@ -280,8 +301,8 @@ expect_match <- function(actual, expected, all = TRUE, info = NULL,
 #' 
 #' @param regexp regular expression to test against
 #' @param ... other arguments passed to \code{\link{grepl}}
-#' @export  prints_text expect_output
-#' @aliases prints_text expect_output
+#' @family expectations
+#' @export
 #' @examples 
 #' str(mtcars)
 #' expect_that(str(mtcars), prints_text("32 obs"))
@@ -293,6 +314,9 @@ prints_text <- function(regexp, ...) {
     matches(regexp, ...)(output)
   }
 }
+#' @export
+#' @rdname prints_text
+#' @inheritParams expect_that
 expect_output <- function(actual, expected, ..., info = NULL, label = NULL) {
   if (is.null(label)) {
     label <- find_expr("actual")
@@ -304,8 +328,8 @@ expect_output <- function(actual, expected, ..., info = NULL, label = NULL) {
 #' 
 #' @param regexp optional regular expression to match. If not specified, just
 #'   asserts that expression throws some error.
-#' @export  throws_error expect_error
-#' @aliases throws_error expect_error
+#' @family expectations
+#' @export
 #' @examples
 #' expect_that(log("a"), throws_error())
 #' expect_error(log("a"))
@@ -328,6 +352,9 @@ throws_error <- function(regexp = NULL) {
     }
   }
 } 
+#' @export
+#' @rdname throws_error
+#' @inheritParams expect_that
 expect_error <- function(actual, expected = NULL, info = NULL, label = NULL) {
   if (is.null(label)) {
     label <- find_expr("actual")
@@ -341,8 +368,8 @@ expect_error <- function(actual, expected = NULL, info = NULL, label = NULL) {
 #' 
 #' @param regexp optional regular expression to match. If not specified, just
 #'   asserts that expression gives some warning.
-#' @export  gives_warning expect_warning
-#' @aliases gives_warning expect_warning
+#' @family expectations
+#' @export
 #' @importFrom evaluate is.warning
 #' @examples
 #' expect_that(warning("a"), gives_warning())
@@ -361,6 +388,9 @@ gives_warning <- function(regexp = NULL) {
     }
   }
 }
+#' @export
+#' @rdname gives_warning
+#' @inheritParams expect_that
 expect_warning <- function(actual, expected = NULL, info = NULL,
                            label = NULL) {
   if (is.null(label)) {
@@ -375,8 +405,8 @@ expect_warning <- function(actual, expected = NULL, info = NULL,
 #' 
 #' @param regexp optional regular expression to match. If not specified, just
 #'   asserts that expression shows some message.
-#' @export  shows_message expect_message
-#' @aliases shows_message expect_message
+#' @family expectations
+#' @export
 #' @importFrom evaluate evaluate is.message
 #' @examples
 #' expect_that(message("a"), shows_message())
@@ -395,6 +425,9 @@ shows_message <- function(regexp = NULL) {
     }
   }
 } 
+#' @export
+#' @rdname shows_message
+#' @inheritParams expect_that
 expect_message <- function(actual, expected = NULL, info = NULL,
                            label = NULL) {
   if (is.null(label)) {
@@ -407,6 +440,7 @@ expect_message <- function(actual, expected = NULL, info = NULL,
 #' 
 #' This is useful for performance regression testing.
 #' 
+#' @family expectations
 #' @export
 #' @param amount maximum duration in seconds
 takes_less_than <- function(amount) {
