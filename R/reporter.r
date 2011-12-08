@@ -14,6 +14,8 @@ Reporter <- setRefClass("Reporter",
     initialize = function() {
       context_open <<- FALSE
       failed <<- FALSE
+      
+      .self
     },
     start_reporter = function() {
       failed <<- FALSE
