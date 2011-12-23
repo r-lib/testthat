@@ -1,36 +1,18 @@
 Package: testthat
-Type: Package
-Title: Testthat code.  Tools to make testing fun :)
-Version: 0.5
-Author: Hadley Wickham <h.wickham@gmail.com>
+Imports: digest, stringr (>= 0.4), evaluate (>= 0.3), methods
 Maintainer: Hadley Wickham <h.wickham@gmail.com>
-Description: A testing package specifically tailored for R
-    that's fun, flexible and easy to set up.
-URL: http://had.co.nz/
-Depends:
-    R (>= 2.8)
-Imports:
-    digest,
-    stringr (>= 0.4),
-    evaluate (>= 0.3),
-    methods
 License: GPL
+Title: Testthat code.  Tools to make testing fun :)
 LazyData: true
-Collate:
-    'auto-test.r'
-    'colour-text.r'
-    'context.r'
-    'expect-that.r'
-    'expectation.r'
-    'expectations.r'
-    'library.r'
-    'reporter.r'
-    'reporter-minimal.r'
-    'reporter-stop.r'
-    'reporter-summary.r'
-    'reporter-zzz.r'
-    'test-files.r'
-    'test-package.r'
-    'test-that.r'
-    'utils.r'
-    'watcher.r'
+Type: Package
+Author: Hadley Wickham <h.wickham@gmail.com>
+Description: A testing package specifically tailored for R that's fun,
+    flexible and easy to set up.
+Version: 0.5
+URL: http://had.co.nz/
+Depends: R (>= 2.8)
+Collate: 'auto-test.r' 'colour-text.r' 'context.r' 'expectation.r'
+    'expectations.r' 'expect-that.r' 'generate-reference-files.r'
+    'library.r' 'reporter.r' 'reporter-minimal.r' 'reporter-stop.r'
+    'reporter-summary.r' 'reporter-zzz.r' 'test-files.r'
+    'test-package.r' 'test-that.r' 'utils.r' 'watcher.r'
