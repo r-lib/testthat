@@ -5,7 +5,7 @@
 \usage{
   matches(regexp, all = TRUE)
 
-  expect_match(actual, expected, all = TRUE, info = NULL,
+  expect_match(object, regexp, all = TRUE, info = NULL,
     label = NULL)
 }
 \arguments{
@@ -14,6 +14,8 @@
   \item{all}{should all elements of actual value match
   \code{regexp} (TRUE), or does only one need to match
   (FALSE)}
+
+  \item{object}{object to test}
 
   \item{info}{extra information to be included in the
   message (useful when writing tests in loops).}

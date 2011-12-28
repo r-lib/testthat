@@ -5,13 +5,15 @@
 \usage{
   prints_text(regexp, ...)
 
-  expect_output(actual, expected, ..., info = NULL,
+  expect_output(object, regexp, ..., info = NULL,
     label = NULL)
 }
 \arguments{
   \item{regexp}{regular expression to test against}
 
   \item{...}{other arguments passed to \code{\link{grepl}}}
+
+  \item{object}{object to test}
 
   \item{info}{extra information to be included in the
   message (useful when writing tests in loops).}

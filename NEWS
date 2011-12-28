@@ -1,4 +1,6 @@
-* All `mutatr` classes have been replaced with ReferenceClasses
+* Better documentation for short-hand expectations.
+
+* All `mutatr` classes have been replaced with ReferenceClasses.
 
 * `test_dir` and `test_package` gain new `filter` argument which allows you to
    restrict which tests are run.

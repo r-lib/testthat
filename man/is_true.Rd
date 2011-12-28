@@ -5,9 +5,11 @@
 \usage{
   is_true()
 
-  expect_true(actual, info = NULL, label = NULL)
+  expect_true(object, info = NULL, label = NULL)
 }
 \arguments{
+  \item{object}{object to test}
+
   \item{info}{extra information to be included in the
   message (useful when writing tests in loops).}
 
