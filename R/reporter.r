@@ -7,13 +7,14 @@
 Reporter <- setRefClass("Reporter", 
   fields = list(
     context = "character", 
-    test = "character", 
+    test = "ANY", 
     failed = "logical", 
     context_open = "logical"
   ), methods = list(
     initialize = function() {
       context_open <<- FALSE
       failed <<- FALSE
+      test <<- NULL
       
       .self
     },
