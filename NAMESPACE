@@ -46,3 +46,6 @@ importFrom(evaluate,is.warning)
 importFrom(evaluate,try_capture_stack)
 S3method(format,expectation)
 S3method(print,expectation)
+
+exportClass(Reporter, MinimalReporter, StopReporter,
+            SummaryReporter)

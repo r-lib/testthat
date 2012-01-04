@@ -4,18 +4,18 @@
 #' methods.
 #'
 #' @keywords internal.
-Reporter <- setRefClass("Reporter", 
+Reporter <- setRefClass("Reporter",
   fields = list(
-    context = "character", 
-    test = "character", 
-    failed = "logical", 
+    context = "character",
+    test = "character",
+    failed = "logical",
     context_open = "logical"
   ), methods = list(
-    initialize = function() {
+    initialize = function(...) {
       context_open <<- FALSE
       failed <<- FALSE
-      
-      .self
+
+      initFields(...)
     },
     start_reporter = function() {
       failed <<- FALSE

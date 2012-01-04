@@ -1,5 +1,6 @@
 \name{MinimalReporter}
 \alias{MinimalReporter}
+\alias{MinimalReporter-class}
 \title{Test reporter: minimal.}
 \description{
   The minimal test reporter provides the absolutely minimum
