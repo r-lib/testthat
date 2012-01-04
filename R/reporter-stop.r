@@ -17,9 +17,9 @@ NULL
 StopReporter <- setRefClass("StopReporter", contains = "Reporter", 
   fields = c("failures"),
   methods = list(
-    initialize = function() {
+    initialize = function(...) {
       failures <<- list()
-      callSuper()
+      callSuper(...)
     },
     start_test = function(desc) {
       test <<- desc

@@ -1,5 +1,6 @@
 \name{StopReporter}
 \alias{StopReporter}
+\alias{StopReporter-class}
 \title{Test reporter: stop on error.}
 \description{
   The default reporter, executed when \code{expect_that} is
