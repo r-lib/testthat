@@ -8,12 +8,12 @@ Description: A testing package specifically tailored for R
     that's fun, flexible and easy to set up.
 URL: http://had.co.nz/
 Depends:
-    R (>= 2.8)
+    R (>= 2.8),
+    methods
 Imports:
     digest,
     stringr (>= 0.4),
-    evaluate (>= 0.3),
-    methods
+    evaluate (>= 0.3)
 License: GPL
 LazyData: true
 Collate:

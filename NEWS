@@ -1,3 +1,6 @@
+* Depend on `methods` rather than requiring it so that testthat works when run
+  from `Rscript`
+
 Version 0.6
 ------------------------------------------------------------------------------
 
