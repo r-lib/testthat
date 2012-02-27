@@ -1,3 +1,5 @@
+* `SummaryReporter`: You don't get praise until you have some tests.
+
 * Depend on `methods` rather than requiring it so that testthat works when run
   from `Rscript`
 

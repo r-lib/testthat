@@ -14,7 +14,11 @@ NULL
 #' @export
 #' @keywords debugging
 SummaryReporter <- setRefClass("SummaryReporter", contains = "Reporter", 
-  fields = list("failures" = "list", "n" = "integer"),
+  fields = list(
+    "failures" = "list", 
+    "n" = "integer", 
+    "has_tests" = "logical"),
+
   methods = list(
   
     start_context = function(desc) {
@@ -27,10 +31,12 @@ SummaryReporter <- setRefClass("SummaryReporter", contains = "Reporter",
 
     start_reporter = function() {
       failures <<- list()
+      has_tests <<- FALSE
       n <<- 0L
     },
 
     add_result = function(result) {
+      has_tests <<- TRUE
       if (result$passed) {
         cat(colourise(".", fg = "light green"))
       } else {
@@ -56,7 +62,7 @@ SummaryReporter <- setRefClass("SummaryReporter", contains = "Reporter",
 
       if (n == 0) {
         cat("\n")
-        if (sample(10, 1) == 1) {
+        if (has_tests && sample(10, 1) == 1) {
           cat(colourise(sample(.praise, 1), "light green"), "\n")
         }
       } else {
