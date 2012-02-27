@@ -136,6 +136,18 @@ expect_false <- function(object, info = NULL, label = NULL) {
 #' expect_that(sqrt(2) ^ 2 == 2, is_true())
 #' expect_that(sqrt(2) ^ 2, is_identical_to(2))
 #' }
+#'
+#' # You can pass on additional arguments to all.equal:
+#' \dontrun{
+#' # Test the ABSOLUTE difference is within .002
+#' expect_equal(object = 10.01, expected = 10, tolerance = .002, 
+#'   scale = 1)
+#'
+#' # Test the RELATIVE difference is within .002
+#' expectedValue <- 10
+#' expect_equal(object = 10.01, expected = expectedValue, tolerance = 0.002,
+#'   scale = expectedValue)
+#' }
 equals <- function(expected, label = NULL, ...) {
   if (is.null(label)) {
     label <- find_expr("expected")
