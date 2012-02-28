@@ -1,3 +1,6 @@
+* New `make_expectation` function to programmatically generate an equality
+  expectation. (Fixes #24)
+
 * `SummaryReporter`: You don't get praise until you have some tests.
 
 * Depend on `methods` rather than requiring it so that testthat works when run

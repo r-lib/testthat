@@ -34,3 +34,4 @@ Collate:
     'test-that.r'
     'utils.r'
     'watcher.r'
+    'make-expectation.r'
