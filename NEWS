@@ -1,3 +1,6 @@
+* Bug fixes for when nothing was generated in `gives_warning` /
+  `shows_message`. (Thanks to Bernd Bischl)
+
 * New `make_expectation` function to programmatically generate an equality
   expectation. (Fixes #24)
 
