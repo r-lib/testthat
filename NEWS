@@ -1,3 +1,5 @@
+* Improvements to reference classes (Thanks to John Chambers)
+
 * Bug fixes for when nothing was generated in `gives_warning` /
   `shows_message`. (Thanks to Bernd Bischl)
 

@@ -12,6 +12,7 @@ NULL
 #' if all your tests pass.
 #'
 #' @export
+#' @exportClass SummaryReporter
 #' @keywords debugging
 SummaryReporter <- setRefClass("SummaryReporter", contains = "Reporter", 
   fields = list(
