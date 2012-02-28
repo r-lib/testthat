@@ -13,6 +13,7 @@ NULL
 #'
 #' @export
 #' @exportClass SummaryReporter
+#' @aliases SummaryReporter-class
 #' @keywords debugging
 SummaryReporter <- setRefClass("SummaryReporter", contains = "Reporter", 
   fields = list(

@@ -1,5 +1,6 @@
 \name{SummaryReporter}
 \alias{SummaryReporter}
+\alias{SummaryReporter-class}
 \title{Test reporter: summary of errors.}
 \description{
   This is the most useful reporting reporter as it lets you

@@ -11,6 +11,7 @@ NULL
 #' @export
 #' @exportClass MinimalReporter
 #' @keywords debugging
+#' @aliases MinimalReporter-class
 MinimalReporter <- setRefClass("MinimalReporter", contains = "Reporter",
   methods = list(
     add_result = function(result) { 

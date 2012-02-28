@@ -14,6 +14,7 @@ NULL
 #'
 #' @export
 #' @exportClass StopReporter
+#' @aliases StopReporter-class
 #' @keywords debugging
 StopReporter <- setRefClass("StopReporter", contains = "Reporter", 
   fields = c("failures"),

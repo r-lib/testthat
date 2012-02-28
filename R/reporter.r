@@ -4,6 +4,7 @@
 #' methods.
 #'
 #' @keywords internal.
+#' @aliases Reporter-class
 #' @exportClass Reporter
 Reporter <- setRefClass("Reporter", 
   fields = list(
