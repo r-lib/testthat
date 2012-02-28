@@ -49,7 +49,7 @@ SummaryReporter <- setRefClass("SummaryReporter", contains = "Reporter",
           n <<- length(labels)
           cat(colourise("F", fg = "red"))
         } else {
-          result$test <- test
+          result$test <- if (is.null(test)) "(unknown)" else test
           failures[[n]] <<- result
           cat(colourise(labels[n], fg = "red"))
         }
@@ -70,7 +70,7 @@ SummaryReporter <- setRefClass("SummaryReporter", contains = "Reporter",
       } else {
         label <- labels[seq_len(n)]
         type <- ifelse(sapply(failures, "[[", "error"), "Error", "Failure")
-        tests <- sapply(failures, "[[", "test")
+        tests <- vapply(failures, "[[", "test", FUN.VALUE = character(1))
         header <- str_c(label, ". ", type, ": ", tests, " ")
         linewidth <- ifelse(nchar(header) > getOption("width"),0,getOption("width") - nchar(header))
         line <- charrep("-", linewidth )
