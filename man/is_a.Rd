@@ -1,22 +1,29 @@
 \name{is_a}
+\alias{expect_is}
+\alias{is_a}
 \title{Expectation: does the object inherit from a class?}
-\usage{is_a(class)}
+\usage{
+  is_a(class)
 
-\description{
-  Expectation: does the object inherit from a class?
+  expect_is(object, class, info = NULL, label = NULL)
 }
+\arguments{
+  \item{class}{character vector of class names}
 
-\details{
+  \item{object}{object to test}
+
+  \item{info}{extra information to be included in the
+  message (useful when writing tests in loops).}
+
+  \item{label}{object label. When \code{NULL}, computed
+  from deparsed object.}
+}
+\description{
   Tests whether or not an object inherits from any of a
   list of classes.
 }
-\seealso{\code{\link{inherits}}}
-\alias{is_a}
-\alias{expect_is}
-\arguments{
-  \item{class}{character vector of class names}
-}
-\examples{expect_that(1, is_a("numeric"))
+\examples{
+expect_that(1, is_a("numeric"))
 a <- matrix(1:10, nrow = 5)
 expect_that(a, is_a("matrix"))
 
@@ -24,4 +31,24 @@ expect_that(mtcars, is_a("data.frame"))
 expect_is(mtcars, "data.frame")
 # alternatively for classes that have an is method
 expect_that(is.data.frame(mtcars), is_true())
-# doesn't read quite as nicely}
+# doesn't read quite as nicely
+}
+\seealso{
+  \code{\link{inherits}}
+
+  Other expectations: \code{\link{equals}},
+  \code{\link{expect_equal}},
+  \code{\link{expect_equivalent}},
+  \code{\link{expect_error}}, \code{\link{expect_false}},
+  \code{\link{expect_identical}},
+  \code{\link{expect_match}}, \code{\link{expect_message}},
+  \code{\link{expect_output}}, \code{\link{expect_true}},
+  \code{\link{expect_warning}},
+  \code{\link{gives_warning}},
+  \code{\link{is_equivalent_to}}, \code{\link{is_false}},
+  \code{\link{is_identical_to}}, \code{\link{is_true}},
+  \code{\link{matches}}, \code{\link{prints_text}},
+  \code{\link{shows_message}},
+  \code{\link{takes_less_than}}, \code{\link{throws_error}}
+}
+

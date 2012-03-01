@@ -1,17 +1,28 @@
 \name{expect_that}
 \alias{expect_that}
 \title{Expect that a condition holds.}
-\usage{expect_that(object, condition, info, label)}
-
-\description{
-  Expect that a condition holds.
+\usage{
+  expect_that(object, condition, info = NULL, label = NULL)
 }
+\arguments{
+  \item{object}{object to test}
 
-\details{
+  \item{condition,}{a function that returns whether or not
+  the condition is met, and if not, an error message to
+  display.}
+
+  \item{label}{object label. When \code{NULL}, computed
+  from deparsed object.}
+
+  \item{info}{extra information to be included in the
+  message (useful when writing tests in loops).}
+}
+\description{
   An expectation checks whether a single condition holds
-  true.  \pkg{testthat} currently provides the following
+  true. \pkg{testthat} currently provides the following
   expectations.  See their documentation for more details
-
+}
+\details{
   \itemize{ \item \code{\link{is_true}}: truth \item
   \code{\link{is_false}}: falsehood \item
   \code{\link{is_a}}: inheritance \item
@@ -29,16 +40,11 @@
   \code{\link{test_that}} and tests are arranged into
   contexts with \code{\link{context}}.
 }
-\arguments{
-  \item{object}{object to test}
-  \item{condition,}{a function that returns whether or not the condition
-is met, and if not, an error message to display.}
-  \item{label}{object label. When \code{NULL}, computed from deparsed object.}
-  \item{info}{extra information to be included in the message (useful when
-writing tests in loops).}
-}
-\examples{expect_that(5 * 2, equals(10))
+\examples{
+expect_that(5 * 2, equals(10))
 expect_that(sqrt(2) ^ 2, equals(2))
 \dontrun{
 expect_that(sqrt(2) ^ 2, is_identical_to(2))
-}}
+}
+}
+

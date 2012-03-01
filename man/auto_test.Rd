@@ -1,19 +1,28 @@
 \name{auto_test}
 \alias{auto_test}
 \title{Watches code and tests for changes, rerunning tests as appropriate.}
-\usage{auto_test(code_path, test_path, reporter="summary", env)}
-
-\description{
-  Watches code and tests for changes, rerunning tests as
-  appropriate.
+\usage{
+  auto_test(code_path, test_path, reporter = "summary",
+    env = NULL)
 }
+\arguments{
+  \item{code_path}{path to directory containing code}
 
-\details{
+  \item{test_path}{path to directory containing tests}
+
+  \item{reporter}{test reporter to use}
+
+  \item{env}{environment in which to execute test suite.
+  Defaults to new environment inheriting from the global
+  environment.}
+}
+\description{
   The idea behind \code{auto_test} is that you just leave
   it running while you develop your code.  Everytime you
   save a file it will be automatically tested and you can
   easily see if your changes have caused any test failures.
-
+}
+\details{
   The current strategy for rerunning tests is as follows:
 
   \itemize{ \item if any code has changed, then those files
@@ -28,12 +37,8 @@
   \item Mimic ruby's autotest and rerun only failing tests
   until they pass, and then rerun all tests. }
 }
-\seealso{\code{\link{auto_test_package}}}
-\keyword{debugging}
-\arguments{
-  \item{code_path}{path to directory containing code}
-  \item{test_path}{path to directory containing tests}
-  \item{reporter}{test reporter to use}
-  \item{env}{environment in which to execute test suite. Defaults to new
-environment inheriting from the global environment.}
+\seealso{
+  \code{\link{auto_test_package}}
 }
+\keyword{debugging}
+

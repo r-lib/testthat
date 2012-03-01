@@ -4,29 +4,36 @@
 #' methods.
 #'
 #' @keywords internal.
-#' @name Reporter
-NULL
-
-Reporter$do({
-  self$context <- ""
-  self$test <- ""
-  self$failed <- FALSE
-  
-  self$context_open <- FALSE
-    
-  self$start_reporter <- function() {
-    self$failed <- FALSE
-  }
-  self$start_context <- function(desc) {
-    self$context <- desc
-  }
-  self$start_test <- function(desc) {
-    self$test <- desc
-  }
-  self$add_result <- function(result) {}
-  self$end_test <- function() {
-    self$test <- ""
-  }
-  self$end_context <- function() {}
-  self$end_reporter <- function() {}
-})
+#' @aliases Reporter-class
+#' @exportClass Reporter
+Reporter <- setRefClass("Reporter", 
+  fields = list(
+    context = "character", 
+    test = "ANY", 
+    failed = "logical", 
+    context_open = "logical"
+  ), methods = list(
+    initialize = function(...) {
+      context_open <<- FALSE
+      failed <<- FALSE
+      test <<- NULL
+      
+      initFields(...)
+    },
+    start_reporter = function() {
+      failed <<- FALSE
+    },
+    start_context = function(desc) {
+      context <<- desc
+    },
+    start_test = function(desc) {
+      test <<- desc
+    },
+    add_result = function(result) {},
+    end_test = function() {
+      test <<- ""
+    },
+    end_context = function() {},
+    end_reporter = function() {}
+  )
+)

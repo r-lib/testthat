@@ -1,25 +1,38 @@
 \name{equals}
-\title{Expectation: is the object equal (with numerical tolerance) to a value?}
-\usage{equals(expected, label, ...)}
-
-\description{
-  Expectation: is the object equal (with numerical
-  tolerance) to a value?
-}
-
-\details{
-  Comparison performed using \code{\link{all.equal}}.
-}
 \alias{equals}
 \alias{expect_equal}
-\arguments{
-  \item{expected}{expected value}
-  \item{label}{label of expected object used in error messages.  Useful to 
-override default (deparsed expected expression) when doing tests in a
-loop.}
-  \item{...}{other values passed to \code{\link{all.equal}}}
+\title{Expectation: is the object equal (with numerical tolerance) to a value?}
+\usage{
+  equals(expected, label = NULL, ...)
+
+  expect_equal(object, expected, ..., info = NULL,
+    label = NULL, expected.label = NULL)
 }
-\examples{a <- 10
+\arguments{
+  \item{expected}{Expected value}
+
+  \item{label}{For full form, label of expected object used
+  in error messages. Useful to override default (deparsed
+  expected expression) when doing tests in a loop.  For
+  short cut form, object label. When \code{NULL}, computed
+  from deparsed object.}
+
+  \item{expected.label}{Equivalent of \code{label} for
+  shortcut form.}
+
+  \item{...}{other values passed to
+  \code{\link{all.equal}}}
+
+  \item{object}{object to test}
+
+  \item{info}{extra information to be included in the
+  message (useful when writing tests in loops).}
+}
+\description{
+  Comparison performed using \code{\link{all.equal}}.
+}
+\examples{
+a <- 10
 expect_that(a, equals(10))
 expect_equal(a, 10)
 
@@ -32,4 +45,32 @@ expect_equal(sqrt(2) ^ 2, 2)
 \dontrun{
 expect_that(sqrt(2) ^ 2 == 2, is_true())
 expect_that(sqrt(2) ^ 2, is_identical_to(2))
-}}
+}
+
+# You can pass on additional arguments to all.equal:
+\dontrun{
+# Test the ABSOLUTE difference is within .002
+expect_equal(object = 10.01, expected = 10, tolerance = .002,
+  scale = 1)
+
+# Test the RELATIVE difference is within .002
+expectedValue <- 10
+expect_equal(object = 10.01, expected = expectedValue, tolerance = 0.002,
+  scale = expectedValue)
+}
+}
+\seealso{
+  Other expectations: \code{\link{expect_equivalent}},
+  \code{\link{expect_error}}, \code{\link{expect_false}},
+  \code{\link{expect_identical}}, \code{\link{expect_is}},
+  \code{\link{expect_match}}, \code{\link{expect_message}},
+  \code{\link{expect_output}}, \code{\link{expect_true}},
+  \code{\link{expect_warning}},
+  \code{\link{gives_warning}}, \code{\link{is_a}},
+  \code{\link{is_equivalent_to}}, \code{\link{is_false}},
+  \code{\link{is_identical_to}}, \code{\link{is_true}},
+  \code{\link{matches}}, \code{\link{prints_text}},
+  \code{\link{shows_message}},
+  \code{\link{takes_less_than}}, \code{\link{throws_error}}
+}
+

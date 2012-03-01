@@ -1,17 +1,45 @@
 \name{is_false}
+\alias{expect_false}
+\alias{is_false}
 \title{Expectation: is the object false?}
+\usage{
+  is_false()
 
-\description{
-  Expectation: is the object false?
+  expect_false(object, info = NULL, label = NULL)
 }
+\arguments{
+  \item{object}{object to test}
 
-\details{
+  \item{info}{extra information to be included in the
+  message (useful when writing tests in loops).}
+
+  \item{label}{object label. When \code{NULL}, computed
+  from deparsed object.}
+}
+\description{
   A useful fall-back expectation like \code{\link{is_true}}
 }
-\alias{is_false}
-\alias{expect_false}
-\examples{expect_that(3 == 2, is_false())
+\examples{
+expect_that(3 == 2, is_false())
 expect_false(3 == 2)
 
 a <- 1:3
-expect_that(length(a) == 4, is_false())}
+expect_that(length(a) == 4, is_false())
+}
+\seealso{
+  Other expectations: \code{\link{equals}},
+  \code{\link{expect_equal}},
+  \code{\link{expect_equivalent}},
+  \code{\link{expect_error}},
+  \code{\link{expect_identical}}, \code{\link{expect_is}},
+  \code{\link{expect_match}}, \code{\link{expect_message}},
+  \code{\link{expect_output}}, \code{\link{expect_true}},
+  \code{\link{expect_warning}},
+  \code{\link{gives_warning}}, \code{\link{is_a}},
+  \code{\link{is_equivalent_to}},
+  \code{\link{is_identical_to}}, \code{\link{is_true}},
+  \code{\link{matches}}, \code{\link{prints_text}},
+  \code{\link{shows_message}},
+  \code{\link{takes_less_than}}, \code{\link{throws_error}}
+}
+
