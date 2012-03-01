@@ -14,7 +14,8 @@ Imports:
     digest,
     stringr (>= 0.4),
     evaluate (>= 0.3)
-Suggests: XML
+Suggests:
+    XML
 License: GPL
 LazyData: true
 Collate:
@@ -36,3 +37,4 @@ Collate:
     'utils.r'
     'watcher.r'
     'make-expectation.r'
+    'reporter-junit.r'
