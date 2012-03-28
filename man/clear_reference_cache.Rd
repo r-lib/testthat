@@ -18,14 +18,12 @@
 }
 \examples{
 \dontrun{
- test1 = test_reference_change("{a<-runif(1)
-                               b<-runif(2)}", savePrefix = "random")
- test2 = test_reference_change("{a<-1
-                               b<-3}", savePrefix = "test")
- test_that("Reference stuff works", {
-  expect_that(matches_ref_current(test1), is_false())
-  expect_that(matches_ref_current(test2), is_true())
- })
+test_that("Reference stuff works", {
+  expect_that(is_unchanged("{a<-runif(1)
+                               b<-runif(2)}", savePrefix = "random"), is_false())
+  expect_that(is_unchanged("{a<-1
+                               b<-3}", savePrefix = "test"), is_true())
+})
 
  clear_reference_cache()
  clear_reference_cache("random")
@@ -35,7 +33,6 @@
   Paul Hiemstra, \email{p.h.hiemstra@gmail.com}
 }
 \seealso{
-  \code{\link{test_reference_change}},
-  \code{\link{matches_ref_current}}
+  \code{\link{test_reference_change}}
 }
 

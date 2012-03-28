@@ -50,6 +50,25 @@
   return(!file.exists(sprintf("%s/%s.rda", rdapath, savePrefix)))
 }
 
+.matches_ref_current = function(reference_object) {
+  # Is the current object equal to the reference?
+  return(isTRUE(all.equal(reference_object[["reference"]], reference_object[["current"]])))
+}
+
+.test_reference_change = function(expr, savePrefix, rdapath = "reffiles", verbose = FALSE) {       
+  # This function executes the expression given to it by the user. It 
+  # returns both the result of the expression and the reference read from
+  # file to allow a test if they are equal.
+  if(.reference_missing(savePrefix, rdapath)) {
+    if(verbose) cat("r")    
+    .generate_ref_file(expr, savePrefix, rdapath)
+  }
+  reference = .get_reference(savePrefix, rdapath)
+  current = .expr_to_list(expr)
+  return(list(reference = reference, current = current))
+}
+
+
 ## User functions
 #' Test if the current result differs from a stored reference
 #' 
@@ -62,36 +81,29 @@
 #' @param savePrefix, prefix used in the file name that the reference is stored in
 #' @param rdapath path to the reference files
 #' @param verbose logical, if TRUE, report when a reference file is regenerated.
-#' @value a list with two parts: \code{reference} containing the reference object 
-#'        read from file, and \code{current} the freshly calculated current object.
+#' @value a logical indicating if the new outcome matches the reference.
 #' @details If you want to use quotation marks in your expression, please escape the quotes. Alternatively
 #'          mix ' and " quotes. If you want to use variables in your expression, remember to make them global using
 #'          <<-. This is not an ideal situation, but because all code is ran in separate environments, and 
 #'          evaluation is postponed to within the function \code{testthat:::.expr_to_list}, the globalization
 #'          is needed.
 #' @author Paul Hiemstra, \email{p.h.hiemstra@@gmail.com}
-#' @seealso \code{\link{matches_ref_current}}, \code{\link{clear_reference_cache}}
+#' @seealso \code{\link{clear_reference_cache}}
 #' @export
 #' @examples
 #' \dontrun{
-#' test1 = test_reference_change("{a<-runif(1)
-#'                                b<-runif(2)}", savePrefix = "random")
-#' test2 = test_reference_change("{a<-1
-#'                                b<-3}", savePrefix = "test")
 #' test_that("Reference stuff works", {
-#'   expect_that(matches_ref_current(test1), is_false())
-#'   expect_that(matches_ref_current(test2), is_true())
+#'   expect_that(is_unchanged("{a<-runif(1)
+#'                                b<-runif(2)}", savePrefix = "random"), is_false())
+#'   expect_that(is_unchanged("{a<-1
+#'                                b<-3}", savePrefix = "test"), is_true())
 #' })
 #' }
-test_reference_change = function(expr, savePrefix, rdapath = "reffiles", verbose = FALSE) {                                                                                       
-  if(.reference_missing(savePrefix, rdapath)) {
-    if(verbose) cat("r")    
-    .generate_ref_file(expr, savePrefix, rdapath)
-  }
-  reference = .get_reference(savePrefix, rdapath)
-  current = .expr_to_list(expr)
-  return(list(reference = reference, current = current))
+is_unchanged = function(expr, savePrefix, rdapath = "reffiles", verbose = FALSE) {
+  obj = .test_reference_change(expr, savePrefix, rdapath, verbose)
+  return(.matches_ref_current(obj))
 }
+
 
 #' Deletes the stored reference files
 #' 
@@ -100,20 +112,19 @@ test_reference_change = function(expr, savePrefix, rdapath = "reffiles", verbose
 #' @param savePrefix either NULL (default) or a list of prefixes do be deleted. If the 
 #'                   this parameter is NULL, all reference files are deleted.
 #' @param rdapath path to the reference files
+#' @value This function does not return anything.
 #' @author Paul Hiemstra, \email{p.h.hiemstra@@gmail.com}
-#' @seealso \code{\link{test_reference_change}}, \code{\link{matches_ref_current}}
+#' @seealso \code{\link{test_reference_change}}
 
 #' @export
 #' @examples
 #' \dontrun{
-#'  test1 = test_reference_change("{a<-runif(1)
-#'                                b<-runif(2)}", savePrefix = "random")
-#'  test2 = test_reference_change("{a<-1
-#'                                b<-3}", savePrefix = "test")
-#'  test_that("Reference stuff works", {
-#'   expect_that(matches_ref_current(test1), is_false())
-#'   expect_that(matches_ref_current(test2), is_true())
-#'  })
+#' test_that("Reference stuff works", {
+#'   expect_that(is_unchanged("{a<-runif(1)
+#'                                b<-runif(2)}", savePrefix = "random"), is_false())
+#'   expect_that(is_unchanged("{a<-1
+#'                                b<-3}", savePrefix = "test"), is_true())
+#' })
 #' 
 #'  clear_reference_cache()
 #'  clear_reference_cache("random")
@@ -126,30 +137,4 @@ clear_reference_cache = function(savePrefix = NULL, rdapath = "reffiles") {
   }
   succes = sapply(file_list, file.remove)
   return(invisible(NULL))
-}
-
-#' Is the current object equal to the reference?
-#' 
-#' This function takes the output of the \code{\link{test_reference_change}}
-#' and returns TRUE if the current object matches the reference, and FALSE otherwise
-#'
-#' @param reference_object object to perform the test on.
-#' @value TRUE if the current object matches the reference object, and FALSE otherwise.
-#' @author Paul Hiemstra, \email{p.h.hiemstra@@gmail.com}
-#' @seealso \code{\link{test_reference_change}}, \code{\link{clear_reference_cache}}
-
-#' @export
-#' @examples
-#' \dontrun{
-#' test1 = test_reference_change("{a<-runif(1)
-#'                                b<-runif(2)}", savePrefix = "random")
-#' test2 = test_reference_change("{a<-1
-#'                                b<-3}", savePrefix = "test")
-#' test_that("Reference stuff works", {
-#'   expect_that(matches_ref_current(test1), is_false())
-#'   expect_that(matches_ref_current(test2), is_true())
-#' })
-#' }
-matches_ref_current = function(reference_object) {
-  return(isTRUE(all.equal(reference_object[["reference"]], reference_object[["current"]])))
 }
