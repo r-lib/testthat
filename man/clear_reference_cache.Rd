@@ -19,14 +19,20 @@
 \examples{
 \dontrun{
 test_that("Reference stuff works", {
-  expect_that(is_unchanged("{a<-runif(1)
-                               b<-runif(2)}", savePrefix = "random"), is_false())
-  expect_that(is_unchanged("{a<-1
-                               b<-3}", savePrefix = "test"), is_true())
+  expect_that(is_unchanged(quote({a<-runif(1)
+                               b<-runif(2)}), savePrefix = "random")), is_false())
+  expect_that(is_unchanged(quote({a<-1
+                               b<-3}), savePrefix = "test"), is_true())
 })
 
- clear_reference_cache()
- clear_reference_cache("random")
+code = quote({a<-runif(1)
+              b<-runif(2)}
+test_that("Reference stuff works", {
+  expect_that(is_unchanged(code, savePrefix = "random")), is_false())
+})
+
+clear_reference_cache()
+clear_reference_cache("random")
 }
 }
 \author{
