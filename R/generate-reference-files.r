@@ -30,9 +30,8 @@
   # in a list. Does this by executing the command in a new
   # environment and than loading the objects from that environment
   # into a list.
-  .check_expr(expr)
   tmp.env = new.env()
-  eval(parse(text = expr), envir = tmp.env)
+  eval(expr, envir = tmp.env)
   return(.obj_from_envir(tmp.env))
 }
 
@@ -76,16 +75,15 @@
 #' returns both the result of the expression and the reference read from
 #' file to allow a test if they are equal.
 #'
-#' @param expr character vector with the expression used in the test, remember to escape any
-#'             quotation marks in the character expression.                
+#' @param expr the expression used in the test, remember to wrap the code in \code{quote}.    
 #' @param savePrefix, prefix used in the file name that the reference is stored in
 #' @param rdapath path to the reference files
 #' @param verbose logical, if TRUE, report when a reference file is regenerated.
 #' @value a logical indicating if the new outcome matches the reference.
-#' @details If you want to use quotation marks in your expression, please escape the quotes. Alternatively
-#'          mix ' and " quotes. If you want to use variables in your expression, remember to make them global using
-#'          <<-. This is not an ideal situation, but because all code is ran in separate environments, and 
-#'          evaluation is postponed to within the function \code{testthat:::.expr_to_list}, the globalization
+#' @details If you want to use variables in your expression, remember to make them global using
+#'          <<-, or include them in the code that is tested. This is not an ideal situation, but 
+#'          because all code is ran in separate environments, and evaluation is postponed to within 
+#'          the function \code{testthat:::.expr_to_list}, this
 #'          is needed.
 #' @author Paul Hiemstra, \email{p.h.hiemstra@@gmail.com}
 #' @seealso \code{\link{clear_reference_cache}}
@@ -93,13 +91,21 @@
 #' @examples
 #' \dontrun{
 #' test_that("Reference stuff works", {
-#'   expect_that(is_unchanged("{a<-runif(1)
-#'                                b<-runif(2)}", savePrefix = "random"), is_false())
-#'   expect_that(is_unchanged("{a<-1
-#'                                b<-3}", savePrefix = "test"), is_true())
+#'   expect_that(is_unchanged(quote({a<-runif(1)
+#'                                b<-runif(2)}), savePrefix = "random")), is_false())
+#'   expect_that(is_unchanged(quote({a<-1
+#'                                b<-3}), savePrefix = "test"), is_true())
 #' })
+#'
+#' code = quote({a<-runif(1)
+#'               b<-runif(2)}
+#' test_that("Reference stuff works", {
+#'   expect_that(is_unchanged(code, savePrefix = "random")), is_false())
+#' })
+#'
 #' }
 is_unchanged = function(expr, savePrefix, rdapath = "reffiles", verbose = FALSE) {
+  if(!is.call(expr)) stop("Please use quote({code})")
   obj = .test_reference_change(expr, savePrefix, rdapath, verbose)
   return(.matches_ref_current(obj))
 }
@@ -120,14 +126,20 @@ is_unchanged = function(expr, savePrefix, rdapath = "reffiles", verbose = FALSE)
 #' @examples
 #' \dontrun{
 #' test_that("Reference stuff works", {
-#'   expect_that(is_unchanged("{a<-runif(1)
-#'                                b<-runif(2)}", savePrefix = "random"), is_false())
-#'   expect_that(is_unchanged("{a<-1
-#'                                b<-3}", savePrefix = "test"), is_true())
+#'   expect_that(is_unchanged(quote({a<-runif(1)
+#'                                b<-runif(2)}), savePrefix = "random")), is_false())
+#'   expect_that(is_unchanged(quote({a<-1
+#'                                b<-3}), savePrefix = "test"), is_true())
+#' })
+#'
+#' code = quote({a<-runif(1)
+#'               b<-runif(2)}
+#' test_that("Reference stuff works", {
+#'   expect_that(is_unchanged(code, savePrefix = "random")), is_false())
 #' })
 #' 
-#'  clear_reference_cache()
-#'  clear_reference_cache("random")
+#' clear_reference_cache()
+#' clear_reference_cache("random")
 #' }
 clear_reference_cache = function(savePrefix = NULL, rdapath = "reffiles") {
   if(is.null(savePrefix)) {
