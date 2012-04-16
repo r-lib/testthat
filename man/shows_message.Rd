@@ -5,13 +5,15 @@
 \usage{
   shows_message(regexp = NULL)
 
-  expect_message(actual, expected = NULL, info = NULL,
+  expect_message(object, regexp = NULL, info = NULL,
     label = NULL)
 }
 \arguments{
   \item{regexp}{optional regular expression to match. If
   not specified, just asserts that expression shows some
   message.}
+
+  \item{object}{object to test}
 
   \item{info}{extra information to be included in the
   message (useful when writing tests in loops).}

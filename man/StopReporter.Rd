@@ -1,6 +1,7 @@
 \docType{data}
 \name{StopReporter}
 \alias{StopReporter}
+\alias{StopReporter-class}
 \title{Test reporter: stop on error.}
 \format{Reference class 'refObjectGenerator' [package "methods"] with 2 fields
  and 17 methods, of which 6 are possibly relevant:

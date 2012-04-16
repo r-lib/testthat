@@ -5,13 +5,15 @@
 \usage{
   throws_error(regexp = NULL)
 
-  expect_error(actual, expected = NULL, info = NULL,
+  expect_error(object, regexp = NULL, info = NULL,
     label = NULL)
 }
 \arguments{
   \item{regexp}{optional regular expression to match. If
   not specified, just asserts that expression throws some
   error.}
+
+  \item{object}{object to test}
 
   \item{info}{extra information to be included in the
   message (useful when writing tests in loops).}

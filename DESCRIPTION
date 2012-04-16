@@ -1,29 +1,29 @@
 Package: testthat
+Type: Package
+Title: Testthat code.  Tools to make testing fun :)
+Version: 0.6
+Author: Hadley Wickham <h.wickham@gmail.com>
+Maintainer: Hadley Wickham <h.wickham@gmail.com>
+Description: A testing package specifically tailored for R
+    that's fun, flexible and easy to set up.
+URL: http://had.co.nz/
+Depends:
+    R (>= 2.12.0),
+    methods
 Imports:
     digest,
     stringr (>= 0.4),
-    evaluate (>= 0.3),
-    methods
-Maintainer: Hadley Wickham <h.wickham@gmail.com>
+    evaluate (>= 0.3)
 License: GPL
-Title: Testthat code.  Tools to make testing fun :)
 LazyData: true
-Type: Package
-Author: Hadley Wickham <h.wickham@gmail.com>
-Description: A testing package specifically tailored for R that's fun,
-    flexible and easy to set up.
-Version: 0.5
-URL: http://had.co.nz/
-Depends:
-    R (>= 2.8)
 Collate:
     'auto-test.r'
     'colour-text.r'
     'context.r'
-    'expectation.r'
-    'expectations.r'
     'expect-that.r'
     'generate-reference-files.r'
+    'expectation.r'
+    'expectations.r'
     'library.r'
     'reporter.r'
     'reporter-minimal.r'
@@ -35,3 +35,5 @@ Collate:
     'test-that.r'
     'utils.r'
     'watcher.r'
+    'make-expectation.r'
+

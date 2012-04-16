@@ -1,6 +1,7 @@
 \docType{data}
 \name{SummaryReporter}
 \alias{SummaryReporter}
+\alias{SummaryReporter-class}
 \title{Test reporter: summary of errors.}
 \format{Reference class 'refObjectGenerator' [package "methods"] with 2 fields
  and 17 methods, of which 6 are possibly relevant:

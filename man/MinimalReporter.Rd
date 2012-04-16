@@ -1,6 +1,7 @@
 \docType{data}
 \name{MinimalReporter}
 \alias{MinimalReporter}
+\alias{MinimalReporter-class}
 \title{Test reporter: minimal.}
 \format{Reference class 'refObjectGenerator' [package "methods"] with 2 fields
  and 17 methods, of which 6 are possibly relevant:

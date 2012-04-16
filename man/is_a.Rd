@@ -5,10 +5,12 @@
 \usage{
   is_a(class)
 
-  expect_is(actual, expected, info = NULL, label = NULL)
+  expect_is(object, class, info = NULL, label = NULL)
 }
 \arguments{
   \item{class}{character vector of class names}
+
+  \item{object}{object to test}
 
   \item{info}{extra information to be included in the
   message (useful when writing tests in loops).}

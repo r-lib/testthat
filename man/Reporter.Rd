@@ -1,6 +1,7 @@
 \docType{data}
 \name{Reporter}
 \alias{Reporter}
+\alias{Reporter-class}
 \title{Stub object for managing a reporter of tests.}
 \format{Reference class 'refObjectGenerator' [package "methods"] with 2 fields
  and 17 methods, of which 6 are possibly relevant:

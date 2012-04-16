@@ -5,18 +5,25 @@
 \usage{
   equals(expected, label = NULL, ...)
 
-  expect_equal(actual, expected, ..., info = NULL,
+  expect_equal(object, expected, ..., info = NULL,
     label = NULL, expected.label = NULL)
 }
 \arguments{
-  \item{expected}{expected value}
+  \item{expected}{Expected value}
 
-  \item{label}{label of expected object used in error
-  messages.  Useful to override default (deparsed expected
-  expression) when doing tests in a loop.}
+  \item{label}{For full form, label of expected object used
+  in error messages. Useful to override default (deparsed
+  expected expression) when doing tests in a loop.  For
+  short cut form, object label. When \code{NULL}, computed
+  from deparsed object.}
+
+  \item{expected.label}{Equivalent of \code{label} for
+  shortcut form.}
 
   \item{...}{other values passed to
   \code{\link{all.equal}}}
+
+  \item{object}{object to test}
 
   \item{info}{extra information to be included in the
   message (useful when writing tests in loops).}
@@ -38,6 +45,18 @@ expect_equal(sqrt(2) ^ 2, 2)
 \dontrun{
 expect_that(sqrt(2) ^ 2 == 2, is_true())
 expect_that(sqrt(2) ^ 2, is_identical_to(2))
+}
+
+# You can pass on additional arguments to all.equal:
+\dontrun{
+# Test the ABSOLUTE difference is within .002
+expect_equal(object = 10.01, expected = 10, tolerance = .002,
+  scale = 1)
+
+# Test the RELATIVE difference is within .002
+expectedValue <- 10
+expect_equal(object = 10.01, expected = expectedValue, tolerance = 0.002,
+  scale = expectedValue)
 }
 }
 \seealso{

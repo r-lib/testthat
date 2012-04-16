@@ -5,13 +5,15 @@
 \usage{
   gives_warning(regexp = NULL)
 
-  expect_warning(actual, expected = NULL, info = NULL,
+  expect_warning(object, regexp = NULL, info = NULL,
     label = NULL)
 }
 \arguments{
   \item{regexp}{optional regular expression to match. If
   not specified, just asserts that expression gives some
   warning.}
+
+  \item{object}{object to test}
 
   \item{info}{extra information to be included in the
   message (useful when writing tests in loops).}

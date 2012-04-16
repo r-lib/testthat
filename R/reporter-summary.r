@@ -12,9 +12,15 @@ NULL
 #' if all your tests pass.
 #'
 #' @export
+#' @exportClass SummaryReporter
+#' @aliases SummaryReporter-class
 #' @keywords debugging
 SummaryReporter <- setRefClass("SummaryReporter", contains = "Reporter", 
-  fields = list("failures" = "list", "n" = "integer"),
+  fields = list(
+    "failures" = "list", 
+    "n" = "integer", 
+    "has_tests" = "logical"),
+
   methods = list(
   
     start_context = function(desc) {
@@ -27,10 +33,12 @@ SummaryReporter <- setRefClass("SummaryReporter", contains = "Reporter",
 
     start_reporter = function() {
       failures <<- list()
+      has_tests <<- FALSE
       n <<- 0L
     },
 
     add_result = function(result) {
+      has_tests <<- TRUE
       if (result$passed) {
         cat(colourise(".", fg = "light green"))
       } else {
@@ -41,7 +49,7 @@ SummaryReporter <- setRefClass("SummaryReporter", contains = "Reporter",
           n <<- length(labels)
           cat(colourise("F", fg = "red"))
         } else {
-          result$test <- test
+          result$test <- if (is.null(test)) "(unknown)" else test
           failures[[n]] <<- result
           cat(colourise(labels[n], fg = "red"))
         }
@@ -56,13 +64,13 @@ SummaryReporter <- setRefClass("SummaryReporter", contains = "Reporter",
 
       if (n == 0) {
         cat("\n")
-        if (sample(10, 1) == 1) {
+        if (has_tests && sample(10, 1) == 1) {
           cat(colourise(sample(.praise, 1), "light green"), "\n")
         }
       } else {
         label <- labels[seq_len(n)]
         type <- ifelse(sapply(failures, "[[", "error"), "Error", "Failure")
-        tests <- sapply(failures, "[[", "test")
+        tests <- vapply(failures, "[[", "test", FUN.VALUE = character(1))
         header <- str_c(label, ". ", type, ": ", tests, " ")
         linewidth <- ifelse(nchar(header) > getOption("width"),0,getOption("width") - nchar(header))
         line <- charrep("-", linewidth )
