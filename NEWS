@@ -14,6 +14,9 @@
 * Depend on `methods` rather than requiring it so that testthat works when run
   from `Rscript`
 
+* `auto_test` now normalises paths to enable better identification of file
+  changes, and fixes bug in instantiating new reporter object.
+
 Version 0.6
 ------------------------------------------------------------------------------
 
