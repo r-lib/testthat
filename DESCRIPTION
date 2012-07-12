@@ -28,6 +28,7 @@ Collate:
     'reporter-minimal.r'
     'reporter-stop.r'
     'reporter-summary.r'
+    'reporter-tap.r'
     'reporter-zzz.r'
     'test-files.r'
     'test-package.r'
