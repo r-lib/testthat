@@ -21,6 +21,7 @@ Collate:
     'colour-text.r'
     'context.r'
     'expect-that.r'
+    'generate-reference-files.r'
     'expectation.r'
     'expectations.r'
     'library.r'
@@ -36,3 +37,4 @@ Collate:
     'utils.r'
     'watcher.r'
     'make-expectation.r'
+

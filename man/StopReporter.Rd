@@ -1,7 +1,14 @@
+\docType{data}
 \name{StopReporter}
 \alias{StopReporter}
 \alias{StopReporter-class}
 \title{Test reporter: stop on error.}
+\format{Reference class 'refObjectGenerator' [package "methods"] with 2 fields
+ and 17 methods, of which 6 are possibly relevant:
+   accessors, fields, help, lock, methods, new}
+\usage{
+  StopReporter
+}
 \description{
   The default reporter, executed when \code{expect_that} is
   run interactively, or when the test files are executed by
@@ -15,5 +22,6 @@
   Otherwise, use a reporter that runs all tests and gives
   you more context about the problem.
 }
+\keyword{dataset}
 \keyword{debugging}
 
