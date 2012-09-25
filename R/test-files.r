@@ -29,7 +29,7 @@ test_dir <- function(path, filter = NULL, reporter = "summary", env = NULL) {
     files <- files[str_detect(test_names, filter)]
   }
   with_reporter(reporter, lapply(files, function(file) {
-    sys.source(file, chdir = TRUE, envir = new.env(parent = env))
+    capture.output(sys.source(file, chdir = TRUE, envir = new.env(parent = env)))
     end_context()
   }))
 }
