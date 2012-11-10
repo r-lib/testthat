@@ -1,6 +1,6 @@
 #' Make an equality test.
 #'
-#' This a convenience function to make a expectation that checks that
+#' This a convenience function to make an expectation that checks that
 #' input stays the same.
 #'
 #' @param x a vector of values
@@ -12,11 +12,15 @@
 #' make_expectation(x)
 #'
 #' make_expectation(mtcars$mpg)
-make_expectation <- function(x, expectation = "equals") {
-  obj <- substitute(x)
-  expectation <- match.arg(expectation,
-    c("equals", "is_equivalent_to", "is_identical_to"))
-  
-  substitute(expect_that(obj, expectation(values)),
-    list(obj = obj, expectation = as.name(expectation), values = x))
+#'
+#' make_expectation(subset(mtcars, mpg > 25))
+make_expectation <- function (x, expectation = "equals") {
+    obj <- substitute(x)
+    if (is.call(obj))
+        obj <- capture.output(obj)
+    expectation <- match.arg(expectation, c("equals", "is_equivalent_to", 
+        "is_identical_to"))
+    cat("expect_that(", obj, ", ", expectation, "(", sep="")
+    dput(x)
+    cat("))", "\n")
 }
