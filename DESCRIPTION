@@ -10,6 +10,8 @@ URL: http://had.co.nz/
 Depends:
     R (>= 2.12.0),
     methods
+Suggests:
+    devtools (>= 0.8),
 Imports:
     digest,
     stringr (>= 0.4),
