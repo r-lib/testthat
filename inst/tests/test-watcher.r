@@ -33,8 +33,7 @@ if (interactive()) {
     expect_that(diff$n, equals(2))
     expect_that(basename(diff$added), equals("file21"))
     expect_that(basename(diff$modified), equals("file3"))
-
-  })
+   })
 
 
   test_that("watcher works correctly", {
