@@ -62,8 +62,10 @@ auto_test <- function(code_path, test_path, reporter = "summary", env = NULL) {
       test_dir(test_path, env = env)
     } else if (length(tests) > 0) {
       # If test changes, rerun just that test
-      cat("Rerunning tests: ", str_c(basename(tests), collapse = ", "), "\n")      
-      with_reporter(reporter$getRefClass()$new(), lapply(tests, sys.source, 
+      cat("Rerunning tests: ", str_c(basename(tests), collapse = ", "), "\n")
+      rep <- reporter$copy()
+      rep$start_reporter()
+      with_reporter(rep, lapply(tests, sys.source, 
         env = new.env(parent = env), chdir = TRUE))
     }
     
