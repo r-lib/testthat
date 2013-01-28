@@ -1,3 +1,6 @@
+* `SummaryReporter` has a `max-reports` option to limit the number of detailed
+  failure reports to show. (Thanks to Peter Meilstrup)
+
 * `SummaryReporter`: still return informative messages even if no tests
   defined (just bare expectations). (Fixes #31)
 
