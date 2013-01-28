@@ -35,7 +35,7 @@
 #' @param pattern optional file pattern for \code{\link{watch}},
 #' @keywords debugging
 auto_test <- function(code_path, test_path, reporter = "summary", env = NULL,
-                      loader=source_dir, pattern=NULL) {
+                      loader = source_dir, pattern = NULL) {
   reporter <- find_reporter(reporter)
   code_path <- normalizePath(code_path)
   test_path <- normalizePath(test_path)
@@ -79,8 +79,8 @@ auto_test <- function(code_path, test_path, reporter = "summary", env = NULL,
 
     TRUE
   }
-  watch(c(code_path, test_path), watcher)
 
+  watch(c(code_path, test_path), watcher, pattern = pattern)
 }
 
 #' Watches a package for changes, rerunning tests as appropriate.
@@ -95,7 +95,7 @@ auto_test <- function(code_path, test_path, reporter = "summary", env = NULL,
 auto_test_package <- function(path,
                               test_path = file.path(path, "inst", "tests"),
                               reporter = "summary",
-                              pattern=NULL) {
+                              pattern = NULL) {
   if (require(devtools)) {
     codepath <- path
     loader <- function(path, env) load_all(path)
@@ -104,6 +104,6 @@ auto_test_package <- function(path,
     loader = source_dir
   }
   auto_test(codepath, test_path, reporter,
-            loader=loader)
+            loader = loader, pattern = pattern)
 }
 
