@@ -18,7 +18,7 @@ NULL
 #' @exportClass SummaryReporter
 #' @aliases SummaryReporter-class
 #' @keywords debugging
-SummaryReporter <- setRefClass("SummaryReporter", contains = "Reporter", 
+SummaryReporter <- setRefClass("SummaryReporter", contains = "Reporter",
   fields = list(
     "failures" = "list", 
     "n" = "integer", 
@@ -26,7 +26,12 @@ SummaryReporter <- setRefClass("SummaryReporter", contains = "Reporter",
     "max_reports" = "integer"),
 
   methods = list(
-  
+
+    initialize = function(max_reports=NA_integer_, ...) {
+      max_reports <<- max_reports
+      callSuper(...)
+    },
+
     start_context = function(desc) {
       cat(desc, ": ")
     },
@@ -39,6 +44,7 @@ SummaryReporter <- setRefClass("SummaryReporter", contains = "Reporter",
       failures <<- list()
       has_tests <<- FALSE
       n <<- 0L
+      if (max_reports == 0) max_reports <<- NA_integer_
     },
 
     add_result = function(result) {
@@ -85,7 +91,7 @@ SummaryReporter <- setRefClass("SummaryReporter", contains = "Reporter",
         reports <- str_c(
           colourise(header, "red"), line, "\n", 
           message, "\n")
-        cat( str_c(reports[1:min(n, max_reports)], collapse = "\n") )
+        cat( str_c(reports[1:min(n, max_reports, na.rm=TRUE)], collapse = "\n") )
       }
     }
   )
