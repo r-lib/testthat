@@ -44,7 +44,7 @@ SummaryReporter <- setRefClass("SummaryReporter", contains = "Reporter",
       failures <<- list()
       has_tests <<- FALSE
       n <<- 0L
-      if (max_reports == 0) max_reports <<- NA_integer_
+      if (isTRUE(max_reports == 0)) max_reports <<- NA_integer_
     },
 
     add_result = function(result) {
