@@ -14,3 +14,5 @@ Testing your code is normally painful and boring. `testthat` tries to make testi
   expectation. If you're using the terminal, it'll even colour the output. 
     
 `testthat` draws inspiration from the xUnit family of testing packages, as well from many of the innovative ruby testing libraries, like [rspec](http://rspec.info/), [testy](http://github.com/ahoward/testy), [bacon](http://github.com/chneukirchen/bacon) and [cucumber](http://wiki.github.com/aslakhellesoy/cucumber/). I have used what I think works for R, and abandoned what doesn't, creating a testing environment that is philosophically centred in R. 
+
+Instructions for using this package can be found in the [Testing](https://github.com/hadley/devtools/wiki/Testing) chapter of my forthcoming book [Advanced R development: making reusable code"](https://github.com/hadley/devtools/wiki).
