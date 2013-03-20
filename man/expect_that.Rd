@@ -47,4 +47,7 @@ expect_that(sqrt(2) ^ 2, equals(2))
 expect_that(sqrt(2) ^ 2, is_identical_to(2))
 }
 }
+\seealso{
+  \code{\link{fail}} for an expectation that always fails.
+}
 

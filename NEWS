@@ -1,4 +1,6 @@
 
+* new `fail()` function always forces a failure in a test. Suggested by 
+  Richie Cotton (#47)
 
 * Added `TapReporter` to produce output compatible with the "test anything 
   protocol". Contributed by Dan Keshet.

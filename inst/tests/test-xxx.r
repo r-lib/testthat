@@ -10,6 +10,11 @@ if (interactive()) {
     expect_that(TRUE, is_false())
   })
 
+  test_that("fail fails (should fail)", {
+    fail()
+  })
+
+
   test_that("random errors are caught (should err)", {
     function_that_doesnt_exist()
   })
