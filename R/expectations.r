@@ -339,10 +339,11 @@ expect_output <- function(object, regexp, ..., info = NULL, label = NULL) {
 #' @family expectations
 #' @export
 #' @examples
-#' expect_that(log("a"), throws_error())
-#' expect_error(log("a"))
-#' expect_that(log("a"), throws_error("Non-numeric argument"))
-#' expect_error(log("a"), "Non-numeric argument")
+#' f <- function() stop("My error!")
+#' expect_that(f(), throws_error())
+#' expect_error(f())
+#' expect_that(f(), throws_error("My error!"))
+#' expect_error(f(), "My error!")
 throws_error <- function(regexp = NULL) {
   function(expr) {
     res <- try(force(expr), TRUE)

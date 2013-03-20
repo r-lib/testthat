@@ -25,10 +25,11 @@
   Expectation: does expression throw an error?
 }
 \examples{
-expect_that(log("a"), throws_error())
-expect_error(log("a"))
-expect_that(log("a"), throws_error("Non-numeric argument"))
-expect_error(log("a"), "Non-numeric argument")
+f <- function() stop("My error!")
+expect_that(f(), throws_error())
+expect_error(f())
+expect_that(f(), throws_error("My error!"))
+expect_error(f(), "My error!")
 }
 \seealso{
   Other expectations: \code{\link{equals}},
