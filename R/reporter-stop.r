@@ -38,7 +38,7 @@ StopReporter <- setRefClass("StopReporter", contains = "Reporter",
       }
       failures <<- list()
 
-      msg <- str_c("Test failure in '", cur_test, "'\n", messages)
+      msg <- str_c("Test failed: '", cur_test, "'\n", messages)
       stop(msg, call. = FALSE)
     },
 
