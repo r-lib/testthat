@@ -385,7 +385,7 @@ expect_error <- function(object, regexp = NULL, info = NULL, label = NULL) {
 #' expect_that(warning("a"), gives_warning("a"))
 gives_warning <- function(regexp = NULL) {
   function(expr) {
-    res <- evaluate(substitute(expr), parent.frame())
+    res <- evaluate(substitute(expr), parent.frame(), new_device = FALSE)
     warnings <- vapply(Filter(is.warning, res), "[[", "message", FUN.VALUE=character(1))
     if (!is.null(regexp) && length(warnings) > 0) {
       matches(regexp, all = FALSE)(warnings)
@@ -422,7 +422,7 @@ expect_warning <- function(object, regexp = NULL, info = NULL,
 #' expect_that(message("a"), shows_message("a"))
 shows_message <- function(regexp = NULL) {
   function(expr) {
-    res <- evaluate(substitute(expr), parent.frame())
+    res <- evaluate(substitute(expr), parent.frame(), new_device = FALSE)
     messages <- vapply(Filter(is.message, res), "[[", "message", FUN.VALUE=character(1))
     if (!is.null(regexp) && length(messages) > 0) {
       matches(regexp, all = FALSE)(messages)

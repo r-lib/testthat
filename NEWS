@@ -1,4 +1,6 @@
 
+* Now works better with evaluate 0.4.3.
+
 * new `fail()` function always forces a failure in a test. Suggested by 
   Richie Cotton (#47)
 
