@@ -1,3 +1,5 @@
+* Ignore attributes in `is_true` and `is_false` (#49)
+
 * `make_expectation` works for more types of input (#52)
 
 * Now works better with evaluate 0.4.3.

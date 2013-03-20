@@ -22,6 +22,9 @@
   disadvantage is that you may get a less informative error
   message.
 }
+\details{
+  Attributes are ignored.
+}
 \examples{
 expect_that(2 == 2, is_true())
 expect_true(2 == 2)

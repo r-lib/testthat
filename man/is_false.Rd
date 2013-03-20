@@ -19,6 +19,9 @@
 \description{
   A useful fall-back expectation like \code{\link{is_true}}
 }
+\details{
+  Attributes are ignored.
+}
 \examples{
 expect_that(3 == 2, is_false())
 expect_false(3 == 2)

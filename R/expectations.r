@@ -41,6 +41,8 @@ expect_is <- function(object, class, info = NULL, label = NULL) {
 #' more specific expectations apply. The disadvantage is that you may get
 #' a less informative error message.
 #'
+#' Attributes are ignored.
+#'
 #' @seealso \code{\link{is_false}} for complement
 #' @family expectations
 #' @export
@@ -62,7 +64,7 @@ expect_is <- function(object, class, info = NULL, label = NULL) {
 is_true <- function() {
   function(x) {
     expectation(
-      identical(x, TRUE),
+      identical(as.vector(x), TRUE),
       "isn't true"
     )
   }
@@ -81,6 +83,8 @@ expect_true <- function(object, info = NULL, label = NULL) {
 #'
 #' A useful fall-back expectation like \code{\link{is_true}}
 #'
+#' Attributes are ignored.
+#'
 #' @family expectations
 #' @export
 #' @examples
@@ -92,7 +96,7 @@ expect_true <- function(object, info = NULL, label = NULL) {
 is_false <- function() {
   function(x) {
     expectation(
-      identical(x, FALSE),
+      identical(as.vector(x), FALSE),
       "isn't false"
     )
   }
