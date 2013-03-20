@@ -1,3 +1,9 @@
+
+
+* Added `TapReporter` to produce output compatible with the "test anything 
+  protocol". Contributed by Dan Keshet.
+
+
 Version 0.7
 ------------------------------------------------------------------------------
 
