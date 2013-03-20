@@ -2,8 +2,8 @@
 NULL
 
 #' Test reporter: minimal.
-#' 
-#' The minimal test reporter provides the absolutely minimum amount of 
+#'
+#' The minimal test reporter provides the absolutely minimum amount of
 #' information: whether each expectation has succeeded, failed or experienced
 #' an error.  If you want to find out what the failures and errors actually
 #' were, you'll need to run a more informative test reporter.
@@ -14,7 +14,7 @@ NULL
 #' @aliases MinimalReporter-class
 MinimalReporter <- setRefClass("MinimalReporter", contains = "Reporter",
   methods = list(
-    add_result = function(result) { 
+    add_result = function(result) {
       if (result$passed) {
         cat(colourise(".", fg = "light green"))
       } else {

@@ -1,6 +1,6 @@
 #' Expect that a condition holds.
-#' 
-#' An expectation checks whether a single condition holds true.  
+#'
+#' An expectation checks whether a single condition holds true.
 #' \pkg{testthat} currently provides the following expectations.  See their
 #' documentation for more details
 #'
@@ -41,12 +41,12 @@ expect_that <- function(object, condition, info = NULL, label = NULL) {
     label <- find_expr("object")
   }
   results <- condition(object)
-  
+
   results$message <- str_c(label, " ", results$message)
   if (!is.null(info)) {
     results$message <- str_c(results$message, "\n", info)
   }
-  
+
   test_reporter()$add_result(results)
   invisible()
 }

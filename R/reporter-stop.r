@@ -16,7 +16,7 @@ NULL
 #' @exportClass StopReporter
 #' @aliases StopReporter-class
 #' @keywords debugging
-StopReporter <- setRefClass("StopReporter", contains = "Reporter", 
+StopReporter <- setRefClass("StopReporter", contains = "Reporter",
   fields = c("failures"),
   methods = list(
     initialize = function(...) {
@@ -51,6 +51,6 @@ StopReporter <- setRefClass("StopReporter", contains = "Reporter",
       } else {
         failures <<- c(failures, list(result))
       }
-    }    
+    }
   )
 )

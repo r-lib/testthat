@@ -16,7 +16,7 @@ make_expectation <- function(x, expectation = "equals") {
   obj <- substitute(x)
   expectation <- match.arg(expectation,
     c("equals", "is_equivalent_to", "is_identical_to"))
-  
+
   substitute(expect_that(obj, expectation(values)),
     list(obj = obj, expectation = as.name(expectation), values = x))
 }

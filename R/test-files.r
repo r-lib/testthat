@@ -1,7 +1,7 @@
-#' Run all of the tests in a directory.  
-#' 
-#' Test files start with \code{test} and are executed in alphabetical order 
-#' (but they shouldn't have dependencies). Helper files start with 
+#' Run all of the tests in a directory.
+#'
+#' Test files start with \code{test} and are executed in alphabetical order
+#' (but they shouldn't have dependencies). Helper files start with
 #' \code{helper} and loaded before any tests are run.
 #'
 #' @param path path to tests
@@ -15,17 +15,17 @@
 test_dir <- function(path, filter = NULL, reporter = "summary", env = NULL) {
   reporter <- find_reporter(reporter)
   if (is.null(env)) {
-    env <- new.env(parent = globalenv())    
+    env <- new.env(parent = globalenv())
   }
-  
+
   source_dir(path, "^helper.*\\.[rR]$", env = env)
-  
+
   files <- dir(path, "^test.*\\.[rR]$", full.names = TRUE)
   if (!is.null(filter)) {
     test_names <- basename(files)
     test_names <- str_replace(test_names, "test-?", "")
     test_names <- str_replace(test_names, "\\.[rR]", "")
-  
+
     files <- files[str_detect(test_names, filter)]
   }
   with_reporter(reporter, lapply(files, function(file) {
@@ -35,7 +35,7 @@ test_dir <- function(path, filter = NULL, reporter = "summary", env = NULL) {
 }
 
 #' Load all source files in a directory.
-#' 
+#'
 #' The expectation is that the files can be sourced in alphabetical order.
 #'
 #' @param path path to tests
@@ -51,16 +51,16 @@ source_dir <- function(path, pattern = "\\.[rR]$", env = NULL, chdir = TRUE) {
   if (is.null(env)) {
     env <- new.env(parent = globalenv())
   }
-  
+
   lapply(files, sys.source, chdir = chdir, envir = env)
 }
 
 #' Run all tests in specified file.
-#' 
+#'
 #' @param path path to file
 #' @param reporter reporter to use
 #' @export
-test_file <- function(path, reporter = "summary") {    
+test_file <- function(path, reporter = "summary") {
   reporter <- find_reporter(reporter)
   with_reporter(reporter, {
     sys.source(path, new.env(parent = globalenv()), chdir = TRUE)

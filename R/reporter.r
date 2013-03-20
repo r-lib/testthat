@@ -6,18 +6,18 @@
 #' @keywords internal.
 #' @aliases Reporter-class
 #' @exportClass Reporter
-Reporter <- setRefClass("Reporter", 
+Reporter <- setRefClass("Reporter",
   fields = list(
-    context = "character", 
-    test = "ANY", 
-    failed = "logical", 
+    context = "character",
+    test = "ANY",
+    failed = "logical",
     context_open = "logical"
   ), methods = list(
     initialize = function(...) {
       context_open <<- FALSE
       failed <<- FALSE
       test <<- NULL
-      
+
       initFields(...)
     },
     start_reporter = function() {

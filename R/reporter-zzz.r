@@ -3,14 +3,14 @@ reporter_accessors <- local({
   # Default has to be the stop reporter, since it is this that will be run by
   # default from the command line and in R CMD test.
   reporter <- StopReporter$new()
-  
+
   set <- function(value) {
     reporter <<- value
   }
   get <- function() {
     reporter
   }
-  
+
   list(get = get, set = set)
 })
 test_reporter <- reporter_accessors$get
@@ -26,15 +26,15 @@ change_reporter_to <- reporter_accessors$set
 #' @param code code block to execute
 with_reporter <- function(reporter, code) {
   reporter <- find_reporter(reporter)
-  
+
   cur_reporter <- test_reporter()
   change_reporter_to(reporter)
   on.exit(change_reporter_to(cur_reporter))
-  
+
   reporter$start_reporter()
   force(code)
   reporter$end_reporter()
-  
+
   invisible(reporter)
 }
 
@@ -46,14 +46,14 @@ with_reporter <- function(reporter, code) {
 #' @keywords internal
 find_reporter <- function(reporter) {
   if (inherits(reporter, "Reporter")) return(reporter)
-  
+
   name <- reporter
   str_sub(name, 1, 1) <- toupper(str_sub(name, 1, 1))
   name <- str_c(name, "Reporter")
-  
+
   if (!exists(name)) {
     stop("Can not find test reporter ", reporter, call. = FALSE)
   }
-  
+
   get(name)$new()
 }

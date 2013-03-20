@@ -13,7 +13,7 @@ context <- function(desc) {
   rep <- test_reporter()
   if (rep$context_open) {
     rep$end_context()
-  } else {    
+  } else {
     rep$context_open <- TRUE
   }
   rep$start_context(desc)

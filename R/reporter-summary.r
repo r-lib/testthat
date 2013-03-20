@@ -2,12 +2,12 @@
 NULL
 
 #' Test reporter: summary of errors.
-#' 
+#'
 #' This is the most useful reporting reporter as it lets you know both which
 #' tests have run successfully, as well as fully reporting information about
-#' failures and errors.  It is the default reporting reporter used by 
+#' failures and errors.  It is the default reporting reporter used by
 #' \code{\link{test_dir}} and \code{\link{test_file}}.
-#' 
+#'
 #' As an additional benefit, this reporter will praise you from time-to-time
 #' if all your tests pass.
 #'
@@ -15,14 +15,14 @@ NULL
 #' @exportClass SummaryReporter
 #' @aliases SummaryReporter-class
 #' @keywords debugging
-SummaryReporter <- setRefClass("SummaryReporter", contains = "Reporter", 
+SummaryReporter <- setRefClass("SummaryReporter", contains = "Reporter",
   fields = list(
-    "failures" = "list", 
-    "n" = "integer", 
+    "failures" = "list",
+    "n" = "integer",
     "has_tests" = "logical"),
 
   methods = list(
-  
+
     start_context = function(desc) {
       cat(desc, ": ")
     },
@@ -79,8 +79,8 @@ SummaryReporter <- setRefClass("SummaryReporter", contains = "Reporter",
 
         cat("\n\n")
         cat(str_c(
-          colourise(header, "red"), line, "\n", 
-          message, "\n", collapse = "\n"))      
+          colourise(header, "red"), line, "\n",
+          message, "\n", collapse = "\n"))
       }
     }
   )

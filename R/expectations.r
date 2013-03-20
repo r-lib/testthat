@@ -1,6 +1,6 @@
 #' Expectation: does the object inherit from a class?
 #'
-#' Tests whether or not an object inherits from any of a list of classes. 
+#' Tests whether or not an object inherits from any of a list of classes.
 #'
 #' @param class character vector of class names
 #' @seealso \code{\link{inherits}}
@@ -36,7 +36,7 @@ expect_is <- function(object, class, info = NULL, label = NULL) {
 }
 
 #' Expectation: is the object true?
-#' 
+#'
 #' This is a fall-back expectation that you can use when none of the other
 #' more specific expectations apply. The disadvantage is that you may get
 #' a less informative error message.
@@ -54,7 +54,7 @@ expect_is <- function(object, class, info = NULL, label = NULL) {
 #' expect_that(!(2 != 2), is_true())
 #' # or better:
 #' expect_that(2 != 2, is_false())
-#' 
+#'
 #' a <- 1:3
 #' expect_that(length(a) == 3, is_true())
 #' # but better to use more specific expectation, if available
@@ -78,9 +78,9 @@ expect_true <- function(object, info = NULL, label = NULL) {
 }
 
 #' Expectation: is the object false?
-#' 
+#'
 #' A useful fall-back expectation like \code{\link{is_true}}
-#' 
+#'
 #' @family expectations
 #' @export
 #' @examples
@@ -111,9 +111,9 @@ expect_false <- function(object, info = NULL, label = NULL) {
 #' Expectation: is the object equal (with numerical tolerance) to a value?
 #'
 #' Comparison performed using \code{\link{all.equal}}.
-# 
+#
 #' @param expected Expected value
-#' @param label For full form, label of expected object used in error 
+#' @param label For full form, label of expected object used in error
 #'   messages. Useful to override default (deparsed expected expression) when
 #'   doing tests in a loop.  For short cut form, object label. When
 #'   \code{NULL}, computed from deparsed object.
@@ -140,7 +140,7 @@ expect_false <- function(object, info = NULL, label = NULL) {
 #' # You can pass on additional arguments to all.equal:
 #' \dontrun{
 #' # Test the ABSOLUTE difference is within .002
-#' expect_equal(object = 10.01, expected = 10, tolerance = .002, 
+#' expect_equal(object = 10.01, expected = 10, tolerance = .002,
 #'   scale = 1)
 #'
 #' # Test the RELATIVE difference is within .002
@@ -154,7 +154,7 @@ equals <- function(expected, label = NULL, ...) {
   } else if (!is.character(label) || length(label) != 1) {
     label <- deparse(label)
   }
-  
+
   function(actual) {
     same <- all.equal(expected, actual, ...)
     expectation(
@@ -182,7 +182,7 @@ expect_equal <- function(object, expected, ..., info = NULL, label = NULL,
 #' Expectation: is the object equivalent to a value?
 #' This expectation tests for equivalency: are two objects equal once their
 #' attributes have been removed.
-#' 
+#'
 #' @inheritParams equals
 #' @family expectations
 #' @export
@@ -199,7 +199,7 @@ is_equivalent_to <- function(expected, label = NULL) {
   }
   function(actual) {
     equals(expected, check.attributes = FALSE)(actual)
-  } 
+  }
 }
 #' @export
 #' @rdname is_equivalent_to
@@ -219,7 +219,7 @@ expect_equivalent <- function(object, expected, info = NULL, label = NULL,
 #' Expectation: is the object identical to another?
 #'
 #' Comparison performed using \code{\link{identical}}.
-#' 
+#'
 #' @inheritParams equals
 #' @family expectations
 #' @export
@@ -227,7 +227,7 @@ expect_equivalent <- function(object, expected, info = NULL, label = NULL,
 #' a <- letters[1:3]
 #' expect_that(a, is_identical_to(c("a", "b", "c")))
 #' expect_identical(a, c("a", "b", "c"))
-#' 
+#'
 #' # Identical does not take into account numeric tolerance
 #' \dontrun{
 #' expect_that(sqrt(2) ^ 2, is_identical_to(2))
@@ -247,7 +247,7 @@ is_identical_to <- function(expected, label = NULL) {
     } else {
       diff <- str_c(same, collapse = "\n")
     }
-    
+
     expectation(
       identical(actual, expected),
       str_c("is not identical to ", label, ". Differences: \n", diff)
@@ -270,8 +270,8 @@ expect_identical <- function(object, expected, info = NULL, label = NULL,
 }
 
 #' Expectation: does string match regular expression?
-#' 
-#' If the object to be tested has length greater than one, all elements of 
+#'
+#' If the object to be tested has length greater than one, all elements of
 #' the vector must match the pattern in order to pass.
 #'
 #' @param regexp regular expression to test against
@@ -281,18 +281,18 @@ expect_identical <- function(object, expected, info = NULL, label = NULL,
 #'   the string matching
 #' @family expectations
 #' @export
-#' @examples 
+#' @examples
 #' expect_that("Testing is fun", matches("fun"))
 #' expect_that("Testing is fun", matches("f.n"))
 #' expect_match("Testing is fun", "f.n")
 matches <- function(regexp, all = TRUE) {
   function(char) {
     matches <- str_detect(char, regexp)
-    expectation( 
+    expectation(
       if (all) all(matches) else any(matches),
       str_c("does not match '", regexp, "'. Actual value: \n", char)
     )
-  }  
+  }
 }
 #' @export
 #' @rdname matches
@@ -306,12 +306,12 @@ expect_match <- function(object, regexp, all = TRUE, info = NULL,
 }
 
 #' Expectation: does printed output match a regular expression?
-#' 
+#'
 #' @param regexp regular expression to test against
 #' @param ... other arguments passed to \code{\link{grepl}}
 #' @family expectations
 #' @export
-#' @examples 
+#' @examples
 #' str(mtcars)
 #' expect_that(str(mtcars), prints_text("32 obs"))
 #' expect_that(str(mtcars), prints_text("11 variables"))
@@ -333,7 +333,7 @@ expect_output <- function(object, regexp, ..., info = NULL, label = NULL) {
 }
 
 #' Expectation: does expression throw an error?
-#' 
+#'
 #' @param regexp optional regular expression to match. If not specified, just
 #'   asserts that expression throws some error.
 #' @family expectations
@@ -346,20 +346,20 @@ expect_output <- function(object, regexp, ..., info = NULL, label = NULL) {
 throws_error <- function(regexp = NULL) {
   function(expr) {
     res <- try(force(expr), TRUE)
-    
+
     no_error <- !inherits(res, "try-error")
     if (no_error) {
       return(expectation(FALSE, "code did not generate an error"))
-      
-    } 
-    
+
+    }
+
     if (!is.null(regexp)) {
       matches(regexp)(res)
     } else {
       expectation(TRUE, "")
     }
   }
-} 
+}
 #' @export
 #' @rdname throws_error
 #' @inheritParams expect_that
@@ -373,7 +373,7 @@ expect_error <- function(object, regexp = NULL, info = NULL, label = NULL) {
 #' Expectation: does expression give a warning?
 #'
 #' Needs to match at least one of the warnings produced by the expression.
-#' 
+#'
 #' @param regexp optional regular expression to match. If not specified, just
 #'   asserts that expression gives some warning.
 #' @family expectations
@@ -410,7 +410,7 @@ expect_warning <- function(object, regexp = NULL, info = NULL,
 #' Expectation: does expression show a message?
 #'
 #' Needs to match at least one of the messages produced by the expression.
-#' 
+#'
 #' @param regexp optional regular expression to match. If not specified, just
 #'   asserts that expression shows some message.
 #' @family expectations
@@ -432,7 +432,7 @@ shows_message <- function(regexp = NULL) {
       )
     }
   }
-} 
+}
 #' @export
 #' @rdname shows_message
 #' @inheritParams expect_that
@@ -445,16 +445,16 @@ expect_message <- function(object, regexp = NULL, info = NULL,
 }
 
 #' Expectation: does expression take less than a fixed amount of time to run?
-#' 
+#'
 #' This is useful for performance regression testing.
-#' 
+#'
 #' @family expectations
 #' @export
 #' @param amount maximum duration in seconds
 takes_less_than <- function(amount) {
   function(expr) {
     duration <- system.time(force(expr))["elapsed"]
-    
+
     expectation(
       duration < amount,
       str_c("took ", duration, " seconds, which is more than ", amount)
