@@ -92,17 +92,13 @@ auto_test <- function(code_path, test_path, reporter = "summary", env = NULL,
 #' @export
 #' @keywords debugging
 #' @seealso \code{\link{auto_test}} for details on how method works
+#' @import devtools
 auto_test_package <- function(path,
                               test_path = file.path(path, "inst", "tests"),
                               reporter = "summary",
                               pattern = NULL) {
-  if (require(devtools)) {
-    codepath <- path
-    loader <- function(path, env) load_all(path)
-  } else {
-    codepath <- file.path(path, "R")
-    loader = source_dir
-  }
+  codepath <- path
+  loader <- function(path, env) load_all(path)
   auto_test(codepath, test_path, reporter,
             loader = loader, pattern = pattern)
 }
