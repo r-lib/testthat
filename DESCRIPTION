@@ -1,7 +1,7 @@
 Package: testthat
 Type: Package
 Title: Testthat code.  Tools to make testing fun :)
-Version: 0.7.0.99
+Version: 0.7.1
 Author: Hadley Wickham <h.wickham@gmail.com>
 Maintainer: Hadley Wickham <h.wickham@gmail.com>
 Description: A testing package specifically tailored for R
