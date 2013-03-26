@@ -10,6 +10,8 @@
 * Added `TapReporter` to produce output compatible with the "test anything 
   protocol". Contributed by Dan Keshet.
 
+* Fixed where `auto_test` would identify the wrong files as having changed. 
+  (Thanks to Peter Meilstrup)
 
 Version 0.7
 ------------------------------------------------------------------------------

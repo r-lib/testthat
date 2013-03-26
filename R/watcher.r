@@ -69,7 +69,7 @@ compare_state <- function(old, new) {
   deleted <- setdiff(names(old), names(new))
 
   same <- intersect(names(old), names(new))
-  modified <- names(new)[new[same] != old[same]]
+  modified <- names(new[same])[new[same] != old[same]]
 
   n <- length(added) + length(deleted) + length(modified)
 
