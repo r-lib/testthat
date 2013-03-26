@@ -1,3 +1,6 @@
+Version 0.7.0.99
+------------------------------------------------------------------------------
+
 * Ignore attributes in `is_true` and `is_false` (#49)
 
 * `make_expectation` works for more types of input (#52)
