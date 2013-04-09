@@ -1,3 +1,7 @@
+Version 0.7.2
+
+* Output TAP diagnostics in YAMLish for compatibility with tap4j
+
 Version 0.7.1
 ------------------------------------------------------------------------------
 

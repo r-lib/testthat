@@ -54,8 +54,8 @@ TapReporter <- setRefClass("TapReporter", contains = "Reporter",
                     cat('ok', i, result$test, '\n')
                 } else {
                     cat('not ok', i, result$test, '\n')
-                    msg <- str_replace_all(result$message, '\n', '\n  ')
-                    cat(' ', msg, '\n')
+		    # Diagnostic in YAMLish for compatibility with tap4j
+                    cat('  ---\n  ', result$message, '\n  ...\n') 
                 }
             }
         }
