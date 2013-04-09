@@ -54,7 +54,7 @@ TapReporter <- setRefClass("TapReporter", contains = "Reporter",
                     cat('ok', i, result$test, '\n')
                 } else {
                     cat('not ok', i, result$test, '\n')
-		    # Diagnostic in YAMLish for compatibility with tap4j
+                    # Diagnostic in YAMLish for compatibility with tap4j
                     cat('  ---\n  ', result$message, '\n  ...\n') 
                 }
             }
