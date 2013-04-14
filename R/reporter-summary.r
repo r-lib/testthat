@@ -20,11 +20,16 @@ SummaryReporter <- setRefClass("SummaryReporter", contains = "Reporter",
     "failures" = "list",
     "n" = "integer",
     "has_tests" = "logical"),
-
+                               
   methods = list(
 
-    start_context = function(desc) {
-      cat("\n", desc, ": ")
+    start_context = function(desc, provided) {      
+      if (provided){
+        uninitContext <<- desc  
+      } else{
+        uninitContext <<- NULL
+        cat("\n", desc, ": ")
+      }
     },
 
     end_context = function() {
@@ -38,6 +43,11 @@ SummaryReporter <- setRefClass("SummaryReporter", contains = "Reporter",
     },
 
     add_result = function(result) {
+      if (!is.null(uninitContext)){
+        cat("\n", uninitContext, ": ")
+        uninitContext <<- NULL
+      }
+      
       has_tests <<- TRUE
       if (result$passed) {
         cat(colourise(".", fg = "light green"))

@@ -5,18 +5,25 @@
 #' in a single file if you so choose.
 #'
 #' @param desc description of context.  Should start with a capital letter.
+#' @param provided whether the context was provided or inferred automatically 
+#' (\code{TRUE}), or set explicitly in the test (\code{FALSE}). Different
+#' reporters will handle these test differently, but the typical behavior (as 
+#' exemplified in the \link{SummaryReporter}) is to use the provided contexts only 
+#' for tests which aren't covered by an explicit context. Otherwise, they will 
+#' not be printed in the output. Other parsers will ignore provided contexts
+#' altogether.
 #' @export
 #' @examples
 #' context("String processing")
 #' context("Remote procedure calls")
-context <- function(desc) {
+context <- function(desc, provided=FALSE) {
   rep <- test_reporter()
   if (rep$context_open) {
     rep$end_context()
   } else {
     rep$context_open <- TRUE
   }
-  rep$start_context(desc)
+  rep$start_context(desc, provided)
 }
 
 end_context <- function() {
