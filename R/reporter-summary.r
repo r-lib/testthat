@@ -24,11 +24,11 @@ SummaryReporter <- setRefClass("SummaryReporter", contains = "Reporter",
   methods = list(
 
     start_context = function(desc) {
-      cat(desc, ": ")
+      cat("\n", desc, ": ")
     },
 
     end_context = function() {
-      cat("\n")
+      
     },
 
     start_reporter = function() {
@@ -62,7 +62,9 @@ SummaryReporter <- setRefClass("SummaryReporter", contains = "Reporter",
         sapply(times, function(i) str_c(rep.int(char, i), collapse = ""))
       }
 
-      if (n == 0) {
+      cat("\n")
+      
+      if (n == 0) {        
         cat("\n")
         if (has_tests && sample(10, 1) == 1) {
           cat(colourise(sample(.praise, 1), "light green"), "\n")
