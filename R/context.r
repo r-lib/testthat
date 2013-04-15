@@ -16,7 +16,7 @@
 #' @examples
 #' context("String processing")
 #' context("Remote procedure calls")
-context <- function(desc, provided=FALSE) {
+context <- function(desc, provided = FALSE) {
   rep <- test_reporter()
   if (rep$context_open) {
     rep$end_context()
