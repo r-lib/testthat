@@ -466,3 +466,155 @@ takes_less_than <- function(amount) {
     )
   }
 }
+
+
+
+#' Expectation: is returned value less than specified value?
+#'
+#' This is useful for ensuring returned value is below a ceiling.
+#
+#' @param expected Expected value
+#' @param label For full form, label of expected object used in error
+#'   messages. Useful to override default (deparsed expected expression) when
+#'   doing tests in a loop.  For short cut form, object label. When
+#'   \code{NULL}, computed from deparsed object.
+#' @param expected.label Equivalent of \code{label} for shortcut form.
+#' @param ... other values passed to \code{\link{all.equal}}
+#' @family expectations
+#' @export
+#' @examples
+#' a <- 9
+#' expect_that(a, is_less_than(10))
+#' expect_less_than(a, 10)
+is_less_than <- function(expected, label=NULL, ...) {
+  find_expr <- function(name, env = parent.frame()) {
+    subs <- do.call("substitute", list(as.name(name), env))
+    str_c(deparse(subs, width.cutoff = 500), collapse = "\n")
+  }
+  if (is.null(label)) {
+    label <- find_expr("expected")
+  }
+  else if (!is.character(label) || length(label) != 1) {
+    label <- deparse(label)
+  }
+  function(actual) {
+    less <- expected > actual
+    expectation(identical(less, TRUE), str_c("not less than ", 
+                                                      label, "\n", 
+                                                      str_c(less, collapse = "\n")))
+  }
+}
+#' @export
+#' @rdname less_than
+#' @inheritParams expect_that
+expect_less_than <- function(object, expected, ..., info = NULL, label = NULL,
+                         expected.label = NULL) {
+  if (is.null(label)) {
+    label <- find_expr("object")
+  }
+  if (is.null(expected.label)) {
+    expected.label <- find_expr("expected")
+  }
+  expect_that(object, is_less_than(expected, label = expected.label, ...),
+              info = info, label = label)
+}
+
+#' Expectation: is returned value more than specified value?
+#'
+#' This is useful for ensuring returned value is above a floor.
+#
+#' @param expected Expected value
+#' @param label For full form, label of expected object used in error
+#'   messages. Useful to override default (deparsed expected expression) when
+#'   doing tests in a loop.  For short cut form, object label. When
+#'   \code{NULL}, computed from deparsed object.
+#' @param expected.label Equivalent of \code{label} for shortcut form.
+#' @param ... other values passed to \code{\link{all.equal}}
+#' @family expectations
+#' @export
+#' @examples
+#' a <- 11
+#' expect_that(a, is_more_than(10))
+#' expect_more_than(a, 10)
+is_more_than <- function(expected, label=NULL, ...) {
+  find_expr <- function(name, env = parent.frame()) {
+    subs <- do.call("substitute", list(as.name(name), env))
+    str_c(deparse(subs, width.cutoff = 500), collapse = "\n")
+  }
+  if (is.null(label)) {
+    label <- find_expr("expected")
+  }
+  else if (!is.character(label) || length(label) != 1) {
+    label <- deparse(label)
+  }
+  function(actual) {
+    more <- expected < actual
+    expectation(identical(more, TRUE), str_c("not more than ", 
+                                                      label, "\n", 
+                                                      str_c(more, collapse = "\n")))
+  }
+}
+#' @export
+#' @rdname more_than
+#' @inheritParams expect_that
+expect_more_than <- function(object, expected, ..., info = NULL, label = NULL,
+                             expected.label = NULL) {
+  if (is.null(label)) {
+    label <- find_expr("object")
+  }
+  if (is.null(expected.label)) {
+    expected.label <- find_expr("expected")
+  }
+  expect_that(object, is_more_than(expected, label = expected.label, ...),
+              info = info, label = label)
+}
+
+#' Expectation: is returned value unequal to  some specified value?
+#'
+#' This is useful for ensuring returned value is anything other than expected value.
+#
+#' @param expected Expected value
+#' @param label For full form, label of expected object used in error
+#'   messages. Useful to override default (deparsed expected expression) when
+#'   doing tests in a loop.  For short cut form, object label. When
+#'   \code{NULL}, computed from deparsed object.
+#' @param expected.label Equivalent of \code{label} for shortcut form.
+#' @param ... other values passed to \code{\link{all.equal}}
+#' @family expectations
+#' @export
+#' @examples
+#' a <- 11
+#' expect_that(a, unequal(10))
+#' expect_unequal(a, 10)
+unequal <- function(expected, label = NULL, ...) 
+{
+  if (is.null(label)) {
+    label <- find_expr("expected")
+  }
+  else if (!is.character(label) || length(label) != 1) {
+    label <- deparse(label)
+  }
+  function(actual) {
+    unequal <- !isTRUE(all.equal(expected, actual, ...))
+    expectation(identical(unequal, TRUE), str_c("not equal to ", 
+                                                label, "\n", str_c(unequal, collapse = "\n")))
+  }
+}
+#' @export
+#' @rdname unequal
+#' @inheritParams expect_that
+expect_unequal <- function (object, expected, ..., info = NULL, label = NULL, expected.label = NULL) 
+{
+  find_expr <- function(name, env = parent.frame()) {
+    subs <- do.call("substitute", list(as.name(name), env))
+    stringr::str_c(deparse(subs, width.cutoff = 500), collapse = "\n")
+  }
+  if (is.null(label)) {
+    label <- find_expr("object")
+  }
+  if (is.null(expected.label)) {
+    expected.label <- find_expr("expected")
+  }
+  expect_that(object, unequal(expected, label = expected.label, 
+                              ...), info = info, label = label)
+}
