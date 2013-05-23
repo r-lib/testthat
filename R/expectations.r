@@ -607,7 +607,7 @@ expect_unequal <- function (object, expected, ..., info = NULL, label = NULL, ex
 {
   find_expr <- function(name, env = parent.frame()) {
     subs <- do.call("substitute", list(as.name(name), env))
-    stringr::str_c(deparse(subs, width.cutoff = 500), collapse = "\n")
+    str_c(deparse(subs, width.cutoff = 500), collapse = "\n")
   }
   if (is.null(label)) {
     label <- find_expr("object")
