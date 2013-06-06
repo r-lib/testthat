@@ -70,3 +70,28 @@ fail <- function(message = "Failure has been forced.") {
   test_reporter()$add_result(results)
   invisible()
 }
+
+
+#' Negate an expectation
+#'
+#' This negates an expectation, making it possible to express that you
+#' want the opposite of a standard expectation.
+#'
+#' @param expt an existing expectation
+#' @export
+#' @examples
+#' x <- 1
+#' expect_that(x, equals(1))
+#' expect_that(x, not(equals(2)))
+#' \dontrun{
+#' expect_that(x, equals(2))
+#' expect_that(x, not(equals(1)))
+#' }
+not <- function(f) {
+  stopifnot(is.function(f))
+
+  function(...) {
+    res <- f(...)
+    negate(res)
+  }
+}

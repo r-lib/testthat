@@ -369,7 +369,7 @@ throws_error <- function(regexp = NULL) {
     if (!is.null(regexp)) {
       matches(regexp)(res)
     } else {
-      expectation(TRUE, "threw an error", "no error thrown")
+      expectation(TRUE, "no error thrown", "threw an error")
     }
   }
 }
@@ -405,7 +405,7 @@ gives_warning <- function(regexp = NULL) {
       expectation(
         length(warnings) > 0,
         "no warnings given",
-        str_c(length(warnings), "warnings created")
+        str_c(length(warnings), " warnings created")
       )
     }
   }

@@ -23,14 +23,33 @@ expectation <- function(passed, failure_msg, success_msg) {
   )
 }
 
+#' @export
+#' @rdname expectation
+#' @param x object to test for class membership
+is.expectation <- function(x) inherits(x, "expectation")
+
 #' @S3method print expectation
 print.expectation <- function(x, ...) cat(format(x), "\n")
 
 #' @S3method format expectation
 format.expectation <- function(x, ...) {
   if (x$passed) {
-    str_c("As expected:", x$success_msg)
+    str_c("As expected: ", x$success_msg)
   } else {
     str_c("Not expected: ", x$failure_msg, ".")
   }
+}
+
+negate <- function(expt) {
+  stopifnot(is.expectation(expt))
+
+  # If it's an error, don't need to do anything
+  if (expt$error) return(expt)
+
+  opp <- expt
+  opp$passed <- !expt$passed
+  opp$failure_msg <- expt$success_msg
+  opp$success_msg <- expt$failure_msg
+  opp
+
 }

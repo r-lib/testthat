@@ -1,6 +1,9 @@
 Version 0.7.1.99
 ------------------------------------------------------------------------------
 
+* The not function makes it possible to negate tests. For example, 
+  `expect_that(f(), not(throws_error()))` asserts that `f()` does not
+  throw an error.
 
 Version 0.7.1
 ------------------------------------------------------------------------------
