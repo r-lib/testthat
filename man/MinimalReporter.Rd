@@ -2,6 +2,9 @@
 \alias{MinimalReporter}
 \alias{MinimalReporter-class}
 \title{Test reporter: minimal.}
+\usage{
+  MinimalReporter(...)
+}
 \description{
   The minimal test reporter provides the absolutely minimum
   amount of information: whether each expectation has

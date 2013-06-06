@@ -2,6 +2,9 @@
 \alias{TapReporter}
 \alias{TapReporter-class}
 \title{Test reporter: TAP format.}
+\usage{
+  TapReporter(...)
+}
 \description{
   This reporter will output results in the Test Anything
   Protocol (TAP), a simple text-based interface between

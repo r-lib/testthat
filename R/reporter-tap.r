@@ -2,7 +2,7 @@
 NULL
 
 #' Test reporter: TAP format.
-#' 
+#'
 #' This reporter will output results in the Test Anything Protocol (TAP),
 #' a simple text-based interface between testing modules in a test harness.
 #' For more information about TAP, see http://testanything.org
@@ -11,17 +11,17 @@ NULL
 #' @exportClass TapReporter
 #' @aliases TapReporter-class
 #' @keywords debugging
-TapReporter <- setRefClass("TapReporter", contains = "Reporter", 
-  fields = list(    
+TapReporter <- setRefClass("TapReporter", contains = "Reporter",
+  fields = list(
     "results" = "list",
     "n" = "integer",
     "has_tests" = "logical",
     "contexts" = "character"),
 
   methods = list(
-  
+
     start_context = function(desc) {
-      contexts[n+1] <<- desc;     
+      contexts[n+1] <<- desc;
     },
 
     start_reporter = function() {

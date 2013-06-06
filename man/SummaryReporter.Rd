@@ -2,6 +2,9 @@
 \alias{SummaryReporter}
 \alias{SummaryReporter-class}
 \title{Test reporter: summary of errors.}
+\usage{
+  SummaryReporter(...)
+}
 \description{
   This is the most useful reporting reporter as it lets you
   know both which tests have run successfully, as well as
