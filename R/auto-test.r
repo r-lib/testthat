@@ -30,8 +30,12 @@
 #' @param reporter test reporter to use
 #' @param env environment in which to execute test suite. Defaults to new
 #'   environment inheriting from the global environment.
+#' @param loader callback to a function to reload the code directory, taking
+#'   a directory and an environment. Defaults to \code{test_that:::source_dir}.
+#' @param pattern optional file pattern for \code{\link{watch}},
 #' @keywords debugging
-auto_test <- function(code_path, test_path, reporter = "summary", env = NULL) {
+auto_test <- function(code_path, test_path, reporter = "summary", env = NULL,
+                      loader = source_dir, pattern = NULL) {
   reporter <- find_reporter(reporter)
   code_path <- normalizePath(code_path)
   test_path <- normalizePath(test_path)
@@ -40,8 +44,11 @@ auto_test <- function(code_path, test_path, reporter = "summary", env = NULL) {
   if (is.null(env)) {
     env <- new.env(parent = globalenv())
   }
-  source_dir(code_path, env = env)
-  test_dir(test_path, env = env)
+
+  tryCatch({
+    loader(code_path, env = env)
+    test_dir(test_path, env = env, reporter=reporter)
+  }, error=function(e) cat("Error loading tests:\n", as.character(e), "\n"))
 
   starts_with <- function(string, prefix) {
     str_sub(string, 1, str_length(prefix)) == prefix
@@ -53,13 +60,16 @@ auto_test <- function(code_path, test_path, reporter = "summary", env = NULL) {
 
     tests <- changed[starts_with(changed, test_path)]
     code <- changed[starts_with(changed, code_path)]
+    code <- setdiff(code, tests)
 
     if (length(code) > 0) {
       # Reload code and rerun all tests
       cat("Changed code: ", str_c(basename(code), collapse = ", "), "\n")
       cat("Rerunning all tests\n")
-      source_dir(code_path, env = env)
-      test_dir(test_path, env = env)
+      tryCatch({
+        loader(code_path, env = env)
+        test_dir(test_path, env = env, reporter=reporter)
+       }, error=function(e) cat("Error loading tests:\n", as.character(e), "\n"))
     } else if (length(tests) > 0) {
       # If test changes, rerun just that test
       cat("Rerunning tests: ", str_c(basename(tests), collapse = ", "), "\n")
@@ -69,18 +79,27 @@ auto_test <- function(code_path, test_path, reporter = "summary", env = NULL) {
 
     TRUE
   }
-  watch(c(code_path, test_path), watcher)
 
+  watch(c(code_path, test_path), watcher, pattern = pattern)
 }
 
 #' Watches a package for changes, rerunning tests as appropriate.
 #'
 #' @param path path to package
-#' @export
+#' @param test_path Path to test directory (default \code{pkg_dir/inst/tests})
 #' @param reporter test reporter to use
+#' @param pattern Optional file pattern for \code{\link{watch}}
+#' @export
 #' @keywords debugging
 #' @seealso \code{\link{auto_test}} for details on how method works
-auto_test_package <- function(path, reporter = "summary") {
-  auto_test(file.path(path, "R"), file.path(path, "tests"), reporter)
+#' @import devtools
+auto_test_package <- function(path,
+                              test_path = file.path(path, "inst", "tests"),
+                              reporter = "summary",
+                              pattern = NULL) {
+  codepath <- path
+  loader <- function(path, env) load_all(path)
+  auto_test(codepath, test_path, reporter,
+            loader = loader, pattern = pattern)
 }
 

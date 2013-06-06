@@ -13,7 +13,8 @@ Depends:
 Imports:
     digest,
     stringr (>= 0.4),
-    evaluate (>= 0.4.3)
+    evaluate (>= 0.4.3),
+    devtools (>= 0.8)
 License: GPL
 LazyData: true
 Collate:

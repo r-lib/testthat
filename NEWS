@@ -20,6 +20,10 @@ Version 0.7.1
 * Fixed where `auto_test` would identify the wrong files as having changed. 
   (Thanks to Peter Meilstrup)
 
+* `auto_test_package` uses `devtools` to load packages and looks in
+  `inst/tests` by default for test files. (Contributed by Peter
+  Meilstrup)
+
 Version 0.7
 ------------------------------------------------------------------------------
 

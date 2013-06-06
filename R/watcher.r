@@ -48,7 +48,8 @@ watch <- function(path, callback, pattern = NULL, hash = TRUE) {
 #'   accurate)
 #' @keywords internal
 dir_state <- function(path, pattern = NULL, hash = TRUE) {
-  files <- dir(path, pattern, full.names = TRUE)
+  files <- dir(path, pattern, full.names = TRUE,
+               recursive=TRUE, include.dirs=FALSE)
 
   if (hash) {
     sapply(files, digest::digest, file = TRUE)
