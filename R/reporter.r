@@ -11,20 +11,23 @@ Reporter <- setRefClass("Reporter",
     context = "character",
     test = "ANY",
     failed = "logical",
-    context_open = "logical"
+    context_open = "logical",
+    context_provided = "logical"
   ), methods = list(
-    initialize = function(...) {
+    initialize = function(provided=FALSE,...) {
       context_open <<- FALSE
       failed <<- FALSE
       test <<- NULL
+      context_provided <<- provided
 
       initFields(...)
     },
     start_reporter = function() {
       failed <<- FALSE
     },
-    start_context = function(desc) {
+    start_context = function(desc, provided=FALSE) {
       context <<- desc
+      context_provided <<- provided
     },
     start_test = function(desc) {
       test <<- desc
