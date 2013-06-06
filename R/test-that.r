@@ -60,5 +60,5 @@ error_report <- function(error, traceback) {
     msg <- str_replace(msg, "\n$", "")
   }
 
-  expectation(NA, msg)
+  expectation(NA, msg, "no error occured")
 }

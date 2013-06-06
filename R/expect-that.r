@@ -43,9 +43,11 @@ expect_that <- function(object, condition, info = NULL, label = NULL) {
   }
   results <- condition(object)
 
-  results$message <- str_c(label, " ", results$message)
+  results$failure_msg <- str_c(label, " ", results$failure_msg)
+  results$success_msg <- str_c(label, " ", results$success_msg)
   if (!is.null(info)) {
-    results$message <- str_c(results$message, "\n", info)
+    results$failure_msg <- str_c(results$failure_msg, "\n", info)
+    results$success_msg <- str_c(results$success_msg, "\n", info)
   }
 
   test_reporter()$add_result(results)
@@ -64,7 +66,7 @@ expect_that <- function(object, condition, info = NULL, label = NULL) {
 #' test_that("this test fails", fail())
 #' }
 fail <- function(message = "Failure has been forced.") {
-  results <- expectation(FALSE, message)
+  results <- expectation(FALSE, message, "This always succeeds.")
   test_reporter()$add_result(results)
   invisible()
 }

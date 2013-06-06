@@ -75,7 +75,7 @@ SummaryReporter <- setRefClass("SummaryReporter", contains = "Reporter",
         linewidth <- ifelse(nchar(header) > getOption("width"),0,getOption("width") - nchar(header))
         line <- charrep("-", linewidth )
 
-        message <- sapply(failures, "[[", "message")
+        message <- vapply(failures, "[[", "failure_msg", FUN.VALUE = character(1))
 
         cat("\n\n")
         cat(str_c(

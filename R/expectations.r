@@ -21,7 +21,8 @@ is_a <- function(class) {
     actual <- str_c(class(x), collapse = ", ")
     expectation(
       inherits(x, class),
-      str_c("inherits from ", actual, " not ", class)
+      str_c("inherits from ", actual, " not ", class),
+      str_c("inherits from ", class)
     )
   }
 }
@@ -65,7 +66,8 @@ is_true <- function() {
   function(x) {
     expectation(
       identical(as.vector(x), TRUE),
-      "isn't true"
+      "isn't true",
+      "is true"
     )
   }
 }
@@ -97,7 +99,8 @@ is_false <- function() {
   function(x) {
     expectation(
       identical(as.vector(x), FALSE),
-      "isn't false"
+      "isn't false",
+      "is false"
     )
   }
 }
@@ -163,7 +166,8 @@ equals <- function(expected, label = NULL, ...) {
     same <- all.equal(expected, actual, ...)
     expectation(
       identical(same, TRUE),
-      str_c("not equal to ", label, "\n", str_c(same, collapse = "\n"))
+      str_c("not equal to ", label, "\n", str_c(same, collapse = "\n")),
+      str_c("equals ", label)
     )
   }
 }
@@ -254,7 +258,8 @@ is_identical_to <- function(expected, label = NULL) {
 
     expectation(
       identical(actual, expected),
-      str_c("is not identical to ", label, ". Differences: \n", diff)
+      str_c("is not identical to ", label, ". Differences: \n", diff),
+      str_c("is identical to", label)
     )
   }
 }
@@ -294,7 +299,8 @@ matches <- function(regexp, all = TRUE) {
     matches <- str_detect(char, regexp)
     expectation(
       if (all) all(matches) else any(matches),
-      str_c("does not match '", regexp, "'. Actual value: \n", char)
+      str_c("does not match '", regexp, "'. Actual value: \n", char),
+      str_c("matches '", regexp, "'")
     )
   }
 }
@@ -354,14 +360,16 @@ throws_error <- function(regexp = NULL) {
 
     no_error <- !inherits(res, "try-error")
     if (no_error) {
-      return(expectation(FALSE, "code did not generate an error"))
-
+      return(expectation(FALSE,
+        "code did not generate an error",
+        "code generated an error"
+      ))
     }
 
     if (!is.null(regexp)) {
       matches(regexp)(res)
     } else {
-      expectation(TRUE, "")
+      expectation(TRUE, "threw an error", "no error thrown")
     }
   }
 }
@@ -396,7 +404,8 @@ gives_warning <- function(regexp = NULL) {
     } else {
       expectation(
         length(warnings) > 0,
-        "no warnings given"
+        "no warnings given",
+        str_c(length(warnings), "warnings created")
       )
     }
   }
@@ -433,7 +442,8 @@ shows_message <- function(regexp = NULL) {
     } else {
       expectation(
         length(messages) > 0,
-        "no messages shown"
+        "no messages shown",
+        str_c(length(messages), " messages shown")
       )
     }
   }
@@ -462,7 +472,8 @@ takes_less_than <- function(amount) {
 
     expectation(
       duration < amount,
-      str_c("took ", duration, " seconds, which is more than ", amount)
+      str_c("took ", duration, " seconds, which is more than ", amount),
+      str_c("took ", duration, " seconds, which is less than ", amount)
     )
   }
 }

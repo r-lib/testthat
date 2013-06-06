@@ -54,7 +54,7 @@ TapReporter <- setRefClass("TapReporter", contains = "Reporter",
                     cat('ok', i, result$test, '\n')
                 } else {
                     cat('not ok', i, result$test, '\n')
-                    msg <- str_replace_all(result$message, '\n', '\n  ')
+                    msg <- str_replace_all(result$failure_msg, '\n', '\n  ')
                     cat(' ', msg, '\n')
                 }
             }

@@ -47,7 +47,7 @@ StopReporter <- setRefClass("StopReporter", contains = "Reporter",
 
       # If running in test suite, store, otherwise raise immediately.
       if (is.null(test)) {
-        stop(result$message, call. = FALSE)
+        stop(result$failure_msg, call. = FALSE)
       } else {
         failures <<- c(failures, list(result))
       }
