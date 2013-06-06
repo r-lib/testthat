@@ -29,7 +29,6 @@ test_dir <- function(path, filter = NULL, reporter = "summary", env = NULL) {
     files <- files[str_detect(test_names, filter)]
   }
   with_reporter(reporter, lapply(files, function(file) {
-    context(basename(file), provided=TRUE)
     sys.source(file, chdir = TRUE, envir = new.env(parent = env))
     end_context()
   }))
@@ -64,7 +63,6 @@ source_dir <- function(path, pattern = "\\.[rR]$", env = NULL, chdir = TRUE) {
 test_file <- function(path, reporter = "summary") {
   reporter <- find_reporter(reporter)
   with_reporter(reporter, {
-    context(basename(file), provided=TRUE)
     sys.source(path, new.env(parent = globalenv()), chdir = TRUE)
     end_context()
   })

@@ -20,10 +20,8 @@ TapReporter <- setRefClass("TapReporter", contains = "Reporter",
 
   methods = list(
   
-    start_context = function(desc, provided) {            
-      if (!provided){
-        contexts[n+1] <<- desc;           
-      }
+    start_context = function(desc) {
+      contexts[n+1] <<- desc;     
     },
 
     start_reporter = function() {
