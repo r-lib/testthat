@@ -55,7 +55,6 @@ test_that("messages are caught by shows_message", {
   expect_that(f(), shows_message("a"))
   expect_that(g(), shows_message("a"))
   expect_that(g(), shows_message("b"))
-
 })
 
 test_that("shows_mesage / gives_warning work when no messages are generated", {
@@ -74,4 +73,11 @@ test_that("extra arguments to matches passed onto grepl", {
   expect_that("te*st", matches("e*", fixed = TRUE))
   expect_that("test", matches("TEST", ignore.case = TRUE))
 
+})
+
+test_that("for messages, warnings, errors and output, ... passed onto grepl", {
+  expect_output(print("X"), "x", ignore.case = TRUE)
+  expect_message(message("X"), "x", ignore.case = TRUE)
+  expect_warning(warning("X"), "x", ignore.case = TRUE)
+  expect_error(stop("X"), "x", ignore.case = TRUE)
 })

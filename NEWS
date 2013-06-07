@@ -2,7 +2,12 @@ Version 0.7.1.99
 ------------------------------------------------------------------------------
 
 * `matches` and `expect_match` now pass additional arguments on to `grepl` so
-  that you can use `fixed = TRUE`, `perl = TRUE` or `ignore.case` = TRUE
+  that you can use `fixed = TRUE`, `perl = TRUE` or `ignore.case = TRUE` to
+  control details of the match
+
+* `expect_output`, `expect_message`, `expect_warning` and `expect_error` now 
+  also pass ... on to `grepl`, so that you can use  `fixed = TRUE`, 
+  `perl = TRUE` or `ignore.case = TRUE`
 
 * Removed `stringr` dependency.
 

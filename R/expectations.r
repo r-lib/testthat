@@ -296,11 +296,20 @@ expect_identical <- function(object, expected, info = NULL, label = NULL,
 #' expect_that("Testing is fun", matches("f.n"))
 #' expect_match("Testing is fun", "f.n")
 matches <- function(regexp, all = TRUE, ...) {
+  stopifnot(is.character(regexp), length(regexp) == 1)
   function(char) {
+
     matches <- grepl(regexp, char, ...)
+    if (length(char) > 1) {
+      values <- paste0("Actual values:\n",
+        paste0("* ", encodeString(char), collapse = "\n"))
+    } else {
+      values <- paste0("Actual value: ", encodeString(char))
+    }
+
     expectation(
       if (all) all(matches) else any(matches),
-      paste0("does not match '", regexp, "'. Actual value: \n", char),
+      paste0("does not match '", regexp, "'. ", values),
       paste0("matches '", regexp, "'")
     )
   }
@@ -318,7 +327,7 @@ expect_match <- function(object, regexp, ..., info = NULL, label = NULL) {
 #' Expectation: does printed output match a regular expression?
 #'
 #' @param regexp regular expression to test against
-#' @param ... other arguments passed to \code{\link{grepl}}
+#' @param ... other arguments passed to \code{\link{matches}}
 #' @family expectations
 #' @export
 #' @examples
@@ -326,6 +335,10 @@ expect_match <- function(object, regexp, ..., info = NULL, label = NULL) {
 #' expect_that(str(mtcars), prints_text("32 obs"))
 #' expect_that(str(mtcars), prints_text("11 variables"))
 #' expect_output(str(mtcars), "11 variables")
+#'
+#' # You can use the arguments of grepl to control the matching
+#' expect_output(str(mtcars), "11 VARIABLES", ignore.case = TRUE)
+#' expect_output(str(mtcars), "$ mpg", fixed = TRUE)
 prints_text <- function(regexp, ...) {
   function(expr) {
     output <- evaluate_promise(expr)$output
@@ -346,6 +359,7 @@ expect_output <- function(object, regexp, ..., info = NULL, label = NULL) {
 #'
 #' @param regexp optional regular expression to match. If not specified, just
 #'   asserts that expression throws some error.
+#' @param ... other arguments passed to \code{\link{matches}}
 #' @family expectations
 #' @export
 #' @examples
@@ -354,7 +368,10 @@ expect_output <- function(object, regexp, ..., info = NULL, label = NULL) {
 #' expect_error(f())
 #' expect_that(f(), throws_error("My error!"))
 #' expect_error(f(), "My error!")
-throws_error <- function(regexp = NULL) {
+#'
+#' # You can use the arguments of grepl to control the matching
+#' expect_error(f(), "my error!", ignore.case = FALSE)
+throws_error <- function(regexp = NULL, ...) {
   function(expr) {
     res <- try(force(expr), TRUE)
 
@@ -367,7 +384,7 @@ throws_error <- function(regexp = NULL) {
     }
 
     if (!is.null(regexp)) {
-      matches(regexp)(res)
+      matches(regexp, ...)(res)
     } else {
       expectation(TRUE, "no error thrown", "threw an error")
     }
@@ -376,11 +393,12 @@ throws_error <- function(regexp = NULL) {
 #' @export
 #' @rdname throws_error
 #' @inheritParams expect_that
-expect_error <- function(object, regexp = NULL, info = NULL, label = NULL) {
+expect_error <- function(object, regexp = NULL, ..., info = NULL,
+                         label = NULL) {
   if (is.null(label)) {
     label <- find_expr("object")
   }
-  expect_that(object, throws_error(regexp), info = info, label = label)
+  expect_that(object, throws_error(regexp, ...), info = info, label = label)
 }
 
 #' Expectation: does expression give a warning?
@@ -389,17 +407,33 @@ expect_error <- function(object, regexp = NULL, info = NULL, label = NULL) {
 #'
 #' @param regexp optional regular expression to match. If not specified, just
 #'   asserts that expression gives some warning.
+#' @param all if \code{TRUE}, all warnings must match given regular expression;
+#'   if \code{FALSE} (the default), then only only warning needs to match
+#' @param ... other arguments passed to \code{\link{matches}}
 #' @family expectations
 #' @export
 #' @examples
-#' expect_that(warning("a"), gives_warning())
-#' expect_that(warning("a"), gives_warning("a"))
-gives_warning <- function(regexp = NULL) {
+#' f <- function(x) {
+#'   if (x < 0) warning("*x* is already negative")
+#'   -x
+#' }
+#' expect_that(f(-1), gives_warning())
+#' expect_that(f(-1), gives_warning("already negative"))
+#' \dontrun{expect_that(f(1), gives_warning())}
+#'
+#' expect_warning(f(-1))
+#' expect_warning(f(-1), "already negative")
+#' \dontrun{expect_warning(f(1))}
+#'
+#' # You can use the arguments of grepl to control the matching
+#' expect_warning(f(-1), "*x*", fixed = TRUE)
+#' expect_warning(f(-1), "NEGATIVE", ignore.case = TRUE)
+gives_warning <- function(regexp = NULL, all = FALSE, ...) {
   function(expr) {
     warnings <- evaluate_promise(expr)$warnings
 
     if (!is.null(regexp) && length(warnings) > 0) {
-      matches(regexp, all = FALSE)(warnings)
+      matches(regexp, all = FALSE, ...)(warnings)
     } else {
       expectation(
         length(warnings) > 0,
@@ -412,12 +446,12 @@ gives_warning <- function(regexp = NULL) {
 #' @export
 #' @rdname gives_warning
 #' @inheritParams expect_that
-expect_warning <- function(object, regexp = NULL, info = NULL,
+expect_warning <- function(object, regexp = NULL, ..., info = NULL,
                            label = NULL) {
   if (is.null(label)) {
     label <- find_expr("object")
   }
-  expect_that(object, gives_warning(regexp), info = info, label = label)
+  expect_that(object, gives_warning(regexp, ...), info = info, label = label)
 }
 
 #' Expectation: does expression show a message?
@@ -426,17 +460,33 @@ expect_warning <- function(object, regexp = NULL, info = NULL,
 #'
 #' @param regexp optional regular expression to match. If not specified, just
 #'   asserts that expression shows some message.
+#' @param all if \code{TRUE}, all messages must match given regular expression;
+#'   if \code{FALSE} (the default), then only only message needs to match
+#' @param ... other arguments passed to \code{\link{matches}}
 #' @family expectations
 #' @export
 #' @examples
-#' expect_that(message("a"), shows_message())
-#' expect_that(message("a"), shows_message("a"))
-shows_message <- function(regexp = NULL) {
+#' f <- function(x) {
+#'   if (x < 0) message("*x* is already negative")
+#'   -x
+#' }
+#' expect_that(f(-1), shows_message())
+#' expect_that(f(-1), shows_message("already negative"))
+#' \dontrun{expect_that(f(1), shows_message())}
+#'
+#' expect_message(f(-1))
+#' expect_message(f(-1), "already negative")
+#' \dontrun{expect_message(f(1))}
+#'
+#' # You can use the arguments of grepl to control the matching
+#' expect_message(f(-1), "*x*", fixed = TRUE)
+#' expect_message(f(-1), "NEGATIVE", ignore.case = TRUE)
+shows_message <- function(regexp = NULL, all = FALSE, ...) {
   function(expr) {
     messages <- evaluate_promise(expr)$messages
 
     if (!is.null(regexp) && length(messages) > 0) {
-      matches(regexp, all = FALSE)(messages)
+      matches(regexp, all = all, ...)(messages)
     } else {
       expectation(
         length(messages) > 0,
@@ -449,12 +499,12 @@ shows_message <- function(regexp = NULL) {
 #' @export
 #' @rdname shows_message
 #' @inheritParams expect_that
-expect_message <- function(object, regexp = NULL, info = NULL,
+expect_message <- function(object, regexp = NULL, ..., info = NULL,
                            label = NULL) {
   if (is.null(label)) {
     label <- find_expr("object")
   }
-  expect_that(object, shows_message(regexp), info = info, label = label)
+  expect_that(object, shows_message(regexp, ...), info = info, label = label)
 }
 
 #' Expectation: does expression take less than a fixed amount of time to run?

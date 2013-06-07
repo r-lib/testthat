@@ -3,15 +3,18 @@
 \alias{throws_error}
 \title{Expectation: does expression throw an error?}
 \usage{
-  throws_error(regexp = NULL)
+  throws_error(regexp = NULL, ...)
 
-  expect_error(object, regexp = NULL, info = NULL,
+  expect_error(object, regexp = NULL, ..., info = NULL,
     label = NULL)
 }
 \arguments{
   \item{regexp}{optional regular expression to match. If
   not specified, just asserts that expression throws some
   error.}
+
+  \item{...}{other arguments passed to
+  \code{\link{matches}}}
 
   \item{object}{object to test}
 
@@ -30,6 +33,9 @@ expect_that(f(), throws_error())
 expect_error(f())
 expect_that(f(), throws_error("My error!"))
 expect_error(f(), "My error!")
+
+# You can use the arguments of grepl to control the matching
+expect_error(f(), "my error!", ignore.case = FALSE)
 }
 \seealso{
   Other expectations: \code{\link{equals}},
