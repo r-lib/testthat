@@ -1,6 +1,9 @@
 Version 0.7.1.99
 ------------------------------------------------------------------------------
 
+* `SummaryReporter` has a `max_reports` option to limit the number of detailed
+  failure reports to show. (Thanks to Peter Meilstrup)
+
 * Tracebacks will now also contain information about where the functions came
   from (where that information is available).
 

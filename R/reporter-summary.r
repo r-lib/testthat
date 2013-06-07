@@ -8,6 +8,10 @@ NULL
 #' failures and errors.  It is the default reporting reporter used by
 #' \code{\link{test_dir}} and \code{\link{test_file}}.
 #'
+#' You can use the \code{max_reports} field to control the maximum number
+#' of detailed reports produced by this reporter. This is useful when running
+#' with \code{\link{auto_test}}
+#'
 #' As an additional benefit, this reporter will praise you from time-to-time
 #' if all your tests pass.
 #'
@@ -19,9 +23,14 @@ SummaryReporter <- setRefClass("SummaryReporter", contains = "Reporter",
   fields = list(
     "failures" = "list",
     "n" = "integer",
-    "has_tests" = "logical"),
+    "has_tests" = "logical",
+    "max_reports" = "numeric"),
 
   methods = list(
+    initialize = function(max_reports = Inf, ...) {
+      max_reports <<- max_reports
+      callSuper(...)
+    },
 
     start_context = function(desc) {
       cat(desc, ": ")
@@ -41,19 +50,18 @@ SummaryReporter <- setRefClass("SummaryReporter", contains = "Reporter",
       has_tests <<- TRUE
       if (result$passed) {
         cat(colourise(".", fg = "light green"))
+        return()
+      }
+
+      failed <<- TRUE
+
+      if (n + 1 > length(labels) || n + 1 > max_reports) {
+        cat(colourise("F", fg = "red"))
       } else {
-        failed <<- TRUE
         n <<- n + 1L
-
-        if (n > length(labels)) {
-          n <<- length(labels)
-          cat(colourise("F", fg = "red"))
-        } else {
-          result$test <- if (is.null(test)) "(unknown)" else test
-          failures[[n]] <<- result
-          cat(colourise(labels[n], fg = "red"))
-        }
-
+        result$test <- if (is.null(test)) "(unknown)" else test
+        failures[[n]] <<- result
+        cat(colourise(labels[n], fg = "red"))
       }
     },
 
@@ -77,10 +85,10 @@ SummaryReporter <- setRefClass("SummaryReporter", contains = "Reporter",
 
         message <- vapply(failures, "[[", "failure_msg", FUN.VALUE = character(1))
 
-        cat("\n\n")
-        cat(paste0(
+        reports <- paste0(
           colourise(header, "red"), line, "\n",
-          message, "\n", collapse = "\n"))
+          message, "\n")
+        cat("\n", reports, sep = "\n")
       }
     }
   )
