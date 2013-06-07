@@ -17,7 +17,7 @@ Version 0.7.1.99
 
 * Removed `stringr` and `evaluate` dependencies.
 
-* The not function makes it possible to negate tests. For example, 
+* The `not()` function makes it possible to negate tests. For example, 
   `expect_that(f(), not(throws_error()))` asserts that `f()` does not
   throw an error.
 
