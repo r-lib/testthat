@@ -11,8 +11,7 @@ Depends:
     R (>= 2.15.0),
     methods
 Imports:
-    digest,
-    evaluate (>= 0.4.3)
+    digest
 License: GPL
 LazyData: true
 Collate:
@@ -36,3 +35,4 @@ Collate:
     'watcher.r'
     'make-expectation.r'
     'evaluate-promise.r'
+    'traceback.r'

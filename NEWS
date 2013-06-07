@@ -1,6 +1,9 @@
 Version 0.7.1.99
 ------------------------------------------------------------------------------
 
+* Tracebacks will now also contain information about where the functions came
+  from (where that information is available).
+
 * `matches` and `expect_match` now pass additional arguments on to `grepl` so
   that you can use `fixed = TRUE`, `perl = TRUE` or `ignore.case = TRUE` to
   control details of the match
@@ -9,7 +12,7 @@ Version 0.7.1.99
   also pass ... on to `grepl`, so that you can use  `fixed = TRUE`, 
   `perl = TRUE` or `ignore.case = TRUE`
 
-* Removed `stringr` dependency.
+* Removed `stringr` and `evaluate` dependencies.
 
 * The not function makes it possible to negate tests. For example, 
   `expect_that(f(), not(throws_error()))` asserts that `f()` does not
