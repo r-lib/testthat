@@ -507,7 +507,7 @@ is_less_than <- function(expected, label = NULL, ...) {
   }
 }
 #' @export
-#' @rdname less_than
+#' @rdname is_less_than
 #' @inheritParams expect_that
 expect_less_than <- function(object, expected, ..., info = NULL, label = NULL,
                          expected.label = NULL) {
@@ -559,7 +559,7 @@ is_more_than <- function(expected, label = NULL, ...) {
   }
 }
 #' @export
-#' @rdname more_than
+#' @rdname is_more_than
 #' @inheritParams expect_that
 expect_more_than <- function(object, expected, ..., info = NULL, label = NULL,
                              expected.label = NULL) {
