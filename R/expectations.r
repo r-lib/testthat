@@ -493,10 +493,17 @@ is_less_than <- function(expected, label = NULL, ...) {
     label <- deparse(label)
   }
   function(actual) {
-    less <- expected > actual
-    expectation(identical(less, TRUE),
-                str_c("not less than ", label, "\n", 
-                      str_c(less, collapse = "\n")))
+    less <- actual < expected
+    diff <- expected - actual
+    if (isTRUE(less)) {
+      diff <- "Actual is less than expected"
+    } else {
+      diff <- str_c(diff, collapse = "\n")
+    }
+    expectation(
+      identical(actual, expected),
+      str_c("not less than ", label, ". Difference: \n", diff)
+    )
   }
 }
 #' @export
@@ -539,9 +546,16 @@ is_more_than <- function(expected, label = NULL, ...) {
   }
   function(actual) {
     more <- expected < actual
-    expectation(identical(more, TRUE), str_c("not more than ", 
-                                                      label, "\n", 
-                                                      str_c(more, collapse = "\n")))
+    diff <- actual - expected
+    if (isTRUE(more)) {
+      diff <- "Actual is greater than expected"
+    } else {
+      diff <- str_c(diff, collapse = "\n")
+    }
+    expectation(
+      identical(actual, expected),
+      str_c("not more than ", label, ". Difference: \n", diff)
+    )
   }
 }
 #' @export
@@ -558,3 +572,13 @@ expect_more_than <- function(object, expected, ..., info = NULL, label = NULL,
   expect_that(object, is_more_than(expected, label = expected.label, ...),
               info = info, label = label)
 }
+
+
+
+
+
+
+
+
+
+
