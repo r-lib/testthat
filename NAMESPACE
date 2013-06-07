@@ -1,3 +1,5 @@
+S3method(compare,character)
+S3method(compare,default)
 S3method(format,expectation)
 S3method(print,expectation)
 export(MinimalReporter)

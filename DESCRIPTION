@@ -36,3 +36,4 @@ Collate:
     'make-expectation.r'
     'evaluate-promise.r'
     'traceback.r'
+    'compare.r'

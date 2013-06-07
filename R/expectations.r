@@ -163,10 +163,11 @@ equals <- function(expected, label = NULL, ...) {
   }
 
   function(actual) {
-    same <- all.equal(expected, actual, ...)
+    same <- compare(expected, actual, ...)
+
     expectation(
-      identical(same, TRUE),
-      paste0("not equal to ", label, "\n", paste0(same, collapse = "\n")),
+      same$equal,
+      paste0("not equal to ", label, "\n", same$message),
       paste0("equals ", label)
     )
   }

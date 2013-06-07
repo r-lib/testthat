@@ -1,6 +1,10 @@
 Version 0.7.1.99
 ------------------------------------------------------------------------------
 
+* When using `expect_equal()` to compare strings, the default output for 
+  failure provides a lot more information, which should hopefully help make
+  finding string mismatches easier.
+
 * `SummaryReporter` has a `max_reports` option to limit the number of detailed
   failure reports to show. (Thanks to Peter Meilstrup)
 
