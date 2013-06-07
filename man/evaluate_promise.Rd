@@ -2,11 +2,19 @@
 \alias{evaluate_promise}
 \title{Evaluate a promise, capturing all types of output.}
 \usage{
-  evaluate_promise(code, capture_error = FALSE)
+  evaluate_promise(code)
 }
 \arguments{
-  \item{code}{Code to evaluate. This should be unevaluated
-  code.}
+  \item{code}{Code to evaluate. This should be an
+  unevaluated expression.}
+}
+\value{
+  A list containing \item{result}{The result of the
+  function} \item{output}{A string containing all the
+  output from the function} \item{warnings}{A character
+  vector containing the text from each warning}
+  \item{messages}{A character vector containing the text
+  from each message}
 }
 \description{
   This uses \code{\link[evaluate]{evaluate}} a promise,
@@ -15,5 +23,13 @@
   for all test that tests, ensuring that (as much as
   possible) any spurious output is suppressed during the
   testing process.
+}
+\examples{
+evaluate_promise({
+  print("1")
+  message("2")
+  warning("3")
+  4
+})
 }
 

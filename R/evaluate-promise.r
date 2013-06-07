@@ -6,8 +6,21 @@
 #' (as much as possible) any spurious output is suppressed during the
 #' testing process.
 #'
-#' @param code Code to evaluate. This should be unevaluated code.
-evaluate_promise <- function(code, capture_error = FALSE) {
+#' @param code Code to evaluate. This should be an unevaluated expression.
+#' @export
+#' @return A list containing
+#'  \item{result}{The result of the function}
+#'  \item{output}{A string containing all the output from the function}
+#'  \item{warnings}{A character vector containing the text from each warning}
+#'  \item{messages}{A character vector containing the text from each message}
+#' @examples
+#' evaluate_promise({
+#'   print("1")
+#'   message("2")
+#'   warning("3")
+#'   4
+#' })
+evaluate_promise <- function(code) {
   warnings <- character()
   wHandler <- function(w) {
     warnings <<- c(warnings, w$message)

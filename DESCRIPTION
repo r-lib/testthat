@@ -36,3 +36,4 @@ Collate:
     'utils.r'
     'watcher.r'
     'make-expectation.r'
+    'evaluate-promise.r'
