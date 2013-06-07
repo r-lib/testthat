@@ -13,6 +13,9 @@
 #    environment inheriting from the global environment.
 #' @export
 test_dir <- function(path, filter = NULL, reporter = "summary", env = NULL) {
+  old <- setwd(path)
+  on.exit(setwd(old))
+
   reporter <- find_reporter(reporter)
   if (is.null(env)) {
     env <- new.env(parent = globalenv())
@@ -20,7 +23,7 @@ test_dir <- function(path, filter = NULL, reporter = "summary", env = NULL) {
 
   source_dir(path, "^helper.*\\.[rR]$", env = env)
 
-  files <- dir(path, "^test.*\\.[rR]$", full.names = TRUE)
+  files <- dir(path, "^test.*\\.[rR]$")
   if (!is.null(filter)) {
     test_names <- basename(files)
     test_names <- gsub("test-?", "", test_names)
@@ -29,7 +32,7 @@ test_dir <- function(path, filter = NULL, reporter = "summary", env = NULL) {
     files <- files[grepl(filter, test_names)]
   }
   with_reporter(reporter, lapply(files, function(file) {
-    sys.source(file, chdir = TRUE, envir = new.env(parent = env))
+    sys.source2(file, envir = new.env(parent = env))
     end_context()
   }))
 }
@@ -47,12 +50,15 @@ test_dir <- function(path, filter = NULL, reporter = "summary", env = NULL) {
 #' @export
 #' @usage source_dir(path, pattern="\\\\.[rR]$", env = NULL, chdir=TRUE)
 source_dir <- function(path, pattern = "\\.[rR]$", env = NULL, chdir = TRUE) {
-  files <- sort(dir(path, pattern, full.names = TRUE))
+  old <- setwd(path)
+  on.exit(setwd(old))
+
+  files <- sort(dir(path, pattern))
   if (is.null(env)) {
     env <- new.env(parent = globalenv())
   }
 
-  lapply(files, sys.source, chdir = chdir, envir = env)
+  lapply(files, sys.source2, envir = env)
 }
 
 #' Run all tests in specified file.
@@ -61,9 +67,16 @@ source_dir <- function(path, pattern = "\\.[rR]$", env = NULL, chdir = TRUE) {
 #' @param reporter reporter to use
 #' @export
 test_file <- function(path, reporter = "summary") {
+  old <- setwd(dirname(path))
+  on.exit(setwd(old))
+
   reporter <- find_reporter(reporter)
   with_reporter(reporter, {
-    sys.source(path, new.env(parent = globalenv()), chdir = TRUE)
+    sys.source2(basename(path), new.env(parent = globalenv()))
     end_context()
   })
+}
+
+sys.source2 <- function(path, envir) {
+  sys.source(path, envir, keep.source = TRUE)
 }
