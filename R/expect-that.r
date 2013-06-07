@@ -50,7 +50,7 @@ expect_that <- function(object, condition, info = NULL, label = NULL) {
     results$success_msg <- paste0(results$success_msg, "\n", info)
   }
 
-  test_reporter()$add_result(results)
+  get_reporter()$add_result(results)
   invisible()
 }
 
@@ -67,7 +67,7 @@ expect_that <- function(object, condition, info = NULL, label = NULL) {
 #' }
 fail <- function(message = "Failure has been forced.") {
   results <- expectation(FALSE, message, "This always succeeds.")
-  test_reporter()$add_result(results)
+  get_reporter()$add_result(results)
   invisible()
 }
 

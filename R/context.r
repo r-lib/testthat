@@ -10,7 +10,7 @@
 #' context("String processing")
 #' context("Remote procedure calls")
 context <- function(desc) {
-  rep <- test_reporter()
+  rep <- get_reporter()
   if (rep$context_open) {
     rep$end_context()
   } else {
@@ -20,7 +20,7 @@ context <- function(desc) {
 }
 
 end_context <- function() {
-  rep <- test_reporter()
+  rep <- get_reporter()
   if (!rep$context_open) return(invisible())
   rep$end_context()
   rep$context_open <- FALSE

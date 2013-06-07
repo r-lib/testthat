@@ -1,20 +1,19 @@
 #' @include reporter-stop.r
-reporter_accessors <- local({
-  # Default has to be the stop reporter, since it is this that will be run by
-  # default from the command line and in R CMD test.
-  reporter <- StopReporter$new()
 
-  set <- function(value) {
-    reporter <<- value
-  }
-  get <- function() {
-    reporter
-  }
+testthat_env <- new.env()
 
-  list(get = get, set = set)
-})
-test_reporter <- reporter_accessors$get
-change_reporter_to <- reporter_accessors$set
+# Default has to be the stop reporter, since it is this that will be run by
+# default from the command line and in R CMD test.
+testthat_env$reporter <- StopReporter$new()
+
+set_reporter <<- function(value) {
+  old <- testthat_env$reporter
+  testthat_env$reporter <- value
+  old
+}
+get_reporter <<- function() {
+  testthat_env$reporter
+}
 
 #' Execute code in specified reporter.
 #'
@@ -27,9 +26,8 @@ change_reporter_to <- reporter_accessors$set
 with_reporter <- function(reporter, code) {
   reporter <- find_reporter(reporter)
 
-  cur_reporter <- test_reporter()
-  change_reporter_to(reporter)
-  on.exit(change_reporter_to(cur_reporter))
+  old <- set_reporter(reporter)
+  on.exit(set_reporter(old))
 
   reporter$start_reporter()
   force(code)
