@@ -4,7 +4,7 @@ compare <- function(x, y, ...) {
 
 #' @S3method compare default
 compare.default <- function(x, y, ...){
-  same <- all.equal(expected, actual, ...)
+  same <- all.equal(x, y, ...)
   list(
     equal = identical(same, TRUE),
     message = paste0(same, collapse = "\n")
