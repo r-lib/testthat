@@ -486,22 +486,17 @@ takes_less_than <- function(amount) {
 #' a <- 9
 #' expect_that(a, is_less_than(10))
 #' expect_less_than(a, 10)
-is_less_than <- function(expected, label=NULL, ...) {
-  find_expr <- function(name, env = parent.frame()) {
-    subs <- do.call("substitute", list(as.name(name), env))
-    str_c(deparse(subs, width.cutoff = 500), collapse = "\n")
-  }
+is_less_than <- function(expected, label = NULL, ...) {
   if (is.null(label)) {
     label <- find_expr("expected")
-  }
-  else if (!is.character(label) || length(label) != 1) {
+  } else if (!is.character(label) || length(label) != 1) {
     label <- deparse(label)
   }
   function(actual) {
     less <- expected > actual
-    expectation(identical(less, TRUE), str_c("not less than ", 
-                                                      label, "\n", 
-                                                      str_c(less, collapse = "\n")))
+    expectation(identical(less, TRUE),
+                str_c("not less than ", label, "\n", 
+                      str_c(less, collapse = "\n")))
   }
 }
 #' @export
@@ -536,15 +531,10 @@ expect_less_than <- function(object, expected, ..., info = NULL, label = NULL,
 #' a <- 11
 #' expect_that(a, is_more_than(10))
 #' expect_more_than(a, 10)
-is_more_than <- function(expected, label=NULL, ...) {
-  find_expr <- function(name, env = parent.frame()) {
-    subs <- do.call("substitute", list(as.name(name), env))
-    str_c(deparse(subs, width.cutoff = 500), collapse = "\n")
-  }
+is_more_than <- function(expected, label = NULL, ...) {
   if (is.null(label)) {
     label <- find_expr("expected")
-  }
-  else if (!is.character(label) || length(label) != 1) {
+  } else if (!is.character(label) || length(label) != 1) {
     label <- deparse(label)
   }
   function(actual) {
@@ -567,109 +557,4 @@ expect_more_than <- function(object, expected, ..., info = NULL, label = NULL,
   }
   expect_that(object, is_more_than(expected, label = expected.label, ...),
               info = info, label = label)
-}
-
-#' Expectation: is returned value unequal to  some specified value?
-#'
-#' This is useful for ensuring returned value is anything other than expected value.
-#
-#' @param expected Expected value
-#' @param label For full form, label of expected object used in error
-#'   messages. Useful to override default (deparsed expected expression) when
-#'   doing tests in a loop.  For short cut form, object label. When
-#'   \code{NULL}, computed from deparsed object.
-#' @param expected.label Equivalent of \code{label} for shortcut form.
-#' @param ... other values passed to \code{\link{all.equal}}
-#' @family expectations
-#' @export
-#' @examples
-#' a <- 11
-#' expect_that(a, unequal(10))
-#' expect_unequal(a, 10)
-unequal <- function(expected, label = NULL, ...) 
-{
-  if (is.null(label)) {
-    label <- find_expr("expected")
-  }
-  else if (!is.character(label) || length(label) != 1) {
-    label <- deparse(label)
-  }
-  function(actual) {
-    unequal <- !isTRUE(all.equal(expected, actual, ...))
-    expectation(identical(unequal, TRUE), str_c("not equal to ", 
-                                                label, "\n", str_c(unequal, collapse = "\n")))
-  }
-}
-#' @export
-#' @rdname unequal
-#' @inheritParams expect_that
-expect_unequal <- function (object, expected, ..., info = NULL, label = NULL, expected.label = NULL) 
-{
-  find_expr <- function(name, env = parent.frame()) {
-    subs <- do.call("substitute", list(as.name(name), env))
-    str_c(deparse(subs, width.cutoff = 500), collapse = "\n")
-  }
-  if (is.null(label)) {
-    label <- find_expr("object")
-  }
-  if (is.null(expected.label)) {
-    expected.label <- find_expr("expected")
-  }
-  expect_that(object, unequal(expected, label = expected.label, 
-                              ...), info = info, label = label)
-}
-
-#' Expectation: is returned value equal within a tolerance to some specified value?
-#'
-#' This is useful for testing whether a returned value is within a user specified distance 
-#' from an expected value.
-#
-#' @param expected Expected value
-#' @param tol tolerance for returned value to be distant from expected value
-#' @param label For full form, label of expected object used in error
-#'   messages. Useful to override default (deparsed expected expression) when
-#'   doing tests in a loop.  For short cut form, object label. When
-#'   \code{NULL}, computed from deparsed object.
-#' @param expected.label Equivalent of \code{label} for shortcut form.
-#' @param ... other values passed to \code{\link{all.equal}}
-#' @family expectations
-#' @export
-#' @examples
-#' a <- 11
-#' expect_that(a, unequal(10))
-#' expect_unequal(a, 10)
-#' expect_that(a, approxto(10, tol=2)) # TRUE
-#' expect_approxto(a, 10, tol=2)
-approxto <- function(expected, tol, label=NULL, ...) {
-  if (is.null(label)) {
-    label <- find_expr("expected")
-  }
-  else if (!is.character(label) || length(label) != 1) {
-    label <- deparse(label)
-  }
-  function(actual) {
-    app <- (expected - tol) < actual & actual < (expected + tol)
-    expectation(identical(app, TRUE), stringr::str_c("not within tolerance ", 
-                                                     label, "\n", 
-                                                     stringr::str_c(app, collapse = "\n")))
-  }
-}
-
-#' @export
-#' @rdname approxto
-#' @inheritParams expect_that
-expect_approxto <- function (object, expected, ..., info = NULL, label = NULL, expected.label = NULL) 
-{
-  find_expr <- function(name, env = parent.frame()) {
-    subs <- do.call("substitute", list(as.name(name), env))
-    stringr::str_c(deparse(subs, width.cutoff = 500), collapse = "\n")
-  }
-  if (is.null(label)) {
-    label <- find_expr("object")
-  }
-  if (is.null(expected.label)) {
-    expected.label <- find_expr("expected")
-  }
-  expect_that(object, approxto(expected, tol, label = expected.label, 
-                               ...), info = info, label = label)
 }
