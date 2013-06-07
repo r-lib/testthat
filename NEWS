@@ -1,6 +1,9 @@
 Version 0.7.1.99
 ------------------------------------------------------------------------------
 
+* `matches` and `expect_match` now pass additional arguments on to `grepl` so
+  that you can use `fixed = TRUE`, `perl = TRUE` or `ignore.case` = TRUE
+
 * Removed `stringr` dependency.
 
 * The not function makes it possible to negate tests. For example, 

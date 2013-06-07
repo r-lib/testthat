@@ -66,3 +66,12 @@ test_that("shows_mesage / gives_warning work when no messages are generated", {
 test_that("expect_output captures multiline code", {
   expect_output(cat("1\n2"), "1\n2")
 })
+
+test_that("extra arguments to matches passed onto grepl", {
+  expect_match("te*st", "e*", fixed = TRUE)
+  expect_match("test", "TEST", ignore.case = TRUE)
+
+  expect_that("te*st", matches("e*", fixed = TRUE))
+  expect_that("test", matches("TEST", ignore.case = TRUE))
+
+})

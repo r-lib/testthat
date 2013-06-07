@@ -286,15 +286,18 @@ expect_identical <- function(object, expected, info = NULL, label = NULL,
 #' @param regexp regular expression to test against
 #' @param all should all elements of actual value match \code{regexp} (TRUE),
 #'    or does only one need to match (FALSE)
+#' @param ... For \code{matches}: other arguments passed on to
+#'   \code{\link{grepl}}. For \code{expect_match}: other arguments passed on
+#'   to \code{matches}.
 #' @family expectations
 #' @export
 #' @examples
 #' expect_that("Testing is fun", matches("fun"))
 #' expect_that("Testing is fun", matches("f.n"))
 #' expect_match("Testing is fun", "f.n")
-matches <- function(regexp, all = TRUE) {
+matches <- function(regexp, all = TRUE, ...) {
   function(char) {
-    matches <- grepl(regexp, char)
+    matches <- grepl(regexp, char, ...)
     expectation(
       if (all) all(matches) else any(matches),
       paste0("does not match '", regexp, "'. Actual value: \n", char),
@@ -305,12 +308,11 @@ matches <- function(regexp, all = TRUE) {
 #' @export
 #' @rdname matches
 #' @inheritParams expect_that
-expect_match <- function(object, regexp, all = TRUE, info = NULL,
-                         label = NULL) {
+expect_match <- function(object, regexp, ..., info = NULL, label = NULL) {
   if (is.null(label)) {
     label <- find_expr("object")
   }
-  expect_that(object, matches(regexp, all = all), info = info, label = label)
+  expect_that(object, matches(regexp, ...), info = info, label = label)
 }
 
 #' Expectation: does printed output match a regular expression?
