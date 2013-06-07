@@ -6,12 +6,12 @@ testthat_env <- new.env()
 # default from the command line and in R CMD test.
 testthat_env$reporter <- StopReporter$new()
 
-set_reporter <<- function(value) {
+set_reporter <- function(value) {
   old <- testthat_env$reporter
   testthat_env$reporter <- value
   old
 }
-get_reporter <<- function() {
+get_reporter <- function() {
   testthat_env$reporter
 }
 
