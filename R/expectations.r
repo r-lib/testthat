@@ -328,7 +328,7 @@ expect_match <- function(object, regexp, all = TRUE, info = NULL,
 #' expect_output(str(mtcars), "11 variables")
 prints_text <- function(regexp, ...) {
   function(expr) {
-    output <- str_c(capture.output(force(expr)), collapse = "")
+    output <- evaluate_promise(expr)$output
     matches(regexp, ...)(output)
   }
 }
@@ -391,14 +391,13 @@ expect_error <- function(object, regexp = NULL, info = NULL, label = NULL) {
 #'   asserts that expression gives some warning.
 #' @family expectations
 #' @export
-#' @importFrom evaluate is.warning
 #' @examples
 #' expect_that(warning("a"), gives_warning())
 #' expect_that(warning("a"), gives_warning("a"))
 gives_warning <- function(regexp = NULL) {
   function(expr) {
-    res <- evaluate(substitute(expr), parent.frame(), new_device = FALSE)
-    warnings <- vapply(Filter(is.warning, res), "[[", "message", FUN.VALUE=character(1))
+    warnings <- evaluate_promise(expr)$warnings
+
     if (!is.null(regexp) && length(warnings) > 0) {
       matches(regexp, all = FALSE)(warnings)
     } else {
@@ -429,14 +428,13 @@ expect_warning <- function(object, regexp = NULL, info = NULL,
 #'   asserts that expression shows some message.
 #' @family expectations
 #' @export
-#' @importFrom evaluate evaluate is.message
 #' @examples
 #' expect_that(message("a"), shows_message())
 #' expect_that(message("a"), shows_message("a"))
 shows_message <- function(regexp = NULL) {
   function(expr) {
-    res <- evaluate(substitute(expr), parent.frame(), new_device = FALSE)
-    messages <- vapply(Filter(is.message, res), "[[", "message", FUN.VALUE=character(1))
+    messages <- evaluate_promise(expr)$messages
+
     if (!is.null(regexp) && length(messages) > 0) {
       matches(regexp, all = FALSE)(messages)
     } else {
