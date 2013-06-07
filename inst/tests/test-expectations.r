@@ -63,3 +63,6 @@ test_that("shows_mesage / gives_warning work when no messages are generated", {
   expect_identical(shows_message("a")(1)$failure_msg, "no messages shown")
 })
 
+test_that("expect_output captures multiline code", {
+  expect_output(cat("1\n2"), "1\n2")
+})

@@ -27,9 +27,11 @@ evaluate_promise <- function(code, capture_error = FALSE) {
     withCallingHandlers(code, warning = wHandler, message = mHandler)
   )
 
+  output <- paste0(readLines(temp, warn = FALSE), collapse = "\n")
+
   list(
     result = result,
-    output = readLines(temp),
+    output = output,
     warnings = warnings,
     messages = messages
   )
