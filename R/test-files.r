@@ -23,10 +23,10 @@ test_dir <- function(path, filter = NULL, reporter = "summary", env = NULL) {
   files <- dir(path, "^test.*\\.[rR]$", full.names = TRUE)
   if (!is.null(filter)) {
     test_names <- basename(files)
-    test_names <- str_replace(test_names, "test-?", "")
-    test_names <- str_replace(test_names, "\\.[rR]", "")
+    test_names <- gsub("test-?", "", test_names)
+    test_names <- gsub("\\.[rR]", "", test_names)
 
-    files <- files[str_detect(test_names, filter)]
+    files <- files[grepl(filter, test_names)]
   }
   with_reporter(reporter, lapply(files, function(file) {
     sys.source(file, chdir = TRUE, envir = new.env(parent = env))

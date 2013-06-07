@@ -59,7 +59,7 @@ SummaryReporter <- setRefClass("SummaryReporter", contains = "Reporter",
 
     end_reporter = function() {
       charrep <- function(char, times) {
-        sapply(times, function(i) str_c(rep.int(char, i), collapse = ""))
+        sapply(times, function(i) paste0(rep.int(char, i), collapse = ""))
       }
 
       if (n == 0) {
@@ -71,14 +71,14 @@ SummaryReporter <- setRefClass("SummaryReporter", contains = "Reporter",
         label <- labels[seq_len(n)]
         type <- ifelse(sapply(failures, "[[", "error"), "Error", "Failure")
         tests <- vapply(failures, "[[", "test", FUN.VALUE = character(1))
-        header <- str_c(label, ". ", type, ": ", tests, " ")
+        header <- paste0(label, ". ", type, ": ", tests, " ")
         linewidth <- ifelse(nchar(header) > getOption("width"),0,getOption("width") - nchar(header))
         line <- charrep("-", linewidth )
 
         message <- vapply(failures, "[[", "failure_msg", FUN.VALUE = character(1))
 
         cat("\n\n")
-        cat(str_c(
+        cat(paste0(
           colourise(header, "red"), line, "\n",
           message, "\n", collapse = "\n"))
       }

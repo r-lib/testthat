@@ -34,11 +34,11 @@ StopReporter <- setRefClass("StopReporter", contains = "Reporter",
 
       messages <- vapply(failures, "[[", "", "message")
       if (length(messages) > 1) {
-        messages <- str_c("* ", messages, collapse = "\n")
+        messages <- paste0("* ", messages, collapse = "\n")
       }
       failures <<- list()
 
-      msg <- str_c("Test failed: '", cur_test, "'\n", messages)
+      msg <- paste0("Test failed: '", cur_test, "'\n", messages)
       stop(msg, call. = FALSE)
     },
 

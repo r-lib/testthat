@@ -43,11 +43,11 @@ expect_that <- function(object, condition, info = NULL, label = NULL) {
   }
   results <- condition(object)
 
-  results$failure_msg <- str_c(label, " ", results$failure_msg)
-  results$success_msg <- str_c(label, " ", results$success_msg)
+  results$failure_msg <- paste0(label, " ", results$failure_msg)
+  results$success_msg <- paste0(label, " ", results$success_msg)
   if (!is.null(info)) {
-    results$failure_msg <- str_c(results$failure_msg, "\n", info)
-    results$success_msg <- str_c(results$success_msg, "\n", info)
+    results$failure_msg <- paste0(results$failure_msg, "\n", info)
+    results$success_msg <- paste0(results$success_msg, "\n", info)
   }
 
   test_reporter()$add_result(results)

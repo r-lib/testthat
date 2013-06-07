@@ -24,17 +24,17 @@ colourise <- function(text, fg = "black", bg = NULL) {
   }
 
   col_escape <- function(col) {
-    str_c("\033[", col, "m")
+    paste0("\033[", col, "m")
   }
 
   col <- .fg_colours[tolower(fg)]
   if (!is.null(bg)) {
-    col <- str_c(col, .bg_colours[tolower(bg)], sep = ";")
+    col <- paste0(col, .bg_colours[tolower(bg)], sep = ";")
   }
 
   init <- col_escape(col)
   reset <- col_escape("0")
-  str_c(init, text, reset)
+  paste0(init, text, reset)
 }
 
 .fg_colours <- c(
@@ -68,5 +68,5 @@ colourise <- function(text, fg = "black", bg = NULL) {
 )
 
 rcmd_running <- function() {
-  str_length(Sys.getenv('R_TESTS')) != 0
+  nchar(Sys.getenv('R_TESTS')) != 0
 }

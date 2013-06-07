@@ -18,11 +18,11 @@
 #' # doesn't read quite as nicely
 is_a <- function(class) {
   function(x) {
-    actual <- str_c(class(x), collapse = ", ")
+    actual <- paste0(class(x), collapse = ", ")
     expectation(
       inherits(x, class),
-      str_c("inherits from ", actual, " not ", class),
-      str_c("inherits from ", class)
+      paste0("inherits from ", actual, " not ", class),
+      paste0("inherits from ", class)
     )
   }
 }
@@ -166,8 +166,8 @@ equals <- function(expected, label = NULL, ...) {
     same <- all.equal(expected, actual, ...)
     expectation(
       identical(same, TRUE),
-      str_c("not equal to ", label, "\n", str_c(same, collapse = "\n")),
-      str_c("equals ", label)
+      paste0("not equal to ", label, "\n", paste0(same, collapse = "\n")),
+      paste0("equals ", label)
     )
   }
 }
@@ -253,13 +253,13 @@ is_identical_to <- function(expected, label = NULL) {
     if (isTRUE(same)) {
       diff <- "Objects equal but not identical"
     } else {
-      diff <- str_c(same, collapse = "\n")
+      diff <- paste0(same, collapse = "\n")
     }
 
     expectation(
       identical(actual, expected),
-      str_c("is not identical to ", label, ". Differences: \n", diff),
-      str_c("is identical to", label)
+      paste0("is not identical to ", label, ". Differences: \n", diff),
+      paste0("is identical to", label)
     )
   }
 }
@@ -286,8 +286,6 @@ expect_identical <- function(object, expected, info = NULL, label = NULL,
 #' @param regexp regular expression to test against
 #' @param all should all elements of actual value match \code{regexp} (TRUE),
 #'    or does only one need to match (FALSE)
-#' @seealso \code{\link[stringr]{str_detect}} for the function that powers
-#'   the string matching
 #' @family expectations
 #' @export
 #' @examples
@@ -296,11 +294,11 @@ expect_identical <- function(object, expected, info = NULL, label = NULL,
 #' expect_match("Testing is fun", "f.n")
 matches <- function(regexp, all = TRUE) {
   function(char) {
-    matches <- str_detect(char, regexp)
+    matches <- grepl(regexp, char)
     expectation(
       if (all) all(matches) else any(matches),
-      str_c("does not match '", regexp, "'. Actual value: \n", char),
-      str_c("matches '", regexp, "'")
+      paste0("does not match '", regexp, "'. Actual value: \n", char),
+      paste0("matches '", regexp, "'")
     )
   }
 }
@@ -404,7 +402,7 @@ gives_warning <- function(regexp = NULL) {
       expectation(
         length(warnings) > 0,
         "no warnings given",
-        str_c(length(warnings), " warnings created")
+        paste0(length(warnings), " warnings created")
       )
     }
   }
@@ -441,7 +439,7 @@ shows_message <- function(regexp = NULL) {
       expectation(
         length(messages) > 0,
         "no messages shown",
-        str_c(length(messages), " messages shown")
+        paste0(length(messages), " messages shown")
       )
     }
   }
@@ -470,8 +468,8 @@ takes_less_than <- function(amount) {
 
     expectation(
       duration < amount,
-      str_c("took ", duration, " seconds, which is more than ", amount),
-      str_c("took ", duration, " seconds, which is less than ", amount)
+      paste0("took ", duration, " seconds, which is more than ", amount),
+      paste0("took ", duration, " seconds, which is less than ", amount)
     )
   }
 }

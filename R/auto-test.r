@@ -44,7 +44,7 @@ auto_test <- function(code_path, test_path, reporter = "summary", env = NULL) {
   test_dir(test_path, env = env)
 
   starts_with <- function(string, prefix) {
-    str_sub(string, 1, str_length(prefix)) == prefix
+    substr(string, 1, nchar(prefix)) == prefix
   }
 
   # Next set up watcher to monitor changes
@@ -56,13 +56,13 @@ auto_test <- function(code_path, test_path, reporter = "summary", env = NULL) {
 
     if (length(code) > 0) {
       # Reload code and rerun all tests
-      cat("Changed code: ", str_c(basename(code), collapse = ", "), "\n")
+      cat("Changed code: ", paste0(basename(code), collapse = ", "), "\n")
       cat("Rerunning all tests\n")
       source_dir(code_path, env = env)
       test_dir(test_path, env = env)
     } else if (length(tests) > 0) {
       # If test changes, rerun just that test
-      cat("Rerunning tests: ", str_c(basename(tests), collapse = ", "), "\n")
+      cat("Rerunning tests: ", paste0(basename(tests), collapse = ", "), "\n")
       with_reporter(reporter$getRefClass()$new(), lapply(tests, sys.source,
         env = new.env(parent = env), chdir = TRUE))
     }

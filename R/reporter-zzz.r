@@ -48,8 +48,8 @@ find_reporter <- function(reporter) {
   if (inherits(reporter, "Reporter")) return(reporter)
 
   name <- reporter
-  str_sub(name, 1, 1) <- toupper(str_sub(name, 1, 1))
-  name <- str_c(name, "Reporter")
+  substr(name, 1, 1) <- toupper(substr(name, 1, 1))
+  name <- paste0(name, "Reporter")
 
   if (!exists(name)) {
     stop("Can not find test reporter ", reporter, call. = FALSE)

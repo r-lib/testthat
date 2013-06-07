@@ -47,15 +47,15 @@ if (interactive()) {
       dir.create(test_path)
 
       delayed.bash.cmd <- function(command) {
-        system(str_c("sleep 1;", command), wait=FALSE)
+        system(paste0("sleep 1;", command), wait=FALSE)
       }
 
       add.code.file <- function(file.name) {
-        delayed.bash.cmd(str_c("touch ", file.path(code_path, file.name)))
+        delayed.bash.cmd(paste0("touch ", file.path(code_path, file.name)))
       }
 
       remove.code.file <- function(file.name) {
-        delayed.bash.cmd(str_c("rm ", file.path(code_path, file.name)))
+        delayed.bash.cmd(paste0("rm ", file.path(code_path, file.name)))
       }
 
       test.added <- function(added, deleted, modified) {

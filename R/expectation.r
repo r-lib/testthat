@@ -34,9 +34,9 @@ print.expectation <- function(x, ...) cat(format(x), "\n")
 #' @S3method format expectation
 format.expectation <- function(x, ...) {
   if (x$passed) {
-    str_c("As expected: ", x$success_msg)
+    paste0("As expected: ", x$success_msg)
   } else {
-    str_c("Not expected: ", x$failure_msg, ".")
+    paste0("Not expected: ", x$failure_msg, ".")
   }
 }
 
