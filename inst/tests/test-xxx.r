@@ -14,7 +14,6 @@ if (interactive()) {
     fail()
   })
 
-
   test_that("random errors are caught (should err)", {
     function_that_doesnt_exist()
   })
@@ -24,6 +23,12 @@ if (interactive()) {
 
   test_that("errors are captured (should err)", {
     f()
+  })
+
+  test_that("errors when looking for warnings propagte (should err)", {
+    f <- function() stop("!")
+    expect_warning(f())
+
   })
 
   expect_that(1, equals(2))
