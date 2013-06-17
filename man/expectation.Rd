@@ -5,7 +5,7 @@
 \alias{print.expectation}
 \title{Expectation class.}
 \usage{
-  expectation(passed, failure_msg, success_msg)
+  expectation(passed, failure_msg, success_msg = "unknown")
 
   is.expectation(x)
 }
