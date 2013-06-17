@@ -18,7 +18,8 @@
 \description{
   Test are run in an environment that inherits from the
   package environment so that tests can access non-exported
-  functions and variables.
+  functions and variables. Tests should be placed in either
+  \code{inst/tests}, or (better) \code{tests/testhat}.
 }
 \examples{
 \dontrun{test_package("testthat")}

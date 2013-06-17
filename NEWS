@@ -1,6 +1,8 @@
 Version 0.7.1.99
 ------------------------------------------------------------------------------
 
+* `test_package()` will use `testthat` subdir, if present.
+
 * When using `expect_equal()` to compare strings, the default output for 
   failure provides a lot more information, which should hopefully help make
   finding string mismatches easier.
