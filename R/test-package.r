@@ -10,6 +10,13 @@
 #' @examples
 #' \dontrun{test_package("testthat")}
 test_package <- function(package, filter = NULL, reporter = "summary") {
+  # Ensure that test package returns silently if called recursively - this
+  # will occur if test-all.R ends up in the same directory as all the other
+  # tests.
+  if (test_env$in_test) return(invisible())
+  test_env$in_test <- TRUE
+  on.exit(test_env$in_test <- FALSE)
+
   test_path <- system.file("tests", package = package)
 
   # If testthat subdir exists, use that
@@ -26,3 +33,7 @@ test_package <- function(package, filter = NULL, reporter = "summary") {
   }
   invisible()
 }
+
+
+test_env <- new.env(parent = emptyenv())
+test_env$in_test <- FALSE
