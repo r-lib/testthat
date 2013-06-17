@@ -13,9 +13,6 @@
 #    environment inheriting from the global environment.
 #' @export
 test_dir <- function(path, filter = NULL, reporter = "summary", env = NULL) {
-  old <- setwd(path)
-  on.exit(setwd(old))
-
   reporter <- find_reporter(reporter)
   if (is.null(env)) {
     env <- new.env(parent = globalenv())
@@ -31,6 +28,9 @@ test_dir <- function(path, filter = NULL, reporter = "summary", env = NULL) {
 
     files <- files[grepl(filter, test_names)]
   }
+
+  old <- setwd(path)
+  on.exit(setwd(old))
   with_reporter(reporter, lapply(files, function(file) {
     sys.source2(file, envir = new.env(parent = env))
     end_context()

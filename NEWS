@@ -1,6 +1,9 @@
 Version 0.7.1.99
 ------------------------------------------------------------------------------
 
+* `test_check()` now works with preferred `tests/testthat` structure when
+  running all tests for `R CMD check`
+
 * `test_package()` will use `testthat` subdir, if present.
 
 * When using `expect_equal()` to compare strings, the default output for 
