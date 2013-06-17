@@ -29,7 +29,6 @@
 #' @param info extra information to be included in the message (useful when
 #'   writing tests in loops).
 #' @export
-#' @import stringr
 #' @seealso \code{\link{fail}} for an expectation that always fails.
 #' @examples
 #' expect_that(5 * 2, equals(10))
