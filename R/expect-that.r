@@ -76,7 +76,7 @@ fail <- function(message = "Failure has been forced.") {
 #' This negates an expectation, making it possible to express that you
 #' want the opposite of a standard expectation.
 #'
-#' @param expt an existing expectation
+#' @param f an existing expectation function
 #' @export
 #' @examples
 #' x <- 1
