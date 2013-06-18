@@ -1,8 +1,12 @@
 Version 0.7.1.99
 ------------------------------------------------------------------------------
 
-* `test_check()` now works with preferred `tests/testthat` structure when
-  running all tests for `R CMD check`
+* To better meet CRAN recommended practices, testthat now allows you to 
+  put your tests in `tests/testthat`, instead of `inst/test`. This makes it
+  possible for users to choose whether or not to install tests. With this 
+  new structure, you'll need to use `test_check()` instead of `test_packages()`
+  in the test file (usually `tests/test-all.R`) that runs all testthat unit 
+  tests.
 
 * `test_package()` will use `testthat` subdir, if present.
 
