@@ -371,7 +371,7 @@ expect_output <- function(object, regexp, ..., info = NULL, label = NULL) {
 #' expect_error(f(), "My error!")
 #'
 #' # You can use the arguments of grepl to control the matching
-#' expect_error(f(), "my error!", ignore.case = FALSE)
+#' expect_error(f(), "my error!", ignore.case = TRUE)
 throws_error <- function(regexp = NULL, ...) {
   function(expr) {
     res <- try(force(expr), TRUE)

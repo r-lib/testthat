@@ -35,7 +35,7 @@ expect_that(f(), throws_error("My error!"))
 expect_error(f(), "My error!")
 
 # You can use the arguments of grepl to control the matching
-expect_error(f(), "my error!", ignore.case = FALSE)
+expect_error(f(), "my error!", ignore.case = TRUE)
 }
 \seealso{
   Other expectations: \code{\link{equals}},
