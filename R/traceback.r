@@ -22,8 +22,8 @@ create_traceback <- function(callstack) {
   calls[has_ref] <- paste0(calls[has_ref], " at ", files, ":", lines)
 
   # Number and indent
-  calls <- str_c(seq_along(calls), ": ", calls)
-  calls <- str_replace(calls, "\n", "\n   ")
+  calls <- paste0(seq_along(calls), ": ", calls)
+  calls <- gsub("\n", "\n   ", calls)
   calls
 }
 
