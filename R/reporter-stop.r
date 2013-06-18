@@ -16,6 +16,7 @@ NULL
 #' @exportClass StopReporter
 #' @aliases StopReporter-class
 #' @keywords debugging
+#' @param ... Arguments used to initialise class
 StopReporter <- setRefClass("StopReporter", contains = "Reporter",
   fields = c("failures"),
   methods = list(

@@ -19,6 +19,7 @@ NULL
 #' @exportClass SummaryReporter
 #' @aliases SummaryReporter-class
 #' @keywords debugging
+#' @param ... Arguments used to initialise class
 SummaryReporter <- setRefClass("SummaryReporter", contains = "Reporter",
   fields = list(
     "failures" = "list",

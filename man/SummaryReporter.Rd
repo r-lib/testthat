@@ -5,6 +5,9 @@
 \usage{
   SummaryReporter(...)
 }
+\arguments{
+  \item{...}{Arguments used to initialise class}
+}
 \description{
   This is the most useful reporting reporter as it lets you
   know both which tests have run successfully, as well as

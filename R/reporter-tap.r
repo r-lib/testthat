@@ -11,6 +11,7 @@ NULL
 #' @exportClass TapReporter
 #' @aliases TapReporter-class
 #' @keywords debugging
+#' @param ... Arguments used to initialise class
 TapReporter <- setRefClass("TapReporter", contains = "Reporter",
   fields = list(
     "results" = "list",

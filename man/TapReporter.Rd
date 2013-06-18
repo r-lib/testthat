@@ -5,6 +5,9 @@
 \usage{
   TapReporter(...)
 }
+\arguments{
+  \item{...}{Arguments used to initialise class}
+}
 \description{
   This reporter will output results in the Test Anything
   Protocol (TAP), a simple text-based interface between

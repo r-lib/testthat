@@ -6,6 +6,7 @@
 #' @keywords internal.
 #' @aliases Reporter-class
 #' @exportClass Reporter
+#' @param ... Arguments used to initialise class
 Reporter <- setRefClass("Reporter",
   fields = list(
     context = "character",

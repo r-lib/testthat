@@ -5,6 +5,9 @@
 \usage{
   Reporter(...)
 }
+\arguments{
+  \item{...}{Arguments used to initialise class}
+}
 \description{
   Do not clone directly from this object - children should
   implement all methods.
