@@ -305,7 +305,7 @@ matches <- function(regexp, all = TRUE, ...) {
       values <- paste0("Actual values:\n",
         paste0("* ", encodeString(char), collapse = "\n"))
     } else {
-      values <- paste0("Actual value: ", encodeString(char))
+      values <- paste0("Actual value: \"", encodeString(char), "\"")
     }
 
     expectation(
