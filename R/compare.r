@@ -45,7 +45,6 @@ compare.character <- function(x, y, ..., max_strings = 5, max_lines = 5,
 
   names <- which(diff)[n_show]
 
-  browser()
   sidebyside <- Map(function(x, y, name) {
     x <- paste0("x[", name, "]: ", x)
     y <- paste0("y[", name, "]: ", y)
