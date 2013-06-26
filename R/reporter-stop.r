@@ -33,7 +33,7 @@ StopReporter <- setRefClass("StopReporter", contains = "Reporter",
       test <<- NULL
       if (length(failures) == 0) return()
 
-      messages <- vapply(failures, "[[", "", "message")
+      messages <- vapply(failures, as.character, character(1))
       if (length(messages) > 1) {
         messages <- paste0("* ", messages, collapse = "\n")
       }

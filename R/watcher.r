@@ -40,6 +40,18 @@ watch <- function(path, callback, pattern = NULL, hash = TRUE) {
   }
 }
 
+#' Compute a digest of a filename, returning NA if the file doesn't
+#' exist.
+#'
+#' @param filename filename to compute digest on
+#' @return a digest of the file, or NA if it doesn't exist.
+#' @keywords internal
+safe_digest <- function(path) {
+  result <- NA_character_
+  try(result <- digest(path, file = TRUE), silent = TRUE)
+  result
+}
+
 #' Capture the state of a directory.
 #'
 #' @param path path to directory
@@ -50,8 +62,12 @@ watch <- function(path, callback, pattern = NULL, hash = TRUE) {
 dir_state <- function(path, pattern = NULL, hash = TRUE) {
   files <- dir(path, pattern, full.names = TRUE)
 
+  # It's possible for any of the files to be deleted between the dir()
+  # call above and the calls below; `file.info` handles this
+  # gracefully, but digest::digest doesn't -- so we wrap it. Both
+  # cases will return NA for files that have gone missing.
   if (hash) {
-    sapply(files, digest::digest, file = TRUE)
+    vapply(files, safe_digest, character(1))
   } else {
     setNames(file.info(files)$mtime, files)
   }
