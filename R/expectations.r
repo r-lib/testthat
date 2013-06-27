@@ -342,7 +342,7 @@ expect_match <- function(object, regexp, ..., info = NULL, label = NULL) {
 #' expect_output(str(mtcars), "$ mpg", fixed = TRUE)
 prints_text <- function(regexp, ...) {
   function(expr) {
-    output <- evaluate_promise(expr)$output
+    output <- evaluate_promise(expr, print = TRUE)$output
     matches(regexp, ...)(output)
   }
 }

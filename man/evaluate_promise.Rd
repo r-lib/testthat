@@ -2,11 +2,16 @@
 \alias{evaluate_promise}
 \title{Evaluate a promise, capturing all types of output.}
 \usage{
-  evaluate_promise(code)
+  evaluate_promise(code, print = FALSE)
 }
 \arguments{
   \item{code}{Code to evaluate. This should be an
   unevaluated expression.}
+
+  \item{print}{If \code{TRUE} and the result of evaluating
+  \code{code} is visible this will print the result,
+  ensuring that the output of printing the object is
+  included in the overall output}
 }
 \value{
   A list containing \item{result}{The result of the

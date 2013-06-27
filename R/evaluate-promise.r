@@ -7,6 +7,9 @@
 #' testing process.
 #'
 #' @param code Code to evaluate. This should be an unevaluated expression.
+#' @param print If \code{TRUE} and the result of evaluating \code{code} is
+#'   visible this will print the result, ensuring that the output of printing
+#'   the object is included in the overall output
 #' @export
 #' @return A list containing
 #'  \item{result}{The result of the function}
@@ -20,7 +23,7 @@
 #'   warning("3")
 #'   4
 #' })
-evaluate_promise <- function(code) {
+evaluate_promise <- function(code, print = FALSE) {
   warnings <- character()
   wHandler <- function(w) {
     warnings <<- c(warnings, w$message)
@@ -37,13 +40,18 @@ evaluate_promise <- function(code) {
   on.exit(close(temp))
 
   result <- with_sink(temp,
-    withCallingHandlers(code, warning = wHandler, message = mHandler)
+    withCallingHandlers(
+      withVisible(code), warning = wHandler, message = mHandler
+    )
   )
+  if (result$visible && print) {
+    with_sink(temp, print(result$value))
+  }
 
   output <- paste0(readLines(temp, warn = FALSE), collapse = "\n")
 
   list(
-    result = result,
+    result = result$result,
     output = output,
     warnings = warnings,
     messages = messages

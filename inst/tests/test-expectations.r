@@ -66,6 +66,11 @@ test_that("expect_output captures multiline code", {
   expect_output(cat("1\n2"), "1\n2")
 })
 
+test_that("expect_output prints by default", {
+  expect_output(1, "1")
+})
+
+
 test_that("extra arguments to matches passed onto grepl", {
   expect_match("te*st", "e*", fixed = TRUE)
   expect_match("test", "TEST", ignore.case = TRUE)
