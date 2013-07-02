@@ -41,7 +41,7 @@ auto_test <- function(code_path, test_path, reporter = "summary", env = NULL) {
     env <- new.env(parent = globalenv())
   }
   source_dir(code_path, env = env)
-  test_dir(test_path, env = env)
+  test_dir(test_path, env = env, reporter = reporter)
 
   starts_with <- function(string, prefix) {
     substr(string, 1, nchar(prefix)) == prefix
@@ -59,7 +59,7 @@ auto_test <- function(code_path, test_path, reporter = "summary", env = NULL) {
       cat("Changed code: ", paste0(basename(code), collapse = ", "), "\n")
       cat("Rerunning all tests\n")
       source_dir(code_path, env = env)
-      test_dir(test_path, env = env)
+      test_dir(test_path, env = env, reporter = reporter)
     } else if (length(tests) > 0) {
       # If test changes, rerun just that test
       cat("Rerunning tests: ", paste0(basename(tests), collapse = ", "), "\n")
