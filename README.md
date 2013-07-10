@@ -29,7 +29,7 @@ library(yourpackage)
 test_package(yourpackage)
 ```
 
-Now, recommend practice is to put your tests in `tests/testhat`, and ensure `R CMD check` runs then by putting the following code in `tests/test-all.R`:
+Now, recommend practice is to put your tests in `tests/testthat`, and ensure `R CMD check` runs then by putting the following code in `tests/test-all.R`:
 
 ```R
 library(testthat)
