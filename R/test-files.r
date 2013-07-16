@@ -78,5 +78,8 @@ test_file <- function(path, reporter = "summary") {
 }
 
 sys.source2 <- function(path, envir) {
-  sys.source(path, envir, keep.source = TRUE)
+  # karl: work-around to sys.source, so that the parsing info is still attached to the eval(ed) code 
+#  sys.source(path, envir, keep.source = TRUE)
+  expr <- parse(file=path, keep.source=TRUE)
+  eval(expr, envir)
 }

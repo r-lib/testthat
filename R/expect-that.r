@@ -42,6 +42,8 @@ expect_that <- function(object, condition, info = NULL, label = NULL) {
   }
   results <- condition(object)
 
+  results$line_number <- find_test_line_number()
+  
   results$failure_msg <- paste0(label, " ", results$failure_msg)
   results$success_msg <- paste0(label, " ", results$success_msg)
   if (!is.null(info)) {
@@ -51,6 +53,33 @@ expect_that <- function(object, condition, info = NULL, label = NULL) {
 
   get_reporter()$add_result(results)
   invisible()
+}
+
+# find the line number, or NA
+find_test_line_number <- function() {
+    ## find the first call (tracing back) which is not in the testthat package, which matches expect_*
+    ## and which has parsing info attached
+    testthat <- 'testthat'
+    nbe <- Find(function(i) {
+            # enclosure of the frame containing the call, i.e. i-1 
+            !identical( environmentName(parent.env(sys.frame(i-1))), testthat )  && 
+                any( grepl('expect_', sys.call(i)) )  && 
+                !is.null( attr(sys.call(i), 'srcref') )
+        } , seq_len( sys.nframe() ), right=TRUE )
+    
+    
+    if ( length(nbe)==0 || is.na(nbe) ) {
+        warning("Could not find any call to an expect_ function")
+    } else {
+        cc <- sys.call(nbe)
+        line <- attr(cc, 'srcref')[1]
+        if (is.null(line)) { 
+            stop("could not get line number")
+        }
+        return(line)
+    }
+    
+    return(NA_integer_)
 }
 
 #' A default expectation that always fails.
