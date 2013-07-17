@@ -19,7 +19,7 @@ GreedyReporter <- setRefClass("GreedyReporter", contains = "Reporter",
 }
 
 .line_numbers  <- function(results) {
-    vapply(results, function(x) x$line_number, 1L)
+    vapply(results, function(x) x$srcref[1], 1L)
 }
 
 test_that("line numbers are found and given to reporters", {
@@ -40,7 +40,7 @@ test_that("line numbers are found and given to reporters", {
             })								
             "
         res1 <- .testCode( code)[[1]]
-        expect_true( res1$error && is.null(res1$line_number))
+        expect_true( res1$error && is.null(res1$srcref))
         
         ##  unparsable test file
         expect_error( .testCode( 'bla)(') )
@@ -55,7 +55,7 @@ test_that("line numbers are found and given to reporters", {
         
         ## test without a test_that
         res <- .testCode('expect_true(FALSE)')
-        expect_equal(res[[1]]$line_number,  1)
+        expect_equal(.line_numbers(res),  1)
         
         ### ==== NORMAL CASES ====
         
@@ -67,7 +67,7 @@ test_that("line numbers are found and given to reporters", {
             })								# line4
             "
         res <-  .testCode(code)
-        expect_equal( res[[1]]$line_number, 3)
+        expect_equal(.line_numbers(res), 3)
         
         ## in suppressMessages()
         code  <- 
@@ -76,7 +76,7 @@ test_that("line numbers are found and given to reporters", {
             })								
             "
         res <- .testCode( code)
-        expect_equal(res[[1]]$line_number, 2)
+        expect_equal(.line_numbers(res), 2)
         
         ##  the expect_true is not called
         code  <- 
@@ -112,5 +112,15 @@ test_that("line numbers are found and given to reporters", {
             "
         res <-  .testCode(code)
         expect_equal(.line_numbers(res), c(3,7,8,10,10,10,10))
+        
+        ### test when options(keep.source=FALSE)
+        code  <- 
+            "context('testing testFile')    # line1
+            test_that('simple', {			# line2
+            expect_true(FALSE)		    # line3
+            })								# line4
+            "
+        res <-  .testCode(code)
+        expect_equal(.line_numbers(res), 3)
         
     })
