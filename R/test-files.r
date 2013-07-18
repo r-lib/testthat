@@ -83,7 +83,7 @@ sys.source2 <- function(path, envir) {
   # R < 3.0 does not support the parse(keep.source=TRUE) arg
   # so use the options keep.source instead
   old <- options(keep.source=TRUE)
-  on.exit( options(old) )
+  on.exit(options(old))
   expr <- parse(file=path)
   eval(expr, envir)
 }

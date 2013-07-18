@@ -81,16 +81,14 @@ SummaryReporter <- setRefClass("SummaryReporter", contains = "Reporter",
         type <- ifelse(sapply(failures, "[[", "error"), "Error", "Failure")
         tests <- vapply(failures, "[[", "test", FUN.VALUE = character(1))
 
-        # karl: add file error location
         location <- vapply(failures, function(x) {
-                ref <- x$srcref
-                if ( is.null(ref) ) {
-                    ''
-                } else {
-                    paste0('(@', attr(ref, 'srcfile')$filename, '#', ref[1], ')')
-                }
-            }, '')
-        #        header <- paste0(label, ". ", type, ": ", tests, " ")
+            ref <- x$srcref
+            if ( is.null(ref) ) {
+              ''
+            } else {
+              paste0('(@', attr(ref, 'srcfile')$filename, '#', ref[1], ')')
+            }
+          }, '')
         header <- paste0(label, ". ", type, location, ": ", tests, " ")
 
         linewidth <- ifelse(nchar(header) > getOption("width"),0,getOption("width") - nchar(header))
