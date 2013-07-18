@@ -36,6 +36,9 @@ Version 0.7.1.99
 
 * Make `dir_state` less race-y. Contributed by Craig Citro. (#80)
 
+* Add a new reporter so that `testthat` can test calls to `test_that`.
+  Contributed by Craig Citro. (#83)
+
 Version 0.7.1
 ------------------------------------------------------------------------------
 
