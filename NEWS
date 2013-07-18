@@ -34,6 +34,8 @@ Version 0.7.1.99
   `expect_that(f(), not(throws_error()))` asserts that `f()` does not
   throw an error.
 
+* Make `dir_state` less race-y. Contributed by Craig Citro. (#80)
+
 Version 0.7.1
 ------------------------------------------------------------------------------
 

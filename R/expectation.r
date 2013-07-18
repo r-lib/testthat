@@ -40,6 +40,9 @@ format.expectation <- function(x, ...) {
   }
 }
 
+#' @S3method as.character expectation
+as.character.expectation <- function(x, ...) format(x)
+
 negate <- function(expt) {
   stopifnot(is.expectation(expt))
 
