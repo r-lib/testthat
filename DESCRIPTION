@@ -24,6 +24,7 @@ Collate:
     'library.r'
     'reporter.r'
     'reporter-minimal.r'
+    'reporter-silent.r'
     'reporter-stop.r'
     'reporter-summary.r'
     'reporter-tap.r'
