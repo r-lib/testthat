@@ -53,7 +53,7 @@ compare.character <- function(x, y, ..., max_strings = 5, max_lines = 5,
     length(x) <- n
     length(y) <- n
 
-    paste0(as.vector(rbind(x, y)), collapse = "\n")
+    paste0(as.vector(rbind(x, paste0(y, "\n"))), collapse = "\n")
   }, show_x, show_y, names)
 
   msg <- paste0(sum(diff), " string mismatches:\n",
