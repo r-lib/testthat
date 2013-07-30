@@ -57,10 +57,12 @@ expect_that <- function(object, condition, info = NULL, label = NULL) {
 
 # find the srcref of the test call, or NULL
 find_test_srcref <- function() {
-  # candidate frame is not in the testthat package, matches expect_* and has parsing info attached
-  .isTestFrame <- function(i) {
-    # is enclosure of the frame containing the call inside testthat package
-    inside <- identical( environmentName(parent.env(sys.frame(i-1))), 'testthat')
+  # candidate frame is not in the testthat package, 
+  # its call matches expect_* and has parsing info attached
+  .is_test_frame <- function(i) {
+    # is enclosure of the frame containing the call inside testthat package ?
+    inside <- identical(environmentName(parent.env(sys.frame(i - 1)))
+      , 'testthat')
     match_expect <- any(grepl('expect_', sys.call(i)))
     has_srcref <- !is.null(attr(sys.call(i), 'srcref'))
     
@@ -68,7 +70,7 @@ find_test_srcref <- function() {
   }
   
   # find the first call (tracing back) that seems good    
-  nbe <- Find(.isTestFrame, seq_len(sys.nframe()), right=TRUE)
+  nbe <- Find(.is_test_frame, seq_len(sys.nframe()), right = TRUE)
   
   if (length(nbe) == 0 || is.na(nbe)) {
     warning("Could not find any call to an expect_ function")
@@ -77,9 +79,7 @@ find_test_srcref <- function() {
   
   cc <- sys.call(nbe)
   src <- attr(cc, 'srcref')
-  if (is.null(src)) { 
-    warning("could not get srcref")
-  }
+  if (is.null(src))  warning("could not get srcref")
   
   src
 }
