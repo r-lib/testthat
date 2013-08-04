@@ -50,6 +50,8 @@ Other minor improvements and bug fixes include:
 
 * Make `dir_state` less race-y. (Thanks to @craigcitro, #80)
 
+* `auto_test` now pays attention to its 'reporter' argument (Thanks to @crowding, #81)
+
 * Add a new reporter so that `testthat` can test calls to `test_that`.
   (Thanks to @craigcitro, #83)
 
