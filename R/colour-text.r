@@ -1,7 +1,7 @@
 #' Colourise text for display in the terminal.
-#' 
+#'
 #' If R is not currently running in a system that supports terminal colours
-#' the text will be returned unchanged. 
+#' the text will be returned unchanged.
 #'
 #' Allowed colours are: black, blue, brown, cyan, dark gray, green, light
 #' blue, light cyan, light gray, light green, light purple, light red,
@@ -18,23 +18,23 @@
 colourise <- function(text, fg = "black", bg = NULL) {
   term <- Sys.getenv()["TERM"]
   colour_terms <- c("xterm-color","xterm-256color", "screen", "screen-256color")
-  
+
   if(rcmd_running() || !any(term %in% colour_terms, na.rm = TRUE)) {
     return(text)
   }
-  
+
   col_escape <- function(col) {
-    str_c("\033[", col, "m")
+    paste0("\033[", col, "m")
   }
-  
+
   col <- .fg_colours[tolower(fg)]
   if (!is.null(bg)) {
-    col <- str_c(col, .bg_colours[tolower(bg)], sep = ";")
+    col <- paste0(col, .bg_colours[tolower(bg)], sep = ";")
   }
-  
+
   init <- col_escape(col)
   reset <- col_escape("0")
-  str_c(init, text, reset)
+  paste0(init, text, reset)
 }
 
 .fg_colours <- c(
@@ -68,5 +68,5 @@ colourise <- function(text, fg = "black", bg = NULL) {
 )
 
 rcmd_running <- function() {
-  str_length(Sys.getenv('R_TESTS')) != 0
-} 
+  nchar(Sys.getenv('R_TESTS')) != 0
+}

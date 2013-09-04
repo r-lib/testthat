@@ -11,7 +11,7 @@
 }
 \details{
   This works for \code{\link{expect_that}} but not for the
-  wrappers like \code{\link{expect_equals}} etc.
+  wrappers like \code{\link{expect_equal}} etc.
 
   To fit into the jUnit structure, context() becomes the
   \code{<testsuite>} name as well as the base of the

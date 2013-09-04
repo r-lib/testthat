@@ -1,19 +1,17 @@
 Package: testthat
 Type: Package
 Title: Testthat code.  Tools to make testing fun :)
-Version: 0.6
+Version: 0.7.1.99
 Author: Hadley Wickham <h.wickham@gmail.com>
 Maintainer: Hadley Wickham <h.wickham@gmail.com>
 Description: A testing package specifically tailored for R
     that's fun, flexible and easy to set up.
 URL: http://had.co.nz/
 Depends:
-    R (>= 2.12.0),
+    R (>= 2.15.0),
     methods
 Imports:
-    digest,
-    stringr (>= 0.4),
-    evaluate (>= 0.3)
+    digest
 Suggests:
     XML
 License: GPL
@@ -27,9 +25,12 @@ Collate:
     'expectations.r'
     'library.r'
     'reporter.r'
+    'reporter-junit.r'
     'reporter-minimal.r'
+    'reporter-silent.r'
     'reporter-stop.r'
     'reporter-summary.r'
+    'reporter-tap.r'
     'reporter-zzz.r'
     'test-files.r'
     'test-package.r'
@@ -37,4 +38,6 @@ Collate:
     'utils.r'
     'watcher.r'
     'make-expectation.r'
-    'reporter-junit.r'
+    'evaluate-promise.r'
+    'traceback.r'
+    'compare.r'

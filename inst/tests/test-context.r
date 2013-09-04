@@ -1,6 +1,6 @@
 context("Contexts")
 
-CountReporter <- setRefClass("CountReporter", contains = "Reporter",  
+CountReporter <- setRefClass("CountReporter", contains = "Reporter",
   fields = c("context_count", "test_count", "context_i", "test_i"),
   methods = list(
    initialize = function() {
@@ -9,7 +9,7 @@ CountReporter <- setRefClass("CountReporter", contains = "Reporter",
 
      test_i <<- 0
      test_count <<- 0
-     
+
      callSuper()
   },
   start_context = function(desc) {

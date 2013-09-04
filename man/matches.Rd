@@ -3,9 +3,9 @@
 \alias{matches}
 \title{Expectation: does string match regular expression?}
 \usage{
-  matches(regexp, all = TRUE)
+  matches(regexp, all = TRUE, ...)
 
-  expect_match(object, regexp, all = TRUE, info = NULL,
+  expect_match(object, regexp, ..., info = NULL,
     label = NULL)
 }
 \arguments{
@@ -14,6 +14,10 @@
   \item{all}{should all elements of actual value match
   \code{regexp} (TRUE), or does only one need to match
   (FALSE)}
+
+  \item{...}{For \code{matches}: other arguments passed on
+  to \code{\link{grepl}}. For \code{expect_match}: other
+  arguments passed on to \code{matches}.}
 
   \item{object}{object to test}
 
@@ -34,9 +38,6 @@ expect_that("Testing is fun", matches("f.n"))
 expect_match("Testing is fun", "f.n")
 }
 \seealso{
-  \code{\link[stringr]{str_detect}} for the function that
-  powers the string matching
-
   Other expectations: \code{\link{equals}},
   \code{\link{expect_equal}},
   \code{\link{expect_equivalent}},

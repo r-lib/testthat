@@ -2,6 +2,12 @@
 \alias{SummaryReporter}
 \alias{SummaryReporter-class}
 \title{Test reporter: summary of errors.}
+\usage{
+  SummaryReporter(...)
+}
+\arguments{
+  \item{...}{Arguments used to initialise class}
+}
 \description{
   This is the most useful reporting reporter as it lets you
   know both which tests have run successfully, as well as
@@ -10,6 +16,11 @@
   \code{\link{test_dir}} and \code{\link{test_file}}.
 }
 \details{
+  You can use the \code{max_reports} field to control the
+  maximum number of detailed reports produced by this
+  reporter. This is useful when running with
+  \code{\link{auto_test}}
+
   As an additional benefit, this reporter will praise you
   from time-to-time if all your tests pass.
 }

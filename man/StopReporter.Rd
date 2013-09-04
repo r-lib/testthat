@@ -2,6 +2,12 @@
 \alias{StopReporter}
 \alias{StopReporter-class}
 \title{Test reporter: stop on error.}
+\usage{
+  StopReporter(...)
+}
+\arguments{
+  \item{...}{Arguments used to initialise class}
+}
 \description{
   The default reporter, executed when \code{expect_that} is
   run interactively, or when the test files are executed by

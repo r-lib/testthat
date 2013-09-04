@@ -1,3 +1,65 @@
+Version 0.7.1.99
+------------------------------------------------------------------------------
+
+* To better meet CRAN recommended practices, testthat now allows you to 
+  put your tests in `tests/testthat`, instead of `inst/test`. This makes it
+  possible for users to choose whether or not to install tests. With this 
+  new structure, you'll need to use `test_check()` instead of `test_packages()`
+  in the test file (usually `tests/test-all.R`) that runs all testthat unit 
+  tests.
+
+* `test_package()` will use `testthat` subdir, if present.
+
+* When using `expect_equal()` to compare strings, the default output for 
+  failure provides a lot more information, which should hopefully help make
+  finding string mismatches easier.
+
+* `SummaryReporter` has a `max_reports` option to limit the number of detailed
+  failure reports to show. (Thanks to Peter Meilstrup)
+
+* Tracebacks will now also contain information about where the functions came
+  from (where that information is available).
+
+* `matches` and `expect_match` now pass additional arguments on to `grepl` so
+  that you can use `fixed = TRUE`, `perl = TRUE` or `ignore.case = TRUE` to
+  control details of the match
+
+* `expect_output`, `expect_message`, `expect_warning` and `expect_error` now 
+  also pass ... on to `grepl`, so that you can use  `fixed = TRUE`, 
+  `perl = TRUE` or `ignore.case = TRUE`
+
+* Removed `stringr` and `evaluate` dependencies.
+
+* The `not()` function makes it possible to negate tests. For example, 
+  `expect_that(f(), not(throws_error()))` asserts that `f()` does not
+  throw an error.
+
+* Make `dir_state` less race-y. Contributed by Craig Citro. (#80)
+
+* Add a new reporter so that `testthat` can test calls to `test_that`.
+  Contributed by Craig Citro. (#83)
+
+Version 0.7.1
+------------------------------------------------------------------------------
+
+* Ignore attributes in `is_true` and `is_false` (#49)
+
+* `make_expectation` works for more types of input (#52)
+
+* Now works better with evaluate 0.4.3.
+
+* new `fail()` function always forces a failure in a test. Suggested by 
+  Richie Cotton (#47)
+
+* Added `TapReporter` to produce output compatible with the "test anything 
+  protocol". Contributed by Dan Keshet.
+
+* Fixed where `auto_test` would identify the wrong files as having changed. 
+  (Thanks to Peter Meilstrup)
+
+Version 0.7
+------------------------------------------------------------------------------
+
 * `SummaryReporter`: still return informative messages even if no tests
   defined (just bare expectations). (Fixes #31)
 
@@ -13,6 +75,9 @@
 
 * Depend on `methods` rather than requiring it so that testthat works when run
   from `Rscript`
+
+* `auto_test` now normalises paths to enable better identification of file
+  changes, and fixes bug in instantiating new reporter object.
 
 Version 0.6
 ------------------------------------------------------------------------------

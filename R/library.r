@@ -13,9 +13,9 @@
 #' library_if_available(packagethatdoesntexist)
 library_if_available <- function(package) {
   package <- find_expr("package")
-  
+
   suppressWarnings(suppressPackageStartupMessages(
-    require(package, quietly = TRUE,  
+    require(package, quietly = TRUE,
       warn.conflicts = FALSE, character.only = TRUE)
   ))
 }

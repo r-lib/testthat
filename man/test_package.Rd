@@ -1,9 +1,12 @@
 \name{test_package}
+\alias{test_check}
 \alias{test_package}
 \title{Run all tests in an installed package}
 \usage{
   test_package(package, filter = NULL,
     reporter = "summary")
+
+  test_check(package, filter = NULL, reporter = "summary")
 }
 \arguments{
   \item{package}{package name}
@@ -18,7 +21,18 @@
 \description{
   Test are run in an environment that inherits from the
   package environment so that tests can access non-exported
-  functions and variables.
+  functions and variables. Tests should be placed in either
+  \code{inst/tests}, or (better) \code{tests/testthat}.
+}
+\section{R CMD check}{
+  Use \code{test_package} to test an installed package, or
+  in \code{tests/test-all.R}if you're using the older
+  \code{inst/tests} convention.
+
+  If your tests live in \code{test/testthat} (preferred)
+  use \code{test_check} in \code{tests/test-all.R}.  You
+  still use \code{test_package} when testing the installed
+  package.
 }
 \examples{
 \dontrun{test_package("testthat")}

@@ -1,10 +1,24 @@
 \name{expectation}
 \alias{expectation}
 \alias{format.expectation}
+\alias{is.expectation}
 \alias{print.expectation}
 \title{Expectation class.}
 \usage{
-  expectation(passed, message)
+  expectation(passed, failure_msg, success_msg = "unknown")
+
+  is.expectation(x)
+}
+\arguments{
+  \item{passed}{a single logical value indicating whether
+  the test passed (\code{TRUE}), failed (\code{FALSE}), or
+  threw an error (\code{NA})}
+
+  \item{failure_msg}{A text description of failure}
+
+  \item{success_msg}{A text description of success}
+
+  \item{x}{object to test for class membership}
 }
 \description{
   Any expectation should return objects of this class - see

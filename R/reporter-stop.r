@@ -16,7 +16,8 @@ NULL
 #' @exportClass StopReporter
 #' @aliases StopReporter-class
 #' @keywords debugging
-StopReporter <- setRefClass("StopReporter", contains = "Reporter", 
+#' @param ... Arguments used to initialise class
+StopReporter <- setRefClass("StopReporter", contains = "Reporter",
   fields = c("failures"),
   methods = list(
     initialize = function(...) {
@@ -32,13 +33,13 @@ StopReporter <- setRefClass("StopReporter", contains = "Reporter",
       test <<- NULL
       if (length(failures) == 0) return()
 
-      messages <- vapply(failures, "[[", "", "message")
+      messages <- vapply(failures, as.character, character(1))
       if (length(messages) > 1) {
-        messages <- str_c("* ", messages, collapse = "\n")
+        messages <- paste0("* ", messages, collapse = "\n")
       }
       failures <<- list()
 
-      msg <- str_c("Test failure in '", cur_test, "'\n", messages)
+      msg <- paste0("Test failed: '", cur_test, "'\n", messages)
       stop(msg, call. = FALSE)
     },
 
@@ -47,10 +48,10 @@ StopReporter <- setRefClass("StopReporter", contains = "Reporter",
 
       # If running in test suite, store, otherwise raise immediately.
       if (is.null(test)) {
-        stop(result$message, call. = FALSE)
+        stop(result$failure_msg, call. = FALSE)
       } else {
         failures <<- c(failures, list(result))
       }
-    }    
+    }
   )
 )

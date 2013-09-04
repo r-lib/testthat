@@ -1,6 +1,6 @@
 #' Expect that a condition holds.
-#' 
-#' An expectation checks whether a single condition holds true.  
+#'
+#' An expectation checks whether a single condition holds true.
 #' \pkg{testthat} currently provides the following expectations.  See their
 #' documentation for more details
 #'
@@ -29,7 +29,7 @@
 #' @param info extra information to be included in the message (useful when
 #'   writing tests in loops).
 #' @export
-#' @import stringr
+#' @seealso \code{\link{fail}} for an expectation that always fails.
 #' @examples
 #' expect_that(5 * 2, equals(10))
 #' expect_that(sqrt(2) ^ 2, equals(2))
@@ -41,19 +41,62 @@ expect_that <- function(object, condition, info = NULL, label = NULL) {
     label <- find_expr("object")
   }
   results <- condition(object)
-  
-  results$message <- str_c(label, " ", results$message)
+
+  results$failure_msg <- paste0(label, " ", results$failure_msg)
+  results$success_msg <- paste0(label, " ", results$success_msg)
   if (!is.null(info)) {
-    results$message <- str_c(results$message, "\n", info)
+    results$failure_msg <- paste0(results$failure_msg, "\n", info)
+    results$success_msg <- paste0(results$success_msg, "\n", info)
   }
   call <- sys.call()
   call$info <- info
   if (!is.null(call$label)) {
       call$label <- label
   }
-  results$call <- str_c(deparse(call, width = 500), collapse = "")
+  results$call <- paste(deparse(call, width.cutoff = 500), collapse = "")
   
-  test_reporter()$add_result(results)
+  get_reporter()$add_result(results)
   invisible()
 }
 
+#' A default expectation that always fails.
+#'
+#' The fail function forces a test to fail.  This is useful if you want to
+#' test a pre-condition '
+#'
+#' @param message a string to display.
+#' @export
+#' @examples
+#' \dontrun{
+#' test_that("this test fails", fail())
+#' }
+fail <- function(message = "Failure has been forced.") {
+  results <- expectation(FALSE, message, "This always succeeds.")
+  get_reporter()$add_result(results)
+  invisible()
+}
+
+
+#' Negate an expectation
+#'
+#' This negates an expectation, making it possible to express that you
+#' want the opposite of a standard expectation.
+#'
+#' @param f an existing expectation function
+#' @export
+#' @examples
+#' x <- 1
+#' expect_that(x, equals(1))
+#' expect_that(x, not(equals(2)))
+#' \dontrun{
+#' expect_that(x, equals(2))
+#' expect_that(x, not(equals(1)))
+#' }
+not <- function(f) {
+  stopifnot(is.function(f))
+
+  function(...) {
+    res <- f(...)
+    negate(res)
+  }
+}

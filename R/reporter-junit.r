@@ -9,7 +9,7 @@ NULL
 #' Requires the XML package.
 #'
 #' This works for \code{\link{expect_that}} but not for the wrappers like
-#' \code{\link{expect_equals}} etc.
+#' \code{\link{expect_equal}} etc.
 #'
 #' To fit into the jUnit structure, context() becomes the \code{<testsuite>}
 #' name as well as the base of the \code{<testcase> classname}. The
@@ -42,7 +42,6 @@ JUnitReporter <- setRefClass("JUnitReporter", contains = "Reporter",
     "timer" = "ANY"),
 
   methods = list(
-
     initialize = function(file = "", ...) {
       if (!require("XML", quietly = TRUE)) {
         stop("Please install the XML package", call. = FALSE)

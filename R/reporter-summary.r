@@ -2,12 +2,16 @@
 NULL
 
 #' Test reporter: summary of errors.
-#' 
+#'
 #' This is the most useful reporting reporter as it lets you know both which
 #' tests have run successfully, as well as fully reporting information about
-#' failures and errors.  It is the default reporting reporter used by 
+#' failures and errors.  It is the default reporting reporter used by
 #' \code{\link{test_dir}} and \code{\link{test_file}}.
-#' 
+#'
+#' You can use the \code{max_reports} field to control the maximum number
+#' of detailed reports produced by this reporter. This is useful when running
+#' with \code{\link{auto_test}}
+#'
 #' As an additional benefit, this reporter will praise you from time-to-time
 #' if all your tests pass.
 #'
@@ -15,14 +19,20 @@ NULL
 #' @exportClass SummaryReporter
 #' @aliases SummaryReporter-class
 #' @keywords debugging
-SummaryReporter <- setRefClass("SummaryReporter", contains = "Reporter", 
+#' @param ... Arguments used to initialise class
+SummaryReporter <- setRefClass("SummaryReporter", contains = "Reporter",
   fields = list(
-    "failures" = "list", 
-    "n" = "integer", 
-    "has_tests" = "logical"),
+    "failures" = "list",
+    "n" = "integer",
+    "has_tests" = "logical",
+    "max_reports" = "numeric"),
 
   methods = list(
-  
+    initialize = function(max_reports = Inf, ...) {
+      max_reports <<- max_reports
+      callSuper(...)
+    },
+
     start_context = function(desc) {
       cat(desc, ": ")
     },
@@ -41,25 +51,24 @@ SummaryReporter <- setRefClass("SummaryReporter", contains = "Reporter",
       has_tests <<- TRUE
       if (result$passed) {
         cat(colourise(".", fg = "light green"))
+        return()
+      }
+
+      failed <<- TRUE
+
+      if (n + 1 > length(labels) || n + 1 > max_reports) {
+        cat(colourise("F", fg = "red"))
       } else {
-        failed <<- TRUE
         n <<- n + 1L
-
-        if (n > length(labels)) {
-          n <<- length(labels)
-          cat(colourise("F", fg = "red"))
-        } else {
-          result$test <- if (is.null(test)) "(unknown)" else test
-          failures[[n]] <<- result
-          cat(colourise(labels[n], fg = "red"))
-        }
-
+        result$test <- if (is.null(test)) "(unknown)" else test
+        failures[[n]] <<- result
+        cat(colourise(labels[n], fg = "red"))
       }
     },
 
     end_reporter = function() {
       charrep <- function(char, times) {
-        sapply(times, function(i) str_c(rep.int(char, i), collapse = ""))
+        sapply(times, function(i) paste0(rep.int(char, i), collapse = ""))
       }
 
       if (n == 0) {
@@ -71,16 +80,16 @@ SummaryReporter <- setRefClass("SummaryReporter", contains = "Reporter",
         label <- labels[seq_len(n)]
         type <- ifelse(sapply(failures, "[[", "error"), "Error", "Failure")
         tests <- vapply(failures, "[[", "test", FUN.VALUE = character(1))
-        header <- str_c(label, ". ", type, ": ", tests, " ")
+        header <- paste0(label, ". ", type, ": ", tests, " ")
         linewidth <- ifelse(nchar(header) > getOption("width"),0,getOption("width") - nchar(header))
         line <- charrep("-", linewidth )
 
-        message <- sapply(failures, "[[", "message")
+        message <- vapply(failures, "[[", "failure_msg", FUN.VALUE = character(1))
 
-        cat("\n\n")
-        cat(str_c(
-          colourise(header, "red"), line, "\n", 
-          message, "\n", collapse = "\n"))      
+        reports <- paste0(
+          colourise(header, "red"), line, "\n",
+          message, "\n")
+        cat("\n", reports, sep = "\n")
       }
     }
   )
