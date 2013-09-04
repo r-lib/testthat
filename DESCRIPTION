@@ -12,6 +12,8 @@ Depends:
     methods
 Imports:
     digest
+Suggests:
+    XML
 License: GPL
 LazyData: true
 Collate:
@@ -23,6 +25,7 @@ Collate:
     'expectations.r'
     'library.r'
     'reporter.r'
+    'reporter-junit.r'
     'reporter-minimal.r'
     'reporter-silent.r'
     'reporter-stop.r'
