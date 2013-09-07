@@ -35,6 +35,31 @@ if (interactive()) {
     expect_that(basename(diff$modified), equals("file3"))
    })
 
+  test_that("compare_state handles NA correctly", {
+    empty <- character(0)
+    one_NA <- c(one = NA)
+    one <- c(one = "value")
+
+    diff <- compare_state(one, one_NA)
+    expect_that(diff$n, equals(1))
+    expect_that(diff$modified, equals("one"))
+
+    diff <- compare_state(one, empty)
+    expect_that(diff$n, equals(1))
+    expect_that(diff$deleted, equals("one"))
+
+    diff <- compare_state(empty, one)
+    expect_that(diff$n, equals(1))
+    expect_that(diff$added, equals("one"))
+
+    diff <- compare_state(one_NA, empty)
+    expect_that(diff$n, equals(1))
+    expect_that(diff$deleted, equals("one"))
+
+    diff <- compare_state(empty, one_NA)
+    expect_that(diff$n, equals(1))
+    expect_that(diff$added, equals("one"))
+  })
 
   test_that("watcher works correctly", {
       loc <- tempfile("watcher", tmpdir = "/tmp")
