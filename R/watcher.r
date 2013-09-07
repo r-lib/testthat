@@ -73,6 +73,18 @@ dir_state <- function(path, pattern = NULL, hash = TRUE) {
   }
 }
 
+#' Compare two logical values, treating all NAs as equal.
+#'
+#' @param x logical
+#' @param y logical
+#' @return \code{TRUE} iff the values are equal or both \code{NA}
+#' @keywords internal
+equal_or_NAs <- function(x, y) {
+  same <- (is.na(x) & is.na(y)) | (x == y)
+  same[is.na(same)] <- FALSE
+  same
+}
+
 #' Compare two directory states.
 #'
 #' @param old previous state
@@ -85,7 +97,7 @@ compare_state <- function(old, new) {
   deleted <- setdiff(names(old), names(new))
 
   same <- intersect(names(old), names(new))
-  modified <- names(new[same])[new[same] != old[same]]
+  modified <- names(new[same])[!equal_or_NAs(old[same], new[same])]
 
   n <- length(added) + length(deleted) + length(modified)
 
