@@ -54,8 +54,8 @@ safe_digest <- function(path) {
   }
   result <- NA_character_
   tryCatch(
-      result <- digest(path, file = TRUE),
-      error = reraise_unknown_errors)
+    result <- digest::digest(path, file = TRUE),
+    error = reraise_unknown_errors)
   result
 }
 

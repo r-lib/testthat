@@ -9,8 +9,9 @@ Description: A testing package specifically tailored for R
 URL: http://had.co.nz/
 Depends:
     R (>= 2.15.0),
-    digest,
     methods
+Imports:
+    digest
 License: GPL
 LazyData: true
 Collate:
