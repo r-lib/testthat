@@ -46,6 +46,7 @@ watch <- function(path, callback, pattern = NULL, hash = TRUE) {
 #' @param filename filename to compute digest on
 #' @return a digest of the file, or NA if it doesn't exist.
 #' @keywords internal
+#' @importFrom digest digest
 safe_digest <- function(path) {
   reraise_unknown_errors = function(e) {
     if (e$message != paste("The file does not exist:", path)) {
@@ -54,7 +55,7 @@ safe_digest <- function(path) {
   }
   result <- NA_character_
   tryCatch(
-    result <- digest::digest(path, file = TRUE),
+    result <- digest(path, file = TRUE),
     error = reraise_unknown_errors)
   result
 }
