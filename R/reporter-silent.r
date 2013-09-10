@@ -29,7 +29,7 @@ SilentReporter <- setRefClass("SilentReporter", contains = "Reporter",
 
     add_result = function(result) {
       if (result$passed) return()
-      failures[[test]] <<- new_failure
+      failures[[test]] <<- result
     }
   )
 )
