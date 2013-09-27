@@ -2,9 +2,6 @@
 \alias{Reporter}
 \alias{Reporter-class}
 \title{Stub object for managing a reporter of tests.}
-\usage{
-  Reporter(...)
-}
 \arguments{
   \item{...}{Arguments used to initialise class}
 }

@@ -1,6 +1,6 @@
 context("Line Numbers")
 
-# a reporter that keeps its results
+## a reporter that keeps its results
 GreedyReporter <- setRefClass("GreedyReporter", contains = "Reporter",
   fields = list(results = "list"),
   methods = list(
@@ -9,14 +9,13 @@ GreedyReporter <- setRefClass("GreedyReporter", contains = "Reporter",
     }
   ))
 
-# write the testing code to a source file, tests it with a GreedyReporter 
-# and returns all the results 
-.test_code <- function(code) {
-  filename <- 'test-testCode_tmp.R'
-  writeLines(code, filename)
-  r <- GreedyReporter$new() 
-  test_file(filename, r)
-  return(r$results)
+# get the results supplied to the reporter by expectations
+.test_code <- function(code, reporter = GreedyReporter$new(),
+                       path = tempfile(fileext = ".R")) {
+  writeLines(code, path)
+  on.exit(unlink(path))
+  
+  test_file(path, reporter)$results
 }
 
 test_that("line numbers are found and given to reporters", {  
@@ -35,10 +34,10 @@ test_that("line numbers are found and given to reporters", {
   expect_error(.test_code('expect_toto()'), regexp = 'Error')
   
   # no errors are thrown inside test_that: test_that swallows errors
-  code  <- 
-    "test_that('simple', {			# line1
-    expect_toto(FALSE)				  # line2
-    })								
+  code <- "
+      test_that('simple', {      # line1
+        expect_toto(FALSE)          # line2
+      })
     "
   res1 <- .test_code(code)[[1]]
   expect_true(res1$error && is.null(res1$srcref))

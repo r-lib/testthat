@@ -2,9 +2,6 @@
 \alias{MinimalReporter}
 \alias{MinimalReporter-class}
 \title{Test reporter: minimal.}
-\usage{
-  MinimalReporter(...)
-}
 \arguments{
   \item{...}{Arguments used to initialise class}
 }

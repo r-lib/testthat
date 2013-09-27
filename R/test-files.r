@@ -77,13 +77,20 @@ test_file <- function(path, reporter = "summary") {
   })
 }
 
-sys.source2 <- function(path, envir) {
-#  sys.source(path, envir, keep.source = TRUE)
-  # work-around to sys.source, so that the parsing info is still attached to the eval(ed) code 
-  # R < 3.0 does not support the parse(keep.source=TRUE) arg
-  # so use the options keep.source instead
-  old <- options(keep.source = TRUE)
-  on.exit(options(old))
-  expr <- parse(file = path)
-  eval(expr, envir)
+
+sys.source2 <- function(file, envir = parent.frame()) {
+  stopifnot(file.exists(file))
+  stopifnot(is.environment(envir))
+  
+  lines <- readLines(file, warn = FALSE)
+  srcfile <- srcfilecopy(file, lines, file.info(file)[1, "mtime"],
+    isFile = TRUE)
+  exprs <- parse(text = lines, n = -1, srcfile = srcfile)
+  
+  n <- length(exprs)
+  if (n == 0L) return(invisible())
+  
+  eval(exprs, envir)
+  invisible()
 }
+

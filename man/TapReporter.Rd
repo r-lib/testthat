@@ -2,9 +2,6 @@
 \alias{TapReporter}
 \alias{TapReporter-class}
 \title{Test reporter: TAP format.}
-\usage{
-  TapReporter(...)
-}
 \arguments{
   \item{...}{Arguments used to initialise class}
 }

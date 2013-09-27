@@ -2,9 +2,6 @@
 \alias{StopReporter}
 \alias{StopReporter-class}
 \title{Test reporter: stop on error.}
-\usage{
-  StopReporter(...)
-}
 \arguments{
   \item{...}{Arguments used to initialise class}
 }

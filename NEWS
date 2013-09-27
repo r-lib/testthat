@@ -1,6 +1,12 @@
 Version 0.7.1.99
 ------------------------------------------------------------------------------
 
+* test_file() now fetches the test source code annotation (that contains
+  the line number) of the test failures, and to include them in the results
+  list (as results$srcref) which is supplied to the current reporter using
+  the add_result method. The SummaryReporter output has also been modifed
+  to display the tests failure line numbers. 
+
 * To better meet CRAN recommended practices, testthat now allows you to 
   put your tests in `tests/testthat`, instead of `inst/test`. This makes it
   possible for users to choose whether or not to install tests. With this 
