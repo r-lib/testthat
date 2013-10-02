@@ -21,14 +21,10 @@ test_that("line numbers are found and given to reporters", {
     test_file(path, reporter)$results
   }
     
-  .line_numbers  <- function(results) {
-    vapply(results, function(x) x$srcref[1], 1L)
+  .test_and_fetch_lines <- function(code) {
+    vapply(.test_code(code), function(x) x$srcref[1], 1L)
   }
-  
-  dir <- tempfile() 
-  dir.create(dir)
-  old_wd <- setwd(dir)
-  on.exit({unlink(dir, recursive = TRUE); setwd(old_wd)})
+
   
   ### ==== EDGE CASES ====
   
@@ -56,8 +52,7 @@ test_that("line numbers are found and given to reporters", {
   expect_true(length(res) == 0)
   
   # test without a test_that
-  res <- .test_code('expect_true(FALSE)')
-  expect_equal(.line_numbers(res),  1)
+  expect_equal(.test_and_fetch_lines('expect_true(FALSE)'),  1)
   
   ### ==== NORMAL CASES ====
   
@@ -68,17 +63,15 @@ test_that("line numbers are found and given to reporters", {
       expect_true(FALSE)		       # line3
     })								             # line4
   "
-  res <-  .test_code(code)
-  expect_equal(.line_numbers(res), 3)
-  
+  expect_equal(.test_and_fetch_lines(code), 3)
+
   # in suppressMessages()
   code  <- "
 		test_that('simple', {			             # line1
     	suppressMessages(expect_true(FALSE)) # line2
     })								
   "
-  res <- .test_code(code)
-  expect_equal(.line_numbers(res), 2)
+  expect_equal(.test_and_fetch_lines(code), 2)
   
   #  the expect_true is not called
   code  <- "
@@ -95,9 +88,8 @@ test_that("line numbers are found and given to reporters", {
     	for(i in 1:4) expect_true(TRUE)	 # line2
     })								
     "
-  res <- .test_code(code)
-  expect_equal(.line_numbers(res) , rep(2,4) )
-  
+  expect_equal(.test_and_fetch_lines(code), rep(2,4))
+ 
   # use case
   code  <- "
     context('testing testFile')    	# line1
@@ -112,9 +104,8 @@ test_that("line numbers are found and given to reporters", {
     		expect_equal(i%%2,0)			  # line 10
     }})
   "
-  res <-  .test_code(code)
-  expect_equal(.line_numbers(res), c(3,7,8,10,10,10,10))
-  
+  expect_equal(.test_and_fetch_lines(code), c(3, 7, 8, 10, 10, 10, 10))
+
   # test when options(keep.source=FALSE)
   code  <- "
     context('testing testFile')		# line1
@@ -122,6 +113,5 @@ test_that("line numbers are found and given to reporters", {
     	expect_true(FALSE)		    	# line3
     })														# line4
   "
-  res <- .test_code(code)
-  expect_equal(.line_numbers(res), 3)
+  expect_equal(.test_and_fetch_lines(code), 3)
 })
