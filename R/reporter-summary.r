@@ -80,7 +80,17 @@ SummaryReporter <- setRefClass("SummaryReporter", contains = "Reporter",
         label <- labels[seq_len(n)]
         type <- ifelse(sapply(failures, "[[", "error"), "Error", "Failure")
         tests <- vapply(failures, "[[", "test", FUN.VALUE = character(1))
-        header <- paste0(label, ". ", type, ": ", tests, " ")
+
+        location <- vapply(failures, function(x) {
+          ref <- x$srcref
+          if ( is.null(ref) ) {
+            ''
+          } else {
+            paste0('(@', attr(ref, 'srcfile')$filename, '#', ref[1], ')')
+          }
+        }, '')
+        header <- paste0(label, ". ", type, location, ": ", tests, " ")
+
         linewidth <- ifelse(nchar(header) > getOption("width"),0,getOption("width") - nchar(header))
         line <- charrep("-", linewidth )
 
