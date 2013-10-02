@@ -2,6 +2,9 @@
 \alias{SummaryReporter}
 \alias{SummaryReporter-class}
 \title{Test reporter: summary of errors.}
+\usage{
+  SummaryReporter(...)
+}
 \arguments{
   \item{...}{Arguments used to initialise class}
 }
