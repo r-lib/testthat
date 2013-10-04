@@ -77,6 +77,20 @@ test_file <- function(path, reporter = "summary") {
   })
 }
 
-sys.source2 <- function(path, envir) {
-  sys.source(path, envir, keep.source = TRUE)
+
+sys.source2 <- function(file, envir = parent.frame()) {
+  stopifnot(file.exists(file))
+  stopifnot(is.environment(envir))
+  
+  lines <- readLines(file, warn = FALSE)
+  srcfile <- srcfilecopy(file, lines, file.info(file)[1, "mtime"],
+    isFile = TRUE)
+  exprs <- parse(text = lines, n = -1, srcfile = srcfile)
+  
+  n <- length(exprs)
+  if (n == 0L) return(invisible())
+  
+  eval(exprs, envir)
+  invisible()
 }
+
