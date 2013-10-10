@@ -19,9 +19,9 @@ Instructions for using this package can be found in the [Testing](https://github
 
 ## Integration with R CMD check
 
-If you're using testthat in a package, you need to adopt a specific structure to work with `R CMD check`. This structure has change recently to comply with new demands from CRAN, so please read closely if you submit your packages to CRAN.
+If you're using testthat in a package, you need to adopt a specific structure to work with `R CMD check`. This structure has changed recently to comply with new demands from CRAN, so please read closely if you submit your packages to CRAN.
 
-Previously, best practice was to put all test files in `inst/tests` and ensure that `R CMD check` ran then by putting the following code in `tests/test-all.R`:
+Previously, best practice was to put all test files in `inst/tests` and ensure that `R CMD check` ran them by putting the following code in `tests/test-all.R`:
 
 ```R
 library(testthat)
@@ -29,7 +29,7 @@ library(yourpackage)
 test_package(yourpackage)
 ```
 
-Now, recommend practice is to put your tests in `tests/testthat`, and ensure `R CMD check` runs then by putting the following code in `tests/test-all.R`:
+Now, recommend practice is to put your tests in `tests/testthat`, and ensure `R CMD check` runs them by putting the following code in `tests/test-all.R`:
 
 ```R
 library(testthat)
