@@ -3,7 +3,7 @@
 \title{Run all of the tests in a directory.}
 \usage{
   test_dir(path, filter = NULL, reporter = "summary",
-    env = NULL)
+    env = NULL, invert = FALSE)
 }
 \arguments{
   \item{path}{path to tests}
@@ -17,6 +17,10 @@
 
   \item{env}{environment in which to execute test suite.
   Defaults to new}
+
+  \item{invert}{If \code{TRUE} this inverts the filter, so
+  that only files not matching the regular expression will
+  be executed}
 }
 \description{
   Test files start with \code{test} and are executed in

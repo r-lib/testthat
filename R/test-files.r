@@ -11,8 +11,10 @@
 #'   name after it has been stripped of \code{"test-"} and \code{".r"}.
 #' @param env environment in which to execute test suite. Defaults to new
 #    environment inheriting from the global environment.
+#' @param invert If \code{TRUE} this inverts the filter, so that only files not
+#'   matching the regular expression will be executed
 #' @export
-test_dir <- function(path, filter = NULL, reporter = "summary", env = NULL) {
+test_dir <- function(path, filter = NULL, reporter = "summary", env = NULL, invert = FALSE) {
   reporter <- find_reporter(reporter)
   if (is.null(env)) {
     env <- new.env(parent = globalenv())
@@ -26,7 +28,7 @@ test_dir <- function(path, filter = NULL, reporter = "summary", env = NULL) {
     test_names <- gsub("test-?", "", test_names)
     test_names <- gsub("\\.[rR]", "", test_names)
 
-    files <- files[grepl(filter, test_names)]
+    files <- grep(filter, test_names, invert = isTRUE(invert), value = TRUE) 
   }
 
   old <- setwd(path)
