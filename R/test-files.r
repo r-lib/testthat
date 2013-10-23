@@ -28,7 +28,7 @@ test_dir <- function(path, filter = NULL, reporter = "summary", env = NULL, inve
     test_names <- gsub("test-?", "", test_names)
     test_names <- gsub("\\.[rR]", "", test_names)
 
-    files <- grep(filter, test_names, invert = isTRUE(invert), value = TRUE) 
+    files <- files[ grep(filter, test_names, invert = isTRUE(invert) ) ]
   }
 
   old <- setwd(path)
