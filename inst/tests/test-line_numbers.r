@@ -1,6 +1,6 @@
 context("Line Numbers")
 
-test_that("line numbers are found and given to reporters", {  
+test_that("line numbers are found and given to reporters", {
     ## a reporter that keeps its results
   GreedyReporter <- setRefClass("GreedyReporter", contains = "Reporter",
       where = environment(), 
@@ -18,14 +18,14 @@ test_that("line numbers are found and given to reporters", {
     writeLines(code, path)
     on.exit(unlink(path))
     
-    test_file(path, reporter)$results
+    test_file(path, reporter)
+    reporter$results
   }
     
   .test_and_fetch_lines <- function(code) {
     vapply(.test_code(code), function(x) x$srcref[1], 1L)
   }
 
-  
   ### ==== EDGE CASES ====
   
   # test file with errors, e.g. unknown function

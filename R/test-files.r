@@ -10,12 +10,16 @@
 #'   regular expression will be executed.  Matching will take on the file
 #'   name after it has been stripped of \code{"test-"} and \code{".r"}.
 #' @param env environment in which to execute test suite. Defaults to new
-#    environment inheriting from the global environment.
+#'    environment inheriting from the parent of global environment.
+#' @return a data frame of the summary of test results
 #' @export
 test_dir <- function(path, filter = NULL, reporter = "summary", env = NULL) {
-  reporter <- find_reporter(reporter)
+  current_reporter <- find_reporter(reporter)
+  lister <- ListReporter$new()
+  reporter <- MultiReporter$new(reporters = list(current_reporter, lister))
+  
   if (is.null(env)) {
-    env <- new.env(parent = globalenv())
+    env <- new.env(parent = parent.env(globalenv()))
   }
 
   source_dir(path, "^helper.*\\.[rR]$", env = env)
@@ -29,12 +33,13 @@ test_dir <- function(path, filter = NULL, reporter = "summary", env = NULL) {
     files <- files[grepl(filter, test_names)]
   }
 
-  old <- setwd(path)
-  on.exit(setwd(old))
-  with_reporter(reporter, lapply(files, function(file) {
-    sys.source2(file, envir = new.env(parent = env))
-    end_context()
-  }))
+  .custom_test_file <- function(fname) {
+    lister$start_file(fname)
+    .test_file(file.path(path, fname), env)
+  }
+  with_reporter(reporter, lapply(files, .custom_test_file))
+   
+  invisible(lister$get_summary())
 }
 
 #' Load all source files in a directory.
@@ -50,10 +55,12 @@ test_dir <- function(path, filter = NULL, reporter = "summary", env = NULL) {
 #' @export
 #' @usage source_dir(path, pattern="\\\\.[rR]$", env = NULL, chdir=TRUE)
 source_dir <- function(path, pattern = "\\.[rR]$", env = NULL, chdir = TRUE) {
-  old <- setwd(path)
-  on.exit(setwd(old))
-
   files <- sort(dir(path, pattern))
+  if (chdir) {
+    old <- setwd(path)
+    on.exit(setwd(old))
+  }
+
   if (is.null(env)) {
     env <- new.env(parent = globalenv())
   }
@@ -65,18 +72,28 @@ source_dir <- function(path, pattern = "\\.[rR]$", env = NULL, chdir = TRUE) {
 #'
 #' @param path path to file
 #' @param reporter reporter to use
+#' @param enclos the parent environment for the environment to run the tests
+#'       inside
+#' @return a data frame of the summary of test results
 #' @export
-test_file <- function(path, reporter = "summary") {
-  old <- setwd(dirname(path))
-  on.exit(setwd(old))
-
-  reporter <- find_reporter(reporter)
-  with_reporter(reporter, {
-    sys.source2(basename(path), new.env(parent = globalenv()))
-    end_context()
-  })
+test_file <- function(path, reporter = "summary",
+                     enclos = parent.env(globalenv())) {                   
+  current_reporter <- find_reporter(reporter)
+  lister <- ListReporter$new()
+  reporter <- MultiReporter$new(reporters = list(current_reporter, lister))
+  lister$start_file(basename(path))
+  with_reporter(reporter, .test_file(path, enclos))
+  
+  invisible(lister$get_summary())
 }
 
+.test_file <- function(path, parent_env) {
+  old <- setwd(dirname(path))
+  on.exit(setwd(old))
+  
+  sys.source2(basename(path), new.env(parent = parent_env))
+  end_context()
+}
 
 sys.source2 <- function(file, envir = parent.frame()) {
   stopifnot(file.exists(file))
@@ -89,7 +106,7 @@ sys.source2 <- function(file, envir = parent.frame()) {
   
   n <- length(exprs)
   if (n == 0L) return(invisible())
-  
+ 
   eval(exprs, envir)
   invisible()
 }
