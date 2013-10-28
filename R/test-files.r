@@ -19,6 +19,10 @@ test_dir <- function(path, filter = NULL, reporter = "summary", env = NULL) {
   reporter <- MultiReporter$new(reporters = list(current_reporter, lister))
   
   if (is.null(env)) {
+    # we use as enclosure of the new env the parent of globalenv() which
+    # is normally the first loaded package in the search path so that
+    # tests are isolated from the global but still can find their needed
+    # functions such as the testthat ones 
     env <- new.env(parent = parent.env(globalenv()))
   }
 
