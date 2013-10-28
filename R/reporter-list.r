@@ -74,24 +74,24 @@ summarize_results <- function(results_list) {
   nb_failed <- 0L
   error <- FALSE
   elapsed <- NA_real_
-  if (nb_tests) {
-      # error reports should be handled differently. 
-      # They may not correspond to an expect_that() test so remove them
-      last_test <- test_results[[nb_tests]]
-      error <- last_test$error
-      if (error) {
-        test_results <- test_results[- nb_tests]
-        nb_tests <- length(test_results)
-      }
-      if (nb_tests)
-        nb_failed <- sum(!sapply(test_results, '[[', 'passed'))
+  if (nb_tests > 0) {
+    # error reports should be handled differently. 
+    # They may not correspond to an expect_that() test so remove them
+    last_test <- test_results[[nb_tests]]
+    error <- last_test$error
+    if (error) {
+      test_results <- test_results[- nb_tests]
+      nb_tests <- length(test_results)
+    }
+    
+    nb_failed <- sum(!vapply(test_results, '[[', TRUE, 'passed'))
   }
   
   context <- if (length(test$context)) test$context else ''
   res <- data.frame(file = test$file, context = context, test = test$test,
-     nb = nb_tests, failed = nb_failed, error = error, elapsed = test$elapsed,
-     stringsAsFactors = FALSE)
-   
+    nb = nb_tests, failed = nb_failed, error = error, elapsed = test$elapsed,
+    stringsAsFactors = FALSE)
+  
   res
 }
 

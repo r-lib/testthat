@@ -15,13 +15,6 @@ MultiReporter <- setRefClass("MultiReporter", contains = "Reporter",
   fields = list(reporters = 'list'),
     
   methods = list(
-    ### methods from Reporter
-#    initialize = function(...) {
-#      callSuper(...)
-#      usingMethods(start_reporter, start_context, start_test, add_result, 
-#        end_test, end_context, end_reporter)
-#    },
-      
     start_reporter = function() {
       .oapply(reporters, 'start_reporter')
     },

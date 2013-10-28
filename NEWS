@@ -1,6 +1,20 @@
 Version 0.7.1.99
 ------------------------------------------------------------------------------
 
+* `test_dir`, `test_file`, `test_package` and `test_check` now invisibly 
+  return a summary of the tests as a data frame
+
+* new `MultiReporter`:  reporter that combines several reporters at once.
+
+* new `ListerReporter`:  reporter that keeps all tests results along 
+  with the appropriate file, context, test and elapsed time in a list
+  that can be formatted as a data.frame
+
+* fixed two bugs with source_dir(): it did not look for the source scripts
+  at the right place, and it did not use its chdir argument.
+
+* `test_dir` is now itself tested.
+
 * test_file() now fetches the test source code annotation (that contains
   the line number) of the test failures, and to include them in the results
   list (as results$srcref) which is supplied to the current reporter using
