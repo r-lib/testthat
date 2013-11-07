@@ -7,7 +7,10 @@ test_that("MultiReporter", {
   test_file("context.r", reporter)
 
   dfs <- lapply(reports, function(x) x$get_summary())
-  dfs2 <- lapply(dfs, function(x) { x$elapsed <- NULL; x} )
+  dfs2 <- lapply(dfs, function(x) { 
+      x$user <- x$system  <- x$real <- NULL
+      x
+  })
 
   expect_true(all(sapply(dfs2, function(x) identical(dfs2[[1]], x) )))
 })
