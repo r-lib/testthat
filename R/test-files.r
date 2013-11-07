@@ -53,18 +53,18 @@ test_dir <- function(path, filter = NULL, reporter = "summary", env = NULL) {
 #' @param path path to tests
 #' @param pattern regular expression used to filter files
 #' @param env environment in which to execute test suite. Defaults to new
-#    environment inheriting from the global environment.
+#'        environment inheriting from the global environment.
 #' @param chdir change working directory to path?
 #' @keywords internal
 #' @export
 #' @usage source_dir(path, pattern="\\\\.[rR]$", env = NULL, chdir=TRUE)
 source_dir <- function(path, pattern = "\\.[rR]$", env = NULL, chdir = TRUE) {
-  files <- sort(dir(path, pattern))
+  files <- normalizePath(sort(dir(path, pattern, full.names = TRUE)))
   if (chdir) {
     old <- setwd(path)
     on.exit(setwd(old))
   }
-
+  
   if (is.null(env)) {
     env <- new.env(parent = globalenv())
   }
@@ -77,7 +77,7 @@ source_dir <- function(path, pattern = "\\.[rR]$", env = NULL, chdir = TRUE) {
 #' @param path path to file
 #' @param reporter reporter to use
 #' @param enclos the parent environment for the environment to run the tests
-#'       inside
+#'        inside
 #' @return a data frame of the summary of test results
 #' @export
 test_file <- function(path, reporter = "summary",
@@ -111,7 +111,7 @@ sys.source2 <- function(file, envir = parent.frame()) {
   n <- length(exprs)
   if (n == 0L) return(invisible())
  
-  eval(exprs, envir)
-  invisible()
+  
+  invisible(eval(exprs, envir))
 }
 
