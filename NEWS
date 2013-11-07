@@ -13,8 +13,6 @@ Version 0.7.1.99
 * fixed two bugs with source_dir(): it did not look for the source scripts
   at the right place, and it did not use its chdir argument.
 
-* `test_dir` is now itself tested.
-
 * test_file() now fetches the test source code annotation (that contains
   the line number) of the test failures, and to include them in the results
   list (as results$srcref) which is supplied to the current reporter using
