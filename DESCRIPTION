@@ -38,3 +38,5 @@ Collate:
     'evaluate-promise.r'
     'traceback.r'
     'compare.r'
+    'reporter-list.r'
+    'reporter-multi.r'
