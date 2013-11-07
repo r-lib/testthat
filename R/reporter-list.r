@@ -1,6 +1,9 @@
 #' @include reporter.r
 NULL
 
+
+setOldClass('proc_time')
+
 #' List reporter: gather all test results along with elapsed time and 
 #' file information.
 #'
@@ -14,7 +17,7 @@ NULL
 #' @param ... Arguments used to initialise class
 ListReporter <- setRefClass("ListReporter", contains = "Reporter",
   fields = list(
-    start_test_time = 'POSIXct',
+    start_test_time = 'proc_time',
     file = 'character',
     results = 'list',
     current_test_results = 'list'),
@@ -30,14 +33,15 @@ ListReporter <- setRefClass("ListReporter", contains = "Reporter",
     start_test = function(desc) {
       callSuper(desc)
       current_test_results <<- list()
-      start_test_time <<- Sys.time()
+      start_test_time <<- proc.time()
     },
     
     end_test = function() {
-      elapsed <- as.double(Sys.time() - start_test_time, units='secs')
+      el <- as.double(proc.time() - start_test_time)
       fname <- if (length(file)) file else ''
       test_info <- list(file = fname, context = context, test = test, 
-        elapsed = elapsed, results = current_test_results)
+        user = el[1], system = el[2], real = el[3], 
+        results = current_test_results)
       results <<- c(results, list(test_info))
       current_test_results <<- list()
       
@@ -73,7 +77,7 @@ summarize_results <- function(results_list) {
   
   nb_failed <- 0L
   error <- FALSE
-  elapsed <- NA_real_
+
   if (nb_tests > 0) {
     # error reports should be handled differently. 
     # They may not correspond to an expect_that() test so remove them
@@ -89,8 +93,8 @@ summarize_results <- function(results_list) {
   
   context <- if (length(test$context)) test$context else ''
   res <- data.frame(file = test$file, context = context, test = test$test,
-    nb = nb_tests, failed = nb_failed, error = error, elapsed = test$elapsed,
-    stringsAsFactors = FALSE)
+    nb = nb_tests, failed = nb_failed, error = error, user = test$user, 
+    system = test$system, real = test$real, stringsAsFactors = FALSE)
   
   res
 }
