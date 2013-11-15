@@ -50,9 +50,14 @@ test_dir <- function(path, filter = NULL, reporter = "summary", env = NULL) {
 #' @export
 #' @usage source_dir(path, pattern="\\\\.[rR]$", env = NULL, chdir=TRUE)
 source_dir <- function(path, pattern = "\\.[rR]$", env = NULL, chdir = TRUE) {
-  old <- setwd(path)
-  on.exit(setwd(old))
-
+  if (chdir) {
+    # switch to given path and, and refer to it relatively (references may
+    # be ambiguous otherwise if path is already relative)
+    old <- setwd(path)
+    on.exit(setwd(old))
+    path <- "."
+  }
+  
   files <- sort(dir(path, pattern))
   if (is.null(env)) {
     env <- new.env(parent = globalenv())
