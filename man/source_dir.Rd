@@ -11,7 +11,8 @@
   \item{pattern}{regular expression used to filter files}
 
   \item{env}{environment in which to execute test suite.
-  Defaults to new}
+  Defaults to new environment inheriting from the global
+  environment.}
 
   \item{chdir}{change working directory to path?}
 }

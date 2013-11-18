@@ -18,6 +18,9 @@
 
   \item{reporter}{reporter to use}
 }
+\value{
+  a data frame of the summary of test results
+}
 \description{
   Test are run in an environment that inherits from the
   package environment so that tests can access non-exported
