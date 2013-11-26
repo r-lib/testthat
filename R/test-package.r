@@ -9,7 +9,7 @@
 #' \code{tests/test-all.R}if you're using the older \code{inst/tests}
 #' convention.
 #'
-#' If your tests live in \code{test/testthat} (preferred) use \code{test_check}
+#' If your tests live in \code{tests/testthat} (preferred) use \code{test_check}
 #' in \code{tests/test-all.R}.  You still use \code{test_package} when testing
 #' the installed package.
 #'
