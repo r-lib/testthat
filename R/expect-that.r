@@ -73,7 +73,6 @@ find_test_srcref <- function() {
   nbe <- Find(.is_test_frame, seq_len(sys.nframe()), right = TRUE)
   
   if (length(nbe) == 0 || is.na(nbe)) {
-    warning("Could not find any call to an expect_ function")
     return(NULL)
   }
   

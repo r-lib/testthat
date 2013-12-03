@@ -16,11 +16,16 @@
   stripped of \code{"test-"} and \code{".r"}.}
 
   \item{env}{environment in which to execute test suite.
-  Defaults to new}
+  Defaults to new environment inheriting from the parent of
+  global environment.}
 
   \item{invert}{If \code{TRUE} this inverts the filter, so
   that only files not matching the regular expression will
   be executed}
+
+}
+\value{
+  a data frame of the summary of test results
 }
 \description{
   Test files start with \code{test} and are executed in
