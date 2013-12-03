@@ -10,14 +10,16 @@
 #'   regular expression will be executed.  Matching will take on the file
 #'   name after it has been stripped of \code{"test-"} and \code{".r"}.
 #' @param env environment in which to execute test suite. Defaults to new
-#'    environment inheriting from the parent of global environment.
+#'    environment inheriting from the global environment.
+#' @param invert If \code{TRUE} this inverts the filter, so that only files not
+#'   matching the regular expression will be executed
 #' @return a data frame of the summary of test results
 #' @export
 test_dir <- function(path, filter = NULL, reporter = "summary", env = NULL) {
   current_reporter <- find_reporter(reporter)
   lister <- ListReporter$new()
   reporter <- MultiReporter$new(reporters = list(current_reporter, lister))
-  
+
   if (is.null(env)) {
     # we use as enclosure of the new env the parent of globalenv() which
     # is normally the first loaded package in the search path so that
@@ -34,7 +36,7 @@ test_dir <- function(path, filter = NULL, reporter = "summary", env = NULL) {
     test_names <- gsub("test-?", "", test_names)
     test_names <- gsub("\\.[rR]", "", test_names)
 
-    files <- files[grepl(filter, test_names)]
+    files <- files[ grep(filter, test_names, invert = isTRUE(invert) ) ]
   }
 
   .custom_test_file <- function(fname) {
