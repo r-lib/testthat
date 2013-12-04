@@ -1,6 +1,8 @@
 Version 0.7.1.99
 ------------------------------------------------------------------------------
 
+* `expect_match` now correctly fails to match NULL. (#100)
+
 * `test_dir`, `test_file`, `test_package` and `test_check` now invisibly 
   return a summary of the tests as a data frame
 

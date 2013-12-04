@@ -299,7 +299,6 @@ expect_identical <- function(object, expected, info = NULL, label = NULL,
 matches <- function(regexp, all = TRUE, ...) {
   stopifnot(is.character(regexp), length(regexp) == 1)
   function(char) {
-
     matches <- grepl(regexp, char, ...)
     if (length(char) > 1) {
       values <- paste0("Actual values:\n",
@@ -309,7 +308,7 @@ matches <- function(regexp, all = TRUE, ...) {
     }
 
     expectation(
-      if (all) all(matches) else any(matches),
+      length(matches) > 0 && if (all) all(matches) else any(matches),
       paste0("does not match '", regexp, "'. ", values),
       paste0("matches '", regexp, "'")
     )
