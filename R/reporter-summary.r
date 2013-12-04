@@ -25,11 +25,13 @@ SummaryReporter <- setRefClass("SummaryReporter", contains = "Reporter",
     "failures" = "list",
     "n" = "integer",
     "has_tests" = "logical",
-    "max_reports" = "numeric"),
+    "max_reports" = "numeric",
+    "show_praise" = "logical"),
 
   methods = list(
     initialize = function(max_reports = Inf, ...) {
       max_reports <<- max_reports
+      show_praise <<- FALSE
       callSuper(...)
     },
 
@@ -73,7 +75,7 @@ SummaryReporter <- setRefClass("SummaryReporter", contains = "Reporter",
 
       if (n == 0) {
         cat("\n")
-        if (has_tests && sample(10, 1) == 1) {
+        if (has_tests && sample(10, 1) == 1 && show_praise) {
           cat(colourise(sample(.praise, 1), "light green"), "\n")
         }
       } else {
