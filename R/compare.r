@@ -40,8 +40,10 @@ compare.character <- function(x, y, ..., max_strings = 5, max_lines = 5,
   width <- width - 6 # allocate space for labels
   n_show <- seq_len(min(length(diff), max_strings))
   show <- diff[n_show]
-  show_x <- str_chunk(str_trunc(encodeString(x[show]), max_lines * width), width)
-  show_y <- str_chunk(str_trunc(encodeString(y[show]), max_lines * width), width)
+  
+  encode <- function(x) encodeString(x, quote = '"')
+  show_x <- str_chunk(str_trunc(encode(x[show]), max_lines * width), width)
+  show_y <- str_chunk(str_trunc(encode(y[show]), max_lines * width), width)
 
   names <- which(diff)[n_show]
 
