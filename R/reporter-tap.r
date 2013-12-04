@@ -8,8 +8,8 @@ NULL
 #' For more information about TAP, see http://testanything.org
 #'
 #' @export
-#' @exportClass TapReporter
-#' @aliases TapReporter-class
+#' @export TapReporter
+#' @aliases TapReporter
 #' @keywords debugging
 #' @param ... Arguments used to initialise class
 TapReporter <- setRefClass("TapReporter", contains = "Reporter",

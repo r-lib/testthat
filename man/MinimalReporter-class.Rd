@@ -1,7 +1,7 @@
 \docType{class}
-\name{MinimalReporter-ref-class}
+\name{MinimalReporter-class}
+\alias{MinimalReporter}
 \alias{MinimalReporter-class}
-\alias{MinimalReporter-ref-class}
 \title{Test reporter: minimal.}
 \arguments{
   \item{...}{Arguments used to initialise class}

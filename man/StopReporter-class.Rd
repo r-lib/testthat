@@ -1,7 +1,7 @@
 \docType{class}
-\name{StopReporter-ref-class}
+\name{StopReporter-class}
+\alias{StopReporter}
 \alias{StopReporter-class}
-\alias{StopReporter-ref-class}
 \title{Test reporter: stop on error.}
 \arguments{
   \item{...}{Arguments used to initialise class}

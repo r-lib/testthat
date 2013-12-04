@@ -13,8 +13,8 @@ NULL
 #' tests and gives you more context about the problem.
 #'
 #' @export
-#' @exportClass StopReporter
-#' @aliases StopReporter-class
+#' @export StopReporter
+#' @aliases StopReporter
 #' @keywords debugging
 #' @param ... Arguments used to initialise class
 StopReporter <- setRefClass("StopReporter", contains = "Reporter",

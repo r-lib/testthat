@@ -8,8 +8,8 @@ NULL
 #' after a test run.
 #'
 #' @export
-#' @exportClass SilentReporter
-#' @aliases SilentReporter-class
+#' @export SilentReporter
+#' @aliases SilentReporter
 #' @keywords debugging
 #' @param ... Arguments used to initialise class
 SilentReporter <- setRefClass("SilentReporter", contains = "Reporter",

@@ -9,9 +9,9 @@ NULL
 #' were, you'll need to run a more informative test reporter.
 #'
 #' @export
-#' @exportClass MinimalReporter
 #' @keywords debugging
-#' @aliases MinimalReporter-class
+#' @export MinimalReporter
+#' @aliases MinimalReporter
 #' @param ... Arguments used to initialise class
 MinimalReporter <- setRefClass("MinimalReporter", contains = "Reporter",
   methods = list(

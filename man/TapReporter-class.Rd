@@ -1,7 +1,7 @@
 \docType{class}
-\name{TapReporter-ref-class}
+\name{TapReporter-class}
+\alias{TapReporter}
 \alias{TapReporter-class}
-\alias{TapReporter-ref-class}
 \title{Test reporter: TAP format.}
 \arguments{
   \item{...}{Arguments used to initialise class}

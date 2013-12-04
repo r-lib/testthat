@@ -1,7 +1,7 @@
 \docType{class}
-\name{SummaryReporter-ref-class}
+\name{SummaryReporter-class}
+\alias{SummaryReporter}
 \alias{SummaryReporter-class}
-\alias{SummaryReporter-ref-class}
 \title{Test reporter: summary of errors.}
 \arguments{
   \item{...}{Arguments used to initialise class}

@@ -1,7 +1,7 @@
 \docType{class}
-\name{SilentReporter-ref-class}
+\name{SilentReporter-class}
+\alias{SilentReporter}
 \alias{SilentReporter-class}
-\alias{SilentReporter-ref-class}
 \title{Test reporter: gather all errors silently.}
 \arguments{
   \item{...}{Arguments used to initialise class}

@@ -16,8 +16,8 @@ NULL
 #' if all your tests pass.
 #'
 #' @export
-#' @exportClass SummaryReporter
-#' @aliases SummaryReporter-class
+#' @export SummaryReporter
+#' @aliases SummaryReporter
 #' @keywords debugging
 #' @param ... Arguments used to initialise class
 SummaryReporter <- setRefClass("SummaryReporter", contains = "Reporter",

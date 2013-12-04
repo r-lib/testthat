@@ -1,7 +1,7 @@
 \docType{class}
-\name{Reporter-ref-class}
+\name{Reporter-class}
+\alias{Reporter}
 \alias{Reporter-class}
-\alias{Reporter-ref-class}
 \title{Stub object for managing a reporter of tests.}
 \arguments{
   \item{...}{Arguments used to initialise class}
