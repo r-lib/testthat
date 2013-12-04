@@ -86,7 +86,3 @@ test_that("for messages, warnings, errors and output, ... passed onto grepl", {
   expect_warning(warning("X"), "x", ignore.case = TRUE)
   expect_error(stop("X"), "x", ignore.case = TRUE)
 })
-
-test_that("NULL doesn't match text", {
-  expect_error(expect_match(NULL, 'oeu'), "NULL does not match")
-})

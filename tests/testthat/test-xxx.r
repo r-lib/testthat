@@ -58,3 +58,7 @@ test_test_that("errors when looking for warnings propagte", {
   f <- function() stop("!")
   expect_warning(f())
 })
+
+test_test_that("NULL doesn't match text", {
+  expect_error(expect_match(NULL, 'oeu'), "NULL does not match")
+})
