@@ -1,34 +1,27 @@
-Version 0.8
-------------------------------------------------------------------------------
+# testthat 0.8
 
-* `expect_match` now correctly fails to match NULL. (#100)
+testthat 0.8 comes with a new recommended struture for storing your tests. To 
+better meet CRAN recommended practices, testthat now recommend that you to put 
+your tests in `tests/testthat`, instead of `inst/test` (this makes it
+possible for users to choose whether or not to install tests). With this 
+new structure, you'll need to use `test_check()` instead of `test_packages()`
+in the test file (usually `tests/testthat.R`) that runs all testthat unit 
+tests.
 
-* `test_dir`, `test_file`, `test_package` and `test_check` now invisibly 
-  return a summary of the tests as a data frame
+The other big improvement to usability comes from @kforner, who contributed
+code to allow the default results (i.e. those produced by `SummaryReporter`)  
+to include source references so you can see exactly where failures occured.
 
-* new `MultiReporter`:  reporter that combines several reporters at once.
+Other minor improvements and bug fixes:
 
-* new `ListerReporter`:  reporter that keeps all tests results along 
-  with the appropriate file, context, test and elapsed time in a list
-  that can be formatted as a data.frame
+* Two new reporters: `MultiReporter`, which combines several reporters into 
+  one, and `ListReporter`, which captures all test results with their file, 
+  context, test and elapsed time. `test_dir`, `test_file`, `test_package` and 
+  `test_check` now use the `ListReporter` to invisibly  return a summary of 
+  the tests as a data frame.
 
 * fixed two bugs with source_dir(): it did not look for the source scripts
-  at the right place, and it did not use its chdir argument.
-
-* test_file() now fetches the test source code annotation (that contains
-  the line number) of the test failures, and to include them in the results
-  list (as results$srcref) which is supplied to the current reporter using
-  the add_result method. The SummaryReporter output has also been modifed
-  to display the tests failure line numbers. 
-
-* To better meet CRAN recommended practices, testthat now allows you to 
-  put your tests in `tests/testthat`, instead of `inst/test`. This makes it
-  possible for users to choose whether or not to install tests. With this 
-  new structure, you'll need to use `test_check()` instead of `test_packages()`
-  in the test file (usually `tests/test-all.R`) that runs all testthat unit 
-  tests.
-
-* `test_package()` will use `testthat` subdir, if present.
+  at the right place, and it did not use its `chdir` argument.
 
 * When using `expect_equal()` to compare strings, the default output for 
   failure provides a lot more information, which should hopefully help make
@@ -42,9 +35,10 @@ Version 0.8
 
 * `matches` and `expect_match` now pass additional arguments on to `grepl` so
   that you can use `fixed = TRUE`, `perl = TRUE` or `ignore.case = TRUE` to
-  control details of the match
+  control details of the match. `expect_match` now correctly fails to match 
+  NULL. (#100)
 
-* `expect_output`, `expect_message`, `expect_warning` and `expect_error` now 
+* `expect_output`, `expect_message`, `expect_warning` and `expect_error` 
   also pass ... on to `grepl`, so that you can use  `fixed = TRUE`, 
   `perl = TRUE` or `ignore.case = TRUE`
 
@@ -59,8 +53,7 @@ Version 0.8
 * Add a new reporter so that `testthat` can test calls to `test_that`.
   Contributed by Craig Citro. (#83)
 
-Version 0.7.1
-------------------------------------------------------------------------------
+# testthat 0.7.1
 
 * Ignore attributes in `is_true` and `is_false` (#49)
 
@@ -77,8 +70,7 @@ Version 0.7.1
 * Fixed where `auto_test` would identify the wrong files as having changed. 
   (Thanks to Peter Meilstrup)
 
-Version 0.7
-------------------------------------------------------------------------------
+# testthat 0.7
 
 * `SummaryReporter`: still return informative messages even if no tests
   defined (just bare expectations). (Fixes #31)
@@ -99,8 +91,7 @@ Version 0.7
 * `auto_test` now normalises paths to enable better identification of file
   changes, and fixes bug in instantiating new reporter object.
 
-Version 0.6
-------------------------------------------------------------------------------
+# testthat 0.6
 
 * All `mutatr` classes have been replaced with ReferenceClasses.
 
@@ -109,13 +100,11 @@ Version 0.6
 * `test_dir` and `test_package` gain new `filter` argument which allows you to
    restrict which tests are run.
 
-Version 0.5
-------------------------------------------------------------------------------
+# testthat 0.5
 
 * bare expectations now correctly throw errors again
 
-Changes in version 0.4
-------------------------------------------------------------------------------
+# testthat 0.4
 
 * autotest correctly loads code and executes tests in same environment
 
@@ -128,8 +117,7 @@ Changes in version 0.4
 * all `expect_*` short cut functions gain a label argument, thanks to Steve
   Lianoglou
 
-Changes in version 0.3
-------------------------------------------------------------------------------
+# testthat 0.3
 
 * all expectations now have a shortcut form, so instead of 
      expect_that(a, is_identical_to(b))
@@ -160,9 +148,7 @@ Changes in version 0.3
   errors or failures occur, test_package will throw an error, making it
   suitable for use with R CMD check.
 
-Changes in version 0.2
-------------------------------------------------------------------------------
-
+# testthat 0.2
 
 * colourise also works in screen terminal
 
