@@ -46,6 +46,7 @@ watch <- function(path, callback, pattern = NULL, hash = TRUE) {
 #' @param filename filename to compute digest on
 #' @return a digest of the file, or NA if it doesn't exist.
 #' @keywords internal
+#' @importFrom digest digest
 safe_digest <- function(path) {
   result <- NA_character_
   try(result <- digest(path, file = TRUE), silent = TRUE)
