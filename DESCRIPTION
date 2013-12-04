@@ -12,7 +12,7 @@ Depends:
 Imports:
     digest,
     methods
-License: GPL
+License: MIT + file LICENSE
 LazyData: true
 Collate:
     'auto-test.r'
