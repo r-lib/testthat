@@ -9,10 +9,10 @@ in the test file (usually `tests/testthat.R`) that runs all testthat unit
 tests.
 
 The other big improvement to usability comes from @kforner, who contributed
-code to allow the default results (i.e. those produced by `SummaryReporter`)  
+code to allow the default results (i.e. those produced by `SummaryReporter`)
 to include source references so you can see exactly where failures occured.
 
-Other minor improvements and bug fixes:
+Other minor improvements and bug fixes include:
 
 * Two new reporters: `MultiReporter`, which combines several reporters into 
   one, and `ListReporter`, which captures all test results with their file, 
@@ -28,7 +28,7 @@ Other minor improvements and bug fixes:
   finding string mismatches easier.
 
 * `SummaryReporter` has a `max_reports` option to limit the number of detailed
-  failure reports to show. (Thanks to Peter Meilstrup)
+  failure reports to show. (Thanks to @crowding)
 
 * Tracebacks will now also contain information about where the functions came
   from (where that information is available).
@@ -48,10 +48,10 @@ Other minor improvements and bug fixes:
   `expect_that(f(), not(throws_error()))` asserts that `f()` does not
   throw an error.
 
-* Make `dir_state` less race-y. Contributed by Craig Citro. (#80)
+* Make `dir_state` less race-y. (Thanks to @craigcitro, #80)
 
 * Add a new reporter so that `testthat` can test calls to `test_that`.
-  Contributed by Craig Citro. (#83)
+  (Thanks to @craigcitro, #83)
 
 # testthat 0.7.1
 
