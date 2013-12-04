@@ -5,9 +5,9 @@
 \alias{print.expectation}
 \title{Expectation class.}
 \usage{
-  expectation(passed, failure_msg, success_msg = "unknown")
+expectation(passed, failure_msg, success_msg = "unknown")
 
-  is.expectation(x)
+is.expectation(x)
 }
 \arguments{
   \item{passed}{a single logical value indicating whether
@@ -21,8 +21,8 @@
   \item{x}{object to test for class membership}
 }
 \description{
-  Any expectation should return objects of this class - see
-  the built in expectations for details.
+Any expectation should return objects of this class - see
+the built in expectations for details.
 }
 \keyword{internal}
 

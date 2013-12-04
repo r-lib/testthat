@@ -2,8 +2,7 @@
 \alias{auto_test}
 \title{Watches code and tests for changes, rerunning tests as appropriate.}
 \usage{
-  auto_test(code_path, test_path, reporter = "summary",
-    env = NULL)
+auto_test(code_path, test_path, reporter = "summary", env = NULL)
 }
 \arguments{
   \item{code_path}{path to directory containing code}
@@ -17,28 +16,28 @@
   environment.}
 }
 \description{
-  The idea behind \code{auto_test} is that you just leave
-  it running while you develop your code.  Everytime you
-  save a file it will be automatically tested and you can
-  easily see if your changes have caused any test failures.
+The idea behind \code{auto_test} is that you just leave it
+running while you develop your code.  Everytime you save a
+file it will be automatically tested and you can easily see
+if your changes have caused any test failures.
 }
 \details{
-  The current strategy for rerunning tests is as follows:
+The current strategy for rerunning tests is as follows:
 
-  \itemize{ \item if any code has changed, then those files
-  are reloaded and all tests rerun \item otherwise, each
-  new or modified test is run } In the future,
-  \code{auto_test} might implement one of the following
-  more intelligent alternatives:
+\itemize{ \item if any code has changed, then those files
+are reloaded and all tests rerun \item otherwise, each new
+or modified test is run } In the future, \code{auto_test}
+might implement one of the following more intelligent
+alternatives:
 
-  \itemize{ \item Use codetools to build up dependency tree
-  and then rerun tests only when a dependency changes.
+\itemize{ \item Use codetools to build up dependency tree
+and then rerun tests only when a dependency changes.
 
-  \item Mimic ruby's autotest and rerun only failing tests
-  until they pass, and then rerun all tests. }
+\item Mimic ruby's autotest and rerun only failing tests
+until they pass, and then rerun all tests. }
 }
 \seealso{
-  \code{\link{auto_test_package}}
+\code{\link{auto_test_package}}
 }
 \keyword{debugging}
 

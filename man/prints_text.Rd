@@ -3,10 +3,9 @@
 \alias{prints_text}
 \title{Expectation: does printed output match a regular expression?}
 \usage{
-  prints_text(regexp, ...)
+prints_text(regexp, ...)
 
-  expect_output(object, regexp, ..., info = NULL,
-    label = NULL)
+expect_output(object, regexp, ..., info = NULL, label = NULL)
 }
 \arguments{
   \item{regexp}{regular expression to test against}
@@ -23,8 +22,8 @@
   from deparsed object.}
 }
 \description{
-  Expectation: does printed output match a regular
-  expression?
+Expectation: does printed output match a regular
+expression?
 }
 \examples{
 str(mtcars)
@@ -37,17 +36,17 @@ expect_output(str(mtcars), "11 VARIABLES", ignore.case = TRUE)
 expect_output(str(mtcars), "$ mpg", fixed = TRUE)
 }
 \seealso{
-  Other expectations: \code{\link{equals}},
-  \code{\link{expect_equal}},
-  \code{\link{expect_equivalent}},
-  \code{\link{expect_error}}, \code{\link{expect_false}},
-  \code{\link{expect_identical}}, \code{\link{expect_is}},
-  \code{\link{expect_match}}, \code{\link{expect_message}},
-  \code{\link{expect_true}}, \code{\link{expect_warning}},
-  \code{\link{gives_warning}}, \code{\link{is_a}},
-  \code{\link{is_equivalent_to}}, \code{\link{is_false}},
-  \code{\link{is_identical_to}}, \code{\link{is_true}},
-  \code{\link{matches}}, \code{\link{shows_message}},
-  \code{\link{takes_less_than}}, \code{\link{throws_error}}
+Other expectations: \code{\link{equals}},
+\code{\link{expect_equal}};
+\code{\link{expect_equivalent}},
+\code{\link{is_equivalent_to}}; \code{\link{expect_error}},
+\code{\link{throws_error}}; \code{\link{expect_false}},
+\code{\link{is_false}}; \code{\link{expect_identical}},
+\code{\link{is_identical_to}}; \code{\link{expect_is}},
+\code{\link{is_a}}; \code{\link{expect_match}},
+\code{\link{matches}}; \code{\link{expect_message}},
+\code{\link{shows_message}}; \code{\link{expect_true}},
+\code{\link{is_true}}; \code{\link{expect_warning}},
+\code{\link{gives_warning}}; \code{\link{takes_less_than}}
 }
 

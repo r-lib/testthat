@@ -2,8 +2,7 @@
 \alias{test_dir}
 \title{Run all of the tests in a directory.}
 \usage{
-  test_dir(path, filter = NULL, reporter = "summary",
-    env = NULL)
+test_dir(path, filter = NULL, reporter = "summary", env = NULL)
 }
 \arguments{
   \item{path}{path to tests}
@@ -19,9 +18,9 @@
   Defaults to new}
 }
 \description{
-  Test files start with \code{test} and are executed in
-  alphabetical order (but they shouldn't have
-  dependencies). Helper files start with \code{helper} and
-  loaded before any tests are run.
+Test files start with \code{test} and are executed in
+alphabetical order (but they shouldn't have dependencies).
+Helper files start with \code{helper} and loaded before any
+tests are run.
 }
 
