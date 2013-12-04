@@ -1,5 +1,6 @@
 \docType{class}
 \name{MultiReporter-class}
+\alias{MultiReporter}
 \alias{MultiReporter-class}
 \title{Multi reporter: combine several reporters in one.}
 \arguments{

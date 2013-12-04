@@ -1,5 +1,6 @@
 \docType{class}
 \name{ListReporter-class}
+\alias{ListReporter}
 \alias{ListReporter-class}
 \title{List reporter: gather all test results along with elapsed time and
 file information.}

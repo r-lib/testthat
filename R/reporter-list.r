@@ -11,8 +11,8 @@ setOldClass('proc_time')
 #' test elapsed time, and test filename if available. Very useful for reporting.
 #'
 #' @export
-#' @exportClass ListReporter
-#' @aliases ListReporter-class
+#' @export ListReporter
+#' @aliases ListReporter
 #' @keywords debugging
 #' @param ... Arguments used to initialise class
 ListReporter <- setRefClass("ListReporter", contains = "Reporter",

@@ -7,8 +7,8 @@ NULL
 #' adding a custom reporter without removing the current one.
 #' 
 #' @export
-#' @exportClass MultiReporter
-#' @aliases MultiReporter-class
+#' @export MultiReporter
+#' @aliases MultiReporter
 #' @keywords debugging
 #' @param ... Arguments used to initialise class
 MultiReporter <- setRefClass("MultiReporter", contains = "Reporter",
