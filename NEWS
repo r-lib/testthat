@@ -1,4 +1,4 @@
-Version 0.7.1.99
+Version 0.8
 ------------------------------------------------------------------------------
 
 * `expect_match` now correctly fails to match NULL. (#100)
