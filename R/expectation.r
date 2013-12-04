@@ -28,10 +28,10 @@ expectation <- function(passed, failure_msg, success_msg = "unknown") {
 #' @param x object to test for class membership
 is.expectation <- function(x) inherits(x, "expectation")
 
-#' @S3method print expectation
+#' @export
 print.expectation <- function(x, ...) cat(format(x), "\n")
 
-#' @S3method format expectation
+#' @export
 format.expectation <- function(x, ...) {
   if (x$passed) {
     paste0("As expected: ", x$success_msg)
@@ -40,7 +40,7 @@ format.expectation <- function(x, ...) {
   }
 }
 
-#' @S3method as.character expectation
+#' @export
 as.character.expectation <- function(x, ...) format(x)
 
 negate <- function(expt) {

@@ -2,7 +2,7 @@ compare <- function(x, y, ...) {
   UseMethod("compare", x)
 }
 
-#' @S3method compare default
+#' @export
 compare.default <- function(x, y, ...){
   same <- all.equal(x, y, ...)
   list(
@@ -11,7 +11,7 @@ compare.default <- function(x, y, ...){
   )
 }
 
-#' @S3method compare character
+#' @export
 # x <- c("abc", "def", "jih")
 # y <- paste0(x, "y")
 # compare(x, y)
