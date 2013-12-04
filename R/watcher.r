@@ -48,8 +48,15 @@ watch <- function(path, callback, pattern = NULL, hash = TRUE) {
 #' @keywords internal
 #' @importFrom digest digest
 safe_digest <- function(path) {
+  reraise_unknown_errors = function(e) {
+    if (e$message != paste("The file does not exist:", path)) {
+      stop(e)
+    }
+  }
   result <- NA_character_
-  try(result <- digest(path, file = TRUE), silent = TRUE)
+  tryCatch(
+    result <- digest(path, file = TRUE),
+    error = reraise_unknown_errors)
   result
 }
 
@@ -68,10 +75,11 @@ dir_state <- function(path, pattern = NULL, hash = TRUE) {
   # gracefully, but digest::digest doesn't -- so we wrap it. Both
   # cases will return NA for files that have gone missing.
   if (hash) {
-    vapply(files, safe_digest, character(1))
+    file_states <- vapply(files, safe_digest, character(1))
   } else {
-    setNames(file.info(files)$mtime, files)
+    file_states <- setNames(file.info(files)$mtime, files)
   }
+  file_states[!is.na(file_states)]
 }
 
 #' Compare two directory states.

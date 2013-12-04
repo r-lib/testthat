@@ -15,7 +15,11 @@ test_dir(path, filter = NULL, reporter = "summary", env = NULL)
   stripped of \code{"test-"} and \code{".r"}.}
 
   \item{env}{environment in which to execute test suite.
-  Defaults to new}
+  Defaults to new environment inheriting from the parent of
+  global environment.}
+}
+\value{
+a data frame of the summary of test results
 }
 \description{
 Test files start with \code{test} and are executed in

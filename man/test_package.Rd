@@ -17,6 +17,9 @@ test_check(package, filter = NULL, reporter = "summary")
 
   \item{reporter}{reporter to use}
 }
+\value{
+a data frame of the summary of test results
+}
 \description{
 Test are run in an environment that inherits from the
 package environment so that tests can access non-exported
@@ -28,7 +31,7 @@ functions and variables. Tests should be placed in either
   in \code{tests/test-all.R}if you're using the older
   \code{inst/tests} convention.
 
-  If your tests live in \code{test/testthat} (preferred)
+  If your tests live in \code{tests/testthat} (preferred)
   use \code{test_check} in \code{tests/test-all.R}.  You
   still use \code{test_package} when testing the installed
   package.
