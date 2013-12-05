@@ -36,7 +36,7 @@ test_dir <- function(path, filter = NULL, reporter = "summary", env = NULL) {
     test_names <- gsub("test-?", "", test_names)
     test_names <- gsub("\\.[rR]", "", test_names)
 
-    files <- files[ grep(filter, test_names, invert = isTRUE(invert) ) ]
+    files <- files[grep(filter, test_names, invert = isTRUE(invert))]
   }
 
   .custom_test_file <- function(fname) {
