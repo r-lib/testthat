@@ -50,8 +50,8 @@ test_package <- function(package, filter = NULL, reporter = "summary") {
 test_check <- function(package, filter = NULL, reporter = "summary") {
   require(package, character.only = TRUE)
 
-  test_path <- "testthat/"
-  if (!file.exists(test_path)) {
+  test_path <- "testthat"
+  if (!file_test('-d', test_path)) {
     stop("No tests found for ", package, call. = FALSE)
   }
 
