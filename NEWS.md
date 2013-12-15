@@ -1,8 +1,8 @@
 # testthat 0.8
 
-testthat 0.8 comes with a new recommended struture for storing your tests. To 
+testthat 0.8 comes with a new recommended structure for storing your tests. To 
 better meet CRAN recommended practices, testthat now recommend that you to put 
-your tests in `tests/testthat`, instead of `inst/test` (this makes it
+your tests in `tests/testthat`, instead of `inst/tests` (this makes it
 possible for users to choose whether or not to install tests). With this 
 new structure, you'll need to use `test_check()` instead of `test_packages()`
 in the test file (usually `tests/testthat.R`) that runs all testthat unit 
