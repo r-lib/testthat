@@ -34,7 +34,6 @@ Other minor improvements and bug fixes include:
   the expectation result, and stops if info or label arguments have
   length > 1 (thanks to @kforner)
 
-
 * fixed two bugs with source_dir(): it did not look for the source scripts
   at the right place, and it did not use its `chdir` argument.
 
@@ -66,6 +65,9 @@ Other minor improvements and bug fixes include:
 * Make `dir_state` less race-y. (Thanks to @craigcitro, #80)
 
 * `auto_test` now pays attention to its 'reporter' argument (Thanks to @crowding, #81)
+
+* `get_reporter()`, `set_reporter()` and `with_reporter()` are now
+  exported (#102)
 
 # testthat 0.7.1
 

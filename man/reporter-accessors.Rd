@@ -1,7 +1,14 @@
-\name{with_reporter}
+\name{reporter-accessors}
+\alias{get_reporter}
+\alias{reporter-accessors}
+\alias{set_reporter}
 \alias{with_reporter}
-\title{Execute code in specified reporter.}
+\title{Get/set reporter; execute code in specified reporter.}
 \usage{
+set_reporter(reporter)
+
+get_reporter()
+
 with_reporter(reporter, code)
 }
 \arguments{
