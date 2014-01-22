@@ -551,3 +551,79 @@ takes_less_than <- function(amount) {
     )
   }
 }
+
+#' Expectation: does object have names?
+#'
+#' You can either check for the presence of names (leaving \code{expected}
+#' blank), specific names (by suppling a vector of names), or absence of
+#' names (with \code{NULL}).
+#'
+#' @param expected Character vector of expected names. Leave missing to
+#'   match any names. Use \code{NULL} to check for absence of names.
+#' @param ignore.order If \code{TRUE}, sorts names before comparing to
+#'   ignore the effect of order.
+#' @param ignore.case If \code{TRUE}, lowercases all names to ignore the
+#'   effect of case.
+#' @param ... Other arguments passed onto \code{has_names}.
+#' @family expectations
+#' @export
+#' @examples
+#' x <- c(a = 1, b = 2, c = 3)
+#' expect_that(x, has_names())
+#' expect_that(x, has_names(c("a", "b", "c")))
+#'
+#' expect_named(x)
+#' expect_named(x, c("a", "b", "c"))
+#'
+#' # Use options to control sensitivity
+#' expect_named(x, c("B", "C", "A"), ignore.order = TRUE, ignore.case = TRUE)
+#'
+#' # Can also check for the absence of names with NULL
+#' z <- 1:4
+#' expect_that(z, has_names(NULL))
+#' expect_named(z, NULL)
+has_names <- function(expected, ignore.order = FALSE, ignore.case = FALSE) {
+  if (missing(expected)) {
+    function(x) {
+      expectation(
+        !identical(names(x), NULL),
+        paste0("does not have names"),
+        paste0("has names")
+      )
+    }
+  } else {
+    expected <- normalise_names(expected, ignore.order, ignore.case)
+
+    function(x) {
+      x_names <- normalise_names(names(x), ignore.order, ignore.case)
+
+      expectation(
+        identical(x_names, expected),
+        paste0("names don't match ", paste0(expected, collapse = ", ")),
+        paste0("names as expected")
+      )
+    }
+  }
+}
+
+#' @rdname has_names
+#' @export
+#' @inheritParams expect_that
+expect_named <- function(object, expected, ..., info = NULL,
+                         label = NULL) {
+  if (is.null(label)) {
+    label <- find_expr("object")
+  }
+  expect_that(object, has_names(expected, ...), info = info, label = label)
+}
+
+
+
+normalise_names <- function(x, ignore.order = FALSE, ignore.case = FALSE) {
+  if (is.null(x)) return()
+
+  if (ignore.order) x <- sort(x)
+  if (ignore.case)  x <- tolower(x)
+
+  x
+}

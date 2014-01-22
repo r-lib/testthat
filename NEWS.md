@@ -30,7 +30,9 @@ to include source references so you can see exactly where failures occured.
 
 ## New expectations
 
-* `expect_null()` (#78)
+* `expect_null()` and `is_null` to check if an object is NULL (#78)
+
+* `expect_named()` and `has_names()` to check the names of a vector (#79)
 
 ## Minor improvements and bug fixes
 
