@@ -22,9 +22,10 @@ a data frame of the summary of test results
 }
 \description{
 Test are run in an environment that inherits from the
-package environment so that tests can access non-exported
-functions and variables. Tests should be placed in either
-\code{inst/tests}, or (better) \code{tests/testthat}.
+package's namespace environment, so that tests can access
+non-exported functions and variables. Tests should be
+placed in either \code{inst/tests}, or (better)
+\code{tests/testthat}.
 }
 \section{R CMD check}{
   Use \code{test_package} to test an installed package, or
