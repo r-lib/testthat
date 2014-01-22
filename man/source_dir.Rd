@@ -2,16 +2,14 @@
 \alias{source_dir}
 \title{Load all source files in a directory.}
 \usage{
-source_dir(path, pattern="\\\\.[rR]$", env = NULL, chdir=TRUE)
+source_dir(path, pattern = "\\\\.[rR]$", env = test_env(), chdir = TRUE)
 }
 \arguments{
   \item{path}{path to tests}
 
   \item{pattern}{regular expression used to filter files}
 
-  \item{env}{environment in which to execute test suite.
-  Defaults to new environment inheriting from the global
-  environment.}
+  \item{env}{environment in which to store results}
 
   \item{chdir}{change working directory to path?}
 }

@@ -2,7 +2,7 @@
 \alias{auto_test}
 \title{Watches code and tests for changes, rerunning tests as appropriate.}
 \usage{
-auto_test(code_path, test_path, reporter = "summary", env = NULL)
+auto_test(code_path, test_path, reporter = "summary", env = test_env())
 }
 \arguments{
   \item{code_path}{path to directory containing code}
@@ -11,9 +11,7 @@ auto_test(code_path, test_path, reporter = "summary", env = NULL)
 
   \item{reporter}{test reporter to use}
 
-  \item{env}{environment in which to execute test suite.
-  Defaults to new environment inheriting from the global
-  environment.}
+  \item{env}{environment in which to execute test suite.}
 }
 \description{
 The idea behind \code{auto_test} is that you just leave it

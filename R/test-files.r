@@ -1,3 +1,16 @@
+#' Generate default testing environment.
+#'
+#' We use a new environment which inherits from the parent of
+#' \code{\link{globalenv}}, which is the first package loaded in the search
+#' path. This isolates tests from objects in the global environement but still
+#' allows them to find needed functions.
+#'
+#' @keywords internal
+#' @export
+test_env <- function() {
+  new.env(parent = parent.env(globalenv()))
+}
+
 #' Run all of the tests in a directory.
 #'
 #' Test files start with \code{test} and are executed in alphabetical order
@@ -9,22 +22,14 @@
 #' @param filter If not \code{NULL}, only tests with file names matching this
 #'   regular expression will be executed.  Matching will take on the file
 #'   name after it has been stripped of \code{"test-"} and \code{".r"}.
-#' @param env environment in which to execute test suite. Defaults to new
-#'    environment inheriting from the parent of global environment.
+#' @param env environment in which to execute test suite.
 #' @return a data frame of the summary of test results
 #' @export
-test_dir <- function(path, filter = NULL, reporter = "summary", env = NULL) {
+test_dir <- function(path, filter = NULL, reporter = "summary",
+                     env = test_env()) {
   current_reporter <- find_reporter(reporter)
   lister <- ListReporter$new()
   reporter <- MultiReporter$new(reporters = list(current_reporter, lister))
-  
-  if (is.null(env)) {
-    # we use as enclosure of the new env the parent of globalenv() which
-    # is normally the first loaded package in the search path so that
-    # tests are isolated from the global but still can find their needed
-    # functions such as the testthat ones 
-    env <- new.env(parent = parent.env(globalenv()))
-  }
 
   source_dir(path, "^helper.*\\.[rR]$", env = env)
 
@@ -42,7 +47,7 @@ test_dir <- function(path, filter = NULL, reporter = "summary", env = NULL) {
     .test_file(file.path(path, fname), env)
   }
   with_reporter(reporter, lapply(files, .custom_test_file))
-   
+
   invisible(lister$get_summary())
 }
 
@@ -52,21 +57,16 @@ test_dir <- function(path, filter = NULL, reporter = "summary", env = NULL) {
 #'
 #' @param path path to tests
 #' @param pattern regular expression used to filter files
-#' @param env environment in which to execute test suite. Defaults to new
-#'        environment inheriting from the global environment.
+#' @param env environment in which to store results
 #' @param chdir change working directory to path?
 #' @keywords internal
 #' @export
-#' @usage source_dir(path, pattern="\\\\.[rR]$", env = NULL, chdir=TRUE)
-source_dir <- function(path, pattern = "\\.[rR]$", env = NULL, chdir = TRUE) {
+source_dir <- function(path, pattern = "\\.[rR]$", env = test_env(),
+                       chdir = TRUE) {
   files <- normalizePath(sort(dir(path, pattern, full.names = TRUE)))
   if (chdir) {
     old <- setwd(path)
     on.exit(setwd(old))
-  }
-  
-  if (is.null(env)) {
-    env <- new.env(parent = globalenv())
   }
 
   lapply(files, sys.source2, envir = env)
@@ -76,25 +76,23 @@ source_dir <- function(path, pattern = "\\.[rR]$", env = NULL, chdir = TRUE) {
 #'
 #' @param path path to file
 #' @param reporter reporter to use
-#' @param enclos the parent environment for the environment to run the tests
-#'        inside
+#' @param env environment in which to execute the tests
 #' @return a data frame of the summary of test results
 #' @export
-test_file <- function(path, reporter = "summary",
-                     enclos = parent.env(globalenv())) {                   
+test_file <- function(path, reporter = "summary", env = test_env()) {
   current_reporter <- find_reporter(reporter)
   lister <- ListReporter$new()
   reporter <- MultiReporter$new(reporters = list(current_reporter, lister))
   lister$start_file(basename(path))
-  with_reporter(reporter, .test_file(path, enclos))
-  
+  with_reporter(reporter, .test_file(path, env))
+
   invisible(lister$get_summary())
 }
 
 .test_file <- function(path, parent_env) {
   old <- setwd(dirname(path))
   on.exit(setwd(old))
-  
+
   sys.source2(basename(path), new.env(parent = parent_env))
   end_context()
 }
@@ -102,16 +100,16 @@ test_file <- function(path, reporter = "summary",
 sys.source2 <- function(file, envir = parent.frame()) {
   stopifnot(file.exists(file))
   stopifnot(is.environment(envir))
-  
+
   lines <- readLines(file, warn = FALSE)
   srcfile <- srcfilecopy(file, lines, file.info(file)[1, "mtime"],
     isFile = TRUE)
   exprs <- parse(text = lines, n = -1, srcfile = srcfile)
-  
+
   n <- length(exprs)
   if (n == 0L) return(invisible())
- 
-  
+
+
   invisible(eval(exprs, envir))
 }
 

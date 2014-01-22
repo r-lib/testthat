@@ -2,7 +2,7 @@
 \alias{test_dir}
 \title{Run all of the tests in a directory.}
 \usage{
-test_dir(path, filter = NULL, reporter = "summary", env = NULL)
+test_dir(path, filter = NULL, reporter = "summary", env = test_env())
 }
 \arguments{
   \item{path}{path to tests}
@@ -14,9 +14,7 @@ test_dir(path, filter = NULL, reporter = "summary", env = NULL)
   Matching will take on the file name after it has been
   stripped of \code{"test-"} and \code{".r"}.}
 
-  \item{env}{environment in which to execute test suite.
-  Defaults to new environment inheriting from the parent of
-  global environment.}
+  \item{env}{environment in which to execute test suite.}
 }
 \value{
 a data frame of the summary of test results

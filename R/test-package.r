@@ -24,9 +24,9 @@ test_package <- function(package, filter = NULL, reporter = "summary") {
   # Ensure that test package returns silently if called recursively - this
   # will occur if test-all.R ends up in the same directory as all the other
   # tests.
-  if (test_env$in_test) return(invisible())
-  test_env$in_test <- TRUE
-  on.exit(test_env$in_test <- FALSE)
+  if (env_test$in_test) return(invisible())
+  env_test$in_test <- TRUE
+  on.exit(env_test$in_test <- FALSE)
 
   test_path <- system.file("tests", package = package)
   if (test_path == "") stop("No tests found for ", package, call. = FALSE)
@@ -67,5 +67,5 @@ test_check <- function(package, filter = NULL, reporter = "summary") {
 }
 
 
-test_env <- new.env(parent = emptyenv())
-test_env$in_test <- FALSE
+env_test <- new.env(parent = emptyenv())
+env_test$in_test <- FALSE

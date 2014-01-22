@@ -28,18 +28,15 @@
 #' @param code_path path to directory containing code
 #' @param test_path path to directory containing tests
 #' @param reporter test reporter to use
-#' @param env environment in which to execute test suite. Defaults to new
-#'   environment inheriting from the global environment.
+#' @param env environment in which to execute test suite.
 #' @keywords debugging
-auto_test <- function(code_path, test_path, reporter = "summary", env = NULL) {
+auto_test <- function(code_path, test_path, reporter = "summary",
+                      env = test_env()) {
   reporter <- find_reporter(reporter)
   code_path <- normalizePath(code_path)
   test_path <- normalizePath(test_path)
 
   # Start by loading all code and running all tests
-  if (is.null(env)) {
-    env <- new.env(parent = globalenv())
-  }
   source_dir(code_path, env = env)
   test_dir(test_path, env = env, reporter = reporter)
 
@@ -63,8 +60,8 @@ auto_test <- function(code_path, test_path, reporter = "summary", env = NULL) {
     } else if (length(tests) > 0) {
       # If test changes, rerun just that test
       cat("Rerunning tests: ", paste0(basename(tests), collapse = ", "), "\n")
-      with_reporter(reporter$copy(), lapply(tests, sys.source,
-        env = new.env(parent = env), chdir = TRUE))
+      with_reporter(reporter$copy(),
+        lapply(tests, .test_file, parent_env = env))
     }
 
     TRUE
