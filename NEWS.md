@@ -1,11 +1,11 @@
 # testthat 0.8
 
-testthat 0.8 comes with a new recommended structure for storing your tests. To 
-better meet CRAN recommended practices, testthat now recommend that you to put 
+testthat 0.8 comes with a new recommended structure for storing your tests. To
+better meet CRAN recommended practices, testthat now recommend that you to put
 your tests in `tests/testthat`, instead of `inst/tests` (this makes it
-possible for users to choose whether or not to install tests). With this 
+possible for users to choose whether or not to install tests). With this
 new structure, you'll need to use `test_check()` instead of `test_packages()`
-in the test file (usually `tests/testthat.R`) that runs all testthat unit 
+in the test file (usually `tests/testthat.R`) that runs all testthat unit
 tests.
 
 The other big improvement to usability comes from @kforner, who contributed
@@ -14,21 +14,20 @@ to include source references so you can see exactly where failures occured.
 
 Other minor improvements and bug fixes include:
 
+* `expect_that()` (and thus all `expect_*` functions) now invisibly return
+  the expectation result, and stops if info or label arguments have
+  length > 1 (thanks to @kforner)
 
-* expect_that() (and thus all expect_* functions) now invisibly returns
-  the expectation result, and stops if its info or label arguments have 
-  length > 1
-
-* Two new reporters: `MultiReporter`, which combines several reporters into 
-  one, and `ListReporter`, which captures all test results with their file, 
-  context, test and elapsed time. `test_dir`, `test_file`, `test_package` and 
-  `test_check` now use the `ListReporter` to invisibly  return a summary of 
+* Two new reporters: `MultiReporter`, which combines several reporters into
+  one, and `ListReporter`, which captures all test results with their file,
+  context, test and elapsed time. `test_dir`, `test_file`, `test_package` and
+  `test_check` now use the `ListReporter` to invisibly  return a summary of
   the tests as a data frame.
 
 * fixed two bugs with source_dir(): it did not look for the source scripts
   at the right place, and it did not use its `chdir` argument.
 
-* When using `expect_equal()` to compare strings, the default output for 
+* When using `expect_equal()` to compare strings, the default output for
   failure provides a lot more information, which should hopefully help make
   finding string mismatches easier.
 
@@ -40,16 +39,16 @@ Other minor improvements and bug fixes include:
 
 * `matches` and `expect_match` now pass additional arguments on to `grepl` so
   that you can use `fixed = TRUE`, `perl = TRUE` or `ignore.case = TRUE` to
-  control details of the match. `expect_match` now correctly fails to match 
+  control details of the match. `expect_match` now correctly fails to match
   NULL. (#100)
 
-* `expect_output`, `expect_message`, `expect_warning` and `expect_error` 
-  also pass ... on to `grepl`, so that you can use  `fixed = TRUE`, 
+* `expect_output`, `expect_message`, `expect_warning` and `expect_error`
+  also pass ... on to `grepl`, so that you can use  `fixed = TRUE`,
   `perl = TRUE` or `ignore.case = TRUE`
 
 * Removed `stringr` and `evaluate` dependencies.
 
-* The `not()` function makes it possible to negate tests. For example, 
+* The `not()` function makes it possible to negate tests. For example,
   `expect_that(f(), not(throws_error()))` asserts that `f()` does not
   throw an error.
 
@@ -68,13 +67,13 @@ Other minor improvements and bug fixes include:
 
 * Now works better with evaluate 0.4.3.
 
-* new `fail()` function always forces a failure in a test. Suggested by 
+* new `fail()` function always forces a failure in a test. Suggested by
   Richie Cotton (#47)
 
-* Added `TapReporter` to produce output compatible with the "test anything 
+* Added `TapReporter` to produce output compatible with the "test anything
   protocol". Contributed by Dan Keshet.
 
-* Fixed where `auto_test` would identify the wrong files as having changed. 
+* Fixed where `auto_test` would identify the wrong files as having changed.
   (Thanks to Peter Meilstrup)
 
 # testthat 0.7
@@ -126,7 +125,7 @@ Other minor improvements and bug fixes include:
 
 # testthat 0.3
 
-* all expectations now have a shortcut form, so instead of 
+* all expectations now have a shortcut form, so instead of
      expect_that(a, is_identical_to(b))
   you can do
      expect_identical(a, b)
@@ -147,7 +146,7 @@ Other minor improvements and bug fixes include:
   track down the problem.
 
 * test_file and test_dir now run in code in separate environment to avoid
-  pollution of global environment. They also temporary change the working 
+  pollution of global environment. They also temporary change the working
   directory so tests can use relative paths.
 
 * test_package makes it easier to run all tests in an installed package. Code

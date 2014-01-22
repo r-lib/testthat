@@ -17,6 +17,9 @@ expect_that(object, condition, info = NULL, label = NULL)
   \item{info}{extra information to be included in the
   message (useful when writing tests in loops).}
 }
+\value{
+the (internal) expectation result as an invisible list
+}
 \description{
 An expectation checks whether a single condition holds
 true. \pkg{testthat} currently provides the following
