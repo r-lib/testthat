@@ -12,17 +12,28 @@ The other big improvement to usability comes from @kforner, who contributed
 code to allow the default results (i.e. those produced by `SummaryReporter`)
 to include source references so you can see exactly where failures occured.
 
+New reporters:
+
+* `MultiReporter`, which combines several reporters into one.
+  (Thanks to @kforner)
+
+* `ListReporter`, which captures all test results with their file,
+  context, test and elapsed time. `test_dir`, `test_file`, `test_package` and
+  `test_check` now use the `ListReporter` to invisibly  return a summary of
+  the tests as a data frame. (Thanks to @kforner)
+
+* `TeamCityReporter` to produce output compatible with the TeamCity
+  continuous integration environment. (Thanks to @windelinckx)
+
+* `SilentReporter` so that  `testthat` can test calls to `test_that`.
+  (Thanks to @craigcitro, #83)
+
 Other minor improvements and bug fixes include:
 
 * `expect_that()` (and thus all `expect_*` functions) now invisibly return
   the expectation result, and stops if info or label arguments have
   length > 1 (thanks to @kforner)
 
-* Two new reporters: `MultiReporter`, which combines several reporters into
-  one, and `ListReporter`, which captures all test results with their file,
-  context, test and elapsed time. `test_dir`, `test_file`, `test_package` and
-  `test_check` now use the `ListReporter` to invisibly  return a summary of
-  the tests as a data frame.
 
 * fixed two bugs with source_dir(): it did not look for the source scripts
   at the right place, and it did not use its `chdir` argument.
@@ -55,12 +66,6 @@ Other minor improvements and bug fixes include:
 * Make `dir_state` less race-y. (Thanks to @craigcitro, #80)
 
 * `auto_test` now pays attention to its 'reporter' argument (Thanks to @crowding, #81)
-
-* Add a new reporter so that `testthat` can test calls to `test_that`.
-  (Thanks to @craigcitro, #83)
-
-* Added `TeamCityReporter` to produce output compatible with the TeamCity
-  continuous integration environment. Contributed by Neil Windelinckx.
 
 # testthat 0.7.1
 
