@@ -37,6 +37,7 @@
 #' expect_that(sqrt(2) ^ 2, is_identical_to(2))
 #' }
 expect_that <- function(object, condition, info = NULL, label = NULL) {
+  stopifnot(length(info) <= 1, length(label) <= 1)
   if (is.null(label)) {
     label <- find_expr("object")
   }
@@ -52,7 +53,7 @@ expect_that <- function(object, condition, info = NULL, label = NULL) {
   }
 
   get_reporter()$add_result(results)
-  invisible()
+  invisible(results)
 }
 
 # find the srcref of the test call, or NULL
