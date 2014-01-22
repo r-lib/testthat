@@ -28,6 +28,7 @@
 #' @param label object label. When \code{NULL}, computed from deparsed object.
 #' @param info extra information to be included in the message (useful when
 #'   writing tests in loops).
+#' @return the (internal) expectation result as an invisible list
 #' @export
 #' @seealso \code{\link{fail}} for an expectation that always fails.
 #' @examples
