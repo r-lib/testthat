@@ -95,6 +95,9 @@ test_file <- function(path, reporter = "summary",
   old <- setwd(dirname(path))
   on.exit(setwd(old))
   
+  # set debug mode if we are using RStudio
+  if(!is.na(Sys.getenv("RSTUDIO",unset=NA)))
+    try(debugSource(basename(path)),silent=TRUE)
   sys.source2(basename(path), new.env(parent = parent_env))
   end_context()
 }
