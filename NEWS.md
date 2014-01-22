@@ -14,6 +14,11 @@ to include source references so you can see exactly where failures occured.
 
 Other minor improvements and bug fixes include:
 
+
+* expect_that() (and thus all expect_* functions) now invisibly returns
+  the expectation result, and stops if its info or label arguments have 
+  length > 1
+
 * Two new reporters: `MultiReporter`, which combines several reporters into 
   one, and `ListReporter`, which captures all test results with their file, 
   context, test and elapsed time. `test_dir`, `test_file`, `test_package` and 
