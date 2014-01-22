@@ -53,7 +53,8 @@ Other expectations: \code{\link{equals}},
 \code{\link{is_identical_to}}; \code{\link{expect_is}},
 \code{\link{is_a}}; \code{\link{expect_match}},
 \code{\link{matches}}; \code{\link{expect_message}},
-\code{\link{shows_message}}; \code{\link{expect_output}},
+\code{\link{shows_message}}; \code{\link{expect_null}},
+\code{\link{is_null}}; \code{\link{expect_output}},
 \code{\link{prints_text}}; \code{\link{expect_warning}},
 \code{\link{gives_warning}}; \code{\link{takes_less_than}}
 }

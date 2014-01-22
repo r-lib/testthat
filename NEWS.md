@@ -12,7 +12,7 @@ The other big improvement to usability comes from @kforner, who contributed
 code to allow the default results (i.e. those produced by `SummaryReporter`)
 to include source references so you can see exactly where failures occured.
 
-New reporters:
+## New reporters
 
 * `MultiReporter`, which combines several reporters into one.
   (Thanks to @kforner)
@@ -28,7 +28,11 @@ New reporters:
 * `SilentReporter` so that  `testthat` can test calls to `test_that`.
   (Thanks to @craigcitro, #83)
 
-Other minor improvements and bug fixes include:
+## New expectations
+
+* `expect_null()` (#78)
+
+## Minor improvements and bug fixes
 
 * `expect_that()` (and thus all `expect_*` functions) now invisibly return
   the expectation result, and stops if info or label arguments have
@@ -68,6 +72,7 @@ Other minor improvements and bug fixes include:
 
 * `get_reporter()`, `set_reporter()` and `with_reporter()` are now
   exported (#102)
+
 
 # testthat 0.7.1
 

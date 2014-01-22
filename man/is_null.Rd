@@ -1,11 +1,11 @@
-\name{is_false}
-\alias{expect_false}
-\alias{is_false}
-\title{Expectation: is the object false?}
+\name{is_null}
+\alias{expect_null}
+\alias{is_null}
+\title{Expectation: is the object NULL?}
 \usage{
-is_false()
+is_null()
 
-expect_false(object, info = NULL, label = NULL)
+expect_null(object, info = NULL, label = NULL)
 }
 \arguments{
   \item{object}{object to test}
@@ -17,29 +17,23 @@ expect_false(object, info = NULL, label = NULL)
   from deparsed object.}
 }
 \description{
-A useful fall-back expectation like \code{\link{is_true}}
-}
-\details{
-Attributes are ignored.
+Expectation: is the object NULL?
 }
 \examples{
-expect_that(3 == 2, is_false())
-expect_false(3 == 2)
-
-a <- 1:3
-expect_that(length(a) == 4, is_false())
+expect_that(NULL, is_null())
+expect_null(NULL)
 }
 \seealso{
 Other expectations: \code{\link{equals}},
 \code{\link{expect_equal}};
 \code{\link{expect_equivalent}},
 \code{\link{is_equivalent_to}}; \code{\link{expect_error}},
-\code{\link{throws_error}}; \code{\link{expect_identical}},
+\code{\link{throws_error}}; \code{\link{expect_false}},
+\code{\link{is_false}}; \code{\link{expect_identical}},
 \code{\link{is_identical_to}}; \code{\link{expect_is}},
 \code{\link{is_a}}; \code{\link{expect_match}},
 \code{\link{matches}}; \code{\link{expect_message}},
-\code{\link{shows_message}}; \code{\link{expect_null}},
-\code{\link{is_null}}; \code{\link{expect_output}},
+\code{\link{shows_message}}; \code{\link{expect_output}},
 \code{\link{prints_text}}; \code{\link{expect_true}},
 \code{\link{is_true}}; \code{\link{expect_warning}},
 \code{\link{gives_warning}}; \code{\link{takes_less_than}}

@@ -114,6 +114,32 @@ expect_false <- function(object, info = NULL, label = NULL) {
   expect_that(object, is_false(), info, label)
 }
 
+#' Expectation: is the object NULL?
+#'
+#' @family expectations
+#' @export
+#' @examples
+#' expect_that(NULL, is_null())
+#' expect_null(NULL)
+#'
+is_null <- function() {
+  function(x) {
+    expectation(
+      identical(x, NULL),
+      "isn't null",
+      "is null"
+    )
+  }
+}
+#' @export
+#' @rdname is_null
+#' @inheritParams expect_that
+expect_null <- function(object, info = NULL, label = NULL) {
+  if (is.null(label)) {
+    label <- find_expr("object")
+  }
+  expect_that(object, is_null(), info, label)
+}
 
 #' Expectation: is the object equal (with numerical tolerance) to a value?
 #'
