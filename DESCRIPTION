@@ -32,6 +32,7 @@ Collate:
     'reporter-silent.r'
     'reporter-stop.r'
     'reporter-summary.r'
+    'reporter-teamcity.r'
     'reporter-tap.r'
     'reporter-zzz.r'
     'test-files.r'
