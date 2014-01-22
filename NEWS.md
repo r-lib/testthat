@@ -59,8 +59,8 @@ Other minor improvements and bug fixes include:
 * Add a new reporter so that `testthat` can test calls to `test_that`.
   (Thanks to @craigcitro, #83)
 
-* Added `TeamCityReporter` to produce output compatible with the TeamCity continuous 
-  integration environment. Contributed by Neil Windelinckx.
+* Added `TeamCityReporter` to produce output compatible with the TeamCity
+  continuous integration environment. Contributed by Neil Windelinckx.
 
 # testthat 0.7.1
 
