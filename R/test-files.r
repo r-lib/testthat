@@ -1,14 +1,14 @@
 #' Generate default testing environment.
 #'
-#' We use a new environment which inherits from the parent of
-#' \code{\link{globalenv}}, which is the first package loaded in the search
-#' path. This isolates tests from objects in the global environement but still
-#' allows them to find needed functions.
+#' We use a new environment which inherits from \code{\link{globalenv}}.
+#' In an ideal world, we'd avoid putting the global environment on the
+#' search path for tests, but it's not currently possible without losing
+#' the ability to load packages in tests.
 #'
 #' @keywords internal
 #' @export
 test_env <- function() {
-  new.env(parent = parent.env(globalenv()))
+  new.env(parent = globalenv())
 }
 
 #' Run all of the tests in a directory.
