@@ -1,11 +1,19 @@
-\name{is_less_than}
+\name{expect-compare}
+\alias{expect-compare}
 \alias{expect_less_than}
+\alias{expect_more_than}
 \alias{is_less_than}
-\title{Expectation: is returned value less than specified value?}
+\alias{is_more_than}
+\title{Expectation: is returned value less or greater than specified value?}
 \usage{
 is_less_than(expected, label = NULL, ...)
 
 expect_less_than(object, expected, ..., info = NULL, label = NULL,
+  expected.label = NULL)
+
+is_more_than(expected, label = NULL, ...)
+
+expect_more_than(object, expected, ..., info = NULL, label = NULL,
   expected.label = NULL)
 }
 \arguments{
@@ -30,12 +38,23 @@ expect_less_than(object, expected, ..., info = NULL, label = NULL,
 }
 \description{
 This is useful for ensuring returned value is below a
-ceiling.
+ceiling or above a floor.
 }
 \examples{
 a <- 9
 expect_that(a, is_less_than(10))
 expect_less_than(a, 10)
+
+\dontrun{
+expect_less_than(11, 10)
+}
+
+a <- 11
+expect_that(a, is_more_than(10))
+expect_more_than(a, 10)
+\dontrun{
+expect_more_than(9, 10)
+}
 }
 \seealso{
 Other expectations: \code{\link{equals}},
@@ -47,13 +66,11 @@ Other expectations: \code{\link{equals}},
 \code{\link{is_identical_to}}; \code{\link{expect_is}},
 \code{\link{is_a}}; \code{\link{expect_match}},
 \code{\link{matches}}; \code{\link{expect_message}},
-\code{\link{shows_message}};
-\code{\link{expect_more_than}}, \code{\link{is_more_than}};
-\code{\link{expect_named}}, \code{\link{has_names}};
-\code{\link{expect_null}}, \code{\link{is_null}};
-\code{\link{expect_output}}, \code{\link{prints_text}};
-\code{\link{expect_true}}, \code{\link{is_true}};
-\code{\link{expect_warning}}, \code{\link{gives_warning}};
-\code{\link{takes_less_than}}
+\code{\link{shows_message}}; \code{\link{expect_named}},
+\code{\link{has_names}}; \code{\link{expect_null}},
+\code{\link{is_null}}; \code{\link{expect_output}},
+\code{\link{prints_text}}; \code{\link{expect_true}},
+\code{\link{is_true}}; \code{\link{expect_warning}},
+\code{\link{gives_warning}}; \code{\link{takes_less_than}}
 }
 

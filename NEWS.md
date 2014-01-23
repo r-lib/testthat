@@ -34,6 +34,10 @@ to include source references so you can see exactly where failures occured.
 
 * `expect_named()` and `has_names()` to check the names of a vector (#79)
 
+* `expect_more_than()`, `is_more_than()`, `expect_less_than()`,
+  `is_less_than()` to check values above or below a threshold.
+  (#77, thanks to @jknowles)
+
 ## Minor improvements and bug fixes
 
 * `expect_that()` (and thus all `expect_*` functions) now invisibly return
