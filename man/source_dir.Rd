@@ -2,8 +2,7 @@
 \alias{source_dir}
 \title{Load all source files in a directory.}
 \usage{
-  source_dir(path, pattern = "\\.[rR]$", env = test_env(),
-    chdir = TRUE)
+source_dir(path, pattern = "\\\\.[rR]$", env = test_env(), chdir = TRUE)
 }
 \arguments{
   \item{path}{path to tests}
@@ -15,8 +14,8 @@
   \item{chdir}{change working directory to path?}
 }
 \description{
-  The expectation is that the files can be sourced in
-  alphabetical order.
+The expectation is that the files can be sourced in
+alphabetical order.
 }
 \keyword{internal}
 

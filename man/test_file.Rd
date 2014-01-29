@@ -2,7 +2,7 @@
 \alias{test_file}
 \title{Run all tests in specified file.}
 \usage{
-  test_file(path, reporter = "summary", env = test_env())
+test_file(path, reporter = "summary", env = test_env())
 }
 \arguments{
   \item{path}{path to file}
@@ -12,9 +12,9 @@
   \item{env}{environment in which to execute the tests}
 }
 \value{
-  the results as a test_that results (list)
+the results as a test_that results (list)
 }
 \description{
-  Run all tests in specified file.
+Run all tests in specified file.
 }
 
