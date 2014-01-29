@@ -16,7 +16,7 @@
 #'
 #' @param package package name
 #' @inheritParams test_dir
-#' @return a data frame of the summary of test results
+#' @return the results as a test_that results (list)
 #' @export
 #' @examples
 #' \dontrun{test_package("testthat")}
@@ -38,12 +38,12 @@ test_package <- function(package, filter = NULL, reporter = "summary") {
   reporter <- find_reporter(reporter)
 
   env <- new.env(parent = getNamespace(package))
-  df <- test_dir(test_path, reporter = reporter, env = env, filter = filter)
+  res <- test_dir(test_path, reporter = reporter, env = env, filter = filter)
 
   if (reporter$failed) {
     stop("Test failures", call. = FALSE)
   }
-  invisible(df)
+  invisible(res)
 }
 
 #' @export

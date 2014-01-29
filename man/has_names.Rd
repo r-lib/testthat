@@ -3,9 +3,11 @@
 \alias{has_names}
 \title{Expectation: does object have names?}
 \usage{
-has_names(expected, ignore.order = FALSE, ignore.case = FALSE)
+  has_names(expected, ignore.order = FALSE,
+    ignore.case = FALSE)
 
-expect_named(object, expected, ..., info = NULL, label = NULL)
+  expect_named(object, expected, ..., info = NULL,
+    label = NULL)
 }
 \arguments{
   \item{expected}{Character vector of expected names. Leave
@@ -29,9 +31,9 @@ expect_named(object, expected, ..., info = NULL, label = NULL)
   from deparsed object.}
 }
 \description{
-You can either check for the presence of names (leaving
-\code{expected} blank), specific names (by suppling a
-vector of names), or absence of names (with \code{NULL}).
+  You can either check for the presence of names (leaving
+  \code{expected} blank), specific names (by suppling a
+  vector of names), or absence of names (with \code{NULL}).
 }
 \examples{
 x <- c(a = 1, b = 2, c = 3)
@@ -50,22 +52,23 @@ expect_that(z, has_names(NULL))
 expect_named(z, NULL)
 }
 \seealso{
-Other expectations: \code{\link{equals}},
-\code{\link{expect_equal}}; \code{\link{expect-compare}},
-\code{\link{expect_less_than}},
-\code{\link{expect_more_than}}, \code{\link{is_less_than}},
-\code{\link{is_more_than}};
-\code{\link{expect_equivalent}},
-\code{\link{is_equivalent_to}}; \code{\link{expect_error}},
-\code{\link{throws_error}}; \code{\link{expect_false}},
-\code{\link{is_false}}; \code{\link{expect_identical}},
-\code{\link{is_identical_to}}; \code{\link{expect_is}},
-\code{\link{is_a}}; \code{\link{expect_match}},
-\code{\link{matches}}; \code{\link{expect_message}},
-\code{\link{shows_message}}; \code{\link{expect_null}},
-\code{\link{is_null}}; \code{\link{expect_output}},
-\code{\link{prints_text}}; \code{\link{expect_true}},
-\code{\link{is_true}}; \code{\link{expect_warning}},
-\code{\link{gives_warning}}; \code{\link{takes_less_than}}
+  Other expectations: \code{\link{equals}},
+  \code{\link{expect-compare}}, \code{\link{expect_equal}},
+  \code{\link{expect_equivalent}},
+  \code{\link{expect_error}}, \code{\link{expect_false}},
+  \code{\link{expect_identical}}, \code{\link{expect_is}},
+  \code{\link{expect_less_than}},
+  \code{\link{expect_match}}, \code{\link{expect_message}},
+  \code{\link{expect_more_than}},
+  \code{\link{expect_null}}, \code{\link{expect_output}},
+  \code{\link{expect_true}}, \code{\link{expect_warning}},
+  \code{\link{gives_warning}}, \code{\link{is_a}},
+  \code{\link{is_equivalent_to}}, \code{\link{is_false}},
+  \code{\link{is_identical_to}},
+  \code{\link{is_less_than}}, \code{\link{is_more_than}},
+  \code{\link{is_null}}, \code{\link{is_true}},
+  \code{\link{matches}}, \code{\link{prints_text}},
+  \code{\link{shows_message}},
+  \code{\link{takes_less_than}}, \code{\link{throws_error}}
 }
 

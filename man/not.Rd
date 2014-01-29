@@ -2,14 +2,15 @@
 \alias{not}
 \title{Negate an expectation}
 \usage{
-not(f)
+  not(f)
 }
 \arguments{
   \item{f}{an existing expectation function}
 }
 \description{
-This negates an expectation, making it possible to express
-that you want the opposite of a standard expectation.
+  This negates an expectation, making it possible to
+  express that you want the opposite of a standard
+  expectation.
 }
 \examples{
 x <- 1

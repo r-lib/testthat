@@ -41,3 +41,4 @@ Collate:
     'traceback.r'
     'utils.r'
     'watcher.r'
+    'test-results.r'

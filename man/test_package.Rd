@@ -3,9 +3,10 @@
 \alias{test_package}
 \title{Run all tests in an installed package}
 \usage{
-test_package(package, filter = NULL, reporter = "summary")
+  test_package(package, filter = NULL,
+    reporter = "summary")
 
-test_check(package, filter = NULL, reporter = "summary")
+  test_check(package, filter = NULL, reporter = "summary")
 }
 \arguments{
   \item{package}{package name}
@@ -18,14 +19,14 @@ test_check(package, filter = NULL, reporter = "summary")
   \item{reporter}{reporter to use}
 }
 \value{
-a data frame of the summary of test results
+  the results as a test_that results (list)
 }
 \description{
-Test are run in an environment that inherits from the
-package's namespace environment, so that tests can access
-non-exported functions and variables. Tests should be
-placed in either \code{inst/tests}, or (better)
-\code{tests/testthat}.
+  Test are run in an environment that inherits from the
+  package's namespace environment, so that tests can access
+  non-exported functions and variables. Tests should be
+  placed in either \code{inst/tests}, or (better)
+  \code{tests/testthat}.
 }
 \section{R CMD check}{
   Use \code{test_package} to test an installed package, or

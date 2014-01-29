@@ -23,33 +23,41 @@ test_env <- function() {
 #'   regular expression will be executed.  Matching will take on the file
 #'   name after it has been stripped of \code{"test-"} and \code{".r"}.
 #' @param env environment in which to execute test suite.
-#' @return a data frame of the summary of test results
+#' @return the results as a test_that results (list)
 #' @export
 test_dir <- function(path, filter = NULL, reporter = "summary",
-                     env = test_env()) {
+                                          env = test_env()) {
+                     
   current_reporter <- find_reporter(reporter)
-  lister <- ListReporter$new()
-  reporter <- MultiReporter$new(reporters = list(current_reporter, lister))
+  paths <- setup_test_dir(path, filter, env)
+  
+  results <- lapply(paths, .test_file, parent_env = env, 
+    reporter = current_reporter, start_end_reporter = FALSE)
+  
+  results <- unlist(results, recursive = FALSE)
+  
+  invisible(structure(results, class = 'testthat_results'))
+}
 
+#' take care or finding the test files and sourcing the helpers
+#' @param path path to tests
+#' @param env environment in which to source the helpers
+#' @return the test file paths 
+setup_test_dir <- function(path, filter, env) {
   source_dir(path, "^helper.*\\.[rR]$", env = env)
-
+  
   files <- dir(path, "^test.*\\.[rR]$")
   if (!is.null(filter)) {
     test_names <- basename(files)
-    test_names <- gsub("test-?", "", test_names)
+    test_names <- gsub("^test-?", "", test_names)
     test_names <- gsub("\\.[rR]", "", test_names)
-
+    
     files <- files[grepl(filter, test_names)]
   }
-
-  .custom_test_file <- function(fname) {
-    lister$start_file(fname)
-    .test_file(file.path(path, fname), env)
-  }
-  with_reporter(reporter, lapply(files, .custom_test_file))
-
-  invisible(lister$get_summary())
+  
+  file.path(path, files)
 }
+
 
 #' Load all source files in a directory.
 #'
@@ -77,25 +85,40 @@ source_dir <- function(path, pattern = "\\.[rR]$", env = test_env(),
 #' @param path path to file
 #' @param reporter reporter to use
 #' @param env environment in which to execute the tests
-#' @return a data frame of the summary of test results
+#' @return the results as a test_that results (list)
 #' @export
 test_file <- function(path, reporter = "summary", env = test_env()) {
   current_reporter <- find_reporter(reporter)
+  invisible(.test_file(path, env, current_reporter, TRUE))
+}
+
+.test_file <- function(path, parent_env, reporter, start_end_reporter) {
   lister <- ListReporter$new()
-  reporter <- MultiReporter$new(reporters = list(current_reporter, lister))
-  lister$start_file(basename(path))
-  with_reporter(reporter, .test_file(path, env))
-
-  invisible(lister$get_summary())
-}
-
-.test_file <- function(path, parent_env) {
-  old <- setwd(dirname(path))
-  on.exit(setwd(old))
-
-  sys.source2(basename(path), new.env(parent = parent_env))
+  reporter <- if (!is.null(reporter))
+    MultiReporter$new(reporters = list(reporter, lister))
+  else
+    lister
+  
+  old_reporter <- set_reporter(reporter)
+  old_dir <- setwd(dirname(path))
+  on.exit({ 
+      setwd(old_dir)
+      set_reporter(old_reporter) 
+    })
+  
+  if (start_end_reporter) reporter$start_reporter()
+  
+  fname <- basename(path)
+  lister$start_file(fname)
+  
+  sys.source2(fname, new.env(parent = parent_env))
   end_context()
+ 
+  if (start_end_reporter) reporter$end_reporter()
+
+  invisible(structure(lister$results, class = 'testthat_results'))
 }
+
 
 sys.source2 <- function(file, envir = parent.frame()) {
   stopifnot(file.exists(file))

@@ -1,8 +1,8 @@
 context("test_dir")
 
 test_that('test_dir()', {
-  df <- test_dir('test_dir', reporter = 'silent')
-  
+  res <- test_dir('test_dir', reporter = 'silent')
+  df <- as.data.frame(res)
   expected <- 
     data.frame(file = c("test-basic.r", "test-basic.r", "test-basic.r", 
         "test-basic.r", "test-basic.r", "test-empty.r", "test-empty.r", 
@@ -32,11 +32,13 @@ test_that('test_dir()', {
 })
 
 test_that('test_dir() filter', {
-  df <- test_dir('test_dir', reporter = 'silent', filter = 'basic|empty')
+  res <- test_dir('test_dir', reporter = 'silent', filter = 'basic|empty')
+  df <- as.data.frame(res)
   expect_identical(unique(df$context),  c("Basic", "empty"))
 })
 
 test_that('test_dir() helpers', {
-  df <- test_dir('test_dir', reporter = 'silent', filter = 'helper')
+  res <- test_dir('test_dir', reporter = 'silent', filter = 'helper')
+  df <- as.data.frame(res)
   expect_true(all(!df$error & df$failed == 0))
 })

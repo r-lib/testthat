@@ -1,0 +1,16 @@
+\name{TeamcityReporter}
+\alias{TeamcityReporter}
+\title{Test reporter: Teamcity format.}
+\usage{
+  TeamcityReporter(...)
+}
+\arguments{
+  \item{...}{Arguments used to initialise class}
+}
+\description{
+  This reporter will output results in the Teamcity message
+  format. For more information about Teamcity messages, see
+  http://confluence.jetbrains.com/display/TCD7/Build+Script+Interaction+with+TeamCity
+}
+\keyword{debugging}
+

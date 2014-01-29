@@ -2,7 +2,7 @@
 \alias{evaluate_promise}
 \title{Evaluate a promise, capturing all types of output.}
 \usage{
-evaluate_promise(code, print = FALSE)
+  evaluate_promise(code, print = FALSE)
 }
 \arguments{
   \item{code}{Code to evaluate. This should be an
@@ -14,18 +14,20 @@ evaluate_promise(code, print = FALSE)
   included in the overall output}
 }
 \value{
-A list containing \item{result}{The result of the function}
-\item{output}{A string containing all the output from the
-function} \item{warnings}{A character vector containing the
-text from each warning} \item{messages}{A character vector
-containing the text from each message}
+  A list containing \item{result}{The result of the
+  function} \item{output}{A string containing all the
+  output from the function} \item{warnings}{A character
+  vector containing the text from each warning}
+  \item{messages}{A character vector containing the text
+  from each message}
 }
 \description{
-This uses \code{\link[evaluate]{evaluate}} a promise,
-returning the result, test, messages and warnings that the
-code creates in a list. It is used to evaluate code for all
-test that tests, ensuring that (as much as possible) any
-spurious output is suppressed during the testing process.
+  This uses \code{\link[evaluate]{evaluate}} a promise,
+  returning the result, test, messages and warnings that
+  the code creates in a list. It is used to evaluate code
+  for all test that tests, ensuring that (as much as
+  possible) any spurious output is suppressed during the
+  testing process.
 }
 \examples{
 evaluate_promise({

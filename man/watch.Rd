@@ -2,7 +2,7 @@
 \alias{watch}
 \title{Watch a directory for changes (additions, deletions & modifications).}
 \usage{
-watch(path, callback, pattern = NULL, hash = TRUE)
+  watch(path, callback, pattern = NULL, hash = TRUE)
 }
 \arguments{
   \item{path}{character vector of paths to watch.  Omit
@@ -20,12 +20,12 @@ watch(path, callback, pattern = NULL, hash = TRUE)
   uses modification time stamps}
 }
 \description{
-This is used to power the \code{\link{auto_test}} and
-\code{link{auto_test_package}} functions which are used to
-rerun tests whenever source code changes.
+  This is used to power the \code{\link{auto_test}} and
+  \code{link{auto_test_package}} functions which are used
+  to rerun tests whenever source code changes.
 }
 \details{
-Use Ctrl + break (windows), Esc (mac gui) or Ctrl + C
-(command line) to stop the watcher.
+  Use Ctrl + break (windows), Esc (mac gui) or Ctrl + C
+  (command line) to stop the watcher.
 }
 

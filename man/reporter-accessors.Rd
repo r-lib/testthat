@@ -5,11 +5,11 @@
 \alias{with_reporter}
 \title{Get/set reporter; execute code in specified reporter.}
 \usage{
-set_reporter(reporter)
+  set_reporter(reporter)
 
-get_reporter()
+  get_reporter()
 
-with_reporter(reporter, code)
+  with_reporter(reporter, code)
 }
 \arguments{
   \item{reporter}{test reporter to use}
@@ -17,8 +17,8 @@ with_reporter(reporter, code)
   \item{code}{code block to execute}
 }
 \description{
-Changes global reporter to that specified, runs code and
-the returns global reporter back to previous value.
+  Changes global reporter to that specified, runs code and
+  the returns global reporter back to previous value.
 }
 \keyword{internal}
 

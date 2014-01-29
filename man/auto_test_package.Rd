@@ -2,7 +2,7 @@
 \alias{auto_test_package}
 \title{Watches a package for changes, rerunning tests as appropriate.}
 \usage{
-auto_test_package(path, reporter = "summary")
+  auto_test_package(path, reporter = "summary")
 }
 \arguments{
   \item{path}{path to package}
@@ -10,11 +10,11 @@ auto_test_package(path, reporter = "summary")
   \item{reporter}{test reporter to use}
 }
 \description{
-Watches a package for changes, rerunning tests as
-appropriate.
+  Watches a package for changes, rerunning tests as
+  appropriate.
 }
 \seealso{
-\code{\link{auto_test}} for details on how method works
+  \code{\link{auto_test}} for details on how method works
 }
 \keyword{debugging}
 
