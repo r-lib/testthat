@@ -2,14 +2,14 @@
 \alias{fail}
 \title{A default expectation that always fails.}
 \usage{
-fail(message = "Failure has been forced.")
+  fail(message = "Failure has been forced.")
 }
 \arguments{
   \item{message}{a string to display.}
 }
 \description{
-The fail function forces a test to fail.  This is useful if
-you want to test a pre-condition '
+  The fail function forces a test to fail.  This is useful
+  if you want to test a pre-condition '
 }
 \examples{
 \dontrun{

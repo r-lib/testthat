@@ -1,7 +1,7 @@
 Package: testthat
 Type: Package
 Title: Testthat code.  Tools to make testing fun :)
-Version: 0.8
+Version: 0.9
 Author: Hadley Wickham <h.wickham@gmail.com>
 Maintainer: Hadley Wickham <h.wickham@gmail.com>
 Description: A testing package specifically tailored for R
@@ -11,7 +11,8 @@ Depends:
     R (>= 2.15.0)
 Imports:
     digest,
-    methods
+    methods,
+    parallel
 License: MIT + file LICENSE
 LazyData: true
 Collate:
@@ -42,3 +43,4 @@ Collate:
     'traceback.r'
     'utils.r'
     'watcher.r'
+    'parallel.r'

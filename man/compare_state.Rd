@@ -2,7 +2,7 @@
 \alias{compare_state}
 \title{Compare two directory states.}
 \usage{
-compare_state(old, new)
+  compare_state(old, new)
 }
 \arguments{
   \item{old}{previous state}
@@ -10,11 +10,11 @@ compare_state(old, new)
   \item{new}{current state}
 }
 \value{
-list containing number of changes and files which have been
-\code{added}, \code{deleted} and \code{modified}
+  list containing number of changes and files which have
+  been \code{added}, \code{deleted} and \code{modified}
 }
 \description{
-Compare two directory states.
+  Compare two directory states.
 }
 \keyword{internal}
 

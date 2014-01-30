@@ -2,7 +2,8 @@
 \alias{test_dir}
 \title{Run all of the tests in a directory.}
 \usage{
-test_dir(path, filter = NULL, reporter = "summary", env = test_env())
+  test_dir(path, filter = NULL, reporter = "summary",
+    env = test_env())
 }
 \arguments{
   \item{path}{path to tests}
@@ -17,12 +18,12 @@ test_dir(path, filter = NULL, reporter = "summary", env = test_env())
   \item{env}{environment in which to execute test suite.}
 }
 \value{
-the results as a test_that results (list)
+  the results as a test_that results (list)
 }
 \description{
-Test files start with \code{test} and are executed in
-alphabetical order (but they shouldn't have dependencies).
-Helper files start with \code{helper} and loaded before any
-tests are run.
+  Test files start with \code{test} and are executed in
+  alphabetical order (but they shouldn't have
+  dependencies). Helper files start with \code{helper} and
+  loaded before any tests are run.
 }
 

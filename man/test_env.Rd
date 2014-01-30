@@ -2,14 +2,14 @@
 \alias{test_env}
 \title{Generate default testing environment.}
 \usage{
-test_env()
+  test_env()
 }
 \description{
-We use a new environment which inherits from
-\code{\link{globalenv}}. In an ideal world, we'd avoid
-putting the global environment on the search path for
-tests, but it's not currently possible without losing the
-ability to load packages in tests.
+  We use a new environment which inherits from
+  \code{\link{globalenv}}. In an ideal world, we'd avoid
+  putting the global environment on the search path for
+  tests, but it's not currently possible without losing the
+  ability to load packages in tests.
 }
 \keyword{internal}
 

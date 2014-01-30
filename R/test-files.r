@@ -29,15 +29,42 @@ test_dir <- function(path, filter = NULL, reporter = "summary",
                                           env = test_env()) {
                      
   current_reporter <- find_reporter(reporter)
-  paths <- setup_test_dir(path, filter, env)
+  source_test_helpers(path, env)
+  paths <- find_test_scripts(path, filter)
+  if (length(paths) == 0) stop('No matching test file in dir')
   
+  current_reporter$start_reporter()
   results <- lapply(paths, .test_file, parent_env = env, 
     reporter = current_reporter, start_end_reporter = FALSE)
+  current_reporter$end_reporter()
   
   results <- unlist(results, recursive = FALSE)
   
   invisible(structure(results, class = 'testthat_results'))
 }
+
+
+source_test_helpers <- function(path, env = globalenv()) {
+  source_dir(path, "^helper.*\\.[rR]$", env = env)  
+}
+
+
+#' take care or finding the test files and sourcing the helpers
+#' @param path path to tests
+#' @param filter cf \code{\link{test_dir}}
+#' @return the test file paths 
+find_test_scripts <- function(path, filter = NULL) {
+  files <- dir(path, "^test.*\\.[rR]$")
+  if (!is.null(filter)) {
+    test_names <- basename(files)
+    test_names <- gsub("^test-?", "", test_names)
+    test_names <- gsub("\\.[rR]", "", test_names)
+    files <- files[grepl(filter, test_names)]
+  }
+  
+  file.path(path, files)  
+}
+
 
 #' take care or finding the test files and sourcing the helpers
 #' @param path path to tests
@@ -89,11 +116,12 @@ source_dir <- function(path, pattern = "\\.[rR]$", env = test_env(),
 #' @return the results as a test_that results (list)
 #' @export
 test_file <- function(path, reporter = "summary", env = test_env()) {
-  current_reporter <- find_reporter(reporter)
-  invisible(.test_file(path, env, current_reporter, TRUE))
+  reporter <- if (is.null(reporter)) NULL else find_reporter(reporter)
+  invisible(.test_file(path, env, reporter, TRUE))
 }
 
 .test_file <- function(path, parent_env, reporter, start_end_reporter) {
+  if (is.null(parent_env)) parent_env <- globalenv()
   lister <- ListReporter$new()
   reporter <- if (!is.null(reporter))
     MultiReporter$new(reporters = list(reporter, lister))

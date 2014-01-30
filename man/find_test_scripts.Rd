@@ -1,15 +1,13 @@
-\name{setup_test_dir}
-\alias{setup_test_dir}
+\name{find_test_scripts}
+\alias{find_test_scripts}
 \title{take care or finding the test files and sourcing the helpers}
 \usage{
-  setup_test_dir(path, filter, env)
+  find_test_scripts(path, filter = NULL)
 }
 \arguments{
   \item{path}{path to tests}
 
   \item{filter}{cf \code{\link{test_dir}}}
-
-  \item{env}{environment in which to source the helpers}
 }
 \value{
   the test file paths

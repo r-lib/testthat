@@ -1,5 +1,7 @@
 # format results from ListReporter
 summarize_results <- function(results_list) {
+  if (is.null(results_list) || length(results_list) == 0) 
+    return(data.frame())
   rows <- lapply(results_list, .sumarize_one_test_results)
   do.call(rbind, rows)
 }

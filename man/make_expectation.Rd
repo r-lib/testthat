@@ -2,7 +2,7 @@
 \alias{make_expectation}
 \title{Make an equality test.}
 \usage{
-make_expectation(x, expectation = "equals")
+  make_expectation(x, expectation = "equals")
 }
 \arguments{
   \item{x}{a vector of values}
@@ -12,8 +12,8 @@ make_expectation(x, expectation = "equals")
   \code{is_identical_to})}
 }
 \description{
-This a convenience function to make a expectation that
-checks that input stays the same.
+  This a convenience function to make a expectation that
+  checks that input stays the same.
 }
 \examples{
 x <- 1:10

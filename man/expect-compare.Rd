@@ -6,15 +6,15 @@
 \alias{is_more_than}
 \title{Expectation: is returned value less or greater than specified value?}
 \usage{
-is_less_than(expected, label = NULL, ...)
+  is_less_than(expected, label = NULL, ...)
 
-expect_less_than(object, expected, ..., info = NULL, label = NULL,
-  expected.label = NULL)
+  expect_less_than(object, expected, ..., info = NULL,
+    label = NULL, expected.label = NULL)
 
-is_more_than(expected, label = NULL, ...)
+  is_more_than(expected, label = NULL, ...)
 
-expect_more_than(object, expected, ..., info = NULL, label = NULL,
-  expected.label = NULL)
+  expect_more_than(object, expected, ..., info = NULL,
+    label = NULL, expected.label = NULL)
 }
 \arguments{
   \item{expected}{Expected value}
@@ -37,8 +37,8 @@ expect_more_than(object, expected, ..., info = NULL, label = NULL,
   message (useful when writing tests in loops).}
 }
 \description{
-This is useful for ensuring returned value is below a
-ceiling or above a floor.
+  This is useful for ensuring returned value is below a
+  ceiling or above a floor.
 }
 \examples{
 a <- 9
@@ -57,20 +57,21 @@ expect_more_than(9, 10)
 }
 }
 \seealso{
-Other expectations: \code{\link{equals}},
-\code{\link{expect_equal}};
-\code{\link{expect_equivalent}},
-\code{\link{is_equivalent_to}}; \code{\link{expect_error}},
-\code{\link{throws_error}}; \code{\link{expect_false}},
-\code{\link{is_false}}; \code{\link{expect_identical}},
-\code{\link{is_identical_to}}; \code{\link{expect_is}},
-\code{\link{is_a}}; \code{\link{expect_match}},
-\code{\link{matches}}; \code{\link{expect_message}},
-\code{\link{shows_message}}; \code{\link{expect_named}},
-\code{\link{has_names}}; \code{\link{expect_null}},
-\code{\link{is_null}}; \code{\link{expect_output}},
-\code{\link{prints_text}}; \code{\link{expect_true}},
-\code{\link{is_true}}; \code{\link{expect_warning}},
-\code{\link{gives_warning}}; \code{\link{takes_less_than}}
+  Other expectations: \code{\link{equals}},
+  \code{\link{expect_equal}},
+  \code{\link{expect_equivalent}},
+  \code{\link{expect_error}}, \code{\link{expect_false}},
+  \code{\link{expect_identical}}, \code{\link{expect_is}},
+  \code{\link{expect_match}}, \code{\link{expect_message}},
+  \code{\link{expect_named}}, \code{\link{expect_null}},
+  \code{\link{expect_output}}, \code{\link{expect_true}},
+  \code{\link{expect_warning}},
+  \code{\link{gives_warning}}, \code{\link{has_names}},
+  \code{\link{is_a}}, \code{\link{is_equivalent_to}},
+  \code{\link{is_false}}, \code{\link{is_identical_to}},
+  \code{\link{is_null}}, \code{\link{is_true}},
+  \code{\link{matches}}, \code{\link{prints_text}},
+  \code{\link{shows_message}},
+  \code{\link{takes_less_than}}, \code{\link{throws_error}}
 }
 
