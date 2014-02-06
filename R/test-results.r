@@ -34,11 +34,19 @@ summarize_results <- function(results_list) {
   res
 }
 
+
+# return if all tests are successful w/o error
+all_passed.testthat_results <- function(res) {
+  df <- as.data.frame.testthat_results(res)
+  sum(df$failed) == 0 && all(!df$error)
+}
+
 #' convert testthat_results to data frame
 #' @param x   the testthat results
 #' @param ... ignored
 #' @return a data frame
 #' @S3method as.data.frame testthat_results
+#' @export 
 as.data.frame.testthat_results <- function(x, ...) {
   summarize_results(x)
 }
@@ -48,6 +56,7 @@ as.data.frame.testthat_results <- function(x, ...) {
 #' @param x   the testthat results
 #' @param ... ignored
 #' @S3method print testthat_results
+#' @export 
 print.testthat_results <- function(x, ...) {
   print(as.data.frame(x))
 }

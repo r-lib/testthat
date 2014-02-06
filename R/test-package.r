@@ -14,13 +14,17 @@
 #' in \code{tests/test-all.R}.  You still use \code{test_package} when testing
 #' the installed package.
 #'
-#' @param package package name
+#' @param package   package name
+#' @param parallel  whether to run the tests in parallel using 
+#'  \code{\link{parallel_test_dir}}
 #' @inheritParams test_dir
-#' @return the results as a test_that results (list)
+#' @param ...  additional arguments forwarded to \code{\link{parallel_test_dir}}
+#' @return the results as a "testthat_results" (list)
 #' @export
 #' @examples
 #' \dontrun{test_package("testthat")}
-test_package <- function(package, filter = NULL, reporter = "summary") {
+test_package <- function(package, parallel = FALSE, filter = NULL,  
+  reporter = "summary", ...) {
   # Ensure that test package returns silently if called recursively - this
   # will occur if test-all.R ends up in the same directory as all the other
   # tests.
@@ -37,11 +41,15 @@ test_package <- function(package, filter = NULL, reporter = "summary") {
 
   reporter <- find_reporter(reporter)
 
-  env <- new.env(parent = getNamespace(package))
-  res <- test_dir(test_path, reporter = reporter, env = env, filter = filter)
+  res <- if (!parallel) {
+    env <- new.env(parent = getNamespace(package))
+    test_dir(test_path, reporter = reporter, env = env, filter = filter)
+  } else {
+    parallel_test_dir(test_path, filter = filter, ...)
+  }
 
-  if (reporter$failed) {
-    stop("Test failures", call. = FALSE)
+  if (!all_passed.testthat_results(res)) {
+    warning("Test failures")
   }
   invisible(res)
 }
@@ -58,12 +66,12 @@ test_check <- function(package, filter = NULL, reporter = "summary") {
 
   reporter <- find_reporter(reporter)
   env <- new.env(parent = getNamespace(package))
-  df <- test_dir(test_path, reporter = reporter, env = env, filter = filter)
+  res <- test_dir(test_path, reporter = reporter, env = env, filter = filter)
 
-  if (reporter$failed) {
-    stop("Test failures", call. = FALSE)
+  if (!all_passed.testthat_results(res)) {
+    warning("Test failures")
   }
-  invisible(df)
+  invisible(res)
 }
 
 

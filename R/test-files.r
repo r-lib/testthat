@@ -23,7 +23,7 @@ test_env <- function() {
 #'   regular expression will be executed.  Matching will take on the file
 #'   name after it has been stripped of \code{"test-"} and \code{".r"}.
 #' @param env environment in which to execute test suite.
-#' @return the results as a test_that results (list)
+#' @return the results as a "testthat_results" (list)
 #' @export
 test_dir <- function(path, filter = NULL, reporter = "summary",
                                           env = test_env()) {
@@ -113,7 +113,7 @@ source_dir <- function(path, pattern = "\\.[rR]$", env = test_env(),
 #' @param path path to file
 #' @param reporter reporter to use
 #' @param env environment in which to execute the tests
-#' @return the results as a test_that results (list)
+#' @return the results as a "testthat_results" (list)
 #' @export
 test_file <- function(path, reporter = "summary", env = test_env()) {
   reporter <- if (is.null(reporter)) NULL else find_reporter(reporter)
