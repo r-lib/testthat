@@ -2,7 +2,7 @@
 \alias{dir_state}
 \title{Capture the state of a directory.}
 \usage{
-  dir_state(path, pattern = NULL, hash = TRUE)
+dir_state(path, pattern = NULL, hash = TRUE)
 }
 \arguments{
   \item{path}{path to directory}
@@ -14,7 +14,7 @@
   (fast but less accurate)}
 }
 \description{
-  Capture the state of a directory.
+Capture the state of a directory.
 }
 \keyword{internal}
 

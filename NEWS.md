@@ -1,3 +1,11 @@
+# testthat 0.9
+testthat 0.9 implements basic support for parallelizing the execution of tests.
+cf `parallel_test_dir`. This function can not currently report _online_ the 
+results, but instead it returns a **testthat_results** object that contains all
+results, and can be printed or converted to data frame. The other **test** 
+functions (test_dir, test_file, test_package, test_check) now all also return
+a **testthat_results** object.
+
 # testthat 0.8
 
 testthat 0.8 comes with a new recommended structure for storing your tests. To

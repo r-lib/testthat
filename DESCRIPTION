@@ -26,6 +26,7 @@ Collate:
     'expectations.r'
     'library.r'
     'make-expectation.r'
+    'parallel.r'
     'reporter.r'
     'reporter-list.r'
     'reporter-minimal.r'
@@ -43,4 +44,3 @@ Collate:
     'traceback.r'
     'utils.r'
     'watcher.r'
-    'parallel.r'

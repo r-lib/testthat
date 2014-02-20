@@ -67,8 +67,7 @@ find_test_scripts <- function(path, filter = NULL) {
 
 
 #' take care or finding the test files and sourcing the helpers
-#' @param path path to tests
-#' @param filter cf \code{\link{test_dir}}
+#' @inheritParams test_dir
 #' @param env environment in which to source the helpers
 #' @return the test file paths 
 setup_test_dir <- function(path, filter, env) {

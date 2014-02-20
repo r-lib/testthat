@@ -3,13 +3,20 @@
 \alias{test_package}
 \title{Run all tests in an installed package}
 \usage{
-  test_package(package, filter = NULL,
-    reporter = "summary")
+test_package(package, filter = NULL, parallel = FALSE,
+  reporter = "summary", ...)
 
-  test_check(package, filter = NULL, reporter = "summary")
+test_check(package, filter = NULL, parallel = FALSE, reporter = "summary",
+  ...)
 }
 \arguments{
   \item{package}{package name}
+
+  \item{parallel}{whether to run the tests in parallel
+  using \code{\link{parallel_test_dir}}}
+
+  \item{...}{additional arguments forwarded to
+  \code{\link{parallel_test_dir}}}
 
   \item{filter}{If not \code{NULL}, only tests with file
   names matching this regular expression will be executed.
@@ -19,14 +26,14 @@
   \item{reporter}{reporter to use}
 }
 \value{
-  the results as a test_that results (list)
+the results as a "testthat_results" (list)
 }
 \description{
-  Test are run in an environment that inherits from the
-  package's namespace environment, so that tests can access
-  non-exported functions and variables. Tests should be
-  placed in either \code{inst/tests}, or (better)
-  \code{tests/testthat}.
+Test are run in an environment that inherits from the
+package's namespace environment, so that tests can access
+non-exported functions and variables. Tests should be
+placed in either \code{inst/tests}, or (better)
+\code{tests/testthat}.
 }
 \section{R CMD check}{
   Use \code{test_package} to test an installed package, or

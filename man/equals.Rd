@@ -3,10 +3,10 @@
 \alias{expect_equal}
 \title{Expectation: is the object equal (with numerical tolerance) to a value?}
 \usage{
-  equals(expected, label = NULL, ...)
+equals(expected, label = NULL, ...)
 
-  expect_equal(object, expected, ..., info = NULL,
-    label = NULL, expected.label = NULL)
+expect_equal(object, expected, ..., info = NULL, label = NULL,
+  expected.label = NULL)
 }
 \arguments{
   \item{expected}{Expected value}
@@ -29,7 +29,7 @@
   message (useful when writing tests in loops).}
 }
 \description{
-  Comparison performed using \code{\link{all.equal}}.
+Comparison performed using \code{\link{all.equal}}.
 }
 \examples{
 a <- 10
@@ -60,23 +60,22 @@ expect_equal(object = 10.01, expected = expectedValue, tolerance = 0.002,
 }
 }
 \seealso{
-  Other expectations: \code{\link{expect-compare}},
-  \code{\link{expect_equivalent}},
-  \code{\link{expect_error}}, \code{\link{expect_false}},
-  \code{\link{expect_identical}}, \code{\link{expect_is}},
-  \code{\link{expect_less_than}},
-  \code{\link{expect_match}}, \code{\link{expect_message}},
-  \code{\link{expect_more_than}},
-  \code{\link{expect_named}}, \code{\link{expect_null}},
-  \code{\link{expect_output}}, \code{\link{expect_true}},
-  \code{\link{expect_warning}},
-  \code{\link{gives_warning}}, \code{\link{has_names}},
-  \code{\link{is_a}}, \code{\link{is_equivalent_to}},
-  \code{\link{is_false}}, \code{\link{is_identical_to}},
-  \code{\link{is_less_than}}, \code{\link{is_more_than}},
-  \code{\link{is_null}}, \code{\link{is_true}},
-  \code{\link{matches}}, \code{\link{prints_text}},
-  \code{\link{shows_message}},
-  \code{\link{takes_less_than}}, \code{\link{throws_error}}
+Other expectations: \code{\link{expect-compare}},
+\code{\link{expect_less_than}},
+\code{\link{expect_more_than}}, \code{\link{is_less_than}},
+\code{\link{is_more_than}};
+\code{\link{expect_equivalent}},
+\code{\link{is_equivalent_to}}; \code{\link{expect_error}},
+\code{\link{throws_error}}; \code{\link{expect_false}},
+\code{\link{is_false}}; \code{\link{expect_identical}},
+\code{\link{is_identical_to}}; \code{\link{expect_is}},
+\code{\link{is_a}}; \code{\link{expect_match}},
+\code{\link{matches}}; \code{\link{expect_message}},
+\code{\link{shows_message}}; \code{\link{expect_named}},
+\code{\link{has_names}}; \code{\link{expect_null}},
+\code{\link{is_null}}; \code{\link{expect_output}},
+\code{\link{prints_text}}; \code{\link{expect_true}},
+\code{\link{is_true}}; \code{\link{expect_warning}},
+\code{\link{gives_warning}}; \code{\link{takes_less_than}}
 }
 
