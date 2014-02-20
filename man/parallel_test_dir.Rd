@@ -1,0 +1,39 @@
+\name{parallel_test_dir}
+\alias{parallel_test_dir}
+\title{Run all of the tests in a directory in parallel}
+\usage{
+parallel_test_dir(path, filter = NULL, nnodes = detectCores(),
+  type = default_cluster_type(), cl = NULL, quiet = FALSE)
+}
+\arguments{
+  \item{path}{path to tests}
+
+  \item{filter}{forwarded to \code{\link{test_dir}}}
+
+  \item{quiet}{whether to be silent}
+
+  \item{nnodes}{The number of nodes to be forked.}
+
+  \item{type}{One of the supported types: see
+  \sQuote{Details}.}
+
+  \item{cl}{an object of class \code{"cluster"}.}
+}
+\description{
+The tests will be parallelized by test file, i.e. each
+(matched) individual test file from "path" will be run on a
+cluster node.
+}
+\section{Windows}{
+  On platforms that do not implement fork (such as
+  Windows), this is much more involved since the user has
+  to initialize the cluster nodes properly , e.g. making
+  available in the R sessions the R objects and functions
+  to be tested. This can be done by first creating a PSOCK
+  cluster, then by initializing it, and finally by
+  supplying this cluster to this function.
+}
+\seealso{
+\code{\link{test_dir}}
+}
+

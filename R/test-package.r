@@ -14,13 +14,17 @@
 #' in \code{tests/test-all.R}.  You still use \code{test_package} when testing
 #' the installed package.
 #'
-#' @param package package name
+#' @param package   package name
 #' @inheritParams test_dir
-#' @return a data frame of the summary of test results
+#' @param parallel  whether to run the tests in parallel using 
+#'  \code{\link{parallel_test_dir}}
+#' @param ...  additional arguments forwarded to \code{\link{parallel_test_dir}}
+#' @return the results as a "testthat_results" (list)
 #' @export
 #' @examples
 #' \dontrun{test_package("testthat")}
-test_package <- function(package, filter = NULL, reporter = "summary") {
+test_package <- function(package, filter = NULL, parallel = FALSE, 
+  reporter = "summary", ...) {
   # Ensure that test package returns silently if called recursively - this
   # will occur if test-all.R ends up in the same directory as all the other
   # tests.
@@ -35,20 +39,32 @@ test_package <- function(package, filter = NULL, reporter = "summary") {
   test_path2 <- file.path(test_path, "testthat")
   if (file.exists(test_path2)) test_path <- test_path2
 
-  reporter <- find_reporter(reporter)
+  res <- .run_tests(package, test_path, filter, parallel, reporter, ...)
 
-  env <- new.env(parent = getNamespace(package))
-  df <- test_dir(test_path, reporter = reporter, env = env, filter = filter)
-
-  if (reporter$failed) {
-    stop("Test failures", call. = FALSE)
-  }
-  invisible(df)
+  invisible(res)
 }
 
+
+.run_tests <- function(package, test_path, filter, parallel, reporter, ...)
+{
+  res <- if (!parallel) {
+      reporter <- find_reporter(reporter)    
+      env <- new.env(parent = getNamespace(package))
+      test_dir(test_path, reporter = reporter, env = env, filter = filter)
+    } else {
+      parallel_test_dir(test_path, filter = filter, ...)
+    }
+  if (!all_passed.testthat_results(res)) {
+    warning("Test failures")
+  }
+  res
+}
+
+#' @inheritParams test_package
 #' @export
 #' @rdname test_package
-test_check <- function(package, filter = NULL, reporter = "summary") {
+test_check <- function(package, filter = NULL, parallel = FALSE, 
+                                              reporter = "summary", ...) {
   require(package, character.only = TRUE)
 
   test_path <- "testthat"
@@ -56,14 +72,9 @@ test_check <- function(package, filter = NULL, reporter = "summary") {
     stop("No tests found for ", package, call. = FALSE)
   }
 
-  reporter <- find_reporter(reporter)
-  env <- new.env(parent = getNamespace(package))
-  df <- test_dir(test_path, reporter = reporter, env = env, filter = filter)
-
-  if (reporter$failed) {
-    stop("Test failures", call. = FALSE)
-  }
-  invisible(df)
+  res <- .run_tests(package, test_path, filter,  parallel, reporter, ...)
+  
+  invisible(res)
 }
 
 

@@ -1,0 +1,24 @@
+\name{setup_test_dir}
+\alias{setup_test_dir}
+\title{take care or finding the test files and sourcing the helpers}
+\usage{
+setup_test_dir(path, filter, env)
+}
+\arguments{
+  \item{env}{environment in which to source the helpers}
+
+  \item{path}{path to tests}
+
+  \item{filter}{If not \code{NULL}, only tests with file
+  names matching this regular expression will be executed.
+  Matching will take on the file name after it has been
+  stripped of \code{"test-"} and \code{".r"}.}
+}
+\value{
+the test file paths
+}
+\description{
+take care or finding the test files and sourcing the
+helpers
+}
+

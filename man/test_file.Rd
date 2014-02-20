@@ -12,7 +12,7 @@ test_file(path, reporter = "summary", env = test_env())
   \item{env}{environment in which to execute the tests}
 }
 \value{
-a data frame of the summary of test results
+the results as a "testthat_results" (list)
 }
 \description{
 Run all tests in specified file.

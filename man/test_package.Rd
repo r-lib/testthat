@@ -3,12 +3,20 @@
 \alias{test_package}
 \title{Run all tests in an installed package}
 \usage{
-test_package(package, filter = NULL, reporter = "summary")
+test_package(package, filter = NULL, parallel = FALSE,
+  reporter = "summary", ...)
 
-test_check(package, filter = NULL, reporter = "summary")
+test_check(package, filter = NULL, parallel = FALSE, reporter = "summary",
+  ...)
 }
 \arguments{
   \item{package}{package name}
+
+  \item{parallel}{whether to run the tests in parallel
+  using \code{\link{parallel_test_dir}}}
+
+  \item{...}{additional arguments forwarded to
+  \code{\link{parallel_test_dir}}}
 
   \item{filter}{If not \code{NULL}, only tests with file
   names matching this regular expression will be executed.
@@ -18,7 +26,7 @@ test_check(package, filter = NULL, reporter = "summary")
   \item{reporter}{reporter to use}
 }
 \value{
-a data frame of the summary of test results
+the results as a "testthat_results" (list)
 }
 \description{
 Test are run in an environment that inherits from the

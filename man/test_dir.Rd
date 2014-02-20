@@ -17,7 +17,7 @@ test_dir(path, filter = NULL, reporter = "summary", env = test_env())
   \item{env}{environment in which to execute test suite.}
 }
 \value{
-a data frame of the summary of test results
+the results as a "testthat_results" (list)
 }
 \description{
 Test files start with \code{test} and are executed in

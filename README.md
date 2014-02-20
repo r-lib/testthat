@@ -10,6 +10,8 @@ Testing your code is normally painful and boring. `testthat` tries to make testi
 
 * Can re-run tests automatically as you change your code or tests.
 
+* Can automatically parallelize the execution of tests (beta).
+
 * Displays test progress visually, showing a pass, fail or error for every
   expectation. If you're using the terminal, it'll even colour the output. 
     
