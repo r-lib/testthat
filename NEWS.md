@@ -1,3 +1,5 @@
+# testthat 0.8.1
+
 # testthat 0.8
 
 testthat 0.8 comes with a new recommended structure for storing your tests. To
