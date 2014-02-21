@@ -3,6 +3,7 @@
 * Better default environment for `test_check()` and `test_package()` which
   allows S4 class creation in tests
 
+* `compare.character()` no longer fails when one value is missing.
 
 # testthat 0.8
 
