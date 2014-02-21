@@ -1,5 +1,9 @@
 # testthat 0.8.1
 
+* Better default environment for `test_check()` and `test_package()` which
+  allows S4 class creation in tests
+
+
 # testthat 0.8
 
 testthat 0.8 comes with a new recommended structure for storing your tests. To
