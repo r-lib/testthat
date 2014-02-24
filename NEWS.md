@@ -1,3 +1,5 @@
+# testthat 0.8.1.0.99
+
 # testthat 0.8.1
 
 * Better default environment for `test_check()` and `test_package()` which
