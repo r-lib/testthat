@@ -22,7 +22,7 @@ watch(path, callback, pattern = NULL, hash = TRUE)
 }
 \description{
 This is used to power the \code{\link{auto_test}} and
-\code{link{auto_test_package}} functions which are used to rerun tests
+\code{\link{auto_test_package}} functions which are used to rerun tests
 whenever source code changes.
 }
 \details{
