@@ -20,6 +20,7 @@ Collate:
     'colour-text.r'
     'compare.r'
     'context.r'
+    'describe.r'
     'evaluate-promise.r'
     'expect-that.r'
     'expectation.r'

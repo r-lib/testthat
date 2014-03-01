@@ -27,18 +27,7 @@
 #' })
 #' }
 test_that <- function(desc, code) {
-  get_reporter()$start_test(desc)
-  on.exit(get_reporter()$end_test())
-
-  env <- new.env(parent = parent.frame())
-  res <- suppressMessages(try_capture_stack(substitute(code), env))
-
-  if (is.error(res)) {
-    traceback <- create_traceback(res$calls)
-    report <- error_report(res, traceback)
-    get_reporter()$add_result(report)
-  }
-
+  test_code(desc, substitute(code), parent_environment = parent.frame())
   invisible()
 }
 
@@ -60,4 +49,26 @@ error_report <- function(error, traceback) {
   }
 
   expectation(NA, msg, "no error occured")
+}
+
+# Executes a test.
+#
+# @keywords internal
+# @param description the test name
+# @param code the code to be tested, needs to be an unevaluated expression
+#             i.e. wrap it in substitute()
+# @param parent_environment the parent environment of the environment
+#                           the test code runs in
+test_code <- function(description, code, parent_environment) {
+  new_test_environment <- new.env(parent = parent_environment)
+  get_reporter()$start_test(description)
+  on.exit(get_reporter()$end_test())
+  res <- suppressMessages(try_capture_stack(
+    code, new_test_environment))
+
+  if (is.error(res)) {
+    traceback <- create_traceback(res$calls)
+    report <- error_report(res, traceback)
+    get_reporter()$add_result(report)
+  }
 }
