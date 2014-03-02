@@ -1,10 +1,12 @@
+#' describe: a BDD testing language
+#' 
 #' A simple BDD DSL for writing tests.
 #' The language is similiar to RSpec for Ruby or Mocha for JavaScript.
 #' BDD tests read like sentences and it should thus be easier
 #' to understand what the specification of a function/component is.
 #'
-#' @param description description of the block
-#' @param spec_code test code containing the specs
+#' @param description description of the feature
+#' @param code test code containing the specs
 #' @export
 #' @examples
 #' describe("matrix", {
@@ -16,7 +18,7 @@
 #'   it("can have not yet tested specs")
 #' })
 
-describe <- function(description, describe_code) {
+describe <- function(description, code) {
   is_invalid_description <- function (description) {
     return(!is.character(description) || length(description) != 1
         || nchar(description) == 0)
@@ -40,6 +42,6 @@ describe <- function(description, describe_code) {
     }
   }
 
-  eval(substitute(describe_code), test_describe_environment)
+  eval(substitute(code), test_describe_environment)
   invisible()
 }
