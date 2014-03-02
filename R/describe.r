@@ -34,7 +34,7 @@ describe <- function(description, code) {
     if (is_invalid_description(it_description)) {
       stop("it-description must be a string of at least length 1")
     }
-    if (!is.null(quote(it_code))) return()
+    if (missing(it_code)) return()
     
     test_description <- paste0(description, ": ", it_description)
     test_code(test_description, substitute(it_code),
