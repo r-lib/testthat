@@ -21,10 +21,23 @@ describe("describe", {
     }), throws_error())
     expect_that(describe("",{
     }), throws_error())
+    expect_that(describe("test", {
+      it()
+    }), throws_error())
+    expect_that(describe("test", {
+      it("")
+    }), throws_error())
+  })
+
+  it("has to have a description of length 1", {
+    expect_that(describe(c("a", "b"), {}), throws_error())
+    expect_that(describe("test", {
+      it(c("a", "b"))
+    }), throws_error())
   })
 
   someInternalVariable <- 1
-  it("should be able to use variables from outer environments", {
+  it("should be possible to use variables from outer environments", {
     expect_equivalent(1, someExternalVariable)
     expect_equivalent(1, someInternalVariable)
   })

@@ -27,7 +27,7 @@
 #' })
 #' }
 test_that <- function(desc, code) {
-  test_code(desc, substitute(code), parent_environment = parent.frame())
+  test_code(desc, substitute(code), env = parent.frame())
   invisible()
 }
 
@@ -56,11 +56,10 @@ error_report <- function(error, traceback) {
 # @keywords internal
 # @param description the test name
 # @param code the code to be tested, needs to be an unevaluated expression
-#             i.e. wrap it in substitute()
-# @param parent_environment the parent environment of the environment
-#                           the test code runs in
-test_code <- function(description, code, parent_environment) {
-  new_test_environment <- new.env(parent = parent_environment)
+#   i.e. wrap it in substitute()
+# @param env the parent environment of the environment the test code runs in
+test_code <- function(description, code, env) {
+  new_test_environment <- new.env(parent = env)
   get_reporter()$start_test(description)
   on.exit(get_reporter()$end_test())
   res <- suppressMessages(try_capture_stack(
