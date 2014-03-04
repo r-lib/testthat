@@ -10,7 +10,7 @@ describe("describe", {
     })
   })
 
-  it("it can have not yet implemented specs", {
+  it("can have not yet implemented specs", {
     describe("Millennium Prize Problems", {
       it("can be shown that P != NP")
     })
