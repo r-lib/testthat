@@ -1,11 +1,10 @@
 # testthat 0.8.1.0.99
 
-* testhat now comes with a first version of a testing language for Behaviour
-  Driven Development.
-  The language is similiar to RSpec for Ruby or Mocha for JavaScript.
-  BDD tests read like sentences and it should thus be easier
+* testhat now comes with a first version of a testing language for behaviour
+  driven development. The language is similiar to RSpec for Ruby or Mocha for
+  JavaScript. BDD tests read like sentences and it should thus be easier
   to understand what the specification of a function/component is.
-  Refer to the `describe()` for further information and examples.
+  See `?describe()` for further information and examples.
 
 # testthat 0.8.1
 
