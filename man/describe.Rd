@@ -1,0 +1,28 @@
+\name{describe}
+\alias{describe}
+\title{describe: a BDD testing language}
+\usage{
+describe(description, code)
+}
+\arguments{
+  \item{description}{description of the feature}
+
+  \item{code}{test code containing the specs}
+}
+\description{
+A simple BDD DSL for writing tests.
+The language is similiar to RSpec for Ruby or Mocha for JavaScript.
+BDD tests read like sentences and it should thus be easier
+to understand what the specification of a function/component is.
+}
+\examples{
+describe("matrix", {
+  it("can be multiplied by a scalar", {
+   m1 <- matrix(1:4, 2, 2)
+   m2 <- m1 * 2
+   expect_equivalent(matrix(1:4 * 2, 2, 2), m2)
+  })
+  it("can have not yet tested specs")
+})
+}
+
