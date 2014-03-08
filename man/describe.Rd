@@ -33,7 +33,7 @@ Use \code{describe} to verify that you implement the right things and use
 \code{\link{test_that}} to ensure you do the things right.
 }
 \examples{
-describe("matrix", {
+describe("matrix()", {
   it("can be multiplied by a scalar", {
     m1 <- matrix(1:4, 2, 2)
     m2 <- m1 * 2
@@ -43,6 +43,11 @@ describe("matrix", {
 })
 
 # Nested specs:
+## code
+addition <- function(a, b) a + b
+division <- function(a, b) a / b
+
+## specs
 describe("math library", {
   describe("addition()", {
     it("can add two numbers", {

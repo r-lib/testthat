@@ -36,6 +36,11 @@
 #' })
 #' 
 #' # Nested specs:
+#' ## code
+#' addition <- function(a, b) a + b
+#' division <- function(a, b) a / b
+#' 
+#' ## specs
 #' describe("math library", {
 #'   describe("addition()", {
 #'     it("can add two numbers", {
