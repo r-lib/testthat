@@ -7,6 +7,11 @@ describe("describe", {
       it("should be able to add two numbers", {
         expect_equivalent(2, 1 + 1)
       })
+      describe("sub feature", {
+        it("should also work", {
+          expect_equivalent(2, 1 + 1)
+        })
+      })
     })
   })
 
