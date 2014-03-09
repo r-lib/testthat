@@ -66,6 +66,7 @@ Other expectations: \code{\link{equals}},
   \code{\link{has_names}}; \code{\link{expect_null}},
   \code{\link{is_null}}; \code{\link{expect_output}},
   \code{\link{prints_text}}; \code{\link{expect_true}},
-  \code{\link{is_true}}; \code{\link{takes_less_than}}
+  \code{\link{is_true}}; \code{\link{pending}};
+  \code{\link{takes_less_than}}
 }
 

@@ -81,10 +81,17 @@ expect_true <- function(object, info = NULL, label = NULL) {
   expect_that(object, is_true(), info, label)
 }
 
+#' Pending
+#'
+#' @export
+#' @family expectations
 pending <- function(message = NA) {
   expect_that(NULL, is_pending(message), NULL, NULL)
 }
 
+# Pending
+#
+# @keywords internal
 is_pending <- function(message = NA) {
   if (!is.na(message) && length(message) && is.character(message))
     pending_msg <- message
