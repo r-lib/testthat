@@ -81,6 +81,21 @@ expect_true <- function(object, info = NULL, label = NULL) {
   expect_that(object, is_true(), info, label)
 }
 
+pending <- function(message = NA) {
+  expect_that(NULL, is_pending(message), NULL, NULL)
+}
+
+is_pending <- function(message = NA) {
+  if (!is.na(message) && length(message) && is.character(message))
+    pending_msg <- message
+  else
+    pending_msg <- NA
+  function(x) {
+    expectation(TRUE, "failure msg", pending = TRUE,
+                pending_msg = pending_msg)
+  }
+}
+
 #' Expectation: is the object false?
 #'
 #' A useful fall-back expectation like \code{\link{is_true}}

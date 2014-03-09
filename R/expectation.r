@@ -7,17 +7,20 @@
 #'  (\code{TRUE}), failed (\code{FALSE}), or threw an error (\code{NA})
 #' @param failure_msg A text description of failure
 #' @param success_msg A text description of success
+#' @param pending single logical value: TRUE iff test is pending
 #' @aliases expectation print.expectation format.expectation
 #' @keywords internal
 #' @export
-expectation <- function(passed, failure_msg, success_msg = "unknown") {
+expectation <- function(passed, failure_msg, success_msg = "unknown"
+                        , pending = FALSE, pending_msg = NA) {
   error <- is.na(passed)
   passed <- passed & !error
 
   structure(
     list(
-      passed = passed, error = error,
-      failure_msg = failure_msg, success_msg = success_msg
+      passed = passed, error = error, pending = pending,
+      failure_msg = failure_msg, success_msg = success_msg,
+      pending_msg = ifelse(is.na(pending_msg), "unknown", pending_msg)
     ),
     class = "expectation"
   )
