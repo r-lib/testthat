@@ -29,7 +29,7 @@ describe("pending tests", {
     })
   })
   describe("is_pending()", {
-    it("create a pending expectation", {
+    it("creates a pending expectation", {
       res <- is_pending()(NA)
       expect_that(res$pending, is_true())
     })
