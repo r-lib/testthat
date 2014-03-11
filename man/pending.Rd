@@ -5,6 +5,10 @@
 \usage{
 pending(message = NA)
 }
+\arguments{
+  \item{message}{a message giving more information on why
+  the test is pending.}
+}
 \description{
 Use this function if you want to mark a test as not yet implemented.
 }

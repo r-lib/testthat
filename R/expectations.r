@@ -85,6 +85,7 @@ expect_true <- function(object, info = NULL, label = NULL) {
 #'
 #' Use this function if you want to mark a test as not yet implemented.
 #'
+#' @param message a message giving more information on why the test is pending.
 #' @examples
 #' # unit test syntax
 #' test_that("my test", {
