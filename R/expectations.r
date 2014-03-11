@@ -81,16 +81,33 @@ expect_true <- function(object, info = NULL, label = NULL) {
   expect_that(object, is_true(), info, label)
 }
 
-#' Pending
+#' Pending test
 #'
+#' Use this function if you want to mark a test as not yet implemented.
+#'
+#' @examples
+#' # unit test syntax
+#' test_that("my test", {
+#'   pending("hasn't been implemented")
+#' })
+#'
+#' # bdd syntax
+#' describe("feature", {
+#'   it("can have not yet tested specs") # implicit call to pending()
+#'   it("can have not yet tested specs with partial implementation", {
+#'     # some code
+#'     pending("not yet done")
+#'   })
+#' })
 #' @export
 #' @family expectations
 pending <- function(message = NA) {
   expect_that(NULL, is_pending(message), NULL, NULL)
 }
 
-# Pending
+# Internal pending expectation
 #
+# Used to signal that a test has a pending implementation
 # @keywords internal
 is_pending <- function(message = NA) {
   if (!is.na(message) && length(message) && is.character(message))

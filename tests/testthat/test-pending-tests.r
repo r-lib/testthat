@@ -1,7 +1,7 @@
 context("Pending Tests")
 describe("pending tests", {
   describe("expectation", {
-    it("has a pending field = FALSE if error", {
+    it("has a pending field = FALSE if not successful", {
       res <- expectation(FALSE, "error msg")
       expect_that(res$pending, is_false())
     })
