@@ -74,7 +74,7 @@ describe <- function(description, code) {
 
     test_description <- paste0(description, ": ", it_description)
     if (missing(it_code)) {
-      test_code(test_description, substitute({pending(it_description)}),
+      test_code(test_description, substitute(pending(it_description)),
                                              env = describe_environment)
       return()
     }

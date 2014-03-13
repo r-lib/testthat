@@ -11,8 +11,8 @@
 #' @aliases expectation print.expectation format.expectation
 #' @keywords internal
 #' @export
-expectation <- function(passed, failure_msg, success_msg = "unknown"
-                        , pending = FALSE, pending_msg = NA) {
+expectation <- function(passed, failure_msg, success_msg = "unknown",
+                        pending = FALSE, pending_msg = NA) {
   error <- is.na(passed)
   passed <- passed & !error
 
