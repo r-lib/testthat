@@ -23,6 +23,22 @@ describe("pending tests", {
       expect_equivalent(res$pending_msg, pending_msg)
     })
   })
+  describe("expectation.negate()", {
+    it("clones the pending msg and status", {
+      pending_msg <- "pending msg"
+      res <- expectation(NA, "error msg", pending = TRUE, pending_msg = pending_msg)
+      res_neg <- negate(res)
+      expect_true(res_neg$pending)
+      expect_equivalent(res_neg$pending_msg, pending_msg)
+    })
+  })
+  describe("expectation.format()", {
+    it("formats the pending msg", {
+      pending_msg <- "pending msg"
+      res <- expectation(NA, "error msg", pending = TRUE, pending_msg = pending_msg)
+      expect_true(grep(pending_msg, format(res)) > 0)
+    })
+  })
   describe("pending()", {
     it("calls expect_that", {
       pending("we need to come up with a good mocking solution")

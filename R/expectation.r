@@ -37,7 +37,9 @@ print.expectation <- function(x, ...) cat(format(x), "\n")
 
 #' @export
 format.expectation <- function(x, ...) {
-  if (x$passed) {
+  if (x$pending) {
+    paste0("Pending: ", x$pending_msg)
+  } else if (x$passed) {
     paste0("As expected: ", x$success_msg)
   } else {
     paste0("Not expected: ", x$failure_msg, ".")
