@@ -8,6 +8,7 @@
 #' @param failure_msg A text description of failure
 #' @param success_msg A text description of success
 #' @param pending single logical value: TRUE iff test is pending
+#' @param pending_msg A text description of pending
 #' @aliases expectation print.expectation format.expectation
 #' @keywords internal
 #' @export
