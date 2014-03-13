@@ -110,12 +110,12 @@ pending <- function(message = NA) {
 #
 # Used to signal that a test has a pending implementation
 # @keywords internal
-is_pending <- function(message = NA) {
+is_pending <- function(message = "unkown") {
   if (!is.na(message) && length(message) == 1 && is.character(message)) {
     pending_msg <- message
   }
   else {
-    pending_msg <- NA
+    pending_msg <- "unkown"
   }
   function(x) {
     expectation(TRUE, "failure msg", pending = TRUE,

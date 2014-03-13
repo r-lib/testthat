@@ -12,7 +12,7 @@
 #' @keywords internal
 #' @export
 expectation <- function(passed, failure_msg, success_msg = "unknown",
-                        pending = FALSE, pending_msg = NA) {
+                        pending = FALSE, pending_msg = "unknown") {
   error <- is.na(passed)
   passed <- passed & !error
 
@@ -20,7 +20,7 @@ expectation <- function(passed, failure_msg, success_msg = "unknown",
     list(
       passed = passed, error = error, pending = pending,
       failure_msg = failure_msg, success_msg = success_msg,
-      pending_msg = ifelse(is.na(pending_msg), "unknown", pending_msg)
+      pending_msg = pending_msg
     ),
     class = "expectation"
   )
