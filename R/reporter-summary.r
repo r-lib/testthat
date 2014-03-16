@@ -54,7 +54,7 @@ SummaryReporter <- setRefClass("SummaryReporter", contains = "Reporter",
       report_test_status <- function (test_status_indicator, fg) {
         cat(colourise(test_status_indicator, fg = fg))
       }
-      if (result$pending) {
+      if (is.pending_expectation(result)) {
         report_test_status("?", fg = "light blue")
         return()
       }

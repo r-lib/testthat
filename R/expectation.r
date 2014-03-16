@@ -8,20 +8,17 @@
 #' @param failure_msg A text description of failure
 #' @param success_msg A text description of success
 #' @param pending single logical value: TRUE iff test is pending
-#' @param pending_msg A text description of pending
 #' @aliases expectation print.expectation format.expectation
 #' @keywords internal
 #' @export
-expectation <- function(passed, failure_msg, success_msg = "unknown",
-                        pending = FALSE, pending_msg = "unknown") {
+expectation <- function(passed, failure_msg, success_msg = "unknown") {
   error <- is.na(passed)
   passed <- passed & !error
 
   structure(
     list(
-      passed = passed, error = error, pending = pending,
-      failure_msg = failure_msg, success_msg = success_msg,
-      pending_msg = pending_msg
+      passed = passed, error = error, failure_msg = failure_msg,
+      success_msg = success_msg
     ),
     class = "expectation"
   )
@@ -37,9 +34,7 @@ print.expectation <- function(x, ...) cat(format(x), "\n")
 
 #' @export
 format.expectation <- function(x, ...) {
-  if (x$pending) {
-    paste0("Pending: ", x$pending_msg)
-  } else if (x$passed) {
+  if (x$passed) {
     paste0("As expected: ", x$success_msg)
   } else {
     paste0("Not expected: ", x$failure_msg, ".")

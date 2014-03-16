@@ -6,8 +6,7 @@
 \alias{print.expectation}
 \title{Expectation class.}
 \usage{
-expectation(passed, failure_msg, success_msg = "unknown", pending = FALSE,
-  pending_msg = "unknown")
+expectation(passed, failure_msg, success_msg = "unknown")
 
 is.expectation(x)
 }
@@ -22,8 +21,6 @@ is.expectation(x)
 
   \item{pending}{single logical value: TRUE iff test is
   pending}
-
-  \item{pending_msg}{A text description of pending}
 
   \item{x}{object to test for class membership}
 }

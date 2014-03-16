@@ -118,8 +118,7 @@ is_pending <- function(message = "unkown") {
     pending_msg <- "unkown"
   }
   function(x) {
-    expectation(TRUE, "failure msg", pending = TRUE,
-                pending_msg = pending_msg)
+    pending_expectation(pending_msg)
   }
 }
 
