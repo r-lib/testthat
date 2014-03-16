@@ -113,8 +113,7 @@ pending <- function(message = NA) {
 is_pending <- function(message = "unkown") {
   if (!is.na(message) && length(message) == 1 && is.character(message)) {
     pending_msg <- message
-  }
-  else {
+  } else {
     pending_msg <- "unkown"
   }
   function(x) {
