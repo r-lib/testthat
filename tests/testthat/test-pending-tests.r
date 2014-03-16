@@ -12,7 +12,7 @@ describe("pending tests", {
       expect_equivalent(res$pending_msg, pending_msg)
       expect_true(is.pending_expectation(res))
     })
-    it("is also of type expectation for compatability", {
+    it("is also of type expectation for compatibility", {
       pending_msg <- "pending msg"
       res <- pending_expectation(pending_msg)
       expect_true(res$passed)
