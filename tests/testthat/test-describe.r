@@ -16,6 +16,7 @@ describe("describe", {
   })
 
   it("can have not yet implemented specs", {
+    pending <- function(..)invisible()
     describe("Millennium Prize Problems", {
       it("can be shown that P != NP")
     })

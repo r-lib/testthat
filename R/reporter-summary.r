@@ -51,20 +51,28 @@ SummaryReporter <- setRefClass("SummaryReporter", contains = "Reporter",
 
     add_result = function(result) {
       has_tests <<- TRUE
+      report_test_status <- function (test_status_indicator, fg) {
+        cat(colourise(test_status_indicator, fg = fg))
+      }
+      if (is.pending_expectation(result)) {
+        report_test_status("?", fg = "light blue")
+        return()
+      }
+
       if (result$passed) {
-        cat(colourise(".", fg = "light green"))
+        report_test_status(".", fg = "light green")
         return()
       }
 
       failed <<- TRUE
 
       if (n + 1 > length(labels) || n + 1 > max_reports) {
-        cat(colourise("F", fg = "red"))
+        report_test_status("F", fg = "red")
       } else {
         n <<- n + 1L
         result$test <- if (is.null(test)) "(unknown)" else test
         failures[[n]] <<- result
-        cat(colourise(labels[n], fg = "red"))
+        report_test_status(labels[n], fg = "red")
       }
     },
 

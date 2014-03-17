@@ -19,6 +19,9 @@ is.expectation(x)
 
   \item{success_msg}{A text description of success}
 
+  \item{pending}{single logical value: TRUE iff test is
+  pending}
+
   \item{x}{object to test for class membership}
 }
 \description{
