@@ -51,7 +51,9 @@ expect_that <- function(object, condition, info = NULL, label = NULL) {
   if (!is.null(info)) {
     results$failure_msg <- paste0(results$failure_msg, "\n", info)
     results$success_msg <- paste0(results$success_msg, "\n", info)
-    results$pending_msg <- paste0(results$pending_msg, "\n", info)
+    if (is.pending_expectation(results)) {
+      results$pending_msg <- paste0(results$pending_msg, "\n", info)
+    }
   }
 
   get_reporter()$add_result(results)
