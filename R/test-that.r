@@ -71,3 +71,24 @@ test_code <- function(description, code, env) {
     get_reporter()$add_result(report)
   }
 }
+
+#' R package to make testing fun!
+#'
+#' Try the example below. Have a look at the references and at functions like \code{\link{expect_that}} to learn more.
+#'
+#' @details Software testing is important, but many of us don’t do it because it is frustrating and boring. testthat is a new testing framework for R that is easy learn and use, and integrates with your existing workﬂow. 
+#' 
+#' @references Wickham, H (2011). testthat: Get Started with Testing The R Journal Vol. 3/1 5-10. \url{http://journal.r-project.org/archive/2011-1/RJournal_2011-1_Wickham.pdf}
+#' 
+#' \url{https://github.com/hadley/testthat}
+#' 
+#' \url{http://adv-r.had.co.nz/Testing.html}
+#'
+#' @examples
+#' library(testthat)
+#' a <- 9
+#' expect_that(a, is_less_than(10))
+#' expect_less_than(a, 10)
+#' @docType package
+#' @name testthat
+NULL
