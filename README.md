@@ -21,6 +21,8 @@ Instructions for using this package can be found in the [Testing](http://adv-r.h
 
 If you're using testthat in a package, you need to adopt a specific structure to work with `R CMD check`. This structure has changed recently to comply with new demands from CRAN, so please read closely if you submit your packages to CRAN.
 
+You should add `Suggests: testthat` to your `DESCRIPTION` file as stated in the [Writing R Extensions](http://cran.r-project.org/doc/manuals/R-exts.html#Package-Dependencies) document. This also avoids a `R CMD check` warning about unspecified dependencies, 
+
 Previously, best practice was to put all test files in `inst/tests` and ensure that `R CMD check` ran them by putting the following code in `tests/test-all.R`:
 
 ```R
