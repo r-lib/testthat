@@ -19,11 +19,7 @@ Instructions for using this package can be found in the [Testing](http://adv-r.h
 
 ## Integration with R CMD check
 
-If you're using testthat in a package, you need to adopt a specific structure to work with `R CMD check`. This structure has changed recently to comply with new demands from CRAN, so please read closely if you submit your packages to CRAN.
-
-You should add `Suggests: testthat` to your `DESCRIPTION` file as stated in the [Writing R Extensions](http://cran.r-project.org/doc/manuals/R-exts.html#Package-Dependencies) document. This also avoids a `R CMD check` warning about unspecified dependencies, 
-
-Previously, best practice was to put all test files in `inst/tests` and ensure that `R CMD check` ran them by putting the following code in `tests/test-all.R`:
+If you're using testthat in a package, you need to adopt a specific structure to work with `R CMD check`. This structure has changed recently to comply with new demands from CRAN, so please read closely if you submit your packages to CRAN. Previously, best practice was to put all test files in `inst/tests` and ensure that `R CMD check` ran them by putting the following code in `tests/test-all.R`:
 
 ```R
 library(testthat)
@@ -31,11 +27,13 @@ library(yourpackage)
 test_package("yourpackage")
 ```
 
-Now, recommend practice is to put your tests in `tests/testthat`, and ensure `R CMD check` runs them by putting the following code in `tests/test-all.R`:
+Now, recommended practice is to put your tests in `tests/testthat`, and ensure `R CMD check` runs them by putting the following code in `tests/testthat.R`:
 
 ```R
 library(testthat)
 test_check("yourpackage")
 ```
 
-The advantage of this new structure is that the user has control over whether or not tests are installed using the `--install-tests` parameter to `R CMD install`, or `INSTALL_opts = c("--install-tests")` argument to `install.packages()`. I'm not sure why you wouldn't want to install the tests, but now you have the flexibility as requested by CRAN maintainers.
+The advantage of this new structure is that the user has control over whether or not tests are installed using the `--install-tests` parameter to `R CMD install`, or `INSTALL_opts = "--install-tests"` argument to `install.packages()`. I'm not sure why you wouldn't want to install the tests, but now you have the option.
+
+You also need to add `Suggests: testthat` to `DESCRIPTION` as stated in the [Writing R Extensions](http://cran.r-project.org/doc/manuals/R-exts.html#Package-Dependencies) document. This avoids a `R CMD check` warning about unspecified dependencies.
