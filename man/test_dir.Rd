@@ -6,16 +6,15 @@
 test_dir(path, filter = NULL, reporter = "summary", env = test_env())
 }
 \arguments{
-  \item{path}{path to tests}
+\item{path}{path to tests}
 
-  \item{reporter}{reporter to use}
+\item{reporter}{reporter to use}
 
-  \item{filter}{If not \code{NULL}, only tests with file
-  names matching this regular expression will be executed.
-  Matching will take on the file name after it has been
-  stripped of \code{"test-"} and \code{".r"}.}
+\item{filter}{If not \code{NULL}, only tests with file names matching this
+regular expression will be executed.  Matching will take on the file
+name after it has been stripped of \code{"test-"} and \code{".r"}.}
 
-  \item{env}{environment in which to execute test suite.}
+\item{env}{environment in which to execute test suite.}
 }
 \value{
 a data frame of the summary of test results

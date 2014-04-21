@@ -9,15 +9,14 @@ is_a(class)
 expect_is(object, class, info = NULL, label = NULL)
 }
 \arguments{
-  \item{class}{character vector of class names}
+\item{class}{character vector of class names}
 
-  \item{object}{object to test}
+\item{object}{object to test}
 
-  \item{info}{extra information to be included in the
-  message (useful when writing tests in loops).}
+\item{info}{extra information to be included in the message (useful when
+writing tests in loops).}
 
-  \item{label}{object label. When \code{NULL}, computed
-  from deparsed object.}
+\item{label}{object label. When \code{NULL}, computed from deparsed object.}
 }
 \description{
 Tests whether or not an object inherits from any of a list of classes.

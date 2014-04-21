@@ -9,13 +9,12 @@ is_false()
 expect_false(object, info = NULL, label = NULL)
 }
 \arguments{
-  \item{object}{object to test}
+\item{object}{object to test}
 
-  \item{info}{extra information to be included in the
-  message (useful when writing tests in loops).}
+\item{info}{extra information to be included in the message (useful when
+writing tests in loops).}
 
-  \item{label}{object label. When \code{NULL}, computed
-  from deparsed object.}
+\item{label}{object label. When \code{NULL}, computed from deparsed object.}
 }
 \description{
 A useful fall-back expectation like \code{\link{is_true}}

@@ -6,10 +6,10 @@
 test_that(desc, code)
 }
 \arguments{
-  \item{desc}{test name.  Names should be kept as brief as
-  possible, as they are often used as line prefixes.}
+\item{desc}{test name.  Names should be kept as brief as possible, as they
+are often used as line prefixes.}
 
-  \item{code}{test code containing expectations}
+\item{code}{test code containing expectations}
 }
 \description{
 A test encapsulates a series of expectations about small, self-contained

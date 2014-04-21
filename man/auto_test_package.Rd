@@ -6,9 +6,9 @@
 auto_test_package(path, reporter = "summary")
 }
 \arguments{
-  \item{path}{path to package}
+\item{path}{path to package}
 
-  \item{reporter}{test reporter to use}
+\item{reporter}{test reporter to use}
 }
 \description{
 Watches a package for changes, rerunning tests as appropriate.

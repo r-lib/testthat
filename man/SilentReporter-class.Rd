@@ -5,7 +5,7 @@
 \alias{SilentReporter-class}
 \title{Test reporter: gather all errors silently.}
 \arguments{
-  \item{...}{Arguments used to initialise class}
+\item{...}{Arguments used to initialise class}
 }
 \description{
 This reporter quietly runs all tests, simply gathering the results

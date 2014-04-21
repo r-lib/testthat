@@ -7,7 +7,7 @@ exist.}
 safe_digest(path)
 }
 \arguments{
-  \item{filename}{filename to compute digest on}
+\item{filename}{filename to compute digest on}
 }
 \value{
 a digest of the file, or NA if it doesn't exist.

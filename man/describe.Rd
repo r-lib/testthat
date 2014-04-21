@@ -6,9 +6,9 @@
 describe(description, code)
 }
 \arguments{
-  \item{description}{description of the feature}
+\item{description}{description of the feature}
 
-  \item{code}{test code containing the specs}
+\item{code}{test code containing the specs}
 }
 \description{
 A simple BDD DSL for writing tests. The language is similiar to RSpec for

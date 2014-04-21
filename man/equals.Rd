@@ -10,24 +10,21 @@ expect_equal(object, expected, ..., info = NULL, label = NULL,
   expected.label = NULL)
 }
 \arguments{
-  \item{expected}{Expected value}
+\item{expected}{Expected value}
 
-  \item{label}{For full form, label of expected object used
-  in error messages. Useful to override default (deparsed
-  expected expression) when doing tests in a loop.  For
-  short cut form, object label. When \code{NULL}, computed
-  from deparsed object.}
+\item{label}{For full form, label of expected object used in error
+messages. Useful to override default (deparsed expected expression) when
+doing tests in a loop.  For short cut form, object label. When
+\code{NULL}, computed from deparsed object.}
 
-  \item{expected.label}{Equivalent of \code{label} for
-  shortcut form.}
+\item{expected.label}{Equivalent of \code{label} for shortcut form.}
 
-  \item{...}{other values passed to
-  \code{\link{all.equal}}}
+\item{...}{other values passed to \code{\link{all.equal}}}
 
-  \item{object}{object to test}
+\item{object}{object to test}
 
-  \item{info}{extra information to be included in the
-  message (useful when writing tests in loops).}
+\item{info}{extra information to be included in the message (useful when
+writing tests in loops).}
 }
 \description{
 Comparison performed using \code{\link{all.equal}}.

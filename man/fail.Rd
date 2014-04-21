@@ -6,7 +6,7 @@
 fail(message = "Failure has been forced.")
 }
 \arguments{
-  \item{message}{a string to display.}
+\item{message}{a string to display.}
 }
 \description{
 The fail function forces a test to fail.  This is useful if you want to

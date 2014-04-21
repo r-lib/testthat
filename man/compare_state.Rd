@@ -6,9 +6,9 @@
 compare_state(old, new)
 }
 \arguments{
-  \item{old}{previous state}
+\item{old}{previous state}
 
-  \item{new}{current state}
+\item{new}{current state}
 }
 \value{
 list containing number of changes and files which have been

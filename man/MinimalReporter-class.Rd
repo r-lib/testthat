@@ -5,7 +5,7 @@
 \alias{MinimalReporter-class}
 \title{Test reporter: minimal.}
 \arguments{
-  \item{...}{Arguments used to initialise class}
+\item{...}{Arguments used to initialise class}
 }
 \description{
 The minimal test reporter provides the absolutely minimum amount of

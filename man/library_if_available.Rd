@@ -6,7 +6,7 @@
 library_if_available(package)
 }
 \arguments{
-  \item{package}{package name (without quotes)}
+\item{package}{package name (without quotes)}
 }
 \description{
 Quietly load a package if it is installed, otherwise do nothing.  This is

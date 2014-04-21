@@ -9,18 +9,16 @@ prints_text(regexp, ...)
 expect_output(object, regexp, ..., info = NULL, label = NULL)
 }
 \arguments{
-  \item{regexp}{regular expression to test against}
+\item{regexp}{regular expression to test against}
 
-  \item{...}{other arguments passed to
-  \code{\link{matches}}}
+\item{...}{other arguments passed to \code{\link{matches}}}
 
-  \item{object}{object to test}
+\item{object}{object to test}
 
-  \item{info}{extra information to be included in the
-  message (useful when writing tests in loops).}
+\item{info}{extra information to be included in the message (useful when
+writing tests in loops).}
 
-  \item{label}{object label. When \code{NULL}, computed
-  from deparsed object.}
+\item{label}{object label. When \code{NULL}, computed from deparsed object.}
 }
 \description{
 Expectation: does printed output match a regular expression?

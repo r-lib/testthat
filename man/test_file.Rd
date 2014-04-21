@@ -6,11 +6,11 @@
 test_file(path, reporter = "summary", env = test_env())
 }
 \arguments{
-  \item{path}{path to file}
+\item{path}{path to file}
 
-  \item{reporter}{reporter to use}
+\item{reporter}{reporter to use}
 
-  \item{env}{environment in which to execute the tests}
+\item{env}{environment in which to execute the tests}
 }
 \value{
 a data frame of the summary of test results

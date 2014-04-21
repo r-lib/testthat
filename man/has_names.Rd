@@ -9,25 +9,23 @@ has_names(expected, ignore.order = FALSE, ignore.case = FALSE)
 expect_named(object, expected, ..., info = NULL, label = NULL)
 }
 \arguments{
-  \item{expected}{Character vector of expected names. Leave
-  missing to match any names. Use \code{NULL} to check for
-  absence of names.}
+\item{expected}{Character vector of expected names. Leave missing to
+match any names. Use \code{NULL} to check for absence of names.}
 
-  \item{ignore.order}{If \code{TRUE}, sorts names before
-  comparing to ignore the effect of order.}
+\item{ignore.order}{If \code{TRUE}, sorts names before comparing to
+ignore the effect of order.}
 
-  \item{ignore.case}{If \code{TRUE}, lowercases all names
-  to ignore the effect of case.}
+\item{ignore.case}{If \code{TRUE}, lowercases all names to ignore the
+effect of case.}
 
-  \item{...}{Other arguments passed onto \code{has_names}.}
+\item{...}{Other arguments passed onto \code{has_names}.}
 
-  \item{object}{object to test}
+\item{object}{object to test}
 
-  \item{info}{extra information to be included in the
-  message (useful when writing tests in loops).}
+\item{info}{extra information to be included in the message (useful when
+writing tests in loops).}
 
-  \item{label}{object label. When \code{NULL}, computed
-  from deparsed object.}
+\item{label}{object label. When \code{NULL}, computed from deparsed object.}
 }
 \description{
 You can either check for the presence of names (leaving \code{expected}

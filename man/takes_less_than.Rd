@@ -6,7 +6,7 @@
 takes_less_than(amount)
 }
 \arguments{
-  \item{amount}{maximum duration in seconds}
+\item{amount}{maximum duration in seconds}
 }
 \description{
 This is useful for performance regression testing.

@@ -9,23 +9,21 @@ matches(regexp, all = TRUE, ...)
 expect_match(object, regexp, ..., info = NULL, label = NULL)
 }
 \arguments{
-  \item{regexp}{regular expression to test against}
+\item{regexp}{regular expression to test against}
 
-  \item{all}{should all elements of actual value match
-  \code{regexp} (TRUE), or does only one need to match
-  (FALSE)}
+\item{all}{should all elements of actual value match \code{regexp} (TRUE),
+or does only one need to match (FALSE)}
 
-  \item{...}{For \code{matches}: other arguments passed on
-  to \code{\link{grepl}}. For \code{expect_match}: other
-  arguments passed on to \code{matches}.}
+\item{...}{For \code{matches}: other arguments passed on to
+\code{\link{grepl}}. For \code{expect_match}: other arguments passed on
+to \code{matches}.}
 
-  \item{object}{object to test}
+\item{object}{object to test}
 
-  \item{info}{extra information to be included in the
-  message (useful when writing tests in loops).}
+\item{info}{extra information to be included in the message (useful when
+writing tests in loops).}
 
-  \item{label}{object label. When \code{NULL}, computed
-  from deparsed object.}
+\item{label}{object label. When \code{NULL}, computed from deparsed object.}
 }
 \description{
 If the object to be tested has length greater than one, all elements of

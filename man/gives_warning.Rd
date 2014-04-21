@@ -9,24 +9,20 @@ gives_warning(regexp = NULL, all = FALSE, ...)
 expect_warning(object, regexp = NULL, ..., info = NULL, label = NULL)
 }
 \arguments{
-  \item{regexp}{optional regular expression to match. If
-  not specified, just asserts that expression gives some
-  warning.}
+\item{regexp}{optional regular expression to match. If not specified, just
+asserts that expression gives some warning.}
 
-  \item{all}{if \code{TRUE}, all warnings must match given
-  regular expression; if \code{FALSE} (the default), then
-  only only warning needs to match}
+\item{all}{if \code{TRUE}, all warnings must match given regular expression;
+if \code{FALSE} (the default), then only only warning needs to match}
 
-  \item{...}{other arguments passed to
-  \code{\link{matches}}}
+\item{...}{other arguments passed to \code{\link{matches}}}
 
-  \item{object}{object to test}
+\item{object}{object to test}
 
-  \item{info}{extra information to be included in the
-  message (useful when writing tests in loops).}
+\item{info}{extra information to be included in the message (useful when
+writing tests in loops).}
 
-  \item{label}{object label. When \code{NULL}, computed
-  from deparsed object.}
+\item{label}{object label. When \code{NULL}, computed from deparsed object.}
 }
 \description{
 Needs to match at least one of the warnings produced by the expression.

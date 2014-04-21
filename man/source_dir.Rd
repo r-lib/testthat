@@ -6,13 +6,13 @@
 source_dir(path, pattern = "\\\\.[rR]$", env = test_env(), chdir = TRUE)
 }
 \arguments{
-  \item{path}{path to tests}
+\item{path}{path to tests}
 
-  \item{pattern}{regular expression used to filter files}
+\item{pattern}{regular expression used to filter files}
 
-  \item{env}{environment in which to store results}
+\item{env}{environment in which to store results}
 
-  \item{chdir}{change working directory to path?}
+\item{chdir}{change working directory to path?}
 }
 \description{
 The expectation is that the files can be sourced in alphabetical order.

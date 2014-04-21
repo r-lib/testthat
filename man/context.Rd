@@ -6,8 +6,7 @@
 context(desc)
 }
 \arguments{
-  \item{desc}{description of context.  Should start with a
-  capital letter.}
+\item{desc}{description of context.  Should start with a capital letter.}
 }
 \description{
 A context defines a set of tests that test related functionality.  Usually

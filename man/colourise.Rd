@@ -6,11 +6,11 @@
 colourise(text, fg = "black", bg = NULL)
 }
 \arguments{
-  \item{text}{character vector}
+\item{text}{character vector}
 
-  \item{fg}{foreground colour, defaults to white}
+\item{fg}{foreground colour, defaults to white}
 
-  \item{bg}{background colour, defaults to transparent}
+\item{bg}{background colour, defaults to transparent}
 }
 \description{
 If R is not currently running in a system that supports terminal colours

@@ -6,7 +6,7 @@
 not(f)
 }
 \arguments{
-  \item{f}{an existing expectation function}
+\item{f}{an existing expectation function}
 }
 \description{
 This negates an expectation, making it possible to express that you

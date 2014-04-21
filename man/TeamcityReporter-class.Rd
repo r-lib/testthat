@@ -5,7 +5,7 @@
 \alias{TeamcityReporter-class}
 \title{Test reporter: Teamcity format.}
 \arguments{
-  \item{...}{Arguments used to initialise class}
+\item{...}{Arguments used to initialise class}
 }
 \description{
 This reporter will output results in the Teamcity message format.

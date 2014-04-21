@@ -6,7 +6,7 @@
 \title{List reporter: gather all test results along with elapsed time and
 file information.}
 \arguments{
-  \item{...}{Arguments used to initialise class}
+\item{...}{Arguments used to initialise class}
 }
 \description{
 This reporter gathers all results, adding additional information such as

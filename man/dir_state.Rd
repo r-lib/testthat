@@ -6,13 +6,12 @@
 dir_state(path, pattern = NULL, hash = TRUE)
 }
 \arguments{
-  \item{path}{path to directory}
+\item{path}{path to directory}
 
-  \item{pattern}{regular expression with which to filter
-  files}
+\item{pattern}{regular expression with which to filter files}
 
-  \item{hash}{use hash (slow but accurate) or time stamp
-  (fast but less accurate)}
+\item{hash}{use hash (slow but accurate) or time stamp (fast but less
+accurate)}
 }
 \description{
 Capture the state of a directory.

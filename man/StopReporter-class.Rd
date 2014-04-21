@@ -5,7 +5,7 @@
 \alias{StopReporter-class}
 \title{Test reporter: stop on error.}
 \arguments{
-  \item{...}{Arguments used to initialise class}
+\item{...}{Arguments used to initialise class}
 }
 \description{
 The default reporter, executed when \code{expect_that} is run

@@ -6,13 +6,13 @@
 auto_test(code_path, test_path, reporter = "summary", env = test_env())
 }
 \arguments{
-  \item{code_path}{path to directory containing code}
+\item{code_path}{path to directory containing code}
 
-  \item{test_path}{path to directory containing tests}
+\item{test_path}{path to directory containing tests}
 
-  \item{reporter}{test reporter to use}
+\item{reporter}{test reporter to use}
 
-  \item{env}{environment in which to execute test suite.}
+\item{env}{environment in which to execute test suite.}
 }
 \description{
 The idea behind \code{auto_test} is that you just leave it running while

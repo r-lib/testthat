@@ -5,7 +5,7 @@
 \alias{MultiReporter-class}
 \title{Multi reporter: combine several reporters in one.}
 \arguments{
-  \item{...}{Arguments used to initialise class}
+\item{...}{Arguments used to initialise class}
 }
 \description{
 This reporter is useful to use several reporters at the same time, e.g.

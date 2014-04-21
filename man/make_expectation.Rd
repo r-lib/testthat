@@ -6,11 +6,10 @@
 make_expectation(x, expectation = "equals")
 }
 \arguments{
-  \item{x}{a vector of values}
+\item{x}{a vector of values}
 
-  \item{expectation}{the type of equality you want to test
-  for (\code{equals}, \code{is_equivalent_to},
-  \code{is_identical_to})}
+\item{expectation}{the type of equality you want to test for
+(\code{equals}, \code{is_equivalent_to}, \code{is_identical_to})}
 }
 \description{
 This a convenience function to make a expectation that checks that

@@ -5,7 +5,7 @@
 \alias{SummaryReporter-class}
 \title{Test reporter: summary of errors.}
 \arguments{
-  \item{...}{Arguments used to initialise class}
+\item{...}{Arguments used to initialise class}
 }
 \description{
 This is the most useful reporting reporter as it lets you know both which

@@ -6,17 +6,15 @@
 expect_that(object, condition, info = NULL, label = NULL)
 }
 \arguments{
-  \item{object}{object to test}
+\item{object}{object to test}
 
-  \item{condition,}{a function that returns whether or not
-  the condition is met, and if not, an error message to
-  display.}
+\item{condition,}{a function that returns whether or not the condition
+is met, and if not, an error message to display.}
 
-  \item{label}{object label. When \code{NULL}, computed
-  from deparsed object.}
+\item{label}{object label. When \code{NULL}, computed from deparsed object.}
 
-  \item{info}{extra information to be included in the
-  message (useful when writing tests in loops).}
+\item{info}{extra information to be included in the message (useful when
+writing tests in loops).}
 }
 \value{
 the (internal) expectation result as an invisible list

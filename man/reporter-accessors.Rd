@@ -13,9 +13,9 @@ get_reporter()
 with_reporter(reporter, code)
 }
 \arguments{
-  \item{reporter}{test reporter to use}
+\item{reporter}{test reporter to use}
 
-  \item{code}{code block to execute}
+\item{code}{code block to execute}
 }
 \description{
 Changes global reporter to that specified, runs code and the returns
