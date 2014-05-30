@@ -49,15 +49,27 @@ watch <- function(path, callback, pattern = NULL, hash = TRUE) {
 #' @importFrom digest digest
 safe_digest <- function(path) {
   reraise_unknown_errors = function(e) {
-    if (e$message != paste("The file does not exist:", path)) {
+    if (!(e$message %in% known_errors(path))) {
       stop(e)
-    }
+    } 
   }
   result <- NA_character_
   tryCatch(
     result <- digest(path, file = TRUE),
     error = reraise_unknown_errors)
   result
+}
+
+#' Create a list of known errors returned from digest
+#'
+#' @param path path to directory
+#' @keywords internal
+known_errors <- function(path) {
+  error_prefixes <- c(
+    "The file does not exist:",
+    "The specified pathname is not a file:"
+  ) 
+  paste(error_prefixes, path)
 }
 
 #' Capture the state of a directory.

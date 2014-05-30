@@ -2,6 +2,7 @@ if (interactive()) {
   context("Watcher components")
 
   test_that("compare state works correctly", {
+    
     loc <- tempfile("watcher", tmpdir = "/tmp")
     dir.create(loc)
 
@@ -33,6 +34,10 @@ if (interactive()) {
     expect_that(diff$n, equals(2))
     expect_that(basename(diff$added), equals("file21"))
     expect_that(basename(diff$modified), equals("file3"))
+    
+    dir.create(file.path(loc, "test-subdir"))
+    one <- dir_state(loc)
+    expect_that(length(one), equals(1))
    })
 
 
