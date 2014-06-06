@@ -32,7 +32,7 @@ compare.character <- function(x, y, ..., max_strings = 5, max_lines = 5,
   if (length(x) != length(y)) return(NextMethod())
 
   # If vectorwise-equal, fallback to default method
-  diff <- xor(is.na(x), is.na(y)) || x != y
+  diff <- xor(is.na(x), is.na(y)) | x != y
   diff[is.na(diff)] <- FALSE
 
   if (!any(diff)) {
