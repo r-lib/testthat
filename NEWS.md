@@ -1,6 +1,9 @@
 # testthat 0.8.1.0.99
 
 * Correctly handles test directories that contain folders. Fixes Issue #138 (thanks to @kentonwhite)
+
+* fixed bug in `compare.character()` reported by Georgi Boshnakov.
+
 * testhat now comes with a first version of a testing language for behaviour
   driven development. The language is similiar to RSpec for Ruby or Mocha for
   JavaScript. BDD tests read like sentences and it should thus be easier
