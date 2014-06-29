@@ -62,6 +62,72 @@ test_package <- function(package, filter = NULL, reporter = "summary") {
   invisible(df)
 }
 
+#' Run all tests in an installed package to check test code coverage
+#'
+#' Run \code{test_package} silently, just looking for function calls, then
+#' determine what proportion of functions in the tested package were tested.
+#'
+#' @param package package name
+#' @inheritParams test_dir
+#' @return a data frame of the summary of test results
+#' @export
+#' @examples
+#' \dontrun{test_package_cover("testthat")}
+test_coverage_package <- function(package, filter = NULL) {
+  # Ensure that test package returns silently if called recursively - this
+  # will occur if test-all.R ends up in the same directory as all the other
+  # tests.
+  if (env_test$in_test) return(invisible())
+  env_test$in_test <- TRUE
+  on.exit(env_test$in_test <- FALSE)
+
+  test_path <- system.file("tests", package = package)
+  if (test_path == "") stop("No tests found for ", package, call. = FALSE)
+
+  # If testthat subdir exists, use that
+  test_path2 <- file.path(test_path, "testthat")
+  if (file.exists(test_path2)) test_path <- test_path2
+
+  env <- test_pkg_env(package) # the parent is the icd9 package namespace?
+  pkgns <- getNamespace(package)
+  with_top_env(env, {
+    funs <- sort(lsf(package)) # see function in util which lists contents of a package
+    trace(funs, where = pkgns)
+
+    trace_output <- capture.output(
+      df <- test_dir(test_path, reporter = SilentReporter(), env = env, filter = filter)
+    )
+
+    untrace(funs, where = pkgns) # ? set environment with where=
+
+    everytestedfun <- getTestedFunctions(trace_output)
+
+    coverage <- list()
+    cov <- funs %in% everytestedfun
+    coverage$tested <- funs[cov]
+    coverage$untested <- funs[!cov]
+    coverage$coverage <- length(coverage$tested) / length(funs)
+  })
+
+  coverage
+}
+
+getTestedFunctions <- function(trace_output) {
+  unique(
+    lapply(trace_output,
+           function(x) unlist(
+             regmatches(
+               x = x,
+               m = regexec(
+                 pattern = "^.* ([[:graph:]]*?)\\(.*",
+                 text = x)
+             )
+           )[-1]
+    )
+  )
+}
+
+
 #' @export
 #' @rdname test_package
 test_check <- function(package, filter = NULL, reporter = "summary") {
