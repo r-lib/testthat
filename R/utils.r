@@ -13,9 +13,7 @@ grepl2 <- function(pattern, x, ...) {
 }
 
 
-#' @title list all functions in a package
-#' @param pkg character string containing package name
-#' @return character vector of functions in given package
+# list all functions in a package
 lsf <- function(pkg) {
   envirName <- paste("package", pkg, sep = ":")
   everything <- ls(pos = envirName, all.names = TRUE)
