@@ -22,6 +22,7 @@ a data frame of the summary of test results
 \description{
 Test files start with \code{test} and are executed in alphabetical order
 (but they shouldn't have dependencies). Helper files start with
-\code{helper} and loaded before any tests are run.
+\code{helper} and loaded before any tests are run. Teardown files
+start with \code{teardown} and are loaded and run after the tests.
 }
 

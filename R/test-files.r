@@ -15,7 +15,8 @@ test_env <- function() {
 #'
 #' Test files start with \code{test} and are executed in alphabetical order
 #' (but they shouldn't have dependencies). Helper files start with
-#' \code{helper} and loaded before any tests are run.
+#' \code{helper} and loaded before any tests are run. Teardown files
+#' start with \code{teardown} and are loaded and run after the tests.
 #'
 #' @param path path to tests
 #' @param reporter reporter to use
@@ -32,6 +33,7 @@ test_dir <- function(path, filter = NULL, reporter = "summary",
   reporter <- MultiReporter$new(reporters = list(current_reporter, lister))
 
   source_dir(path, "^helper.*\\.[rR]$", env = env)
+  on.exit(source_dir(path, "^teardown.*\\.[rR]$", env = env), add = TRUE)
 
   files <- dir(path, "^test.*\\.[rR]$")
   if (!is.null(filter)) {
