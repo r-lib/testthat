@@ -24,7 +24,7 @@ with_mock <- function(.code, ..., .env = topenv()) {
     return(.code)
   }
 
-  if (any(is.na(mock_names)))
+  if (is.null(mock_qual_names) || any(mock_qual_names == ""))
     stop("Only named arguments are supported")
 
   mock_names_not_found <- setdiff(mock_names, ls(.env))

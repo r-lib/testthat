@@ -39,3 +39,8 @@ test_that("nested mock", {
   .env = asNamespace("base")
   )
 })
+
+test_that("need named arguments for mock", {
+  expect_error(with_mock(TRUE, FALSE), "Only named arguments are supported")
+  expect_error(with_mock(TRUE, FALSE, anything = identity), "Only named arguments are supported")
+})
