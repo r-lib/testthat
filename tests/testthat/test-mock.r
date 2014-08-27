@@ -6,6 +6,7 @@ test_that("can make 3 = 5", {
   },
   compare = function(x, y, ...) list(equal = TRUE, message = "TRUE")
   )
+  expect_that(5, not(equals(3)))
 })
 
 test_that("empty mock with return value", {
@@ -25,6 +26,7 @@ test_that("multi-mock", {
   },
   gives_warning = throws_error
   )
+  expect_warning(warning("test"))
 })
 
 test_that("nested mock", {
@@ -38,6 +40,8 @@ test_that("nested mock", {
   all.equal = function(x, y, ...) TRUE,
   .env = asNamespace("base")
   )
+  expect_false(isTRUE(all.equal(3, 5)))
+  expect_warning(warning("test"))
 })
 
 test_that("qualified mock names", {
@@ -54,6 +58,8 @@ test_that("qualified mock names", {
   all.equal = function(x, y, ...) TRUE,
   .env = asNamespace("base")
   )
+  expect_false(isTRUE(all.equal(3, 5)))
+  expect_warning(warning("test"))
 })
 
 test_that("can't mock non-existing", {
