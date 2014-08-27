@@ -81,7 +81,7 @@ test_code <- function(description, code, env) {
 #' it is frustrating and boring, many of us avoid it. 
 #' 
 #' testthat is a new testing framework for R that is easy learn and use, 
-#' and integrates with your existing workﬂow. 
+#' and integrates with your existing workflow.
 #' 
 #' @docType package
 #' @name testthat
