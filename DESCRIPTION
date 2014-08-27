@@ -27,6 +27,7 @@ Collate:
     'expectations.r'
     'library.r'
     'make-expectation.r'
+    'mock.r'
     'reporter.r'
     'reporter-list.r'
     'reporter-minimal.r'
