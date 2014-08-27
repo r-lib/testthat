@@ -23,7 +23,7 @@ expect_less_than(a, 10)
 }
 \references{
 Wickham, H (2011). testthat: Get Started with Testing.
-\strong{The R Journal} \em{3/1} 5-10.
+\strong{The R Journal} \emph{3/1} 5-10.
 \url{http://journal.r-project.org/archive/2011-1/RJournal_2011-1_Wickham.pdf}
 
 \url{https://github.com/hadley/testthat}
