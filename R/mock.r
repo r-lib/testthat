@@ -43,7 +43,7 @@ with_mock <- function(.code, ..., .env = topenv()) {
   })
 
   for (name in mock_names) {
-    unlockBinding(name, .env)
+    do.call("unlockBinding", list(name, .env))
     .env[[name]] <- mocks[[name]]
   }
 
