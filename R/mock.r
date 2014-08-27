@@ -18,7 +18,7 @@
 #' throws_error()(expect_equal(3, 5))
 with_mock <- function(.code, ..., .env = topenv()) {
   mocks <- list(...)
-  mock_names <- names(mocks)
+  mock_qual_names <- names(mocks)
 
   if (length(mocks) == 0) {
     return(.code)
@@ -27,27 +27,38 @@ with_mock <- function(.code, ..., .env = topenv()) {
   if (is.null(mock_qual_names) || any(mock_qual_names == ""))
     stop("Only named arguments are supported")
 
-  mock_names_not_found <- setdiff(mock_names, ls(.env))
-  if (length(mock_names_not_found) > 0) {
-    stop("The following names were not found in .env: ",
-         paste(mock_names_not_found, collapse = ", "))
+  pkg_and_name_rx <- "^(?:(.*)::)?(.*)$"
+  pkg_names <- gsub(pkg_and_name_rx, "\\1", mock_qual_names)
+  mock_envs <- lapply(pkg_names, function(x) if (x == "") .env else asNamespace(x))
+
+  mock_names <- gsub(pkg_and_name_rx, "\\2", mock_qual_names)
+
+  orig_values <- vector("list", length(mock_qual_names))
+  for (i in seq_along(mock_qual_names)) {
+    env <- mock_envs[[i]]
+    name <- mock_names[[i]]
+    if (!exists(name, env, mode = "function"))
+      stop("Function ", name, " not found in environment ",
+           environmentName(env), ".")
+    orig_values[[i]] <- get(name, env, mode = "function")
   }
 
-  orig_values <- lapply(setNames(nm = mock_names), function(x) .env[[x]])
-  stopifnot(names(orig_values) == mock_names)
-
   on.exit({
-    for (name in mock_names) {
-      if (!bindingIsLocked(name, .env)) {
-        .env[[name]] <- orig_values[[name]]
-        lockBinding(name, .env)
+    for (i in seq_along(mock_qual_names)) {
+      env <- mock_envs[[i]]
+      name <- mock_names[[i]]
+      if (!bindingIsLocked(name, env)) {
+        env[[name]] <- orig_values[[i]]
+        lockBinding(name, env)
       }
     }
   }, add = TRUE)
 
-  for (name in mock_names) {
-    do.call("unlockBinding", list(name, .env))
-    .env[[name]] <- mocks[[name]]
+  for (i in seq_along(mock_qual_names)) {
+    env <- mock_envs[[i]]
+    name <- mock_names[[i]]
+    do.call("unlockBinding", list(name, env))
+    env[[name]] <- mocks[[i]]
   }
 
   force(.code)

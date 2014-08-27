@@ -40,9 +40,29 @@ test_that("nested mock", {
   )
 })
 
+test_that("qualified mock names", {
+  with_mock({
+    expect_warning(stopifnot(!compare(3, 5)$equal))
+  },
+  gives_warning = throws_error,
+  `base::all.equal` = function(x, y, ...) TRUE
+  )
+  with_mock({
+    expect_warning(stopifnot(!compare(3, 5)$equal))
+  },
+  `testthat::gives_warning` = throws_error,
+  all.equal = function(x, y, ...) TRUE,
+  .env = asNamespace("base")
+  )
+})
+
 test_that("can't mock non-existing", {
   expect_error(with_mock(TRUE, `base::..bogus..` = identity), "Function [.][.]bogus[.][.] not found in environment base")
   expect_error(with_mock(TRUE, ..bogus.. = identity), "Function [.][.]bogus[.][.] not found in environment testthat")
+})
+
+test_that("can't mock non-function", {
+  expect_error(with_mock(TRUE, .bg_colours = FALSE), "Function [.]bg_colours not found in environment testthat")
 })
 
 test_that("need named arguments for mock", {
