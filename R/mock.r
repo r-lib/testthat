@@ -28,38 +28,43 @@ with_mock <- function(.code, ..., .env = topenv()) {
     stop("Only named arguments are supported")
 
   pkg_and_name_rx <- "^(?:(.*)::)?(.*)$"
-  pkg_names <- gsub(pkg_and_name_rx, "\\1", mock_qual_names)
-  mock_envs <- lapply(pkg_names, function(x) if (x == "") .env else asNamespace(x))
 
-  mock_names <- gsub(pkg_and_name_rx, "\\2", mock_qual_names)
+  mocks <- lapply(
+    setNames(nm = mock_qual_names),
+    function(qual_name) {
+      pkg_name <- gsub(pkg_and_name_rx, "\\1", qual_name)
+      env <- if (pkg_name == "") .env else asNamespace(pkg_name)
 
-  orig_values <- vector("list", length(mock_qual_names))
-  for (i in seq_along(mock_qual_names)) {
-    env <- mock_envs[[i]]
-    name <- mock_names[[i]]
-    if (!exists(name, env, mode = "function"))
-      stop("Function ", name, " not found in environment ",
-           environmentName(env), ".")
-    orig_values[[i]] <- get(name, env, mode = "function")
-  }
+      name <- gsub(pkg_and_name_rx, "\\2", qual_name)
 
-  on.exit({
-    for (i in seq_along(mock_qual_names)) {
-      env <- mock_envs[[i]]
-      name <- mock_names[[i]]
-      if (!bindingIsLocked(name, env)) {
-        env[[name]] <- orig_values[[i]]
-        lockBinding(name, env)
-      }
+      if (!exists(name, env, mode = "function"))
+        stop("Function ", name, " not found in environment ",
+             environmentName(env), ".")
+      orig_value <- get(name, env, mode = "function")
+      structure(list(env = env, name = name, orig_value = orig_value, new_value = mocks[[qual_name]]),
+                class = "mock")
     }
-  }, add = TRUE)
+  )
 
-  for (i in seq_along(mock_qual_names)) {
-    env <- mock_envs[[i]]
-    name <- mock_names[[i]]
-    do.call("unlockBinding", list(name, env))
-    env[[name]] <- mocks[[i]]
-  }
+  on.exit(lapply(
+    mocks,
+    function (mock) {
+      if (!bindingIsLocked(mock$name, mock$env)) {
+        mock$env[[mock$name]] <- mock$orig_value
+        lockBinding(mock$name, mock$env)
+        NULL
+      }
+    }),
+    add = TRUE)
+
+  lapply(
+    mocks,
+    function (mock) {
+      do.call("unlockBinding", list(mock$name, mock$env))
+      mock$env[[mock$name]] <- mock$new_value
+      NULL
+    }
+  )
 
   force(.code)
 }
