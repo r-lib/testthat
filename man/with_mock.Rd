@@ -22,8 +22,7 @@ available when testing.
 \examples{
 with_mock(
   expect_equal(3, 5),
-  all.equal = function(x, y, ...) TRUE,
-  .env = asNamespace("base"))
+  `base::all.equal` = function(x, y, ...) TRUE)
 throws_error()(expect_equal(3, 5))
 }
 
