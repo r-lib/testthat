@@ -43,7 +43,7 @@ with_mock <- function(.code, ..., .env = topenv()) {
         lockBinding(name, .env)
       }
     }
-  })
+  }, add = TRUE)
 
   for (name in mock_names) {
     do.call("unlockBinding", list(name, .env))
