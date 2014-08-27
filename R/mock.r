@@ -17,10 +17,10 @@
 #'   .env = asNamespace("base"))
 #' throws_error()(expect_equal(3, 5))
 with_mock <- function(.code, ..., .env = topenv()) {
-  mocks <- list(...)
-  mock_qual_names <- names(mocks)
+  new_values <- list(...)
+  mock_qual_names <- names(new_values)
 
-  if (length(mocks) == 0) {
+  if (length(new_values) == 0) {
     return(.code)
   }
 
@@ -41,7 +41,7 @@ with_mock <- function(.code, ..., .env = topenv()) {
         stop("Function ", name, " not found in environment ",
              environmentName(env), ".")
       orig_value <- get(name, env, mode = "function")
-      structure(list(env = env, name = name, orig_value = orig_value, new_value = mocks[[qual_name]]),
+      structure(list(env = env, name = name, orig_value = orig_value, new_value = new_values[[qual_name]]),
                 class = "mock")
     }
   )
