@@ -11,8 +11,11 @@
 #'   defaults to the top-level environment
 #' @export
 #' @examples
-#' library_if_available(testthat)
-#' library_if_available(packagethatdoesntexist)
+#' with_mock(
+#'   expect_equal(3, 5),
+#'   all.equal = function(x, y, ...) TRUE,
+#'   .env = asNamespace("base"))
+#' throws_error()(expect_equal(3, 5))
 with_mock <- function(.code, ..., .env = topenv()) {
   mocks <- list(...)
   mock_names <- names(mocks)

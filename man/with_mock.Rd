@@ -20,7 +20,10 @@ slow, have unintended side effects or access resources that may not be
 available when testing.
 }
 \examples{
-library_if_available(testthat)
-library_if_available(packagethatdoesntexist)
+with_mock(
+  expect_equal(3, 5),
+  all.equal = function(x, y, ...) TRUE,
+  .env = asNamespace("base"))
+throws_error()(expect_equal(3, 5))
 }
 
