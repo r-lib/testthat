@@ -40,6 +40,11 @@ test_that("nested mock", {
   )
 })
 
+test_that("can't mock non-existing", {
+  expect_error(with_mock(TRUE, `base::..bogus..` = identity), "Function [.][.]bogus[.][.] not found in environment base")
+  expect_error(with_mock(TRUE, ..bogus.. = identity), "Function [.][.]bogus[.][.] not found in environment testthat")
+})
+
 test_that("need named arguments for mock", {
   expect_error(with_mock(TRUE, FALSE), "Only named arguments are supported")
   expect_error(with_mock(TRUE, FALSE, anything = identity), "Only named arguments are supported")
