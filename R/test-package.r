@@ -1,3 +1,17 @@
+test_pkg_env <- function(package) {
+  env <- new.env(parent = getNamespace(package))
+  # Supress warning messages from S4
+  env$.packageName <- package
+  env
+}
+
+with_top_env <- function(env, code) {
+  old <- options(topLevelEnvironment = env)
+  on.exit(options(old), add = TRUE)
+
+  code
+}
+
 #' Run all tests in an installed package
 #'
 #' Test are run in an environment that inherits from the package's namespace
@@ -37,8 +51,10 @@ test_package <- function(package, filter = NULL, reporter = "summary") {
 
   reporter <- find_reporter(reporter)
 
-  env <- new.env(parent = getNamespace(package))
-  df <- test_dir(test_path, reporter = reporter, env = env, filter = filter)
+  env <- test_pkg_env(package)
+  with_top_env(env, {
+    df <- test_dir(test_path, reporter = reporter, env = env, filter = filter)
+  })
 
   if (reporter$failed) {
     stop("Test failures", call. = FALSE)
@@ -57,8 +73,10 @@ test_check <- function(package, filter = NULL, reporter = "summary") {
   }
 
   reporter <- find_reporter(reporter)
-  env <- new.env(parent = getNamespace(package))
-  df <- test_dir(test_path, reporter = reporter, env = env, filter = filter)
+  env <- test_pkg_env(package)
+  with_top_env(env, {
+    df <- test_dir(test_path, reporter = reporter, env = env, filter = filter)
+  })
 
   if (reporter$failed) {
     stop("Test failures", call. = FALSE)

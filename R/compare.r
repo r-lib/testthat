@@ -31,7 +31,9 @@ compare.character <- function(x, y, ..., max_strings = 5, max_lines = 5,
   # If they're not the same length, fallback to default method
   if (length(x) != length(y)) return(NextMethod())
 
-  diff <- x != y
+  # If vectorwise-equal, fallback to default method
+  diff <- xor(is.na(x), is.na(y)) | x != y
+  diff[is.na(diff)] <- FALSE
 
   if (!any(diff)) {
     return(NextMethod())
@@ -40,7 +42,7 @@ compare.character <- function(x, y, ..., max_strings = 5, max_lines = 5,
   width <- width - 6 # allocate space for labels
   n_show <- seq_len(min(length(diff), max_strings))
   show <- diff[n_show]
-  
+
   encode <- function(x) encodeString(x, quote = '"')
   show_x <- str_chunk(str_trunc(encode(x[show]), max_lines * width), width)
   show_y <- str_chunk(str_trunc(encode(y[show]), max_lines * width), width)

@@ -27,18 +27,7 @@
 #' })
 #' }
 test_that <- function(desc, code) {
-  get_reporter()$start_test(desc)
-  on.exit(get_reporter()$end_test())
-
-  env <- new.env(parent = parent.frame())
-  res <- suppressMessages(try_capture_stack(substitute(code), env))
-
-  if (is.error(res)) {
-    traceback <- create_traceback(res$calls)
-    report <- error_report(res, traceback)
-    get_reporter()$add_result(report)
-  }
-
+  test_code(desc, substitute(code), env = parent.frame())
   invisible()
 }
 
@@ -61,3 +50,52 @@ error_report <- function(error, traceback) {
 
   expectation(NA, msg, "no error occured")
 }
+
+# Executes a test.
+#
+# @keywords internal
+# @param description the test name
+# @param code the code to be tested, needs to be an unevaluated expression
+#   i.e. wrap it in substitute()
+# @param env the parent environment of the environment the test code runs in
+test_code <- function(description, code, env) {
+  new_test_environment <- new.env(parent = env)
+  get_reporter()$start_test(description)
+  on.exit(get_reporter()$end_test())
+  res <- suppressMessages(try_capture_stack(
+    code, new_test_environment))
+
+  if (is.error(res)) {
+    traceback <- create_traceback(res$calls)
+    report <- error_report(res, traceback)
+    get_reporter()$add_result(report)
+  }
+}
+
+#' R package to make testing fun!
+#'
+#' Try the example below. Have a look at the references and learn more
+#' from function documentation such as \code{\link{expect_that}}.
+#'
+#' @details Software testing is important, but, in part because
+#' it is frustrating and boring, many of us avoid it. 
+#' 
+#' testthat is a new testing framework for R that is easy learn and use, 
+#' and integrates with your existing workﬂow. 
+#' 
+#' @docType package
+#' @name testthat
+#' @references Wickham, H (2011). testthat: Get Started with Testing. 
+#' \strong{The R Journal} \em{3/1} 5-10.
+#' \url{http://journal.r-project.org/archive/2011-1/RJournal_2011-1_Wickham.pdf}
+#' 
+#' \url{https://github.com/hadley/testthat}
+#' 
+#' \url{http://adv-r.had.co.nz/Testing.html}
+#'
+#' @examples
+#' library(testthat)
+#' a <- 9
+#' expect_that(a, is_less_than(10))
+#' expect_less_than(a, 10)
+NULL

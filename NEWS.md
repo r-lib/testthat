@@ -1,3 +1,20 @@
+# testthat 0.8.1.0.99
+
+* fixed bug in `compare.character()` reported by Georgi Boshnakov.
+
+* testhat now comes with a first version of a testing language for behaviour
+  driven development. The language is similiar to RSpec for Ruby or Mocha for
+  JavaScript. BDD tests read like sentences and it should thus be easier
+  to understand what the specification of a function/component is.
+  See `?describe()` for further information and examples.
+
+# testthat 0.8.1
+
+* Better default environment for `test_check()` and `test_package()` which
+  allows S4 class creation in tests
+
+* `compare.character()` no longer fails when one value is missing.
+
 # testthat 0.8
 
 testthat 0.8 comes with a new recommended structure for storing your tests. To

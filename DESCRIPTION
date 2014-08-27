@@ -1,7 +1,7 @@
 Package: testthat
 Type: Package
 Title: Testthat code.  Tools to make testing fun :)
-Version: 0.8
+Version: 0.8.1.0.99
 Author: Hadley Wickham <h.wickham@gmail.com>
 Maintainer: Hadley Wickham <h.wickham@gmail.com>
 Description: A testing package specifically tailored for R
@@ -14,11 +14,13 @@ Imports:
     methods
 License: MIT + file LICENSE
 LazyData: true
+Roxygen: list(wrap = FALSE)
 Collate:
     'auto-test.r'
     'colour-text.r'
     'compare.r'
     'context.r'
+    'describe.r'
     'evaluate-promise.r'
     'expect-that.r'
     'expectation.r'
