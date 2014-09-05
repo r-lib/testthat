@@ -8,6 +8,11 @@
   to understand what the specification of a function/component is.
   See `?describe()` for further information and examples.
 
+* simple mocking: function `with_mock` allows temporarily replacing
+  functions defined in packages.  This is useful for testing code that relies
+  on functions that are slow, have unintended side effects or access resources
+  that may not be available when testing.  (Thanks to @krlmlr, #159)
+
 # testthat 0.8.1
 
 * Better default environment for `test_check()` and `test_package()` which
