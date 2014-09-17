@@ -3,10 +3,10 @@
 \alias{auto_test_package}
 \title{Watches a package for changes, rerunning tests as appropriate.}
 \usage{
-auto_test_package(path, reporter = "summary")
+auto_test_package(pkg = ".", reporter = "summary")
 }
 \arguments{
-\item{path}{path to package}
+\item{pkg}{path to package}
 
 \item{reporter}{test reporter to use}
 }

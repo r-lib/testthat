@@ -1,5 +1,11 @@
 # testthat 0.8.1.0.99
 
+* `auto_test_package()` works once more, and now uses `devtools::load_all()`
+  for higher fidelity loading (#138, #151). 
+  
+* `safe_digest()` uses a better strategy, and returns NA for directories 
+  (#138, #146).
+
 * Random praise is renabled by default (again!) (#164).
 
 * `is_identical_to()` only calls `all.equal()` to generate an informative
