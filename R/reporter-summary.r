@@ -31,7 +31,7 @@ SummaryReporter <- setRefClass("SummaryReporter", contains = "Reporter",
   methods = list(
     initialize = function(max_reports = Inf, ...) {
       max_reports <<- max_reports
-      show_praise <<- FALSE
+      show_praise <<- TRUE
       callSuper(...)
     },
 
