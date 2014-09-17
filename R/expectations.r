@@ -276,11 +276,15 @@ is_identical_to <- function(expected, label = NULL) {
   }
 
   function(actual) {
-    same <- all.equal(expected, actual)
-    if (isTRUE(same)) {
-      diff <- "Objects equal but not identical"
+    if (identical(actual, expected)) {
+      diff <- ""
     } else {
-      diff <- paste0(same, collapse = "\n")
+      same <- all.equal(expected, actual)
+      if (isTRUE(same)) {
+        diff <- "Objects equal but not identical"
+      } else {
+        diff <- paste0(same, collapse = "\n")
+      }
     }
 
     expectation(

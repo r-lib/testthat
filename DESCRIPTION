@@ -8,10 +8,10 @@ Description: A testing package specifically tailored for R
     that's fun, flexible and easy to set up.
 URL: http://had.co.nz/
 Depends:
-    R (>= 2.15.0)
-Imports:
-    digest,
+    R (>= 2.15.0),
     methods
+Imports:
+    digest
 License: MIT + file LICENSE
 LazyData: true
 Roxygen: list(wrap = FALSE)

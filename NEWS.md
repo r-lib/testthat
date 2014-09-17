@@ -1,5 +1,10 @@
 # testthat 0.8.1.0.99
 
+* Random praise is renabled by default (again!) (#164).
+
+* `is_identical_to()` only calls `all.equal()` to generate an informative
+  error message if the two objects are not identical (#165).
+
 * fixed bug in `compare.character()` reported by Georgi Boshnakov.
 
 * testhat now comes with a first version of a testing language for behaviour
