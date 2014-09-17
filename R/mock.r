@@ -34,25 +34,8 @@ with_mock <- function(..., .env = topenv()) {
 
   mocks <- extract_mocks(new_values = new_values, .env = .env)
 
-  on.exit(lapply(
-    mocks,
-    function (mock) {
-      if (!bindingIsLocked(mock$name, mock$env)) {
-        mock$env[[mock$name]] <- mock$orig_value
-        lockBinding(mock$name, mock$env)
-        NULL
-      }
-    }),
-    add = TRUE)
-
-  lapply(
-    mocks,
-    function (mock) {
-      do.call("unlockBinding", list(mock$name, mock$env))
-      mock$env[[mock$name]] <- mock$new_value
-      NULL
-    }
-  )
+  on.exit(lapply(mocks, reset_mock), add = TRUE)
+  lapply(mocks, set_mock)
 
   # Evaluate the code
   ret <- invisible(NULL)
@@ -85,4 +68,18 @@ extract_mocks <- function(new_values, .env) {
                 class = "mock")
     }
   )
+}
+
+set_mock <- function(mock) {
+  do.call("unlockBinding", list(mock$name, mock$env))
+  mock$env[[mock$name]] <- mock$new_value
+  invisible(NULL)
+}
+
+reset_mock <- function(mock) {
+  if (!bindingIsLocked(mock$name, mock$env)) {
+    mock$env[[mock$name]] <- mock$orig_value
+    lockBinding(mock$name, mock$env)
+  }
+  invisible(NULL)
 }
