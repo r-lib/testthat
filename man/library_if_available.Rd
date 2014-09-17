@@ -16,7 +16,9 @@ have the same code work when the tests are run automatically by R CMD
 CHECK.
 }
 \examples{
+\dontrun{
 library_if_available(testthat)
 library_if_available(packagethatdoesntexist)
+}
 }
 

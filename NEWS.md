@@ -1,5 +1,7 @@
 # testthat 0.8.1.0.99
 
+* `library_if_available()` has been deprecated.
+
 * It's now possible to `skip()` a test with an informative message - this is
   useful when tests are only available under certain conditions, as when
   not on CRAN, or when an internet connection is available (#141). 
