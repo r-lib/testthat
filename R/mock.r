@@ -5,26 +5,28 @@
 #' slow, have unintended side effects or access resources that may not be
 #' available when testing.
 #'
-#' @param .code the code to be executed
-#' @param ... named parameters giving definitions of mocked functions
+#' @param ... named parameters redefine mocked functions, unnamed parameters
+#'   will be executed after mocking the functions
 #' @param .env the environment in which to patch the functions,
 #'   defaults to the top-level environment
 #' @export
 #' @examples
 #' with_mock(
-#'   expect_equal(3, 5),
-#'   `base::all.equal` = function(x, y, ...) TRUE)
+#'   `base::all.equal` = function(x, y, ...) TRUE,
+#'   {
+#'     expect_equal(3, 5)
+#'   }
+#' )
 #' throws_error()(expect_equal(3, 5))
-with_mock <- function(.code, ..., .env = topenv()) {
-  new_values <- list(...)
+with_mock <- function(..., .env = topenv()) {
+  new_values <- eval(substitute(alist(...)), parent.frame(2))
   mock_qual_names <- names(new_values)
 
-  if (length(new_values) == 0) {
-    return(.code)
-  }
+  code_pos <- if (is.null(mock_qual_names)) TRUE else (mock_qual_names == "")
+  code <- new_values[code_pos]
 
-  if (is.null(mock_qual_names) || any(mock_qual_names == ""))
-    stop("Only named arguments are supported")
+  new_values <- new_values[!code_pos]
+  mock_qual_names <- names(new_values)
 
   pkg_and_name_rx <- "^(?:(.*)::)?(.*)$"
 
@@ -40,7 +42,7 @@ with_mock <- function(.code, ..., .env = topenv()) {
         stop("Function ", name, " not found in environment ",
              environmentName(env), ".")
       orig_value <- get(name, env, mode = "function")
-      structure(list(env = env, name = name, orig_value = orig_value, new_value = new_values[[qual_name]]),
+      structure(list(env = env, name = name, orig_value = orig_value, new_value = eval(new_values[[qual_name]])),
                 class = "mock")
     }
   )
@@ -65,5 +67,10 @@ with_mock <- function(.code, ..., .env = topenv()) {
     }
   )
 
-  force(.code)
+  # Evaluate the code
+  ret <- invisible(NULL)
+  for (expression in code) {
+    ret <- eval(expression)
+  }
+  ret
 }
