@@ -21,8 +21,8 @@ Allowed colours are: black, blue, brown, cyan, dark gray, green, light
 blue, light cyan, light gray, light green, light purple, light red,
 purple, red, white, yellow
 
-Colorization of the output can be turned-off by setting option
-'testthat.use_colors' to FALSE.
+Colourization of the output can be turned-off by setting option
+'testthat.use_colours' to FALSE.
 }
 \examples{
 print(colourise("Red", "red"))
