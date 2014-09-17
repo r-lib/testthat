@@ -21,11 +21,27 @@ is.error <- function(x) inherits(x, "error")
 
 is.skip <- function(x) inherits(x, "skip")
 
-skip <- function(message = NULL, call = sys.call(-1)) {
-  cond <- structure(
-    list(message = message, call = call),
-    class = c("skip", "condition")
-  )
-
+#' Skip a test.
+#'
+#' This function allows you to skip a test if it's not currently available.
+#' This will produce an informative message, but will not cause the test
+#' suite to fail. \code{skip_on_cran()} uses \code{skip()}, together with
+#' the \code{NOT_CRAN} environment variable (set by devtools), to automatically
+#' skip tests that should not be run on CRAN.
+#'
+#' @param message An message describing why the test was skipped.
+#' @export
+#' @examples
+#' if (FALSE) skip("No internet connection")
+skip <- function(message) {
+  cond <- structure(list(message = message), class = c("skip", "condition"))
   stop(cond)
+}
+
+#' @export
+#' @rdname skip
+skip_on_cran <- function() {
+  if (identical(Sys.getenv("NOT_CRAN"), "true")) return()
+
+  skip("On CRAN")
 }

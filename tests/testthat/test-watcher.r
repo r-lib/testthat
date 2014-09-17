@@ -34,49 +34,49 @@ test_that("compare state works correctly", {
   expect_that(basename(diff$modified), equals("file3"))
  })
 
-if (identical(Sys.getenv("NOT_CRAN"), "true")) {
-  test_that("watcher works correctly", {
-    loc <- tempfile("watcher", tmpdir = "/tmp")
-    dir.create(loc)
+test_that("watcher works correctly", {
+  skip_on_cran()
 
-    code_path = file.path(loc, "R")
-    test_path = file.path(loc, "tests")
+  loc <- tempfile("watcher", tmpdir = "/tmp")
+  dir.create(loc)
 
-    dir.create(code_path)
-    dir.create(test_path)
+  code_path = file.path(loc, "R")
+  test_path = file.path(loc, "tests")
 
-    delayed.bash.cmd <- function(command) {
-      system(paste0("sleep 1;", command), wait=FALSE)
-    }
+  dir.create(code_path)
+  dir.create(test_path)
 
-    add.code.file <- function(file.name) {
-      delayed.bash.cmd(paste0("touch ", file.path(code_path, file.name)))
-    }
+  delayed.bash.cmd <- function(command) {
+    system(paste0("sleep 1;", command), wait=FALSE)
+  }
 
-    remove.code.file <- function(file.name) {
-      delayed.bash.cmd(paste0("rm ", file.path(code_path, file.name)))
-    }
+  add.code.file <- function(file.name) {
+    delayed.bash.cmd(paste0("touch ", file.path(code_path, file.name)))
+  }
 
-    test.added <- function(added, deleted, modified) {
-      expect_that(length(added), equals(1))
-      expect_that(grepl("test1.R", added), is_true())
-      expect_that(length(deleted), equals(0))
-      expect_that(length(modified), equals(0))
-      FALSE
-    }
+  remove.code.file <- function(file.name) {
+    delayed.bash.cmd(paste0("rm ", file.path(code_path, file.name)))
+  }
 
-    test.removed <- function(added, deleted, modified) {
-      expect_that(length(added), equals(0))
-      expect_that(length(deleted), equals(1))
-      expect_that(grepl("test1.R", deleted), is_true())
-      expect_that(length(modified), equals(0))
-      FALSE
-    }
+  test.added <- function(added, deleted, modified) {
+    expect_that(length(added), equals(1))
+    expect_that(grepl("test1.R", added), is_true())
+    expect_that(length(deleted), equals(0))
+    expect_that(length(modified), equals(0))
+    FALSE
+  }
 
-    add.code.file("test1.R")
-    watch(c(code_path, test_path), test.added)
+  test.removed <- function(added, deleted, modified) {
+    expect_that(length(added), equals(0))
+    expect_that(length(deleted), equals(1))
+    expect_that(grepl("test1.R", deleted), is_true())
+    expect_that(length(modified), equals(0))
+    FALSE
+  }
 
-    remove.code.file("test1.R")
-    watch(c(code_path, test_path), test.removed)
-  })
-}
+  add.code.file("test1.R")
+  watch(c(code_path, test_path), test.added)
+
+  remove.code.file("test1.R")
+  watch(c(code_path, test_path), test.removed)
+})

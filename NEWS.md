@@ -2,7 +2,11 @@
 
 * It's now possible to `skip()` a test with an informative message - this is
   useful when tests are only available under certain conditions, as when
-  not on CRAN, or when an internet connection is available (#141).
+  not on CRAN, or when an internet connection is available (#141). 
+
+* `skip_on_cran()` allows you to skip tests when run on CRAN. To take advantage
+  of this code, you'll need either to use devtools, or run 
+  `Sys.setenv(NOT_CRAN = "true"))`
 
 * `auto_test_package()` works once more, and now uses `devtools::load_all()`
   for higher fidelity loading (#138, #151). 
