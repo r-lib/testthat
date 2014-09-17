@@ -8,10 +8,6 @@ test_that("can make 3 = 5", {
   expect_that(5, not(equals(3)))
 })
 
-test_that("empty mock with return value", {
-  expect_true(with_mock(TRUE))
-})
-
 test_that("non-empty mock with return value", {
   expect_true(with_mock(
     compare = function(x, y, ...) list(equal = TRUE, message = "TRUE"),
@@ -76,7 +72,13 @@ test_that("can't mock non-function", {
 })
 
 test_that("empty or no-op mock", {
-  expect_identical(with_mock(), invisible(NULL))
-  expect_identical(with_mock(TRUE), TRUE)
-  expect_identical(with_mock(invisible(5)), invisible(5))
+  suppressWarnings({
+    expect_that(with_mock(), equals(invisible(NULL)))
+    expect_that(with_mock(TRUE), equals(TRUE))
+    expect_that(with_mock(invisible(5)), equals(invisible(5)))
+  })
+
+  expect_that(with_mock(), gives_warning("Not mocking anything."))
+  expect_that(with_mock(TRUE), gives_warning("Not mocking anything."))
+  expect_that(with_mock(invisible(5)), gives_warning("Not mocking anything."))
 })

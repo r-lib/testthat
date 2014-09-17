@@ -22,7 +22,12 @@ with_mock <- function(..., .env = topenv()) {
   new_values <- eval(substitute(alist(...)), parent.frame(2))
   mock_qual_names <- names(new_values)
 
-  code_pos <- if (is.null(mock_qual_names)) TRUE else (mock_qual_names == "")
+  if (all(mock_qual_names == "")) {
+    warning("Not mocking anything. Please use named parameters to specify the functions you want to mock.")
+    code_pos <- TRUE
+  } else {
+    code_pos <- (mock_qual_names == "")
+  }
   code <- new_values[code_pos]
 
   new_values <- new_values[!code_pos]
