@@ -1,5 +1,8 @@
 # testthat 0.8.1.0.99
 
+* teamcity reporter now correctly escapes output messages so that teamcity 
+  understands and interprets the output.
+
 * fixed bug in `compare.character()` reported by Georgi Boshnakov.
 
 * testhat now comes with a first version of a testing language for behaviour
