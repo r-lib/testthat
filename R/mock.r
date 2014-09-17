@@ -6,10 +6,11 @@
 #' available when testing.
 #'
 #' @param ... named parameters redefine mocked functions, unnamed parameters
-#'   will be executed after mocking the functions
+#'   will be evaluated after mocking the functions
 #' @param .env the environment in which to patch the functions,
 #'   defaults to the top-level environment.  A character is interpreted as
 #'   package name.
+#' @return The result of the last unnamed parameter
 #' @export
 #' @examples
 #' with_mock(

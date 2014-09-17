@@ -7,11 +7,14 @@ with_mock(..., .env = topenv())
 }
 \arguments{
 \item{...}{named parameters redefine mocked functions, unnamed parameters
-will be executed after mocking the functions}
+will be evaluated after mocking the functions}
 
 \item{.env}{the environment in which to patch the functions,
 defaults to the top-level environment.  A character is interpreted as
 package name.}
+}
+\value{
+The result of the last unnamed parameter
 }
 \description{
 Executes code after temporarily substituting implementations of package
