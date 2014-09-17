@@ -48,16 +48,10 @@ watch <- function(path, callback, pattern = NULL, hash = TRUE) {
 #' @keywords internal
 #' @importFrom digest digest
 safe_digest <- function(path) {
-  reraise_unknown_errors = function(e) {
-    if (e$message != paste("The file does not exist:", path)) {
-      stop(e)
-    }
-  }
-  result <- NA_character_
-  tryCatch(
-    result <- digest(path, file = TRUE),
-    error = reraise_unknown_errors)
-  result
+  if (!file.exists(path)) return(NA_character_)
+  if (is_directory(path)) return(NA_character_)
+
+  digest(path, file = TRUE)
 }
 
 #' Capture the state of a directory.
