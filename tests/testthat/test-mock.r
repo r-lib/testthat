@@ -83,6 +83,11 @@ test_that("empty or no-op mock", {
   expect_that(with_mock(invisible(5)), gives_warning("Not mocking anything."))
 })
 
+test_that("multiple return values", {
+  expect_true(with_mock(FALSE, TRUE, `base::identity` = identity))
+  expect_equal(with_mock(3, `base::identity` = identity, 5), 5)
+})
+
 test_that("can access variables defined in function", {
   x <- 5
   suppressWarnings(expect_equal(with_mock(x), 5))
