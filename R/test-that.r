@@ -43,14 +43,26 @@ test_code <- function(description, code, env) {
   new_test_environment <- new.env(parent = env)
   get_reporter()$start_test(description)
   on.exit(get_reporter()$end_test())
-  res <- suppressMessages(try_capture_stack(
-    code, new_test_environment))
 
-  if (is.error(res)) {
-    traceback <- create_traceback(res$calls)
-    report <- expectation_error(res, traceback)
-    get_reporter()$add_result(report)
+  capture_calls <- function(e) {
+    # Capture call stack, removing last two calls from end (added by
+    # withCallingHandlers), and first frame + 7 calls from start (added by
+    # tryCatch etc)
+    e$calls <- head(sys.calls()[-seq_len(frame + 7)], -2)
+    signalCondition(e)
   }
+  frame <- sys.nframe()
+
+  tryCatch(
+    withCallingHandlers(eval(code, new_test_environment), error = capture_calls),
+    error = function(e) {
+      report <- expectation_error(e$message, e$calls)
+      get_reporter()$add_result(report)
+    }, skip = function(e) {
+      report <- expectation_skipped(e$message)
+      get_reporter()$add_result(report)
+    }
+  )
 }
 
 #' R package to make testing fun!

@@ -15,6 +15,7 @@ expectation <- function(passed, failure_msg, success_msg = "unknown") {
     list(
       passed = passed,
       error = FALSE,
+      skipped = FALSE,
       failure_msg = failure_msg,
       success_msg = success_msg
     ),
@@ -22,10 +23,11 @@ expectation <- function(passed, failure_msg, success_msg = "unknown") {
   )
 }
 
-expectation_error <- function(error, traceback) {
+expectation_error <- function(error, calls) {
   msg <- gsub("Error.*?: ", "", as.character(error))
 
-  if (length(traceback) > 0) {
+  if (length(calls) > 0) {
+    traceback <- create_traceback(calls)
     user_calls <- paste0(traceback, collapse = "\n")
     msg <- paste0(msg, user_calls)
   } else {
@@ -38,8 +40,24 @@ expectation_error <- function(error, traceback) {
     list(
       passed = FALSE,
       error = TRUE,
+      skipped = FALSE,
       failure_msg = msg,
       success_msg = "no error occured"
+    ),
+    class = "expectation"
+  )
+}
+
+expectation_skipped <- function(error) {
+  msg <- gsub("Error.*?: ", "", as.character(error))
+
+  structure(
+    list(
+      passed = FALSE,
+      error = FALSE,
+      skipped = TRUE,
+      failure_msg = msg,
+      success_msg = "not skipped"
     ),
     class = "expectation"
   )

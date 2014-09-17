@@ -51,6 +51,10 @@ SummaryReporter <- setRefClass("SummaryReporter", contains = "Reporter",
 
     add_result = function(result) {
       has_tests <<- TRUE
+      if (result$skipped) {
+        cat(colourise("S", fg = "yellow"))
+        return()
+      }
       if (result$passed) {
         cat(colourise(".", fg = "light green"))
         return()

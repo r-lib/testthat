@@ -16,3 +16,16 @@ starts_with <- function(string, prefix) {
 }
 
 is_directory <- function(x) file.info(x)$isdir
+
+is.error <- function(x) inherits(x, "error")
+
+is.skip <- function(x) inherits(x, "skip")
+
+skip <- function(message = NULL, call = sys.call(-1)) {
+  cond <- structure(
+    list(message = message, call = call),
+    class = c("skip", "condition")
+  )
+
+  stop(cond)
+}
