@@ -1,13 +1,13 @@
 Package: testthat
-Type: Package
-Title: Testthat code.  Tools to make testing fun :)
 Version: 0.8.1.0.99
+Title: Testthat code. Tools to make testing fun :)
+Description: A testing package specifically tailored for R
+    that's fun, flexible and easy to set up.
 Authors@R: as.person(c(
     "Hadley Wickham <hadley@rstudio.com> [aut, cre]",
     "RStudio [cph]"))
-Description: A testing package specifically tailored for R
-    that's fun, flexible and easy to set up.
-URL: http://had.co.nz/
+URL: https://github.com/hadley/testthat
+BugReports: https://github.com/hadley/testthat/issues
 Depends:
     R (>= 2.15.0),
     methods
@@ -16,7 +16,6 @@ Imports:
 Suggests:
     devtools
 License: MIT + file LICENSE
-LazyData: true
 Collate:
     'auto-test.r'
     'colour-text.r'
