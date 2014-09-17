@@ -20,7 +20,7 @@ TeamcityReporter <- setRefClass("TeamcityReporter", contains = "Reporter",
   methods = list(
 
     start_context = function(desc) {
-  		currentContext <<- escapedString(desc);
+  		currentContext <<- teamcity_escape(desc);
   		cat("##teamcity[testSuiteStarted name='", currentContext, "']\n")
     },
 	
@@ -40,17 +40,17 @@ TeamcityReporter <- setRefClass("TeamcityReporter", contains = "Reporter",
       testName <- splitTestName[[1]][1]
       
       # Need to escape characters reserved by teamcity for messages (teamcity escape character is | )
-      testName <- escapedString(testName)
+      testName <- teamcity_escape(testName)
       
   		cat("##teamcity[testStarted name='",testName,"']\n")
       
   		if (!result$passed) {
   			splitMessage <- strsplit(gsub('\'', ' ', result$failure_msg),"\n")
   			errorMessage <- splitMessage[[1]][1]
-  			errorMessage <- escapedString(errorMessage)
+  			errorMessage <- teamcity_escape(errorMessage)
         
   			detailsMessage <- paste(splitMessage[[1]][-1], collapse="|n")
-  			detailsMessage <- escapedString(detailsMessage)
+  			detailsMessage <- teamcity_escape(detailsMessage)
   			
   			cat("##teamcity[testFailed name='", testName, "' message='", errorMessage, "' details='", detailsMessage, "']\n")
   		}
@@ -62,6 +62,6 @@ TeamcityReporter <- setRefClass("TeamcityReporter", contains = "Reporter",
   )
 )
 
-escapedString <- function(s) {
+teamcity_escape <- function(s) {
   gsub("(['|]|\\[|\\])", "|\\1", s)
 }
