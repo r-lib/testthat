@@ -31,26 +31,8 @@ with_mock <- function(..., .env = topenv()) {
   code <- new_values[code_pos]
 
   new_values <- new_values[!code_pos]
-  mock_qual_names <- names(new_values)
 
-  pkg_and_name_rx <- "^(?:(.*)::)?(.*)$"
-
-  mocks <- lapply(
-    setNames(nm = mock_qual_names),
-    function(qual_name) {
-      pkg_name <- gsub(pkg_and_name_rx, "\\1", qual_name)
-      env <- if (pkg_name == "") .env else asNamespace(pkg_name)
-
-      name <- gsub(pkg_and_name_rx, "\\2", qual_name)
-
-      if (!exists(name, env, mode = "function"))
-        stop("Function ", name, " not found in environment ",
-             environmentName(env), ".")
-      orig_value <- get(name, env, mode = "function")
-      structure(list(env = env, name = name, orig_value = orig_value, new_value = eval(new_values[[qual_name]])),
-                class = "mock")
-    }
-  )
+  mocks <- get_mocks(new_values = new_values, .env = .env)
 
   on.exit(lapply(
     mocks,
@@ -78,4 +60,26 @@ with_mock <- function(..., .env = topenv()) {
     ret <- eval(expression, parent.frame())
   }
   ret
+}
+
+pkg_and_name_rx <- "^(?:(.*)::)?(.*)$"
+
+get_mocks <- function(new_values, .env) {
+  mock_qual_names <- names(new_values)
+  lapply(
+    setNames(nm = mock_qual_names),
+    function(qual_name) {
+      pkg_name <- gsub(pkg_and_name_rx, "\\1", qual_name)
+      env <- if (pkg_name == "") .env else asNamespace(pkg_name)
+
+      name <- gsub(pkg_and_name_rx, "\\2", qual_name)
+
+      if (!exists(name, env, mode = "function"))
+        stop("Function ", name, " not found in environment ",
+             environmentName(env), ".")
+      orig_value <- get(name, env, mode = "function")
+      structure(list(env = env, name = name, orig_value = orig_value, new_value = eval(new_values[[qual_name]])),
+                class = "mock")
+    }
+  )
 }
