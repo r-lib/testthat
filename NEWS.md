@@ -17,7 +17,7 @@
   (#138, #146).
 
 * `colourise` now uses option `testthat.use_colours` (default: `TRUE`). If it
-  is `FALSE`, output is not colourised.
+  is `FALSE`, output is not colourised (#153, @mbojan).
 
 * Random praise is renabled by default (again!) (#164).
 
