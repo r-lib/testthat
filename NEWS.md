@@ -1,5 +1,9 @@
 # testthat 0.8.1.0.99
 
+* It's now possible to `skip()` a test with an informative message - this is
+  useful when tests are only available under certain conditions, as when
+  not on CRAN, or when an internet connection is available (#141).
+
 * `auto_test_package()` works once more, and now uses `devtools::load_all()`
   for higher fidelity loading (#138, #151). 
   
