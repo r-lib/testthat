@@ -31,9 +31,7 @@ with_mock <- function(..., .env = topenv()) {
   }
   code <- new_values[code_pos]
 
-  new_values <- new_values[!code_pos]
-
-  mocks <- extract_mocks(new_values = new_values, .env = .env)
+  mocks <- extract_mocks(new_values = new_values[!code_pos], .env = .env)
 
   on.exit(lapply(mocks, reset_mock), add = TRUE)
   lapply(mocks, set_mock)
