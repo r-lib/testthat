@@ -32,7 +32,7 @@ with_mock <- function(..., .env = topenv()) {
 
   new_values <- new_values[!code_pos]
 
-  mocks <- get_mocks(new_values = new_values, .env = .env)
+  mocks <- extract_mocks(new_values = new_values, .env = .env)
 
   on.exit(lapply(
     mocks,
@@ -64,7 +64,7 @@ with_mock <- function(..., .env = topenv()) {
 
 pkg_and_name_rx <- "^(?:(.*)::)?(.*)$"
 
-get_mocks <- function(new_values, .env) {
+extract_mocks <- function(new_values, .env) {
   if (is.character(.env))
     .env <- asNamespace(.env)
   mock_qual_names <- names(new_values)

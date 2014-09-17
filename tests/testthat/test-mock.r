@@ -89,12 +89,12 @@ test_that("can access variables defined in function", {
 })
 
 test_that("mock extraction", {
-  expect_equal(get_mocks(list(identity = identity), asNamespace("base"))$identity$name, "identity")
-  expect_error(get_mocks(list(..bogus.. = identity), asNamespace("base")),
+  expect_equal(extract_mocks(list(identity = identity), asNamespace("base"))$identity$name, "identity")
+  expect_error(extract_mocks(list(..bogus.. = identity), asNamespace("base")),
                "Function [.][.]bogus[.][.] not found in environment base")
-  expect_equal(get_mocks(list(`base::identity` = identity), NULL)[[1]]$name, "identity")
-  expect_equal(get_mocks(list(`base::identity` = identity), NULL)[[1]]$env, asNamespace("base"))
-  expect_equal(get_mocks(list(`base::identity` = stop), NULL)[[1]]$orig_value, identity)
-  expect_equal(get_mocks(list(`base::identity` = stop), NULL)[[1]]$new_value, stop)
-  expect_equal(length(get_mocks(list(not = identity, `base::!` = identity), "testthat")), 2)
+  expect_equal(extract_mocks(list(`base::identity` = identity), NULL)[[1]]$name, "identity")
+  expect_equal(extract_mocks(list(`base::identity` = identity), NULL)[[1]]$env, asNamespace("base"))
+  expect_equal(extract_mocks(list(`base::identity` = stop), NULL)[[1]]$orig_value, identity)
+  expect_equal(extract_mocks(list(`base::identity` = stop), NULL)[[1]]$new_value, stop)
+  expect_equal(length(extract_mocks(list(not = identity, `base::!` = identity), "testthat")), 2)
 })
