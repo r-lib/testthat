@@ -75,7 +75,7 @@ with_mock <- function(..., .env = topenv()) {
   # Evaluate the code
   ret <- invisible(NULL)
   for (expression in code) {
-    ret <- eval(expression)
+    ret <- eval(expression, parent.frame())
   }
   ret
 }

@@ -82,3 +82,8 @@ test_that("empty or no-op mock", {
   expect_that(with_mock(TRUE), gives_warning("Not mocking anything."))
   expect_that(with_mock(invisible(5)), gives_warning("Not mocking anything."))
 })
+
+test_that("can access variables defined in function", {
+  x <- 5
+  suppressWarnings(expect_equal(with_mock(x), 5))
+})
