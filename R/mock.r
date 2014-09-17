@@ -21,7 +21,7 @@
 #' )
 #' throws_error()(expect_equal(3, 5))
 with_mock <- function(..., .env = topenv()) {
-  new_values <- eval(substitute(alist(...)), parent.frame(2))
+  new_values <- eval(substitute(alist(...)))
   mock_qual_names <- names(new_values)
 
   if (all(mock_qual_names == "")) {
