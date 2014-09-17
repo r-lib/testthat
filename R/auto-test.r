@@ -68,7 +68,7 @@ auto_test <- function(code_path, test_path, reporter = "summary",
 
 #' Watches a package for changes, rerunning tests as appropriate.
 #'
-#' @param path path to package
+#' @param pkg path to package
 #' @export
 #' @param reporter test reporter to use
 #' @keywords debugging
@@ -87,7 +87,8 @@ auto_test_package <- function(pkg = ".", reporter = "summary") {
 
   # Start by loading all code and running all tests
   env <- devtools::load_all(pkg)$env
-  with_envvar(devtools::r_env_vars(), test_dir(test_path, env = env, reporter = reporter))
+  devtools::with_envvar(devtools::r_env_vars(),
+    test_dir(test_path, env = env, reporter = reporter))
 
   # Next set up watcher to monitor changes
   watcher <- function(added, deleted, modified) {
@@ -100,8 +101,9 @@ auto_test_package <- function(pkg = ".", reporter = "summary") {
       # Reload code and rerun all tests
       cat("Changed code: ", paste0(basename(code), collapse = ", "), "\n")
       cat("Rerunning all tests\n")
-      env <<- load_all(pkg)$env
-      with_envvar(devtools::r_env_vars(), test_dir(test_path, env = env, reporter = reporter))
+      env <<- devtools::load_all(pkg)$env
+      devtools::with_envvar(devtools::r_env_vars(),
+        test_dir(test_path, env = env, reporter = reporter))
     } else if (length(tests) > 0) {
       # If test changes, rerun just that test
       cat("Rerunning tests: ", paste0(basename(tests), collapse = ", "), "\n")
