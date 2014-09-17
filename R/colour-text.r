@@ -22,17 +22,11 @@ colourise <- function(text, fg = "black", bg = NULL) {
   term <- Sys.getenv()["TERM"]
   colour_terms <- c("xterm-color","xterm-256color", "screen", "screen-256color")
 
-  use_colors <- getOption("testthat.use_colors")
-  if( is.null(use_colors) )
-  {
+  # Turn-off colors if desired
+  use_colors <- getOption("testthat.use_colors", TRUE)
+  if( !is.logical(use_colors) ) {
+    warning(paste0("option 'use_colors' not logical but ", mode(use_colors)))
     use_colors <- TRUE
-  } else
-  {
-    if( !is.logical(use_colors) )
-    {
-      warning(paste0("option 'use_colors' not logical but ", mode(use_colors)))
-      use_colors <- TRUE
-    }
   }
 
   if(rcmd_running() || !any(term %in% colour_terms, na.rm = TRUE) || !use_colors) {
