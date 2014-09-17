@@ -11,13 +11,35 @@
 #' @keywords internal
 #' @export
 expectation <- function(passed, failure_msg, success_msg = "unknown") {
-  error <- is.na(passed)
-  passed <- passed & !error
+  structure(
+    list(
+      passed = passed,
+      error = FALSE,
+      failure_msg = failure_msg,
+      success_msg = success_msg
+    ),
+    class = "expectation"
+  )
+}
+
+expectation_error <- function(error, traceback) {
+  msg <- gsub("Error.*?: ", "", as.character(error))
+
+  if (length(traceback) > 0) {
+    user_calls <- paste0(traceback, collapse = "\n")
+    msg <- paste0(msg, user_calls)
+  } else {
+    # Need to remove trailing newline from error message to be consistent
+    # with other messages
+    msg <- gsub("\n$", "", msg)
+  }
 
   structure(
     list(
-      passed = passed, error = error,
-      failure_msg = failure_msg, success_msg = success_msg
+      passed = FALSE,
+      error = TRUE,
+      failure_msg = msg,
+      success_msg = "no error occured"
     ),
     class = "expectation"
   )
