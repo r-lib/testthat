@@ -21,7 +21,7 @@ Instructions for using this package can be found in the [Testing](http://r-pkgs.
 
 ## Integration with R CMD check
 
-If you're using testthat in a package, you need to adopt a specific structure to work with `R CMD check`. This structure has changed recently to comply with new demands from CRAN, so please read closely if you submit your packages to CRAN. Previously, best practice was to put all test files in `inst/tests` and ensure that `R CMD check` ran them by putting the following code in `tests/test-all.R`:
+If you're using testthat in a package, you need to adopt a specific structure to work with `R CMD check`. This structure has changed recently to comply with new demands from CRAN, so please read closely if you submit your packages to CRAN. Previously, best practice was to put all test files in `inst/tests` and ensure that `R CMD check` ran them by putting the following code in `testthat.R`:
 
 ```R
 library(testthat)
