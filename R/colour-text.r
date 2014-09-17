@@ -7,6 +7,9 @@
 #' blue, light cyan, light gray, light green, light purple, light red,
 #' purple, red, white, yellow
 #'
+#' Colourization of the output can be turned-off by setting option
+#' 'testthat.use_colours' to FALSE.
+#'
 #' @param text character vector
 #' @param fg foreground colour, defaults to white
 #' @param bg background colour, defaults to transparent
@@ -19,7 +22,10 @@ colourise <- function(text, fg = "black", bg = NULL) {
   term <- Sys.getenv()["TERM"]
   colour_terms <- c("xterm-color","xterm-256color", "screen", "screen-256color")
 
-  if(rcmd_running() || !any(term %in% colour_terms, na.rm = TRUE)) {
+  # Turn-off colours if desired
+  use_colours <- getOption("testthat.use_colours", TRUE)
+
+  if(rcmd_running() || !any(term %in% colour_terms, na.rm = TRUE) || isTRUE(use_colours)) {
     return(text)
   }
 
