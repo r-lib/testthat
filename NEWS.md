@@ -6,8 +6,8 @@
 * `safe_digest()` uses a better strategy, and returns NA for directories 
   (#138, #146).
 
-* `colourise` now uses option `testthat.use_colors` (default: `FALSE`). If it
-  is `TRUE`, output is not colourised.
+* `colourise` now uses option `testthat.use_colours` (default: `TRUE`). If it
+  is `FALSE`, output is not colourised.
 
 * Random praise is renabled by default (again!) (#164).
 
