@@ -65,7 +65,10 @@ with_mock <- function(..., .env = topenv()) {
 pkg_and_name_rx <- "^(?:(.*)::)?(.*)$"
 
 get_mocks <- function(new_values, .env) {
+  if (is.character(.env))
+    .env <- asNamespace(.env)
   mock_qual_names <- names(new_values)
+
   lapply(
     setNames(nm = mock_qual_names),
     function(qual_name) {
