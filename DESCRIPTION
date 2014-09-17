@@ -16,7 +16,6 @@ Suggests:
     devtools
 License: MIT + file LICENSE
 LazyData: true
-Roxygen: list(wrap = FALSE)
 Collate:
     'auto-test.r'
     'colour-text.r'
