@@ -46,12 +46,11 @@ watch <- function(path, callback, pattern = NULL, hash = TRUE) {
 #' @param filename filename to compute digest on
 #' @return a digest of the file, or NA if it doesn't exist.
 #' @keywords internal
-#' @importFrom digest digest
 safe_digest <- function(path) {
   if (!file.exists(path)) return(NA_character_)
   if (is_directory(path)) return(NA_character_)
 
-  digest(path, file = TRUE)
+  digest::digest(path, file = TRUE)
 }
 
 #' Capture the state of a directory.
