@@ -1,7 +1,7 @@
 #' Watch a directory for changes (additions, deletions & modifications).
 #'
 #' This is used to power the \code{\link{auto_test}} and
-#' \code{link{auto_test_package}} functions which are used to rerun tests
+#' \code{\link{auto_test_package}} functions which are used to rerun tests
 #' whenever source code changes.
 #'
 #' Use Ctrl + break (windows), Esc (mac gui) or Ctrl + C (command line) to
