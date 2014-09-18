@@ -5,21 +5,33 @@
 #' slow, have unintended side effects or access resources that may not be
 #' available when testing.
 #'
+#' Internally, this works by patching the function definition in the package's
+#' namespace.  If the package is loaded, and the function to be mocked is
+#' exported, the patching also needs to take place in the package environment.
+#' On exit, everything is restored to the previous state.
+#'
 #' @param ... named parameters redefine mocked functions, unnamed parameters
 #'   will be evaluated after mocking the functions
 #' @param .env the environment in which to patch the functions,
 #'   defaults to the top-level environment.  A character is interpreted as
 #'   package name.
 #' @return The result of the last unnamed parameter
+#' @references Suraj Gupta (2012): \href{http://obeautifulcode.com/R/How-R-Searches-And-Finds-Stuff}{How R Searches And Finds Stuff}
 #' @export
 #' @examples
 #' with_mock(
+#'   all.equal = function(x, y, ...) TRUE,
+#'   expect_equal(2 * 3, 4),
+#'   .env = "base"
+#' )
+#' with_mock(
+#'   `base::identical` = function(x, y, ...) TRUE,
 #'   `base::all.equal` = function(x, y, ...) TRUE,
-#'   {
-#'     expect_equal(3, 5)
-#'   }
+#'   expect_equal(x <- 3 * 3, 6),
+#'   expect_identical(x + 4, 9)
 #' )
 #' throws_error()(expect_equal(3, 5))
+#' throws_error()(expect_identical(3, 5))
 with_mock <- function(..., .env = topenv()) {
   new_values <- eval(substitute(alist(...)))
   mock_qual_names <- names(new_values)
