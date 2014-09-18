@@ -102,6 +102,11 @@ test_that("can mock hidden functions", {
   expect_identical(with_mock(3, `stats:::add1.default` = identity, stats:::add1.default), identity)
 })
 
+test_that("can mock if package is not loaded", {
+  expect_false("package:devtools" %in% search())
+  expect_identical(with_mock(`devtools::add_path` = identity, devtools::add_path), identity)
+})
+
 test_that("mock extraction", {
   expect_equal(extract_mocks(list(identity = identity), asNamespace("base"))$identity$name, "identity")
   expect_error(extract_mocks(list(..bogus.. = identity), asNamespace("base")),
