@@ -59,30 +59,47 @@ extract_mocks <- function(new_values, .env) {
     setNames(nm = mock_qual_names),
     function(qual_name) {
       pkg_name <- gsub(pkg_and_name_rx, "\\1", qual_name)
-      env <- if (pkg_name == "") .env else asNamespace(pkg_name)
 
       name <- gsub(pkg_and_name_rx, "\\2", qual_name)
 
-      if (!exists(name, env, mode = "function"))
+      if (pkg_name == "")
+        envs <- list(.env)
+      else {
+        envs <- list(asNamespace(pkg_name))
+
+        # Only look in list of exported functions if package is really loaded
+        pkg_env_name <- sprintf("package:%s", pkg_name)
+        if (pkg_env_name %in% search()) {
+          export_env <- as.environment(pkg_env_name)
+          if (exists(name, envir = export_env, inherits = FALSE))
+            envs <- c(envs, export_env)
+        }
+      }
+
+      if (!exists(name, envs[[1]], mode = "function"))
         stop("Function ", name, " not found in environment ",
-             environmentName(env), ".")
-      orig_value <- get(name, env, mode = "function")
-      structure(list(env = env, name = name, orig_value = orig_value, new_value = eval(new_values[[qual_name]])),
+             environmentName(envs[[1]]), ".")
+      orig_value <- get(name, envs[[1]], mode = "function")
+      structure(list(envs = envs, name = name, orig_value = orig_value, new_value = eval(new_values[[qual_name]])),
                 class = "mock")
     }
   )
 }
 
 set_mock <- function(mock) {
-  do.call("unlockBinding", list(mock$name, mock$env))
-  mock$env[[mock$name]] <- mock$new_value
+  for (env in mock$envs) {
+    do.call("unlockBinding", list(mock$name, env))
+    env[[mock$name]] <- mock$new_value
+  }
   invisible(NULL)
 }
 
 reset_mock <- function(mock) {
-  if (!bindingIsLocked(mock$name, mock$env)) {
-    mock$env[[mock$name]] <- mock$orig_value
-    lockBinding(mock$name, mock$env)
+  for (env in mock$envs) {
+    if (!bindingIsLocked(mock$name, env)) {
+      env[[mock$name]] <- mock$orig_value
+      lockBinding(mock$name, env)
+    }
   }
   invisible(NULL)
 }
