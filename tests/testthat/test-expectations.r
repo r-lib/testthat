@@ -86,3 +86,8 @@ test_that("for messages, warnings, errors and output, ... passed onto grepl", {
   expect_warning(warning("X"), "x", ignore.case = TRUE)
   expect_error(stop("X"), "x", ignore.case = TRUE)
 })
+
+test_that("expect_equal_to_reference correctly matches to a file", {
+  expect_equal_to_reference(1, "one.rds")
+  expect_that(1, equals_reference("one.rds"))
+})

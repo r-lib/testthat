@@ -214,6 +214,61 @@ expect_equal <- function(object, expected, ..., info = NULL, label = NULL,
 }
 
 
+#' Expectation: is the object equal to a reference value stored in a file?
+#'
+#' This expectation is equivalent to \code{\link{equals}}, except that the
+#' expected value is stored in an RDS file instead of being specified
+#' literally. This can be helpful when the value is necessarily complex. If
+#' the file does not exist then it will be created using the value of the
+#' specified object, and subsequent tests will check for consistency against
+#' that generated value. The test can be reset by deleting the RDS file.
+#
+#' @param file The file name used to store the object. Should have an "rds"
+#'   extension.
+#' @param label For the full form, a label for the expected object, which is
+#'   used in error messages. Useful to override the default (which is based
+#'   on the file name), when doing tests in a loop. For the short-cut form,
+#'   the object label, which is computed from the deparsed object by default.
+#' @param expected.label Equivalent of \code{label} for shortcut form.
+#' @param ... other values passed to \code{\link{equals}}
+#' @family expectations
+#' @export
+#' @examples
+#' \dontrun{
+#' expect_that(1, equals_reference("one.rds"))
+#' expect_equal_to_reference(1, "one.rds")
+#' }
+equals_reference <- function(file, label = NULL, ...) {
+  if (file.exists(file)) {
+    reference <- readRDS(file)
+    if (is.null(label)) {
+      label <- paste("reference from", file)
+    }
+    equals(reference, label = label, ...)
+  } else {
+    function(actual) {
+      # saveRDS() returns no useful information to use for the expectation
+      saveRDS(actual, file)
+      expectation(TRUE, "should never fail", "saved to file")
+    }
+  }
+}
+#' @export
+#' @rdname equals_reference
+#' @inheritParams expect_that
+expect_equal_to_reference <- function(object, file, ..., info = NULL,
+                                      label = NULL, expected.label = NULL) {
+  if (is.null(label)) {
+    label <- find_expr("object")
+  }
+  if (is.null(expected.label)) {
+    expected.label <- paste("reference from", file)
+  }
+  expect_that(object, equals_reference(file, label = expected.label, ...),
+              info = info, label = label)
+}
+
+
 #' Expectation: is the object equivalent to a value?
 #' This expectation tests for equivalency: are two objects equal once their
 #' attributes have been removed.

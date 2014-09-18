@@ -58,7 +58,9 @@ expect_equal(object = 10.01, expected = expectedValue, tolerance = 0.002,
 }
 }
 \seealso{
-Other expectations: \code{\link{expect-compare}},
+Other expectations: \code{\link{equals_reference}},
+  \code{\link{expect_equal_to_reference}};
+  \code{\link{expect-compare}},
   \code{\link{expect_less_than}},
   \code{\link{expect_more_than}},
   \code{\link{is_less_than}}, \code{\link{is_more_than}};

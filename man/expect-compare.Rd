@@ -55,8 +55,9 @@ expect_more_than(9, 10)
 }
 }
 \seealso{
-Other expectations: \code{\link{equals}},
-  \code{\link{expect_equal}};
+Other expectations: \code{\link{equals_reference}},
+  \code{\link{expect_equal_to_reference}};
+  \code{\link{equals}}, \code{\link{expect_equal}};
   \code{\link{expect_equivalent}},
   \code{\link{is_equivalent_to}};
   \code{\link{expect_error}}, \code{\link{throws_error}};
