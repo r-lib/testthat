@@ -109,6 +109,16 @@ test_that("can mock if package is not loaded", {
   expect_identical(with_mock(`devtools::add_path` = identity, devtools::add_path), identity)
 })
 
+test_that("changes to variables are preserved between calls and visible outside", {
+  x <- 1
+  with_mock(
+    `base::identity` = identity,
+    x <- 3,
+    expect_equal(x, 3)
+  )
+  expect_equal(x, 3)
+})
+
 test_that("mock extraction", {
   expect_equal(extract_mocks(list(identity = identity), asNamespace("base"))$identity$name, "identity")
   expect_error(extract_mocks(list(..bogus.. = identity), asNamespace("base")),
