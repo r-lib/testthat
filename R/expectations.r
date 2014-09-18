@@ -345,7 +345,7 @@ is_identical_to <- function(expected, label = NULL) {
     expectation(
       identical(actual, expected),
       paste0("is not identical to ", label, ". Differences: \n", diff),
-      paste0("is identical to", label)
+      paste0("is identical to ", label)
     )
   }
 }
@@ -764,7 +764,7 @@ is_more_than <- function(expected, label = NULL, ...) {
     expectation(
       diff < 0,
       paste0("not more than ", label, ". Difference: ", format(diff)),
-      paste0("is more than")
+      paste0("is more than ", label)
     )
   }
 }
