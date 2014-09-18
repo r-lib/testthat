@@ -98,6 +98,10 @@ test_that("can mock both qualified and unqualified functions", {
   expect_identical(with_mock(3, `stats::acf` = identity, acf), identity)
 })
 
+test_that("can mock hidden functions", {
+  expect_identical(with_mock(3, `stats:::acf1.default` = identity, stats:::acf1.default), identity)
+})
+
 test_that("mock extraction", {
   expect_equal(extract_mocks(list(identity = identity), asNamespace("base"))$identity$name, "identity")
   expect_error(extract_mocks(list(..bogus.. = identity), asNamespace("base")),
