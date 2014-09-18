@@ -2,11 +2,11 @@
 
 ## New features
 
-* testhat now comes with a first version of a testing language for behaviour
-  driven development. The language is similiar to RSpec for Ruby or Mocha for
-  JavaScript. BDD tests read like sentences and it should thus be easier
-  to understand what the specification of a function/component is.
-  See `?describe()` for further information and examples.
+* BDD: testhat now comes with a first version of a testing language for 
+  behaviour driven development (BDD). The language is similiar to RSpec for 
+  Ruby or Mocha for JavaScript. BDD tests read like sentences and it should 
+  thus be easier to understand what the specification of a function/component 
+  is. See `?describe()` for further information and examples.
 
 * It's now possible to `skip()` a test with an informative message - this is
   useful when tests are only available under certain conditions, as when
@@ -16,10 +16,10 @@
   of this code, you'll need either to use devtools, or run 
   `Sys.setenv(NOT_CRAN = "true"))`
 
-* simple mocking: function `with_mock` allows temporarily replacing
-  functions defined in packages.  This is useful for testing code that relies
+* Simple mocking: `with_mock()` makes it easy to temporarily replace
+  functions defined in packages. This is useful for testing code that relies
   on functions that are slow, have unintended side effects or access resources
-  that may not be available when testing.  (Thanks to @krlmlr, #159)
+  that may not be available when testing (#159, @krlmlr).
 
 ## Minor improvements and bug fixes
 
