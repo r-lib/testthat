@@ -45,7 +45,10 @@ with_mock <- function(..., .env = topenv()) {
   ret
 }
 
-pkg_and_name_rx <- "^(?:(.*)::)?(.*)$"
+pkg_rx <- ".*[^:]"
+colons_rx <- "::(?:[:]?)"
+name_rx <- ".*"
+pkg_and_name_rx <- sprintf("^(?:(%s)%s)?(%s)$", pkg_rx, colons_rx, name_rx)
 
 extract_mocks <- function(new_values, .env) {
   if (is.character(.env))
