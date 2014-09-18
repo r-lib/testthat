@@ -40,6 +40,7 @@
 * Random praise is renabled by default (again!) (#164).
 
 * teamcity reporter now correctly escapes output messages (#150, @windelinckx).
+  It also uses nested suites to include test names.
 
 ## Deprecated functions
 

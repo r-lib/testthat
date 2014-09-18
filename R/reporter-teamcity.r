@@ -14,7 +14,8 @@ NULL
 #' @param ... Arguments used to initialise class
 TeamcityReporter <- setRefClass("TeamcityReporter", contains = "Reporter",
   fields = list(
-    "currentContext" = "character"
+    "currentContext" = "character",
+    "currentTest" = "character"
   ),
 
   methods = list(
@@ -23,11 +24,20 @@ TeamcityReporter <- setRefClass("TeamcityReporter", contains = "Reporter",
   		currentContext <<- desc
       teamcity("testSuiteStarted", currentContext)
     },
-
     end_context = function() {
       teamcity("testSuiteFinished", currentContext)
+      cat("\n\n")
+    },
+
+    start_test = function(desc) {
+      currentTest <<- desc
+      teamcity("testSuiteStarted", currentTest)
+    },
+    end_test = function() {
+      teamcity("testSuiteFinished", currentTest)
       cat("\n")
     },
+
 
     start_reporter = function() {
 		  currentContext <<- ""
