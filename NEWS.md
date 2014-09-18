@@ -21,6 +21,10 @@
   on functions that are slow, have unintended side effects or access resources
   that may not be available when testing (#159, @krlmlr).
 
+* A new expectation, `equals_reference()` and `expect_equal_to_reference()`,
+  has been added, which tests for equality to a reference value stored in a
+  file (#148, @jonclayden).
+
 ## Minor improvements and bug fixes
 
 * `auto_test_package()` works once more, and now uses `devtools::load_all()`

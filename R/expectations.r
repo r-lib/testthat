@@ -221,7 +221,7 @@ expect_equal <- function(object, expected, ..., info = NULL, label = NULL,
 #' literally. This can be helpful when the value is necessarily complex. If
 #' the file does not exist then it will be created using the value of the
 #' specified object, and subsequent tests will check for consistency against
-#' that generated value.
+#' that generated value. The test can be reset by deleting the RDS file.
 #
 #' @param file The file name used to store the object. Should have an "rds"
 #'   extension.
@@ -244,7 +244,7 @@ equals_reference <- function(file, label = NULL, ...) {
     if (is.null(label)) {
       label <- paste("reference from", file)
     }
-    equals(reference, label=label, ...)
+    equals(reference, label = label, ...)
   } else {
     function(actual) {
       # saveRDS() returns no useful information to use for the expectation

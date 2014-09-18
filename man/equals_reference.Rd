@@ -33,7 +33,7 @@ expected value is stored in an RDS file instead of being specified
 literally. This can be helpful when the value is necessarily complex. If
 the file does not exist then it will be created using the value of the
 specified object, and subsequent tests will check for consistency against
-that generated value.
+that generated value. The test can be reset by deleting the RDS file.
 }
 \examples{
 \dontrun{
