@@ -21,11 +21,11 @@ TeamcityReporter <- setRefClass("TeamcityReporter", contains = "Reporter",
 
     start_context = function(desc) {
   		currentContext <<- desc
-      teamcity("testSuiteStarted", name = currentContext)
+      teamcity("testSuiteStarted", currentContext)
     },
 
     end_context = function() {
-      teamcity("testSuiteFinished", name = currentContext)
+      teamcity("testSuiteFinished", currentContext)
       cat("\n")
     },
 
@@ -37,29 +37,27 @@ TeamcityReporter <- setRefClass("TeamcityReporter", contains = "Reporter",
       testName <- strsplit(result$success_msg, "\n")[[1]][1]
 
       if (result$skipped) {
-        teamcity("testIgnored", name = testName, message = result$failure_msg)
+        teamcity("testIgnored", testName, message = result$failure_msg)
         return()
       }
 
-      teamcity("testStarted", name = testName)
+      teamcity("testStarted", testName)
 
       if (!result$passed) {
         lines <- strsplit(result$failure_msg, "\n")[[1]]
 
-        teamcity("testFailed",
-          name = testName,
-          message = lines[1],
+        teamcity("testFailed", testName, message = lines[1],
           details = paste(lines[-1], collapse = "\n")
         )
   		}
-      teamcity("testFinished", name = testName)
+      teamcity("testFinished", testName)
     }
 
   )
 )
 
-teamcity <- function(.name, ...) {
-  values <- list(...)
+teamcity <- function(event, name, ...) {
+  values <- list(name = name, ...)
   values <- vapply(values, teamcity_escape, character(1))
   if (length(values) == 0) {
     value_string <- ""
@@ -67,7 +65,7 @@ teamcity <- function(.name, ...) {
     value_string <- paste0(names(values), "='", values, "'", collapse = " ")
   }
 
-  cat("##teamcity[", .name, " ", value_string, "]\n", sep = "")
+  cat("##teamcity[", event, " ", value_string, "]\n", sep = "")
 }
 
 # teamcity escape character is |
