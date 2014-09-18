@@ -1,6 +1,12 @@
 # testthat 0.8.1.0.99
 
-* `library_if_available()` has been deprecated.
+## New features
+
+* testhat now comes with a first version of a testing language for behaviour
+  driven development. The language is similiar to RSpec for Ruby or Mocha for
+  JavaScript. BDD tests read like sentences and it should thus be easier
+  to understand what the specification of a function/component is.
+  See `?describe()` for further information and examples.
 
 * It's now possible to `skip()` a test with an informative message - this is
   useful when tests are only available under certain conditions, as when
@@ -9,31 +15,31 @@
 * `skip_on_cran()` allows you to skip tests when run on CRAN. To take advantage
   of this code, you'll need either to use devtools, or run 
   `Sys.setenv(NOT_CRAN = "true"))`
+  
+## Minor improvements and bug fixes
 
 * `auto_test_package()` works once more, and now uses `devtools::load_all()`
   for higher fidelity loading (#138, #151). 
   
-* `safe_digest()` uses a better strategy, and returns NA for directories 
-  (#138, #146).
+* fixed bug in `compare.character()` reported by Georgi Boshnakov.
 
-* `colourise` now uses option `testthat.use_colours` (default: `TRUE`). If it
+* `colourise()` now uses option `testthat.use_colours` (default: `TRUE`). If it
   is `FALSE`, output is not colourised (#153, @mbojan).
-
-* Random praise is renabled by default (again!) (#164).
 
 * `is_identical_to()` only calls `all.equal()` to generate an informative
   error message if the two objects are not identical (#165).
 
-* teamcity reporter now correctly escapes output messages so that teamcity 
-  understands and interprets the output.
+* `safe_digest()` uses a better strategy, and returns NA for directories 
+  (#138, #146).
 
-* fixed bug in `compare.character()` reported by Georgi Boshnakov.
+* Random praise is renabled by default (again!) (#164).
 
-* testhat now comes with a first version of a testing language for behaviour
-  driven development. The language is similiar to RSpec for Ruby or Mocha for
-  JavaScript. BDD tests read like sentences and it should thus be easier
-  to understand what the specification of a function/component is.
-  See `?describe()` for further information and examples.
+* teamcity reporter now correctly escapes output messages (#150, @windelinckx).
+
+## Deprecated functions
+
+* `library_if_available()` has been deprecated.
+
 
 * simple mocking: function `with_mock` allows temporarily replacing
   functions defined in packages.  This is useful for testing code that relies
