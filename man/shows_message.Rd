@@ -45,8 +45,10 @@ expect_message(f(-1), "*x*", fixed = TRUE)
 expect_message(f(-1), "NEGATIVE", ignore.case = TRUE)
 }
 \seealso{
-Other expectations: \code{\link{equals}},
-  \code{\link{expect_equal}}; \code{\link{expect-compare}},
+Other expectations: \code{\link{equals_reference}},
+  \code{\link{expect_equal_to_reference}};
+  \code{\link{equals}}, \code{\link{expect_equal}};
+  \code{\link{expect-compare}},
   \code{\link{expect_less_than}},
   \code{\link{expect_more_than}},
   \code{\link{is_less_than}}, \code{\link{is_more_than}};
