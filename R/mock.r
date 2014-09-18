@@ -51,8 +51,8 @@ name_rx <- ".*"
 pkg_and_name_rx <- sprintf("^(?:(%s)%s)?(%s)$", pkg_rx, colons_rx, name_rx)
 
 extract_mocks <- function(new_values, .env) {
-  if (is.character(.env))
-    .env <- asNamespace(.env)
+  if (is.environment(.env))
+    .env <- environmentName(.env)
   mock_qual_names <- names(new_values)
 
   lapply(
@@ -63,17 +63,16 @@ extract_mocks <- function(new_values, .env) {
       name <- gsub(pkg_and_name_rx, "\\2", qual_name)
 
       if (pkg_name == "")
-        envs <- list(.env)
-      else {
-        envs <- list(asNamespace(pkg_name))
+        pkg_name <- .env
 
-        # Only look in list of exported functions if package is really loaded
-        pkg_env_name <- sprintf("package:%s", pkg_name)
-        if (pkg_env_name %in% search()) {
-          export_env <- as.environment(pkg_env_name)
-          if (exists(name, envir = export_env, inherits = FALSE))
-            envs <- c(envs, export_env)
-        }
+      envs <- list(asNamespace(pkg_name))
+
+      # Only look in list of exported functions if package is really loaded
+      pkg_env_name <- sprintf("package:%s", pkg_name)
+      if (pkg_env_name %in% search()) {
+        export_env <- as.environment(pkg_env_name)
+        if (exists(name, envir = export_env, inherits = FALSE))
+          envs <- c(envs, export_env)
       }
 
       if (!exists(name, envs[[1]], mode = "function"))
