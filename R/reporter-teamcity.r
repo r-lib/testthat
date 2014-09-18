@@ -38,14 +38,18 @@ TeamcityReporter <- setRefClass("TeamcityReporter", contains = "Reporter",
 
       splitTestName <- strsplit(gsub('\'', ' ', result$success_msg),"\n")
       testName <- splitTestName[[1]][1]
-      # Need to escape characters reserved by teamcity for messages (teamcity escape character is | )
       testName <- teamcity_escape(testName)
+
+      if (result$skipped) {
+        msg <- teamcity_escape(result$failure_msg)
+
+        cat("##teamcity[testIgnored name='", testName, "' message='", msg, "']")
+        return()
+      }
 
       cat("##teamcity[testStarted name='",testName,"']\n")
 
-      if (result$skipped) {
-        # ???
-      } else if (!result$passed) {
+      if (!result$passed) {
         splitMessage <- strsplit(gsub('\'', ' ', result$failure_msg),"\n")
         errorMessage <- splitMessage[[1]][1]
         errorMessage <- teamcity_escape(errorMessage)
