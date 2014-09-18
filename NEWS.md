@@ -1,4 +1,4 @@
-# testthat 0.8.1.0.99
+# testthat 0.9
 
 ## New features
 
@@ -15,7 +15,12 @@
 * `skip_on_cran()` allows you to skip tests when run on CRAN. To take advantage
   of this code, you'll need either to use devtools, or run 
   `Sys.setenv(NOT_CRAN = "true"))`
-  
+
+* simple mocking: function `with_mock` allows temporarily replacing
+  functions defined in packages.  This is useful for testing code that relies
+  on functions that are slow, have unintended side effects or access resources
+  that may not be available when testing.  (Thanks to @krlmlr, #159)
+
 ## Minor improvements and bug fixes
 
 * `auto_test_package()` works once more, and now uses `devtools::load_all()`
@@ -39,12 +44,6 @@
 ## Deprecated functions
 
 * `library_if_available()` has been deprecated.
-
-
-* simple mocking: function `with_mock` allows temporarily replacing
-  functions defined in packages.  This is useful for testing code that relies
-  on functions that are slow, have unintended side effects or access resources
-  that may not be available when testing.  (Thanks to @krlmlr, #159)
 
 # testthat 0.8.1
 
