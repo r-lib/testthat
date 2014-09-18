@@ -94,10 +94,10 @@ test_that("can access variables defined in function", {
 })
 
 test_that("can mock both qualified and unqualified functions", {
-  expect_identical(with_mock(3, `stats::acf` = identity, stats::acf), identity)
-  expect_identical(with_mock(3, `stats::acf` = identity, acf), identity)
-  expect_identical(with_mock(3, acf = identity, stats::acf, .env = "stats"), identity)
-  expect_identical(with_mock(3, acf = identity, acf, .env = "stats"), identity)
+  expect_identical(with_mock(`stats::acf` = identity, stats::acf), identity)
+  expect_identical(with_mock(`stats::acf` = identity, acf), identity)
+  expect_identical(with_mock(acf = identity, stats::acf, .env = "stats"), identity)
+  expect_identical(with_mock(acf = identity, acf, .env = "stats"), identity)
 })
 
 test_that("can mock hidden functions", {
