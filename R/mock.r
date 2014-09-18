@@ -99,7 +99,10 @@ extract_mocks <- function(new_values, .env) {
 
 set_mock <- function(mock) {
   for (env in mock$envs) {
+    # We're doing nasty things here.  Some code checking tools will warn here,
+    # the do.call is to ensure silence.  Aliasing is not enough here.
     do.call("unlockBinding", list(mock$name, env))
+
     env[[mock$name]] <- mock$new_value
   }
   invisible(NULL)
@@ -109,6 +112,7 @@ reset_mock <- function(mock) {
   for (env in mock$envs) {
     if (!bindingIsLocked(mock$name, env)) {
       env[[mock$name]] <- mock$orig_value
+
       lockBinding(mock$name, env)
     }
   }
