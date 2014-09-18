@@ -14,59 +14,64 @@ NULL
 #' @param ... Arguments used to initialise class
 TeamcityReporter <- setRefClass("TeamcityReporter", contains = "Reporter",
   fields = list(
-    "has_tests" = "logical",
-    "currentContext" = "character"),
+    "currentContext" = "character"
+  ),
 
   methods = list(
 
     start_context = function(desc) {
-  		currentContext <<- teamcity_escape(desc);
-  		cat("##teamcity[testSuiteStarted name='", currentContext, "']\n")
+  		currentContext <<- desc
+      teamcity("testSuiteStarted", name = currentContext)
     },
 
     end_context = function() {
-		  cat("##teamcity[testSuiteFinished name='", currentContext, "']\n")
+      teamcity("testSuiteFinished", name = currentContext)
+      cat("\n")
     },
 
     start_reporter = function() {
 		  currentContext <<- ""
-		  has_tests <<- FALSE
     },
 
     add_result = function(result) {
-      has_tests <<- TRUE
-
-      splitTestName <- strsplit(gsub('\'', ' ', result$success_msg),"\n")
-      testName <- splitTestName[[1]][1]
-      testName <- teamcity_escape(testName)
+      testName <- strsplit(result$success_msg, "\n")[[1]][1]
 
       if (result$skipped) {
-        msg <- teamcity_escape(result$failure_msg)
-
-        cat("##teamcity[testIgnored name='", testName, "' message='", msg, "']")
+        teamcity("testIgnored", name = testName, message = result$failure_msg)
         return()
       }
 
-      cat("##teamcity[testStarted name='",testName,"']\n")
+      teamcity("testStarted", name = testName)
 
       if (!result$passed) {
-        splitMessage <- strsplit(gsub('\'', ' ', result$failure_msg),"\n")
-        errorMessage <- splitMessage[[1]][1]
-        errorMessage <- teamcity_escape(errorMessage)
+        lines <- strsplit(result$failure_msg, "\n")[[1]]
 
-        detailsMessage <- paste(splitMessage[[1]][-1], collapse="|n")
-        detailsMessage <- teamcity_escape(detailsMessage)
-
-        cat("##teamcity[testFailed name='", testName, "' message='", errorMessage, "' details='", detailsMessage, "']\n")
+        teamcity("testFailed",
+          name = testName,
+          message = lines[1],
+          details = paste(lines[-1], collapse = "\n")
+        )
   		}
-  		cat("##teamcity[testFinished name='", testName, "']\n")
-    },
-
-    end_reporter = function() {
+      teamcity("testFinished", name = testName)
     }
+
   )
 )
 
+teamcity <- function(.name, ...) {
+  values <- list(...)
+  values <- vapply(values, teamcity_escape, character(1))
+  if (length(values) == 0) {
+    value_string <- ""
+  } else {
+    value_string <- paste0(names(values), "='", values, "'", collapse = " ")
+  }
+
+  cat("##teamcity[", .name, " ", value_string, "]\n", sep = "")
+}
+
+# teamcity escape character is |
 teamcity_escape <- function(s) {
-  gsub("(['|]|\\[|\\])", "|\\1", s)
+  s <- gsub("(['|]|\\[|\\])", "|\\1", s)
+  gsub("\n", "|n", s)
 }
