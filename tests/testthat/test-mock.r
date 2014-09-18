@@ -99,7 +99,7 @@ test_that("can mock both qualified and unqualified functions", {
 })
 
 test_that("can mock hidden functions", {
-  expect_identical(with_mock(3, `stats:::acf1.default` = identity, stats:::acf1.default), identity)
+  expect_identical(with_mock(3, `stats:::add1.default` = identity, stats:::add1.default), identity)
 })
 
 test_that("mock extraction", {
