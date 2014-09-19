@@ -6,7 +6,6 @@
 
 SEXP reassign_function(SEXP name, SEXP env, SEXP old_fun, SEXP new_fun)
 {
-  //fprintf(stderr, "%d %d %d\n", TYPEOF(name), TYPEOF(env), TYPEOF(new_fun));
   if (TYPEOF(name) != SYMSXP) error("name must be a symbol");
   if (TYPEOF(env) != ENVSXP) error("env must be an environment");
   if (TYPEOF(new_fun) != CLOSXP) error("new_fun must be a function");
