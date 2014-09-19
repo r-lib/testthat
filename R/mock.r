@@ -84,9 +84,6 @@ extract_mocks <- function(new_values, .env) {
 
       envs <- list(asNamespace(pkg_name))
 
-      # Only look in list of exported functions if package is really loaded
-      pkg_env_name <- sprintf("package:%s", pkg_name)
-
       if (!exists(name, envs[[1]], mode = "function"))
         stop("Function ", name, " not found in environment ",
              environmentName(envs[[1]]), ".")
