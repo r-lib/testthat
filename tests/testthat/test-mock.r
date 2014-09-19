@@ -94,19 +94,19 @@ test_that("can access variables defined in function", {
 })
 
 test_that("can mock both qualified and unqualified functions", {
-  expect_identical(with_mock(`stats::acf` = identity, stats::acf), identity)
-  expect_identical(with_mock(`stats::acf` = identity, acf), identity)
-  expect_identical(with_mock(acf = identity, stats::acf, .env = "stats"), identity)
-  expect_identical(with_mock(acf = identity, acf, .env = "stats"), identity)
+  expect_identical(with_mock(`stats::acf` = identity, duplicate(stats::acf)), identity)
+  expect_identical(with_mock(`stats::acf` = identity, duplicate(acf)), identity)
+  expect_identical(with_mock(acf = identity, duplicate(stats::acf), .env = "stats"), identity)
+  expect_identical(with_mock(acf = identity, duplicate(acf), .env = "stats"), identity)
 })
 
 test_that("can mock hidden functions", {
-  expect_identical(with_mock(`stats:::add1.default` = identity, stats:::add1.default), identity)
+  expect_identical(with_mock(`stats:::add1.default` = identity, duplicate(stats:::add1.default)), identity)
 })
 
 test_that("can mock if package is not loaded", {
   expect_false("package:devtools" %in% search())
-  expect_identical(with_mock(`devtools::add_path` = identity, devtools::add_path), identity)
+  expect_identical(with_mock(`devtools::add_path` = identity, duplicate(devtools::add_path)), identity)
 })
 
 test_that("changes to variables are preserved between calls and visible outside", {
