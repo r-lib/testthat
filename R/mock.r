@@ -96,10 +96,12 @@ reset_mock <- function(mock) {
   reassign_function(as.name(mock$name), mock$env, mock$target_value, mock$orig_value)
 }
 
+#' @useDynLib testthat C_reassign_function
 reassign_function <- function(name, env, old_fun, new_fun) {
   .Call(C_reassign_function, name, env, old_fun, new_fun)
 }
 
+#' @useDynLib testthat C_duplicate
 duplicate <- function(x) {
   .Call(C_duplicate, x)
 }

@@ -4,7 +4,7 @@
 #include <R_ext/Error.h>
 
 
-SEXP reassign_function(SEXP name, SEXP env, SEXP old_fun, SEXP new_fun)
+SEXP C_reassign_function(SEXP name, SEXP env, SEXP old_fun, SEXP new_fun)
 {
   if (TYPEOF(name) != SYMSXP) error("name must be a symbol");
   if (TYPEOF(env) != ENVSXP) error("env must be an environment");
@@ -17,4 +17,8 @@ SEXP reassign_function(SEXP name, SEXP env, SEXP old_fun, SEXP new_fun)
   ATTRIB(old_fun) = ATTRIB(new_fun);
 
   return R_NilValue;
+}
+
+SEXP C_duplicate(SEXP x) {
+  return duplicate(x);
 }
