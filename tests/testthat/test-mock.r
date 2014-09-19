@@ -8,6 +8,17 @@ test_that("can make 3 = 5", {
   expect_that(5, not(equals(3)))
 })
 
+test_that("mocked function is restored on error", {
+  expect_error(
+    with_mock(
+      compare = function(x, y, ...) list(equal = TRUE, message = "TRUE"),
+      stop("Simulated error")
+    ),
+    "Simulated error"
+  )
+  expect_that(5, not(equals(3)))
+})
+
 test_that("non-empty mock with return value", {
   expect_true(with_mock(
     compare = function(x, y, ...) list(equal = TRUE, message = "TRUE"),
