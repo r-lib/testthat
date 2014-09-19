@@ -10,11 +10,6 @@
 #' exported, the patching also needs to take place in the package environment.
 #' On exit, everything is restored to the previous state.
 #'
-#' Caveat: Currently, imported functions cannot be mocked if they are accessed
-#' from package code without qualification.  Please use qualified access
-#' (using the \code{::} operator) instead of adding \code{importFrom(...)} to the
-#' \code{NAMESPACE} file.
-#'
 #' @param ... named parameters redefine mocked functions, unnamed parameters
 #'   will be evaluated after mocking the functions
 #' @param .env the environment in which to patch the functions,

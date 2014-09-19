@@ -27,11 +27,6 @@ Internally, this works by patching the function definition in the package's
 namespace.  If the package is loaded, and the function to be mocked is
 exported, the patching also needs to take place in the package environment.
 On exit, everything is restored to the previous state.
-
-Caveat: Currently, imported functions cannot be mocked if they are accessed
-from package code without qualification.  Please use qualified access
-(using the \code{::} operator) instead of adding \code{importFrom(...)} to the
-\code{NAMESPACE} file.
 }
 \examples{
 with_mock(
