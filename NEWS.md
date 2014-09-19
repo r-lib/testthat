@@ -2,11 +2,11 @@
 
 ## New features
 
-* BDD: testhat now comes with a first version of a testing language for 
-  behaviour driven development (BDD). The language is similiar to RSpec for 
-  Ruby or Mocha for JavaScript. BDD tests read like sentences and it should 
-  thus be easier to understand what the specification of a function/component 
-  is. See `?describe()` for further information and examples.
+* BDD: testhat now comes with an initial behaviour driven development (BDD) 
+  interface. The language is similiar to RSpec for Ruby or Mocha for JavaScript. 
+  BDD tests read like sentences, so they should make it easier to understand 
+  the specification of a function. See `?describe()` for further information 
+  and examples.
 
 * It's now possible to `skip()` a test with an informative message - this is
   useful when tests are only available under certain conditions, as when
@@ -21,16 +21,15 @@
   on functions that are slow, have unintended side effects or access resources
   that may not be available when testing (#159, @krlmlr).
 
-* A new expectation, `equals_reference()` and `expect_equal_to_reference()`,
-  has been added, which tests for equality to a reference value stored in a
-  file (#148, @jonclayden).
+* A new expectation, `expect_equal_to_reference()` has been added. It 
+  tests for equality to a reference value stored in a file (#148, @jonclayden).
 
 ## Minor improvements and bug fixes
 
 * `auto_test_package()` works once more, and now uses `devtools::load_all()`
   for higher fidelity loading (#138, #151). 
   
-* fixed bug in `compare.character()` reported by Georgi Boshnakov.
+* Bug in `compare.character()` fixed, as reported by Georgi Boshnakov.
 
 * `colourise()` now uses option `testthat.use_colours` (default: `TRUE`). If it
   is `FALSE`, output is not colourised (#153, @mbojan).
@@ -43,7 +42,7 @@
 
 * Random praise is renabled by default (again!) (#164).
 
-* teamcity reporter now correctly escapes output messages (#150, @windelinckx).
+* Teamcity reporter now correctly escapes output messages (#150, @windelinckx).
   It also uses nested suites to include test names.
 
 ## Deprecated functions
