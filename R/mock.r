@@ -5,10 +5,9 @@
 #' slow, have unintended side effects or access resources that may not be
 #' available when testing.
 #'
-#' Internally, this works by patching the function definition in the package's
-#' namespace.  If the package is loaded, and the function to be mocked is
-#' exported, the patching also needs to take place in the package environment.
-#' On exit, everything is restored to the previous state.
+#' Internally, this works by temporarily substituting formals, body, environment
+#' and attributes of the internal function object.  On exit (both regular or
+#' error), everything is restored to the previous state.
 #'
 #' @param ... named parameters redefine mocked functions, unnamed parameters
 #'   will be evaluated after mocking the functions
