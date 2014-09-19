@@ -119,6 +119,11 @@ test_that("changes to variables are preserved between calls and visible outside"
   expect_equal(x, 3)
 })
 
+test_that("currently cannot mock function imported from other package", {
+  expect_true("setRefClass" %in% getNamespaceImports("testthat")[["methods"]])
+  expect_error(with_mock(`testthat::setRefClass` = identity, setRefClass))
+})
+
 test_that("mock extraction", {
   expect_equal(extract_mocks(list(identity = identity), asNamespace("base"))$identity$name, "identity")
   expect_error(extract_mocks(list(..bogus.. = identity), asNamespace("base")),
