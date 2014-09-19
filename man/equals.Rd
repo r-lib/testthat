@@ -31,18 +31,16 @@ Comparison performed using \code{\link{all.equal}}.
 }
 \examples{
 a <- 10
-expect_that(a, equals(10))
 expect_equal(a, 10)
 
 # Use equals() when testing for numeric equality
 sqrt(2) ^ 2 - 1
-expect_that(sqrt(2) ^ 2, equals(2))
 expect_equal(sqrt(2) ^ 2, 2)
 # Neither of these forms take floating point representation errors into
 # account
 \dontrun{
-expect_that(sqrt(2) ^ 2 == 2, is_true())
-expect_that(sqrt(2) ^ 2, is_identical_to(2))
+expect_true(sqrt(2) ^ 2 == 2)
+expect_identical(sqrt(2) ^ 2, 2)
 }
 
 # You can pass on additional arguments to all.equal:
@@ -67,7 +65,8 @@ Other expectations: \code{\link{equals_reference}},
   \code{\link{expect_equivalent}},
   \code{\link{is_equivalent_to}};
   \code{\link{expect_error}}, \code{\link{throws_error}};
-  \code{\link{expect_false}}, \code{\link{is_false}};
+  \code{\link{expect_false}}, \code{\link{expect_true}},
+  \code{\link{is_false}}, \code{\link{is_true}};
   \code{\link{expect_identical}},
   \code{\link{is_identical_to}}; \code{\link{expect_is}},
   \code{\link{is_a}}; \code{\link{expect_match}},
@@ -75,8 +74,7 @@ Other expectations: \code{\link{equals_reference}},
   \code{\link{shows_message}}; \code{\link{expect_named}},
   \code{\link{has_names}}; \code{\link{expect_null}},
   \code{\link{is_null}}; \code{\link{expect_output}},
-  \code{\link{prints_text}}; \code{\link{expect_true}},
-  \code{\link{is_true}}; \code{\link{expect_warning}},
+  \code{\link{prints_text}}; \code{\link{expect_warning}},
   \code{\link{gives_warning}};
   \code{\link{takes_less_than}}
 }

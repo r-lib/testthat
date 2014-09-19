@@ -32,10 +32,6 @@ f <- function(x) {
   if (x < 0) warning("*x* is already negative")
   -x
 }
-expect_that(f(-1), gives_warning())
-expect_that(f(-1), gives_warning("already negative"))
-\dontrun{expect_that(f(1), gives_warning())}
-
 expect_warning(f(-1))
 expect_warning(f(-1), "already negative")
 \dontrun{expect_warning(f(1))}
@@ -55,7 +51,8 @@ Other expectations: \code{\link{equals_reference}},
   \code{\link{expect_equivalent}},
   \code{\link{is_equivalent_to}};
   \code{\link{expect_error}}, \code{\link{throws_error}};
-  \code{\link{expect_false}}, \code{\link{is_false}};
+  \code{\link{expect_false}}, \code{\link{expect_true}},
+  \code{\link{is_false}}, \code{\link{is_true}};
   \code{\link{expect_identical}},
   \code{\link{is_identical_to}}; \code{\link{expect_is}},
   \code{\link{is_a}}; \code{\link{expect_match}},
@@ -63,7 +60,6 @@ Other expectations: \code{\link{equals_reference}},
   \code{\link{shows_message}}; \code{\link{expect_named}},
   \code{\link{has_names}}; \code{\link{expect_null}},
   \code{\link{is_null}}; \code{\link{expect_output}},
-  \code{\link{prints_text}}; \code{\link{expect_true}},
-  \code{\link{is_true}}; \code{\link{takes_less_than}}
+  \code{\link{prints_text}}; \code{\link{takes_less_than}}
 }
 

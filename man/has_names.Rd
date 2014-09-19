@@ -34,9 +34,6 @@ names (with \code{NULL}).
 }
 \examples{
 x <- c(a = 1, b = 2, c = 3)
-expect_that(x, has_names())
-expect_that(x, has_names(c("a", "b", "c")))
-
 expect_named(x)
 expect_named(x, c("a", "b", "c"))
 
@@ -45,7 +42,6 @@ expect_named(x, c("B", "C", "A"), ignore.order = TRUE, ignore.case = TRUE)
 
 # Can also check for the absence of names with NULL
 z <- 1:4
-expect_that(z, has_names(NULL))
 expect_named(z, NULL)
 }
 \seealso{
@@ -59,15 +55,15 @@ Other expectations: \code{\link{equals_reference}},
   \code{\link{expect_equivalent}},
   \code{\link{is_equivalent_to}};
   \code{\link{expect_error}}, \code{\link{throws_error}};
-  \code{\link{expect_false}}, \code{\link{is_false}};
+  \code{\link{expect_false}}, \code{\link{expect_true}},
+  \code{\link{is_false}}, \code{\link{is_true}};
   \code{\link{expect_identical}},
   \code{\link{is_identical_to}}; \code{\link{expect_is}},
   \code{\link{is_a}}; \code{\link{expect_match}},
   \code{\link{matches}}; \code{\link{expect_message}},
   \code{\link{shows_message}}; \code{\link{expect_null}},
   \code{\link{is_null}}; \code{\link{expect_output}},
-  \code{\link{prints_text}}; \code{\link{expect_true}},
-  \code{\link{is_true}}; \code{\link{expect_warning}},
+  \code{\link{prints_text}}; \code{\link{expect_warning}},
   \code{\link{gives_warning}};
   \code{\link{takes_less_than}}
 }
