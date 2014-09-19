@@ -130,9 +130,9 @@ test_that("mock extraction", {
   expect_error(extract_mocks(list(..bogus.. = identity), asNamespace("base")),
                "Function [.][.]bogus[.][.] not found in environment base")
   expect_equal(extract_mocks(list(`base::identity` = identity), NULL)[[1]]$name, "identity")
-  expect_equal(extract_mocks(list(`base::identity` = identity), NULL)[[1]]$envs, list(asNamespace("base")))
-  expect_equal(extract_mocks(list(identity = stop), "base")[[1]]$envs, list(asNamespace("base")))
-  expect_equal(extract_mocks(list(identity = stop), asNamespace("base"))[[1]]$envs, list(asNamespace("base")))
+  expect_equal(extract_mocks(list(`base::identity` = identity), NULL)[[1]]$env, asNamespace("base"))
+  expect_equal(extract_mocks(list(identity = stop), "base")[[1]]$env, asNamespace("base"))
+  expect_equal(extract_mocks(list(identity = stop), asNamespace("base"))[[1]]$env, asNamespace("base"))
   expect_equal(extract_mocks(list(`base::identity` = stop), NULL)[[1]]$orig_value, identity)
   expect_equal(extract_mocks(list(`base::identity` = stop), NULL)[[1]]$new_value, stop)
   expect_equal(extract_mocks(list(`base::identity` = stop), "stats")[[1]]$new_value, stop)

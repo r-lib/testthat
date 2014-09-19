@@ -82,30 +82,24 @@ extract_mocks <- function(new_values, .env) {
       if (pkg_name == "")
         pkg_name <- .env
 
-      envs <- list(asNamespace(pkg_name))
+      env <- asNamespace(pkg_name)
 
-      if (!exists(name, envs[[1]], mode = "function"))
+      if (!exists(name, env, mode = "function"))
         stop("Function ", name, " not found in environment ",
-             environmentName(envs[[1]]), ".")
-      orig_value <- get(name, envs[[1]], mode = "function")
-      structure(list(envs = envs, name = name, orig_value = duplicate(orig_value), target_value = orig_value, new_value = eval(new_values[[qual_name]])),
+             environmentName(env), ".")
+      orig_value <- get(name, env, mode = "function")
+      structure(list(env = env, name = name, orig_value = duplicate(orig_value), target_value = orig_value, new_value = eval(new_values[[qual_name]])),
                 class = "mock")
     }
   )
 }
 
 set_mock <- function(mock) {
-  for (env in mock$envs) {
-    reassign_function(as.name(mock$name), env, mock$target_value, mock$new_value)
-  }
-  invisible(NULL)
+  reassign_function(as.name(mock$name), mock$env, mock$target_value, mock$new_value)
 }
 
 reset_mock <- function(mock) {
-  for (env in mock$envs) {
-    reassign_function(as.name(mock$name), env, mock$target_value, mock$orig_value)
-  }
-  invisible(NULL)
+  reassign_function(as.name(mock$name), mock$env, mock$target_value, mock$orig_value)
 }
 
 reassign_function <- function(name, env, old_fun, new_fun) {
