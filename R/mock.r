@@ -86,17 +86,12 @@ extract_mocks <- function(new_values, .env) {
 
       # Only look in list of exported functions if package is really loaded
       pkg_env_name <- sprintf("package:%s", pkg_name)
-      if (pkg_env_name %in% search()) {
-        export_env <- as.environment(pkg_env_name)
-        if (exists(name, envir = export_env, inherits = FALSE))
-          envs <- c(envs, export_env)
-      }
 
       if (!exists(name, envs[[1]], mode = "function"))
         stop("Function ", name, " not found in environment ",
              environmentName(envs[[1]]), ".")
       orig_value <- get(name, envs[[1]], mode = "function")
-      structure(list(envs = envs, name = name, orig_value = orig_value, new_value = eval(new_values[[qual_name]])),
+      structure(list(envs = envs, name = name, orig_value = duplicate(orig_value), target_value = orig_value, new_value = eval(new_values[[qual_name]])),
                 class = "mock")
     }
   )
@@ -104,22 +99,22 @@ extract_mocks <- function(new_values, .env) {
 
 set_mock <- function(mock) {
   for (env in mock$envs) {
-    # We're doing nasty things here.  Some code checking tools will warn here,
-    # the do.call is to ensure silence.  Aliasing is not enough here.
-    do.call("unlockBinding", list(mock$name, env))
-
-    env[[mock$name]] <- mock$new_value
+    reassign_function(as.name(mock$name), env, mock$target_value, mock$new_value)
   }
   invisible(NULL)
 }
 
 reset_mock <- function(mock) {
   for (env in mock$envs) {
-    if (!bindingIsLocked(mock$name, env)) {
-      env[[mock$name]] <- mock$orig_value
-
-      lockBinding(mock$name, env)
-    }
+    reassign_function(as.name(mock$name), env, mock$target_value, mock$orig_value)
   }
   invisible(NULL)
+}
+
+reassign_function <- function(name, env, old_fun, new_fun) {
+  .Call(C_reassign_function, name, env, old_fun, new_fun)
+}
+
+duplicate <- function(x) {
+  .Call(C_duplicate, x)
 }
