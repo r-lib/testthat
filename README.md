@@ -1,6 +1,6 @@
 # testthat
 
-[![Build Status](https://travis-ci.org/hadley/testthat.png?branch=master)](https://travis-ci.org/hadley/testthat)
+[![Travis-CI Build Status](https://travis-ci.org/hadley/testthat.png?branch=master)](https://travis-ci.org/hadley/testthat) [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/krlmlr/devtools?branch=master)](https://ci.appveyor.com/project/krlmlr/devtools)
 
 Testing your code is normally painful and boring. `testthat` tries to make testing as fun as possible, so that you get a visceral satisfaction from writing tests. Testing should be fun, not a drag, so you do it all the time. To make that happen, `testthat`:
 
