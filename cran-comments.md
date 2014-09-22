@@ -1,3 +1,7 @@
+This is a resubmission that works around a current bug in R-devel.
+
+--------------------------------------------------------------------------------
+
 The following notes were generated across my local OS X install, ubuntu running on travis-ci and win builder (devel and release):
 
 * Maintainer change: I've changed my email address to hadley@rstudio.com
