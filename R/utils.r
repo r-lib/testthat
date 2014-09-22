@@ -16,6 +16,7 @@ starts_with <- function(string, prefix) {
 }
 
 is_directory <- function(x) file.info(x)$isdir
+is_readable <- function(x) file.access(x, 4) == 0
 
 is.error <- function(x) inherits(x, "error")
 

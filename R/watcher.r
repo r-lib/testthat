@@ -49,6 +49,7 @@ watch <- function(path, callback, pattern = NULL, hash = TRUE) {
 safe_digest <- function(path) {
   if (!file.exists(path)) return(NA_character_)
   if (is_directory(path)) return(NA_character_)
+  if (!is_readable(path)) return(NA_character_)
 
   digest::digest(path, file = TRUE)
 }
