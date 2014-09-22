@@ -88,7 +88,7 @@ extract_mocks <- function(new_values, .env) {
 
 #' @useDynLib testthat duplicate_
 mock <- function(name, env, new) {
-  target_value <- get(name, env, mode = "function")
+  target_value <- get(name, envir = env, mode = "function")
   structure(list(
     env = env, name = name,
     orig_value = .Call(duplicate_, target_value), target_value = target_value,
