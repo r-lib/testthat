@@ -29,7 +29,7 @@ expectation_error <- function(error, calls) {
   if (length(calls) > 0) {
     traceback <- create_traceback(calls)
     user_calls <- paste0(traceback, collapse = "\n")
-    msg <- paste0(msg, user_calls)
+    msg <- paste0(msg, "\n", user_calls)
   } else {
     # Need to remove trailing newline from error message to be consistent
     # with other messages
