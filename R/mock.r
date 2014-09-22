@@ -78,7 +78,7 @@ extract_mocks <- function(new_values, .env) {
 
       env <- asNamespace(pkg_name)
 
-      if (!exists(name, env, mode = "function"))
+      if (!exists(name, envir = env, mode = "function"))
         stop("Function ", name, " not found in environment ",
              environmentName(env), ".")
       mock(name = name, env = env, new = eval(new_values[[qual_name]]))
