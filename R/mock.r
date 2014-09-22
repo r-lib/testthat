@@ -81,11 +81,17 @@ extract_mocks <- function(new_values, .env) {
       if (!exists(name, env, mode = "function"))
         stop("Function ", name, " not found in environment ",
              environmentName(env), ".")
-      orig_value <- get(name, env, mode = "function")
-      structure(list(env = env, name = name, orig_value = duplicate(orig_value), target_value = orig_value, new_value = eval(new_values[[qual_name]])),
-                class = "mock")
+      mock(name = name, env = env, new = eval(new_values[[qual_name]]))
     }
   )
+}
+
+mock <- function(name, env, new) {
+  target_value <- get(name, env, mode = "function")
+  structure(list(
+    env = env, name = name,
+    orig_value = duplicate(target_value), target_value = target_value,
+    new_value = new), class = "mock")
 }
 
 set_mock <- function(mock) {
