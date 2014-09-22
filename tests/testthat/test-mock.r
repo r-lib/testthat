@@ -8,6 +8,17 @@ test_that("can make 3 = 5", {
   expect_that(5, not(equals(3)))
 })
 
+test_that("mocked function is restored on error", {
+  expect_error(
+    with_mock(
+      compare = function(x, y, ...) list(equal = TRUE, message = "TRUE"),
+      stop("Simulated error")
+    ),
+    "Simulated error"
+  )
+  expect_that(5, not(equals(3)))
+})
+
 test_that("non-empty mock with return value", {
   expect_true(with_mock(
     compare = function(x, y, ...) list(equal = TRUE, message = "TRUE"),
@@ -94,19 +105,19 @@ test_that("can access variables defined in function", {
 })
 
 test_that("can mock both qualified and unqualified functions", {
-  expect_identical(with_mock(`stats::acf` = identity, stats::acf), identity)
-  expect_identical(with_mock(`stats::acf` = identity, acf), identity)
-  expect_identical(with_mock(acf = identity, stats::acf, .env = "stats"), identity)
-  expect_identical(with_mock(acf = identity, acf, .env = "stats"), identity)
+  with_mock(`stats::acf` = identity, expect_identical(stats::acf, identity))
+  with_mock(`stats::acf` = identity, expect_identical(acf, identity))
+  with_mock(acf = identity, expect_identical(stats::acf, identity), .env = "stats")
+  with_mock(acf = identity, expect_identical(acf, identity), .env = "stats")
 })
 
 test_that("can mock hidden functions", {
-  expect_identical(with_mock(`stats:::add1.default` = identity, stats:::add1.default), identity)
+  with_mock(`stats:::add1.default` = identity, expect_identical(stats:::add1.default, identity))
 })
 
 test_that("can mock if package is not loaded", {
   expect_false("package:devtools" %in% search())
-  expect_identical(with_mock(`devtools::add_path` = identity, devtools::add_path), identity)
+  with_mock(`devtools::add_path` = identity, expect_identical(devtools::add_path, identity))
 })
 
 test_that("changes to variables are preserved between calls and visible outside", {
@@ -119,19 +130,20 @@ test_that("changes to variables are preserved between calls and visible outside"
   expect_equal(x, 3)
 })
 
-test_that("currently cannot mock function imported from other package", {
+test_that("can mock function imported from other package", {
   expect_true("setRefClass" %in% getNamespaceImports("testthat")[["methods"]])
-  expect_error(with_mock(`testthat::setRefClass` = identity, setRefClass))
+  with_mock(`testthat::setRefClass` = identity, expect_identical(setRefClass, identity))
+  with_mock(`methods::setRefClass` = identity, expect_identical(setRefClass, identity))
 })
 
 test_that("mock extraction", {
-  expect_equal(extract_mocks(list(identity = identity), asNamespace("base"))$identity$name, "identity")
+  expect_equal(extract_mocks(list(identity = identity), asNamespace("base"))$identity$name, as.name("identity"))
   expect_error(extract_mocks(list(..bogus.. = identity), asNamespace("base")),
                "Function [.][.]bogus[.][.] not found in environment base")
-  expect_equal(extract_mocks(list(`base::identity` = identity), NULL)[[1]]$name, "identity")
-  expect_equal(extract_mocks(list(`base::identity` = identity), NULL)[[1]]$envs, list(asNamespace("base"), as.environment("package:base")))
-  expect_equal(extract_mocks(list(identity = stop), "base")[[1]]$envs, list(asNamespace("base"), as.environment("package:base")))
-  expect_equal(extract_mocks(list(identity = stop), asNamespace("base"))[[1]]$envs, list(asNamespace("base"), as.environment("package:base")))
+  expect_equal(extract_mocks(list(`base::identity` = identity), NULL)[[1]]$name, as.name("identity"))
+  expect_equal(extract_mocks(list(`base::identity` = identity), NULL)[[1]]$env, asNamespace("base"))
+  expect_equal(extract_mocks(list(identity = stop), "base")[[1]]$env, asNamespace("base"))
+  expect_equal(extract_mocks(list(identity = stop), asNamespace("base"))[[1]]$env, asNamespace("base"))
   expect_equal(extract_mocks(list(`base::identity` = stop), NULL)[[1]]$orig_value, identity)
   expect_equal(extract_mocks(list(`base::identity` = stop), NULL)[[1]]$new_value, stop)
   expect_equal(extract_mocks(list(`base::identity` = stop), "stats")[[1]]$new_value, stop)

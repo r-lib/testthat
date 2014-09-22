@@ -23,15 +23,9 @@ slow, have unintended side effects or access resources that may not be
 available when testing.
 }
 \details{
-Internally, this works by patching the function definition in the package's
-namespace.  If the package is loaded, and the function to be mocked is
-exported, the patching also needs to take place in the package environment.
-On exit, everything is restored to the previous state.
-
-Caveat: Currently, imported functions cannot be mocked if they are accessed
-from package code without qualification.  Please use qualified access
-(using the \code{::} operator) instead of adding \code{importFrom(...)} to the
-\code{NAMESPACE} file.
+This works by using some C code to temporarily modify the mocked function \emph{in place}.
+On exit (regular or error), all functions are restored to their previous state.
+This is somewhat abusive of R's internals, and is still experimental, so use with care.
 }
 \examples{
 with_mock(

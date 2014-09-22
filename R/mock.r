@@ -5,15 +5,9 @@
 #' slow, have unintended side effects or access resources that may not be
 #' available when testing.
 #'
-#' Internally, this works by patching the function definition in the package's
-#' namespace.  If the package is loaded, and the function to be mocked is
-#' exported, the patching also needs to take place in the package environment.
-#' On exit, everything is restored to the previous state.
-#'
-#' Caveat: Currently, imported functions cannot be mocked if they are accessed
-#' from package code without qualification.  Please use qualified access
-#' (using the \code{::} operator) instead of adding \code{importFrom(...)} to the
-#' \code{NAMESPACE} file.
+#' This works by using some C code to temporarily modify the mocked function \emph{in place}.
+#' On exit (regular or error), all functions are restored to their previous state.
+#' This is somewhat abusive of R's internals, and is still experimental, so use with care.
 #'
 #' @param ... named parameters redefine mocked functions, unnamed parameters
 #'   will be evaluated after mocking the functions
@@ -82,44 +76,31 @@ extract_mocks <- function(new_values, .env) {
       if (pkg_name == "")
         pkg_name <- .env
 
-      envs <- list(asNamespace(pkg_name))
+      env <- asNamespace(pkg_name)
 
-      # Only look in list of exported functions if package is really loaded
-      pkg_env_name <- sprintf("package:%s", pkg_name)
-      if (pkg_env_name %in% search()) {
-        export_env <- as.environment(pkg_env_name)
-        if (exists(name, envir = export_env, inherits = FALSE))
-          envs <- c(envs, export_env)
-      }
-
-      if (!exists(name, envs[[1]], mode = "function"))
+      if (!exists(name, envir = env, mode = "function"))
         stop("Function ", name, " not found in environment ",
-             environmentName(envs[[1]]), ".")
-      orig_value <- get(name, envs[[1]], mode = "function")
-      structure(list(envs = envs, name = name, orig_value = orig_value, new_value = eval(new_values[[qual_name]])),
-                class = "mock")
+             environmentName(env), ".")
+      mock(name = name, env = env, new = eval(new_values[[qual_name]]))
     }
   )
 }
 
-set_mock <- function(mock) {
-  for (env in mock$envs) {
-    # We're doing nasty things here.  Some code checking tools will warn here,
-    # the do.call is to ensure silence.  Aliasing is not enough here.
-    do.call("unlockBinding", list(mock$name, env))
-
-    env[[mock$name]] <- mock$new_value
-  }
-  invisible(NULL)
+#' @useDynLib testthat duplicate_
+mock <- function(name, env, new) {
+  target_value <- get(name, envir = env, mode = "function")
+  structure(list(
+    env = env, name = as.name(name),
+    orig_value = .Call(duplicate_, target_value), target_value = target_value,
+    new_value = new), class = "mock")
 }
 
-reset_mock <- function(mock) {
-  for (env in mock$envs) {
-    if (!bindingIsLocked(mock$name, env)) {
-      env[[mock$name]] <- mock$orig_value
+#' @useDynLib testthat reassign_function
+set_mock <- function(mock) {
+  .Call(reassign_function, mock$name, mock$env, mock$target_value, mock$new_value)
+}
 
-      lockBinding(mock$name, env)
-    }
-  }
-  invisible(NULL)
+#' @useDynLib testthat reassign_function
+reset_mock <- function(mock) {
+  .Call(reassign_function, mock$name, mock$env, mock$target_value, mock$orig_value)
 }
