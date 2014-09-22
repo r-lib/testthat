@@ -94,13 +94,14 @@ mock <- function(name, env, new) {
     new_value = new), class = "mock")
 }
 
-#' @useDynLib testthat C_reassign_function
+#' @useDynLib testthat reassign_function
 set_mock <- function(mock) {
-  .Call(C_reassign_function, as.name(mock$name), mock$env, mock$target_value, mock$new_value)
+  .Call(reassign_function, as.name(mock$name), mock$env, mock$target_value, mock$new_value)
 }
 
+#' @useDynLib testthat reassign_function
 reset_mock <- function(mock) {
-  .Call(C_reassign_function, as.name(mock$name), mock$env, mock$target_value, mock$orig_value)
+  .Call(reassign_function, as.name(mock$name), mock$env, mock$target_value, mock$orig_value)
 }
 
 #' @useDynLib testthat C_duplicate
