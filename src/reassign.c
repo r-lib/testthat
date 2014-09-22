@@ -14,7 +14,7 @@ SEXP reassign_function(SEXP name, SEXP env, SEXP old_fun, SEXP new_fun)
   FORMALS(old_fun) = FORMALS(new_fun);
   BODY(old_fun) = BODY(new_fun);
   CLOENV(old_fun) = CLOENV(new_fun);
-  ATTRIB(old_fun) = ATTRIB(new_fun);
+  DUPLICATE_ATTRIB(old_fun, new_fun);
 
   return R_NilValue;
 }
