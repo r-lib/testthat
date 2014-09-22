@@ -137,10 +137,10 @@ test_that("can mock function imported from other package", {
 })
 
 test_that("mock extraction", {
-  expect_equal(extract_mocks(list(identity = identity), asNamespace("base"))$identity$name, "identity")
+  expect_equal(extract_mocks(list(identity = identity), asNamespace("base"))$identity$name, as.name("identity"))
   expect_error(extract_mocks(list(..bogus.. = identity), asNamespace("base")),
                "Function [.][.]bogus[.][.] not found in environment base")
-  expect_equal(extract_mocks(list(`base::identity` = identity), NULL)[[1]]$name, "identity")
+  expect_equal(extract_mocks(list(`base::identity` = identity), NULL)[[1]]$name, as.name("identity"))
   expect_equal(extract_mocks(list(`base::identity` = identity), NULL)[[1]]$env, asNamespace("base"))
   expect_equal(extract_mocks(list(identity = stop), "base")[[1]]$env, asNamespace("base"))
   expect_equal(extract_mocks(list(identity = stop), asNamespace("base"))[[1]]$env, asNamespace("base"))
