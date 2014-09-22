@@ -5,9 +5,9 @@
 #' slow, have unintended side effects or access resources that may not be
 #' available when testing.
 #'
-#' Internally, this works by temporarily substituting formals, body, environment
-#' and attributes of the internal function object.  On exit (both regular or
-#' error), everything is restored to the previous state.
+#' This works by using some C code to temporarily modify the mocked function \emph{in place}.
+#' On exit (regular or error), all functions are restored to their previous state.
+#' This is somewhat abusive of R's internals, and is still experimental, so use with care.
 #'
 #' @param ... named parameters redefine mocked functions, unnamed parameters
 #'   will be evaluated after mocking the functions
