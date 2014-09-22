@@ -19,6 +19,6 @@ SEXP reassign_function(SEXP name, SEXP env, SEXP old_fun, SEXP new_fun)
   return R_NilValue;
 }
 
-SEXP C_duplicate(SEXP x) {
+SEXP duplicate_(SEXP x) {
   return duplicate(x);
 }
