@@ -105,19 +105,19 @@ test_that("can access variables defined in function", {
 })
 
 test_that("can mock both qualified and unqualified functions", {
-  expect_identical(with_mock(`stats::acf` = identity, duplicate(stats::acf)), identity)
-  expect_identical(with_mock(`stats::acf` = identity, duplicate(acf)), identity)
-  expect_identical(with_mock(acf = identity, duplicate(stats::acf), .env = "stats"), identity)
-  expect_identical(with_mock(acf = identity, duplicate(acf), .env = "stats"), identity)
+  with_mock(`stats::acf` = identity, expect_identical(stats::acf, identity))
+  with_mock(`stats::acf` = identity, expect_identical(acf, identity))
+  with_mock(acf = identity, expect_identical(stats::acf, identity), .env = "stats")
+  with_mock(acf = identity, expect_identical(acf, identity), .env = "stats")
 })
 
 test_that("can mock hidden functions", {
-  expect_identical(with_mock(`stats:::add1.default` = identity, duplicate(stats:::add1.default)), identity)
+  with_mock(`stats:::add1.default` = identity, expect_identical(stats:::add1.default, identity))
 })
 
 test_that("can mock if package is not loaded", {
   expect_false("package:devtools" %in% search())
-  expect_identical(with_mock(`devtools::add_path` = identity, duplicate(devtools::add_path)), identity)
+  with_mock(`devtools::add_path` = identity, expect_identical(devtools::add_path, identity))
 })
 
 test_that("changes to variables are preserved between calls and visible outside", {
@@ -132,8 +132,8 @@ test_that("changes to variables are preserved between calls and visible outside"
 
 test_that("can mock function imported from other package", {
   expect_true("setRefClass" %in% getNamespaceImports("testthat")[["methods"]])
-  expect_identical(with_mock(`testthat::setRefClass` = identity, duplicate(setRefClass)), identity)
-  expect_identical(with_mock(`methods::setRefClass` = identity, duplicate(setRefClass)), identity)
+  with_mock(`testthat::setRefClass` = identity, expect_identical(setRefClass, identity))
+  with_mock(`methods::setRefClass` = identity, expect_identical(setRefClass, identity))
 })
 
 test_that("mock extraction", {
