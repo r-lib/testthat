@@ -1,4 +1,4 @@
-This is a resubmission that should work around a current bug in R-devel (in `all.equal.environment()`, testing on win-builder and rev 66626 on unbunut). Previous notes below.
+This is a minor release that bumps required version of R to 3.1.0. Previous notes below.
 
 --------------------------------------------------------------------------------
 

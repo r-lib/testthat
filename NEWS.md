@@ -1,3 +1,7 @@
+# testthat 0.9.1
+
+* Bump R version dependency
+
 # testthat 0.9
 
 ## New features
