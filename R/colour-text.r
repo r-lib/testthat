@@ -25,7 +25,7 @@ colourise <- function(text, fg = "black", bg = NULL) {
   # Turn-off colours if desired
   use_colours <- getOption("testthat.use_colours", TRUE)
 
-  if(rcmd_running() || !any(term %in% colour_terms, na.rm = TRUE) || isTRUE(use_colours)) {
+  if(rcmd_running() || !any(term %in% colour_terms, na.rm = TRUE) || !isTRUE(use_colours)) {
     return(text)
   }
 
