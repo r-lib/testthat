@@ -52,23 +52,23 @@ SummaryReporter <- setRefClass("SummaryReporter", contains = "Reporter",
     add_result = function(result) {
       has_tests <<- TRUE
       if (result$skipped) {
-        cat(colourise("S", fg = "yellow"))
+        cat(colourise("S", "skipped"))
         return()
       }
       if (result$passed) {
-        cat(colourise(".", fg = "light green"))
+        cat(colourise(".", "passed"))
         return()
       }
 
       failed <<- TRUE
 
       if (n + 1 > length(labels) || n + 1 > max_reports) {
-        cat(colourise("F", fg = "red"))
+        cat(colourise("F", "error"))
       } else {
         n <<- n + 1L
         result$test <- if (is.null(test)) "(unknown)" else test
         failures[[n]] <<- result
-        cat(colourise(labels[n], fg = "red"))
+        cat(colourise(labels[n], "error"))
       }
     },
 
@@ -80,7 +80,7 @@ SummaryReporter <- setRefClass("SummaryReporter", contains = "Reporter",
       if (n == 0) {
         cat("\n")
         if (has_tests && sample(10, 1) == 1 && show_praise) {
-          cat(colourise(sample(.praise, 1), "light green"), "\n")
+          cat(colourise(sample(.praise, 1), "passed"), "\n")
         }
       } else {
         label <- labels[seq_len(n)]
@@ -103,7 +103,7 @@ SummaryReporter <- setRefClass("SummaryReporter", contains = "Reporter",
         message <- vapply(failures, "[[", "failure_msg", FUN.VALUE = character(1))
 
         reports <- paste0(
-          colourise(header, "red"), line, "\n",
+          colourise(header, "error"), line, "\n",
           message, "\n")
         cat("\n", reports, sep = "\n")
       }
