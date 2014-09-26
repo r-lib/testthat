@@ -12,7 +12,8 @@ Depends:
     R (>= 2.15.0),
     methods
 Imports:
-    digest
+    digest,
+    crayon
 Suggests:
     devtools
 License: MIT + file LICENSE
