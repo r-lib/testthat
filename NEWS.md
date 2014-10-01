@@ -1,14 +1,12 @@
-<<<<<<< HEAD
 # testthat 0.X
 
 ## Removed functions
 
 * `colourise()` was removed. (Colour is still supported, via the `crayon` package.)
-=======
+
 # testthat 0.9.1
 
 * Bump R version dependency
->>>>>>> 0.9.1
 
 # testthat 0.9
 
