@@ -1,5 +1,5 @@
 Package: testthat
-Version: 0.9.0.9000
+Version: 0.9.1.9000
 Title: Testthat code. Tools to make testing fun :)
 Description: A testing package specifically tailored for R
     that's fun, flexible and easy to set up.
@@ -9,7 +9,7 @@ Authors@R: as.person(c(
 URL: https://github.com/hadley/testthat
 BugReports: https://github.com/hadley/testthat/issues
 Depends:
-    R (>= 2.15.0),
+    R (>= 3.1.0),
     methods
 Imports:
     digest,
