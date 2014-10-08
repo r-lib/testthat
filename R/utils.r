@@ -29,8 +29,10 @@ is.skip <- function(x) inherits(x, "skip")
 #' suite to fail. \code{skip_on_cran()} uses \code{skip()}, together with
 #' the \code{NOT_CRAN} environment variable (set by devtools), to automatically
 #' skip tests that should not be run on CRAN.
+#' \code{skip_on_travis} uses the environment variable \code{TRAVIS} which is
+#' automatically set on Travis CI.
 #'
-#' @param message An message describing why the test was skipped.
+#' @param message A message describing why the test was skipped.
 #' @export
 #' @examples
 #' if (FALSE) skip("No internet connection")
@@ -45,4 +47,12 @@ skip_on_cran <- function() {
   if (identical(Sys.getenv("NOT_CRAN"), "true")) return()
 
   skip("On CRAN")
+}
+
+#' @export
+#' @rdname skip
+skip_on_travis <- function() {
+  if (!identical(Sys.getenv("TRAVIS"), "true")) return()
+
+  skip("On Travis")
 }
