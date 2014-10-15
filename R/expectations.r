@@ -7,15 +7,13 @@
 #' @family expectations
 #' @export
 #' @examples
-#' expect_that(1, is_a("numeric"))
+#' expect_is(1, "numeric")
 #' a <- matrix(1:10, nrow = 5)
-#' expect_that(a, is_a("matrix"))
+#' expect_is(a, "matrix")
 #'
-#' expect_that(mtcars, is_a("data.frame"))
 #' expect_is(mtcars, "data.frame")
 #' # alternatively for classes that have an is method
-#' expect_that(is.data.frame(mtcars), is_true())
-#' # doesn't read quite as nicely
+#' expect_true(is.data.frame(mtcars))
 is_a <- function(class) {
   function(x) {
     actual <- paste0(class(x), collapse = ", ")
@@ -36,9 +34,9 @@ expect_is <- function(object, class, info = NULL, label = NULL) {
   expect_that(object, is_a(class), info, label)
 }
 
-#' Expectation: is the object true?
+#' Expectation: is the object true/false?
 #'
-#' This is a fall-back expectation that you can use when none of the other
+#' These are fall-back expectations that you can use when none of the other
 #' more specific expectations apply. The disadvantage is that you may get
 #' a less informative error message.
 #'
@@ -48,20 +46,19 @@ expect_is <- function(object, class, info = NULL, label = NULL) {
 #' @family expectations
 #' @export
 #' @examples
-#' expect_that(2 == 2, is_true())
 #' expect_true(2 == 2)
 #' # Failed expectations will throw an error
 #' \dontrun{
-#' expect_that(2 != 2, is_true())
+#' expect_true(2 != 2)
 #' }
-#' expect_that(!(2 != 2), is_true())
+#' expect_true(!(2 != 2))
 #' # or better:
-#' expect_that(2 != 2, is_false())
+#' expect_false(2 != 2)
 #'
 #' a <- 1:3
-#' expect_that(length(a) == 3, is_true())
+#' expect_true(length(a) == 3)
 #' # but better to use more specific expectation, if available
-#' expect_that(length(a), equals(3))
+#' expect_equal(length(a), 3)
 is_true <- function() {
   function(x) {
     expectation(
@@ -81,20 +78,8 @@ expect_true <- function(object, info = NULL, label = NULL) {
   expect_that(object, is_true(), info, label)
 }
 
-#' Expectation: is the object false?
-#'
-#' A useful fall-back expectation like \code{\link{is_true}}
-#'
-#' Attributes are ignored.
-#'
-#' @family expectations
 #' @export
-#' @examples
-#' expect_that(3 == 2, is_false())
-#' expect_false(3 == 2)
-#'
-#' a <- 1:3
-#' expect_that(length(a) == 4, is_false())
+#' @rdname is_true
 is_false <- function() {
   function(x) {
     expectation(
@@ -105,7 +90,7 @@ is_false <- function() {
   }
 }
 #' @export
-#' @rdname is_false
+#' @rdname is_true
 #' @inheritParams expect_that
 expect_false <- function(object, info = NULL, label = NULL) {
   if (is.null(label)) {
@@ -119,7 +104,6 @@ expect_false <- function(object, info = NULL, label = NULL) {
 #' @family expectations
 #' @export
 #' @examples
-#' expect_that(NULL, is_null())
 #' expect_null(NULL)
 #'
 is_null <- function() {
@@ -156,18 +140,16 @@ expect_null <- function(object, info = NULL, label = NULL) {
 #' @export
 #' @examples
 #' a <- 10
-#' expect_that(a, equals(10))
 #' expect_equal(a, 10)
 #'
 #' # Use equals() when testing for numeric equality
 #' sqrt(2) ^ 2 - 1
-#' expect_that(sqrt(2) ^ 2, equals(2))
 #' expect_equal(sqrt(2) ^ 2, 2)
 #' # Neither of these forms take floating point representation errors into
 #' # account
 #' \dontrun{
-#' expect_that(sqrt(2) ^ 2 == 2, is_true())
-#' expect_that(sqrt(2) ^ 2, is_identical_to(2))
+#' expect_true(sqrt(2) ^ 2 == 2)
+#' expect_identical(sqrt(2) ^ 2, 2)
 #' }
 #'
 #' # You can pass on additional arguments to all.equal:
@@ -214,6 +196,60 @@ expect_equal <- function(object, expected, ..., info = NULL, label = NULL,
 }
 
 
+#' Expectation: is the object equal to a reference value stored in a file?
+#'
+#' This expectation is equivalent to \code{\link{equals}}, except that the
+#' expected value is stored in an RDS file instead of being specified
+#' literally. This can be helpful when the value is necessarily complex. If
+#' the file does not exist then it will be created using the value of the
+#' specified object, and subsequent tests will check for consistency against
+#' that generated value. The test can be reset by deleting the RDS file.
+#
+#' @param file The file name used to store the object. Should have an "rds"
+#'   extension.
+#' @param label For the full form, a label for the expected object, which is
+#'   used in error messages. Useful to override the default (which is based
+#'   on the file name), when doing tests in a loop. For the short-cut form,
+#'   the object label, which is computed from the deparsed object by default.
+#' @param expected.label Equivalent of \code{label} for shortcut form.
+#' @param ... other values passed to \code{\link{equals}}
+#' @family expectations
+#' @export
+#' @examples
+#' \dontrun{
+#' expect_equal_to_reference(1, "one.rds")
+#' }
+equals_reference <- function(file, label = NULL, ...) {
+  if (file.exists(file)) {
+    reference <- readRDS(file)
+    if (is.null(label)) {
+      label <- paste("reference from", file)
+    }
+    equals(reference, label = label, ...)
+  } else {
+    function(actual) {
+      # saveRDS() returns no useful information to use for the expectation
+      saveRDS(actual, file)
+      expectation(TRUE, "should never fail", "saved to file")
+    }
+  }
+}
+#' @export
+#' @rdname equals_reference
+#' @inheritParams expect_that
+expect_equal_to_reference <- function(object, file, ..., info = NULL,
+                                      label = NULL, expected.label = NULL) {
+  if (is.null(label)) {
+    label <- find_expr("object")
+  }
+  if (is.null(expected.label)) {
+    expected.label <- paste("reference from", file)
+  }
+  expect_that(object, equals_reference(file, label = expected.label, ...),
+              info = info, label = label)
+}
+
+
 #' Expectation: is the object equivalent to a value?
 #' This expectation tests for equivalency: are two objects equal once their
 #' attributes have been removed.
@@ -224,7 +260,6 @@ expect_equal <- function(object, expected, ..., info = NULL, label = NULL,
 #' @examples
 #' a <- b <- 1:3
 #' names(b) <- letters[1:3]
-#' expect_that(a, is_equivalent_to(b, label = b))
 #' expect_equivalent(a, b)
 is_equivalent_to <- function(expected, label = NULL) {
   if (is.null(label)) {
@@ -260,12 +295,10 @@ expect_equivalent <- function(object, expected, info = NULL, label = NULL,
 #' @export
 #' @examples
 #' a <- letters[1:3]
-#' expect_that(a, is_identical_to(c("a", "b", "c")))
 #' expect_identical(a, c("a", "b", "c"))
 #'
 #' # Identical does not take into account numeric tolerance
 #' \dontrun{
-#' expect_that(sqrt(2) ^ 2, is_identical_to(2))
 #' expect_identical(sqrt(2) ^ 2, 2)
 #' }
 is_identical_to <- function(expected, label = NULL) {
@@ -276,17 +309,21 @@ is_identical_to <- function(expected, label = NULL) {
   }
 
   function(actual) {
-    same <- all.equal(expected, actual)
-    if (isTRUE(same)) {
-      diff <- "Objects equal but not identical"
+    if (identical(actual, expected)) {
+      diff <- ""
     } else {
-      diff <- paste0(same, collapse = "\n")
+      same <- all.equal(expected, actual)
+      if (isTRUE(same)) {
+        diff <- "Objects equal but not identical"
+      } else {
+        diff <- paste0(same, collapse = "\n")
+      }
     }
 
     expectation(
       identical(actual, expected),
       paste0("is not identical to ", label, ". Differences: \n", diff),
-      paste0("is identical to", label)
+      paste0("is identical to ", label)
     )
   }
 }
@@ -319,8 +356,7 @@ expect_identical <- function(object, expected, info = NULL, label = NULL,
 #' @family expectations
 #' @export
 #' @examples
-#' expect_that("Testing is fun", matches("fun"))
-#' expect_that("Testing is fun", matches("f.n"))
+#' expect_match("Testing is fun", "fun")
 #' expect_match("Testing is fun", "f.n")
 matches <- function(regexp, all = TRUE, ...) {
   stopifnot(is.character(regexp), length(regexp) == 1)
@@ -358,8 +394,7 @@ expect_match <- function(object, regexp, ..., info = NULL, label = NULL) {
 #' @export
 #' @examples
 #' str(mtcars)
-#' expect_that(str(mtcars), prints_text("32 obs"))
-#' expect_that(str(mtcars), prints_text("11 variables"))
+#' expect_output(str(mtcars), "32 obs")
 #' expect_output(str(mtcars), "11 variables")
 #'
 #' # You can use the arguments of grepl to control the matching
@@ -390,9 +425,7 @@ expect_output <- function(object, regexp, ..., info = NULL, label = NULL) {
 #' @export
 #' @examples
 #' f <- function() stop("My error!")
-#' expect_that(f(), throws_error())
 #' expect_error(f())
-#' expect_that(f(), throws_error("My error!"))
 #' expect_error(f(), "My error!")
 #'
 #' # You can use the arguments of grepl to control the matching
@@ -443,10 +476,6 @@ expect_error <- function(object, regexp = NULL, ..., info = NULL,
 #'   if (x < 0) warning("*x* is already negative")
 #'   -x
 #' }
-#' expect_that(f(-1), gives_warning())
-#' expect_that(f(-1), gives_warning("already negative"))
-#' \dontrun{expect_that(f(1), gives_warning())}
-#'
 #' expect_warning(f(-1))
 #' expect_warning(f(-1), "already negative")
 #' \dontrun{expect_warning(f(1))}
@@ -496,10 +525,6 @@ expect_warning <- function(object, regexp = NULL, ..., info = NULL,
 #'   if (x < 0) message("*x* is already negative")
 #'   -x
 #' }
-#' expect_that(f(-1), shows_message())
-#' expect_that(f(-1), shows_message("already negative"))
-#' \dontrun{expect_that(f(1), shows_message())}
-#'
 #' expect_message(f(-1))
 #' expect_message(f(-1), "already negative")
 #' \dontrun{expect_message(f(1))}
@@ -569,9 +594,6 @@ takes_less_than <- function(amount) {
 #' @export
 #' @examples
 #' x <- c(a = 1, b = 2, c = 3)
-#' expect_that(x, has_names())
-#' expect_that(x, has_names(c("a", "b", "c")))
-#'
 #' expect_named(x)
 #' expect_named(x, c("a", "b", "c"))
 #'
@@ -580,7 +602,6 @@ takes_less_than <- function(amount) {
 #'
 #' # Can also check for the absence of names with NULL
 #' z <- 1:4
-#' expect_that(z, has_names(NULL))
 #' expect_named(z, NULL)
 has_names <- function(expected, ignore.order = FALSE, ignore.case = FALSE) {
   if (missing(expected)) {
@@ -642,7 +663,6 @@ normalise_names <- function(x, ignore.order = FALSE, ignore.case = FALSE) {
 #' @family expectations
 #' @examples
 #' a <- 9
-#' expect_that(a, is_less_than(10))
 #' expect_less_than(a, 10)
 #'
 #' \dontrun{
@@ -650,7 +670,6 @@ normalise_names <- function(x, ignore.order = FALSE, ignore.case = FALSE) {
 #' }
 #'
 #' a <- 11
-#' expect_that(a, is_more_than(10))
 #' expect_more_than(a, 10)
 #' \dontrun{
 #' expect_more_than(9, 10)
@@ -705,7 +724,7 @@ is_more_than <- function(expected, label = NULL, ...) {
     expectation(
       diff < 0,
       paste0("not more than ", label, ". Difference: ", format(diff)),
-      paste0("is more than")
+      paste0("is more than ", label)
     )
   }
 }

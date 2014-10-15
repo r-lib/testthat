@@ -1,10 +1,79 @@
+# testthat 0.X
+
+## New features
+* test (test_dir, test_file, test_package, test_check) functions now return a
+  **testthat_results** object that contains all results, and can be printed or
+  converted to data frame.
+
+* `skip_on_travis()` allows you to skip tests when run on Travis CI.
+  (Thanks to @mllg)
+
+## Removed functions
+
+* `colourise()` was removed. (Colour is still supported, via the `crayon` package.)
+
+# testthat 0.9.1
+
+* Bump R version dependency
+
 # testthat 0.9
-testthat 0.9 implements basic support for parallelizing the execution of tests.
-cf `parallel_test_dir`. This function can not currently report _online_ the 
-results, but instead it returns a **testthat_results** object that contains all
-results, and can be printed or converted to data frame. The other **test** 
-functions (test_dir, test_file, test_package, test_check) now all also return
-a **testthat_results** object.
+
+## New features
+
+* BDD: testhat now comes with an initial behaviour driven development (BDD)
+  interface. The language is similiar to RSpec for Ruby or Mocha for JavaScript.
+  BDD tests read like sentences, so they should make it easier to understand
+  the specification of a function. See `?describe()` for further information
+  and examples.
+
+* It's now possible to `skip()` a test with an informative message - this is
+  useful when tests are only available under certain conditions, as when
+  not on CRAN, or when an internet connection is available (#141).
+
+* `skip_on_cran()` allows you to skip tests when run on CRAN. To take advantage
+  of this code, you'll need either to use devtools, or run
+  `Sys.setenv(NOT_CRAN = "true"))`
+
+* Simple mocking: `with_mock()` makes it easy to temporarily replace
+  functions defined in packages. This is useful for testing code that relies
+  on functions that are slow, have unintended side effects or access resources
+  that may not be available when testing (#159, @krlmlr).
+
+* A new expectation, `expect_equal_to_reference()` has been added. It
+  tests for equality to a reference value stored in a file (#148, @jonclayden).
+
+## Minor improvements and bug fixes
+
+* `auto_test_package()` works once more, and now uses `devtools::load_all()`
+  for higher fidelity loading (#138, #151).
+
+* Bug in `compare.character()` fixed, as reported by Georgi Boshnakov.
+
+* `colourise()` now uses option `testthat.use_colours` (default: `TRUE`). If it
+  is `FALSE`, output is not colourised (#153, @mbojan).
+
+* `is_identical_to()` only calls `all.equal()` to generate an informative
+  error message if the two objects are not identical (#165).
+
+* `safe_digest()` uses a better strategy, and returns NA for directories
+  (#138, #146).
+
+* Random praise is renabled by default (again!) (#164).
+
+* Teamcity reporter now correctly escapes output messages (#150, @windelinckx).
+  It also uses nested suites to include test names.
+
+## Deprecated functions
+
+* `library_if_available()` has been deprecated.
+
+# testthat 0.8.1
+
+* Better default environment for `test_check()` and `test_package()` which
+  allows S4 class creation in tests
+
+* `compare.character()` no longer fails when one value is missing.
+>>>>>>> upstream/master
 
 # testthat 0.8
 

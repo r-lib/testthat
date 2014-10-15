@@ -35,7 +35,7 @@ TapReporter <- setRefClass("TapReporter", contains = "Reporter",
     add_result = function(result) {
       has_tests <<- TRUE
       n <<- n + 1L;
-      if (! result$passed) {
+      if (!result$passed) {
         failed <<- TRUE
       }
 

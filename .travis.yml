@@ -1,29 +1,26 @@
-# Sample .travis.yml for R projects.
-#
-# See README.md for instructions.
+# Sample .travis.yml for R projects from https://github.com/craigcitro/r-travis
 
 language: c
-# To build on OSX, switch the previous line to
-# language: objective-c
-script: ./travis-tool.sh run_tests
 
 env:
   - global:
     - WARNINGS_ARE_ERRORS=1
 
+
 before_install:
   - curl -OL http://raw.github.com/craigcitro/r-travis/master/scripts/travis-tool.sh
   - chmod 755 ./travis-tool.sh
   - ./travis-tool.sh bootstrap
+
 install:
   - ./travis-tool.sh install_deps
-# Configuration options below this line are suggested options.
+
+script: ./travis-tool.sh run_tests
+
+on_failure:
+  - ./travis-tool.sh dump_logs
+
 notifications:
   email:
     on_success: change
     on_failure: change
-# One can also restrict the branches to test, see
-#   http://about.travis-ci.org/docs/user/build-configuration/#Specify-branches-to-build
-branches:
-  except:
-    - /-expt$/

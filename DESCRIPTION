@@ -1,31 +1,37 @@
 Package: testthat
-Type: Package
-Title: Testthat code.  Tools to make testing fun :)
-Version: 0.9
-Author: Hadley Wickham <h.wickham@gmail.com>
-Maintainer: Hadley Wickham <h.wickham@gmail.com>
+Version: 0.9.1.9000
+Title: Testthat code. Tools to make testing fun :)
 Description: A testing package specifically tailored for R
     that's fun, flexible and easy to set up.
-URL: http://had.co.nz/
+Authors@R: as.person(c(
+    "Hadley Wickham <hadley@rstudio.com> [aut, cre]",
+    "RStudio [cph]"))
+Author: Hadley Wickham <hadley@rstudio.com>
+Maintainer: Hadley Wickham <hadley@rstudio.com>
+URL: https://github.com/hadley/testthat
+BugReports: https://github.com/hadley/testthat/issues
 Depends:
-    R (>= 2.15.0)
+    R (>= 3.1.0),
+    methods
 Imports:
     digest,
-    methods,
-    parallel
+    crayon
+Suggests:
+    devtools
 License: MIT + file LICENSE
-LazyData: true
 Collate:
     'auto-test.r'
     'colour-text.r'
     'compare.r'
     'context.r'
+    'describe.r'
     'evaluate-promise.r'
     'expect-that.r'
     'expectation.r'
     'expectations.r'
     'library.r'
     'make-expectation.r'
+    'mock.r'
     'parallel.r'
     'reporter.r'
     'reporter-list.r'
