@@ -10,7 +10,7 @@ summarize_results <- function(results_list) {
   test_results <- test$results
   nb_tests <- length(test_results)
 
-  nb_failed <- 0L
+  nb_failed <- nb_skipped <- 0L
   error <- FALSE
 
   if (nb_tests > 0) {
@@ -23,13 +23,17 @@ summarize_results <- function(results_list) {
       nb_tests <- length(test_results)
     }
 
-    nb_failed <- sum(!vapply(test_results, '[[', TRUE, 'passed'))
+    nb_passed <- sum(vapply(test_results, '[[', TRUE, 'passed'))
+    nb_skipped <- sum(vapply(test_results, '[[', TRUE, 'skipped'))
+    nb_failed <- nb_tests - nb_passed - nb_skipped
   }
 
-  context <- if (length(test$context)) test$context else ''
+  context <- if (length(test$context) > 0) test$context else ''
+
   res <- data.frame(file = test$file, context = context, test = test$test,
-    nb = nb_tests, failed = nb_failed, error = error, user = test$user,
-    system = test$system, real = test$real, stringsAsFactors = FALSE)
+    nb = nb_tests, failed = nb_failed, skipped = nb_skipped, error = error,
+    user = test$user, system = test$system, real = test$real,
+    stringsAsFactors = FALSE)
 
   res
 }

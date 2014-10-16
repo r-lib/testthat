@@ -4,11 +4,9 @@
 \alias{test_package}
 \title{Run all tests in an installed package}
 \usage{
-test_package(package, filter = NULL, parallel = FALSE,
-  reporter = "summary", ...)
+test_package(package, filter = NULL, reporter = "summary")
 
-test_check(package, filter = NULL, parallel = FALSE, reporter = "summary",
-  ...)
+test_check(package, filter = NULL, reporter = "summary")
 }
 \arguments{
 \item{package}{package name}
@@ -17,12 +15,7 @@ test_check(package, filter = NULL, parallel = FALSE, reporter = "summary",
 regular expression will be executed.  Matching will take on the file
 name after it has been stripped of \code{"test-"} and \code{".r"}.}
 
-\item{parallel}{whether to run the tests in parallel using
-\code{\link{parallel_test_dir}}}
-
 \item{reporter}{reporter to use}
-
-\item{...}{additional arguments forwarded to \code{\link{parallel_test_dir}}}
 }
 \value{
 the results as a "testthat_results" (list)

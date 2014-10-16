@@ -30,15 +30,11 @@ with_top_env <- function(env, code) {
 #'
 #' @param package   package name
 #' @inheritParams test_dir
-#' @param parallel  whether to run the tests in parallel using
-#'  \code{\link{parallel_test_dir}}
-#' @param ...  additional arguments forwarded to \code{\link{parallel_test_dir}}
 #' @return the results as a "testthat_results" (list)
 #' @export
 #' @examples
 #' \dontrun{test_package("testthat")}
-test_package <- function(package, filter = NULL, parallel = FALSE,
-  reporter = "summary", ...) {
+test_package <- function(package, filter = NULL, reporter = "summary") {
   # Ensure that test package returns silently if called recursively - this
   # will occur if test-all.R ends up in the same directory as all the other
   # tests.
@@ -53,28 +49,22 @@ test_package <- function(package, filter = NULL, parallel = FALSE,
   test_path2 <- file.path(test_path, "testthat")
   if (file.exists(test_path2)) test_path <- test_path2
 
-#  env <- test_pkg_env(package)
-#  with_top_env(env, {
-#          df <- test_dir(test_path, reporter = reporter, env = env, filter = filter)
-#      })
-
-  res <- .run_tests(package, test_path, filter, parallel, reporter, ...)
+  res <- .run_tests(package, test_path, filter, reporter)
 
   invisible(res)
 }
 
 
-.run_tests <- function(package, test_path, filter, parallel, reporter, ...)
+.run_tests <- function(package, test_path, filter, reporter)
 {
-  res <- if (!parallel) {
-      reporter <- find_reporter(reporter)
-      env <- new.env(parent = getNamespace(package))
-      test_dir(test_path, reporter = reporter, env = env, filter = filter)
-    } else {
-      parallel_test_dir(test_path, filter = filter, ...)
-    }
+  reporter <- find_reporter(reporter)
+  env <- test_pkg_env(package)
+  res <- with_top_env(env, {
+    test_dir(test_path, reporter = reporter, env = env, filter = filter)
+  })
+
   if (!all_passed.testthat_results(res)) {
-    warning("Test failures")
+    stop("Test failures", call. = FALSE)
   }
   res
 }
@@ -82,8 +72,7 @@ test_package <- function(package, filter = NULL, parallel = FALSE,
 #' @inheritParams test_package
 #' @export
 #' @rdname test_package
-test_check <- function(package, filter = NULL, parallel = FALSE,
-                                              reporter = "summary", ...) {
+test_check <- function(package, filter = NULL, reporter = "summary") {
   require(package, character.only = TRUE)
 
   test_path <- "testthat"
@@ -91,22 +80,9 @@ test_check <- function(package, filter = NULL, parallel = FALSE,
     stop("No tests found for ", package, call. = FALSE)
   }
 
-
-  res <- .run_tests(package, test_path, filter,  parallel, reporter, ...)
+  res <- .run_tests(package, test_path, filter, reporter)
 
   invisible(res)
-
-#  reporter <- find_reporter(reporter)
-#  env <- test_pkg_env(package)
-#  with_top_env(env, {
-#    df <- test_dir(test_path, reporter = reporter, env = env, filter = filter)
-#  })
-#
-#  if (reporter$failed) {
-#    stop("Test failures", call. = FALSE)
-#  }
-#  invisible(df)
-
 }
 
 

@@ -32,7 +32,6 @@ Collate:
     'library.r'
     'make-expectation.r'
     'mock.r'
-    'parallel.r'
     'reporter.r'
     'reporter-list.r'
     'reporter-minimal.r'

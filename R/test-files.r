@@ -27,32 +27,41 @@ test_env <- function() {
 #' @export
 test_dir <- function(path, filter = NULL, reporter = "summary",
                                           env = test_env()) {
-                     
+
   current_reporter <- find_reporter(reporter)
   source_test_helpers(path, env)
   paths <- find_test_scripts(path, filter)
   if (length(paths) == 0) stop('No matching test file in dir')
-  
+
   current_reporter$start_reporter()
-  results <- lapply(paths, .test_file, parent_env = env, 
+  results <- lapply(paths, .test_file, parent_env = env,
     reporter = current_reporter, start_end_reporter = FALSE)
   current_reporter$end_reporter()
-  
+
   results <- unlist(results, recursive = FALSE)
-  
+
   invisible(structure(results, class = 'testthat_results'))
 }
 
 
+#' source the helper scripts if any
+#'
+#' Helper scripts are R scripts accompanying test scripts
+#' but prefixed by \code{helper}. These scripts are sourced
+#' only one time in test environment.
+#'
+#' @inheritParams test_dir
+#' @export
 source_test_helpers <- function(path, env = globalenv()) {
-  source_dir(path, "^helper.*\\.[rR]$", env = env)  
+  source_dir(path, "^helper.*\\.[rR]$", env = env)
 }
 
 
 #' take care or finding the test files and sourcing the helpers
 #' @param path path to tests
 #' @param filter cf \code{\link{test_dir}}
-#' @return the test file paths 
+#' @return the test file paths
+#' @export
 find_test_scripts <- function(path, filter = NULL) {
   files <- dir(path, "^test.*\\.[rR]$")
   if (!is.null(filter)) {
@@ -61,27 +70,27 @@ find_test_scripts <- function(path, filter = NULL) {
     test_names <- gsub("\\.[rR]", "", test_names)
     files <- files[grepl(filter, test_names)]
   }
-  
-  file.path(path, files)  
+
+  file.path(path, files)
 }
 
 
 #' take care or finding the test files and sourcing the helpers
 #' @inheritParams test_dir
 #' @param env environment in which to source the helpers
-#' @return the test file paths 
+#' @return the test file paths
 setup_test_dir <- function(path, filter, env) {
   source_dir(path, "^helper.*\\.[rR]$", env = env)
-  
+
   files <- dir(path, "^test.*\\.[rR]$")
   if (!is.null(filter)) {
     test_names <- basename(files)
     test_names <- gsub("^test-?", "", test_names)
     test_names <- gsub("\\.[rR]", "", test_names)
-    
+
     files <- files[grepl(filter, test_names)]
   }
-  
+
   file.path(path, files)
 }
 
@@ -126,22 +135,22 @@ test_file <- function(path, reporter = "summary", env = test_env()) {
     MultiReporter$new(reporters = list(reporter, lister))
   else
     lister
-  
+
   old_reporter <- set_reporter(reporter)
   old_dir <- setwd(dirname(path))
-  on.exit({ 
+  on.exit({
       setwd(old_dir)
-      set_reporter(old_reporter) 
+      set_reporter(old_reporter)
     })
-  
+
   if (start_end_reporter) reporter$start_reporter()
-  
+
   fname <- basename(path)
   lister$start_file(fname)
-  
+
   sys.source2(fname, new.env(parent = parent_env))
   end_context()
- 
+
   if (start_end_reporter) reporter$end_reporter()
 
   invisible(structure(lister$results, class = 'testthat_results'))
