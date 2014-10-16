@@ -1,9 +1,9 @@
 # fix the check NOTE:Namespace in Imports field not imported from: ‘crayon’
 #' @importFrom crayon green yellow red
 testthat_colours <- list(
-  passed = crayon::green,
-  skipped = crayon::yellow,
-  error = crayon::red
+  passed = green,
+  skipped = yellow,
+  error = red
 )
 
 colourise <- function(text, as = c("passed", "skipped", "error")) {

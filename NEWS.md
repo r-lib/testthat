@@ -73,7 +73,6 @@
   allows S4 class creation in tests
 
 * `compare.character()` no longer fails when one value is missing.
->>>>>>> upstream/master
 
 # testthat 0.8
 
