@@ -25,7 +25,7 @@ with_top_env <- function(env, code) {
 #' convention.
 #'
 #' If your tests live in \code{tests/testthat} (preferred) use \code{test_check}
-#' in \code{tests/test-all.R}.  You still use \code{test_package} when testing
+#' in \code{tests/testthat.R}.  You still use \code{test_package} when testing
 #' the installed package.
 #'
 #' @param package package name

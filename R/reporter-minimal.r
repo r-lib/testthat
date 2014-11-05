@@ -16,14 +16,16 @@ NULL
 MinimalReporter <- setRefClass("MinimalReporter", contains = "Reporter",
   methods = list(
     add_result = function(result) {
-      if (result$passed) {
-        cat(colourise(".", fg = "light green"))
+      if (result$skipped) {
+        cat(colourise("S", "skipped"))
+      } else if (result$passed) {
+        cat(colourise(".", "passed"))
       } else {
         failed <<- TRUE
         if (result$error) {
-          cat(colourise("F", fg = "red"))
+          cat(colourise("F", "error"))
         } else {
-          cat(colourise("E", fg = "red"))
+          cat(colourise("E", "error"))
         }
       }
     },

@@ -1,7 +1,7 @@
 #' Watch a directory for changes (additions, deletions & modifications).
 #'
 #' This is used to power the \code{\link{auto_test}} and
-#' \code{link{auto_test_package}} functions which are used to rerun tests
+#' \code{\link{auto_test_package}} functions which are used to rerun tests
 #' whenever source code changes.
 #'
 #' Use Ctrl + break (windows), Esc (mac gui) or Ctrl + C (command line) to
@@ -46,18 +46,12 @@ watch <- function(path, callback, pattern = NULL, hash = TRUE) {
 #' @param filename filename to compute digest on
 #' @return a digest of the file, or NA if it doesn't exist.
 #' @keywords internal
-#' @importFrom digest digest
 safe_digest <- function(path) {
-  reraise_unknown_errors = function(e) {
-    if (e$message != paste("The file does not exist:", path)) {
-      stop(e)
-    }
-  }
-  result <- NA_character_
-  tryCatch(
-    result <- digest(path, file = TRUE),
-    error = reraise_unknown_errors)
-  result
+  if (!file.exists(path)) return(NA_character_)
+  if (is_directory(path)) return(NA_character_)
+  if (!is_readable(path)) return(NA_character_)
+
+  digest::digest(path, file = TRUE)
 }
 
 #' Capture the state of a directory.

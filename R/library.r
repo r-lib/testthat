@@ -9,9 +9,12 @@
 #' @param package package name (without quotes)
 #' @export
 #' @examples
+#' \dontrun{
 #' library_if_available(testthat)
 #' library_if_available(packagethatdoesntexist)
+#' }
 library_if_available <- function(package) {
+  .Deprecated()
   package <- find_expr("package")
 
   suppressWarnings(suppressPackageStartupMessages(

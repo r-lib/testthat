@@ -1,20 +1,22 @@
 Package: testthat
-Type: Package
-Title: Testthat code.  Tools to make testing fun :)
-Version: 0.8.1.0.99
-Author: Hadley Wickham <h.wickham@gmail.com>
-Maintainer: Hadley Wickham <h.wickham@gmail.com>
+Version: 0.9.1.9000
+Title: Testthat code. Tools to make testing fun :)
 Description: A testing package specifically tailored for R
     that's fun, flexible and easy to set up.
-URL: http://had.co.nz/
+Authors@R: as.person(c(
+    "Hadley Wickham <hadley@rstudio.com> [aut, cre]",
+    "RStudio [cph]"))
+URL: https://github.com/hadley/testthat
+BugReports: https://github.com/hadley/testthat/issues
 Depends:
-    R (>= 2.15.0)
+    R (>= 3.1.0),
+    methods
 Imports:
     digest,
-    methods
+    crayon
+Suggests:
+    devtools
 License: MIT + file LICENSE
-LazyData: true
-Roxygen: list(wrap = FALSE)
 Collate:
     'auto-test.r'
     'colour-text.r'
@@ -27,6 +29,7 @@ Collate:
     'expectations.r'
     'library.r'
     'make-expectation.r'
+    'mock.r'
     'reporter.r'
     'reporter-list.r'
     'reporter-minimal.r'

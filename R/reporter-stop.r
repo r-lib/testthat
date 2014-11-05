@@ -45,6 +45,7 @@ StopReporter <- setRefClass("StopReporter", contains = "Reporter",
 
     add_result = function(result) {
       if (result$passed) return()
+      if (result$skipped) return()
 
       # If running in test suite, store, otherwise raise immediately.
       if (is.null(test)) {

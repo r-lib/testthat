@@ -40,10 +40,6 @@ auto_test <- function(code_path, test_path, reporter = "summary",
   source_dir(code_path, env = env)
   test_dir(test_path, env = env, reporter = reporter)
 
-  starts_with <- function(string, prefix) {
-    substr(string, 1, nchar(prefix)) == prefix
-  }
-
   # Next set up watcher to monitor changes
   watcher <- function(added, deleted, modified) {
     changed <- normalizePath(c(added, modified))
@@ -72,12 +68,52 @@ auto_test <- function(code_path, test_path, reporter = "summary",
 
 #' Watches a package for changes, rerunning tests as appropriate.
 #'
-#' @param path path to package
+#' @param pkg path to package
 #' @export
 #' @param reporter test reporter to use
 #' @keywords debugging
 #' @seealso \code{\link{auto_test}} for details on how method works
-auto_test_package <- function(path, reporter = "summary") {
-  auto_test(file.path(path, "R"), file.path(path, "tests"), reporter)
+auto_test_package <- function(pkg = ".", reporter = "summary") {
+  if (!requireNamespace("devtools", quietly = TRUE)) {
+    stop("devtools required to run auto_test_package(). Please install.",
+      call. = FALSE)
+  }
+
+  pkg <- devtools::as.package(pkg)
+
+  reporter <- find_reporter(reporter)
+  code_path <- file.path(pkg$path, "R")
+  test_path <- file.path(pkg$path, "tests", "testthat")
+
+  # Start by loading all code and running all tests
+  env <- devtools::load_all(pkg)$env
+  devtools::with_envvar(devtools::r_env_vars(),
+    test_dir(test_path, env = env, reporter = reporter))
+
+  # Next set up watcher to monitor changes
+  watcher <- function(added, deleted, modified) {
+    changed <- normalizePath(c(added, modified))
+
+    tests <- changed[starts_with(changed, test_path)]
+    code <- changed[starts_with(changed, code_path)]
+
+    if (length(code) > 0) {
+      # Reload code and rerun all tests
+      cat("Changed code: ", paste0(basename(code), collapse = ", "), "\n")
+      cat("Rerunning all tests\n")
+      env <<- devtools::load_all(pkg)$env
+      devtools::with_envvar(devtools::r_env_vars(),
+        test_dir(test_path, env = env, reporter = reporter))
+    } else if (length(tests) > 0) {
+      # If test changes, rerun just that test
+      cat("Rerunning tests: ", paste0(basename(tests), collapse = ", "), "\n")
+      with_reporter(reporter$copy(),
+        lapply(tests, .test_file, parent_env = env))
+    }
+
+    TRUE
+  }
+  watch(c(code_path, test_path), watcher)
+
 }
 
