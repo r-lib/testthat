@@ -62,10 +62,14 @@ test_package <- function(package, filter = NULL, reporter = "summary") {
   invisible(df)
 }
 
-#' Run all tests in an installed package to check test code coverage
+#' Run all tests in an installed package to report test code coverage
 #'
 #' Run \code{test_package} silently, just looking for function calls, then
-#' determine what proportion of functions in the tested package were tested.
+#' determine what proportion of functions in the tested package were tested. Not
+#' as good as tested every code branch, but light-weight to implement, and runs
+#' reasonably quickly.
+#'
+#' \code{coverage} may be better suited to inclusion in devtools. It guesses that the current working directory is the name of the package (very commonly true in package development), and uses that name to run the tests installed in that envir
 #'
 #' @param package package name
 #' @inheritParams test_dir
@@ -73,7 +77,7 @@ test_package <- function(package, filter = NULL, reporter = "summary") {
 #' @export
 #' @examples
 #' \dontrun{test_package_cover("testthat")}
-test_coverage <- function(package, filter = NULL) {
+test_package_coverage <- function(package, reporter = "silent", split = FALSE, filter = NULL) {
   # Ensure that test package returns silently if called recursively - this
   # will occur if test-all.R ends up in the same directory as all the other
   # tests.
@@ -82,34 +86,15 @@ test_coverage <- function(package, filter = NULL) {
   on.exit(env_test$in_test <- FALSE)
 
   test_path <- system.file("tests", package = package)
-  if (test_path == "") stop("No tests found for ", package, call. = FALSE)
+  if (test_path == "") {
+    stop("No tests found for ", package, " in ", test_path, call. = FALSE)
+  }
 
   # If testthat subdir exists, use that
   test_path2 <- file.path(test_path, "testthat")
   if (file.exists(test_path2)) test_path <- test_path2
 
-  env <- test_pkg_env(package) # the parent is the icd9 package namespace?
-  pkgns <- getNamespace(package)
-  with_top_env(env, {
-    funs <- sort(lsf(package)) # see function in util which lists contents of a package
-    trace(funs, where = pkgns)
-
-    trace_output <- capture.output(
-      df <- test_dir(test_path, reporter = SilentReporter(), env = env, filter = filter)
-    )
-
-    untrace(funs, where = pkgns) # ? set environment with where=
-
-    everytestedfun <- getTestedFunctions(trace_output)
-
-    coverage <- list()
-    cov <- funs %in% everytestedfun
-    coverage$tested <- funs[cov]
-    coverage$untested <- funs[!cov]
-    coverage$coverage <- length(coverage$tested) / length(funs)
-  })
-
-  coverage
+  .coverage(package = package, test_path = test_path, reporter = reporter, split = split, filter = filter)
 }
 
 getTestedFunctions <- function(trace_output) {
@@ -127,6 +112,19 @@ getTestedFunctions <- function(trace_output) {
   )
 }
 
+#' @export
+#' @rdname test_package_coverage
+test_check_coverage <- function(package, reporter = "silent", split = FALSE, filter = NULL) {
+  require(package, character.only = TRUE)
+
+  test_path <- "testthat"
+  if (!file_test('-d', test_path)) {
+    stop("No tests found for ", package, " in ", test_path, call. = FALSE)
+  }
+
+  .coverage(package = package, test_path = test_path, reporter = reporter, split = split, filter = filter)
+
+}
 
 #' @export
 #' @rdname test_package
@@ -148,6 +146,47 @@ test_check <- function(package, filter = NULL, reporter = "summary") {
     stop("Test failures", call. = FALSE)
   }
   invisible(df)
+}
+
+.coverage <- function(package, test_path, reporter, split, filter = NULL) {
+  env <- test_pkg_env(package) # the parent is the icd9 package namespace?
+  pkgns <- getNamespace(package)
+  with_top_env(env, {
+    funs <- sort(lsf(package)) # see function in util which lists contents of a package
+
+    tmp_out  <- tempfile()
+
+    # trace prints output directly to stderr, so difficult to make quiet:
+    tmp_tracing <- file(tempfile(), open="wt")
+    sink(file = tmp_tracing, type = "message")
+    trace(funs, where = pkgns)
+    sink(file = NULL, type = "message")
+    close(tmp_tracing)
+
+    # use sink instead of capture.output so we can 'tee' when not silent, to
+    # monitor progress. Otherwise zero output, and difficult to know if hung.
+    sink(file = tmp_out, split = split, type = "output")
+    df <- test_dir(test_path, reporter = reporter, env = env, filter = filter)
+    sink(file = NULL, type = "output")
+
+    # untrace prints output directly to stderr, so difficult to make quiet:
+    tmp_tracing <- file(tempfile(), open="wt")
+    sink(file = tmp_tracing, type = "message")
+    untrace(funs, where = pkgns)
+    sink(file = NULL, type = "message")
+    close(tmp_tracing)
+
+    everytestedfun <- getTestedFunctions(readLines(tmp_out))
+
+    coverage <- list()
+    cov <- funs %in% everytestedfun
+    coverage$tested <- funs[cov]
+    coverage$untested <- funs[!cov]
+    coverage$coverage <- length(coverage$tested) / length(funs)
+
+  })
+
+  coverage
 }
 
 
