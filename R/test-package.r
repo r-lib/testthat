@@ -73,7 +73,7 @@ test_package <- function(package, filter = NULL, reporter = "summary") {
 #' @export
 #' @examples
 #' \dontrun{test_package_cover("testthat")}
-test_coverage_package <- function(package, filter = NULL) {
+test_coverage <- function(package, filter = NULL) {
   # Ensure that test package returns silently if called recursively - this
   # will occur if test-all.R ends up in the same directory as all the other
   # tests.

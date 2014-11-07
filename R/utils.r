@@ -21,6 +21,7 @@ lsf <- function(pkg) {
       funcs <- append(funcs, e)
   }
   funcs
+}
 
 starts_with <- function(string, prefix) {
   substr(string, 1, nchar(prefix)) == prefix
