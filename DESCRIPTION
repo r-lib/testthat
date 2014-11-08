@@ -39,6 +39,8 @@ Collate:
     'reporter-summary.r'
     'reporter-tap.r'
     'reporter-teamcity.r'
+    'reporter-verbose.r'
+    'reporter-very-verbose.r'
     'reporter-zzz.r'
     'test-files.r'
     'test-package.r'
