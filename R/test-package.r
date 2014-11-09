@@ -73,11 +73,12 @@ test_package <- function(package, filter = NULL, reporter = "summary") {
 #'
 #' @param package package name
 #' @inheritParams test_dir
+#' @param split =
 #' @return a data frame of the summary of test results
 #' @export
 #' @examples
-#' \dontrun{test_package_cover("testthat")}
-test_package_coverage <- function(package, reporter = "silent", split = FALSE, filter = NULL) {
+#' \dontrun{test_package_coverage("testthat")}
+test_package_coverage <- function(package, reporter = "silent", filter = NULL) {
   # Ensure that test package returns silently if called recursively - this
   # will occur if test-all.R ends up in the same directory as all the other
   # tests.
@@ -94,7 +95,7 @@ test_package_coverage <- function(package, reporter = "silent", split = FALSE, f
   test_path2 <- file.path(test_path, "testthat")
   if (file.exists(test_path2)) test_path <- test_path2
 
-  .coverage(package = package, test_path = test_path, reporter = reporter, split = split, filter = filter)
+  .coverage(package = package, test_path = test_path, reporter = reporter, split = FALSE, filter = filter)
 }
 
 getTestedFunctions <- function(trace_output) {
@@ -114,7 +115,7 @@ getTestedFunctions <- function(trace_output) {
 
 #' @export
 #' @rdname test_package_coverage
-test_check_coverage <- function(package, reporter = "silent", split = FALSE, filter = NULL) {
+test_check_coverage <- function(package, reporter = "silent", filter = NULL) {
   require(package, character.only = TRUE)
 
   test_path <- "testthat"
@@ -122,7 +123,7 @@ test_check_coverage <- function(package, reporter = "silent", split = FALSE, fil
     stop("No tests found for ", package, " in ", test_path, call. = FALSE)
   }
 
-  .coverage(package = package, test_path = test_path, reporter = reporter, split = split, filter = filter)
+  .coverage(package = package, test_path = test_path, reporter = reporter, split = FALSE, filter = filter)
 
 }
 
@@ -180,9 +181,9 @@ test_check <- function(package, filter = NULL, reporter = "summary") {
 
     coverage <- list()
     cov <- funs %in% everytestedfun
-    coverage$tested <- funs[cov]
-    coverage$untested <- funs[!cov]
-    coverage$coverage <- length(coverage$tested) / length(funs)
+    coverage$tested <- sort(funs[cov])
+    coverage$untested <- sort(funs[!cov])
+    coverage$coverage <- sprintf("%i%%", as.integer(100*length(coverage$tested) / length(funs)))
 
   })
 
