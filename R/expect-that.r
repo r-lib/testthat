@@ -58,6 +58,73 @@ expect_that <- function(object, condition, info = NULL, label = NULL) {
   invisible(results)
 }
 
+expect_that_combs <- function(object, condition, info = NULL, label = NULL) {
+  stopifnot(length(info) <= 1, length(label) <= 1)
+  if (is.null(label)) {
+    label <- find_expr("object")
+  }
+
+  cl <- substitute(object)
+  stopifnot(sum(sapply(cl, is.symbol)) == 1)
+  func <- cl[1]
+  func_name <- cl[[1]]
+  args <- as.list(cl[-1])
+
+#   print(func)
+#   print(as.character(func))
+#   print(func_name)
+#   print(as.character(func_name))
+
+  # can only handle flat lists of arguments when permuting
+  stopifnot(unlist(args, recursive = TRUE) == unlist(args, recursive = FALSE))
+
+  # get the combinations of arguments
+  arg_combs <- permute(unlist(args))
+
+  # now loop through all permutations
+  for (arg_comb in 2:dim(arg_combs)[1]) {
+    # construct the call. This is convoluted: as.call didn't seem to work
+    object = quote(
+      do.call(
+        what = as.character(func_name),
+        args = as.list(arg_combs[arg_comb,])
+        )
+      )
+
+    results <- condition(eval(object))
+
+    # now this should be the same as expect_that
+    results$srcref <- find_test_srcref()
+
+    results$failure_msg <- paste0(label, " ", results$failure_msg)
+    results$success_msg <- paste0(label, " ", results$success_msg)
+    if (!is.null(info)) {
+      results$failure_msg <- paste0(results$failure_msg, "\n", info)
+      results$success_msg <- paste0(results$success_msg, "\n", info)
+    }
+
+    get_reporter()$add_result(results)
+
+  }
+  # just return most recent result???
+  invisible(results)
+}
+
+permute <- function(x) {
+  # break out of recursion:
+  if (length(x) == 2) return(rbind(x, c(x[2], x[1])))
+
+  res <- numeric()
+
+  #take each one and place it first, then recurse the rest:
+  for (element in 1:length(x)) {
+    sub_combs <- Recall(x[-element]) # recurse
+    new_combs <- cbind(x[element], sub_combs)
+    res <- rbind(res, new_combs)
+  }
+  unname(res)
+}
+
 # find the srcref of the test call, or NULL
 find_test_srcref <- function() {
   # candidate frame is not in the testthat package, 
