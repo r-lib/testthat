@@ -49,7 +49,7 @@ VeryVerboseReporter <- setRefClass("VeryVerboseReporter", contains = "Reporter",
     add_result = function(result) {
       has_tests <<- TRUE
       if (result$passed) {
-        cat(colourise(".", "passed"))
+        cat("\n", colourise(test, "passed"), result$success_msg)
         return()
       }
 
