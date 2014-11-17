@@ -11,9 +11,9 @@ SEXP reassign_function(SEXP name, SEXP env, SEXP old_fun, SEXP new_fun)
   if (TYPEOF(old_fun) != CLOSXP) error("old_fun must be a function");
   if (TYPEOF(new_fun) != CLOSXP) error("new_fun must be a function");
 
-  FORMALS(old_fun) = FORMALS(new_fun);
-  BODY(old_fun) = BODY(new_fun);
-  CLOENV(old_fun) = CLOENV(new_fun);
+  SET_FORMALS(old_fun, FORMALS(new_fun));
+  SET_BODY(old_fun, BODY(new_fun));
+  SET_CLOENV(old_fun, CLOENV(new_fun));
   DUPLICATE_ATTRIB(old_fun, new_fun);
 
   return R_NilValue;
