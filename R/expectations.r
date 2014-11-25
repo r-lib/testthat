@@ -516,7 +516,7 @@ expect_warning <- function(object, regexp = NULL, ..., info = NULL,
 #' @param regexp optional regular expression to match. If not specified, just
 #'   asserts that expression shows some message.
 #' @param all if \code{TRUE}, all messages must match given regular expression;
-#'   if \code{FALSE} (the default), then only only message needs to match
+#'   if \code{FALSE} (the default), then only one message needs to match.
 #' @param ... other arguments passed to \code{\link{matches}}
 #' @family expectations
 #' @export
