@@ -49,7 +49,8 @@ Other expectations: \code{\link{equals_reference}},
   \code{\link{expect_error}}, \code{\link{throws_error}};
   \code{\link{expect_false}}, \code{\link{expect_true}},
   \code{\link{is_false}}, \code{\link{is_true}};
-  \code{\link{expect_is}}, \code{\link{is_a}};
+  \code{\link{expect_is}}, \code{\link{expect_is_not}},
+  \code{\link{is_a}}, \code{\link{is_not_a}};
   \code{\link{expect_match}}, \code{\link{matches}};
   \code{\link{expect_message}},
   \code{\link{shows_message}}; \code{\link{expect_named}},

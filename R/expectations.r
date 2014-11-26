@@ -26,12 +26,32 @@ is_a <- function(class) {
 }
 #' @export
 #' @rdname is_a
+is_not_a <- function(class) {
+  function(x) {
+    actual <- paste0(class(x), collapse = ", ")
+    expectation(
+      !inherits(x, class),
+      paste0("inherits from ", class),
+      paste0("inherits from ", actual, " not ", class)
+    )
+  }
+}
+#' @export
+#' @rdname is_a
 #' @inheritParams expect_that
 expect_is <- function(object, class, info = NULL, label = NULL) {
   if (is.null(label)) {
     label <- find_expr("object")
   }
   expect_that(object, is_a(class), info, label)
+}
+#' @export
+#' @rdname is_a
+expect_is_not <- function(object, class, info = NULL, label = NULL) {
+  if (is.null(label)) {
+    label <- find_expr("object")
+  }
+  expect_that(object, is_not_a(class), info, label)
 }
 
 #' Expectation: is the object true/false?
