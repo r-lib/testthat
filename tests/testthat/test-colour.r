@@ -3,7 +3,7 @@ context("Colours")
 
 test_that("We have colours if we want to", {
 
-  op <- options()
+  op <- options("crayon.enabled", "testthat.use_colours")
   on.exit(options(op), add = TRUE)
   options(crayon.enabled = TRUE)
   options(testthat.use_colours = TRUE)
@@ -22,7 +22,7 @@ test_that("We have colours if we want to", {
 
 test_that("We don't have colours if we don't want to", {
 
-  op <- options()
+  op <- options("crayon.enabled", "testthat.use_colours")
   on.exit(options(op), add = TRUE)
   options(crayon.enabled = TRUE)
   options(testthat.use_colours = FALSE)
