@@ -15,7 +15,7 @@ test_that("expect_that returns the result", {
 test_that("expect shuffle find an error when shuffling causes failure", {
   # sprintf needs a format string first, so will throw error when it is shuffled
   # out of first place.
-  res <- expect_that_combs(paste("jack", "string1", "string2"), not(throws_error()))
+  res <- expect_that_combine(paste("jack", "string1", "string2"), not(throws_error()))
   expect_true(is.list(res) && res$passed && !res$error)
 
   # all these are invalid, can't sum strings

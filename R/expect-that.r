@@ -46,7 +46,7 @@ expect_that <- function(object, condition, info = NULL, label = NULL) {
   results <- condition(object)
 
   results$srcref <- find_test_srcref()
-  
+
   results$failure_msg <- paste0(label, " ", results$failure_msg)
   results$success_msg <- paste0(label, " ", results$success_msg)
   if (!is.null(info)) {
@@ -58,56 +58,45 @@ expect_that <- function(object, condition, info = NULL, label = NULL) {
   invisible(results)
 }
 
-expect_that_combs <- function(object, condition, info = NULL, label = NULL) {
-  stopifnot(length(info) <= 1, length(label) <= 1)
-  if (is.null(label)) {
-    label <- find_expr("object")
-  }
+#' @title alternative \code{expect_that} from \code{testthat} which permutes all
+#'   the inputs to a function which should give the same result where n args >=2 and the function is commutative.
+#' @description This makes a lot of assumptions, needs more testing. It can't
+#'   handle mixed error/no error outcomes after permutation, which is an
+#'   important feature to consider. The command following this function attaches this function to the testthat namespace. This means that it can call internal testthat functions, but does not mean it appears as testthat::expect_that_combine
+#'   @examples
+#'   expect_that_combine(sum(1,2,3), testthat::equals(6))
+#'
+#' @return testthat result
+#' @export
+expect_that_combine <- function(object, condition, info = NULL, label = NULL) {
 
   cl <- substitute(object)
   stopifnot(sum(sapply(cl, is.symbol)) == 1)
-  func <- cl[1]
+
   func_name <- cl[[1]]
   args <- as.list(cl[-1])
-
-#   print(func)
-#   print(as.character(func))
-#   print(func_name)
-#   print(as.character(func_name))
-
   # can only handle flat lists of arguments when permuting
   stopifnot(unlist(args, recursive = TRUE) == unlist(args, recursive = FALSE))
+  stopifnot(length(args) >= 2)
 
   # get the combinations of arguments
   arg_combs <- permute(unlist(args))
 
   # now loop through all permutations
-  for (arg_comb in 2:dim(arg_combs)[1]) {
-    # construct the call. This is convoluted: as.call didn't seem to work
-    object = quote(
-      do.call(
-        what = as.character(func_name),
-        args = as.list(arg_combs[arg_comb,])
-        )
-      )
-
-    results <- condition(eval(object))
-
-    # now this should be the same as expect_that
-    results$srcref <- find_test_srcref()
-
-    results$failure_msg <- paste0(label, " ", results$failure_msg)
-    results$success_msg <- paste0(label, " ", results$success_msg)
-    if (!is.null(info)) {
-      results$failure_msg <- paste0(results$failure_msg, "\n", info)
-      results$success_msg <- paste0(results$success_msg, "\n", info)
-    }
-
-    get_reporter()$add_result(results)
-
+  for (comb in 1:dim(arg_combs)[1]) {
+    # create a promise in effort to mimic expect_that behaviour
+    e <- expect_that(
+      object    = do.call(as.character(func_name), as.list(arg_combs[comb,])),
+      condition = condition,
+      info      = paste0(
+        info, "args = ",
+        paste(arg_combs[comb, ], collapse = " ", sep = ","),
+        sprintf(" (test iteration %d)", comb)
+      ),
+      label     = label
+    )
   }
-  # just return most recent result???
-  invisible(results)
+  invisible(e)
 }
 
 permute <- function(x) {
@@ -127,7 +116,7 @@ permute <- function(x) {
 
 # find the srcref of the test call, or NULL
 find_test_srcref <- function() {
-  # candidate frame is not in the testthat package, 
+  # candidate frame is not in the testthat package,
   # its call matches expect_* and has parsing info attached
   .is_test_frame <- function(i) {
     # is enclosure of the frame containing the call inside testthat package ?
@@ -135,21 +124,21 @@ find_test_srcref <- function() {
       , 'testthat')
     match_expect <- any(grepl('expect_', sys.call(i)))
     has_srcref <- !is.null(attr(sys.call(i), 'srcref'))
-    
+
     !inside && match_expect && has_srcref
   }
-  
-  # find the first call (tracing back) that seems good    
+
+  # find the first call (tracing back) that seems good
   nbe <- Find(.is_test_frame, seq_len(sys.nframe()), right = TRUE)
-  
+
   if (length(nbe) == 0 || is.na(nbe)) {
     return(NULL)
   }
-  
+
   cc <- sys.call(nbe)
   src <- attr(cc, 'srcref')
   if (is.null(src))  warning("could not get srcref")
-  
+
   src
 }
 

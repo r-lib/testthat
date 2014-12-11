@@ -4,11 +4,9 @@
 \alias{test_package_coverage}
 \title{Run all tests in an installed package to report test code coverage}
 \usage{
-test_package_coverage(package, reporter = "silent", split = FALSE,
-  filter = NULL)
+test_package_coverage(package, reporter = "silent", filter = NULL)
 
-test_check_coverage(package, reporter = "silent", split = FALSE,
-  filter = NULL)
+test_check_coverage(package, reporter = "silent", filter = NULL)
 }
 \arguments{
 \item{package}{package name}
@@ -18,6 +16,8 @@ test_check_coverage(package, reporter = "silent", split = FALSE,
 \item{filter}{If not \code{NULL}, only tests with file names matching this
 regular expression will be executed.  Matching will take on the file
 name after it has been stripped of \code{"test-"} and \code{".r"}.}
+
+\item{split}{=}
 }
 \value{
 a data frame of the summary of test results
@@ -32,6 +32,6 @@ reasonably quickly.
 \code{coverage} may be better suited to inclusion in devtools. It guesses that the current working directory is the name of the package (very commonly true in package development), and uses that name to run the tests installed in that envir
 }
 \examples{
-\dontrun{test_package_cover("testthat")}
+\dontrun{test_package_coverage("testthat")}
 }
 
