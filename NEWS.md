@@ -8,6 +8,10 @@
 
 * `colourise()` was removed. (Colour is still supported, via the `crayon` package.)
 
+## Bug fixes
+
+* Mocks can now access values local to the call of `with_mock` (#193, @krlmlr).
+
 # testthat 0.9.1
 
 * Bump R version dependency
