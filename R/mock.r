@@ -43,7 +43,7 @@ with_mock <- function(..., .env = topenv()) {
   }
   code <- new_values[code_pos]
 
-  mocks <- extract_mocks(new_values = new_values[!code_pos], .env = .env)
+  mocks <- extract_mocks(new_values = new_values[!code_pos], .env = .env, eval_env = parent.frame())
 
   on.exit(lapply(mocks, reset_mock), add = TRUE)
   lapply(mocks, set_mock)
@@ -61,7 +61,7 @@ colons_rx <- "::(?:[:]?)"
 name_rx <- ".*"
 pkg_and_name_rx <- sprintf("^(?:(%s)%s)?(%s)$", pkg_rx, colons_rx, name_rx)
 
-extract_mocks <- function(new_values, .env) {
+extract_mocks <- function(new_values, .env, eval_env = parent.frame()) {
   if (is.environment(.env))
     .env <- environmentName(.env)
   mock_qual_names <- names(new_values)
@@ -81,7 +81,7 @@ extract_mocks <- function(new_values, .env) {
       if (!exists(name, envir = env, mode = "function"))
         stop("Function ", name, " not found in environment ",
              environmentName(env), ".")
-      mock(name = name, env = env, new = eval(new_values[[qual_name]]))
+      mock(name = name, env = env, new = eval(new_values[[qual_name]], eval_env, eval_env))
     }
   )
 }
