@@ -1,4 +1,4 @@
-# testthat 0.X
+# testthat 0.9.1.9000
 
 * Once again, testthat suppresses messages and warnings in tests (#189)
 
