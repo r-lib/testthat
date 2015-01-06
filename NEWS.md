@@ -1,5 +1,7 @@
 # testthat 0.X
 
+* New `succeed()` exepctation always succeeds.
+
 ## Removed functions
 
 * `colourise()` was removed. (Colour is still supported, via the `crayon` package.)

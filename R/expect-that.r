@@ -46,7 +46,7 @@ expect_that <- function(object, condition, info = NULL, label = NULL) {
   results <- condition(object)
 
   results$srcref <- find_test_srcref()
-  
+
   results$failure_msg <- paste0(label, " ", results$failure_msg)
   results$success_msg <- paste0(label, " ", results$success_msg)
   if (!is.null(info)) {
@@ -60,7 +60,7 @@ expect_that <- function(object, condition, info = NULL, label = NULL) {
 
 # find the srcref of the test call, or NULL
 find_test_srcref <- function() {
-  # candidate frame is not in the testthat package, 
+  # candidate frame is not in the testthat package,
   # its call matches expect_* and has parsing info attached
   .is_test_frame <- function(i) {
     # is enclosure of the frame containing the call inside testthat package ?
@@ -68,21 +68,21 @@ find_test_srcref <- function() {
       , 'testthat')
     match_expect <- any(grepl('expect_', sys.call(i)))
     has_srcref <- !is.null(attr(sys.call(i), 'srcref'))
-    
+
     !inside && match_expect && has_srcref
   }
-  
-  # find the first call (tracing back) that seems good    
+
+  # find the first call (tracing back) that seems good
   nbe <- Find(.is_test_frame, seq_len(sys.nframe()), right = TRUE)
-  
+
   if (length(nbe) == 0 || is.na(nbe)) {
     return(NULL)
   }
-  
+
   cc <- sys.call(nbe)
   src <- attr(cc, 'srcref')
   if (is.null(src))  warning("could not get srcref")
-  
+
   src
 }
 
@@ -103,6 +103,20 @@ fail <- function(message = "Failure has been forced.") {
   invisible()
 }
 
+
+#' A default expectation that always succeeds.
+#'
+#' @param message a string to display.
+#' @export
+#' @examples
+#' \dontrun{
+#' test_that("this test fails", fail())
+#' }
+succeed <- function(message = "Success has been forced.") {
+  results <- expectation(TRUE, message, "This always fails")
+  get_reporter()$add_result(results)
+  invisible()
+}
 
 #' Negate an expectation
 #'
