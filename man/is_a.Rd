@@ -36,18 +36,19 @@ expect_true(is.data.frame(mtcars))
 
 Other expectations: \code{\link{equals_reference}},
   \code{\link{expect_equal_to_reference}};
-  \code{\link{equals}}, \code{\link{expect_equal}};
+  \code{\link{equals}}, \code{\link{equivalence}},
+  \code{\link{expect_equal}},
+  \code{\link{expect_equivalent}},
+  \code{\link{expect_identical}},
+  \code{\link{is_equivalent_to}},
+  \code{\link{is_identical_to}};
   \code{\link{expect-compare}},
   \code{\link{expect_less_than}},
   \code{\link{expect_more_than}},
   \code{\link{is_less_than}}, \code{\link{is_more_than}};
-  \code{\link{expect_equivalent}},
-  \code{\link{is_equivalent_to}};
   \code{\link{expect_error}}, \code{\link{throws_error}};
   \code{\link{expect_false}}, \code{\link{expect_true}},
   \code{\link{is_false}}, \code{\link{is_true}};
-  \code{\link{expect_identical}},
-  \code{\link{is_identical_to}};
   \code{\link{expect_match}}, \code{\link{matches}};
   \code{\link{expect_message}},
   \code{\link{shows_message}}; \code{\link{expect_named}},

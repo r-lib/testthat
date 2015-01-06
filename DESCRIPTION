@@ -26,6 +26,7 @@ Collate:
     'evaluate-promise.r'
     'expect-that.r'
     'expectation.r'
+    'expectations-equality.R'
     'expectations.r'
     'library.r'
     'make-expectation.r'

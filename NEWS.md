@@ -13,6 +13,8 @@
 
 * `colourise()` was removed. (Colour is still supported, via the `crayon` package.)
 
+* All equality expectations are now documented together (#173)
+
 # testthat 0.9.1
 
 * Bump R version dependency

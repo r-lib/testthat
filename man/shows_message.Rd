@@ -14,7 +14,7 @@ expect_message(object, regexp = NULL, ..., info = NULL, label = NULL)
 asserts that expression shows some message.}
 
 \item{all}{if \code{TRUE}, all messages must match given regular expression;
-if \code{FALSE} (the default), then only only message needs to match}
+if \code{FALSE} (the default), then only one message needs to match.}
 
 \item{...}{other arguments passed to \code{\link{matches}}}
 
@@ -44,23 +44,25 @@ expect_message(f(-1), "NEGATIVE", ignore.case = TRUE)
 \seealso{
 Other expectations: \code{\link{equals_reference}},
   \code{\link{expect_equal_to_reference}};
-  \code{\link{equals}}, \code{\link{expect_equal}};
+  \code{\link{equals}}, \code{\link{equivalence}},
+  \code{\link{expect_equal}},
+  \code{\link{expect_equivalent}},
+  \code{\link{expect_identical}},
+  \code{\link{is_equivalent_to}},
+  \code{\link{is_identical_to}};
   \code{\link{expect-compare}},
   \code{\link{expect_less_than}},
   \code{\link{expect_more_than}},
   \code{\link{is_less_than}}, \code{\link{is_more_than}};
-  \code{\link{expect_equivalent}},
-  \code{\link{is_equivalent_to}};
   \code{\link{expect_error}}, \code{\link{throws_error}};
   \code{\link{expect_false}}, \code{\link{expect_true}},
   \code{\link{is_false}}, \code{\link{is_true}};
-  \code{\link{expect_identical}},
-  \code{\link{is_identical_to}}; \code{\link{expect_is}},
-  \code{\link{is_a}}; \code{\link{expect_match}},
-  \code{\link{matches}}; \code{\link{expect_named}},
-  \code{\link{has_names}}; \code{\link{expect_null}},
-  \code{\link{is_null}}; \code{\link{expect_output}},
-  \code{\link{prints_text}}; \code{\link{expect_warning}},
+  \code{\link{expect_is}}, \code{\link{is_a}};
+  \code{\link{expect_match}}, \code{\link{matches}};
+  \code{\link{expect_named}}, \code{\link{has_names}};
+  \code{\link{expect_null}}, \code{\link{is_null}};
+  \code{\link{expect_output}}, \code{\link{prints_text}};
+  \code{\link{expect_warning}},
   \code{\link{gives_warning}};
   \code{\link{takes_less_than}}
 }
