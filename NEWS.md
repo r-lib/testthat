@@ -1,5 +1,7 @@
 # testthat 0.9.1.9000
 
+* `skip_if_not_installed()` skips tests if a package isn't installed (#192).
+
 * `expect_that(a, equals(b))` style of testing has been soft-deprecated.
   It will keep working, but it's no longer demonstrated any where, and new
   expectations will only be available in `expect_equal(a, b)` style. (#172)

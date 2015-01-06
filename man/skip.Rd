@@ -2,11 +2,14 @@
 % Please edit documentation in R/utils.r
 \name{skip}
 \alias{skip}
+\alias{skip_if_not_installed}
 \alias{skip_on_cran}
 \alias{skip_on_travis}
 \title{Skip a test.}
 \usage{
 skip(message)
+
+skip_if_not_installed(pkg)
 
 skip_on_cran()
 
@@ -18,11 +21,18 @@ skip_on_travis()
 \description{
 This function allows you to skip a test if it's not currently available.
 This will produce an informative message, but will not cause the test
-suite to fail. \code{skip_on_cran()} uses \code{skip()}, together with
-the \code{NOT_CRAN} environment variable (set by devtools), to automatically
-skip tests that should not be run on CRAN.
-\code{skip_on_travis} uses the environment variable \code{TRAVIS} which is
-automatically set on Travis CI.
+suite to fail.
+}
+\section{Helpers}{
+
+\code{skip_on_cran()} skips tests on CRAN, using the \code{NOT_CRAN}
+environment variable set by devtools.
+
+\code{skip_on_travis} skips tests on travis by inspecting the
+\code{TRAVIS} environment variable.
+
+\code{skip_if_not_installed} skips a tests if a package is not installed
+(useful for suggested packages).
 }
 \examples{
 if (FALSE) skip("No internet connection")

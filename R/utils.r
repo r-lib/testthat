@@ -26,11 +26,17 @@ is.skip <- function(x) inherits(x, "skip")
 #'
 #' This function allows you to skip a test if it's not currently available.
 #' This will produce an informative message, but will not cause the test
-#' suite to fail. \code{skip_on_cran()} uses \code{skip()}, together with
-#' the \code{NOT_CRAN} environment variable (set by devtools), to automatically
-#' skip tests that should not be run on CRAN.
-#' \code{skip_on_travis} uses the environment variable \code{TRAVIS} which is
-#' automatically set on Travis CI.
+#' suite to fail.
+#'
+#' @section Helpers:
+#' \code{skip_on_cran()} skips tests on CRAN, using the \code{NOT_CRAN}
+#' environment variable set by devtools.
+#'
+#' \code{skip_on_travis()} skips tests on travis by inspecting the
+#' \code{TRAVIS} environment variable.
+#'
+#' \code{skip_if_not_installed()} skips a tests if a package is not installed
+#' (useful for suggested packages).
 #'
 #' @param message A message describing why the test was skipped.
 #' @export
@@ -39,6 +45,14 @@ is.skip <- function(x) inherits(x, "skip")
 skip <- function(message) {
   cond <- structure(list(message = message), class = c("skip", "condition"))
   stop(cond)
+}
+
+#' @export
+#' @rdname skip
+skip_if_not_installed <- function(pkg) {
+  if (requireNamespace(pkg, quietly = TRUE)) return()
+
+  skip(paste0(pkg, " not installed"))
 }
 
 #' @export
