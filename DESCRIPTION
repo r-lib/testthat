@@ -27,6 +27,7 @@ Collate:
     'expect-that.r'
     'expectation.r'
     'expectations-equality.R'
+    'expectations-old.R'
     'expectations.r'
     'library.r'
     'make-expectation.r'

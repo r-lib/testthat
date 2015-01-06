@@ -2,6 +2,7 @@
 #'
 #' Tests whether or not an object inherits from any of a list of classes.
 #'
+#' @inheritParams expect_that
 #' @param class character vector of class names
 #' @seealso \code{\link{inherits}}
 #' @family expectations
@@ -14,6 +15,15 @@
 #' expect_is(mtcars, "data.frame")
 #' # alternatively for classes that have an is method
 #' expect_true(is.data.frame(mtcars))
+expect_is <- function(object, class, info = NULL, label = NULL) {
+  if (is.null(label)) {
+    label <- find_expr("object")
+  }
+  expect_that(object, is_a(class), info, label)
+}
+
+#' @export
+#' @rdname oldskool
 is_a <- function(class) {
   function(x) {
     actual <- paste0(class(x), collapse = ", ")
@@ -23,15 +33,6 @@ is_a <- function(class) {
       paste0("inherits from ", class)
     )
   }
-}
-#' @export
-#' @rdname is_a
-#' @inheritParams expect_that
-expect_is <- function(object, class, info = NULL, label = NULL) {
-  if (is.null(label)) {
-    label <- find_expr("object")
-  }
-  expect_that(object, is_a(class), info, label)
 }
 
 #' Expectation: is the object true/false?
@@ -59,6 +60,25 @@ expect_is <- function(object, class, info = NULL, label = NULL) {
 #' expect_true(length(a) == 3)
 #' # but better to use more specific expectation, if available
 #' expect_equal(length(a), 3)
+expect_true <- function(object, info = NULL, label = NULL) {
+  if (is.null(label)) {
+    label <- find_expr("object")
+  }
+  expect_that(object, is_true(), info, label)
+}
+
+#' @export
+#' @rdname expect_true
+#' @inheritParams expect_that
+expect_false <- function(object, info = NULL, label = NULL) {
+  if (is.null(label)) {
+    label <- find_expr("object")
+  }
+  expect_that(object, is_false(), info, label)
+}
+
+#' @export
+#' @rdname oldskool
 is_true <- function() {
   function(x) {
     expectation(
@@ -68,18 +88,9 @@ is_true <- function() {
     )
   }
 }
-#' @export
-#' @rdname is_true
-#' @inheritParams expect_that
-expect_true <- function(object, info = NULL, label = NULL) {
-  if (is.null(label)) {
-    label <- find_expr("object")
-  }
-  expect_that(object, is_true(), info, label)
-}
 
 #' @export
-#' @rdname is_true
+#' @rdname oldskool
 is_false <- function() {
   function(x) {
     expectation(
@@ -89,23 +100,23 @@ is_false <- function() {
     )
   }
 }
-#' @export
-#' @rdname is_true
-#' @inheritParams expect_that
-expect_false <- function(object, info = NULL, label = NULL) {
-  if (is.null(label)) {
-    label <- find_expr("object")
-  }
-  expect_that(object, is_false(), info, label)
-}
 
 #' Expectation: is the object NULL?
 #'
 #' @family expectations
+#' @inheritParams expect_that
 #' @export
 #' @examples
 #' expect_null(NULL)
-#'
+expect_null <- function(object, info = NULL, label = NULL) {
+  if (is.null(label)) {
+    label <- find_expr("object")
+  }
+  expect_that(object, is_null(), info, label)
+}
+
+#' @export
+#' @rdname oldskool
 is_null <- function() {
   function(x) {
     expectation(
@@ -115,21 +126,14 @@ is_null <- function() {
     )
   }
 }
-#' @export
-#' @rdname is_null
-#' @inheritParams expect_that
-expect_null <- function(object, info = NULL, label = NULL) {
-  if (is.null(label)) {
-    label <- find_expr("object")
-  }
-  expect_that(object, is_null(), info, label)
-}
+
 
 #' Expectation: does string match regular expression?
 #'
 #' If the object to be tested has length greater than one, all elements of
 #' the vector must match the pattern in order to pass.
 #'
+#' @inheritParams expect_that
 #' @param regexp regular expression to test against
 #' @param all should all elements of actual value match \code{regexp} (TRUE),
 #'    or does only one need to match (FALSE)
@@ -141,6 +145,15 @@ expect_null <- function(object, info = NULL, label = NULL) {
 #' @examples
 #' expect_match("Testing is fun", "fun")
 #' expect_match("Testing is fun", "f.n")
+expect_match <- function(object, regexp, ..., all = TRUE, info = NULL, label = NULL) {
+  if (is.null(label)) {
+    label <- find_expr("object")
+  }
+  expect_that(object, matches(regexp, all = all, ...), info = info, label = label)
+}
+
+#' @export
+#' @rdname oldskool
 matches <- function(regexp, all = TRUE, ...) {
   stopifnot(is.character(regexp), length(regexp) == 1)
   function(char) {
@@ -159,18 +172,10 @@ matches <- function(regexp, all = TRUE, ...) {
     )
   }
 }
-#' @export
-#' @rdname matches
-#' @inheritParams expect_that
-expect_match <- function(object, regexp, ..., info = NULL, label = NULL) {
-  if (is.null(label)) {
-    label <- find_expr("object")
-  }
-  expect_that(object, matches(regexp, ...), info = info, label = label)
-}
 
 #' Expectation: does printed output match a regular expression?
 #'
+#' @inheritParams expect_that
 #' @param regexp regular expression to test against
 #' @param ... other arguments passed to \code{\link{matches}}
 #' @family expectations
@@ -183,24 +188,24 @@ expect_match <- function(object, regexp, ..., info = NULL, label = NULL) {
 #' # You can use the arguments of grepl to control the matching
 #' expect_output(str(mtcars), "11 VARIABLES", ignore.case = TRUE)
 #' expect_output(str(mtcars), "$ mpg", fixed = TRUE)
-prints_text <- function(regexp, ...) {
-  function(expr) {
-    output <- evaluate_promise(expr, print = TRUE)$output
-    matches(regexp, ...)(output)
-  }
-}
-#' @export
-#' @rdname prints_text
-#' @inheritParams expect_that
 expect_output <- function(object, regexp, ..., info = NULL, label = NULL) {
   if (is.null(label)) {
     label <- find_expr("object")
   }
   expect_that(object, prints_text(regexp, ...), info = info, label = label)
 }
+#' @export
+#' @rdname oldskool
+prints_text <- function(regexp, ...) {
+  function(expr) {
+    output <- evaluate_promise(expr, print = TRUE)$output
+    matches(regexp, ...)(output)
+  }
+}
 
 #' Expectation: does expression throw an error?
 #'
+#' @inheritParams expect_that
 #' @param regexp optional regular expression to match. If not specified, just
 #'   asserts that expression throws some error.
 #' @param ... other arguments passed to \code{\link{matches}}
@@ -213,6 +218,15 @@ expect_output <- function(object, regexp, ..., info = NULL, label = NULL) {
 #'
 #' # You can use the arguments of grepl to control the matching
 #' expect_error(f(), "my error!", ignore.case = TRUE)
+expect_error <- function(object, regexp = NULL, ..., info = NULL,
+  label = NULL) {
+  if (is.null(label)) {
+    label <- find_expr("object")
+  }
+  expect_that(object, throws_error(regexp, ...), info = info, label = label)
+}
+#' @export
+#' @rdname oldskool
 throws_error <- function(regexp = NULL, ...) {
   function(expr) {
     res <- try(force(expr), TRUE)
@@ -232,26 +246,18 @@ throws_error <- function(regexp = NULL, ...) {
     }
   }
 }
-#' @export
-#' @rdname throws_error
-#' @inheritParams expect_that
-expect_error <- function(object, regexp = NULL, ..., info = NULL,
-                         label = NULL) {
-  if (is.null(label)) {
-    label <- find_expr("object")
-  }
-  expect_that(object, throws_error(regexp, ...), info = info, label = label)
-}
 
 #' Expectation: does expression give a warning?
 #'
 #' Needs to match at least one of the warnings produced by the expression.
 #'
+#' @inheritParams expect_that
+#' @inheritParams expect_match
 #' @param regexp optional regular expression to match. If not specified, just
 #'   asserts that expression gives some warning.
 #' @param all if \code{TRUE}, all warnings must match given regular expression;
 #'   if \code{FALSE} (the default), then only only warning needs to match
-#' @param ... other arguments passed to \code{\link{matches}}
+#' @param ... other arguments passed to \code{\link{expect_match}}
 #' @family expectations
 #' @export
 #' @examples
@@ -266,12 +272,21 @@ expect_error <- function(object, regexp = NULL, ..., info = NULL,
 #' # You can use the arguments of grepl to control the matching
 #' expect_warning(f(-1), "*x*", fixed = TRUE)
 #' expect_warning(f(-1), "NEGATIVE", ignore.case = TRUE)
+expect_warning <- function(object, regexp = NULL, ..., all = FALSE, info = NULL,
+  label = NULL) {
+  if (is.null(label)) {
+    label <- find_expr("object")
+  }
+  expect_that(object, gives_warning(regexp, ..., all = all), info = info, label = label)
+}
+#' @export
+#' @rdname oldskool
 gives_warning <- function(regexp = NULL, all = FALSE, ...) {
   function(expr) {
     warnings <- evaluate_promise(expr)$warnings
 
     if (!is.null(regexp) && length(warnings) > 0) {
-      matches(regexp, all = FALSE, ...)(warnings)
+      matches(regexp, all = all, ...)(warnings)
     } else {
       expectation(
         length(warnings) > 0,
@@ -281,26 +296,17 @@ gives_warning <- function(regexp = NULL, all = FALSE, ...) {
     }
   }
 }
-#' @export
-#' @rdname gives_warning
-#' @inheritParams expect_that
-expect_warning <- function(object, regexp = NULL, ..., info = NULL,
-                           label = NULL) {
-  if (is.null(label)) {
-    label <- find_expr("object")
-  }
-  expect_that(object, gives_warning(regexp, ...), info = info, label = label)
-}
 
 #' Expectation: does expression show a message?
 #'
 #' Needs to match at least one of the messages produced by the expression.
 #'
+#' @inheritParams expect_that
 #' @param regexp optional regular expression to match. If not specified, just
 #'   asserts that expression shows some message.
 #' @param all if \code{TRUE}, all messages must match given regular expression;
 #'   if \code{FALSE} (the default), then only one message needs to match.
-#' @param ... other arguments passed to \code{\link{matches}}
+#' @param ... other arguments passed to \code{\link{expect_match}}
 #' @family expectations
 #' @export
 #' @examples
@@ -315,6 +321,15 @@ expect_warning <- function(object, regexp = NULL, ..., info = NULL,
 #' # You can use the arguments of grepl to control the matching
 #' expect_message(f(-1), "*x*", fixed = TRUE)
 #' expect_message(f(-1), "NEGATIVE", ignore.case = TRUE)
+expect_message <- function(object, regexp = NULL, ..., all = FALSE, info = NULL,
+  label = NULL) {
+  if (is.null(label)) {
+    label <- find_expr("object")
+  }
+  expect_that(object, shows_message(regexp, all = all, ...), info = info, label = label)
+}
+#' @export
+#' @rdname oldskool
 shows_message <- function(regexp = NULL, all = FALSE, ...) {
   function(expr) {
     messages <- evaluate_promise(expr)$messages
@@ -330,22 +345,13 @@ shows_message <- function(regexp = NULL, all = FALSE, ...) {
     }
   }
 }
-#' @export
-#' @rdname shows_message
-#' @inheritParams expect_that
-expect_message <- function(object, regexp = NULL, ..., info = NULL,
-                           label = NULL) {
-  if (is.null(label)) {
-    label <- find_expr("object")
-  }
-  expect_that(object, shows_message(regexp, ...), info = info, label = label)
-}
 
 #' Expectation: does expression take less than a fixed amount of time to run?
 #'
 #' This is useful for performance regression testing.
 #'
 #' @family expectations
+#' @keywords internal
 #' @export
 #' @param amount maximum duration in seconds
 takes_less_than <- function(amount) {
@@ -366,6 +372,7 @@ takes_less_than <- function(amount) {
 #' blank), specific names (by suppling a vector of names), or absence of
 #' names (with \code{NULL}).
 #'
+#' @inheritParams expect_that
 #' @param expected Character vector of expected names. Leave missing to
 #'   match any names. Use \code{NULL} to check for absence of names.
 #' @param ignore.order If \code{TRUE}, sorts names before comparing to
@@ -386,6 +393,17 @@ takes_less_than <- function(amount) {
 #' # Can also check for the absence of names with NULL
 #' z <- 1:4
 #' expect_named(z, NULL)
+expect_named <- function(object, expected, ignore.order = FALSE,
+                         ignore.case = FALSE, info = NULL,
+  label = NULL) {
+  if (is.null(label)) {
+    label <- find_expr("object")
+  }
+  expect_that(object, has_names(expected, ignore.order = ignore.order,
+    ignore.case = ignore.case), info = info, label = label)
+}
+#' @export
+#' @rdname oldskool
 has_names <- function(expected, ignore.order = FALSE, ignore.case = FALSE) {
   if (missing(expected)) {
     function(x) {
@@ -408,17 +426,6 @@ has_names <- function(expected, ignore.order = FALSE, ignore.case = FALSE) {
       )
     }
   }
-}
-
-#' @rdname has_names
-#' @export
-#' @inheritParams expect_that
-expect_named <- function(object, expected, ..., info = NULL,
-                         label = NULL) {
-  if (is.null(label)) {
-    label <- find_expr("object")
-  }
-  expect_that(object, has_names(expected, ...), info = info, label = label)
 }
 
 normalise_names <- function(x, ignore.order = FALSE, ignore.case = FALSE) {
@@ -460,8 +467,8 @@ normalise_names <- function(x, ignore.order = FALSE, ignore.case = FALSE) {
 #' @name expect-compare
 NULL
 
-#' @rdname expect-compare
 #' @export
+#' @rdname oldskool
 is_less_than <- function(expected, label = NULL, ...) {
   if (is.null(label)) {
     label <- find_expr("expected")
@@ -493,8 +500,8 @@ expect_less_than <- function(object, expected, ..., info = NULL, label = NULL,
               info = info, label = label)
 }
 
-#' @rdname expect-compare
 #' @export
+#' @rdname oldskool
 is_more_than <- function(expected, label = NULL, ...) {
   if (is.null(label)) {
     label <- find_expr("expected")
@@ -511,6 +518,7 @@ is_more_than <- function(expected, label = NULL, ...) {
     )
   }
 }
+
 #' @export
 #' @rdname expect-compare
 expect_more_than <- function(object, expected, ..., info = NULL, label = NULL,

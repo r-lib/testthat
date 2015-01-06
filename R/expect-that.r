@@ -1,27 +1,6 @@
 #' Expect that a condition holds.
 #'
-#' An expectation checks whether a single condition holds true.
-#' \pkg{testthat} currently provides the following expectations.  See their
-#' documentation for more details
-#'
-#' \itemize{
-#'  \item \code{\link{is_true}}: truth
-#'  \item \code{\link{is_false}}: falsehood
-#'  \item \code{\link{is_a}}: inheritance
-#'  \item \code{\link{equals}}: equality with numerical tolerance
-#'  \item \code{\link{equals_reference}}: equality relative to a reference
-#'  \item \code{\link{is_equivalent_to}}: equality ignoring attributes
-#'  \item \code{\link{is_identical_to}}: exact identity
-#'  \item \code{\link{matches}}: string matching
-#'  \item \code{\link{prints_text}}: output matching
-#'  \item \code{\link{throws_error}}: error matching
-#'  \item \code{\link{gives_warning}}: warning matching
-#'  \item \code{\link{shows_message}}: message matching
-#'  \item \code{\link{takes_less_than}}: performance
-#' }
-#'
-#' Expectations are arranged into tests with \code{\link{test_that}} and
-#' tests are arranged into contexts with \code{\link{context}}.
+#' An old style of testing that's no longer encouraged.
 #'
 #' @param object object to test
 #' @param condition, a function that returns whether or not the condition
@@ -30,6 +9,7 @@
 #' @param info extra information to be included in the message (useful when
 #'   writing tests in loops).
 #' @return the (internal) expectation result as an invisible list
+#' @keywords internal
 #' @export
 #' @seealso \code{\link{fail}} for an expectation that always fails.
 #' @examples

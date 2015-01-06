@@ -49,7 +49,7 @@
 NULL
 
 #' @export
-#' @rdname equivalence
+#' @rdname oldskool
 equals <- function(expected, label = NULL, ...) {
   if (is.null(label)) {
     label <- find_expr("expected")
@@ -85,7 +85,7 @@ expect_equal <- function(object, expected, ..., info = NULL, label = NULL,
 
 
 #' @export
-#' @rdname equivalence
+#' @rdname oldskool
 is_equivalent_to <- function(expected, label = NULL) {
   if (is.null(label)) {
     label <- find_expr("expected")
@@ -112,7 +112,7 @@ expect_equivalent <- function(object, expected, info = NULL, label = NULL,
 }
 
 #' @export
-#' @rdname equivalence
+#' @rdname oldskool
 is_identical_to <- function(expected, label = NULL) {
   if (is.null(label)) {
     label <- find_expr("expected")
@@ -157,13 +157,14 @@ expect_identical <- function(object, expected, info = NULL, label = NULL,
 
 #' Expectation: is the object equal to a reference value stored in a file?
 #'
-#' This expectation is equivalent to \code{\link{equals}}, except that the
+#' This expectation is equivalent to \code{\link{expect_equal}}, except that the
 #' expected value is stored in an RDS file instead of being specified
 #' literally. This can be helpful when the value is necessarily complex. If
 #' the file does not exist then it will be created using the value of the
 #' specified object, and subsequent tests will check for consistency against
 #' that generated value. The test can be reset by deleting the RDS file.
-#
+#'
+#' @inheritParams expect_that
 #' @param file The file name used to store the object. Should have an "rds"
 #'   extension.
 #' @param label For the full form, a label for the expected object, which is
@@ -171,13 +172,26 @@ expect_identical <- function(object, expected, info = NULL, label = NULL,
 #'   on the file name), when doing tests in a loop. For the short-cut form,
 #'   the object label, which is computed from the deparsed object by default.
 #' @param expected.label Equivalent of \code{label} for shortcut form.
-#' @param ... other values passed to \code{\link{equals}}
+#' @param ... other values passed to \code{\link{expect_equal}}
 #' @family expectations
 #' @export
 #' @examples
 #' \dontrun{
 #' expect_equal_to_reference(1, "one.rds")
 #' }
+expect_equal_to_reference <- function(object, file, ..., info = NULL,
+  label = NULL, expected.label = NULL) {
+  if (is.null(label)) {
+    label <- find_expr("object")
+  }
+  if (is.null(expected.label)) {
+    expected.label <- paste("reference from", file)
+  }
+  expect_that(object, equals_reference(file, label = expected.label, ...),
+    info = info, label = label)
+}
+#' @export
+#' @rdname oldskool
 equals_reference <- function(file, label = NULL, ...) {
   if (file.exists(file)) {
     reference <- readRDS(file)
@@ -192,18 +206,4 @@ equals_reference <- function(file, label = NULL, ...) {
       expectation(TRUE, "should never fail", "saved to file")
     }
   }
-}
-#' @export
-#' @rdname equals_reference
-#' @inheritParams expect_that
-expect_equal_to_reference <- function(object, file, ..., info = NULL,
-  label = NULL, expected.label = NULL) {
-  if (is.null(label)) {
-    label <- find_expr("object")
-  }
-  if (is.null(expected.label)) {
-    expected.label <- paste("reference from", file)
-  }
-  expect_that(object, equals_reference(file, label = expected.label, ...),
-    info = info, label = label)
 }
