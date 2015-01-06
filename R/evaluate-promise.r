@@ -51,7 +51,7 @@ evaluate_promise <- function(code, print = FALSE) {
   output <- paste0(readLines(temp, warn = FALSE), collapse = "\n")
 
   list(
-    result = result$result,
+    result = result$value,
     output = output,
     warnings = warnings,
     messages = messages
