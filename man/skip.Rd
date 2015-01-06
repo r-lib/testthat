@@ -3,14 +3,17 @@
 \name{skip}
 \alias{skip}
 \alias{skip_on_cran}
+\alias{skip_on_travis}
 \title{Skip a test.}
 \usage{
 skip(message)
 
 skip_on_cran()
+
+skip_on_travis()
 }
 \arguments{
-\item{message}{An message describing why the test was skipped.}
+\item{message}{A message describing why the test was skipped.}
 }
 \description{
 This function allows you to skip a test if it's not currently available.
@@ -18,6 +21,8 @@ This will produce an informative message, but will not cause the test
 suite to fail. \code{skip_on_cran()} uses \code{skip()}, together with
 the \code{NOT_CRAN} environment variable (set by devtools), to automatically
 skip tests that should not be run on CRAN.
+\code{skip_on_travis} uses the environment variable \code{TRAVIS} which is
+automatically set on Travis CI.
 }
 \examples{
 if (FALSE) skip("No internet connection")

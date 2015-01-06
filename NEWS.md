@@ -8,6 +8,9 @@
 
 * New `succeed()` exepctation always succeeds.
 
+* `skip_on_travis()` allows you to skip tests when run on Travis CI.
+  (Thanks to @mllg)
+
 ## Removed functions
 
 * `colourise()` was removed. (Colour is still supported, via the `crayon` package.)
