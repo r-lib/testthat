@@ -4,7 +4,7 @@
 \alias{succeed}
 \title{A default expectation that always succeeds.}
 \usage{
-succeed(message = "Success has been forced.")
+succeed(message = "Success has been forced")
 }
 \arguments{
 \item{message}{a string to display.}

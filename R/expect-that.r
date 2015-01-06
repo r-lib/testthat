@@ -97,8 +97,8 @@ find_test_srcref <- function() {
 #' \dontrun{
 #' test_that("this test fails", fail())
 #' }
-fail <- function(message = "Failure has been forced.") {
-  results <- expectation(FALSE, message, "This always succeeds.")
+fail <- function(message = "Failure has been forced") {
+  results <- expectation(FALSE, message, "This always succeeds")
   get_reporter()$add_result(results)
   invisible()
 }
@@ -112,7 +112,7 @@ fail <- function(message = "Failure has been forced.") {
 #' \dontrun{
 #' test_that("this test fails", fail())
 #' }
-succeed <- function(message = "Success has been forced.") {
+succeed <- function(message = "Success has been forced") {
   results <- expectation(TRUE, message, "This always fails")
   get_reporter()$add_result(results)
   invisible()

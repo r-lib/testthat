@@ -4,7 +4,7 @@
 \alias{fail}
 \title{A default expectation that always fails.}
 \usage{
-fail(message = "Failure has been forced.")
+fail(message = "Failure has been forced")
 }
 \arguments{
 \item{message}{a string to display.}
