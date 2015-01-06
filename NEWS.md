@@ -1,5 +1,7 @@
 # testthat 0.X
 
+* Once again, testthat suppresses messages and warnings in tests (#189)
+
 * New `test_examples()` lets you run package examples as tests. Each example
   counts as one expectation and it succeeds if the code runs without errors
   (#204).
