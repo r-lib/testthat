@@ -1,5 +1,9 @@
 # testthat 0.X
 
+* New `test_examples()` lets you run package examples as tests. Each example
+  counts as one expectation and it succeeds if the code runs without errors
+  (#204).
+
 * New `succeed()` exepctation always succeeds.
 
 ## Removed functions
