@@ -1,5 +1,5 @@
 Package: testthat
-Version: 0.9.1.9000
+Version: 0.9.1.9001
 Title: Testthat code. Tools to make testing fun :)
 Description: A testing package specifically tailored for R
     that's fun, flexible and easy to set up.
