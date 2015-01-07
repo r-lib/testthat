@@ -7,7 +7,7 @@
 \usage{
 test_package(package, filter = NULL, reporter = "summary", ...)
 
-test_check(package, filter = NULL, reporter = "check")
+test_check(package, filter = NULL, reporter = "check", ...)
 }
 \arguments{
 \item{package}{package name}

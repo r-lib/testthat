@@ -1,8 +1,9 @@
 # testthat 0.9.1.9000
 
-* `test_dir()`, `test_package()`, and `test_check()` have an added `...` argument
-  that allows filtering of test files using, e.g., Perl-style regular expressions,
-  or `fixed` character filtering. Arguments in `...` are passed to `grepl()` (@leeper).
+* `test_dir()`, `test_package()`, and `test_check()` have an added `...` 
+  argument that allows filtering of test files using, e.g., Perl-style regular 
+  expressions,or `fixed` character filtering. Arguments in `...` are passed to 
+  `grepl()` (@leeper).
 
 * `test_check()` uses a new reporter specifically designed for `R CMD check`.
   It displays a summary at the end of the tests, designed to be <13 lines long
