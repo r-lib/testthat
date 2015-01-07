@@ -4,32 +4,35 @@
 \alias{compare}
 \alias{compare.character}
 \alias{compare.default}
+\alias{compare.numeric}
 \title{Provide human-readable comparison of two objects}
 \usage{
 compare(x, y, ...)
 
 \method{compare}{default}(x, y, ...)
 
-\method{compare}{character}(x, y, ..., max_strings = 5, max_lines = 5,
+\method{compare}{character}(x, y, ..., max_diffs = 5, max_lines = 5,
   width = getOption("width"))
+
+\method{compare}{numeric}(x, y, max_diffs = 10, ...)
 }
 \arguments{
 \item{x,y}{Objects to compare}
 
 \item{...}{Additional arguments used to control specifics of comparison}
 
-\item{max_strings}{Maximum number of differences to show}
+\item{max_diffs}{Maximum number of differences to show}
 
 \item{max_lines}{Maximum number of lines to show from each difference}
 
 \item{width}{Width of output device}
 }
 \description{
-\code{compare} is similar to \code{\link[base]{all.equal}()}, but is
-tailored for unit test output. In fact, the default method is to just
-use \code{all.equal}.
+\code{compare} is similar to \code{\link[base]{all.equal}()}, but shows
+you examples of where the failures occured.
 }
 \examples{
+# Character -----------------------------------------------------------------
 x <- c("abc", "def", "jih")
 compare(x, x)
 
@@ -43,5 +46,19 @@ y <- "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis cursus
  tincidunt auctor. Vestibulum ac metus1 bibendum, facilisis nisi non, pulvinar
  dolor. Donec pretium iaculis nulla, ut interdum sapien ultricies a. "
 compare(x, y)
+# Numeric -------------------------------------------------------------------
+
+x <- y <- runif(100)
+y[sample(100, 10)] <- 5
+compare(x, y)
+
+x <- y <- 1:10
+x[5] <- NA
+x[6] <- 6.5
+compare(x, y)
+
+# Compare ignores minor numeric differences in the same way
+# as all.equal.
+compare(x, x + 1e-9)
 }
 

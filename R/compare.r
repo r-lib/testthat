@@ -1,8 +1,7 @@
 #' Provide human-readable comparison of two objects
 #'
-#' \code{compare} is similar to \code{\link[base]{all.equal}()}, but is
-#' tailored for unit test output. In fact, the default method is to just
-#' use \code{all.equal}.
+#' \code{compare} is similar to \code{\link[base]{all.equal}()}, but shows
+#' you examples of where the failures occured.
 #'
 #' @export
 #' @param x,y Objects to compare
@@ -38,12 +37,13 @@ compare.default <- function(x, y, ...){
   comparison(identical(same, TRUE), paste0(same, collapse = "\n"))
 }
 
-#' @param max_strings Maximum number of differences to show
+#' @param max_diffs Maximum number of differences to show
 #' @param max_lines Maximum number of lines to show from each difference
 #' @param width Width of output device
 #' @rdname compare
 #' @export
 #' @examples
+#' # Character -----------------------------------------------------------------
 #' x <- c("abc", "def", "jih")
 #' compare(x, x)
 #'
@@ -57,7 +57,7 @@ compare.default <- function(x, y, ...){
 #'  tincidunt auctor. Vestibulum ac metus1 bibendum, facilisis nisi non, pulvinar
 #'  dolor. Donec pretium iaculis nulla, ut interdum sapien ultricies a. "
 #' compare(x, y)
-compare.character <- function(x, y, ..., max_strings = 5, max_lines = 5,
+compare.character <- function(x, y, ..., max_diffs = 5, max_lines = 5,
                               width = getOption("width")) {
   if (identical(x, y)) return(comparison())
 
@@ -74,7 +74,7 @@ compare.character <- function(x, y, ..., max_strings = 5, max_lines = 5,
   }
 
   width <- width - 6 # allocate space for labels
-  n_show <- seq_len(min(length(diff), max_strings))
+  n_show <- seq_len(min(length(diff), max_diffs))
   show <- diff[n_show]
 
   encode <- function(x) encodeString(x, quote = '"')
@@ -115,6 +115,58 @@ str_chunk_1 <- function(x, length) {
   substring(x, start, start + length - 1)
 }
 
+#' @export
+#' @rdname compare
+#' @examples
+#' # Numeric -------------------------------------------------------------------
+#'
+#' x <- y <- runif(100)
+#' y[sample(100, 10)] <- 5
+#' compare(x, y)
+#'
+#' x <- y <- 1:10
+#' x[5] <- NA
+#' x[6] <- 6.5
+#' compare(x, y)
+#'
+#' # Compare ignores minor numeric differences in the same way
+#' # as all.equal.
+#' compare(x, x + 1e-9)
+compare.numeric <- function(x, y, max_diffs = 10, ...) {
+  equal <- all.equal(x, y, ...)
+  if (isTRUE(equal)) return(comparison())
+
+  # If they're not the same type or length, fallback to default method
+  if (!is.integer(x) && !is.numeric(y)) return(comparison(FALSE, equal))
+  if (length(x) != length(y)) return(comparison(FALSE, equal))
+
+  # If vectorwise-equal, fallback to default method
+  diff <- xor(is.na(x), is.na(y)) | x != y
+  diff[is.na(diff)] <- FALSE
+
+  if (!any(diff)) {
+    return(NextMethod())
+  }
+
+  mismatch <- data.frame(pos = which(diff), x = x[diff], y = y[diff])
+  mismatch$diff <- mismatch$x - mismatch$y
+
+  n <- min(max_diffs, nrow(mismatch))
+  mu <- mean(abs(x[diff] - y[diff]), na.rm = TRUE)
+
+  msg <- paste0(
+    sum(diff), "/", length(diff), " mismatches ",
+    "(average diff: ", format(mu, digits = 3), ").\n",
+    "First ", n, ":\n",
+    print_out(mismatch[1:n, , drop = FALSE], row.names = FALSE, digits = 3)
+  )
+  comparison(FALSE, msg)
+}
+
+print_out <- function(x, ...) {
+  lines <- capture.output(print(x, ...))
+  paste0(lines, collapse = "\n")
+}
 
 same_type <- function(x, y) {
   if (typeof(x) != typeof(y)) return(FALSE)

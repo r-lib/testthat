@@ -43,7 +43,7 @@ test_that("nested mock", {
       with_mock(
         gives_warning = throws_error,
         {
-          expect_warning(stopifnot(!compare(3, 5)$equal))
+          expect_warning(stopifnot(!compare(3, "a")$equal))
         }
       )
     },
@@ -58,14 +58,14 @@ test_that("qualified mock names", {
     gives_warning = throws_error,
     `base::all.equal` = function(x, y, ...) TRUE,
     {
-      expect_warning(stopifnot(!compare(3, 5)$equal))
+      expect_warning(stopifnot(!compare(3, "a")$equal))
     }
   )
   with_mock(
     `testthat::gives_warning` = throws_error,
     all.equal = function(x, y, ...) TRUE,
     {
-      expect_warning(stopifnot(!compare(3, 5)$equal))
+      expect_warning(stopifnot(!compare(3, "a")$equal))
     },
     .env = asNamespace("base")
   )

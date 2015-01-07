@@ -1,6 +1,8 @@
 # testthat 0.9.1.9000
 
-* `compare()` is now documented and exported.
+* `compare()` is now documented and exported. Added a numeric method so when
+  long numeric vectors don't match you'll see some examples of where the
+  problem is (#177).
 
 * `skip_if_not_installed()` skips tests if a package isn't installed (#192).
 
