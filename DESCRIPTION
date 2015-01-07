@@ -1,5 +1,5 @@
 Package: testthat
-Version: 0.9.1.9000
+Version: 0.9.1.9001
 Title: Testthat code. Tools to make testing fun :)
 Description: A testing package specifically tailored for R
     that's fun, flexible and easy to set up.
@@ -28,6 +28,9 @@ Collate:
     'evaluate-promise.r'
     'expect-that.r'
     'expectation.r'
+    'expectations-equality.R'
+    'expectations-matches.R'
+    'expectations-old.R'
     'expectations.r'
     'library.r'
     'make-expectation.r'
@@ -42,6 +45,7 @@ Collate:
     'reporter-tap.r'
     'reporter-teamcity.r'
     'reporter-zzz.r'
+    'test-example.R'
     'test-files.r'
     'test-package.r'
     'test-results.r'

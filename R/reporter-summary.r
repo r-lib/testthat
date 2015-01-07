@@ -50,6 +50,7 @@ SummaryReporter <- setRefClass("SummaryReporter", contains = "Reporter",
     },
 
     add_result = function(result) {
+      callSuper(result)
       has_tests <<- TRUE
       if (result$skipped) {
         cat(colourise("S", "skipped"))
@@ -59,8 +60,6 @@ SummaryReporter <- setRefClass("SummaryReporter", contains = "Reporter",
         cat(colourise(".", "passed"))
         return()
       }
-
-      failed <<- TRUE
 
       if (n + 1 > length(labels) || n + 1 > max_reports) {
         cat(colourise("F", "error"))

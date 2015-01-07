@@ -1,16 +1,35 @@
-# testthat 0.X
+# testthat 0.9.1.9000
 
-## New features
 * test (test_dir, test_file, test_package, test_check) functions now return a
   **testthat_results** object that contains all results, and can be printed or
   converted to data frame.
 
+* `compare()` is now documented and exported. Added a numeric method so when
+  long numeric vectors don't match you'll see some examples of where the
+  problem is (#177). The line spacing in `compare.character()` was
+  tweaked.
+
+* `skip_if_not_installed()` skips tests if a package isn't installed (#192).
+
+* `expect_that(a, equals(b))` style of testing has been soft-deprecated.
+  It will keep working, but it's no longer demonstrated any where, and new
+  expectations will only be available in `expect_equal(a, b)` style. (#172)
+
+* Once again, testthat suppresses messages and warnings in tests (#189)
+
+* New `test_examples()` lets you run package examples as tests. Each example
+  counts as one expectation and it succeeds if the code runs without errors
+  (#204).
+
+* New `succeed()` expectation always succeeds.
+
 * `skip_on_travis()` allows you to skip tests when run on Travis CI.
   (Thanks to @mllg)
 
-## Removed functions
-
 * `colourise()` was removed. (Colour is still supported, via the `crayon` package.)
+
+* All equality expectations are now documented together (#173); all
+  matching expectations are also documented together.
 
 # testthat 0.9.1
 

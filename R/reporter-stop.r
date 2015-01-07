@@ -44,6 +44,7 @@ StopReporter <- setRefClass("StopReporter", contains = "Reporter",
     },
 
     add_result = function(result) {
+      callSuper(result)
       if (result$passed) return()
       if (result$skipped) return()
 
