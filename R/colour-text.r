@@ -16,7 +16,7 @@ colourise <- function(text, as = c("passed", "skipped", "error"), fg, bg) {
 
   if (any(is.element(as, allowed_colors))) {
     param_warn("fg")
-    return(colourise(text))
+    return(Recall(text))
   } else if (!missing(fg)) {
     param_warn("fg")
   }
