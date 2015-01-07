@@ -1,16 +1,28 @@
-# testthat 0.X
+# testthat 0.9.1.9000
 
-## New features
+* `skip_if_not_installed()` skips tests if a package isn't installed (#192).
+
+* `expect_that(a, equals(b))` style of testing has been soft-deprecated.
+  It will keep working, but it's no longer demonstrated any where, and new
+  expectations will only be available in `expect_equal(a, b)` style. (#172)
+
+* Once again, testthat suppresses messages and warnings in tests (#189)
+
+* New `test_examples()` lets you run package examples as tests. Each example
+  counts as one expectation and it succeeds if the code runs without errors
+  (#204).
+
+* New `succeed()` exepctation always succeeds.
+
 * `skip_on_travis()` allows you to skip tests when run on Travis CI.
   (Thanks to @mllg)
 
-## Removed functions
-
 * `colourise()` was removed. (Colour is still supported, via the `crayon` package.)
 
-## Bug fixes
-
 * Mocks can now access values local to the call of `with_mock` (#193, @krlmlr).
+
+* All equality expectations are now documented together (#173); all 
+  matching expectations are also documented together.
 
 # testthat 0.9.1
 

@@ -1,12 +1,11 @@
-
 context("Colours")
 
 test_that("We have colours if we want to", {
 
-  op <- options()
-  on.exit(options(op), add = TRUE)
-  options(crayon.enabled = TRUE)
-  options(testthat.use_colours = TRUE)
+  op <- options(
+    crayon.enabled = TRUE,
+    testthat.use_colours = TRUE
+  )
 
   c1 <- crayon::has_style(colourise("X", "passed"))
   c2 <- crayon::has_style(colourise("X", "skipped"))
@@ -22,10 +21,10 @@ test_that("We have colours if we want to", {
 
 test_that("We don't have colours if we don't want to", {
 
-  op <- options()
-  on.exit(options(op), add = TRUE)
-  options(crayon.enabled = TRUE)
-  options(testthat.use_colours = FALSE)
+  op <- options(
+    crayon.enabled = TRUE,
+    testthat.use_colours = FALSE
+  )
 
   c1 <- crayon::has_style(colourise("X", "passed"))
   c2 <- crayon::has_style(colourise("X", "skipped"))

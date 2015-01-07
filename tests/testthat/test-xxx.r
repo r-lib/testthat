@@ -43,6 +43,10 @@ test_test_that("fail fails", {
   fail()
 })
 
+test_test_that("succeed suceeds", {
+  suceeds()
+}, failure_expected = TRUE)
+
 test_test_that("random errors are caught", {
   function_that_doesnt_exist()
 })

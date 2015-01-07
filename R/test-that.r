@@ -53,9 +53,16 @@ test_code <- function(description, code, env) {
   }
   frame <- sys.nframe()
 
+  ok <- TRUE
   tryCatch(
-    withCallingHandlers(eval(code, new_test_environment), error = capture_calls),
+    withCallingHandlers(
+      eval(code, new_test_environment),
+      error = capture_calls,
+      message = function(c) invokeRestart("muffleMessage"),
+      warning = function(c) invokeRestart("muffleWarning")
+    ),
     error = function(e) {
+      ok <- FALSE
       report <- expectation_error(e$message, e$calls)
       get_reporter()$add_result(report)
     }, skip = function(e) {
@@ -63,6 +70,8 @@ test_code <- function(description, code, env) {
       get_reporter()$add_result(report)
     }
   )
+
+  invisible(ok)
 }
 
 #' R package to make testing fun!

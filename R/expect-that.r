@@ -1,27 +1,6 @@
 #' Expect that a condition holds.
 #'
-#' An expectation checks whether a single condition holds true.
-#' \pkg{testthat} currently provides the following expectations.  See their
-#' documentation for more details
-#'
-#' \itemize{
-#'  \item \code{\link{is_true}}: truth
-#'  \item \code{\link{is_false}}: falsehood
-#'  \item \code{\link{is_a}}: inheritance
-#'  \item \code{\link{equals}}: equality with numerical tolerance
-#'  \item \code{\link{equals_reference}}: equality relative to a reference
-#'  \item \code{\link{is_equivalent_to}}: equality ignoring attributes
-#'  \item \code{\link{is_identical_to}}: exact identity
-#'  \item \code{\link{matches}}: string matching
-#'  \item \code{\link{prints_text}}: output matching
-#'  \item \code{\link{throws_error}}: error matching
-#'  \item \code{\link{gives_warning}}: warning matching
-#'  \item \code{\link{shows_message}}: message matching
-#'  \item \code{\link{takes_less_than}}: performance
-#' }
-#'
-#' Expectations are arranged into tests with \code{\link{test_that}} and
-#' tests are arranged into contexts with \code{\link{context}}.
+#' An old style of testing that's no longer encouraged.
 #'
 #' @param object object to test
 #' @param condition, a function that returns whether or not the condition
@@ -30,6 +9,7 @@
 #' @param info extra information to be included in the message (useful when
 #'   writing tests in loops).
 #' @return the (internal) expectation result as an invisible list
+#' @keywords internal
 #' @export
 #' @seealso \code{\link{fail}} for an expectation that always fails.
 #' @examples
@@ -46,7 +26,7 @@ expect_that <- function(object, condition, info = NULL, label = NULL) {
   results <- condition(object)
 
   results$srcref <- find_test_srcref()
-  
+
   results$failure_msg <- paste0(label, " ", results$failure_msg)
   results$success_msg <- paste0(label, " ", results$success_msg)
   if (!is.null(info)) {
@@ -60,7 +40,7 @@ expect_that <- function(object, condition, info = NULL, label = NULL) {
 
 # find the srcref of the test call, or NULL
 find_test_srcref <- function() {
-  # candidate frame is not in the testthat package, 
+  # candidate frame is not in the testthat package,
   # its call matches expect_* and has parsing info attached
   .is_test_frame <- function(i) {
     # is enclosure of the frame containing the call inside testthat package ?
@@ -68,21 +48,21 @@ find_test_srcref <- function() {
       , 'testthat')
     match_expect <- any(grepl('expect_', sys.call(i)))
     has_srcref <- !is.null(attr(sys.call(i), 'srcref'))
-    
+
     !inside && match_expect && has_srcref
   }
-  
-  # find the first call (tracing back) that seems good    
+
+  # find the first call (tracing back) that seems good
   nbe <- Find(.is_test_frame, seq_len(sys.nframe()), right = TRUE)
-  
+
   if (length(nbe) == 0 || is.na(nbe)) {
     return(NULL)
   }
-  
+
   cc <- sys.call(nbe)
   src <- attr(cc, 'srcref')
   if (is.null(src))  warning("could not get srcref")
-  
+
   src
 }
 
@@ -97,12 +77,26 @@ find_test_srcref <- function() {
 #' \dontrun{
 #' test_that("this test fails", fail())
 #' }
-fail <- function(message = "Failure has been forced.") {
-  results <- expectation(FALSE, message, "This always succeeds.")
+fail <- function(message = "Failure has been forced") {
+  results <- expectation(FALSE, message, "This always succeeds")
   get_reporter()$add_result(results)
   invisible()
 }
 
+
+#' A default expectation that always succeeds.
+#'
+#' @param message a string to display.
+#' @export
+#' @examples
+#' \dontrun{
+#' test_that("this test fails", fail())
+#' }
+succeed <- function(message = "Success has been forced") {
+  results <- expectation(TRUE, message, "This always fails")
+  get_reporter()$add_result(results)
+  invisible()
+}
 
 #' Negate an expectation
 #'
