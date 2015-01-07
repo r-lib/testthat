@@ -139,6 +139,12 @@ compare.numeric <- function(x, y, max_diffs = 10, ...) {
   if (!is.integer(x) && !is.numeric(y)) return(comparison(FALSE, equal))
   if (length(x) != length(y)) return(comparison(FALSE, equal))
 
+  if (length(x) == 1) {
+    msg <- paste0(format(x, digits = 3), " - ", format(y, digits = 3),
+      " == ", format(x - y, digits = 3))
+    return(comparison(FALSE, msg))
+  }
+
   # If vectorwise-equal, fallback to default method
   diff <- xor(is.na(x), is.na(y)) | x != y
   diff[is.na(diff)] <- FALSE
