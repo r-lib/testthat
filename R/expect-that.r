@@ -38,6 +38,62 @@ expect_that <- function(object, condition, info = NULL, label = NULL) {
   invisible(results)
 }
 
+#' @title alternative \code{expect_that} from \code{testthat} which permutes all
+#'   the inputs to a function which should give the same result where n args >=2 and the function is commutative.
+#' @description This makes a lot of assumptions, needs more testing. It can't
+#'   handle mixed error/no error outcomes after permutation, which is an
+#'   important feature to consider. The command following this function attaches this function to the testthat namespace. This means that it can call internal testthat functions, but does not mean it appears as testthat::expect_that_combine
+#'   @examples
+#'   expect_that_combine(sum(1,2,3), testthat::equals(6))
+#'
+#' @return testthat result
+#' @export
+expect_that_combine <- function(object, condition, info = NULL, label = NULL) {
+
+  cl <- substitute(object)
+  stopifnot(sum(sapply(cl, is.symbol)) == 1)
+
+  func_name <- cl[[1]]
+  args <- as.list(cl[-1])
+  # can only handle flat lists of arguments when permuting
+  stopifnot(unlist(args, recursive = TRUE) == unlist(args, recursive = FALSE))
+  stopifnot(length(args) >= 2)
+
+  # get the combinations of arguments
+  arg_combs <- permute(unlist(args))
+
+  # now loop through all permutations
+  for (comb in 1:dim(arg_combs)[1]) {
+    # create a promise in effort to mimic expect_that behaviour
+    e <- expect_that(
+      object    = do.call(as.character(func_name), as.list(arg_combs[comb,])),
+      condition = condition,
+      info      = paste0(
+        info, "args = ",
+        paste(arg_combs[comb, ], collapse = " ", sep = ","),
+        sprintf(" (test iteration %d)", comb)
+      ),
+      label     = label
+    )
+  }
+  invisible(e)
+}
+
+permute <- function(x) {
+  # break out of recursion:
+  if (length(x) == 2) return(rbind(x, c(x[2], x[1])))
+
+  res <- numeric()
+
+  #take each one and place it first, then recurse the rest:
+  for (element in 1:length(x)) {
+    sub_combs <- Recall(x[-element]) # recurse
+    new_combs <- cbind(x[element], sub_combs)
+    res <- rbind(res, new_combs)
+  }
+  unname(res)
+}
+
 # find the srcref of the test call, or NULL
 find_test_srcref <- function() {
   # candidate frame is not in the testthat package,

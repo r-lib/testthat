@@ -11,6 +11,18 @@ grepl2 <- function(pattern, x, ...) {
   vapply(pattern, grepl, x, ..., FUN.VALUE = logical(1), USE.NAMES = FALSE)
 }
 
+# list all functions in a package, needed for test coverage
+lsf <- function(pkg) {
+  envirName <- paste("package", pkg, sep = ":")
+  everything <- ls(pos = envirName, all.names = TRUE)
+  funcs <- c()
+  for (e in everything) {
+    if (is.function(get(e, envir = as.environment(envirName), inherits = F)))
+      funcs <- append(funcs, e)
+  }
+  funcs
+}
+
 starts_with <- function(string, prefix) {
   substr(string, 1, nchar(prefix)) == prefix
 }
