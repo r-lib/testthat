@@ -64,7 +64,7 @@ test_package <- function(package, filter = NULL, reporter = "summary") {
 
 #' @export
 #' @rdname test_package
-test_check <- function(package, filter = NULL, reporter = "summary") {
+test_check <- function(package, filter = NULL, reporter = "check") {
   require(package, character.only = TRUE)
 
   test_path <- "testthat"
@@ -78,9 +78,6 @@ test_check <- function(package, filter = NULL, reporter = "summary") {
     df <- test_dir(test_path, reporter = reporter, env = env, filter = filter)
   })
 
-  if (reporter$failed) {
-    stop("Test failures", call. = FALSE)
-  }
   invisible(df)
 }
 

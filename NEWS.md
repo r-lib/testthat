@@ -1,5 +1,10 @@
 # testthat 0.9.1.9000
 
+* `test_check()` uses a new reporter specifically designed for `R CMD check`.
+  It displays a summary at the end of the tests, designed to be <13 lines long
+  so test failures in `R CMD check` display something more useful. This will
+  hopefully stop BDR from calling testthat a "test obfuscation suite" (#201).
+
 * `compare()` is now documented and exported. Added a numeric method so when
   long numeric vectors don't match you'll see some examples of where the
   problem is (#177). The line spacing in `compare.character()` was 

@@ -34,6 +34,7 @@ Collate:
     'make-expectation.r'
     'mock.r'
     'reporter.r'
+    'reporter-check.R'
     'reporter-list.r'
     'reporter-minimal.r'
     'reporter-multi.r'
