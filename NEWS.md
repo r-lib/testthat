@@ -29,6 +29,8 @@
 
 * `colourise()` was removed. (Colour is still supported, via the `crayon` package.)
 
+* Mocks can now access values local to the call of `with_mock` (#193, @krlmlr).
+
 * All equality expectations are now documented together (#173); all 
   matching expectations are also documented together.
 

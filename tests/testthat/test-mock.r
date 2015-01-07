@@ -150,3 +150,12 @@ test_that("mock extraction", {
   expect_identical(extract_mocks(list(acf = identity), "stats")[[1]]$new_value, identity)
   expect_equal(length(extract_mocks(list(not = identity, `base::!` = identity), "testthat")), 2)
 })
+
+test_that("mocks can access local variables", {
+  value <- TRUE
+
+  with_mock(
+    expect_equal(2 * 3, 4),
+    all.equal = function(x, y, ...) {value}
+  )
+})
