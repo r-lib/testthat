@@ -14,7 +14,7 @@ colourise <- function(text, as = c("passed", "skipped", "error"), fg, bg) {
     warning("The ", param, " parameter to testthat::colourise is deprecated.", call. = FALSE)
   }
 
-  if (any(is.element(as, allowed_colors))) {
+  if (any(is.element(tolower(as), allowed_colors))) {
     param_warn("fg")
     return(Recall(text))
   } else if (!missing(fg)) {
