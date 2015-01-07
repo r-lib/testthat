@@ -24,7 +24,6 @@ Reporter <- setRefClass("Reporter",
       initFields(...)
     },
     start_reporter = function() {
-      failed <<- FALSE
     },
     start_context = function(desc) {
       context <<- desc
@@ -32,7 +31,11 @@ Reporter <- setRefClass("Reporter",
     start_test = function(desc) {
       test <<- desc
     },
-    add_result = function(result) {},
+    add_result = function(result) {
+      if (!result$passed && !result$skipped) {
+        failed <<- TRUE
+      }
+    },
     end_test = function() {
       test <<- ""
     },

@@ -44,6 +44,7 @@ TeamcityReporter <- setRefClass("TeamcityReporter", contains = "Reporter",
     },
 
     add_result = function(result) {
+      callSuper(result)
       testName <- strsplit(result$success_msg, "\n")[[1]][1]
 
       if (result$skipped) {
