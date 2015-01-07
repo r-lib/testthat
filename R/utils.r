@@ -48,6 +48,7 @@ skip <- function(message) {
 }
 
 #' @export
+#' @param pkg Name of package to check for
 #' @rdname skip
 skip_if_not_installed <- function(pkg) {
   if (requireNamespace(pkg, quietly = TRUE)) return()

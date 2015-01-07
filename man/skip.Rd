@@ -17,6 +17,8 @@ skip_on_travis()
 }
 \arguments{
 \item{message}{A message describing why the test was skipped.}
+
+\item{pkg}{Name of package to check for}
 }
 \description{
 This function allows you to skip a test if it's not currently available.
