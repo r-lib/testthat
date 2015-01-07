@@ -1,8 +1,18 @@
+#' Provide human-readable comparison of two objects
+#'
+#' \code{compare} is similar to \code{\link[base]{all.equal}()}, but is
+#' tailored for unit test output. In fact, the default method is to just
+#' use \code{all.equal}.
+#'
+#' @export
+#' @param x,y Objects to compare
+#' @param ... Additional arguments used to control specifics of comparison
 compare <- function(x, y, ...) {
   UseMethod("compare", x)
 }
 
 #' @export
+#' @rdname compare
 compare.default <- function(x, y, ...){
   same <- all.equal(x, y, ...)
   list(
@@ -11,19 +21,23 @@ compare.default <- function(x, y, ...){
   )
 }
 
+#' @param max_strings Maximum number of differences to show
+#' @param max_lines Maximum number of lines to show from each difference
+#' @param width Width of output device
+#' @rdname compare
 #' @export
-# x <- c("abc", "def", "jih")
-# y <- paste0(x, "y")
-# compare(x, y)
-#
-# x <- "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis cursus
-#  tincidunt auctor. Vestibulum ac metus bibendum, facilisis nisi non, pulvinar
-#  dolor. Donec pretium iaculis nulla, ut interdum sapien ultricies a. "
-# y <- "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis cursus
-#  tincidunt auctor. Vestibulum ac metus1 bibendum, facilisis nisi non, pulvinar
-#  dolor. Donec pretium iaculis nulla, ut interdum sapien ultricies a. "
-# compare(x, y)
-# expect_equal(x, y)
+#' @examples
+#' x <- c("abc", "def", "jih")
+#' y <- paste0(x, "y")
+#' compare(x, y)
+#'
+#' x <- "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis cursus
+#'  tincidunt auctor. Vestibulum ac metus bibendum, facilisis nisi non, pulvinar
+#'  dolor. Donec pretium iaculis nulla, ut interdum sapien ultricies a. "
+#' y <- "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis cursus
+#'  tincidunt auctor. Vestibulum ac metus1 bibendum, facilisis nisi non, pulvinar
+#'  dolor. Donec pretium iaculis nulla, ut interdum sapien ultricies a. "
+#' compare(x, y)
 compare.character <- function(x, y, ..., max_strings = 5, max_lines = 5,
                               width = getOption("width")) {
   if (identical(x, y)) return(list(equal = TRUE))

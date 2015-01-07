@@ -1,5 +1,7 @@
 # testthat 0.9.1.9000
 
+* `compare()` is now documented and exported.
+
 * `skip_if_not_installed()` skips tests if a package isn't installed (#192).
 
 * `expect_that(a, equals(b))` style of testing has been soft-deprecated.
