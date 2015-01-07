@@ -19,7 +19,8 @@
 
 * `colourise()` was removed. (Colour is still supported, via the `crayon` package.)
 
-* All equality expectations are now documented together (#173)
+* All equality expectations are now documented together (#173); all 
+  matching expectations are also documented together.
 
 # testthat 0.9.1
 
