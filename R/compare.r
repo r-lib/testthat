@@ -61,7 +61,8 @@ compare.character <- function(x, y, ..., max_strings = 5, max_lines = 5,
                               width = getOption("width")) {
   if (identical(x, y)) return(comparison())
 
-  # If they're not the same length, fallback to default method
+  # If they're not the same type or length, fallback to default method
+  if (!same_type(x, y)) return(NextMethod())
   if (length(x) != length(y)) return(NextMethod())
 
   # If vectorwise-equal, fallback to default method
@@ -104,7 +105,6 @@ str_trunc <- function(x, length) {
   x[too_long] <- paste0(substr(x[too_long], 1, length - 3), "...")
   x
 }
-
 str_chunk <- function(x, length) {
   lapply(x, str_chunk_1, length)
 }
@@ -113,4 +113,12 @@ str_chunk_1 <- function(x, length) {
   start <- (seq_len(lines) - 1) * length + 1
 
   substring(x, start, start + length - 1)
+}
+
+
+same_type <- function(x, y) {
+  if (typeof(x) != typeof(y)) return(FALSE)
+  if (!identical(class(x), class(y))) return(FALSE)
+
+  TRUE
 }

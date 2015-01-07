@@ -28,3 +28,7 @@ test_that("computes correct number of mismatches", {
   comp <- compare(c("a","b","c"), c("c", "d", "e"))
   expect_match(comp$message, "3 string mismatches")
 })
+
+test_that("comparing character and non-character fails back to all.equal", {
+  expect_match(compare("abc", 1)$message, "target is character")
+})
