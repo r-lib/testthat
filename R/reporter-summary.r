@@ -106,6 +106,8 @@ SummaryReporter <- setRefClass("SummaryReporter", contains = "Reporter",
           message, "\n")
         cat("\n", reports, sep = "\n")
       }
+
+      cat("DONE\n")
     }
   )
 )
