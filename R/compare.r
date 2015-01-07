@@ -11,14 +11,31 @@ compare <- function(x, y, ...) {
   UseMethod("compare", x)
 }
 
+comparison <- function(equal = TRUE, message = "Equal") {
+  structure(
+    list(
+      equal = equal,
+      message = message
+    ),
+    class = "comparison"
+  )
+}
+
+#' @export
+print.comparison <- function(x, ...) {
+  if (x$equal) {
+    cat("Equal\n")
+    return()
+  }
+
+  cat(x$message)
+}
+
 #' @export
 #' @rdname compare
 compare.default <- function(x, y, ...){
   same <- all.equal(x, y, ...)
-  list(
-    equal = identical(same, TRUE),
-    message = paste0(same, collapse = "\n")
-  )
+  comparison(identical(same, TRUE), paste0(same, collapse = "\n"))
 }
 
 #' @param max_strings Maximum number of differences to show
@@ -28,6 +45,8 @@ compare.default <- function(x, y, ...){
 #' @export
 #' @examples
 #' x <- c("abc", "def", "jih")
+#' compare(x, x)
+#'
 #' y <- paste0(x, "y")
 #' compare(x, y)
 #'
@@ -40,7 +59,7 @@ compare.default <- function(x, y, ...){
 #' compare(x, y)
 compare.character <- function(x, y, ..., max_strings = 5, max_lines = 5,
                               width = getOption("width")) {
-  if (identical(x, y)) return(list(equal = TRUE))
+  if (identical(x, y)) return(comparison())
 
   # If they're not the same length, fallback to default method
   if (length(x) != length(y)) return(NextMethod())
@@ -76,7 +95,7 @@ compare.character <- function(x, y, ..., max_strings = 5, max_lines = 5,
 
   msg <- paste0(sum(diff), " string mismatches:\n",
     paste0(sidebyside, collapse = "\n\n"))
-  list(equal = FALSE, message = msg)
+  comparison(FALSE, msg)
 }
 
 str_trunc <- function(x, length) {

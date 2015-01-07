@@ -31,6 +31,8 @@ use \code{all.equal}.
 }
 \examples{
 x <- c("abc", "def", "jih")
+compare(x, x)
+
 y <- paste0(x, "y")
 compare(x, y)
 
