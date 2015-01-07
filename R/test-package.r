@@ -34,7 +34,7 @@ with_top_env <- function(env, code) {
 #' @export
 #' @examples
 #' \dontrun{test_package("testthat")}
-test_package <- function(package, filter = NULL, reporter = "summary") {
+test_package <- function(package, filter = NULL, reporter = "summary", ...) {
   # Ensure that test package returns silently if called recursively - this
   # will occur if test-all.R ends up in the same directory as all the other
   # tests.
@@ -53,7 +53,7 @@ test_package <- function(package, filter = NULL, reporter = "summary") {
 
   env <- test_pkg_env(package)
   with_top_env(env, {
-    df <- test_dir(test_path, reporter = reporter, env = env, filter = filter)
+    df <- test_dir(test_path, reporter = reporter, env = env, filter = filter, ...)
   })
 
   if (reporter$failed) {
@@ -64,7 +64,7 @@ test_package <- function(package, filter = NULL, reporter = "summary") {
 
 #' @export
 #' @rdname test_package
-test_check <- function(package, filter = NULL, reporter = "check") {
+test_check <- function(package, filter = NULL, reporter = "check", ...) {
   require(package, character.only = TRUE)
 
   test_path <- "testthat"
@@ -75,7 +75,7 @@ test_check <- function(package, filter = NULL, reporter = "check") {
   reporter <- find_reporter(reporter)
   env <- test_pkg_env(package)
   with_top_env(env, {
-    df <- test_dir(test_path, reporter = reporter, env = env, filter = filter)
+    df <- test_dir(test_path, reporter = reporter, env = env, filter = filter, ...)
   })
 
   invisible(df)

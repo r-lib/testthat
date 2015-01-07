@@ -23,10 +23,11 @@ test_env <- function() {
 #'   regular expression will be executed.  Matching will take on the file
 #'   name after it has been stripped of \code{"test-"} and \code{".r"}.
 #' @param env environment in which to execute test suite.
+#' @param ... Additional arguments passed to \code{grepl} to control filtering.
 #' @return a data frame of the summary of test results
 #' @export
 test_dir <- function(path, filter = NULL, reporter = "summary",
-                     env = test_env()) {
+                     env = test_env(), ...) {
   current_reporter <- find_reporter(reporter)
   lister <- ListReporter$new()
   reporter <- MultiReporter$new(reporters = list(current_reporter, lister))
@@ -39,7 +40,7 @@ test_dir <- function(path, filter = NULL, reporter = "summary",
     test_names <- gsub("test-?", "", test_names)
     test_names <- gsub("\\.[rR]", "", test_names)
 
-    files <- files[grepl(filter, test_names)]
+    files <- files[grepl(filter, test_names, ...)]
   }
 
   .custom_test_file <- function(fname) {
