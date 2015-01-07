@@ -39,6 +39,8 @@ compare(x, x)
 y <- paste0(x, "y")
 compare(x, y)
 
+compare(letters, paste0(letters, "-"))
+
 x <- "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis cursus
  tincidunt auctor. Vestibulum ac metus bibendum, facilisis nisi non, pulvinar
  dolor. Donec pretium iaculis nulla, ut interdum sapien ultricies a. "
@@ -46,6 +48,7 @@ y <- "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis cursus
  tincidunt auctor. Vestibulum ac metus1 bibendum, facilisis nisi non, pulvinar
  dolor. Donec pretium iaculis nulla, ut interdum sapien ultricies a. "
 compare(x, y)
+compare(c(x, x), c(y, y))
 # Numeric -------------------------------------------------------------------
 
 x <- y <- runif(100)

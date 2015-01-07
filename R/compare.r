@@ -50,6 +50,8 @@ compare.default <- function(x, y, ...){
 #' y <- paste0(x, "y")
 #' compare(x, y)
 #'
+#' compare(letters, paste0(letters, "-"))
+#'
 #' x <- "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis cursus
 #'  tincidunt auctor. Vestibulum ac metus bibendum, facilisis nisi non, pulvinar
 #'  dolor. Donec pretium iaculis nulla, ut interdum sapien ultricies a. "
@@ -57,6 +59,8 @@ compare.default <- function(x, y, ...){
 #'  tincidunt auctor. Vestibulum ac metus1 bibendum, facilisis nisi non, pulvinar
 #'  dolor. Donec pretium iaculis nulla, ut interdum sapien ultricies a. "
 #' compare(x, y)
+#' compare(c(x, x), c(y, y))
+#'
 compare.character <- function(x, y, ..., max_diffs = 5, max_lines = 5,
                               width = getOption("width")) {
   if (identical(x, y)) return(comparison())
@@ -75,24 +79,22 @@ compare.character <- function(x, y, ..., max_diffs = 5, max_lines = 5,
 
   width <- width - 6 # allocate space for labels
   n_show <- seq_len(min(length(diff), max_diffs))
-  show <- diff[n_show]
+  show <- which(diff)[n_show]
 
   encode <- function(x) encodeString(x, quote = '"')
-  show_x <- str_chunk(str_trunc(encode(x[show]), max_lines * width), width)
-  show_y <- str_chunk(str_trunc(encode(y[show]), max_lines * width), width)
+  show_x <- str_trunc(encode(x[show]), width * max_lines)
+  show_y <- str_trunc(encode(y[show]), width * max_lines)
 
-  names <- which(diff)[n_show]
-
-  sidebyside <- Map(function(x, y, name) {
-    x <- paste0("x[", name, "]: ", x)
-    y <- paste0("y[", name, "]: ", y)
+  sidebyside <- Map(function(x, y, pos) {
+    x <- paste0("x[", pos, "]: ", str_chunk(x, width))
+    y <- paste0("y[", pos, "]: ", str_chunk(y, width))
 
     n <- max(length(x), length(y))
     length(x) <- n
     length(y) <- n
 
-    paste0(as.vector(rbind(x, "\n", y, "\n\n")), collapse = "")
-  }, show_x, show_y, names)
+    paste0(x, "\n", y, collapse = "\n\n")
+  }, show_x, show_y, show)
 
   msg <- paste0(sum(diff), " string mismatches:\n",
     paste0(sidebyside, collapse = "\n\n"))
@@ -106,9 +108,6 @@ str_trunc <- function(x, length) {
   x
 }
 str_chunk <- function(x, length) {
-  lapply(x, str_chunk_1, length)
-}
-str_chunk_1 <- function(x, length) {
   lines <- ceiling(nchar(x) / length)
   start <- (seq_len(lines) - 1) * length + 1
 

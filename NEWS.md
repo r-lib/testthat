@@ -2,7 +2,8 @@
 
 * `compare()` is now documented and exported. Added a numeric method so when
   long numeric vectors don't match you'll see some examples of where the
-  problem is (#177).
+  problem is (#177). The line spacing in `compare.character()` was 
+  tweaked.
 
 * `skip_if_not_installed()` skips tests if a package isn't installed (#192).
 
