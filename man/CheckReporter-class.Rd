@@ -4,7 +4,6 @@
 \name{CheckReporter-class}
 \alias{CheckReporter}
 \alias{CheckReporter-class}
-\alias{SummaryReporter}
 \title{Check reporter: 13 line summary of problems}
 \arguments{
 \item{...}{Arguments used to initialise class}

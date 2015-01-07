@@ -7,8 +7,8 @@ NULL
 #' report is design to ensure that you see something useful there.
 #'
 #' @export
-#' @export SummaryReporter
-#' @aliases SummaryReporter
+#' @export CheckReporter
+#' @aliases CheckReporter
 #' @keywords debugging
 #' @param ... Arguments used to initialise class
 CheckReporter <- setRefClass("CheckReporter", contains = "Reporter",
