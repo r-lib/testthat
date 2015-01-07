@@ -10,16 +10,19 @@ testthat_colours <- list(
 
 #' @export
 colourise <- function(text, as = c("passed", "skipped", "error"), fg, bg) {
-  fg_warn <- function() warning("The fg parameter to testthat::colourise is deprecated.", call. = FALSE)
+  param_warn <- function(param) {
+    warning("The ", param, " parameter to testthat::colourise is deprecated.", call. = FALSE)
+  }
+
   if (any(is.element(as, allowed_colors))) {
-    fg_warn()
+    param_warn("fg")
     return(colourise(text))
   } else if (!missing(fg)) {
-    fg_warn()
+    param_warn("fg")
   }
   
   if (!missing(bg)) {
-    warning("The bg parameter to testthat::colourise is deprecated.", call. = FALSE)
+    param_warn("bg")
   }
 
   colour_config <- getOption("testthat.use_colours", TRUE)
