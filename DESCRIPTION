@@ -6,8 +6,6 @@ Description: A testing package specifically tailored for R
 Authors@R: as.person(c(
     "Hadley Wickham <hadley@rstudio.com> [aut, cre]",
     "RStudio [cph]"))
-Author: Hadley Wickham <hadley@rstudio.com>
-Maintainer: Hadley Wickham <hadley@rstudio.com>
 URL: https://github.com/hadley/testthat
 BugReports: https://github.com/hadley/testthat/issues
 Depends:
