@@ -47,13 +47,15 @@ with_reporter <- function(reporter, code) {
   invisible(reporter)
 }
 
-#' Find reporter object given name
+#' Find reporter object given name or object.
 #'
-#' If not found, will return informative error message
+#' If not found, will return informative error message.
+#' Will return null if given NULL.
 #'
 #' @param reporter name of reporter
 #' @keywords internal
 find_reporter <- function(reporter) {
+  if (is.null(reporter)) return(NULL)
   if (inherits(reporter, "Reporter")) return(reporter)
 
   name <- reporter

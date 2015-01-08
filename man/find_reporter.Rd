@@ -2,7 +2,7 @@
 % Please edit documentation in R/reporter-zzz.r
 \name{find_reporter}
 \alias{find_reporter}
-\title{Find reporter object given name}
+\title{Find reporter object given name or object.}
 \usage{
 find_reporter(reporter)
 }
@@ -10,7 +10,8 @@ find_reporter(reporter)
 \item{reporter}{name of reporter}
 }
 \description{
-If not found, will return informative error message
+If not found, will return informative error message.
+Will return null if given NULL.
 }
 \keyword{internal}
 
