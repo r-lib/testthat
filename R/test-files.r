@@ -23,14 +23,15 @@ test_env <- function() {
 #'   regular expression will be executed.  Matching will take on the file
 #'   name after it has been stripped of \code{"test-"} and \code{".r"}.
 #' @param env environment in which to execute test suite.
+#' @param ... Additional arguments passed to \code{grepl} to control filtering.
+#'
 #' @return the results as a "testthat_results" (list)
 #' @export
 test_dir <- function(path, filter = NULL, reporter = "summary",
-                                          env = test_env()) {
-
+                                          env = test_env(), ...) {
   current_reporter <- find_reporter(reporter)
   source_test_helpers(path, env)
-  paths <- find_test_scripts(path, filter)
+  paths <- find_test_scripts(path, filter, ...)
   if (length(paths) == 0) stop('No matching test file in dir')
 
   current_reporter$start_reporter()
@@ -61,16 +62,17 @@ source_test_helpers <- function(path, env = globalenv()) {
 #' Find the test files.
 #' @param path path to tests
 #' @param filter cf \code{\link{test_dir}}
+#' @param ... Additional arguments passed to \code{grepl} to control filtering.
 #' @return the test file paths
 #' @keywords internal
 #' @export
-find_test_scripts <- function(path, filter = NULL) {
+find_test_scripts <- function(path, filter = NULL, ...) {
   files <- dir(path, "^test.*\\.[rR]$", full.names = TRUE)
   if (!is.null(filter)) {
     test_names <- basename(files)
     test_names <- gsub("^test-?", "", test_names)
     test_names <- gsub("\\.[rR]", "", test_names)
-    files <- files[grepl(filter, test_names)]
+    files <- files[grepl(filter, test_names, ...)]
   }
 
   files

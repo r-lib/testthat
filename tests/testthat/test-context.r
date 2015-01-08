@@ -1,7 +1,10 @@
 context("Contexts")
 
+env <- new.env()
+env$.packageName <- "testthat"
+
 CountReporter <- setRefClass("CountReporter", contains = "Reporter",
-  where = environment(),
+  where = env,
   fields = c("context_count", "test_count", "context_i", "test_i"),
   methods = list(
     initialize = function() {
@@ -31,6 +34,7 @@ CountReporter <- setRefClass("CountReporter", contains = "Reporter",
     }
   )
 )
+
 
 test_that("contexts are opened, then closed", {
 

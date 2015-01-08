@@ -1,8 +1,19 @@
 # testthat 0.9.1.9000
 
+
 * test (`test_dir()`, `test_file()`, `test_package()`, `test_check()`) functions now return a
   `testthat_results` object that contains all results, and can be printed or
   converted to data frame.
+
+* `test_dir()`, `test_package()`, and `test_check()` have an added `...`
+  argument that allows filtering of test files using, e.g., Perl-style regular
+  expressions,or `fixed` character filtering. Arguments in `...` are passed to
+  `grepl()` (@leeper).
+
+* `test_check()` uses a new reporter specifically designed for `R CMD check`.
+  It displays a summary at the end of the tests, designed to be <13 lines long
+  so test failures in `R CMD check` display something more useful. This will
+  hopefully stop BDR from calling testthat a "test obfuscation suite" (#201).
 
 * `compare()` is now documented and exported. Added a numeric method so when
   long numeric vectors don't match you'll see some examples of where the
@@ -28,7 +39,13 @@
 
 * `colourise()` was removed. (Colour is still supported, via the `crayon` package.)
 
+<<<<<<< HEAD
 * All equality expectations are now documented together (#173); all
+=======
+* Mocks can now access values local to the call of `with_mock` (#193, @krlmlr).
+
+* All equality expectations are now documented together (#173); all
+>>>>>>> 7a3bf1ffbfbf16f5e6f22dd6e1cedf7cbff6266a
   matching expectations are also documented together.
 
 # testthat 0.9.1

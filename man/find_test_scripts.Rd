@@ -4,12 +4,14 @@
 \alias{find_test_scripts}
 \title{Find the test files.}
 \usage{
-find_test_scripts(path, filter = NULL)
+find_test_scripts(path, filter = NULL, ...)
 }
 \arguments{
 \item{path}{path to tests}
 
 \item{filter}{cf \code{\link{test_dir}}}
+
+\item{...}{Additional arguments passed to \code{grepl} to control filtering.}
 }
 \value{
 the test file paths

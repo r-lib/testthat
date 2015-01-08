@@ -34,7 +34,7 @@ with_top_env <- function(env, code) {
 #' @export
 #' @examples
 #' \dontrun{test_package("testthat")}
-test_package <- function(package, filter = NULL, reporter = "summary") {
+test_package <- function(package, filter = NULL, reporter = "summary", ...) {
   # Ensure that test package returns silently if called recursively - this
   # will occur if test-all.R ends up in the same directory as all the other
   # tests.
@@ -49,16 +49,16 @@ test_package <- function(package, filter = NULL, reporter = "summary") {
   test_path2 <- file.path(test_path, "testthat")
   if (file.exists(test_path2)) test_path <- test_path2
 
-  run_tests(package, test_path, filter, reporter)
+  run_tests(package, test_path, filter, reporter, ...)
 }
 
 
-run_tests <- function(package, test_path, filter, reporter)
+run_tests <- function(package, test_path, filter, reporter, ...)
 {
   reporter <- find_reporter(reporter)
   env <- test_pkg_env(package)
   res <- with_top_env(env, {
-    test_dir(test_path, reporter = reporter, env = env, filter = filter)
+    test_dir(test_path, reporter = reporter, env = env, filter = filter, ...)
   })
 
   if (!all_passed(res)) {
@@ -71,7 +71,7 @@ run_tests <- function(package, test_path, filter, reporter)
 #' @inheritParams test_package
 #' @export
 #' @rdname test_package
-test_check <- function(package, filter = NULL, reporter = "summary") {
+test_check <- function(package, filter = NULL, reporter = "check", ...) {
   require(package, character.only = TRUE)
 
   test_path <- "testthat"
@@ -79,7 +79,7 @@ test_check <- function(package, filter = NULL, reporter = "summary") {
     stop("No tests found for ", package, call. = FALSE)
   }
 
-  run_tests(package, test_path, filter, reporter)
+  run_tests(package, test_path, filter, reporter, ...)
 }
 
 
