@@ -1,7 +1,7 @@
 # testthat 0.9.1.9000
 
-* test (test_dir, test_file, test_package, test_check) functions now return a
-  **testthat_results** object that contains all results, and can be printed or
+* test (`test_dir()`, `test_file()`, `test_package()`, `test_check()`) functions now return a
+  `testthat_results` object that contains all results, and can be printed or
   converted to data frame.
 
 * `compare()` is now documented and exported. Added a numeric method so when

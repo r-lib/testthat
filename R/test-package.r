@@ -49,13 +49,11 @@ test_package <- function(package, filter = NULL, reporter = "summary") {
   test_path2 <- file.path(test_path, "testthat")
   if (file.exists(test_path2)) test_path <- test_path2
 
-  res <- .run_tests(package, test_path, filter, reporter)
-
-  invisible(res)
+  run_tests(package, test_path, filter, reporter)
 }
 
 
-.run_tests <- function(package, test_path, filter, reporter)
+run_tests <- function(package, test_path, filter, reporter)
 {
   reporter <- find_reporter(reporter)
   env <- test_pkg_env(package)
@@ -63,10 +61,11 @@ test_package <- function(package, filter = NULL, reporter = "summary") {
     test_dir(test_path, reporter = reporter, env = env, filter = filter)
   })
 
-  if (!all_passed.testthat_results(res)) {
+  if (!all_passed(res)) {
     stop("Test failures", call. = FALSE)
   }
-  res
+
+  invisible(res)
 }
 
 #' @inheritParams test_package
@@ -80,9 +79,7 @@ test_check <- function(package, filter = NULL, reporter = "summary") {
     stop("No tests found for ", package, call. = FALSE)
   }
 
-  res <- .run_tests(package, test_path, filter, reporter)
-
-  invisible(res)
+  run_tests(package, test_path, filter, reporter)
 }
 
 

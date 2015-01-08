@@ -4,7 +4,8 @@
 \alias{test_file}
 \title{Run all tests in specified file.}
 \usage{
-test_file(path, reporter = "summary", env = test_env())
+test_file(path, reporter = "summary", env = test_env(),
+  start_end_reporter = TRUE)
 }
 \arguments{
 \item{path}{path to file}
@@ -12,6 +13,8 @@ test_file(path, reporter = "summary", env = test_env())
 \item{reporter}{reporter to use}
 
 \item{env}{environment in which to execute the tests}
+
+\item{start_end_reporter}{whether to start and end the reporter}
 }
 \value{
 the results as a "testthat_results" (list)

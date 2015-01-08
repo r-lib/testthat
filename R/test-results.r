@@ -2,11 +2,11 @@
 summarize_results <- function(results_list) {
   if (is.null(results_list) || length(results_list) == 0)
     return(data.frame())
-  rows <- lapply(results_list, .sumarize_one_test_results)
+  rows <- lapply(results_list, sumarize_one_test_results)
   do.call(rbind, rows)
 }
 
-.sumarize_one_test_results <- function(test) {
+sumarize_one_test_results <- function(test) {
   test_results <- test$results
   nb_tests <- length(test_results)
 
@@ -39,25 +39,29 @@ summarize_results <- function(results_list) {
 }
 
 
+#' Create a `testthat_results` object from the test results
+#' as stored in the ListReporter results field.
+#'
+#' @param results a list as stored in ListReporter
+#' @return its list argument as a `testthat_results` object
+#' @seealso ListReporter
+testthat_results  <- function(results) {
+  structure(results, class = "testthat_results")
+}
+
 # return if all tests are successful w/o error
-all_passed.testthat_results <- function(res) {
+all_passed <- function(res) {
   df <- as.data.frame.testthat_results(res)
   sum(df$failed) == 0 && all(!df$error)
 }
 
-#' convert testthat_results to data frame
-#' @param x   the testthat results
-#' @param ... ignored
-#' @return a data frame
+
 #' @export
 as.data.frame.testthat_results <- function(x, ...) {
   summarize_results(x)
 }
 
 
-#' print testthat_results as a data frame
-#' @param x   the testthat results
-#' @param ... ignored
 #' @export
 print.testthat_results <- function(x, ...) {
   print(as.data.frame(x))
