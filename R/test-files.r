@@ -51,6 +51,7 @@ test_dir <- function(path, filter = NULL, reporter = "summary",
 #' only one time in test environment.
 #'
 #' @inheritParams test_dir
+#' @keywords internal
 #' @export
 source_test_helpers <- function(path, env = globalenv()) {
   source_dir(path, "^helper.*\\.[rR]$", env = env)
@@ -61,6 +62,7 @@ source_test_helpers <- function(path, env = globalenv()) {
 #' @param path path to tests
 #' @param filter cf \code{\link{test_dir}}
 #' @return the test file paths
+#' @keywords internal
 #' @export
 find_test_scripts <- function(path, filter = NULL) {
   files <- dir(path, "^test.*\\.[rR]$")
