@@ -70,6 +70,14 @@ test_that("expect_output prints by default", {
   expect_output(1, "1")
 })
 
+test_that("expect_equals fails with useful message if objects equal but not identical", {
+  f <- function() x
+  g <- function() x
+
+  exp <- is_identical_to(f)(g)
+  expect_false(exp$passed)
+  expect_match(exp$failure, "not identical")
+})
 
 test_that("extra arguments to matches passed onto grepl", {
   expect_match("te*st", "e*", fixed = TRUE)
@@ -91,6 +99,12 @@ test_that("expect_equal_to_reference correctly matches to a file", {
   expect_equal_to_reference(1, "one.rds")
   expect_that(1, equals_reference("one.rds"))
 })
+
+test_that("first expect_equal_to_reference is successful", {
+  expect_equal_to_reference(1, "two.rds")
+  unlink("two.rds")
+})
+
 
 test_that("expect_null checks for NULLs", {
   expect_null(NULL)
