@@ -39,13 +39,10 @@
 
 * `colourise()` was removed. (Colour is still supported, via the `crayon` package.)
 
-<<<<<<< HEAD
-* All equality expectations are now documented together (#173); all
-=======
+
 * Mocks can now access values local to the call of `with_mock` (#193, @krlmlr).
 
 * All equality expectations are now documented together (#173); all
->>>>>>> 7a3bf1ffbfbf16f5e6f22dd6e1cedf7cbff6266a
   matching expectations are also documented together.
 
 # testthat 0.9.1
