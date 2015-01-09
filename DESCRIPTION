@@ -30,7 +30,6 @@ Collate:
     'expectations-matches.R'
     'expectations-old.R'
     'expectations.r'
-    'library.r'
     'make-expectation.r'
     'mock.r'
     'reporter.r'

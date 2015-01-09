@@ -1,5 +1,6 @@
 # testthat 0.9.1.9000
 
+* Deprecated `library_if_available()` has been removed.
 
 * test (`test_dir()`, `test_file()`, `test_package()`, `test_check()`) functions now return a
   `testthat_results` object that contains all results, and can be printed or
