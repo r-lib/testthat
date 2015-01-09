@@ -91,3 +91,27 @@ test_that("expect_equal_to_reference correctly matches to a file", {
   expect_equal_to_reference(1, "one.rds")
   expect_that(1, equals_reference("one.rds"))
 })
+
+test_that("expect_null checks for NULLs", {
+  expect_null(NULL)
+})
+
+test_that("takes_less_than verifies duration", {
+  expect_that(1, takes_less_than(1))
+})
+
+test_that("expected_named verifies presence of names", {
+  expect_named(c(a = 1))
+})
+
+test_that("expected_named verifies actual of names", {
+  expect_named(c(a = 1), "a")
+})
+
+test_that("expected_named optionally ignores case", {
+  expect_named(c(a = 1), "A", ignore.case = TRUE)
+})
+
+test_that("expected_named optionally ignores order", {
+  expect_named(c(a = 1, b = 2), c("b", "a"), ignore.order = TRUE)
+})
