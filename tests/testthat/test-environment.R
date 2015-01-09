@@ -1,8 +1,10 @@
 context("Environment")
 
-setClass("MyClass")
+env <- new.env()
 
-test_that("Can create S4 class without special behaviour", {
-  setClass("MyClass2")
+setClass("MyClass", where = env)
+
+test_that("Cannot create S4 class without special behaviour", {
+  setClass("MyClass2", where = env)
 
 })

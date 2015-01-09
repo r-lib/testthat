@@ -21,7 +21,7 @@ name after it has been stripped of \code{"test-"} and \code{".r"}.}
 \item{...}{Additional arguments passed to \code{grepl} to control filtering.}
 }
 \value{
-a data frame of the summary of test results
+the results as a "testthat_results" (list)
 }
 \description{
 Test are run in an environment that inherits from the package's namespace

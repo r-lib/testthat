@@ -1,8 +1,13 @@
 # testthat 0.9.1.9000
 
-* `test_dir()`, `test_package()`, and `test_check()` have an added `...` 
-  argument that allows filtering of test files using, e.g., Perl-style regular 
-  expressions,or `fixed` character filtering. Arguments in `...` are passed to 
+
+* test (`test_dir()`, `test_file()`, `test_package()`, `test_check()`) functions now return a
+  `testthat_results` object that contains all results, and can be printed or
+  converted to data frame.
+
+* `test_dir()`, `test_package()`, and `test_check()` have an added `...`
+  argument that allows filtering of test files using, e.g., Perl-style regular
+  expressions,or `fixed` character filtering. Arguments in `...` are passed to
   `grepl()` (@leeper).
 
 * `test_check()` uses a new reporter specifically designed for `R CMD check`.
@@ -12,7 +17,7 @@
 
 * `compare()` is now documented and exported. Added a numeric method so when
   long numeric vectors don't match you'll see some examples of where the
-  problem is (#177). The line spacing in `compare.character()` was 
+  problem is (#177). The line spacing in `compare.character()` was
   tweaked.
 
 * `skip_if_not_installed()` skips tests if a package isn't installed (#192).
@@ -27,16 +32,17 @@
   counts as one expectation and it succeeds if the code runs without errors
   (#204).
 
-* New `succeed()` exepctation always succeeds.
+* New `succeed()` expectation always succeeds.
 
 * `skip_on_travis()` allows you to skip tests when run on Travis CI.
   (Thanks to @mllg)
 
 * `colourise()` was removed. (Colour is still supported, via the `crayon` package.)
 
+
 * Mocks can now access values local to the call of `with_mock` (#193, @krlmlr).
 
-* All equality expectations are now documented together (#173); all 
+* All equality expectations are now documented together (#173); all
   matching expectations are also documented together.
 
 # testthat 0.9.1
@@ -47,18 +53,18 @@
 
 ## New features
 
-* BDD: testhat now comes with an initial behaviour driven development (BDD) 
-  interface. The language is similiar to RSpec for Ruby or Mocha for JavaScript. 
-  BDD tests read like sentences, so they should make it easier to understand 
-  the specification of a function. See `?describe()` for further information 
+* BDD: testhat now comes with an initial behaviour driven development (BDD)
+  interface. The language is similiar to RSpec for Ruby or Mocha for JavaScript.
+  BDD tests read like sentences, so they should make it easier to understand
+  the specification of a function. See `?describe()` for further information
   and examples.
 
 * It's now possible to `skip()` a test with an informative message - this is
   useful when tests are only available under certain conditions, as when
-  not on CRAN, or when an internet connection is available (#141). 
+  not on CRAN, or when an internet connection is available (#141).
 
 * `skip_on_cran()` allows you to skip tests when run on CRAN. To take advantage
-  of this code, you'll need either to use devtools, or run 
+  of this code, you'll need either to use devtools, or run
   `Sys.setenv(NOT_CRAN = "true"))`
 
 * Simple mocking: `with_mock()` makes it easy to temporarily replace
@@ -66,14 +72,14 @@
   on functions that are slow, have unintended side effects or access resources
   that may not be available when testing (#159, @krlmlr).
 
-* A new expectation, `expect_equal_to_reference()` has been added. It 
+* A new expectation, `expect_equal_to_reference()` has been added. It
   tests for equality to a reference value stored in a file (#148, @jonclayden).
 
 ## Minor improvements and bug fixes
 
 * `auto_test_package()` works once more, and now uses `devtools::load_all()`
-  for higher fidelity loading (#138, #151). 
-  
+  for higher fidelity loading (#138, #151).
+
 * Bug in `compare.character()` fixed, as reported by Georgi Boshnakov.
 
 * `colourise()` now uses option `testthat.use_colours` (default: `TRUE`). If it
@@ -82,7 +88,7 @@
 * `is_identical_to()` only calls `all.equal()` to generate an informative
   error message if the two objects are not identical (#165).
 
-* `safe_digest()` uses a better strategy, and returns NA for directories 
+* `safe_digest()` uses a better strategy, and returns NA for directories
   (#138, #146).
 
 * Random praise is renabled by default (again!) (#164).

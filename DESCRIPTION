@@ -47,6 +47,7 @@ Collate:
     'test-example.R'
     'test-files.r'
     'test-package.r'
+    'test-results.r'
     'test-that.r'
     'traceback.r'
     'utils.r'
