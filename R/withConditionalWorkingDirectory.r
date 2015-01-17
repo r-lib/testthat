@@ -43,8 +43,6 @@ withConditionalWorkingDirectory <- function(code) {
   wd <- getwd()
   if (!length(grep("/tests/testthat$", wd))) {
     setwd("tests/testthat")
-  } else {
-    getwd()
   }
   on.exit(setwd(wd))
   force(code)
