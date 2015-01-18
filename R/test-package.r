@@ -59,12 +59,17 @@ test_package <- function(package, filter = NULL, reporter = "summary", ...) {
 }
 
 
-run_tests <- function(package, test_path, filter, reporter, ...)
-{
+run_tests <- function(package, test_path, filter, reporter, ...) {
   reporter <- find_reporter(reporter)
   env <- test_pkg_env(package)
   res <- with_top_env(env, {
-    test_dir(test_path, reporter = reporter, env = env, filter = filter, ...)
+    results <- test_dir(test_path, reporter = reporter, env = env, filter = filter, ...)
+
+    # TODO: Parse output and append success / failure to results
+    if (file.exists(file.path(test_path, "cpp")))
+      test_compiled_code(package, test_path, filter)
+
+    results
   })
 
   if (!all_passed(res)) {
