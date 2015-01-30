@@ -3,7 +3,7 @@
 #' \itemize{
 #' \item \code{expect_identical} tests with \code{\link{identical}}
 #' \item \code{expect_equal} tests with \code{\link{all.equal}}
-#' \item \code{expect_equal} tests with \code{\link{all.equal}} and
+#' \item \code{expect_equivalent} tests with \code{\link{all.equal}} and
 #'   \code{check.attributes = FALSE}
 #' }
 #
