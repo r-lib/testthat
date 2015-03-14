@@ -31,7 +31,7 @@ library(yourpackage)
 test_package("yourpackage")
 ```
 
-Now, recommended practice is to put your tests in `tests/testthat`, and ensure `R CMD check` runs them by putting the following code in `tests/testthat.R`:
+Now, recommended practice is to put your tests in `tests/testthat` in files starting with `test`, and ensure `R CMD check` runs them by putting the following code in `tests/testthat.R`:
 
 ```R
 library(testthat)
