@@ -62,17 +62,24 @@ source_test_helpers <- function(path, env = globalenv()) {
 #' Find the test files.
 #' @param path path to tests
 #' @param filter cf \code{\link{test_dir}}
+#' @param invert If \sQuote{TRUE} return files which do _not_ match.
 #' @param ... Additional arguments passed to \code{grepl} to control filtering.
 #' @return the test file paths
 #' @keywords internal
 #' @export
-find_test_scripts <- function(path, filter = NULL, ...) {
+find_test_scripts <- function(path, filter = NULL, invert = FALSE, ...) {
   files <- dir(path, "^test.*\\.[rR]$", full.names = TRUE)
   if (!is.null(filter)) {
     test_names <- basename(files)
     test_names <- gsub("^test-?", "", test_names)
     test_names <- gsub("\\.[rR]", "", test_names)
-    files <- files[grepl(filter, test_names, ...)]
+
+    which_files <- grepl(filter, test_names, ...)
+
+    if (isTRUE(invert)) {
+      which_files <- !which_files
+    }
+    files <- files[which_files]
   }
 
   files
