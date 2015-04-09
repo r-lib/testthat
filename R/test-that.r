@@ -54,13 +54,8 @@ test_code <- function(description, code, env) {
   frame <- sys.nframe()
 
   ok <- TRUE
-  tryCatch(
-    withCallingHandlers(
-      eval(code, new_test_environment),
-      error = capture_calls,
-      message = function(c) invokeRestart("muffleMessage"),
-      warning = function(c) invokeRestart("muffleWarning")
-    ),
+  suppressWarnings(suppressMessages(tryCatch(
+    withCallingHandlers(eval(code, new_test_environment), error = capture_calls),
     error = function(e) {
       ok <- FALSE
       report <- expectation_error(e$message, e$calls)
@@ -69,7 +64,7 @@ test_code <- function(description, code, env) {
       report <- expectation_skipped(e$message)
       get_reporter()$add_result(report)
     }
-  )
+  )))
 
   invisible(ok)
 }
