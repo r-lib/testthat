@@ -21,7 +21,7 @@ with_top_env <- function(env, code) {
 #'
 #' @section R CMD check:
 #' Use \code{test_package} to test an installed package, or in
-#' \code{tests/test-all.R}if you're using the older \code{inst/tests}
+#' \code{tests/test-all.R} if you're using the older \code{inst/tests}
 #' convention.
 #'
 #' If your tests live in \code{tests/testthat} (preferred) use \code{test_check}
