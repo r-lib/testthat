@@ -37,6 +37,7 @@ Collate:
     'reporter-list.r'
     'reporter-minimal.r'
     'reporter-multi.r'
+    'reporter-rstudio.R'
     'reporter-silent.r'
     'reporter-stop.r'
     'reporter-summary.r'
