@@ -2,9 +2,9 @@
 
 * Deprecated `library_if_available()` has been removed.
 
-* test (`test_dir()`, `test_file()`, `test_package()`, `test_check()`) functions now return a
-  `testthat_results` object that contains all results, and can be printed or
-  converted to data frame.
+* test (`test_dir()`, `test_file()`, `test_package()`, `test_check()`) functions 
+  now return a `testthat_results` object that contains all results, and can be 
+  printed or converted to data frame.
 
 * `test_dir()`, `test_package()`, and `test_check()` have an added `...`
   argument that allows filtering of test files using, e.g., Perl-style regular
@@ -38,8 +38,8 @@
 * `skip_on_travis()` allows you to skip tests when run on Travis CI.
   (Thanks to @mllg)
 
-* `colourise()` was removed. (Colour is still supported, via the `crayon` package.)
-
+* `colourise()` was removed. (Colour is still supported, via the `crayon` 
+  package.)
 
 * Mocks can now access values local to the call of `with_mock` (#193, @krlmlr).
 
