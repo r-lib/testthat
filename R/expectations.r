@@ -313,3 +313,32 @@ expect_more_than <- function(object, expected, ..., info = NULL, label = NULL,
   expect_that(object, is_more_than(expected, label = expected.label, ...),
               info = info, label = label)
 }
+
+
+
+
+
+#' Expectation: is the object in a vector of expected values?
+#'
+#' @family expectations
+#' @inheritParams expect_that
+#' @export
+#' @examples
+#' expect_in("foobar", c("baz", "bar", "foobar"))
+#' expect_in("foobar", c("baz", "bar"))
+expect_in <- function(object, expectation_set, info = NULL, label = NULL) {
+  if (is.null(label)) {
+    label <- find_expr("object")
+  }
+  expect_that(object, is_in(), info, label)
+}
+
+#' @export
+#' @rdname oldskool
+is_in <- function(object, expectation_set) {
+  expectation(
+    max(is.na(match(object, expectation_set))) == 1,
+    paste0("Test failed, object is not in expectation set"),
+    paste0("Object is in expectation set")
+  )
+}
