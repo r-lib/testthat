@@ -96,7 +96,7 @@ failure_header <- function(x) {
   if (is.null(ref)) {
     location <- ""
   } else {
-    location <- paste0(" (@", attr(ref, "srcfile")$filename, "#", ref[1], ")")
+    location <- paste0(" (at ", attr(ref, "srcfile")$filename, "#", ref[1], ")")
   }
 
   paste0(type, location, ": ", x$test, " ")
