@@ -1,11 +1,12 @@
 Package: testthat
 Version: 0.9.1.9001
-Title: Testthat code. Tools to make testing fun :)
-Description: A testing package specifically tailored for R
-    that's fun, flexible and easy to set up.
-Authors@R: as.person(c(
-    "Hadley Wickham <hadley@rstudio.com> [aut, cre]",
-    "RStudio [cph]"))
+Title: Unit Testing for R
+Description: A unit testing system designed to be fun, flexible and easy to
+    set up.
+Authors@R: c(
+    person("Hadley", "Wickham", , "hadley@rstudio.com", c("aut", "cre")),
+    person("RStudio", role = "cph")
+    )
 URL: https://github.com/hadley/testthat
 BugReports: https://github.com/hadley/testthat/issues
 Depends:

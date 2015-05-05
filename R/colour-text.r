@@ -1,4 +1,4 @@
-# fix the check NOTE:Namespace in Imports field not imported from: ‘crayon’
+# fix the check NOTE:Namespace in Imports field not imported from: 'crayon'
 #' @importFrom crayon green yellow red
 testthat_colours <- list(
   passed = green,
