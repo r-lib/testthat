@@ -1,5 +1,7 @@
 # testthat 0.9.1.9000
 
+* Failure locations are now formated as R error locations.
+
 * Deprecated `library_if_available()` has been removed.
 
 * test (`test_dir()`, `test_file()`, `test_package()`, `test_check()`) functions 
