@@ -11,7 +11,7 @@ create_traceback <- function(callstack) {
 
   # Extract srcrefs
   srcrefs <- lapply(callstack, attr, "srcref")
-  has_ref <- !vapply(srcrefs, is.null, logical(1))
+  has_ref <- vapply(srcrefs, function(x) inherits(x, "srcref"), logical(1))
   files <-  vapply(srcrefs[has_ref], function(x) attr(x, "srcfile")$filename,
     FUN.VALUE = character(1))
   lines <-  vapply(srcrefs[has_ref], function(x) as.vector(x)[1],
