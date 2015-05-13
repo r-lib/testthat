@@ -52,6 +52,7 @@ testthat_results  <- function(results) {
 # return if all tests are successful w/o error
 all_passed <- function(res) {
   df <- as.data.frame.testthat_results(res)
+  if (ncol(df) == 0) return(TRUE)
   sum(df$failed) == 0 && all(!df$error)
 }
 
