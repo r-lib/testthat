@@ -35,6 +35,8 @@ Now, recommended practice is to put your tests in `tests/testthat`, and ensure `
 
 ```R
 library(testthat)
+library(yourpackage)
+
 test_check("yourpackage")
 ```
 
