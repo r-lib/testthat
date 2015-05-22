@@ -6,7 +6,7 @@
 |:--------|:----------------------------|
 |version  |R version 3.2.0 (2015-04-16) |
 |system   |x86_64, darwin13.4.0         |
-|ui       |RStudio (0.99.423)           |
+|ui       |RStudio (0.99.441)           |
 |language |(EN)                         |
 |collate  |en_US.UTF-8                  |
 |tz       |America/Chicago              |
@@ -15,12 +15,12 @@
 
 |package  |*  |version |date       |source         |
 |:--------|:--|:-------|:----------|:--------------|
-|crayon   |   |1.2.0   |2015-04-09 |CRAN (R 3.2.0) |
-|devtools |*  |1.7.0   |2015-01-17 |CRAN (R 3.2.0) |
+|crayon   |   |1.2.1   |2015-05-18 |CRAN (R 3.2.0) |
+|devtools |*  |1.8.0   |2015-05-09 |CRAN (R 3.2.0) |
 |digest   |   |0.6.8   |2014-12-31 |CRAN (R 3.2.0) |
 
 # Check results
-524 checked out of 524 dependencies 
+543 checked out of 543 dependencies 
 
 ## aemo (0.1.0)
 Maintainer: Imanuel Costigan <i.costigan@me.com>
@@ -107,7 +107,7 @@ Maintainer: George Rosenberger <rosenberger@imsb.biol.ethz.ch>
 ```
 checking whether package ‘aLFQ’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpTT9PaY/check_cranff22babc319/aLFQ.Rcheck/00install.out’ for details.
+See ‘/private/tmp/RtmpQJiDLv/check_crand2516b207784/aLFQ.Rcheck/00install.out’ for details.
 Status: 1 ERROR
 ```
 
@@ -517,6 +517,22 @@ Bug reports: https://github.com/brendan-R/boxr/issues
 
 __OK__
 
+## brms (0.1.0)
+Maintainer: Paul-Christian Buerkner <paul.buerkner@gmail.com>
+
+```
+checking package dependencies ... NOTE
+Packages suggested but not available for checking: ‘rstan’ ‘R2jags’
+```
+```
+checking Rd cross-references ... NOTE
+Package unavailable to check Rd xrefs: ‘rstan’
+```
+```
+DONE
+Status: 2 NOTEs
+```
+
 ## broman (0.55-2)
 Maintainer: Karl W Broman <kbroman@biostat.wisc.edu>
 
@@ -532,39 +548,26 @@ DONE
 Status: 1 NOTE
 ```
 
-## broom (0.3.6)
+## broom (0.3.7)
 Maintainer: David Robinson <admiral.david@gmail.com>  
 Bug reports: http://github.com/dgrtwo/broom/issues
 
-__OK__
+```
+checking package dependencies ... NOTE
+Package suggested but not available for checking: ‘plm’
+```
+```
+DONE
+Status: 1 NOTE
+```
 
-## caret (6.0-41)
+## caret (6.0-47)
 Maintainer: Max Kuhn <Max.Kuhn@pfizer.com>
 
 ```
 checking package dependencies ... NOTE
 Packages suggested but not available for checking:
   ‘earth’ ‘ipred’ ‘pls’ ‘spls’ ‘subselect’ ‘pamr’ ‘Cubist’
-```
-```
-checking DESCRIPTION meta-information ... NOTE
-Malformed Description field: should contain one or more complete sentences.
-```
-```
-checking dependencies in R code ... NOTE
-'library' or 'require' calls in package code:
-  ‘MASS’ ‘earth’ ‘fastICA’ ‘ipred’ ‘klaR’ ‘nnet’ ‘pROC’ ‘party’ ‘proxy’
-  Please use :: or requireNamespace() instead.
-  See section 'Suggested packages' in the 'Writing R Extensions' manual.
-```
-```
-checking S3 generic/method consistency ... NOTE
-Found the following apparent S3 methods exported but not registered:
-  bagEarth.formula bagFDA.formula knn3.data.frame knn3.formula
-  knn3.matrix knnreg.data.frame knnreg.matrix spatialSign.data.frame
-  spatialSign.matrix
-See section ‘Registering S3 methods’ in the ‘Writing R Extensions’
-manual.
 ```
 ```
 checking Rd cross-references ... NOTE
@@ -599,7 +602,7 @@ Last 13 lines of output:
   8: stop(paste("package", package, "is required"))
   
   testthat results ================================================================
-  OK: 4 SKIPPED: 0 FAILED: 2
+  OK: 19 SKIPPED: 0 FAILED: 2
   1. Error: bagEarth simple regression 
   2. Error: bagEarth simple classification 
   
@@ -646,7 +649,7 @@ Execution halted
 ```
 ```
 DONE
-Status: 2 ERRORs, 1 WARNING, 6 NOTEs
+Status: 2 ERRORs, 1 WARNING, 3 NOTEs
 ```
 
 ## caretEnsemble (1.0.0)
@@ -751,9 +754,9 @@ Status: 5 NOTEs
 Maintainer: Baptiste Auguie <baptiste.auguie@gmail.com>
 
 ```
-checking whether package ‘cda’ can be installed ... [30s/31s] ERROR
+checking whether package ‘cda’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpTT9PaY/check_cranff22babc319/cda.Rcheck/00install.out’ for details.
+See ‘/private/tmp/RtmpQJiDLv/check_crand2516b207784/cda.Rcheck/00install.out’ for details.
 Status: 1 ERROR
 ```
 
@@ -775,7 +778,7 @@ DONE
 Status: 1 NOTE
 ```
 
-## checkmate (1.5.2)
+## checkmate (1.5.3)
 Maintainer: Michel Lang <michellang@gmail.com>  
 Bug reports: https://github.com/mllg/checkmate/issues
 
@@ -787,7 +790,7 @@ Bug reports: http://www.github.com/RevolutionAnalytics/checkpoint/issues
 
 __OK__
 
-## CHNOSZ (1.0.3.1)
+## CHNOSZ (1.0.5)
 Maintainer: Jeffrey Dick <j3ffdick@gmail.com>
 
 ```
@@ -797,7 +800,7 @@ Package suggested but not available for checking: ‘limSolve’
 ```
 checking whether package ‘CHNOSZ’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpTT9PaY/check_cranff22babc319/CHNOSZ.Rcheck/00install.out’ for details.
+See ‘/private/tmp/RtmpQJiDLv/check_crand2516b207784/CHNOSZ.Rcheck/00install.out’ for details.
 Status: 1 ERROR, 1 NOTE
 ```
 
@@ -806,7 +809,7 @@ Maintainer: Axel Gandy <a.gandy@imperial.ac.uk>
 
 __OK__
 
-## choroplethr (3.0.0)
+## choroplethr (3.1.0)
 Maintainer: Ari Lamstein <arilamstein@gmail.com>  
 Bug reports: https://github.com/arilamstein/choroplethr/issues
 
@@ -911,7 +914,21 @@ DONE
 Status: 1 NOTE
 ```
 
-## crayon (1.2.0)
+## covr (1.0.0)
+Maintainer: Jim Hester <james.f.hester@gmail.com>
+
+```
+checking dependencies in R code ... NOTE
+There are ::: calls to the package's namespace in its code. A package
+  almost never needs to use ::: for its own objects:
+  ‘count’
+```
+```
+DONE
+Status: 1 NOTE
+```
+
+## crayon (1.2.1)
 Maintainer: Gabor Csardi <csardi.gabor@gmail.com>  
 Bug reports: https://github.com/gaborcsardi/crayon/issues
 
@@ -988,13 +1005,13 @@ cssValue: no visible global function definition for ‘xmlGetAttr’
 checking tests ... ERROR
 Running the tests in ‘tests/run-all.R’ failed.
 Last 13 lines of output:
-  2. Failure (@testDataExtraction.R#79): functions are insensitive to extra spaces 
+  2. Failure (at testDataExtraction.R#79): functions are insensitive to extra spaces 
   cssApply(doc, "*[ id = 'player1' ]", cssId) not equal to c("player1")
   Modes: character, list
   Lengths: 1, 0
   target is character, current is list
   
-  3. Failure (@testDataExtraction.R#81): functions are insensitive to extra spaces 
+  3. Failure (at testDataExtraction.R#81): functions are insensitive to extra spaces 
   cssApply(doc, "*[ name = 'Hello world' ]", cssCharacter) not equal to "insensitive"
   Modes: character, list
   Lengths: 1, 0
@@ -1007,8 +1024,20 @@ DONE
 Status: 1 ERROR, 2 NOTEs
 ```
 
+## curl (0.6)
+Maintainer: Jeroen Ooms <jeroen.ooms@stat.ucla.edu>  
+Bug reports: https://github.com/jeroenooms/curl/issues
+
+__OK__
+
 ## daff (0.1.4)
 Maintainer: Edwin de Jonge <edwindjonge@gmail.com>
+
+__OK__
+
+## Dark (0.9.4)
+Maintainer: Dr Jeremiah MF Kelly <emkayoh@mac.com>  
+Bug reports: https://github.com/emkayoh/Dark/issues
 
 __OK__
 
@@ -1016,14 +1045,7 @@ __OK__
 Maintainer: Matt Dowle <mdowle@mdowle.plus.com>  
 Bug reports: https://github.com/Rdatatable/data.table/issues
 
-```
-checking package dependencies ... NOTE
-Package suggested but not available for checking: ‘bit64’
-```
-```
-DONE
-Status: 1 NOTE
-```
+__OK__
 
 ## data.tree (0.1.6)
 Maintainer: Christoph Glur <christoph.glur@ipub.ch>  
@@ -1074,7 +1096,7 @@ Bug reports: https://github.com/vdorie/dbarts/issues
 ```
 checking whether package ‘dbarts’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpTT9PaY/check_cranff22babc319/dbarts.Rcheck/00install.out’ for details.
+See ‘/private/tmp/RtmpQJiDLv/check_crand2516b207784/dbarts.Rcheck/00install.out’ for details.
 Status: 1 ERROR
 ```
 
@@ -1098,20 +1120,95 @@ Status: 1 NOTE
 Maintainer: Brandon Whitcher <bwhitcher@gmail.com>
 
 ```
-checking package dependencies ... NOTE
-Package suggested but not available for checking: ‘minpack.lm’
-```
-```
 checking whether package ‘dcemriS4’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpTT9PaY/check_cranff22babc319/dcemriS4.Rcheck/00install.out’ for details.
-Status: 1 ERROR, 1 NOTE
+See ‘/private/tmp/RtmpQJiDLv/check_crand2516b207784/dcemriS4.Rcheck/00install.out’ for details.
+Status: 1 ERROR
 ```
 
 ## dcmr (1.0)
 Maintainer: Diane Losardo <dlosardo@amplify.com>
 
 __OK__
+
+## decisionSupport (1.101.1)
+Maintainer: Lutz Göhring <lutz.goehring@gmx.de>
+
+```
+checking package dependencies ... NOTE
+Packages suggested but not available for checking:
+  ‘chillR’ ‘eha’ ‘mc2d’ ‘nleqslv’ ‘pls’ ‘rriskDistributions’
+```
+```
+checking Rd cross-references ... NOTE
+Packages unavailable to check Rd xrefs: ‘chillR’, ‘nleqslv’, ‘pls’, ‘mc2d’, ‘eha’, ‘rriskDistributions’
+```
+```
+checking examples ... ERROR
+Running examples in ‘decisionSupport-Ex.R’ failed
+The error most likely occurred in:
+
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+> ### Name: eviSimulation
+> ### Title: Expected Value of Information (EVI) Simulation.
+> ### Aliases: eviSimulation
+> 
+> ### ** Examples
+> 
+> #############################################################
+> # Example 1 Only one prospective estimate:
+> #############################################################
+> numberOfModelRuns=10000
+> # Create the estimate object:
+> variable=c("revenue","costs")
+> distribution=c("posnorm","posnorm")
+> lower=c(10000,  5000)
+> upper=c(100000, 50000)
+> currentEstimate<-as.estimate(variable, distribution, lower, upper)
+> prospectiveEstimate<-currentEstimate
+> revenueConst<-mean(c(currentEstimate$marginal["revenue","lower"],
++                      currentEstimate$marginal["revenue","upper"]))
+> prospectiveEstimate$marginal["revenue","distribution"]<-"const"
+> prospectiveEstimate$marginal["revenue","lower"]<-revenueConst
+> prospectiveEstimate$marginal["revenue","upper"]<-revenueConst
+> # (a) Define the welfare function without name for the return value:
+> profit<-function(x){
++ 	x$revenue-x$costs
++ }
+> 
+> # Calculate the Expected Value of Information:
+> eviSimulationResult<-eviSimulation(welfare=profit,
++                                    currentEstimate=currentEstimate,
++                                    prospectiveEstimate=prospectiveEstimate,
++                                    numberOfModelRuns=numberOfModelRuns,
++                                    functionSyntax="data.frameNames")
+Error in (function (e)  : Variable: revenue
+there is no package called ‘nleqslv’
+Calls: eviSimulation ... tryCatch -> tryCatchList -> tryCatchOne -> <Anonymous>
+Execution halted
+```
+```
+checking tests ... ERROR
+Running the tests in ‘tests/testthat.R’ failed.
+Last 13 lines of output:
+  7. Error: A uniform distribution is generated correctly from the 0.05 and 0.95 quantiles (3) 
+  8. Error: A positiv normal distribution is generated correctly from the 0.05 and 0.95 quantiles (1) 
+  9. Error: A positiv normal distribution is generated correctly from the 0.05 and 0.95 quantiles (2) 
+  1. Error: A positiv normal distribution is generated correctly from the 0.05 and 0.95 quantiles (3) 
+  2. Error: A 0-1-truncated normal distribution is generated correctly from the 0.05 and 0.95 quantiles (1) 
+  3. Error: A 0-1-truncated  normal distribution is generated correctly from the 0.05 and 0.95 quantiles (2) 
+  4. Error: Welfare Decision Analysis is run  for 4-D uncorrelated current estimate
+             and 2 dimensional unnamed model function
+            (randomMethod="calculate", functionSyntax="plainNamesDeprecated") (1). 
+  5. ...
+  
+  Error: testthat unit tests failed
+  Execution halted
+```
+```
+DONE
+Status: 2 ERRORs, 2 NOTEs
+```
 
 ## decompr (3.0.0)
 Maintainer: Bastiaan Quast <bquast@gmail.com>  
@@ -1219,13 +1316,13 @@ Maintainer: Gregory Jefferis <jefferis@gmail.com>
 
 __OK__
 
-## Deriv (3.2)
+## Deriv (3.4)
 Maintainer: Serguei Sokol <sokol@insa-toulouse.fr>  
 Bug reports: https://github.com/sgsokol/Deriv/issues
 
 __OK__
 
-## devtools (1.7.0)
+## devtools (1.8.0)
 Maintainer: Hadley Wickham <hadley@rstudio.com>  
 Bug reports: http://github.com/hadley/devtools/issues
 
@@ -1238,8 +1335,6 @@ checking dependencies in R code ... NOTE
 'library' or 'require' call to ‘testthat’ in package code.
   Please use :: or requireNamespace() instead.
   See section 'Suggested packages' in the 'Writing R Extensions' manual.
-Namespace in Imports field not imported from: ‘memoise’
-  All declared Imports should be used.
 ```
 ```
 checking R code for possible problems ... NOTE
@@ -1612,57 +1707,43 @@ DONE
 Status: 1 NOTE
 ```
 
-## emil (1.1-6)
-Maintainer: Christofer Backlin <christofer.backlin@medsci.uu.se>
+## emil (2.0.2)
+Maintainer: Christofer Backlin <christofer.backlin@medsci.uu.se>  
+Bug reports: https://github.com/Molmed/emil/issues
 
 ```
 checking package dependencies ... NOTE
 Package suggested but not available for checking: ‘pamr’
 ```
 ```
-checking dependencies in R code ... WARNING
-'library' or 'require' call not declared from: ‘parallel’
-'library' or 'require' calls in package code:
-  ‘parallel’ ‘pkg’
-  Please use :: or requireNamespace() instead.
-  See section 'Suggested packages' in the 'Writing R Extensions' manual.
-```
-```
-checking R code for possible problems ... NOTE
-emil.fit.caret: no visible global function definition for ‘train’
-emil.fit.cforest: no visible binding for global variable
-  ‘cforest_unbiased’
-emil.fit.cforest: no visible global function definition for ‘is.Surv’
-emil.fit.glmnet: no visible global function definition for ‘glmnet’
-emil.fit.lda: no visible global function definition for ‘lda’
-emil.fit.qda: no visible global function definition for ‘qda’
-image.resample: no visible global function definition for ‘brewer.pal’
-```
-```
 checking Rd cross-references ... NOTE
 Package unavailable to check Rd xrefs: ‘pamr’
 ```
 ```
-checking tests ... ERROR
-Running the tests in ‘tests/run-all.R’ failed.
-Last 13 lines of output:
-         else {
-             if (!missing(cv) && !is.blank(cv)) 
-                 warn.once("pamr_ignoring_cv", "Ignoring threshold tuning since only one threshold value was given.")
-             fit.cv <- NULL
-         }
-     }, error = function(...) {
-         stop(...)
-     })
-  18: tryCatchList(expr, classes, parentenv, handlers)
-  19: tryCatchOne(expr, names, parentenv, handlers[[1L]])
-  20: value[[3L]](cond)
-  Error: Test failures
-  Execution halted
+checking examples ... ERROR
+Running examples in ‘emil-Ex.R’ failed
+The error most likely occurred in:
+
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+> ### Name: get_importance
+> ### Title: Feature (variable) importance of a fitted model
+> ### Aliases: get_importance
+> 
+> ### ** Examples
+> 
+> procedure <- modeling_procedure("pamr")
+> model <- fit(procedure, x=iris[-5], y=iris$Species)
+21 May 18:27  Fitting model
+Loading required namespace: pamr
+Failed with error:  ‘there is no package called ‘pamr’’
+Use the `pre_pamr` pre-processing function better pamr efficiency.
+Error in loadNamespace(name) : there is no package called ‘pamr’
+Calls: fit ... tryCatch -> tryCatchList -> tryCatchOne -> <Anonymous>
+Execution halted
 ```
 ```
 DONE
-Status: 1 ERROR, 1 WARNING, 3 NOTEs
+Status: 1 ERROR, 2 NOTEs
 ```
 
 ## enigma (0.1.1)
@@ -1706,18 +1787,11 @@ DONE
 Status: 2 NOTEs
 ```
 
-## EpiModel (1.1.4)
+## EpiModel (1.1.6)
 Maintainer: Samuel Jenness <sjenness@uw.edu>  
 Bug reports: https://github.com/statnet/EpiModel/issues
 
-```
-checking package dependencies ... NOTE
-Package suggested but not available for checking: ‘doMPI’
-```
-```
-DONE
-Status: 1 NOTE
-```
+__OK__
 
 ## episensr (0.6.0)
 Maintainer: Denis Haine <denis.haine@gmail.com>  
@@ -1736,6 +1810,19 @@ Maintainer: Yihui Xie <xie@yihui.name>
 Bug reports: https://github.com/hadley/evaluate/issues
 
 __OK__
+
+## evolqg (0.1-3)
+Maintainer: Diogo Melo <diogro@usp.br>  
+Bug reports: https://github.com/lem-usp/evolqg/issues
+
+```
+checking package dependencies ... ERROR
+Package required but not available: ‘phytools’
+
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
+Status: 1 ERROR
+```
 
 ## excursions (2.0.16)
 Maintainer: David Bolin <davidbolin@gmail.com>
@@ -1974,16 +2061,16 @@ Execution halted
 checking tests ... ERROR
 Running the tests in ‘tests/test_base.R’ failed.
 Last 13 lines of output:
-  17  744 0.4553432 0.4815215 0.5323010
-  18  769 0.4419247 0.4716426 0.5239705
-  19  770 0.4413951 0.4712527 0.5236414
-  20  803 0.4242224 0.4586078 0.5129558
-  21  855 0.3983386 0.4395195 0.4967717
-  22 1040 0.3171789 0.3789821 0.4448870
-  23 1106 0.2920295 0.3598339 0.4282495
-  24 1129 0.2836991 0.3534312 0.4226568
-  25 1206 0.2573606 0.3329489 0.4046556
-  26 1227 0.2505762 0.3276060 0.3999302
+  17  744 0.4553432 0.3937042 0.4485204
+  18  769 0.4419247 0.3812744 0.4329372
+  19  770 0.4413951 0.3807852 0.4323220
+  20  803 0.4242224 0.3649814 0.4123745
+  21  855 0.3983386 0.3413680 0.3823293
+  22 1040 0.3171789 0.2688626 0.2888610
+  23 1106 0.2920295 0.2468430 0.2603453
+  24 1129 0.2836991 0.2395939 0.2509700
+  25 1206 0.2573606 0.2168166 0.2216052
+  26 1227 0.2505762 0.2109839 0.2141185
   Error in library(mstate) : there is no package called 'mstate'
   Calls: test_check ... lapply -> FUN -> sys.source2 -> eval -> eval -> library
   Execution halted
@@ -2021,26 +2108,8 @@ Rd file 'flsa.Rd':
 These lines will be truncated in the PDF manual.
 ```
 ```
-checking tests ... ERROR
-Running the tests in ‘tests/test_package.R’ failed.
-Last 13 lines of output:
-  'citation()' on how to cite R or R packages in publications.
-  
-  Type 'demo()' for some demos, 'help()' for on-line help, or
-  'help.start()' for an HTML browser interface to help.
-  Type 'q()' to quit R.
-  
-  > library(testthat)
-  > test_package("flsa")
-  .............
-  DONE 
-  Error in !df$error : invalid argument type
-  Calls: test_package -> run_tests -> all_passed
-  Execution halted
-```
-```
 DONE
-Status: 1 ERROR, 2 NOTEs
+Status: 2 NOTEs
 ```
 
 ## ForeCA (0.2.2)
@@ -2077,7 +2146,7 @@ DONE
 Status: 1 ERROR, 2 NOTEs
 ```
 
-## forecast (5.9)
+## forecast (6.1)
 Maintainer: Rob J Hyndman <Rob.Hyndman@monash.edu>  
 Bug reports: https://github.com/robjhyndman/forecast/issues
 
@@ -2086,9 +2155,9 @@ checking package dependencies ... NOTE
 Package suggested but not available for checking: ‘fpp’
 ```
 ```
-checking whether package ‘forecast’ can be installed ... [29s/30s] ERROR
+checking whether package ‘forecast’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpTT9PaY/check_cranff22babc319/forecast.Rcheck/00install.out’ for details.
+See ‘/private/tmp/RtmpQJiDLv/check_crand2516b207784/forecast.Rcheck/00install.out’ for details.
 Status: 1 ERROR, 1 NOTE
 ```
 
@@ -2138,7 +2207,7 @@ DONE
 Status: 1 ERROR, 1 NOTE
 ```
 
-## fpCompare (0.1.0)
+## fpCompare (0.2.0)
 Maintainer: Alex M Chubaty <achubaty@NRCan.gc.ca>  
 Bug reports: https://github.com/PredictiveEcology/fpCompare/issues
 
@@ -2434,10 +2503,6 @@ Maintainer: John Ehrlinger <john.ehrlinger@gmail.com>
 Bug reports: https://github.com/ehrlinger/ggRandomForests/issues
 
 ```
-checking package dependencies ... NOTE
-Package suggested but not available for checking: ‘plot3D’
-```
-```
 checking installed package size ... NOTE
   installed size is  6.1Mb
   sub-directories of 1Mb or more:
@@ -2445,18 +2510,8 @@ checking installed package size ... NOTE
     doc    3.2Mb
 ```
 ```
-checking re-building of vignette outputs ... NOTE
-Error in re-building vignettes:
-  ...
-Quitting from lines 120-141 (randomForestSRC-Regression.Rnw) 
-Error: processing vignette 'randomForestSRC-Regression.Rnw' failed with diagnostics:
-there is no package called 'plot3D'
-Execution halted
-
-```
-```
 DONE
-Status: 3 NOTEs
+Status: 1 NOTE
 ```
 
 ## ggswissmaps (0.0.2)
@@ -2503,7 +2558,7 @@ Package suggested but not available for checking: ‘idr’
 ```
 checking whether package ‘GMCM’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpTT9PaY/check_cranff22babc319/GMCM.Rcheck/00install.out’ for details.
+See ‘/private/tmp/RtmpQJiDLv/check_crand2516b207784/GMCM.Rcheck/00install.out’ for details.
 Status: 1 ERROR, 1 NOTE
 ```
 
@@ -2920,9 +2975,9 @@ Status: 1 ERROR, 1 NOTE
 Maintainer: "terrance savitsky" <tds151@gmail.com>
 
 ```
-checking whether package ‘growcurves’ can be installed ... [91s/91s] ERROR
+checking whether package ‘growcurves’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpTT9PaY/check_cranff22babc319/growcurves.Rcheck/00install.out’ for details.
+See ‘/private/tmp/RtmpQJiDLv/check_crand2516b207784/growcurves.Rcheck/00install.out’ for details.
 Status: 1 ERROR
 ```
 
@@ -2930,9 +2985,9 @@ Status: 1 ERROR
 Maintainer: Terrance Savitsky <tds151@gmail.com>
 
 ```
-checking whether package ‘growfunctions’ can be installed ... [68s/68s] ERROR
+checking whether package ‘growfunctions’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpTT9PaY/check_cranff22babc319/growfunctions.Rcheck/00install.out’ for details.
+See ‘/private/tmp/RtmpQJiDLv/check_crand2516b207784/growfunctions.Rcheck/00install.out’ for details.
 Status: 1 ERROR
 ```
 
@@ -2980,14 +3035,7 @@ __OK__
 ## gWidgets2RGtk2 (1.0-3)
 Maintainer: John Verzani <jverzani@gmail.com>
 
-```
-checking package dependencies ... ERROR
-Package required but not available: ‘RGtk2’
-
-See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
-manual.
-Status: 1 ERROR
-```
+__OK__
 
 ## gWidgets2tcltk (1.0-4)
 Maintainer: John Verzani <jverzani@gmail.com>
@@ -2999,14 +3047,14 @@ Maintainer: Daisuke Yoneoka <blue.sky.sea.dy@gmail.com>
 
 __OK__
 
-## h5 (0.9)
+## h5 (0.9.1)
 Maintainer: Mario Annau <mario.annau@gmail.com>  
 Bug reports: https://github.com/mannau/h5/issues
 
 ```
 checking whether package ‘h5’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpTT9PaY/check_cranff22babc319/h5.Rcheck/00install.out’ for details.
+See ‘/private/tmp/RtmpQJiDLv/check_crand2516b207784/h5.Rcheck/00install.out’ for details.
 Status: 1 ERROR
 ```
 
@@ -3175,7 +3223,7 @@ Warning: local assignments to syntactic functions: ~
 Warning: local assignments to syntactic functions: ~
 ```
 ```
-checking running R code from vignettes ... [22s/22s] WARNING
+checking running R code from vignettes ... [23s/23s] WARNING
 Errors in running code in vignettes:
 when running code in ‘introduction.Rnw’
   ...
@@ -3276,6 +3324,12 @@ Maintainer: Bradley Saul <saulb@live.unc.edu>
 
 __OK__
 
+## infuser (0.1)
+Maintainer: Bart Smeets <bartsmeets86@gmail.com>  
+Bug reports: https://github.com/bart6114/infuser/issues
+
+__OK__
+
 ## intergraph (2.0-1)
 Maintainer: Michal Bojanowski <m.bojanowski@icm.edu.pl>
 
@@ -3325,26 +3379,8 @@ checking for GNU extensions in Makefiles ... NOTE
 GNU make is a SystemRequirements.
 ```
 ```
-checking tests ... ERROR
-Running the tests in ‘tests/test-all.R’ failed.
-Last 13 lines of output:
-  
-  Type 'demo()' for some demos, 'help()' for on-line help, or
-  'help.start()' for an HTML browser interface to help.
-  Type 'q()' to quit R.
-  
-  > library(testthat)
-  > test_check("iterpc")
-  Loading required package: iterpc
-  testthat results ================================================================
-  OK: 25 SKIPPED: 0 FAILED: 0
-  Error in !df$error : invalid argument type
-  Calls: test_check -> run_tests -> all_passed
-  Execution halted
-```
-```
 DONE
-Status: 1 ERROR, 1 NOTE
+Status: 1 NOTE
 ```
 
 ## itertools2 (0.1.1)
@@ -3395,7 +3431,7 @@ Bug reports: https://github.com/helske/KFAS/issues
 ```
 checking whether package ‘KFAS’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpTT9PaY/check_cranff22babc319/KFAS.Rcheck/00install.out’ for details.
+See ‘/private/tmp/RtmpQJiDLv/check_crand2516b207784/KFAS.Rcheck/00install.out’ for details.
 Status: 1 ERROR
 ```
 
@@ -3588,6 +3624,19 @@ DONE
 Status: 3 NOTEs
 ```
 
+## lamW (0.1-1)
+Maintainer: Avraham Adler <Avraham.Adler@gmail.com>  
+Bug reports: https://bitbucket.org/aadler/lamw/issues
+
+```
+checking Rd cross-references ... NOTE
+Package unavailable to check Rd xrefs: ‘LambertW’
+```
+```
+DONE
+Status: 1 NOTE
+```
+
 ## lava (1.4.0)
 Maintainer: Klaus K. Holst <klaus@holst.it>
 
@@ -3595,6 +3644,19 @@ Maintainer: Klaus K. Holst <klaus@holst.it>
 checking package dependencies ... NOTE
 Packages suggested but not available for checking:
   ‘graph’ ‘Rgraphviz’ ‘geepack’ ‘gof’
+```
+```
+DONE
+Status: 1 NOTE
+```
+
+## lawn (0.1.0)
+Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>  
+Bug reports: http://www.github.com/ropensci/lawn/issues
+
+```
+checking package dependencies ... NOTE
+Package suggested but not available for checking: ‘leaflet’
 ```
 ```
 DONE
@@ -3642,7 +3704,7 @@ checking package dependencies ... NOTE
 Package suggested but not available for checking: ‘demography’
 ```
 ```
-checking running R code from vignettes ... [6s/27s] WARNING
+checking running R code from vignettes ... [7s/28s] WARNING
 Errors in running code in vignettes:
 when running code in ‘mortality_projection.Rnw’
   ...
@@ -3716,6 +3778,16 @@ Maintainer: "Jim Hester" <james.f.hester@gmail.com>
 Bug reports: https://github.com/jimhester/lintr/issues
 
 __OK__
+
+## list (8.0)
+Maintainer: Graeme Blair <graeme.blair@columbia.edu>
+
+```
+checking whether package ‘list’ can be installed ... ERROR
+Installation failed.
+See ‘/private/tmp/RtmpQJiDLv/check_crand2516b207784/list.Rcheck/00install.out’ for details.
+Status: 1 ERROR
+```
 
 ## llama (0.8.1)
 Maintainer: Lars Kotthoff <lars.kotthoff@insight-centre.org>
@@ -3822,109 +3894,39 @@ Maintainer: Pieter Schoonees <schoonees@gmail.com>
 
 __OK__
 
-## ltmle (0.9.3-1)
-Maintainer: Joshua Schwab <joshuaschwab@yahoo.com>
+## ltmle (0.9-5)
+Maintainer: Joshua Schwab <joshuaschwab@yahoo.com>  
+Bug reports: https://github.com/joshuaschwab/ltmle/issues
 
 ```
 checking package dependencies ... NOTE
-Packages suggested but not available for checking:
-  ‘SuperLearner’ ‘DEoptim’ ‘tmle’
-```
-```
-checking DESCRIPTION meta-information ... NOTE
-Malformed Description field: should contain one or more complete sentences.
-```
-```
-checking dependencies in R code ... NOTE
-'library' or 'require' calls in package code:
-  ‘DEoptim’ ‘SuperLearner’ ‘memoise’
-  Please use :: or requireNamespace() instead.
-  See section 'Suggested packages' in the 'Writing R Extensions' manual.
-```
-```
-checking R code for possible problems ... NOTE
-Estimate: no visible global function definition for ‘SuperLearner’
-FixScoreEquation : FindMin: no visible global function definition for
-  ‘DEoptim’
-FixScoreEquation : FindMin: no visible global function definition for
-  ‘DEoptim.control’
+Package suggested but not available for checking: ‘SuperLearner’
 ```
 ```
 checking Rd cross-references ... NOTE
 Package unavailable to check Rd xrefs: ‘SuperLearner’
 ```
 ```
-checking examples ... ERROR
-Running examples in ‘ltmle-Ex.R’ failed
-The error most likely occurred in:
-
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
-> ### Name: deterministic.g.function_template
-> ### Title: Deterministic g/Q functions - examples and templates
-> ### Aliases: MaintainTreatment MaintainControl
-> ###   deterministic.g.function_template deterministic.Q.function_template
-> 
-> ### ** Examples
-> 
->  #Show a template for a deterministic.g.function
->  deterministic.g.function_template
-function (data, current.node, nodes) 
-{
-    is.deterministic <- stop("replace me!")
-    prob1 <- stop("replace me!")
-    return(list(is.deterministic = is.deterministic, prob1 = prob1))
-}
-<environment: namespace:ltmle>
->  
->  #Show a template for a deterministic.Q.function
->  deterministic.Q.function_template
-function (data, current.node, nodes, called.from.estimate.g) 
-{
-    is.deterministic <- stop("replace me!")
-    Q.value <- stop("replace me!")
-    return(list(is.deterministic = is.deterministic, Q.value = Q.value))
-}
-<environment: namespace:ltmle>
->  
->  #Use MaintainControl
->  set.seed(1)
->  rexpit <- function(x) rbinom(n=length(x), size=1, prob=plogis(x))
->  n <- 100
->  W <- rnorm(n)
->  A1 <- rexpit(W)
->  A2 <- as.numeric(rexpit(W) | A1)  #treatment at time 1 implies treatment at time 2
->  Y <- rexpit(W + A1 + A2 + rnorm(n))
->  data <- data.frame(W, A1, A2, Y)
-> 
->  result <- ltmle(data, Anodes=c("A1", "A2"), Ynodes="Y", abar=c(1, 1), 
-+    SL.library=c("SL.glm", "SL.step", "SL.mean"), 
-+    deterministic.g.function=MaintainTreatment)
-Error in library("SuperLearner") : 
-  there is no package called ‘SuperLearner’
-Calls: ltmle -> ltmleMSM.private -> CheckInputs -> library
-Execution halted
-```
-```
 checking tests ... ERROR
 Running the tests in ‘tests/test-all.R’ failed.
 Last 13 lines of output:
-  + }
-  Loading required package: ltmle
-  The influence curve based variance estimator implemented in this package provides 
-  asymptotically conservative standard error estimates when the treatment mechanism is 
-  estimated with MLE using a correctly specific parametric model. However, we have found 
-  in simulations that in finite samples this variance estimator may be substantially
-  anti-conservative in settings where the outcome is rare or there are positivity 
-  violations. An improved variance estimator addressing these challenges is currently 
-  under development and will be released in a subsequent version of the package.
+  7: CheckInputs(data, nodes, survivalOutcome, Qform, gform, gbounds, Yrange, deterministic.g.function, 
+         SL.library, regimes, working.msm, summary.measures, final.Ynodes, stratify, msm.weights, 
+         deterministic.Q.function, observation.weights)
+  8: stop("SuperLearner package is required if SL.library is not NULL")
   
-  Error in library(tmle) : there is no package called 'tmle'
-  Calls: test_check ... lapply -> FUN -> sys.source2 -> eval -> eval -> library
+  Failed with error:  'there is no package called 'tmle''
+  [1] "skipping tmle check because tmle namespace is not available"
+  testthat results ================================================================
+  OK: 101 SKIPPED: 0 FAILED: 1
+  1. Error: tests from 'create tests to compare versions.R' 
+  
+  Error: testthat unit tests failed
   Execution halted
 ```
 ```
 DONE
-Status: 2 ERRORs, 5 NOTEs
+Status: 1 ERROR, 2 NOTEs
 ```
 
 ## lubridate (1.3.3)
@@ -3983,7 +3985,13 @@ DONE
 Status: 2 NOTEs
 ```
 
-## markovchain (0.2)
+## manifestoR (0.9-12)
+Maintainer: Jirka Lewandowski <jirka.lewandowski@wzb.eu>  
+Bug reports: https://github.com/ManifestoProject/manifestoR/issues
+
+__OK__
+
+## markovchain (0.2.1)
 Maintainer: Giorgio Alfredo Spedicato <spedicato_giorgio@yahoo.it>  
 Bug reports: http://github.com/spedygiorgio/markovchain/issues
 
@@ -3995,25 +4003,64 @@ Bug reports: https://github.com/shabbychef/MarkowitzR/issues
 
 __OK__
 
-## MazamaSpatialUtils (0.2.3)
+## matchingR (1.0.1)
+Maintainer: Jan Tilly <jtilly@econ.upenn.edu>
+
+```
+checking whether package ‘matchingR’ can be installed ... ERROR
+Installation failed.
+See ‘/private/tmp/RtmpQJiDLv/check_crand2516b207784/matchingR.Rcheck/00install.out’ for details.
+Status: 1 ERROR
+```
+
+## MazamaSpatialUtils (0.2.4)
 Maintainer: Jonathan Callahan <jonathan.s.callahan@gmail.com>
 
-```
-checking whether package ‘MazamaSpatialUtils’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: replacing previous import by ‘stringr::%>%’ when loading ‘MazamaSpatialUtils’
-See ‘/private/tmp/RtmpTT9PaY/check_cranff22babc319/MazamaSpatialUtils.Rcheck/00install.out’ for details.
-```
-```
-DONE
-Status: 1 WARNING
-```
+__OK__
 
-## mbbefd (0.6.1)
+## mbbefd (0.7)
 Maintainer: Giorgio Spedicato <spedicato_giorgio@yahoo.it>  
 Bug reports: http://github.com/spedygiorgio/mbbefd/issues
 
-__OK__
+```
+checking package dependencies ... NOTE
+Package suggested but not available for checking: ‘pander’
+```
+```
+checking re-building of vignette outputs ... NOTE
+Error in re-building vignettes:
+  ...
+
+    cm
+
+Loading required package: gsl
+cropping Introduction_to_Exposure_Rating_files/figure-latex/unnamed-chunk-1-1.pdf
+PDFCROP 1.38, 2012/11/02 - Copyright (c) 2002-2012 by Heiko Oberdiek.
+==> 1 page written on `Introduction_to_Exposure_Rating_files/figure-latex/unnamed-chunk-1-1.pdf'.
+cropping Introduction_to_Exposure_Rating_files/figure-latex/LEV-1.pdf
+PDFCROP 1.38, 2012/11/02 - Copyright (c) 2002-2012 by Heiko Oberdiek.
+==> 1 page written on `Introduction_to_Exposure_Rating_files/figure-latex/LEV-1.pdf'.
+cropping Introduction_to_Exposure_Rating_files/figure-latex/LEV2-1.pdf
+PDFCROP 1.38, 2012/11/02 - Copyright (c) 2002-2012 by Heiko Oberdiek.
+==> 1 page written on `Introduction_to_Exposure_Rating_files/figure-latex/LEV2-1.pdf'.
+cropping Introduction_to_Exposure_Rating_files/figure-latex/ExposureCurve-1.pdf
+PDFCROP 1.38, 2012/11/02 - Copyright (c) 2002-2012 by Heiko Oberdiek.
+==> 1 page written on `Introduction_to_Exposure_Rating_files/figure-latex/ExposureCurve-1.pdf'.
+cropping Introduction_to_Exposure_Rating_files/figure-latex/mbbefdPlot-1.pdf
+PDFCROP 1.38, 2012/11/02 - Copyright (c) 2002-2012 by Heiko Oberdiek.
+==> 1 page written on `Introduction_to_Exposure_Rating_files/figure-latex/mbbefdPlot-1.pdf'.
+Read 44 items
+Read 22 items
+Quitting from lines 400-424 (Introduction_to_Exposure_Rating.Rmd) 
+Error: processing vignette 'Introduction_to_Exposure_Rating.Rmd' failed with diagnostics:
+there is no package called 'pander'
+Execution halted
+
+```
+```
+DONE
+Status: 2 NOTEs
+```
 
 ## mbest (0.3)
 Maintainer: Patrick O. Perry <pperry@stern.nyu.edu>
@@ -4031,9 +4078,9 @@ Status: 1 NOTE
 Maintainer: Manuel Reif <manuel.reif@univie.ac.at>
 
 ```
-checking whether package ‘mcIRT’ can be installed ... [28s/28s] ERROR
+checking whether package ‘mcIRT’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpTT9PaY/check_cranff22babc319/mcIRT.Rcheck/00install.out’ for details.
+See ‘/private/tmp/RtmpQJiDLv/check_crand2516b207784/mcIRT.Rcheck/00install.out’ for details.
 Status: 1 ERROR
 ```
 
@@ -4060,27 +4107,13 @@ Maintainer: Patrick McCormick <patrick.mccormick@alum.mit.edu>
 
 __OK__
 
-## metafor (1.9-5)
+## metafor (1.9-6)
 Maintainer: Wolfgang Viechtbauer <wvb@metafor-project.org>
 
 ```
 checking package dependencies ... NOTE
 Packages suggested but not available for checking:
-  ‘polycor’ ‘BiasedUrn’ ‘Epi’ ‘CompQuadForm’
-```
-```
-checking dependencies in R code ... NOTE
-'library' or 'require' calls in package code:
-  ‘Epi’ ‘lme4’ ‘polycor’ ‘survival’
-  Please use :: or requireNamespace() instead.
-  See section 'Suggested packages' in the 'Writing R Extensions' manual.
-```
-```
-checking S3 generic/method consistency ... NOTE
-Found the following apparent S3 methods exported but not registered:
-  print.hc.rma.uni
-See section ‘Registering S3 methods’ in the ‘Writing R Extensions’
-manual.
+  ‘CompQuadForm’ ‘BiasedUrn’ ‘Epi’
 ```
 ```
 checking examples ... ERROR
@@ -4109,23 +4142,23 @@ Execution halted
 checking tests ... ERROR
 Running the tests in ‘tests/test-all.R’ failed.
 Last 13 lines of output:
-         e$calls <- head(sys.calls()[-seq_len(frame + 7)], -2)
-         signalCondition(e)
-     }, "Please install the 'BiasedUrn' package to fit this model.", quote(rma.glmm(measure = "OR", 
-         ai = ai, n1i = n1i, ci = ci, n2i = n2i, data = dat, model = "CM.EL")))
-  
   testthat results ================================================================
-  OK: 196 SKIPPED: 0 FAILED: 3
-  1. Error: confint() gives correct results for example 1 in Jackson et al. (2014). 
-  2. Error: confint() gives correct results for example 2 in Jackson et al. (2014). 
-  3. Error: results of the conditional logistic model with exact likelihood are correct (measure=='OR') (Table III) 
+  OK: 520 SKIPPED: 0 FAILED: 8
+  1. Error: results are correct for Mantel-Haenszel method. 
+  2. Error: results are correct for Mantel-Haenszel method. 
+  3. Error: results for the conditional logistic model with exact likelihood are correct (measure=='OR') 
+  4. Error: the log likelihood plot can be created. 
+  5. Error: results of the fixed-effects conditional logistic model are correct. 
+  6. Error: results of the random-effects conditional logistic model are correct. 
+  7. Error: confint() gives correct results for example 1 in Jackson et al. (2014). 
+  8. Error: confint() gives correct results for example 2 in Jackson et al. (2014). 
   
   Error: testthat unit tests failed
   Execution halted
 ```
 ```
 DONE
-Status: 2 ERRORs, 3 NOTEs
+Status: 2 ERRORs, 1 NOTE
 ```
 
 ## mets (1.1.0)
@@ -4136,9 +4169,9 @@ checking package dependencies ... NOTE
 Packages suggested but not available for checking: ‘lava.tobit’ ‘prodlim’
 ```
 ```
-checking whether package ‘mets’ can be installed ... [50s/50s] ERROR
+checking whether package ‘mets’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpTT9PaY/check_cranff22babc319/mets.Rcheck/00install.out’ for details.
+See ‘/private/tmp/RtmpQJiDLv/check_crand2516b207784/mets.Rcheck/00install.out’ for details.
 Status: 1 ERROR, 1 NOTE
 ```
 
@@ -4146,6 +4179,11 @@ Status: 1 ERROR, 1 NOTE
 Maintainer: Andrie de
  Vries <andrie@revolutionanalytics.com>  
 Bug reports: https://github.com/RevolutionAnalytics/miniCRAN/issues
+
+__OK__
+
+## MInt (1.0.1)
+Maintainer: Surojit Biswas <surojitbiswas@g.harvard.edu>
 
 __OK__
 
@@ -4158,25 +4196,31 @@ checking package dependencies ... NOTE
 Packages suggested but not available for checking: ‘alabama’ ‘sirt’
 ```
 ```
-checking whether package ‘mirt’ can be installed ... [14s/14s] ERROR
+checking whether package ‘mirt’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpTT9PaY/check_cranff22babc319/mirt.Rcheck/00install.out’ for details.
+See ‘/private/tmp/RtmpQJiDLv/check_crand2516b207784/mirt.Rcheck/00install.out’ for details.
 Status: 1 ERROR, 1 NOTE
 ```
 
-## mirtCAT (0.4.2)
+## mirtCAT (0.5)
 Maintainer: Phil Chalmers <rphilip.chalmers@gmail.com>  
 Bug reports: https://github.com/philchalmers/mirtCAT/issues?state=open
 
 ```
 checking whether package ‘mirtCAT’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpTT9PaY/check_cranff22babc319/mirtCAT.Rcheck/00install.out’ for details.
+See ‘/private/tmp/RtmpQJiDLv/check_crand2516b207784/mirtCAT.Rcheck/00install.out’ for details.
 Status: 1 ERROR
 ```
 
 ## mizer (0.2)
 Maintainer: Finlay Scott <finlay.scott@jrc.ec.europa.eu>
+
+__OK__
+
+## mkin (0.9-35)
+Maintainer: Johannes Ranke <jranke@uni-bremen.de>  
+Bug reports: http://github.com/jranke/mkin/issues
 
 __OK__
 
@@ -4189,9 +4233,9 @@ checking package dependencies ... NOTE
 Packages suggested but not available for checking:
   ‘adabag’ ‘bartMachine’ ‘brnn’ ‘care’ ‘clusterSim’ ‘clValid’ ‘cmaes’
   ‘CoxBoost’ ‘crs’ ‘Cubist’ ‘DiceOptim’ ‘DiscriMiner’ ‘earth’ ‘elmNN’
-  ‘emoa’ ‘FSelector’ ‘gbm’ ‘GenSA’ ‘irace’ ‘kknn’ ‘kohonen’ ‘laGP’
-  ‘lqa’ ‘mRMRe’ ‘nodeHarvest’ ‘penalized’ ‘pls’ ‘randomUniformForest’
-  ‘rrlda’ ‘rsm’ ‘RWeka’ ‘sda’ ‘stepPlr’ ‘tgp’ ‘xgboost’
+  ‘FSelector’ ‘gbm’ ‘GenSA’ ‘irace’ ‘kknn’ ‘kohonen’ ‘laGP’ ‘lqa’
+  ‘mRMRe’ ‘nodeHarvest’ ‘penalized’ ‘pls’ ‘randomUniformForest’ ‘rrlda’
+  ‘rsm’ ‘RWeka’ ‘sda’ ‘stepPlr’ ‘tgp’ ‘xgboost’
 ```
 ```
 checking Rd cross-references ... NOTE
@@ -4219,7 +4263,7 @@ Execution halted
 checking tests ... ERROR
 Running the tests in ‘tests/run-base.R’ failed.
 Last 13 lines of output:
-  9. Failure (@test_base_checkTaskLearner.R#11): checkTaskLearner 
+  9. Failure (at test_base_checkTaskLearner.R#11): checkTaskLearner 
   1. Error: clustering performance 
   2. Error: clustering resample 
   3. Error: clustering benchmark 
@@ -4242,37 +4286,16 @@ Status: 2 ERRORs, 2 NOTEs
 Maintainer: Jon Clayden <code@clayden.org>
 
 ```
-checking whether package ‘mmand’ can be installed ... [19s/19s] ERROR
+checking whether package ‘mmand’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpTT9PaY/check_cranff22babc319/mmand.Rcheck/00install.out’ for details.
+See ‘/private/tmp/RtmpQJiDLv/check_crand2516b207784/mmand.Rcheck/00install.out’ for details.
 Status: 1 ERROR
 ```
 
 ## moonBook (0.1.3)
 Maintainer: Keon-Woong Moon <cardiomoon@gmail.com>
 
-```
-checking tests ... ERROR
-Running the tests in ‘tests/testthat.R’ failed.
-Last 13 lines of output:
-  smoking          &  &  &  & 0.002 &  &  &  &  & 0.184 \\ 
-    - Ex-smoker    & 34 (33.0\%) & 53 (24.1\%) & 68 (27.5\%) &  &  & 8 (16.0\%) & 13 (15.5\%) & 28 (18.3\%) &  \\ 
-    - Never        & 13 (12.6\%) & 40 (18.2\%) & 70 (28.3\%) &  &  & 37 (74.0\%) & 57 (67.9\%) & 115 (75.2\%) &  \\ 
-    - Smoker       & 56 (54.4\%) & 127 (57.7\%) & 109 (44.1\%) &  &  & 5 (10.0\%) & 14 (16.7\%) & 10 ( 6.5\%) &  \\ 
-  \hline
-  \end{tabular}
-  \end{normalsize}
-  \end{table}
-  testthat results ================================================================
-  OK: 0 SKIPPED: 0 FAILED: 0
-  Error in !df$error : invalid argument type
-  Calls: test_check -> run_tests -> all_passed
-  Execution halted
-```
-```
-DONE
-Status: 1 ERROR
-```
+__OK__
 
 ## morgenstemning (1.0)
 Maintainer: James Manton <ajd.manton@googlemail.com>
@@ -4352,7 +4375,7 @@ Packages suggested but not available for checking:
 ```
 checking whether package ‘move’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpTT9PaY/check_cranff22babc319/move.Rcheck/00install.out’ for details.
+See ‘/private/tmp/RtmpQJiDLv/check_crand2516b207784/move.Rcheck/00install.out’ for details.
 Status: 1 ERROR, 1 NOTE
 ```
 
@@ -4417,7 +4440,7 @@ Package suggested but not available for checking: ‘mstate’
 ```
 checking whether package ‘msm’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpTT9PaY/check_cranff22babc319/msm.Rcheck/00install.out’ for details.
+See ‘/private/tmp/RtmpQJiDLv/check_crand2516b207784/msm.Rcheck/00install.out’ for details.
 Status: 1 ERROR, 1 NOTE
 ```
 
@@ -4466,9 +4489,9 @@ Error in re-building vignettes:
   ...
 Loading required package: Rcpp
 
-arm (Version 1.8-4, built: 2015-04-07)
+arm (Version 1.8-5, built: 2015-05-13)
 
-Working directory is /private/tmp/RtmpTT9PaY/check_cranff22babc319/multitable.Rcheck/vign_test/multitable/vignettes
+Working directory is /private/tmp/RtmpQJiDLv/check_crand2516b207784/multitable.Rcheck/vign_test/multitable/vignettes
 
 Loading required package: vegan
 Loading required package: permute
@@ -4504,9 +4527,9 @@ checking package dependencies ... NOTE
 Package suggested but not available for checking: ‘microbenchmark’
 ```
 ```
-checking whether package ‘mvnfast’ can be installed ... [16s/16s] ERROR
+checking whether package ‘mvnfast’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpTT9PaY/check_cranff22babc319/mvnfast.Rcheck/00install.out’ for details.
+See ‘/private/tmp/RtmpQJiDLv/check_crand2516b207784/mvnfast.Rcheck/00install.out’ for details.
 Status: 1 ERROR, 1 NOTE
 ```
 
@@ -4517,7 +4540,7 @@ Bug reports: https://github.com/jrwishart/mwaved/issues
 ```
 checking whether package ‘mwaved’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpTT9PaY/check_cranff22babc319/mwaved.Rcheck/00install.out’ for details.
+See ‘/private/tmp/RtmpQJiDLv/check_crand2516b207784/mwaved.Rcheck/00install.out’ for details.
 Status: 1 ERROR
 ```
 
@@ -4532,26 +4555,8 @@ See section ‘Registering S3 methods’ in the ‘Writing R Extensions’
 manual.
 ```
 ```
-checking tests ... ERROR
-Running the tests in ‘tests/testthat.R’ failed.
-Last 13 lines of output:
-  
-  $ intercept 
-  
-          mpg  disp      wt    hp
-  mpg    0.00 29.60   37.29 30.10
-  disp 580.88  0.00 -131.15 20.99
-  wt     6.05  1.60    0.00  1.84
-  hp   324.08 45.73   -1.82  0.00
-  testthat results ================================================================
-  OK: 0 SKIPPED: 0 FAILED: 0
-  Error in !df$error : invalid argument type
-  Calls: test_check -> run_tests -> all_passed
-  Execution halted
-```
-```
 DONE
-Status: 1 ERROR, 1 NOTE
+Status: 1 NOTE
 ```
 
 ## nabor (0.4.4)
@@ -4594,13 +4599,13 @@ Bug reports: https://github.com/kos59125/naturalsort/issues
 
 __OK__
 
-## nbpMatching (1.4.4)
+## nbpMatching (1.4.5)
 Maintainer: Cole Beck <cole.beck@vanderbilt.edu>
 
 ```
 checking whether package ‘nbpMatching’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpTT9PaY/check_cranff22babc319/nbpMatching.Rcheck/00install.out’ for details.
+See ‘/private/tmp/RtmpQJiDLv/check_crand2516b207784/nbpMatching.Rcheck/00install.out’ for details.
 Status: 1 ERROR
 ```
 
@@ -4643,7 +4648,7 @@ Maintainer: Douglas G. Scofield <douglasgscofield@gmail.com>
 
 __OK__
 
-## netgen (1.0)
+## netgen (1.1)
 Maintainer: Jakob Bossek <j.bossek@gmail.com>  
 Bug reports: https://github.com/jakobbossek/netgen/issues
 
@@ -4769,7 +4774,7 @@ Maintainer: Phil Chalmers <rphilip.chalmers@gmail.com>
 
 __OK__
 
-## openssl (0.3)
+## openssl (0.4)
 Maintainer: Jeroen Ooms <jeroen.ooms@stat.ucla.edu>  
 Bug reports: https://github.com/jeroenooms/openssl/issues
 
@@ -4821,7 +4826,7 @@ checking tests ... ERROR
 Running the tests in ‘tests/testthat.R’ failed.
 Last 13 lines of output:
   
-  1. Failure (@test-but.R#24): but operators work --------------------------------
+  1. Failure (at test-but.R#24): but operators work ------------------------------
   class(test) not equal to "try-error"
   1 string mismatches:
   x[1]: "try-error"
@@ -4829,7 +4834,7 @@ Last 13 lines of output:
   
   testthat results ================================================================
   OK: 51 SKIPPED: 0 FAILED: 1
-  1. Failure (@test-but.R#24): but operators work 
+  1. Failure (at test-but.R#24): but operators work 
   
   Error: testthat unit tests failed
   Execution halted
@@ -4851,7 +4856,7 @@ Maintainer: Mark M. Fredrickson <mark.m.fredrickson@gmail.com>
 ```
 checking whether package ‘optmatch’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpTT9PaY/check_cranff22babc319/optmatch.Rcheck/00install.out’ for details.
+See ‘/private/tmp/RtmpQJiDLv/check_crand2516b207784/optmatch.Rcheck/00install.out’ for details.
 Status: 1 ERROR
 ```
 
@@ -4928,6 +4933,55 @@ DONE
 Status: 1 NOTE
 ```
 
+## oro.nifti (0.5.2)
+Maintainer: Brandon Whitcher <bwhitcher@gmail.com>
+
+```
+checking package dependencies ... NOTE
+Package which this enhances but not available for checking: ‘fmri’
+```
+```
+checking installed package size ... NOTE
+  installed size is  6.5Mb
+  sub-directories of 1Mb or more:
+    nifti   3.8Mb
+```
+```
+checking re-building of vignette outputs ... NOTE
+Error in re-building vignettes:
+  ...
+
+oro.nifti 0.5.2
+Error in texi2dvi(file = file, pdf = TRUE, clean = clean, quiet = quiet,  : 
+  Running 'texi2dvi' on 'nifti.tex' failed.
+LaTeX errors:
+! Undefined control sequence.
+l.15 x<9c><ed>\<cd>
+          k^^S[^^[^^?L<95>:P'9Ko1M^^X<90><ca>U<92>\^^FD^^DI^^W<85><ba>r#<fe>]<b9>r<a3>K<b7>ݸ^^U<bb>^^UA^^L...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+! Undefined control sequence.
+l.15 x<9c><ed>\<cd>k^^S[^^[^^?L<95>:P'9Ko1M^^X<90><ca>U<92>\^^F
+                                           D^^DI^^W<85><ba>r#<fe>]<b9>r<a3>K<b7>ݸ^^U<bb>^^UA^^L...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+! Undefined control sequence.
+l.15 ...!^^Dc^^L<f7>s<b9><dc><ce><ce>N<a5>Ry<fb><f6>-c^^L<8f>8<e7><9c><f3><e1><e1>aιl"[	!\<d7>
+                                                  
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+! Undefined control sequence.
+l.19 !<96><96><96><aa><d5><ea><eb>ׯ?|<f8>^^@<af>ptW<b9>\<ae>
+   
+Calls: buildVignettes -> texi2pdf -> texi2dvi
+Execution halted
+
+```
+```
+DONE
+Status: 3 NOTEs
+```
+
 ## packrat (0.4.3)
 Maintainer: Kevin Ushey <kevin@rstudio.com>  
 Bug reports: https://github.com/rstudio/packrat/issues
@@ -4983,8 +5037,7 @@ Bug reports: https://github.com/berndbischl/ParamHelpers/issues
 
 ```
 checking package dependencies ... NOTE
-Packages suggested but not available for checking:
-  ‘emoa’ ‘irace’ ‘soobench’
+Packages suggested but not available for checking: ‘irace’ ‘soobench’
 ```
 ```
 checking DESCRIPTION meta-information ... NOTE
@@ -4995,39 +5048,10 @@ checking Rd cross-references ... NOTE
 Packages unavailable to check Rd xrefs: ‘irace’, ‘soobench’
 ```
 ```
-checking examples ... ERROR
-Running examples in ‘ParamHelpers-Ex.R’ failed
-The error most likely occurred in:
-
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
-> ### Name: getOptPathParetoFront
-> ### Title: Get indices of pareto front of optimization path.
-> ### Aliases: getOptPathParetoFront
-> 
-> ### ** Examples
-> 
-> ps = makeParamSet(makeNumericParam("x"))
-> op = makeOptPathDF(par.set = ps, y.names = c("y1", "y2"), minimize = c(TRUE, TRUE))
-> addOptPathEl(op, x = list(x = 1), y = c(5, 3))
-> addOptPathEl(op, x = list(x = 2), y = c(2, 4))
-> addOptPathEl(op, x = list(x = 3), y = c(9, 4))
-> addOptPathEl(op, x = list(x = 4), y = c(4, 9))
-> as.data.frame(op)
-  x y1 y2 dob eol
-1 1  5  3   1  NA
-2 2  2  4   2  NA
-3 3  9  4   3  NA
-4 4  4  9   4  NA
-> getOptPathParetoFront(op)
-Error in requirePackages("emoa", default.method = "load") : 
-  Please install the following packages: emoa
-Calls: getOptPathParetoFront -> requirePackages -> stopf
-Execution halted
-```
-```
 checking tests ... ERROR
 Running the tests in ‘tests/run-all.R’ failed.
 Last 13 lines of output:
+  1: withCallingHandlers(eval(code, new_test_environment), error = capture_calls, message = function(c) invokeRestart("muffleMessage"), 
          warning = function(c) invokeRestart("muffleWarning"))
   2: eval(code, new_test_environment)
   3: eval(expr, envir, enclos)
@@ -5035,16 +5059,15 @@ Last 13 lines of output:
   5: stopf("Please install the following packages: %s", ps)
   
   testthat results ================================================================
-  OK: 759 SKIPPED: 0 FAILED: 2
-  1. Error: pareto front 
-  2. Error: convertParamSetToIrace 
+  OK: 765 SKIPPED: 0 FAILED: 1
+  1. Error: convertParamSetToIrace 
   
   Error: testthat unit tests failed
   Execution halted
 ```
 ```
 DONE
-Status: 2 ERRORs, 3 NOTEs
+Status: 1 ERROR, 3 NOTEs
 ```
 
 ## parsedate (1.1.1)
@@ -5074,63 +5097,11 @@ DONE
 Status: 1 ERROR
 ```
 
-## pathological (0.0-3)
-Maintainer: Richard Cotton <richierocks@gmail.com>
+## pathological (0.0-6)
+Maintainer: Richard Cotton <richierocks@gmail.com>  
+Bug reports: https://github.com/richierocks/pathological/issues
 
-```
-checking examples ... ERROR
-Running examples in ‘pathological-Ex.R’ failed
-The error most likely occurred in:
-
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
-> ### Name: decompose_path
-> ### Title: Split a path into its components
-> ### Aliases: decompose_path get_extension recompose_path
-> ###   recompose_path.decomposed_path replace_extension strip_extension
-> 
-> ### ** Examples
-> 
-> x <- c(
-+   "somedir/foo.tgz",         # single extension
-+   "another dir\\bar.tar.gz", # double extension
-+   "baz",                     # no extension
-+   "quux. quuux.tbz2",        # single ext, dots in filename
-+   R.home(),                  # a dir
-+   "~",                       # another dir
-+   "~/quuuux.tar.xz",         # a file in a dir
-+   "",                        # empty
-+   ".",                       # current dir
-+   "..",                      # parent dir
-+   NA_character_              # missing
-+ )
-> (decomposed <- decompose_path(x))
-Error in stri_match_first_regex(string, pattern, opts_regex = attr(pattern,  : 
-  Missing closing bracket on a bracket expression. (U_REGEX_MISSING_CLOSE_BRACKET)
-Calls: decompose_path -> str_match -> stri_match_first_regex -> .Call
-Execution halted
-```
-```
-checking tests ... ERROR
-Running the tests in ‘tests/run-all.R’ failed.
-Last 13 lines of output:
-  3: eval(expr, envir, enclos)
-  4: expect_equal(strip_extension(x), expected$na) at test_strip_extension.R:107
-  5: expect_that(object, equals(expected, label = expected.label, ...), info = info, label = label) at /Users/hadley/Documents/devtools/testthat/R/expectations-equality.R:82
-  6: condition(object) at /Users/hadley/Documents/devtools/testthat/R/expect-that.r:26
-  7: compare(expected, actual, ...) at /Users/hadley/Documents/devtools/testthat/R/expectations-equality.R:61
-  8: compare.character(expected, actual, ...) at /Users/hadley/Documents/devtools/testthat/R/compare.r:10
-  9: identical(x, y) at /Users/hadley/Documents/devtools/testthat/R/compare.r:66
-  10: strip_extension(x)
-  11: decompose_path(x[ok])
-  12: str_match(basename_x[not_missing_and_has_extension], rx)
-  13: stri_match_first_regex(string, pattern, opts_regex = attr(pattern, "options"))
-  Error: Test failures
-  Execution halted
-```
-```
-DONE
-Status: 2 ERRORs
-```
+__OK__
 
 ## pbo (1.3.4)
 Maintainer: Matt Barry <mrb@softisms.com>  
@@ -5159,59 +5130,11 @@ Bug reports: https://github.com/shabbychef/PDQutils/issues
 
 __OK__
 
-## permute (0.8-3)
-Maintainer: Gavin L. Simpson <ucfagls@gmail.com>
+## permute (0.8-4)
+Maintainer: Gavin L. Simpson <ucfagls@gmail.com>  
+Bug reports: https://github.com/gavinsimpson/permute/issues
 
-```
-checking tests ... ERROR
-Running the tests in ‘tests/test-all.R’ failed.
-Last 13 lines of output:
-  
-  > ## Test `permute` using the `testthat` package
-  > 
-  > ## Setup
-  > library(testthat)
-  > library(permute)
-  > 
-  > ## Runs the tests in inst/tests
-  > test_package("permute")
-  Error in eval(expr, envir, enclos) : 
-    could not find function "library_if_available"
-  Calls: test_package ... test_dir -> lapply -> FUN -> sys.source2 -> eval -> eval
-  Execution halted
-```
-```
-checking re-building of vignette outputs ... NOTE
-Error in re-building vignettes:
-  ...
-Loading required package: permute
-Set of permutations < 'minperm'. Generating entire set.
-Loading required package: parallel
-Error in texi2dvi(file = file, pdf = TRUE, clean = clean, quiet = quiet,  : 
-  Running 'texi2dvi' on 'permutations.tex' failed.
-LaTeX errors:
-! Undefined control sequence.
-l.16 k<a6><d3>K^^HY{^^G<fb>u^^H<f8><e0><c8>^^S<e6><b2>	^^X<e5><e0><d3><88>\|<f3><d9><f9>	<f6>1<d7>\<f2>
-                                                  ^^C|<cf>I<87>@<ae><99><83>^^G<83>^^O<8f>^^L^^L<83>...
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-! Undefined control sequence.
-l.16 ...<ae><99><83>^^G<83>^^O<8f>^^L^^L<83><c0><86><c0><c4><d6><c^^\6i4Ȭ6&<f6>^^^>\<f4>
-                                                  J<b6>4<b6>%<d9><f2>S^^]ĸg<a6><bb>k<fa>몯<aa>ڿ^^...
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-! Undefined control sequence.
-l.29 <e5>H<b4>ܽ{^^Ww<af><ad>o^^X<82>CW<97><91><ac><e0><a4>^^S^^D<ee><ec><ec><f4>}R<bd><93><ac><ab>7\<8b>
-                                                <c6>2r^^L<c3>,#<f5><86>YF<ea>
-The control sequence at the end of the top line
-Calls: buildVignettes -> texi2pdf -> texi2dvi
-Execution halted
-
-```
-```
-DONE
-Status: 1 ERROR, 1 NOTE
-```
+__OK__
 
 ## phylobase (0.6.8)
 Maintainer: Francois Michonneau <francois.michonneau@gmail.com>
@@ -5390,9 +5313,9 @@ Status: 3 NOTEs
 Maintainer: Baptiste Auguie <baptiste.auguie@gmail.com>
 
 ```
-checking whether package ‘planar’ can be installed ... [22s/22s] ERROR
+checking whether package ‘planar’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpTT9PaY/check_cranff22babc319/planar.Rcheck/00install.out’ for details.
+See ‘/private/tmp/RtmpQJiDLv/check_crand2516b207784/planar.Rcheck/00install.out’ for details.
 Status: 1 ERROR
 ```
 
@@ -5428,26 +5351,8 @@ checking package dependencies ... NOTE
 Package suggested but not available for checking: ‘itertools’
 ```
 ```
-checking tests ... ERROR
-Running the tests in ‘tests/testthat.R’ failed.
-Last 13 lines of output:
-  > library(testthat)
-  > library(plyr)
-  > 
-  > test_check("plyr")
-  1. Failure (@test-rbind.r#282): rbind.fill performance linear with factors -----
-  threshold not less than summary(model)$coefficients[2, 4]. Difference: -0.01495663
-  
-  testthat results ================================================================
-  OK: 763 SKIPPED: 0 FAILED: 1
-  1. Failure (@test-rbind.r#282): rbind.fill performance linear with factors 
-  
-  Error: testthat unit tests failed
-  Execution halted
-```
-```
 DONE
-Status: 1 ERROR, 1 NOTE
+Status: 1 NOTE
 ```
 
 ## pnn (1.0.1)
@@ -5567,7 +5472,7 @@ DONE
 Status: 1 WARNING, 2 NOTEs
 ```
 
-## poppr (1.1.4)
+## poppr (1.1.5)
 Maintainer: Zhian N. Kamvar <kamvarz@science.oregonstate.edu>  
 Bug reports: https://github.com/grunwaldlab/poppr/issues
 
@@ -5594,7 +5499,7 @@ checking Rd cross-references ... NOTE
 Package unavailable to check Rd xrefs: ‘DEoptim’
 ```
 ```
-checking running R code from vignettes ... [30s/30s] WARNING
+checking running R code from vignettes ... [31s/31s] WARNING
 Errors in running code in vignettes:
 when running code in ‘ROI_vignette.Rnw’
   ...
@@ -5735,11 +5640,16 @@ Packages suggested but not available for checking:
   ‘bspec’ ‘fftw’ ‘multitaper’ ‘RSEIS’ ‘rbenchmark’
 ```
 ```
-checking whether package ‘psd’ can be installed ... [10s/10s] ERROR
+checking whether package ‘psd’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpTT9PaY/check_cranff22babc319/psd.Rcheck/00install.out’ for details.
+See ‘/private/tmp/RtmpQJiDLv/check_crand2516b207784/psd.Rcheck/00install.out’ for details.
 Status: 1 ERROR, 1 NOTE
 ```
+
+## psidR (1.3)
+Maintainer: Florian Oswald <florian.oswald@gmail.com>
+
+__OK__
 
 ## pvar (2.2)
 Maintainer: Vygantas Butkus <Vygantas.Butkus@gmail.com>
@@ -5780,7 +5690,7 @@ DONE
 Status: 1 ERROR
 ```
 
-## qdap (2.2.0)
+## qdap (2.2.1)
 Maintainer: Tyler Rinker <tyler.rinker@gmail.com>  
 Bug reports: http://github.com/trinker/qdap/issues
 
@@ -5807,9 +5717,9 @@ __OK__
 Maintainer: Karl W Broman <kbroman@biostat.wisc.edu>
 
 ```
-checking whether package ‘qtl’ can be installed ... [11s/11s] ERROR
+checking whether package ‘qtl’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpTT9PaY/check_cranff22babc319/qtl.Rcheck/00install.out’ for details.
+See ‘/private/tmp/RtmpQJiDLv/check_crand2516b207784/qtl.Rcheck/00install.out’ for details.
 Status: 1 ERROR
 ```
 
@@ -5817,9 +5727,9 @@ Status: 1 ERROR
 Maintainer: Julien Chiquet <julien.chiquet@genopole.cnrs.fr>
 
 ```
-checking whether package ‘quadrupen’ can be installed ... [31s/31s] ERROR
+checking whether package ‘quadrupen’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpTT9PaY/check_cranff22babc319/quadrupen.Rcheck/00install.out’ for details.
+See ‘/private/tmp/RtmpQJiDLv/check_crand2516b207784/quadrupen.Rcheck/00install.out’ for details.
 Status: 1 ERROR
 ```
 
@@ -5953,6 +5863,11 @@ Bug reports: https://github.com/karthik/randNames/issues
 
 __OK__
 
+## rankdist (0.4.1)
+Maintainer: Zhaozhi Qian <qianzhaozhi@connect.hku.hk>
+
+__OK__
+
 ## RANN.L1 (2.5)
 Maintainer: Kirill Müller <krlmlr+r@mailbox.org>
 
@@ -5970,7 +5885,7 @@ Bug reports: http://github.com/jeroenooms/RAppArmor/issues
 ```
 checking whether package ‘RAppArmor’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpTT9PaY/check_cranff22babc319/RAppArmor.Rcheck/00install.out’ for details.
+See ‘/private/tmp/RtmpQJiDLv/check_crand2516b207784/RAppArmor.Rcheck/00install.out’ for details.
 Status: 1 ERROR
 ```
 
@@ -6139,7 +6054,7 @@ Maintainer: Jaak Simm <jaak.simm@gmail.com>
 ```
 checking whether package ‘rDEA’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpTT9PaY/check_cranff22babc319/rDEA.Rcheck/00install.out’ for details.
+See ‘/private/tmp/RtmpQJiDLv/check_crand2516b207784/rDEA.Rcheck/00install.out’ for details.
 Status: 1 ERROR
 ```
 
@@ -6148,7 +6063,7 @@ Maintainer: Karthik Ram <karthik.ram@gmail.com>
 
 __OK__
 
-## RDS (0.7-1)
+## RDS (0.7-2)
 Maintainer: Mark S. Handcock <handcock@stat.ucla.edu>
 
 __OK__
@@ -6257,16 +6172,16 @@ checking dependencies in R code ... NOTE
 checking tests ... ERROR
 Running the tests in ‘tests/test-all.R’ failed.
 Last 13 lines of output:
-  8. Failure (@test-read_batch.R#202): All Records -Raw and DAG 
-  9. Error: Smoke Test 
-  1. Error: Write Batch -Insert 
-  2. Error: Write Batch -Update One Field 
-  3. Error: Write Batch -Update Two Fields 
-  4. Error: Smoke Test 
-  5. Error: Write One Shot -Insert 
-  6. Error: Write One Shot -Update One Field 
-  7. Error: Write One Shot -Update Two Fields 
-  8. ...
+  5. Error: Read, Insert, and Update 
+  6. Error: Smoke Test 
+  7. Error: Write Batch -Insert 
+  8. Error: Write Batch -Update One Field 
+  9. Error: Write Batch -Update Two Fields 
+  1. Error: Smoke Test 
+  2. Error: Write One Shot -Insert 
+  3. Error: Write One Shot -Update One Field 
+  4. Error: Write One Shot -Update Two Fields 
+  5. ...
   
   Error: testthat unit tests failed
   Execution halted
@@ -6292,7 +6207,7 @@ Maintainer: Louis Aslett <aslett@stats.ox.ac.uk>
 
 __OK__
 
-## rEMM (1.0-8)
+## rEMM (1.0-9)
 Maintainer: Michael Hahsler <mhahsler@lyle.smu.edu>
 
 ```
@@ -6300,45 +6215,8 @@ checking package dependencies ... NOTE
 Packages suggested but not available for checking: ‘graph’ ‘Rgraphviz’
 ```
 ```
-checking dependencies in R code ... NOTE
-'library' or 'require' calls in package code:
-  ‘Rgraphviz’ ‘graph’
-  Please use :: or requireNamespace() instead.
-  See section 'Suggested packages' in the 'Writing R Extensions' manual.
-```
-```
-checking S3 generic/method consistency ... NOTE
-Found the following apparent S3 methods exported but not registered:
-  as.graph.TRACDS as.igraph.TRACDS
-See section ‘Registering S3 methods’ in the ‘Writing R Extensions’
-manual.
-```
-```
-checking R code for possible problems ... NOTE
-plot,TRACDS-missing: no visible binding for global variable
-  ‘layout.fruchterman.reingold’
-```
-```
-checking tests ... ERROR
-Running the tests in ‘tests/testthat.R’ failed.
-Last 13 lines of output:
-  Type 'contributors()' for more information and
-  'citation()' on how to cite R or R packages in publications.
-  
-  Type 'demo()' for some demos, 'help()' for on-line help, or
-  'help.start()' for an HTML browser interface to help.
-  Type 'q()' to quit R.
-  
-  > library("testthat")
-  > test_package("rEMM")
-  Error in test_dir(test_path, reporter = reporter, env = env, filter = filter,  : 
-    No matching test file in dir
-  Calls: test_package -> run_tests -> with_top_env -> test_dir
-  Execution halted
-```
-```
 DONE
-Status: 1 ERROR, 4 NOTEs
+Status: 1 NOTE
 ```
 
 ## rentrez (0.4.1)
@@ -6351,6 +6229,19 @@ Maintainer: Eduardo Ibanez <eduardo.ibanez@nrel.gov>
 Bug reports: https://github.com/NREL/repra/issues
 
 __OK__
+
+## rerddap (0.1.0)
+Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>  
+Bug reports: http://www.github.com/ropensci/rerddap/issues
+
+```
+checking package dependencies ... NOTE
+Package suggested but not available for checking: ‘ncdf4’
+```
+```
+DONE
+Status: 1 NOTE
+```
 
 ## reshape2 (1.4.1)
 Maintainer: Hadley Wickham <h.wickham@gmail.com>  
@@ -6369,14 +6260,7 @@ Status: 1 NOTE
 Maintainer: David C. Sterratt <david.c.sterratt@ed.ac.uk>  
 Bug reports: https://github.com/davidcsterratt/retistruct/issues
 
-```
-checking package dependencies ... NOTE
-Package suggested but not available for checking: ‘gWidgetsRGtk2’
-```
-```
-DONE
-Status: 1 NOTE
-```
+__OK__
 
 ## reutils (0.1.2)
 Maintainer: 'Gerhard Schöfl' <gschofl@yahoo.de>  
@@ -6426,32 +6310,11 @@ Maintainer: Roger Bivand <Roger.Bivand@nhh.no>
 
 __OK__
 
-## rglobi (0.2.6)
+## rglobi (0.2.8)
 Maintainer: Jorrit Poelen <jhpoelen@xs4all.nl>  
 Bug reports: https://github.com/ropensci/rglobi/issues
 
-```
-checking tests ... ERROR
-Running the tests in ‘tests/testthat.R’ failed.
-Last 13 lines of output:
-  9: query(cypher, opts = opts)
-  10: rjson::fromJSON(h$value())
-  11: stop(x)
-  
-  testthat results ================================================================
-  OK: 20 SKIPPED: 0 FAILED: 4
-  1. Error: cypher query 
-  2. Error: no result cypher query 
-  3. Error: interaction matrix can be retrieved 
-  4. Error: interaction matrix with interaction type can be retrieved 
-  
-  Error: testthat unit tests failed
-  Execution halted
-```
-```
-DONE
-Status: 1 ERROR
-```
+__OK__
 
 ## RGoogleAnalytics (0.1.1)
 Maintainer: Kushan Shah <kushan@tatvic.com>  
@@ -6466,49 +6329,27 @@ DONE
 Status: 1 NOTE
 ```
 
+## riceware (0.4)
+Maintainer: Francois Michonneau <francois.michonneau@gmail.com>  
+Bug reports: https://github.com/fmichonneau/riceware/issues
+
+__OK__
+
 ## RIGHT (0.2.0)
 Maintainer: Jonghyun Bae <bnbbkr@gmail.com>  
 Bug reports: https://groups.google.com/forum/?hl=en#!forum/right-user
 
 __OK__
 
-## RImageJROI (0.1)
+## RImageJROI (0.1.1)
 Maintainer: David C Sterratt <david.c.sterratt@ed.ac.uk>
 
-```
-checking tests ... ERROR
-Running the tests in ‘tests/test-all.R’ failed.
-Last 13 lines of output:
-  
-  Type 'demo()' for some demos, 'help()' for on-line help, or
-  'help.start()' for an HTML browser interface to help.
-  Type 'q()' to quit R.
-  
-  > library(testthat)
-  > 
-  > test_check("RImageJROI")
-  Loading required package: RImageJROI
-  Error in test_dir(test_path, reporter = reporter, env = env, filter = filter,  : 
-    No matching test file in dir
-  Calls: test_check -> run_tests -> with_top_env -> test_dir
-  Execution halted
-```
-```
-DONE
-Status: 1 ERROR
-```
+__OK__
 
-## rio (0.1.2)
-Maintainer: Chung-hong Chan <chainsawtiney@gmail.com>
+## rio (0.2)
+Maintainer: Thomas J. Leeper <thosjleeper@gmail.com>
 
-```
-checking DESCRIPTION meta-information ... NOTE
-Malformed Description field: should contain one or more complete sentences.
-```
-```
-DONE
-Status: 1 NOTE
-```
+__OK__
 
 ## RItools (0.1-12)
 Maintainer: Jake Bowers <jwbowers@illinois.edu>
@@ -6600,7 +6441,7 @@ DONE
 Status: 2 ERRORs, 1 NOTE
 ```
 
-## rmarkdown (0.5.1)
+## rmarkdown (0.6.1)
 Maintainer: JJ Allaire <jj@rstudio.com>
 
 __OK__
@@ -6718,9 +6559,9 @@ checking package dependencies ... NOTE
 Packages suggested but not available for checking: ‘onion’ ‘orientlib’
 ```
 ```
-checking whether package ‘rotations’ can be installed ... [36s/37s] ERROR
+checking whether package ‘rotations’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpTT9PaY/check_cranff22babc319/rotations.Rcheck/00install.out’ for details.
+See ‘/private/tmp/RtmpQJiDLv/check_crand2516b207784/rotations.Rcheck/00install.out’ for details.
 Status: 1 ERROR, 1 NOTE
 ```
 
@@ -6762,9 +6603,9 @@ Status: 3 NOTEs
 Maintainer: Joshua Pritikin <jpritikin@pobox.com>
 
 ```
-checking whether package ‘rpf’ can be installed ... [13s/13s] ERROR
+checking whether package ‘rpf’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpTT9PaY/check_cranff22babc319/rpf.Rcheck/00install.out’ for details.
+See ‘/private/tmp/RtmpQJiDLv/check_crand2516b207784/rpf.Rcheck/00install.out’ for details.
 Status: 1 ERROR
 ```
 
@@ -6811,7 +6652,7 @@ Maintainer: Graeme Blair <graeme.blair@columbia.edu>
 ```
 checking whether package ‘rr’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpTT9PaY/check_cranff22babc319/rr.Rcheck/00install.out’ for details.
+See ‘/private/tmp/RtmpQJiDLv/check_crand2516b207784/rr.Rcheck/00install.out’ for details.
 Status: 1 ERROR
 ```
 
@@ -6940,7 +6781,7 @@ Maintainer: Anton Korobeynikov <anton@korobeynikov.info>
 ```
 checking whether package ‘Rssa’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpTT9PaY/check_cranff22babc319/Rssa.Rcheck/00install.out’ for details.
+See ‘/private/tmp/RtmpQJiDLv/check_crand2516b207784/Rssa.Rcheck/00install.out’ for details.
 Status: 1 ERROR
 ```
 
@@ -7104,13 +6945,13 @@ Maintainer: Paul Staab <develop@paulstaab.de>
 
 __OK__
 
-## sdcTable (0.18.0)
+## sdcTable (0.18.1)
 Maintainer: Bernhard Meindl <bernhard.meindl@statistik.gv.at>
 
 ```
 checking whether package ‘sdcTable’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpTT9PaY/check_cranff22babc319/sdcTable.Rcheck/00install.out’ for details.
+See ‘/private/tmp/RtmpQJiDLv/check_crand2516b207784/sdcTable.Rcheck/00install.out’ for details.
 Status: 1 ERROR
 ```
 
@@ -7133,28 +6974,7 @@ Status: 1 WARNING
 Maintainer: Christopher Brown <chris.brown@decisionpatterns.com>  
 Bug reports: https://github.com/decisionpatterns/searchable/issues
 
-```
-checking tests ... ERROR
-Running the tests in ‘tests/testthat.R’ failed.
-Last 13 lines of output:
-  > test_check("searchable")
-  
-  Attaching package: 'magrittr'
-  
-  The following objects are masked from 'package:testthat':
-  
-      equals, is_less_than, not
-  
-  testthat results ================================================================
-  OK: 25 SKIPPED: 0 FAILED: 0
-  Error in !df$error : invalid argument type
-  Calls: test_check -> run_tests -> all_passed
-  Execution halted
-```
-```
-DONE
-Status: 1 ERROR
-```
+__OK__
 
 ## segmag (1.2.2)
 Maintainer: Frank Papenmeier <frank.papenmeier@uni-tuebingen.de>
@@ -7172,17 +6992,10 @@ Maintainer: Rune Haubo Bojesen Christensen <rhbc@dtu.dk>
 
 __OK__
 
-## seqminer (3.4)
+## seqminer (3.9)
 Maintainer: Xiaowei Zhan <zhanxw@gmail.com>
 
-```
-checking DESCRIPTION meta-information ... NOTE
-Malformed Description field: should contain one or more complete sentences.
-```
-```
-DONE
-Status: 1 NOTE
-```
+__OK__
 
 ## sequences (0.5.9)
 Maintainer: Laurent Gatto <lg390@cam.ac.uk>
@@ -7195,7 +7008,7 @@ Maintainer: Michael Hahsler <mhahsler@lyle.smu.edu>
 ```
 checking whether package ‘seriation’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpTT9PaY/check_cranff22babc319/seriation.Rcheck/00install.out’ for details.
+See ‘/private/tmp/RtmpQJiDLv/check_crand2516b207784/seriation.Rcheck/00install.out’ for details.
 Status: 1 ERROR
 ```
 
@@ -7215,7 +7028,7 @@ Bug reports: https://github.com/shabbychef/SharpeR/issues
 
 __OK__
 
-## shiny (0.11.1)
+## shiny (0.12.0)
 Maintainer: Winston Chang <winston@rstudio.com>  
 Bug reports: https://github.com/rstudio/shiny/issues
 
@@ -7224,12 +7037,18 @@ checking package dependencies ... NOTE
 Package suggested but not available for checking: ‘Cairo’
 ```
 ```
+checking installed package size ... NOTE
+  installed size is  5.0Mb
+  sub-directories of 1Mb or more:
+    www   4.1Mb
+```
+```
 checking Rd cross-references ... NOTE
 Package unavailable to check Rd xrefs: ‘Cairo’
 ```
 ```
 DONE
-Status: 2 NOTEs
+Status: 3 NOTEs
 ```
 
 ## shinyAce (0.1.0)
@@ -7266,12 +7085,6 @@ ss.rr: no visible binding for global variable ‘ss.data.rr’
 DONE
 Status: 1 NOTE
 ```
-
-## sjmisc (1.0.1)
-Maintainer: Daniel Lüdecke <d.luedecke@uke.de>  
-Bug reports: https://github.com/sjPlot/sjmisc/issues
-
-__OK__
 
 ## sjPlot (1.8)
 Maintainer: Daniel Lüdecke <d.luedecke@uke.de>  
@@ -7404,6 +7217,12 @@ Malformed Description field: should contain one or more complete sentences.
 DONE
 Status: 1 NOTE
 ```
+
+## smoof (1.0)
+Maintainer: Jakob Bossek <j.bossek@gmail.com>  
+Bug reports: https://github.com/jakobbossek/smoof/issues
+
+__OK__
 
 ## solr (0.1.4)
 Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>  
@@ -7738,14 +7557,12 @@ Maintainer: Oskar Hansson <oskar.hansson@fhi.no>
 Bug reports: https://github.com/OskarHansson/strvalidator/issues
 
 ```
-checking package dependencies ... ERROR
-Packages required but not available: ‘gWidgetsRGtk2’ ‘RGtk2’
-
+checking package dependencies ... NOTE
 Package suggested but not available for checking: ‘ResourceSelection’
-
-See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
-manual.
-Status: 1 ERROR
+```
+```
+DONE
+Status: 1 NOTE
 ```
 
 ## surveillance (1.8-3)
@@ -7758,12 +7575,8 @@ Packages suggested but not available for checking:
   ‘spc’ ‘gamlss’ ‘INLA’ ‘runjags’
 ```
 ```
-checking Rd cross-references ... NOTE
-Package unavailable to check Rd xrefs: ‘VGAM’
-```
-```
 DONE
-Status: 2 NOTEs
+Status: 1 NOTE
 ```
 
 ## svyPVpack (0.1-1)
@@ -7803,9 +7616,9 @@ Last 13 lines of output:
   
   testthat results ================================================================
   OK: 199 SKIPPED: 0 FAILED: 3
-  1. Failure (@test-gibbs_kcycle.R#24): All probabilities equal, lambdas equal to 1 
-  2. Failure (@test-gibbs_kcycle.R#24): All probabilities equal, lambdas equal to 1 
-  3. Failure (@test-gibbs_kcycle.R#24): All probabilities and lambdas equal 
+  1. Failure (at test-gibbs_kcycle.R#24): All probabilities equal, lambdas equal to 1 
+  2. Failure (at test-gibbs_kcycle.R#24): All probabilities equal, lambdas equal to 1 
+  3. Failure (at test-gibbs_kcycle.R#24): All probabilities and lambdas equal 
   
   Error: testthat unit tests failed
   Execution halted
@@ -7936,7 +7749,7 @@ DONE
 Status: 2 NOTEs
 ```
 
-## tm.plugin.webmining (1.2.2)
+## tm.plugin.webmining (1.3)
 Maintainer: Mario Annau <mario.annau@gmail.com>  
 Bug reports: https://github.com/mannau/tm.plugin.webmining/issues
 
@@ -8009,9 +7822,9 @@ checking package dependencies ... NOTE
 Package suggested but not available for checking: ‘dplR’
 ```
 ```
-checking whether package ‘treeclim’ can be installed ... [31s/31s] ERROR
+checking whether package ‘treeclim’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpTT9PaY/check_cranff22babc319/treeclim.Rcheck/00install.out’ for details.
+See ‘/private/tmp/RtmpQJiDLv/check_crand2516b207784/treeclim.Rcheck/00install.out’ for details.
 Status: 1 ERROR, 1 NOTE
 ```
 
@@ -8020,31 +7833,11 @@ Maintainer: Michael Braun <braunm@smu.edu>
 
 __OK__
 
-## TSP (1.1-0)
-Maintainer: Michael Hahsler <mhahsler@lyle.smu.edu>
+## TSP (1.1-1)
+Maintainer: Michael Hahsler <mhahsler@lyle.smu.edu>  
+Bug reports: http://r-forge.r-project.org/projects/tsp/
 
-```
-checking tests ... ERROR
-Running the tests in ‘tests/testthat.R’ failed.
-Last 13 lines of output:
-  Type 'contributors()' for more information and
-  'citation()' on how to cite R or R packages in publications.
-  
-  Type 'demo()' for some demos, 'help()' for on-line help, or
-  'help.start()' for an HTML browser interface to help.
-  Type 'q()' to quit R.
-  
-  > library("testthat")
-  > test_package("TSP")
-  Error in test_dir(test_path, reporter = reporter, env = env, filter = filter,  : 
-    No matching test file in dir
-  Calls: test_package -> run_tests -> with_top_env -> test_dir
-  Execution halted
-```
-```
-DONE
-Status: 1 ERROR
-```
+__OK__
 
 ## tspmeta (1.1)
 Maintainer: Bernd Bischl <bernd_bischl@gmx.net>  
@@ -8265,8 +8058,8 @@ manual.
 Status: 1 ERROR
 ```
 
-## WikipediR (1.1.0)
-Maintainer: Oliver Keyes <okeyes@wikimedia.org>  
+## WikipediR (1.2.0)
+Maintainer: Oliver Keyes <ironholds@gmail.com>  
 Bug reports: https://github.com/Ironholds/WikipediR/issues
 
 __OK__
