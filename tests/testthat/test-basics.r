@@ -22,10 +22,3 @@ test_that("can't access variables from other tests 2", {
 test_that("can't access variables from other tests 1", {
   expect_that(exists("a"), is_false())
 })
-
-## does not actually test this, but can see result with jUnit
-test_that("info argument distinguishes cases in a loop", {
-  for (var in c("aaa", "bbb")) {
-    expect_that(toupper(var), matches("[AB]"), info = var)
-  }
-})
