@@ -67,13 +67,13 @@ JUnitReporter <- setRefClass("JUnitReporter", contains = "Reporter",
 
     add_result = function(result) {
       if (result$passed) {
-        cat(colourise(".", fg = "light green"), file = stderr())
+        cat(colourise(".", as = "passed"), file = stderr())
       } else {
         failed <<- TRUE
         if (result$error) {
-          cat(colourise("F", fg = "red"), file = stderr())
+          cat(colourise("F", as = "error"), file = stderr())
         } else {
-          cat(colourise("E", fg = "red"), file = stderr())
+          cat(colourise("E", as = "error"), file = stderr())
         }
       }
       result$time <- round((proc.time() - timer)[["elapsed"]], 2)
