@@ -28,6 +28,7 @@ NULL
 #' error stream during execution.
 #'
 #' @export
+#' @export JUnitReporter
 #' @exportClass JUnitReporter
 #' @aliases JUnitReporter-class
 #' @examples
