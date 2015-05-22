@@ -106,10 +106,10 @@ JUnitReporter <- setRefClass("JUnitReporter", contains = "Reporter",
           failnode <- NULL
           if (!result$passed) {
             failnode <-
-              xmlNode("failure", result$failure_msg, attrs = c(type = ifelse(result$error, "error", "failure")),
-                      )
-#               xmlNodeOK("failure", text=result$failure_msg,
-#                         .children = list(xmlTextNode(result$message)))
+              xmlNodeOK("failure", attrs =
+                        c(type = ifelse(result$error, "error", "failure"),
+                          message = gsub("\n.*", "", result$message)),
+                        .children = list(xmlTextNode(result$message)))
           }
           xmlNodeOK("testcase", attrs =
                     c(classname = paste(classnameOK(context),
