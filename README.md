@@ -16,7 +16,7 @@ Testing your code is normally painful and boring. `testthat` tries to make testi
 * Displays test progress visually, showing a pass, fail or error for every
   expectation. If you're using the terminal, it'll even colour the output.
 
-`testthat` draws inspiration from the xUnit family of testing packages, as well from many of the innovative ruby testing libraries, like [rspec](https://rspec.info/), [testy](https://github.com/ahoward/testy), [bacon](https://github.com/chneukirchen/bacon) and [cucumber](https://cucumber.io). I have used what I think works for R, and abandoned what doesn't, creating a testing environment that is philosophically centred in R.
+`testthat` draws inspiration from the xUnit family of testing packages, as well from many of the innovative ruby testing libraries, like [rspec](http://rspec.info/), [testy](https://github.com/ahoward/testy), [bacon](https://github.com/chneukirchen/bacon) and [cucumber](https://cucumber.io). I have used what I think works for R, and abandoned what doesn't, creating a testing environment that is philosophically centred in R.
 
 Instructions for using this package can be found in the [Testing](http://r-pkgs.had.co.nz/tests.html) chapter of my forthcoming book [R packages](http://r-pkgs.had.co.nz/).
 
