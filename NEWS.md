@@ -1,4 +1,4 @@
-# testthat 0.9.1.9000
+# testthat 0.10.0
 
 * Failure locations are now formated as R error locations.
 
