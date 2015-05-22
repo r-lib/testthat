@@ -31,10 +31,6 @@ NULL
 #' @export JUnitReporter
 #' @exportClass JUnitReporter
 #' @aliases JUnitReporter-class
-#' @examples
-#' if (require("XML")) {
-#'   test_package("testthat", reporter = JUnitReporter$new(file = "testjunit.xml"))
-#' }
 #' @keywords debugging
 JUnitReporter <- setRefClass("JUnitReporter", contains = "Reporter",
   fields = list(
