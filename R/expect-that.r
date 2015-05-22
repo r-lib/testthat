@@ -34,7 +34,6 @@ expect_that <- function(object, condition, info = NULL, label = NULL) {
     results$success_msg <- paste0(results$success_msg, "\n", info)
   }
 
-  results$call <- paste(deparse(call, width.cutoff = 500), collapse = "")
   get_reporter()$add_result(results)
   invisible(results)
 }
