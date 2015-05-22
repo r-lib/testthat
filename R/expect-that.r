@@ -33,13 +33,8 @@ expect_that <- function(object, condition, info = NULL, label = NULL) {
     results$failure_msg <- paste0(results$failure_msg, "\n", info)
     results$success_msg <- paste0(results$success_msg, "\n", info)
   }
-  call <- sys.call()
-  call$info <- info
-  if (!is.null(call$label)) {
-      call$label <- label
-  }
+
   results$call <- paste(deparse(call, width.cutoff = 500), collapse = "")
-  
   get_reporter()$add_result(results)
   invisible(results)
 }

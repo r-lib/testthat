@@ -105,16 +105,22 @@ JUnitReporter <- setRefClass("JUnitReporter", contains = "Reporter",
         testcases <- lapply(x, function(result) {
           failnode <- NULL
           if (!result$passed) {
+            ref <- result$srcref
+            if ( is.null(ref) ) {
+              location <- ''
+            } else {
+              location <- paste0('(@', attr(ref, 'srcfile')$filename, '#', ref[1], ')')
+            }
             failnode <-
-              xmlNodeOK("failure", attrs =
-                        c(type = ifelse(result$error, "error", "failure"),
-                          message = result$message),
-                        .children = list(xmlTextNode(result)))
+                xmlNodeOK("failure", attrs =
+                          c(type = ifelse(result$error, "error", "failure"),
+                            message = location),
+                          .children = list(xmlTextNode(result)))
           }
           xmlNodeOK("testcase", attrs =
                     c(classname = paste(classnameOK(context),
                           classnameOK(result$test), sep = "."),
-                      name = result$call,
+                      name = result$success_msg,
                       time = result$time,
                       message = result$success_msg),
                     .children = if (!result$passed) list(failnode))
