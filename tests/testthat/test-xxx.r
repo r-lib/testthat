@@ -1,5 +1,5 @@
 # Test that test_that succeeds or fails as expected.
-test_test_that <- function(desc, expr, failure_expected = TRUE) {
+test_test_that <- function(desc, expr, failure_expected = TRUE, ...) {
   reporter <- SilentReporter$new()
   old_reporter <- set_reporter(reporter)
   test_that(desc, expr)
@@ -14,7 +14,7 @@ test_test_that <- function(desc, expr, failure_expected = TRUE) {
           as.character(reporter$failures[[desc]]))
       expect_equal(length(reporter$failures), 0, info = info)
     }
-  })
+  }, ...)
 }
 
 context("Testing test_that")
@@ -53,9 +53,21 @@ test_test_that("random errors are caught", {
 
 f <- function() g()
 g <- function() stop("I made a mistake", call. = FALSE)
+h <- function() warning("Warning!")
+i <- function() message("Message!")
 
 test_test_that("errors are captured", {
   f()
+})
+
+test_that("warnings are not captured if not suppressed", {
+  expect_warning(test_test_that("", { h() }, failure_expected = FALSE, suppress = "message"))
+})
+test_that("messages are not captured if not suppressed", {
+  expect_message(test_test_that("", { i() }, failure_expected = FALSE, suppress = "warning"))
+})
+test_that("warnings and messages suppressed by default", {
+  expect_null(test_test_that("", { h(); i() }, failure_expected = FALSE))
 })
 
 test_test_that("errors when looking for warnings propagte", {

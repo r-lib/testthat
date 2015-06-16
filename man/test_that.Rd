@@ -4,13 +4,15 @@
 \alias{test_that}
 \title{Create a test.}
 \usage{
-test_that(desc, code)
+test_that(desc, code, suppress = c("messages", "warnings"))
 }
 \arguments{
 \item{desc}{test name.  Names should be kept as brief as possible, as they
 are often used as line prefixes.}
 
 \item{code}{test code containing expectations}
+
+\item{suppress}{which conditions to suppress}
 }
 \description{
 A test encapsulates a series of expectations about small, self-contained
@@ -36,5 +38,14 @@ test_that("trigonometric functions match identities", {
   expect_that(sin(pi / 4), equals(1))
 })
 }
+# Turning off suppression of warnings
+test_that("This warning is not suppressed", {
+  warning("test")
+}, suppress = "messages")
+# Turn off all suppression
+test_that("This warning and message are not suppressed", {
+  warning("a warning!")
+  message("a message!")
+}, suppress = NULL)
 }
 

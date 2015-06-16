@@ -1,5 +1,8 @@
 # testthat 0.10.0.9000
 
+* `test_that()` gains a `suppress` option to turn off automatic suppression of
+  warnings and errors. (@jimhester #269, @kforner #244)
+
 # testthat 0.10.0
 
 * Failure locations are now formated as R error locations.
