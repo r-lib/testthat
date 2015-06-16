@@ -36,7 +36,7 @@
 #'   warning("a warning!")
 #'   message("a message!")
 #' }, suppress = NULL)
-test_that <- function(desc, code, suppress = c("messages", "warnings")) {
+test_that <- function(desc, code, suppress = getOption("testthat.suppress", c("messages", "warnings"))) {
 
   suppress <- match.arg(suppress, c("messages", "warnings"), several.ok = TRUE)
 

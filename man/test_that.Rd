@@ -4,7 +4,8 @@
 \alias{test_that}
 \title{Create a test.}
 \usage{
-test_that(desc, code, suppress = c("messages", "warnings"))
+test_that(desc, code, suppress = getOption("testthat.suppress", c("messages",
+  "warnings")))
 }
 \arguments{
 \item{desc}{test name.  Names should be kept as brief as possible, as they
