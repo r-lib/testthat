@@ -32,3 +32,10 @@ test_that("computes correct number of mismatches", {
 test_that("comparing character and non-character fails back to all.equal", {
   expect_match(compare("abc", 1)$message, "target is character")
 })
+
+test_that("comparing character vectors doesn't give a bunch of NAs", {
+    x <- letters[1:5]
+    y <- c("a", "b", "x", "d", "e")
+    expect_equal(compare(x,y)$message,
+                 "1 string mismatches:\nx[3]: \"c\"\ny[3]: \"x\"")
+})
