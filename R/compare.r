@@ -83,14 +83,15 @@ compare.character <- function(x, y, ..., max_diffs = 5, max_lines = 5,
   # If vectorwise-equal, fallback to default method
   diff <- xor(is.na(x), is.na(y)) | x != y
   diff[is.na(diff)] <- FALSE
+  which_diff <- which(diff)
 
-  if (!any(diff)) {
+  if (length(which_diff) == 0L) {
     return(NextMethod())
   }
 
   width <- width - 6 # allocate space for labels
-  n_show <- seq_len(min(length(diff), max_diffs))
-  show <- which(diff)[n_show]
+  n_show <- seq_len(min(length(which_diff), max_diffs))
+  show <- which_diff[n_show]
 
   encode <- function(x) encodeString(x, quote = '"')
   show_x <- str_trunc(encode(x[show]), width * max_lines)

@@ -32,3 +32,11 @@ test_that("computes correct number of mismatches", {
 test_that("comparing character and non-character fails back to all.equal", {
   expect_match(compare("abc", 1)$message, "target is character")
 })
+
+test_that("comparing long character vectors with few differences", {
+  cmp <- compare(letters, c(letters[-26], "a"))
+  expect_match(
+    cmp$message,
+    paste("^", " string mismatch", "\\nx", "\\ny", "$",
+          sep = "[^\\n]*"))
+})
