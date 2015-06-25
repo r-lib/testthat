@@ -40,3 +40,17 @@ test_that("comparing long character vectors with few differences", {
     paste("^", " string mismatch", "\\nx", "\\ny", "$",
           sep = "[^\\n]*"))
 })
+
+test_that("comparing character vectors of different length", {
+  cmp <- compare(letters, letters[-26])
+  expect_match(
+    cmp$message,
+    paste("^", "Lengths ", " differ\\n", " string mismatch", "\\nx", "$",
+          sep = "[^\\n]*"))
+
+  cmp <- compare(letters[-25:-26], letters)
+  expect_match(
+    cmp$message,
+    paste("^", "Lengths ", " differ\\n", " string mismatch", "\\ny", "\\n", "\\ny", "$",
+          sep = "[^\\n]*"))
+})

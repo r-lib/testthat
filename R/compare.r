@@ -98,14 +98,9 @@ compare.character <- function(x, y, ..., max_diffs = 5, max_lines = 5,
   show_y <- str_trunc(encode(y[show]), width * max_lines)
 
   sidebyside <- Map(function(x, y, pos) {
-    x <- paste0("x[", pos, "]: ", str_chunk(x, width))
-    y <- paste0("y[", pos, "]: ", str_chunk(y, width))
-
-    n <- max(length(x), length(y))
-    length(x) <- n
-    length(y) <- n
-
-    paste0(x, "\n", y, collapse = "\n\n")
+    x <- if (pos <= lx) paste0("x[", pos, "]: ", str_chunk(x, width))
+    y <- if (pos <= ly) paste0("y[", pos, "]: ", str_chunk(y, width))
+    paste(c(x, y), collapse = "\n")
   }, show_x, show_y, show)
 
   msg <- paste0(length_diff,
