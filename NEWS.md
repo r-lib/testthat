@@ -7,6 +7,12 @@
 * Added `skip_on_os()`, to skip tests on specified operating systems
   (@kevinushey).
 
+* `compare()` shows detailed output of differences for character vectors of
+  different length (#274, @krlmlr).
+
+* Detailed output from `expect_equal()` doesn't confuse expected and actual
+  values anymore (#274, @krlmlr).
+
 # testthat 0.10.0
 
 * Failure locations are now formated as R error locations.
