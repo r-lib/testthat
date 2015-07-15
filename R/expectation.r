@@ -76,7 +76,7 @@ format.expectation <- function(x, ...) {
   if (x$passed) {
     paste0("As expected: ", x$success_msg)
   } else {
-    paste0("Not expected: ", x$failure_msg, ".")
+    paste0("Not expected: ", paste(x$failure_msg, collapse = ".\nAlso (same expectation): "), ".")
   }
 }
 
