@@ -1,7 +1,10 @@
 # testthat
 
-[![Travis-CI Build Status](https://travis-ci.org/hadley/testthat.png?branch=master)](https://travis-ci.org/hadley/testthat) [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/hadley/testthat?branch=master)](https://ci.appveyor.com/project/hadley/testthat)
+[![Travis-CI Build Status](https://travis-ci.org/hadley/testthat.svg?branch=master)](https://travis-ci.org/hadley/testthat)
+[![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/hadley/testthat?branch=master&svg=true)](https://ci.appveyor.com/project/hadley/testthat)
 [![Coverage Status](https://img.shields.io/coveralls/hadley/testthat.svg)](https://coveralls.io/r/hadley/testthat?branch=master)
+[![CRAN RStudio mirror downloads](http://cranlogs.r-pkg.org/badges/testthat)](http://cran.r-project.org/web/packages/testthat/index.html)
+[![CRAN version](http://www.r-pkg.org/badges/version/testthat)](http://cran.r-project.org/web/packages/testthat/index.html)
 
 Testing your code is normally painful and boring. `testthat` tries to make testing as fun as possible, so that you get a visceral satisfaction from writing tests. Testing should be fun, not a drag, so you do it all the time. To make that happen, `testthat`:
 
