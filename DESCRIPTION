@@ -12,6 +12,7 @@ BugReports: https://github.com/hadley/testthat/issues
 Depends:
     R (>= 3.1.0),
     methods
+    RSQLite
 Imports:
     digest,
     crayon
