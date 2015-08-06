@@ -129,3 +129,16 @@ test_that("expected_named optionally ignores case", {
 test_that("expected_named optionally ignores order", {
   expect_named(c(a = 1, b = 2), c("b", "a"), ignore.order = TRUE)
 })
+
+
+test_that("expect_contained succeeds as expected", {
+  result <- expect_contained(c(1,2), c(1,2,3))
+
+  expect_that(res$passed, is_true())
+})
+
+test_that("expect_contained failes as expected", {
+  result <- expect_contained(c(1,4), c(1,2,3))
+
+  expect_that(res$passed, is_false())
+})
