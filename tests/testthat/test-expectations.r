@@ -131,14 +131,14 @@ test_that("expected_named optionally ignores order", {
 })
 
 
-test_that("expect_contained succeeds as expected", {
-  result <- expect_contained(c(1,2), c(1,2,3))
+test_that("is_contained_in succeeds as expected", {
+  res <- is_contained_in(c(1,2,3))(c(1,2))
 
   expect_that(res$passed, is_true())
 })
 
-test_that("expect_contained failes as expected", {
-  result <- expect_contained(c(1,4), c(1,2,3))
+test_that("is_contained_in failes as expected", {
+  res <- is_contained_in(c(1,2,3))(c(1,4))
 
   expect_that(res$passed, is_false())
 })
