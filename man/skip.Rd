@@ -4,6 +4,7 @@
 \alias{skip}
 \alias{skip_if_not_installed}
 \alias{skip_on_cran}
+\alias{skip_on_os}
 \alias{skip_on_travis}
 \title{Skip a test.}
 \usage{
@@ -13,12 +14,17 @@ skip_if_not_installed(pkg)
 
 skip_on_cran()
 
+skip_on_os(os)
+
 skip_on_travis()
 }
 \arguments{
 \item{message}{A message describing why the test was skipped.}
 
 \item{pkg}{Name of package to check for}
+
+\item{os}{Character vector of system names. Supported values are
+\code{"windows"}, \code{"mac"}, \code{"linux"} and \code{"solaris"}.}
 }
 \description{
 This function allows you to skip a test if it's not currently available.

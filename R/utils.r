@@ -65,6 +65,27 @@ skip_on_cran <- function() {
 }
 
 #' @export
+#' @param os Character vector of system names. Supported values are
+#'   \code{"windows"}, \code{"mac"}, \code{"linux"} and \code{"solaris"}.
+#' @rdname skip
+skip_on_os <- function(os) {
+
+  sysname <- tolower(Sys.info()[["sysname"]])
+  systems <- tolower(os)
+
+  if (sysname == "windows" && "windows" %in% systems)
+    skip("On Windows")
+  else if (sysname == "darwin" && "mac" %in% systems)
+    skip("On Mac")
+  else if (sysname == "linux" && "linux" %in% systems)
+    skip("On Linux")
+  else if (sysname == "sunos" && "solaris" %in% systems)
+    skip("On Solaris")
+
+  invisible(TRUE)
+}
+
+#' @export
 #' @rdname skip
 skip_on_travis <- function() {
   if (!identical(Sys.getenv("TRAVIS"), "true")) return(invisible(TRUE))
