@@ -1,6 +1,6 @@
 #' Test package examples
 #'
-#' These helper functions make it easier to test the examples in a pakcage.
+#' These helper functions make it easier to test the examples in a package.
 #' Each example counts as one test, and it succeeds if the code runs without
 #' an error.
 #'
