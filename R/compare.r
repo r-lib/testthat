@@ -11,6 +11,9 @@ compare <- function(x, y, ...) {
 }
 
 comparison <- function(equal = TRUE, message = "Equal") {
+  stopifnot(is.logical(equal), length(equal) == 1)
+  stopifnot(is.character(message), length(message) == 1)
+
   structure(
     list(
       equal = equal,
@@ -136,6 +139,7 @@ compare.numeric <- function(x, y, max_diffs = 10, ...) {
   if (isTRUE(equal)) return(comparison())
 
   # If they're not the same type or length, fallback to default method
+  equal <- paste0(equal, collapse = "\n")
   if (!is.integer(x) && !is.numeric(y)) return(comparison(FALSE, equal))
   if (length(x) != length(y)) return(comparison(FALSE, equal))
 
