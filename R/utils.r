@@ -51,7 +51,7 @@ skip <- function(message) {
 #' @param pkg Name of package to check for
 #' @rdname skip
 skip_if_not_installed <- function(pkg) {
-  if (requireNamespace(pkg, quietly = TRUE)) return()
+  if (requireNamespace(pkg, quietly = TRUE)) return(invisible(TRUE))
 
   skip(paste0(pkg, " not installed"))
 }
@@ -59,7 +59,7 @@ skip_if_not_installed <- function(pkg) {
 #' @export
 #' @rdname skip
 skip_on_cran <- function() {
-  if (identical(Sys.getenv("NOT_CRAN"), "true")) return()
+  if (identical(Sys.getenv("NOT_CRAN"), "true")) return(invisible(TRUE))
 
   skip("On CRAN")
 }
@@ -67,7 +67,7 @@ skip_on_cran <- function() {
 #' @export
 #' @rdname skip
 skip_on_travis <- function() {
-  if (!identical(Sys.getenv("TRAVIS"), "true")) return()
+  if (!identical(Sys.getenv("TRAVIS"), "true")) return(invisible(TRUE))
 
   skip("On Travis")
 }
