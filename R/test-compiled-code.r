@@ -70,7 +70,7 @@ test_compiled_code <- function(package, test_path, filter, verbose = FALSE) {
   # 'src/' directory.
   pkg_path <- get_pkg_path(test_path)
 
-  makevars_path <- if (Sys.info()[["sysname"]] == "windows")
+  makevars_path <- if (Sys.info()[["sysname"]] == "Windows")
     file.path(pkg_path, "src", "Makevars.win")
   else
     file.path(pkg_path, "src", "Makevars")
