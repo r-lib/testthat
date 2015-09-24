@@ -29,15 +29,18 @@ StopReporter <- setRefClass("StopReporter", contains = "Reporter",
     },
 
     end_test = function() {
+      failures_h <- failures
+      failures <<- list()
+
       cur_test <- test
       test <<- NULL
-      if (length(failures) == 0) return()
+      if (length(failures_h) == 0) return()
 
-      messages <- vapply(failures, as.character, character(1))
+
+      messages <- vapply(failures_h, as.character, character(1))
       if (length(messages) > 1) {
         messages <- paste0("* ", messages, collapse = "\n")
       }
-      failures <<- list()
 
       msg <- paste0("Test failed: '", cur_test, "'\n", messages)
       stop(msg, call. = FALSE)
