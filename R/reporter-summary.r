@@ -101,6 +101,9 @@ SummaryReporter <- setRefClass("SummaryReporter", contains = "Reporter",
   ":)",
   "Woot!",
   "Way to go!",
+  "Hadley has nothing on you!",
+  "Your code is a wonderland",
+  "Good Job! You've made the RCats purr",
   "Nice code."
 )
 labels <- c(1:9, letters, LETTERS)
