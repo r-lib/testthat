@@ -4,7 +4,8 @@
   length. This bugs a bug where tests failed with an error like "values must be 
   length 1, but FUN(X[[1]]) result is length 2" (#279).
 
-* Added `skip_on_windows()` (@kevinushey)
+* Added `skip_on_os()`, to skip tests on certain operating systems
+  (@kevinushey).
 
 # testthat 0.10.0
 
