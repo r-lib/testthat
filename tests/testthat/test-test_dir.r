@@ -23,7 +23,8 @@ test_that('test_dir()', {
         "no failure", "helper test"),
       nb = c(2L, 2L, 2L, 0L, 1L, 0L, 0L, 0L, 1L, 1L, 0L, 1L, 1L, 2L, 2L, 1L),
       failed = c(0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 1L, 0L, 0L, 1L, 1L, 0L, 0L),
-      skipped = c(0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L),
+      skipped = c(FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE,
+        FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE),
       error = c(FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, TRUE, TRUE, TRUE, TRUE,
         TRUE, FALSE, FALSE, FALSE, FALSE, FALSE),
       stringsAsFactors = FALSE)
