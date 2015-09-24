@@ -13,6 +13,7 @@
 #' @param desc test name.  Names should be kept as brief as possible, as they
 #'   are often used as line prefixes.
 #' @param code test code containing expectations
+#' @param suppress which conditions to suppress
 #' @export
 #' @examples
 #' test_that("trigonometric functions match identities", {
@@ -26,8 +27,20 @@
 #'   expect_equal(sin(pi / 4), 1)
 #' })
 #' }
-test_that <- function(desc, code) {
-  test_code(desc, substitute(code), env = parent.frame())
+#' # Turning off suppression of warnings
+#' test_that("This warning is not suppressed", {
+#'   warning("test")
+#' }, suppress = "messages")
+#' # Turn off all suppression
+#' test_that("This warning and message are not suppressed", {
+#'   warning("a warning!")
+#'   message("a message!")
+#' }, suppress = NULL)
+test_that <- function(desc, code, suppress = getOption("testthat.suppress", c("messages", "warnings"))) {
+
+  suppress <- match.arg(suppress, c("messages", "warnings"), several.ok = TRUE)
+
+  test_code(desc, substitute(code), env = parent.frame(), suppress = suppress)
   invisible()
 }
 
@@ -39,7 +52,8 @@ test_that <- function(desc, code) {
 # @param code the code to be tested, needs to be an unevaluated expression
 #   i.e. wrap it in substitute()
 # @param env the parent environment of the environment the test code runs in
-test_code <- function(description, code, env) {
+# @param suppress which conditions to suppress
+test_code <- function(description, code, env, suppress) {
   new_test_environment <- new.env(parent = env)
   get_reporter()$start_test(description)
   on.exit(get_reporter()$end_test())
@@ -58,8 +72,8 @@ test_code <- function(description, code, env) {
     withCallingHandlers(
       eval(code, new_test_environment),
       error = capture_calls,
-      message = function(c) invokeRestart("muffleMessage"),
-      warning = function(c) invokeRestart("muffleWarning")
+      message = function(c) if ("message" %in% suppress) invokeRestart("muffleMessage") else c,
+      warning = function(c) if ("warning" %in% suppress) invokeRestart("muffleWarning") else c
     ),
     error = function(e) {
       ok <- FALSE
