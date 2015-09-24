@@ -15,7 +15,7 @@ For \code{test_example}, path to a single Rd file. Remember the working
 directory for tests is \code{tests/testthat}.}
 }
 \description{
-These helper functions make it easier to test the examples in a pakcage.
+These helper functions make it easier to test the examples in a package.
 Each example counts as one test, and it succeeds if the code runs without
 an error.
 }
