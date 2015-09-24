@@ -86,7 +86,8 @@ test_compiled_code <- function(package, test_path, filter, verbose = FALSE) {
     system.file(package = "testthat", "include")
   )
 
-  testing_define <- paste("-DTESTING", toupper(package), sep = "_")
+  package_upper <- toupper(gsub(".", "_", package, fixed = TRUE))
+  testing_define <- paste("-DTESTING", package_upper, sep = "_")
 
   compilation_cmd <- paste(
     prefix,
