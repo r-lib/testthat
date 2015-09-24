@@ -73,7 +73,10 @@ names(b) <- letters[1:3]
 expect_equivalent(a, b)
 }
 \seealso{
-Other expectations: \code{\link{expect-compare}},
+Other expectations: \code{\link{contained-expectations}},
+  \code{\link{expect_contained}},
+  \code{\link{is_contained_in}};
+  \code{\link{expect-compare}},
   \code{\link{expect_less_than}},
   \code{\link{expect_more_than}};
   \code{\link{expect_equal_to_reference}};

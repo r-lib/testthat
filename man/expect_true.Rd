@@ -43,7 +43,9 @@ expect_equal(length(a), 3)
 \seealso{
 \code{\link{is_false}} for complement
 
-Other expectations: \code{\link{equivalence}},
+Other expectations: \code{\link{contained-expectations}},
+  \code{\link{expect_contained}},
+  \code{\link{is_contained_in}}; \code{\link{equivalence}},
   \code{\link{expect_equal}},
   \code{\link{expect_equivalent}},
   \code{\link{expect_identical}};

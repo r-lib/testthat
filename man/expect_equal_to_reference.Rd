@@ -48,7 +48,9 @@ expect_equal_to_reference(1, "one.rds")
 }
 }
 \seealso{
-Other expectations: \code{\link{equivalence}},
+Other expectations: \code{\link{contained-expectations}},
+  \code{\link{expect_contained}},
+  \code{\link{is_contained_in}}; \code{\link{equivalence}},
   \code{\link{expect_equal}},
   \code{\link{expect_equivalent}},
   \code{\link{expect_identical}};

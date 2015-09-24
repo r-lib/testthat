@@ -92,7 +92,9 @@ expect_error(f(), "My error!")
 expect_error(f(), "my error!", ignore.case = TRUE)
 }
 \seealso{
-Other expectations: \code{\link{equivalence}},
+Other expectations: \code{\link{contained-expectations}},
+  \code{\link{expect_contained}},
+  \code{\link{is_contained_in}}; \code{\link{equivalence}},
   \code{\link{expect_equal}},
   \code{\link{expect_equivalent}},
   \code{\link{expect_identical}};
