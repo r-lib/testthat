@@ -81,8 +81,9 @@ compare.character <- function(x, y, ..., max_diffs = 5, max_lines = 5,
   }
 
   width <- width - 6 # allocate space for labels
-  n_show <- seq_len(min(length(diff), max_diffs))
-  show <- which(diff)[n_show]
+  diff_index <- which(diff)
+  n_show <- seq_len(min(length(diff_index), max_diffs))
+  show <- diff_index[n_show]
 
   encode <- function(x) encodeString(x, quote = '"')
   show_x <- str_trunc(encode(x[show]), width * max_lines)
