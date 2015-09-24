@@ -43,18 +43,20 @@ compilation_prefix <- function(path) {
 test_compiled_code <- function(package, test_path, filter, verbose = FALSE) {
 
   ## Generate a temporary directory wherein compilation will take place.
-  bin_path <- cpp_compilation_tempdir(package)
-  if (file.exists(bin_path))
-    stop("Directory '", bin_path, "' already exists; collision with other running tests?")
+  compilation_path <- cpp_compilation_tempdir(package)
+  if (file.exists(compilation_path))
+    stop("Directory '", compilation_path, "' already exists; collision with other running tests?")
 
-  dir.create(bin_path, recursive = TRUE)
-  on.exit(unlink(bin_path, recursive = TRUE), add = TRUE)
+  dir.create(compilation_path, recursive = TRUE)
+  on.exit(unlink(compilation_path, recursive = TRUE), add = TRUE)
 
-  ## Get paths to all C++ test files.
+  # Move to the temporary compilation path.
+  owd <- getwd()
+  setwd(compilation_path)
+  on.exit(setwd(owd), add = TRUE)
+
   cpp_path <- file.path(test_path, "cpp")
-  test_files <- list.files(cpp_path,
-                           pattern = "^test-",
-                           full.names = TRUE)
+  test_files <- list.files(cpp_path, pattern = "^test-", full.names = TRUE)
 
   # Bail if we have no files to test
   if (!length(test_files))
@@ -63,7 +65,19 @@ test_compiled_code <- function(package, test_path, filter, verbose = FALSE) {
   ## Generate a script that will compile an executable
   ## to run the tests.
 
-  # Get the main.cpp wrapper.
+  # Copy in any Makevars files, if they exist. This allows R CMD SHLIB to
+  # properly use those as it would when compiling 'regular' C++ files in the
+  # 'src/' directory.
+  pkg_path <- get_pkg_path(test_path)
+
+  makevars_path <- if (Sys.info()[["sysname"]] == "windows")
+    file.path(pkg_path, "src", "Makevars.win")
+  else
+    file.path(pkg_path, "src", "Makevars")
+
+  if (file.exists(makevars_path))
+    file.copy(makevars_path, file.path(compilation_path, basename(makevars_path)))
+
   main_cpp <- system.file(package = "testthat", "resources", "main.cpp")
   prefix <- compilation_prefix(main_cpp)
 
@@ -72,12 +86,15 @@ test_compiled_code <- function(package, test_path, filter, verbose = FALSE) {
     system.file(package = "testthat", "include")
   )
 
+  testing_define <- paste("-DTESTING", toupper(package), sep = "_")
+
   compilation_cmd <- paste(
     prefix,
+    testing_define,
     paste("-I", shQuote(testthat_include_path), sep = ""),
     shQuote(test_files),
     shQuote(main_cpp),
-    paste("-o", shQuote(file.path(bin_path, "testthat")))
+    paste("-o", shQuote(file.path(compilation_path, "testthat")))
   )
 
   # Compile the executable
@@ -93,7 +110,7 @@ test_compiled_code <- function(package, test_path, filter, verbose = FALSE) {
 
   # Run the executable
   run_cmd <- paste(
-    shQuote(file.path(bin_path, "testthat")),
+    shQuote(file.path(compilation_path, "testthat")),
     "--reporter",
     "console"
   )
