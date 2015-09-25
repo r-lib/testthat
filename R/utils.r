@@ -69,37 +69,19 @@ skip_on_cran <- function() {
 #'   \code{"windows"}, \code{"mac"}, \code{"linux"} and \code{"solaris"}.
 #' @rdname skip
 skip_on_os <- function(os) {
-
+  os <- match.arg(os, c("windows", "mac", "linux", "solaris"),
+    several.ok = TRUE)
   sysname <- tolower(Sys.info()[["sysname"]])
-  systems <- tolower(os)
 
-  if (sysname == "windows" && "windows" %in% systems)
-    skip("On Windows")
-  else if (sysname == "darwin" && "mac" %in% systems)
-    skip("On Mac")
-  else if (sysname == "linux" && "linux" %in% systems)
-    skip("On Linux")
-  else if (sysname == "sunos" && "solaris" %in% systems)
-    skip("On Solaris")
+  switch(sysname,
+    windows = if ("windows" %in% os) skip("On windows"),
+    darwin =  if ("mac" %in% os) skip("On Mac"),
+    linux =   if ("linux" %in% os) skip("On Linux"),
+    sunos =   if ("solaris" %in% os) skip("On Solaris")
+  )
 
   invisible(TRUE)
 }
-
-#' @export
-#' @rdname skip
-skip_on_windows <- function() skip_on_os("windows")
-
-#' @export
-#' @rdname skip
-skip_on_mac <- function() skip_on_os("mac")
-
-#' @export
-#' @rdname skip
-skip_on_linux <- function() skip_on_os("linux")
-
-#' @export
-#' @rdname skip
-skip_on_solaris <- function() skip_on_os("solaris")
 
 #' @export
 #' @rdname skip
