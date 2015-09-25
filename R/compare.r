@@ -75,9 +75,9 @@ compare.character <- function(x, y, ..., max_diffs = 5, max_lines = 5,
   ly <- length(y)
   if (lx != ly) {
     length(x) <- length(y) <- max(lx, ly)
-    length_diff = sprintf("Lengths (%s, %s) differ\n", lx, ly)
+    length_diff <- sprintf("Lengths (%s, %s) differ\n", lx, ly)
   } else {
-    length_diff = NULL
+    length_diff <- NULL
   }
 
   # If vectorwise-equal, fallback to default method
