@@ -47,7 +47,7 @@ test_that("watcher works correctly", {
   dir.create(test_path)
 
   delayed.bash.cmd <- function(command) {
-    system(paste0("sleep 1;", command), wait=FALSE)
+    system(paste0("bash -c 'sleep 1;", command, "'"), wait=FALSE)
   }
 
   add.code.file <- function(file.name) {
