@@ -87,6 +87,22 @@ skip_on_os <- function(os) {
 
 #' @export
 #' @rdname skip
+skip_on_windows <- function() skip_on_os("windows")
+
+#' @export
+#' @rdname skip
+skip_on_mac <- function() skip_on_os("mac")
+
+#' @export
+#' @rdname skip
+skip_on_linux <- function() skip_on_os("linux")
+
+#' @export
+#' @rdname skip
+skip_on_solaris <- function() skip_on_os("solaris")
+
+#' @export
+#' @rdname skip
 skip_on_travis <- function() {
   if (!identical(Sys.getenv("TRAVIS"), "true")) return(invisible(TRUE))
 

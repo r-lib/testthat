@@ -4,8 +4,12 @@
 \alias{skip}
 \alias{skip_if_not_installed}
 \alias{skip_on_cran}
+\alias{skip_on_linux}
+\alias{skip_on_mac}
 \alias{skip_on_os}
+\alias{skip_on_solaris}
 \alias{skip_on_travis}
+\alias{skip_on_windows}
 \title{Skip a test.}
 \usage{
 skip(message)
@@ -15,6 +19,14 @@ skip_if_not_installed(pkg)
 skip_on_cran()
 
 skip_on_os(os)
+
+skip_on_windows()
+
+skip_on_mac()
+
+skip_on_linux()
+
+skip_on_solaris()
 
 skip_on_travis()
 }
