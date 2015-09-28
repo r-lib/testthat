@@ -172,9 +172,8 @@ sys.source2 <- function(file, envir = parent.frame()) {
 }
 
 get_pkg_path <- function(test_path) {
-  parent_path <- dirname(normalizePath(test_path))
-  while (dirname(parent_path) != parent_path)
-  {
+  parent_path <- dirname(normalizePath(test_path, mustWork = TRUE))
+  while (dirname(parent_path) != parent_path) {
     if (file.exists(file.path(parent_path, "DESCRIPTION")))
       return(parent_path)
     parent_path <- dirname(parent_path)

@@ -3,6 +3,9 @@
 # a particular file, excluding the file itself)
 compilation_prefix <- function(path) {
 
+  if (!file.exists(path))
+    stop("no file at path '", path, "'")
+
   # Figure out the command line invocation flags we want -- parse the results
   # of 'R CMD SHLIB --dry-run'.
   R <- file.path(R.home("bin"), "R")
@@ -20,10 +23,6 @@ compilation_prefix <- function(path) {
 
 test_compiled_code <- function(test_path, filter, verbose = FALSE) {
 
-  # Copy in any Makevars files, if they exist. This allows R CMD SHLIB to
-  # properly use those as it would when compiling 'regular' C++ files in the
-  # 'src/' directory. Will be NULL if the test path exists outside of an R
-  # package.
   pkg_path <- get_pkg_path(test_path)
 
   ## Get test files -- all files with '.cc' or '.cpp' prefix in the
@@ -38,8 +37,6 @@ test_compiled_code <- function(test_path, filter, verbose = FALSE) {
   if (!length(test_files))
     return()
 
-  normalized_files <- normalizePath(test_files, winslash = "/", mustWork = TRUE)
-
   ## Generate a temporary directory wherein compilation will take place.
   compilation_path <- tempfile("testthat-compiled-tests")
 
@@ -48,11 +45,6 @@ test_compiled_code <- function(test_path, filter, verbose = FALSE) {
 
   dir.create(compilation_path, recursive = TRUE)
   on.exit(unlink(compilation_path, recursive = TRUE), add = TRUE)
-
-  # Move to the temporary compilation path.
-  owd <- getwd()
-  setwd(compilation_path)
-  on.exit(setwd(owd), add = TRUE)
 
   ## Copy over the 'src/Makevars' file if it exists (implies we're running package tests)
   makevars_path <- if (Sys.info()[["sysname"]] == "Windows")
@@ -74,7 +66,7 @@ test_compiled_code <- function(test_path, filter, verbose = FALSE) {
   compilation_cmd <- paste(
     prefix,
     paste("-I", shQuote(testthat_include_path), sep = ""),
-    shQuote(normalized_files),
+    shQuote(test_files),
     shQuote(main_cpp),
     paste("-o", shQuote(file.path(compilation_path, "testthat")))
   )

@@ -63,10 +63,7 @@ run_tests <- function(package, test_path, filter, reporter, ...) {
   reporter <- find_reporter(reporter)
   env <- test_pkg_env(package)
   res <- with_top_env(env, {
-    c(
-      test_dir(test_path, reporter = reporter, env = env, filter = filter, ...),
-      test_compiled_code(test_path = test_path, filter = filter, ...)
-    )
+    test_dir(test_path, reporter = reporter, env = env, filter = filter, ...)
   })
 
   if (!all_passed(res)) {
