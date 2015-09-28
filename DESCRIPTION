@@ -16,7 +16,8 @@ Imports:
     digest,
     crayon
 Suggests:
-    devtools
+    devtools,
+    xml2
 License: MIT + file LICENSE
 Collate:
     'auto-test.r'

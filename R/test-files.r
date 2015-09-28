@@ -38,7 +38,9 @@ test_dir <- function(path, filter = NULL, reporter = "summary",
 
   results <- lapply(paths, test_file, env = env,
     reporter = current_reporter, start_end_reporter = FALSE)
-  test_compiled_code(test_path = path, filter = filter, ...)
+
+  compiled_results <- test_compiled_code(test_path = path, filter = filter, ...)
+  results <- c(results, compiled_results)
 
   current_reporter$end_reporter()
 
