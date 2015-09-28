@@ -18,12 +18,22 @@ compilation_prefix <- function(path) {
 
 }
 
-test_compiled_code <- function(package, test_path, filter, verbose = FALSE) {
+test_compiled_code <- function(test_path, filter, verbose = FALSE) {
+
+  ## Get test files -- all files with '.cc' or '.cpp' prefix in the
+  ## tests folder.
+  test_files <- list.files(
+    test_path,
+    pattern = "^test.*\\.(?:cc|cpp)$",
+    full.names = TRUE
+  )
+
+  # Bail if we have no files to test
+  if (!length(test_files))
+    return()
 
   ## Generate a temporary directory wherein compilation will take place.
-  compilation_path <- tempfile(
-    pattern = paste("testthat", package, "bin", sep = "-")
-  )
+  compilation_path <- tempfile("testthat-compiled-tests")
 
   if (file.exists(compilation_path))
     stop("Directory '", compilation_path, "' already exists; collision with other running tests?")
@@ -35,13 +45,6 @@ test_compiled_code <- function(package, test_path, filter, verbose = FALSE) {
   owd <- getwd()
   setwd(compilation_path)
   on.exit(setwd(owd), add = TRUE)
-
-  cpp_path <- file.path(test_path, "cpp")
-  test_files <- list.files(cpp_path, pattern = "^test-", full.names = TRUE)
-
-  # Bail if we have no files to test
-  if (!length(test_files))
-    return()
 
   ## Generate a script that will compile an executable
   ## to run the tests.
@@ -67,12 +70,8 @@ test_compiled_code <- function(package, test_path, filter, verbose = FALSE) {
     system.file(package = "testthat", "include")
   )
 
-  package_upper <- toupper(gsub(".", "_", package, fixed = TRUE))
-  testing_define <- paste("-DTESTING", package_upper, sep = "_")
-
   compilation_cmd <- paste(
     prefix,
-    testing_define,
     paste("-I", shQuote(testthat_include_path), sep = ""),
     shQuote(test_files),
     shQuote(main_cpp),

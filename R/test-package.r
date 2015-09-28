@@ -64,11 +64,8 @@ run_tests <- function(package, test_path, filter, reporter, ...) {
   env <- test_pkg_env(package)
   res <- with_top_env(env, {
     results <- test_dir(test_path, reporter = reporter, env = env, filter = filter, ...)
-
-    # TODO: Parse output and append success / failure to results
-    if (file.exists(file.path(test_path, "cpp")))
-      test_compiled_code(package, test_path, filter)
-
+    ## TODO: integrate with results
+    test_compiled_code(package, test_path, filter)
     results
   })
 
