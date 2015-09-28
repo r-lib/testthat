@@ -7,6 +7,8 @@
 * Added `skip_on_os()`, to skip tests on specified operating systems
   (@kevinushey).
 
+* Handle skipped tests in the TAP reporter (#262).
+
 # testthat 0.10.0
 
 * Failure locations are now formated as R error locations.
