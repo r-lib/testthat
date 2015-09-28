@@ -46,6 +46,11 @@ test_compiled_code <- function(test_path, filter, verbose = FALSE) {
   dir.create(compilation_path, recursive = TRUE)
   on.exit(unlink(compilation_path, recursive = TRUE), add = TRUE)
 
+  # Move to the temporary compilation path.
+  owd <- getwd()
+  setwd(compilation_path)
+  on.exit(setwd(owd), add = TRUE)
+
   ## Copy over the 'src/Makevars' file if it exists (implies we're running package tests)
   makevars_path <- if (Sys.info()[["sysname"]] == "Windows")
     file.path(pkg_path, "src", "Makevars.win")

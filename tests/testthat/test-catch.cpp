@@ -24,3 +24,19 @@ context("A second context") {
   }
 
 }
+
+context("Respect 'src/Makevars'") {
+
+  bool compiling_testthat;
+
+#ifdef COMPILING_TESTTHAT
+  compiling_testthat = true;
+#else
+  compiling_testthat = false;
+#endif
+
+  test_that("COMPILING_TESTTHAT is inheritted from 'src/Makevars'") {
+    expect_true(compiling_testthat);
+  }
+
+}
