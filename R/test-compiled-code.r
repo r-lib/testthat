@@ -1,25 +1,3 @@
-# Geenrates a (semi-random) directory wherein compilation
-# can take place, within tempdir().
-cpp_compilation_tempdir <- function(package) {
-
-  # Generate a path wherein we perform the executable compilation
-  random_string <- paste(
-    sample(c(0:9, letters, LETTERS), 16, replace = TRUE), collapse = ""
-  )
-
-  compilation_path <- file.path(
-    tempdir(),
-    paste("testthat-", package, "-bin-", random_string, sep = "")
-  )
-
-  # If this directory exists, recurse and try a new name.
-  if (file.exists(compilation_path))
-    return(cpp_compilation_tempdir(package))
-
-  # Otherwise we're done.
-  compilation_path
-}
-
 # Determine the compilation prefix used when compiling a file (e.g., the command
 # line invocation that collects the compiler + flags when attempting to compile
 # a particular file, excluding the file itself)
@@ -43,7 +21,10 @@ compilation_prefix <- function(path) {
 test_compiled_code <- function(package, test_path, filter, verbose = FALSE) {
 
   ## Generate a temporary directory wherein compilation will take place.
-  compilation_path <- cpp_compilation_tempdir(package)
+  compilation_path <- tempfile(
+    pattern = paste("testthat", package, "bin", sep = "-")
+  )
+
   if (file.exists(compilation_path))
     stop("Directory '", compilation_path, "' already exists; collision with other running tests?")
 
