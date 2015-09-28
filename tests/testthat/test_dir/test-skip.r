@@ -1,4 +1,4 @@
-context("Skip")
+context("skip")
 
 test_that("Skips skip", {
   skip("Skipping to avoid certain failure")

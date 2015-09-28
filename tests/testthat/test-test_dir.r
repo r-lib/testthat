@@ -12,7 +12,7 @@ test_that('test_dir()', {
         "test-helper.r", "test-skip.r"),
       context = c("Basic", "Basic", "Basic", "Basic",
         "Basic", "empty", "empty", "error", "error", "error", "error",
-        "error", "failures", "failures", "failures", "helper", "Skip"),
+        "error", "failures", "failures", "failures", "helper", "skip"),
       test = c("logical tests act as expected",
         "logical tests ignore attributes", "equality holds",
         "can't access variables from other tests 2",
@@ -24,7 +24,8 @@ test_that('test_dir()', {
         "Skips skip"),
       nb = c(2L, 2L, 2L, 0L, 1L, 0L, 0L, 0L, 1L, 1L, 0L, 1L, 1L, 2L, 2L, 1L, 1L),
       failed = c(0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 1L, 0L, 0L, 1L, 1L, 0L, 0L, 0L),
-      skipped = c(0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 1L),
+      skipped = c(FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE,
+        FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, TRUE),
       error = c(FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, TRUE, TRUE, TRUE, TRUE,
         TRUE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE),
       stringsAsFactors = FALSE)

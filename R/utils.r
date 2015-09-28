@@ -51,7 +51,7 @@ skip <- function(message) {
 #' @param pkg Name of package to check for
 #' @rdname skip
 skip_if_not_installed <- function(pkg) {
-  if (requireNamespace(pkg, quietly = TRUE)) return()
+  if (requireNamespace(pkg, quietly = TRUE)) return(invisible(TRUE))
 
   skip(paste0(pkg, " not installed"))
 }
@@ -59,15 +59,34 @@ skip_if_not_installed <- function(pkg) {
 #' @export
 #' @rdname skip
 skip_on_cran <- function() {
-  if (identical(Sys.getenv("NOT_CRAN"), "true")) return()
+  if (identical(Sys.getenv("NOT_CRAN"), "true")) return(invisible(TRUE))
 
   skip("On CRAN")
 }
 
 #' @export
+#' @param os Character vector of system names. Supported values are
+#'   \code{"windows"}, \code{"mac"}, \code{"linux"} and \code{"solaris"}.
+#' @rdname skip
+skip_on_os <- function(os) {
+  os <- match.arg(os, c("windows", "mac", "linux", "solaris"),
+    several.ok = TRUE)
+  sysname <- tolower(Sys.info()[["sysname"]])
+
+  switch(sysname,
+    windows = if ("windows" %in% os) skip("On windows"),
+    darwin =  if ("mac" %in% os) skip("On Mac"),
+    linux =   if ("linux" %in% os) skip("On Linux"),
+    sunos =   if ("solaris" %in% os) skip("On Solaris")
+  )
+
+  invisible(TRUE)
+}
+
+#' @export
 #' @rdname skip
 skip_on_travis <- function() {
-  if (!identical(Sys.getenv("TRAVIS"), "true")) return()
+  if (!identical(Sys.getenv("TRAVIS"), "true")) return(invisible(TRUE))
 
   skip("On Travis")
 }

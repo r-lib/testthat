@@ -67,7 +67,7 @@ expect_equal(object = 10.01, expected = expectedValue, tolerance = 0.002,
   scale = expectedValue)
 }
 
-# expect_equalivalent ignores attributes
+# expect_equivalent ignores attributes
 a <- b <- 1:3
 names(b) <- letters[1:3]
 expect_equivalent(a, b)

@@ -31,7 +31,7 @@ sumarize_one_test_results <- function(test) {
   context <- if (length(test$context) > 0) test$context else ''
 
   res <- data.frame(file = test$file, context = context, test = test$test,
-    nb = nb_tests, failed = nb_failed, skipped = nb_skipped, error = error,
+    nb = nb_tests, failed = nb_failed, skipped = as.logical(nb_skipped), error = error,
     user = test$user, system = test$system, real = test$real,
     stringsAsFactors = FALSE)
 
