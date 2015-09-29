@@ -1,9 +1,10 @@
-#' Expectation: does string/output/warning/error match a regular expression?
+#' Expectation: does string/output/message/warning/error match a regular expression?
 #'
 #' @inheritParams expect_that
-#' @param regexp regular expression to test against. If ommited,
+#' @param regexp regular expression to test against. If omitted,
 #'   just asserts that code produces some output, messsage, warning or
-#'   error.
+#'   error. Alternatively, you can specify \code{NA} to indicate that
+#'   there should be no output, messages, warnings or errors.
 #' @param all should all elements of actual value match \code{regexp} (TRUE),
 #'    or does only one need to match (FALSE)
 #' @param ... Additional arguments passed on to \code{\link{grepl}}, e.g.
@@ -30,7 +31,7 @@
 #' }
 #' expect_message(f(-1))
 #' expect_message(f(-1), "already negative")
-#' \dontrun{expect_message(f(1))}
+#' expect_message(f(1), NA)
 #'
 #' # You can use the arguments of grepl to control the matching
 #' expect_message(f(-1), "*x*", fixed = TRUE)
@@ -43,7 +44,7 @@
 #' }
 #' expect_warning(f(-1))
 #' expect_warning(f(-1), "already negative")
-#' \dontrun{expect_warning(f(1))}
+#' expect_warning(f(1), NA)
 #'
 #' # You can use the arguments of grepl to control the matching
 #' expect_warning(f(-1), "*x*", fixed = TRUE)
@@ -104,6 +105,15 @@ expect_output <- function(object, regexp, ..., info = NULL, label = NULL) {
 prints_text <- function(regexp, ...) {
   function(expr) {
     output <- evaluate_promise(expr, print = TRUE)$output
+
+    if (identical(regexp, NA)) {
+      return(expectation(
+        !is.null(output),
+        paste0("produced output: ", encodeString(output)),
+        "didn't produce output"
+      ))
+    }
+
     matches(regexp, ...)(output)
   }
 }
@@ -124,10 +134,12 @@ throws_error <- function(regexp = NULL, ...) {
     res <- try(force(expr), TRUE)
 
     no_error <- !inherits(res, "try-error")
-    if (no_error) {
-      return(expectation(FALSE,
-        "code did not generate an error",
-        "code generated an error"
+
+    if (no_error && no_error) {
+      return(expectation(
+        identical(regexp, NA),
+        "code raised an error",
+        "code didn't raise an error"
       ))
     }
 
@@ -154,7 +166,13 @@ gives_warning <- function(regexp = NULL, all = FALSE, ...) {
   function(expr) {
     warnings <- evaluate_promise(expr)$warnings
 
-    if (!is.null(regexp) && length(warnings) > 0) {
+    if (identical(regexp, NA)) {
+      expectation(
+        length(warnings) == 0,
+        paste0("expected no warnings:\n", paste("* ", warnings, collapse = "\n")),
+        "no warnings"
+      )
+    } else if (!is.null(regexp) && length(warnings) > 0) {
       matches(regexp, all = all, ...)(warnings)
     } else {
       expectation(
@@ -181,7 +199,13 @@ shows_message <- function(regexp = NULL, all = FALSE, ...) {
   function(expr) {
     messages <- evaluate_promise(expr)$messages
 
-    if (!is.null(regexp) && length(messages) > 0) {
+    if (identical(regexp, NA)) {
+      expectation(
+        length(messages) == 0,
+        paste0("expected no message, got:\n", paste("* ", messages, collapse = "\n")),
+        paste0("no messages")
+      )
+    } else if (!is.null(regexp) && length(messages) > 0) {
       matches(regexp, all = all, ...)(messages)
     } else {
       expectation(

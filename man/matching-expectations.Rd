@@ -7,7 +7,7 @@
 \alias{expect_output}
 \alias{expect_warning}
 \alias{matching-expectations}
-\title{Expectation: does string/output/warning/error match a regular expression?}
+\title{Expectation: does string/output/message/warning/error match a regular expression?}
 \usage{
 expect_match(object, regexp, ..., all = TRUE, info = NULL, label = NULL)
 
@@ -24,9 +24,10 @@ expect_message(object, regexp = NULL, ..., all = FALSE, info = NULL,
 \arguments{
 \item{object}{object to test}
 
-\item{regexp}{regular expression to test against. If ommited,
+\item{regexp}{regular expression to test against. If omitted,
 just asserts that code produces some output, messsage, warning or
-error.}
+error. Alternatively, you can specify \code{NA} to indicate that
+there should be no output, messages, warnings or errors.}
 
 \item{...}{Additional arguments passed on to \code{\link{grepl}}, e.g.
 \code{ignore.case} or \code{fixed}.}
@@ -40,7 +41,7 @@ writing tests in loops).}
 \item{label}{object label. When \code{NULL}, computed from deparsed object.}
 }
 \description{
-Expectation: does string/output/warning/error match a regular expression?
+Expectation: does string/output/message/warning/error match a regular expression?
 }
 \examples{
 expect_match("Testing is fun", "fun")
@@ -63,7 +64,7 @@ f <- function(x) {
 }
 expect_message(f(-1))
 expect_message(f(-1), "already negative")
-\dontrun{expect_message(f(1))}
+expect_message(f(1), NA)
 
 # You can use the arguments of grepl to control the matching
 expect_message(f(-1), "*x*", fixed = TRUE)
@@ -76,7 +77,7 @@ f <- function(x) {
 }
 expect_warning(f(-1))
 expect_warning(f(-1), "already negative")
-\dontrun{expect_warning(f(1))}
+expect_warning(f(1), NA)
 
 # You can use the arguments of grepl to control the matching
 expect_warning(f(-1), "*x*", fixed = TRUE)

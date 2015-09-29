@@ -1,5 +1,9 @@
 # testthat 0.10.0.9000
 
+* `expect_output()`, `expect_message()`, `expect_warning()`, and
+  `expect_error()` now accept `NA` as the second argument to indicate that
+  output, messages, warnings, and errors should be absent (#219).
+
 * Praise gets more diverse thanks to the praise package, and you'll now
   get random encouragment if your tests don't pass.
 
