@@ -62,7 +62,7 @@ source_test_helpers <- function(path, env = globalenv()) {
 #' Find the test files.
 #' @param path path to tests
 #' @param filter cf \code{\link{test_dir}}
-#' @param invert If \sQuote{TRUE} return files which do _not_ match.
+#' @param invert If \sQuote{TRUE} return files which do \emph{not} match.
 #' @param ... Additional arguments passed to \code{grepl} to control filtering.
 #' @return the test file paths
 #' @keywords internal
