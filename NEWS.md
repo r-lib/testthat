@@ -38,7 +38,7 @@
 
 * The [Catch](https://github.com/philsquared/Catch) unit
   testing library can now be used for unit testing of C++
-  files. You can place C++ files within the `tests/testthat/cpp`
+  files. You can place C++ files within the `tests/testthat`
   folder named as `test-*.cpp`, and `test_dir()` and friends
   will automatically compile and run tested examples. See
   `system.file(package = "testthat", "resources", "test-example.cpp")`

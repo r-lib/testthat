@@ -23,25 +23,22 @@ compilation_prefix <- function(path) {
 
 test_compiled_code <- function(test_path, filter, verbose = FALSE) {
 
-  pkg_path <- get_pkg_path(test_path)
+  if (!requireNamespace("xml2", quietly = TRUE))
+    stop("unit testing of compiled code requires the 'xml2' package to be installed")
 
-  ## Get test files -- all files with '.cc' or '.cpp' prefix in the
-  ## tests folder.
   test_files <- list.files(
     test_path,
     pattern = "^test.*\\.(?:cc|cpp)$",
     full.names = TRUE
   )
 
-  # Bail if we have no files to test
   if (!length(test_files))
     return()
 
-  ## Generate a temporary directory wherein compilation will take place.
   compilation_path <- tempfile("testthat-compiled-tests")
 
   if (file.exists(compilation_path))
-    stop("Directory '", compilation_path, "' already exists; collision with other running tests?")
+    stop("directory '", compilation_path, "' already exists; collision with other running tests?")
 
   dir.create(compilation_path, recursive = TRUE)
   on.exit(unlink(compilation_path, recursive = TRUE), add = TRUE)
@@ -52,6 +49,7 @@ test_compiled_code <- function(test_path, filter, verbose = FALSE) {
   on.exit(setwd(owd), add = TRUE)
 
   ## Copy over the 'src/Makevars' file if it exists (implies we're running package tests)
+  pkg_path <- get_pkg_path(test_path)
   makevars_path <- if (Sys.info()[["sysname"]] == "Windows")
     file.path(pkg_path, "src", "Makevars.win")
   else
@@ -64,9 +62,7 @@ test_compiled_code <- function(test_path, filter, verbose = FALSE) {
   prefix <- compilation_prefix(main_cpp)
 
   ## Include testthat header.
-  testthat_include_path <- file.path(
-    system.file(package = "testthat", "include")
-  )
+  testthat_include_path <- system.file(package = "testthat", "include")
 
   compilation_cmd <- paste(
     prefix,
@@ -78,18 +74,16 @@ test_compiled_code <- function(test_path, filter, verbose = FALSE) {
 
   # Compile the executable
   cat("Compiling C++ unit test executable -- please wait...\n")
-  if (verbose) {
-    cat("Command:\n")
-    cat(compilation_cmd)
-    cat("\n")
-  }
+  if (verbose)
+    cat(paste("-", shQuote(compilation_cmd)), sep = "\n")
 
   result <- system(compilation_cmd)
   if (result)
     stop(sprintf("compilation failed (exit status %s)", result))
 
   # Run the executable twice -- once to get XML output, and another time to
-  # print nicely to console.
+  # print nicely to console. TODO: Report the output ourselves after parsing
+  # the XML?
   executable <- file.path(compilation_path, "testthat")
 
   run_console_cmd <- paste(shQuote(executable), "--reporter console")
