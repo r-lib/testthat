@@ -1,5 +1,7 @@
 # testthat 0.10.0.9000
 
+* Handle skipped tests in the TAP reporter (#262).
+
 * New `expect_silent()` ensures that code produces no output, messages,
   or warnings (#261).
 
