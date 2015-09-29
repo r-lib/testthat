@@ -134,7 +134,7 @@ str_chunk <- function(x, length) {
 #' # Compare ignores minor numeric differences in the same way
 #' # as all.equal.
 #' compare(x, x + 1e-9)
-compare.numeric <- function(x, y, max_diffs = 10, ...) {
+compare.numeric <- function(x, y, ..., max_diffs = 10) {
   equal <- all.equal(x, y, ...)
   if (isTRUE(equal)) return(comparison())
 

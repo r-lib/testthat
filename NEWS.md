@@ -1,5 +1,7 @@
 # testthat 0.10.0.9000
 
+* Corrected argument order in `compare.numeric()` (#294).
+
 * `comparison()` constructure now checks its arguments are the correct type and
   length. This bugs a bug where tests failed with an error like "values must be 
   length 1, but FUN(X[[1]]) result is length 2" (#279).
