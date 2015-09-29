@@ -26,11 +26,12 @@ expect_is <- function(object, class, info = NULL, label = NULL) {
 #' @rdname oldskool
 is_a <- function(class) {
   function(x) {
-    actual <- paste0(class(x), collapse = ", ")
+    actual_s <- paste0(class(x), collapse = ", ")
+    class_s <- paste(class, collapse = ", ")
     expectation(
       inherits(x, class),
-      paste0("inherits from ", actual, " not ", class),
-      paste0("inherits from ", class)
+      paste0("inherits from ", actual_s, " not ", class_s),
+      paste0("inherits from ", class_s)
     )
   }
 }

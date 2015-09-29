@@ -1,5 +1,8 @@
 # testthat 0.10.0.9000
 
+* `expect_is()` gives better failure message when testing multiple inheritance,
+  e.g. `expect_is(1:10, c("glm", "lm"))` (#293).
+
 * Corrected argument order in `compare.numeric()` (#294).
 
 * `comparison()` constructure now checks its arguments are the correct type and
