@@ -14,7 +14,7 @@ compare(x, y, ...)
 \method{compare}{character}(x, y, ..., max_diffs = 5, max_lines = 5,
   width = getOption("width"))
 
-\method{compare}{numeric}(x, y, max_diffs = 10, ...)
+\method{compare}{numeric}(x, y, ..., max_diffs = 10)
 }
 \arguments{
 \item{x,y}{Objects to compare}
