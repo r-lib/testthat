@@ -85,8 +85,8 @@ matches <- function(regexp, all = TRUE, ...) {
 
     expectation(
       length(matches) > 0 && if (all) all(matches) else any(matches),
-      paste0("does not match '", regexp, "'. ", values),
-      paste0("matches '", regexp, "'")
+      paste0("does not match '", encodeString(regexp), "'. ", values),
+      paste0("matches '", encodeString(regexp), "'")
     )
   }
 }
