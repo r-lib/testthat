@@ -41,12 +41,16 @@ test_files <- function(paths, reporter = "summary",
 
   current_reporter <- find_reporter(reporter)
   current_reporter$start_reporter()
+
   results <- lapply(paths, test_file, env = env,
     reporter = current_reporter, start_end_reporter = FALSE)
+
+  compiled_results <- test_compiled_code(test_path = path, filter = filter, ...)
+  results <- c(results, compiled_results)
+
   current_reporter$end_reporter()
 
   results <- unlist(results, recursive = FALSE)
-
   invisible(testthat_results(results))
 }
 
@@ -173,3 +177,11 @@ sys.source2 <- function(file, envir = parent.frame()) {
   invisible(eval(exprs, envir))
 }
 
+get_pkg_path <- function(test_path) {
+  parent_path <- dirname(normalizePath(test_path, mustWork = TRUE))
+  while (dirname(parent_path) != parent_path) {
+    if (file.exists(file.path(parent_path, "DESCRIPTION")))
+      return(parent_path)
+    parent_path <- dirname(parent_path)
+  }
+}

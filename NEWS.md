@@ -46,6 +46,14 @@
 
 * Failure locations are now formated as R error locations.
 
+* The [Catch](https://github.com/philsquared/Catch) unit
+  testing library can now be used for unit testing of C++
+  files. You can place C++ files within the `tests/testthat`
+  folder named as `test-*.cpp`, and `test_dir()` and friends
+  will automatically compile and run tested examples. See
+  `system.file(package = "testthat", "resources", "test-example.cpp")`
+  for a sample file using `Catch` and `testthat`.
+
 * Deprecated `library_if_available()` has been removed.
 
 * test (`test_dir()`, `test_file()`, `test_package()`, `test_check()`) functions 

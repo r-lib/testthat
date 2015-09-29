@@ -59,8 +59,7 @@ test_package <- function(package, filter = NULL, reporter = "summary", ...) {
 }
 
 
-run_tests <- function(package, test_path, filter, reporter, ...)
-{
+run_tests <- function(package, test_path, filter, reporter, ...) {
   reporter <- find_reporter(reporter)
   env <- test_pkg_env(package)
   res <- with_top_env(env, {
