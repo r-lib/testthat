@@ -48,7 +48,7 @@ test_code <- function(description, code, env) {
     # Capture call stack, removing last two calls from end (added by
     # withCallingHandlers), and first frame + 7 calls from start (added by
     # tryCatch etc)
-    e$calls <- head(sys.calls()[-seq_len(frame + 7)], -2)
+    e$calls <- utils::head(sys.calls()[-seq_len(frame + 7)], -2)
     signalCondition(e)
   }
   frame <- sys.nframe()

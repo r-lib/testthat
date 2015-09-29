@@ -70,7 +70,7 @@ dir_state <- function(path, pattern = NULL, hash = TRUE) {
   if (hash) {
     file_states <- vapply(files, safe_digest, character(1))
   } else {
-    file_states <- setNames(file.info(files)$mtime, files)
+    file_states <- stats::setNames(file.info(files)$mtime, files)
   }
   file_states[!is.na(file_states)]
 }

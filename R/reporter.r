@@ -8,7 +8,7 @@
 #' @export Reporter
 #' @aliases Reporter
 #' @param ... Arguments used to initialise class
-#' @importFrom methods setRefClass
+#' @importFrom methods setRefClass new
 Reporter <- setRefClass("Reporter",
   fields = list(
     context = "character",

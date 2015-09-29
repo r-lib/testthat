@@ -178,7 +178,7 @@ compare.numeric <- function(x, y, ..., max_diffs = 10) {
 }
 
 print_out <- function(x, ...) {
-  lines <- capture.output(print(x, ...))
+  lines <- utils::capture.output(print(x, ...))
   paste0(lines, collapse = "\n")
 }
 
