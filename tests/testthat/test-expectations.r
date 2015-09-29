@@ -121,6 +121,10 @@ test_that("takes_less_than verifies duration", {
   expect_that(1, takes_less_than(1))
 })
 
+test_that("expect_silent checks for out", {
+  expect_silent("")
+})
+
 test_that("expected_named verifies presence of names", {
   expect_named(c(a = 1))
 })

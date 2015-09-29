@@ -2,12 +2,10 @@
 % Please edit documentation in R/expectation.r
 \name{expectation}
 \alias{expectation}
-\alias{format.expectation}
 \alias{is.expectation}
-\alias{print.expectation}
 \title{Expectation class.}
 \usage{
-expectation(passed, failure_msg, success_msg = "unknown")
+expectation(passed, failure_msg, success_msg = "unknown", srcref = NULL)
 
 is.expectation(x)
 }
@@ -18,6 +16,8 @@ is.expectation(x)
 \item{failure_msg}{A text description of failure}
 
 \item{success_msg}{A text description of success}
+
+\item{srcref}{Source reference, if known}
 
 \item{x}{object to test for class membership}
 }

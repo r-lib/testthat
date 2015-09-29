@@ -1,5 +1,8 @@
 # testthat 0.10.0.9000
 
+* New `expect_silent()` ensures that code produces no output, messages,
+  or warnings (#261).
+
 * `expect_output()`, `expect_message()`, `expect_warning()`, and
   `expect_error()` now accept `NA` as the second argument to indicate that
   output, messages, warnings, and errors should be absent (#219).

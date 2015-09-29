@@ -31,6 +31,7 @@ Collate:
     'expectations-equality.R'
     'expectations-matches.R'
     'expectations-old.R'
+    'expectations-silent.R'
     'expectations.r'
     'make-expectation.r'
     'mock.r'

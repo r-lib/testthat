@@ -7,17 +7,18 @@
 #'  (\code{TRUE}), failed (\code{FALSE}), or threw an error (\code{NA})
 #' @param failure_msg A text description of failure
 #' @param success_msg A text description of success
-#' @aliases expectation print.expectation format.expectation
+#' @param srcref Source reference, if known
 #' @keywords internal
 #' @export
-expectation <- function(passed, failure_msg, success_msg = "unknown") {
+expectation <- function(passed, failure_msg, success_msg = "unknown", srcref = NULL) {
   structure(
     list(
       passed = passed,
       error = FALSE,
       skipped = FALSE,
       failure_msg = failure_msg,
-      success_msg = success_msg
+      success_msg = success_msg,
+      srcref = srcref
     ),
     class = "expectation"
   )

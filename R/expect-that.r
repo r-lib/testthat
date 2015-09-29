@@ -22,10 +22,7 @@ expect_that <- function(object, condition, info = NULL, label = NULL) {
   stopifnot(length(info) <= 1, length(label) <= 1)
 
   label <- label %||% find_expr("object")
-  expect_this(condition(object), info, label)
-}
-
-expect_this <- function(results, info = NULL, label = NULL) {
+  results <- condition(object)
   stopifnot(is.expectation(results))
 
   results$srcref <- find_test_srcref()
