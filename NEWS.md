@@ -1,5 +1,9 @@
 # testthat 0.10.0.9000
 
+* testthat no longer muffles warning messages. If you don't want to see them 
+  in your output, you need to explicitly quiet them, or use an expectation that 
+  captures them (e.g. `expect_warning()`). (#254)
+
 * Use tests in `inst/tests` is formally deprecated. Please move them into
   `tests/testthat` instead (#231).
 

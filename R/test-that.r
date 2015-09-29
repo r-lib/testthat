@@ -58,8 +58,7 @@ test_code <- function(description, code, env) {
     withCallingHandlers(
       eval(code, new_test_environment),
       error = capture_calls,
-      message = function(c) invokeRestart("muffleMessage"),
-      warning = function(c) invokeRestart("muffleWarning")
+      message = function(c) invokeRestart("muffleMessage")
     ),
     error = function(e) {
       ok <- FALSE
