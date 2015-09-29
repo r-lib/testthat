@@ -20,15 +20,21 @@
 #' }
 expect_that <- function(object, condition, info = NULL, label = NULL) {
   stopifnot(length(info) <= 1, length(label) <= 1)
-  if (is.null(label)) {
-    label <- find_expr("object")
-  }
-  results <- condition(object)
+
+  label <- label %||% find_expr("object")
+  expect_this(condition(object), info, label)
+}
+
+expect_this <- function(results, info = NULL, label = NULL) {
+  stopifnot(is.expectation(results))
 
   results$srcref <- find_test_srcref()
 
-  results$failure_msg <- paste0(label, " ", results$failure_msg)
-  results$success_msg <- paste0(label, " ", results$success_msg)
+  if (!is.null(label)) {
+    results$failure_msg <- paste0(label, " ", results$failure_msg)
+    results$success_msg <- paste0(label, " ", results$success_msg)
+  }
+
   if (!is.null(info)) {
     results$failure_msg <- paste0(results$failure_msg, "\n", info)
     results$success_msg <- paste0(results$success_msg, "\n", info)

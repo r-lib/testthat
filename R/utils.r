@@ -1,3 +1,5 @@
+`%||%` <- function(a, b) if (is.null(a)) b else a
+
 # Find expression that created a variable
 find_expr <- function(name, env = parent.frame()) {
   subs <- do.call("substitute", list(as.name(name), env))
