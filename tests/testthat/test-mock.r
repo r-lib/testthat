@@ -118,6 +118,7 @@ test_that("can mock hidden functions", {
 test_that("can mock if package is not loaded", {
   if ("package:devtools" %in% search())
     skip('devtools is loaded')
+  skip_if_not_installed("devtools")
   with_mock(`devtools::add_path` = identity, expect_identical(devtools::add_path, identity))
 })
 

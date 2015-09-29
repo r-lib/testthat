@@ -9,6 +9,8 @@
 * Added `skip_on_os()`, to skip tests on specified operating systems
   (@kevinushey).
 
+* Skip test that depends on `devtools` if it is not installed (#247, @krlmlr)
+
 # testthat 0.10.0
 
 * Failure locations are now formated as R error locations.
