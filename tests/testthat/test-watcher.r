@@ -35,7 +35,13 @@ test_that("compare state works correctly", {
  })
 
 test_that("watcher works correctly", {
-  skip_on_cran() && skip_on_os("windows")
+  skip_on_cran()
+  if (Sys.which("bash") == "") {
+    skip("bash not available")
+  }
+  if (system("bash -c 'which touch'", ignore.stdout = TRUE) != 0L) {
+    skip("touch (or which) not available")
+  }
 
   loc <- tempfile("watcher", tmpdir = "/tmp")
   dir.create(loc)
@@ -47,7 +53,7 @@ test_that("watcher works correctly", {
   dir.create(test_path)
 
   delayed.bash.cmd <- function(command) {
-    system(paste0("sleep 1;", command), wait=FALSE)
+    system(paste0("bash -c 'sleep 1;", command, "'"), wait=FALSE)
   }
 
   add.code.file <- function(file.name) {

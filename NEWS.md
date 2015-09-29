@@ -11,6 +11,8 @@
 
 * Skip test that depends on `devtools` if it is not installed (#247, @krlmlr)
 
+* Added `skip_on_appveyor()` to skip tests on Appveyor (@lmullen).
+
 # testthat 0.10.0
 
 * Failure locations are now formated as R error locations.
