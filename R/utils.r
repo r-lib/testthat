@@ -35,6 +35,9 @@ is.skip <- function(x) inherits(x, "skip")
 #' \code{skip_on_travis()} skips tests on travis by inspecting the
 #' \code{TRAVIS} environment variable.
 #'
+#' \code{skip_on_appveyor()} skips tests on appveyor by inspecting the
+#' \code{APPVEYOR} environment variable.
+#'
 #' \code{skip_if_not_installed()} skips a tests if a package is not installed
 #' (useful for suggested packages).
 #'
@@ -89,4 +92,12 @@ skip_on_travis <- function() {
   if (!identical(Sys.getenv("TRAVIS"), "true")) return(invisible(TRUE))
 
   skip("On Travis")
+}
+
+#' @export
+#' @rdname skip
+skip_on_appveyor <- function() {
+  if (!identical(Sys.getenv("APPVEYOR"), "True")) return()
+
+  skip("On Appveyor")
 }
