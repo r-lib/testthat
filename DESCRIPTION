@@ -14,7 +14,8 @@ Depends:
     methods
 Imports:
     digest,
-    crayon
+    crayon,
+    praise
 Suggests:
     devtools
 License: MIT + file LICENSE

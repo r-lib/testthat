@@ -76,17 +76,22 @@ SummaryReporter <- setRefClass("SummaryReporter", contains = "Reporter",
         if (!has_tests)
           return()
         cat("\n")
-        if (show_praise && sample(10, 1) == 1) {
+        if (show_praise && runif(1) < 0.1) {
           cat(colourise(praise(), "passed"), "\n")
         } else {
           cat(colourise("DONE", "passed"), "\n")
         }
       } else {
         cat("\n")
+
         reports <- vapply(seq_len(n), function(i) {
           failure_summary(failures[[i]], labels[i])
         }, character(1))
         cat(paste(reports, collapse = "\n\n"), "\n", sep = "")
+
+        if (show_praise && runif(1) < 0.25) {
+          cat("\n", colourise(encourage(), "failed"), "\n", sep = "")
+        }
       }
     }
   )
