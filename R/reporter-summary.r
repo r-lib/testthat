@@ -72,13 +72,11 @@ SummaryReporter <- setRefClass("SummaryReporter", contains = "Reporter",
     },
 
     end_reporter = function() {
-      charrep <- function(char, times) {
-        sapply(times, function(i) paste0(rep.int(char, i), collapse = ""))
-      }
-
       if (n == 0) {
+        if (!has_tests)
+          return()
         cat("\n")
-        if (has_tests && sample(10, 1) == 1 && show_praise) {
+        if (sample(10, 1) == 1 && show_praise) {
           cat(colourise(sample(.praise, 1), "passed"), "\n")
         } else {
           cat(colourise("DONE", "passed"), "\n")
