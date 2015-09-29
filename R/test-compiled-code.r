@@ -1,10 +1,21 @@
 # Determine the compilation prefix used when compiling a file (e.g., the command
 # line invocation that collects the compiler + flags when attempting to compile
 # a particular file, excluding the file itself)
-compilation_prefix <- function(path) {
+compilation_prefix <- function(path, makevars_path = NULL) {
 
   if (!file.exists(path))
     stop("no file at path '", path, "'")
+
+  # Copy Makevars to local path. This is done (rather than changing the path) to
+  # ensure that this works when running with e.g. R CMD check -- it seems R will
+  # barf if you attempt to launch a new R process in a different directory
+  # during R CMD check.
+  has_local_makevars <- file.exists(platform_makevars_name())
+  has_makevars <- length(makevars_path) && file.exists(makevars_path)
+  if (has_makevars && !has_local_makevars) {
+    file.copy(makevars_path, platform_makevars_name())
+    on.exit(unlink(platform_makevars_name()), add = TRUE)
+  }
 
   # Figure out the command line invocation flags we want -- parse the results
   # of 'R CMD SHLIB --dry-run'.
@@ -18,6 +29,36 @@ compilation_prefix <- function(path) {
   # flags we want.
   c_loc <- regexec(" -c ", invocation, fixed = TRUE)[[1]]
   substring(invocation, 1, c_loc)
+
+}
+
+platform_makevars_name <- function() {
+  if (Sys.info()[["sysname"]] == "Windows")
+    "Makevars.win"
+  else
+    "Makevars"
+}
+
+# Find the Makevars associated with a package, when running tests.
+find_pkg_makevars <- function(test_path) {
+
+  makevars_name <- platform_makevars_name()
+
+  # Try to locate the associated package's Makevars (if available)
+  pkg_path <- get_pkg_path(test_path)
+  if (length(pkg_path))
+    return(file.path(pkg_path, "src", makevars_name))
+
+  # Locate during R CMD check test execution
+  normalized_path <- normalizePath(test_path, mustWork = TRUE)
+  if (grepl(".Rcheck/", normalized_path)) {
+    check_path <- sub(".Rcheck/.*", ".Rcheck/", normalized_path)
+    pkg_name <- list.files(file.path(check_path, "00_pkg_src"))
+    return(file.path(check_path, "00_pkg_src", pkg_name, "src", makevars_name))
+  }
+
+  # No Makevars located
+  NULL
 
 }
 
@@ -43,23 +84,14 @@ test_compiled_code <- function(test_path, filter, verbose = FALSE) {
   dir.create(compilation_path, recursive = TRUE)
   on.exit(unlink(compilation_path, recursive = TRUE), add = TRUE)
 
-  # Move to the temporary compilation path.
-  owd <- getwd()
-  setwd(compilation_path)
-  on.exit(setwd(owd), add = TRUE)
-
-  ## Copy over the 'src/Makevars' file if it exists (implies we're running package tests)
-  pkg_path <- get_pkg_path(test_path)
-  makevars_path <- if (Sys.info()[["sysname"]] == "Windows")
-    file.path(pkg_path, "src", "Makevars.win")
-  else
-    file.path(pkg_path, "src", "Makevars")
-
-  if (length(makevars_path) && file.exists(makevars_path))
-    file.copy(makevars_path, file.path(compilation_path, basename(makevars_path)))
-
   main_cpp <- system.file(package = "testthat", "resources", "main.cpp")
-  prefix <- compilation_prefix(main_cpp)
+
+  makevars_path <- if (file.exists(platform_makevars_name()))
+    platform_makevars_name()
+  else
+    find_pkg_makevars(test_path)
+
+  prefix <- compilation_prefix(main_cpp, makevars_path)
 
   ## Include testthat header.
   testthat_include_path <- system.file(package = "testthat", "include")
