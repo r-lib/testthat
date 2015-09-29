@@ -1,5 +1,8 @@
 # testthat 0.10.0.9000
 
+* Use tests in `inst/tests` is formally deprecated. Please move them into
+  `tests/testthat` instead (#231).
+
 * `expect_match()` now encodes the match, as well as the output, in the 
   expectation message (#232).
 

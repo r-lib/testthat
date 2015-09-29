@@ -25,15 +25,7 @@ Instructions for using this package can be found in the [Testing](http://r-pkgs.
 
 ## Integration with R CMD check
 
-If you're using testthat in a package, you need to adopt a specific structure to work with `R CMD check`. This structure has changed recently to comply with new demands from CRAN, so please read closely if you submit your packages to CRAN. Previously, best practice was to put all test files in `inst/tests` and ensure that `R CMD check` ran them by putting the following code in `testthat.R`:
-
-```R
-library(testthat)
-library(yourpackage)
-test_package("yourpackage")
-```
-
-Now, recommended practice is to put your tests in `tests/testthat` in files starting with `test`, and ensure `R CMD check` runs them by putting the following code in `tests/testthat.R`:
+If you're using testthat in a package, you should put your tests in `tests/testthat`. Each test file should start with `test` and end in `.R` or `.r`. To ensure `R CMD check` runs your tests, place the following code in `tests/testthat.R`:
 
 ```R
 library(testthat)
@@ -42,6 +34,4 @@ library(yourpackage)
 test_check("yourpackage")
 ```
 
-The advantage of this new structure is that the user has control over whether or not tests are installed using the `--install-tests` parameter to `R CMD install`, or `INSTALL_opts = "--install-tests"` argument to `install.packages()`. I'm not sure why you wouldn't want to install the tests, but now you have the option.
-
-You also need to add `Suggests: testthat` to `DESCRIPTION` as stated in the [Writing R Extensions](http://cran.r-project.org/doc/manuals/R-exts.html#Package-Dependencies) document. This avoids a `R CMD check` warning about unspecified dependencies.
+Also make sure to add `Suggests: testthat` to your `DESCRIPTION`.

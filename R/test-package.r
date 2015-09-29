@@ -12,21 +12,22 @@ with_top_env <- function(env, code) {
   code
 }
 
-#' Run all tests in an installed package
+#' Run all tests in an installed package.
 #'
 #' Test are run in an environment that inherits from the package's namespace
 #' environment, so that tests can access non-exported functions and variables.
-#' Tests should be placed in either \code{inst/tests}, or (better)
-#' \code{tests/testthat}.
+#' Tests should be placed in \code{tests/testthat}. Use \code{test_check} with
+#' \code{R CMD check} and \code{test_pacakge} interactively at the console.
 #'
 #' @section R CMD check:
-#' Use \code{test_package} to test an installed package, or in
-#' \code{tests/test-all.R} if you're using the older \code{inst/tests}
-#' convention.
+#' Create \code{tests/testthat.R} that contains:
 #'
-#' If your tests live in \code{tests/testthat} (preferred) use \code{test_check}
-#' in \code{tests/testthat.R}.  You still use \code{test_package} when testing
-#' the installed package.
+#' \preformatted{
+#' library(testthat)
+#' library(yourpackage)
+#'
+#' test_check("yourpackage")
+#' }
 #'
 #' @param package   package name
 #' @inheritParams test_dir
@@ -47,7 +48,12 @@ test_package <- function(package, filter = NULL, reporter = "summary", ...) {
 
   # If testthat subdir exists, use that
   test_path2 <- file.path(test_path, "testthat")
-  if (file.exists(test_path2)) test_path <- test_path2
+  if (file.exists(test_path2)) {
+    test_path <- test_path2
+  } else {
+    warning("Placing tests in `inst/tests/` is deprecated. ",
+      "Please use `tests/testthat/` instead", call. = FALSE)
+  }
 
   run_tests(package, test_path, filter, reporter, ...)
 }
