@@ -33,6 +33,7 @@ Collate:
     'expectations.r'
     'make-expectation.r'
     'mock.r'
+    'praise.R'
     'reporter.r'
     'reporter-check.R'
     'reporter-list.r'

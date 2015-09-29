@@ -76,8 +76,8 @@ SummaryReporter <- setRefClass("SummaryReporter", contains = "Reporter",
         if (!has_tests)
           return()
         cat("\n")
-        if (sample(10, 1) == 1 && show_praise) {
-          cat(colourise(sample(.praise, 1), "passed"), "\n")
+        if (show_praise && sample(10, 1) == 1) {
+          cat(colourise(praise(), "passed"), "\n")
         } else {
           cat(colourise("DONE", "passed"), "\n")
         }
@@ -92,13 +92,4 @@ SummaryReporter <- setRefClass("SummaryReporter", contains = "Reporter",
   )
 )
 
-.praise <- c(
-  "You rock!",
-  "You are a coding rockstar!",
-  "Keep up the good work.",
-  ":)",
-  "Woot!",
-  "Way to go!",
-  "Nice code."
-)
 labels <- c(1:9, letters, LETTERS)
