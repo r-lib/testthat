@@ -29,11 +29,17 @@ test_env <- function() {
 #' @export
 test_dir <- function(path, filter = NULL, reporter = "summary",
                                           env = test_env(), ...) {
-  current_reporter <- find_reporter(reporter)
   source_test_helpers(path, env)
   paths <- find_test_scripts(path, filter, ...)
+
+  test_files(paths, reporter = reporter, env = env, ...)
+}
+
+test_files <- function(paths, reporter = "summary",
+                       env = test_env(), ...) {
   if (length(paths) == 0) stop('No matching test file in dir')
 
+  current_reporter <- find_reporter(reporter)
   current_reporter$start_reporter()
   results <- lapply(paths, test_file, env = env,
     reporter = current_reporter, start_end_reporter = FALSE)
@@ -135,7 +141,7 @@ test_file <- function(path, reporter = "summary", env = test_env(),
   on.exit({
     setwd(old_dir)
     set_reporter(old_reporter)
-    }, add = TRUE)
+  }, add = TRUE)
 
   if (start_end_reporter) reporter$start_reporter()
 

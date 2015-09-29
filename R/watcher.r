@@ -19,7 +19,7 @@ watch <- function(path, callback, pattern = NULL, hash = TRUE) {
 
   prev <- dir_state(path, pattern, hash = hash)
 
-  while(TRUE) {
+  repeat {
     Sys.sleep(1)
 
     curr <- dir_state(path, pattern, hash = hash)
@@ -28,12 +28,11 @@ watch <- function(path, callback, pattern = NULL, hash = TRUE) {
     if (changes$n > 0) {
       # cat("C")
       keep_going <- TRUE
-      try(keep_going <- with(changes, callback(added, deleted, modified)))
+      try(keep_going <- callback(changes$added, changes$deleted, changes$modified))
 
-      if (!keep_going) return(invisible())
+      if (!isTRUE(keep_going)) return(invisible())
     } else {
       # cat(".")
-
     }
 
     prev <- curr
