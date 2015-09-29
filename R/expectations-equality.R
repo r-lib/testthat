@@ -58,7 +58,7 @@ equals <- function(expected, label = NULL, ...) {
   }
 
   function(actual) {
-    same <- compare(expected, actual, ...)
+    same <- compare(actual, expected, ...)
 
     expectation(
       same$equal,

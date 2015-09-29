@@ -36,3 +36,25 @@ test_that("comparing character and non-character fails back to all.equal", {
 test_that("unnamed arguments to all.equal passed through correctly", {
   expect_equal(415, 416, 0.01)
 })
+
+test_that("comparing long character vectors with few differences", {
+  cmp <- compare(letters, c(letters[-26], "a"))
+  expect_match(
+    cmp$message,
+    paste("^", " string mismatch", "\\nx", "\\ny", "$",
+          sep = "[^\\n]*"))
+})
+
+test_that("comparing character vectors of different length", {
+  cmp <- compare(letters, letters[-26])
+  expect_match(
+    cmp$message,
+    paste("^", "Lengths ", " differ\\n", " string mismatch", "\\nx", "$",
+          sep = "[^\\n]*"))
+
+  cmp <- compare(letters[-25:-26], letters)
+  expect_match(
+    cmp$message,
+    paste("^", "Lengths ", " differ\\n", " string mismatch", "\\ny", "\\n", "\\ny", "$",
+          sep = "[^\\n]*"))
+})
