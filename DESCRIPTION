@@ -48,6 +48,7 @@ Collate:
     'reporter-tap.r'
     'reporter-teamcity.r'
     'reporter-zzz.r'
+    'test-compiled-code.r'
     'test-example.R'
     'test-files.r'
     'test-package.r'

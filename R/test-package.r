@@ -59,8 +59,7 @@ test_package <- function(package, filter = NULL, reporter = "summary", ...) {
 }
 
 
-run_tests <- function(package, test_path, filter, reporter, ...)
-{
+run_tests <- function(package, test_path, filter, reporter, ...) {
   reporter <- find_reporter(reporter)
   env <- test_pkg_env(package)
   res <- with_top_env(env, {
@@ -84,6 +83,9 @@ test_check <- function(package, filter = NULL, reporter = "check", ...) {
   if (!utils::file_test('-d', test_path)) {
     stop("No tests found for ", package, call. = FALSE)
   }
+
+  Sys.setenv("R_TESTTHAT_PACKAGE" = package)
+  on.exit(Sys.unsetenv("R_TESTTHAT_PACKAGE"), add = TRUE)
 
   run_tests(package, test_path, filter, reporter, ...)
 }

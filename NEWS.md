@@ -2,6 +2,9 @@
 
 # testthat 0.11.0
 
+* Added [Catch](https://github.com/philsquared/Catch) for unit testing of C++ code.
+  See `?use_catch()` for more details. (@kevinushey)
+
 * Handle skipped tests in the TAP reporter (#262).
 
 * New `expect_silent()` ensures that code produces no output, messages,
