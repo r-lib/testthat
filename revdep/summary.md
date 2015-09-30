@@ -4,28 +4,53 @@
 
 |setting  |value                        |
 |:--------|:----------------------------|
-|version  |R version 3.2.0 (2015-04-16) |
+|version  |R version 3.2.1 (2015-06-18) |
 |system   |x86_64, darwin13.4.0         |
-|ui       |RStudio (0.99.441)           |
+|ui       |RStudio (0.99.674)           |
 |language |(EN)                         |
 |collate  |en_US.UTF-8                  |
 |tz       |America/Chicago              |
+|date     |2015-09-30                   |
 
 ## Packages
 
 |package  |*  |version |date       |source         |
 |:--------|:--|:-------|:----------|:--------------|
-|crayon   |   |1.2.1   |2015-05-18 |CRAN (R 3.2.0) |
-|devtools |*  |1.8.0   |2015-05-09 |CRAN (R 3.2.0) |
+|crayon   |   |1.3.1   |2015-07-13 |CRAN (R 3.2.0) |
+|devtools |*  |1.9.1   |2015-09-11 |CRAN (R 3.2.0) |
 |digest   |   |0.6.8   |2014-12-31 |CRAN (R 3.2.0) |
+|praise   |   |1.0.0   |2015-08-11 |CRAN (R 3.2.0) |
 
 # Check results
-543 checked out of 543 dependencies 
+713 checked out of 722 dependencies 
+
+## adegenet (2.0.0)
+Maintainer: Thibaut Jombart <t.jombart@imperial.ac.uk>
+
+__OK__
 
 ## aemo (0.1.0)
 Maintainer: Imanuel Costigan <i.costigan@me.com>
 
 __OK__
+
+## afex (0.14-2)
+Maintainer: Henrik Singmann <singmann+afex@gmail.com>
+
+__OK__
+
+## AHR (1.2)
+Maintainer: Matthias Brueckner <mwb@math.uni-bremen.de>
+
+```
+checking whether package ‘AHR’ can be installed ... ERROR
+Installation failed.
+See ‘/private/tmp/RtmpKAtbVW/check_cran14a8c2e8e2543/AHR.Rcheck/00install.out’ for details.
+```
+```
+DONE
+Status: 1 ERROR
+```
 
 ## aidar (1.0.0)
 Maintainer: Andreas Pfeiffer <apfeiffer1@gmail.com>
@@ -107,7 +132,10 @@ Maintainer: George Rosenberger <rosenberger@imsb.biol.ethz.ch>
 ```
 checking whether package ‘aLFQ’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpQJiDLv/check_crand2516b207784/aLFQ.Rcheck/00install.out’ for details.
+See ‘/private/tmp/RtmpKAtbVW/check_cran14a8c2e8e2543/aLFQ.Rcheck/00install.out’ for details.
+```
+```
+DONE
 Status: 1 ERROR
 ```
 
@@ -115,34 +143,22 @@ Status: 1 ERROR
 Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>  
 Bug reports: http://www.github.com/ropensci/alm/issues
 
-__OK__
-
-## analogue (0.16-0)
-Maintainer: Gavin L. Simpson <ucfagls@gmail.com>  
-Bug reports: https://github.com/gavinsimpson/analogue/issues
-
 ```
-checking tests ... ERROR
-Running the tests in ‘tests/test-all.R’ failed.
-Last 13 lines of output:
-  Attaching package: 'analogue'
-  
-  The following object is masked from 'package:testthat':
-  
-      compare
-  
-  > 
-  > ## Runs the tests in inst/tests
-  > test_package("analogue")
-  Error in eval(expr, envir, enclos) : 
-    could not find function "library_if_available"
-  Calls: test_package ... test_dir -> lapply -> FUN -> sys.source2 -> eval -> eval
-  Execution halted
+checking files in ‘vignettes’ ... NOTE
+The following directory looks like a leftover from 'knitr':
+  ‘figure’
+Please remove from your package.
 ```
 ```
 DONE
-Status: 1 ERROR
+Status: 1 NOTE
 ```
+
+## analogue (0.16-3)
+Maintainer: Gavin L. Simpson <ucfagls@gmail.com>  
+Bug reports: https://github.com/gavinsimpson/analogue/issues
+
+__OK__
 
 ## analogueExtra (0.1-0)
 Maintainer: Gavin L. Simpson <ucfagls@gmail.com>  
@@ -150,14 +166,26 @@ Bug reports: https://github.com/gavinsimpson/analogueExtra/issues
 
 __OK__
 
-## aoos (0.2.0)
+## anonymizer (0.2.0)
+Maintainer: Paul Hendricks <paul.hendricks.2013@owu.edu>  
+Bug reports: https://github.com/paulhendricks/anonymizer/issues
+
+__OK__
+
+## aoos (0.3.0)
 Maintainer: Sebastian Warnholz <wahani@gmail.com>  
 Bug reports: https://github.com/wahani/aoos/issues
 
 __OK__
 
-## apex (1.0.0)
+## apex (1.0.1)
 Maintainer: Thibaut Jombart <t.jombart@imperial.ac.uk>
+
+__OK__
+
+## archivist (1.7)
+Maintainer: Przemyslaw Biecek <przemyslaw.biecek@gmail.com>  
+Bug reports: https://github.com/pbiecek/archivist/issues
 
 __OK__
 
@@ -184,70 +212,67 @@ DONE
 Status: 2 NOTEs
 ```
 
+## ArgumentCheck (0.10.0)
+Maintainer: Benjamin Nutter <benjamin.nutter@gmail.com>  
+Bug reports: https://github.com/nutterb/ArgumentCheck/issues/
+
+__OK__
+
 ## ARPobservation (1.1)
 Maintainer: James E. Pustejovsky <jepusto@gmail.com>
 
 __OK__
 
-## ARTool (0.9.3)
+## ARTool (0.9.5)
 Maintainer: Matthew Kay <mjskay@uw.edu>  
 Bug reports: https://github.com/mjskay/ARTool/issues/new
 
-```
-checking package dependencies ... NOTE
-Package suggested but not available for checking: ‘lsmeans’
-```
-```
-checking DESCRIPTION meta-information ... NOTE
-Malformed Description field: should contain one or more complete sentences.
-```
+__OK__
+
+## arules (1.2-1)
+Maintainer: Michael Hahsler <mhahsler@lyle.smu.edu>  
+Bug reports: http://r-forge.r-project.org/projects/arules
+
 ```
 checking tests ... ERROR
 Running the tests in ‘tests/testthat.R’ failed.
 Last 13 lines of output:
-  Type 'q()' to quit R.
+  1. Failure (at test-matrix.R#56): (unknown) ------------------------------------
+  .Call("R_rowSums_ngCMatrix", x) not equal to rowSums(x)
+  names for target but not for current
   
-  > library(testthat)
-  > library(ARTool)
-  Loading required package: lme4
-  Loading required package: Matrix
-  Loading required package: Rcpp
-  Loading required package: car
-  > 
-  > test_check("ARTool")
-  Error in library(lsmeans) : there is no package called 'lsmeans'
-  Calls: test_check ... lapply -> FUN -> sys.source2 -> eval -> eval -> library
+  2. Failure (at test-matrix.R#60): (unknown) ------------------------------------
+  colSums(x) not equal to .Call("R_colSums_ngCMatrix", x)
+  names for current but not for target
+  Error in match.arg(as) : 
+    'arg' should be one of "passed", "skipped", "error"
+  Calls: test_package ... test_files -> <Anonymous> -> cat -> colourise -> match.arg
+  In addition: Warning message:
+  Placing tests in `inst/tests/` is deprecated. Please use `tests/testthat/` instead 
   Execution halted
 ```
 ```
 DONE
-Status: 1 ERROR, 2 NOTEs
+Status: 1 ERROR
 ```
 
-## arules (1.1-6)
-Maintainer: Michael Hahsler <mhahsler@lyle.smu.edu>
-
-__OK__
-
-## aRxiv (0.5.8)
+## aRxiv (0.5.10)
 Maintainer: Karl Broman <kbroman@biostat.wisc.edu>  
 Bug reports: https://github.com/ropensci/aRxiv/issues
 
 __OK__
 
-## assertive (0.2-4)
+## assertive.base (0.0-1)
 Maintainer: Richard Cotton <richierocks@gmail.com>
 
-```
-checking Rd cross-references ... NOTE
-Package unavailable to check Rd xrefs: ‘sets’
-```
-```
-DONE
-Status: 1 NOTE
-```
+__OK__
 
-## assertr (0.4.1)
+## assertive (0.3-0)
+Maintainer: Richard Cotton <richierocks@gmail.com>
+
+__OK__
+
+## assertr (1.0.0)
 Maintainer: Tony Fischetti <tony.fischetti@gmail.com>  
 Bug reports: https://github.com/tonyfischetti/assertr/issues
 
@@ -279,6 +304,33 @@ manual.
 DONE
 Status: 1 NOTE
 ```
+
+## AutoModel (0.4.9)
+Maintainer: Alex Lishinski <alexlishinski@gmail.com>
+
+__OK__
+
+## autovarCore (1.0-0)
+Maintainer: Ando Emerencia <ando.emerencia@gmail.com>  
+Bug reports: https://github.com/roqua/autovarcore/issues
+
+__OK__
+
+## AzureML (0.1.1)
+Maintainer: Raymond Laghaeian <raymondl@microsoft.com>
+
+__OK__
+
+## backpipe (0.1.2)
+Maintainer: Christopher Brown <chris.brown@decisionpatterns.com>  
+Bug reports: https://github.com/decisionpatterns/backpipe/issues
+
+__OK__
+
+## backtestGraphics (0.1.5)
+Maintainer: Miller Zijie Zhu <zijie.miller.zhu@gmail.com>
+
+__OK__
 
 ## bagRboostR (0.0.2)
 Maintainer: Shannon Rush <shannonmrush@gmail.com>
@@ -317,7 +369,7 @@ Bug reports: https://github.com/tudo-r/BatchJobs/issues
 
 __OK__
 
-## BayesFactor (0.9.11-1)
+## BayesFactor (0.9.12-2)
 Maintainer: Richard D. Morey <richarddmorey@gmail.com>  
 Bug reports: https://github.com/richarddmorey/BayesFactor/issues
 
@@ -326,35 +378,17 @@ __OK__
 ## bayesGDS (0.6.1)
 Maintainer: Michael Braun <braunm@smu.edu>
 
-```
-checking package dependencies ... NOTE
-Package suggested but not available for checking: ‘MCMCpack’
-```
-```
-DONE
-Status: 1 NOTE
-```
+__OK__
 
 ## BBmisc (1.9)
 Maintainer: Bernd Bischl <bernd_bischl@gmx.net>  
 Bug reports: https://github.com/berndbischl/BBmisc/issues
 
-```
-checking package dependencies ... NOTE
-Package suggested but not available for checking: ‘microbenchmark’
-```
-```
-DONE
-Status: 1 NOTE
-```
+__OK__
 
 ## bbmle (1.0.17)
 Maintainer: Ben Bolker <bolker@mcmaster.ca>
 
-```
-checking package dependencies ... NOTE
-Package suggested but not available for checking: ‘rms’
-```
 ```
 checking R code for possible problems ... NOTE
 splom.slice : up0: no visible global function definition for
@@ -368,40 +402,14 @@ xyplot.slice : pfun: no visible global function definition for
   ‘panel.number’
 ```
 ```
-checking re-building of vignette outputs ... NOTE
-Error in re-building vignettes:
-  ...
-  NaNs produced
-Warning in dbinom(x = c(0, 2, 1, 3, 4, 5, 0, 0, 0, 0, 1, 0, 0, 0, 0), prob = c(0.323159427380936,  :
-  NaNs produced
-Warning in dbinom(x = c(0, 2, 1, 3, 4, 5, 0, 0, 0, 0, 1, 0, 0, 0, 0), prob = c(1.69696793084232,  :
-  NaNs produced
-Warning in dbinom(x = c(0, 2, 1, 3, 4, 5, 0, 0, 0, 0, 1, 0, 0, 0, 0), prob = c(0.289372177019226,  :
-  NaNs produced
-Warning in dbinom(x = c(0, 2, 1, 3, 4, 5, 0, 0, 0, 0, 1, 0, 0, 0, 0), prob = c(1.90983961894499,  :
-  NaNs produced
-Warning in dbinom(x = c(0, 2, 1, 3, 4, 5, 0, 0, 0, 0, 1, 0, 0, 0, 0), prob = c(0.253207428692937,  :
-  NaNs produced
-Warning in dbinom(x = c(0, 2, 1, 3, 4, 5, 0, 0, 0, 0, 1, 0, 0, 0, 0), prob = c(2.24718525433143,  :
-  NaNs produced
-Warning in dbinom(x = c(0, 2, 1, 3, 4, 5, 0, 0, 0, 0, 1, 0, 0, 0, 0), prob = c(0.219940849413555,  :
-  NaNs produced
-Warning in dbinom(x = c(0, 2, 1, 3, 4, 5, 0, 0, 0, 0, 1, 0, 0, 0, 0), prob = c(2.76406402172104,  :
-  NaNs produced
-Warning in dbinom(x = c(0, 2, 1, 3, 4, 5, 0, 0, 0, 0, 1, 0, 0, 0, 0), prob = c(0.191138285903703,  :
-  NaNs produced
-Error in loadNamespace(j <- i[[1L]], c(lib.loc, .libPaths()), versionCheck = vI[[j]]) : 
-  there is no package called 'unmarked'
-Quitting from lines 148-153 (quasi.Rnw) 
-Error: processing vignette 'quasi.Rnw' failed with diagnostics:
-package or namespace load failed for 'AICcmodavg'
-Execution halted
-
-```
-```
 DONE
-Status: 3 NOTEs
+Status: 1 NOTE
 ```
+
+## bedr (1.0.2)
+Maintainer: Paul Boutros <Paul.Boutros@oicr.on.ca>
+
+__OK__
 
 ## benford.analysis (0.1.1)
 Maintainer: Carlos Cinelli <carloscinelli@hotmail.com>
@@ -438,33 +446,17 @@ DONE
 Status: 1 NOTE
 ```
 
-## bio3d (2.2-2)
+## bio3d (2.2-3)
 Maintainer: Barry Grant <bjgrant@umich.edu>
 
-```
-checking tests ... ERROR
-Running the tests in ‘tests/testthat.R’ failed.
-Last 13 lines of output:
-  .......... .......... .......... .......... ..........
-  .......... .......... .......... .......... ..........
-  .......... .......... .......... .......... 
-  downloaded 590 KB
-  
-  testthat results ================================================================
-  OK: 253 SKIPPED: 0 FAILED: 3
-  1. Error: SSE assignment still works 
-  2. Error: struct.aln still works 
-  3. Error: fit.xyz() gets the same results as VMD 
-  
-  Error: testthat unit tests failed
-  Execution halted
-```
-```
-DONE
-Status: 1 ERROR
-```
+__OK__
 
-## biogram (1.1)
+## biogas (1.1.0)
+Maintainer: Sasha D. Hafner <saha@kbm.sdu.dk>
+
+__OK__
+
+## biogram (1.2)
 Maintainer: Michal Burdukiewicz <michalburdukiewicz@gmail.com>  
 Bug reports: https://github.com/michbur/biogram/issues
 
@@ -483,6 +475,28 @@ DONE
 Status: 1 NOTE
 ```
 
+## biomartr (0.0.2)
+Maintainer: Hajk-Georg Drost <hajk-georg.drost@informatik.uni-halle.de>  
+Bug reports: https://github.com/HajkD/biomartr/issues
+
+```
+checking package dependencies ... ERROR
+Packages required but not available: ‘biomaRt’ ‘Biostrings’
+
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
+```
+```
+DONE
+Status: 1 ERROR
+```
+
+## blme (1.0-4)
+Maintainer: Vincent Dorie <vjd4@nyu.edu>  
+Bug reports: https://github.com/vdorie/blme/issues
+
+__OK__
+
 ## blowtorch (1.0.2)
 Maintainer: Steven Pollack <steven@pollackphoto.net>
 
@@ -493,7 +507,37 @@ Maintainer: Gregory Jefferis <jefferis@gmail.com>
 
 __OK__
 
-## bold (0.2.6)
+## bnclassify (0.3.0)
+Maintainer: Mihaljevic Bojan <bmihaljevic@fi.upm.es>  
+Bug reports: http://github.com/bmihaljevic/bnclassify/issues
+
+```
+checking package dependencies ... ERROR
+Packages required but not available: ‘graph’ ‘RBGL’
+
+Package suggested but not available for checking: ‘Rgraphviz’
+
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
+```
+```
+DONE
+Status: 1 ERROR
+```
+
+## bnstruct (1.0)
+Maintainer: Francesco Sambo <francesco.sambo@dei.unipd.it>
+
+```
+checking package dependencies ... NOTE
+Packages suggested but not available for checking: ‘graph’ ‘Rgraphviz’
+```
+```
+DONE
+Status: 1 NOTE
+```
+
+## bold (0.3.0)
 Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>  
 Bug reports: https://github.com/ropensci/bold/issues
 
@@ -506,34 +550,37 @@ DONE
 Status: 1 NOTE
 ```
 
-## bootLR (0.9)
+## bootLR (1.0)
 Maintainer: Ari B. Friedman <abfriedman@gmail.com>
 
 __OK__
 
-## boxr (0.2.5)
+## boral (0.9.1)
+Maintainer: Francis Hui <fhui28@gmail.com>
+
+```
+checking whether package ‘boral’ can be installed ... ERROR
+Installation failed.
+See ‘/private/tmp/RtmpKAtbVW/check_cran14a8c2e8e2543/boral.Rcheck/00install.out’ for details.
+```
+```
+DONE
+Status: 1 ERROR
+```
+
+## boxr (0.2.9)
 Maintainer: Brendan Rocks <rocks.brendan@gmail.com>  
 Bug reports: https://github.com/brendan-R/boxr/issues
 
 __OK__
 
-## brms (0.1.0)
-Maintainer: Paul-Christian Buerkner <paul.buerkner@gmail.com>
+## brms (0.5.0)
+Maintainer: Paul-Christian Buerkner <paul.buerkner@gmail.com>  
+Bug reports: http://github.com/paul-buerkner/brms/issues
 
-```
-checking package dependencies ... NOTE
-Packages suggested but not available for checking: ‘rstan’ ‘R2jags’
-```
-```
-checking Rd cross-references ... NOTE
-Package unavailable to check Rd xrefs: ‘rstan’
-```
-```
-DONE
-Status: 2 NOTEs
-```
+__OK__
 
-## broman (0.55-2)
+## broman (0.59-5)
 Maintainer: Karl W Broman <kbroman@biostat.wisc.edu>
 
 ```
@@ -552,167 +599,24 @@ Status: 1 NOTE
 Maintainer: David Robinson <admiral.david@gmail.com>  
 Bug reports: http://github.com/dgrtwo/broom/issues
 
-```
-checking package dependencies ... NOTE
-Package suggested but not available for checking: ‘plm’
-```
-```
-DONE
-Status: 1 NOTE
-```
+__OK__
 
-## caret (6.0-47)
-Maintainer: Max Kuhn <Max.Kuhn@pfizer.com>
+## brr (1.0.0)
+Maintainer: Stéphane Laurent <laurent_step@yahoo.fr>
 
-```
-checking package dependencies ... NOTE
-Packages suggested but not available for checking:
-  ‘earth’ ‘ipred’ ‘pls’ ‘spls’ ‘subselect’ ‘pamr’ ‘Cubist’
-```
-```
-checking Rd cross-references ... NOTE
-Packages unavailable to check Rd xrefs: ‘earth’, ‘subselect’, ‘ipred’, ‘pls’, ‘spls’, ‘pamr’, ‘Cubist’
-```
-```
-checking examples ... ERROR
-Running examples in ‘caret-Ex.R’ failed
-The error most likely occurred in:
+__OK__
 
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
-> ### Name: bagFDA
-> ### Title: Bagged FDA
-> ### Aliases: bagFDA print.bagFDA bagFDA.default bagFDA.formula
-> ### Keywords: regression
-> 
-> ### ** Examples
-> 
-> library(mlbench)
-> library(earth)
-Error in library(earth) : there is no package called ‘earth’
-Execution halted
-```
-```
-checking tests ... ERROR
-Running the tests in ‘tests/testthat.R’ failed.
-Last 13 lines of output:
-  4: bagEarth(Class ~ ., data = data, B = 3, glm = list(family = binomial)) at test_models_bagEarth.R:22
-  5: bagEarth.formula(Class ~ ., data = data, B = 3, glm = list(family = binomial))
-  6: bagEarth.default(x, y, w, B = B, summary = summary, keepX = keepX, ...)
-  7: requireNamespaceQuietStop("earth")
-  8: stop(paste("package", package, "is required"))
-  
-  testthat results ================================================================
-  OK: 19 SKIPPED: 0 FAILED: 2
-  1. Error: bagEarth simple regression 
-  2. Error: bagEarth simple classification 
-  
-  Error: testthat unit tests failed
-  Execution halted
-```
-```
-checking running R code from vignettes ... WARNING
-Errors in running code in vignettes:
-when running code in ‘caret.Rnw’
-  ...
-The following objects are masked from ‘package:stats’:
+## caret (6.0-52)
+Maintainer: Max Kuhn <Max.Kuhn@pfizer.com>  
+Bug reports: https://github.com/topepo/caret/issues
 
-    cov, smooth, var
-
-
-> library(pls)
-
-  When sourcing ‘caret.R’:
-Error: there is no package called ‘pls’
-Execution halted
-
-```
-```
-checking re-building of vignette outputs ... NOTE
-Error in re-building vignettes:
-  ...
-Loading required package: lattice
-Loading required package: ggplot2
-Type 'citation("pROC")' for a citation.
-
-Attaching package: ‘pROC’
-
-The following objects are masked from ‘package:stats’:
-
-    cov, smooth, var
-
-
-Error: processing vignette 'caret.Rnw' failed with diagnostics:
- chunk 1 (label = loadLibs) 
-Error in library(pls) : there is no package called ‘pls’
-Execution halted
-
-```
-```
-DONE
-Status: 2 ERRORs, 1 WARNING, 3 NOTEs
-```
+__OK__
 
 ## caretEnsemble (1.0.0)
 Maintainer: Zachary A. Mayer <zach.mayer@gmail.com>  
 Bug reports: https://github.com/zachmayer/caretEnsemble/issues
 
-```
-checking package dependencies ... NOTE
-Packages suggested but not available for checking: ‘ipred’ ‘gbm’
-```
-```
-checking tests ... ERROR
-Running the tests in ‘tests/testthat.R’ failed.
-Last 13 lines of output:
-  
-  > library(testthat)
-  > library(caretEnsemble)
-  Loading required package: caret
-  Loading required package: lattice
-  Loading required package: ggplot2
-  > 
-  > test_check("caretEnsemble")
-  randomForest 4.6-10
-  Type rfNews() to see new features/changes/bug fixes.
-  Error in library("gbm") : there is no package called 'gbm'
-  Calls: test_check ... lapply -> FUN -> sys.source2 -> eval -> eval -> library
-  Execution halted
-```
-```
-checking re-building of vignette outputs ... NOTE
-Error in re-building vignettes:
-  ...
-Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
-Warning: glm.fit: algorithm did not converge
-Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
-Warning: glm.fit: algorithm did not converge
-Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
-Warning: glm.fit: algorithm did not converge
-Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
-Warning: glm.fit: algorithm did not converge
-Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
-Warning: glm.fit: algorithm did not converge
-Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
-Warning: glm.fit: algorithm did not converge
-Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
-Warning: glm.fit: algorithm did not converge
-Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
-Warning: glm.fit: algorithm did not converge
-Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
-Warning: glm.fit: algorithm did not converge
-Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
-Warning: glm.fit: algorithm did not converge
-Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
-Quitting from lines 161-163 (caretEnsemble-intro.Rmd) 
-Error: processing vignette 'caretEnsemble-intro.Rmd' failed with diagnostics:
-there is no package called 'gbm'
-Execution halted
-
-```
-```
-DONE
-Status: 1 ERROR, 2 NOTEs
-```
+__OK__
 
 ## Causata (4.2-0)
 Maintainer: Justin Hemann <justinh@causata.com>
@@ -744,6 +648,9 @@ checking files in ‘vignettes’ ... NOTE
 The following files look like leftovers/mistakes:
   ‘Causata-vignette.log’
 Please remove them from your package.
+The following directory looks like a leftover from 'knitr':
+  ‘figure’
+Please remove from your package.
 ```
 ```
 DONE
@@ -756,13 +663,32 @@ Maintainer: Baptiste Auguie <baptiste.auguie@gmail.com>
 ```
 checking whether package ‘cda’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpQJiDLv/check_crand2516b207784/cda.Rcheck/00install.out’ for details.
+See ‘/private/tmp/RtmpKAtbVW/check_cran14a8c2e8e2543/cda.Rcheck/00install.out’ for details.
+```
+```
+DONE
 Status: 1 ERROR
 ```
 
-## cellranger (0.1.0)
+## cdcfluview (0.4.0)
+Maintainer: Bob Rudis <bob@rudis.net>  
+Bug reports: https://github.com/hrbrmstr/cdcfluview/issues
+
+__OK__
+
+## cellranger (1.0.0)
 Maintainer: Jennifer Bryan <jenny@stat.ubc.ca>  
 Bug reports: https://github.com/jennybc/cellranger/issues
+
+__OK__
+
+## cgdsr (1.2.5)
+Maintainer: Augustin Luna <lunaa@cbio.mskcc.org>
+
+__OK__
+
+## changepoint (2.0.1)
+Maintainer: Rebecca Killick <r.killick@lancs.ac.uk>
 
 __OK__
 
@@ -778,14 +704,14 @@ DONE
 Status: 1 NOTE
 ```
 
-## checkmate (1.5.3)
+## checkmate (1.6.2)
 Maintainer: Michel Lang <michellang@gmail.com>  
 Bug reports: https://github.com/mllg/checkmate/issues
 
 __OK__
 
-## checkpoint (0.3.10)
-Maintainer: Andrie de Vries <andrie@revolutionanalytics.com>  
+## checkpoint (0.3.15)
+Maintainer: Andrie de Vries <adevries@microsoft.com>  
 Bug reports: http://www.github.com/RevolutionAnalytics/checkpoint/issues
 
 __OK__
@@ -794,14 +720,13 @@ __OK__
 Maintainer: Jeffrey Dick <j3ffdick@gmail.com>
 
 ```
-checking package dependencies ... NOTE
-Package suggested but not available for checking: ‘limSolve’
-```
-```
 checking whether package ‘CHNOSZ’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpQJiDLv/check_crand2516b207784/CHNOSZ.Rcheck/00install.out’ for details.
-Status: 1 ERROR, 1 NOTE
+See ‘/private/tmp/RtmpKAtbVW/check_cran14a8c2e8e2543/CHNOSZ.Rcheck/00install.out’ for details.
+```
+```
+DONE
+Status: 1 ERROR
 ```
 
 ## chopthin (0.1)
@@ -809,7 +734,7 @@ Maintainer: Axel Gandy <a.gandy@imperial.ac.uk>
 
 __OK__
 
-## choroplethr (3.1.0)
+## choroplethr (3.3.0)
 Maintainer: Ari Lamstein <arilamstein@gmail.com>  
 Bug reports: https://github.com/arilamstein/choroplethr/issues
 
@@ -828,13 +753,36 @@ DONE
 Status: 1 NOTE
 ```
 
+## cjoint (2.0.0)
+Maintainer: Anton Strezhnev <astrezhnev@fas.harvard.edu>
+
+__OK__
+
 ## Ckmeans.1d.dp (3.3.1)
 Maintainer: Joe Song <joemsong@cs.nmsu.edu>
 
 __OK__
 
-## climwin (0.0.1)
+## cleangeo (0.1-0)
+Maintainer: Emmanuel Blondel <emmanuel.blondel1@gmail.com>  
+Bug reports: https://github.com/eblondel/cleangeo/issues
+
+__OK__
+
+## climwin (0.1.2)
 Maintainer: Liam D. Bailey <liam.bailey@anu.edu.au>
+
+__OK__
+
+## clisymbols (1.0.0)
+Maintainer: Gabor Csardi <csardi.gabor@gmail.com>  
+Bug reports: https://github.com/gaborcsardi/clisymbols/issues
+
+__OK__
+
+## coala (0.1.1)
+Maintainer: Paul Staab <develop@paulstaab.de>  
+Bug reports: https://github.com/statgenlmu/coala/issues
 
 __OK__
 
@@ -864,38 +812,66 @@ DONE
 Status: 1 NOTE
 ```
 
-## coenocliner (0.1-0)
+## coenocliner (0.2-0)
 Maintainer: Gavin L. Simpson <ucfagls@gmail.com>  
 Bug reports: https://github.com/gavinsimpson/coenocliner/issues
 
-```
-checking tests ... ERROR
-Running the tests in ‘tests/test-all.R’ failed.
-Last 13 lines of output:
-  'citation()' on how to cite R or R packages in publications.
-  
-  Type 'demo()' for some demos, 'help()' for on-line help, or
-  'help.start()' for an HTML browser interface to help.
-  Type 'q()' to quit R.
-  
-  > ## Test `coenocliner` using the `testthat` package
-  > 
-  > ## Setup
-  > library("testthat")
-  > library_if_available("coenocliner")
-  Error: could not find function "library_if_available"
-  Execution halted
-```
-```
-DONE
-Status: 1 ERROR
-```
+__OK__
 
-## commentr (0.1)
+## commentr (1.0.1)
 Maintainer: Erik Bulow <erik.bulow@rccvast.se>  
 Bug reports: https://github.com/cancercentrum/commentr/issues
 
 __OK__
+
+## CompareCausalNetworks (0.1.1)
+Maintainer: Christina Heinze <heinze@stat.math.ethz.ch>  
+Bug reports: 
+        https://github.com/christinaheinze/CompareCausalNetworks/issues
+
+```
+checking examples ... ERROR
+Running examples in ‘CompareCausalNetworks-Ex.R’ failed
+The error most likely occurred in:
+
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+> ### Name: getParents
+> ### Title: Estimate the connectivity matrix of a causal graph
+> ### Aliases: getParents
+> ### Keywords: Causality, Graph estimations
+> 
+> ### ** Examples
+> 
+> ## load the backShift package for data generation and plotting functionality
+> if(!requireNamespace("backShift", quietly = TRUE))
++  stop("The package 'backShift' is needed for the examples to
++  work. Please install it.", call. = FALSE)
+Error: The package 'backShift' is needed for the examples to
+ work. Please install it.
+Execution halted
+```
+```
+checking tests ... ERROR
+Running the tests in ‘tests/testthat.R’ failed.
+Last 13 lines of output:
+  OK: 9 SKIPPED: 0 FAILED: 4
+  1. Error: Checks output type for pc 
+  2. Error: Checks output type for LINGAM 
+  3. Error: Checks output type for ges 
+  4. Error: Checks output type for rfci 
+  
+  Error: testthat unit tests failed
+  In addition: Warning message:
+  In runBackShift(X, environment, parentsOf, variableSelMat, pointConf,  :
+    backShift -- no stable model found. Possible model 
+              mispecification. Returning the empty graph.
+  
+  Execution halted
+```
+```
+DONE
+Status: 2 ERRORs
+```
 
 ## confidence (1.1-0)
 Maintainer: Dennis J. J. Walvoort <dennis.Walvoort@wur.nl>
@@ -914,8 +890,9 @@ DONE
 Status: 1 NOTE
 ```
 
-## covr (1.0.0)
-Maintainer: Jim Hester <james.f.hester@gmail.com>
+## covr (1.2.0)
+Maintainer: Jim Hester <james.f.hester@gmail.com>  
+Bug reports: https://github.com/jimhester/covr/issues
 
 ```
 checking dependencies in R code ... NOTE
@@ -928,105 +905,92 @@ DONE
 Status: 1 NOTE
 ```
 
-## crayon (1.2.1)
+## crayon (1.3.1)
 Maintainer: Gabor Csardi <csardi.gabor@gmail.com>  
 Bug reports: https://github.com/gaborcsardi/crayon/issues
 
 __OK__
 
-## crunch (1.1.1)
+## creditr (0.6.1)
+Maintainer: Yuanchu Dang <yuanchu.dang@gmail.com>
+
+__OK__
+
+## crunch (1.4.2)
 Maintainer: Neal Richardson <neal@crunch.io>  
 Bug reports: https://github.com/Crunch-io/rcrunch/issues
 
+__OK__
+
+## ctsem (1.1.1)
+Maintainer: Charles Driver <driver@mpib-berlin.mpg.de>
+
 ```
-checking tests ... ERROR
-Running the tests in ‘tests/testthat.R’ failed.
-Last 13 lines of output:
-  
-  Attaching package: 'crunch'
-  
-  The following object is masked from 'package:base':
-  
-      table
-  
-  Error in cat(colourise("S", "yellow")) : 
-    could not find function "colourise"
-  Error in cat(colourise("S", "yellow")) : 
-    could not find function "colourise"
-  Calls: test_check ... lapply -> FUN -> sys.source2 -> eval -> eval -> skip -> cat
-  Execution halted
+checking re-building of vignette outputs ... NOTE
+Error in re-building vignettes:
+  ...
+cint_Happiness :  0.758903725799236 
+
+-2LL = 2904.87591158535
+Error in texi2dvi(file = file, pdf = TRUE, clean = clean, quiet = quiet,  : 
+  Running 'texi2dvi' on 'ctsem.tex' failed.
+LaTeX errors:
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+! Undefined control sequence.
+l.18 <f3><f3><f3>o߾<9d><99><99><c9><e5>rG<ba><c4>b<b1><c8>^^X<c3>P<88>u<b9>\<ae>
+                                 P(<e4><f3><f9>B<a1>033<b3><bd><bd><9d><cf><e7>^^G<f8><c8>1<b7><bd><9e><b4><c7>9G<d2>@<e9><92><e3>8<d9>l<96>~<e2><a2>^<af>...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+! Missing $ inserted.
+<inserted text> 
+                $
+l.18 ...P(<e4><f3><f9>B<a1>033<b3><bd><bd><9d><cf><e7>^^G<f8><c8>1<b7><bd><9e><b4><c7>9G<d2>@<e9><92><e3>8<d9>l<96>~<e2><a2>^
+                                                  <af>ߺu<8b>u<b2>-<b8>D<^^[^^D<c1><de><de>^^^Z<82> ...
+! Undefined control sequence.
+l.18 ...<97><97>߼yc^^X<86>^^P<a2><d1>^^H^^Y<9b>ZY<f9><9c>
+Calls: buildVignettes -> texi2pdf -> texi2dvi
+Execution halted
+
+```
+```
+DONE
+Status: 1 NOTE
+```
+
+## curl (0.9.3)
+Maintainer: Jeroen Ooms <jeroen.ooms@stat.ucla.edu>  
+Bug reports: https://github.com/jeroenooms/curl/issues
+
+```
+checking examples ... ERROR
+Running examples in ‘curl-Ex.R’ failed
+The error most likely occurred in:
+
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+> ### Name: curl_fetch_memory
+> ### Title: Fetch the contents of a URL
+> ### Aliases: curl_fetch_disk curl_fetch_memory curl_fetch_stream
+> 
+> ### ** Examples
+> 
+> # Load in memory
+> res <- curl_fetch_memory("http://httpbin.org/cookies/set?foo=123&bar=ftw")
+Error in curl_fetch_memory("http://httpbin.org/cookies/set?foo=123&bar=ftw") : 
+  Timeout was reached
+Calls: curl_fetch_memory -> .Call
+Execution halted
 ```
 ```
 DONE
 Status: 1 ERROR
 ```
 
-## CSS (1.0.2)
-Maintainer: Francois Guillem <guillem.francois@gmail.com>
-
-```
-checking dependencies in R code ... NOTE
-Packages in Depends field not imported from:
-  ‘XML’ ‘stringr’
-  These packages need to be imported from (in the NAMESPACE file)
-  for when this namespace is loaded but not attached.
-```
-```
-checking R code for possible problems ... NOTE
-cssApply: no visible global function definition for ‘xpathSApply’
-cssApplyInNodeSet: no visible global function definition for
-  ‘getNodeSet’
-cssApplyInNodeSet: no visible global function definition for
-  ‘xpathSApply’
-cssCharacter: no visible global function definition for ‘xmlValue’
-cssClass: no visible global function definition for ‘xmlGetAttr’
-cssId: no visible global function definition for ‘xmlGetAttr’
-cssLink: no visible global function definition for ‘xmlGetAttr’
-cssName: no visible global function definition for ‘xmlGetAttr’
-cssNumeric: no visible global function definition for ‘xmlValue’
-cssSrc: no visible global function definition for ‘xmlGetAttr’
-cssToXpath: no visible global function definition for ‘str_extract_all’
-cssToXpath : <anonymous>: no visible global function definition for
-  ‘str_detect’
-cssToXpath : <anonymous>: no visible global function definition for
-  ‘str_replace’
-cssToXpath : <anonymous>: no visible global function definition for
-  ‘str_extract’
-cssToXpath : <anonymous>: no visible global function definition for
-  ‘str_match’
-cssToXpath : <anonymous>: no visible global function definition for
-  ‘str_replace_all’
-cssToXpath : <anonymous>: no visible global function definition for
-  ‘str_match_all’
-cssToXpath: no visible global function definition for ‘str_replace’
-cssValue: no visible global function definition for ‘xmlGetAttr’
-```
-```
-checking tests ... ERROR
-Running the tests in ‘tests/run-all.R’ failed.
-Last 13 lines of output:
-  2. Failure (at testDataExtraction.R#79): functions are insensitive to extra spaces 
-  cssApply(doc, "*[ id = 'player1' ]", cssId) not equal to c("player1")
-  Modes: character, list
-  Lengths: 1, 0
-  target is character, current is list
-  
-  3. Failure (at testDataExtraction.R#81): functions are insensitive to extra spaces 
-  cssApply(doc, "*[ name = 'Hello world' ]", cssCharacter) not equal to "insensitive"
-  Modes: character, list
-  Lengths: 1, 0
-  target is character, current is list
-  Error: Test failures
-  Execution halted
-```
-```
-DONE
-Status: 1 ERROR, 2 NOTEs
-```
-
-## curl (0.6)
-Maintainer: Jeroen Ooms <jeroen.ooms@stat.ucla.edu>  
-Bug reports: https://github.com/jeroenooms/curl/issues
+## cymruservices (0.1.1)
+Maintainer: Bob Rudis <bob@rudis.net>
 
 __OK__
 
@@ -1041,14 +1005,21 @@ Bug reports: https://github.com/emkayoh/Dark/issues
 
 __OK__
 
-## data.table (1.9.4)
-Maintainer: Matt Dowle <mdowle@mdowle.plus.com>  
+## data.table (1.9.6)
+Maintainer: Matt Dowle <mattjdowle@gmail.com>  
 Bug reports: https://github.com/Rdatatable/data.table/issues
 
-__OK__
+```
+checking package dependencies ... NOTE
+Package suggested but not available for checking: ‘GenomicRanges’
+```
+```
+DONE
+Status: 1 NOTE
+```
 
-## data.tree (0.1.6)
-Maintainer: Christoph Glur <christoph.glur@ipub.ch>  
+## data.tree (0.2.1)
+Maintainer: Christoph Glur <christoph.glur@ipub.com>  
 Bug reports: http://github.com/gluc/data.tree/issues
 
 __OK__
@@ -1059,20 +1030,31 @@ Bug reports: https://github.com/christophergandrud/DataCombine/issues
 
 __OK__
 
-## datalist (0.2)
-Maintainer: Joe Thorley <joe@poissonconsulting.ca>
+## datafsm (0.1.0)
+Maintainer: Nay John J. <john.j.nay@gmail.com>  
+Bug reports: https://github.com/JohnNay/datafsm/issues
+
+__OK__
+
+## dataonderivatives (0.2.1)
+Maintainer: Imanuel Costigan <i.costigan@me.com>  
+Bug reports: https://github.com/imanuelcostigan/dataonderivatives/issues
 
 ```
-checking DESCRIPTION meta-information ... NOTE
-Malformed Title field: should not end in a period.
+checking package dependencies ... ERROR
+Packages required and available but unsuitable versions: ‘utils’ ‘stats’
+
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
 ```
 ```
 DONE
-Status: 1 NOTE
+Status: 1 ERROR
 ```
 
-## dataRetrieval (2.2.1)
-Maintainer: Laura DeCicco <ldecicco@usgs.gov>
+## dataRetrieval (2.3.1)
+Maintainer: Laura DeCicco <ldecicco@usgs.gov>  
+Bug reports: https://github.com/USGS-R/dataRetrieval/issues
 
 __OK__
 
@@ -1080,14 +1062,7 @@ __OK__
 Maintainer: Greg Lamp <greg@yhathq.com>  
 Bug reports: https://github.com/yhat/db.r/issues
 
-```
-checking package dependencies ... NOTE
-Package suggested but not available for checking: ‘RPostgreSQL’
-```
-```
-DONE
-Status: 1 NOTE
-```
+__OK__
 
 ## dbarts (0.8-5)
 Maintainer: Vincent Dorie <vjd4@nyu.edu>  
@@ -1096,7 +1071,10 @@ Bug reports: https://github.com/vdorie/dbarts/issues
 ```
 checking whether package ‘dbarts’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpQJiDLv/check_crand2516b207784/dbarts.Rcheck/00install.out’ for details.
+See ‘/private/tmp/RtmpKAtbVW/check_cran14a8c2e8e2543/dbarts.Rcheck/00install.out’ for details.
+```
+```
+DONE
 Status: 1 ERROR
 ```
 
@@ -1116,225 +1094,129 @@ DONE
 Status: 1 NOTE
 ```
 
+## dbscan (0.9-4)
+Maintainer: Michael Hahsler <mhahsler@lyle.smu.edu>
+
+__OK__
+
 ## dcemriS4 (0.55)
 Maintainer: Brandon Whitcher <bwhitcher@gmail.com>
 
 ```
 checking whether package ‘dcemriS4’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpQJiDLv/check_crand2516b207784/dcemriS4.Rcheck/00install.out’ for details.
+See ‘/private/tmp/RtmpKAtbVW/check_cran14a8c2e8e2543/dcemriS4.Rcheck/00install.out’ for details.
+```
+```
+DONE
 Status: 1 ERROR
 ```
 
 ## dcmr (1.0)
 Maintainer: Diane Losardo <dlosardo@amplify.com>
 
-__OK__
-
-## decisionSupport (1.101.1)
-Maintainer: Lutz Göhring <lutz.goehring@gmx.de>
-
-```
-checking package dependencies ... NOTE
-Packages suggested but not available for checking:
-  ‘chillR’ ‘eha’ ‘mc2d’ ‘nleqslv’ ‘pls’ ‘rriskDistributions’
-```
-```
-checking Rd cross-references ... NOTE
-Packages unavailable to check Rd xrefs: ‘chillR’, ‘nleqslv’, ‘pls’, ‘mc2d’, ‘eha’, ‘rriskDistributions’
-```
-```
-checking examples ... ERROR
-Running examples in ‘decisionSupport-Ex.R’ failed
-The error most likely occurred in:
-
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
-> ### Name: eviSimulation
-> ### Title: Expected Value of Information (EVI) Simulation.
-> ### Aliases: eviSimulation
-> 
-> ### ** Examples
-> 
-> #############################################################
-> # Example 1 Only one prospective estimate:
-> #############################################################
-> numberOfModelRuns=10000
-> # Create the estimate object:
-> variable=c("revenue","costs")
-> distribution=c("posnorm","posnorm")
-> lower=c(10000,  5000)
-> upper=c(100000, 50000)
-> currentEstimate<-as.estimate(variable, distribution, lower, upper)
-> prospectiveEstimate<-currentEstimate
-> revenueConst<-mean(c(currentEstimate$marginal["revenue","lower"],
-+                      currentEstimate$marginal["revenue","upper"]))
-> prospectiveEstimate$marginal["revenue","distribution"]<-"const"
-> prospectiveEstimate$marginal["revenue","lower"]<-revenueConst
-> prospectiveEstimate$marginal["revenue","upper"]<-revenueConst
-> # (a) Define the welfare function without name for the return value:
-> profit<-function(x){
-+ 	x$revenue-x$costs
-+ }
-> 
-> # Calculate the Expected Value of Information:
-> eviSimulationResult<-eviSimulation(welfare=profit,
-+                                    currentEstimate=currentEstimate,
-+                                    prospectiveEstimate=prospectiveEstimate,
-+                                    numberOfModelRuns=numberOfModelRuns,
-+                                    functionSyntax="data.frameNames")
-Error in (function (e)  : Variable: revenue
-there is no package called ‘nleqslv’
-Calls: eviSimulation ... tryCatch -> tryCatchList -> tryCatchOne -> <Anonymous>
-Execution halted
-```
 ```
 checking tests ... ERROR
-Running the tests in ‘tests/testthat.R’ failed.
+Running the tests in ‘tests/test-all.R’ failed.
 Last 13 lines of output:
-  7. Error: A uniform distribution is generated correctly from the 0.05 and 0.95 quantiles (3) 
-  8. Error: A positiv normal distribution is generated correctly from the 0.05 and 0.95 quantiles (1) 
-  9. Error: A positiv normal distribution is generated correctly from the 0.05 and 0.95 quantiles (2) 
-  1. Error: A positiv normal distribution is generated correctly from the 0.05 and 0.95 quantiles (3) 
-  2. Error: A 0-1-truncated normal distribution is generated correctly from the 0.05 and 0.95 quantiles (1) 
-  3. Error: A 0-1-truncated  normal distribution is generated correctly from the 0.05 and 0.95 quantiles (2) 
-  4. Error: Welfare Decision Analysis is run  for 4-D uncorrelated current estimate
-             and 2 dimensional unnamed model function
-            (randomMethod="calculate", functionSyntax="plainNamesDeprecated") (1). 
-  5. ...
+  
+  > library(testthat)
+  > test_check("dcmr")
+  Loading required package: dcmr
+  1. Failure (at test_scoreDCM.R#18): Test ScoreDCM outputs for Qmatrix with no interaction 
+  rmse_class not less than tolerance. Difference: -0.4166667
+  
+  testthat results ================================================================
+  OK: 115 SKIPPED: 0 FAILED: 1
+  1. Failure (at test_scoreDCM.R#18): Test ScoreDCM outputs for Qmatrix with no interaction 
   
   Error: testthat unit tests failed
   Execution halted
 ```
 ```
 DONE
-Status: 2 ERRORs, 2 NOTEs
+Status: 1 ERROR
 ```
 
-## decompr (3.0.0)
+## decisionSupport (1.101.1)
+Maintainer: Lutz Göhring <lutz.goehring@gmx.de>
+
+__OK__
+
+## decompr (4.1.0)
 Maintainer: Bastiaan Quast <bquast@gmail.com>  
 Bug reports: https://github.com/bquast/decompr/issues
 
 __OK__
 
-## Delaporte (2.2-2)
+## Delaporte (2.2-3)
 Maintainer: Avraham Adler <Avraham.Adler@gmail.com>  
 Bug reports: https://bitbucket.org/aadler/delaporte/issues
 
 __OK__
 
-## dendextend (0.18.3)
+## dendextend (1.1.0)
 Maintainer: Tal Galili <tal.galili@gmail.com>  
 Bug reports: https://github.com/talgalili/dendextend/issues
 
 ```
 checking package dependencies ... NOTE
-Packages suggested but not available for checking:
-  ‘profdpm’ ‘microbenchmark’ ‘DendSer’ ‘dynamicTreeCut’
-
 Package which this enhances but not available for checking: ‘labeltodendro’
 ```
 ```
 checking Rd cross-references ... NOTE
-Packages unavailable to check Rd xrefs: ‘DendSer’, ‘dynamicTreeCut’, ‘WGCNA’, ‘moduleColor’, ‘distory’
-```
-```
-checking re-building of vignette outputs ... NOTE
-Error in re-building vignettes:
-  ...
-vignette('dendextend') for the package vignette.
-You can execute a demo of the package via: demo(dendextend)
-
-More information is available on the dendextend project web-site:
-https://github.com/talgalili/dendextend/
-
-Contact: <tal.galili@gmail.com>
-Suggestions and bug-reports can be submitted at: https://github.com/talgalili/dendextend/issues
-
-			To suppress the this message use:
-			suppressPackageStartupMessages(library(dendextend))
-
-
-Attaching package: 'dendextend'
-
-The following object is masked from 'package:stats':
-
-    cutree
-
-Warning in min(-diff(our_dend_heights)) :
-  no non-missing arguments to min; returning Inf
-Quitting from lines 926-932 (introduction.Rmd) 
-Error: processing vignette 'introduction.Rmd' failed with diagnostics:
-there is no package called 'DendSer'
-Execution halted
-
+Packages unavailable to check Rd xrefs: ‘WGCNA’, ‘moduleColor’, ‘distory’
 ```
 ```
 DONE
-Status: 3 NOTEs
+Status: 2 NOTEs
 ```
 
-## dendextendRcpp (0.5.1)
-Maintainer: Tal Galili <tal.galili@gmail.com>
+## dendextendRcpp (0.6.1)
+Maintainer: Tal Galili <tal.galili@gmail.com>  
+Bug reports: https://github.com/talgalili/dendextendRcpp/issues
 
-```
-checking package namespace information ... NOTE
-  Namespaces with empty importFrom:
-  ‘Rcpp’ ‘dendextend’
-```
-```
-checking package dependencies ... NOTE
-Package suggested but not available for checking: ‘microbenchmark’
-```
-```
-checking use of S3 registration ... WARNING
-Registered S3 method from a standard package overwritten by 'dendextendRcpp':
- method            from 
- labels.dendrogram stats
-```
-```
-checking R code for possible problems ... NOTE
-assign_dendextendRcpp_to_dendextend: no visible global function
-  definition for ‘dendextend_options’
-dendextendRcpp_cut_lower_fun: no visible global function definition for
-  ‘is.dendrogram’
-dendextendRcpp_heights_per_k.dendrogram: no visible global function
-  definition for ‘get_branches_heights’
-old_cut_lower_fun: no visible global function definition for
-  ‘is.dendrogram’
-old_get_branches_heights: no visible global function definition for
-  ‘get_nodes_attr’
-old_heights_per_k.dendrogram: no visible global function definition for
-  ‘get_branches_heights’
-```
-```
-DONE
-Status: 1 WARNING, 3 NOTEs
-```
+__OK__
 
 ## dendroextras (0.2.1)
 Maintainer: Gregory Jefferis <jefferis@gmail.com>
 
 __OK__
 
-## Deriv (3.4)
+## Deriv (3.5.6)
 Maintainer: Serguei Sokol <sokol@insa-toulouse.fr>  
 Bug reports: https://github.com/sgsokol/Deriv/issues
 
 __OK__
 
-## devtools (1.8.0)
+## describer (0.2.0)
+Maintainer: Paul Hendricks <paul.hendricks.2013@owu.edu>  
+Bug reports: https://github.com/paulhendricks/describer/issues
+
+__OK__
+
+## detector (0.1.0)
+Maintainer: Paul Hendricks <paul.hendricks.2013@owu.edu>  
+Bug reports: https://github.com/paulhendricks/detector/issues
+
+__OK__
+
+## devtools (1.9.1)
 Maintainer: Hadley Wickham <hadley@rstudio.com>  
-Bug reports: http://github.com/hadley/devtools/issues
+Bug reports: https://github.com/hadley/devtools/issues
 
 ```
 checking package dependencies ... NOTE
 Package suggested but not available for checking: ‘BiocInstaller’
 ```
 ```
-checking dependencies in R code ... NOTE
-'library' or 'require' call to ‘testthat’ in package code.
-  Please use :: or requireNamespace() instead.
-  See section 'Suggested packages' in the 'Writing R Extensions' manual.
+checking foreign function calls ... NOTE
+Registration problem:
+  Evaluating ‘dll$foo’ during check gives error
+‘object 'dll' not found’:
+   .C(dll$foo, 0L)
+See chapter ‘System and foreign language interfaces’ in the ‘Writing R
+Extensions’ manual.
 ```
 ```
 checking R code for possible problems ... NOTE
@@ -1355,21 +1237,16 @@ Maintainer: Nacho Caballero <nachocab@gmail.com>
 
 __OK__
 
+## diagonals (0.3.0)
+Maintainer: Bastiaan Quast <bquast@gmail.com>  
+Bug reports: https://github.com/bquast/diagonals/issues
+
+__OK__
+
 ## DiceKriging (1.5.5)
 Maintainer: Olivier Roustant <roustant@emse.fr>
 
-```
-checking package dependencies ... NOTE
-Package suggested but not available for checking: ‘rgenoud’
-```
-```
-checking Rd cross-references ... NOTE
-Package unavailable to check Rd xrefs: ‘rgenoud’
-```
-```
-DONE
-Status: 2 NOTEs
-```
+__OK__
 
 ## dils (0.8.1)
 Maintainer: Stephen R. Haptonstahl <srh@haptonstahl.org>
@@ -1427,219 +1304,139 @@ Maintainer: Marco Johannes Maier <marco.maier@wu.ac.at>
 
 __OK__
 
-## discreteRV (1.2.1)
+## discreteRV (1.2.2)
 Maintainer: Eric Hare <erichare@iastate.edu>  
 Bug reports: https://github.com/erichare/discreteRV/issues
 
 __OK__
 
-## disposables (1.0.0)
-Maintainer: "Gabor Csardi" <csardi.gabor@gmail.com>  
-Bug reports: https://github.com/gaborcsardi/disposables
+## disposables (1.0.1)
+Maintainer: Gabor Csardi <csardi.gabor@gmail.com>  
+Bug reports: https://github.com/gaborcsardi/disposables/issues
 
-```
-checking for unstated dependencies in examples ... WARNING
-'::' or ':::' imports not declared from:
-  ‘foo1’ ‘foo2’
-```
-```
-checking tests ... ERROR
-Running the tests in ‘tests/testthat.R’ failed.
-Last 13 lines of output:
-     }, "there is no package called 'foo1'", quote(library(name, quietly = TRUE, character.only = TRUE)))
-  15: h(simpleError(msg, call))
-  16: signalCondition(e) at /Users/hadley/Documents/devtools/testthat/R/test-that.r:52
-  17: dispose_packages(pkgs)
-  
-  testthat results ================================================================
-  OK: 6 SKIPPED: 0 FAILED: 3
-  1. Error: We can create and load them 
-  2. Error: We can dispose packages 
-  3. Error: We unload a package if it is already loaded 
-  
-  Error: testthat unit tests failed
-  Execution halted
-```
-```
-DONE
-Status: 1 ERROR, 1 WARNING
-```
+__OK__
 
-## Distance (0.9.3)
+## Distance (0.9.4)
 Maintainer: David Lawrence Miller <dave@ninepointeightone.net>
 
 __OK__
 
-## DNAprofiles (0.3.1)
-Maintainer: Maarten Kruijver <m.v.kruijver@vu.nl>
+## dml (1.1.0)
+Maintainer: Yuan Tang <terrytangyuan@gmail.com>  
+Bug reports: https://github.com/terrytangyuan/dml/issues
 
 ```
-checking package dependencies ... NOTE
-Package suggested but not available for checking: ‘DNAtools’
+checking package dependencies ... ERROR
+Package required but not available: ‘lfda’
+
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
 ```
 ```
 DONE
-Status: 1 NOTE
+Status: 1 ERROR
 ```
+
+## DNAprofiles (0.3.1)
+Maintainer: Maarten Kruijver <m.v.kruijver@vu.nl>
+
+__OK__
 
 ## docopt (0.4.3.3)
 Maintainer: Edwin de Jonge <edwindjonge@gmail.com>
 
 __OK__
 
-## dostats (1.3.1)
+## docopulae (0.3.0)
+Maintainer: Andreas Rappold <arappold@gmx.at>  
+Bug reports: https://github.com/arappold/docopulae/issues
+
+__OK__
+
+## docxtractr (0.1.0.9000)
+Maintainer: Bob Rudis <bob@rudis.net>
+
+__OK__
+
+## dostats (1.3.2)
 Maintainer: Andrew Redd <Andrew.Redd@hsc.utah.edu>
 
-```
-checking R code for possible problems ... NOTE
-Table1: no visible global function definition for ‘idata.frame’
-copy_names: no visible global function definition for ‘dlply’
-depth: no visible global function definition for ‘laply’
-dseval_fork: no visible global function definition for ‘dlply’
-dseval_left.dostats.formula.bind: no visible global function definition
-  for ‘llply’
-dseval_right.dostats.formula.bind: no visible global function
-  definition for ‘llply’
-dseval_right.dostats.formula.bind: no visible global function
-  definition for ‘laply’
-dseval_right.dostats.formula.by_two_fun: no visible global function
-  definition for ‘llply’
-dseval_right.dostats.formula.nest: no visible global function
-  definition for ‘llply’
-dseval_right.dostats.formula.nest: no visible global function
-  definition for ‘laply’
-find_headers.hdf: no visible global function definition for ‘llply’
-find_headers.hdf: no visible global function definition for ‘laply’
-find_headers.list: no visible global function definition for ‘llply’
-find_headers.list: no visible global function definition for ‘laply’
-format.hdf: no visible global function definition for ‘llply’
-get_vars.dostats.formula.bind: no visible global function definition
-  for ‘llply’
-get_vars.dostats.formula.nest: no visible global function definition
-  for ‘llply’
-hdf: no visible global function definition for ‘llply’
-hdf: no visible global function definition for ‘laply’
-is_uniform: no visible global function definition for ‘laply’
-listrows: no visible global function definition for ‘mlply’
-make_pmat: no visible global function definition for ‘laply’
-make_ppath: no visible global function definition for ‘llply’
-parse_bind: no visible global function definition for ‘llply’
-parse_by_two_fun: no visible global function definition for ‘llply’
-parse_nest: no visible global function definition for ‘llply’
-rbind.hdf: no visible global function definition for ‘llply’
-rbind.hdf: no visible global function definition for ‘laply’
-rbind.hdf : <anonymous>: no visible global function definition for
-  ‘llply’
-take_names.default: no visible global function definition for ‘llply’
-trace_parents: no visible global function definition for ‘llply’
-unroll: no visible global function definition for ‘llply’
-```
+__OK__
+
+## Dowd (0.1)
+Maintainer: Dinesh Acharya <dines.acharya@gmail.com>
+
 ```
 checking tests ... ERROR
-Running the tests in ‘tests/test_package.R’ failed.
+Running the tests in ‘tests/testthat.R’ failed.
 Last 13 lines of output:
-  2. Error: recombine.hdf --------------------------------------------------------
-  could not find function "llply"
-  1: withCallingHandlers(eval(code, new_test_environment), error = capture_calls, message = function(c) invokeRestart("muffleMessage"), 
-         warning = function(c) invokeRestart("muffleWarning"))
-  2: eval(code, new_test_environment)
-  3: eval(expr, envir, enclos)
-  4: hdf(hdf(i = 1:3), j = hdf(l = hdf(.T(a, b, c)), L = hdf(.T(A, B, C)))) at test_internal_recombine.R:38
-  5: hdf(i = 1:3)
-  6: Filter(Negate(is.null), llply(l, rownames))
-  7: unlist(lapply(x, f))
-  8: lapply(x, f)
-  Error: Test failures
+   pos     x      y  diff
+     1  1482   4527 -3045
+     2  2097   2570  -473
+     3 -5079 -12528  7449
+     4 -2071  -1355  -716
+  
+  testthat results ================================================================
+  OK: 46 SKIPPED: 0 FAILED: 2
+  1. Failure (at testAdjustedNormalESHotspots.R#12): Adjusted Normal ES Hotspots. 
+  2. Failure (at testAdjustedNormalESHotspots.R#25): Adjusted Normal ES Hotspots. 
+  
+  Error: testthat unit tests failed
   Execution halted
 ```
 ```
 DONE
-Status: 1 ERROR, 1 NOTE
+Status: 1 ERROR
 ```
 
-## downloader (0.3)
-Maintainer: Winston Chang <winston@stdout.org>
+## downloader (0.4)
+Maintainer: Winston Chang <winston@stdout.org>  
+Bug reports: https://github.com/wch/downloader/issues
+
+__OK__
+
+## dplR (1.6.3)
+Maintainer: Andy Bunn <andy.bunn@wwu.edu>
 
 ```
-checking Rd line widths ... NOTE
-Rd file 'sha_url.Rd':
-  \examples lines wider than 100 characters:
-     sha_url("https://gist.github.com/wch/dae7c106ee99fe1fdfe7/raw/db0c9bfe0de85d15c60b0b9bf22403c0f5e1fb15/test.r")
-     #  downloader::source_url("https://gist.github.com/wch/dae7c106ee99fe1fdfe7/raw/db0c9bfe0de85d15c60b0b9bf22403c0f5e1fb15/test.r", sha=" ... [TRUNCATED]
-
-Rd file 'source_url.Rd':
-  \examples lines wider than 100 characters:
-     downloader::source_url("https://gist.github.com/wch/dae7c106ee99fe1fdfe7/raw/db0c9bfe0de85d15c60b0b9bf22403c0f5e1fb15/test.r",
-
-These lines will be truncated in the PDF manual.
+checking package dependencies ... NOTE
+Package suggested but not available for checking: ‘Biobase’
 ```
 ```
 DONE
 Status: 1 NOTE
 ```
 
-## dplyr (0.4.1)
+## dplyr (0.4.3)
 Maintainer: Hadley Wickham <hadley@rstudio.com>  
 Bug reports: https://github.com/hadley/dplyr/issues
 
-```
-checking package dependencies ... NOTE
-Packages suggested but not available for checking:
-  ‘RPostgreSQL’ ‘microbenchmark’ ‘nycflights13’
-```
-```
-checking use of S3 registration ... WARNING
-Registered S3 method from a standard package overwritten by 'dplyr':
- method      from 
- lag.default stats
-```
-```
-checking dependencies in R code ... NOTE
-Namespace in Imports field not imported from: ‘R6’
-  All declared Imports should be used.
-```
-```
-checking Rd cross-references ... NOTE
-Package unavailable to check Rd xrefs: ‘microbenchmark’
-```
-```
-checking re-building of vignette outputs ... NOTE
-Error in re-building vignettes:
-  ...
+__OK__
 
-Attaching package: 'dplyr'
+## dpmr (0.1.7-1)
+Maintainer: Christopher Gandrud <christopher.gandrud@gmail.com>  
+Bug reports: https://github.com/christophergandrud/dpmr/issues
 
-The following object is masked from 'package:stats':
+__OK__
 
-    filter
-
-The following objects are masked from 'package:base':
-
-    intersect, setdiff, setequal, union
-
-Quitting from lines 79-85 (data_frames.Rmd) 
-Error: processing vignette 'data_frames.Rmd' failed with diagnostics:
-there is no package called 'microbenchmark'
-Execution halted
-
-```
-```
-DONE
-Status: 1 WARNING, 4 NOTEs
-```
-
-## drsmooth (1.0)
+## drsmooth (1.9.0)
 Maintainer: Anne Bichteler <abichteler@toxstrategies.com>
 
 __OK__
 
-## DSsim (1.0.3)
+## DSsim (1.0.4)
 Maintainer: Laura Marshall <lhm@st-and.ac.uk>
 
 __OK__
 
-## dygraphs (0.4.3)
+## dygraphs (0.4.5)
 Maintainer: JJ Allaire <jj@rstudio.com>
+
+__OK__
+
+## DYM (0.1.1)
+Maintainer: Kosei Abe <mail@recyclebin.jp>  
+Bug reports: https://github.com/kos59125/DYM/issues
 
 __OK__
 
@@ -1660,36 +1457,33 @@ Maintainer: Frank Dondelinger <fdondelinger.work@gmail.com>
 
 __OK__
 
-## eeptools (0.3.1)
+## EEM (1.0.1)
+Maintainer: Vipavee Trivittayasil <vipavee.tri@gmail.com>
+
+__OK__
+
+## eeptools (0.9.0)
 Maintainer: Jared E. Knowles <jknowles@gmail.com>
 
-```
-checking R code for possible problems ... NOTE
-moves_calc: no visible binding for global variable ‘id’
-```
-```
-DONE
-Status: 1 NOTE
-```
+__OK__
 
-## EGRET (2.2.0)
+## EGRET (2.3.1)
 Maintainer: Laura DeCicco <ldecicco@usgs.gov>
 
-```
-checking package dependencies ... NOTE
-Package suggested but not available for checking: ‘extrafont’
-```
-```
-DONE
-Status: 1 NOTE
-```
+__OK__
 
-## eHOF (1.5.8)
+## EGRETci (1.0.0)
+Maintainer: Laura DeCicco <ldecicco@usgs.gov>  
+Bug reports: https://github.com/USGS-R/EGRETci/issues
+
+__OK__
+
+## eHOF (1.5.9)
 Maintainer: Florian Jansen <jansen@uni-greifswald.de>
 
 __OK__
 
-## elastic (0.4.0)
+## elastic (0.5.0)
 Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>  
 Bug reports: https://github.com/ropensci/elastic/issues
 
@@ -1698,55 +1492,15 @@ __OK__
 ## emdbook (1.3.8)
 Maintainer: Ben Bolker <bolker@mcmaster.ca>
 
-```
-checking package dependencies ... NOTE
-Packages suggested but not available for checking: ‘R2WinBUGS’ ‘SuppDists’
-```
-```
-DONE
-Status: 1 NOTE
-```
+__OK__
 
-## emil (2.0.2)
-Maintainer: Christofer Backlin <christofer.backlin@medsci.uu.se>  
+## emil (2.2.2)
+Maintainer: Christofer Backlin <emil@christofer.backlin.se>  
 Bug reports: https://github.com/Molmed/emil/issues
 
-```
-checking package dependencies ... NOTE
-Package suggested but not available for checking: ‘pamr’
-```
-```
-checking Rd cross-references ... NOTE
-Package unavailable to check Rd xrefs: ‘pamr’
-```
-```
-checking examples ... ERROR
-Running examples in ‘emil-Ex.R’ failed
-The error most likely occurred in:
+__OK__
 
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
-> ### Name: get_importance
-> ### Title: Feature (variable) importance of a fitted model
-> ### Aliases: get_importance
-> 
-> ### ** Examples
-> 
-> procedure <- modeling_procedure("pamr")
-> model <- fit(procedure, x=iris[-5], y=iris$Species)
-21 May 18:27  Fitting model
-Loading required namespace: pamr
-Failed with error:  ‘there is no package called ‘pamr’’
-Use the `pre_pamr` pre-processing function better pamr efficiency.
-Error in loadNamespace(name) : there is no package called ‘pamr’
-Calls: fit ... tryCatch -> tryCatchList -> tryCatchOne -> <Anonymous>
-Execution halted
-```
-```
-DONE
-Status: 1 ERROR, 2 NOTEs
-```
-
-## enigma (0.1.1)
+## enigma (0.2.0)
 Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>  
 Bug reports: https://github.com/ropengov/enigma/issues
 
@@ -1758,40 +1512,22 @@ Bug reports: https://github.com/smbache/ensurer/issues
 
 __OK__
 
-## EpiContactTrace (0.8.8)
-Maintainer: Stefan Widgren <stefan.widgren@sva.se>
-
-```
-checking dependencies in R code ... NOTE
-'library' or 'require' calls in package code:
-  ‘animation’ ‘ggmap’
-  Please use :: or requireNamespace() instead.
-  See section 'Suggested packages' in the 'Writing R Extensions' manual.
-```
-```
-checking R code for possible problems ... NOTE
-Animate : create_map: no visible global function definition for ‘ggmap’
-Animate : create_map: no visible global function definition for
-  ‘geom_segment’
-Animate : create_map: no visible global function definition for
-  ‘aes_string’
-Animate : create_map: no visible global function definition for ‘labs’
-Animate : create_map: no visible global function definition for
-  ‘ggtitle’
-Animate : create_map: no visible global function definition for
-  ‘ani.pause’
-Animate: no visible global function definition for ‘saveHTML’
-```
-```
-DONE
-Status: 2 NOTEs
-```
-
-## EpiModel (1.1.6)
+## EpiModel (1.2.1)
 Maintainer: Samuel Jenness <sjenness@uw.edu>  
 Bug reports: https://github.com/statnet/EpiModel/issues
 
-__OK__
+```
+checking whether package ‘EpiModel’ can be installed ... WARNING
+Found the following significant warnings:
+  Warning: replacing previous import by ‘network::as.edgelist.network’ when loading ‘EpiModel’
+  Warning: replacing previous import by ‘network::as.edgelist.matrix’ when loading ‘EpiModel’
+  Warning: replacing previous import by ‘network::as.edgelist’ when loading ‘EpiModel’
+See ‘/private/tmp/RtmpKAtbVW/check_cran14a8c2e8e2543/EpiModel.Rcheck/00install.out’ for details.
+```
+```
+DONE
+Status: 1 WARNING
+```
 
 ## episensr (0.6.0)
 Maintainer: Denis Haine <denis.haine@gmail.com>  
@@ -1803,26 +1539,28 @@ __OK__
 Maintainer: Lahti Leo <louhos@googlegroups.com>  
 Bug reports: https://github.com/ropengov/eurostat/issues
 
-__OK__
+```
+checking files in ‘vignettes’ ... NOTE
+The following directory looks like a leftover from 'knitr':
+  ‘figure’
+Please remove from your package.
+```
+```
+DONE
+Status: 1 NOTE
+```
 
-## evaluate (0.7)
+## evaluate (0.8)
 Maintainer: Yihui Xie <xie@yihui.name>  
 Bug reports: https://github.com/hadley/evaluate/issues
 
 __OK__
 
-## evolqg (0.1-3)
+## evolqg (0.1-9)
 Maintainer: Diogo Melo <diogro@usp.br>  
 Bug reports: https://github.com/lem-usp/evolqg/issues
 
-```
-checking package dependencies ... ERROR
-Package required but not available: ‘phytools’
-
-See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
-manual.
-Status: 1 ERROR
-```
+__OK__
 
 ## excursions (2.0.16)
 Maintainer: David Bolin <davidbolin@gmail.com>
@@ -1859,43 +1597,6 @@ Bug reports: https://github.com/gaborcsardi/falsy/issues
 
 __OK__
 
-## fanovaGraph (1.4.7)
-Maintainer: Jana Fruth <fruth@statistik.tu-dortmund.de>
-
-```
-checking package dependencies ... NOTE
-Package suggested but not available for checking: ‘manipulate’
-```
-```
-checking dependencies in R code ... NOTE
-'library' or 'require' calls in package code:
-  ‘manipulate’ ‘tcltk’
-  Please use :: or requireNamespace() instead.
-  See section 'Suggested packages' in the 'Writing R Extensions' manual.
-```
-```
-checking S3 generic/method consistency ... NOTE
-Found the following apparent S3 methods exported but not registered:
-  plot.graphlist print.graphlist
-See section ‘Registering S3 methods’ in the ‘Writing R Extensions’
-manual.
-```
-```
-checking R code for possible problems ... NOTE
-plotTk: no visible global function definition for ‘tclVar’
-plotTk : refresh: no visible global function definition for ‘tclvalue’
-plotTk: no visible global function definition for ‘tktoplevel’
-plotTk: no visible global function definition for ‘tkwm.title’
-plotTk: no visible global function definition for ‘tkframe’
-plotTk: no visible global function definition for ‘tkscale’
-plotTk: no visible global function definition for ‘tkpack’
-plotTk: no visible global function definition for ‘tklabel’
-```
-```
-DONE
-Status: 4 NOTEs
-```
-
 ## FastImputation (1.2)
 Maintainer: Stephen R. Haptonstahl <srh@haptonstahl.org>
 
@@ -1908,53 +1609,10 @@ DONE
 Status: 1 NOTE
 ```
 
-## ffbase (0.11.3)
+## ffbase (0.12.1)
 Maintainer: Edwin de Jonge <edwindjonge@gmail.com>
 
-```
-checking DESCRIPTION meta-information ... NOTE
-Malformed Description field: should contain one or more complete sentences.
-```
-```
-checking dependencies in R code ... NOTE
-'library' or 'require' calls in package code:
-  ‘LaF’ ‘biglm’
-  Please use :: or requireNamespace() instead.
-  See section 'Suggested packages' in the 'Writing R Extensions' manual.
-```
-```
-checking S3 generic/method consistency ... NOTE
-Found the following apparent S3 methods exported but not registered:
-  cummax.ff cummin.ff cumprod.ff cumsum.ff duplicated.ff
-  duplicated.ffdf is.na.ff is.na<-.ff max.ff min.ff range.ff subset.ff
-  subset.ffdf sum.ff transform.ffdf unique.ff unique.ffdf
-See section ‘Registering S3 methods’ in the ‘Writing R Extensions’
-manual.
-```
-```
-checking R code for possible problems ... NOTE
-addfforder: no visible global function definition for ‘is.sorted<-’
-bigglm.ffdf: no visible global function definition for ‘bigglm’
-checkRange: no visible global function definition for ‘ri’
-compact.ffdf: no visible global function definition for ‘physical’
-droplevels.ffdf: no visible global function definition for ‘physical’
-ffappend: no visible global function definition for ‘as.which’
-ffdfappend: no visible global function definition for ‘physical’
-ffdfdply: no visible global function definition for ‘ri’
-ffrep.int: no visible global function definition for ‘ri’
-ffsorted: no visible global function definition for ‘is.sorted<-’
-laf_to_ffdf: no visible global function definition for ‘begin’
-laf_to_ffdf: no visible global function definition for ‘next_block’
-load.ffdf: no visible global function definition for ‘physical’
-load.ffdf: no visible global function definition for ‘physical<-’
-move.ffdf: no visible global function definition for ‘physical’
-move.ffdf: no visible global function definition for ‘physical<-’
-save.ffdf: no visible global function definition for ‘physical’
-```
-```
-DONE
-Status: 4 NOTEs
-```
+__OK__
 
 ## filenamer (0.2)
 Maintainer: David J. H. Shih <djh.shih@gmail.com>  
@@ -1966,10 +1624,6 @@ __OK__
 Maintainer: Garrett See <gsee000@gmail.com>
 
 ```
-checking package dependencies ... NOTE
-Package suggested but not available for checking: ‘its’
-```
-```
 checking dependencies in R code ... NOTE
 'library' or 'require' calls in package code:
   ‘XML’ ‘foreach’ ‘its’ ‘timeSeries’ ‘utils’
@@ -1978,7 +1632,7 @@ checking dependencies in R code ... NOTE
 ```
 ```
 DONE
-Status: 2 NOTEs
+Status: 1 NOTE
 ```
 
 ## findpython (1.0.1)
@@ -1990,105 +1644,13 @@ __OK__
 ## flexsurv (0.6)
 Maintainer: Christopher Jackson <chris.jackson@mrc-bsu.cam.ac.uk>
 
-```
-checking package dependencies ... NOTE
-Packages suggested but not available for checking:
-  ‘eha’ ‘mstate’ ‘ActuDistns’
-```
-```
-checking Rd cross-references ... NOTE
-Packages unavailable to check Rd xrefs: ‘eha’, ‘mstate’
-```
-```
-checking examples ... ERROR
-Running examples in ‘flexsurv-Ex.R’ failed
-The error most likely occurred in:
+__OK__
 
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
-> ### Name: flexsurvreg
-> ### Title: Flexible parametric regression for time-to-event data
-> ### Aliases: flexsurvreg
-> ### Keywords: models survival
-> 
-> ### ** Examples
-> 
-> data(ovarian)
-> ## Compare generalized gamma fit with Weibull
-> fitg <- flexsurvreg(formula = Surv(futime, fustat) ~ 1, data = ovarian, dist="gengamma")
-> fitg
-Call:
-flexsurvreg(formula = Surv(futime, fustat) ~ 1, data = ovarian, 
-    dist = "gengamma")
+## flowr (0.9.7.10)
+Maintainer: Sahil Seth <me@sahilseth.com>  
+Bug reports: https://github.com/sahilseth/flowr/issues
 
-Estimates: 
-       est     L95%    U95%    se    
-mu      6.426   4.984   7.868   0.736
-sigma   1.426   0.888   2.292   0.345
-Q      -0.766  -3.340   1.807   1.313
-
-N = 26,  Events: 12,  Censored: 14
-Total time at risk: 15588
-Log-likelihood = -96.94907, df = 3
-AIC = 199.8981
-
-> fitw <- flexsurvreg(formula = Surv(futime, fustat) ~ 1, data = ovarian, dist="weibull")
-> fitw
-Call:
-flexsurvreg(formula = Surv(futime, fustat) ~ 1, data = ovarian, 
-    dist = "weibull")
-
-Estimates: 
-       est       L95%      U95%      se      
-shape     1.108     0.674     1.822     0.281
-scale  1225.419   690.421  2174.979   358.714
-
-N = 26,  Events: 12,  Censored: 14
-Total time at risk: 15588
-Log-likelihood = -97.9539, df = 2
-AIC = 199.9078
-
-> plot(fitg)
-> lines(fitw, col="blue", lwd.ci=1, lty.ci=1)
-> ## Identical AIC, probably not enough data in this simple example for a
-> ## very flexible model to be worthwhile.
-> 
-> ## Custom distribution
-> library(eha)  ## make "dEV" and "pEV" available to the working environment
-Error in library(eha) : there is no package called ‘eha’
-Execution halted
-```
-```
-checking tests ... ERROR
-Running the tests in ‘tests/test_base.R’ failed.
-Last 13 lines of output:
-  17  744 0.4553432 0.3937042 0.4485204
-  18  769 0.4419247 0.3812744 0.4329372
-  19  770 0.4413951 0.3807852 0.4323220
-  20  803 0.4242224 0.3649814 0.4123745
-  21  855 0.3983386 0.3413680 0.3823293
-  22 1040 0.3171789 0.2688626 0.2888610
-  23 1106 0.2920295 0.2468430 0.2603453
-  24 1129 0.2836991 0.2395939 0.2509700
-  25 1206 0.2573606 0.2168166 0.2216052
-  26 1227 0.2505762 0.2109839 0.2141185
-  Error in library(mstate) : there is no package called 'mstate'
-  Calls: test_check ... lapply -> FUN -> sys.source2 -> eval -> eval -> library
-  Execution halted
-```
-```
-checking re-building of vignette outputs ... NOTE
-Error in re-building vignettes:
-  ...
-Quitting from lines 282-284 (flexsurv.Rnw) 
-Error: processing vignette 'flexsurv.Rnw' failed with diagnostics:
-there is no package called 'eha'
-Execution halted
-
-```
-```
-DONE
-Status: 2 ERRORs, 3 NOTEs
-```
+__OK__
 
 ## flsa (1.05)
 Maintainer: Holger Hoefling <hhoeflin@gmail.com>
@@ -2115,50 +1677,20 @@ Status: 2 NOTEs
 ## ForeCA (0.2.2)
 Maintainer: Georg M. Goerg <im@gmge.org>
 
-```
-checking package dependencies ... NOTE
-Packages suggested but not available for checking: ‘astsa’ ‘rSFA’
-```
-```
-checking Rd cross-references ... NOTE
-Package unavailable to check Rd xrefs: ‘astsa’
-```
-```
-checking tests ... ERROR
-Running the tests in ‘tests/testthat.R’ failed.
-Last 13 lines of output:
-  For method 'mvspec' you need the 'astsa' package.
-  Please install it or user another method.
-  1: withCallingHandlers(eval(code, new_test_environment), error = capture_calls, message = function(c) invokeRestart("muffleMessage"), 
-         warning = function(c) invokeRestart("muffleWarning"))
-  2: eval(code, new_test_environment)
-  3: eval(expr, envir, enclos)
-  4: Omega(rnorm(10000), spectrum.control = sc.tmp, entropy.control = list(base = 2)) at test_Omega.R:48
-  5: complete_spectrum_control(spectrum.control)
-  6: stop("For method '", spectrum.control$method, "' you need the 'astsa' package.\n", 
-         "Please install it or user another method.")
-  
-  Error: requireNamespace("astsa", quietly = TRUE) is not TRUE
-  Execution halted
-```
-```
-DONE
-Status: 1 ERROR, 2 NOTEs
-```
+__OK__
 
 ## forecast (6.1)
 Maintainer: Rob J Hyndman <Rob.Hyndman@monash.edu>  
 Bug reports: https://github.com/robjhyndman/forecast/issues
 
 ```
-checking package dependencies ... NOTE
-Package suggested but not available for checking: ‘fpp’
-```
-```
 checking whether package ‘forecast’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpQJiDLv/check_crand2516b207784/forecast.Rcheck/00install.out’ for details.
-Status: 1 ERROR, 1 NOTE
+See ‘/private/tmp/RtmpKAtbVW/check_cran14a8c2e8e2543/forecast.Rcheck/00install.out’ for details.
+```
+```
+DONE
+Status: 1 ERROR
 ```
 
 ## forestplot (1.1)
@@ -2174,62 +1706,36 @@ DONE
 Status: 1 NOTE
 ```
 
-## formula.tools (1.3.4)
-Maintainer: Christopher Brown <chris.brown@decisionpatterns.com>
+## formula.tools (1.5.4)
+Maintainer: Christopher Brown <chris.brown@decisionpatterns.com>  
+Bug reports: https://github.com/decisionpatterns/formula.tools/issues
 
-```
-checking S3 generic/method consistency ... NOTE
-Found the following apparent S3 methods exported but not registered:
-  as.character.formula terms.call terms.expression
-See section ‘Registering S3 methods’ in the ‘Writing R Extensions’
-manual.
-```
-```
-checking tests ... ERROR
-Running the tests in ‘tests/run-all.R’ failed.
-Last 13 lines of output:
-  > library(testthat)
-  > library(formula.tools)
-  Loading required package: operator.tools
-  operator.tools-1.3.0 provided by Decision Patterns
-  
-  formula.tools-1.3.4 provided by Decision Patterns
-  
-  > 
-  > test_package("formula.tools")
-  Error in test_dir(test_path, reporter = reporter, env = env, filter = filter,  : 
-    No matching test file in dir
-  Calls: test_package -> run_tests -> with_top_env -> test_dir
-  Execution halted
-```
-```
-DONE
-Status: 1 ERROR, 1 NOTE
-```
+__OK__
 
-## fpCompare (0.2.0)
-Maintainer: Alex M Chubaty <achubaty@NRCan.gc.ca>  
+## fpCompare (0.2.1)
+Maintainer: Alex M Chubaty <alexander.chubaty@canada.ca>  
 Bug reports: https://github.com/PredictiveEcology/fpCompare/issues
 
 __OK__
 
-## freqweights (1.0.1)
+## frailtySurv (1.2.1)
+Maintainer: John V. Monaco <vincent@vmonaco.com>  
+Bug reports: https://github.com/vmonaco/frailtySurv/issues
+
+__OK__
+
+## freqweights (1.0.2)
 Maintainer: Emilio Torres-Manzanera <torres@uniovi.es>
 
-```
-checking package dependencies ... NOTE
-Package suggested but not available for checking: ‘hflights’
-```
-```
-checking Rd cross-references ... NOTE
-Package unavailable to check Rd xrefs: ‘hflights’
-```
-```
-DONE
-Status: 2 NOTEs
-```
+__OK__
 
-## FunChisq (2.0.2)
+## fulltext (0.1.0)
+Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>  
+Bug reports: https://github.com/ropensci/fulltext/issues
+
+__OK__
+
+## FunChisq (2.1.0)
 Maintainer: Joe Song <joemsong@cs.nmsu.edu>
 
 ```
@@ -2238,52 +1744,22 @@ Package required but not available: ‘RcppClassic’
 
 See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
 manual.
-Status: 1 ERROR
-```
-
-## futile.any (1.3.0)
-Maintainer: Brian Lee Yung Rowe <r@zatonovo.com>
-
-```
-checking DESCRIPTION meta-information ... NOTE
-Malformed Description field: should contain one or more complete sentences.
-```
-```
-checking dependencies in R code ... NOTE
-Package in Depends field not imported from: ‘lambda.r’
-  These packages need to be imported from (in the NAMESPACE file)
-  for when this namespace is loaded but not attached.
-```
-```
-checking R code for possible problems ... NOTE
-anylength: no visible global function definition for ‘UseFunction’
-anynames: no visible global function definition for ‘UseFunction’
-anytypes: no visible global function definition for ‘UseFunction’
-is.bad: no visible global function definition for ‘UseFunction’
-is.empty: no visible global function definition for ‘UseFunction’
-```
-```
-checking tests ... ERROR
-Running the tests in ‘tests/run_tests.R’ failed.
-Last 13 lines of output:
-  
-  R is a collaborative project with many contributors.
-  Type 'contributors()' for more information and
-  'citation()' on how to cite R or R packages in publications.
-  
-  Type 'demo()' for some demos, 'help()' for on-line help, or
-  'help.start()' for an HTML browser interface to help.
-  Type 'q()' to quit R.
-  
-  > library(testthat)
-  > library_if_available(futile.any)
-  Error: could not find function "library_if_available"
-  Execution halted
 ```
 ```
 DONE
-Status: 1 ERROR, 3 NOTEs
+Status: 1 ERROR
 ```
+
+## functools (0.2.0)
+Maintainer: Paul Hendricks <paul.hendricks.2013@owu.edu>  
+Bug reports: https://github.com/paulhendricks/functools/issues
+
+__OK__
+
+## futile.any (1.3.2)
+Maintainer: Brian Lee Yung Rowe <r@zatonovo.com>
+
+__OK__
 
 ## futile.logger (1.4.1)
 Maintainer: Brian Lee Yung Rowe <r@zatonovo.com>
@@ -2319,13 +1795,9 @@ DONE
 Status: 2 NOTEs
 ```
 
-## gemtc (0.6-2)
+## gemtc (0.7)
 Maintainer: Gert van Valkenhoef <g.h.m.van.valkenhoef@rug.nl>
 
-```
-checking package dependencies ... NOTE
-Packages suggested but not available for checking: ‘BRugs’ ‘R2WinBUGS’
-```
 ```
 checking examples ... ERROR
 Running examples in ‘gemtc-Ex.R’ failed
@@ -2338,63 +1810,61 @@ The error most likely occurred in:
 > 
 > ### ** Examples
 > 
-> file <- system.file("extdata/luades-smoking.gemtc", package="gemtc")
-> network <- read.mtc.network(file)
-> 
 > # NOTE: the mtc.run commands below are for illustrative purposes, such a small
 > # number of iterations should obviously not be used in practice.
 > 
 > # set a uniform prior standard deviation
-> model1 <- mtc.model(network, hy.prior=mtc.hy.prior("std.dev", "dunif", 0, 2))
+> model1 <- mtc.model(smoking, hy.prior=mtc.hy.prior("std.dev", "dunif", 0, 2))
 > result <- mtc.run(model1, n.adapt=10, n.iter=10)
-Error in mtc.run(model1, n.adapt = 10, n.iter = 10) : 
-  Could not find a suitable sampler for NA
+Error: .onLoad failed in loadNamespace() for 'rjags', details:
+  call: dyn.load(file, DLLpath = DLLpath, ...)
+  error: unable to load shared object '/Users/hadley/R-revdep/rjags/libs/rjags.so':
+  dlopen(/Users/hadley/R-revdep/rjags/libs/rjags.so, 10): Library not loaded: /usr/local/lib/libjags.3.dylib
+  Referenced from: /Users/hadley/R-revdep/rjags/libs/rjags.so
+  Reason: image not found
 Execution halted
 ```
 ```
 DONE
-Status: 1 ERROR, 1 NOTE
+Status: 1 ERROR
 ```
 
-## gender (0.4.3)
+## gender (0.5.1)
 Maintainer: Lincoln Mullen <lincoln@lincolnmullen.com>  
 Bug reports: https://github.com/ropensci/gender/issues
 
-__OK__
+```
+checking package dependencies ... NOTE
+Package suggested but not available for checking: ‘genderdata’
+```
+```
+DONE
+Status: 1 NOTE
+```
 
-## genderizeR (1.1.0)
+## genderizeR (1.2.0)
 Maintainer: Kamil Wais <kamil.wais@gmail.com>  
 Bug reports: https://github.com/kalimu/genderizeR
 
 __OK__
 
-## geojsonio (0.1.0)
-Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>
+## generator (0.1.0)
+Maintainer: Paul Hendricks <paul.hendricks.2013@owu.edu>  
+Bug reports: https://github.com/paulhendricks/generator/issues
 
 __OK__
 
-## geometry (0.3-5)
+## geojsonio (0.1.4)
+Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>  
+Bug reports: http://www.github.com/ropensci/geojsonio/issues
+
+__OK__
+
+## geometry (0.3-6)
 Maintainer: David C. Sterratt <david.c.sterratt@ed.ac.uk>  
 Bug reports: https://r-forge.r-project.org/tracker/?group_id=1149
 
-```
-checking package dependencies ... NOTE
-Package suggested but not available for checking: ‘tripack’
-```
-```
-checking dependencies in R code ... NOTE
-'library' or 'require' call to ‘rgl’ in package code.
-  Please use :: or requireNamespace() instead.
-  See section 'Suggested packages' in the 'Writing R Extensions' manual.
-```
-```
-checking Rd cross-references ... NOTE
-Package unavailable to check Rd xrefs: ‘tripack’
-```
-```
-DONE
-Status: 3 NOTEs
-```
+__OK__
 
 ## getopt (1.20.0)
 Maintainer: Trevor L Davis <trevor.l.davis@stanford.edu>  
@@ -2414,83 +1884,11 @@ Maintainer: Zuguang Gu <z.gu@dkfz.de>
 
 __OK__
 
-## ggdendro (0.1-15)
+## ggdendro (0.1-17)
 Maintainer: Andrie de Vries <apdevries@gmail.com>  
 Bug reports: https://github.com/andrie/ggdendro/issues
 
-```
-checking package dependencies ... NOTE
-Package suggested but not available for checking: ‘tree’
-```
-```
-checking S3 generic/method consistency ... NOTE
-Found the following apparent S3 methods exported but not registered:
-  dendro_data.default dendro_data.dendrogram dendro_data.hclust
-See section ‘Registering S3 methods’ in the ‘Writing R Extensions’
-manual.
-```
-```
-checking Rd cross-references ... NOTE
-Package unavailable to check Rd xrefs: ‘tree’
-```
-```
-checking examples ... ERROR
-Running examples in ‘ggdendro-Ex.R’ failed
-The error most likely occurred in:
-
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
-> ### Name: dendro_data.tree
-> ### Title: Extract data from regression tree object for plotting using
-> ###   ggplot.
-> ### Aliases: dendro_data.tree
-> 
-> ### ** Examples
-> 
-> require(tree)
-Loading required package: tree
-Warning in library(package, lib.loc = lib.loc, character.only = TRUE, logical.return = TRUE,  :
-  there is no package called ‘tree’
-> require(ggplot2)
-Loading required package: ggplot2
-> require(MASS)
-Loading required package: MASS
-> data(cpus, package="MASS")
-> cpus.ltr <- tree(log10(perf) ~ syct+mmin+mmax+cach+chmin+chmax, cpus)
-Error: could not find function "tree"
-Execution halted
-```
-```
-checking tests ... ERROR
-Running the tests in ‘tests/testthat.R’ failed.
-Last 13 lines of output:
-  'help.start()' for an HTML browser interface to help.
-  Type 'q()' to quit R.
-  
-  > if(require(testthat)) test_check("ggdendro")
-  Loading required package: testthat
-  Loading required package: ggdendro
-  Loading required package: tree
-  Error in eval(expr, envir, enclos) : could not find function "tree"
-  Calls: test_check ... test_dir -> lapply -> FUN -> sys.source2 -> eval -> eval
-  In addition: Warning message:
-  In library(package, lib.loc = lib.loc, character.only = TRUE, logical.return = TRUE,  :
-    there is no package called 'tree'
-  Execution halted
-```
-```
-checking re-building of vignette outputs ... NOTE
-Error in re-building vignettes:
-  ...
-Quitting from lines 93-107 (ggdendro.Rmd) 
-Error: processing vignette 'ggdendro.Rmd' failed with diagnostics:
-could not find function "tree"
-Execution halted
-
-```
-```
-DONE
-Status: 2 ERRORs, 4 NOTEs
-```
+__OK__
 
 ## ggplot2 (1.0.1)
 Maintainer: Hadley Wickham <h.wickham@gmail.com>  
@@ -2519,12 +1917,12 @@ Maintainer: Sandro Petrillo Burri <gibo.gaf@gmail.com>
 
 __OK__
 
-## ggvis (0.4.1)
+## ggvis (0.4.2)
 Maintainer: Winston Chang <winston@rstudio.com>
 
 __OK__
 
-## gistr (0.2.0)
+## gistr (0.3.0)
 Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>  
 Bug reports: http://www.github.com/ropensci/gistr/issues
 
@@ -2536,7 +1934,7 @@ Bug reports: https://github.com/azvoleff/glcm/issues
 
 __OK__
 
-## GlobalOptions (0.0.6)
+## GlobalOptions (0.0.8)
 Maintainer: Zuguang Gu <z.gu@dkfz.de>
 
 __OK__
@@ -2547,19 +1945,18 @@ Bug reports: https://github.com/jimhester/gmailr/issues
 
 __OK__
 
-## GMCM (1.2.1)
+## GMCM (1.2.2)
 Maintainer: Anders Ellern Bilgrau <abilgrau@math.aau.dk>  
 Bug reports: https://github.com/AEBilgrau/GMCM/issues
 
 ```
-checking package dependencies ... NOTE
-Package suggested but not available for checking: ‘idr’
-```
-```
 checking whether package ‘GMCM’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpQJiDLv/check_crand2516b207784/GMCM.Rcheck/00install.out’ for details.
-Status: 1 ERROR, 1 NOTE
+See ‘/private/tmp/RtmpKAtbVW/check_cran14a8c2e8e2543/GMCM.Rcheck/00install.out’ for details.
+```
+```
+DONE
+Status: 1 ERROR
 ```
 
 ## Gmisc (1.1)
@@ -2568,408 +1965,22 @@ Bug reports: https://github.com/gforge/Gmisc/issues
 
 __OK__
 
-## GPlab (0.1.0)
-Maintainer: Yves Deville <deville.yves@alpestat.com>
+## googlesheets (0.1.0)
+Maintainer: Jennifer Bryan <jenny@stat.ubc.ca>  
+Bug reports: https://github.com/jennybc/googlesheets/issues
 
-```
-checking package dependencies ... NOTE
-Packages suggested but not available for checking: ‘DiceDesign’ ‘inline’
-```
-```
-checking examples ... ERROR
-Running examples in ‘GPlab-Ex.R’ failed
-The error most likely occurred in:
+__OK__
 
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
-> ### Name: gp
-> ### Title: Gaussian Process model
-> ### Aliases: gp
-> 
-> ### ** Examples
-> 
-> ## ==================================================================
-> ## Example 1. Data sampled from a GP model with a known covTS object
-> ## ==================================================================
-> set.seed(1234)
-> myCov <- covTS(inputs = c("Temp", "Humid"),
-+                kernel = "k1matern5_2",
-+                dep = c(range = "input"),
-+                value = c(range = 0.4))
-> ## change coefficients (variances)
-> coef(myCov) <- c(0.5, 0.8, 2, 16)
-> d <- myCov@d; n <- 20
-> ## design matrix
-> X <- matrix(runif(n*d), nrow = n, ncol = d)
-> colnames(X) <- inputNames(myCov)
-> ## generate the GP realization
-> C <- covMat(myCov, X = X)
-> L <- t(chol(C))
-> zeta <- L %*% rnorm(n)
-> ## GP modelling with constant mean
-> F <- matrix(1, nrow = n, ncol = 1)
-> varNoise <- 0.05
-> epsilon <- rnorm(n, sd = sqrt(varNoise))
-> beta <- 10
-> y <- F %*% beta + zeta + epsilon
-> ## Towards prediction 
-> fit <- gls(myCov, X = X, y = y, F = F, varNoise = varNoise)
-> 
-> ## parIni: add noise to true parameters
-> parCovIni <- coef(myCov)
-> parCovIni[] <- 0.9 * parCovIni[] +  0.1 * runif(length(parCovIni))
-> coefLower(myCov) <- rep(1e-2, 4)
-> coefUpper(myCov) <- c(5, 5, 20, 20)
-> est <- gp(y ~ 1, data = data.frame(y = y, X),
-+           inputs = colnames(X), cov = myCov, 
-+           noise = TRUE, varNoiseLower = 1e-2, 
-+           parCovIni = parCovIni) 
-N = 5, M = 5 machine precision = 2.22045e-16
-At X0, 0 variables are exactly at the bounds
-At iterate     0  f=       14.277  |proj g|=       4.2439
-At iterate     1  f =       13.157  |proj g|=        1.3139
-At iterate     2  f =       12.735  |proj g|=         12.93
-At iterate     3  f =       12.371  |proj g|=        2.1546
-At iterate     4  f =       12.206  |proj g|=       0.94399
-At iterate     5  f =       11.989  |proj g|=       0.63526
-At iterate     6  f =       11.963  |proj g|=       0.13677
-At iterate     7  f =       11.962  |proj g|=       0.13433
-At iterate     8  f =       11.962  |proj g|=       0.20411
-At iterate     9  f =       11.962  |proj g|=       0.15322
-At iterate    10  f =       11.962  |proj g|=       0.13639
-At iterate    11  f =        11.96  |proj g|=       0.13822
-At iterate    12  f =       11.958  |proj g|=       0.24363
-At iterate    13  f =       11.953  |proj g|=       0.43463
-At iterate    14  f =        11.94  |proj g|=       0.66673
-At iterate    15  f =        11.92  |proj g|=        1.8748
-At iterate    16  f =       11.882  |proj g|=        1.1183
-At iterate    17  f =        11.84  |proj g|=       0.82013
-At iterate    18  f =       11.788  |proj g|=       0.86912
-At iterate    19  f =       11.785  |proj g|=       0.28472
-At iterate    20  f =       11.784  |proj g|=       0.15792
-At iterate    21  f =       11.783  |proj g|=       0.45151
-At iterate    22  f =       11.783  |proj g|=       0.13883
-At iterate    23  f =       11.783  |proj g|=       0.13733
-At iterate    24  f =       11.783  |proj g|=       0.48625
-At iterate    25  f =       11.782  |proj g|=        1.2027
-At iterate    26  f =       11.781  |proj g|=         1.578
-At iterate    27  f =        11.78  |proj g|=       0.98545
-At iterate    28  f =        11.78  |proj g|=       0.58034
-At iterate    29  f =        11.78  |proj g|=       0.12581
-At iterate    30  f =        11.78  |proj g|=       0.13804
-At iterate    31  f =        11.78  |proj g|=       0.18314
-At iterate    32  f =       11.779  |proj g|=       0.23566
-At iterate    33  f =       11.777  |proj g|=       0.32584
-At iterate    34  f =       11.774  |proj g|=       0.41671
-At iterate    35  f =       11.766  |proj g|=       0.58751
-At iterate    36  f =        11.76  |proj g|=       0.48933
-At iterate    37  f =       11.749  |proj g|=       0.41386
-At iterate    38  f =       11.737  |proj g|=       0.36177
-At iterate    39  f =       11.736  |proj g|=        0.2187
-At iterate    40  f =       11.736  |proj g|=       0.41416
-At iterate    41  f =       11.736  |proj g|=       0.10286
-At iterate    42  f =       11.736  |proj g|=      0.044033
-At iterate    43  f =       11.736  |proj g|=      0.044109
-At iterate    44  f =       11.736  |proj g|=      0.044258
-At iterate    45  f =       11.735  |proj g|=      0.062144
-At iterate    46  f =       11.734  |proj g|=      0.095108
-At iterate    47  f =       11.733  |proj g|=       0.14762
-At iterate    48  f =       11.731  |proj g|=       0.14287
-At iterate    49  f =        11.73  |proj g|=      0.083982
-At iterate    50  f =        11.73  |proj g|=       0.32438
-At iterate    51  f =       11.729  |proj g|=       0.14354
-At iterate    52  f =       11.729  |proj g|=      0.037509
-At iterate    53  f =       11.729  |proj g|=      0.037686
-At iterate    54  f =       11.728  |proj g|=      0.065782
-At iterate    55  f =       11.725  |proj g|=       0.12373
-At iterate    56  f =        11.72  |proj g|=       0.17783
-At iterate    57  f =       11.707  |proj g|=       0.24642
-At iterate    58  f =       11.688  |proj g|=       0.38614
-At iterate    59  f =       11.613  |proj g|=       0.33713
-At iterate    60  f =       11.486  |proj g|=       0.30389
-At iterate    61  f =        11.43  |proj g|=       0.65438
-At iterate    62  f =       11.379  |proj g|=        10.314
-At iterate    63  f =       11.349  |proj g|=        4.2696
-At iterate    64  f =       11.344  |proj g|=       0.64751
-At iterate    65  f =       11.341  |proj g|=       0.64261
-At iterate    66  f =       11.319  |proj g|=       0.48382
-At iterate    67  f =       11.291  |proj g|=       0.13152
-At iterate    68  f =       11.286  |proj g|=        0.1364
-At iterate    69  f =       11.284  |proj g|=      0.075911
-At iterate    70  f =       11.283  |proj g|=       0.13572
-At iterate    71  f =       11.282  |proj g|=       0.17259
-At iterate    72  f =        11.28  |proj g|=       0.22874
-At iterate    73  f =        11.28  |proj g|=       0.22679
-At iterate    74  f =        11.28  |proj g|=      0.085821
-At iterate    75  f =        11.28  |proj g|=      0.036485
-At iterate    76  f =        11.28  |proj g|=      0.038881
-At iterate    77  f =        11.28  |proj g|=      0.043736
-At iterate    78  f =        11.28  |proj g|=      0.043669
-At iterate    79  f =        11.28  |proj g|=      0.019886
-At iterate    80  f =        11.28  |proj g|=      0.052369
-At iterate    81  f =        11.28  |proj g|=      0.050158
-At iterate    82  f =        11.28  |proj g|=      0.045835
-At iterate    83  f =        11.28  |proj g|=      0.032652
-At iterate    84  f =        11.28  |proj g|=       0.01758
-At iterate    85  f =        11.28  |proj g|=     0.0090454
-At iterate    86  f =        11.28  |proj g|=     0.0011159
-At iterate    87  f =        11.28  |proj g|=    0.00020718
+## graticule (0.1.0)
+Maintainer: Michael D. Sumner <mdsumner@gmail.com>  
+Bug reports: https://github.com/mdsumner/graticule/issues
 
-iterations 87
-function evaluations 103
-segments explored during Cauchy searches 89
-BFGS updates skipped 0
-active bounds at final generalized Cauchy point 0
-norm of the final projected gradient 0.000207175
-final function value 11.2798
+__OK__
 
-F = 11.2798
-final  value 11.279839 
-converged
-> summary(est)
+## gridExtra (2.0.0)
+Maintainer: Baptiste Auguie <baptiste.auguie@gmail.com>
 
-Call:
-gp(formula = y ~ 1, data = data.frame(y = y, X), inputs = colnames(X), 
-    cov = myCov, noise = TRUE, varNoiseLower = 0.01, parCovIni = parCovIni)
-
-
-Number of observations: 20 
-
-Trend coef.:
-               Value
-(Intercept) 8.500299
-
-Covariance whith class "covTS"
-Tensor sum covariance kernel
-o Dimension 'd' (nb of inputs): 2
-o Kernel (1D): "Matern nu = 5/2" with parameters: "range"
-o One parameter by input:
-    range: YES
-o Number of parameters: 4
-o Param. values: 
-          Temp     Humid
-range 1.775405 0.5399039
-var   2.286231 2.9162569
-
-Noise variance: 0.054
-> coef(est)
-(Intercept)  range.Temp range.Humid    var.Temp   var.Humid    varNoise 
-  8.5002986   1.7754046   0.5399039   2.2862313   2.9162569   0.0536498 
-> 
-> ## =======================================================================
-> ## Example 2. Predicting an additive function with an additive GP model
-> ## =======================================================================
-> 
-> ## Not run: 
-> ##D     
-> ##D addfun6d <- function(x){
-> ##D   res <- x[1]^3 + cos(pi * x[2]) + abs(x[3]) * sin(x[3]^2) +
-> ##D     3 * x[4]^3 + 3 * cos(pi * x[5]) + 3 * abs(x[6]) * sin(x[6]^2)
-> ##D }
-> ##D 
-> ##D ## 'Fit' is for the learning set, 'Val' for the validation set
-> ##D set.seed(123)
-> ##D nFit <- 50   
-> ##D nVal <- 200
-> ##D d <- 6 
-> ##D inputs <- paste("x", 1L:d, sep = "")
-> ##D 
-> ##D ## create design matrices with DiceDesign package 
-> ##D require(DiceDesign)
-> ##D require(DiceKriging)
-> ##D set.seed(0)
-> ##D dataFitIni <- DiceDesign::lhsDesign(nFit, d)$design 
-> ##D dataValIni <- DiceDesign::lhsDesign(nVal, d)$design 
-> ##D dataFit <- DiceDesign::maximinSA_LHS(dataFitIni)$design
-> ##D dataVal <- DiceDesign::maximinSA_LHS(dataValIni)$design
-> ##D 
-> ##D colnames(dataFit) <- colnames(dataVal) <- inputs
-> ##D testfun <- addfun6d
-> ##D dataFit <- data.frame(dataFit, y = apply(dataFit, 1, testfun))
-> ##D dataVal <- data.frame(dataVal, y = apply(dataVal, 1, testfun))
-> ##D 
-> ##D ## Creation of "CovTS" object with one range by input
-> ##D myCov <- covTS(inputs = inputs, d = d, kernel = "k1matern3_2", 
-> ##D                dep = c(range = "input"))
-> ##D 
-> ##D ## Creation of a gp object
-> ##D fitgp <- gp(formula = y ~ 1, data = dataFit, inputs = inputs,
-> ##D             cov = myCov, noise = TRUE, 
-> ##D             parCovIni = rep(1, 2*d),
-> ##D             parCovLower = c(rep(1e-4, 2*d)),
-> ##D             parCovUpper = c(rep(5, d), rep(10,d)),
-> ##D             control = list(maxit = 300, REPORT = 10))
-> ##D  
-> ##D predTS <- predict(fitgp, newdata = as.matrix(dataVal[ , inputs]), type = "UK")$mean
-> ##D 
-> ##D ## Classical tensor product kernel as a reference for comparison
-> ##D fitRef <- DiceKriging::km(formula = ~1,
-> ##D                           design = dataFit[ , inputs],
-> ##D                           response = dataFit$y,  covtype="matern3_2")
-> ##D predRef <- predict(fitRef,
-> ##D                    newdata = as.matrix(dataVal[ , inputs]),
-> ##D                    type = "UK")$mean
-> ##D ## Compare TS and Ref
-> ##D RMSE <- data.frame(TS = sqrt(mean((dataVal$y - predTS)^2)),
-> ##D                    Ref = sqrt(mean((dataVal$y - predRef)^2)),
-> ##D                    row.names = "RMSE")
-> ##D print(RMSE)
-> ##D 
-> ##D Comp <- data.frame(y = dataVal$y, predTS, predRef)
-> ##D plot(predRef ~ y, data = Comp, col = "black", pch = 4,
-> ##D      xlab = "True", ylab = "Predicted",
-> ##D      main = paste("Prediction on a validation set (nFit = ",
-> ##D          nFit, ", nVal = ", nVal, ").", sep = ""))
-> ##D points(predTS ~ y, data = Comp, col = "red", pch = 20)
-> ##D abline(a = 0, b = 1, col = "blue", lty = "dotted")
-> ##D legend("bottomright", pch = c(4, 20), col = c("black", "red"),
-> ##D        legend = c("Ref", "Tensor Sum"))
-> ##D        
-> ##D ## detach("package:DiceKriging", unload=TRUE)
-> ##D ## After running this part of the file 
-> ##D ## (to avoid conflicts between packages regarding `coef<-`)
-> ##D 
-> ## End(Not run)
-> 
-> ##=======================================================================
-> ## Example 3. A "covMan" object
-> ##=======================================================================
-> myGaussFun <- function(x1, x2, par) { 
-+   h <- (x1 - x2) / par[1]
-+   SS2 <- sum(h^2)
-+   d2 <- exp(-SS2)
-+   kern <- par[2] * d2
-+   d1 <- 2 * kern * SS2 / par[1]            
-+   attr(kern, "gradient") <- c(theta = d1,  sigma2 = d2)
-+   return(kern)
-+ }
-> 
-> if (require(inline) && require(MASS)) {
-+     
-+     ## -- Let us define an equivalent version "myGaussC" with inline package 
-+     ## (see also another example with Rcpp by typing: ?GPlab).
-+     kernCode <- "
-+        SEXP kern, dkern;
-+        int nprotect = 0, d;
-+        double SS2 = 0.0, d2, z, *rkern, *rdkern;
-+ 
-+        d = LENGTH(x1);
-+        PROTECT(kern = allocVector(REALSXP, 1)); nprotect++;
-+        PROTECT(dkern = allocVector(REALSXP, 2)); nprotect++;
-+        rkern = REAL(kern);
-+        rdkern = REAL(dkern);
-+ 
-+        for (int i = 0; i < d; i++) {
-+           z = ( REAL(x1)[i] - REAL(x2)[i] ) / REAL(par)[0];
-+           SS2 += z * z; 
-+        }
-+ 
-+        d2 = exp(-SS2);
-+        rkern[0] = REAL(par)[1] * d2;
-+        rdkern[1] =  d2; 
-+        rdkern[0] =  2 * rkern[0] * SS2 / REAL(par)[0];
-+ 
-+        SET_ATTR(kern, install(\"gradient\"), dkern);
-+        UNPROTECT(nprotect);
-+        return kern;
-+    "
-+     myGaussC <- cfunction(sig = signature(x1 = "numeric", x2 = "numeric",
-+                               par = "numeric"),
-+                           body = kernCode)
-+     
-+     ## -- Let us define a 4-dimensional covariance structure
-+     d <- 4
-+     myGauss <- covMan(
-+         kernel = myGaussC,
-+         hasGrad = TRUE,
-+         d = 4,
-+         parLower = c(theta = 0.0, sigma2 = 0.0),
-+         parUpper = c(theta = Inf, sigma2 = Inf),
-+         parNames = c("theta", "sigma2"),
-+         label = "my Gaussian kernel"
-+     )
-+ 
-+     ## == Simulates data for covMan and trend ==
-+     n <- 100; 
-+     X  <- matrix(runif(n*d), nrow = n)
-+     colnames(X) <- inputNames(myGauss)
-+     coef(myGauss) <- myPar <- c(theta = 0.5, sigma2 = 2)
-+     C <- covMat(object = myGauss, X = X,
-+                 compGrad = FALSE,  index = 1L, checkNames = FALSE)
-+ 
-+     ## set.seed(456)
-+     p <- ncol(X) + 1
-+     y <- mvrnorm(mu = rep(0, n), Sigma = C) 
-+     F <- matrix(runif(n * p), nrow = n, ncol = p)
-+     beta <- (1:p) / p
-+     y <- tcrossprod(F, t(beta)) + y
-+ 
-+     ## == ML estimation. ==
-+     design <- data.frame(X)
-+     names(design) <- paste("x", 1:4, sep = "")
-+     res <- gp(formula = y ~ ., data = data.frame(y = y, design),
-+              inputs = names(design), cov = myGauss,
-+              parCovIni = c(0.5, 0.5), varNoiseLower = 1e-4,
-+              parCovLower = c(1e-5, 1e-5), parCovUpper = c(Inf, Inf)) 
-+     summary(res)
-+     coef(res)
-+     p <- predict(res, newdata = design, type = "UK")           
-+ 
-+ }
-Loading required package: inline
-Warning in library(package, lib.loc = lib.loc, character.only = TRUE, logical.return = TRUE,  :
-  there is no package called ‘inline’
-> 
-> ##=======================================================================
-> ## Example 3 (continuing). Another way of improving speed: 
-> ## A kernel admitting matrix arguments
-> ##=======================================================================
-> 
-> ## -- Implemented in R, but with a kernel admitting matrices as arguments
-> 
-> myGaussFunVec <- function(X1, X2, par) { 
-+   # X1, X2 : matrices with same number of column d (dimension)
-+   n <- nrow(X1)
-+   d <- ncol(X1)     
-+   SS2 <- 0
-+   
-+   for (j in 1:d){
-+     Aj <- outer(X1[, j], X2[, j], "-")
-+     Hj2 <- (Aj / par[1])^2
-+     SS2 <- SS2 + Hj2
-+   }
-+   D2 <- exp(-SS2)
-+   kern <- par[2]*D2
-+   D1 <- 2 * kern * SS2 / par[1] 
-+   attr(kern, "gradient") <- list(theta = D1,  sigma2 = D2)
-+   
-+   return(kern)
-+ }
-> 
-> myGaussVec <- covMan(
-+     kernel = myGaussFunVec,
-+     hasGrad = TRUE,
-+     acceptMatrix = TRUE,
-+     d = 4,
-+     parLower = c(theta = 0.0, sigma2 = 0.0),
-+     parUpper = c(theta = Inf, sigma2 = Inf),
-+     parNames = c("theta", "sigma2"),
-+     label = "my Gaussian kernel"
-+ )
-> 
-> ## == ML estimation. ==
-> res2 <- gp(formula = y ~ ., data = data.frame(y = y, design),
-+            inputs = names(design), cov = myGaussVec,
-+            compGrad = TRUE, 
-+            parCovIni = c(0.5, 0.5), varNoiseLower = 1e-4,
-+            parCovLower = c(1e-5, 1e-5), parCovUpper = c(Inf, Inf)) 
-Error in match(x, table, nomatch = 0L) : object 'design' not found
-Calls: gp -> %in% -> match
-Execution halted
-```
-```
-DONE
-Status: 1 ERROR, 1 NOTE
-```
+__OK__
 
 ## growcurves (0.2.3.9)
 Maintainer: "terrance savitsky" <tds151@gmail.com>
@@ -2977,7 +1988,10 @@ Maintainer: "terrance savitsky" <tds151@gmail.com>
 ```
 checking whether package ‘growcurves’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpQJiDLv/check_crand2516b207784/growcurves.Rcheck/00install.out’ for details.
+See ‘/private/tmp/RtmpKAtbVW/check_cran14a8c2e8e2543/growcurves.Rcheck/00install.out’ for details.
+```
+```
+DONE
 Status: 1 ERROR
 ```
 
@@ -2987,32 +2001,39 @@ Maintainer: Terrance Savitsky <tds151@gmail.com>
 ```
 checking whether package ‘growfunctions’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpQJiDLv/check_crand2516b207784/growfunctions.Rcheck/00install.out’ for details.
+See ‘/private/tmp/RtmpKAtbVW/check_cran14a8c2e8e2543/growfunctions.Rcheck/00install.out’ for details.
+```
+```
+DONE
 Status: 1 ERROR
 ```
+
+## grpregOverlap (1.0-1)
+Maintainer: Yaohui Zeng <yaohui-zeng@uiowa.edu>
+
+__OK__
 
 ## gsheet (0.1.0)
 Maintainer: Max Conway <conway.max1@gmail.com>  
 Bug reports: https://github.com/maxconway/gsheet/issues
 
-__OK__
+```
+checking examples ... WARNING
+Found the following significant warnings:
 
-## gstudio (1.3)
-Maintainer: Rodney J. Dyer <rjdyer@vcu.edu>
-
-```
-checking DESCRIPTION meta-information ... NOTE
-Malformed Title field: should not end in a period.
-```
-```
-checking use of S3 registration ... WARNING
-Registered S3 method from a standard package overwritten by 'gstudio':
- method          from    
- plot.data.frame graphics
+  Warning: 'rvest::html' is deprecated.
+  Warning: 'rvest::html' is deprecated.
+  Warning: 'rvest::html' is deprecated.
+Deprecated functions may be defunct as soon as of the next release of
+R.
+See ?Deprecated.
+Examples with CPU or elapsed time > 5s
+            user system elapsed
+gsheet2tbl 1.889  3.644   5.557
 ```
 ```
 DONE
-Status: 1 WARNING, 1 NOTE
+Status: 1 WARNING
 ```
 
 ## gtable (0.1.2)
@@ -3047,74 +2068,38 @@ Maintainer: Daisuke Yoneoka <blue.sky.sea.dy@gmail.com>
 
 __OK__
 
-## h5 (0.9.1)
+## h2o (3.2.0.3)
+Maintainer: Tom Kraljevic <tomk@0xdata.com>
+
+```
+checking installed package size ... NOTE
+  installed size is 48.9Mb
+  sub-directories of 1Mb or more:
+    java  47.9Mb
+```
+```
+DONE
+Status: 1 NOTE
+```
+
+## h5 (0.9.3)
 Maintainer: Mario Annau <mario.annau@gmail.com>  
 Bug reports: https://github.com/mannau/h5/issues
 
 ```
 checking whether package ‘h5’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpQJiDLv/check_crand2516b207784/h5.Rcheck/00install.out’ for details.
+See ‘/private/tmp/RtmpKAtbVW/check_cran14a8c2e8e2543/h5.Rcheck/00install.out’ for details.
+```
+```
+DONE
 Status: 1 ERROR
 ```
 
 ## harvestr (0.6.0)
 Maintainer: Andrew Redd <andrew.redd@hsc.utah.edu>
 
-```
-checking package dependencies ... NOTE
-Package suggested but not available for checking: ‘MCMCpack’
-```
-```
-checking tests ... ERROR
-Running the tests in ‘tests/testthat-package.R’ failed.
-Last 13 lines of output:
-  
-  Type 'demo()' for some demos, 'help()' for on-line help, or
-  'help.start()' for an HTML browser interface to help.
-  Type 'q()' to quit R.
-  
-  > library(testthat)
-  > library(harvestr)
-  > test_package("harvestr")
-  Caching : ..........
-  main functions : ............
-  Error in library(MCMCpack) : there is no package called 'MCMCpack'
-  Calls: test_package ... lapply -> FUN -> sys.source2 -> eval -> eval -> library
-  Execution halted
-```
-```
-checking running R code from vignettes ... WARNING
-Errors in running code in vignettes:
-when running code in ‘harvestr.Rnw’
-  ...
-
-> library(harvestr)
-
-> library(plyr)
-
-> library(MCMCpack)
-
-  When sourcing ‘harvestr.R’:
-Error: there is no package called ‘MCMCpack’
-Execution halted
-
-```
-```
-checking re-building of vignette outputs ... NOTE
-Error in re-building vignettes:
-  ...
-
-Error: processing vignette 'harvestr.Rnw' failed with diagnostics:
- chunk 1 (label = setup) 
-Error in library(MCMCpack) : there is no package called ‘MCMCpack’
-Execution halted
-
-```
-```
-DONE
-Status: 1 ERROR, 1 WARNING, 2 NOTEs
-```
+__OK__
 
 ## hash (2.2.6)
 Maintainer: Christopher Brown <chris.brown@decisionpatterns.com>
@@ -3145,9 +2130,39 @@ DONE
 Status: 3 NOTEs
 ```
 
+## hashr (0.1.0)
+Maintainer: Mark van der Loo <mark.vanderloo@gmail.com>  
+Bug reports: https://github.com/markvanderloo/hashr/issues
+
+__OK__
+
 ## haven (0.2.0)
 Maintainer: Hadley Wickham <hadley@rstudio.com>  
 Bug reports: https://github.com/hadley/haven/issues
+
+__OK__
+
+## hisse (1.2)
+Maintainer: Jeremy Beaulieu <jbeaulieu@nimbios.org>
+
+__OK__
+
+## hitandrun (0.5-2)
+Maintainer: Gert van Valkenhoef <g.h.m.van.valkenhoef@rug.nl>
+
+```
+checking whether package ‘hitandrun’ can be installed ... ERROR
+Installation failed.
+See ‘/private/tmp/RtmpKAtbVW/check_cran14a8c2e8e2543/hitandrun.Rcheck/00install.out’ for details.
+```
+```
+DONE
+Status: 1 ERROR
+```
+
+## htmltab (0.6.0)
+Maintainer: Christian Rubba <christian.rubba@gmail.com>  
+Bug reports: https://github.com/crubba/htmltab/issues
 
 __OK__
 
@@ -3175,24 +2190,10 @@ DONE
 Status: 2 NOTEs
 ```
 
-## hts (4.4)
-Maintainer: Rob J Hyndman <Rob.Hyndman@monash.edu>  
-Bug reports: https://github.com/robjhyndman/hts/issues
-
-__OK__
-
-## httr (0.6.1)
+## httr (1.0.0)
 Maintainer: Hadley Wickham <hadley@rstudio.com>
 
-```
-checking dependencies in R code ... NOTE
-Namespace in Imports field not imported from: ‘R6’
-  All declared Imports should be used.
-```
-```
-DONE
-Status: 1 NOTE
-```
+__OK__
 
 ## humanFormat (1.0)
 Maintainer: Dustin Sallings <dustin@spy.net>  
@@ -3209,80 +2210,40 @@ DONE
 Status: 1 NOTE
 ```
 
+## humaniformat (0.5.0)
+Maintainer: Oliver Keyes <ironholds@gmail.com>  
+Bug reports: https://github.com/ironholds/humaniformat/issues
+
+__OK__
+
+## hybridEnsemble (1.0.0)
+Maintainer: Michel Ballings <Michel.Ballings@GMail.com>
+
+__OK__
+
 ## hyperSpec (0.98-20150304)
 Maintainer: Claudia Beleites <chemometrie@beleites.de>
 
-```
-checking package dependencies ... NOTE
-Packages suggested but not available for checking:
-  ‘tripack’ ‘baseline’ ‘inline’ ‘pls’
-```
 ```
 checking R code for possible problems ... NOTE
 Warning: local assignments to syntactic functions: ~
 Warning: local assignments to syntactic functions: ~
 ```
 ```
-checking running R code from vignettes ... [23s/23s] WARNING
-Errors in running code in vignettes:
-when running code in ‘introduction.Rnw’
-  ...
-Loading required package: baseline
-Warning in library(package, lib.loc = lib.loc, character.only = TRUE, logical.return = TRUE,  :
-  there is no package called ‘baseline’
-
-> bl <- baseline(corrected[[]], method = "modpolyfit", 
-+     degree = 4)
-
-  When sourcing ‘introduction.R’:
-Error: could not find function "baseline"
-Execution halted
-
-```
-```
-checking re-building of vignette outputs ... NOTE
-Error in re-building vignettes:
-  ...
-Untracing function "spc.fit.poly.below" in package "hyperSpec"
-Tracing function "spc.fit.poly.below" in package "hyperSpec"
-Tracing function "spc.fit.poly.below" in package "hyperSpec"
-Tracing function "spc.fit.poly.below" in package "hyperSpec"
-Tracing function "spc.fit.poly.below" in package "hyperSpec"
-Untracing function "spc.fit.poly.below" in package "hyperSpec"
-Read 362 items
-Read 362 items
-Read 362 items
-Read 362 items
-Read 362 items
-Read 362 items
-Loading required package: MASS
-Warning in predict.lda(lda, chondro) :
-  variable names in 'newdata' do not match those in 'object'
-Loading required namespace: plotrix
-Warning in rm(chondro) : object 'chondro' not found
-Loading required package: baseline
-Warning in library(package, lib.loc = lib.loc, character.only = TRUE, logical.return = TRUE,  :
-  there is no package called ‘baseline’
-
-Error: processing vignette 'introduction.Rnw' failed with diagnostics:
- chunk 90 (label = do-bl) 
-Error in eval(expr, envir, enclos) : could not find function "baseline"
-Execution halted
-
-```
-```
 DONE
-Status: 1 WARNING, 3 NOTEs
+Status: 1 NOTE
 ```
 
-## icd9 (1.2)
+## IalsaSynthesis (0.1.6)
+Maintainer: Will Beasley <wibeasley@hotmail.com>  
+Bug reports: https://github.com/IALSA/IalsaSynthesis/issues
+
+__OK__
+
+## icd9 (1.3)
 Maintainer: Jack O. Wasey <jack@jackwasey.com>  
 Bug reports: https://github.com/jackwasey/icd9/issues
 
-```
-checking package dependencies ... NOTE
-Packages suggested but not available for checking: ‘microbenchmark’ ‘profr’
-```
 ```
 checking data for non-ASCII characters ... NOTE
   Note: found 14 marked Latin-1 strings
@@ -3290,10 +2251,21 @@ checking data for non-ASCII characters ... NOTE
 ```
 ```
 DONE
-Status: 2 NOTEs
+Status: 1 NOTE
 ```
 
-## IgorR (0.7.1)
+## ifaTools (0.6)
+Maintainer: Joshua N. Pritikin <jpritikin@pobox.com>
+
+__OK__
+
+## ifctools (0.3.1)
+Maintainer: Luca Braglia <lbraglia@gmail.com>  
+Bug reports: http://github.com/lbraglia/ifctools/issues
+
+__OK__
+
+## IgorR (0.8)
 Maintainer: Greg Jefferis <jefferis@gmail.com>
 
 ```
@@ -3315,27 +2287,71 @@ checking DESCRIPTION meta-information ... NOTE
 Malformed Description field: should contain one or more complete sentences.
 ```
 ```
+checking examples ... ERROR
+Running examples in ‘indicoio-Ex.R’ failed
+The error most likely occurred in:
+
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+> ### Name: face_emotion
+> ### Title: Detects face emotion
+> ### Aliases: face_emotion
+> ### Keywords: API emotions face indico.io learning machine recognition
+> 
+> ### ** Examples
+> 
+> ## Example 1
+> img <- matrix(runif(48*48, 0, 1), nrow = 48)
+> emotion <- face_emotion(img)
+Error in curl::curl_fetch_memory(url, handle = handle) : 
+  Timeout was reached
+Calls: face_emotion ... request_fetch -> request_fetch.write_memory -> <Anonymous> -> .Call
+Execution halted
+```
+```
+checking tests ... ERROR
+Running the tests in ‘tests/testthat.R’ failed.
+Last 13 lines of output:
+  9: curl::curl_fetch_memory(url, handle = handle)
+  
+  testthat results ================================================================
+  OK: 15 SKIPPED: 0 FAILED: 6
+  1. Error: Face Emotion Detection API returns proper answer 
+  2. Error: Face Features Detection API returns proper answer 
+  3. Error: Image Features Detection API returns proper answer 
+  4. Error: Language API returns list of probabilities for list of languages 
+  5. Error: Political API returns list of probabilities for four parties 
+  6. Error: Sentiment API returns numerical value 
+  
+  Error: testthat unit tests failed
+  Execution halted
+```
+```
 DONE
-Status: 1 NOTE
+Status: 2 ERRORs, 1 NOTE
 ```
 
-## inferference (0.4.61)
+## inferference (0.4.62)
 Maintainer: Bradley Saul <saulb@live.unc.edu>
 
 __OK__
 
-## infuser (0.1)
+## influenceR (0.1.0)
+Maintainer: Khanna Aditya <khanna7@uchicago.edu>
+
+__OK__
+
+## infuser (0.2)
 Maintainer: Bart Smeets <bartsmeets86@gmail.com>  
 Bug reports: https://github.com/bart6114/infuser/issues
 
 __OK__
 
-## intergraph (2.0-1)
+## intergraph (2.0-2)
 Maintainer: Michal Bojanowski <m.bojanowski@icm.edu.pl>
 
 __OK__
 
-## internetarchive (0.1.2)
+## internetarchive (0.1.4)
 Maintainer: Lincoln Mullen <lincoln@lincolnmullen.com>  
 Bug reports: https://github.com/ropensci/internetarchive/issues
 
@@ -3344,14 +2360,7 @@ __OK__
 ## investr (1.3.0)
 Maintainer: Brandon M. Greenwell <greenwell.brandon@gmail.com>
 
-```
-checking Rd cross-references ... NOTE
-Package unavailable to check Rd xrefs: ‘nlstools’
-```
-```
-DONE
-Status: 1 NOTE
-```
+__OK__
 
 ## io (0.2.2)
 Maintainer: David J. H. Shih <djh.shih@gmail.com>  
@@ -3364,6 +2373,36 @@ Package suggested but not available for checking: ‘rhdf5’
 ```
 DONE
 Status: 1 NOTE
+```
+
+## iotools (0.1-12)
+Maintainer: Simon Urbanek <Simon.Urbanek@r-project.org>
+
+```
+checking compiled code ... NOTE
+File ‘iotools/libs/iotools.so’:
+  Found non-API call to R: ‘getConnection’
+
+Compiled code should not call non-API entry points in R.
+
+See ‘Writing portable packages’ in the ‘Writing R Extensions’ manual.
+```
+```
+DONE
+Status: 1 NOTE
+```
+
+## iptools (0.2.1)
+Maintainer: Bob Rudis <bob@rudis.net>
+
+```
+checking whether package ‘iptools’ can be installed ... ERROR
+Installation failed.
+See ‘/private/tmp/RtmpKAtbVW/check_cran14a8c2e8e2543/iptools.Rcheck/00install.out’ for details.
+```
+```
+DONE
+Status: 1 ERROR
 ```
 
 ## ISOweek (0.6-2)
@@ -3394,7 +2433,7 @@ Bug reports: https://github.com/paulstaab/jaatha
 
 __OK__
 
-## james.analysis (1.0.0)
+## james.analysis (1.0.1)
 Maintainer: Herman De Beukelaer <Herman.DeBeukelaer@UGent.be>
 
 __OK__
@@ -3418,20 +2457,34 @@ DONE
 Status: 1 NOTE
 ```
 
-## jsonlite (0.9.16)
+## jsonlite (0.9.17)
 Maintainer: Jeroen Ooms <jeroen.ooms@stat.ucla.edu>  
 Bug reports: http://github.com/jeroenooms/jsonlite/issues
 
 __OK__
 
-## KFAS (1.1.1)
+## kelvin (2.0-0)
+Maintainer: Andrew J Barbour <andy.barbour@gmail.com>  
+Bug reports: https://github.com/abarbour/kelvin/issues
+
+__OK__
+
+## kergp (0.1.0)
+Maintainer: Yves Deville <deville.yves@alpestat.com>
+
+__OK__
+
+## KFAS (1.1.2)
 Maintainer: Jouni Helske <jouni.helske@jyu.fi>  
 Bug reports: https://github.com/helske/KFAS/issues
 
 ```
 checking whether package ‘KFAS’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpQJiDLv/check_crand2516b207784/KFAS.Rcheck/00install.out’ for details.
+See ‘/private/tmp/RtmpKAtbVW/check_cran14a8c2e8e2543/KFAS.Rcheck/00install.out’ for details.
+```
+```
+DONE
 Status: 1 ERROR
 ```
 
@@ -3445,56 +2498,18 @@ __OK__
 Maintainer: Kevin Ushey <kevinushey@gmail.com>  
 Bug reports: https://github.com/kevinushey/Kmisc/issues
 
-```
-checking package dependencies ... NOTE
-Packages suggested but not available for checking:
-  ‘googleVis’ ‘microbenchmark’
-```
-```
-checking re-building of vignette outputs ... NOTE
-Error in re-building vignettes:
-  ...
-Quitting from lines 15-27 (Kmisc-intro.Rmd) 
-Error: processing vignette 'Kmisc-intro.Rmd' failed with diagnostics:
-there is no package called 'microbenchmark'
-Execution halted
-
-```
-```
-DONE
-Status: 2 NOTEs
-```
+__OK__
 
 ## kmodR (0.1.0)
 Maintainer: David Charles Howe <kmodR@edgecondition.com>
 
 __OK__
 
-## knitcitations (1.0.5)
-Maintainer: Carl Boettiger <cboettig@gmail.com>
+## knitcitations (1.0.6)
+Maintainer: Carl Boettiger <cboettig@gmail.com>  
+Bug reports: https://github.com/cboettig/knitcitations/issues
 
-```
-checking tests ... ERROR
-Running the tests in ‘tests/testthat.R’ failed.
-Last 13 lines of output:
-  
-  Type 'demo()' for some demos, 'help()' for on-line help, or
-  'help.start()' for an HTML browser interface to help.
-  Type 'q()' to quit R.
-  
-  > library("testthat")
-  > library("knitcitations")
-  > 
-  > test_check("knitcitations")
-  Error in test_dir(test_path, reporter = reporter, env = env, filter = filter,  : 
-    No matching test file in dir
-  Calls: test_check -> run_tests -> with_top_env -> test_dir
-  Execution halted
-```
-```
-DONE
-Status: 1 ERROR
-```
+__OK__
 
 ## knitrBootstrap (0.9.0)
 Maintainer: Jim Hester <james.f.hester@gmail.com>  
@@ -3512,34 +2527,9 @@ Status: 1 NOTE
 ## knockoff (0.2.1)
 Maintainer: Evan Patterson <epatters@stanford.edu>
 
-```
-checking package dependencies ... NOTE
-Package suggested but not available for checking: ‘lars’
-```
-```
-checking tests ... ERROR
-Running the tests in ‘tests/testthat.R’ failed.
-Last 13 lines of output:
-  9: all.equal(x, y, ...) at /Users/hadley/Documents/devtools/testthat/R/compare.r:135
-  10: all.equal.numeric(x, y, ...)
-  11: attr.all.equal(target, current, tolerance = tolerance, scale = scale, ...)
-  12: mode(current)
-  13: lasso_max_lambda_lars(X, y)
-  14: stop("lars is not installed", call. = F)
-  
-  testthat results ================================================================
-  OK: 13 SKIPPED: 2 FAILED: 1
-  1. Error: Finding the max lambda in lasso works for orthonormal design 
-  
-  Error: testthat unit tests failed
-  Execution halted
-```
-```
-DONE
-Status: 1 ERROR, 1 NOTE
-```
+__OK__
 
-## koRpus (0.05-5)
+## koRpus (0.05-6)
 Maintainer: m.eik michalke <meik.michalke@hhu.de>
 
 ```
@@ -3559,45 +2549,17 @@ Status: 2 NOTEs
 Maintainer: Daniel Rodriguez <daniel.rodriguez.perez@gmail.com>  
 Bug reports: https://github.com/drodriguezperez/kselection/issues
 
-```
-checking package dependencies ... NOTE
-Packages suggested but not available for checking: ‘FactoClass’ ‘LICORS’
-```
-```
-DONE
-Status: 1 NOTE
-```
+__OK__
 
 ## LaF (0.6.2)
 Maintainer: Jan van der Laan <djvanderlaan@unrealizedtime.nl>
 
 __OK__
 
-## lambda.tools (1.0.6)
+## lambda.tools (1.0.7)
 Maintainer: Brian Lee Yung Rowe <r@zatonovo.com>
 
-```
-checking tests ... ERROR
-Running the tests in ‘tests/run_tests.R’ failed.
-Last 13 lines of output:
-  
-  > library(testthat)
-  > library(lambda.r)
-  
-  Attaching package: 'lambda.r'
-  
-  The following object is masked from 'package:testthat':
-  
-      describe
-  
-  > library_if_available(lambda.tools)
-  Error: could not find function "library_if_available"
-  Execution halted
-```
-```
-DONE
-Status: 1 ERROR
-```
+__OK__
 
 ## Lambda4 (3.0)
 Maintainer: Tyler Hunt <tyler@psychoanalytix.com>  
@@ -3624,106 +2586,225 @@ DONE
 Status: 3 NOTEs
 ```
 
+## LambertW (0.6.0)
+Maintainer: Georg M. Goerg <im@gmge.org>
+
+__OK__
+
 ## lamW (0.1-1)
 Maintainer: Avraham Adler <Avraham.Adler@gmail.com>  
 Bug reports: https://bitbucket.org/aadler/lamw/issues
 
-```
-checking Rd cross-references ... NOTE
-Package unavailable to check Rd xrefs: ‘LambertW’
-```
-```
-DONE
-Status: 1 NOTE
-```
+__OK__
 
-## lava (1.4.0)
+## lasvmR (0.1.2)
+Maintainer: Aydin Demircioglu <aydin.demircioglu@ini.rub.de>  
+Bug reports: http://github.com/aydindemircioglu/lasvmR/issues
+
+__OK__
+
+## latex2exp (0.3.3)
+Maintainer: Stefano Meschiari <stefano.meschiari@gmail.com>  
+Bug reports: https://github.com/stefano-meschiari/latex2exp/issues
+
+__OK__
+
+## lava (1.4.1)
 Maintainer: Klaus K. Holst <klaus@holst.it>
 
 ```
 checking package dependencies ... NOTE
-Packages suggested but not available for checking:
-  ‘graph’ ‘Rgraphviz’ ‘geepack’ ‘gof’
+Packages suggested but not available for checking: ‘graph’ ‘Rgraphviz’
 ```
 ```
 DONE
 Status: 1 NOTE
 ```
 
-## lawn (0.1.0)
+## lawn (0.1.4)
 Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>  
 Bug reports: http://www.github.com/ropensci/lawn/issues
 
-```
-checking package dependencies ... NOTE
-Package suggested but not available for checking: ‘leaflet’
-```
-```
-DONE
-Status: 1 NOTE
-```
+__OK__
 
 ## lazyeval (0.1.10)
 Maintainer: Hadley Wickham <hadley@rstudio.com>
 
-```
-checking package dependencies ... NOTE
-Package suggested but not available for checking: ‘microbenchmark’
-```
-```
-checking re-building of vignette outputs ... NOTE
-Error in re-building vignettes:
-  ...
-Quitting from lines 19-26 (benchmark.Rmd) 
-Error: processing vignette 'benchmark.Rmd' failed with diagnostics:
-there is no package called 'microbenchmark'
-Execution halted
+__OK__
 
-```
-```
-DONE
-Status: 2 NOTEs
-```
-
-## letsR (2.1)
-Maintainer: Bruno Vilela <brunovilelasilva@hotmail.com>
+## lazyWeave (3.0.0)
+Maintainer: Benjamin Nutter <nutter@battelle.org>
 
 __OK__
 
-## lfl (1.0)
+## learNN (0.2.0)
+Maintainer: Bastiaan Quast <bquast@gmail.com>
+
+__OK__
+
+## letsR (2.3)
+Maintainer: Bruno Vilela <brunovilelasilva@hotmail.com>  
+Bug reports: https://github.com/macroecology/letsR/issues
+
+__OK__
+
+## lfactors (0.5.3)
+Maintainer: Paul Bailey <pbailey@air.org>
+
+__OK__
+
+## lfda (1.1.0)
+Maintainer: Yuan Tang <terrytangyuan@gmail.com>  
+Bug reports: https://github.com/terrytangyuan/lfda/issues
+
+```
+checking package dependencies ... ERROR
+Package required but not available: ‘rARPACK’
+
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
+```
+```
+DONE
+Status: 1 ERROR
+```
+
+## lfl (1.2)
 Maintainer: Michal Burda <michal.burda@osu.cz>
 
 __OK__
 
-## lifecontingencies (1.1.6)
+## lfstat (0.8.0)
+Maintainer: Tobias Gauster <t.gauster@boku.ac.at>
+
+```
+checking examples ... ERROR
+Running examples in ‘lfstat-Ex.R’ failed
+The error most likely occurred in:
+
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+> ### Name: tyears
+> ### Title: Calculate Low-Flow Quantiles for given Return Periods
+> ### Aliases: tyears
+> ### Keywords: low-flow fitting
+> 
+> ### ** Examples
+> 
+> data("ngaruroro")
+> ng <- subset(ngaruroro, hyear %in% 1964:2000)
+> 
+> # vector of return periods
+> rp <- c(1.5, 5, 10, 100)
+> 
+> # Fitting some distributions for the low flows (annual minima)
+> # and estimating the quantile for arbitrary return periods
+> y <- tyears(ng, dist = c("gum", "wei", "ln3", "pe3"), event = rp,
++             plot = FALSE)
+Warning in evfit(x = minima, distribution = dist, zeta = zeta, check = check,  :
+  Estimation of parameter zeta in the 'ln3' distribution resulted in a negative value (-1.06).  As this is not meaningful for discharges, parameter estimation was done with a forced lower bound of '0'. To override this behavior, consider setting the 'zeta' argument explicitly when calling the function.
+> 
+> # print()ing the object shows just the return periods
+> y
+             distribution
+return period      gum      wei      ln3      pe3
+          1.5 4.376632 4.478546 4.439131 4.460596
+          5   3.365623 3.332267 3.361264 3.359527
+          10  3.102974 3.016033 3.053065 3.035554
+          100 2.594650 2.496776 2.429653 2.374532
+> 
+> # but y is actually a list
+> str(y)
+List of 7
+ $ freq.zeros   : num 0
+ $ parameters   :List of 4
+  ..$ gum: Named num [1:2] 3.715 0.733
+  .. ..- attr(*, "names")= chr [1:2] "xi" "alpha"
+  ..$ wei: Named num [1:3] 2.21 2.17 2.26
+  .. ..- attr(*, "names")= chr [1:3] "zeta" "beta" "delta"
+  ..$ ln3: Named num [1:3] 0 1.396 0.219
+  .. ..- attr(*, "names")= chr [1:3] "zeta" "mu" "sigma"
+  ..$ pe3: Named num [1:3] 4.138 0.909 0.519
+  .. ..- attr(*, "names")= chr [1:3] "mu" "sigma" "gamma"
+ $ lmom         : Named num [1:4] 4.1379 0.5083 0.0848 0.1602
+  ..- attr(*, "names")= chr [1:4] "l_1" "l_2" "t_3" "t_4"
+ $ values       : num [1:38(1d)] 6.4 3.34 4.8 5.02 4.82 ...
+  ..- attr(*, "dimnames")=List of 1
+  .. ..$ : chr [1:38] "1963" "1964" "1965" "1966" ...
+ $ is.censored  : logi FALSE
+ $ extreme      : chr "minimum"
+ $ T_Years_Event: num [1:4, 1:4] 4.38 3.37 3.1 2.59 4.48 ...
+  ..- attr(*, "dimnames")=List of 2
+  .. ..$ return period: chr [1:4] "1.5" "5" "10" "100"
+  .. ..$ distribution : chr [1:4] "gum" "wei" "ln3" "pe3"
+ - attr(*, "class")= chr [1:2] "evfit" "list"
+> 
+> # there is a summary method, returning L-moments and estimated parameters
+> summary(y)
+Values: num [1:38(1d)] 6.4 3.34 4.8 5.02 4.82 ...
+
+
+L-Moments:
+       l_1        l_2        t_3        t_4 
+4.13792105 0.50832361 0.08475455 0.16022300 
+
+Fitted Parameters of the Distribution:
+gum    xi:     3.71462,  alpha: 0.733356
+wei    zeta:   2.21255,  beta:   2.17368,  delta:  2.26117
+ln3    zeta:         0,  mu:      1.3963,  sigma: 0.218605
+pe3    mu:     4.13792,  sigma: 0.908585,  gamma: 0.518669
+> 
+> plot(y)
+> 
+> 
+> # fitting just one distribution, with annotated quantiles
+> z <- tyears(ng, dist = c("gevR"), event = rp)
+> rpline(y, return.period = rp, suffix = c("a", "m\u00B3"))
+> 
+> 
+> # applying a moving average before fitting
+> ng2 <- ng
+> ng2$flow <- ma(ng2$flow, n = 4)
+> tyears(ng2, dist = c("gum", "wei", "ln3", "pe3"), event = rp,
++        plot = FALSE)
+Warning in FUN(X[[i]], ...) :
+  no non-missing arguments to min; returning Inf
+Error in samlmu(xx) : NA/NaN/Inf in foreign function call (arg 1)
+Calls: tyears -> evfit -> samlmu -> .Fortran
+Execution halted
+```
+```
+checking tests ... ERROR
+Running the tests in ‘tests/testthat.R’ failed.
+Last 13 lines of output:
+  4. Failure (at test-utils.R#21): water_year() interprets the origin argument correctly 
+  5. Failure (at test-utils.R#25): water_year() interprets the origin argument correctly 
+  6. Failure (at test-utils.R#27): water_year() interprets the origin argument correctly 
+  7. Failure (at test-utils.R#33): water_year() interprets the assign argument correctly 
+  8. Failure (at test-utils.R#35): water_year() interprets the assign argument correctly 
+  9. Failure (at test-utils.R#38): water_year() interprets the assign argument correctly 
+  1. Failure (at test-utils.R#40): water_year() interprets the assign argument correctly 
+  2. Failure (at test-utils.R#43): water_year() interprets the assign argument correctly 
+  3. Failure (at test-utils.R#45): water_year() interprets the assign argument correctly 
+  4. ...
+  
+  Error: testthat unit tests failed
+  Execution halted
+```
+```
+DONE
+Status: 2 ERRORs
+```
+
+## lifecontingencies (1.1.9)
 Maintainer: Giorgio Alfredo Spedicato <spedicato_giorgio@yahoo.it>  
 Bug reports: http://github.com/spedygiorgio/lifecontingencies/issues
 
 ```
-checking package dependencies ... NOTE
-Package suggested but not available for checking: ‘demography’
-```
-```
-checking running R code from vignettes ... [7s/28s] WARNING
-Errors in running code in vignettes:
-when running code in ‘mortality_projection.Rnw’
-  ...
-
-> options(width = 80, prompt = "R> ")
-
-> library(demography)
-
-  When sourcing ‘mortality_projection.R’:
-Error: there is no package called ‘demography’
-Execution halted
-
-```
-```
 checking re-building of vignette outputs ... NOTE
 Error in re-building vignettes:
   ...
- with significant contributions from Reinhold Kainhofer and Kevin J. Owens
-Loading required package: markovchain
+Use 'axyzn' instead.
+See help("Deprecated")
 Loading required package: parallel
 Error in texi2dvi(file = file, pdf = TRUE, clean = clean, quiet = quiet,  : 
   Running 'texi2dvi' on 'an_introduction_to_lifecontingencies_package.tex' failed.
@@ -3751,11 +2832,16 @@ Execution halted
 ```
 ```
 DONE
-Status: 1 WARNING, 2 NOTEs
+Status: 1 NOTE
 ```
 
 ## LinearizedSVR (1.3)
 Maintainer: Ken Williams <ken.williams@windlogics.com>
+
+__OK__
+
+## lineup (0.37-6)
+Maintainer: Karl W Broman <kbroman@biostat.wisc.edu>
 
 __OK__
 
@@ -3773,8 +2859,8 @@ DONE
 Status: 1 NOTE
 ```
 
-## lintr (0.2.0)
-Maintainer: "Jim Hester" <james.f.hester@gmail.com>  
+## lintr (0.3.3)
+Maintainer: Jim Hester <james.f.hester@gmail.com>  
 Bug reports: https://github.com/jimhester/lintr/issues
 
 __OK__
@@ -3785,7 +2871,10 @@ Maintainer: Graeme Blair <graeme.blair@columbia.edu>
 ```
 checking whether package ‘list’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpQJiDLv/check_crand2516b207784/list.Rcheck/00install.out’ for details.
+See ‘/private/tmp/RtmpKAtbVW/check_cran14a8c2e8e2543/list.Rcheck/00install.out’ for details.
+```
+```
+DONE
 Status: 1 ERROR
 ```
 
@@ -3794,61 +2883,36 @@ Maintainer: Lars Kotthoff <lars.kotthoff@insight-centre.org>
 
 __OK__
 
-## LLSR (0.0.1.9225)
+## LLSR (0.0.1.9525)
 Maintainer: Diego F Coelho <diegofcoelho@gmail.com>  
 Bug reports: https://github.com/eqipehub/LLSR/issues
 
 __OK__
 
-## lme4 (1.1-7)
-Maintainer: Ben Bolker <bbolker+lme4@gmail.com>
+## lme4 (1.1-9)
+Maintainer: Ben Bolker <bbolker+lme4@gmail.com>  
+Bug reports: https://github.com/lme4/lme4/issues
 
 ```
-checking package dependencies ... NOTE
-Packages suggested but not available for checking:
-  ‘PKPDmodels’ ‘MEMSS’ ‘mlmRev’
-```
-```
-checking use of S3 registration ... WARNING
-Registered S3 methods from standard package(s) overwritten by 'lme4':
- method         from
- coef.lmList    nlme
- formula.lmList nlme
- update.lmList  nlme
-```
-```
-checking R code for possible problems ... NOTE
-GQdk: no visible binding for global variable ‘GQN’
-vcov.merMod : calc.vcov.hess: no visible global function definition for
-  ‘forceSymmetric’
-```
-```
-checking tests ... ERROR
-Running the tests in ‘tests/AAAtest-all.R’ failed.
-Last 13 lines of output:
-         warning = function(c) invokeRestart("muffleWarning"))
-  2: eval(code, new_test_environment)
-  3: eval(expr, envir, enclos)
-  4: data("Orthodont", package = "MEMSS") at test-methods.R:131
-  5: find.package(package, lib.loc, verbose = verbose)
-  6: stop(gettextf("there is no package called %s", sQuote(pkg)), domain = NA)
-  7: .handleSimpleError(function (e) 
-     {
-         e$calls <- head(sys.calls()[-seq_len(frame + 7)], -2)
-         signalCondition(e)
-     }, "there is no package called 'MEMSS'", quote(find.package(package, lib.loc, verbose = verbose)))
-  Error: Test failures
-  Execution halted
+checking installed package size ... NOTE
+  installed size is  5.9Mb
+  sub-directories of 1Mb or more:
+    doc        1.8Mb
+    testdata   1.5Mb
 ```
 ```
 checking re-building of vignette outputs ... NOTE
 Error in re-building vignettes:
   ...
-
-This is mgcv 1.8-6. For overview type 'help("mgcv-package")'.
+Computing bootstrap confidence intervals ...
 Error in texi2dvi(file = file, pdf = TRUE, clean = clean, quiet = quiet,  : 
   Running 'texi2dvi' on 'lmer.tex' failed.
 LaTeX errors:
+! Undefined control sequence.
+l.15 x<9c><ed>\Mh
+           ^^TK^^P<ae><97>(q$<ee>؈!.L6^^L/($oYX^^Hx^^H<eb>!<a0>'o<de><<eb>ٓ^^A/<a2>O<f0>]ċ^^G<f5>^^]<84><e7>A...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
 ! LaTeX Error: Missing \begin{document}.
 
 See the LaTeX manual or LaTeX Companion for explanation.
@@ -3857,23 +2921,19 @@ Type  H <return>  for immediate help.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.16 ...<91>i<9a><db>v<e1>6<e8><e5>^^_^^G^^W[<db>o}<e4>^^?<91>a^^X<db><de>߅<ce><ec><a5>^^Q^
-                                                  <99>J<a5><d2><e9>4<c6><fd><f0><e1>ý{<f7><d2><e9><f4><fd><fb><f7>߾}<fb><fe><fd>...
-! Undefined control sequence.
-l.16 ...*<85><89>x<fa><f4>i0<df>^^[^^?Accc<bf>~<fd><fa><9b>^^Q^^N<fb>E<ff>mT<f7>{<95>K<a7>\<bc>
-                                                  ڇ^^O^^_<ee><de>bhh<e8>ӧO<ae><eb>j<9a>f<db>v<b1>X...
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-! You can't use `\eqno' in math mode.
-\endmathdisplay@a ...\df@tag \@empty \else \veqno 
-                                           
+l.16 ...F<a0><ba>v<ed>Zggg<ad>V{<fd><fa>5^^Q9<8e>388866<a6><94><8a><e3>^^X<fd>^^]<c7><c1><83><ae>^
+                                                  <bd><9a>J<a5>l<db>v^^\^^G<9f>J<a9><87>^^O^^_<c6>q|...
+! Extra }, or forgotten $.
+l.17 Ԓ<da>[}
+          <b8>ӄ<f6><a0><9c>0^^L<89>(<9b><cd><e2>^^A<98><ce>0^^L<85>^^BOm<b9>\^^^^^Z^^Z<8a><a2><88><a7>?<9b><cd>"@a<ce>0<8e>eYP{<a1>P<c0>O<<c8><e3>...
+I've deleted a group-closing 
 Calls: buildVignettes -> texi2pdf -> texi2dvi
 Execution halted
 
 ```
 ```
 DONE
-Status: 1 ERROR, 1 WARNING, 3 NOTEs
+Status: 2 NOTEs
 ```
 
 ## log4r (0.2)
@@ -3889,53 +2949,40 @@ DONE
 Status: 1 NOTE
 ```
 
-## lsbclust (1.0.2)
+## longurl (0.1.1)
+Maintainer: Bob Rudis <bob@rudis.net>
+
+__OK__
+
+## loo (0.1.3)
+Maintainer: Jonah Gabry <jsg2201@columbia.edu>  
+Bug reports: https://github.com/jgabry/loo/issues
+
+__OK__
+
+## lookupTable (0.1)
+Maintainer: Enzo Jia <enzo.jia@gmail.com>
+
+__OK__
+
+## lsbclust (1.0.3)
 Maintainer: Pieter Schoonees <schoonees@gmail.com>
 
 __OK__
 
-## ltmle (0.9-5)
+## ltmle (0.9-6)
 Maintainer: Joshua Schwab <joshuaschwab@yahoo.com>  
 Bug reports: https://github.com/joshuaschwab/ltmle/issues
 
-```
-checking package dependencies ... NOTE
-Package suggested but not available for checking: ‘SuperLearner’
-```
-```
-checking Rd cross-references ... NOTE
-Package unavailable to check Rd xrefs: ‘SuperLearner’
-```
-```
-checking tests ... ERROR
-Running the tests in ‘tests/test-all.R’ failed.
-Last 13 lines of output:
-  7: CheckInputs(data, nodes, survivalOutcome, Qform, gform, gbounds, Yrange, deterministic.g.function, 
-         SL.library, regimes, working.msm, summary.measures, final.Ynodes, stratify, msm.weights, 
-         deterministic.Q.function, observation.weights)
-  8: stop("SuperLearner package is required if SL.library is not NULL")
-  
-  Failed with error:  'there is no package called 'tmle''
-  [1] "skipping tmle check because tmle namespace is not available"
-  testthat results ================================================================
-  OK: 101 SKIPPED: 0 FAILED: 1
-  1. Error: tests from 'create tests to compare versions.R' 
-  
-  Error: testthat unit tests failed
-  Execution halted
-```
-```
-DONE
-Status: 1 ERROR, 2 NOTEs
-```
+__OK__
 
 ## lubridate (1.3.3)
 Maintainer: Garrett Grolemund <garrett@rstudio.com>  
 Bug reports: https://github.com/hadley/lubridate/issues
 
 ```
-checking package dependencies ... NOTE
-Packages which this enhances but not available for checking: ‘its’ ‘fts’
+checking dependencies in R code ... NOTE
+Missing or unexported object: ‘fts::dates.fts’
 ```
 ```
 checking S3 generic/method consistency ... NOTE
@@ -3950,7 +2997,7 @@ DONE
 Status: 2 NOTEs
 ```
 
-## mads (0.1.2)
+## mads (0.1.3)
 Maintainer: Laura Marshall <lhm@st-and.ac.uk>
 
 __OK__
@@ -3960,7 +3007,7 @@ Maintainer: Stefan Milton Bache <stefan@stefanbache.dk>
 
 __OK__
 
-## MALDIquant (1.11)
+## MALDIquant (1.13)
 Maintainer: Sebastian Gibb <mail@sebastiangibb.de>  
 Bug reports: https://github.com/sgibb/MALDIquant/issues/
 
@@ -3971,10 +3018,6 @@ Maintainer: Sebastian Gibb <mail@sebastiangibb.de>
 Bug reports: https://github.com/sgibb/MALDIquantForeign/issues/
 
 ```
-checking package dependencies ... NOTE
-Package suggested but not available for checking: ‘RNetCDF’
-```
-```
 checking dependencies in R code ... NOTE
 'library' or 'require' call to ‘RNetCDF’ in package code.
   Please use :: or requireNamespace() instead.
@@ -3982,20 +3025,41 @@ checking dependencies in R code ... NOTE
 ```
 ```
 DONE
-Status: 2 NOTEs
+Status: 1 NOTE
 ```
 
-## manifestoR (0.9-12)
+## manifestoR (1.0-5)
 Maintainer: Jirka Lewandowski <jirka.lewandowski@wzb.eu>  
 Bug reports: https://github.com/ManifestoProject/manifestoR/issues
 
 __OK__
 
-## markovchain (0.2.1)
+## markophylo (1.0.2)
+Maintainer: Utkarsh J. Dang <udang@mcmaster.ca>
+
+```
+checking whether package ‘markophylo’ can be installed ... ERROR
+Installation failed.
+See ‘/private/tmp/RtmpKAtbVW/check_cran14a8c2e8e2543/markophylo.Rcheck/00install.out’ for details.
+```
+```
+DONE
+Status: 1 ERROR
+```
+
+## markovchain (0.4.2)
 Maintainer: Giorgio Alfredo Spedicato <spedicato_giorgio@yahoo.it>  
 Bug reports: http://github.com/spedygiorgio/markovchain/issues
 
-__OK__
+```
+checking whether package ‘markovchain’ can be installed ... ERROR
+Installation failed.
+See ‘/private/tmp/RtmpKAtbVW/check_cran14a8c2e8e2543/markovchain.Rcheck/00install.out’ for details.
+```
+```
+DONE
+Status: 1 ERROR
+```
 
 ## MarkowitzR (0.1502)
 Maintainer: Steven E. Pav <shabbychef@gmail.com>  
@@ -4003,17 +3067,21 @@ Bug reports: https://github.com/shabbychef/MarkowitzR/issues
 
 __OK__
 
-## matchingR (1.0.1)
-Maintainer: Jan Tilly <jtilly@econ.upenn.edu>
+## matchingR (1.1.1)
+Maintainer: Jan Tilly <jtilly@econ.upenn.edu>  
+Bug reports: https://github.com/jtilly/matchingR/issues
 
 ```
 checking whether package ‘matchingR’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpQJiDLv/check_crand2516b207784/matchingR.Rcheck/00install.out’ for details.
+See ‘/private/tmp/RtmpKAtbVW/check_cran14a8c2e8e2543/matchingR.Rcheck/00install.out’ for details.
+```
+```
+DONE
 Status: 1 ERROR
 ```
 
-## MazamaSpatialUtils (0.2.4)
+## MazamaSpatialUtils (0.3.2)
 Maintainer: Jonathan Callahan <jonathan.s.callahan@gmail.com>
 
 __OK__
@@ -4022,57 +3090,12 @@ __OK__
 Maintainer: Giorgio Spedicato <spedicato_giorgio@yahoo.it>  
 Bug reports: http://github.com/spedygiorgio/mbbefd/issues
 
-```
-checking package dependencies ... NOTE
-Package suggested but not available for checking: ‘pander’
-```
-```
-checking re-building of vignette outputs ... NOTE
-Error in re-building vignettes:
-  ...
-
-    cm
-
-Loading required package: gsl
-cropping Introduction_to_Exposure_Rating_files/figure-latex/unnamed-chunk-1-1.pdf
-PDFCROP 1.38, 2012/11/02 - Copyright (c) 2002-2012 by Heiko Oberdiek.
-==> 1 page written on `Introduction_to_Exposure_Rating_files/figure-latex/unnamed-chunk-1-1.pdf'.
-cropping Introduction_to_Exposure_Rating_files/figure-latex/LEV-1.pdf
-PDFCROP 1.38, 2012/11/02 - Copyright (c) 2002-2012 by Heiko Oberdiek.
-==> 1 page written on `Introduction_to_Exposure_Rating_files/figure-latex/LEV-1.pdf'.
-cropping Introduction_to_Exposure_Rating_files/figure-latex/LEV2-1.pdf
-PDFCROP 1.38, 2012/11/02 - Copyright (c) 2002-2012 by Heiko Oberdiek.
-==> 1 page written on `Introduction_to_Exposure_Rating_files/figure-latex/LEV2-1.pdf'.
-cropping Introduction_to_Exposure_Rating_files/figure-latex/ExposureCurve-1.pdf
-PDFCROP 1.38, 2012/11/02 - Copyright (c) 2002-2012 by Heiko Oberdiek.
-==> 1 page written on `Introduction_to_Exposure_Rating_files/figure-latex/ExposureCurve-1.pdf'.
-cropping Introduction_to_Exposure_Rating_files/figure-latex/mbbefdPlot-1.pdf
-PDFCROP 1.38, 2012/11/02 - Copyright (c) 2002-2012 by Heiko Oberdiek.
-==> 1 page written on `Introduction_to_Exposure_Rating_files/figure-latex/mbbefdPlot-1.pdf'.
-Read 44 items
-Read 22 items
-Quitting from lines 400-424 (Introduction_to_Exposure_Rating.Rmd) 
-Error: processing vignette 'Introduction_to_Exposure_Rating.Rmd' failed with diagnostics:
-there is no package called 'pander'
-Execution halted
-
-```
-```
-DONE
-Status: 2 NOTEs
-```
+__OK__
 
 ## mbest (0.3)
 Maintainer: Patrick O. Perry <pperry@stern.nyu.edu>
 
-```
-checking Rd cross-references ... NOTE
-Package unavailable to check Rd xrefs: ‘logistf’
-```
-```
-DONE
-Status: 1 NOTE
-```
+__OK__
 
 ## mcIRT (0.41)
 Maintainer: Manuel Reif <manuel.reif@univie.ac.at>
@@ -4080,9 +3103,17 @@ Maintainer: Manuel Reif <manuel.reif@univie.ac.at>
 ```
 checking whether package ‘mcIRT’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpQJiDLv/check_crand2516b207784/mcIRT.Rcheck/00install.out’ for details.
+See ‘/private/tmp/RtmpKAtbVW/check_cran14a8c2e8e2543/mcIRT.Rcheck/00install.out’ for details.
+```
+```
+DONE
 Status: 1 ERROR
 ```
+
+## mcmcse (1.1-2)
+Maintainer: James M. Flegal <jflegal@ucr.edu>
+
+__OK__
 
 ## mco (1.0-15.1)
 Maintainer: Olaf Mersmann <olafm@p-value.net>
@@ -4107,73 +3138,40 @@ Maintainer: Patrick McCormick <patrick.mccormick@alum.mit.edu>
 
 __OK__
 
-## metafor (1.9-6)
-Maintainer: Wolfgang Viechtbauer <wvb@metafor-project.org>
+## merTools (0.1.0)
+Maintainer: Jared E. Knowles <jknowles@gmail.com>
 
-```
-checking package dependencies ... NOTE
-Packages suggested but not available for checking:
-  ‘CompQuadForm’ ‘BiasedUrn’ ‘Epi’
-```
-```
-checking examples ... ERROR
-Running examples in ‘metafor-Ex.R’ failed
-The error most likely occurred in:
+__OK__
 
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
-> ### Name: llplot
-> ### Title: Log-Likelihood Plot of a Parameter Corresponding to an Outcome
-> ###   or Effect Size Measure
-> ### Aliases: llplot
-> ### Keywords: hplot
-> 
-> ### ** Examples
-> 
-> ### load BCG vaccine data
-> data(dat.bcg)
-> 
-> ### create plot
-> llplot(measure="OR", ai=tpos, bi=tneg, ci=cpos, di=cneg, data=dat.bcg)
-Error in llplot(measure = "OR", ai = tpos, bi = tneg, ci = cpos, di = cneg,  : 
-  Please install the 'BiasedUrn' package to use this function.
-Execution halted
-```
-```
-checking tests ... ERROR
-Running the tests in ‘tests/test-all.R’ failed.
-Last 13 lines of output:
-  testthat results ================================================================
-  OK: 520 SKIPPED: 0 FAILED: 8
-  1. Error: results are correct for Mantel-Haenszel method. 
-  2. Error: results are correct for Mantel-Haenszel method. 
-  3. Error: results for the conditional logistic model with exact likelihood are correct (measure=='OR') 
-  4. Error: the log likelihood plot can be created. 
-  5. Error: results of the fixed-effects conditional logistic model are correct. 
-  6. Error: results of the random-effects conditional logistic model are correct. 
-  7. Error: confint() gives correct results for example 1 in Jackson et al. (2014). 
-  8. Error: confint() gives correct results for example 2 in Jackson et al. (2014). 
-  
-  Error: testthat unit tests failed
-  Execution halted
-```
-```
-DONE
-Status: 2 ERRORs, 1 NOTE
-```
+## metricsgraphics (0.8.5)
+Maintainer: Bob Rudis <bob@rudis.net>  
+Bug reports: https://github.com/hrbrmstr/metricsgraphics/issues
 
-## mets (1.1.0)
+__OK__
+
+## mets (1.1.1)
 Maintainer: Klaus K. Holst <klaus@holst.it>
 
 ```
-checking package dependencies ... NOTE
-Packages suggested but not available for checking: ‘lava.tobit’ ‘prodlim’
-```
-```
 checking whether package ‘mets’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpQJiDLv/check_crand2516b207784/mets.Rcheck/00install.out’ for details.
-Status: 1 ERROR, 1 NOTE
+See ‘/private/tmp/RtmpKAtbVW/check_cran14a8c2e8e2543/mets.Rcheck/00install.out’ for details.
 ```
+```
+DONE
+Status: 1 ERROR
+```
+
+## mHG (1.0)
+Maintainer: Kobi Perl <kobipe3@gmail.com>
+
+__OK__
+
+## midasr (0.5)
+Maintainer: Vaidotas Zemlys <zemlys@gmail.com>  
+Bug reports: https://github.com/mpiktas/midasr/issues
+
+__OK__
 
 ## miniCRAN (0.2.4)
 Maintainer: Andrie de
@@ -4187,21 +3185,6 @@ Maintainer: Surojit Biswas <surojitbiswas@g.harvard.edu>
 
 __OK__
 
-## mirt (1.9)
-Maintainer: Phil Chalmers <rphilip.chalmers@gmail.com>  
-Bug reports: https://github.com/philchalmers/mirt/issues?state=open
-
-```
-checking package dependencies ... NOTE
-Packages suggested but not available for checking: ‘alabama’ ‘sirt’
-```
-```
-checking whether package ‘mirt’ can be installed ... ERROR
-Installation failed.
-See ‘/private/tmp/RtmpQJiDLv/check_crand2516b207784/mirt.Rcheck/00install.out’ for details.
-Status: 1 ERROR, 1 NOTE
-```
-
 ## mirtCAT (0.5)
 Maintainer: Phil Chalmers <rphilip.chalmers@gmail.com>  
 Bug reports: https://github.com/philchalmers/mirtCAT/issues?state=open
@@ -4209,7 +3192,10 @@ Bug reports: https://github.com/philchalmers/mirtCAT/issues?state=open
 ```
 checking whether package ‘mirtCAT’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpQJiDLv/check_crand2516b207784/mirtCAT.Rcheck/00install.out’ for details.
+See ‘/private/tmp/RtmpKAtbVW/check_cran14a8c2e8e2543/mirtCAT.Rcheck/00install.out’ for details.
+```
+```
+DONE
 Status: 1 ERROR
 ```
 
@@ -4218,165 +3204,98 @@ Maintainer: Finlay Scott <finlay.scott@jrc.ec.europa.eu>
 
 __OK__
 
-## mkin (0.9-35)
+## mkin (0.9-40)
 Maintainer: Johannes Ranke <jranke@uni-bremen.de>  
 Bug reports: http://github.com/jranke/mkin/issues
 
 __OK__
 
-## mlr (2.3)
+## mlr (2.4)
 Maintainer: Bernd Bischl <bernd_bischl@gmx.net>  
 Bug reports: https://github.com/berndbischl/mlr/issues
 
-```
-checking package dependencies ... NOTE
-Packages suggested but not available for checking:
-  ‘adabag’ ‘bartMachine’ ‘brnn’ ‘care’ ‘clusterSim’ ‘clValid’ ‘cmaes’
-  ‘CoxBoost’ ‘crs’ ‘Cubist’ ‘DiceOptim’ ‘DiscriMiner’ ‘earth’ ‘elmNN’
-  ‘FSelector’ ‘gbm’ ‘GenSA’ ‘irace’ ‘kknn’ ‘kohonen’ ‘laGP’ ‘lqa’
-  ‘mRMRe’ ‘nodeHarvest’ ‘penalized’ ‘pls’ ‘randomUniformForest’ ‘rrlda’
-  ‘rsm’ ‘RWeka’ ‘sda’ ‘stepPlr’ ‘tgp’ ‘xgboost’
-```
-```
-checking Rd cross-references ... NOTE
-Packages unavailable to check Rd xrefs: ‘cmaes’, ‘GenSA’, ‘irace’
-```
-```
-checking examples ... ERROR
-Running examples in ‘mlr-Ex.R’ failed
-The error most likely occurred in:
+__OK__
 
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
-> ### Name: plotFilterValues
-> ### Title: Plot filter values.
-> ### Aliases: plotFilterValues
-> 
-> ### ** Examples
-> 
-> fv = getFilterValues(iris.task, method = "chi.squared")
-Error in requirePackages(filter$pkg, why = "getFilterValues", default.method = "load") : 
-  For getFilterValues please install the following packages: FSelector
-Calls: getFilterValues -> requirePackages -> stopf
-Execution halted
-```
-```
-checking tests ... ERROR
-Running the tests in ‘tests/run-base.R’ failed.
-Last 13 lines of output:
-  9. Failure (at test_base_checkTaskLearner.R#11): checkTaskLearner 
-  1. Error: clustering performance 
-  2. Error: clustering resample 
-  3. Error: clustering benchmark 
-  4. Error: clustering tune 
-  5. Error: plotLearnerPrediction 
-  6. Error: predict preserves rownames 
-  7. Error: predict.threshold 
-  8. Error: tune 
-  9. ...
-  
-  Error: testthat unit tests failed
-  Execution halted
-```
-```
-DONE
-Status: 2 ERRORs, 2 NOTEs
-```
+## mlsjunkgen (0.1.1)
+Maintainer: Steve Myles <steve@mylesandmyles.info>  
+Bug reports: https://github.com/scumdogsteev/mlsjunkgen/issues
 
-## mmand (1.1.0)
+__OK__
+
+## mmand (1.2.0)
 Maintainer: Jon Clayden <code@clayden.org>
 
 ```
 checking whether package ‘mmand’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpQJiDLv/check_crand2516b207784/mmand.Rcheck/00install.out’ for details.
+See ‘/private/tmp/RtmpKAtbVW/check_cran14a8c2e8e2543/mmand.Rcheck/00install.out’ for details.
+```
+```
+DONE
 Status: 1 ERROR
 ```
 
 ## moonBook (0.1.3)
 Maintainer: Keon-Woong Moon <cardiomoon@gmail.com>
 
-__OK__
+```
+checking files in ‘vignettes’ ... NOTE
+The following directory looks like a leftover from 'knitr':
+  ‘figure’
+Please remove from your package.
+```
+```
+DONE
+Status: 1 NOTE
+```
 
 ## morgenstemning (1.0)
 Maintainer: James Manton <ajd.manton@googlemail.com>
 
 __OK__
 
-## mosaic (0.9.2-2)
-Maintainer: Randall Pruim <rpruim@calvin.edu>
+## Morpho (2.3.0)
+Maintainer: Stefan Schlager <stefan.schlager@uniklinik-freiburg.de>
 
 ```
-checking package dependencies ... NOTE
-Package suggested but not available for checking: ‘NHANES’
-
-Package which this enhances but not available for checking: ‘manipulate’
-```
-```
-checking installed package size ... NOTE
-  installed size is  9.4Mb
-  sub-directories of 1Mb or more:
-    R     1.8Mb
-    doc   7.0Mb
-```
-```
-checking examples ... ERROR
-Running examples in ‘mosaic-Ex.R’ failed
-The error most likely occurred in:
-
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
-> ### Name: CIAdata
-> ### Title: Return a dataset based on the CIA World Factbook
-> ### Aliases: CIAdata
-> 
-> ### ** Examples
-> 
-> head(CIAdata())
-            Category                  Field   Name Code                 Unit
-1          Geography                   Area   area 2147                sq km
-2 People and Society             Population    pop 2119               people
-3 People and Society Population growth rate growth 2002                    %
-4 People and Society             Birth rate  birth 2054   births/1000 people
-5 People and Society             Death rate  death 2066   deaths/1000 people
-6 People and Society     Net migration rate   migr 2112 migrants/1000 people
-> gdpData <- CIAdata("pop")
-Loading required namespace: RCurl
-Error in names(table) <- c("country", name) : 
-  'names' attribute [2] must be the same length as the vector [0]
-Calls: CIAdata
-Execution halted
-```
-```
-checking re-building of vignette outputs ... NOTE
-Error in re-building vignettes:
-  ...
-geom_smooth: method="auto" and size of largest group is <1000, so using loess. Use 'method = x' to change the smoothing method.
-geom_smooth: method="auto" and size of largest group is <1000, so using loess. Use 'method = x' to change the smoothing method.
-geom_smooth: method="auto" and size of largest group is <1000, so using loess. Use 'method = x' to change the smoothing method.
-geom_smooth: method="auto" and size of largest group is <1000, so using loess. Use 'method = x' to change the smoothing method.
-Quitting from lines 121-126 (GraphicsWithMosaic.Rmd) 
-Error: processing vignette 'GraphicsWithMosaic.Rmd' failed with diagnostics:
-object 'NHANES' not found
-Execution halted
-
+checking whether package ‘Morpho’ can be installed ... ERROR
+Installation failed.
+See ‘/private/tmp/RtmpKAtbVW/check_cran14a8c2e8e2543/Morpho.Rcheck/00install.out’ for details.
 ```
 ```
 DONE
-Status: 1 ERROR, 3 NOTEs
+Status: 1 ERROR
 ```
 
-## move (1.4.496)
+## morse (2.0.0)
+Maintainer: Philippe Ruiz <philippe.ruiz@univ-lyon1.fr>
+
+```
+checking whether package ‘morse’ can be installed ... ERROR
+Installation failed.
+See ‘/private/tmp/RtmpKAtbVW/check_cran14a8c2e8e2543/morse.Rcheck/00install.out’ for details.
+```
+```
+DONE
+Status: 1 ERROR
+```
+
+## mosaic (0.11)
+Maintainer: Randall Pruim <rpruim@calvin.edu>
+
+__OK__
+
+## move (1.5.514)
 Maintainer: Bart Kranstauber <bart.kranstauber@uni-konstanz.de>
 
 ```
-checking package dependencies ... NOTE
-Packages suggested but not available for checking:
-  ‘adehabitatHR’ ‘adehabitatLT’ ‘circular’
-```
-```
 checking whether package ‘move’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpQJiDLv/check_crand2516b207784/move.Rcheck/00install.out’ for details.
-Status: 1 ERROR, 1 NOTE
+See ‘/private/tmp/RtmpKAtbVW/check_cran14a8c2e8e2543/move.Rcheck/00install.out’ for details.
+```
+```
+DONE
+Status: 1 ERROR
 ```
 
 ## MplusAutomation (0.6-3)
@@ -4384,7 +3303,7 @@ Maintainer: Michael Hallquist <michael.hallquist@gmail.com>
 
 ```
 checking package dependencies ... NOTE
-Packages suggested but not available for checking: ‘rhdf5’ ‘relimp’
+Package suggested but not available for checking: ‘rhdf5’
 ```
 ```
 checking dependencies in R code ... NOTE
@@ -4409,7 +3328,7 @@ Bug reports: https://github.com/dkahle/mpoly/issues
 
 __OK__
 
-## mrds (2.1.12)
+## mrds (2.1.14)
 Maintainer: David Miller <dave@ninepointeightone.net>
 
 __OK__
@@ -4434,14 +3353,13 @@ Status: 2 NOTEs
 Maintainer: Christopher Jackson <chris.jackson@mrc-bsu.cam.ac.uk>
 
 ```
-checking package dependencies ... NOTE
-Package suggested but not available for checking: ‘mstate’
-```
-```
 checking whether package ‘msm’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpQJiDLv/check_crand2516b207784/msm.Rcheck/00install.out’ for details.
-Status: 1 ERROR, 1 NOTE
+See ‘/private/tmp/RtmpKAtbVW/check_cran14a8c2e8e2543/msm.Rcheck/00install.out’ for details.
+```
+```
+DONE
+Status: 1 ERROR
 ```
 
 ## multilevelPSA (1.2.2)
@@ -4462,76 +3380,26 @@ Status: 1 NOTE
 ## multitable (1.6)
 Maintainer: Steve C Walker <steve.walker@utoronto.ca>
 
-```
-checking package dependencies ... NOTE
-Package suggested but not available for checking: ‘rbenchmark’
-```
-```
-checking running R code from vignettes ... WARNING
-Errors in running code in vignettes:
-when running code in ‘multitable.Rnw’
-  ...
-
-> without_molding <- function() {
-+     for (i in 1:100) as.data.frame(fake.community)
-+ }
-
-> library("rbenchmark")
-
-  When sourcing ‘multitable.R’:
-Error: there is no package called ‘rbenchmark’
-Execution halted
-
-```
-```
-checking re-building of vignette outputs ... NOTE
-Error in re-building vignettes:
-  ...
-Loading required package: Rcpp
-
-arm (Version 1.8-5, built: 2015-05-13)
-
-Working directory is /private/tmp/RtmpQJiDLv/check_crand2516b207784/multitable.Rcheck/vign_test/multitable/vignettes
-
-Loading required package: vegan
-Loading required package: permute
-Loading required package: lattice
-This is vegan 2.2-1
-Loading required package: scales
-
-Attaching package: ‘scales’
-
-The following object is masked from ‘package:arm’:
-
-    rescale
-
-dimids automatically generated
-dimids automatically generated
-
-Error: processing vignette 'multitable.Rnw' failed with diagnostics:
- chunk 42 (label = benchmarking molding) 
-Error in library("rbenchmark") : there is no package called ‘rbenchmark’
-Execution halted
-
-```
-```
-DONE
-Status: 1 WARNING, 2 NOTEs
-```
+__OK__
 
 ## mvnfast (0.1.3)
 Maintainer: Matteo Fasiolo <matteo.fasiolo@gmail.com>
 
 ```
-checking package dependencies ... NOTE
-Package suggested but not available for checking: ‘microbenchmark’
-```
-```
 checking whether package ‘mvnfast’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpQJiDLv/check_crand2516b207784/mvnfast.Rcheck/00install.out’ for details.
-Status: 1 ERROR, 1 NOTE
+See ‘/private/tmp/RtmpKAtbVW/check_cran14a8c2e8e2543/mvnfast.Rcheck/00install.out’ for details.
 ```
+```
+DONE
+Status: 1 ERROR
+```
+
+## mvtboost (0.3)
+Maintainer: Patrick Miller <patrick.mil10@gmail.com>  
+Bug reports: https://github.com/patr1ckm/mvtboost/issues
+
+__OK__
 
 ## mwaved (1.1.1)
 Maintainer: Justin Rory Wishart <j.wishart@unsw.edu.au>  
@@ -4540,7 +3408,10 @@ Bug reports: https://github.com/jrwishart/mwaved/issues
 ```
 checking whether package ‘mwaved’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpQJiDLv/check_crand2516b207784/mwaved.Rcheck/00install.out’ for details.
+See ‘/private/tmp/RtmpKAtbVW/check_cran14a8c2e8e2543/mwaved.Rcheck/00install.out’ for details.
+```
+```
+DONE
 Status: 1 ERROR
 ```
 
@@ -4559,7 +3430,23 @@ DONE
 Status: 1 NOTE
 ```
 
-## nabor (0.4.4)
+## myTAI (0.3.0)
+Maintainer: Hajk-Georg Drost <hajk-georg.drost@informatik.uni-halle.de>  
+Bug reports: https://github.com/HajkD/myTAI/issues
+
+```
+checking package dependencies ... ERROR
+Package required but not available: ‘edgeR’
+
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
+```
+```
+DONE
+Status: 1 ERROR
+```
+
+## nabor (0.4.6)
 Maintainer: Gregory Jefferis <jefferis@gmail.com>  
 Bug reports: https://github.com/jefferis/nabor/issues
 
@@ -4570,25 +3457,28 @@ Maintainer: James Manton <ajd.manton@googlemail.com>
 
 __OK__
 
-## nat (1.6.4)
+## nat (1.7.0)
 Maintainer: Greg Jefferis <jefferis@gmail.com>  
 Bug reports: https://github.com/jefferis/nat/issues
 
+__OK__
+
+## nat.templatebrains (0.6)
+Maintainer: James Manton <ajd.manton@googlemail.com>
+
 ```
-checking package dependencies ... NOTE
-Package suggested but not available for checking: ‘Rvcg’
+checking package dependencies ... ERROR
+Package required and available but unsuitable version: ‘nat’
+
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
 ```
 ```
 DONE
-Status: 1 NOTE
+Status: 1 ERROR
 ```
 
-## nat.templatebrains (0.4.1)
-Maintainer: James Manton <ajd.manton@googlemail.com>
-
-__OK__
-
-## nat.utils (0.4.2)
+## nat.utils (0.5.1)
 Maintainer: Gregory Jefferis <jefferis@gmail.com>
 
 __OK__
@@ -4605,11 +3495,14 @@ Maintainer: Cole Beck <cole.beck@vanderbilt.edu>
 ```
 checking whether package ‘nbpMatching’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpQJiDLv/check_crand2516b207784/nbpMatching.Rcheck/00install.out’ for details.
+See ‘/private/tmp/RtmpKAtbVW/check_cran14a8c2e8e2543/nbpMatching.Rcheck/00install.out’ for details.
+```
+```
+DONE
 Status: 1 ERROR
 ```
 
-## ncappc (0.1)
+## ncappc (0.2)
 Maintainer: Chayan Acharya <chayan.acharya@farmbio.uu.se>
 
 __OK__
@@ -4637,13 +3530,13 @@ Bug reports: <r.grannell2@gmail.com>
 
 __OK__
 
-## neotoma (1.2-0)
+## neotoma (1.4.0)
 Maintainer: Simon J. Goring <goring@wisc.edu>  
 Bug reports: https://github.com/ropensci/neotoma/issues
 
 __OK__
 
-## nestedRanksTest (0.1)
+## nestedRanksTest (0.2)
 Maintainer: Douglas G. Scofield <douglasgscofield@gmail.com>
 
 __OK__
@@ -4652,26 +3545,53 @@ __OK__
 Maintainer: Jakob Bossek <j.bossek@gmail.com>  
 Bug reports: https://github.com/jakobbossek/netgen/issues
 
-__OK__
-
-## networkDynamic (0.7.1)
-Maintainer: Skye Bender-deMoll <skyebend@uw.edu>
-
 ```
-checking S3 generic/method consistency ... NOTE
-Found the following apparent S3 methods exported but not registered:
-  add.edge.networkDynamic add.edges.active add.edges.networkDynamic
-  add.vertices.active add.vertices.networkDynamic
-  as.data.frame.networkDynamic as.network.networkDynamic
-  as.networkDynamic.network as.networkDynamic.networkDynamic
-  print.networkDynamic
-See section ‘Registering S3 methods’ in the ‘Writing R Extensions’
-manual.
+checking whether package ‘netgen’ can be installed ... WARNING
+Found the following significant warnings:
+  Warning: replacing previous import by ‘igraph::normalize’ when loading ‘netgen’
+  Warning: replacing previous import by ‘stringr::%>%’ when loading ‘netgen’
+See ‘/private/tmp/RtmpKAtbVW/check_cran14a8c2e8e2543/netgen.Rcheck/00install.out’ for details.
 ```
 ```
 DONE
-Status: 1 NOTE
+Status: 1 WARNING
 ```
+
+## network (1.13.0)
+Maintainer: Carter T. Butts <buttsc@uci.edu>
+
+__OK__
+
+## networkDynamic (0.8.0)
+Maintainer: Skye Bender-deMoll <skyebend@uw.edu>
+
+```
+checking tests ... ERROR
+Running the tests in ‘tests/utils_tests.R’ failed.
+Last 13 lines of output:
+  +   test2<-network.initialize(3)
+  +   test2[1,2]<-1
+  +   test2[2,3]<-1
+  +   test2[3,1]<-1
+  +   delete.edges(test2,eid=2)
+  +   expect_equal(get.dyads.active(test2,at=1),rbind(1:2,c(3,1)),info='deleted edge case')
+  +   
+  + })
+  Error: Test failed: 'get.dyads.active works'
+  Not expected: get.dyads.active(test2, onset = 0, terminus = 4, active.default = FALSE) not equal to matrix(numeric(), ncol = 2, nrow = 0)
+  current is not list-like
+  test active default arg.
+  Execution halted
+```
+```
+DONE
+Status: 1 ERROR
+```
+
+## neuroim (0.0.4)
+Maintainer: Bradley Buchsbaum <brad.buchsbaum@gmail.com>
+
+__OK__
 
 ## ngramrr (0.1.1)
 Maintainer: Chung-hong Chan <chainsawtiney@gmail.com>
@@ -4682,16 +3602,12 @@ __OK__
 Maintainer: Andrzej Galecki <agalecki@umich.edu>
 
 ```
-checking package dependencies ... NOTE
-Package suggested but not available for checking: ‘WWGbook’
-```
-```
 checking DESCRIPTION meta-information ... NOTE
 Malformed Title field: should not end in a period.
 ```
 ```
 DONE
-Status: 2 NOTEs
+Status: 1 NOTE
 ```
 
 ## nloptr (1.0.4)
@@ -4699,32 +3615,28 @@ Maintainer: Jelmer Ypma <uctpjyy@ucl.ac.uk>
 
 __OK__
 
-## NlsyLinks (1.302)
-Maintainer: Will Beasley <wibeasley@hotmail.com>
+## NlsyLinks (2.0.1)
+Maintainer: Will Beasley <wibeasley@hotmail.com>  
+Bug reports: https://github.com/LiveOak/NlsyLinks/issues
 
 ```
-checking DESCRIPTION meta-information ... NOTE
-Malformed Title field: should not end in a period.
-Malformed Description field: should contain one or more complete sentences.
-```
-```
-checking dependencies in R code ... NOTE
-Namespace in Imports field not imported from: ‘methods’
-  All declared Imports should be used.
-```
-```
-checking R code for possible problems ... NOTE
-ReadCsvNlsy79Gen1: no visible binding for global variable
-  ‘SubjectDetails79’
-ReadCsvNlsy79Gen2: no visible binding for global variable
-  ‘SubjectDetails79’
+checking installed package size ... NOTE
+  installed size is  6.3Mb
+  sub-directories of 1Mb or more:
+    data   4.3Mb
+    doc    1.0Mb
 ```
 ```
 DONE
-Status: 3 NOTEs
+Status: 1 NOTE
 ```
 
-## nodiv (1.0.3)
+## NNTbiomarker (0.29.11)
+Maintainer: Roger Day <day01@pitt.edu>
+
+__OK__
+
+## nodiv (1.1.0)
 Maintainer: Michael Krabbe Borregaard <mkborregaard@snm.ku.dk>
 
 __OK__
@@ -4732,40 +3644,26 @@ __OK__
 ## nscancor (0.6)
 Maintainer: Christian Sigg <christian@sigg-iten.ch>
 
-```
-checking package dependencies ... NOTE
-Packages suggested but not available for checking: ‘CCA’ ‘PMA’
-```
-```
-checking examples ... ERROR
-Running examples in ‘nscancor-Ex.R’ failed
-The error most likely occurred in:
-
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
-> ### Name: mcancor
-> ### Title: Non-Negative and Sparse Multi-Domain CCA
-> ### Aliases: mcancor
-> 
-> ### ** Examples
-> 
-> library(glmnet)
-Loading required package: Matrix
-Loading required package: foreach
-Loaded glmnet 2.0-2
-
-> data(breastdata, package="PMA")
-Error in find.package(package, lib.loc, verbose = verbose) : 
-  there is no package called ‘PMA’
-Calls: data -> find.package
-Execution halted
-```
-```
-DONE
-Status: 1 ERROR, 1 NOTE
-```
+__OK__
 
 ## nsprcomp (0.5)
 Maintainer: Christian Sigg <christian@sigg-iten.ch>
+
+__OK__
+
+## oai (0.1.0)
+Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>  
+Bug reports: https://github.com/sckott/oai/issues
+
+__OK__
+
+## OasisR (1.0.0)
+Maintainer: Mihai Tivadar <mihai.tivadar@irstea.fr>
+
+__OK__
+
+## olctools (0.2.1)
+Maintainer: Oliver Keyes <ironholds@gmail.com>
 
 __OK__
 
@@ -4780,69 +3678,23 @@ Bug reports: https://github.com/jeroenooms/openssl/issues
 
 __OK__
 
-## openxlsx (2.4.0)
+## openxlsx (3.0.0)
 Maintainer: Alexander Walker <Alexander.Walker1989@gmail.com>  
 Bug reports: https://github.com/awalker89/openxlsx/issues
 
 __OK__
 
-## operator.tools (1.3.0)
-Maintainer: Christopher Brown <chris.brown@decisionpatterns.com>
+## operator.tools (1.4.4)
+Maintainer: Christopher Brown <chris.brown@decisionpatterns.com>  
+Bug reports: https://github.com/decisionpatterns/operator.tools/issues
 
-```
-checking DESCRIPTION meta-information ... NOTE
-Malformed Description field: should contain one or more complete sentences.
-```
-```
-checking top-level files ... NOTE
-File
-  LICENSE
-is not mentioned in the DESCRIPTION file.
-Non-standard file/directory found at top level:
-  ‘operator.Rproj’
-```
-```
-checking S3 generic/method consistency ... NOTE
-Found the following apparent S3 methods exported but not registered:
-  as.operator.character as.operator.function as.operator.name
-  can.operator.character can.operator.default can.operator.function
-  can.operator.name inverse.function inverse.name is.operator.default
-  is.operator.function is.operator.name operator.type.function
-  operator.type.name rel.type.call rel.type.expression
-  rel.type.function rel.type.name
-See section ‘Registering S3 methods’ in the ‘Writing R Extensions’
-manual.
-```
-```
-DONE
-Status: 3 NOTEs
-```
+__OK__
 
-## operators (0.1-7)
-Maintainer: Romain Francois <romain@r-enthusiasts.com>
+## operators (0.1-8)
+Maintainer: Romain Francois <romain@r-enthusiasts.com>  
+Bug reports: https://github.com/romainfrancois/operators/issues
 
-```
-checking tests ... ERROR
-Running the tests in ‘tests/testthat.R’ failed.
-Last 13 lines of output:
-  
-  1. Failure (at test-but.R#24): but operators work ------------------------------
-  class(test) not equal to "try-error"
-  1 string mismatches:
-  x[1]: "try-error"
-  y[1]: "function"
-  
-  testthat results ================================================================
-  OK: 51 SKIPPED: 0 FAILED: 1
-  1. Failure (at test-but.R#24): but operators work 
-  
-  Error: testthat unit tests failed
-  Execution halted
-```
-```
-DONE
-Status: 1 ERROR
-```
+__OK__
 
 ## optiRum (0.35)
 Maintainer: Stephanie Locke <stephanie.locke@optimumcredit.co.uk>  
@@ -4850,13 +3702,16 @@ Bug reports: https://github.com/stephlocke/optiRum/issues
 
 __OK__
 
-## optmatch (0.9-3)
+## optmatch (0.9-5)
 Maintainer: Mark M. Fredrickson <mark.m.fredrickson@gmail.com>
 
 ```
 checking whether package ‘optmatch’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpQJiDLv/check_crand2516b207784/optmatch.Rcheck/00install.out’ for details.
+See ‘/private/tmp/RtmpKAtbVW/check_cran14a8c2e8e2543/optmatch.Rcheck/00install.out’ for details.
+```
+```
+DONE
 Status: 1 ERROR
 ```
 
@@ -4883,12 +3738,12 @@ DONE
 Status: 2 NOTEs
 ```
 
-## ordinal (2015.1-21)
-Maintainer: Rune Haubo Bojesen Christensen <rhbc@dtu.dk>
+## ordinal (2015.6-28)
+Maintainer: Rune Haubo Bojesen Christensen <rune.haubo@gmail.com>
 
 __OK__
 
-## ore (1.1.0)
+## ore (1.2.1)
 Maintainer: Jon Clayden <code@clayden.org>  
 Bug reports: https://github.com/jonclayden/ore/issues
 
@@ -4982,7 +3837,7 @@ DONE
 Status: 3 NOTEs
 ```
 
-## packrat (0.4.3)
+## packrat (0.4.4)
 Maintainer: Kevin Ushey <kevin@rstudio.com>  
 Bug reports: https://github.com/rstudio/packrat/issues
 
@@ -5001,6 +3856,19 @@ Bug reports: https://github.com/trinker/pacman/issues?state=open
 
 __OK__
 
+## Pade (0.1-4)
+Maintainer: Avraham Adler <Avraham.Adler@gmail.com>  
+Bug reports: https://bitbucket.org/aadler/pade/issues
+
+```
+checking Rd cross-references ... NOTE
+Package unavailable to check Rd xrefs: ‘pracma’
+```
+```
+DONE
+Status: 1 NOTE
+```
+
 ## paleobioDB (0.3)
 Maintainer: Sara Varela <svarela@paleobiogeography.org>  
 Bug reports: https://github.com/ropensci/paleobioDB/issues
@@ -5014,7 +3882,7 @@ DONE
 Status: 1 NOTE
 ```
 
-## parallelMap (1.2)
+## parallelMap (1.3)
 Maintainer: Bernd Bischl <bernd_bischl@gmx.net>  
 Bug reports: https://github.com/berndbischl/parallelMap/issues
 
@@ -5036,30 +3904,22 @@ Maintainer: Bernd Bischl <bernd_bischl@gmx.net>
 Bug reports: https://github.com/berndbischl/ParamHelpers/issues
 
 ```
-checking package dependencies ... NOTE
-Packages suggested but not available for checking: ‘irace’ ‘soobench’
-```
-```
 checking DESCRIPTION meta-information ... NOTE
 Malformed Title field: should not end in a period.
-```
-```
-checking Rd cross-references ... NOTE
-Packages unavailable to check Rd xrefs: ‘irace’, ‘soobench’
 ```
 ```
 checking tests ... ERROR
 Running the tests in ‘tests/run-all.R’ failed.
 Last 13 lines of output:
-  1: withCallingHandlers(eval(code, new_test_environment), error = capture_calls, message = function(c) invokeRestart("muffleMessage"), 
-         warning = function(c) invokeRestart("muffleWarning"))
-  2: eval(code, new_test_environment)
-  3: eval(expr, envir, enclos)
-  4: requirePackages("_irace") at test_convertParamSetToIrace.R:4
-  5: stopf("Please install the following packages: %s", ps)
+             "loadBalancing"))), .Names = c("no.candidates", "no.tasks", "race.instances", 
+         "candidates", "parameters", "config")))
+  15: execute.experiments(experiments, length(experiments), data$config)
+  16: .irace$hook.run(experiments[[k]], config = configuration)
   
+  Warning in generateDesign(1000, ps) :
+    generateDesign could only produce 996 points instead of 1000!
   testthat results ================================================================
-  OK: 765 SKIPPED: 0 FAILED: 1
+  OK: 768 SKIPPED: 0 FAILED: 1
   1. Error: convertParamSetToIrace 
   
   Error: testthat unit tests failed
@@ -5067,8 +3927,14 @@ Last 13 lines of output:
 ```
 ```
 DONE
-Status: 1 ERROR, 3 NOTEs
+Status: 1 ERROR, 1 NOTE
 ```
+
+## params (0.3.0)
+Maintainer: Sahil Seth <me@sahilseth.com>  
+Bug reports: https://github.com/sahilseth/params/issues
+
+__OK__
 
 ## parsedate (1.1.1)
 Maintainer: Gabor Csardi <csardi.gabor@gmail.com>  
@@ -5078,16 +3944,16 @@ Bug reports: https://github.com/gaborcsardi/parsedate/issues
 checking tests ... ERROR
 Running the tests in ‘tests/testthat.R’ failed.
 Last 13 lines of output:
-  6: asNamespace(ns)
-  7: getNamespace(ns)
-  8: tryCatch(loadNamespace(name), error = function(e) stop(e))
-  9: tryCatchList(expr, classes, parentenv, handlers)
-  10: tryCatchOne(expr, names, parentenv, handlers[[1L]])
-  11: value[[3L]](cond)
-  
-  testthat results ================================================================
-  OK: 106 SKIPPED: 0 FAILED: 1
-  1. Error: Filling in is correct 
+  7. Failure (at test-iso8601.r#144): Pelago non-matching 
+  8. Failure (at test-iso8601.r#144): Pelago non-matching 
+  9. Failure (at test-iso8601.r#144): Pelago non-matching 
+  1. Failure (at test-iso8601.r#144): Pelago non-matching 
+  2. Failure (at test-iso8601.r#144): Pelago non-matching 
+  3. Failure (at test-iso8601.r#144): Pelago non-matching 
+  4. Failure (at test-iso8601.r#144): Pelago non-matching 
+  5. Failure (at test-iso8601.r#144): Pelago non-matching 
+  6. Failure (at test-iso8601.r#144): Pelago non-matching 
+  7. ...
   
   Error: testthat unit tests failed
   Execution halted
@@ -5124,7 +3990,7 @@ DONE
 Status: 2 NOTEs
 ```
 
-## PDQutils (0.1.1)
+## PDQutils (0.1.2)
 Maintainer: Steven E. Pav <shabbychef@gmail.com>  
 Bug reports: https://github.com/shabbychef/PDQutils/issues
 
@@ -5136,75 +4002,49 @@ Bug reports: https://github.com/gavinsimpson/permute/issues
 
 __OK__
 
-## phylobase (0.6.8)
-Maintainer: Francois Michonneau <francois.michonneau@gmail.com>
+## phangorn (1.99.14)
+Maintainer: Klaus Schliep <klaus.schliep@gmail.com>
 
 ```
-checking DESCRIPTION meta-information ... NOTE
-Malformed Description field: should contain one or more complete sentences.
+checking package dependencies ... NOTE
+Package suggested but not available for checking: ‘seqLogo’
 ```
 ```
-checking dependencies in R code ... NOTE
-Package in Depends field not imported from: ‘grid’
-  These packages need to be imported from (in the NAMESPACE file)
-  for when this namespace is loaded but not attached.
-```
-```
-checking R code for possible problems ... NOTE
-.bubLegendGrob: no visible global function definition for ‘grob’
-drawDetails.bubLegend: no visible global function definition for
-  ‘seekViewport’
-drawDetails.bubLegend: no visible global function definition for
-  ‘convertUnit’
-drawDetails.bubLegend: no visible global function definition for ‘unit’
-drawDetails.bubLegend: no visible global function definition for
-  ‘grid.circle’
-drawDetails.bubLegend: no visible global function definition for ‘gpar’
-drawDetails.bubLegend: no visible global function definition for
-  ‘grid.text’
-phylobubbles: no visible global function definition for ‘stringWidth’
-phylobubbles: no visible global function definition for ‘convertWidth’
-phylobubbles: no visible global function definition for ‘unit’
-phylobubbles: no visible global function definition for ‘grid.layout’
-phylobubbles: no visible global function definition for ‘unit.c’
-phylobubbles: no visible global function definition for ‘pushViewport’
-phylobubbles: no visible global function definition for ‘viewport’
-phylobubbles: no visible global function definition for ‘convertUnit’
-phylobubbles: no visible global function definition for ‘grid.segments’
-phylobubbles: no visible global function definition for ‘gpar’
-phylobubbles: no visible global function definition for ‘grid.points’
-phylobubbles: no visible global function definition for ‘grid.rect’
-phylobubbles: no visible global function definition for ‘grid.circle’
-phylobubbles: no visible global function definition for ‘upViewport’
-phylobubbles: no visible global function definition for ‘grid.text’
-phylobubbles: no visible global function definition for ‘grid.draw’
-plotOneTree: no visible global function definition for ‘stringWidth’
-plotOneTree: no visible global function definition for ‘unit’
-plotOneTree: no visible global function definition for ‘grid.layout’
-plotOneTree: no visible global function definition for ‘unit.c’
-plotOneTree: no visible global function definition for ‘convertUnit’
-plotOneTree: no visible global function definition for ‘pushViewport’
-plotOneTree: no visible global function definition for ‘viewport’
-plotOneTree: no visible global function definition for ‘grid.segments’
-plotOneTree: no visible global function definition for ‘gpar’
-plotOneTree: no visible global function definition for ‘upViewport’
-plotOneTree: no visible global function definition for ‘grid.text’
-tip.data.plot: no visible binding for global variable ‘grid.points’
-tip.data.plot: no visible global function definition for ‘grid.layout’
-tip.data.plot: no visible global function definition for ‘unit’
-tip.data.plot: no visible global function definition for ‘pushViewport’
-tip.data.plot: no visible global function definition for ‘viewport’
-tip.data.plot: no visible global function definition for ‘convertY’
-tip.data.plot: no visible global function definition for ‘upViewport’
-treePlot: no visible global function definition for ‘grid.newpage’
-treePlot: no visible global function definition for ‘pushViewport’
-treePlot: no visible global function definition for ‘plotViewport’
-treePlot: no visible global function definition for ‘upViewport’
+checking whether package ‘phangorn’ can be installed ... ERROR
+Installation failed.
+See ‘/private/tmp/RtmpKAtbVW/check_cran14a8c2e8e2543/phangorn.Rcheck/00install.out’ for details.
 ```
 ```
 DONE
-Status: 3 NOTEs
+Status: 1 ERROR, 1 NOTE
 ```
+
+## phonenumber (0.2.2)
+Maintainer: Steve Myles <steve@mylesandmyles.info>  
+Bug reports: https://github.com/scumdogsteev/phonenumber/issues
+
+__OK__
+
+## phylobase (0.8.0)
+Maintainer: Francois Michonneau <francois.michonneau@gmail.com>  
+Bug reports: https://github.com/fmichonneau/phylobase/issues
+
+```
+checking whether package ‘phylobase’ can be installed ... WARNING
+Found the following significant warnings:
+  Warning: namespace ‘RCurl’ is not available and has been replaced
+  Warning: namespace ‘Matrix’ is not available and has been replaced
+See ‘/private/tmp/RtmpKAtbVW/check_cran14a8c2e8e2543/phylobase.Rcheck/00install.out’ for details.
+```
+```
+DONE
+Status: 1 WARNING
+```
+
+## phyndr (0.1.0)
+Maintainer: Matt Pennell <mwpennell@gmail.com>
+
+__OK__
 
 ## physiology (0.2.2)
 Maintainer: Jack O. Wasey <jack@jackwasey.com>  
@@ -5220,9 +4060,9 @@ Bug reports: https://github.com/gaborcsardi/pingr/issues
 checking tests ... ERROR
 Running the tests in ‘tests/testthat.R’ failed.
 Last 13 lines of output:
+  1. Error: We can ping localhost ------------------------------------------------
   LENGTH or similar applied to closure object
-  1: withCallingHandlers(eval(code, new_test_environment), error = capture_calls, message = function(c) invokeRestart("muffleMessage"), 
-         warning = function(c) invokeRestart("muffleWarning"))
+  1: withCallingHandlers(eval(code, new_test_environment), error = capture_calls, message = function(c) invokeRestart("muffleMessage"))
   2: eval(code, new_test_environment)
   3: eval(expr, envir, enclos)
   4: ping_port("127.0.0.1", port = tools:::httpdPort, count = 1) at test-tcp.r:13
@@ -5239,7 +4079,7 @@ DONE
 Status: 1 ERROR
 ```
 
-## pipeR (0.6)
+## pipeR (0.6.0.6)
 Maintainer: Kun Ren <ken@renkun.me>  
 Bug reports: https://github.com/renkun-ken/pipeR/issues
 
@@ -5249,14 +4089,19 @@ __OK__
 Maintainer: Carson Sievert <sievert@iastate.edu>  
 Bug reports: http://github.com/cpsievert/pitchRx/issues
 
-```
-checking package dependencies ... NOTE
-Package suggested but not available for checking: ‘ggsubplot’
-```
-```
-DONE
-Status: 1 NOTE
-```
+__OK__
+
+## pixiedust (0.1.1)
+Maintainer: Benjamin Nutter <nutter@battelle.org>  
+Bug reports: https://github.com/nutterb/pixiedust/issues
+
+__OK__
+
+## pkgconfig (2.0.0)
+Maintainer: Gabor Csardi <csardi.gabor@gmail.com>  
+Bug reports: https://github.com/gaborcsardi/pkgconfig/issues
+
+__OK__
 
 ## pkgmaker (0.22)
 Maintainer: Renaud Gaujoux <renaud@tx.technion.ac.il>  
@@ -5315,7 +4160,10 @@ Maintainer: Baptiste Auguie <baptiste.auguie@gmail.com>
 ```
 checking whether package ‘planar’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpQJiDLv/check_crand2516b207784/planar.Rcheck/00install.out’ for details.
+See ‘/private/tmp/RtmpKAtbVW/check_cran14a8c2e8e2543/planar.Rcheck/00install.out’ for details.
+```
+```
+DONE
 Status: 1 ERROR
 ```
 
@@ -5325,43 +4173,52 @@ Bug reports: http://github.com/sachsmc/plotROC/issues
 
 __OK__
 
-## plspm (0.4.2)
-Maintainer: ORPHANED
+## plspm (0.4.7)
+Maintainer: Gaston Sanchez <gaston.stat@gmail.com>  
+Bug reports: https://github.com/gastonstat/plspm/issues
 
-```
-checking package dependencies ... NOTE
-Package suggested but not available for checking: ‘plsdepot’
-```
-```
-DONE
-Status: 1 NOTE
-```
+__OK__
 
 ## plumbr (0.6.9)
 Maintainer: Michael Lawrence <michafla@gene.com>
 
 __OK__
 
-## plyr (1.8.2)
+## plyr (1.8.3)
 Maintainer: Hadley Wickham <hadley@rstudio.com>  
 Bug reports: https://github.com/hadley/plyr/issues
 
+__OK__
+
+## pmc (1.0.1)
+Maintainer: Carl Boettiger <cboettig@gmail.com>  
+Bug reports: https://github.com/cboettig/pmc/issues
+
 ```
-checking package dependencies ... NOTE
-Package suggested but not available for checking: ‘itertools’
+checking package dependencies ... ERROR
+Package required but not available: ‘ouch’
+
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
 ```
 ```
 DONE
-Status: 1 NOTE
+Status: 1 ERROR
 ```
+
+## pmml (1.5.0)
+Maintainer: Tridivesh Jena <rpmmlsupport@zementis.net>
+
+__OK__
+
+## pmmlTransformations (1.3.0)
+Maintainer: Tridivesh Jena <rpmmlsupport@zementis.net>
+
+__OK__
 
 ## pnn (1.0.1)
 Maintainer: Pierre-Olivier Chasset <pierre-olivier@chasset.net>
 
-```
-checking package dependencies ... NOTE
-Package suggested but not available for checking: ‘rgenoud’
-```
 ```
 checking top-level files ... NOTE
 Non-standard file/directory found at top level:
@@ -5379,10 +4236,10 @@ smooth: no visible global function definition for ‘genoud’
 ```
 ```
 DONE
-Status: 4 NOTEs
+Status: 3 NOTEs
 ```
 
-## pollstR (1.2.0)
+## pollstR (1.2.1)
 Maintainer: Jeffrey B. Arnold <jeffrey.arnold@gmail.com>  
 Bug reports: https://github.com/rOpenGov/pollstR/issues
 
@@ -5399,6 +4256,53 @@ Maintainer: Andrew C. Hooker <andrew.hooker@farmbio.uu.se>
 Bug reports: https://github.com/andrewhooker/PopED/issues
 
 __OK__
+
+## popEpi (0.2.1)
+Maintainer: Joonas Miettinen <joonas.miettinen@cancer.fi>  
+Bug reports: https://github.com/WetRobot/popEpi/issues
+
+```
+checking package dependencies ... NOTE
+Package suggested but not available for checking: ‘relsurv’
+```
+```
+checking examples ... ERROR
+Running examples in ‘popEpi-Ex.R’ failed
+The error most likely occurred in:
+
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+> ### Name: as.data.frame.ratetable
+> ### Title: Coerce a 'ratetable' object to 'data.frame'
+> ### Aliases: as.data.frame.ratetable
+> 
+> ### ** Examples
+> 
+> library(relsurv)
+Error in library(relsurv) : there is no package called ‘relsurv’
+Execution halted
+```
+```
+checking tests ... ERROR
+Running the tests in ‘tests/testthat.R’ failed.
+Last 13 lines of output:
+  5: stop(txt, domain = NA)
+  
+  testthat results ================================================================
+  OK: 31 SKIPPED: 15 FAILED: 1
+  1. Error: relative survivals about the same as relsurv's 
+  
+  Error: testthat unit tests failed
+  In addition: Warning messages:
+  1: In sir_table(coh.data = coh.data, coh.obs = coh.obs, coh.pyrs = coh.pyrs,  :
+    mstate variable name does not match names in ref.data.
+  2: In sir_table(coh.data = coh.data, coh.obs = coh.obs, coh.pyrs = coh.pyrs,  :
+    Consider including mstate variable also in adjust. See help(sir) for details.
+  Execution halted
+```
+```
+DONE
+Status: 2 ERRORs, 1 NOTE
+```
 
 ## popgraph (1.4)
 Maintainer: Rodney J. Dyer <rjdyer@vcu.edu>
@@ -5424,10 +4328,10 @@ checking running R code from vignettes ... WARNING
 Errors in running code in vignettes:
 when running code in ‘poplite.Rnw’
   ...
-8             8         8  18      0  1.6844357  0.53539884          2   F
-9             9         9  20      1  0.9113913 -0.55527835          2   F
-10           10        10  12      1  0.2374303  1.77950291          1   M
-..          ...       ... ...    ...        ...         ...        ... ...
+8             8         8    18      0  1.6844357  0.53539884          2     F
+9             9         9    20      1  0.9113913 -0.55527835          2     F
+10           10        10    12      1  0.2374303  1.77950291          1     M
+..          ...       ...   ...    ...        ...         ...        ...   ...
 
 > library(VariantAnnotation)
 
@@ -5472,99 +4376,27 @@ DONE
 Status: 1 WARNING, 2 NOTEs
 ```
 
-## poppr (1.1.5)
+## poppr (2.0.2)
 Maintainer: Zhian N. Kamvar <kamvarz@science.oregonstate.edu>  
 Bug reports: https://github.com/grunwaldlab/poppr/issues
 
-```
-checking package dependencies ... NOTE
-Package suggested but not available for checking: ‘polysat’
-```
-```
-DONE
-Status: 1 NOTE
-```
+__OK__
+
+## popprxl (0.1)
+Maintainer: Zhian N. Kamvar <kamvarz@science.oregonstate.edu>
+
+__OK__
 
 ## PortfolioAnalytics (1.0.3636)
 Maintainer: Brian G. Peterson <brian@braverock.com>
 
 ```
 checking package dependencies ... NOTE
-Packages suggested but not available for checking:
-  ‘DEoptim’ ‘fGarch’ ‘ROI’ ‘ROI.plugin.glpk’ ‘ROI.plugin.quadprog’
-  ‘ROI.plugin.symphony’ ‘pso’ ‘GenSA’
-```
-```
-checking Rd cross-references ... NOTE
-Package unavailable to check Rd xrefs: ‘DEoptim’
-```
-```
-checking running R code from vignettes ... [31s/31s] WARNING
-Errors in running code in vignettes:
-when running code in ‘ROI_vignette.Rnw’
-  ...
-
-> suppressMessages(library(foreach))
-
-> suppressMessages(library(iterators))
-
-> suppressMessages(library(ROI))
-
-  When sourcing ‘ROI_vignette.R’:
-Error: there is no package called ‘ROI’
-Execution halted
-when running code in ‘custom_moments_objectives.Rnw’
-  ...
-The following object is masked from ‘package:graphics’:
-
-    legend
-
-
-> library(DEoptim)
-
-  When sourcing ‘custom_moments_objectives.R’:
-Error: there is no package called ‘DEoptim’
-Execution halted
-when running code in ‘portfolio_vignette.Rnw’
-  ...
-+     ylab = "mean", xlab = "StdDev", col = rgb(0, 0, 100, 50, 
-+         maxColorVal .... [TRUNCATED] 
-
-> par(mfrow = c(1, 1))
-
-> library(DEoptim)
-
-  When sourcing ‘portfolio_vignette.R’:
-Error: there is no package called ‘DEoptim’
-Execution halted
-when running code in ‘risk_budget_optimization.Rnw’
-  ...
-The following object is masked from ‘package:graphics’:
-
-    legend
-
-
-> library(DEoptim)
-
-  When sourcing ‘risk_budget_optimization.R’:
-Error: there is no package called ‘DEoptim’
-Execution halted
-
-```
-```
-checking re-building of vignette outputs ... NOTE
-Error in re-building vignettes:
-  ...
-
-Error: processing vignette 'ROI_vignette.Rnw' failed with diagnostics:
- chunk 1 
-Error in library(ROI) : there is no package called ‘ROI’
-Execution halted
-
+Package suggested but not available for checking: ‘ROI.plugin.symphony’
 ```
 ```
 DONE
-Status: 1 WARNING, 3 NOTEs
+Status: 1 NOTE
 ```
 
 ## PP (0.5.3)
@@ -5572,9 +4404,38 @@ Maintainer: Manuel Reif <manuel.reif@gmail.com>
 
 __OK__
 
-## prettyunits (1.0.0)
-Maintainer: "Gabor Csardi" <csardi.gabor@gmail.com>  
+## praise (1.0.0)
+Maintainer: Gabor Csardi <csardi.gabor@gmail.com>  
+Bug reports: https://github.com/gaborcsardi/praise/issues
+
+__OK__
+
+## prepdat (1.0.2)
+Maintainer: Ayala S. Allon <ayalaallon@gmail.com>  
+Bug reports: http://github.com/ayalaallon/prepdat/issues
+
+__OK__
+
+## prettyunits (1.0.2)
+Maintainer: Gabor Csardi <csardi.gabor@gmail.com>  
 Bug reports: https://github.com/gaborcsardi/prettyunits/issues
+
+__OK__
+
+## primes (0.1.0)
+Maintainer: Oliver Keyes <ironholds@gmail.com>
+
+__OK__
+
+## profilr (0.1.0)
+Maintainer: Paul Hendricks <paul.hendricks.2013@owu.edu>  
+Bug reports: https://github.com/paulhendricks/profilr/issues
+
+__OK__
+
+## progress (1.0.2)
+Maintainer: Gabor Csardi <csardi.gabor@gmail.com>  
+Bug reports: https://github.com/gaborcsardi/progress/issues
 
 __OK__
 
@@ -5584,7 +4445,7 @@ Bug reports: https://github.com/johnmyleswhite/ProjectTemplate/issues
 
 ```
 checking package dependencies ... NOTE
-Packages suggested but not available for checking: ‘RODBC’ ‘RPostgreSQL’
+Package suggested but not available for checking: ‘RODBC’
 ```
 ```
 checking DESCRIPTION meta-information ... NOTE
@@ -5624,30 +4485,45 @@ Maintainer: Jan Grau <grau@informatik.uni-halle.de>
 
 __OK__
 
-## pryr (0.1)
-Maintainer: Hadley Wickham <h.wickham@gmail.com>  
+## pryr (0.1.2)
+Maintainer: Hadley Wickham <hadley@rstudio.com>  
 Bug reports: https://github.com/hadley/pryr/issues
 
-__OK__
+```
+checking dependencies in R code ... NOTE
+Missing or unexported object: ‘tools::nonS3methods’
+```
+```
+DONE
+Status: 1 NOTE
+```
 
 ## psd (1.0-1)
 Maintainer: Andrew J. Barbour <andy.barbour@gmail.com>  
 Bug reports: https://github.com/abarbour/psd/issues
 
 ```
-checking package dependencies ... NOTE
-Packages suggested but not available for checking:
-  ‘bspec’ ‘fftw’ ‘multitaper’ ‘RSEIS’ ‘rbenchmark’
-```
-```
 checking whether package ‘psd’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpQJiDLv/check_crand2516b207784/psd.Rcheck/00install.out’ for details.
-Status: 1 ERROR, 1 NOTE
+See ‘/private/tmp/RtmpKAtbVW/check_cran14a8c2e8e2543/psd.Rcheck/00install.out’ for details.
+```
+```
+DONE
+Status: 1 ERROR
 ```
 
 ## psidR (1.3)
 Maintainer: Florian Oswald <florian.oswald@gmail.com>
+
+__OK__
+
+## purge (0.1.0)
+Maintainer: Marc Maier <mmaier@massmutual.com>
+
+__OK__
+
+## purrr (0.1.0)
+Maintainer: Hadley Wickham <hadley@rstudio.com>
 
 __OK__
 
@@ -5663,46 +4539,36 @@ DONE
 Status: 1 NOTE
 ```
 
-## pxweb (0.5.5)
+## pwrRasch (0.1-2)
+Maintainer: Takuya Yanagida <takuya.yanagida@univie.ac.at>
+
+__OK__
+
+## pxweb (0.5.57)
 Maintainer: Mans Magnusson <mons.magnusson@gmail.com>  
 Bug reports: https://github.com/rOpenGov/pxweb/issues
 
-```
-checking tests ... ERROR
-Running the tests in ‘tests/testthat_api_in_catalogue.R’ failed.
-Last 13 lines of output:
-  
-  > library(testthat)
-  > test_check("pxweb", filter = "test-apis_in_catalogue")
-  Loading required package: pxweb
-  pxweb: R tools for PX-WEB API.
-  Copyright (C) 2014 Mans Magnusson, Leo Lahti, Love Hansson
-  https://github.com/ropengov/pxweb
-  
-  
-  Error in test_dir(test_path, reporter = reporter, env = env, filter = filter,  : 
-    No matching test file in dir
-  Calls: test_check -> run_tests -> with_top_env -> test_dir
-  Execution halted
-```
-```
-DONE
-Status: 1 ERROR
-```
+__OK__
 
-## qdap (2.2.1)
+## pystr (1.0.0)
+Maintainer: Nicole White <nicole.m.white@outlook.com>  
+Bug reports: https://github.com/nicolewhite/pystr/issues
+
+__OK__
+
+## qdap (2.2.2)
 Maintainer: Tyler Rinker <tyler.rinker@gmail.com>  
 Bug reports: http://github.com/trinker/qdap/issues
 
 __OK__
 
-## qdapRegex (0.3.2)
+## qdapRegex (0.5.0)
 Maintainer: Tyler Rinker <tyler.rinker@gmail.com>  
 Bug reports: http://github.com/trinker/qdapRegex/issues
 
 __OK__
 
-## qdapTools (1.1.0)
+## qdapTools (1.3.1)
 Maintainer: Tyler Rinker <tyler.rinker@gmail.com>  
 Bug reports: http://github.com/trinker/qdapTools/issues
 
@@ -5713,13 +4579,16 @@ Maintainer: Kyle Bittinger <kylebittinger@gmail.com>
 
 __OK__
 
-## qtl (1.36-6)
+## qtl (1.37-11)
 Maintainer: Karl W Broman <kbroman@biostat.wisc.edu>
 
 ```
 checking whether package ‘qtl’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpQJiDLv/check_crand2516b207784/qtl.Rcheck/00install.out’ for details.
+See ‘/private/tmp/RtmpKAtbVW/check_cran14a8c2e8e2543/qtl.Rcheck/00install.out’ for details.
+```
+```
+DONE
 Status: 1 ERROR
 ```
 
@@ -5729,18 +4598,36 @@ Maintainer: Julien Chiquet <julien.chiquet@genopole.cnrs.fr>
 ```
 checking whether package ‘quadrupen’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpQJiDLv/check_crand2516b207784/quadrupen.Rcheck/00install.out’ for details.
+See ‘/private/tmp/RtmpKAtbVW/check_cran14a8c2e8e2543/quadrupen.Rcheck/00install.out’ for details.
+```
+```
+DONE
 Status: 1 ERROR
 ```
 
-## Quandl (2.6.0)
+## Quandl (2.7.0)
 Maintainer: Raymond McTaggart <raymond@quandl.com>  
-Bug reports: https://github.com/quandl/R-package/issues
+Bug reports: https://github.com/quandl/quandl-r/issues
 
 __OK__
 
-## quantspec (1.0-3)
-Maintainer: Tobias Kley <tobias.kley@ruhr-uni-bochum.de>  
+## quanteda (0.8.4-2)
+Maintainer: Kenneth Benoit <kbenoit@lse.ac.uk>  
+Bug reports: https://github.com/kbenoit/quanteda/issues
+
+```
+checking data for non-ASCII characters ... NOTE
+  Note: found 1 marked Latin-1 string
+  Note: found 750 marked UTF-8 strings
+  Note: found 7 strings marked as "bytes"
+```
+```
+DONE
+Status: 1 NOTE
+```
+
+## quantspec (1.1-0)
+Maintainer: Tobias Kley <t.kley@lse.ac.uk>  
 Bug reports: http://github.com/tobiaskley/quantspec/issues
 
 __OK__
@@ -5765,38 +4652,48 @@ DONE
 Status: 1 NOTE
 ```
 
+## R4CDISC (0.4)
+Maintainer: Ippei Akiya <ippei.aki@datadriven.jp>
+
+__OK__
+
 ## R4CouchDB (0.7.1)
 Maintainer: Thomas Bock <thsteinbock@web.de>
 
 __OK__
 
-## R6 (2.0.1)
-Maintainer: "Winston Chang" <winston@stdout.org>
+## R6 (2.1.1)
+Maintainer: Winston Chang <winston@stdout.org>
 
-```
-checking package dependencies ... NOTE
-Package suggested but not available for checking: ‘microbenchmark’
-```
-```
-checking re-building of vignette outputs ... NOTE
-Error in re-building vignettes:
-  ...
-Quitting from lines 17-32 (Performance.Rmd) 
-Error: processing vignette 'Performance.Rmd' failed with diagnostics:
-there is no package called 'microbenchmark'
-Execution halted
-
-```
-```
-DONE
-Status: 2 NOTEs
-```
+__OK__
 
 ## radiant (0.1.83)
 Maintainer: Vincent Nijs <radiant@rady.ucsd.edu>  
 Bug reports: https://github.com/vnijs/radiant/issues
 
-__OK__
+```
+checking examples ... ERROR
+Running examples in ‘radiant-Ex.R’ failed
+The error most likely occurred in:
+
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+> ### Name: plot.cross_tabs
+> ### Title: Plot method for the cross_tabs function
+> ### Aliases: plot.cross_tabs
+> 
+> ### ** Examples
+> 
+> result <- cross_tabs("newspaper", "Income", "Newspaper")
+> plot(result, ct_check = c("observed","expected","chi_sq"))
+Error in gather_.data.frame(., "variable", "values") : 
+  argument "gather_cols" is missing, with no default
+Calls: plot ... _fseq -> freduce -> withVisible -> <Anonymous> -> sshhr
+Execution halted
+```
+```
+DONE
+Status: 1 ERROR
+```
 
 ## rAltmetric (0.6)
 Maintainer: Karthik Ram <karthik.ram@gmail.com>  
@@ -5804,46 +4701,20 @@ Bug reports: https://github.com/ropensci/rAltmetric/issues/
 
 __OK__
 
-## RAM (1.2.0)
+## RAM (1.2.1)
 Maintainer: Wen Chen <Wen.Chen@agr.gc.ca>
 
 ```
 checking package dependencies ... NOTE
-Packages suggested but not available for checking:
-  ‘indicspecies’ ‘Heatplus’
-```
-```
-checking dependencies in R code ... NOTE
-'library' or 'require' calls in package code:
-  ‘Heatplus’ ‘gtable’ ‘indicspecies’ ‘mapproj’
-  Please use :: or requireNamespace() instead.
-  See section 'Suggested packages' in the 'Writing R Extensions' manual.
+Package suggested but not available for checking: ‘Heatplus’
 ```
 ```
 checking Rd cross-references ... NOTE
-Packages unavailable to check Rd xrefs: ‘Heatplus’, ‘indicspecies’
-```
-```
-checking examples ... ERROR
-Running examples in ‘RAM-Ex.R’ failed
-The error most likely occurred in:
-
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
-> ### Name: group.heatmap
-> ### Title: Plot OTU Abundance at a Given Rank with Metadata Annotation
-> ### Aliases: group.heatmap
-> ### Keywords: hplot
-> 
-> ### ** Examples
-> 
-> data(ITS1, meta)
-> library("Heatplus")
-Error in library("Heatplus") : there is no package called ‘Heatplus’
-Execution halted
+Package unavailable to check Rd xrefs: ‘Heatplus’
 ```
 ```
 DONE
-Status: 1 ERROR, 3 NOTEs
+Status: 2 NOTEs
 ```
 
 ## Ramd (0.2)
@@ -5851,19 +4722,13 @@ Maintainer: Robert Krzyzanowski <technoguyrob@gmail.com>
 
 __OK__
 
-## ramify (0.2.0)
+## ramify (0.3.2)
 Maintainer: Brandon Greenwell <greenwell.brandon@gmail.com>  
 Bug reports: https://github.com/bgreenwell/ramify/issues
 
 __OK__
 
-## randNames (0.2)
-Maintainer: Karthik Ram <karthik.ram@gmail.com>  
-Bug reports: https://github.com/karthik/randNames/issues
-
-__OK__
-
-## rankdist (0.4.1)
+## rankdist (1.1.2)
 Maintainer: Zhaozhi Qian <qianzhaozhi@connect.hku.hk>
 
 __OK__
@@ -5885,7 +4750,10 @@ Bug reports: http://github.com/jeroenooms/RAppArmor/issues
 ```
 checking whether package ‘RAppArmor’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpQJiDLv/check_crand2516b207784/RAppArmor.Rcheck/00install.out’ for details.
+See ‘/private/tmp/RtmpKAtbVW/check_cran14a8c2e8e2543/RAppArmor.Rcheck/00install.out’ for details.
+```
+```
+DONE
 Status: 1 ERROR
 ```
 
@@ -5902,56 +4770,34 @@ DONE
 Status: 1 NOTE
 ```
 
-## rAvis (0.1.2)
+## rAvis (0.1.4)
 Maintainer: Sara Varela <svarela@paleobiogeography.org>  
 Bug reports: https://github.com/ropensci/rAvis/issues
 
 __OK__
 
-## rbhl (0.1.0)
+## rbhl (0.2.0)
 Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>  
 Bug reports: https://github.com/ropensci/rbhl/issues
 
-```
-checking DESCRIPTION meta-information ... NOTE
-Malformed Title field: should not end in a period.
-```
-```
-DONE
-Status: 1 NOTE
-```
+__OK__
 
-## rbison (0.4.5)
+## rbison (0.4.8)
 Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>  
 Bug reports: https://github.com/ropensci/rbison/issues
+
+__OK__
+
+## RBitly (0.6.1)
+Maintainer: John Malc <cincenko@outlook.com>  
+Bug reports: https://github.com/dmpe/rbitly/issues
 
 __OK__
 
 ## Rborist (0.1-0)
 Maintainer: Mark Seligman <mseligman@suiji.org>
 
-```
-checking tests ... ERROR
-Running the tests in ‘tests/testthat.R’ failed.
-Last 13 lines of output:
-  7: compare(expected, actual, ...) at /Users/hadley/Documents/devtools/testthat/R/expectations-equality.R:61
-  8: compare.numeric(expected, actual, ...) at /Users/hadley/Documents/devtools/testthat/R/compare.r:10
-  9: all.equal(x, y, ...) at /Users/hadley/Documents/devtools/testthat/R/compare.r:135
-  10: all.equal.numeric(x, y, ...)
-  11: attr.all.equal(target, current, tolerance = tolerance, scale = scale, ...)
-  12: mode(current)
-  
-  testthat results ================================================================
-  OK: 0 SKIPPED: 0 FAILED: 1
-  1. Error: Numeric-only regression accuracy 
-  
-  Error: testthat unit tests failed
-  Execution halted
-```
-```
-DONE
-Status: 1 ERROR
-```
+__OK__
 
 ## RBPcurve (1.0-20)
 Maintainer: Giuseppe Casalicchio <giuseppe.casalicchio@stat.uni-muenchen.de>  
@@ -5997,10 +4843,6 @@ __OK__
 Maintainer: Kathe Todd-Brown <ktoddbrown@gmail.com>
 
 ```
-checking package dependencies ... NOTE
-Package suggested but not available for checking: ‘ncdf4’
-```
-```
 checking dependencies in R code ... NOTE
 'library' or 'require' calls in package code:
   ‘ggplot2’ ‘ncdf’ ‘ncdf4’
@@ -6009,38 +4851,51 @@ checking dependencies in R code ... NOTE
 ```
 ```
 DONE
-Status: 2 NOTEs
-```
-
-## RcppParallel (4.3.8)
-Maintainer: JJ Allaire <jj@rstudio.com>
-
-```
-checking for GNU extensions in Makefiles ... NOTE
-GNU make is a SystemRequirements.
-```
-```
-DONE
 Status: 1 NOTE
 ```
+
+## RcppFaddeeva (0.1.0)
+Maintainer: Baptiste Auguie <baptiste.auguie@gmail.com>
+
+__OK__
 
 ## RcppRoll (0.2.2)
 Maintainer: Kevin Ushey <kevinushey@gmail.com>
 
+__OK__
+
+## RcppShark (0.1)
+Maintainer: Aydin Demircioglu <aydin.demircioglu@ini.rub.de>  
+Bug reports: http://github.com/aydindemircioglu/RcppShark/issues
+
 ```
-checking package dependencies ... NOTE
-Package suggested but not available for checking: ‘microbenchmark’
+checking whether package ‘RcppShark’ can be installed ... ERROR
+Installation failed.
+See ‘/private/tmp/RtmpKAtbVW/check_cran14a8c2e8e2543/RcppShark.Rcheck/00install.out’ for details.
 ```
 ```
 DONE
-Status: 1 NOTE
+Status: 1 ERROR
 ```
 
-## rcrossref (0.3.0)
+## rcrossref (0.3.4)
 Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>  
 Bug reports: https://github.com/ropensci/rcrossref/issues
 
 __OK__
+
+## rcrypt (0.1.1)
+Maintainer: Brett Klamer <rcrypt@brettklamer.com>
+
+```
+checking whether package ‘rcrypt’ can be installed ... ERROR
+Installation failed.
+See ‘/private/tmp/RtmpKAtbVW/check_cran14a8c2e8e2543/rcrypt.Rcheck/00install.out’ for details.
+```
+```
+DONE
+Status: 1 ERROR
+```
 
 ## RDataCanvas (0.1)
 Maintainer: Xiaolin Zhang <leoncamel@gmail.com>  
@@ -6048,22 +4903,32 @@ Bug reports: https://github.com/DataCanvasIO/RDataCanvas/issues
 
 __OK__
 
-## rDEA (1.1-1)
+## rddtools (0.4.0)
+Maintainer: Bastiaan Quast <bquast@gmail.com>  
+Bug reports: https://github.com/bquast/RDDtools/issues
+
+__OK__
+
+## rDEA (1.2-2)
 Maintainer: Jaak Simm <jaak.simm@gmail.com>
 
 ```
 checking whether package ‘rDEA’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpQJiDLv/check_crand2516b207784/rDEA.Rcheck/00install.out’ for details.
+See ‘/private/tmp/RtmpKAtbVW/check_cran14a8c2e8e2543/rDEA.Rcheck/00install.out’ for details.
+```
+```
+DONE
 Status: 1 ERROR
 ```
 
-## rdrop2 (0.6)
-Maintainer: Karthik Ram <karthik.ram@gmail.com>
+## rdrop2 (0.7.0)
+Maintainer: Karthik Ram <karthik.ram@gmail.com>  
+Bug reports: https://github.com/karthik/rdrop2/issues
 
 __OK__
 
-## RDS (0.7-2)
+## RDS (0.7-3)
 Maintainer: Mark S. Handcock <handcock@stat.ucla.edu>
 
 __OK__
@@ -6078,69 +4943,26 @@ __OK__
 Maintainer: Douglas G. Scofield <douglasgscofield@gmail.com>  
 Bug reports: https://github.com/douglasgscofield/readGenalex/issues
 
-```
-checking package dependencies ... NOTE
-Package suggested but not available for checking: ‘genetics’
-```
-```
-checking Rd cross-references ... NOTE
-Package unavailable to check Rd xrefs: ‘genetics’
-```
-```
-checking examples ... ERROR
-Running examples in ‘readGenalex-Ex.R’ failed
-The error most likely occurred in:
-
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
-> ### Name: as.genetics
-> ### Title: Convert class "genalex" object to data frame encoding loci using
-> ###   classes from package "genetics"
-> ### Aliases: as.genetics as.genetics.genalex
-> 
-> ### ** Examples
-> 
-> data(Qagr_pericarp_genotypes)
-> dd <- as.genalex(head(Qagr_pericarp_genotypes, 40), force = TRUE)
-> as.genetics(dd)
-Error in as.genetics.genalex(dd) : 
-  Please install package 'genetics' to use this function
-Calls: as.genetics -> as.genetics.genalex
-Execution halted
-```
-```
-DONE
-Status: 1 ERROR, 2 NOTEs
-```
+__OK__
 
 ## readODS (1.4)
 Maintainer: Gerrit-Jan Schutten <phonixor@gmail.com>
 
 __OK__
 
-## readr (0.1.0)
-Maintainer: Hadley Wickham <hadley@rstudio.com>
+## readr (0.1.1)
+Maintainer: ORPHANED
 
-```
-checking package dependencies ... NOTE
-Package suggested but not available for checking: ‘DiagrammeR’
-```
-```
-checking re-building of vignette outputs ... NOTE
-Error in re-building vignettes:
-  ...
-Quitting from lines 119-134 (design.Rmd) 
-Error: processing vignette 'design.Rmd' failed with diagnostics:
-there is no package called 'DiagrammeR'
-Execution halted
-
-```
-```
-DONE
-Status: 2 NOTEs
-```
+__OK__
 
 ## readxl (0.1.0)
 Maintainer: Hadley Wickham <hadley@rstudio.com>
+
+__OK__
+
+## rebird (0.2)
+Maintainer: Sebastian Pardo <sebpardo@gmail.com>  
+Bug reports: http://github.com/ropensci/rebird/issues
 
 __OK__
 
@@ -6149,46 +4971,38 @@ Maintainer: Richard Cotton <richierocks@gmail.com>
 
 __OK__
 
-## reconstructr (0.5)
+## reconstructr (1.1.0)
 Maintainer: Oliver Keyes <ironholds@gmail.com>
 
 __OK__
 
-## REDCapR (0.7-1)
-Maintainer: Will Beasley <wibeasley@hotmail.com>
+## REDCapR (0.9.3)
+Maintainer: Will Beasley <wibeasley@hotmail.com>  
+Bug reports: https://github.com/OuhscBbmc/REDCapR/issues
 
 ```
 checking package dependencies ... NOTE
 Package suggested but not available for checking: ‘RODBC’
 ```
 ```
-checking dependencies in R code ... NOTE
-'library' or 'require' calls in package code:
-  ‘RODBC’ ‘testthat’
-  Please use :: or requireNamespace() instead.
-  See section 'Suggested packages' in the 'Writing R Extensions' manual.
+DONE
+Status: 1 NOTE
 ```
+
+## RefManageR (0.8.63)
+Maintainer: Mathew W. McLean <mathew.w.mclean@gmail.com>  
+Bug reports: https://github.com/mwmclean/RefManageR/issues
+
 ```
-checking tests ... ERROR
-Running the tests in ‘tests/test-all.R’ failed.
-Last 13 lines of output:
-  5. Error: Read, Insert, and Update 
-  6. Error: Smoke Test 
-  7. Error: Write Batch -Insert 
-  8. Error: Write Batch -Update One Field 
-  9. Error: Write Batch -Update Two Fields 
-  1. Error: Smoke Test 
-  2. Error: Write One Shot -Insert 
-  3. Error: Write One Shot -Update One Field 
-  4. Error: Write One Shot -Update Two Fields 
-  5. ...
-  
-  Error: testthat unit tests failed
-  Execution halted
+checking foreign function calls ... NOTE
+Foreign function call to a different package:
+  .External("do_read_bib", ..., PACKAGE = "bibtex")
+See chapter ‘System and foreign language interfaces’ in the ‘Writing R
+Extensions’ manual.
 ```
 ```
 DONE
-Status: 1 ERROR, 2 NOTEs
+Status: 1 NOTE
 ```
 
 ## refset (0.1.0)
@@ -6196,7 +5010,7 @@ Maintainer: David Hugh-Jones <davidhughjones@gmail.com>
 
 __OK__
 
-## regexr (1.0.2)
+## regexr (1.1.0)
 Maintainer: Tyler Rinker <tyler.rinker@gmail.com>  
 Bug reports: http://github.com/trinker/regexr/issues
 
@@ -6207,7 +5021,7 @@ Maintainer: Louis Aslett <aslett@stats.ox.ac.uk>
 
 __OK__
 
-## rEMM (1.0-9)
+## rEMM (1.0-11)
 Maintainer: Michael Hahsler <mhahsler@lyle.smu.edu>
 
 ```
@@ -6219,28 +5033,90 @@ DONE
 Status: 1 NOTE
 ```
 
-## rentrez (0.4.1)
+## rentrez (1.0.0)
 Maintainer: David Winter <david.winter@gmail.com>
 
 __OK__
 
-## repra (0.4.2)
-Maintainer: Eduardo Ibanez <eduardo.ibanez@nrel.gov>  
-Bug reports: https://github.com/NREL/repra/issues
+## repijson (0.1.0)
+Maintainer: Andy South <southandy@gmail.com>
 
 __OK__
 
-## rerddap (0.1.0)
-Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>  
-Bug reports: http://www.github.com/ropensci/rerddap/issues
+## repra (0.4.4)
+Maintainer: Eduardo Ibanez <edu.ibanez@gmail.com>  
+Bug reports: https://github.com/NREL/repra/issues
 
 ```
-checking package dependencies ... NOTE
-Package suggested but not available for checking: ‘ncdf4’
+checking examples ... ERROR
+Running examples in ‘repra-Ex.R’ failed
+The error most likely occurred in:
+
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+> ### Name: calculate_elcc
+> ### Title: Calculate effective load carrying capability (ELCC)
+> ### Aliases: calculate_elcc
+> 
+> ### ** Examples
+> 
+> # Create outage table with 200 5-MW units
+> gens <- data.frame(Capacity = rep(5, 200),
++                    EFOR = rep(0.08, 200))
+> out.table <- outage_table(gens)
+> 
+> # Create random load and wind data and format
+> tdata <- data.frame(Time = 1:8760,
++                     Load = runif(8760, 450, 850),
++                     Wind = runif(8760, 0, 100),
++                     Wind2 = runif(8760, 0, 200))
+> td <- format_timedata(tdata)
+Error in `[.data.frame`(data3, , list(Value = sum(Value)), by = cols.temp) : 
+  unused argument (by = cols.temp)
+Calls: format_timedata -> [ -> [.data.frame
+Execution halted
+```
+```
+checking tests ... ERROR
+Running the tests in ‘tests/test-all.R’ failed.
+Last 13 lines of output:
+  6: compare(actual, expected, ...) at /Users/hadley/Documents/devtools/testthat/R/expectations-equality.R:61
+  7: format_timedata(tdata) at /Users/hadley/Documents/devtools/testthat/R/compare.r:10
+  8: data3[, list(Value = sum(Value)), by = cols.temp]
+  9: `[.data.frame`(data3, , list(Value = sum(Value)), by = cols.temp)
+  
+  testthat results ================================================================
+  OK: 9 SKIPPED: 0 FAILED: 3
+  1. Error: timedata format 
+  2. Error: timedata column names 
+  3. Error: WinProb value set to 1 
+  
+  Error: testthat unit tests failed
+  Execution halted
+```
+```
+checking re-building of vignette outputs ... NOTE
+Error in re-building vignettes:
+  ...
+
+Attaching package: 'dplyr'
+
+The following objects are masked from 'package:stats':
+
+    filter, lag
+
+The following objects are masked from 'package:base':
+
+    intersect, setdiff, setequal, union
+
+Quitting from lines 61-65 (repra.Rmd) 
+Error: processing vignette 'repra.Rmd' failed with diagnostics:
+unused argument (by = cols.temp)
+Execution halted
+
 ```
 ```
 DONE
-Status: 1 NOTE
+Status: 2 ERRORs, 1 NOTE
 ```
 
 ## reshape2 (1.4.1)
@@ -6256,17 +5132,50 @@ DONE
 Status: 1 NOTE
 ```
 
+## restimizeapi (1.0.0)
+Maintainer: Thomas P. Fuller <thomas.fuller@coherentlogic.com>
+
+__OK__
+
 ## retistruct (0.5.10)
 Maintainer: David C. Sterratt <david.c.sterratt@ed.ac.uk>  
 Bug reports: https://github.com/davidcsterratt/retistruct/issues
 
 __OK__
 
-## reutils (0.1.2)
-Maintainer: 'Gerhard Schöfl' <gschofl@yahoo.de>  
+## reutils (0.2.1)
+Maintainer: Gerhard Schöfl <gerhard.schofl@gmail.com>  
 Bug reports: https://github.com/gschofl/reutils/issues
 
-__OK__
+```
+checking examples ... ERROR
+Running examples in ‘reutils-Ex.R’ failed
+The error most likely occurred in:
+
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+> ### Name: elink
+> ### Title: elink - finding related data through Entrez links
+> ### Aliases: elink
+> 
+> ### ** Examples
+> 
+> ## Find one set of Gene IDs linked to nuccore GIs 34577062 and 24475906
+> e <- elink(c("34577062", "24475906"), dbFrom = "nuccore", dbTo = "gene")
+> e
+Object of class ‘elink’ 
+ELink query from database ‘nuccore’ to destination database ‘NA’.
+Query UIDs:
+[1] "24475906" "34577062"
+Summary of LinkSet:
+Error in data.frame(DbTo = dbTo, LinkName = lnames, LinkCount = llen) : 
+  row names contain missing values
+Calls: <Anonymous> ... print.entrez_linkset -> print -> format -> data.frame
+Execution halted
+```
+```
+DONE
+Status: 1 ERROR
+```
 
 ## rex (1.0.1)
 Maintainer: Jim Hester <james.f.hester@gmail.com>  
@@ -6274,38 +5183,57 @@ Bug reports: https://github.com/kevinushey/rex/issues
 
 __OK__
 
-## rfigshare (0.3.6)
+## rfigshare (0.3.7)
 Maintainer: Carl Boettiger <cboettig@gmail.com>  
 Bug reports: https://github.com/ropensci/rfigshare/issues
 
+__OK__
+
+## rfishbase (2.0.3)
+Maintainer: Carl Boettiger <cboettig@ropensci.org>  
+Bug reports: https://github.com/ropensci/rfishbase/issues
+
+__OK__
+
+## Rfit (0.22.0)
+Maintainer: John Kloke <kloke@biostat.wisc.edu>
+
 ```
-checking DESCRIPTION meta-information ... NOTE
-Malformed Title field: should not end in a period.
+checking whether package ‘Rfit’ can be installed ... ERROR
+Installation failed.
+See ‘/private/tmp/RtmpKAtbVW/check_cran14a8c2e8e2543/Rfit.Rcheck/00install.out’ for details.
+```
+```
+DONE
+Status: 1 ERROR
+```
+
+## RGA (0.2.4)
+Maintainer: Artem Klevtsov <a.a.klevtsov@gmail.com>  
+Bug reports: https://github.com/artemklevtsov/RGA/issues
+
+__OK__
+
+## rgbif (0.8.8)
+Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>  
+Bug reports: https://github.com/ropensci/rgbif/issues
+
+__OK__
+
+## rgeolocate (0.4.1)
+Maintainer: Oliver Keyes <ironholds@gmail.com>  
+Bug reports: https://github.com/ironholds/rgeolocate/issues
+
+```
+checking package dependencies ... NOTE
+Package suggested but not available for checking: ‘iptools’
 ```
 ```
 DONE
 Status: 1 NOTE
 ```
 
-## rfishbase (0.2-2)
-Maintainer: Carl Boettiger <cboettig@gmail.com>  
-Bug reports: https://github.com/ropensci/rfishbase/issues
-
-__OK__
-
-## RGA (0.2.1)
-Maintainer: Artem Klevtsov <a.a.klevtsov@gmail.com>  
-Bug reports: https://bitbucket.org/unikum/rga/issues
-
-__OK__
-
-## rgbif (0.8.0)
-Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>  
-Bug reports: https://github.com/ropensci/rgbif/issues
-
-__OK__
-
-## rgeos (0.3-8)
+## rgeos (0.3-13)
 Maintainer: Roger Bivand <Roger.Bivand@nhh.no>
 
 __OK__
@@ -6335,6 +5263,12 @@ Bug reports: https://github.com/fmichonneau/riceware/issues
 
 __OK__
 
+## ridigbio (0.3.1)
+Maintainer: Matthew Collins <mcollins@acis.ufl.edu>  
+Bug reports: https://github.com/iDigBio/ridigbio/issues
+
+__OK__
+
 ## RIGHT (0.2.0)
 Maintainer: Jonghyun Bae <bnbbkr@gmail.com>  
 Bug reports: https://groups.google.com/forum/?hl=en#!forum/right-user
@@ -6355,10 +5289,6 @@ __OK__
 Maintainer: Jake Bowers <jwbowers@illinois.edu>
 
 ```
-checking package dependencies ... NOTE
-Package suggested but not available for checking: ‘RSVGTipsDevice’
-```
-```
 checking dependencies in R code ... NOTE
 'library' or 'require' call to ‘RSVGTipsDevice’ in package code.
   Please use :: or requireNamespace() instead.
@@ -6366,87 +5296,50 @@ checking dependencies in R code ... NOTE
 ```
 ```
 DONE
-Status: 2 NOTEs
+Status: 1 NOTE
 ```
 
-## rjstat (0.2)
+## rjstat (0.2.1)
 Maintainer: Aaron Schumacher <ajschumacher@gmail.com>  
 Bug reports: https://github.com/ajschumacher/rjstat/issues
 
 __OK__
 
-## rlist (0.4)
+## Rlibeemd (1.3.5)
+Maintainer: Jouni Helske <jouni.helske@jyu.fi>
+
+```
+checking whether package ‘Rlibeemd’ can be installed ... ERROR
+Installation failed.
+See ‘/private/tmp/RtmpKAtbVW/check_cran14a8c2e8e2543/Rlibeemd.Rcheck/00install.out’ for details.
+```
+```
+DONE
+Status: 1 ERROR
+```
+
+## rlist (0.4.5.1)
 Maintainer: Kun Ren <ken@renkun.me>  
 Bug reports: https://github.com/renkun-ken/rlist/issues
 
 __OK__
 
-## rlme (0.4)
-Maintainer: Yusuf Bilgic <bilgic@geneseo.edu>
+## rmarkdown (0.8)
+Maintainer: JJ Allaire <jj@rstudio.com>
 
 ```
-checking S3 generic/method consistency ... NOTE
-Found the following apparent S3 methods exported but not registered:
-  plot.rlme summary.rlme
-See section ‘Registering S3 methods’ in the ‘Writing R Extensions’
+checking package dependencies ... ERROR
+Package required and available but unsuitable version: ‘knitr’
+
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
 manual.
 ```
 ```
-checking examples ... ERROR
-Running examples in ‘rlme-Ex.R’ failed
-The error most likely occurred in:
-
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
-> ### Name: compare.fits
-> ### Title: Compare Fits
-> ### Aliases: compare.fits
-> ### Keywords: models
-> 
-> ### ** Examples
-> 
-> 
-> data(schools)
-> model = y ~ 1 + sex + age + (1 | region) + (1 | region:school)
-> 
-> # Extract covariants into matrix
-> cov = as.matrix(data.frame(schools[,"sex"], schools[,"age"]))
-> 
-> # Fit the models using each method
-> reml.fit = rlme(model, schools, method="reml")
-Error in stri_extract_all_regex(string, pattern, simplify = simplify,  : 
-  Incorrectly nested parentheses in regexp pattern. (U_REGEX_MISMATCHED_PAREN)
-Calls: rlme -> str_extract_all -> stri_extract_all_regex -> .Call
-Execution halted
-```
-```
-checking tests ... ERROR
-Running the tests in ‘tests/test-all.R’ failed.
-Last 13 lines of output:
-  
-  Type 'demo()' for some demos, 'help()' for on-line help, or
-  'help.start()' for an HTML browser interface to help.
-  Type 'q()' to quit R.
-  
-  > library(testthat)
-  > 
-  > test_check("rlme")
-  Loading required package: rlme
-  Error in stri_extract_all_regex(string, pattern, simplify = simplify,  : 
-    Incorrectly nested parentheses in regexp pattern. (U_REGEX_MISMATCHED_PAREN)
-  Calls: test_check ... rlme -> str_extract_all -> stri_extract_all_regex -> .Call
-  Execution halted
-```
-```
 DONE
-Status: 2 ERRORs, 1 NOTE
+Status: 1 ERROR
 ```
 
-## rmarkdown (0.6.1)
-Maintainer: JJ Allaire <jj@rstudio.com>
-
-__OK__
-
-## RMySQL (0.10.3)
+## RMySQL (0.10.6)
 Maintainer: Jeroen Ooms <jeroen.ooms@stat.ucla.edu>  
 Bug reports: https://github.com/rstats-db/rmysql/issues
 
@@ -6458,92 +5351,78 @@ Bug reports: https://github.com/ropensci/rnbn/issues
 
 __OK__
 
-## rncl (0.2.2)
+## rncl (0.6.0)
 Maintainer: Francois Michonneau <francois.michonneau@gmail.com>  
 Bug reports: https://github.com/fmichonneau/rncl/issues
 
 __OK__
 
-## RNeXML (2.0.2)
+## RNeo4j (1.5.1)
+Maintainer: Nicole White <nicole@neotechnology.com>  
+Bug reports: https://github.com/nicolewhite/RNeo4j/issues
+
+__OK__
+
+## RNeXML (2.0.3)
 Maintainer: Carl Boettiger <cboettig@gmail.com>  
 Bug reports: https://github.com/ropensci/RNeXML/issues
 
 ```
 checking package dependencies ... NOTE
-Packages suggested but not available for checking:
-  ‘rrdf’ ‘phytools’ ‘Sxslt’
+Packages suggested but not available for checking: ‘rrdf’ ‘Sxslt’
 ```
 ```
 checking tests ... ERROR
 Running the tests in ‘tests/test-all.R’ failed.
 Last 13 lines of output:
-   Taxa: 	  ... 
+  Retrieving data for taxon 'Myotis_nigricans'
   
-   NeXML generated by RNeXML using schema version: 0.9 
-   size: 21.7 Kb 
-  Authentication successful
-  Error in library(phytools) : there is no package called 'phytools'
-  Calls: test_check ... lapply -> FUN -> sys.source2 -> eval -> eval -> library
-  In addition: Warning messages:
-  1: In merge.data.frame(dfs, ..., by = "row.names", all = TRUE, sort = FALSE) :
-    column names 'cs15_log snout-vent length.x', 'cs15_log snout-vent length.y' are duplicated in the result
-  2: In merge.data.frame(dfs, ..., by = "row.names", all = TRUE, sort = FALSE) :
-    column names 'cs31_reef-dwelling.x', 'cs31_reef-dwelling.y' are duplicated in the result
+  
+  Retrieving data for taxon 'Myotis_sodalis'
+  
+  testthat results ================================================================
+  OK: 143 SKIPPED: 0 FAILED: 1
+  1. Error: we can coerce an ape::phylo tree with a 
+            phytools:simmap extension into nexml 
+  
+  Error: testthat unit tests failed
+  In addition: There were 49 warnings (use warnings() to see them)
   Execution halted
 ```
 ```
-checking re-building of vignette outputs ... NOTE
-Error in re-building vignettes:
-  ...
-
-Retrieving data for taxon 'Trochiliformes'
-
-
-Retrieving data for taxon 'Musophagiformes'
-
-
-Retrieving data for taxon 'Strigiformes'
-
-
-Retrieving data for taxon 'Columbiformes'
-
-
-Retrieving data for taxon 'Gruiformes'
-
-
-Retrieving data for taxon 'Ciconiiformes'
-
-
-Retrieving data for taxon 'Passeriformes'
-
-Quitting from lines 148-150 (simmap.Rmd) 
-Error: processing vignette 'simmap.Rmd' failed with diagnostics:
-there is no package called 'phytools'
-Execution halted
-
-```
-```
 DONE
-Status: 1 ERROR, 2 NOTEs
+Status: 1 ERROR, 1 NOTE
 ```
 
-## rnoaa (0.3.3)
+## RNiftyReg (2.0.1)
+Maintainer: Jon Clayden <code@clayden.org>  
+Bug reports: https://github.com/jonclayden/RNiftyReg/issues
+
+__OK__
+
+## rnoaa (0.4.2)
 Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>  
 Bug reports: http://www.github.com/ropensci/rnoaa/issues
 
 __OK__
 
-## RObsDat (15.02)
+## RObsDat (15.08)
 Maintainer: Dominik Reusser <reusser@pik-potsdam.de>
 
 ```
 checking package dependencies ... NOTE
-Packages suggested but not available for checking: ‘SSOAP’ ‘geonames’
+Package suggested but not available for checking: ‘SSOAP’
 ```
 ```
 DONE
 Status: 1 NOTE
 ```
+
+## rollply (0.4.2)
+Maintainer: Alexandre Genin <alex@lecairn.org>  
+Bug reports: https://github.com/alexgenin/rollply
+
+__OK__
 
 ## rorutadis (0.1.3)
 Maintainer: Krzysztof Ciomek <k.ciomek@gmail.com>
@@ -6555,22 +5434,27 @@ Maintainer: Bryan Stanfill <bryan.stanfill@csiro.au>
 Bug reports: https://github.com/stanfill/rotationsC/issues
 
 ```
-checking package dependencies ... NOTE
-Packages suggested but not available for checking: ‘onion’ ‘orientlib’
-```
-```
 checking whether package ‘rotations’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpQJiDLv/check_crand2516b207784/rotations.Rcheck/00install.out’ for details.
-Status: 1 ERROR, 1 NOTE
+See ‘/private/tmp/RtmpKAtbVW/check_cran14a8c2e8e2543/rotations.Rcheck/00install.out’ for details.
 ```
+```
+DONE
+Status: 1 ERROR
+```
+
+## rotl (0.4.1)
+Maintainer: Francois Michonneau <francois.michonneau@gmail.com>  
+Bug reports: https://github.com/ropensci/rotl/issues
+
+__OK__
 
 ## roxygen2 (4.1.1)
 Maintainer: Hadley Wickham <h.wickham@gmail.com>
 
 __OK__
 
-## RPANDA (1.0)
+## RPANDA (1.1)
 Maintainer: Hélène Morlon <morlon@biologie.ens.fr>
 
 __OK__
@@ -6599,29 +5483,32 @@ DONE
 Status: 3 NOTEs
 ```
 
-## rpf (0.44)
+## rpf (0.48)
 Maintainer: Joshua Pritikin <jpritikin@pobox.com>
 
 ```
 checking whether package ‘rpf’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpQJiDLv/check_crand2516b207784/rpf.Rcheck/00install.out’ for details.
+See ‘/private/tmp/RtmpKAtbVW/check_cran14a8c2e8e2543/rpf.Rcheck/00install.out’ for details.
+```
+```
+DONE
 Status: 1 ERROR
 ```
 
-## rplexos (1.0)
-Maintainer: Eduardo Ibanez <eduardo.ibanez@nrel.gov>  
+## rplexos (1.1.4)
+Maintainer: Eduardo Ibanez <edu.ibanez@gmail.com>  
 Bug reports: https://github.com/NREL/rplexos/issues
 
 __OK__
 
-## rplos (0.4.7)
+## rplos (0.5.4)
 Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>  
 Bug reports: https://github.com/ropensci/rplos/issues
 
 __OK__
 
-## rPref (0.5)
+## rPref (0.6)
 Maintainer: Patrick Roocks <mail@p-roocks.de>
 
 ```
@@ -6633,18 +5520,17 @@ DONE
 Status: 1 NOTE
 ```
 
-## rprintf (0.1-2)
+## rprime (0.1.0)
+Maintainer: Tristan Mahr <tristan.mahr@wisc.edu>  
+Bug reports: http://github.com/tjmahr/rprime/issues
+
+__OK__
+
+## rprintf (0.2.1)
 Maintainer: Kun Ren <ken@renkun.me>  
 Bug reports: https://github.com/renkun-ken/rprintf/issues
 
-```
-checking DESCRIPTION meta-information ... NOTE
-Malformed Description field: should contain one or more complete sentences.
-```
-```
-DONE
-Status: 1 NOTE
-```
+__OK__
 
 ## rr (1.3)
 Maintainer: Graeme Blair <graeme.blair@columbia.edu>
@@ -6652,11 +5538,14 @@ Maintainer: Graeme Blair <graeme.blair@columbia.edu>
 ```
 checking whether package ‘rr’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpQJiDLv/check_crand2516b207784/rr.Rcheck/00install.out’ for details.
+See ‘/private/tmp/RtmpKAtbVW/check_cran14a8c2e8e2543/rr.Rcheck/00install.out’ for details.
+```
+```
+DONE
 Status: 1 ERROR
 ```
 
-## rsdmx (0.4-6)
+## rsdmx (0.4-7)
 Maintainer: Emmanuel Blondel <emmanuel.blondel1@gmail.com>  
 Bug reports: https://github.com/opensdmx/rsdmx/issues
 
@@ -6696,39 +5585,17 @@ Package required but not available: ‘survcomp’
 
 See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
 manual.
-Status: 1 ERROR
-```
-
-## RSiteCatalyst (1.4.3)
-Maintainer: Randy Zwitch <rzwitch+rsitecatalyst@gmail.com>  
-Bug reports: https://github.com/randyzwitch/RSiteCatalyst
-
-```
-checking DESCRIPTION meta-information ... NOTE
-Malformed Description field: should contain one or more complete sentences.
-```
-```
-checking tests ... ERROR
-Running the tests in ‘tests/testthat.R’ failed.
-Last 13 lines of output:
-  2. Error: Validate GetUniqueVisitorVariable using legacy credentials 
-  3. Error: Validate GetVersionAccess using legacy credentials 
-  4. Error: Validate GetVideoSettings using legacy credentials 
-  5. Error: Validate QueueFallout using legacy credentials 
-  6. Error: Validate QueueOvertime using legacy credentials 
-  7. Error: Validate QueuePathing using legacy credentials 
-  8. Error: Validate QueueRanked using legacy credentials 
-  9. Error: Validate QueueTrended using legacy credentials 
-  1. Error: SCAuth legacy credentials work as expected 
-  2. ...
-  
-  Error: testthat unit tests failed
-  Execution halted
 ```
 ```
 DONE
-Status: 1 ERROR, 1 NOTE
+Status: 1 ERROR
 ```
+
+## RSiteCatalyst (1.4.6)
+Maintainer: Randy Zwitch <rzwitch+rsitecatalyst@gmail.com>  
+Bug reports: https://github.com/randyzwitch/RSiteCatalyst
+
+__OK__
 
 ## rsnps (0.1.6)
 Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>  
@@ -6736,8 +5603,15 @@ Bug reports: https://github.com/ropensci/rsnps/issues
 
 __OK__
 
-## rspa (0.1-6)
-Maintainer: Mark van der Loo <mark.vanderloo@gmail.com>
+## RSocrata (1.6.2-10)
+Maintainer: "Tom Schenk Jr." <developers@cityofchicago.org>  
+Bug reports: https://github.com/Chicago/RSocrata/issues
+
+__OK__
+
+## rspa (0.1.8)
+Maintainer: Mark van der Loo <mark.vanderloo@gmail.com>  
+Bug reports: https://github.com/markvanderloo/rspa/issues
 
 __OK__
 
@@ -6775,13 +5649,16 @@ DONE
 Status: 1 NOTE
 ```
 
-## Rssa (0.13)
+## Rssa (0.13-1)
 Maintainer: Anton Korobeynikov <anton@korobeynikov.info>
 
 ```
 checking whether package ‘Rssa’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpQJiDLv/check_crand2516b207784/Rssa.Rcheck/00install.out’ for details.
+See ‘/private/tmp/RtmpKAtbVW/check_cran14a8c2e8e2543/Rssa.Rcheck/00install.out’ for details.
+```
+```
+DONE
 Status: 1 ERROR
 ```
 
@@ -6791,28 +5668,35 @@ Bug reports: https://github.com/oneilsh/rstackdeque/issues
 
 __OK__
 
-## rsunlight (0.3.0)
+## RStoolbox (0.1.1)
+Maintainer: Benjamin Leutner <benjamin.leutner@uni-wuerzburg.de>  
+Bug reports: https://github.com/bleutner/RStoolbox/issues
+
+__OK__
+
+## rsunlight (0.4.0)
 Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>  
 Bug reports: https://github.com/ropengov/rsunlight/issues
 
-```
-checking package dependencies ... NOTE
-Package suggested but not available for checking: ‘rCharts’
-```
-```
-checking DESCRIPTION meta-information ... NOTE
-Malformed Title field: should not end in a period.
-Malformed Description field: should contain one or more complete sentences.
-```
-```
-DONE
-Status: 2 NOTEs
-```
+__OK__
 
 ## rtdists (0.2-6)
 Maintainer: Henrik Singmann <singmann+rtdists@gmail.com>
 
 __OK__
+
+## Rtsne (0.10)
+Maintainer: Jesse Krijthe <jkrijthe@gmail.com>
+
+```
+checking whether package ‘Rtsne’ can be installed ... ERROR
+Installation failed.
+See ‘/private/tmp/RtmpKAtbVW/check_cran14a8c2e8e2543/Rtsne.Rcheck/00install.out’ for details.
+```
+```
+DONE
+Status: 1 ERROR
+```
 
 ## rtype (0.1-1)
 Maintainer: Kun Ren <ken@renkun.me>  
@@ -6838,24 +5722,25 @@ Bug reports: https://github.com/trulia/choroplethr/issues
 
 __OK__
 
-## rvertnet (0.2.2)
+## runittotestthat (0.0-2)
+Maintainer: Richard Cotton <richierocks@gmail.com>
+
+__OK__
+
+## rvertnet (0.3.4)
 Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>  
 Bug reports: https://github.com/ropensci/rvertnet/issues
 
 __OK__
 
-## rvest (0.2.0)
-Maintainer: Hadley Wickham <h.wickham@gmail.com>
+## rvest (0.3.0)
+Maintainer: Hadley Wickham <hadley@rstudio.com>
 
 __OK__
 
 ## rvgtest (0.7.4)
 Maintainer: Josef Leydold <josef.leydold@wu.ac.at>
 
-```
-checking package dependencies ... NOTE
-Package suggested but not available for checking: ‘Runuran’
-```
 ```
 checking R code for possible problems ... NOTE
 rvgt.ftable : myrdist: no visible global function definition for ‘ur’
@@ -6867,13 +5752,14 @@ xerror: no visible global function definition for ‘unuran.is.inversion’
 xerror : myaqdist: no visible global function definition for ‘uq’
 ```
 ```
-checking Rd cross-references ... NOTE
-Package unavailable to check Rd xrefs: ‘Runuran’
-```
-```
 DONE
-Status: 3 NOTEs
+Status: 1 NOTE
 ```
+
+## rwirelesscom (1.3)
+Maintainer: Alberto Gutierrez <algutier1@gmail.com>
+
+__OK__
 
 ## rYoutheria (1.0.0)
 Maintainer: Tom August <tomaug@ceh.ac.uk>  
@@ -6882,7 +5768,7 @@ Bug reports:
 
 __OK__
 
-## sadists (0.2.0)
+## sadists (0.2.1)
 Maintainer: Steven E. Pav <shabbychef@gmail.com>  
 Bug reports: https://github.com/shabbychef/sadists/issues
 
@@ -6894,23 +5780,29 @@ Bug reports: https://github.com/wahani/saeSim/issues
 
 __OK__
 
-## scales (0.2.4)
-Maintainer: Hadley Wickham <h.wickham@gmail.com>  
+## satellite (0.2.0)
+Maintainer: Tim Appelhans
+ <admin@environmentalinformatics-marburg.de>
+
+__OK__
+
+## scales (0.3.0)
+Maintainer: Hadley Wickham <hadley@rstudio.com>  
 Bug reports: https://github.com/hadley/scales/issues
 
-```
-checking DESCRIPTION meta-information ... NOTE
-Malformed Title field: should not end in a period.
-```
-```
-checking dependencies in R code ... NOTE
-Namespace in Imports field not imported from: ‘methods’
-  All declared Imports should be used.
-```
-```
-DONE
-Status: 2 NOTEs
-```
+__OK__
+
+## SciencesPo (1.3.7)
+Maintainer: Daniel Marcelino <dmarcelino@live.com>  
+Bug reports: http://github.com/danielmarcelino/SciencesPo
+
+__OK__
+
+## scorer (0.1.0)
+Maintainer: Paul Hendricks <paul.hendricks.2013@owu.edu>  
+Bug reports: https://github.com/paulhendricks/scorer/issues
+
+__OK__
 
 ## scoring (0.5-1)
 Maintainer: Ed Merkle <merklee@missouri.edu>
@@ -6940,18 +5832,22 @@ DONE
 Status: 1 NOTE
 ```
 
-## scrm (1.5.0-1)
+## scrm (1.6.0-2)
 Maintainer: Paul Staab <develop@paulstaab.de>
 
 __OK__
 
-## sdcTable (0.18.1)
-Maintainer: Bernhard Meindl <bernhard.meindl@statistik.gv.at>
+## sdcTable (0.19.6)
+Maintainer: Bernhard Meindl <bernhard.meindl@statistik.gv.at>  
+Bug reports: https://github.com/bernhard-da/sdcTable/issues
 
 ```
 checking whether package ‘sdcTable’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpQJiDLv/check_crand2516b207784/sdcTable.Rcheck/00install.out’ for details.
+See ‘/private/tmp/RtmpKAtbVW/check_cran14a8c2e8e2543/sdcTable.Rcheck/00install.out’ for details.
+```
+```
+DONE
 Status: 1 ERROR
 ```
 
@@ -6992,7 +5888,13 @@ Maintainer: Rune Haubo Bojesen Christensen <rhbc@dtu.dk>
 
 __OK__
 
-## seqminer (3.9)
+## seqMeta (1.6.0)
+Maintainer: Brian Davis <Brian.Davis281@gmail.com>  
+Bug reports: https://github.com/DavisBrian/seqMeta/issues
+
+__OK__
+
+## seqminer (4.9)
 Maintainer: Xiaowei Zhan <zhanxw@gmail.com>
 
 __OK__
@@ -7002,53 +5904,63 @@ Maintainer: Laurent Gatto <lg390@cam.ac.uk>
 
 __OK__
 
-## seriation (1.0-14)
-Maintainer: Michael Hahsler <mhahsler@lyle.smu.edu>
+## seriation (1.1-2)
+Maintainer: Michael Hahsler <mhahsler@lyle.smu.edu>  
+Bug reports: https://r-forge.r-project.org/projects/seriation/
 
 ```
 checking whether package ‘seriation’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpQJiDLv/check_crand2516b207784/seriation.Rcheck/00install.out’ for details.
+See ‘/private/tmp/RtmpKAtbVW/check_cran14a8c2e8e2543/seriation.Rcheck/00install.out’ for details.
+```
+```
+DONE
 Status: 1 ERROR
 ```
 
-## seroincidence (1.0.3)
+## seroincidence (1.0.4)
 Maintainer: Chantal Quinten <seroincidence@ecdc.europa.eu>
 
 __OK__
 
-## settings (0.2.1)
+## settings (0.2.2)
 Maintainer: Mark van der Loo <mark.vanderloo@gmail.com>
 
 __OK__
 
-## SharpeR (0.1501)
+## sgd (1.0)
+Maintainer: Dustin Tran <dtran@g.harvard.edu>  
+Bug reports: https://github.com/airoldilab/sgd/issues
+
+```
+checking whether package ‘sgd’ can be installed ... ERROR
+Installation failed.
+See ‘/private/tmp/RtmpKAtbVW/check_cran14a8c2e8e2543/sgd.Rcheck/00install.out’ for details.
+```
+```
+DONE
+Status: 1 ERROR
+```
+
+## SharpeR (1.0.0)
 Maintainer: Steven E. Pav <shabbychef@gmail.com>  
 Bug reports: https://github.com/shabbychef/SharpeR/issues
 
 __OK__
 
-## shiny (0.12.0)
+## shiny (0.12.2)
 Maintainer: Winston Chang <winston@rstudio.com>  
 Bug reports: https://github.com/rstudio/shiny/issues
 
 ```
-checking package dependencies ... NOTE
-Package suggested but not available for checking: ‘Cairo’
-```
-```
 checking installed package size ... NOTE
-  installed size is  5.0Mb
+  installed size is  5.1Mb
   sub-directories of 1Mb or more:
     www   4.1Mb
 ```
 ```
-checking Rd cross-references ... NOTE
-Package unavailable to check Rd xrefs: ‘Cairo’
-```
-```
 DONE
-Status: 3 NOTEs
+Status: 1 NOTE
 ```
 
 ## shinyAce (0.1.0)
@@ -7057,8 +5969,9 @@ Bug reports: https://github.com/trestletech/shinyAce/issues
 
 __OK__
 
-## shinyjs (0.0.3.3)
-Maintainer: Dean Attali <daattali@gmail.com>
+## shinyjs (0.2.0)
+Maintainer: Dean Attali <daattali@gmail.com>  
+Bug reports: https://github.com/daattali/shinyjs/issues
 
 __OK__
 
@@ -7068,9 +5981,20 @@ Bug reports: https://github.com/trestletech/shinyRGL/issues
 
 __OK__
 
+## shinystan (2.0.1)
+Maintainer: Jonah Gabry <jsg2201@columbia.edu>  
+Bug reports: https://github.com/stan-dev/shinystan/issues
+
+__OK__
+
 ## shinyTree (0.2.2)
 Maintainer: Jeff Allen <cran@trestletechnology.net>  
 Bug reports: https://github.com/trestletech/shinyTree/issues
+
+__OK__
+
+## simplr (0.1-1)
+Maintainer: Oliver Flasch <of@sourcewerk.de>
 
 __OK__
 
@@ -7086,78 +6010,6 @@ DONE
 Status: 1 NOTE
 ```
 
-## sjPlot (1.8)
-Maintainer: Daniel Lüdecke <d.luedecke@uke.de>  
-Bug reports: https://github.com/sjPlot/devel/issues
-
-```
-checking package dependencies ... NOTE
-Packages suggested but not available for checking:
-  ‘effects’ ‘lmerTest’ ‘lsmeans’
-```
-```
-checking Rd cross-references ... NOTE
-Packages unavailable to check Rd xrefs: ‘plm’, ‘effects’
-```
-```
-checking examples ... ERROR
-Running examples in ‘sjPlot-Ex.R’ failed
-The error most likely occurred in:
-
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
-> ### Name: sjp.int
-> ### Title: Plot interaction effects of (generalized) linear (mixed) models
-> ### Aliases: sjp.int
-> 
-> ### ** Examples
-> 
-> # Note that the data sets used in this example may not be perfectly suitable for
-> # fitting linear models. I just used them because they are part of the R-software.
-> 
-> # fit "dummy" model. Note that moderator should enter
-> # first the model, followed by predictor. Else, use
-> # parameter "swapPredictors" to change predictor on
-> # x-axis with moderator
-> fit <- lm(weight ~ Diet * Time, data = ChickWeight)
-> 
-> # show summary to see significant interactions
-> summary(fit)
-
-Call:
-lm(formula = weight ~ Diet * Time, data = ChickWeight)
-
-Residuals:
-     Min       1Q   Median       3Q      Max 
--135.425  -13.757   -1.311   11.069  130.391 
-
-Coefficients:
-            Estimate Std. Error t value Pr(>|t|)    
-(Intercept)  30.9310     4.2468   7.283 1.09e-12 ***
-Diet2        -2.2974     7.2672  -0.316  0.75202    
-Diet3       -12.6807     7.2672  -1.745  0.08154 .  
-Diet4        -0.1389     7.2865  -0.019  0.98480    
-Time          6.8418     0.3408  20.076  < 2e-16 ***
-Diet2:Time    1.7673     0.5717   3.092  0.00209 ** 
-Diet3:Time    4.5811     0.5717   8.014 6.33e-15 ***
-Diet4:Time    2.8726     0.5781   4.969 8.92e-07 ***
----
-Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
-
-Residual standard error: 34.07 on 570 degrees of freedom
-Multiple R-squared:  0.773,	Adjusted R-squared:  0.7702 
-F-statistic: 277.3 on 7 and 570 DF,  p-value: < 2.2e-16
-
-> 
-> # plot interaction effects
-> sjp.int(fit, type = "eff")
-Error: Package 'effects' needed for this function to work. Please install it.
-Execution halted
-```
-```
-DONE
-Status: 1 ERROR, 2 NOTEs
-```
-
 ## slackr (1.2)
 Maintainer: Bob Rudis <bob@rudis.net>  
 Bug reports: https://github.com/hrbrmstr/slackr/issues
@@ -7167,28 +6019,12 @@ __OK__
 ## SLOPE (0.1.1)
 Maintainer: Evan Patterson <epatters@stanford.edu>
 
-```
-checking tests ... ERROR
-Running the tests in ‘tests/testthat.R’ failed.
-Last 13 lines of output:
-  4: SLOPE_solver_call(solver, X, y, sigma * lambda)
-  5: SLOPE(X, y, sigma = 1, solver = "matlab") at test_solver.R:10
-  6: eval(expr, envir, enclos)
-  7: eval(code, new_test_environment)
-  8: withCallingHandlers(eval(code, new_test_environment), error = capture_calls, message = function(c) invokeRestart("muffleMessage"), 
-         warning = function(c) invokeRestart("muffleWarning"))
-  
-  testthat results ================================================================
-  OK: 6 SKIPPED: 0 FAILED: 1
-  1. Error: SLOPE solver agrees with TFOCS solver in MATLAB 
-  
-  Error: testthat unit tests failed
-  Execution halted
-```
-```
-DONE
-Status: 1 ERROR
-```
+__OK__
+
+## smacpod (1.4.1)
+Maintainer: Joshua French <joshua.french@ucdenver.edu>
+
+__OK__
 
 ## smcUtils (0.2.2)
 Maintainer: Jarad Niemi <niemi@iastate.edu>
@@ -7224,7 +6060,7 @@ Bug reports: https://github.com/jakobbossek/smoof/issues
 
 __OK__
 
-## solr (0.1.4)
+## solr (0.1.6)
 Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>  
 Bug reports: http://www.github.com/ropensci/solr/issues
 
@@ -7259,45 +6095,48 @@ Status: 3 NOTEs
 ## sortinghat (0.1)
 Maintainer: John A. Ramey <johnramey@gmail.com>
 
-```
-checking top-level files ... NOTE
-Non-standard file/directory found at top level:
-  ‘NEWS.md’
-```
-```
-DONE
-Status: 1 NOTE
-```
+__OK__
 
-## sorvi (0.7.20)
+## sorvi (0.7.26)
 Maintainer: Leo Lahti <louhos@googlegroups.com>  
 Bug reports: https://github.com/ropengov/sorvi/issues
 
 __OK__
+
+## SpaDES (1.0.1)
+Maintainer: Alex M Chubaty <achubaty@NRCan.gc.ca>  
+Bug reports: https://github.com/PredictiveEcology/SpaDES/issues
+
+```
+checking package dependencies ... ERROR
+Package required but not available: ‘secr’
+
+Package suggested but not available for checking: ‘fastshp’
+
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
+```
+```
+DONE
+Status: 1 ERROR
+```
 
 ## spaMM (1.5.1)
 Maintainer: François Rousset <francois.rousset@univ-montp2.fr>
 
 __OK__
 
-## spareserver (1.0.0)
-Maintainer: "Gabor Csardi" <csardi.gabor@gmail.com>  
+## spareserver (1.0.1)
+Maintainer: Gabor Csardi <csardi.gabor@gmail.com>  
 Bug reports: https://github.com/metacran/spareserver/issues
 
 __OK__
 
-## spark (1.0.0)
-Maintainer: "Gabor Csardi" <csardi.gabor@gmail.com>  
-Bug reports: https://github.com/gaborcsardi/pretty/spark
+## spark (1.0.1)
+Maintainer: Gabor Csardi <csardi.gabor@gmail.com>  
+Bug reports: https://github.com/gaborcsardi/spark/issues
 
-```
-checking DESCRIPTION meta-information ... NOTE
-Malformed Description field: should contain one or more complete sentences.
-```
-```
-DONE
-Status: 1 NOTE
-```
+__OK__
 
 ## SparseGrid (0.8.2)
 Maintainer: Jelmer Ypma <uctpjyy@ucl.ac.uk>
@@ -7328,27 +6167,25 @@ DONE
 Status: 1 NOTE
 ```
 
-## spatialprobit (0.9-10)
+## spatialprobit (0.9-11)
 Maintainer: Stefan Wilhelm <wilhelm@financial.com>
 
+__OK__
+
+## spduration (0.13.1)
+Maintainer: Andreas Beger <adbeger@gmail.com>
+
 ```
-checking DESCRIPTION meta-information ... NOTE
-Malformed Description field: should contain one or more complete sentences.
-```
-```
-checking S3 generic/method consistency ... NOTE
-Found the following apparent S3 methods exported but not registered:
-  c.sarprobit coef.sarprobit coef.sartobit coef.semprobit plot.sartobit
-  plot.semprobit summary.sarprobit summary.sartobit summary.semprobit
-See section ‘Registering S3 methods’ in the ‘Writing R Extensions’
-manual.
+checking whether package ‘spduration’ can be installed ... ERROR
+Installation failed.
+See ‘/private/tmp/RtmpKAtbVW/check_cran14a8c2e8e2543/spduration.Rcheck/00install.out’ for details.
 ```
 ```
 DONE
-Status: 2 NOTEs
+Status: 1 ERROR
 ```
 
-## spdynmod (1.0)
+## spdynmod (1.1.1)
 Maintainer: Javier Martinez-Lopez <javi.martinez.lopez@gmail.com>  
 Bug reports: http://github.com/javimarlop/spdynmod/issues
 
@@ -7366,9 +6203,15 @@ DONE
 Status: 1 NOTE
 ```
 
-## spocc (0.2.4)
+## spocc (0.3.2)
 Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>  
 Bug reports: https://github.com/ropensci/spocc/issues
+
+__OK__
+
+## spoccutils (0.1.0)
+Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>  
+Bug reports: https://github.com/ropensci/spoccutils/issues
 
 __OK__
 
@@ -7382,7 +6225,7 @@ Maintainer: Tarak Kharrat <tarak.kharrat@manchester.ac.uk>
 
 __OK__
 
-## statar (0.1.3)
+## statar (0.3.0)
 Maintainer: Matthieu Gomez <mattg@princeton.edu>  
 Bug reports: https://github.com/matthieugomez/statar/issues
 
@@ -7394,140 +6237,16 @@ Bug reports: https://github.com/hrbrmstr/statebins/issues
 
 __OK__
 
-## StatRank (0.0.4)
-Maintainer: William Chen <williamzc@gmail.com>
+## StatRank (0.0.6)
+Maintainer: Hossein Azari Soufiani <azari.hossein@gmail.com>
 
-```
-checking R code for possible problems ... NOTE
-Visualization.Empirical: no visible global function definition for
-  ‘ggplot’
-Visualization.Empirical: no visible global function definition for
-  ‘aes’
-Visualization.Empirical: no visible global function definition for
-  ‘geom_bar’
-Visualization.Empirical: no visible global function definition for
-  ‘scale_x_reverse’
-Visualization.Empirical: no visible global function definition for
-  ‘ggtitle’
-Visualization.Empirical: no visible global function definition for
-  ‘labs’
-Visualization.Empirical: no visible global function definition for
-  ‘scale_y_continuous’
-Visualization.Empirical: no visible binding for global variable
-  ‘grid.arrange’
-Visualization.MultiType: no visible global function definition for
-  ‘ggplot’
-Visualization.MultiType: no visible global function definition for
-  ‘aes’
-Visualization.MultiType: no visible global function definition for
-  ‘geom_line’
-Visualization.MultiType: no visible global function definition for
-  ‘labs’
-Visualization.MultiType: no visible global function definition for
-  ‘geom_vline’
-Visualization.MultiType: no visible global function definition for
-  ‘scale_color_manual’
-Visualization.MultiType: no visible global function definition for
-  ‘scale_linetype_manual’
-Visualization.MultiType: no visible global function definition for
-  ‘theme’
-Visualization.MultiType: no visible binding for global variable
-  ‘grid.arrange’
-Visualization.Pairwise.Probabilities : Generate.Pairwise.Matrix.Plot:
-  no visible global function definition for ‘ggplot’
-Visualization.Pairwise.Probabilities : Generate.Pairwise.Matrix.Plot:
-  no visible global function definition for ‘aes’
-Visualization.Pairwise.Probabilities : Generate.Pairwise.Matrix.Plot:
-  no visible global function definition for ‘geom_tile’
-Visualization.Pairwise.Probabilities : Generate.Pairwise.Matrix.Plot:
-  no visible global function definition for ‘geom_text’
-Visualization.Pairwise.Probabilities : Generate.Pairwise.Matrix.Plot:
-  no visible global function definition for ‘scale_fill_gradient’
-Visualization.Pairwise.Probabilities : Generate.Pairwise.Matrix.Plot:
-  no visible global function definition for ‘labs’
-Visualization.Pairwise.Probabilities : Generate.Pairwise.Matrix.Plot:
-  no visible global function definition for ‘scale_x_discrete’
-Visualization.Pairwise.Probabilities : Generate.Pairwise.Matrix.Plot:
-  no visible global function definition for ‘scale_y_reverse’
-Visualization.Pairwise.Probabilities : Generate.Pairwise.Matrix.Plot:
-  no visible global function definition for ‘theme_bw’
-Visualization.Pairwise.Probabilities : Generate.Pairwise.Matrix.Plot:
-  no visible global function definition for ‘theme’
-Visualization.Pairwise.Probabilities : Generate.Pairwise.Matrix.Plot:
-  no visible global function definition for ‘element_blank’
-Visualization.Pairwise.Probabilities : Generate.Pairwise.Matrix.Plot:
-  no visible global function definition for ‘element_text’
-Visualization.Pairwise.Probabilities : Generate.Pairwise.Matrix.Plot:
-  no visible global function definition for ‘coord_fixed’
-Visualization.Pairwise.Probabilities : Generate.Pairwise.Matrix.Plot:
-  no visible global function definition for ‘guides’
-Visualization.Pairwise.Probabilities : Generate.Pairwise.Matrix.Plot:
-  no visible global function definition for ‘guide_legend’
-Visualization.Pairwise.Probabilities: no visible global function
-  definition for ‘grid.arrange’
-Visualization.Pairwise.Probabilities: no visible global function
-  definition for ‘textGrob’
-Visualization.Pairwise.Probabilities: no visible global function
-  definition for ‘gpar’
-Visualization.RUMplots.Exponential : <anonymous>: no visible global
-  function definition for ‘qplot’
-Visualization.RUMplots.Exponential : <anonymous>: no visible global
-  function definition for ‘labs’
-Visualization.RUMplots.Exponential : <anonymous>: no visible global
-  function definition for ‘geom_vline’
-Visualization.RUMplots.Exponential: no visible binding for global
-  variable ‘grid.arrange’
-Visualization.RUMplots.Gumbel : <anonymous>: no visible global function
-  definition for ‘qplot’
-Visualization.RUMplots.Gumbel : <anonymous>: no visible global function
-  definition for ‘labs’
-Visualization.RUMplots.Gumbel : <anonymous>: no visible global function
-  definition for ‘geom_vline’
-Visualization.RUMplots.Gumbel: no visible binding for global variable
-  ‘grid.arrange’
-Visualization.RUMplots.Nonparametric : <anonymous>: no visible global
-  function definition for ‘qplot’
-Visualization.RUMplots.Nonparametric : <anonymous>: no visible global
-  function definition for ‘labs’
-Visualization.RUMplots.Nonparametric : <anonymous>: no visible global
-  function definition for ‘scale_y_continuous’
-Visualization.RUMplots.Nonparametric: no visible binding for global
-  variable ‘grid.arrange’
-Visualization.Surfaceplots : makewireframe: no visible global function
-  definition for ‘wireframe’
-Visualization.Surfaceplots: no visible global function definition for
-  ‘grid.arrange’
-```
-```
-DONE
-Status: 1 NOTE
-```
+__OK__
 
-## stream (1.1-1)
-Maintainer: Michael Hahsler <mhahsler@lyle.smu.edu>
+## stream (1.2-1)
+Maintainer: Michael Hahsler <mhahsler@lyle.smu.edu>  
+Bug reports: https://r-forge.r-project.org/projects/clusterds/
 
-```
-checking tests ... ERROR
-Running the tests in ‘tests/testthat.R’ failed.
-Last 13 lines of output:
-  Type 'contributors()' for more information and
-  'citation()' on how to cite R or R packages in publications.
-  
-  Type 'demo()' for some demos, 'help()' for on-line help, or
-  'help.start()' for an HTML browser interface to help.
-  Type 'q()' to quit R.
-  
-  > library("testthat")
-  > test_package("stream")
-  Error in test_dir(test_path, reporter = reporter, env = env, filter = filter,  : 
-    No matching test file in dir
-  Calls: test_package -> run_tests -> with_top_env -> test_dir
-  Execution halted
-```
-```
-DONE
-Status: 1 ERROR
-```
+__OK__
 
 ## stressr (1.0.0)
 Maintainer: Matt Barry <mrb@softisms.com>  
@@ -7542,8 +6261,9 @@ DONE
 Status: 1 NOTE
 ```
 
-## stringdist (0.9.0)
-Maintainer: Mark van der Loo <mark.vanderloo@gmail.com>
+## stringdist (0.9.3)
+Maintainer: Mark van der Loo <mark.vanderloo@gmail.com>  
+Bug reports: https://github.com/markvanderloo/stringdist/issues
 
 __OK__
 
@@ -7552,27 +6272,19 @@ Maintainer: Hadley Wickham <hadley@rstudio.com>
 
 __OK__
 
-## strvalidator (1.4.0)
+## strvalidator (1.5.2)
 Maintainer: Oskar Hansson <oskar.hansson@fhi.no>  
 Bug reports: https://github.com/OskarHansson/strvalidator/issues
 
-```
-checking package dependencies ... NOTE
-Package suggested but not available for checking: ‘ResourceSelection’
-```
-```
-DONE
-Status: 1 NOTE
-```
+__OK__
 
-## surveillance (1.8-3)
+## surveillance (1.9-1)
 Maintainer: Michael H�hle <hoehle@math.su.se>  
 Bug reports: https://r-forge.r-project.org/tracker/?group_id=45
 
 ```
 checking package dependencies ... NOTE
-Packages suggested but not available for checking:
-  ‘spc’ ‘gamlss’ ‘INLA’ ‘runjags’
+Package suggested but not available for checking: ‘INLA’
 ```
 ```
 DONE
@@ -7584,9 +6296,14 @@ Maintainer: Manuel Reif <Manuel.Reif@statistik.gv.at>
 
 __OK__
 
-## sweidnumbr (0.2)
+## SwarmSVM (0.1)
+Maintainer: Tong He <hetong007@gmail.com>
+
+__OK__
+
+## sweidnumbr (0.6.5)
 Maintainer: Mans Magnusson <mons.magnusson@gmail.com>  
-Bug reports: https://github.com/MansMeg/sweidnumbr/issues
+Bug reports: https://github.com/rOpenGov/sweidnumbr/issues
 
 __OK__
 
@@ -7605,57 +6322,19 @@ Status: 1 NOTE
 ## systemicrisk (0.2)
 Maintainer: Axel Gandy <a.gandy@imperial.ac.uk>
 
-```
-checking tests ... ERROR
-Running the tests in ‘tests/testthat.R’ failed.
-Last 13 lines of output:
-     6 0.193 0.201 -0.00777
-     7 0.204 0.200  0.00469
-     8 0.200 0.199  0.00056
-     9 0.198 0.201 -0.00338
-  
-  testthat results ================================================================
-  OK: 199 SKIPPED: 0 FAILED: 3
-  1. Failure (at test-gibbs_kcycle.R#24): All probabilities equal, lambdas equal to 1 
-  2. Failure (at test-gibbs_kcycle.R#24): All probabilities equal, lambdas equal to 1 
-  3. Failure (at test-gibbs_kcycle.R#24): All probabilities and lambdas equal 
-  
-  Error: testthat unit tests failed
-  Execution halted
-```
-```
-DONE
-Status: 1 ERROR
-```
+__OK__
 
 ## syuzhet (0.2.0)
 Maintainer: Matthew Jockers <mjockers@gmail.com>
 
-```
-checking package dependencies ... NOTE
-Package suggested but not available for checking: ‘pander’
-```
-```
-checking re-building of vignette outputs ... NOTE
-Error in re-building vignettes:
-  ...
-Quitting from lines 228-229 (syuzhet-vignette.Rmd) 
-Error: processing vignette 'syuzhet-vignette.Rmd' failed with diagnostics:
-there is no package called 'pander'
-Execution halted
+__OK__
 
-```
-```
-DONE
-Status: 2 NOTEs
-```
-
-## tableone (0.6.3)
+## tableone (0.7.1)
 Maintainer: Kazuki Yoshida <kazukiyoshida@mail.harvard.edu>
 
 __OK__
 
-## taxize (0.5.2)
+## taxize (0.6.2)
 Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>  
 Bug reports: https://github.com/ropensci/taxize/issues
 
@@ -7684,23 +6363,21 @@ Maintainer: Robert Krzyzanowski <technoguyrob@gmail.com>
 
 __OK__
 
+## threewords (0.1.0)
+Maintainer: Oliver Keyes <ironholds@gmail.com>
+
+__OK__
+
 ## tidyjson (0.2.1)
 Maintainer: Jeremy Stanley <jeremy.stanley@gmail.com>
 
 __OK__
 
-## tidyr (0.2.0)
+## tidyr (0.3.1)
 Maintainer: Hadley Wickham <hadley@rstudio.com>  
 Bug reports: https://github.com/hadley/tidyr/issues
 
-```
-checking DESCRIPTION meta-information ... NOTE
-Malformed Title field: should not end in a period.
-```
-```
-DONE
-Status: 1 NOTE
-```
+__OK__
 
 ## tikzDevice (0.8.1)
 Maintainer: Kirill Müller <krlmlr+r@mailbox.org>  
@@ -7755,6 +6432,50 @@ Bug reports: https://github.com/mannau/tm.plugin.webmining/issues
 
 __OK__
 
+## tmod (0.19)
+Maintainer: January Weiner <january.weiner@gmail.com>
+
+```
+checking package dependencies ... NOTE
+Packages suggested but not available for checking: ‘limma’ ‘org.Hs.eg.db’
+```
+```
+checking examples ... ERROR
+Running examples in ‘tmod-Ex.R’ failed
+The error most likely occurred in:
+
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+> ### Name: tmodLimmaTest
+> ### Title: Run tmod enrichment tests directly on a limma object
+> ### Aliases: tmodLimmaTest
+> 
+> ### ** Examples
+> 
+> library(limma)
+Error in library(limma) : there is no package called ‘limma’
+Execution halted
+```
+```
+checking re-building of vignette outputs ... NOTE
+Error in re-building vignettes:
+  ...
+Quitting from lines 47-57 (tmod.rmd) 
+Error: processing vignette 'tmod.rmd' failed with diagnostics:
+there is no package called 'limma'
+Execution halted
+
+```
+```
+DONE
+Status: 1 ERROR, 2 NOTEs
+```
+
+## toOrdinal (0.0-4)
+Maintainer: Damian W. Betebenner <dbetebenner@nciea.org>  
+Bug reports: https://github.com/CenterForAssessment/toOrdinal/issues
+
+__OK__
+
 ## tourr (0.5.4)
 Maintainer: Hadley Wickham <h.wickham@gmail.com>  
 Bug reports: https://github.com/ggobi/tourr/
@@ -7783,89 +6504,81 @@ DONE
 Status: 1 NOTE
 ```
 
-## treebase (0.0-7.1)
+## traits (0.1.2)
+Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>  
+Bug reports: http://www.github.com/ropensci/traits/issues
+
+__OK__
+
+## treatSens (2.0)
+Maintainer: Nicole Bohme Carnegie <carnegin@uwm.edu>  
+Bug reports: https://github.com/vdorie/treatSens/issues
+
+```
+checking whether package ‘treatSens’ can be installed ... ERROR
+Installation failed.
+See ‘/private/tmp/RtmpKAtbVW/check_cran14a8c2e8e2543/treatSens.Rcheck/00install.out’ for details.
+```
+```
+DONE
+Status: 1 ERROR
+```
+
+## treebase (0.1.1)
 Maintainer: Carl Boettiger <cboettig@gmail.com>  
 Bug reports: http://www.github.com/ropensci/treebase/issues
 
 ```
-checking package dependencies ... NOTE
-Package suggested but not available for checking: ‘TreePar’
-```
-```
-checking tests ... ERROR
-Running the tests in ‘tests/test-all.R’ failed.
-Last 13 lines of output:
-  
-  Type 'demo()' for some demos, 'help()' for on-line help, or
-  'help.start()' for an HTML browser interface to help.
-  Type 'q()' to quit R.
-  
-  > library(testthat)
-  > test_check("treebase")
-  Loading required package: treebase
-  Loading required package: ape
-  Error in test_dir(test_path, reporter = reporter, env = env, filter = filter,  : 
-    No matching test file in dir
-  Calls: test_check -> run_tests -> with_top_env -> test_dir
-  Execution halted
+checking whether package ‘treebase’ can be installed ... WARNING
+Found the following significant warnings:
+  Warning: replacing previous import by ‘reshape2::melt’ when loading ‘treebase’
+  Warning: replacing previous import by ‘reshape2::dcast’ when loading ‘treebase’
+See ‘/private/tmp/RtmpKAtbVW/check_cran14a8c2e8e2543/treebase.Rcheck/00install.out’ for details.
 ```
 ```
 DONE
-Status: 1 ERROR, 1 NOTE
+Status: 1 WARNING
 ```
 
 ## treeclim (1.0.11)
 Maintainer: Christian Zang <christian.zang@wzw.tum.de>
 
 ```
-checking package dependencies ... NOTE
-Package suggested but not available for checking: ‘dplR’
-```
-```
 checking whether package ‘treeclim’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpQJiDLv/check_crand2516b207784/treeclim.Rcheck/00install.out’ for details.
-Status: 1 ERROR, 1 NOTE
+See ‘/private/tmp/RtmpKAtbVW/check_cran14a8c2e8e2543/treeclim.Rcheck/00install.out’ for details.
 ```
+```
+DONE
+Status: 1 ERROR
+```
+
+## treescape (1.0.0)
+Maintainer: Michelle Kendall <m.kendall@imperial.ac.uk>
+
+__OK__
 
 ## trustOptim (0.8.5)
 Maintainer: Michael Braun <braunm@smu.edu>
 
 __OK__
 
-## TSP (1.1-1)
+## TSdist (3.1)
+Maintainer: Usue Mori <usue.mori@ehu.es>
+
+__OK__
+
+## TSP (1.1-3)
 Maintainer: Michael Hahsler <mhahsler@lyle.smu.edu>  
 Bug reports: http://r-forge.r-project.org/projects/tsp/
 
 __OK__
 
-## tspmeta (1.1)
+## tspmeta (1.2)
 Maintainer: Bernd Bischl <bernd_bischl@gmx.net>  
 Bug reports: https://github.com/berndbischl/tspmeta/issues
 
-```
-checking DESCRIPTION meta-information ... NOTE
-Malformed Title field: should not end in a period.
-```
-```
-checking S3 generic/method consistency ... WARNING
-tour_length:
-  function(x, ...)
-tour_length.tsp_instance:
-  function(x, order)
-
-See section ‘Generic functions and methods’ in the ‘Writing R
-Extensions’ manual.
-
-Found the following apparent S3 methods exported but not registered:
-  autoplot.tsp_instance
-See section ‘Registering S3 methods’ in the ‘Writing R Extensions’
-manual.
-```
-```
-DONE
-Status: 1 WARNING, 1 NOTE
-```
+__OK__
 
 ## tufterhandout (1.2.1)
 Maintainer: Michael C Sachs <sachsmc@gmail.com>  
@@ -7880,22 +6593,20 @@ DONE
 Status: 1 NOTE
 ```
 
+## tumgr (0.0.3)
+Maintainer: Julia Wilkerson <wilkersj@mail.nih.gov>
+
+__OK__
+
 ## turner (0.1.7)
 Maintainer: Gaston Sanchez <gaston.stat@gmail.com>
 
 __OK__
 
-## tvm (0.2)
+## tvm (0.3.0)
 Maintainer: Juan Manuel Truppia <jmtruppia@gmail.com>
 
-```
-checking DESCRIPTION meta-information ... NOTE
-Malformed Description field: should contain one or more complete sentences.
-```
-```
-DONE
-Status: 1 NOTE
-```
+__OK__
 
 ## UNF (2.0.1)
 Maintainer: Thomas Leeper <thosjleeper@gmail.com>  
@@ -7909,15 +6620,39 @@ Bug reports: https://github.com/sjackman/uniqtag/issues
 
 __OK__
 
-## urltools (1.1.0)
+## urltools (1.2.1)
 Maintainer: Oliver Keyes <ironholds@gmail.com>  
 Bug reports: https://github.com/Ironholds/urltools/issues
 
-__OK__
+```
+checking data for non-ASCII characters ... NOTE
+  Note: found 393 marked UTF-8 strings
+```
+```
+DONE
+Status: 1 NOTE
+```
 
 ## USAboundaries (0.1.1)
 Maintainer: Lincoln Mullen <lincoln@lincolnmullen.com>  
 Bug reports: https://github.com/ropensci/USAboundaries/issues
+
+__OK__
+
+## useful (1.1.9)
+Maintainer: Jared P. Lander <packages@jaredlander.com>
+
+__OK__
+
+## validate (0.1.3)
+Maintainer: Mark van der Loo <mark.vanderloo@gmail.com>  
+Bug reports: https://github.com/data-cleaning/validate/issues
+
+__OK__
+
+## varian (0.2.1)
+Maintainer: Joshua F. Wiley <josh@elkhartgroup.com>  
+Bug reports: https://github.com/ElkhartGroup/varian/issues
 
 __OK__
 
@@ -7934,71 +6669,30 @@ DONE
 Status: 1 NOTE
 ```
 
-## vdmR (0.1.0)
+## vdmR (0.1.1)
 Maintainer: Tomokazu Fujino <fujino@fwu.ac.jp>
 
-```
-checking tests ... ERROR
-Running the tests in ‘tests/run-all.R’ failed.
-Last 13 lines of output:
-  'citation()' on how to cite R or R packages in publications.
-  
-  Type 'demo()' for some demos, 'help()' for on-line help, or
-  'help.start()' for an HTML browser interface to help.
-  Type 'q()' to quit R.
-  
-  > library(testthat)
-  > library(vdmR)
-  > test_package("vdmR")
-  Error in test_dir(test_path, reporter = reporter, env = env, filter = filter,  : 
-    No matching test file in dir
-  Calls: test_package -> run_tests -> with_top_env -> test_dir
-  Execution halted
-```
-```
-DONE
-Status: 1 ERROR
-```
+__OK__
 
-## vegdata (0.6.9)
+## vegdata (0.8.1)
 Maintainer: Florian Jansen <jansen@uni-greifswald.de>
 
-```
-checking package dependencies ... NOTE
-Packages suggested but not available for checking:
-  ‘akima’ ‘googleVis’ ‘indicspecies’
-```
-```
-checking re-building of vignette outputs ... NOTE
-Error in re-building vignettes:
-  ...
-trying URL 'http://geobot.botanik.uni-greifswald.de/download/GermanSL/version1.2/GermanSL.zip'
-Content type 'application/zip' length 3059835 bytes (2.9 MB)
-==================================================
-downloaded 2.9 MB
+__OK__
 
-Warning in tv.site(db, tv_home, quiet = TRUE) :
-  1 releves without date. Not converted from factor to date format.
-Warning in tv.site(db, tv_home, quiet = TRUE) :
-  1 releves without date. Not converted from factor to date format.
-Warning in tv.site(db, tv_home, quiet = TRUE) :
-  1 releves without date. Not converted from factor to date format.
-Warning in tv.site(db, tv_home, quiet = TRUE) :
-  1 releves without date. Not converted from factor to date format.
-Warning in tv.site("taxatest") :
-  1 releves without date. Not converted from factor to date format.
-Warning in library(package, lib.loc = lib.loc, character.only = TRUE, logical.return = TRUE,  :
-  there is no package called 'indicspecies'
-Quitting from lines 427-433 (vegdata.Rnw) 
-Error: processing vignette 'vegdata.Rnw' failed with diagnostics:
-Package indicspecies needed (function multipatt)
-Execution halted
+## VennDiagram (1.6.16)
+Maintainer: Paul Boutros <Paul.Boutros@oicr.on.ca>
 
-```
-```
-DONE
-Status: 2 NOTEs
-```
+__OK__
+
+## VTrack (1.11)
+Maintainer: Ross Dwyer <ross.dwyer@uq.edu.au>
+
+__OK__
+
+## vtreat (0.5.16)
+Maintainer: John Mount <jmount@win-vector.com>
+
+__OK__
 
 ## waffle (0.3.1)
 Maintainer: Bob Rudis <bob@rudis.net>  
@@ -8006,31 +6700,16 @@ Bug reports: https://github.com/hrbrmstr/waffle/issues
 
 __OK__
 
-## Wats (0.2-16)
+## walkr (0.3.3)
+Maintainer: Andy Yao <andy.yao17@gmail.com>  
+Bug reports: https://github.com/andyyao95/walkr/issues
+
+__OK__
+
+## Wats (0.10.1)
 Maintainer: Will Beasley <wibeasley@hotmail.com>
 
-```
-checking package dependencies ... NOTE
-Package suggested but not available for checking: ‘BayesSingleSub’
-```
-```
-checking DESCRIPTION meta-information ... NOTE
-Malformed Description field: should contain one or more complete sentences.
-```
-```
-checking re-building of vignette outputs ... NOTE
-Error in re-building vignettes:
-  ...
-Quitting from lines 281-301 (OkFertilityWithIntercensalEstimates.Rmd) 
-Error: processing vignette 'OkFertilityWithIntercensalEstimates.Rmd' failed with diagnostics:
-there is no package called 'BayesSingleSub'
-Execution halted
-
-```
-```
-DONE
-Status: 3 NOTEs
-```
+__OK__
 
 ## weatherData (0.4.1)
 Maintainer: Ram Narasimhan <ramnarasimhan@gmail.com>
@@ -8046,6 +6725,30 @@ DONE
 Status: 1 NOTE
 ```
 
+## webchem (0.0.3.1)
+Maintainer: Eduard Szoecs <eduardszoecs@gmail.com>  
+Bug reports: https://github.com/ropensci/webchem/issues
+
+__OK__
+
+## webreadr (0.3.0)
+Maintainer: Oliver Keyes <ironholds@gmail.com>
+
+```
+checking package dependencies ... NOTE
+Package suggested but not available for checking: ‘iptools’
+```
+```
+DONE
+Status: 1 NOTE
+```
+
+## webuse (0.1.2)
+Maintainer: Thomas J. Leeper <thosjleeper@gmail.com>  
+Bug reports: https://github.com/leeper/webuse/issues
+
+__OK__
+
 ## wgsea (1.8)
 Maintainer: Chris Wallace <chris.wallace@cimr.cam.ac.uk>
 
@@ -8055,7 +6758,40 @@ Package required but not available: ‘snpStats’
 
 See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
 manual.
+```
+```
+DONE
 Status: 1 ERROR
+```
+
+## whoami (1.1.1)
+Maintainer: Gabor Csardi <csardi.gabor@gmail.com>  
+Bug reports: https://github.com/gaborcsardi/whoami/issues
+
+__OK__
+
+## whoapi (0.1.0)
+Maintainer: Oliver Keyes <ironholds@gmail.com>
+
+__OK__
+
+## WikidataR (1.0.0)
+Maintainer: Oliver Keyes <ironholds@gmail.com>
+
+__OK__
+
+## wikipediatrend (1.1.7)
+Maintainer: Peter Meissner <retep.meissner@gmail.com>  
+Bug reports: https://github.com/petermeissner/wikipediatrend/issues
+
+```
+checking package dependencies ... NOTE
+Packages suggested but not available for checking:
+  ‘AnomalyDetection’ ‘BreakoutDetection’
+```
+```
+DONE
+Status: 1 NOTE
 ```
 
 ## WikipediR (1.2.0)
@@ -8064,18 +6800,43 @@ Bug reports: https://github.com/Ironholds/WikipediR/issues
 
 __OK__
 
+## withr (1.0.0)
+Maintainer: Jim Hester <james.f.hester@gmail.com>  
+Bug reports: http://github.com/jimhester/withr/issues
+
+__OK__
+
+## wkb (0.2-0)
+Maintainer: Ian Cook <icook@tibco.com>  
+Bug reports: https://github.com/ianmcook/wkb/issues
+
+__OK__
+
+## wppExplorer (1.7-1)
+Maintainer: Hana Sevcikova <hanas@uw.edu>
+
+__OK__
+
 ## wrassp (0.1.3)
 Maintainer: Raphael Winkelmann <raphael@phonetik.uni-muenchen.de>  
 Bug reports: https://github.com/IPS-LMU/wrassp/issues
 
 ```
-checking package dependencies ... NOTE
-Package suggested but not available for checking: ‘compare’
+checking files in ‘vignettes’ ... NOTE
+The following directory looks like a leftover from 'knitr':
+  ‘figure’
+Please remove from your package.
 ```
 ```
 DONE
 Status: 1 NOTE
 ```
+
+## WufooR (0.5.7)
+Maintainer: John Malc <cincenko@outlook.com>  
+Bug reports: https://github.com/dmpe/wufoor/issues
+
+__OK__
 
 ## XiMpLe (0.03-21)
 Maintainer: Meik Michalke <meik.michalke@hhu.de>
@@ -8089,8 +6850,14 @@ DONE
 Status: 1 NOTE
 ```
 
-## xml2 (0.1.0)
-Maintainer: Hadley Wickham <hadley@rstudio.com>
+## xml2 (0.1.2)
+Maintainer: Hadley Wickham <hadley@rstudio.com>  
+Bug reports: https://github.com/hadley/xml2/issues/
+
+__OK__
+
+## yakmoR (0.1.1)
+Maintainer: Aydin Demircioglu <aydin.demircioglu@ini.rub.de>
 
 __OK__
 
