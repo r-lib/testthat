@@ -4,12 +4,14 @@
 \alias{find_test_scripts}
 \title{Find the test files.}
 \usage{
-find_test_scripts(path, filter = NULL, ...)
+find_test_scripts(path, filter = NULL, invert = FALSE, ...)
 }
 \arguments{
 \item{path}{path to tests}
 
 \item{filter}{cf \code{\link{test_dir}}}
+
+\item{invert}{If \sQuote{TRUE} return files which do \emph{not} match.}
 
 \item{...}{Additional arguments passed to \code{grepl} to control filtering.}
 }
