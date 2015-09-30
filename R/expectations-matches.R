@@ -135,7 +135,7 @@ throws_error <- function(regexp = NULL, ...) {
 
     no_error <- !inherits(res, "try-error")
 
-    if (no_error && no_error) {
+    if (no_error) {
       return(expectation(
         identical(regexp, NA),
         "code raised an error",
