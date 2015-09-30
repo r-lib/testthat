@@ -46,6 +46,9 @@
 
 * Failure locations are now formated as R error locations.
 
+* Add an 'invert' argument to `find_tests_scripts()`.  This allows one to
+  select only tests which do _not_ match a pattern. (#239, @jimhester).
+
 * Deprecated `library_if_available()` has been removed.
 
 * test (`test_dir()`, `test_file()`, `test_package()`, `test_check()`) functions 
