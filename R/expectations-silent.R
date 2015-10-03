@@ -2,6 +2,7 @@
 #'
 #' @param expr Expression to evaluate
 #' @export
+#' @family expectations
 #' @examples
 #' expect_silent("123")
 #'

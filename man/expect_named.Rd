@@ -59,6 +59,7 @@ Other expectations: \code{\link{equivalence}},
   \code{\link{matching-expectations}};
   \code{\link{expect_false}}, \code{\link{expect_true}};
   \code{\link{expect_is}}; \code{\link{expect_null}};
+  \code{\link{expect_silent}};
   \code{\link{takes_less_than}}
 }
 
