@@ -44,6 +44,9 @@
 * Detailed output from `expect_equal()` doesn't confuse expected and actual
   values anymore (#274, @krlmlr).
 
+* New `FailReporter` to stop in case of failures or errors after all tests
+  (#308, @krlmlr).
+
 # testthat 0.10.0
 
 * Failure locations are now formated as R error locations.
