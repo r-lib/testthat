@@ -57,7 +57,19 @@ with_reporter <- function(reporter, code) {
 find_reporter <- function(reporter) {
   if (is.null(reporter)) return(NULL)
   if (inherits(reporter, "Reporter")) return(reporter)
+  if (reporter == "") {
+    stop("reporter is empty string")
+  }
 
+  reporter_names <- strsplit(reporter, " *[+] *")[[1L]]
+  if (length(reporter_names) <= 1L) {
+    find_reporter_one(reporter_names)
+  } else {
+    MultiReporter$new(reporters = lapply(reporter_names, find_reporter_one))
+  }
+}
+
+find_reporter_one <- function(reporter) {
   name <- reporter
   substr(name, 1, 1) <- toupper(substr(name, 1, 1))
   name <- paste0(name, "Reporter")
