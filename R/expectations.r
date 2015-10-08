@@ -284,7 +284,22 @@ expect_less_than <- function(object, expected, ..., info = NULL, label = NULL,
 
 #' @export
 #' @rdname expect-compare
-expect_less_than_or_equal <- function(object, expected) {
+expect_lt <- function(object, expected) {
+  label_object <- find_expr("object")
+  label_expected <- find_expr("expected")
+
+  diff <- expected - object
+
+  expect(
+    diff > 0,
+    paste0(label_object, " is not less than ", label_expected,
+           ". Difference: ", format(diff))
+  )
+}
+
+#' @export
+#' @rdname expect-compare
+expect_lte <- function(object, expected) {
   label_object <- find_expr("object")
   label_expected <- find_expr("expected")
 
@@ -332,7 +347,22 @@ expect_more_than <- function(object, expected, ..., info = NULL, label = NULL,
 
 #' @export
 #' @rdname expect-compare
-expect_more_than_or_equal <- function(object, expected) {
+expect_mt <- function(object, expected) {
+  label_object <- find_expr("object")
+  label_expected <- find_expr("expected")
+
+  diff <- expected - object
+
+  expect(
+    diff < 0,
+    paste0(label_object, " is more than ", label_expected,
+           ". Difference: ", format(diff))
+  )
+}
+
+#' @export
+#' @rdname expect-compare
+expect_mte <- function(object, expected) {
   label_object <- find_expr("object")
   label_expected <- find_expr("expected")
 

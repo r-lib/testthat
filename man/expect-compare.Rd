@@ -3,20 +3,26 @@
 \name{expect-compare}
 \alias{expect-compare}
 \alias{expect_less_than}
-\alias{expect_less_than_or_equal}
+\alias{expect_lt}
+\alias{expect_lte}
 \alias{expect_more_than}
-\alias{expect_more_than_or_equal}
+\alias{expect_mt}
+\alias{expect_mte}
 \title{Expectation: is returned value less or greater than specified value?}
 \usage{
 expect_less_than(object, expected, ..., info = NULL, label = NULL,
   expected.label = NULL)
 
-expect_less_than_or_equal(object, expected)
+expect_lt(object, expected)
+
+expect_lte(object, expected)
 
 expect_more_than(object, expected, ..., info = NULL, label = NULL,
   expected.label = NULL)
 
-expect_more_than_or_equal(object, expected)
+expect_mt(object, expected)
+
+expect_mte(object, expected)
 }
 \arguments{
 \item{object}{object to test}
