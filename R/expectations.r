@@ -347,7 +347,7 @@ expect_more_than <- function(object, expected, ..., info = NULL, label = NULL,
 
 #' @export
 #' @rdname expect-compare
-expect_mt <- function(object, expected) {
+expect_gt <- function(object, expected) {
   label_object <- find_expr("object")
   label_expected <- find_expr("expected")
 
@@ -362,7 +362,7 @@ expect_mt <- function(object, expected) {
 
 #' @export
 #' @rdname expect-compare
-expect_mte <- function(object, expected) {
+expect_gte <- function(object, expected) {
   label_object <- find_expr("object")
   label_expected <- find_expr("expected")
 
