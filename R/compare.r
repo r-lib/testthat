@@ -145,7 +145,7 @@ compare.numeric <- function(x, y, ..., max_diffs = 10) {
 
   # If they're not the same type or length, fallback to default method
   equal <- paste0(equal, collapse = "\n")
-  if (!is.integer(x) && !is.numeric(y)) return(comparison(FALSE, equal))
+  if (!is.numeric(y)) return(comparison(FALSE, equal))
   if (length(x) != length(y)) return(comparison(FALSE, equal))
 
   if (length(x) == 1) {
