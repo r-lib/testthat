@@ -44,6 +44,9 @@
 * Detailed output from `expect_equal()` doesn't confuse expected and actual
   values anymore (#274, @krlmlr).
 
+* Comparing integers to non-numbers doesn't raise errors anymore (#309,
+  @krlmlr).
+
 # testthat 0.10.0
 
 * Failure locations are now formated as R error locations.
