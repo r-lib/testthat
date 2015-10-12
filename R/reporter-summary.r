@@ -90,7 +90,7 @@ SummaryReporter <- setRefClass("SummaryReporter", contains = "Reporter",
         cat(paste(reports, collapse = "\n\n"), "\n", sep = "")
 
         if (show_praise && runif(1) < 0.25) {
-          cat("\n", colourise(encourage(), "failed"), "\n", sep = "")
+          cat("\n", colourise(encourage(), "error"), "\n", sep = "")
         }
       }
     }
