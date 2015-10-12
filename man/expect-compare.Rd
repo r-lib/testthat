@@ -2,12 +2,12 @@
 % Please edit documentation in R/expectations.r
 \name{expect-compare}
 \alias{expect-compare}
+\alias{expect_gt}
+\alias{expect_gte}
 \alias{expect_less_than}
 \alias{expect_lt}
 \alias{expect_lte}
 \alias{expect_more_than}
-\alias{expect_gt}
-\alias{expect_gte}
 \title{Expectation: is returned value less or greater than specified value?}
 \usage{
 expect_less_than(object, expected, ..., info = NULL, label = NULL,
