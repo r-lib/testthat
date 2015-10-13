@@ -1,4 +1,4 @@
-# testthat 0.10.0.9000
+# testthat 0.11.0
 
 * Handle skipped tests in the TAP reporter (#262).
 
