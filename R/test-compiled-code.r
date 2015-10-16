@@ -63,7 +63,7 @@ test_compiled_code <- function(reporter, ...) {
     }
   )
 
-  if (reporter_type(reporter) != "silent" && nzchar(output))
+  if (reporter_type(reporter) != "silent" && !identical(output, ""))
     cat("\nC++ unit test results:", output[-1], sep = "\n")
 
   status == 0
