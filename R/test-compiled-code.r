@@ -79,8 +79,11 @@ test_compiled_code <- function(reporter, ...) {
 #' This function will:
 #'
 #' \enumerate{
-#'   \item Create a file \code{src/test-runner.cpp},
-#'   \item Ensure that your package links to \code{testthat}.
+#'   \item Create a file \code{src/test-runner.cpp}, which ensures that the
+#'         \code{testthat} package will understand how to run your package's
+#'         unit tests,
+#'   \item Create an example test file \code{src/test-example.cpp}, which
+#'         showcases how you might use \code{Catch} to write a unit test.
 #' }
 #'
 #' C++ unit tests can be added to C++ source files within the
@@ -108,59 +111,38 @@ test_compiled_code <- function(reporter, ...) {
 #'   library used to enable C++ unit testing.
 use_catch <- function(dir = getwd()) {
 
-  if (!requireNamespace("devtools", quietly = TRUE))
-    stop("please install devtools", call. = FALSE)
-
-  if (!file.exists(file.path(dir, "DESCRIPTION")))
-    stop("no DESCRIPTION file in directory '", dir, "'")
+  desc_path <- file.path(dir, "DESCRIPTION")
+  if (!file.exists(desc_path))
+    stop("no DESCRIPTION file at path '", desc_path, "'")
 
   src_dir <- file.path(dir, "src")
   if (!file.exists(src_dir))
     if (!dir.create(src_dir))
-      stop("failed to create directory '", src_dir, "'")
+      stop("failed to create 'src/' directory '", src_dir, "'")
 
   test_runner_path <- file.path(src_dir, "test-runner.cpp")
 
+  # Copy the test runner.
   success <- file.copy(
     system.file(package = "testthat", "resources", "test-runner.cpp"),
     test_runner_path,
     overwrite = TRUE
   )
+
   if (!success)
     stop("failed to copy 'test-runner.cpp' to '", src_dir, "'")
 
-  DESCRIPTION <- devtools:::read_dcf(file.path(dir, "DESCRIPTION"))
-  if (is.null(DESCRIPTION$LinkingTo)) {
-    # Figure out a nice location to insert LinkingTo
-    idx <- length(DESCRIPTION)
-    for (entry in c("Suggests", "Imports", "Depends")) {
-      if (entry %in% names(DESCRIPTION)) {
-        idx <- which(entry == names(DESCRIPTION))
-        break
-      }
-    }
-
-    DESCRIPTION <- c(
-      DESCRIPTION[1:idx],
-      LinkingTo = "\n    testthat",
-      DESCRIPTION[(idx + 1):length(DESCRIPTION)]
-    )
-  }
-
-  splat <- trim_whitespace(
-    strsplit(DESCRIPTION$LinkingTo, "\\s*,\\s*", perl = TRUE)[[1]]
+  # Copy the test example.
+  success <- file.copy(
+    system.file(package = "testthat", "resources", "test-example.cpp"),
+    file.path(src_dir, "test-example.cpp"),
+    overwrite = TRUE
   )
 
-  if (!("testthat" %in% splat))
-    splat <- c(splat, "testthat")
+  if (!success)
+    stop("failed to copy 'test-example.cpp' to '", src_dir, "'")
 
-  DESCRIPTION$LinkingTo <- paste(
-    "\n    ",
-    paste(splat, sep = "", collapse = ",\n    "),
-    sep = ""
-  )
-
-  devtools:::write_dcf(file.path(dir, "DESCRIPTION"), DESCRIPTION)
-  message("> Added C++ unit testing infrastructure")
+  message("> Added C++ unit testing infrastructure.")
+  message("> Please add 'LinkingTo: testthat' to your DESCRIPTION file.")
 
 }

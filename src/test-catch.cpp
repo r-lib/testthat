@@ -1,18 +1,9 @@
 #include <tests/testthat.h>
 
-int twoPlusTwo()
-{
-  return 2 + 2;
-}
-
 context("Example Unit Test") {
 
   test_that("4 + 4 == 8") {
     expect_true((4 + 4) == 8);
-  }
-
-  test_that("2 + 2 == 4") {
-    expect_true(twoPlusTwo() == 4);
   }
 }
 

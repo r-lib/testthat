@@ -18,8 +18,11 @@ in \R packages with
 This function will:
 
 \enumerate{
-  \item Create a file \code{src/test-runner.cpp},
-  \item Ensure that your package links to \code{testthat}.
+  \item Create a file \code{src/test-runner.cpp}, which ensures that the
+        \code{testthat} package will understand how to run your package's
+        unit tests,
+  \item Create an example test file \code{src/test-example.cpp}, which
+        showcases how you might use \code{Catch} to write a unit test.
 }
 
 C++ unit tests can be added to C++ source files within the
