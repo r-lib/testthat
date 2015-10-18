@@ -1,11 +1,13 @@
-// This is an example C++ file that leverages the
-// Catch unit testing library, alongside testthat's
-// simple bindings, to test a C++ function.
-//
-// For your own packages, ensure that your test files are
-// placed within the `tests/testthat/cpp` folder, and
-// that you include `LinkingTo: testthat` within your
-// DESCRIPTION file.
+/*
+ * This is an example C++ file that leverages the
+ * Catch unit testing library, alongside testthat's
+ * simple bindings, to test a C++ function.
+ *
+ * For your own packages, ensure that your test files are
+ * placed within the `tests/testthat/cpp` folder, and
+ * that you include `LinkingTo: testthat` within your
+ * DESCRIPTION file.
+ */
 
 // All test files should include the <tests/testthat.h>
 // header file.
