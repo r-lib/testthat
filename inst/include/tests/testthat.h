@@ -95,7 +95,7 @@ inline std::ostream& cerr()
 
 } // namespace Catch
 
-#define context(__X__, ...) CATCH_TEST_CASE(__X__ " | " __FILE__)
+#define context(__X__) CATCH_TEST_CASE(__X__ " | " __FILE__)
 #define test_that CATCH_SECTION
 #define expect_true CATCH_CHECK
 #define expect_false CATCH_CHECK_FALSE
