@@ -1,3 +1,34 @@
+#' Test Compiled Code in a Package
+#'
+#' Test compiled code in the package \code{package}. See
+#' \code{\link{use_catch}()} for more details.
+#'
+#' @param package The name of the package to test.
+#'
+#' @export
+test_compiled_code <- function(package) {
+
+  routine <- get_routine(package, "run_testthat_tests")
+
+  output <- ""
+  tests_passed <- TRUE
+
+  tryCatch(
+    output <- utils::capture.output(tests_passed <- .Call(routine)),
+    error = function(e) {
+      warning(sprintf("failed to call test entrypoint '%s'", routine))
+    }
+  )
+
+  # Drop first line of output (it's jut a '####' delimiter)
+  info <- paste(output[-1], collapse = "\n")
+
+  expect_that(tests_passed, function(result) {
+    expectation(isTRUE(result), "failed", "passed")
+  }, info = info, label = "C++ unit tests")
+
+}
+
 #' Use Catch for C++ Unit Testing
 #'
 #' Add the necessary infrastructure to enable C++ unit testing
@@ -11,7 +42,9 @@
 #'         \code{testthat} package will understand how to run your package's
 #'         unit tests,
 #'   \item Create an example test file \code{src/test-example.cpp}, which
-#'         showcases how you might use \code{Catch} to write a unit test.
+#'         showcases how you might use \code{Catch} to write a unit test,
+#'   \item Adds a test file \code{tests/testthat/test-cpp.R}, which ensures that
+#'         \code{testthat} will run your compiled tests.
 #' }
 #'
 #' C++ unit tests can be added to C++ source files within the
@@ -90,78 +123,9 @@ use_catch <- function(dir = getwd()) {
 
 }
 
-get_active_pkg <- function() {
-
-  ## For R CMD check; check env
-  env <- Sys.getenv("R_TESTTHAT_PACKAGE", unset = "")
-  if (nzchar(env))
-    return(env)
-
-  ## Otherwise, check relative to current directory.
-  path <- normalizePath(getwd())
-  parent <- dirname(path)
-  while (parent != path) {
-    if (file.exists(file.path(path, "DESCRIPTION"))) {
-      contents <- read.dcf(file.path(path, "DESCRIPTION"), all = TRUE)
-      if ("Package" %in% names(contents))
-        return(contents[["Package"]])
-    }
-
-    path <- parent
-    parent <- dirname(path)
-  }
-
-  ""
-
-}
-
 get_routine <- function(package, routine) {
   tryCatch(
     getNativeSymbolInfo(routine, PACKAGE = package),
     error = function(e) NULL
   )
 }
-
-# Get the reporter's type as a string
-reporter_type <- function(reporter) {
-
-  if (is.character(reporter))
-    return(reporter)
-
-  if (inherits(reporter, "Reporter"))
-    return(tolower(sub("Reporter", "", class(reporter))))
-
-  ""
-}
-
-#' Test Compiled Code in a Package
-#'
-#' Test compiled code in the package \code{package}. See
-#' \code{\link{use_catch}()} for more details.
-#'
-#' @param package The name of the package to test.
-#'
-#' @export
-test_compiled_code <- function(package) {
-
-  routine <- get_routine(package, "run_testthat_tests")
-
-  output <- ""
-  tests_passed <- TRUE
-
-  tryCatch(
-    output <- utils::capture.output(tests_passed <- .Call(routine)),
-    error = function(e) {
-      warning(sprintf("failed to call test entrypoint '%s'", routine))
-    }
-  )
-
-  # Drop first line of output (it's jut a '####' delimiter)
-  info <- paste(output[-1], collapse = "\n")
-
-  expect_that(tests_passed, function(result) {
-    expectation(isTRUE(result), "failed", "passed")
-  }, info = info, label = "C++ unit tests")
-
-}
-

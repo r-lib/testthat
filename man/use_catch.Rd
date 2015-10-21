@@ -22,7 +22,9 @@ This function will:
         \code{testthat} package will understand how to run your package's
         unit tests,
   \item Create an example test file \code{src/test-example.cpp}, which
-        showcases how you might use \code{Catch} to write a unit test.
+        showcases how you might use \code{Catch} to write a unit test,
+  \item Adds a test file \code{tests/testthat/test-cpp.R}, which ensures that
+        \code{testthat} will run your compiled tests.
 }
 
 C++ unit tests can be added to C++ source files within the

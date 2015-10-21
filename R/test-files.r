@@ -41,13 +41,12 @@ test_files <- function(paths, reporter = "summary",
 
   current_reporter <- find_reporter(reporter)
   current_reporter$start_reporter()
-
   results <- lapply(paths, test_file, env = env,
     reporter = current_reporter, start_end_reporter = FALSE)
-
   current_reporter$end_reporter()
 
   results <- unlist(results, recursive = FALSE)
+
   invisible(testthat_results(results))
 }
 

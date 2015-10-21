@@ -103,5 +103,3 @@ skip_on_appveyor <- function() {
 
   skip("On Appveyor")
 }
-
-trim_whitespace <- function(text) gsub("^\\s*|\\s*$", "", text, perl = TRUE)
