@@ -41,12 +41,11 @@ use_catch <- function(dir = getwd()) {
 
   desc_path <- file.path(dir, "DESCRIPTION")
   if (!file.exists(desc_path))
-    stop("no DESCRIPTION file at path '", desc_path, "'")
+    stop("no DESCRIPTION file at path '", desc_path, "'", call. = FALSE)
 
   src_dir <- file.path(dir, "src")
-  if (!file.exists(src_dir))
-    if (!dir.create(src_dir))
-      stop("failed to create 'src/' directory '", src_dir, "'")
+  if (!file.exists(src_dir) && !dir.create(src_dir))
+    stop("failed to create 'src/' directory '", src_dir, "'", call. = FALSE)
 
   test_runner_path <- file.path(src_dir, "test-runner.cpp")
 
@@ -58,7 +57,7 @@ use_catch <- function(dir = getwd()) {
   )
 
   if (!success)
-    stop("failed to copy 'test-runner.cpp' to '", src_dir, "'")
+    stop("failed to copy 'test-runner.cpp' to '", src_dir, "'", call. = FALSE)
 
   # Copy the test example.
   success <- file.copy(
@@ -68,7 +67,7 @@ use_catch <- function(dir = getwd()) {
   )
 
   if (!success)
-    stop("failed to copy 'test-example.cpp' to '", src_dir, "'")
+    stop("failed to copy 'test-example.cpp' to '", src_dir, "'", call. = FALSE)
 
   message("> Added C++ unit testing infrastructure.")
   message("> Please add 'LinkingTo: testthat' to your DESCRIPTION file.")
@@ -140,10 +139,7 @@ test_compiled_code <- function(reporter, ...) {
     }
   )
 
-  if (reporter_type(reporter) != "silent" && !identical(output, ""))
-    cat("\nC++ unit test results:", output[-1], sep = "\n")
-
-  status == 0
+  expect_equal(status, 0, info = output[-1])
 
 }
 
