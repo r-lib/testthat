@@ -116,7 +116,7 @@ use_catch <- function(dir = getwd()) {
   contents <- readChar(template_file, file.info(template_file)$size, TRUE)
   transformed <- sprintf(contents, pkg)
   output_path <- file.path(test_dir, "test-cpp.R")
-  cat(transformed, file = output_path, sep = "\n")
+  cat(transformed, file = output_path)
 
   message("> Added C++ unit testing infrastructure.")
   message("> Please ensure you have 'LinkingTo: testthat' in your DESCRIPTION file.")
