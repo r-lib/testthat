@@ -1,9 +1,9 @@
 # testthat 0.11.0.9000
 
-# testthat 0.11.0
-
 * Added [Catch](https://github.com/philsquared/Catch) for unit testing of C++ code.
   See `?use_catch()` for more details. (@kevinushey)
+
+# testthat 0.11.0
 
 * Handle skipped tests in the TAP reporter (#262).
 
