@@ -43,6 +43,11 @@ use_catch <- function(dir = getwd()) {
   if (!file.exists(desc_path))
     stop("no DESCRIPTION file at path '", desc_path, "'", call. = FALSE)
 
+  desc <- read.dcf(desc_path, all = TRUE)
+  pkg <- desc$Package
+  if (!nzchar(pkg))
+    stop("no 'Package' field in DESCRIPTION file '", desc_path, "'", call. = FALSE)
+
   src_dir <- file.path(dir, "src")
   if (!file.exists(src_dir) && !dir.create(src_dir))
     stop("failed to create 'src/' directory '", src_dir, "'", call. = FALSE)
@@ -69,8 +74,19 @@ use_catch <- function(dir = getwd()) {
   if (!success)
     stop("failed to copy 'test-example.cpp' to '", src_dir, "'", call. = FALSE)
 
+  # Copy the 'test-cpp.R' file.
+  test_dir <- file.path(dir, "tests", "testthat")
+  if (!file.exists(test_dir) && !dir.create(test_dir, recursive = TRUE))
+    stop("failed to create 'tests/testthat/' directory '", test_dir, "'", call. = FALSE)
+
+  template_file <- system.file(package = "testthat", "resources", "test-cpp.R")
+  contents <- readChar(template_file, file.info(template_file)$size, TRUE)
+  transformed <- sprintf(contents, pkg)
+  output_path <- file.path(test_dir, "test-cpp.R")
+  cat(transformed, file = output_path, sep = "\n")
+
   message("> Added C++ unit testing infrastructure.")
-  message("> Please add 'LinkingTo: testthat' to your DESCRIPTION file.")
+  message("> Please ensure you have 'LinkingTo: testthat' in your DESCRIPTION file.")
 
 }
 
@@ -118,28 +134,34 @@ reporter_type <- function(reporter) {
   ""
 }
 
-# Returns TRUE if no tests available, or all tests succeeded.
-test_compiled_code <- function(reporter, ...) {
-
-  package <- get_active_pkg()
-  if (!nzchar(package))
-    return(TRUE)
+#' Test Compiled Code in a Package
+#'
+#' Test compiled code in the package \code{package}. See
+#' \code{\link{use_catch}()} for more details.
+#'
+#' @param package The name of the package to test.
+#'
+#' @export
+test_compiled_code <- function(package) {
 
   routine <- get_routine(package, "run_testthat_tests")
-  if (is.null(routine))
-    return(TRUE)
 
   output <- ""
-  status <- 1
+  tests_passed <- TRUE
 
   tryCatch(
-    output <- utils::capture.output(status <- .Call(routine)),
+    output <- utils::capture.output(tests_passed <- .Call(routine)),
     error = function(e) {
       warning(sprintf("failed to call test entrypoint '%s'", routine))
     }
   )
 
-  expect_equal(status, 0, info = output[-1])
+  # Drop first line of output (it's jut a '####' delimiter)
+  info <- paste(output[-1], collapse = "\n")
+
+  expect_that(tests_passed, function(result) {
+    expectation(isTRUE(result), "failed", "passed")
+  }, info = info, label = "C++ unit tests")
 
 }
 

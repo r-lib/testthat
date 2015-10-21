@@ -47,9 +47,6 @@ test_files <- function(paths, reporter = "summary",
 
   current_reporter$end_reporter()
 
-  # TODO: Integrate results.
-  compiled_results <- test_compiled_code(reporter = reporter)
-
   results <- unlist(results, recursive = FALSE)
   invisible(testthat_results(results))
 }
