@@ -1,75 +1,3 @@
-get_active_pkg <- function() {
-
-  ## For R CMD check; check env
-  env <- Sys.getenv("R_TESTTHAT_PACKAGE", unset = "")
-  if (nzchar(env))
-    return(env)
-
-  ## Otherwise, check relative to current directory.
-  path <- normalizePath(getwd())
-  parent <- dirname(path)
-  while (parent != path) {
-    if (file.exists(file.path(path, "DESCRIPTION"))) {
-      contents <- read.dcf(file.path(path, "DESCRIPTION"), all = TRUE)
-      if ("Package" %in% names(contents))
-        return(contents[["Package"]])
-    }
-
-    path <- parent
-    parent <- dirname(path)
-  }
-
-  ""
-
-}
-
-get_routine <- function(package, routine) {
-  tryCatch(
-    getNativeSymbolInfo(routine, PACKAGE = package),
-    error = function(e) NULL
-  )
-}
-
-# Get the reporter's type as a string
-reporter_type <- function(reporter) {
-
-  if (is.character(reporter))
-    return(reporter)
-
-  if (inherits(reporter, "Reporter"))
-    return(tolower(sub("Reporter", "", class(reporter))))
-
-  ""
-}
-
-# Returns TRUE if no tests available, or all tests succeeded.
-test_compiled_code <- function(reporter, ...) {
-
-  package <- get_active_pkg()
-  if (!nzchar(package))
-    return(TRUE)
-
-  routine <- get_routine(package, "run_testthat_tests")
-  if (is.null(routine))
-    return(TRUE)
-
-  output <- ""
-  status <- 1
-
-  tryCatch(
-    output <- utils::capture.output(status <- .Call(routine)),
-    error = function(e) {
-      warning(sprintf("failed to call test entrypoint '%s'", routine))
-    }
-  )
-
-  if (reporter_type(reporter) != "silent" && !identical(output, ""))
-    cat("\nC++ unit test results:", output[-1], sep = "\n")
-
-  status == 0
-
-}
-
 #' Use Catch for C++ Unit Testing
 #'
 #' Add the necessary infrastructure to enable C++ unit testing
@@ -146,3 +74,76 @@ use_catch <- function(dir = getwd()) {
   message("> Please add 'LinkingTo: testthat' to your DESCRIPTION file.")
 
 }
+
+get_active_pkg <- function() {
+
+  ## For R CMD check; check env
+  env <- Sys.getenv("R_TESTTHAT_PACKAGE", unset = "")
+  if (nzchar(env))
+    return(env)
+
+  ## Otherwise, check relative to current directory.
+  path <- normalizePath(getwd())
+  parent <- dirname(path)
+  while (parent != path) {
+    if (file.exists(file.path(path, "DESCRIPTION"))) {
+      contents <- read.dcf(file.path(path, "DESCRIPTION"), all = TRUE)
+      if ("Package" %in% names(contents))
+        return(contents[["Package"]])
+    }
+
+    path <- parent
+    parent <- dirname(path)
+  }
+
+  ""
+
+}
+
+get_routine <- function(package, routine) {
+  tryCatch(
+    getNativeSymbolInfo(routine, PACKAGE = package),
+    error = function(e) NULL
+  )
+}
+
+# Get the reporter's type as a string
+reporter_type <- function(reporter) {
+
+  if (is.character(reporter))
+    return(reporter)
+
+  if (inherits(reporter, "Reporter"))
+    return(tolower(sub("Reporter", "", class(reporter))))
+
+  ""
+}
+
+# Returns TRUE if no tests available, or all tests succeeded.
+test_compiled_code <- function(reporter, ...) {
+
+  package <- get_active_pkg()
+  if (!nzchar(package))
+    return(TRUE)
+
+  routine <- get_routine(package, "run_testthat_tests")
+  if (is.null(routine))
+    return(TRUE)
+
+  output <- ""
+  status <- 1
+
+  tryCatch(
+    output <- utils::capture.output(status <- .Call(routine)),
+    error = function(e) {
+      warning(sprintf("failed to call test entrypoint '%s'", routine))
+    }
+  )
+
+  if (reporter_type(reporter) != "silent" && !identical(output, ""))
+    cat("\nC++ unit test results:", output[-1], sep = "\n")
+
+  status == 0
+
+}
+
