@@ -1,2 +1,2 @@
 context("C++")
-test_compiled_code("%s")
+expect_cpp_tests_pass("%s")

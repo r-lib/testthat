@@ -6,4 +6,4 @@
  * other tests available within your package.
  */
 #define TESTTHAT_TEST_RUNNER
-#include <tests/testthat.h>
+#include <testthat.h>

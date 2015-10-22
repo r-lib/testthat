@@ -1,4 +1,4 @@
-#include <tests/testthat.h>
+#include <testthat.h>
 
 context("Example Unit Test") {
 

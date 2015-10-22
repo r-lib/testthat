@@ -6,7 +6,7 @@
 #' @param package The name of the package to test.
 #'
 #' @export
-test_compiled_code <- function(package) {
+expect_cpp_tests_pass <- function(package) {
 
   routine <- get_routine(package, "run_testthat_tests")
 
@@ -23,9 +23,7 @@ test_compiled_code <- function(package) {
   # Drop first line of output (it's jut a '####' delimiter)
   info <- paste(output[-1], collapse = "\n")
 
-  expect_that(tests_passed, function(result) {
-    expectation(isTRUE(result), "failed", "passed")
-  }, info = info, label = "C++ unit tests")
+  expect(tests_passed, paste("C++ unit tests:", info, sep = "\n"))
 
 }
 
@@ -124,8 +122,14 @@ use_catch <- function(dir = getwd()) {
 }
 
 get_routine <- function(package, routine) {
-  tryCatch(
+
+  resolved <- tryCatch(
     getNativeSymbolInfo(routine, PACKAGE = package),
     error = function(e) NULL
   )
+
+  if (is.null(resolved))
+    stop("failed to locate routine '", routine, "' in package '", package, "'", call. = FALSE)
+
+  resolved
 }

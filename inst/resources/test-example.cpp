@@ -11,7 +11,7 @@
 
 // All test files should include the <tests/testthat.h>
 // header file.
-#include <tests/testthat.h>
+#include <testthat.h>
 
 // Normally this would be a function from your package's
 // compiled DLL -- you might instead just include a header
