@@ -12,6 +12,7 @@
 // We won't bump into them during normal test execution so just temporarily
 // hide it when we include 'catch'. Make sure we get 'exit' from the normal
 // places first, though.
+#include <cstddef> // std::size_t
 #include <cstdlib> // exit
 #include <cstdio>  // EOF
 extern "C" inline void testthat_exit_override(int status) throw() {}

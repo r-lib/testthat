@@ -15,15 +15,18 @@ in \R packages with
 \href{https://github.com/philsquared/Catch}{Catch} and \code{testthat}.
 }
 \details{
-This function will:
+Calling \code{use_catch()} will:
 
 \enumerate{
-  \item Create a file \code{src/test-runner.cpp}, which ensures that the
+
+\item Create a file \code{src/test-runner.cpp}, which ensures that the
         \code{testthat} package will understand how to run your package's
         unit tests,
-  \item Create an example test file \code{src/test-example.cpp}, which
-        showcases how you might use \code{Catch} to write a unit test,
-  \item Adds a test file \code{tests/testthat/test-cpp.R}, which ensures that
+
+\item Create an example test file \code{src/test-example.cpp}, which
+        showcases how you might use Catch to write a unit test, and
+
+\item Add a test file \code{tests/testthat/test-cpp.R}, which ensures that
         \code{testthat} will run your compiled tests.
 }
 
@@ -41,8 +44,8 @@ context("C++ Unit Test") {
 }
 
 When your package is compiled, unit tests alongside a harness
-for running these tests will be compiled into the \R package,
-with the entry point \code{run_testthat_tests()}. \code{testthat}
+for running these tests will be compiled into your \R package,
+with the C entry point \code{run_testthat_tests()}. \code{testthat}
 will use that entry point to run your unit tests when detected.
 }
 \seealso{
