@@ -58,3 +58,35 @@ test_that("comparing character vectors of different length", {
     paste("^", "Lengths ", " differ\\n", " string mismatch", "\\ny", "\\n", "\\ny", "$",
           sep = "[^\\n]*"))
 })
+
+test_that("comparing named / unnamed numerics", {
+  cmp <- compare(c(1, 2), c(a=1, b=2))
+  expect_match(
+    cmp$message,
+    "names for current but not for target"
+  )
+
+  cmp <- compare(c(a=1, b=2), c(1, 2))
+  expect_match(
+    cmp$message,
+    "names for target but not for current"
+  )
+
+  cmp <- compare(c(a=1, 2), c(1, b=2))
+  expect_match(
+    cmp$message,
+    "Names: 2 string mismatches"
+  )
+
+  cmp <- compare(1, c(a=1))
+  expect_match(
+    cmp$message,
+    "names for current but not for target"
+  )
+
+  cmp <- compare(c(1, 2), c(a=1.0001, b=2.0002), tolerance = 1e-2)
+  expect_match(
+    cmp$message,
+    "names for current but not for target"
+  )
+})
