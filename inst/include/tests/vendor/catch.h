@@ -16,6 +16,16 @@
 
 #define TWOBLUECUBES_CATCH_HPP_INCLUDED
 
+// gcc 5.2 seems to barf with std::nullptr_t
+// see: https://github.com/hadley/testthat/issues/314
+#ifdef __GNUC__
+# ifdef __GNUC__MINOR__
+#  if __GNUC__ == 5 && __GNUC_MINOR__ == 2
+#   define CATCH_CONFIG_CPP11_NO_NULLPTR
+#  endif
+# endif
+#endif
+
 #ifdef __clang__
 #    pragma clang system_header
 #elif defined __GNUC__
