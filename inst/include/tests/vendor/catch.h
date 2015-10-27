@@ -18,8 +18,8 @@
 
 // gcc 5.2 seems to barf with std::nullptr_t
 // see: https://github.com/hadley/testthat/issues/314
-#if !defined(__clang__) && defined(__GNUC__) && defined(__GNUC_MINOR__)
-#   if __GNUC__ == 5 && __GNUC_MINOR__ == 2
+#if !defined(__clang__) && defined(__GNUC__)
+#   if __GNUC__ >= 5
 #      define CATCH_CONFIG_CPP11_NO_NULLPTR
 #   endif
 #endif
