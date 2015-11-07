@@ -9,11 +9,16 @@ test_that("errors are caught with throws_error", {
 
   res <- throws_error("Yes")(stop("No"))
   expect_that(res$passed, is_false())
+
+  res <- throws_error(NA)(stop())
+  expect_that(res$passed, is_false())
 })
 
 test_that("failure to throw an error is a failure", {
   res <- throws_error()(log(1))
   expect_that(res$passed, is_false())
+  expect_match(res$failure_msg, "didn't raise an error")
+  expect_match(res$success_msg, "raised an error")
 
   res <- throws_error("error")(log(1))
   expect_that(res$passed, is_false())
