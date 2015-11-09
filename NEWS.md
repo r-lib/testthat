@@ -3,6 +3,8 @@
 * Added [Catch](https://github.com/philsquared/Catch) for unit testing of C++ code.
   See `?use_catch()` for more details. (@kevinushey)
 
+* Fixed minor issues with `throws_error(NA)` and `expect_error(..., NA)` (@krlmlr, #317).
+
 # testthat 0.11.0
 
 * Handle skipped tests in the TAP reporter (#262).
