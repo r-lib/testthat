@@ -1,9 +1,9 @@
 # testthat 0.11.0.9000
 
+* Fixed minor issues with `throws_error(NA)` and `expect_error(..., NA)` (@krlmlr, #317).
+
 * Added [Catch](https://github.com/philsquared/Catch) for unit testing of C++ code.
   See `?use_catch()` for more details. (@kevinushey)
-
-* Fixed minor issues with `throws_error(NA)` and `expect_error(..., NA)` (@krlmlr, #317).
 
 * `expect_identical()` and `is_identical_to()` now use `compare()` for more
   detailed output of differences (@krlmlr, #319).
