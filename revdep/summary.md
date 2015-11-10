@@ -6,11 +6,11 @@
 |:--------|:----------------------------|
 |version  |R version 3.2.1 (2015-06-18) |
 |system   |x86_64, darwin13.4.0         |
-|ui       |RStudio (0.99.674)           |
+|ui       |RStudio (0.99.720)           |
 |language |(EN)                         |
 |collate  |en_US.UTF-8                  |
 |tz       |America/Chicago              |
-|date     |2015-09-30                   |
+|date     |2015-10-13                   |
 
 ## Packages
 
@@ -22,7 +22,7 @@
 |praise   |   |1.0.0   |2015-08-11 |CRAN (R 3.2.0) |
 
 # Check results
-713 checked out of 722 dependencies 
+756 checked out of 765 dependencies 
 
 ## adegenet (2.0.0)
 Maintainer: Thibaut Jombart <t.jombart@imperial.ac.uk>
@@ -45,7 +45,7 @@ Maintainer: Matthias Brueckner <mwb@math.uni-bremen.de>
 ```
 checking whether package ‘AHR’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpKAtbVW/check_cran14a8c2e8e2543/AHR.Rcheck/00install.out’ for details.
+See ‘/private/tmp/Rtmp0BfrND/check_cran90e89b33070/AHR.Rcheck/00install.out’ for details.
 ```
 ```
 DONE
@@ -132,7 +132,7 @@ Maintainer: George Rosenberger <rosenberger@imsb.biol.ethz.ch>
 ```
 checking whether package ‘aLFQ’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpKAtbVW/check_cran14a8c2e8e2543/aLFQ.Rcheck/00install.out’ for details.
+See ‘/private/tmp/Rtmp0BfrND/check_cran90e89b33070/aLFQ.Rcheck/00install.out’ for details.
 ```
 ```
 DONE
@@ -154,6 +154,12 @@ DONE
 Status: 1 NOTE
 ```
 
+## analogsea (0.3.0)
+Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>  
+Bug reports: http://www.github.com/sckott/analogsea/issues
+
+__OK__
+
 ## analogue (0.16-3)
 Maintainer: Gavin L. Simpson <ucfagls@gmail.com>  
 Bug reports: https://github.com/gavinsimpson/analogue/issues
@@ -172,7 +178,7 @@ Bug reports: https://github.com/paulhendricks/anonymizer/issues
 
 __OK__
 
-## aoos (0.3.0)
+## aoos (0.4.0)
 Maintainer: Sebastian Warnholz <wahani@gmail.com>  
 Bug reports: https://github.com/wahani/aoos/issues
 
@@ -233,28 +239,7 @@ __OK__
 Maintainer: Michael Hahsler <mhahsler@lyle.smu.edu>  
 Bug reports: http://r-forge.r-project.org/projects/arules
 
-```
-checking tests ... ERROR
-Running the tests in ‘tests/testthat.R’ failed.
-Last 13 lines of output:
-  1. Failure (at test-matrix.R#56): (unknown) ------------------------------------
-  .Call("R_rowSums_ngCMatrix", x) not equal to rowSums(x)
-  names for target but not for current
-  
-  2. Failure (at test-matrix.R#60): (unknown) ------------------------------------
-  colSums(x) not equal to .Call("R_colSums_ngCMatrix", x)
-  names for current but not for target
-  Error in match.arg(as) : 
-    'arg' should be one of "passed", "skipped", "error"
-  Calls: test_package ... test_files -> <Anonymous> -> cat -> colourise -> match.arg
-  In addition: Warning message:
-  Placing tests in `inst/tests/` is deprecated. Please use `tests/testthat/` instead 
-  Execution halted
-```
-```
-DONE
-Status: 1 ERROR
-```
+__OK__
 
 ## aRxiv (0.5.10)
 Maintainer: Karl Broman <kbroman@biostat.wisc.edu>  
@@ -262,13 +247,101 @@ Bug reports: https://github.com/ropensci/aRxiv/issues
 
 __OK__
 
-## assertive.base (0.0-1)
+## assertive.base (0.0-3)
+Maintainer: Richard Cotton <richierocks@gmail.com>  
+Bug reports: https://bitbucket.org/richierocks/assertive.base/issues
+
+__OK__
+
+## assertive.code (0.0-1)
+Maintainer: Richard Cotton <richierocks@gmail.com>  
+Bug reports: https://bitbucket.org/richierocks/assertive.code/issues
+
+__OK__
+
+## assertive.data (0.0-1)
+Maintainer: Richard Cotton <richierocks@gmail.com>  
+Bug reports: https://bitbucket.org/richierocks/assertive.data/issues
+
+__OK__
+
+## assertive.data.uk (0.0-1)
+Maintainer: Richard Cotton <richierocks@gmail.com>  
+Bug reports: https://bitbucket.org/richierocks/assertive.data.uk/issues
+
+__OK__
+
+## assertive.data.us (0.0-1)
+Maintainer: Richard Cotton <richierocks@gmail.com>  
+Bug reports: https://bitbucket.org/richierocks/assertive.data.us/issues
+
+__OK__
+
+## assertive.datetimes (0.0-1)
+Maintainer: Richard Cotton <richierocks@gmail.com>  
+Bug reports: 
+        https://bitbucket.org/richierocks/assertive.datetimes/issues
+
+__OK__
+
+## assertive.files (0.0-1)
+Maintainer: Richard Cotton <richierocks@gmail.com>  
+Bug reports: https://bitbucket.org/richierocks/assertive.files/issues
+
+__OK__
+
+## assertive.matrices (0.0-1)
+Maintainer: Richard Cotton <richierocks@gmail.com>  
+Bug reports: https://bitbucket.org/richierocks/assertive.matrices/issues
+
+__OK__
+
+## assertive.models (0.0-1)
+Maintainer: Richard Cotton <richierocks@gmail.com>  
+Bug reports: https://bitbucket.org/richierocks/assertive.models/issues
+
+__OK__
+
+## assertive.numbers (0.0-1)
+Maintainer: Richard Cotton <richierocks@gmail.com>  
+Bug reports: https://bitbucket.org/richierocks/assertive.numbers/issues
+
+__OK__
+
+## assertive.properties (0.0-1)
+Maintainer: Richard Cotton <richierocks@gmail.com>  
+Bug reports: 
+        https://bitbucket.org/richierocks/assertive.properties/issues
+
+__OK__
+
+## assertive (0.3-1)
 Maintainer: Richard Cotton <richierocks@gmail.com>
 
 __OK__
 
-## assertive (0.3-0)
-Maintainer: Richard Cotton <richierocks@gmail.com>
+## assertive.reflection (0.0-1)
+Maintainer: Richard Cotton <richierocks@gmail.com>  
+Bug reports: 
+        https://bitbucket.org/richierocks/assertive.reflection/issues
+
+__OK__
+
+## assertive.sets (0.0-1)
+Maintainer: Richard Cotton <richierocks@gmail.com>  
+Bug reports: https://bitbucket.org/richierocks/assertive.sets/issues
+
+__OK__
+
+## assertive.strings (0.0-1)
+Maintainer: Richard Cotton <richierocks@gmail.com>  
+Bug reports: https://bitbucket.org/richierocks/assertive.strings/issues
+
+__OK__
+
+## assertive.types (0.0-1)
+Maintainer: Richard Cotton <richierocks@gmail.com>  
+Bug reports: https://bitbucket.org/richierocks/assertive.types/issues
 
 __OK__
 
@@ -411,8 +484,9 @@ Maintainer: Paul Boutros <Paul.Boutros@oicr.on.ca>
 
 __OK__
 
-## benford.analysis (0.1.1)
-Maintainer: Carlos Cinelli <carloscinelli@hotmail.com>
+## benford.analysis (0.1.2.1)
+Maintainer: Carlos Cinelli <carloscinelli@hotmail.com>  
+Bug reports: http://github.com/carloscinelli/benford.analysis/issues
 
 __OK__
 
@@ -561,7 +635,7 @@ Maintainer: Francis Hui <fhui28@gmail.com>
 ```
 checking whether package ‘boral’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpKAtbVW/check_cran14a8c2e8e2543/boral.Rcheck/00install.out’ for details.
+See ‘/private/tmp/Rtmp0BfrND/check_cran90e89b33070/boral.Rcheck/00install.out’ for details.
 ```
 ```
 DONE
@@ -606,7 +680,7 @@ Maintainer: Stéphane Laurent <laurent_step@yahoo.fr>
 
 __OK__
 
-## caret (6.0-52)
+## caret (6.0-57)
 Maintainer: Max Kuhn <Max.Kuhn@pfizer.com>  
 Bug reports: https://github.com/topepo/caret/issues
 
@@ -663,7 +737,7 @@ Maintainer: Baptiste Auguie <baptiste.auguie@gmail.com>
 ```
 checking whether package ‘cda’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpKAtbVW/check_cran14a8c2e8e2543/cda.Rcheck/00install.out’ for details.
+See ‘/private/tmp/Rtmp0BfrND/check_cran90e89b33070/cda.Rcheck/00install.out’ for details.
 ```
 ```
 DONE
@@ -687,7 +761,7 @@ Maintainer: Augustin Luna <lunaa@cbio.mskcc.org>
 
 __OK__
 
-## changepoint (2.0.1)
+## changepoint (2.1.1)
 Maintainer: Rebecca Killick <r.killick@lancs.ac.uk>
 
 __OK__
@@ -722,7 +796,7 @@ Maintainer: Jeffrey Dick <j3ffdick@gmail.com>
 ```
 checking whether package ‘CHNOSZ’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpKAtbVW/check_cran14a8c2e8e2543/CHNOSZ.Rcheck/00install.out’ for details.
+See ‘/private/tmp/Rtmp0BfrND/check_cran90e89b33070/CHNOSZ.Rcheck/00install.out’ for details.
 ```
 ```
 DONE
@@ -753,6 +827,11 @@ DONE
 Status: 1 NOTE
 ```
 
+## chunked (0.1.1)
+Maintainer: Edwin de Jonge <edwindjonge@gmail.com>
+
+__OK__
+
 ## cjoint (2.0.0)
 Maintainer: Anton Strezhnev <astrezhnev@fas.harvard.edu>
 
@@ -763,14 +842,29 @@ Maintainer: Joe Song <joemsong@cs.nmsu.edu>
 
 __OK__
 
-## cleangeo (0.1-0)
+## cleangeo (0.1-1)
 Maintainer: Emmanuel Blondel <emmanuel.blondel1@gmail.com>  
 Bug reports: https://github.com/eblondel/cleangeo/issues
 
-__OK__
+```
+checking whether package ‘cleangeo’ can be installed ... WARNING
+Found the following significant warnings:
+  Warning: replacing previous import by ‘maptools::nowrapSpatialLines’ when loading ‘cleangeo’
+See ‘/private/tmp/Rtmp0BfrND/check_cran90e89b33070/cleangeo.Rcheck/00install.out’ for details.
+```
+```
+DONE
+Status: 1 WARNING
+```
 
 ## climwin (0.1.2)
 Maintainer: Liam D. Bailey <liam.bailey@anu.edu.au>
+
+__OK__
+
+## clipr (0.2.0)
+Maintainer: Matthew Lincoln <matthew.d.lincoln@gmail.com>  
+Bug reports: https://github.com/mdlincoln/clipr/issues
 
 __OK__
 
@@ -824,7 +918,7 @@ Bug reports: https://github.com/cancercentrum/commentr/issues
 
 __OK__
 
-## CompareCausalNetworks (0.1.1)
+## CompareCausalNetworks (0.1.4)
 Maintainer: Christina Heinze <heinze@stat.math.ethz.ch>  
 Bug reports: 
         https://github.com/christinaheinze/CompareCausalNetworks/issues
@@ -905,6 +999,12 @@ DONE
 Status: 1 NOTE
 ```
 
+## cowsay (0.4.0)
+Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>  
+Bug reports: http://www.github.com/sckott/cowsay/issues
+
+__OK__
+
 ## crayon (1.3.1)
 Maintainer: Gabor Csardi <csardi.gabor@gmail.com>  
 Bug reports: https://github.com/gaborcsardi/crayon/issues
@@ -922,72 +1022,95 @@ Bug reports: https://github.com/Crunch-io/rcrunch/issues
 
 __OK__
 
-## ctsem (1.1.1)
+## ctsem (1.1.3)
 Maintainer: Charles Driver <driver@mpib-berlin.mpg.de>
 
+```
+checking package dependencies ... NOTE
+Packages suggested but not available for checking: ‘PSM’ ‘cts’ ‘yuima’
+```
+```
+checking examples ... ERROR
+Running examples in ‘ctsem-Ex.R’ failed
+The error most likely occurred in:
+
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+> ### Name: ctPSMfit
+> ### Title: ctPSMfit
+> ### Aliases: ctPSMfit
+> 
+> ### ** Examples
+> 
+> generatingModel <- ctModel(n.latent = 1, n.manifest = 1, Tpoints = 10,
++ LAMBDA = diag(1), DRIFT = matrix(-.3, nrow = 1),
++ MANIFESTVAR = diag(1),
++ CINT = matrix(3, 1, 1),
++ DIFFUSION = t(chol(diag(5, 1))))
+> 
+> dat <- ctGenerate(generatingModel, n.subjects=10, burnin=300)
+T0VAR contained character labels - setting matrix to 0
+T0MEANS contained character labels - setting matrix to 0
+> 
+> ### ctsem model and fit
+> ctsemModel <- ctModel(n.latent=1, n.manifest = 1, Tpoints = 10,
++   LAMBDA = diag(1))
+> ctsemFit <- ctFit(dat, ctsemModel, stationary = c('T0VAR'))
+Running ctsemCarefulFit with 5 parameters
+
+Begin fit attempt 1 of at maximum 31 tries
+
+ Lowest minimum so far:  480.732991383641
+
+Solution found
+
+> 
+> ### fit with PSM
+> psmFit <- ctPSMfit(dat, omxStartValues =
++     omxGetParameters(ctsemFit$mxobj), ctsemModel)
+Error: PSM package needed for this function to work. Please install it.
+Execution halted
+```
 ```
 checking re-building of vignette outputs ... NOTE
 Error in re-building vignettes:
   ...
-cint_Happiness :  0.758903725799236 
 
--2LL = 2904.87591158535
-Error in texi2dvi(file = file, pdf = TRUE, clean = clean, quiet = quiet,  : 
-  Running 'texi2dvi' on 'ctsem.tex' failed.
-LaTeX errors:
-! LaTeX Error: Missing \begin{document}.
+Running ctsemCarefulFit with 19 parameters
 
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-! Undefined control sequence.
-l.18 <f3><f3><f3>o߾<9d><99><99><c9><e5>rG<ba><c4>b<b1><c8>^^X<c3>P<88>u<b9>\<ae>
-                                 P(<e4><f3><f9>B<a1>033<b3><bd><bd><9d><cf><e7>^^G<f8><c8>1<b7><bd><9e><b4><c7>9G<d2>@<e9><92><e3>8<d9>l<96>~<e2><a2>^<af>...
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-! Missing $ inserted.
-<inserted text> 
-                $
-l.18 ...P(<e4><f3><f9>B<a1>033<b3><bd><bd><9d><cf><e7>^^G<f8><c8>1<b7><bd><9e><b4><c7>9G<d2>@<e9><92><e3>8<d9>l<96>~<e2><a2>^
-                                                  <af>ߺu<8b>u<b2>-<b8>D<^^[^^D<c1><de><de>^^^Z<82> ...
-! Undefined control sequence.
-l.18 ...<97><97>߼yc^^X<86>^^P<a2><d1>^^H^^Y<9b>ZY<f9><9c>
-Calls: buildVignettes -> texi2pdf -> texi2dvi
+Begin fit attempt 1 of at maximum 31 tries
+
+ Lowest minimum so far:  4209.04926820345
+
+ Not all eigenvalues of hessian are greater than 0: 1782357.69406967, 150021.089193189, 2360.09589461949, 1561.55114586855, 666.496881946949, 345.579555349195, 144.648394444648, 112.254629345345, 97.0536483873373, 82.5971250506835, 45.2837617006183, 33.6396462952748, 31.0939182716465, 9.76528728323438, 8.45931027413159, 4.29555354155156, 2.34610821897371, 0.0000831466641337546, -0.00000000000000277100391330014
+
+Begin fit attempt 2 of at maximum 31 tries
+
+ Not all eigenvalues of hessian are greater than 0: 1782357.69406967, 150021.089193189, 2360.09589461949, 1561.55114586855, 666.496881946949, 345.579555349195, 144.648394444648, 112.254629345345, 97.0536483873373, 82.5971250506835, 45.2837617006183, 33.6396462952748, 31.0939182716465, 9.76528728323438, 8.45931027413159, 4.29555354155156, 2.34610821897371, 0.0000831466641337546, -0.00000000000000277100391330014
+
+Begin fit attempt 3 of at maximum 31 tries
+
+Solution found
+
+Warning in ctCI(discretefit, confidenceintervals = "DRIFT") :
+  NPSOL optimizer not available - recommend installing OpenMx using command:  source('http://openmx.psyc.virginia.edu/getOpenMx.R') 
+Warning in ctCI(traitfit, confidenceintervals = "DRIFT") :
+  NPSOL optimizer not available - recommend installing OpenMx using command:  source('http://openmx.psyc.virginia.edu/getOpenMx.R') 
+Quitting from lines 811-889 (ctsem.rnw) 
+Error: processing vignette 'ctsem.rnw' failed with diagnostics:
+PSM package needed for this function to work. Please install it.
 Execution halted
 
 ```
 ```
 DONE
-Status: 1 NOTE
+Status: 1 ERROR, 2 NOTEs
 ```
 
 ## curl (0.9.3)
 Maintainer: Jeroen Ooms <jeroen.ooms@stat.ucla.edu>  
 Bug reports: https://github.com/jeroenooms/curl/issues
 
-```
-checking examples ... ERROR
-Running examples in ‘curl-Ex.R’ failed
-The error most likely occurred in:
-
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
-> ### Name: curl_fetch_memory
-> ### Title: Fetch the contents of a URL
-> ### Aliases: curl_fetch_disk curl_fetch_memory curl_fetch_stream
-> 
-> ### ** Examples
-> 
-> # Load in memory
-> res <- curl_fetch_memory("http://httpbin.org/cookies/set?foo=123&bar=ftw")
-Error in curl_fetch_memory("http://httpbin.org/cookies/set?foo=123&bar=ftw") : 
-  Timeout was reached
-Calls: curl_fetch_memory -> .Call
-Execution halted
-```
-```
-DONE
-Status: 1 ERROR
-```
+__OK__
 
 ## cymruservices (0.1.1)
 Maintainer: Bob Rudis <bob@rudis.net>
@@ -1071,7 +1194,7 @@ Bug reports: https://github.com/vdorie/dbarts/issues
 ```
 checking whether package ‘dbarts’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpKAtbVW/check_cran14a8c2e8e2543/dbarts.Rcheck/00install.out’ for details.
+See ‘/private/tmp/Rtmp0BfrND/check_cran90e89b33070/dbarts.Rcheck/00install.out’ for details.
 ```
 ```
 DONE
@@ -1094,7 +1217,7 @@ DONE
 Status: 1 NOTE
 ```
 
-## dbscan (0.9-4)
+## dbscan (0.9-5)
 Maintainer: Michael Hahsler <mhahsler@lyle.smu.edu>
 
 __OK__
@@ -1105,7 +1228,7 @@ Maintainer: Brandon Whitcher <bwhitcher@gmail.com>
 ```
 checking whether package ‘dcemriS4’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpKAtbVW/check_cran14a8c2e8e2543/dcemriS4.Rcheck/00install.out’ for details.
+See ‘/private/tmp/Rtmp0BfrND/check_cran90e89b33070/dcemriS4.Rcheck/00install.out’ for details.
 ```
 ```
 DONE
@@ -1115,28 +1238,7 @@ Status: 1 ERROR
 ## dcmr (1.0)
 Maintainer: Diane Losardo <dlosardo@amplify.com>
 
-```
-checking tests ... ERROR
-Running the tests in ‘tests/test-all.R’ failed.
-Last 13 lines of output:
-  
-  > library(testthat)
-  > test_check("dcmr")
-  Loading required package: dcmr
-  1. Failure (at test_scoreDCM.R#18): Test ScoreDCM outputs for Qmatrix with no interaction 
-  rmse_class not less than tolerance. Difference: -0.4166667
-  
-  testthat results ================================================================
-  OK: 115 SKIPPED: 0 FAILED: 1
-  1. Failure (at test_scoreDCM.R#18): Test ScoreDCM outputs for Qmatrix with no interaction 
-  
-  Error: testthat unit tests failed
-  Execution halted
-```
-```
-DONE
-Status: 1 ERROR
-```
+__OK__
 
 ## decisionSupport (1.101.1)
 Maintainer: Lutz Göhring <lutz.goehring@gmx.de>
@@ -1237,11 +1339,27 @@ Maintainer: Nacho Caballero <nachocab@gmail.com>
 
 __OK__
 
-## diagonals (0.3.0)
+## diagonals (0.4.0)
 Maintainer: Bastiaan Quast <bquast@gmail.com>  
 Bug reports: https://github.com/bquast/diagonals/issues
 
 __OK__
+
+## DiagrammeR (0.8.1)
+Maintainer: Richard Iannone <riannone@me.com>
+
+```
+checking installed package size ... NOTE
+  installed size is  9.2Mb
+  sub-directories of 1Mb or more:
+    examples      2.4Mb
+    htmlwidgets   4.6Mb
+    img           2.0Mb
+```
+```
+DONE
+Status: 1 NOTE
+```
 
 ## DiceKriging (1.5.5)
 Maintainer: Olivier Roustant <roustant@emse.fr>
@@ -1347,7 +1465,7 @@ Maintainer: Edwin de Jonge <edwindjonge@gmail.com>
 
 __OK__
 
-## docopulae (0.3.0)
+## docopulae (0.3.1)
 Maintainer: Andreas Rappold <arappold@gmx.at>  
 Bug reports: https://github.com/arappold/docopulae/issues
 
@@ -1426,6 +1544,11 @@ __OK__
 
 ## DSsim (1.0.4)
 Maintainer: Laura Marshall <lhm@st-and.ac.uk>
+
+__OK__
+
+## dtwSat (0.1.0)
+Maintainer: Victor Maus <vwmaus1@gmail.com>
 
 __OK__
 
@@ -1522,14 +1645,14 @@ Found the following significant warnings:
   Warning: replacing previous import by ‘network::as.edgelist.network’ when loading ‘EpiModel’
   Warning: replacing previous import by ‘network::as.edgelist.matrix’ when loading ‘EpiModel’
   Warning: replacing previous import by ‘network::as.edgelist’ when loading ‘EpiModel’
-See ‘/private/tmp/RtmpKAtbVW/check_cran14a8c2e8e2543/EpiModel.Rcheck/00install.out’ for details.
+See ‘/private/tmp/Rtmp0BfrND/check_cran90e89b33070/EpiModel.Rcheck/00install.out’ for details.
 ```
 ```
 DONE
 Status: 1 WARNING
 ```
 
-## episensr (0.6.0)
+## episensr (0.7.1)
 Maintainer: Denis Haine <denis.haine@gmail.com>  
 Bug reports: https://github.com/dhaine/episensr/issues
 
@@ -1579,17 +1702,10 @@ Maintainer: Jaak Simm <jaak.simm@gmail.com>
 
 __OK__
 
-## fail (1.2)
+## fail (1.3)
 Maintainer: Michel Lang <michellang@gmail.com>
 
-```
-checking DESCRIPTION meta-information ... NOTE
-Malformed Description field: should contain one or more complete sentences.
-```
-```
-DONE
-Status: 1 NOTE
-```
+__OK__
 
 ## falsy (1.0.1)
 Maintainer: Gabor Csardi <csardi.gabor@gmail.com>  
@@ -1646,7 +1762,7 @@ Maintainer: Christopher Jackson <chris.jackson@mrc-bsu.cam.ac.uk>
 
 __OK__
 
-## flowr (0.9.7.10)
+## flowr (0.9.8.2)
 Maintainer: Sahil Seth <me@sahilseth.com>  
 Bug reports: https://github.com/sahilseth/flowr/issues
 
@@ -1686,7 +1802,7 @@ Bug reports: https://github.com/robjhyndman/forecast/issues
 ```
 checking whether package ‘forecast’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpKAtbVW/check_cran14a8c2e8e2543/forecast.Rcheck/00install.out’ for details.
+See ‘/private/tmp/Rtmp0BfrND/check_cran90e89b33070/forecast.Rcheck/00install.out’ for details.
 ```
 ```
 DONE
@@ -1718,7 +1834,7 @@ Bug reports: https://github.com/PredictiveEcology/fpCompare/issues
 
 __OK__
 
-## frailtySurv (1.2.1)
+## frailtySurv (1.2.2)
 Maintainer: John V. Monaco <vincent@vmonaco.com>  
 Bug reports: https://github.com/vmonaco/frailtySurv/issues
 
@@ -1729,7 +1845,20 @@ Maintainer: Emilio Torres-Manzanera <torres@uniovi.es>
 
 __OK__
 
-## fulltext (0.1.0)
+## FSA (0.8.1)
+Maintainer: Derek Ogle <derek@derekogle.com>  
+Bug reports: https://github.com/droglenc/FSA/issues
+
+```
+checking Rd cross-references ... NOTE
+Packages unavailable to check Rd xrefs: ‘alr3’, ‘epitools’, ‘asbio’, ‘PMCMR’
+```
+```
+DONE
+Status: 1 NOTE
+```
+
+## fulltext (0.1.4)
 Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>  
 Bug reports: https://github.com/ropensci/fulltext/issues
 
@@ -1795,7 +1924,7 @@ DONE
 Status: 2 NOTEs
 ```
 
-## gemtc (0.7)
+## gemtc (0.7-1)
 Maintainer: Gert van Valkenhoef <g.h.m.van.valkenhoef@rug.nl>
 
 ```
@@ -1858,6 +1987,33 @@ __OK__
 Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>  
 Bug reports: http://www.github.com/ropensci/geojsonio/issues
 
+```
+checking tests ... ERROR
+Running the tests in ‘tests/test-all.R’ failed.
+Last 13 lines of output:
+  aa_in$type not equal to "FeatureCollection"
+  target is NULL, current is character
+  
+  2. Failure (at test-file_to_geojson.R#75): file_to_geojson works w/ shp zip file input, web method, output file 
+  aa_in$crs inherits from NULL not list
+  
+  testthat results ================================================================
+  OK: 171 SKIPPED: 16 FAILED: 2
+  1. Failure (at test-file_to_geojson.R#74): file_to_geojson works w/ shp zip file input, web method, output file 
+  2. Failure (at test-file_to_geojson.R#75): file_to_geojson works w/ shp zip file input, web method, output file 
+  
+  Error: testthat unit tests failed
+  Execution halted
+```
+```
+DONE
+Status: 1 ERROR
+```
+
+## geoknife (1.0.0)
+Maintainer: Jordan Read <jread@usgs.gov>  
+Bug reports: https://github.com/USGS-R/geoknife/issues
+
 __OK__
 
 ## geometry (0.3-6)
@@ -1889,6 +2045,52 @@ Maintainer: Andrie de Vries <apdevries@gmail.com>
 Bug reports: https://github.com/andrie/ggdendro/issues
 
 __OK__
+
+## ggfortify (0.0.4)
+Maintainer: Masaaki Horikoshi <sinhrks@gmail.com>
+
+```
+checking package dependencies ... NOTE
+Packages suggested but not available for checking: ‘dlm’ ‘MSwM’ ‘lfda’
+```
+```
+checking examples ... ERROR
+Running examples in ‘ggfortify-Ex.R’ failed
+The error most likely occurred in:
+
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+> ### Name: fortify.MSM.lm
+> ### Title: Convert 'MSwM::MSM.lm' to 'data.frame'
+> ### Aliases: fortify.MSM.lm
+> 
+> ### ** Examples
+> 
+> library(MSwM)
+Error in library(MSwM) : there is no package called ‘MSwM’
+Execution halted
+```
+```
+checking tests ... ERROR
+Running the tests in ‘tests/test-all.R’ failed.
+Last 13 lines of output:
+  10: tryCatchOne(expr, names, parentenv, handlers[[1L]])
+  11: value[[3L]](cond)
+  
+  Loading required package: urca
+  Loading required package: lmtest
+  testthat results ================================================================
+  OK: 406 SKIPPED: 3 FAILED: 3
+  1. Error: infer, fortify and autoplot works for dlm::dlmSmooth 
+  2. Error: fortify.lfda works for iris 
+  3. Error: autoplot.lfda works for iris 
+  
+  Error: testthat unit tests failed
+  Execution halted
+```
+```
+DONE
+Status: 2 ERRORs, 1 NOTE
+```
 
 ## ggplot2 (1.0.1)
 Maintainer: Hadley Wickham <h.wickham@gmail.com>  
@@ -1922,7 +2124,7 @@ Maintainer: Winston Chang <winston@rstudio.com>
 
 __OK__
 
-## gistr (0.3.0)
+## gistr (0.3.4)
 Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>  
 Bug reports: http://www.github.com/ropensci/gistr/issues
 
@@ -1952,7 +2154,7 @@ Bug reports: https://github.com/AEBilgrau/GMCM/issues
 ```
 checking whether package ‘GMCM’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpKAtbVW/check_cran14a8c2e8e2543/GMCM.Rcheck/00install.out’ for details.
+See ‘/private/tmp/Rtmp0BfrND/check_cran90e89b33070/GMCM.Rcheck/00install.out’ for details.
 ```
 ```
 DONE
@@ -1964,6 +2166,20 @@ Maintainer: Max Gordon <max@gforge.se>
 Bug reports: https://github.com/gforge/Gmisc/issues
 
 __OK__
+
+## gmum.r (0.2.1)
+Maintainer: Stanislaw Jastrzebski <staszek.jastrzebski@gmail.com>  
+Bug reports: https://github.com/gmum/gmum.r/issues
+
+```
+checking whether package ‘gmum.r’ can be installed ... ERROR
+Installation failed.
+See ‘/private/tmp/Rtmp0BfrND/check_cran90e89b33070/gmum.r.Rcheck/00install.out’ for details.
+```
+```
+DONE
+Status: 1 ERROR
+```
 
 ## googlesheets (0.1.0)
 Maintainer: Jennifer Bryan <jenny@stat.ubc.ca>  
@@ -1988,7 +2204,7 @@ Maintainer: "terrance savitsky" <tds151@gmail.com>
 ```
 checking whether package ‘growcurves’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpKAtbVW/check_cran14a8c2e8e2543/growcurves.Rcheck/00install.out’ for details.
+See ‘/private/tmp/Rtmp0BfrND/check_cran90e89b33070/growcurves.Rcheck/00install.out’ for details.
 ```
 ```
 DONE
@@ -2001,7 +2217,7 @@ Maintainer: Terrance Savitsky <tds151@gmail.com>
 ```
 checking whether package ‘growfunctions’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpKAtbVW/check_cran14a8c2e8e2543/growfunctions.Rcheck/00install.out’ for details.
+See ‘/private/tmp/Rtmp0BfrND/check_cran90e89b33070/growfunctions.Rcheck/00install.out’ for details.
 ```
 ```
 DONE
@@ -2027,9 +2243,6 @@ Found the following significant warnings:
 Deprecated functions may be defunct as soon as of the next release of
 R.
 See ?Deprecated.
-Examples with CPU or elapsed time > 5s
-            user system elapsed
-gsheet2tbl 1.889  3.644   5.557
 ```
 ```
 DONE
@@ -2048,8 +2261,9 @@ DONE
 Status: 1 NOTE
 ```
 
-## gvc (0.2.0)
-Maintainer: Bastiaan Quast <bquast@gmail.com>
+## gvc (0.5.0)
+Maintainer: Bastiaan Quast <bquast@gmail.com>  
+Bug reports: https://github.com/bquast/gvc/issues
 
 __OK__
 
@@ -2082,14 +2296,14 @@ DONE
 Status: 1 NOTE
 ```
 
-## h5 (0.9.3)
+## h5 (0.9.4)
 Maintainer: Mario Annau <mario.annau@gmail.com>  
 Bug reports: https://github.com/mannau/h5/issues
 
 ```
 checking whether package ‘h5’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpKAtbVW/check_cran14a8c2e8e2543/h5.Rcheck/00install.out’ for details.
+See ‘/private/tmp/Rtmp0BfrND/check_cran90e89b33070/h5.Rcheck/00install.out’ for details.
 ```
 ```
 DONE
@@ -2142,7 +2356,7 @@ Bug reports: https://github.com/hadley/haven/issues
 
 __OK__
 
-## hisse (1.2)
+## hisse (1.3)
 Maintainer: Jeremy Beaulieu <jbeaulieu@nimbios.org>
 
 __OK__
@@ -2153,7 +2367,7 @@ Maintainer: Gert van Valkenhoef <g.h.m.van.valkenhoef@rug.nl>
 ```
 checking whether package ‘hitandrun’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpKAtbVW/check_cran14a8c2e8e2543/hitandrun.Rcheck/00install.out’ for details.
+See ‘/private/tmp/Rtmp0BfrND/check_cran90e89b33070/hitandrun.Rcheck/00install.out’ for details.
 ```
 ```
 DONE
@@ -2220,6 +2434,22 @@ __OK__
 Maintainer: Michel Ballings <Michel.Ballings@GMail.com>
 
 __OK__
+
+## HydeNet (0.10.0)
+Maintainer: Benjamin Nutter <benjamin.nutter@gmail.com>  
+Bug reports: https://github.com/nutterb/HydeNet/issues
+
+```
+checking package dependencies ... ERROR
+Package required but not available: ‘graph’
+
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
+```
+```
+DONE
+Status: 1 ERROR
+```
 
 ## hyperSpec (0.98-20150304)
 Maintainer: Claudia Beleites <chemometrie@beleites.de>
@@ -2340,7 +2570,7 @@ Maintainer: Khanna Aditya <khanna7@uchicago.edu>
 
 __OK__
 
-## infuser (0.2)
+## infuser (0.2.1)
 Maintainer: Bart Smeets <bartsmeets86@gmail.com>  
 Bug reports: https://github.com/bart6114/infuser/issues
 
@@ -2398,7 +2628,7 @@ Maintainer: Bob Rudis <bob@rudis.net>
 ```
 checking whether package ‘iptools’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpKAtbVW/check_cran14a8c2e8e2543/iptools.Rcheck/00install.out’ for details.
+See ‘/private/tmp/Rtmp0BfrND/check_cran90e89b33070/iptools.Rcheck/00install.out’ for details.
 ```
 ```
 DONE
@@ -2438,7 +2668,7 @@ Maintainer: Herman De Beukelaer <Herman.DeBeukelaer@UGent.be>
 
 __OK__
 
-## jiebaR (0.5)
+## jiebaR (0.6)
 Maintainer: Qin Wenfeng <mail@qinwenfeng.com>  
 Bug reports: https://github.com/qinwf/jiebaR/issues
 
@@ -2481,7 +2711,7 @@ Bug reports: https://github.com/helske/KFAS/issues
 ```
 checking whether package ‘KFAS’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpKAtbVW/check_cran14a8c2e8e2543/KFAS.Rcheck/00install.out’ for details.
+See ‘/private/tmp/Rtmp0BfrND/check_cran90e89b33070/KFAS.Rcheck/00install.out’ for details.
 ```
 ```
 DONE
@@ -2591,7 +2821,7 @@ Maintainer: Georg M. Goerg <im@gmge.org>
 
 __OK__
 
-## lamW (0.1-1)
+## lamW (0.1-2)
 Maintainer: Avraham Adler <Avraham.Adler@gmail.com>  
 Bug reports: https://bitbucket.org/aadler/lamw/issues
 
@@ -2646,7 +2876,16 @@ __OK__
 Maintainer: Bruno Vilela <brunovilelasilva@hotmail.com>  
 Bug reports: https://github.com/macroecology/letsR/issues
 
-__OK__
+```
+checking whether package ‘letsR’ can be installed ... WARNING
+Found the following significant warnings:
+  Warning: replacing previous import by ‘sp::nowrapSpatialLines’ when loading ‘letsR’
+See ‘/private/tmp/Rtmp0BfrND/check_cran90e89b33070/letsR.Rcheck/00install.out’ for details.
+```
+```
+DONE
+Status: 1 WARNING
+```
 
 ## lfactors (0.5.3)
 Maintainer: Paul Bailey <pbailey@air.org>
@@ -2795,7 +3034,7 @@ DONE
 Status: 2 ERRORs
 ```
 
-## lifecontingencies (1.1.9)
+## lifecontingencies (1.1.10)
 Maintainer: Giorgio Alfredo Spedicato <spedicato_giorgio@yahoo.it>  
 Bug reports: http://github.com/spedygiorgio/lifecontingencies/issues
 
@@ -2871,7 +3110,7 @@ Maintainer: Graeme Blair <graeme.blair@columbia.edu>
 ```
 checking whether package ‘list’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpKAtbVW/check_cran14a8c2e8e2543/list.Rcheck/00install.out’ for details.
+See ‘/private/tmp/Rtmp0BfrND/check_cran90e89b33070/list.Rcheck/00install.out’ for details.
 ```
 ```
 DONE
@@ -2889,7 +3128,7 @@ Bug reports: https://github.com/eqipehub/LLSR/issues
 
 __OK__
 
-## lme4 (1.1-9)
+## lme4 (1.1-10)
 Maintainer: Ben Bolker <bbolker+lme4@gmail.com>  
 Bug reports: https://github.com/lme4/lme4/issues
 
@@ -2949,6 +3188,11 @@ DONE
 Status: 1 NOTE
 ```
 
+## logisticPCA (0.1)
+Maintainer: Andrew J. Landgraf <andland@gmail.com>
+
+__OK__
+
 ## longurl (0.1.1)
 Maintainer: Bob Rudis <bob@rudis.net>
 
@@ -2997,6 +3241,11 @@ DONE
 Status: 2 NOTEs
 ```
 
+## luzlogr (0.1.1)
+Maintainer: Ben Bond-Lamberty <bondlamberty@pnnl.gov>
+
+__OK__
+
 ## mads (0.1.3)
 Maintainer: Laura Marshall <lhm@st-and.ac.uk>
 
@@ -3040,7 +3289,7 @@ Maintainer: Utkarsh J. Dang <udang@mcmaster.ca>
 ```
 checking whether package ‘markophylo’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpKAtbVW/check_cran14a8c2e8e2543/markophylo.Rcheck/00install.out’ for details.
+See ‘/private/tmp/Rtmp0BfrND/check_cran90e89b33070/markophylo.Rcheck/00install.out’ for details.
 ```
 ```
 DONE
@@ -3054,7 +3303,7 @@ Bug reports: http://github.com/spedygiorgio/markovchain/issues
 ```
 checking whether package ‘markovchain’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpKAtbVW/check_cran14a8c2e8e2543/markovchain.Rcheck/00install.out’ for details.
+See ‘/private/tmp/Rtmp0BfrND/check_cran90e89b33070/markovchain.Rcheck/00install.out’ for details.
 ```
 ```
 DONE
@@ -3067,6 +3316,20 @@ Bug reports: https://github.com/shabbychef/MarkowitzR/issues
 
 __OK__
 
+## matchingMarkets (0.1-7)
+Maintainer: Thilo Klein <thilo@klein.uk>  
+Bug reports: https://github.com/thiloklein/matchingMarkets/issues
+
+```
+checking whether package ‘matchingMarkets’ can be installed ... ERROR
+Installation failed.
+See ‘/private/tmp/Rtmp0BfrND/check_cran90e89b33070/matchingMarkets.Rcheck/00install.out’ for details.
+```
+```
+DONE
+Status: 1 ERROR
+```
+
 ## matchingR (1.1.1)
 Maintainer: Jan Tilly <jtilly@econ.upenn.edu>  
 Bug reports: https://github.com/jtilly/matchingR/issues
@@ -3074,7 +3337,7 @@ Bug reports: https://github.com/jtilly/matchingR/issues
 ```
 checking whether package ‘matchingR’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpKAtbVW/check_cran14a8c2e8e2543/matchingR.Rcheck/00install.out’ for details.
+See ‘/private/tmp/Rtmp0BfrND/check_cran90e89b33070/matchingR.Rcheck/00install.out’ for details.
 ```
 ```
 DONE
@@ -3103,7 +3366,7 @@ Maintainer: Manuel Reif <manuel.reif@univie.ac.at>
 ```
 checking whether package ‘mcIRT’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpKAtbVW/check_cran14a8c2e8e2543/mcIRT.Rcheck/00install.out’ for details.
+See ‘/private/tmp/Rtmp0BfrND/check_cran90e89b33070/mcIRT.Rcheck/00install.out’ for details.
 ```
 ```
 DONE
@@ -3155,7 +3418,7 @@ Maintainer: Klaus K. Holst <klaus@holst.it>
 ```
 checking whether package ‘mets’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpKAtbVW/check_cran14a8c2e8e2543/mets.Rcheck/00install.out’ for details.
+See ‘/private/tmp/Rtmp0BfrND/check_cran90e89b33070/mets.Rcheck/00install.out’ for details.
 ```
 ```
 DONE
@@ -3185,14 +3448,14 @@ Maintainer: Surojit Biswas <surojitbiswas@g.harvard.edu>
 
 __OK__
 
-## mirtCAT (0.5)
+## mirtCAT (0.6)
 Maintainer: Phil Chalmers <rphilip.chalmers@gmail.com>  
 Bug reports: https://github.com/philchalmers/mirtCAT/issues?state=open
 
 ```
 checking whether package ‘mirtCAT’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpKAtbVW/check_cran14a8c2e8e2543/mirtCAT.Rcheck/00install.out’ for details.
+See ‘/private/tmp/Rtmp0BfrND/check_cran90e89b33070/mirtCAT.Rcheck/00install.out’ for details.
 ```
 ```
 DONE
@@ -3214,7 +3477,28 @@ __OK__
 Maintainer: Bernd Bischl <bernd_bischl@gmx.net>  
 Bug reports: https://github.com/berndbischl/mlr/issues
 
-__OK__
+```
+checking tests ... ERROR
+Running the tests in ‘tests/run-base.R’ failed.
+Last 13 lines of output:
+  19: pre_process_options(method, column_types)
+  
+  testthat results ================================================================
+  OK: 1098 SKIPPED: 0 FAILED: 1
+  1. Error: basic PreprocWrapperCaret works 
+  
+  Error: testthat unit tests failed
+  In addition: Warning messages:
+  1: In lognet(x, is.sparse, ix, jx, y, weights, offset, alpha, nobs,  :
+    one multinomial or binomial class has fewer than 8  observations; dangerous ground
+  2: Non Lab interpolation is deprecated 
+  3: Non Lab interpolation is deprecated 
+  Execution halted
+```
+```
+DONE
+Status: 1 ERROR
+```
 
 ## mlsjunkgen (0.1.1)
 Maintainer: Steve Myles <steve@mylesandmyles.info>  
@@ -3228,7 +3512,7 @@ Maintainer: Jon Clayden <code@clayden.org>
 ```
 checking whether package ‘mmand’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpKAtbVW/check_cran14a8c2e8e2543/mmand.Rcheck/00install.out’ for details.
+See ‘/private/tmp/Rtmp0BfrND/check_cran90e89b33070/mmand.Rcheck/00install.out’ for details.
 ```
 ```
 DONE
@@ -3260,7 +3544,7 @@ Maintainer: Stefan Schlager <stefan.schlager@uniklinik-freiburg.de>
 ```
 checking whether package ‘Morpho’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpKAtbVW/check_cran14a8c2e8e2543/Morpho.Rcheck/00install.out’ for details.
+See ‘/private/tmp/Rtmp0BfrND/check_cran90e89b33070/Morpho.Rcheck/00install.out’ for details.
 ```
 ```
 DONE
@@ -3273,17 +3557,27 @@ Maintainer: Philippe Ruiz <philippe.ruiz@univ-lyon1.fr>
 ```
 checking whether package ‘morse’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpKAtbVW/check_cran14a8c2e8e2543/morse.Rcheck/00install.out’ for details.
+See ‘/private/tmp/Rtmp0BfrND/check_cran90e89b33070/morse.Rcheck/00install.out’ for details.
 ```
 ```
 DONE
 Status: 1 ERROR
 ```
 
-## mosaic (0.11)
+## mosaic (0.12)
 Maintainer: Randall Pruim <rpruim@calvin.edu>
 
-__OK__
+```
+checking installed package size ... NOTE
+  installed size is  5.2Mb
+  sub-directories of 1Mb or more:
+    R     1.8Mb
+    doc   2.8Mb
+```
+```
+DONE
+Status: 1 NOTE
+```
 
 ## move (1.5.514)
 Maintainer: Bart Kranstauber <bart.kranstauber@uni-konstanz.de>
@@ -3291,7 +3585,7 @@ Maintainer: Bart Kranstauber <bart.kranstauber@uni-konstanz.de>
 ```
 checking whether package ‘move’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpKAtbVW/check_cran14a8c2e8e2543/move.Rcheck/00install.out’ for details.
+See ‘/private/tmp/Rtmp0BfrND/check_cran90e89b33070/move.Rcheck/00install.out’ for details.
 ```
 ```
 DONE
@@ -3355,7 +3649,7 @@ Maintainer: Christopher Jackson <chris.jackson@mrc-bsu.cam.ac.uk>
 ```
 checking whether package ‘msm’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpKAtbVW/check_cran14a8c2e8e2543/msm.Rcheck/00install.out’ for details.
+See ‘/private/tmp/Rtmp0BfrND/check_cran90e89b33070/msm.Rcheck/00install.out’ for details.
 ```
 ```
 DONE
@@ -3388,7 +3682,7 @@ Maintainer: Matteo Fasiolo <matteo.fasiolo@gmail.com>
 ```
 checking whether package ‘mvnfast’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpKAtbVW/check_cran14a8c2e8e2543/mvnfast.Rcheck/00install.out’ for details.
+See ‘/private/tmp/Rtmp0BfrND/check_cran90e89b33070/mvnfast.Rcheck/00install.out’ for details.
 ```
 ```
 DONE
@@ -3408,7 +3702,7 @@ Bug reports: https://github.com/jrwishart/mwaved/issues
 ```
 checking whether package ‘mwaved’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpKAtbVW/check_cran14a8c2e8e2543/mwaved.Rcheck/00install.out’ for details.
+See ‘/private/tmp/Rtmp0BfrND/check_cran90e89b33070/mwaved.Rcheck/00install.out’ for details.
 ```
 ```
 DONE
@@ -3463,7 +3757,7 @@ Bug reports: https://github.com/jefferis/nat/issues
 
 __OK__
 
-## nat.templatebrains (0.6)
+## nat.templatebrains (0.6.1)
 Maintainer: James Manton <ajd.manton@googlemail.com>
 
 ```
@@ -3495,12 +3789,17 @@ Maintainer: Cole Beck <cole.beck@vanderbilt.edu>
 ```
 checking whether package ‘nbpMatching’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpKAtbVW/check_cran14a8c2e8e2543/nbpMatching.Rcheck/00install.out’ for details.
+See ‘/private/tmp/Rtmp0BfrND/check_cran90e89b33070/nbpMatching.Rcheck/00install.out’ for details.
 ```
 ```
 DONE
 Status: 1 ERROR
 ```
+
+## NCA (1.1)
+Maintainer: Govert Buijs <buijs@rsm.nl>
+
+__OK__
 
 ## ncappc (0.2)
 Maintainer: Chayan Acharya <chayan.acharya@farmbio.uu.se>
@@ -3550,7 +3849,7 @@ checking whether package ‘netgen’ can be installed ... WARNING
 Found the following significant warnings:
   Warning: replacing previous import by ‘igraph::normalize’ when loading ‘netgen’
   Warning: replacing previous import by ‘stringr::%>%’ when loading ‘netgen’
-See ‘/private/tmp/RtmpKAtbVW/check_cran14a8c2e8e2543/netgen.Rcheck/00install.out’ for details.
+See ‘/private/tmp/Rtmp0BfrND/check_cran90e89b33070/netgen.Rcheck/00install.out’ for details.
 ```
 ```
 DONE
@@ -3562,31 +3861,10 @@ Maintainer: Carter T. Butts <buttsc@uci.edu>
 
 __OK__
 
-## networkDynamic (0.8.0)
+## networkDynamic (0.8.1)
 Maintainer: Skye Bender-deMoll <skyebend@uw.edu>
 
-```
-checking tests ... ERROR
-Running the tests in ‘tests/utils_tests.R’ failed.
-Last 13 lines of output:
-  +   test2<-network.initialize(3)
-  +   test2[1,2]<-1
-  +   test2[2,3]<-1
-  +   test2[3,1]<-1
-  +   delete.edges(test2,eid=2)
-  +   expect_equal(get.dyads.active(test2,at=1),rbind(1:2,c(3,1)),info='deleted edge case')
-  +   
-  + })
-  Error: Test failed: 'get.dyads.active works'
-  Not expected: get.dyads.active(test2, onset = 0, terminus = 4, active.default = FALSE) not equal to matrix(numeric(), ncol = 2, nrow = 0)
-  current is not list-like
-  test active default arg.
-  Execution halted
-```
-```
-DONE
-Status: 1 ERROR
-```
+__OK__
 
 ## neuroim (0.0.4)
 Maintainer: Bradley Buchsbaum <brad.buchsbaum@gmail.com>
@@ -3636,7 +3914,7 @@ Maintainer: Roger Day <day01@pitt.edu>
 
 __OK__
 
-## nodiv (1.1.0)
+## nodiv (1.1.1)
 Maintainer: Michael Krabbe Borregaard <mkborregaard@snm.ku.dk>
 
 __OK__
@@ -3696,6 +3974,12 @@ Bug reports: https://github.com/romainfrancois/operators/issues
 
 __OK__
 
+## optigrab (0.7.3)
+Maintainer: Christopher Brown <chris.brown@decisionpatterns.com>  
+Bug reports: https://github.com/decisionpatterns/optigrab/issues
+
+__OK__
+
 ## optiRum (0.35)
 Maintainer: Stephanie Locke <stephanie.locke@optimumcredit.co.uk>  
 Bug reports: https://github.com/stephlocke/optiRum/issues
@@ -3708,21 +3992,17 @@ Maintainer: Mark M. Fredrickson <mark.m.fredrickson@gmail.com>
 ```
 checking whether package ‘optmatch’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpKAtbVW/check_cran14a8c2e8e2543/optmatch.Rcheck/00install.out’ for details.
+See ‘/private/tmp/Rtmp0BfrND/check_cran90e89b33070/optmatch.Rcheck/00install.out’ for details.
 ```
 ```
 DONE
 Status: 1 ERROR
 ```
 
-## optparse (1.3.0)
-Maintainer: Trevor L Davis <trevor.l.davis@stanford.edu>  
+## optparse (1.3.2)
+Maintainer: Trevor L Davis <trevor.l.davis@gmail.com>  
 Bug reports: https://github.com/trevorld/optparse/issues
 
-```
-checking DESCRIPTION meta-information ... NOTE
-Malformed Title field: should not end in a period.
-```
 ```
 checking re-building of vignette outputs ... NOTE
 Error in re-building vignettes:
@@ -3735,7 +4015,7 @@ Execution halted
 ```
 ```
 DONE
-Status: 2 NOTEs
+Status: 1 NOTE
 ```
 
 ## ordinal (2015.6-28)
@@ -3911,13 +4191,13 @@ Malformed Title field: should not end in a period.
 checking tests ... ERROR
 Running the tests in ‘tests/run-all.R’ failed.
 Last 13 lines of output:
-             "loadBalancing"))), .Names = c("no.candidates", "no.tasks", "race.instances", 
-         "candidates", "parameters", "config")))
+         "testIterationElites", "loadBalancing"))), .Names = c("no.candidates", "no.tasks", 
+     "race.instances", "candidates", "parameters", "config")))
   15: execute.experiments(experiments, length(experiments), data$config)
   16: .irace$hook.run(experiments[[k]], config = configuration)
   
   Warning in generateDesign(1000, ps) :
-    generateDesign could only produce 996 points instead of 1000!
+    generateDesign could only produce 997 points instead of 1000!
   testthat results ================================================================
   OK: 768 SKIPPED: 0 FAILED: 1
   1. Error: convertParamSetToIrace 
@@ -3963,7 +4243,7 @@ DONE
 Status: 1 ERROR
 ```
 
-## pathological (0.0-6)
+## pathological (0.0-7)
 Maintainer: Richard Cotton <richierocks@gmail.com>  
 Bug reports: https://github.com/richierocks/pathological/issues
 
@@ -4012,7 +4292,7 @@ Package suggested but not available for checking: ‘seqLogo’
 ```
 checking whether package ‘phangorn’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpKAtbVW/check_cran14a8c2e8e2543/phangorn.Rcheck/00install.out’ for details.
+See ‘/private/tmp/Rtmp0BfrND/check_cran90e89b33070/phangorn.Rcheck/00install.out’ for details.
 ```
 ```
 DONE
@@ -4034,7 +4314,7 @@ checking whether package ‘phylobase’ can be installed ... WARNING
 Found the following significant warnings:
   Warning: namespace ‘RCurl’ is not available and has been replaced
   Warning: namespace ‘Matrix’ is not available and has been replaced
-See ‘/private/tmp/RtmpKAtbVW/check_cran14a8c2e8e2543/phylobase.Rcheck/00install.out’ for details.
+See ‘/private/tmp/Rtmp0BfrND/check_cran90e89b33070/phylobase.Rcheck/00install.out’ for details.
 ```
 ```
 DONE
@@ -4085,7 +4365,7 @@ Bug reports: https://github.com/renkun-ken/pipeR/issues
 
 __OK__
 
-## pitchRx (1.7)
+## pitchRx (1.8)
 Maintainer: Carson Sievert <sievert@iastate.edu>  
 Bug reports: http://github.com/cpsievert/pitchRx/issues
 
@@ -4160,7 +4440,7 @@ Maintainer: Baptiste Auguie <baptiste.auguie@gmail.com>
 ```
 checking whether package ‘planar’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpKAtbVW/check_cran14a8c2e8e2543/planar.Rcheck/00install.out’ for details.
+See ‘/private/tmp/Rtmp0BfrND/check_cran90e89b33070/planar.Rcheck/00install.out’ for details.
 ```
 ```
 DONE
@@ -4261,48 +4541,7 @@ __OK__
 Maintainer: Joonas Miettinen <joonas.miettinen@cancer.fi>  
 Bug reports: https://github.com/WetRobot/popEpi/issues
 
-```
-checking package dependencies ... NOTE
-Package suggested but not available for checking: ‘relsurv’
-```
-```
-checking examples ... ERROR
-Running examples in ‘popEpi-Ex.R’ failed
-The error most likely occurred in:
-
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
-> ### Name: as.data.frame.ratetable
-> ### Title: Coerce a 'ratetable' object to 'data.frame'
-> ### Aliases: as.data.frame.ratetable
-> 
-> ### ** Examples
-> 
-> library(relsurv)
-Error in library(relsurv) : there is no package called ‘relsurv’
-Execution halted
-```
-```
-checking tests ... ERROR
-Running the tests in ‘tests/testthat.R’ failed.
-Last 13 lines of output:
-  5: stop(txt, domain = NA)
-  
-  testthat results ================================================================
-  OK: 31 SKIPPED: 15 FAILED: 1
-  1. Error: relative survivals about the same as relsurv's 
-  
-  Error: testthat unit tests failed
-  In addition: Warning messages:
-  1: In sir_table(coh.data = coh.data, coh.obs = coh.obs, coh.pyrs = coh.pyrs,  :
-    mstate variable name does not match names in ref.data.
-  2: In sir_table(coh.data = coh.data, coh.obs = coh.obs, coh.pyrs = coh.pyrs,  :
-    Consider including mstate variable also in adjust. See help(sir) for details.
-  Execution halted
-```
-```
-DONE
-Status: 2 ERRORs, 1 NOTE
-```
+__OK__
 
 ## popgraph (1.4)
 Maintainer: Rodney J. Dyer <rjdyer@vcu.edu>
@@ -4505,7 +4744,7 @@ Bug reports: https://github.com/abarbour/psd/issues
 ```
 checking whether package ‘psd’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpKAtbVW/check_cran14a8c2e8e2543/psd.Rcheck/00install.out’ for details.
+See ‘/private/tmp/Rtmp0BfrND/check_cran90e89b33070/psd.Rcheck/00install.out’ for details.
 ```
 ```
 DONE
@@ -4556,13 +4795,13 @@ Bug reports: https://github.com/nicolewhite/pystr/issues
 
 __OK__
 
-## qdap (2.2.2)
+## qdap (2.2.4)
 Maintainer: Tyler Rinker <tyler.rinker@gmail.com>  
 Bug reports: http://github.com/trinker/qdap/issues
 
 __OK__
 
-## qdapRegex (0.5.0)
+## qdapRegex (0.5.1)
 Maintainer: Tyler Rinker <tyler.rinker@gmail.com>  
 Bug reports: http://github.com/trinker/qdapRegex/issues
 
@@ -4585,7 +4824,7 @@ Maintainer: Karl W Broman <kbroman@biostat.wisc.edu>
 ```
 checking whether package ‘qtl’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpKAtbVW/check_cran14a8c2e8e2543/qtl.Rcheck/00install.out’ for details.
+See ‘/private/tmp/Rtmp0BfrND/check_cran90e89b33070/qtl.Rcheck/00install.out’ for details.
 ```
 ```
 DONE
@@ -4598,7 +4837,7 @@ Maintainer: Julien Chiquet <julien.chiquet@genopole.cnrs.fr>
 ```
 checking whether package ‘quadrupen’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpKAtbVW/check_cran14a8c2e8e2543/quadrupen.Rcheck/00install.out’ for details.
+See ‘/private/tmp/Rtmp0BfrND/check_cran90e89b33070/quadrupen.Rcheck/00install.out’ for details.
 ```
 ```
 DONE
@@ -4750,7 +4989,7 @@ Bug reports: http://github.com/jeroenooms/RAppArmor/issues
 ```
 checking whether package ‘RAppArmor’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpKAtbVW/check_cran14a8c2e8e2543/RAppArmor.Rcheck/00install.out’ for details.
+See ‘/private/tmp/Rtmp0BfrND/check_cran90e89b33070/RAppArmor.Rcheck/00install.out’ for details.
 ```
 ```
 DONE
@@ -4774,7 +5013,16 @@ Status: 1 NOTE
 Maintainer: Sara Varela <svarela@paleobiogeography.org>  
 Bug reports: https://github.com/ropensci/rAvis/issues
 
-__OK__
+```
+checking whether package ‘rAvis’ can be installed ... WARNING
+Found the following significant warnings:
+  Warning: replacing previous import by ‘sp::nowrapSpatialLines’ when loading ‘rAvis’
+See ‘/private/tmp/Rtmp0BfrND/check_cran90e89b33070/rAvis.Rcheck/00install.out’ for details.
+```
+```
+DONE
+Status: 1 WARNING
+```
 
 ## rbhl (0.2.0)
 Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>  
@@ -4792,7 +5040,28 @@ __OK__
 Maintainer: John Malc <cincenko@outlook.com>  
 Bug reports: https://github.com/dmpe/rbitly/issues
 
-__OK__
+```
+checking tests ... ERROR
+Running the tests in ‘tests/testthat.R’ failed.
+Last 13 lines of output:
+  
+      View
+  
+  1. Failure (at test-UserMetrics.R#18): Returns the aggregate number of clicks on all of the authenticated user's Bitlinks. 
+  umc not equal to 6
+  7 - 6 == 1
+  
+  testthat results ================================================================
+  OK: 29 SKIPPED: 0 FAILED: 1
+  1. Failure (at test-UserMetrics.R#18): Returns the aggregate number of clicks on all of the authenticated user's Bitlinks. 
+  
+  Error: testthat unit tests failed
+  Execution halted
+```
+```
+DONE
+Status: 1 ERROR
+```
 
 ## Rborist (0.1-0)
 Maintainer: Mark Seligman <mseligman@suiji.org>
@@ -4821,6 +5090,12 @@ install_version: no visible global function definition for
 DONE
 Status: 2 NOTEs
 ```
+
+## rcanvec (0.1.2)
+Maintainer: Dewey Dunnington <dewey@fishandwhistle.net>  
+Bug reports: http://github.com/paleolimbot/rcanvec
+
+__OK__
 
 ## rClinicalCodes (1.0.1)
 Maintainer: David Springate <daspringate@gmail.com>
@@ -4871,7 +5146,7 @@ Bug reports: http://github.com/aydindemircioglu/RcppShark/issues
 ```
 checking whether package ‘RcppShark’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpKAtbVW/check_cran14a8c2e8e2543/RcppShark.Rcheck/00install.out’ for details.
+See ‘/private/tmp/Rtmp0BfrND/check_cran90e89b33070/RcppShark.Rcheck/00install.out’ for details.
 ```
 ```
 DONE
@@ -4890,7 +5165,7 @@ Maintainer: Brett Klamer <rcrypt@brettklamer.com>
 ```
 checking whether package ‘rcrypt’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpKAtbVW/check_cran14a8c2e8e2543/rcrypt.Rcheck/00install.out’ for details.
+See ‘/private/tmp/Rtmp0BfrND/check_cran90e89b33070/rcrypt.Rcheck/00install.out’ for details.
 ```
 ```
 DONE
@@ -4915,7 +5190,7 @@ Maintainer: Jaak Simm <jaak.simm@gmail.com>
 ```
 checking whether package ‘rDEA’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpKAtbVW/check_cran14a8c2e8e2543/rDEA.Rcheck/00install.out’ for details.
+See ‘/private/tmp/Rtmp0BfrND/check_cran90e89b33070/rDEA.Rcheck/00install.out’ for details.
 ```
 ```
 DONE
@@ -5119,6 +5394,12 @@ DONE
 Status: 2 ERRORs, 1 NOTE
 ```
 
+## rerddap (0.3.0)
+Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>  
+Bug reports: http://www.github.com/ropensci/rerddap/issues
+
+__OK__
+
 ## reshape2 (1.4.1)
 Maintainer: Hadley Wickham <h.wickham@gmail.com>  
 Bug reports: https://github.com/hadley/reshape/issues
@@ -5201,7 +5482,7 @@ Maintainer: John Kloke <kloke@biostat.wisc.edu>
 ```
 checking whether package ‘Rfit’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpKAtbVW/check_cran14a8c2e8e2543/Rfit.Rcheck/00install.out’ for details.
+See ‘/private/tmp/Rtmp0BfrND/check_cran90e89b33070/Rfit.Rcheck/00install.out’ for details.
 ```
 ```
 DONE
@@ -5214,24 +5495,17 @@ Bug reports: https://github.com/artemklevtsov/RGA/issues
 
 __OK__
 
-## rgbif (0.8.8)
+## rgbif (0.8.9)
 Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>  
 Bug reports: https://github.com/ropensci/rgbif/issues
 
 __OK__
 
-## rgeolocate (0.4.1)
+## rgeolocate (0.5.0)
 Maintainer: Oliver Keyes <ironholds@gmail.com>  
 Bug reports: https://github.com/ironholds/rgeolocate/issues
 
-```
-checking package dependencies ... NOTE
-Package suggested but not available for checking: ‘iptools’
-```
-```
-DONE
-Status: 1 NOTE
-```
+__OK__
 
 ## rgeos (0.3-13)
 Maintainer: Roger Bivand <Roger.Bivand@nhh.no>
@@ -5267,7 +5541,28 @@ __OK__
 Maintainer: Matthew Collins <mcollins@acis.ufl.edu>  
 Bug reports: https://github.com/iDigBio/ridigbio/issues
 
-__OK__
+```
+checking tests ... ERROR
+Running the tests in ‘tests/testthat.R’ failed.
+Last 13 lines of output:
+  !is.null(df[1, "data.ac:accessURI"]) && df[1, "data.ac:accessURI"] != "NA" isn't true
+  
+  3. Failure (at test-idig_top_media.R#31): (unknown) ----------------------------
+  top$itemCount > 0 isn't true
+  
+  testthat results ================================================================
+  OK: 106 SKIPPED: 0 FAILED: 3
+  1. Failure (at test-idig_count_media.R#19): (unknown) 
+  2. Failure (at test-idig_search_media.R#36): (unknown) 
+  3. Failure (at test-idig_top_media.R#31): (unknown) 
+  
+  Error: testthat unit tests failed
+  Execution halted
+```
+```
+DONE
+Status: 1 ERROR
+```
 
 ## RIGHT (0.2.0)
 Maintainer: Jonghyun Bae <bnbbkr@gmail.com>  
@@ -5311,7 +5606,7 @@ Maintainer: Jouni Helske <jouni.helske@jyu.fi>
 ```
 checking whether package ‘Rlibeemd’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpKAtbVW/check_cran14a8c2e8e2543/Rlibeemd.Rcheck/00install.out’ for details.
+See ‘/private/tmp/Rtmp0BfrND/check_cran90e89b33070/Rlibeemd.Rcheck/00install.out’ for details.
 ```
 ```
 DONE
@@ -5324,7 +5619,7 @@ Bug reports: https://github.com/renkun-ken/rlist/issues
 
 __OK__
 
-## rmarkdown (0.8)
+## rmarkdown (0.8.1)
 Maintainer: JJ Allaire <jj@rstudio.com>
 
 ```
@@ -5357,8 +5652,8 @@ Bug reports: https://github.com/fmichonneau/rncl/issues
 
 __OK__
 
-## RNeo4j (1.5.1)
-Maintainer: Nicole White <nicole@neotechnology.com>  
+## RNeo4j (1.6.0)
+Maintainer: Nicole White <nicole@neo4j.com>  
 Bug reports: https://github.com/nicolewhite/RNeo4j/issues
 
 __OK__
@@ -5436,7 +5731,7 @@ Bug reports: https://github.com/stanfill/rotationsC/issues
 ```
 checking whether package ‘rotations’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpKAtbVW/check_cran14a8c2e8e2543/rotations.Rcheck/00install.out’ for details.
+See ‘/private/tmp/Rtmp0BfrND/check_cran90e89b33070/rotations.Rcheck/00install.out’ for details.
 ```
 ```
 DONE
@@ -5489,7 +5784,7 @@ Maintainer: Joshua Pritikin <jpritikin@pobox.com>
 ```
 checking whether package ‘rpf’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpKAtbVW/check_cran14a8c2e8e2543/rpf.Rcheck/00install.out’ for details.
+See ‘/private/tmp/Rtmp0BfrND/check_cran90e89b33070/rpf.Rcheck/00install.out’ for details.
 ```
 ```
 DONE
@@ -5505,6 +5800,11 @@ __OK__
 ## rplos (0.5.4)
 Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>  
 Bug reports: https://github.com/ropensci/rplos/issues
+
+__OK__
+
+## rpnf (1.0.4)
+Maintainer: Sascha Herrmann <sascha.herrmann.consulting@gmail.com>
 
 __OK__
 
@@ -5538,14 +5838,14 @@ Maintainer: Graeme Blair <graeme.blair@columbia.edu>
 ```
 checking whether package ‘rr’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpKAtbVW/check_cran14a8c2e8e2543/rr.Rcheck/00install.out’ for details.
+See ‘/private/tmp/Rtmp0BfrND/check_cran90e89b33070/rr.Rcheck/00install.out’ for details.
 ```
 ```
 DONE
 Status: 1 ERROR
 ```
 
-## rsdmx (0.4-7)
+## rsdmx (0.5-0)
 Maintainer: Emmanuel Blondel <emmanuel.blondel1@gmail.com>  
 Bug reports: https://github.com/opensdmx/rsdmx/issues
 
@@ -5655,7 +5955,7 @@ Maintainer: Anton Korobeynikov <anton@korobeynikov.info>
 ```
 checking whether package ‘Rssa’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpKAtbVW/check_cran14a8c2e8e2543/Rssa.Rcheck/00install.out’ for details.
+See ‘/private/tmp/Rtmp0BfrND/check_cran90e89b33070/Rssa.Rcheck/00install.out’ for details.
 ```
 ```
 DONE
@@ -5685,13 +5985,19 @@ Maintainer: Henrik Singmann <singmann+rtdists@gmail.com>
 
 __OK__
 
+## rtimes (0.3.0)
+Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>  
+Bug reports: https://github.com/ropengov/rtimes/issues
+
+__OK__
+
 ## Rtsne (0.10)
 Maintainer: Jesse Krijthe <jkrijthe@gmail.com>
 
 ```
 checking whether package ‘Rtsne’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpKAtbVW/check_cran14a8c2e8e2543/Rtsne.Rcheck/00install.out’ for details.
+See ‘/private/tmp/Rtmp0BfrND/check_cran90e89b33070/Rtsne.Rcheck/00install.out’ for details.
 ```
 ```
 DONE
@@ -5837,6 +6143,11 @@ Maintainer: Paul Staab <develop@paulstaab.de>
 
 __OK__
 
+## sdcMicro (4.6.0)
+Maintainer: Matthias Templ <matthias.templ@gmail.com>
+
+__OK__
+
 ## sdcTable (0.19.6)
 Maintainer: Bernhard Meindl <bernhard.meindl@statistik.gv.at>  
 Bug reports: https://github.com/bernhard-da/sdcTable/issues
@@ -5844,7 +6155,7 @@ Bug reports: https://github.com/bernhard-da/sdcTable/issues
 ```
 checking whether package ‘sdcTable’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpKAtbVW/check_cran14a8c2e8e2543/sdcTable.Rcheck/00install.out’ for details.
+See ‘/private/tmp/Rtmp0BfrND/check_cran90e89b33070/sdcTable.Rcheck/00install.out’ for details.
 ```
 ```
 DONE
@@ -5911,7 +6222,7 @@ Bug reports: https://r-forge.r-project.org/projects/seriation/
 ```
 checking whether package ‘seriation’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpKAtbVW/check_cran14a8c2e8e2543/seriation.Rcheck/00install.out’ for details.
+See ‘/private/tmp/Rtmp0BfrND/check_cran90e89b33070/seriation.Rcheck/00install.out’ for details.
 ```
 ```
 DONE
@@ -5935,7 +6246,7 @@ Bug reports: https://github.com/airoldilab/sgd/issues
 ```
 checking whether package ‘sgd’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpKAtbVW/check_cran14a8c2e8e2543/sgd.Rcheck/00install.out’ for details.
+See ‘/private/tmp/Rtmp0BfrND/check_cran90e89b33070/sgd.Rcheck/00install.out’ for details.
 ```
 ```
 DONE
@@ -5998,6 +6309,22 @@ Maintainer: Oliver Flasch <of@sourcewerk.de>
 
 __OK__
 
+## sisal (0.46)
+Maintainer: Mikko Korpela <mvkorpel@iki.fi>
+
+```
+checking package dependencies ... NOTE
+Packages suggested but not available for checking: ‘graph’ ‘Rgraphviz’
+```
+```
+checking Rd cross-references ... NOTE
+Packages unavailable to check Rd xrefs: ‘Rgraphviz’, ‘graph’
+```
+```
+DONE
+Status: 2 NOTEs
+```
+
 ## SixSigma (0.8-1)
 Maintainer: Emilio L. Cano <emilio.lopez@urjc.es>
 
@@ -6041,6 +6368,11 @@ These lines will be truncated in the PDF manual.
 DONE
 Status: 1 NOTE
 ```
+
+## smerc (0.1.6)
+Maintainer: Joshua French <joshua.french@ucdenver.edu>
+
+__OK__
 
 ## SmithWilsonYieldCurve (1.0.1)
 Maintainer: Phil Joubert <phil.joubert@not-normal-consulting.co.uk>
@@ -6178,7 +6510,7 @@ Maintainer: Andreas Beger <adbeger@gmail.com>
 ```
 checking whether package ‘spduration’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpKAtbVW/check_cran14a8c2e8e2543/spduration.Rcheck/00install.out’ for details.
+See ‘/private/tmp/Rtmp0BfrND/check_cran90e89b33070/spduration.Rcheck/00install.out’ for details.
 ```
 ```
 DONE
@@ -6203,7 +6535,7 @@ DONE
 Status: 1 NOTE
 ```
 
-## spocc (0.3.2)
+## spocc (0.4.0)
 Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>  
 Bug reports: https://github.com/ropensci/spocc/issues
 
@@ -6236,6 +6568,18 @@ Maintainer: Bob Rudis <bob@rudis.net>
 Bug reports: https://github.com/hrbrmstr/statebins/issues
 
 __OK__
+
+## stationaRy (0.4)
+Maintainer: Richard Iannone <riannone@me.com>
+
+```
+checking installed package size ... NOTE
+  installed size is  8.1Mb
+```
+```
+DONE
+Status: 1 NOTE
+```
 
 ## StatRank (0.0.6)
 Maintainer: Hossein Azari Soufiani <azari.hossein@gmail.com>
@@ -6334,7 +6678,20 @@ Maintainer: Kazuki Yoshida <kazukiyoshida@mail.harvard.edu>
 
 __OK__
 
-## taxize (0.6.2)
+## TauStar (1.0.0)
+Maintainer: Luca Weihs <lucaw@uw.edu>
+
+```
+checking whether package ‘TauStar’ can be installed ... ERROR
+Installation failed.
+See ‘/private/tmp/Rtmp0BfrND/check_cran90e89b33070/TauStar.Rcheck/00install.out’ for details.
+```
+```
+DONE
+Status: 1 ERROR
+```
+
+## taxize (0.6.6)
 Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>  
 Bug reports: https://github.com/ropensci/taxize/issues
 
@@ -6378,6 +6735,20 @@ Maintainer: Hadley Wickham <hadley@rstudio.com>
 Bug reports: https://github.com/hadley/tidyr/issues
 
 __OK__
+
+## tigris (0.1)
+Maintainer: Kyle Walker <kyle.walker@tcu.edu>
+
+```
+checking whether package ‘tigris’ can be installed ... WARNING
+Found the following significant warnings:
+  Warning: replacing previous import by ‘sp::nowrapSpatialLines’ when loading ‘tigris’
+See ‘/private/tmp/Rtmp0BfrND/check_cran90e89b33070/tigris.Rcheck/00install.out’ for details.
+```
+```
+DONE
+Status: 1 WARNING
+```
 
 ## tikzDevice (0.8.1)
 Maintainer: Kirill Müller <krlmlr+r@mailbox.org>  
@@ -6517,7 +6888,7 @@ Bug reports: https://github.com/vdorie/treatSens/issues
 ```
 checking whether package ‘treatSens’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpKAtbVW/check_cran14a8c2e8e2543/treatSens.Rcheck/00install.out’ for details.
+See ‘/private/tmp/Rtmp0BfrND/check_cran90e89b33070/treatSens.Rcheck/00install.out’ for details.
 ```
 ```
 DONE
@@ -6533,7 +6904,7 @@ checking whether package ‘treebase’ can be installed ... WARNING
 Found the following significant warnings:
   Warning: replacing previous import by ‘reshape2::melt’ when loading ‘treebase’
   Warning: replacing previous import by ‘reshape2::dcast’ when loading ‘treebase’
-See ‘/private/tmp/RtmpKAtbVW/check_cran14a8c2e8e2543/treebase.Rcheck/00install.out’ for details.
+See ‘/private/tmp/Rtmp0BfrND/check_cran90e89b33070/treebase.Rcheck/00install.out’ for details.
 ```
 ```
 DONE
@@ -6546,7 +6917,7 @@ Maintainer: Christian Zang <christian.zang@wzw.tum.de>
 ```
 checking whether package ‘treeclim’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpKAtbVW/check_cran14a8c2e8e2543/treeclim.Rcheck/00install.out’ for details.
+See ‘/private/tmp/Rtmp0BfrND/check_cran90e89b33070/treeclim.Rcheck/00install.out’ for details.
 ```
 ```
 DONE
@@ -6567,6 +6938,22 @@ __OK__
 Maintainer: Usue Mori <usue.mori@ehu.es>
 
 __OK__
+
+## tsna (0.1.3)
+Maintainer: Skye Bender-deMoll <skyebend@uw.edu>
+
+```
+checking whether package ‘tsna’ can be installed ... WARNING
+Found the following significant warnings:
+  Warning: replacing previous import by ‘ergm::as.edgelist.matrix’ when loading ‘tsna’
+  Warning: replacing previous import by ‘ergm::as.edgelist.network’ when loading ‘tsna’
+  Warning: replacing previous import by ‘ergm::as.edgelist’ when loading ‘tsna’
+See ‘/private/tmp/Rtmp0BfrND/check_cran90e89b33070/tsna.Rcheck/00install.out’ for details.
+```
+```
+DONE
+Status: 1 WARNING
+```
 
 ## TSP (1.1-3)
 Maintainer: Michael Hahsler <mhahsler@lyle.smu.edu>  
@@ -6620,7 +7007,7 @@ Bug reports: https://github.com/sjackman/uniqtag/issues
 
 __OK__
 
-## urltools (1.2.1)
+## urltools (1.3.2)
 Maintainer: Oliver Keyes <ironholds@gmail.com>  
 Bug reports: https://github.com/Ironholds/urltools/issues
 
@@ -6684,12 +7071,23 @@ Maintainer: Paul Boutros <Paul.Boutros@oicr.on.ca>
 
 __OK__
 
+## vines (1.1.4)
+Maintainer: Yasser Gonzalez-Fernandez <ygonzalezfernandez@gmail.com>
+
+__OK__
+
+## VSURF (1.0.1)
+Maintainer: Robin Genuer <Robin.Genuer@isped.u-bordeaux2.fr>  
+Bug reports: https://github.com/robingenuer/VSURF/issues
+
+__OK__
+
 ## VTrack (1.11)
 Maintainer: Ross Dwyer <ross.dwyer@uq.edu.au>
 
 __OK__
 
-## vtreat (0.5.16)
+## vtreat (0.5.18)
 Maintainer: John Mount <jmount@win-vector.com>
 
 __OK__

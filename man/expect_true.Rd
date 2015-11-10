@@ -47,8 +47,9 @@ Other expectations: \code{\link{equivalence}},
   \code{\link{expect_equal}},
   \code{\link{expect_equivalent}},
   \code{\link{expect_identical}};
-  \code{\link{expect-compare}},
-  \code{\link{expect_less_than}},
+  \code{\link{expect-compare}}, \code{\link{expect_gt}},
+  \code{\link{expect_gte}}, \code{\link{expect_less_than}},
+  \code{\link{expect_lt}}, \code{\link{expect_lte}},
   \code{\link{expect_more_than}};
   \code{\link{expect_equal_to_reference}};
   \code{\link{expect_error}}, \code{\link{expect_match}},
@@ -57,6 +58,7 @@ Other expectations: \code{\link{equivalence}},
   \code{\link{expect_warning}},
   \code{\link{matching-expectations}};
   \code{\link{expect_is}}; \code{\link{expect_named}};
-  \code{\link{expect_null}}; \code{\link{takes_less_than}}
+  \code{\link{expect_null}}; \code{\link{expect_silent}};
+  \code{\link{takes_less_than}}
 }
 

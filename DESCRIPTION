@@ -1,5 +1,5 @@
 Package: testthat
-Version: 0.10.0.9000
+Version: 0.11.0.9000
 Title: Unit Testing for R
 Description: A unit testing system designed to be fun, flexible and easy to
     set up.
@@ -49,6 +49,7 @@ Collate:
     'reporter-tap.r'
     'reporter-teamcity.r'
     'reporter-zzz.r'
+    'test-compiled-code.r'
     'test-example.R'
     'test-files.r'
     'test-package.r'
