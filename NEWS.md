@@ -1,11 +1,11 @@
 # testthat 0.11.0.9000
 
-* Added [Catch](https://github.com/philsquared/Catch) for unit testing of C++ code.
-  See `?use_catch()` for more details. (@kevinushey)
-
 * Comparing integers to non-numbers doesn't raise errors anymore, and falls back to
   string comparison if objects have different lengths. Complex numbers are compared
   using the same routine (#309, @krlmlr).
+
+* Added [Catch](https://github.com/philsquared/Catch) for unit testing of C++ code.
+  See `?use_catch()` for more details. (@kevinushey)
 
 # testthat 0.11.0
 
