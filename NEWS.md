@@ -3,6 +3,9 @@
 * Added [Catch](https://github.com/philsquared/Catch) for unit testing of C++ code.
   See `?use_catch()` for more details. (@kevinushey)
 
+* `expect_identical()` and `is_identical_to()` now use `compare()` for more
+  detailed output of differences (@krlmlr, #319).
+
 # testthat 0.11.0
 
 * Handle skipped tests in the TAP reporter (#262).
