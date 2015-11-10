@@ -177,6 +177,10 @@ compare.numeric <- function(x, y, ..., max_diffs = 10) {
   comparison(FALSE, msg)
 }
 
+#' @export
+#' @rdname compare
+compare.complex <- compare.numeric
+
 print_out <- function(x, ...) {
   lines <- utils::capture.output(print(x, ...))
   paste0(lines, collapse = "\n")
