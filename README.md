@@ -4,7 +4,7 @@
 [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/hadley/testthat?branch=master&svg=true)](https://ci.appveyor.com/project/hadley/testthat)
 [![Coverage Status](https://img.shields.io/codecov/c/github/hadley/testthat/master.svg)](https://codecov.io/github/hadley/testthat?branch=master)
 [![CRAN RStudio mirror downloads](http://cranlogs.r-pkg.org/badges/testthat)](http://cran.r-project.org/web/packages/testthat/index.html)
-[![CRAN version](http://www.r-pkg.org/badges/version/testthat)](http://cran.r-project.org/web/packages/testthat/index.html)
+[![CRAN version](http://www.r-pkg.org/badges/version/testthat)](http://cran.r-project.org/package=testthat)
 
 Testing your code is normally painful and boring. `testthat` tries to make testing as fun as possible, so that you get a visceral satisfaction from writing tests. Testing should be fun, not a drag, so you do it all the time. To make that happen, `testthat`:
 
@@ -21,7 +21,7 @@ Testing your code is normally painful and boring. `testthat` tries to make testi
 
 `testthat` draws inspiration from the xUnit family of testing packages, as well from many of the innovative ruby testing libraries, like [rspec](http://rspec.info/), [testy](https://github.com/ahoward/testy), [bacon](https://github.com/chneukirchen/bacon) and [cucumber](https://cucumber.io). I have used what I think works for R, and abandoned what doesn't, creating a testing environment that is philosophically centred in R.
 
-Instructions for using this package can be found in the [Testing](http://r-pkgs.had.co.nz/tests.html) chapter of my forthcoming book [R packages](http://r-pkgs.had.co.nz/).
+Instructions for using this package can be found in the [Testing](http://r-pkgs.had.co.nz/tests.html) chapter of [R packages](http://r-pkgs.had.co.nz/).
 
 ## Integration with R CMD check
 

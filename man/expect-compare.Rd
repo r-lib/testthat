@@ -2,15 +2,27 @@
 % Please edit documentation in R/expectations.r
 \name{expect-compare}
 \alias{expect-compare}
+\alias{expect_gt}
+\alias{expect_gte}
 \alias{expect_less_than}
+\alias{expect_lt}
+\alias{expect_lte}
 \alias{expect_more_than}
 \title{Expectation: is returned value less or greater than specified value?}
 \usage{
 expect_less_than(object, expected, ..., info = NULL, label = NULL,
   expected.label = NULL)
 
+expect_lt(object, expected)
+
+expect_lte(object, expected)
+
 expect_more_than(object, expected, ..., info = NULL, label = NULL,
   expected.label = NULL)
+
+expect_gt(object, expected)
+
+expect_gte(object, expected)
 }
 \arguments{
 \item{object}{object to test}
@@ -60,6 +72,7 @@ Other expectations: \code{\link{equivalence}},
   \code{\link{matching-expectations}};
   \code{\link{expect_false}}, \code{\link{expect_true}};
   \code{\link{expect_is}}; \code{\link{expect_named}};
-  \code{\link{expect_null}}; \code{\link{takes_less_than}}
+  \code{\link{expect_null}}; \code{\link{expect_silent}};
+  \code{\link{takes_less_than}}
 }
 
