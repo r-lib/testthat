@@ -3,6 +3,10 @@
 * Added [Catch](https://github.com/philsquared/Catch) for unit testing of C++ code.
   See `?use_catch()` for more details. (@kevinushey)
 
+* Comparing integers to non-numbers doesn't raise errors anymore, and falls back to
+  string comparison if objects have different lengths. Complex numbers are compared
+  using the same routine (#309, @krlmlr).
+
 # testthat 0.11.0
 
 * Handle skipped tests in the TAP reporter (#262).
@@ -51,9 +55,6 @@
 
 * Detailed output from `expect_equal()` doesn't confuse expected and actual
   values anymore (#274, @krlmlr).
-
-* Comparing integers to non-numbers doesn't raise errors anymore (#309,
-  @krlmlr).
 
 # testthat 0.10.0
 
