@@ -5,6 +5,9 @@
 
 * Fixed minor issues with `throws_error(NA)` and `expect_error(..., NA)` (@krlmlr, #317).
 
+* `expect_identical()` and `is_identical_to()` now use `compare()` for more
+  detailed output of differences (@krlmlr, #319).
+
 # testthat 0.11.0
 
 * Handle skipped tests in the TAP reporter (#262).

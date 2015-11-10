@@ -128,7 +128,7 @@ is_identical_to <- function(expected, label = NULL) {
       if (isTRUE(same)) {
         diff <- "Objects equal but not identical"
       } else {
-        diff <- paste0(same, collapse = "\n")
+        diff <- compare(actual, expected)$message
       }
     }
 
