@@ -144,9 +144,14 @@ compare.numeric <- function(x, y, ..., max_diffs = 10) {
   if (isTRUE(equal)) return(comparison())
 
   # If they're not the same type or length, fallback to default method
-  equal <- paste0(equal, collapse = "\n")
-  if (!is.numeric(y)) return(comparison(FALSE, equal))
-  if (length(x) != length(y)) return(comparison(FALSE, equal))
+  if (length(x) != length(y)) {
+    return(compare(as.character(x), as.character(y)))
+  }
+
+  if (!all(c(class(x), class(y)) %in% c("integer", "numeric", "complex"))) {
+    equal <- paste0(equal, collapse = "\n")
+    return(comparison(FALSE, equal))
+  }
 
   if (length(x) == 1) {
     msg <- paste0(format(x, digits = 3), " - ", format(y, digits = 3),
