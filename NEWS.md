@@ -1,5 +1,8 @@
 # testthat 0.11.0.9000
 
+* New `FailReporter` to stop in case of failures or errors after all tests
+  (#308, @krlmlr).
+
 * Added [Catch](https://github.com/philsquared/Catch) for unit testing of C++ code.
   See `?use_catch()` for more details. (@kevinushey)
 
@@ -54,9 +57,6 @@
 
 * Detailed output from `expect_equal()` doesn't confuse expected and actual
   values anymore (#274, @krlmlr).
-
-* New `FailReporter` to stop in case of failures or errors after all tests
-  (#308, @krlmlr).
 
 # testthat 0.10.0
 
