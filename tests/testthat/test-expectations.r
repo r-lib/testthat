@@ -25,6 +25,18 @@ test_that("failure to throw an error is a failure", {
   expect_that(res$passed, is_false())
 })
 
+
+test_that("absence of errors are caught with isnot_error", {
+  res <- isnot_error()(log(1))
+  expect_that(res$passed, is_true())
+})
+
+test_that("an error is a failure", {
+  res <- isnot_error()(stop())
+  expect_that(res$passed, is_false())
+})
+
+
 test_that("warnings are caught by gives_warning", {
   f <- function() {
     warning("a")
@@ -119,6 +131,11 @@ test_that("expect_null checks for NULLs", {
 
 test_that("takes_less_than verifies duration", {
   expect_that(1, takes_less_than(1))
+})
+
+test_that("expect_try verifies absence of errors in code", {
+  expect_try(log(1))
+  expect_error(expect_try(stop()), 'threw an error')
 })
 
 test_that("expect_silent checks for out", {
