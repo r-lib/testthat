@@ -219,6 +219,42 @@ normalise_names <- function(x, ignore.order = FALSE, ignore.case = FALSE) {
   x
 }
 
+#' Expectation: does object executes without error?
+#'
+#' You can either check for the presence of names (leaving \code{expected}
+#' blank), specific names (by suppling a vector of names), or absence of
+#' names (with \code{NULL}).
+#'
+#' @inheritParams expect_that
+#' @family expectations
+#' @export
+#' @examples
+#' expect_try(1)
+#'
+#' \dontrun{
+#' expect_try(stop('fail'))
+#' }
+expect_try <- function (object, info = NULL, label = NULL) {
+  if (is.null(label)) {
+    label <- find_expr("object")
+  }
+  expect_that(eval(substitute(object)), isnot_error(), info, label)
+}
+
+isnot_error <- function ()
+{
+  function(expr) {
+    res <- try(force(expr), TRUE)
+    no_error <- !inherits(res, "try-error")
+    if (no_error) {
+      expectation(TRUE, "threw an error", "no error thrown")
+    } else {
+      expectation(FALSE, "threw an error", "no error thrown")
+    }
+  }
+}
+
+
 #' Expectation: is returned value less or greater than specified value?
 #'
 #' This is useful for ensuring returned value is below a ceiling or above
