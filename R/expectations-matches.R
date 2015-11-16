@@ -136,7 +136,7 @@ throws_error <- function(regexp = NULL, ...) {
     if (inherits(res, "try-error")) {
       errors <- as.character(res)
     } else {
-      errors = character()
+      errors <- character()
     }
 
     if (identical(regexp, NA)) {
