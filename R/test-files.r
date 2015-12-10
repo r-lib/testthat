@@ -155,7 +155,19 @@ test_file <- function(path, reporter = "summary", env = test_env(),
   fname <- basename(path)
   lister$start_file(fname)
 
-  sys.source2(fname, new.env(parent = env))
+  tryCatch({
+    sys.source2(fname, new.env(parent = env))
+  }, error = function(e){
+    context(fname)
+    
+    warning(
+      paste0("File sourcing failed, likely due to either an error in untested code ",
+             "or a malformed file name"))
+    
+    fail("File Sourcing Failed")
+    end_context()
+  })
+
   end_context()
 
   if (start_end_reporter) reporter$end_reporter()
