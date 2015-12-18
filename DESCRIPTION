@@ -57,3 +57,4 @@ Collate:
     'traceback.r'
     'utils.r'
     'watcher.r'
+RoxygenNote: 5.0.1
