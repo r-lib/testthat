@@ -41,9 +41,9 @@
 #'   scale = expectedValue)
 #' }
 #'
-#' # expect_equivalent ignores attributes
+#' # expect_equivalent ignores attributes (which does not include names)
 #' a <- b <- 1:3
-#' names(b) <- letters[1:3]
+#' attr(b, 'foo') <- letters[1:3]
 #' expect_equivalent(a, b)
 #' @name equivalence
 NULL
