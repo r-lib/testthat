@@ -133,9 +133,18 @@ is_null <- function() {
 #' This is useful for performance regression testing.
 #'
 #' @family expectations
-#' @keywords internal
+#' @inheritParams expect_that
 #' @export
 #' @param amount maximum duration in seconds
+expect_takes_less_than <- function(object, amount, info = NULL, label = NULL) {
+  if (is.null(label)) {
+    label <- find_expr("object")
+  }
+  expect_that(object, takes_less_than(amount), info, label)
+}
+
+#' @export
+#' @rdname oldskool
 takes_less_than <- function(amount) {
   function(expr) {
     duration <- system.time(force(expr))["elapsed"]

@@ -118,7 +118,7 @@ test_that("expect_null checks for NULLs", {
 })
 
 test_that("takes_less_than verifies duration", {
-  expect_that(1, takes_less_than(1))
+  expect_takes_less_than(1, 1)
 })
 
 test_that("expect_silent checks for out", {
