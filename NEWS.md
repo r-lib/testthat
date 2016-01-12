@@ -1,5 +1,7 @@
 # testthat 0.11.0.9000
 
+* Fix failure message for `throws_error` in case where no error is raised (@nealrichardson, #342).
+
 * Added [Catch](https://github.com/philsquared/Catch) for unit testing of C++ code.
   See `?use_catch()` for more details. (@kevinushey)
 

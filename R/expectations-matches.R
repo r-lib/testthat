@@ -138,8 +138,8 @@ throws_error <- function(regexp = NULL, ...) {
     if (no_error) {
       return(expectation(
         identical(regexp, NA),
-        "code raised an error",
-        "code didn't raise an error"
+        "code didn't raise an error",
+        "code raised an error"
       ))
     }
 
