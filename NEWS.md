@@ -2,6 +2,8 @@
 
 * Fixed minor issues with `throws_error(NA)` and `expect_error(..., NA)` (@krlmlr, #317).
 
+* Fix failure message for `throws_error` in case where no error is raised (@nealrichardson, #342).
+
 * Added [Catch](https://github.com/philsquared/Catch) for unit testing of C++ code.
   See `?use_catch()` for more details. (@kevinushey)
 
