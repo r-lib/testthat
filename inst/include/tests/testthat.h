@@ -68,12 +68,19 @@ private:
 
 };
 
+// Allow client packages to access the Catch::Session
+// exported by testthat.
 #ifdef CATCH_CONFIG_RUNNER
+
+Catch::Session& catchSession()
+{
+  static Catch::Session instance;
+  return instance;
+}
 
 inline bool run_tests()
 {
-  static Catch::Session session;
-  return session.run() == 0;
+  return catchSession().run() == 0;
 }
 
 #endif

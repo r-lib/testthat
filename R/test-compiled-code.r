@@ -72,6 +72,26 @@ expect_cpp_tests_pass <- function(package) {
 #' with the C entry point \code{run_testthat_tests()}. \code{testthat}
 #' will use that entry point to run your unit tests when detected.
 #'
+#' @section Advanced Usage:
+#'
+#' If you'd like to write your own Catch test runner, you can
+#' instead use the \code{testthat::catchSession()} object in a file
+#' with the form:
+#'
+#' \preformatted{
+#' #define TESTTHAT_TEST_RUNNER
+#' #include <testthat.h>
+#'
+#' void run()
+#' {
+#'     Catch::Session& session = testthat::catchSession();
+#'     // interact with the session object as desired
+#' }
+#' }
+#'
+#' This can be useful if you'd like to run your unit tests
+#' with custom arguments passed to the Catch session.
+#'
 #' @param dir The directory containing an \R package.
 #'
 #' @export
