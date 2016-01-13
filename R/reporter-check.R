@@ -90,7 +90,12 @@ failure_summary <- function(x, label, width = getOption("width")) {
 }
 
 failure_header <- function(x) {
-  type <- if (x$error) "Error" else "Failure"
+  if (x$skipped)
+    type <- "Skip"
+  else if (x$error)
+    type <- "Error"
+  else
+    type <- "Failure"
 
   ref <- x$srcref
   if (is.null(ref)) {
