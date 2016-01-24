@@ -103,3 +103,18 @@ skip_on_appveyor <- function() {
 
   skip("On Appveyor")
 }
+
+#' @export
+#' @rdname skip
+skip_if_no_internet <- function() {
+  if (!requireNamespace("curl", quietly = TRUE) ||
+      compareVersion("0.9.5", as.character(packageVersion("curl")))) {
+    stop("Install curl >= v0.9.5 in order to use skip_if_no_internet()!")
+  }
+
+  if (!is.null(curl::nslookup("r-project.org", error = FALSE))) {
+    return(invisible(TRUE))
+  }
+
+  skip("No internet connection")
+}

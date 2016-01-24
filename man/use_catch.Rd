@@ -66,8 +66,8 @@ void run()
 }
 }
 
-This can be useful if you'd like to run unit tests, with
-custom arguments passed when running Catch.
+This can be useful if you'd like to run your unit tests
+with custom arguments passed to the Catch session.
 }
 \seealso{
 \href{https://github.com/philsquared/Catch}{Catch}, the

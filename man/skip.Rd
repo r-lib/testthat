@@ -2,6 +2,7 @@
 % Please edit documentation in R/utils.r
 \name{skip}
 \alias{skip}
+\alias{skip_if_no_internet}
 \alias{skip_if_not_installed}
 \alias{skip_on_appveyor}
 \alias{skip_on_cran}
@@ -20,6 +21,8 @@ skip_on_os(os)
 skip_on_travis()
 
 skip_on_appveyor()
+
+skip_if_no_internet()
 }
 \arguments{
 \item{message}{A message describing why the test was skipped.}
