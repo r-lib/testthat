@@ -80,10 +80,13 @@ SummaryReporter <- setRefClass("SummaryReporter", contains = "Reporter",
         if (!has_tests)
           return()
 
-        reports <- vapply(seq_along(skips), function(i) {
-          failure_summary(skips[[i]], labels[i])
-        }, character(1))
-        cat(paste(reports, collapse = "\n\n"), "\n", sep = "")
+        if (length(skips) > 0L) {
+          cat(colourise("\nSkip:", "skipped"), "\n\n")
+          reports <- vapply(seq_along(skips), function(i) {
+            skip_summary(skips[[i]], labels[i])
+          }, character(1L))
+          cat(paste(reports, collapse = "\n"), "\n", sep = "")
+        }
 
         cat("\n")
         if (show_praise && runif(1) < 0.1) {
