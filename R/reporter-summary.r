@@ -82,10 +82,7 @@ SummaryReporter <- setRefClass("SummaryReporter", contains = "Reporter",
 
         if (length(skips) > 0L) {
           cat(colourise("\nSkip:", "skipped"), "\n\n")
-          reports <- vapply(seq_along(skips), function(i) {
-            skip_summary(skips[[i]], labels[i])
-          }, character(1L))
-          cat(paste(reports, collapse = "\n"), "\n", sep = "")
+          cat_reports(skips, skip_summary, "\n")
         }
 
         cat("\n")
