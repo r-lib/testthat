@@ -96,7 +96,7 @@ SummaryReporter <- setRefClass("SummaryReporter", contains = "Reporter",
 labels <- c(1:9, letters, LETTERS)
 
 cat_reports <- function(reports, summary_fun, collapse) {
-  reports <- vapply(min(seq_along(reports), length(labels)), function(i) {
+  reports <- vapply(seq_len(min(length(reports), length(labels))), function(i) {
     summary_fun(reports[[i]], labels[i])
   }, character(1L))
   cat(paste(reports, collapse = collapse), "\n", sep = "")
