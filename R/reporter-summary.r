@@ -115,6 +115,6 @@ cat_reports <- function(reports, summary_fun, collapse) {
 
   extra_reports <- length(reports) - length(labels)
   if (extra_reports > 0L) {
-    cat("  ... and ", extra_reports, " more\n")
+    cat("  ... and ", extra_reports, " more\n", sep = "")
   }
 }
