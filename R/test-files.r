@@ -128,7 +128,7 @@ source_dir <- function(path, pattern = "\\.[rR]$", env = test_env(),
 #' @param path path to file
 #' @param reporter reporter to use
 #' @param env environment in which to execute the tests
-#' @param start_end_reporter whether to start and end the reporter
+#' @inheritParams with_reporter
 #' @return the results as a "testthat_results" (list)
 #' @export
 test_file <- function(path, reporter = "summary", env = test_env(),

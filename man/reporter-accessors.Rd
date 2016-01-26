@@ -11,12 +11,14 @@ set_reporter(reporter)
 
 get_reporter()
 
-with_reporter(reporter, code)
+with_reporter(reporter, code, start_end_reporter = TRUE)
 }
 \arguments{
 \item{reporter}{test reporter to use}
 
 \item{code}{code block to execute}
+
+\item{start_end_reporter}{whether to start and end the reporter}
 }
 \description{
 Changes global reporter to that specified, runs code and the returns
