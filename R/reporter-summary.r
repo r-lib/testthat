@@ -29,7 +29,7 @@ SummaryReporter <- setRefClass("SummaryReporter", contains = "Reporter",
     "show_praise" = "logical"),
 
   methods = list(
-    initialize = function(max_reports = Inf, ...) {
+    initialize = function(max_reports = getOption("testthat.summary.max_reports", 15L), ...) {
       max_reports <<- max_reports
       show_praise <<- TRUE
       callSuper(...)
