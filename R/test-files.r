@@ -40,10 +40,11 @@ test_files <- function(paths, reporter = "summary",
   if (length(paths) == 0) stop('No matching test file in dir')
 
   current_reporter <- find_reporter(reporter)
-  current_reporter$start_reporter()
-  results <- lapply(paths, test_file, env = env,
-    reporter = current_reporter, start_end_reporter = FALSE)
-  current_reporter$end_reporter()
+  with_reporter(
+    reporter = current_reporter,
+    results <- lapply(paths, test_file, env = env,
+      reporter = current_reporter, start_end_reporter = FALSE)
+  )
 
   results <- unlist(results, recursive = FALSE)
 
@@ -143,22 +144,22 @@ test_file <- function(path, reporter = "summary", env = test_env(),
     reporter <- lister
   }
 
-  old_reporter <- set_reporter(reporter)
   old_dir <- setwd(dirname(path))
   on.exit({
     setwd(old_dir)
-    set_reporter(old_reporter)
   }, add = TRUE)
 
-  if (start_end_reporter) reporter$start_reporter()
+  with_reporter(
+    reporter = reporter,
+    start_end_reporter = start_end_reporter,
+    {
+      fname <- basename(path)
+      lister$start_file(fname)
 
-  fname <- basename(path)
-  lister$start_file(fname)
-
-  sys.source2(fname, new.env(parent = env))
-  end_context()
-
-  if (start_end_reporter) reporter$end_reporter()
+      sys.source2(fname, new.env(parent = env))
+      end_context()
+    }
+  )
 
   invisible(testthat_results(lister$results))
 }
