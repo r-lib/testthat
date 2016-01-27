@@ -19,10 +19,10 @@ and integrates with your existing workflow.
 \section{Options}{
 
 \code{testthat.use_colours}: Should the output be coloured? (Default:
-\code {TRUE}).
+\code{TRUE}).
 
-\code{testthat.summary.max_results}: The maximum number of detailed test
-results printed for the summary reporter (default: 15).
+\code{testthat.summary.max_reports}: The maximum number of detailed test
+reports printed for the summary reporter (default: 15).
 }
 \examples{
 library(testthat)
