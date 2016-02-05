@@ -93,8 +93,7 @@ find_test_srcref <- function() {
 #' }
 fail <- function(message = "Failure has been forced") {
   results <- expectation(FALSE, message, "This always succeeds")
-  get_reporter()$add_result(results)
-  invisible()
+  report_results(results)
 }
 
 
@@ -108,8 +107,7 @@ fail <- function(message = "Failure has been forced") {
 #' }
 succeed <- function(message = "Success has been forced") {
   results <- expectation(TRUE, message, "This always fails")
-  get_reporter()$add_result(results)
-  invisible()
+  report_results(results)
 }
 
 #' Negate an expectation

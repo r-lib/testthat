@@ -32,7 +32,5 @@ expect_silent <- function(expr) {
 
 expect <- function(passed, message) {
   exp <- expectation(passed, message, srcref = find_test_srcref())
-  get_reporter()$add_result(exp)
-
-  invisible(exp)
+  report_results(exp)
 }
