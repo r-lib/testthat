@@ -49,7 +49,6 @@ test_code <- function(description, code, env) {
     # withCallingHandlers), and first frame + 7 calls from start (added by
     # tryCatch etc)
     e$calls <- utils::head(sys.calls()[-seq_len(frame + 7)], -2)
-    #e$frames <- utils::head(sys.frames()[-seq_len(frame + 7)], -2)
     signalCondition(e)
   }
   handle_result <- function(e) {
