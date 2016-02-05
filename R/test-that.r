@@ -28,7 +28,6 @@
 #' }
 test_that <- function(desc, code) {
   test_code(desc, substitute(code), env = parent.frame())
-  invisible()
 }
 
 
