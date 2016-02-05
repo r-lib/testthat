@@ -1,6 +1,6 @@
 context("Return values")
 
-test_that("return value from testtthat", {
+test_that("return value from test_that", {
   with_reporter("", success <- test_that("success", {}))
   expect_true(success)
   with_reporter("", success <- test_that("success", succeed()))
