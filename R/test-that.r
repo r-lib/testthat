@@ -82,6 +82,23 @@ test_code <- function(description, code, env) {
   invisible(ok)
 }
 
+report_results <- function(results) {
+  cond <- structure(list(results = results, message = format(results)),
+                    class = c("test_result", "condition"))
+
+  withRestarts(
+    {
+      signalCondition(cond)
+      if (!results$passed) {
+        stop(format(results), call. = FALSE)
+      }
+    },
+    continue_test = function(e) NULL
+  )
+
+  invisible(results)
+}
+
 #' R package to make testing fun!
 #'
 #' Try the example below. Have a look at the references and learn more

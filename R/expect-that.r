@@ -40,23 +40,6 @@ expect_that <- function(object, condition, info = NULL, label = NULL) {
   report_results(results)
 }
 
-report_results <- function(results) {
-  cond <- structure(list(results = results, message = format(results)),
-                    class = c("test_result", "condition"))
-
-  withRestarts(
-    {
-      signalCondition(cond)
-      if (!results$passed) {
-        stop(format(results), call. = FALSE)
-      }
-    },
-    continue_test = function(e) NULL
-  )
-
-  invisible(results)
-}
-
 # find the srcref of the test call, or NULL
 find_test_srcref <- function() {
   # candidate frame is not in the testthat package,
