@@ -4,6 +4,7 @@ test_test_that <- function(desc, expr, failure_expected = TRUE) {
   old_reporter <- set_reporter(reporter)
   test_that(desc, expr)
   set_reporter(old_reporter)
+
   test_that(desc, {
     if (failure_expected) {
       info <- 'Test succeeded when failure expected'
@@ -65,4 +66,8 @@ test_test_that("errors when looking for warnings propagte", {
 
 test_test_that("NULL doesn't match text", {
   expect_error(expect_match(NULL, 'oeu'), "NULL does not match")
+})
+
+test_test_that("skip is success but events are indicated", {
+  skip("Skipping")
 })
