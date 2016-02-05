@@ -2,18 +2,20 @@
 test_test_that <- function(desc, expr, failure_expected = TRUE) {
   reporter <- SilentReporter$new()
   old_reporter <- set_reporter(reporter)
-  test_that(desc, expr)
+  ok <- test_that(desc, expr)
   set_reporter(old_reporter)
 
   test_that(desc, {
     if (failure_expected) {
       info <- 'Test succeeded when failure expected'
       expect_equal(length(reporter$failures), 1, info = info)
+      expect_false(ok)
     } else {
       info <- sprintf(
           'Test failed unexpectedly: %s',
           as.character(reporter$failures[[desc]]))
       expect_equal(length(reporter$failures), 0, info = info)
+      expect_true(ok)
     }
   })
 }
