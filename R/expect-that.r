@@ -37,7 +37,18 @@ expect_that <- function(object, condition, info = NULL, label = NULL) {
     results$success_msg <- paste0(results$success_msg, "\n", info)
   }
 
-  get_reporter()$add_result(results)
+  report_results(results)
+}
+
+report_results <- function(results) {
+  cond <- structure(list(results = results, message = format(results)),
+                    class = c("test_result", "condition"))
+
+  withRestarts(
+    stop(cond),
+    continue_test = function(e) NULL
+  )
+
   invisible(results)
 }
 
