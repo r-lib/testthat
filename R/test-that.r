@@ -60,10 +60,11 @@ test_code <- function(description, code, env) {
       message = function(c) invokeRestart("muffleMessage")
     ),
     error = function(e) {
-      ok <- FALSE
+      ok <<- FALSE
       report <- expectation_error(e$message, e$calls)
       get_reporter()$add_result(report)
     }, skip = function(e) {
+      ok <<- FALSE
       report <- expectation_skipped(e$message)
       get_reporter()$add_result(report)
     }
