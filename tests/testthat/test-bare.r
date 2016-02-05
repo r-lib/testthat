@@ -13,6 +13,22 @@ expect_less_than(2, 3)
 expect_lt(2, 3)
 expect_lte(2, 2)
 
+test_that("Bare expectations raise error", {
+  stop_called <- FALSE
+  with_mock(
+    stop = function(...) stop_called <<- TRUE,
+    with_reporter("", expect_false(FALSE))
+  )
+  expect_false(stop_called)
+
+  stop_called <- FALSE
+  with_mock(
+    stop = function(...) stop_called <<- TRUE,
+    with_reporter("", expect_true(FALSE))
+  )
+  expect_true(stop_called)
+})
+
 # test_that("Error", {
 #   stop("!")
 # })
