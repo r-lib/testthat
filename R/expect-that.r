@@ -45,7 +45,12 @@ report_results <- function(results) {
                     class = c("test_result", "condition"))
 
   withRestarts(
-    if (results$passed) signalCondition(cond) else stop(cond),
+    {
+      signalCondition(cond)
+      if (!results$passed) {
+        stop(format(results), call. = FALSE)
+      }
+    },
     continue_test = function(e) NULL
   )
 
