@@ -58,7 +58,7 @@ find_reporter <- function(reporter) {
   if (is.null(reporter)) return(NULL)
   if (inherits(reporter, "Reporter")) return(reporter)
   if (reporter == "") {
-    stop("reporter is empty string")
+    return(find_reporter_one(reporter))
   }
 
   reporter_names <- strsplit(reporter, " *[+] *")[[1L]]

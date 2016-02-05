@@ -6,7 +6,7 @@ test_that("can locate reporter from name", {
   expect_that(find_reporter("tap"), equals(TapReporter$new()))
   expect_that(find_reporter("list"), equals(ListReporter$new()))
   expect_that(find_reporter("multi"), equals(MultiReporter$new()))
-  expect_error(find_reporter(""), "empty string")
+  expect_that(find_reporter(""), equals(Reporter$new()))
   expect_equal(
     find_reporter("summary+stop"),
     MultiReporter$new(
