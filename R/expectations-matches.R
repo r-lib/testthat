@@ -10,6 +10,8 @@
 #' @param ... Additional arguments passed on to \code{\link{grepl}}, e.g.
 #'   \code{ignore.case} or \code{fixed}.
 #' @family expectations
+#' @param class expected class of error condition. This can be use to test
+#' that functions produce customized error conditions of the appropriate class.
 #' @examples
 #' expect_match("Testing is fun", "fun")
 #' expect_match("Testing is fun", "f.n")
@@ -120,7 +122,7 @@ prints_text <- function(regexp, ...) {
 
 #' @export
 #' @rdname matching-expectations
-expect_error <- function(object, regexp = NULL, ..., info = NULL,
+expect_error <- function(object, regexp = NULL, class = NULL, ..., info = NULL,
   label = NULL) {
   if (is.null(label)) {
     label <- find_expr("object")
@@ -129,12 +131,10 @@ expect_error <- function(object, regexp = NULL, ..., info = NULL,
 }
 #' @export
 #' @rdname oldskool
-throws_error <- function(regexp = NULL, ...) {
+throws_error <- function(regexp = NULL, class = NULL, ...) {
   function(expr) {
     res <- try(force(expr), TRUE)
-
     no_error <- !inherits(res, "try-error")
-
     if (no_error) {
       return(expectation(
         identical(regexp, NA),
@@ -143,10 +143,22 @@ throws_error <- function(regexp = NULL, ...) {
       ))
     }
 
-    if (!is.null(regexp)) {
+    if (is.null(class)) {
+      fails_error_subclass_check <- FALSE
+      success_message <- "threw an error"
+    } else {
+      condition <- attr(res, "condition")
+      fails_error_subclass_check <- !inherits(condition, class)
+      success_message <- sprintf("threw an error (of type '%s')", class)
+    }
+
+    if (fails_error_subclass_check) {
+      expectation(FALSE, sprintf("(error was not of expected type '%s')",
+                                 class))
+    } else if (!is.null(regexp)) {
       matches(regexp, ...)(res)
     } else {
-      expectation(TRUE, "no error thrown", "threw an error")
+      expectation(TRUE, "no error thrown", success_message)
     }
   }
 }
