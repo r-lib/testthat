@@ -83,21 +83,26 @@ test_code <- function(description, code, env) {
 }
 
 report_results <- function(results) {
-  cond <- structure(list(results = results, message = format(results)),
-                    class = c("test_result", "condition"))
-
   withRestarts(
-    {
-      signalCondition(cond)
-      if (!results$passed) {
-        stop(format(results), call. = FALSE)
-      }
-    },
+    raise_condition_from_result(results),
     continue_test = function(e) NULL
   )
 
   invisible(results)
 }
+
+raise_condition_from_result <- function(results) {
+  if (results$passed) {
+    cond <- structure(list(results = results),
+                      class = c("test_result", "condition"))
+    signalCondition(cond)
+  } else {
+    cond <- structure(list(results = results, message = format(results)),
+                      class = c("test_result", "error", "condition"))
+    stop(cond)
+  }
+}
+
 
 #' R package to make testing fun!
 #'
