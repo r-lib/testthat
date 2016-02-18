@@ -17,7 +17,8 @@ Imports:
     crayon,
     praise
 Suggests:
-    devtools
+    devtools,
+    covr
 License: MIT + file LICENSE
 Collate:
     'auto-test.r'
