@@ -110,15 +110,8 @@ succeed <- function(message = "Success has been forced") {
 #' @param f an existing expectation function
 #' @keywords internal
 #' @export
-#' @examples
-#' x <- 1
-#' expect_that(x, equals(1))
-#' expect_that(x, not(equals(2)))
-#' \dontrun{
-#' expect_that(x, equals(2))
-#' expect_that(x, not(equals(1)))
-#' }
 not <- function(f) {
+  warning("`not()` is deprecated.", call. = FALSE)
   stopifnot(is.function(f))
 
   function(...) {

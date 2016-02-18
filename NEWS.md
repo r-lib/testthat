@@ -1,5 +1,7 @@
 # testthat 0.11.0.9000
 
+* `not()` has been deprecated.
+
 * `MinimalReporter` correct labels errors with E and failures with F (#311).
 
 * The summary reporter shows a summary of skipped tests if all tests were successful (@krlmlr, #343).
