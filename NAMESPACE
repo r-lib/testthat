@@ -3,6 +3,7 @@
 S3method(as.character,expectation)
 S3method(as.data.frame,testthat_results)
 S3method(compare,character)
+S3method(compare,complex)
 S3method(compare,default)
 S3method(compare,numeric)
 S3method(format,expectation)
