@@ -78,6 +78,14 @@ CheckReporter <- setRefClass("CheckReporter", contains = "Reporter",
   )
 )
 
+skip_summary <- function(x, label) {
+  header <- paste0(label, ". ", x$test)
+
+  paste0(
+    colourise(header, "skipped"), " - ", x$failure_msg
+  )
+}
+
 failure_summary <- function(x, label, width = getOption("width")) {
   header <- paste0(label, ". ", failure_header(x))
   linewidth <- ifelse(nchar(header) > width, 0, width - nchar(header))
@@ -90,7 +98,10 @@ failure_summary <- function(x, label, width = getOption("width")) {
 }
 
 failure_header <- function(x) {
-  type <- if (x$error) "Error" else "Failure"
+  if (x$error)
+    type <- "Error"
+  else
+    type <- "Failure"
 
   ref <- x$srcref
   if (is.null(ref)) {

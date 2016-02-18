@@ -1,5 +1,5 @@
 Package: testthat
-Version: 0.10.0.9000
+Version: 0.11.0.9000
 Title: Unit Testing for R
 Description: A unit testing system designed to be fun, flexible and easy to
     set up.
@@ -17,7 +17,8 @@ Imports:
     crayon,
     praise
 Suggests:
-    devtools
+    devtools,
+    covr
 License: MIT + file LICENSE
 Collate:
     'auto-test.r'
@@ -38,6 +39,7 @@ Collate:
     'praise.R'
     'reporter.r'
     'reporter-check.R'
+    'reporter-fail.r'
     'reporter-list.r'
     'reporter-minimal.r'
     'reporter-multi.r'
@@ -48,6 +50,7 @@ Collate:
     'reporter-tap.r'
     'reporter-teamcity.r'
     'reporter-zzz.r'
+    'test-compiled-code.r'
     'test-example.R'
     'test-files.r'
     'test-package.r'
@@ -56,3 +59,4 @@ Collate:
     'traceback.r'
     'utils.r'
     'watcher.r'
+RoxygenNote: 5.0.1

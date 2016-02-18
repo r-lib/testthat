@@ -1,9 +1,35 @@
-# testthat 0.10.0.9000
+# testthat 0.11.0.9000
+
+* Fixed minor issues with `throws_error(NA)` and `expect_error(..., NA)` (@krlmlr, #317).
+
+* `set_reporter()` returns old reporter invisibly (#358, @krlmlr).
+
+* New `FailReporter` to stop in case of failures or errors after all tests
+  (#308, @krlmlr).
+
+* Comparing integers to non-numbers doesn't raise errors anymore, and falls back to
+  string comparison if objects have different lengths. Complex numbers are compared
+  using the same routine (#309, @krlmlr).
+
+* New option `testthat.summary.max_reports` that limits the number of reports printed by the summary reporter, default: 15 (@krlmlr, #354).
+
+* Fix failure message for `throws_error` in case where no error is raised (#342, @nealrichardson).
+
+* Added [Catch](https://github.com/philsquared/Catch) for unit testing of C++ code.
+  See `?use_catch()` for more details. (@kevinushey)
+
+* `expect_identical()` and `is_identical_to()` now use `compare()` for more
+  detailed output of differences (#319, @krlmlr).
+
+# testthat 0.11.0
 
 * Handle skipped tests in the TAP reporter (#262).
 
 * New `expect_silent()` ensures that code produces no output, messages,
   or warnings (#261).
+
+* New `expect_lt()`, `expect_lte()`, `expect_gt()` and `expect_gte()` for
+  comparison with or without equality (#305, @krlmlr).
 
 * `expect_output()`, `expect_message()`, `expect_warning()`, and
   `expect_error()` now accept `NA` as the second argument to indicate that
