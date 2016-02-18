@@ -1,5 +1,7 @@
 # testthat 0.11.0.9000
 
+* `expect_type()` checks the _type_ of the object (#316).
+
 * `not()` has been deprecated.
 
 * `MinimalReporter` correct labels errors with E and failures with F (#311).

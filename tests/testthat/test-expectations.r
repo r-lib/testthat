@@ -146,3 +146,8 @@ test_that("expected_named optionally ignores case", {
 test_that("expected_named optionally ignores order", {
   expect_named(c(a = 1, b = 2), c("b", "a"), ignore.order = TRUE)
 })
+
+
+test_that("expect_type checks typeof", {
+  expect_type(factor("a"), "integer")
+})
