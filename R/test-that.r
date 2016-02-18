@@ -51,30 +51,29 @@ test_code <- function(description, code, env) {
     e$calls <- utils::head(sys.calls()[-seq_len(frame + 7)], -2)
     signalCondition(e)
   }
-  handle_result <- function(exp) {
+  handle_expectation <- function(exp) {
     get_reporter()$add_result(exp)
     if (!isTRUE(exp$passed)) {
       ok <<- FALSE
     }
     invokeRestart(findRestart("continue_test", exp))
   }
+  report_condition <- function(e) {
+    ok <<- FALSE
+    get_reporter()$add_result(as.expectation(e))
+  }
+
   frame <- sys.nframe()
 
   tryCatch(
     withCallingHandlers(
       eval(code, new_test_environment),
       error = capture_calls,
-      expectation = handle_result,
+      expectation = handle_expectation,
       message = function(c) invokeRestart("muffleMessage")
     ),
-    error = function(e) {
-      ok <<- FALSE
-      get_reporter()$add_result(as.expectation(e))
-    },
-    skip = function(e) {
-      ok <<- FALSE
-      get_reporter()$add_result(as.expectation(e))
-    }
+    error = report_condition,
+    skip = report_condition
   )
 
   invisible(ok)
