@@ -84,6 +84,13 @@ test_code <- function(description, code, env) {
 #' testthat is a new testing framework for R that is easy learn and use,
 #' and integrates with your existing workflow.
 #'
+#' @section Options:
+#' \code{testthat.use_colours}: Should the output be coloured? (Default:
+#' \code{TRUE}).
+#'
+#' \code{testthat.summary.max_reports}: The maximum number of detailed test
+#' reports printed for the summary reporter (default: 15).
+#'
 #' @docType package
 #' @name testthat
 #' @references Wickham, H (2011). testthat: Get Started with Testing.
