@@ -107,6 +107,8 @@ inline std::ostream& cerr()
 #define test_that CATCH_SECTION
 #define expect_true CATCH_CHECK
 #define expect_false CATCH_CHECK_FALSE
+#define expect_error CATCH_CHECK_THROWS
+#define expect_error_as CATCH_CHECK_THROWS_AS
 
 #ifdef TESTTHAT_TEST_RUNNER
 
