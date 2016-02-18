@@ -23,7 +23,7 @@ testthat_env$reporter <- StopReporter$new()
 set_reporter <- function(reporter) {
   old <- testthat_env$reporter
   testthat_env$reporter <- reporter
-  old
+  invisible(old)
 }
 
 #' @rdname reporter-accessors

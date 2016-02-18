@@ -17,7 +17,7 @@ with_top_env <- function(env, code) {
 #' Test are run in an environment that inherits from the package's namespace
 #' environment, so that tests can access non-exported functions and variables.
 #' Tests should be placed in \code{tests/testthat}. Use \code{test_check} with
-#' \code{R CMD check} and \code{test_pacakge} interactively at the console.
+#' \code{R CMD check} and \code{test_package} interactively at the console.
 #'
 #' @section R CMD check:
 #' Create \code{tests/testthat.R} that contains:
