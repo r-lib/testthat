@@ -154,7 +154,8 @@ compare.numeric <- function(x, y, ..., max_diffs = 10) {
   }
 
   if (length(x) == 1) {
-    msg <- paste0(format(x, digits = 3), " - ", format(y, digits = 3),
+    msg <- paste0("[Original msg: ", equal, "]\n",
+      format(x, digits = 3), " - ", format(y, digits = 3),
       " == ", format(x - y, digits = 3))
     return(comparison(FALSE, msg))
   }
@@ -174,6 +175,7 @@ compare.numeric <- function(x, y, ..., max_diffs = 10) {
   mu <- mean(abs(x[diff] - y[diff]), na.rm = TRUE)
 
   msg <- paste0(
+    "[Original msg: ", equal, "]\n",
     sum(diff), "/", length(diff), " mismatches ",
     "(average diff: ", format(mu, digits = 3), ").\n",
     "First ", n, ":\n",
