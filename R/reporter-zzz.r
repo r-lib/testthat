@@ -57,11 +57,8 @@ with_reporter <- function(reporter, code) {
 find_reporter <- function(reporter) {
   if (is.null(reporter)) return(NULL)
   if (inherits(reporter, "Reporter")) return(reporter)
-  if (reporter == "") {
-    return(find_reporter_one(reporter))
-  }
 
-  reporter_names <- strsplit(reporter, " *[+] *")[[1L]]
+  reporter_names <- unique(unlist(strsplit(reporter, " *[+] *")))
   if (length(reporter_names) <= 1L) {
     find_reporter_one(reporter_names)
   } else {

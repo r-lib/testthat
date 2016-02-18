@@ -12,6 +12,10 @@ test_that("can locate reporter from name", {
     MultiReporter$new(
       reporters = list(SummaryReporter$new(), StopReporter$new())))
   expect_equal(
+    find_reporter(c("summary", "stop")),
+    MultiReporter$new(
+      reporters = list(SummaryReporter$new(), StopReporter$new())))
+  expect_equal(
     find_reporter("teamcity + summary + list"),
     MultiReporter$new(
       reporters = list(TeamcityReporter$new(), SummaryReporter$new(),
