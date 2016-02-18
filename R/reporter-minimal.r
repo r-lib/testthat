@@ -23,9 +23,9 @@ MinimalReporter <- setRefClass("MinimalReporter", contains = "Reporter",
         cat(colourise(".", "passed"))
       } else {
         if (result$error) {
-          cat(colourise("F", "error"))
-        } else {
           cat(colourise("E", "error"))
+        } else {
+          cat(colourise("F", "error"))
         }
       }
     },

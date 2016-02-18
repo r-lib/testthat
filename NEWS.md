@@ -1,5 +1,7 @@
 # testthat 0.11.0.9000
 
+* `MinimalReporter` correct labels errors with E and failures with F (#311).
+
 * Fixed minor issues with `throws_error(NA)` and `expect_error(..., NA)` (@krlmlr, #317).
 
 * `set_reporter()` returns old reporter invisibly (#358, @krlmlr).
