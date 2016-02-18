@@ -1,5 +1,15 @@
 #include <testthat.h>
 
+#include <exception>
+
+namespace {
+
+void ouch() {
+  throw std::logic_error("logic");
+}
+
+} // anonymous namespace
+
 context("Example Unit Test") {
 
   test_that("4 + 4 == 8") {
@@ -33,4 +43,15 @@ context("Respect 'src/Makevars'") {
     expect_true(compiling_testthat);
   }
 
+}
+
+context("Exception handling") {
+
+  test_that("we can use Catch to test for exceptions") {
+
+    expect_error(ouch());
+    expect_error_as(ouch(), std::exception);
+    expect_error_as(ouch(), std::logic_error);
+
+  }
 }

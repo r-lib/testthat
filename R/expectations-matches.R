@@ -133,20 +133,26 @@ throws_error <- function(regexp = NULL, ...) {
   function(expr) {
     res <- try(force(expr), TRUE)
 
-    no_error <- !inherits(res, "try-error")
-
-    if (no_error) {
-      return(expectation(
-        identical(regexp, NA),
-        "code didn't raise an error",
-        "code raised an error"
-      ))
+    if (inherits(res, "try-error")) {
+      errors <- as.character(res)
+    } else {
+      errors <- character()
     }
 
-    if (!is.null(regexp)) {
-      matches(regexp, ...)(res)
+    if (identical(regexp, NA)) {
+      expectation(
+        length(errors) == 0,
+        paste0("expected no errors:\n", paste("* ", errors, collapse = "\n")),
+        "no errors raised"
+      )
+    } else if (!is.null(regexp) && length(errors) > 0) {
+      matches(regexp, ...)(errors)
     } else {
-      expectation(TRUE, "no error thrown", "threw an error")
+      expectation(
+        length(errors) > 0,
+        "no errors raised",
+        paste0(length(errors), " errors raised")
+      )
     }
   }
 }
