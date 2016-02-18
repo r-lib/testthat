@@ -1,5 +1,11 @@
 # testthat 0.11.0.9000
 
+* `expect_output(f(), NA)` will fail if `f()` produces output; 
+  `expect_output(f(), NULL)` will fail if `f()` doesn't produce output (#323).
+
+* `expect_output()` no longer prints the output by default. You need to do this
+  yourself.
+
 * `expect_type()` checks the _type_ of the object (#316).
 
 * `not()` has been deprecated.

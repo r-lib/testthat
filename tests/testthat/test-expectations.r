@@ -79,10 +79,6 @@ test_that("expect_output captures multiline code", {
   expect_output(cat("1\n2"), "1\n2")
 })
 
-test_that("expect_output prints by default", {
-  expect_output(1, "1")
-})
-
 test_that("expect_equals fails with useful message if objects equal but not identical", {
   f <- function() x
   g <- function() x

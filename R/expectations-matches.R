@@ -94,7 +94,7 @@ matches <- function(regexp, all = TRUE, ...) {
 
 #' @export
 #' @rdname matching-expectations
-expect_output <- function(object, regexp, ..., info = NULL, label = NULL) {
+expect_output <- function(object, regexp = NULL, ..., info = NULL, label = NULL) {
   if (is.null(label)) {
     label <- find_expr("object")
   }
@@ -104,17 +104,23 @@ expect_output <- function(object, regexp, ..., info = NULL, label = NULL) {
 #' @rdname oldskool
 prints_text <- function(regexp, ...) {
   function(expr) {
-    output <- evaluate_promise(expr, print = TRUE)$output
+    output <- evaluate_promise(expr)$output
 
     if (identical(regexp, NA)) {
-      return(expectation(
-        !is.null(output),
+      expectation(
+        identical(output, ""),
         paste0("produced output: ", encodeString(output)),
         "didn't produce output"
-      ))
+      )
+    } else if (is.null(regexp)) {
+      expectation(
+        !identical(output, ""),
+        "didn't produce output",
+        "produced output"
+      )
+    } else {
+      matches(regexp, ...)(output)
     }
-
-    matches(regexp, ...)(output)
   }
 }
 
