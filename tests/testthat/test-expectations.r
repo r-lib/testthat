@@ -14,6 +14,7 @@ test_that("errors are caught with throws_error", {
 test_that("failure to throw an error is a failure", {
   res <- throws_error()(log(1))
   expect_that(res$passed, is_false())
+  expect_output(res, "code didn't raise an error")
 
   res <- throws_error("error")(log(1))
   expect_that(res$passed, is_false())

@@ -4,8 +4,15 @@
   string comparison if objects have different lengths. Complex numbers are compared
   using the same routine (#309, @krlmlr).
 
+* New option `testthat.summary.max_reports` that limits the number of reports printed by the summary reporter, default: 15 (@krlmlr, #354).
+
+* Fix failure message for `throws_error` in case where no error is raised (@nealrichardson, #342).
+
 * Added [Catch](https://github.com/philsquared/Catch) for unit testing of C++ code.
   See `?use_catch()` for more details. (@kevinushey)
+
+* `expect_identical()` and `is_identical_to()` now use `compare()` for more
+  detailed output of differences (@krlmlr, #319).
 
 # testthat 0.11.0
 

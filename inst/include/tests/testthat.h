@@ -68,12 +68,19 @@ private:
 
 };
 
+// Allow client packages to access the Catch::Session
+// exported by testthat.
 #ifdef CATCH_CONFIG_RUNNER
+
+Catch::Session& catchSession()
+{
+  static Catch::Session instance;
+  return instance;
+}
 
 inline bool run_tests()
 {
-  static Catch::Session session;
-  return session.run() == 0;
+  return catchSession().run() == 0;
 }
 
 #endif
@@ -100,6 +107,8 @@ inline std::ostream& cerr()
 #define test_that CATCH_SECTION
 #define expect_true CATCH_CHECK
 #define expect_false CATCH_CHECK_FALSE
+#define expect_error CATCH_CHECK_THROWS
+#define expect_error_as CATCH_CHECK_THROWS_AS
 
 #ifdef TESTTHAT_TEST_RUNNER
 
