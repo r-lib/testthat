@@ -21,6 +21,6 @@ test_that("can locate reporter from name", {
       reporters = list(TeamcityReporter$new(), SummaryReporter$new(),
                        ListReporter$new())))
 
-  expect_that(find_reporter("blah"),
-    throws_error("Can not find test reporter blah"))
+  expect_error(find_reporter("summary + blah"),
+    "Can not find test reporter blah")
 })
