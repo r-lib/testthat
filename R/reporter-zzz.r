@@ -50,9 +50,8 @@ with_reporter <- function(reporter, code) {
 #' Find reporter object given name or object.
 #'
 #' If not found, will return informative error message.
-#' This function supports the aggregation of reporters into a
-#' \code{\link{MultiReporter}}: pass a character vector or separate the
-#' individual reporters by \code{"+"}.
+#' Pass a character vector to create a \code{\link{MultiReporter}} composed
+#' of individual reporters.
 #' Will return null if given NULL.
 #'
 #' @param reporter name of reporter(s)
@@ -61,11 +60,10 @@ find_reporter <- function(reporter) {
   if (is.null(reporter)) return(NULL)
   if (inherits(reporter, "Reporter")) return(reporter)
 
-  reporter_names <- unique(unlist(strsplit(reporter, " *[+] *")))
-  if (length(reporter_names) <= 1L) {
-    find_reporter_one(reporter_names)
+  if (length(reporter) <= 1L) {
+    find_reporter_one(reporter)
   } else {
-    MultiReporter$new(reporters = lapply(reporter_names, find_reporter_one))
+    MultiReporter$new(reporters = lapply(reporter, find_reporter_one))
   }
 }
 

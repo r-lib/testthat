@@ -11,9 +11,8 @@ find_reporter(reporter)
 }
 \description{
 If not found, will return informative error message.
-This function supports the aggregation of reporters into a
-\code{\link{MultiReporter}}: pass a character vector or separate the
-individual reporters by \code{"+"}.
+Pass a character vector to create a \code{\link{MultiReporter}} composed
+of individual reporters.
 Will return null if given NULL.
 }
 \keyword{internal}

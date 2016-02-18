@@ -8,19 +8,15 @@ test_that("can locate reporter from name", {
   expect_that(find_reporter("multi"), equals(MultiReporter$new()))
   expect_that(find_reporter(""), equals(Reporter$new()))
   expect_equal(
-    find_reporter("summary+stop"),
-    MultiReporter$new(
-      reporters = list(SummaryReporter$new(), StopReporter$new())))
-  expect_equal(
     find_reporter(c("summary", "stop")),
     MultiReporter$new(
       reporters = list(SummaryReporter$new(), StopReporter$new())))
   expect_equal(
-    find_reporter("teamcity + summary + list"),
+    find_reporter(c("teamcity", "summary", "list")),
     MultiReporter$new(
       reporters = list(TeamcityReporter$new(), SummaryReporter$new(),
                        ListReporter$new())))
 
-  expect_error(find_reporter("summary + blah"),
+  expect_error(find_reporter(c("summary", "blah")),
     "Can not find test reporter blah")
 })
