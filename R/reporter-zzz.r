@@ -6,6 +6,9 @@ NULL
 #' Changes global reporter to that specified, runs code and the returns
 #' global reporter back to previous value.
 #'
+#' The \code{with_reporter} function returns the reporter that has been used
+#' for running the code.
+#'
 #' @keywords internal
 #' @param reporter test reporter to use
 #' @param code code block to execute
