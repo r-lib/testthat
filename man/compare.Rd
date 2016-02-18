@@ -3,6 +3,7 @@
 \name{compare}
 \alias{compare}
 \alias{compare.character}
+\alias{compare.complex}
 \alias{compare.default}
 \alias{compare.numeric}
 \title{Provide human-readable comparison of two objects}
@@ -15,6 +16,8 @@ compare(x, y, ...)
   width = getOption("width"))
 
 \method{compare}{numeric}(x, y, ..., max_diffs = 10)
+
+\method{compare}{complex}(x, y, ..., max_diffs = 10)
 }
 \arguments{
 \item{x, y}{Objects to compare}
