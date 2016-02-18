@@ -38,12 +38,17 @@ test_that("multi-mock", {
 
 test_that("nested mock", {
   with_mock(
-    all.equal = function(x, y, ...) TRUE,
+    attr.all.equal = function(x, y, ...) NULL,
     {
       with_mock(
-        gives_warning = throws_error,
+        all.equal = function(x, y, ...) TRUE,
         {
-          expect_warning(stopifnot(!compare(3, "a")$equal))
+          with_mock(
+            gives_warning = throws_error,
+            {
+              expect_warning(stopifnot(!compare(3, "a")$equal))
+            }
+          )
         }
       )
     },
@@ -57,6 +62,7 @@ test_that("qualified mock names", {
   with_mock(
     gives_warning = throws_error,
     `base::all.equal` = function(x, y, ...) TRUE,
+    `base::attr.all.equal` = function(x, y, ...) NULL,
     {
       expect_warning(stopifnot(!compare(3, "a")$equal))
     }
@@ -64,6 +70,7 @@ test_that("qualified mock names", {
   with_mock(
     `testthat::gives_warning` = throws_error,
     all.equal = function(x, y, ...) TRUE,
+    attr.all.equal = function(x, y, ...) NULL,
     {
       expect_warning(stopifnot(!compare(3, "a")$equal))
     },

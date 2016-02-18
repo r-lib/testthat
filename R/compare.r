@@ -140,6 +140,15 @@ str_chunk <- function(x, length) {
 #' # as all.equal.
 #' compare(x, x + 1e-9)
 compare.numeric <- function(x, y, ..., max_diffs = 10) {
+  dots <- list(...)
+  if(!isTRUE(dots$check.attributes == FALSE)) {
+    equal <- attr.all.equal(x, y, ...)
+    if (!is.null(equal)) {
+      equal <- paste0(equal, collapse='\n')
+      return(comparison(FALSE, equal))
+    }
+  }
+
   equal <- all.equal(x, y, ...)
   if (isTRUE(equal)) return(comparison())
 
