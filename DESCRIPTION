@@ -38,6 +38,7 @@ Collate:
     'praise.R'
     'reporter.r'
     'reporter-check.R'
+    'reporter-fail.r'
     'reporter-list.r'
     'reporter-minimal.r'
     'reporter-multi.r'

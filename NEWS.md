@@ -4,6 +4,9 @@
 
 * `set_reporter()` returns old reporter invisibly (#358, @krlmlr).
 
+* New `FailReporter` to stop in case of failures or errors after all tests
+  (#308, @krlmlr).
+
 * New option `testthat.summary.max_reports` that limits the number of reports printed by the summary reporter, default: 15 (@krlmlr, #354).
 
 * Fix failure message for `throws_error` in case where no error is raised (#342, @nealrichardson).
