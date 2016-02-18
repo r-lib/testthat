@@ -1,6 +1,7 @@
 context("Catch")
 
 test_that("A sample package with 'use_catch' can be built", {
+
   skip_on_cran()
   if (is.na(Sys.getenv("TRAVIS", unset = NA)))
     skip("only on travis")
@@ -17,17 +18,36 @@ test_that("A sample package with 'use_catch' can be built", {
   on.exit(setwd(owd), add = TRUE)
 
   pkgName <- "testthatclient"
-  pkgPath <- file.path(tempdir(), pkgName)
-  on.exit(unlink(pkgPath, recursive = TRUE), add = TRUE)
+  pkgPath <- normalizePath(file.path(tempdir(), pkgName))
+  libPath <- normalizePath(file.path(tempdir(), "rlib"))
+  if (!dir.exists(libPath))
+    dir.create(libPath)
+  .libPaths(c(libPath, .libPaths()))
+
+  on.exit({
+    unlink(pkgPath, recursive = TRUE)
+    unlink(libPath, recursive = TRUE)
+  }, add = TRUE)
 
   quietly(devtools::create(pkgPath))
   quietly(use_catch(pkgPath))
-  cat("LinkingTo: testthat", file = file.path(pkgPath, "DESCRIPTION"), append = TRUE)
-  cat(sprintf("useDynLib(%s)", pkgName), file = file.path(pkgPath, "NAMESPACE"), append = TRUE)
-  quietly(devtools::install(pkgPath, quick = TRUE, quiet = TRUE, args = paste("--library='", pkgPath, "'", sep = "")))
 
-  library(pkgName, lib.loc = file.path(pkgPath), character.only = TRUE)
+  cat("LinkingTo: testthat",
+      file = file.path(pkgPath, "DESCRIPTION"),
+      append = TRUE,
+      sep = "\n")
+
+  cat(
+    sprintf("useDynLib(%s)", pkgName),
+    file = file.path(pkgPath, "NAMESPACE"),
+    append = TRUE,
+    sep = "\n"
+  )
+
+  quietly(devtools::install(pkgPath, quick = TRUE, quiet = TRUE))
+
+  library(pkgName, character.only = TRUE)
   expect_true(quietly(.Call("run_testthat_tests", PACKAGE = "testthatclient")))
-  devtools::unload(pkgName)
 
+  devtools::unload(pkgName)
 })
