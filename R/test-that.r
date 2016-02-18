@@ -51,12 +51,12 @@ test_code <- function(description, code, env) {
     e$calls <- utils::head(sys.calls()[-seq_len(frame + 7)], -2)
     signalCondition(e)
   }
-  handle_result <- function(e) {
-    get_reporter()$add_result(e$results)
-    if (!isTRUE(e$results$passed)) {
+  handle_result <- function(exp) {
+    get_reporter()$add_result(exp)
+    if (!isTRUE(exp$passed)) {
       ok <<- FALSE
     }
-    invokeRestart(findRestart("continue_test", e))
+    invokeRestart(findRestart("continue_test", exp))
   }
   frame <- sys.nframe()
 
@@ -64,42 +64,39 @@ test_code <- function(description, code, env) {
     withCallingHandlers(
       eval(code, new_test_environment),
       error = capture_calls,
-      test_result = handle_result,
+      expectation = handle_result,
       message = function(c) invokeRestart("muffleMessage")
     ),
     error = function(e) {
       ok <<- FALSE
-      report <- expectation_error(e$message, e$calls)
-      get_reporter()$add_result(report)
+      get_reporter()$add_result(as.expectation(e))
     },
     skip = function(e) {
       ok <<- FALSE
-      report <- expectation_skipped(e$message)
-      get_reporter()$add_result(report)
+      get_reporter()$add_result(as.expectation(e))
     }
   )
 
   invisible(ok)
 }
 
-report_results <- function(results) {
+
+expect <- function(exp, ...) {
+  exp <- as.expectation(exp, ...)
+
   withRestarts(
-    raise_condition_from_result(results),
+    raise_condition(exp),
     continue_test = function(e) NULL
   )
 
-  invisible(results)
+  invisible(exp)
 }
 
-raise_condition_from_result <- function(results) {
-  if (results$passed) {
-    cond <- structure(list(results = results),
-                      class = c("test_result", "condition"))
-    signalCondition(cond)
+raise_condition <- function(exp) {
+  if (exp$passed) {
+    signalCondition(exp)
   } else {
-    cond <- structure(list(results = results, message = format(results)),
-                      class = c("test_result", "error", "condition"))
-    stop(cond)
+    stop(exp)
   }
 }
 

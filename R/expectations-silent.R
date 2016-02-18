@@ -29,8 +29,3 @@ expect_silent <- function(expr) {
     paste0(label, " produced ", paste(outputs, collapse = ", "))
   )
 }
-
-expect <- function(passed, message) {
-  exp <- expectation(passed, message, srcref = find_test_srcref())
-  report_results(exp)
-}
