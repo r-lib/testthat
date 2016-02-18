@@ -1,10 +1,7 @@
 context("Catch")
 
 test_that("A sample package with 'use_catch' can be built", {
-
-  skip_on_cran()
-  if (is.na(Sys.getenv("TRAVIS", unset = NA)))
-    skip("only on travis")
+  skip("Run manually only for now")
 
   quietly <- function(expr) {
     suppressMessages(capture.output(result <- expr))
@@ -18,8 +15,8 @@ test_that("A sample package with 'use_catch' can be built", {
   on.exit(setwd(owd), add = TRUE)
 
   pkgName <- "testthatclient"
-  pkgPath <- normalizePath(file.path(tempdir(), pkgName))
-  libPath <- normalizePath(file.path(tempdir(), "rlib"))
+  pkgPath <- file.path(tempdir(), pkgName)
+  libPath <- file.path(tempdir(), "rlib")
   if (!dir.exists(libPath))
     dir.create(libPath)
   .libPaths(c(libPath, .libPaths()))
@@ -50,4 +47,5 @@ test_that("A sample package with 'use_catch' can be built", {
   expect_true(quietly(.Call("run_testthat_tests", PACKAGE = "testthatclient")))
 
   devtools::unload(pkgName)
+
 })
