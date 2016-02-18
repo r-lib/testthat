@@ -1,5 +1,7 @@
 # testthat 0.11.0.9000
 
+* The summary reporter shows a summary of skipped tests if all tests were successful (@krlmlr, #343).
+
 * Fixed minor issues with `throws_error(NA)` and `expect_error(..., NA)` (@krlmlr, #317).
 
 * `set_reporter()` returns old reporter invisibly (#358, @krlmlr).
