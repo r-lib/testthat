@@ -70,6 +70,6 @@ test_test_that("NULL doesn't match text", {
   expect_error(expect_match(NULL, 'oeu'), "NULL does not match")
 }, failure_expected = FALSE)
 
-test_test_that("skip is success but events are indicated", {
+test_test_that("skip is failure", {
   skip("Skipping")
 })
