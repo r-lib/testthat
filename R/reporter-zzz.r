@@ -50,9 +50,12 @@ with_reporter <- function(reporter, code) {
 #' Find reporter object given name or object.
 #'
 #' If not found, will return informative error message.
+#' This function supports the aggregation of reporters into a
+#' \code{\link{MultiReporter}}: pass a character vector or separate the
+#' individual reporters by \code{"+"}.
 #' Will return null if given NULL.
 #'
-#' @param reporter name of reporter
+#' @param reporter name of reporter(s)
 #' @keywords internal
 find_reporter <- function(reporter) {
   if (is.null(reporter)) return(NULL)
