@@ -72,6 +72,45 @@ expect_cpp_tests_pass <- function(package) {
 #' with the C entry point \code{run_testthat_tests()}. \code{testthat}
 #' will use that entry point to run your unit tests when detected.
 #'
+#' @section Functions:
+#'
+#' All of the functions provides by Catch are
+#' available with the \code{CATCH_} prefix -- see
+#' \href{https://github.com/philsquared/Catch/blob/master/docs/assertions.md}{here}
+#' for a full list. \code{testthat} provides the
+#' following wrappers, to conform with \code{testthat}'s
+#' \R interface:
+#'
+#' \tabular{lll}{
+#' \strong{Function} \tab \strong{Catch} \tab \strong{Description} \cr
+#' \code{context} \tab \code{CATCH_TEST_CASE} \tab The context of a set of tests. \cr
+#' \code{test_that} \tab \code{CATCH_SECTION} \tab A test section. \cr
+#' \code{expect_true} \tab \code{CATCH_CHECK} \tab Test that an expression evaluates to \code{true}. \cr
+#' \code{expect_false} \tab \code{CATCH_CHECK_FALSE} \tab Test that an expression evalutes to \code{false}. \cr
+#' \code{expect_error} \tab \code{CATCH_CHECK_THROWS} \tab Test that evaluation of an expression throws an error. \cr
+#' \code{expect_error_as} \tab \code{CATCH_CHECK_THROWS_AS} \tab Test that evaluation of an expression throws an error of a specific class. \cr
+#' }
+#'
+#' @section Advanced Usage:
+#'
+#' If you'd like to write your own Catch test runner, you can
+#' instead use the \code{testthat::catchSession()} object in a file
+#' with the form:
+#'
+#' \preformatted{
+#' #define TESTTHAT_TEST_RUNNER
+#' #include <testthat.h>
+#'
+#' void run()
+#' {
+#'     Catch::Session& session = testthat::catchSession();
+#'     // interact with the session object as desired
+#' }
+#' }
+#'
+#' This can be useful if you'd like to run your unit tests
+#' with custom arguments passed to the Catch session.
+#'
 #' @param dir The directory containing an \R package.
 #'
 #' @export
