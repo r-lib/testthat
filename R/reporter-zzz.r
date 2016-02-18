@@ -54,11 +54,10 @@ with_reporter <- function(reporter, code) {
 #' of individual reporters.
 #' Will return null if given NULL.
 #'
-#' @param reporter name of reporter(s)
+#' @param reporter name of reporter(s), or reporter object(s)
 #' @keywords internal
 find_reporter <- function(reporter) {
   if (is.null(reporter)) return(NULL)
-  if (inherits(reporter, "Reporter")) return(reporter)
 
   if (length(reporter) <= 1L) {
     find_reporter_one(reporter)
@@ -68,6 +67,8 @@ find_reporter <- function(reporter) {
 }
 
 find_reporter_one <- function(reporter) {
+  if (inherits(reporter, "Reporter")) return(reporter)
+
   name <- reporter
   substr(name, 1, 1) <- toupper(substr(name, 1, 1))
   name <- paste0(name, "Reporter")

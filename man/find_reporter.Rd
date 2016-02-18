@@ -7,7 +7,7 @@
 find_reporter(reporter)
 }
 \arguments{
-\item{reporter}{name of reporter(s)}
+\item{reporter}{name of reporter(s), or reporter object(s)}
 }
 \description{
 If not found, will return informative error message.
