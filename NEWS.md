@@ -1,5 +1,8 @@
 # testthat 0.11.0.9000
 
+* `expect_success()` and `expect_failure()` are new expectations designed
+  specifically for testing other expectations (#368).
+
 * `compare.numeric()` and `compare.chacter()` recieved another overhaul. This 
   should improve behaviour of edge cases, and provides a strong foundation for 
   further work. Added `compare.POSIXt()` for better reporting of datetime
