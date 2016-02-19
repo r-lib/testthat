@@ -6,16 +6,15 @@
 #' @param passed a single logical value indicating whether the test passed
 #'  (\code{TRUE}), failed (\code{FALSE}), or threw an error (\code{NA})
 #' @param failure_msg A text description of failure
-#' @param success_msg A text description of success
 #' @param srcref Source reference, if known
 #' @keywords internal
 #' @export
-expectation <- function(passed, failure_msg, success_msg = "unknown", srcref = NULL) {
+expectation <- function(passed, failure_msg, srcref = NULL) {
   new_expectation(passed = passed, failure_msg = failure_msg,
-                  success_msg = success_msg, srcref = srcref)
+                  srcref = srcref)
 }
 
-new_expectation <- function(failure_msg, success_msg, srcref, ...,
+new_expectation <- function(failure_msg, srcref, ...,
                             passed = FALSE, error = FALSE, skipped = FALSE) {
   if (passed) {
     class = c("expectation", "condition")
@@ -28,8 +27,7 @@ new_expectation <- function(failure_msg, success_msg, srcref, ...,
       passed = passed,
       error = error,
       skipped = skipped,
-      failure_msg = failure_msg,
-      success_msg = success_msg
+      failure_msg = failure_msg
     ),
     class = class
   )
@@ -42,12 +40,10 @@ update_expectation <- function(exp, srcref, info = NULL, label = NULL) {
 
   if (!is.null(label)) {
     exp$failure_msg <- paste0(label, " ", exp$failure_msg)
-    exp$success_msg <- paste0(label, " ", exp$success_msg)
   }
 
   if (!is.null(info)) {
     exp$failure_msg <- paste0(exp$failure_msg, "\n", info)
-    exp$success_msg <- paste0(exp$success_msg, "\n", info)
   }
 
   exp$message <- if (exp$passed) exp$success_msg else exp$failure_msg
@@ -90,7 +86,7 @@ as.expectation.error <- function(x, ...) {
     msg <- gsub("\n$", "", msg)
   }
 
-  new_expectation(msg, "no error occurred", srcref, error = TRUE)
+  new_expectation(msg, srcref, error = TRUE)
 }
 
 #' @export
@@ -99,7 +95,7 @@ as.expectation.skip <- function(x, ...) {
   srcref <- x$srcref
   msg <- gsub("Error.*?: ", "", as.character(error))
 
-  new_expectation(msg, "not skipped", srcref, skipped = TRUE)
+  new_expectation(msg, srcref, skipped = TRUE)
 }
 
 #' @export
@@ -113,7 +109,7 @@ print.expectation <- function(x, ...) cat(format(x), "\n")
 #' @export
 format.expectation <- function(x, ...) {
   if (x$passed) {
-    paste0("As expected: ", x$success_msg)
+    "As expected"
   } else {
     paste0("Not expected: ", x$failure_msg, ".")
   }
@@ -130,8 +126,7 @@ negate <- function(expt) {
 
   opp <- expt
   opp$passed <- !expt$passed
-  opp$failure_msg <- expt$success_msg
-  opp$success_msg <- expt$failure_msg
+  opp$failure_msg <- paste0("NOT(", opp$failure_msg, ")")
   opp
 
 }

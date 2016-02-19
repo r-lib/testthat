@@ -71,7 +71,7 @@ find_test_srcref <- function() {
 #' test_that("this test fails", fail())
 #' }
 fail <- function(message = "Failure has been forced") {
-  exp <- expectation(FALSE, message, "This always succeeds")
+  exp <- expectation(FALSE, message)
   expect(exp)
 }
 
@@ -85,7 +85,7 @@ fail <- function(message = "Failure has been forced") {
 #' test_that("this test fails", fail())
 #' }
 succeed <- function(message = "Success has been forced") {
-  exp <- expectation(TRUE, message, "This always fails")
+  exp <- expectation(TRUE, message)
   expect(exp)
 }
 

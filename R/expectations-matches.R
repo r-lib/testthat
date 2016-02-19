@@ -86,8 +86,7 @@ matches <- function(regexp, all = TRUE, ...) {
 
     expectation(
       length(matches) > 0 && if (all) all(matches) else any(matches),
-      paste0("does not match '", encodeString(regexp), "'. ", values),
-      paste0("matches '", encodeString(regexp), "'")
+      paste0("does not match '", encodeString(regexp), "'. ", values)
     )
   }
 }
@@ -109,14 +108,12 @@ prints_text <- function(regexp, ...) {
     if (identical(regexp, NA)) {
       expectation(
         identical(output, ""),
-        paste0("produced output: ", encodeString(output)),
-        "didn't produce output"
+        paste0("produced output: ", encodeString(output))
       )
     } else if (is.null(regexp)) {
       expectation(
         !identical(output, ""),
-        "didn't produce output",
-        "produced output"
+        "didn't produce output"
       )
     } else {
       matches(regexp, ...)(output)
@@ -148,16 +145,14 @@ throws_error <- function(regexp = NULL, ...) {
     if (identical(regexp, NA)) {
       expectation(
         length(errors) == 0,
-        paste0("expected no errors:\n", paste("* ", errors, collapse = "\n")),
-        "no errors raised"
+        paste0("expected no errors:\n", paste("* ", errors, collapse = "\n"))
       )
     } else if (!is.null(regexp) && length(errors) > 0) {
       matches(regexp, ...)(errors)
     } else {
       expectation(
         length(errors) > 0,
-        "no errors raised",
-        paste0(length(errors), " errors raised")
+        "no errors raised"
       )
     }
   }
@@ -181,16 +176,14 @@ gives_warning <- function(regexp = NULL, all = FALSE, ...) {
     if (identical(regexp, NA)) {
       expectation(
         length(warnings) == 0,
-        paste0("expected no warnings:\n", paste("* ", warnings, collapse = "\n")),
-        "no warnings"
+        paste0("expected no warnings:\n", paste("* ", warnings, collapse = "\n"))
       )
     } else if (!is.null(regexp) && length(warnings) > 0) {
       matches(regexp, all = all, ...)(warnings)
     } else {
       expectation(
         length(warnings) > 0,
-        "no warnings given",
-        paste0(length(warnings), " warnings created")
+        "no warnings given"
       )
     }
   }
@@ -214,16 +207,14 @@ shows_message <- function(regexp = NULL, all = FALSE, ...) {
     if (identical(regexp, NA)) {
       expectation(
         length(messages) == 0,
-        paste0("expected no message, got:\n", paste("* ", messages, collapse = "\n")),
-        paste0("no messages")
+        paste0("expected no message, got:\n", paste("* ", messages, collapse = "\n"))
       )
     } else if (!is.null(regexp) && length(messages) > 0) {
       matches(regexp, all = all, ...)(messages)
     } else {
       expectation(
         length(messages) > 0,
-        "no messages shown",
-        paste0(length(messages), " messages shown")
+        "no messages shown"
       )
     }
   }

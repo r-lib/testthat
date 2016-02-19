@@ -5,7 +5,6 @@ test_that("can make 3 = 5", {
     compare = function(x, y, ...) list(equal = TRUE, message = "TRUE"),
     expect_equal(3, 5)
   )
-  expect_that(5, not(equals(3)))
 })
 
 test_that("mocked function is restored on error", {
@@ -16,7 +15,6 @@ test_that("mocked function is restored on error", {
     ),
     "Simulated error"
   )
-  expect_that(5, not(equals(3)))
 })
 
 test_that("non-empty mock with return value", {

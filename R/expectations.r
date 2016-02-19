@@ -32,8 +32,7 @@ is_a <- function(class) {
     class_s <- paste(class, collapse = ", ")
     expectation(
       inherits(x, class),
-      paste0("inherits from ", actual_s, " not ", class_s),
-      paste0("inherits from ", class_s)
+      paste0("inherits from ", actual_s, " not ", class_s)
     )
   }
 }
@@ -100,8 +99,7 @@ is_true <- function() {
   function(x) {
     expectation(
       identical(as.vector(x), TRUE),
-      "isn't true",
-      "is true"
+      "isn't true"
     )
   }
 }
@@ -112,8 +110,7 @@ is_false <- function() {
   function(x) {
     expectation(
       identical(as.vector(x), FALSE),
-      "isn't false",
-      "is false"
+      "isn't false"
     )
   }
 }
@@ -138,8 +135,7 @@ is_null <- function() {
   function(x) {
     expectation(
       identical(x, NULL),
-      "isn't null",
-      "is null"
+      "isn't null"
     )
   }
 }
@@ -158,8 +154,7 @@ takes_less_than <- function(amount) {
 
     expectation(
       duration < amount,
-      paste0("took ", duration, " seconds, which is more than ", amount),
-      paste0("took ", duration, " seconds, which is less than ", amount)
+      paste0("took ", duration, " seconds, which is more than ", amount)
     )
   }
 }
@@ -207,8 +202,7 @@ has_names <- function(expected, ignore.order = FALSE, ignore.case = FALSE) {
     function(x) {
       expectation(
         !identical(names(x), NULL),
-        paste0("does not have names"),
-        paste0("has names")
+        paste0("does not have names")
       )
     }
   } else {
@@ -219,8 +213,7 @@ has_names <- function(expected, ignore.order = FALSE, ignore.case = FALSE) {
 
       expectation(
         identical(x_names, expected),
-        paste0("names don't match ", paste0(expected, collapse = ", ")),
-        paste0("names as expected")
+        paste0("names don't match ", paste0(expected, collapse = ", "))
       )
     }
   }
@@ -278,8 +271,7 @@ is_less_than <- function(expected, label = NULL, ...) {
 
     expectation(
       diff > 0,
-      paste0("not less than ", label, ". Difference: ", format(diff)),
-      paste0("is less than ", label)
+      paste0("not less than ", label, ". Difference: ", format(diff))
     )
   }
 }
@@ -341,8 +333,7 @@ is_more_than <- function(expected, label = NULL, ...) {
 
     expectation(
       diff < 0,
-      paste0("not more than ", label, ". Difference: ", format(diff)),
-      paste0("is more than ", label)
+      paste0("not more than ", label, ". Difference: ", format(diff))
     )
   }
 }
