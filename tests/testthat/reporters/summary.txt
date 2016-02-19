@@ -3,5 +3,3 @@ Two : S
 
 1. Failure: Failure ------------------------------------------------------------
 Failure has been forced
-
-Don't worry, you'll get it.

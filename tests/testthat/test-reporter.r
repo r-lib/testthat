@@ -22,13 +22,13 @@ test_that("can locate reporter from name", {
 })
 
 test_that("reporters produce consistent output", {
-  save_report <- function(reporter) {
-    path <- file.path("reporters", paste0(reporter, ".txt"))
+  save_report <- function(name, reporter = find_reporter(name)) {
+    path <- file.path("reporters", paste0(name, ".txt"))
     capture.output(test_file("reporters/tests.R", reporter), file = path)
   }
 
   expect_error(save_report("check"))
-  expect_error(save_report("summary"), NA)
+  expect_error(save_report("summary", SummaryReporter(show_praise = FALSE)), NA)
   expect_error(save_report("minimal"), NA)
   expect_error(save_report("tap"), NA)
   expect_error(save_report("teamcity"), NA)
