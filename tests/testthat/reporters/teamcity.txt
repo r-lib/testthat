@@ -1,0 +1,23 @@
+##teamcity[testSuiteStarted name='One']
+##teamcity[testSuiteStarted name='Success']
+##teamcity[testStarted name='expectation 1']
+##teamcity[testFinished name='expectation 1']
+##teamcity[testSuiteFinished name='Success']
+
+##teamcity[testSuiteStarted name='Failure']
+##teamcity[testStarted name='expectation 1']
+##teamcity[testFailed name='expectation 1' message='Failure has been forced' details='']
+##teamcity[testFinished name='expectation 1']
+##teamcity[testSuiteFinished name='Failure']
+
+##teamcity[testSuiteFinished name='One']
+
+
+##teamcity[testSuiteStarted name='Two']
+##teamcity[testSuiteStarted name='Skip']
+##teamcity[testIgnored name='expectation 1' message='skip']
+##teamcity[testSuiteFinished name='Skip']
+
+##teamcity[testSuiteFinished name='Two']
+
+

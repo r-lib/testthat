@@ -20,3 +20,18 @@ test_that("can locate reporter from name", {
   expect_error(find_reporter(c("summary", "blah")),
     "Can not find test reporter blah")
 })
+
+test_that("reporters produce consistent output", {
+  save_report <- function(reporter) {
+    path <- file.path("reporters", paste0(reporter, ".txt"))
+    capture.output(test_file("reporters/tests.R", reporter), file = path)
+  }
+
+  expect_error(save_report("check"))
+  expect_error(save_report("summary"), NA)
+  expect_error(save_report("minimal"), NA)
+  expect_error(save_report("tap"), NA)
+  expect_error(save_report("teamcity"), NA)
+  expect_error(save_report("silent"), NA)
+  expect_error(save_report("rstudio"), NA)
+})

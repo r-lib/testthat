@@ -32,7 +32,7 @@ TeamcityReporter <- setRefClass("TeamcityReporter", contains = "Reporter",
 
     start_test = function(desc) {
       currentTest <<- desc
-      i <<- 0
+      i <<- 1L
       teamcity("testSuiteStarted", currentTest)
     },
     end_test = function() {
@@ -48,8 +48,9 @@ TeamcityReporter <- setRefClass("TeamcityReporter", contains = "Reporter",
     add_result = function(result) {
       callSuper(result)
       testName <- paste0("expectation ", i)
+      i <<- i + 1L
 
-      if (expectation_skip(skipped)) {
+      if (expectation_skip(result)) {
         teamcity("testIgnored", testName, message = result$message)
         return()
       }
