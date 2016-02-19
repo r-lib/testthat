@@ -15,15 +15,3 @@ expect_lte(2, 2)
 
 expect_error(expect_false(FALSE), NA)
 expect_error(expect_false(TRUE))
-
-# test_that("Error", {
-#   stop("!")
-# })
-#
-# test_that("Failure", {
-#   expect_true(FALSE)
-# })
-#
-# test_that("Skip", {
-#   skip("Abc")
-# })
