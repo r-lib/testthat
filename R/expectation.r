@@ -132,12 +132,10 @@ as.character.expectation <- function(x, ...) format(x)
 negate <- function(expt) {
   stopifnot(is.expectation(expt))
 
-  # If it's an error, don't need to do anything
-  if (expt$error) return(expt)
+  # If it's not a success or failure, don't need to do anything
+  if (!(expectation_type(expt) %in% c("success", "failure"))) return(expt)
 
-  opp <- expt
-  opp$passed <- !expt$passed
-  opp$message <- paste0("NOT(", opp$message, ")")
-  opp
-
+  expectation(expectation_type(expt) == "failure",
+              paste0("NOT(", expt$message, ")"),
+              srcref = expt$srcref)
 }
