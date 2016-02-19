@@ -61,6 +61,22 @@ expectation_success <- function(exp) {
   expectation_type(exp) == "success"
 }
 
+expectation_failure <- function(exp) {
+  expectation_type(exp) == "failure"
+}
+
+expectation_error <- function(exp) {
+  expectation_type(exp) == "error"
+}
+
+expectation_skip <- function(exp) {
+  expectation_type(exp) == "skip"
+}
+
+expectation_broken <- function(exp) {
+  expectation_failure(exp) || expectation_error(exp)
+}
+
 
 as.expectation <- function(x, ...) UseMethod("as.expectation", x)
 
