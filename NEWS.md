@@ -1,5 +1,9 @@
 # testthat 0.11.0.9000
 
+* Refactored internal testing logic. Now all expectations are also conditions, and R's condition system is used to signal failures and successes (#360, @krlmlr).
+
+* `test_that()` returns a `logical` that indicates if all tests were successful (#360, @krlmlr).
+
 * `find_reporter()` (and also all high-level testing functions) support a vector of reporters. For more than one reporter, a `MultiReporter` is created (#307, @krlmlr).
 
 * `with_reporter()` is used internally and gains new argument `start_end_reporter = TRUE` (@krlmlr, 355).
