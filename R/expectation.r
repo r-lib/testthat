@@ -10,26 +10,30 @@
 #' @keywords internal
 #' @export
 expectation <- function(passed, message, srcref = NULL) {
-  new_expectation(passed = passed, message = message,
-                  srcref = srcref)
+  new_expectation(type = if (passed) "success" else "failure",
+                  message = message, srcref = srcref)
 }
 
-new_expectation <- function(message, srcref, ...,
-                            passed = FALSE, error = FALSE, skipped = FALSE) {
-  if (passed) {
-    class = c("expectation", "condition")
-  } else {
-    class = c("expectation", "error", "condition")
-  }
+new_expectation <- function(message, srcref, type) {
+  passed <- type == "success"
+  error <- type == "error"
+  skipped <- type == "skip"
 
   exp <- structure(
     list(
+      # TODO: remove legacy members one by one
       passed = passed,
       error = error,
       skipped = skipped,
       message = message
     ),
-    class = class
+    # Use "expectation" as top-level class so that no coercion is applied
+    # to expectation objects by as.expectation()
+    class = c(
+      "expectation",
+      type,
+      if (!passed && !error) "error",
+      "condition")
   )
 
   update_expectation(exp, srcref)
@@ -49,8 +53,12 @@ update_expectation <- function(exp, srcref, info = NULL, label = NULL) {
   exp
 }
 
+expectation_type <- function(exp) {
+  class(exp)[[which(class(exp) == "expectation") + 1L]]
+}
+
 expectation_ok <- function(exp) {
-  isTRUE(exp$passed)
+  expectation_type(exp) == "success"
 }
 
 
@@ -89,7 +97,7 @@ as.expectation.error <- function(x, ...) {
     msg <- gsub("\n$", "", msg)
   }
 
-  new_expectation(msg, srcref, error = TRUE)
+  new_expectation(msg, srcref, type = "error")
 }
 
 #' @export
@@ -98,7 +106,7 @@ as.expectation.skip <- function(x, ...) {
   srcref <- x$srcref
   msg <- gsub("Error.*?: ", "", as.character(error))
 
-  new_expectation(msg, srcref, skipped = TRUE)
+  new_expectation(msg, srcref, type = "skip")
 }
 
 #' @export
