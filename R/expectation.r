@@ -46,7 +46,8 @@ update_expectation <- function(exp, srcref, info = NULL, label = NULL) {
     exp$failure_msg <- paste0(exp$failure_msg, "\n", info)
   }
 
-  exp$message <- if (exp$passed) exp$success_msg else exp$failure_msg
+  # TODO: Get rid of failure_msg in favor of message
+  exp$message <- exp$failure_msg
 
   exp
 }
@@ -72,6 +73,7 @@ as.expectation.logical <- function(x, message, ...) {
 as.expectation.error <- function(x, ...) {
   error <- x$message
   calls <- x$calls
+  # TODO: Collect srcref in test_code()
   srcref <- x$srcref
 
   msg <- gsub("Error.*?: ", "", as.character(error))
