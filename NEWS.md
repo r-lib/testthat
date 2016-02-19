@@ -4,6 +4,20 @@
    an expected subclass for the error condition (@dchudz)
 
 * Fix failure message for `throws_error` in case where no error is raised (@nealrichardson, #342).
+* `expect_output(f(), NA)` will fail if `f()` produces output; 
+  `expect_output(f(), NULL)` will fail if `f()` doesn't produce output (#323).
+
+* `expect_output()` no longer prints the output by default. You need to do this
+  yourself.
+
+* `expect_type()` checks the _type_ of the object (#316).
+
+* `not()` has been deprecated.
+
+* `MinimalReporter` correct labels errors with E and failures with F (#311).
+
+* The summary reporter shows a summary of skipped tests if all tests were successful (@krlmlr, #343).
+
 * Fixed minor issues with `throws_error(NA)` and `expect_error(..., NA)` (@krlmlr, #317).
 
 * `set_reporter()` returns old reporter invisibly (#358, @krlmlr).

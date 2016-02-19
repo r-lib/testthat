@@ -11,7 +11,7 @@
 \usage{
 expect_match(object, regexp, ..., all = TRUE, info = NULL, label = NULL)
 
-expect_output(object, regexp, ..., info = NULL, label = NULL)
+expect_output(object, regexp = NULL, ..., info = NULL, label = NULL)
 
 expect_error(object, regexp = NULL, class = NULL, ..., info = NULL,
   label = NULL)

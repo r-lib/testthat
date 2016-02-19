@@ -114,10 +114,6 @@ test_that("expect_output captures multiline code", {
   expect_output(cat("1\n2"), "1\n2")
 })
 
-test_that("expect_output prints by default", {
-  expect_output(1, "1")
-})
-
 test_that("expect_equals fails with useful message if objects equal but not identical", {
   f <- function() x
   g <- function() x
@@ -180,4 +176,9 @@ test_that("expected_named optionally ignores case", {
 
 test_that("expected_named optionally ignores order", {
   expect_named(c(a = 1, b = 2), c("b", "a"), ignore.order = TRUE)
+})
+
+
+test_that("expect_type checks typeof", {
+  expect_type(factor("a"), "integer")
 })
