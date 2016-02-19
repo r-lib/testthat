@@ -5,16 +5,16 @@
 #'
 #' @param passed a single logical value indicating whether the test passed
 #'  (\code{TRUE}), failed (\code{FALSE}), or threw an error (\code{NA})
-#' @param failure_msg A text description of failure
+#' @param message A text description of failure
 #' @param srcref Source reference, if known
 #' @keywords internal
 #' @export
-expectation <- function(passed, failure_msg, srcref = NULL) {
-  new_expectation(passed = passed, failure_msg = failure_msg,
+expectation <- function(passed, message, srcref = NULL) {
+  new_expectation(passed = passed, message = message,
                   srcref = srcref)
 }
 
-new_expectation <- function(failure_msg, srcref, ...,
+new_expectation <- function(message, srcref, ...,
                             passed = FALSE, error = FALSE, skipped = FALSE) {
   if (passed) {
     class = c("expectation", "condition")
@@ -27,7 +27,7 @@ new_expectation <- function(failure_msg, srcref, ...,
       passed = passed,
       error = error,
       skipped = skipped,
-      failure_msg = failure_msg
+      message = message
     ),
     class = class
   )
@@ -39,15 +39,12 @@ update_expectation <- function(exp, srcref, info = NULL, label = NULL) {
   exp$srcref <- srcref
 
   if (!is.null(label)) {
-    exp$failure_msg <- paste0(label, " ", exp$failure_msg)
+    exp$message <- paste0(label, " ", exp$message)
   }
 
   if (!is.null(info)) {
-    exp$failure_msg <- paste0(exp$failure_msg, "\n", info)
+    exp$message <- paste0(exp$message, "\n", info)
   }
-
-  # TODO: Get rid of failure_msg in favor of message
-  exp$message <- exp$failure_msg
 
   exp
 }
@@ -70,7 +67,7 @@ as.expectation.expectation <- function(x, ...) x
 
 #' @export
 as.expectation.logical <- function(x, message, ...) {
-  expectation(passed = x, failure_msg = message, srcref = find_test_srcref())
+  expectation(passed = x, message = message, srcref = find_test_srcref())
 }
 
 #' @export
@@ -117,7 +114,7 @@ format.expectation <- function(x, ...) {
   if (x$passed) {
     "As expected"
   } else {
-    paste0("Not expected: ", x$failure_msg, ".")
+    paste0("Not expected: ", x$message, ".")
   }
 }
 
@@ -132,7 +129,7 @@ negate <- function(expt) {
 
   opp <- expt
   opp$passed <- !expt$passed
-  opp$failure_msg <- paste0("NOT(", opp$failure_msg, ")")
+  opp$message <- paste0("NOT(", opp$message, ")")
   opp
 
 }

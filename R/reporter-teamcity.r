@@ -50,14 +50,14 @@ TeamcityReporter <- setRefClass("TeamcityReporter", contains = "Reporter",
       testName <- paste0("expectation ", i)
 
       if (result$skipped) {
-        teamcity("testIgnored", testName, message = result$failure_msg)
+        teamcity("testIgnored", testName, message = result$message)
         return()
       }
 
       teamcity("testStarted", testName)
 
       if (!result$passed) {
-        lines <- strsplit(result$failure_msg, "\n")[[1]]
+        lines <- strsplit(result$message, "\n")[[1]]
 
         teamcity("testFailed", testName, message = lines[1],
           details = paste(lines[-1], collapse = "\n")

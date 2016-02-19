@@ -52,10 +52,10 @@ TapReporter <- setRefClass("TapReporter", contains = "Reporter",
                 if (result$passed) {
                     cat('ok', i, result$test, '\n')
                 } else if (result$skipped) {
-                    cat('ok', i, '# SKIP', result$failure_msg, '\n')
+                    cat('ok', i, '# SKIP', result$message, '\n')
                 } else {
                     cat('not ok', i, result$test, '\n')
-                    msg <- gsub('\n', '\n  ', result$failure_msg)
+                    msg <- gsub('\n', '\n  ', result$message)
                     cat(' ', msg, '\n')
                 }
             }

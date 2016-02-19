@@ -82,7 +82,7 @@ skip_summary <- function(x, label) {
   header <- paste0(label, ". ", x$test)
 
   paste0(
-    colourise(header, "skipped"), " - ", x$failure_msg
+    colourise(header, "skipped"), " - ", x$message
   )
 }
 
@@ -93,7 +93,7 @@ failure_summary <- function(x, label, width = getOption("width")) {
 
   paste0(
     colourise(header, "error"), line, "\n",
-    x$failure_msg
+    x$message
   )
 }
 
