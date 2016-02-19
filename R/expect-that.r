@@ -29,12 +29,10 @@ expect_that <- function(object, condition, info = NULL, label = NULL) {
 
   if (!is.null(label)) {
     results$failure_msg <- paste0(label, " ", results$failure_msg)
-    results$success_msg <- paste0(label, " ", results$success_msg)
   }
 
   if (!is.null(info)) {
     results$failure_msg <- paste0(results$failure_msg, "\n", info)
-    results$success_msg <- paste0(results$success_msg, "\n", info)
   }
 
   get_reporter()$add_result(results)
@@ -81,7 +79,7 @@ find_test_srcref <- function() {
 #' test_that("this test fails", fail())
 #' }
 fail <- function(message = "Failure has been forced") {
-  results <- expectation(FALSE, message, "This always succeeds")
+  results <- expectation(FALSE, message)
   get_reporter()$add_result(results)
   invisible()
 }
@@ -96,7 +94,7 @@ fail <- function(message = "Failure has been forced") {
 #' test_that("this test fails", fail())
 #' }
 succeed <- function(message = "Success has been forced") {
-  results <- expectation(TRUE, message, "This always fails")
+  results <- expectation(TRUE, message)
   get_reporter()$add_result(results)
   invisible()
 }
