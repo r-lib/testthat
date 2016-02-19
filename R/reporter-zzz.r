@@ -60,12 +60,23 @@ with_reporter <- function(reporter, code, start_end_reporter = TRUE) {
 #' Find reporter object given name or object.
 #'
 #' If not found, will return informative error message.
+#' Pass a character vector to create a \code{\link{MultiReporter}} composed
+#' of individual reporters.
 #' Will return null if given NULL.
 #'
-#' @param reporter name of reporter
+#' @param reporter name of reporter(s), or reporter object(s)
 #' @keywords internal
 find_reporter <- function(reporter) {
   if (is.null(reporter)) return(NULL)
+
+  if (length(reporter) <= 1L) {
+    find_reporter_one(reporter)
+  } else {
+    MultiReporter$new(reporters = lapply(reporter, find_reporter_one))
+  }
+}
+
+find_reporter_one <- function(reporter) {
   if (inherits(reporter, "Reporter")) return(reporter)
 
   name <- reporter

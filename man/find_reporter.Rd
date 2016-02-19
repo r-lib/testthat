@@ -7,10 +7,12 @@
 find_reporter(reporter)
 }
 \arguments{
-\item{reporter}{name of reporter}
+\item{reporter}{name of reporter(s), or reporter object(s)}
 }
 \description{
 If not found, will return informative error message.
+Pass a character vector to create a \code{\link{MultiReporter}} composed
+of individual reporters.
 Will return null if given NULL.
 }
 \keyword{internal}
