@@ -1,7 +1,9 @@
 # testthat 0.11.0.9000
 
-* `compare.numeric` recieves another overhaul. This probably fixes some edge
-  cases and provides a strong foundation for further work.
+* `compare.numeric()` and `compare.chacter()` recieved another overhaul. This 
+  should improve behaviour of edge cases, and provides a strong foundation for 
+  further work. Added `compare.POSIXt()` for better reporting of datetime
+  differences.
 
 * `expect_output(f(), NA)` will fail if `f()` produces output; 
   `expect_output(f(), NULL)` will fail if `f()` doesn't produce output (#323).
