@@ -7,7 +7,7 @@
 \usage{
 expect_is(object, class, info = NULL, label = NULL)
 
-expect_type(expr, type)
+expect_type(object, type)
 }
 \arguments{
 \item{object}{object to test}

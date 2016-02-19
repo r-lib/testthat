@@ -26,17 +26,22 @@
 compare.character <- function(x, y, ..., max_diffs = 5, max_lines = 5,
                               width = getOption("width")) {
 
-  if (identical(x, y))
+  if (identical(x, y)) {
     return(no_difference())
+  }
 
-  if (!same_type(x, y))
+  if (!same_type(x, y)) {
     return(diff_type(x, y))
-  if (!same_class(x, y))
+  }
+  if (!same_class(x, y)) {
     return(diff_class(x, y))
-  if (!same_length(x, y))
+  }
+  if (!same_length(x, y)) {
     return(diff_length(x, y))
-  if (!same_attr(x, y))
+  }
+  if (!same_attr(x, y)) {
     return(diff_attr(x, y))
+  }
 
   diff <- !vector_equal(x, y)
 

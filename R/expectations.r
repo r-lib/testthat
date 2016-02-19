@@ -40,11 +40,11 @@ is_a <- function(class) {
 
 #' @export
 #' @rdname expect_is
-expect_type <- function(expr, type) {
+expect_type <- function(object, type) {
   stopifnot(is.character(type), length(type) == 1)
 
-  label <- find_expr("expr")
-  actual_type <- typeof(expr)
+  label <- find_expr("object")
+  actual_type <- typeof(object)
 
   expect(
     identical(type, actual_type),

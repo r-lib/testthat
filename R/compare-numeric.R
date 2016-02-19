@@ -18,17 +18,22 @@
 #' compare(x, x + 1e-9)
 compare.numeric <- function(x, y, ..., max_diffs = 9) {
   all_equal <- all.equal(x, y, ...)
-  if (isTRUE(all_equal))
+  if (isTRUE(all_equal)) {
     return(no_difference())
+  }
 
-  if (!typeof(y) %in% c("integer", "double"))
+  if (!typeof(y) %in% c("integer", "double")) {
     return(diff_type(x, y))
-  if (!same_class(x, y))
+  }
+  if (!same_class(x, y)) {
     return(diff_class(x, y))
-  if (!same_length(x, y))
+  }
+  if (!same_length(x, y)) {
     return(diff_length(x, y))
-  if (!same_attr(x, y))
+  }
+  if (!same_attr(x, y)) {
     return(diff_attr(x, y))
+  }
 
   diff <- !vector_equal(x, y)
 
