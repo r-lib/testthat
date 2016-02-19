@@ -28,21 +28,25 @@ test_that("errors of the appropriate subclass are caught", {
     stop(c)
   }
 
-  res <- throws_error(class = "my_error")(custom_stop("my_error", "hi"))
+  res <- throws_error(expected_class = "my_error")(custom_stop("my_error", 
+                                                               "hi"))
   expect_that(res$passed, is_true())
 
-  res <- throws_error(class = "my_error")(custom_stop("wrong_error", "hi"))
+  res <- throws_error(expected_class = "my_error")(custom_stop("wrong_error", 
+                                                               "hi"))
   expect_that(res$passed, is_false())
 
-  res <- throws_error(class = "my_error")(stop("hi"))
+  res <- throws_error(expected_class = "my_error")(stop("hi"))
   expect_that(res$passed, is_false())
 
-  res <- throws_error(regexp = "hi",
-                      class = "my_error")(custom_stop("my_error", "hi"))
+  classes <- c("my_error", "other_error")
+  res <- throws_error(regexp = "hi", 
+                      expected_class = classes)(custom_stop("my_error", "hi"))
   expect_that(res$passed, is_true())
 
   res <- throws_error(regexp = "bye",
-                      class = "my_error")(custom_stop("my_error", "hi"))
+                      expected_class = "my_error")(custom_stop("my_error", 
+                                                               "hi"))
   expect_that(res$passed, is_false())
 
 })

@@ -10,8 +10,10 @@
 #' @param ... Additional arguments passed on to \code{\link{grepl}}, e.g.
 #'   \code{ignore.case} or \code{fixed}.
 #' @family expectations
-#' @param class expected class of error condition. This can be use to test
-#' that functions produce customized error conditions of the appropriate class.
+#' @param expected_class expected class of error condition, may be a vector.
+#'    This can be used to test that functions produce customized error
+#'    conditions of the appropriate class. The check passes if the error is
+#'    if any of the classes named.
 #' @examples
 #' expect_match("Testing is fun", "fun")
 #' expect_match("Testing is fun", "f.n")
@@ -122,17 +124,19 @@ prints_text <- function(regexp, ...) {
 
 #' @export
 #' @rdname matching-expectations
-expect_error <- function(object, regexp = NULL, class = NULL, ..., info = NULL,
+expect_error <- function(object, regexp = NULL, expected_class = NULL, ..., info = NULL,
                          label = NULL) {
   if (is.null(label)) {
     label <- find_expr("object")
   }
-  expect_that(object, throws_error(regexp, ...), info = info, label = label)
+  expect_that(object, 
+              throws_error(regexp, expected_class = expected_class, ...),
+              info = info, label = label)
 }
 #' @export
 #' @rdname oldskool
-throws_error <- function(regexp = NULL, class = NULL, ...) {
-  if (identical(regexp, NA) && !is.null(class)) {
+throws_error <- function(regexp = NULL, expected_class = NULL, ...) {
+  if (identical(regexp, NA) && !is.null(expected_class)) {
     stop("If regexp argument is NA (expecting no error), class should be NULL")
   }
   function(expr) {
@@ -142,36 +146,37 @@ throws_error <- function(regexp = NULL, class = NULL, ...) {
     },
     error = function(e) {
       e
-    }
-    )
+    })
     
     paste_with_commas <- function(x, y) paste(x, y, sep=", ")
-    expected_classes_as_string <- Reduce(paste_with_commas, class)
+    expected_classes_as_string <- Reduce(paste_with_commas, expected_class)
+    no_error_string <- "no errors raised"
     
     if (identical(regexp, NA)) {
       expectation(
         is.null(error),
-        paste0("expected no errors:\n", paste("* ", errors, collapse = "\n")),
-        "no errors raised"
+        paste0("expected no errors:\n", as.character(error),
+               no_error_string),
+        success_msg = no_error_string
       )
     } else if (is.null(error)) {
-      expectation(FALSE, "no error raised") 
-    } else if (!is.null(class) && !inherits(error, class)) {
+      expectation(FALSE, no_error_string) 
+    } else if (!is.null(expected_class) && !inherits(error, expected_class)) {
       expectation(FALSE,
                   paste("error did not inherit from expected class(es):", 
                         expected_classes_as_string)
       )
+    } else if (!is.null(regexp)) {
+      exp <- matches(regexp, ...)(as.character(error))
+      if (exp$passed && !is.null(expected_class)) {
+        exp$success_msg <- paste(exp$success_msg,
+                                 "and error was one of the expected classes:",
+                                 expected_classes_as_string)
+      }
+      exp
+    } else {
+      expectation(TRUE, no_error_string, success_msg = "error raised")
     }
-  } else if (!is.null(regexp)) {
-    exp <- matches(regexp, ...)(as.charater(error))
-    if (exp$passed && !is.null(class)) {
-      exp$success_msg <- paste(exp$success_msg,
-                               "and error was one of the expected classes:",
-                               expected_classes_as_string)
-    }
-    exp
-  } else {
-    expectation(TRUE, "no errors raised", success_msg = "error raised")
   }
 }
 

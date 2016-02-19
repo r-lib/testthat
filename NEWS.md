@@ -1,7 +1,7 @@
 # testthat 0.11.0.9000
 
-* `throws_error` and `expect_error` can now take a `class` argument to express
-   an expected subclass for the error condition
+* `throws_error` and `expect_error` can now take an `expected_class` argument to express
+   an expected subclass for the error condition (@dchudz)
 
 * Fix failure message for `throws_error` in case where no error is raised (@nealrichardson, #342).
 * Fixed minor issues with `throws_error(NA)` and `expect_error(..., NA)` (@krlmlr, #317).
