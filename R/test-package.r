@@ -1,6 +1,6 @@
 test_pkg_env <- function(package) {
-  list2env(as.list(getNamespace(package), all.names=TRUE),
-    parent=parent.env(getNamespace(package)))
+  list2env(as.list(getNamespace(package), all.names = TRUE),
+    parent = parent.env(getNamespace(package)))
 }
 
 with_top_env <- function(env, code) {
