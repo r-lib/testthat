@@ -1,14 +1,4 @@
-# Sample .travis.yml for R projects from https://github.com/craigcitro/r-travis
+# R for travis: see documentation at https://docs.travis-ci.com/user/languages/r
+
 language: r
-sudo: required
-warnings_are_errors: true
-
-env:
- global:
-   - CRAN: http://cran.rstudio.com
-
-r_packages:
-  - covr
-
-after_success:
-  - Rscript -e 'covr::codecov()'
+cache: packages

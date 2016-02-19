@@ -4,12 +4,26 @@
    an expected subclass for the error condition
 
 * Fix failure message for `throws_error` in case where no error is raised (@nealrichardson, #342).
+* Fixed minor issues with `throws_error(NA)` and `expect_error(..., NA)` (@krlmlr, #317).
+
+* `set_reporter()` returns old reporter invisibly (#358, @krlmlr).
+
+* New `FailReporter` to stop in case of failures or errors after all tests
+  (#308, @krlmlr).
+
+* Comparing integers to non-numbers doesn't raise errors anymore, and falls back to
+  string comparison if objects have different lengths. Complex numbers are compared
+  using the same routine (#309, @krlmlr).
+
+* New option `testthat.summary.max_reports` that limits the number of reports printed by the summary reporter, default: 15 (@krlmlr, #354).
+
+* Fix failure message for `throws_error` in case where no error is raised (#342, @nealrichardson).
 
 * Added [Catch](https://github.com/philsquared/Catch) for unit testing of C++ code.
   See `?use_catch()` for more details. (@kevinushey)
 
 * `expect_identical()` and `is_identical_to()` now use `compare()` for more
-  detailed output of differences (@krlmlr, #319).
+  detailed output of differences (#319, @krlmlr).
 
 # testthat 0.11.0
 

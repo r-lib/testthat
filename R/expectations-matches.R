@@ -81,11 +81,11 @@ matches <- function(regexp, all = TRUE, ...) {
     matches <- grepl(regexp, char, ...)
     if (length(char) > 1) {
       values <- paste0("Actual values:\n",
-        paste0("* ", encodeString(char), collapse = "\n"))
+                       paste0("* ", encodeString(char), collapse = "\n"))
     } else {
       values <- paste0("Actual value: \"", encodeString(char), "\"")
     }
-
+    
     expectation(
       length(matches) > 0 && if (all) all(matches) else any(matches),
       paste0("does not match '", encodeString(regexp), "'. ", values),
@@ -107,7 +107,7 @@ expect_output <- function(object, regexp, ..., info = NULL, label = NULL) {
 prints_text <- function(regexp, ...) {
   function(expr) {
     output <- evaluate_promise(expr, print = TRUE)$output
-
+    
     if (identical(regexp, NA)) {
       return(expectation(
         !is.null(output),
@@ -115,7 +115,7 @@ prints_text <- function(regexp, ...) {
         "didn't produce output"
       ))
     }
-
+    
     matches(regexp, ...)(output)
   }
 }
@@ -123,7 +123,7 @@ prints_text <- function(regexp, ...) {
 #' @export
 #' @rdname matching-expectations
 expect_error <- function(object, regexp = NULL, class = NULL, ..., info = NULL,
-  label = NULL) {
+                         label = NULL) {
   if (is.null(label)) {
     label <- find_expr("object")
   }
@@ -132,41 +132,53 @@ expect_error <- function(object, regexp = NULL, class = NULL, ..., info = NULL,
 #' @export
 #' @rdname oldskool
 throws_error <- function(regexp = NULL, class = NULL, ...) {
+  if (identical(regexp, NA) && !is.null(class)) {
+    stop("If regexp argument is NA (expecting no error), class should be NULL")
+  }
   function(expr) {
-    res <- try(force(expr), TRUE)
-    no_error <- !inherits(res, "try-error")
-    if (no_error) {
-      return(expectation(
-        identical(regexp, NA),
-        "code didn't raise an error",
-        "code raised an error"
-      ))
+    error <- tryCatch({
+      expr
+      NULL
+    },
+    error = function(e) {
+      e
     }
-
-    if (is.null(class)) {
-      fails_error_subclass_check <- FALSE
-      success_message <- "threw an error"
-    } else {
-      condition <- attr(res, "condition")
-      fails_error_subclass_check <- !inherits(condition, class)
-      success_message <- sprintf("threw an error (of type '%s')", class)
+    )
+    
+    paste_with_commas <- function(x, y) paste(x, y, sep=", ")
+    expected_classes_as_string <- Reduce(paste_with_commas, class)
+    
+    if (identical(regexp, NA)) {
+      expectation(
+        is.null(error),
+        paste0("expected no errors:\n", paste("* ", errors, collapse = "\n")),
+        "no errors raised"
+      )
+    } else if (is.null(error)) {
+      expectation(FALSE, "no error raised") 
+    } else if (!is.null(class) && !inherits(error, class)) {
+      expectation(FALSE,
+                  paste("error did not inherit from expected class(es):", 
+                        expected_classes_as_string)
+      )
     }
-
-    if (fails_error_subclass_check) {
-      expectation(FALSE, sprintf("(error was not of expected type '%s')",
-                                 class))
-    } else if (!is.null(regexp)) {
-      matches(regexp, ...)(res)
-    } else {
-      expectation(TRUE, "no error thrown", success_message)
+  } else if (!is.null(regexp)) {
+    exp <- matches(regexp, ...)(as.charater(error))
+    if (exp$passed && !is.null(class)) {
+      exp$success_msg <- paste(exp$success_msg,
+                               "and error was one of the expected classes:",
+                               expected_classes_as_string)
     }
+    exp
+  } else {
+    expectation(TRUE, "no errors raised", success_msg = "error raised")
   }
 }
 
 #' @export
 #' @rdname matching-expectations
 expect_warning <- function(object, regexp = NULL, ..., all = FALSE, info = NULL,
-  label = NULL) {
+                           label = NULL) {
   if (is.null(label)) {
     label <- find_expr("object")
   }
@@ -177,7 +189,7 @@ expect_warning <- function(object, regexp = NULL, ..., all = FALSE, info = NULL,
 gives_warning <- function(regexp = NULL, all = FALSE, ...) {
   function(expr) {
     warnings <- evaluate_promise(expr)$warnings
-
+    
     if (identical(regexp, NA)) {
       expectation(
         length(warnings) == 0,
@@ -210,7 +222,7 @@ expect_message <- function(object, regexp = NULL, ..., all = FALSE, info = NULL,
 shows_message <- function(regexp = NULL, all = FALSE, ...) {
   function(expr) {
     messages <- evaluate_promise(expr)$messages
-
+    
     if (identical(regexp, NA)) {
       expectation(
         length(messages) == 0,
