@@ -1,8 +1,14 @@
 context("compare.numeric")
 
+# Metadata ----------------------------------------------------------------
+
 test_that("numeric types are compatible", {
   expect_true(compare(1, 1L)$equal)
   expect_true(compare(1L, 1)$equal)
+})
+
+test_that("non-numeric types are not compatible", {
+  expect_match(compare(1, "a")$message, "double vs character")
 })
 
 test_that("base lengths must be identical", {
@@ -31,7 +37,11 @@ test_that("attributes must be identical", {
   expect_match(compare(x4, x5)$message, "Names: 1 string mismatch")
 })
 
-# all.equal ---------------------------------------------------------------
+# Values ------------------------------------------------------------------
+
+test_that("two identical vectors are the same", {
+  expect_true(compare(1:10, 1:10)$equal)
+})
 
 test_that("unnamed arguments to all.equal passed through correctly", {
   expect_equal(415, 416, 0.01)

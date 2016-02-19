@@ -33,6 +33,10 @@ test_that("attributes must be identical", {
 
 # Values ------------------------------------------------------------------
 
+test_that("two identical vectors are the same", {
+  expect_true(compare(letters, letters)$equal)
+})
+
 test_that("equal if both missing or both the same (multiple values)", {
   expect_true(compare(c("ABC", NA), c("ABC", NA))$equal)
 
