@@ -54,7 +54,7 @@ test_code <- function(description, code, env) {
   }
   handle_expectation <- function(exp) {
     get_reporter()$add_result(exp)
-    ok <<- ok && expectation_ok(exp)
+    ok <<- ok && expectation_success(exp)
     invokeRestart(findRestart("continue_test", exp))
   }
   report_condition <- function(e) {
@@ -91,7 +91,7 @@ expect <- function(exp, ...) {
 }
 
 raise_condition <- function(exp) {
-  if (expectation_ok(exp)) {
+  if (expectation_success(exp)) {
     signalCondition(exp)
   } else {
     stop(exp)

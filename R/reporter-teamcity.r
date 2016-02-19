@@ -56,13 +56,13 @@ TeamcityReporter <- setRefClass("TeamcityReporter", contains = "Reporter",
 
       teamcity("testStarted", testName)
 
-      if (!result$passed) {
+      if (!expectation_success(result)) {
         lines <- strsplit(result$message, "\n")[[1]]
 
         teamcity("testFailed", testName, message = lines[1],
           details = paste(lines[-1], collapse = "\n")
         )
-  		}
+      }
       teamcity("testFinished", testName)
     }
 
