@@ -1,5 +1,10 @@
 # testthat 0.11.0.9000
 
+* `setup_test_dir()` has been removed. If you used it previously, instead use
+  `source_test_helpers()` and `find_test_scripts()`.
+
+* `source_file()` exports the function testthat uses to load files from disk.
+
 * Refactored internal testing logic. Now all expectations are also conditions, and R's condition system is used to signal failures and successes (#360, @krlmlr).
 
 * `test_that()` returns a `logical` that indicates if all tests were successful (#360, @krlmlr).

@@ -37,7 +37,9 @@ test_dir <- function(path, filter = NULL, reporter = "summary",
 
 test_files <- function(paths, reporter = "summary",
                        env = test_env(), ...) {
-  if (length(paths) == 0) stop('No matching test file in dir')
+  if (length(paths) == 0) {
+    stop('No matching test file in dir')
+  }
 
   current_reporter <- find_reporter(reporter)
   with_reporter(
@@ -49,20 +51,6 @@ test_files <- function(paths, reporter = "summary",
   results <- unlist(results, recursive = FALSE)
 
   invisible(testthat_results(results))
-}
-
-
-#' Source the helper scripts if any.
-#'
-#' Helper scripts are R scripts accompanying test scripts
-#' but prefixed by \code{helper}. These scripts are sourced
-#' only one time in test environment.
-#'
-#' @inheritParams test_dir
-#' @keywords internal
-#' @export
-source_test_helpers <- function(path, env = globalenv()) {
-  source_dir(path, "^helper.*\\.[rR]$", env = env)
 }
 
 
@@ -92,38 +80,6 @@ find_test_scripts <- function(path, filter = NULL, invert = FALSE, ...) {
   files
 }
 
-
-#' Take care or finding the test files and sourcing the helpers.
-#' @inheritParams test_dir
-#' @param env environment in which to source the helpers
-#' @return the test file paths
-setup_test_dir <- function(path, filter, env) {
-  source_dir(path, "^helper.*\\.[rR]$", env = env)
-  find_test_scripts(path, filter)
-}
-
-
-#' Load all source files in a directory.
-#'
-#' The expectation is that the files can be sourced in alphabetical order.
-#'
-#' @param path path to tests
-#' @param pattern regular expression used to filter files
-#' @param env environment in which to store results
-#' @param chdir change working directory to path?
-#' @keywords internal
-#' @export
-source_dir <- function(path, pattern = "\\.[rR]$", env = test_env(),
-                       chdir = TRUE) {
-  files <- normalizePath(sort(dir(path, pattern, full.names = TRUE)))
-  if (chdir) {
-    old <- setwd(path)
-    on.exit(setwd(old))
-  }
-
-  lapply(files, sys.source2, envir = env)
-}
-
 #' Run all tests in specified file.
 #'
 #' @param path path to file
@@ -135,48 +91,24 @@ source_dir <- function(path, pattern = "\\.[rR]$", env = test_env(),
 test_file <- function(path, reporter = "summary", env = test_env(),
                       start_end_reporter = TRUE) {
   reporter <- find_reporter(reporter)
-  if (is.null(env)) env <- globalenv()
-  lister <- ListReporter$new()
 
+  lister <- ListReporter$new()
   if (!is.null(reporter)) {
     reporter <- MultiReporter$new(reporters = list(reporter, lister))
   } else {
     reporter <- lister
   }
 
-  old_dir <- setwd(dirname(path))
-  on.exit({
-    setwd(old_dir)
-  }, add = TRUE)
-
   with_reporter(
     reporter = reporter,
     start_end_reporter = start_end_reporter,
     {
-      fname <- basename(path)
-      lister$start_file(fname)
+      lister$start_file(basename(path))
 
-      sys.source2(fname, new.env(parent = env))
+      source_file(path, new.env(parent = env), chdir = TRUE)
       end_context()
     }
   )
 
   invisible(testthat_results(lister$results))
-}
-
-
-sys.source2 <- function(file, envir = parent.frame()) {
-  stopifnot(file.exists(file))
-  stopifnot(is.environment(envir))
-
-  lines <- readLines(file, warn = FALSE)
-  srcfile <- srcfilecopy(file, lines, file.info(file)[1, "mtime"],
-    isFile = TRUE)
-  exprs <- parse(text = lines, n = -1, srcfile = srcfile)
-
-  n <- length(exprs)
-  if (n == 0L) return(invisible())
-
-
-  invisible(eval(exprs, envir))
 }

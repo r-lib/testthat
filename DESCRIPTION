@@ -55,6 +55,7 @@ Collate:
     'reporter-teamcity.r'
     'reporter-zzz.r'
     'skip.R'
+    'source.R'
     'test-compiled-code.r'
     'test-example.R'
     'test-files.r'
