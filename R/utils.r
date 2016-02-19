@@ -6,23 +6,12 @@ find_expr <- function(name, env = parent.frame()) {
   paste0(deparse(subs, width.cutoff = 500), collapse = "\n")
 }
 
-# A version of grepl that's vectorised along pattern, not x
-grepl2 <- function(pattern, x, ...) {
-  stopifnot(length(x) == 1)
-
-  vapply(pattern, grepl, x, ..., FUN.VALUE = logical(1), USE.NAMES = FALSE)
-}
-
 starts_with <- function(string, prefix) {
   substr(string, 1, nchar(prefix)) == prefix
 }
 
 is_directory <- function(x) file.info(x)$isdir
 is_readable <- function(x) file.access(x, 4) == 0
-
-is.error <- function(x) inherits(x, "error")
-
-is.skip <- function(x) inherits(x, "skip")
 
 #' Skip a test.
 #'
