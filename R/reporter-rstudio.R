@@ -37,7 +37,7 @@ RstudioReporter <- setRefClass("RstudioReporter", contains = "Reporter",
         location <- paste0(attr(ref, "srcfile")$filename, "#", ref[1], ":1")
       }
 
-      cat(location, " [", status, "] ", test, ". ", strsplit(result$failure_msg, "\n")[[1]][1], "\n",
+      cat(location, " [", status, "] ", test, ". ", strsplit(result$message, "\n")[[1]][1], "\n",
         sep = "")
     }
   )

@@ -5,7 +5,7 @@
 \alias{is.expectation}
 \title{Expectation class.}
 \usage{
-expectation(passed, failure_msg, srcref = NULL)
+expectation(passed, message, srcref = NULL)
 
 is.expectation(x)
 }
@@ -13,7 +13,7 @@ is.expectation(x)
 \item{passed}{a single logical value indicating whether the test passed
 (\code{TRUE}), failed (\code{FALSE}), or threw an error (\code{NA})}
 
-\item{failure_msg}{A text description of failure}
+\item{message}{A text description of failure}
 
 \item{srcref}{Source reference, if known}
 

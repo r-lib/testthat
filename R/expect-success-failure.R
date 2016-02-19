@@ -31,7 +31,7 @@ expect_failure <- function(expr, message = NULL, ...) {
     if (is.null(message)) {
       expect(!exp$passed, "expectation succeeded")
     } else {
-      expect_match(exp$failure_msg, message, ...)
+      expect_match(exp$message, message, ...)
     }
   }
 }
