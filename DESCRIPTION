@@ -24,6 +24,8 @@ Collate:
     'auto-test.r'
     'colour-text.r'
     'compare.r'
+    'compare-character.R'
+    'compare-numeric.R'
     'context.r'
     'describe.r'
     'evaluate-promise.r'
