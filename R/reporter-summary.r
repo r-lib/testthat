@@ -57,11 +57,11 @@ SummaryReporter <- setRefClass("SummaryReporter", contains = "Reporter",
       if (expectation_skip(result)) {
         result$test <- if (is.null(test)) "(unknown)" else test
         skips <<- c(skips, list(result))
-        cat(colourise("S", "skipped"))
+        cat(colourise("S", "skip"))
         return()
       }
       if (expectation_success(result)) {
-        cat(colourise(".", "passed"))
+        cat(colourise(".", "success"))
         return()
       }
 
@@ -81,15 +81,15 @@ SummaryReporter <- setRefClass("SummaryReporter", contains = "Reporter",
           return()
 
         if (length(skips) > 0L) {
-          cat(colourise("\nSkip:", "skipped"), "\n\n")
+          cat(colourise("\nSkip:", "skip"), "\n\n")
           cat_reports(skips, skip_summary, "\n")
         }
 
         cat("\n")
         if (show_praise && runif(1) < 0.1) {
-          cat(colourise(praise(), "passed"), "\n")
+          cat(colourise(praise(), "success"), "\n")
         } else {
-          cat(colourise("DONE", "passed"), "\n")
+          cat(colourise("DONE", "success"), "\n")
         }
       } else {
         cat("\n")
