@@ -1,9 +1,11 @@
-#' Expectation: does the object inherit from a class?
+#' Expectation: does the object inherit from a S3 or S4 class, or a base type?
 #'
-#' Tests whether or not an object inherits from any of a list of classes.
+#' Tests whether or not an object inherits from any of a list of classes, or
+#' is an instance of a base type.
 #'
 #' @inheritParams expect_that
 #' @param class character vector of class names
+#' @param type String giving base type (as returned by \code{\link{typeof}}).
 #' @seealso \code{\link{inherits}}
 #' @family expectations
 #' @export
@@ -34,6 +36,20 @@ is_a <- function(class) {
       paste0("inherits from ", class_s)
     )
   }
+}
+
+#' @export
+#' @rdname expect_is
+expect_type <- function(object, type) {
+  stopifnot(is.character(type), length(type) == 1)
+
+  label <- find_expr("object")
+  actual_type <- typeof(object)
+
+  expect(
+    identical(type, actual_type),
+    paste0("`", label, "` is type `", actual_type, "` not `", type, "`")
+  )
 }
 
 #' Expectation: is the object true/false?

@@ -17,15 +17,21 @@ Imports:
     crayon,
     praise
 Suggests:
-    devtools
+    devtools,
+    covr
 License: MIT + file LICENSE
 Collate:
     'auto-test.r'
     'colour-text.r'
     'compare.r'
+    'compare-character.R'
+    'compare-numeric.R'
+    'compare-time.R'
     'context.r'
     'describe.r'
     'evaluate-promise.r'
+    'reporter.r'
+    'expect-success-failure.R'
     'expect-that.r'
     'expectation.r'
     'expectations-equality.R'
@@ -36,8 +42,8 @@ Collate:
     'make-expectation.r'
     'mock.r'
     'praise.R'
-    'reporter.r'
     'reporter-check.R'
+    'reporter-fail.r'
     'reporter-list.r'
     'reporter-minimal.r'
     'reporter-multi.r'

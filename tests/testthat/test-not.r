@@ -1,4 +1,4 @@
-context("Negations")
+context("not")
 
 test_that("not(throws_error) fails with errors", {
   res <- not(throws_error())(stop())
