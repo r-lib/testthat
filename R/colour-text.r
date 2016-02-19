@@ -7,7 +7,7 @@ testthat_colours <- list(
   error = red
 )
 
-colourise <- function(text, as = names(testthat_colours)) {
+colourise <- function(text, as = c("success", "skip", "failure", "error")) {
   colour_config <- getOption("testthat.use_colours", TRUE)
   if (!isTRUE(colour_config)) {
     return(text)
