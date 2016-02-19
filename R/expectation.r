@@ -57,7 +57,7 @@ expectation_type <- function(exp) {
   class(exp)[[which(class(exp) == "expectation") + 1L]]
 }
 
-expectation_ok <- function(exp) {
+expectation_success <- function(exp) {
   expectation_type(exp) == "success"
 }
 
