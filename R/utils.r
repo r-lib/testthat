@@ -103,3 +103,5 @@ skip_on_appveyor <- function() {
 
   skip("On Appveyor")
 }
+
+null <- function(...) invisible()

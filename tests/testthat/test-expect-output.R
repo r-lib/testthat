@@ -17,3 +17,11 @@ test_that("expect = string checks for match", {
   expect_success(expect_output(g(), "!"))
   expect_failure(expect_output(g(), "x"), "does not match 'x'")
 })
+
+test_that("multiline outputs captures and matches", {
+  expect_success(expect_output(cat("1\n2"), "1\n2"))
+})
+
+test_that("... passed on to grepl", {
+  expect_success(expect_output(print("X"), "x", ignore.case = TRUE))
+})
