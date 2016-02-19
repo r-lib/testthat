@@ -54,19 +54,20 @@ SummaryReporter <- setRefClass("SummaryReporter", contains = "Reporter",
     add_result = function(result) {
       callSuper(result)
       has_tests <<- TRUE
+
       if (expectation_skip(result)) {
         result$test <- if (is.null(test)) "(unknown)" else test
         skips <<- c(skips, list(result))
-        cat(colourise("S", "skip"))
+        cat(single_letter_summary(result))
         return()
       }
       if (expectation_success(result)) {
-        cat(colourise(".", "success"))
+        cat(single_letter_summary(result))
         return()
       }
 
       if (n + 1 > length(labels) || n + 1 > max_reports) {
-        cat(colourise("F", "error"))
+        cat(single_letter_summary(result))
       } else {
         n <<- n + 1L
         result$test <- if (is.null(test)) "(unknown)" else test

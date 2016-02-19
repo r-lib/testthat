@@ -150,3 +150,13 @@ negate <- function(expt) {
               paste0("NOT(", expt$message, ")"),
               srcref = expt$srcref)
 }
+
+single_letter_summary <- function(x) {
+  switch(expectation_type(x),
+    skip    = colourise("S", "skip"),
+    success = colourise(".", "success"),
+    error   = colourise("E", "error"),
+    failure = colourise("F", "failure"),
+    "?"
+  )
+}

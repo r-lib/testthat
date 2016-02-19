@@ -9,7 +9,11 @@ testthat_colours <- list(
 
 colourise <- function(text, as = names(testthat_colours)) {
   colour_config <- getOption("testthat.use_colours", TRUE)
-  if (!isTRUE(colour_config)) return(text)
+  if (!isTRUE(colour_config)) {
+    return(text)
+  }
+
   as <- match.arg(as)
   testthat_colours[[as]](text)
 }
+
