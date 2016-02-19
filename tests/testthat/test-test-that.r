@@ -1,5 +1,10 @@
 context("test_that")
 
+test_that("messages are suppressed", {
+  message("YOU SHOULDN'T SEE ME")
+  succeed()
+})
+
 test_that("errors are captured", {
   f <- function() g()
   g <- function() stop("I made a mistake", call. = FALSE)
@@ -16,8 +21,6 @@ test_that("errors captured even when looking for warnings", {
   })
   expect_equal(length(reporter$failures), 1)
 })
-
-
 
 test_that("line numbers are found and given to reporters", {
   ## a reporter that keeps its results
