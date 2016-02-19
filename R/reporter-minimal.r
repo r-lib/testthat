@@ -17,17 +17,14 @@ MinimalReporter <- setRefClass("MinimalReporter", contains = "Reporter",
   methods = list(
     add_result = function(result) {
       callSuper(result)
-      if (expectation_skip(result)) {
-        cat(colourise("S", "skipped"))
-      } else if (result$passed) {
-        cat(colourise(".", "passed"))
-      } else {
-        if (result$error) {
-          cat(colourise("E", "error"))
-        } else {
-          cat(colourise("F", "error"))
-        }
-      }
+
+      switch(expectation_type(result),
+        skip    = cat(colourise("S", "skipped")),
+        success = cat(colourise(".", "passed")),
+        error   = cat(colourise("E", "error")),
+        failure = cat(colourise("F", "error")),
+        "?"
+      )
     },
 
     end_reporter = function() {

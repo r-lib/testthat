@@ -32,7 +32,7 @@ Reporter <- setRefClass("Reporter",
       test <<- desc
     },
     add_result = function(result) {
-      if (!result$passed && !expectation_skip(result)) {
+      if (!expectation_type(result) %in% c("success", "skip")) {
         failed <<- TRUE
       }
     },

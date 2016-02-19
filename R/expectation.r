@@ -14,14 +14,14 @@ expectation <- function(passed, message, srcref = NULL) {
                   message = message, srcref = srcref)
 }
 
-new_expectation <- function(message, srcref, type) {
-  passed <- type == "success"
+new_expectation <- function(message, srcref, type = c("success", "failure", "error", "skip")) {
+  type <- match.arg(type)
+
   error <- type == "error"
 
   exp <- structure(
     list(
       # TODO: remove legacy members one by one
-      passed = passed,
       error = error,
       message = message
     ),
@@ -30,7 +30,7 @@ new_expectation <- function(message, srcref, type) {
     class = c(
       "expectation",
       type,
-      if (!passed && !error) "error",
+      if (type %in% c("failure", "error")) "error",
       "condition")
   )
 

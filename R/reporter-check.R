@@ -34,7 +34,7 @@ CheckReporter <- setRefClass("CheckReporter", contains = "Reporter",
         n_skip <<- n_skip + 1L
         return()
       }
-      if (result$passed) {
+      if (expectation_success(result)) {
         n_ok <<- n_ok + 1L
         return()
       }

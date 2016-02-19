@@ -60,7 +60,7 @@ SummaryReporter <- setRefClass("SummaryReporter", contains = "Reporter",
         cat(colourise("S", "skipped"))
         return()
       }
-      if (result$passed) {
+      if (expectation_success(result)) {
         cat(colourise(".", "passed"))
         return()
       }
