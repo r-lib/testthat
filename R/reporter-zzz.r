@@ -6,6 +6,9 @@ NULL
 #' Changes global reporter to that specified, runs code and the returns
 #' global reporter back to previous value.
 #'
+#' The \code{with_reporter} function returns the reporter that has been used
+#' for running the code.
+#'
 #' @keywords internal
 #' @param reporter test reporter to use
 #' @param code code block to execute
@@ -33,16 +36,23 @@ get_reporter <- function() {
 }
 
 #' @rdname reporter-accessors
+#' @param start_end_reporter whether to start and end the reporter
 #' @export
-with_reporter <- function(reporter, code) {
+with_reporter <- function(reporter, code, start_end_reporter = TRUE) {
   reporter <- find_reporter(reporter)
 
   old <- set_reporter(reporter)
   on.exit(set_reporter(old))
 
-  reporter$start_reporter()
+  if (start_end_reporter) {
+    reporter$start_reporter()
+  }
+
   force(code)
-  reporter$end_reporter()
+
+  if (start_end_reporter) {
+    reporter$end_reporter()
+  }
 
   invisible(reporter)
 }
@@ -50,12 +60,23 @@ with_reporter <- function(reporter, code) {
 #' Find reporter object given name or object.
 #'
 #' If not found, will return informative error message.
+#' Pass a character vector to create a \code{\link{MultiReporter}} composed
+#' of individual reporters.
 #' Will return null if given NULL.
 #'
-#' @param reporter name of reporter
+#' @param reporter name of reporter(s), or reporter object(s)
 #' @keywords internal
 find_reporter <- function(reporter) {
   if (is.null(reporter)) return(NULL)
+
+  if (length(reporter) <= 1L) {
+    find_reporter_one(reporter)
+  } else {
+    MultiReporter$new(reporters = lapply(reporter, find_reporter_one))
+  }
+}
+
+find_reporter_one <- function(reporter) {
   if (inherits(reporter, "Reporter")) return(reporter)
 
   name <- reporter
