@@ -1,10 +1,6 @@
 context("Contexts")
 
-env <- new.env()
-env$.packageName <- "testthat"
-
 CountReporter <- setRefClass("CountReporter", contains = "Reporter",
-  where = env,
   fields = c("context_count", "test_count", "context_i", "test_i"),
   methods = list(
     initialize = function() {
