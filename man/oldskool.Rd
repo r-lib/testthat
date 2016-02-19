@@ -17,6 +17,7 @@
 \alias{oldskool}
 \alias{prints_text}
 \alias{shows_message}
+\alias{takes_less_than}
 \alias{throws_error}
 \title{Old-style expectations.}
 \usage{
@@ -45,6 +46,8 @@ is_true()
 is_false()
 
 is_null()
+
+takes_less_than(amount)
 
 has_names(expected, ignore.order = FALSE, ignore.case = FALSE)
 
