@@ -25,47 +25,73 @@
 #'
 compare.character <- function(x, y, ..., max_diffs = 5, max_lines = 5,
                               width = getOption("width")) {
-  if (identical(x, y)) return(comparison())
 
-  # If they're not the same type or length, fallback to default method
-  if (!same_type(x, y)) return(NextMethod())
+  if (identical(x, y))
+    return(no_difference())
 
-  lx <- length(x)
-  ly <- length(y)
-  if (lx != ly) {
-    length(x) <- length(y) <- max(lx, ly)
-    length_diff <- sprintf("Lengths (%s, %s) differ\n", lx, ly)
+  if (!same_type(x, y))
+    return(diff_type(x, y))
+  if (!same_class(x, y))
+    return(diff_class(x, y))
+  if (!same_length(x, y))
+    return(diff_length(x, y))
+  if (!same_attr(x, y))
+    return(diff_attr(x, y))
+
+  diff <- !vector_equal(x, y)
+
+  if (!any(diff)) {
+    no_difference()
   } else {
-    length_diff <- NULL
+    mismatches <- mismatch_character(x, y, diff)
+    difference(format(
+      mismatches,
+      max_diffs = max_diffs,
+      max_lines = max_lines,
+      width = width
+    ))
   }
+}
 
-  # If vectorwise-equal, fallback to default method
-  diff <- xor(is.na(x), is.na(y)) | x != y
-  diff[is.na(diff)] <- FALSE
-  which_diff <- which(diff)
+mismatch_character <- function(x, y, diff = !vector_equal(x, y)) {
 
-  if (length(which_diff) == 0L) {
-    return(NextMethod())
-  }
+  structure(
+    list(
+      i = which(diff),
+      x = x[diff],
+      y = y[diff],
+      n = length(diff),
+      n_diff = sum(diff)
+    ),
+    class = "mismatch_character"
+  )
+}
 
+#' @export
+format.mismatch_character <- function(x, ...,
+                                      max_diffs = 5,
+                                      max_lines = 5,
+                                      width = getOption("width")) {
   width <- width - 6 # allocate space for labels
-  n_show <- seq_len(min(length(which_diff), max_diffs))
-  show <- which_diff[n_show]
+  n_show <- seq_len(min(x$n_diff, max_diffs))
 
   encode <- function(x) encodeString(x, quote = '"')
-  show_x <- str_trunc(encode(x[show]), width * max_lines)
-  show_y <- str_trunc(encode(y[show]), width * max_lines)
+  show_x <- str_trunc(encode(x$x[n_show]), width * max_lines)
+  show_y <- str_trunc(encode(x$y[n_show]), width * max_lines)
 
   sidebyside <- Map(function(x, y, pos) {
-    x <- if (pos <= lx) paste0("x[", pos, "]: ", str_chunk(x, width))
-    y <- if (pos <= ly) paste0("y[", pos, "]: ", str_chunk(y, width))
+    x <- paste0("x[", pos, "]: ", str_chunk(x, width))
+    y <- paste0("y[", pos, "]: ", str_chunk(y, width))
     paste(c(x, y), collapse = "\n")
-  }, show_x, show_y, show)
+  }, show_x, show_y, x$i)
 
-  msg <- paste0(length_diff,
-    sum(diff), " string mismatches:\n",
-    paste0(sidebyside, collapse = "\n\n"))
-  comparison(FALSE, msg)
+  n_diff <- paste0(x$n_diff, "/", x$n, " mismatches")
+  paste0(n_diff, ":\n", paste0(sidebyside, collapse = "\n\n"))
+}
+
+#' @export
+print.mismatch_character <- function(x, ...) {
+  cat(format(x, ...), "\n", sep = "")
 }
 
 str_trunc <- function(x, length) {
