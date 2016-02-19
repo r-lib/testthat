@@ -17,7 +17,7 @@ sumarize_one_test_results <- function(test) {
     # error reports should be handled differently.
     # They may not correspond to an expect_that() test so remove them
     last_test <- test_results[[nb_tests]]
-    error <- last_test$error
+    error <- expectation_error(last_test)
     if (error) {
       test_results <- test_results[-nb_tests]
       nb_tests <- length(test_results)

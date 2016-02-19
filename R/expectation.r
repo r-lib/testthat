@@ -17,12 +17,8 @@ expectation <- function(passed, message, srcref = NULL) {
 new_expectation <- function(message, srcref, type = c("success", "failure", "error", "skip")) {
   type <- match.arg(type)
 
-  error <- type == "error"
-
   exp <- structure(
     list(
-      # TODO: remove legacy members one by one
-      error = error,
       message = message
     ),
     # Use "expectation" as top-level class so that no coercion is applied
@@ -31,7 +27,8 @@ new_expectation <- function(message, srcref, type = c("success", "failure", "err
       "expectation",
       type,
       if (type %in% c("failure", "error")) "error",
-      "condition")
+      "condition"
+    )
   )
 
   update_expectation(exp, srcref)
