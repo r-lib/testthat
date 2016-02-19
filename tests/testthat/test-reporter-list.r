@@ -18,7 +18,6 @@ test_that("ListReporter with test_file", {
   fl <- last_results[[1]]
   expect_false(fl$passed)
   expect_false(fl$error)
-  expect_equal(fl$success_msg, "TRUE equals FALSE")
 
   # test that file is set
   files <- sapply(res, '[[', 'file')

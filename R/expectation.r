@@ -6,18 +6,16 @@
 #' @param passed a single logical value indicating whether the test passed
 #'  (\code{TRUE}), failed (\code{FALSE}), or threw an error (\code{NA})
 #' @param failure_msg A text description of failure
-#' @param success_msg A text description of success
 #' @param srcref Source reference, if known
 #' @keywords internal
 #' @export
-expectation <- function(passed, failure_msg, success_msg = "unknown", srcref = NULL) {
+expectation <- function(passed, failure_msg, srcref = NULL) {
   structure(
     list(
       passed = passed,
       error = FALSE,
       skipped = FALSE,
       failure_msg = failure_msg,
-      success_msg = success_msg,
       srcref = srcref
     ),
     class = "expectation"
@@ -42,8 +40,7 @@ expectation_error <- function(error, calls) {
       passed = FALSE,
       error = TRUE,
       skipped = FALSE,
-      failure_msg = msg,
-      success_msg = "no error occured"
+      failure_msg = msg
     ),
     class = "expectation"
   )
@@ -57,8 +54,7 @@ expectation_skipped <- function(error) {
       passed = FALSE,
       error = FALSE,
       skipped = TRUE,
-      failure_msg = msg,
-      success_msg = "not skipped"
+      failure_msg = msg
     ),
     class = "expectation"
   )
@@ -75,7 +71,7 @@ print.expectation <- function(x, ...) cat(format(x), "\n")
 #' @export
 format.expectation <- function(x, ...) {
   if (x$passed) {
-    paste0("As expected: ", x$success_msg)
+    "As expected"
   } else {
     paste0("Not expected: ", x$failure_msg, ".")
   }
@@ -92,8 +88,7 @@ negate <- function(expt) {
 
   opp <- expt
   opp$passed <- !expt$passed
-  opp$failure_msg <- expt$success_msg
-  opp$success_msg <- expt$failure_msg
+  opp$failure_msg <- paste0("NOT(", opp$failure_msg, ")")
   opp
 
 }

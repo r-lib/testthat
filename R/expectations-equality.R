@@ -62,8 +62,7 @@ equals <- function(expected, label = NULL, ...) {
 
     expectation(
       same$equal,
-      paste0("not equal to ", label, "\n", same$message),
-      paste0("equals ", label)
+      paste0("not equal to ", label, "\n", same$message)
     )
   }
 }
@@ -134,8 +133,7 @@ is_identical_to <- function(expected, label = NULL) {
 
     expectation(
       identical(actual, expected),
-      paste0("is not identical to ", label, ". Differences: \n", diff),
-      paste0("is identical to ", label)
+      paste0("is not identical to ", label, ". Differences: \n", diff)
     )
   }
 }
@@ -211,7 +209,7 @@ equals_reference <- function(file, label = NULL, ...) {
     function(actual) {
       # saveRDS() returns no useful information to use for the expectation
       saveRDS(actual, file)
-      expectation(TRUE, "should never fail", "saved to file")
+      expectation(TRUE, "should never fail")
     }
   }
 }

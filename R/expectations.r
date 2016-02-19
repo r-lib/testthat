@@ -1,9 +1,11 @@
-#' Expectation: does the object inherit from a class?
+#' Expectation: does the object inherit from a S3 or S4 class, or a base type?
 #'
-#' Tests whether or not an object inherits from any of a list of classes.
+#' Tests whether or not an object inherits from any of a list of classes, or
+#' is an instance of a base type.
 #'
 #' @inheritParams expect_that
 #' @param class character vector of class names
+#' @param type String giving base type (as returned by \code{\link{typeof}}).
 #' @seealso \code{\link{inherits}}
 #' @family expectations
 #' @export
@@ -30,10 +32,23 @@ is_a <- function(class) {
     class_s <- paste(class, collapse = ", ")
     expectation(
       inherits(x, class),
-      paste0("inherits from ", actual_s, " not ", class_s),
-      paste0("inherits from ", class_s)
+      paste0("inherits from ", actual_s, " not ", class_s)
     )
   }
+}
+
+#' @export
+#' @rdname expect_is
+expect_type <- function(object, type) {
+  stopifnot(is.character(type), length(type) == 1)
+
+  label <- find_expr("object")
+  actual_type <- typeof(object)
+
+  expect(
+    identical(type, actual_type),
+    paste0("`", label, "` is type `", actual_type, "` not `", type, "`")
+  )
 }
 
 #' Expectation: is the object true/false?
@@ -84,8 +99,7 @@ is_true <- function() {
   function(x) {
     expectation(
       identical(as.vector(x), TRUE),
-      "isn't true",
-      "is true"
+      "isn't true"
     )
   }
 }
@@ -96,8 +110,7 @@ is_false <- function() {
   function(x) {
     expectation(
       identical(as.vector(x), FALSE),
-      "isn't false",
-      "is false"
+      "isn't false"
     )
   }
 }
@@ -122,8 +135,7 @@ is_null <- function() {
   function(x) {
     expectation(
       identical(x, NULL),
-      "isn't null",
-      "is null"
+      "isn't null"
     )
   }
 }
@@ -142,8 +154,7 @@ takes_less_than <- function(amount) {
 
     expectation(
       duration < amount,
-      paste0("took ", duration, " seconds, which is more than ", amount),
-      paste0("took ", duration, " seconds, which is less than ", amount)
+      paste0("took ", duration, " seconds, which is more than ", amount)
     )
   }
 }
@@ -191,8 +202,7 @@ has_names <- function(expected, ignore.order = FALSE, ignore.case = FALSE) {
     function(x) {
       expectation(
         !identical(names(x), NULL),
-        paste0("does not have names"),
-        paste0("has names")
+        paste0("does not have names")
       )
     }
   } else {
@@ -203,8 +213,7 @@ has_names <- function(expected, ignore.order = FALSE, ignore.case = FALSE) {
 
       expectation(
         identical(x_names, expected),
-        paste0("names don't match ", paste0(expected, collapse = ", ")),
-        paste0("names as expected")
+        paste0("names don't match ", paste0(expected, collapse = ", "))
       )
     }
   }
@@ -262,8 +271,7 @@ is_less_than <- function(expected, label = NULL, ...) {
 
     expectation(
       diff > 0,
-      paste0("not less than ", label, ". Difference: ", format(diff)),
-      paste0("is less than ", label)
+      paste0("not less than ", label, ". Difference: ", format(diff))
     )
   }
 }
@@ -325,8 +333,7 @@ is_more_than <- function(expected, label = NULL, ...) {
 
     expectation(
       diff < 0,
-      paste0("not more than ", label, ". Difference: ", format(diff)),
-      paste0("is more than ", label)
+      paste0("not more than ", label, ". Difference: ", format(diff))
     )
   }
 }

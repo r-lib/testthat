@@ -12,15 +12,3 @@ expect_gte(3, 3)
 expect_less_than(2, 3)
 expect_lt(2, 3)
 expect_lte(2, 2)
-
-# test_that("Error", {
-#   stop("!")
-# })
-#
-# test_that("Failure", {
-#   expect_true(FALSE)
-# })
-#
-# test_that("Skip", {
-#   skip("Abc")
-# })
