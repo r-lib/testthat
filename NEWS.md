@@ -1,5 +1,7 @@
 # testthat 0.11.0.9000
 
+* `with_reporter()` is used internally and gains new argument `start_end_reporter = TRUE` (@krlmlr, 355).
+
 * `expect_success()` and `expect_failure()` are new expectations designed
   specifically for testing other expectations (#368).
 
