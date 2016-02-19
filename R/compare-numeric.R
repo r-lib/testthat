@@ -35,57 +35,53 @@ compare.numeric <- function(x, y, ..., max_diffs = 9) {
   if (!any(diff)) {
     no_difference()
   } else {
-    mismatches <- mismatch_numeric(x, y, diff, max_diffs = max_diffs)
-    difference(format(mismatches))
+    mismatches <- mismatch_numeric(x, y, diff)
+    difference(format(mismatches, max_diffs = max_diffs))
   }
 }
 
-#' @export
-mismatch_numeric <- function(x, y, diff = !vector_equal(x, y), max_diffs = 9) {
-  n <- min(length(x), max_diffs)
-  pos <- which(diff)[1:n]
-
+mismatch_numeric <- function(x, y, diff = !vector_equal(x, y)) {
   structure(
     list(
-      pos = pos,
-      x = x[pos],
-      y = y[pos],
-      diff = x[pos] - y[pos],
-      n = n,
-      n_all = length(diff),
-      n_miss = sum(diff),
-      mu = mean(abs(x[diff] - y[diff]), na.rm = TRUE)
+      i = which(diff),
+      x = x[diff],
+      y = y[diff],
+      n = length(diff),
+      n_diff = sum(diff),
+      mu_diff = mean(abs(x[diff] - y[diff]), na.rm = TRUE)
     ),
     class = "mismatch_numeric"
   )
 }
 
 #' @export
-format.mismatch_numeric <- function(x, ..., digits = 3) {
-  n_diff <- paste0(x$n_miss, "/", x$n_all, " mismatches")
+format.mismatch_numeric <- function(x, ..., max_diffs = 9, digits = 3) {
 
-  if (x$n > 1) {
-    mu <- format(x$mu, digits = digits, trim = TRUE)
-    n_diff <- paste0(n_diff, " (average diff: ", mu, ").")
+  summary <- paste0(x$n_diff, "/", x$n, " mismatches")
+  if (x$n_diff > 1) {
+    mu <- format(x$mu_diff, digits = digits, trim = TRUE)
+    summary <- paste0(summary, " (average diff: ", mu, ")")
   }
 
+  n_show <- seq_len(min(x$n_diff, max_diffs))
+
   diffs <- paste0(
-    format(paste0("[", x$pos, "]")), " ",
-    format(x$x, digits = digits),
+    format(paste0("[", x$i[n_show], "]")), " ",
+    format(x$x[n_show], digits = digits),
     " - ",
-    format(x$y, digits = digits),
+    format(x$y[n_show], digits = digits),
     " == ",
-    format(x$diff, digits = digits)
+    format(x$x[n_show] - x$y[n_show], digits = digits)
   )
 
-  if (x$n_miss > x$n) {
+  if (x$n_diff > length(n_show)) {
     diffs <- c(diffs, "...")
   }
 
-  paste0(n_diff, "\n", paste(diffs, collapse = "\n"))
+  paste0(summary, "\n", paste(diffs, collapse = "\n"))
 }
 
 #' @export
-print.mismatch_numeric <- function(x, ..., max_diffs = 10) {
-  cat(format(x, ..., max_diffs = 10))
+print.mismatch_numeric <- function(x, ...) {
+  cat(format(x, ...), "\n", sep = "")
 }

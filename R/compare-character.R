@@ -85,8 +85,8 @@ format.mismatch_character <- function(x, ...,
     paste(c(x, y), collapse = "\n")
   }, show_x, show_y, x$i)
 
-  n_diff <- paste0(x$n_diff, "/", x$n, " mismatches")
-  paste0(n_diff, ":\n", paste0(sidebyside, collapse = "\n\n"))
+  summary <- paste0(x$n_diff, "/", x$n, " mismatches")
+  paste0(summary, "\n", paste0(sidebyside, collapse = "\n\n"))
 }
 
 #' @export

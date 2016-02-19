@@ -69,14 +69,15 @@ diff_class <- function(x, y) {
   difference("Classes differ: %s vs %s", class_string(x), class_string(y))
 }
 
-same_attr <- function(x, y) identical(attributes(x), attributes(y))
+same_attr <- function(x, y) {
+  is.null(attr.all.equal(x, y))
+}
 diff_attr <- function(x, y) {
+  old <- options(useFancyQuotes = FALSE)
+  on.exit(options(old), add = TRUE)
+
   out <- attr.all.equal(x, y)
-  if (isTRUE(out)) {
-    difference("Attributes are equal, but not identical.")
-  } else {
-    difference(out)
-  }
+  difference(out)
 }
 
 vector_equal <- function(x, y) {
