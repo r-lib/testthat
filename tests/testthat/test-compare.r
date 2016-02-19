@@ -33,9 +33,6 @@ test_that("comparing character and non-character fails back to all.equal", {
   expect_match(compare("abc", 1)$message, "target is character")
 })
 
-test_that("unnamed arguments to all.equal passed through correctly", {
-  expect_equal(415, 416, 0.01)
-})
 
 test_that("comparing long character vectors with few differences", {
   cmp <- compare(letters, c(letters[-26], "a"))

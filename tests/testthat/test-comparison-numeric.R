@@ -1,0 +1,53 @@
+context("compare.numeric")
+
+test_that("numeric types are compatible", {
+  expect_true(compare(1, 1L)$equal)
+  expect_true(compare(1L, 1)$equal)
+})
+
+test_that("base lengths must be identical", {
+  expect_match(compare(1, c(1, 2))$message, "1 vs 2")
+})
+
+test_that("classes must be identical", {
+  f1 <- factor("a")
+  f2 <- factor("a", ordered = TRUE)
+
+  expect_match(compare(1L, f1)$message, "integer vs factor")
+  expect_match(compare(1L, f2)$message, "integer vs ordered/factor")
+})
+
+test_that("attributes must be identical", {
+  x1 <- 1L
+  x2 <- c(a = 1L)
+  x3 <- c(b = 1L)
+  x4 <- structure(1L, a = 1)
+  x5 <- structure(1L, b = 1)
+
+  expect_match(compare(x1, x2)$message, "names for current")
+  expect_match(compare(x2, x3)$message, "Names: 1 string mismatch")
+
+  expect_match(compare(x1, x4)$message, "target is NULL")
+  expect_match(compare(x4, x5)$message, "Names: 1 string mismatch")
+})
+
+# all.equal ---------------------------------------------------------------
+
+test_that("unnamed arguments to all.equal passed through correctly", {
+  expect_equal(415, 416, 0.01)
+})
+
+test_that("named arguments to all.equal passed through", {
+  expect_equal(415, 416, tol = 0.01)
+})
+
+# Mismatch table ----------------------------------------------------------
+
+test_that("mismatch_numeric truncates diffs", {
+  x <- mismatch_numeric(1:11, 11:1, max_diffs = 5)
+
+  expect_equal(x$n, 5)
+  expect_equal(x$n_all, 11)
+  expect_equal(x$n_miss, 10)
+  expect_equal(x$pos, 1:5)
+})

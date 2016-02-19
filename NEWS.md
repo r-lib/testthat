@@ -1,5 +1,8 @@
 # testthat 0.11.0.9000
 
+* `compare.numeric` recieves another overhaul. This probably fixes some edge
+  cases and provides a strong foundation for further work.
+
 * `expect_output(f(), NA)` will fail if `f()` produces output; 
   `expect_output(f(), NULL)` will fail if `f()` doesn't produce output (#323).
 

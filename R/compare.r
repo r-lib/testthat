@@ -22,6 +22,12 @@ comparison <- function(equal = TRUE, message = "Equal") {
     class = "comparison"
   )
 }
+difference <- function(...) {
+  comparison(FALSE, sprintf(...))
+}
+no_difference <- function() {
+  comparison()
+}
 
 #' @export
 print.comparison <- function(x, ...) {
@@ -47,9 +53,35 @@ print_out <- function(x, ...) {
 
 # Common helpers ---------------------------------------------------------------
 
-same_type <- function(x, y) {
-  if (typeof(x) != typeof(y)) return(FALSE)
-  if (!identical(class(x), class(y))) return(FALSE)
+same_length <- function(x, y) length(x) == length(y)
+diff_length <- function(x, y) difference("Lengths differ: %i vs %i", length(x), length(y))
 
-  TRUE
+same_type <- function(x, y) identical(typeof(x), typeof(y))
+diff_type <- function(x, y) difference("Types not compatible: %s vs %s", typeof(x), typeof(y))
+
+same_class <- function(x, y) {
+  if (!is.object(x) && !is.object(y))
+    return(TRUE)
+  identical(class(x), class(y))
+}
+diff_class <- function(x, y) {
+  class_string <- function(x) paste(class(x), collapse = "/")
+  difference("Classes differ: %s vs %s", class_string(x), class_string(y))
+}
+
+same_attr <- function(x, y) identical(attributes(x), attributes(y))
+diff_attr <- function(x, y) {
+  out <- attr.all.equal(x, y)
+  if (isTRUE(out)) {
+    difference("Attributes are equal, but not identical.")
+  } else {
+    difference(out)
+  }
+}
+
+vector_equal <- function(x, y) {
+  (is.na(x) & is.na(y)) | (!is.na(x) & !is.na(y) & x == y)
+}
+vector_equal_tol <- function(x, y) {
+  (is.na(x) & is.na(y)) | (!is.na(x) & !is.na(y) & x == y)
 }
