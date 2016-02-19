@@ -27,52 +27,56 @@
 #' })
 #' }
 test_that <- function(desc, code) {
-  test_code(desc, substitute(code), env = parent.frame())
+  code <- substitute(code)
+  test_code(desc, code, env = parent.frame())
 }
 
-
-
-# Executes a test.
-#
-# @keywords internal
-# @param description the test name
-# @param code the code to be tested, needs to be an unevaluated expression
-#   i.e. wrap it in substitute()
-# @param env the parent environment of the environment the test code runs in
 test_code <- function(description, code, env) {
-  new_test_environment <- new.env(parent = env)
   get_reporter()$start_test(description)
   on.exit(get_reporter()$end_test())
 
   ok <- TRUE
-  capture_calls <- function(e) {
+
+  register_expectation <- function(e) {
+    e <- as.expectation(e)
+    ok <<- ok && expectation_success(e)
+    get_reporter()$add_result(e)
+  }
+
+  frame <- sys.nframe()
+  handle_error <- function(e) {
     # Capture call stack, removing last two calls from end (added by
     # withCallingHandlers), and first frame + 7 calls from start (added by
     # tryCatch etc)
     e$calls <- utils::head(sys.calls()[-seq_len(frame + 7)], -2)
+
+    register_expectation(e)
     signalCondition(e)
   }
-  handle_expectation <- function(exp) {
-    get_reporter()$add_result(exp)
-    ok <<- ok && expectation_success(exp)
-    invokeRestart(findRestart("continue_test", exp))
+  handle_expectation <- function(e) {
+    register_expectation(e)
+    invokeRestart(findRestart("continue_test"))
   }
-  report_condition <- function(e) {
-    ok <<- FALSE
-    get_reporter()$add_result(as.expectation(e))
+  handle_message <- function(e) {
+    invokeRestart("muffleMessage")
+  }
+  handle_skip <- function(e) {
+    register_expectation(e)
+    signalCondition(e)
   }
 
-  frame <- sys.nframe()
-
+  test_env <- new.env(parent = env)
   tryCatch(
     withCallingHandlers(
-      eval(code, new_test_environment),
-      error = capture_calls,
+      eval(code, test_env),
       expectation = handle_expectation,
-      message = function(c) invokeRestart("muffleMessage")
+      skip =        handle_skip,
+      message =     handle_message,
+      error =       handle_error
     ),
-    error = report_condition,
-    skip = report_condition
+    # error/skip silently terminate code
+    error = function(e) {},
+    skip =  function(e) {}
   )
 
   invisible(ok)
