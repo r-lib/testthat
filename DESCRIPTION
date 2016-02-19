@@ -26,6 +26,7 @@ Collate:
     'compare.r'
     'compare-character.R'
     'compare-numeric.R'
+    'compare-time.R'
     'context.r'
     'describe.r'
     'evaluate-promise.r'

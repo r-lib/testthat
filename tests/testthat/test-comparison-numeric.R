@@ -44,10 +44,10 @@ test_that("named arguments to all.equal passed through", {
 # Mismatch table ----------------------------------------------------------
 
 test_that("mismatch_numeric truncates diffs", {
-  x <- mismatch_numeric(1:11, 11:1, max_diffs = 5)
+  x <- mismatch_numeric(1:11, 11:1)
+  expect_equal(x$n, 11)
+  expect_equal(x$n_diff, 10)
 
-  expect_equal(x$n, 5)
-  expect_equal(x$n_all, 11)
-  expect_equal(x$n_miss, 10)
-  expect_equal(x$pos, 1:5)
+  lines <- strsplit(format(x, max_diffs = 5), "\n")[[1]]
+  expect_equal(length(lines), 5 + 2)
 })

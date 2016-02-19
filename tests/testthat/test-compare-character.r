@@ -53,7 +53,7 @@ test_that("only differences are shown", {
   x <- mismatch_character(letters, c(letters[-26], "a"))
 
   lines <- strsplit(format(x), "\n")[[1]]
-  expect_equal(lines[1], "1/26 mismatches:")
+  expect_equal(lines[1], "1/26 mismatches")
   expect_equal(lines[2], 'x[26]: "z"')
 })
 
@@ -64,6 +64,6 @@ test_that("not all lines are shown", {
   x <- mismatch_character(a, b)
   lines <- strsplit(format(x, width = 16), "\n")[[1]]
 
-  expect_equal(lines[1], "1/1 mismatches:")
+  expect_equal(lines[1], "1/1 mismatches")
   expect_equal(length(lines), 8)
 })
