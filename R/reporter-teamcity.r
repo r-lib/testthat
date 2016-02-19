@@ -15,7 +15,8 @@ NULL
 TeamcityReporter <- setRefClass("TeamcityReporter", contains = "Reporter",
   fields = list(
     "currentContext" = "character",
-    "currentTest" = "character"
+    "currentTest" = "character",
+    "i" = "integer"
   ),
 
   methods = list(
@@ -31,6 +32,7 @@ TeamcityReporter <- setRefClass("TeamcityReporter", contains = "Reporter",
 
     start_test = function(desc) {
       currentTest <<- desc
+      i <<- 0
       teamcity("testSuiteStarted", currentTest)
     },
     end_test = function() {
@@ -45,7 +47,7 @@ TeamcityReporter <- setRefClass("TeamcityReporter", contains = "Reporter",
 
     add_result = function(result) {
       callSuper(result)
-      testName <- strsplit(result$success_msg, "\n")[[1]][1]
+      testName <- paste0("expectation ", i)
 
       if (result$skipped) {
         teamcity("testIgnored", testName, message = result$failure_msg)

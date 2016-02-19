@@ -1,3 +1,4 @@
+# nocov start
 praise <- function() {
   x <- c(
     "You rock!",
@@ -25,5 +26,5 @@ encourage <- function() {
   )
 
   sample(x, 1)
-
 }
+# nocov end
