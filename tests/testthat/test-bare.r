@@ -12,3 +12,6 @@ expect_gte(3, 3)
 expect_less_than(2, 3)
 expect_lt(2, 3)
 expect_lte(2, 2)
+
+expect_error(expect_false(FALSE), NA)
+expect_error(expect_false(TRUE))

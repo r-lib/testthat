@@ -10,19 +10,76 @@
 #' @keywords internal
 #' @export
 expectation <- function(passed, failure_msg, srcref = NULL) {
-  structure(
-    list(
-      passed = passed,
-      error = FALSE,
-      skipped = FALSE,
-      failure_msg = failure_msg,
-      srcref = srcref
-    ),
-    class = "expectation"
-  )
+  new_expectation(passed = passed, failure_msg = failure_msg,
+                  srcref = srcref)
 }
 
-expectation_error <- function(error, calls) {
+new_expectation <- function(failure_msg, srcref, ...,
+                            passed = FALSE, error = FALSE, skipped = FALSE) {
+  if (passed) {
+    class = c("expectation", "condition")
+  } else {
+    class = c("expectation", "error", "condition")
+  }
+
+  exp <- structure(
+    list(
+      passed = passed,
+      error = error,
+      skipped = skipped,
+      failure_msg = failure_msg
+    ),
+    class = class
+  )
+
+  update_expectation(exp, srcref)
+}
+
+update_expectation <- function(exp, srcref, info = NULL, label = NULL) {
+  exp$srcref <- srcref
+
+  if (!is.null(label)) {
+    exp$failure_msg <- paste0(label, " ", exp$failure_msg)
+  }
+
+  if (!is.null(info)) {
+    exp$failure_msg <- paste0(exp$failure_msg, "\n", info)
+  }
+
+  # TODO: Get rid of failure_msg in favor of message
+  exp$message <- exp$failure_msg
+
+  exp
+}
+
+expectation_ok <- function(exp) {
+  isTRUE(exp$passed)
+}
+
+
+as.expectation <- function(x, ...) UseMethod("as.expectation", x)
+
+#' @export
+as.expectation.default <- function(x, ...) {
+  stop("Don't know how to convert '", paste(class(x), collapse = "', '"),
+       "' to expectation.", call. = FALSE)
+}
+
+#' @export
+as.expectation.expectation <- function(x, ...) x
+
+#' @export
+as.expectation.logical <- function(x, message, ...) {
+  expectation(passed = x, failure_msg = message, srcref = find_test_srcref())
+}
+
+#' @export
+as.expectation.error <- function(x, ...) {
+  error <- x$message
+  calls <- x$calls
+  # TODO: Collect srcref in test_code()
+  srcref <- x$srcref
+
   msg <- gsub("Error.*?: ", "", as.character(error))
 
   if (length(calls) > 0) {
@@ -35,29 +92,16 @@ expectation_error <- function(error, calls) {
     msg <- gsub("\n$", "", msg)
   }
 
-  structure(
-    list(
-      passed = FALSE,
-      error = TRUE,
-      skipped = FALSE,
-      failure_msg = msg
-    ),
-    class = "expectation"
-  )
+  new_expectation(msg, srcref, error = TRUE)
 }
 
-expectation_skipped <- function(error) {
+#' @export
+as.expectation.skip <- function(x, ...) {
+  error <- x$message
+  srcref <- x$srcref
   msg <- gsub("Error.*?: ", "", as.character(error))
 
-  structure(
-    list(
-      passed = FALSE,
-      error = FALSE,
-      skipped = TRUE,
-      failure_msg = msg
-    ),
-    class = "expectation"
-  )
+  new_expectation(msg, srcref, skipped = TRUE)
 }
 
 #' @export

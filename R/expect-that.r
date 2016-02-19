@@ -22,21 +22,13 @@ expect_that <- function(object, condition, info = NULL, label = NULL) {
   stopifnot(length(info) <= 1, length(label) <= 1)
 
   label <- label %||% find_expr("object")
-  results <- condition(object)
-  stopifnot(is.expectation(results))
+  exp <- condition(object)
+  stopifnot(is.expectation(exp))
 
-  results$srcref <- find_test_srcref()
+  exp <- update_expectation(exp, srcref = find_test_srcref(), info = info,
+                            label = label)
 
-  if (!is.null(label)) {
-    results$failure_msg <- paste0(label, " ", results$failure_msg)
-  }
-
-  if (!is.null(info)) {
-    results$failure_msg <- paste0(results$failure_msg, "\n", info)
-  }
-
-  get_reporter()$add_result(results)
-  invisible(results)
+  expect(exp)
 }
 
 # find the srcref of the test call, or NULL
@@ -79,9 +71,8 @@ find_test_srcref <- function() {
 #' test_that("this test fails", fail())
 #' }
 fail <- function(message = "Failure has been forced") {
-  results <- expectation(FALSE, message)
-  get_reporter()$add_result(results)
-  invisible()
+  exp <- expectation(FALSE, message)
+  expect(exp)
 }
 
 
@@ -94,9 +85,8 @@ fail <- function(message = "Failure has been forced") {
 #' test_that("this test fails", fail())
 #' }
 succeed <- function(message = "Success has been forced") {
-  results <- expectation(TRUE, message)
-  get_reporter()$add_result(results)
-  invisible()
+  exp <- expectation(TRUE, message)
+  expect(exp)
 }
 
 #' Negate an expectation

@@ -28,7 +28,6 @@
 #' }
 test_that <- function(desc, code) {
   test_code(desc, substitute(code), env = parent.frame())
-  invisible()
 }
 
 
@@ -45,6 +44,7 @@ test_code <- function(description, code, env) {
   get_reporter()$start_test(description)
   on.exit(get_reporter()$end_test())
 
+  ok <- TRUE
   capture_calls <- function(e) {
     # Capture call stack, removing last two calls from end (added by
     # withCallingHandlers), and first frame + 7 calls from start (added by
@@ -52,27 +52,52 @@ test_code <- function(description, code, env) {
     e$calls <- utils::head(sys.calls()[-seq_len(frame + 7)], -2)
     signalCondition(e)
   }
+  handle_expectation <- function(exp) {
+    get_reporter()$add_result(exp)
+    ok <<- ok && expectation_ok(exp)
+    invokeRestart(findRestart("continue_test", exp))
+  }
+  report_condition <- function(e) {
+    ok <<- FALSE
+    get_reporter()$add_result(as.expectation(e))
+  }
+
   frame <- sys.nframe()
 
-  ok <- TRUE
   tryCatch(
     withCallingHandlers(
       eval(code, new_test_environment),
       error = capture_calls,
+      expectation = handle_expectation,
       message = function(c) invokeRestart("muffleMessage")
     ),
-    error = function(e) {
-      ok <- FALSE
-      report <- expectation_error(e$message, e$calls)
-      get_reporter()$add_result(report)
-    }, skip = function(e) {
-      report <- expectation_skipped(e$message)
-      get_reporter()$add_result(report)
-    }
+    error = report_condition,
+    skip = report_condition
   )
 
   invisible(ok)
 }
+
+
+expect <- function(exp, ...) {
+  exp <- as.expectation(exp, ...)
+
+  withRestarts(
+    raise_condition(exp),
+    continue_test = function(e) NULL
+  )
+
+  invisible(exp)
+}
+
+raise_condition <- function(exp) {
+  if (expectation_ok(exp)) {
+    signalCondition(exp)
+  } else {
+    stop(exp)
+  }
+}
+
 
 #' R package to make testing fun!
 #'
