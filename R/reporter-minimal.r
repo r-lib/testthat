@@ -17,7 +17,7 @@ MinimalReporter <- setRefClass("MinimalReporter", contains = "Reporter",
   methods = list(
     add_result = function(result) {
       callSuper(result)
-      if (result$skipped) {
+      if (expectation_skip(result)) {
         cat(colourise("S", "skipped"))
       } else if (result$passed) {
         cat(colourise(".", "passed"))

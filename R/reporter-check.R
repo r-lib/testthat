@@ -30,7 +30,7 @@ CheckReporter <- setRefClass("CheckReporter", contains = "Reporter",
     add_result = function(result) {
       callSuper(result)
 
-      if (result$skipped) {
+      if (expectation_skip(result)) {
         n_skip <<- n_skip + 1L
         return()
       }

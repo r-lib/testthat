@@ -54,7 +54,7 @@ SummaryReporter <- setRefClass("SummaryReporter", contains = "Reporter",
     add_result = function(result) {
       callSuper(result)
       has_tests <<- TRUE
-      if (result$skipped) {
+      if (expectation_skip(result)) {
         result$test <- if (is.null(test)) "(unknown)" else test
         skips <<- c(skips, list(result))
         cat(colourise("S", "skipped"))

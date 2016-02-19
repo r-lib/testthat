@@ -49,7 +49,7 @@ TeamcityReporter <- setRefClass("TeamcityReporter", contains = "Reporter",
       callSuper(result)
       testName <- paste0("expectation ", i)
 
-      if (result$skipped) {
+      if (expectation_skip(skipped)) {
         teamcity("testIgnored", testName, message = result$message)
         return()
       }

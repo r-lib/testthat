@@ -17,14 +17,12 @@ expectation <- function(passed, message, srcref = NULL) {
 new_expectation <- function(message, srcref, type) {
   passed <- type == "success"
   error <- type == "error"
-  skipped <- type == "skip"
 
   exp <- structure(
     list(
       # TODO: remove legacy members one by one
       passed = passed,
       error = error,
-      skipped = skipped,
       message = message
     ),
     # Use "expectation" as top-level class so that no coercion is applied

@@ -24,7 +24,7 @@ sumarize_one_test_results <- function(test) {
     }
 
     nb_passed <- sum(vapply(test_results, '[[', TRUE, 'passed'))
-    nb_skipped <- sum(vapply(test_results, '[[', TRUE, 'skipped'))
+    nb_skipped <- sum(vapply(test_results, expectation_skip, logical(1)))
     nb_failed <- nb_tests - nb_passed - nb_skipped
   }
 
