@@ -52,6 +52,10 @@ update_expectation <- function(exp, srcref, info = NULL, label = NULL) {
   exp
 }
 
+expectation_ok <- function(exp) {
+  isTRUE(exp$passed)
+}
+
 
 as.expectation <- function(x, ...) UseMethod("as.expectation", x)
 

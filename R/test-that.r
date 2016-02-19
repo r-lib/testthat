@@ -54,7 +54,7 @@ test_code <- function(description, code, env) {
   }
   handle_expectation <- function(exp) {
     get_reporter()$add_result(exp)
-    if (!isTRUE(exp$passed)) {
+    if (!expectation_ok(exp)) {
       ok <<- FALSE
     }
     invokeRestart(findRestart("continue_test", exp))
