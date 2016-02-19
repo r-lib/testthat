@@ -1,39 +1,24 @@
 context("Colours")
 
-test_that("We have colours if we want to", {
-
+test_that("can supress colours", {
   op <- options(
     crayon.enabled = TRUE,
     testthat.use_colours = TRUE
   )
-
-  c1 <- crayon::has_style(colourise("X", "passed"))
-  c2 <- crayon::has_style(colourise("X", "skipped"))
-  c3 <- crayon::has_style(colourise("X", "error"))
-
+  check <- crayon::has_style(colourise("X"))
+  # Must restore original options before expectation is triggered
   options(op)
 
-  expect_true(c1)
-  expect_true(c2)
-  expect_true(c3)
-
+  expect_true(check)
 })
 
 test_that("We don't have colours if we don't want to", {
-
   op <- options(
     crayon.enabled = TRUE,
     testthat.use_colours = FALSE
   )
-
-  c1 <- crayon::has_style(colourise("X", "passed"))
-  c2 <- crayon::has_style(colourise("X", "skipped"))
-  c3 <- crayon::has_style(colourise("X", "error"))
-
+  check <- crayon::has_style(colourise("X"))
   options(op)
 
-  expect_false(c1)
-  expect_false(c2)
-  expect_false(c3)
-
+  expect_false(check)
 })
