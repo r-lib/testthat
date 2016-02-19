@@ -16,6 +16,41 @@ test_that("errors are caught with throws_error", {
   expect_match(res$success_msg, "no errors raised")
 })
 
+test_that("errors of the appropriate subclass are caught", {
+  condition <- function(subclass, message) {
+    structure(class = c(subclass, "condition"),
+              list(message = message)
+    )
+  }
+
+  custom_stop <- function(subclass, message) {
+    c <- condition(c(subclass, "error"), message)
+    stop(c)
+  }
+
+  res <- throws_error(expected_class = "my_error")(custom_stop("my_error", 
+                                                               "hi"))
+  expect_that(res$passed, is_true())
+
+  res <- throws_error(expected_class = "my_error")(custom_stop("wrong_error", 
+                                                               "hi"))
+  expect_that(res$passed, is_false())
+
+  res <- throws_error(expected_class = "my_error")(stop("hi"))
+  expect_that(res$passed, is_false())
+
+  classes <- c("my_error", "other_error")
+  res <- throws_error(regexp = "hi", 
+                      expected_class = classes)(custom_stop("my_error", "hi"))
+  expect_that(res$passed, is_true())
+
+  res <- throws_error(regexp = "bye",
+                      expected_class = "my_error")(custom_stop("my_error", 
+                                                               "hi"))
+  expect_that(res$passed, is_false())
+
+})
+
 test_that("failure to throw an error is a failure", {
   res <- throws_error()(log(1))
   expect_that(res$passed, is_false())

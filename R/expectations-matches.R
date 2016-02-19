@@ -10,6 +10,10 @@
 #' @param ... Additional arguments passed on to \code{\link{grepl}}, e.g.
 #'   \code{ignore.case} or \code{fixed}.
 #' @family expectations
+#' @param expected_class expected class of error condition, may be a vector.
+#'    This can be used to test that functions produce customized error
+#'    conditions of the appropriate class. The check passes if the error is
+#'    if any of the classes named.
 #' @examples
 #' expect_match("Testing is fun", "fun")
 #' expect_match("Testing is fun", "f.n")
@@ -79,11 +83,11 @@ matches <- function(regexp, all = TRUE, ...) {
     matches <- grepl(regexp, char, ...)
     if (length(char) > 1) {
       values <- paste0("Actual values:\n",
-        paste0("* ", encodeString(char), collapse = "\n"))
+                       paste0("* ", encodeString(char), collapse = "\n"))
     } else {
       values <- paste0("Actual value: \"", encodeString(char), "\"")
     }
-
+    
     expectation(
       length(matches) > 0 && if (all) all(matches) else any(matches),
       paste0("does not match '", encodeString(regexp), "'. ", values),
@@ -105,7 +109,6 @@ expect_output <- function(object, regexp = NULL, ..., info = NULL, label = NULL)
 prints_text <- function(regexp, ...) {
   function(expr) {
     output <- evaluate_promise(expr)$output
-
     if (identical(regexp, NA)) {
       expectation(
         identical(output, ""),
@@ -126,39 +129,58 @@ prints_text <- function(regexp, ...) {
 
 #' @export
 #' @rdname matching-expectations
-expect_error <- function(object, regexp = NULL, ..., info = NULL,
-  label = NULL) {
+expect_error <- function(object, regexp = NULL, expected_class = NULL, ..., info = NULL,
+                         label = NULL) {
   if (is.null(label)) {
     label <- find_expr("object")
   }
-  expect_that(object, throws_error(regexp, ...), info = info, label = label)
+  expect_that(object, 
+              throws_error(regexp, expected_class = expected_class, ...),
+              info = info, label = label)
 }
 #' @export
 #' @rdname oldskool
-throws_error <- function(regexp = NULL, ...) {
+throws_error <- function(regexp = NULL, expected_class = NULL, ...) {
+  if (identical(regexp, NA) && !is.null(expected_class)) {
+    stop("If regexp argument is NA (expecting no error), class should be NULL")
+  }
   function(expr) {
-    res <- try(force(expr), TRUE)
-
-    if (inherits(res, "try-error")) {
-      errors <- as.character(res)
-    } else {
-      errors <- character()
-    }
-
+    error <- tryCatch({
+      expr
+      NULL
+    },
+    error = function(e) {
+      e
+    })
+    
+    paste_with_commas <- function(x, y) paste(x, y, sep=", ")
+    expected_classes_as_string <- Reduce(paste_with_commas, expected_class)
+    no_error_string <- "no errors raised"
+    
     if (identical(regexp, NA)) {
       expectation(
-        length(errors) == 0,
-        paste0("expected no errors:\n", paste("* ", errors, collapse = "\n")),
-        "no errors raised"
+        is.null(error),
+        paste0("expected no errors:\n", as.character(error),
+               no_error_string),
+        success_msg = no_error_string
       )
-    } else if (!is.null(regexp) && length(errors) > 0) {
-      matches(regexp, ...)(errors)
+    } else if (is.null(error)) {
+      expectation(FALSE, no_error_string) 
+    } else if (!is.null(expected_class) && !inherits(error, expected_class)) {
+      expectation(FALSE,
+                  paste("error did not inherit from expected class(es):", 
+                        expected_classes_as_string)
+      )
+    } else if (!is.null(regexp)) {
+      exp <- matches(regexp, ...)(as.character(error))
+      if (exp$passed && !is.null(expected_class)) {
+        exp$success_msg <- paste(exp$success_msg,
+                                 "and error was one of the expected classes:",
+                                 expected_classes_as_string)
+      }
+      exp
     } else {
-      expectation(
-        length(errors) > 0,
-        "no errors raised",
-        paste0(length(errors), " errors raised")
-      )
+      expectation(TRUE, no_error_string, success_msg = "error raised")
     }
   }
 }
@@ -166,7 +188,7 @@ throws_error <- function(regexp = NULL, ...) {
 #' @export
 #' @rdname matching-expectations
 expect_warning <- function(object, regexp = NULL, ..., all = FALSE, info = NULL,
-  label = NULL) {
+                           label = NULL) {
   if (is.null(label)) {
     label <- find_expr("object")
   }
@@ -177,7 +199,7 @@ expect_warning <- function(object, regexp = NULL, ..., all = FALSE, info = NULL,
 gives_warning <- function(regexp = NULL, all = FALSE, ...) {
   function(expr) {
     warnings <- evaluate_promise(expr)$warnings
-
+    
     if (identical(regexp, NA)) {
       expectation(
         length(warnings) == 0,
@@ -210,7 +232,7 @@ expect_message <- function(object, regexp = NULL, ..., all = FALSE, info = NULL,
 shows_message <- function(regexp = NULL, all = FALSE, ...) {
   function(expr) {
     messages <- evaluate_promise(expr)$messages
-
+    
     if (identical(regexp, NA)) {
       expectation(
         length(messages) == 0,
