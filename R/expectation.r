@@ -135,7 +135,7 @@ print.expectation <- function(x, ...) cat(format(x), "\n")
 
 #' @export
 format.expectation <- function(x, ...) {
-  if (x$passed) {
+  if (expectation_success(x)) {
     "As expected"
   } else {
     paste0("Not expected: ", x$message, ".")
@@ -149,9 +149,9 @@ negate <- function(expt) {
   stopifnot(is.expectation(expt))
 
   # If it's not a success or failure, don't need to do anything
-  if (!(expectation_type(expt) %in% c("success", "failure"))) return(expt)
+  if (!expectation_success(expt) && !expectation_failure(expt)) return(expt)
 
-  expectation(expectation_type(expt) == "failure",
+  expectation(expectation_failure(expt),
               paste0("NOT(", expt$message, ")"),
               srcref = expt$srcref)
 }

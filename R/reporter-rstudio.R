@@ -16,18 +16,21 @@ RstudioReporter <- setRefClass("RstudioReporter", contains = "Reporter",
   methods = list(
     add_result = function(result) {
       callSuper(result)
-      if (result$passed)
+      if (expectation_success(result))
         return()
 
-      if (result$skipped) {
+      if (expectation_skip(result)) {
         status <- "info"
         prefix <- "Skipped"
-      } else if (result$error) {
+      } else if (expectation_failure(result)) {
         status <- "error"
         prefix <- "Failed"
-      } else {
+      } else if (expectation_error(result)) {
         status <- "error"
         prefix <- "Errored"
+      } else {
+        status <- expectation_type(result)
+        prefix <- "Other"
       }
 
       ref <- result$srcref

@@ -49,14 +49,15 @@ TapReporter <- setRefClass("TapReporter", contains = "Reporter",
                     cat("# Context", contexts[i], "\n")
                 }
                 result <- results[[i]];
-                if (result$passed) {
+                if (expectation_success(result)) {
                     cat('ok', i, result$test, '\n')
-                } else if (result$skipped) {
-                    cat('ok', i, '# SKIP', result$message, '\n')
-                } else {
+                } else if (expectation_broken(result)) {
                     cat('not ok', i, result$test, '\n')
                     msg <- gsub('\n', '\n  ', result$message)
                     cat(' ', msg, '\n')
+                } else {
+                  cat('ok', i, '#', toupper(expectation_type(result)),
+                      result$message, '\n')
                 }
             }
         }
