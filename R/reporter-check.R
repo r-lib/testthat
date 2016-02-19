@@ -82,7 +82,7 @@ skip_summary <- function(x, label) {
   header <- paste0(label, ". ", x$test)
 
   paste0(
-    colourise(header, "skipped"), " - ", x$message
+    colourise(header, "skip"), " - ", x$message
   )
 }
 
