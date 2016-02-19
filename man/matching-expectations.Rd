@@ -13,8 +13,8 @@ expect_match(object, regexp, ..., all = TRUE, info = NULL, label = NULL)
 
 expect_output(object, regexp = NULL, ..., info = NULL, label = NULL)
 
-expect_error(object, regexp = NULL, class = NULL, ..., info = NULL,
-  label = NULL)
+expect_error(object, regexp = NULL, expected_class = NULL, ...,
+  info = NULL, label = NULL)
 
 expect_warning(object, regexp = NULL, ..., all = FALSE, info = NULL,
   label = NULL)
@@ -41,8 +41,10 @@ writing tests in loops).}
 
 \item{label}{object label. When \code{NULL}, computed from deparsed object.}
 
-\item{class}{expected class of error condition. This can be use to test
-that functions produce customized error conditions of the appropriate class.}
+\item{expected_class}{expected class of error condition, may be a vector.
+This can be used to test that functions produce customized error
+conditions of the appropriate class. The check passes if the error is
+if any of the classes named.}
 }
 \description{
 Expectation: does string/output/message/warning/error match a regular expression?

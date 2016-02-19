@@ -32,7 +32,7 @@ matches(regexp, all = TRUE, ...)
 
 prints_text(regexp, ...)
 
-throws_error(regexp = NULL, class = NULL, ...)
+throws_error(regexp = NULL, expected_class = NULL, ...)
 
 gives_warning(regexp = NULL, all = FALSE, ...)
 
