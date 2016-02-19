@@ -2,9 +2,12 @@
 % Please edit documentation in R/expectations.r
 \name{expect_is}
 \alias{expect_is}
-\title{Expectation: does the object inherit from a class?}
+\alias{expect_type}
+\title{Expectation: does the object inherit from a S3 or S4 class, or a base type?}
 \usage{
 expect_is(object, class, info = NULL, label = NULL)
+
+expect_type(expr, type)
 }
 \arguments{
 \item{object}{object to test}
@@ -15,9 +18,12 @@ expect_is(object, class, info = NULL, label = NULL)
 writing tests in loops).}
 
 \item{label}{object label. When \code{NULL}, computed from deparsed object.}
+
+\item{type}{String giving base type (as returned by \code{\link{typeof}}).}
 }
 \description{
-Tests whether or not an object inherits from any of a list of classes.
+Tests whether or not an object inherits from any of a list of classes, or
+is an instance of a base type.
 }
 \examples{
 expect_is(1, "numeric")

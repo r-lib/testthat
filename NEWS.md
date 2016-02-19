@@ -1,12 +1,42 @@
 # testthat 0.11.0.9000
 
-* Fix failure message for `throws_error` in case where no error is raised (@nealrichardson, #342).
+* `compare.numeric` recieves another overhaul. This probably fixes some edge
+  cases and provides a strong foundation for further work.
+
+* `expect_output(f(), NA)` will fail if `f()` produces output; 
+  `expect_output(f(), NULL)` will fail if `f()` doesn't produce output (#323).
+
+* `expect_output()` no longer prints the output by default. You need to do this
+  yourself.
+
+* `expect_type()` checks the _type_ of the object (#316).
+
+* `not()` has been deprecated.
+
+* `MinimalReporter` correct labels errors with E and failures with F (#311).
+
+* The summary reporter shows a summary of skipped tests if all tests were successful (@krlmlr, #343).
+
+* Fixed minor issues with `throws_error(NA)` and `expect_error(..., NA)` (@krlmlr, #317).
+
+* `set_reporter()` returns old reporter invisibly (#358, @krlmlr).
+
+* New `FailReporter` to stop in case of failures or errors after all tests
+  (#308, @krlmlr).
+
+* Comparing integers to non-numbers doesn't raise errors anymore, and falls back to
+  string comparison if objects have different lengths. Complex numbers are compared
+  using the same routine (#309, @krlmlr).
+
+* New option `testthat.summary.max_reports` that limits the number of reports printed by the summary reporter, default: 15 (@krlmlr, #354).
+
+* Fix failure message for `throws_error` in case where no error is raised (#342, @nealrichardson).
 
 * Added [Catch](https://github.com/philsquared/Catch) for unit testing of C++ code.
   See `?use_catch()` for more details. (@kevinushey)
 
 * `expect_identical()` and `is_identical_to()` now use `compare()` for more
-  detailed output of differences (@krlmlr, #319).
+  detailed output of differences (#319, @krlmlr).
 
 # testthat 0.11.0
 

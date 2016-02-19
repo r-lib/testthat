@@ -9,12 +9,17 @@ test_that("errors are caught with throws_error", {
 
   res <- throws_error("Yes")(stop("No"))
   expect_that(res$passed, is_false())
+
+  res <- throws_error(NA)(stop())
+  expect_that(res$passed, is_false())
+  expect_match(res$failure_msg, "expected no errors:")
+  expect_match(res$success_msg, "no errors raised")
 })
 
 test_that("failure to throw an error is a failure", {
   res <- throws_error()(log(1))
   expect_that(res$passed, is_false())
-  expect_output(res, "code didn't raise an error")
+  expect_match(res$failure_msg, "no errors raised")
 
   res <- throws_error("error")(log(1))
   expect_that(res$passed, is_false())
@@ -72,10 +77,6 @@ test_that("shows_mesage / gives_warning work when no messages are generated", {
 
 test_that("expect_output captures multiline code", {
   expect_output(cat("1\n2"), "1\n2")
-})
-
-test_that("expect_output prints by default", {
-  expect_output(1, "1")
 })
 
 test_that("expect_equals fails with useful message if objects equal but not identical", {
@@ -140,4 +141,9 @@ test_that("expected_named optionally ignores case", {
 
 test_that("expected_named optionally ignores order", {
   expect_named(c(a = 1, b = 2), c("b", "a"), ignore.order = TRUE)
+})
+
+
+test_that("expect_type checks typeof", {
+  expect_type(factor("a"), "integer")
 })
