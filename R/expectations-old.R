@@ -43,6 +43,19 @@ has_names <- function(expected, ignore.order = FALSE, ignore.case = FALSE) {
   }
 }
 
+#' @export
+#' @rdname oldskool
+is_less_than <- function(expected, label = NULL, ...) {
+  function(x) expect_lt(x, expected)
+}
+
+#' @export
+#' @rdname oldskool
+is_more_than <- function(expected, label = NULL, ...) {
+  function(x) expect_gt(x, expected)
+}
+
+
 #' Expectation: does expression take less than a fixed amount of time to run?
 #'
 #' This is useful for performance regression testing.

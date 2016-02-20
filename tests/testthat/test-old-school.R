@@ -13,3 +13,8 @@ test_that("old school types still work", {
 test_that("old school names still work", {
   expect_success(expect_that("a", has_names(NULL)))
 })
+
+test_that("old school comparisons still work", {
+  expect_success(expect_that(10, is_less_than(11)))
+  expect_failure(expect_that(10, is_more_than(11)))
+})

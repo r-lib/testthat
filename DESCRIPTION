@@ -31,6 +31,7 @@ Collate:
     'context.r'
     'describe.r'
     'evaluate-promise.r'
+    'expect-comparison.R'
     'expect-is.R'
     'expect-named.R'
     'reporter.r'

@@ -1,5 +1,8 @@
 # testthat 0.11.0.9000
 
+* `expect_more_than()` and `expect_less_than()` have been deprecated. Please
+  use `expect_gt()` and `expect_lt()` instead.
+
 * `takes_less_than()` has been deprecated.
 
 * Add `skip_if_not()` helper.
