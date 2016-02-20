@@ -1,22 +1,3 @@
-#' Expectation: does expression take less than a fixed amount of time to run?
-#'
-#' This is useful for performance regression testing.
-#'
-#' @family expectations
-#' @keywords internal
-#' @export
-#' @param amount maximum duration in seconds
-takes_less_than <- function(amount) {
-  function(expr) {
-    duration <- system.time(force(expr))["elapsed"]
-
-    expect(
-      duration < amount,
-      paste0("took ", duration, " seconds, which is more than ", amount)
-    )
-  }
-}
-
 #' Expectation: does object have names?
 #'
 #' You can either check for the presence of names (leaving \code{expected}

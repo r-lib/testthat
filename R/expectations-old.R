@@ -34,3 +34,25 @@ is_true <- function() {
 is_false <- function() {
   function(x) expect_false(x)
 }
+
+#' Expectation: does expression take less than a fixed amount of time to run?
+#'
+#' This is useful for performance regression testing.
+#'
+#' @family expectations
+#' @keywords internal
+#' @export
+#' @param amount maximum duration in seconds
+takes_less_than <- function(amount) {
+  warning("takes_less_than() is deprecated because it is stochastic and unreliable",
+    call. = FALSE)
+
+  function(expr) {
+    duration <- system.time(force(expr))["elapsed"]
+
+    expect(
+      duration < amount,
+      paste0("took ", duration, " seconds, which is more than ", amount)
+    )
+  }
+}

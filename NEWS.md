@@ -1,5 +1,7 @@
 # testthat 0.11.0.9000
 
+* `takes_less_than()` has been deprecated.
+
 * Add `skip_if_not()` helper.
 
 * `make_expectation()` uses `expect_equal()`.
