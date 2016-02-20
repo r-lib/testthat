@@ -38,7 +38,11 @@ expect <- function(exp, ...) {
   exp <- as.expectation(exp, ...)
 
   withRestarts(
-    signalCondition(exp),
+    if (expectation_broken(exp)) {
+      stop(exp)
+    } else {
+      signalCondition(exp)
+    },
     continue_test = function(e) NULL
   )
 
