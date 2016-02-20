@@ -1,5 +1,5 @@
 One : .1
 Two : S
 
-1. Failure: Failure (@ test-reporter.r#31) -------------------------------------
+1. Failure: Failure (@test-reporter.r#31) --------------------------------------
 Failure has been forced
