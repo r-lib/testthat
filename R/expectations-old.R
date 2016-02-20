@@ -10,3 +10,15 @@
 #' @name oldskool
 #' @keywords internal
 NULL
+
+#' @export
+#' @rdname oldskool
+is_null <- function() {
+  function(x) expect_null(x)
+}
+
+#' @export
+#' @rdname oldskool
+is_a <- function(class) {
+  function(x) expect_is(x, class)
+}

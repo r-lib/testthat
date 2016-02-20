@@ -12,11 +12,3 @@ test_that("logical tests ignore attributes", {
   expect_success(expect_true(c(a = TRUE)))
   expect_success(expect_false(c(a = FALSE)))
 })
-
-
-# Old school --------------------------------------------------------------
-
-test_that("old school style works", {
-  expect_success(expect_that(TRUE, is_true()))
-  expect_success(expect_that(FALSE, is_false()))
-})

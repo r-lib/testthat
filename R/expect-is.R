@@ -1,7 +1,8 @@
 #' Expectation: does the object inherit from a S3 or S4 class, or a base type?
 #'
 #' Tests whether or not an object inherits from any of a list of classes, or
-#' is an instance of a base type.
+#' is an instance of a base type. \code{expect_null} is a special case designed
+#' for detecting \code{NULL}.
 #'
 #' @inheritParams expect_that
 #' @param class character vector of class names
@@ -17,6 +18,12 @@
 #' expect_is(mtcars, "data.frame")
 #' # alternatively for classes that have an is method
 #' expect_true(is.data.frame(mtcars))
+#'
+#' f <- factor("a")
+#' expect_is(f, "factor")
+#' expect_type(f, "integer")
+#'
+#' expect_null(NULL)
 expect_is <- function(object, class, info = NULL, label = NULL) {
   stopifnot(is.character(class))
 
@@ -28,14 +35,6 @@ expect_is <- function(object, class, info = NULL, label = NULL) {
     inherits(object, class),
     sprintf("`%s` inherits from `%s` not `%s`.", lab, act, exp)
   )
-}
-
-#' @export
-#' @rdname oldskool
-is_a <- function(class) {
-  function(x) {
-    expect_is(x, class)
-  }
 }
 
 #' @export
@@ -52,3 +51,15 @@ expect_type <- function(object, type) {
     sprintf("`%s` has type `%s`, not `%s`.", lab, act, exp)
   )
 }
+
+#' @export
+#' @rdname expect_is
+expect_null <- function(object, info = NULL, label = NULL) {
+  lab <- make_label(object, info, label)
+
+  expect(
+    is.null(object),
+    sprintf("`%s` is not null.", lab)
+  )
+}
+

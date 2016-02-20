@@ -17,8 +17,7 @@ Other expectations: \code{\link{equivalence}},
   \code{\link{expect-compare}},
   \code{\link{expect_equal_to_reference}},
   \code{\link{expect_is}}, \code{\link{expect_named}},
-  \code{\link{expect_null}}, \code{\link{expect_silent}},
-  \code{\link{expect_true}},
+  \code{\link{expect_silent}}, \code{\link{expect_true}},
   \code{\link{matching-expectations}}
 }
 \keyword{internal}

@@ -2,12 +2,15 @@
 % Please edit documentation in R/expect-is.R
 \name{expect_is}
 \alias{expect_is}
+\alias{expect_null}
 \alias{expect_type}
 \title{Expectation: does the object inherit from a S3 or S4 class, or a base type?}
 \usage{
 expect_is(object, class, info = NULL, label = NULL)
 
 expect_type(object, type)
+
+expect_null(object, info = NULL, label = NULL)
 }
 \arguments{
 \item{object}{object to test}
@@ -23,7 +26,8 @@ writing tests in loops).}
 }
 \description{
 Tests whether or not an object inherits from any of a list of classes, or
-is an instance of a base type.
+is an instance of a base type. \code{expect_null} is a special case designed
+for detecting \code{NULL}.
 }
 \examples{
 expect_is(1, "numeric")
@@ -33,6 +37,12 @@ expect_is(a, "matrix")
 expect_is(mtcars, "data.frame")
 # alternatively for classes that have an is method
 expect_true(is.data.frame(mtcars))
+
+f <- factor("a")
+expect_is(f, "factor")
+expect_type(f, "integer")
+
+expect_null(NULL)
 }
 \seealso{
 \code{\link{inherits}}
@@ -40,8 +50,8 @@ expect_true(is.data.frame(mtcars))
 Other expectations: \code{\link{equivalence}},
   \code{\link{expect-compare}},
   \code{\link{expect_equal_to_reference}},
-  \code{\link{expect_named}}, \code{\link{expect_null}},
-  \code{\link{expect_silent}}, \code{\link{expect_true}},
+  \code{\link{expect_named}}, \code{\link{expect_silent}},
+  \code{\link{expect_true}},
   \code{\link{matching-expectations}},
   \code{\link{takes_less_than}}
 }

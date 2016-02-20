@@ -1,30 +1,3 @@
-
-
-#' Expectation: is the object NULL?
-#'
-#' @family expectations
-#' @inheritParams expect_that
-#' @export
-#' @examples
-#' expect_null(NULL)
-expect_null <- function(object, info = NULL, label = NULL) {
-  if (is.null(label)) {
-    label <- find_expr("object")
-  }
-  expect_that(object, is_null(), info, label)
-}
-
-#' @export
-#' @rdname oldskool
-is_null <- function() {
-  function(x) {
-    expect(
-      identical(x, NULL),
-      "isn't null"
-    )
-  }
-}
-
 #' Expectation: does expression take less than a fixed amount of time to run?
 #'
 #' This is useful for performance regression testing.
