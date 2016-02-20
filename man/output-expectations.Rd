@@ -19,7 +19,7 @@ expect_message(object, regexp = NULL, ..., all = FALSE, info = NULL,
 expect_warning(object, regexp = NULL, ..., all = FALSE, info = NULL,
   label = NULL)
 
-expect_silent(expr)
+expect_silent(object)
 }
 \arguments{
 \item{object}{object to test}

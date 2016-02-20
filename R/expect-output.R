@@ -187,9 +187,9 @@ expect_warning <- function(object, regexp = NULL, ..., all = FALSE,
 
 #' @export
 #' @rdname output-expectations
-expect_silent <- function(expr) {
-  label <- find_expr("expr")
-  out <- evaluate_promise(expr)
+expect_silent <- function(object) {
+  lab <- label(object)
+  out <- evaluate_promise(object)
 
   outputs <- c(
     if (!identical(out$output, "")) "output",
@@ -199,6 +199,6 @@ expect_silent <- function(expr) {
 
   expect(
     length(outputs) == 0,
-    paste0(label, " produced ", paste(outputs, collapse = ", "))
+    sprintf("%s produced %s.", lab, paste(outputs, collapse = ", "))
   )
 }
