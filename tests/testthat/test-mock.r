@@ -24,22 +24,12 @@ test_that("non-empty mock with return value", {
   ))
 })
 
-test_that("multi-mock", {
-  with_mock(
-    gives_warning = throws_error,
-    {
-      expect_warning(stopifnot(compare(3, 5)$equal))
-    }
-  )
-  expect_warning(warning("test"))
-})
-
 test_that("nested mock", {
   with_mock(
     all.equal = function(x, y, ...) TRUE,
     {
       with_mock(
-        gives_warning = throws_error,
+        expect_warning = expect_error,
         {
           expect_warning(stopifnot(!compare(3, "a")$equal))
         }
@@ -53,14 +43,14 @@ test_that("nested mock", {
 
 test_that("qualified mock names", {
   with_mock(
-    gives_warning = throws_error,
+    expect_warning = expect_error,
     `base::all.equal` = function(x, y, ...) TRUE,
     {
       expect_warning(stopifnot(!compare(3, "a")$equal))
     }
   )
   with_mock(
-    `testthat::gives_warning` = throws_error,
+    `testthat::expect_warning` = expect_error,
     all.equal = function(x, y, ...) TRUE,
     {
       expect_warning(stopifnot(!compare(3, "a")$equal))
