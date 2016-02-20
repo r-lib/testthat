@@ -31,30 +31,22 @@
 #' expect_equal_to_reference(1, "one.rds")
 #' }
 expect_equal_to_reference <- function(object, file, ..., info = NULL,
-  label = NULL, expected.label = NULL) {
-  if (is.null(label)) {
-    label <- find_expr("object")
-  }
-  if (is.null(expected.label)) {
-    expected.label <- paste("reference from", file)
-  }
-  expect_that(object, equals_reference(file, label = expected.label, ...),
-    info = info, label = label)
-}
-#' @export
-#' @rdname oldskool
-equals_reference <- function(file, label = NULL, ...) {
-  if (file.exists(file)) {
-    reference <- readRDS(file)
-    if (is.null(label)) {
-      label <- paste("reference from", file)
-    }
-    equals(reference, label = label, ...)
+                                      label = NULL, expected.label = NULL) {
+
+  lab_act <- make_label(object, info, label, expected.label)
+  lab_exp <- paste0("reference from `", file, "`")
+
+  if (!file.exists(file)) {
+    # first time always succeeds
+    saveRDS(object, file)
+    succeed()
   } else {
-    function(actual) {
-      saveRDS(actual, file)
-      # first time always succeeds
-      succeed()
-    }
+    reference <- readRDS(file)
+
+    comp <- compare(object, reference, ...)
+    expect(
+      comp$equal,
+      sprintf("%s not equal to %s.\n%s", lab_act, lab_exp, comp$message)
+    )
   }
 }

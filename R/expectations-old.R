@@ -73,6 +73,12 @@ is_identical_to <- function(expected, label = NULL) {
   function(x) expect_identical(x, expected, expected.label = label)
 }
 
+#' @export
+#' @rdname oldskool
+equals_reference <- function(file, label = NULL, ...) {
+  function(x) expect_equal_to_reference(x, file, expected.label = label, ...)
+}
+
 #' Expectation: does expression take less than a fixed amount of time to run?
 #'
 #' This is useful for performance regression testing.
