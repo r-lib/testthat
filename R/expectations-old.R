@@ -35,6 +35,14 @@ is_false <- function() {
   function(x) expect_false(x)
 }
 
+#' @export
+#' @rdname oldskool
+has_names <- function(expected, ignore.order = FALSE, ignore.case = FALSE) {
+  function(x) {
+    expect_named(x, expected = expected, ignore.order = ignore.order, ignore.case = ignore.case)
+  }
+}
+
 #' Expectation: does expression take less than a fixed amount of time to run?
 #'
 #' This is useful for performance regression testing.

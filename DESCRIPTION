@@ -32,6 +32,7 @@ Collate:
     'describe.r'
     'evaluate-promise.r'
     'expect-is.R'
+    'expect-named.R'
     'reporter.r'
     'expect-success-failure.R'
     'expect-that.r'

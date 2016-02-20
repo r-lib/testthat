@@ -9,3 +9,7 @@ test_that("old school types still work", {
   expect_success(expect_that(1L, is_a("integer")))
   expect_success(expect_that(NULL, is_null()))
 })
+
+test_that("old school names still work", {
+  expect_success(expect_that("a", has_names(NULL)))
+})
