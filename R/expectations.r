@@ -13,7 +13,17 @@ make_label <- function(object, info = NULL, label = NULL) {
 }
 
 label <- function(obj) {
-  x <- lazyeval::lazy(obj)
+  x <- lazyeval::lazy(obj)$expr
 
-  paste(deparse(x$expr), collapse = "")
+  if (is.atomic(x)) {
+    format(x)
+  } else if (is.name(x)) {
+    paste0("`", as.character(x), "`")
+  } else {
+    chr <- deparse(x)
+    if (length(chr) > 1) {
+      chr <- paste0(chr[1], "...")
+    }
+    chr
+  }
 }

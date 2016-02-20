@@ -38,7 +38,7 @@ expect_is <- function(object, class, info = NULL, label = NULL) {
 
   expect(
     inherits(object, class),
-    sprintf("`%s` inherits from `%s` not `%s`.", lab, act, exp)
+    sprintf("%s inherits from `%s` not `%s`.", lab, act, exp)
   )
 }
 
@@ -53,7 +53,7 @@ expect_type <- function(object, type) {
 
   expect(
     identical(type, act),
-    sprintf("`%s` has type `%s`, not `%s`.", lab, act, exp)
+    sprintf("%s has type `%s`, not `%s`.", lab, act, exp)
   )
 }
 
@@ -64,7 +64,7 @@ expect_null <- function(object, info = NULL, label = NULL) {
 
   expect(
     is.null(object),
-    sprintf("`%s` is not null.", lab)
+    sprintf("%s is not null.", lab)
   )
 }
 

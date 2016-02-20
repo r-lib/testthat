@@ -34,7 +34,7 @@ expect_named <- function(object, expected, ignore.order = FALSE,
   if (missing(expected)) {
     expect(
       !identical(names(object), NULL),
-      sprintf("`%s` does not have names.", lab)
+      sprintf("%s does not have names.", lab)
     )
   } else {
     exp <- normalise_names(expected, ignore.order, ignore.case)
@@ -42,7 +42,7 @@ expect_named <- function(object, expected, ignore.order = FALSE,
 
     expect(
       identical(exp, act),
-      paste0("`%s` names don't match %s", lab, paste0(exp, collapse = ", "))
+      paste0("%s names don't match %s", lab, paste0(exp, collapse = ", "))
     )
   }
 }

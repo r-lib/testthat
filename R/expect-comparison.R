@@ -40,7 +40,7 @@ expect_compare <- function(actual, expected,
   diff <- actual - expected
   expect(
     op(diff, 0),
-    sprintf("`%s` is %s `%s`. Difference: %.3g", lab_act, msg, lab_exp, diff)
+    sprintf("%s is %s %s. Difference: %.3g", lab_act, msg, lab_exp, diff)
   )
 }
 #' @export

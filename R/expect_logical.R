@@ -33,7 +33,7 @@ expect_true <- function(object, info = NULL, label = NULL) {
 
   expect(
     identical(as.vector(object), TRUE),
-    sprintf("`%s` isn't true.", lab)
+    sprintf("%s isn't true.", lab)
   )
 }
 
@@ -44,6 +44,6 @@ expect_false <- function(object, info = NULL, label = NULL) {
 
   expect(
     identical(as.vector(object), FALSE),
-    sprintf("`%s` isn't false.", lab)
+    sprintf("%s isn't false.", lab)
   )
 }
