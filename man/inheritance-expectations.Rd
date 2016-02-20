@@ -66,7 +66,6 @@ Other expectations: \code{\link{comparison-expectations}},
   \code{\link{expect_length}}, \code{\link{expect_match}},
   \code{\link{expect_named}},
   \code{\link{logical-expectations}},
-  \code{\link{output-expectations}},
-  \code{\link{takes_less_than}}
+  \code{\link{output-expectations}}
 }
 

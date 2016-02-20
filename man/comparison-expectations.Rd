@@ -47,7 +47,6 @@ Other expectations: \code{\link{equality-expectations}},
   \code{\link{expect_named}},
   \code{\link{inheritance-expectations}},
   \code{\link{logical-expectations}},
-  \code{\link{output-expectations}},
-  \code{\link{takes_less_than}}
+  \code{\link{output-expectations}}
 }
 

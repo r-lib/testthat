@@ -114,7 +114,6 @@ matches <- function(regexp, all = TRUE, ...) {
 #'
 #' This is useful for performance regression testing.
 #'
-#' @family expectations
 #' @keywords internal
 #' @export
 #' @param amount maximum duration in seconds
