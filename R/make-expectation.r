@@ -20,6 +20,6 @@ make_expectation <- function(x, expectation = "equals") {
   expectation <- match.arg(expectation,
     c("equals", "is_equivalent_to", "is_identical_to"))
 
-  dput(substitute(expect_that(obj, expectation(values)),
+  dput(substitute(expect_equal(obj, values),
     list(obj = obj, expectation = as.name(expectation), values = x)))
 }

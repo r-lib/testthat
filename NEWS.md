@@ -1,5 +1,7 @@
 # testthat 0.11.0.9000
 
+* `make_expectation()` uses `expect_equal()`.
+
 * Errors now also get a srcref so you can find them more easily.
 
 * `setup_test_dir()` has been removed. If you used it previously, instead use
