@@ -18,3 +18,9 @@ test_that("old school comparisons still work", {
   expect_success(expect_that(10, is_less_than(11)))
   expect_failure(expect_that(10, is_more_than(11)))
 })
+
+test_that("old school equality tests still work", {
+  expect_success(expect_that(10, equals(10)))
+  expect_success(expect_that(10, is_identical_to(10)))
+  expect_success(expect_that(10, is_equivalent_to(10)))
+})

@@ -1,4 +1,4 @@
-context("expect_logical")
+context("expect-logical")
 
 test_that("logical tests act as expected", {
   expect_success(expect_true(TRUE))

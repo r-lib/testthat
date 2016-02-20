@@ -43,12 +43,15 @@ expect <- function(exp, ...) {
   invisible(exp)
 }
 
-make_label <- function(object, info = NULL, label = NULL) {
+make_label <- function(object, info = NULL, label = NULL, expected.label = NULL) {
   if (!is.null(info)) {
     warning("`info` has been deprecated.", call. = FALSE)
   }
   if (!is.null(label)) {
     warning("`label` has been deprecated.", call. = FALSE)
+  }
+  if (!is.null(expected.label)) {
+    warning("`expected.label` has been deprecated.", call. = FALSE)
   }
 
   label(object)

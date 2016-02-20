@@ -42,7 +42,7 @@ expect_gt(9, 10)
 }
 \seealso{
 Other expectations: \code{\link{class-expectations}},
-  \code{\link{equivalence}},
+  \code{\link{equality-expectations}},
   \code{\link{expect_equal_to_reference}},
   \code{\link{expect_named}}, \code{\link{expect_silent}},
   \code{\link{logical-expectations}},

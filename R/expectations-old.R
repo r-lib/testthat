@@ -55,6 +55,23 @@ is_more_than <- function(expected, label = NULL, ...) {
   function(x) expect_gt(x, expected)
 }
 
+#' @export
+#' @rdname oldskool
+equals <- function(expected, label = NULL, ...) {
+  function(x) expect_equal(x, expected, ..., expected.label = label)
+}
+
+#' @export
+#' @rdname oldskool
+is_equivalent_to <- function(expected, label = NULL) {
+  function(x) expect_equivalent(x, expected, expected.label = label)
+}
+
+#' @export
+#' @rdname oldskool
+is_identical_to <- function(expected, label = NULL) {
+  function(x) expect_identical(x, expected, expected.label = label)
+}
 
 #' Expectation: does expression take less than a fixed amount of time to run?
 #'
@@ -77,3 +94,4 @@ takes_less_than <- function(amount) {
     )
   }
 }
+
