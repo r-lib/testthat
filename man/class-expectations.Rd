@@ -4,19 +4,23 @@
 \alias{class-expectations}
 \alias{expect_is}
 \alias{expect_null}
+\alias{expect_s3_class}
+\alias{expect_s4_class}
 \alias{expect_type}
 \title{Expectation: does the object inherit from a S3 or S4 class, or a base type?}
 \usage{
-expect_is(object, class, info = NULL, label = NULL)
+expect_null(object, info = NULL, label = NULL)
 
 expect_type(object, type)
 
-expect_null(object, info = NULL, label = NULL)
+expect_is(object, class, info = NULL, label = NULL)
+
+expect_s3_class(object, class)
+
+expect_s4_class(object, class)
 }
 \arguments{
 \item{object}{object to test}
-
-\item{class}{character vector of class names}
 
 \item{info}{extra information to be included in the message (useful when
 writing tests in loops).}
@@ -24,11 +28,17 @@ writing tests in loops).}
 \item{label}{object label. When \code{NULL}, computed from deparsed object.}
 
 \item{type}{String giving base type (as returned by \code{\link{typeof}}).}
+
+\item{class}{character vector of class names}
 }
 \description{
 Tests whether or not an object inherits from any of a list of classes, or
 is an instance of a base type. \code{expect_null} is a special case designed
 for detecting \code{NULL}.
+}
+\details{
+\code{expect_is} is an older form. I'd recommend using \code{expect_s3_class}
+or \code{expect_s4_class} in order to more clearly convery intent.
 }
 \examples{
 expect_is(1, "numeric")
@@ -41,6 +51,7 @@ expect_true(is.data.frame(mtcars))
 
 f <- factor("a")
 expect_is(f, "factor")
+expect_s3_class(f, "factor")
 expect_type(f, "integer")
 
 expect_null(NULL)

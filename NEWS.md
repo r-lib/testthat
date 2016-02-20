@@ -1,5 +1,8 @@
 # testthat 0.11.0.9000
 
+* `expect_s3_class()` and `expect_s4_class()` for testing specifically for
+  S3/S4 classes (#373).
+
 * `expect_length()` checks that an object has expected length.
 
 * All expectations invisibly return the input `object`. This makes it possible
@@ -8,7 +11,7 @@
     ```R
     factor("a") %>% 
       expect_type("integer") %>% 
-      expect_is("factor") %>% 
+      expect_s3_class("factor") %>% 
       expect_length(1)
     ```
     
