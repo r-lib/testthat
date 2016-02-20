@@ -22,7 +22,7 @@ expectation <- function(type, message, srcref = NULL) {
     class = c(
       "expectation",
       type,
-      if (type %in% c("failure", "error")) "error",
+      if (type == "failure") "error",
       "condition"
     )
   )
