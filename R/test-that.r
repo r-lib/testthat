@@ -109,26 +109,6 @@ find_test_srcref <- function() {
   src
 }
 
-expect <- function(exp, ...) {
-  exp <- as.expectation(exp, ...)
-
-  withRestarts(
-    raise_condition(exp),
-    continue_test = function(e) NULL
-  )
-
-  invisible(exp)
-}
-
-raise_condition <- function(exp) {
-  if (expectation_success(exp)) {
-    signalCondition(exp)
-  } else {
-    stop(exp)
-  }
-}
-
-
 #' R package to make testing fun!
 #'
 #' Try the example below. Have a look at the references and learn more

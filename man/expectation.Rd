@@ -5,19 +5,19 @@
 \alias{is.expectation}
 \title{Expectation class.}
 \usage{
-expectation(passed, message, srcref = NULL)
+expectation(type, message, srcref = NULL)
 
 is.expectation(x)
 }
 \arguments{
-\item{passed}{a single logical value indicating whether the test passed
-(\code{TRUE}), failed (\code{FALSE}), or threw an error (\code{NA})}
-
 \item{message}{A text description of failure}
 
 \item{srcref}{Source reference, if known}
 
 \item{x}{object to test for class membership}
+
+\item{passed}{a single logical value indicating whether the test passed
+(\code{TRUE}), failed (\code{FALSE}), or threw an error (\code{NA})}
 }
 \description{
 Any expectation should return objects of this class - see the built in

@@ -84,7 +84,7 @@ matches <- function(regexp, all = TRUE, ...) {
       values <- paste0("Actual value: \"", encodeString(char), "\"")
     }
 
-    expectation(
+    succeed_if(
       length(matches) > 0 && if (all) all(matches) else any(matches),
       paste0("does not match '", encodeString(regexp), "'. ", values)
     )
@@ -106,12 +106,12 @@ prints_text <- function(regexp, ...) {
     output <- evaluate_promise(expr)$output
 
     if (identical(regexp, NA)) {
-      expectation(
+      succeed_if(
         identical(output, ""),
         paste0("produced output: ", encodeString(output))
       )
     } else if (is.null(regexp)) {
-      expectation(
+      succeed_if(
         !identical(output, ""),
         "didn't produce output"
       )
@@ -143,14 +143,14 @@ throws_error <- function(regexp = NULL, ...) {
     }
 
     if (identical(regexp, NA)) {
-      expectation(
+      succeed_if(
         length(errors) == 0,
         paste0("expected no errors:\n", paste("* ", errors, collapse = "\n"))
       )
     } else if (!is.null(regexp) && length(errors) > 0) {
       matches(regexp, ...)(errors)
     } else {
-      expectation(
+      succeed_if(
         length(errors) > 0,
         "no errors raised"
       )
@@ -174,14 +174,14 @@ gives_warning <- function(regexp = NULL, all = FALSE, ...) {
     warnings <- evaluate_promise(expr)$warnings
 
     if (identical(regexp, NA)) {
-      expectation(
+      succeed_if(
         length(warnings) == 0,
         paste0("expected no warnings:\n", paste("* ", warnings, collapse = "\n"))
       )
     } else if (!is.null(regexp) && length(warnings) > 0) {
       matches(regexp, all = all, ...)(warnings)
     } else {
-      expectation(
+      succeed_if(
         length(warnings) > 0,
         "no warnings given"
       )
@@ -205,14 +205,14 @@ shows_message <- function(regexp = NULL, all = FALSE, ...) {
     messages <- evaluate_promise(expr)$messages
 
     if (identical(regexp, NA)) {
-      expectation(
+      succeed_if(
         length(messages) == 0,
         paste0("expected no message, got:\n", paste("* ", messages, collapse = "\n"))
       )
     } else if (!is.null(regexp) && length(messages) > 0) {
       matches(regexp, all = all, ...)(messages)
     } else {
-      expectation(
+      succeed_if(
         length(messages) > 0,
         "no messages shown"
       )

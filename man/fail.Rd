@@ -11,7 +11,7 @@ fail(message = "Failure has been forced")
 }
 \description{
 The fail function forces a test to fail.  This is useful if you want to
-test a pre-condition '
+test a pre-condition.
 }
 \examples{
 \dontrun{

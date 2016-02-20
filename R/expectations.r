@@ -30,7 +30,7 @@ is_a <- function(class) {
   function(x) {
     actual_s <- paste0(class(x), collapse = ", ")
     class_s <- paste(class, collapse = ", ")
-    expectation(
+    succeed_if(
       inherits(x, class),
       paste0("inherits from ", actual_s, " not ", class_s)
     )
@@ -97,7 +97,7 @@ expect_false <- function(object, info = NULL, label = NULL) {
 #' @rdname oldskool
 is_true <- function() {
   function(x) {
-    expectation(
+    succeed_if(
       identical(as.vector(x), TRUE),
       "isn't true"
     )
@@ -108,7 +108,7 @@ is_true <- function() {
 #' @rdname oldskool
 is_false <- function() {
   function(x) {
-    expectation(
+    succeed_if(
       identical(as.vector(x), FALSE),
       "isn't false"
     )
@@ -133,7 +133,7 @@ expect_null <- function(object, info = NULL, label = NULL) {
 #' @rdname oldskool
 is_null <- function() {
   function(x) {
-    expectation(
+    succeed_if(
       identical(x, NULL),
       "isn't null"
     )
@@ -152,7 +152,7 @@ takes_less_than <- function(amount) {
   function(expr) {
     duration <- system.time(force(expr))["elapsed"]
 
-    expectation(
+    succeed_if(
       duration < amount,
       paste0("took ", duration, " seconds, which is more than ", amount)
     )
@@ -200,7 +200,7 @@ expect_named <- function(object, expected, ignore.order = FALSE,
 has_names <- function(expected, ignore.order = FALSE, ignore.case = FALSE) {
   if (missing(expected)) {
     function(x) {
-      expectation(
+      succeed_if(
         !identical(names(x), NULL),
         paste0("does not have names")
       )
@@ -211,7 +211,7 @@ has_names <- function(expected, ignore.order = FALSE, ignore.case = FALSE) {
     function(x) {
       x_names <- normalise_names(names(x), ignore.order, ignore.case)
 
-      expectation(
+      succeed_if(
         identical(x_names, expected),
         paste0("names don't match ", paste0(expected, collapse = ", "))
       )
@@ -269,7 +269,7 @@ is_less_than <- function(expected, label = NULL, ...) {
   function(actual) {
     diff <- expected - actual
 
-    expectation(
+    succeed_if(
       diff > 0,
       paste0("not less than ", label, ". Difference: ", format(diff))
     )
@@ -331,7 +331,7 @@ is_more_than <- function(expected, label = NULL, ...) {
   function(actual) {
     diff <- expected - actual
 
-    expectation(
+    succeed_if(
       diff < 0,
       paste0("not more than ", label, ". Difference: ", format(diff))
     )

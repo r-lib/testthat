@@ -9,13 +9,8 @@
 #' @param srcref Source reference, if known
 #' @keywords internal
 #' @export
-expectation <- function(passed, message, srcref = NULL) {
-  new_expectation(type = if (passed) "success" else "failure",
-                  message = message, srcref = srcref)
-}
-
-new_expectation <- function(message, srcref, type = c("success", "failure", "error", "skip")) {
-  type <- match.arg(type)
+expectation <- function(type, message, srcref = NULL) {
+  type <- match.arg(type, c("success", "failure", "error", "skip"))
 
   structure(
     list(
@@ -31,6 +26,23 @@ new_expectation <- function(message, srcref, type = c("success", "failure", "err
       "condition"
     )
   )
+}
+
+# Helper for old-school expect_* functions
+succeed_if <- function(condition, message, srcref = NULL) {
+  type <- if (condition) "success" else "failure"
+  expectation(type, message, srcref = srcref)
+}
+
+expect <- function(exp, ...) {
+  exp <- as.expectation(exp, ...)
+
+  withRestarts(
+    signalCondition(exp),
+    continue_test = function(e) NULL
+  )
+
+  invisible(exp)
 }
 
 update_expectation <- function(exp, srcref, info = NULL, label = NULL) {
@@ -90,7 +102,7 @@ as.expectation.expectation <- function(x, ..., srcref = NULL) {
 
 #' @export
 as.expectation.logical <- function(x, message, ..., srcref = NULL) {
-  expectation(passed = x, message = message, srcref = srcref)
+  succeed_if(x, message = message, srcref = srcref)
 }
 
 #' @export
@@ -110,7 +122,7 @@ as.expectation.error <- function(x, ..., srcref = NULL) {
     msg <- gsub("\n$", "", msg)
   }
 
-  new_expectation(msg, srcref, type = "error")
+  expectation("error", msg, srcref)
 }
 
 #' @export
@@ -118,7 +130,7 @@ as.expectation.skip <- function(x, ..., srcref = NULL) {
   error <- x$message
   msg <- gsub("Error.*?: ", "", as.character(error))
 
-  new_expectation(msg, srcref, type = "skip")
+  expectation("skip", msg, srcref)
 }
 
 #' @export
@@ -147,9 +159,11 @@ negate <- function(expt) {
   # If it's not a success or failure, don't need to do anything
   if (!expectation_success(expt) && !expectation_failure(expt)) return(expt)
 
-  expectation(expectation_failure(expt),
-              paste0("NOT(", expt$message, ")"),
-              srcref = expt$srcref)
+  succeed_if(
+    expectation_failure(expt),
+    paste0("NOT(", expt$message, ")"),
+    srcref = expt$srcref
+  )
 }
 
 single_letter_summary <- function(x) {

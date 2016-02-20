@@ -60,7 +60,7 @@ equals <- function(expected, label = NULL, ...) {
   function(actual) {
     same <- compare(actual, expected, ...)
 
-    expectation(
+    succeed_if(
       same$equal,
       paste0("not equal to ", label, "\n", same$message)
     )
@@ -131,7 +131,7 @@ is_identical_to <- function(expected, label = NULL) {
       }
     }
 
-    expectation(
+    succeed_if(
       identical(actual, expected),
       paste0("is not identical to ", label, ". Differences: \n", diff)
     )
@@ -207,9 +207,9 @@ equals_reference <- function(file, label = NULL, ...) {
     equals(reference, label = label, ...)
   } else {
     function(actual) {
-      # saveRDS() returns no useful information to use for the expectation
       saveRDS(actual, file)
-      expectation(TRUE, "should never fail")
+      # first time always succeeds
+      succeed()
     }
   }
 }

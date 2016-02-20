@@ -25,16 +25,19 @@ expect_that <- function(object, condition, info = NULL, label = NULL) {
   exp <- condition(object)
   stopifnot(is.expectation(exp))
 
-  exp <- update_expectation(exp, srcref = find_test_srcref(), info = info,
-                            label = label)
-
+  exp <- update_expectation(
+    exp,
+    srcref = find_test_srcref(),
+    info = info,
+    label = label
+  )
   expect(exp)
 }
 
 #' A default expectation that always fails.
 #'
 #' The fail function forces a test to fail.  This is useful if you want to
-#' test a pre-condition '
+#' test a pre-condition.
 #'
 #' @param message a string to display.
 #' @export
@@ -43,8 +46,7 @@ expect_that <- function(object, condition, info = NULL, label = NULL) {
 #' test_that("this test fails", fail())
 #' }
 fail <- function(message = "Failure has been forced") {
-  exp <- expectation(FALSE, message)
-  expect(exp)
+  expect(FALSE, message)
 }
 
 
@@ -57,8 +59,7 @@ fail <- function(message = "Failure has been forced") {
 #' test_that("this test fails", fail())
 #' }
 succeed <- function(message = "Success has been forced") {
-  exp <- expectation(TRUE, message)
-  expect(exp)
+  expect(TRUE, message)
 }
 
 #' Negate an expectation
