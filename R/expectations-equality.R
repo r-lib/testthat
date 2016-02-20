@@ -60,7 +60,7 @@ equals <- function(expected, label = NULL, ...) {
   function(actual) {
     same <- compare(actual, expected, ...)
 
-    succeed_if(
+    expect(
       same$equal,
       paste0("not equal to ", label, "\n", same$message)
     )
@@ -131,7 +131,7 @@ is_identical_to <- function(expected, label = NULL) {
       }
     }
 
-    succeed_if(
+    expect(
       identical(actual, expected),
       paste0("is not identical to ", label, ". Differences: \n", diff)
     )

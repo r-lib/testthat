@@ -19,19 +19,8 @@
 #' expect_that(sqrt(2) ^ 2, is_identical_to(2))
 #' }
 expect_that <- function(object, condition, info = NULL, label = NULL) {
-  stopifnot(length(info) <= 1, length(label) <= 1)
-
-  label <- label %||% find_expr("object")
-  exp <- condition(object)
-  stopifnot(is.expectation(exp))
-
-  exp <- update_expectation(
-    exp,
-    srcref = find_test_srcref(),
-    info = info,
-    label = label
-  )
-  expect(exp)
+  make_label(object, info, label)
+  condition(object)
 }
 
 #' Default expectations that alway succeed or fail.
@@ -71,8 +60,15 @@ not <- function(f) {
   warning("`not()` is deprecated.", call. = FALSE)
   stopifnot(is.function(f))
 
+  negate <- function(expt) {
+    expect(
+      !expectation_success(expt),
+      message = paste0("NOT(", expt$message, ")"),
+      srcref = expt$srcref
+    )
+  }
+
   function(...) {
-    res <- f(...)
-    negate(res)
+    negate(capture_first_expectation(f(...)))
   }
 }

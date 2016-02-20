@@ -28,12 +28,6 @@ expectation <- function(type, message, srcref = NULL) {
   )
 }
 
-# Helper for old-school expect_* functions
-succeed_if <- function(condition, message, srcref = NULL) {
-  type <- if (condition) "success" else "failure"
-  expectation(type, message, srcref = srcref)
-}
-
 expect <- function(exp, ...) {
   exp <- as.expectation(exp, ...)
 
@@ -47,20 +41,6 @@ expect <- function(exp, ...) {
   )
 
   invisible(exp)
-}
-
-update_expectation <- function(exp, srcref, info = NULL, label = NULL) {
-  exp$srcref <- srcref
-
-  if (!is.null(label)) {
-    exp$message <- paste0(label, " ", exp$message)
-  }
-
-  if (!is.null(info)) {
-    exp$message <- paste0(exp$message, "\n", info)
-  }
-
-  exp
 }
 
 expectation_type <- function(exp) {
@@ -106,7 +86,8 @@ as.expectation.expectation <- function(x, ..., srcref = NULL) {
 
 #' @export
 as.expectation.logical <- function(x, message, ..., srcref = NULL) {
-  succeed_if(x, message = message, srcref = srcref)
+  type <- if (x) "success" else "failure"
+  expectation(type, message, srcref = srcref)
 }
 
 #' @export
@@ -150,25 +131,12 @@ format.expectation <- function(x, ...) {
   if (expectation_success(x)) {
     "As expected"
   } else {
-    paste0("Not expected: ", x$message, ".")
+    paste0("Not expected: ", x$message)
   }
 }
 
 #' @export
 as.character.expectation <- function(x, ...) format(x)
-
-negate <- function(expt) {
-  stopifnot(is.expectation(expt))
-
-  # If it's not a success or failure, don't need to do anything
-  if (!expectation_success(expt) && !expectation_failure(expt)) return(expt)
-
-  succeed_if(
-    expectation_failure(expt),
-    paste0("NOT(", expt$message, ")"),
-    srcref = expt$srcref
-  )
-}
 
 single_letter_summary <- function(x) {
   switch(expectation_type(x),

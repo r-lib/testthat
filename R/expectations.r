@@ -1,67 +1,4 @@
 
-#' Expectation: is the object true/false?
-#'
-#' These are fall-back expectations that you can use when none of the other
-#' more specific expectations apply. The disadvantage is that you may get
-#' a less informative error message.
-#'
-#' Attributes are ignored.
-#'
-#' @seealso \code{\link{is_false}} for complement
-#' @family expectations
-#' @export
-#' @examples
-#' expect_true(2 == 2)
-#' # Failed expectations will throw an error
-#' \dontrun{
-#' expect_true(2 != 2)
-#' }
-#' expect_true(!(2 != 2))
-#' # or better:
-#' expect_false(2 != 2)
-#'
-#' a <- 1:3
-#' expect_true(length(a) == 3)
-#' # but better to use more specific expectation, if available
-#' expect_equal(length(a), 3)
-expect_true <- function(object, info = NULL, label = NULL) {
-  if (is.null(label)) {
-    label <- find_expr("object")
-  }
-  expect_that(object, is_true(), info, label)
-}
-
-#' @export
-#' @rdname expect_true
-#' @inheritParams expect_that
-expect_false <- function(object, info = NULL, label = NULL) {
-  if (is.null(label)) {
-    label <- find_expr("object")
-  }
-  expect_that(object, is_false(), info, label)
-}
-
-#' @export
-#' @rdname oldskool
-is_true <- function() {
-  function(x) {
-    succeed_if(
-      identical(as.vector(x), TRUE),
-      "isn't true"
-    )
-  }
-}
-
-#' @export
-#' @rdname oldskool
-is_false <- function() {
-  function(x) {
-    succeed_if(
-      identical(as.vector(x), FALSE),
-      "isn't false"
-    )
-  }
-}
 
 #' Expectation: is the object NULL?
 #'
@@ -81,7 +18,7 @@ expect_null <- function(object, info = NULL, label = NULL) {
 #' @rdname oldskool
 is_null <- function() {
   function(x) {
-    succeed_if(
+    expect(
       identical(x, NULL),
       "isn't null"
     )
@@ -100,7 +37,7 @@ takes_less_than <- function(amount) {
   function(expr) {
     duration <- system.time(force(expr))["elapsed"]
 
-    succeed_if(
+    expect(
       duration < amount,
       paste0("took ", duration, " seconds, which is more than ", amount)
     )
@@ -148,7 +85,7 @@ expect_named <- function(object, expected, ignore.order = FALSE,
 has_names <- function(expected, ignore.order = FALSE, ignore.case = FALSE) {
   if (missing(expected)) {
     function(x) {
-      succeed_if(
+      expect(
         !identical(names(x), NULL),
         paste0("does not have names")
       )
@@ -159,7 +96,7 @@ has_names <- function(expected, ignore.order = FALSE, ignore.case = FALSE) {
     function(x) {
       x_names <- normalise_names(names(x), ignore.order, ignore.case)
 
-      succeed_if(
+      expect(
         identical(x_names, expected),
         paste0("names don't match ", paste0(expected, collapse = ", "))
       )
@@ -217,7 +154,7 @@ is_less_than <- function(expected, label = NULL, ...) {
   function(actual) {
     diff <- expected - actual
 
-    succeed_if(
+    expect(
       diff > 0,
       paste0("not less than ", label, ". Difference: ", format(diff))
     )
@@ -279,7 +216,7 @@ is_more_than <- function(expected, label = NULL, ...) {
   function(actual) {
     diff <- expected - actual
 
-    succeed_if(
+    expect(
       diff < 0,
       paste0("not more than ", label, ". Difference: ", format(diff))
     )

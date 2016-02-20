@@ -35,6 +35,7 @@ Collate:
     'reporter.r'
     'expect-success-failure.R'
     'expect-that.r'
+    'expect_logical.R'
     'expectation.r'
     'expectations-equality.R'
     'expectations-matches.R'
