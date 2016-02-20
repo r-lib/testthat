@@ -28,13 +28,20 @@ Expectation: does string/output/message/warning/error match a regular expression
 \examples{
 expect_match("Testing is fun", "fun")
 expect_match("Testing is fun", "f.n")
+
+\dontrun{
+expect_match("Testing is fun", "horrible")
+
+# Zero-length inputs always fail
+expect_match(character(), ".")
+}
 }
 \seealso{
 Other expectations: \code{\link{class-expectations}},
   \code{\link{comparison-expectations}},
   \code{\link{equality-expectations}},
   \code{\link{expect_equal_to_reference}},
-  \code{\link{expect_named}}, \code{\link{expect_silent}},
+  \code{\link{expect_named}},
   \code{\link{logical-expectations}},
   \code{\link{output-expectations}},
   \code{\link{takes_less_than}}

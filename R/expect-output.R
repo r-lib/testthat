@@ -1,5 +1,10 @@
 #' Expectation: does code produce output/message/warning/error?
 #'
+#' Use \code{expect_output()}, \code{expect_message()}, \code{expect_warning()},
+#' or \code{expect_error()} to check for specific outputs. Use
+#' \code{expect_silent()} to assert that there should be no output of
+#' any type.
+#'
 #' @inheritParams expect_that
 #' @inheritParams expect_match
 #' @param regexp regular expression to test against.
@@ -49,7 +54,6 @@
 #' expect_warning(f(-1), "*x*", fixed = TRUE)
 #' expect_warning(f(-1), "NEGATIVE", ignore.case = TRUE)
 #'
-#'
 #' # Errors --------------------------------------------------------------------
 #' f <- function() stop("My error!")
 #' expect_error(f())
@@ -58,6 +62,18 @@
 #' # You can use the arguments of grepl to control the matching
 #' expect_error(f(), "my error!", ignore.case = TRUE)
 #'
+#' # Silent --------------------------------------------------------------------
+#' expect_silent("123")
+#'
+#' f <- function() {
+#'   message("Hi!")
+#'   warning("Hey!!")
+#'   print("OY!!!")
+#' }
+#' \dontrun{
+#' expect_silent(f())
+#' }
+
 #' @name output-expectations
 NULL
 
@@ -167,4 +183,22 @@ expect_warning <- function(object, regexp = NULL, ..., all = FALSE,
   } else {
     expect_match(warnings, regexp, all = all, ...)
   }
+}
+
+#' @export
+#' @rdname output-expectations
+expect_silent <- function(expr) {
+  label <- find_expr("expr")
+  out <- evaluate_promise(expr)
+
+  outputs <- c(
+    if (!identical(out$output, "")) "output",
+    if (length(out$warnings) > 0) "warnings",
+    if (length(out$messages) > 0) "messages"
+  )
+
+  expect(
+    length(outputs) == 0,
+    paste0(label, " produced ", paste(outputs, collapse = ", "))
+  )
 }

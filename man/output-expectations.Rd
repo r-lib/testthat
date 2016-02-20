@@ -4,6 +4,7 @@
 \alias{expect_error}
 \alias{expect_message}
 \alias{expect_output}
+\alias{expect_silent}
 \alias{expect_warning}
 \alias{output-expectations}
 \title{Expectation: does code produce output/message/warning/error?}
@@ -17,6 +18,8 @@ expect_message(object, regexp = NULL, ..., all = FALSE, info = NULL,
 
 expect_warning(object, regexp = NULL, ..., all = FALSE, info = NULL,
   label = NULL)
+
+expect_silent(expr)
 }
 \arguments{
 \item{object}{object to test}
@@ -41,7 +44,10 @@ writing tests in loops).}
 (TRUE), or does only one need to match (FALSE)}
 }
 \description{
-Expectation: does code produce output/message/warning/error?
+Use \code{expect_output()}, \code{expect_message()}, \code{expect_warning()},
+or \code{expect_error()} to check for specific outputs. Use
+\code{expect_silent()} to assert that there should be no output of
+any type.
 }
 \examples{
 # Output --------------------------------------------------------------------
@@ -80,7 +86,6 @@ expect_warning(f(1), NA)
 expect_warning(f(-1), "*x*", fixed = TRUE)
 expect_warning(f(-1), "NEGATIVE", ignore.case = TRUE)
 
-
 # Errors --------------------------------------------------------------------
 f <- function() stop("My error!")
 expect_error(f())
@@ -89,6 +94,17 @@ expect_error(f(), "My error!")
 # You can use the arguments of grepl to control the matching
 expect_error(f(), "my error!", ignore.case = TRUE)
 
+# Silent --------------------------------------------------------------------
+expect_silent("123")
+
+f <- function() {
+  message("Hi!")
+  warning("Hey!!")
+  print("OY!!!")
+}
+\dontrun{
+expect_silent(f())
+}
 }
 \seealso{
 Other expectations: \code{\link{class-expectations}},
@@ -96,7 +112,6 @@ Other expectations: \code{\link{class-expectations}},
   \code{\link{equality-expectations}},
   \code{\link{expect_equal_to_reference}},
   \code{\link{expect_match}}, \code{\link{expect_named}},
-  \code{\link{expect_silent}},
   \code{\link{logical-expectations}},
   \code{\link{takes_less_than}}
 }

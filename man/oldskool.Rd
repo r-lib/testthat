@@ -46,7 +46,7 @@ shows_message(regexp = NULL, all = FALSE, ...)
 
 gives_warning(regexp = NULL, all = FALSE, ...)
 
-prints_text(regexp, ...)
+prints_text(regexp = NULL, ...)
 
 throws_error(regexp = NULL, ...)
 
