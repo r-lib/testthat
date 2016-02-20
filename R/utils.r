@@ -14,3 +14,5 @@ is_directory <- function(x) file.info(x)$isdir
 is_readable <- function(x) file.access(x, 4) == 0
 
 null <- function(...) invisible()
+
+klass <- function(x) paste(class(x), collapse = "/")

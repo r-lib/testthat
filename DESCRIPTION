@@ -15,7 +15,8 @@ Depends:
 Imports:
     digest,
     crayon,
-    praise
+    praise,
+    lazyeval
 Suggests:
     devtools,
     covr
@@ -30,6 +31,7 @@ Collate:
     'context.r'
     'describe.r'
     'evaluate-promise.r'
+    'expect-is.R'
     'reporter.r'
     'expect-success-failure.R'
     'expect-that.r'

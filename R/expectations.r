@@ -1,55 +1,3 @@
-#' Expectation: does the object inherit from a S3 or S4 class, or a base type?
-#'
-#' Tests whether or not an object inherits from any of a list of classes, or
-#' is an instance of a base type.
-#'
-#' @inheritParams expect_that
-#' @param class character vector of class names
-#' @param type String giving base type (as returned by \code{\link{typeof}}).
-#' @seealso \code{\link{inherits}}
-#' @family expectations
-#' @export
-#' @examples
-#' expect_is(1, "numeric")
-#' a <- matrix(1:10, nrow = 5)
-#' expect_is(a, "matrix")
-#'
-#' expect_is(mtcars, "data.frame")
-#' # alternatively for classes that have an is method
-#' expect_true(is.data.frame(mtcars))
-expect_is <- function(object, class, info = NULL, label = NULL) {
-  if (is.null(label)) {
-    label <- find_expr("object")
-  }
-  expect_that(object, is_a(class), info, label)
-}
-
-#' @export
-#' @rdname oldskool
-is_a <- function(class) {
-  function(x) {
-    actual_s <- paste0(class(x), collapse = ", ")
-    class_s <- paste(class, collapse = ", ")
-    succeed_if(
-      inherits(x, class),
-      paste0("inherits from ", actual_s, " not ", class_s)
-    )
-  }
-}
-
-#' @export
-#' @rdname expect_is
-expect_type <- function(object, type) {
-  stopifnot(is.character(type), length(type) == 1)
-
-  label <- find_expr("object")
-  actual_type <- typeof(object)
-
-  expect(
-    identical(type, actual_type),
-    paste0("`", label, "` is type `", actual_type, "` not `", type, "`")
-  )
-}
 
 #' Expectation: is the object true/false?
 #'
@@ -380,4 +328,21 @@ expect_gte <- function(object, expected) {
     paste0(label_object, " is strictly less than ", label_expected,
            ". Difference: ", format(diff))
   )
+}
+
+make_label <- function(object, info = NULL, label = NULL) {
+  if (!is.null(info)) {
+    warning("`info` has been deprecated.", call. = FALSE)
+  }
+  if (!is.null(label)) {
+    warning("`label` has been deprecated.", call. = FALSE)
+  }
+
+  label(object)
+}
+
+label <- function(obj) {
+  x <- lazyeval::lazy(obj)
+
+  paste(deparse(x$expr), collapse = "")
 }

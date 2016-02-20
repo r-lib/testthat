@@ -65,8 +65,7 @@ same_class <- function(x, y) {
   identical(class(x), class(y))
 }
 diff_class <- function(x, y) {
-  class_string <- function(x) paste(class(x), collapse = "/")
-  difference("Classes differ: %s vs %s", class_string(x), class_string(y))
+  difference("Classes differ: %s vs %s", klass(x), klass(y))
 }
 
 same_attr <- function(x, y) {

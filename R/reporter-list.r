@@ -64,7 +64,3 @@ ListReporter <- setRefClass("ListReporter", contains = "Reporter",
 
   )
 )
-
-
-
-
