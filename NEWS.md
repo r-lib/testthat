@@ -1,5 +1,8 @@
 # testthat 0.11.0.9000
 
+* Thorough review of the documentation, ensuring that appropriate functions
+  are documented together, and have (hopefully) evocative names.
+
 * `expect_s3_class()` and `expect_s4_class()` for testing specifically for
   S3/S4 classes (#373).
 
