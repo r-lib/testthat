@@ -34,30 +34,26 @@ expect_that <- function(object, condition, info = NULL, label = NULL) {
   expect(exp)
 }
 
-#' A default expectation that always fails.
+#' Default expectations that alway succeed or fail.
 #'
-#' The fail function forces a test to fail.  This is useful if you want to
-#' test a pre-condition.
+#' These allow you to manually trigger success or failure. Failure is
+#' particularly useful to a pre-condition or mark a test as not yet
+#' implemented.
 #'
 #' @param message a string to display.
 #' @export
 #' @examples
 #' \dontrun{
 #' test_that("this test fails", fail())
+#' test_that("this test succeeds", succeed())
 #' }
 fail <- function(message = "Failure has been forced") {
   expect(FALSE, message)
 }
 
 
-#' A default expectation that always succeeds.
-#'
-#' @param message a string to display.
+#' @rdname fail
 #' @export
-#' @examples
-#' \dontrun{
-#' test_that("this test fails", fail())
-#' }
 succeed <- function(message = "Success has been forced") {
   expect(TRUE, message)
 }

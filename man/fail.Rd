@@ -2,20 +2,25 @@
 % Please edit documentation in R/expect-that.r
 \name{fail}
 \alias{fail}
-\title{A default expectation that always fails.}
+\alias{succeed}
+\title{Default expectations that alway succeed or fail.}
 \usage{
 fail(message = "Failure has been forced")
+
+succeed(message = "Success has been forced")
 }
 \arguments{
 \item{message}{a string to display.}
 }
 \description{
-The fail function forces a test to fail.  This is useful if you want to
-test a pre-condition.
+These allow you to manually trigger success or failure. Failure is
+particularly useful to a pre-condition or mark a test as not yet
+implemented.
 }
 \examples{
 \dontrun{
 test_that("this test fails", fail())
+test_that("this test succeeds", succeed())
 }
 }
 
