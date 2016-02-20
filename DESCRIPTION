@@ -39,7 +39,7 @@ Collate:
     'expect-named.R'
     'expect-output.R'
     'reporter.r'
-    'expect-success-failure.R'
+    'expect-self-test.R'
     'expect-that.r'
     'expectation.r'
     'expectations-matches.R'

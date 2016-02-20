@@ -1,4 +1,4 @@
-context("expect_failure/expect_suceed")
+context("expect-self-test")
 
 test_that("fail always fails",  {
   expect_failure(fail())
