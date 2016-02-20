@@ -5,42 +5,43 @@ NULL
 #'
 #' Use these expectations to test other expectations.
 #'
-#' @param expr Expression that evaluates an expectation.
+#' @param expr Expression that evaluates a single expectation.
 #' @param message Check that the failure message matches this regexp.
 #' @param ... Other arguments passed on to \code{\link{expect_match}}.
 #' @keywords internal
 #' @export
 expect_success <- function(expr) {
-  exp <- with_reporter(SingleReporter(result = NULL), expr)$result
+  exp <- capture_first_expectation(expr)
 
   if (is.null(exp)) {
-    expect(FALSE, "no expectation processed")
+    fail("no expectation used.")
+  } else if (!expectation_success(exp)) {
+    fail("expectation did not succeed.")
   } else {
-    expect(expectation_success(exp), "expectation failed")
+    invisible(exp)
   }
 }
 
 #' @export
 #' @rdname expect_success
 expect_failure <- function(expr, message = NULL, ...) {
-  exp <- with_reporter(SingleReporter(result = NULL), expr)$result
+  exp <- capture_first_expectation(expr)
 
   if (is.null(exp)) {
-    expect(FALSE, "no expectation processed")
+    fail("No expectation used")
+  } else if (is.null(message)) {
+    expect(expectation_failure(exp), "expectation did not fail.")
   } else {
-    if (is.null(message)) {
-      expect(!expectation_success(exp), "expectation succeeded")
-    } else {
-      expect_match(exp$message, message, ...)
-    }
+    expect_match(exp$message, message, ...)
   }
 }
 
-SingleReporter <- setRefClass("SingleReporter", contains = "Reporter",
-  fields = c("result"),
-  methods = list(
-    add_result = function(x) {
-      result <<- x
-    }
+capture_first_expectation <- function(expr) {
+  tryCatch(
+    {
+      expr
+      NULL
+    },
+    expectation = function(e) e
   )
-)
+}

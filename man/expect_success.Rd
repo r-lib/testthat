@@ -10,7 +10,7 @@ expect_success(expr)
 expect_failure(expr, message = NULL, ...)
 }
 \arguments{
-\item{expr}{Expression that evaluates an expectation.}
+\item{expr}{Expression that evaluates a single expectation.}
 
 \item{message}{Check that the failure message matches this regexp.}
 
