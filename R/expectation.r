@@ -17,9 +17,10 @@ expectation <- function(passed, message, srcref = NULL) {
 new_expectation <- function(message, srcref, type = c("success", "failure", "error", "skip")) {
   type <- match.arg(type)
 
-  exp <- structure(
+  structure(
     list(
-      message = message
+      message = message,
+      srcref = srcref
     ),
     # Use "expectation" as top-level class so that no coercion is applied
     # to expectation objects by as.expectation()
@@ -30,8 +31,6 @@ new_expectation <- function(message, srcref, type = c("success", "failure", "err
       "condition"
     )
   )
-
-  update_expectation(exp, srcref)
 }
 
 update_expectation <- function(exp, srcref, info = NULL, label = NULL) {
@@ -76,24 +75,28 @@ expectation_broken <- function(exp) {
 as.expectation <- function(x, ...) UseMethod("as.expectation", x)
 
 #' @export
-as.expectation.default <- function(x, ...) {
+as.expectation.default <- function(x, ..., srcref = NULL) {
   stop("Don't know how to convert '", paste(class(x), collapse = "', '"),
        "' to expectation.", call. = FALSE)
 }
 
 #' @export
-as.expectation.expectation <- function(x, ...) x
-
-#' @export
-as.expectation.logical <- function(x, message, ...) {
-  expectation(passed = x, message = message, srcref = find_test_srcref())
+as.expectation.expectation <- function(x, ..., srcref = NULL) {
+  if (is.null(x$srcref)) {
+    x$srcref <- srcref
+  }
+  x
 }
 
 #' @export
-as.expectation.error <- function(x, ...) {
+as.expectation.logical <- function(x, message, ..., srcref = NULL) {
+  expectation(passed = x, message = message, srcref = srcref)
+}
+
+#' @export
+as.expectation.error <- function(x, ..., srcref = NULL) {
   error <- x$message
   calls <- x$calls
-  srcref <- x$srcref
 
   msg <- gsub("Error.*?: ", "", as.character(error))
 
@@ -111,9 +114,8 @@ as.expectation.error <- function(x, ...) {
 }
 
 #' @export
-as.expectation.skip <- function(x, ...) {
+as.expectation.skip <- function(x, ..., srcref = NULL) {
   error <- x$message
-  srcref <- x$srcref
   msg <- gsub("Error.*?: ", "", as.character(error))
 
   new_expectation(msg, srcref, type = "skip")

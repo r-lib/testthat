@@ -37,9 +37,8 @@ test_code <- function(description, code, env) {
 
   ok <- TRUE
   register_expectation <- function(e) {
-    e <- as.expectation(e)
+    e <- as.expectation(e, srcref = find_test_srcref())
     ok <<- ok && expectation_success(e)
-    e$srcref <- find_test_srcref()
     get_reporter()$add_result(e)
   }
 
