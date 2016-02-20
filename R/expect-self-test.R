@@ -20,6 +20,7 @@ expect_success <- function(expr) {
   } else {
     succeed()
   }
+  invisible(NULL)
 }
 
 #' @export
@@ -34,6 +35,7 @@ expect_failure <- function(expr, message = NULL, ...) {
   } else {
     expect_match(exp$message, message, ...)
   }
+  invisible(NULL)
 }
 
 capture_first_expectation <- function(expr) {

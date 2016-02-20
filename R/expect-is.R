@@ -40,6 +40,7 @@ expect_is <- function(object, class, info = NULL, label = NULL) {
     inherits(object, class),
     sprintf("%s inherits from `%s` not `%s`.", lab, act, exp)
   )
+  invisible(object)
 }
 
 #' @export
@@ -55,6 +56,7 @@ expect_type <- function(object, type) {
     identical(type, act),
     sprintf("%s has type `%s`, not `%s`.", lab, act, exp)
   )
+  invisible(object)
 }
 
 #' @export
@@ -66,5 +68,6 @@ expect_null <- function(object, info = NULL, label = NULL) {
     is.null(object),
     sprintf("%s is not null.", lab)
   )
+  invisible(object)
 }
 

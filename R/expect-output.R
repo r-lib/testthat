@@ -96,13 +96,14 @@ expect_output <- function(object, regexp = NULL, ..., info = NULL, label = NULL)
   } else {
     expect_match(output, regexp, ...)
   }
+  invisible(NULL)
 }
 
 
 #' @export
 #' @rdname output-expectations
-expect_error <- function(object, regexp = NULL, ..., info = NULL,
-  label = NULL) {
+expect_error <- function(object, regexp = NULL, ...,
+                         info = NULL, label = NULL) {
 
   lab <- make_label(object, info = info, label = label)
 
@@ -129,6 +130,7 @@ expect_error <- function(object, regexp = NULL, ..., info = NULL,
   } else {
     expect_match(error$message, regexp, ...)
   }
+  invisible(NULL)
 }
 
 #' @export
@@ -156,6 +158,7 @@ expect_message <- function(object, regexp = NULL, ..., all = FALSE,
   } else {
     expect_match(messages, regexp, all = all, ...)
   }
+  invisible(NULL)
 }
 
 #' @export
@@ -183,6 +186,7 @@ expect_warning <- function(object, regexp = NULL, ..., all = FALSE,
   } else {
     expect_match(warnings, regexp, all = all, ...)
   }
+  invisible(NULL)
 }
 
 #' @export
@@ -201,4 +205,5 @@ expect_silent <- function(object) {
     length(outputs) == 0,
     sprintf("%s produced %s.", lab, paste(outputs, collapse = ", "))
   )
+  invisible(NULL)
 }

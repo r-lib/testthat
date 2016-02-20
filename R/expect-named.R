@@ -45,6 +45,7 @@ expect_named <- function(object, expected, ignore.order = FALSE,
       paste0("%s names don't match %s", lab, paste0(exp, collapse = ", "))
     )
   }
+  invisible(object)
 }
 
 normalise_names <- function(x, ignore.order = FALSE, ignore.case = FALSE) {

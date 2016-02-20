@@ -45,4 +45,5 @@ expect_match <- function(object, regexp, ..., all = TRUE,
       values
     )
   )
+  invisible(object)
 }

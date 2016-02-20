@@ -35,6 +35,7 @@ expect_true <- function(object, info = NULL, label = NULL) {
     identical(as.vector(object), TRUE),
     sprintf("%s isn't true.", lab)
   )
+  invisible(object)
 }
 
 #' @export
@@ -46,4 +47,5 @@ expect_false <- function(object, info = NULL, label = NULL) {
     identical(as.vector(object), FALSE),
     sprintf("%s isn't false.", lab)
   )
+  invisible(object)
 }

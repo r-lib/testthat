@@ -49,4 +49,6 @@ expect_equal_to_reference <- function(object, file, ..., info = NULL,
       sprintf("%s not equal to %s.\n%s", lab_act, lab_exp, comp$message)
     )
   }
+
+  invisible(object)
 }

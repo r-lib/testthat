@@ -42,6 +42,7 @@ expect_compare <- function(actual, expected,
     op(diff, 0),
     sprintf("%s is %s %s. Difference: %.3g", lab_act, msg, lab_exp, diff)
   )
+  invisible(actual)
 }
 #' @export
 #' @rdname comparison-expectations
@@ -81,7 +82,6 @@ expect_less_than <- function(...) {
 #' @export
 #' @rdname comparison-expectations
 #' @usage NULL
-
 expect_more_than <- function(...) {
   warning("Deprecated: please use `expect_gt()` instead", call. = FALSE)
   expect_gt(...)

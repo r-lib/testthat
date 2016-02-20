@@ -56,6 +56,8 @@ expect_equal <- function(object, expected, ..., info = NULL, label = NULL,
     comp$equal,
     sprintf("%s not equal to %s.\n%s", lab_act, lab_exp, comp$message)
   )
+
+  invisible(object)
 }
 
 #' @export
@@ -70,6 +72,7 @@ expect_equivalent <- function(object, expected, info = NULL, label = NULL,
     comp$equal,
     sprintf("%s not equivalent to %s.\n%s", lab_act, lab_exp, comp$message)
   )
+  invisible(object)
 }
 
 #' @export
@@ -96,5 +99,6 @@ expect_identical <- function(object, expected, info = NULL, label = NULL,
     ident,
     sprintf("%s not identical to %s.\n%s", lab_act, lab_exp, msg)
   )
+  invisible(object)
 }
 

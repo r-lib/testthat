@@ -1,5 +1,17 @@
 # testthat 0.11.0.9000
 
+* All expectations invisibly return the input `object`. This makes it possible
+  to chain together expectations with magrittr:
+    
+    ```R
+    factor("a") %>% 
+      expect_type("integer") %>% 
+      expect_is("factor")
+    ```
+    
+    The only expectation are the functions that evaluate the code (i.e.
+    for messages, warnings, errors, output etc). These invisibly return `NULL`.
+
 * Expectations have been completely refactored internally. This will make it
   easier to create new expectations in the future (#217). As part of this
   refactoring the `label` and `info` arguments have been deprecated. Instead
