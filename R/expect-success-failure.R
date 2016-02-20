@@ -18,7 +18,7 @@ expect_success <- function(expr) {
   } else if (!expectation_success(exp)) {
     fail("expectation did not succeed.")
   } else {
-    invisible(exp)
+    succeed()
   }
 }
 
