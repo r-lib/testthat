@@ -1,12 +1,15 @@
 # testthat 0.11.0.9000
 
+* `expect_length()` checks that an object has expected length.
+
 * All expectations invisibly return the input `object`. This makes it possible
   to chain together expectations with magrittr:
     
     ```R
     factor("a") %>% 
       expect_type("integer") %>% 
-      expect_is("factor")
+      expect_is("factor") %>% 
+      expect_length(1)
     ```
     
     The only expectation are the functions that evaluate the code (i.e.

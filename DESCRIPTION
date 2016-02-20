@@ -35,6 +35,7 @@ Collate:
     'expect-equal-to-reference.R'
     'expect-equality.R'
     'expect-is.R'
+    'expect-length.R'
     'expect-logical.R'
     'expect-named.R'
     'expect-output.R'

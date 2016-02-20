@@ -48,7 +48,8 @@ Other expectations: \code{\link{class-expectations}},
   \code{\link{comparison-expectations}},
   \code{\link{equality-expectations}},
   \code{\link{expect_equal_to_reference}},
-  \code{\link{expect_match}}, \code{\link{expect_named}},
+  \code{\link{expect_length}}, \code{\link{expect_match}},
+  \code{\link{expect_named}},
   \code{\link{output-expectations}},
   \code{\link{takes_less_than}}
 }
