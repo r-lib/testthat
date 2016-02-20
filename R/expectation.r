@@ -93,7 +93,6 @@ as.expectation.logical <- function(x, message, ...) {
 as.expectation.error <- function(x, ...) {
   error <- x$message
   calls <- x$calls
-  # TODO: Collect srcref in test_code()
   srcref <- x$srcref
 
   msg <- gsub("Error.*?: ", "", as.character(error))

@@ -61,7 +61,6 @@ test_that("line numbers are found and given to reporters", {
   "
   res1 <- .test_code(code)[[1]]
   expect_equal(expectation_type(res1), "error")
-  expect_null(res1$srcref)
 
   #  unparsable test file
   expect_error(.test_code( 'bla)('))

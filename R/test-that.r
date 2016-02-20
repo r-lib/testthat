@@ -36,10 +36,10 @@ test_code <- function(description, code, env) {
   on.exit(get_reporter()$end_test())
 
   ok <- TRUE
-
   register_expectation <- function(e) {
     e <- as.expectation(e)
     ok <<- ok && expectation_success(e)
+    e$srcref <- find_test_srcref()
     get_reporter()$add_result(e)
   }
 
@@ -55,7 +55,7 @@ test_code <- function(description, code, env) {
   }
   handle_expectation <- function(e) {
     register_expectation(e)
-    invokeRestart(findRestart("continue_test"))
+    invokeRestart("continue_test")
   }
   handle_message <- function(e) {
     invokeRestart("muffleMessage")
@@ -82,6 +82,33 @@ test_code <- function(description, code, env) {
   invisible(ok)
 }
 
+# find the srcref of the test call, or NULL
+find_test_srcref <- function() {
+  # candidate frame is not in the testthat package,
+  # its call matches expect_* and has parsing info attached
+  .is_test_frame <- function(i) {
+    # is enclosure of the frame containing the call inside testthat package ?
+    inside <- identical(environmentName(parent.env(sys.frame(i - 1)))
+      , 'testthat')
+    match_expect <- any(grepl('expect_', sys.call(i)))
+    has_srcref <- !is.null(attr(sys.call(i), 'srcref'))
+
+    !inside && match_expect && has_srcref
+  }
+
+  # find the first call (tracing back) that seems good
+  nbe <- Find(.is_test_frame, seq_len(sys.nframe()), right = TRUE)
+
+  if (length(nbe) == 0 || is.na(nbe)) {
+    return(NULL)
+  }
+
+  cc <- sys.call(nbe)
+  src <- attr(cc, 'srcref')
+  if (is.null(src))  warning("could not get srcref")
+
+  src
+}
 
 expect <- function(exp, ...) {
   exp <- as.expectation(exp, ...)
