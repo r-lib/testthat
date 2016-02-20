@@ -2,7 +2,7 @@ context("expect_message")
 
 test_that("regexp = NULL checks for presence of message", {
   expect_success(expect_message(message("!")))
-  expect_failure(expect_message(null()), "no messages")
+  expect_failure(expect_message(null()), "showed 0 messages")
 })
 
 test_that("regexp = NA checks for absence of message", {

@@ -60,7 +60,9 @@ make_label <- function(object, info = NULL, label = NULL, expected.label = NULL)
 label <- function(obj) {
   x <- lazyeval::lazy(obj)$expr
 
-  if (is.atomic(x)) {
+  if (is.character(x)) {
+    encodeString(x, quote = '"')
+  } else if (is.atomic(x)) {
     format(x)
   } else if (is.name(x)) {
     paste0("`", as.character(x), "`")

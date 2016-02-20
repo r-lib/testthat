@@ -9,13 +9,13 @@ test_that("expect = NA checks for no output", {
 })
 
 test_that("expect = NULL checks for some output", {
-  expect_failure(expect_output(f(), NULL), "didn't produce output")
+  expect_failure(expect_output(f(), NULL), "produced no output")
   expect_success(expect_output(g(), NULL))
 })
 
 test_that("expect = string checks for match", {
   expect_success(expect_output(g(), "!"))
-  expect_failure(expect_output(g(), "x"), "does not match 'x'")
+  expect_failure(expect_output(g(), "x"), 'does not match "x"')
 })
 
 test_that("multiline outputs captures and matches", {

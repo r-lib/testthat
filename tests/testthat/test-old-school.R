@@ -28,3 +28,10 @@ test_that("old school equality tests still work", {
 test_that("old school reference equality test", {
   expect_success(expect_equal_to_reference(1, "one.rds"))
 })
+
+test_that("old school output tests still work", {
+  expect_success(expect_that(stop("!"), throws_error()))
+  expect_success(expect_that(warning("!"), gives_warning()))
+  expect_success(expect_that(message("!"), shows_message()))
+  expect_success(expect_that(print("!"), prints_text()))
+})

@@ -2,7 +2,7 @@ context("expect_warning")
 
 test_that("regexp = NULL checks for presence of warning", {
   expect_success(expect_warning(warning("!")))
-  expect_failure(expect_warning(null()), "no warnings")
+  expect_failure(expect_warning(null()), "showed 0 warnings")
 })
 
 test_that("regexp = NA checks for absence of warning", {

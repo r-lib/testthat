@@ -51,7 +51,7 @@ test_that("line numbers are found and given to reporters", {
   ### ==== EDGE CASES ====
 
   # test file with errors, e.g. unknown function
-  expect_error(.test_code('expect_toto()'), regexp = 'Error')
+  expect_error(.test_code('expect_toto()'), regexp = "could not find function")
 
   # no errors are thrown inside test_that: test_that swallows errors
   code <- "

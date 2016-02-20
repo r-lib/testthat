@@ -79,6 +79,37 @@ equals_reference <- function(file, label = NULL, ...) {
   function(x) expect_equal_to_reference(x, file, expected.label = label, ...)
 }
 
+#' @export
+#' @rdname oldskool
+shows_message <- function(regexp = NULL, all = FALSE, ...) {
+  function(x) expect_message(x, regexp = regexp, all = all, ...)
+}
+
+#' @export
+#' @rdname oldskool
+gives_warning <- function(regexp = NULL, all = FALSE, ...) {
+  function(x) expect_warning(x, regexp = regexp, all = all, ...)
+}
+
+#' @export
+#' @rdname oldskool
+prints_text <- function(regexp = NULL, ...) {
+  function(x) expect_output(x, regexp, ...)
+}
+
+#' @export
+#' @rdname oldskool
+throws_error <- function(regexp = NULL, ...) {
+  function(x) expect_error(x, regexp, ...)
+}
+
+#' @export
+#' @rdname oldskool
+matches <- function(regexp, all = TRUE, ...) {
+  function(x) expect_match(x, regexp, all = all, ...)
+}
+
+
 #' Expectation: does expression take less than a fixed amount of time to run?
 #'
 #' This is useful for performance regression testing.

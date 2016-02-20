@@ -51,9 +51,10 @@ expect_equal_to_reference(1, "one.rds")
 Other expectations: \code{\link{class-expectations}},
   \code{\link{comparison-expectations}},
   \code{\link{equality-expectations}},
-  \code{\link{expect_named}}, \code{\link{expect_silent}},
+  \code{\link{expect_match}}, \code{\link{expect_named}},
+  \code{\link{expect_silent}},
   \code{\link{logical-expectations}},
-  \code{\link{matching-expectations}},
+  \code{\link{output-expectations}},
   \code{\link{takes_less_than}}
 }
 
