@@ -26,11 +26,11 @@
 #'
 #' expect_null(NULL)
 #'
-#' @name class-expectations
+#' @name inheritance-expectations
 NULL
 
 #' @export
-#' @rdname class-expectations
+#' @rdname inheritance-expectations
 expect_null <- function(object, info = NULL, label = NULL) {
   lab <- make_label(object, info, label)
 
@@ -42,7 +42,7 @@ expect_null <- function(object, info = NULL, label = NULL) {
 }
 
 #' @export
-#' @rdname class-expectations
+#' @rdname inheritance-expectations
 expect_type <- function(object, type) {
   stopifnot(is.character(type), length(type) == 1)
 
@@ -60,7 +60,7 @@ expect_type <- function(object, type) {
 #' @param class character vector of class names
 #' @param type String giving base type (as returned by \code{\link{typeof}}).
 #' @export
-#' @rdname class-expectations
+#' @rdname inheritance-expectations
 expect_is <- function(object, class, info = NULL, label = NULL) {
   stopifnot(is.character(class))
 
@@ -76,7 +76,7 @@ expect_is <- function(object, class, info = NULL, label = NULL) {
 }
 
 #' @export
-#' @rdname class-expectations
+#' @rdname inheritance-expectations
 expect_s3_class <- function(object, class) {
   stopifnot(is.character(class))
 
@@ -95,7 +95,7 @@ expect_s3_class <- function(object, class) {
 }
 
 #' @export
-#' @rdname class-expectations
+#' @rdname inheritance-expectations
 expect_s4_class <- function(object, class) {
   stopifnot(is.character(class))
 
