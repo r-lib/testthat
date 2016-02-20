@@ -1,5 +1,11 @@
 # testthat 0.11.0.9000
 
+* Expectations have been completely refactored internally. This will make it
+  easier to create new expectations in the future (#217). As part of this
+  refactoring the `label` and `info` arguments have been deprecated. Instead
+  use NSE to create the expression you want and evaluate that. Will have
+  better tools and documentation prior to release (#218).
+
 * `expect_more_than()` and `expect_less_than()` have been deprecated. Please
   use `expect_gt()` and `expect_lt()` instead.
 
