@@ -73,10 +73,11 @@ names(b) <- letters[1:3]
 expect_equivalent(a, b)
 }
 \seealso{
-Other expectations: \code{\link{expect-compare}},
+Other expectations: \code{\link{class-expectations}},
+  \code{\link{comparison-expectations}},
   \code{\link{expect_equal_to_reference}},
-  \code{\link{expect_is}}, \code{\link{expect_named}},
-  \code{\link{expect_silent}}, \code{\link{expect_true}},
+  \code{\link{expect_named}}, \code{\link{expect_silent}},
+  \code{\link{logical-expectations}},
   \code{\link{matching-expectations}},
   \code{\link{takes_less_than}}
 }

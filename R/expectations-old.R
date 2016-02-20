@@ -22,3 +22,15 @@ is_null <- function() {
 is_a <- function(class) {
   function(x) expect_is(x, class)
 }
+
+#' @export
+#' @rdname oldskool
+is_true <- function() {
+  function(x) expect_true(x)
+}
+
+#' @export
+#' @rdname oldskool
+is_false <- function() {
+  function(x) expect_false(x)
+}

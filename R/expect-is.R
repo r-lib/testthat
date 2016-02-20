@@ -5,11 +5,8 @@
 #' for detecting \code{NULL}.
 #'
 #' @inheritParams expect_that
-#' @param class character vector of class names
-#' @param type String giving base type (as returned by \code{\link{typeof}}).
 #' @seealso \code{\link{inherits}}
 #' @family expectations
-#' @export
 #' @examples
 #' expect_is(1, "numeric")
 #' a <- matrix(1:10, nrow = 5)
@@ -24,6 +21,14 @@
 #' expect_type(f, "integer")
 #'
 #' expect_null(NULL)
+#'
+#' @name class-expectations
+NULL
+
+#' @param class character vector of class names
+#' @param type String giving base type (as returned by \code{\link{typeof}}).
+#' @export
+#' @rdname class-expectations
 expect_is <- function(object, class, info = NULL, label = NULL) {
   stopifnot(is.character(class))
 
@@ -38,7 +43,7 @@ expect_is <- function(object, class, info = NULL, label = NULL) {
 }
 
 #' @export
-#' @rdname expect_is
+#' @rdname class-expectations
 expect_type <- function(object, type) {
   stopifnot(is.character(type), length(type) == 1)
 
@@ -53,7 +58,7 @@ expect_type <- function(object, type) {
 }
 
 #' @export
-#' @rdname expect_is
+#' @rdname class-expectations
 expect_null <- function(object, info = NULL, label = NULL) {
   lab <- make_label(object, info, label)
 

@@ -113,7 +113,7 @@ normalise_names <- function(x, ignore.order = FALSE, ignore.case = FALSE) {
 #' \dontrun{
 #' expect_more_than(9, 10)
 #' }
-#' @name expect-compare
+#' @name comparison-expectations
 NULL
 
 #' @export
@@ -135,7 +135,7 @@ is_less_than <- function(expected, label = NULL, ...) {
 }
 
 #' @export
-#' @rdname expect-compare
+#' @rdname comparison-expectations
 expect_less_than <- function(object, expected, ..., info = NULL, label = NULL,
                          expected.label = NULL) {
   if (is.null(label)) {
@@ -149,7 +149,7 @@ expect_less_than <- function(object, expected, ..., info = NULL, label = NULL,
 }
 
 #' @export
-#' @rdname expect-compare
+#' @rdname comparison-expectations
 expect_lt <- function(object, expected) {
   label_object <- find_expr("object")
   label_expected <- find_expr("expected")
@@ -164,7 +164,7 @@ expect_lt <- function(object, expected) {
 }
 
 #' @export
-#' @rdname expect-compare
+#' @rdname comparison-expectations
 expect_lte <- function(object, expected) {
   label_object <- find_expr("object")
   label_expected <- find_expr("expected")
@@ -197,7 +197,7 @@ is_more_than <- function(expected, label = NULL, ...) {
 }
 
 #' @export
-#' @rdname expect-compare
+#' @rdname comparison-expectations
 expect_more_than <- function(object, expected, ..., info = NULL, label = NULL,
                              expected.label = NULL) {
   if (is.null(label)) {
@@ -211,7 +211,7 @@ expect_more_than <- function(object, expected, ..., info = NULL, label = NULL,
 }
 
 #' @export
-#' @rdname expect-compare
+#' @rdname comparison-expectations
 expect_gt <- function(object, expected) {
   label_object <- find_expr("object")
   label_expected <- find_expr("expected")
@@ -226,7 +226,7 @@ expect_gt <- function(object, expected) {
 }
 
 #' @export
-#' @rdname expect-compare
+#' @rdname comparison-expectations
 expect_gte <- function(object, expected) {
   label_object <- find_expr("object")
   label_expected <- find_expr("expected")

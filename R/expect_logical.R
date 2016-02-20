@@ -7,8 +7,8 @@
 #' Attributes are ignored.
 #'
 #' @seealso \code{\link{is_false}} for complement
+#' @inheritParams expect_that
 #' @family expectations
-#' @export
 #' @examples
 #' expect_true(2 == 2)
 #' # Failed expectations will throw an error
@@ -23,6 +23,11 @@
 #' expect_true(length(a) == 3)
 #' # but better to use more specific expectation, if available
 #' expect_equal(length(a), 3)
+#' @name logical-expectations
+NULL
+
+#' @export
+#' @rdname logical-expectations
 expect_true <- function(object, info = NULL, label = NULL) {
   lab <- make_label(object, info, label)
 
@@ -33,8 +38,7 @@ expect_true <- function(object, info = NULL, label = NULL) {
 }
 
 #' @export
-#' @rdname expect_true
-#' @inheritParams expect_that
+#' @rdname logical-expectations
 expect_false <- function(object, info = NULL, label = NULL) {
   lab <- make_label(object, info, label)
 
@@ -42,16 +46,4 @@ expect_false <- function(object, info = NULL, label = NULL) {
     identical(as.vector(object), FALSE),
     sprintf("`%s` isn't false.", lab)
   )
-}
-
-#' @export
-#' @rdname oldskool
-is_true <- function() {
-  function(x) expect_true(x)
-}
-
-#' @export
-#' @rdname oldskool
-is_false <- function() {
-  function(x) expect_false(x)
 }
