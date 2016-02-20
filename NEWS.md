@@ -1,5 +1,7 @@
 # testthat 0.11.0.9000
 
+* Add `skip_if_not()` helper.
+
 * `make_expectation()` uses `expect_equal()`.
 
 * Errors now also get a srcref so you can find them more easily.

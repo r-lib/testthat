@@ -2,6 +2,7 @@
 % Please edit documentation in R/skip.R
 \name{skip}
 \alias{skip}
+\alias{skip_if_not}
 \alias{skip_if_not_installed}
 \alias{skip_on_appveyor}
 \alias{skip_on_cran}
@@ -10,6 +11,8 @@
 \title{Skip a test.}
 \usage{
 skip(message)
+
+skip_if_not(condition, message = deparse(substitute(condition)))
 
 skip_if_not_installed(pkg)
 
@@ -24,6 +27,9 @@ skip_on_appveyor()
 \arguments{
 \item{message}{A message describing why the test was skipped.}
 
+\item{condition}{Boolean condition to check. If not \code{TRUE}, will
+skip the test.}
+
 \item{pkg}{Name of package to check for}
 
 \item{os}{Character vector of system names. Supported values are
@@ -35,6 +41,9 @@ This will produce an informative message, but will not cause the test
 suite to fail.
 }
 \section{Helpers}{
+
+\code{skip_if_not()} works like \code{\link{stopifnot}}, generating
+a message automatically based on the first argument.
 
 \code{skip_on_cran()} skips tests on CRAN, using the \code{NOT_CRAN}
 environment variable set by devtools.

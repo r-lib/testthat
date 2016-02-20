@@ -5,6 +5,9 @@
 #' suite to fail.
 #'
 #' @section Helpers:
+#' \code{skip_if_not()} works like \code{\link{stopifnot}}, generating
+#' a message automatically based on the first argument.
+#'
 #' \code{skip_on_cran()} skips tests on CRAN, using the \code{NOT_CRAN}
 #' environment variable set by devtools.
 #'
@@ -27,10 +30,22 @@ skip <- function(message) {
 }
 
 #' @export
+#' @rdname skip
+#' @param condition Boolean condition to check. If not \code{TRUE}, will
+#'   skip the test.
+skip_if_not <- function(condition, message = deparse(substitute(condition))) {
+  if (!isTRUE(condition)) {
+    skip(message)
+  }
+}
+
+#' @export
 #' @param pkg Name of package to check for
 #' @rdname skip
 skip_if_not_installed <- function(pkg) {
-  if (requireNamespace(pkg, quietly = TRUE)) return(invisible(TRUE))
+  if (requireNamespace(pkg, quietly = TRUE)) {
+    return(invisible(TRUE))
+  }
 
   skip(paste0(pkg, " not installed"))
 }
@@ -38,7 +53,9 @@ skip_if_not_installed <- function(pkg) {
 #' @export
 #' @rdname skip
 skip_on_cran <- function() {
-  if (identical(Sys.getenv("NOT_CRAN"), "true")) return(invisible(TRUE))
+  if (identical(Sys.getenv("NOT_CRAN"), "true")) {
+    return(invisible(TRUE))
+  }
 
   skip("On CRAN")
 }
@@ -65,7 +82,9 @@ skip_on_os <- function(os) {
 #' @export
 #' @rdname skip
 skip_on_travis <- function() {
-  if (!identical(Sys.getenv("TRAVIS"), "true")) return(invisible(TRUE))
+  if (!identical(Sys.getenv("TRAVIS"), "true")) {
+    return(invisible(TRUE))
+  }
 
   skip("On Travis")
 }
@@ -73,7 +92,9 @@ skip_on_travis <- function() {
 #' @export
 #' @rdname skip
 skip_on_appveyor <- function() {
-  if (!identical(Sys.getenv("APPVEYOR"), "True")) return()
+  if (!identical(Sys.getenv("APPVEYOR"), "True")) {
+    return()
+  }
 
   skip("On Appveyor")
 }
