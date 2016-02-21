@@ -1,11 +1,5 @@
 `%||%` <- function(a, b) if (is.null(a)) b else a
 
-# Find expression that created a variable
-find_expr <- function(name, env = parent.frame()) {
-  subs <- do.call("substitute", list(as.name(name), env))
-  paste0(deparse(subs, width.cutoff = 500), collapse = "\n")
-}
-
 starts_with <- function(string, prefix) {
   substr(string, 1, nchar(prefix)) == prefix
 }
