@@ -66,12 +66,7 @@ expectation_lines <- function(code) {
   unlist(lapply(results, function(x) x$srcref[1])) - srcref[[1]][1]
 }
 
-test_that("line numbers captured in simple cases", {
-  lines <- expectation_lines({
-    expect_true(FALSE)           # line 1
-  })
-  expect_equal(lines, 1)
-
+test_that("line numbers captured in simple case", {
   lines <- expectation_lines({
     context('testing testFile')  # line 1
     test_that('simple', {        # line 2

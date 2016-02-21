@@ -1,17 +1,28 @@
-One : .12.3
-Two : S
+Expectations : .1234.
+Errors : 56
+Skips : SS
 
-1. Failure: Failure (@tests.R#8) -----------------------------------------------
+1. Failure: Failure:1 (@tests.R#8) ---------------------------------------------
 Failure has been forced
 
-2. Failure: Failure loop (@tests.R#13) -----------------------------------------
+2. Failure: Failure:2a (@tests.R#12) -------------------------------------------
+Failure has been forced
+
+3. Failure: Failure:2b (@tests.R#15) -------------------------------------------
+FALSE isn't true.
+
+4. Failure: Failure:loop (@tests.R#20) -----------------------------------------
 `i` not equal to 2.
 1/1 mismatches
 [1] 1 - 2 == -1
 
-3. Error: Error (@tests.R#21) --------------------------------------------------
+5. Error: Error:1 (@tests.R#28) ------------------------------------------------
+stop
+1: stop("stop") at reporters/tests.R:28
+
+6. Error: Error:3 (@tests.R#36) ------------------------------------------------
 !
-1: f() at reporters/tests.R:23
-2: g() at reporters/tests.R:19
-3: h() at reporters/tests.R:20
-4: stop("!") at reporters/tests.R:21
+1: f() at reporters/tests.R:36
+2: g() at reporters/tests.R:32
+3: h() at reporters/tests.R:33
+4: stop("!") at reporters/tests.R:34

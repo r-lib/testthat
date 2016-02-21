@@ -1,4 +1,8 @@
-reporters/tests.R#8:1 [error] Failure. Failure has been forced
-reporters/tests.R#13:1 [error] Failure loop. `i` not equal to 2.
-reporters/tests.R#21:1 [error] Error. !
-reporters/tests.R#29:1 [info] Skip. skip
+reporters/tests.R#8:1 [error] Failure:1. Failure has been forced
+reporters/tests.R#12:1 [error] Failure:2a. Failure has been forced
+reporters/tests.R#15:1 [error] Failure:2b. FALSE isn't true.
+reporters/tests.R#20:1 [error] Failure:loop. `i` not equal to 2.
+reporters/tests.R#28:1 [error] Error:1. stop
+reporters/tests.R#36:1 [error] Error:3. !
+reporters/tests.R#42:1 [info] Skip:1. skip
+reporters/tests.R#47:1 [info] Skip:2. skip
