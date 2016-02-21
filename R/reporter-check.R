@@ -103,12 +103,13 @@ failure_header <- function(x) {
     failure = "Failure"
   )
 
-  ref <- x$srcref
-  if (is.null(ref)) {
-    location <- ""
-  } else {
-    location <- paste0(" (@", basename(attr(ref, "srcfile")$filename), "#", ref[1], ")")
-  }
+  paste0(type, ": ", x$test, src_loc(x$srcref), " ")
+}
 
-  paste0(type, ": ", x$test, location, " ")
+src_loc <- function(ref) {
+  if (is.null(ref)) {
+    ""
+  } else {
+    paste0(" (@", basename(attr(ref, "srcfile")$filename), "#", ref[1], ")")
+  }
 }
