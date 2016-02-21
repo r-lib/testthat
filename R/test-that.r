@@ -31,13 +31,13 @@ test_that <- function(desc, code) {
   test_code(desc, code, env = parent.frame())
 }
 
-test_code <- function(description, code, env) {
+test_code <- function(description, code, env = test_env()) {
   get_reporter()$start_test(description)
   on.exit(get_reporter()$end_test())
 
   ok <- TRUE
   register_expectation <- function(e) {
-    e <- as.expectation(e, srcref = find_test_srcref())
+    e <- as.expectation(e, srcref = find_expect_srcref())
     ok <<- ok && expectation_success(e)
     get_reporter()$add_result(e)
   }
@@ -81,32 +81,33 @@ test_code <- function(description, code, env) {
   invisible(ok)
 }
 
-# find the srcref of the test call, or NULL
-find_test_srcref <- function() {
-  # candidate frame is not in the testthat package,
-  # its call matches expect_* and has parsing info attached
-  .is_test_frame <- function(i) {
-    # is enclosure of the frame containing the call inside testthat package ?
-    inside <- identical(environmentName(parent.env(sys.frame(i - 1)))
-      , 'testthat')
-    match_expect <- any(grepl('expect_', sys.call(i)))
-    has_srcref <- !is.null(attr(sys.call(i), 'srcref'))
+# Find the most recent that starts with "expect_", then find the first call
+# with srcref after that.
+find_expect_srcref <- function() {
+  seen_expectation <- FALSE
+  for (call in rev(sys.calls())) {
+    if (!seen_expectation && starts_with(f_name(call), "expect_")) {
+      seen_expectation <- TRUE
+    }
 
-    !inside && match_expect && has_srcref
+    if (!seen_expectation || !has_src_ref(call))
+      next
+
+    return(attr(call, 'srcref'))
   }
 
-  # find the first call (tracing back) that seems good
-  nbe <- Find(.is_test_frame, seq_len(sys.nframe()), right = TRUE)
+  NULL
+}
 
-  if (length(nbe) == 0 || is.na(nbe)) {
-    return(NULL)
+has_src_ref <- function(x) !is.null(attr(x, 'srcref'))
+f_name <- function(x) {
+  if (is.call(x)) {
+    f_name(x[[1]])
+  } else if (is.name(x)) {
+    as.character(x)
+  } else {
+    ""
   }
-
-  cc <- sys.call(nbe)
-  src <- attr(cc, 'srcref')
-  if (is.null(src))  warning("could not get srcref")
-
-  src
 }
 
 #' R package to make testing fun!
