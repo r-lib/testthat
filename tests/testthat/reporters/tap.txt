@@ -1,14 +1,18 @@
-1..4
+1..6
 # Context One 
 ok 1 Success 
 not ok 2 Failure 
   Failure has been forced 
-not ok 3 Error 
+not ok 3 Failure loop 
+  `i` not equal to 2.
+  1/1 mismatches
+  [1] 1 - 2 == -1 
+ok 4 Failure loop 
+not ok 5 Error 
   !
-  1: withCallingHandlers(eval(code, test_env), expectation = handle_expectation, skip = handle_skip, 
-         message = handle_message, error = handle_error)
-  2: eval(code, test_env)
-  3: eval(expr, envir, enclos)
-  4: stop("!") at reporters/tests.R:12 
+  1: f() at reporters/tests.R:23
+  2: g() at reporters/tests.R:19
+  3: h() at reporters/tests.R:20
+  4: stop("!") at reporters/tests.R:21 
 # Context Two 
-ok 4 # SKIP skip 
+ok 6 # SKIP skip 

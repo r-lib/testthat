@@ -28,7 +28,7 @@ expectation <- function(type, message, srcref = NULL) {
   )
 }
 
-expect <- function(exp, ..., srcref = find_expect_srcref()) {
+expect <- function(exp, ..., srcref = NULL) {
   exp <- as.expectation(exp, ..., srcref = srcref)
 
   withRestarts(

@@ -1,16 +1,21 @@
-1. Failure: Failure (@test-reporter.r#30) --------------------------------------
+1. Failure: Failure (@tests.R#8) -----------------------------------------------
 Failure has been forced
 
-2. Error: Error (@test-reporter.r#30) ------------------------------------------
+2. Failure: Failure loop (@tests.R#13) -----------------------------------------
+`i` not equal to 2.
+1/1 mismatches
+[1] 1 - 2 == -1
+
+3. Error: Error (@tests.R#21) --------------------------------------------------
 !
-1: withCallingHandlers(eval(code, test_env), expectation = handle_expectation, skip = handle_skip, 
-       message = handle_message, error = handle_error)
-2: eval(code, test_env)
-3: eval(expr, envir, enclos)
-4: stop("!") at reporters/tests.R:12
+1: f() at reporters/tests.R:23
+2: g() at reporters/tests.R:19
+3: h() at reporters/tests.R:20
+4: stop("!") at reporters/tests.R:21
 
 testthat results ================================================================
-OK: 1 SKIPPED: 1 FAILED: 2
-1. Failure: Failure (@test-reporter.r#30) 
-2. Error: Error (@test-reporter.r#30) 
+OK: 2 SKIPPED: 1 FAILED: 3
+1. Failure: Failure (@tests.R#8) 
+2. Failure: Failure loop (@tests.R#13) 
+3. Error: Error (@tests.R#21) 
 

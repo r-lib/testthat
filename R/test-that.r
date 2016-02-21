@@ -36,8 +36,12 @@ test_code <- function(description, code, env = test_env()) {
   on.exit(get_reporter()$end_test())
 
   ok <- TRUE
-  register_expectation <- function(e) {
-    e <- as.expectation(e, srcref = find_expect_srcref())
+  register_expectation <- function(e, start_frame, end_frame) {
+    calls <- sys.calls()[start_frame:end_frame]
+    srcref <- find_first_srcref(calls)
+
+    e <- as.expectation(e, srcref = srcref)
+    e$calls <- calls
     ok <<- ok && expectation_success(e)
     get_reporter()$add_result(e)
   }
@@ -47,20 +51,20 @@ test_code <- function(description, code, env = test_env()) {
     # Capture call stack, removing last two calls from end (added by
     # withCallingHandlers), and first frame + 7 calls from start (added by
     # tryCatch etc)
-    e$calls <- utils::head(sys.calls()[-seq_len(frame + 7)], -2)
+    e$calls <- sys.calls()[(frame + 11):(sys.nframe() - 2)]
 
-    register_expectation(e)
+    register_expectation(e, frame + 11, sys.nframe() - 2)
     signalCondition(e)
   }
   handle_expectation <- function(e) {
-    register_expectation(e)
+    register_expectation(e, frame + 11, sys.nframe() - 6)
     invokeRestart("continue_test")
   }
   handle_message <- function(e) {
     invokeRestart("muffleMessage")
   }
   handle_skip <- function(e) {
-    register_expectation(e)
+    register_expectation(e, frame + 11, sys.nframe() - 2)
     signalCondition(e)
   }
 
@@ -79,35 +83,6 @@ test_code <- function(description, code, env = test_env()) {
   )
 
   invisible(ok)
-}
-
-# Find the most recent that starts with "expect_", then find the first call
-# with srcref after that.
-find_expect_srcref <- function() {
-  seen_expectation <- FALSE
-  for (call in rev(sys.calls())) {
-    if (!seen_expectation && starts_with(f_name(call), "expect_")) {
-      seen_expectation <- TRUE
-    }
-
-    if (!seen_expectation || !has_src_ref(call))
-      next
-
-    return(attr(call, 'srcref'))
-  }
-
-  NULL
-}
-
-has_src_ref <- function(x) !is.null(attr(x, 'srcref'))
-f_name <- function(x) {
-  if (is.call(x)) {
-    f_name(x[[1]])
-  } else if (is.name(x)) {
-    as.character(x)
-  } else {
-    ""
-  }
 }
 
 #' R package to make testing fun!

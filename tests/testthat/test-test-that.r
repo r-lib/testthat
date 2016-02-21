@@ -98,3 +98,21 @@ test_that("line numbers captured inside a loop", {
   })
   expect_equal(lines, rep(2, 4))
 })
+
+test_that("line numbers captured for skip()s", {
+  lines <- expectation_lines({
+    test_that('simple', {             # line 1
+      skip("Not this time")           # line 2
+    })                                # line 3
+  })
+  expect_equal(lines, 2)
+})
+
+test_that("line numbers captured for stop()s", {
+  lines <- expectation_lines({
+    test_that('simple', {             # line 1
+      skip("Not this time")           # line 2
+    })                                # line 3
+  })
+  expect_equal(lines, 2)
+})

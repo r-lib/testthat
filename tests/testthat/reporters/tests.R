@@ -8,12 +8,24 @@ test_that("Failure", {
   fail()
 })
 
+test_that("Failure loop", {
+  for (i in 1:2) {
+    expect_equal(i, 2)
+  }
+})
+
+
 test_that("Error", {
-  stop("!")
+  f <- function() {g()}
+  g <- function() {h()}
+  h <- function() {stop("!")}
+
+  f()
 })
 
 context("Two")
 
 test_that("Skip", {
-  skip("skip")
+  f <- function() {skip("skip")}
+  f()
 })

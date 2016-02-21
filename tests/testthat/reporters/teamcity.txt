@@ -10,9 +10,17 @@
 ##teamcity[testFinished name='expectation 1']
 ##teamcity[testSuiteFinished name='Failure']
 
+##teamcity[testSuiteStarted name='Failure loop']
+##teamcity[testStarted name='expectation 1']
+##teamcity[testFailed name='expectation 1' message='`i` not equal to 2.' details='1/1 mismatches|n|[1|] 1 - 2 == -1']
+##teamcity[testFinished name='expectation 1']
+##teamcity[testStarted name='expectation 2']
+##teamcity[testFinished name='expectation 2']
+##teamcity[testSuiteFinished name='Failure loop']
+
 ##teamcity[testSuiteStarted name='Error']
 ##teamcity[testStarted name='expectation 1']
-##teamcity[testFailed name='expectation 1' message='!' details='1: withCallingHandlers(eval(code, test_env), expectation = handle_expectation, skip = handle_skip, |n       message = handle_message, error = handle_error)|n2: eval(code, test_env)|n3: eval(expr, envir, enclos)|n4: stop("!") at reporters/tests.R:12']
+##teamcity[testFailed name='expectation 1' message='!' details='1: f() at reporters/tests.R:23|n2: g() at reporters/tests.R:19|n3: h() at reporters/tests.R:20|n4: stop("!") at reporters/tests.R:21']
 ##teamcity[testFinished name='expectation 1']
 ##teamcity[testSuiteFinished name='Error']
 
