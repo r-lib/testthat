@@ -1,5 +1,13 @@
-One : .1
+One : .12
 Two : S
 
 1. Failure: Failure (@test-reporter.r#31) --------------------------------------
 Failure has been forced
+
+2. Error: Error (@test-reporter.r#31) ------------------------------------------
+!
+1: withCallingHandlers(eval(code, test_env), expectation = handle_expectation, skip = handle_skip, 
+       message = handle_message, error = handle_error)
+2: eval(code, test_env)
+3: eval(expr, envir, enclos)
+4: stop("!") at reporters/tests.R:12

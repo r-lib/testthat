@@ -1,7 +1,14 @@
-1..3
+1..4
 # Context One 
 ok 1 Success 
 not ok 2 Failure 
   Failure has been forced 
+not ok 3 Error 
+  !
+  1: withCallingHandlers(eval(code, test_env), expectation = handle_expectation, skip = handle_skip, 
+         message = handle_message, error = handle_error)
+  2: eval(code, test_env)
+  3: eval(expr, envir, enclos)
+  4: stop("!") at reporters/tests.R:12 
 # Context Two 
-ok 3 # SKIP skip 
+ok 4 # SKIP skip 

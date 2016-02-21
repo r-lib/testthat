@@ -1,2 +1,3 @@
 /Users/hadley/Documents/devtools/testthat/tests/testthat/test-reporter.r#36:1 [error] Failure. Failure has been forced
+/Users/hadley/Documents/devtools/testthat/tests/testthat/test-reporter.r#36:1 [error] Error. !
 /Users/hadley/Documents/devtools/testthat/tests/testthat/test-reporter.r#36:1 [info] Skip. skip

@@ -8,6 +8,10 @@ test_that("Failure", {
   fail()
 })
 
+test_that("Error", {
+  stop("!")
+})
+
 context("Two")
 
 test_that("Skip", {
