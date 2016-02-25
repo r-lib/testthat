@@ -12,8 +12,8 @@ compare(x, y, ...)
 
 \method{compare}{default}(x, y, ...)
 
-\method{compare}{character}(x, y, ..., max_diffs = 5, max_lines = 5,
-  width = getOption("width"))
+\method{compare}{character}(x, y, check.attributes = TRUE, ...,
+  max_diffs = 5, max_lines = 5, width = getOption("width"))
 
 \method{compare}{numeric}(x, y, ..., max_diffs = 9)
 
@@ -23,6 +23,8 @@ compare(x, y, ...)
 \item{x, y}{Objects to compare}
 
 \item{...}{Additional arguments used to control specifics of comparison}
+
+\item{check.attributes}{If \code{TRUE}, also checks values of attributes.}
 
 \item{max_diffs}{Maximum number of differences to show}
 

@@ -1,6 +1,7 @@
 #' @include compare.r
 #' @param max_diffs Maximum number of differences to show
 #' @param max_lines Maximum number of lines to show from each difference
+#' @param check.attributes If \code{TRUE}, also checks values of attributes.
 #' @param width Width of output device
 #' @rdname compare
 #' @export
@@ -23,7 +24,8 @@
 #' compare(x, y)
 #' compare(c(x, x), c(y, y))
 #'
-compare.character <- function(x, y, ..., max_diffs = 5, max_lines = 5,
+compare.character <- function(x, y, check.attributes = TRUE, ...,
+                              max_diffs = 5, max_lines = 5,
                               width = getOption("width")) {
 
   if (identical(x, y)) {
@@ -39,7 +41,7 @@ compare.character <- function(x, y, ..., max_diffs = 5, max_lines = 5,
   if (!same_length(x, y)) {
     return(diff_length(x, y))
   }
-  if (!same_attr(x, y)) {
+  if (check.attributes && !same_attr(x, y)) {
     return(diff_attr(x, y))
   }
 
