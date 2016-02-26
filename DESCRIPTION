@@ -66,6 +66,7 @@ Collate:
     'test-example.R'
     'test-files.r'
     'test-package.r'
+    'test-path.R'
     'test-results.r'
     'test-that.r'
     'traceback.r'

@@ -1,5 +1,8 @@
 # testthat 0.11.0.9000
 
+* `test_path()` makes it possible to create paths to files in `tests/testthat`
+  that work interactively and when called from tests (#345).
+
 * Thorough review of the documentation, ensuring that appropriate functions
   are documented together, and have (hopefully) evocative names.
 
