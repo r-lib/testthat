@@ -41,7 +41,7 @@ test_code <- function(description, code, env = test_env()) {
     srcref <- find_first_srcref(calls)
 
     e <- as.expectation(e, srcref = srcref)
-    e$calls <- calls
+    e$call <- calls
     ok <<- ok && expectation_success(e)
     get_reporter()$add_result(e)
   }
@@ -51,7 +51,7 @@ test_code <- function(description, code, env = test_env()) {
     # Capture call stack, removing last two calls from end (added by
     # withCallingHandlers), and first frame + 7 calls from start (added by
     # tryCatch etc)
-    e$calls <- sys.calls()[(frame + 11):(sys.nframe() - 2)]
+    e$call <- sys.calls()[(frame + 11):(sys.nframe() - 2)]
 
     register_expectation(e, frame + 11, sys.nframe() - 2)
     signalCondition(e)
