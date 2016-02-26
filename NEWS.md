@@ -1,5 +1,8 @@
 # testthat 0.11.0.9000
 
+* `test_file()` now loads helpers in the test directory before running
+  the tests (#350).
+
 * `test_path()` makes it possible to create paths to files in `tests/testthat`
   that work interactively and when called from tests (#345).
 

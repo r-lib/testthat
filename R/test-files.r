@@ -44,8 +44,14 @@ test_files <- function(paths, reporter = "summary",
   current_reporter <- find_reporter(reporter)
   with_reporter(
     reporter = current_reporter,
-    results <- lapply(paths, test_file, env = env,
-      reporter = current_reporter, start_end_reporter = FALSE)
+    results <- lapply(
+      paths,
+      test_file,
+      env = env,
+      reporter = current_reporter,
+      start_end_reporter = FALSE,
+      load_helpers = FALSE
+    )
   )
 
   results <- unlist(results, recursive = FALSE)
@@ -85,12 +91,17 @@ find_test_scripts <- function(path, filter = NULL, invert = FALSE, ...) {
 #' @param path path to file
 #' @param reporter reporter to use
 #' @param env environment in which to execute the tests
+#' @param load_helpers Source helper files before running the tests?
 #' @inheritParams with_reporter
 #' @return the results as a "testthat_results" (list)
 #' @export
 test_file <- function(path, reporter = "summary", env = test_env(),
-                      start_end_reporter = TRUE) {
+                      start_end_reporter = TRUE, load_helpers = TRUE) {
   reporter <- find_reporter(reporter)
+
+  if (load_helpers) {
+    source_test_helpers(dirname(path), env = env)
+  }
 
   lister <- ListReporter$new()
   if (!is.null(reporter)) {
