@@ -4,7 +4,7 @@ test_that("ListReporter with test_file", {
   report <- ListReporter$new()
   report$start_file('context.R')
 
-  test_file("context.R", report)
+  test_file(test_path("context.R"), report)
 
   res <- report$results
   expect_is(res, 'list')

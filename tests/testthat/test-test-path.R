@@ -5,7 +5,7 @@ test_that("throws error if file doesn't exist", {
 })
 
 test_that("returns local path when called in tests", {
-  expect_equal(test_path("test-test-path.R"), "./test-test-path.R")
+  expect_equal(test_path("test-test-path.R"), "test-test-path.R")
 })
 
 test_that("returns full path when called outside tests", {

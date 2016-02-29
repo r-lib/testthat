@@ -9,16 +9,15 @@
 #' @export
 test_path <- function(...) {
   if (in_testing_dir(".")) {
-    base <- "."
+    path <- file.path(...)
   } else {
     base <- "tests/testthat"
     if (!file.exists(base)) {
       stop("Can't find `tests/testthat/` in current directory.",
         call. = FALSE)
     }
+    path <- file.path(base, ...)
   }
-
-  path <- file.path(base, ...)
 
   if (!file.exists(path)) {
     stop("`", path, "` doesn't exist", call. = FALSE)

@@ -24,7 +24,7 @@ test_that("can locate reporter from name", {
 test_that("reporters produce consistent output", {
   save_report <- function(name, reporter = find_reporter(name)) {
     path <- file.path("reporters", paste0(name, ".txt"))
-    capture.output(test_file("reporters/tests.R", reporter), file = path)
+    capture.output(test_file(test_path("reporters/tests.R"), reporter), file = path)
   }
 
   expect_error(save_report("check"))
