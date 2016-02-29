@@ -1,5 +1,8 @@
 # testthat 0.11.0.9000
 
+* `try_again()` allows you to retry code multiple times until it succeeds
+  (#240).
+
 * The reporters class has been considerably refactored to make existing reporters
   simpler and to make it easier to write new reporters. The main change is
   that all callbacks receive the full context: `add_results()` is passed

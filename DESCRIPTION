@@ -71,6 +71,7 @@ Collate:
     'test-path.R'
     'test-that.R'
     'traceback.R'
+    'try-again.R'
     'utils.R'
     'watcher.R'
 RoxygenNote: 5.0.1
