@@ -22,7 +22,7 @@ TapReporter <- setRefClass("TapReporter", contains = "Reporter",
   methods = list(
 
     start_context = function(context) {
-      contexts[n+1] <<- context;
+      contexts[n + 1] <<- context
     },
 
     start_reporter = function() {
@@ -41,25 +41,25 @@ TapReporter <- setRefClass("TapReporter", contains = "Reporter",
     },
 
     end_reporter = function() {
-        if(has_tests) {
-            cat("1..", n, '\n', sep='');
-            for(i in 1:n) {
-                if (! is.na(contexts[i])) {
-                    cat("# Context", contexts[i], "\n")
-                }
-                result <- results[[i]];
-                if (expectation_success(result)) {
-                    cat('ok', i, result$test, '\n')
-                } else if (expectation_broken(result)) {
-                    cat('not ok', i, result$test, '\n')
-                    msg <- gsub('\n', '\n  ', result$message)
-                    cat(' ', msg, '\n')
-                } else {
-                  cat('ok', i, '#', toupper(expectation_type(result)),
-                      result$message, '\n')
-                }
-            }
+      if (!has_tests)
+        return()
+
+      cat("1..", n, '\n', sep = '')
+      for (i in 1:n) {
+        if (!is.na(contexts[i])) {
+          cat("# Context", contexts[i], "\n")
         }
+        result <- results[[i]]
+        if (expectation_success(result)) {
+          cat('ok', i, result$test, '\n')
+        } else if (expectation_broken(result)) {
+          cat('not ok', i, result$test, '\n')
+          msg <- gsub('\n', '\n  ', result$message)
+          cat(' ', msg, '\n')
+        } else {
+          cat('ok', i, '#', toupper(expectation_type(result)), result$message, '\n')
+        }
+      }
     }
   )
 )
