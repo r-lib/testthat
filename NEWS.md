@@ -1,5 +1,8 @@
 # testthat 0.11.0.9000
 
+* `test_file()`, `test_check()`, and `test_package()` now attach testthat so
+  all testing functions are available.
+
 * `source_test_helpers()` gets a useful default path: the testthat tests 
   directory.
 

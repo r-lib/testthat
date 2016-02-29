@@ -97,6 +97,8 @@ find_test_scripts <- function(path, filter = NULL, invert = FALSE, ...) {
 #' @export
 test_file <- function(path, reporter = "summary", env = test_env(),
                       start_end_reporter = TRUE, load_helpers = TRUE) {
+  library(testthat)
+
   reporter <- find_reporter(reporter)
 
   if (load_helpers) {

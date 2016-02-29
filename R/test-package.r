@@ -34,6 +34,8 @@ with_top_env <- function(env, code) {
 #' @examples
 #' \dontrun{test_package("testthat")}
 test_package <- function(package, filter = NULL, reporter = "summary", ...) {
+  library(testthat)
+
   # Ensure that test package returns silently if called recursively - this
   # will occur if test-all.R ends up in the same directory as all the other
   # tests.
@@ -76,6 +78,7 @@ run_tests <- function(package, test_path, filter, reporter, ...)
 #' @export
 #' @rdname test_package
 test_check <- function(package, filter = NULL, reporter = "check", ...) {
+  library(testthat)
   require(package, character.only = TRUE)
 
   test_path <- "testthat"
