@@ -57,6 +57,7 @@ Collate:
     'reporter-rstudio.R'
     'reporter-silent.R'
     'reporter-stop.R'
+    'stack.R'
     'reporter-summary.R'
     'reporter-tap.R'
     'reporter-teamcity.R'

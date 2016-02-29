@@ -1,4 +1,4 @@
-#' @include reporter.R
+#' @include reporter.R stack.R
 NULL
 
 #' Test reporter: summary of errors.
@@ -18,15 +18,15 @@ NULL
 #' @export
 SummaryReporter <- R6::R6Class("SummaryReporter", inherit = Reporter,
   public = list(
-    failures = list(),
-    skips = list(),
-    n = 0L,
-    has_tests = FALSE,
+    failures = NULL,
+    skips = NULL,
     max_reports = getOption("testthat.summary.max_reports", 15L),
     show_praise = TRUE,
 
     initialize = function(show_praise = TRUE) {
       self$show_praise <- show_praise
+      self$failures <- Stack$new()
+      self$skips <- Stack$new()
     },
 
     start_context = function(context) {
@@ -38,19 +38,15 @@ SummaryReporter <- R6::R6Class("SummaryReporter", inherit = Reporter,
     },
 
     add_result = function(context, test, result) {
-      self$has_tests <- TRUE
-
       if (expectation_broken(result)) {
-        if (self$n + 1 > self$max_reports) {
+        if (self$failures$size() + 1 > self$max_reports) {
           cat(single_letter_summary(result))
         } else {
-          self$n <- self$n + 1L
-          self$failures[[self$n]] <- result
-          cat(colourise(labels[self$n], "error"))
+          self$failures$push(result)
+          cat(colourise(labels[self$failures$size()], "error"))
         }
       } else if (expectation_skip(result)) {
-        self$skips <- c(self$skips, list(result))
-
+        self$skips$push(result)
         cat(single_letter_summary(result))
       } else {
         cat(single_letter_summary(result))
@@ -59,13 +55,14 @@ SummaryReporter <- R6::R6Class("SummaryReporter", inherit = Reporter,
     },
 
     end_reporter = function() {
-      if (self$n == 0) {
-        if (!self$has_tests)
-          return()
+      skips <- self$skips$as_list()
+      failures <- self$failures$as_list()
 
-        if (length(self$skips) > 0L) {
+      if (length(failures) == 0) {
+
+        if (length(skips) > 0L) {
           cat(colourise("\nSkip:", "skip"), "\n\n")
-          cat_reports(self$skips, skip_summary, "\n")
+          cat_reports(skips, skip_summary, "\n")
         }
 
         cat("\n")
@@ -76,7 +73,7 @@ SummaryReporter <- R6::R6Class("SummaryReporter", inherit = Reporter,
         }
       } else {
         cat("\n")
-        cat_reports(self$failures, failure_summary, "\n\n")
+        cat_reports(failures, failure_summary, "\n\n")
 
         if (self$show_praise && runif(1) < 0.25) {
           cat("\n", colourise(encourage(), "error"), "\n", sep = "")
