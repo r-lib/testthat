@@ -11,6 +11,16 @@ null <- function(...) invisible()
 
 klass <- function(x) paste(class(x), collapse = "/")
 
+rule <- function(..., pad = "-") {
+  if (nargs() == 0) {
+    title <- ""
+  } else {
+    title <- paste0(...)
+  }
+  width <- getOption("width") - nchar(title) - 5
+  cat(title, " ", paste(rep(pad, width, collapse = "")), "\n", sep = "")
+}
+
 
 # Tools for finding srcrefs -----------------------------------------------
 

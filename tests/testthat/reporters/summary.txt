@@ -2,6 +2,12 @@ Expectations: .1234.
 Errors: 56
 Skips: SS
 
+Skipped --------------------------------------------------------------------
+1. Skip:1 (@tests.R#42) - skip
+
+2. Skip:2 (@tests.R#47) - skip
+
+Failed ---------------------------------------------------------------------
 1. Failure: Failure:1 (@tests.R#8) ---------------------------------------------
 Failure has been forced
 
@@ -26,3 +32,5 @@ stop
 2: g() at reporters/tests.R:32
 3: h() at reporters/tests.R:33
 4: stop("!") at reporters/tests.R:34
+
+DONE =======================================================================

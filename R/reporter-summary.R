@@ -58,43 +58,38 @@ SummaryReporter <- R6::R6Class("SummaryReporter", inherit = Reporter,
       skips <- self$skips$as_list()
       failures <- self$failures$as_list()
 
-      if (length(failures) == 0) {
+      cat("\n")
+      cat_reports("Skipped", skips, Inf, skip_summary)
+      cat_reports("Failed", failures, self$max_reports, failure_summary)
 
-        if (length(skips) > 0L) {
-          cat(colourise("\nSkip:", "skip"), "\n\n")
-          cat_reports(skips, skip_summary, "\n")
-        }
-
-        cat("\n")
-        if (self$show_praise && runif(1) < 0.1) {
-          cat(colourise(praise(), "success"), "\n")
-        } else {
-          cat(colourise("DONE", "success"), "\n")
-        }
-      } else {
-        cat("\n")
-        cat_reports(failures, failure_summary, "\n\n")
-
-        if (self$show_praise && runif(1) < 0.25) {
-          cat("\n", colourise(encourage(), "error"), "\n", sep = "")
-        }
-      }
+      rule("DONE", pad = "=")
     }
   )
 )
 
 labels <- c(1:9, letters, LETTERS)
 
-cat_reports <- function(reports, summary_fun, collapse) {
-  report_summary <- vapply(
-    seq_len(min(length(reports), length(labels))),
-    function(i) {
-      summary_fun(reports[[i]], labels[i])
-    }, character(1L))
-  cat(paste(report_summary, collapse = collapse), "\n", sep = "")
+cat_reports <- function(header, expectations, max_n, summary_fun, collapse = "\n\n") {
+  n <- length(expectations)
+  if (n == 0L)
+    return()
 
-  extra_reports <- length(reports) - length(labels)
-  if (extra_reports > 0L) {
-    cat("  ... and ", extra_reports, " more\n", sep = "")
+  rule(header)
+
+  if (n > max_n) {
+    expectations <- expectations[seq_len(max_n)]
   }
+
+  labels <- seq_along(expectations)
+  exp_summary <- function(i) {
+    summary_fun(expectations[[i]], labels[i])
+  }
+  report_summary <- vapply(seq_along(expectations), exp_summary, character(1))
+
+  cat(paste(report_summary, collapse = collapse), "\n", sep = "")
+  if (n > max_n) {
+    cat("  ... and ", n - max_n, " more\n", sep = "")
+  }
+
+  cat("\n")
 }
