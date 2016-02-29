@@ -1,5 +1,12 @@
 # testthat 0.11.0.9000
 
+* The reporters class has been considerably refactor to make existing reporters
+  simpler and to make it easier to write new reporters. The main change is
+  that all callbacks receive the full context: `add_results()` is passed
+  context and test as well as the expectation, `test_start()` and `test_end()`
+  both get the context and test, and `context_start()` and `context_end()` 
+  get the context.
+
 * `test_file()`, `test_check()`, and `test_package()` now attach testthat so
   all testing functions are available.
 

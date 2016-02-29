@@ -18,20 +18,20 @@ MultiReporter <- setRefClass("MultiReporter", contains = "Reporter",
     start_reporter = function() {
       .oapply(reporters, 'start_reporter')
     },
-    start_context = function(desc) {
-      .oapply(reporters, 'start_context', desc)
+    start_context = function(context) {
+      .oapply(reporters, 'start_context', context)
     },
-    start_test = function(desc) {
-      .oapply(reporters, 'start_test', desc)
+    start_test = function(context, test) {
+      .oapply(reporters, 'start_test', context, test)
     },
-    add_result = function(result) {
-      .oapply(reporters, 'add_result', result)
+    add_result = function(context, test, result) {
+      .oapply(reporters, 'add_result', context = context, test = test, result = result)
     },
-    end_test = function() {
-      .oapply(reporters, 'end_test')
+    end_test = function(context, test) {
+      .oapply(reporters, 'end_test', context, test)
     },
-    end_context = function() {
-      .oapply(reporters, 'end_context')
+    end_context = function(context) {
+      .oapply(reporters, 'end_context', context)
     },
     end_reporter = function() {
       .oapply(reporters, 'end_reporter')

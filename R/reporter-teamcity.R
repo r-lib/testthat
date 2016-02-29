@@ -14,39 +14,29 @@ NULL
 #' @param ... Arguments used to initialise class
 TeamcityReporter <- setRefClass("TeamcityReporter", contains = "Reporter",
   fields = list(
-    "currentContext" = "character",
-    "currentTest" = "character",
     "i" = "integer"
   ),
 
   methods = list(
 
-    start_context = function(desc) {
-  		currentContext <<- desc
-      teamcity("testSuiteStarted", currentContext)
+    start_context = function(context) {
+      teamcity("testSuiteStarted", context)
     },
-    end_context = function() {
-      teamcity("testSuiteFinished", currentContext)
+    end_context = function(context) {
+      teamcity("testSuiteFinished", context)
       cat("\n\n")
     },
 
-    start_test = function(desc) {
-      currentTest <<- desc
+    start_test = function(context, test) {
+      teamcity("testSuiteStarted", test)
       i <<- 1L
-      teamcity("testSuiteStarted", currentTest)
     },
-    end_test = function() {
-      teamcity("testSuiteFinished", currentTest)
+    end_test = function(context, test) {
+      teamcity("testSuiteFinished", test)
       cat("\n")
     },
 
-
-    start_reporter = function() {
-		  currentContext <<- ""
-    },
-
-    add_result = function(result) {
-      callSuper(result)
+    add_result = function(context, test, result) {
       testName <- paste0("expectation ", i)
       i <<- i + 1L
 
@@ -72,6 +62,7 @@ TeamcityReporter <- setRefClass("TeamcityReporter", contains = "Reporter",
 
 teamcity <- function(event, name, ...) {
   values <- list(name = name, ...)
+
   values <- vapply(values, teamcity_escape, character(1))
   if (length(values) == 0) {
     value_string <- ""

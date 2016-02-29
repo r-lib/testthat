@@ -12,29 +12,26 @@ CountReporter <- setRefClass("CountReporter", contains = "Reporter",
 
       callSuper()
     },
-    start_context = function(desc) {
+    start_context = function(context) {
       context_count <<- context_count + 1
       context_i <<- context_i + 1
     },
-    end_context = function() {
+    end_context = function(context) {
       context_i <<- context_i - 1
       stopifnot(context_i >= 0)
     },
-    start_test = function(desc) {
+    start_test = function(context, test) {
       test_count <<- test_count + 1
       test_i <<- test_i + 1
     },
-    end_test = function() {
+    end_test = function(context, test) {
       test_i <<- test_i - 1
       stopifnot(test_i >= 0)
     }
   )
 )
 
-
 test_that("contexts are opened, then closed", {
-
-
   report <- CountReporter$new()
   test_file("context.R", report)
   expect_that(report$context_count, equals(2))

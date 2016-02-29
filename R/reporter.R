@@ -3,43 +3,20 @@
 #' Do not clone directly from this object - children should implement all
 #' methods.
 #'
-#' @keywords internal.
+#' @keywords internal
 #' @export
 #' @export Reporter
 #' @aliases Reporter
 #' @param ... Arguments used to initialise class
 #' @importFrom methods setRefClass new
 Reporter <- setRefClass("Reporter",
-  fields = list(
-    context = "character",
-    test = "ANY",
-    failed = "logical",
-    context_open = "logical"
-  ), methods = list(
-    initialize = function(...) {
-      context_open <<- FALSE
-      failed <<- FALSE
-      test <<- NULL
-
-      initFields(...)
-    },
-    start_reporter = function() {
-    },
-    start_context = function(desc) {
-      context <<- desc
-    },
-    start_test = function(desc) {
-      test <<- desc
-    },
-    add_result = function(result) {
-      if (!expectation_type(result) %in% c("success", "skip")) {
-        failed <<- TRUE
-      }
-    },
-    end_test = function() {
-      test <<- ""
-    },
-    end_context = function() {},
-    end_reporter = function() {}
+  methods = list(
+    start_reporter = function() {},
+    start_context =  function(context) {},
+    start_test =     function(context, test) {},
+    add_result =     function(context, test, result) {},
+    end_test =       function(context, test) {},
+    end_context =    function(context) {},
+    end_reporter =   function() {}
   )
 )

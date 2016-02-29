@@ -14,8 +14,7 @@ NULL
 RstudioReporter <- setRefClass("RstudioReporter", contains = "Reporter",
   fields = list(),
   methods = list(
-    add_result = function(result) {
-      callSuper(result)
+    add_result = function(context, test, result) {
       if (expectation_success(result))
         return()
 

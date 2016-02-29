@@ -30,13 +30,12 @@ ListReporter <- setRefClass("ListReporter", contains = "Reporter",
       current_test_results <<- list()
     },
 
-    start_test = function(desc) {
-      callSuper(desc)
+    start_test = function(context, test) {
       current_test_results <<- list()
       start_test_time <<- proc.time()
     },
 
-    end_test = function() {
+    end_test = function(context, test) {
       el <- as.double(proc.time() - start_test_time)
       fname <- if (length(file)) file else ''
       test_info <- list(file = fname, context = context, test = test,
@@ -44,12 +43,9 @@ ListReporter <- setRefClass("ListReporter", contains = "Reporter",
         results = current_test_results)
       results <<- c(results, list(test_info))
       current_test_results <<- list()
-
-      callSuper() # at the end because it resets the test name
     },
 
-    add_result = function(result) {
-      callSuper(result)
+    add_result = function(context, test, result) {
       current_test_results <<- c(current_test_results, list(result))
     },
 

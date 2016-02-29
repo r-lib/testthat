@@ -27,9 +27,7 @@ CheckReporter <- setRefClass("CheckReporter", contains = "Reporter",
       n_fail <<- 0L
     },
 
-    add_result = function(result) {
-      callSuper(result)
-
+    add_result = function(context, test, result) {
       if (expectation_skip(result)) {
         n_skip <<- n_skip + 1L
         return()

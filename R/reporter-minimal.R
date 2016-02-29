@@ -15,8 +15,7 @@ NULL
 #' @param ... Arguments used to initialise class
 MinimalReporter <- setRefClass("MinimalReporter", contains = "Reporter",
   methods = list(
-    add_result = function(result) {
-      callSuper(result)
+    add_result = function(context, test, result) {
       cat(single_letter_summary(result))
     },
 

@@ -11,18 +11,34 @@
 #' context("Remote procedure calls")
 context <- function(desc) {
   rep <- get_reporter()
-  if (rep$context_open) {
-    rep$end_context()
-  } else {
-    rep$context_open <- TRUE
+
+  if (context_open()) {
+    rep$end_context(context_get())
   }
+
+  context_set(desc)
   rep$start_context(desc)
+
+  invisible()
 }
 
 end_context <- function() {
   rep <- get_reporter()
-  if (!rep$context_open) return(invisible())
-  rep$end_context()
-  rep$context_open <- FALSE
+
+  if (context_open()) {
+    rep$end_context(context_get())
+    context_set(NULL)
+  }
+
   invisible()
 }
+
+context_env <- new.env(parent = emptyenv())
+context_get <- function() context_env$current
+context_set <- function(x) {
+  old <- context_get()
+  context_env$current <- x
+  invisible(old)
+}
+context_open <- function() !is.null(context_env$current)
+

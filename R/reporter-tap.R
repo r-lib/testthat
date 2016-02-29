@@ -21,8 +21,8 @@ TapReporter <- setRefClass("TapReporter", contains = "Reporter",
 
   methods = list(
 
-    start_context = function(desc) {
-      contexts[n+1] <<- desc;
+    start_context = function(context) {
+      contexts[n+1] <<- context;
     },
 
     start_reporter = function() {
@@ -32,10 +32,9 @@ TapReporter <- setRefClass("TapReporter", contains = "Reporter",
       contexts <<- NA_character_
     },
 
-    add_result = function(result) {
-      callSuper(result)
+    add_result = function(context, test, result) {
       has_tests <<- TRUE
-      n <<- n + 1L;
+      n <<- n + 1L
 
       result$test <- if (is.null(test)) "(unknown)" else test
       results[[n]] <<- result

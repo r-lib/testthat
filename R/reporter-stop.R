@@ -24,13 +24,7 @@ StopReporter <- setRefClass("StopReporter", contains = "Reporter",
       failures <<- list()
       callSuper(...)
     },
-    start_test = function(desc) {
-      test <<- desc
-    },
-
-    end_test = function() {
-      cur_test <- test
-      test <<- NULL
+    end_test = function(context, test) {
       if (length(failures) == 0) return()
 
       messages <- vapply(failures, as.character, character(1))
@@ -39,12 +33,11 @@ StopReporter <- setRefClass("StopReporter", contains = "Reporter",
       }
       failures <<- list()
 
-      msg <- paste0("Test failed: '", cur_test, "'\n", messages)
+      msg <- paste0("Test failed: '", test, "'\n", messages)
       stop(msg, call. = FALSE)
     },
 
-    add_result = function(result) {
-      callSuper(result)
+    add_result = function(context, test, result) {
       if (!expectation_broken(result)) return()
 
       # If running in test suite, store, otherwise raise immediately.

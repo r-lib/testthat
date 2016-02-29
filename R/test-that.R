@@ -31,9 +31,10 @@ test_that <- function(desc, code) {
   test_code(desc, code, env = parent.frame())
 }
 
-test_code <- function(description, code, env = test_env()) {
-  get_reporter()$start_test(description)
-  on.exit(get_reporter()$end_test())
+test_code <- function(test, code, env = test_env()) {
+
+  get_reporter()$start_test(context = context_get(), test = test)
+  on.exit(get_reporter()$end_test(context = context_get(), test = test))
 
   ok <- TRUE
   register_expectation <- function(e, start_frame, end_frame) {
@@ -43,7 +44,7 @@ test_code <- function(description, code, env = test_env()) {
     e <- as.expectation(e, srcref = srcref)
     e$call <- calls
     ok <<- ok && expectation_success(e)
-    get_reporter()$add_result(e)
+    get_reporter()$add_result(context = context_get(), test = test, result = e)
   }
 
   frame <- sys.nframe()

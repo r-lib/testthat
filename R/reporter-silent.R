@@ -17,18 +17,9 @@ SilentReporter <- setRefClass("SilentReporter", contains = "Reporter",
   methods = list(
     initialize = function(...) {
       failures <<- list()
-      callSuper(...)
-    },
-    start_test = function(desc) {
-      test <<- desc
     },
 
-    end_test = function() {
-      test <<- NULL
-    },
-
-    add_result = function(result) {
-      callSuper(result)
+    add_result = function(context, test, result) {
       if (expectation_success(result)) return()
       failures[[test]] <<- result
     }

@@ -36,11 +36,11 @@ SummaryReporter <- setRefClass("SummaryReporter", contains = "Reporter",
       callSuper(...)
     },
 
-    start_context = function(desc) {
-      cat(desc, ": ")
+    start_context = function(context) {
+      cat(context, ": ")
     },
 
-    end_context = function() {
+    end_context = function(context) {
       cat("\n")
     },
 
@@ -51,8 +51,7 @@ SummaryReporter <- setRefClass("SummaryReporter", contains = "Reporter",
       n <<- 0L
     },
 
-    add_result = function(result) {
-      callSuper(result)
+    add_result = function(context, test, result) {
       has_tests <<- TRUE
 
       if (expectation_broken(result)) {

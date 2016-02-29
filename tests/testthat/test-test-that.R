@@ -50,7 +50,7 @@ GreedyReporter <- setRefClass("GreedyReporter", contains = "Reporter",
   where = environment(),
   fields = list(results = "list"),
   methods = list(
-    add_result = function(result) {
+    add_result = function(context, test, result) {
       results[[length(results) + 1]] <<- result
     }
   )
