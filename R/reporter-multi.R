@@ -16,31 +16,30 @@ MultiReporter <- R6::R6Class("MultiReporter", inherit = Reporter,
     },
 
     start_reporter = function() {
-      .oapply(self$reporters, 'start_reporter')
+      o_apply(self$reporters, "start_reporter")
     },
     start_context = function(context) {
-      .oapply(self$reporters, 'start_context', context)
+      o_apply(self$reporters, "start_context", context)
     },
     start_test = function(context, test) {
-      .oapply(self$reporters, 'start_test', context, test)
+      o_apply(self$reporters, "start_test", context, test)
     },
     add_result = function(context, test, result) {
-      .oapply(self$reporters, 'add_result', context = context, test = test, result = result)
+      o_apply(self$reporters, "add_result", context = context, test = test, result = result)
     },
     end_test = function(context, test) {
-      .oapply(self$reporters, 'end_test', context, test)
+      o_apply(self$reporters, "end_test", context, test)
     },
     end_context = function(context) {
-      .oapply(self$reporters, 'end_context', context)
+      o_apply(self$reporters, "end_context", context)
     },
     end_reporter = function() {
-      .oapply(self$reporters, 'end_reporter')
+      o_apply(self$reporters, "end_reporter")
     }
   )
 )
 
-.oapply <- function(objects, method, ...) {
-  for (o in objects)
-    eval(substitute(o$FUN(...), list(FUN = method, ...)))
+o_apply <- function(objects, method, ...) {
+  lapply(objects, function(x) x[[method]](...))
 }
 
