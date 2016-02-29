@@ -69,15 +69,23 @@ with_reporter <- function(reporter, code, start_end_reporter = TRUE) {
 find_reporter <- function(reporter) {
   if (is.null(reporter)) return(NULL)
 
-  if (length(reporter) <= 1L) {
-    find_reporter_one(reporter)
+  if (inherits(reporter, "R6ClassGenerator")) {
+    reporter$new()
+  } else if (inherits(reporter, "Reporter")) {
+    reporter
+  } else if (is.character(reporter)) {
+    if (length(reporter) <= 1L) {
+      find_reporter_one(reporter)
+    } else {
+      MultiReporter$new(reporters = lapply(reporter, find_reporter_one))
+    }
   } else {
-    MultiReporter$new(reporters = lapply(reporter, find_reporter_one))
+    stop("Invalid input", call. = FALSE)
   }
 }
 
 find_reporter_one <- function(reporter) {
-  if (inherits(reporter, "Reporter")) return(reporter)
+  stopifnot(is.character(reporter))
 
   name <- reporter
   substr(name, 1, 1) <- toupper(substr(name, 1, 1))

@@ -7,13 +7,8 @@ NULL
 #' any easily parsed form.
 #'
 #' @export
-#' @export RstudioReporter
-#' @aliases RstudioReporter
-#' @keywords debugging
-#' @param ... Arguments used to initialise class
-RstudioReporter <- setRefClass("RstudioReporter", contains = "Reporter",
-  fields = list(),
-  methods = list(
+RstudioReporter <- R6::R6Class("RstudioReporter", inherit = Reporter,
+  public = list(
     add_result = function(context, test, result) {
       if (expectation_success(result))
         return()

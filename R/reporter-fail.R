@@ -8,14 +8,16 @@ NULL
 #' \code{\link{SummaryReporter}}.
 #'
 #' @export
-#' @export FailReporter
-#' @aliases FailReporter
-#' @keywords debugging
-#' @param ... Arguments used to initialise class
-FailReporter <- setRefClass("FailReporter", contains = "Reporter",
-  methods = list(
+FailReporter <- R6::R6Class("FailReporter", inherit = Reporter,
+  public = list(
+    failed = FALSE,
+
+    add_result = function(context, test, result) {
+      self$failed <- self$failed || expectation_broken(result)
+    },
+
     end_reporter = function() {
-      if (failed) {
+      if (self$failed) {
         stop("Failures detected.", call. = FALSE)
       }
     }

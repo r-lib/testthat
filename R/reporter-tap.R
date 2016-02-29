@@ -8,48 +8,35 @@ NULL
 #' For more information about TAP, see http://testanything.org
 #'
 #' @export
-#' @export TapReporter
-#' @aliases TapReporter
-#' @keywords debugging
-#' @param ... Arguments used to initialise class
-TapReporter <- setRefClass("TapReporter", contains = "Reporter",
-  fields = list(
-    "results" = "list",
-    "n" = "integer",
-    "has_tests" = "logical",
-    "contexts" = "character"),
-
-  methods = list(
+TapReporter <- R6::R6Class("TapReporter", inherit = Reporter,
+  public = list(
+    results = list(),
+    n = 0L,
+    has_tests = FALSE,
+    contexts = NA_character_,
 
     start_context = function(context) {
-      contexts[n + 1] <<- context
-    },
-
-    start_reporter = function() {
-      results <<- list()
-      n <<- 0L
-      has_tests <<- FALSE
-      contexts <<- NA_character_
+      self$contexts[self$n + 1] <- context
     },
 
     add_result = function(context, test, result) {
-      has_tests <<- TRUE
-      n <<- n + 1L
+      self$has_tests <- TRUE
+      self$n <- self$n + 1L
 
       result$test <- if (is.null(test)) "(unknown)" else test
-      results[[n]] <<- result
+      self$results[[self$n]] <- result
     },
 
     end_reporter = function() {
-      if (!has_tests)
+      if (!self$has_tests)
         return()
 
-      cat("1..", n, '\n', sep = '')
-      for (i in 1:n) {
-        if (!is.na(contexts[i])) {
-          cat("# Context", contexts[i], "\n")
+      cat("1..", self$n, '\n', sep = '')
+      for (i in 1:self$n) {
+        if (!is.na(self$contexts[i])) {
+          cat("# Context", self$contexts[i], "\n")
         }
-        result <- results[[i]]
+        result <- self$results[[i]]
         if (expectation_success(result)) {
           cat('ok', i, result$test, '\n')
         } else if (expectation_broken(result)) {

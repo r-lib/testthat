@@ -1,32 +1,27 @@
 context("Contexts")
 
-CountReporter <- setRefClass("CountReporter", contains = "Reporter",
-  fields = c("context_count", "test_count", "context_i", "test_i"),
-  methods = list(
-    initialize = function() {
-      context_i <<- 0
-      context_count <<- 0
+CountReporter <- R6::R6Class("CountReporter", inherit = Reporter,
+  public = list(
+    context_i = 0,
+    content_coount = 0,
+    test_i = 0,
+    test_count = 0,
 
-      test_i <<- 0
-      test_count <<- 0
-
-      callSuper()
-    },
     start_context = function(context) {
-      context_count <<- context_count + 1
-      context_i <<- context_i + 1
+      self$context_count <- self$context_count + 1
+      self$context_i <- self$context_i + 1
     },
     end_context = function(context) {
-      context_i <<- context_i - 1
-      stopifnot(context_i >= 0)
+      self$context_i <- self$context_i - 1
+      stopifnot(self$context_i >= 0)
     },
     start_test = function(context, test) {
-      test_count <<- test_count + 1
-      test_i <<- test_i + 1
+      self$test_count <- self$test_count + 1
+      self$test_i <- self$test_i + 1
     },
     end_test = function(context, test) {
-      test_i <<- test_i - 1
-      stopifnot(test_i >= 0)
+      self$test_i <- self$test_i - 1
+      stopifnot(self$test_i >= 0)
     }
   )
 )

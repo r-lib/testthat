@@ -8,20 +8,12 @@ NULL
 #' after a test run.
 #'
 #' @export
-#' @export SilentReporter
-#' @aliases SilentReporter
-#' @keywords debugging
-#' @param ... Arguments used to initialise class
-SilentReporter <- setRefClass("SilentReporter", contains = "Reporter",
-  fields = c("failures"),
-  methods = list(
-    initialize = function(...) {
-      failures <<- list()
-    },
+SilentReporter <- R6::R6Class("SilentReporter", inherit = Reporter,
+  public = list(
+    results = list(),
 
     add_result = function(context, test, result) {
-      if (expectation_success(result)) return()
-      failures[[test]] <<- result
+      self$results <- c(self$results, list(result))
     }
   )
 )

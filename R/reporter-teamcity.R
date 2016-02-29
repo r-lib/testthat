@@ -8,16 +8,9 @@ NULL
 #' http://confluence.jetbrains.com/display/TCD7/Build+Script+Interaction+with+TeamCity
 #'
 #' @export
-#' @export TeamcityReporter
-#' @aliases TeamcityReporter
-#' @keywords debugging
-#' @param ... Arguments used to initialise class
-TeamcityReporter <- setRefClass("TeamcityReporter", contains = "Reporter",
-  fields = list(
-    "i" = "integer"
-  ),
-
-  methods = list(
+TeamcityReporter <- R6::R6Class("TeamcityReporter", inherit = Reporter,
+  public = list(
+    i = NA_integer_,
 
     start_context = function(context) {
       teamcity("testSuiteStarted", context)
@@ -29,16 +22,17 @@ TeamcityReporter <- setRefClass("TeamcityReporter", contains = "Reporter",
 
     start_test = function(context, test) {
       teamcity("testSuiteStarted", test)
-      i <<- 1L
+      self$i <- 1L
     },
+
     end_test = function(context, test) {
       teamcity("testSuiteFinished", test)
       cat("\n")
     },
 
     add_result = function(context, test, result) {
-      testName <- paste0("expectation ", i)
-      i <<- i + 1L
+      testName <- paste0("expectation ", self$i)
+      self$i <- self$i + 1L
 
       if (expectation_skip(result)) {
         teamcity("testIgnored", testName, message = result$message)

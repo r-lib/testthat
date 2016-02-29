@@ -16,24 +16,17 @@ NULL
 #' if all your tests pass.
 #'
 #' @export
-#' @export SummaryReporter
-#' @aliases SummaryReporter
-#' @keywords debugging
-#' @param ... Arguments used to initialise class
-SummaryReporter <- setRefClass("SummaryReporter", contains = "Reporter",
-  fields = list(
-    "failures" = "list",
-    "skips" = "list",
-    "n" = "integer",
-    "has_tests" = "logical",
-    "max_reports" = "numeric",
-    "show_praise" = "logical"),
+SummaryReporter <- R6::R6Class("SummaryReporter", inherit = Reporter,
+  public = list(
+    failures = list(),
+    skips = list(),
+    n = 0L,
+    has_tests = FALSE,
+    max_reports = getOption("testthat.summary.max_reports", 15L),
+    show_praise = TRUE,
 
-  methods = list(
-    initialize = function(max_reports = getOption("testthat.summary.max_reports", 15L), ...) {
-      max_reports <<- max_reports
-      show_praise <<- TRUE
-      callSuper(...)
+    initialize = function(show_praise = TRUE) {
+      self$show_praise <- show_praise
     },
 
     start_context = function(context) {
@@ -44,28 +37,21 @@ SummaryReporter <- setRefClass("SummaryReporter", contains = "Reporter",
       cat("\n")
     },
 
-    start_reporter = function() {
-      failures <<- list()
-      skips <<- list()
-      has_tests <<- FALSE
-      n <<- 0L
-    },
-
     add_result = function(context, test, result) {
-      has_tests <<- TRUE
+      self$has_tests <- TRUE
 
       if (expectation_broken(result)) {
-        if (n + 1 > length(labels) || n + 1 > max_reports) {
+        if (self$n + 1 > self$max_reports) {
           cat(single_letter_summary(result))
         } else {
-          n <<- n + 1L
+          self$n <- self$n + 1L
           result$test <- if (is.null(test)) "(unknown)" else test
-          failures[[n]] <<- result
-          cat(colourise(labels[n], "error"))
+          self$failures[[self$n]] <- result
+          cat(colourise(labels[self$n], "error"))
         }
       } else if (expectation_skip(result)) {
         result$test <- if (is.null(test)) "(unknown)" else test
-        skips <<- c(skips, list(result))
+        self$skips <- c(self$skips, list(result))
 
         cat(single_letter_summary(result))
       } else {
@@ -75,26 +61,26 @@ SummaryReporter <- setRefClass("SummaryReporter", contains = "Reporter",
     },
 
     end_reporter = function() {
-      if (n == 0) {
-        if (!has_tests)
+      if (self$n == 0) {
+        if (!self$has_tests)
           return()
 
-        if (length(skips) > 0L) {
+        if (length(self$skips) > 0L) {
           cat(colourise("\nSkip:", "skip"), "\n\n")
-          cat_reports(skips, skip_summary, "\n")
+          cat_reports(self$skips, skip_summary, "\n")
         }
 
         cat("\n")
-        if (show_praise && runif(1) < 0.1) {
+        if (self$show_praise && runif(1) < 0.1) {
           cat(colourise(praise(), "success"), "\n")
         } else {
           cat(colourise("DONE", "success"), "\n")
         }
       } else {
         cat("\n")
-        cat_reports(failures, failure_summary, "\n\n")
+        cat_reports(self$failures, failure_summary, "\n\n")
 
-        if (show_praise && runif(1) < 0.25) {
+        if (self$show_praise && runif(1) < 0.25) {
           cat("\n", colourise(encourage(), "error"), "\n", sep = "")
         }
       }

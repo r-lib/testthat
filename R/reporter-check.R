@@ -7,64 +7,51 @@ NULL
 #' report is design to ensure that you see something useful there.
 #'
 #' @export
-#' @export CheckReporter
-#' @aliases CheckReporter
-#' @keywords debugging
-#' @param ... Arguments used to initialise class
-CheckReporter <- setRefClass("CheckReporter", contains = "Reporter",
-  fields = list(
-    "failures" = "list",
-    "n_fail" = "integer",
-    "n_ok" = "integer",
-    "n_skip" = "integer"
-  ),
-
-  methods = list(
-    start_reporter = function() {
-      failures <<- list()
-      n_ok <<- 0L
-      n_skip <<- 0L
-      n_fail <<- 0L
-    },
+CheckReporter <- R6::R6Class("CheckReporter", inherit = Reporter,
+  public = list(
+    failures = list(),
+    n_ok = 0L,
+    n_skip = 0L,
+    n_fail = 0L,
 
     add_result = function(context, test, result) {
       if (expectation_skip(result)) {
-        n_skip <<- n_skip + 1L
+        self$n_skip <- self$n_skip + 1L
         return()
       }
       if (expectation_success(result)) {
-        n_ok <<- n_ok + 1L
+        self$n_ok <- self$n_ok + 1L
         return()
       }
 
-      n_fail <<- n_fail + 1L
+      self$n_fail <- self$n_fail + 1L
 
       result$test <- if (is.null(test)) "(unknown)" else test
-      failures[[n_fail]] <<- result
+      self$failures[[self$n_fail]] <- result
 
-      cat(failure_summary(result, n_fail), "\n\n", sep = "")
+      cat(failure_summary(result, self$n_fail), "\n\n", sep = "")
     },
 
     end_reporter = function() {
       rule <- paste0(rep("=", getOption("width") - 16), collapse = "")
       cat("testthat results ", rule, "\n", sep = "")
       cat(
-        "OK: ", n_ok, " ",
-        "SKIPPED: ", n_skip, " ",
-        "FAILED: ", n_fail, "\n",
+        "OK: ", self$n_ok, " ",
+        "SKIPPED: ", self$n_skip, " ",
+        "FAILED: ", self$n_fail, "\n",
         sep = ""
       )
 
-      if (n_fail == 0) return()
+      if (self$n_fail == 0) return()
 
-      if (n_fail > 10) {
-        show <- failures[1:9]
+      if (self$n_fail > 10) {
+        show <- self$failures[1:9]
       } else {
-        show <- failures
+        show <- self$failures
       }
 
-      fails <- vapply(failures, failure_header, character(1))
-      if (n_fail > 10) {
+      fails <- vapply(show, failure_header, character(1))
+      if (self$n_fail > 10) {
         fails <- c(fails, "...")
       }
       labels <- format(paste0(1:length(show), "."))

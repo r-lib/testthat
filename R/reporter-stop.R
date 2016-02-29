@@ -13,25 +13,18 @@ NULL
 #' tests and gives you more context about the problem.
 #'
 #' @export
-#' @export StopReporter
-#' @aliases StopReporter
-#' @keywords debugging
-#' @param ... Arguments used to initialise class
-StopReporter <- setRefClass("StopReporter", contains = "Reporter",
-  fields = c("failures"),
-  methods = list(
-    initialize = function(...) {
-      failures <<- list()
-      callSuper(...)
-    },
-    end_test = function(context, test) {
-      if (length(failures) == 0) return()
+StopReporter <- R6::R6Class("StopReporter", inherit = Reporter,
+  public = list(
+    failures = list(),
 
-      messages <- vapply(failures, as.character, character(1))
+    end_test = function(context, test) {
+      if (length(self$failures) == 0) return()
+
+      messages <- vapply(self$failures, as.character, character(1))
       if (length(messages) > 1) {
         messages <- paste0("* ", messages, collapse = "\n")
       }
-      failures <<- list()
+      self$failures <- list()
 
       msg <- paste0("Test failed: '", test, "'\n", messages)
       stop(msg, call. = FALSE)
@@ -44,7 +37,7 @@ StopReporter <- setRefClass("StopReporter", contains = "Reporter",
       if (is.null(test)) {
         stop(result$message, call. = FALSE)
       } else {
-        failures <<- c(failures, list(result))
+        self$failures <<- c(self$failures, list(result))
       }
     }
   )

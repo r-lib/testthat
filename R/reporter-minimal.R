@@ -9,12 +9,8 @@ NULL
 #' were, you'll need to run a more informative test reporter.
 #'
 #' @export
-#' @keywords debugging
-#' @export MinimalReporter
-#' @aliases MinimalReporter
-#' @param ... Arguments used to initialise class
-MinimalReporter <- setRefClass("MinimalReporter", contains = "Reporter",
-  methods = list(
+MinimalReporter <- R6::R6Class("MinimalReporter", inherit = Reporter,
+  public = list(
     add_result = function(context, test, result) {
       cat(single_letter_summary(result))
     },

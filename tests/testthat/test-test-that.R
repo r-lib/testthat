@@ -9,17 +9,17 @@ test_that("errors are captured", {
   f <- function() g()
   g <- function() stop("I made a mistake", call. = FALSE)
 
-  reporter <- with_reporter(SilentReporter(), {
+  reporter <- with_reporter("silent", {
     test_that("", f())
   })
-  expect_equal(length(reporter$failures), 1)
+  expect_equal(length(reporter$results), 1)
 })
 
 test_that("errors captured even when looking for warnings", {
-  reporter <- with_reporter(SilentReporter(), {
+  reporter <- with_reporter("silent", {
     test_that("", expect_warning(stop()))
   })
-  expect_equal(length(reporter$failures), 1)
+  expect_equal(length(reporter$results), 1)
 })
 
 test_that("return value from test_that", {
@@ -46,23 +46,13 @@ test_that("return value from test_that", {
 
 # Line numbering ----------------------------------------------------------
 
-GreedyReporter <- setRefClass("GreedyReporter", contains = "Reporter",
-  where = environment(),
-  fields = list(results = "list"),
-  methods = list(
-    add_result = function(context, test, result) {
-      results[[length(results) + 1]] <<- result
-    }
-  )
-)
-
 expectation_lines <- function(code) {
   srcref <- attr(substitute(code), "srcref")
   if (!is.list(srcref)) {
     stop("code doesn't have srcref", call. = FALSE)
   }
 
-  results <- with_reporter(GreedyReporter(), code)$results
+  results <- with_reporter("silent", code)$results
   unlist(lapply(results, function(x) x$srcref[1])) - srcref[[1]][1]
 }
 

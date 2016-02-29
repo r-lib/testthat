@@ -7,10 +7,9 @@
 #' @export
 #' @export Reporter
 #' @aliases Reporter
-#' @param ... Arguments used to initialise class
-#' @importFrom methods setRefClass new
-Reporter <- setRefClass("Reporter",
-  methods = list(
+#' @importFrom R6 R6Class
+Reporter <- R6::R6Class("Reporter",
+  public = list(
     start_reporter = function() {},
     start_context =  function(context) {},
     start_test =     function(context, test) {},

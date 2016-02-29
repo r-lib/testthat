@@ -28,7 +28,7 @@ test_that("reporters produce consistent output", {
   }
 
   expect_error(save_report("check"))
-  expect_error(save_report("summary", SummaryReporter(show_praise = FALSE)), NA)
+  expect_error(save_report("summary", SummaryReporter$new(show_praise = FALSE)), NA)
   expect_error(save_report("minimal"), NA)
   expect_error(save_report("tap"), NA)
   expect_error(save_report("teamcity"), NA)
