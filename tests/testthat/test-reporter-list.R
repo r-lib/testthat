@@ -2,9 +2,9 @@ context("ListReporter")
 
 test_that("ListReporter with test_file", {
   report <- ListReporter$new()
-  report$start_file('context.r')
+  report$start_file('context.R')
 
-  test_file("context.r", report)
+  test_file("context.R", report)
 
   res <- report$results
   expect_is(res, 'list')
@@ -21,6 +21,6 @@ test_that("ListReporter with test_file", {
 
   # test that file is set
   files <- sapply(res, '[[', 'file')
-  expect_equal(files, rep(c("context.r"), 4))
+  expect_equal(files, rep(c("context.R"), 4))
 })
 

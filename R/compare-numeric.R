@@ -1,4 +1,4 @@
-#' @include compare.r
+#' @include compare.R
 #' @export
 #' @rdname compare
 #' @examples

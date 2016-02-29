@@ -5,11 +5,11 @@ test_that('test_dir()', {
   df <- as.data.frame(res)
 
   expected <-
-    data.frame(file = c("test-basic.r", "test-basic.r", "test-basic.r",
-        "test-basic.r", "test-basic.r", "test-empty.r", "test-empty.r",
-        "test-errors.r", "test-errors.r", "test-errors.r", "test-errors.r",
-        "test-errors.r", "test-failures.r", "test-failures.r", "test-failures.r",
-        "test-helper.r", "test-skip.r"),
+    data.frame(file = c("test-basic.R", "test-basic.R", "test-basic.R",
+        "test-basic.R", "test-basic.R", "test-empty.R", "test-empty.R",
+        "test-errors.R", "test-errors.R", "test-errors.R", "test-errors.R",
+        "test-errors.R", "test-failures.R", "test-failures.R", "test-failures.R",
+        "test-helper.R", "test-skip.R"),
       context = c("Basic", "Basic", "Basic", "Basic",
         "Basic", "empty", "empty", "error", "error", "error", "error",
         "error", "failures", "failures", "failures", "helper", "skip"),

@@ -1,4 +1,4 @@
-#' @include reporter.r
+#' @include reporter.R
 NULL
 
 #' Tools for testing expectations

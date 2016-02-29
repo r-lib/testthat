@@ -21,7 +21,7 @@ test_env <- function() {
 #' @param reporter reporter to use
 #' @param filter If not \code{NULL}, only tests with file names matching this
 #'   regular expression will be executed.  Matching will take on the file
-#'   name after it has been stripped of \code{"test-"} and \code{".r"}.
+#'   name after it has been stripped of \code{"test-"} and \code{".R"}.
 #' @param env environment in which to execute test suite.
 #' @param ... Additional arguments passed to \code{grepl} to control filtering.
 #'

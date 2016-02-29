@@ -1,4 +1,4 @@
-#' @include reporter.r
+#' @include reporter.R
 NULL
 
 #' Check reporter: 13 line summary of problems

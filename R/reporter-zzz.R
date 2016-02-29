@@ -1,4 +1,4 @@
-#' @include reporter-stop.r
+#' @include reporter-stop.R
 NULL
 
 #' Get/set reporter; execute code in specified reporter.

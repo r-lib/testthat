@@ -1,4 +1,4 @@
-#' @include compare.r
+#' @include compare.R
 #' @param max_diffs Maximum number of differences to show
 #' @param max_lines Maximum number of lines to show from each difference
 #' @param check.attributes If \code{TRUE}, also checks values of attributes.
