@@ -45,12 +45,10 @@ SummaryReporter <- R6::R6Class("SummaryReporter", inherit = Reporter,
           cat(single_letter_summary(result))
         } else {
           self$n <- self$n + 1L
-          result$test <- if (is.null(test)) "(unknown)" else test
           self$failures[[self$n]] <- result
           cat(colourise(labels[self$n], "error"))
         }
       } else if (expectation_skip(result)) {
-        result$test <- if (is.null(test)) "(unknown)" else test
         self$skips <- c(self$skips, list(result))
 
         cat(single_letter_summary(result))

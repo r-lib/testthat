@@ -25,8 +25,6 @@ CheckReporter <- R6::R6Class("CheckReporter", inherit = Reporter,
       }
 
       self$n_fail <- self$n_fail + 1L
-
-      result$test <- if (is.null(test)) "(unknown)" else test
       self$failures[[self$n_fail]] <- result
 
       cat(failure_summary(result, self$n_fail), "\n\n", sep = "")

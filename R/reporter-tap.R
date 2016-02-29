@@ -22,8 +22,6 @@ TapReporter <- R6::R6Class("TapReporter", inherit = Reporter,
     add_result = function(context, test, result) {
       self$has_tests <- TRUE
       self$n <- self$n + 1L
-
-      result$test <- if (is.null(test)) "(unknown)" else test
       self$results[[self$n]] <- result
     },
 
