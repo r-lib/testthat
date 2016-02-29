@@ -4,5 +4,11 @@ expect_equal(2, 2)
 expect_true(TRUE)
 expect_error(stop("!"))
 
-expect_error(expect_false(FALSE), NA)
-expect_error(expect_false(TRUE))
+stopifnot(
+  tryCatch(expect_true(TRUE),
+           error = function(e) FALSE)
+)
+stopifnot(
+  tryCatch(expect_true(FALSE),
+           error = function(e) TRUE)
+)
