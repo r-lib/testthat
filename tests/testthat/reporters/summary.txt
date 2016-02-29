@@ -1,6 +1,6 @@
-Expectations : .1234.
-Errors : 56
-Skips : SS
+Expectations: .1234.
+Errors: 56
+Skips: SS
 
 1. Failure: Failure:1 (@tests.R#8) ---------------------------------------------
 Failure has been forced

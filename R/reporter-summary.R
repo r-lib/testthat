@@ -30,7 +30,7 @@ SummaryReporter <- R6::R6Class("SummaryReporter", inherit = Reporter,
     },
 
     start_context = function(context) {
-      cat(context, ": ")
+      cat(context, ": ", sep = "")
     },
 
     end_context = function(context) {
