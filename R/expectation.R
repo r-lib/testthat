@@ -163,7 +163,7 @@ format.expectation <- function(x, ...) {
   if (expectation_success(x)) {
     "As expected"
   } else {
-    paste0("Not expected: ", x$message)
+    paste0("Not expected (", expectation_type(x), "): ", x$message)
   }
 }
 

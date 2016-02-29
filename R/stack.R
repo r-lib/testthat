@@ -15,6 +15,7 @@ Stack <- R6Class(
       # size of the list as it shrinks.
       private$stack <- vector("list", init)
       private$init <- init
+      private$count <- 0
     },
 
     push = function(..., .list = NULL) {

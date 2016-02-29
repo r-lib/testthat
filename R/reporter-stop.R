@@ -15,29 +15,30 @@ NULL
 #' @export
 StopReporter <- R6::R6Class("StopReporter", inherit = Reporter,
   public = list(
-    failures = list(),
+    failures = NULL,
+
+    initialize = function() {
+      self$failures <- Stack$new()
+    },
 
     end_test = function(context, test) {
-      if (length(self$failures) == 0) return()
-
-      messages <- vapply(self$failures, as.character, character(1))
-      if (length(messages) > 1) {
-        messages <- paste0("* ", messages, collapse = "\n")
+      failures <- self$failures$as_list()
+      if (length(failures) == 0) {
+        return()
       }
-      self$failures <- list()
 
-      msg <- paste0("Test failed: '", test, "'\n", messages)
-      stop(msg, call. = FALSE)
+      # reset failures for next test
+      self$failures$initialize()
+
+      messages <- vapply(failures, format, character(1))
+      messages <- paste0("* ", messages, collapse = "\n")
+
+      stop("Test failed: '", test, "'\n", messages, call. = FALSE)
     },
 
     add_result = function(context, test, result) {
-      if (!expectation_broken(result)) return()
-
-      # If running in test suite, store, otherwise raise immediately.
-      if (is.null(test)) {
-        stop(result$message, call. = FALSE)
-      } else {
-        self$failures <<- c(self$failures, list(result))
+      if (expectation_broken(result)) {
+        self$failures$push(result)
       }
     }
   )
