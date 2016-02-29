@@ -9,18 +9,21 @@ test_that("ListReporter with test_file", {
   res <- report$results
   expect_is(res, 'list')
   expect_equal(length(res), 4)
+
+  # Check context and file are set
   contexts <- sapply(res, '[[', 'context')
   expect_equal(contexts, rep(c("First context.", "Second context."), each = 2))
 
-  last_results <- tail(res, 1)[[1]]$results
-  expect_is(last_results, 'list')
-  expect_equal(length(last_results), 1)
-  fl <- last_results[[1]]
-
-  expect_equal(expectation_type(fl), "failure")
-
-  # test that file is set
   files <- sapply(res, '[[', 'file')
   expect_equal(files, rep(c("context.R"), 4))
+
+  # Check results are as expected
+  last_results <- res[[4]]$results
+  expect_is(last_results, 'list')
+  expect_equal(length(last_results), 1)
+
+  fl <- last_results[[1]]
+  expect_equal(expectation_type(fl), "failure")
+
 })
 
