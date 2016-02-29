@@ -1,5 +1,8 @@
 # testthat 0.11.0.9000
 
+* `source_test_helpers()` gets a useful default path: the testthat tests 
+  directory.
+
 * `test_file()` now loads helpers in the test directory before running
   the tests (#350).
 

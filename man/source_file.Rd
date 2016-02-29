@@ -10,7 +10,7 @@ source_file(path, env = test_env(), chdir = TRUE)
 
 source_dir(path, pattern = "\\\\.[rR]$", env = test_env(), chdir = TRUE)
 
-source_test_helpers(path, env = test_env())
+source_test_helpers(path = "tests/testthat", env = test_env())
 }
 \arguments{
 \item{path}{Path to tests}
