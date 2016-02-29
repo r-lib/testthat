@@ -19,7 +19,7 @@ CheckReporter <- R6::R6Class("CheckReporter", inherit = Reporter,
         self$n_skip <- self$n_skip + 1L
         return()
       }
-      if (expectation_success(result)) {
+      if (expectation_ok(result)) {
         self$n_ok <- self$n_ok + 1L
         return()
       }

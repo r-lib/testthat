@@ -61,3 +61,19 @@
 ##teamcity[testSuiteFinished name='Skips']
 
 
+##teamcity[testSuiteStarted name='Warnings']
+##teamcity[testSuiteStarted name='Warning:1']
+##teamcity[testStarted name='expectation 1']
+##teamcity[testFinished name='expectation 1']
+##teamcity[testSuiteFinished name='Warning:1']
+
+##teamcity[testSuiteStarted name='Warning:2']
+##teamcity[testStarted name='expectation 1']
+##teamcity[testFinished name='expectation 1']
+##teamcity[testStarted name='expectation 2']
+##teamcity[testFinished name='expectation 2']
+##teamcity[testSuiteFinished name='Warning:2']
+
+##teamcity[testSuiteFinished name='Warnings']
+
+

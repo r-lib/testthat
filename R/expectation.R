@@ -10,7 +10,7 @@
 #' @keywords internal
 #' @export
 expectation <- function(type, message, srcref = NULL) {
-  type <- match.arg(type, c("success", "failure", "error", "skip"))
+  type <- match.arg(type, c("success", "failure", "error", "skip", "warning"))
 
   structure(
     list(
@@ -95,9 +95,17 @@ expectation_skip <- function(exp) {
   expectation_type(exp) == "skip"
 }
 
+expectation_warning <- function(exp) {
+  expectation_type(exp) == "warning"
+}
+
 expectation_broken <- function(exp) {
   expectation_failure(exp) || expectation_error(exp)
 }
+expectation_ok <- function(exp) {
+  expectation_type(exp) %in% c("success", "warning")
+}
+
 
 
 as.expectation <- function(x, ...) UseMethod("as.expectation", x)
@@ -143,6 +151,16 @@ as.expectation.error <- function(x, ..., srcref = NULL) {
 }
 
 #' @export
+as.expectation.warning <- function(x, ..., srcref = NULL) {
+  msg <- x$message
+
+  # msg <- gsub("Error.*?: ", "", as.character(error))
+  # msg <- gsub("\n$", "", msg)
+
+  expectation("warning", msg, srcref)
+}
+
+#' @export
 as.expectation.skip <- function(x, ..., srcref = NULL) {
   error <- x$message
   msg <- gsub("Error.*?: ", "", as.character(error))
@@ -176,6 +194,7 @@ single_letter_summary <- function(x) {
     success = colourise(".", "success"),
     error   = colourise("E", "error"),
     failure = colourise("F", "failure"),
+    warning = colourise("W", "warning"),
     "?"
   )
 }

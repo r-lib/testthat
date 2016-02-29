@@ -41,7 +41,7 @@ TeamcityReporter <- R6::R6Class("TeamcityReporter", inherit = Reporter,
 
       teamcity("testStarted", testName)
 
-      if (!expectation_success(result)) {
+      if (!expectation_ok(result)) {
         lines <- strsplit(result$message, "\n")[[1]]
 
         teamcity("testFailed", testName, message = lines[1],

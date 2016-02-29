@@ -43,7 +43,7 @@ test_code <- function(test, code, env = test_env()) {
     e <- as.expectation(e, srcref = srcref)
     e$call <- calls
     e$test <- test %||% "(unknown)"
-    ok <<- ok && expectation_success(e)
+    ok <<- ok && expectation_ok(e)
     get_reporter()$add_result(context = context_get(), test = test, result = e)
   }
 
@@ -61,6 +61,10 @@ test_code <- function(test, code, env = test_env()) {
     register_expectation(e, frame + 11, sys.nframe() - 6)
     invokeRestart("continue_test")
   }
+  handle_warning <- function(e) {
+    register_expectation(e, frame + 11, sys.nframe() - 6)
+    invokeRestart("muffleWarning")
+  }
   handle_message <- function(e) {
     invokeRestart("muffleMessage")
   }
@@ -75,6 +79,7 @@ test_code <- function(test, code, env = test_env()) {
       eval(code, test_env),
       expectation = handle_expectation,
       skip =        handle_skip,
+      warning =     handle_warning,
       message =     handle_message,
       error =       handle_error
     ),

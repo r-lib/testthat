@@ -20,6 +20,7 @@ SummaryReporter <- R6::R6Class("SummaryReporter", inherit = Reporter,
   public = list(
     failures = NULL,
     skips = NULL,
+    warnings = NULL,
     max_reports = getOption("testthat.summary.max_reports", 15L),
     show_praise = TRUE,
 
@@ -27,6 +28,7 @@ SummaryReporter <- R6::R6Class("SummaryReporter", inherit = Reporter,
       self$show_praise <- show_praise
       self$failures <- Stack$new()
       self$skips <- Stack$new()
+      self$warnings <- Stack$new()
     },
 
     start_context = function(context) {
@@ -48,18 +50,22 @@ SummaryReporter <- R6::R6Class("SummaryReporter", inherit = Reporter,
       } else if (expectation_skip(result)) {
         self$skips$push(result)
         cat(single_letter_summary(result))
+      } else if (expectation_warning(result)) {
+        self$warnings$push(result)
+        cat(single_letter_summary(result))
       } else {
         cat(single_letter_summary(result))
       }
-
     },
 
     end_reporter = function() {
       skips <- self$skips$as_list()
       failures <- self$failures$as_list()
+      warnings <- self$warnings$as_list()
 
       cat("\n")
       cat_reports("Skipped", skips, Inf, skip_summary)
+      cat_reports("Warnings", warnings, Inf, skip_summary)
       cat_reports("Failed", failures, self$max_reports, failure_summary)
 
       rule("DONE", pad = "=")

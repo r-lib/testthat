@@ -46,3 +46,14 @@ test_that("Skip:2", {
   f <- function() {skip("skip")}
   f()
 })
+
+context("Warnings")
+
+test_that("Warning:1", {
+  warning("abc")
+})
+
+test_that("Warning:2", {
+  warning("def")
+  warning("ghi")
+})

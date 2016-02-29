@@ -1,5 +1,8 @@
 # testthat 0.11.0.9000
 
+* Warnings are now captured and reported in most reporters. The defauly summary 
+  lists all warnings and where they came from (#310).
+
 * `try_again()` allows you to retry code multiple times until it succeeds
   (#240).
 
