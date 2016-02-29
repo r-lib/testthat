@@ -13,49 +13,74 @@ setOldClass('proc_time')
 #' @export
 ListReporter <- R6::R6Class("ListReporter", inherit = Reporter,
   public = list(
-    start_test_time = NA,
-    file = "",
-    results = list(),
-    current_test_results = list(),
+    current_start_time = NA,
+    current_expectations = NULL,
+    current_file = NULL,
+    results = NULL,
 
-    start_test = function(context, test) {
-      self$current_test_results <- list()
-      self$start_test_time <- proc.time()
+    initialize = function() {
+      self$results <- Stack$new()
     },
 
-    end_test = function(context, test) {
-      el <- as.double(proc.time() - self$start_test_time)
-      fname <- if (length(self$file)) self$file else NA_character_
-      test_info <- list(file = fname, context = context, test = test,
-        user = el[1], system = el[2], real = el[3],
-        results = self$current_test_results)
-
-      self$results <- c(self$results, list(test_info))
-      self$current_test_results <- list()
+    start_test = function(context, test) {
+      self$current_expectations <- Stack$new()
+      self$current_start_time <- proc.time()
     },
 
     add_result = function(context, test, result) {
-      self$current_test_results <<- c(self$current_test_results, list(result))
+      self$current_expectations$push(result)
     },
 
-    ### new methods
+    end_test = function(context, test) {
+      elapsed <- as.double(proc.time() - self$current_start_time)
+
+      self$results$push(list(
+        file =    self$current_file %||% NA_character_,
+        context = context,
+        test =    test,
+        user =    elapsed[1],
+        system =  elapsed[2],
+        real =    elapsed[3],
+        results = self$current_expectations$as_list()
+      ))
+    },
+
     start_file = function(name) {
-      self$file <- name
+      self$current_file <- name
     },
 
-    get_summary = function() {
-      summarize_results(self$results)
+    get_results = function() {
+      testthat_results(self$results$as_list())
     }
-
   )
 )
 
+#' Create a `testthat_results` object from the test results
+#' as stored in the ListReporter results field.
+#'
+#' @param results a list as stored in ListReporter
+#' @return its list argument as a `testthat_results` object
+#' @seealso ListReporter
+testthat_results  <- function(results) {
+  stopifnot(is.list(results))
+  structure(results, class = "testthat_results")
+}
 
-# format results from ListReporter
-summarize_results <- function(results_list) {
-  if (is.null(results_list) || length(results_list) == 0)
+# return if all tests are successful w/o error
+all_passed <- function(res) {
+  if (length(res) == 0)
+    return(TRUE)
+
+  df <- as.data.frame.testthat_results(res)
+  sum(df$failed) == 0 && all(!df$error)
+}
+
+#' @export
+as.data.frame.testthat_results <- function(x, ...) {
+  if (length(x) == 0)
     return(data.frame())
-  rows <- lapply(results_list, sumarize_one_test_results)
+
+  rows <- lapply(x, sumarize_one_test_results)
   do.call(rbind, rows)
 }
 
@@ -89,30 +114,6 @@ sumarize_one_test_results <- function(test) {
     stringsAsFactors = FALSE)
 
   res
-}
-
-
-#' Create a `testthat_results` object from the test results
-#' as stored in the ListReporter results field.
-#'
-#' @param results a list as stored in ListReporter
-#' @return its list argument as a `testthat_results` object
-#' @seealso ListReporter
-testthat_results  <- function(results) {
-  structure(results, class = "testthat_results")
-}
-
-# return if all tests are successful w/o error
-all_passed <- function(res) {
-  df <- as.data.frame.testthat_results(res)
-  if (ncol(df) == 0) return(TRUE)
-  sum(df$failed) == 0 && all(!df$error)
-}
-
-
-#' @export
-as.data.frame.testthat_results <- function(x, ...) {
-  summarize_results(x)
 }
 
 

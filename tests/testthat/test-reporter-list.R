@@ -6,7 +6,7 @@ test_that("ListReporter with test_file", {
 
   test_file(test_path("context.R"), report)
 
-  res <- report$results
+  res <- report$results$as_list()
   expect_is(res, 'list')
   expect_equal(length(res), 4)
 

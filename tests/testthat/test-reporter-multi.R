@@ -4,14 +4,11 @@ test_that("MultiReporter", {
   reports <- lapply(seq_len(3), function(x) ListReporter$new())
   reporter <- MultiReporter$new(reporters = reports)
 
-  test_file("context.R", reporter)
+  test_file(test_path("context.R"), reporter)
 
-  dfs <- lapply(reports, function(x) x$get_summary())
-  dfs2 <- lapply(dfs, function(x) {
-      x$user <- x$system  <- x$real <- NULL
-      x
-  })
+  dfs <- lapply(reports, function(x) as.data.frame(x$get_results()))
 
-  expect_true(all(sapply(dfs2, function(x) identical(dfs2[[1]], x) )))
+  expect_equal(dfs[[2]][1:7], dfs[[1]][1:7])
+  expect_equal(dfs[[3]][1:7], dfs[[1]][1:7])
 })
 

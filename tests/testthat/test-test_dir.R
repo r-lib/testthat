@@ -1,7 +1,7 @@
 context("test_dir")
 
 test_that('test_dir()', {
-  res <- test_dir('test_dir', reporter = 'silent')
+  res <- test_dir(test_path('test_dir'), reporter = 'silent')
   df <- as.data.frame(res)
 
   expected <-

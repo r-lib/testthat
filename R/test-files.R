@@ -123,5 +123,5 @@ test_file <- function(path, reporter = "summary", env = test_env(),
     }
   )
 
-  invisible(testthat_results(lister$results))
+  invisible(lister$get_results())
 }
