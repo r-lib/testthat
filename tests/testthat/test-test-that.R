@@ -12,14 +12,14 @@ test_that("errors are captured", {
   reporter <- with_reporter("silent", {
     test_that("", f())
   })
-  expect_equal(length(reporter$results), 1)
+  expect_equal(length(reporter$expectations()), 1)
 })
 
 test_that("errors captured even when looking for warnings", {
   reporter <- with_reporter("silent", {
     test_that("", expect_warning(stop()))
   })
-  expect_equal(length(reporter$results), 1)
+  expect_equal(length(reporter$expectations()), 1)
 })
 
 test_that("return value from test_that", {
@@ -52,7 +52,7 @@ expectation_lines <- function(code) {
     stop("code doesn't have srcref", call. = FALSE)
   }
 
-  results <- with_reporter("silent", code)$results
+  results <- with_reporter("silent", code)$expectations()
   unlist(lapply(results, function(x) x$srcref[1])) - srcref[[1]][1]
 }
 

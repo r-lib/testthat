@@ -9,9 +9,10 @@
 SilentReporter
 }
 \description{
-This reporter quietly runs all tests, simply gathering the results
-for later use. This is helpful for programmatically inspecting errors
-after a test run.
+This reporter quietly runs all tests, simply gathering all expectations.
+This is helpful for programmatically inspecting errors after a test run.
+You can retrieve the results with the \code{expectations()}
+method.
 }
 \keyword{datasets}
 
