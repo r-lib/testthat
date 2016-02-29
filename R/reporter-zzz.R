@@ -15,7 +15,7 @@ NULL
 #' @name reporter-accessors
 NULL
 
-testthat_env <- new.env()
+testthat_env <- new.env(parent = emptyenv())
 
 # Default has to be the stop reporter, since it is this that will be run by
 # default from the command line and in R CMD test.
