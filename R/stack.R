@@ -15,7 +15,7 @@ Stack <- R6Class(
       # size of the list as it shrinks.
       private$stack <- vector("list", init)
       private$init <- init
-      private$count <- 0
+      private$count <- 0L
     },
 
     push = function(..., .list = NULL) {
@@ -24,7 +24,7 @@ Stack <- R6Class(
 
       # Grow if needed; double in size
       while (new_size > length(stack)) {
-        stack[length(stack) * 2] <<- list(NULL)
+        stack[length(stack) * 2L] <<- list(NULL)
       }
       stack[count + seq_along(args)] <<- args
       count <<- new_size
