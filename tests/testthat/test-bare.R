@@ -6,9 +6,9 @@ expect_error(stop("!"))
 
 stopifnot(
   tryCatch(expect_true(TRUE),
-           error = function(e) FALSE)
+           failure = function(e) FALSE)
 )
 stopifnot(
   tryCatch(expect_true(FALSE),
-           error = function(e) TRUE)
+           failure = function(e) TRUE)
 )
