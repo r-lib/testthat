@@ -2,7 +2,7 @@
 NULL
 
 
-setOldClass('proc_time')
+methods::setOldClass('proc_time')
 
 #' List reporter: gather all test results along with elapsed time and
 #' file information.
