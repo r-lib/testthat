@@ -12,12 +12,14 @@ CacheReporter <- R6::R6Class(
   "CacheReporter", inherit = Reporter,
 
   public = list(
-    initialize = function(reporter = get_reporter()) {
+    initialize = function(reporter = get_reporter(), select_from_call = -1:-7) {
       private$.args <- Stack$new()
       private$.reporter <- reporter
+      private$.select_from_call <- select_from_call
     },
 
     add_result = function(context, test, result) {
+      result$call <- result$call[private$.select_from_call]
       private$.args$push(list(context = context, test = test, result = result))
     },
 
@@ -30,6 +32,7 @@ CacheReporter <- R6::R6Class(
 
   private = list(
     .args = NULL,
-    .reporter = NULL
+    .reporter = NULL,
+    .select_from_call = NULL
   )
 )
