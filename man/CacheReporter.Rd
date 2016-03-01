@@ -3,15 +3,15 @@
 \docType{data}
 \name{CacheReporter}
 \alias{CacheReporter}
-\title{Cache reporter: Defer reporting to the current reporters until the end}
+\title{Cache reporter: Defer reporting to the current reporter until the end}
 \format{An object of class \code{R6ClassGenerator} of length 24.}
 \usage{
 CacheReporter
 }
 \description{
 Active sinks also affect reporter output.  This reporter collects all
-expectations, and forwards them to the reporter that was active when it was
-created.
+expectations, and forwards them to another reporter (default: the reporter
+that was active when it was created).
 }
 \keyword{internal}
 

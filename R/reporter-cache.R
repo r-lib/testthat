@@ -1,11 +1,11 @@
 #' @include reporter.R
 NULL
 
-#' Cache reporter: Defer reporting to the current reporters until the end
+#' Cache reporter: Defer reporting to the current reporter until the end
 #'
 #' Active sinks also affect reporter output.  This reporter collects all
-#' expectations, and forwards them to the reporter that was active when it was
-#' created.
+#' expectations, and forwards them to another reporter (default: the reporter
+#' that was active when it was created).
 #'
 #' @keywords internal
 CacheReporter <- R6::R6Class(
