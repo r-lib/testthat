@@ -26,6 +26,9 @@ try_again <- function(times, code) {
           }
         }
       ),
+      failure = function(e) {
+        e
+      },
       error = function(e) {
         e
       }
