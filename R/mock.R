@@ -32,8 +32,10 @@
 #'   expect_equal(x <- 3 * 3, 6),
 #'   expect_identical(x + 4, 9)
 #' )
-#' throws_error()(expect_equal(3, 5))
-#' throws_error()(expect_identical(3, 5))
+#' \dontrun{
+#' expect_equal(3, 5)
+#' expect_identical(3, 5)
+#' }
 with_mock <- function(..., .env = topenv()) {
   new_values <- eval(substitute(alist(...)))
   mock_qual_names <- names(new_values)

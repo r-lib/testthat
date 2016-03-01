@@ -43,8 +43,10 @@ with_mock(
   expect_equal(x <- 3 * 3, 6),
   expect_identical(x + 4, 9)
 )
-throws_error()(expect_equal(3, 5))
-throws_error()(expect_identical(3, 5))
+\dontrun{
+expect_equal(3, 5)
+expect_identical(3, 5)
+}
 }
 \references{
 Suraj Gupta (2012): \href{http://obeautifulcode.com/R/How-R-Searches-And-Finds-Stuff}{How R Searches And Finds Stuff}
