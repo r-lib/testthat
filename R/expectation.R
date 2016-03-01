@@ -22,8 +22,6 @@ expectation <- function(type, message, srcref = NULL) {
     class = c(
       "expectation",
       type,
-      # Failures cannot have class "error", otherwise each failed expectation
-      # inside expect_error() aborts the test
       "condition"
     )
   )
