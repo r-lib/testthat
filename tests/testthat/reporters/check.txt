@@ -20,6 +20,22 @@ FALSE isn't true.
 stop
 1: stop("stop") at reporters/tests.R:28
 
+6. Error: Error:3 (@tests.R#36) ------------------------------------------------
+!
+1: expect_message(f(), NA) at reporters/tests.R:36
+2: evaluate_promise(object, capture_warnings = FALSE) at /home/muelleki/git/R/testthat/R/expect-output.R:145
+3: with_reporter("cache", result <- with_sink(temp, withCallingHandlers(withVisible(code), 
+       warning = handle_warning, message = handle_message))) at /home/muelleki/git/R/testthat/R/evaluate-promise.R:56
+4: force(code) at /home/muelleki/git/R/testthat/R/reporter-zzz.R:53
+5: with_sink(temp, withCallingHandlers(withVisible(code), warning = handle_warning, 
+       message = handle_message))
+6: withCallingHandlers(withVisible(code), warning = handle_warning, message = handle_message) at /home/muelleki/git/R/testthat/R/evaluate-promise.R:90
+7: withVisible(code)
+8: f()
+9: g() at reporters/tests.R:32
+10: h() at reporters/tests.R:33
+11: stop("!") at reporters/tests.R:34
+
 testthat results ================================================================
 OK: 5 SKIPPED: 2 FAILED: 6
 1. Failure: Failure:1 (@tests.R#8) 

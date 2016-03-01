@@ -1,5 +1,5 @@
 Expectations: .1234.
-Errors: 5
+Errors: 56
 Skips: SS
 Warnings: WWW
 
@@ -42,13 +42,16 @@ stop
 !
 1: expect_message(f(), NA) at reporters/tests.R:36
 2: evaluate_promise(object, capture_warnings = FALSE) at /home/muelleki/git/R/testthat/R/expect-output.R:145
-3: with_sink(temp, withCallingHandlers(withVisible(code), warning = handle_warning, 
-       message = handle_message)) at /home/muelleki/git/R/testthat/R/evaluate-promise.R:56
-4: withCallingHandlers(withVisible(code), warning = handle_warning, message = handle_message) at /home/muelleki/git/R/testthat/R/evaluate-promise.R:87
-5: withVisible(code)
-6: f()
-7: g() at reporters/tests.R:32
-8: h() at reporters/tests.R:33
-9: stop("!") at reporters/tests.R:34
+3: with_reporter("cache", result <- with_sink(temp, withCallingHandlers(withVisible(code), 
+       warning = handle_warning, message = handle_message))) at /home/muelleki/git/R/testthat/R/evaluate-promise.R:56
+4: force(code) at /home/muelleki/git/R/testthat/R/reporter-zzz.R:53
+5: with_sink(temp, withCallingHandlers(withVisible(code), warning = handle_warning, 
+       message = handle_message))
+6: withCallingHandlers(withVisible(code), warning = handle_warning, message = handle_message) at /home/muelleki/git/R/testthat/R/evaluate-promise.R:90
+7: withVisible(code)
+8: f()
+9: g() at reporters/tests.R:32
+10: h() at reporters/tests.R:33
+11: stop("!") at reporters/tests.R:34
 
 DONE =======================================================================
