@@ -38,9 +38,17 @@ test_that("character vector yields multi reporter", {
 })
 
 test_that("reporters produce consistent output", {
+  out_dir <- tempfile("testthat")
+  dir.create(out_dir)
+
   save_report <- function(name, reporter = find_reporter(name)) {
+    out_path <- file.path(out_dir, paste0(name, ".txt"))
     path <- file.path("reporters", paste0(name, ".txt"))
-    capture.output(test_file(test_path("reporters/tests.R"), reporter), file = path)
+    writeLines(character(), out_path)
+    capture.output(test_file(test_path("reporters/tests.R"), reporter), file = out_path)
+    out <- readLines(out_path)
+    eval(bquote(expect_equal(out, readLines(.(path)))))
+    file.copy(out_path, path)
   }
 
   expect_error(save_report("check"))
