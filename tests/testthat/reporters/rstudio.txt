@@ -3,7 +3,6 @@ reporters/tests.R#12:1 [failure] Failure:2a. Failure has been forced
 reporters/tests.R#15:1 [failure] Failure:2b. FALSE isn't true.
 reporters/tests.R#20:1 [failure] Failure:loop. `i` not equal to 2.
 reporters/tests.R#28:1 [error] Error:1. stop
-reporters/tests.R#36:1 [error] Error:3. !
 reporters/tests.R#42:1 [skip] Skip:1. skip
 reporters/tests.R#47:1 [skip] Skip:2. skip
 reporters/tests.R#53:1 [warning] Warning:1. abc

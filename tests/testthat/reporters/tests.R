@@ -33,7 +33,7 @@ test_that("Error:3", {
   g <- function() {h()}
   h <- function() {stop("!")}
 
-  f()
+  expect_output(f(), NA)
 })
 
 context("Skips")
@@ -56,4 +56,10 @@ test_that("Warning:1", {
 test_that("Warning:2", {
   warning("def")
   warning("ghi")
+})
+
+context("Promises")
+
+test_that("Promises:1", {
+  expect_output(expect_false(FALSE), NA)
 })

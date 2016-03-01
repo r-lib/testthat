@@ -1,4 +1,4 @@
-1..13
+1..15
 # Context Expectations 
 ok 1 Success 
 not ok 2 Failure:1 
@@ -22,10 +22,14 @@ not ok 7 Error:1
   1: stop("stop") at reporters/tests.R:28 
 not ok 8 Error:3 
   !
-  1: f() at reporters/tests.R:36
-  2: g() at reporters/tests.R:32
-  3: h() at reporters/tests.R:33
-  4: stop("!") at reporters/tests.R:34 
+  1: expect_output(f(), NA) at reporters/tests.R:36
+  2: capture_output(object) at /home/muelleki/git/R/testthat/R/expect-output.R:89
+  3: with_sink(temp, withVisible(code)) at /home/muelleki/git/R/testthat/R/evaluate-promise.R:103
+  4: withVisible(code) at /home/muelleki/git/R/testthat/R/evaluate-promise.R:119
+  5: f()
+  6: g() at reporters/tests.R:32
+  7: h() at reporters/tests.R:33
+  8: stop("!") at reporters/tests.R:34 
 # Context Skips 
 ok 9 # SKIP skip 
 ok 10 # SKIP skip 
@@ -33,3 +37,6 @@ ok 10 # SKIP skip
 ok 11 # WARNING abc 
 ok 12 # WARNING def 
 ok 13 # WARNING ghi 
+# Context Promises 
+ok 14 Promises:1 
+ok 15 Promises:1 

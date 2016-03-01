@@ -1,7 +1,8 @@
 Expectations: .1234.
-Errors: 56
+Errors: 5
 Skips: SS
 Warnings: WWW
+Promises: 7
 
 Skipped ------------------------------------------------------------------------
 1. Skip:1 (@tests.R#42) - skip
@@ -40,9 +41,18 @@ stop
 
 6. Error: Error:3 (@tests.R#36) ------------------------------------------------
 !
-1: f() at reporters/tests.R:36
-2: g() at reporters/tests.R:32
-3: h() at reporters/tests.R:33
-4: stop("!") at reporters/tests.R:34
+1: expect_output(f(), NA) at reporters/tests.R:36
+2: capture_output(object) at /home/muelleki/git/R/testthat/R/expect-output.R:89
+3: with_sink(temp, withVisible(code)) at /home/muelleki/git/R/testthat/R/evaluate-promise.R:103
+4: withVisible(code) at /home/muelleki/git/R/testthat/R/evaluate-promise.R:119
+5: f()
+6: g() at reporters/tests.R:32
+7: h() at reporters/tests.R:33
+8: stop("!") at reporters/tests.R:34
+
+7. Failure: Promises:1 (@tests.R#64) -------------------------------------------
+expect_false(FALSE) produced output.
+.
+
 
 DONE ===========================================================================
