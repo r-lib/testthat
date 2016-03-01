@@ -22,10 +22,16 @@ not ok 7 Error:1
   1: stop("stop") at reporters/tests.R:28 
 not ok 8 Error:3 
   !
-  1: f() at reporters/tests.R:36
-  2: g() at reporters/tests.R:32
-  3: h() at reporters/tests.R:33
-  4: stop("!") at reporters/tests.R:34 
+  1: expect_message(f(), NA) at reporters/tests.R:36
+  2: evaluate_promise(object, capture_warnings = FALSE) at /home/muelleki/git/R/testthat/R/expect-output.R:145
+  3: with_sink(temp, withCallingHandlers(withVisible(code), warning = handle_warning, 
+         message = handle_message)) at /home/muelleki/git/R/testthat/R/evaluate-promise.R:56
+  4: withCallingHandlers(withVisible(code), warning = handle_warning, message = handle_message) at /home/muelleki/git/R/testthat/R/evaluate-promise.R:87
+  5: withVisible(code)
+  6: f()
+  7: g() at reporters/tests.R:32
+  8: h() at reporters/tests.R:33
+  9: stop("!") at reporters/tests.R:34 
 # Context Skips 
 ok 9 # SKIP skip 
 ok 10 # SKIP skip 

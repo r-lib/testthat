@@ -33,7 +33,7 @@ test_that("Error:3", {
   g <- function() {h()}
   h <- function() {stop("!")}
 
-  f()
+  expect_message(f(), NA)
 })
 
 context("Skips")

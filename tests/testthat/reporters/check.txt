@@ -20,13 +20,6 @@ FALSE isn't true.
 stop
 1: stop("stop") at reporters/tests.R:28
 
-6. Error: Error:3 (@tests.R#36) ------------------------------------------------
-!
-1: f() at reporters/tests.R:36
-2: g() at reporters/tests.R:32
-3: h() at reporters/tests.R:33
-4: stop("!") at reporters/tests.R:34
-
 testthat results ================================================================
 OK: 5 SKIPPED: 2 FAILED: 6
 1. Failure: Failure:1 (@tests.R#8) 
