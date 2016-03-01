@@ -39,10 +39,10 @@ TapReporter <- R6::R6Class("TapReporter", inherit = Reporter,
           cat('ok', i, result$test, '\n')
         } else if (expectation_broken(result)) {
           cat('not ok', i, result$test, '\n')
-          msg <- gsub('\n', '\n  ', result$message)
+          msg <- gsub('\n', '\n  ', format(result))
           cat(' ', msg, '\n')
         } else {
-          cat('ok', i, '#', toupper(expectation_type(result)), result$message, '\n')
+          cat('ok', i, '#', toupper(expectation_type(result)), format(result), '\n')
         }
       }
     }

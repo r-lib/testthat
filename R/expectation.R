@@ -136,15 +136,9 @@ as.expectation.error <- function(x, ..., srcref = NULL) {
 
   msg <- gsub("Error.*?: ", "", as.character(error))
 
-  if (length(calls) > 0) {
-    traceback <- create_traceback(calls)
-    user_calls <- paste0(traceback, collapse = "\n")
-    msg <- paste0(msg, "\n", user_calls)
-  } else {
-    # Need to remove trailing newline from error message to be consistent
-    # with other messages
-    msg <- gsub("\n$", "", msg)
-  }
+  # Need to remove trailing newline from error message to be consistent
+  # with other messages
+  msg <- gsub("\n$", "", msg)
 
   expectation("error", msg, srcref)
 }
@@ -178,10 +172,15 @@ print.expectation <- function(x, ...) cat(format(x), "\n")
 #' @export
 format.expectation <- function(x, ...) {
   if (expectation_success(x)) {
-    "As expected"
+    res <- "As expected"
   } else {
-    paste0("Not expected (", expectation_type(x), "): ", x$message)
+    res <- x$message
   }
+  if (expectation_error(x)) {
+    res <- c(res, create_traceback(x$call))
+    res <- paste(res, collapse = "\n")
+  }
+  res
 }
 
 #' @export
