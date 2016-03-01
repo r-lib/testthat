@@ -42,17 +42,15 @@ with_reporter <- function(reporter, code, start_end_reporter = TRUE) {
   reporter <- find_reporter(reporter)
 
   old <- set_reporter(reporter)
-  on.exit(set_reporter(old))
+  on.exit(set_reporter(old), add = TRUE)
 
   if (start_end_reporter) {
     reporter$start_reporter()
+    # This will be executed *before* resetting the reporter, by design
+    on.exit(reporter$end_reporter(), add = TRUE)
   }
 
   force(code)
-
-  if (start_end_reporter) {
-    reporter$end_reporter()
-  }
 
   invisible(reporter)
 }
