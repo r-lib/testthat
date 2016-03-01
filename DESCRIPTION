@@ -49,6 +49,7 @@ Collate:
     'mock.R'
     'old-school.R'
     'praise.R'
+    'reporter-cache.R'
     'reporter-check.R'
     'reporter-fail.R'
     'reporter-list.R'
