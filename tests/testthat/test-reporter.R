@@ -38,6 +38,9 @@ test_that("character vector yields multi reporter", {
 })
 
 test_that("reporters produce consistent output", {
+  old <- options(width = 80)
+  on.exit(options(old), add = TRUE)
+
   save_report <- function(name, reporter = find_reporter(name)) {
     path <- file.path("reporters", paste0(name, ".txt"))
     capture.output(test_file(test_path("reporters/tests.R"), reporter), file = path)
