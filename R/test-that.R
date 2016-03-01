@@ -37,6 +37,8 @@ test_code <- function(test, code, env = test_env()) {
 
   ok <- TRUE
   register_expectation <- function(e, start_frame, end_frame) {
+    # Capture call stack, removing calls from end (added by
+    # withCallingHandlers), and calls from start (added by tryCatch etc)
     calls <- sys.calls()[start_frame:end_frame]
     srcref <- find_first_srcref(calls)
 
@@ -49,11 +51,6 @@ test_code <- function(test, code, env = test_env()) {
 
   frame <- sys.nframe()
   handle_error <- function(e) {
-    # Capture call stack, removing last two calls from end (added by
-    # withCallingHandlers), and first frame + 7 calls from start (added by
-    # tryCatch etc)
-    e$call <- sys.calls()[(frame + 11):(sys.nframe() - 2)]
-
     register_expectation(e, frame + 11, sys.nframe() - 2)
     signalCondition(e)
   }
