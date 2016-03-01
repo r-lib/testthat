@@ -47,8 +47,11 @@ test_that("reporters produce consistent output", {
     writeLines(character(), out_path)
     capture.output(test_file(test_path("reporters/tests.R"), reporter), file = out_path)
     out <- readLines(out_path)
+
+    # Always execute, regardless of the equality
+    on.exit(file.copy(out_path, path, overwrite = TRUE))
+
     eval(bquote(expect_equal(out, readLines(.(path)))))
-    file.copy(out_path, path, overwrite = TRUE)
   }
 
   expect_error(save_report("check"))
