@@ -22,6 +22,18 @@ test_that("errors captured even when looking for warnings", {
   expect_equal(length(reporter$expectations()), 1)
 })
 
+test_that("multiple failures captured even when looking for errors", {
+  f <- function() {
+    expect_true(FALSE)
+    expect_false(TRUE)
+  }
+
+  reporter <- with_reporter("silent", {
+    test_that("", expect_error(f(), NA))
+  })
+  expect_equal(length(reporter$expectations()), 3)
+})
+
 test_that("return value from test_that", {
   with_reporter("", success <- test_that("success", {}))
   expect_true(success)
