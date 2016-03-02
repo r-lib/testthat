@@ -88,7 +88,7 @@ sumarize_one_test_results <- function(test) {
   test_results <- test$results
   nb_tests <- length(test_results)
 
-  nb_failed <- nb_skipped <- 0L
+  nb_failed <- nb_skipped <- nb_warning <- 0L
   error <- FALSE
 
   if (nb_tests > 0) {
