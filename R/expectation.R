@@ -169,17 +169,18 @@ is.expectation <- function(x) inherits(x, "expectation")
 print.expectation <- function(x, ...) cat(format(x), "\n")
 
 #' @export
+format.expectation_success <- function(x, ...) {
+  "As expected"
+}
+
+#' @export
+format.expectation_error <- function(x, ...) {
+  paste(c(x$message, create_traceback(x$call)), collapse = "\n")
+}
+
+#' @export
 format.expectation <- function(x, ...) {
-  if (expectation_success(x)) {
-    res <- "As expected"
-  } else {
-    res <- x$message
-  }
-  if (expectation_error(x)) {
-    res <- c(res, create_traceback(x$call))
-    res <- paste(res, collapse = "\n")
-  }
-  res
+  x$message
 }
 
 #' @export
