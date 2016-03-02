@@ -17,11 +17,9 @@ expectation <- function(type, message, srcref = NULL) {
       message = message,
       srcref = srcref
     ),
-    # Use "expectation" as top-level class so that no coercion is applied
-    # to expectation objects by as.expectation()
     class = c(
+      paste0("expectation_", type),
       "expectation",
-      type,
       "condition"
     )
   )
@@ -75,7 +73,8 @@ label <- function(obj) {
 }
 
 expectation_type <- function(exp) {
-  class(exp)[[which(class(exp) == "expectation") + 1L]]
+  cl <- class(exp)[[grep("^expectation_", class(exp))[[1L]] ]]
+  gsub("^expectation_", "", cl)
 }
 
 expectation_success <- function(exp) {
