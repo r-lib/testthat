@@ -76,7 +76,7 @@ failure_summary <- function(x, label, width = getOption("width")) {
 
   paste0(
     colourise(header, "error"), line, "\n",
-    x$message
+    format(x)
   )
 }
 
