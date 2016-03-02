@@ -10,35 +10,9 @@
 #' context("String processing")
 #' context("Remote procedure calls")
 context <- function(desc) {
-  rep <- get_reporter()
-
-  if (context_open()) {
-    rep$end_context(context_get())
-  }
-
-  context_set(desc)
-  rep$start_context(desc)
-
-  invisible()
+  get_reporter()$.start_context(desc)
 }
 
 end_context <- function() {
-  rep <- get_reporter()
-
-  if (context_open()) {
-    rep$end_context(context_get())
-    context_set(NULL)
-  }
-
-  invisible()
+  get_reporter()$.end_context()
 }
-
-context_env <- new.env(parent = emptyenv())
-context_get <- function() context_env$current
-context_set <- function(x) {
-  old <- context_get()
-  context_env$current <- x
-  invisible(old)
-}
-context_open <- function() !is.null(context_env$current)
-

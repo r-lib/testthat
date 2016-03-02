@@ -42,7 +42,7 @@ test_that("reporters produce consistent output", {
   on.exit(options(old), add = TRUE)
 
   save_report <- function(name, reporter = find_reporter(name)) {
-    path <- file.path("reporters", paste0(name, ".txt"))
+    path <- test_path("reporters", paste0(name, ".txt"))
     capture.output(test_file(test_path("reporters/tests.R"), reporter), file = path)
   }
 
