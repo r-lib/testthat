@@ -73,7 +73,7 @@ label <- function(obj) {
 }
 
 expectation_type <- function(exp) {
-  stopifnot(inherits(exp, "expectation"))
+  stopifnot(is.expectation(exp))
   gsub("^expectation_", "", class(exp)[[1]])
 }
 
