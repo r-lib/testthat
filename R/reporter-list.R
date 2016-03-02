@@ -88,7 +88,7 @@ sumarize_one_test_results <- function(test) {
   test_results <- test$results
   nb_tests <- length(test_results)
 
-  nb_failed <- nb_skipped <- 0L
+  nb_failed <- nb_skipped <- nb_warning <- 0L
   error <- FALSE
 
   if (nb_tests > 0) {
@@ -103,13 +103,15 @@ sumarize_one_test_results <- function(test) {
 
     nb_passed <-  sum(vapply(test_results, expectation_success, logical(1)))
     nb_skipped <- sum(vapply(test_results, expectation_skip, logical(1)))
-    nb_failed <- nb_tests - nb_passed - nb_skipped
+    nb_failed <- sum(vapply(test_results, expectation_failure, logical(1)))
+    nb_warning <- sum(vapply(test_results, expectation_warning, logical(1)))
   }
 
   context <- if (length(test$context) > 0) test$context else ''
 
   res <- data.frame(file = test$file, context = context, test = test$test,
-    nb = nb_tests, failed = nb_failed, skipped = as.logical(nb_skipped), error = error,
+    nb = nb_tests, failed = nb_failed, skipped = as.logical(nb_skipped),
+    error = error, warning = nb_warning,
     user = test$user, system = test$system, real = test$real,
     stringsAsFactors = FALSE)
 
