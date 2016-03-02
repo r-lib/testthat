@@ -73,8 +73,8 @@ label <- function(obj) {
 }
 
 expectation_type <- function(exp) {
-  cl <- class(exp)[[grep("^expectation_", class(exp))[[1L]] ]]
-  gsub("^expectation_", "", cl)
+  stopifnot(inherits(exp, "expectation"))
+  gsub("^expectation_", "", class(exp)[[1]])
 }
 
 expectation_success <- function(exp) {
