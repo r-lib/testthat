@@ -66,7 +66,7 @@ label <- function(obj) {
   } else {
     chr <- deparse(x)
     if (length(chr) > 1) {
-      chr <- deparse(as.call(list(x[[1]], quote(...))))
+      chr <- paste(deparse(as.call(list(x[[1]], quote(...)))), collapse = "\n")
     }
     chr
   }
