@@ -183,9 +183,6 @@ format.expectation <- function(x, ...) {
   x$message
 }
 
-#' @export
-as.character.expectation <- function(x, ...) format(x)
-
 single_letter_summary <- function(x) {
   switch(expectation_type(x),
     skip    = colourise("S", "skip"),
