@@ -15,11 +15,20 @@ test_that("errors are captured", {
   expect_equal(length(reporter$expectations()), 1)
 })
 
+test_that("errors captured even when looking for messages", {
+  reporter <- with_reporter("silent", {
+    test_that("", expect_message(stop("a")))
+  })
+  expect_equal(length(reporter$expectations()), 1)
+  expect_true(expectation_error(reporter$expectations()[[1L]]))
+})
+
 test_that("errors captured even when looking for warnings", {
   reporter <- with_reporter("silent", {
     test_that("", expect_warning(stop()))
   })
   expect_equal(length(reporter$expectations()), 1)
+  expect_true(expectation_error(reporter$expectations()[[1L]]))
 })
 
 test_that("multiple failures captured even when looking for errors", {
