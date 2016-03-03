@@ -139,10 +139,10 @@ expect_error <- function(object, regexp = NULL, ..., info = NULL, label = NULL) 
 #' @export
 #' @rdname output-expectations
 expect_message <- function(object, regexp = NULL, ..., all = FALSE,
-  info = NULL, label = NULL) {
+                           info = NULL, label = NULL) {
 
   lab <- make_label(object, label)
-  messages <- evaluate_promise(object)$messages
+  messages <- evaluate_promise(object, capture_warnings = FALSE)$messages
   n <- length(messages)
   bullets <- paste("* ", messages, collapse = "\n")
 
@@ -169,10 +169,10 @@ expect_message <- function(object, regexp = NULL, ..., all = FALSE,
 #' @export
 #' @rdname output-expectations
 expect_warning <- function(object, regexp = NULL, ..., all = FALSE,
-  info = NULL, label = NULL) {
+                           info = NULL, label = NULL) {
 
   lab <- make_label(object, label)
-  warnings <- evaluate_promise(object)$warnings
+  warnings <- evaluate_promise(object, capture_messages = FALSE)$warnings
   n <- length(warnings)
   bullets <- paste("* ", warnings, collapse = "\n")
 

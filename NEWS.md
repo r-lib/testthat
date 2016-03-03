@@ -72,6 +72,9 @@ The reporters system class has been considerably refactored to make existing rep
 
 ## Other
 
+* `evaluate_promise()` gains arguments `capture_warnings` and 
+  `capture_messages()` so you can control exactly what's captured.
+
 * `try_again()` allows you to retry code multiple times until it succeeds
   (#240).
 

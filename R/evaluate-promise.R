@@ -10,6 +10,8 @@
 #' @param print If \code{TRUE} and the result of evaluating \code{code} is
 #'   visible this will print the result, ensuring that the output of printing
 #'   the object is included in the overall output
+#' @param capture_messages,capture_warnings Optionally allow messages or
+#'   warnings to propagate through.
 #' @export
 #' @return A list containing
 #'  \item{result}{The result of the function}
@@ -23,17 +25,29 @@
 #'   warning("3")
 #'   4
 #' })
-evaluate_promise <- function(code, print = FALSE) {
-  warnings <- character()
-  wHandler <- function(w) {
-    warnings <<- c(warnings, w$message)
-    invokeRestart("muffleWarning")
+evaluate_promise <- function(code,
+                             print = FALSE,
+                             capture_warnings = TRUE,
+                             capture_messages = TRUE) {
+
+  warnings <- Stack$new()
+  if (capture_warnings) {
+    handle_warning <- function(condition) {
+      warnings$push(condition)
+      invokeRestart("muffleWarning")
+    }
+  } else {
+    handle_warning <- function(condition) {}
   }
 
-  messages <- character()
-  mHandler <- function(m) {
-    messages <<- c(messages, m$message)
-    invokeRestart("muffleMessage")
+  messages <- Stack$new()
+  if (capture_messages) {
+    handle_message <- function(condition) {
+      messages$push(condition)
+      invokeRestart("muffleMessage")
+    }
+  } else {
+    handle_message <- function(condition) {}
   }
 
   temp <- file()
@@ -41,9 +55,13 @@ evaluate_promise <- function(code, print = FALSE) {
 
   result <- with_sink(temp,
     withCallingHandlers(
-      withVisible(code), warning = wHandler, message = mHandler
+      withVisible(code),
+      warning = handle_warning,
+      message = handle_message
     )
   )
+
+
   if (result$visible && print) {
     with_sink(temp, print(result$value))
   }
@@ -53,9 +71,13 @@ evaluate_promise <- function(code, print = FALSE) {
   list(
     result = result$value,
     output = output,
-    warnings = warnings,
-    messages = messages
+    warnings = get_messages(warnings$as_list()),
+    messages = get_messages(messages$as_list())
   )
+}
+
+get_messages <- function(x) {
+  vapply(x, "[[", "message", FUN.VALUE = character(1))
 }
 
 with_sink <- function(connection, code, ...) {
