@@ -80,21 +80,23 @@ NULL
 #' @export
 #' @rdname output-expectations
 expect_output <- function(object, regexp = NULL, ..., info = NULL, label = NULL) {
-  lab <- make_label(object, info = info, label = label)
+  lab <- make_label(object, label)
   output <- evaluate_promise(object)$output
 
   if (identical(regexp, NA)) {
     expect(
       identical(output, ""),
-      sprintf("%s produced output.\n%s", lab, encodeString(output))
+      sprintf("%s produced output.\n%s", lab, encodeString(output)),
+      info = info
     )
   } else if (is.null(regexp)) {
     expect(
       !identical(output, ""),
-      sprintf("%s produced no output", lab)
+      sprintf("%s produced no output", lab),
+      info = info
     )
   } else {
-    expect_match(output, regexp, ...)
+    expect_match(output, regexp, ..., info = info)
   }
   invisible(NULL)
 }
@@ -102,10 +104,9 @@ expect_output <- function(object, regexp = NULL, ..., info = NULL, label = NULL)
 
 #' @export
 #' @rdname output-expectations
-expect_error <- function(object, regexp = NULL, ...,
-                         info = NULL, label = NULL) {
+expect_error <- function(object, regexp = NULL, ..., info = NULL, label = NULL) {
 
-  lab <- make_label(object, info = info, label = label)
+  lab <- make_label(object, label)
 
   error <- tryCatch(
     {
@@ -120,15 +121,17 @@ expect_error <- function(object, regexp = NULL, ...,
   if (identical(regexp, NA)) {
     expect(
       is.null(error),
-      sprintf("%s threw an error.\n%s", lab, error$message)
+      sprintf("%s threw an error.\n%s", lab, error$message),
+      info = info
     )
   } else if (is.null(regexp)) {
     expect(
       !is.null(error),
-      sprintf("%s did not throw an error.", lab)
+      sprintf("%s did not throw an error.", lab),
+      info = info
     )
   } else {
-    expect_match(error$message, regexp, ...)
+    expect_match(error$message, regexp, ..., info = info)
   }
   invisible(NULL)
 }
@@ -138,7 +141,7 @@ expect_error <- function(object, regexp = NULL, ...,
 expect_message <- function(object, regexp = NULL, ..., all = FALSE,
   info = NULL, label = NULL) {
 
-  lab <- make_label(object, info = info, label = label)
+  lab <- make_label(object, label)
   messages <- evaluate_promise(object)$messages
   n <- length(messages)
   bullets <- paste("* ", messages, collapse = "\n")
@@ -148,15 +151,17 @@ expect_message <- function(object, regexp = NULL, ..., all = FALSE,
   if (identical(regexp, NA)) {
     expect(
       length(messages) == 0,
-      sprintf("%s showed %s.\n%s", lab, msg, bullets)
+      sprintf("%s showed %s.\n%s", lab, msg, bullets),
+      info = info
     )
   } else if (is.null(regexp)) {
     expect(
       length(messages) > 0,
-      sprintf("%s showed %s", lab, msg)
+      sprintf("%s showed %s", lab, msg),
+      info = info
     )
   } else {
-    expect_match(messages, regexp, all = all, ...)
+    expect_match(messages, regexp, all = all, ..., info = info)
   }
   invisible(NULL)
 }
@@ -166,7 +171,7 @@ expect_message <- function(object, regexp = NULL, ..., all = FALSE,
 expect_warning <- function(object, regexp = NULL, ..., all = FALSE,
   info = NULL, label = NULL) {
 
-  lab <- make_label(object, info = info, label = label)
+  lab <- make_label(object, label)
   warnings <- evaluate_promise(object)$warnings
   n <- length(warnings)
   bullets <- paste("* ", warnings, collapse = "\n")
@@ -176,15 +181,17 @@ expect_warning <- function(object, regexp = NULL, ..., all = FALSE,
   if (identical(regexp, NA)) {
     expect(
       length(warnings) == 0,
-      sprintf("%s showed %s.\n%s", lab, msg, bullets)
+      sprintf("%s showed %s.\n%s", lab, msg, bullets),
+      info = info
     )
   } else if (is.null(regexp)) {
     expect(
       length(warnings) > 0,
-      sprintf("%s showed %s", lab, msg)
+      sprintf("%s showed %s", lab, msg),
+      info = info
     )
   } else {
-    expect_match(warnings, regexp, all = all, ...)
+    expect_match(warnings, regexp, all = all, ...,info = info)
   }
   invisible(NULL)
 }

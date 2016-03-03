@@ -29,7 +29,7 @@ expect_named <- function(object, expected, ignore.order = FALSE,
                          ignore.case = FALSE, info = NULL,
                          label = NULL) {
 
-  lab <- make_label(object, info, label)
+  lab <- make_label(object, label)
 
   if (missing(expected)) {
     expect(
@@ -42,7 +42,8 @@ expect_named <- function(object, expected, ignore.order = FALSE,
 
     expect(
       identical(exp, act),
-      paste0("%s names don't match %s", lab, paste0(exp, collapse = ", "))
+      paste0("%s names don't match %s", lab, paste0(exp, collapse = ", ")),
+      info = info
     )
   }
   invisible(object)

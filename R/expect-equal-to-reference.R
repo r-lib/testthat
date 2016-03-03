@@ -33,8 +33,8 @@
 expect_equal_to_reference <- function(object, file, ..., info = NULL,
                                       label = NULL, expected.label = NULL) {
 
-  lab_act <- make_label(object, info, label, expected.label)
-  lab_exp <- paste0("reference from `", file, "`")
+  lab_act <- make_label(object, label)
+  lab_exp <- expected.label %||% paste0("reference from `", file, "`")
 
   if (!file.exists(file)) {
     # first time always succeeds
@@ -46,7 +46,8 @@ expect_equal_to_reference <- function(object, file, ..., info = NULL,
     comp <- compare(object, reference, ...)
     expect(
       comp$equal,
-      sprintf("%s not equal to %s.\n%s", lab_act, lab_exp, comp$message)
+      sprintf("%s not equal to %s.\n%s", lab_act, lab_exp, comp$message),
+      info = info
     )
   }
 

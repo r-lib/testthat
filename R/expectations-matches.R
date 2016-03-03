@@ -21,7 +21,7 @@
 expect_match <- function(object, regexp, ..., all = TRUE,
                          info = NULL, label = NULL) {
   stopifnot(is.character(regexp), length(regexp) == 1)
-  label <- make_label(object, info, label)
+  label <- make_label(object, label)
 
   stopifnot(is.character(object))
   if (length(object) == 0) {
@@ -43,7 +43,8 @@ expect_match <- function(object, regexp, ..., all = TRUE,
       label,
       encodeString(regexp, quote = '"'),
       values
-    )
+    ),
+    info = info
   )
   invisible(object)
 }

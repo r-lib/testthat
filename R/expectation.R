@@ -40,18 +40,12 @@ expect <- function(exp, ..., srcref = NULL) {
   invisible(exp)
 }
 
-make_label <- function(object, info = NULL, label = NULL, expected.label = NULL) {
-  if (!is.null(info)) {
-    warning("`info` has been deprecated.", call. = FALSE)
-  }
-  if (!is.null(label)) {
-    warning("`label` has been deprecated.", call. = FALSE)
-  }
-  if (!is.null(expected.label)) {
-    warning("`expected.label` has been deprecated.", call. = FALSE)
-  }
+make_label <- function(object, label = NULL) {
+  label %||% label(object)
+}
 
-  label(object)
+add_info <- function(message, info = NULL) {
+  paste(message, info, sep = "\n")
 }
 
 label <- function(obj) {
@@ -123,9 +117,9 @@ as.expectation.expectation <- function(x, ..., srcref = NULL) {
 }
 
 #' @export
-as.expectation.logical <- function(x, message, ..., srcref = NULL) {
+as.expectation.logical <- function(x, message, ..., srcref = NULL, info = NULL) {
   type <- if (x) "success" else "failure"
-  expectation(type, message, srcref = srcref)
+  expectation(type, add_info(message, info), srcref = srcref)
 }
 
 #' @export

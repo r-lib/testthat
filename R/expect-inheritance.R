@@ -32,11 +32,12 @@ NULL
 #' @export
 #' @rdname inheritance-expectations
 expect_null <- function(object, info = NULL, label = NULL) {
-  lab <- make_label(object, info, label)
+  lab <- make_label(object, label)
 
   expect(
     is.null(object),
-    sprintf("%s is not null.", lab)
+    sprintf("%s is not null.", lab),
+    info = info
   )
   invisible(object)
 }
@@ -64,13 +65,14 @@ expect_type <- function(object, type) {
 expect_is <- function(object, class, info = NULL, label = NULL) {
   stopifnot(is.character(class))
 
-  lab <- make_label(object, info, label)
+  lab <- make_label(object, label)
   act <- klass(object)
   exp <- paste(class, collapse = "/")
 
   expect(
     inherits(object, class),
-    sprintf("%s inherits from `%s` not `%s`.", lab, act, exp)
+    sprintf("%s inherits from `%s` not `%s`.", lab, act, exp),
+    info = info
   )
   invisible(object)
 }

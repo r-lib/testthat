@@ -19,7 +19,6 @@
 #' expect_that(sqrt(2) ^ 2, is_identical_to(2))
 #' }
 expect_that <- function(object, condition, info = NULL, label = NULL) {
-  make_label(object, info, label)
   condition(object)
 }
 
