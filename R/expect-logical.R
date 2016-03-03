@@ -29,11 +29,11 @@ NULL
 #' @export
 #' @rdname logical-expectations
 expect_true <- function(object, info = NULL, label = NULL) {
-  lab <- make_label(object, info, label)
+  lab <- make_label(object, NULL, label)
 
   expect(
     identical(as.vector(object), TRUE),
-    sprintf("%s isn't true.", lab)
+    paste(sprintf("%s isn't true.", lab), info, sep = "\n")
   )
   invisible(object)
 }
@@ -41,11 +41,11 @@ expect_true <- function(object, info = NULL, label = NULL) {
 #' @export
 #' @rdname logical-expectations
 expect_false <- function(object, info = NULL, label = NULL) {
-  lab <- make_label(object, info, label)
+  lab <- make_label(object, NULL, label)
 
   expect(
     identical(as.vector(object), FALSE),
-    sprintf("%s isn't false.", lab)
+    paste(sprintf("%s isn't false.", lab), info, sep = "\n")
   )
   invisible(object)
 }

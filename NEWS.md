@@ -35,7 +35,8 @@ A number of older features have been deprecated:
 
 * The `label` and `info` arguments have been deprecated. Instead use NSE to
   create the expression you want and evaluate that. Will have better tools 
-  and documentation in the near future (#218).
+  and documentation in the near future (#218). The only exceptions are 
+  `expect_true()` and `expect_false()` (#392).
 
 * `expect_more_than()` and `expect_less_than()` have been deprecated. Please
   use `expect_gt()` and `expect_lt()` instead.
