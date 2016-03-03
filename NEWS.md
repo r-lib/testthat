@@ -2,7 +2,7 @@
 
 ## New expectations
 
-The expectation system got a thorough overhaul (#217). Now all expectations are also conditions, and R's condition system is used to signal failures and successes (#360, @krlmlr). This primarily makes it easier to add new expectations in the future, but also included a thorough review of the documentation, ensuring that related expectations are are documented together, and have evocative names.
+The expectation system got a thorough overhaul (#217). This primarily makes it easier to add new expectations in the future, but also included a thorough review of the documentation, ensuring that related expectations are are documented together, and have evocative names.
 
 One useful change is that most expectations invisibly return the input `object`. This makes it possible to chain together expectations with magrittr:
     
@@ -45,6 +45,11 @@ A number of older features have been deprecated:
 
 * `not()` has been deprecated. Please use the explicit individual forms
   `expect_error(..., NA)` , `expect_warning(.., NA)` and so on.
+
+## Expectations are conditions
+
+Now all expectations are also conditions, and R's condition system is used to signal failures and successes (#360, @krlmlr). All known conditions (currently, "error", "warning", "message", "failure", and "success") are converted to expectations using the new `as.expectation()`. This allows third-party test packages (such as `assertthat`, `testit`, `ensurer`, `checkmate`) to seamlessly establish `testthat` compatibility by issuing custom error conditions (e.g., `structure(list(message = "Error message"), class = c("customError", "error", "condition"))`) and then implementing `as.expectation.customError()`. The `assertthat` package contains an example.
+
 
 ## Reporters
 
