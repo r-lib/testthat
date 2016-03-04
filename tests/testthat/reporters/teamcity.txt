@@ -74,3 +74,13 @@
 ##teamcity[testSuiteFinished name='Warnings']
 
 
+##teamcity[testSuiteStarted name='Promises']
+##teamcity[testSuiteStarted name='Promises:1']
+##teamcity[testStarted name='expectation 2']
+##teamcity[testFailed name='expectation 2' message='expect_false(FALSE) produced output.' details='##teamcity|[testStarted name=|'expectation 1|'|]\n##teamcity|[testFinished name=|'expectation 1|'|]']
+##teamcity[testFinished name='expectation 2']
+##teamcity[testSuiteFinished name='Promises:1']
+
+##teamcity[testSuiteFinished name='Promises']
+
+

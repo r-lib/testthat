@@ -1,4 +1,4 @@
-1..13
+1..15
 # Context Expectations 
 ok 1 Success 
 not ok 2 Failure:1 
@@ -39,3 +39,6 @@ ok 10 # SKIP skip
 ok 11 # WARNING abc 
 ok 12 # WARNING def 
 ok 13 # WARNING ghi 
+# Context Promises 
+ok 14 Promises:1 
+ok 15 Promises:1 

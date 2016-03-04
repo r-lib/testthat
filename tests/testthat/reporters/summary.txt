@@ -2,6 +2,7 @@ Expectations: .1234.
 Errors: 5
 Skips: SS
 Warnings: WWW
+Promises: 7
 
 Skipped --------------------------------------------------------------------
 1. Skip:1 (@tests.R#42) - skip
@@ -50,5 +51,10 @@ stop
 7: g() at reporters/tests.R:32
 8: h() at reporters/tests.R:33
 9: stop("!") at reporters/tests.R:34
+
+7. Failure: Promises:1 (@tests.R#64) -------------------------------------------
+expect_false(FALSE) produced output.
+.
+
 
 DONE =======================================================================
