@@ -10,23 +10,23 @@
 |language |(EN)                         |
 |collate  |en_US.UTF-8                  |
 |tz       |America/Chicago              |
-|date     |2016-03-03                   |
+|date     |2016-03-04                   |
 
 ## Packages
 
-|package  |*  |version     |date       |source                          |
-|:--------|:--|:-----------|:----------|:-------------------------------|
-|covr     |   |1.2.0       |2015-06-25 |CRAN (R 3.2.0)                  |
-|crayon   |   |1.3.1       |2015-07-13 |CRAN (R 3.2.0)                  |
-|devtools |*  |1.10.0      |2016-01-23 |CRAN (R 3.2.3)                  |
-|digest   |   |0.6.9       |2016-01-08 |CRAN (R 3.2.3)                  |
-|lazyeval |   |0.1.10      |2015-01-02 |CRAN (R 3.2.0)                  |
-|praise   |   |1.0.0       |2015-08-11 |CRAN (R 3.2.0)                  |
-|R6       |   |2.1.2       |2016-01-26 |CRAN (R 3.2.3)                  |
-|testthat |*  |0.11.0.9000 |2016-03-03 |local (hadley/testthat@7e6bb1d) |
+|package  |*  |version     |date       |source                  |
+|:--------|:--|:-----------|:----------|:-----------------------|
+|covr     |   |1.2.0       |2015-06-25 |CRAN (R 3.2.0)          |
+|crayon   |   |1.3.1       |2015-07-13 |CRAN (R 3.2.0)          |
+|devtools |*  |1.10.0      |2016-01-23 |CRAN (R 3.2.3)          |
+|digest   |   |0.6.9       |2016-01-08 |CRAN (R 3.2.3)          |
+|lazyeval |   |0.1.10      |2015-01-02 |CRAN (R 3.2.0)          |
+|praise   |   |1.0.0       |2015-08-11 |CRAN (R 3.2.0)          |
+|R6       |   |2.1.2       |2016-01-26 |CRAN (R 3.2.3)          |
+|testthat |*  |0.11.0.9000 |2016-03-04 |local (hadley/testthat) |
 
 # Check results
-620 checked out of 0 dependencies 
+1015 checked out of 0 dependencies 
 
 ## abbyyR (0.3)
 Maintainer: Gaurav Sood <gsood07@gmail.com>  
@@ -1243,9 +1243,7 @@ Bug reports: https://github.com/Crunch-io/rcrunch/issues
 checking tests ... ERROR
 Running the tests in ‘tests/testthat.R’ failed.
 Last 13 lines of output:
-  > # Sys.setlocale(locale="en_US.UTF-8")
-  > test_check("crunch")
-  Loading required package: crunch
+  devtools::install_github("Crunch-io/rcrunch", ref="1.9.0")
   
   Attaching package: 'crunch'
   
@@ -1255,6 +1253,8 @@ Last 13 lines of output:
   
   Error: error$message does not match "Error : POST /api/datasets/dataset1/variables.json {\"alias\":\"gender_copy\",\"format\":{\"summary\":{\"digits\":2}},\"view\":{\"include_missing\":false,\"show_counts\":false,\"show_codes\":false,\"column_width\":null},\"name\":\"Gender (copy)\",\"discarded\":false,\"description\":\"Gender\",\"expr\":{\"function\":\"copy_variable\",\"args\":[{\"variable\":\"/api/datasets/dataset1/variables/gender.json\"}]}}\n".
   Actual value: "POST /api/datasets/dataset1/variables.json {"alias":"gender_copy","format":{"summary":{"digits":2}},"view":{"include_missing":false,"show_counts":false,"show_codes":false,"column_width":null},"name":"Gender (copy)","discarded":false,"description":"Gender","expr":{"function":"copy_variable","args":[{"variable":"/api/datasets/dataset1/variables/gender.json"}]}}"
+  testthat results ================================================================
+  OK: 196 SKIPPED: 3 FAILED: 0
   Execution halted
 ```
 
@@ -1376,12 +1376,12 @@ Execution halted
 checking tests ... ERROR
 Running the tests in ‘tests/testthat.R’ failed.
 Last 13 lines of output:
-  Looking up history[4], period 1: (0, 536871056, 0)
-  Looking up history[1], period 1: (0, 822083603, 32733)
-  Looking up history[2], period 0: (1, 822083603, 32733)
-  Looking up history[3], period 1: (0, 536871056, 32733)
-  Looking up history[4], period 1: (0, 536871056, 32733)
-  Looking up history[1], period 1: (1, 536871053, 0)
+  Looking up history[4], period 1: (0, 536871056, 1030135754)
+  Looking up history[1], period 1: (0, 822083603, 1768059398)
+  Looking up history[2], period 0: (1, 822083600, 1031849457)
+  Looking up history[3], period 1: (0, 536871056, -692367129)
+  Looking up history[4], period 1: (0, 536871056, 1250104831)
+  Looking up history[1], period 1: (1, 536871053, 7630700)
   testthat results ================================================================
   OK: 3 SKIPPED: 0 FAILED: 2
   1. Error: evolve_model() returns correct type of object (@test_mainfunc.R#7) 
@@ -2116,8 +2116,6 @@ Execution halted
 checking tests ... ERROR
 Running the tests in ‘tests/testthat.R’ failed.
 Last 13 lines of output:
-  > test_check("eyetrackingR")
-  Avg. window length in new data will be 5500
   Performing Trackloss Analysis...
   Will exclude trials whose trackloss proportion is greater than : 0.25
   	...removed  33  trials.
@@ -2128,6 +2126,8 @@ Last 13 lines of output:
   Error in analyze_time_bins.time_sequence_data(df_time_within, predictor_column = "SexM:TargetInanimate",  : 
     All time-bins produced same error: ''data' not found, and some variables missing from formula environment'
   Calls: test_check ... analyze_time_bins -> analyze_time_bins.time_sequence_data
+  testthat results ================================================================
+  OK: 10 SKIPPED: 0 FAILED: 0
   Execution halted
 ```
 
@@ -2244,13 +2244,13 @@ Bug reports: https://github.com/chjackson/flexsurv-dev/issues
 checking tests ... ERROR
 Running the tests in ‘tests/test_base.R’ failed.
 Last 13 lines of output:
-  20  803 0.4242224 0.3061348 0.4524595
-  21  855 0.3983386 0.2849450 0.4210755
-  22 1040 0.3171789 0.2211681 0.3216584
-  23 1106 0.2920295 0.2021763 0.2907898
-  24 1129 0.2836991 0.1959620 0.2805859
-  25 1206 0.2573606 0.1765580 0.2484499
-  26 1227 0.2505762 0.1716188 0.2402140
+  20  803 0.4242224 0.24732641 0.2619132
+  21  855 0.3983386 0.22241536 0.2333449
+  22 1040 0.3171789 0.15116839 0.1520069
+  23 1106 0.2920295 0.12964648 0.1313300
+  24 1129 0.2836991 0.12256496 0.1250050
+  25 1206 0.2573606 0.10128845 0.1058373
+  26 1227 0.2505762 0.09609027 0.1011086
   testthat results ================================================================
   OK: 378 SKIPPED: 0 FAILED: 1
   1. Error: Analytic derivatives match numeric (@test_deriv.R#19) 
@@ -2787,26 +2787,7 @@ Last 13 lines of output:
 Maintainer: Max Gordon <max@gforge.se>  
 Bug reports: https://github.com/gforge/Gmisc/issues
 
-1 error  | 0 warnings | 0 notes
-
-```
-checking tests ... ERROR
-Running the tests in ‘tests/testthat.R’ failed.
-Last 13 lines of output:
-   $ echo: logi TRUE
-  
-    ordinary text without R code
-  
-  output file: Full_test_suite.knit.md
-  
-  /usr/local/bin/pandoc +RTS -K512m -RTS Full_test_suite.utf8.md --to html --from markdown+autolink_bare_uris+ascii_identifiers+tex_math_single_backslash --output /tmp/RtmpLTQc5q/tmp.html --smart --email-obfuscation none --standalone --section-divs --template /Users/hadley/R-revdep/rmarkdown/rmd/h/default.html --css docx.css --no-highlight 
-  
-  Output created: /tmp/RtmpLTQc5q/tmp.html
-  
-   *** caught segfault ***
-  address 0x0, cause 'unknown'
-  aborting ...
-```
+0 errors | 0 warnings | 0 notes
 
 ## gmum.r (0.2.1)
 Maintainer: Stanislaw Jastrzebski <staszek.jastrzebski@gmail.com>  
@@ -3393,64 +3374,7 @@ Maintainer: Michal Bojanowski <m.bojanowski@icm.edu.pl>
 Maintainer: Lincoln Mullen <lincoln@lincolnmullen.com>  
 Bug reports: https://github.com/ropensci/internetarchive/issues
 
-2 errors | 0 warnings | 1 note 
-
-```
-checking examples ... ERROR
-Running examples in ‘internetarchive-Ex.R’ failed
-The error most likely occurred in:
-
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
-> ### Name: ia_item_id
-> ### Title: Access the item IDs from an Internet Archive items
-> ### Aliases: ia_item_id
-> 
-> ### ** Examples
-> 
-> ats_query <- c("publisher" = "american tract society")
-> ids       <- ia_search(ats_query, num_results = 3)
-Error in curl::curl_fetch_memory(url, handle = handle) : 
-  Timeout was reached
-Calls: ia_search ... request_fetch -> request_fetch.write_memory -> <Anonymous> -> .Call
-Execution halted
-
-checking tests ... ERROR
-Running the tests in ‘tests/testthat.R’ failed.
-Last 13 lines of output:
-  Type 'q()' to quit R.
-  
-  > library(testthat)
-  > library(internetarchive)
-  > 
-  > test_check("internetarchive")
-  No encoding supplied: defaulting to UTF-8.
-  Error: lexical error: invalid char in json text.
-                                         <html> <head><title>Internet Ar
-                       (right here) ------^
-  In addition: Warning message:
-  In (function (item_id, silence = FALSE)  : Service Unavailable (HTTP 503).
-  Execution halted
-
-checking re-building of vignette outputs ... NOTE
-Error in re-building vignettes:
-  ...
-
-Attaching package: 'dplyr'
-
-The following objects are masked from 'package:stats':
-
-    filter, lag
-
-The following objects are masked from 'package:base':
-
-    intersect, setdiff, setequal, union
-
-Quitting from lines 35-36 (internet-archive.Rmd) 
-Error: processing vignette 'internet-archive.Rmd' failed with diagnostics:
-Timeout was reached
-Execution halted
-
-```
+0 errors | 0 warnings | 0 notes
 
 ## investr (1.3.0)
 Maintainer: Brandon M. Greenwell <greenwell.brandon@gmail.com>
@@ -3562,10 +3486,10 @@ Running the tests in ‘tests/run-all.R’ failed.
 Last 13 lines of output:
   2. Failure: fromJSON date objects (@test-fromJSON-date.R#16) -------------------
   fromJSON(toJSON(mydf, POSIXt = "mongo"))$x not equal to `x`.
-  3/4 mismatches (average diff: 0.000549 secs)
-  [1] 2016-03-03 18:09:02 - 2016-03-03 18:09:02 == -0.000549 secs
-  [2] 2016-03-03 18:09:03 - 2016-03-03 18:09:03 == -0.000549 secs
-  [4] 2016-03-03 18:09:04 - 2016-03-03 18:09:04 == -0.000549 secs
+  3/4 mismatches (average diff: 0.000327 secs)
+  [1] 2016-03-04 11:27:31 - 2016-03-04 11:27:31 == -0.000327 secs
+  [2] 2016-03-04 11:27:32 - 2016-03-04 11:27:32 == -0.000327 secs
+  [4] 2016-03-04 11:27:33 - 2016-03-04 11:27:33 == -0.000327 secs
   
   
   DONE =======================================================================
@@ -3758,7 +3682,7 @@ Maintainer: Daniel Oberski <daniel.oberski@gmail.com>
 
 0 errors | 0 warnings | 0 notes
 
-## lawn (0.1.4)
+## lawn (0.1.6)
 Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>  
 Bug reports: http://www.github.com/ropensci/lawn/issues
 
@@ -3776,7 +3700,7 @@ Last 13 lines of output:
   
   
   testthat results ================================================================
-  OK: 894 SKIPPED: 0 FAILED: 1
+  OK: 892 SKIPPED: 0 FAILED: 1
   1. Failure: lawn_union fails correctly (@test-union.R#51) 
   
   Error: testthat unit tests failed
@@ -3810,6 +3734,11 @@ Found the following significant warnings:
   Warning: replacing previous import by ‘sp::nowrapSpatialLines’ when loading ‘letsR’
 See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/letsR.Rcheck/00install.out’ for details.
 ```
+
+## lettercase (0.13.1)
+Maintainer: Christopher Brown <chris.brown@decisionpatterns.com>
+
+0 errors | 0 warnings | 0 notes
 
 ## lfactors (0.7.0)
 Maintainer: Paul Bailey <pbailey@air.org>
@@ -4348,8 +4277,6 @@ Execution halted
 checking tests ... ERROR
 Running the tests in ‘tests/testthat.R’ failed.
 Last 13 lines of output:
-  
-  Type 'demo()' for some demos, 'help()' for on-line help, or
   'help.start()' for an HTML browser interface to help.
   Type 'q()' to quit R.
   
@@ -4360,6 +4287,8 @@ Last 13 lines of output:
   Error in loadNamespace(j <- i[[1L]], c(lib.loc, .libPaths()), versionCheck = vI[[j]]) : 
     namespace 'nlme' 3.1-122 is already loaded, but >= 3.1.123 is required
   Calls: test_check ... tryCatch -> tryCatchList -> tryCatchOne -> <Anonymous>
+  testthat results ================================================================
+  OK: 0 SKIPPED: 0 FAILED: 0
   Execution halted
 
 checking for missing documentation entries ... WARNING
@@ -5615,25 +5544,30 @@ Maintainer: Baptiste Auguie <baptiste.auguie@gmail.com>
 Maintainer: Carson Sievert <cpsievert1@gmail.com>  
 Bug reports: https://github.com/ropensci/plotly/issues
 
-1 error  | 0 warnings | 0 notes
+1 error  | 1 warning  | 0 notes
 
 ```
 checking tests ... ERROR
 Running the tests in ‘tests/testthat.R’ failed.
 Last 13 lines of output:
-  [1] "Running test: histogram-fill-factor-identity"
-  [1] "Running test: histogram-fill-factor-dodge"
-  [1] "Running test: histogram-fill-factor-facets"
-  [1] "Running test: histogram-vline"
-  [1] "Running test: histogram-dates"
-  6. Failure: dates work well with histograms (@test-ggplot-histogram.R#136) -----
-  info$layout$xaxis$type not identical to "date".
-  1/1 mismatches
-  x[1]: "category"
-  y[1]: "date"
+  1. Failure: dates work well with bar charts (@test-ggplot-bar.R#62) 
+  2. Failure: datetimes are converted to e.g. 2013-01-02 05:00:00 (@test-ggplot-date.R#13) 
+  3. Failure: class Date is supported (@test-ggplot-date.R#26) 
+  4. Failure: scale_x_date and irregular time series work (@test-ggplot-date.R#46) 
+  5. Failure: scale_x_date and irregular time series work (@test-ggplot-date.R#47) 
+  6. Failure: geom_histogram(aes(fill = ..count..)) works (@test-ggplot-histogram.R#40) 
+  7. Failure: dates work well with histograms (@test-ggplot-histogram.R#136) 
+  8. Failure: datetime binning for class POSIXt works in histograms (@test-ggplot-histogram.R#250) 
+  9. Failure: datetime binning for class Date works in histograms (@test-ggplot-histogram.R#258) 
   
-  
-  [1] "Running test: histogram-POSIXt-bins"
+  Error: testthat unit tests failed
+  In addition: There were 17 warnings (use warnings() to see them)
+  Execution halted
+
+checking whether package ‘plotly’ can be installed ... WARNING
+Found the following significant warnings:
+  Warning: package ‘ggplot2’ was built under R version 3.2.4
+See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/plotly.Rcheck/00install.out’ for details.
 ```
 
 ## plotROC (2.0.1)
@@ -5702,7 +5636,7 @@ checking R code for possible problems ... NOTE
 smooth: no visible global function definition for ‘genoud’
 ```
 
-## pollstR (1.2.1)
+## pollstR (1.2.2)
 Maintainer: Jeffrey B. Arnold <jeffrey.arnold@gmail.com>  
 Bug reports: https://github.com/rOpenGov/pollstR/issues
 
@@ -5751,7 +5685,7 @@ join,Database : .local: no visible binding for global variable
 Maintainer: Zhian N. Kamvar <kamvarz@science.oregonstate.edu>  
 Bug reports: https://github.com/grunwaldlab/poppr/issues
 
-1 error  | 0 warnings | 0 notes
+1 error  | 1 warning  | 0 notes
 
 ```
 checking tests ... ERROR
@@ -5770,6 +5704,11 @@ Last 13 lines of output:
   
   Error: testthat unit tests failed
   Execution halted
+
+checking whether package ‘poppr’ can be installed ... WARNING
+Found the following significant warnings:
+  Warning: package ‘ade4’ was built under R version 3.2.4
+See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/poppr.Rcheck/00install.out’ for details.
 ```
 
 ## popprxl (0.1.1)
@@ -5781,28 +5720,9 @@ Bug reports: https://github.com/zkamvar/popprxl/issues
 ## PortfolioAnalytics (1.0.3636)
 Maintainer: Brian G. Peterson <brian@braverock.com>
 
-2 errors | 0 warnings | 1 note 
+0 errors | 0 warnings | 1 note 
 
 ```
-checking running R code from vignettes ... ERROR
-Errors in running code in vignettes:
-when running code in ‘risk_budget_optimization.Rnw’
-  ...
-            US Bonds US Equities Int'l Equities Commodities
-2008-12-31 0.7340000  0.09400000     0.06200000   0.1091675
-2009-03-31 0.7030712  0.07979278     0.11226046   0.0980000
-2009-06-30 0.7040000  0.11600000     0.09600000   0.0780000
-2009-09-30 0.5960000  0.17400000     0.11800000   0.1140000
-2009-12-31 0.6780000  0.11192978     0.07729666   0.1410993
-
-> plot.new()
-
-  When sourcing
-
-
-checking re-building of vignette outputs ... ERROR
-unable to create ‘vign_test’
-
 checking package dependencies ... NOTE
 Package suggested but not available for checking: ‘ROI.plugin.symphony’
 ```
@@ -5885,8 +5805,6 @@ Bug reports: https://github.com/mvattulainen/preproviz/issues
 checking tests ... ERROR
 Running the tests in ‘tests/testthat.R’ failed.
 Last 13 lines of output:
-  
-  Type 'demo()' for some demos, 'help()' for on-line help, or
   'help.start()' for an HTML browser interface to help.
   Type 'q()' to quit R.
   
@@ -5897,6 +5815,8 @@ Last 13 lines of output:
   Error in loadNamespace(j <- i[[1L]], c(lib.loc, .libPaths()), versionCheck = vI[[j]]) : 
     namespace 'nlme' 3.1-122 is already loaded, but >= 3.1.123 is required
   Calls: test_check ... tryCatch -> tryCatchList -> tryCatchOne -> <Anonymous>
+  testthat results ================================================================
+  OK: 0 SKIPPED: 0 FAILED: 0
   Execution halted
 ```
 
@@ -5915,11 +5835,3500 @@ Bug reports: https://github.com/gaborcsardi/prettyunits/issues
 ## primes (0.1.0)
 Maintainer: Oliver Keyes <ironholds@gmail.com>
 
+0 errors | 0 warnings | 0 notes
+
+## prism (0.0.7)
+Maintainer: Hart Edmund <Edmund.m.hart@gmail.com>  
+Bug reports: http://github.com/ropensci/prism/issues
+
+0 errors | 1 warning  | 0 notes
+
+```
+checking whether the namespace can be unloaded cleanly ... WARNING
+
+Execution halted
+```
+
+## profilr (0.1.0)
+Maintainer: Paul Hendricks <paul.hendricks.2013@owu.edu>  
+Bug reports: https://github.com/paulhendricks/profilr/issues
+
+0 errors | 0 warnings | 0 notes
+
+## progress (1.0.2)
+Maintainer: Gabor Csardi <csardi.gabor@gmail.com>  
+Bug reports: https://github.com/gaborcsardi/progress/issues
+
+0 errors | 0 warnings | 0 notes
+
+## ProjectTemplate (0.6)
+Maintainer: Kirill Mueller <krlmlr+r@mailbox.org>  
+Bug reports: https://github.com/johnmyleswhite/ProjectTemplate/issues
+
+1 error  | 0 warnings | 2 notes
+
+```
+checking tests ... ERROR
+Running the tests in ‘tests/run-all.R’ failed.
+Last 13 lines of output:
+  
+  
+  testthat results ================================================================
+  OK: 307 SKIPPED: 0 FAILED: 6
+  1. Error: All elements have length 1 (@test-load.R#4) 
+  2. Failure: Test full project into existing directory (@test-overwrite.R#5) 
+  3. Error: Test full project into existing directory (@test-overwrite.R#9) 
+  4. Failure: Test minimal project into existing directory with an unrelated entry (@test-overwrite.R#45) 
+  5. Error: Test minimal project into existing directory with an unrelated entry (@test-overwrite.R#53) 
+  6. Failure: Test failure creating project into existing directory with an unrelated entry if merge.existing is not set (@test-overwrite.R#75) 
+  
+  Error: testthat unit tests failed
+  Execution halted
+
+checking package dependencies ... NOTE
+Package suggested but not available for checking: ‘RODBC’
+
+checking DESCRIPTION meta-information ... NOTE
+Malformed Title field: should not end in a period.
+```
+
+## ProteinDescriptors (0.1.0)
+Maintainer: Berat Kurar <beratkurar@gmail.com>
+
+0 errors | 0 warnings | 0 notes
+
+## protoclass (1.0)
+Maintainer: Jacob Bien <jbien@cornell.edu>
+
+0 errors | 0 warnings | 3 notes
+
+```
+checking DESCRIPTION meta-information ... NOTE
+Malformed Description field: should contain one or more complete sentences.
+
+checking dependencies in R code ... NOTE
+'library' or 'require' call to ‘class’ which was already attached by Depends.
+  Please remove these calls from your code.
+Package in Depends field not imported from: ‘class’
+  These packages need to be imported from (in the NAMESPACE file)
+  for when this namespace is loaded but not attached.
+
+checking R code for possible problems ... NOTE
+predict.protoclass: no visible global function definition for ‘knn1’
+```
+
+## PRROC (1.1)
+Maintainer: Jan Grau <grau@informatik.uni-halle.de>
+
+0 errors | 0 warnings | 0 notes
+
+## pryr (0.1.2)
+Maintainer: Hadley Wickham <hadley@rstudio.com>  
+Bug reports: https://github.com/hadley/pryr/issues
+
+0 errors | 0 warnings | 1 note 
+
+```
+checking dependencies in R code ... NOTE
+Missing or unexported object: ‘tools::nonS3methods’
+```
+
+## psd (1.0-1)
+Maintainer: Andrew J. Barbour <andy.barbour@gmail.com>  
+Bug reports: https://github.com/abarbour/psd/issues
+
+0 errors | 0 warnings | 0 notes
+
+## pseval (1.0.0)
+Maintainer: Michael C Sachs <sachsmc@gmail.com>
+
+0 errors | 0 warnings | 1 note 
+
+```
+checking package dependencies ... NOTE
+Package suggested but not available for checking: ‘printr’
+```
+
+## psidR (1.3)
+Maintainer: Florian Oswald <florian.oswald@gmail.com>
+
+0 errors | 1 warning  | 0 notes
+
+```
+checking whether package ‘psidR’ can be installed ... WARNING
+Found the following significant warnings:
+  Warning: package ‘RCurl’ was built under R version 3.2.4
+See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/psidR.Rcheck/00install.out’ for details.
+```
+
+## pubprint (0.1.1)
+Maintainer: Rudolf Siegel <rs.os@t-online.de>  
+Bug reports: https://bitbucket.org/mutluyum/pubprint/issues/
+
+0 errors | 0 warnings | 0 notes
+
+## purge (0.2.0)
+Maintainer: Marc Maier <mmaier@massmutual.com>
+
+0 errors | 0 warnings | 0 notes
+
+## purrr (0.2.1)
+Maintainer: Hadley Wickham <hadley@rstudio.com>  
+Bug reports: https://github.com/hadley/purrr/issues
+
+0 errors | 0 warnings | 0 notes
+
+## pvar (2.2)
+Maintainer: Vygantas Butkus <Vygantas.Butkus@gmail.com>
+
+1 error  | 0 warnings | 1 note 
+
+```
+checking tests ... ERROR
+Running the tests in ‘tests/test-all.R’ failed.
+Last 13 lines of output:
+  Failed ---------------------------------------------------------------------
+  1. Error: Basic (@test-pvar.R#14) ----------------------------------------------
+  argument "expected" is missing, with no default
+  1: expect_that(pvar(rnorm(10), 2), has_names()) at /Users/hadley/Documents/devtools/testthat/revdep/checks/pvar.Rcheck/pvar/tests/test-pvar.R:14
+  2: condition(object) at /Users/hadley/Documents/devtools/testthat/R/expect-that.R:22
+  3: expect_named(x, expected = expected, ignore.order = ignore.order, ignore.case = ignore.case) at /Users/hadley/Documents/devtools/testthat/R/old-school.R:42
+  4: normalise_names(expected, ignore.order, ignore.case) at /Users/hadley/Documents/devtools/testthat/R/expect-named.R:40
+  
+  DONE =======================================================================
+  Error: Test failures
+  In addition: Warning message:
+  Placing tests in `inst/tests/` is deprecated. Please use `tests/testthat/` instead 
+  Execution halted
+
+checking DESCRIPTION meta-information ... NOTE
+Malformed Description field: should contain one or more complete sentences.
+```
+
+## pwrRasch (0.1-2)
+Maintainer: Takuya Yanagida <takuya.yanagida@univie.ac.at>
+
+0 errors | 0 warnings | 0 notes
+
+## pxweb (0.6.0)
+Maintainer: Mans Magnusson <mons.magnusson@gmail.com>  
+Bug reports: https://github.com/rOpenGov/pxweb/issues
+
 1 error  | 0 warnings | 0 notes
 
 ```
-checking whether package ‘primes’ can be installed ... ERROR
-Installation failed.
-See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/primes.Rcheck/00install.out’ for details.
+checking tests ... ERROR
+Running the tests in ‘tests/testthat_interactive.R’ failed.
+Last 13 lines of output:
+  
+  2. Failure: findData.inputBaseCat (@test-interactive_pxweb.R#9) ----------------
+  `output` does not match "('*' = Select all, 'a' = Show all)".
+  Actual value: ""
+  
+  
+  testthat results ================================================================
+  OK: 23 SKIPPED: 0 FAILED: 2
+  1. Failure: findData.inputBaseCat (@test-interactive_pxweb.R#7) 
+  2. Failure: findData.inputBaseCat (@test-interactive_pxweb.R#9) 
+  
+  Error: testthat unit tests failed
+  Execution halted
 ```
+
+## pystr (1.0.0)
+Maintainer: Nicole White <nicole.m.white@outlook.com>  
+Bug reports: https://github.com/nicolewhite/pystr/issues
+
+0 errors | 0 warnings | 0 notes
+
+## QCApro (1.0-0)
+Maintainer: Alrik Thiem <alrik.thiem@unige.ch>
+
+0 errors | 0 warnings | 0 notes
+
+## qdap (2.2.4)
+Maintainer: Tyler Rinker <tyler.rinker@gmail.com>  
+Bug reports: http://github.com/trinker/qdap/issues
+
+0 errors | 0 warnings | 0 notes
+
+## qdapRegex (0.6.0)
+Maintainer: Tyler Rinker <tyler.rinker@gmail.com>  
+Bug reports: http://github.com/trinker/qdapRegex/issues
+
+0 errors | 0 warnings | 0 notes
+
+## qdapTools (1.3.1)
+Maintainer: Tyler Rinker <tyler.rinker@gmail.com>  
+Bug reports: http://github.com/trinker/qdapTools/issues
+
+0 errors | 0 warnings | 0 notes
+
+## qiimer (0.9.4)
+Maintainer: Kyle Bittinger <kylebittinger@gmail.com>
+
+0 errors | 0 warnings | 0 notes
+
+## qtl (1.39-5)
+Maintainer: Karl W Broman <kbroman@biostat.wisc.edu>
+
+0 errors | 0 warnings | 2 notes
+
+```
+checking installed package size ... NOTE
+  installed size is  9.8Mb
+  sub-directories of 1Mb or more:
+    contrib   3.7Mb
+    doc       3.6Mb
+
+checking S3 generic/method consistency ... NOTE
+Found the following apparent S3 methods exported but not registered:
+  plot.errorlod plot.geno plot.info plot.missing plot.pheno plot.pxg
+  plot.rf
+See section ‘Registering S3 methods’ in the ‘Writing R Extensions’
+manual.
+```
+
+## qtlcharts (0.5-25)
+Maintainer: Karl W Broman <kbroman@biostat.wisc.edu>
+
+0 errors | 0 warnings | 1 note 
+
+```
+checking installed package size ... NOTE
+  installed size is  5.5Mb
+  sub-directories of 1Mb or more:
+    doc           3.8Mb
+    htmlwidgets   1.3Mb
+```
+
+## quadrupen (0.2-4)
+Maintainer: Julien Chiquet <julien.chiquet@genopole.cnrs.fr>
+
+0 errors | 1 warning  | 1 note 
+
+```
+checking whether package ‘quadrupen’ can be installed ... WARNING
+Found the following significant warnings:
+  Warning: package ‘ggplot2’ was built under R version 3.2.4
+  Warning: replacing previous import by ‘grid::arrow’ when loading ‘quadrupen’
+  Warning: replacing previous import by ‘grid::unit’ when loading ‘quadrupen’
+  Warning: replacing previous import by ‘scales::alpha’ when loading ‘quadrupen’
+See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/quadrupen.Rcheck/00install.out’ for details.
+
+checking R code for possible problems ... NOTE
+plot,cvpen : .local: no visible binding for global variable ‘lambda1’
+plot,cvpen : .local: no visible binding for global variable ‘lambda2’
+plot,cvpen : .local: no visible binding for global variable ‘serr’
+plot,cvpen : .local: no visible binding for global variable ‘xval’
+plot,cvpen : .local: no visible binding for global variable
+  ‘lambda.choice’
+plot,quadrupen : .local: no visible binding for global variable
+  ‘variables’
+plot,stability.path : .local: no visible binding for global variable
+  ‘variables’
+```
+
+## Quandl (2.7.0)
+Maintainer: Raymond McTaggart <raymond@quandl.com>  
+Bug reports: https://github.com/quandl/quandl-r/issues
+
+0 errors | 0 warnings | 0 notes
+
+## quanteda (0.9.4)
+Maintainer: Kenneth Benoit <kbenoit@lse.ac.uk>  
+Bug reports: https://github.com/kbenoit/quanteda/issues
+
+0 errors | 0 warnings | 1 note 
+
+```
+checking data for non-ASCII characters ... NOTE
+  Note: found 1 marked Latin-1 string
+  Note: found 750 marked UTF-8 strings
+  Note: found 7 strings marked as "bytes"
+```
+
+## quantspec (1.2-0)
+Maintainer: Tobias Kley <t.kley@lse.ac.uk>  
+Bug reports: http://github.com/tobiaskley/quantspec/issues
+
+0 errors | 0 warnings | 0 notes
+
+## questionr (0.4.3)
+Maintainer: Julien Barnier <julien.barnier@ens-lyon.fr>
+
+0 errors | 0 warnings | 0 notes
+
+## quickmapr (0.1.1)
+Maintainer: Jeffrey W. Hollister <hollister.jeff@epa.gov>  
+Bug reports: https://github.com/jhollist/quickmapr/issues
+
+0 errors | 0 warnings | 0 notes
+
+## R2admb (0.7.13)
+Maintainer: Ben Bolker <bolker@mcmaster.ca>
+
+0 errors | 0 warnings | 1 note 
+
+```
+checking R code for possible problems ... NOTE
+Found the following calls to attach():
+File ‘R2admb/R/check_section.R’:
+  attach(R_list, name = "R_list", warn.conflicts = FALSE)
+See section ‘Good practice’ in ‘?attach’.
+```
+
+## R4CouchDB (0.7.1)
+Maintainer: Thomas Bock <thsteinbock@web.de>
+
+0 errors | 1 warning  | 0 notes
+
+```
+checking whether package ‘R4CouchDB’ can be installed ... WARNING
+Found the following significant warnings:
+  Warning: package ‘RCurl’ was built under R version 3.2.4
+See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/R4CouchDB.Rcheck/00install.out’ for details.
+```
+
+## R6 (2.1.2)
+Maintainer: Winston Chang <winston@stdout.org>
+
+0 errors | 0 warnings | 0 notes
+
+## radarchart (0.1.2)
+Maintainer: Doug Ashton <dashton@mango-solutions.com>  
+Bug reports: https://github.com/mangothecat/radarchart/issues
+
+0 errors | 0 warnings | 0 notes
+
+## radiomics (0.1.1)
+Maintainer: Joel Carlson <jnkcarlson@gmail.com>
+
+0 errors | 0 warnings | 0 notes
+
+## rags2ridges (2.0)
+Maintainer: Carel F.W. Peeters <cf.peeters@vumc.nl>
+
+0 errors | 0 warnings | 0 notes
+
+## rAltmetric (0.6)
+Maintainer: Karthik Ram <karthik.ram@gmail.com>  
+Bug reports: https://github.com/ropensci/rAltmetric/issues/
+
+0 errors | 0 warnings | 0 notes
+
+## RAM (1.2.1.3)
+Maintainer: Wen Chen <Wen.Chen@agr.gc.ca>  
+Bug reports: https://bitbucket.org/Wen_Chen/ram_releases/issues/
+
+0 errors | 1 warning  | 0 notes
+
+```
+checking whether package ‘RAM’ can be installed ... WARNING
+Found the following significant warnings:
+  Warning: package ‘ggplot2’ was built under R version 3.2.4
+See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/RAM.Rcheck/00install.out’ for details.
+```
+
+## rAmCharts (1.1.2)
+Maintainer: Jeffery Petit <jeff@datak.fr>  
+Bug reports: https://github.com/DataKnowledge/rAmCharts/issues/
+
+0 errors | 0 warnings | 1 note 
+
+```
+checking installed package size ... NOTE
+  installed size is  7.1Mb
+  sub-directories of 1Mb or more:
+    htmlwidgets   6.3Mb
+```
+
+## Ramd (0.2)
+Maintainer: Robert Krzyzanowski <technoguyrob@gmail.com>
+
+0 errors | 0 warnings | 0 notes
+
+## ramify (0.3.2)
+Maintainer: Brandon Greenwell <greenwell.brandon@gmail.com>  
+Bug reports: https://github.com/bgreenwell/ramify/issues
+
+0 errors | 0 warnings | 0 notes
+
+## randNames (0.2.1)
+Maintainer: Karthik Ram <karthik.ram@gmail.com>  
+Bug reports: https://github.com/karthik/randNames/issues
+
+0 errors | 0 warnings | 0 notes
+
+## randomForest.ddR (0.1.1)
+Maintainer: Vishrut Gupta <vishrut.gupta@hpe.com>
+
+0 errors | 0 warnings | 0 notes
+
+## randomizeR (1.1.0)
+Maintainer: Diane Uschner <duschner@ukaachen.de>
+
+0 errors | 1 warning  | 0 notes
+
+```
+checking whether package ‘randomizeR’ can be installed ... WARNING
+Found the following significant warnings:
+  Warning: package ‘ggplot2’ was built under R version 3.2.4
+See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/randomizeR.Rcheck/00install.out’ for details.
+```
+
+## randomizr (0.3.0)
+Maintainer: Alexander Coppock <ac3242@columbia.edu>
+
+0 errors | 0 warnings | 0 notes
+
+## rangeMapper (0.3-0)
+Maintainer: Mihai Valcu <valcu@orn.mpg.de>
+
+0 errors | 0 warnings | 0 notes
+
+## ranger (0.3.0)
+Maintainer: Marvin N. Wright <wright@imbs.uni-luebeck.de>
+
+0 errors | 0 warnings | 0 notes
+
+## rankdist (1.1.2)
+Maintainer: Zhaozhi Qian <qianzhaozhi@connect.hku.hk>
+
+0 errors | 0 warnings | 0 notes
+
+## RANN.L1 (2.5)
+Maintainer: Kirill Müller <krlmlr+r@mailbox.org>
+
+0 errors | 0 warnings | 0 notes
+
+## RANN (2.5)
+Maintainer: Gregory Jefferis <jefferis@gmail.com>
+
+0 errors | 0 warnings | 0 notes
+
+## RAppArmor (1.0.1)
+Maintainer: Jeroen Ooms <jeroen.ooms@stat.ucla.edu>  
+Bug reports: http://github.com/jeroenooms/RAppArmor/issues
+
+1 error  | 0 warnings | 0 notes
+
+```
+checking whether package ‘RAppArmor’ can be installed ... ERROR
+Installation failed.
+See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/RAppArmor.Rcheck/00install.out’ for details.
+```
+
+## rappdirs (0.3)
+Maintainer: Hadley Wickham <h.wickham@gmail.com>  
+Bug reports: https://github.com/hadley/rappdirs/issues
+
+1 error  | 0 warnings | 1 note 
+
+```
+checking tests ... ERROR
+Running the tests in ‘tests/test-all.R’ failed.
+Last 13 lines of output:
+  > test_check("rappdirs")
+  Loading required package: rappdirs
+  1. Failure: expand_r_libs_specifiers works as expected (@test-utils.r#5) -------
+  `output` does not match "/".
+  Actual value: ""
+  
+  
+  testthat results ================================================================
+  OK: 23 SKIPPED: 0 FAILED: 1
+  1. Failure: expand_r_libs_specifiers works as expected (@test-utils.r#5) 
+  
+  Error: testthat unit tests failed
+  Execution halted
+
+checking DESCRIPTION meta-information ... NOTE
+Malformed Title field: should not end in a period.
+```
+
+## rAvis (0.1.4)
+Maintainer: Sara Varela <svarela@paleobiogeography.org>  
+Bug reports: https://github.com/ropensci/rAvis/issues
+
+0 errors | 1 warning  | 0 notes
+
+```
+checking whether package ‘rAvis’ can be installed ... WARNING
+Found the following significant warnings:
+  Warning: replacing previous import by ‘sp::nowrapSpatialLines’ when loading ‘rAvis’
+See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/rAvis.Rcheck/00install.out’ for details.
+```
+
+## rbhl (0.2.0)
+Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>  
+Bug reports: https://github.com/ropensci/rbhl/issues
+
+0 errors | 0 warnings | 0 notes
+
+## rbison (0.4.8)
+Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>  
+Bug reports: https://github.com/ropensci/rbison/issues
+
+0 errors | 0 warnings | 0 notes
+
+## Rborist (0.1-0)
+Maintainer: Mark Seligman <mseligman@suiji.org>
+
+0 errors | 0 warnings | 0 notes
+
+## RBPcurve (1.0-33)
+Maintainer: Giuseppe Casalicchio <giuseppe.casalicchio@stat.uni-muenchen.de>  
+Bug reports: https://github.com/giuseppec/RBPcurve/issues
+
+0 errors | 1 warning  | 0 notes
+
+```
+checking whether package ‘RBPcurve’ can be installed ... WARNING
+Found the following significant warnings:
+  Warning: package ‘ggplot2’ was built under R version 3.2.4
+See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/RBPcurve.Rcheck/00install.out’ for details.
+```
+
+## rbundler (0.3.7)
+Maintainer: Yoni Ben-Meshulam <yoni.bmesh@gmail.com>
+
+0 errors | 0 warnings | 2 notes
+
+```
+checking DESCRIPTION meta-information ... NOTE
+Malformed Title field: should not end in a period.
+
+checking R code for possible problems ... NOTE
+install_version: no visible global function definition for
+  ‘install_url’
+```
+
+## rcanvec (0.1.4)
+Maintainer: Dewey Dunnington <dewey@fishandwhistle.net>  
+Bug reports: https://github.com/paleolimbot/rcanvec/issues
+
+0 errors | 0 warnings | 0 notes
+
+## rcbalance (1.8.2)
+Maintainer: Samuel D. Pimentel <spi@wharton.upenn.edu>
+
+0 errors | 0 warnings | 0 notes
+
+## rcbsubset (1.1.2)
+Maintainer: Samuel D. Pimentel <spi@wharton.upenn.edu>
+
+0 errors | 0 warnings | 0 notes
+
+## Rcereal (1.1.2)
+Maintainer: Wush Wu <wush978@gmail.com>
+
+0 errors | 0 warnings | 0 notes
+
+## rClinicalCodes (1.0.1)
+Maintainer: David Springate <daspringate@gmail.com>
+
+0 errors | 0 warnings | 1 note 
+
+```
+checking DESCRIPTION meta-information ... NOTE
+Malformed Description field: should contain one or more complete sentences.
+```
+
+## rclinicaltrials (1.4.1)
+Maintainer: Michael C Sachs <sachsmc@gmail.com>
+
+0 errors | 0 warnings | 0 notes
+
+## RCMIP5 (1.1)
+Maintainer: Kathe Todd-Brown <ktoddbrown@gmail.com>
+
+0 errors | 0 warnings | 1 note 
+
+```
+checking dependencies in R code ... NOTE
+'library' or 'require' calls in package code:
+  ‘ggplot2’ ‘ncdf’ ‘ncdf4’
+  Please use :: or requireNamespace() instead.
+  See section 'Suggested packages' in the 'Writing R Extensions' manual.
+```
+
+## RcppFaddeeva (0.1.0)
+Maintainer: Baptiste Auguie <baptiste.auguie@gmail.com>
+
+0 errors | 0 warnings | 0 notes
+
+## RcppRoll (0.2.2)
+Maintainer: Kevin Ushey <kevinushey@gmail.com>
+
+0 errors | 0 warnings | 0 notes
+
+## RcppShark (0.1)
+Maintainer: Aydin Demircioglu <aydin.demircioglu@ini.rub.de>  
+Bug reports: http://github.com/aydindemircioglu/RcppShark/issues
+
+0 errors | 0 warnings | 1 note 
+
+```
+checking installed package size ... NOTE
+  installed size is 61.7Mb
+  sub-directories of 1Mb or more:
+    include   4.0Mb
+    lib      56.1Mb
+    libs      1.5Mb
+```
+
+## rcrossref (0.5.2)
+Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>  
+Bug reports: https://github.com/ropensci/rcrossref/issues
+
+0 errors | 0 warnings | 0 notes
+
+## rcrypt (0.1.1)
+Maintainer: Brett Klamer <rcrypt@brettklamer.com>
+
+1 error  | 0 warnings | 0 notes
+
+```
+checking whether package ‘rcrypt’ can be installed ... ERROR
+Installation failed.
+See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/rcrypt.Rcheck/00install.out’ for details.
+```
+
+## RDataCanvas (0.1)
+Maintainer: Xiaolin Zhang <leoncamel@gmail.com>  
+Bug reports: https://github.com/DataCanvasIO/RDataCanvas/issues
+
+0 errors | 0 warnings | 0 notes
+
+## rdatacite (0.1.0)
+Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>  
+Bug reports: https://github.com/ropensci/rdatacite/issues
+
+0 errors | 0 warnings | 0 notes
+
+## rddtools (0.4.0)
+Maintainer: Bastiaan Quast <bquast@gmail.com>  
+Bug reports: https://github.com/bquast/RDDtools/issues
+
+0 errors | 0 warnings | 0 notes
+
+## rDEA (1.2-2)
+Maintainer: Jaak Simm <jaak.simm@gmail.com>
+
+1 error  | 0 warnings | 0 notes
+
+```
+checking whether package ‘rDEA’ can be installed ... ERROR
+Installation failed.
+See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/rDEA.Rcheck/00install.out’ for details.
+```
+
+## rdian (0.1.1)
+Maintainer: Oliver Keyes <ironholds@gmail.com>  
+Bug reports: https://github.com/ironholds/rdian
+
+0 errors | 0 warnings | 0 notes
+
+## rdrop2 (0.7.0)
+Maintainer: Karthik Ram <karthik.ram@gmail.com>  
+Bug reports: https://github.com/karthik/rdrop2/issues
+
+0 errors | 0 warnings | 0 notes
+
+## rdryad (0.2.0)
+Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>  
+Bug reports: https://github.com/ropensci/rdryad/issues
+
+0 errors | 0 warnings | 0 notes
+
+## RDS (0.7-5)
+Maintainer: Mark S. Handcock <handcock@stat.ucla.edu>
+
+0 errors | 0 warnings | 0 notes
+
+## readbitmap (0.1-4)
+Maintainer: Gregory Jefferis <jefferis@gmail.com>  
+Bug reports: https://github.com/jefferis/readbitmap/issues
+
+0 errors | 0 warnings | 0 notes
+
+## readGenalex (1.0)
+Maintainer: Douglas G. Scofield <douglasgscofield@gmail.com>  
+Bug reports: https://github.com/douglasgscofield/readGenalex/issues
+
+1 error  | 0 warnings | 0 notes
+
+```
+checking tests ... ERROR
+Running the tests in ‘tests/testthat.R’ failed.
+Last 13 lines of output:
+  Error: `output` does not match "104/101".
+  Actual value: ""
+  testthat results ================================================================
+  OK: 343 SKIPPED: 0 FAILED: 6
+  1. Failure: summary.genalex summarises pops etc., genotypes, and extra data (@test_all.R#231) 
+  2. Failure: summary.genalex summarises pops etc., genotypes, and extra data (@test_all.R#232) 
+  3. Failure: summary.genalex summarises pops etc., genotypes, and extra data (@test_all.R#233) 
+  4. Failure: summary.genalex summarises pops etc., genotypes, and extra data (@test_all.R#236) 
+  5. Failure: summary.genalex summarises pops etc., genotypes, and extra data (@test_all.R#237) 
+  6. Failure: Return is invisible with quiet=FALSE (@test_checkNullAlleles.R#68) 
+  
+  Error: testthat unit tests failed
+  Execution halted
+```
+
+## readODS (1.4)
+Maintainer: Gerrit-Jan Schutten <phonixor@gmail.com>
+
+0 errors | 1 warning  | 0 notes
+
+```
+checking whether package ‘readODS’ can be installed ... WARNING
+Found the following significant warnings:
+  Warning: package ‘XML’ was built under R version 3.2.4
+See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/readODS.Rcheck/00install.out’ for details.
+```
+
+## readr (0.2.2)
+Maintainer: Hadley Wickham <hadley@rstudio.com>  
+Bug reports: https://github.com/hadley/readr/issues
+
+0 errors | 0 warnings | 0 notes
+
+## readxl (0.1.0)
+Maintainer: Hadley Wickham <hadley@rstudio.com>
+
+1 error  | 0 warnings | 0 notes
+
+```
+checking tests ... ERROR
+Running the tests in ‘tests/testthat.R’ failed.
+Last 13 lines of output:
+  > 
+  > test_check("readxl")
+  1. Failure: dates respsect worksheet date sheeting (@test-dates.R#8) -----------
+  d1900$X1 not equal to as.POSIXct(as.Date("2000-01-01")).
+  Attributes: < Component "tzone": 1 string mismatch >
+  
+  
+  testthat results ================================================================
+  OK: 36 SKIPPED: 0 FAILED: 1
+  1. Failure: dates respsect worksheet date sheeting (@test-dates.R#8) 
+  
+  Error: testthat unit tests failed
+  Execution halted
+```
+
+## rebird (0.2)
+Maintainer: Sebastian Pardo <sebpardo@gmail.com>  
+Bug reports: http://github.com/ropensci/rebird/issues
+
+0 errors | 0 warnings | 0 notes
+
+## rebus.base (0.0-1)
+Maintainer: Richard Cotton <richierocks@gmail.com>
+
+0 errors | 0 warnings | 0 notes
+
+## rebus.datetimes (0.0-1)
+Maintainer: Richard Cotton <richierocks@gmail.com>
+
+0 errors | 0 warnings | 0 notes
+
+## rebus.numbers (0.0-1)
+Maintainer: Richard Cotton <richierocks@gmail.com>
+
+0 errors | 0 warnings | 0 notes
+
+## rebus (0.1-0)
+Maintainer: Richard Cotton <richierocks@gmail.com>
+
+0 errors | 0 warnings | 0 notes
+
+## reconstructr (1.1.0)
+Maintainer: Oliver Keyes <ironholds@gmail.com>
+
+0 errors | 0 warnings | 0 notes
+
+## REDCapR (0.9.3)
+Maintainer: Will Beasley <wibeasley@hotmail.com>  
+Bug reports: https://github.com/OuhscBbmc/REDCapR/issues
+
+0 errors | 0 warnings | 1 note 
+
+```
+checking package dependencies ... NOTE
+Package suggested but not available for checking: ‘RODBC’
+```
+
+## redland (1.0.17-6)
+Maintainer: Matthew B. Jones <jones@nceas.ucsb.edu>  
+Bug reports: https://github.com/ropensci/redland-bindings/issues
+
+1 error  | 0 warnings | 0 notes
+
+```
+checking whether package ‘redland’ can be installed ... ERROR
+Installation failed.
+See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/redland.Rcheck/00install.out’ for details.
+```
+
+## RefManageR (0.10.6)
+Maintainer: Mathew W. McLean <mathew.w.mclean@gmail.com>  
+Bug reports: https://github.com/mwmclean/RefManageR/issues
+
+1 error  | 0 warnings | 1 note 
+
+```
+checking tests ... ERROR
+Running the tests in ‘tests/test-all.R’ failed.
+Last 13 lines of output:
+  is.character(object) is not TRUE
+  1: expect_match(parsed$family[2], "MATLAB, Inc.") at testthat/test-authors.R:19
+  2: stopifnot(is.character(object)) at /Users/hadley/Documents/devtools/testthat/R/expectations-matches.R:26
+  3: stop(sprintf(ngettext(length(r), "%s is not TRUE", "%s are not all TRUE"), ch), call. = FALSE, 
+         domain = NA)
+  
+  testthat results ================================================================
+  OK: 101 SKIPPED: 13 FAILED: 2
+  1. Error: Smith, Jr., John and Mary {Tyler Moore} (@test-authors.R#13) 
+  2. Error: Smith, Jr., John and {MATLAB, Inc.} (@test-authors.R#19) 
+  
+  Error: testthat unit tests failed
+  Execution halted
+
+checking foreign function calls ... NOTE
+Foreign function call to a different package:
+  .External("do_read_bib", ..., PACKAGE = "bibtex")
+See chapter ‘System and foreign language interfaces’ in the ‘Writing R
+Extensions’ manual.
+```
+
+## refset (0.1.0)
+Maintainer: David Hugh-Jones <davidhughjones@gmail.com>
+
+0 errors | 0 warnings | 0 notes
+
+## regexr (1.1.0)
+Maintainer: Tyler Rinker <tyler.rinker@gmail.com>  
+Bug reports: http://github.com/trinker/regexr/issues
+
+0 errors | 0 warnings | 0 notes
+
+## ReliabilityTheory (0.1.5)
+Maintainer: Louis Aslett <aslett@stats.ox.ac.uk>
+
+0 errors | 0 warnings | 0 notes
+
+## rEMM (1.0-11)
+Maintainer: Michael Hahsler <mhahsler@lyle.smu.edu>
+
+0 errors | 0 warnings | 0 notes
+
+## rentrez (1.0.1)
+Maintainer: David Winter <david.winter@gmail.com>
+
+0 errors | 0 warnings | 0 notes
+
+## repijson (0.1.0)
+Maintainer: Andy South <southandy@gmail.com>
+
+0 errors | 0 warnings | 0 notes
+
+## ReporteRs (0.8.5)
+Maintainer: David Gohel <david.gohel@lysis-consultants.fr>  
+Bug reports: https://github.com/davidgohel/ReporteRs/issues
+
+0 errors | 0 warnings | 0 notes
+
+## reportr (1.2.0)
+Maintainer: Jon Clayden <code@clayden.org>
+
+0 errors | 0 warnings | 0 notes
+
+## request (0.1.0)
+Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>  
+Bug reports: https://github.com/sckott/request/issues
+
+0 errors | 0 warnings | 0 notes
+
+## rerddap (0.3.4)
+Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>  
+Bug reports: http://www.github.com/ropensci/rerddap/issues
+
+0 errors | 0 warnings | 0 notes
+
+## reshape2 (1.4.1)
+Maintainer: Hadley Wickham <h.wickham@gmail.com>  
+Bug reports: https://github.com/hadley/reshape/issues
+
+0 errors | 0 warnings | 1 note 
+
+```
+checking DESCRIPTION meta-information ... NOTE
+Malformed Title field: should not end in a period.
+```
+
+## restimizeapi (1.0.0)
+Maintainer: Thomas P. Fuller <thomas.fuller@coherentlogic.com>
+
+0 errors | 1 warning  | 0 notes
+
+```
+checking whether package ‘restimizeapi’ can be installed ... WARNING
+Found the following significant warnings:
+  Warning: package ‘RCurl’ was built under R version 3.2.4
+See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/restimizeapi.Rcheck/00install.out’ for details.
+```
+
+## resumer (0.0.1)
+Maintainer: Jared Lander <packages@jaredlander.com>  
+Bug reports: https://github.com/jaredlander/resumer/issues
+
+0 errors | 0 warnings | 0 notes
+
+## rethinker (1.0.0)
+Maintainer: Miron B. Kursa <M.Kursa@icm.edu.pl>
+
+0 errors | 0 warnings | 0 notes
+
+## retistruct (0.5.10)
+Maintainer: David C. Sterratt <david.c.sterratt@ed.ac.uk>  
+Bug reports: https://github.com/davidcsterratt/retistruct/issues
+
+0 errors | 0 warnings | 0 notes
+
+## reutils (0.2.2)
+Maintainer: Gerhard Schöfl <gerhard.schofl@gmail.com>  
+Bug reports: https://github.com/gschofl/reutils/issues
+
+0 errors | 0 warnings | 0 notes
+
+## revealjs (0.5.0)
+Maintainer: JJ Allaire <jj@rstudio.com>  
+Bug reports: https://github.com/rstudio/revealjs/issues
+
+0 errors | 0 warnings | 0 notes
+
+## rex (1.0.1)
+Maintainer: Jim Hester <james.f.hester@gmail.com>  
+Bug reports: https://github.com/kevinushey/rex/issues
+
+0 errors | 0 warnings | 1 note 
+
+```
+checking re-building of vignette outputs ... NOTE
+Error in re-building vignettes:
+  ...
+Read 1000 items
+Quitting from lines 69-71 (log_parsing.Rmd) 
+Error: processing vignette 'log_parsing.Rmd' failed with diagnostics:
+StatBin requires a continuous x variable the x variable is discrete. Perhaps you want stat="count"?
+Execution halted
+
+```
+
+## Rexperigen (0.1.0)
+Maintainer: Daniel Szeredi <daniel@szeredi.hu>
+
+0 errors | 0 warnings | 0 notes
+
+## rfigshare (0.3.7)
+Maintainer: Carl Boettiger <cboettig@gmail.com>  
+Bug reports: https://github.com/ropensci/rfigshare/issues
+
+0 errors | 0 warnings | 0 notes
+
+## rfishbase (2.1.0)
+Maintainer: Carl Boettiger <cboettig@ropensci.org>  
+Bug reports: https://github.com/ropensci/rfishbase/issues
+
+0 errors | 0 warnings | 1 note 
+
+```
+checking data for non-ASCII characters ... NOTE
+  Note: found 33 marked UTF-8 strings
+```
+
+## Rfit (0.22.0)
+Maintainer: John Kloke <kloke@biostat.wisc.edu>
+
+0 errors | 0 warnings | 0 notes
+
+## RForcecom (0.8)
+Maintainer: Takekatsu Hiramura <thira@plavox.info>  
+Bug reports: https://github.com/hiratake55/RForcecom/issues
+
+0 errors | 0 warnings | 0 notes
+
+## RFormatter (0.1.0)
+Maintainer: Benjamin Fischer <benjamin.fischer@evolutics.info>  
+Bug reports: https://github.com/evolutics/RFormatter/issues
+
+0 errors | 0 warnings | 0 notes
+
+## RGA (0.4.1)
+Maintainer: Artem Klevtsov <a.a.klevtsov@gmail.com>  
+Bug reports: https://github.com/artemklevtsov/RGA/issues
+
+0 errors | 0 warnings | 0 notes
+
+## rgbif (0.9.2)
+Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>  
+Bug reports: https://github.com/ropensci/rgbif/issues
+
+0 errors | 0 warnings | 0 notes
+
+## rgeolocate (0.5.0)
+Maintainer: Oliver Keyes <ironholds@gmail.com>  
+Bug reports: https://github.com/ironholds/rgeolocate/issues
+
+0 errors | 0 warnings | 0 notes
+
+## rgeos (0.3-17)
+Maintainer: Roger Bivand <Roger.Bivand@nhh.no>
+
+0 errors | 0 warnings | 0 notes
+
+## rglobi (0.2.8)
+Maintainer: Jorrit Poelen <jhpoelen@xs4all.nl>  
+Bug reports: https://github.com/ropensci/rglobi/issues
+
+0 errors | 0 warnings | 0 notes
+
+## RGoogleAnalytics (0.1.1)
+Maintainer: Kushan Shah <kushan@tatvic.com>  
+Bug reports: https://github.com/Tatvic/RGoogleAnalytics/issues
+
+0 errors | 0 warnings | 1 note 
+
+```
+checking DESCRIPTION meta-information ... NOTE
+Malformed Description field: should contain one or more complete sentences.
+```
+
+## rGroovy (1.0)
+Maintainer: Thomas P. Fuller <thomas.fuller@coherentlogic.com>
+
+0 errors | 0 warnings | 0 notes
+
+## riceware (0.4)
+Maintainer: Francois Michonneau <francois.michonneau@gmail.com>  
+Bug reports: https://github.com/fmichonneau/riceware/issues
+
+0 errors | 0 warnings | 0 notes
+
+## ridigbio (0.3.3)
+Maintainer: Matthew Collins <mcollins@acis.ufl.edu>  
+Bug reports: https://github.com/iDigBio/ridigbio/issues
+
+0 errors | 0 warnings | 0 notes
+
+## RImageJROI (0.1.1)
+Maintainer: David C Sterratt <david.c.sterratt@ed.ac.uk>
+
+0 errors | 0 warnings | 0 notes
+
+## RImagePalette (0.1.1)
+Maintainer: Joel Carlson <jnkcarlson@gmail.com>
+
+0 errors | 0 warnings | 0 notes
+
+## rio (0.3.0)
+Maintainer: Thomas J. Leeper <thosjleeper@gmail.com>
+
+0 errors | 0 warnings | 0 notes
+
+## RItools (0.1-13)
+Maintainer: Jake Bowers <jwbowers@illinois.edu>
+
+0 errors | 0 warnings | 0 notes
+
+## rjstat (0.2.1)
+Maintainer: Aaron Schumacher <ajschumacher@gmail.com>  
+Bug reports: https://github.com/ajschumacher/rjstat/issues
+
+0 errors | 0 warnings | 0 notes
+
+## Rlibeemd (1.3.6)
+Maintainer: Jouni Helske <jouni.helske@jyu.fi>  
+Bug reports: https://github.com/helske/Rlibeemd/issues
+
+1 error  | 0 warnings | 0 notes
+
+```
+checking whether package ‘Rlibeemd’ can be installed ... ERROR
+Installation failed.
+See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/Rlibeemd.Rcheck/00install.out’ for details.
+```
+
+## rlist (0.4.5.1)
+Maintainer: Kun Ren <ken@renkun.me>  
+Bug reports: https://github.com/renkun-ken/rlist/issues
+
+1 error  | 0 warnings | 0 notes
+
+```
+checking tests ... ERROR
+Running the tests in ‘tests/testthat.R’ failed.
+Last 13 lines of output:
+  > test_check("rlist") 
+  Loading required package: rlist
+  1. Failure: printing (@test-List.R#88) -----------------------------------------
+  `output` does not match "Min.+".
+  Actual value: ""
+  
+  
+  testthat results ================================================================
+  OK: 286 SKIPPED: 0 FAILED: 1
+  1. Failure: printing (@test-List.R#88) 
+  
+  Error: testthat unit tests failed
+  Execution halted
+```
+
+## RLumModel (0.1.0)
+Maintainer: Johannes Friedrich <johannes.friedrich@uni-bayreuth.de>
+
+1 error  | 0 warnings | 0 notes
+
+```
+checking tests ... ERROR
+Running the tests in ‘tests/testthat.R’ failed.
+Last 13 lines of output:
+  Actual value: ""
+  
+  
+  testthat results ================================================================
+  OK: 5 SKIPPED: 0 FAILED: 5
+  1. Failure: check inputs set_pars (@test-set_pars.R#4) 
+  2. Failure: check inputs set_pars (@test-set_pars.R#5) 
+  3. Failure: check inputs set_pars (@test-set_pars.R#6) 
+  4. Failure: check inputs set_pars (@test-set_pars.R#7) 
+  5. Failure: check inputs set_pars (@test-set_pars.R#8) 
+  
+  Error: testthat unit tests failed
+  Execution halted
+```
+
+## rmarkdown (0.9.5)
+Maintainer: JJ Allaire <jj@rstudio.com>
+
+0 errors | 0 warnings | 1 note 
+
+```
+checking installed package size ... NOTE
+  installed size is  5.7Mb
+  sub-directories of 1Mb or more:
+    rmd   5.3Mb
+```
+
+## rmumps (5.0.1.8)
+Maintainer: Serguei Sokol <sokol@insa-toulouse.fr>  
+Bug reports: https://github.com/sgsokol/rmumps/issues
+
+0 errors | 0 warnings | 1 note 
+
+```
+checking for GNU extensions in Makefiles ... NOTE
+GNU make is a SystemRequirements.
+```
+
+## RMySQL (0.10.8)
+Maintainer: Jeroen Ooms <jeroen.ooms@stat.ucla.edu>  
+Bug reports: https://github.com/rstats-db/rmysql/issues
+
+0 errors | 0 warnings | 0 notes
+
+## rnbn (1.0.3)
+Maintainer: Tom August <tomaug@ceh.ac.uk>  
+Bug reports: https://github.com/ropensci/rnbn/issues
+
+0 errors | 0 warnings | 0 notes
+
+## rncl (0.6.0)
+Maintainer: Francois Michonneau <francois.michonneau@gmail.com>  
+Bug reports: https://github.com/fmichonneau/rncl/issues
+
+0 errors | 0 warnings | 0 notes
+
+## RndTexExams (1.1.1)
+Maintainer: Marcelo Perlin <marceloperlin@gmail.com>
+
+0 errors | 0 warnings | 0 notes
+
+## RNeo4j (1.6.3)
+Maintainer: Nicole White <nicole@neo4j.com>  
+Bug reports: https://github.com/nicolewhite/RNeo4j/issues
+
+0 errors | 0 warnings | 0 notes
+
+## rnetcarto (0.2.4)
+Maintainer: Guilhem Doulcier <guilhem.doulcier@ens.fr>
+
+1 error  | 0 warnings | 0 notes
+
+```
+checking whether package ‘rnetcarto’ can be installed ... ERROR
+Installation failed.
+See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/rnetcarto.Rcheck/00install.out’ for details.
+```
+
+## RNeXML (2.0.5)
+Maintainer: Carl Boettiger <cboettig@gmail.com>  
+Bug reports: https://github.com/ropensci/RNeXML/issues
+
+0 errors | 0 warnings | 1 note 
+
+```
+checking package dependencies ... NOTE
+Packages suggested but not available for checking: ‘rrdf’ ‘Sxslt’
+```
+
+## RNiftyReg (2.2.0)
+Maintainer: Jon Clayden <code@clayden.org>  
+Bug reports: https://github.com/jonclayden/RNiftyReg/issues
+
+0 errors | 0 warnings | 0 notes
+
+## rnn (0.2.0)
+Maintainer: Bastiaan Quast <bquast@gmail.com>
+
+0 errors | 0 warnings | 0 notes
+
+## rnoaa (0.5.2)
+Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>  
+Bug reports: http://www.github.com/ropensci/rnoaa/issues
+
+0 errors | 0 warnings | 0 notes
+
+## robotstxt (0.1.2)
+Maintainer: Peter Meissner <retep.meissner@gmail.com>  
+Bug reports: https://github.com/petermeissner/robotstxt/issues
+
+0 errors | 0 warnings | 0 notes
+
+## RObsDat (15.08)
+Maintainer: Dominik Reusser <reusser@pik-potsdam.de>
+
+0 errors | 0 warnings | 0 notes
+
+## RODBCDBI (0.1)
+Maintainer: Nagi Teramo <teramonagi@gmail.com>
+
+1 error  | 0 warnings | 0 notes
+
+```
+checking package dependencies ... ERROR
+Package required but not available: ‘RODBC’
+
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
+```
+
+## rollply (0.4.2)
+Maintainer: Alexandre Genin <alex@lecairn.org>  
+Bug reports: https://github.com/alexgenin/rollply
+
+0 errors | 0 warnings | 0 notes
+
+## rorcid (0.2.2)
+Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>  
+Bug reports: https://github.com/ropensci/rorcid/issues
+
+0 errors | 0 warnings | 0 notes
+
+## rorutadis (0.3.1)
+Maintainer: Krzysztof Ciomek <k.ciomek@gmail.com>
+
+0 errors | 1 warning  | 0 notes
+
+```
+checking whether package ‘rorutadis’ can be installed ... WARNING
+Found the following significant warnings:
+  Warning: package ‘ggplot2’ was built under R version 3.2.4
+  Warning: package ‘gridExtra’ was built under R version 3.2.4
+See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/rorutadis.Rcheck/00install.out’ for details.
+```
+
+## rotations (1.5)
+Maintainer: Bryan Stanfill <bstanfill2003@gmail.com>  
+Bug reports: https://github.com/stanfill/rotationsC/issues
+
+0 errors | 1 warning  | 0 notes
+
+```
+checking whether package ‘rotations’ can be installed ... WARNING
+Found the following significant warnings:
+  Warning: package ‘ggplot2’ was built under R version 3.2.4
+See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/rotations.Rcheck/00install.out’ for details.
+```
+
+## rotl (0.5.0)
+Maintainer: Francois Michonneau <francois.michonneau@gmail.com>  
+Bug reports: https://github.com/ropensci/rotl/issues
+
+0 errors | 0 warnings | 0 notes
+
+## roxygen2 (5.0.1)
+Maintainer: Hadley Wickham <hadley@rstudio.com>
+
+0 errors | 0 warnings | 0 notes
+
+## RPANDA (1.1)
+Maintainer: Hélène Morlon <morlon@biologie.ens.fr>
+
+0 errors | 0 warnings | 0 notes
+
+## rpartitions (0.1)
+Maintainer: Daniel McGlinn <danmcglinn@gmail.com>
+
+0 errors | 0 warnings | 3 notes
+
+```
+checking DESCRIPTION meta-information ... NOTE
+License components which are templates and need '+ file LICENSE':
+  MIT
+
+checking dependencies in R code ... NOTE
+Package in Depends field not imported from: ‘hash’
+  These packages need to be imported from (in the NAMESPACE file)
+  for when this namespace is loaded but not attached.
+
+checking R code for possible problems ... NOTE
+P: no visible global function definition for ‘has.key’
+rand_partitions: no visible global function definition for ‘hash’
+```
+
+## rpcdsearch (1.0)
+Maintainer: David Springate <daspringate@gmail.com>
+
+0 errors | 1 warning  | 0 notes
+
+```
+checking whether package ‘rpcdsearch’ can be installed ... WARNING
+Found the following significant warnings:
+  Warning: replacing previous import by ‘stringr::%>%’ when loading ‘rpcdsearch’
+See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/rpcdsearch.Rcheck/00install.out’ for details.
+```
+
+## rpdo (0.1.1)
+Maintainer: Joe Thorley <joe@poissonconsulting.ca>
+
+0 errors | 0 warnings | 0 notes
+
+## rpf (0.51)
+Maintainer: Joshua Pritikin <jpritikin@pobox.com>
+
+0 errors | 0 warnings | 0 notes
+
+## rpivotTable (0.1.5.7)
+Maintainer: Enzo Martoglio  <enzo@smartinsightsfromdata.com>
+
+1 error  | 0 warnings | 0 notes
+
+```
+checking tests ... ERROR
+Running the tests in ‘tests/testthat.R’ failed.
+Last 13 lines of output:
+  1. Error: parameters handled correctly (@test_params.R#4) ----------------------
+  is.character(object) is not TRUE
+  1: expect_match(rpivotTable(data.frame(), rows = c("arow"))$x$params$rows, "arow") at testthat/test_params.R:4
+  2: stopifnot(is.character(object)) at /Users/hadley/Documents/devtools/testthat/R/expectations-matches.R:26
+  3: stop(sprintf(ngettext(length(r), "%s is not TRUE", "%s are not all TRUE"), ch), call. = FALSE, 
+         domain = NA)
+  
+  testthat results ================================================================
+  OK: 11 SKIPPED: 0 FAILED: 1
+  1. Error: parameters handled correctly (@test_params.R#4) 
+  
+  Error: testthat unit tests failed
+  Execution halted
+```
+
+## rplexos (1.1.4)
+Maintainer: Eduardo Ibanez <edu.ibanez@gmail.com>  
+Bug reports: https://github.com/NREL/rplexos/issues
+
+0 errors | 0 warnings | 0 notes
+
+## rplos (0.5.6)
+Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>  
+Bug reports: https://github.com/ropensci/rplos/issues
+
+0 errors | 0 warnings | 0 notes
+
+## rpnf (1.0.4)
+Maintainer: Sascha Herrmann <sascha.herrmann.consulting@gmail.com>
+
+0 errors | 0 warnings | 0 notes
+
+## rPref (0.7)
+Maintainer: Patrick Roocks <mail@p-roocks.de>
+
+0 errors | 0 warnings | 1 note 
+
+```
+checking for GNU extensions in Makefiles ... NOTE
+GNU make is a SystemRequirements.
+```
+
+## rprime (0.1.0)
+Maintainer: Tristan Mahr <tristan.mahr@wisc.edu>  
+Bug reports: http://github.com/tjmahr/rprime/issues
+
+0 errors | 0 warnings | 0 notes
+
+## rprintf (0.2.1)
+Maintainer: Kun Ren <ken@renkun.me>  
+Bug reports: https://github.com/renkun-ken/rprintf/issues
+
+0 errors | 0 warnings | 0 notes
+
+## rr (1.3)
+Maintainer: Graeme Blair <graeme.blair@columbia.edu>
+
+1 error  | 0 warnings | 0 notes
+
+```
+checking tests ... ERROR
+Running the tests in ‘tests/testthat.R’ failed.
+Last 13 lines of output:
+  
+  testthat results ================================================================
+  OK: 70 SKIPPED: 3 FAILED: 7
+  1. Failure: basic code runs when there are covariates sent to the mixed model (@test-bayes-mixed.R#155) 
+  2. Failure: standard functions coef, sd.rrreg.bayes, summary work (@test-bayes-mixed.R#219) 
+  3. Failure: doing multiple chains works as well as coef, sd.rrreg.bayes, summary work (@test-bayes-mixed.R#339) 
+  4. Failure: doing multiple chains works as well as coef, sd.rrreg.bayes, summary work (@test-bayes-mixed.R#343) 
+  5. Failure: standard functions coef, sd.rrreg.bayes, summary work (@test-bayes.R#108) 
+  6. Failure: doing multiple chains works as well as coef, sd.rrreg.bayes, summary work (@test-bayes.R#164) 
+  7. Failure: doing multiple chains works as well as coef, sd.rrreg.bayes, summary work (@test-bayes.R#168) 
+  
+  Error: testthat unit tests failed
+  Execution halted
+```
+
+## rredlist (0.1.0)
+Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>  
+Bug reports: https://github.com/ropenscilabs/rredlist/issues
+
+0 errors | 0 warnings | 0 notes
+
+## rsdmx (0.5-1)
+Maintainer: Emmanuel Blondel <emmanuel.blondel1@gmail.com>  
+Bug reports: https://github.com/opensdmx/rsdmx/issues
+
+0 errors | 0 warnings | 0 notes
+
+## RSelenium (1.3.5)
+Maintainer: John Harrison <johndharrison0@gmail.com>  
+Bug reports: http://github.com/ropensci/RSelenium/issues
+
+0 errors | 1 warning  | 3 notes
+
+```
+checking whether package ‘RSelenium’ can be installed ... WARNING
+Found the following significant warnings:
+  Warning: package ‘RCurl’ was built under R version 3.2.4
+  Warning: package ‘XML’ was built under R version 3.2.4
+See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/RSelenium.Rcheck/00install.out’ for details.
+
+checking package dependencies ... NOTE
+Package suggested but not available for checking: ‘Rcompression’
+
+checking DESCRIPTION meta-information ... NOTE
+Malformed Title field: should not end in a period.
+
+checking S3 generic/method consistency ... NOTE
+Found the following apparent S3 methods exported but not registered:
+  .DollarNames.errorHandler .DollarNames.remoteDriver
+  .DollarNames.webElement
+See section ‘Registering S3 methods’ in the ‘Writing R Extensions’
+manual.
+```
+
+## rsig (1.0)
+Maintainer: Sangkyun Lee <sangkyun.lee@tu-dortmund.de>
+
+1 error  | 0 warnings | 0 notes
+
+```
+checking package dependencies ... ERROR
+Package required but not available: ‘survcomp’
+
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
+```
+
+## RSiteCatalyst (1.4.7)
+Maintainer: Randy Zwitch <rzwitch+rsitecatalyst@gmail.com>  
+Bug reports: https://github.com/randyzwitch/RSiteCatalyst
+
+0 errors | 0 warnings | 0 notes
+
+## rsnps (0.1.6)
+Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>  
+Bug reports: https://github.com/ropensci/rsnps/issues
+
+0 errors | 0 warnings | 0 notes
+
+## RSocrata (1.7.0-14)
+Maintainer: "Tom Schenk Jr." <developers@cityofchicago.org>  
+Bug reports: https://github.com/Chicago/RSocrata/issues
+
+0 errors | 0 warnings | 0 notes
+
+## rspa (0.1.8)
+Maintainer: Mark van der Loo <mark.vanderloo@gmail.com>  
+Bug reports: https://github.com/markvanderloo/rspa/issues
+
+0 errors | 0 warnings | 0 notes
+
+## RSQLite (1.0.0)
+Maintainer: Hadley Wickham <hadley@rstudio.com>  
+Bug reports: https://github.com/rstats-db/RSQLite/issues
+
+1 error  | 0 warnings | 1 note 
+
+```
+checking tests ... ERROR
+Running the tests in ‘tests/testthat.R’ failed.
+Last 13 lines of output:
+  1: checkVfs(v) at testthat/test-dbConnect.R:30
+  2: expect_equal(v, db@vfs) at testthat/test-dbConnect.R:28
+  3: make_label(object, label) at /Users/hadley/Documents/devtools/testthat/R/expect-equality.R:51
+  4: label %||% label(object) at /Users/hadley/Documents/devtools/testthat/R/expectation.R:44
+  5: label(object) at /Users/hadley/Documents/devtools/testthat/R/utils.R:1
+  6: lazyeval::lazy(obj) at /Users/hadley/Documents/devtools/testthat/R/expectation.R:52
+  
+  testthat results ================================================================
+  OK: 87 SKIPPED: 0 FAILED: 1
+  1. Error: can get and set vfs values (@test-dbConnect.R#30) 
+  
+  Error: testthat unit tests failed
+  Execution halted
+
+checking compiled code ... NOTE
+File ‘RSQLite/libs/RSQLite.so’:
+  Found ‘___stderrp’, possibly from ‘stderr’ (C)
+    Object: ‘sqlite-all.o’
+  Found ‘_random’, possibly from ‘random’ (C)
+    Object: ‘sqlite-all.o’
+
+Compiled code should not call entry points which might terminate R nor
+write to stdout/stderr instead of to the console, nor the system RNG.
+
+See ‘Writing portable packages’ in the ‘Writing R Extensions’ manual.
+```
+
+## Rssa (0.13-1)
+Maintainer: Anton Korobeynikov <anton@korobeynikov.info>
+
+1 error  | 0 warnings | 0 notes
+
+```
+checking whether package ‘Rssa’ can be installed ... ERROR
+Installation failed.
+See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/Rssa.Rcheck/00install.out’ for details.
+```
+
+## rstackdeque (1.1.1)
+Maintainer: Shawn T. O'Neil <shawn.oneil@cgrb.oregonstate.edu>  
+Bug reports: https://github.com/oneilsh/rstackdeque/issues
+
+0 errors | 0 warnings | 0 notes
+
+## rstanarm (2.9.0-3)
+Maintainer: Ben Goodrich <benjamin.goodrich@columbia.edu>  
+Bug reports: https://github.com/stan-dev/rstanarm/issues
+
+1 error  | 0 warnings | 0 notes
+
+```
+checking whether package ‘rstanarm’ can be installed ... ERROR
+Installation failed.
+See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/rstanarm.Rcheck/00install.out’ for details.
+```
+
+## RStoolbox (0.1.4)
+Maintainer: Benjamin Leutner <benjamin.leutner@uni-wuerzburg.de>  
+Bug reports: https://github.com/bleutner/RStoolbox/issues
+
+1 error  | 0 warnings | 0 notes
+
+```
+checking whether package ‘RStoolbox’ can be installed ... ERROR
+Installation failed.
+See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/RStoolbox.Rcheck/00install.out’ for details.
+```
+
+## rstudioapi (0.5)
+Maintainer: JJ Allaire <jj@rstudio.com>
+
+0 errors | 0 warnings | 0 notes
+
+## rsunlight (0.4.2)
+Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>  
+Bug reports: https://github.com/ropengov/rsunlight/issues
+
+0 errors | 0 warnings | 0 notes
+
+## rsvd (0.3)
+Maintainer: N. Benjamin Erichson <nbe@st-andrews.ac.uk>  
+Bug reports: https://github.com/Benli11/rPCA
+
+0 errors | 0 warnings | 0 notes
+
+## rtdists (0.2-6)
+Maintainer: Henrik Singmann <singmann+rtdists@gmail.com>
+
+0 errors | 0 warnings | 0 notes
+
+## rticles (0.1)
+Maintainer: JJ Allaire <jj@rstudio.com>
+
+0 errors | 0 warnings | 1 note 
+
+```
+checking for GNU extensions in Makefiles ... NOTE
+GNU make is a SystemRequirements.
+```
+
+## rtimes (0.3.0)
+Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>  
+Bug reports: https://github.com/ropengov/rtimes/issues
+
+0 errors | 0 warnings | 0 notes
+
+## Rtsne (0.10)
+Maintainer: Jesse Krijthe <jkrijthe@gmail.com>
+
+0 errors | 0 warnings | 0 notes
+
+## rtson (1.1)
+Maintainer: Alexandre Maurel <alexandre.maurel@gmail.com>  
+Bug reports: https://github.com/amaurel/TSON/issues
+
+0 errors | 0 warnings | 0 notes
+
+## rtype (0.1-1)
+Maintainer: Kun Ren <ken@renkun.me>  
+Bug reports: https://github.com/renkun-ken/rtype/issues
+
+0 errors | 0 warnings | 0 notes
+
+## Ruchardet (0.0-3)
+Maintainer: Heewon Jeon <madjakarta@gmail.com>
+
+0 errors | 0 warnings | 1 note 
+
+```
+checking for GNU extensions in Makefiles ... NOTE
+GNU make is a SystemRequirements.
+```
+
+## rUnemploymentData (1.0.0)
+Maintainer: Ari Lamstein <arilamstein@gmail.com>  
+Bug reports: https://github.com/trulia/choroplethr/issues
+
+0 errors | 0 warnings | 1 note 
+
+```
+checking re-building of vignette outputs ... NOTE
+Error in re-building vignettes:
+  ...
+     Data comes from ?df_state_unemployment. The choropleth is rendered
+     with the function ?state_choropleth in the choroplethr package.
+
+_U_s_a_g_e:
+
+     state_unemployment_choropleth(year = 2013, buckets = 7, zoom = NULL)
+     
+... 8 lines ...
+
+    zoom: An optional vector of states to zoom in on. Elements of this
+          vector must exactly match the names of states as they appear
+          in the "region" column of ?state.regions in the
+          choroplethrMaps package.
+
+
+Quitting from lines 43-45 (a-state.Rmd) 
+Error: processing vignette 'a-state.Rmd' failed with diagnostics:
+attempt to apply non-function
+Execution halted
+```
+
+## runittotestthat (0.0-2)
+Maintainer: Richard Cotton <richierocks@gmail.com>
+
+0 errors | 0 warnings | 0 notes
+
+## rusda (1.0.6)
+Maintainer: Franz-Sebastian Krah <f.krah@mailbox.org>
+
+0 errors | 0 warnings | 0 notes
+
+## rvertnet (0.4.1)
+Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>  
+Bug reports: https://github.com/ropensci/rvertnet/issues
+
+0 errors | 0 warnings | 0 notes
+
+## rvest (0.3.1)
+Maintainer: Hadley Wickham <hadley@rstudio.com>
+
+0 errors | 0 warnings | 0 notes
+
+## rvg (0.0.8)
+Maintainer: David Gohel <david.gohel@ardata.fr>  
+Bug reports: https://github.com/davidgohel/rvg/issues
+
+0 errors | 0 warnings | 0 notes
+
+## rvgtest (0.7.4)
+Maintainer: Josef Leydold <josef.leydold@wu.ac.at>
+
+0 errors | 0 warnings | 1 note 
+
+```
+checking R code for possible problems ... NOTE
+rvgt.ftable : myrdist: no visible global function definition for ‘ur’
+uerror: no visible global function definition for ‘unuran.is.inversion’
+uerror : myaqdist: no visible global function definition for ‘uq’
+unuran.distr.class: no visible global function definition for
+  ‘unuran.details’
+xerror: no visible global function definition for ‘unuran.is.inversion’
+xerror : myaqdist: no visible global function definition for ‘uq’
+```
+
+## rwirelesscom (1.4.3)
+Maintainer: Alberto Gutierrez <algutier1@gmail.com>
+
+0 errors | 0 warnings | 0 notes
+
+## rYoutheria (1.0.0)
+Maintainer: Tom August <tomaug@ceh.ac.uk>  
+Bug reports: 
+        https://github.com/biologicalrecordscentre/rYoutheria/issues
+
+0 errors | 0 warnings | 0 notes
+
+## sadists (0.2.2)
+Maintainer: Steven E. Pav <shabbychef@gmail.com>  
+Bug reports: https://github.com/shabbychef/sadists/issues
+
+0 errors | 0 warnings | 0 notes
+
+## saeSim (0.7.0)
+Maintainer: Sebastian Warnholz <Sebastian.Warnholz@fu-berlin.de>  
+Bug reports: https://github.com/wahani/saeSim/issues
+
+0 errors | 0 warnings | 0 notes
+
+## sankey (1.0.0)
+Maintainer: Gabor Csardi <gcsardi@mango-solutions.com>  
+Bug reports: https://github.com/mangothecat/sankey/issues
+
+0 errors | 0 warnings | 0 notes
+
+## satellite (0.2.0)
+Maintainer: Tim Appelhans
+ <admin@environmentalinformatics-marburg.de>
+
+0 errors | 0 warnings | 0 notes
+
+## scales (0.4.0)
+Maintainer: Hadley Wickham <hadley@rstudio.com>  
+Bug reports: https://github.com/hadley/scales/issues
+
+0 errors | 0 warnings | 0 notes
+
+## SchemaOnRead (1.0.2)
+Maintainer: Michael North <north@anl.gov>
+
+0 errors | 0 warnings | 0 notes
+
+## SciencesPo (1.3.9)
+Maintainer: Daniel Marcelino <dmarcelino@live.com>  
+Bug reports: http://github.com/danielmarcelino/SciencesPo/issues
+
+0 errors | 1 warning  | 1 note 
+
+```
+checking whether package ‘SciencesPo’ can be installed ... WARNING
+Found the following significant warnings:
+  Warning: package ‘ggplot2’ was built under R version 3.2.4
+See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/SciencesPo.Rcheck/00install.out’ for details.
+
+checking re-building of vignette outputs ... NOTE
+Error in re-building vignettes:
+  ...
+Units                 Measurement System Units
+bhodrick93            Bekaert's and Hodrick's (1993) Data
+cathedrals            Cathedrals
+cgreene76             Christensen's and Greene's (1976) Data
+galton                Galton's Family Data on Human Stature.
+griliches76           Griliches's (1976) Data
+ltaylor96             Lothian's and Taylor's (1996) Data Set
+... 8 lines ...
+turnout               Turnout Data
+twins                 Burt's twin data
+words                 Word frequencies from Mosteller and Wallace
+
+Loading required package: SciencesPo
+initializing ... done
+
+Quitting from lines 395-399 (SciencesPo.Rmd) 
+Error: processing vignette 'SciencesPo.Rmd' failed with diagnostics:
+polygon edge not found
+Execution halted
+```
+
+## scorer (0.2.0)
+Maintainer: Paul Hendricks <paul.hendricks.2013@owu.edu>  
+Bug reports: https://github.com/paulhendricks/scorer/issues
+
+0 errors | 0 warnings | 0 notes
+
+## scoring (0.5-1)
+Maintainer: Ed Merkle <merklee@missouri.edu>
+
+0 errors | 0 warnings | 1 note 
+
+```
+checking S3 generic/method consistency ... NOTE
+Found the following apparent S3 methods exported but not registered:
+  calcscore.default calcscore.formula
+See section ‘Registering S3 methods’ in the ‘Writing R Extensions’
+manual.
+```
+
+## ScrabbleScore (1.0)
+Maintainer: Will Kurt <wckurt@gmail.com>
+
+0 errors | 0 warnings | 1 note 
+
+```
+checking DESCRIPTION meta-information ... NOTE
+License components which are templates and need '+ file LICENSE':
+  MIT License
+```
+
+## scrm (1.6.0-2)
+Maintainer: Paul Staab <develop@paulstaab.de>
+
+0 errors | 0 warnings | 0 notes
+
+## scrubr (0.1.0)
+Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>  
+Bug reports: https://github.com/ropenscilabs/scrubr/issues
+
+1 error  | 0 warnings | 0 notes
+
+```
+checking package dependencies ... ERROR
+Package required but not available: ‘qlcMatrix’
+
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
+```
+
+## sdcMicro (4.6.0)
+Maintainer: Matthias Templ <matthias.templ@gmail.com>
+
+0 errors | 0 warnings | 0 notes
+
+## sdcTable (0.20.3)
+Maintainer: Bernhard Meindl <bernhard.meindl@statistik.gv.at>  
+Bug reports: https://github.com/bernhard-da/sdcTable/issues
+
+1 error  | 0 warnings | 0 notes
+
+```
+checking whether package ‘sdcTable’ can be installed ... ERROR
+Installation failed.
+See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/sdcTable.Rcheck/00install.out’ for details.
+```
+
+## sdmvspecies (0.3.2)
+Maintainer: Xiaoquan Kong <u1mail2me@gmail.com>  
+Bug reports: https://github.com/howl-anderson/sdmvspecies/issues
+
+0 errors | 1 warning  | 0 notes
+
+```
+checking for executable files ... WARNING
+Found the following executable file:
+  inst/external/env/bio14.bil
+Source packages should not contain undeclared executable files.
+See section ‘Package structure’ in the ‘Writing R Extensions’ manual.
+```
+
+## searchable (0.3.3.1)
+Maintainer: Christopher Brown <chris.brown@decisionpatterns.com>  
+Bug reports: https://github.com/decisionpatterns/searchable/issues
+
+0 errors | 0 warnings | 0 notes
+
+## segmag (1.2.2)
+Maintainer: Frank Papenmeier <frank.papenmeier@uni-tuebingen.de>
+
+0 errors | 0 warnings | 0 notes
+
+## selectr (0.2-3)
+Maintainer: Simon Potter <simon@sjp.co.nz>  
+Bug reports: https://github.com/sjp/selectr/issues
+
+0 errors | 0 warnings | 0 notes
+
+## SEMID (0.2)
+Maintainer: Mathias Drton <md5@uw.edu>
+
+0 errors | 0 warnings | 0 notes
+
+## sensR (1.4-6)
+Maintainer: Per Bruun Brockhoff <perbb@dtu.dk>
+
+1 error  | 0 warnings | 0 notes
+
+```
+checking tests ... ERROR
+Running the tests in ‘tests/test-all.R’ failed.
+Last 13 lines of output:
+  
+  testthat results ================================================================
+  OK: 183 SKIPPED: 0 FAILED: 7
+  1. Failure: Test boundary values for d.prime0 (-1, 0, 1, Inf): (@test-discrim_pd0.R#35) 
+  2. Failure: Test boundary values for d.prime0 (-1, 0, 1, Inf): (@test-discrim_pd0.R#40) 
+  3. Failure: Test boundary values for pd0 (-1, 0, .2. 1. 2): (@test-discrim_pd0.R#55) 
+  4. Failure: Test boundary values for pd0 (-1, 0, .2. 1. 2): (@test-discrim_pd0.R#60) 
+  5. Failure: Printing alternative hypothesis in terms of d-prime (default): (@test-discrim_pd0.R#114) 
+  6. Failure: Test that alternative hypothesis uses d.prime/pd (@test-discrim_pd0.R#135) 
+  7. Failure: Test that alternative hypothesis uses d.prime/pd (@test-discrim_pd0.R#138) 
+  
+  Error: testthat unit tests failed
+  Execution halted
+```
+
+## seqMeta (1.6.5)
+Maintainer: Brian Davis <Brian.Davis281@gmail.com>  
+Bug reports: https://github.com/DavisBrian/seqMeta/issues
+
+0 errors | 0 warnings | 0 notes
+
+## seqminer (5.0)
+Maintainer: Xiaowei Zhan <zhanxw@gmail.com>
+
+0 errors | 0 warnings | 0 notes
+
+## sequences (0.5.9)
+Maintainer: Laurent Gatto <lg390@cam.ac.uk>
+
+0 errors | 0 warnings | 0 notes
+
+## seriation (1.2-0)
+Maintainer: Michael Hahsler <mhahsler@lyle.smu.edu>  
+Bug reports: https://github.com/mhahsler/seriation/issues
+
+0 errors | 0 warnings | 0 notes
+
+## seroincidence (1.0.5)
+Maintainer: Chantal Quinten <seroincidence@ecdc.europa.eu>
+
+0 errors | 0 warnings | 0 notes
+
+## settings (0.2.4)
+Maintainer: Mark van der Loo <mark.vanderloo@gmail.com>  
+Bug reports: https://github.com/markvanderloo/settings/issues
+
+0 errors | 0 warnings | 0 notes
+
+## sgd (1.1)
+Maintainer: Dustin Tran <dustin@cs.columbia.edu>  
+Bug reports: https://github.com/airoldilab/sgd/issues
+
+1 error  | 0 warnings | 0 notes
+
+```
+checking whether package ‘sgd’ can be installed ... ERROR
+Installation failed.
+See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/sgd.Rcheck/00install.out’ for details.
+```
+
+## shades (0.1.0)
+Maintainer: Jon Clayden <code@clayden.org>
+
+0 errors | 0 warnings | 0 notes
+
+## SharpeR (1.0.0)
+Maintainer: Steven E. Pav <shabbychef@gmail.com>  
+Bug reports: https://github.com/shabbychef/SharpeR/issues
+
+0 errors | 0 warnings | 0 notes
+
+## shazam (0.1.2)
+Maintainer: Jason Vander Heiden <jason.vanderheiden@yale.edu>  
+Bug reports: https://bitbucket.org/kleinstein/shazam/issues
+
+0 errors | 1 warning  | 0 notes
+
+```
+checking whether package ‘shazam’ can be installed ... WARNING
+Found the following significant warnings:
+  Warning: package ‘ggplot2’ was built under R version 3.2.4
+See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/shazam.Rcheck/00install.out’ for details.
+```
+
+## SHELF (1.1.0)
+Maintainer: Jeremy Oakley <j.oakley@sheffield.ac.uk>  
+Bug reports: https://github.com/OakleyJ/SHELF/issues
+
+0 errors | 0 warnings | 0 notes
+
+## shiny (0.13.1)
+Maintainer: Winston Chang <winston@rstudio.com>  
+Bug reports: https://github.com/rstudio/shiny/issues
+
+0 errors | 0 warnings | 1 note 
+
+```
+checking installed package size ... NOTE
+  installed size is  6.2Mb
+  sub-directories of 1Mb or more:
+    www   5.1Mb
+```
+
+## shinyAce (0.1.0)
+Maintainer: Jeff Allen <jeff@trestletech.com>  
+Bug reports: https://github.com/trestletech/shinyAce/issues
+
+0 errors | 0 warnings | 0 notes
+
+## shinyjs (0.4.0)
+Maintainer: Dean Attali <daattali@gmail.com>  
+Bug reports: https://github.com/daattali/shinyjs/issues
+
+0 errors | 0 warnings | 0 notes
+
+## shinyRGL (0.1.0)
+Maintainer: Jeff Allen <jeff@trestletech.com>  
+Bug reports: https://github.com/trestletech/shinyRGL/issues
+
+0 errors | 0 warnings | 0 notes
+
+## shinystan (2.1.0)
+Maintainer: Jonah Gabry <jsg2201@columbia.edu>  
+Bug reports: https://github.com/stan-dev/shinystan/issues/
+
+0 errors | 0 warnings | 0 notes
+
+## shinyTree (0.2.2)
+Maintainer: Jeff Allen <cran@trestletechnology.net>  
+Bug reports: https://github.com/trestletech/shinyTree/issues
+
+0 errors | 0 warnings | 0 notes
+
+## simmer (3.1.2)
+Maintainer: Iñaki Ucar <i.ucar86@gmail.com>  
+Bug reports: https://github.com/Bart6114/simmer/issues
+
+1 error  | 0 warnings | 0 notes
+
+```
+checking tests ... ERROR
+Running the tests in ‘tests/testthat.R’ failed.
+Last 13 lines of output:
+  > test_check("simmer")
+  1. Failure: the trajectory stores the right number of activities (@test-trajectory.R#76) 
+  `output` does not match ".*(13 activities.*Seize.*nurse.*1.*Timeout.*function.*Release.*nurse.*1.*Branch.*1.*6 activities.*Seize.*doctor.*function.*Timeout.*function.*Release.*doctor.*function.*Branch.*1.*3 activities.*Seize.*administration.*1.*Timeout.*1.*Release.*administration.*1.*Rollback.*1.*Branch.*1.*Rollback.*1.*Rollback.*function.*SetAttribute.*1.*SetAttribute.*function).*".
+  Actual value: ""
+  
+  
+  Trajectory: anonymous, 1 activities
+  testthat results ================================================================
+  OK: 192 SKIPPED: 0 FAILED: 1
+  1. Failure: the trajectory stores the right number of activities (@test-trajectory.R#76) 
+  
+  Error: testthat unit tests failed
+  Execution halted
+```
+
+## simplegraph (1.0.0)
+Maintainer: Gabor Csardi <gcsardi@mango-solutions.com>  
+Bug reports: https://github.com/mangothecat/simplegraph/issues
+
+0 errors | 0 warnings | 0 notes
+
+## simplr (0.1-1)
+Maintainer: Oliver Flasch <of@sourcewerk.de>
+
+0 errors | 0 warnings | 0 notes
+
+## simr (1.0.1)
+Maintainer: Peter Green <greenp@landcareresearch.co.nz>  
+Bug reports: https://github.com/pitakakariki/simr/issues
+
+1 error  | 0 warnings | 0 notes
+
+```
+checking whether package ‘simr’ can be installed ... ERROR
+Installation failed.
+See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/simr.Rcheck/00install.out’ for details.
+```
+
+## sisal (0.46)
+Maintainer: Mikko Korpela <mvkorpel@iki.fi>
+
+0 errors | 0 warnings | 0 notes
+
+## SixSigma (0.9-2)
+Maintainer: Emilio L. Cano <emilio.lopez@urjc.es>
+
+0 errors | 0 warnings | 0 notes
+
+## sjPlot (1.9.2)
+Maintainer: Daniel Lüdecke <d.luedecke@uke.de>  
+Bug reports: https://github.com/sjPlot/devel/issues
+
+1 error  | 0 warnings | 0 notes
+
+```
+checking whether package ‘sjPlot’ can be installed ... ERROR
+Installation failed.
+See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/sjPlot.Rcheck/00install.out’ for details.
+```
+
+## slackr (1.2)
+Maintainer: Bob Rudis <bob@rudis.net>  
+Bug reports: https://github.com/hrbrmstr/slackr/issues
+
+0 errors | 1 warning  | 0 notes
+
+```
+checking whether package ‘slackr’ can be installed ... WARNING
+Found the following significant warnings:
+  Warning: package ‘ggplot2’ was built under R version 3.2.4
+See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/slackr.Rcheck/00install.out’ for details.
+```
+
+## SLOPE (0.1.3)
+Maintainer: Evan Patterson <epatters@stanford.edu>
+
+0 errors | 0 warnings | 0 notes
+
+## smacpod (1.4.1)
+Maintainer: Joshua French <joshua.french@ucdenver.edu>
+
+0 errors | 0 warnings | 0 notes
+
+## smcUtils (0.2.2)
+Maintainer: Jarad Niemi <niemi@iastate.edu>
+
+0 errors | 0 warnings | 1 note 
+
+```
+checking Rd line widths ... NOTE
+Rd file 'resampling.Rd':
+  \usage lines wider than 90 characters:
+     residual.resample(   weights, num.samples = length(weights), engine="R", rrf = "stratified")
+
+These lines will be truncated in the PDF manual.
+```
+
+## smerc (0.2.2)
+Maintainer: Joshua French <joshua.french@ucdenver.edu>
+
+0 errors | 0 warnings | 0 notes
+
+## SmithWilsonYieldCurve (1.0.1)
+Maintainer: Phil Joubert <phil.joubert@not-normal-consulting.co.uk>
+
+0 errors | 0 warnings | 1 note 
+
+```
+checking DESCRIPTION meta-information ... NOTE
+Malformed Description field: should contain one or more complete sentences.
+```
+
+## smoof (1.3)
+Maintainer: Jakob Bossek <j.bossek@gmail.com>  
+Bug reports: https://github.com/jakobbossek/smoof/issues
+
+0 errors | 0 warnings | 0 notes
+
+## SNSequate (1.2.1)
+Maintainer: Jorge Gonzalez Burgos <jgonzale@mat.puc.cl>
+
+0 errors | 0 warnings | 0 notes
+
+## solr (0.1.6)
+Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>  
+Bug reports: http://www.github.com/ropensci/solr/issues
+
+0 errors | 0 warnings | 0 notes
+
+## solrium (0.3.0)
+Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>  
+Bug reports: http://www.github.com/ropensci/solrium/issues
+
+0 errors | 0 warnings | 0 notes
+
+## SortableHTMLTables (0.1-3)
+Maintainer: John Myles White <jmw@johnmyleswhite.com>
+
+0 errors | 0 warnings | 3 notes
+
+```
+checking for hidden files and directories ... NOTE
+Found the following hidden files and directories:
+  .gitignore
+These were most likely included in error. See section ‘Package
+structure’ in the ‘Writing R Extensions’ manual.
+
+checking DESCRIPTION meta-information ... NOTE
+Malformed Title field: should not end in a period.
+License components which are templates and need '+ file LICENSE':
+  MIT
+
+checking top-level files ... NOTE
+Non-standard files/directories found at top level:
+  ‘README.markdown’ ‘build_package.sh’ ‘upload.sh’
+```
+
+## sortinghat (0.1)
+Maintainer: John A. Ramey <johnramey@gmail.com>
+
+0 errors | 0 warnings | 0 notes
+
+## sorvi (0.7.26)
+Maintainer: Leo Lahti <louhos@googlegroups.com>  
+Bug reports: https://github.com/ropengov/sorvi/issues
+
+0 errors | 0 warnings | 0 notes
+
+## sourcetools (0.1.1)
+Maintainer: Kevin Ushey <kevinushey@gmail.com>
+
+0 errors | 0 warnings | 0 notes
+
+## SpaDES (1.1.1)
+Maintainer: Alex M Chubaty <alexander.chubaty@canada.ca>  
+Bug reports: https://github.com/PredictiveEcology/SpaDES/issues
+
+1 error  | 0 warnings | 0 notes
+
+```
+checking package dependencies ... ERROR
+Package required but not available: ‘secr’
+
+Package suggested but not available for checking: ‘fastshp’
+
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
+```
+
+## spaMM (1.7.2)
+Maintainer: François Rousset <francois.rousset@univ-montp2.fr>
+
+0 errors | 0 warnings | 0 notes
+
+## spareserver (1.0.1)
+Maintainer: Gabor Csardi <csardi.gabor@gmail.com>  
+Bug reports: https://github.com/metacran/spareserver/issues
+
+0 errors | 0 warnings | 0 notes
+
+## spark (1.0.1)
+Maintainer: Gabor Csardi <csardi.gabor@gmail.com>  
+Bug reports: https://github.com/gaborcsardi/spark/issues
+
+0 errors | 0 warnings | 0 notes
+
+## SparseGrid (0.8.2)
+Maintainer: Jelmer Ypma <uctpjyy@ucl.ac.uk>
+
+0 errors | 0 warnings | 1 note 
+
+```
+checking DESCRIPTION meta-information ... NOTE
+Malformed Description field: should contain one or more complete sentences.
+```
+
+## sparseHessianFD (0.2.0)
+Maintainer: Michael Braun <braunm@smu.edu>
+
+0 errors | 0 warnings | 0 notes
+
+## sparseMVN (0.2.0)
+Maintainer: Michael Braun <braunm@smu.edu>
+
+0 errors | 0 warnings | 1 note 
+
+```
+checking DESCRIPTION meta-information ... NOTE
+Malformed Title field: should not end in a period.
+```
+
+## spatialprobit (0.9-11)
+Maintainer: Stefan Wilhelm <wilhelm@financial.com>
+
+0 errors | 0 warnings | 0 notes
+
+## spcadjust (1.0)
+Maintainer: Axel Gandy <a.gandy@imperial.ac.uk>
+
+0 errors | 0 warnings | 0 notes
+
+## spduration (0.15.0)
+Maintainer: Andreas Beger <adbeger@gmail.com>
+
+0 errors | 0 warnings | 0 notes
+
+## spdynmod (1.1.3)
+Maintainer: Javier Martinez-Lopez <javi.martinez.lopez@gmail.com>  
+Bug reports: http://github.com/javimarlop/spdynmod/issues
+
+0 errors | 0 warnings | 0 notes
+
+## spiders (1.2)
+Maintainer: Edward A. Roualdes <eroualdes@csuchico.edu>
+
+0 errors | 0 warnings | 0 notes
+
+## spocc (0.4.5)
+Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>  
+Bug reports: https://github.com/ropensci/spocc/issues
+
+0 errors | 0 warnings | 0 notes
+
+## spoccutils (0.1.0)
+Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>  
+Bug reports: https://github.com/ropensci/spoccutils/issues
+
+0 errors | 1 warning  | 0 notes
+
+```
+checking whether package ‘spoccutils’ can be installed ... WARNING
+Found the following significant warnings:
+  Warning: package ‘ggplot2’ was built under R version 3.2.4
+  Warning: replacing previous import by ‘grid::unit’ when loading ‘spoccutils’
+See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/spoccutils.Rcheck/00install.out’ for details.
+```
+
+## srvyr (0.1.0)
+Maintainer: Greg Freedman <greg.freedman@gmail.com>  
+Bug reports: https://github.com/gergness/srvyr/issues
+
+0 errors | 0 warnings | 0 notes
+
+## sspse (0.5-1)
+Maintainer: Mark S. Handcock <handcock@stat.ucla.edu>
+
+0 errors | 0 warnings | 0 notes
+
+## StableEstim (2.0)
+Maintainer: Tarak Kharrat <tarak.kharrat@manchester.ac.uk>
+
+1 error  | 0 warnings | 0 notes
+
+```
+checking examples ... ERROR
+Running examples in ‘StableEstim-Ex.R’ failed
+The error most likely occurred in:
+
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+> ### Name: expect_almost_equal
+> ### Title: test approximate equality
+> ### Aliases: expect_almost_equal
+> ### Keywords: general-functions
+> 
+> ### ** Examples
+> 
+> x=1.1 ; y=1.5
+> expect_almost_equal(x,y,1) ## pass
+Error in match.arg(type, c("success", "failure", "error", "skip", "warning")) : 
+  'arg' must be NULL or a character vector
+Calls: expect_almost_equal ... expect_that -> condition -> expectation -> match.arg
+Execution halted
+```
+
+## statar (0.6.0)
+Maintainer: Matthieu Gomez <mattg@princeton.edu>  
+Bug reports: https://github.com/matthieugomez/statar/issues
+
+0 errors | 0 warnings | 0 notes
+
+## statebins (1.2.2)
+Maintainer: Bob Rudis <bob@rudis.net>  
+Bug reports: https://github.com/hrbrmstr/statebins/issues
+
+0 errors | 0 warnings | 0 notes
+
+## stationaRy (0.4.1)
+Maintainer: Richard Iannone <riannone@me.com>  
+Bug reports: https://github.com/rich-iannone/stationaRy/issues
+
+0 errors | 0 warnings | 1 note 
+
+```
+checking installed package size ... NOTE
+  installed size is  8.1Mb
+```
+
+## StatRank (0.0.6)
+Maintainer: Hossein Azari Soufiani <azari.hossein@gmail.com>
+
+0 errors | 0 warnings | 0 notes
+
+## stlplus (0.5.1)
+Maintainer: Ryan Hafen <rhafen@gmail.com>  
+Bug reports: https://github.com/hafen/stlplus/issues
+
+0 errors | 0 warnings | 0 notes
+
+## storr (1.0.0)
+Maintainer: Rich FitzJohn <rich.fitzjohn@gmail.com>
+
+1 error  | 0 warnings | 1 note 
+
+```
+checking examples ... ERROR
+Running examples in ‘storr-Ex.R’ failed
+The error most likely occurred in:
+
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+> ### Name: test_driver
+> ### Title: Test a storr driver
+> ### Aliases: test_driver
+> 
+> ### ** Examples
+> 
+> ## Testing the environment driver is nice and fast:
+> if (requireNamespace("testthat")) {
++   test_driver(function() driver_environment())
++ }
+Loading required namespace: testthat
+Error in test_driver(function() driver_environment()) : 
+  attempt to apply non-function
+Execution halted
+
+checking re-building of vignette outputs ... NOTE
+Error in re-building vignettes:
+  ...
+Quitting from lines 419-420 (drivers.Rmd) 
+Error: processing vignette 'drivers.Rmd' failed with diagnostics:
+attempt to apply non-function
+Execution halted
+
+```
+
+## stplanr (0.1.1)
+Maintainer: Robin Lovelace <rob00x@gmail.com>  
+Bug reports: https://github.com/ropensci/stplanr/issues
+
+0 errors | 0 warnings | 0 notes
+
+## stream (1.2-2)
+Maintainer: Michael Hahsler <mhahsler@lyle.smu.edu>  
+Bug reports: https://r-forge.r-project.org/projects/clusterds/
+
+0 errors | 0 warnings | 0 notes
+
+## stressr (1.0.0)
+Maintainer: Matt Barry <mrb@softisms.com>  
+Bug reports: https://github.com/mrbcuda/stressr/issues
+
+0 errors | 0 warnings | 1 note 
+
+```
+checking DESCRIPTION meta-information ... NOTE
+Malformed Title field: should not end in a period.
+```
+
+## stringdist (0.9.4.1)
+Maintainer: Mark van der Loo <mark.vanderloo@gmail.com>  
+Bug reports: https://github.com/markvanderloo/stringdist/issues
+
+0 errors | 0 warnings | 0 notes
+
+## stringr (1.0.0)
+Maintainer: Hadley Wickham <hadley@rstudio.com>
+
+0 errors | 0 warnings | 0 notes
+
+## strvalidator (1.6.0)
+Maintainer: Oskar Hansson <oskar.hansson@fhi.no>  
+Bug reports: https://github.com/OskarHansson/strvalidator/issues
+
+1 error  | 0 warnings | 0 notes
+
+```
+checking whether package ‘strvalidator’ can be installed ... ERROR
+Installation failed.
+See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/strvalidator.Rcheck/00install.out’ for details.
+```
+
+## stubthat (0.1.0)
+Maintainer: Sainath Adapa <adapasainath@gmail.com>  
+Bug reports: https://github.com/sainathadapa/stubthat/issues
+
+0 errors | 0 warnings | 0 notes
+
+## surveillance (1.11.0)
+Maintainer: Sebastian Meyer <Sebastian.Meyer@ifspm.uzh.ch>  
+Bug reports: https://r-forge.r-project.org/tracker/?group_id=45
+
+0 errors | 0 warnings | 1 note 
+
+```
+checking package dependencies ... NOTE
+Package suggested but not available for checking: ‘INLA’
+```
+
+## sValues (0.1.4)
+Maintainer: Carlos Cinelli <carloscinelli@hotmail.com>  
+Bug reports: https://github.com/carloscinelli/sValues
+
+0 errors | 0 warnings | 0 notes
+
+## svd (0.4)
+Maintainer: Anton Korobeynikov <anton@korobeynikov.info>
+
+0 errors | 0 warnings | 0 notes
+
+## svglite (1.1.0)
+Maintainer: Hadley Wickham <hadley@rstudio.com>  
+Bug reports: https://github.com/hadley/svglite/issues
+
+0 errors | 0 warnings | 0 notes
+
+## svyPVpack (0.1-1)
+Maintainer: Manuel Reif <Manuel.Reif@statistik.gv.at>
+
+0 errors | 0 warnings | 0 notes
+
+## SwarmSVM (0.1)
+Maintainer: Tong He <hetong007@gmail.com>
+
+0 errors | 0 warnings | 0 notes
+
+## sweidnumbr (1.1.0)
+Maintainer: Mans Magnusson <mons.magnusson@gmail.com>  
+Bug reports: https://github.com/rOpenGov/sweidnumbr/issues
+
+0 errors | 0 warnings | 0 notes
+
+## swirl (2.2.21)
+Maintainer: Nick Carchedi <nick.carchedi@gmail.com>
+
+0 errors | 0 warnings | 1 note 
+
+```
+checking DESCRIPTION meta-information ... NOTE
+Malformed Title field: should not end in a period.
+```
+
+## swirlify (0.4.1)
+Maintainer: Sean Kross <sean@seankross.com>
+
+0 errors | 0 warnings | 0 notes
+
+## systemicrisk (0.3)
+Maintainer: Axel Gandy <a.gandy@imperial.ac.uk>
+
+0 errors | 0 warnings | 0 notes
+
+## syuzhet (0.2.0)
+Maintainer: Matthew Jockers <mjockers@gmail.com>
+
+0 errors | 0 warnings | 0 notes
+
+## tableone (0.7.3)
+Maintainer: Kazuki Yoshida <kazukiyoshida@mail.harvard.edu>
+
+0 errors | 0 warnings | 0 notes
+
+## tadaatoolbox (0.9.0)
+Maintainer: Lukas Burk <lukas@quantenbrot.de>  
+Bug reports: https://github.com/tadaadata/tadaatoolbox/issues
+
+1 error  | 0 warnings | 0 notes
+
+```
+checking whether package ‘tadaatoolbox’ can be installed ... ERROR
+Installation failed.
+See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/tadaatoolbox.Rcheck/00install.out’ for details.
+```
+
+## TauStar (1.1.0)
+Maintainer: Luca Weihs <lucaw@uw.edu>
+
+0 errors | 0 warnings | 0 notes
+
+## taxize (0.7.0)
+Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>  
+Bug reports: https://github.com/ropensci/taxize/issues
+
+0 errors | 0 warnings | 0 notes
+
+## tbdiag (0.1)
+Maintainer: Matt Parker <mattmparker@gmail.com>
+
+0 errors | 0 warnings | 1 note 
+
+```
+checking DESCRIPTION meta-information ... NOTE
+License components which are templates and need '+ file LICENSE':
+  MIT
+```
+
+## tester (0.1.7)
+Maintainer: Gaston Sanchez <gaston.stat@gmail.com>
+
+0 errors | 0 warnings | 0 notes
+
+## testthatsomemore (0.1)
+Maintainer: Robert Krzyzanowski <technoguyrob@gmail.com>
+
+1 error  | 0 warnings | 0 notes
+
+```
+checking examples ... ERROR
+Running examples in ‘testthatsomemore-Ex.R’ failed
+The error most likely occurred in:
+
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+> ### Name: assert
+> ### Title: Explicitly state that we expect no errors to occur.
+> ### Aliases: assert
+> 
+> ### ** Examples
+> 
+> assert(1 + 1) # This will throw no error.
+> stopifnot(is(tryCatch(error = identity, assert(not_existent)), 'error'))
+Error: is(result, "error") isn't false.
+Execution halted
+```
+
+## text2vec (0.2.0)
+Maintainer: Dmitriy Selivanov <selivanov.dmitriy@gmail.com>  
+Bug reports: https://github.com/dselivanov/text2vec/issues
+
+0 errors | 0 warnings | 1 note 
+
+```
+checking for GNU extensions in Makefiles ... NOTE
+GNU make is a SystemRequirements.
+```
+
+## textreg (0.1.3)
+Maintainer: Luke Miratrix <lmiratrix@stat.harvard.edu>
+
+0 errors | 0 warnings | 0 notes
+
+## textreuse (0.1.2)
+Maintainer: Lincoln Mullen <lincoln@lincolnmullen.com>  
+Bug reports: https://github.com/ropensci/textreuse/issues
+
+1 error  | 0 warnings | 0 notes
+
+```
+checking tests ... ERROR
+Running the tests in ‘tests/testthat.R’ failed.
+Last 13 lines of output:
+  
+  2. Failure: prints sensibly (@test-TextReuseCorpus.R#46) -----------------------
+  `output` does not match "Number of documents: 3".
+  Actual value: ""
+  
+  
+  testthat results ================================================================
+  OK: 142 SKIPPED: 2 FAILED: 2
+  1. Failure: prints sensibly (@test-TextReuseCorpus.R#45) 
+  2. Failure: prints sensibly (@test-TextReuseCorpus.R#46) 
+  
+  Error: testthat unit tests failed
+  Execution halted
+```
+
+## TFMPvalue (0.0.6)
+Maintainer: Ge Tan <ge.tan09@imperial.ac.uk>  
+Bug reports: https://github.com/ge11232002/TFMPvalue/issues
+
+0 errors | 0 warnings | 0 notes
+
+## threewords (0.1.0)
+Maintainer: Oliver Keyes <ironholds@gmail.com>
+
+0 errors | 0 warnings | 0 notes
+
+## tidyjson (0.2.1)
+Maintainer: Jeremy Stanley <jeremy.stanley@gmail.com>
+
+0 errors | 0 warnings | 0 notes
+
+## tidyr (0.4.1)
+Maintainer: Hadley Wickham <hadley@rstudio.com>  
+Bug reports: https://github.com/hadley/tidyr/issues
+
+0 errors | 0 warnings | 0 notes
+
+## tigris (0.2.2)
+Maintainer: Kyle Walker <kyle.walker@tcu.edu>
+
+0 errors | 1 warning  | 0 notes
+
+```
+checking whether package ‘tigris’ can be installed ... WARNING
+Found the following significant warnings:
+  Warning: replacing previous import by ‘sp::nowrapSpatialLines’ when loading ‘tigris’
+See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/tigris.Rcheck/00install.out’ for details.
+```
+
+## tikzDevice (0.10-1)
+Maintainer: Kirill Müller <krlmlr+r@mailbox.org>  
+Bug reports: https://github.com/yihui/tikzDevice/issues
+
+0 errors | 0 warnings | 0 notes
+
+## TimeProjection (0.2.0)
+Maintainer: Jeffrey Wong <jeff.ct.wong@gmail.com>
+
+0 errors | 0 warnings | 2 notes
+
+```
+checking dependencies in R code ... NOTE
+'library' or 'require' calls in package code:
+  ‘ggplot2’ ‘plyr’
+  Please use :: or requireNamespace() instead.
+  See section 'Suggested packages' in the 'Writing R Extensions' manual.
+Packages in Depends field not imported from:
+  ‘Matrix’ ‘lubridate’ ‘timeDate’
+  These packages need to be imported from (in the NAMESPACE file)
+  for when this namespace is loaded but not attached.
+
+checking R code for possible problems ... NOTE
+is.Bizday: no visible global function definition for ‘isWeekday’
+plotCalendarHeatmap: no visible global function definition for ‘ddply’
+plotCalendarHeatmap: no visible global function definition for ‘.’
+plotCalendarHeatmap: no visible binding for global variable ‘year’
+plotCalendarHeatmap: no visible binding for global variable ‘month’
+plotCalendarHeatmap: no visible binding for global variable ‘week’
+plotCalendarHeatmap: no visible global function definition for ‘ggplot’
+plotCalendarHeatmap: no visible global function definition for ‘aes’
+plotCalendarHeatmap: no visible binding for global variable ‘monthweek’
+plotCalendarHeatmap: no visible binding for global variable ‘weekday’
+plotCalendarHeatmap: no visible global function definition for
+  ‘geom_tile’
+plotCalendarHeatmap: no visible global function definition for
+  ‘facet_grid’
+plotCalendarHeatmap: no visible global function definition for
+  ‘scale_fill_gradientn’
+projectDate: no visible global function definition for ‘holidayNYSE’
+projectDate: no visible global function definition for
+  ‘sparse.model.matrix’
+```
+
+## tm.plugin.webmining (1.3)
+Maintainer: Mario Annau <mario.annau@gmail.com>  
+Bug reports: https://github.com/mannau/tm.plugin.webmining/issues
+
+0 errors | 0 warnings | 0 notes
+
+## tmod (0.24)
+Maintainer: January Weiner <january.weiner@gmail.com>
+
+1 error  | 0 warnings | 1 note 
+
+```
+checking tests ... ERROR
+Running the tests in ‘tests/testthat.R’ failed.
+Last 13 lines of output:
+  
+  2. Failure: tmod is sane (@test_data.R#8) --------------------------------------
+  `output` does not match "606 modules, 12712 genes".
+  Actual value: ""
+  
+  
+  testthat results ================================================================
+  OK: 15 SKIPPED: 0 FAILED: 2
+  1. Failure: tmod is sane (@test_data.R#7) 
+  2. Failure: tmod is sane (@test_data.R#8) 
+  
+  Error: testthat unit tests failed
+  Execution halted
+
+checking package dependencies ... NOTE
+Package suggested but not available for checking: ‘org.Hs.eg.db’
+```
+
+## toaster (0.4.2)
+Maintainer: Gregory Kanevsky <gregory.kanevsky@teradata.com>  
+Bug reports: https://github.com/teradata-aster-field/toaster/issues
+
+1 error  | 0 warnings | 0 notes
+
+```
+checking package dependencies ... ERROR
+Package required but not available: ‘RODBC’
+
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
+```
+
+## toOrdinal (0.0-4)
+Maintainer: Damian W. Betebenner <dbetebenner@nciea.org>  
+Bug reports: https://github.com/CenterForAssessment/toOrdinal/issues
+
+1 error  | 0 warnings | 0 notes
+
+```
+checking tests ... ERROR
+Running the tests in ‘tests/testthat.R’ failed.
+Last 13 lines of output:
+  
+  2. Failure: toOrdinal correctly errors when given a negative integer. (@test_toOrdinal_swedish.R#27) 
+  error$message does not match "Error : Number supplied to 'toOrdinal' must be a positive integer.\\n".
+  Actual value: "Number supplied to 'toOrdinal' must be a positive integer."
+  
+  
+  testthat results ================================================================
+  OK: 3 SKIPPED: 0 FAILED: 2
+  1. Failure: toOrdinal correctly errors when given a negative integer. (@test_toOrdinal_english.R#18) 
+  2. Failure: toOrdinal correctly errors when given a negative integer. (@test_toOrdinal_swedish.R#27) 
+  
+  Error: testthat unit tests failed
+  Execution halted
+```
+
+## tourr (0.5.4)
+Maintainer: Hadley Wickham <h.wickham@gmail.com>  
+Bug reports: https://github.com/ggobi/tourr/
+
+0 errors | 0 warnings | 1 note 
+
+```
+checking dependencies in R code ... NOTE
+'library' or 'require' calls in package code:
+  ‘TeachingDemos’ ‘ash’
+  Please use :: or requireNamespace() instead.
+  See section 'Suggested packages' in the 'Writing R Extensions' manual.
+```
+
+## trackeR (0.0.1)
+Maintainer: Hannah Frick <h.frick@ucl.ac.uk>
+
+0 errors | 0 warnings | 0 notes
+
+## traitr (0.14)
+Maintainer: John Verzani <jverzani@gmail.com>
+
+0 errors | 0 warnings | 1 note 
+
+```
+checking DESCRIPTION meta-information ... NOTE
+Malformed Title field: should not end in a period.
+```
+
+## traits (0.1.2)
+Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>  
+Bug reports: http://www.github.com/ropensci/traits/issues
+
+0 errors | 0 warnings | 0 notes
+
+## treatSens (2.0.1)
+Maintainer: Nicole Bohme Carnegie <carnegin@uwm.edu>  
+Bug reports: https://github.com/vdorie/treatSens/issues
+
+0 errors | 0 warnings | 0 notes
+
+## treebase (0.1.2)
+Maintainer: Carl Boettiger <cboettig@gmail.com>  
+Bug reports: http://www.github.com/ropensci/treebase/issues
+
+0 errors | 0 warnings | 0 notes
+
+## treeclim (1.0.13)
+Maintainer: Christian Zang <christian.zang@wzw.tum.de>
+
+0 errors | 0 warnings | 0 notes
+
+## treescape (1.8.15)
+Maintainer: Michelle Kendall <m.kendall@imperial.ac.uk>
+
+0 errors | 1 warning  | 0 notes
+
+```
+checking whether package ‘treescape’ can be installed ... WARNING
+Found the following significant warnings:
+  Warning: package ‘ade4’ was built under R version 3.2.4
+See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/treescape.Rcheck/00install.out’ for details.
+```
+
+## trustOptim (0.8.5)
+Maintainer: Michael Braun <braunm@smu.edu>
+
+0 errors | 0 warnings | 0 notes
+
+## TSdist (3.2)
+Maintainer: Usue Mori <usue.mori@ehu.es>
+
+0 errors | 0 warnings | 0 notes
+
+## tsna (0.1.3)
+Maintainer: Skye Bender-deMoll <skyebend@uw.edu>
+
+0 errors | 0 warnings | 0 notes
+
+## TSP (1.1-4)
+Maintainer: Michael Hahsler <mhahsler@lyle.smu.edu>  
+Bug reports: https://github.com/mhahsler/TSP/issues
+
+0 errors | 0 warnings | 0 notes
+
+## tsPI (1.0.0)
+Maintainer: Jouni Helske <jouni.helske@jyu.fi>  
+Bug reports: https://github.com/helske/tsPI/issues
+
+1 error  | 0 warnings | 0 notes
+
+```
+checking whether package ‘tsPI’ can be installed ... ERROR
+Installation failed.
+See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/tsPI.Rcheck/00install.out’ for details.
+```
+
+## tspmeta (1.2)
+Maintainer: Bernd Bischl <bernd_bischl@gmx.net>  
+Bug reports: https://github.com/berndbischl/tspmeta/issues
+
+0 errors | 1 warning  | 0 notes
+
+```
+checking whether package ‘tspmeta’ can be installed ... WARNING
+Found the following significant warnings:
+  Warning: package ‘ggplot2’ was built under R version 3.2.4
+See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/tspmeta.Rcheck/00install.out’ for details.
+```
+
+## tufterhandout (1.2.1)
+Maintainer: Michael C Sachs <sachsmc@gmail.com>  
+Bug reports: http://github.com/sachsmc/tufterhandout/issues
+
+0 errors | 0 warnings | 1 note 
+
+```
+checking DESCRIPTION meta-information ... NOTE
+Malformed Description field: should contain one or more complete sentences.
+```
+
+## tumgr (0.0.4)
+Maintainer: Julia Wilkerson <jmwilkers@outlook.com>
+
+0 errors | 0 warnings | 0 notes
+
+## turner (0.1.7)
+Maintainer: Gaston Sanchez <gaston.stat@gmail.com>
+
+0 errors | 0 warnings | 0 notes
+
+## tvm (0.3.0)
+Maintainer: Juan Manuel Truppia <jmtruppia@gmail.com>
+
+0 errors | 0 warnings | 0 notes
+
+## umx (1.1.1)
+Maintainer: Timothy C Bates <timothy.c.bates@gmail.com>  
+Bug reports: http://github.com/tbates/umx/issues
+
+0 errors | 1 warning  | 0 notes
+
+```
+checking whether package ‘umx’ can be installed ... WARNING
+Found the following significant warnings:
+  Warning: package ‘OpenMx’ was built under R version 3.2.4
+See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/umx.Rcheck/00install.out’ for details.
+```
+
+## UNF (2.0.1)
+Maintainer: Thomas Leeper <thosjleeper@gmail.com>  
+Bug reports: https://github.com/leeper/UNF/issues
+
+0 errors | 0 warnings | 0 notes
+
+## uniqtag (1.0)
+Maintainer: Shaun Jackman <sjackman@gmail.com>  
+Bug reports: https://github.com/sjackman/uniqtag/issues
+
+0 errors | 0 warnings | 0 notes
+
+## unitedR (0.2)
+Maintainer: David Schindler <dv.schindler@gmail.com>
+
+0 errors | 0 warnings | 0 notes
+
+## uptimeRobot (1.0.0)
+Maintainer: Gabriele Baldassarre <gabriele@gabrielebaldassarre.com>  
+Bug reports: https://github.com/theclue/uptimeRobot/issues
+
+0 errors | 0 warnings | 0 notes
+
+## urlshorteneR (0.9.2)
+Maintainer: John Malc <cincenko@outlook.com>  
+Bug reports: https://github.com/dmpe/urlshorteneR/issues
+
+0 errors | 0 warnings | 0 notes
+
+## urltools (1.3.2)
+Maintainer: Oliver Keyes <ironholds@gmail.com>  
+Bug reports: https://github.com/Ironholds/urltools/issues
+
+0 errors | 0 warnings | 1 note 
+
+```
+checking data for non-ASCII characters ... NOTE
+  Note: found 393 marked UTF-8 strings
+```
+
+## USAboundaries (0.2.0)
+Maintainer: Lincoln Mullen <lincoln@lincolnmullen.com>  
+Bug reports: https://github.com/ropensci/USAboundaries/issues
+
+0 errors | 0 warnings | 1 note 
+
+```
+checking package dependencies ... NOTE
+Package suggested but not available for checking: ‘USAboundariesData’
+```
+
+## useful (1.2.0)
+Maintainer: Jared P. Lander <packages@jaredlander.com>
+
+1 error  | 1 warning  | 0 notes
+
+```
+checking tests ... ERROR
+Running the tests in ‘tests/testthat.R’ failed.
+Last 13 lines of output:
+  `output` does not match "Mean relative difference: 5e-08".
+  Actual value: ""
+  
+  
+  testthat results ================================================================
+  OK: 324 SKIPPED: 0 FAILED: 4
+  1. Failure: simple.impute.default properly imputes the mean (@test-simple-impute.r#32) 
+  2. Failure: simple.impute.default properly imputes the mean (@test-simple-impute.r#35) 
+  3. Failure: simple.impute.default properly imputes the mean (@test-simple-impute.r#38) 
+  4. Failure: simple.impute.default properly imputes the mean (@test-simple-impute.r#41) 
+  
+  Error: testthat unit tests failed
+  Execution halted
+
+checking whether package ‘useful’ can be installed ... WARNING
+Found the following significant warnings:
+  Warning: package ‘ggplot2’ was built under R version 3.2.4
+See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/useful.Rcheck/00install.out’ for details.
+```
+
+## V8 (1.0.0)
+Maintainer: Jeroen Ooms <jeroen.ooms@stat.ucla.edu>  
+Bug reports: https://github.com/jeroenooms/v8/issues
+
+1 error  | 0 warnings | 0 notes
+
+```
+checking whether package ‘V8’ can be installed ... ERROR
+Installation failed.
+See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/V8.Rcheck/00install.out’ for details.
+```
+
+## validate (0.1.3)
+Maintainer: Mark van der Loo <mark.vanderloo@gmail.com>  
+Bug reports: https://github.com/data-cleaning/validate/issues
+
+0 errors | 0 warnings | 0 notes
+
+## varian (0.2.2)
+Maintainer: Joshua F. Wiley <josh@elkhartgroup.com>  
+Bug reports: https://github.com/ElkhartGroup/varian/issues
+
+0 errors | 1 warning  | 0 notes
+
+```
+checking whether package ‘varian’ can be installed ... WARNING
+Found the following significant warnings:
+  Warning: package ‘ggplot2’ was built under R version 3.2.4
+See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/varian.Rcheck/00install.out’ for details.
+```
+
+## vartors (0.2.6)
+Maintainer: Joris Muller <joris.muller@etu.unistra.fr>  
+Bug reports: https://github.com/jomuller/vartors/issues/new
+
+1 error  | 0 warnings | 1 note 
+
+```
+checking tests ... ERROR
+Running the tests in ‘tests/test-all.R’ failed.
+Last 13 lines of output:
+  OK: 102 SKIPPED: 0 FAILED: 8
+  1. Failure: rep_columns_names should be placed properly (@test-DatabaseDef.R#35) 
+  2. Failure: numeric var for Rmd_fr template (@test-Rmd_fr_template.R#21) 
+  3. Failure: add default values (@test-VariableDef.R#83) 
+  4. Failure: add default values (@test-VariableDef.R#84) 
+  5. Failure: DatabaseDef create_script methods (@test-create_script.R#49) 
+  6. Failure: header and footer could be turn off (@test-create_script.R#71) 
+  7. Failure: header and footer could be turn off (@test-create_script.R#74) 
+  8. Failure: fix7 : when no label given with level, names=levels (@test-create_script.R#79) 
+  
+  Error: testthat unit tests failed
+  In addition: There were 31 warnings (use warnings() to see them)
+  Execution halted
+
+checking R code for possible problems ... NOTE
+descvars_skeleton: no visible binding for global variable ‘example_df’
+```
+
+## vcfR (1.0.0)
+Maintainer: Brian J. Knaus <briank.lists@gmail.com>
+
+0 errors | 0 warnings | 0 notes
+
+## vdmR (0.2.2)
+Maintainer: Tomokazu Fujino <fujino@fwu.ac.jp>
+
+0 errors | 0 warnings | 0 notes
+
+## vegdata (0.8.7)
+Maintainer: Florian Jansen <jansen@uni-greifswald.de>
+
+0 errors | 0 warnings | 0 notes
+
+## VennDiagram (1.6.16)
+Maintainer: Paul Boutros <Paul.Boutros@oicr.on.ca>
+
+1 error  | 0 warnings | 0 notes
+
+```
+checking tests ... ERROR
+Running the tests in ‘tests/test-all.R’ failed.
+Last 13 lines of output:
+  1. Error: Case colour of five categories (@test-Five.R#78) 
+  2. Error: Case colour of four categories (@test-Four.R#60) 
+  3. Error: Case simple of one category (@test-One.R#55) 
+  4. Error: Case colour of one category (@test-One.R#55) 
+  5. Error: Case default of three categories (@test-Three.R#401) 
+  6. Error: Case colour-default of three categories (@test-Three.R#401) 
+  7. Error: Case 001 of three categories (@test-Three.R#401) 
+  8. Error: Case 010 of three categories (@test-Three.R#401) 
+  9. Error: Case 011A of three categories (@test-Three.R#401) 
+  1. ...
+  
+  Error: testthat unit tests failed
+  Execution halted
+```
+
+## vines (1.1.4)
+Maintainer: Yasser Gonzalez-Fernandez <ygonzalezfernandez@gmail.com>
+
+0 errors | 0 warnings | 0 notes
+
+## vipor (0.3.2)
+Maintainer: Scott Sherrill-Mix <shescott@upenn.edu>
+
+0 errors | 0 warnings | 0 notes
+
+## VSURF (1.0.2)
+Maintainer: Robin Genuer <Robin.Genuer@isped.u-bordeaux2.fr>  
+Bug reports: https://github.com/robingenuer/VSURF/issues
+
+0 errors | 0 warnings | 0 notes
+
+## VTrack (1.11)
+Maintainer: Ross Dwyer <ross.dwyer@uq.edu.au>
+
+0 errors | 0 warnings | 0 notes
+
+## vtreat (0.5.22)
+Maintainer: John Mount <jmount@win-vector.com>
+
+0 errors | 0 warnings | 0 notes
+
+## waffle (0.5.0)
+Maintainer: Bob Rudis <bob@rudis.net>  
+Bug reports: https://github.com/hrbrmstr/waffle/issues
+
+0 errors | 1 warning  | 0 notes
+
+```
+checking whether package ‘waffle’ can be installed ... WARNING
+Found the following significant warnings:
+  Warning: package ‘ggplot2’ was built under R version 3.2.4
+See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/waffle.Rcheck/00install.out’ for details.
+```
+
+## wakefield (0.2.1)
+Maintainer: Tyler Rinker <tyler.rinker@gmail.com>  
+Bug reports: https://github.com/trinker/wakefield/issues
+
+0 errors | 0 warnings | 0 notes
+
+## walkr (0.3.3)
+Maintainer: Andy Yao <andy.yao17@gmail.com>  
+Bug reports: https://github.com/andyyao95/walkr/issues
+
+0 errors | 1 warning  | 0 notes
+
+```
+checking whether package ‘walkr’ can be installed ... WARNING
+Found the following significant warnings:
+  Warning: package ‘ggplot2’ was built under R version 3.2.4
+See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/walkr.Rcheck/00install.out’ for details.
+```
+
+## Wats (0.10.3)
+Maintainer: Will Beasley <wibeasley@hotmail.com>  
+Bug reports: https://github.com/OuhscBbmc/Wats/issues
+
+0 errors | 0 warnings | 0 notes
+
+## weatherData (0.4.1)
+Maintainer: Ram Narasimhan <ramnarasimhan@gmail.com>
+
+0 errors | 0 warnings | 1 note 
+
+```
+checking R code for possible problems ... NOTE
+getStationCode: no visible binding for global variable
+  ‘USAirportWeatherStations’
+getStationCode: no visible binding for global variable ‘IntlWxStations’
+```
+
+## webchem (0.1.0.0)
+Maintainer: Eduard Szöcs <eduardszoecs@gmail.com>  
+Bug reports: https://github.com/ropensci/webchem/issues
+
+0 errors | 0 warnings | 0 notes
+
+## webreadr (0.4.0)
+Maintainer: Oliver Keyes <ironholds@gmail.com>  
+Bug reports: https://github.com/Ironholds/webreadr/issues
+
+0 errors | 0 warnings | 0 notes
+
+## webuse (0.1.2)
+Maintainer: Thomas J. Leeper <thosjleeper@gmail.com>  
+Bug reports: https://github.com/leeper/webuse/issues
+
+0 errors | 0 warnings | 0 notes
+
+## wellknown (0.1.0)
+Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>  
+Bug reports: https://github.com/ropensci/wellknown/issues
+
+0 errors | 0 warnings | 0 notes
+
+## wgsea (1.8)
+Maintainer: Chris Wallace <chris.wallace@cimr.cam.ac.uk>
+
+0 errors | 0 warnings | 2 notes
+
+```
+checking dependencies in R code ... NOTE
+Package in Depends field not imported from: ‘snpStats’
+  These packages need to be imported from (in the NAMESPACE file)
+  for when this namespace is loaded but not attached.
+
+checking R code for possible problems ... NOTE
+pairtest: no visible global function definition for ‘p.value’
+pairtest: no visible global function definition for ‘single.snp.tests’
+```
+
+## WHO (0.1)
+Maintainer: Eric Persson <expersso5@gmail.com>  
+Bug reports: https://www.github.com/expersso/WHO/issues
+
+0 errors | 0 warnings | 0 notes
+
+## whoami (1.1.1)
+Maintainer: Gabor Csardi <csardi.gabor@gmail.com>  
+Bug reports: https://github.com/gaborcsardi/whoami/issues
+
+0 errors | 0 warnings | 0 notes
+
+## whoapi (0.1.0)
+Maintainer: Oliver Keyes <ironholds@gmail.com>
+
+0 errors | 0 warnings | 0 notes
+
+## WikidataR (1.0.1)
+Maintainer: Oliver Keyes <ironholds@gmail.com>  
+Bug reports: https://github.com/Ironholds/WikidataR/issues
+
+0 errors | 0 warnings | 0 notes
+
+## wikipediatrend (1.1.7)
+Maintainer: Peter Meissner <retep.meissner@gmail.com>  
+Bug reports: https://github.com/petermeissner/wikipediatrend/issues
+
+1 error  | 0 warnings | 2 notes
+
+```
+checking tests ... ERROR
+Running the tests in ‘tests/testthat.R’ failed.
+Last 13 lines of output:
+  5: as.vector(object)
+  6: Ops.data.frame(dings, dongs)
+  7: matrix(unlist(value, recursive = FALSE, use.names = FALSE), nrow = nr, dimnames = list(rn, 
+         cn))
+  
+  testthat results ================================================================
+  OK: 63 SKIPPED: 0 FAILED: 3
+  1. Failure: normal usage (@test_caching_gathering.R#27) 
+  2. Failure: setting cache file (@test_caching_gathering.R#39) 
+  3. Error: cache reset (@test_caching_gathering.R#64) 
+  
+  Error: testthat unit tests failed
+  Execution halted
+
+checking package dependencies ... NOTE
+Packages suggested but not available for checking:
+  ‘AnomalyDetection’ ‘BreakoutDetection’
+
+checking re-building of vignette outputs ... NOTE
+Error in re-building vignettes:
+  ...
+http://stats.grok.se/json/en/201602/Main_page
+Quitting from lines 107-115 (using-wikipediatrend.Rmd) 
+Error: processing vignette 'using-wikipediatrend.Rmd' failed with diagnostics:
+Breaks and labels are different lengths
+Execution halted
+
+```
+
+## WikipediR (1.3.0)
+Maintainer: Oliver Keyes <ironholds@gmail.com>  
+Bug reports: https://github.com/Ironholds/WikipediR/issues
+
+0 errors | 0 warnings | 0 notes
+
+## withr (1.0.1)
+Maintainer: Jim Hester <james.f.hester@gmail.com>  
+Bug reports: http://github.com/jimhester/withr/issues
+
+0 errors | 0 warnings | 0 notes
+
+## wkb (0.2-0)
+Maintainer: Ian Cook <icook@tibco.com>  
+Bug reports: https://github.com/ianmcook/wkb/issues
+
+0 errors | 0 warnings | 0 notes
+
+## wppExplorer (1.7-1)
+Maintainer: Hana Sevcikova <hanas@uw.edu>
+
+0 errors | 0 warnings | 0 notes
+
+## wrassp (0.1.3)
+Maintainer: Raphael Winkelmann <raphael@phonetik.uni-muenchen.de>  
+Bug reports: https://github.com/IPS-LMU/wrassp/issues
+
+0 errors | 0 warnings | 1 note 
+
+```
+checking files in ‘vignettes’ ... NOTE
+The following directory looks like a leftover from 'knitr':
+  ‘figure’
+Please remove from your package.
+```
+
+## wrswoR (1.0-1)
+Maintainer: Kirill Müller <krlmlr+r@mailbox.org>  
+Bug reports: https://github.com/krlmlr/wrswoR/issues
+
+0 errors | 0 warnings | 0 notes
+
+## WufooR (0.5.9)
+Maintainer: John Malc <cincenko@outlook.com>  
+Bug reports: https://github.com/dmpe/wufoor/issues
+
+0 errors | 0 warnings | 0 notes
+
+## XiMpLe (0.03-23)
+Maintainer: Meik Michalke <meik.michalke@hhu.de>
+
+0 errors | 0 warnings | 0 notes
+
+## xml2 (0.1.2)
+Maintainer: Hadley Wickham <hadley@rstudio.com>  
+Bug reports: https://github.com/hadley/xml2/issues/
+
+0 errors | 0 warnings | 0 notes
+
+## xoi (0.66-9)
+Maintainer: Karl W Broman <kbroman@biostat.wisc.edu>
+
+0 errors | 0 warnings | 0 notes
+
+## yakmoR (0.1.1)
+Maintainer: Aydin Demircioglu <aydin.demircioglu@ini.rub.de>
+
+0 errors | 0 warnings | 0 notes
+
+## yaml (2.1.13)
+Maintainer: Jeremy Stephens <jeremy.stephens@vanderbilt.edu>
+
+0 errors | 0 warnings | 0 notes
+
+## yCrypticRNAs (0.99.2)
+Maintainer: Nicole Uwimana <nicole.uwimana@gmail.com>  
+Bug reports: https://bitbucket.org/nuwimana/ycrypticrnas/issues
+
+0 errors | 0 warnings | 0 notes
+
+## yummlyr (0.1.1)
+Maintainer: Roman Tsegelskyi <roman.tsegelskyi@gmail.com>  
+Bug reports: https://github.com/RomanTsegelskyi/yummlyr/issues
+
+0 errors | 0 warnings | 0 notes
+
+## Zelig (5.0-9)
+Maintainer: James Honaker <zelig-zee@iq.harvard.edu>
+
+0 errors | 0 warnings | 0 notes
+
+## ZeligChoice (0.9-0)
+Maintainer: James Honaker <zelig-zee@iq.harvard.edu>
+
+0 errors | 0 warnings | 0 notes
+
+## zoom (2.0.4)
+Maintainer: Corentin M Barbu <corentin.barbu@gmail.com>
+
+0 errors | 0 warnings | 1 note 
+
+```
+checking DESCRIPTION meta-information ... NOTE
+Malformed Description field: should contain one or more complete sentences.
+```
+
+## zoon (0.4.21)
+Maintainer: Tom August <tomaug@ceh.ac.uk>
+
+1 error  | 0 warnings | 0 notes
+
+```
+checking package dependencies ... ERROR
+Package required and available but unsuitable version: ‘raster’
+
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
+```
+
+## ztable (0.1.5)
+Maintainer: Keon-Woong Moon <cardiomoon@gmail.com>
+
+0 errors | 0 warnings | 0 notes
 

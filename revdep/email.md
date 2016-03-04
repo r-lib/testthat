@@ -9,7 +9,7 @@ I found: {{{your_summary}}}.
 
 If I got an ERROR because I couldn't install your package (or one of it's dependencies), my apologies. You'll need to run the checks yourself (unfortunately I don't have the time to diagnose installation failures).
 
-Otherwise, please submit an updated package to CRAN as soon as possible. There are two new test failures caused by this version of testthat:
+Otherwise, please carefully look at the results, and let me know if I've introduced a bug in teststhat. There are two common classes of new failures caused by this version of testthat:
 
 1. `expect_output()` no longer automatically prints the object. You'll need to 
    explicitly `print()` if you want to check the output of a print method.
@@ -19,6 +19,8 @@ Otherwise, please submit an updated package to CRAN as soon as possible. There a
    match message to take this into account.
 
 I realise updating tests that used to work doesn't seem like the best use of anyone's time, but I'm confident these changes will improve the overall reliability and robustness of testthat (and you have a month to make the changes).
+
+If it doesn't look like a bug in testthat, please prepare an update for CRAN. Ideally you'll tweak your package so it works with both the released and development versions of testthat. Otherwise, be prepared to submit your package to CRAN soon after I let you know that I've submitted.
 
 To get the development version of {{{ my_package }}} so you can run the checks yourself, you can run:
 
