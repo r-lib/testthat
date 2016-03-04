@@ -2,6 +2,7 @@ Expectations: .1234.
 Errors: 56
 Skips: SS
 Warnings: WWW
+Promises: ..
 
 Skipped --------------------------------------------------------------------
 1. Skip:1 (@tests.R#42) - skip
