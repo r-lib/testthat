@@ -65,3 +65,5 @@ f_name <- function(x) {
     ""
   }
 }
+
+.function_not_exported <- function () TRUE
