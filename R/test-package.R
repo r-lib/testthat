@@ -69,8 +69,11 @@ run_tests <- function(package, test_path, filter, reporter, ...) {
     })
     public_dir <- file.path(test_path, "public")
     if (dir.exists(public_dir)) {
-        res <- c(res, test_dir(public_dir, reporter = reporter,
-          env = globalenv(), filter = filter, start_end_reporter=FALSE, ...))
+      # Check for a "public" subdirectory. If found, run its tests in the
+      # global environment, not in the package namespace. Append to the test
+      # results from the non-public tests.
+      res <- c(res, test_dir(public_dir, reporter = reporter,
+        env = globalenv(), filter = filter, start_end_reporter=FALSE, ...))
     }
   })
   if (!all_passed(res)) {
