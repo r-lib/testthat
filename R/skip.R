@@ -106,7 +106,7 @@ skip_on_appveyor <- function() {
 #' @rdname skip
 skip_on_bioc <- function() {
   if (identical(Sys.getenv("BBS_HOME"), "")) {
-    return()
+    return(invisible(TRUE))
   }
 
   skip("On Bioconductor")
