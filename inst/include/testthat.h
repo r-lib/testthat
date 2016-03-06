@@ -1,1 +1,1 @@
-#include <tests/testthat.h>
+#include <testthat/testthat.h>
