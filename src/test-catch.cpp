@@ -1,14 +1,13 @@
 #include <testthat.h>
 
+#include <stdexcept>
 #include <exception>
 
 namespace {
 
-#ifndef TESTTHAT_DISABLED
 void ouch() {
   throw std::logic_error("logic");
 }
-#endif
 
 } // anonymous namespace
 

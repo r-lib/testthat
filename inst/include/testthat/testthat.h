@@ -152,10 +152,10 @@ extern "C" SEXP run_testthat_tests() {
 
 # define context(__X__)                 TESTTHAT_DISABLED_FUNCTION
 # define test_that(__X__)               if (false)
-# define expect_true(__X__)
-# define expect_false(__X__)
-# define expect_error(__X__)
-# define expect_error_as(__X__, __Y__)
+# define expect_true(__X__)             (void) (__X__)
+# define expect_false(__X__)            (void) (__X__)
+# define expect_error(__X__)            (void) (__X__)
+# define expect_error_as(__X__, __Y__)  (void) (__X__)
 
 # ifdef TESTTHAT_TEST_RUNNER
 
