@@ -13,7 +13,7 @@
  * TESTTHAT_DISABLED takes precedence.
  * 'testthat' is disabled on Solaris by default.
  */
-#ifndef __sunos
+#if !defined(__sun) && !defined(__SVR4)
 # define TESTTHAT_ENABLED
 #endif
 
