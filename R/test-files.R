@@ -23,16 +23,17 @@ test_env <- function() {
 #'   regular expression will be executed.  Matching will take on the file
 #'   name after it has been stripped of \code{"test-"} and \code{".R"}.
 #' @param env environment in which to execute test suite.
+#' @param start_end_reporter whether to start and end the reporter
 #' @param ... Additional arguments passed to \code{grepl} to control filtering.
 #'
 #' @return the results as a "testthat_results" (list)
 #' @export
 test_dir <- function(path, filter = NULL, reporter = "summary",
-                                          env = test_env(), ...) {
+                     env = test_env(), start_end_reporter=TRUE, ...) {
   source_test_helpers(path, env)
   paths <- find_test_scripts(path, filter, ...)
 
-  test_files(paths, reporter = reporter, env = env, ...)
+  test_files(paths, reporter = reporter, env = env, start_end_reporter=start_end_reporter, ...)
 }
 
 test_files <- function(paths, reporter = "summary",
@@ -51,7 +52,8 @@ test_files <- function(paths, reporter = "summary",
       reporter = current_reporter,
       start_end_reporter = FALSE,
       load_helpers = FALSE
-    )
+    ),
+    ...
   )
 
   results <- unlist(results, recursive = FALSE)

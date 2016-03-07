@@ -59,14 +59,23 @@ test_package <- function(package, filter = NULL, reporter = "summary", ...) {
 }
 
 
-run_tests <- function(package, test_path, filter, reporter, ...)
-{
+run_tests <- function(package, test_path, filter, reporter, ...) {
   reporter <- find_reporter(reporter)
   env <- test_pkg_env(package)
-  res <- with_top_env(env, {
-    test_dir(test_path, reporter = reporter, env = env, filter = filter, ...)
+  with_reporter(reporter, {
+    res <- with_top_env(env, {
+      test_dir(test_path, reporter = reporter, env = env, filter = filter,
+        start_end_reporter=FALSE, ...)
+    })
+    public_dir <- file.path(test_path, "public")
+    if (dir.exists(public_dir)) {
+      # Check for a "public" subdirectory. If found, run its tests in the
+      # global environment, not in the package namespace. Append to the test
+      # results from the non-public tests.
+      res <- c(res, test_dir(public_dir, reporter = reporter,
+        env = globalenv(), filter = filter, start_end_reporter=FALSE, ...))
+    }
   })
-
   if (!all_passed(res)) {
     stop("Test failures", call. = FALSE)
   }
