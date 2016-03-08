@@ -107,7 +107,9 @@ The reporters system class has been considerably refactored to make existing rep
   (#307, @krlmlr).
 
 * `with_reporter()` is used internally and gains new argument 
-  `start_end_reporter = TRUE` (@krlmlr, 355).
+  `start_end_reporter = TRUE` (#355, @krlmlr). If passed `NULL`, the active reporter
+  is not changed (#404, @krlmlr); this allows running the tests for other
+  packages.
 
 * `set_reporter()` returns old reporter invisibly (#358, @krlmlr).
 
