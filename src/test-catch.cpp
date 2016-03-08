@@ -1,5 +1,6 @@
 #include <testthat.h>
 
+#include <stdexcept>
 #include <exception>
 
 namespace {

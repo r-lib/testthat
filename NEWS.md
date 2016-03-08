@@ -2,7 +2,7 @@
 
 ## New expectations
 
-The expectation system got a thorough overhaul (#217). This primarily makes it easier to add new expectations in the future, but also included a thorough review of the documentation, ensuring that related expectations are are documented together, and have evocative names.
+The expectation system got a thorough overhaul (#217). This primarily makes it easier to add new expectations in the future, but also included a thorough review of the documentation, ensuring that related expectations are documented together, and have evocative names.
 
 One useful change is that most expectations invisibly return the input `object`. This makes it possible to chain together expectations with magrittr:
     
@@ -123,7 +123,7 @@ The reporters system class has been considerably refactored to make existing rep
 * `expect_identical()` and `is_identical_to()` now use `compare()` for more
   detailed output of differences (#319, @krlmlr).
 
-* Added [Catch](https://github.com/philsquared/Catch) for unit testing of C++ code.
+* Added [Catch](https://github.com/philsquared/Catch) v1.2.1 for unit testing of C++ code.
   See `?use_catch()` for more details. (@kevinushey)
 
 # testthat 0.11.0
