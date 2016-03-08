@@ -51,6 +51,7 @@ Collate:
     'old-school.R'
     'praise.R'
     'reporter-check.R'
+    'reporter-debug.R'
     'reporter-fail.R'
     'reporter-list.R'
     'reporter-minimal.R'
