@@ -10,7 +10,7 @@ NULL
 DebugReporter <- R6::R6Class("DebugReporter", inherit = Reporter,
   public = list(
     add_result = function(context, test, result) {
-      if (!expectation_success(result)) recover(result$call)
+      if (!expectation_success(result)) recover()
     }
   )
 )
