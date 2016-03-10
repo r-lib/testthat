@@ -5,3 +5,4 @@
 ^appveyor\.yml$
 ^revdep$
 ^.*\.o$
+^\.httr-oauth$

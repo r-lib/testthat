@@ -2,7 +2,7 @@
 
 ## New expectations
 
-The expectation system got a thorough overhaul (#217). This primarily makes it easier to add new expectations in the future, but also included a thorough review of the documentation, ensuring that related expectations are are documented together, and have evocative names.
+The expectation system got a thorough overhaul (#217). This primarily makes it easier to add new expectations in the future, but also included a thorough review of the documentation, ensuring that related expectations are documented together, and have evocative names.
 
 One useful change is that most expectations invisibly return the input `object`. This makes it possible to chain together expectations with magrittr:
     
@@ -14,9 +14,9 @@ factor("a") %>%
 ```
 
 The exception to this rule are the expectations that evaluate (i.e.
-for messages, warnings, errors, output etc), which invisibly return `NULL`. 
+for messages, warnings, errors, output etc), which invisibly return `NULL`. These functions are now more consistent: using `NA` will cause a failure if there is a errors/warnings/mesages/output (i.e. they're not missing), and will `NULL` fail if there aren't any errors/warnings/mesages/output. This previously didn't work for `expect_output()` (#323), and the error messages were confusing with `expect_error(..., NA)` (#342, @nealrichardson + @krlmlr, #317).
 
-These functions are now more consistent: using `NA` will cause a failure if there is a errors/warnings/mesages/output (i.e. they're not missing), and will `NULL` fail if there aren't any errors/warnings/mesages/output. This previously didn't work for `expect_output()` (#323), and the error messages were confusing with `expect_error(..., NA)` (#342, @nealrichardson + @krlmlr, #317).
+Another change is that `expect_output()` now requires you to explicit print the output if you want to test a print method: `expect_output("a", "a")` will fail, `expect_output(print("a"), "a")` will succeed.
 
 There are six new expectations:
 
@@ -43,7 +43,7 @@ A number of older features have been deprecated:
 
 ## Expectations are conditions
 
-Now all expectations are also conditions, and R's condition system is used to signal failures and successes (#360, @krlmlr). All known conditions (currently, "error", "warning", "message", "failure", and "success") are converted to expectations using the new `as.expectation()`. This allows third-party test packages (such as `assertthat`, `testit`, `ensurer`, `checkmate`) to seamlessly establish `testthat` compatibility by issuing custom error conditions (e.g., `structure(list(message = "Error message"), class = c("customError", "error", "condition"))`) and then implementing `as.expectation.customError()`. The `assertthat` package contains an example.
+Now all expectations are also conditions, and R's condition system is used to signal failures and successes (#360, @krlmlr). All known conditions (currently, "error", "warning", "message", "failure", and "success") are converted to expectations using the new `as.expectation()`. This allows third-party test packages (such as `assertthat`, `testit`, `ensurer`, `checkmate`, `assertive`) to seamlessly establish `testthat` compatibility by issuing custom error conditions (e.g., `structure(list(message = "Error message"), class = c("customError", "error", "condition"))`) and then implementing `as.expectation.customError()`. The `assertthat` package contains an example.
 
 
 ## Reporters
@@ -123,7 +123,7 @@ The reporters system class has been considerably refactored to make existing rep
 * `expect_identical()` and `is_identical_to()` now use `compare()` for more
   detailed output of differences (#319, @krlmlr).
 
-* Added [Catch](https://github.com/philsquared/Catch) for unit testing of C++ code.
+* Added [Catch](https://github.com/philsquared/Catch) v1.2.1 for unit testing of C++ code.
   See `?use_catch()` for more details. (@kevinushey)
 
 # testthat 0.11.0

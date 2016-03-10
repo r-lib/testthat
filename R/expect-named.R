@@ -42,7 +42,11 @@ expect_named <- function(object, expected, ignore.order = FALSE,
 
     expect(
       identical(exp, act),
-      paste0("%s names don't match %s", lab, paste0(exp, collapse = ", ")),
+      sprintf("Names of %s (%s) don't match %s",
+        lab,
+        paste0("'", act, "'", collapse = ", "),
+        paste0("'", exp, "'", collapse = ", ")
+      ),
       info = info
     )
   }
