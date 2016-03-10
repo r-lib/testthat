@@ -53,11 +53,14 @@ evaluate_promise <- function(code,
   temp <- file()
   on.exit(close(temp))
 
-  result <- with_sink(temp,
-    withCallingHandlers(
-      withVisible(code),
-      warning = handle_warning,
-      message = handle_message
+  with_reporter(
+    "cache",
+    result <- with_sink(temp,
+      withCallingHandlers(
+        withVisible(code),
+        warning = handle_warning,
+        message = handle_message
+      )
     )
   )
 

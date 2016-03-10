@@ -2,6 +2,7 @@ Expectations: .1234.
 Errors: 56
 Skips: SS
 Warnings: WWW
+Promises: ..
 
 Skipped --------------------------------------------------------------------
 1. Skip:1 (@tests.R#42) - skip
@@ -40,7 +41,7 @@ stop
 
 6. Error: Error:3 (@tests.R#36) ------------------------------------------------
 !
-1: f() at reporters/tests.R:36
+1: f()
 2: g() at reporters/tests.R:32
 3: h() at reporters/tests.R:33
 4: stop("!") at reporters/tests.R:34
