@@ -100,6 +100,7 @@ expectation_ok <- function(exp) {
 
 
 
+#' @export
 as.expectation <- function(x, ...) UseMethod("as.expectation", x)
 
 #' @export
