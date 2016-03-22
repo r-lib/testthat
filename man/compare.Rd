@@ -15,9 +15,10 @@ compare(x, y, ...)
 \method{compare}{character}(x, y, check.attributes = TRUE, ...,
   max_diffs = 5, max_lines = 5, width = getOption("width"))
 
-\method{compare}{numeric}(x, y, ..., max_diffs = 9)
+\method{compare}{numeric}(x, y, tolerance = .Machine$double.eps^0.5, ...,
+  max_diffs = 9)
 
-\method{compare}{POSIXt}(x, y, ..., max_diffs = 9)
+\method{compare}{POSIXt}(x, y, tolerance = 0.001, ..., max_diffs = 9)
 }
 \arguments{
 \item{x, y}{Objects to compare}
@@ -31,6 +32,9 @@ compare(x, y, ...)
 \item{max_lines}{Maximum number of lines to show from each difference}
 
 \item{width}{Width of output device}
+
+\item{tolerance}{Numerical tolerance: any differences smaller than this
+value will be ignored.}
 }
 \description{
 \code{compare} is similar to \code{\link[base]{all.equal}()}, but shows

@@ -5,6 +5,8 @@
 #'
 #' @export
 #' @param x,y Objects to compare
+#' @param tolerance Numerical tolerance: any differences smaller than this
+#'   value will be ignored.
 #' @param ... Additional arguments used to control specifics of comparison
 compare <- function(x, y, ...) {
   UseMethod("compare", x)
@@ -82,6 +84,8 @@ diff_attr <- function(x, y) {
 vector_equal <- function(x, y) {
   (is.na(x) & is.na(y)) | (!is.na(x) & !is.na(y) & x == y)
 }
-vector_equal_tol <- function(x, y) {
-  (is.na(x) & is.na(y)) | (!is.na(x) & !is.na(y) & x == y)
+
+vector_equal_tol <- function(x, y, tolerance = .Machine$double.eps ^ 0.5) {
+  (is.na(x) & is.na(y)) | (!is.na(x) & !is.na(y) & abs(x - y) < tolerance)
 }
+

@@ -16,8 +16,8 @@
 #' # Compare ignores minor numeric differences in the same way
 #' # as all.equal.
 #' compare(x, x + 1e-9)
-compare.numeric <- function(x, y, ..., max_diffs = 9) {
-  all_equal <- all.equal(x, y, ...)
+compare.numeric <- function(x, y, tolerance = .Machine$double.eps ^ 0.5, ..., max_diffs = 9) {
+  all_equal <- all.equal(x, y, tolerance = tolerance, ...)
   if (isTRUE(all_equal)) {
     return(no_difference())
   }

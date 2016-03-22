@@ -39,3 +39,9 @@ test_that("two different values are not the same", {
   x2 <- x1 + 3600
   expect_false(compare(x1, x2)$equal)
 })
+
+test_that("uses all.equal tolerance", {
+  x1 <- structure(1457284588.83749, class = c("POSIXct", "POSIXt"))
+  x2 <- structure(1457284588.837, class = c("POSIXct", "POSIXt"))
+  expect_true(compare(x1, x2)$equal)
+})

@@ -1,10 +1,6 @@
 #' @rdname compare
 #' @export
-compare.POSIXt <- function(x, y, ..., max_diffs = 9) {
-  if (identical(x, y)) {
-    return(no_difference())
-  }
-
+compare.POSIXt <- function(x, y, tolerance = 0.001, ..., max_diffs = 9) {
   if (!inherits(y, "POSIXt")) {
     return(diff_class(x, y))
   }
@@ -19,7 +15,7 @@ compare.POSIXt <- function(x, y, ..., max_diffs = 9) {
     return(diff_attr(x, y))
   }
 
-  diff <- !vector_equal(x, y)
+  diff <- !vector_equal_tol(x, y, tolerance = tolerance)
 
   if (!any(diff)) {
     no_difference()
@@ -27,8 +23,6 @@ compare.POSIXt <- function(x, y, ..., max_diffs = 9) {
     mismatches <- mismatch_numeric(x, y, diff)
     difference(format(mismatches, max_diffs = max_diffs))
   }
-
-
 }
 
 standardise_tzone <- function(x) {
