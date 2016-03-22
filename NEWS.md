@@ -1,5 +1,10 @@
 # testthat 0.11.0.9000
 
+## Breaking changes
+
+The `expectation()` function now expects an expectation type (one of "success", "failure", "error", "skip", "warning") as first argument. Use `expect_true()` function instead.
+
+
 ## New expectations
 
 The expectation system got a thorough overhaul (#217). This primarily makes it easier to add new expectations in the future, but also included a thorough review of the documentation, ensuring that related expectations are documented together, and have evocative names.
@@ -40,6 +45,7 @@ A number of older features have been deprecated:
 
 * `not()` has been deprecated. Please use the explicit individual forms
   `expect_error(..., NA)` , `expect_warning(.., NA)` and so on.
+
 
 ## Expectations are conditions
 
