@@ -27,7 +27,7 @@ CheckReporter <- R6::R6Class("CheckReporter", inherit = Reporter,
       self$n_fail <- self$n_fail + 1L
       self$failures[[self$n_fail]] <- result
 
-      self$cat_line(failure_summary(result, self$n_fail), "\n")
+      self$cat_paragraph(failure_summary(result, self$n_fail))
     },
 
     end_reporter = function() {
@@ -52,7 +52,7 @@ CheckReporter <- R6::R6Class("CheckReporter", inherit = Reporter,
         fails <- c(fails, "...")
       }
       labels <- format(paste0(1:length(show), "."))
-      self$cat_line(paste0(labels, " ", fails, collapse = "\n"), "\n")
+      self$cat_paragraph(paste0(labels, " ", fails, collapse = "\n"))
 
       stop("testthat unit tests failed", call. = FALSE)
     }
