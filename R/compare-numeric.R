@@ -35,7 +35,7 @@ compare.numeric <- function(x, y, tolerance = .Machine$double.eps ^ 0.5, ..., ma
     return(diff_attr(x, y))
   }
 
-  diff <- !vector_equal(x, y)
+  diff <- !vector_equal_tol(x, y, tolerance = tolerance)
 
   if (!any(diff)) {
     no_difference()
