@@ -5,6 +5,7 @@
 \alias{skip_if_not}
 \alias{skip_if_not_installed}
 \alias{skip_on_appveyor}
+\alias{skip_on_bioc}
 \alias{skip_on_cran}
 \alias{skip_on_os}
 \alias{skip_on_travis}
@@ -23,6 +24,8 @@ skip_on_os(os)
 skip_on_travis()
 
 skip_on_appveyor()
+
+skip_on_bioc()
 }
 \arguments{
 \item{message}{A message describing why the test was skipped.}
@@ -53,6 +56,9 @@ environment variable set by devtools.
 
 \code{skip_on_appveyor()} skips tests on appveyor by inspecting the
 \code{APPVEYOR} environment variable.
+
+\code{skip_on_bioc()} skips tests on Bioconductor by inspecting the
+\code{BBS_HOME} environment variable.
 
 \code{skip_if_not_installed()} skips a tests if a package is not installed
 (useful for suggested packages).

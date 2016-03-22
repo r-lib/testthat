@@ -16,6 +16,9 @@
 #'
 #' \code{skip_on_appveyor()} skips tests on appveyor by inspecting the
 #' \code{APPVEYOR} environment variable.
+#' 
+#' \code{skip_on_bioc()} skips tests on Bioconductor by inspecting the
+#' \code{BBS_HOME} environment variable.
 #'
 #' \code{skip_if_not_installed()} skips a tests if a package is not installed
 #' (useful for suggested packages).
@@ -97,4 +100,14 @@ skip_on_appveyor <- function() {
   }
 
   skip("On Appveyor")
+}
+
+#' @export
+#' @rdname skip
+skip_on_bioc <- function() {
+  if (identical(Sys.getenv("BBS_HOME"), "")) {
+    return(invisible(TRUE))
+  }
+
+  skip("On Bioconductor")
 }
