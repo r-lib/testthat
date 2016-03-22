@@ -13,6 +13,7 @@ test_that("regexp = NA checks for absence of error", {
 test_that("regexp = string matches for error message", {
   expect_success(expect_error(stop("Yes"), "Yes"))
   expect_failure(expect_error(stop("Yes"), "No"))
+  expect_failure(expect_error("OK", "No"), "did not throw an error")
 })
 
 test_that("... passed on to grepl", {

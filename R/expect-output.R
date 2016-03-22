@@ -129,7 +129,7 @@ expect_error <- function(object, regexp = NULL, ..., info = NULL, label = NULL) 
       sprintf("%s threw an error.\n%s", lab, error$message),
       info = info
     )
-  } else if (is.null(regexp)) {
+  } else if (is.null(regexp) || is.null(error)) {
     expect(
       !is.null(error),
       sprintf("%s did not throw an error.", lab),
