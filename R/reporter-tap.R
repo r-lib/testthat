@@ -29,20 +29,20 @@ TapReporter <- R6::R6Class("TapReporter", inherit = Reporter,
       if (!self$has_tests)
         return()
 
-      cat("1..", self$n, '\n', sep = '')
+      self$cat("1..", self$n, '\n', sep = '')
       for (i in 1:self$n) {
         if (!is.na(self$contexts[i])) {
-          cat("# Context", self$contexts[i], "\n")
+          self$cat("# Context", self$contexts[i], "\n")
         }
         result <- self$results[[i]]
         if (expectation_success(result)) {
-          cat('ok', i, result$test, '\n')
+          self$cat('ok', i, result$test, '\n')
         } else if (expectation_broken(result)) {
-          cat('not ok', i, result$test, '\n')
+          self$cat('not ok', i, result$test, '\n')
           msg <- gsub('\n', '\n  ', format(result))
-          cat(' ', msg, '\n')
+          self$cat(' ', msg, '\n')
         } else {
-          cat('ok', i, '#', toupper(expectation_type(result)), format(result), '\n')
+          self$cat('ok', i, '#', toupper(expectation_type(result)), format(result), '\n')
         }
       }
     }

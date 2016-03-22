@@ -32,29 +32,29 @@ SummaryReporter <- R6::R6Class("SummaryReporter", inherit = Reporter,
     },
 
     start_context = function(context) {
-      cat(context, ": ", sep = "")
+      self$cat(context, ": ", sep = "")
     },
 
     end_context = function(context) {
-      cat("\n")
+      self$cat("\n")
     },
 
     add_result = function(context, test, result) {
       if (expectation_broken(result)) {
         if (self$failures$size() + 1 > self$max_reports) {
-          cat(single_letter_summary(result))
+          self$cat(single_letter_summary(result))
         } else {
           self$failures$push(result)
-          cat(colourise(labels[self$failures$size()], "error"))
+          self$cat(colourise(labels[self$failures$size()], "error"))
         }
       } else if (expectation_skip(result)) {
         self$skips$push(result)
-        cat(single_letter_summary(result))
+        self$cat(single_letter_summary(result))
       } else if (expectation_warning(result)) {
         self$warnings$push(result)
-        cat(single_letter_summary(result))
+        self$cat(single_letter_summary(result))
       } else {
-        cat(single_letter_summary(result))
+        self$cat(single_letter_summary(result))
       }
     },
 
@@ -63,7 +63,7 @@ SummaryReporter <- R6::R6Class("SummaryReporter", inherit = Reporter,
       failures <- self$failures$as_list()
       warnings <- self$warnings$as_list()
 
-      cat("\n")
+      self$cat("\n")
       private$cat_reports("Skipped", skips, Inf, skip_summary)
       private$cat_reports("Warnings", warnings, Inf, skip_summary)
       private$cat_reports("Failed", failures, self$max_reports, failure_summary)
@@ -91,12 +91,12 @@ SummaryReporter <- R6::R6Class("SummaryReporter", inherit = Reporter,
       }
       report_summary <- vapply(seq_along(expectations), exp_summary, character(1))
 
-      cat(paste(report_summary, collapse = collapse), "\n", sep = "")
+      self$cat(paste(report_summary, collapse = collapse), "\n", sep = "")
       if (n > max_n) {
-        cat("  ... and ", n - max_n, " more\n", sep = "")
+        self$cat("  ... and ", n - max_n, " more\n", sep = "")
       }
 
-      cat("\n")
+      self$cat("\n")
     }
   )
 )

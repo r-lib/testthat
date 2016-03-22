@@ -18,7 +18,7 @@ TeamcityReporter <- R6::R6Class("TeamcityReporter", inherit = Reporter,
 
     end_context = function(context) {
       private$report_event("testSuiteFinished", context)
-      cat("\n\n")
+      self$cat("\n\n")
     },
 
     start_test = function(context, test) {
@@ -28,7 +28,7 @@ TeamcityReporter <- R6::R6Class("TeamcityReporter", inherit = Reporter,
 
     end_test = function(context, test) {
       private$report_event("testSuiteFinished", test)
-      cat("\n")
+      self$cat("\n")
     },
 
     add_result = function(context, test, result) {
@@ -64,7 +64,7 @@ TeamcityReporter <- R6::R6Class("TeamcityReporter", inherit = Reporter,
         value_string <- paste0(names(values), "='", values, "'", collapse = " ")
       }
 
-      cat("##teamcity[", event, " ", value_string, "]\n", sep = "")
+      self$cat("##teamcity[", event, " ", value_string, "]\n", sep = "")
     }
   )
 )
