@@ -27,17 +27,16 @@ CheckReporter <- R6::R6Class("CheckReporter", inherit = Reporter,
       self$n_fail <- self$n_fail + 1L
       self$failures[[self$n_fail]] <- result
 
-      self$cat(failure_summary(result, self$n_fail), "\n\n", sep = "")
+      self$cat_line(failure_summary(result, self$n_fail), "\n")
     },
 
     end_reporter = function() {
       rule <- paste0(rep("=", getOption("width") - 16), collapse = "")
-      self$cat("testthat results ", rule, "\n", sep = "")
-      self$cat(
+      self$cat_line("testthat results ", rule)
+      self$cat_line(
         "OK: ", self$n_ok, " ",
         "SKIPPED: ", self$n_skip, " ",
-        "FAILED: ", self$n_fail, "\n",
-        sep = ""
+        "FAILED: ", self$n_fail
       )
 
       if (self$n_fail == 0) return()
@@ -53,8 +52,7 @@ CheckReporter <- R6::R6Class("CheckReporter", inherit = Reporter,
         fails <- c(fails, "...")
       }
       labels <- format(paste0(1:length(show), "."))
-      self$cat(paste0(labels, " ", fails, collapse = "\n"))
-      self$cat("\n\n")
+      self$cat_line(paste0(labels, " ", fails, collapse = "\n"), "\n")
 
       stop("testthat unit tests failed", call. = FALSE)
     }

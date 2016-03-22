@@ -36,6 +36,14 @@ Reporter <- R6::R6Class("Reporter",
       cat(..., file = self$out, sep = sep, fill = fill, labels = labels)
     },
 
+    cat_tight = function(...) {
+      self$cat(..., sep = "")
+    },
+
+    cat_line = function(...) {
+      self$cat_tight(..., "\n")
+    },
+
     # The hierarchy of contexts are implied - a context starts with a
     # call to context(), and ends either with the end of the file, or
     # with the next call to context() in the same file. These private
