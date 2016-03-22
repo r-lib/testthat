@@ -92,7 +92,8 @@ The reporters system class has been considerably refactored to make existing rep
   all testing functions are available.
 
 * `source_test_helpers()` gets a useful default path: the testthat tests 
-  directory.
+  directory. It defaults to the `test_env()` to be consistent with the
+  other source functions (#415).
 
 * `test_file()` now loads helpers in the test directory before running
   the tests (#350).
