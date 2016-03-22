@@ -58,8 +58,8 @@ test_that("Warning:2", {
   warning("ghi")
 })
 
-context("Promises")
+context("Output")
 
-test_that("Promises:1", {
+test_that("Output:1", {
   expect_output(expect_false(FALSE), NA)
 })

@@ -33,6 +33,6 @@ ok 10 # SKIP skip
 ok 11 # WARNING abc 
 ok 12 # WARNING def 
 ok 13 # WARNING ghi 
-# Context Promises 
-ok 14 Promises:1 
-ok 15 Promises:1 
+# Context Output 
+ok 14 Output:1 
+ok 15 Output:1 
