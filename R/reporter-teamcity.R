@@ -13,20 +13,21 @@ TeamcityReporter <- R6::R6Class("TeamcityReporter", inherit = Reporter,
     i = NA_integer_,
 
     start_context = function(context) {
-      teamcity("testSuiteStarted", context)
+      private$report_event("testSuiteStarted", context)
     },
+
     end_context = function(context) {
-      teamcity("testSuiteFinished", context)
+      private$report_event("testSuiteFinished", context)
       cat("\n\n")
     },
 
     start_test = function(context, test) {
-      teamcity("testSuiteStarted", test)
+      private$report_event("testSuiteStarted", test)
       self$i <- 1L
     },
 
     end_test = function(context, test) {
-      teamcity("testSuiteFinished", test)
+      private$report_event("testSuiteFinished", test)
       cat("\n")
     },
 
@@ -35,37 +36,38 @@ TeamcityReporter <- R6::R6Class("TeamcityReporter", inherit = Reporter,
       self$i <- self$i + 1L
 
       if (expectation_skip(result)) {
-        teamcity("testIgnored", testName, message = format(result))
+        private$report_event("testIgnored", testName, message = format(result))
         return()
       }
 
-      teamcity("testStarted", testName)
+      private$report_event("testStarted", testName)
 
       if (!expectation_ok(result)) {
         lines <- strsplit(format(result), "\n")[[1]]
 
-        teamcity("testFailed", testName, message = lines[1],
+        private$report_event("testFailed", testName, message = lines[1],
           details = paste(lines[-1], collapse = "\n")
         )
       }
-      teamcity("testFinished", testName)
+      private$report_event("testFinished", testName)
     }
+  ),
 
+  private = list(
+    report_event = function(event, name, ...) {
+      values <- list(name = name, ...)
+
+      values <- vapply(values, teamcity_escape, character(1))
+      if (length(values) == 0) {
+        value_string <- ""
+      } else {
+        value_string <- paste0(names(values), "='", values, "'", collapse = " ")
+      }
+
+      cat("##teamcity[", event, " ", value_string, "]\n", sep = "")
+    }
   )
 )
-
-teamcity <- function(event, name, ...) {
-  values <- list(name = name, ...)
-
-  values <- vapply(values, teamcity_escape, character(1))
-  if (length(values) == 0) {
-    value_string <- ""
-  } else {
-    value_string <- paste0(names(values), "='", values, "'", collapse = " ")
-  }
-
-  cat("##teamcity[", event, " ", value_string, "]\n", sep = "")
-}
 
 # teamcity escape character is |
 teamcity_escape <- function(s) {
