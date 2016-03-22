@@ -1,6 +1,7 @@
 #' Expectation: is returned value less or greater than specified value?
 #'
 #' @inheritParams expect_that
+#' @inheritParams expect_equal
 #' @param expected Single numeric value to compare.
 #' @family expectations
 #' @examples
@@ -19,13 +20,14 @@
 #' @name comparison-expectations
 NULL
 
-expect_compare <- function(actual, expected,
-                           operator = c("<", "<=", ">", ">=")) {
+expect_compare <- function(operator = c("<", "<=", ">", ">="),
+                           actual, expected,
+                           label = NULL, expected.label = NULL) {
   operator <- match.arg(operator)
   op <- match.fun(operator)
 
-  lab_act <- label(actual)
-  lab_exp <- label(expected)
+  lab_act <- make_label(actual, label)
+  lab_exp <- make_label(expected, expected.label)
 
   stopifnot(is.numeric(actual), length(actual) == 1)
   stopifnot(is.numeric(expected), length(expected) == 1)
@@ -46,26 +48,26 @@ expect_compare <- function(actual, expected,
 }
 #' @export
 #' @rdname comparison-expectations
-expect_lt <- function(object, expected) {
-  expect_compare(object, expected, "<")
+expect_lt <- function(object, expected, label = NULL, expected.label = NULL) {
+  expect_compare("<", object, expected, label = label, expected.label = expected.label)
 }
 
 #' @export
 #' @rdname comparison-expectations
-expect_lte <- function(object, expected) {
-  expect_compare(object, expected, "<=")
+expect_lte <- function(object, expected, label = NULL, expected.label = NULL) {
+  expect_compare("<=", object, expected, label = label, expected.label = expected.label)
 }
 
 #' @export
 #' @rdname comparison-expectations
-expect_gt <- function(object, expected) {
-  expect_compare(object, expected, ">")
+expect_gt <- function(object, expected, label = NULL, expected.label = NULL) {
+  expect_compare(">", object, expected, label = label, expected.label = expected.label)
 }
 
 #' @export
 #' @rdname comparison-expectations
-expect_gte <- function(object, expected) {
-  expect_compare(object, expected, ">=")
+expect_gte <- function(object, expected, label = NULL, expected.label = NULL) {
+  expect_compare(">=", object, expected, label = label, expected.label = expected.label)
 }
 
 

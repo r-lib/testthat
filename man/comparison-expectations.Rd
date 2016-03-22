@@ -10,18 +10,24 @@
 \alias{expect_more_than}
 \title{Expectation: is returned value less or greater than specified value?}
 \usage{
-expect_lt(object, expected)
+expect_lt(object, expected, label = NULL, expected.label = NULL)
 
-expect_lte(object, expected)
+expect_lte(object, expected, label = NULL, expected.label = NULL)
 
-expect_gt(object, expected)
+expect_gt(object, expected, label = NULL, expected.label = NULL)
 
-expect_gte(object, expected)
+expect_gte(object, expected, label = NULL, expected.label = NULL)
 }
 \arguments{
 \item{object}{object to test}
 
 \item{expected}{Single numeric value to compare.}
+
+\item{label}{object label. When \code{NULL}, computed from deparsed object.}
+
+\item{expected.label}{Equivalent of \code{label} for shortcut form.}
+
+\item{...}{other values passed to \code{\link{all.equal}}}
 }
 \description{
 Expectation: is returned value less or greater than specified value?
