@@ -94,6 +94,7 @@ expect_s3_class <- function(object, class) {
     inherits(object, class),
     sprintf("%s inherits from `%s` not `%s`.", lab, act, exp)
   )
+  invisible(object)
 }
 
 #' @export
@@ -113,6 +114,7 @@ expect_s4_class <- function(object, class) {
     methods::is(object, class),
     sprintf("%s inherits from `%s` not `%s`.", lab, act, exp)
   )
+  invisible(object)
 }
 
 isS3 <- function(x) is.object(x) && !isS4(x)
