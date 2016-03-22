@@ -25,6 +25,7 @@ SummaryReporter <- R6::R6Class("SummaryReporter", inherit = Reporter,
     show_praise = TRUE,
 
     initialize = function(show_praise = TRUE) {
+      super$initialize()
       self$show_praise <- show_praise
       self$failures <- Stack$new()
       self$skips <- Stack$new()
