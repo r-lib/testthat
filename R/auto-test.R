@@ -38,7 +38,7 @@ auto_test <- function(code_path, test_path, reporter = "summary",
 
   # Start by loading all code and running all tests
   source_dir(code_path, env = env)
-  test_dir(test_path, env = env, reporter = reporter$copy())
+  test_dir(test_path, env = env, reporter = reporter$clone())
 
   # Next set up watcher to monitor changes
   watcher <- function(added, deleted, modified) {
@@ -52,11 +52,11 @@ auto_test <- function(code_path, test_path, reporter = "summary",
       cat("Changed code: ", paste0(basename(code), collapse = ", "), "\n")
       cat("Rerunning all tests\n")
       source_dir(code_path, env = env)
-      test_dir(test_path, env = env, reporter = reporter$copy())
+      test_dir(test_path, env = env, reporter = reporter$clone())
     } else if (length(tests) > 0) {
       # If test changes, rerun just that test
       cat("Rerunning tests: ", paste0(basename(tests), collapse = ", "), "\n")
-      test_files(tests, env = env, reporter = reporter$copy())
+      test_files(tests, env = env, reporter = reporter$clone())
     }
 
     TRUE
@@ -88,7 +88,7 @@ auto_test_package <- function(pkg = ".", reporter = "summary") {
   env <- devtools::load_all(pkg)$env
   devtools::with_envvar(
     devtools::r_env_vars(),
-    test_dir(test_path, env = env, reporter = reporter$copy())
+    test_dir(test_path, env = env, reporter = reporter$clone())
   )
 
   # Next set up watcher to monitor changes
@@ -105,14 +105,14 @@ auto_test_package <- function(pkg = ".", reporter = "summary") {
       env <<- devtools::load_all(pkg, quiet = TRUE)$env
       devtools::with_envvar(
         devtools::r_env_vars(),
-        test_dir(test_path, env = env, reporter = reporter$copy())
+        test_dir(test_path, env = env, reporter = reporter$clone())
       )
     } else if (length(tests) > 0) {
       # If test changes, rerun just that test
       cat("Rerunning tests: ", paste0(basename(tests), collapse = ", "), "\n")
       devtools::with_envvar(
         devtools::r_env_vars(),
-        test_files(tests, env = env, reporter = reporter$copy())
+        test_files(tests, env = env, reporter = reporter$clone())
       )
     }
 
