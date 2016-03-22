@@ -5,6 +5,11 @@
 #' \code{expect_silent()} to assert that there should be no output of
 #' any type.
 #'
+#' @note
+#' \code{capture_output} captures all printed output, including that generated
+#' by the reporters. This means that the default display of warnings will
+#' be suppressed.
+#'
 #' @inheritParams expect_that
 #' @inheritParams expect_match
 #' @param regexp regular expression to test against.
@@ -81,7 +86,7 @@ NULL
 #' @rdname output-expectations
 expect_output <- function(object, regexp = NULL, ..., info = NULL, label = NULL) {
   lab <- make_label(object, label)
-  output <- evaluate_promise(object)$output
+  output <- capture_output(object)
 
   if (identical(regexp, NA)) {
     expect(
@@ -142,7 +147,7 @@ expect_message <- function(object, regexp = NULL, ..., all = FALSE,
                            info = NULL, label = NULL) {
 
   lab <- make_label(object, label)
-  messages <- evaluate_promise(object, capture_warnings = FALSE)$messages
+  messages <- capture_messages(object)
   n <- length(messages)
   bullets <- paste("* ", messages, collapse = "\n")
 
@@ -172,7 +177,7 @@ expect_warning <- function(object, regexp = NULL, ..., all = FALSE,
                            info = NULL, label = NULL) {
 
   lab <- make_label(object, label)
-  warnings <- evaluate_promise(object, capture_messages = FALSE)$warnings
+  warnings <- capture_warnings(object)
   n <- length(warnings)
   bullets <- paste("* ", warnings, collapse = "\n")
 

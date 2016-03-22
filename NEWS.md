@@ -72,8 +72,10 @@ The reporters system class has been considerably refactored to make existing rep
 
 ## Other
 
-* `evaluate_promise()` gains arguments `capture_warnings` and 
-  `capture_messages()` so you can control exactly what's captured.
+* New functions `capture_output()`, `capture_message()`, and 
+  `capture_warnings()` selectively capture function output. These are 
+  used in `expect_output()`, `expect_message()` and `expect_warning()`
+  to allow other types out output to percolate up (#410).
 
 * `try_again()` allows you to retry code multiple times until it succeeds
   (#240).
