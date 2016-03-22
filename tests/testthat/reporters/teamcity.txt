@@ -42,7 +42,7 @@
 
 ##teamcity[testSuiteStarted name='Error:3']
 ##teamcity[testStarted name='expectation 1']
-##teamcity[testFailed name='expectation 1' message='!' details='1: expect_output(f(), NA) at reporters/tests.R:36|n2: capture_output(object) at /home/muelleki/git/R/testthat/R/expect-output.R:89|n3: with_sink(temp, withVisible(code)) at /home/muelleki/git/R/testthat/R/evaluate-promise.R:103|n4: withVisible(code) at /home/muelleki/git/R/testthat/R/evaluate-promise.R:119|n5: f()|n6: g() at reporters/tests.R:32|n7: h() at reporters/tests.R:33|n8: stop("!") at reporters/tests.R:34']
+##teamcity[testFailed name='expectation 1' message='!' details='1: f() at reporters/tests.R:36|n2: g() at reporters/tests.R:32|n3: h() at reporters/tests.R:33|n4: stop("!") at reporters/tests.R:34']
 ##teamcity[testFinished name='expectation 1']
 ##teamcity[testSuiteFinished name='Error:3']
 
