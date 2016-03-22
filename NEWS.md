@@ -102,6 +102,8 @@ The reporters system class has been considerably refactored to make existing rep
 
 * Add `skip_if_not()` helper.
 
+* Add `skip_on_bioc()` helper.
+
 * `make_expectation()` uses `expect_equal()`.
 
 * `setup_test_dir()` has been removed. If you used it previously, instead use
