@@ -10,6 +10,9 @@
 test_path <- function(...) {
   if (in_testing_dir(".")) {
     path <- file.path(...)
+    if (length(path) == 0) {
+      path <- "."
+    }
   } else {
     base <- "tests/testthat"
     if (!file.exists(base)) {
