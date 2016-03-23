@@ -19,6 +19,7 @@ ListReporter <- R6::R6Class("ListReporter", inherit = Reporter,
     results = NULL,
 
     initialize = function() {
+      super$initialize()
       self$results <- Stack$new()
     },
 

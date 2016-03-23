@@ -77,3 +77,14 @@
 ##teamcity[testSuiteFinished name='Warnings']
 
 
+##teamcity[testSuiteStarted name='Output']
+##teamcity[testSuiteStarted name='Output:1']
+##teamcity[testStarted name='expectation 1']
+##teamcity[testFinished name='expectation 1']
+##teamcity[testStarted name='expectation 2']
+##teamcity[testFinished name='expectation 2']
+##teamcity[testSuiteFinished name='Output:1']
+
+##teamcity[testSuiteFinished name='Output']
+
+

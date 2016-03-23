@@ -18,6 +18,7 @@ StopReporter <- R6::R6Class("StopReporter", inherit = Reporter,
     failures = NULL,
 
     initialize = function() {
+      super$initialize()
       self$failures <- Stack$new()
     },
 

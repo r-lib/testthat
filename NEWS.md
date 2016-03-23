@@ -66,7 +66,9 @@ The reporters system class has been considerably refactored to make existing rep
     * `test_start()` and `test_end()` both get the context and test.
     * `context_start()` and `context_end()` get the context. 
 
-* Warnings are now captured and reported in most reporters. 
+* Warnings are now captured and reported in most reporters.
+
+* The reporter output goes to the original standard output and is not affected by `sink()` and `expect_output()` (#420, @krlmlr).
 
 * The default summary reporter lists all warnings (#310), and all skipped
   tests (@krlmlr, #343). New option `testthat.summary.max_reports` limits 

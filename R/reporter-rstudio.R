@@ -23,7 +23,7 @@ RstudioReporter <- R6::R6Class("RstudioReporter", inherit = Reporter,
       status <- expectation_type(result)
       first_line <- strsplit(result$message, "\n")[[1]][1]
 
-      cat(location, " [", status, "] ", test, ". ", first_line, "\n", sep = "")
+      self$cat_line(location, " [", status, "] ", test, ". ", first_line)
     }
   )
 )

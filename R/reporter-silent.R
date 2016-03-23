@@ -14,6 +14,7 @@ SilentReporter <- R6::R6Class("SilentReporter", inherit = Reporter,
     .expectations = NULL,
 
     initialize = function() {
+      super$initialize()
       self$.expectations <- Stack$new()
     },
 

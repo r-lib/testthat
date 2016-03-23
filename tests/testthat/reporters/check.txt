@@ -28,7 +28,7 @@ stop
 4: stop("!") at reporters/tests.R:34
 
 testthat results ================================================================
-OK: 5 SKIPPED: 2 FAILED: 6
+OK: 7 SKIPPED: 2 FAILED: 6
 1. Failure: Failure:1 (@tests.R#8) 
 2. Failure: Failure:2a (@tests.R#12) 
 3. Failure: Failure:2b (@tests.R#15) 

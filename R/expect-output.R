@@ -5,11 +5,6 @@
 #' \code{expect_silent()} to assert that there should be no output of
 #' any type.
 #'
-#' @note
-#' \code{capture_output} captures all printed output, including that generated
-#' by the reporters. This means that the default display of warnings will
-#' be suppressed.
-#'
 #' @inheritParams expect_that
 #' @inheritParams expect_match
 #' @param regexp regular expression to test against.
