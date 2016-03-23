@@ -2,6 +2,7 @@
 
 language: r
 cache: packages
+r_github_packages: jimhester/covr@v2
 
 after_success:
   - Rscript -e 'covr::codecov()'
