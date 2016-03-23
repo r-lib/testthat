@@ -1,13 +1,13 @@
 Hi,
 
-This is an automated email to let you know about the upcoming release of {{{ my_package }}}, which will be submitted to CRAN on {{{ date }}}. To check for potential problems, I ran `R CMD check` on your package {{{your_package}}} ({{{your_version}}}). 
+This is an automated email to let you know about the upcoming release of {{{ my_package }}}, which will be submitted to CRAN on {{{ date }}} (less than two weeks away!). To check for potential problems, I ran `R CMD check` on your package {{{your_package}}} ({{{your_version}}}). 
 
 I found: {{{your_summary}}}.
 
 {{#you_have_problems}}
 {{{your_results}}}
 
-If I got an ERROR because I couldn't install your package (or one of it's dependencies), my apologies. You'll need to run the checks yourself (unfortunately I don't have the time to diagnose installation failures).
+If I got an ERROR because I couldn't install your package (or one of it's dependencies), my apologies. It's your responsibility to run the checks yourself (unfortunately I don't have the time to diagnose installation failures).
 
 Otherwise, please carefully look at the results, and let me know if I've introduced a bug in teststhat. There are two common classes of new failures caused by this version of testthat:
 
@@ -18,7 +18,7 @@ Otherwise, please carefully look at the results, and let me know if I've introdu
    not the prefix, e.g. "Error in foo(): ". You might need to change you
    match message to take this into account.
 
-I realise updating tests that used to work doesn't seem like the best use of anyone's time, but I'm confident these changes will improve the overall reliability and robustness of testthat (and you have a month to make the changes).
+I realise updating tests that used to work doesn't seem like the best use of anyone's time, but I'm confident these changes will improve the overall reliability and robustness of testthat (and you still have nearly two weeks to make the changes).
 
 If it doesn't look like a bug in testthat, please prepare an update for CRAN. Ideally you'll tweak your package so it works with both the released and development versions of testthat. Otherwise, be prepared to submit your package to CRAN soon after I let you know that I've submitted.
 
