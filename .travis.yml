@@ -3,7 +3,8 @@
 language: r
 cache: packages
 sudo: false
-r_github_packages: jimhester/covr@v2
+r_github_packages:
+  - jimhester/covr@v2
 
 after_success:
   - Rscript -e 'covr::codecov()'
