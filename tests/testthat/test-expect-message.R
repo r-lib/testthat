@@ -20,6 +20,7 @@ test_that("regexp = string matches _any_ message", {
   expect_success(expect_message(f(), "a"))
   expect_success(expect_message(f(), "b"))
   expect_failure(expect_message(f(), "c"))
+  expect_failure(expect_message("", "c"), "showed 0 messages")
 })
 
 test_that("... passed on to grepl", {

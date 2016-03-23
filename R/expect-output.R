@@ -94,7 +94,7 @@ expect_output <- function(object, regexp = NULL, ..., info = NULL, label = NULL)
       sprintf("%s produced output.\n%s", lab, encodeString(output)),
       info = info
     )
-  } else if (is.null(regexp)) {
+  } else if (is.null(regexp) || identical(output, "")) {
     expect(
       !identical(output, ""),
       sprintf("%s produced no output", lab),
@@ -159,7 +159,7 @@ expect_message <- function(object, regexp = NULL, ..., all = FALSE,
       sprintf("%s showed %s.\n%s", lab, msg, bullets),
       info = info
     )
-  } else if (is.null(regexp)) {
+  } else if (is.null(regexp) || length(messages) == 0) {
     expect(
       length(messages) > 0,
       sprintf("%s showed %s", lab, msg),
@@ -189,7 +189,7 @@ expect_warning <- function(object, regexp = NULL, ..., all = FALSE,
       sprintf("%s showed %s.\n%s", lab, msg, bullets),
       info = info
     )
-  } else if (is.null(regexp)) {
+  } else if (is.null(regexp) || length(warnings) == 0) {
     expect(
       length(warnings) > 0,
       sprintf("%s showed %s", lab, msg),

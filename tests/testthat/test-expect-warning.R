@@ -20,6 +20,7 @@ test_that("regexp = string matches _any_ warning", {
   expect_success(expect_warning(f(), "a"))
   expect_success(expect_warning(f(), "b"))
   expect_failure(expect_warning(f(), "c"))
+  expect_failure(expect_warning("", "c"), "showed 0 warnings")
 })
 
 test_that("... passed on to grepl", {
