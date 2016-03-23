@@ -57,3 +57,9 @@ test_that("Warning:2", {
   warning("def")
   warning("ghi")
 })
+
+context("Output")
+
+test_that("Output:1", {
+  expect_output(expect_false(FALSE), NA)
+})

@@ -12,11 +12,11 @@ NULL
 MinimalReporter <- R6::R6Class("MinimalReporter", inherit = Reporter,
   public = list(
     add_result = function(context, test, result) {
-      cat(single_letter_summary(result))
+      self$cat_tight(single_letter_summary(result))
     },
 
     end_reporter = function() {
-      cat("\n")
+      self$cat_line()
     }
   )
 )

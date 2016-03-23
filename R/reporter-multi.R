@@ -12,6 +12,7 @@ MultiReporter <- R6::R6Class("MultiReporter", inherit = Reporter,
     reporters = list(),
 
     initialize = function(reporters = list()) {
+      super$initialize()
       self$reporters <- reporters
     },
 

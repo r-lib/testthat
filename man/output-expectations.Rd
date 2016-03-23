@@ -49,11 +49,6 @@ or \code{expect_error()} to check for specific outputs. Use
 \code{expect_silent()} to assert that there should be no output of
 any type.
 }
-\note{
-\code{capture_output} captures all printed output, including that generated
-by the reporters. This means that the default display of warnings will
-be suppressed.
-}
 \examples{
 # Output --------------------------------------------------------------------
 str(mtcars)

@@ -18,6 +18,36 @@ Reporter <- R6::R6Class("Reporter",
     end_context =    function(context) {},
     end_reporter =   function() {},
 
+    out = NULL,
+
+    initialize = function() {
+      self$out <- stdout()
+    },
+
+    cat = function(..., file = NULL, sep = " ", fill = FALSE, labels = NULL,
+                   append = NULL) {
+      if (!is.null(file)) {
+        warning("file ignored", call. = FALSE)
+      }
+      if (!is.null(append)) {
+        warning("append ignored", call. = FALSE)
+      }
+
+      cat(..., file = self$out, sep = sep, fill = fill, labels = labels)
+    },
+
+    cat_tight = function(...) {
+      self$cat(..., sep = "")
+    },
+
+    cat_line = function(...) {
+      self$cat_tight(..., "\n")
+    },
+
+    cat_paragraph = function(...) {
+      self$cat_tight(..., "\n\n")
+    },
+
     # The hierarchy of contexts are implied - a context starts with a
     # call to context(), and ends either with the end of the file, or
     # with the next call to context() in the same file. These private
