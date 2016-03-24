@@ -2,6 +2,9 @@
 
 language: r
 cache: packages
+sudo: false
+r_github_packages:
+  - jimhester/covr@v2
 
 after_success:
-  - Rscript -e 'covr::codecov()'
+  - Rscript -e 'covr::codecov(line_exclusions = c("inst/include/testthat/testthat.h", "inst/include/testthat/vendor/catch.h"))'
