@@ -7,7 +7,7 @@ I found: {{{your_summary}}}.
 {{#you_have_problems}}
 {{{your_results}}}
 
-If I got an ERROR because I couldn't install your package (or one of it's dependencies), my apologies. It's your responsibility to run the checks yourself (unfortunately I don't have the time to diagnose installation failures).
+If I got an ERROR because I couldn't install your package (or one of it's dependencies), my apologies. You'll have to run the checks yourself (unfortunately I don't have the time to diagnose installation failures).
 
 Otherwise, please carefully look at the results, and let me know if I've introduced a bug in teststhat. There are two common classes of new failures caused by this version of testthat:
 

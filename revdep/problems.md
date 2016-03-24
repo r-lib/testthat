@@ -4,13 +4,13 @@
 
 |setting  |value                        |
 |:--------|:----------------------------|
-|version  |R version 3.2.3 (2015-12-10) |
+|version  |R version 3.2.4 (2016-03-10) |
 |system   |x86_64, darwin13.4.0         |
 |ui       |X11                          |
 |language |(EN)                         |
 |collate  |en_US.UTF-8                  |
 |tz       |America/Chicago              |
-|date     |2016-03-22                   |
+|date     |2016-03-23                   |
 
 ## Packages
 
@@ -24,89 +24,10 @@
 |magrittr |   |1.5         |2014-11-22 |CRAN (R 3.2.0)                  |
 |praise   |   |1.0.0       |2015-08-11 |CRAN (R 3.2.0)                  |
 |R6       |   |2.1.2       |2016-01-26 |CRAN (R 3.2.3)                  |
-|testthat |*  |0.11.0.9000 |2016-03-23 |local (hadley/testthat@791f6de) |
+|testthat |*  |0.11.0.9000 |2016-03-24 |local (hadley/testthat@bcba180) |
 
 # Check results
-195 packages with problems
-
-## adegenet (2.0.1)
-Maintainer: Thibaut Jombart <thibautjombart@gmail.com>
-
-0 errors | 1 warning  | 0 notes
-
-```
-checking whether package ‘adegenet’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: package ‘ade4’ was built under R version 3.2.4
-See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/adegenet.Rcheck/00install.out’ for details.
-```
-
-## afex (0.15-2)
-Maintainer: Henrik Singmann <singmann+afex@gmail.com>
-
-1 error  | 0 warnings | 0 notes
-
-```
-checking whether package ‘afex’ can be installed ... ERROR
-Installation failed.
-See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/afex.Rcheck/00install.out’ for details.
-```
-
-## aidar (1.0.0)
-Maintainer: Andreas Pfeiffer <apfeiffer1@gmail.com>
-
-0 errors | 1 warning  | 3 notes
-
-```
-checking whether package ‘aidar’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: package ‘XML’ was built under R version 3.2.4
-See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/aidar.Rcheck/00install.out’ for details.
-
-checking DESCRIPTION meta-information ... NOTE
-Malformed Description field: should contain one or more complete sentences.
-
-checking dependencies in R code ... NOTE
-Package in Depends field not imported from: ‘XML’
-  These packages need to be imported from (in the NAMESPACE file)
-  for when this namespace is loaded but not attached.
-
-checking R code for possible problems ... NOTE
-getAnnotation: no visible global function definition for ‘xmlRoot’
-getAnnotation: no visible global function definition for ‘xmlTreeParse’
-getAnnotation: no visible global function definition for ‘getNodeSet’
-getAnnotation: no visible binding for global variable ‘xmlGetAttr’
-getBins: no visible global function definition for ‘xmlGetAttr’
-getCloud1D: no visible global function definition for ‘xmlRoot’
-getCloud1D: no visible global function definition for ‘xmlTreeParse’
-getCloud1D: no visible global function definition for ‘getNodeSet’
-getCloud1D: no visible binding for global variable ‘xmlGetAttr’
-... 34 lines ...
-getProfile2D: no visible binding for global variable ‘xmlGetAttr’
-getRow: no visible global function definition for ‘getNodeSet’
-getRow: no visible binding for global variable ‘xmlGetAttr’
-getTuple: no visible global function definition for ‘xmlRoot’
-getTuple: no visible global function definition for ‘xmlTreeParse’
-getTuple: no visible global function definition for ‘getNodeSet’
-getTuple: no visible binding for global variable ‘xmlGetAttr’
-getXAxisInfo: no visible global function definition for ‘xmlGetAttr’
-getXStats: no visible global function definition for ‘xmlGetAttr’
-getYAxisInfo: no visible global function definition for ‘xmlGetAttr’
-getYStats: no visible global function definition for ‘xmlGetAttr’
-```
-
-## alakazam (0.2.3)
-Maintainer: Jason Vander Heiden <jason.vanderheiden@yale.edu>  
-Bug reports: https://bitbucket.org/kleinstein/alakazam/issues
-
-0 errors | 1 warning  | 0 notes
-
-```
-checking whether package ‘alakazam’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: package ‘ggplot2’ was built under R version 3.2.4
-See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/alakazam.Rcheck/00install.out’ for details.
-```
+155 packages with problems
 
 ## aLFQ (1.3.3)
 Maintainer: George Rosenberger <rosenberger@imsb.biol.ethz.ch>
@@ -119,47 +40,16 @@ Installation failed.
 See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/aLFQ.Rcheck/00install.out’ for details.
 ```
 
-## alm (0.4.0)
-Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>  
-Bug reports: http://www.github.com/ropensci/alm/issues
-
-0 errors | 1 warning  | 1 note 
-
-```
-checking whether package ‘alm’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: replacing previous import by ‘grid::unit’ when loading ‘alm’
-See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/alm.Rcheck/00install.out’ for details.
-
-checking files in ‘vignettes’ ... NOTE
-The following directory looks like a leftover from 'knitr':
-  ‘figure’
-Please remove from your package.
-```
-
-## analogueExtra (0.1-0)
-Maintainer: Gavin L. Simpson <ucfagls@gmail.com>  
-Bug reports: https://github.com/gavinsimpson/analogueExtra/issues
-
-0 errors | 1 warning  | 0 notes
-
-```
-checking whether package ‘analogueExtra’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: package ‘analogue’ was built under R version 3.2.4
-See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/analogueExtra.Rcheck/00install.out’ for details.
-```
-
-## ARTool (0.10.0)
-Maintainer: Matthew Kay <mjskay@uw.edu>  
-Bug reports: https://github.com/mjskay/ARTool/issues/new
+## backShift (0.1.3)
+Maintainer: Christina Heinze <heinze@stat.math.ethz.ch>  
+Bug reports: https://github.com/christinaheinze/backShift/issues
 
 1 error  | 0 warnings | 0 notes
 
 ```
-checking whether package ‘ARTool’ can be installed ... ERROR
+checking whether package ‘backShift’ can be installed ... ERROR
 Installation failed.
-See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/ARTool.Rcheck/00install.out’ for details.
+See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/backShift.Rcheck/00install.out’ for details.
 ```
 
 ## bayesboot (0.2.0)
@@ -172,8 +62,8 @@ Bug reports: https://github.com/rasmusab/bayesboot/issues
 checking tests ... ERROR
 Running the tests in ‘tests/testthat.R’ failed.
 Last 13 lines of output:
-  `output` does not match ".".
-  Actual value: ""
+  4. Failure: bayesboot produces a valid output (@test-bayesboot-deterministic.R#67) 
+  summary(b4) produced no output
   
   
   testthat results ================================================================
@@ -187,6 +77,20 @@ Last 13 lines of output:
   Execution halted
 ```
 
+## BayesFactor (0.9.12-2)
+Maintainer: Richard D. Morey <richarddmorey@gmail.com>  
+Bug reports: https://github.com/richarddmorey/BayesFactor/issues
+
+1 error  | 0 warnings | 0 notes
+
+```
+checking package dependencies ... ERROR
+Package required but not available: ‘RcppEigen’
+
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
+```
+
 ## BBmisc (1.9)
 Maintainer: Bernd Bischl <bernd_bischl@gmx.net>  
 Bug reports: https://github.com/berndbischl/BBmisc/issues
@@ -197,19 +101,49 @@ Bug reports: https://github.com/berndbischl/BBmisc/issues
 checking tests ... ERROR
 Running the tests in ‘tests/run-all.R’ failed.
 Last 13 lines of output:
-  ...$NULL isn't true.
-  
-  
-  testthat results ================================================================
-  OK: 700 SKIPPED: 0 FAILED: 5
-  1. Failure: suppressAll (@test_suppressAll.R#6) 
-  2. Failure: suppressAll (@test_suppressAll.R#7) 
-  3. Failure: suppressAll (@test_suppressAll.R#7) 
-  4. Failure: suppressAll (@test_suppressAll.R#10) 
-  5. Failure: suppressAll (@test_suppressAll.R#14) 
+  1. Failure: makeProgressBar global options (@test_makeProgressBar.R#41) 
+  2. Failure: makeProgressBar global options (@test_makeProgressBar.R#41) 
+  3. Failure: makeProgressBar global options (@test_makeProgressBar.R#41) 
+  4. Failure: makeProgressBar global options (@test_makeProgressBar.R#41) 
+  5. Failure: makeProgressBar global options (@test_makeProgressBar.R#41) 
+  6. Failure: makeProgressBar global options (@test_makeProgressBar.R#41) 
+  7. Failure: suppressAll (@test_suppressAll.R#6) 
+  8. Failure: suppressAll (@test_suppressAll.R#7) 
+  9. Failure: suppressAll (@test_suppressAll.R#7) 
+  1. ...
   
   Error: testthat unit tests failed
   Execution halted
+```
+
+## BEDMatrix (1.2.0)
+Maintainer: Alexander Grueneberg <alexander.grueneberg@googlemail.com>  
+Bug reports: https://github.com/QuantGen/BEDMatrix/issues
+
+1 error  | 0 warnings | 0 notes
+
+```
+checking package dependencies ... ERROR
+Package required but not available: ‘BH’
+
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
+```
+
+## bigmemory (4.5.18)
+Maintainer: Michael J. Kane <bigmemoryauthors@gmail.com>
+
+1 error  | 0 warnings | 0 notes
+
+```
+checking package dependencies ... ERROR
+Package required but not available: ‘BH’
+
+Packages which this enhances but not available for checking:
+  ‘biganalytics’ ‘bigtabulate’ ‘synchronicity’
+
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
 ```
 
 ## biom (0.3.12)
@@ -222,12 +156,12 @@ Bug reports: https://github.com/joey711/biom/issues
 checking tests ... ERROR
 Running the tests in ‘tests/testthat-biom.R’ failed.
 Last 13 lines of output:
-  Actual value: ""
+  1. Failure: show method output tests (@test-IO.R#69) ---------------------------
+  `x1` produced no output
   
   
   2. Failure: show method output tests (@test-IO.R#70) ---------------------------
-  `output` does not match "biom object. \ntype:".
-  Actual value: ""
+  `x4` produced no output
   
   
   DONE ===========================================================================
@@ -240,17 +174,18 @@ checking DESCRIPTION meta-information ... NOTE
 Malformed Title field: should not end in a period.
 ```
 
-## biomod2 (3.3-7)
-Maintainer: Damien Georges <damien.georges2@gmail.com>  
-Bug reports: <https://r-forge.r-project.org/R/?group_id=302>
+## biomartr (0.0.3)
+Maintainer: Hajk-Georg Drost <hgd23@cam.ac.uk>  
+Bug reports: https://github.com/HajkD/biomartr/issues
 
-0 errors | 1 warning  | 0 notes
+1 error  | 0 warnings | 0 notes
 
 ```
-checking whether package ‘biomod2’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: package ‘ggplot2’ was built under R version 3.2.4
-See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/biomod2.Rcheck/00install.out’ for details.
+checking package dependencies ... ERROR
+Packages required but not available: ‘biomaRt’ ‘Biostrings’
+
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
 ```
 
 ## bnclassify (0.3.2)
@@ -260,22 +195,13 @@ Bug reports: http://github.com/bmihaljevic/bnclassify/issues
 1 error  | 0 warnings | 0 notes
 
 ```
-checking tests ... ERROR
-Running the tests in ‘tests/testthat.R’ failed.
-Last 13 lines of output:
-  > 
-  > test_check("bnclassify")
-  1. Failure: Check dataset (@test-data-input.R#17) ------------------------------
-  error$message does not match "Error : is_non_empty_complete(cnames) is not TRUE".
-  Actual value: "is_non_empty_complete(cnames) is not TRUE"
-  
-  
-  testthat results ================================================================
-  OK: 459 SKIPPED: 14 FAILED: 1
-  1. Failure: Check dataset (@test-data-input.R#17) 
-  
-  Error: testthat unit tests failed
-  Execution halted
+checking package dependencies ... ERROR
+Packages required but not available: ‘graph’ ‘RBGL’
+
+Package suggested but not available for checking: ‘Rgraphviz’
+
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
 ```
 
 ## boral (0.9.1)
@@ -301,70 +227,6 @@ Installation failed.
 See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/brms.Rcheck/00install.out’ for details.
 ```
 
-## caret (6.0-64)
-Maintainer: Max Kuhn <Max.Kuhn@pfizer.com>  
-Bug reports: https://github.com/topepo/caret/issues
-
-1 error  | 0 warnings | 0 notes
-
-```
-checking whether package ‘caret’ can be installed ... ERROR
-Installation failed.
-See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/caret.Rcheck/00install.out’ for details.
-```
-
-## caretEnsemble (2.0.0)
-Maintainer: Zachary A. Deane-Mayer <zach.mayer@gmail.com>  
-Bug reports: https://github.com/zachmayer/caretEnsemble/issues
-
-1 error  | 0 warnings | 0 notes
-
-```
-checking whether package ‘caretEnsemble’ can be installed ... ERROR
-Installation failed.
-See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/caretEnsemble.Rcheck/00install.out’ for details.
-```
-
-## Causata (4.2-0)
-Maintainer: Justin Hemann <justinh@causata.com>
-
-0 errors | 1 warning  | 5 notes
-
-```
-checking whether package ‘Causata’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: package ‘RCurl’ was built under R version 3.2.4
-  Warning: package ‘glmnet’ was built under R version 3.2.4
-  Warning: package ‘XML’ was built under R version 3.2.4
-See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/Causata.Rcheck/00install.out’ for details.
-
-checking DESCRIPTION meta-information ... NOTE
-Malformed Title field: should not end in a period.
-
-checking top-level files ... NOTE
-Non-standard file/directory found at top level:
-  ‘integration_tests’
-
-checking R code for possible problems ... NOTE
-GetMetadata.Connect: no visible global function definition for
-  ‘dbGetQuery’
-GetRawData.Connect: no visible global function definition for
-  ‘dbGetQuery’
-
-checking line endings in Makefiles ... NOTE
-Found the following Makefile(s) without a final LF:
-  inst/doc/Makefile
-Some ‘make’ programs ignore lines not ending in LF.
-
-checking files in ‘vignettes’ ... NOTE
-The following files look like leftovers/mistakes:
-  ‘Causata-vignette.log’
-Please remove them from your package.
-The following directory looks like a leftover from 'knitr':
-  ‘figure’
-Please remove from your package.
-```
-
 ## cellranger (1.0.0)
 Maintainer: Jennifer Bryan <jenny@stat.ubc.ca>  
 Bug reports: https://github.com/jennybc/cellranger/issues
@@ -375,11 +237,11 @@ Bug reports: https://github.com/jennybc/cellranger/issues
 checking tests ... ERROR
 Running the tests in ‘tests/testthat.R’ failed.
 Last 13 lines of output:
+  > library(cellranger)
   > 
   > test_check("cellranger")
   1. Failure: Print method works (@test-cell-specification.R#163) ----------------
-  `output` does not match "<cell_limits (1, 7) x (3, -)>".
-  Actual value: ""
+  cell_limits(c(NA, 7), c(3, NA)) produced no output
   
   
   testthat results ================================================================
@@ -390,16 +252,29 @@ Last 13 lines of output:
   Execution halted
 ```
 
-## cjoint (2.0.4)
-Maintainer: Anton Strezhnev <astrezhnev@fas.harvard.edu>
+## chunked (0.2.0)
+Maintainer: Edwin de Jonge <edwindjonge@gmail.com>  
+Bug reports: https://github.com/edwindj/chunked/issues
 
-0 errors | 1 warning  | 0 notes
+1 error  | 0 warnings | 0 notes
 
 ```
-checking whether package ‘cjoint’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: package ‘ggplot2’ was built under R version 3.2.4
-See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/cjoint.Rcheck/00install.out’ for details.
+checking tests ... ERROR
+Running the tests in ‘tests/testthat.R’ failed.
+Last 13 lines of output:
+  expect_output(tbl_iris, "Groups: Species") showed 0 warnings
+  
+  
+  testthat results ================================================================
+  OK: 24 SKIPPED: 0 FAILED: 5
+  1. Failure: print: should print chunked info (@test-print.R#8) 
+  2. Failure: print groups: should print groups chunked info (@test-print.R#15) 
+  3. Failure: print groups: should print groups chunked info (@test-print.R#15) 
+  4. Failure: print groups: should print groups chunked info (@test-print.R#16) 
+  5. Failure: print groups: should print groups chunked info (@test-print.R#16) 
+  
+  Error: testthat unit tests failed
+  Execution halted
 ```
 
 ## cleangeo (0.1-1)
@@ -411,35 +286,8 @@ Bug reports: https://github.com/eblondel/cleangeo/issues
 ```
 checking whether package ‘cleangeo’ can be installed ... WARNING
 Found the following significant warnings:
-  Warning: replacing previous import by ‘maptools::nowrapSpatialLines’ when loading ‘cleangeo’
+  Warning: replacing previous import ‘sp::nowrapSpatialLines’ by ‘maptools::nowrapSpatialLines’ when loading ‘cleangeo’
 See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/cleangeo.Rcheck/00install.out’ for details.
-```
-
-## climwin (0.1.2)
-Maintainer: Liam D. Bailey <liam.bailey@anu.edu.au>
-
-0 errors | 1 warning  | 0 notes
-
-```
-checking whether package ‘climwin’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: package ‘ggplot2’ was built under R version 3.2.4
-  Warning: package ‘gridExtra’ was built under R version 3.2.4
-See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/climwin.Rcheck/00install.out’ for details.
-```
-
-## cmaesr (1.0.1)
-Maintainer: Jakob Bossek <j.bossek@gmail.com>  
-Bug reports: https://github.com/jakobbossek/cmaesr/issues
-
-0 errors | 1 warning  | 0 notes
-
-```
-checking whether package ‘cmaesr’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: package ‘checkmate’ was built under R version 3.2.4
-  Warning: package ‘smoof’ was built under R version 3.2.4
-See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/cmaesr.Rcheck/00install.out’ for details.
 ```
 
 ## cocor (1.1-2)
@@ -451,12 +299,12 @@ Maintainer: Birk Diedenhofen <mail@birkdiedenhofen.de>
 checking tests ... ERROR
 Running the tests in ‘tests/test.cocor.package.R’ failed.
 Last 13 lines of output:
-  Actual value: ""
+  10. Failure: Output is correct (@test.r#101) -----------------------------------
+  cocor.indep.groups(...) produced no output
   
   
   11. Failure: Output is correct (@test.r#102) -----------------------------------
-  `output` does not match "Null hypothesis rejected \\(Lower boundary > 0\\)".
-  Actual value: ""
+  cocor.indep.groups(...) produced no output
   
   
   DONE ===========================================================================
@@ -469,16 +317,50 @@ checking package dependencies ... NOTE
 Package which this enhances but not available for checking: ‘rkward’
 ```
 
-## coefplot (1.2.4)
-Maintainer: Jared P. Lander <packages@jaredlander.com>
+## CompareCausalNetworks (0.1.4)
+Maintainer: Christina Heinze <heinze@stat.math.ethz.ch>  
+Bug reports: 
+        https://github.com/christinaheinze/CompareCausalNetworks/issues
 
-0 errors | 1 warning  | 0 notes
+2 errors | 0 warnings | 0 notes
 
 ```
-checking whether package ‘coefplot’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: package ‘ggplot2’ was built under R version 3.2.4
-See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/coefplot.Rcheck/00install.out’ for details.
+checking examples ... ERROR
+Running examples in ‘CompareCausalNetworks-Ex.R’ failed
+The error most likely occurred in:
+
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+> ### Name: getParents
+> ### Title: Estimate the connectivity matrix of a causal graph
+> ### Aliases: getParents
+> ### Keywords: Causality, Graph estimations
+> 
+> ### ** Examples
+> 
+> ## load the backShift package for data generation and plotting functionality
+> if(!requireNamespace("backShift", quietly = TRUE))
++  stop("The package 'backShift' is needed for the examples to
++  work. Please install it.", call. = FALSE)
+Error: The package 'backShift' is needed for the examples to
+ work. Please install it.
+Execution halted
+
+checking tests ... ERROR
+Running the tests in ‘tests/testthat.R’ failed.
+Last 13 lines of output:
+  6: missingDependenciesMessage("pcalg", method)
+  7: stop(paste("The package '", package, "' is needed for ", method, " to \nwork. Please install it.", 
+         sep = ""), call. = FALSE)
+  
+  testthat results ================================================================
+  OK: 12 SKIPPED: 0 FAILED: 4
+  1. Error: Checks output type for pc (@test_getParents_defaults_all_methods.R#19) 
+  2. Error: Checks output type for LINGAM (@test_getParents_defaults_all_methods.R#19) 
+  3. Error: Checks output type for ges (@test_getParents_defaults_all_methods.R#19) 
+  4. Error: Checks output type for rfci (@test_getParents_defaults_all_methods.R#19) 
+  
+  Error: testthat unit tests failed
+  Execution halted
 ```
 
 ## crunch (1.8.0)
@@ -506,64 +388,26 @@ Last 13 lines of output:
   Execution halted
 ```
 
-## ctsem (1.1.5.2)
-Maintainer: Charles Driver <driver@mpib-berlin.mpg.de>
+## ddpcr (1.1.2)
+Maintainer: Dean Attali <daattali@gmail.com>  
+Bug reports: https://github.com/daattali/ddpcr/issues
 
-0 errors | 1 warning  | 1 note 
-
-```
-checking whether package ‘ctsem’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: package ‘OpenMx’ was built under R version 3.2.4
-See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/ctsem.Rcheck/00install.out’ for details.
-
-checking dependencies in R code ... NOTE
-Namespace in Imports field not imported from: ‘methods’
-  All declared Imports should be used.
-```
-
-## datafsm (0.1.0)
-Maintainer: Nay John J. <john.j.nay@gmail.com>  
-Bug reports: https://github.com/JohnNay/datafsm/issues
-
-2 errors | 0 warnings | 0 notes
+1 error  | 0 warnings | 0 notes
 
 ```
-checking examples ... ERROR
-Running examples in ‘datafsm-Ex.R’ failed
-The error most likely occurred in:
-
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
-> ### Name: evolve_model
-> ### Title: Use a Genetic Algorithm to Estimate a Finite-state Machine Model
-> ### Aliases: evolve_model
-> 
-> ### ** Examples
-> 
-> # Create data:
-> cdata <- data.frame(period = rep(1:10, 1000),
-+                    outcome = rep(1:2, 5000),
-+                    my.decision1 = sample(1:0, 10000, TRUE),
-+                    other.decision1 = sample(1:0, 10000, TRUE))
-> (res <- evolve_model(cdata, cv=FALSE))
-Error in loadNamespace(j <- i[[1L]], c(lib.loc, .libPaths()), versionCheck = vI[[j]]) : 
-  namespace ‘nlme’ 3.1-122 is already loaded, but >= 3.1.123 is required
-Calls: evolve_model ... tryCatch -> tryCatchList -> tryCatchOne -> <Anonymous>
-Execution halted
-
 checking tests ... ERROR
 Running the tests in ‘tests/testthat.R’ failed.
 Last 13 lines of output:
-  Looking up history[4], period 1: (0, 536871056, 0)
-  Looking up history[1], period 1: (0, 822083728, 0)
-  Looking up history[2], period 0: (1, 822083728, 150995968)
-  Looking up history[3], period 1: (0, 822083728, 393216)
-  Looking up history[4], period 1: (0, 822083728, 32716)
-  Looking up history[1], period 1: (1, 536871053, 0)
+  
+  
+  2. Failure: quiet works (@test-utils.R#55) -------------------------------------
+  quiet(cat("hello world")) produced no output
+  
+  
   testthat results ================================================================
-  OK: 3 SKIPPED: 0 FAILED: 2
-  1. Error: evolve_model() returns correct type of object (@test_mainfunc.R#7) 
-  2. Error: evolve_model() returns warnings and errors (@test_mainfunc.R#14) 
+  OK: 268 SKIPPED: 0 FAILED: 2
+  1. Failure: quiet works (@test-utils.R#54) 
+  2. Failure: quiet works (@test-utils.R#55) 
   
   Error: testthat unit tests failed
   Execution halted
@@ -594,6 +438,20 @@ Last 13 lines of output:
   Execution halted
 ```
 
+## dplyr (0.4.3)
+Maintainer: Hadley Wickham <hadley@rstudio.com>  
+Bug reports: https://github.com/hadley/dplyr/issues
+
+1 error  | 0 warnings | 0 notes
+
+```
+checking package dependencies ... ERROR
+Package required but not available: ‘BH’
+
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
+```
+
 ## DSsim (1.0.4)
 Maintainer: Laura Marshall <lhm@st-and.ac.uk>
 
@@ -616,19 +474,6 @@ Last 13 lines of output:
   In addition: Warning message:
   Placing tests in `inst/tests/` is deprecated. Please use `tests/testthat/` instead 
   Execution halted
-```
-
-## dtwclust (2.1.1)
-Maintainer: Alexis Sarda <alexis.sarda@gmail.com>  
-Bug reports: https://github.com/asardaes/dtwclust/issues
-
-0 errors | 1 warning  | 0 notes
-
-```
-checking whether package ‘dtwclust’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: package ‘ggplot2’ was built under R version 3.2.4
-See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/dtwclust.Rcheck/00install.out’ for details.
 ```
 
 ## edfReader (1.0.0)
@@ -655,87 +500,6 @@ Last 13 lines of output:
   Execution halted
 ```
 
-## eeptools (0.9.1)
-Maintainer: Jared E. Knowles <jknowles@gmail.com>
-
-0 errors | 1 warning  | 0 notes
-
-```
-checking whether package ‘eeptools’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: package ‘ggplot2’ was built under R version 3.2.4
-See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/eeptools.Rcheck/00install.out’ for details.
-```
-
-## emil (2.2.3)
-Maintainer: Christofer Backlin <emil@christofer.backlin.se>  
-Bug reports: https://github.com/Molmed/emil/issues
-
-1 error  | 0 warnings | 0 notes
-
-```
-checking examples ... ERROR
-Running examples in ‘emil-Ex.R’ failed
-The error most likely occurred in:
-
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
-> ### Name: modeling_procedure
-> ### Title: Setup a modeling procedure
-> ### Aliases: modeling_procedure
-> 
-> ### ** Examples
-... 70 lines ...
-   tuned: no
-> 
-> # 6: Train elastic nets using the caret package's model fitting framework
-> library(caret)
-Loading required package: lattice
-Loading required package: ggplot2
-Warning: package ‘ggplot2’ was built under R version 3.2.4
-Error in loadNamespace(j <- i[[1L]], c(lib.loc, .libPaths()), versionCheck = vI[[j]]) : 
-  namespace ‘nlme’ 3.1-122 is already loaded, but >= 3.1.123 is required
-Error: package or namespace load failed for ‘caret’
-Execution halted
-```
-
-## EpiModel (1.2.5)
-Maintainer: Samuel Jenness <samuel.m.jenness@emory.edu>  
-Bug reports: https://github.com/statnet/EpiModel/issues
-
-0 errors | 1 warning  | 0 notes
-
-```
-checking whether package ‘EpiModel’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: package ‘deSolve’ was built under R version 3.2.4
-See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/EpiModel.Rcheck/00install.out’ for details.
-```
-
-## evaluate (0.8.3)
-Maintainer: Yihui Xie <xie@yihui.name>  
-Bug reports: https://github.com/hadley/evaluate/issues
-
-1 error  | 0 warnings | 0 notes
-
-```
-checking tests ... ERROR
-Running the tests in ‘tests/test-all.R’ failed.
-Last 13 lines of output:
-  > 
-  > if (require("testthat", quietly = TRUE)) test_check("evaluate")
-  1. Failure: return value of value handler inserted directly in output list (@test-evaluate.r#63) 
-  classes(ev) not equal to c("source", "numeric", "source", "source", "source", "gg").
-  Lengths differ: 7 vs 6
-  
-  
-  testthat results ================================================================
-  OK: 47 SKIPPED: 0 FAILED: 1
-  1. Failure: return value of value handler inserted directly in output list (@test-evaluate.r#63) 
-  
-  Error: testthat unit tests failed
-  Execution halted
-```
-
 ## explor (0.2)
 Maintainer: Julien Barnier <julien.barnier@ens-lyon.fr>  
 Bug reports: https://github.com/juba/explor/issues
@@ -747,6 +511,8 @@ checking tests ... ERROR
 Running the tests in ‘tests/testthat.R’ failed.
 Last 13 lines of output:
   
+  Attaching package: 'ade4'
+  
   The following object is masked from 'package:FactoMineR':
   
       reconst
@@ -756,39 +522,46 @@ Last 13 lines of output:
   1. Failure: Qualitative supplementary variables results are equal (@test_prepare_results_MCA.R#35) 
   
   Error: testthat unit tests failed
-  In addition: Warning message:
-  package 'ade4' was built under R version 3.2.4 
   Execution halted
 ```
 
-## FinancialInstrument (1.2.0)
-Maintainer: Garrett See <gsee000@gmail.com>
+## falsy (1.0.1)
+Maintainer: Gabor Csardi <csardi.gabor@gmail.com>  
+Bug reports: https://github.com/gaborcsardi/falsy/issues
 
-0 errors | 1 warning  | 1 note 
+1 error  | 0 warnings | 0 notes
 
 ```
-checking whether package ‘FinancialInstrument’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: package ‘TTR’ was built under R version 3.2.4
-See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/FinancialInstrument.Rcheck/00install.out’ for details.
-
-checking dependencies in R code ... NOTE
-'library' or 'require' calls in package code:
-  ‘XML’ ‘foreach’ ‘its’ ‘timeSeries’ ‘utils’
-  Please use :: or requireNamespace() instead.
-  See section 'Suggested packages' in the 'Writing R Extensions' manual.
+checking tests ... ERROR
+Running the tests in ‘tests/testthat.R’ failed.
+Last 13 lines of output:
+  > library(falsy)
+  > 
+  > test_check("falsy")
+  1. Failure: try_quietly works (@test_falsy.R#126) ------------------------------
+  try_quietly(stop("foo!")) produced no output
+  
+  
+  testthat results ================================================================
+  OK: 46 SKIPPED: 0 FAILED: 1
+  1. Failure: try_quietly works (@test_falsy.R#126) 
+  
+  Error: testthat unit tests failed
+  Execution halted
 ```
 
 ## flacco (1.2)
 Maintainer: Pascal Kerschke <kerschke@uni-muenster.de>  
 Bug reports: https://github.com/kerschke/flacco/issues
 
-1 error  | 1 warning  | 0 notes
+1 error  | 0 warnings | 0 notes
 
 ```
 checking tests ... ERROR
 Running the tests in ‘tests/test-general.R’ failed.
 Last 13 lines of output:
+  3: testthat::expect_that(res, cond, info = info, label = vname(x, label))
+  4: condition(object) at /Users/hadley/Documents/devtools/testthat/R/expect-that.R:22
   5: testthat::expectation(identical(res, TRUE), failure_msg = res, success_msg = "all good")
   
   testthat results ================================================================
@@ -799,14 +572,7 @@ Last 13 lines of output:
   4. Error: With Diagonal (@test-base-findLinearNeighbours.R#25) 
   
   Error: testthat unit tests failed
-  In addition: Warning message:
-  package 'checkmate' was built under R version 3.2.4 
   Execution halted
-
-checking whether package ‘flacco’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: package ‘checkmate’ was built under R version 3.2.4
-See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/flacco.Rcheck/00install.out’ for details.
 ```
 
 ## flexsurv (0.7)
@@ -819,13 +585,13 @@ Bug reports: https://github.com/chjackson/flexsurv-dev/issues
 checking tests ... ERROR
 Running the tests in ‘tests/test_base.R’ failed.
 Last 13 lines of output:
-  20  803 0.4242224 0.3122276 0.6699015
-  21  855 0.3983386 0.2915703 0.6476923
-  22 1040 0.3171789 0.2292236 0.5716803
-  23 1106 0.2920295 0.2105786 0.5458372
-  24 1129 0.2836991 0.2044666 0.5370006
-  25 1206 0.2573606 0.1853397 0.5080735
-  26 1227 0.2505762 0.1804595 0.5003627
+  20  803 0.4242224 0.3021022 0.3808314
+  21  855 0.3983386 0.2825988 0.3535423
+  22 1040 0.3171789 0.2237889 0.2695927
+  23 1106 0.2920295 0.2061991 0.2441855
+  24 1129 0.2836991 0.2004309 0.2358447
+  25 1206 0.2573606 0.1823693 0.2097428
+  26 1227 0.2505762 0.1777575 0.2030901
   testthat results ================================================================
   OK: 378 SKIPPED: 0 FAILED: 1
   1. Error: Analytic derivatives match numeric (@test_deriv.R#19) 
@@ -908,28 +674,44 @@ Last 13 lines of output:
   Execution halted
 
 checking Rd cross-references ... NOTE
-Packages unavailable to check Rd xrefs: ‘alr3’, ‘prettyR’, ‘epitools’, ‘asbio’, ‘DescTools’
+Packages unavailable to check Rd xrefs: ‘alr3’, ‘prettyR’, ‘epitools’, ‘RMark’, ‘asbio’, ‘agricolae’, ‘DescTools’
 ```
 
 ## FunChisq (2.2.2)
 Maintainer: Joe Song <joemsong@cs.nmsu.edu>
 
-0 errors | 1 warning  | 0 notes
+1 error  | 0 warnings | 0 notes
 
 ```
-checking whether package ‘FunChisq’ can be installed ... WARNING
-Found the following significant warnings:
-  /usr/local/include/boost/math/special_functions/detail/lanczos_sse2.hpp:54:4: warning: 'register' storage class specifier is deprecated [-Wdeprecated-register]
-  /usr/local/include/boost/math/special_functions/detail/lanczos_sse2.hpp:55:4: warning: 'register' storage class specifier is deprecated [-Wdeprecated-register]
-  /usr/local/include/boost/math/special_functions/detail/lanczos_sse2.hpp:56:4: warning: 'register' storage class specifier is deprecated [-Wdeprecated-register]
-  /usr/local/include/boost/math/special_functions/detail/lanczos_sse2.hpp:57:4: warning: 'register' storage class specifier is deprecated [-Wdeprecated-register]
-  /usr/local/include/boost/math/special_functions/detail/lanczos_sse2.hpp:58:4: warning: 'register' storage class specifier is deprecated [-Wdeprecated-register]
-  /usr/local/include/boost/math/special_functions/detail/lanczos_sse2.hpp:139:4: warning: 'register' storage class specifier is deprecated [-Wdeprecated-register]
-  /usr/local/include/boost/math/special_functions/detail/lanczos_sse2.hpp:140:4: warning: 'register' storage class specifier is deprecated [-Wdeprecated-register]
-  /usr/local/include/boost/math/special_functions/detail/lanczos_sse2.hpp:141:4: warning: 'register' storage class specifier is deprecated [-Wdeprecated-register]
-  /usr/local/include/boost/math/special_functions/detail/lanczos_sse2.hpp:142:4: warning: 'register' storage class specifier is deprecated [-Wdeprecated-register]
-  /usr/local/include/boost/math/special_functions/detail/lanczos_sse2.hpp:143:4: warning: 'register' storage class specifier is deprecated [-Wdeprecated-register]
-See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/FunChisq.Rcheck/00install.out’ for details.
+checking package dependencies ... ERROR
+Packages required but not available: ‘BH’ ‘RcppClassic’
+
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
+```
+
+## futile.logger (1.4.1)
+Maintainer: Brian Lee Yung Rowe <r@zatonovo.com>
+
+1 error  | 0 warnings | 0 notes
+
+```
+checking tests ... ERROR
+Running the tests in ‘tests/testthat.R’ failed.
+Last 13 lines of output:
+  > library(testthat)
+  > test_check("futile.logger")
+  Loading required package: futile.logger
+  1. Failure: lower levels are not logged (@test_debug.R#19) ---------------------
+  flog.trace("testlog") produced no output
+  
+  
+  testthat results ================================================================
+  OK: 68 SKIPPED: 0 FAILED: 1
+  1. Failure: lower levels are not logged (@test_debug.R#19) 
+  
+  Error: testthat unit tests failed
+  Execution halted
 ```
 
 ## gemtc (0.8)
@@ -964,103 +746,65 @@ Error: .onLoad failed in loadNamespace() for 'rjags', details:
 Execution halted
 ```
 
-## geneSLOPE (0.36.6)
-Maintainer: Piotr Sobczyk <piotr.sobczyk@pwr.edu.pl>  
-Bug reports: https://github.com/psobczyk/geneSLOPE/issues
-
-0 errors | 1 warning  | 0 notes
-
-```
-checking whether package ‘geneSLOPE’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: replacing previous import by ‘grid::arrow’ when loading ‘geneSLOPE’
-  Warning: replacing previous import by ‘grid::unit’ when loading ‘geneSLOPE’
-See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/geneSLOPE.Rcheck/00install.out’ for details.
-```
-
-## geoknife (1.2.1)
-Maintainer: Jordan Read <jread@usgs.gov>  
-Bug reports: https://github.com/USGS-R/geoknife/issues
+## GERGM (0.7.4)
+Maintainer: Matthew J. Denny <mdenny@psu.edu>
 
 1 error  | 0 warnings | 0 notes
 
 ```
-checking examples ... ERROR
-Running examples in ‘geoknife-Ex.R’ failed
-The error most likely occurred in:
+checking package dependencies ... ERROR
+Package required but not available: ‘BH’
 
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
-> ### Name: query
-> ### Title: query webdata for various fields
-> ### Aliases: query query,character,missing-method
-> ###   query,webdata,character-method query,webdata,missing-method
-> ###   query,webdata-method query,webgeom,character-method
-> ###   query,webgeom-method query,webprocess,character-method
-> ###   query,webprocess-method
-> ### Keywords: methods
-> 
-> ### ** Examples
-> 
-> fabric <- webdata('prism')
-> query(fabric, 'variables')
-Error in curl::curl_fetch_memory(url, handle = handle) : 
-  Failure when receiving data from the peer
-Calls: query ... variables_query -> variables_query -> genericExecute -> gPOST
-Execution halted
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
 ```
 
-## ggalt (0.1.1)
-Maintainer: Bob Rudis <bob@rudis.net>  
-Bug reports: https://github.com/hrbrmstr/ggalt/issues
+## GetoptLong (0.1.1)
+Maintainer: Zuguang Gu <z.gu@dkfz.de>
 
-0 errors | 1 warning  | 0 notes
-
-```
-checking whether package ‘ggalt’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: package ‘ggplot2’ was built under R version 3.2.4
-See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/ggalt.Rcheck/00install.out’ for details.
-```
-
-## ggfortify (0.1.0)
-Maintainer: Masaaki Horikoshi <sinhrks@gmail.com>
-
-1 error  | 1 warning  | 0 notes
+1 error  | 0 warnings | 0 notes
 
 ```
 checking tests ... ERROR
 Running the tests in ‘tests/test-all.R’ failed.
 Last 13 lines of output:
+  
+  27. test `version` and `help` options (@test_GetoptLong.R#243) - cannot remove file '/tmp/RtmppQOw4f/filef842fab2f3f.json', reason 'No such file or directory'
+  
+  Failed -------------------------------------------------------------------------
+  1. Failure: test `cat_prefix` (@test_qq.R#85) ----------------------------------
+  qqcat("a") produced no output
+  
+  
+  DONE ===========================================================================
+  Error: Test failures
+  In addition: Warning message:
+  Placing tests in `inst/tests/` is deprecated. Please use `tests/testthat/` instead 
+  Execution halted
+```
+
+## ggfortify (0.1.0)
+Maintainer: Masaaki Horikoshi <sinhrks@gmail.com>
+
+1 error  | 0 warnings | 0 notes
+
+```
+checking tests ... ERROR
+Running the tests in ‘tests/test-all.R’ failed.
+Last 13 lines of output:
+  1. Failure: fortify.cpt works for AirPassengers (@test-changepoint.R#24) -------
+  names(fortified) not equal to c("Index", "Data", "variance").
   Lengths differ: 4 vs 3
   
   
   Loading required package: urca
   Loading required package: lmtest
   testthat results ================================================================
-  OK: 556 SKIPPED: 1 FAILED: 1
+  OK: 554 SKIPPED: 1 FAILED: 1
   1. Failure: fortify.cpt works for AirPassengers (@test-changepoint.R#24) 
   
   Error: testthat unit tests failed
-  In addition: Warning message:
-  package 'ggplot2' was built under R version 3.2.4 
   Execution halted
-
-checking whether package ‘ggfortify’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: package ‘ggplot2’ was built under R version 3.2.4
-See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/ggfortify.Rcheck/00install.out’ for details.
-```
-
-## ggswissmaps (0.0.8)
-Maintainer: Sandro Petrillo Burri <gibo.gaf@gmail.com>
-
-0 errors | 1 warning  | 0 notes
-
-```
-checking whether package ‘ggswissmaps’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: package ‘ggplot2’ was built under R version 3.2.4
-See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/ggswissmaps.Rcheck/00install.out’ for details.
 ```
 
 ## ggthemes (3.0.2)
@@ -1092,22 +836,14 @@ Last 13 lines of output:
 Maintainer: Helen Ogden <heogden12@gmail.com>  
 Bug reports: http://github.com/heogden/glmmsr/issues
 
-0 errors | 1 warning  | 0 notes
+1 error  | 0 warnings | 0 notes
 
 ```
-checking whether package ‘glmmsr’ can be installed ... WARNING
-Found the following significant warnings:
-  /usr/local/include/boost/math/special_functions/detail/lanczos_sse2.hpp:54:4: warning: 'register' storage class specifier is deprecated [-Wdeprecated-register]
-  /usr/local/include/boost/math/special_functions/detail/lanczos_sse2.hpp:55:4: warning: 'register' storage class specifier is deprecated [-Wdeprecated-register]
-  /usr/local/include/boost/math/special_functions/detail/lanczos_sse2.hpp:56:4: warning: 'register' storage class specifier is deprecated [-Wdeprecated-register]
-  /usr/local/include/boost/math/special_functions/detail/lanczos_sse2.hpp:57:4: warning: 'register' storage class specifier is deprecated [-Wdeprecated-register]
-  /usr/local/include/boost/math/special_functions/detail/lanczos_sse2.hpp:58:4: warning: 'register' storage class specifier is deprecated [-Wdeprecated-register]
-  /usr/local/include/boost/math/special_functions/detail/lanczos_sse2.hpp:139:4: warning: 'register' storage class specifier is deprecated [-Wdeprecated-register]
-  /usr/local/include/boost/math/special_functions/detail/lanczos_sse2.hpp:140:4: warning: 'register' storage class specifier is deprecated [-Wdeprecated-register]
-  /usr/local/include/boost/math/special_functions/detail/lanczos_sse2.hpp:141:4: warning: 'register' storage class specifier is deprecated [-Wdeprecated-register]
-  /usr/local/include/boost/math/special_functions/detail/lanczos_sse2.hpp:142:4: warning: 'register' storage class specifier is deprecated [-Wdeprecated-register]
-  /usr/local/include/boost/math/special_functions/detail/lanczos_sse2.hpp:143:4: warning: 'register' storage class specifier is deprecated [-Wdeprecated-register]
-See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/glmmsr.Rcheck/00install.out’ for details.
+checking package dependencies ... ERROR
+Packages required but not available: ‘RcppEigen’ ‘BH’
+
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
 ```
 
 ## GMCM (1.2.2)
@@ -1135,58 +871,18 @@ Last 13 lines of output:
   Execution halted
 ```
 
-## Gmisc (1.3.1)
-Maintainer: Max Gordon <max@gforge.se>  
-Bug reports: https://github.com/gforge/Gmisc/issues
-
-1 error  | 0 warnings | 0 notes
-
-```
-checking tests ... ERROR
-Running the tests in ‘tests/testthat.R’ failed.
-Last 13 lines of output:
-  label: Highlighting (with options) 
-  List of 1
-   $ echo: logi TRUE
-  
-    ordinary text without R code
-  
-  output file: Full_test_suite.knit.md
-  
-  /usr/local/bin/pandoc +RTS -K512m -RTS Full_test_suite.utf8.md --to html --from markdown+autolink_bare_uris+ascii_identifiers+tex_math_single_backslash --output /tmp/RtmpCctNIP/tmp.html --smart --email-obfuscation none --standalone --section-divs --template /Users/hadley/R-revdep/rmarkdown/rmd/h/default.html --css docx.css --no-highlight 
-  
-  Output created: /tmp/RtmpCctNIP/tmp.html
-  R(51944,0x7fff74f70000) malloc: *** error for object 0x7ffc658b3890: incorrect checksum for freed object - object was probably modified after being freed.
-  *** set a breakpoint in malloc_error_break to debug
-```
-
 ## gmum.r (0.2.1)
 Maintainer: Stanislaw Jastrzebski <staszek.jastrzebski@gmail.com>  
 Bug reports: https://github.com/gmum/gmum.r/issues
 
-0 errors | 1 warning  | 0 notes
+1 error  | 0 warnings | 0 notes
 
 ```
-checking whether package ‘gmum.r’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: package ‘ggplot2’ was built under R version 3.2.4
-See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/gmum.r.Rcheck/00install.out’ for details.
-```
+checking package dependencies ... ERROR
+Package required but not available: ‘BH’
 
-## gmwm (2.0.0)
-Maintainer: Stephane Guerrier <stephane@illinois.edu>  
-Bug reports: https://github.com/SMAC-Group/gmwm/issues
-
-0 errors | 1 warning  | 1 note 
-
-```
-checking whether package ‘gmwm’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: package ‘ggplot2’ was built under R version 3.2.4
-See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/gmwm.Rcheck/00install.out’ for details.
-
-checking package dependencies ... NOTE
-Package suggested but not available for checking: ‘imudata’
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
 ```
 
 ## gpuR (1.1.0)
@@ -1197,7 +893,7 @@ Bug reports: http://github.com/cdeterman/gpuR/issues/new
 
 ```
 checking package dependencies ... ERROR
-Package required but not available: ‘RViennaCL’
+Packages required but not available: ‘RcppEigen’ ‘RViennaCL’ ‘BH’
 
 See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
 manual.
@@ -1256,25 +952,69 @@ Package suggested but not available for checking: ‘highlight’
 ## harvestr (0.6.0)
 Maintainer: Andrew Redd <andrew.redd@hsc.utah.edu>
 
-1 error  | 0 warnings | 0 notes
+1 error  | 1 warning  | 1 note 
 
 ```
 checking tests ... ERROR
 Running the tests in ‘tests/testthat-package.R’ failed.
 Last 13 lines of output:
-  'arg' must be NULL or a character vector
-  1: expect_that(harvest(x, mean, time = T), has_time) at /Users/hadley/Documents/devtools/testthat/revdep/checks/harvestr.Rcheck/harvestr/tests/test-timing.R:74
-  2: condition(object) at /Users/hadley/Documents/devtools/testthat/R/expect-that.R:22
-  3: expectation(T, "") at /Users/hadley/Documents/devtools/testthat/revdep/checks/harvestr.Rcheck/harvestr/tests/test-timing.R:37
-  4: match.arg(type, c("success", "failure", "error", "skip", "warning")) at /Users/hadley/Documents/devtools/testthat/R/expectation.R:13
-  5: stop("'arg' must be NULL or a character vector")
+  > test_package("harvestr")
+  Caching: ..........
+  main functions: ............
+  Loading required package: coda
+  Loading required package: MASS
+  Error in loadNamespace(i, c(lib.loc, .libPaths()), versionCheck = vI[[i]]) : 
+    there is no package called 'graph'
+  In addition: Warning message:
+  Placing tests in `inst/tests/` is deprecated. Please use `tests/testthat/` instead 
+  Error: package or namespace load failed for 'MCMCpack'
   
   DONE ===========================================================================
-  Error: Test failures
-  In addition: Warning messages:
-  1: Placing tests in `inst/tests/` is deprecated. Please use `tests/testthat/` instead 
-  2: package 'MCMCpack' was built under R version 3.2.4 
   Execution halted
+
+checking running R code from vignettes ... WARNING
+Errors in running code in vignettes:
+when running code in ‘harvestr.Rnw’
+  ...
+
+> library(MCMCpack)
+Loading required package: coda
+Loading required package: MASS
+Error in loadNamespace(i, c(lib.loc, .libPaths()), versionCheck = vI[[i]]) : 
+  there is no package called ‘graph’
+
+  When sourcing ‘harvestr.R’:
+Error: package or namespace load failed for ‘MCMCpack’
+Execution halted
+
+
+checking re-building of vignette outputs ... NOTE
+Error in re-building vignettes:
+  ...
+Loading required package: coda
+Loading required package: MASS
+Error in loadNamespace(i, c(lib.loc, .libPaths()), versionCheck = vI[[i]]) : 
+  there is no package called ‘graph’
+
+Error: processing vignette 'harvestr.Rnw' failed with diagnostics:
+ chunk 1 (label = setup) 
+Error : package or namespace load failed for ‘MCMCpack’
+Execution halted
+
+```
+
+## haven (0.2.0)
+Maintainer: Hadley Wickham <hadley@rstudio.com>  
+Bug reports: https://github.com/hadley/haven/issues
+
+1 error  | 0 warnings | 0 notes
+
+```
+checking package dependencies ... ERROR
+Package required but not available: ‘BH’
+
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
 ```
 
 ## hunspell (1.2)
@@ -1296,50 +1036,11 @@ Bug reports: https://github.com/nutterb/HydeNet/issues
 1 error  | 0 warnings | 0 notes
 
 ```
-checking whether package ‘HydeNet’ can be installed ... ERROR
-Installation failed.
-See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/HydeNet.Rcheck/00install.out’ for details.
-```
+checking package dependencies ... ERROR
+Package required but not available: ‘graph’
 
-## hyperSpec (0.98-20150304)
-Maintainer: Claudia Beleites <chemometrie@beleites.de>
-
-0 errors | 1 warning  | 1 note 
-
-```
-checking whether package ‘hyperSpec’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: package ‘ggplot2’ was built under R version 3.2.4
-  Warning: replacing previous import by ‘grid::unit’ when loading ‘hyperSpec’
-See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/hyperSpec.Rcheck/00install.out’ for details.
-
-checking R code for possible problems ... NOTE
-Warning: local assignments to syntactic functions: ~
-Warning: local assignments to syntactic functions: ~
-```
-
-## ibr (2.0-2)
-Maintainer: "Pierre-Andre Cornillon" <pierre-andre.cornillon@univ-rennes2.fr>
-
-1 error  | 0 warnings | 0 notes
-
-```
-checking tests ... ERROR
-Running the tests in ‘tests/testthat.R’ failed.
-Last 13 lines of output:
-  This is mgcv 1.8-9. For overview type 'help("mgcv-package")'.
-  > 
-  > test_check("ibr")
-  1. Failure: modelling results with lowrank DS splines default df and rank=40 (@test_dim5.R#57) 
-  all(abs(res$fitted - res2$fitted) < 1e-06) isn't true.
-  
-  
-  testthat results ================================================================
-  OK: 31 SKIPPED: 0 FAILED: 1
-  1. Failure: modelling results with lowrank DS splines default df and rank=40 (@test_dim5.R#57) 
-  
-  Error: testthat unit tests failed
-  Execution halted
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
 ```
 
 ## icd9 (1.3)
@@ -1396,19 +1097,6 @@ Last 13 lines of output:
   Execution halted
 ```
 
-## ifaTools (0.8)
-Maintainer: Joshua N. Pritikin <jpritikin@pobox.com>
-
-0 errors | 1 warning  | 0 notes
-
-```
-checking whether package ‘ifaTools’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: package ‘ggplot2’ was built under R version 3.2.4
-  Warning: package ‘OpenMx’ was built under R version 3.2.4
-See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/ifaTools.Rcheck/00install.out’ for details.
-```
-
 ## infuser (0.2.2)
 Maintainer: Bart Smeets <bartsmeets86@gmail.com>  
 Bug reports: https://github.com/bart6114/infuser/issues
@@ -1441,9 +1129,25 @@ Bug reports: https://github.com/hrbrmstr/iptools/issues
 1 error  | 0 warnings | 0 notes
 
 ```
-checking whether package ‘iptools’ can be installed ... ERROR
-Installation failed.
-See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/iptools.Rcheck/00install.out’ for details.
+checking package dependencies ... ERROR
+Package required but not available: ‘BH’
+
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
+```
+
+## jqr (0.2.0)
+Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>  
+Bug reports: https://github.com/ropensci/jqr/issues
+
+1 error  | 0 warnings | 0 notes
+
+```
+checking package dependencies ... ERROR
+Package required but not available: ‘BH’
+
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
 ```
 
 ## KFAS (1.2.2)
@@ -1461,7 +1165,7 @@ See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/KFAS.Rcheck/00ins
 ## LambertW (0.6.2)
 Maintainer: Georg M. Goerg <im@gmge.org>
 
-1 error  | 1 warning  | 0 notes
+1 error  | 0 warnings | 0 notes
 
 ```
 checking tests ... ERROR
@@ -1473,18 +1177,13 @@ Last 13 lines of output:
   2: expect_gt(...) at /Users/hadley/Documents/devtools/testthat/R/expect-comparison.R:89
   
   testthat results ================================================================
-  OK: 738 SKIPPED: 0 FAILED: 2
+  OK: 737 SKIPPED: 0 FAILED: 2
   1. Error: W_gamma treats branch correctly (@test_W_gamma.R#55) 
   2. Error: mLambertW has correct values for Normal and delta > 0 (@test_dpqr_LambertW.R#155) 
   
   Error: testthat unit tests failed
-  In addition: There were 16 warnings (use warnings() to see them)
+  In addition: There were 15 warnings (use warnings() to see them)
   Execution halted
-
-checking whether package ‘LambertW’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: package ‘ggplot2’ was built under R version 3.2.4
-See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/LambertW.Rcheck/00install.out’ for details.
 ```
 
 ## lawn (0.1.6)
@@ -1521,7 +1220,7 @@ Bug reports: https://github.com/macroecology/letsR/issues
 ```
 checking whether package ‘letsR’ can be installed ... WARNING
 Found the following significant warnings:
-  Warning: replacing previous import by ‘sp::nowrapSpatialLines’ when loading ‘letsR’
+  Warning: replacing previous import ‘maptools::nowrapSpatialLines’ by ‘sp::nowrapSpatialLines’ when loading ‘letsR’
 See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/letsR.Rcheck/00install.out’ for details.
 ```
 
@@ -1597,110 +1296,32 @@ Last 13 lines of output:
   Execution halted
 ```
 
-## llama (0.9.1)
-Maintainer: Lars Kotthoff <larsko@cs.ubc.ca>
-
-0 errors | 1 warning  | 0 notes
-
-```
-checking whether package ‘llama’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: package ‘ggplot2’ was built under R version 3.2.4
-See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/llama.Rcheck/00install.out’ for details.
-```
-
-## LLSR (0.0.2.0)
-Maintainer: Diego F Coelho <diegofcoelho@gmail.com>  
-Bug reports: https://github.com/hutchr/LLSR/issues
-
-0 errors | 1 warning  | 0 notes
-
-```
-checking whether package ‘LLSR’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: package ‘ggtern’ was built under R version 3.2.4
-  Warning: package ‘ggplot2’ was built under R version 3.2.4
-See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/LLSR.Rcheck/00install.out’ for details.
-```
-
 ## lme4 (1.1-11)
 Maintainer: Ben Bolker <bbolker+lme4@gmail.com>  
 Bug reports: https://github.com/lme4/lme4/issues
 
-2 errors | 0 warnings | 1 note 
+1 error  | 0 warnings | 0 notes
 
 ```
-checking examples ... ERROR
-Running examples in ‘lme4-Ex.R’ failed
-The error occurred in:
+checking package dependencies ... ERROR
+Package required but not available: ‘RcppEigen’
 
-
-R version 3.2.3 (2015-12-10) -- "Wooden Christmas-Tree"
-Copyright (C) 2015 The R Foundation for Statistical Computing
-Platform: x86_64-apple-darwin13.4.0 (64-bit)
-
-R is free software and comes with ABSOLUTELY NO WARRANTY.
-... 25 lines ...
-+ },
-+ pos = 'CheckExEnv')
-> 
-> ### * </HEADER>
-> library('lme4')
-Loading required package: Matrix
-Error in loadNamespace(j <- i[[1L]], c(lib.loc, .libPaths()), versionCheck = vI[[j]]) : 
-  namespace ‘nlme’ 3.1-122 is being loaded, but >= 3.1.123 is required
-Error: package or namespace load failed for ‘lme4’
-Execution halted
-** found \donttest examples: check also with --run-donttest
-
-checking tests ... ERROR
-Running the tests in ‘tests/AAAtest-all.R’ failed.
-Last 13 lines of output:
-  +     print(warnings()) # TODO? catch most of these by expect_warning(..)
-  + } else {
-  +     cat( "package 'testthat' not available, cannot run unit tests\n" )
-  + }
-  Error in loadNamespace(j <- i[[1L]], c(lib.loc, .libPaths()), versionCheck = vI[[j]]) : 
-    namespace 'nlme' 3.1-122 is being loaded, but >= 3.1.123 is required
-  Loading required package: lme4
-  Error in loadNamespace(j <- i[[1L]], c(lib.loc, .libPaths()), versionCheck = vI[[j]]) : 
-    namespace 'nlme' 3.1-122 is being loaded, but >= 3.1.123 is required
-  Error in loadNamespace(j <- i[[1L]], c(lib.loc, .libPaths()), versionCheck = vI[[j]]) : 
-    namespace 'nlme' 3.1-122 is being loaded, but >= 3.1.123 is required
-  Calls: test_check ... tryCatch -> tryCatchList -> tryCatchOne -> <Anonymous>
-  Execution halted
-
-checking installed package size ... NOTE
-  installed size is  5.8Mb
-  sub-directories of 1Mb or more:
-    doc        1.8Mb
-    testdata   1.5Mb
-```
-
-## lsbclust (1.0.4)
-Maintainer: Pieter Schoonees <schoonees@gmail.com>
-
-0 errors | 1 warning  | 0 notes
-
-```
-checking whether package ‘lsbclust’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: package ‘ggplot2’ was built under R version 3.2.4
-See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/lsbclust.Rcheck/00install.out’ for details.
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
 ```
 
 ## lubridate (1.5.0)
 Maintainer: Vitalie Spinu <spinuvit@gmail.com>  
 Bug reports: https://github.com/hadley/lubridate/issues
 
-1 error  | 0 warnings | 0 notes
+1 error  | 0 warnings | 1 note 
 
 ```
 checking tests ... ERROR
 Running the tests in ‘tests/testthat.R’ failed.
 Last 13 lines of output:
-  `output` does not match "Period\\(0)".
-  Actual value: ""
+  4. Failure: format.Period correctly displays intervals of length 0 (@test-periods.R#350) 
+  per[FALSE] produced no output
   
   
   testthat results ================================================================
@@ -1712,6 +1333,9 @@ Last 13 lines of output:
   
   Error: testthat unit tests failed
   Execution halted
+
+checking package dependencies ... NOTE
+Packages which this enhances but not available for checking: ‘tis’ ‘fts’
 ```
 
 ## markmyassignment (0.5.0)
@@ -1725,149 +1349,43 @@ Installation failed.
 See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/markmyassignment.Rcheck/00install.out’ for details.
 ```
 
-## metaheur (0.1.0)
-Maintainer: Markus Vattulainen <markus.vattulainen@gmail.com>
-
-2 errors | 1 warning  | 0 notes
-
-```
-checking examples ... ERROR
-Running examples in ‘metaheur-Ex.R’ failed
-The error most likely occurred in:
-
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
-> ### Name: getbestheur
-> ### Title: getbestheur
-> ### Aliases: getbestheur
-> 
-> ### ** Examples
-> 
-> result <- metaheur(examplegrid)
-Error in loadNamespace(j <- i[[1L]], c(lib.loc, .libPaths()), versionCheck = vI[[j]]) : 
-  namespace ‘nlme’ 3.1-122 is already loaded, but >= 3.1.123 is required
-Calls: metaheur ... tryCatch -> tryCatchList -> tryCatchOne -> <Anonymous>
-Execution halted
-
-checking tests ... ERROR
-Running the tests in ‘tests/testthat.R’ failed.
-Last 13 lines of output:
-  'help.start()' for an HTML browser interface to help.
-  Type 'q()' to quit R.
-  
-  > library(testthat)
-  > library(metaheur)
-  > 
-  > test_check("metaheur")
-  Error in loadNamespace(j <- i[[1L]], c(lib.loc, .libPaths()), versionCheck = vI[[j]]) : 
-    namespace 'nlme' 3.1-122 is already loaded, but >= 3.1.123 is required
-  Calls: test_check ... tryCatch -> tryCatchList -> tryCatchOne -> <Anonymous>
-  testthat results ================================================================
-  OK: 0 SKIPPED: 0 FAILED: 0
-  Execution halted
-
-checking for missing documentation entries ... WARNING
-Note: the specification for S3 class “family” in package ‘MatrixModels’ seems equivalent to one from package ‘lme4’: not turning on duplicate class definitions for this class.
-All user-level objects in a package should have documentation entries.
-See chapter ‘Writing R documentation files’ in the ‘Writing R
-Extensions’ manual.
-```
-
-## mirtCAT (0.8)
-Maintainer: Phil Chalmers <rphilip.chalmers@gmail.com>  
-Bug reports: https://github.com/philchalmers/mirtCAT/issues?state=open
-
-0 errors | 1 warning  | 0 notes
-
-```
-checking whether package ‘mirtCAT’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: package ‘mirt’ was built under R version 3.2.4
-See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/mirtCAT.Rcheck/00install.out’ for details.
-```
-
-## mizer (0.2)
-Maintainer: Finlay Scott <finlay.scott@jrc.ec.europa.eu>
-
-0 errors | 1 warning  | 1 note 
-
-```
-checking whether package ‘mizer’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: replacing previous import by ‘grid::arrow’ when loading ‘mizer’
-  Warning: replacing previous import by ‘grid::unit’ when loading ‘mizer’
-See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/mizer.Rcheck/00install.out’ for details.
-
-checking R code for possible problems ... NOTE
-getFMort,MizerSim-missing : .local: warning in
-  get_time_elements(object, time_range, slot = "effort"): partial
-  argument match of 'slot' to 'slot_name'
-getFMortGear,MizerSim-missing : .local: warning in
-  get_time_elements(object, time_range, slot = "effort"): partial
-  argument match of 'slot' to 'slot_name'
-plotFMort,MizerSim : .local: warning in scale_y_continuous(name =
-  "Total fishing mortality", lim = c(0, max(plot_dat$value))): partial
-  argument match of 'lim' to 'limits'
-... 32 lines ...
-  ‘Species’
-plotYield,MizerSim : .local: no visible binding for global variable
-  ‘value’
-plotYield,MizerSim : .local: no visible binding for global variable
-  ‘Species’
-plotYieldGear,MizerSim : .local: no visible binding for global variable
-  ‘value’
-plotYieldGear,MizerSim : .local: no visible binding for global variable
-  ‘Species’
-plotYieldGear,MizerSim : .local: no visible binding for global variable
-  ‘gear’
-```
-
 ## mlr (2.8)
 Maintainer: Bernd Bischl <bernd_bischl@gmx.net>  
 Bug reports: https://github.com/mlr-org/mlr/issues
 
-2 errors | 1 warning  | 0 notes
+1 error  | 0 warnings | 0 notes
 
 ```
-checking examples ... ERROR
-Running examples in ‘mlr-Ex.R’ failed
-The error most likely occurred in:
-
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
-> ### Name: getCaretParamSet
-> ### Title: Get tuning parameters from a learner of the caret R-package.
-> ### Aliases: getCaretParamSet
-> 
-> ### ** Examples
-> 
-> library(caret)
-Loading required package: lattice
-Error in loadNamespace(j <- i[[1L]], c(lib.loc, .libPaths()), versionCheck = vI[[j]]) : 
-  namespace ‘nlme’ 3.1-122 is already loaded, but >= 3.1.123 is required
-Error: package or namespace load failed for ‘caret’
-Execution halted
-** found \donttest examples: check also with --run-donttest
-
 checking tests ... ERROR
 Running the tests in ‘tests/run-base.R’ failed.
 Last 13 lines of output:
-  1.  Error: basic PreprocWrapperCaret works (@test_base_PreprocWrapperCaret.R#6) 
-  2.  Error: keep.preds and models are passed down to resample() (@test_base_benchmark.R#193) 
-  3.  Failure: chains (@test_base_chains.R#11) 
-  4.  Error: generateCalibrationData (@test_base_generateCalibration.R#14) 
-  5.  Error: generateLearningCurve (@test_base_generateLearningCurve.R#11) 
-  6.  Error: generatePartialPredictionData (@test_base_generatePartialPrediction.R#21) 
-  7.  Error: generateThreshVsPerfData (@test_base_generateThreshVsPerf.R#12) 
-  8.  Error: getCaretParamSet (@test_base_getCaretParamSet.R#4) 
-  9.  Failure: getParamSet (@test_base_getParamSet.R#16) 
-  10. Error: BenchmarkResult (@test_base_plotBMRBoxplots.R#12) 
+  testthat results ================================================================
+  OK: 1996 SKIPPED: 1 FAILED: 8
+  1. Error: keep.preds and models are passed down to resample() (@test_base_benchmark.R#193) 
+  2. Failure: chains (@test_base_chains.R#11) 
+  3. Error: generateCalibrationData (@test_base_generateCalibration.R#14) 
+  4. Error: generateLearningCurve (@test_base_generateLearningCurve.R#11) 
+  5. Error: generatePartialPredictionData (@test_base_generatePartialPrediction.R#21) 
+  6. Error: generateThreshVsPerfData (@test_base_generateThreshVsPerf.R#12) 
+  7. Failure: getParamSet (@test_base_getParamSet.R#16) 
+  8. Error: BenchmarkResult (@test_base_plotBMRBoxplots.R#12) 
   
   Error: testthat unit tests failed
   Execution halted
+```
 
-checking whether package ‘mlr’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: package ‘ggplot2’ was built under R version 3.2.4
-See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/mlr.Rcheck/00install.out’ for details.
+## mmand (1.3.0)
+Maintainer: Jon Clayden <code@clayden.org>  
+Bug reports: https://github.com/jonclayden/mmand/issues
+
+1 error  | 0 warnings | 0 notes
+
+```
+checking package dependencies ... ERROR
+Package required but not available: ‘RcppEigen’
+
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
 ```
 
 ## modules (0.3.0)
@@ -1895,19 +1413,6 @@ Last 13 lines of output:
   Execution halted
 ```
 
-## MonoPhy (1.1)
-Maintainer: Orlando Schwery <oschwery@vols.utk.edu>
-
-0 errors | 1 warning  | 0 notes
-
-```
-checking whether package ‘MonoPhy’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: package ‘phytools’ was built under R version 3.2.4
-  Warning: package ‘taxize’ was built under R version 3.2.4
-See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/MonoPhy.Rcheck/00install.out’ for details.
-```
-
 ## morse (2.1.1)
 Maintainer: Philippe Ruiz <philippe.ruiz@univ-lyon1.fr>
 
@@ -1919,19 +1424,6 @@ Installation failed.
 See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/morse.Rcheck/00install.out’ for details.
 ```
 
-## mosaic (0.13.0)
-Maintainer: Randall Pruim <rpruim@calvin.edu>  
-Bug reports: https://github.com/ProjectMOSAIC/mosaic/issues
-
-0 errors | 1 warning  | 0 notes
-
-```
-checking whether package ‘mosaic’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: package ‘ggplot2’ was built under R version 3.2.4
-See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/mosaic.Rcheck/00install.out’ for details.
-```
-
 ## move (1.6.541)
 Maintainer: Bart Kranstauber <bart.kranstauber@uni-konstanz.de>
 
@@ -1941,24 +1433,6 @@ Maintainer: Bart Kranstauber <bart.kranstauber@uni-konstanz.de>
 checking whether package ‘move’ can be installed ... ERROR
 Installation failed.
 See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/move.Rcheck/00install.out’ for details.
-```
-
-## MRMR (0.1.3)
-Maintainer: Brian A. Fannin <BFannin@RedwoodsGroup.com>
-
-0 errors | 1 warning  | 2 notes
-
-```
-checking whether package ‘MRMR’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: package ‘ggplot2’ was built under R version 3.2.4
-See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/MRMR.Rcheck/00install.out’ for details.
-
-checking DESCRIPTION meta-information ... NOTE
-Malformed Description field: should contain one or more complete sentences.
-
-checking R code for possible problems ... NOTE
-PlotResiduals: no visible global function definition for ‘.’
 ```
 
 ## MultiGHQuad (1.0)
@@ -1985,19 +1459,6 @@ Last 13 lines of output:
   Execution halted
 ```
 
-## multilevelPSA (1.2.4)
-Maintainer: Jason Bryer <jason@bryer.org>  
-Bug reports: https://github.com/jbryer/multilevelPSA/issues
-
-0 errors | 1 warning  | 0 notes
-
-```
-checking whether package ‘multilevelPSA’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: package ‘ggplot2’ was built under R version 3.2.4
-See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/multilevelPSA.Rcheck/00install.out’ for details.
-```
-
 ## multitable (1.6)
 Maintainer: Steve C Walker <steve.walker@utoronto.ca>
 
@@ -2008,15 +1469,15 @@ checking running R code from vignettes ... ERROR
 Errors in running code in vignettes:
 when running code in ‘multitable.Rnw’
   ...
-> library("ggplot2")
+> p <- p + geom_point(aes(x = width, y = abundance, 
++     shape = life.history))
 
-> library("arm")
-Loading required package: lme4
-Error in loadNamespace(j <- i[[1L]], c(lib.loc, .libPaths()), versionCheck = vI[[j]]) : 
-  namespace ‘nlme’ 3.1-122 is already loaded, but >= 3.1.123 is required
+> p <- p + stat_smooth(aes(x = width, y = abundance), 
++     se = FALSE, method = "bayesglm", family = poisson, form = y ~ 
++         x + I(x^2), colo .... [TRUNCATED] 
 
   When sourcing ‘multitable.R’:
-Error: package ‘lme4’ could not be loaded
+Error: Unknown parameters: family, form
 Execution halted
 
 
@@ -2044,6 +1505,44 @@ Error : Unknown parameters: family, form
 Execution halted
 ```
 
+## mvnfast (0.1.4)
+Maintainer: Matteo Fasiolo <matteo.fasiolo@gmail.com>
+
+1 error  | 0 warnings | 0 notes
+
+```
+checking package dependencies ... ERROR
+Package required but not available: ‘BH’
+
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
+```
+
+## mvtboost (0.4.1)
+Maintainer: Patrick Miller <patrick.mil10@gmail.com>  
+Bug reports: https://github.com/patr1ckm/mvtboost/issues
+
+1 error  | 0 warnings | 0 notes
+
+```
+checking tests ... ERROR
+Running the tests in ‘tests/testthat.R’ failed.
+Last 13 lines of output:
+  
+  Type 'demo()' for some demos, 'help()' for on-line help, or
+  'help.start()' for an HTML browser interface to help.
+  Type 'q()' to quit R.
+  
+  > library(testthat)
+  > library(mvtboost)
+  > 
+  > test_check("mvtboost")
+  Error: mvtb.covex(out) produced no output
+  testthat results ================================================================
+  OK: 72 SKIPPED: 0 FAILED: 0
+  Execution halted
+```
+
 ## mwaved (1.1.2)
 Maintainer: Justin Rory Wishart <justin.wishart@mq.edu.au>  
 Bug reports: https://github.com/jrwishart/mwaved/issues
@@ -2054,6 +1553,34 @@ Bug reports: https://github.com/jrwishart/mwaved/issues
 checking whether package ‘mwaved’ can be installed ... ERROR
 Installation failed.
 See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/mwaved.Rcheck/00install.out’ for details.
+```
+
+## myTAI (0.3.0)
+Maintainer: Hajk-Georg Drost <hajk-georg.drost@informatik.uni-halle.de>  
+Bug reports: https://github.com/HajkD/myTAI/issues
+
+1 error  | 0 warnings | 0 notes
+
+```
+checking package dependencies ... ERROR
+Package required but not available: ‘edgeR’
+
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
+```
+
+## nabor (0.4.6)
+Maintainer: Gregory Jefferis <jefferis@gmail.com>  
+Bug reports: https://github.com/jefferis/nabor/issues
+
+1 error  | 0 warnings | 0 notes
+
+```
+checking package dependencies ... ERROR
+Packages required but not available: ‘RcppEigen’ ‘BH’
+
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
 ```
 
 ## nat (1.8.1)
@@ -2081,22 +1608,6 @@ Last 13 lines of output:
   Execution halted
 ```
 
-## ncappc (0.2.1.1)
-Maintainer: Chayan Acharya <chayan.acharya@farmbio.uu.se>
-
-0 errors | 1 warning  | 0 notes
-
-```
-checking whether package ‘ncappc’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: package ‘ggplot2’ was built under R version 3.2.4
-  Warning: package ‘gridExtra’ was built under R version 3.2.4
-  Warning: replacing previous import by ‘grid::arrow’ when loading ‘ncappc’
-  Warning: replacing previous import by ‘grid::unit’ when loading ‘ncappc’
-  Warning: replacing previous import by ‘scales::alpha’ when loading ‘ncappc’
-See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/ncappc.Rcheck/00install.out’ for details.
-```
-
 ## netdiffuseR (1.16.2)
 Maintainer: George Vega Yon <g.vegayon@gmail.com>  
 Bug reports: https://github.com/USCCANA/netdiffuseR/issues
@@ -2120,19 +1631,6 @@ Last 13 lines of output:
   3: In as_diffnet(listgraph, toa) : Coercing -toa- into integer.
   4: In as_diffnet(dyngraph, c(1, 1, 3, 2)) : Coercing -toa- into integer.
   Execution halted
-```
-
-## netgen (1.3)
-Maintainer: Jakob Bossek <j.bossek@gmail.com>  
-Bug reports: https://github.com/jakobbossek/netgen/issues
-
-0 errors | 1 warning  | 0 notes
-
-```
-checking whether package ‘netgen’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: package ‘checkmate’ was built under R version 3.2.4
-See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/netgen.Rcheck/00install.out’ for details.
 ```
 
 ## NlsyLinks (2.0.1)
@@ -2200,8 +1698,8 @@ Bug reports: https://github.com/trinker/pacman/issues?state=open
 checking tests ... ERROR
 Running the tests in ‘tests/testthat.R’ failed.
 Last 13 lines of output:
-  `output` does not match "Deepayan Sarkar <deepayan.sarkar@r-project.org>".
-  Actual value: ""
+  2. Failure: p_author works (@test-p_author.R#5) --------------------------------
+  p_author(lattice) produced no output
   
   
   Error in username %||% getOption("github.user") %||% stop("Unknown username.") : 
@@ -2298,11 +1796,11 @@ Maintainer: Jian Jin <jinjian.pku@gmail.com>
 checking tests ... ERROR
 Running the tests in ‘tests/testthat.R’ failed.
 Last 13 lines of output:
+  > library(Perc)
   > 
   > test_check("Perc")
   1. Failure: outputs are of correct format for valueConverter (@test-Converters.R#29) 
-  `output` does not match "matrix".
-  Actual value: ""
+  class(vcOutput) produced no output
   
   
   testthat results ================================================================
@@ -2313,17 +1811,18 @@ Last 13 lines of output:
   Execution halted
 ```
 
-## Phxnlme (1.0.0)
-Maintainer: Chay Ngee Lim <limxx356@umn.edu>
+## phonics (0.6.3)
+Maintainer: "James P. Howard, II" <jh@jameshoward.us>  
+Bug reports: https://github.com/howardjp/phonics/issues
 
-0 errors | 1 warning  | 0 notes
+1 error  | 0 warnings | 0 notes
 
 ```
-checking whether package ‘Phxnlme’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: replacing previous import by ‘grid::arrow’ when loading ‘Phxnlme’
-  Warning: replacing previous import by ‘grid::unit’ when loading ‘Phxnlme’
-See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/Phxnlme.Rcheck/00install.out’ for details.
+checking package dependencies ... ERROR
+Package required but not available: ‘BH’
+
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
 ```
 
 ## pingr (1.1.0)
@@ -2351,20 +1850,29 @@ Last 13 lines of output:
   Execution halted
 ```
 
-## pitchRx (1.8.2)
-Maintainer: Carson Sievert <cpsievert1@gmail.com>  
-Bug reports: http://github.com/cpsievert/pitchRx/issues
+## pipeR (0.6.0.6)
+Maintainer: Kun Ren <ken@renkun.me>  
+Bug reports: https://github.com/renkun-ken/pipeR/issues
 
-0 errors | 1 warning  | 1 note 
+1 error  | 0 warnings | 0 notes
 
 ```
-checking whether package ‘pitchRx’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: package ‘ggplot2’ was built under R version 3.2.4
-See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/pitchRx.Rcheck/00install.out’ for details.
-
-checking package dependencies ... NOTE
-Package suggested but not available for checking: ‘ggsubplot’
+checking tests ... ERROR
+Running the tests in ‘tests/testthat.R’ failed.
+Last 13 lines of output:
+  > library(testthat)
+  > test_check("pipeR")
+  Loading required package: pipeR
+  1. Failure: printing (@test2-Pipe.R#168) ---------------------------------------
+  print(Pipe(1:10)$invisible()) produced no output
+  
+  
+  testthat results ================================================================
+  OK: 106 SKIPPED: 0 FAILED: 1
+  1. Failure: printing (@test2-Pipe.R#168) 
+  
+  Error: testthat unit tests failed
+  Execution halted
 ```
 
 ## pixiedust (0.6.1)
@@ -2392,32 +1900,6 @@ Last 13 lines of output:
   Execution halted
 ```
 
-## plotly (3.4.1)
-Maintainer: Carson Sievert <cpsievert1@gmail.com>  
-Bug reports: https://github.com/ropensci/plotly/issues
-
-0 errors | 1 warning  | 0 notes
-
-```
-checking whether package ‘plotly’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: package ‘ggplot2’ was built under R version 3.2.4
-See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/plotly.Rcheck/00install.out’ for details.
-```
-
-## plotROC (2.0.1)
-Maintainer: Michael C Sachs <sachsmc@gmail.com>  
-Bug reports: http://github.com/sachsmc/plotROC/issues
-
-0 errors | 1 warning  | 0 notes
-
-```
-checking whether package ‘plotROC’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: package ‘ggplot2’ was built under R version 3.2.4
-See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/plotROC.Rcheck/00install.out’ for details.
-```
-
 ## pmc (1.0.1)
 Maintainer: Carl Boettiger <cboettig@gmail.com>  
 Bug reports: https://github.com/cboettig/pmc/issues
@@ -2432,71 +1914,111 @@ See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
 manual.
 ```
 
-## pmml (1.5.0)
-Maintainer: Tridivesh Jena <rpmmlsupport@zementis.net>
+## poplite (0.99.16)
+Maintainer: Daniel Bottomly <bottomly@ohsu.edu>
 
-0 errors | 1 warning  | 0 notes
-
-```
-checking whether package ‘pmml’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: package ‘XML’ was built under R version 3.2.4
-See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/pmml.Rcheck/00install.out’ for details.
-```
-
-## PopED (0.3.0)
-Maintainer: Andrew C. Hooker <andrew.hooker@farmbio.uu.se>  
-Bug reports: https://github.com/andrewhooker/PopED/issues
-
-0 errors | 1 warning  | 0 notes
+0 errors | 1 warning  | 3 notes
 
 ```
-checking whether package ‘PopED’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: package ‘ggplot2’ was built under R version 3.2.4
-See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/PopED.Rcheck/00install.out’ for details.
+checking running R code from vignettes ... WARNING
+Errors in running code in vignettes:
+when running code in ‘poplite.Rnw’
+  ...
+8             8         8    18      0  1.6844357  0.53539884          2     F
+9             9         9    20      1  0.9113913 -0.55527835          2     F
+10           10        10    12      1  0.2374303  1.77950291          1     M
+..          ...       ...   ...    ...        ...         ...        ...   ...
+
+> library(VariantAnnotation)
+
+  When sourcing ‘poplite.R’:
+Error: there is no package called ‘VariantAnnotation’
+Execution halted
+
+
+checking package dependencies ... NOTE
+Package suggested but not available for checking: ‘VariantAnnotation’
+
+checking R code for possible problems ... NOTE
+join,Database : .local: no visible binding for global variable
+  ‘new.ancil’
+
+checking re-building of vignette outputs ... NOTE
+Error in re-building vignettes:
+  ...
+
+    select
+
+The following object is masked from ‘package:stats’:
+
+    filter
+
+... 8 lines ...
+Loading required package: DBI
+Starting gender
+Starting clinical
+Starting samples
+Starting dna
+
+Error: processing vignette 'poplite.Rnw' failed with diagnostics:
+ chunk 15 
+Error in library(VariantAnnotation) : 
+  there is no package called ‘VariantAnnotation’
+Execution halted
 ```
 
-## popgraph (1.4)
-Maintainer: Rodney J. Dyer <rjdyer@vcu.edu>
+## prcbench (0.3.1)
+Maintainer: Takaya Saito <takaya.saito@outlook.com>  
+Bug reports: https://github.com/takayasaito/prcbench/issues
 
-0 errors | 1 warning  | 1 note 
-
-```
-checking whether package ‘popgraph’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: package ‘ggplot2’ was built under R version 3.2.4
-See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/popgraph.Rcheck/00install.out’ for details.
-
-checking DESCRIPTION meta-information ... NOTE
-Malformed Title field: should not end in a period.
-```
-
-## poppr (2.1.1)
-Maintainer: Zhian N. Kamvar <kamvarz@science.oregonstate.edu>  
-Bug reports: https://github.com/grunwaldlab/poppr/issues
-
-0 errors | 1 warning  | 0 notes
+2 errors | 0 warnings | 1 note 
 
 ```
-checking whether package ‘poppr’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: package ‘ade4’ was built under R version 3.2.4
-See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/poppr.Rcheck/00install.out’ for details.
-```
+checking examples ... ERROR
+Running examples in ‘prcbench-Ex.R’ failed
+The error most likely occurred in:
 
-## popprxl (0.1.1)
-Maintainer: Zhian N. Kamvar <kamvarz@science.oregonstate.edu>  
-Bug reports: https://github.com/zkamvar/popprxl/issues
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+> ### Name: autoplot.evalcurve
+> ### Title: Plot the result of Precision-Recall curve evaluation
+> ### Aliases: autoplot.evalcurve
+> 
+> ### ** Examples
+> 
+> library(ggplot2)
+> 
+> ## Plot evaluation results on test datasets r1, r2, and r3
+> testset <- create_testset("curve", c("c1", "c2", "c3"))
+> toolset <- create_toolset(set_names = "crv5")
+> eres1 <- run_evalcurve(testset, toolset)
+Error: PerfMeas needed for this function to work. Please install it.
+Execution halted
 
-0 errors | 1 warning  | 0 notes
+checking tests ... ERROR
+Running the tests in ‘tests/testthat.R’ failed.
+Last 13 lines of output:
+  1. Error: run_benchmark (@test_main_benchmark.R#32) 
+  2. Failure: run_benchmark: testset (@test_main_benchmark.R#58) 
+  3. Failure: run_benchmark: testset (@test_main_benchmark.R#61) 
+  4. Failure: run_benchmark: toolset (@test_main_benchmark.R#84) 
+  5. Failure: run_benchmark: toolset (@test_main_benchmark.R#87) 
+  6. Error: run_benchmark: times (@test_main_benchmark.R#109) 
+  7. Failure: run_benchmark: unit (@test_main_benchmark.R#145) 
+  8. Failure: run_benchmark: unit (@test_main_benchmark.R#145) 
+  9. Failure: run_benchmark: unit (@test_main_benchmark.R#145) 
+  1. ...
+  
+  Error: testthat unit tests failed
+  Execution halted
 
-```
-checking whether package ‘popprxl’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: package ‘poppr’ was built under R version 3.2.4
-  Warning: package ‘ade4’ was built under R version 3.2.4
-See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/popprxl.Rcheck/00install.out’ for details.
+checking re-building of vignette outputs ... NOTE
+Error in re-building vignettes:
+  ...
+Quitting from lines 119-124 (introduction.Rmd) 
+Error: processing vignette 'introduction.Rmd' failed with diagnostics:
+PerfMeas needed for this function to work. Please install it.
+Execution halted
+
 ```
 
 ## precrec (0.3.1)
@@ -2521,43 +2043,6 @@ Last 13 lines of output:
   2. Failure: join_scores() only accepts numeric data (@test_mm2_2_join_scores.R#109) 
   
   Error: testthat unit tests failed
-  Execution halted
-```
-
-## preprocomb (0.2.0)
-Maintainer: Markus Vattulainen <markus.vattulainen@gmail.com>  
-Bug reports: https://github.com/mvattulainen/preprocomb/issues
-
-1 error  | 0 warnings | 0 notes
-
-```
-checking whether package ‘preprocomb’ can be installed ... ERROR
-Installation failed.
-See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/preprocomb.Rcheck/00install.out’ for details.
-```
-
-## preproviz (0.1.1)
-Maintainer: Markus Vattulainen <markus.vattulainen@gmail.com>  
-Bug reports: https://github.com/mvattulainen/preproviz/issues
-
-1 error  | 0 warnings | 0 notes
-
-```
-checking tests ... ERROR
-Running the tests in ‘tests/testthat.R’ failed.
-Last 13 lines of output:
-  'help.start()' for an HTML browser interface to help.
-  Type 'q()' to quit R.
-  
-  > library(testthat)
-  > library(preproviz)
-  > 
-  > test_check("preproviz")
-  Error in loadNamespace(j <- i[[1L]], c(lib.loc, .libPaths()), versionCheck = vI[[j]]) : 
-    namespace 'nlme' 3.1-122 is already loaded, but >= 3.1.123 is required
-  Calls: test_check ... tryCatch -> tryCatchList -> tryCatchOne -> <Anonymous>
-  testthat results ================================================================
-  OK: 0 SKIPPED: 0 FAILED: 0
   Execution halted
 ```
 
@@ -2592,16 +2077,18 @@ checking DESCRIPTION meta-information ... NOTE
 Malformed Title field: should not end in a period.
 ```
 
-## psidR (1.3)
-Maintainer: Florian Oswald <florian.oswald@gmail.com>
+## purrr (0.2.1)
+Maintainer: Hadley Wickham <hadley@rstudio.com>  
+Bug reports: https://github.com/hadley/purrr/issues
 
-0 errors | 1 warning  | 0 notes
+1 error  | 0 warnings | 0 notes
 
 ```
-checking whether package ‘psidR’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: package ‘RCurl’ was built under R version 3.2.4
-See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/psidR.Rcheck/00install.out’ for details.
+checking package dependencies ... ERROR
+Package required but not available: ‘BH’
+
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
 ```
 
 ## pvar (2.2)
@@ -2642,9 +2129,9 @@ checking tests ... ERROR
 Running the tests in ‘tests/testthat_interactive.R’ failed.
 Last 13 lines of output:
   
+  
   2. Failure: findData.inputBaseCat (@test-interactive_pxweb.R#9) ----------------
-  `output` does not match "('*' = Select all, 'a' = Show all)".
-  Actual value: ""
+  pxweb:::findData.inputBaseCat(c(3, 6), test_codedAlt) produced no output
   
   
   testthat results ================================================================
@@ -2654,58 +2141,6 @@ Last 13 lines of output:
   
   Error: testthat unit tests failed
   Execution halted
-```
-
-## quadrupen (0.2-4)
-Maintainer: Julien Chiquet <julien.chiquet@genopole.cnrs.fr>
-
-0 errors | 1 warning  | 1 note 
-
-```
-checking whether package ‘quadrupen’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: package ‘ggplot2’ was built under R version 3.2.4
-  Warning: replacing previous import by ‘grid::arrow’ when loading ‘quadrupen’
-  Warning: replacing previous import by ‘grid::unit’ when loading ‘quadrupen’
-  Warning: replacing previous import by ‘scales::alpha’ when loading ‘quadrupen’
-See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/quadrupen.Rcheck/00install.out’ for details.
-
-checking R code for possible problems ... NOTE
-plot,cvpen : .local: no visible binding for global variable ‘lambda1’
-plot,cvpen : .local: no visible binding for global variable ‘lambda2’
-plot,cvpen : .local: no visible binding for global variable ‘serr’
-plot,cvpen : .local: no visible binding for global variable ‘xval’
-plot,cvpen : .local: no visible binding for global variable
-  ‘lambda.choice’
-plot,quadrupen : .local: no visible binding for global variable
-  ‘variables’
-plot,stability.path : .local: no visible binding for global variable
-  ‘variables’
-```
-
-## R4CouchDB (0.7.1)
-Maintainer: Thomas Bock <thsteinbock@web.de>
-
-0 errors | 1 warning  | 0 notes
-
-```
-checking whether package ‘R4CouchDB’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: package ‘RCurl’ was built under R version 3.2.4
-See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/R4CouchDB.Rcheck/00install.out’ for details.
-```
-
-## RAM (1.2.1.3)
-Maintainer: Wen Chen <Wen.Chen@agr.gc.ca>  
-Bug reports: https://bitbucket.org/Wen_Chen/ram_releases/issues/
-
-0 errors | 1 warning  | 0 notes
-
-```
-checking whether package ‘RAM’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: package ‘ggplot2’ was built under R version 3.2.4
-See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/RAM.Rcheck/00install.out’ for details.
 ```
 
 ## RAppArmor (2.0.1)
@@ -2730,11 +2165,11 @@ Bug reports: https://github.com/hadley/rappdirs/issues
 checking tests ... ERROR
 Running the tests in ‘tests/test-all.R’ failed.
 Last 13 lines of output:
+  > library(testthat)
   > test_check("rappdirs")
   Loading required package: rappdirs
   1. Failure: expand_r_libs_specifiers works as expected (@test-utils.r#5) -------
-  `output` does not match "/".
-  Actual value: ""
+  expand_r_libs_specifiers("%p-platform/%v") produced no output
   
   
   testthat results ================================================================
@@ -2757,21 +2192,22 @@ Bug reports: https://github.com/ropensci/rAvis/issues
 ```
 checking whether package ‘rAvis’ can be installed ... WARNING
 Found the following significant warnings:
-  Warning: replacing previous import by ‘sp::nowrapSpatialLines’ when loading ‘rAvis’
+  Warning: replacing previous import ‘maptools::nowrapSpatialLines’ by ‘sp::nowrapSpatialLines’ when loading ‘rAvis’
 See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/rAvis.Rcheck/00install.out’ for details.
 ```
 
-## RBPcurve (1.0-33)
-Maintainer: Giuseppe Casalicchio <giuseppe.casalicchio@stat.uni-muenchen.de>  
-Bug reports: https://github.com/giuseppec/RBPcurve/issues
+## RcppShark (0.1)
+Maintainer: Aydin Demircioglu <aydin.demircioglu@ini.rub.de>  
+Bug reports: http://github.com/aydindemircioglu/RcppShark/issues
 
-0 errors | 1 warning  | 0 notes
+1 error  | 0 warnings | 0 notes
 
 ```
-checking whether package ‘RBPcurve’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: package ‘ggplot2’ was built under R version 3.2.4
-See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/RBPcurve.Rcheck/00install.out’ for details.
+checking package dependencies ... ERROR
+Package required but not available: ‘BH’
+
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
 ```
 
 ## rcrypt (0.1.1)
@@ -2806,8 +2242,8 @@ Bug reports: https://github.com/douglasgscofield/readGenalex/issues
 checking tests ... ERROR
 Running the tests in ‘tests/testthat.R’ failed.
 Last 13 lines of output:
-  Error: `output` does not match "104/101".
-  Actual value: ""
+  
+  Error: as.genetics(x1) produced no output
   testthat results ================================================================
   OK: 343 SKIPPED: 0 FAILED: 6
   1. Failure: summary.genalex summarises pops etc., genotypes, and extra data (@test_all.R#231) 
@@ -2819,6 +2255,20 @@ Last 13 lines of output:
   
   Error: testthat unit tests failed
   Execution halted
+```
+
+## readr (0.2.2)
+Maintainer: Hadley Wickham <hadley@rstudio.com>  
+Bug reports: https://github.com/hadley/readr/issues
+
+1 error  | 0 warnings | 0 notes
+
+```
+checking package dependencies ... ERROR
+Package required but not available: ‘BH’
+
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
 ```
 
 ## readxl (0.1.0)
@@ -2843,6 +2293,34 @@ Last 13 lines of output:
   
   Error: testthat unit tests failed
   Execution halted
+```
+
+## REDCapR (0.9.3)
+Maintainer: Will Beasley <wibeasley@hotmail.com>  
+Bug reports: https://github.com/OuhscBbmc/REDCapR/issues
+
+1 error  | 0 warnings | 1 note 
+
+```
+checking tests ... ERROR
+Running the tests in ‘tests/test-all.R’ failed.
+Last 13 lines of output:
+         verbose = verbose, config_options = config_options)
+  6: httr::POST(url = redcap_uri, body = post_body, config = config_options)
+  7: request_perform(req, hu$handle$handle)
+  8: request_fetch(req$output, req$url, handle)
+  9: request_fetch.write_memory(req$output, req$url, handle)
+  10: curl::curl_fetch_memory(url, handle = handle)
+  
+  testthat results ================================================================
+  OK: 52 SKIPPED: 43 FAILED: 1
+  1. Error: Batch: Bad Uri -Not HTTPS (@test-read_errors.R#54) 
+  
+  Error: testthat unit tests failed
+  Execution halted
+
+checking package dependencies ... NOTE
+Package suggested but not available for checking: ‘RODBC’
 ```
 
 ## redland (1.0.17-7)
@@ -2888,16 +2366,28 @@ See chapter ‘System and foreign language interfaces’ in the ‘Writing R
 Extensions’ manual.
 ```
 
-## restimizeapi (1.0.0)
-Maintainer: Thomas P. Fuller <thomas.fuller@coherentlogic.com>
+## reportr (1.2.0)
+Maintainer: Jon Clayden <code@clayden.org>
 
-0 errors | 1 warning  | 0 notes
+1 error  | 0 warnings | 0 notes
 
 ```
-checking whether package ‘restimizeapi’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: package ‘RCurl’ was built under R version 3.2.4
-See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/restimizeapi.Rcheck/00install.out’ for details.
+checking tests ... ERROR
+Running the tests in ‘tests/testthat.R’ failed.
+Last 13 lines of output:
+  > library(reportr)
+  > 
+  > test_check("reportr")
+  1. Failure: message reporting works (@test-05-reportr.R#16) --------------------
+  report(OL$Info, "Test message") produced no output
+  
+  
+  testthat results ================================================================
+  OK: 13 SKIPPED: 0 FAILED: 1
+  1. Failure: message reporting works (@test-05-reportr.R#16) 
+  
+  Error: testthat unit tests failed
+  Execution halted
 ```
 
 ## Rlibeemd (1.3.7)
@@ -2912,6 +2402,31 @@ Installation failed.
 See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/Rlibeemd.Rcheck/00install.out’ for details.
 ```
 
+## rlist (0.4.6)
+Maintainer: Kun Ren <ken@renkun.me>  
+Bug reports: https://github.com/renkun-ken/rlist/issues
+
+1 error  | 0 warnings | 0 notes
+
+```
+checking tests ... ERROR
+Running the tests in ‘tests/testthat.R’ failed.
+Last 13 lines of output:
+  
+  3. Failure: list.group (@test-group.R#27) --------------------------------------
+  lapply(2:4, function(i) list.group(x, sum(unlist(score)) <= i)) produced no output
+  
+  
+  testthat results ================================================================
+  OK: 288 SKIPPED: 0 FAILED: 3
+  1. Failure: list.is (@test-filter.R#12) 
+  2. Failure: list.filter (@test-filter.R#34) 
+  3. Failure: list.group (@test-group.R#27) 
+  
+  Error: testthat unit tests failed
+  Execution halted
+```
+
 ## RLumModel (0.1.0)
 Maintainer: Johannes Friedrich <johannes.friedrich@uni-bayreuth.de>
 
@@ -2921,7 +2436,7 @@ Maintainer: Johannes Friedrich <johannes.friedrich@uni-bayreuth.de>
 checking tests ... ERROR
 Running the tests in ‘tests/testthat.R’ failed.
 Last 13 lines of output:
-  Actual value: ""
+  .set_pars("Pagonis2008") produced no output
   
   
   testthat results ================================================================
@@ -2936,6 +2451,18 @@ Last 13 lines of output:
   Execution halted
 ```
 
+## rmumps (5.0.1.8)
+Maintainer: Serguei Sokol <sokol@insa-toulouse.fr>  
+Bug reports: https://github.com/sgsokol/rmumps/issues
+
+1 error  | 0 warnings | 0 notes
+
+```
+checking whether package ‘rmumps’ can be installed ... ERROR
+Installation failed.
+See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/rmumps.Rcheck/00install.out’ for details.
+```
+
 ## rnetcarto (0.2.4)
 Maintainer: Guilhem Doulcier <guilhem.doulcier@ens.fr>
 
@@ -2945,6 +2472,20 @@ Maintainer: Guilhem Doulcier <guilhem.doulcier@ens.fr>
 checking whether package ‘rnetcarto’ can be installed ... ERROR
 Installation failed.
 See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/rnetcarto.Rcheck/00install.out’ for details.
+```
+
+## RNiftyReg (2.2.0)
+Maintainer: Jon Clayden <code@clayden.org>  
+Bug reports: https://github.com/jonclayden/RNiftyReg/issues
+
+1 error  | 0 warnings | 0 notes
+
+```
+checking package dependencies ... ERROR
+Package required but not available: ‘RcppEigen’
+
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
 ```
 
 ## RODBCDBI (0.1.1)
@@ -2960,42 +2501,17 @@ See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
 manual.
 ```
 
-## rorutadis (0.3.1)
-Maintainer: Krzysztof Ciomek <k.ciomek@gmail.com>
+## rpf (0.51)
+Maintainer: Joshua Pritikin <jpritikin@pobox.com>
 
-0 errors | 1 warning  | 0 notes
-
-```
-checking whether package ‘rorutadis’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: package ‘ggplot2’ was built under R version 3.2.4
-  Warning: package ‘gridExtra’ was built under R version 3.2.4
-See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/rorutadis.Rcheck/00install.out’ for details.
-```
-
-## rotations (1.5)
-Maintainer: Bryan Stanfill <bstanfill2003@gmail.com>  
-Bug reports: https://github.com/stanfill/rotationsC/issues
-
-0 errors | 1 warning  | 0 notes
+1 error  | 0 warnings | 0 notes
 
 ```
-checking whether package ‘rotations’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: package ‘ggplot2’ was built under R version 3.2.4
-See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/rotations.Rcheck/00install.out’ for details.
-```
+checking package dependencies ... ERROR
+Package required but not available: ‘RcppEigen’
 
-## rpcdsearch (1.0)
-Maintainer: David Springate <daspringate@gmail.com>
-
-0 errors | 1 warning  | 0 notes
-
-```
-checking whether package ‘rpcdsearch’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: replacing previous import by ‘stringr::%>%’ when loading ‘rpcdsearch’
-See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/rpcdsearch.Rcheck/00install.out’ for details.
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
 ```
 
 ## rpivotTable (0.1.5.7)
@@ -3071,33 +2587,6 @@ Last 13 lines of output:
   Execution halted
 ```
 
-## RSelenium (1.3.5)
-Maintainer: John Harrison <johndharrison0@gmail.com>  
-Bug reports: http://github.com/ropensci/RSelenium/issues
-
-0 errors | 1 warning  | 3 notes
-
-```
-checking whether package ‘RSelenium’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: package ‘RCurl’ was built under R version 3.2.4
-  Warning: package ‘XML’ was built under R version 3.2.4
-See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/RSelenium.Rcheck/00install.out’ for details.
-
-checking package dependencies ... NOTE
-Package suggested but not available for checking: ‘Rcompression’
-
-checking DESCRIPTION meta-information ... NOTE
-Malformed Title field: should not end in a period.
-
-checking S3 generic/method consistency ... NOTE
-Found the following apparent S3 methods exported but not registered:
-  .DollarNames.errorHandler .DollarNames.remoteDriver
-  .DollarNames.webElement
-See section ‘Registering S3 methods’ in the ‘Writing R Extensions’
-manual.
-```
-
 ## rsig (1.0)
 Maintainer: Sangkyun Lee <sangkyun.lee@tu-dortmund.de>
 
@@ -3166,105 +2655,11 @@ Bug reports: https://github.com/stan-dev/rstanarm/issues
 1 error  | 0 warnings | 0 notes
 
 ```
-checking whether package ‘rstanarm’ can be installed ... ERROR
-Installation failed.
-See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/rstanarm.Rcheck/00install.out’ for details.
-```
+checking package dependencies ... ERROR
+Packages required but not available: ‘StanHeaders’ ‘BH’ ‘RcppEigen’
 
-## RStoolbox (0.1.4)
-Maintainer: Benjamin Leutner <benjamin.leutner@uni-wuerzburg.de>  
-Bug reports: https://github.com/bleutner/RStoolbox/issues
-
-1 error  | 0 warnings | 0 notes
-
-```
-checking whether package ‘RStoolbox’ can be installed ... ERROR
-Installation failed.
-See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/RStoolbox.Rcheck/00install.out’ for details.
-```
-
-## rusda (1.0.6)
-Maintainer: Franz-Sebastian Krah <f.krah@mailbox.org>
-
-0 errors | 1 warning  | 0 notes
-
-```
-checking whether package ‘rusda’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: replacing previous import by ‘testthat::%>%’ when loading ‘rusda’
-See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/rusda.Rcheck/00install.out’ for details.
-```
-
-## rYoutheria (1.0.0)
-Maintainer: Tom August <tomaug@ceh.ac.uk>  
-Bug reports: 
-        https://github.com/biologicalrecordscentre/rYoutheria/issues
-
-1 error  | 0 warnings | 1 note 
-
-```
-checking examples ... ERROR
-Running examples in ‘rYoutheria-Ex.R’ failed
-The error most likely occurred in:
-
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
-> ### Name: getCountries
-> ### Title: Get country names from YouTheria
-> ### Aliases: getCountries
-> 
-> ### ** Examples
-> 
-> # Get a dataframe of all countries
-> getCountries()
-Error in function (type, msg, asError = TRUE)  : 
-  Failed to connect to www.utheria.org port 80: Network is unreachable
-Calls: getCountries ... getURL -> curlPerform -> .Call -> <Anonymous> -> fun
-Execution halted
-
-checking re-building of vignette outputs ... NOTE
-Error in re-building vignettes:
-  ...
-Quitting from lines 48-57 (vignette.Rnw) 
-Error: processing vignette 'vignette.Rnw' failed with diagnostics:
-Failed to connect to www.utheria.org port 80: Network is unreachable
-Execution halted
-
-```
-
-## SciencesPo (1.3.9)
-Maintainer: Daniel Marcelino <dmarcelino@live.com>  
-Bug reports: http://github.com/danielmarcelino/SciencesPo/issues
-
-0 errors | 1 warning  | 1 note 
-
-```
-checking whether package ‘SciencesPo’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: package ‘ggplot2’ was built under R version 3.2.4
-See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/SciencesPo.Rcheck/00install.out’ for details.
-
-checking re-building of vignette outputs ... NOTE
-Error in re-building vignettes:
-  ...
-Units                 Measurement System Units
-bhodrick93            Bekaert's and Hodrick's (1993) Data
-cathedrals            Cathedrals
-cgreene76             Christensen's and Greene's (1976) Data
-galton                Galton's Family Data on Human Stature.
-griliches76           Griliches's (1976) Data
-ltaylor96             Lothian's and Taylor's (1996) Data Set
-... 8 lines ...
-turnout               Turnout Data
-twins                 Burt's twin data
-words                 Word frequencies from Mosteller and Wallace
-
-Loading required package: SciencesPo
-initializing ... done
-
-Quitting from lines 395-399 (SciencesPo.Rmd) 
-Error: processing vignette 'SciencesPo.Rmd' failed with diagnostics:
-polygon edge not found
-Execution halted
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
 ```
 
 ## sdcTable (0.20.3)
@@ -3324,22 +2719,11 @@ Bug reports: https://github.com/airoldilab/sgd/issues
 1 error  | 0 warnings | 0 notes
 
 ```
-checking whether package ‘sgd’ can be installed ... ERROR
-Installation failed.
-See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/sgd.Rcheck/00install.out’ for details.
-```
+checking package dependencies ... ERROR
+Package required but not available: ‘BH’
 
-## shazam (0.1.2)
-Maintainer: Jason Vander Heiden <jason.vanderheiden@yale.edu>  
-Bug reports: https://bitbucket.org/kleinstein/shazam/issues
-
-0 errors | 1 warning  | 0 notes
-
-```
-checking whether package ‘shazam’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: package ‘ggplot2’ was built under R version 3.2.4
-See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/shazam.Rcheck/00install.out’ for details.
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
 ```
 
 ## simmer (3.1.2)
@@ -3349,72 +2733,11 @@ Bug reports: https://github.com/Bart6114/simmer/issues
 1 error  | 0 warnings | 0 notes
 
 ```
-checking tests ... ERROR
-Running the tests in ‘tests/testthat.R’ failed.
-Last 13 lines of output:
-  1. Failure: the trajectory stores the right number of activities (@test-trajectory.R#76) 
-  `output` does not match ".*(13 activities.*Seize.*nurse.*1.*Timeout.*function.*Release.*nurse.*1.*Branch.*1.*6 activities.*Seize.*doctor.*function.*Timeout.*function.*Release.*doctor.*function.*Branch.*1.*3 activities.*Seize.*administration.*1.*Timeout.*1.*Release.*administration.*1.*Rollback.*1.*Branch.*1.*Rollback.*1.*Rollback.*function.*SetAttribute.*1.*SetAttribute.*function).*".
-  Actual value: ""
-  
-  
-  { Activity: Timeout(none) | delay: 1 }
-  Trajectory: anonymous, 1 activities
-  testthat results ================================================================
-  OK: 192 SKIPPED: 0 FAILED: 1
-  1. Failure: the trajectory stores the right number of activities (@test-trajectory.R#76) 
-  
-  Error: testthat unit tests failed
-  Execution halted
-```
+checking package dependencies ... ERROR
+Package required but not available: ‘BH’
 
-## simr (1.0.1)
-Maintainer: Peter Green <greenp@landcareresearch.co.nz>  
-Bug reports: https://github.com/pitakakariki/simr/issues
-
-1 error  | 0 warnings | 0 notes
-
-```
-checking whether package ‘simr’ can be installed ... ERROR
-Installation failed.
-See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/simr.Rcheck/00install.out’ for details.
-```
-
-## sjPlot (1.9.2)
-Maintainer: Daniel Lüdecke <d.luedecke@uke.de>  
-Bug reports: https://github.com/sjPlot/devel/issues
-
-1 error  | 0 warnings | 0 notes
-
-```
-checking whether package ‘sjPlot’ can be installed ... ERROR
-Installation failed.
-See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/sjPlot.Rcheck/00install.out’ for details.
-```
-
-## slackr (1.2)
-Maintainer: Bob Rudis <bob@rudis.net>  
-Bug reports: https://github.com/hrbrmstr/slackr/issues
-
-0 errors | 1 warning  | 0 notes
-
-```
-checking whether package ‘slackr’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: package ‘ggplot2’ was built under R version 3.2.4
-See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/slackr.Rcheck/00install.out’ for details.
-```
-
-## smoof (1.3)
-Maintainer: Jakob Bossek <j.bossek@gmail.com>  
-Bug reports: https://github.com/jakobbossek/smoof/issues
-
-0 errors | 1 warning  | 0 notes
-
-```
-checking whether package ‘smoof’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: package ‘checkmate’ was built under R version 3.2.4
-See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/smoof.Rcheck/00install.out’ for details.
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
 ```
 
 ## SpaDES (1.1.1)
@@ -3433,6 +2756,19 @@ See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
 manual.
 ```
 
+## spaMM (1.7.2)
+Maintainer: François Rousset <francois.rousset@univ-montp2.fr>
+
+1 error  | 0 warnings | 0 notes
+
+```
+checking package dependencies ... ERROR
+Package required but not available: ‘RcppEigen’
+
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
+```
+
 ## sparseHessianFD (0.3.0)
 Maintainer: Michael Braun <braunm@smu.edu>
 
@@ -3440,24 +2776,34 @@ Maintainer: Michael Braun <braunm@smu.edu>
 
 ```
 checking package dependencies ... ERROR
-Package required and available but unsuitable version: ‘Matrix’
+Package required but not available: ‘RcppEigen’
 
 See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
 manual.
 ```
 
-## spoccutils (0.1.0)
-Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>  
-Bug reports: https://github.com/ropensci/spoccutils/issues
+## spduration (0.15.0)
+Maintainer: Andreas Beger <adbeger@gmail.com>
 
-0 errors | 1 warning  | 0 notes
+1 error  | 0 warnings | 0 notes
 
 ```
-checking whether package ‘spoccutils’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: package ‘ggplot2’ was built under R version 3.2.4
-  Warning: replacing previous import by ‘grid::unit’ when loading ‘spoccutils’
-See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/spoccutils.Rcheck/00install.out’ for details.
+checking tests ... ERROR
+Running the tests in ‘tests/testthat.R’ failed.
+Last 13 lines of output:
+  plot_hazard(model.coups, zvals = c(1, -5), ci = FALSE, col = "blue") produced no output
+  
+  
+  testthat results ================================================================
+  OK: 17 SKIPPED: 0 FAILED: 5
+  1. Failure: plot_hazard accepts all input options (@test_plotting.R#8) 
+  2. Failure: plot_hazard accepts all input options (@test_plotting.R#10) 
+  3. Failure: plot_hazard accepts all input options (@test_plotting.R#13) 
+  4. Failure: plot_hazard accepts all input options (@test_plotting.R#17) 
+  5. Failure: plot_hazard accepts all input options (@test_plotting.R#22) 
+  
+  Error: testthat unit tests failed
+  Execution halted
 ```
 
 ## StableEstim (2.0)
@@ -3534,16 +2880,18 @@ Installation failed.
 See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/strvalidator.Rcheck/00install.out’ for details.
 ```
 
-## tadaatoolbox (0.9.0)
-Maintainer: Lukas Burk <lukas@quantenbrot.de>  
-Bug reports: https://github.com/tadaadata/tadaatoolbox/issues
+## svglite (1.1.0)
+Maintainer: Hadley Wickham <hadley@rstudio.com>  
+Bug reports: https://github.com/hadley/svglite/issues
 
 1 error  | 0 warnings | 0 notes
 
 ```
-checking whether package ‘tadaatoolbox’ can be installed ... ERROR
-Installation failed.
-See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/tadaatoolbox.Rcheck/00install.out’ for details.
+checking package dependencies ... ERROR
+Package required but not available: ‘BH’
+
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
 ```
 
 ## testthatsomemore (0.1)
@@ -3576,22 +2924,11 @@ Bug reports: https://github.com/ropensci/textreuse/issues
 1 error  | 0 warnings | 0 notes
 
 ```
-checking tests ... ERROR
-Running the tests in ‘tests/testthat.R’ failed.
-Last 13 lines of output:
-  
-  2. Failure: prints sensibly (@test-TextReuseCorpus.R#46) -----------------------
-  `output` does not match "Number of documents: 3".
-  Actual value: ""
-  
-  
-  testthat results ================================================================
-  OK: 142 SKIPPED: 2 FAILED: 2
-  1. Failure: prints sensibly (@test-TextReuseCorpus.R#45) 
-  2. Failure: prints sensibly (@test-TextReuseCorpus.R#46) 
-  
-  Error: testthat unit tests failed
-  Execution halted
+checking package dependencies ... ERROR
+Package required but not available: ‘BH’
+
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
 ```
 
 ## tigris (0.2.2)
@@ -3602,23 +2939,38 @@ Maintainer: Kyle Walker <kyle.walker@tcu.edu>
 ```
 checking whether package ‘tigris’ can be installed ... WARNING
 Found the following significant warnings:
-  Warning: replacing previous import by ‘sp::nowrapSpatialLines’ when loading ‘tigris’
+  Warning: replacing previous import ‘maptools::nowrapSpatialLines’ by ‘sp::nowrapSpatialLines’ when loading ‘tigris’
 See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/tigris.Rcheck/00install.out’ for details.
 ```
 
 ## tmod (0.24)
 Maintainer: January Weiner <january.weiner@gmail.com>
 
-1 error  | 0 warnings | 1 note 
+2 errors | 0 warnings | 2 notes
 
 ```
+checking examples ... ERROR
+Running examples in ‘tmod-Ex.R’ failed
+The error most likely occurred in:
+
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+> ### Name: tmodLimmaTest
+> ### Title: Run tmod enrichment tests directly on a limma object
+> ### Aliases: tmodLimmaTest
+> 
+> ### ** Examples
+> 
+> library(limma)
+Error in library(limma) : there is no package called ‘limma’
+Execution halted
+
 checking tests ... ERROR
 Running the tests in ‘tests/testthat.R’ failed.
 Last 13 lines of output:
   
+  
   2. Failure: tmod is sane (@test_data.R#8) --------------------------------------
-  `output` does not match "606 modules, 12712 genes".
-  Actual value: ""
+  `tmod` produced no output
   
   
   testthat results ================================================================
@@ -3630,10 +2982,19 @@ Last 13 lines of output:
   Execution halted
 
 checking package dependencies ... NOTE
-Package suggested but not available for checking: ‘org.Hs.eg.db’
+Packages suggested but not available for checking: ‘limma’ ‘org.Hs.eg.db’
+
+checking re-building of vignette outputs ... NOTE
+Error in re-building vignettes:
+  ...
+Quitting from lines 46-56 (tmod.rmd) 
+Error: processing vignette 'tmod.rmd' failed with diagnostics:
+there is no package called 'limma'
+Execution halted
+
 ```
 
-## toaster (0.4.2)
+## toaster (0.5.1)
 Maintainer: Gregory Kanevsky <gregory.kanevsky@teradata.com>  
 Bug reports: https://github.com/teradata-aster-field/toaster/issues
 
@@ -3647,16 +3008,17 @@ See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
 manual.
 ```
 
-## treescape (1.8.15)
-Maintainer: Michelle Kendall <m.kendall@imperial.ac.uk>
+## trustOptim (0.8.5)
+Maintainer: Michael Braun <braunm@smu.edu>
 
-0 errors | 1 warning  | 0 notes
+1 error  | 0 warnings | 0 notes
 
 ```
-checking whether package ‘treescape’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: package ‘ade4’ was built under R version 3.2.4
-See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/treescape.Rcheck/00install.out’ for details.
+checking package dependencies ... ERROR
+Package required but not available: ‘RcppEigen’
+
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
 ```
 
 ## tsPI (1.0.1)
@@ -3671,43 +3033,17 @@ Installation failed.
 See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/tsPI.Rcheck/00install.out’ for details.
 ```
 
-## tspmeta (1.2)
-Maintainer: Bernd Bischl <bernd_bischl@gmx.net>  
-Bug reports: https://github.com/berndbischl/tspmeta/issues
-
-0 errors | 1 warning  | 0 notes
-
-```
-checking whether package ‘tspmeta’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: package ‘ggplot2’ was built under R version 3.2.4
-See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/tspmeta.Rcheck/00install.out’ for details.
-```
-
-## umx (1.1.5)
-Maintainer: Timothy C Bates <timothy.c.bates@gmail.com>  
-Bug reports: http://github.com/tbates/umx/issues
-
-0 errors | 1 warning  | 0 notes
-
-```
-checking whether package ‘umx’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: package ‘OpenMx’ was built under R version 3.2.4
-See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/umx.Rcheck/00install.out’ for details.
-```
-
 ## useful (1.2.0)
 Maintainer: Jared P. Lander <packages@jaredlander.com>
 
-1 error  | 1 warning  | 0 notes
+1 error  | 0 warnings | 0 notes
 
 ```
 checking tests ... ERROR
 Running the tests in ‘tests/testthat.R’ failed.
 Last 13 lines of output:
-  `output` does not match "Mean relative difference: 5e-08".
-  Actual value: ""
+  4. Failure: simple.impute.default properly imputes the mean (@test-simple-impute.r#41) 
+  all.equal(...) produced no output
   
   
   testthat results ================================================================
@@ -3719,11 +3055,6 @@ Last 13 lines of output:
   
   Error: testthat unit tests failed
   Execution halted
-
-checking whether package ‘useful’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: package ‘ggplot2’ was built under R version 3.2.4
-See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/useful.Rcheck/00install.out’ for details.
 ```
 
 ## V8 (1.0.0)
@@ -3736,19 +3067,6 @@ Bug reports: https://github.com/jeroenooms/v8/issues
 checking whether package ‘V8’ can be installed ... ERROR
 Installation failed.
 See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/V8.Rcheck/00install.out’ for details.
-```
-
-## varian (0.2.2)
-Maintainer: Joshua F. Wiley <josh@elkhartgroup.com>  
-Bug reports: https://github.com/ElkhartGroup/varian/issues
-
-0 errors | 1 warning  | 0 notes
-
-```
-checking whether package ‘varian’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: package ‘ggplot2’ was built under R version 3.2.4
-See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/varian.Rcheck/00install.out’ for details.
 ```
 
 ## vartors (0.2.6)
@@ -3803,30 +3121,31 @@ Last 13 lines of output:
   Execution halted
 ```
 
-## waffle (0.5.0)
-Maintainer: Bob Rudis <bob@rudis.net>  
-Bug reports: https://github.com/hrbrmstr/waffle/issues
-
-0 errors | 1 warning  | 0 notes
-
-```
-checking whether package ‘waffle’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: package ‘ggplot2’ was built under R version 3.2.4
-See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/waffle.Rcheck/00install.out’ for details.
-```
-
 ## walkr (0.3.3)
 Maintainer: Andy Yao <andy.yao17@gmail.com>  
 Bug reports: https://github.com/andyyao95/walkr/issues
 
-0 errors | 1 warning  | 0 notes
+1 error  | 0 warnings | 0 notes
 
 ```
-checking whether package ‘walkr’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: package ‘ggplot2’ was built under R version 3.2.4
-See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/walkr.Rcheck/00install.out’ for details.
+checking package dependencies ... ERROR
+Package required but not available: ‘RcppEigen’
+
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
+```
+
+## wgsea (1.8)
+Maintainer: Chris Wallace <chris.wallace@cimr.cam.ac.uk>
+
+1 error  | 0 warnings | 0 notes
+
+```
+checking package dependencies ... ERROR
+Package required but not available: ‘snpStats’
+
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
 ```
 
 ## whoapi (0.1.1)
@@ -3853,16 +3172,54 @@ Last 13 lines of output:
   Execution halted
 ```
 
-## xoi (0.66-9)
-Maintainer: Karl W Broman <kbroman@biostat.wisc.edu>
+## xml2 (0.1.2)
+Maintainer: Hadley Wickham <hadley@rstudio.com>  
+Bug reports: https://github.com/hadley/xml2/issues/
 
-0 errors | 1 warning  | 0 notes
+1 error  | 0 warnings | 0 notes
 
 ```
-checking whether package ‘xoi’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: package ‘qtl’ was built under R version 3.2.4
-See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/xoi.Rcheck/00install.out’ for details.
+checking package dependencies ... ERROR
+Package required but not available: ‘BH’
+
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
+```
+
+## yCrypticRNAs (0.99.2)
+Maintainer: Nicole Uwimana <nicole.uwimana@gmail.com>  
+Bug reports: https://bitbucket.org/nuwimana/ycrypticrnas/issues
+
+1 error  | 0 warnings | 0 notes
+
+```
+checking package dependencies ... ERROR
+Packages required but not available: ‘biomaRt’ ‘IRanges’ ‘Rsamtools’
+
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
+```
+
+## Zelig (5.0-11)
+Maintainer: James Honaker <zelig-zee@iq.harvard.edu>
+
+1 error  | 0 warnings | 0 notes
+
+```
+checking whether package ‘Zelig’ can be installed ... ERROR
+Installation failed.
+See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/Zelig.Rcheck/00install.out’ for details.
+```
+
+## ZeligChoice (0.9-0)
+Maintainer: James Honaker <zelig-zee@iq.harvard.edu>
+
+1 error  | 0 warnings | 0 notes
+
+```
+checking whether package ‘ZeligChoice’ can be installed ... ERROR
+Installation failed.
+See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/ZeligChoice.Rcheck/00install.out’ for details.
 ```
 
 ## zoon (0.4.23)
