@@ -2,8 +2,7 @@
 
 ## Breaking changes
 
-The `expectation()` function now expects an expectation type (one of "success", "failure", "error", "skip", "warning") as first argument. Use `expect_true()` function instead.
-
+The `expectation()` function now expects an expectation type (one of "success", "failure", "error", "skip", "warning") as first argument. If you're creating your own expectations, you'll need to use `expect()` instead (#437).
 
 ## New expectations
 

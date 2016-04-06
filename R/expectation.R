@@ -1,7 +1,9 @@
 #' Expectation class.
 #'
-#' Any expectation should return objects of this class - see the built in
-#' expectations for details.
+#' You generate an expectation object with \code{expectation}, and signal
+#' an expectation with \code{expect}. If you're making your own expectation
+#' function, you'll typically call \code{expect(condition, "failure message")}.
+#' See the source code for the built-in expectations for details.
 #'
 #' @param passed a single logical value indicating whether the test passed
 #'  (\code{TRUE}), failed (\code{FALSE}), or threw an error (\code{NA})
@@ -25,6 +27,8 @@ expectation <- function(type, message, srcref = NULL) {
   )
 }
 
+#' @rdname expectation
+#' @export
 expect <- function(exp, ..., srcref = NULL) {
   exp <- as.expectation(exp, ..., srcref = srcref)
 
