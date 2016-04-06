@@ -52,8 +52,8 @@ add_info <- function(message, info = NULL) {
   paste(message, info, sep = "\n")
 }
 
-label <- function(obj) {
-  x <- lazyeval::lazy(obj)$expr
+label <- function(x) {
+  x <- find_label(x)
 
   if (is.character(x)) {
     encodeString(x, quote = '"')
@@ -68,6 +68,11 @@ label <- function(obj) {
     }
     chr
   }
+}
+
+#' @useDynLib testthat find_label_
+find_label <- function(x) {
+  .Call(find_label_, quote(x), environment())
 }
 
 expectation_type <- function(exp) {
