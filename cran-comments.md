@@ -6,7 +6,9 @@
 
 ## R CMD check results
 
-There were no ERRORs, WARNINGs or NOTEs. 
+There were no ERRORs, WARNINGs. There was 1 NOTEs:
+
+* The package is MIT licensed and has a license template.
 
 ## Downstream dependencies
 

@@ -1,4 +1,4 @@
-# testthat 0.11.0.9000
+# testthat 1.0.0
 
 ## Breaking changes
 
