@@ -36,5 +36,5 @@ in_testing_dir <- function(path) {
     return(FALSE)
 
   parent <- dirname(path)
-  basename(parent) == "tests"
+  basename(parent) %in% c("tests", "tests_x64", "tests_i386")
 }
