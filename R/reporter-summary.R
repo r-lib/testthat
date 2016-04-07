@@ -23,6 +23,7 @@ SummaryReporter <- R6::R6Class("SummaryReporter", inherit = Reporter,
     warnings = NULL,
     max_reports = getOption("testthat.summary.max_reports", 15L),
     show_praise = TRUE,
+    expect_handler = NULL,
 
     initialize = function(show_praise = TRUE) {
       super$initialize()
@@ -30,6 +31,17 @@ SummaryReporter <- R6::R6Class("SummaryReporter", inherit = Reporter,
       self$failures <- Stack$new()
       self$skips <- Stack$new()
       self$warnings <- Stack$new()
+      self$expect_handler <- signal_on("expectation", function(result) {
+
+        # TODO: Only run for non-test_that code
+        calls <- sys.calls()
+        symbol <- as.name("test_that")
+        for (call in calls)
+          if (identical(call[[1]], symbol))
+            return()
+
+        self$add_result(get_reporter()$.context, "", result)
+      })
     },
 
     start_context = function(context) {
@@ -63,6 +75,8 @@ SummaryReporter <- R6::R6Class("SummaryReporter", inherit = Reporter,
       skips <- self$skips$as_list()
       failures <- self$failures$as_list()
       warnings <- self$warnings$as_list()
+
+      signal_off("expectation", self$expect_handler)
 
       self$cat_line()
       private$cat_reports("Skipped", skips, Inf, skip_summary)
