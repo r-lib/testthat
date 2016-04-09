@@ -44,3 +44,11 @@ test_that("expect_output_file can update file but does not by default", {
   expect_failure(expect_output_file(cat("oops"), file, update = TRUE))
   expect_success(expect_output_file(cat("oops"), file))
 })
+
+test_that("expect_output_file warns if file missing, but can update it", {
+  file <- tempfile()
+  expect_warning(expect_failure(expect_output_file(cat("oops"), file)))
+  expect_false(file.exists(file))
+  expect_warning(expect_failure(expect_output_file(cat("oops"), file, update = TRUE)))
+  expect_success(expect_output_file(cat("oops"), file))
+})

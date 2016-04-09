@@ -26,6 +26,16 @@ rule <- function(..., pad = "-") {
   cat(title, paste(rep(pad, width, collapse = "")), "\n", sep = "")
 }
 
+safe_read_lines <- function(file) {
+  tryCatch(
+    readLines(file, warn = FALSE),
+    error = function(e) {
+      warning(conditionMessage(e), call. = NULL)
+      character()
+    }
+  )
+}
+
 
 # Tools for finding srcrefs -----------------------------------------------
 

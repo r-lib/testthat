@@ -111,7 +111,7 @@ expect_output_file <- function(object, file, update = FALSE, ...,
                                info = NULL, label = NULL) {
   lab <- make_label(object, label)
   output <- capture_output_as_vector(object)
-  expected <- readLines(file, warn = FALSE)
+  expected <- safe_read_lines(file)
 
   withCallingHandlers(
     expect_equal(output, expected, ..., info = info, label = lab),
