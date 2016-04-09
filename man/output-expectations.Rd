@@ -4,6 +4,7 @@
 \alias{expect_error}
 \alias{expect_message}
 \alias{expect_output}
+\alias{expect_output_file}
 \alias{expect_silent}
 \alias{expect_warning}
 \alias{output-expectations}

@@ -3,7 +3,8 @@
 #' Use \code{expect_output()}, \code{expect_message()}, \code{expect_warning()},
 #' or \code{expect_error()} to check for specific outputs. Use
 #' \code{expect_silent()} to assert that there should be no output of
-#' any type.
+#' any type. The file-based\code{expect_output_file()} compares the output
+#' to the contents of a text file and optionally updates it.
 #'
 #' @inheritParams expect_that
 #' @inheritParams expect_match
@@ -99,6 +100,27 @@ expect_output <- function(object, regexp = NULL, ..., info = NULL, label = NULL)
     expect_match(output, regexp, ..., info = info)
   }
   invisible(NULL)
+}
+
+
+#' @export
+#' @rdname output-expectations
+#' @param file Path to a "golden" text file that contains the desired output.
+#' @param update Should the "golden" text file be updated? Default: \code{FALSE}.
+expect_output_file <- function(object, file, update = FALSE, ...,
+                               info = NULL, label = NULL) {
+  lab <- make_label(object, label)
+  output <- capture_output_as_vector(object)
+  expected <- readLines(file, warn = FALSE)
+
+  withCallingHandlers(
+    expect_equal(output, expected, ..., info = info, label = lab),
+    expectation = function(e) {
+      if (update && expectation_failure(e)) {
+        tryCatch(writeLines(output, file), error = function(e) NULL)
+      }
+    }
+  )
 }
 
 
