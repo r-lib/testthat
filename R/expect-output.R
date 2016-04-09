@@ -111,10 +111,10 @@ expect_output_file <- function(object, file, update = FALSE, ...,
                                info = NULL, label = NULL) {
   lab <- make_label(object, label)
   output <- capture_output_as_vector(object)
-  expected <- safe_read_lines(file)
 
   withCallingHandlers(
-    expect_equal(output, expected, ..., info = info, label = lab),
+    eval(bquote(
+      expect_equal(output, safe_read_lines(.(file)), ..., info = info, label = lab))),
     expectation = function(e) {
       if (update && expectation_failure(e)) {
         tryCatch(writeLines(output, file), error = function(e) NULL)
