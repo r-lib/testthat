@@ -94,6 +94,10 @@ capture_warnings <- function(code) {
   get_messages(out$as_list())
 }
 
+get_messages <- function(x) {
+  vapply(x, "[[", "message", FUN.VALUE = character(1))
+}
+
 #' @export
 #' @rdname evaluate_promise
 capture_output <- function(code, print = FALSE) {
@@ -106,10 +110,6 @@ capture_output <- function(code, print = FALSE) {
   }
 
   paste0(readLines(temp, warn = FALSE), collapse = "\n")
-}
-
-get_messages <- function(x) {
-  vapply(x, "[[", "message", FUN.VALUE = character(1))
 }
 
 with_sink <- function(connection, code, ...) {
