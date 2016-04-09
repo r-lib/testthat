@@ -29,3 +29,9 @@ test_that("useful message if objects equal but not identical", {
   expect_failure(expect_identical(f, g), "not identical")
 })
 
+
+test_that("% is not treated as sprintf format specifier (#445)", {
+  expect_failure(expect_equal("+", "%"))
+  expect_failure(expect_equal("%", "+"))
+  expect_equal("%", "%")
+})
