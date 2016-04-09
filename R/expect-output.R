@@ -96,7 +96,7 @@ expect_output <- function(object, regexp = NULL, ..., info = NULL, label = NULL)
       info = info
     )
   } else {
-    expect_match(output, regexp, ..., info = info)
+    expect_match(output, regexp, ..., info = info, label = lab)
   }
   invisible(NULL)
 }
