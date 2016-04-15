@@ -17,7 +17,7 @@
 # define TESTTHAT_ENABLED
 #endif
 
-#if defined(__SUNPRO_C) || defined(__SUNPRO_CC) || defined(__sun)
+#if defined(__SUNPRO_C) || defined(__SUNPRO_CC) || defined(__sun) || defined(__SVR4)
 # define TESTTHAT_DISABLED
 #endif
 
