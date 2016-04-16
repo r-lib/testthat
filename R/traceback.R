@@ -3,7 +3,7 @@ create_traceback <- function(callstack) {
   max_lines <- getOption("deparse.max.lines", Inf)
 
   # Convert to text
-  calls <- lapply(callstack, deparse, width = getOption("width"))
+  calls <- lapply(callstack, deparse, width.cutoff = getOption("width"))
   if (is.finite(max_lines)) {
     calls <- lapply(calls, function(x) x[seq_len(min(length(x), max_lines))])
   }
