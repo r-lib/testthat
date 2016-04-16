@@ -14,12 +14,12 @@ compare <- function(x, y, ...) {
 
 comparison <- function(equal = TRUE, message = "Equal") {
   stopifnot(is.logical(equal), length(equal) == 1)
-  stopifnot(is.character(message), length(message) == 1)
+  stopifnot(is.character(message))
 
   structure(
     list(
       equal = equal,
-      message = message
+      message = paste(message, collapse = "\n")
     ),
     class = "comparison"
   )
