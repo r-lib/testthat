@@ -6,7 +6,7 @@
 # the stack changes in size.
 Stack <- R6Class(
   'Stack',
-  portable = FALSE,
+  portable = TRUE,
   class = FALSE,
   public = list(
 
