@@ -34,6 +34,7 @@
 #  define CATCH_CONFIG_RUNNER
 # endif
 
+# include <climits> // CHAR_MAX
 # include <cstdio>  // EOF
 
 # ifdef __GNUC__
