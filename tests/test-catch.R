@@ -16,7 +16,7 @@ local({
   pkgName <- "testthatclient"
   pkgPath <- file.path(tempdir(), pkgName)
   libPath <- file.path(tempdir(), "rlib")
-  if (!dir.exists(libPath))
+  if (!utils::file_test("-d", libPath))
     dir.create(libPath)
   .libPaths(c(libPath, .libPaths()))
 
