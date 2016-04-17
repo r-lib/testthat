@@ -66,16 +66,13 @@ protected:
 
   virtual std::streamsize xsputn(const char* s, std::streamsize n) {
 
-    // force null termination of apparently invalid C strings
-    // this is likely a bug in Catch, somewhere
-    char* pBuffer = new char[n + 1];
-    pBuffer[n] = '\0';
-    ::memcpy(pBuffer, s, n);
+    if (n == 1)
+      Rprintf("%c", *s);
+    else
+      Rprintf("%.*s", n, s);
 
-    Rprintf("%.*s", n, pBuffer);
-
-    delete[] pBuffer;
     return n;
+
   }
 
   virtual int overflow(int c = EOF) {
