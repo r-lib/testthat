@@ -65,7 +65,16 @@ public:
 protected:
 
   virtual std::streamsize xsputn(const char* s, std::streamsize n) {
-    Rprintf("%.*s", n, s);
+
+    // force null termination of apparently invalid C strings
+    // this is likely a bug in Catch, somewhere
+    char* pBuffer = new char[n + 1];
+    pBuffer[n] = '\0';
+    ::memcpy(pBuffer, s, n);
+
+    Rprintf("%.*s", n, pBuffer);
+
+    delete[] pBuffer;
     return n;
   }
 
