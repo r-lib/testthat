@@ -45,7 +45,7 @@
 // it in the Catch namespace before we include 'catch'.
 namespace Catch {
 inline void exit(int status) throw() {}
-};
+}
 # include "vendor/catch.h"
 
 // Implement an output stream that avoids writing to stdout / stderr.
