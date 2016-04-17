@@ -34,22 +34,19 @@
 #  define CATCH_CONFIG_RUNNER
 # endif
 
-// Catch has calls to 'exit' on failure, which upset R CMD check.
-// We won't bump into them during normal test execution so just temporarily
-// hide it when we include 'catch'. Make sure we get 'exit' from the normal
-// places first, though.
-# include <cstddef> // std::size_t
-# include <cstdlib> // exit
 # include <cstdio>  // EOF
-extern "C" inline void testthat_exit_override(int status) throw() {}
 
 # ifdef __GNUC__
 #  pragma GCC diagnostic ignored "-Wparentheses"
 # endif
 
-# define exit testthat_exit_override
+// Catch has calls to 'exit' on failure, which upsets R CMD check.
+// We won't bump into them during normal test execution so just override
+// it in the Catch namespace before we include 'catch'.
+namespace Catch {
+inline void exit(int status) throw() {}
+};
 # include "vendor/catch.h"
-# undef exit
 
 // Implement an output stream that avoids writing to stdout / stderr.
 extern "C" void Rprintf(const char*, ...);
