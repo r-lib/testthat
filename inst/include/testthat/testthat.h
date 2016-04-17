@@ -73,7 +73,11 @@ protected:
   }
 
   virtual int overflow(int c = EOF) {
-    if (c != EOF) Rprintf("%.1s", &c);
+    if (c == EOF)
+      return c;
+    if (c > CHAR_MAX)
+      return c;
+    Rprintf("%c", (char) c);
     return c;
   }
 
@@ -85,15 +89,8 @@ protected:
 };
 
 class r_ostream : public std::ostream {
-
 public:
-
-  r_ostream() :
-    std::ostream(new r_streambuf), pBuffer(static_cast<r_streambuf*>(rdbuf()))
-  {}
-
-private:
-  r_streambuf* pBuffer;
+  r_ostream() : std::ostream(new r_streambuf) {}
 
 };
 
