@@ -1,5 +1,8 @@
 # testthat 1.0.0.9000
 
+* New `expect_output_file()` to compare output of a function
+  with a text file, and optionally update it (#443, @krlmlr).
+
 * Properly scoped use + compilation of C++ unit testing code using
   Catch to `gcc` and `clang` only, as Catch includes code that does
   not strictly conform to the C++98 standard. (@kevinushey)
