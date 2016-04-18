@@ -101,15 +101,20 @@ get_messages <- function(x) {
 #' @export
 #' @rdname evaluate_promise
 capture_output <- function(code, print = FALSE) {
+  output <- capture_output_as_vector(code, print)
+  paste0(output, collapse = "\n")
+}
+
+capture_output_as_vector <- function(code, print) {
   temp <- file()
-  on.exit(close(temp))
+  on.exit(close(temp), add = TRUE)
 
   result <- with_sink(temp, withVisible(code))
   if (result$visible && print) {
     with_sink(temp, print(result$value))
   }
 
-  paste0(readLines(temp, warn = FALSE), collapse = "\n")
+  readLines(temp, warn = FALSE)
 }
 
 with_sink <- function(connection, code, ...) {
