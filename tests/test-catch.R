@@ -2,6 +2,11 @@ library(testthat)
 
 local({
 
+  # Disable test on Windows until environment around the
+  # new toolchain has settled
+  if (Sys.info()[["sysname"]] == "Windows")
+    return()
+
   if (!requireNamespace("devtools", quietly = TRUE))
     return()
 
