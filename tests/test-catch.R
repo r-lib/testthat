@@ -2,8 +2,8 @@ library(testthat)
 
 local({
 
-  # Disable test on Windows until environment around the
-  # new toolchain has settled
+  # Disable test on Windows, pending devtools
+  # compatibility with new toolchain
   if (Sys.info()[["sysname"]] == "Windows")
     return()
 
