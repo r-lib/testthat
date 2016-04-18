@@ -1,5 +1,11 @@
 # testthat 1.0.0.9000
 
+* Hardened formatting of difference messages, previously the presence of `%` 
+  characters could affect the output (#446, @krlmlr).
+  
+* Fixed errors in `expect_equal()` when comparing numeric vectors with and 
+  without attributes (#453, @krlmlr).
+
 * `auto_test()` and `auto_test_package()` show only the results of the 
   current test run and not of previously failed runs (#456, @krlmlr).
 
