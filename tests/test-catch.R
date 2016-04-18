@@ -2,13 +2,22 @@ library(testthat)
 
 local({
 
+  # Disable test on Windows, pending devtools
+  # compatibility with new toolchain
+  if (Sys.info()[["sysname"]] == "Windows")
+    return()
+
+  if (!requireNamespace("devtools", quietly = TRUE))
+    return()
+
+  devel <- try(devtools::has_devel(), silent = TRUE)
+  if (!isTRUE(devel))
+    return()
+
   quietly <- function(expr) {
     suppressMessages(capture.output(result <- expr))
     result
   }
-
-  if (!requireNamespace("devtools", quietly = TRUE))
-    skip("'devtools' not available")
 
   owd <- setwd(tempdir())
   on.exit(setwd(owd), add = TRUE)
@@ -16,7 +25,7 @@ local({
   pkgName <- "testthatclient"
   pkgPath <- file.path(tempdir(), pkgName)
   libPath <- file.path(tempdir(), "rlib")
-  if (!dir.exists(libPath))
+  if (!utils::file_test("-d", libPath))
     dir.create(libPath)
   .libPaths(c(libPath, .libPaths()))
 
@@ -26,7 +35,7 @@ local({
   }, add = TRUE)
 
   quietly(devtools::create(pkgPath))
-  quietly(use_catch(pkgPath))
+  quietly(testthat::use_catch(pkgPath))
 
   cat("LinkingTo: testthat",
       file = file.path(pkgPath, "DESCRIPTION"),

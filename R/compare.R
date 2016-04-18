@@ -14,18 +14,18 @@ compare <- function(x, y, ...) {
 
 comparison <- function(equal = TRUE, message = "Equal") {
   stopifnot(is.logical(equal), length(equal) == 1)
-  stopifnot(is.character(message), length(message) == 1)
+  stopifnot(is.character(message))
 
   structure(
     list(
       equal = equal,
-      message = message
+      message = paste(message, collapse = "\n")
     ),
     class = "comparison"
   )
 }
-difference <- function(...) {
-  comparison(FALSE, sprintf(...))
+difference <- function(..., fmt = "%s") {
+  comparison(FALSE, sprintf(fmt, ...))
 }
 no_difference <- function() {
   comparison()
@@ -56,10 +56,10 @@ print_out <- function(x, ...) {
 # Common helpers ---------------------------------------------------------------
 
 same_length <- function(x, y) length(x) == length(y)
-diff_length <- function(x, y) difference("Lengths differ: %i vs %i", length(x), length(y))
+diff_length <- function(x, y) difference(fmt = "Lengths differ: %i vs %i", length(x), length(y))
 
 same_type <- function(x, y) identical(typeof(x), typeof(y))
-diff_type <- function(x, y) difference("Types not compatible: %s vs %s", typeof(x), typeof(y))
+diff_type <- function(x, y) difference(fmt = "Types not compatible: %s vs %s", typeof(x), typeof(y))
 
 same_class <- function(x, y) {
   if (!is.object(x) && !is.object(y))
@@ -67,7 +67,7 @@ same_class <- function(x, y) {
   identical(class(x), class(y))
 }
 diff_class <- function(x, y) {
-  difference("Classes differ: %s vs %s", klass(x), klass(y))
+  difference(fmt = "Classes differ: %s vs %s", klass(x), klass(y))
 }
 
 same_attr <- function(x, y) {

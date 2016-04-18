@@ -1,4 +1,28 @@
-# testthat 0.11.0.9000
+# testthat 1.0.0.9000
+
+* Properly scoped use + compilation of C++ unit testing code using
+  Catch to `gcc` and `clang` only, as Catch includes code that does
+  not strictly conform to the C++98 standard. (@kevinushey)
+
+* Fixed an out-of-bounds memory access when routing Catch output
+  through `Rprintf()`. (@kevinushey)
+  
+* Ensure that unit tests run on R-oldrel (remove use of `dir.exists()`).
+  (@kevinushey)
+  
+* Improved overriding of calls to `exit()` within Catch, to ensure
+  compatibility with GCC 6.0. (@krlmlr)
+
+* Hardened formatting of difference messages, previously the presence of `%` 
+  characters could affect the output (#446, @krlmlr).
+  
+* Fixed errors in `expect_equal()` when comparing numeric vectors with and 
+  without attributes (#453, @krlmlr).
+
+* `auto_test()` and `auto_test_package()` show only the results of the 
+  current test run and not of previously failed runs (#456, @krlmlr).
+
+# testthat 1.0.0
 
 ## Breaking changes
 
