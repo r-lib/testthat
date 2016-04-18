@@ -1,5 +1,8 @@
 # testthat 1.0.0.9000
 
+* `auto_test()` and `auto_test_package()` show only the results of the 
+  current test run and not of previously failed runs (#456, @krlmlr).
+
 # testthat 1.0.0
 
 ## Breaking changes

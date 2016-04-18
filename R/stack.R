@@ -6,7 +6,7 @@
 # the stack changes in size.
 Stack <- R6Class(
   'Stack',
-  portable = FALSE,
+  portable = TRUE,
   class = FALSE,
   public = list(
 
@@ -20,26 +20,26 @@ Stack <- R6Class(
 
     push = function(..., .list = NULL) {
       args <- c(list(...), .list)
-      new_size <- count + length(args)
+      new_size <- private$count + length(args)
 
       # Grow if needed; double in size
-      while (new_size > length(stack)) {
-        stack[length(stack) * 2L] <<- list(NULL)
+      while (new_size > length(private$stack)) {
+        private$stack[length(private$stack) * 2L] <- list(NULL)
       }
-      stack[count + seq_along(args)] <<- args
-      count <<- new_size
+      private$stack[private$count + seq_along(args)] <- args
+      private$count <- new_size
 
       invisible(self)
     },
 
     size = function() {
-      count
+      private$count
     },
 
     # Return the entire stack as a list, where the first item in the list is the
     # oldest item in the stack, and the last item is the most recently added.
     as_list = function() {
-      stack[seq_len(count)]
+      private$stack[seq_len(private$count)]
     }
   ),
 
