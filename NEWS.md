@@ -1,4 +1,4 @@
-# testthat 1.0.0.9000
+# testthat 1.0.1
 
 * New `expect_output_file()` to compare output of a function
   with a text file, and optionally update it (#443, @krlmlr).
