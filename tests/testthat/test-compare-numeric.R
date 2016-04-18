@@ -48,7 +48,7 @@ test_that("unnamed arguments to all.equal passed through correctly", {
 })
 
 test_that("named arguments to all.equal passed through", {
-  expect_equal(415, 416, tol = 0.01)
+  expect_equal(415, 416, tolerance = 0.01)
 })
 
 test_that("tolerance used for individual comparisons", {
@@ -56,7 +56,7 @@ test_that("tolerance used for individual comparisons", {
   x2 <- x1 + c(0, 0, 0.1)
 
   expect_false(compare(x1, x2)$equal)
-  expect_true(compare(x1, x2, tol = 0.1)$equal)
+  expect_true(compare(x1, x2, tolerance = 0.1)$equal)
 })
 
 
