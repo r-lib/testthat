@@ -1,5 +1,11 @@
 # testthat 1.0.0.9000
 
+* Properly scoped use + compilation of C++ unit testing code using
+  Catch to `gcc` and `clang` only. (@kevinushey)
+
+* Fixed an out-of-bounds memory access when routing Catch output
+  through `Rprintf()`. (@kevinushey)
+
 * Hardened formatting of difference messages, previously the presence of `%` 
   characters could affect the output (#446, @krlmlr).
   
