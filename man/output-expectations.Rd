@@ -4,12 +4,16 @@
 \alias{expect_error}
 \alias{expect_message}
 \alias{expect_output}
+\alias{expect_output_file}
 \alias{expect_silent}
 \alias{expect_warning}
 \alias{output-expectations}
 \title{Expectation: does code produce output/message/warning/error?}
 \usage{
 expect_output(object, regexp = NULL, ..., info = NULL, label = NULL)
+
+expect_output_file(object, file, update = FALSE, ..., info = NULL,
+  label = NULL)
 
 expect_error(object, regexp = NULL, ..., info = NULL, label = NULL)
 
@@ -40,6 +44,10 @@ writing tests in loops).}
 
 \item{label}{object label. When \code{NULL}, computed from deparsed object.}
 
+\item{file}{Path to a "golden" text file that contains the desired output.}
+
+\item{update}{Should the "golden" text file be updated? Default: \code{FALSE}.}
+
 \item{all}{For messages and warnings, do all need to the \code{regexp}
 (TRUE), or does only one need to match (FALSE)}
 }
@@ -47,7 +55,8 @@ writing tests in loops).}
 Use \code{expect_output()}, \code{expect_message()}, \code{expect_warning()},
 or \code{expect_error()} to check for specific outputs. Use
 \code{expect_silent()} to assert that there should be no output of
-any type.
+any type. The file-based\code{expect_output_file()} compares the output
+to the contents of a text file and optionally updates it.
 }
 \examples{
 # Output --------------------------------------------------------------------
