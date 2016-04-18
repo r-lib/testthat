@@ -10,23 +10,24 @@
 |language |(EN)                         |
 |collate  |en_US.UTF-8                  |
 |tz       |America/Chicago              |
-|date     |2016-04-06                   |
+|date     |2016-04-18                   |
 
 ## Packages
 
-|package  |*  |version     |date       |source                          |
-|:--------|:--|:-----------|:----------|:-------------------------------|
-|covr     |   |1.2.0       |2015-06-25 |CRAN (R 3.2.0)                  |
-|crayon   |   |1.3.1       |2015-07-13 |CRAN (R 3.2.0)                  |
-|devtools |*  |1.10.0      |2016-01-23 |CRAN (R 3.2.3)                  |
-|digest   |   |0.6.9       |2016-01-08 |CRAN (R 3.2.3)                  |
-|magrittr |   |1.5         |2014-11-22 |CRAN (R 3.2.0)                  |
-|praise   |   |1.0.0       |2015-08-11 |CRAN (R 3.2.0)                  |
-|R6       |   |2.1.2       |2016-01-26 |CRAN (R 3.2.3)                  |
-|testthat |*  |0.11.0.9000 |2016-04-06 |local (hadley/testthat@ff9cc7f) |
+|package  |*  |version |date       |source                  |
+|:--------|:--|:-------|:----------|:-----------------------|
+|covr     |   |2.0.1   |2016-04-06 |CRAN (R 3.2.4)          |
+|crayon   |   |1.3.1   |2015-07-13 |CRAN (R 3.2.0)          |
+|devtools |*  |1.11.0  |2016-04-12 |CRAN (R 3.2.4)          |
+|digest   |   |0.6.9   |2016-01-08 |CRAN (R 3.2.3)          |
+|magrittr |   |1.5     |2014-11-22 |CRAN (R 3.2.0)          |
+|praise   |   |1.0.0   |2015-08-11 |CRAN (R 3.2.0)          |
+|R6       |   |2.1.2   |2016-01-26 |CRAN (R 3.2.3)          |
+|testthat |*  |1.0.1   |2016-04-18 |local (hadley/testthat) |
+|withr    |   |1.0.1   |2016-02-04 |CRAN (R 3.2.3)          |
 
 # Check results
-1080 packages
+1101 packages
 
 ## abbyyR (0.3)
 Maintainer: Gaurav Sood <gsood07@gmail.com>  
@@ -47,11 +48,13 @@ Maintainer: Imanuel Costigan <i.costigan@me.com>
 ## afex (0.16-1)
 Maintainer: Henrik Singmann <singmann+afex@gmail.com>
 
-0 errors | 0 warnings | 1 note 
+0 errors | 1 warning  | 0 notes
 
 ```
-checking Rd cross-references ... NOTE
-Package unavailable to check Rd xrefs: ‘ez’
+checking whether package ‘afex’ can be installed ... WARNING
+Found the following significant warnings:
+  Warning: package ‘lme4’ was built under R version 3.2.5
+See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/afex.Rcheck/00install.out’ for details.
 ```
 
 ## ahp (0.2.8)
@@ -163,7 +166,7 @@ Bug reports: https://github.com/gavinsimpson/analogue/issues
 
 0 errors | 0 warnings | 0 notes
 
-## analogueExtra (0.1-0)
+## analogueExtra (0.1-1)
 Maintainer: Gavin L. Simpson <ucfagls@gmail.com>  
 Bug reports: https://github.com/gavinsimpson/analogueExtra/issues
 
@@ -245,7 +248,7 @@ Bug reports: https://github.com/mjskay/ARTool/issues/new
 
 0 errors | 0 warnings | 0 notes
 
-## arules (1.4-0)
+## arules (1.4-1)
 Maintainer: Michael Hahsler <mhahsler@lyle.smu.edu>  
 Bug reports: https://github.com/mhahsler/arules/issues
 
@@ -614,8 +617,7 @@ Maintainer: Michael J. Kane <bigmemoryauthors@gmail.com>
 
 ```
 checking package dependencies ... NOTE
-Packages which this enhances but not available for checking:
-  ‘bigtabulate’ ‘synchronicity’
+Package which this enhances but not available for checking: ‘bigtabulate’
 ```
 
 ## bigrquery (0.2.0)
@@ -640,7 +642,7 @@ Maintainer: Barry Grant <bjgrant@umich.edu>
 
 0 errors | 0 warnings | 0 notes
 
-## biogas (1.2.1)
+## biogas (1.3.0)
 Maintainer: Sasha D. Hafner <saha@kbm.sdu.dk>
 
 0 errors | 0 warnings | 0 notes
@@ -704,11 +706,31 @@ Bug reports: <https://r-forge.r-project.org/R/?group_id=302>
 
 0 errors | 0 warnings | 0 notes
 
+## blackbox (1.0)
+Maintainer: François Rousset <francois.rousset@umontpellier.fr>
+
+1 error  | 0 warnings | 0 notes
+
+```
+checking package dependencies ... ERROR
+Package required but not available: ‘RcppEigen’
+
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
+```
+
 ## blme (1.0-4)
 Maintainer: Vincent Dorie <vjd4@nyu.edu>  
 Bug reports: https://github.com/vdorie/blme/issues
 
-0 errors | 0 warnings | 0 notes
+0 errors | 1 warning  | 0 notes
+
+```
+checking whether package ‘blme’ can be installed ... WARNING
+Found the following significant warnings:
+  Warning: package ‘lme4’ was built under R version 3.2.5
+See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/blme.Rcheck/00install.out’ for details.
+```
 
 ## bmp (0.2)
 Maintainer: Gregory Jefferis <jefferis@gmail.com>
@@ -813,9 +835,15 @@ Maintainer: Stéphane Laurent <laurent_step@yahoo.fr>
 
 0 errors | 0 warnings | 0 notes
 
-## brranching (0.1.0)
+## brranching (0.2.0)
 Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>  
 Bug reports: http://www.github.com/ropensci/brranching/issues
+
+0 errors | 0 warnings | 0 notes
+
+## BWStest (0.1.0)
+Maintainer: Steven E. Pav <shabbychef@gmail.com>  
+Bug reports: https://github.com/shabbychef/BWStest/issues
 
 0 errors | 0 warnings | 0 notes
 
@@ -825,7 +853,7 @@ Bug reports: http://github.com/soodoku/captR/issues
 
 0 errors | 0 warnings | 0 notes
 
-## caret (6.0-64)
+## caret (6.0-68)
 Maintainer: Max Kuhn <Max.Kuhn@pfizer.com>  
 Bug reports: https://github.com/topepo/caret/issues
 
@@ -845,9 +873,14 @@ Maintainer: Douglas Galagate <galagated@gmail.com>
 ## Causata (4.2-0)
 Maintainer: Justin Hemann <justinh@causata.com>
 
-0 errors | 0 warnings | 5 notes
+0 errors | 1 warning  | 5 notes
 
 ```
+checking whether package ‘Causata’ can be installed ... WARNING
+Found the following significant warnings:
+  Warning: package ‘R.utils’ was built under R version 3.2.5
+See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/Causata.Rcheck/00install.out’ for details.
+
 checking DESCRIPTION meta-information ... NOTE
 Malformed Title field: should not end in a period.
 
@@ -943,15 +976,16 @@ checking DESCRIPTION meta-information ... NOTE
 Malformed Description field: should contain one or more complete sentences.
 ```
 
-## checkmate (1.7.3)
+## checkmate (1.7.4)
 Maintainer: Michel Lang <michellang@gmail.com>  
 Bug reports: https://github.com/mllg/checkmate/issues
 
 0 errors | 0 warnings | 0 notes
 
-## checkpoint (0.3.15)
+## checkpoint (0.3.16)
 Maintainer: Andrie de Vries <adevries@microsoft.com>  
-Bug reports: http://www.github.com/RevolutionAnalytics/checkpoint/issues
+Bug reports: 
+        https://www.github.com/RevolutionAnalytics/checkpoint/issues
 
 0 errors | 0 warnings | 0 notes
 
@@ -982,30 +1016,11 @@ checking DESCRIPTION meta-information ... NOTE
 Malformed Description field: should contain one or more complete sentences.
 ```
 
-## chunked (0.2.0)
+## chunked (0.2.1)
 Maintainer: Edwin de Jonge <edwindjonge@gmail.com>  
 Bug reports: https://github.com/edwindj/chunked/issues
 
-1 error  | 0 warnings | 0 notes
-
-```
-checking tests ... ERROR
-Running the tests in ‘tests/testthat.R’ failed.
-Last 13 lines of output:
-  expect_output(tbl_iris, "Groups: Species") showed 0 warnings
-  
-  
-  testthat results ================================================================
-  OK: 24 SKIPPED: 0 FAILED: 5
-  1. Failure: print: should print chunked info (@test-print.R#8) 
-  2. Failure: print groups: should print groups chunked info (@test-print.R#15) 
-  3. Failure: print groups: should print groups chunked info (@test-print.R#15) 
-  4. Failure: print groups: should print groups chunked info (@test-print.R#16) 
-  5. Failure: print groups: should print groups chunked info (@test-print.R#16) 
-  
-  Error: testthat unit tests failed
-  Execution halted
-```
+0 errors | 0 warnings | 0 notes
 
 ## cjoint (2.0.4)
 Maintainer: Anton Strezhnev <astrezhnev@fas.harvard.edu>
@@ -1223,6 +1238,12 @@ Maintainer: Dennis J. J. Walvoort <dennis.Walvoort@wur.nl>
 
 0 errors | 0 warnings | 0 notes
 
+## corrplot (0.76)
+Maintainer: Taiyun Wei <weitaiyun@gmail.com>  
+Bug reports: https://github.com/taiyun/corrplot/issues
+
+0 errors | 0 warnings | 0 notes
+
 ## Countr (3.2.0)
 Maintainer: Tarak Kharrat <tarak.kharrat@manchester.ac.uk>
 
@@ -1274,30 +1295,11 @@ Maintainer: Yuanchu Dang <yuanchu.dang@gmail.com>
 
 0 errors | 0 warnings | 0 notes
 
-## crunch (1.8.0)
+## crunch (1.9.4)
 Maintainer: Neal Richardson <neal@crunch.io>  
 Bug reports: https://github.com/Crunch-io/rcrunch/issues
 
-1 error  | 0 warnings | 0 notes
-
-```
-checking tests ... ERROR
-Running the tests in ‘tests/testthat.R’ failed.
-Last 13 lines of output:
-  devtools::install_github("Crunch-io/rcrunch", ref="1.9.4")
-  
-  Attaching package: 'crunch'
-  
-  The following object is masked from 'package:base':
-  
-      table
-  
-  Error: error$message does not match "Error : POST /api/datasets/dataset1/variables.json {\"alias\":\"gender_copy\",\"format\":{\"summary\":{\"digits\":2}},\"view\":{\"include_missing\":false,\"show_counts\":false,\"show_codes\":false,\"column_width\":null},\"name\":\"Gender (copy)\",\"discarded\":false,\"description\":\"Gender\",\"expr\":{\"function\":\"copy_variable\",\"args\":[{\"variable\":\"/api/datasets/dataset1/variables/gender.json\"}]}}\n".
-  Actual value: "POST /api/datasets/dataset1/variables.json {"alias":"gender_copy","format":{"summary":{"digits":2}},"view":{"include_missing":false,"show_counts":false,"show_codes":false,"column_width":null},"name":"Gender (copy)","discarded":false,"description":"Gender","expr":{"function":"copy_variable","args":[{"variable":"/api/datasets/dataset1/variables/gender.json"}]}}"
-  testthat results ================================================================
-  OK: 196 SKIPPED: 3 FAILED: 0
-  Execution halted
-```
+0 errors | 0 warnings | 0 notes
 
 ## ctsem (1.1.5.2)
 Maintainer: Charles Driver <driver@mpib-berlin.mpg.de>
@@ -1310,7 +1312,7 @@ Namespace in Imports field not imported from: ‘methods’
   All declared Imports should be used.
 ```
 
-## curl (0.9.6)
+## curl (0.9.7)
 Maintainer: Jeroen Ooms <jeroen.ooms@stat.ucla.edu>  
 Bug reports: https://github.com/jeroenooms/curl/issues
 
@@ -1371,7 +1373,7 @@ Maintainer: Joe Thorley <joe@poissonconsulting.ca>
 
 0 errors | 0 warnings | 0 notes
 
-## DataCombine (0.2.20)
+## DataCombine (0.2.21)
 Maintainer: Christopher Gandrud <christopher.gandrud@gmail.com>  
 Bug reports: https://github.com/christophergandrud/DataCombine/issues
 
@@ -1442,7 +1444,7 @@ See section ‘Registering S3 methods’ in the ‘Writing R Extensions’
 manual.
 ```
 
-## dbscan (0.9-6)
+## dbscan (0.9-7)
 Maintainer: Michael Hahsler <mhahsler@lyle.smu.edu>  
 Bug reports: https://github.com/mhahsler/dbscan/issues
 
@@ -1533,6 +1535,36 @@ Bug reports: https://bitbucket.org/aadler/delaporte/issues
 
 0 errors | 0 warnings | 0 notes
 
+## DeLorean (1.2.0)
+Maintainer: John Reid <john.reid@mrc-bsu.cam.ac.uk>
+
+0 errors | 0 warnings | 1 note 
+
+```
+checking re-building of vignette outputs ... NOTE
+Error in re-building vignettes:
+  ...
+The following objects are masked from 'package:stats':
+
+    filter, lag
+
+The following objects are masked from 'package:base':
+
+    intersect, setdiff, setequal, union
+... 8 lines ...
+Have 20 genes after filtering
+Joining by: "gene"
+Joining by: "gene"
+Joining by: "gene"
+Joining by: "cell"
+Joining by: "cell"
+Compiling model
+Quitting from lines 139-140 (DeLorean.Rmd) 
+Error: processing vignette 'DeLorean.Rmd' failed with diagnostics:
+Eigen not found; call install.packages('RcppEigen')
+Execution halted
+```
+
 ## DEMOVA (1.0)
 Maintainer: Vinca Prana <vinca.prana@free.fr>
 
@@ -1590,16 +1622,16 @@ Bug reports: https://github.com/paulhendricks/describer/issues
 checking tests ... ERROR
 Running the tests in ‘tests/testthat.R’ failed.
 Last 13 lines of output:
-  'arg' must be NULL or a character vector
-  1: lintr::expect_lint_free() at testthat/test-styling.R:4
-  2: testthat::expectation(!has_lints, paste(sep = "\n", "Not lint free", lint_output), 
-         "lint free")
-  3: match.arg(type, c("success", "failure", "error", "skip", "warning")) at /Users/hadley/Documents/devtools/testthat/R/expectation.R:15
-  4: stop("'arg' must be NULL or a character vector")
+    expect_equal(hello(), 'Hello World')    
+                                        ^~~~
+  tests/testthat/test_dir/test-helper.R:7:1: style: Trailing blank lines are superfluous.
+  
+  ^
+  
   
   testthat results ================================================================
   OK: 9 SKIPPED: 0 FAILED: 1
-  1. Error: Package Style (@test-styling.R#4) 
+  1. Failure: Package Style (@test-styling.R#4) 
   
   Error: testthat unit tests failed
   Execution halted
@@ -1611,31 +1643,15 @@ Bug reports: https://github.com/paulhendricks/detector/issues
 
 0 errors | 0 warnings | 0 notes
 
-## devtools (1.10.0)
+## devtools (1.11.0)
 Maintainer: Hadley Wickham <hadley@rstudio.com>  
 Bug reports: https://github.com/hadley/devtools/issues
 
-0 errors | 0 warnings | 3 notes
+0 errors | 0 warnings | 1 note 
 
 ```
 checking package dependencies ... NOTE
 Package suggested but not available for checking: ‘BiocInstaller’
-
-checking foreign function calls ... NOTE
-Registration problem:
-  Evaluating ‘dll$foo’ during check gives error
-‘object 'dll' not found’:
-   .C(dll$foo, 0L)
-See chapter ‘System and foreign language interfaces’ in the ‘Writing R
-Extensions’ manual.
-
-checking R code for possible problems ... NOTE
-Found the following calls to attach():
-File ‘devtools/R/package-env.r’:
-  attach(NULL, name = pkg_env_name(pkg))
-File ‘devtools/R/shims.r’:
-  attach(e, name = "devtools_shims", warn.conflicts = FALSE)
-See section ‘Good practice’ in ‘?attach’.
 ```
 
 ## df2json (0.0.2)
@@ -1765,7 +1781,14 @@ Maintainer: Andrew Redd <Andrew.Redd@hsc.utah.edu>
 ## Dowd (0.12)
 Maintainer: Dinesh Acharya <dines.acharya@gmail.com>
 
-0 errors | 0 warnings | 0 notes
+0 errors | 1 warning  | 0 notes
+
+```
+checking whether package ‘Dowd’ can be installed ... WARNING
+Found the following significant warnings:
+  Warning: package ‘forecast’ was built under R version 3.2.5
+See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/Dowd.Rcheck/00install.out’ for details.
+```
 
 ## downloader (0.4)
 Maintainer: Winston Chang <winston@stdout.org>  
@@ -1856,6 +1879,12 @@ Maintainer: Manuela Schreyer <manuelalarissa.schreyer@sbg.ac.at>
 
 0 errors | 0 warnings | 0 notes
 
+## easyformatr (0.1.1)
+Maintainer: Brandon Taylor <brandon.taylor221@gmail.com>  
+Bug reports: https://github.com/bramtayl/easyformatr/issues
+
+0 errors | 0 warnings | 0 notes
+
 ## easyVerification (0.2.0)
 Maintainer: Jonas Bhend <jonas.bhend@meteoswiss.ch>  
 Bug reports: https://github.com/MeteoSwiss/easyVerification/issues
@@ -1916,12 +1945,25 @@ Maintainer: Jared E. Knowles <jknowles@gmail.com>
 
 0 errors | 0 warnings | 0 notes
 
+## eggCounts (1.0)
+Maintainer: Craig Wang <craig.wang@uzh.ch>
+
+1 error  | 0 warnings | 0 notes
+
+```
+checking package dependencies ... ERROR
+Packages required but not available: ‘StanHeaders’ ‘RcppEigen’
+
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
+```
+
 ## EGRET (2.4.3)
 Maintainer: Laura DeCicco <ldecicco@usgs.gov>
 
 0 errors | 0 warnings | 0 notes
 
-## EGRETci (1.0.0)
+## EGRETci (1.0.2)
 Maintainer: Laura DeCicco <ldecicco@usgs.gov>  
 Bug reports: https://github.com/USGS-R/EGRETci/issues
 
@@ -2141,26 +2183,7 @@ Maintainer: Seward Lee <sewardlee337@gmail.com>
 Maintainer: Pascal Kerschke <kerschke@uni-muenster.de>  
 Bug reports: https://github.com/kerschke/flacco/issues
 
-1 error  | 0 warnings | 0 notes
-
-```
-checking tests ... ERROR
-Running the tests in ‘tests/test-general.R’ failed.
-Last 13 lines of output:
-  3: testthat::expect_that(res, cond, info = info, label = vname(x, label))
-  4: condition(object) at /Users/hadley/Documents/devtools/testthat/R/expect-that.R:22
-  5: testthat::expectation(identical(res, TRUE), failure_msg = res, success_msg = "all good")
-  
-  testthat results ================================================================
-  OK: 127 SKIPPED: 0 FAILED: 4
-  1. Error: Basic Initial Samples (@test-base-createInitialSample.R#6) 
-  2. Error: Create Initial Sample with Custom Bounds (@test-base-createInitialSample.R#34) 
-  3. Error: Without Diagonal (@test-base-findLinearNeighbours.R#10) 
-  4. Error: With Diagonal (@test-base-findLinearNeighbours.R#25) 
-  
-  Error: testthat unit tests failed
-  Execution halted
-```
+0 errors | 0 warnings | 0 notes
 
 ## flexsurv (0.7.1)
 Maintainer: Christopher Jackson <chris.jackson@mrc-bsu.cam.ac.uk>  
@@ -2204,7 +2227,7 @@ Maintainer: Georg M. Goerg <im@gmge.org>
 
 0 errors | 0 warnings | 0 notes
 
-## forecast (7.0)
+## forecast (7.1)
 Maintainer: Rob Hyndman <Rob.Hyndman@monash.edu>  
 Bug reports: https://github.com/robjhyndman/forecast/issues
 
@@ -2215,6 +2238,19 @@ checking dependencies in R code ... NOTE
 There are ::: calls to the package's namespace in its code. A package
   almost never needs to use ::: for its own objects:
   ‘datamat’
+```
+
+## forecastHybrid (0.1.5)
+Maintainer: David Shaub <davidshaub@gmx.com>  
+Bug reports: https://github.com/ellisp/forecastHybrid/issues
+
+0 errors | 1 warning  | 0 notes
+
+```
+checking whether package ‘forecastHybrid’ can be installed ... WARNING
+Found the following significant warnings:
+  Warning: package ‘forecast’ was built under R version 3.2.5
+See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/forecastHybrid.Rcheck/00install.out’ for details.
 ```
 
 ## forestplot (1.4)
@@ -2461,13 +2497,38 @@ Bug reports: https://github.com/ropenscilabs/geoaxe/issues
 
 0 errors | 0 warnings | 0 notes
 
-## geojsonio (0.1.6)
-Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>  
-Bug reports: http://www.github.com/ropensci/geojsonio/issues
+## geohash (0.1.1)
+Maintainer: Oliver Keyes <ironholds@gmail.com>  
+Bug reports: https://github.com/Ironholds/geohash/issues
 
 0 errors | 0 warnings | 0 notes
 
-## geoknife (1.2.1)
+## geojsonio (0.1.8)
+Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>  
+Bug reports: http://www.github.com/ropensci/geojsonio/issues
+
+1 error  | 0 warnings | 0 notes
+
+```
+checking tests ... ERROR
+Running the tests in ‘tests/test-all.R’ failed.
+Last 13 lines of output:
+  5: val_fxn(x)
+  6: POST(v_url(), body = upload_file(file))
+  7: request_perform(req, hu$handle$handle)
+  8: request_fetch(req$output, req$url, handle)
+  9: request_fetch.write_memory(req$output, req$url, handle)
+  10: curl::curl_fetch_memory(url, handle = handle)
+  
+  testthat results ================================================================
+  OK: 288 SKIPPED: 22 FAILED: 1
+  1. Error: validate works with SpatialGridDataFrame inputs (@test-validate.R#160) 
+  
+  Error: testthat unit tests failed
+  Execution halted
+```
+
+## geoknife (1.3.0)
 Maintainer: Jordan Read <jread@usgs.gov>  
 Bug reports: https://github.com/USGS-R/geoknife/issues
 
@@ -2511,7 +2572,7 @@ checking tests ... ERROR
 Running the tests in ‘tests/test-all.R’ failed.
 Last 13 lines of output:
   
-  27. test `version` and `help` options (@test_GetoptLong.R#247) - cannot remove file '/tmp/RtmpGeaMA2/filec2b469d7c8e9.json', reason 'No such file or directory'
+  27. test `version` and `help` options (@test_GetoptLong.R#247) - cannot remove file '/tmp/RtmpqAUdMC/fileae967ce26d7e.json', reason 'No such file or directory'
   
   Failed -------------------------------------------------------------------------
   1. Failure: test `cat_prefix` (@test_qq.R#85) ----------------------------------
@@ -2525,8 +2586,9 @@ Last 13 lines of output:
   Execution halted
 ```
 
-## GetTDData (1.0)
-Maintainer: Marcelo Perlin <marceloperlin@gmail.com>
+## GetTDData (1.1)
+Maintainer: Marcelo Perlin <marceloperlin@gmail.com>  
+Bug reports: https://github.com/msperlin/GetTDData/issues
 
 0 errors | 0 warnings | 0 notes
 
@@ -2564,16 +2626,16 @@ Maintainer: Masaaki Horikoshi <sinhrks@gmail.com>
 checking tests ... ERROR
 Running the tests in ‘tests/test-all.R’ failed.
 Last 13 lines of output:
-  1. Failure: fortify.cpt works for AirPassengers (@test-changepoint.R#24) -------
-  names(fortified) not equal to c("Index", "Data", "variance").
-  Lengths differ: 4 vs 3
+  names(fortified) not equal to `expected_names`.
+  Lengths differ: 6 vs 7
   
   
   Loading required package: urca
   Loading required package: lmtest
   testthat results ================================================================
-  OK: 554 SKIPPED: 1 FAILED: 1
+  OK: 554 SKIPPED: 1 FAILED: 2
   1. Failure: fortify.cpt works for AirPassengers (@test-changepoint.R#24) 
+  2. Failure: fortify.ets works for austres (@test-forecast.R#83) 
   
   Error: testthat unit tests failed
   Execution halted
@@ -2615,30 +2677,11 @@ Maintainer: Sandro Petrillo Burri <gibo.gaf@gmail.com>
 
 0 errors | 0 warnings | 0 notes
 
-## ggthemes (3.0.2)
+## ggthemes (3.0.3)
 Maintainer: Jeffrey B. Arnold <jeffrey.arnold@gmail.com>  
 Bug reports: http://github.com/jrnold/ggthemes
 
-1 error  | 0 warnings | 0 notes
-
-```
-checking tests ... ERROR
-Running the tests in ‘tests/testthat.R’ failed.
-Last 13 lines of output:
-  'arg' must be NULL or a character vector
-  1: lintr::expect_lint_free() at testthat/test-linters.R:4
-  2: testthat::expectation(!has_lints, paste(sep = "\n", "Not lint free", lint_output), 
-         "lint free")
-  3: match.arg(type, c("success", "failure", "error", "skip", "warning")) at /Users/hadley/Documents/devtools/testthat/R/expectation.R:15
-  4: stop("'arg' must be NULL or a character vector")
-  
-  testthat results ================================================================
-  OK: 2 SKIPPED: 0 FAILED: 1
-  1. Error: Package Style (@test-linters.R#4) 
-  
-  Error: testthat unit tests failed
-  Execution halted
-```
+0 errors | 0 warnings | 0 notes
 
 ## ggvis (0.4.2)
 Maintainer: Winston Chang <winston@rstudio.com>
@@ -2690,12 +2733,59 @@ See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
 manual.
 ```
 
-## GlobalOptions (0.0.9)
+## GlobalOptions (0.0.10)
 Maintainer: Zuguang Gu <z.gu@dkfz.de>
 
 0 errors | 0 warnings | 0 notes
 
-## gmailr (0.6.0)
+## glycanr (0.3.0)
+Maintainer: Ivo Ugrina <ivo@iugrina.com>  
+Bug reports: https://github.com/iugrina/glycanr/issues
+
+2 errors | 0 warnings | 1 note 
+
+```
+checking examples ... ERROR
+Running examples in ‘glycanr-Ex.R’ failed
+The error most likely occurred in:
+
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+> ### Name: quantilenorm
+> ### Title: Quantile Normalization of glycan data
+> ### Aliases: quantilenorm
+> 
+> ### ** Examples
+> 
+> data(mpiu)
+> mpiun <- quantilenorm(mpiu)
+Error in quantilenorm(mpiu) : 
+  Unable to proceed since package preprocessCore from
+        BioConductor is not available on this system. This
+        package is a prerequisite to use the quantilenorm function!
+Execution halted
+
+checking tests ... ERROR
+Running the tests in ‘tests/testthat.R’ failed.
+Last 13 lines of output:
+  
+  The following objects are masked from 'package:base':
+  
+      intersect, setdiff, setequal, union
+  
+  Error in quantilenorm(mpiu, transpose = TRUE) : 
+    Unable to proceed since package preprocessCore from
+          BioConductor is not available on this system. This
+          package is a prerequisite to use the quantilenorm function!
+  Calls: test_check ... force -> source_file -> eval -> eval -> quantilenorm
+  testthat results ================================================================
+  OK: 5 SKIPPED: 0 FAILED: 0
+  Execution halted
+
+checking package dependencies ... NOTE
+Package suggested but not available for checking: ‘preprocessCore’
+```
+
+## gmailr (0.7.1)
 Maintainer: Jim Hester <james.f.hester@gmail.com>  
 Bug reports: https://github.com/jimhester/gmailr/issues
 
@@ -2711,7 +2801,26 @@ Bug reports: https://github.com/AEBilgrau/GMCM/issues
 Maintainer: Max Gordon <max@gforge.se>  
 Bug reports: https://github.com/gforge/Gmisc/issues
 
-0 errors | 0 warnings | 0 notes
+1 error  | 0 warnings | 0 notes
+
+```
+checking tests ... ERROR
+Running the tests in ‘tests/testthat.R’ failed.
+Last 13 lines of output:
+   $ echo: logi TRUE
+  
+    ordinary text without R code
+  
+  output file: Full_test_suite.knit.md
+  
+  /usr/local/bin/pandoc +RTS -K512m -RTS Full_test_suite.utf8.md --to html --from markdown+autolink_bare_uris+ascii_identifiers+tex_math_single_backslash --output /tmp/Rtmpv4ksiL/tmp.html --smart --email-obfuscation none --standalone --section-divs --template /Users/hadley/R-revdep/rmarkdown/rmd/h/default.html --css docx.css --no-highlight 
+  
+  Output created: /tmp/Rtmpv4ksiL/tmp.html
+  
+   *** caught segfault ***
+  address 0x0, cause 'unknown'
+  aborting ...
+```
 
 ## gmum.r (0.2.1)
 Maintainer: Stanislaw Jastrzebski <staszek.jastrzebski@gmail.com>  
@@ -2730,8 +2839,8 @@ checking package dependencies ... NOTE
 Package suggested but not available for checking: ‘imudata’
 ```
 
-## GoodmanKruskal (0.0.1)
-Maintainer: Ron Pearson <ron@datarobot.com>
+## GoodmanKruskal (0.0.2)
+Maintainer: Ron Pearson <ronald.k.pearson@gmail.com>
 
 0 errors | 0 warnings | 0 notes
 
@@ -2912,55 +3021,25 @@ Maintainer: Gaston Quero <gastonquero@gmail.com>
 ## harvestr (0.6.0)
 Maintainer: Andrew Redd <andrew.redd@hsc.utah.edu>
 
-1 error  | 1 warning  | 1 note 
+1 error  | 0 warnings | 0 notes
 
 ```
 checking tests ... ERROR
 Running the tests in ‘tests/testthat-package.R’ failed.
 Last 13 lines of output:
-  > test_package("harvestr")
-  Caching: ..........
-  main functions: ............
-  Loading required package: coda
-  Loading required package: MASS
-  Error in loadNamespace(i, c(lib.loc, .libPaths()), versionCheck = vI[[i]]) : 
-    there is no package called 'graph'
-  In addition: Warning message:
-  Placing tests in `inst/tests/` is deprecated. Please use `tests/testthat/` instead 
-  Error: package or namespace load failed for 'MCMCpack'
+  'arg' must be NULL or a character vector
+  1: expect_that(harvest(x, mean, time = T), has_time) at /Users/hadley/Documents/devtools/testthat/revdep/checks/harvestr.Rcheck/harvestr/tests/test-timing.R:74
+  2: condition(object) at /Users/hadley/Documents/devtools/testthat/R/expect-that.R:22
+  3: expectation(T, "") at /Users/hadley/Documents/devtools/testthat/revdep/checks/harvestr.Rcheck/harvestr/tests/test-timing.R:37
+  4: match.arg(type, c("success", "failure", "error", "skip", "warning")) at /Users/hadley/Documents/devtools/testthat/R/expectation.R:15
+  5: stop("'arg' must be NULL or a character vector")
   
   DONE ===========================================================================
+  Error: Test failures
+  In addition: Warning messages:
+  1: Placing tests in `inst/tests/` is deprecated. Please use `tests/testthat/` instead 
+  2: package 'MCMCpack' was built under R version 3.2.5 
   Execution halted
-
-checking running R code from vignettes ... WARNING
-Errors in running code in vignettes:
-when running code in ‘harvestr.Rnw’
-  ...
-
-> library(MCMCpack)
-Loading required package: coda
-Loading required package: MASS
-Error in loadNamespace(i, c(lib.loc, .libPaths()), versionCheck = vI[[i]]) : 
-  there is no package called ‘graph’
-
-  When sourcing ‘harvestr.R’:
-Error: package or namespace load failed for ‘MCMCpack’
-Execution halted
-
-
-checking re-building of vignette outputs ... NOTE
-Error in re-building vignettes:
-  ...
-Loading required package: coda
-Loading required package: MASS
-Error in loadNamespace(i, c(lib.loc, .libPaths()), versionCheck = vI[[i]]) : 
-  there is no package called ‘graph’
-
-Error: processing vignette 'harvestr.Rnw' failed with diagnostics:
- chunk 1 (label = setup) 
-Error : package or namespace load failed for ‘MCMCpack’
-Execution halted
-
 ```
 
 ## hash (2.2.6)
@@ -2991,6 +3070,12 @@ manual.
 ## hashids (0.9.0)
 Maintainer: Alex Shum <Alex@ALShum.com>  
 Bug reports: https://github.com/ALShum/hashids-r/issues
+
+0 errors | 0 warnings | 0 notes
+
+## hashmap (0.1.0)
+Maintainer: Nathan Russell <russell.nr2012@gmail.com>  
+Bug reports: https://github.com/nathan-russell/hashmap/issues
 
 0 errors | 0 warnings | 0 notes
 
@@ -3165,30 +3250,35 @@ Maintainer: Antoine Rebecq <antoine.rebecq@m4x.org>
 
 0 errors | 0 warnings | 0 notes
 
-## icd9 (1.3)
+## icd (2.0.1)
+Maintainer: Jack O. Wasey <jack@jackwasey.com>  
+Bug reports: https://github.com/jackwasey/icd/issues
+
+0 errors | 0 warnings | 3 notes
+
+```
+checking package dependencies ... NOTE
+Package suggested but not available for checking: ‘RODBC’
+
+checking installed package size ... NOTE
+  installed size is  6.1Mb
+  sub-directories of 1Mb or more:
+    data   1.9Mb
+    doc    2.1Mb
+    libs   1.1Mb
+
+checking data for non-ASCII characters ... NOTE
+  Note: found 14 marked Latin-1 strings
+  Note: found 96 marked UTF-8 strings
+```
+
+## icd9 (1.3.1)
 Maintainer: Jack O. Wasey <jack@jackwasey.com>  
 Bug reports: https://github.com/jackwasey/icd9/issues
 
-1 error  | 0 warnings | 1 note 
+0 errors | 0 warnings | 1 note 
 
 ```
-checking tests ... ERROR
-Running the tests in ‘tests/test-all.R’ failed.
-Last 13 lines of output:
-      equals, is_less_than, not
-  
-  > do_slow_tests <- FALSE
-  > do_online_tests <- FALSE
-  > if (identical(Sys.getenv("COVR"), "true")) {
-  +   do_slow_tests <- TRUE
-  +   do_online_tests <- TRUE
-  + }
-  > test_check("icd9", reporter = MultiReporter(reporters = list(SummaryReporter(), StopReporter())))
-  Error in find_reporter(reporter) : 
-    could not find function "MultiReporter"
-  Calls: test_check -> run_tests -> find_reporter
-  Execution halted
-
 checking data for non-ASCII characters ... NOTE
   Note: found 14 marked Latin-1 strings
   Note: found 39 marked UTF-8 strings
@@ -3252,6 +3342,12 @@ Maintainer: Martin A. Stoffel <martin.adam.stoffel@gmail.com>
 
 0 errors | 0 warnings | 0 notes
 
+## iNEXT (2.0.8)
+Maintainer: T. C. Hsieh <euler96@gmail.com>  
+Bug reports: https://github.com/JohnsonHsieh/iNEXT/issues
+
+0 errors | 0 warnings | 0 notes
+
 ## inferference (0.4.62)
 Maintainer: Bradley Saul <saulb@live.unc.edu>
 
@@ -3274,7 +3370,7 @@ Bug reports: https://github.com/dfci-cccb/injectoR/issues
 
 0 errors | 0 warnings | 0 notes
 
-## inpdfr (0.1.2)
+## inpdfr (0.1.3)
 Maintainer: Rebaudo Francois <francois.rebaudo@ird.fr>
 
 0 errors | 0 warnings | 0 notes
@@ -3296,12 +3392,12 @@ Bug reports: https://github.com/ropensci/internetarchive/issues
 
 0 errors | 0 warnings | 0 notes
 
-## investr (1.3.0)
+## investr (1.4.0)
 Maintainer: Brandon M. Greenwell <greenwell.brandon@gmail.com>
 
 0 errors | 0 warnings | 0 notes
 
-## io (0.2.3)
+## io (0.2.4)
 Maintainer: David J. H. Shih <djh.shih@gmail.com>  
 Bug reports: https://bitbucket.org/djhshih/io/issues
 
@@ -3350,7 +3446,7 @@ Maintainer: Uwe Block <u.block.mz@googlemail.com>
 
 0 errors | 0 warnings | 0 notes
 
-## iterpc (0.2.8)
+## iterpc (0.2.9)
 Maintainer: Randy Lai <randy.cs.lai@gmail.com>
 
 0 errors | 0 warnings | 1 note 
@@ -3476,7 +3572,18 @@ Maintainer: David Charles Howe <kmodR@edgecondition.com>
 Maintainer: Carl Boettiger <cboettig@gmail.com>  
 Bug reports: https://github.com/cboettig/knitcitations/issues
 
-0 errors | 0 warnings | 0 notes
+0 errors | 0 warnings | 1 note 
+
+```
+checking re-building of vignette outputs ... NOTE
+Error in re-building vignettes:
+  ...
+Quitting from lines 63-86 (tutorial.Rmd) 
+Error: processing vignette 'tutorial.Rmd' failed with diagnostics:
+Timeout was reached
+Execution halted
+
+```
 
 ## knitrBootstrap (1.0.0)
 Maintainer: Jim Hester <james.f.hester@gmail.com>  
@@ -3573,7 +3680,7 @@ Bug reports: https://github.com/stefano-meschiari/latex2exp/issues
 
 0 errors | 0 warnings | 0 notes
 
-## lava (1.4.2)
+## lava (1.4.3)
 Maintainer: Klaus K. Holst <kkho@biostat.ku.dk>
 
 1 error  | 0 warnings | 1 note 
@@ -3582,16 +3689,16 @@ Maintainer: Klaus K. Holst <kkho@biostat.ku.dk>
 checking tests ... ERROR
 Running the tests in ‘tests/test-all.R’ failed.
 Last 13 lines of output:
-  1. Failure: Simple linear constraint (@test-constrain.R#11) 
-  2. Failure: Simple linear constraint (@test-constrain.R#16) 
-  3. Failure: Effects (@test-inference.R#21) 
-  4. Error: Effects (@test-inference.R#27) 
-  5. Failure: Bootstrap (@test-inference.R#152) 
-  6. Failure: Bootstrap (@test-inference.R#161) 
-  7. Failure: zero-inflated binomial regression (zib) (@test-inference.R#217) 
-  8. Failure: Prediction with missing data, random intercept (@test-inference.R#292) 
-  9. Failure: Prediction with missing data, random intercept (@test-inference.R#294) 
-  1. ...
+  4: getNamespace(ns)
+  5: tryCatch(loadNamespace(name), error = function(e) stop(e))
+  6: tryCatchList(expr, classes, parentenv, handlers)
+  7: tryCatchOne(expr, names, parentenv, handlers[[1L]])
+  8: value[[3L]](cond)
+  
+  testthat results ================================================================
+  OK: 245 SKIPPED: 0 FAILED: 2
+  1. Error: Effects (@test-inference.R#27) 
+  2. Error: Graph attributes (@test-model.R#82) 
   
   Error: testthat unit tests failed
   Execution halted
@@ -3783,30 +3890,11 @@ Bug reports: https://github.com/data-cleaning/lintools/issues
 
 0 errors | 0 warnings | 0 notes
 
-## lintr (0.3.3)
+## lintr (1.0.0)
 Maintainer: Jim Hester <james.f.hester@gmail.com>  
 Bug reports: https://github.com/jimhester/lintr/issues
 
-1 error  | 0 warnings | 0 notes
-
-```
-checking tests ... ERROR
-Running the tests in ‘tests/testthat.R’ failed.
-Last 13 lines of output:
-  1. Error: returns the correct linting (@test-absolute_paths_linter.R#3) 
-  2. Error: returns the correct linting (@test-assignment_linter.R#4) 
-  3. Error: returns the correct linting (@test-closed_curly_linter.R#4) 
-  4. Error: returns the correct linting (@test-commas_linter.R#4) 
-  5. Error: returns the correct linting (@test-commented_code_linter.R#3) 
-  6. Error: returns the correct linting (@test-error.R#3) 
-  7. Error: returns the correct linting (@test-infix_spaces_linter.R#29) 
-  8. Error: it handles markdown (@test-knitr_formats.R#3) 
-  9. Error: it handles Sweave (@test-knitr_formats.R#14) 
-  1. ...
-  
-  Error: testthat unit tests failed
-  Execution halted
-```
+0 errors | 0 warnings | 0 notes
 
 ## list (8.0)
 Maintainer: Graeme Blair <graeme.blair@columbia.edu>
@@ -3829,7 +3917,7 @@ Bug reports: https://github.com/hutchr/LLSR/issues
 
 0 errors | 0 warnings | 0 notes
 
-## lme4 (1.1-11)
+## lme4 (1.1-12)
 Maintainer: Ben Bolker <bbolker+lme4@gmail.com>  
 Bug reports: https://github.com/lme4/lme4/issues
 
@@ -3972,16 +4060,10 @@ Bug reports: https://github.com/ropensci/mapr/issues
 
 0 errors | 0 warnings | 0 notes
 
-## markmyassignment (0.5.0)
+## markmyassignment (0.6.0)
 Maintainer: Mans Magnusson <mons.magnusson@gmail.com>
 
-1 error  | 0 warnings | 0 notes
-
-```
-checking whether package ‘markmyassignment’ can be installed ... ERROR
-Installation failed.
-See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/markmyassignment.Rcheck/00install.out’ for details.
-```
+0 errors | 0 warnings | 0 notes
 
 ## markophylo (1.0.4)
 Maintainer: Utkarsh J. Dang <udang@mcmaster.ca>
@@ -4090,6 +4172,19 @@ Bug reports: https://github.com/hadley/memoise/issues
 Maintainer: Jared E. Knowles <jknowles@gmail.com>  
 Bug reports: https://www.github.com/jknowles/merTools
 
+0 errors | 1 warning  | 0 notes
+
+```
+checking whether package ‘merTools’ can be installed ... WARNING
+Found the following significant warnings:
+  Warning: package ‘lme4’ was built under R version 3.2.5
+See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/merTools.Rcheck/00install.out’ for details.
+```
+
+## metacom (1.4.4)
+Maintainer: Tad Dallas <tdallas@uga.edu>  
+Bug reports: https://github.com/taddallas/metacom/issues
+
 0 errors | 0 warnings | 0 notes
 
 ## metafor (1.9-8)
@@ -4125,7 +4220,7 @@ Maintainer: Klaus K. Holst <klaus@holst.it>
 
 0 errors | 0 warnings | 0 notes
 
-## mgarchBEKK (0.0.1)
+## mgarchBEKK (0.0.2)
 Maintainer: Vehbi Sinan Tunalioglu <vst@vsthost.com>
 
 0 errors | 0 warnings | 0 notes
@@ -4146,9 +4241,9 @@ Maintainer: Zachary Fisher <fish.zachary@gmail.com>
 
 0 errors | 0 warnings | 0 notes
 
-## miniCRAN (0.2.4)
+## miniCRAN (0.2.5)
 Maintainer: Andrie de
- Vries <andrie@revolutionanalytics.com>  
+ Vries <adevries@microsoft.com>  
 Bug reports: https://github.com/RevolutionAnalytics/miniCRAN/issues
 
 0 errors | 0 warnings | 0 notes
@@ -4215,16 +4310,16 @@ Bug reports: https://github.com/mlr-org/mlr/issues
 checking tests ... ERROR
 Running the tests in ‘tests/run-base.R’ failed.
 Last 13 lines of output:
+  
   testthat results ================================================================
-  OK: 1996 SKIPPED: 1 FAILED: 8
-  1. Error: keep.preds and models are passed down to resample() (@test_base_benchmark.R#193) 
-  2. Failure: chains (@test_base_chains.R#11) 
-  3. Error: generateCalibrationData (@test_base_generateCalibration.R#14) 
-  4. Error: generateLearningCurve (@test_base_generateLearningCurve.R#11) 
-  5. Error: generatePartialPredictionData (@test_base_generatePartialPrediction.R#21) 
-  6. Error: generateThreshVsPerfData (@test_base_generateThreshVsPerf.R#12) 
-  7. Failure: getParamSet (@test_base_getParamSet.R#16) 
-  8. Error: BenchmarkResult (@test_base_plotBMRBoxplots.R#12) 
+  OK: 2008 SKIPPED: 1 FAILED: 7
+  1. Failure: chains (@test_base_chains.R#11) 
+  2. Error: generateCalibrationData (@test_base_generateCalibration.R#14) 
+  3. Error: generateLearningCurve (@test_base_generateLearningCurve.R#11) 
+  4. Error: generatePartialPredictionData (@test_base_generatePartialPrediction.R#21) 
+  5. Error: generateThreshVsPerfData (@test_base_generateThreshVsPerf.R#12) 
+  6. Failure: getParamSet (@test_base_getParamSet.R#16) 
+  7. Error: BenchmarkResult (@test_base_plotBMRBoxplots.R#12) 
   
   Error: testthat unit tests failed
   Execution halted
@@ -4255,30 +4350,11 @@ Maintainer: Jarad Niemi <niemi@iastate.edu>
 
 0 errors | 0 warnings | 0 notes
 
-## modules (0.3.0)
+## modules (0.4.0)
 Maintainer: Sebastian Warnholz <wahani@gmail.com>  
 Bug reports: https://github.com/wahani/modules/issues
 
-1 error  | 0 warnings | 0 notes
-
-```
-checking tests ... ERROR
-Running the tests in ‘tests/testthat.R’ failed.
-Last 13 lines of output:
-  
-  
-  testthat results ================================================================
-  OK: 48 SKIPPED: 0 FAILED: 6
-  1. Failure: modfun (@test-modfun.R#13) 
-  2. Failure: modfun in module (@test-modfun.R#38) 
-  3. Failure: modfun in module (@test-modfun.R#41) 
-  4. Failure: modfun in module (@test-modfun.R#44) 
-  5. Failure: modfun plays with S4 (@test-modfun.R#68) 
-  6. Failure: print method for modules (@test-module.R#294) 
-  
-  Error: testthat unit tests failed
-  Execution halted
-```
+0 errors | 0 warnings | 0 notes
 
 ## Momocs (1.0.0)
 Maintainer: Vincent Bonhomme <bonhomme.vincent@gmail.com>  
@@ -4563,7 +4639,7 @@ Last 13 lines of output:
   Execution halted
 ```
 
-## mwaved (1.1.2)
+## mwaved (1.1.4)
 Maintainer: Justin Rory Wishart <justin.wishart@mq.edu.au>  
 Bug reports: https://github.com/jrwishart/mwaved/issues
 
@@ -5051,29 +5127,10 @@ checking DESCRIPTION meta-information ... NOTE
 Malformed Description field: should contain one or more complete sentences.
 ```
 
-## papeR (1.0-0)
+## papeR (1.0-1)
 Maintainer: Benjamin Hofner <benjamin.hofner@fau.de>
 
-1 error  | 0 warnings | 0 notes
-
-```
-checking tests ... ERROR
-Running the tests in ‘tests/testthat.R’ failed.
-Last 13 lines of output:
-  5. Failure: NAs are correctly replaced for factors (@test-helpers.R#136) 
-  
-  Error: testthat unit tests failed
-  In addition: Warning messages:
-  1: In library(package, lib.loc = lib.loc, character.only = TRUE, logical.return = TRUE,  :
-    there is no package called 'survival'
-  2: In library(package, lib.loc = lib.loc, character.only = TRUE, logical.return = TRUE,  :
-    there is no package called 'survival'
-  3: In library(package, lib.loc = lib.loc, character.only = TRUE, logical.return = TRUE,  :
-    there is no package called 'survival'
-  4: In library(package, lib.loc = lib.loc, character.only = TRUE, logical.return = TRUE,  :
-    there is no package called 'survival'
-  Execution halted
-```
+0 errors | 0 warnings | 0 notes
 
 ## parallelMap (1.3)
 Maintainer: Bernd Bischl <bernd_bischl@gmx.net>  
@@ -5247,22 +5304,11 @@ Bug reports: https://github.com/howardjp/phonics/issues
 
 0 errors | 0 warnings | 0 notes
 
-## photobiology (0.9.6)
+## photobiology (0.9.7)
 Maintainer: Pedro J. Aphalo <pedro.aphalo@helsinki.fi>  
 Bug reports: https://bitbucket.org/aphalo/photobiology/issues
 
-0 errors | 0 warnings | 1 note 
-
-```
-checking re-building of vignette outputs ... NOTE
-Error in re-building vignettes:
-  ...
-Quitting from lines 646-654 (userguide.Rnw) 
-Error: processing vignette 'userguide.Rnw' failed with diagnostics:
-(lubridate::is.POSIXct(when.measured) && length(when.measured) ==  .... is not TRUE
-Execution halted
-
-```
+0 errors | 0 warnings | 0 notes
 
 ## Phxnlme (1.0.0)
 Maintainer: Chay Ngee Lim <limxx356@umn.edu>
@@ -5277,6 +5323,11 @@ Bug reports: https://github.com/fmichonneau/phylobase/issues
 
 ## phylometrics (0.0.1)
 Maintainer: Xia Hua <xia.hua@anu.edu.au>
+
+0 errors | 0 warnings | 0 notes
+
+## phyloTop (2.0.0)
+Maintainer: Michelle Kendall <m.kendall@imperial.ac.uk>
 
 0 errors | 0 warnings | 0 notes
 
@@ -5333,30 +5384,11 @@ checking package dependencies ... NOTE
 Package suggested but not available for checking: ‘ggsubplot’
 ```
 
-## pixiedust (0.6.1)
+## pixiedust (0.7.0)
 Maintainer: Benjamin Nutter <nutter@battelle.org>  
 Bug reports: https://github.com/nutterb/pixiedust/issues
 
-1 error  | 0 warnings | 0 notes
-
-```
-checking tests ... ERROR
-Running the tests in ‘tests/testthat.R’ failed.
-Last 13 lines of output:
-  3             _**-1.624**_    0.116536745986852
-  4              _**5.286**_ 1.58173505907644e-05
-  5    -0.161986838604456       0.872568516561885
-  6    -0.130743039043461       0.896984955536724
-  
-  
-  testthat results ================================================================
-  OK: 150 SKIPPED: 0 FAILED: 2
-  1. Failure: dust runs when passed a data frame with tidy_df = FALSE (@test-dust.R#41) 
-  2. Failure: dust runs when passed a data frame with tidy_df = TRUE (@test-dust.R#46) 
-  
-  Error: testthat unit tests failed
-  Execution halted
-```
+0 errors | 0 warnings | 0 notes
 
 ## pkgconfig (2.0.0)
 Maintainer: Gabor Csardi <csardi.gabor@gmail.com>  
@@ -5434,7 +5466,7 @@ Maintainer: Baptiste Auguie <baptiste.auguie@gmail.com>
 
 0 errors | 0 warnings | 0 notes
 
-## plotly (3.4.1)
+## plotly (3.4.13)
 Maintainer: Carson Sievert <cpsievert1@gmail.com>  
 Bug reports: https://github.com/ropensci/plotly/issues
 
@@ -5449,6 +5481,11 @@ Bug reports: http://github.com/sachsmc/plotROC/issues
 ## plspm (0.4.7)
 Maintainer: Gaston Sanchez <gaston.stat@gmail.com>  
 Bug reports: https://github.com/gastonstat/plspm/issues
+
+0 errors | 0 warnings | 0 notes
+
+## plumber (0.2.4)
+Maintainer: Jeff Allen <cran@trestletech.com>
 
 0 errors | 0 warnings | 0 notes
 
@@ -5620,7 +5657,7 @@ Maintainer: Frank Papenmeier <frank.papenmeier@uni-tuebingen.de>
 
 0 errors | 0 warnings | 0 notes
 
-## poweRlaw (0.60.0)
+## poweRlaw (0.60.3)
 Maintainer: Colin Gillespie <csgillespie@gmail.com>  
 Bug reports: https://github.com/csgillespie/poweRlaw/issues
 
@@ -5637,7 +5674,7 @@ Bug reports: https://github.com/gaborcsardi/praise/issues
 
 0 errors | 0 warnings | 0 notes
 
-## prcbench (0.3.1)
+## prcbench (0.3.2)
 Maintainer: Takaya Saito <takaya.saito@outlook.com>  
 Bug reports: https://github.com/takayasaito/prcbench/issues
 
@@ -5673,9 +5710,9 @@ Last 13 lines of output:
   4. Failure: run_benchmark: toolset (@test_main_benchmark.R#84) 
   5. Failure: run_benchmark: toolset (@test_main_benchmark.R#87) 
   6. Error: run_benchmark: times (@test_main_benchmark.R#109) 
-  7. Failure: run_benchmark: unit (@test_main_benchmark.R#145) 
-  8. Failure: run_benchmark: unit (@test_main_benchmark.R#145) 
-  9. Failure: run_benchmark: unit (@test_main_benchmark.R#145) 
+  7. Failure: run_benchmark: unit (@test_main_benchmark.R#144) 
+  8. Failure: run_benchmark: unit (@test_main_benchmark.R#144) 
+  9. Failure: run_benchmark: unit (@test_main_benchmark.R#144) 
   1. ...
   
   Error: testthat unit tests failed
@@ -5691,30 +5728,11 @@ Execution halted
 
 ```
 
-## precrec (0.3.1)
+## precrec (0.3.2)
 Maintainer: Takaya Saito <takaya.saito@outlook.com>  
 Bug reports: https://github.com/takayasaito/precrec/issues
 
-1 error  | 0 warnings | 0 notes
-
-```
-checking tests ... ERROR
-Running the tests in ‘tests/testthat.R’ failed.
-Last 13 lines of output:
-  
-  2. Failure: join_scores() only accepts numeric data (@test_mm2_2_join_scores.R#109) 
-  error$message does not match " scores is not a numeric or integer vector".
-  Actual value: "scores is not a numeric or integer vector"
-  
-  
-  testthat results ================================================================
-  OK: 1978 SKIPPED: 0 FAILED: 2
-  1. Failure: join_scores() only accepts numeric data (@test_mm2_2_join_scores.R#108) 
-  2. Failure: join_scores() only accepts numeric data (@test_mm2_2_join_scores.R#109) 
-  
-  Error: testthat unit tests failed
-  Execution halted
-```
+0 errors | 0 warnings | 0 notes
 
 ## prepdat (1.0.7)
 Maintainer: Ayala S. Allon <ayalaallon@gmail.com>  
@@ -6169,7 +6187,7 @@ Bug reports: https://github.com/bgreenwell/ramify/issues
 
 0 errors | 0 warnings | 0 notes
 
-## randNames (0.2.1)
+## randNames (0.2.2)
 Maintainer: Karthik Ram <karthik.ram@gmail.com>  
 Bug reports: https://github.com/karthik/randNames/issues
 
@@ -6195,7 +6213,7 @@ Maintainer: Mihai Valcu <valcu@orn.mpg.de>
 
 0 errors | 0 warnings | 0 notes
 
-## ranger (0.3.0)
+## ranger (0.4.0)
 Maintainer: Marvin N. Wright <wright@imbs.uni-luebeck.de>
 
 0 errors | 0 warnings | 0 notes
@@ -6289,7 +6307,7 @@ install_version: no visible global function definition for
   ‘install_url’
 ```
 
-## rcanvec (0.1.6)
+## rcanvec (0.2.0)
 Maintainer: Dewey Dunnington <dewey@fishandwhistle.net>  
 Bug reports: https://github.com/paleolimbot/rcanvec/issues
 
@@ -6325,7 +6343,7 @@ Maintainer: Michael C Sachs <sachsmc@gmail.com>
 
 0 errors | 0 warnings | 0 notes
 
-## rcmdcheck (1.0.0)
+## rcmdcheck (1.1.0)
 Maintainer: Gabor Csardi <gcsardi@mango-solutions.com>  
 Bug reports: https://github.com/MangoTheCat/rcmdcheck/issues
 
@@ -6585,7 +6603,18 @@ Packages suggested but not available for checking: ‘graph’ ‘Rgraphviz’
 ## rentrez (1.0.1)
 Maintainer: David Winter <david.winter@gmail.com>
 
-0 errors | 0 warnings | 0 notes
+0 errors | 0 warnings | 1 note 
+
+```
+checking re-building of vignette outputs ... NOTE
+Error in re-building vignettes:
+  ...
+Quitting from lines 593-598 (rentrez_tutorial.Rmd) 
+Error: processing vignette 'rentrez_tutorial.Rmd' failed with diagnostics:
+'names' attribute [1] must be the same length as the vector [0]
+Execution halted
+
+```
 
 ## repijson (0.1.0)
 Maintainer: Andy South <southandy@gmail.com>
@@ -6712,30 +6741,11 @@ Bug reports: https://github.com/evolutics/RFormatter/issues
 
 0 errors | 0 warnings | 0 notes
 
-## RGA (0.4.1)
+## RGA (0.4.2)
 Maintainer: Artem Klevtsov <a.a.klevtsov@gmail.com>  
 Bug reports: https://github.com/artemklevtsov/RGA/issues
 
-1 error  | 0 warnings | 0 notes
-
-```
-checking tests ... ERROR
-Running the tests in ‘tests/testthat.R’ failed.
-Last 13 lines of output:
-  
-  2. Failure: Columns names (@test-metadata.R#16) --------------------------------
-  names(ga_data) not equal to c(...).
-  Lengths differ: 15 vs 14
-  
-  
-  testthat results ================================================================
-  OK: 38 SKIPPED: 2 FAILED: 2
-  1. Failure: Data frame dimensions (@test-metadata.R#12) 
-  2. Failure: Columns names (@test-metadata.R#16) 
-  
-  Error: testthat unit tests failed
-  Execution halted
-```
+0 errors | 0 warnings | 0 notes
 
 ## rgbif (0.9.3)
 Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>  
@@ -6874,7 +6884,7 @@ checking installed package size ... NOTE
     rmd   5.3Mb
 ```
 
-## rmumps (5.0.1.8)
+## rmumps (5.0.1.9-1)
 Maintainer: Serguei Sokol <sokol@insa-toulouse.fr>  
 Bug reports: https://github.com/sgsokol/rmumps/issues
 
@@ -6951,7 +6961,7 @@ See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
 manual.
 ```
 
-## rnn (0.2.0)
+## rnn (0.3.0)
 Maintainer: Bastiaan Quast <bquast@gmail.com>
 
 0 errors | 0 warnings | 0 notes
@@ -6959,6 +6969,11 @@ Maintainer: Bastiaan Quast <bquast@gmail.com>
 ## rnoaa (0.5.2)
 Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>  
 Bug reports: http://www.github.com/ropensci/rnoaa/issues
+
+0 errors | 0 warnings | 0 notes
+
+## roahd (1.0)
+Maintainer: Nicholas Tarabelloni <nicholas.tarabelloni@polimi.it>
 
 0 errors | 0 warnings | 0 notes
 
@@ -7114,7 +7129,7 @@ Maintainer: Sascha Herrmann <sascha.herrmann.consulting@gmail.com>
 
 0 errors | 0 warnings | 0 notes
 
-## rPref (0.7)
+## rPref (1.0.0)
 Maintainer: Patrick Roocks <mail@p-roocks.de>
 
 0 errors | 0 warnings | 1 note 
@@ -7330,12 +7345,7 @@ Bug reports: https://github.com/bleutner/RStoolbox/issues
 ## rstudioapi (0.5)
 Maintainer: JJ Allaire <jj@rstudio.com>
 
-0 errors | 0 warnings | 1 note 
-
-```
-checking Rd cross-references ... NOTE
-Package unavailable to check Rd xrefs: ‘opencpu’
-```
+0 errors | 0 warnings | 0 notes
 
 ## rsunlight (0.4.2)
 Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>  
@@ -7419,7 +7429,7 @@ Maintainer: Franz-Sebastian Krah <f.krah@mailbox.org>
 
 0 errors | 0 warnings | 0 notes
 
-## rvertnet (0.4.1)
+## rvertnet (0.4.4)
 Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>  
 Bug reports: https://github.com/ropensci/rvertnet/issues
 
@@ -7457,7 +7467,7 @@ Maintainer: Alberto Gutierrez <algutier1@gmail.com>
 
 0 errors | 0 warnings | 0 notes
 
-## rYoutheria (1.0.0)
+## rYoutheria (1.0.3)
 Maintainer: Tom August <tomaug@ceh.ac.uk>  
 Bug reports: 
         https://github.com/biologicalrecordscentre/rYoutheria/issues
@@ -7576,7 +7586,7 @@ Maintainer: Matthias Templ <matthias.templ@gmail.com>
 
 0 errors | 0 warnings | 0 notes
 
-## sdcTable (0.20.3)
+## sdcTable (0.20.5)
 Maintainer: Bernhard Meindl <bernhard.meindl@statistik.gv.at>  
 Bug reports: https://github.com/bernhard-da/sdcTable/issues
 
@@ -7774,7 +7784,14 @@ Maintainer: Oliver Flasch <of@sourcewerk.de>
 Maintainer: Peter Green <greenp@landcareresearch.co.nz>  
 Bug reports: https://github.com/pitakakariki/simr/issues
 
-0 errors | 0 warnings | 0 notes
+0 errors | 1 warning  | 0 notes
+
+```
+checking whether package ‘simr’ can be installed ... WARNING
+Found the following significant warnings:
+  Warning: package ‘lme4’ was built under R version 3.2.5
+See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/simr.Rcheck/00install.out’ for details.
+```
 
 ## sisal (0.46)
 Maintainer: Mikko Korpela <mvkorpel@iki.fi>
@@ -7906,7 +7923,7 @@ Maintainer: Kevin Ushey <kevinushey@gmail.com>
 
 0 errors | 0 warnings | 0 notes
 
-## SpaDES (1.1.1)
+## SpaDES (1.1.2)
 Maintainer: Alex M Chubaty <alexander.chubaty@canada.ca>  
 Bug reports: https://github.com/PredictiveEcology/SpaDES/issues
 
@@ -7925,60 +7942,29 @@ manual.
 ## spaero (0.1.0)
 Maintainer: Eamon O'Dea <odea35@gmail.com>
 
-2 errors | 0 warnings | 3 notes
+1 error  | 0 warnings | 0 notes
 
 ```
-checking examples ... ERROR
-Running examples in ‘spaero-Ex.R’ failed
-The error most likely occurred in:
-
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
-> ### Name: create_simulator
-> ### Title: Create surveillance data simulator.
-> ### Aliases: create_simulator
-> 
-> ### ** Examples
-> 
-> 
-> foo <- create_simulator()
-Error: The pomp package is needed for this function to work. Please install it.
-Execution halted
-
 checking tests ... ERROR
 Running the tests in ‘tests/testthat.R’ failed.
 Last 13 lines of output:
-         call. = FALSE)
+    expect_equal(hello(), 'Hello World')    
+                                        ^~~~
+  tests/testthat/test_dir/test-helper.R:7:1: style: Trailing blank lines are superfluous.
+  
+  ^
+  
   
   testthat results ================================================================
-  OK: 68 SKIPPED: 0 FAILED: 6
-  1. Error: Argument checking works (@test-simulator.R#8) 
-  2. Error: Mean and stddev of stationary model over time consistent with ensemble mean and stdev of dizzy progam's implementation (@test-simulator.R#29) 
-  3. Error: Means and final stddev of time-dependent model consistent with ensemble mean and stdev of dizzy progam's implementation (@test-simulator.R#48) 
-  4. Error: Fluctuations for large system sizes approximate AR process given by linear noise approximation (@test-simulator.R#104) 
-  5. Error: Package Style (@test-stats.R#4) 
-  6. Error: Estimate of stats consistent with other methods in case of moving window estimates in nonstationary AR(1) model (@test-stats.R#278) 
+  OK: 93 SKIPPED: 0 FAILED: 1
+  1. Failure: Package Style (@test-stats.R#4) 
   
   Error: testthat unit tests failed
   Execution halted
-
-checking package dependencies ... NOTE
-Packages suggested but not available for checking: ‘earlywarnings’ ‘pomp’
-
-checking Rd cross-references ... NOTE
-Package unavailable to check Rd xrefs: ‘pomp’
-
-checking re-building of vignette outputs ... NOTE
-Error in re-building vignettes:
-  ...
-Quitting from lines 79-82 (spaero-introduction.Rmd) 
-Error: processing vignette 'spaero-introduction.Rmd' failed with diagnostics:
-The pomp package is needed for this function to work. Please install it.
-Execution halted
-
 ```
 
-## spaMM (1.7.2)
-Maintainer: François Rousset <francois.rousset@univ-montp2.fr>
+## spaMM (1.8.0)
+Maintainer: François Rousset <francois.rousset@umontpellier.fr>
 
 1 error  | 0 warnings | 0 notes
 
@@ -8103,6 +8089,12 @@ Maintainer: Mark S. Handcock <handcock@stat.ucla.edu>
 
 0 errors | 0 warnings | 0 notes
 
+## sss (0.0-14)
+Maintainer: Andrie de Vries <apdevries@gmail.com>  
+Bug reports: https://github.com/andrie/sss/issues
+
+0 errors | 0 warnings | 0 notes
+
 ## StableEstim (2.0)
 Maintainer: Tarak Kharrat <tarak.kharrat@manchester.ac.uk>
 
@@ -8127,6 +8119,19 @@ Error in match.arg(type, c("success", "failure", "error", "skip", "warning")) :
   'arg' must be NULL or a character vector
 Calls: expect_almost_equal ... expect_that -> condition -> expectation -> match.arg
 Execution halted
+```
+
+## stablespec (0.1.3)
+Maintainer: Ridho Rahmadi <r.rahmadi@cs.ru.nl>
+
+1 error  | 0 warnings | 0 notes
+
+```
+checking package dependencies ... ERROR
+Packages required but not available: ‘graph’ ‘Rgraphviz’
+
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
 ```
 
 ## statar (0.6.0)
@@ -8173,6 +8178,11 @@ checking installed package size ... NOTE
 
 ## StatRank (0.0.6)
 Maintainer: Hossein Azari Soufiani <azari.hossein@gmail.com>
+
+0 errors | 0 warnings | 0 notes
+
+## stcov (0.1.0)
+Maintainer: Brett Naul <brettnaul@gmail.com>
 
 0 errors | 0 warnings | 0 notes
 
@@ -8313,59 +8323,28 @@ Maintainer: Tong He <hetong007@gmail.com>
 
 0 errors | 0 warnings | 0 notes
 
-## sweidnumbr (1.1.0)
+## sweidnumbr (1.2.0)
 Maintainer: Mans Magnusson <mons.magnusson@gmail.com>  
 Bug reports: https://github.com/rOpenGov/sweidnumbr/issues
 
-1 error  | 0 warnings | 0 notes
+0 errors | 0 warnings | 0 notes
 
-```
-checking tests ... ERROR
-Running the tests in ‘tests/testthat.R’ failed.
-Last 13 lines of output:
-  sweidnumbr: R tools to handle swedish identity numbers.
-  https://github.com/rOpenGov/sweidnumbr
-  
-  1. Failure: pin_to_date (@test-pin_to_date.R#6) --------------------------------
-  pin_to_date(pin = c("196408233234", "186408833224")) inherits from `Date` not `POSIXct`.
-  
-  
-  testthat results ================================================================
-  OK: 190 SKIPPED: 0 FAILED: 1
-  1. Failure: pin_to_date (@test-pin_to_date.R#6) 
-  
-  Error: testthat unit tests failed
-  Execution halted
-```
-
-## swirl (2.4.0)
+## swirl (2.4.1)
 Maintainer: Sean Kross <sean@seankross.com>
 
-1 error  | 0 warnings | 0 notes
-
-```
-checking tests ... ERROR
-Running the tests in ‘tests/test-all.R’ failed.
-Last 13 lines of output:
-  4: identical(as.vector(object), TRUE) at /Users/hadley/Documents/devtools/testthat/R/expectation.R:112
-  5: as.vector(object)
-  6: (swirl:::uses_func("info"))(parse(text = "info()"))
-  7: expectation(identical(uses, TRUE), str_c("does not use ", label))
-  8: match.arg(type, c("success", "failure", "error", "skip", "warning")) at /Users/hadley/Documents/devtools/testthat/R/expectation.R:15
-  9: stop("'arg' must be NULL or a character vector")
-  
-  testthat results ================================================================
-  OK: 13 SKIPPED: 0 FAILED: 1
-  1. Error: uses_func works with the current version of testthat (@test-uses_func.R#4) 
-  
-  Error: testthat unit tests failed
-  Execution halted
-```
+0 errors | 0 warnings | 0 notes
 
 ## swirlify (0.4.1)
 Maintainer: Sean Kross <sean@seankross.com>
 
-0 errors | 0 warnings | 0 notes
+0 errors | 1 warning  | 0 notes
+
+```
+checking whether package ‘swirlify’ can be installed ... WARNING
+Found the following significant warnings:
+  Warning: package ‘swirl’ was built under R version 3.2.5
+See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/swirlify.Rcheck/00install.out’ for details.
+```
 
 ## systemicrisk (0.3)
 Maintainer: Axel Gandy <a.gandy@imperial.ac.uk>
@@ -8398,7 +8377,7 @@ Maintainer: Luca Weihs <lucaw@uw.edu>
 
 0 errors | 0 warnings | 0 notes
 
-## taxize (0.7.4)
+## taxize (0.7.5)
 Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>  
 Bug reports: https://github.com/ropensci/taxize/issues
 
@@ -8620,7 +8599,7 @@ See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
 manual.
 ```
 
-## tokenizers (0.1.1)
+## tokenizers (0.1.2)
 Maintainer: Lincoln Mullen <lincoln@lincolnmullen.com>  
 Bug reports: https://github.com/lmullen/tokenizers/issues
 
@@ -8681,6 +8660,11 @@ Bug reports: http://www.github.com/ropensci/treebase/issues
 
 ## treeclim (1.0.16)
 Maintainer: Christian Zang <christian.zang@wzw.tum.de>
+
+0 errors | 0 warnings | 0 notes
+
+## treeman (1.0)
+Maintainer: D.J. Bennett <dominic.john.bennett@gmail.com>
 
 0 errors | 0 warnings | 0 notes
 
@@ -8809,7 +8793,7 @@ Bug reports: https://github.com/dmpe/urlshorteneR/issues
 
 0 errors | 0 warnings | 0 notes
 
-## urltools (1.3.2)
+## urltools (1.4.0)
 Maintainer: Oliver Keyes <ironholds@gmail.com>  
 Bug reports: https://github.com/Ironholds/urltools/issues
 
@@ -8855,6 +8839,12 @@ Last 13 lines of output:
   Execution halted
 ```
 
+## utiml (0.1.0)
+Maintainer: Adriano Rivolli <rivolli@utfpr.edu.br>  
+Bug reports: https://github.com/rivolli/utiml
+
+0 errors | 0 warnings | 0 notes
+
 ## V8 (1.0.1)
 Maintainer: Jeroen Ooms <jeroen.ooms@stat.ucla.edu>  
 Bug reports: https://github.com/jeroenooms/v8/issues
@@ -8867,7 +8857,7 @@ Installation failed.
 See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/V8.Rcheck/00install.out’ for details.
 ```
 
-## validate (0.1.3)
+## validate (0.1.4)
 Maintainer: Mark van der Loo <mark.vanderloo@gmail.com>  
 Bug reports: https://github.com/data-cleaning/validate/issues
 
@@ -8928,29 +8918,10 @@ Maintainer: Florian Jansen <jansen@uni-greifswald.de>
 
 0 errors | 0 warnings | 0 notes
 
-## VennDiagram (1.6.16)
+## VennDiagram (1.6.17)
 Maintainer: Paul Boutros <Paul.Boutros@oicr.on.ca>
 
-1 error  | 0 warnings | 0 notes
-
-```
-checking tests ... ERROR
-Running the tests in ‘tests/test-all.R’ failed.
-Last 13 lines of output:
-  1. Error: Case colour of five categories (@test-Five.R#78) 
-  2. Error: Case colour of four categories (@test-Four.R#60) 
-  3. Error: Case simple of one category (@test-One.R#55) 
-  4. Error: Case colour of one category (@test-One.R#55) 
-  5. Error: Case default of three categories (@test-Three.R#401) 
-  6. Error: Case colour-default of three categories (@test-Three.R#401) 
-  7. Error: Case 001 of three categories (@test-Three.R#401) 
-  8. Error: Case 010 of three categories (@test-Three.R#401) 
-  9. Error: Case 011A of three categories (@test-Three.R#401) 
-  1. ...
-  
-  Error: testthat unit tests failed
-  Execution halted
-```
+0 errors | 0 warnings | 0 notes
 
 ## vines (1.1.4)
 Maintainer: Yasser Gonzalez-Fernandez <ygonzalezfernandez@gmail.com>
@@ -9008,18 +8979,7 @@ manual.
 Maintainer: Will Beasley <wibeasley@hotmail.com>  
 Bug reports: https://github.com/OuhscBbmc/Wats/issues
 
-0 errors | 0 warnings | 1 note 
-
-```
-checking re-building of vignette outputs ... NOTE
-Error in re-building vignettes:
-  ...
-Quitting from lines 282-302 (OkFertilityWithIntercensalEstimates.Rmd) 
-Error: processing vignette 'OkFertilityWithIntercensalEstimates.Rmd' failed with diagnostics:
-there is no package called 'graph'
-Execution halted
-
-```
+0 errors | 0 warnings | 0 notes
 
 ## weatherData (0.4.1)
 Maintainer: Ram Narasimhan <ramnarasimhan@gmail.com>
@@ -9123,7 +9083,7 @@ Bug reports: https://github.com/ianmcook/wkb/issues
 
 0 errors | 0 warnings | 0 notes
 
-## wppExplorer (1.7-1)
+## wppExplorer (1.8-0)
 Maintainer: Hana Sevcikova <hanas@uw.edu>
 
 0 errors | 0 warnings | 0 notes
@@ -9199,25 +9159,20 @@ Bug reports: https://github.com/RomanTsegelskyi/yummlyr/issues
 
 0 errors | 0 warnings | 0 notes
 
-## Zelig (5.0-11)
+## Zelig (5.0-12)
 Maintainer: James Honaker <zelig-zee@iq.harvard.edu>
 
-1 error  | 0 warnings | 0 notes
-
-```
-checking whether package ‘Zelig’ can be installed ... ERROR
-Installation failed.
-See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/Zelig.Rcheck/00install.out’ for details.
-```
+0 errors | 0 warnings | 0 notes
 
 ## ZeligChoice (0.9-0)
 Maintainer: James Honaker <zelig-zee@iq.harvard.edu>
 
-1 error  | 0 warnings | 0 notes
+0 errors | 1 warning  | 0 notes
 
 ```
-checking whether package ‘ZeligChoice’ can be installed ... ERROR
-Installation failed.
+checking whether package ‘ZeligChoice’ can be installed ... WARNING
+Found the following significant warnings:
+  Warning: namespace ‘Rgraphviz’ is not available and has been replaced
 See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/ZeligChoice.Rcheck/00install.out’ for details.
 ```
 
