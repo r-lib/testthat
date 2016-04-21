@@ -6,7 +6,8 @@
 namespace {
 
 void ouch() {
-  throw std::logic_error("logic");
+  std::string message = "logic";
+  throw std::logic_error(message);
 }
 
 } // anonymous namespace
