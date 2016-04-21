@@ -1,3 +1,8 @@
+# testthat 1.0.2
+
+* Ensure 'std::logic_error()' constructed with 'std::string()'
+  argument, to avoid build errors on Solaris.
+
 # testthat 1.0.1
 
 * New `expect_output_file()` to compare output of a function

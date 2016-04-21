@@ -1,5 +1,5 @@
 Package: testthat
-Version: 1.0.1
+Version: 1.0.2
 Title: Unit Testing for R
 Description: A unit testing system designed to be fun, flexible and easy to
     set up.
