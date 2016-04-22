@@ -1,82 +1,86 @@
 library(testthat)
 
-# Disable test on Windows, pending devtools
-# compatibility with new toolchain
-isWindows <- Sys.info()[["sysname"]] == "Windows"
-if (isWindows)
-  return()
+local({
 
-# Disable tests on Solaris, because we don't use Catch there.
-isSolaris <- Sys.info()[["sysname"]] == "SunOS"
-if (isSolaris)
-  return()
+  # Disable test on Windows, pending devtools
+  # compatibility with new toolchain
+  isWindows <- Sys.info()[["sysname"]] == "Windows"
+  if (isWindows)
+    return()
 
-if (!requireNamespace("devtools", quietly = TRUE))
-  return()
+  # Disable tests on Solaris, because we don't use Catch there.
+  isSolaris <- Sys.info()[["sysname"]] == "SunOS"
+  if (isSolaris)
+    return()
 
-devel <- try(devtools::has_devel(), silent = TRUE)
-if (!isTRUE(devel))
-  return()
+  if (!requireNamespace("devtools", quietly = TRUE))
+    return()
 
-quietly <- function(expr) {
-  suppressMessages(capture.output(result <- expr))
-  result
-}
+  devel <- try(devtools::has_devel(), silent = TRUE)
+  if (!isTRUE(devel))
+    return()
 
-perform_test <- function(pkgName, catchEnabled) {
+  quietly <- function(expr) {
+    suppressMessages(capture.output(result <- expr))
+    result
+  }
 
-  owd <- setwd(tempdir())
-  on.exit(setwd(owd), add = TRUE)
+  perform_test <- function(pkgName, catchEnabled) {
 
-  pkgPath <- file.path(tempdir(), pkgName)
-  libPath <- file.path(tempdir(), "rlib")
-  if (!utils::file_test("-d", libPath))
-    dir.create(libPath)
-  .libPaths(c(libPath, .libPaths()))
+    owd <- setwd(tempdir())
+    on.exit(setwd(owd), add = TRUE)
 
-  on.exit({
-    unlink(pkgPath, recursive = TRUE)
-    unlink(libPath, recursive = TRUE)
-  }, add = TRUE)
+    pkgPath <- file.path(tempdir(), pkgName)
+    libPath <- file.path(tempdir(), "rlib")
+    if (!utils::file_test("-d", libPath))
+      dir.create(libPath)
+    .libPaths(c(libPath, .libPaths()))
 
-  quietly(devtools::create(pkgPath))
-  quietly(testthat::use_catch(pkgPath))
+    on.exit({
+      unlink(pkgPath, recursive = TRUE)
+      unlink(libPath, recursive = TRUE)
+    }, add = TRUE)
 
-  cat("LinkingTo: testthat",
-      file = file.path(pkgPath, "DESCRIPTION"),
-      append = TRUE,
-      sep = "\n")
+    quietly(devtools::create(pkgPath))
+    quietly(testthat::use_catch(pkgPath))
 
-  cat(
-    sprintf("useDynLib(%s)", pkgName),
-    file = file.path(pkgPath, "NAMESPACE"),
-    append = TRUE,
-    sep = "\n"
-  )
-
-  if (!catchEnabled) {
-
-    makevarsPath <- file.path(
-      pkgPath,
-      "src",
-      if (isWindows) "Makevars.win" else "Makevars"
-    )
+    cat("LinkingTo: testthat",
+        file = file.path(pkgPath, "DESCRIPTION"),
+        append = TRUE,
+        sep = "\n")
 
     cat(
-      "PKG_CPPFLAGS = -DTESTTHAT_DISABLED",
-      file = makevarsPath,
+      sprintf("useDynLib(%s)", pkgName),
+      file = file.path(pkgPath, "NAMESPACE"),
+      append = TRUE,
       sep = "\n"
     )
 
+    if (!catchEnabled) {
+
+      makevarsPath <- file.path(
+        pkgPath,
+        "src",
+        if (isWindows) "Makevars.win" else "Makevars"
+      )
+
+      cat(
+        "PKG_CPPFLAGS = -DTESTTHAT_DISABLED",
+        file = makevarsPath,
+        sep = "\n"
+      )
+
+    }
+
+    quietly(devtools::install(pkgPath, quick = TRUE, quiet = TRUE))
+
+    library(pkgName, character.only = TRUE)
+    stopifnot(quietly(.Call("run_testthat_tests", PACKAGE = pkgName)))
+
+    devtools::unload(pkgName)
   }
 
-  quietly(devtools::install(pkgPath, quick = TRUE, quiet = TRUE))
+  perform_test("testthatclient1",  TRUE)
+  perform_test("testthatclient2", FALSE)
 
-  library(pkgName, character.only = TRUE)
-  stopifnot(quietly(.Call("run_testthat_tests", PACKAGE = pkgName)))
-
-  devtools::unload(pkgName)
-}
-
-perform_test("testthatclient1",  TRUE)
-perform_test("testthatclient2", FALSE)
+})
