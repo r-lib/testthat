@@ -26,7 +26,7 @@ compare.POSIXt <- function(x, y, tolerance = 0.001, ..., max_diffs = 9) {
 }
 
 standardise_tzone <- function(x) {
-  if (is.null(attr(x, "tzone"))) {
+  if (is.null(attr(x, "tzone")) || identical(attr(x, "tzone"), Sys.timezone())) {
     attr(x, "tzone") <- ""
   }
 
