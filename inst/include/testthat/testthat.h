@@ -4,7 +4,7 @@
 #define TESTTHAT_TOKEN_PASTE_IMPL(__X__, __Y__) __X__ ## __Y__
 #define TESTTHAT_TOKEN_PASTE(__X__, __Y__) TESTTHAT_TOKEN_PASTE_IMPL(__X__, __Y__)
 #define TESTTHAT_DISABLED_FUNCTION \
-  void TESTTHAT_TOKEN_PASTE(testthat_disabled_test_, __LINE__) ()
+  static void TESTTHAT_TOKEN_PASTE(testthat_disabled_test_, __LINE__) ()
 
 /**
  * Conditionally enable or disable 'testthat' + 'Catch'.
