@@ -1,3 +1,5 @@
+# testthat 1.0.2.9000
+
 # testthat 1.0.2
 
 * Ensure 'std::logic_error()' constructed with 'std::string()'
