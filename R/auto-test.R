@@ -81,8 +81,8 @@ auto_test_package <- function(pkg = ".", reporter = "summary") {
   pkg <- devtools::as.package(pkg)
 
   reporter <- find_reporter(reporter)
-  code_path <- file.path(pkg$path, "R")
-  test_path <- file.path(pkg$path, "tests", "testthat")
+  code_path <- normalizePath(file.path(pkg$path, "R"))
+  test_path <- normalizePath(file.path(pkg$path, "tests", "testthat"))
 
   # Start by loading all code and running all tests
   env <- devtools::load_all(pkg)$env
@@ -121,4 +121,3 @@ auto_test_package <- function(pkg = ".", reporter = "summary") {
   watch(c(code_path, test_path), watcher)
 
 }
-
