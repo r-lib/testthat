@@ -89,7 +89,7 @@ protected:
 
 };
 
-class r_ostream : public std::ostream {
+class r_ostream : public std::basic_ostream<char> {
 public:
   r_ostream() : std::ostream(new r_streambuf) {}
 
