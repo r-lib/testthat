@@ -3203,7 +3203,6 @@ namespace Catch {
         }
 
         virtual ~Config() {
-            m_os.rdbuf( Catch::cout().rdbuf() );
             m_stream.release();
         }
 

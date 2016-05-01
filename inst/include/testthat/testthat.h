@@ -55,7 +55,7 @@ extern "C" void R_FlushConsole();
 
 namespace testthat {
 
-class r_streambuf : public std::basic_streambuf<char> {
+class r_streambuf : public std::streambuf {
 public:
 
   r_streambuf() {}
@@ -89,9 +89,9 @@ protected:
 
 };
 
-class r_ostream : public std::basic_ostream<char> {
+class r_ostream : public std::ostream {
 public:
-  r_ostream() : std::basic_ostream<char>(new r_streambuf) {}
+  r_ostream() : std::ostream(new r_streambuf) {}
   ~r_ostream() { delete rdbuf(); }
 };
 
