@@ -19,7 +19,7 @@ TapReporter <- R6::R6Class("TapReporter", inherit = Reporter,
       super$initialize()
       self$out <- file
     },
-    
+
     start_context = function(context) {
       self$contexts[self$n + 1] <- context
     },
@@ -34,6 +34,10 @@ TapReporter <- R6::R6Class("TapReporter", inherit = Reporter,
       if (!self$has_tests)
         return()
 
+      if (is.character(self$out) && file.exists(self$out)) {
+        # Overwrite the file, if it exists
+        file.remove(self$out)
+      }
       self$cat_line("1..", self$n)
       for (i in 1:self$n) {
         if (!is.na(self$contexts[i])) {
