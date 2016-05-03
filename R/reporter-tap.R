@@ -15,6 +15,11 @@ TapReporter <- R6::R6Class("TapReporter", inherit = Reporter,
     has_tests = FALSE,
     contexts = NA_character_,
 
+    initialize = function(file=stdout()) {
+      super$initialize()
+      self$out <- file
+    },
+    
     start_context = function(context) {
       self$contexts[self$n + 1] <- context
     },
