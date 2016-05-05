@@ -64,7 +64,7 @@ test_code <- function(test, code, env = test_env()) {
     invokeRestart("continue_test")
   }
   handle_warning <- function(e) {
-    register_expectation(e, frame + 11, sys.nframe() - 6)
+    register_expectation(e, frame + 11, sys.nframe() - 5)
     invokeRestart("muffleWarning")
   }
   handle_message <- function(e) {
