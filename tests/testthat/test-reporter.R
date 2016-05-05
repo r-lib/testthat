@@ -54,4 +54,13 @@ test_that("reporters produce consistent output", {
   expect_error(save_report("teamcity"), NA)
   expect_error(save_report("silent"), NA)
   expect_error(save_report("rstudio"), NA)
+  with_mock(
+    `utils::menu` = function(choices, graphics = FALSE, title = NULL) {
+      cat(paste0(format(seq_along(choices)), ": ", choices, sep = "\n"), "\n",
+          sep = "")
+      0L
+    },
+    `base::sink.number` = function() 0L,
+    expect_error(save_report("debug"), NA)
+  )
 })
