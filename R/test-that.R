@@ -42,6 +42,8 @@ test_code <- function(test, code, env = test_env()) {
 
     e <- as.expectation(e, srcref = srcref)
     e$call <- calls
+    e$start_frame <- start_frame
+    e$end_frame <- end_frame
     e$test <- test %||% "(unknown)"
     ok <<- ok && expectation_ok(e)
     get_reporter()$add_result(context = get_reporter()$.context, test = test, result = e)
