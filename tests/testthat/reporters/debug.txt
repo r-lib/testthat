@@ -23,5 +23,6 @@
 
 1: tests.R#57: warning("def")
 
-1: tests.R#58: warning("ghi")
+1: tests.R#58: f()
+2: tests.R#56: warning("ghi")
 
