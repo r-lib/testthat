@@ -3,8 +3,8 @@ NULL
 
 #' Test reporter: start recovery.
 #'
-#' This reporter will call \code{\link{recover}} on the first unsuccessful
-#' expectation.
+#' This reporter will call a modified version of \code{\link{recover}} on all
+#' broken expectations.
 #'
 #' @export
 DebugReporter <- R6::R6Class("DebugReporter", inherit = Reporter,

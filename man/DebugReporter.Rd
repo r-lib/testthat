@@ -9,8 +9,8 @@
 DebugReporter
 }
 \description{
-This reporter will call \code{\link{recover}} on the first unsuccessful
-expectation.
+This reporter will call a modified version of \code{\link{recover}} on all
+broken expectations.
 }
 \keyword{datasets}
 
