@@ -45,17 +45,13 @@ test_code <- function(test, code, env = test_env()) {
     e$test <- test %||% "(unknown)"
     ok <<- ok && expectation_ok(e)
     get_reporter()$add_result(context = get_reporter()$.context, test = test, result = e)
+    e
   }
 
   frame <- sys.nframe()
   handle_error <- function(e) {
-    # Capture call stack, removing last two calls from end (added by
-    # withCallingHandlers), and first frame + 7 calls from start (added by
-    # tryCatch etc)
-    e$call <- sys.calls()[(frame + 11):(sys.nframe() - 2)]
-
-    register_expectation(e, frame + 11, sys.nframe() - 2)
-    signalCondition(e)
+    ex <- register_expectation(e, frame + 11, sys.nframe() - 2)
+    signalCondition(ex)
   }
   handle_expectation <- function(e) {
     register_expectation(e, frame + 11, sys.nframe() - 6)
