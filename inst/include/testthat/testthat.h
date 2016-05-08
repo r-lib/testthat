@@ -99,7 +99,7 @@ public:
 // exported by testthat.
 # ifdef CATCH_CONFIG_RUNNER
 
-Catch::Session& catchSession()
+inline Catch::Session& catchSession()
 {
   static Catch::Session instance;
   return instance;
