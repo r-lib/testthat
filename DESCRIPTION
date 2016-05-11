@@ -47,6 +47,7 @@ Collate:
     'expectation.R'
     'expectations-matches.R'
     'make-expectation.R'
+    'mock-object.R'
     'mock.R'
     'old-school.R'
     'praise.R'
