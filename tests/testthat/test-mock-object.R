@@ -37,9 +37,23 @@ test_that("expect calls", {
 })
 
 
+test_that("empty return list", {
+  m <- mock()
+  expect_null(m())
+})
+
+
 test_that("too many calls", {
   m <- mock(1)
   expect_equal(1, m())
   expect_failure(m(), "too many calls to mock object and cycle set to FALSE")
 })
 
+
+test_that("call not found", {
+  m <- mock()
+  m()
+  expect_call(m, 1, m())
+  expect_failure(expect_call(m, 2, m()),
+                 "call number 2 not found in mock object")
+})
