@@ -4,17 +4,23 @@
 \alias{mock}
 \title{Create a mock object.}
 \usage{
-mock(returns = list())
+mock(..., cycle = FALSE)
 }
 \arguments{
-\item{returns}{Values returned upon subsequent calls.}
+\item{...}{Values returned upon subsequent calls.}
+
+\item{cycle}{Whether to cycle over the return values. If \code{FALSE},
+will fail if called too many times.}
 }
 \description{
-Create a mock object.
+Mock object's primary use is to record calls that are made on the
+mocked function. Optionally values can be passed via \code{...} to
+make the mock object return them upon subsequent calls. If no value
+is passed in \code{...} then \code{NULL} is returned.
 }
 \examples{
 \dontrun{
-  m <- mock(returns = list(1))
+  m <- mock(1)
   with_mock(summary = m, {
     expect_equal(summary(iris), 1)
     expect_call(m, 1, summary(iris))
