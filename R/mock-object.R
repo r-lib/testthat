@@ -1,19 +1,26 @@
 
 #' Create a mock object.
 #'
-#' @param returns Values returned upon subsequent calls.
+#' Mock object's primary use is to record calls that are made on the
+#' mocked function. Optionally values can be passed via \code{...} to
+#' make the mock object return them upon subsequent calls. If no value
+#' is passed in \code{...} then \code{NULL} is returned.
+#'
+#' @param ... Values returned upon subsequent calls.
+#' @param cycle Whether to cycle over the return values. If \code{FALSE},
+#'        will fail if called too many times.
 #' @export
 #' @examples
 #' \dontrun{
-#'   m <- mock(returns = list(1))
+#'   m <- mock(1)
 #'   with_mock(summary = m, {
 #'     expect_equal(summary(iris), 1)
 #'     expect_call(m, 1, summary(iris))
 #'   })
 #' }
 #'
-mock <- function (returns = list()) {
-  returns <- as.list(returns)
+mock <- function (..., cycle = FALSE) {
+  returns <- list(...)
   call_no <- 0
   calls   <- list()
 
@@ -22,7 +29,13 @@ mock <- function (returns = list()) {
     call_no <<- call_no + 1
     calls[[call_no]] <<- match.call()
 
+    # TODO record the values passed on each call
+
     if (length(returns)) {
+      if (call_no > length(returns) && !cycle) {
+        fail("too many calls to mock object and cycle set to FALSE",
+             call. = FALSE)
+      }
       return(returns[[(call_no - 1) %% length(returns) + 1]])
     }
 

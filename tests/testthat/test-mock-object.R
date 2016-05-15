@@ -1,13 +1,13 @@
 context("Mock objects")
 
 test_that("mock cyclic returns", {
-  m <- mock(returns = 1)
+  m <- mock(1, cycle = TRUE)
   expect_equal(lapply(1:10, m), as.list(rep(1, 10)))
 
-  m <- mock(returns = 1:2)
+  m <- mock(1, 2, cycle = TRUE)
   expect_equal(lapply(1:10, m), as.list(rep(1:2, 5)))
 
-  m <- mock(returns = 1:3)
+  m <- mock(1, 2, 3, cycle = TRUE)
   expect_equal(lapply(1:12, m), as.list(rep(1:3, 4)))
 })
 
