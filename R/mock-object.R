@@ -53,7 +53,7 @@ mock <- function (..., cycle = FALSE) {
 #' @inheritParams expect_that
 #' @param mock A \code{\link{mock}} object.
 #' @param no Number of the call made on the \code{mock} object.
-#' @param call Expected call.
+#' @param expected_call Expected call.
 #' @family expectations
 #' @export
 #' @examples

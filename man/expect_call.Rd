@@ -11,7 +11,7 @@ expect_call(mock, no, expected_call)
 
 \item{no}{Number of the call made on the \code{mock} object.}
 
-\item{call}{Expected call.}
+\item{expected_call}{Expected call.}
 }
 \description{
 Expectation: does the given call match the expected?

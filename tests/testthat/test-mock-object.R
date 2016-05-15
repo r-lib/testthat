@@ -33,5 +33,6 @@ test_that("expect calls", {
     summary(iris)
   })
 
-  expect_call(m, summary(iris))
+  expect_call(m, 1, summary(iris))
 })
+
