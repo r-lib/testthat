@@ -36,3 +36,10 @@ test_that("expect calls", {
   expect_call(m, 1, summary(iris))
 })
 
+
+test_that("too many calls", {
+  m <- mock(1)
+  expect_equal(1, m())
+  expect_failure(m(), "too many calls to mock object and cycle set to FALSE")
+})
+

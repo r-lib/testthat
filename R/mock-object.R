@@ -32,10 +32,8 @@ mock <- function (..., cycle = FALSE) {
     # TODO record the values passed on each call
 
     if (length(returns)) {
-      if (call_no > length(returns) && !cycle) {
-        fail("too many calls to mock object and cycle set to FALSE",
-             call. = FALSE)
-      }
+      if (call_no > length(returns) && !cycle)
+        fail("too many calls to mock object and cycle set to FALSE")
       return(returns[[(call_no - 1) %% length(returns) + 1]])
     }
 
