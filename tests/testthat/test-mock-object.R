@@ -57,3 +57,21 @@ test_that("call not found", {
   expect_failure(expect_call(m, 2, m()),
                  "call number 2 not found in mock object")
 })
+
+
+test_that("return expression", {
+  e <- new.env(parent = globalenv())
+  m <- mock(fun_x("a"),
+            fun_x("a") == "a",
+            envir = e, cycle = TRUE)
+
+  e$fun_x <- function(x)x
+  expect_equal(m(), "a")
+  expect_true(m())
+
+  e$fun_x <- function(x)"abc"
+  expect_equal(m(), "abc")
+  expect_false(m())
+})
+
+
