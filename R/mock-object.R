@@ -2,13 +2,23 @@
 #' Create a mock object.
 #'
 #' Mock object's primary use is to record calls that are made on the
-#' mocked function. Optionally values can be passed via \code{...} to
-#' make the mock object return them upon subsequent calls. If no value
-#' is passed in \code{...} then \code{NULL} is returned.
+#' mocked function.
+#'
+#' Optionally values/expressions can be passed via \code{...} for the
+#' mock object to return them upon subsequent calls. Expressions are
+#' evaluated in environment \code{envir} before being returned. If no
+#' value is passed in \code{...} then \code{NULL} is returned.
+#'
+#' Passing an expression or a function call via \code{...} is also a
+#' way to implement side effects: keep track of the state of code
+#' under testing, throw an exception when a condition is met, etc.
 #'
 #' @param ... Values returned upon subsequent calls.
 #' @param cycle Whether to cycle over the return values. If \code{FALSE},
 #'        will fail if called too many times.
+#' @param envir Where to evaluate the expressions being returned.
+#' @return A mock object.
+#'
 #' @export
 #' @examples
 #' \dontrun{
@@ -19,10 +29,13 @@
 #'   })
 #' }
 #'
-mock <- function (..., cycle = FALSE) {
-  returns <- list(...)
-  call_no <- 0
-  calls   <- list()
+mock <- function (..., cycle = FALSE, envir = parent.frame()) {
+  stopifnot(is.environment(envir))
+
+  return_values     <- eval(substitute(alist(...)))
+  return_values_env <- envir
+  call_no           <- 0
+  calls             <- list()
 
   mock_impl <- function (...)
   {
@@ -31,10 +44,12 @@ mock <- function (..., cycle = FALSE) {
 
     # TODO record the values passed on each call
 
-    if (length(returns)) {
-      if (call_no > length(returns) && !cycle)
+    if (length(return_values)) {
+      if (call_no > length(return_values) && !cycle)
         fail("too many calls to mock object and cycle set to FALSE")
-      return(returns[[(call_no - 1) %% length(returns) + 1]])
+
+      value <- return_values[[(call_no - 1) %% length(return_values) + 1]]
+      return(eval(value, envir = return_values_env))
     }
 
     invisible(NULL)

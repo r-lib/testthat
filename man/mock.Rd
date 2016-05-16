@@ -4,19 +4,32 @@
 \alias{mock}
 \title{Create a mock object.}
 \usage{
-mock(..., cycle = FALSE)
+mock(..., cycle = FALSE, envir = parent.frame())
 }
 \arguments{
 \item{...}{Values returned upon subsequent calls.}
 
 \item{cycle}{Whether to cycle over the return values. If \code{FALSE},
 will fail if called too many times.}
+
+\item{envir}{Where to evaluate the expressions being returned.}
+}
+\value{
+A mock object.
 }
 \description{
 Mock object's primary use is to record calls that are made on the
-mocked function. Optionally values can be passed via \code{...} to
-make the mock object return them upon subsequent calls. If no value
-is passed in \code{...} then \code{NULL} is returned.
+mocked function.
+}
+\details{
+Optionally values/expressions can be passed via \code{...} for the
+mock object to return them upon subsequent calls. Expressions are
+evaluated in environment \code{envir} before being returned. If no
+value is passed in \code{...} then \code{NULL} is returned.
+
+Passing an expression or a function call via \code{...} is also a
+way to implement side effects: keep track of the state of code
+under testing, throw an exception when a condition is met, etc.
 }
 \examples{
 \dontrun{
