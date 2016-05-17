@@ -21,13 +21,11 @@
 #'
 #' @export
 #' @examples
-#' \dontrun{
-#'   m <- mock(1)
-#'   with_mock(summary = m, {
-#'     expect_equal(summary(iris), 1)
-#'     expect_call(m, 1, summary(iris))
-#'   })
-#' }
+#' m <- mock(1)
+#' with_mock(summary = m, {
+#'   expect_equal(summary(iris), 1)
+#'   expect_call(m[[1]], summary(iris))
+#' })
 #'
 mock <- function (..., cycle = FALSE, envir = parent.frame()) {
   stopifnot(is.environment(envir))
@@ -60,13 +58,11 @@ mock <- function (..., cycle = FALSE, envir = parent.frame()) {
 }
 
 
-#' @rdname mock
-#'
-#' Returns call signature.
-#'
+#' \code{[[.mock} returns call signature.
 #' @param i Call number.
+#' @rdname mock
 #' @export
-`[.mock` <- function (m, i) {
+`[[.mock` <- function (m, i) {
   stopifnot(inherits(m, 'mock'))
   stopifnot(is.numeric(i))
 
@@ -90,7 +86,7 @@ mock <- function (..., cycle = FALSE, envir = parent.frame()) {
 #' @export
 #' @examples
 #' \dontrun{
-#' expect_call(mock[1], summary(iris))
+#' expect_call(mock[[1]], summary(iris))
 #' }
 expect_call <- function (mocked_call, expected_call) {
   stopifnot(is.call(mocked_call))

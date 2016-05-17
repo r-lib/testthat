@@ -16,7 +16,7 @@ Expectation: does the given call match the expected?
 }
 \examples{
 \dontrun{
-expect_call(mock[1], summary(iris))
+expect_call(mock[[1]], summary(iris))
 }
 }
 \seealso{
