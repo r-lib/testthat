@@ -7,7 +7,8 @@
 expect_call(mocked_call, expected_call)
 }
 \arguments{
-\item{mocked_call}{A mocked call, obtained from a \code{\link{mock}} object.}
+\item{mocked_call}{A \code{\link{call}}, preferably obtained from
+a \code{\link{mock}} object.}
 
 \item{expected_call}{Expected call.}
 }
@@ -15,6 +16,7 @@ expect_call(mocked_call, expected_call)
 Expectation: does the given call match the expected?
 }
 \examples{
+expect_call(quote(summary(iris)), summary(iris))
 \dontrun{
 expect_call(mock[[1]], summary(iris))
 }

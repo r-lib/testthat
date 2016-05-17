@@ -17,6 +17,8 @@ will fail if called too many times.}
 
 \item{envir}{Where to evaluate the expressions being returned.}
 
+\item{m}{A \code{\link{mock}} object.}
+
 \item{i}{Call number.}
 }
 \value{

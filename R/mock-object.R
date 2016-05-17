@@ -50,6 +50,7 @@ mock <- function (..., cycle = FALSE, envir = parent.frame()) {
       return(eval(value, envir = return_values_env))
     }
 
+    # TODO maybe it should the mock object itself?
     invisible(NULL)
   }
 
@@ -59,6 +60,7 @@ mock <- function (..., cycle = FALSE, envir = parent.frame()) {
 
 
 #' \code{[[.mock} returns call signature.
+#' @param m A \code{\link{mock}} object.
 #' @param i Call number.
 #' @rdname mock
 #' @export
@@ -80,11 +82,13 @@ mock <- function (..., cycle = FALSE, envir = parent.frame()) {
 #' Expectation: does the given call match the expected?
 #'
 #' @inheritParams expect_that
-#' @param mocked_call A mocked call, obtained from a \code{\link{mock}} object.
+#' @param mocked_call A \code{\link{call}}, preferably obtained from
+#'        a \code{\link{mock}} object.
 #' @param expected_call Expected call.
 #' @family expectations
 #' @export
 #' @examples
+#' expect_call(quote(summary(iris)), summary(iris))
 #' \dontrun{
 #' expect_call(mock[[1]], summary(iris))
 #' }
