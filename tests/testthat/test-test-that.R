@@ -43,6 +43,15 @@ test_that("multiple failures captured even when looking for errors", {
   expect_equal(length(reporter$expectations()), 3)
 })
 
+test_that("infinite recursion is captured", {
+  f <- function() f()
+
+  reporter <- with_reporter("silent", {
+    test_that("", f())
+  })
+  expect_equal(length(reporter$expectations()), 1)
+})
+
 test_that("return value from test_that", {
   with_reporter("", success <- test_that("success", {}))
   expect_true(success)
