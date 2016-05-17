@@ -60,37 +60,48 @@ mock <- function (..., cycle = FALSE, envir = parent.frame()) {
 }
 
 
+#' @rdname mock
+#'
+#' Returns call signature.
+#'
+#' @param i Call number.
+#' @export
+`[.mock` <- function (m, i) {
+  stopifnot(inherits(m, 'mock'))
+  stopifnot(is.numeric(i))
+
+  calls <- environment(m)$calls
+
+  expect(
+    0 < i && i <= length(calls),
+    sprintf("call number %s not found in mock object", toString(i))
+  )
+
+  calls[[i]]
+}
+
 
 #' Expectation: does the given call match the expected?
 #'
 #' @inheritParams expect_that
-#' @param mock A \code{\link{mock}} object.
-#' @param no Number of the call made on the \code{mock} object.
+#' @param mocked_call A mocked call, obtained from a \code{\link{mock}} object.
 #' @param expected_call Expected call.
 #' @family expectations
 #' @export
 #' @examples
 #' \dontrun{
-#' expect_call(mock, 1, summary(iris))
+#' expect_call(mock[1], summary(iris))
 #' }
-expect_call <- function (mock, no, expected_call) {
-  stopifnot(inherits(mock, 'mock'))
-  stopifnot(is.numeric(no))
-
+expect_call <- function (mocked_call, expected_call) {
+  stopifnot(is.call(mocked_call))
   expected_call <- substitute(expected_call)
-  calls <- environment(mock)$calls
 
   expect(
-    0 < no && no <= length(calls),
-    sprintf("call number %s not found in mock object", toString(no))
-  )
-
-  expect(
-    calls[[no]] == expected_call,
+    mocked_call == expected_call,
     sprintf("expected call %s does not mach actual call %s.",
-            format(expected_call), format(calls[[no]]))
+            format(expected_call), format(mocked_call))
   )
 
-  invisible(mock)
+  invisible(TRUE)
 }
 

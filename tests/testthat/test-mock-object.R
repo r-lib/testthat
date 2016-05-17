@@ -1,5 +1,11 @@
 context("Mock objects")
 
+test_that("mock single brackets", {
+  m <- mock(1)
+  m()
+  expect_equal(m[1], bquote(m()))
+})
+
 test_that("mock cyclic returns", {
   m <- mock(1, cycle = TRUE)
   expect_equal(lapply(1:10, m), as.list(rep(1, 10)))
@@ -33,7 +39,7 @@ test_that("expect calls", {
     summary(iris)
   })
 
-  expect_call(m, 1, summary(iris))
+  expect_call(m[1], summary(iris))
 })
 
 
@@ -53,8 +59,8 @@ test_that("too many calls", {
 test_that("call not found", {
   m <- mock()
   m()
-  expect_call(m, 1, m())
-  expect_failure(expect_call(m, 2, m()),
+  expect_call(m[1], m())
+  expect_failure(expect_call(m[2], m()),
                  "call number 2 not found in mock object")
 })
 
