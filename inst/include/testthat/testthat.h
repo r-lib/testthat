@@ -21,6 +21,17 @@
 # define TESTTHAT_DISABLED
 #endif
 
+/**
+ * Disable catch when compiling with older gcc.
+ */
+#if defined(__GNUC__) && defined(__GNUC_MINOR__) && !defined(__clang__)
+# if __GNUC__ < 4
+#  define TESTTHAT_DISABLED
+# elif __GNUC__ == 4 && __GNUC_MINOR__ < 6
+#  define TESTTHAT_DISABLED
+# endif
+#endif
+
 #ifndef TESTTHAT_ENABLED
 # define TESTTHAT_DISABLED
 #endif
