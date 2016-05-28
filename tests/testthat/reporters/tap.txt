@@ -1,0 +1,38 @@
+1..15
+# Context Expectations
+ok 1 Success
+not ok 2 Failure:1
+  Failure has been forced
+  
+not ok 3 Failure:2a
+  Failure has been forced
+  
+not ok 4 Failure:2b
+  FALSE isn't true.
+  
+not ok 5 Failure:loop
+  `i` not equal to 2.
+  1/1 mismatches
+  [1] 1 - 2 == -1
+  
+ok 6 Failure:loop
+# Context Errors
+not ok 7 Error:1
+  stop
+  1: stop("stop") at reporters/tests.R:28
+not ok 8 Error:3
+  !
+  1: f() at reporters/tests.R:36
+  2: g() at reporters/tests.R:32
+  3: h() at reporters/tests.R:33
+  4: stop("!") at reporters/tests.R:34
+# Context Skips
+ok 9 # SKIP skip
+ok 10 # SKIP skip
+# Context Warnings
+ok 11 # WARNING abc
+ok 12 # WARNING def
+ok 13 # WARNING ghi
+# Context Output
+ok 14 Output:1
+ok 15 Output:1

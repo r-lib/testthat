@@ -1,5 +1,5 @@
 Package: testthat
-Version: 0.9.1.9001
+Version: 1.0.2.9000
 Title: Unit Testing for R
 Description: A unit testing system designed to be fun, flexible and easy to
     set up.
@@ -10,48 +10,71 @@ Authors@R: c(
 URL: https://github.com/hadley/testthat
 BugReports: https://github.com/hadley/testthat/issues
 Depends:
-    R (>= 3.1.0),
-    methods
+    R (>= 3.1.0)
 Imports:
     digest,
-    crayon
+    crayon,
+    praise,
+    magrittr,
+    R6,
+    methods
 Suggests:
     devtools,
     XML
+    withr,
+    covr
 License: MIT + file LICENSE
 Collate:
-    'auto-test.r'
-    'colour-text.r'
-    'compare.r'
-    'context.r'
-    'describe.r'
-    'evaluate-promise.r'
-    'expect-that.r'
-    'expectation.r'
-    'expectations-equality.R'
+    'auto-test.R'
+    'colour-text.R'
+    'compare.R'
+    'compare-character.R'
+    'compare-numeric.R'
+    'compare-time.R'
+    'context.R'
+    'describe.R'
+    'evaluate-promise.R'
+    'expect-comparison.R'
+    'expect-equal-to-reference.R'
+    'expect-equality.R'
+    'expect-inheritance.R'
+    'expect-length.R'
+    'expect-logical.R'
+    'expect-named.R'
+    'expect-output.R'
+    'reporter.R'
+    'expect-self-test.R'
+    'expect-that.R'
+    'expectation.R'
     'expectations-matches.R'
-    'expectations-old.R'
-    'expectations.r'
-    'make-expectation.r'
-    'mock.r'
-    'reporter.r'
+    'make-expectation.R'
+    'mock.R'
+    'old-school.R'
+    'praise.R'
     'reporter-check.R'
+    'reporter-fail.R'
     'reporter-junit.r'
     'reporter-list.r'
     'reporter-minimal.r'
     'reporter-multi.r'
     'reporter-rstudio.R'
-    'reporter-silent.r'
-    'reporter-stop.r'
-    'reporter-summary.r'
-    'reporter-tap.r'
-    'reporter-teamcity.r'
-    'reporter-zzz.r'
+    'reporter-silent.R'
+    'reporter-stop.R'
+    'stack.R'
+    'reporter-summary.R'
+    'reporter-tap.R'
+    'reporter-teamcity.R'
+    'reporter-zzz.R'
+    'skip.R'
+    'source.R'
+    'test-compiled-code.R'
     'test-example.R'
-    'test-files.r'
-    'test-package.r'
-    'test-results.r'
-    'test-that.r'
-    'traceback.r'
-    'utils.r'
-    'watcher.r'
+    'test-files.R'
+    'test-package.R'
+    'test-path.R'
+    'test-that.R'
+    'traceback.R'
+    'try-again.R'
+    'utils.R'
+    'watcher.R'
+RoxygenNote: 5.0.1

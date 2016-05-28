@@ -1,4 +1,4 @@
-#' @include reporter.r
+#' @include reporter.R
 NULL
 
 #' Test reporter: RStudio
@@ -7,28 +7,11 @@ NULL
 #' any easily parsed form.
 #'
 #' @export
-#' @export RstudioReporter
-#' @aliases RstudioReporter
-#' @keywords debugging
-#' @param ... Arguments used to initialise class
-RstudioReporter <- setRefClass("RstudioReporter", contains = "Reporter",
-  fields = list(),
-  methods = list(
-    add_result = function(result) {
-      callSuper(result)
-      if (result$passed)
+RstudioReporter <- R6::R6Class("RstudioReporter", inherit = Reporter,
+  public = list(
+    add_result = function(context, test, result) {
+      if (expectation_success(result))
         return()
-
-      if (result$skipped) {
-        status <- "info"
-        prefix <- "Skipped"
-      } else if (result$error) {
-        status <- "error"
-        prefix <- "Failed"
-      } else {
-        status <- "error"
-        prefix <- "Errored"
-      }
 
       ref <- result$srcref
       if (is.null(ref)) {
@@ -37,8 +20,10 @@ RstudioReporter <- setRefClass("RstudioReporter", contains = "Reporter",
         location <- paste0(attr(ref, "srcfile")$filename, "#", ref[1], ":1")
       }
 
-      cat(location, " [", status, "] ", test, ". ", strsplit(result$failure_msg, "\n")[[1]][1], "\n",
-        sep = "")
+      status <- expectation_type(result)
+      first_line <- strsplit(result$message, "\n")[[1]][1]
+
+      self$cat_line(location, " [", status, "] ", test, ". ", first_line)
     }
   )
 )

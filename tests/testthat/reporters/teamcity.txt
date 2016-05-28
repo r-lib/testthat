@@ -1,0 +1,90 @@
+##teamcity[testSuiteStarted name='Expectations']
+##teamcity[testSuiteStarted name='Success']
+##teamcity[testStarted name='expectation 1']
+##teamcity[testFinished name='expectation 1']
+##teamcity[testSuiteFinished name='Success']
+
+##teamcity[testSuiteStarted name='Failure:1']
+##teamcity[testStarted name='expectation 1']
+##teamcity[testFailed name='expectation 1' message='Failure has been forced' details='']
+##teamcity[testFinished name='expectation 1']
+##teamcity[testSuiteFinished name='Failure:1']
+
+##teamcity[testSuiteStarted name='Failure:2a']
+##teamcity[testStarted name='expectation 1']
+##teamcity[testFailed name='expectation 1' message='Failure has been forced' details='']
+##teamcity[testFinished name='expectation 1']
+##teamcity[testSuiteFinished name='Failure:2a']
+
+##teamcity[testSuiteStarted name='Failure:2b']
+##teamcity[testStarted name='expectation 1']
+##teamcity[testFailed name='expectation 1' message='FALSE isn|'t true.' details='']
+##teamcity[testFinished name='expectation 1']
+##teamcity[testSuiteFinished name='Failure:2b']
+
+##teamcity[testSuiteStarted name='Failure:loop']
+##teamcity[testStarted name='expectation 1']
+##teamcity[testFailed name='expectation 1' message='`i` not equal to 2.' details='1/1 mismatches|n|[1|] 1 - 2 == -1']
+##teamcity[testFinished name='expectation 1']
+##teamcity[testStarted name='expectation 2']
+##teamcity[testFinished name='expectation 2']
+##teamcity[testSuiteFinished name='Failure:loop']
+
+##teamcity[testSuiteFinished name='Expectations']
+
+
+##teamcity[testSuiteStarted name='Errors']
+##teamcity[testSuiteStarted name='Error:1']
+##teamcity[testStarted name='expectation 1']
+##teamcity[testFailed name='expectation 1' message='stop' details='1: stop("stop") at reporters/tests.R:28']
+##teamcity[testFinished name='expectation 1']
+##teamcity[testSuiteFinished name='Error:1']
+
+##teamcity[testSuiteStarted name='Error:3']
+##teamcity[testStarted name='expectation 1']
+##teamcity[testFailed name='expectation 1' message='!' details='1: f() at reporters/tests.R:36|n2: g() at reporters/tests.R:32|n3: h() at reporters/tests.R:33|n4: stop("!") at reporters/tests.R:34']
+##teamcity[testFinished name='expectation 1']
+##teamcity[testSuiteFinished name='Error:3']
+
+##teamcity[testSuiteFinished name='Errors']
+
+
+##teamcity[testSuiteStarted name='Skips']
+##teamcity[testSuiteStarted name='Skip:1']
+##teamcity[testIgnored name='expectation 1' message='skip']
+##teamcity[testSuiteFinished name='Skip:1']
+
+##teamcity[testSuiteStarted name='Skip:2']
+##teamcity[testIgnored name='expectation 1' message='skip']
+##teamcity[testSuiteFinished name='Skip:2']
+
+##teamcity[testSuiteFinished name='Skips']
+
+
+##teamcity[testSuiteStarted name='Warnings']
+##teamcity[testSuiteStarted name='Warning:1']
+##teamcity[testStarted name='expectation 1']
+##teamcity[testFinished name='expectation 1']
+##teamcity[testSuiteFinished name='Warning:1']
+
+##teamcity[testSuiteStarted name='Warning:2']
+##teamcity[testStarted name='expectation 1']
+##teamcity[testFinished name='expectation 1']
+##teamcity[testStarted name='expectation 2']
+##teamcity[testFinished name='expectation 2']
+##teamcity[testSuiteFinished name='Warning:2']
+
+##teamcity[testSuiteFinished name='Warnings']
+
+
+##teamcity[testSuiteStarted name='Output']
+##teamcity[testSuiteStarted name='Output:1']
+##teamcity[testStarted name='expectation 1']
+##teamcity[testFinished name='expectation 1']
+##teamcity[testStarted name='expectation 2']
+##teamcity[testFinished name='expectation 2']
+##teamcity[testSuiteFinished name='Output:1']
+
+##teamcity[testSuiteFinished name='Output']
+
+

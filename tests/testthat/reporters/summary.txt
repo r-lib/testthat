@@ -1,0 +1,49 @@
+Expectations: .1234.
+Errors: 56
+Skips: SS
+Warnings: WWW
+Output: ..
+
+Skipped ------------------------------------------------------------------------
+1. Skip:1 (@tests.R#42) - skip
+
+2. Skip:2 (@tests.R#47) - skip
+
+Warnings -----------------------------------------------------------------------
+1. Warning:1 (@tests.R#53) - abc
+
+2. Warning:2 (@tests.R#57) - def
+
+3. Warning:2 (@tests.R#58) - ghi
+
+Failed -------------------------------------------------------------------------
+1. Failure: Failure:1 (@tests.R#8) ---------------------------------------------
+Failure has been forced
+
+
+2. Failure: Failure:2a (@tests.R#12) -------------------------------------------
+Failure has been forced
+
+
+3. Failure: Failure:2b (@tests.R#15) -------------------------------------------
+FALSE isn't true.
+
+
+4. Failure: Failure:loop (@tests.R#20) -----------------------------------------
+`i` not equal to 2.
+1/1 mismatches
+[1] 1 - 2 == -1
+
+
+5. Error: Error:1 (@tests.R#28) ------------------------------------------------
+stop
+1: stop("stop") at reporters/tests.R:28
+
+6. Error: Error:3 (@tests.R#36) ------------------------------------------------
+!
+1: f() at reporters/tests.R:36
+2: g() at reporters/tests.R:32
+3: h() at reporters/tests.R:33
+4: stop("!") at reporters/tests.R:34
+
+DONE ===========================================================================
