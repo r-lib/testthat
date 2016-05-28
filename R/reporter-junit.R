@@ -27,13 +27,13 @@ NULL
 #' error stream during execution.
 #'
 #' @export
-JUnitReporter <- R6::R6Class("JUnitReporter", inherit = Reporter,
+JunitReporter <- R6::R6Class("JUnitReporter", inherit = Reporter,
   public = list(
     file = NULL,
     results = NULL,
     timer = NULL,
 
-    initialize = function(file = "") {
+    initialize = function(file = "report.xml") {
       super$initialize()
       if (!require("XML", quietly = TRUE)) {
         stop("Please install the XML package", call. = FALSE)
@@ -64,12 +64,13 @@ JUnitReporter <- R6::R6Class("JUnitReporter", inherit = Reporter,
       result$time <- round((proc.time() - self$timer)[["elapsed"]], 2)
       self$timer  <- proc.time()
       result$test <- if (is.null(test) || test == "") "(unnamed)" else test
-      result$call <- if (is.null(result$call)) "(unexpected)" else result$call
-      self$results[[context]] <- append(results[[context]], list(result))
+      # call can sometimes contain a second item, "succeed()"
+      result$call <- if (is.null(result$call)) "(unexpected)" else format(result$call)[1]
+      self$results[[context]] <- append(self$results[[context]], list(result))
     },
 
     end_reporter = function() {
-      self$cat("\n", file = stderr())
+      self$cat("\n")
       xmlNodeOK <- function(name, ..., attrs = NULL) {
         ## do XML entity substitutions
         if (!is.null(attrs)) {
@@ -81,15 +82,15 @@ JUnitReporter <- R6::R6Class("JUnitReporter", inherit = Reporter,
         gsub("[ \\.]", "_", text)
       }
       suites <- lapply(names(self$results), function(context) {
-        x <- results[[context]]
-        xnames <- vapply(x, `[[`, character(1), "call")
+        result_list <- self$results[[context]]
+        xnames <- vapply(result_list, `[[`, character(1), "call")
         xnames <- make.unique(xnames, sep = "_")
-        for (i in seq_along(x)) {
-          x[[i]]$call <- xnames[[i]]
+        for (i in seq_along(result_list)) {
+          result_list[[i]]$call <- xnames[[i]]
         }
-        testcases <- lapply(x, function(result) {
+        testcases <- lapply(result_list, function(result) {
           failnode <- NULL
-          if (!result$passed) {
+          if (expectation_broken(result)) {
             ref <- result$srcref
             if ( is.null(ref) ) {
               location <- ''
@@ -108,23 +109,23 @@ JUnitReporter <- R6::R6Class("JUnitReporter", inherit = Reporter,
                       name = result$success_msg,
                       time = result$time,
                       message = result$success_msg),
-                    .children = if (!result$passed) list(failnode))
+                    .children = if (expectation_broken(result)) list(failnode))
         })
-        ispass <- vapply(x, `[[`, logical(1), "passed")
-        iserr <- vapply(x, `[[`,  logical(1), "error")
-        tests <- vapply(x, `[[`, character(1) ,"test")
+        ispass <- vapply(result_list, expectation_success, logical(1))
+        iserr <- vapply(result_list, expectation_error,  logical(1))
+        tests <- vapply(result_list, `[[`, character(1), "test")
         xmlNodeOK("testsuite", attrs =
-                  c(tests = length(x),
+                  c(tests = length(result_list),
                     failures = sum(!ispass & !iserr),
                     errors = sum(iserr),
                     name = context,
-                    time = sum(vapply(x, `[[`, numeric(1), "time")),
+                    time = sum(vapply(result_list, `[[`, numeric(1), "time")),
                     timestamp = toString(Sys.time()),
                     hostname = Sys.info()[["nodename"]]),
                   .children = testcases)
       })
       cat(toString(xmlNode("testsuites", .children = suites)),
-          file = file)
+          file = self$file)
     }
   )
 )
