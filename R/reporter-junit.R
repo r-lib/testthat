@@ -21,8 +21,7 @@ NULL
 #' Execution time and some other details are also recorded.
 #'
 #' References for the jUnit XML format:
-#' http://ant.1045680.n5.nabble.com/schema-for-junit-xml-output-td1375274.html
-#' http://windyroad.org/dl/Open%20Source/JUnit.xsd
+#' \url{http://llg.cubic.org/docs/junit/}
 #'
 #' Output drawn from the SummaryReporter is printed to the standard
 #' error stream during execution.
