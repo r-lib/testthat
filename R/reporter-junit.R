@@ -28,63 +28,49 @@ NULL
 #' error stream during execution.
 #'
 #' @export
-#' @export JUnitReporter
-#' @exportClass JUnitReporter
-#' @aliases JUnitReporter-class
-#' @keywords debugging
-JUnitReporter <- setRefClass("JUnitReporter", contains = "Reporter",
-  fields = list(
-    "file" = "character",
-    "results" = "list",
-    "timer" = "ANY"),
+JUnitReporter <- R6::R6Class("JUnitReporter", inherit = Reporter,
+  public = list(
+    file = NULL,
+    results = NULL,
+    timer = NULL,
 
-  methods = list(
-    initialize = function(file = "", ...) {
+    initialize = function(file = "") {
+      super$initialize()
       if (!require("XML", quietly = TRUE)) {
         stop("Please install the XML package", call. = FALSE)
       }
-      callSuper(...)
-      file <<- file
-      results <<- list()
+      self$file <- file
+      self$results <- list()
     },
 
     start_reporter = function() {
-      callSuper()
-      results <<- list()
-      timer <<- proc.time()
-      context <<- "(ungrouped)"
+      self$timer <- proc.time()
     },
 
-    start_context = function(desc) {
-      callSuper(desc)
-      cat(desc, ": ", file = stderr())
+    start_context = function(context) {
+      self$cat(context, ": ")
     },
 
-    end_context = function() {
-      callSuper()
-      cat("\n", file = stderr())
+    end_context = function(context) {
+      self$cat("\n")
     },
 
-    add_result = function(result) {
-      if (result$passed) {
-        cat(colourise(".", as = "passed"), file = stderr())
-      } else {
-        failed <<- TRUE
-        if (result$error) {
-          cat(colourise("F", as = "error"), file = stderr())
-        } else {
-          cat(colourise("E", as = "error"), file = stderr())
-        }
+    add_result = function(context, test, result) {
+      if (expectation_broken(result)) {
+        self$cat_tight(single_letter_summary(result))
+      }else {
+        self$cat_tight(colourise(".", "passed"))
       }
-      result$time <- round((proc.time() - timer)[["elapsed"]], 2)
-      timer <<- proc.time()
+
+      result$time <- round((proc.time() - self$timer)[["elapsed"]], 2)
+      self$timer  <- proc.time()
       result$test <- if (is.null(test) || test == "") "(unnamed)" else test
       result$call <- if (is.null(result$call)) "(unexpected)" else result$call
-      results[[context]] <<- append(results[[context]], list(result))
+      self$results[[context]] <- append(results[[context]], list(result))
     },
 
     end_reporter = function() {
-      cat("\n", file = stderr())
+      self$cat("\n", file = stderr())
       xmlNodeOK <- function(name, ..., attrs = NULL) {
         ## do XML entity substitutions
         if (!is.null(attrs)) {
@@ -95,9 +81,9 @@ JUnitReporter <- setRefClass("JUnitReporter", contains = "Reporter",
       classnameOK <- function(text) {
         gsub("[ \\.]", "_", text)
       }
-      suites <- lapply(names(results), function(context) {
+      suites <- lapply(names(self$results), function(context) {
         x <- results[[context]]
-        xnames <- vapply(x, "[[", "call", FUN.VALUE = character(1))
+        xnames <- vapply(x, `[[`, character(1), "call")
         xnames <- make.unique(xnames, sep = "_")
         for (i in seq_along(x)) {
           x[[i]]$call <- xnames[[i]]
@@ -125,15 +111,15 @@ JUnitReporter <- setRefClass("JUnitReporter", contains = "Reporter",
                       message = result$success_msg),
                     .children = if (!result$passed) list(failnode))
         })
-        ispass <- sapply(x, "[[", "passed")
-        iserr <- sapply(x, "[[", "error")
-        tests <- sapply(x, "[[", "test")
+        ispass <- vapply(x, `[[`, logical(1), "passed")
+        iserr <- vapply(x, `[[`,  logical(1), "error")
+        tests <- vapply(x, `[[`, character(1) ,"test")
         xmlNodeOK("testsuite", attrs =
                   c(tests = length(x),
                     failures = sum(!ispass & !iserr),
                     errors = sum(iserr),
                     name = context,
-                    time = sum(sapply(x, "[[", "time")),
+                    time = sum(vapply(x, `[[`, numeric(1), "time")),
                     timestamp = toString(Sys.time()),
                     hostname = Sys.info()[["nodename"]]),
                   .children = testcases)

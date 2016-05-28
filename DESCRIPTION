@@ -20,7 +20,7 @@ Imports:
     methods
 Suggests:
     devtools,
-    XML
+    XML,
     withr,
     covr
 License: MIT + file LICENSE
@@ -53,10 +53,10 @@ Collate:
     'praise.R'
     'reporter-check.R'
     'reporter-fail.R'
-    'reporter-junit.r'
-    'reporter-list.r'
-    'reporter-minimal.r'
-    'reporter-multi.r'
+    'reporter-junit.R'
+    'reporter-list.R'
+    'reporter-minimal.R'
+    'reporter-multi.R'
     'reporter-rstudio.R'
     'reporter-silent.R'
     'reporter-stop.R'
