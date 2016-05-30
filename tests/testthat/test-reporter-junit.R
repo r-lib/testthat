@@ -1,6 +1,6 @@
 context("JUnitReporter")
 
-test_that("JUnit reporter produces XML", {
+test_that("Junit reporter produces XML", {
 
 })
 

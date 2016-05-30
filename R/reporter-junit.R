@@ -27,7 +27,7 @@ NULL
 #' error stream during execution.
 #'
 #' @export
-JunitReporter <- R6::R6Class("JUnitReporter", inherit = Reporter,
+JunitReporter <- R6::R6Class("JunitReporter", inherit = Reporter,
   public = list(
     file = NULL,
     results = NULL,
@@ -74,7 +74,7 @@ JunitReporter <- R6::R6Class("JUnitReporter", inherit = Reporter,
       xmlNodeOK <- function(name, ..., attrs = NULL) {
         ## do XML entity substitutions
         if (!is.null(attrs)) {
-          attrs <- sapply(attrs, function(x) toString(xmlTextNode(x)))
+          attrs <- vapply(attrs, function(x) toString(xmlTextNode(x)), character(1))
         }
         xmlNode(name, ..., attrs = attrs)
       }
@@ -105,7 +105,7 @@ JunitReporter <- R6::R6Class("JUnitReporter", inherit = Reporter,
           }
           xmlNodeOK("testcase", attrs =
                     c(classname = paste(classnameOK(context),
-                          classnameOK(result$test), sep = "."),
+                                        classnameOK(result$test), sep = "."),
                       name = result$success_msg,
                       time = result$time,
                       message = result$success_msg),
