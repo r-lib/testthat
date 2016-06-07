@@ -6,6 +6,20 @@ test_that("mock single brackets", {
   expect_equal(m[[1]], bquote(m()))
 })
 
+
+test_that("mock length", {
+  m <- mock(1, cycle = TRUE)
+  expect_equal(length(m), 0)
+
+  m()
+  expect_equal(length(m), 1)
+
+  m()
+  m()
+  expect_equal(length(m), 3)
+})
+
+
 test_that("mock cyclic returns", {
   m <- mock(1, cycle = TRUE)
   expect_equal(lapply(1:10, m), as.list(rep(1, 10)))

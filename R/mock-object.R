@@ -79,6 +79,15 @@ mock <- function (..., cycle = FALSE, envir = parent.frame()) {
 }
 
 
+#' @rdname mock
+#' @return Number of calls invoked on \code{m}.
+#' @export
+length.mock <- function (m)
+{
+  length(environment(m)$calls)
+}
+
+
 #' Expectation: does the given call match the expected?
 #'
 #' @inheritParams expect_that

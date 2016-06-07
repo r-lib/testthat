@@ -2,12 +2,15 @@
 % Please edit documentation in R/mock-object.R
 \name{mock}
 \alias{[[.mock}
+\alias{length.mock}
 \alias{mock}
 \title{Create a mock object.}
 \usage{
 mock(..., cycle = FALSE, envir = parent.frame())
 
 \method{[[}{mock}(m, i)
+
+\method{length}{mock}(m)
 }
 \arguments{
 \item{...}{Values returned upon subsequent calls.}
@@ -23,6 +26,8 @@ will fail if called too many times.}
 }
 \value{
 A mock object.
+
+Number of calls invoked on \code{m}.
 }
 \description{
 Mock object's primary use is to record calls that are made on the
