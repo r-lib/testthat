@@ -26,6 +26,7 @@
 #'   expect_equal(summary(iris), 1)
 #'   expect_length(m, 1)
 #'   expect_call(m, 1, summary(iris))
+#'   expect_equal(m$args[[1]], )
 #' })
 #'
 mock <- function (..., cycle = FALSE, envir = parent.frame()) {
@@ -35,13 +36,14 @@ mock <- function (..., cycle = FALSE, envir = parent.frame()) {
   return_values_env <- envir
   call_no           <- 0
   calls             <- list()
+  args              <- list()
 
   mock_impl <- function (...)
   {
     call_no <<- call_no + 1
     calls[[call_no]] <<- match.call()
 
-    # TODO record the values passed on each call
+    args[[call_no]] <<- list(...)
 
     if (length(return_values)) {
       if (call_no > length(return_values) && !cycle)
@@ -124,6 +126,44 @@ expect_call <- function (mock_object, n, expected_call) {
     mocked_call == expected_call,
     sprintf("expected call %s does not mach actual call %s.",
             format(expected_call), format(mocked_call))
+  )
+
+  invisible(TRUE)
+}
+
+
+#' Expectation: does the given argument values match expected?
+#'
+#' Unlike \code{\link{expect_call}}, \code{expect_args} compares the
+#' actual values passed in to the call invoked on a \code{\link{mock}}
+#' object.
+#'
+#' @inheritParams expect_that
+#' @param mock_object A \code{\link{mock}} object.
+#' @param n Call number.
+#' @param ... Arguments as passed in a call.
+#' @family expectations
+#' @export
+#' @examples
+#' m <- mock()
+#' a <- iris
+#' with_mock(summary = m, summary(object = a))
+#' expect_args(mock, 1, object = a)
+expect_args <- function (mock_object, n, ...)
+{
+  stopifnot(is_mock(mock_object))
+
+  expect(
+    0 < n && n <= length(mock_object),
+    sprintf("arguments list number %s not found in mock object", toString(n))
+  )
+
+  expected_args <- list(...)
+
+  expect_equal(
+    mock_object$args[[n]],
+    expected_args,
+    info = "expected argument list does not mach actual one."
   )
 
   invisible(TRUE)

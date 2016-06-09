@@ -54,6 +54,7 @@ with_mock(summary = m, {
   expect_equal(summary(iris), 1)
   expect_length(m, 1)
   expect_call(m, 1, summary(iris))
+  expect_equal(m$args[[1]], )
 })
 
 m <- mock()

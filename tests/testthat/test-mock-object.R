@@ -86,3 +86,52 @@ test_that("return expression", {
 })
 
 
+test_that("operator $ works for mock", {
+  m <- mock()
+  expect_equal(m$calls, list())
+  expect_equal(m$args, list())
+})
+
+
+test_that("arguments are recorded", {
+  m <- mock()
+  m(x = 1)
+  m(y = 2, z = iris)
+
+  expect_equal(length(m), 2)
+  expect_named(m$args[[1]], 'x')
+  expect_named(m$args[[2]], c('y', 'z'))
+
+  expect_equal(m$args[[1]]$x, 1)
+  expect_equal(m$args[[2]]$y, 2)
+  expect_equal(m$args[[2]]$z, iris)
+})
+
+
+test_that("expect args", {
+  m <- mock()
+  m(iris)
+  m(x = 1)
+
+  # compares values, not symbols
+  y <- 2
+  z <- iris
+  m(y = y, z = z)
+
+  expect_args(m, 1, iris)
+  expect_args(m, 2, x = 1)
+  expect_args(m, 3, y = 2, z = iris)
+})
+
+
+test_that("expect args in with_mock", {
+  m <- mock()
+
+  with_mock(lm = m, {
+    x <- iris
+    lm(Sepal.Width ~ Sepal.Length, data = x)
+  })
+
+  expect_args(m, 1, Sepal.Width ~ Sepal.Length, data = iris)
+})
+
