@@ -10,7 +10,7 @@ mock(..., cycle = FALSE, envir = parent.frame())
 
 \method{$}{mock}(m, n)
 
-\method{length}{mock}(m)
+\method{length}{mock}(x)
 }
 \arguments{
 \item{...}{Values returned upon subsequent calls.}
@@ -23,6 +23,8 @@ will fail if called too many times.}
 \item{m}{A \code{\link{mock}} object.}
 
 \item{n}{List name.}
+
+\item{x}{A \code{mock} object.}
 }
 \value{
 A mock object.
@@ -54,7 +56,7 @@ with_mock(summary = m, {
   expect_equal(summary(iris), 1)
   expect_length(m, 1)
   expect_call(m, 1, summary(iris))
-  expect_equal(m$args[[1]], )
+  expect_args(m, 1, iris)
 })
 
 m <- mock()
@@ -62,6 +64,6 @@ m(x = 1)
 m(y = 2)
 expect_equal(length(m), 2)
 expect_equal(m$calls[[1]], quote(m(x = 1)))
-expect_equal(m$calls[[1]], quote(m(y = 2)))
+expect_equal(m$calls[[2]], quote(m(y = 2)))
 }
 

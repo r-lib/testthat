@@ -26,7 +26,7 @@
 #'   expect_equal(summary(iris), 1)
 #'   expect_length(m, 1)
 #'   expect_call(m, 1, summary(iris))
-#'   expect_equal(m$args[[1]], )
+#'   expect_args(m, 1, iris)
 #' })
 #'
 mock <- function (..., cycle = FALSE, envir = parent.frame()) {
@@ -78,22 +78,23 @@ is_mock <- function (object) inherits(object, 'mock')
 #' m(y = 2)
 #' expect_equal(length(m), 2)
 #' expect_equal(m$calls[[1]], quote(m(x = 1)))
-#' expect_equal(m$calls[[1]], quote(m(y = 2)))
+#' expect_equal(m$calls[[2]], quote(m(y = 2)))
 `$.mock` <- function (m, n) {
   stopifnot(is_mock(m))
   switch(n,
          calls = environment(m)$calls,
          args  = environment(m)$args,
-         fail("unknown member: ", n))
+         fail(paste("unknown member:", n)))
 }
 
 
 #' @rdname mock
+#' @param x A \code{mock} object.
 #' @return Number of calls invoked on \code{m}.
 #' @export
-length.mock <- function (m)
+length.mock <- function (x)
 {
-  length(environment(m)$calls)
+  length(environment(x)$calls)
 }
 
 
@@ -109,7 +110,7 @@ length.mock <- function (m)
 #' \dontrun{
 #' m <- mock()
 #' with_mock(summary = m, summary(iris))
-#' expect_call(mock, 1, summary(iris))
+#' expect_call(m, 1, summary(iris))
 #' }
 expect_call <- function (mock_object, n, expected_call) {
   stopifnot(is_mock(mock_object))
@@ -148,7 +149,9 @@ expect_call <- function (mock_object, n, expected_call) {
 #' m <- mock()
 #' a <- iris
 #' with_mock(summary = m, summary(object = a))
-#' expect_args(mock, 1, object = a)
+#' expect_args(m, 1, object = a)
+#' # is an equivalent to ...
+#' expect_equal(m$args[[1]], list(object = a))
 expect_args <- function (mock_object, n, ...)
 {
   stopifnot(is_mock(mock_object))

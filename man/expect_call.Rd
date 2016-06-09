@@ -20,7 +20,7 @@ Expectation: does the given call match the expected?
 \dontrun{
 m <- mock()
 with_mock(summary = m, summary(iris))
-expect_call(mock, 1, summary(iris))
+expect_call(m, 1, summary(iris))
 }
 }
 \seealso{

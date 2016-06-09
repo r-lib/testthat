@@ -22,7 +22,9 @@ object.
 m <- mock()
 a <- iris
 with_mock(summary = m, summary(object = a))
-expect_args(mock, 1, object = a)
+expect_args(m, 1, object = a)
+# is an equivalent to ...
+expect_equal(m$args[[1]], list(object = a))
 }
 \seealso{
 Other expectations: \code{\link{comparison-expectations}},
