@@ -24,7 +24,8 @@
 #' m <- mock(1)
 #' with_mock(summary = m, {
 #'   expect_equal(summary(iris), 1)
-#'   expect_call(m[[1]], summary(iris))
+#'   expect_length(m, 1)
+#'   expect_call(m, 1, summary(iris))
 #' })
 #'
 mock <- function (..., cycle = FALSE, envir = parent.frame()) {
@@ -59,23 +60,29 @@ mock <- function (..., cycle = FALSE, envir = parent.frame()) {
 }
 
 
-#' \code{[[.mock} returns call signature.
+is_mock <- function (object) inherits(object, 'mock')
+
+
+#' \code{$.mock} returns one of two lists: \code{calls} or \code{args}.
 #' @param m A \code{\link{mock}} object.
-#' @param i Call number.
+#' @param n List name.
+#' @return \code{calls} is a list of call signatures and \code{args} is
+#'         a respective list of lists of arguments' values.
 #' @rdname mock
 #' @export
-`[[.mock` <- function (m, i) {
-  stopifnot(inherits(m, 'mock'))
-  stopifnot(is.numeric(i))
-
-  calls <- environment(m)$calls
-
-  expect(
-    0 < i && i <= length(calls),
-    sprintf("call number %s not found in mock object", toString(i))
-  )
-
-  calls[[i]]
+#' @examples
+#' m <- mock()
+#' m(x = 1)
+#' m(y = 2)
+#' expect_equal(length(m), 2)
+#' expect_equal(m$calls[[1]], quote(m(x = 1)))
+#' expect_equal(m$calls[[1]], quote(m(y = 2)))
+`$.mock` <- function (m, n) {
+  stopifnot(is_mock(m))
+  switch(n,
+         calls = environment(m)$calls,
+         args  = environment(m)$args,
+         fail("unknown member: ", n))
 }
 
 
@@ -91,19 +98,27 @@ length.mock <- function (m)
 #' Expectation: does the given call match the expected?
 #'
 #' @inheritParams expect_that
-#' @param mocked_call A \code{\link{call}}, preferably obtained from
-#'        a \code{\link{mock}} object.
+#' @param mock_object A \code{\link{mock}} object.
+#' @param n Call number.
 #' @param expected_call Expected call.
 #' @family expectations
 #' @export
 #' @examples
-#' expect_call(quote(summary(iris)), summary(iris))
 #' \dontrun{
-#' expect_call(mock[[1]], summary(iris))
+#' m <- mock()
+#' with_mock(summary = m, summary(iris))
+#' expect_call(mock, 1, summary(iris))
 #' }
-expect_call <- function (mocked_call, expected_call) {
-  stopifnot(is.call(mocked_call))
+expect_call <- function (mock_object, n, expected_call) {
+  stopifnot(is_mock(mock_object))
+
+  expect(
+    0 < n && n <= length(mock_object),
+    sprintf("call number %s not found in mock object", toString(n))
+  )
+
   expected_call <- substitute(expected_call)
+  mocked_call <- mock_object$calls[[n]]
 
   expect(
     mocked_call == expected_call,

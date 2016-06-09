@@ -4,11 +4,12 @@
 \alias{expect_call}
 \title{Expectation: does the given call match the expected?}
 \usage{
-expect_call(mocked_call, expected_call)
+expect_call(mock_object, n, expected_call)
 }
 \arguments{
-\item{mocked_call}{A \code{\link{call}}, preferably obtained from
-a \code{\link{mock}} object.}
+\item{mock_object}{A \code{\link{mock}} object.}
+
+\item{n}{Call number.}
 
 \item{expected_call}{Expected call.}
 }
@@ -16,9 +17,10 @@ a \code{\link{mock}} object.}
 Expectation: does the given call match the expected?
 }
 \examples{
-expect_call(quote(summary(iris)), summary(iris))
 \dontrun{
-expect_call(mock[[1]], summary(iris))
+m <- mock()
+with_mock(summary = m, summary(iris))
+expect_call(mock, 1, summary(iris))
 }
 }
 \seealso{
