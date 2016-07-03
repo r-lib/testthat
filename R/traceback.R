@@ -22,6 +22,7 @@ create_traceback <- function(callstack) {
   # Number and indent
   calls <- paste0(seq_along(calls), ": ", calls)
   calls <- gsub("\n", "\n   ", calls)
-  calls
+
+  first_last(calls)
 }
 

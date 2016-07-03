@@ -1,4 +1,4 @@
-1..15
+1..16
 # Context Expectations
 ok 1 Success
 not ok 2 Failure:1
@@ -26,13 +26,37 @@ not ok 8 Error:3
   2: g() at reporters/tests.R:32
   3: h() at reporters/tests.R:33
   4: stop("!") at reporters/tests.R:34
+# Context Recursion
+not ok 9 Recursion:1
+  evaluation nested too deeply: infinite recursion / options(expressions=)?
+  1: f() at reporters/tests.R:43
+  2: f() at reporters/tests.R:42
+  3: f() at reporters/tests.R:42
+  4: f() at reporters/tests.R:42
+  5: f() at reporters/tests.R:42
+  6: f() at reporters/tests.R:42
+  7: f() at reporters/tests.R:42
+  8: f() at reporters/tests.R:42
+  9: f() at reporters/tests.R:42
+  10: f() at reporters/tests.R:42
+  ...
+  4872: f() at reporters/tests.R:42
+  4873: f() at reporters/tests.R:42
+  4874: f() at reporters/tests.R:42
+  4875: f() at reporters/tests.R:42
+  4876: f() at reporters/tests.R:42
+  4877: f() at reporters/tests.R:42
+  4878: f() at reporters/tests.R:42
+  4879: f() at reporters/tests.R:42
+  4880: f() at reporters/tests.R:42
+  4881: f() at reporters/tests.R:42
 # Context Skips
-ok 9 # SKIP skip
 ok 10 # SKIP skip
+ok 11 # SKIP skip
 # Context Warnings
-ok 11 # WARNING abc
-ok 12 # WARNING def
-ok 13 # WARNING ghi
+ok 12 # WARNING abc
+ok 13 # WARNING def
+ok 14 # WARNING ghi
 # Context Output
-ok 14 Output:1
 ok 15 Output:1
+ok 16 Output:1

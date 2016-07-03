@@ -1,20 +1,21 @@
 Expectations: .1234.
 Errors: 56
+Recursion: 7
 Skips: SS
 Warnings: WWW
 Output: ..
 
 Skipped ------------------------------------------------------------------------
-1. Skip:1 (@tests.R#42) - skip
+1. Skip:1 (@tests.R#49) - skip
 
-2. Skip:2 (@tests.R#47) - skip
+2. Skip:2 (@tests.R#54) - skip
 
 Warnings -----------------------------------------------------------------------
-1. Warning:1 (@tests.R#53) - abc
+1. Warning:1 (@tests.R#60) - abc
 
-2. Warning:2 (@tests.R#57) - def
+2. Warning:2 (@tests.R#64) - def
 
-3. Warning:2 (@tests.R#58) - ghi
+3. Warning:2 (@tests.R#65) - ghi
 
 Failed -------------------------------------------------------------------------
 1. Failure: Failure:1 (@tests.R#8) ---------------------------------------------
@@ -45,5 +46,29 @@ stop
 2: g() at reporters/tests.R:32
 3: h() at reporters/tests.R:33
 4: stop("!") at reporters/tests.R:34
+
+7. Error: Recursion:1 (@tests.R#43) --------------------------------------------
+evaluation nested too deeply: infinite recursion / options(expressions=)?
+1: f() at reporters/tests.R:43
+2: f() at reporters/tests.R:42
+3: f() at reporters/tests.R:42
+4: f() at reporters/tests.R:42
+5: f() at reporters/tests.R:42
+6: f() at reporters/tests.R:42
+7: f() at reporters/tests.R:42
+8: f() at reporters/tests.R:42
+9: f() at reporters/tests.R:42
+10: f() at reporters/tests.R:42
+...
+4872: f() at reporters/tests.R:42
+4873: f() at reporters/tests.R:42
+4874: f() at reporters/tests.R:42
+4875: f() at reporters/tests.R:42
+4876: f() at reporters/tests.R:42
+4877: f() at reporters/tests.R:42
+4878: f() at reporters/tests.R:42
+4879: f() at reporters/tests.R:42
+4880: f() at reporters/tests.R:42
+4881: f() at reporters/tests.R:42
 
 DONE ===========================================================================
