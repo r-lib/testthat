@@ -36,8 +36,7 @@ test_code <- function(test, code, env = test_env()) {
   on.exit(get_reporter()$end_test(context = get_reporter()$.context, test = test))
 
   ok <- TRUE
-  start_frame <- sys.nframe() + 11L
-  register_expectation <- function(e, end_frame) {
+  register_expectation <- function(e, start_frame, end_frame) {
     calls <- sys.calls()[start_frame:end_frame]
     srcref <- find_first_srcref(calls)
 
@@ -49,23 +48,24 @@ test_code <- function(test, code, env = test_env()) {
     e
   }
 
+  frame <- sys.nframe()
   handle_error <- function(e) {
-    ex <- register_expectation(e, sys.nframe() - 2)
+    ex <- register_expectation(e, frame + 11, sys.nframe() - 2)
     signalCondition(ex)
   }
   handle_expectation <- function(e) {
-    register_expectation(e, sys.nframe() - 6)
+    register_expectation(e, frame + 11, sys.nframe() - 6)
     invokeRestart("continue_test")
   }
   handle_warning <- function(e) {
-    register_expectation(e, sys.nframe() - 6)
+    register_expectation(e, frame + 11, sys.nframe() - 6)
     invokeRestart("muffleWarning")
   }
   handle_message <- function(e) {
     invokeRestart("muffleMessage")
   }
   handle_skip <- function(e) {
-    register_expectation(e, sys.nframe() - 2)
+    register_expectation(e, frame + 11, sys.nframe() - 2)
     signalCondition(e)
   }
 
