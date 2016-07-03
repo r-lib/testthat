@@ -134,6 +134,7 @@ as.expectation.logical <- function(x, message, ..., srcref = NULL, info = NULL) 
 #' @export
 as.expectation.error <- function(x, ..., srcref = NULL) {
   error <- x$message
+  calls <- x$call
 
   msg <- gsub("Error.*?: ", "", as.character(error))
 
