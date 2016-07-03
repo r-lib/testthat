@@ -52,20 +52,34 @@ test_code <- function(test, code, env = test_env()) {
     sys_calls[(frame + start_offset):(length(sys_calls) - end_offset - 1)]
   }
 
+  # Any error will be assigned to this variable first
+  # In case of stack overflow, no further processing (not even a call to
+  # signalCondition() ) might be possible
+  test_error <- NULL
+
   handle_error <- function(e) {
+    test_error <<- e
+
     # Capture call stack, removing last calls from end (added by
     # withCallingHandlers), and first calls from start (added by
     # tryCatch etc).
     e$expectation_calls <- frame_calls(11, 2)
-    register_expectation(e)
-    signalCondition(e)
+
+    test_error <<- e
+
+    # Error will be handled by handle_fatal()
   }
   handle_fatal <- function(e) {
-    # Only handle error if not yet handled in handle_error()
+    # Error caught in handle_error() has precedence
+    if (!is.null(test_error)) {
+      e <- test_error
+    }
+
     if (is.null(e$expectation_calls)) {
       e$expectation_calls <- frame_calls(0, 0)
-      register_expectation(e)
     }
+
+    register_expectation(e)
   }
   handle_expectation <- function(e) {
     e$expectation_calls <- frame_calls(11, 6)
