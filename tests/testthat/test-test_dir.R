@@ -28,6 +28,7 @@ test_that('test_dir()', {
         FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, TRUE),
       error = c(FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, TRUE, TRUE, TRUE, TRUE,
         TRUE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE),
+      warning = c(0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L),
       stringsAsFactors = FALSE)
 
   df$user <- df$system  <- df$real <- NULL
