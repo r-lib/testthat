@@ -1,5 +1,8 @@
 # testthat 1.0.2.9000
 
+* Bring back random praise and encouragement which I accidentally dropped 
+  (#478).
+
 # testthat 1.0.2
 
 * Ensure 'std::logic_error()' constructed with 'std::string()'
