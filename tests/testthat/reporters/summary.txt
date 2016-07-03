@@ -1,21 +1,5 @@
 Expectations: .1234.
-Errors: 56
-Skips: SS
-Warnings: WWW
-Output: ..
-
-Skipped ------------------------------------------------------------------------
-1. Skip:1 (@tests.R#42) - skip
-
-2. Skip:2 (@tests.R#47) - skip
-
-Warnings -----------------------------------------------------------------------
-1. Warning:1 (@tests.R#53) - abc
-
-2. Warning:2 (@tests.R#57) - def
-
-3. Warning:2 (@tests.R#58) - ghi
-
+Errors: 567
 Failed -------------------------------------------------------------------------
 1. Failure: Failure:1 (@tests.R#8) ---------------------------------------------
 Failure has been forced
@@ -39,11 +23,118 @@ FALSE isn't true.
 stop
 1: stop("stop") at reporters/tests.R:28
 
-6. Error: Error:3 (@tests.R#36) ------------------------------------------------
-!
-1: f() at reporters/tests.R:36
-2: g() at reporters/tests.R:32
-3: h() at reporters/tests.R:33
-4: stop("!") at reporters/tests.R:34
+6. Error: reporters produce consistent output (@tests.R#28) --------------------
+stop
+1: save_report("summary", SummaryReporter$new(show_praise = FALSE)) at /Users/hadley/Documents/devtools/testthat/tests/testthat/test-reporter.R:56
+2: expect_output_file(expect_error(test_file(test_path("reporters/tests.R"), reporter), 
+       error_regexp), path, update = TRUE) at /Users/hadley/Documents/devtools/testthat/tests/testthat/test-reporter.R:47
+3: capture_output_as_vector(object) at /Users/hadley/Documents/devtools/testthat/R/expect-output.R:113
+4: with_sink(temp, withVisible(code)) at /Users/hadley/Documents/devtools/testthat/R/evaluate-promise.R:112
+5: withVisible(code) at /Users/hadley/Documents/devtools/testthat/R/evaluate-promise.R:124
+6: expect_error(test_file(test_path("reporters/tests.R"), reporter), error_regexp)
+7: tryCatch({
+       object
+       NULL
+   }, error = function(e) {
+       e
+   }) at /Users/hadley/Documents/devtools/testthat/R/expect-output.R:133
+8: tryCatchList(expr, classes, parentenv, handlers)
+9: tryCatchOne(expr, names, parentenv, handlers[[1L]])
+10: doTryCatch(return(expr), name, parentenv, handler)
+11: test_file(test_path("reporters/tests.R"), reporter) at /Users/hadley/Documents/devtools/testthat/R/expect-output.R:135
+12: with_reporter(reporter = reporter, start_end_reporter = start_end_reporter, {
+       lister$start_file(basename(path))
+       source_file(path, new.env(parent = env), chdir = TRUE)
+       end_context()
+   }) at /Users/hadley/Documents/devtools/testthat/R/test-files.R:115
+13: force(code) at /Users/hadley/Documents/devtools/testthat/R/reporter-zzz.R:53
+14: source_file(path, new.env(parent = env), chdir = TRUE) at /Users/hadley/Documents/devtools/testthat/R/test-files.R:121
+15: eval(exprs, env) at /Users/hadley/Documents/devtools/testthat/R/source.R:27
+16: eval(expr, envir, enclos)
+17: test_that("Error:1", {
+       stop("stop")
+   }) at reporters/tests.R:27
+18: test_code(desc, code, env = parent.frame()) at /Users/hadley/Documents/devtools/testthat/R/test-that.R:31
+19: tryCatch(withCallingHandlers(eval(code, test_env), expectation = handle_expectation, 
+       skip = handle_skip, warning = handle_warning, message = handle_message, error = handle_error), 
+       error = function(e) {
+       }, skip = function(e) {
+       }) at /Users/hadley/Documents/devtools/testthat/R/test-that.R:73
+20: tryCatchList(expr, classes, parentenv, handlers)
+21: tryCatchOne(tryCatchList(expr, names[-nh], parentenv, handlers[-nh]), names[nh], 
+       parentenv, handlers[[nh]])
+22: doTryCatch(return(expr), name, parentenv, handler)
+23: tryCatchList(expr, names[-nh], parentenv, handlers[-nh])
+24: tryCatchOne(expr, names, parentenv, handlers[[1L]])
+25: doTryCatch(return(expr), name, parentenv, handler)
+26: withCallingHandlers(eval(code, test_env), expectation = handle_expectation, skip = handle_skip, 
+       warning = handle_warning, message = handle_message, error = handle_error)
+27: eval(code, test_env)
 
-DONE ===========================================================================
+7. Error: reporters produce consistent output (@test-reporter.R#56) ------------
+no 'restart' 'continue_test' found
+1: save_report("summary", SummaryReporter$new(show_praise = FALSE)) at /Users/hadley/Documents/devtools/testthat/tests/testthat/test-reporter.R:56
+2: expect_output_file(expect_error(test_file(test_path("reporters/tests.R"), reporter), 
+       error_regexp), path, update = TRUE) at /Users/hadley/Documents/devtools/testthat/tests/testthat/test-reporter.R:47
+3: capture_output_as_vector(object) at /Users/hadley/Documents/devtools/testthat/R/expect-output.R:113
+4: with_sink(temp, withVisible(code)) at /Users/hadley/Documents/devtools/testthat/R/evaluate-promise.R:112
+5: withVisible(code) at /Users/hadley/Documents/devtools/testthat/R/evaluate-promise.R:124
+6: expect_error(test_file(test_path("reporters/tests.R"), reporter), error_regexp)
+7: tryCatch({
+       object
+       NULL
+   }, error = function(e) {
+       e
+   }) at /Users/hadley/Documents/devtools/testthat/R/expect-output.R:133
+8: tryCatchList(expr, classes, parentenv, handlers)
+9: tryCatchOne(expr, names, parentenv, handlers[[1L]])
+10: doTryCatch(return(expr), name, parentenv, handler)
+11: test_file(test_path("reporters/tests.R"), reporter) at /Users/hadley/Documents/devtools/testthat/R/expect-output.R:135
+12: with_reporter(reporter = reporter, start_end_reporter = start_end_reporter, {
+       lister$start_file(basename(path))
+       source_file(path, new.env(parent = env), chdir = TRUE)
+       end_context()
+   }) at /Users/hadley/Documents/devtools/testthat/R/test-files.R:115
+13: force(code) at /Users/hadley/Documents/devtools/testthat/R/reporter-zzz.R:53
+14: source_file(path, new.env(parent = env), chdir = TRUE) at /Users/hadley/Documents/devtools/testthat/R/test-files.R:121
+15: eval(exprs, env) at /Users/hadley/Documents/devtools/testthat/R/source.R:27
+16: eval(expr, envir, enclos)
+17: test_that("Error:1", {
+       stop("stop")
+   }) at reporters/tests.R:27
+18: test_code(desc, code, env = parent.frame()) at /Users/hadley/Documents/devtools/testthat/R/test-that.R:31
+19: tryCatch(withCallingHandlers(eval(code, test_env), expectation = handle_expectation, 
+       skip = handle_skip, warning = handle_warning, message = handle_message, error = handle_error), 
+       error = function(e) {
+       }, skip = function(e) {
+       }) at /Users/hadley/Documents/devtools/testthat/R/test-that.R:73
+20: tryCatchList(expr, classes, parentenv, handlers)
+21: tryCatchOne(tryCatchList(expr, names[-nh], parentenv, handlers[-nh]), names[nh], 
+       parentenv, handlers[[nh]])
+22: doTryCatch(return(expr), name, parentenv, handler)
+23: tryCatchList(expr, names[-nh], parentenv, handlers[-nh])
+24: tryCatchOne(expr, names, parentenv, handlers[[1L]])
+25: doTryCatch(return(expr), name, parentenv, handler)
+26: withCallingHandlers(eval(code, test_env), expectation = handle_expectation, skip = handle_skip, 
+       warning = handle_warning, message = handle_message, error = handle_error)
+27: eval(code, test_env)
+28: eval(expr, envir, enclos)
+29: stop("stop") at reporters/tests.R:28
+30: .handleSimpleError(function (e) 
+   {
+       ex <- register_expectation(e, sys.nframe() - 2)
+       signalCondition(ex)
+   }, "stop", quote(eval(expr, envir, enclos)))
+31: h(simpleError(msg, call))
+32: signalCondition(ex) at /Users/hadley/Documents/devtools/testthat/R/test-that.R:54
+33: (function (e) 
+   {
+       register_expectation(e, sys.nframe() - 6)
+       invokeRestart("continue_test")
+   })(structure(list(message = "stop", srcref = structure(c(28L, 3L, 28L, 14L, 3L, 14L, 
+   28L, 28L), srcfile = <environment>, class = "srcref"), call = list(stop("stop")), 
+       test = "Error:1"), .Names = c("message", "srcref", "call", "test"), class = c("expectation_error", 
+   "expectation", "condition")))
+34: invokeRestart("continue_test") at /Users/hadley/Documents/devtools/testthat/R/test-that.R:58
+35: stop(gettextf("no 'restart' '%s' found", as.character(r)), domain = NA)
+
