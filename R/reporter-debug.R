@@ -16,36 +16,9 @@ DebugReporter <- R6::R6Class("DebugReporter", inherit = Reporter,
           on.exit(sink(), add = TRUE)
         }
 
-        recover(start_frame = result$start_frame,
-                end_frame = result$end_frame)
+        recover2(start_frame = result$start_frame,
+                 end_frame = result$end_frame)
       }
     }
   )
 )
-
-# Copied from utils::recover()
-recover <- function(start_frame = 1L, end_frame = sys.nframe())
-{
-  calls <- sys.calls()
-
-  if (.isMethodsDispatchOn()) {
-    tState <- tracingState(FALSE)
-    on.exit(tracingState(tState))
-  }
-  from <- end_frame
-
-  calls <- limitedLabels(calls[start_frame:from])
-  repeat {
-    which <- menu(calls, title = "\nEnter a frame number, or 0 to exit  ")
-    if (which) {
-      frame <- sys.frame(start_frame - 2 + which)
-      browse_frame(frame, skip = 7 - which)
-    }
-    else break
-  }
-}
-
-browse_frame <- function(frame, skip) {
-  eval(substitute(browser(skipCalls = skip), list(skip = skip)),
-       envir = frame)
-}

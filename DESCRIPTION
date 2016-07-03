@@ -50,6 +50,7 @@ Collate:
     'mock.R'
     'old-school.R'
     'praise.R'
+    'recover.R'
     'reporter-check.R'
     'reporter-debug.R'
     'reporter-fail.R'
