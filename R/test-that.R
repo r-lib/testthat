@@ -60,6 +60,13 @@ test_code <- function(test, code, env = test_env()) {
     register_expectation(e)
     signalCondition(e)
   }
+  handle_fatal <- function(e) {
+    # Only handle error if not yet handled in handle_error()
+    if (is.null(e$expectation_calls)) {
+      e$expectation_calls <- frame_calls(0, 0)
+      register_expectation(e)
+    }
+  }
   handle_expectation <- function(e) {
     e$expectation_calls <- frame_calls(11, 6)
     register_expectation(e)
@@ -89,8 +96,9 @@ test_code <- function(test, code, env = test_env()) {
       message =     handle_message,
       error =       handle_error
     ),
-    # error/skip silently terminate code
-    error = function(e) {},
+    # some errors may need handling here, e.g., stack overflow
+    error = handle_fatal,
+    # skip silently terminate code
     skip =  function(e) {}
   )
 
