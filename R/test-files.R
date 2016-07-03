@@ -72,8 +72,8 @@ find_test_scripts <- function(path, filter = NULL, invert = FALSE, ...) {
   files <- dir(path, "^test.*\\.[rR]$", full.names = TRUE)
   if (!is.null(filter)) {
     test_names <- basename(files)
-    test_names <- gsub("^test-?", "", test_names)
-    test_names <- gsub("\\.[rR]", "", test_names)
+    test_names <- sub("^test-?", "", test_names)
+    test_names <- sub("\\.[rR]$", "", test_names)
 
     which_files <- grepl(filter, test_names, ...)
 
