@@ -40,16 +40,16 @@ evaluation nested too deeply: infinite recursion / options(expressions=)?
 9: f() at reporters/tests.R:42
 10: f() at reporters/tests.R:42
 ...
-4872: f() at reporters/tests.R:42
-4873: f() at reporters/tests.R:42
-4874: f() at reporters/tests.R:42
-4875: f() at reporters/tests.R:42
-4876: f() at reporters/tests.R:42
-4877: f() at reporters/tests.R:42
-4878: f() at reporters/tests.R:42
-4879: f() at reporters/tests.R:42
-4880: f() at reporters/tests.R:42
-4881: f() at reporters/tests.R:42
+67: f() at reporters/tests.R:42
+68: f() at reporters/tests.R:42
+69: f() at reporters/tests.R:42
+70: f() at reporters/tests.R:42
+71: f() at reporters/tests.R:42
+72: f() at reporters/tests.R:42
+73: f() at reporters/tests.R:42
+74: f() at reporters/tests.R:42
+75: f() at reporters/tests.R:42
+76: f() at reporters/tests.R:42
 
 testthat results ================================================================
 OK: 7 SKIPPED: 2 FAILED: 7

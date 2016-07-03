@@ -47,7 +47,10 @@ test_that("infinite recursion is captured", {
   f <- function() f()
 
   reporter <- with_reporter("silent", {
-    test_that("", f())
+    withr::with_options(
+      list(expressions = 200),
+      test_that("", f())
+    )
   })
   expect_equal(length(reporter$expectations()), 1)
 })
