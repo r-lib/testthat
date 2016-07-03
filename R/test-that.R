@@ -36,7 +36,8 @@ test_code <- function(test, code, env = test_env()) {
   on.exit(get_reporter()$end_test(context = get_reporter()$.context, test = test))
 
   ok <- TRUE
-  register_expectation <- function(e, start_frame, end_frame) {
+  start_frame <- sys.nframe() + 11L
+  register_expectation <- function(e, end_frame) {
     calls <- sys.calls()[start_frame:end_frame]
     srcref <- find_first_srcref(calls)
 
@@ -45,31 +46,26 @@ test_code <- function(test, code, env = test_env()) {
     e$test <- test %||% "(unknown)"
     ok <<- ok && expectation_ok(e)
     get_reporter()$add_result(context = get_reporter()$.context, test = test, result = e)
+    e
   }
 
-  frame <- sys.nframe()
   handle_error <- function(e) {
-    # Capture call stack, removing last two calls from end (added by
-    # withCallingHandlers), and first frame + 7 calls from start (added by
-    # tryCatch etc)
-    e$call <- sys.calls()[(frame + 11):(sys.nframe() - 2)]
-
-    register_expectation(e, frame + 11, sys.nframe() - 2)
-    signalCondition(e)
+    ex <- register_expectation(e, sys.nframe() - 2)
+    signalCondition(ex)
   }
   handle_expectation <- function(e) {
-    register_expectation(e, frame + 11, sys.nframe() - 6)
+    register_expectation(e, sys.nframe() - 6)
     invokeRestart("continue_test")
   }
   handle_warning <- function(e) {
-    register_expectation(e, frame + 11, sys.nframe() - 6)
+    register_expectation(e, sys.nframe() - 6)
     invokeRestart("muffleWarning")
   }
   handle_message <- function(e) {
     invokeRestart("muffleMessage")
   }
   handle_skip <- function(e) {
-    register_expectation(e, frame + 11, sys.nframe() - 2)
+    register_expectation(e, sys.nframe() - 2)
     signalCondition(e)
   }
 
