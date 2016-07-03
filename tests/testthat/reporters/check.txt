@@ -36,4 +36,3 @@ OK: 7 SKIPPED: 2 FAILED: 6
 5. Error: Error:1 (@tests.R#28) 
 6. Error: Error:3 (@tests.R#36) 
 
-
