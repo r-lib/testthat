@@ -41,17 +41,22 @@ test_that("reporters produce consistent output", {
   old <- options(width = 80)
   on.exit(options(old), add = TRUE)
 
-  save_report <- function(name, reporter = find_reporter(name)) {
+  save_report <- function(name, reporter = find_reporter(name), error_regexp = NA) {
     path <- test_path("reporters", paste0(name, ".txt"))
-    expect_output_file(test_file(test_path("reporters/tests.R"), reporter),
-                       path, update = TRUE)
+
+    expect_output_file(
+      expect_error(
+        test_file(test_path("reporters/tests.R"), reporter),
+        error_regexp
+      ),
+      path, update = TRUE)
   }
 
-  expect_error(save_report("check"))
-  expect_error(save_report("summary", SummaryReporter$new(show_praise = FALSE)), NA)
-  expect_error(save_report("minimal"), NA)
-  expect_error(save_report("tap"), NA)
-  expect_error(save_report("teamcity"), NA)
-  expect_error(save_report("silent"), NA)
-  expect_error(save_report("rstudio"), NA)
+  save_report("check", error_regexp = NULL)
+  save_report("summary", SummaryReporter$new(show_praise = FALSE))
+  save_report("minimal")
+  save_report("tap")
+  save_report("teamcity")
+  save_report("silent")
+  save_report("rstudio")
 })
