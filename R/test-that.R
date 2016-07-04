@@ -58,8 +58,18 @@ test_code <- function(test, code, env = test_env()) {
   # signalCondition() ) might be possible
   test_error <- NULL
 
+  expressions_opt <- getOption("expressions")
+  expressions_opt_new <- min(expressions_opt + 500L, 500000L)
+
   handle_error <- function(e) {
+    # First thing: Collect test error
     test_error <<- e
+
+    # Increase option(expressions) to handle errors here if possible, even in
+    # case of a stack overflow.  This is important for the DebugReporter.
+    # Call options() manually, avoid withr overhead.
+    options(expressions = expressions_opt_new)
+    on.exit(options(expressions = expressions_opt), add = TRUE)
 
     # Capture call stack, removing last calls from end (added by
     # withCallingHandlers), and first calls from start (added by
