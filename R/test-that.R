@@ -36,8 +36,7 @@ test_code <- function(test, code, env = test_env()) {
   on.exit(get_reporter()$end_test(context = get_reporter()$.context, test = test))
 
   ok <- TRUE
-  register_expectation <- function(e, start_frame, end_frame) {
-    calls <- sys.calls()[start_frame:end_frame]
+  register_expectation <- function(e, calls = e$expectation_calls) {
     srcref <- find_first_srcref(calls)
 
     e <- as.expectation(e, srcref = srcref)
@@ -50,28 +49,56 @@ test_code <- function(test, code, env = test_env()) {
   }
 
   frame <- sys.nframe()
-  handle_error <- function(e) {
-    # Capture call stack, removing last two calls from end (added by
-    # withCallingHandlers), and first frame + 7 calls from start (added by
-    # tryCatch etc)
-    e$call <- sys.calls()[(frame + 11):(sys.nframe() - 2)]
+  frame_calls <- function(start_offset, end_offset) {
+    sys_calls <- sys.calls()
+    sys_calls[(frame + start_offset):(length(sys_calls) - end_offset - 1)]
+  }
 
-    register_expectation(e, frame + 11, sys.nframe() - 2)
-    signalCondition(e)
+  # Any error will be assigned to this variable first
+  # In case of stack overflow, no further processing (not even a call to
+  # signalCondition() ) might be possible
+  test_error <- NULL
+
+  handle_error <- function(e) {
+    test_error <<- e
+
+    # Capture call stack, removing last calls from end (added by
+    # withCallingHandlers), and first calls from start (added by
+    # tryCatch etc).
+    e$expectation_calls <- frame_calls(11, 2)
+
+    test_error <<- e
+
+    # Error will be handled by handle_fatal()
+  }
+  handle_fatal <- function(e) {
+    # Error caught in handle_error() has precedence
+    if (!is.null(test_error)) {
+      e <- test_error
+    }
+
+    if (is.null(e$expectation_calls)) {
+      e$expectation_calls <- frame_calls(0, 0)
+    }
+
+    register_expectation(e)
   }
   handle_expectation <- function(e) {
-    register_expectation(e, frame + 11, sys.nframe() - 6)
+    e$expectation_calls <- frame_calls(11, 6)
+    register_expectation(e)
     invokeRestart("continue_test")
   }
   handle_warning <- function(e) {
-    register_expectation(e, frame + 11, sys.nframe() - 5)
+    e$expectation_calls <- frame_calls(11, 5)
+    register_expectation(e)
     invokeRestart("muffleWarning")
   }
   handle_message <- function(e) {
     invokeRestart("muffleMessage")
   }
   handle_skip <- function(e) {
-    register_expectation(e, frame + 11, sys.nframe() - 2)
+    e$expectation_calls <- frame_calls(11, 2)
+    register_expectation(e)
     signalCondition(e)
   }
 
@@ -85,8 +112,9 @@ test_code <- function(test, code, env = test_env()) {
       message =     handle_message,
       error =       handle_error
     ),
-    # error/skip silently terminate code
-    error = function(e) {},
+    # some errors may need handling here, e.g., stack overflow
+    error = handle_fatal,
+    # skip silently terminate code
     skip =  function(e) {}
   )
 
