@@ -48,7 +48,7 @@ test_that("infinite recursion is captured", {
 
   reporter <- with_reporter("silent", {
     withr::with_options(
-      list(expressions = 200),
+      list(expressions = sys.nframe() + 100),
       test_that("", f())
     )
   })

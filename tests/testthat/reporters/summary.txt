@@ -3,7 +3,7 @@ Errors: 56
 Recursion: 7
 Skips: SS
 Warnings: WWW
-Output: 8
+Output: ..
 
 Skipped ------------------------------------------------------------------------
 1. Skip:1 (@tests.R#49) - skip
@@ -60,43 +60,15 @@ evaluation nested too deeply: infinite recursion / options(expressions=)?
 9: f() at reporters/tests.R:42
 10: f() at reporters/tests.R:42
 ...
-67: f() at reporters/tests.R:42
-68: f() at reporters/tests.R:42
-69: f() at reporters/tests.R:42
-70: f() at reporters/tests.R:42
-71: f() at reporters/tests.R:42
-72: f() at reporters/tests.R:42
-73: f() at reporters/tests.R:42
-74: f() at reporters/tests.R:42
-75: f() at reporters/tests.R:42
-76: f() at reporters/tests.R:42
-
-8. Error: Output:1 (@tests.R#71) -----------------------------------------------
-evaluation nested too deeply: infinite recursion / options(expressions=)?
-1: expect_output(expect_false(FALSE), NA) at reporters/tests.R:71
-2: capture_output(object) at /home/muelleki/git/R/testthat/R/expect-output.R:85
-3: capture_output_as_vector(code, print) at /home/muelleki/git/R/testthat/R/evaluate-promise.R:104
-4: with_sink(temp, withVisible(code)) at /home/muelleki/git/R/testthat/R/evaluate-promise.R:112
-5: withVisible(code) at /home/muelleki/git/R/testthat/R/evaluate-promise.R:124
-6: expect_false(FALSE)
-7: expect(identical(as.vector(object), FALSE), sprintf("%s isn't false.", lab), info = info) at /home/muelleki/git/R/testthat/R/expect-logical.R:47
-8: withRestarts(if (expectation_broken(exp)) {
-       stop(exp)
-   } else {
-       signalCondition(exp)
-   }, continue_test = function(e) NULL) at /home/muelleki/git/R/testthat/R/expectation.R:35
-9: withOneRestart(expr, restarts[[1L]])
-10: doWithOneRestart(return(expr), restart)
-...
-19: self$cat_tight(single_letter_summary(result)) at /home/muelleki/git/R/testthat/R/reporter-summary.R:58
-20: self$cat(..., sep = "") at /home/muelleki/git/R/testthat/R/reporter.R:40
-21: cat(..., file = self$out, sep = sep, fill = fill, labels = labels) at /home/muelleki/git/R/testthat/R/reporter.R:36
-22: single_letter_summary(result)
-23: colourise(".", "success") at /home/muelleki/git/R/testthat/R/expectation.R:189
-24: testthat_colours[[as]](text) at /home/muelleki/git/R/testthat/R/colour-text.R:18
-25: mypaste(...) at /tmp/RtmpQeB8V2/R.INSTALL29fc1f63a817/crayon/R/machinery.r:6
-26: sapply(args, is.character) at /tmp/RtmpQeB8V2/R.INSTALL29fc1f63a817/crayon/R/utils.r:32
-27: simplify2array(answer, higher = (simplify == "array"))
-28: unique(lengths(x))
+167: f() at reporters/tests.R:42
+168: f() at reporters/tests.R:42
+169: f() at reporters/tests.R:42
+170: f() at reporters/tests.R:42
+171: f() at reporters/tests.R:42
+172: f() at reporters/tests.R:42
+173: f() at reporters/tests.R:42
+174: f() at reporters/tests.R:42
+175: f() at reporters/tests.R:42
+176: f() at reporters/tests.R:42
 
 DONE ===========================================================================
