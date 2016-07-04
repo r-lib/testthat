@@ -25,7 +25,7 @@ source_file <- function(path, env = test_env(), chdir = TRUE, encoding = "unknow
     old_dir <- setwd(dirname(path))
     on.exit(setwd(old_dir), add = TRUE)
   }
-  invisible(eval(exprs, env))
+  invisible(test_code("<top-level>", exprs, env))
 }
 
 #' @rdname source_file
