@@ -91,7 +91,7 @@ filter_test_scripts <- function(files, filter = NULL, invert = FALSE, ...) {
 
 #' Find the test files.
 #'
-#' List files in directory and sub-select with \code{filter_test_scripts}
+#' List files in directory and sub-select with \code{\link{filter_test_scripts}}
 #' if \code{filter} is specified.
 #'
 #' @param path path to tests
