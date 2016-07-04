@@ -15,7 +15,7 @@ skip(message)
 
 skip_if_not(condition, message = deparse(substitute(condition)))
 
-skip_if_not_installed(pkg)
+skip_if_not_installed(pkg, minimum_version = NULL)
 
 skip_on_cran()
 
@@ -34,6 +34,8 @@ skip_on_bioc()
 skip the test.}
 
 \item{pkg}{Name of package to check for}
+
+\item{minimum_version}{Minimum required version for the package}
 
 \item{os}{Character vector of system names. Supported values are
 \code{"windows"}, \code{"mac"}, \code{"linux"} and \code{"solaris"}.}
@@ -61,7 +63,10 @@ environment variable set by devtools.
 \code{BBS_HOME} environment variable.
 
 \code{skip_if_not_installed()} skips a tests if a package is not installed
+or cannot be loaded
 (useful for suggested packages).
+It loads the package as a side effect, because the package is likely to be
+used anyway.
 }
 \examples{
 if (FALSE) skip("No internet connection")
