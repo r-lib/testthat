@@ -14,15 +14,20 @@
 3: tests.R#33: h()
 4: tests.R#34: stop("!")
 
-1: tests.R#42: skip("skip")
+1: reporter-multi.R#44: lapply(objects, function(x) x[[method]](...))
+2: FUN(X[[i]], ...)
+3: reporter-multi.R#44: x[[method]](...)
+4: reporter-debug.R#19: recover2(start_frame = result$start_frame, end_frame =
 
-1: tests.R#47: f()
-2: tests.R#46: skip("skip")
+1: tests.R#49: skip("skip")
 
-1: tests.R#53: warning("abc")
+1: tests.R#54: f()
+2: tests.R#53: skip("skip")
 
-1: tests.R#57: warning("def")
+1: tests.R#60: warning("abc")
 
-1: tests.R#58: f()
-2: tests.R#56: warning("ghi")
+1: tests.R#64: warning("def")
+
+1: tests.R#65: f()
+2: tests.R#63: warning("ghi")
 
