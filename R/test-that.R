@@ -68,12 +68,20 @@ test_code <- function(test, code, env = test_env()) {
 
     test_error <<- e
 
-    # Error will be handled by handle_fatal()
+    # Error will be handled by handle_fatal() if this fails; need to do it here
+    # to be able to debug with the DebugReporter
+    register_expectation(e)
+
+    e$handled <- TRUE
+    test_error <<- e
   }
   handle_fatal <- function(e) {
     # Error caught in handle_error() has precedence
     if (!is.null(test_error)) {
       e <- test_error
+      if (isTRUE(e$handled)) {
+        return()
+      }
     }
 
     if (is.null(e$expectation_calls)) {
