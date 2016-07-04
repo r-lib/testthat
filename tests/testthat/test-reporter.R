@@ -46,7 +46,10 @@ test_that("reporters produce consistent output", {
 
     expect_output_file(
       expect_error(
-        test_file(test_path("reporters/tests.R"), reporter),
+        withr::with_options(
+          list(expressions = Cstack_info()[["eval_depth"]] + 200),
+          test_file(test_path("reporters/tests.R"), reporter)
+        ),
         error_regexp
       ),
       path, update = TRUE)

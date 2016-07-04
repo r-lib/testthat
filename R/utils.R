@@ -26,6 +26,18 @@ rule <- function(..., pad = "-") {
   cat(title, paste(rep(pad, width, collapse = "")), "\n", sep = "")
 }
 
+first_last <- function(x, max = 10, filler = "...") {
+  if (length(x) <= 2 * max + 1) {
+    x
+  } else {
+    c(
+      x[seq_len(max)],
+      filler,
+      x[seq.int(to = length(x), length.out = max)]
+    )
+  }
+}
+
 safe_read_lines <- function(file) {
   tryCatch(
     readLines(file, warn = FALSE),

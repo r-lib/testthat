@@ -4,8 +4,9 @@ reporters/tests.R#15:1 [failure] Failure:2b. FALSE isn't true.
 reporters/tests.R#20:1 [failure] Failure:loop. `i` not equal to 2.
 reporters/tests.R#28:1 [error] Error:1. stop
 reporters/tests.R#36:1 [error] Error:3. !
-reporters/tests.R#42:1 [skip] Skip:1. skip
-reporters/tests.R#47:1 [skip] Skip:2. skip
-reporters/tests.R#53:1 [warning] Warning:1. abc
-reporters/tests.R#57:1 [warning] Warning:2. def
-reporters/tests.R#58:1 [warning] Warning:2. ghi
+reporters/tests.R#43:1 [error] Recursion:1. evaluation nested too deeply: infinite recursion / options(expressions=)?
+reporters/tests.R#49:1 [skip] Skip:1. skip
+reporters/tests.R#54:1 [skip] Skip:2. skip
+reporters/tests.R#60:1 [warning] Warning:1. abc
+reporters/tests.R#64:1 [warning] Warning:2. def
+reporters/tests.R#65:1 [warning] Warning:2. ghi
