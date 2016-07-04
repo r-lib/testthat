@@ -7,7 +7,7 @@ recover2 <- function(start_frame = 1L, end_frame = sys.nframe())
     tState <- tracingState(FALSE)
     on.exit(tracingState(tState))
   }
-  from <- end_frame
+  from <- min(end_frame, length(calls))
 
   calls <- limitedLabels(calls[start_frame:from])
   repeat {
