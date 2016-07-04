@@ -1,5 +1,7 @@
 # testthat 1.0.2.9000
 
+* New argument `minimum_version` to `skip_if_not_installed()` (#487, #499).
+
 * Properly report endless recursion, limiting the stack trace to the first and last 10 entries (#474).
 
 * Fix context test (#494).
