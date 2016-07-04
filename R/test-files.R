@@ -59,17 +59,21 @@ test_files <- function(paths, reporter = "summary",
   invisible(testthat_results(results))
 }
 
-
-#' Find the test files.
-#' @param path path to tests
+#' Filter File List for Tests
+#'
+#' Filtering is done by \code{grep}ing with pattern \code{filter} against
+#' the basename from \code{files} with any leading \sQuote{test-?} and trailing
+#' \sQuote{.[Rr]} removed.
+#'
+#' @param files character vector of file names to filter
 #' @param filter cf \code{\link{test_dir}}
 #' @param invert If \sQuote{TRUE} return files which do \emph{not} match.
 #' @param ... Additional arguments passed to \code{grepl} to control filtering.
 #' @return the test file paths
 #' @keywords internal
 #' @export
-find_test_scripts <- function(path, filter = NULL, invert = FALSE, ...) {
-  files <- dir(path, "^test.*\\.[rR]$", full.names = TRUE)
+
+filter_test_scripts <- function(files, filter = NULL, invert = FALSE, ...) {
   if (!is.null(filter)) {
     test_names <- basename(files)
     test_names <- sub("^test-?", "", test_names)
@@ -82,8 +86,25 @@ find_test_scripts <- function(path, filter = NULL, invert = FALSE, ...) {
     }
     files <- files[which_files]
   }
-
   files
+}
+
+#' Find the test files.
+#'
+#' List files in directory and sub-select with \code{\link{filter_test_scripts}}
+#' if \code{filter} is specified.
+#'
+#' @param path path to tests
+#' @param filter cf \code{\link{test_dir}}
+#' @param invert If \sQuote{TRUE} return files which do \emph{not} match.
+#' @param ... Additional arguments passed to \code{grepl} to control filtering.
+#' @return the test file paths
+#' @keywords internal
+#' @export
+
+find_test_scripts <- function(path, filter = NULL, invert = FALSE, ...) {
+  files <- dir(path, "^test.*\\.[rR]$", full.names = TRUE)
+  filter_test_scripts(files, filter, invert, ...)
 }
 
 #' Run all tests in specified file.
