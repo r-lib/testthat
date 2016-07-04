@@ -36,7 +36,8 @@ test_code <- function(test, code, env = test_env()) {
   on.exit(get_reporter()$end_test(context = get_reporter()$.context, test = test))
 
   ok <- TRUE
-  register_expectation <- function(e, calls = e$expectation_calls) {
+  register_expectation <- function(e) {
+    calls <- e$expectation_calls
     srcref <- find_first_srcref(calls)
 
     e <- as.expectation(e, srcref = srcref)
