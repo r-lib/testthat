@@ -11,6 +11,9 @@
 * Bring back random praise and encouragement which I accidentally dropped 
   (#478).
 
+* Fixed filtering in `find_test_scripts` for files containing `\.[rR]` in the
+  body of the filename and not just in the extension (#492, @brodieG)
+
 # testthat 1.0.2
 
 * Ensure 'std::logic_error()' constructed with 'std::string()'

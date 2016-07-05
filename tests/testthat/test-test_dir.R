@@ -46,3 +46,24 @@ test_that('test_dir() helpers', {
   df <- as.data.frame(res)
   expect_true(all(!df$error & df$failed == 0))
 })
+
+test_that('filter_test_scripts() with tricky names', {
+  base.path <- file.path("a", "random", "path")
+  mock.files.names <- c(
+    "test-basic.R", "test-blah.really.Rtrick.R", "test-hello.rtest.R"
+  )
+  mock.files <- file.path(base.path, mock.files.names)
+
+  expect_identical(
+    filter_test_scripts(mock.files, filter="basic|Rtrick|rtest"),
+    mock.files
+  )
+  expect_identical(
+    filter_test_scripts(mock.files, filter="Rtrick|rtest"),
+    mock.files[2:3]
+  )
+  expect_identical(
+    filter_test_scripts(mock.files, filter="Rtrick|rtest", invert=TRUE),
+    mock.files[1]
+  )
+})
