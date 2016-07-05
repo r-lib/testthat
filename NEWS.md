@@ -1,5 +1,8 @@
 # testthat 1.0.2.9000
 
+* `compare.numeric()` respects `check.attributes()` so `expect_equivalent()`
+  correctly ignores attributes of numeric vectors (#485).
+
 * Properly report endless recursion, limiting the stack trace to the first and last 10 entries (#474).
 
 * Fix context test (#494).
