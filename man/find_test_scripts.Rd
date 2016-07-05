@@ -19,8 +19,7 @@ find_test_scripts(path, filter = NULL, invert = FALSE, ...)
 the test file paths
 }
 \description{
-List files in directory and sub-select with \code{\link{filter_test_scripts}}
-if \code{filter} is specified.
+Find the test files.
 }
 \keyword{internal}
 
