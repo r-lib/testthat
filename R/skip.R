@@ -59,11 +59,11 @@ skip_if_not_installed <- function(pkg, minimum_version = NULL) {
     skip(paste0(pkg, " is installed in version ", installed_version, ", required ", minimum_version))
   }
 
-  if (requireNamespace(pkg, quietly = TRUE)) {
-    return(invisible(TRUE))
+  if (!requireNamespace(pkg, quietly = TRUE)) {
+    skip(paste0(pkg, " cannot be loaded"))
   }
 
-  skip(paste0(pkg, " cannot be loaded"))
+  return(invisible(TRUE))
 }
 
 #' @export
