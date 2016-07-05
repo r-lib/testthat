@@ -36,6 +36,13 @@ test_that("Error:3", {
   f()
 })
 
+context("Recursion")
+
+test_that("Recursion:1", {
+  f <- function() f()
+  f()
+})
+
 context("Skips")
 
 test_that("Skip:1", {

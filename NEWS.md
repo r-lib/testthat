@@ -2,6 +2,16 @@
 
 * Fixed filtering in `find_test_scripts` for files containing `\.[rR]` in the
   body of the filename and not just in the extension (#492, @brodieG)
+* Properly report endless recursion, limiting the stack trace to the first and last 10 entries (#474).
+
+* Fix context test (#494).
+
+* `ListReporter` can add results without an active test (#494).
+
+* Catch differences in check reporter in tests (#491).
+
+* Bring back random praise and encouragement which I accidentally dropped 
+  (#478).
 
 # testthat 1.0.2
 

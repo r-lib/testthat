@@ -6,3 +6,4 @@
 ^revdep$
 ^.*\.o$
 ^\.httr-oauth$
+^codecov\.yml$
