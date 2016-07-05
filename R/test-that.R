@@ -42,6 +42,8 @@ test_code <- function(test, code, env = test_env()) {
 
     e <- as.expectation(e, srcref = srcref)
     e$call <- calls
+    e$start_frame <- attr(calls, "start_frame")
+    e$end_frame <- e$start_frame + length(calls) - 1L
     e$test <- test %||% "(unknown)"
     ok <<- ok && expectation_ok(e)
     get_reporter()$add_result(context = get_reporter()$.context, test = test, result = e)
@@ -50,7 +52,11 @@ test_code <- function(test, code, env = test_env()) {
   frame <- sys.nframe()
   frame_calls <- function(start_offset, end_offset) {
     sys_calls <- sys.calls()
-    sys_calls[(frame + start_offset):(length(sys_calls) - end_offset - 1)]
+    start_frame <- frame + start_offset
+    structure(
+      sys_calls[(start_frame):(length(sys_calls) - end_offset - 1)],
+      start_frame = start_frame
+    )
   }
 
   # Any error will be assigned to this variable first
@@ -106,7 +112,7 @@ test_code <- function(test, code, env = test_env()) {
     invokeRestart("continue_test")
   }
   handle_warning <- function(e) {
-    e$expectation_calls <- frame_calls(11, 6)
+    e$expectation_calls <- frame_calls(11, 5)
     register_expectation(e)
     invokeRestart("muffleWarning")
   }

@@ -59,10 +59,10 @@ context("Warnings")
 test_that("Warning:1", {
   warning("abc")
 })
-
 test_that("Warning:2", {
+  f <- function() {warning("ghi")}
   warning("def")
-  warning("ghi")
+  f()
 })
 
 context("Output")
