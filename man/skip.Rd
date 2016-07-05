@@ -63,7 +63,10 @@ environment variable set by devtools.
 \code{BBS_HOME} environment variable.
 
 \code{skip_if_not_installed()} skips a tests if a package is not installed
+or cannot be loaded
 (useful for suggested packages).
+It loads the package as a side effect, because the package is likely to be
+used anyway.
 }
 \examples{
 if (FALSE) skip("No internet connection")
