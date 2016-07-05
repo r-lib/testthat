@@ -36,7 +36,8 @@ test_code <- function(test, code, env = test_env()) {
   on.exit(get_reporter()$end_test(context = get_reporter()$.context, test = test))
 
   ok <- TRUE
-  register_expectation <- function(e, calls = e$expectation_calls) {
+  register_expectation <- function(e) {
+    calls <- e$expectation_calls
     srcref <- find_first_srcref(calls)
 
     e <- as.expectation(e, srcref = srcref)
@@ -57,8 +58,18 @@ test_code <- function(test, code, env = test_env()) {
   # signalCondition() ) might be possible
   test_error <- NULL
 
+  expressions_opt <- getOption("expressions")
+  expressions_opt_new <- min(expressions_opt + 500L, 500000L)
+
   handle_error <- function(e) {
+    # First thing: Collect test error
     test_error <<- e
+
+    # Increase option(expressions) to handle errors here if possible, even in
+    # case of a stack overflow.  This is important for the DebugReporter.
+    # Call options() manually, avoid withr overhead.
+    options(expressions = expressions_opt_new)
+    on.exit(options(expressions = expressions_opt), add = TRUE)
 
     # Capture call stack, removing last calls from end (added by
     # withCallingHandlers), and first calls from start (added by
@@ -67,12 +78,20 @@ test_code <- function(test, code, env = test_env()) {
 
     test_error <<- e
 
-    # Error will be handled by handle_fatal()
+    # Error will be handled by handle_fatal() if this fails; need to do it here
+    # to be able to debug with the DebugReporter
+    register_expectation(e)
+
+    e$handled <- TRUE
+    test_error <<- e
   }
   handle_fatal <- function(e) {
     # Error caught in handle_error() has precedence
     if (!is.null(test_error)) {
       e <- test_error
+      if (isTRUE(e$handled)) {
+        return()
+      }
     }
 
     if (is.null(e$expectation_calls)) {
