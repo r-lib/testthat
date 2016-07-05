@@ -1,5 +1,7 @@
 # testthat 1.0.2.9000
 
+* New `DebugReporter` that calls a better version of `recover()` in case of failures, errors, or warnings (#360, #470).
+
 * `compare.numeric()` respects `check.attributes()` so `expect_equivalent()`
   correctly ignores attributes of numeric vectors (#485).
 
