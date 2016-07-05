@@ -37,6 +37,16 @@ test_that("attributes must be identical", {
   expect_match(compare(x4, x5)$message, "Names: 1 string mismatch")
 })
 
+test_that("unless check.attributes is FALSE", {
+  x1 <- 1L
+  x2 <- c(a = 1L)
+  x3 <- structure(1L, a = 1)
+
+  expect_equal(compare(x1, x2, check.attributes = FALSE)$message, "Equal")
+  expect_equal(compare(x1, x3, check.attributes = FALSE)$message, "Equal")
+  expect_equal(compare(x2, x3, check.attributes = FALSE)$message, "Equal")
+})
+
 # Values ------------------------------------------------------------------
 
 test_that("two identical vectors are the same", {

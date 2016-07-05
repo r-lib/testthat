@@ -5,7 +5,9 @@ Description: A unit testing system designed to be fun, flexible and easy to
     set up.
 Authors@R: c(
     person("Hadley", "Wickham", , "hadley@rstudio.com", c("aut", "cre")),
-    person("RStudio", role = "cph")
+    person("RStudio", role = "cph"),
+    person("R Core team", role = "ctb",
+      comment = "Implementation of utils::recover()")
     )
 URL: https://github.com/hadley/testthat
 BugReports: https://github.com/hadley/testthat/issues
@@ -50,7 +52,9 @@ Collate:
     'mock.R'
     'old-school.R'
     'praise.R'
+    'recover.R'
     'reporter-check.R'
+    'reporter-debug.R'
     'reporter-fail.R'
     'reporter-list.R'
     'reporter-minimal.R'

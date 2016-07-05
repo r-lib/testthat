@@ -58,6 +58,10 @@ or \code{expect_error()} to check for specific outputs. Use
 any type. The file-based\code{expect_output_file()} compares the output
 to the contents of a text file and optionally updates it.
 }
+\details{
+Note that warnings are captured by a custom signal handler: this means
+that \code{options(warn)} has no effect.
+}
 \examples{
 # Output --------------------------------------------------------------------
 str(mtcars)

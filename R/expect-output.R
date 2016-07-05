@@ -6,6 +6,9 @@
 #' any type. The file-based\code{expect_output_file()} compares the output
 #' to the contents of a text file and optionally updates it.
 #'
+#' Note that warnings are captured by a custom signal handler: this means
+#' that \code{options(warn)} has no effect.
+#'
 #' @inheritParams expect_that
 #' @inheritParams expect_match
 #' @param regexp regular expression to test against.
