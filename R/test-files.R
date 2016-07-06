@@ -52,7 +52,8 @@ test_files <- function(paths, reporter = default_reporter(), env = test_env(),
       reporter = current_reporter,
       start_end_reporter = FALSE,
       load_helpers = FALSE,
-      encoding = encoding
+      encoding = encoding,
+      wrap = TRUE
     )
   )
 
@@ -106,7 +107,7 @@ find_test_scripts <- function(path, filter = NULL, invert = FALSE, ...) {
 #' @export
 test_file <- function(path, reporter = default_reporter(), env = test_env(),
                       start_end_reporter = TRUE, load_helpers = TRUE,
-                      encoding = "unknown") {
+                      encoding = "unknown", wrap = FALSE) {
   library(testthat)
 
   reporter <- find_reporter(reporter)
@@ -134,7 +135,7 @@ test_file <- function(path, reporter = default_reporter(), env = test_env(),
       lister$start_file(basename(path))
 
       source_file(path, new.env(parent = env),
-                  chdir = TRUE, encoding = encoding, wrap = TRUE)
+                  chdir = TRUE, encoding = encoding, wrap = wrap)
 
       end_context()
     }
