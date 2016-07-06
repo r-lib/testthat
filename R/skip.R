@@ -50,17 +50,15 @@ skip_if_not <- function(condition, message = deparse(substitute(condition))) {
 #' @param minimum_version Minimum required version for the package
 #' @rdname skip
 skip_if_not_installed <- function(pkg, minimum_version = NULL) {
-  tryCatch(
-    installed_version <- packageVersion(pkg),
-    error = function(e) skip(e$message)
-  )
-
-  if (!is.null(minimum_version) && installed_version < minimum_version) {
-    skip(paste0(pkg, " is installed in version ", installed_version, ", required ", minimum_version))
-  }
-
   if (!requireNamespace(pkg, quietly = TRUE)) {
     skip(paste0(pkg, " cannot be loaded"))
+  }
+
+  if (!is.null(minimum_version)) {
+    installed_version <- packageVersion(pkg)
+    if (installed_version < minimum_version) {
+      skip(paste0(pkg, " is installed in version ", installed_version, ", required ", minimum_version))
+    }
   }
 
   return(invisible(TRUE))
