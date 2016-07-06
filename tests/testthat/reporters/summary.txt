@@ -62,6 +62,8 @@ evaluation nested too deeply: infinite recursion / options(expressions=)?
 9: f() at reporters/tests.R:42
 10: f() at reporters/tests.R:42
 ...
+164: f() at reporters/tests.R:42
+165: f() at reporters/tests.R:42
 166: f() at reporters/tests.R:42
 167: f() at reporters/tests.R:42
 168: f() at reporters/tests.R:42
@@ -70,7 +72,5 @@ evaluation nested too deeply: infinite recursion / options(expressions=)?
 171: f() at reporters/tests.R:42
 172: f() at reporters/tests.R:42
 173: f() at reporters/tests.R:42
-174: f() at reporters/tests.R:42
-175: f() at reporters/tests.R:42
 
 DONE ===========================================================================
