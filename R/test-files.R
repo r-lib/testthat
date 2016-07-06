@@ -107,7 +107,7 @@ find_test_scripts <- function(path, filter = NULL, invert = FALSE, ...) {
 #' @export
 test_file <- function(path, reporter = default_reporter(), env = test_env(),
                       start_end_reporter = TRUE, load_helpers = TRUE,
-                      encoding = "unknown", wrap = FALSE) {
+                      encoding = "unknown", wrap = TRUE) {
   library(testthat)
 
   reporter <- find_reporter(reporter)

@@ -12,7 +12,7 @@
 #' @param wrap Add a \code{test_that()} call around the code?
 #' @export
 source_file <- function(path, env = test_env(), chdir = TRUE,
-                        encoding = "unknown", wrap = FALSE) {
+                        encoding = "unknown", wrap = TRUE) {
   stopifnot(file.exists(path))
   stopifnot(is.environment(env))
 
@@ -37,7 +37,7 @@ source_file <- function(path, env = test_env(), chdir = TRUE,
 #' @rdname source_file
 #' @export
 source_dir <- function(path, pattern = "\\.[rR]$", env = test_env(),
-                       chdir = TRUE, wrap = FALSE) {
+                       chdir = TRUE, wrap = TRUE) {
   files <- normalizePath(sort(dir(path, pattern, full.names = TRUE)))
   lapply(files, source_file, env = env, chdir = chdir, wrap = wrap)
 }
