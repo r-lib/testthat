@@ -44,6 +44,7 @@ test_files <- function(paths, reporter = "summary",
   # Make sure reporter can be found before running the tests
   current_reporter <- find_reporter(reporter)
 
+  # Run without reporter first, will collect results anyway
   results <- lapply(
     paths,
     test_file,
@@ -53,8 +54,10 @@ test_files <- function(paths, reporter = "summary",
     load_helpers = FALSE
   )
 
+  # Combine them in one list
   results <- testthat_results(unlist(results, recursive = FALSE))
 
+  # Replay
   with_reporter(
     reporter = current_reporter,
     replay_results(results)
