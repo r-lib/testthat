@@ -41,22 +41,26 @@ test_files <- function(paths, reporter = "summary",
     stop('No matching test file in dir')
   }
 
+  # Make sure reporter can be found before running the tests
   current_reporter <- find_reporter(reporter)
-  with_reporter(
-    reporter = current_reporter,
-    results <- lapply(
-      paths,
-      test_file,
-      env = env,
-      reporter = current_reporter,
-      start_end_reporter = FALSE,
-      load_helpers = FALSE
-    )
+
+  results <- lapply(
+    paths,
+    test_file,
+    env = env,
+    reporter = NULL,
+    start_end_reporter = FALSE,
+    load_helpers = FALSE
   )
 
-  results <- unlist(results, recursive = FALSE)
+  results <- testthat_results(unlist(results, recursive = FALSE))
 
-  invisible(testthat_results(results))
+  with_reporter(
+    reporter = current_reporter,
+    replay_results(results)
+  )
+
+  invisible(results)
 }
 
 # Filter File List for Tests, used by find_test_scripts
