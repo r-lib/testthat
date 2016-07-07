@@ -19,6 +19,7 @@ Imports:
     praise,
     magrittr,
     R6,
+    parallel,
     methods
 Suggests:
     devtools,
