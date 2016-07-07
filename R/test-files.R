@@ -28,7 +28,7 @@ test_env <- function() {
 #' @return the results as a "testthat_results" (list)
 #' @export
 test_dir <- function(path, filter = NULL, reporter = "summary",
-                                          env = test_env(), ...) {
+                     env = test_env(), ...) {
   source_test_helpers(path, env)
   paths <- find_test_scripts(path, filter, ...)
 
