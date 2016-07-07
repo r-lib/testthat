@@ -103,6 +103,7 @@ find_test_scripts <- function(path, filter = NULL, invert = FALSE, ...) {
 #' @param encoding File encoding, default is "unknown"
 #' `unknown`.
 #' @inheritParams with_reporter
+#' @inheritParams source_file
 #' @return the results as a "testthat_results" (list)
 #' @export
 test_file <- function(path, reporter = default_reporter(), env = test_env(),
