@@ -41,22 +41,19 @@ SummaryReporter <- R6::R6Class("SummaryReporter", inherit = Reporter,
     },
 
     add_result = function(context, test, result) {
+      dot <- NULL
       if (expectation_broken(result)) {
-        if (self$failures$size() + 1 > self$max_reports) {
-          self$cat_tight(single_letter_summary(result))
-        } else {
+        if (self$failures$size() < self$max_reports) {
           self$failures$push(result)
-          self$cat_tight(colourise(labels[self$failures$size()], "error"))
+          dot <- colourise(labels[self$failures$size()], "error")
         }
       } else if (expectation_skip(result)) {
         self$skips$push(result)
-        self$cat_tight(single_letter_summary(result))
       } else if (expectation_warning(result)) {
         self$warnings$push(result)
-        self$cat_tight(single_letter_summary(result))
-      } else {
-        self$cat_tight(single_letter_summary(result))
       }
+
+      self$cat_tight(dot %||% single_letter_summary(result))
     },
 
     end_reporter = function() {
