@@ -24,10 +24,12 @@ SummaryReporter <- R6::R6Class("SummaryReporter", inherit = Reporter,
     warnings = NULL,
     max_reports = getOption("testthat.summary.max_reports", 15L),
     show_praise = TRUE,
+    omit_dots = FALSE,
 
-    initialize = function(show_praise = TRUE) {
+    initialize = function(show_praise = TRUE, omit_dots = getOption("testthat.summary.omit_dots")) {
       super$initialize()
       self$show_praise <- show_praise
+      self$omit_dots <- omit_dots
       self$failures <- Stack$new()
       self$skips <- Stack$new()
       self$warnings <- Stack$new()
@@ -52,6 +54,10 @@ SummaryReporter <- R6::R6Class("SummaryReporter", inherit = Reporter,
         self$skips$push(result)
       } else if (expectation_warning(result)) {
         self$warnings$push(result)
+      } else {
+        if (isTRUE(self$omit_dots)) {
+          return()
+        }
       }
 
       self$cat_tight(dot %||% single_letter_summary(result))
