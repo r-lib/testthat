@@ -61,7 +61,7 @@ test_files <- function(paths, reporter = "summary",
   with_reporter(
     reporter = current_reporter,
     replay_results(results),
-    start_end_reporter = FALSE
+    start_end_reporter = TRUE
   )
 
   invisible(results)

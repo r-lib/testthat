@@ -127,15 +127,9 @@ print.testthat_results <- function(x, ...) {
 }
 
 replay_results <- function(results, reporter = get_reporter()) {
-  reporter$start_reporter()
-
   current_context <- NULL
 
-  on.exit({
-    reporter$.end_context(current_context)
-    reporter$end_reporter()
-  },
-  add = TRUE)
+  on.exit(reporter$.end_context(current_context), add = TRUE)
 
   for (result in results) {
     if (!identical(result$context, current_context)) {
