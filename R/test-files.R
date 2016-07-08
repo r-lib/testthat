@@ -18,18 +18,19 @@ test_env <- function() {
 #' \code{helper} and loaded before any tests are run.
 #'
 #' @param path path to tests
-#' @param reporter reporter to use
 #' @param filter If not \code{NULL}, only tests with file names matching this
 #'   regular expression will be executed.  Matching will take on the file
 #'   name after it has been stripped of \code{"test-"} and \code{".R"}.
-#' @param env environment in which to execute test suite.
 #' @param ... Additional arguments passed to \code{grepl} to control filtering.
+#' @inheritParams test_file
 #'
 #' @return the results as a "testthat_results" (list)
 #' @export
 test_dir <- function(path, filter = NULL, reporter = "summary",
-                                          env = test_env(), ...) {
-  source_test_helpers(path, env)
+                     env = test_env(), ..., load_helpers = TRUE) {
+  if (load_helpers) {
+    source_test_helpers(path, env)
+  }
   paths <- find_test_scripts(path, filter, ...)
 
   test_files(paths, reporter = reporter, env = env, ...)
