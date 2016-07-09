@@ -45,7 +45,13 @@ test_files <- function(paths, reporter = "summary",
   current_reporter <- find_reporter(reporter)
 
   # Run without reporter first, will collect results anyway
-  results <- parallel::mclapply(
+  if (interactive()) {
+    apply_fun <- lapply
+  } else {
+    apply_fun <- parallel::mclapply
+  }
+
+  results <- apply_fun(
     paths,
     test_file,
     env = env,
