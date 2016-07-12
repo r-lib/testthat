@@ -1,5 +1,21 @@
 context("JUnitReporter")
 
+
+test_that("XML new node", {
+  node <- xml_new_node("name", c(a=1, b=2), NULL)
+  expect_equal(grep('<name a="1" b="2"/>', toString(node)), 1)
+})
+
+
+test_that("XML new node with children", {
+  child  <- xml_new_node("child", c(a=1), NULL)
+  parent <- xml_new_node("parent", c(b=2), child)
+
+  expect_equal(grep('<parent b="2"><child a="1"/></parent>',
+                    toString(parent)), 1)
+})
+
+
 test_that("Junit reporter regression", {
   output.file        <- textConnection(NULL, "w")
   junit.reporter     <- JunitReporter$new(file = output.file)

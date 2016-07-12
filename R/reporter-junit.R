@@ -1,6 +1,27 @@
 #' @include reporter.R
 NULL
 
+
+#' @importFrom xml2 read_xml xml_attrs<- xml_add_child xml_text<-
+xml_new_node <- function (name, attrs, children, text) {
+  node <- read_xml(paste0("<", name, "/>"))
+  xml_attrs(node) <- vapply(attrs, as.character, character(1))
+
+  # add children
+  if (!missing(children) && !is.null(children)) {
+    if (inherits(children, 'xml_node'))
+      children <- list(children)
+    lapply(children, function(child)xml_add_child(node, child))
+  }
+
+  # set text
+  if (!missing(text))
+    xml_text(node) <- as.character(text)
+
+  node
+}
+
+
 #' Test reporter: summary of errors in jUnit XML format.
 #'
 #' This reporter includes detailed results about each test and summaries,
@@ -27,6 +48,7 @@ NULL
 #' error stream during execution.
 #'
 #' @export
+#' @importFrom xml2 xml_new_document write_xml
 JunitReporter <- R6::R6Class("JunitReporter", inherit = Reporter,
   public = list(
     file = NULL,
@@ -35,9 +57,6 @@ JunitReporter <- R6::R6Class("JunitReporter", inherit = Reporter,
 
     initialize = function(file = "report.xml") {
       super$initialize()
-      if (!require("XML", quietly = TRUE)) {
-        stop("Please install the XML package", call. = FALSE)
-      }
       self$file <- file
       self$results <- list()
     },
@@ -71,16 +90,10 @@ JunitReporter <- R6::R6Class("JunitReporter", inherit = Reporter,
 
     end_reporter = function() {
       self$cat("\n")
-      xmlNodeOK <- function(name, ..., attrs = NULL) {
-        ## do XML entity substitutions
-        if (!is.null(attrs)) {
-          attrs <- vapply(attrs, function(x) toString(xmlTextNode(x)), character(1))
-        }
-        xmlNode(name, ..., attrs = attrs)
-      }
       classnameOK <- function(text) {
         gsub("[ \\.]", "_", text)
       }
+      # --- suites ---
       suites <- lapply(names(self$results), function(context) {
         result_list <- self$results[[context]]
         xnames <- vapply(result_list, `[[`, character(1), "call")
@@ -98,23 +111,23 @@ JunitReporter <- R6::R6Class("JunitReporter", inherit = Reporter,
               location <- paste0('(@', attr(ref, 'srcfile')$filename, '#', ref[1], ')')
             }
             failnode <-
-                xmlNodeOK("failure", attrs =
+              xml_new_node("failure", attrs =
                           c(type = ifelse(result$error, "error", "failure"),
                             message = location),
-                          .children = list(xmlTextNode(result)))
+                          text = as.character(result))
           }
-          xmlNodeOK("testcase", attrs =
+          xml_new_node("testcase", attrs =
                     c(classname = paste(classnameOK(context),
                                         classnameOK(result$test), sep = "."),
                       name = result$success_msg,
                       time = result$time,
                       message = result$success_msg),
-                    .children = if (expectation_broken(result)) list(failnode))
-        })
+                    children = if (expectation_broken(result)) list(failnode))
+        }) # testcases
         ispass <- vapply(result_list, expectation_success, logical(1))
         iserr <- vapply(result_list, expectation_error,  logical(1))
         tests <- vapply(result_list, `[[`, character(1), "test")
-        xmlNodeOK("testsuite", attrs =
+        xml_new_node("testsuite", attrs =
                   c(tests = length(result_list),
                     failures = sum(!ispass & !iserr),
                     errors = sum(iserr),
@@ -122,10 +135,16 @@ JunitReporter <- R6::R6Class("JunitReporter", inherit = Reporter,
                     time = sum(vapply(result_list, `[[`, numeric(1), "time")),
                     timestamp = toString(Sys.time()),
                     hostname = Sys.info()[["nodename"]]),
-                  .children = testcases)
-      })
-      cat(toString(xmlNode("testsuites", .children = suites)),
-          file = self$file)
-    }
+                  children = testcases)
+      }) # suites
+
+      # create the final document
+      xmlDoc <- xml_new_document()
+      lapply(suites, function(suite)xml_add_child(xmlDoc, suite))
+
+      # this causes a segfault write_xml(xmlDoc, self$file, format = )
+      cat(toString(xmlDoc), file = self$file)
+
+    } # end_reporter
   )
 )
