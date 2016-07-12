@@ -36,6 +36,13 @@ test_that("Error:3", {
   f()
 })
 
+context("Recursion")
+
+test_that("Recursion:1", {
+  f <- function() f()
+  f()
+})
+
 context("Skips")
 
 test_that("Skip:1", {
@@ -52,10 +59,10 @@ context("Warnings")
 test_that("Warning:1", {
   warning("abc")
 })
-
 test_that("Warning:2", {
+  f <- function() {warning("ghi")}
   warning("def")
-  warning("ghi")
+  f()
 })
 
 context("Output")

@@ -18,18 +18,19 @@ test_env <- function() {
 #' \code{helper} and loaded before any tests are run.
 #'
 #' @param path path to tests
-#' @param reporter reporter to use
 #' @param filter If not \code{NULL}, only tests with file names matching this
 #'   regular expression will be executed.  Matching will take on the file
 #'   name after it has been stripped of \code{"test-"} and \code{".R"}.
-#' @param env environment in which to execute test suite.
 #' @param ... Additional arguments passed to \code{grepl} to control filtering.
+#' @inheritParams test_file
 #'
 #' @return the results as a "testthat_results" (list)
 #' @export
 test_dir <- function(path, filter = NULL, reporter = "summary",
-                                          env = test_env(), ...) {
-  source_test_helpers(path, env)
+                     env = test_env(), ..., load_helpers = TRUE) {
+  if (load_helpers) {
+    source_test_helpers(path, env)
+  }
   paths <- find_test_scripts(path, filter, ...)
 
   test_files(paths, reporter = reporter, env = env, ...)
@@ -59,6 +60,23 @@ test_files <- function(paths, reporter = "summary",
   invisible(testthat_results(results))
 }
 
+# Filter File List for Tests, used by find_test_scripts
+
+filter_test_scripts <- function(files, filter = NULL, invert = FALSE, ...) {
+  if (!is.null(filter)) {
+    test_names <- basename(files)
+    test_names <- sub("^test-?", "", test_names)
+    test_names <- sub("\\.[rR]$", "", test_names)
+
+    which_files <- grepl(filter, test_names, ...)
+
+    if (isTRUE(invert)) {
+      which_files <- !which_files
+    }
+    files <- files[which_files]
+  }
+  files
+}
 
 #' Find the test files.
 #' @param path path to tests
@@ -68,22 +86,10 @@ test_files <- function(paths, reporter = "summary",
 #' @return the test file paths
 #' @keywords internal
 #' @export
+
 find_test_scripts <- function(path, filter = NULL, invert = FALSE, ...) {
   files <- dir(path, "^test.*\\.[rR]$", full.names = TRUE)
-  if (!is.null(filter)) {
-    test_names <- basename(files)
-    test_names <- gsub("^test-?", "", test_names)
-    test_names <- gsub("\\.[rR]", "", test_names)
-
-    which_files <- grepl(filter, test_names, ...)
-
-    if (isTRUE(invert)) {
-      which_files <- !which_files
-    }
-    files <- files[which_files]
-  }
-
-  files
+  filter_test_scripts(files, filter, invert, ...)
 }
 
 #' Run all tests in specified file.
