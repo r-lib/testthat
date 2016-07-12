@@ -19,10 +19,10 @@ Imports:
     praise,
     magrittr,
     R6,
-    methods
+    methods,
+    xml2
 Suggests:
     devtools,
-    XML,
     withr,
     covr
 License: MIT + file LICENSE
