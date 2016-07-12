@@ -5,7 +5,7 @@
 \alias{mock}
 \alias{mock_args}
 \alias{mock_calls}
-\title{Create a mocked function.}
+\title{Create and query a mocked function.}
 \usage{
 mock(..., cycle = FALSE, envir = parent.frame())
 
@@ -25,26 +25,22 @@ will fail if called too many times.}
 
 \item{m}{A \code{\link{mock}}ed function.}
 
-\item{x}{A \code{mock} object.}
-
-\item{m}{A \code{\link{mock}}ed function.}
+\item{x}{A \code{\link{mock}}ed function.}
 }
 \value{
-A mocked function which can be then used with \code{\link{with_mock}}.
+\code{mock()} returns a mocked function which can be then used
+        with \code{\link{with_mock}}.
 
-A \code{list} of \code{list}s of argument values.
+\code{mock_args()} returns a \code{list} of \code{list}s
+        of argument values.
 
-A \code{list} of \code{call}s.
+\code{mock_calls()} returns a \code{list} of \code{call}s.
 
-Number of calls invoked on \code{m}.
+\code{length.mock()} returns the number of calls invoked on \code{m}.
 }
 \description{
 Mock object's primary use is to record calls that are made on the
 mocked function.
-
-\code{mock_args} returns list of lists of arguments' values.
-
-\code{mock_calls} returns a list of call signatures.
 }
 \details{
 Optionally values/expressions can be passed via \code{...} for the
@@ -55,6 +51,10 @@ value is passed in \code{...} then \code{NULL} is returned.
 Passing an expression or a function call via \code{...} is also a
 way to implement side effects: keep track of the state of code
 under testing, throw an exception when a condition is met, etc.
+
+\code{mock_calls} and \code{mock_args} can be used to access the
+list of calls made on a mocked function and a respective list of
+values of arguments passed to each of these calls.
 }
 \examples{
 m <- mock(1)
@@ -74,22 +74,14 @@ with_mock(summary = m, {
 })
 
 # side effects
-\dontrun{
 m <- mock(1, 2, stop("error"))
 with_mock(summary = m, {
   expect_equal(summary(iris), 1)
   expect_equal(summary(iris), 2)
   expect_error(summary(iris), "error")
 })
-}
 
-m <- mock()
-m(x = 1)
-m(y = 2)
-expect_equal(length(m), 2)
-args <- mock_args(m)
-expect_equal(args[[1]], list(x = 1))
-expect_equal(args[[2]], list(y = 2))
+# accessing call expressions
 m <- mock()
 m(x = 1)
 m(y = 2)
@@ -97,5 +89,16 @@ expect_equal(length(m), 2)
 calls <- mock_calls(m)
 expect_equal(calls[[1]], quote(m(x = 1)))
 expect_equal(calls[[2]], quote(m(y = 2)))
+
+# accessing values of arguments
+m <- mock()
+m(x = 1)
+m(y = 2)
+expect_equal(length(m), 2)
+args <- mock_args(m)
+expect_equal(args[[1]], list(x = 1))
+expect_equal(args[[2]], list(y = 2))
+
+
 }
 

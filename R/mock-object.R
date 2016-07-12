@@ -1,5 +1,5 @@
 
-#' Create a mocked function.
+#' Create and query a mocked function.
 #'
 #' Mock object's primary use is to record calls that are made on the
 #' mocked function.
@@ -13,13 +13,25 @@
 #' way to implement side effects: keep track of the state of code
 #' under testing, throw an exception when a condition is met, etc.
 #'
+#' \code{mock_calls} and \code{mock_args} can be used to access the
+#' list of calls made on a mocked function and a respective list of
+#' values of arguments passed to each of these calls.
+#'
+#'
 #' @param ... Values returned upon subsequent calls.
 #' @param cycle Whether to cycle over the return values. If \code{FALSE},
 #'        will fail if called too many times.
 #' @param envir Where to evaluate the expressions being returned.
-#' @return A mocked function which can be then used with \code{\link{with_mock}}.
+#' @param m A \code{\link{mock}}ed function.
+#' @param x A \code{\link{mock}}ed function.
 #'
-#' @export
+#' @return \code{mock()} returns a mocked function which can be then used
+#'         with \code{\link{with_mock}}.
+#' @return \code{mock_args()} returns a \code{list} of \code{list}s
+#'         of argument values.
+#' @return \code{mock_calls()} returns a \code{list} of \code{call}s.
+#' @return \code{length.mock()} returns the number of calls invoked on \code{m}.
+#'
 #' @examples
 #' m <- mock(1)
 #' with_mock(summary = m, {
@@ -38,15 +50,38 @@
 #' })
 #'
 #' # side effects
-#' \dontrun{
 #' m <- mock(1, 2, stop("error"))
 #' with_mock(summary = m, {
 #'   expect_equal(summary(iris), 1)
 #'   expect_equal(summary(iris), 2)
 #'   expect_error(summary(iris), "error")
 #' })
-#' }
 #'
+#' # accessing call expressions
+#' m <- mock()
+#' m(x = 1)
+#' m(y = 2)
+#' expect_equal(length(m), 2)
+#' calls <- mock_calls(m)
+#' expect_equal(calls[[1]], quote(m(x = 1)))
+#' expect_equal(calls[[2]], quote(m(y = 2)))
+#'
+#' # accessing values of arguments
+#' m <- mock()
+#' m(x = 1)
+#' m(y = 2)
+#' expect_equal(length(m), 2)
+#' args <- mock_args(m)
+#' expect_equal(args[[1]], list(x = 1))
+#' expect_equal(args[[2]], list(y = 2))
+#'
+#'
+#' @name mock
+NULL
+
+
+#' @export
+#' @rdname mock
 mock <- function (..., cycle = FALSE, envir = parent.frame()) {
   stopifnot(is.environment(envir))
 
@@ -79,52 +114,27 @@ mock <- function (..., cycle = FALSE, envir = parent.frame()) {
 }
 
 
-is_mock <- function (object) inherits(object, 'mock')
-
-
-#' \code{mock_args} returns list of lists of arguments' values.
-#' @param m A \code{\link{mock}}ed function.
-#' @return A \code{list} of \code{list}s of argument values.
-#' @rdname mock
 #' @export
-#' @examples
-#' m <- mock()
-#' m(x = 1)
-#' m(y = 2)
-#' expect_equal(length(m), 2)
-#' args <- mock_args(m)
-#' expect_equal(args[[1]], list(x = 1))
-#' expect_equal(args[[2]], list(y = 2))
+#' @rdname mock
 mock_args <- function (m) {
   stopifnot(is_mock(m))
   environment(m)$args
 }
 
 
-
-#' \code{mock_calls} returns a list of call signatures.
-#' @param m A \code{\link{mock}}ed function.
-#' @return A \code{list} of \code{call}s.
-#' @rdname mock
 #' @export
-#' @examples
-#' m <- mock()
-#' m(x = 1)
-#' m(y = 2)
-#' expect_equal(length(m), 2)
-#' calls <- mock_calls(m)
-#' expect_equal(calls[[1]], quote(m(x = 1)))
-#' expect_equal(calls[[2]], quote(m(y = 2)))
+#' @rdname mock
 mock_calls <- function (m) {
   stopifnot(is_mock(m))
   environment(m)$calls
 }
 
 
-#' @rdname mock
-#' @param x A \code{mock} object.
-#' @return Number of calls invoked on \code{m}.
+is_mock <- function (object) inherits(object, 'mock')
+
+
 #' @export
+#' @rdname mock
 length.mock <- function (x)
 {
   length(environment(x)$calls)
