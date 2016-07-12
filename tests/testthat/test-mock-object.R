@@ -3,7 +3,7 @@ context("Mock objects")
 test_that("mock single brackets", {
   m <- mock(1)
   m()
-  expect_equal(m$calls[[1]], bquote(m()))
+  expect_equal(mock_calls(m)[[1]], bquote(m()))
 })
 
 
@@ -88,8 +88,8 @@ test_that("return expression", {
 
 test_that("operator $ works for mock", {
   m <- mock()
-  expect_equal(m$calls, list())
-  expect_equal(m$args, list())
+  expect_equal(mock_calls(m), list())
+  expect_equal(mock_args(m), list())
 })
 
 
@@ -99,12 +99,12 @@ test_that("arguments are recorded", {
   m(y = 2, z = iris)
 
   expect_equal(length(m), 2)
-  expect_named(m$args[[1]], 'x')
-  expect_named(m$args[[2]], c('y', 'z'))
+  expect_named(mock_args(m)[[1]], 'x')
+  expect_named(mock_args(m)[[2]], c('y', 'z'))
 
-  expect_equal(m$args[[1]]$x, 1)
-  expect_equal(m$args[[2]]$y, 2)
-  expect_equal(m$args[[2]]$z, iris)
+  expect_equal(mock_args(m)[[1]]$x, 1)
+  expect_equal(mock_args(m)[[2]]$y, 2)
+  expect_equal(mock_args(m)[[2]]$z, iris)
 })
 
 

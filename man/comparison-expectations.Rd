@@ -47,8 +47,8 @@ expect_gt(9, 10)
 }
 }
 \seealso{
-Other expectations: \code{\link{equality-expectations}},
-  \code{\link{expect_args}}, \code{\link{expect_call}},
+Other expectations: \code{\link{call-expectations}},
+  \code{\link{equality-expectations}},
   \code{\link{expect_equal_to_reference}},
   \code{\link{expect_length}}, \code{\link{expect_match}},
   \code{\link{expect_named}},

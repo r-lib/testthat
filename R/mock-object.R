@@ -1,5 +1,5 @@
 
-#' Create a mock object.
+#' Create a mocked function.
 #'
 #' Mock object's primary use is to record calls that are made on the
 #' mocked function.
@@ -17,7 +17,7 @@
 #' @param cycle Whether to cycle over the return values. If \code{FALSE},
 #'        will fail if called too many times.
 #' @param envir Where to evaluate the expressions being returned.
-#' @return A mock object.
+#' @return A mocked function which can be then used with \code{\link{with_mock}}.
 #'
 #' @export
 #' @examples
@@ -29,6 +29,24 @@
 #'   expect_args(m, 1, iris)
 #' })
 #'
+#' # multiple return values
+#' m <- mock(1, "a", sqrt(3))
+#' with_mock(summary = m, {
+#'   expect_equal(summary(iris), 1)
+#'   expect_equal(summary(iris), "a")
+#'   expect_equal(summary(iris), 1.73, tolerance = .01)
+#' })
+#'
+#' # side effects
+#' \dontrun{
+#' m <- mock(1, 2, stop("error"))
+#' with_mock(summary = m, {
+#'   expect_equal(summary(iris), 1)
+#'   expect_equal(summary(iris), 2)
+#'   expect_error(summary(iris), "error")
+#' })
+#' }
+#'
 mock <- function (..., cycle = FALSE, envir = parent.frame()) {
   stopifnot(is.environment(envir))
 
@@ -38,8 +56,7 @@ mock <- function (..., cycle = FALSE, envir = parent.frame()) {
   calls             <- list()
   args              <- list()
 
-  mock_impl <- function (...)
-  {
+  mock_impl <- function(...) {
     call_no <<- call_no + 1
     calls[[call_no]] <<- match.call()
 
@@ -65,11 +82,9 @@ mock <- function (..., cycle = FALSE, envir = parent.frame()) {
 is_mock <- function (object) inherits(object, 'mock')
 
 
-#' \code{$.mock} returns one of two lists: \code{calls} or \code{args}.
-#' @param m A \code{\link{mock}} object.
-#' @param n List name.
-#' @return \code{calls} is a list of call signatures and \code{args} is
-#'         a respective list of lists of arguments' values.
+#' \code{mock_args} returns list of lists of arguments' values.
+#' @param m A \code{\link{mock}}ed function.
+#' @return A \code{list} of \code{list}s of argument values.
 #' @rdname mock
 #' @export
 #' @examples
@@ -77,14 +92,32 @@ is_mock <- function (object) inherits(object, 'mock')
 #' m(x = 1)
 #' m(y = 2)
 #' expect_equal(length(m), 2)
-#' expect_equal(m$calls[[1]], quote(m(x = 1)))
-#' expect_equal(m$calls[[2]], quote(m(y = 2)))
-`$.mock` <- function (m, n) {
+#' args <- mock_args(m)
+#' expect_equal(args[[1]], list(x = 1))
+#' expect_equal(args[[2]], list(y = 2))
+mock_args <- function (m) {
   stopifnot(is_mock(m))
-  switch(n,
-         calls = environment(m)$calls,
-         args  = environment(m)$args,
-         fail(paste("unknown member:", n)))
+  environment(m)$args
+}
+
+
+
+#' \code{mock_calls} returns a list of call signatures.
+#' @param m A \code{\link{mock}}ed function.
+#' @return A \code{list} of \code{call}s.
+#' @rdname mock
+#' @export
+#' @examples
+#' m <- mock()
+#' m(x = 1)
+#' m(y = 2)
+#' expect_equal(length(m), 2)
+#' calls <- mock_calls(m)
+#' expect_equal(calls[[1]], quote(m(x = 1)))
+#' expect_equal(calls[[2]], quote(m(y = 2)))
+mock_calls <- function (m) {
+  stopifnot(is_mock(m))
+  environment(m)$calls
 }
 
 
@@ -100,18 +133,39 @@ length.mock <- function (x)
 
 #' Expectation: does the given call match the expected?
 #'
+#' Together with \code{\link{mock}} can be used to verify whether the
+#' call expression (\code{\link{expect_call}}) and/or argument values
+#' (\code{\link{expect_args}}) match the expected.
+#'
+#'
 #' @inheritParams expect_that
 #' @param mock_object A \code{\link{mock}} object.
 #' @param n Call number.
-#' @param expected_call Expected call.
+#' @param expected_call Expected call expression; will be compared unevaluated.
+#' @param ... Arguments as passed in a call.
 #' @family expectations
-#' @export
 #' @examples
-#' \dontrun{
+#' # expect call expression (signature)
 #' m <- mock()
 #' with_mock(summary = m, summary(iris))
 #' expect_call(m, 1, summary(iris))
-#' }
+#'
+#' # expect argument value
+#' m <- mock()
+#' a <- iris
+#' with_mock(summary = m, summary(object = a))
+#' expect_args(m, 1, object = a)
+#' # is an equivalent to ...
+#' expect_equal(mock_args(m)[[1]], list(object = a))
+#'
+#' @name call-expectations
+#'
+NULL
+
+
+
+#' @export
+#' @rdname call-expectations
 expect_call <- function (mock_object, n, expected_call) {
   stopifnot(is_mock(mock_object))
 
@@ -121,10 +175,10 @@ expect_call <- function (mock_object, n, expected_call) {
   )
 
   expected_call <- substitute(expected_call)
-  mocked_call <- mock_object$calls[[n]]
+  mocked_call <- mock_calls(mock_object)[[n]]
 
   expect(
-    mocked_call == expected_call,
+    identical(mocked_call, expected_call),
     sprintf("expected call %s does not mach actual call %s.",
             format(expected_call), format(mocked_call))
   )
@@ -133,25 +187,8 @@ expect_call <- function (mock_object, n, expected_call) {
 }
 
 
-#' Expectation: does the given argument values match expected?
-#'
-#' Unlike \code{\link{expect_call}}, \code{expect_args} compares the
-#' actual values passed in to the call invoked on a \code{\link{mock}}
-#' object.
-#'
-#' @inheritParams expect_that
-#' @param mock_object A \code{\link{mock}} object.
-#' @param n Call number.
-#' @param ... Arguments as passed in a call.
-#' @family expectations
 #' @export
-#' @examples
-#' m <- mock()
-#' a <- iris
-#' with_mock(summary = m, summary(object = a))
-#' expect_args(m, 1, object = a)
-#' # is an equivalent to ...
-#' expect_equal(m$args[[1]], list(object = a))
+#' @rdname call-expectations
 expect_args <- function (mock_object, n, ...)
 {
   stopifnot(is_mock(mock_object))
@@ -164,7 +201,7 @@ expect_args <- function (mock_object, n, ...)
   expected_args <- list(...)
 
   expect_equal(
-    mock_object$args[[n]],
+    mock_args(mock_object)[[n]],
     expected_args,
     info = "expected argument list does not mach actual one."
   )
