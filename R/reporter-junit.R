@@ -58,7 +58,7 @@ JunitReporter <- R6::R6Class("JunitReporter", inherit = Reporter,
       if (expectation_broken(result)) {
         self$cat_tight(single_letter_summary(result))
       }else {
-        self$cat_tight(colourise(".", "passed"))
+        self$cat_tight(colourise(".", "success"))
       }
 
       result$time <- round((proc.time() - self$timer)[["elapsed"]], 2)
