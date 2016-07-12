@@ -1,24 +1,23 @@
 #' @include reporter.R
 NULL
 
+classnameOK <- function(text) {
+  gsub("[ \\.]", "_", text)
+}
 
-#' @importFrom xml2 read_xml xml_attrs<- xml_add_child xml_text<-
-xml_new_node <- function (name, attrs, children, text) {
-  node <- read_xml(paste0("<", name, "/>"))
-  xml_attrs(node) <- vapply(attrs, as.character, character(1))
+#' @importFrom xml2 xml_attr<- xml_add_child
+add_broken <- function (parent, type, message) {
+  child <- xml_add_child(parent, type)
+  xml_attr(child, 'type')    <- type
+  xml_attr(child, 'message') <- message
+}
 
-  # add children
-  if (!missing(children) && !is.null(children)) {
-    if (inherits(children, 'xml_node'))
-      children <- list(children)
-    lapply(children, function(child)xml_add_child(node, child))
+#' @importFrom xml2 xml_attr<-
+add_attrs <- function (node, ...) {
+  attrs <- list(...)
+  for (name in names(attrs)) {
+    xml_attr(node, name) <- as.character(attrs[[name]])
   }
-
-  # set text
-  if (!missing(text))
-    xml_text(node) <- as.character(text)
-
-  node
 }
 
 
@@ -48,102 +47,116 @@ xml_new_node <- function (name, attrs, children, text) {
 #' error stream during execution.
 #'
 #' @export
-#' @importFrom xml2 xml_new_document write_xml
+#' @importFrom xml2 xml_new_document write_xml xml_add_child xml_attr<-
 JunitReporter <- R6::R6Class("JunitReporter", inherit = Reporter,
   public = list(
-    file = NULL,
-    results = NULL,
-    timer = NULL,
+    file     = NULL,
+    results  = NULL,
+    timer    = NULL,
+    doc      = NULL,
+    errors   = NULL,
+    failures = NULL,
+    skipped  = NULL,
+    tests    = NULL,
+    root     = NULL,
+    suite    = NULL,
+    suite_time = NULL,
 
     initialize = function(file = "report.xml") {
       super$initialize()
-      self$file <- file
-      self$results <- list()
+      self$file    <- file
+    },
+
+    elapsed_time = function() {
+      time <- round((proc.time() - self$timer)[["elapsed"]], 2)
+      self$timer  <- proc.time()
+      time
+    },
+
+    reset_suite = function () {
+      self$errors   <- 0
+      self$failures <- 0
+      self$skipped  <- 0
+      self$tests    <- 0
+      self$suite_time <- 0
     },
 
     start_reporter = function() {
       self$timer <- proc.time()
+      self$doc   <- xml_new_document()
+      self$root  <- xml_add_child(self$doc, 'testsuites')
+      self$reset_suite()
     },
 
     start_context = function(context) {
       self$cat(context, ": ")
+
+      self$suite <- xml_add_child(self$root, "testsuite")
+      add_attrs(self$suite,
+        name      = context,
+        timestamp = toString(Sys.time()),
+        hostname  = Sys.info()[["nodename"]]
+      )
     },
 
     end_context = function(context) {
       self$cat("\n")
+
+      add_attrs(self$suite,
+                tests = self$tests, skipped = self$skipped,
+                failures = self$failures, errors = self$errors,
+                time = self$suite_time)
+
+      self$reset_suite()
     },
 
     add_result = function(context, test, result) {
-      if (expectation_broken(result)) {
-        self$cat_tight(single_letter_summary(result))
-      }else {
-        self$cat_tight(colourise(".", "success"))
+      self$tests <- self$tests + 1
+
+      time <- self$elapsed_time()
+      self$suite_time <- self$suite_time + time
+
+      # XML node for test case
+      testcase <- xml_add_child(self$suite, "testcase")
+      name <- if (is.null(test) || !nchar(test)) "(unnamed)" else test
+
+      add_attrs(testcase, time = time,
+                classname = paste0(classnameOK(context), '.', classnameOK(name)))
+
+      # message - if failure or error
+      message <- if (is.null(result$call)) "(unexpected)" else format(result$call)[1]
+
+      if (!is.null(result$srcref)) {
+        location <- paste0('@', attr(result$srcref, 'srcfile')$filename, '#', result$srcref[1])
+        message  <- paste(as.character(result), location)
       }
 
-      result$time <- round((proc.time() - self$timer)[["elapsed"]], 2)
-      self$timer  <- proc.time()
-      result$test <- if (is.null(test) || test == "") "(unnamed)" else test
-      # call can sometimes contain a second item, "succeed()"
-      result$call <- if (is.null(result$call)) "(unexpected)" else format(result$call)[1]
-      self$results[[context]] <- append(self$results[[context]], list(result))
+      # add child XML node if not success
+      if (expectation_error(result)) {
+        self$cat_tight(single_letter_summary(result))
+        add_broken(testcase, 'error', message)
+        self$errors <- self$errors + 1
+      }
+      else if (expectation_failure(result)) {
+        self$cat_tight(single_letter_summary(result))
+        add_broken(testcase, 'failure', message)
+        self$failures <- self$failures + 1
+      }
+      else if (expectation_skip(result)) {
+        self$cat_tight(colourise("S", "success"))
+        xml_add_child(testcase, "skipped")
+        self$skipped <- self$skipped + 1
+      }
+      else {
+        self$cat_tight(colourise(".", "success"))
+      }
     },
 
     end_reporter = function() {
       self$cat("\n")
-      classnameOK <- function(text) {
-        gsub("[ \\.]", "_", text)
-      }
-      # --- suites ---
-      suites <- lapply(names(self$results), function(context) {
-        result_list <- self$results[[context]]
-        xnames <- vapply(result_list, `[[`, character(1), "call")
-        xnames <- make.unique(xnames, sep = "_")
-        for (i in seq_along(result_list)) {
-          result_list[[i]]$call <- xnames[[i]]
-        }
-        testcases <- lapply(result_list, function(result) {
-          failnode <- NULL
-          if (expectation_broken(result)) {
-            ref <- result$srcref
-            if ( is.null(ref) ) {
-              location <- ''
-            } else {
-              location <- paste0('(@', attr(ref, 'srcfile')$filename, '#', ref[1], ')')
-            }
-            failnode <-
-              xml_new_node("failure", attrs =
-                          c(type = ifelse(result$error, "error", "failure"),
-                            message = location),
-                          text = as.character(result))
-          }
-          xml_new_node("testcase", attrs =
-                    c(classname = paste(classnameOK(context),
-                                        classnameOK(result$test), sep = "."),
-                      name = result$success_msg,
-                      time = result$time,
-                      message = result$success_msg),
-                    children = if (expectation_broken(result)) list(failnode))
-        }) # testcases
-        ispass <- vapply(result_list, expectation_success, logical(1))
-        iserr <- vapply(result_list, expectation_error,  logical(1))
-        tests <- vapply(result_list, `[[`, character(1), "test")
-        xml_new_node("testsuite", attrs =
-                  c(tests = length(result_list),
-                    failures = sum(!ispass & !iserr),
-                    errors = sum(iserr),
-                    name = context,
-                    time = sum(vapply(result_list, `[[`, numeric(1), "time")),
-                    timestamp = toString(Sys.time()),
-                    hostname = Sys.info()[["nodename"]]),
-                  children = testcases)
-      }) # suites
-
-      # create the final document
-      xmlDoc <- xml_new_document()
-      lapply(suites, function(suite)xml_add_child(xmlDoc, suite))
 
       # this causes a segfault write_xml(xmlDoc, self$file, format = )
-      cat(toString(xmlDoc), file = self$file)
+      cat(toString(self$doc), file = self$file)
 
     } # end_reporter
   )
