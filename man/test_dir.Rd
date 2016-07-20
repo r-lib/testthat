@@ -4,7 +4,8 @@
 \alias{test_dir}
 \title{Run all of the tests in a directory.}
 \usage{
-test_dir(path, filter = NULL, reporter = "summary", env = test_env(), ...)
+test_dir(path, filter = NULL, reporter = "summary", env = test_env(), ...,
+  load_helpers = TRUE)
 }
 \arguments{
 \item{path}{path to tests}
@@ -15,9 +16,11 @@ name after it has been stripped of \code{"test-"} and \code{".R"}.}
 
 \item{reporter}{reporter to use}
 
-\item{env}{environment in which to execute test suite.}
+\item{env}{environment in which to execute the tests}
 
 \item{...}{Additional arguments passed to \code{grepl} to control filtering.}
+
+\item{load_helpers}{Source helper files before running the tests?}
 }
 \value{
 the results as a "testthat_results" (list)
