@@ -92,14 +92,14 @@ protected:
 class r_ostream : public std::ostream {
 public:
   r_ostream() : std::ostream(new r_streambuf) {}
-
+  ~r_ostream() { delete rdbuf(); }
 };
 
 // Allow client packages to access the Catch::Session
 // exported by testthat.
 # ifdef CATCH_CONFIG_RUNNER
 
-Catch::Session& catchSession()
+inline Catch::Session& catchSession()
 {
   static Catch::Session instance;
   return instance;

@@ -28,6 +28,7 @@ test_that('test_dir()', {
         FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, TRUE),
       error = c(FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, TRUE, TRUE, TRUE, TRUE,
         TRUE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE),
+      warning = c(0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L),
       stringsAsFactors = FALSE)
 
   df$user <- df$system  <- df$real <- NULL
@@ -44,4 +45,17 @@ test_that('test_dir() helpers', {
   res <- test_dir('test_dir', reporter = 'silent', filter = 'helper')
   df <- as.data.frame(res)
   expect_true(all(!df$error & df$failed == 0))
+})
+
+test_that('filter_test_scripts() with tricky names', {
+  files <- c(
+    "test-basic.R", "test-blah.really.Rtrick.R", "test-hello.rtest.R"
+  )
+
+  expect_equal(filter_test_scripts(files, filter = "basic|Rtrick|rtest"), files)
+  expect_equal(filter_test_scripts(files, filter = "Rtrick|rtest"), files[2:3])
+  expect_equal(
+    filter_test_scripts(files, filter = "Rtrick|rtest", invert = TRUE),
+    files[1]
+  )
 })

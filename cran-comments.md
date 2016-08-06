@@ -1,10 +1,15 @@
 ## Release overview
 
-This release includes a number of fixes to problems encountered on additional CRAN test platforms:
+This release includes two fixes for Solaris:
 
-* The required version of R is once again correct.
-* Works with gcc 6.
-* Ifdefs correctly allow non-standard C++98 only with gcc and clang.
+* 'std::logic_error()' is now properly constructed using a 'std::string'.
+* The unit tests involving POSIXct now pass on Solaris.
+
+This now passes R CMD check locally on both Solaris sparc and x86. 
+
+There is some small possibility it may fail on the CRAN test machine. The crux of the problem appears to be that ` as.POSIXlt()` has different defaults for the timezone. On Linux/Mac/Windows the first element of the tzone attribute has "" for the local timezone, whereas in Solaris it has `Sys.timezone()`. (i.e. the output of `attr(as.POSIXlt(Sys.time()), "tzone")[[1]]` appears to be different on solaris compared to Linux/Mac/Windows).
+
+Thanks for your patience dealing with these issues - it's greatly appreciated.
 
 ## Test environments
 

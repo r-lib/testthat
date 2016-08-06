@@ -15,8 +15,8 @@ compare(x, y, ...)
 \method{compare}{character}(x, y, check.attributes = TRUE, ...,
   max_diffs = 5, max_lines = 5, width = getOption("width"))
 
-\method{compare}{numeric}(x, y, tolerance = .Machine$double.eps^0.5, ...,
-  max_diffs = 9)
+\method{compare}{numeric}(x, y, tolerance = .Machine$double.eps^0.5,
+  check.attributes = TRUE, ..., max_diffs = 9)
 
 \method{compare}{POSIXt}(x, y, tolerance = 0.001, ..., max_diffs = 9)
 }

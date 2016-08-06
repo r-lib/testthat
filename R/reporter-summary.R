@@ -70,6 +70,14 @@ SummaryReporter <- R6::R6Class("SummaryReporter", inherit = Reporter,
       private$cat_reports("Failed", failures, self$max_reports, failure_summary)
 
       rule("DONE", pad = "=")
+      if (self$show_praise) {
+        if (length(failures) == 0 && runif(1) < 0.1) {
+          self$cat_line(colourise(praise(), "success"))
+        }
+        if (length(failures) > 0 && runif(1) < 0.25) {
+          self$cat_line(colourise(encourage(), "error"))
+        }
+      }
     }
   ),
 

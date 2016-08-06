@@ -29,7 +29,8 @@ ListReporter <- R6::R6Class("ListReporter", inherit = Reporter,
     },
 
     add_result = function(context, test, result) {
-      self$current_expectations$push(result)
+      if (!is.null(self$current_expectations))
+        self$current_expectations$push(result)
     },
 
     end_test = function(context, test) {
