@@ -102,7 +102,8 @@ find_test_scripts <- function(path, filter = NULL, invert = FALSE, ...) {
 #' @return the results as a "testthat_results" (list)
 #' @export
 test_file <- function(path, reporter = "summary", env = test_env(),
-                      start_end_reporter = TRUE, load_helpers = TRUE) {
+                      start_end_reporter = TRUE, load_helpers = TRUE,
+                      encoding = "unknown") {
   library(testthat)
 
   reporter <- find_reporter(reporter)
@@ -124,7 +125,8 @@ test_file <- function(path, reporter = "summary", env = test_env(),
     {
       lister$start_file(basename(path))
 
-      source_file(path, new.env(parent = env), chdir = TRUE)
+      source_file(path, new.env(parent = env),
+                  chdir = TRUE, encoding = encoding)
       end_context()
     }
   )

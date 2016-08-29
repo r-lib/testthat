@@ -9,11 +9,11 @@
 #' @param env Environment in which to evaluate code.
 #' @param chdir Change working directory to \code{dirname(path)}?
 #' @export
-source_file <- function(path, env = test_env(), chdir = TRUE) {
+source_file <- function(path, env = test_env(), chdir = TRUE, encoding = "unknown") {
   stopifnot(file.exists(path))
   stopifnot(is.environment(env))
 
-  lines <- readLines(path, warn = FALSE)
+  lines <- readLines(path, warn = FALSE, encoding = encoding)
   srcfile <- srcfilecopy(path, lines, file.info(path)[1, "mtime"], isFile = TRUE)
   exprs <- parse(text = lines, n = -1, srcfile = srcfile)
 
