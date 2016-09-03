@@ -103,3 +103,8 @@ f_name <- function(x) {
     ""
   }
 }
+
+escape_regex <- function(x) {
+  chars <- c("*", ".", "?", "^", "+", "$", "|", "(", ")", "[", "]", "{", "}", "\\")
+  gsub(paste0("([\\", paste0(collapse = "\\", chars), "])"), "\\\\\\1", x, perl = TRUE)
+}

@@ -31,16 +31,16 @@ expect_match <- function(object, regexp, ..., all = TRUE,
   matches <- grepl(regexp, object, ...)
 
   if (length(object) == 1) {
-    values <- paste0("Actual value: \"", encodeString(object), "\"")
+    values <- paste0("Actual value: \"", escape_regex(encodeString(object)), "\"")
   } else {
     values <- paste0("Actual values:\n",
-      paste0("* ", encodeString(object), collapse = "\n"))
+      paste0("* ", escape_regex(encodeString(object)), collapse = "\n"))
   }
   expect(
     if (all) all(matches) else any(matches),
     sprintf(
       "%s does not match %s.\n%s",
-      label,
+      escape_regex(label),
       encodeString(regexp, quote = '"'),
       values
     ),
