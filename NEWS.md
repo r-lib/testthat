@@ -1,5 +1,8 @@
 # testthat 1.0.2.9000
 
+* Special regular expression characters are escaped when printing errors in
+  `expect_match()` (#522, @jimhester).
+
 * New argument `load_helpers` in `test_dir()` (#505).
 
 * New `DebugReporter` that calls a better version of `recover()` in case of failures, errors, or warnings (#360, #470).
