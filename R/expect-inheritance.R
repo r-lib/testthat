@@ -32,7 +32,7 @@ NULL
 #' @export
 #' @rdname inheritance-expectations
 expect_null <- function(object, info = NULL, label = NULL) {
-  lab <- make_label(object, label)
+  lab <- make_label(substitute(object), label)
 
   expect(
     is.null(object),
@@ -47,7 +47,7 @@ expect_null <- function(object, info = NULL, label = NULL) {
 expect_type <- function(object, type) {
   stopifnot(is.character(type), length(type) == 1)
 
-  lab <- make_label(object)
+  lab <- make_label(substitute(object))
   act <- typeof(object)
   exp <- type
 
@@ -65,7 +65,7 @@ expect_type <- function(object, type) {
 expect_is <- function(object, class, info = NULL, label = NULL) {
   stopifnot(is.character(class))
 
-  lab <- make_label(object, label)
+  lab <- make_label(substitute(object), label)
   act <- klass(object)
   exp <- paste(class, collapse = "/")
 
@@ -82,7 +82,7 @@ expect_is <- function(object, class, info = NULL, label = NULL) {
 expect_s3_class <- function(object, class) {
   stopifnot(is.character(class))
 
-  lab <- label(object)
+  lab <- label(substitute(object))
   act <- klass(object)
   exp <- paste(class, collapse = "/")
 
@@ -102,7 +102,7 @@ expect_s3_class <- function(object, class) {
 expect_s4_class <- function(object, class) {
   stopifnot(is.character(class))
 
-  lab <- label(object)
+  lab <- label(substitute(object))
   act <- paste(methods::is(object), collapse = "/")
   exp <- paste(class, collapse = "/")
 

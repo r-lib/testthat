@@ -29,7 +29,7 @@ expect_named <- function(object, expected, ignore.order = FALSE,
                          ignore.case = FALSE, info = NULL,
                          label = NULL) {
 
-  lab <- make_label(object, label)
+  lab <- make_label(substitute(object), label)
 
   if (missing(expected)) {
     expect(

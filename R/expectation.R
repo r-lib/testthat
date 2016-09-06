@@ -53,8 +53,6 @@ add_info <- function(message, info = NULL) {
 }
 
 label <- function(x) {
-  x <- find_label(x)
-
   if (is.character(x)) {
     encodeString(x, quote = '"')
   } else if (is.atomic(x)) {
@@ -70,10 +68,14 @@ label <- function(x) {
   }
 }
 
-#' @useDynLib testthat find_label_
-find_label <- function(x) {
-  .Call(find_label_, quote(x), environment())
-}
+# This function should not be used as it depends on that all function
+# arguments are wrapped into promises; it is better not to depend on this
+# and now it does not hold with the byte-code compiler.
+#
+# #' @useDynLib testthat find_label_
+# find_label <- function(x) {
+#  .Call(find_label_, quote(x), environment())
+# }
 
 expectation_type <- function(exp) {
   stopifnot(is.expectation(exp))

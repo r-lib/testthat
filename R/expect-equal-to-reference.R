@@ -33,7 +33,7 @@
 expect_equal_to_reference <- function(object, file, ..., info = NULL,
                                       label = NULL, expected.label = NULL) {
 
-  lab_act <- make_label(object, label)
+  lab_act <- make_label(substitute(object), label)
   lab_exp <- expected.label %||% paste0("reference from `", file, "`")
 
   if (!file.exists(file)) {

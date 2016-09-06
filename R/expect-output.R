@@ -84,7 +84,7 @@ NULL
 #' @export
 #' @rdname output-expectations
 expect_output <- function(object, regexp = NULL, ..., info = NULL, label = NULL) {
-  lab <- make_label(object, label)
+  lab <- make_label(substitute(object), label)
   output <- capture_output(object)
 
   if (identical(regexp, NA)) {
@@ -112,7 +112,7 @@ expect_output <- function(object, regexp = NULL, ..., info = NULL, label = NULL)
 #' @param update Should the "golden" text file be updated? Default: \code{FALSE}.
 expect_output_file <- function(object, file, update = FALSE, ...,
                                info = NULL, label = NULL) {
-  lab <- make_label(object, label)
+  lab <- make_label(substitute(object), label)
   output <- capture_output_as_vector(object)
 
   withCallingHandlers(
@@ -131,7 +131,7 @@ expect_output_file <- function(object, file, update = FALSE, ...,
 #' @rdname output-expectations
 expect_error <- function(object, regexp = NULL, ..., info = NULL, label = NULL) {
 
-  lab <- make_label(object, label)
+  lab <- make_label(substitute(object), label)
 
   error <- tryCatch(
     {
@@ -166,7 +166,7 @@ expect_error <- function(object, regexp = NULL, ..., info = NULL, label = NULL) 
 expect_message <- function(object, regexp = NULL, ..., all = FALSE,
                            info = NULL, label = NULL) {
 
-  lab <- make_label(object, label)
+  lab <- make_label(substitute(object), label)
   messages <- capture_messages(object)
   n <- length(messages)
   bullets <- paste("* ", messages, collapse = "\n")
@@ -196,7 +196,7 @@ expect_message <- function(object, regexp = NULL, ..., all = FALSE,
 expect_warning <- function(object, regexp = NULL, ..., all = FALSE,
                            info = NULL, label = NULL) {
 
-  lab <- make_label(object, label)
+  lab <- make_label(substitute(object), label)
   warnings <- capture_warnings(object)
   n <- length(warnings)
   bullets <- paste("* ", warnings, collapse = "\n")
@@ -224,7 +224,7 @@ expect_warning <- function(object, regexp = NULL, ..., all = FALSE,
 #' @export
 #' @rdname output-expectations
 expect_silent <- function(object) {
-  lab <- label(object)
+  lab <- label(substitute(object))
   out <- evaluate_promise(object)
 
   outputs <- c(
