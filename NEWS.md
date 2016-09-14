@@ -2,6 +2,8 @@
 
 * New argument `minimum_version` to `skip_if_not_installed()` (#487, #499).
 
+* New argument `load_helpers` in `test_dir()` (#505).
+
 * New `DebugReporter` that calls a better version of `recover()` in case of failures, errors, or warnings (#360, #470).
 
 * `compare.numeric()` respects `check.attributes()` so `expect_equivalent()`
