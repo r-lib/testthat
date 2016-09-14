@@ -16,12 +16,15 @@
 #'
 #' \code{skip_on_appveyor()} skips tests on appveyor by inspecting the
 #' \code{APPVEYOR} environment variable.
-#' 
+#'
 #' \code{skip_on_bioc()} skips tests on Bioconductor by inspecting the
 #' \code{BBS_HOME} environment variable.
 #'
 #' \code{skip_if_not_installed()} skips a tests if a package is not installed
+#' or cannot be loaded
 #' (useful for suggested packages).
+#' It loads the package as a side effect, because the package is likely to be
+#' used anyway.
 #'
 #' @param message A message describing why the test was skipped.
 #' @export
@@ -44,13 +47,21 @@ skip_if_not <- function(condition, message = deparse(substitute(condition))) {
 
 #' @export
 #' @param pkg Name of package to check for
+#' @param minimum_version Minimum required version for the package
 #' @rdname skip
-skip_if_not_installed <- function(pkg) {
-  if (requireNamespace(pkg, quietly = TRUE)) {
-    return(invisible(TRUE))
+skip_if_not_installed <- function(pkg, minimum_version = NULL) {
+  if (!requireNamespace(pkg, quietly = TRUE)) {
+    skip(paste0(pkg, " cannot be loaded"))
   }
 
-  skip(paste0(pkg, " not installed"))
+  if (!is.null(minimum_version)) {
+    installed_version <- packageVersion(pkg)
+    if (installed_version < minimum_version) {
+      skip(paste0(pkg, " is installed in version ", installed_version, ", required ", minimum_version))
+    }
+  }
+
+  return(invisible(TRUE))
 }
 
 #' @export
