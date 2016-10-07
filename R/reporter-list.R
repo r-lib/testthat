@@ -126,3 +126,27 @@ print.testthat_results <- function(x, ...) {
   print(as.data.frame(x))
 }
 
+replay_results <- function(results, reporter = get_reporter()) {
+  current_context <- NULL
+
+  on.exit(reporter$.end_context(current_context), add = TRUE)
+
+  for (result in results) {
+    if (!identical(result$context, current_context)) {
+      reporter$.end_context(current_context)
+      current_context <- result$context
+      reporter$.start_context(current_context)
+    }
+
+    replay_test(result, reporter)
+  }
+}
+
+replay_test <- function(result, reporter) {
+  reporter$start_test(result$context, result$test)
+  on.exit(reporter$end_test(result$context, result$test), add = TRUE)
+
+  for (current_expectation in result$results) {
+    reporter$add_result(result$context, result$test, current_expectation)
+  }
+}

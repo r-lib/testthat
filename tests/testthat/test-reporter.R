@@ -65,7 +65,7 @@ test_that("reporters produce consistent output", {
     save_report("debug")
   )
   save_report("check", error_regexp = NULL)
-  save_report("summary", SummaryReporter$new(show_praise = FALSE))
+  save_report("summary", SummaryReporter$new(show_praise = FALSE, omit_dots = FALSE))
   save_report("minimal")
   save_report("tap")
   save_report("teamcity")
