@@ -7,7 +7,10 @@ test_that("Junit reporter regression", {
   junit.reporter$out <- textConnection(NULL, "w")
 
   # test_dir("tests/testthat/test_dir", reporter = junit.reporter)
+  old <- options(testthat.use_colours = FALSE)  
   test_dir("test_dir", reporter = junit.reporter)
+  options(testthat.use_colours = old$use_colours)
+
   junit.report <- textConnectionValue(junit.reporter$out)
 
   # standard output
