@@ -55,7 +55,7 @@ writing tests in loops).}
 Use \code{expect_output()}, \code{expect_message()}, \code{expect_warning()},
 or \code{expect_error()} to check for specific outputs. Use
 \code{expect_silent()} to assert that there should be no output of
-any type. The file-based\code{expect_output_file()} compares the output
+any type. The file-based \code{expect_output_file()} compares the output
 to the contents of a text file and optionally updates it.
 }
 \details{
