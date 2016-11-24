@@ -27,16 +27,16 @@ test_env <- function() {
 #' @return the results as a "testthat_results" (list)
 #' @export
 test_dir <- function(path, filter = NULL, reporter = "summary",
-                     env = test_env(), ..., load_helpers = TRUE) {
+                     env = test_env(), ..., encoding = "unknown", load_helpers = TRUE) {
   if (load_helpers) {
     source_test_helpers(path, env)
   }
   paths <- find_test_scripts(path, filter, ...)
 
-  test_files(paths, reporter = reporter, env = env, ...)
+  test_files(paths, reporter = reporter, env = env, encoding = encoding, ...)
 }
 
-test_files <- function(paths, reporter = "summary",
+test_files <- function(paths, reporter = "summary", encoding = "unknown",
                        env = test_env(), ...) {
   if (length(paths) == 0) {
     stop('No matching test file in dir')
@@ -51,7 +51,8 @@ test_files <- function(paths, reporter = "summary",
       env = env,
       reporter = current_reporter,
       start_end_reporter = FALSE,
-      load_helpers = FALSE
+      load_helpers = FALSE,
+      encoding = encoding
     )
   )
 
@@ -98,6 +99,8 @@ find_test_scripts <- function(path, filter = NULL, invert = FALSE, ...) {
 #' @param reporter reporter to use
 #' @param env environment in which to execute the tests
 #' @param load_helpers Source helper files before running the tests?
+#' @param encoding the encoding of the files in test directory. Default is
+#' \code{unknown}.
 #' @inheritParams with_reporter
 #' @return the results as a "testthat_results" (list)
 #' @export

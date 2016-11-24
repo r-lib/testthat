@@ -8,6 +8,7 @@
 #' @param pattern Regular expression used to filter files
 #' @param env Environment in which to evaluate code.
 #' @param chdir Change working directory to \code{dirname(path)}?
+#' @param encoding File encoding, default: "unknown"
 #' @export
 source_file <- function(path, env = test_env(), chdir = TRUE, encoding = "unknown") {
   stopifnot(file.exists(path))

@@ -6,7 +6,7 @@
 \alias{source_test_helpers}
 \title{Source a file, directory, or all helpers.}
 \usage{
-source_file(path, env = test_env(), chdir = TRUE)
+source_file(path, env = test_env(), chdir = TRUE, encoding = "unknown")
 
 source_dir(path, pattern = "\\\\.[rR]$", env = test_env(), chdir = TRUE)
 
@@ -18,6 +18,8 @@ source_test_helpers(path = "tests/testthat", env = test_env())
 \item{env}{Environment in which to evaluate code.}
 
 \item{chdir}{Change working directory to \code{dirname(path)}?}
+
+\item{encoding}{File encoding, default: "unknown"}
 
 \item{pattern}{Regular expression used to filter files}
 }
