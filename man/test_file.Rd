@@ -18,7 +18,7 @@ test_file(path, reporter = "summary", env = test_env(),
 
 \item{load_helpers}{Source helper files before running the tests?}
 
-\item{encoding}{the encoding of the files in test directory. Default is
+\item{encoding}{File encoding, default is "unknown"
 \code{unknown}.}
 }
 \value{

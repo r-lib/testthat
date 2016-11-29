@@ -20,7 +20,7 @@ name after it has been stripped of \code{"test-"} and \code{".R"}.}
 
 \item{...}{Additional arguments passed to \code{grepl} to control filtering.}
 
-\item{encoding}{the encoding of the files in test directory. Default is
+\item{encoding}{File encoding, default is "unknown"
 \code{unknown}.}
 
 \item{load_helpers}{Source helper files before running the tests?}

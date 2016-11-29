@@ -33,11 +33,11 @@ test_dir <- function(path, filter = NULL, reporter = "summary",
   }
   paths <- find_test_scripts(path, filter, ...)
 
-  test_files(paths, reporter = reporter, env = env, encoding = encoding, ...)
+  test_files(paths, reporter = reporter, env = env, encoding = encoding)
 }
 
-test_files <- function(paths, reporter = "summary", encoding = "unknown",
-                       env = test_env(), ...) {
+test_files <- function(paths, reporter = "summary", env = test_env(),
+                       encoding = "unknown") {
   if (length(paths) == 0) {
     stop('No matching test file in dir')
   }
@@ -99,7 +99,7 @@ find_test_scripts <- function(path, filter = NULL, invert = FALSE, ...) {
 #' @param reporter reporter to use
 #' @param env environment in which to execute the tests
 #' @param load_helpers Source helper files before running the tests?
-#' @param encoding the encoding of the files in test directory. Default is
+#' @param encoding File encoding, default is "unknown"
 #' \code{unknown}.
 #' @inheritParams with_reporter
 #' @return the results as a "testthat_results" (list)
