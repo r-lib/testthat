@@ -5,7 +5,7 @@
 \title{Run all tests in specified file.}
 \usage{
 test_file(path, reporter = "summary", env = test_env(),
-  start_end_reporter = TRUE, load_helpers = TRUE)
+  start_end_reporter = TRUE, load_helpers = TRUE, encoding = "unknown")
 }
 \arguments{
 \item{path}{path to file}
@@ -17,6 +17,9 @@ test_file(path, reporter = "summary", env = test_env(),
 \item{start_end_reporter}{whether to start and end the reporter}
 
 \item{load_helpers}{Source helper files before running the tests?}
+
+\item{encoding}{File encoding, default is "unknown"
+\code{unknown}.}
 }
 \value{
 the results as a "testthat_results" (list)
