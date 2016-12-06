@@ -37,6 +37,7 @@ expect <- function(exp, ..., srcref = NULL) {
       stop(exp)
     } else {
       signalCondition(exp)
+      signal_fire("expectation", exp)
     },
     continue_test = function(e) NULL
   )

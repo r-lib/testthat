@@ -67,6 +67,7 @@ Collate:
     'reporter-tap.R'
     'reporter-teamcity.R'
     'reporter-zzz.R'
+    'signals.R'
     'skip.R'
     'source.R'
     'test-compiled-code.R'
