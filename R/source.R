@@ -14,7 +14,7 @@ source_file <- function(path, env = test_env(), chdir = TRUE, encoding = "unknow
   stopifnot(file.exists(path))
   stopifnot(is.environment(env))
 
-  lines <- readLines(path, warn = FALSE, encoding = encoding)
+  lines <- read_lines_with_encoding(path, encoding)
   srcfile <- srcfilecopy(path, lines, file.info(path)[1, "mtime"], isFile = TRUE)
   exprs <- parse(text = lines, n = -1, srcfile = srcfile)
 
