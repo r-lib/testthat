@@ -18,6 +18,8 @@
 #'
 #'   If \code{NA}, asserts that there should be no output, messages, warnings,
 #'   or errors.
+#' @param class Instead of supply a regular expression, you can also supply
+#'   a class name. This is useful for "classed" conditions.
 #' @param all For messages and warnings, do all need to the \code{regexp}
 #'    (TRUE), or does only one need to match (FALSE)
 #' @family expectations
@@ -129,9 +131,13 @@ expect_output_file <- function(object, file, update = FALSE, ...,
 
 #' @export
 #' @rdname output-expectations
-expect_error <- function(object, regexp = NULL, ..., info = NULL, label = NULL) {
+expect_error <- function(object, regexp = NULL, class = NULL, ..., info = NULL,
+                         label = NULL) {
 
   lab <- make_label(object, label)
+  if (!is.null(regexp) && !is.null(class)) {
+    stop("You may only specific one of `regexp` and `class`", call. = FALSE)
+  }
 
   error <- tryCatch(
     {
@@ -143,7 +149,13 @@ expect_error <- function(object, regexp = NULL, ..., info = NULL, label = NULL) 
     }
   )
 
-  if (identical(regexp, NA)) {
+  if (!is.null(class)) {
+    expect(
+      inherits(error, class),
+      sprintf("%s did not throw an error of class '%s'.", lab, class),
+      info = info
+    )
+  } else if (identical(regexp, NA)) {
     expect(
       is.null(error),
       sprintf("%s threw an error.\n%s", lab, error$message),

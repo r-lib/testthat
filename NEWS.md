@@ -1,5 +1,8 @@
 # testthat 1.0.2.9000
 
+* `expect_error()` gains a `class` argument that allows you to make an assertion
+  about the class of the error object (#530).
+
 * `is_null()` and `matches()` have been deprecated because they conflict
   with other functions in the tidyverse (#523).
 

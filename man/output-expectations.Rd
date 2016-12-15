@@ -15,7 +15,8 @@ expect_output(object, regexp = NULL, ..., info = NULL, label = NULL)
 expect_output_file(object, file, update = FALSE, ..., info = NULL,
   label = NULL)
 
-expect_error(object, regexp = NULL, ..., info = NULL, label = NULL)
+expect_error(object, regexp = NULL, class = NULL, ..., info = NULL,
+  label = NULL)
 
 expect_message(object, regexp = NULL, ..., all = FALSE, info = NULL,
   label = NULL)
@@ -47,6 +48,9 @@ writing tests in loops).}
 \item{file}{Path to a "golden" text file that contains the desired output.}
 
 \item{update}{Should the "golden" text file be updated? Default: \code{FALSE}.}
+
+\item{class}{Instead of supply a regular expression, you can also supply
+a class name. This is useful for "classed" conditions.}
 
 \item{all}{For messages and warnings, do all need to the \code{regexp}
 (TRUE), or does only one need to match (FALSE)}
