@@ -9,9 +9,8 @@
 StopReporter
 }
 \description{
-The default reporter, executed when \code{expect_that} is run
-interactively. It
-responds by \link{stop}()ing on failures and doing nothing otherwise. This
+The default reporter, executed when \code{expect_that} is run interactively.
+It responds by \link{stop}()ing on failures and doing nothing otherwise. This
 will ensure that a failing test will raise an error.
 }
 \details{
