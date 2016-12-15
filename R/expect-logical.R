@@ -29,7 +29,7 @@ NULL
 #' @export
 #' @rdname logical-expectations
 expect_true <- function(object, info = NULL, label = NULL) {
-  lab <- make_label(object, label)
+  lab <- make_label(substitute(object), label)
 
   expect(
     identical(as.vector(object), TRUE),
@@ -42,7 +42,7 @@ expect_true <- function(object, info = NULL, label = NULL) {
 #' @export
 #' @rdname logical-expectations
 expect_false <- function(object, info = NULL, label = NULL) {
-  lab <- make_label(object, label)
+  lab <- make_label(substitute(object), label)
 
   expect(
     identical(as.vector(object), FALSE),

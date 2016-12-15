@@ -13,7 +13,7 @@
 #' }
 expect_length <- function(object, n) {
   stopifnot(is.numeric(n), length(n) == 1)
-  lab <- label(object)
+  lab <- label(substitute(object))
 
   if (!is_vector(object)) {
     fail(sprintf("%s is not a vector.", lab))

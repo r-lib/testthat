@@ -22,12 +22,9 @@ NULL
 
 expect_compare <- function(operator = c("<", "<=", ">", ">="),
                            actual, expected,
-                           label = NULL, expected.label = NULL) {
+                           label, expected.label) {
   operator <- match.arg(operator)
   op <- match.fun(operator)
-
-  lab_act <- make_label(actual, label)
-  lab_exp <- make_label(expected, expected.label)
 
   stopifnot(is.numeric(actual), length(actual) == 1)
   stopifnot(is.numeric(expected), length(expected) == 1)
@@ -42,32 +39,40 @@ expect_compare <- function(operator = c("<", "<=", ">", ">="),
   diff <- actual - expected
   expect(
     op(diff, 0),
-    sprintf("%s is %s %s. Difference: %.3g", lab_act, msg, lab_exp, diff)
+    sprintf("%s is %s %s. Difference: %.3g", label, msg, expected.label, diff)
   )
   invisible(actual)
 }
 #' @export
 #' @rdname comparison-expectations
 expect_lt <- function(object, expected, label = NULL, expected.label = NULL) {
-  expect_compare("<", object, expected, label = label, expected.label = expected.label)
+  lab_act <- make_label(substitute(object), label)
+  lab_exp <- make_label(substitute(expected), expected.label)
+  expect_compare("<", object, expected, label = lab_act, expected.label = lab_exp)
 }
 
 #' @export
 #' @rdname comparison-expectations
 expect_lte <- function(object, expected, label = NULL, expected.label = NULL) {
-  expect_compare("<=", object, expected, label = label, expected.label = expected.label)
+  lab_act <- make_label(substitute(object), label)
+  lab_exp <- make_label(substitute(expected), expected.label)
+  expect_compare("<=", object, expected, label = lab_act, expected.label = lab_exp)
 }
 
 #' @export
 #' @rdname comparison-expectations
 expect_gt <- function(object, expected, label = NULL, expected.label = NULL) {
-  expect_compare(">", object, expected, label = label, expected.label = expected.label)
+  lab_act <- make_label(substitute(object), label)
+  lab_exp <- make_label(substitute(expected), expected.label)
+  expect_compare(">", object, expected, label = lab_act, expected.label = lab_exp)
 }
 
 #' @export
 #' @rdname comparison-expectations
 expect_gte <- function(object, expected, label = NULL, expected.label = NULL) {
-  expect_compare(">=", object, expected, label = label, expected.label = expected.label)
+  lab_act <- make_label(substitute(object), label)
+  lab_exp <- make_label(substitute(expected), expected.label)
+  expect_compare(">=", object, expected, label = lab_act, expected.label = lab_exp)
 }
 
 

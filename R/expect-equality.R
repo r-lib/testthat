@@ -47,9 +47,8 @@ NULL
 #' @param ... other values passed to \code{\link{all.equal}}
 expect_equal <- function(object, expected, ..., info = NULL, label = NULL,
                          expected.label = NULL) {
-
-  lab_act <- make_label(object, label)
-  lab_exp <- make_label(expected, expected.label)
+  lab_act <- make_label(substitute(object), label)
+  lab_exp <- make_label(substitute(expected), expected.label)
 
   comp <- compare(object, expected, ...)
   expect(
@@ -65,8 +64,8 @@ expect_equal <- function(object, expected, ..., info = NULL, label = NULL,
 #' @rdname equality-expectations
 expect_equivalent <- function(object, expected, info = NULL, label = NULL,
                               expected.label = NULL) {
-  lab_act <- make_label(object, label)
-  lab_exp <- make_label(expected, expected.label)
+  lab_act <- make_label(substitute(object), label)
+  lab_exp <- make_label(substitute(expected), expected.label)
 
   comp <- compare(object, expected, check.attributes = FALSE)
   expect(
@@ -82,8 +81,8 @@ expect_equivalent <- function(object, expected, info = NULL, label = NULL,
 expect_identical <- function(object, expected, info = NULL, label = NULL,
                              expected.label = NULL) {
 
-  lab_act <- make_label(object, label)
-  lab_exp <- make_label(expected, expected.label)
+  lab_act <- make_label(substitute(object), label)
+  lab_exp <- make_label(substitute(expected), expected.label)
 
   ident <- identical(object, expected)
   if (ident) {
