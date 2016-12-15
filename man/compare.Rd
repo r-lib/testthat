@@ -10,7 +10,7 @@
 \usage{
 compare(x, y, ...)
 
-\method{compare}{default}(x, y, ...)
+\method{compare}{default}(x, y, ..., max_diffs = 9)
 
 \method{compare}{character}(x, y, check.attributes = TRUE, ...,
   max_diffs = 5, max_lines = 5, width = getOption("width"))
@@ -25,9 +25,9 @@ compare(x, y, ...)
 
 \item{...}{Additional arguments used to control specifics of comparison}
 
-\item{check.attributes}{If \code{TRUE}, also checks values of attributes.}
-
 \item{max_diffs}{Maximum number of differences to show}
+
+\item{check.attributes}{If \code{TRUE}, also checks values of attributes.}
 
 \item{max_lines}{Maximum number of lines to show from each difference}
 

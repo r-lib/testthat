@@ -1,5 +1,8 @@
 # testthat 1.0.2.9000
 
+* The default `compare()` gains a `max_diffs` argument and defaults to printing
+  out only the first 9 differences (#538).
+
 * `expect_output_file()` now:
 
   * Sets the width to 80 to ensure consistent output (#514)

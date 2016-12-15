@@ -43,9 +43,13 @@ print.comparison <- function(x, ...) {
 
 #' @export
 #' @rdname compare
-compare.default <- function(x, y, ...){
+compare.default <- function(x, y, ..., max_diffs = 9){
   same <- all.equal(x, y, ...)
-  comparison(identical(same, TRUE), paste0(same, collapse = "\n"))
+  if (length(same) > max_diffs) {
+    same <- c(same[1:max_diffs], "...")
+  }
+
+  comparison(identical(same, TRUE), as.character(same))
 }
 
 print_out <- function(x, ...) {
