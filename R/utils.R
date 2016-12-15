@@ -48,6 +48,17 @@ safe_read_lines <- function(file) {
   )
 }
 
+read_lines_with_encoding <- function(path, encoding) {
+  if (encoding == "unknown") {
+    readLines(path, warn = FALSE)
+  } else {
+    con <- file(path, "r", encoding = encoding)
+    on.exit(close(con), add = TRUE)
+
+    readLines(con, warn = FALSE)
+  }
+}
+
 
 # Tools for finding srcrefs -----------------------------------------------
 
