@@ -1,5 +1,11 @@
 # testthat 1.0.2.9000
 
+* `expect_output_file()` now:
+
+  * Sets the width to 80 to ensure consistent output (#514)
+  * Saves the output on the first run (#554)
+  * Correctly calls internal `expect_output_file()` to avoid error (#517)
+
 * `expect_error()` gains a `class` argument that allows you to make an assertion
   about the class of the error object (#530).
 

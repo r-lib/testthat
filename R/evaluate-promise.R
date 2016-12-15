@@ -100,14 +100,18 @@ get_messages <- function(x) {
 
 #' @export
 #' @rdname evaluate_promise
-capture_output <- function(code, print = FALSE) {
-  output <- capture_output_as_vector(code, print)
+#' @param width Number of characters per line of output
+capture_output <- function(code, print = FALSE, width = 80) {
+  output <- capture_output_as_vector(code, print, width = width)
   paste0(output, collapse = "\n")
 }
 
-capture_output_as_vector <- function(code, print) {
+capture_output_as_vector <- function(code, print, width = 80) {
   temp <- file()
   on.exit(close(temp), add = TRUE)
+
+  old <- options(width = width)
+  on.exit(options(old), add = TRUE)
 
   result <- with_sink(temp, withVisible(code))
   if (result$visible && print) {

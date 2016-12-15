@@ -13,7 +13,7 @@ capture_messages(code)
 
 capture_warnings(code)
 
-capture_output(code, print = FALSE)
+capture_output(code, print = FALSE, width = 80)
 }
 \arguments{
 \item{code}{Code to evaluate. This should be an unevaluated expression.}
@@ -21,6 +21,8 @@ capture_output(code, print = FALSE)
 \item{print}{If \code{TRUE} and the result of evaluating \code{code} is
 visible this will print the result, ensuring that the output of printing
 the object is included in the overall output}
+
+\item{width}{Number of characters per line of output}
 }
 \value{
 A list containing
