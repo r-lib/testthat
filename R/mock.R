@@ -77,6 +77,11 @@ extract_mocks <- function(new_values, .env, eval_env = parent.frame()) {
     function(qual_name) {
       pkg_name <- gsub(pkg_and_name_rx, "\\1", qual_name)
 
+      if (is_base_pkg(pkg_name)) {
+        stop("You can not mock functions in base packages (", pkg_name, ")",
+          call. = FALSE)
+      }
+
       name <- gsub(pkg_and_name_rx, "\\2", qual_name)
 
       if (pkg_name == "")
@@ -90,6 +95,10 @@ extract_mocks <- function(new_values, .env, eval_env = parent.frame()) {
       mock(name = name, env = env, new = eval(new_values[[qual_name]], eval_env, eval_env))
     }
   )
+}
+
+is_base_pkg <- function(x) {
+  x %in% rownames(installed.packages(priority = "base"))
 }
 
 #' @useDynLib testthat duplicate_
