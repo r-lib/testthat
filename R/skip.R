@@ -55,7 +55,7 @@ skip_if_not_installed <- function(pkg, minimum_version = NULL) {
   }
 
   if (!is.null(minimum_version)) {
-    installed_version <- packageVersion(pkg)
+    installed_version <- utils::packageVersion(pkg)
     if (installed_version < minimum_version) {
       skip(paste0(pkg, " is installed in version ", installed_version, ", required ", minimum_version))
     }
