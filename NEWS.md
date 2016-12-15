@@ -22,6 +22,8 @@
 
 * Fixed filtering in `find_test_scripts` for files containing `\.[rR]` in the
   body of the filename and not just in the extension (#492, @brodieG)
+  
+* `auto_test_package()` now works correctly on windows (#465). 
 
 # testthat 1.0.2
 
