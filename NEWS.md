@@ -1,5 +1,8 @@
 # testthat 1.0.2.9000
 
+* `test_file()` now triggers a `gc()` after tests are run. This helps
+  to ensure that finalisers are run earlier (#535).
+
 * New argument`encoding` in `test_file()` and `source_file()` (@hansharhoff, #550, hadley/devtools#1306)
 
 * Special regular expression characters are escaped when printing errors in

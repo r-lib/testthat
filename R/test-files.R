@@ -130,6 +130,9 @@ test_file <- function(path, reporter = "summary", env = test_env(),
 
       source_file(path, new.env(parent = env),
                   chdir = TRUE, encoding = encoding)
+
+      gc()
+
       end_context()
     }
   )
