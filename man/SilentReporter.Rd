@@ -14,5 +14,16 @@ This is helpful for programmatically inspecting errors after a test run.
 You can retrieve the results with the \code{expectations()}
 method.
 }
+\seealso{
+Other reporters: \code{\link{CheckReporter}},
+  \code{\link{DebugReporter}}, \code{\link{FailReporter}},
+  \code{\link{ListReporter}},
+  \code{\link{MinimalReporter}},
+  \code{\link{MultiReporter}},
+  \code{\link{RstudioReporter}},
+  \code{\link{StopReporter}},
+  \code{\link{SummaryReporter}}, \code{\link{TapReporter}},
+  \code{\link{TeamcityReporter}}
+}
 \keyword{datasets}
 

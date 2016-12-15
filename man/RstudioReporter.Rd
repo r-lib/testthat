@@ -12,5 +12,15 @@ RstudioReporter
 This reporter is designed for output to RStudio. It produces results in
 any easily parsed form.
 }
+\seealso{
+Other reporters: \code{\link{CheckReporter}},
+  \code{\link{DebugReporter}}, \code{\link{FailReporter}},
+  \code{\link{ListReporter}},
+  \code{\link{MinimalReporter}},
+  \code{\link{MultiReporter}},
+  \code{\link{SilentReporter}}, \code{\link{StopReporter}},
+  \code{\link{SummaryReporter}}, \code{\link{TapReporter}},
+  \code{\link{TeamcityReporter}}
+}
 \keyword{datasets}
 

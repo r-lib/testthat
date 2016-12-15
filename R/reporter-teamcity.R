@@ -8,6 +8,7 @@ NULL
 #' http://confluence.jetbrains.com/display/TCD7/Build+Script+Interaction+with+TeamCity
 #'
 #' @export
+#' @family reporters
 TeamcityReporter <- R6::R6Class("TeamcityReporter", inherit = Reporter,
   public = list(
     i = NA_integer_,

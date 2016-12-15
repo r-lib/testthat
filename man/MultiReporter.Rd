@@ -12,5 +12,15 @@ MultiReporter
 This reporter is useful to use several reporters at the same time, e.g.
 adding a custom reporter without removing the current one.
 }
+\seealso{
+Other reporters: \code{\link{CheckReporter}},
+  \code{\link{DebugReporter}}, \code{\link{FailReporter}},
+  \code{\link{ListReporter}},
+  \code{\link{MinimalReporter}},
+  \code{\link{RstudioReporter}},
+  \code{\link{SilentReporter}}, \code{\link{StopReporter}},
+  \code{\link{SummaryReporter}}, \code{\link{TapReporter}},
+  \code{\link{TeamcityReporter}}
+}
 \keyword{datasets}
 

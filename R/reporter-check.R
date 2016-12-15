@@ -7,6 +7,7 @@ NULL
 #' report is design to ensure that you see something useful there.
 #'
 #' @export
+#' @family reporters
 CheckReporter <- R6::R6Class("CheckReporter", inherit = Reporter,
   public = list(
     failures = list(),

@@ -16,6 +16,7 @@ NULL
 #' if all your tests pass.
 #'
 #' @export
+#' @family reporters
 SummaryReporter <- R6::R6Class("SummaryReporter", inherit = Reporter,
   public = list(
     failures = NULL,

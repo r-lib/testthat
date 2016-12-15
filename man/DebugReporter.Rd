@@ -12,5 +12,15 @@ DebugReporter
 This reporter will call a modified version of \code{\link{recover}} on all
 broken expectations.
 }
+\seealso{
+Other reporters: \code{\link{CheckReporter}},
+  \code{\link{FailReporter}}, \code{\link{ListReporter}},
+  \code{\link{MinimalReporter}},
+  \code{\link{MultiReporter}},
+  \code{\link{RstudioReporter}},
+  \code{\link{SilentReporter}}, \code{\link{StopReporter}},
+  \code{\link{SummaryReporter}}, \code{\link{TapReporter}},
+  \code{\link{TeamcityReporter}}
+}
 \keyword{datasets}
 

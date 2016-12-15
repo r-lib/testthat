@@ -7,6 +7,7 @@ NULL
 #' adding a custom reporter without removing the current one.
 #'
 #' @export
+#' @family reporters
 MultiReporter <- R6::R6Class("MultiReporter", inherit = Reporter,
   public = list(
     reporters = list(),

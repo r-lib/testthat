@@ -19,5 +19,16 @@ This should be used when doing a quick and dirty test, or during the final
 automated testing of R CMD check.  Otherwise, use a reporter that runs all
 tests and gives you more context about the problem.
 }
+\seealso{
+Other reporters: \code{\link{CheckReporter}},
+  \code{\link{DebugReporter}}, \code{\link{FailReporter}},
+  \code{\link{ListReporter}},
+  \code{\link{MinimalReporter}},
+  \code{\link{MultiReporter}},
+  \code{\link{RstudioReporter}},
+  \code{\link{SilentReporter}},
+  \code{\link{SummaryReporter}}, \code{\link{TapReporter}},
+  \code{\link{TeamcityReporter}}
+}
 \keyword{datasets}
 

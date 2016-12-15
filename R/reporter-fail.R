@@ -8,6 +8,7 @@ NULL
 #' \code{\link{SummaryReporter}}.
 #'
 #' @export
+#' @family reporters
 FailReporter <- R6::R6Class("FailReporter", inherit = Reporter,
   public = list(
     failed = FALSE,

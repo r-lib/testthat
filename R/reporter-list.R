@@ -11,6 +11,7 @@ methods::setOldClass('proc_time')
 #' test elapsed time, and test filename if available. Very useful for reporting.
 #'
 #' @export
+#' @family reporters
 ListReporter <- R6::R6Class("ListReporter", inherit = Reporter,
   public = list(
     current_start_time = NA,

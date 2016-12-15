@@ -9,6 +9,7 @@ NULL
 #' were, you'll need to run a more informative test reporter.
 #'
 #' @export
+#' @family reporters
 MinimalReporter <- R6::R6Class("MinimalReporter", inherit = Reporter,
   public = list(
     add_result = function(context, test, result) {

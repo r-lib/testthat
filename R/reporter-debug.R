@@ -7,6 +7,7 @@ NULL
 #' broken expectations.
 #'
 #' @export
+#' @family reporters
 DebugReporter <- R6::R6Class("DebugReporter", inherit = Reporter,
   public = list(
     add_result = function(context, test, result) {
