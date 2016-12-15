@@ -1,5 +1,8 @@
 # testthat 1.0.2.9000
 
+* `is_null()` and `matches()` have been deprecated because they conflict
+  with other functions in the tidyverse (#523).
+
 * `test_file()` now triggers a `gc()` after tests are run. This helps
   to ensure that finalisers are run earlier (#535).
 

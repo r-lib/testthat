@@ -14,6 +14,8 @@ NULL
 #' @export
 #' @rdname oldskool
 is_null <- function() {
+  warning("is_null is deprecated. Please use `expect_null` instead.",
+    call. = FALSE)
   function(x) expect_null(x)
 }
 
@@ -106,6 +108,10 @@ throws_error <- function(regexp = NULL, ...) {
 #' @export
 #' @rdname oldskool
 matches <- function(regexp, all = TRUE, ...) {
+  warning(
+    "`matches` is deprecated. Please use `expect_match` instead.",
+    call. = FALSE
+  )
   function(x) expect_match(x, regexp, all = all, ...)
 }
 

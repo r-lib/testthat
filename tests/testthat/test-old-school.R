@@ -7,7 +7,23 @@ test_that("old school logical works", {
 
 test_that("old school types still work", {
   expect_success(expect_that(1L, is_a("integer")))
-  expect_success(expect_that(NULL, is_null()))
+
+})
+
+test_that("tidyverse conflicts throw warnings", {
+  expect_warning(
+    expect_that(NULL, is_null()),
+    "deprecated"
+  )
+
+  expect_warning(
+    expect_that("te*st", matches("e*", fixed = TRUE)),
+    "deprecated"
+  )
+  expect_warning(
+    expect_that("test", matches("TEST", ignore.case = TRUE)),
+    "deprecated"
+  )
 })
 
 test_that("old school names still work", {
