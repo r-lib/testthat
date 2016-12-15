@@ -1,5 +1,7 @@
 # testthat 1.0.2.9000
 
+* New argument`encoding` in `test_file()` and `source_file()` (@hansharhoff, #550, hadley/devtools#1306)
+
 * New argument `load_helpers` in `test_dir()` (#505).
 
 * New `DebugReporter` that calls a better version of `recover()` in case of failures, errors, or warnings (#360, #470).
