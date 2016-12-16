@@ -1,5 +1,7 @@
 # testthat 1.0.2.9000
 
+* `test_path()` no longer assumes that the path exists (#448).
+
 * Empty tests now generate a default `skip()` (#413).
 
 * The default `compare()` gains a `max_diffs` argument and defaults to printing

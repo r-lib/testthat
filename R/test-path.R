@@ -4,8 +4,7 @@
 #' locating files in the \code{tests/testthat} directory
 #'
 #' @param ... Character vectors giving path component.
-#' @return A character vector giving the path. An error will be thrown if
-#'   the path doesn't exist.
+#' @return A character vector giving the path.
 #' @export
 test_path <- function(...) {
   if (in_testing_dir(".")) {
@@ -20,10 +19,6 @@ test_path <- function(...) {
         call. = FALSE)
     }
     path <- file.path(base, ...)
-  }
-
-  if (!file.exists(path)) {
-    stop("`", path, "` doesn't exist", call. = FALSE)
   }
 
   path
