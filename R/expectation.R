@@ -44,6 +44,11 @@ expect <- function(exp, ..., srcref = NULL) {
   invisible(exp)
 }
 
+#' @export
+#' @rdname expectation
+#' @param object,label \code{make_label} is used to generate informative
+#'   labels for expressions. It defaults to the expression used to create
+#'   \code{object}, unless the user overrides it with \code{label}.
 make_label <- function(object, label = NULL) {
   label %||% label(object)
 }

@@ -1,5 +1,8 @@
 # testthat 1.0.2.9000
 
+* `make_label()` is now exported so you can more easily copy the style of 
+  built-in expressions (#507).
+
 * New `teardown()` allows you to run code that is guaranteed to be executed at 
   the end of a `test_file()`. This is useful if you want to pair cleanup code
   with the code that messes up state (#536)
