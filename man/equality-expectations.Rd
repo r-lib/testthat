@@ -10,7 +10,7 @@
 expect_equal(object, expected, ..., info = NULL, label = NULL,
   expected.label = NULL)
 
-expect_equivalent(object, expected, info = NULL, label = NULL,
+expect_equivalent(object, expected, ..., info = NULL, label = NULL,
   expected.label = NULL)
 
 expect_identical(object, expected, info = NULL, label = NULL,

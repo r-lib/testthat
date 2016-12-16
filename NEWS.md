@@ -1,5 +1,7 @@
 # testthat 1.0.2.9000
 
+* `expect_equivalent()` now passes `...` on to `compare()` (#552).
+
 * New `default_reporter()` which returns the default report. You can override
   the default "summary" by setting option "testthat.default_reporter" (#504).
 

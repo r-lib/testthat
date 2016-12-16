@@ -63,12 +63,12 @@ expect_equal <- function(object, expected, ..., info = NULL, label = NULL,
 
 #' @export
 #' @rdname equality-expectations
-expect_equivalent <- function(object, expected, info = NULL, label = NULL,
+expect_equivalent <- function(object, expected, ..., info = NULL, label = NULL,
                               expected.label = NULL) {
   lab_act <- make_label(object, label)
   lab_exp <- make_label(expected, expected.label)
 
-  comp <- compare(object, expected, check.attributes = FALSE)
+  comp <- compare(object, expected, ..., check.attributes = FALSE)
   expect(
     comp$equal,
     sprintf("%s not equivalent to %s.\n%s", lab_act, lab_exp, comp$message),
