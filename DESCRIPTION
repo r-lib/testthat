@@ -69,6 +69,7 @@ Collate:
     'reporter-zzz.R'
     'skip.R'
     'source.R'
+    'teardown.R'
     'test-compiled-code.R'
     'test-example.R'
     'test-files.R'

@@ -122,6 +122,11 @@ test_file <- function(path, reporter = "summary", env = test_env(),
     reporter <- lister
   }
 
+  on.exit({
+    teardown_run(dirname(path))
+    gc()
+  }, add = TRUE)
+
   with_reporter(
     reporter = reporter,
     start_end_reporter = start_end_reporter,
@@ -130,8 +135,6 @@ test_file <- function(path, reporter = "summary", env = test_env(),
 
       source_file(path, new.env(parent = env),
                   chdir = TRUE, encoding = encoding)
-
-      gc()
 
       end_context()
     }

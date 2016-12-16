@@ -1,5 +1,9 @@
 # testthat 1.0.2.9000
 
+* New `teardown()` allows you to run code that is guaranteed to be executed at 
+  the end of a `test_file()`. This is useful if you want to pair cleanup code
+  with the code that messes up state (#536)
+
 * `test_path()` now generates correct path when called from within 
   `tools::testInstalledPackage()` (#542).
 
