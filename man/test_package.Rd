@@ -5,7 +5,7 @@
 \alias{test_package}
 \title{Run all tests in an installed package.}
 \usage{
-test_package(package, filter = NULL, reporter = "summary", ...)
+test_package(package, filter = NULL, reporter = default_reporter(), ...)
 
 test_check(package, filter = NULL, reporter = "check", ...)
 }

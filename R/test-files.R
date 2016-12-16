@@ -26,7 +26,7 @@ test_env <- function() {
 #'
 #' @return the results as a "testthat_results" (list)
 #' @export
-test_dir <- function(path, filter = NULL, reporter = "summary",
+test_dir <- function(path, filter = NULL, reporter = default_reporter(),
                      env = test_env(), ..., encoding = "unknown", load_helpers = TRUE) {
   if (load_helpers) {
     source_test_helpers(path, env)
@@ -36,7 +36,7 @@ test_dir <- function(path, filter = NULL, reporter = "summary",
   test_files(paths, reporter = reporter, env = env, encoding = encoding)
 }
 
-test_files <- function(paths, reporter = "summary", env = test_env(),
+test_files <- function(paths, reporter = default_reporter(), env = test_env(),
                        encoding = "unknown") {
   if (length(paths) == 0) {
     stop('No matching test file in dir')
@@ -104,7 +104,7 @@ find_test_scripts <- function(path, filter = NULL, invert = FALSE, ...) {
 #' @inheritParams with_reporter
 #' @return the results as a "testthat_results" (list)
 #' @export
-test_file <- function(path, reporter = "summary", env = test_env(),
+test_file <- function(path, reporter = default_reporter(), env = test_env(),
                       start_end_reporter = TRUE, load_helpers = TRUE,
                       encoding = "unknown") {
   library(testthat)

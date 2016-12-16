@@ -1,5 +1,8 @@
 # testthat 1.0.2.9000
 
+* New `default_reporter()` which returns the default report. You can override
+  the default "summary" by setting option "testthat.default_reporter" (#504).
+
 * `capture_output_lines()` is now exported (#504).
 
 * `make_label()` is now exported so you can more easily copy the style of 

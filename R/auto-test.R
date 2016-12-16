@@ -30,7 +30,7 @@
 #' @param reporter test reporter to use
 #' @param env environment in which to execute test suite.
 #' @keywords debugging
-auto_test <- function(code_path, test_path, reporter = "summary",
+auto_test <- function(code_path, test_path, reporter = default_reporter(),
                       env = test_env()) {
   reporter <- find_reporter(reporter)
   code_path <- normalizePath(code_path)
@@ -72,7 +72,7 @@ auto_test <- function(code_path, test_path, reporter = "summary",
 #' @param reporter test reporter to use
 #' @keywords debugging
 #' @seealso \code{\link{auto_test}} for details on how method works
-auto_test_package <- function(pkg = ".", reporter = "summary") {
+auto_test_package <- function(pkg = ".", reporter = default_reporter()) {
   if (!requireNamespace("devtools", quietly = TRUE)) {
     stop("devtools required to run auto_test_package(). Please install.",
       call. = FALSE)

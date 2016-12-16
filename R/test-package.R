@@ -33,7 +33,7 @@ with_top_env <- function(env, code) {
 #' @export
 #' @examples
 #' \dontrun{test_package("testthat")}
-test_package <- function(package, filter = NULL, reporter = "summary", ...) {
+test_package <- function(package, filter = NULL, reporter = default_reporter(), ...) {
   library(testthat)
 
   # Ensure that test package returns silently if called recursively - this
