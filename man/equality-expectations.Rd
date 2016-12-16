@@ -5,6 +5,7 @@
 \alias{expect_equal}
 \alias{expect_equivalent}
 \alias{expect_identical}
+\alias{expect_setequal}
 \title{Expectation: is the object equal to a value?}
 \usage{
 expect_equal(object, expected, ..., info = NULL, label = NULL,
@@ -14,6 +15,9 @@ expect_equivalent(object, expected, info = NULL, label = NULL,
   expected.label = NULL)
 
 expect_identical(object, expected, info = NULL, label = NULL,
+  expected.label = NULL)
+
+expect_setequal(object, expected, info = NULL, label = NULL,
   expected.label = NULL)
 }
 \arguments{

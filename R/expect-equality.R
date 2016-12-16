@@ -105,3 +105,21 @@ expect_identical <- function(object, expected, info = NULL, label = NULL,
   invisible(object)
 }
 
+#' @export
+#' @rdname equality-expectations
+expect_setequal <- function(object, expected, info = NULL, label = NULL,
+                            expected.label = NULL) {
+
+  lab_act <- make_label(object, label)
+  lab_exp <- make_label(expected, expected.label)
+
+  steq <- compare_set(object, expected)
+
+  expect(
+    steq$equal,
+    sprintf("%s not setequal to %s.\n%s", lab_act, lab_exp, steq$message),
+    info = info
+  )
+  invisible(object)
+
+}
