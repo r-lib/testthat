@@ -16,6 +16,7 @@ adding a custom reporter without removing the current one.
 Other reporters: \code{\link{CheckReporter}},
   \code{\link{DebugReporter}}, \code{\link{FailReporter}},
   \code{\link{ListReporter}},
+  \code{\link{LocationReporter}},
   \code{\link{MinimalReporter}},
   \code{\link{RstudioReporter}},
   \code{\link{SilentReporter}}, \code{\link{StopReporter}},

@@ -15,6 +15,7 @@ report is design to ensure that you see something useful there.
 \seealso{
 Other reporters: \code{\link{DebugReporter}},
   \code{\link{FailReporter}}, \code{\link{ListReporter}},
+  \code{\link{LocationReporter}},
   \code{\link{MinimalReporter}},
   \code{\link{MultiReporter}},
   \code{\link{RstudioReporter}},

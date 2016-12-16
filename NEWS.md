@@ -1,5 +1,8 @@
 # testthat 1.0.2.9000
 
+* New `LocationReporter` which just prints the location of every expectation.
+  This is useful for locating segfaults and C/C++ breakpoints (#551).
+
 * `expect_equivalent()` now passes `...` on to `compare()` (#552).
 
 * New `default_reporter()` which returns the default report. You can override

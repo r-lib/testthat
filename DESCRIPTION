@@ -57,6 +57,7 @@ Collate:
     'reporter-debug.R'
     'reporter-fail.R'
     'reporter-list.R'
+    'reporter-location.R'
     'reporter-minimal.R'
     'reporter-multi.R'
     'reporter-rstudio.R'
