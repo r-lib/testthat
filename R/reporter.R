@@ -48,6 +48,16 @@ Reporter <- R6::R6Class("Reporter",
       self$cat_tight(..., "\n\n")
     },
 
+    rule = function(..., pad = "-") {
+      if (nargs() == 0) {
+        title <- ""
+      } else {
+        title <- paste0(..., " ")
+      }
+      width <- getOption("width") - nchar(title)
+      self$cat_line(title, paste(rep(pad, width, collapse = "")))
+    },
+
     # The hierarchy of contexts are implied - a context starts with a
     # call to context(), and ends either with the end of the file, or
     # with the next call to context() in the same file. These private

@@ -70,7 +70,7 @@ SummaryReporter <- R6::R6Class("SummaryReporter", inherit = Reporter,
       private$cat_reports("Warnings", warnings, Inf, skip_summary)
       private$cat_reports("Failed", failures, self$max_reports, failure_summary)
 
-      rule("DONE", pad = "=")
+      self$rule("DONE", pad = "=")
       if (self$show_praise) {
         if (length(failures) == 0 && runif(1) < 0.1) {
           self$cat_line(colourise(praise(), "success"))
@@ -89,7 +89,7 @@ SummaryReporter <- R6::R6Class("SummaryReporter", inherit = Reporter,
       if (n == 0L)
         return()
 
-      rule(header)
+      self$rule(header)
 
       if (n > max_n) {
         expectations <- expectations[seq_len(max_n)]

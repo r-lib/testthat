@@ -15,17 +15,6 @@ null <- function(...) invisible()
 
 klass <- function(x) paste(class(x), collapse = "/")
 
-rule <- function(..., pad = "-") {
-  if (nargs() == 0) {
-    title <- ""
-  } else {
-    title <- paste0(..., " ")
-  }
-  width <- getOption("width") - nchar(title)
-
-  cat(title, paste(rep(pad, width, collapse = "")), "\n", sep = "")
-}
-
 first_last <- function(x, max = 10, filler = "...") {
   if (length(x) <= 2 * max + 1) {
     x
