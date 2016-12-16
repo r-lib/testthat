@@ -24,7 +24,7 @@ test_env <- function() {
 #' @param ... Additional arguments passed to \code{grepl} to control filtering.
 #' @inheritParams test_file
 #'
-#' @return the results as a "testthat_results" (list)
+#' @return The results of the reporter function on all test results.
 #' @export
 test_dir <- function(path, filter = NULL, reporter = "summary",
                      env = test_env(), ..., encoding = "unknown", load_helpers = TRUE) {
