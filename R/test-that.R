@@ -31,7 +31,7 @@ test_that <- function(desc, code) {
   test_code(desc, code, env = parent.frame())
 }
 
-test_code <- function(test, code, env = test_env()) {
+test_code <- function(test, code, env = test_env(), skip_on_empty = TRUE) {
   get_reporter()$start_test(context = get_reporter()$.context, test = test)
   on.exit(get_reporter()$end_test(context = get_reporter()$.context, test = test))
 
@@ -50,9 +50,9 @@ test_code <- function(test, code, env = test_env()) {
   }
 
   frame <- sys.nframe()
-  frame_calls <- function(start_offset, end_offset) {
+  frame_calls <- function(start_offset, end_offset, start_frame = frame) {
     sys_calls <- sys.calls()
-    start_frame <- frame + start_offset
+    start_frame <- start_frame + start_offset
     structure(
       sys_calls[(start_frame):(length(sys_calls) - end_offset - 1)],
       start_frame = start_frame
@@ -67,7 +67,13 @@ test_code <- function(test, code, env = test_env()) {
   expressions_opt <- getOption("expressions")
   expressions_opt_new <- min(expressions_opt + 500L, 500000L)
 
+  # If no handlers are called we skip: BDD (`describe()`) tests are often
+  # nested and the top level might not contain any expectations, so we need
+  # some way to disable
+  handled <- !skip_on_empty
+
   handle_error <- function(e) {
+    handled <<- TRUE
     # First thing: Collect test error
     test_error <<- e
 
@@ -92,6 +98,7 @@ test_code <- function(test, code, env = test_env()) {
     test_error <<- e
   }
   handle_fatal <- function(e) {
+    handled <<- TRUE
     # Error caught in handle_error() has precedence
     if (!is.null(test_error)) {
       e <- test_error
@@ -107,28 +114,42 @@ test_code <- function(test, code, env = test_env()) {
     register_expectation(e)
   }
   handle_expectation <- function(e) {
+    handled <<- TRUE
     e$expectation_calls <- frame_calls(11, 6)
     register_expectation(e)
     invokeRestart("continue_test")
   }
   handle_warning <- function(e) {
+    handled <<- TRUE
     e$expectation_calls <- frame_calls(11, 5)
     register_expectation(e)
     invokeRestart("muffleWarning")
   }
   handle_message <- function(e) {
+    handled <<- TRUE
     invokeRestart("muffleMessage")
   }
   handle_skip <- function(e) {
-    e$expectation_calls <- frame_calls(11, 2)
+    handled <<- TRUE
+
+    if (inherits(e, "skip_empty")) {
+      # Need to generate call as if from test_that
+      e$expectation_calls <- frame_calls(0, 12, frame - 1)
+    } else {
+      e$expectation_calls <- frame_calls(11, 2)
+    }
+
     register_expectation(e)
     signalCondition(e)
   }
 
   test_env <- new.env(parent = env)
   tryCatch(
-    withCallingHandlers(
-      eval(code, test_env),
+    withCallingHandlers({
+      eval(code, test_env)
+      if (!handled)
+        skip_empty()
+      },
       expectation = handle_expectation,
       skip =        handle_skip,
       warning =     handle_warning,
@@ -140,6 +161,7 @@ test_code <- function(test, code, env = test_env()) {
     # skip silently terminate code
     skip =  function(e) {}
   )
+
 
   invisible(ok)
 }

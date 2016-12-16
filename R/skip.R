@@ -35,6 +35,15 @@ skip <- function(message) {
   stop(cond)
 }
 
+# Called automatically if the test contains no expectations
+skip_empty <- function() {
+  cond <- structure(
+    list(message = "Empty test"),
+    class = c("skip_empty", "skip", "condition")
+  )
+  stop(cond)
+}
+
 #' @export
 #' @rdname skip
 #' @param condition Boolean condition to check. If not \code{TRUE}, will

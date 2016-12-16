@@ -189,17 +189,19 @@
 173: tests.R#42: f()
 174: tests.R#42: f()
 175: tests.R#42: f()
-176: tests.R#42: f()
 
 1: tests.R#49: skip("skip")
 
 1: tests.R#54: f()
 2: tests.R#53: skip("skip")
 
-1: tests.R#60: warning("abc")
+1: tests.R#57: test_that("Skip:3", {
+})
 
-1: tests.R#64: warning("def")
+1: tests.R#63: warning("abc")
 
-1: tests.R#65: f()
-2: tests.R#63: warning("ghi")
+1: tests.R#67: warning("def")
+
+1: tests.R#68: f()
+2: tests.R#66: warning("ghi")
 

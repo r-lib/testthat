@@ -1,5 +1,7 @@
 # testthat 1.0.2.9000
 
+* Empty tests now generate a default `skip()` (#413).
+
 * The default `compare()` gains a `max_diffs` argument and defaults to printing
   out only the first 9 differences (#538).
 

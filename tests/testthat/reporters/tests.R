@@ -54,6 +54,9 @@ test_that("Skip:2", {
   f()
 })
 
+test_that("Skip:3", {
+})
+
 context("Warnings")
 
 test_that("Warning:1", {
