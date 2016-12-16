@@ -1,5 +1,8 @@
 # testthat 1.0.2.9000
 
+* `test_path()` now generates correct path when called from within 
+  `tools::testInstalledPackage()` (#542).
+
 * `test_path()` no longer assumes that the path exists (#448).
 
 * Empty tests now generate a default `skip()` (#413).

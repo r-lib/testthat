@@ -7,6 +7,16 @@ test_that("returns local path when called in tests", {
   expect_equal(test_path("xxxx"), "xxxx")
 })
 
+test_that("returns local path when called from tools::testInstalledPackages", {
+  old <- setwd("test-path-installed/testthat-tests/testthat")
+  on.exit(setwd(old))
+
+  expect_true(in_testing_dir("."))
+
+  expect_equal(test_path("test-test-path.R"), "test-test-path.R")
+  expect_equal(test_path("xxxx"), "xxxx")
+})
+
 test_that("returns full path when called outside tests", {
   old <- setwd("test-path-present")
   on.exit(setwd(old))

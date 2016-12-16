@@ -31,5 +31,10 @@ in_testing_dir <- function(path) {
     return(FALSE)
 
   parent <- dirname(path)
-  basename(parent) %in% c("tests", "tests_x64", "tests_i386")
+  if (grepl("-tests$", parent)) {
+    # Probably called from tools::testInstalledPackage
+    TRUE
+  } else {
+    basename(parent) %in% c("tests", "tests_x64", "tests_i386")
+  }
 }
