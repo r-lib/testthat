@@ -53,7 +53,7 @@ compare.default <- function(x, y, ..., max_diffs = 9){
 }
 
 print_out <- function(x, ...) {
-  lines <- utils::capture.output(print(x, ...))
+  lines <- capture_output_lines(x, ..., print = TRUE)
   paste0(lines, collapse = "\n")
 }
 

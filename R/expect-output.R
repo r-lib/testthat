@@ -119,7 +119,7 @@ expect_output_file <- function(object, file, update = FALSE, ...,
                                info = NULL, label = NULL, width = 80) {
   lab <- make_label(object, label)
 
-  output <- capture_output_as_vector(object, print = FALSE, width = width)
+  output <- capture_output_lines(object, print = FALSE, width = width)
   if (!file.exists(file)) {
     writeLines(output, file)
   }

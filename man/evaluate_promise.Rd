@@ -3,6 +3,7 @@
 \name{evaluate_promise}
 \alias{capture_messages}
 \alias{capture_output}
+\alias{capture_output_lines}
 \alias{capture_warnings}
 \alias{evaluate_promise}
 \title{Evaluate a promise, capturing all types of output.}
@@ -14,6 +15,8 @@ capture_messages(code)
 capture_warnings(code)
 
 capture_output(code, print = FALSE, width = 80)
+
+capture_output_lines(code, print = FALSE, width = 80)
 }
 \arguments{
 \item{code}{Code to evaluate. This should be an unevaluated expression.}

@@ -1,5 +1,7 @@
 # testthat 1.0.2.9000
 
+* `capture_output_lines()` is now exported (#504).
+
 * `make_label()` is now exported so you can more easily copy the style of 
   built-in expressions (#507).
 

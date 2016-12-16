@@ -70,7 +70,7 @@ show_stack <- function(star = integer(), n = sys.nframe() - 1L) {
 }
 
 env_name <- function(x) {
-  str <- utils::capture.output(print(x))
+  str <- capture_output(x, print = TRUE)
   gsub("<environment: |>", "", str)
 }
 
