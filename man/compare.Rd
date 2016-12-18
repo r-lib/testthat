@@ -38,7 +38,7 @@ compare(x, y, ...)
 value will be ignored.}
 }
 \description{
-\code{compare} is similar to \code{\link[base]{all.equal}()}, but shows
+\code{compare} is similar to \code{\link[base:all.equal]{base::all.equal()}}, but shows
 you examples of where the failures occured.
 }
 \examples{

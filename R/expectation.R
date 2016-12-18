@@ -1,7 +1,7 @@
 #' Expectation class.
 #'
-#' You generate an expectation object with `expectation`, and signal
-#' an expectation with `expect`. If you're making your own expectation
+#' You generate an expectation object with `expectation()`, and signal
+#' an expectation with `expect()`. If you're making your own expectation
 #' function, you'll typically call `expect(condition, "failure message")`.
 #' See the source code for the built-in expectations for details.
 #'

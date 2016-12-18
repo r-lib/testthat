@@ -21,7 +21,7 @@ test_env <- function() {
 #' @param filter If not `NULL`, only tests with file names matching this
 #'   regular expression will be executed.  Matching will take on the file
 #'   name after it has been stripped of `"test-"` and `".R"`.
-#' @param ... Additional arguments passed to `grepl` to control filtering.
+#' @param ... Additional arguments passed to [grepl()] to control filtering.
 #' @inheritParams test_file
 #'
 #' @return the results as a "testthat_results" (list)
@@ -83,7 +83,7 @@ filter_test_scripts <- function(files, filter = NULL, invert = FALSE, ...) {
 #' @param path path to tests
 #' @param filter cf [test_dir()]
 #' @param invert If \sQuote{TRUE} return files which do \emph{not} match.
-#' @param ... Additional arguments passed to `grepl` to control filtering.
+#' @param ... Additional arguments passed to [grepl()] to control filtering.
 #' @return the test file paths
 #' @keywords internal
 #' @export

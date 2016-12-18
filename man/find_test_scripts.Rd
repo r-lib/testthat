@@ -13,7 +13,7 @@ find_test_scripts(path, filter = NULL, invert = FALSE, ...)
 
 \item{invert}{If \sQuote{TRUE} return files which do \emph{not} match.}
 
-\item{...}{Additional arguments passed to \code{grepl} to control filtering.}
+\item{...}{Additional arguments passed to \code{\link[=grepl]{grepl()}} to control filtering.}
 }
 \value{
 the test file paths

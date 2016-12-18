@@ -16,23 +16,19 @@ in \R packages with
 }
 \details{
 Calling \code{use_catch()} will:
-
 \enumerate{
-
 \item Create a file \code{src/test-runner.cpp}, which ensures that the
 \code{testthat} package will understand how to run your package's
 unit tests,
-
 \item Create an example test file \code{src/test-example.cpp}, which
 showcases how you might use Catch to write a unit test, and
-
 \item Add a test file \code{tests/testthat/test-cpp.R}, which ensures that
 \code{testthat} will run your compiled tests during invocations of
 \code{devtools::test()} or \code{R CMD check}.
 }
 
 C++ unit tests can be added to C++ source files within the
-\code{src/} directory of your package, with a format similar
+\code{src} directory of your package, with a format similar
 to \R code tested with \code{testthat}. Here's a simple example
 of a unit test written with \code{testthat} + Catch:
 

@@ -10,8 +10,8 @@ test_examples(path = "../../man")
 test_example(path)
 }
 \arguments{
-\item{path}{For \code{test_examples}, path to directory containing Rd files.
-For \code{test_example}, path to a single Rd file. Remember the working
+\item{path}{For \code{test_examples()}, path to directory containing Rd files.
+For \code{test_example()}, path to a single Rd file. Remember the working
 directory for tests is \code{tests/testthat}.}
 }
 \description{

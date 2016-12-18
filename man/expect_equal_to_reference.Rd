@@ -35,9 +35,9 @@ The test can be reset by deleting the RDS file.
 }
 \details{
 It is important to initialize the reference RDS file within the source
-package, most likely in the \code{tests/testthat/} directory. Testing spawned
-by \code{devtools::test()}, for example, will accomplish this. But note that
-testing spawned by \code{R CMD check} and \code{devtools::check()} will NOT.
+package, most likely in the \code{tests/testthat} directory. Testing spawned
+by \code{\link[devtools:test]{devtools::test()}}, for example, will accomplish this. But note that
+testing spawned by \code{R CMD check} and \code{\link[devtools:check]{devtools::check()}} will NOT.
 In the latter cases, the package source is copied to an external location
 before tests are run. The resulting RDS file will not make its way back into
 the package source and will not be available for subsequent comparisons.
