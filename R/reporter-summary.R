@@ -44,11 +44,9 @@ SummaryReporter <- R6::R6Class("SummaryReporter", inherit = Reporter,
     },
 
     add_result = function(context, test, result) {
-      dot <- NULL
       if (expectation_broken(result)) {
         if (self$failures$size() < self$max_reports) {
           self$failures$push(result)
-          dot <- colourise(labels[self$failures$size()], "error")
         }
       } else if (expectation_skip(result)) {
         self$skips$push(result)
@@ -60,7 +58,7 @@ SummaryReporter <- R6::R6Class("SummaryReporter", inherit = Reporter,
         }
       }
 
-      self$cat_tight(dot %||% single_letter_summary(result))
+      self$cat_tight(private$get_summary(result))
     },
 
     end_reporter = function() {
@@ -86,6 +84,16 @@ SummaryReporter <- R6::R6Class("SummaryReporter", inherit = Reporter,
   ),
 
   private = list(
+    get_summary = function(result) {
+      if (expectation_broken(result)) {
+        if (self$failures$size() < length(labels)) {
+          return(colourise(labels[self$failures$size()], "error"))
+        }
+      }
+
+      single_letter_summary(result)
+    },
+
     cat_reports = function(header, expectations, max_n, summary_fun,
                            collapse = "\n\n") {
       n <- length(expectations)
