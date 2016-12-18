@@ -1,11 +1,11 @@
 #' Expectation: does the object inherit from a S3 or S4 class, or a base type?
 #'
 #' Tests whether or not an object inherits from any of a list of classes, or
-#' is an instance of a base type. `expect_null` is a special case designed
+#' is an instance of a base type. `expect_null()` is a special case designed
 #' for detecting `NULL`.
 #'
-#' `expect_is` is an older form. I'd recommend using `expect_s3_class`
-#' or `expect_s4_class` in order to more clearly convery intent.
+#' `expect_is()` is an older form. I'd recommend using `expect_s3_class()`
+#' or `expect_s4_class()` in order to more clearly convey intent.
 #'
 #' @inheritParams expect_that
 #' @seealso [inherits()]

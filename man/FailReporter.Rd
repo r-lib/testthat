@@ -11,7 +11,7 @@ FailReporter
 \description{
 This reporter will simply throw an error if any of the tests failed. It is
 best combined with another reporter, such as the
-\code{\link[=SummaryReporter]{SummaryReporter()}}.
+\link{SummaryReporter}.
 }
 \keyword{datasets}
 

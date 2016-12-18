@@ -16,7 +16,7 @@ test_path <- function(...) {
   } else {
     base <- "tests/testthat"
     if (!file.exists(base)) {
-      stop("Can't find `tests/testthat/` in current directory.",
+      stop("Can't find `tests/testthat` in current directory.",
         call. = FALSE)
     }
     path <- file.path(base, ...)

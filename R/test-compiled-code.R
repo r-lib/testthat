@@ -1,7 +1,7 @@
 #' Test Compiled Code in a Package
 #'
 #' Test compiled code in the package `package`. See
-#' \code{\link{use_catch}()} for more details.
+#' [use_catch()] for more details.
 #'
 #' @note
 #' A call to this function will automatically be generated
@@ -41,22 +41,19 @@ expect_cpp_tests_pass <- function(package) {
 #'
 #' Calling `use_catch()` will:
 #'
-#' \enumerate{
+#' 1. Create a file `src/test-runner.cpp`, which ensures that the
+#'    `testthat` package will understand how to run your package's
+#'    unit tests,
 #'
-#'   \item Create a file `src/test-runner.cpp`, which ensures that the
-#'         `testthat` package will understand how to run your package's
-#'         unit tests,
+#' 2. Create an example test file `src/test-example.cpp`, which
+#'    showcases how you might use Catch to write a unit test, and
 #'
-#'   \item Create an example test file `src/test-example.cpp`, which
-#'         showcases how you might use Catch to write a unit test, and
-#'
-#'   \item Add a test file `tests/testthat/test-cpp.R`, which ensures that
-#'         `testthat` will run your compiled tests during invocations of
-#'         `devtools::test()` or `R CMD check`.
-#' }
+#' 3. Add a test file `tests/testthat/test-cpp.R`, which ensures that
+#'    `testthat` will run your compiled tests during invocations of
+#'    `devtools::test()` or `R CMD check`.
 #'
 #' C++ unit tests can be added to C++ source files within the
-#' `src/` directory of your package, with a format similar
+#' `src` directory of your package, with a format similar
 #' to \R code tested with `testthat`. Here's a simple example
 #' of a unit test written with `testthat` + Catch:
 #'

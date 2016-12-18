@@ -3,9 +3,9 @@ NULL
 
 #' Test reporter: stop on error.
 #'
-#' The default reporter, executed when `expect_that` is run
+#' The default reporter, executed when [expect_that()] is run
 #' interactively. It
-#' responds by \link{stop}()ing on failures and doing nothing otherwise. This
+#' responds by [stop()]ping on failures and doing nothing otherwise. This
 #' will ensure that a failing test will raise an error.
 #'
 #' This should be used when doing a quick and dirty test, or during the final

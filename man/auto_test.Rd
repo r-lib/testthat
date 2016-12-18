@@ -16,26 +16,24 @@ auto_test(code_path, test_path, reporter = "summary", env = test_env())
 \item{env}{environment in which to execute test suite.}
 }
 \description{
-The idea behind \code{auto_test} is that you just leave it running while
+The idea behind \code{auto_test()} is that you just leave it running while
 you develop your code.  Everytime you save a file it will be automatically
 tested and you can easily see if your changes have caused any test
 failures.
 }
 \details{
 The current strategy for rerunning tests is as follows:
-
 \itemize{
 \item if any code has changed, then those files are reloaded and all tests
 rerun
 \item otherwise, each new or modified test is run
 }
-In the future, \code{auto_test} might implement one of the following more
-intelligent alternatives:
 
+In the future, \code{auto_test()} might implement one of the following more
+intelligent alternatives:
 \itemize{
 \item Use codetools to build up dependency tree and then rerun tests only
 when a dependency changes.
-
 \item Mimic ruby's autotest and rerun only failing tests until they pass,
 and then rerun all tests.
 }

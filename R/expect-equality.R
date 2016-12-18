@@ -1,11 +1,9 @@
 #' Expectation: is the object equal to a value?
 #'
-#' \itemize{
-#' \item `expect_identical` tests with [identical()]
-#' \item `expect_equal` tests with [all.equal()]
-#' \item `expect_equivalent` tests with [all.equal()] and
+#' - `expect_identical` tests with [identical()]
+#' - `expect_equal` tests with [all.equal()]
+#' - `expect_equivalent` tests with [all.equal()] and
 #'   `check.attributes = FALSE`
-#' }
 #
 #' @param expected Expected value
 #' @param expected.label Equivalent of `label` for shortcut form.

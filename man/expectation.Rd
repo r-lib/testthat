@@ -23,8 +23,8 @@ is.expectation(x)
 (\code{TRUE}), failed (\code{FALSE}), or threw an error (\code{NA})}
 }
 \description{
-You generate an expectation object with \code{expectation}, and signal
-an expectation with \code{expect}. If you're making your own expectation
+You generate an expectation object with \code{expectation()}, and signal
+an expectation with \code{expect()}. If you're making your own expectation
 function, you'll typically call \code{expect(condition, "failure message")}.
 See the source code for the built-in expectations for details.
 }

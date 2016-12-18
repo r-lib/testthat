@@ -18,7 +18,7 @@ name after it has been stripped of \code{"test-"} and \code{".R"}.}
 
 \item{reporter}{reporter to use}
 
-\item{...}{Additional arguments passed to \code{grepl} to control filtering.}
+\item{...}{Additional arguments passed to \code{\link[=grepl]{grepl()}} to control filtering.}
 }
 \value{
 the results as a "testthat_results" (list)
@@ -26,8 +26,8 @@ the results as a "testthat_results" (list)
 \description{
 Test are run in an environment that inherits from the package's namespace
 environment, so that tests can access non-exported functions and variables.
-Tests should be placed in \code{tests/testthat}. Use \code{test_check} with
-\code{R CMD check} and \code{test_package} interactively at the console.
+Tests should be placed in \code{tests/testthat}. Use \code{test_check()} with
+\code{R CMD check} and \code{test_package()} interactively at the console.
 }
 \section{R CMD check}{
 

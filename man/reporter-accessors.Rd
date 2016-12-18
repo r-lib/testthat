@@ -25,7 +25,7 @@ Changes global reporter to that specified, runs code and the returns
 global reporter back to previous value.
 }
 \details{
-The \code{with_reporter} function returns the reporter that has been used
+The \code{with_reporter()} function returns the reporter that has been used
 for running the code.
 }
 \keyword{internal}

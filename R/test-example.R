@@ -4,8 +4,8 @@
 #' Each example counts as one test, and it succeeds if the code runs without
 #' an error.
 #'
-#' @param path For `test_examples`, path to directory containing Rd files.
-#'   For `test_example`, path to a single Rd file. Remember the working
+#' @param path For `test_examples()`, path to directory containing Rd files.
+#'   For `test_example()`, path to a single Rd file. Remember the working
 #'   directory for tests is `tests/testthat`.
 #' @export
 test_examples <- function(path = "../../man") {

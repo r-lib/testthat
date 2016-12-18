@@ -33,12 +33,12 @@ writing tests in loops).}
 }
 \description{
 Tests whether or not an object inherits from any of a list of classes, or
-is an instance of a base type. \code{expect_null} is a special case designed
+is an instance of a base type. \code{expect_null()} is a special case designed
 for detecting \code{NULL}.
 }
 \details{
-\code{expect_is} is an older form. I'd recommend using \code{expect_s3_class}
-or \code{expect_s4_class} in order to more clearly convery intent.
+\code{expect_is()} is an older form. I'd recommend using \code{expect_s3_class()}
+or \code{expect_s4_class()} in order to more clearly convey intent.
 }
 \examples{
 expect_is(1, "numeric")

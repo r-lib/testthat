@@ -18,7 +18,7 @@ name after it has been stripped of \code{"test-"} and \code{".R"}.}
 
 \item{env}{environment in which to execute the tests}
 
-\item{...}{Additional arguments passed to \code{grepl} to control filtering.}
+\item{...}{Additional arguments passed to \code{\link[=grepl]{grepl()}} to control filtering.}
 
 \item{load_helpers}{Source helper files before running the tests?}
 }
