@@ -1,24 +1,24 @@
 #' Expectation: does code produce output/message/warning/error?
 #'
-#' Use \code{expect_output()}, \code{expect_message()}, \code{expect_warning()},
-#' or \code{expect_error()} to check for specific outputs. Use
-#' \code{expect_silent()} to assert that there should be no output of
-#' any type. The file-based\code{expect_output_file()} compares the output
+#' Use `expect_output()`, `expect_message()`, `expect_warning()`,
+#' or `expect_error()` to check for specific outputs. Use
+#' `expect_silent()` to assert that there should be no output of
+#' any type. The file-based`expect_output_file()` compares the output
 #' to the contents of a text file and optionally updates it.
 #'
 #' Note that warnings are captured by a custom signal handler: this means
-#' that \code{options(warn)} has no effect.
+#' that `options(warn)` has no effect.
 #'
 #' @inheritParams expect_that
 #' @inheritParams expect_match
 #' @param regexp regular expression to test against.
 #'
-#'   If \code{NULL}, the default, asserts that there should be an output,
+#'   If `NULL`, the default, asserts that there should be an output,
 #'   a messsage, a warning, or an error, but does not test for specific value.
 #'
-#'   If \code{NA}, asserts that there should be no output, messages, warnings,
+#'   If `NA`, asserts that there should be no output, messages, warnings,
 #'   or errors.
-#' @param all For messages and warnings, do all need to the \code{regexp}
+#' @param all For messages and warnings, do all need to the `regexp`
 #'    (TRUE), or does only one need to match (FALSE)
 #' @family expectations
 #' @examples
@@ -109,7 +109,7 @@ expect_output <- function(object, regexp = NULL, ..., info = NULL, label = NULL)
 #' @export
 #' @rdname output-expectations
 #' @param file Path to a "golden" text file that contains the desired output.
-#' @param update Should the "golden" text file be updated? Default: \code{FALSE}.
+#' @param update Should the "golden" text file be updated? Default: `FALSE`.
 expect_output_file <- function(object, file, update = FALSE, ...,
                                info = NULL, label = NULL) {
   lab <- make_label(object, label)

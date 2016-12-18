@@ -13,7 +13,7 @@ expect_equal_to_reference(object, file, ..., info = NULL, label = NULL,
 \item{file}{The file name used to store the object. Should have an "rds"
 extension.}
 
-\item{...}{other values passed to \code{\link{expect_equal}}}
+\item{...}{other values passed to \code{\link[=expect_equal]{expect_equal()}}}
 
 \item{info}{extra information to be included in the message (useful when
 writing tests in loops).}
@@ -26,7 +26,7 @@ object label, which is computed from the deparsed object by default.}
 \item{expected.label}{Equivalent of \code{label} for shortcut form.}
 }
 \description{
-This expectation is equivalent to \code{\link{expect_equal}}, except that the
+This expectation is equivalent to \code{\link[=expect_equal]{expect_equal()}}, except that the
 expected value is stored in an RDS file instead of being specified literally.
 This can be helpful when the value is necessarily complex. If the file does
 not exist then it will be created using the value of the specified object,

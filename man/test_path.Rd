@@ -11,7 +11,7 @@ test_path(...)
 }
 \value{
 A character vector giving the path. An error will be thrown if
-  the path doesn't exist.
+the path doesn't exist.
 }
 \description{
 This function is designed to work both interatively and during tests,

@@ -2,7 +2,7 @@
 % Please edit documentation in R/reporter-list.R
 \name{testthat_results}
 \alias{testthat_results}
-\title{Create a `testthat_results` object from the test results
+\title{Create a \code{testthat_results} object from the test results
 as stored in the ListReporter results field.}
 \usage{
 testthat_results(results)
@@ -11,10 +11,10 @@ testthat_results(results)
 \item{results}{a list as stored in ListReporter}
 }
 \value{
-its list argument as a `testthat_results` object
+its list argument as a \code{testthat_results} object
 }
 \description{
-Create a `testthat_results` object from the test results
+Create a \code{testthat_results} object from the test results
 as stored in the ListReporter results field.
 }
 \seealso{

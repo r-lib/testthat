@@ -7,7 +7,7 @@
 \title{R package to make testing fun!}
 \description{
 Try the example below. Have a look at the references and learn more
-from function documentation such as \code{\link{expect_that}}.
+from function documentation such as \code{\link[=expect_that]{expect_that()}}.
 }
 \details{
 Software testing is important, but, in part because

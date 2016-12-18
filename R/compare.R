@@ -1,6 +1,6 @@
 #' Provide human-readable comparison of two objects
 #'
-#' \code{compare} is similar to \code{\link[base]{all.equal}()}, but shows
+#' `compare` is similar to \code{\link[base]{all.equal}()}, but shows
 #' you examples of where the failures occured.
 #'
 #' @export

@@ -2,11 +2,11 @@
 #'
 #' These functions allow you to capture the side-effects of a function call
 #' including printed output, messages and warnings. They are used to evaluate
-#' code for \code{\link{expect_output}}, \code{\link{expect_message}},
-#' \code{\link{expect_warning}}, and \code{\link{expect_silent}}.
+#' code for [expect_output()], [expect_message()],
+#' [expect_warning()], and [expect_silent()].
 #'
 #' @param code Code to evaluate. This should be an unevaluated expression.
-#' @param print If \code{TRUE} and the result of evaluating \code{code} is
+#' @param print If `TRUE` and the result of evaluating `code` is
 #'   visible this will print the result, ensuring that the output of printing
 #'   the object is included in the overall output
 #' @export

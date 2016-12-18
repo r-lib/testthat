@@ -1,7 +1,7 @@
 #' Locate file in testing directory.
 #'
 #' This function is designed to work both interatively and during tests,
-#' locating files in the \code{tests/testthat} directory
+#' locating files in the `tests/testthat` directory
 #'
 #' @param ... Character vectors giving path component.
 #' @return A character vector giving the path. An error will be thrown if

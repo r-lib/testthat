@@ -27,12 +27,12 @@ can also have nested \code{describe} blocks.
 
 This test syntax helps to test the intented behaviour of your code. For
 example: you want to write a new function for your package. Try to describe
-the specification first using \code{describe}, before your write any code. 
-After that, you start to implement the tests for each specification (i.e. 
+the specification first using \code{describe}, before your write any code.
+After that, you start to implement the tests for each specification (i.e.
 the \code{it} block).
 
-Use \code{describe} to verify that you implement the right things and use 
-\code{\link{test_that}} to ensure you do the things right.
+Use \code{describe} to verify that you implement the right things and use
+\code{\link[=test_that]{test_that()}} to ensure you do the things right.
 }
 \examples{
 describe("matrix()", {

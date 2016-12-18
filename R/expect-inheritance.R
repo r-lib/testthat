@@ -1,14 +1,14 @@
 #' Expectation: does the object inherit from a S3 or S4 class, or a base type?
 #'
 #' Tests whether or not an object inherits from any of a list of classes, or
-#' is an instance of a base type. \code{expect_null} is a special case designed
-#' for detecting \code{NULL}.
+#' is an instance of a base type. `expect_null` is a special case designed
+#' for detecting `NULL`.
 #'
-#' \code{expect_is} is an older form. I'd recommend using \code{expect_s3_class}
-#' or \code{expect_s4_class} in order to more clearly convery intent.
+#' `expect_is` is an older form. I'd recommend using `expect_s3_class`
+#' or `expect_s4_class` in order to more clearly convery intent.
 #'
 #' @inheritParams expect_that
-#' @seealso \code{\link{inherits}}
+#' @seealso [inherits()]
 #' @family expectations
 #' @examples
 #' expect_is(1, "numeric")
@@ -59,7 +59,7 @@ expect_type <- function(object, type) {
 }
 
 #' @param class character vector of class names
-#' @param type String giving base type (as returned by \code{\link{typeof}}).
+#' @param type String giving base type (as returned by [typeof()]).
 #' @export
 #' @rdname inheritance-expectations
 expect_is <- function(object, class, info = NULL, label = NULL) {

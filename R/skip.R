@@ -5,22 +5,22 @@
 #' suite to fail.
 #'
 #' @section Helpers:
-#' \code{skip_if_not()} works like \code{\link{stopifnot}}, generating
+#' `skip_if_not()` works like [stopifnot()], generating
 #' a message automatically based on the first argument.
 #'
-#' \code{skip_on_cran()} skips tests on CRAN, using the \code{NOT_CRAN}
+#' `skip_on_cran()` skips tests on CRAN, using the `NOT_CRAN`
 #' environment variable set by devtools.
 #'
-#' \code{skip_on_travis()} skips tests on travis by inspecting the
-#' \code{TRAVIS} environment variable.
+#' `skip_on_travis()` skips tests on travis by inspecting the
+#' `TRAVIS` environment variable.
 #'
-#' \code{skip_on_appveyor()} skips tests on appveyor by inspecting the
-#' \code{APPVEYOR} environment variable.
+#' `skip_on_appveyor()` skips tests on appveyor by inspecting the
+#' `APPVEYOR` environment variable.
 #' 
-#' \code{skip_on_bioc()} skips tests on Bioconductor by inspecting the
-#' \code{BBS_HOME} environment variable.
+#' `skip_on_bioc()` skips tests on Bioconductor by inspecting the
+#' `BBS_HOME` environment variable.
 #'
-#' \code{skip_if_not_installed()} skips a tests if a package is not installed
+#' `skip_if_not_installed()` skips a tests if a package is not installed
 #' (useful for suggested packages).
 #'
 #' @param message A message describing why the test was skipped.
@@ -34,7 +34,7 @@ skip <- function(message) {
 
 #' @export
 #' @rdname skip
-#' @param condition Boolean condition to check. If not \code{TRUE}, will
+#' @param condition Boolean condition to check. If not `TRUE`, will
 #'   skip the test.
 skip_if_not <- function(condition, message = deparse(substitute(condition))) {
   if (!isTRUE(condition)) {
@@ -65,7 +65,7 @@ skip_on_cran <- function() {
 
 #' @export
 #' @param os Character vector of system names. Supported values are
-#'   \code{"windows"}, \code{"mac"}, \code{"linux"} and \code{"solaris"}.
+#'   `"windows"`, `"mac"`, `"linux"` and `"solaris"`.
 #' @rdname skip
 skip_on_os <- function(os) {
   os <- match.arg(os, c("windows", "mac", "linux", "solaris"),

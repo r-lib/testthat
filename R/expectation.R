@@ -1,12 +1,12 @@
 #' Expectation class.
 #'
-#' You generate an expectation object with \code{expectation}, and signal
-#' an expectation with \code{expect}. If you're making your own expectation
-#' function, you'll typically call \code{expect(condition, "failure message")}.
+#' You generate an expectation object with `expectation`, and signal
+#' an expectation with `expect`. If you're making your own expectation
+#' function, you'll typically call `expect(condition, "failure message")`.
 #' See the source code for the built-in expectations for details.
 #'
 #' @param passed a single logical value indicating whether the test passed
-#'  (\code{TRUE}), failed (\code{FALSE}), or threw an error (\code{NA})
+#'  (`TRUE`), failed (`FALSE`), or threw an error (`NA`)
 #' @param message A text description of failure
 #' @param srcref Source reference, if known
 #' @keywords internal
