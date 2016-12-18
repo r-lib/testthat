@@ -149,7 +149,7 @@ test_code <- function(test, code, env = test_env(), skip_on_empty = TRUE) {
   tryCatch(
     withCallingHandlers({
       eval(code, test_env)
-      if (!handled)
+      if (!handled && !is.null(test))
         skip_empty()
       },
       expectation = handle_expectation,
