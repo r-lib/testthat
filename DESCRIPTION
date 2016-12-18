@@ -81,4 +81,4 @@ Collate:
     'try-again.R'
     'utils.R'
     'watcher.R'
-RoxygenNote: 5.0.1
+RoxygenNote: 5.0.1.9000

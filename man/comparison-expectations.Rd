@@ -2,11 +2,11 @@
 % Please edit documentation in R/expect-comparison.R
 \name{comparison-expectations}
 \alias{comparison-expectations}
+\alias{expect_lt}
+\alias{expect_lte}
 \alias{expect_gt}
 \alias{expect_gte}
 \alias{expect_less_than}
-\alias{expect_lt}
-\alias{expect_lte}
 \alias{expect_more_than}
 \title{Expectation: is returned value less or greater than specified value?}
 \usage{

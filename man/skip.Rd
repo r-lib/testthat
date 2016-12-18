@@ -4,11 +4,11 @@
 \alias{skip}
 \alias{skip_if_not}
 \alias{skip_if_not_installed}
-\alias{skip_on_appveyor}
-\alias{skip_on_bioc}
 \alias{skip_on_cran}
 \alias{skip_on_os}
 \alias{skip_on_travis}
+\alias{skip_on_appveyor}
+\alias{skip_on_bioc}
 \title{Skip a test.}
 \usage{
 skip(message)
