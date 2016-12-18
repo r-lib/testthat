@@ -27,7 +27,7 @@ writing tests in loops).}
 
 \item{label}{object label. When \code{NULL}, computed from deparsed object.}
 
-\item{type}{String giving base type (as returned by \code{\link{typeof}}).}
+\item{type}{String giving base type (as returned by \code{\link[=typeof]{typeof()}}).}
 
 \item{class}{character vector of class names}
 }
@@ -58,7 +58,7 @@ expect_null(NULL)
 
 }
 \seealso{
-\code{\link{inherits}}
+\code{\link[=inherits]{inherits()}}
 
 Other expectations: \code{\link{comparison-expectations}},
   \code{\link{equality-expectations}},

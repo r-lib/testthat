@@ -3,7 +3,7 @@ NULL
 
 #' Test reporter: start recovery.
 #'
-#' This reporter will call a modified version of \code{\link{recover}} on all
+#' This reporter will call a modified version of [recover()] on all
 #' broken expectations.
 #'
 #' @export

@@ -9,7 +9,7 @@ find_test_scripts(path, filter = NULL, invert = FALSE, ...)
 \arguments{
 \item{path}{path to tests}
 
-\item{filter}{cf \code{\link{test_dir}}}
+\item{filter}{cf \code{\link[=test_dir]{test_dir()}}}
 
 \item{invert}{If \sQuote{TRUE} return files which do \emph{not} match.}
 

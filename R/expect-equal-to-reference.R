@@ -1,6 +1,6 @@
 #' Expectation: is the object equal to a reference value stored in a file?
 #'
-#' This expectation is equivalent to \code{\link{expect_equal}}, except that the
+#' This expectation is equivalent to [expect_equal()], except that the
 #' expected value is stored in an RDS file instead of being specified literally.
 #' This can be helpful when the value is necessarily complex. If the file does
 #' not exist then it will be created using the value of the specified object,
@@ -8,9 +8,9 @@
 #' The test can be reset by deleting the RDS file.
 #'
 #' It is important to initialize the reference RDS file within the source
-#' package, most likely in the \code{tests/testthat/} directory. Testing spawned
-#' by \code{devtools::test()}, for example, will accomplish this. But note that
-#' testing spawned by \code{R CMD check} and \code{devtools::check()} will NOT.
+#' package, most likely in the `tests/testthat/` directory. Testing spawned
+#' by `devtools::test()`, for example, will accomplish this. But note that
+#' testing spawned by `R CMD check` and `devtools::check()` will NOT.
 #' In the latter cases, the package source is copied to an external location
 #' before tests are run. The resulting RDS file will not make its way back into
 #' the package source and will not be available for subsequent comparisons.
@@ -22,8 +22,8 @@
 #'   used in error messages. Useful to override the default (which is based on
 #'   the file name), when doing tests in a loop. For the short-cut form, the
 #'   object label, which is computed from the deparsed object by default.
-#' @param expected.label Equivalent of \code{label} for shortcut form.
-#' @param ... other values passed to \code{\link{expect_equal}}
+#' @param expected.label Equivalent of `label` for shortcut form.
+#' @param ... other values passed to [expect_equal()]
 #' @family expectations
 #' @export
 #' @examples

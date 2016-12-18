@@ -5,13 +5,13 @@
 #' @param object object to test
 #' @param condition, a function that returns whether or not the condition
 #'   is met, and if not, an error message to display.
-#' @param label object label. When \code{NULL}, computed from deparsed object.
+#' @param label object label. When `NULL`, computed from deparsed object.
 #' @param info extra information to be included in the message (useful when
 #'   writing tests in loops).
 #' @return the (internal) expectation result as an invisible list
 #' @keywords internal
 #' @export
-#' @seealso \code{\link{fail}} for an expectation that always fails.
+#' @seealso [fail()] for an expectation that always fails.
 #' @examples
 #' expect_that(5 * 2, equals(10))
 #' expect_that(sqrt(2) ^ 2, equals(2))

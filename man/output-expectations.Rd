@@ -31,13 +31,13 @@ expect_silent(object)
 
 \item{regexp}{regular expression to test against.
 
-  If \code{NULL}, the default, asserts that there should be an output,
-  a messsage, a warning, or an error, but does not test for specific value.
+If \code{NULL}, the default, asserts that there should be an output,
+a messsage, a warning, or an error, but does not test for specific value.
 
-  If \code{NA}, asserts that there should be no output, messages, warnings,
-  or errors.}
+If \code{NA}, asserts that there should be no output, messages, warnings,
+or errors.}
 
-\item{...}{Additional arguments passed on to \code{\link{grepl}}, e.g.
+\item{...}{Additional arguments passed on to \code{\link[=grepl]{grepl()}}, e.g.
 \code{ignore.case} or \code{fixed}.}
 
 \item{info}{extra information to be included in the message (useful when

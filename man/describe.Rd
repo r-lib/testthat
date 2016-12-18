@@ -32,7 +32,7 @@ After that, you start to implement the tests for each specification (i.e.
 the \code{it} block).
 
 Use \code{describe} to verify that you implement the right things and use
-\code{\link{test_that}} to ensure you do the things right.
+\code{\link[=test_that]{test_that()}} to ensure you do the things right.
 }
 \examples{
 describe("matrix()", {

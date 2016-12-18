@@ -4,7 +4,7 @@ teardown_env$queue <- list()
 #' Run code on teardown
 #'
 #' Code in a teardown block is guaranteed to be run upon completion of a test
-#' file. Multiple calls to \code{teardown} will be executed in the order they
+#' file. Multiple calls to `teardown` will be executed in the order they
 #' were created.
 #'
 #' @param code Code to evaluate

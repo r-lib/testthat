@@ -1,14 +1,14 @@
 #' Expectation: is the object equal to a value?
 #'
 #' \itemize{
-#' \item \code{expect_identical} tests with \code{\link{identical}}
-#' \item \code{expect_equal} tests with \code{\link{all.equal}}
-#' \item \code{expect_equivalent} tests with \code{\link{all.equal}} and
-#'   \code{check.attributes = FALSE}
+#' \item `expect_identical` tests with [identical()]
+#' \item `expect_equal` tests with [all.equal()]
+#' \item `expect_equivalent` tests with [all.equal()] and
+#'   `check.attributes = FALSE`
 #' }
 #
 #' @param expected Expected value
-#' @param expected.label Equivalent of \code{label} for shortcut form.
+#' @param expected.label Equivalent of `label` for shortcut form.
 #' @inheritParams expect_that
 #' @family expectations
 #' @examples
@@ -44,7 +44,7 @@ NULL
 
 #' @export
 #' @rdname equality-expectations
-#' @param ... other values passed to \code{\link{all.equal}}
+#' @param ... other values passed to [all.equal()]
 expect_equal <- function(object, expected, ..., info = NULL, label = NULL,
                          expected.label = NULL) {
 

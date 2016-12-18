@@ -29,16 +29,16 @@ the object is included in the overall output}
 }
 \value{
 A list containing
- \item{result}{The result of the function}
- \item{output}{A string containing all the output from the function}
- \item{warnings}{A character vector containing the text from each warning}
- \item{messages}{A character vector containing the text from each message}
+\item{result}{The result of the function}
+\item{output}{A string containing all the output from the function}
+\item{warnings}{A character vector containing the text from each warning}
+\item{messages}{A character vector containing the text from each message}
 }
 \description{
 These functions allow you to capture the side-effects of a function call
 including printed output, messages and warnings. They are used to evaluate
-code for \code{\link{expect_output}}, \code{\link{expect_message}},
-\code{\link{expect_warning}}, and \code{\link{expect_silent}}.
+code for \code{\link[=expect_output]{expect_output()}}, \code{\link[=expect_message]{expect_message()}},
+\code{\link[=expect_warning]{expect_warning()}}, and \code{\link[=expect_silent]{expect_silent()}}.
 }
 \examples{
 evaluate_promise({

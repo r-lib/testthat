@@ -1,12 +1,12 @@
 #' Test Compiled Code in a Package
 #'
-#' Test compiled code in the package \code{package}. See
+#' Test compiled code in the package `package`. See
 #' \code{\link{use_catch}()} for more details.
 #'
 #' @note
 #' A call to this function will automatically be generated
-#' for you in \code{tests/testthat/test-cpp.R} after calling
-#' \code{use_catch()}; you should not need to manually call
+#' for you in `tests/testthat/test-cpp.R` after calling
+#' `use_catch()`; you should not need to manually call
 #' this expectation yourself.
 #'
 #' @param package The name of the package to test.
@@ -37,28 +37,28 @@ expect_cpp_tests_pass <- function(package) {
 #'
 #' Add the necessary infrastructure to enable C++ unit testing
 #' in \R packages with
-#' \href{https://github.com/philsquared/Catch}{Catch} and \code{testthat}.
+#' \href{https://github.com/philsquared/Catch}{Catch} and `testthat`.
 #'
-#' Calling \code{use_catch()} will:
+#' Calling `use_catch()` will:
 #'
 #' \enumerate{
 #'
-#'   \item Create a file \code{src/test-runner.cpp}, which ensures that the
-#'         \code{testthat} package will understand how to run your package's
+#'   \item Create a file `src/test-runner.cpp`, which ensures that the
+#'         `testthat` package will understand how to run your package's
 #'         unit tests,
 #'
-#'   \item Create an example test file \code{src/test-example.cpp}, which
+#'   \item Create an example test file `src/test-example.cpp`, which
 #'         showcases how you might use Catch to write a unit test, and
 #'
-#'   \item Add a test file \code{tests/testthat/test-cpp.R}, which ensures that
-#'         \code{testthat} will run your compiled tests during invocations of
-#'         \code{devtools::test()} or \code{R CMD check}.
+#'   \item Add a test file `tests/testthat/test-cpp.R`, which ensures that
+#'         `testthat` will run your compiled tests during invocations of
+#'         `devtools::test()` or `R CMD check`.
 #' }
 #'
 #' C++ unit tests can be added to C++ source files within the
-#' \code{src/} directory of your package, with a format similar
-#' to \R code tested with \code{testthat}. Here's a simple example
-#' of a unit test written with \code{testthat} + Catch:
+#' `src/` directory of your package, with a format similar
+#' to \R code tested with `testthat`. Here's a simple example
+#' of a unit test written with `testthat` + Catch:
 #'
 #' \preformatted{
 #' context("C++ Unit Test") {
@@ -71,30 +71,30 @@ expect_cpp_tests_pass <- function(package) {
 #'
 #' When your package is compiled, unit tests alongside a harness
 #' for running these tests will be compiled into your \R package,
-#' with the C entry point \code{run_testthat_tests()}. \code{testthat}
+#' with the C entry point `run_testthat_tests()`. `testthat`
 #' will use that entry point to run your unit tests when detected.
 #'
 #' @section Functions:
 #'
 #' All of the functions provided by Catch are
-#' available with the \code{CATCH_} prefix -- see
+#' available with the `CATCH_` prefix -- see
 #' \href{https://github.com/philsquared/Catch/blob/master/docs/assertions.md}{here}
-#' for a full list. \code{testthat} provides the
-#' following wrappers, to conform with \code{testthat}'s
+#' for a full list. `testthat` provides the
+#' following wrappers, to conform with `testthat`'s
 #' \R interface:
 #'
 #' \tabular{lll}{
 #' \strong{Function} \tab \strong{Catch} \tab \strong{Description} \cr
-#' \code{context} \tab \code{CATCH_TEST_CASE} \tab The context of a set of tests. \cr
-#' \code{test_that} \tab \code{CATCH_SECTION} \tab A test section. \cr
-#' \code{expect_true} \tab \code{CATCH_CHECK} \tab Test that an expression evaluates to \code{true}. \cr
-#' \code{expect_false} \tab \code{CATCH_CHECK_FALSE} \tab Test that an expression evalutes to \code{false}. \cr
-#' \code{expect_error} \tab \code{CATCH_CHECK_THROWS} \tab Test that evaluation of an expression throws an exception. \cr
-#' \code{expect_error_as} \tab \code{CATCH_CHECK_THROWS_AS} \tab Test that evaluation of an expression throws an exception of a specific class. \cr
+#' `context` \tab `CATCH_TEST_CASE` \tab The context of a set of tests. \cr
+#' `test_that` \tab `CATCH_SECTION` \tab A test section. \cr
+#' `expect_true` \tab `CATCH_CHECK` \tab Test that an expression evaluates to `true`. \cr
+#' `expect_false` \tab `CATCH_CHECK_FALSE` \tab Test that an expression evalutes to `false`. \cr
+#' `expect_error` \tab `CATCH_CHECK_THROWS` \tab Test that evaluation of an expression throws an exception. \cr
+#' `expect_error_as` \tab `CATCH_CHECK_THROWS_AS` \tab Test that evaluation of an expression throws an exception of a specific class. \cr
 #' }
 #'
-#' In general, you should prefer using the \code{testthat}
-#' wrappers, as \code{testthat} also does some work to
+#' In general, you should prefer using the `testthat`
+#' wrappers, as `testthat` also does some work to
 #' ensure that any unit tests within will not be compiled or
 #' run when using the Solaris Studio compilers (as these are
 #' currently unsupported by Catch). This should make it
@@ -103,7 +103,7 @@ expect_cpp_tests_pass <- function(package) {
 #' @section Advanced Usage:
 #'
 #' If you'd like to write your own Catch test runner, you can
-#' instead use the \code{testthat::catchSession()} object in a file
+#' instead use the `testthat::catchSession()` object in a file
 #' with the form:
 #'
 #' \preformatted{
@@ -125,7 +125,7 @@ expect_cpp_tests_pass <- function(package) {
 #' @section Standalone Usage:
 #'
 #' If you'd like to use the C++ unit testing facilities provided
-#' by Catch, but would prefer not to use the regular \code{testthat}
+#' by Catch, but would prefer not to use the regular `testthat`
 #' \R testing infrastructure, you can manually run the unit tests
 #' by inserting a call to:
 #'

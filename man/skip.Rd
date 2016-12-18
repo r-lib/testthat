@@ -47,7 +47,7 @@ suite to fail.
 }
 \section{Helpers}{
 
-\code{skip_if_not()} works like \code{\link{stopifnot}}, generating
+\code{skip_if_not()} works like \code{\link[=stopifnot]{stopifnot()}}, generating
 a message automatically based on the first argument.
 
 \code{skip_on_cran()} skips tests on CRAN, using the \code{NOT_CRAN}

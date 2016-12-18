@@ -5,7 +5,7 @@
 #'
 #' @param x a vector of values
 #' @param expectation the type of equality you want to test for
-#'   (\code{equals}, \code{is_equivalent_to}, \code{is_identical_to})
+#'   (`equals`, `is_equivalent_to`, `is_identical_to`)
 #' @export
 #' @examples
 #' x <- 1:10

@@ -14,7 +14,7 @@ expect_failure(expr, message = NULL, ...)
 
 \item{message}{Check that the failure message matches this regexp.}
 
-\item{...}{Other arguments passed on to \code{\link{expect_match}}.}
+\item{...}{Other arguments passed on to \code{\link[=expect_match]{expect_match()}}.}
 }
 \description{
 Use these expectations to test other expectations.

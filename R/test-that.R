@@ -7,7 +7,7 @@
 #' Tests are evaluated in their own environments, and should not affect
 #' global state.
 #'
-#' When run from the command line, tests return \code{NULL} if all
+#' When run from the command line, tests return `NULL` if all
 #' expectations are met, otherwise it raises an error.
 #'
 #' @param desc test name.  Names should be kept as brief as possible, as they
@@ -169,7 +169,7 @@ test_code <- function(test, code, env = test_env(), skip_on_empty = TRUE) {
 #' R package to make testing fun!
 #'
 #' Try the example below. Have a look at the references and learn more
-#' from function documentation such as \code{\link{expect_that}}.
+#' from function documentation such as [expect_that()].
 #'
 #' @details Software testing is important, but, in part because
 #' it is frustrating and boring, many of us avoid it.
@@ -178,10 +178,10 @@ test_code <- function(test, code, env = test_env(), skip_on_empty = TRUE) {
 #' and integrates with your existing workflow.
 #'
 #' @section Options:
-#' \code{testthat.use_colours}: Should the output be coloured? (Default:
-#' \code{TRUE}).
+#' `testthat.use_colours`: Should the output be coloured? (Default:
+#' `TRUE`).
 #'
-#' \code{testthat.summary.max_reports}: The maximum number of detailed test
+#' `testthat.summary.max_reports`: The maximum number of detailed test
 #' reports printed for the summary reporter (default: 15).
 #'
 #' @docType package
