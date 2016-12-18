@@ -72,10 +72,9 @@ test_that("not all lines are shown", {
   expect_equal(length(lines), 8)
 })
 
-test_that("longer vectors (#513)", {
-  expect_warning(comp <- compare(letters[1:6], LETTERS[1:6]), NA)
-  expect_equal(
-    comp,
-    structure(list(equal = FALSE, message = "6/6 mismatches\nx[1]: \"a\"\ny[1]: \"A\"\n\nx[2]: \"b\"\ny[2]: \"B\"\n\nx[3]: \"c\"\ny[3]: \"C\"\n\nx[4]: \"d\"\ny[4]: \"D\"\n\nx[5]: \"e\"\ny[5]: \"E\""), class = "comparison")
-  )
+test_that("vectors longer than `max_diffs` (#513)", {
+  comp <- compare(letters[1:2], LETTERS[1:2], max_diffs=1)
+  expect_is(comp, "comparison")
+  expect_false(comp$equal)
+  expect_equal(comp$message, "2/2 mismatches\nx[1]: \"a\"\ny[1]: \"A\"")
 })
