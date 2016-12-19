@@ -72,6 +72,8 @@
   
 * `auto_test_package()` now works correctly on windows (#465). 
 
+* Fixed `compare.character` for vectors of length > 5 (#513, @brodieG)
+
 # testthat 1.0.2
 
 * Ensure 'std::logic_error()' constructed with 'std::string()'
