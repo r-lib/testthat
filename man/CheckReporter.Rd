@@ -12,5 +12,16 @@ CheckReporter
 \code{R CMD check} displays only the last 13 lines of the result, so this
 report is design to ensure that you see something useful there.
 }
+\seealso{
+Other reporters: \code{\link{DebugReporter}},
+  \code{\link{FailReporter}}, \code{\link{ListReporter}},
+  \code{\link{LocationReporter}},
+  \code{\link{MinimalReporter}},
+  \code{\link{MultiReporter}},
+  \code{\link{RstudioReporter}},
+  \code{\link{SilentReporter}}, \code{\link{StopReporter}},
+  \code{\link{SummaryReporter}}, \code{\link{TapReporter}},
+  \code{\link{TeamcityReporter}}
+}
 \keyword{datasets}
 

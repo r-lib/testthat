@@ -5,9 +5,10 @@ NULL
 #'
 #' This reporter will simply throw an error if any of the tests failed. It is
 #' best combined with another reporter, such as the
-#' \code{\link{SummaryReporter}}.
+#' [SummaryReporter].
 #'
 #' @export
+#' @family reporters
 FailReporter <- R6::R6Class("FailReporter", inherit = Reporter,
   public = list(
     failed = FALSE,

@@ -13,5 +13,17 @@ This reporter will output results in the Test Anything Protocol (TAP),
 a simple text-based interface between testing modules in a test harness.
 For more information about TAP, see http://testanything.org
 }
+\seealso{
+Other reporters: \code{\link{CheckReporter}},
+  \code{\link{DebugReporter}}, \code{\link{FailReporter}},
+  \code{\link{ListReporter}},
+  \code{\link{LocationReporter}},
+  \code{\link{MinimalReporter}},
+  \code{\link{MultiReporter}},
+  \code{\link{RstudioReporter}},
+  \code{\link{SilentReporter}}, \code{\link{StopReporter}},
+  \code{\link{SummaryReporter}},
+  \code{\link{TeamcityReporter}}
+}
 \keyword{datasets}
 

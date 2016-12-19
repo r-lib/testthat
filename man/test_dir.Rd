@@ -4,8 +4,8 @@
 \alias{test_dir}
 \title{Run all of the tests in a directory.}
 \usage{
-test_dir(path, filter = NULL, reporter = "summary", env = test_env(), ...,
-  encoding = "unknown", load_helpers = TRUE)
+test_dir(path, filter = NULL, reporter = default_reporter(),
+  env = test_env(), ..., encoding = "unknown", load_helpers = TRUE)
 }
 \arguments{
 \item{path}{path to tests}
@@ -18,7 +18,7 @@ name after it has been stripped of \code{"test-"} and \code{".R"}.}
 
 \item{env}{environment in which to execute the tests}
 
-\item{...}{Additional arguments passed to \code{grepl} to control filtering.}
+\item{...}{Additional arguments passed to \code{\link[=grepl]{grepl()}} to control filtering.}
 
 \item{encoding}{File encoding, default is "unknown"
 \code{unknown}.}

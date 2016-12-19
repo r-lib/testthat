@@ -14,11 +14,11 @@ with_top_env <- function(env, code) {
 #'
 #' Test are run in an environment that inherits from the package's namespace
 #' environment, so that tests can access non-exported functions and variables.
-#' Tests should be placed in \code{tests/testthat}. Use \code{test_check} with
-#' \code{R CMD check} and \code{test_package} interactively at the console.
+#' Tests should be placed in `tests/testthat`. Use `test_check()` with
+#' `R CMD check` and `test_package()` interactively at the console.
 #'
 #' @section R CMD check:
-#' Create \code{tests/testthat.R} that contains:
+#' Create `tests/testthat.R` that contains:
 #'
 #' \preformatted{
 #' library(testthat)
@@ -33,7 +33,7 @@ with_top_env <- function(env, code) {
 #' @export
 #' @examples
 #' \dontrun{test_package("testthat")}
-test_package <- function(package, filter = NULL, reporter = "summary", ...) {
+test_package <- function(package, filter = NULL, reporter = default_reporter(), ...) {
   library(testthat)
 
   # Ensure that test package returns silently if called recursively - this
@@ -51,8 +51,8 @@ test_package <- function(package, filter = NULL, reporter = "summary", ...) {
   if (file.exists(test_path2)) {
     test_path <- test_path2
   } else {
-    warning("Placing tests in `inst/tests/` is deprecated. ",
-      "Please use `tests/testthat/` instead", call. = FALSE)
+    warning("Placing tests in `inst/tests` is deprecated. ",
+      "Please use `tests/testthat` instead", call. = FALSE)
   }
 
   run_tests(package, test_path, filter, reporter, ...)

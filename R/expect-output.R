@@ -1,24 +1,26 @@
 #' Expectation: does code produce output/message/warning/error?
 #'
-#' Use \code{expect_output()}, \code{expect_message()}, \code{expect_warning()},
-#' or \code{expect_error()} to check for specific outputs. Use
-#' \code{expect_silent()} to assert that there should be no output of
-#' any type. The file-based\code{expect_output_file()} compares the output
+#' Use `expect_output()`, `expect_message()`, `expect_warning()`,
+#' or `expect_error()` to check for specific outputs. Use
+#' `expect_silent()` to assert that there should be no output of
+#' any type. The file-based`expect_output_file()` compares the output
 #' to the contents of a text file and optionally updates it.
 #'
 #' Note that warnings are captured by a custom signal handler: this means
-#' that \code{options(warn)} has no effect.
+#' that `options(warn)` has no effect.
 #'
 #' @inheritParams expect_that
 #' @inheritParams expect_match
 #' @param regexp regular expression to test against.
 #'
-#'   If \code{NULL}, the default, asserts that there should be an output,
+#'   If `NULL`, the default, asserts that there should be an output,
 #'   a messsage, a warning, or an error, but does not test for specific value.
 #'
-#'   If \code{NA}, asserts that there should be no output, messages, warnings,
+#'   If `NA`, asserts that there should be no output, messages, warnings,
 #'   or errors.
-#' @param all For messages and warnings, do all need to the \code{regexp}
+#' @param class Instead of supply a regular expression, you can also supply
+#'   a class name. This is useful for "classed" conditions.
+#' @param all For messages and warnings, do all need to the `regexp`
 #'    (TRUE), or does only one need to match (FALSE)
 #' @family expectations
 #' @examples
@@ -109,15 +111,24 @@ expect_output <- function(object, regexp = NULL, ..., info = NULL, label = NULL)
 #' @export
 #' @rdname output-expectations
 #' @param file Path to a "golden" text file that contains the desired output.
-#' @param update Should the "golden" text file be updated? Default: \code{FALSE}.
+#' @param update Should the "golden" text file be updated? Defaults to
+#'   `FALSE`, but that it will automatically create output if the file
+#'   does not exist (i.e. on the first run).
+#' @inheritParams capture_output
 expect_output_file <- function(object, file, update = FALSE, ...,
-                               info = NULL, label = NULL) {
+                               info = NULL, label = NULL, width = 80) {
   lab <- make_label(object, label)
-  output <- capture_output_as_vector(object)
 
+  output <- capture_output_lines(object, print = FALSE, width = width)
+  if (!file.exists(file)) {
+    writeLines(output, file)
+  }
+
+  expr <- bquote(
+    expect_equal(output, safe_read_lines(.(file)), ..., info = info, label = lab)
+  )
   withCallingHandlers(
-    eval(bquote(
-      expect_equal(output, safe_read_lines(.(file)), ..., info = info, label = lab))),
+    eval(expr),
     expectation = function(e) {
       if (update && expectation_failure(e)) {
         tryCatch(writeLines(output, file), error = function(e) NULL)
@@ -129,9 +140,13 @@ expect_output_file <- function(object, file, update = FALSE, ...,
 
 #' @export
 #' @rdname output-expectations
-expect_error <- function(object, regexp = NULL, ..., info = NULL, label = NULL) {
+expect_error <- function(object, regexp = NULL, class = NULL, ..., info = NULL,
+                         label = NULL) {
 
   lab <- make_label(object, label)
+  if (!is.null(regexp) && !is.null(class)) {
+    stop("You may only specific one of `regexp` and `class`", call. = FALSE)
+  }
 
   error <- tryCatch(
     {
@@ -143,7 +158,13 @@ expect_error <- function(object, regexp = NULL, ..., info = NULL, label = NULL) 
     }
   )
 
-  if (identical(regexp, NA)) {
+  if (!is.null(class)) {
+    expect(
+      inherits(error, class),
+      sprintf("%s did not throw an error of class '%s'.", lab, class),
+      info = info
+    )
+  } else if (identical(regexp, NA)) {
     expect(
       is.null(error),
       sprintf("%s threw an error.\n%s", lab, error$message),

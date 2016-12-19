@@ -1,6 +1,59 @@
 # testthat 1.0.2.9000
 
+* The default summary reporter aborts testing as soon as the limit given by the
+  option `testthat.summary.max_reports` (default 15) is reached
+  (#520).
+
+* New option `testthat.summary.omit_dots`, default to `FALSE`. Setting to `TRUE`
+  hides the progress dots from the output of the summary reporter, which speeds
+  up tests by a small margin (#502).
+
+* New `LocationReporter` which just prints the location of every expectation.
+  This is useful for locating segfaults and C/C++ breakpoints (#551).
+
+* `expect_equivalent()` now passes `...` on to `compare()` (#552).
+
+* New `default_reporter()` which returns the default report. You can override
+  the default "summary" by setting option "testthat.default_reporter" (#504).
+
+* `capture_output_lines()` is now exported (#504).
+
+* `make_label()` is now exported so you can more easily copy the style of 
+  built-in expressions (#507).
+
+* New `teardown()` allows you to run code that is guaranteed to be executed at 
+  the end of a `test_file()`. This is useful if you want to pair cleanup code
+  with the code that messes up state (#536)
+
+* `test_path()` now generates correct path when called from within 
+  `tools::testInstalledPackage()` (#542).
+
+* `test_path()` no longer assumes that the path exists (#448).
+
+* Empty tests now generate a default `skip()` (#413).
+
+* The default `compare()` gains a `max_diffs` argument and defaults to printing
+  out only the first 9 differences (#538).
+
+* `expect_output_file()` now:
+
+  * Sets the width to 80 to ensure consistent output (#514)
+  * Saves the output on the first run (#554)
+  * Correctly calls internal `expect_output_file()` to avoid error (#517)
+
+* `expect_error()` gains a `class` argument that allows you to make an assertion
+  about the class of the error object (#530).
+
+* `is_null()` and `matches()` have been deprecated because they conflict
+  with other functions in the tidyverse (#523).
+
+* `test_file()` now triggers a `gc()` after tests are run. This helps
+  to ensure that finalisers are run earlier (#535).
+
 * New argument`encoding` in `test_file()` and `source_file()` (@hansharhoff, #550, hadley/devtools#1306)
+
+* Special regular expression characters are escaped when printing errors in
+  `expect_match()` (#522, @jimhester).
 
 * New argument `load_helpers` in `test_dir()` (#505).
 
@@ -8,6 +61,8 @@
 
 * `compare.numeric()` respects `check.attributes()` so `expect_equivalent()`
   correctly ignores attributes of numeric vectors (#485).
+
+* New argument `minimum_version` to `skip_if_not_installed()` (#487, #499).
 
 * Properly report endless recursion, limiting the stack trace to the first and last 10 entries (#474).
 
@@ -24,6 +79,8 @@
   body of the filename and not just in the extension (#492, @brodieG)
   
 * `auto_test_package()` now works correctly on windows (#465). 
+
+* Fixed `compare.character` for vectors of length > 5 (#513, @brodieG)
 
 # testthat 1.0.2
 

@@ -1,7 +1,7 @@
 #' @include compare.R
 #' @param max_diffs Maximum number of differences to show
 #' @param max_lines Maximum number of lines to show from each difference
-#' @param check.attributes If \code{TRUE}, also checks values of attributes.
+#' @param check.attributes If `TRUE`, also checks values of attributes.
 #' @param width Width of output device
 #' @rdname compare
 #' @export
@@ -85,12 +85,13 @@ format.mismatch_character <- function(x, ...,
   encode <- function(x) encodeString(x, quote = '"')
   show_x <- str_trunc(encode(x$x[n_show]), width * max_lines)
   show_y <- str_trunc(encode(x$y[n_show]), width * max_lines)
+  show_i <- x$i[n_show]
 
   sidebyside <- Map(function(x, y, pos) {
     x <- paste0("x[", pos, "]: ", str_chunk(x, width))
     y <- paste0("y[", pos, "]: ", str_chunk(y, width))
     paste(c(x, y), collapse = "\n")
-  }, show_x, show_y, x$i)
+  }, show_x, show_y, show_i)
 
   summary <- paste0(x$n_diff, "/", x$n, " mismatches")
   paste0(summary, "\n", paste0(sidebyside, collapse = "\n\n"))

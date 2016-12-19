@@ -13,14 +13,14 @@ watch(path, callback, pattern = NULL, hash = TRUE)
 have three parameters: added, deleted, modified, and should return
 TRUE to keep watching, or FALSE to stop.}
 
-\item{pattern}{file pattern passed to \code{\link{dir}}}
+\item{pattern}{file pattern passed to \code{\link[=dir]{dir()}}}
 
 \item{hash}{hashes are more accurate at detecting changes, but are slower
 for large files.  When FALSE, uses modification time stamps}
 }
 \description{
-This is used to power the \code{\link{auto_test}} and
-\code{\link{auto_test_package}} functions which are used to rerun tests
+This is used to power the \code{\link[=auto_test]{auto_test()}} and
+\code{\link[=auto_test_package]{auto_test_package()}} functions which are used to rerun tests
 whenever source code changes.
 }
 \details{

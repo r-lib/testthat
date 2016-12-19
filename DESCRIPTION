@@ -18,8 +18,8 @@ Imports:
     crayon,
     praise,
     magrittr,
-    R6,
-    methods,
+    R6 (>= 2.2.0),
+    methods
     xml2
 Suggests:
     devtools,
@@ -60,6 +60,7 @@ Collate:
     'reporter-fail.R'
     'reporter-junit.R'
     'reporter-list.R'
+    'reporter-location.R'
     'reporter-minimal.R'
     'reporter-multi.R'
     'reporter-rstudio.R'
@@ -72,6 +73,7 @@ Collate:
     'reporter-zzz.R'
     'skip.R'
     'source.R'
+    'teardown.R'
     'test-compiled-code.R'
     'test-example.R'
     'test-files.R'
@@ -82,4 +84,5 @@ Collate:
     'try-again.R'
     'utils.R'
     'watcher.R'
-RoxygenNote: 5.0.1
+RoxygenNote: 5.0.1.9000
+Roxygen: list(markdown = TRUE)

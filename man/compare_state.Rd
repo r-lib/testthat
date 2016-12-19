@@ -13,7 +13,7 @@ compare_state(old, new)
 }
 \value{
 list containing number of changes and files which have been
-  \code{added}, \code{deleted} and \code{modified}
+\code{added}, \code{deleted} and \code{modified}
 }
 \description{
 Compare two directory states.

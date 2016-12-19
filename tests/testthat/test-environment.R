@@ -9,6 +9,7 @@ test_that("Cannot create S4 class without special behaviour", {
 
 test_that("can't access variables from other tests (1)", {
   a <- 10
+  expect_true(TRUE)
 })
 
 test_that("can't access variables from other tests (2)", {

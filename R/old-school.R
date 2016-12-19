@@ -1,11 +1,11 @@
 #' Old-style expectations.
 #'
 #' Initial testthat used a style of testing that looked like
-#' \code{expect_that(a, equals(b)))} this allowed expectations to read like
+#' `expect_that(a, equals(b)))` this allowed expectations to read like
 #' English sentences, but was verbose and a bit too cutesy. This style
 #' will continue to work but has been soft-deprecated - it is no longer
 #' documented, and new expectations will only use the new style
-#' \code{expect_equal(a, b)}.
+#' `expect_equal(a, b)`.
 #'
 #' @name oldskool
 #' @keywords internal
@@ -14,6 +14,8 @@ NULL
 #' @export
 #' @rdname oldskool
 is_null <- function() {
+  warning("is_null is deprecated. Please use `expect_null` instead.",
+    call. = FALSE)
   function(x) expect_null(x)
 }
 
@@ -106,6 +108,10 @@ throws_error <- function(regexp = NULL, ...) {
 #' @export
 #' @rdname oldskool
 matches <- function(regexp, all = TRUE, ...) {
+  warning(
+    "`matches` is deprecated. Please use `expect_match` instead.",
+    call. = FALSE
+  )
   function(x) expect_match(x, regexp, all = all, ...)
 }
 

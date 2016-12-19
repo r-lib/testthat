@@ -71,3 +71,10 @@ test_that("not all lines are shown", {
   expect_equal(lines[1], "1/1 mismatches")
   expect_equal(length(lines), 8)
 })
+
+test_that("vectors longer than `max_diffs` (#513)", {
+  comp <- compare(letters[1:2], LETTERS[1:2], max_diffs=1)
+  expect_is(comp, "comparison")
+  expect_false(comp$equal)
+  expect_equal(comp$message, "2/2 mismatches\nx[1]: \"a\"\ny[1]: \"A\"")
+})

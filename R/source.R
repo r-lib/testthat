@@ -2,12 +2,12 @@
 #'
 #' The expectation is that the files can be sourced in alphabetical order.
 #' Helper scripts are R scripts accompanying test scripts but prefixed by
-#' \code{helper}. These scripts are once before the tests are run.
+#' `helper`. These scripts are once before the tests are run.
 #'
 #' @param path Path to tests
 #' @param pattern Regular expression used to filter files
 #' @param env Environment in which to evaluate code.
-#' @param chdir Change working directory to \code{dirname(path)}?
+#' @param chdir Change working directory to `dirname(path)`?
 #' @param encoding File encoding, default: "unknown"
 #' @export
 source_file <- function(path, env = test_env(), chdir = TRUE, encoding = "unknown") {

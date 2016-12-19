@@ -3,10 +3,11 @@ NULL
 
 #' Check reporter: 13 line summary of problems
 #'
-#' \code{R CMD check} displays only the last 13 lines of the result, so this
+#' `R CMD check` displays only the last 13 lines of the result, so this
 #' report is design to ensure that you see something useful there.
 #'
 #' @export
+#' @family reporters
 CheckReporter <- R6::R6Class("CheckReporter", inherit = Reporter,
   public = list(
     failures = list(),

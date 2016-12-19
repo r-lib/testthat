@@ -21,7 +21,7 @@ local({
     return()
 
   quietly <- function(expr) {
-    suppressMessages(capture.output(result <- expr))
+    suppressMessages(capture_output(result <- expr))
     result
   }
 

@@ -3,10 +3,11 @@ NULL
 
 #' Test reporter: start recovery.
 #'
-#' This reporter will call a modified version of \code{\link{recover}} on all
+#' This reporter will call a modified version of [recover()] on all
 #' broken expectations.
 #'
 #' @export
+#' @family reporters
 DebugReporter <- R6::R6Class("DebugReporter", inherit = Reporter,
   public = list(
     add_result = function(context, test, result) {

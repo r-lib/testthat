@@ -8,6 +8,7 @@ NULL
 #' For more information about TAP, see http://testanything.org
 #'
 #' @export
+#' @family reporters
 TapReporter <- R6::R6Class("TapReporter", inherit = Reporter,
   public = list(
     results = list(),
