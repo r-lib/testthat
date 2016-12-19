@@ -3,24 +3,11 @@ context("JUnitReporter")
 
 test_that("Junit reporter regression", {
   output.file        <- textConnection(NULL, "w")
-  junit.reporter     <- JunitReporter$new(file = output.file)
-  junit.reporter$out <- textConnection(NULL, "w")
-
-  # test_dir("tests/testthat/test_dir", reporter = junit.reporter)
-  old <- options(testthat.use_colours = FALSE)  
+  junit.reporter     <- createJunitReporterMock(output.file)
   test_dir("test_dir", reporter = junit.reporter)
-  options(testthat.use_colours = old$use_colours)
 
-  junit.report <- textConnectionValue(junit.reporter$out)
-
-  # standard output
-  expect_identical(junit.report[1], "Bare : ..")
-  expect_identical(junit.report[2], "Basic : .......")
-  expect_identical(junit.report[3], "empty : E")
-  expect_identical(junit.report[4], "error : E.EFEE.")
-  expect_identical(junit.report[5], "failures : F.F..")
-  expect_identical(junit.report[6], "helper : .")
-  expect_identical(junit.report[7], "skip : S")
+  # junit.reporter     <- JunitReporterMock$new()
+  # test_dir("tests/testthat/test_dir", reporter = junit.reporter)
 
   # XML file output
   testsuite_in_report <- function(tests, skipped, failures, errors, name) {

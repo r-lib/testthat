@@ -51,14 +51,14 @@ JunitReporter <- R6::R6Class("JunitReporter", inherit = Reporter,
     suite    = NULL,
     suite_time = NULL,
 
-    initialize = function(file = "report.xml") {
+    initialize = function(file = stdout()) {
       super$initialize()
       self$file    <- file
     },
 
     elapsed_time = function() {
-      time <- round((proc.time() - self$timer)[["elapsed"]], 2)
-      self$timer  <- proc.time()
+      time <- round((private$proctime() - self$timer)[["elapsed"]], 2)
+      self$timer <- private$proctime()
       time
     },
 
@@ -71,26 +71,22 @@ JunitReporter <- R6::R6Class("JunitReporter", inherit = Reporter,
     },
 
     start_reporter = function() {
-      self$timer <- proc.time()
+      self$timer <- private$proctime()
       self$doc   <- xml2::xml_new_document()
       self$root  <- xml2::xml_add_child(self$doc, 'testsuites')
       self$reset_suite()
     },
 
     start_context = function(context) {
-      self$cat(context, ": ")
-
       self$suite <- xml2::xml_add_child(self$root, "testsuite")
       add_attrs(self$suite,
         name      = context,
-        timestamp = toString(Sys.time()),
-        hostname  = Sys.info()[["nodename"]]
+        timestamp = private$timestamp(),
+        hostname  = private$hostname()
       )
     },
 
     end_context = function(context) {
-      self$cat("\n")
-
       add_attrs(self$suite,
         tests = self$tests, skipped = self$skipped,
         failures = self$failures, errors = self$errors,
@@ -107,11 +103,11 @@ JunitReporter <- R6::R6Class("JunitReporter", inherit = Reporter,
       self$suite_time <- self$suite_time + time
 
       # XML node for test case
+      name <- test %||% "(unnamed)"
       testcase <- xml2::xml_add_child(self$suite, "testcase",
-       time = time,
+       time = toString(time),
        classname = paste0(classnameOK(context), '.', classnameOK(name))
       )
-      name <- test %||% "(unnamed)"
 
       # message - if failure or error
       message <- if (is.null(result$call)) "(unexpected)" else format(result$call)[1]
@@ -123,31 +119,44 @@ JunitReporter <- R6::R6Class("JunitReporter", inherit = Reporter,
 
       # add child XML node if not success
       if (expectation_error(result)) {
-        self$cat_tight(single_letter_summary(result))
         add_broken(testcase, 'error', message)
         self$errors <- self$errors + 1
       } else
       if (expectation_failure(result)) {
-        self$cat_tight(single_letter_summary(result))
         add_broken(testcase, 'failure', message)
         self$failures <- self$failures + 1
       } else
       if (expectation_skip(result)) {
-        self$cat_tight(colourise("S", "success"))
         xml2::xml_add_child(testcase, "skipped")
         self$skipped <- self$skipped + 1
-      } else
-      {
-        self$cat_tight(colourise(".", "success"))
       }
     },
 
     end_reporter = function() {
-      self$cat("\n")
-
-      # this causes a segfault write_xml(xmlDoc, self$file, format = )
-      cat(toString(self$doc), file = self$file)
-
+      if (inherits(self$file, "connection")) {
+        file <- tempfile()
+        xml2::write_xml(self$doc, file, format = TRUE)
+        writeLines(readLines(file), self$file)
+      } else
+      if (is.character(self$file)) {
+        xml2::write_xml(self$doc, self$file, format = TRUE)
+      }
+      else {
+        stop('unsupported output type: ', toString(self$file))
+      }
+      #cat(toString(self$doc), file = self$file)
     } # end_reporter
-  )
+  ), #public
+
+  private = list (
+    proctime = function () {
+      proc.time()
+    },
+    timestamp = function () {
+      toString(Sys.time())
+    },
+    hostname = function () {
+      Sys.info()[["nodename"]]
+    }
+  ) # private
 )

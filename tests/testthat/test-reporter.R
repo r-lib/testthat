@@ -72,5 +72,5 @@ test_that("reporters produce consistent output", {
   save_report("teamcity")
   save_report("silent")
   save_report("rstudio")
-  save_report("junit")
+  save_report("junit", reporter = createJunitReporterMock(stdout()))
 })

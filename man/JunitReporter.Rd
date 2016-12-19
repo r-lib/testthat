@@ -12,12 +12,9 @@ JunitReporter
 This reporter includes detailed results about each test and summaries,
 written to a file (or stdout) in jUnit XML format. This can be read by
 the Jenkins Continuous Integration System to report on a dashboard etc.
-Requires the XML package.
+Requires the \emph{xml2} package.
 }
 \details{
-This works for \code{\link{expect_that}} but not for the wrappers like
-\code{\link{expect_equal}} etc.
-
 To fit into the jUnit structure, context() becomes the \code{<testsuite>}
 name as well as the base of the \code{<testcase> classname}. The
 test_that() name becomes the rest of the \code{<testcase> classname}.
@@ -29,9 +26,6 @@ Execution time and some other details are also recorded.
 
 References for the jUnit XML format:
 \url{http://llg.cubic.org/docs/junit/}
-
-Output drawn from the SummaryReporter is printed to the standard
-error stream during execution.
 }
 \keyword{datasets}
 
