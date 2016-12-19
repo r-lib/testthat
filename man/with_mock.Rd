@@ -28,7 +28,7 @@ This works by using some C code to temporarily modify the mocked function \emph{
 On exit (regular or error), all functions are restored to their previous state.
 This is somewhat abusive of R's internals, and is still experimental, so use with care.
 
-Primitives (such as \code{\link[base]{interactive}}) cannot be mocked, but this can be
+Primitives (such as \code{\link[base:interactive]{base::interactive()}}) cannot be mocked, but this can be
 worked around easily by defining a wrapper function with the same name.
 }
 \examples{

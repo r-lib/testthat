@@ -9,7 +9,7 @@
 DebugReporter
 }
 \description{
-This reporter will call a modified version of \code{\link{recover}} on all
+This reporter will call a modified version of \code{\link[=recover]{recover()}} on all
 broken expectations.
 }
 \seealso{

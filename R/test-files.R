@@ -1,6 +1,6 @@
 #' Generate default testing environment.
 #'
-#' We use a new environment which inherits from \code{\link{globalenv}}.
+#' We use a new environment which inherits from [globalenv()].
 #' In an ideal world, we'd avoid putting the global environment on the
 #' search path for tests, but it's not currently possible without losing
 #' the ability to load packages in tests.
@@ -13,15 +13,15 @@ test_env <- function() {
 
 #' Run all of the tests in a directory.
 #'
-#' Test files start with \code{test} and are executed in alphabetical order
+#' Test files start with `test` and are executed in alphabetical order
 #' (but they shouldn't have dependencies). Helper files start with
-#' \code{helper} and loaded before any tests are run.
+#' `helper` and loaded before any tests are run.
 #'
 #' @param path path to tests
-#' @param filter If not \code{NULL}, only tests with file names matching this
+#' @param filter If not `NULL`, only tests with file names matching this
 #'   regular expression will be executed.  Matching will take on the file
-#'   name after it has been stripped of \code{"test-"} and \code{".R"}.
-#' @param ... Additional arguments passed to \code{grepl} to control filtering.
+#'   name after it has been stripped of `"test-"` and `".R"`.
+#' @param ... Additional arguments passed to [grepl()] to control filtering.
 #' @inheritParams test_file
 #'
 #' @return the results as a "testthat_results" (list)
@@ -81,9 +81,9 @@ filter_test_scripts <- function(files, filter = NULL, invert = FALSE, ...) {
 
 #' Find the test files.
 #' @param path path to tests
-#' @param filter cf \code{\link{test_dir}}
+#' @param filter cf [test_dir()]
 #' @param invert If \sQuote{TRUE} return files which do \emph{not} match.
-#' @param ... Additional arguments passed to \code{grepl} to control filtering.
+#' @param ... Additional arguments passed to [grepl()] to control filtering.
 #' @return the test file paths
 #' @keywords internal
 #' @export
@@ -100,7 +100,7 @@ find_test_scripts <- function(path, filter = NULL, invert = FALSE, ...) {
 #' @param env environment in which to execute the tests
 #' @param load_helpers Source helper files before running the tests?
 #' @param encoding File encoding, default is "unknown"
-#' \code{unknown}.
+#' `unknown`.
 #' @inheritParams with_reporter
 #' @return the results as a "testthat_results" (list)
 #' @export

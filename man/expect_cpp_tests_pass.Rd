@@ -11,7 +11,7 @@ expect_cpp_tests_pass(package)
 }
 \description{
 Test compiled code in the package \code{package}. See
-\code{\link{use_catch}()} for more details.
+\code{\link[=use_catch]{use_catch()}} for more details.
 }
 \note{
 A call to this function will automatically be generated

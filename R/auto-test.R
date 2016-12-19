@@ -1,29 +1,25 @@
 #' Watches code and tests for changes, rerunning tests as appropriate.
 #'
-#' The idea behind \code{auto_test} is that you just leave it running while
+#' The idea behind `auto_test()` is that you just leave it running while
 #' you develop your code.  Everytime you save a file it will be automatically
 #' tested and you can easily see if your changes have caused any test
 #'  failures.
 #'
 #' The current strategy for rerunning tests is as follows:
 #'
-#' \itemize{
-#'  \item if any code has changed, then those files are reloaded and all tests
-#'    rerun
-#'  \item otherwise, each new or modified test is run
-#' }
-#' In the future, \code{auto_test} might implement one of the following more
+#' - if any code has changed, then those files are reloaded and all tests
+#'   rerun
+#' - otherwise, each new or modified test is run
+#'
+#' In the future, `auto_test()` might implement one of the following more
 #' intelligent alternatives:
 #'
-#' \itemize{
-#'  \item Use codetools to build up dependency tree and then rerun tests only
-#'    when a dependency changes.
-#'
-#'  \item Mimic ruby's autotest and rerun only failing tests until they pass,
-#'    and then rerun all tests.
-#' }
+#' - Use codetools to build up dependency tree and then rerun tests only
+#'   when a dependency changes.
+#' - Mimic ruby's autotest and rerun only failing tests until they pass,
+#'   and then rerun all tests.
 #
-#' @seealso \code{\link{auto_test_package}}
+#' @seealso [auto_test_package()]
 #' @export
 #' @param code_path path to directory containing code
 #' @param test_path path to directory containing tests
@@ -71,7 +67,7 @@ auto_test <- function(code_path, test_path, reporter = default_reporter(),
 #' @export
 #' @param reporter test reporter to use
 #' @keywords debugging
-#' @seealso \code{\link{auto_test}} for details on how method works
+#' @seealso [auto_test()] for details on how method works
 auto_test_package <- function(pkg = ".", reporter = default_reporter()) {
   if (!requireNamespace("devtools", quietly = TRUE)) {
     stop("devtools required to run auto_test_package(). Please install.",

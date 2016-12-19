@@ -30,5 +30,5 @@ test_that("throws error if can't find tests/testthat", {
   old <- setwd("test-path-missing")
   on.exit(setwd(old))
 
-  expect_error(test_path("empty"), "Can't find `tests/testthat/`")
+  expect_error(test_path("empty"), "Can't find `tests/testthat`")
 })

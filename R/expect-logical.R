@@ -6,7 +6,7 @@
 #'
 #' Attributes are ignored.
 #'
-#' @seealso \code{\link{is_false}} for complement
+#' @seealso [is_false()] for complement
 #' @inheritParams expect_that
 #' @family expectations
 #' @examples

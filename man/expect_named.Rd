@@ -24,7 +24,7 @@ writing tests in loops).}
 
 \item{label}{object label. When \code{NULL}, computed from deparsed object.}
 
-\item{...}{Other arguments passed onto \code{has_names}.}
+\item{...}{Other arguments passed on to \code{\link[=has_names]{has_names()}}.}
 }
 \description{
 You can either check for the presence of names (leaving \code{expected}

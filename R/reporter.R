@@ -86,8 +86,8 @@ Reporter <- R6::R6Class("Reporter",
 
 #' Retrieve the default reporter.
 #'
-#' This will be \code{\link{SummaryReporter}} unless option
-#' \code{testthat.default_reporter} is set
+#' This will be [SummaryReporter()] unless option
+#' `testthat.default_reporter` is set
 #'
 #' @export
 #' @keywords internal

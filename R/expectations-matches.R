@@ -2,10 +2,10 @@
 #'
 #' @inheritParams expect_that
 #' @param regexp Regular expression to test against.
-#' @param all Should all elements of actual value match \code{regexp} (TRUE),
+#' @param all Should all elements of actual value match `regexp` (TRUE),
 #'    or does only one need to match (FALSE)
-#' @param ... Additional arguments passed on to \code{\link{grepl}}, e.g.
-#'   \code{ignore.case} or \code{fixed}.
+#' @param ... Additional arguments passed on to [grepl()], e.g.
+#'   `ignore.case` or `fixed`.
 #' @family expectations
 #' @export
 #' @examples
