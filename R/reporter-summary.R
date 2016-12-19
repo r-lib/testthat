@@ -86,7 +86,7 @@ SummaryReporter <- R6::R6Class("SummaryReporter", inherit = Reporter,
   private = list(
     get_summary = function(result) {
       if (expectation_broken(result)) {
-        if (self$failures$size() < length(labels)) {
+        if (self$failures$size() <= length(labels)) {
           return(colourise(labels[self$failures$size()], "error"))
         }
       }
