@@ -18,8 +18,8 @@ test_that("Junit reporter regression", {
   }
 
   xml.report <- textConnectionValue(output.file)
-  expect_true(testsuite_in_report(7, 0, 0, 0, "Basic"))
-  expect_true(testsuite_in_report(1, 0, 0, 1, "empty"))
+  expect_true(testsuite_in_report(8, 1, 0, 0, "Basic"))
+  expect_true(testsuite_in_report(2, 1, 0, 1, "empty"))
   expect_true(testsuite_in_report(7, 0, 1, 4, "error"))
   expect_true(testsuite_in_report(5, 0, 2, 0, "failures"))
   expect_true(testsuite_in_report(1, 0, 0, 0, "helper"))

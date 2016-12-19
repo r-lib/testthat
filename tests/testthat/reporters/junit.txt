@@ -29,11 +29,14 @@
       <error type="error" message="expectation_error in structure(list(f(), f(), f(), f(), f(), f(), f(), f(), f(), f(), : evaluation nested too deeply: infinite recursion / options(expressions=)?&#10; @reporters/tests.R#43"/>
     </testcase>
   </testsuite>
-  <testsuite name="Skips" timestamp="1999:12:31 23:59:59" hostname="nodename" tests="2" skipped="2" failures="0" errors="0" time="0">
+  <testsuite name="Skips" timestamp="1999:12:31 23:59:59" hostname="nodename" tests="3" skipped="3" failures="0" errors="0" time="0">
     <testcase time="0" classname="Skips.Skip:1">
       <skipped/>
     </testcase>
     <testcase time="0" classname="Skips.Skip:2">
+      <skipped/>
+    </testcase>
+    <testcase time="0" classname="Skips.Skip:3">
       <skipped/>
     </testcase>
   </testsuite>
