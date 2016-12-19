@@ -1,4 +1,12 @@
-createJunitReporterMock <- function (file) {
+# Fix components of JunitReporter that otherwise vary from run-to-run
+#
+# The following functions need to be mocked out to run a unit test
+# against static contents of reporters/junit.txt:
+#   - proctime - originally wrapper for proc.time()
+#   - timestamp - originally wrapper for toString(Sys.time())
+#   - hostname  - originally wrapper for Sys.info()[["nodename"]]
+#
+createJunitReporterMock <- function () {
   JunitReporterMock <- R6::R6Class("JunitReporterMock",
     inherit = JunitReporter,
     public  = list (),
@@ -14,5 +22,5 @@ createJunitReporterMock <- function (file) {
       }
     )
   )
-  JunitReporterMock$new(file = file)
+  JunitReporterMock$new()
 }

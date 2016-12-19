@@ -28,7 +28,6 @@ classnameOK <- function(text) {
 #' @export
 JunitReporter <- R6::R6Class("JunitReporter", inherit = Reporter,
   public = list(
-    file     = NULL,
     results  = NULL,
     timer    = NULL,
     doc      = NULL,
@@ -39,11 +38,6 @@ JunitReporter <- R6::R6Class("JunitReporter", inherit = Reporter,
     root     = NULL,
     suite    = NULL,
     suite_time = NULL,
-
-    initialize = function(file = stdout()) {
-      super$initialize()
-      self$file    <- file
-    },
 
     elapsed_time = function() {
       time <- round((private$proctime() - self$timer)[["elapsed"]], 2)
@@ -122,15 +116,12 @@ JunitReporter <- R6::R6Class("JunitReporter", inherit = Reporter,
     },
 
     end_reporter = function() {
-      if (inherits(self$file, "connection")) {
+      if (inherits(self$out, "connection")) {
         file <- tempfile()
         xml2::write_xml(self$doc, file, format = TRUE)
-        writeLines(readLines(file), self$file)
-      } else if (is.character(self$file)) {
-        xml2::write_xml(self$doc, self$file, format = TRUE)
-      }
-      else {
-        stop('unsupported output type: ', toString(self$file))
+        writeLines(readLines(file), self$out)
+      } else {
+        stop('unsupported output type: ', toString(self$out))
       }
       #cat(toString(self$doc), file = self$file)
     } # end_reporter

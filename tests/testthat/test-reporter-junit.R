@@ -2,8 +2,8 @@ context("JUnitReporter")
 
 
 test_that("Junit reporter regression", {
-  output.file        <- textConnection(NULL, "w")
-  junit.reporter     <- createJunitReporterMock(output.file)
+  junit.reporter     <- createJunitReporterMock()
+  junit.reporter$out <- textConnection(NULL, "w")
   test_dir("test_dir", reporter = junit.reporter)
 
   # junit.reporter     <- JunitReporterMock$new()
@@ -17,7 +17,7 @@ test_that("Junit reporter regression", {
     length(grep(line, xml.report)) > 0
   }
 
-  xml.report <- textConnectionValue(output.file)
+  xml.report <- textConnectionValue(junit.reporter$out)
   expect_true(testsuite_in_report(8, 1, 0, 0, "Basic"))
   expect_true(testsuite_in_report(2, 1, 0, 1, "empty"))
   expect_true(testsuite_in_report(7, 0, 1, 4, "error"))
