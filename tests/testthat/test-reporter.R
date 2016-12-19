@@ -65,7 +65,10 @@ test_that("reporters produce consistent output", {
     save_report("debug")
   )
   save_report("check", error_regexp = NULL)
-  save_report("summary", SummaryReporter$new(show_praise = FALSE))
+  save_report("summary", SummaryReporter$new(show_praise = FALSE, omit_dots = FALSE))
+  save_report("summary-2", SummaryReporter$new(show_praise = FALSE, max_reports = 2),
+              error_regexp = "Reached maximum number of reports")
+  save_report("summary-no-dots", SummaryReporter$new(show_praise = FALSE, omit_dots = TRUE))
   save_report("location")
   save_report("minimal")
   save_report("tap")

@@ -1,0 +1,76 @@
+Expectations: 1234
+Errors: 56
+Recursion: 7
+Skips: SSS
+Warnings: WWW
+Output: 
+
+Skipped ------------------------------------------------------------------------
+1. Skip:1 (@tests.R#49) - skip
+
+2. Skip:2 (@tests.R#54) - skip
+
+3. Skip:3 (@tests.R#57) - Empty test
+
+Warnings -----------------------------------------------------------------------
+1. Warning:1 (@tests.R#63) - abc
+
+2. Warning:2 (@tests.R#67) - def
+
+3. Warning:2 (@tests.R#68) - ghi
+
+Failed -------------------------------------------------------------------------
+1. Failure: Failure:1 (@tests.R#8) ---------------------------------------------
+Failure has been forced
+
+
+2. Failure: Failure:2a (@tests.R#12) -------------------------------------------
+Failure has been forced
+
+
+3. Failure: Failure:2b (@tests.R#15) -------------------------------------------
+FALSE isn't true.
+
+
+4. Failure: Failure:loop (@tests.R#20) -----------------------------------------
+`i` not equal to 2.
+1/1 mismatches
+[1] 1 - 2 == -1
+
+
+5. Error: Error:1 (@tests.R#28) ------------------------------------------------
+stop
+1: stop("stop") at reporters/tests.R:28
+
+6. Error: Error:3 (@tests.R#36) ------------------------------------------------
+!
+1: f() at reporters/tests.R:36
+2: g() at reporters/tests.R:32
+3: h() at reporters/tests.R:33
+4: stop("!") at reporters/tests.R:34
+
+7. Error: Recursion:1 (@tests.R#43) --------------------------------------------
+evaluation nested too deeply: infinite recursion / options(expressions=)?
+1: f() at reporters/tests.R:43
+2: f() at reporters/tests.R:42
+3: f() at reporters/tests.R:42
+4: f() at reporters/tests.R:42
+5: f() at reporters/tests.R:42
+6: f() at reporters/tests.R:42
+7: f() at reporters/tests.R:42
+8: f() at reporters/tests.R:42
+9: f() at reporters/tests.R:42
+10: f() at reporters/tests.R:42
+...
+166: f() at reporters/tests.R:42
+167: f() at reporters/tests.R:42
+168: f() at reporters/tests.R:42
+169: f() at reporters/tests.R:42
+170: f() at reporters/tests.R:42
+171: f() at reporters/tests.R:42
+172: f() at reporters/tests.R:42
+173: f() at reporters/tests.R:42
+174: f() at reporters/tests.R:42
+175: f() at reporters/tests.R:42
+
+DONE ===========================================================================

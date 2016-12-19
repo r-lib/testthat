@@ -22,19 +22,29 @@ SummaryReporter <- R6::R6Class("SummaryReporter", inherit = Reporter,
     failures = NULL,
     skips = NULL,
     warnings = NULL,
-    max_reports = getOption("testthat.summary.max_reports", 15L),
+    max_reports = NULL,
     show_praise = TRUE,
+    omit_dots = FALSE,
 
-    initialize = function(show_praise = TRUE) {
+    initialize = function(show_praise = TRUE, omit_dots = getOption("testthat.summary.omit_dots"), max_reports = getOption("testthat.summary.max_reports", 15L)) {
       super$initialize()
-      self$show_praise <- show_praise
       self$failures <- Stack$new()
       self$skips <- Stack$new()
       self$warnings <- Stack$new()
+      self$max_reports <- max_reports
+      self$show_praise <- show_praise
+      self$omit_dots <- omit_dots
     },
 
     start_context = function(context) {
       self$cat_tight(context, ": ")
+    },
+
+    end_test = function(context, test) {
+      if (self$failures$size() >= self$max_reports) {
+        self$cat_line()
+        stop("Reached maximum number of reports.", call. = FALSE)
+      }
     },
 
     end_context = function(context) {
@@ -43,21 +53,18 @@ SummaryReporter <- R6::R6Class("SummaryReporter", inherit = Reporter,
 
     add_result = function(context, test, result) {
       if (expectation_broken(result)) {
-        if (self$failures$size() + 1 > self$max_reports) {
-          self$cat_tight(single_letter_summary(result))
-        } else {
-          self$failures$push(result)
-          self$cat_tight(colourise(labels[self$failures$size()], "error"))
-        }
+        self$failures$push(result)
       } else if (expectation_skip(result)) {
         self$skips$push(result)
-        self$cat_tight(single_letter_summary(result))
       } else if (expectation_warning(result)) {
         self$warnings$push(result)
-        self$cat_tight(single_letter_summary(result))
       } else {
-        self$cat_tight(single_letter_summary(result))
+        if (isTRUE(self$omit_dots)) {
+          return()
+        }
       }
+
+      self$cat_tight(private$get_summary(result))
     },
 
     end_reporter = function() {
@@ -83,6 +90,16 @@ SummaryReporter <- R6::R6Class("SummaryReporter", inherit = Reporter,
   ),
 
   private = list(
+    get_summary = function(result) {
+      if (expectation_broken(result)) {
+        if (self$failures$size() <= length(labels)) {
+          return(colourise(labels[self$failures$size()], "error"))
+        }
+      }
+
+      single_letter_summary(result)
+    },
+
     cat_reports = function(header, expectations, max_n, summary_fun,
                            collapse = "\n\n") {
       n <- length(expectations)
