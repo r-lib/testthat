@@ -49,7 +49,6 @@ Collate:
     'expect-that.R'
     'expectation.R'
     'expectations-matches.R'
-    'helper-junitmock.R'
     'make-expectation.R'
     'mock.R'
     'old-school.R'
