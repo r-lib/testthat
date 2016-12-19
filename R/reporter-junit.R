@@ -111,13 +111,11 @@ JunitReporter <- R6::R6Class("JunitReporter", inherit = Reporter,
         # "type" in Java is the exception class
         xml2::xml_add_child(testcase, 'error', type = 'error', message = message)
         self$errors <- self$errors + 1
-      } else
-      if (expectation_failure(result)) {
+      } else if (expectation_failure(result)) {
         # "type" in Java is the type of assertion that failed
         xml2::xml_add_child(testcase, 'failure', type = 'failure', message = message)
         self$failures <- self$failures + 1
-      } else
-      if (expectation_skip(result)) {
+      } else if (expectation_skip(result)) {
         xml2::xml_add_child(testcase, "skipped")
         self$skipped <- self$skipped + 1
       }
@@ -128,8 +126,7 @@ JunitReporter <- R6::R6Class("JunitReporter", inherit = Reporter,
         file <- tempfile()
         xml2::write_xml(self$doc, file, format = TRUE)
         writeLines(readLines(file), self$file)
-      } else
-      if (is.character(self$file)) {
+      } else if (is.character(self$file)) {
         xml2::write_xml(self$doc, self$file, format = TRUE)
       }
       else {
