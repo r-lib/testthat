@@ -5,18 +5,14 @@ classnameOK <- function(text) {
   gsub("[ \\.]", "_", text)
 }
 
-#' @importFrom xml2 xml_attr<- xml_add_child
 add_broken <- function (parent, type, message) {
-  child <- xml_add_child(parent, type)
-  xml_attr(child, 'type')    <- type
-  xml_attr(child, 'message') <- message
+  child <- xml2::xml_add_child(parent, type, type = type, message = message)
 }
 
-#' @importFrom xml2 xml_attr<-
 add_attrs <- function (node, ...) {
   attrs <- list(...)
   for (name in names(attrs)) {
-    xml_attr(node, name) <- as.character(attrs[[name]])
+    xml2::xml_attr(node, name) <- as.character(attrs[[name]])
   }
 }
 
@@ -26,10 +22,7 @@ add_attrs <- function (node, ...) {
 #' This reporter includes detailed results about each test and summaries,
 #' written to a file (or stdout) in jUnit XML format. This can be read by
 #' the Jenkins Continuous Integration System to report on a dashboard etc.
-#' Requires the XML package.
-#'
-#' This works for \code{\link{expect_that}} but not for the wrappers like
-#' \code{\link{expect_equal}} etc.
+#' Requires the \emph{xml2} package.
 #'
 #' To fit into the jUnit structure, context() becomes the \code{<testsuite>}
 #' name as well as the base of the \code{<testcase> classname}. The
@@ -43,11 +36,7 @@ add_attrs <- function (node, ...) {
 #' References for the jUnit XML format:
 #' \url{http://llg.cubic.org/docs/junit/}
 #'
-#' Output drawn from the SummaryReporter is printed to the standard
-#' error stream during execution.
-#'
 #' @export
-#' @importFrom xml2 xml_new_document write_xml xml_add_child xml_attr<-
 JunitReporter <- R6::R6Class("JunitReporter", inherit = Reporter,
   public = list(
     file     = NULL,
@@ -83,15 +72,15 @@ JunitReporter <- R6::R6Class("JunitReporter", inherit = Reporter,
 
     start_reporter = function() {
       self$timer <- proc.time()
-      self$doc   <- xml_new_document()
-      self$root  <- xml_add_child(self$doc, 'testsuites')
+      self$doc   <- xml2::xml_new_document()
+      self$root  <- xml2::xml_add_child(self$doc, 'testsuites')
       self$reset_suite()
     },
 
     start_context = function(context) {
       self$cat(context, ": ")
 
-      self$suite <- xml_add_child(self$root, "testsuite")
+      self$suite <- xml2::xml_add_child(self$root, "testsuite")
       add_attrs(self$suite,
         name      = context,
         timestamp = toString(Sys.time()),
@@ -103,9 +92,10 @@ JunitReporter <- R6::R6Class("JunitReporter", inherit = Reporter,
       self$cat("\n")
 
       add_attrs(self$suite,
-                tests = self$tests, skipped = self$skipped,
-                failures = self$failures, errors = self$errors,
-                time = self$suite_time)
+        tests = self$tests, skipped = self$skipped,
+        failures = self$failures, errors = self$errors,
+        time = self$suite_time
+      )
 
       self$reset_suite()
     },
@@ -117,11 +107,11 @@ JunitReporter <- R6::R6Class("JunitReporter", inherit = Reporter,
       self$suite_time <- self$suite_time + time
 
       # XML node for test case
-      testcase <- xml_add_child(self$suite, "testcase")
-      name <- if (is.null(test) || !nchar(test)) "(unnamed)" else test
-
-      add_attrs(testcase, time = time,
-                classname = paste0(classnameOK(context), '.', classnameOK(name)))
+      testcase <- xml2::xml_add_child(self$suite, "testcase",
+       time = time,
+       classname = paste0(classnameOK(context), '.', classnameOK(name))
+      )
+      name <- test %||% "(unnamed)"
 
       # message - if failure or error
       message <- if (is.null(result$call)) "(unexpected)" else format(result$call)[1]
@@ -136,18 +126,18 @@ JunitReporter <- R6::R6Class("JunitReporter", inherit = Reporter,
         self$cat_tight(single_letter_summary(result))
         add_broken(testcase, 'error', message)
         self$errors <- self$errors + 1
-      }
-      else if (expectation_failure(result)) {
+      } else
+      if (expectation_failure(result)) {
         self$cat_tight(single_letter_summary(result))
         add_broken(testcase, 'failure', message)
         self$failures <- self$failures + 1
-      }
-      else if (expectation_skip(result)) {
+      } else
+      if (expectation_skip(result)) {
         self$cat_tight(colourise("S", "success"))
-        xml_add_child(testcase, "skipped")
+        xml2::xml_add_child(testcase, "skipped")
         self$skipped <- self$skipped + 1
-      }
-      else {
+      } else
+      {
         self$cat_tight(colourise(".", "success"))
       }
     },
