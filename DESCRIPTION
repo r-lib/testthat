@@ -19,7 +19,7 @@ Imports:
     praise,
     magrittr,
     R6 (>= 2.2.0),
-    methods
+    methods,
     xml2
 Suggests:
     devtools,
