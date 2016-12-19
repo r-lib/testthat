@@ -4,7 +4,9 @@
   option `testthat.summary.max_reports` (default 15) is reached
   (#520).
 
-* New option `testthat.summary.omit_dots`, default to `FALSE`. Setting to `TRUE` hides the progress dots from the output of the summary reporter, which speeds up tests by a small margin (#502).
+* New option `testthat.summary.omit_dots`, default to `FALSE`. Setting to `TRUE`
+  hides the progress dots from the output of the summary reporter, which speeds
+  up tests by a small margin (#502).
 
 * New `LocationReporter` which just prints the location of every expectation.
   This is useful for locating segfaults and C/C++ breakpoints (#551).
