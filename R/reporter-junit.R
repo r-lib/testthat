@@ -5,17 +5,6 @@ classnameOK <- function(text) {
   gsub("[ \\.]", "_", text)
 }
 
-add_broken <- function (parent, type, message) {
-  child <- xml2::xml_add_child(parent, type, type = type, message = message)
-}
-
-add_attrs <- function (node, ...) {
-  attrs <- list(...)
-  for (name in names(attrs)) {
-    xml2::xml_attr(node, name) <- as.character(attrs[[name]])
-  }
-}
-
 
 #' Test reporter: summary of errors in jUnit XML format.
 #'
@@ -78,8 +67,8 @@ JunitReporter <- R6::R6Class("JunitReporter", inherit = Reporter,
     },
 
     start_context = function(context) {
-      self$suite <- xml2::xml_add_child(self$root, "testsuite")
-      add_attrs(self$suite,
+      self$suite <- xml2::xml_add_child(self$root,
+        "testsuite",
         name      = context,
         timestamp = private$timestamp(),
         hostname  = private$hostname()
@@ -87,11 +76,11 @@ JunitReporter <- R6::R6Class("JunitReporter", inherit = Reporter,
     },
 
     end_context = function(context) {
-      add_attrs(self$suite,
-        tests = self$tests, skipped = self$skipped,
-        failures = self$failures, errors = self$errors,
-        time = self$suite_time
-      )
+      xml2::xml_attr(self$suite, "tests") <- as.character(self$tests)
+      xml2::xml_attr(self$suite, "skipped") <- as.character(self$skipped)
+      xml2::xml_attr(self$suite, "failures") <- as.character(self$failures)
+      xml2::xml_attr(self$suite, "errors") <- as.character(self$errors)
+      xml2::xml_attr(self$suite, "time") <- as.character(self$suite_time)
 
       self$reset_suite()
     },
@@ -117,13 +106,15 @@ JunitReporter <- R6::R6Class("JunitReporter", inherit = Reporter,
         message  <- paste(as.character(result), location)
       }
 
-      # add child XML node if not success
+      # add an extra XML child node if not a success
       if (expectation_error(result)) {
-        add_broken(testcase, 'error', message)
+        # "type" in Java is the exception class
+        xml2::xml_add_child(testcase, 'error', type = 'error', message = message)
         self$errors <- self$errors + 1
       } else
       if (expectation_failure(result)) {
-        add_broken(testcase, 'failure', message)
+        # "type" in Java is the type of assertion that failed
+        xml2::xml_add_child(testcase, 'failure', type = 'failure', message = message)
         self$failures <- self$failures + 1
       } else
       if (expectation_skip(result)) {
