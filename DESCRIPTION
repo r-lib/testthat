@@ -19,7 +19,8 @@ Imports:
     praise,
     magrittr,
     R6 (>= 2.2.0),
-    methods
+    methods,
+    xml2
 Suggests:
     devtools,
     withr,
@@ -56,6 +57,7 @@ Collate:
     'reporter-check.R'
     'reporter-debug.R'
     'reporter-fail.R'
+    'reporter-junit.R'
     'reporter-list.R'
     'reporter-location.R'
     'reporter-minimal.R'

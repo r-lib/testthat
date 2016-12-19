@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<testsuites>
+  <testsuite name="Expectations" timestamp="1999:12:31 23:59:59" hostname="nodename" tests="6" skipped="0" failures="4" errors="0" time="0">
+    <testcase time="0" classname="Expectations.Success"/>
+    <testcase time="0" classname="Expectations.Failure:1">
+      <failure type="failure" message="expectation_failure in structure(list(fail()), start_frame = 57): Failure has been forced&#10;&#10; @reporters/tests.R#8"/>
+    </testcase>
+    <testcase time="0" classname="Expectations.Failure:2a">
+      <failure type="failure" message="expectation_failure in structure(list(f(), fail()), start_frame = 57): Failure has been forced&#10;&#10; @reporters/tests.R#12"/>
+    </testcase>
+    <testcase time="0" classname="Expectations.Failure:2b">
+      <failure type="failure" message="expectation_failure in structure(list(expect_true(FALSE)), start_frame = 57): FALSE isn't true.&#10;&#10; @reporters/tests.R#15"/>
+    </testcase>
+    <testcase time="0" classname="Expectations.Failure:loop">
+      <failure type="failure" message="expectation_failure in structure(list(expect_equal(i, 2)), start_frame = 57): `i` not equal to 2.&#10;1/1 mismatches&#10;[1] 1 - 2 == -1&#10;&#10; @reporters/tests.R#20"/>
+    </testcase>
+    <testcase time="0" classname="Expectations.Failure:loop"/>
+  </testsuite>
+  <testsuite name="Errors" timestamp="1999:12:31 23:59:59" hostname="nodename" tests="2" skipped="0" failures="0" errors="2" time="0">
+    <testcase time="0" classname="Errors.Error:1">
+      <error type="error" message="expectation_error in structure(list(stop(&quot;stop&quot;)), start_frame = 57): stop&#10; @reporters/tests.R#28"/>
+    </testcase>
+    <testcase time="0" classname="Errors.Error:3">
+      <error type="error" message="expectation_error in structure(list(f(), g(), h(), stop(&quot;!&quot;)), start_frame = 57): !&#10; @reporters/tests.R#36"/>
+    </testcase>
+  </testsuite>
+  <testsuite name="Recursion" timestamp="1999:12:31 23:59:59" hostname="nodename" tests="1" skipped="0" failures="0" errors="1" time="0">
+    <testcase time="0" classname="Recursion.Recursion:1">
+      <error type="error" message="expectation_error in structure(list(f(), f(), f(), f(), f(), f(), f(), f(), f(), f(), : evaluation nested too deeply: infinite recursion / options(expressions=)?&#10; @reporters/tests.R#43"/>
+    </testcase>
+  </testsuite>
+  <testsuite name="Skips" timestamp="1999:12:31 23:59:59" hostname="nodename" tests="3" skipped="3" failures="0" errors="0" time="0">
+    <testcase time="0" classname="Skips.Skip:1">
+      <skipped/>
+    </testcase>
+    <testcase time="0" classname="Skips.Skip:2">
+      <skipped/>
+    </testcase>
+    <testcase time="0" classname="Skips.Skip:3">
+      <skipped/>
+    </testcase>
+  </testsuite>
+  <testsuite name="Warnings" timestamp="1999:12:31 23:59:59" hostname="nodename" tests="3" skipped="0" failures="0" errors="0" time="0">
+    <testcase time="0" classname="Warnings.Warning:1"/>
+    <testcase time="0" classname="Warnings.Warning:2"/>
+    <testcase time="0" classname="Warnings.Warning:2"/>
+  </testsuite>
+  <testsuite name="Output" timestamp="1999:12:31 23:59:59" hostname="nodename" tests="2" skipped="0" failures="0" errors="0" time="0">
+    <testcase time="0" classname="Output.Output:1"/>
+    <testcase time="0" classname="Output.Output:1"/>
+  </testsuite>
+</testsuites>

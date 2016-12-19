@@ -82,6 +82,8 @@
 
 * Fixed `compare.character` for vectors of length > 5 (#513, @brodieG)
 
+* New JUnit reporter `JunitReporter`. (#481, @lbartnik)
+
 # testthat 1.0.2
 
 * Ensure 'std::logic_error()' constructed with 'std::string()'
