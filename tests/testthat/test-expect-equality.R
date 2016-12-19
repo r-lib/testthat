@@ -48,3 +48,10 @@ test_that("attributes for object (#452)", {
   expect_failure(expect_equal(oops, 0))
   expect_equal(as.numeric(oops), 0)
 })
+
+test_that("expect_setequal as expected", {
+  expect_success(expect_setequal(1:2, 2:1))
+  expect_success(expect_setequal(c("MALE", "FEMALE"), c("FEMALE", "MALE")))
+  expect_failure(expect_setequal(1:3, 1:2))
+  expect_failure(expect_setequal(c("MALE", "FEMALE"), c("BOY", "GIRL")))
+})
