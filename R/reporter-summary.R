@@ -22,21 +22,29 @@ SummaryReporter <- R6::R6Class("SummaryReporter", inherit = Reporter,
     failures = NULL,
     skips = NULL,
     warnings = NULL,
-    max_reports = getOption("testthat.summary.max_reports", 15L),
+    max_reports = NULL,
     show_praise = TRUE,
     omit_dots = FALSE,
 
-    initialize = function(show_praise = TRUE, omit_dots = getOption("testthat.summary.omit_dots")) {
+    initialize = function(show_praise = TRUE, omit_dots = getOption("testthat.summary.omit_dots"), max_reports = getOption("testthat.summary.max_reports", 15L)) {
       super$initialize()
-      self$show_praise <- show_praise
-      self$omit_dots <- omit_dots
       self$failures <- Stack$new()
       self$skips <- Stack$new()
       self$warnings <- Stack$new()
+      self$max_reports <- max_reports
+      self$show_praise <- show_praise
+      self$omit_dots <- omit_dots
     },
 
     start_context = function(context) {
       self$cat_tight(context, ": ")
+    },
+
+    end_test = function(context, test) {
+      if (self$failures$size() >= self$max_reports) {
+        self$cat_line()
+        stop("Reached maximum number of reports.", call. = FALSE)
+      }
     },
 
     end_context = function(context) {
@@ -45,9 +53,7 @@ SummaryReporter <- R6::R6Class("SummaryReporter", inherit = Reporter,
 
     add_result = function(context, test, result) {
       if (expectation_broken(result)) {
-        if (self$failures$size() < self$max_reports) {
-          self$failures$push(result)
-        }
+        self$failures$push(result)
       } else if (expectation_skip(result)) {
         self$skips$push(result)
       } else if (expectation_warning(result)) {
