@@ -18,11 +18,14 @@ and integrates with your existing workflow.
 }
 \section{Options}{
 
-\code{testthat.use_colours}: Should the output be coloured? (Default:
+\itemize{
+\item \code{testthat.use_colours}: Should the output be coloured? (Default:
 \code{TRUE}).
-
-\code{testthat.summary.max_reports}: The maximum number of detailed test
+\item \code{testthat.summary.max_reports}: The maximum number of detailed test
 reports printed for the summary reporter (default: 15).
+\item \code{testthat.summary.omit_dots}: Omit progress dots in the summary reporter
+(default: \code{FALSE}).
+}
 }
 \examples{
 library(testthat)

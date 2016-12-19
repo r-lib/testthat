@@ -178,11 +178,14 @@ test_code <- function(test, code, env = test_env(), skip_on_empty = TRUE) {
 #' and integrates with your existing workflow.
 #'
 #' @section Options:
-#' `testthat.use_colours`: Should the output be coloured? (Default:
+#' - `testthat.use_colours`: Should the output be coloured? (Default:
 #' `TRUE`).
 #'
-#' `testthat.summary.max_reports`: The maximum number of detailed test
+#' - `testthat.summary.max_reports`: The maximum number of detailed test
 #' reports printed for the summary reporter (default: 15).
+#'
+#' - `testthat.summary.omit_dots`: Omit progress dots in the summary reporter
+#' (default: `FALSE`).
 #'
 #' @docType package
 #' @name testthat
