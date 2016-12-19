@@ -9,7 +9,7 @@
 #' @param env Environment in which to evaluate code.
 #' @param chdir Change working directory to `dirname(path)`?
 #' @param encoding File encoding, default: "unknown"
-#' @param wrap Add a \code{test_that()} call around the code?
+#' @param wrap Add a [test_that()] call around the code?
 #' @export
 source_file <- function(path, env = test_env(), chdir = TRUE,
                         encoding = "unknown", wrap = TRUE) {

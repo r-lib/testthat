@@ -22,7 +22,7 @@ test_file(path, reporter = default_reporter(), env = test_env(),
 \item{encoding}{File encoding, default is "unknown"
 \code{unknown}.}
 
-\item{wrap}{Add a \code{test_that()} call around the code?}
+\item{wrap}{Add a \code{\link[=test_that]{test_that()}} call around the code?}
 }
 \value{
 the results as a "testthat_results" (list)

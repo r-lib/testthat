@@ -23,7 +23,7 @@ source_test_helpers(path = "tests/testthat", env = test_env())
 
 \item{encoding}{File encoding, default: "unknown"}
 
-\item{wrap}{Add a \code{test_that()} call around the code?}
+\item{wrap}{Add a \code{\link[=test_that]{test_that()}} call around the code?}
 
 \item{pattern}{Regular expression used to filter files}
 }
