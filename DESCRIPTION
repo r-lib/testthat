@@ -31,6 +31,7 @@ Collate:
     'compare.R'
     'compare-character.R'
     'compare-numeric.R'
+    'compare-set.R'
     'compare-time.R'
     'context.R'
     'describe.R'
