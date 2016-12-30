@@ -1,5 +1,8 @@
 # testthat 1.0.2.9000
 
+* `test_examples()` now works with installed packages as well as source
+  packages (@jimhester, #532).
+
 * The default summary reporter aborts testing as soon as the limit given by the
   option `testthat.summary.max_reports` (default 15) is reached
   (#520).
