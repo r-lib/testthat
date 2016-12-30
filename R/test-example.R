@@ -7,7 +7,7 @@
 #' @param path For `test_examples()`, path to directory containing Rd files.
 #'   For `test_example()`, path to a single Rd file. Remember the working
 #'   directory for tests is `tests/testthat`.
-#' @param rd A parsed Rd object, obtained from <tools::Rd_db> or otherwise.
+#' @param rd A parsed Rd object, obtained from [tools::Rd_db()] or otherwise.
 #' @export
 test_examples <- function(path = "../..") {
   res <- test_examples_source(path) %||% test_examples_installed(env_test$package)
