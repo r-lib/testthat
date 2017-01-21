@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
   <testsuite name="Expectations" timestamp="1999:12:31 23:59:59" hostname="nodename" tests="6" skipped="0" failures="4" errors="0" time="0">
     <testcase time="0" classname="Expectations.Success"/>
