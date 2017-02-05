@@ -43,4 +43,3 @@ and then rerun all tests.
 \code{\link[=auto_test_package]{auto_test_package()}}
 }
 \keyword{debugging}
-

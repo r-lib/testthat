@@ -83,5 +83,5 @@ Collate:
     'try-again.R'
     'utils.R'
     'watcher.R'
-RoxygenNote: 5.0.1.9000
+RoxygenNote: 6.0.0
 Roxygen: list(markdown = TRUE)

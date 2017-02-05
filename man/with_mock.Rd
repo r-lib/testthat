@@ -51,4 +51,3 @@ expect_identical(3, 5)
 \references{
 Suraj Gupta (2012): \href{http://obeautifulcode.com/R/How-R-Searches-And-Finds-Stuff}{How R Searches And Finds Stuff}
 }
-

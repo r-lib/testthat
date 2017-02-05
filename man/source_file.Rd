@@ -28,4 +28,3 @@ The expectation is that the files can be sourced in alphabetical order.
 Helper scripts are R scripts accompanying test scripts but prefixed by
 \code{helper}. These scripts are once before the tests are run.
 }
-

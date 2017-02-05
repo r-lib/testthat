@@ -40,7 +40,7 @@ library(yourpackage)
 test_check("yourpackage")
 }
 }
+
 \examples{
 \dontrun{test_package("testthat")}
 }
-

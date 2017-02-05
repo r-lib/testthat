@@ -29,4 +29,3 @@ The \code{with_reporter()} function returns the reporter that has been used
 for running the code.
 }
 \keyword{internal}
-

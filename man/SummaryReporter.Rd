@@ -34,4 +34,3 @@ Other reporters: \code{\link{CheckReporter}},
   \code{\link{TapReporter}}, \code{\link{TeamcityReporter}}
 }
 \keyword{datasets}
-
