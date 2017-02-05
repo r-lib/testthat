@@ -27,4 +27,3 @@ Other reporters: \code{\link{CheckReporter}},
   \code{\link{TeamcityReporter}}
 }
 \keyword{datasets}
-

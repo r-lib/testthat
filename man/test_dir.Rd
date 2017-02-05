@@ -33,4 +33,3 @@ Test files start with \code{test} and are executed in alphabetical order
 (but they shouldn't have dependencies). Helper files start with
 \code{helper} and loaded before any tests are run.
 }
-

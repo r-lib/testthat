@@ -15,4 +15,3 @@ want the opposite of a standard expectation. This function is soft-deprecated
 and will be removed in a future version.
 }
 \keyword{internal}
-
