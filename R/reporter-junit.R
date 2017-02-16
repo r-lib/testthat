@@ -89,7 +89,8 @@ JunitReporter <- R6::R6Class("JunitReporter", inherit = Reporter,
       name <- test %||% "(unnamed)"
       testcase <- xml2::xml_add_child(self$suite, "testcase",
        time = toString(time),
-       classname = paste0(classnameOK(context), '.', classnameOK(name))
+       classname = classnameOK(context),
+       name = classnameOK(name)
       )
 
       # message - if failure or error
