@@ -1,32 +1,64 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
   <testsuite name="Expectations" timestamp="1999:12:31 23:59:59" hostname="nodename" tests="6" skipped="0" failures="4" errors="0" time="0">
     <testcase time="0" classname="Expectations" name="Success"/>
     <testcase time="0" classname="Expectations" name="Failure:1">
-      <failure type="failure" message="expectation_failure in structure(list(fail()), start_frame = 19): Failure has been forced&#10;&#10; @reporters/tests.R#8"/>
+      <failure type="failure" message="Failure has been forced">Failure has been forced
+</failure>
     </testcase>
     <testcase time="0" classname="Expectations" name="Failure:2a">
-      <failure type="failure" message="expectation_failure in structure(list(f(), fail()), start_frame = 19): Failure has been forced&#10;&#10; @reporters/tests.R#12"/>
+      <failure type="failure" message="Failure has been forced">Failure has been forced
+</failure>
     </testcase>
     <testcase time="0" classname="Expectations" name="Failure:2b">
-      <failure type="failure" message="expectation_failure in structure(list(expect_true(FALSE)), start_frame = 19): FALSE isn't true.&#10;&#10; @reporters/tests.R#15"/>
+      <failure type="failure" message="FALSE isn't true.">FALSE isn't true.
+</failure>
     </testcase>
     <testcase time="0" classname="Expectations" name="Failure:loop">
-      <failure type="failure" message="expectation_failure in structure(list(expect_equal(i, 2)), start_frame = 19): `i` not equal to 2.&#10;1/1 mismatches&#10;[1] 1 - 2 == -1&#10;&#10; @reporters/tests.R#20"/>
+      <failure type="failure" message="`i` not equal to 2.">`i` not equal to 2.
+1/1 mismatches
+[1] 1 - 2 == -1
+</failure>
     </testcase>
     <testcase time="0" classname="Expectations" name="Failure:loop"/>
   </testsuite>
   <testsuite name="Errors" timestamp="1999:12:31 23:59:59" hostname="nodename" tests="2" skipped="0" failures="0" errors="2" time="0">
     <testcase time="0" classname="Errors" name="Error:1">
-      <error type="error" message="expectation_error in structure(list(stop(&quot;stop&quot;)), start_frame = 19): stop&#10; @reporters/tests.R#28"/>
+      <error type="error" message="stop">stop
+1: stop("stop") at testthat/reporters/tests.R:28</error>
     </testcase>
     <testcase time="0" classname="Errors" name="Error:3">
-      <error type="error" message="expectation_error in structure(list(f(), g(), h(), stop(&quot;!&quot;)), start_frame = 19): !&#10; @reporters/tests.R#36"/>
+      <error type="error" message="!">!
+1: f() at testthat/reporters/tests.R:36
+2: g() at testthat/reporters/tests.R:32
+3: h() at testthat/reporters/tests.R:33
+4: stop("!") at testthat/reporters/tests.R:34</error>
     </testcase>
   </testsuite>
   <testsuite name="Recursion" timestamp="1999:12:31 23:59:59" hostname="nodename" tests="1" skipped="0" failures="0" errors="1" time="0">
     <testcase time="0" classname="Recursion" name="Recursion:1">
-      <error type="error" message="expectation_error in structure(list(f(), f(), f(), f(), f(), f(), f(), f(), f(), f(), : evaluation nested too deeply: infinite recursion / options(expressions=)?&#10; @reporters/tests.R#43"/>
+      <error type="error" message="evaluation nested too deeply: infinite recursion / options(expressions=)?">evaluation nested too deeply: infinite recursion / options(expressions=)?
+1: f() at testthat/reporters/tests.R:43
+2: f() at testthat/reporters/tests.R:42
+3: f() at testthat/reporters/tests.R:42
+4: f() at testthat/reporters/tests.R:42
+5: f() at testthat/reporters/tests.R:42
+6: f() at testthat/reporters/tests.R:42
+7: f() at testthat/reporters/tests.R:42
+8: f() at testthat/reporters/tests.R:42
+9: f() at testthat/reporters/tests.R:42
+10: f() at testthat/reporters/tests.R:42
+...
+4954: f() at testthat/reporters/tests.R:42
+4955: f() at testthat/reporters/tests.R:42
+4956: f() at testthat/reporters/tests.R:42
+4957: f() at testthat/reporters/tests.R:42
+4958: f() at testthat/reporters/tests.R:42
+4959: f() at testthat/reporters/tests.R:42
+4960: f() at testthat/reporters/tests.R:42
+4961: f() at testthat/reporters/tests.R:42
+4962: f() at testthat/reporters/tests.R:42
+4963: f() at testthat/reporters/tests.R:42</error>
     </testcase>
   </testsuite>
   <testsuite name="Skips" timestamp="1999:12:31 23:59:59" hostname="nodename" tests="3" skipped="3" failures="0" errors="0" time="0">
