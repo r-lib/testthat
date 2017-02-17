@@ -88,9 +88,9 @@ JunitReporter <- R6::R6Class("JunitReporter", inherit = Reporter,
       # XML node for test case
       name <- test %||% "(unnamed)"
       testcase <- xml2::xml_add_child(self$suite, "testcase",
-       time = toString(time),
-       classname = classnameOK(context),
-       name = classnameOK(name)
+        time = toString(time),
+        classname = classnameOK(context),
+        name = classnameOK(name)
       )
 
       # message - if failure or error
@@ -124,7 +124,6 @@ JunitReporter <- R6::R6Class("JunitReporter", inherit = Reporter,
       } else {
         stop('unsupported output type: ', toString(self$out))
       }
-      #cat(toString(self$doc), file = self$file)
     } # end_reporter
   ), #public
 
