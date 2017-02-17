@@ -25,4 +25,3 @@ Other reporters: \code{\link{CheckReporter}},
   \code{\link{SummaryReporter}}, \code{\link{TapReporter}}
 }
 \keyword{datasets}
-

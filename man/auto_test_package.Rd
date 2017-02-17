@@ -18,4 +18,3 @@ Watches a package for changes, rerunning tests as appropriate.
 \code{\link[=auto_test]{auto_test()}} for details on how method works
 }
 \keyword{debugging}
-

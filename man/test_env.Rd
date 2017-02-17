@@ -13,4 +13,3 @@ search path for tests, but it's not currently possible without losing
 the ability to load packages in tests.
 }
 \keyword{internal}
-

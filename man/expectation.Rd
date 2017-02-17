@@ -36,4 +36,3 @@ function, you'll typically call \code{expect(condition, "failure message")}.
 See the source code for the built-in expectations for details.
 }
 \keyword{internal}
-

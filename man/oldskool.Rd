@@ -61,4 +61,3 @@ documented, and new expectations will only use the new style
 \code{expect_equal(a, b)}.
 }
 \keyword{internal}
-

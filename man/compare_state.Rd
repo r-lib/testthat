@@ -19,4 +19,3 @@ list containing number of changes and files which have been
 Compare two directory states.
 }
 \keyword{internal}
-

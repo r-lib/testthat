@@ -20,4 +20,3 @@ expect_failure(expr, message = NULL, ...)
 Use these expectations to test other expectations.
 }
 \keyword{internal}
-

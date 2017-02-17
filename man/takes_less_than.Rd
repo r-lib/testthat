@@ -13,4 +13,3 @@ takes_less_than(amount)
 This is useful for performance regression testing.
 }
 \keyword{internal}
-
