@@ -117,7 +117,11 @@ JunitReporter <- R6::R6Class("JunitReporter", inherit = Reporter,
     },
 
     end_reporter = function() {
-      if (inherits(self$out, "connection")) {
+      output_file <- getOption("testthat.junit.output_file")
+
+      if (!is.null(output_file)) {
+        xml2::write_xml(self$doc, output_file, format = TRUE)
+      } else if (inherits(self$out, "connection")) {
         file <- tempfile()
         xml2::write_xml(self$doc, file, format = TRUE)
         writeLines(readLines(file), self$out)
