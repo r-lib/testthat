@@ -77,7 +77,7 @@ run_tests <- function(package, test_path, filter, reporter, ...)
 #' @inheritParams test_package
 #' @export
 #' @rdname test_package
-test_check <- function(package, filter = NULL, reporter = "check", ...) {
+test_check <- function(package, filter = NULL, reporter = getOption("testthat.default_check_reporter", "check"), ...) {
   library(testthat)
   require(package, character.only = TRUE)
 
