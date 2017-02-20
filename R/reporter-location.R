@@ -30,10 +30,6 @@ LocationReporter <- R6::R6Class("LocationReporter", inherit = Reporter,
     end_test = function(context, test) {
       self$cat_line("End test: ", test)
       self$cat_line()
-    },
-
-    end_reporter = function() {
-      self$cat_line()
     }
   )
 )
