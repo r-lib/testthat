@@ -7,7 +7,8 @@
 \usage{
 test_package(package, filter = NULL, reporter = default_reporter(), ...)
 
-test_check(package, filter = NULL, reporter = "check", ...)
+test_check(package, filter = NULL,
+  reporter = getOption("testthat.default_check_reporter", "check"), ...)
 }
 \arguments{
 \item{package}{package name}
