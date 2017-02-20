@@ -71,6 +71,8 @@
 
 * New argument `load_helpers` in `test_dir()` (#505).
 
+* Bare expectations notify the reporter again. This is achieved by running all tests inside `test_code()` by default (#427, #498).
+
 * New `DebugReporter` that calls a better version of `recover()` in case of failures, errors, or warnings (#360, #470).
 
 * `compare.numeric()` respects `check.attributes()` so `expect_equivalent()`
@@ -100,7 +102,7 @@
 
 # testthat 1.0.2
 
-* Ensure 'std::logic_error()' constructed with 'std::string()'
+* Ensure `std::logic_error()` constructed with `std::string()`
   argument, to avoid build errors on Solaris.
 
 # testthat 1.0.1

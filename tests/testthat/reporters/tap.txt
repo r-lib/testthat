@@ -40,6 +40,8 @@ not ok 9 Recursion:1
   9: f() at reporters/tests.R:42
   10: f() at reporters/tests.R:42
   ...
+  164: f() at reporters/tests.R:42
+  165: f() at reporters/tests.R:42
   166: f() at reporters/tests.R:42
   167: f() at reporters/tests.R:42
   168: f() at reporters/tests.R:42
@@ -48,8 +50,6 @@ not ok 9 Recursion:1
   171: f() at reporters/tests.R:42
   172: f() at reporters/tests.R:42
   173: f() at reporters/tests.R:42
-  174: f() at reporters/tests.R:42
-  175: f() at reporters/tests.R:42
 # Context Skips
 ok 10 # SKIP skip
 ok 11 # SKIP skip
