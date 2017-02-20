@@ -1,5 +1,19 @@
 # testthat 1.0.2.9000
 
+* New option `testthat.default_check_reporter`, defaults to `"check"`. 
+  Continuous Integration system can set this option before evaluating
+  package test sources in order to direct test result details to known
+  location.
+
+* New option `testthat.junit.output_file`. If set, the JUnitReporter
+  will write the test results to the provided path rather than 
+  standard output.
+
+* Fixed JUnitReporter output format (#575). The testcase element now
+  includes both the `classname` attribute, which contains the testhat 
+  context, and the `name` attriute, which contains the testthat 
+  test name.
+
 * The default summary reporter aborts testing as soon as the limit given by the
   option `testthat.summary.max_reports` (default 15) is reached
   (#520).

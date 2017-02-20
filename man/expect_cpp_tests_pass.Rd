@@ -19,4 +19,3 @@ for you in \code{tests/testthat/test-cpp.R} after calling
 \code{use_catch()}; you should not need to manually call
 this expectation yourself.
 }
-

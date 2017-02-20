@@ -16,4 +16,3 @@ A character vector giving the path.
 This function is designed to work both interatively and during tests,
 locating files in the \code{tests/testthat} directory
 }
-

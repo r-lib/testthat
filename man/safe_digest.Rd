@@ -18,4 +18,3 @@ Compute a digest of a filename, returning NA if the file doesn't
 exist.
 }
 \keyword{internal}
-

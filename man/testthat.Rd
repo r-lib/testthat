@@ -27,6 +27,7 @@ reports printed for the summary reporter (default: 15).
 (default: \code{FALSE}).
 }
 }
+
 \examples{
 library(testthat)
 a <- 9
@@ -42,4 +43,3 @@ Wickham, H (2011). testthat: Get Started with Testing.
 
 \url{http://adv-r.had.co.nz/Testing.html}
 }
-

@@ -30,4 +30,3 @@ the results as a "testthat_results" (list)
 \description{
 Run all tests in specified file.
 }
-
