@@ -23,6 +23,8 @@
 #'   the file name), when doing tests in a loop. For the short-cut form, the
 #'   object label, which is computed from the deparsed object by default.
 #' @param expected.label Equivalent of `label` for shortcut form.
+#' @param view.on.update If true and if the reference file does not exist,
+#'  [utils::View()] will be called on the object.
 #' @param ... other values passed to [expect_equal()]
 #' @family expectations
 #' @export
