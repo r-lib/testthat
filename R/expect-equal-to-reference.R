@@ -28,6 +28,7 @@
 #' @param ... other values passed to [expect_equal()]
 #' @family expectations
 #' @export
+#' @importFrom utils View
 #' @examples
 #' \dontrun{
 #' expect_equal_to_reference(1, "one.rds")
