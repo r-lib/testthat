@@ -4,6 +4,12 @@
 #' This will produce an informative message, but will not cause the test
 #' suite to fail.
 #'
+#' \code{skip*} functions are intended for use within \code{\link{test_that}}
+#' blocks.  All expectations following the \code{skip*} statement within the
+#' same \code{test_that} block will be skipped.  Note that test summaries
+#' that report skip counts are reporting how many \code{test_that} blocks
+#' triggered a \code{skip*} statement, not how many expectations were skipped.
+#'
 #' @section Helpers:
 #' `skip_if_not()` works like [stopifnot()], generating
 #' a message automatically based on the first argument.
@@ -30,6 +36,16 @@
 #' @export
 #' @examples
 #' if (FALSE) skip("No internet connection")
+#'
+#' ## The following are only meaningful when put in test files and 
+#' ## run with `test_file`, `test_dir`, `test_check`, etc.
+#'
+#' test_that("skip example", {
+#'   expect_equal(1, 1L)     # this expectation runs
+#'   skip('skip')
+#'   expect_equal(1, 2)     # this one skipped
+#'   expect_equal(1, 3)     # this one is also skipped
+#' })
 skip <- function(message) {
   cond <- structure(list(message = message), class = c("skip", "condition"))
   stop(cond)
