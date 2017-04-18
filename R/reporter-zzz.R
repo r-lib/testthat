@@ -41,8 +41,17 @@ get_reporter <- function() {
 with_reporter <- function(reporter, code, start_end_reporter = TRUE) {
   reporter <- find_reporter(reporter)
 
-  old <- set_reporter(reporter)
-  on.exit(set_reporter(old), add = TRUE)
+  if (!is.null(reporter)) {
+    old <- set_reporter(reporter)
+    on.exit(set_reporter(old), add = TRUE)
+  } else {
+    reporter <- get_reporter()
+    if (is.null(reporter)) {
+      stop("Need active reporter if calling with_reporter(NULL, ...).",
+           call. = FALSE)
+    }
+    start_end_reporter <- FALSE
+  }
 
   if (start_end_reporter) {
     reporter$start_reporter()

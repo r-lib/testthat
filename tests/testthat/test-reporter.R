@@ -8,6 +8,7 @@ test_that("can locate reporter from name", {
   expect_that(find_reporter("multi"),   equals(MultiReporter$new()))
   expect_that(find_reporter("junit"),   equals(JunitReporter$new()))
   expect_that(find_reporter(""),        equals(Reporter$new()))
+  expect_that(find_reporter(NULL),      is_null())
 })
 
 test_that("useful error message if can't find reporter", {
