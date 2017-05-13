@@ -10,7 +10,7 @@
 #' that `options(warn)` has no effect.
 #'
 #' @inheritParams expect_that
-#' @inheritParams expect_match
+#' @inheritDotParams expect_match -object -regexp -info -label
 #' @param regexp regular expression to test against.
 #'
 #'   If `NULL`, the default, asserts that there should be an output,
