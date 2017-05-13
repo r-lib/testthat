@@ -53,17 +53,17 @@ does not exist (i.e. on the first run).}
 
 \item{width}{Number of characters per line of output}
 
-\item{class}{Instead of supply a regular expression, you can also supply
+\item{class}{Instead of supplying a regular expression, you can also supply
 a class name. This is useful for "classed" conditions.}
 
-\item{all}{For messages and warnings, do all need to the \code{regexp}
+\item{all}{For messages and warnings, do all need to match the \code{regexp}
 (TRUE), or does only one need to match (FALSE)}
 }
 \description{
 Use \code{expect_output()}, \code{expect_message()}, \code{expect_warning()},
 or \code{expect_error()} to check for specific outputs. Use
 \code{expect_silent()} to assert that there should be no output of
-any type. The file-based\code{expect_output_file()} compares the output
+any type. The file-based \code{expect_output_file()} compares the output
 to the contents of a text file and optionally updates it.
 }
 \details{
