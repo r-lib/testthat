@@ -36,15 +36,12 @@ SummaryReporter <- R6::R6Class("SummaryReporter", inherit = Reporter,
       self$omit_dots <- omit_dots
     },
 
-    start_context = function(context) {
-      self$cat_tight(context, ": ")
+    is_full = function() {
+      self$failures$size() >= self$max_reports
     },
 
-    end_test = function(context, test) {
-      if (self$failures$size() >= self$max_reports) {
-        self$cat_line()
-        stop("Reached maximum number of reports.", call. = FALSE)
-      }
+    start_context = function(context) {
+      self$cat_tight(context, ": ")
     },
 
     end_context = function(context) {
@@ -76,6 +73,14 @@ SummaryReporter <- R6::R6Class("SummaryReporter", inherit = Reporter,
       private$cat_reports("Skipped", skips, Inf, skip_summary)
       private$cat_reports("Warnings", warnings, Inf, skip_summary)
       private$cat_reports("Failed", failures, self$max_reports, failure_summary)
+
+      if (self$failures$size() >= self$max_reports) {
+        self$cat_line(
+          "Maximum number of ", self$max_reports, " failures reached, ",
+          "some test results may be missing."
+        )
+        self$cat_line()
+      }
 
       self$rule("DONE", pad = "=")
       if (self$show_praise) {
