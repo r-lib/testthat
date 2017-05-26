@@ -22,6 +22,8 @@ expectation <- function(type, message, srcref = NULL) {
     class = c(
       paste0("expectation_", type),
       "expectation",
+      # Make broken expectations catchable by try()
+      if (type %in% c("failure", "error")) "error",
       "condition"
     )
   )
