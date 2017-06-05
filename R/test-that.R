@@ -32,10 +32,10 @@ test_that <- function(desc, code) {
 }
 
 test_code <- function(test, code, env = test_env(), skip_on_empty = TRUE) {
-  if (!is.null(test)) {
-    get_reporter()$start_test(context = get_reporter()$.context, test = test)
-    on.exit(get_reporter()$end_test(context = get_reporter()$.context, test = test))
-  }
+
+  test <- test %||% "(unknown)"
+  get_reporter()$start_test(context = get_reporter()$.context, test = test)
+  on.exit(get_reporter()$end_test(context = get_reporter()$.context, test = test))
 
   ok <- TRUE
   register_expectation <- function(e) {
@@ -46,7 +46,7 @@ test_code <- function(test, code, env = test_env(), skip_on_empty = TRUE) {
     e$call <- calls
     e$start_frame <- attr(calls, "start_frame")
     e$end_frame <- e$start_frame + length(calls) - 1L
-    e$test <- test %||% "(unknown)"
+    e$test <- test 
     ok <<- ok && expectation_ok(e)
     get_reporter()$add_result(context = get_reporter()$.context, test = test, result = e)
   }

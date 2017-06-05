@@ -33,3 +33,14 @@ test_that('filter_test_scripts() with tricky names', {
     files[1]
   )
 })
+
+test_that('test_dir and `wrap`', {
+  test.wrap <- test_file(
+    'test_dir', filter = 'bare', wrap=TRUE
+  )
+  test_file('tests/testthat/test_dir/test-bare-expectations.R', wrap=TRUE)
+
+  test.no.wrap <-
+    test_dir('test_dir', reporter = 'silent', filter = 'bare', wrap=FALSE)
+
+})
