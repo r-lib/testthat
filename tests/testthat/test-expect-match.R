@@ -10,3 +10,7 @@ test_that("special regex characters are escaped in output", {
   expect_equal(error, "\"f\\(\\) test\" does not match \"f() test\".\nActual value: \"f\\(\\) test\"\n")
 })
 
+test_that("correct reporting of expected label", {
+  expect_failure(expect_match("[a]", "[b]"), escape_regex("[a]"), fixed = TRUE)
+  expect_failure(expect_match("[a]", "[b]", fixed = TRUE), "[a]", fixed = TRUE)
+})

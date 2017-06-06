@@ -49,16 +49,16 @@
 9: f() at reporters/tests.R:42
 10: f() at reporters/tests.R:42
 ...
-164: f() at reporters/tests.R:42
-165: f() at reporters/tests.R:42
-166: f() at reporters/tests.R:42
-167: f() at reporters/tests.R:42
-168: f() at reporters/tests.R:42
-169: f() at reporters/tests.R:42
 170: f() at reporters/tests.R:42
 171: f() at reporters/tests.R:42
 172: f() at reporters/tests.R:42
-173: f() at reporters/tests.R:42</error>
+173: f() at reporters/tests.R:42
+174: f() at reporters/tests.R:42
+175: f() at reporters/tests.R:42
+176: f() at reporters/tests.R:42
+177: f() at reporters/tests.R:42
+178: f() at reporters/tests.R:42
+179: f() at reporters/tests.R:42</error>
     </testcase>
   </testsuite>
   <testsuite name="Skips" timestamp="1999:12:31 23:59:59" hostname="nodename" tests="3" skipped="3" failures="0" errors="0" time="0">

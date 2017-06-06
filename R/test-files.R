@@ -112,6 +112,7 @@ test_file <- function(path, reporter = default_reporter(), env = test_env(),
   library(testthat)
 
   reporter <- find_reporter(reporter)
+  if (reporter$is_full()) return()
 
   if (load_helpers) {
     source_test_helpers(dirname(path), env = env)

@@ -17,6 +17,7 @@ Reporter <- R6::R6Class("Reporter",
     end_test =       function(context, test) {},
     end_context =    function(context) {},
     end_reporter =   function() {},
+    is_full =        function() FALSE,
 
     out = NULL,
 

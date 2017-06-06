@@ -37,8 +37,14 @@ a messsage, a warning, or an error, but does not test for specific value.
 If \code{NA}, asserts that there should be no output, messages, warnings,
 or errors.}
 
-\item{...}{Additional arguments passed on to \code{\link[=grepl]{grepl()}}, e.g.
-\code{ignore.case} or \code{fixed}.}
+\item{...}{Arguments passed on to \code{expect_match}
+\describe{
+  \item{all}{Should all elements of actual value match \code{regexp} (TRUE),
+or does only one need to match (FALSE)}
+  \item{perl}{logical.  Should Perl-compatible regexps be used?}
+  \item{fixed}{logical.  If \code{TRUE}, \code{pattern} is a string to be
+    matched as is.  Overrides all conflicting arguments.}
+}}
 
 \item{info}{extra information to be included in the message (useful when
 writing tests in loops).}
