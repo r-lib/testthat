@@ -46,7 +46,7 @@ This will produce an informative message, but will not cause the test
 suite to fail.
 }
 \details{
-\code{skip*} functions are intended for use within \code{\link{test_that}}
+\code{skip*} functions are intended for use within \code{\link[=test_that]{test_that()}}
 blocks.  All expectations following the \code{skip*} statement within the
 same \code{test_that} block will be skipped.  Note that test summaries
 that report skip counts are reporting how many \code{test_that} blocks
@@ -70,20 +70,18 @@ environment variable set by devtools.
 \code{BBS_HOME} environment variable.
 
 \code{skip_if_not_installed()} skips a tests if a package is not installed
-or cannot be loaded
-(useful for suggested packages).
-It loads the package as a side effect, because the package is likely to be
-used anyway.
+or cannot be loaded (useful for suggested packages).  It loads the package as
+a side effect, because the package is likely to be used anyway.
 }
 
 \examples{
 if (FALSE) skip("No internet connection")
 
-## The following are only meaningful when put in test files and 
+## The following are only meaningful when put in test files and
 ## run with `test_file`, `test_dir`, `test_check`, etc.
 
 test_that("skip example", {
-  expect_equal(1, 1L)     # this expectation runs
+  expect_equal(1, 1L)    # this expectation runs
   skip('skip')
   expect_equal(1, 2)     # this one skipped
   expect_equal(1, 3)     # this one is also skipped
