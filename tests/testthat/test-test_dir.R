@@ -35,12 +35,20 @@ test_that('filter_test_scripts() with tricky names', {
 })
 
 test_that('test_dir and `wrap`', {
-  test.wrap <- test_file(
-    'test_dir', filter = 'bare', wrap=TRUE
+  ## forced to test screen output because tests outside of `testthat` blocks are
+  ## not recorded in return value, even when `wrap=TRUE` (see #596")
+
+  w.wrap <- capture.output(
+    test_dir('test_dir', filter='bare-expectations', wrap=TRUE)
   )
-  test_file('tests/testthat/test_dir/test-bare-expectations.R', wrap=TRUE)
+  wo.wrap <- capture.output(
+    test_dir('test_dir', filter='bare-expectations', wrap=FALSE)
+  )
+  # With wrap should display two dots to screen
 
-  test.no.wrap <-
-    test_dir('test_dir', reporter = 'silent', filter = 'bare', wrap=FALSE)
+  expect_true(sum(grepl("^Bare: \\.\\.", crayon::strip_style(w.wrap))) == 1L)
 
+  # Without wrap should not display any
+
+  expect_true(sum(grepl("^Bare:\\s+$", crayon::strip_style(wo.wrap))) == 1L)
 })
