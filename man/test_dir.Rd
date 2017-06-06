@@ -5,7 +5,8 @@
 \title{Run all of the tests in a directory.}
 \usage{
 test_dir(path, filter = NULL, reporter = default_reporter(),
-  env = test_env(), ..., encoding = "unknown", load_helpers = TRUE)
+  env = test_env(), ..., encoding = "unknown", load_helpers = TRUE,
+  wrap = TRUE)
 }
 \arguments{
 \item{path}{path to tests}
@@ -24,6 +25,8 @@ name after it has been stripped of \code{"test-"} and \code{".R"}.}
 \code{unknown}.}
 
 \item{load_helpers}{Source helper files before running the tests?}
+
+\item{wrap}{Add a \code{\link[=test_that]{test_that()}} call around the code?}
 }
 \value{
 the results as a "testthat_results" (list)
