@@ -28,7 +28,7 @@ source_file <- function(path, env = test_env(), chdir = TRUE,
     on.exit(setwd(old_dir), add = TRUE)
   }
   if (wrap) {
-    invisible(test_code("(unknown)", exprs, env))
+    invisible(test_code(NULL, exprs, env))
   } else {
     invisible(eval(exprs, env))
   }
