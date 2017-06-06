@@ -187,6 +187,12 @@
 171: tests.R#42: f()
 172: tests.R#42: f()
 173: tests.R#42: f()
+174: tests.R#42: f()
+175: tests.R#42: f()
+176: tests.R#42: f()
+177: tests.R#42: f()
+178: tests.R#42: f()
+179: tests.R#42: f()
 
 1: tests.R#49: skip("skip")
 
