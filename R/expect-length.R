@@ -15,8 +15,8 @@ expect_length <- function(object, n) {
   stopifnot(is.numeric(n), length(n) == 1)
   lab <- label(object)
 
-  if (!is_vector(object)) {
-    fail(sprintf("%s is not a vector.", lab))
+  if (!is_vector(object) && !is_mock(object)) {
+    fail(sprintf("%s is not a vector nor a mock object.", lab))
   }
 
   expect(

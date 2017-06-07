@@ -87,18 +87,18 @@ extract_mocks <- function(new_values, .env, eval_env = parent.frame()) {
       if (!exists(name, envir = env, mode = "function"))
         stop("Function ", name, " not found in environment ",
              environmentName(env), ".", call. = FALSE)
-      mock(name = name, env = env, new = eval(new_values[[qual_name]], eval_env, eval_env))
+      mocked(name = name, env = env, new = eval(new_values[[qual_name]], eval_env, eval_env))
     }
   )
 }
 
 #' @useDynLib testthat duplicate_
-mock <- function(name, env, new) {
+mocked <- function(name, env, new) {
   target_value <- get(name, envir = env, mode = "function")
   structure(list(
     env = env, name = as.name(name),
     orig_value = .Call(duplicate_, target_value), target_value = target_value,
-    new_value = new), class = "mock")
+    new_value = new), class = "mocked")
 }
 
 #' @useDynLib testthat reassign_function
