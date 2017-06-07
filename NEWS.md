@@ -108,6 +108,10 @@
 
 * New JUnit reporter `JunitReporter`. (#481, @lbartnik)
 
+* Mirror `hash` parameter in `auto_test()` and `auto_test_package()` in order 
+  to enable switching to faster, time-stamp-based modification detection 
+  (#598, @katrinleinweber)
+
 # testthat 1.0.2
 
 * Ensure `std::logic_error()` constructed with `std::string()`

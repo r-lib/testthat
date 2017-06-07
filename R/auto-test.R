@@ -25,9 +25,12 @@
 #' @param test_path path to directory containing tests
 #' @param reporter test reporter to use
 #' @param env environment in which to execute test suite.
+#' @param hash Passed on to [watch()]. When FALSE, uses less accurate
+#'   modification time stamps, but those are faster for large files.
 #' @keywords debugging
 auto_test <- function(code_path, test_path, reporter = default_reporter(),
-                      env = test_env()) {
+                      env = test_env(),
+                      hash = TRUE) {
   reporter <- find_reporter(reporter)
   code_path <- normalizePath(code_path)
   test_path <- normalizePath(test_path)
@@ -57,7 +60,7 @@ auto_test <- function(code_path, test_path, reporter = default_reporter(),
 
     TRUE
   }
-  watch(c(code_path, test_path), watcher)
+  watch(c(code_path, test_path), watcher, hash = hash)
 
 }
 
@@ -66,9 +69,11 @@ auto_test <- function(code_path, test_path, reporter = default_reporter(),
 #' @param pkg path to package
 #' @export
 #' @param reporter test reporter to use
+#' @param hash Passed on to [watch()].  When FALSE, uses less accurate
+#'   modification time stamps, but those are faster for large files.
 #' @keywords debugging
 #' @seealso [auto_test()] for details on how method works
-auto_test_package <- function(pkg = ".", reporter = default_reporter()) {
+auto_test_package <- function(pkg = ".", reporter = default_reporter(), hash = TRUE) {
   if (!requireNamespace("devtools", quietly = TRUE)) {
     stop("devtools required to run auto_test_package(). Please install.",
       call. = FALSE)
@@ -114,6 +119,6 @@ auto_test_package <- function(pkg = ".", reporter = default_reporter()) {
 
     TRUE
   }
-  watch(c(code_path, test_path), watcher)
+  watch(c(code_path, test_path), watcher, hash = hash)
 
 }
