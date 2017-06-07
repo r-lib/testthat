@@ -27,7 +27,7 @@ test_env <- function() {
 #' @return the results as a "testthat_results" (list)
 #' @export
 test_dir <- function(path, filter = NULL, reporter = default_reporter(),
-                     env = test_env(), ..., encoding = "unknown", 
+                     env = test_env(), ..., encoding = "unknown",
                      load_helpers = TRUE, wrap = TRUE) {
   if (load_helpers) {
     source_test_helpers(path, env)
