@@ -1,4 +1,23 @@
-Expectations: .12
+Expectations: .1234.
+Errors: 56
+Recursion: 7
+Skips: SSS
+Warnings: WWW
+Output: ..
+
+Skipped ------------------------------------------------------------------------
+1. Skip:1 (@tests.R#49) - skip
+
+2. Skip:2 (@tests.R#54) - skip
+
+3. Skip:3 (@tests.R#57) - Empty test
+
+Warnings -----------------------------------------------------------------------
+1. Warning:1 (@tests.R#63) - abc
+
+2. Warning:2 (@tests.R#67) - def
+
+3. Warning:2 (@tests.R#68) - ghi
 
 Failed -------------------------------------------------------------------------
 1. Failure: Failure:1 (@tests.R#8) ---------------------------------------------
@@ -7,6 +26,9 @@ Failure has been forced
 
 2. Failure: Failure:2a (@tests.R#12) -------------------------------------------
 Failure has been forced
+  ... and 5 more
 
+
+Maximum number of 2 failures reached, some test results may be missing.
 
 DONE ===========================================================================

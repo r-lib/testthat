@@ -2,17 +2,29 @@
 % Please edit documentation in R/expectations-matches.R
 \name{expect_match}
 \alias{expect_match}
-\title{Expectation: does string/output/message/warning/error match a regular expression?}
+\title{Expectation: does string match a regular expression?}
 \usage{
-expect_match(object, regexp, ..., all = TRUE, info = NULL, label = NULL)
+expect_match(object, regexp, perl = FALSE, fixed = FALSE, ..., all = TRUE,
+  info = NULL, label = NULL)
 }
 \arguments{
 \item{object}{object to test}
 
 \item{regexp}{Regular expression to test against.}
 
-\item{...}{Additional arguments passed on to \code{\link[=grepl]{grepl()}}, e.g.
-\code{ignore.case} or \code{fixed}.}
+\item{perl}{logical.  Should Perl-compatible regexps be used?}
+
+\item{fixed}{logical.  If \code{TRUE}, \code{pattern} is a string to be
+    matched as is.  Overrides all conflicting arguments.}
+
+\item{...}{Arguments passed on to \code{base::grepl}
+\describe{
+  \item{ignore.case}{if \code{FALSE}, the pattern matching is \emph{case
+      sensitive} and if \code{TRUE}, case is ignored during matching.}
+  \item{useBytes}{logical.  If \code{TRUE} the matching is done
+    byte-by-byte rather than character-by-character.  See
+    \sQuote{Details}.}
+}}
 
 \item{all}{Should all elements of actual value match \code{regexp} (TRUE),
 or does only one need to match (FALSE)}
@@ -23,7 +35,7 @@ writing tests in loops).}
 \item{label}{object label. When \code{NULL}, computed from deparsed object.}
 }
 \description{
-Expectation: does string/output/message/warning/error match a regular expression?
+Expectation: does string match a regular expression?
 }
 \examples{
 expect_match("Testing is fun", "fun")

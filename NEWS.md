@@ -1,5 +1,13 @@
 # testthat 1.0.2.9000
 
+* Improved behavior of the `SummaryReporter` when the maximum number of errors
+  reported is reached.
+
+* `expect_match()` now accepts explicit `perl` and `fixed` arguments, and adapts
+  the failure message to the value of `fixed`. This also affects other expectations
+  that forward to `expect_match()`, like `expect_output()`, `expect_message()`,
+  `expect_warning()`, and `expect_error()`.
+
 * New option `testthat.default_check_reporter`, defaults to `"check"`. 
   Continuous Integration system can set this option before evaluating
   package test sources in order to direct test result details to known
