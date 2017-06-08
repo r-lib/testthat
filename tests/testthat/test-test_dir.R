@@ -41,19 +41,9 @@ test_that("test_dir and `wrap`", {
   w.wrap <- capture.output(
     test_dir("test_dir", filter = "bare-expectations", wrap = TRUE)
   )
-  wo.wrap <- capture.output(
-    test_dir("test_dir", filter = "bare-expectations", wrap = FALSE)
-  )
-  # With wrap should display two dots to screen
+  ## With wrap should display two dots to screen
 
   expect_true(sum(grepl("^Bare: \\.\\.", crayon::strip_style(w.wrap))) == 1L)
 
-  ## Without wrap should not display any dots; however, it is not possible to
-  ## test this because this test itself is in a `test_that` block, and further
-  ## since the whole test suite is effectively run with `wrap=TRUE` it is not
-  ## possible to test this at all.  I ran this outside of the `test_that` call
-  ## and it worked as expected.
-
-  skip("untestable within test suite")
-  expect_true(sum(grepl("^Bare:\\s+$", crayon::strip_style(wo.wrap))) == 1L)
+  ## Note, we cannot test wrap = FALSE (see this file at 6bcc6d18cd for details)
 })
