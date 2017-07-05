@@ -46,11 +46,15 @@ expect_cpp_tests_pass <- function(package) {
 #'    unit tests,
 #'
 #' 2. Create an example test file `src/test-example.cpp`, which
-#'    showcases how you might use Catch to write a unit test, and
+#'    showcases how you might use Catch to write a unit test,
 #'
 #' 3. Add a test file `tests/testthat/test-cpp.R`, which ensures that
 #'    `testthat` will run your compiled tests during invocations of
-#'    `devtools::test()` or `R CMD check`.
+#'    `devtools::test()` or `R CMD check`, and
+#'
+#' 4. Create a file `R/catch-routine-registration.R`, which ensures that
+#'    \R will automatically register this routine when
+#'    `tools::package_native_routine_registration_skeleton()` is invoked.
 #'
 #' C++ unit tests can be added to C++ source files within the
 #' `src` directory of your package, with a format similar
