@@ -20,7 +20,7 @@ expect_cpp_tests_pass <- function(package) {
   tests_passed <- TRUE
 
   tryCatch(
-    output <- capture_output_lines(tests_passed <- .Call(routine)),
+    output <- capture_output_lines(tests_passed <- do.call(.Call, list(routine))),
     error = function(e) {
       warning(sprintf("failed to call test entrypoint '%s'", routine))
     }
