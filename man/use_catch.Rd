@@ -43,7 +43,7 @@ context("C++ Unit Test") {
 
 When your package is compiled, unit tests alongside a harness
 for running these tests will be compiled into your \R package,
-with the C entry point \code{run_testthat_tests()}. \code{testthat}
+with the C entry point \code{run_catch_tests()}. \code{testthat}
 will use that entry point to run your unit tests when detected.
 }
 \section{Functions}{
@@ -105,7 +105,7 @@ by Catch, but would prefer not to use the regular \code{testthat}
 by inserting a call to:
 
 \preformatted{
-.Call("run_testthat_tests", PACKAGE = <pkgName>)
+.Call("run_catch_tests", PACKAGE = <pkgName>)
 }
 
 as necessary within your unit test suite.

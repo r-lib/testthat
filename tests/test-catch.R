@@ -75,7 +75,7 @@ local({
     quietly(devtools::install(pkgPath, quick = TRUE, quiet = TRUE))
 
     library(pkgName, character.only = TRUE)
-    stopifnot(quietly(.Call("run_testthat_tests", PACKAGE = pkgName)))
+    stopifnot(quietly(.Call("run_catch_tests", PACKAGE = pkgName)))
 
     devtools::unload(pkgName)
   }

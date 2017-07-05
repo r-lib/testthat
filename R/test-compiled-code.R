@@ -14,7 +14,7 @@
 #' @export
 expect_cpp_tests_pass <- function(package) {
 
-  routine <- get_routine(package, "run_testthat_tests")
+  routine <- get_routine(package, "run_catch_tests")
 
   output <- ""
   tests_passed <- TRUE
@@ -68,7 +68,7 @@ expect_cpp_tests_pass <- function(package) {
 #'
 #' When your package is compiled, unit tests alongside a harness
 #' for running these tests will be compiled into your \R package,
-#' with the C entry point `run_testthat_tests()`. `testthat`
+#' with the C entry point `run_catch_tests()`. `testthat`
 #' will use that entry point to run your unit tests when detected.
 #'
 #' @section Functions:
@@ -127,7 +127,7 @@ expect_cpp_tests_pass <- function(package) {
 #' by inserting a call to:
 #'
 #' \preformatted{
-#' .Call("run_testthat_tests", PACKAGE = <pkgName>)
+#' .Call("run_catch_tests", PACKAGE = <pkgName>)
 #' }
 #'
 #' as necessary within your unit test suite.
@@ -183,9 +183,16 @@ use_catch <- function(dir = getwd()) {
   output_path <- file.path(test_dir, "test-cpp.R")
   cat(transformed, file = output_path)
 
+  # Copy the 'test-runner.R file.
+  template_file <- system.file(package = "testthat", "resources", "catch-routine-registration.R")
+  contents <- readChar(template_file, file.info(template_file)$size, TRUE)
+  transformed <- sprintf(contents, pkg)
+  output_path <- file.path(dir, "R", "catch-routine-registration.R")
+  cat(transformed, file = output_path)
+
   message("> Added C++ unit testing infrastructure.")
   message("> Please ensure you have 'LinkingTo: testthat' in your DESCRIPTION.")
-  message("> Please ensure you have 'useDynLib(", pkg, ")' in your NAMESPACE.")
+  message("> Please ensure you have 'useDynLib(", pkg, ", .registration = TRUE)' in your NAMESPACE.")
 
 }
 

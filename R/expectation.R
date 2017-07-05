@@ -82,9 +82,8 @@ label <- function(x) {
   }
 }
 
-#' @useDynLib testthat find_label_
 find_label <- function(x) {
-  .Call(find_label_, quote(x), environment())
+  .Call("find_label_", quote(x), environment(), PACKAGE = "testthat")
 }
 
 expectation_type <- function(exp) {

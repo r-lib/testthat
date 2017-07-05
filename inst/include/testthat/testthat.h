@@ -147,7 +147,7 @@ inline std::ostream& cerr()
 
 #  include <R.h>
 #  include <Rinternals.h>
-extern "C" SEXP run_testthat_tests() {
+extern "C" SEXP run_catch_tests() {
   bool success = testthat::run_tests();
   return ScalarLogical(success);
 }
@@ -174,7 +174,7 @@ extern "C" SEXP run_testthat_tests() {
 
 #  include <R.h>
 #  include <Rinternals.h>
-extern "C" SEXP run_testthat_tests() {
+extern "C" SEXP run_catch_tests() {
   return ScalarLogical(true);
 }
 
