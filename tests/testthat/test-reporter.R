@@ -87,20 +87,19 @@ tap_expected <- test_path("reporters", "tap.txt")
 tap_output <- tempfile()
 withr::with_options(list(testthat.tap.output_file=tap_output), {
   test_that("TAP output_file is used if specified", {
-    test_reporter(find_reporter("tap"))
+    expect_silent(test_reporter(find_reporter("tap")))
     expect_identical(readLines(tap_output), readLines(tap_expected))
   })
   test_that("TAP output_file is overwritten if it already exists", {
-    test_reporter(find_reporter("tap"))
+    expect_silent(test_reporter(find_reporter("tap")))
     expect_identical(readLines(tap_output), readLines(tap_expected))
   })
 })
 
-tap_expected <- test_path("reporters", "tap.txt")
 junit_output <- tempfile()
 withr::with_options(list(testthat.junit.output_file=junit_output), {
   test_that("junit output_file is used if specified", {
-    test_reporter(createJunitReporterMock())
+    expect_silent(test_reporter(createJunitReporterMock()))
     expect_identical(readLines(junit_output),
       readLines(test_path("reporters", "junit.txt")))
   })
