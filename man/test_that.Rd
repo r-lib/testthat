@@ -37,4 +37,3 @@ test_that("trigonometric functions match identities", {
 })
 }
 }
-

@@ -9,8 +9,10 @@
 #' @param env Environment in which to evaluate code.
 #' @param chdir Change working directory to `dirname(path)`?
 #' @param encoding File encoding, default: "unknown"
+#' @param wrap Add a [test_that()] call around the code?
 #' @export
-source_file <- function(path, env = test_env(), chdir = TRUE, encoding = "unknown") {
+source_file <- function(path, env = test_env(), chdir = TRUE,
+                        encoding = "unknown", wrap = TRUE) {
   stopifnot(file.exists(path))
   stopifnot(is.environment(env))
 
@@ -25,19 +27,23 @@ source_file <- function(path, env = test_env(), chdir = TRUE, encoding = "unknow
     old_dir <- setwd(dirname(path))
     on.exit(setwd(old_dir), add = TRUE)
   }
-  invisible(eval(exprs, env))
+  if (wrap) {
+    invisible(test_code(NULL, exprs, env))
+  } else {
+    invisible(eval(exprs, env))
+  }
 }
 
 #' @rdname source_file
 #' @export
 source_dir <- function(path, pattern = "\\.[rR]$", env = test_env(),
-                       chdir = TRUE) {
+                       chdir = TRUE, wrap = TRUE) {
   files <- normalizePath(sort(dir(path, pattern, full.names = TRUE)))
-  lapply(files, source_file, env = env, chdir = chdir)
+  lapply(files, source_file, env = env, chdir = chdir, wrap = wrap)
 }
 
 #' @rdname source_file
 #' @export
 source_test_helpers <- function(path = "tests/testthat", env = test_env()) {
-  source_dir(path, "^helper.*\\.[rR]$", env = env)
+  source_dir(path, "^helper.*\\.[rR]$", env = env, wrap = FALSE)
 }

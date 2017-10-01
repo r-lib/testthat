@@ -25,4 +25,3 @@ make_expectation(mtcars$mpg)
 df <- data.frame(x = 2)
 make_expectation(df)
 }
-

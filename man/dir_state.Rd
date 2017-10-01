@@ -18,4 +18,3 @@ accurate)}
 Capture the state of a directory.
 }
 \keyword{internal}
-

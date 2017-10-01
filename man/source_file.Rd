@@ -6,9 +6,11 @@
 \alias{source_test_helpers}
 \title{Source a file, directory, or all helpers.}
 \usage{
-source_file(path, env = test_env(), chdir = TRUE, encoding = "unknown")
+source_file(path, env = test_env(), chdir = TRUE, encoding = "unknown",
+  wrap = TRUE)
 
-source_dir(path, pattern = "\\\\.[rR]$", env = test_env(), chdir = TRUE)
+source_dir(path, pattern = "\\\\.[rR]$", env = test_env(), chdir = TRUE,
+  wrap = TRUE)
 
 source_test_helpers(path = "tests/testthat", env = test_env())
 }
@@ -21,6 +23,8 @@ source_test_helpers(path = "tests/testthat", env = test_env())
 
 \item{encoding}{File encoding, default: "unknown"}
 
+\item{wrap}{Add a \code{\link[=test_that]{test_that()}} call around the code?}
+
 \item{pattern}{Regular expression used to filter files}
 }
 \description{
@@ -28,4 +32,3 @@ The expectation is that the files can be sourced in alphabetical order.
 Helper scripts are R scripts accompanying test scripts but prefixed by
 \code{helper}. These scripts are once before the tests are run.
 }
-

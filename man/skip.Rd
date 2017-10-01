@@ -68,7 +68,7 @@ or cannot be loaded
 It loads the package as a side effect, because the package is likely to be
 used anyway.
 }
+
 \examples{
 if (FALSE) skip("No internet connection")
 }
-

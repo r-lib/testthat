@@ -55,4 +55,3 @@ Other expectations: \code{\link{equality-expectations}},
   \code{\link{logical-expectations}},
   \code{\link{output-expectations}}
 }
-

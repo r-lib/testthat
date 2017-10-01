@@ -5,7 +5,8 @@
 \title{Run all tests in specified file.}
 \usage{
 test_file(path, reporter = default_reporter(), env = test_env(),
-  start_end_reporter = TRUE, load_helpers = TRUE, encoding = "unknown")
+  start_end_reporter = TRUE, load_helpers = TRUE, encoding = "unknown",
+  wrap = TRUE)
 }
 \arguments{
 \item{path}{path to file}
@@ -20,6 +21,8 @@ test_file(path, reporter = default_reporter(), env = test_env(),
 
 \item{encoding}{File encoding, default is "unknown"
 \code{unknown}.}
+
+\item{wrap}{Add a \code{\link[=test_that]{test_that()}} call around the code?}
 }
 \value{
 the results as a "testthat_results" (list)
@@ -27,4 +30,3 @@ the results as a "testthat_results" (list)
 \description{
 Run all tests in specified file.
 }
-
