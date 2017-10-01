@@ -55,7 +55,7 @@ Reporter <- R6::R6Class("Reporter",
       } else {
         title <- paste0(..., " ")
       }
-      width <- getOption("width") - nchar(title)
+      width <- console_width() - nchar(title)
       self$cat_line(title, paste(rep(pad, width, collapse = "")))
     },
 
