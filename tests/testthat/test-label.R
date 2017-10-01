@@ -7,6 +7,12 @@ test_that("labelling compound {} expression gives single string", {
   expect_type(out, "character")
 })
 
+test_that("can label multiline functions", {
+  expect_equal(
+    label(function(x, y) {}),
+    "function(x, y) ..."
+  )
+})
 
 test_that("can find label after it's been forced", {
   f <- function(x) {
