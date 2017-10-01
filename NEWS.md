@@ -1,5 +1,8 @@
 # testthat 1.0.2.9000
 
+* `test_examples()` now works with installed packages as well as source
+  packages (@jimhester, #532).
+
 * Improved behavior of the `SummaryReporter` when the maximum number of errors
   reported is reached.
 
