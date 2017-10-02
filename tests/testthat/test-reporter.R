@@ -39,9 +39,6 @@ test_that("character vector yields multi reporter", {
 })
 
 test_that("reporters produce consistent output", {
-  # # Only report for current R version since
-  # skip_if_not(getRversion()[1, 1:2] == "3.4", "Skipping")
-
   old <- options(width = 80)
   on.exit(options(old), add = TRUE)
 
