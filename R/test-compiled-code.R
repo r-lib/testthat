@@ -14,7 +14,7 @@
 #' @export
 expect_cpp_tests_pass <- function(package) {
 
-  routine <- get_routine(package, "run_catch_tests")
+  routine <- get_routine(package, "run_testthat_tests")
 
   output <- ""
   tests_passed <- TRUE
@@ -72,7 +72,7 @@ expect_cpp_tests_pass <- function(package) {
 #'
 #' When your package is compiled, unit tests alongside a harness
 #' for running these tests will be compiled into your \R package,
-#' with the C entry point `run_catch_tests()`. `testthat`
+#' with the C entry point `run_testthat_tests()`. `testthat`
 #' will use that entry point to run your unit tests when detected.
 #'
 #' @section Functions:
@@ -131,7 +131,7 @@ expect_cpp_tests_pass <- function(package) {
 #' by inserting a call to:
 #'
 #' \preformatted{
-#' .Call("run_catch_tests", PACKAGE = <pkgName>)
+#' .Call("run_testthat_tests", PACKAGE = <pkgName>)
 #' }
 #'
 #' as necessary within your unit test suite.
