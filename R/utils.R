@@ -9,7 +9,12 @@ starts_with <- function(string, prefix) {
 }
 
 console_width <- function() {
-  as.integer(Sys.getenv("RSTUDIO_CONSOLE_WIDTH", getOption("width", 60)))
+  rstudio <- Sys.getenv("RSTUDIO_CONSOLE_WIDTH")
+  if (identical(rstudio, "")) {
+    getOption("width", 80)
+  } else {
+    as.integer(rstudio)
+  }
 }
 
 is_directory <- function(x) file.info(x)$isdir
