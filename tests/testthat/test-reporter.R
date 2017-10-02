@@ -38,6 +38,14 @@ test_that("character vector yields multi reporter", {
   )
 })
 
+test_reporter <- function(reporter) {
+  # Function to run the reporter "test suite" with a given reporter
+  withr::with_options(
+    list(expressions = Cstack_info()[["eval_depth"]] + 200),
+    test_file(test_path("reporters/tests.R"), reporter, wrap = FALSE)
+  )
+}
+
 test_that("reporters produce consistent output", {
   old <- options(width = 80)
   on.exit(options(old), add = TRUE)
@@ -47,10 +55,7 @@ test_that("reporters produce consistent output", {
 
     expect_output_file(
       expect_error(
-        withr::with_options(
-          list(expressions = Cstack_info()[["eval_depth"]] + 200),
-          test_file(test_path("reporters/tests.R"), reporter, wrap = FALSE)
-        ),
+        test_reporter(reporter),
         error_regexp
       ),
       path, update = TRUE)
@@ -76,4 +81,26 @@ test_that("reporters produce consistent output", {
   save_report("silent")
   save_report("rstudio")
   save_report("junit", reporter = createJunitReporterMock())
+})
+
+tap_expected <- test_path("reporters", "tap.txt")
+tap_output <- tempfile()
+withr::with_options(list(testthat.tap.output_file=tap_output), {
+  test_that("TAP output_file is used if specified", {
+    expect_silent(test_reporter(find_reporter("tap")))
+    expect_identical(readLines(tap_output), readLines(tap_expected))
+  })
+  test_that("TAP output_file is overwritten if it already exists", {
+    expect_silent(test_reporter(find_reporter("tap")))
+    expect_identical(readLines(tap_output), readLines(tap_expected))
+  })
+})
+
+junit_output <- tempfile()
+withr::with_options(list(testthat.junit.output_file=junit_output), {
+  test_that("junit output_file is used if specified", {
+    expect_silent(test_reporter(createJunitReporterMock()))
+    expect_identical(readLines(junit_output),
+      readLines(test_path("reporters", "junit.txt")))
+  })
 })

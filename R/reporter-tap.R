@@ -30,6 +30,13 @@ TapReporter <- R6::R6Class("TapReporter", inherit = Reporter,
       if (!self$has_tests)
         return()
 
+      # Check to see if an output_file path has been specified
+      self$out <- getOption("testthat.tap.output_file", self$out)
+      if (is.character(self$out) && file.exists(self$out)) {
+        # If writing to a file, overwrite it if it exists
+        file.remove(self$out)
+      }
+
       self$cat_line("1..", self$n)
       for (i in 1:self$n) {
         if (!is.na(self$contexts[i])) {
