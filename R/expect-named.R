@@ -1,17 +1,17 @@
 #' Expectation: does object have names?
 #'
-#' You can either check for the presence of names (leaving \code{expected}
+#' You can either check for the presence of names (leaving `expected`
 #' blank), specific names (by suppling a vector of names), or absence of
-#' names (with \code{NULL}).
+#' names (with `NULL`).
 #'
 #' @inheritParams expect_that
 #' @param expected Character vector of expected names. Leave missing to
-#'   match any names. Use \code{NULL} to check for absence of names.
-#' @param ignore.order If \code{TRUE}, sorts names before comparing to
+#'   match any names. Use `NULL` to check for absence of names.
+#' @param ignore.order If `TRUE`, sorts names before comparing to
 #'   ignore the effect of order.
-#' @param ignore.case If \code{TRUE}, lowercases all names to ignore the
+#' @param ignore.case If `TRUE`, lowercases all names to ignore the
 #'   effect of case.
-#' @param ... Other arguments passed onto \code{has_names}.
+#' @param ... Other arguments passed on to [has_names()].
 #' @family expectations
 #' @export
 #' @examples

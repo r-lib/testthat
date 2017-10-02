@@ -16,6 +16,7 @@ any easily parsed form.
 Other reporters: \code{\link{CheckReporter}},
   \code{\link{DebugReporter}}, \code{\link{FailReporter}},
   \code{\link{ListReporter}},
+  \code{\link{LocationReporter}},
   \code{\link{MinimalReporter}},
   \code{\link{MultiReporter}},
   \code{\link{SilentReporter}}, \code{\link{StopReporter}},
@@ -23,4 +24,3 @@ Other reporters: \code{\link{CheckReporter}},
   \code{\link{TeamcityReporter}}
 }
 \keyword{datasets}
-

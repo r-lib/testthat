@@ -9,11 +9,11 @@ find_test_scripts(path, filter = NULL, invert = FALSE, ...)
 \arguments{
 \item{path}{path to tests}
 
-\item{filter}{cf \code{\link{test_dir}}}
+\item{filter}{cf \code{\link[=test_dir]{test_dir()}}}
 
 \item{invert}{If \sQuote{TRUE} return files which do \emph{not} match.}
 
-\item{...}{Additional arguments passed to \code{grepl} to control filtering.}
+\item{...}{Additional arguments passed to \code{\link[=grepl]{grepl()}} to control filtering.}
 }
 \value{
 the test file paths
@@ -22,4 +22,3 @@ the test file paths
 Find the test files.
 }
 \keyword{internal}
-

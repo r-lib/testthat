@@ -10,11 +10,9 @@ test_path(...)
 \item{...}{Character vectors giving path component.}
 }
 \value{
-A character vector giving the path. An error will be thrown if
-  the path doesn't exist.
+A character vector giving the path.
 }
 \description{
 This function is designed to work both interatively and during tests,
 locating files in the \code{tests/testthat} directory
 }
-

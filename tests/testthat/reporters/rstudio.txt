@@ -7,6 +7,7 @@ reporters/tests.R#36:1 [error] Error:3. !
 reporters/tests.R#43:1 [error] Recursion:1. evaluation nested too deeply: infinite recursion / options(expressions=)?
 reporters/tests.R#49:1 [skip] Skip:1. skip
 reporters/tests.R#54:1 [skip] Skip:2. skip
-reporters/tests.R#60:1 [warning] Warning:1. abc
-reporters/tests.R#64:1 [warning] Warning:2. def
-reporters/tests.R#65:1 [warning] Warning:2. ghi
+reporters/tests.R#57:1 [skip] Skip:3. Empty test
+reporters/tests.R#63:1 [warning] Warning:1. abc
+reporters/tests.R#67:1 [warning] Warning:2. def
+reporters/tests.R#68:1 [warning] Warning:2. ghi

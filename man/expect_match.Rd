@@ -11,7 +11,7 @@ expect_match(object, regexp, ..., all = TRUE, info = NULL, label = NULL)
 
 \item{regexp}{Regular expression to test against.}
 
-\item{...}{Additional arguments passed on to \code{\link{grepl}}, e.g.
+\item{...}{Additional arguments passed on to \code{\link[=grepl]{grepl()}}, e.g.
 \code{ignore.case} or \code{fixed}.}
 
 \item{all}{Should all elements of actual value match \code{regexp} (TRUE),
@@ -45,4 +45,3 @@ Other expectations: \code{\link{comparison-expectations}},
   \code{\link{logical-expectations}},
   \code{\link{output-expectations}}
 }
-

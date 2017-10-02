@@ -19,7 +19,8 @@ Imports:
     praise,
     magrittr,
     R6 (>= 2.2.0),
-    methods
+    methods,
+    xml2
 Suggests:
     devtools,
     withr,
@@ -56,7 +57,9 @@ Collate:
     'reporter-check.R'
     'reporter-debug.R'
     'reporter-fail.R'
+    'reporter-junit.R'
     'reporter-list.R'
+    'reporter-location.R'
     'reporter-minimal.R'
     'reporter-multi.R'
     'reporter-rstudio.R'
@@ -69,6 +72,7 @@ Collate:
     'reporter-zzz.R'
     'skip.R'
     'source.R'
+    'teardown.R'
     'test-compiled-code.R'
     'test-example.R'
     'test-files.R'
@@ -79,4 +83,5 @@ Collate:
     'try-again.R'
     'utils.R'
     'watcher.R'
-RoxygenNote: 5.0.1
+RoxygenNote: 6.0.1
+Roxygen: list(markdown = TRUE)

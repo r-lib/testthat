@@ -56,8 +56,6 @@ test_that("infinite recursion is captured", {
 })
 
 test_that("return value from test_that", {
-  with_reporter("", success <- test_that("success", {}))
-  expect_true(success)
   with_reporter("", success <- test_that("success", succeed()))
   expect_true(success)
   with_reporter("", success <- test_that("success", expect(TRUE, "Yes!")))
@@ -75,6 +73,9 @@ test_that("return value from test_that", {
 
   with_reporter("", skip <- test_that("skip", skip("skipping")))
   expect_false(skip)
+  # No tests = automatically generated skip
+  with_reporter("", skip <- test_that("success", {}))
+  expect_false(success)
 })
 
 # Line numbering ----------------------------------------------------------

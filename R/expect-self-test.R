@@ -7,7 +7,7 @@ NULL
 #'
 #' @param expr Expression that evaluates a single expectation.
 #' @param message Check that the failure message matches this regexp.
-#' @param ... Other arguments passed on to \code{\link{expect_match}}.
+#' @param ... Other arguments passed on to [expect_match()].
 #' @keywords internal
 #' @export
 expect_success <- function(expr) {

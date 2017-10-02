@@ -4,7 +4,7 @@
 \alias{test_file}
 \title{Run all tests in specified file.}
 \usage{
-test_file(path, reporter = "summary", env = test_env(),
+test_file(path, reporter = default_reporter(), env = test_env(),
   start_end_reporter = TRUE, load_helpers = TRUE, encoding = "unknown")
 }
 \arguments{
@@ -27,4 +27,3 @@ the results as a "testthat_results" (list)
 \description{
 Run all tests in specified file.
 }
-

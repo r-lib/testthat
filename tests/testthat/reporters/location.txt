@@ -1,0 +1,18 @@
+reporters/tests.R#4:1 [success] Success
+reporters/tests.R#8:1 [failure] Failure:1
+reporters/tests.R#12:1 [failure] Failure:2a
+reporters/tests.R#15:1 [failure] Failure:2b
+reporters/tests.R#20:1 [failure] Failure:loop
+reporters/tests.R#20:1 [success] Failure:loop
+reporters/tests.R#28:1 [error] Error:1
+reporters/tests.R#36:1 [error] Error:3
+reporters/tests.R#43:1 [error] Recursion:1
+reporters/tests.R#49:1 [skip] Skip:1
+reporters/tests.R#54:1 [skip] Skip:2
+reporters/tests.R#57:1 [skip] Skip:3
+reporters/tests.R#63:1 [warning] Warning:1
+reporters/tests.R#67:1 [warning] Warning:2
+reporters/tests.R#68:1 [warning] Warning:2
+reporters/tests.R#74:1 [success] Output:1
+reporters/tests.R#74:1 [success] Output:1
+

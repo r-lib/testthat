@@ -11,11 +11,12 @@ FailReporter
 \description{
 This reporter will simply throw an error if any of the tests failed. It is
 best combined with another reporter, such as the
-\code{\link{SummaryReporter}}.
+\link{SummaryReporter}.
 }
 \seealso{
 Other reporters: \code{\link{CheckReporter}},
   \code{\link{DebugReporter}}, \code{\link{ListReporter}},
+  \code{\link{LocationReporter}},
   \code{\link{MinimalReporter}},
   \code{\link{MultiReporter}},
   \code{\link{RstudioReporter}},
@@ -24,4 +25,3 @@ Other reporters: \code{\link{CheckReporter}},
   \code{\link{TeamcityReporter}}
 }
 \keyword{datasets}
-

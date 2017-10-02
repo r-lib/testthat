@@ -1,6 +1,6 @@
 #' Provide human-readable comparison of two objects
 #'
-#' \code{compare} is similar to \code{\link[base]{all.equal}()}, but shows
+#' `compare` is similar to [base::all.equal()], but shows
 #' you examples of where the failures occured.
 #'
 #' @export
@@ -43,13 +43,17 @@ print.comparison <- function(x, ...) {
 
 #' @export
 #' @rdname compare
-compare.default <- function(x, y, ...){
+compare.default <- function(x, y, ..., max_diffs = 9){
   same <- all.equal(x, y, ...)
-  comparison(identical(same, TRUE), paste0(same, collapse = "\n"))
+  if (length(same) > max_diffs) {
+    same <- c(same[1:max_diffs], "...")
+  }
+
+  comparison(identical(same, TRUE), as.character(same))
 }
 
 print_out <- function(x, ...) {
-  lines <- utils::capture.output(print(x, ...))
+  lines <- capture_output_lines(x, ..., print = TRUE)
   paste0(lines, collapse = "\n")
 }
 

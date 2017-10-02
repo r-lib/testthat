@@ -2,11 +2,11 @@
 % Please edit documentation in R/expect-comparison.R
 \name{comparison-expectations}
 \alias{comparison-expectations}
+\alias{expect_lt}
+\alias{expect_lte}
 \alias{expect_gt}
 \alias{expect_gte}
 \alias{expect_less_than}
-\alias{expect_lt}
-\alias{expect_lte}
 \alias{expect_more_than}
 \title{Expectation: is returned value less or greater than specified value?}
 \usage{
@@ -27,7 +27,7 @@ expect_gte(object, expected, label = NULL, expected.label = NULL)
 
 \item{expected.label}{Equivalent of \code{label} for shortcut form.}
 
-\item{...}{other values passed to \code{\link{all.equal}}}
+\item{...}{other values passed to \code{\link[=all.equal]{all.equal()}}}
 }
 \description{
 Expectation: is returned value less or greater than specified value?
@@ -55,4 +55,3 @@ Other expectations: \code{\link{equality-expectations}},
   \code{\link{logical-expectations}},
   \code{\link{output-expectations}}
 }
-

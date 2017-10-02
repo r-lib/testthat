@@ -4,11 +4,11 @@
 \alias{skip}
 \alias{skip_if_not}
 \alias{skip_if_not_installed}
-\alias{skip_on_appveyor}
-\alias{skip_on_bioc}
 \alias{skip_on_cran}
 \alias{skip_on_os}
 \alias{skip_on_travis}
+\alias{skip_on_appveyor}
+\alias{skip_on_bioc}
 \title{Skip a test.}
 \usage{
 skip(message)
@@ -47,7 +47,7 @@ suite to fail.
 }
 \section{Helpers}{
 
-\code{skip_if_not()} works like \code{\link{stopifnot}}, generating
+\code{skip_if_not()} works like \code{\link[=stopifnot]{stopifnot()}}, generating
 a message automatically based on the first argument.
 
 \code{skip_on_cran()} skips tests on CRAN, using the \code{NOT_CRAN}
@@ -68,7 +68,7 @@ or cannot be loaded
 It loads the package as a side effect, because the package is likely to be
 used anyway.
 }
+
 \examples{
 if (FALSE) skip("No internet connection")
 }
-

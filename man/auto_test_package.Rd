@@ -4,7 +4,7 @@
 \alias{auto_test_package}
 \title{Watches a package for changes, rerunning tests as appropriate.}
 \usage{
-auto_test_package(pkg = ".", reporter = "summary")
+auto_test_package(pkg = ".", reporter = default_reporter())
 }
 \arguments{
 \item{pkg}{path to package}
@@ -15,7 +15,6 @@ auto_test_package(pkg = ".", reporter = "summary")
 Watches a package for changes, rerunning tests as appropriate.
 }
 \seealso{
-\code{\link{auto_test}} for details on how method works
+\code{\link[=auto_test]{auto_test()}} for details on how method works
 }
 \keyword{debugging}
-

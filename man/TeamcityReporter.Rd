@@ -17,6 +17,7 @@ http://confluence.jetbrains.com/display/TCD7/Build+Script+Interaction+with+TeamC
 Other reporters: \code{\link{CheckReporter}},
   \code{\link{DebugReporter}}, \code{\link{FailReporter}},
   \code{\link{ListReporter}},
+  \code{\link{LocationReporter}},
   \code{\link{MinimalReporter}},
   \code{\link{MultiReporter}},
   \code{\link{RstudioReporter}},
@@ -24,4 +25,3 @@ Other reporters: \code{\link{CheckReporter}},
   \code{\link{SummaryReporter}}, \code{\link{TapReporter}}
 }
 \keyword{datasets}
-

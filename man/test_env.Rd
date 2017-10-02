@@ -7,10 +7,9 @@
 test_env()
 }
 \description{
-We use a new environment which inherits from \code{\link{globalenv}}.
+We use a new environment which inherits from \code{\link[=globalenv]{globalenv()}}.
 In an ideal world, we'd avoid putting the global environment on the
 search path for tests, but it's not currently possible without losing
 the ability to load packages in tests.
 }
 \keyword{internal}
-

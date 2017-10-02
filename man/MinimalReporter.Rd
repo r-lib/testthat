@@ -17,11 +17,12 @@ were, you'll need to run a more informative test reporter.
 \seealso{
 Other reporters: \code{\link{CheckReporter}},
   \code{\link{DebugReporter}}, \code{\link{FailReporter}},
-  \code{\link{ListReporter}}, \code{\link{MultiReporter}},
+  \code{\link{ListReporter}},
+  \code{\link{LocationReporter}},
+  \code{\link{MultiReporter}},
   \code{\link{RstudioReporter}},
   \code{\link{SilentReporter}}, \code{\link{StopReporter}},
   \code{\link{SummaryReporter}}, \code{\link{TapReporter}},
   \code{\link{TeamcityReporter}}
 }
 \keyword{datasets}
-

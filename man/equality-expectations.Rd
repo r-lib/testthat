@@ -10,7 +10,7 @@
 expect_equal(object, expected, ..., info = NULL, label = NULL,
   expected.label = NULL)
 
-expect_equivalent(object, expected, info = NULL, label = NULL,
+expect_equivalent(object, expected, ..., info = NULL, label = NULL,
   expected.label = NULL)
 
 expect_identical(object, expected, info = NULL, label = NULL,
@@ -21,7 +21,7 @@ expect_identical(object, expected, info = NULL, label = NULL,
 
 \item{expected}{Expected value}
 
-\item{...}{other values passed to \code{\link{all.equal}}}
+\item{...}{other values passed to \code{\link[=all.equal]{all.equal()}}}
 
 \item{info}{extra information to be included in the message (useful when
 writing tests in loops).}
@@ -32,10 +32,10 @@ writing tests in loops).}
 }
 \description{
 \itemize{
-\item \code{expect_identical} tests with \code{\link{identical}}
-\item \code{expect_equal} tests with \code{\link{all.equal}}
-\item \code{expect_equivalent} tests with \code{\link{all.equal}} and
-  \code{check.attributes = FALSE}
+\item \code{expect_identical} tests with \code{\link[=identical]{identical()}}
+\item \code{expect_equal} tests with \code{\link[=all.equal]{all.equal()}}
+\item \code{expect_equivalent} tests with \code{\link[=all.equal]{all.equal()}} and
+\code{check.attributes = FALSE}
 }
 }
 \examples{
@@ -76,4 +76,3 @@ Other expectations: \code{\link{comparison-expectations}},
   \code{\link{logical-expectations}},
   \code{\link{output-expectations}}
 }
-
