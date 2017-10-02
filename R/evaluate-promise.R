@@ -115,9 +115,9 @@ capture_output_lines <- function(code, print = FALSE, width = 80) {
   old <- options(width = width)
   on.exit(options(old), add = TRUE)
 
-  old <- Sys.getenv("RSTUDIO_CONSOLE_WIDTH")
+  old_width <- Sys.getenv("RSTUDIO_CONSOLE_WIDTH")
   Sys.setenv("RSTUDIO_CONSOLE_WIDTH" = width)
-  on.exit(Sys.setenv("RSTUDIO_CONSOLE_WIDTH" = old), add = TRUE)
+  on.exit(Sys.setenv("RSTUDIO_CONSOLE_WIDTH" = old_width), add = TRUE)
 
   result <- with_sink(temp, withVisible(code))
   if (result$visible && print) {
