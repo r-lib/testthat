@@ -110,8 +110,8 @@ by inserting a call to:
 
 as necessary within your unit test suite.
 }
+
 \seealso{
 \href{https://github.com/philsquared/Catch}{Catch}, the
 library used to enable C++ unit testing.
 }
-

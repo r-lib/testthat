@@ -88,27 +88,28 @@ JunitReporter <- R6::R6Class("JunitReporter", inherit = Reporter,
       # XML node for test case
       name <- test %||% "(unnamed)"
       testcase <- xml2::xml_add_child(self$suite, "testcase",
-       time = toString(time),
-       classname = paste0(classnameOK(context), '.', classnameOK(name))
+        time = toString(time),
+        classname = classnameOK(context),
+        name = classnameOK(name)
       )
 
-      # message - if failure or error
-      message <- if (is.null(result$call)) "(unexpected)" else format(result$call)[1]
-
-      if (!is.null(result$srcref)) {
-        location <- paste0('@', attr(result$srcref, 'srcfile')$filename, '#', result$srcref[1])
-        message  <- paste(as.character(result), location)
+      first_line <- function(x) {
+        strsplit(x, split = "\n")[[1]][1]
       }
 
       # add an extra XML child node if not a success
       if (expectation_error(result)) {
         # "type" in Java is the exception class
-        xml2::xml_add_child(testcase, 'error', type = 'error', message = message)
+        error <- xml2::xml_add_child(testcase, 'error', type = 'error', message = first_line(result$message))
+        xml2::xml_text(error) <- format(result)
         self$errors <- self$errors + 1
+
       } else if (expectation_failure(result)) {
         # "type" in Java is the type of assertion that failed
-        xml2::xml_add_child(testcase, 'failure', type = 'failure', message = message)
+        failure <- xml2::xml_add_child(testcase, 'failure', type = 'failure', message = first_line(result$message))
+        xml2::xml_text(failure) <- format(result)
         self$failures <- self$failures + 1
+
       } else if (expectation_skip(result)) {
         xml2::xml_add_child(testcase, "skipped")
         self$skipped <- self$skipped + 1
@@ -116,14 +117,17 @@ JunitReporter <- R6::R6Class("JunitReporter", inherit = Reporter,
     },
 
     end_reporter = function() {
-      if (inherits(self$out, "connection")) {
+      output_file <- getOption("testthat.junit.output_file")
+
+      if (!is.null(output_file)) {
+        xml2::write_xml(self$doc, output_file, format = TRUE)
+      } else if (inherits(self$out, "connection")) {
         file <- tempfile()
         xml2::write_xml(self$doc, file, format = TRUE)
         writeLines(readLines(file), self$out)
       } else {
         stop('unsupported output type: ', toString(self$out))
       }
-      #cat(toString(self$doc), file = self$file)
     } # end_reporter
   ), #public
 

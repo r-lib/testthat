@@ -11,4 +11,3 @@ This will be \code{\link[=SummaryReporter]{SummaryReporter()}} unless option
 \code{testthat.default_reporter} is set
 }
 \keyword{internal}
-

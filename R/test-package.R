@@ -41,7 +41,11 @@ test_package <- function(package, filter = NULL, reporter = default_reporter(), 
   # tests.
   if (env_test$in_test) return(invisible())
   env_test$in_test <- TRUE
-  on.exit(env_test$in_test <- FALSE)
+  env_test$package <- package
+  on.exit({
+    env_test$in_test <- FALSE
+    env_test$package <- NULL
+  })
 
   test_path <- system.file("tests", package = package)
   if (test_path == "") stop("No tests found for ", package, call. = FALSE)
@@ -77,9 +81,16 @@ run_tests <- function(package, test_path, filter, reporter, ...)
 #' @inheritParams test_package
 #' @export
 #' @rdname test_package
-test_check <- function(package, filter = NULL, reporter = "check", ...) {
+test_check <- function(package, filter = NULL, reporter = getOption("testthat.default_check_reporter", "check"), ...) {
   library(testthat)
   require(package, character.only = TRUE)
+
+  env_test$in_test <- TRUE
+  env_test$package <- package
+  on.exit({
+    env_test$in_test <- FALSE
+    env_test$package <- NULL
+  })
 
   test_path <- "testthat"
   if (!utils::file_test('-d', test_path)) {
@@ -92,3 +103,4 @@ test_check <- function(package, filter = NULL, reporter = "check", ...) {
 
 env_test <- new.env(parent = emptyenv())
 env_test$in_test <- FALSE
+env_test$package <- NULL

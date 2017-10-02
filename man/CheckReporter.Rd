@@ -24,4 +24,3 @@ Other reporters: \code{\link{DebugReporter}},
   \code{\link{TeamcityReporter}}
 }
 \keyword{datasets}
-

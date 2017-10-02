@@ -16,4 +16,3 @@ of individual reporters.
 Will return null if given NULL.
 }
 \keyword{internal}
-

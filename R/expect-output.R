@@ -3,14 +3,14 @@
 #' Use `expect_output()`, `expect_message()`, `expect_warning()`,
 #' or `expect_error()` to check for specific outputs. Use
 #' `expect_silent()` to assert that there should be no output of
-#' any type. The file-based`expect_output_file()` compares the output
+#' any type. The file-based `expect_output_file()` compares the output
 #' to the contents of a text file and optionally updates it.
 #'
 #' Note that warnings are captured by a custom signal handler: this means
 #' that `options(warn)` has no effect.
 #'
 #' @inheritParams expect_that
-#' @inheritParams expect_match
+#' @inheritDotParams expect_match -object -regexp -info -label
 #' @param regexp regular expression to test against.
 #'
 #'   If `NULL`, the default, asserts that there should be an output,
@@ -18,9 +18,9 @@
 #'
 #'   If `NA`, asserts that there should be no output, messages, warnings,
 #'   or errors.
-#' @param class Instead of supply a regular expression, you can also supply
+#' @param class Instead of supplying a regular expression, you can also supply
 #'   a class name. This is useful for "classed" conditions.
-#' @param all For messages and warnings, do all need to the `regexp`
+#' @param all For messages and warnings, do all need to match the `regexp`
 #'    (TRUE), or does only one need to match (FALSE)
 #' @family expectations
 #' @examples
@@ -145,7 +145,7 @@ expect_error <- function(object, regexp = NULL, class = NULL, ..., info = NULL,
 
   lab <- make_label(object, label)
   if (!is.null(regexp) && !is.null(class)) {
-    stop("You may only specific one of `regexp` and `class`", call. = FALSE)
+    stop("You may only specify one of `regexp` and `class`", call. = FALSE)
   }
 
   error <- tryCatch(
