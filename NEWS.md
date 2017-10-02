@@ -113,6 +113,10 @@
 
 * New JUnit reporter `JunitReporter`. (#481, @lbartnik)
 
+* Mirror `hash` parameter in `auto_test()` and `auto_test_package()` in order 
+  to enable switching to faster, time-stamp-based modification detection 
+  (#598, @katrinleinweber)
+
 * Clarified `skip` semantics in documentation (@brodieG)
 
 * Extend `expect_length()` to work with any object that has a `length` method (#564, @nealrichardson)
