@@ -9,8 +9,8 @@
 #'
 #' It is important to initialize the reference RDS file within the source
 #' package, most likely in the `tests/testthat` directory. Testing spawned
-#' by [devtools::test()], for example, will accomplish this. But note that
-#' testing spawned by `R CMD check` and [devtools::check()] will NOT.
+#' by [devtools::test()/test_file()], for example, will accomplish this. But note
+#' that testing spawned by `R CMD check` and [devtools::check()] will NOT.
 #' In the latter cases, the package source is copied to an external location
 #' before tests are run. The resulting RDS file will not make its way back into
 #' the package source and will not be available for subsequent comparisons.
@@ -23,15 +23,19 @@
 #'   the file name), when doing tests in a loop. For the short-cut form, the
 #'   object label, which is computed from the deparsed object by default.
 #' @param expected.label Equivalent of `label` for shortcut form.
+#' @param view.on.update If true and if the reference file does not exist,
+#'  [utils::View()] will be called on the object.
 #' @param ... other values passed to [expect_equal()]
 #' @family expectations
 #' @export
+#' @importFrom utils View
 #' @examples
 #' \dontrun{
 #' expect_equal_to_reference(1, "one.rds")
 #' }
 expect_equal_to_reference <- function(object, file, ..., info = NULL,
-                                      label = NULL, expected.label = NULL) {
+                                      label = NULL, expected.label = NULL,
+                                      view.on.update = FALSE) {
 
   lab_act <- make_label(object, label)
   lab_exp <- expected.label %||% paste0("reference from `", file, "`")
@@ -39,6 +43,7 @@ expect_equal_to_reference <- function(object, file, ..., info = NULL,
   if (!file.exists(file)) {
     # first time always succeeds
     saveRDS(object, file)
+    if (view.on.update) { View(object) }
     succeed()
   } else {
     reference <- readRDS(file)
