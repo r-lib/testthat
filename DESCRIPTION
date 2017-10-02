@@ -20,12 +20,12 @@ Imports:
     magrittr,
     methods,
     praise,
-    R6 (>= 2.2.0),
-    xml2
+    R6 (>= 2.2.0)
 Suggests: 
     covr,
     devtools,
-    withr
+    withr,
+    xml2
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 6.0.1
 Collate:
