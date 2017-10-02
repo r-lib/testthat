@@ -106,3 +106,8 @@ escape_regex <- function(x) {
   chars <- c("*", ".", "?", "^", "+", "$", "|", "(", ")", "[", "]", "{", "}", "\\")
   gsub(paste0("([\\", paste0(collapse = "\\", chars), "])"), "\\\\\\1", x, perl = TRUE)
 }
+
+# For R 3.1
+dir.exists <- function(paths) {
+  file.exists(paths) & file.info(paths)$isdir
+}
