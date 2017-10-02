@@ -39,8 +39,10 @@ test_that("Error:3", {
 context("Recursion")
 
 test_that("Recursion:1", {
-  f <- function() f()
-  f()
+  f <- function(x) {
+    if (x > 0) f(x - 1) else stop("This is deep")
+  }
+  f(25)
 })
 
 context("Skips")

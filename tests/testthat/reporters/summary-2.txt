@@ -6,18 +6,18 @@ Warnings: WWW
 Output: ..
 
 Skipped ------------------------------------------------------------------------
-1. Skip:1 (@tests.R#49) - skip
+1. Skip:1 (@tests.R#51) - skip
 
-2. Skip:2 (@tests.R#54) - skip
+2. Skip:2 (@tests.R#56) - skip
 
-3. Skip:3 (@tests.R#57) - Empty test
+3. Skip:3 (@tests.R#59) - Empty test
 
 Warnings -----------------------------------------------------------------------
-1. Warning:1 (@tests.R#63) - abc
+1. Warning:1 (@tests.R#65) - abc
 
-2. Warning:2 (@tests.R#67) - def
+2. Warning:2 (@tests.R#69) - def
 
-3. Warning:2 (@tests.R#68) - ghi
+3. Warning:2 (@tests.R#70) - ghi
 
 Failed -------------------------------------------------------------------------
 1. Failure: Failure:1 (@tests.R#8) ---------------------------------------------

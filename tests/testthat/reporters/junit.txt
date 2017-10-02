@@ -37,28 +37,28 @@
   </testsuite>
   <testsuite name="Recursion" timestamp="1999:12:31 23:59:59" hostname="nodename" tests="1" skipped="0" failures="0" errors="1" time="0">
     <testcase time="0" classname="Recursion" name="Recursion:1">
-      <error type="error" message="evaluation nested too deeply: infinite recursion / options(expressions=)?">evaluation nested too deeply: infinite recursion / options(expressions=)?
-1: f() at reporters/tests.R:43
-2: f() at reporters/tests.R:42
-3: f() at reporters/tests.R:42
-4: f() at reporters/tests.R:42
-5: f() at reporters/tests.R:42
-6: f() at reporters/tests.R:42
-7: f() at reporters/tests.R:42
-8: f() at reporters/tests.R:42
-9: f() at reporters/tests.R:42
-10: f() at reporters/tests.R:42
+      <error type="error" message="This is deep">This is deep
+1: f(25) at reporters/tests.R:45
+2: f(x - 1) at reporters/tests.R:43
+3: f(x - 1) at reporters/tests.R:43
+4: f(x - 1) at reporters/tests.R:43
+5: f(x - 1) at reporters/tests.R:43
+6: f(x - 1) at reporters/tests.R:43
+7: f(x - 1) at reporters/tests.R:43
+8: f(x - 1) at reporters/tests.R:43
+9: f(x - 1) at reporters/tests.R:43
+10: f(x - 1) at reporters/tests.R:43
 ...
-170: f() at reporters/tests.R:42
-171: f() at reporters/tests.R:42
-172: f() at reporters/tests.R:42
-173: f() at reporters/tests.R:42
-174: f() at reporters/tests.R:42
-175: f() at reporters/tests.R:42
-176: f() at reporters/tests.R:42
-177: f() at reporters/tests.R:42
-178: f() at reporters/tests.R:42
-179: f() at reporters/tests.R:42</error>
+18: f(x - 1) at reporters/tests.R:43
+19: f(x - 1) at reporters/tests.R:43
+20: f(x - 1) at reporters/tests.R:43
+21: f(x - 1) at reporters/tests.R:43
+22: f(x - 1) at reporters/tests.R:43
+23: f(x - 1) at reporters/tests.R:43
+24: f(x - 1) at reporters/tests.R:43
+25: f(x - 1) at reporters/tests.R:43
+26: f(x - 1) at reporters/tests.R:43
+27: stop("This is deep") at reporters/tests.R:43</error>
     </testcase>
   </testsuite>
   <testsuite name="Skips" timestamp="1999:12:31 23:59:59" hostname="nodename" tests="3" skipped="3" failures="0" errors="0" time="0">
