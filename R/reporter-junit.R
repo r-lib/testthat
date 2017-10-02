@@ -54,7 +54,7 @@ JunitReporter <- R6::R6Class("JunitReporter", inherit = Reporter,
     },
 
     start_reporter = function() {
-      if (!rlang::is_installed("xml2")) {
+      if (!is_installed("xml2")) {
         stop("Please install the `xml2` package", call. = FALSE)
       }
 

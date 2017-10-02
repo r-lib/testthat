@@ -20,7 +20,8 @@ Imports:
     magrittr,
     methods,
     praise,
-    R6 (>= 2.2.0)
+    R6 (>= 2.2.0),
+    rlang
 Suggests: 
     covr,
     devtools,
