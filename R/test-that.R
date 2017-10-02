@@ -191,6 +191,7 @@ test_code <- function(test, code, env = test_env(), skip_on_empty = TRUE) {
 #'
 #' @docType package
 #' @name testthat
+#' @useDynLib testthat, .registration = TRUE
 #' @references Wickham, H (2011). testthat: Get Started with Testing.
 #' \strong{The R Journal} \emph{3/1} 5-10.
 #' \url{http://journal.r-project.org/archive/2011-1/RJournal_2011-1_Wickham.pdf}
