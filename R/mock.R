@@ -92,21 +92,20 @@ extract_mocks <- function(new_values, .env, eval_env = parent.frame()) {
   )
 }
 
-#' @useDynLib testthat duplicate_
 mock <- function(name, env, new) {
   target_value <- get(name, envir = env, mode = "function")
   structure(list(
     env = env, name = as.name(name),
-    orig_value = .Call(duplicate_, target_value), target_value = target_value,
-    new_value = new), class = "mock")
+    orig_value = .Call("duplicate_", target_value, PACKAGE = "testthat"),
+    target_value = target_value,
+    new_value = new
+  ), class = "mock")
 }
 
-#' @useDynLib testthat reassign_function
 set_mock <- function(mock) {
-  .Call(reassign_function, mock$name, mock$env, mock$target_value, mock$new_value)
+  .Call("reassign_function", mock$name, mock$env, mock$target_value, mock$new_value, PACKAGE = "testthat")
 }
 
-#' @useDynLib testthat reassign_function
 reset_mock <- function(mock) {
-  .Call(reassign_function, mock$name, mock$env, mock$target_value, mock$orig_value)
+  .Call("reassign_function", mock$name, mock$env, mock$target_value, mock$orig_value, PACKAGE = "testthat")
 }

@@ -26,8 +26,9 @@ Suggests:
     withr,
     covr
 License: MIT + file LICENSE
-Collate:
+Collate: 
     'auto-test.R'
+    'catch-routine-registration.R'
     'colour-text.R'
     'compare.R'
     'compare-character.R'

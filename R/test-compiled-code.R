@@ -20,7 +20,7 @@ expect_cpp_tests_pass <- function(package) {
   tests_passed <- TRUE
 
   tryCatch(
-    output <- capture_output_lines(tests_passed <- .Call(routine)),
+    output <- capture_output_lines(tests_passed <- do.call(.Call, list(routine))),
     error = function(e) {
       warning(sprintf("failed to call test entrypoint '%s'", routine))
     }
@@ -46,11 +46,15 @@ expect_cpp_tests_pass <- function(package) {
 #'    unit tests,
 #'
 #' 2. Create an example test file `src/test-example.cpp`, which
-#'    showcases how you might use Catch to write a unit test, and
+#'    showcases how you might use Catch to write a unit test,
 #'
 #' 3. Add a test file `tests/testthat/test-cpp.R`, which ensures that
 #'    `testthat` will run your compiled tests during invocations of
-#'    `devtools::test()` or `R CMD check`.
+#'    `devtools::test()` or `R CMD check`, and
+#'
+#' 4. Create a file `R/catch-routine-registration.R`, which ensures that
+#'    \R will automatically register this routine when
+#'    `tools::package_native_routine_registration_skeleton()` is invoked.
 #'
 #' C++ unit tests can be added to C++ source files within the
 #' `src` directory of your package, with a format similar
@@ -183,9 +187,16 @@ use_catch <- function(dir = getwd()) {
   output_path <- file.path(test_dir, "test-cpp.R")
   cat(transformed, file = output_path)
 
+  # Copy the 'test-runner.R file.
+  template_file <- system.file(package = "testthat", "resources", "catch-routine-registration.R")
+  contents <- readChar(template_file, file.info(template_file)$size, TRUE)
+  transformed <- sprintf(contents, pkg)
+  output_path <- file.path(dir, "R", "catch-routine-registration.R")
+  cat(transformed, file = output_path)
+
   message("> Added C++ unit testing infrastructure.")
   message("> Please ensure you have 'LinkingTo: testthat' in your DESCRIPTION.")
-  message("> Please ensure you have 'useDynLib(", pkg, ")' in your NAMESPACE.")
+  message("> Please ensure you have 'useDynLib(", pkg, ", .registration = TRUE)' in your NAMESPACE.")
 
 }
 

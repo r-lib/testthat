@@ -4,6 +4,7 @@
 ^cran-comments\.md$
 ^appveyor\.yml$
 ^revdep$
+^tools$
 ^.*\.o$
 ^\.httr-oauth$
 ^codecov\.yml$
