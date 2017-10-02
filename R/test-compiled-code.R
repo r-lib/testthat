@@ -14,15 +14,15 @@
 #' @export
 expect_cpp_tests_pass <- function(package) {
 
-  routine <- get_routine(package, "run_testthat_tests")
+  run_testthat_tests <- get_routine(package, "run_testthat_tests")
 
   output <- ""
   tests_passed <- TRUE
 
   tryCatch(
-    output <- capture_output_lines(tests_passed <- .Call(routine)),
+    output <- capture_output_lines(tests_passed <- .Call(run_testthat_tests)),
     error = function(e) {
-      warning(sprintf("failed to call test entrypoint '%s'", routine))
+      warning(sprintf("failed to call test entrypoint '%s'", run_testthat_tests))
     }
   )
 

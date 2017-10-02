@@ -9,7 +9,12 @@ starts_with <- function(string, prefix) {
 }
 
 console_width <- function() {
-  as.integer(Sys.getenv("RSTUDIO_CONSOLE_WIDTH", getOption("width", 60)))
+  rstudio <- Sys.getenv("RSTUDIO_CONSOLE_WIDTH")
+  if (identical(rstudio, "")) {
+    getOption("width", 80)
+  } else {
+    as.integer(rstudio)
+  }
 }
 
 is_directory <- function(x) file.info(x)$isdir
@@ -100,4 +105,9 @@ f_name <- function(x) {
 escape_regex <- function(x) {
   chars <- c("*", ".", "?", "^", "+", "$", "|", "(", ")", "[", "]", "{", "}", "\\")
   gsub(paste0("([\\", paste0(collapse = "\\", chars), "])"), "\\\\\\1", x, perl = TRUE)
+}
+
+# For R 3.1
+dir.exists <- function(paths) {
+  file.exists(paths) & file.info(paths)$isdir
 }
