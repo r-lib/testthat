@@ -27,17 +27,20 @@ test_env <- function() {
 #' @return the results as a "testthat_results" (list)
 #' @export
 test_dir <- function(path, filter = NULL, reporter = default_reporter(),
-                     env = test_env(), ..., encoding = "unknown", load_helpers = TRUE) {
+                     env = test_env(), ..., encoding = "unknown",
+                     load_helpers = TRUE, wrap = TRUE) {
   if (load_helpers) {
     source_test_helpers(path, env)
   }
   paths <- find_test_scripts(path, filter, ...)
 
-  test_files(paths, reporter = reporter, env = env, encoding = encoding)
+  test_files(
+    paths, reporter = reporter, env = env, encoding = encoding, wrap = wrap
+  )
 }
 
 test_files <- function(paths, reporter = default_reporter(), env = test_env(),
-                       encoding = "unknown") {
+                       encoding = "unknown", wrap = TRUE) {
   if (length(paths) == 0) {
     stop('No matching test file in dir')
   }
@@ -53,7 +56,7 @@ test_files <- function(paths, reporter = default_reporter(), env = test_env(),
       start_end_reporter = FALSE,
       load_helpers = FALSE,
       encoding = encoding,
-      wrap = TRUE
+      wrap = wrap
     )
   )
 

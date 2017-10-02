@@ -111,6 +111,8 @@
 
 * New JUnit reporter `JunitReporter`. (#481, @lbartnik)
 
+* Add `wrap` parameter to `test_dir` (#586, @brodieG)
+
 # testthat 1.0.2
 
 * Ensure `std::logic_error()` constructed with `std::string()`

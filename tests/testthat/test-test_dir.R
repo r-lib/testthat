@@ -33,3 +33,17 @@ test_that('filter_test_scripts() with tricky names', {
     files[1]
   )
 })
+
+test_that("test_dir and `wrap`", {
+  ## forced to test screen output because tests outside of `testthat` blocks are
+  ## not recorded in return value, even when `wrap=TRUE` (see #596")
+
+  w.wrap <- capture.output(
+    test_dir("test_dir", filter = "bare-expectations", wrap = TRUE)
+  )
+  ## With wrap should display two dots to screen
+
+  expect_true(sum(grepl("^Bare: \\.\\.", crayon::strip_style(w.wrap))) == 1L)
+
+  ## Note, we cannot test wrap = FALSE (see this file at 6bcc6d18cd for details)
+})
