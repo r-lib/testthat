@@ -32,8 +32,10 @@ test_that <- function(desc, code) {
 }
 
 test_code <- function(test, code, env = test_env(), skip_on_empty = TRUE) {
-  get_reporter()$start_test(context = get_reporter()$.context, test = test)
-  on.exit(get_reporter()$end_test(context = get_reporter()$.context, test = test))
+  if (!is.null(test)) {
+    get_reporter()$start_test(context = get_reporter()$.context, test = test)
+    on.exit(get_reporter()$end_test(context = get_reporter()$.context, test = test))
+  }
 
   ok <- TRUE
   register_expectation <- function(e) {
@@ -147,7 +149,7 @@ test_code <- function(test, code, env = test_env(), skip_on_empty = TRUE) {
   tryCatch(
     withCallingHandlers({
       eval(code, test_env)
-      if (!handled)
+      if (!handled && !is.null(test))
         skip_empty()
       },
       expectation = handle_expectation,

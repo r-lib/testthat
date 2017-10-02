@@ -11,19 +11,24 @@ NULL
 #' @family reporters
 LocationReporter <- R6::R6Class("LocationReporter", inherit = Reporter,
   public = list(
+    start_test = function(context, test) {
+      self$cat_line("Start test: ", test)
+    },
+
     add_result = function(context, test, result) {
       ref <- result$srcref
       if (is.null(ref)) {
         location <- "?#?:?"
       } else {
-        location <- paste0(attr(ref, "srcfile")$filename, "#", ref[1], ":1")
+        location <- paste0(basename(attr(ref, "srcfile")$filename), "#", ref[1], ":1")
       }
 
       status <- expectation_type(result)
-      self$cat_line(location, " [", status, "] ", test)
+      self$cat_line("  ", location, " [", status, "]")
     },
 
-    end_reporter = function() {
+    end_test = function(context, test) {
+      self$cat_line("End test: ", test)
       self$cat_line()
     }
   )

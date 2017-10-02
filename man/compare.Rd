@@ -14,7 +14,7 @@ compare(x, y, ...)
 \method{compare}{default}(x, y, ..., max_diffs = 9)
 
 \method{compare}{character}(x, y, check.attributes = TRUE, ...,
-  max_diffs = 5, max_lines = 5, width = getOption("width"))
+  max_diffs = 5, max_lines = 5, width = console_width())
 
 \method{compare}{numeric}(x, y, tolerance = .Machine$double.eps^0.5,
   check.attributes = TRUE, ..., max_diffs = 9)
