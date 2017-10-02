@@ -82,7 +82,6 @@ label <- function(x) {
   }
 }
 
-#' @useDynLib testthat find_label_
 find_label <- function(x) {
   .Call(find_label_, quote(x), environment())
 }

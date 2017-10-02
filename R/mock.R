@@ -101,7 +101,6 @@ is_base_pkg <- function(x) {
   x %in% rownames(installed.packages(priority = "base"))
 }
 
-#' @useDynLib testthat duplicate_
 mock <- function(name, env, new) {
   target_value <- get(name, envir = env, mode = "function")
   structure(list(
@@ -110,12 +109,10 @@ mock <- function(name, env, new) {
     new_value = new), class = "mock")
 }
 
-#' @useDynLib testthat reassign_function
 set_mock <- function(mock) {
   .Call(reassign_function, mock$name, mock$env, mock$target_value, mock$new_value)
 }
 
-#' @useDynLib testthat reassign_function
 reset_mock <- function(mock) {
   .Call(reassign_function, mock$name, mock$env, mock$target_value, mock$orig_value)
 }
