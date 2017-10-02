@@ -1,5 +1,7 @@
 # testthat 1.0.2.9000
 
+* New `skip_if()` makes it easy to skip a test when a condition is true (#571).
+
 * `test_examples()` now works with installed packages as well as source
   packages (@jimhester, #532).
 
