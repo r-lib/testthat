@@ -7,25 +7,10 @@ test_that("length computed correctly", {
   expect_success(expect_length(letters[1:5], 5))
 })
 
-test_that("uses S4 length method, if exists", {
-  # A has no length method defined
+test_that("uses S4 length method", {
   A <- setClass("ExpectLengthA", slots=c(x="numeric", y="numeric"))
-  # Default for S4 objects that don't inherit a length method: always length 1
-  expect_success(expect_length(A(x=1:5, y=3), 1))
-
-  # B does has a length method defined
-  B <- setClass("ExpectLengthB", slots=c(x="numeric"))
-  setMethod("length", "ExpectLengthB", function (x) 5L)
-  expect_success(expect_length(B(x=1:8), 5))
-
-  # C does not, but it inherits from something that does
-  C <- setClass("ExpectLengthC", contains="list")
-  expect_success(expect_length(C(), 0))
-  expect_success(expect_length(C(1:10), 10))
-
-  # D does not explicitly have one, but it inherits from B, which does
-  D <- setClass("ExpectLengthD", contains="ExpectLengthB")
-  expect_success(expect_length(D(x=1:8), 5))
+  setMethod("length", "ExpectLengthA", function (x) 5L)
+  expect_success(expect_length(A(x=1:9, y=3), 5))
 })
 
 test_that("returns input", {
