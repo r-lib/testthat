@@ -22,6 +22,8 @@ expectation <- function(type, message, srcref = NULL) {
     class = c(
       paste0("expectation_", type),
       "expectation",
+      # Make broken expectations catchable by try()
+      if (type %in% c("failure", "error")) "error",
       "condition"
     )
   )
@@ -69,13 +71,17 @@ label <- function(x) {
   } else {
     chr <- deparse(x)
     if (length(chr) > 1) {
-      chr <- paste(deparse(as.call(list(x[[1]], quote(...)))), collapse = "\n")
+      if (identical(x[[1]], quote(`function`))) {
+        x[[3]] <- quote(...)
+        chr <- paste(deparse(x), collapse = "\n")
+      } else {
+        chr <- paste(deparse(as.call(list(x[[1]], quote(...)))), collapse = "\n")
+      }
     }
     chr
   }
 }
 
-#' @useDynLib testthat find_label_
 find_label <- function(x) {
   .Call(find_label_, quote(x), environment())
 }

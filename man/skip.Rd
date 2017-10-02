@@ -3,6 +3,7 @@
 \name{skip}
 \alias{skip}
 \alias{skip_if_not}
+\alias{skip_if}
 \alias{skip_if_not_installed}
 \alias{skip_on_cran}
 \alias{skip_on_os}
@@ -14,6 +15,8 @@
 skip(message)
 
 skip_if_not(condition, message = deparse(substitute(condition)))
+
+skip_if(condition, message = deparse(substitute(condition)))
 
 skip_if_not_installed(pkg, minimum_version = NULL)
 
@@ -30,8 +33,8 @@ skip_on_bioc()
 \arguments{
 \item{message}{A message describing why the test was skipped.}
 
-\item{condition}{Boolean condition to check. If not \code{TRUE}, will
-skip the test.}
+\item{condition}{Boolean condition to check. \code{skip_if_not()} will skip if
+\code{FALSE}, \code{skip_if()} will skip if \code{TRUE}.}
 
 \item{pkg}{Name of package to check for}
 
@@ -44,6 +47,13 @@ skip the test.}
 This function allows you to skip a test if it's not currently available.
 This will produce an informative message, but will not cause the test
 suite to fail.
+}
+\details{
+\code{skip*} functions are intended for use within \code{\link[=test_that]{test_that()}}
+blocks.  All expectations following the \code{skip*} statement within the
+same \code{test_that} block will be skipped.  Test summaries that report skip
+counts are reporting how many \code{test_that} blocks triggered a \code{skip*}
+statement, not how many expectations were skipped.
 }
 \section{Helpers}{
 
@@ -63,12 +73,20 @@ environment variable set by devtools.
 \code{BBS_HOME} environment variable.
 
 \code{skip_if_not_installed()} skips a tests if a package is not installed
-or cannot be loaded
-(useful for suggested packages).
-It loads the package as a side effect, because the package is likely to be
-used anyway.
+or cannot be loaded (useful for suggested packages).  It loads the package as
+a side effect, because the package is likely to be used anyway.
 }
 
 \examples{
 if (FALSE) skip("No internet connection")
+
+## The following are only meaningful when put in test files and
+## run with `test_file`, `test_dir`, `test_check`, etc.
+
+test_that("skip example", {
+  expect_equal(1, 1L)    # this expectation runs
+  skip('skip')
+  expect_equal(1, 2)     # this one skipped
+  expect_equal(1, 3)     # this one is also skipped
+})
 }

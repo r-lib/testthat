@@ -4,6 +4,12 @@
 #' This will produce an informative message, but will not cause the test
 #' suite to fail.
 #'
+#' `skip*` functions are intended for use within [test_that()]
+#' blocks.  All expectations following the \code{skip*} statement within the
+#' same `test_that` block will be skipped.  Test summaries that report skip
+#' counts are reporting how many `test_that` blocks triggered a `skip*`
+#' statement, not how many expectations were skipped.
+#'
 #' @section Helpers:
 #' `skip_if_not()` works like [stopifnot()], generating
 #' a message automatically based on the first argument.
@@ -21,15 +27,23 @@
 #' `BBS_HOME` environment variable.
 #'
 #' `skip_if_not_installed()` skips a tests if a package is not installed
-#' or cannot be loaded
-#' (useful for suggested packages).
-#' It loads the package as a side effect, because the package is likely to be
-#' used anyway.
+#' or cannot be loaded (useful for suggested packages).  It loads the package as
+#' a side effect, because the package is likely to be used anyway.
 #'
 #' @param message A message describing why the test was skipped.
 #' @export
 #' @examples
 #' if (FALSE) skip("No internet connection")
+#'
+#' ## The following are only meaningful when put in test files and
+#' ## run with `test_file`, `test_dir`, `test_check`, etc.
+#'
+#' test_that("skip example", {
+#'   expect_equal(1, 1L)    # this expectation runs
+#'   skip('skip')
+#'   expect_equal(1, 2)     # this one skipped
+#'   expect_equal(1, 3)     # this one is also skipped
+#' })
 skip <- function(message) {
   cond <- structure(list(message = message), class = c("skip", "condition"))
   stop(cond)
@@ -46,10 +60,18 @@ skip_empty <- function() {
 
 #' @export
 #' @rdname skip
-#' @param condition Boolean condition to check. If not `TRUE`, will
-#'   skip the test.
+#' @param condition Boolean condition to check. `skip_if_not()` will skip if
+#'   `FALSE`, `skip_if()` will skip if `TRUE`.
 skip_if_not <- function(condition, message = deparse(substitute(condition))) {
   if (!isTRUE(condition)) {
+    skip(message)
+  }
+}
+
+#' @export
+#' @rdname skip
+skip_if <- function(condition, message = deparse(substitute(condition))) {
+  if (isTRUE(condition)) {
     skip(message)
   }
 }

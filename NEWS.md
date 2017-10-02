@@ -1,5 +1,10 @@
 # testthat 1.0.2.9000
 
+* New `skip_if()` makes it easy to skip a test when a condition is true (#571).
+
+* `test_examples()` now works with installed packages as well as source
+  packages (@jimhester, #532).
+
 * Improved behavior of the `SummaryReporter` when the maximum number of errors
   reported is reached.
 
@@ -111,6 +116,10 @@
 * Mirror `hash` parameter in `auto_test()` and `auto_test_package()` in order 
   to enable switching to faster, time-stamp-based modification detection 
   (#598, @katrinleinweber)
+
+* Clarified `skip` semantics in documentation (@brodieG)
+
+* Extend `expect_length()` to work with any object that has a `length` method (#564, @nealrichardson)
 
 # testthat 1.0.2
 

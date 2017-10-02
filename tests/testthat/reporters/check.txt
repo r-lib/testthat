@@ -27,29 +27,29 @@ stop
 3: h() at reporters/tests.R:33
 4: stop("!") at reporters/tests.R:34
 
-7. Error: Recursion:1 (@tests.R#43) --------------------------------------------
-evaluation nested too deeply: infinite recursion / options(expressions=)?
-1: f() at reporters/tests.R:43
-2: f() at reporters/tests.R:42
-3: f() at reporters/tests.R:42
-4: f() at reporters/tests.R:42
-5: f() at reporters/tests.R:42
-6: f() at reporters/tests.R:42
-7: f() at reporters/tests.R:42
-8: f() at reporters/tests.R:42
-9: f() at reporters/tests.R:42
-10: f() at reporters/tests.R:42
+7. Error: Recursion:1 (@tests.R#45) --------------------------------------------
+This is deep
+1: f(25) at reporters/tests.R:45
+2: f(x - 1) at reporters/tests.R:43
+3: f(x - 1) at reporters/tests.R:43
+4: f(x - 1) at reporters/tests.R:43
+5: f(x - 1) at reporters/tests.R:43
+6: f(x - 1) at reporters/tests.R:43
+7: f(x - 1) at reporters/tests.R:43
+8: f(x - 1) at reporters/tests.R:43
+9: f(x - 1) at reporters/tests.R:43
+10: f(x - 1) at reporters/tests.R:43
 ...
-170: f() at reporters/tests.R:42
-171: f() at reporters/tests.R:42
-172: f() at reporters/tests.R:42
-173: f() at reporters/tests.R:42
-174: f() at reporters/tests.R:42
-175: f() at reporters/tests.R:42
-176: f() at reporters/tests.R:42
-177: f() at reporters/tests.R:42
-178: f() at reporters/tests.R:42
-179: f() at reporters/tests.R:42
+18: f(x - 1) at reporters/tests.R:43
+19: f(x - 1) at reporters/tests.R:43
+20: f(x - 1) at reporters/tests.R:43
+21: f(x - 1) at reporters/tests.R:43
+22: f(x - 1) at reporters/tests.R:43
+23: f(x - 1) at reporters/tests.R:43
+24: f(x - 1) at reporters/tests.R:43
+25: f(x - 1) at reporters/tests.R:43
+26: f(x - 1) at reporters/tests.R:43
+27: stop("This is deep") at reporters/tests.R:43
 
 testthat results ================================================================
 OK: 7 SKIPPED: 3 FAILED: 7
@@ -59,5 +59,5 @@ OK: 7 SKIPPED: 3 FAILED: 7
 4. Failure: Failure:loop (@tests.R#20) 
 5. Error: Error:1 (@tests.R#28) 
 6. Error: Error:3 (@tests.R#36) 
-7. Error: Recursion:1 (@tests.R#43) 
+7. Error: Recursion:1 (@tests.R#45) 
 

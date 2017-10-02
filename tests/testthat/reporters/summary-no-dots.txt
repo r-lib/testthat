@@ -6,18 +6,18 @@ Warnings: WWW
 Output: 
 
 Skipped ------------------------------------------------------------------------
-1. Skip:1 (@tests.R#49) - skip
+1. Skip:1 (@tests.R#51) - skip
 
-2. Skip:2 (@tests.R#54) - skip
+2. Skip:2 (@tests.R#56) - skip
 
-3. Skip:3 (@tests.R#57) - Empty test
+3. Skip:3 (@tests.R#59) - Empty test
 
 Warnings -----------------------------------------------------------------------
-1. Warning:1 (@tests.R#63) - abc
+1. Warning:1 (@tests.R#65) - abc
 
-2. Warning:2 (@tests.R#67) - def
+2. Warning:2 (@tests.R#69) - def
 
-3. Warning:2 (@tests.R#68) - ghi
+3. Warning:2 (@tests.R#70) - ghi
 
 Failed -------------------------------------------------------------------------
 1. Failure: Failure:1 (@tests.R#8) ---------------------------------------------
@@ -49,28 +49,28 @@ stop
 3: h() at reporters/tests.R:33
 4: stop("!") at reporters/tests.R:34
 
-7. Error: Recursion:1 (@tests.R#43) --------------------------------------------
-evaluation nested too deeply: infinite recursion / options(expressions=)?
-1: f() at reporters/tests.R:43
-2: f() at reporters/tests.R:42
-3: f() at reporters/tests.R:42
-4: f() at reporters/tests.R:42
-5: f() at reporters/tests.R:42
-6: f() at reporters/tests.R:42
-7: f() at reporters/tests.R:42
-8: f() at reporters/tests.R:42
-9: f() at reporters/tests.R:42
-10: f() at reporters/tests.R:42
+7. Error: Recursion:1 (@tests.R#45) --------------------------------------------
+This is deep
+1: f(25) at reporters/tests.R:45
+2: f(x - 1) at reporters/tests.R:43
+3: f(x - 1) at reporters/tests.R:43
+4: f(x - 1) at reporters/tests.R:43
+5: f(x - 1) at reporters/tests.R:43
+6: f(x - 1) at reporters/tests.R:43
+7: f(x - 1) at reporters/tests.R:43
+8: f(x - 1) at reporters/tests.R:43
+9: f(x - 1) at reporters/tests.R:43
+10: f(x - 1) at reporters/tests.R:43
 ...
-170: f() at reporters/tests.R:42
-171: f() at reporters/tests.R:42
-172: f() at reporters/tests.R:42
-173: f() at reporters/tests.R:42
-174: f() at reporters/tests.R:42
-175: f() at reporters/tests.R:42
-176: f() at reporters/tests.R:42
-177: f() at reporters/tests.R:42
-178: f() at reporters/tests.R:42
-179: f() at reporters/tests.R:42
+18: f(x - 1) at reporters/tests.R:43
+19: f(x - 1) at reporters/tests.R:43
+20: f(x - 1) at reporters/tests.R:43
+21: f(x - 1) at reporters/tests.R:43
+22: f(x - 1) at reporters/tests.R:43
+23: f(x - 1) at reporters/tests.R:43
+24: f(x - 1) at reporters/tests.R:43
+25: f(x - 1) at reporters/tests.R:43
+26: f(x - 1) at reporters/tests.R:43
+27: stop("This is deep") at reporters/tests.R:43
 
 DONE ===========================================================================

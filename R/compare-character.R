@@ -26,7 +26,7 @@
 #'
 compare.character <- function(x, y, check.attributes = TRUE, ...,
                               max_diffs = 5, max_lines = 5,
-                              width = getOption("width")) {
+                              width = console_width()) {
 
   if (identical(x, y)) {
     return(no_difference())
@@ -78,7 +78,7 @@ mismatch_character <- function(x, y, diff = !vector_equal(x, y)) {
 format.mismatch_character <- function(x, ...,
                                       max_diffs = 5,
                                       max_lines = 5,
-                                      width = getOption("width")) {
+                                      width = console_width()) {
   width <- width - 6 # allocate space for labels
   n_show <- seq_len(min(x$n_diff, max_diffs))
 

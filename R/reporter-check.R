@@ -32,7 +32,7 @@ CheckReporter <- R6::R6Class("CheckReporter", inherit = Reporter,
     },
 
     end_reporter = function() {
-      rule <- paste0(rep("=", getOption("width") - 16), collapse = "")
+      rule <- paste0(rep("=", console_width() - 16), collapse = "")
       self$cat_line("testthat results ", rule)
       self$cat_line(
         "OK: ", self$n_ok, " ",
@@ -68,7 +68,7 @@ skip_summary <- function(x, label) {
   )
 }
 
-failure_summary <- function(x, label, width = getOption("width")) {
+failure_summary <- function(x, label, width = console_width()) {
   header <- paste0(label, ". ", failure_header(x))
   linewidth <- ifelse(nchar(header) > width, 0, width - nchar(header))
   line <- paste(rep("-", linewidth), collapse = "")

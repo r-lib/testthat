@@ -3,16 +3,21 @@
 \name{test_examples}
 \alias{test_examples}
 \alias{test_example}
+\alias{test_rd}
 \title{Test package examples}
 \usage{
-test_examples(path = "../../man")
+test_examples(path = "../..")
 
 test_example(path)
+
+test_rd(rd)
 }
 \arguments{
 \item{path}{For \code{test_examples()}, path to directory containing Rd files.
 For \code{test_example()}, path to a single Rd file. Remember the working
 directory for tests is \code{tests/testthat}.}
+
+\item{rd}{A parsed Rd object, obtained from \code{\link[tools:Rd_db]{tools::Rd_db()}} or otherwise.}
 }
 \description{
 These helper functions make it easier to test the examples in a package.

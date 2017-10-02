@@ -28,32 +28,32 @@ Start test: Error:3
 End test: Error:3
 
 Start test: Recursion:1
-  tests.R#43:1 [error]
+  tests.R#45:1 [error]
 End test: Recursion:1
 
 Start test: Skip:1
-  tests.R#49:1 [skip]
+  tests.R#51:1 [skip]
 End test: Skip:1
 
 Start test: Skip:2
-  tests.R#54:1 [skip]
+  tests.R#56:1 [skip]
 End test: Skip:2
 
 Start test: Skip:3
-  tests.R#57:1 [skip]
+  tests.R#59:1 [skip]
 End test: Skip:3
 
 Start test: Warning:1
-  tests.R#63:1 [warning]
+  tests.R#65:1 [warning]
 End test: Warning:1
 
 Start test: Warning:2
-  tests.R#67:1 [warning]
-  tests.R#68:1 [warning]
+  tests.R#69:1 [warning]
+  tests.R#70:1 [warning]
 End test: Warning:2
 
 Start test: Output:1
-  tests.R#74:1 [success]
-  tests.R#74:1 [success]
+  tests.R#76:1 [success]
+  tests.R#76:1 [success]
 End test: Output:1
 

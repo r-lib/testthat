@@ -31,16 +31,13 @@ test_that("errors captured even when looking for warnings", {
   expect_true(expectation_error(reporter$expectations()[[1L]]))
 })
 
-test_that("multiple failures captured even when looking for errors", {
+test_that("failures are errors", {
   f <- function() {
     expect_true(FALSE)
     expect_false(TRUE)
   }
 
-  reporter <- with_reporter("silent", {
-    test_that("", expect_error(f(), NA))
-  })
-  expect_equal(length(reporter$expectations()), 3)
+  expect_error(f(), "isn't true")
 })
 
 test_that("infinite recursion is captured", {
