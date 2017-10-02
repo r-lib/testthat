@@ -26,7 +26,7 @@ name after it has been stripped of \code{"test-"} and \code{".R"}.}
 \item{load_helpers}{Source helper files before running the tests?}
 }
 \value{
-the results as a "testthat_results" (list)
+The results of the reporter function on all test results.
 }
 \description{
 Test files start with \code{test} and are executed in alphabetical order
