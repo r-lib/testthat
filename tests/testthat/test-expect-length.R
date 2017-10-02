@@ -1,10 +1,5 @@
 context("expect_length")
 
-test_that("fails if not a vector or object with defined length method", {
-  expect_failure(expect_length(environment(), 1),
-    "does not have a defined length")
-})
-
 test_that("length computed correctly", {
   expect_success(expect_length(1, 1))
   expect_failure(expect_length(1, 2), "has length 1, not length 2.")
@@ -14,11 +9,9 @@ test_that("length computed correctly", {
 
 test_that("uses S4 length method, if exists", {
   # A has no length method defined
-  A <- setClass("ExpectLengthA", slots=c(x="numeric"))
-  expect_failure(expect_length(A(x=1:5), 5),
-    "does not have a defined length")
-  # Even though 'length' does not fail on an A
-  expect_identical(length(A(x=1:5)), 1L)
+  A <- setClass("ExpectLengthA", slots=c(x="numeric", y="numeric"))
+  # Default for S4 objects that don't inherit a length method: always length 1
+  expect_success(expect_length(A(x=1:5, y=3), 1))
 
   # B does has a length method defined
   B <- setClass("ExpectLengthB", slots=c(x="numeric"))
