@@ -113,6 +113,8 @@
 
 * Clarified `skip` semantics in documentation (@brodieG)
 
+* Extend `expect_length()` to work with any object that has a `length` method (#564, @nealrichardson)
+
 # testthat 1.0.2
 
 * Ensure `std::logic_error()` constructed with `std::string()`
