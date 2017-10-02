@@ -48,9 +48,9 @@ suite to fail.
 \details{
 \code{skip*} functions are intended for use within \code{\link[=test_that]{test_that()}}
 blocks.  All expectations following the \code{skip*} statement within the
-same \code{test_that} block will be skipped.  Note that test summaries
-that report skip counts are reporting how many \code{test_that} blocks
-triggered a \code{skip*} statement, not how many expectations were skipped.
+same \code{test_that} block will be skipped.  Test summaries that report skip
+counts are reporting how many \code{test_that} blocks triggered a \code{skip*}
+statement, not how many expectations were skipped.
 }
 \section{Helpers}{
 
