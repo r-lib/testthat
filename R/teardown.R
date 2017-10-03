@@ -1,11 +1,12 @@
 teardown_env <- new.env(parent = emptyenv())
 teardown_env$queue <- list()
 
-#' Run code on teardown
+#' Run code on setup/teardown
 #'
-#' Code in a teardown block is guaranteed to be run upon completion of a test
-#' file. Multiple calls to `teardown` will be executed in the order they
-#' were created.
+#' Code in a `setup()` block is run immediately in a clean environment.
+#' Code in a `teardown()` block is run upon completion of a test file,
+#' even if it exits with an error. Multiple calls to `teardown()` will be
+#' executed in the order they were created.
 #'
 #' @param code Code to evaluate
 #' @param env Environment in which code will be evaluted. For expert
@@ -13,17 +14,24 @@ teardown_env$queue <- list()
 #' @export
 #' @examples
 #' \dontrun{
-#' teardown{
-#'   tmp <- tempfile()
-#'   writeLines(tmp, "some test data")
-#'   teardown(unlink(tmp))
-#' }
+#'
+#' tmp <- tempfile()
+#' setup(writeLines(tmp, "some test data"))
+#' teardown(unlink(tmp))
+#'
 #' }
 teardown <- function(code, env = parent.frame()) {
-  fun <- eval(call("function", pairlist(), substitute(code)), env)
+  fun <- new_function(list(), enexpr(code), env = env)
   teardown_env$queue <- append(teardown_env$queue, fun)
 
   invisible()
+}
+
+#' @export
+#' @rdname teardown
+setup <- function(code, env = parent.frame()) {
+  out <- eval_tidy(enquo(code), env = env)
+  invisible(out)
 }
 
 teardown_reset <- function() {

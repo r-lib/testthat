@@ -2,9 +2,12 @@
 % Please edit documentation in R/teardown.R
 \name{teardown}
 \alias{teardown}
-\title{Run code on teardown}
+\alias{setup}
+\title{Run code on setup/teardown}
 \usage{
 teardown(code, env = parent.frame())
+
+setup(code, env = parent.frame())
 }
 \arguments{
 \item{code}{Code to evaluate}
@@ -13,16 +16,17 @@ teardown(code, env = parent.frame())
 use only.}
 }
 \description{
-Code in a teardown block is guaranteed to be run upon completion of a test
-file. Multiple calls to \code{teardown} will be executed in the order they
-were created.
+Code in a \code{setup()} block is run immediately in a clean environment.
+Code in a \code{teardown()} block is run upon completion of a test file,
+even if it exits with an error. Multiple calls to \code{teardown()} will be
+executed in the order they were created.
 }
 \examples{
 \dontrun{
-teardown{
-  tmp <- tempfile()
-  writeLines(tmp, "some test data")
-  teardown(unlink(tmp))
-}
+
+tmp <- tempfile()
+setup(writeLines(tmp, "some test data"))
+teardown(unlink(tmp))
+
 }
 }
