@@ -1,5 +1,7 @@
 # testthat 1.0.2.9000
 
+* `with_mock()` disallows mocking of functions in base packages, because this doesn't work with the current development version of R (#553).
+
 * `test_examples()` now works with installed packages as well as source
   packages (@jimhester, #532).
 
