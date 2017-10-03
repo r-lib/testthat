@@ -27,6 +27,9 @@ test_that("... passed on to grepl", {
   expect_success(expect_output(print("X"), "x", ignore.case = TRUE))
 })
 
+test_that("returns first argument", {
+  expect_equal(expect_output(1, NA), 1)
+})
 
 # expect_output_file ------------------------------------------------------
 

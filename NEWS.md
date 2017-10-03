@@ -1,5 +1,9 @@
 # testthat 1.0.2.9000
 
+* Output expectations (`expect_output()`, `expect_message()`, 
+  `expect_warning()`, and `expect_silent()`) all invisibly return the first
+  argument to be consistent with the other expectations (#615).
+
 * The `encoding` argument to `test_file()`, `source_file()`, and `test_dir()` 
   has been deprecated. All files are now read and written as UTF-8 (#510, #605).
 

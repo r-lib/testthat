@@ -26,3 +26,7 @@ test_that("regexp = string matches _any_ message", {
 test_that("... passed on to grepl", {
   expect_success(expect_message(message("X"), "x", ignore.case = TRUE))
 })
+
+test_that("returns first argument", {
+  expect_equal(expect_message(1, NA), 1)
+})

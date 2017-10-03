@@ -65,6 +65,10 @@ a class name. This is useful for "classed" conditions.}
 \item{all}{For messages and warnings, do all need to match the \code{regexp}
 (TRUE), or does only one need to match (FALSE)}
 }
+\value{
+All expectations apart from \code{expect_error()} invisibly return the
+first argument. \code{expect_error()} always invisibly returns \code{NULL}.
+}
 \description{
 Use \code{expect_output()}, \code{expect_message()}, \code{expect_warning()},
 or \code{expect_error()} to check for specific outputs. Use

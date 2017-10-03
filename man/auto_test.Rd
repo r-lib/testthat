@@ -16,7 +16,7 @@ auto_test(code_path, test_path, reporter = default_reporter(),
 
 \item{env}{environment in which to execute test suite.}
 
-\item{hash}{Passed on to \code{\link[=watch]{watch()}}.  When FALSE, uses less accurate
+\item{hash}{Passed on to \code{\link[=watch]{watch()}}. When FALSE, uses less accurate
 modification time stamps, but those are faster for large files.}
 }
 \description{
