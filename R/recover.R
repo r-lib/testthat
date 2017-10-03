@@ -27,13 +27,17 @@ recover2 <- function(start_frame = 1L, end_frame = sys.nframe())
 
   calls <- utils::limitedLabels(calls[start_frame:from])
   repeat {
-    which <- utils::menu(calls, title = "\nEnter a frame number, or 0 to exit  ")
+    which <- show_menu(calls, "\nEnter a frame number, or 0 to exit  ")
     if (which) {
       frame <- sys.frame(start_frame - 2 + which)
       browse_frame(frame, skip = 7 - which)
     }
     else break
   }
+}
+
+show_menu <- function(choices, title = NULL) {
+  utils::menu(choices, title = title)
 }
 
 browse_frame <- function(frame, skip) {

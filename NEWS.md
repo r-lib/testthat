@@ -1,5 +1,7 @@
 # testthat 1.0.2.9000
 
+* `with_mock()` disallows mocking of functions in base packages, because this doesn't work with the current development version of R (#553).
+
 * `expect_reference()` checks if two names point to the same object (#622).
 
 * Output expectations (`expect_output()`, `expect_message()`, 

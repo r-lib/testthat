@@ -57,12 +57,12 @@ test_that("reporters produce consistent output", {
   }
 
   with_mock(
-    `utils::menu` = function(choices, graphics = FALSE, title = NULL) {
+    show_menu = function(choices, title = NULL) {
       cat(paste0(format(seq_along(choices)), ": ", choices, sep = "\n"), "\n",
           sep = "")
       0L
     },
-    `base::sink.number` = function() 0L,
+    sink_number = function() 0L,
     save_report("debug")
   )
   save_report("check", error_regexp = NULL)
