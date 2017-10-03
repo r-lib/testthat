@@ -101,7 +101,7 @@ extract_mocks <- function(new_values, .env, eval_env = parent.frame()) {
 }
 
 is_base_pkg <- function(x) {
-  x %in% rownames(installed.packages(priority = "base"))
+  x %in% rownames(utils::installed.packages(priority = "base"))
 }
 
 mock <- function(name, env, new) {
