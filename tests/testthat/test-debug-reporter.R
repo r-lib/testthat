@@ -10,7 +10,7 @@ get_frame_from_debug_reporter <- function(choice, fun, envir = parent.frame()) {
   test_debug_reporter_parent_frame <- NULL
 
   with_mock(
-    `utils::menu` = function(choices, graphics = FALSE, title = NULL) {
+    show_menu = function(choices, title = NULL) {
       #if (choice > 0) print(choices)
       my_choice <- choice
       choice <<- 0L
@@ -19,7 +19,7 @@ get_frame_from_debug_reporter <- function(choice, fun, envir = parent.frame()) {
     browse_frame = function(frame, skip) {
       test_debug_reporter_parent_frame <<- frame
     },
-    `base::sink.number` = function() 0L,
+    sink_number = function() 0L,
     with_reporter(
       "debug",
       test_that("debug_reporter_test", fun())

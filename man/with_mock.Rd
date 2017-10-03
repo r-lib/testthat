@@ -28,25 +28,25 @@ This works by using some C code to temporarily modify the mocked function \emph{
 On exit (regular or error), all functions are restored to their previous state.
 This is somewhat abusive of R's internals, and is still experimental, so use with care.
 
-Primitives (such as \code{\link[base:interactive]{base::interactive()}}) cannot be mocked, but this can be
-worked around easily by defining a wrapper function with the same name.
+Functions in base packages cannot be mocked, but this can be
+worked around easily by defining a wrapper function.
 }
 \examples{
+add_one <- function(x) x + 1
+expect_equal(add_one(2), 3)
 with_mock(
-  all.equal = function(x, y, ...) TRUE,
-  expect_equal(2 * 3, 4),
-  .env = "base"
+  add_one = function(x) x - 1,
+  expect_equal(add_one(2), 1)
 )
-with_mock(
-  `base::identical` = function(x, y, ...) TRUE,
-  `base::all.equal` = function(x, y, ...) TRUE,
-  expect_equal(x <- 3 * 3, 6),
-  expect_identical(x + 4, 9)
+square_add_one <- function(x) add_one(x) ^ 2
+expect_equal(square_add_one(2), 9)
+expect_equal(
+  with_mock(
+    add_one = function(x) x - 1,
+    square_add_one(2)
+  ),
+  1
 )
-\dontrun{
-expect_equal(3, 5)
-expect_identical(3, 5)
-}
 }
 \references{
 Suraj Gupta (2012): \href{http://obeautifulcode.com/R/How-R-Searches-And-Finds-Stuff}{How R Searches And Finds Stuff}
