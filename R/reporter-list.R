@@ -78,6 +78,15 @@ all_passed <- function(res) {
   sum(df$failed) == 0 && all(!df$error)
 }
 
+any_warnings <- function(res) {
+  if (length(res) == 0)
+    return(FALSE)
+
+  df <- as.data.frame.testthat_results(res)
+  any(df$warning > 0)
+}
+
+
 #' @export
 as.data.frame.testthat_results <- function(x, ...) {
   if (length(x) == 0)

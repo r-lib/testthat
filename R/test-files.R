@@ -22,12 +22,22 @@ test_env <- function() {
 #'   regular expression will be executed.  Matching will take on the file
 #'   name after it has been stripped of `"test-"` and `".R"`.
 #' @param ... Additional arguments passed to [grepl()] to control filtering.
+#' @param stop_on_failure If `TRUE`, throw an error if any tests fail.
+#' @param stop_on_warning If `TRUE`, throw an error if any tests generate
+#'   warnings.
 #' @inheritParams test_file
 #'
 #' @return The results of the reporter function on all test results.
 #' @export
-test_dir <- function(path, filter = NULL, reporter = default_reporter(),
-                     env = test_env(), ..., encoding = "unknown", load_helpers = TRUE) {
+test_dir <- function(path,
+                     filter = NULL,
+                     reporter = default_reporter(),
+                     env = test_env(), ...,
+                     encoding = "unknown",
+                     load_helpers = TRUE,
+                     stop_on_failure = FALSE,
+                     stop_on_warning = FALSE
+                     ) {
   if (!missing(encoding) && !identical(encoding, "UTF-8")) {
     warning("`encoding` is deprecated; all files now assumed to be UTF-8", call. = FALSE)
   }
@@ -37,10 +47,21 @@ test_dir <- function(path, filter = NULL, reporter = default_reporter(),
   }
   paths <- find_test_scripts(path, filter, ...)
 
-  test_files(paths, reporter = reporter, env = env)
+  test_files(
+    paths,
+    reporter = reporter,
+    env = env,
+    stop_on_failure = stop_on_failure,
+    stop_on_warning = stop_on_warning
+  )
 }
 
-test_files <- function(paths, reporter = default_reporter(), env = test_env()) {
+test_files <- function(paths,
+                       reporter = default_reporter(),
+                       env = test_env(),
+                       stop_on_failure = FALSE,
+                       stop_on_warning = FALSE
+                       ) {
   if (length(paths) == 0) {
     stop('No matching test file in dir')
   }
@@ -60,8 +81,17 @@ test_files <- function(paths, reporter = default_reporter(), env = test_env()) {
   )
 
   results <- unlist(results, recursive = FALSE)
+  results <- testthat_results(results)
 
-  invisible(testthat_results(results))
+  if (stop_on_failure && !all_passed(results)) {
+    stop("Test failures", call. = FALSE)
+  }
+
+  if (stop_on_warning && any_warnings(results)) {
+    stop("Tests generated warnings", call. = FALSE)
+  }
+
+  invisible(results)
 }
 
 # Filter File List for Tests, used by find_test_scripts

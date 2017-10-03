@@ -2,6 +2,10 @@
 
 * `with_mock()` disallows mocking of functions in base packages, because this doesn't work with the current development version of R (#553).
 
+* `test_dir()`, `test_package()`, and `test_check()` gain `stop_on_failure` 
+  and `stop_on_waring` arguments that control whether or not an error 
+  is signalled if any tests fail or generate warnings (#609, #619).
+
 * `expect_reference()` checks if two names point to the same object (#622).
 
 * Output expectations (`expect_output()`, `expect_message()`, 

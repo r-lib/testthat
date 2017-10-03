@@ -5,10 +5,12 @@
 \alias{test_check}
 \title{Run all tests in an installed package.}
 \usage{
-test_package(package, filter = NULL, reporter = default_reporter(), ...)
+test_package(package, filter = NULL, reporter = default_reporter(), ...,
+  stop_on_failure = TRUE, stop_on_warning = FALSE)
 
 test_check(package, filter = NULL,
-  reporter = getOption("testthat.default_check_reporter", "check"), ...)
+  reporter = getOption("testthat.default_check_reporter", "check"), ...,
+  stop_on_failure = TRUE, stop_on_warning = FALSE)
 }
 \arguments{
 \item{package}{package name}
@@ -20,6 +22,11 @@ name after it has been stripped of \code{"test-"} and \code{".R"}.}
 \item{reporter}{reporter to use}
 
 \item{...}{Additional arguments passed to \code{\link[=grepl]{grepl()}} to control filtering.}
+
+\item{stop_on_failure}{If \code{TRUE}, throw an error if any tests fail.}
+
+\item{stop_on_warning}{If \code{TRUE}, throw an error if any tests generate
+warnings.}
 }
 \value{
 the results as a "testthat_results" (list)
