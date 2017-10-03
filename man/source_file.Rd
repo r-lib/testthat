@@ -4,6 +4,8 @@
 \alias{source_file}
 \alias{source_dir}
 \alias{source_test_helpers}
+\alias{source_test_setup}
+\alias{source_test_teardown}
 \title{Source a file, directory, or all helpers.}
 \usage{
 source_file(path, env = test_env(), chdir = TRUE, encoding = "unknown",
@@ -13,6 +15,10 @@ source_dir(path, pattern = "\\\\.[rR]$", env = test_env(), chdir = TRUE,
   wrap = TRUE)
 
 source_test_helpers(path = "tests/testthat", env = test_env())
+
+source_test_setup(path = "tests/testthat", env = test_env())
+
+source_test_teardown(path = "tests/testthat", env = test_env())
 }
 \arguments{
 \item{path}{Path to tests}

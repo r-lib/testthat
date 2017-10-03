@@ -51,3 +51,15 @@ source_dir <- function(path, pattern = "\\.[rR]$", env = test_env(),
 source_test_helpers <- function(path = "tests/testthat", env = test_env()) {
   source_dir(path, "^helper.*\\.[rR]$", env = env, wrap = FALSE)
 }
+
+#' @rdname source_file
+#' @export
+source_test_setup <- function(path = "tests/testthat", env = test_env()) {
+  source_dir(path, "^setup.*\\.[rR]$", env = env, wrap = FALSE)
+}
+
+#' @rdname source_file
+#' @export
+source_test_teardown <- function(path = "tests/testthat", env = test_env()) {
+  source_dir(path, "^teardown.*\\.[rR]$", env = env, wrap = FALSE)
+}

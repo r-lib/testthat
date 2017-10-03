@@ -13,9 +13,14 @@ test_env <- function() {
 
 #' Run all of the tests in a directory.
 #'
-#' Test files start with `test` and are executed in alphabetical order
-#' (but they shouldn't have dependencies). Helper files start with
-#' `helper` and loaded before any tests are run.
+#' There are four classes of `.R` files that have special behaviour:
+#' * Test files start with `test` and are executed in alphabetical order.
+#' * Helper files start with `helper` and are executed before tests are
+#'   run and from `devtools::load_all()`.
+#' * Setup files start with `setup` and are executed before tests, but not
+#'   during `devtools::load_all()`.
+#' * Teardown files start with `teardown` and are executed after the tests
+#'   are run.
 #'
 #' @param path path to tests
 #' @param filter If not `NULL`, only tests with file names matching this
@@ -45,6 +50,9 @@ test_dir <- function(path,
   if (load_helpers) {
     source_test_helpers(path, env)
   }
+  source_test_setup(path, env)
+  on.exit(source_test_teardown(path, env), add = TRUE)
+
   paths <- find_test_scripts(path, filter, ...)
 
   test_files(

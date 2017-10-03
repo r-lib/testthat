@@ -1,5 +1,10 @@
 # testthat 1.0.2.9000
 
+* Two new prefixes are recognised in the `test/` directory. Files starting
+  with `setup` are run before tests (but unlike `helpers` are not run in
+  `devtools::load_all()`). Files starting with `teardown` are run after all
+  tests are completed (#589).
+
 * `with_mock()` disallows mocking of functions in base packages, because this doesn't work with the current development version of R (#553).
 
 * `test_dir()`, `test_package()`, and `test_check()` gain `stop_on_failure` 

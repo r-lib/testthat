@@ -35,7 +35,14 @@ warnings.}
 The results of the reporter function on all test results.
 }
 \description{
-Test files start with \code{test} and are executed in alphabetical order
-(but they shouldn't have dependencies). Helper files start with
-\code{helper} and loaded before any tests are run.
+There are four classes of \code{.R} files that have special behaviour:
+\itemize{
+\item Test files start with \code{test} and are executed in alphabetical order.
+\item Helper files start with \code{helper} and are executed before tests are
+run and from \code{devtools::load_all()}.
+\item Setup files start with \code{setup} and are executed before tests, but not
+during \code{devtools::load_all()}.
+\item Teardown files start with \code{teardown} and are executed after the tests
+are run.
+}
 }
