@@ -8,7 +8,7 @@
 #' @param pattern Regular expression used to filter files
 #' @param env Environment in which to evaluate code.
 #' @param chdir Change working directory to `dirname(path)`?
-#' @param encoding File encoding, default: "unknown"
+#' @param encoding Deprecated
 #' @param wrap Add a [test_that()] call around the code?
 #' @export
 source_file <- function(path, env = test_env(), chdir = TRUE,
@@ -16,7 +16,11 @@ source_file <- function(path, env = test_env(), chdir = TRUE,
   stopifnot(file.exists(path))
   stopifnot(is.environment(env))
 
-  lines <- read_lines_with_encoding(path, encoding)
+  if (!missing(encoding)) {
+    warning("`encoding` is deprecated; all files now assumed to be UTF-8", call. = FALSE)
+  }
+
+  lines <- read_lines(path)
   srcfile <- srcfilecopy(path, lines, file.info(path)[1, "mtime"], isFile = TRUE)
   exprs <- parse(text = lines, n = -1, srcfile = srcfile)
 

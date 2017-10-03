@@ -52,7 +52,7 @@ evaluate_promise <- function(code, print = FALSE) {
     with_sink(temp, print(result$value))
   }
 
-  output <- paste0(readLines(temp, warn = FALSE), collapse = "\n")
+  output <- paste0(read_lines(temp), collapse = "\n")
 
   list(
     result = result$value,
@@ -124,7 +124,7 @@ capture_output_lines <- function(code, print = FALSE, width = 80) {
     with_sink(temp, print(result$value))
   }
 
-  readLines(temp, warn = FALSE)
+  read_lines(temp)
 }
 
 with_sink <- function(connection, code, ...) {

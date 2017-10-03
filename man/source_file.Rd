@@ -21,7 +21,7 @@ source_test_helpers(path = "tests/testthat", env = test_env())
 
 \item{chdir}{Change working directory to \code{dirname(path)}?}
 
-\item{encoding}{File encoding, default: "unknown"}
+\item{encoding}{Deprecated}
 
 \item{wrap}{Add a \code{\link[=test_that]{test_that()}} call around the code?}
 

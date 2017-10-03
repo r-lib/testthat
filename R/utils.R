@@ -38,25 +38,13 @@ first_last <- function(x, max = 10, filler = "...") {
 
 safe_read_lines <- function(file) {
   tryCatch(
-    readLines(file, warn = FALSE),
+    read_lines(file),
     error = function(e) {
       warning(conditionMessage(e), call. = NULL)
       character()
     }
   )
 }
-
-read_lines_with_encoding <- function(path, encoding) {
-  if (encoding == "unknown") {
-    readLines(path, warn = FALSE)
-  } else {
-    con <- file(path, "r", encoding = encoding)
-    on.exit(close(con), add = TRUE)
-
-    readLines(con, warn = FALSE)
-  }
-}
-
 
 # Tools for finding srcrefs -----------------------------------------------
 

@@ -46,7 +46,7 @@ test_that("expect_output_file creates file on first run", {
 
 test_that("expect_output_file works, also with incomplete last line", {
   file <- tempfile()
-  writeLines("Hi!", file)
+  write_lines("Hi!", file)
   expect_success(expect_output_file(cat("Hi!"), file))
   expect_success(expect_output_file(cat("Hi!\n"), file))
   expect_failure(expect_output_file(cat("Hi!\n\n"), file))
@@ -55,9 +55,9 @@ test_that("expect_output_file works, also with incomplete last line", {
 
 test_that("expect_output_file can update file but does not by default", {
   file <- tempfile()
-  writeLines("Hi!", file)
+  write_lines("Hi!", file)
   expect_failure(expect_output_file(cat("oops"), file))
-  expect_equal(readLines(file), "Hi!")
+  expect_equal(read_lines(file), "Hi!")
   expect_failure(expect_output_file(cat("oops"), file, update = TRUE))
   expect_success(expect_output_file(cat("oops"), file))
 })

@@ -121,7 +121,7 @@ expect_output_file <- function(object, file, update = FALSE, ...,
 
   output <- capture_output_lines(object, print = FALSE, width = width)
   if (!file.exists(file)) {
-    writeLines(output, file)
+    write_lines(output, file)
   }
 
   expr <- bquote(
@@ -131,7 +131,7 @@ expect_output_file <- function(object, file, update = FALSE, ...,
     eval(expr),
     expectation = function(e) {
       if (update && expectation_failure(e)) {
-        tryCatch(writeLines(output, file), error = function(e) NULL)
+        tryCatch(write_lines(output, file), error = function(e) NULL)
       }
     }
   )

@@ -1,5 +1,8 @@
 # testthat 1.0.2.9000
 
+* The `encoding` argument to `test_file()`, `source_file()`, and `test_dir()` 
+  has been deprecated. All files are now read and written as UTF-8 (#510, #605).
+
 * New `skip_if()` makes it easy to skip a test when a condition is true (#571).
 
 * `test_examples()` now works with installed packages as well as source
