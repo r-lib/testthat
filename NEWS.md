@@ -1,5 +1,7 @@
 # testthat 1.0.2.9000
 
+* `expect_reference()` checks if two names point to the same object (#622).
+
 * Output expectations (`expect_output()`, `expect_message()`, 
   `expect_warning()`, and `expect_silent()`) all invisibly return the first
   argument to be consistent with the other expectations (#615).

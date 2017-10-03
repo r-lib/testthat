@@ -5,6 +5,8 @@
 \alias{expect_equal}
 \alias{expect_equivalent}
 \alias{expect_identical}
+\alias{expect_identical}
+\alias{expect_reference}
 \title{Expectation: is the object equal to a value?}
 \usage{
 expect_equal(object, expected, ..., info = NULL, label = NULL,
@@ -14,6 +16,12 @@ expect_equivalent(object, expected, ..., info = NULL, label = NULL,
   expected.label = NULL)
 
 expect_identical(object, expected, info = NULL, label = NULL,
+  expected.label = NULL)
+
+expect_identical(object, expected, info = NULL, label = NULL,
+  expected.label = NULL)
+
+expect_reference(object, expected, info = NULL, label = NULL,
   expected.label = NULL)
 }
 \arguments{
@@ -36,6 +44,8 @@ writing tests in loops).}
 \item \code{expect_equal} tests with \code{\link[=all.equal]{all.equal()}}
 \item \code{expect_equivalent} tests with \code{\link[=all.equal]{all.equal()}} and
 \code{check.attributes = FALSE}
+\item \code{expect_reference} tests if two symbols point to the same underlying
+object in memory
 }
 }
 \examples{
