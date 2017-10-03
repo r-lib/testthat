@@ -4,12 +4,15 @@
 \alias{auto_test_package}
 \title{Watches a package for changes, rerunning tests as appropriate.}
 \usage{
-auto_test_package(pkg = ".", reporter = default_reporter())
+auto_test_package(pkg = ".", reporter = default_reporter(), hash = TRUE)
 }
 \arguments{
 \item{pkg}{path to package}
 
 \item{reporter}{test reporter to use}
+
+\item{hash}{Passed on to \code{\link[=watch]{watch()}}.  When FALSE, uses less accurate
+modification time stamps, but those are faster for large files.}
 }
 \description{
 Watches a package for changes, rerunning tests as appropriate.

@@ -26,3 +26,7 @@ test_that("regexp = string matches _any_ warning", {
 test_that("... passed on to grepl", {
   expect_success(expect_warning(warning("X"), "x", ignore.case = TRUE))
 })
+
+test_that("returns first argument", {
+  expect_equal(expect_warning(1, NA), 1)
+})

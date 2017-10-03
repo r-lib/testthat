@@ -23,6 +23,8 @@
 #' @param all For messages and warnings, do all need to match the `regexp`
 #'    (TRUE), or does only one need to match (FALSE)
 #' @family expectations
+#' @return All expectations apart from `expect_error()` invisibly return the
+#'   first argument. `expect_error()` always invisibly returns `NULL`.
 #' @examples
 #' # Output --------------------------------------------------------------------
 #' str(mtcars)
@@ -104,7 +106,8 @@ expect_output <- function(object, regexp = NULL, ..., info = NULL, label = NULL)
   } else {
     expect_match(output, regexp, ..., info = info, label = lab)
   }
-  invisible(NULL)
+
+  invisible(object)
 }
 
 
@@ -121,7 +124,7 @@ expect_output_file <- function(object, file, update = FALSE, ...,
 
   output <- capture_output_lines(object, print = FALSE, width = width)
   if (!file.exists(file)) {
-    writeLines(output, file)
+    write_lines(output, file)
   }
 
   expr <- bquote(
@@ -131,7 +134,7 @@ expect_output_file <- function(object, file, update = FALSE, ...,
     eval(expr),
     expectation = function(e) {
       if (update && expectation_failure(e)) {
-        tryCatch(writeLines(output, file), error = function(e) NULL)
+        tryCatch(write_lines(output, file), error = function(e) NULL)
       }
     }
   )
@@ -179,6 +182,7 @@ expect_error <- function(object, regexp = NULL, class = NULL, ..., info = NULL,
   } else {
     expect_match(error$message, regexp, ..., info = info)
   }
+
   invisible(NULL)
 }
 
@@ -209,7 +213,8 @@ expect_message <- function(object, regexp = NULL, ..., all = FALSE,
   } else {
     expect_match(messages, regexp, all = all, ..., info = info)
   }
-  invisible(NULL)
+
+  invisible(object)
 }
 
 #' @export
@@ -239,7 +244,8 @@ expect_warning <- function(object, regexp = NULL, ..., all = FALSE,
   } else {
     expect_match(warnings, regexp, all = all, ...,info = info)
   }
-  invisible(NULL)
+
+  invisible(object)
 }
 
 #' @export
@@ -258,5 +264,6 @@ expect_silent <- function(object) {
     length(outputs) == 0,
     sprintf("%s produced %s.", lab, paste(outputs, collapse = ", "))
   )
-  invisible(NULL)
+
+  invisible(out$result)
 }

@@ -5,7 +5,7 @@
 \title{Watches code and tests for changes, rerunning tests as appropriate.}
 \usage{
 auto_test(code_path, test_path, reporter = default_reporter(),
-  env = test_env())
+  env = test_env(), hash = TRUE)
 }
 \arguments{
 \item{code_path}{path to directory containing code}
@@ -15,6 +15,9 @@ auto_test(code_path, test_path, reporter = default_reporter(),
 \item{reporter}{test reporter to use}
 
 \item{env}{environment in which to execute test suite.}
+
+\item{hash}{Passed on to \code{\link[=watch]{watch()}}. When FALSE, uses less accurate
+modification time stamps, but those are faster for large files.}
 }
 \description{
 The idea behind \code{auto_test()} is that you just leave it running while

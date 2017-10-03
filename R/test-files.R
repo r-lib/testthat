@@ -24,20 +24,23 @@ test_env <- function() {
 #' @param ... Additional arguments passed to [grepl()] to control filtering.
 #' @inheritParams test_file
 #'
-#' @return the results as a "testthat_results" (list)
+#' @return The results of the reporter function on all test results.
 #' @export
 test_dir <- function(path, filter = NULL, reporter = default_reporter(),
                      env = test_env(), ..., encoding = "unknown", load_helpers = TRUE) {
+  if (!missing(encoding) && !identical(encoding, "UTF-8")) {
+    warning("`encoding` is deprecated; all files now assumed to be UTF-8", call. = FALSE)
+  }
+
   if (load_helpers) {
     source_test_helpers(path, env)
   }
   paths <- find_test_scripts(path, filter, ...)
 
-  test_files(paths, reporter = reporter, env = env, encoding = encoding)
+  test_files(paths, reporter = reporter, env = env)
 }
 
-test_files <- function(paths, reporter = default_reporter(), env = test_env(),
-                       encoding = "unknown") {
+test_files <- function(paths, reporter = default_reporter(), env = test_env()) {
   if (length(paths) == 0) {
     stop('No matching test file in dir')
   }
@@ -52,7 +55,6 @@ test_files <- function(paths, reporter = default_reporter(), env = test_env(),
       reporter = current_reporter,
       start_end_reporter = FALSE,
       load_helpers = FALSE,
-      encoding = encoding,
       wrap = TRUE
     )
   )
@@ -111,6 +113,10 @@ test_file <- function(path, reporter = default_reporter(), env = test_env(),
                       encoding = "unknown", wrap = TRUE) {
   library(testthat)
 
+  if (!missing(encoding)) {
+    warning("`encoding` is deprecated; all files now assumed to be UTF-8", call. = FALSE)
+  }
+
   reporter <- find_reporter(reporter)
   if (reporter$is_full()) return()
 
@@ -137,7 +143,7 @@ test_file <- function(path, reporter = default_reporter(), env = test_env(),
       lister$start_file(basename(path))
 
       source_file(path, new.env(parent = env),
-                  chdir = TRUE, encoding = encoding, wrap = wrap)
+                  chdir = TRUE, wrap = wrap)
 
       end_context()
     }

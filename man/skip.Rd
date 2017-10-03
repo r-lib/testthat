@@ -3,6 +3,7 @@
 \name{skip}
 \alias{skip}
 \alias{skip_if_not}
+\alias{skip_if}
 \alias{skip_if_not_installed}
 \alias{skip_on_cran}
 \alias{skip_on_os}
@@ -14,6 +15,8 @@
 skip(message)
 
 skip_if_not(condition, message = deparse(substitute(condition)))
+
+skip_if(condition, message = deparse(substitute(condition)))
 
 skip_if_not_installed(pkg, minimum_version = NULL)
 
@@ -30,8 +33,8 @@ skip_on_bioc()
 \arguments{
 \item{message}{A message describing why the test was skipped.}
 
-\item{condition}{Boolean condition to check. If not \code{TRUE}, will
-skip the test.}
+\item{condition}{Boolean condition to check. \code{skip_if_not()} will skip if
+\code{FALSE}, \code{skip_if()} will skip if \code{TRUE}.}
 
 \item{pkg}{Name of package to check for}
 

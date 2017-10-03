@@ -12,8 +12,9 @@ Description: A unit testing system designed to be fun, flexible and easy to
 License: MIT + file LICENSE
 URL: https://github.com/hadley/testthat
 BugReports: https://github.com/hadley/testthat/issues
+Encoding: UTF-8
 Depends: 
-    R (>= 3.1.0)
+    R (>= 3.1)
 Imports: 
     crayon,
     digest,
@@ -29,7 +30,7 @@ Suggests:
     xml2
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 6.0.1
-Collate:
+Collate: 
     'auto-test.R'
     'colour-text.R'
     'compare.R'
@@ -84,5 +85,6 @@ Collate:
     'test-that.R'
     'traceback.R'
     'try-again.R'
+    'utils-io.R'
     'utils.R'
     'watcher.R'
