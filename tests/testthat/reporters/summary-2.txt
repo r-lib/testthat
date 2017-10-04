@@ -23,7 +23,6 @@ Failed -------------------------------------------------------------------------
 1. Failure: Failure:1 (@tests.R#8) ---------------------------------------------
 Failure has been forced
 
-
 2. Failure: Failure:2a (@tests.R#12) -------------------------------------------
 Failure has been forced
   ... and 5 more

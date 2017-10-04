@@ -56,7 +56,7 @@ make_label <- function(object, label = NULL) {
 }
 
 add_info <- function(message, info = NULL) {
-  paste(message, info, sep = "\n")
+  paste(c(message, info), collapse = "\n")
 }
 
 label <- function(x) {

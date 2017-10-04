@@ -3,22 +3,18 @@
   <testsuite name="Expectations" timestamp="1999:12:31 23:59:59" hostname="nodename" tests="6" skipped="0" failures="4" errors="0" time="0">
     <testcase time="0" classname="Expectations" name="Success"/>
     <testcase time="0" classname="Expectations" name="Failure:1">
-      <failure type="failure" message="Failure has been forced">Failure has been forced
-</failure>
+      <failure type="failure" message="Failure has been forced">Failure has been forced</failure>
     </testcase>
     <testcase time="0" classname="Expectations" name="Failure:2a">
-      <failure type="failure" message="Failure has been forced">Failure has been forced
-</failure>
+      <failure type="failure" message="Failure has been forced">Failure has been forced</failure>
     </testcase>
     <testcase time="0" classname="Expectations" name="Failure:2b">
-      <failure type="failure" message="FALSE isn't true.">FALSE isn't true.
-</failure>
+      <failure type="failure" message="FALSE isn't true.">FALSE isn't true.</failure>
     </testcase>
     <testcase time="0" classname="Expectations" name="Failure:loop">
       <failure type="failure" message="`i` not equal to 2.">`i` not equal to 2.
 1/1 mismatches
-[1] 1 - 2 == -1
-</failure>
+[1] 1 - 2 == -1</failure>
     </testcase>
     <testcase time="0" classname="Expectations" name="Failure:loop"/>
   </testsuite>

@@ -125,6 +125,7 @@ SummaryReporter <- R6::R6Class("SummaryReporter", inherit = Reporter,
 
       self$cat_tight(paste(report_summary, collapse = collapse))
       if (n > max_n) {
+        self$cat_line()
         self$cat_line("  ... and ", n - max_n, " more")
       }
 

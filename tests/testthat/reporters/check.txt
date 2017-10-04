@@ -1,20 +1,16 @@
 1. Failure: Failure:1 (@tests.R#8) ---------------------------------------------
 Failure has been forced
 
-
 2. Failure: Failure:2a (@tests.R#12) -------------------------------------------
 Failure has been forced
 
-
 3. Failure: Failure:2b (@tests.R#15) -------------------------------------------
 FALSE isn't true.
-
 
 4. Failure: Failure:loop (@tests.R#20) -----------------------------------------
 `i` not equal to 2.
 1/1 mismatches
 [1] 1 - 2 == -1
-
 
 5. Error: Error:1 (@tests.R#28) ------------------------------------------------
 stop

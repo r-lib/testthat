@@ -3,18 +3,14 @@
 ok 1 Success
 not ok 2 Failure:1
   Failure has been forced
-  
 not ok 3 Failure:2a
   Failure has been forced
-  
 not ok 4 Failure:2b
   FALSE isn't true.
-  
 not ok 5 Failure:loop
   `i` not equal to 2.
   1/1 mismatches
   [1] 1 - 2 == -1
-  
 ok 6 Failure:loop
 # Context Errors
 not ok 7 Error:1

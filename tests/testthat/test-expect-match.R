@@ -7,7 +7,7 @@ test_that("extra arguments to matches passed onto grepl", {
 
 test_that("special regex characters are escaped in output", {
   error <- tryCatch(expect_match("f() test", "f() test"), expectation = function(e) e$message)
-  expect_equal(error, "\"f\\(\\) test\" does not match \"f() test\".\nActual value: \"f\\(\\) test\"\n")
+  expect_equal(error, "\"f\\(\\) test\" does not match \"f() test\".\nActual value: \"f\\(\\) test\"")
 })
 
 test_that("correct reporting of expected label", {
