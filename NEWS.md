@@ -1,5 +1,9 @@
 # testthat 1.0.2.9000
 
+* `expect_output_file()` recieved a few tweaks. It now defaults to 
+  `update = TRUE` and no longer fails on first run. It gains a `print` 
+  argument to automatically print the input (#627).
+  
 * Two new prefixes are recognised in the `test/` directory. Files starting
   with `setup` are run before tests (but unlike `helpers` are not run in
   `devtools::load_all()`). Files starting with `teardown` are run after all

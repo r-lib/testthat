@@ -58,6 +58,7 @@ Collate:
     'old-school.R'
     'praise.R'
     'recover.R'
+    'regress-output.R'
     'reporter-check.R'
     'reporter-debug.R'
     'reporter-fail.R'

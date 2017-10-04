@@ -36,16 +36,6 @@ first_last <- function(x, max = 10, filler = "...") {
   }
 }
 
-safe_read_lines <- function(file) {
-  tryCatch(
-    read_lines(file),
-    error = function(e) {
-      warning(conditionMessage(e), call. = NULL)
-      character()
-    }
-  )
-}
-
 # Tools for finding srcrefs -----------------------------------------------
 
 show_stack <- function(star = integer(), n = sys.nframe() - 1L) {

@@ -3,7 +3,6 @@
 \name{output-expectations}
 \alias{output-expectations}
 \alias{expect_output}
-\alias{expect_output_file}
 \alias{expect_error}
 \alias{expect_message}
 \alias{expect_warning}
@@ -11,9 +10,6 @@
 \title{Expectation: does code produce output/message/warning/error?}
 \usage{
 expect_output(object, regexp = NULL, ..., info = NULL, label = NULL)
-
-expect_output_file(object, file, update = FALSE, ..., info = NULL,
-  label = NULL, width = 80)
 
 expect_error(object, regexp = NULL, class = NULL, ..., info = NULL,
   label = NULL)
@@ -50,14 +46,6 @@ or does only one need to match (FALSE)}
 writing tests in loops).}
 
 \item{label}{object label. When \code{NULL}, computed from deparsed object.}
-
-\item{file}{Path to a "golden" text file that contains the desired output.}
-
-\item{update}{Should the "golden" text file be updated? Defaults to
-\code{FALSE}, but that it will automatically create output if the file
-does not exist (i.e. on the first run).}
-
-\item{width}{Number of characters per line of output}
 
 \item{class}{Instead of supplying a regular expression, you can also supply
 a class name. This is useful for "classed" conditions.}
@@ -140,7 +128,6 @@ expect_silent(f())
 \seealso{
 Other expectations: \code{\link{comparison-expectations}},
   \code{\link{equality-expectations}},
-  \code{\link{expect_equal_to_reference}},
   \code{\link{expect_length}}, \code{\link{expect_match}},
   \code{\link{expect_named}},
   \code{\link{inheritance-expectations}},

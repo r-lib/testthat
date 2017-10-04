@@ -79,7 +79,6 @@ expect_equivalent(a, b)
 }
 \seealso{
 Other expectations: \code{\link{comparison-expectations}},
-  \code{\link{expect_equal_to_reference}},
   \code{\link{expect_length}}, \code{\link{expect_match}},
   \code{\link{expect_named}},
   \code{\link{inheritance-expectations}},

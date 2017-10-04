@@ -2,7 +2,7 @@
 % Please edit documentation in R/expect-equal-to-reference.R
 \name{expect_equal_to_reference}
 \alias{expect_equal_to_reference}
-\title{Expectation: is the object equal to a reference value stored in a file?}
+\title{Regression test: is the object equal to a reference value stored in a file?}
 \usage{
 expect_equal_to_reference(object, file, ..., info = NULL, label = NULL,
   expected.label = NULL)
@@ -48,11 +48,5 @@ expect_equal_to_reference(1, "one.rds")
 }
 }
 \seealso{
-Other expectations: \code{\link{comparison-expectations}},
-  \code{\link{equality-expectations}},
-  \code{\link{expect_length}}, \code{\link{expect_match}},
-  \code{\link{expect_named}},
-  \code{\link{inheritance-expectations}},
-  \code{\link{logical-expectations}},
-  \code{\link{output-expectations}}
+Other regression tests: \code{\link{expect_output_file}}
 }

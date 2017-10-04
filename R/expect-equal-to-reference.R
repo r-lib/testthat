@@ -1,4 +1,4 @@
-#' Expectation: is the object equal to a reference value stored in a file?
+#' Regression test: is the object equal to a reference value stored in a file?
 #'
 #' This expectation is equivalent to [expect_equal()], except that the
 #' expected value is stored in an RDS file instead of being specified literally.
@@ -24,7 +24,7 @@
 #'   object label, which is computed from the deparsed object by default.
 #' @param expected.label Equivalent of `label` for shortcut form.
 #' @param ... other values passed to [expect_equal()]
-#' @family expectations
+#' @family regression tests
 #' @export
 #' @examples
 #' \dontrun{
