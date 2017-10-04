@@ -1,5 +1,8 @@
 # testthat 1.0.2.9000
 
+* `expect_error()` gains a new `language` argument allowing you to temporarily
+  override the language that errors are translated to (#565).
+
 * `expect_setequal()` compares two set (represented by vectors), ignoring
   duplicates and differences in order (#528).
 
