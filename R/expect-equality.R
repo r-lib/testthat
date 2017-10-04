@@ -43,19 +43,26 @@
 #' @name equality-expectations
 NULL
 
+quasilabel <- function(quo, label) {
+  list(
+    val = eval_tidy(quo),
+    lab = label %||% quo_label(quo)
+  )
+}
+
 #' @export
 #' @rdname equality-expectations
 #' @param ... other values passed to [all.equal()]
 expect_equal <- function(object, expected, ..., info = NULL, label = NULL,
                          expected.label = NULL) {
 
-  lab_act <- make_label(object, label)
-  lab_exp <- make_label(expected, expected.label)
+  obj <- quasilabel(enquo(object), label)
+  exp <- quasilabel(enquo(expected), expected.label)
 
-  comp <- compare(object, expected, ...)
+  comp <- compare(obj$val, exp$val, ...)
   expect(
     comp$equal,
-    sprintf("%s not equal to %s.\n%s", lab_act, lab_exp, comp$message),
+    sprintf("%s not equal to %s.\n%s", obj$lab, exp$lab, comp$message),
     info = info
   )
 
