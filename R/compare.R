@@ -60,10 +60,10 @@ print_out <- function(x, ...) {
 # Common helpers ---------------------------------------------------------------
 
 same_length <- function(x, y) length(x) == length(y)
-diff_length <- function(x, y) difference(fmt = "Lengths differ: %i vs %i", length(x), length(y))
+diff_length <- function(x, y) difference(fmt = "Lengths differ: %i is not %i", length(x), length(y))
 
 same_type <- function(x, y) identical(typeof(x), typeof(y))
-diff_type <- function(x, y) difference(fmt = "Types not compatible: %s vs %s", typeof(x), typeof(y))
+diff_type <- function(x, y) difference(fmt = "Types not compatible: %s is not %s", typeof(x), typeof(y))
 
 same_class <- function(x, y) {
   if (!is.object(x) && !is.object(y))
@@ -71,7 +71,7 @@ same_class <- function(x, y) {
   identical(class(x), class(y))
 }
 diff_class <- function(x, y) {
-  difference(fmt = "Classes differ: %s vs %s", klass(x), klass(y))
+  difference(fmt = "Classes differ: %s is not %s", klass(x), klass(y))
 }
 
 same_attr <- function(x, y) {

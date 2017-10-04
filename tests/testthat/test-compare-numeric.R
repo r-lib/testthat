@@ -8,19 +8,19 @@ test_that("numeric types are compatible", {
 })
 
 test_that("non-numeric types are not compatible", {
-  expect_match(compare(1, "a")$message, "double vs character")
+  expect_match(compare(1, "a")$message, "double is not character")
 })
 
 test_that("base lengths must be identical", {
-  expect_match(compare(1, c(1, 2))$message, "1 vs 2")
+  expect_match(compare(1, c(1, 2))$message, "1 is not 2")
 })
 
 test_that("classes must be identical", {
   f1 <- factor("a")
   f2 <- factor("a", ordered = TRUE)
 
-  expect_match(compare(1L, f1)$message, "integer vs factor")
-  expect_match(compare(1L, f2)$message, "integer vs ordered/factor")
+  expect_match(compare(1L, f1)$message, "integer is not factor")
+  expect_match(compare(1L, f2)$message, "integer is not ordered/factor")
 })
 
 test_that("attributes must be identical", {

@@ -3,18 +3,18 @@ context("compare.character")
 # Metadata ----------------------------------------------------------------
 
 test_that("types must be the same", {
-  expect_match(compare("a", 1L)$message, "character vs integer")
+  expect_match(compare("a", 1L)$message, "character is not integer")
 })
 
 test_that("base lengths must be identical", {
-  expect_match(compare("a", letters)$message, "1 vs 26")
+  expect_match(compare("a", letters)$message, "1 is not 26")
 })
 
 test_that("classes must be identical", {
   c1 <- "a"
   c2 <- structure("a", class = "mycharacter")
 
-  expect_match(compare(c1, c2)$message, "character vs mycharacter")
+  expect_match(compare(c1, c2)$message, "character is not mycharacter")
 })
 
 test_that("attributes must be identical", {
