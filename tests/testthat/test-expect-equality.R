@@ -48,3 +48,15 @@ test_that("attributes for object (#452)", {
   expect_failure(expect_equal(oops, 0))
   expect_equal(as.numeric(oops), 0)
 })
+
+
+# expect_setequal ---------------------------------------------------------
+
+test_that("expect_setequal ignores order and duplicates", {
+  expect_success(expect_setequal(letters, rev(letters)))
+  expect_success(expect_setequal(c("a", "a", "b"), c("b", "b", "a")))
+})
+
+test_that("expect_setequal doesn't ignore genuine differnces", {
+  expect_failure(expect_setequal(letters, letters[-1]))
+})

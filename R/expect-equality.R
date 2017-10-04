@@ -2,6 +2,7 @@
 #'
 #' - `expect_identical` tests with [identical()]
 #' - `expect_equal` tests with [all.equal()]
+#' - `expect_setequal` ignores order and duplicates
 #' - `expect_equivalent` tests with [all.equal()] and
 #'   `check.attributes = FALSE`
 #' - `expect_reference` tests if two symbols point to the same underlying
@@ -60,6 +61,26 @@ expect_equal <- function(object, expected, ..., info = NULL, label = NULL,
 
   invisible(object)
 }
+
+
+#' @export
+#' @rdname equality-expectations
+expect_setequal <- function(object, expected) {
+  lab_act <- label(object)
+  lab_exp <- label(expected)
+
+  object <- sort(unique(object))
+  expected <- sort(unique(expected))
+
+  comp <- compare(object, expected)
+  expect(
+    comp$equal,
+    sprintf("%s not set-equal to %s.\n%s", lab_act, lab_exp, comp$message)
+  )
+
+  invisible(object)
+}
+
 
 #' @export
 #' @rdname equality-expectations

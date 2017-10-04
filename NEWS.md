@@ -1,5 +1,8 @@
 # testthat 1.0.2.9000
 
+* `expect_setequal()` compares two set (represented by vectors), ignoring
+  duplicates and differences in order (#528).
+
 * `expect_output_file()` recieved a few tweaks. It now defaults to 
   `update = TRUE` and no longer fails on first run. It gains a `print` 
   argument to automatically print the input (#627).
