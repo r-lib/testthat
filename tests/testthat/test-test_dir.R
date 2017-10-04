@@ -1,5 +1,9 @@
 context("test_dir")
 
+test_that("R_TESTS is unset", {
+  expect_equal(Sys.getenv("R_TESTS"), "")
+})
+
 test_that('test_dir()', {
   res <- test_dir(test_path('test_dir'), reporter = 'silent')
 

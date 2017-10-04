@@ -53,6 +53,11 @@ test_dir <- function(path,
   source_test_setup(path, env)
   on.exit(source_test_teardown(path, env), add = TRUE)
 
+  # unset R_TESTS which causes R to have special (annoying) behaviour
+  old_r_tests <- Sys.getenv("R_TESTS")
+  Sys.unsetenv("R_TESTS")
+  on.exit(Sys.setenv("R_TESTS" = old_r_tests), add = TRUE)
+
   paths <- find_test_scripts(path, filter, ...)
 
   test_files(

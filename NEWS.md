@@ -1,5 +1,8 @@
 # testthat 1.0.2.9000
 
+* `test_dir()` (and hence `test_package()`, and `test_check()`) now unsets
+  the `R_TESTS` env var (#603)
+
 * `expect_error()` gains a new `language` argument allowing you to temporarily
   override the language that errors are translated to (#565).
 
