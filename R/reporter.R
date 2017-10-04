@@ -93,5 +93,5 @@ Reporter <- R6::R6Class("Reporter",
 #' @export
 #' @keywords internal
 default_reporter <- function() {
-  getOption("testthat.default_reporter", "summary")
+  getOption("testthat.default_reporter", "progress")
 }

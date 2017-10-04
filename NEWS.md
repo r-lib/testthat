@@ -1,5 +1,10 @@
 # testthat 1.0.2.9000
 
+* New default reporter `ReporterProgress` replaces the previous 
+  `SummaryReporter`. It's a careful rethining of the default output that is
+  both more aesthetical pleasing and makes the most important information
+  available upfront (#529).
+
 * `test_dir()` (and hence `test_package()`, and `test_check()`) now unsets
   the `R_TESTS` env var (#603)
 

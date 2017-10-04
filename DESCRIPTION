@@ -16,6 +16,7 @@ Encoding: UTF-8
 Depends: 
     R (>= 3.1)
 Imports: 
+    clisymbols,
     crayon,
     digest,
     magrittr,
@@ -67,10 +68,11 @@ Collate:
     'reporter-location.R'
     'reporter-minimal.R'
     'reporter-multi.R'
+    'stack.R'
+    'reporter-progress.R'
     'reporter-rstudio.R'
     'reporter-silent.R'
     'reporter-stop.R'
-    'stack.R'
     'reporter-summary.R'
     'reporter-tap.R'
     'reporter-teamcity.R'
