@@ -93,9 +93,9 @@ ProgressReporter <- R6::R6Class("ProgressReporter", inherit = Reporter,
       self$cat_tight(
         "\r",
         status, " | ", sprintf("%2d", self$ctxt_n_ok), " ",
-        col_format(self$ctxt_n_fail), " ",
-        col_format(self$ctxt_n_warn), " ",
-        col_format(self$ctxt_n_skip), " | ",
+        col_format(self$ctxt_n_fail, "fail"), " ",
+        col_format(self$ctxt_n_warn, "warn"), " ",
+        col_format(self$ctxt_n_skip, "skip"), " | ",
         self$ctxt_name
       )
     },
