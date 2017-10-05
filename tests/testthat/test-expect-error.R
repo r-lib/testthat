@@ -39,9 +39,7 @@ test_that("... passed on to grepl", {
 test_that("can optionally override language", {
   skip_on_os("windows")
 
-  old <- Sys.getenv("LANGUAGE")
-  Sys.setenv(LANGUAGE = "fr")
-  on.exit(Sys.setenv(LANGUAGE = old))
+  withr::local_envvar(list(LANGUAGE = "fr"))
 
   expect_success(expect_error(hello, "introuvable"))
   expect_success(expect_error(hello, "introuvable", language = "fr"))

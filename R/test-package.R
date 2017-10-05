@@ -109,8 +109,7 @@ test_package_dir <- function(package, test_path, filter, reporter, ...,
                              stop_on_failure = TRUE,
                              stop_on_warning = FALSE) {
   env <- test_pkg_env(package)
-  old <- options(topLevelEnvironment = env)
-  on.exit(options(old), add = TRUE)
+  withr::local_options(list(topLevelEnvironment = env))
 
   test_dir(
     path = test_path,
@@ -134,11 +133,4 @@ test_pkg_env <- function(package) {
     as.list(getNamespace(package), all.names = TRUE),
     parent = parent.env(getNamespace(package))
   )
-}
-
-with_top_env <- function(env, code) {
-  old <- options(topLevelEnvironment = env)
-  on.exit(options(old), add = TRUE)
-
-  code
 }

@@ -23,11 +23,11 @@ Imports:
     methods,
     praise,
     R6 (>= 2.2.0),
-    rlang
+    rlang,
+    withr (>= 2.0.0)
 Suggests: 
     covr,
     devtools,
-    withr,
     xml2
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 6.0.1

@@ -39,7 +39,7 @@ evaluate_promise <- function(code, print = FALSE) {
   temp <- file()
   on.exit(close(temp))
 
-  result <- with_sink(temp,
+  result <- withr::with_output_sink(temp,
     withCallingHandlers(
       withVisible(code),
       warning = handle_warning,
@@ -47,9 +47,8 @@ evaluate_promise <- function(code, print = FALSE) {
     )
   )
 
-
   if (result$visible && print) {
-    with_sink(temp, print(result$value))
+    withr::with_output_sink(temp, print(result$value))
   }
 
   output <- paste0(read_lines(temp), collapse = "\n")
@@ -112,25 +111,13 @@ capture_output_lines <- function(code, print = FALSE, width = 80) {
   temp <- file()
   on.exit(close(temp), add = TRUE)
 
-  old <- options(width = width)
-  on.exit(options(old), add = TRUE)
+  withr::local_options(list(width = width))
+  withr::local_envvar(list(RSTUDIO_CONSOLE_WIDTH = width))
 
-  old_width <- Sys.getenv("RSTUDIO_CONSOLE_WIDTH")
-  Sys.setenv("RSTUDIO_CONSOLE_WIDTH" = width)
-  on.exit(Sys.setenv("RSTUDIO_CONSOLE_WIDTH" = old_width), add = TRUE)
-
-  result <- with_sink(temp, withVisible(code))
+  result <- withr::with_output_sink(temp, withVisible(code))
   if (result$visible && print) {
-    with_sink(temp, print(result$value))
+    withr::with_output_sink(temp, print(result$value))
   }
 
   read_lines(temp)
 }
-
-with_sink <- function(connection, code, ...) {
-  sink(connection, ...)
-  on.exit(sink())
-
-  code
-}
-
