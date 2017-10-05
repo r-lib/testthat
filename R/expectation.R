@@ -55,6 +55,13 @@ make_label <- function(object, label = NULL) {
   label %||% label(object)
 }
 
+quasi_label <- function(quo, label) {
+  list(
+    val = eval_tidy(quo),
+    lab = label %||% quo_label(quo)
+  )
+}
+
 add_info <- function(message, info = NULL) {
   paste(c(message, info), collapse = "\n")
 }
