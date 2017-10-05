@@ -9,16 +9,16 @@
 ⠴ |  2 4     | Expectations
 ✖ |  2 4     | Expectations
 --------------------------------------------------------------------------------
-Failure: Failure:1 (@tests.R#8)
+tests.R:8: failure: Failure:1
 Failure has been forced
 
-Failure: Failure:2a (@tests.R#12)
+tests.R:12: failure: Failure:2a
 Failure has been forced
 
-Failure: Failure:2b (@tests.R#15)
+tests.R:15: failure: Failure:2b
 FALSE isn't true.
 
-Failure: Failure:loop (@tests.R#20)
+tests.R:20: failure: Failure:loop
 `i` not equal to 2.
 1/1 mismatches
 [1] 1 - 2 == -1
@@ -29,11 +29,11 @@ Failure: Failure:loop (@tests.R#20)
 ⠙ |  0 2     | Errors
 ✖ |  0 2     | Errors
 --------------------------------------------------------------------------------
-Error: Error:1 (@tests.R#28)
+tests.R:28: error: Error:1
 stop
 1: stop("stop") at reporters/tests.R:28
 
-Error: Error:3 (@tests.R#36)
+tests.R:36: error: Error:3
 !
 1: f() at reporters/tests.R:36
 2: g() at reporters/tests.R:32
@@ -45,7 +45,7 @@ Error: Error:3 (@tests.R#36)
 ⠋ |  0 1     | Recursion
 ✖ |  0 1     | Recursion
 --------------------------------------------------------------------------------
-Error: Recursion:1 (@tests.R#45)
+tests.R:45: error: Recursion:1
 This is deep
 1: f(25) at reporters/tests.R:45
 2: f(x - 1) at reporters/tests.R:43
@@ -76,13 +76,13 @@ This is deep
 ⠹ |  0     3 | Skips
 ✔ |  0     3 | Skips
 --------------------------------------------------------------------------------
-Skip: Skip:1 (@tests.R#51)
+tests.R:51: skip: Skip:1
 skip
 
-Skip: Skip:2 (@tests.R#56)
+tests.R:56: skip: Skip:2
 skip
 
-Skip: Skip:3 (@tests.R#59)
+tests.R:59: skip: Skip:3
 Empty test
 --------------------------------------------------------------------------------
 
@@ -92,13 +92,13 @@ Empty test
 ⠹ |  0   3   | Warnings
 ✔ |  0   3   | Warnings
 --------------------------------------------------------------------------------
-Warning: Warning:1 (@tests.R#65)
+tests.R:65: warning: Warning:1
 abc
 
-Warning: Warning:2 (@tests.R#69)
+tests.R:69: warning: Warning:2
 def
 
-Warning: Warning:2 (@tests.R#70)
+tests.R:70: warning: Warning:2
 ghi
 --------------------------------------------------------------------------------
 

@@ -148,10 +148,14 @@ ProgressReporter <- R6::R6Class("ProgressReporter", inherit = Reporter,
     end_reporter = function() {
       self$cat_line()
 
-      self$cat_line("OK:       ", self$n_ok)
-      self$cat_line("Failed:   ", self$n_fail)
-      self$cat_line("Warnings: ", self$n_warn)
-      self$cat_line("Skipped:  ", self$n_skip)
+      colour_if <- function(n, type) {
+        colourise(n, if (n == 0) "success" else type)
+      }
+
+      self$cat_line("OK:       ", colourise(self$n_ok, "success"))
+      self$cat_line("Failed:   ", colour_if(self$n_fail, "fail"))
+      self$cat_line("Warnings: ", colour_if(self$n_warn, "warn"))
+      self$cat_line("Skipped:  ", colour_if(self$n_skip, "skip"))
 
       if (!self$show_praise || runif(1) > 0.1)
         return()
@@ -181,16 +185,21 @@ spinner <- function(i) {
 
 
 issue_summary <- function(x) {
-  type <- switch(expectation_type(x),
-    error = "Error",
-    failure = "Failure",
-    skip = "Skip",
-    warning = "Warning"
-  )
+  type <- expectation_type(x)
+
+  if (is.null(x$srcref)) {
+    loc <- "???"
+  } else {
+    filename <- attr(x$srcref, "srcfile")$filename
+    loc <- paste0(basename(filename), ":", x$srcref[1])
+  }
+
+  header <- paste0(loc, ": ", colourise(type, type), ": ", x$test)
 
   paste0(
-    colourise(type, expectation_type(x)), ": ",
-    x$test, crayon::blue(src_loc(x$srcref)), "\n",
+    crayon::bold(header), "\n",
     format(x)
   )
 }
+
+
