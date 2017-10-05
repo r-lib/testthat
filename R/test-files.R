@@ -59,6 +59,7 @@ test_dir <- function(path,
   on.exit(source_test_teardown(path, env), add = TRUE)
 
   withr::local_envvar(list(R_TESTS = "", TESTTHAT = "true"))
+  withr::local_options(list(oldie_verbose_retirement = TRUE))
 
   paths <- find_test_scripts(path, filter, ...)
 
