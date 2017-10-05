@@ -9,10 +9,9 @@
 SummaryReporter
 }
 \description{
-This is the most useful reporting reporter as it lets you know both which
-tests have run successfully, as well as fully reporting information about
-failures and errors.  It is the default reporting reporter used by
-\code{\link[=test_dir]{test_dir()}} and \code{\link[=test_file]{test_file()}}.
+This is a reporter designed for interactive usage: it lets you know which
+tests have run successfully and as well as fully reporting information about
+failures and errors.
 }
 \details{
 You can use the \code{max_reports} field to control the maximum number

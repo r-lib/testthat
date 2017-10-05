@@ -3,22 +3,17 @@
 \docType{data}
 \name{ProgressReporter}
 \alias{ProgressReporter}
-\title{Test reporter: summary of errors.}
+\title{Test reporter: interactive progress bar of errors.}
 \format{An object of class \code{R6ClassGenerator} of length 24.}
 \usage{
 ProgressReporter
 }
 \description{
-This is the most useful reporting reporter as it lets you know both which
-tests have run successfully, as well as fully reporting information about
-failures and errors.  It is the default reporting reporter used by
-\code{\link[=test_dir]{test_dir()}} and \code{\link[=test_file]{test_file()}}.
+This reporter is a reimagining of \link{SummaryReporter} desgined to make the
+most information available up front, while taking up less space overall. It
+is the default reporting reporter used by \code{\link[=test_dir]{test_dir()}} and \code{\link[=test_file]{test_file()}}.
 }
 \details{
-You can use the \code{max_reports} field to control the maximum number
-of detailed reports produced by this reporter. This is useful when running
-with \code{\link[=auto_test]{auto_test()}}
-
 As an additional benefit, this reporter will praise you from time-to-time
 if all your tests pass.
 }
