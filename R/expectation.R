@@ -55,7 +55,7 @@ make_label <- function(object, label = NULL) {
   label %||% label(object)
 }
 
-quasi_label <- function(quo, label) {
+quasi_label <- function(quo, label = NULL) {
   list(
     val = eval_tidy(quo),
     lab = label %||% quo_label(quo)
