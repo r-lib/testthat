@@ -1,5 +1,8 @@
 # testthat 1.0.2.9000
 
+* Output colours have been tweaked to be consistent with clang:
+  warnings are now in magenta, and skips in blue.
+
 * New default reporter `ReporterProgress` replaces the previous 
   `SummaryReporter`. It's a careful rethining of the default output that is
   both more aesthetical pleasing and makes the most important information
