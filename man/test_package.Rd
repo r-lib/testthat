@@ -10,7 +10,7 @@ test_package(package, filter = NULL, reporter = default_reporter(), ...,
 
 test_check(package, filter = NULL,
   reporter = getOption("testthat.default_check_reporter", "check"), ...,
-  stop_on_failure = TRUE, stop_on_warning = FALSE)
+  stop_on_failure = TRUE, stop_on_warning = FALSE, wrap = TRUE)
 }
 \arguments{
 \item{package}{package name}
@@ -27,6 +27,9 @@ name after it has been stripped of \code{"test-"} and \code{".R"}.}
 
 \item{stop_on_warning}{If \code{TRUE}, throw an error if any tests generate
 warnings.}
+
+\item{wrap}{Automatically wrap all code within \code{\link[=test_that]{test_that()}}? This ensures
+that all expectations are reported, even if outside a test block.}
 }
 \value{
 the results as a "testthat_results" (list)

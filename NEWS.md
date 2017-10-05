@@ -138,7 +138,9 @@
 
 * New argument `load_helpers` in `test_dir()` (#505).
 
-* Bare expectations notify the reporter again. This is achieved by running all tests inside `test_code()` by default (#427, #498).
+* Bare expectations notify the reporter again. This is achieved by running all 
+  tests inside `test_code()` by default (#427, #498). This behaviour can be 
+  overridden by setting `wrap = FALSE` in `test_dir()` and friends (#586).
 
 * New `DebugReporter` that calls a better version of `recover()` in case of failures, errors, or warnings (#360, #470).
 

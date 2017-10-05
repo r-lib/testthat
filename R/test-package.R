@@ -77,7 +77,8 @@ test_check <- function(package,
                        reporter = getOption("testthat.default_check_reporter", "check"),
                        ...,
                        stop_on_failure = TRUE,
-                       stop_on_warning = FALSE
+                       stop_on_warning = FALSE,
+                       wrap = TRUE
   ) {
   library(testthat)
   require(package, character.only = TRUE)
@@ -101,13 +102,15 @@ test_check <- function(package,
     reporter = reporter,
     ...,
     stop_on_failure = stop_on_failure,
-    stop_on_warning = stop_on_warning
+    stop_on_warning = stop_on_warning,
+    wrap = wrap
   )
 }
 
 test_package_dir <- function(package, test_path, filter, reporter, ...,
                              stop_on_failure = TRUE,
-                             stop_on_warning = FALSE) {
+                             stop_on_warning = FALSE,
+                             wrap = TRUE) {
   env <- test_pkg_env(package)
   withr::local_options(list(topLevelEnvironment = env))
 
@@ -118,7 +121,8 @@ test_package_dir <- function(package, test_path, filter, reporter, ...,
     filter = filter,
     ...,
     stop_on_failure = stop_on_failure,
-    stop_on_warning = stop_on_warning
+    stop_on_warning = stop_on_warning,
+    wrap = wrap
   )
 }
 

@@ -7,7 +7,7 @@
 \usage{
 test_dir(path, filter = NULL, reporter = default_reporter(),
   env = test_env(), ..., encoding = "unknown", load_helpers = TRUE,
-  stop_on_failure = FALSE, stop_on_warning = FALSE)
+  stop_on_failure = FALSE, stop_on_warning = FALSE, wrap = TRUE)
 
 is_testing()
 }
@@ -33,6 +33,9 @@ name after it has been stripped of \code{"test-"} and \code{".R"}.}
 
 \item{stop_on_warning}{If \code{TRUE}, throw an error if any tests generate
 warnings.}
+
+\item{wrap}{Automatically wrap all code within \code{\link[=test_that]{test_that()}}? This ensures
+that all expectations are reported, even if outside a test block.}
 }
 \value{
 The results of the reporter function on all test results.

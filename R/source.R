@@ -9,7 +9,8 @@
 #' @param env Environment in which to evaluate code.
 #' @param chdir Change working directory to `dirname(path)`?
 #' @param encoding Deprecated
-#' @param wrap Add a [test_that()] call around the code?
+#' @param wrap Automatically wrap all code within [test_that()]? This ensures
+#'   that all expectations are reported, even if outside a test block.
 #' @export
 source_file <- function(path, env = test_env(), chdir = TRUE,
                         encoding = "unknown", wrap = TRUE) {

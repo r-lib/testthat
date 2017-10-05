@@ -22,7 +22,8 @@ test_file(path, reporter = default_reporter(), env = test_env(),
 \item{encoding}{File encoding, default is "unknown"
 \code{unknown}.}
 
-\item{wrap}{Add a \code{\link[=test_that]{test_that()}} call around the code?}
+\item{wrap}{Automatically wrap all code within \code{\link[=test_that]{test_that()}}? This ensures
+that all expectations are reported, even if outside a test block.}
 }
 \value{
 the results as a "testthat_results" (list)

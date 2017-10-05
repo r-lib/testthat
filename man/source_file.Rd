@@ -29,7 +29,8 @@ source_test_teardown(path = "tests/testthat", env = test_env())
 
 \item{encoding}{Deprecated}
 
-\item{wrap}{Add a \code{\link[=test_that]{test_that()}} call around the code?}
+\item{wrap}{Automatically wrap all code within \code{\link[=test_that]{test_that()}}? This ensures
+that all expectations are reported, even if outside a test block.}
 
 \item{pattern}{Regular expression used to filter files}
 }

@@ -46,7 +46,8 @@ test_dir <- function(path,
                      encoding = "unknown",
                      load_helpers = TRUE,
                      stop_on_failure = FALSE,
-                     stop_on_warning = FALSE
+                     stop_on_warning = FALSE,
+                     wrap = TRUE
                      ) {
   if (!missing(encoding) && !identical(encoding, "UTF-8")) {
     warning("`encoding` is deprecated; all files now assumed to be UTF-8", call. = FALSE)
@@ -68,7 +69,8 @@ test_dir <- function(path,
     reporter = reporter,
     env = env,
     stop_on_failure = stop_on_failure,
-    stop_on_warning = stop_on_warning
+    stop_on_warning = stop_on_warning,
+    wrap = wrap
   )
 }
 
@@ -82,7 +84,8 @@ test_files <- function(paths,
                        reporter = default_reporter(),
                        env = test_env(),
                        stop_on_failure = FALSE,
-                       stop_on_warning = FALSE
+                       stop_on_warning = FALSE,
+                       wrap = TRUE
                        ) {
   if (length(paths) == 0) {
     stop('No matching test file in dir')
@@ -98,7 +101,7 @@ test_files <- function(paths,
       reporter = current_reporter,
       start_end_reporter = FALSE,
       load_helpers = FALSE,
-      wrap = TRUE
+      wrap = wrap
     )
   )
 
