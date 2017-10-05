@@ -13,7 +13,9 @@ test_env <- function() {
 
 #' Run all of the tests in a directory.
 #'
+#' @description
 #' There are four classes of `.R` files that have special behaviour:
+#'
 #' * Test files start with `test` and are executed in alphabetical order.
 #' * Helper files start with `helper` and are executed before tests are
 #'   run and from `devtools::load_all()`.
@@ -21,6 +23,9 @@ test_env <- function() {
 #'   during `devtools::load_all()`.
 #' * Teardown files start with `teardown` and are executed after the tests
 #'   are run.
+#'
+#' In your own code, use `is_testing()` to determine if code is being
+#' run as part of a test.
 #'
 #' @param path path to tests
 #' @param filter If not `NULL`, only tests with file names matching this
@@ -53,7 +58,7 @@ test_dir <- function(path,
   source_test_setup(path, env)
   on.exit(source_test_teardown(path, env), add = TRUE)
 
-  withr::local_envvar(list(R_TESTS = ""))
+  withr::local_envvar(list(R_TESTS = "", TESTTHAT = "true"))
 
   paths <- find_test_scripts(path, filter, ...)
 
@@ -64,6 +69,12 @@ test_dir <- function(path,
     stop_on_failure = stop_on_failure,
     stop_on_warning = stop_on_warning
   )
+}
+
+#' @export
+#' @rdname test_dir
+is_testing <- function() {
+  identical(Sys.getenv("TESTTHAT"), "true")
 }
 
 test_files <- function(paths,

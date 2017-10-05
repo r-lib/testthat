@@ -2,11 +2,14 @@
 % Please edit documentation in R/test-files.R
 \name{test_dir}
 \alias{test_dir}
+\alias{is_testing}
 \title{Run all of the tests in a directory.}
 \usage{
 test_dir(path, filter = NULL, reporter = default_reporter(),
   env = test_env(), ..., encoding = "unknown", load_helpers = TRUE,
   stop_on_failure = FALSE, stop_on_warning = FALSE)
+
+is_testing()
 }
 \arguments{
 \item{path}{path to tests}
@@ -45,4 +48,7 @@ during \code{devtools::load_all()}.
 \item Teardown files start with \code{teardown} and are executed after the tests
 are run.
 }
+
+In your own code, use \code{is_testing()} to determine if code is being
+run as part of a test.
 }

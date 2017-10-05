@@ -1,5 +1,17 @@
 # testthat 1.0.2.9000
 
+* `is_testing()` allows you to tell if your code is being run inside a 
+  testing environment (#631). Rather than taking a run-time dependency on testthat
+  you may want to inline the function into your own package:
+  
+    ```R
+    is_testing <- function() {
+      identical(Sys.getenv("TESTTHAT"), "true")
+    }
+    ```
+    
+    It's frequently useful to combine with `interactive()`.
+
 * Output colours have been tweaked to be consistent with clang:
   warnings are now in magenta, and skips in blue.
 

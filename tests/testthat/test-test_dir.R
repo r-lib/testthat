@@ -1,7 +1,11 @@
 context("test_dir")
 
-test_that("R_TESTS is unset", {
+test_that("R_TESTS envar is unset", {
   expect_equal(Sys.getenv("R_TESTS"), "")
+})
+
+test_that("TESTHAT env var set to true", {
+  expect_true(is_testing())
 })
 
 test_that('test_dir()', {
