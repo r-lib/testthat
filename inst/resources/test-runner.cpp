@@ -5,3 +5,6 @@
  */
 #define TESTTHAT_TEST_RUNNER
 #include <testthat.h>
+
+// [[Rcpp::export]]
+extern "C" SEXP run_testthat_tests();

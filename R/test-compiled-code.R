@@ -196,8 +196,15 @@ get_routine <- function(package, routine) {
     error = function(e) NULL
   )
 
-  if (is.null(resolved))
-    stop("failed to locate routine '", routine, "' in package '", package, "'", call. = FALSE)
+  if (is.null(resolved)){
+    # Has Rcpp altered the routine's name?
+    resolved <- tryCatch(
+      getNativeSymbolInfo(paste0("_", package, "_", routine), PACKAGE = package),
+      error = function(e) NULL
+    )
+    if (is.null(resolved))
+      stop("failed to locate routine '", routine, "' in package '", package, "'", call. = FALSE)
+  }
 
   resolved
 }
