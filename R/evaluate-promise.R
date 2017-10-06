@@ -93,6 +93,18 @@ capture_warnings <- function(code) {
   get_messages(out$as_list())
 }
 
+#' @export
+#' @rdname evaluate_promise
+capture_error <- function(code) {
+  tryCatch({code; NULL}, error = function(e) e)
+}
+
+#' @export
+#' @rdname evaluate_promise
+capture_conditon <- function(code) {
+  tryCatch({code; NULL}, condition = function(e) e)
+}
+
 get_messages <- function(x) {
   vapply(x, "[[", "message", FUN.VALUE = character(1))
 }

@@ -6,6 +6,7 @@
 \alias{expect_error}
 \alias{expect_message}
 \alias{expect_warning}
+\alias{expect_warning}
 \alias{expect_silent}
 \title{Expectation: does code produce output/message/warning/error?}
 \usage{
@@ -15,6 +16,9 @@ expect_error(object, regexp = NULL, class = NULL, ..., info = NULL,
   label = NULL)
 
 expect_message(object, regexp = NULL, ..., all = FALSE, info = NULL,
+  label = NULL)
+
+expect_warning(object, regexp = NULL, ..., all = FALSE, info = NULL,
   label = NULL)
 
 expect_warning(object, regexp = NULL, ..., all = FALSE, info = NULL,
@@ -54,8 +58,8 @@ a class name. This is useful for "classed" conditions.}
 (TRUE), or does only one need to match (FALSE)}
 }
 \value{
-All expectations apart from \code{expect_error()} invisibly return the
-first argument. \code{expect_error()} always invisibly returns \code{NULL}.
+The first argument, invisibly. If \code{expect_error()} captures an
+error, that is returned instead of the value.
 }
 \description{
 Use \code{expect_output()}, \code{expect_message()}, \code{expect_warning()},

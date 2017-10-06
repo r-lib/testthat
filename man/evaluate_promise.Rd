@@ -4,6 +4,8 @@
 \alias{evaluate_promise}
 \alias{capture_messages}
 \alias{capture_warnings}
+\alias{capture_error}
+\alias{capture_conditon}
 \alias{capture_output}
 \alias{capture_output_lines}
 \title{Evaluate a promise, capturing all types of output.}
@@ -13,6 +15,10 @@ evaluate_promise(code, print = FALSE)
 capture_messages(code)
 
 capture_warnings(code)
+
+capture_error(code)
+
+capture_conditon(code)
 
 capture_output(code, print = FALSE, width = 80)
 
