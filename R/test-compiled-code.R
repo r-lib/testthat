@@ -14,7 +14,7 @@
 #' @export
 expect_cpp_tests_pass <- function(package) {
 
-  run_testthat_tests <- get_routine(package, "run_testthat_tests")
+  run_testthat_tests <- get_routine("testthat", "run_testthat_tests")
 
   output <- ""
   tests_passed <- TRUE
