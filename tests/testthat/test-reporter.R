@@ -38,6 +38,14 @@ test_that("character vector yields multi reporter", {
   )
 })
 
+test_reporter <- function(reporter) {
+  # Function to run the reporter "test suite" with a given reporter
+  withr::with_options(
+    list(expressions = Cstack_info()[["eval_depth"]] + 200),
+    test_file(test_path("reporters/tests.R"), reporter, wrap = FALSE)
+  )
+}
+
 test_that("reporters produce consistent output", {
   old <- options(width = 80)
   on.exit(options(old), add = TRUE)
@@ -47,10 +55,7 @@ test_that("reporters produce consistent output", {
 
     expect_output_file(
       expect_error(
-        withr::with_options(
-          list(expressions = Cstack_info()[["eval_depth"]] + 200),
-          test_file(test_path("reporters/tests.R"), reporter, wrap = FALSE)
-        ),
+        test_reporter(reporter),
         error_regexp
       ),
       path, update = TRUE)
@@ -77,4 +82,77 @@ test_that("reporters produce consistent output", {
   save_report("silent")
   save_report("rstudio")
   save_report("junit", reporter = createJunitReporterMock())
+})
+
+
+test_report_to_file <- function(name, reporter = find_reporter_one(name, ...),
+                                output_file, ...) {
+  # output_file is where we expect output to be written to, whether we pass it
+  # as an argument to Reporter$new() (here, via the ...), or whether it is set
+  # in an option.
+  path <- test_path("reporters", paste0(name, ".txt"))
+  expect_silent(test_reporter(reporter))
+  expect_identical(read_lines(output_file), read_lines(path))
+}
+
+output <- tempfile()
+output_option <- tempfile()
+for (r in c("location", "minimal", "tap", "teamcity", "rstudio")) {
+  test_that(paste(r, "reporter accepts a 'file' on initialization"), {
+    test_report_to_file(r, output_file = output, file = output)
+  })
+  withr::with_options(list(testthat.output_file = output_option), {
+    test_that(paste(r, "reporter uses testthat.output_file, if specified"), {
+      test_report_to_file(r, output_file = output_option)
+    })
+  })
+}
+
+withr::with_options(list(testthat.summary.omit_dots = FALSE), {
+  for (r in c("summary", "progress")) {
+    # Do these separately to force show_praise = FALSE
+    test_that(paste(r, "reporter accepts a 'file' on initialization"), {
+      test_report_to_file(r, output_file = output, file = output,
+        show_praise = FALSE)
+    })
+    withr::with_options(list(testthat.output_file = output_option), {
+      test_that(paste(r, "reporter uses testthat.output_file, if specified"), {
+        test_report_to_file(r, output_file = output_option,
+          show_praise = FALSE)
+      })
+    })
+  }
+})
+
+junit_output_option <- tempfile()
+test_that(paste("junit reporter accepts a 'file' on initialization"), {
+  test_report_to_file("junit", createJunitReporterMock(file = output),
+    output_file = output)
+})
+withr::with_options(list(testthat.output_file = output_option), {
+  test_that("junit uses testthat.output_file", {
+    test_report_to_file("junit", createJunitReporterMock(),
+      output_file = output_option)
+  })
+  withr::with_options(list(testthat.junit.output_file = junit_output_option), {
+    test_that("testthat.junit.output_file overrides", {
+      test_report_to_file("junit", createJunitReporterMock(),
+        output_file = junit_output_option)
+    })
+  })
+})
+
+test_that("MultiReporter can write output to different locations", {
+  old <- options(width = 80)
+  on.exit(options(old), add = TRUE)
+  output_file <- tempfile()
+  r <- MultiReporter$new(list(
+    SummaryReporter$new(show_praise = FALSE, omit_dots = FALSE),
+    TapReporter$new(file = output_file)
+  ))
+  summary_path <- test_path("reporters", "summary.txt")
+  skip("expect_output_file isn't capturing the output--it's printing to the console")
+  expect_output_file(test_reporter(r), summary_path)
+  tap_path <- test_path("reporters", "tap.txt")
+  expect_identical(read_lines(output_file), read_lines(tap_path))
 })
