@@ -82,6 +82,15 @@ test_that("reporters produce consistent output", {
   save_report("silent")
   save_report("rstudio")
   save_report("junit", reporter = createJunitReporterMock())
+
+  # Test that MultiReporter can write to two different places
+  tap_file <- tempfile()
+  save_report("summary", reporter = MultiReporter$new(list(
+    SummaryReporter$new(show_praise = FALSE, omit_dots = FALSE),
+    TapReporter$new(file=tap_file))
+  ))
+  expect_identical(read_lines(tap_file),
+    read_lines(test_path("reporters", "tap.txt")))
 })
 
 
@@ -140,19 +149,4 @@ withr::with_options(list(testthat.output_file = output_option), {
         output_file = junit_output_option)
     })
   })
-})
-
-test_that("MultiReporter can write output to different locations", {
-  old <- options(width = 80)
-  on.exit(options(old), add = TRUE)
-  output_file <- tempfile()
-  r <- MultiReporter$new(list(
-    SummaryReporter$new(show_praise = FALSE, omit_dots = FALSE),
-    TapReporter$new(file = output_file)
-  ))
-  summary_path <- test_path("reporters", "summary.txt")
-  skip("expect_output_file isn't capturing the output--it's printing to the console")
-  expect_output_file(test_reporter(r), summary_path)
-  tap_path <- test_path("reporters", "tap.txt")
-  expect_identical(read_lines(output_file), read_lines(tap_path))
 })
