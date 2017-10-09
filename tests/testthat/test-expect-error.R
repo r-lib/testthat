@@ -44,7 +44,7 @@ test_that("can optionally override language", {
     {
       expect_success(expect_error(hello, "introuvable"))
       expect_success(expect_error(hello, "introuvable", language = "fr"))
-      expect_failure(expect_error(hello, "introuvable", language = "en"))
+      expect_failure(expect_error(hello, "introuvable", language = "en"), "not found")
     }
   )
 })
