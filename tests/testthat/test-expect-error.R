@@ -39,7 +39,6 @@ test_that("... passed on to grepl", {
 test_that("can optionally override language", {
   skip_on_os("windows")
 
-
   withr::with_envvar(
     list(LANGUAGE = "fr"),
     {
@@ -48,5 +47,4 @@ test_that("can optionally override language", {
       expect_failure(expect_error(hello, "introuvable", language = "en"))
     }
   )
-
 })
