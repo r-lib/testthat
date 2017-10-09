@@ -16,7 +16,10 @@ expect_success <- function(expr) {
   if (is.null(exp)) {
     fail("no expectation used.")
   } else if (!expectation_success(exp)) {
-    fail("expectation did not succeed.")
+    fail(paste0(
+      "Expectation did not succeed:\n",
+      exp$message
+    ))
   } else {
     succeed()
   }
