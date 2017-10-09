@@ -232,12 +232,12 @@ expect_silent <- function(object) {
   act <- list()
   act$quo <- enquo(object)
   act$lab <- quo_label(act$quo)
-  out <- evaluate_promise(act$val <- eval_tidy(act$quo))
+  act$val <- evaluate_promise(act$val <- eval_tidy(act$quo))
 
   outputs <- c(
-    if (!identical(out$output, "")) "output",
-    if (length(out$warnings) > 0) "warnings",
-    if (length(out$messages) > 0) "messages"
+    if (!identical(act$val$output, "")) "output",
+    if (length(act$val$warnings) > 0) "warnings",
+    if (length(act$val$messages) > 0) "messages"
   )
 
   expect(
