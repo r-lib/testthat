@@ -128,25 +128,16 @@ expect_error <- function(object,
     stop("You may only specify one of `regexp` and `class`", call. = FALSE)
   }
 
-  cur_lang <- Sys.getenv("LANGUAGE")
-
-  error <- tryCatch(
-    {
-      if (!is.null(language)) {
-        Sys.setenv(LANGUAGE = language)
-      }
+  if (is.null(language)) {
+    eval_object <- function() {
       object
-      NULL
-    },
-    error = function(e) {
-      e
-    },
-    finally = {
-      if (!is.null(language)) {
-        Sys.setenv(LANGUAGE = cur_lang)
-      }
     }
-  )
+  } else {
+    eval_object <- function() {
+      withr::with_envvar(list("LANGUAGE" = language), object)
+    }
+  }
+  error <- tryCatch({eval_object(); NULL}, error = function(e) e)
 
   if (!is.null(class)) {
     expect(
