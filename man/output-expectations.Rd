@@ -12,7 +12,7 @@
 expect_output(object, regexp = NULL, ..., info = NULL, label = NULL)
 
 expect_error(object, regexp = NULL, class = NULL, ..., info = NULL,
-  label = NULL, language = NULL)
+  label = NULL)
 
 expect_message(object, regexp = NULL, ..., all = FALSE, info = NULL,
   label = NULL)
@@ -49,9 +49,6 @@ writing tests in loops).}
 
 \item{class}{Instead of supplying a regular expression, you can also supply
 a class name. This is useful for "classed" conditions.}
-
-\item{language}{Optionally overrides current language so that error messages
-are constant regardless of system language. Most common option is "en".}
 
 \item{all}{For messages and warnings, do all need to match the \code{regexp}
 (TRUE), or does only one need to match (FALSE)}

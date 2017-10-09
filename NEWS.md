@@ -1,5 +1,10 @@
 # testthat 1.0.2.9000
 
+* `skip_if_translated()` skips tests if you're running in an locale
+  where translations are likely to occur (#565). Use this to avoid
+  spurious failures when checking the text of error messages in non-English
+  locales.
+
 * `is_testing()` allows you to tell if your code is being run inside a 
   testing environment (#631). Rather than taking a run-time dependency on testthat
   you may want to inline the function into your own package:
@@ -22,9 +27,6 @@
 
 * `test_dir()` (and hence `test_package()`, and `test_check()`) now unsets
   the `R_TESTS` env var (#603)
-
-* `expect_error()` gains a new `language` argument allowing you to temporarily
-  override the language that errors are translated to (#565).
 
 * `expect_setequal()` compares two set (represented by vectors), ignoring
   duplicates and differences in order (#528).

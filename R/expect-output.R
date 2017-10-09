@@ -113,31 +113,19 @@ expect_output <- function(object, regexp = NULL, ..., info = NULL, label = NULL)
 
 #' @export
 #' @rdname output-expectations
-#' @param language Optionally overrides current language so that error messages
-#'    are constant regardless of system language. Most common option is "en".
 expect_error <- function(object,
                          regexp = NULL,
                          class = NULL,
                          ...,
                          info = NULL,
-                         label = NULL,
-                         language = NULL) {
+                         label = NULL) {
 
   lab <- make_label(object, label)
   if (!is.null(regexp) && !is.null(class)) {
     stop("You may only specify one of `regexp` and `class`", call. = FALSE)
   }
 
-  if (is.null(language)) {
-    eval_object <- function() {
-      object
-    }
-  } else {
-    eval_object <- function() {
-      withr::with_envvar(list("LANGUAGE" = language), object)
-    }
-  }
-  error <- tryCatch({eval_object(); NULL}, error = function(e) e)
+  error <- tryCatch({object; NULL}, error = function(e) e)
 
   if (!is.null(class)) {
     expect(
