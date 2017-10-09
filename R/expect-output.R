@@ -245,5 +245,5 @@ expect_silent <- function(object) {
     sprintf("%s produced %s.", act$lab, paste(outputs, collapse = ", "))
   )
 
-  invisible(act$val)
+  invisible(act$val$result)
 }

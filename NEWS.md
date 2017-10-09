@@ -5,6 +5,25 @@
   spurious failures when checking the text of error messages in non-English
   locales.
 
+* All expectations can now use unquoting. This makes it much easier to 
+  generate informative failure messages when running tests in a for loop.
+  
+    ```R
+    f <- function(i) if (i > 3) i * 9 else i * 10
+
+    for (i in 1:5) {
+      expect_equal(f(i), i * 10)
+    }
+    
+    for (i in 1:5) {
+      expect_equal(f(!!i), !!(i * 10))
+    }
+    ```
+    
+    In the first case you get the failure "Error: `f(i)` not equal to `i * 10`."
+    which is hard to diagnose. In the second, you get `f(4L)` not equal to 40.`
+    (#626).
+
 * `is_testing()` allows you to tell if your code is being run inside a 
   testing environment (#631). Rather than taking a run-time dependency on testthat
   you may want to inline the function into your own package:
