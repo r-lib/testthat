@@ -6,7 +6,7 @@
 #' - `expect_equivalent` tests with [all.equal()] and
 #'   `check.attributes = FALSE`
 #' - `expect_reference` tests if two symbols point to the same underlying
-#'    object in memory
+#'    object in memory (requires rlang 1.2.9000 or greater)
 #
 #' @param expected Expected value
 #' @param expected.label Equivalent of `label` for shortcut form.
