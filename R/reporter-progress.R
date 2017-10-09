@@ -12,6 +12,7 @@ NULL
 #'
 #' @export
 #' @family reporters
+#' @importFrom clisymbols symbol
 ProgressReporter <- R6::R6Class("ProgressReporter", inherit = Reporter,
   public = list(
     failures = NULL,
@@ -62,7 +63,7 @@ ProgressReporter <- R6::R6Class("ProgressReporter", inherit = Reporter,
 
     show_header = function() {
       self$cat_line(
-        clisymbols::symbol$tick, " | OK ",
+        symbol$tick, " | OK ",
         colourise("F", "failure"), " ",
         colourise("W", "warning"), " ",
         colourise("S", "skip"), " | ",
@@ -74,9 +75,9 @@ ProgressReporter <- R6::R6Class("ProgressReporter", inherit = Reporter,
 
       if (complete) {
         if (self$ctxt_n_fail > 0) {
-          status <- crayon::red(clisymbols::symbol$cross)
+          status <- crayon::red(symbol$cross)
         } else {
-          status <- crayon::green(clisymbols::symbol$tick)
+          status <- crayon::green(symbol$tick)
         }
       } else {
         status <- spinner(self$ctxt_n)
