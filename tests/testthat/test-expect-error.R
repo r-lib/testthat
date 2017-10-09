@@ -39,9 +39,14 @@ test_that("... passed on to grepl", {
 test_that("can optionally override language", {
   skip_on_os("windows")
 
-  withr::local_envvar(list(LANGUAGE = "fr"))
 
-  expect_success(expect_error(hello, "introuvable"))
-  expect_success(expect_error(hello, "introuvable", language = "fr"))
-  expect_failure(expect_error(hello, "introuvable", language = "C"))
+  withr::with_envvar(
+    list(LANGUAGE = "fr"),
+    {
+      expect_success(expect_error(hello, "introuvable"))
+      expect_success(expect_error(hello, "introuvable", language = "fr"))
+      expect_failure(expect_error(hello, "introuvable", language = "en"))
+    }
+  )
+
 })
