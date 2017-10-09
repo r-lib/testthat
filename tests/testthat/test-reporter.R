@@ -66,7 +66,7 @@ test_that("reporters produce consistent output", {
     save_report("debug")
   )
   save_report("check", error_regexp = NULL)
-  save_report("progress", ProgressReporter$new(show_praise = FALSE))
+  save_report("progress", ProgressReporter$new(show_praise = FALSE, min_time = Inf))
   save_report("summary", SummaryReporter$new(show_praise = FALSE, omit_dots = FALSE))
   save_report("summary-2", SummaryReporter$new(show_praise = FALSE, max_reports = 2))
   save_report("summary-no-dots", SummaryReporter$new(show_praise = FALSE, omit_dots = TRUE))
