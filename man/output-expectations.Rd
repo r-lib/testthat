@@ -6,7 +6,6 @@
 \alias{expect_error}
 \alias{expect_message}
 \alias{expect_warning}
-\alias{expect_warning}
 \alias{expect_silent}
 \title{Expectation: does code produce output/message/warning/error?}
 \usage{
@@ -16,9 +15,6 @@ expect_error(object, regexp = NULL, class = NULL, ..., info = NULL,
   label = NULL)
 
 expect_message(object, regexp = NULL, ..., all = FALSE, info = NULL,
-  label = NULL)
-
-expect_warning(object, regexp = NULL, ..., all = FALSE, info = NULL,
   label = NULL)
 
 expect_warning(object, regexp = NULL, ..., all = FALSE, info = NULL,

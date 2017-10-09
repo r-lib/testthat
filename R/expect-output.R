@@ -199,10 +199,10 @@ expect_warning <- function(object, regexp = NULL, ..., all = FALSE,
   act <- list()
   act$quo <- enquo(object)
   act$lab <- label %||% quo_label(act$quo)
-  act$cnd <- capture_messages(act$val <- eval_tidy(act$quo))
+  act$cnd <- capture_warnings(act$val <- eval_tidy(act$quo))
 
   n <- length(act$cnd)
-  msg <- sprintf(ngettext(n, "%d message", "%d messages"), n)
+  msg <- sprintf(ngettext(n, "%d warning", "%d warnings"), n)
 
   if (identical(regexp, NA)) {
     bullets <- paste("* ", act$cnd, collapse = "\n")
