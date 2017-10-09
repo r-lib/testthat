@@ -49,7 +49,7 @@ writing tests in loops).}
 \item \code{expect_equivalent} tests with \code{\link[=all.equal]{all.equal()}} and
 \code{check.attributes = FALSE}
 \item \code{expect_reference} tests if two symbols point to the same underlying
-object in memory
+object in memory (requires rlang 1.2.9000 or greater)
 }
 }
 \examples{
