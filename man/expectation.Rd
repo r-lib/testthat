@@ -3,7 +3,7 @@
 \name{expectation}
 \alias{expectation}
 \alias{expect}
-\alias{make_label}
+\alias{quasi_label}
 \alias{is.expectation}
 \title{Expectation class.}
 \usage{
@@ -11,7 +11,7 @@ expectation(type, message, srcref = NULL)
 
 expect(exp, ..., srcref = NULL)
 
-make_label(object, label = NULL)
+quasi_label(quo, label = NULL)
 
 is.expectation(x)
 }
@@ -20,9 +20,10 @@ is.expectation(x)
 
 \item{srcref}{Source reference, if known}
 
-\item{object, label}{\code{make_label} is used to generate informative
-labels for expressions. It defaults to the expression used to create
-\code{object}, unless the user overrides it with \code{label}.}
+\item{quo, label}{\code{make_label} is used to generate informative labels for
+expressions. \code{quo} should be created with \code{\link[rlang:enquo]{rlang::enquo()}}, making it
+possible to use unquoting to generate informative labels when running
+multiple tests in a function or for loop.}
 
 \item{x}{object to test for class membership}
 

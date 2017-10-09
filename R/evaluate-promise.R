@@ -120,16 +120,25 @@ capture_output <- function(code, print = FALSE, width = 80) {
 #' @export
 #' @rdname evaluate_promise
 capture_output_lines <- function(code, print = FALSE, width = 80) {
+  eval_with_output(enquo(code), print = print, width = width)$out
+}
+
+
+eval_with_output <- function(quo, env = NULL, print = FALSE, width = 80) {
   temp <- file()
   on.exit(close(temp), add = TRUE)
 
   withr::local_options(list(width = width))
   withr::local_envvar(list(RSTUDIO_CONSOLE_WIDTH = width))
 
-  result <- withr::with_output_sink(temp, withVisible(code))
+  result <- withr::with_output_sink(temp, withVisible(eval_tidy(quo, env = env)))
   if (result$visible && print) {
     withr::with_output_sink(temp, print(result$value))
   }
 
-  read_lines(temp)
+  list(
+    val = result$value,
+    vis = result$visible,
+    out = read_lines(temp)
+  )
 }

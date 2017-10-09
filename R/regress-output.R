@@ -37,26 +37,28 @@ expect_output_file <- function(object, file,
                                label = NULL,
                                print = FALSE,
                                width = 80) {
-  lab <- make_label(object, label)
-  lines_cur <- capture_output_lines(object, print = print, width = width)
+
+  quo <- enquo(object)
+  act <- eval_with_output(quo, print = print, width = width)
+  act$lab <- label %||% quo_label(quo)
 
   if (!file.exists(file)) {
-    write_lines(lines_cur, file)
+    write_lines(act$out, file)
     succeed()
   } else {
-    lines_old <- read_lines(file)
-    comp <- compare(lines_cur, lines_old, ...)
+    exp_out <- read_lines(file)
+    comp <- compare(act$out, exp_out, ...)
 
     if (update) {
-      write_lines(lines_cur, file)
+      write_lines(act$out, file)
     }
 
     expect(
       comp$equal,
-      sprintf("%s (%s) has changed since previous run.\n%s", lab, file, comp$message),
+      sprintf("%s (%s) has changed since previous run.\n%s", act$lab, file, comp$message),
       info = info
     )
   }
 
-  invisible(object)
+  invisible(act$val)
 }

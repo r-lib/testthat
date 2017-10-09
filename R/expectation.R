@@ -48,13 +48,10 @@ expect <- function(exp, ..., srcref = NULL) {
 
 #' @export
 #' @rdname expectation
-#' @param object,label `make_label` is used to generate informative
-#'   labels for expressions. It defaults to the expression used to create
-#'   `object`, unless the user overrides it with `label`.
-make_label <- function(object, label = NULL) {
-  label %||% label(object)
-}
-
+#' @param quo,label `make_label` is used to generate informative labels for
+#'   expressions. `quo` should be created with [rlang::enquo()], making it
+#'   possible to use unquoting to generate informative labels when running
+#'   multiple tests in a function or for loop.
 quasi_label <- function(quo, label = NULL) {
   list(
     val = eval_tidy(quo),
