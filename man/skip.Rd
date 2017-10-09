@@ -10,6 +10,7 @@
 \alias{skip_on_travis}
 \alias{skip_on_appveyor}
 \alias{skip_on_bioc}
+\alias{skip_if_translated}
 \title{Skip a test.}
 \usage{
 skip(message)
@@ -29,6 +30,8 @@ skip_on_travis()
 skip_on_appveyor()
 
 skip_on_bioc()
+
+skip_if_translated()
 }
 \arguments{
 \item{message}{A message describing why the test was skipped.}

@@ -12,12 +12,14 @@ NULL
 #'
 #' @export
 #' @family reporters
+#' @importFrom clisymbols symbol
 ProgressReporter <- R6::R6Class("ProgressReporter", inherit = Reporter,
   public = list(
     failures = NULL,
     skips = NULL,
     warnings = NULL,
     show_praise = TRUE,
+    min_time = 0.1,
 
     max_failures = NULL,
     n_ok = 0,
@@ -36,10 +38,12 @@ ProgressReporter <- R6::R6Class("ProgressReporter", inherit = Reporter,
 
     initialize = function(show_praise = TRUE,
                           max_failures = getOption("testthat.progress.max_fails", 10L),
-                          ...) {
-      super$initialize(...)
+                          min_time = 0.1
+                          ) {
+      super$initialize()
       self$max_failures <- max_failures
       self$show_praise <- show_praise
+      self$min_time <- min_time
     },
 
     start_reporter = function(context) {
@@ -62,7 +66,7 @@ ProgressReporter <- R6::R6Class("ProgressReporter", inherit = Reporter,
 
     show_header = function() {
       self$cat_line(
-        clisymbols::symbol$tick, " | OK ",
+        symbol$tick, " | OK ",
         colourise("F", "failure"), " ",
         colourise("W", "warning"), " ",
         colourise("S", "skip"), " | ",
@@ -74,9 +78,9 @@ ProgressReporter <- R6::R6Class("ProgressReporter", inherit = Reporter,
 
       if (complete) {
         if (self$ctxt_n_fail > 0) {
-          status <- crayon::red(clisymbols::symbol$cross)
+          status <- crayon::red(symbol$cross)
         } else {
-          status <- crayon::green(clisymbols::symbol$tick)
+          status <- crayon::green(symbol$tick)
         }
       } else {
         status <- spinner(self$ctxt_n)
@@ -105,7 +109,7 @@ ProgressReporter <- R6::R6Class("ProgressReporter", inherit = Reporter,
 
       self$show_status(complete = TRUE)
 
-      if (time[[3]] > 0.1) {
+      if (time[[3]] > self$min_time) {
         self$cat(crayon::white(sprintf(" [%.1f s]", time[[3]])))
       }
       self$cat_line()

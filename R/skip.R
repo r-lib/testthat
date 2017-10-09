@@ -153,3 +153,28 @@ skip_on_bioc <- function() {
 
   skip("On Bioconductor")
 }
+
+#' @export
+#' @rdname skip
+skip_if_translated <- function() {
+  if (!is_english()) {
+    return(invisible(TRUE))
+  }
+
+  skip("Running in non-English environment")
+}
+
+is_english <- function() {
+  lang <- Sys.getenv("LANGUAGE")
+  if (identical(lang, "en")) {
+    return(TRUE)
+  }
+
+  if (.Platform$OS.type == "windows") {
+    lc <- sub("\\..*", "", sub("_.*", "", Sys.getlocale("LC_CTYPE")))
+    lc == "C" || lc == "English"
+  } else {
+    lc <- sub("\\..*", "", Sys.getlocale("LC_MESSAGES"))
+    lc == "C" || substr(lc, 1, 2) == "en"
+  }
+}
