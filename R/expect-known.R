@@ -117,13 +117,14 @@ expect_known_value <- function(object, file,
 #' @export
 #' @rdname expect_known_output
 #' @usage NULL
-#' @param expected.label NULL
 expect_equal_to_reference <- function(..., update = FALSE) {
   expect_known_value(..., update = TRUE)
 }
 
 #' @export
 #' @rdname expect_known_output
+#' @param hash Known hash value. Leave empty and you'll be informed what
+#'   to use in the test output.
 expect_known_hash <- function(object, hash = NULL) {
 
   act <- quasi_label(enquo(object), label)

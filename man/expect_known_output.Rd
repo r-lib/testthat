@@ -38,7 +38,8 @@ the object is included in the overall output}
 
 \item{width}{Number of characters per line of output}
 
-\item{expected.label}{NULL}
+\item{hash}{Known hash value. Leave empty and you'll be informed what
+to use in the test output.}
 }
 \description{
 For complex printed output and objects, it is often challenging to describe
