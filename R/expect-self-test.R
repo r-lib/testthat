@@ -11,7 +11,7 @@ NULL
 #' @keywords internal
 #' @export
 expect_success <- function(expr) {
-  exp <- capture_first_expectation(expr)
+  exp <- capture_expectation(expr)
 
   if (is.null(exp)) {
     fail("no expectation used.")
@@ -29,7 +29,7 @@ expect_success <- function(expr) {
 #' @export
 #' @rdname expect_success
 expect_failure <- function(expr, message = NULL, ...) {
-  exp <- capture_first_expectation(expr)
+  exp <- capture_expectation(expr)
 
   if (is.null(exp)) {
     fail("No expectation used")
@@ -39,14 +39,4 @@ expect_failure <- function(expr, message = NULL, ...) {
     expect_match(exp$message, message, ...)
   }
   invisible(NULL)
-}
-
-capture_first_expectation <- function(expr) {
-  tryCatch(
-    {
-      expr
-      NULL
-    },
-    expectation = function(e) e
-  )
 }

@@ -33,6 +33,8 @@ Roxygen: list(markdown = TRUE)
 RoxygenNote: 6.0.1
 Collate: 
     'auto-test.R'
+    'capture-condition.R'
+    'capture-output.R'
     'colour-text.R'
     'compare.R'
     'compare-character.R'

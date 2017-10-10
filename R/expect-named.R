@@ -29,28 +29,29 @@ expect_named <- function(object, expected, ignore.order = FALSE,
                          ignore.case = FALSE, info = NULL,
                          label = NULL) {
 
-  lab <- make_label(object, label)
+  act <- quasi_label(enquo(object), label = label)
+  act$names <- names(act$val)
 
   if (missing(expected)) {
     expect(
-      !identical(names(object), NULL),
-      sprintf("%s does not have names.", lab)
+      !identical(act$names, NULL),
+      sprintf("%s does not have names.", act$lab)
     )
   } else {
-    exp <- normalise_names(expected, ignore.order, ignore.case)
-    act <- normalise_names(names(object), ignore.order, ignore.case)
+    exp_names <- normalise_names(expected, ignore.order, ignore.case)
+    act$names <- normalise_names(act$names, ignore.order, ignore.case)
 
     expect(
-      identical(exp, act),
+      identical(act$names, exp_names),
       sprintf("Names of %s (%s) don't match %s",
-        lab,
-        paste0("'", act, "'", collapse = ", "),
-        paste0("'", exp, "'", collapse = ", ")
+        act$lab,
+        paste0("'", act$names, "'", collapse = ", "),
+        paste0("'", exp_names, "'", collapse = ", ")
       ),
       info = info
     )
   }
-  invisible(object)
+  invisible(act$val)
 }
 
 normalise_names <- function(x, ignore.order = FALSE, ignore.case = FALSE) {

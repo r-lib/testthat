@@ -54,8 +54,8 @@ a class name. This is useful for "classed" conditions.}
 (TRUE), or does only one need to match (FALSE)}
 }
 \value{
-All expectations apart from \code{expect_error()} invisibly return the
-first argument. \code{expect_error()} always invisibly returns \code{NULL}.
+The first argument, invisibly. If \code{expect_error()} captures an
+error, that is returned instead of the value.
 }
 \description{
 Use \code{expect_output()}, \code{expect_message()}, \code{expect_warning()},

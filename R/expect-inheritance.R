@@ -32,14 +32,14 @@ NULL
 #' @export
 #' @rdname inheritance-expectations
 expect_null <- function(object, info = NULL, label = NULL) {
-  lab <- make_label(object, label)
+  act <- quasi_label(enquo(object), label)
 
   expect(
-    is.null(object),
-    sprintf("%s is not null.", lab),
+    is.null(act$val),
+    sprintf("%s is not null.", act$lab),
     info = info
   )
-  invisible(object)
+  invisible(act$val)
 }
 
 #' @export
@@ -47,15 +47,14 @@ expect_null <- function(object, info = NULL, label = NULL) {
 expect_type <- function(object, type) {
   stopifnot(is.character(type), length(type) == 1)
 
-  lab <- make_label(object)
-  act <- typeof(object)
-  exp <- type
+  act <- quasi_label(enquo(object))
+  act_type <- typeof(act$val)
 
   expect(
-    identical(type, act),
-    sprintf("%s has type `%s`, not `%s`.", lab, act, exp)
+    identical(act_type, type),
+    sprintf("%s has type `%s`, not `%s`.", act$lab, act_type, type)
   )
-  invisible(object)
+  invisible(act$val)
 }
 
 #' @param class character vector of class names
@@ -65,16 +64,16 @@ expect_type <- function(object, type) {
 expect_is <- function(object, class, info = NULL, label = NULL) {
   stopifnot(is.character(class))
 
-  lab <- make_label(object, label)
-  act <- klass(object)
-  exp <- paste(class, collapse = "/")
+  act <- quasi_label(enquo(object), label)
+  act$class <- klass(act$val)
+  exp_lab <- paste(class, collapse = "/")
 
   expect(
-    inherits(object, class),
-    sprintf("%s inherits from `%s` not `%s`.", lab, act, exp),
+    inherits(act$val, class),
+    sprintf("%s inherits from `%s` not `%s`.", act$lab, act$class, exp_lab),
     info = info
   )
-  invisible(object)
+  invisible(act$val)
 }
 
 #' @export
@@ -82,19 +81,19 @@ expect_is <- function(object, class, info = NULL, label = NULL) {
 expect_s3_class <- function(object, class) {
   stopifnot(is.character(class))
 
-  lab <- label(object)
-  act <- klass(object)
-  exp <- paste(class, collapse = "/")
+  act <- quasi_label(enquo(object))
+  act$class <- klass(object)
+  exp_lab <- paste(class, collapse = "/")
 
   if (!isS3(object)) {
-    fail(sprintf("%s is not an S3 object", lab))
+    fail(sprintf("%s is not an S3 object", act$lab))
   }
 
   expect(
-    inherits(object, class),
-    sprintf("%s inherits from `%s` not `%s`.", lab, act, exp)
+    inherits(act$val, class),
+    sprintf("%s inherits from `%s` not `%s`.", act$lab, act$class, exp_lab)
   )
-  invisible(object)
+  invisible(act$val)
 }
 
 #' @export
@@ -102,19 +101,19 @@ expect_s3_class <- function(object, class) {
 expect_s4_class <- function(object, class) {
   stopifnot(is.character(class))
 
-  lab <- label(object)
-  act <- paste(methods::is(object), collapse = "/")
-  exp <- paste(class, collapse = "/")
+  act <- quasi_label(enquo(object))
+  act_val_lab <- paste(methods::is(object), collapse = "/")
+  exp_lab <- paste(class, collapse = "/")
 
-  if (!isS4(object)) {
-    fail(sprintf("%s is not an S4 object", lab))
+  if (!isS4(act$val)) {
+    fail(sprintf("%s is not an S4 object", act$lab))
   }
 
   expect(
-    methods::is(object, class),
-    sprintf("%s inherits from `%s` not `%s`.", lab, act, exp)
+    methods::is(act$val, class),
+    sprintf("%s inherits from `%s` not `%s`.", act$lab, act_val_lab, exp_lab)
   )
-  invisible(object)
+  invisible(act$val)
 }
 
 isS3 <- function(x) is.object(x) && !isS4(x)
