@@ -53,6 +53,5 @@ capture_warnings(f())
 
 # Condition will capture anything
 capture_condition(f())
-
 }
 \keyword{internal}

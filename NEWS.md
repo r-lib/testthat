@@ -1,5 +1,9 @@
 # testthat 1.0.2.9000
 
+* `expect_known_ouput()` and `expect_known_value()` replace 
+  `expect_output_file()` and `expect_equal_to_reference()`. The
+  previous versions have been soft-deprecated.
+
 * `skip_if_translated()` skips tests if you're running in an locale
   where translations are likely to occur (#565). Use this to avoid
   spurious failures when checking the text of error messages in non-English

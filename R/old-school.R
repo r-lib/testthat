@@ -78,7 +78,7 @@ is_identical_to <- function(expected, label = NULL) {
 #' @export
 #' @rdname oldskool
 equals_reference <- function(file, label = NULL, ...) {
-  function(x) expect_equal_to_reference(x, file, expected.label = label, ...)
+  function(x) expect_known_value(x, file, expected.label = label, ...)
 }
 
 #' @export
