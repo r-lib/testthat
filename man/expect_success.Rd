@@ -18,6 +18,8 @@ expect_known_failure(path, expr)
 \item{message}{Check that the failure message matches this regexp.}
 
 \item{...}{Other arguments passed on to \code{\link[=expect_match]{expect_match()}}.}
+
+\item{path}{Path to save failure output}
 }
 \description{
 Use these expectations to test other expectations.

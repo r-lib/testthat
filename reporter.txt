@@ -1,3 +1,0 @@
-1. Failure: something happened (@#6) -------------------------------------------
-`null()` did not throw an error.
-
