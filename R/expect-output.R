@@ -131,29 +131,63 @@ expect_error <- function(object,
   act$lab <- label %||% quo_label(act$quo)
   act$err <- capture_error(act$val <- eval_tidy(act$quo))
 
-  if (!is.null(class)) {
-    expect(
-      inherits(act$err, class),
-      sprintf("%s did not throw an error of class '%s'.", act$lab, class),
-      info = info
-    )
-  } else if (identical(regexp, NA)) {
-    expect(
-      is.null(act$err),
-      sprintf("%s threw an error.\n%s", act$lab, act$err$message),
-      info = info
-    )
-  } else if (is.null(regexp) || is.null(act$err)) {
-    expect(
-      !is.null(act$err),
-      sprintf("%s did not throw an error.", act$lab),
-      info = info
-    )
-  } else {
-    expect_match(act$err$message, regexp, ..., info = info)
-  }
+  msg <- compare_condition(act$err, act$lab, regexp = regexp, class = class, ...)
+  expect(is.null(msg), msg, info = info)
 
   invisible(act$val %||% act$err)
+}
+
+compare_condition <- function(cond, lab, regexp = NULL, class = NULL, ...,
+                              cond_type = "error") {
+
+  # Expecting no condition
+  if (identical(regexp, NA)) {
+    if (!is.null(cond)) {
+      return(sprintf("%s threw an %s.", lab, cond_type))
+    } else {
+      return()
+    }
+  }
+
+  # Otherwise we're definitely expecting a condition
+  if (is.null(cond)) {
+    return(sprintf("%s did not throw an %s.", lab, cond_type))
+  }
+
+  ok_class <- is.null(class) || inherits(cond, class)
+  ok_msg <- is.null(regexp) || grepl(regexp, cond$message, ...)
+
+  # All good
+  if (ok_msg && ok_class) {
+    return()
+  }
+
+  problems <- c(if (!ok_class) "class", if (!ok_msg) "message")
+
+  details <- c(
+    if (!ok_class) {
+      sprintf(
+        "Expected class: %s\nActual class:   %s",
+        paste0(class, collapse = "/"),
+        paste0(class(cond), collapse = "/")
+      )
+    },
+    if (!ok_msg) {
+      sprintf(
+        "Expected match: %s\nActual message: %s",
+        encodeString(regexp, quote = '"'),
+        encodeString(cond$message, quote = '"')
+      )
+    }
+  )
+
+  sprintf(
+    "%s threw an %s with unexpected %s.\n%s",
+    lab,
+    cond_type,
+    paste(problems, collapse = " and "),
+    paste(details, collapse = "\n")
+  )
 }
 
 #' @export
