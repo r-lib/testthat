@@ -5,6 +5,7 @@
 \alias{expect_output_file}
 \alias{expect_known_value}
 \alias{expect_equal_to_reference}
+\alias{expect_known_hash}
 \title{Expectations: is the output or the value equal to a known good value?}
 \usage{
 expect_known_output(object, file, update = TRUE, ..., info = NULL,
@@ -12,6 +13,8 @@ expect_known_output(object, file, update = TRUE, ..., info = NULL,
 
 expect_known_value(object, file, update = TRUE, ..., info = NULL,
   label = NULL)
+
+expect_known_hash(object, hash = NULL)
 }
 \arguments{
 \item{object}{object to test}
@@ -59,14 +62,14 @@ synchronised back to the source package.
 tmp <- tempfile()
 
 # The first run always succeeds
-expect_output_file(mtcars[1:10, ], tmp, print = TRUE)
+expect_known_output(mtcars[1:10, ], tmp, print = TRUE)
 
 # Subsequent runs will suceed only if the file is unchanged
 # This will succeed:
-expect_output_file(mtcars[1:10, ], tmp, print = TRUE)
+expect_known_output(mtcars[1:10, ], tmp, print = TRUE)
 
 \dontrun{
 # This will fail
-expect_output_file(mtcars[1:9, ], tmp, print = TRUE)
+expect_known_output(mtcars[1:9, ], tmp, print = TRUE)
 }
 }

@@ -27,15 +27,15 @@
 #' tmp <- tempfile()
 #'
 #' # The first run always succeeds
-#' expect_output_file(mtcars[1:10, ], tmp, print = TRUE)
+#' expect_known_output(mtcars[1:10, ], tmp, print = TRUE)
 #'
 #' # Subsequent runs will suceed only if the file is unchanged
 #' # This will succeed:
-#' expect_output_file(mtcars[1:10, ], tmp, print = TRUE)
+#' expect_known_output(mtcars[1:10, ], tmp, print = TRUE)
 #'
 #' \dontrun{
 #' # This will fail
-#' expect_output_file(mtcars[1:9, ], tmp, print = TRUE)
+#' expect_known_output(mtcars[1:9, ], tmp, print = TRUE)
 #' }
 expect_known_output <- function(object, file,
                                 update = TRUE,

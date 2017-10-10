@@ -45,7 +45,7 @@ test_that("reporters produce consistent output", {
   save_report <- function(name, reporter = find_reporter(name), error_regexp = NA) {
     path <- test_path("reporters", paste0(name, ".txt"))
 
-    expect_output_file(
+    expect_known_output(
       expect_error(
         withr::with_options(
           list(expressions = Cstack_info()[["eval_depth"]] + 200),

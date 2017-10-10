@@ -3,8 +3,7 @@
 #' Use `expect_output()`, `expect_message()`, `expect_warning()`,
 #' or `expect_error()` to check for specific outputs. Use
 #' `expect_silent()` to assert that there should be no output of
-#' any type. The file-based `expect_output_file()` compares the output
-#' to the contents of a text file and optionally updates it.
+#' any type.
 #'
 #' Note that warnings are captured by a custom signal handler: this means
 #' that `options(warn)` has no effect.
