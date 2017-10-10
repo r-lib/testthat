@@ -13,12 +13,14 @@
 #' }
 expect_length <- function(object, n) {
   stopifnot(is.numeric(n), length(n) == 1)
-  lab <- label(object)
+
+  act <- quasi_label(enquo(object))
+  act$n <- length(act$val)
 
   expect(
-    length(object) == n,
-    sprintf("%s has length %i, not length %i.", lab, length(object), n)
+    act$n == n,
+    sprintf("%s has length %i, not length %i.", act$lab, act$n, n)
   )
 
-  invisible(object)
+  invisible(act$val)
 }

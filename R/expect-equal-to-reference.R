@@ -33,23 +33,24 @@
 expect_equal_to_reference <- function(object, file, ..., info = NULL,
                                       label = NULL, expected.label = NULL) {
 
-  lab_act <- make_label(object, label)
-  lab_exp <- expected.label %||% paste0("reference from `", file, "`")
-
   if (!file.exists(file)) {
     # first time always succeeds
     saveRDS(object, file)
     succeed()
-  } else {
-    reference <- readRDS(file)
-
-    comp <- compare(object, reference, ...)
-    expect(
-      comp$equal,
-      sprintf("%s not equal to %s.\n%s", lab_act, lab_exp, comp$message),
-      info = info
-    )
+    return(invisible(object))
   }
 
+  act <- quasi_label(enquo(object), label)
+  ref <- list(
+    val = readRDS(file),
+    lab = expected.label %||% paste0("reference from `", file, "`")
+  )
+
+  comp <- compare(act$val, ref$val, ...)
+  expect(
+    comp$equal,
+    sprintf("%s not equal to %s.\n%s", act$lab, ref$lab, comp$message),
+    info = info
+  )
   invisible(object)
 }

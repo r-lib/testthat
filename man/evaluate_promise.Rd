@@ -2,30 +2,12 @@
 % Please edit documentation in R/evaluate-promise.R
 \name{evaluate_promise}
 \alias{evaluate_promise}
-\alias{capture_messages}
-\alias{capture_warnings}
-\alias{capture_output}
-\alias{capture_output_lines}
 \title{Evaluate a promise, capturing all types of output.}
 \usage{
 evaluate_promise(code, print = FALSE)
-
-capture_messages(code)
-
-capture_warnings(code)
-
-capture_output(code, print = FALSE, width = 80)
-
-capture_output_lines(code, print = FALSE, width = 80)
 }
 \arguments{
-\item{code}{Code to evaluate. This should be an unevaluated expression.}
-
-\item{print}{If \code{TRUE} and the result of evaluating \code{code} is
-visible this will print the result, ensuring that the output of printing
-the object is included in the overall output}
-
-\item{width}{Number of characters per line of output}
+\item{code}{Code to evaluate.}
 }
 \value{
 A list containing
@@ -35,10 +17,7 @@ A list containing
 \item{messages}{A character vector containing the text from each message}
 }
 \description{
-These functions allow you to capture the side-effects of a function call
-including printed output, messages and warnings. They are used to evaluate
-code for \code{\link[=expect_output]{expect_output()}}, \code{\link[=expect_message]{expect_message()}},
-\code{\link[=expect_warning]{expect_warning()}}, and \code{\link[=expect_silent]{expect_silent()}}.
+Evaluate a promise, capturing all types of output.
 }
 \examples{
 evaluate_promise({
@@ -48,3 +27,4 @@ evaluate_promise({
   4
 })
 }
+\keyword{internal}

@@ -29,11 +29,11 @@ NULL
 #' @export
 #' @rdname logical-expectations
 expect_true <- function(object, info = NULL, label = NULL) {
-  lab <- make_label(object, label)
+  act <- quasi_label(enquo(object), label)
 
   expect(
-    identical(as.vector(object), TRUE),
-    sprintf("%s isn't true.", lab),
+    identical(as.vector(act$val), TRUE),
+    sprintf("%s isn't true.", act$lab),
     info = info
   )
   invisible(object)
@@ -42,11 +42,11 @@ expect_true <- function(object, info = NULL, label = NULL) {
 #' @export
 #' @rdname logical-expectations
 expect_false <- function(object, info = NULL, label = NULL) {
-  lab <- make_label(object, label)
+  act <- quasi_label(enquo(object), label)
 
   expect(
-    identical(as.vector(object), FALSE),
-    sprintf("%s isn't false.", lab),
+    identical(as.vector(act$val), FALSE),
+    sprintf("%s isn't false.", act$lab),
     info = info
   )
   invisible(object)

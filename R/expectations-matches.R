@@ -25,26 +25,27 @@ expect_match <- function(object, regexp, perl = FALSE, fixed = FALSE, ..., all =
   else escape <- escape_regex
 
   stopifnot(is.character(regexp), length(regexp) == 1)
-  label <- make_label(object, label)
 
-  stopifnot(is.character(object))
+  act <- quasi_label(enquo(object), label)
+
+  stopifnot(is.character(act$val))
   if (length(object) == 0) {
-    fail(sprintf("%s is empty.", label))
+    fail(sprintf("%s is empty.", act$lab))
   }
 
-  matches <- grepl(regexp, object, perl = perl, fixed = fixed, ...)
+  matches <- grepl(regexp, act$val, perl = perl, fixed = fixed, ...)
 
-  if (length(object) == 1) {
-    values <- paste0("Actual value: \"", escape(encodeString(object)), "\"")
+  if (length(act$val) == 1) {
+    values <- paste0("Actual value: \"", escape(encodeString(act$val)), "\"")
   } else {
     values <- paste0("Actual values:\n",
-      paste0("* ", escape(encodeString(object)), collapse = "\n"))
+      paste0("* ", escape(encodeString(act$val)), collapse = "\n"))
   }
   expect(
     if (all) all(matches) else any(matches),
     sprintf(
       "%s does not match %s.\n%s",
-      escape(label),
+      escape(act$lab),
       encodeString(regexp, quote = '"'),
       values
     ),

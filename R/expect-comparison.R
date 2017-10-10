@@ -20,17 +20,12 @@
 #' @name comparison-expectations
 NULL
 
-expect_compare <- function(operator = c("<", "<=", ">", ">="),
-                           actual, expected,
-                           label = NULL, expected.label = NULL) {
+expect_compare <- function(operator = c("<", "<=", ">", ">="), act, exp) {
   operator <- match.arg(operator)
   op <- match.fun(operator)
 
-  lab_act <- make_label(actual, label)
-  lab_exp <- make_label(expected, expected.label)
-
-  stopifnot(is.numeric(actual), length(actual) == 1)
-  stopifnot(is.numeric(expected), length(expected) == 1)
+  stopifnot(is.numeric(act$val), length(act$val) == 1)
+  stopifnot(is.numeric(exp$val), length(exp$val) == 1)
 
   msg <- c(
     "<" =  "not strictly less than",
@@ -39,35 +34,47 @@ expect_compare <- function(operator = c("<", "<=", ">", ">="),
     ">=" = "not more than"
   )[[operator]]
 
-  diff <- actual - expected
+  diff <- act$val - exp$val
   expect(
     op(diff, 0),
-    sprintf("%s is %s %s. Difference: %.3g", lab_act, msg, lab_exp, diff)
+    sprintf("%s is %s %s. Difference: %.3g", act$lab, msg, exp$lab, diff)
   )
-  invisible(actual)
+  invisible(act$val)
 }
 #' @export
 #' @rdname comparison-expectations
 expect_lt <- function(object, expected, label = NULL, expected.label = NULL) {
-  expect_compare("<", object, expected, label = label, expected.label = expected.label)
+  act <- quasi_label(enquo(object), label)
+  exp <- quasi_label(enquo(expected), expected.label)
+
+  expect_compare("<", act, exp)
 }
 
 #' @export
 #' @rdname comparison-expectations
 expect_lte <- function(object, expected, label = NULL, expected.label = NULL) {
-  expect_compare("<=", object, expected, label = label, expected.label = expected.label)
+  act <- quasi_label(enquo(object), label)
+  exp <- quasi_label(enquo(expected), expected.label)
+
+  expect_compare("<=", act, exp)
 }
 
 #' @export
 #' @rdname comparison-expectations
 expect_gt <- function(object, expected, label = NULL, expected.label = NULL) {
-  expect_compare(">", object, expected, label = label, expected.label = expected.label)
+  act <- quasi_label(enquo(object), label)
+  exp <- quasi_label(enquo(expected), expected.label)
+
+  expect_compare(">", act, exp)
 }
 
 #' @export
 #' @rdname comparison-expectations
 expect_gte <- function(object, expected, label = NULL, expected.label = NULL) {
-  expect_compare(">=", object, expected, label = label, expected.label = expected.label)
+  act <- quasi_label(enquo(object), label)
+  exp <- quasi_label(enquo(expected), expected.label)
+
+  expect_compare(">=", act, exp)
 }
 
 
