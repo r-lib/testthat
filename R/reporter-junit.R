@@ -98,19 +98,19 @@ JunitReporter <- R6::R6Class("JunitReporter", inherit = Reporter,
       )
 
       first_line <- function(x) {
-        strsplit(x, split = "\n")[[1]][1]
+        paste0(strsplit(x$message, split = "\n")[[1]][1], src_loc(x$srcref))
       }
 
       # add an extra XML child node if not a success
       if (expectation_error(result)) {
         # "type" in Java is the exception class
-        error <- xml2::xml_add_child(testcase, 'error', type = 'error', message = first_line(result$message))
+        error <- xml2::xml_add_child(testcase, 'error', type = 'error', message = first_line(result))
         xml2::xml_text(error) <- format(result)
         self$errors <- self$errors + 1
 
       } else if (expectation_failure(result)) {
         # "type" in Java is the type of assertion that failed
-        failure <- xml2::xml_add_child(testcase, 'failure', type = 'failure', message = first_line(result$message))
+        failure <- xml2::xml_add_child(testcase, 'failure', type = 'failure', message = first_line(result))
         xml2::xml_text(failure) <- format(result)
         self$failures <- self$failures + 1
 
