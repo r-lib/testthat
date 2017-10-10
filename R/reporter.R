@@ -50,10 +50,13 @@ Reporter <- R6::R6Class("Reporter",
     },
 
     rule = function(..., pad = "-") {
-      if (nargs() == 0) {
+      title <- c(...)
+      pad <- fancy_line(pad)
+
+      if (length(title) == 0) {
         title <- ""
       } else {
-        title <- paste0(..., " ")
+        title <- paste0(pad, " ", ..., " ")
       }
       width <- console_width() - nchar(title)
       self$cat_line(title, paste(rep(pad, width, collapse = "")))
@@ -84,6 +87,18 @@ Reporter <- R6::R6Class("Reporter",
     }
   )
 )
+
+fancy_line <- function(x) {
+  if (!l10n_info()$`UTF-8`) {
+    return(x)
+  }
+
+  switch(x,
+    "-" = "\u2500",
+    "=" = "\u2550",
+    x
+  )
+}
 
 #' Retrieve the default reporter.
 #'

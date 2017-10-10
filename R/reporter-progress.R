@@ -163,6 +163,8 @@ ProgressReporter <- R6::R6Class("ProgressReporter", inherit = Reporter,
       colour_if <- function(n, type) {
         colourise(n, if (n == 0) "success" else type)
       }
+
+      self$rule(crayon::bold("Results"), pad = "=")
       self$cat_line("OK:       ", colourise(self$n_ok, "success"))
       self$cat_line("Failed:   ", colour_if(self$n_fail, "fail"))
       self$cat_line("Warnings: ", colour_if(self$n_warn, "warn"))
