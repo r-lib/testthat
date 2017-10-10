@@ -1,5 +1,9 @@
 # testthat 1.0.2.9000
 
+* `expect_known_value()` gains an update argument defaulting to `TRUE`.
+  This changes behaviour from the previous version, and soft-deprecated
+  `expect_equal_to_reference()` gets `update = FALSE`. 
+
 * `expect_known_ouput()` and `expect_known_value()` replace 
   `expect_output_file()` and `expect_equal_to_reference()`. The
   previous versions have been soft-deprecated.

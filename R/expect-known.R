@@ -1,22 +1,28 @@
-#' Expectation: is printed output equal to known value?
+#' Expectations: is the output or the value equal to a known good value?
 #'
-#' It is often difficult to define exactly what the printed output should look
-#' like, but you know it when you see it, and you want to make sure that it
-#' doesn't change by accident. `expect_output_file()` renders function output
-#' to a file then throws an error if the output changes.
+#' For complex printed output and objects, it is often challenging to describe
+#' exactly what you expect to see. `expect_known_value()` and
+#' `expect_known_output()` provide a slightly weaker guarantee, simply
+#' asserting that the values have no changed since the last time that you ran
+#' them.
 #'
-#' You need to use `expect_output_file()` in conjunction with git or other
-#' source code control tool so that you can see exactly what has changed, and
-#' revert output to previous versions where needed.
+#' These expectations should be used in conjunction with git, as otherwise
+#' there is no way to revert to previous values. Git is particularly useful
+#' in conjunction with `expect_known_output()` as the diffs will show you
+#' exactly what has changed.
+#'
+#' Note that known values updates will only updated when running tests
+#' interactively. `R CMD check` clones the package source so any changes to
+#' the reference files will occured a temporary directory, and will not be
+#' synchronised back to the source package.
 #'
 #' @export
-#' @param file Path to a "golden" text file that contains the desired output.
-#' @param update Should the "golden" text file be updated? Defaults to
-#'   `FALSE`, but that it will automatically create output if the file
-#'   does not exist (i.e. on the first run).
-#' @inheritParams capture_output_lines
+#' @param file File path where known value/output will be stored.
+#' @param update Should the file be updated? Defaults to `TRUE`, with
+#'   the expectation that you'll notice changes because of the first failure,
+#'   and then see the modified files in git.
 #' @inheritParams expect_equal
-#' @family regression tests
+#' @inheritParams capture_output_lines
 #' @examples
 #' tmp <- tempfile()
 #'
@@ -32,7 +38,8 @@
 #' expect_output_file(mtcars[1:9, ], tmp, print = TRUE)
 #' }
 expect_known_output <- function(object, file,
-                                update = TRUE, ...,
+                                update = TRUE,
+                                ...,
                                 info = NULL,
                                 label = NULL,
                                 print = FALSE,
@@ -44,19 +51,22 @@ expect_known_output <- function(object, file,
   act <- append(act, eval_with_output(object, print = print, width = width))
 
   if (!file.exists(file)) {
+    warning("Creating reference output", call. = FALSE)
     write_lines(act$out, file)
     succeed()
   } else {
-    exp_out <- read_lines(file)
-    comp <- compare(act$out, exp_out, ...)
-
+    ref_out <- read_lines(file)
     if (update) {
       write_lines(act$out, file)
     }
 
+    comp <- compare(act$out, ref_out, ...)
     expect(
       comp$equal,
-      sprintf("%s (%s) has changed since previous run.\n%s", act$lab, file, comp$message),
+      sprintf(
+        "%s has changed from known value recorded in %s.\n%s",
+        act$lab, encodeString(file, quote = "'"), comp$message
+      ),
       info = info
     )
   }
@@ -69,64 +79,45 @@ expect_known_output <- function(object, file,
 #' @usage NULL
 expect_output_file <- expect_known_output
 
-#' Expectation: is object equal to a known value?
-#'
-#' This expectation is equivalent to [expect_equal()], except that the
-#' expected value is stored in an RDS file instead of being specified literally.
-#' This can be helpful when the value is necessarily complex. If the file does
-#' not exist then it will be created using the value of the specified object,
-#' and subsequent tests will check for consistency against that generated value.
-#' The test can be reset by deleting the RDS file.
-#'
-#' It is important to initialize the reference RDS file within the source
-#' package, most likely in the `tests/testthat` directory. Testing spawned
-#' by [devtools::test()], for example, will accomplish this. But note that
-#' testing spawned by `R CMD check` and [devtools::check()] will NOT.
-#' In the latter cases, the package source is copied to an external location
-#' before tests are run. The resulting RDS file will not make its way back into
-#' the package source and will not be available for subsequent comparisons.
-#'
-#' @inheritParams expect_that
-#' @param file The file name used to store the object. Should have an "rds"
-#'   extension.
-#' @param label For the full form, a label for the expected object, which is
-#'   used in error messages. Useful to override the default (which is based on
-#'   the file name), when doing tests in a loop. For the short-cut form, the
-#'   object label, which is computed from the deparsed object by default.
-#' @param expected.label Equivalent of `label` for shortcut form.
-#' @param ... other values passed to [expect_equal()]
-#' @family regression tests
 #' @export
-#' @examples
-#' \dontrun{
-#' expect_equal_to_reference(1, "one.rds")
-#' }
-expect_known_value <- function(object, file, ..., info = NULL,
-                                      label = NULL, expected.label = NULL) {
-
-  if (!file.exists(file)) {
-    # first time always succeeds
-    saveRDS(object, file)
-    succeed()
-    return(invisible(object))
-  }
+#' @rdname expect_known_output
+expect_known_value <- function(object, file,
+                               update = TRUE,
+                               ...,
+                               info = NULL,
+                               label = NULL) {
 
   act <- quasi_label(enquo(object), label)
-  ref <- list(
-    val = readRDS(file),
-    lab = expected.label %||% paste0("reference from `", file, "`")
-  )
 
-  comp <- compare(act$val, ref$val, ...)
-  expect(
-    comp$equal,
-    sprintf("%s not equal to %s.\n%s", act$lab, ref$lab, comp$message),
-    info = info
-  )
-  invisible(object)
+  if (!file.exists(file)) {
+    warning("Creating reference value", call. = FALSE)
+    saveRDS(object, file)
+    succeed()
+  } else {
+    ref_val <- readRDS(file)
+    comp <- compare(act$val, ref_val, ...)
+    if (update && !comp$equal) {
+      saveRDS(act$val, file)
+    }
+
+
+    expect(
+      comp$equal,
+      sprintf(
+        "%s has changed from known value recorded in %s.\n%s",
+        act$lab, encodeString(file, quote = "'"), comp$message
+      ),
+      info = info
+    )
+  }
+
+  invisible(act$value)
 }
 
 #' @export
-#' @rdname expect_known_value
+#' @rdname expect_known_output
 #' @usage NULL
-expect_equal_to_reference <- expect_known_value
+#' @param expected.label NULL
+expect_equal_to_reference <- function(..., update = FALSE) {
+  expect_known_value(..., update = TRUE)
+}

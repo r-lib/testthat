@@ -3,19 +3,24 @@
 \name{expect_known_output}
 \alias{expect_known_output}
 \alias{expect_output_file}
-\title{Expectation: is printed output equal to previous value?}
+\alias{expect_known_value}
+\alias{expect_equal_to_reference}
+\title{Expectations: is the output or the value equal to a known good value?}
 \usage{
 expect_known_output(object, file, update = TRUE, ..., info = NULL,
   label = NULL, print = FALSE, width = 80)
+
+expect_known_value(object, file, update = TRUE, ..., info = NULL,
+  label = NULL)
 }
 \arguments{
 \item{object}{object to test}
 
-\item{file}{Path to a "golden" text file that contains the desired output.}
+\item{file}{File path where known value/output will be stored.}
 
-\item{update}{Should the "golden" text file be updated? Defaults to
-\code{FALSE}, but that it will automatically create output if the file
-does not exist (i.e. on the first run).}
+\item{update}{Should the file be updated? Defaults to \code{TRUE}, with
+the expectation that you'll notice changes because of the first failure,
+and then see the modified files in git.}
 
 \item{...}{other values passed to \code{\link[=all.equal]{all.equal()}}}
 
@@ -29,17 +34,26 @@ visible this will print the result, ensuring that the output of printing
 the object is included in the overall output}
 
 \item{width}{Number of characters per line of output}
+
+\item{expected.label}{NULL}
 }
 \description{
-It is often difficult to define exactly what the printed output should look
-like, but you know it when you see it, and you want to make sure that it
-doesn't change by accident. \code{expect_output_file()} renders function output
-to a file then throws an error if the output changes.
+For complex printed output and objects, it is often challenging to describe
+exactly what you expect to see. \code{expect_known_value()} and
+\code{expect_known_output()} provide a slightly weaker guarantee, simply
+asserting that the values have no changed since the last time that you ran
+them.
 }
 \details{
-You need to use \code{expect_output_file()} in conjunction with git or other
-source code control tool so that you can see exactly what has changed, and
-revert output to previous versions where needed.
+These expectations should be used in conjunction with git, as otherwise
+there is no way to revert to previous values. Git is particularly useful
+in conjunction with \code{expect_known_output()} as the diffs will show you
+exactly what has changed.
+
+Note that known values updates will only updated when running tests
+interactively. \code{R CMD check} clones the package source so any changes to
+the reference files will occured a temporary directory, and will not be
+synchronised back to the source package.
 }
 \examples{
 tmp <- tempfile()
@@ -55,7 +69,4 @@ expect_output_file(mtcars[1:10, ], tmp, print = TRUE)
 # This will fail
 expect_output_file(mtcars[1:9, ], tmp, print = TRUE)
 }
-}
-\seealso{
-Other regression tests: \code{\link{expect_known_value}}
 }

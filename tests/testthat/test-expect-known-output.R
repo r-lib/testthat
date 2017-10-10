@@ -10,7 +10,13 @@ test_that("uses specified width", {
 
 test_that("creates file on first run", {
   file <- tempfile()
-  expect_success(expect_known_output(cat("ok!\n"), file))
+  expect_success(
+    expect_warning(
+      expect_known_output(cat("ok!\n"), file),
+      "Creating reference"
+    )
+  )
+
   expect_true(file.exists(file))
 })
 
