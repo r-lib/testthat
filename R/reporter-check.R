@@ -15,6 +15,13 @@ CheckReporter <- R6::R6Class("CheckReporter", inherit = Reporter,
     n_skip = 0L,
     n_fail = 0L,
 
+    stop_on_failure = TRUE,
+
+    initialize = function(stop_on_failure = TRUE, ...) {
+      self$stop_on_failure <- stop_on_failure
+      super$initialize(...)
+    },
+
     add_result = function(context, test, result) {
       if (expectation_skip(result)) {
         self$n_skip <- self$n_skip + 1L
@@ -55,7 +62,8 @@ CheckReporter <- R6::R6Class("CheckReporter", inherit = Reporter,
       labels <- format(paste0(1:length(show), "."))
       self$cat_paragraph(paste0(labels, " ", fails, collapse = "\n"))
 
-      stop("testthat unit tests failed", call. = FALSE)
+      if (self$stop_on_failure)
+        stop("testthat unit tests failed", call. = FALSE)
     }
   )
 )

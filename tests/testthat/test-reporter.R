@@ -40,25 +40,16 @@ test_that("character vector yields multi reporter", {
 
 test_reporter <- function(reporter) {
   # Function to run the reporter "test suite" with a given reporter
-  withr::with_options(
-    list(expressions = Cstack_info()[["eval_depth"]] + 200),
-    test_file(test_path("reporters/tests.R"), reporter, wrap = FALSE)
-  )
+  test_file(test_path("reporters/tests.R"), reporter, wrap = FALSE)
 }
 
 test_that("reporters produce consistent output", {
   old <- options(width = 80)
   on.exit(options(old), add = TRUE)
 
-  save_report <- function(name, reporter = find_reporter(name), error_regexp = NA) {
+  save_report <- function(name, reporter = find_reporter(name)) {
     path <- test_path("reporters", paste0(name, ".txt"))
-
-    expect_known_output(
-      expect_error(
-        test_reporter(reporter),
-        error_regexp
-      ),
-      path, update = TRUE)
+    expect_known_output(test_reporter(reporter), path)
   }
 
   with_mock(
@@ -70,7 +61,7 @@ test_that("reporters produce consistent output", {
     sink_number = function() 0L,
     save_report("debug")
   )
-  save_report("check", error_regexp = NULL)
+  save_report("check", CheckReporter$new(stop_on_failure = FALSE))
   save_report("progress", ProgressReporter$new(show_praise = FALSE, min_time = Inf))
   save_report("summary", SummaryReporter$new(show_praise = FALSE, omit_dots = FALSE))
   save_report("summary-2", SummaryReporter$new(show_praise = FALSE, max_reports = 2))
@@ -94,24 +85,25 @@ test_that("reporters produce consistent output", {
 })
 
 
-expect_report_to_file <- function(name, reporter = find_reporter_one(name, ...),
-                                output_file, error_regexp=NA, ...) {
+expect_report_to_file <- function(name,
+                                  reporter = find_reporter_one(name, ...),
+                                  output_file,
+                                  ...) {
   # output_file is where we expect output to be written to, whether we pass it
   # as an argument to Reporter$new() (here, via the ...), or whether it is set
   # in an option.
   path <- test_path("reporters", paste0(name, ".txt"))
-  expect_silent(
-    expect_error(
-      test_reporter(reporter),
-      error_regexp
-    )
-  )
-  expect_identical(read_lines(output_file), read_lines(path))
+  expect_silent(test_reporter(reporter))
+  expect_equal(read_lines(output_file), read_lines(path))
 }
 
 test_that("reporters accept a 'file' arugment and write to that location", {
   output <- tempfile()
-  expect_report_to_file("check", file = output, error_regexp=NULL, output_file = output)
+  expect_report_to_file(
+    "check",
+    CheckReporter$new(stop_on_failure = FALSE, file = output),
+    output_file = output
+  )
   expect_report_to_file(
     "progress",
     ProgressReporter$new(show_praise = FALSE, min_time = Inf, file = output),
