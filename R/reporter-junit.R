@@ -121,8 +121,6 @@ JunitReporter <- R6::R6Class("JunitReporter", inherit = Reporter,
     },
 
     end_reporter = function() {
-      self$out <- getOption("testthat.junit.output_file", self$out)
-
       if (is.character(self$out)) {
         xml2::write_xml(self$doc, self$out, format = TRUE)
       } else if (inherits(self$out, "connection")) {

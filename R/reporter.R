@@ -38,8 +38,14 @@ Reporter <- R6::R6Class("Reporter",
         warning("append ignored", call. = FALSE)
       }
 
-      cat(..., file = self$out, sep = sep, fill = fill, labels = labels,
-        append = is.character(self$out)) # If writing to file, append=TRUE
+      cat(
+        ...,
+        file = self$out,
+        sep = sep,
+        fill = fill,
+        labels = labels,
+        append = is.character(self$out) # If writing to file, append=TRUE
+      )
     },
 
     cat_tight = function(...) {

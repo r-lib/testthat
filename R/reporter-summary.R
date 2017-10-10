@@ -25,7 +25,10 @@ SummaryReporter <- R6::R6Class("SummaryReporter", inherit = Reporter,
     show_praise = TRUE,
     omit_dots = FALSE,
 
-    initialize = function(show_praise = TRUE, omit_dots = getOption("testthat.summary.omit_dots"), max_reports = getOption("testthat.summary.max_reports", 15L), ...) {
+    initialize = function(show_praise = TRUE,
+                          omit_dots = getOption("testthat.summary.omit_dots"),
+                          max_reports = getOption("testthat.summary.max_reports", 15L),
+                          ...) {
       super$initialize(...)
       self$failures <- Stack$new()
       self$skips <- Stack$new()

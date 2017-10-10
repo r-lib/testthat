@@ -73,9 +73,10 @@
   package test sources in order to direct test result details to known
   location.
 
-* New option `testthat.junit.output_file`. If set, the JUnitReporter
-  will write the test results to the provided path rather than 
-  standard output.
+* Reporters accept a ``"file"`` argument on initialization. If provided, reporters
+  will write the test results to the provided path rather than
+  standard output. This output destination can also be controlled with the option 
+  `testthat.output_file` (#635, @nealrichardson).
 
 * Fixed JUnitReporter output format (#575). The testcase element now
   includes both the `classname` attribute, which contains the testthat 

@@ -95,58 +95,98 @@ test_that("reporters produce consistent output", {
 
 
 test_report_to_file <- function(name, reporter = find_reporter_one(name, ...),
-                                output_file, ...) {
+                                output_file, error_regexp=NA, ...) {
   # output_file is where we expect output to be written to, whether we pass it
   # as an argument to Reporter$new() (here, via the ...), or whether it is set
   # in an option.
   path <- test_path("reporters", paste0(name, ".txt"))
-  expect_silent(test_reporter(reporter))
+  expect_silent(
+    expect_error(
+      test_reporter(reporter),
+      error_regexp
+    )
+  )
   expect_identical(read_lines(output_file), read_lines(path))
 }
 
-output <- tempfile()
-output_option <- tempfile()
-for (r in c("location", "minimal", "tap", "teamcity", "rstudio")) {
-  test_that(paste(r, "reporter accepts a 'file' on initialization"), {
-    test_report_to_file(r, output_file = output, file = output)
-  })
+test_that("reporters accept a 'file' arugment and write to that location", {
+  output <- tempfile()
+  test_report_to_file("check", file = output, error_regexp=NULL, output_file = output)
+  test_report_to_file(
+    "progress",
+    ProgressReporter$new(show_praise = FALSE, min_time = Inf, file = output),
+    output_file = output
+  )
+  test_report_to_file(
+    "summary",
+    SummaryReporter$new(show_praise = FALSE, omit_dots = FALSE, file = output),
+    output_file = output
+  )
+  test_report_to_file(
+    "summary-2",
+    SummaryReporter$new(show_praise = FALSE, max_reports = 2, file = output),
+    output_file = output
+  )
+  test_report_to_file(
+    "summary-no-dots",
+    SummaryReporter$new(show_praise = FALSE, omit_dots = TRUE, file = output),
+    output_file = output
+  )
+  test_report_to_file("location", file = output, output_file = output)
+  test_report_to_file("minimal", file = output, output_file = output)
+  test_report_to_file("tap", file = output, output_file = output)
+  test_report_to_file("teamcity", file = output, output_file = output)
+  test_report_to_file("rstudio", file = output, output_file = output)
+  test_report_to_file(
+    "junit",
+    reporter = createJunitReporterMock(file = output),
+    output_file = output
+  )
+})
+
+test_that("reporters write to 'testthat.output_file', if specified", {
+  output_option <- tempfile()
   withr::with_options(list(testthat.output_file = output_option), {
-    test_that(paste(r, "reporter uses testthat.output_file, if specified"), {
-      test_report_to_file(r, output_file = output_option)
-    })
+    test_report_to_file("check", error_regexp=NULL, output_file = output_option)
+    test_report_to_file(
+      "progress",
+      ProgressReporter$new(show_praise = FALSE, min_time = Inf),
+      output_file = output_option
+    )
+    test_report_to_file(
+      "summary",
+      SummaryReporter$new(show_praise = FALSE, omit_dots = FALSE),
+      output_file = output_option
+    )
+    test_report_to_file(
+      "summary-2",
+      SummaryReporter$new(show_praise = FALSE, max_reports = 2),
+      output_file = output_option
+    )
+    test_report_to_file(
+      "summary-no-dots",
+      SummaryReporter$new(show_praise = FALSE, omit_dots = TRUE),
+      output_file = output_option
+    )
+    test_report_to_file("location", output_file = output_option)
+    test_report_to_file("minimal", output_file = output_option)
+    test_report_to_file("tap", output_file = output_option)
+    test_report_to_file("teamcity", output_file = output_option)
+    test_report_to_file("rstudio", output_file = output_option)
+    test_report_to_file(
+      "junit",
+      reporter = createJunitReporterMock(),
+      output_file = output_option
+    )
   })
-}
-
-withr::with_options(list(testthat.summary.omit_dots = FALSE), {
-  for (r in c("summary", "progress")) {
-    # Do these separately to force show_praise = FALSE
-    test_that(paste(r, "reporter accepts a 'file' on initialization"), {
-      test_report_to_file(r, output_file = output, file = output,
-        show_praise = FALSE)
-    })
-    withr::with_options(list(testthat.output_file = output_option), {
-      test_that(paste(r, "reporter uses testthat.output_file, if specified"), {
-        test_report_to_file(r, output_file = output_option,
-          show_praise = FALSE)
-      })
-    })
-  }
 })
 
-junit_output_option <- tempfile()
-test_that(paste("junit reporter accepts a 'file' on initialization"), {
-  test_report_to_file("junit", createJunitReporterMock(file = output),
-    output_file = output)
-})
-withr::with_options(list(testthat.output_file = output_option), {
-  test_that("junit uses testthat.output_file", {
-    test_report_to_file("junit", createJunitReporterMock(),
-      output_file = output_option)
-  })
-  withr::with_options(list(testthat.junit.output_file = junit_output_option), {
-    test_that("testthat.junit.output_file overrides", {
-      test_report_to_file("junit", createJunitReporterMock(),
-        output_file = junit_output_option)
-    })
+test_that("silent reporter accepts the 'file' argument but doesn't write anything", {
+  output <- tempfile()
+  expect_silent(test_reporter(SilentReporter$new(file=output)))
+  expect_false(file.exists(output))
+  withr::with_options(list(testthat.output_file = output), {
+    expect_silent(test_reporter(SilentReporter$new()))
+    expect_false(file.exists(output))
   })
 })
