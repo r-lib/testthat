@@ -1,5 +1,8 @@
 # testthat 1.0.2.9000
 
+* New `expect_known_hash()` which lets you check that complex objects are
+  equal to a known good hash without having to save them to disk.
+
 * `expect_known_value()` gains an update argument defaulting to `TRUE`.
   This changes behaviour from the previous version, and soft-deprecated
   `expect_equal_to_reference()` gets `update = FALSE`. 

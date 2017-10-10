@@ -121,3 +121,26 @@ expect_known_value <- function(object, file,
 expect_equal_to_reference <- function(..., update = FALSE) {
   expect_known_value(..., update = TRUE)
 }
+
+#' @export
+#' @rdname expect_known_output
+expect_known_hash <- function(object, hash = NULL) {
+
+  act <- quasi_label(enquo(object), label)
+  act_hash <- digest::digest(act$val)
+  if (!is.null(hash)) {
+    act_hash <- substr(act_hash, 1, nchar(hash))
+  }
+
+  if (is.null(hash)) {
+    warning(paste0("No recorded hash: use ", substr(act_hash, 1, 10)))
+    succeed()
+  } else {
+    expect(
+      hash == act_hash,
+      "Value hashes to %s does not hash not %s", act_hash, hash
+    )
+  }
+
+  invisible(act$value)
+}
