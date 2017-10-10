@@ -39,14 +39,14 @@ test_that("character vector yields multi reporter", {
 })
 
 test_reporter <- function(reporter) {
+  withr::local_options(list(width = 80))
+  withr::local_envvar(list(RSTUDIO_CONSOLE_WIDTH = 80))
+
   # Function to run the reporter "test suite" with a given reporter
   test_file(test_path("reporters/tests.R"), reporter, wrap = FALSE)
 }
 
 test_that("reporters produce consistent output", {
-  old <- options(width = 80)
-  on.exit(options(old), add = TRUE)
-
   save_report <- function(name, reporter = find_reporter(name)) {
     path <- test_path("reporters", paste0(name, ".txt"))
     expect_known_output(test_reporter(reporter), path)
