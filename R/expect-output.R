@@ -1,9 +1,9 @@
 #' Expectation: does code produce output/message/warning/error?
 #'
-#' Use `expect_output()`, `expect_message()`, `expect_warning()`,
-#' or `expect_error()` to check for specific outputs. Use
-#' `expect_silent()` to assert that there should be no output of
-#' any type.
+#' Use `expect_output()`, `expect_message()` and `expect_warning()` to
+#' match specified outputs. Use `expect_error()` or `expect_condition()` to
+#' match individual errors or conditions. Use `expect_silent()` to assert that
+#' there should be no output of any type.
 #'
 #' Note that warnings are captured by a custom signal handler: this means
 #' that `options(warn)` has no effect.
@@ -119,16 +119,30 @@ expect_error <- function(object,
                          info = NULL,
                          label = NULL) {
 
-  if (!is.null(regexp) && !is.null(class)) {
-    stop("You may only specify one of `regexp` and `class`", call. = FALSE)
-  }
-
   act <- quasi_capture(enquo(object), capture_error, label = label)
   msg <- compare_condition(act$cap, act$lab, regexp = regexp, class = class, ...)
   expect(is.null(msg), msg, info = info)
 
   invisible(act$val %||% act$err)
 }
+
+#' @export
+#' @rdname output-expectations
+expect_condition <- function(object,
+                         regexp = NULL,
+                         class = NULL,
+                         ...,
+                         info = NULL,
+                         label = NULL) {
+
+  act <- quasi_capture(enquo(object), capture_condition, label = label)
+  msg <- compare_condition(act$cap, act$lab, regexp = regexp, class = class, ...,
+    cond_type = "condition")
+  expect(is.null(msg), msg, info = info)
+
+  invisible(act$val %||% act$err)
+}
+
 
 #' @export
 #' @rdname output-expectations

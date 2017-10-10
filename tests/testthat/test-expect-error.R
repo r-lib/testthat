@@ -30,6 +30,10 @@ test_that("class = string matches class of error", {
     expect_error(blah(), class = "blech"),
     "threw an error with unexpected class"
   )
+  expect_failure(
+    expect_condition(blah(), class = "blech"),
+    "threw an condition with unexpected class"
+  )
 })
 
 test_that("... passed on to grepl", {

@@ -1,5 +1,8 @@
 # testthat 1.0.2.9000
 
+* New `expect_condition()` works like `expect_error()` but captures any
+  condition, not just error conditions (#621).
+
 * Failure messages from `expect_message()`, `expect_warning()` and 
   `expect_error()` have been tweaked to be more clear.
 

@@ -4,6 +4,7 @@
 \alias{output-expectations}
 \alias{expect_output}
 \alias{expect_error}
+\alias{expect_condition}
 \alias{expect_message}
 \alias{expect_warning}
 \alias{expect_silent}
@@ -12,6 +13,9 @@
 expect_output(object, regexp = NULL, ..., info = NULL, label = NULL)
 
 expect_error(object, regexp = NULL, class = NULL, ..., info = NULL,
+  label = NULL)
+
+expect_condition(object, regexp = NULL, class = NULL, ..., info = NULL,
   label = NULL)
 
 expect_message(object, regexp = NULL, ..., all = FALSE, info = NULL,
@@ -58,10 +62,10 @@ The first argument, invisibly. If \code{expect_error()} captures an
 error, that is returned instead of the value.
 }
 \description{
-Use \code{expect_output()}, \code{expect_message()}, \code{expect_warning()},
-or \code{expect_error()} to check for specific outputs. Use
-\code{expect_silent()} to assert that there should be no output of
-any type.
+Use \code{expect_output()}, \code{expect_message()} and \code{expect_warning()} to
+match specified outputs. Use \code{expect_error()} or \code{expect_condition()} to
+match individual errors or conditions. Use \code{expect_silent()} to assert that
+there should be no output of any type.
 }
 \details{
 Note that warnings are captured by a custom signal handler: this means
