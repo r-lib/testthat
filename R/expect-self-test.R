@@ -40,3 +40,17 @@ expect_failure <- function(expr, message = NULL, ...) {
   }
   invisible(NULL)
 }
+
+#' @export
+#' @rdname expect_success
+#' @param path Path to save failure output
+expect_known_failure <- function(path, expr) {
+  FailureReporter <- R6::R6Class("FailureReporter", inherit = CheckReporter,
+    public = list(end_reporter = function(...) {})
+  )
+
+  expect_known_output(
+    with_reporter(test_that("", expr), reporter = FailureReporter$new()),
+    path
+  )
+}

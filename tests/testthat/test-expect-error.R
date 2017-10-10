@@ -39,3 +39,14 @@ test_that("class = string matches class of error", {
 test_that("... passed on to grepl", {
   expect_success(expect_error(stop("X"), "x", ignore.case = TRUE))
 })
+
+test_that("generates informative failures", {
+  expect_known_failure("test-expect-error.txt", {
+    expect_error(null())
+    expect_error(stop("!"), NA)
+
+    expect_error(stop("xxx"), regexp = "zzz")
+    expect_error(stop("xxx"), class = "zzz")
+    expect_error(stop("xxx"), regexp = "zzz", class = "zzz")
+  })
+})

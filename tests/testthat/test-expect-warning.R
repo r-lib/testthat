@@ -30,3 +30,17 @@ test_that("... passed on to grepl", {
 test_that("returns first argument", {
   expect_equal(expect_warning(1, NA), 1)
 })
+
+test_that("generates informative failures", {
+  expect_known_failure("test-expect-warning.txt", {
+    foo <- function() {
+      warning("xxx")
+      warning("yyy")
+    }
+
+    expect_warning(null())
+    expect_warning(foo(), NA)
+    expect_warning(foo(), "zzz")
+    expect_warning(foo(), "xxx", all = TRUE)
+  })
+})

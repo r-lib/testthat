@@ -3,11 +3,14 @@
 \name{expect_success}
 \alias{expect_success}
 \alias{expect_failure}
+\alias{expect_known_failure}
 \title{Tools for testing expectations}
 \usage{
 expect_success(expr)
 
 expect_failure(expr, message = NULL, ...)
+
+expect_known_failure(path, expr)
 }
 \arguments{
 \item{expr}{Expression that evaluates a single expectation.}

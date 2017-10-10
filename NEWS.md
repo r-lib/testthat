@@ -1,5 +1,8 @@
 # testthat 1.0.2.9000
 
+* Implement `expect_known_failure()` a useful regression test if you're 
+  developing you're own expectations.
+
 * New `expect_condition()` works like `expect_error()` but captures any
   condition, not just error conditions (#621).
 

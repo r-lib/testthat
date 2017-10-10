@@ -60,6 +60,7 @@ CheckReporter <- R6::R6Class("CheckReporter", inherit = Reporter,
   )
 )
 
+
 skip_summary <- function(x, label) {
   header <- paste0(label, ". ", x$test)
 
