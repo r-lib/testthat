@@ -68,6 +68,6 @@ not <- function(f) {
   }
 
   function(...) {
-    negate(capture_first_expectation(f(...)))
+    negate(capture_expectation(f(...)))
   }
 }

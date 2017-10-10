@@ -15,13 +15,10 @@ NULL
 #' @importFrom clisymbols symbol
 ProgressReporter <- R6::R6Class("ProgressReporter", inherit = Reporter,
   public = list(
-    failures = NULL,
-    skips = NULL,
-    warnings = NULL,
     show_praise = TRUE,
     min_time = 0.1,
 
-    max_failures = NULL,
+    max_fail = NULL,
     n_ok = 0,
     n_skip = 0,
     n_warn = 0,
@@ -41,9 +38,13 @@ ProgressReporter <- R6::R6Class("ProgressReporter", inherit = Reporter,
                           min_time = 0.1,
                           ...) {
       super$initialize(...)
-      self$max_failures <- max_failures
+      self$max_fail <- max_failures
       self$show_praise <- show_praise
       self$min_time <- min_time
+    },
+
+    is_full = function() {
+      self$n_fail >= self$max_fail
     },
 
     start_reporter = function(context) {
@@ -133,6 +134,7 @@ ProgressReporter <- R6::R6Class("ProgressReporter", inherit = Reporter,
         self$n_fail <- self$n_fail + 1
         self$ctxt_n_fail <- self$ctxt_n_fail + 1
         self$ctxt_issues$push(result)
+
       } else if (expectation_skip(result)) {
         self$n_skip <- self$n_skip + 1
         self$ctxt_n_skip <- self$ctxt_n_skip + 1
@@ -152,9 +154,17 @@ ProgressReporter <- R6::R6Class("ProgressReporter", inherit = Reporter,
     end_reporter = function() {
       self$cat_line()
 
+      if (self$is_full()) {
+        self$rule("Terminating early", pad = "=")
+        self$cat_line("Too many failures")
+        return()
+      }
+
       colour_if <- function(n, type) {
         colourise(n, if (n == 0) "success" else type)
       }
+
+      self$rule(crayon::bold("Results"), pad = "=")
       self$cat_line("OK:       ", colourise(self$n_ok, "success"))
       self$cat_line("Failed:   ", colour_if(self$n_fail, "fail"))
       self$cat_line("Warnings: ", colour_if(self$n_warn, "warn"))
@@ -170,9 +180,6 @@ ProgressReporter <- R6::R6Class("ProgressReporter", inherit = Reporter,
         self$cat_line(colourise(encourage(), "error"))
       }
     }
-  ),
-
-  private = list(
   )
 )
 

@@ -53,7 +53,7 @@ test_that("reporters produce consistent output", {
   save_report <- function(name, reporter = find_reporter(name), error_regexp = NA) {
     path <- test_path("reporters", paste0(name, ".txt"))
 
-    expect_output_file(
+    expect_known_output(
       expect_error(
         test_reporter(reporter),
         error_regexp

@@ -1,9 +1,39 @@
 # testthat 1.0.2.9000
 
+* New `expect_known_hash()` which lets you check that complex objects are
+  equal to a known good hash without having to save them to disk.
+
+* `expect_known_value()` gains an update argument defaulting to `TRUE`.
+  This changes behaviour from the previous version, and soft-deprecated
+  `expect_equal_to_reference()` gets `update = FALSE`. 
+
+* `expect_known_ouput()` and `expect_known_value()` replace 
+  `expect_output_file()` and `expect_equal_to_reference()`. The
+  previous versions have been soft-deprecated.
+
 * `skip_if_translated()` skips tests if you're running in an locale
   where translations are likely to occur (#565). Use this to avoid
   spurious failures when checking the text of error messages in non-English
   locales.
+
+* All expectations can now use unquoting. This makes it much easier to 
+  generate informative failure messages when running tests in a for loop.
+  
+    ```R
+    f <- function(i) if (i > 3) i * 9 else i * 10
+
+    for (i in 1:5) {
+      expect_equal(f(i), i * 10)
+    }
+    
+    for (i in 1:5) {
+      expect_equal(f(!!i), !!(i * 10))
+    }
+    ```
+    
+    In the first case you get the failure "Error: `f(i)` not equal to `i * 10`."
+    which is hard to diagnose. In the second, you get `f(4L)` not equal to 40.`
+    (#626).
 
 * `is_testing()` allows you to tell if your code is being run inside a 
   testing environment (#631). Rather than taking a run-time dependency on testthat
@@ -100,9 +130,6 @@
   the default "summary" by setting option "testthat.default_reporter" (#504).
 
 * `capture_output_lines()` is now exported (#504).
-
-* `make_label()` is now exported so you can more easily copy the style of 
-  built-in expressions (#507).
 
 * New `teardown()` allows you to run code that is guaranteed to be executed at 
   the end of a `test_file()`. This is useful if you want to pair cleanup code

@@ -41,10 +41,6 @@ test_that("old school equality tests still work", {
   expect_success(expect_that(10, is_equivalent_to(10)))
 })
 
-test_that("old school reference equality test", {
-  expect_success(expect_equal_to_reference(1, "one.rds"))
-})
-
 test_that("old school output tests still work", {
   expect_success(expect_that(stop("!"), throws_error()))
   expect_success(expect_that(warning("!"), gives_warning()))

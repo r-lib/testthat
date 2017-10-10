@@ -14,7 +14,7 @@ test_that('test_dir()', {
   df <- as.data.frame(res)
   df$user <- df$system  <- df$real <- NULL
 
-  expect_equal_to_reference(df, "test_dir.rds")
+  expect_known_value(df, "test_dir.rds")
 })
 
 test_that('test_dir() filter', {

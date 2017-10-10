@@ -33,6 +33,8 @@ Roxygen: list(markdown = TRUE)
 RoxygenNote: 6.0.1
 Collate: 
     'auto-test.R'
+    'capture-condition.R'
+    'capture-output.R'
     'colour-text.R'
     'compare.R'
     'compare-character.R'
@@ -42,9 +44,9 @@ Collate:
     'describe.R'
     'evaluate-promise.R'
     'expect-comparison.R'
-    'expect-equal-to-reference.R'
     'expect-equality.R'
     'expect-inheritance.R'
+    'expect-known.R'
     'expect-length.R'
     'expect-logical.R'
     'expect-named.R'
@@ -59,7 +61,6 @@ Collate:
     'old-school.R'
     'praise.R'
     'recover.R'
-    'regress-output.R'
     'reporter-check.R'
     'reporter-debug.R'
     'reporter-fail.R'
