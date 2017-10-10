@@ -59,6 +59,15 @@ quasi_label <- function(quo, label = NULL) {
   )
 }
 
+quasi_capture <- function(quo, capture, label = NULL) {
+  act <- list()
+  act$lab <- label %||% quo_label(quo)
+  act$cap <- capture(act$val <- eval_tidy(quo))
+
+  act
+}
+
+
 add_info <- function(message, info = NULL) {
   paste(c(message, info), collapse = "\n")
 }

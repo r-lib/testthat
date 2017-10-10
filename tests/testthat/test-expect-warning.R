@@ -2,7 +2,7 @@ context("expect_warning")
 
 test_that("regexp = NULL checks for presence of warning", {
   expect_success(expect_warning(warning("!")))
-  expect_failure(expect_warning(null()), "showed 0 warnings")
+  expect_failure(expect_warning(null()), "did not produce any warnings")
 })
 
 test_that("regexp = NA checks for absence of warning", {
@@ -20,7 +20,7 @@ test_that("regexp = string matches _any_ warning", {
   expect_success(expect_warning(f(), "a"))
   expect_success(expect_warning(f(), "b"))
   expect_failure(expect_warning(f(), "c"))
-  expect_failure(expect_warning("", "c"), "showed 0 warnings")
+  expect_failure(expect_warning("", "c"), "did not produce any warnings")
 })
 
 test_that("... passed on to grepl", {

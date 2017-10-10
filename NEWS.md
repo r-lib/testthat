@@ -1,5 +1,8 @@
 # testthat 1.0.2.9000
 
+* Failure messages from `expect_message()`, `expect_warning()` and 
+  `expect_error()` have been tweaked to be more clear.
+
 * New `expect_known_hash()` which lets you check that complex objects are
   equal to a known good hash without having to save them to disk.
 
