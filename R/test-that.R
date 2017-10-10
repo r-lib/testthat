@@ -197,7 +197,7 @@ test_code <- function(test, code, env = test_env(), skip_on_empty = TRUE) {
 #' \strong{The R Journal} \emph{3/1} 5-10.
 #' \url{http://journal.r-project.org/archive/2011-1/RJournal_2011-1_Wickham.pdf}
 #'
-#' \url{https://github.com/hadley/testthat}
+#' \url{https://github.com/r-lib/testthat}
 #'
 #' \url{http://adv-r.had.co.nz/Testing.html}
 #'

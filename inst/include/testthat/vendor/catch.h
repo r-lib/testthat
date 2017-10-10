@@ -17,7 +17,7 @@
 #define TWOBLUECUBES_CATCH_HPP_INCLUDED
 
 // gcc 5.2 seems to barf with std::nullptr_t
-// see: https://github.com/hadley/testthat/issues/314
+// see: https://github.com/r-lib/testthat/issues/314
 #if !defined(__clang__) && defined(__GNUC__)
 #   if __GNUC__ >= 5
 #      define CATCH_CONFIG_CPP11_NO_NULLPTR

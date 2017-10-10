@@ -10,8 +10,8 @@ Authors@R: c(
 Description: A unit testing system designed to be fun, flexible and easy to
     set up.
 License: MIT + file LICENSE
-URL: https://github.com/hadley/testthat
-BugReports: https://github.com/hadley/testthat/issues
+URL: https://github.com/r-lib/testthat
+BugReports: https://github.com/r-lib/testthat/issues
 Encoding: UTF-8
 Depends: 
     R (>= 3.1)
