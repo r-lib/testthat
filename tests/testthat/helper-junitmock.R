@@ -6,7 +6,7 @@
 #   - timestamp - originally wrapper for toString(Sys.time())
 #   - hostname  - originally wrapper for Sys.info()[["nodename"]]
 #
-createJunitReporterMock <- function () {
+createJunitReporterMock <- function (...) {
   JunitReporterMock <- R6::R6Class("JunitReporterMock",
     inherit = JunitReporter,
     public  = list (),
@@ -22,5 +22,5 @@ createJunitReporterMock <- function () {
       }
     )
   )
-  JunitReporterMock$new()
+  JunitReporterMock$new(...)
 }

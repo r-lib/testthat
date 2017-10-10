@@ -35,9 +35,9 @@ ProgressReporter <- R6::R6Class("ProgressReporter", inherit = Reporter,
 
     initialize = function(show_praise = TRUE,
                           max_failures = getOption("testthat.progress.max_fails", 10L),
-                          min_time = 0.1
-                          ) {
-      super$initialize()
+                          min_time = 0.1,
+                          ...) {
+      super$initialize(...)
       self$max_fail <- max_failures
       self$show_praise <- show_praise
       self$min_time <- min_time
@@ -212,5 +212,3 @@ issue_summary <- function(x) {
     format(x)
   )
 }
-
-

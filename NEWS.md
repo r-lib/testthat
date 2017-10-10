@@ -60,8 +60,8 @@
   warnings are now in magenta, and skips in blue.
 
 * New default reporter `ReporterProgress` replaces the previous 
-  `SummaryReporter`. It's a careful rethining of the default output that is
-  both more aesthetical pleasing and makes the most important information
+  `SummaryReporter`. It's a careful rethinking of the default output that is
+  both more aesthetically pleasing and makes the most important information
   available upfront (#529).
 
 * `test_dir()` (and hence `test_package()`, and `test_check()`) now unsets
@@ -70,7 +70,7 @@
 * `expect_setequal()` compares two set (represented by vectors), ignoring
   duplicates and differences in order (#528).
 
-* `expect_output_file()` recieved a few tweaks. It now defaults to 
+* `expect_output_file()` received a few tweaks. It now defaults to 
   `update = TRUE` and no longer fails on first run. It gains a `print` 
   argument to automatically print the input (#627).
   
@@ -112,13 +112,14 @@
   package test sources in order to direct test result details to known
   location.
 
-* New option `testthat.junit.output_file`. If set, the JUnitReporter
-  will write the test results to the provided path rather than 
-  standard output.
+* Reporters accept a ``"file"`` argument on initialization. If provided, reporters
+  will write the test results to the provided path rather than
+  standard output. This output destination can also be controlled with the option 
+  `testthat.output_file` (#635, @nealrichardson).
 
 * Fixed JUnitReporter output format (#575). The testcase element now
-  includes both the `classname` attribute, which contains the testhat 
-  context, and the `name` attriute, which contains the testthat 
+  includes both the `classname` attribute, which contains the testthat 
+  context, and the `name` attribute, which contains the testthat 
   test name.
 
 * The default summary reporter aborts testing as soon as the limit given by the
@@ -169,7 +170,7 @@
 * `test_file()` now triggers a `gc()` after tests are run. This helps
   to ensure that finalisers are run earlier (#535).
 
-* New argument`encoding` in `test_file()` and `source_file()` (@hansharhoff, #550, hadley/devtools#1306)
+* New argument `encoding` in `test_file()` and `source_file()` (@hansharhoff, #550, hadley/devtools#1306)
 
 * Special regular expression characters are escaped when printing errors in
   `expect_match()` (#522, @jimhester).

@@ -82,7 +82,7 @@ find_reporter <- function(reporter) {
   }
 }
 
-find_reporter_one <- function(reporter) {
+find_reporter_one <- function(reporter, ...) {
   stopifnot(is.character(reporter))
 
   name <- reporter
@@ -93,5 +93,5 @@ find_reporter_one <- function(reporter) {
     stop("Can not find test reporter ", reporter, call. = FALSE)
   }
 
-  get(name)$new()
+  get(name)$new(...)
 }

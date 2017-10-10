@@ -21,8 +21,12 @@ Reporter <- R6::R6Class("Reporter",
 
     out = NULL,
 
-    initialize = function() {
-      self$out <- stdout()
+    initialize = function(file = getOption("testthat.output_file", stdout())) {
+      self$out <- file
+      if (is.character(self$out) && file.exists(self$out)) {
+        # If writing to a file, overwrite it if it exists
+        file.remove(self$out)
+      }
     },
 
     cat = function(..., file = NULL, sep = " ", fill = FALSE, labels = NULL,
@@ -34,7 +38,14 @@ Reporter <- R6::R6Class("Reporter",
         warning("append ignored", call. = FALSE)
       }
 
-      cat(..., file = self$out, sep = sep, fill = fill, labels = labels)
+      cat(
+        ...,
+        file = self$out,
+        sep = sep,
+        fill = fill,
+        labels = labels,
+        append = is.character(self$out) # If writing to file, append=TRUE
+      )
     },
 
     cat_tight = function(...) {
