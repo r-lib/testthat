@@ -137,25 +137,9 @@ test_that("reporters accept a 'file' arugment and write to that location", {
 test_that("reporters write to 'testthat.output_file', if specified", {
   output_option <- tempfile()
   withr::with_options(list(testthat.output_file = output_option), {
-    expect_report_to_file("check", error_regexp=NULL, output_file = output_option)
-    expect_report_to_file(
-      "progress",
-      ProgressReporter$new(show_praise = FALSE, min_time = Inf),
-      output_file = output_option
-    )
     expect_report_to_file(
       "summary",
       SummaryReporter$new(show_praise = FALSE, omit_dots = FALSE),
-      output_file = output_option
-    )
-    expect_report_to_file("location", output_file = output_option)
-    expect_report_to_file("minimal", output_file = output_option)
-    expect_report_to_file("tap", output_file = output_option)
-    expect_report_to_file("teamcity", output_file = output_option)
-    expect_report_to_file("rstudio", output_file = output_option)
-    expect_report_to_file(
-      "junit",
-      reporter = createJunitReporterMock(),
       output_file = output_option
     )
   })
@@ -165,8 +149,4 @@ test_that("silent reporter accepts the 'file' argument but doesn't write anythin
   output <- tempfile()
   expect_silent(test_reporter(SilentReporter$new(file=output)))
   expect_false(file.exists(output))
-  withr::with_options(list(testthat.output_file = output), {
-    expect_silent(test_reporter(SilentReporter$new()))
-    expect_false(file.exists(output))
-  })
 })
