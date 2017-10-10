@@ -204,7 +204,13 @@ compare_condition <- function(cond, lab, regexp = NULL, class = NULL, ...,
   # Expecting no condition
   if (identical(regexp, NA)) {
     if (!is.null(cond)) {
-      return(sprintf("%s threw an %s.", lab, cond_type))
+      return(sprintf(
+        "%s threw an %s.\nMessage: %s\nClass:   %s",
+        lab,
+        cond_type,
+        cond$message,
+        paste(class(cond), collapse = "/")
+        ))
     } else {
       return()
     }
@@ -262,7 +268,7 @@ compare_messages <- function(messages,
   # Expecting no messages
   if (identical(regexp, NA)) {
     if (length(messages) > 0) {
-      return(sprintf("%s generated %s.\n%s", lab, cond_type, bullets))
+      return(sprintf("%s generated %s:\n%s", lab, cond_type, bullets))
     } else {
       return()
     }

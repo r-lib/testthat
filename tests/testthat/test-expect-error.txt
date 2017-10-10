@@ -3,6 +3,8 @@
 
 2. Failure:  (@test-expect-error.R#46) -----------------------------------------
 `stop("!")` threw an error.
+Message: !
+Class:   simpleError/error/condition
 
 3. Failure:  (@test-expect-error.R#48) -----------------------------------------
 `stop("xxx")` threw an error with unexpected message.

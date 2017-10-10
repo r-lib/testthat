@@ -2,7 +2,7 @@
 `null()` did not produce any warnings.
 
 2. Failure:  (@test-expect-warning.R#42) ---------------------------------------
-`foo()` generated warnings.
+`foo()` generated warnings:
 * xxx
 * yyy
 
