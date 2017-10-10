@@ -38,9 +38,10 @@ expect_output_file <- function(object, file,
                                print = FALSE,
                                width = 80) {
 
-  quo <- enquo(object)
-  act <- eval_with_output(quo, print = print, width = width)
-  act$lab <- label %||% quo_label(quo)
+  act <- list()
+  act$quo <- enquo(object)
+  act$lab <- label %||% quo_label(act$quo)
+  act <- append(act, eval_with_output(object, print = print, width = width))
 
   if (!file.exists(file)) {
     write_lines(act$out, file)

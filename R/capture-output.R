@@ -33,17 +33,17 @@ capture_output <- function(code, print = FALSE, width = 80) {
 #' @export
 #' @rdname capture_output
 capture_output_lines <- function(code, print = FALSE, width = 80) {
-  eval_with_output(enquo(code), print = print, width = width)$out
+  eval_with_output(code, print = print, width = width)$out
 }
 
-eval_with_output <- function(quo, env = NULL, print = FALSE, width = 80) {
+eval_with_output <- function(code, print = FALSE, width = 80) {
   temp <- file()
   on.exit(close(temp), add = TRUE)
 
   withr::local_options(list(width = width))
   withr::local_envvar(list(RSTUDIO_CONSOLE_WIDTH = width))
 
-  result <- withr::with_output_sink(temp, withVisible(eval_tidy(quo, env = env)))
+  result <- withr::with_output_sink(temp, withVisible(code))
   if (result$visible && print) {
     withr::with_output_sink(temp, print(result$value))
   }
