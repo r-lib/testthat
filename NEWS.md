@@ -43,6 +43,9 @@
     In the first case you get the failure "Error: `f(i)` not equal to `i * 10`."
     which is hard to diagnose. In the second, you get `f(4L)` not equal to 40.`
     (#626).
+    
+    (Note that this is not tidy evaluation per se, but is closely related.
+    At this time you can not unquote quosures.)
 
 * `is_testing()` allows you to tell if your code is being run inside a 
   testing environment (#631). Rather than taking a run-time dependency on testthat
