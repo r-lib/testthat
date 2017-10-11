@@ -172,18 +172,12 @@ expect_warning <- function(object, regexp = NULL, ..., all = FALSE,
 #' @export
 #' @rdname output-expectations
 expect_silent <- function(object) {
-
-  act <- quasi_capture(enquo(object), evaluate_promise, label = label)
-
-  act <- list()
-  act$quo <- enquo(object)
-  act$lab <- quo_label(act$quo)
-  act$val <- evaluate_promise(act$val <- eval_tidy(act$quo))
+  act <- quasi_capture(enquo(object), evaluate_promise)
 
   outputs <- c(
-    if (!identical(act$val$output, "")) "output",
-    if (length(act$val$warnings) > 0) "warnings",
-    if (length(act$val$messages) > 0) "messages"
+    if (!identical(act$cap$output, "")) "output",
+    if (length(act$cap$warnings) > 0) "warnings",
+    if (length(act$cap$messages) > 0) "messages"
   )
 
   expect(
@@ -191,7 +185,7 @@ expect_silent <- function(object) {
     sprintf("%s produced %s.", act$lab, paste(outputs, collapse = ", "))
   )
 
-  invisible(act$val$result)
+  invisible(act$cap$result)
 }
 
 
