@@ -1,5 +1,10 @@
 context("expect_message")
 
+test_that("inputs evaluated in correct scope", {
+  expect_message({message("a"); x <- 10})
+  expect_identical(x, 10)
+})
+
 test_that("regexp = NULL checks for presence of message", {
   expect_success(expect_message(message("!")))
   expect_failure(expect_message(null()), "did not produce any messages")

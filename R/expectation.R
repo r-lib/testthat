@@ -54,7 +54,7 @@ expect <- function(exp, ..., srcref = NULL) {
 #'   multiple tests in a function or for loop.
 quasi_label <- function(quo, label = NULL) {
   list(
-    val = eval_tidy(quo),
+    val = eval_bare(get_expr(quo), get_env(quo)),
     lab = label %||% quo_label(quo)
   )
 }
@@ -62,7 +62,7 @@ quasi_label <- function(quo, label = NULL) {
 quasi_capture <- function(quo, capture, label = NULL) {
   act <- list()
   act$lab <- label %||% quo_label(quo)
-  act$cap <- capture(act$val <- eval_tidy(quo))
+  act$cap <- capture(act$val <- eval_bare(get_expr(quo), get_env(quo)))
 
   act
 }
