@@ -3,16 +3,16 @@
   <testsuite name="Expectations" timestamp="1999:12:31 23:59:59" hostname="nodename" tests="6" skipped="0" failures="4" errors="0" time="0">
     <testcase time="0" classname="Expectations" name="Success"/>
     <testcase time="0" classname="Expectations" name="Failure:1">
-      <failure type="failure" message="Failure has been forced">Failure has been forced</failure>
+      <failure type="failure" message="Failure has been forced (@tests.R#8)">Failure has been forced</failure>
     </testcase>
     <testcase time="0" classname="Expectations" name="Failure:2a">
-      <failure type="failure" message="Failure has been forced">Failure has been forced</failure>
+      <failure type="failure" message="Failure has been forced (@tests.R#12)">Failure has been forced</failure>
     </testcase>
     <testcase time="0" classname="Expectations" name="Failure:2b">
-      <failure type="failure" message="FALSE isn't true.">FALSE isn't true.</failure>
+      <failure type="failure" message="FALSE isn't true. (@tests.R#15)">FALSE isn't true.</failure>
     </testcase>
     <testcase time="0" classname="Expectations" name="Failure:loop">
-      <failure type="failure" message="`i` not equal to 2.">`i` not equal to 2.
+      <failure type="failure" message="`i` not equal to 2. (@tests.R#20)">`i` not equal to 2.
 1/1 mismatches
 [1] 1 - 2 == -1</failure>
     </testcase>
@@ -20,11 +20,11 @@
   </testsuite>
   <testsuite name="Errors" timestamp="1999:12:31 23:59:59" hostname="nodename" tests="2" skipped="0" failures="0" errors="2" time="0">
     <testcase time="0" classname="Errors" name="Error:1">
-      <error type="error" message="stop">stop
+      <error type="error" message="stop (@tests.R#28)">stop
 1: stop("stop") at reporters/tests.R:28</error>
     </testcase>
     <testcase time="0" classname="Errors" name="Error:3">
-      <error type="error" message="!">!
+      <error type="error" message="! (@tests.R#36)">!
 1: f() at reporters/tests.R:36
 2: g() at reporters/tests.R:32
 3: h() at reporters/tests.R:33
@@ -33,7 +33,7 @@
   </testsuite>
   <testsuite name="Recursion" timestamp="1999:12:31 23:59:59" hostname="nodename" tests="1" skipped="0" failures="0" errors="1" time="0">
     <testcase time="0" classname="Recursion" name="Recursion:1">
-      <error type="error" message="This is deep">This is deep
+      <error type="error" message="This is deep (@tests.R#45)">This is deep
 1: f(25) at reporters/tests.R:45
 2: f(x - 1) at reporters/tests.R:43
 3: f(x - 1) at reporters/tests.R:43
