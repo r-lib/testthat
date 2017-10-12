@@ -64,6 +64,7 @@ ListReporter <- R6::R6Class("ListReporter", inherit = Reporter,
 #' @param results a list as stored in ListReporter
 #' @return its list argument as a `testthat_results` object
 #' @seealso ListReporter
+#' @keywords internal
 testthat_results  <- function(results) {
   stopifnot(is.list(results))
   structure(results, class = "testthat_results")

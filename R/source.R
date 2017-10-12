@@ -12,6 +12,7 @@
 #' @param wrap Automatically wrap all code within [test_that()]? This ensures
 #'   that all expectations are reported, even if outside a test block.
 #' @export
+#' @keywords internal
 source_file <- function(path, env = test_env(), chdir = TRUE,
                         encoding = "unknown", wrap = TRUE) {
   stopifnot(file.exists(path))

@@ -7,3 +7,23 @@ home:
   links:
   - text: Learn more
     href: http://r-pkgs.had.co.nz/tests.html
+
+reference:
+- title: Expectations
+  contents:
+  - starts_with("expect")
+  - skip
+  - fail
+
+- title: Run tests
+  contents:
+  - starts_with("test_")
+  - starts_with("auto_test")
+  - context
+  - describe
+  - teardown
+  - use_catch
+
+- title: Reporters
+  contents:
+  - ends_with("Reporter")

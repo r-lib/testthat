@@ -51,3 +51,4 @@ expect_equal(
 \references{
 Suraj Gupta (2012): \href{http://obeautifulcode.com/R/How-R-Searches-And-Finds-Stuff}{How R Searches And Finds Stuff}
 }
+\keyword{internal}

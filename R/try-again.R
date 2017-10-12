@@ -2,6 +2,7 @@
 #'
 #' @param times Maximum number of attempts.
 #' @param code Code to evaluate
+#' @keywords internal
 #' @export
 #' @examples
 #' third_try <- local({

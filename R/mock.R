@@ -17,6 +17,7 @@
 #' @param .env the environment in which to patch the functions,
 #'   defaults to the top-level environment.  A character is interpreted as
 #'   package name.
+#' @keywords internal
 #' @return The result of the last unnamed parameter
 #' @references Suraj Gupta (2012): \href{http://obeautifulcode.com/R/How-R-Searches-And-Finds-Stuff}{How R Searches And Finds Stuff}
 #' @export

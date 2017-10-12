@@ -27,3 +27,4 @@ whenever source code changes.
 Use Ctrl + break (windows), Esc (mac gui) or Ctrl + C (command line) to
 stop the watcher.
 }
+\keyword{internal}

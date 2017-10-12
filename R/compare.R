@@ -8,6 +8,7 @@
 #' @param tolerance Numerical tolerance: any differences smaller than this
 #'   value will be ignored.
 #' @param ... Additional arguments used to control specifics of comparison
+#' @keywords internal
 compare <- function(x, y, ...) {
   UseMethod("compare", x)
 }

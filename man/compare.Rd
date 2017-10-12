@@ -75,3 +75,4 @@ compare(x, y)
 # as all.equal.
 compare(x, x + 1e-9)
 }
+\keyword{internal}

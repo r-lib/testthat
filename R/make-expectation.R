@@ -7,6 +7,7 @@
 #' @param expectation the type of equality you want to test for
 #'   (`"equals"`, `"is_equivalent_to"`, `"is_identical_to"`)
 #' @export
+#' @keywords internal
 #' @examples
 #' x <- 1:10
 #' make_expectation(x)
