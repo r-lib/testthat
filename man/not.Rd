@@ -11,7 +11,7 @@ not(f)
 }
 \description{
 This negates an expectation, making it possible to express that you
-want the opposite of a standard expectation. This function is soft-deprecated
+want the opposite of a standard expectation. This function is deprecated
 and will be removed in a future version.
 }
 \keyword{internal}
