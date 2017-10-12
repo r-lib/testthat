@@ -1,5 +1,7 @@
 # testthat 1.0.2.9000
 
+* JUnit reporter now includes file and line numbers (#640, @nealrichardson).
+
 *  Updated Catch to 1.9.6. `testthat` now understands and makes use of the package
    routine registration mechanism required by CRAN with R >= 3.4.0. 
    (@kevinushey)
