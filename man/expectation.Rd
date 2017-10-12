@@ -2,38 +2,17 @@
 % Please edit documentation in R/expectation.R
 \name{expectation}
 \alias{expectation}
-\alias{expect}
-\alias{quasi_label}
 \alias{is.expectation}
-\title{Expectation class.}
+\title{Construct an expectation object}
 \usage{
 expectation(type, message, srcref = NULL)
-
-expect(exp, ..., srcref = NULL)
-
-quasi_label(quo, label = NULL)
 
 is.expectation(x)
 }
 \arguments{
-\item{message}{A text description of failure}
-
-\item{srcref}{Source reference, if known}
-
-\item{quo, label}{\code{make_label} is used to generate informative labels for
-expressions. \code{quo} should be created with \code{\link[rlang:enquo]{rlang::enquo()}}, making it
-possible to use unquoting to generate informative labels when running
-multiple tests in a function or for loop.}
-
 \item{x}{object to test for class membership}
-
-\item{passed}{a single logical value indicating whether the test passed
-(\code{TRUE}), failed (\code{FALSE}), or threw an error (\code{NA})}
 }
 \description{
-You generate an expectation object with \code{expectation()}, and signal
-an expectation with \code{expect()}. If you're making your own expectation
-function, you'll typically call \code{expect(condition, "failure message")}.
-See the source code for the built-in expectations for details.
+For advanced use only.
 }
 \keyword{internal}

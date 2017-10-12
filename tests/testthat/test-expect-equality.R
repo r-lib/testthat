@@ -37,6 +37,7 @@ test_that("expect_equal and expect_equivalent pass on ... to compare", {
 test_that("useful message if objects equal but not identical", {
   f <- function() x
   g <- function() x
+  environment(g) <- globalenv()
 
   expect_failure(expect_identical(f, g), "not identical")
 })

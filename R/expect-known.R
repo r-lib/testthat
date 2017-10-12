@@ -139,7 +139,7 @@ expect_known_hash <- function(object, hash = NULL) {
   } else {
     expect(
       hash == act_hash,
-      "Value hashes to %s does not hash not %s", act_hash, hash
+      sprintf("Value hashes to %s does not hash not %s", act_hash, hash)
     )
   }
 

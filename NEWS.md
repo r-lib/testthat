@@ -81,7 +81,7 @@ for (i in 1:5) {
 }
 ```
 
-If you unquote the values using `!!`, you get the failure message "`f(4L)` not equal to 40.`". This is much easier to diagnose!
+If you unquote the values using `!!`, you get the failure message "`f(4L)` not equal to 40.`". This is much easier to diagnose!  See `?quasi_label()` for more details.
 
 (Note that this is not tidy evaluation per se, but is closely related. At this time you can not unquote quosures.)
 
@@ -226,6 +226,9 @@ A new default reporter, `ReporterProgress`, produces more aesthetically pleasing
   (#413).
 
 * `test_dir()` gains `load_helpers` argument  (#505).
+
+* `show_failures()` simply prints a failure if it occurs. This makes it easier
+  to show failures in examples.
 
 * `with_mock()` disallows mocking of functions in base packages, because this 
   doesn't work with the current development version of R (#553).

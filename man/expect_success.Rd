@@ -3,12 +3,15 @@
 \name{expect_success}
 \alias{expect_success}
 \alias{expect_failure}
+\alias{show_failure}
 \alias{expect_known_failure}
 \title{Tools for testing expectations}
 \usage{
 expect_success(expr)
 
 expect_failure(expr, message = NULL, ...)
+
+show_failure(expr)
 
 expect_known_failure(path, expr)
 }
@@ -23,5 +26,7 @@ expect_known_failure(path, expr)
 }
 \description{
 Use these expectations to test other expectations.
+Use \code{show_failure()} in examples to print the failure message without
+throwing an erorr.
 }
 \keyword{internal}

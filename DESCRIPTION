@@ -29,7 +29,9 @@ Imports:
 Suggests: 
     covr,
     devtools,
-    xml2
+    xml2,
+    knitr,
+    rmarkdown
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 6.0.1
 Collate: 
@@ -93,3 +95,4 @@ Collate:
     'utils-io.R'
     'utils.R'
     'watcher.R'
+VignetteBuilder: knitr

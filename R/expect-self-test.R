@@ -4,6 +4,8 @@ NULL
 #' Tools for testing expectations
 #'
 #' Use these expectations to test other expectations.
+#' Use `show_failure()` in examples to print the failure message without
+#' throwing an erorr.
 #'
 #' @param expr Expression that evaluates a single expectation.
 #' @param message Check that the failure message matches this regexp.
@@ -33,12 +35,32 @@ expect_failure <- function(expr, message = NULL, ...) {
 
   if (is.null(exp)) {
     fail("No expectation used")
-  } else if (is.null(message)) {
-    expect(expectation_failure(exp), "expectation did not fail.")
-  } else {
+    return()
+  }
+  if (!expectation_failure(exp)) {
+    fail("Expectation did not fail")
+    return()
+  }
+
+  if (!is.null(message)) {
     expect_match(exp$message, message, ...)
+  } else {
+    succeed()
   }
   invisible(NULL)
+}
+
+#' @export
+#' @rdname expect_success
+show_failure <- function(expr) {
+  exp <- capture_expectation(expr)
+
+  if (!is.null(exp) && expectation_failure(exp)) {
+    cat(crayon::bold("Failued expectation:\n"))
+    cat(exp$message, "\n", sep = "")
+  }
+
+  invisible()
 }
 
 #' @export

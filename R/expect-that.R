@@ -62,7 +62,7 @@ not <- function(f) {
   negate <- function(expt) {
     expect(
       !expectation_success(expt),
-      message = paste0("NOT(", expt$message, ")"),
+      failure_message = paste0("NOT(", expt$message, ")"),
       srcref = expt$srcref
     )
   }
