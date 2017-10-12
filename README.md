@@ -8,13 +8,11 @@ testthat <img src="man/figures/logo.png" align="right" />
 Overview
 --------
 
-Testing your code can be painful and tedious. **testthat** tries to make testing as fun as possible, so that you get a visceral satisfaction from writing tests. Testing should be addictive, so you do it all the time. To make that happen, testthat:
+Testing your code can be painful and tedious, but it greatly increases the quality of your code. **testthat** tries to make testing as fun as possible, so that you get a visceral satisfaction from writing tests. Testing should be addictive, so you do it all the time. To make that happen, testthat:
 
 -   Provides functions that make it easy to describe what you expect a function to do, including catching errors, warnings, and messages.
 
--   Easily integrates in your existing workflow, whether it's informal testing on the command line, building test suites or using R CMD check.
-
--   Can re-run tests automatically as you change your code or tests.
+-   Easily integrates in your existing workflow, whether it's informal testing on the command line, building test suites, or using R CMD check.
 
 -   Displays test progress visually, showing a pass, fail, or error for every expectation. If you're using the terminal or a recent version of RStudio, it'll even colour the output.
 

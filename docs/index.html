@@ -41,6 +41,18 @@
 <li>
   <a href="reference/index.html">Reference</a>
 </li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Articles
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+<li>
+      <a href="articles/custom-expectation.html">Custom expectations</a>
+    </li>
+  </ul>
+</li>
 <li>
   <a href="news/index.html">News</a>
 </li>
@@ -73,16 +85,15 @@
 <div id="overview" class="section level2">
 <h2 class="hasAnchor">
 <a href="#overview" class="anchor"></a>Overview</h2>
-<p>Testing your code is painful and tedious. <strong>testthat</strong> tries to make testing as fun as possible, so that you get a visceral satisfaction from writing tests. Testing should be fun, not a drag, so you do it all the time. To make that happen, testthat:</p>
+<p>Testing your code can be painful and tedious, but it greatly increases the quality of your code. <strong>testthat</strong> tries to make testing as fun as possible, so that you get a visceral satisfaction from writing tests. Testing should be addictive, so you do it all the time. To make that happen, testthat:</p>
 <ul>
-<li><p>Provides functions that make it easy to describe what you expect a function to do, including catching errors, warnings and messages.</p></li>
-<li><p>Easily integrates in your existing workflow, whether it’s informal testing on the command line, building test suites or using R CMD check.</p></li>
-<li><p>Can re-run tests automatically as you change your code or tests.</p></li>
-<li><p>Displays test progress visually, showing a pass, fail or error for every expectation. If you’re using the terminal or a recent version of RStudio, it’ll even colour the output.</p></li>
+<li><p>Provides functions that make it easy to describe what you expect a function to do, including catching errors, warnings, and messages.</p></li>
+<li><p>Easily integrates in your existing workflow, whether it’s informal testing on the command line, building test suites, or using R CMD check.</p></li>
+<li><p>Displays test progress visually, showing a pass, fail, or error for every expectation. If you’re using the terminal or a recent version of RStudio, it’ll even colour the output.</p></li>
 </ul>
-<p>testthat draws inspiration from the xUnit family of testing packages, as well from many of the innovative ruby testing libraries, like <a href="http://rspec.info/">rspec</a>, <a href="https://github.com/ahoward/testy">testy</a>, <a href="https://github.com/chneukirchen/bacon">bacon</a> and <a href="https://cucumber.io">cucumber</a>.</p>
-<p>testthat is the most popular unit testing package for R and is used by thousands on CRAN packages.</p>
-<p>If you’re not familiar with testthat, the best place to start is the <a href="http://r-pkgs.had.co.nz/tests.html">testing chapter</a> in <a href="http://r-pkgs.had.co.nz/">R packages</a>.</p>
+<p>testthat draws inspiration from the xUnit family of testing packages, as well as from many of the innovative ruby testing libraries, like <a href="http://rspec.info/">rspec</a>, <a href="https://github.com/ahoward/testy">testy</a>, <a href="https://github.com/chneukirchen/bacon">bacon</a> and <a href="https://cucumber.io">cucumber</a>.</p>
+<p>testthat is the most popular unit testing package for R and is used by thousands of CRAN packages.</p>
+<p>If you’re not familiar with testthat, the <a href="http://r-pkgs.had.co.nz/tests.html">testing chapter</a> in <a href="http://r-pkgs.had.co.nz/">R packages</a> gives a good overview, along with workflow advice and concrete examples.</p>
 </div>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
@@ -90,7 +101,7 @@
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Install the released version from CRAN</span>
 <span class="kw">install.packages</span>(<span class="st">"testthat"</span>)
 
-<span class="co"># Or the the development version from GitHub:</span>
+<span class="co"># Or the development version from GitHub:</span>
 <span class="co"># install.packages("devtools")</span>
 devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/devtools/topics/install_github">install_github</a></span>(<span class="st">"r-lib/testthat"</span>)</code></pre></div>
 </div>
