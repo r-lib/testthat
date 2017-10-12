@@ -1,36 +1,42 @@
-# testthat
 
-[![Travis-CI Build Status](https://travis-ci.org/hadley/testthat.svg?branch=master)](https://travis-ci.org/hadley/testthat)
-[![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/hadley/testthat?branch=master&svg=true)](https://ci.appveyor.com/project/hadley/testthat)
-[![Coverage Status](https://img.shields.io/codecov/c/github/hadley/testthat/master.svg)](https://codecov.io/github/hadley/testthat?branch=master)
-[![CRAN version](http://www.r-pkg.org/badges/version/testthat)](https://cran.r-project.org/package=testthat)
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+testthat <img src="man/figures/logo.png" align="right" />
+=========================================================
 
-Testing your code is normally painful and boring. `testthat` tries to make testing as fun as possible, so that you get a visceral satisfaction from writing tests. Testing should be fun, not a drag, so you do it all the time. To make that happen, `testthat`:
+[![Travis-CI Build Status](https://travis-ci.org/r-lib/testthat.svg?branch=master)](https://travis-ci.org/r-lib/testthat) [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/r-lib/testthat?branch=master&svg=true)](https://ci.appveyor.com/project/r-lib/testthat) [![Coverage status](https://codecov.io/gh/r-lib/testthat/branch/master/graph/badge.svg)](https://codecov.io/github/r-lib/testthat?branch=master) [![CRAN version](http://www.r-pkg.org/badges/version/testthat)](https://cran.r-project.org/package=testthat)
 
-* Provides functions that make it easy to describe what you expect a
-  function to do, including catching errors, warnings and messages.
+Overview
+--------
 
-* Easily integrates in your existing workflow, whether it's informal testing
-  on the command line, building test suites or using R CMD check.
+Testing your code is painful and tedious. **testthat** tries to make testing as fun as possible, so that you get a visceral satisfaction from writing tests. Testing should be fun, not a drag, so you do it all the time. To make that happen, testthat:
 
-* Can re-run tests automatically as you change your code or tests.
+-   Provides functions that make it easy to describe what you expect a function to do, including catching errors, warnings and messages.
 
-* Displays test progress visually, showing a pass, fail or error for every
-  expectation. If you're using the terminal, it'll even colour the output.
+-   Easily integrates in your existing workflow, whether it's informal testing on the command line, building test suites or using R CMD check.
 
-`testthat` draws inspiration from the xUnit family of testing packages, as well from many of the innovative ruby testing libraries, like [rspec](http://rspec.info/), [testy](https://github.com/ahoward/testy), [bacon](https://github.com/chneukirchen/bacon) and [cucumber](https://cucumber.io). I have used what I think works for R, and abandoned what doesn't, creating a testing environment that is philosophically centred in R.
+-   Can re-run tests automatically as you change your code or tests.
 
-Instructions for using this package can be found in the [Testing](http://r-pkgs.had.co.nz/tests.html) chapter of [R packages](http://r-pkgs.had.co.nz/).
+-   Displays test progress visually, showing a pass, fail or error for every expectation. If you're using the terminal or a recent version of RStudio, it'll even colour the output.
 
-## Integration with R CMD check
+testthat draws inspiration from the xUnit family of testing packages, as well from many of the innovative ruby testing libraries, like [rspec](http://rspec.info/), [testy](https://github.com/ahoward/testy), [bacon](https://github.com/chneukirchen/bacon) and [cucumber](https://cucumber.io).
 
-If you're using testthat in a package, you should put your tests in `tests/testthat`. Each test file should start with `test` and end in `.R` or `.r`. To ensure `R CMD check` runs your tests, place the following code in `tests/testthat.R`:
+testthat is the most popular unit testing package for R and is used by thousands on CRAN packages.
 
-```R
-library(testthat)
-library(yourpackage)
+If you're not familiar with testthat, the best place to start is the [testing chapter](http://r-pkgs.had.co.nz/tests.html) in [R packages](http://r-pkgs.had.co.nz/).
 
-test_check("yourpackage")
+Installation
+------------
+
+``` r
+# Install the released version from CRAN
+install.packages("testthat")
+
+# Or the the development version from GitHub:
+# install.packages("devtools")
+devtools::install_github("r-lib/testthat")
 ```
 
-Also make sure to add `Suggests: testthat` to your `DESCRIPTION`.
+Usage
+-----
+
+The easiest way to get started is with [usethis](https://github.com/r-lib/usethis). Assuming you're in a package directory, just run `usethis::use_test("name")` to create a test file, and set up all the other infrastructure you need. If you're using RStudio, press Cmd/Ctrl + Shift + T to run all the tests in a package.

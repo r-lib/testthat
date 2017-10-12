@@ -7,3 +7,6 @@
 ^.*\.o$
 ^\.httr-oauth$
 ^codecov\.yml$
+^docs$
+^_pkgdown\.yml$
+^README\.Rmd$

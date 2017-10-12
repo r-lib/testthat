@@ -3,7 +3,7 @@ Title: Unit Testing for R
 Version: 1.0.2.9000
 Authors@R: c(
     person("Hadley", "Wickham", , "hadley@rstudio.com", c("aut", "cre")),
-    person("RStudio", role = "cph"),
+    person("RStudio", role = c("cph", "fnd")),
     person("R Core team", role = "ctb",
       comment = "Implementation of utils::recover()")
     )
