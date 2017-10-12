@@ -21,10 +21,13 @@ Calling \code{use_catch()} will:
 \code{testthat} package will understand how to run your package's
 unit tests,
 \item Create an example test file \code{src/test-example.cpp}, which
-showcases how you might use Catch to write a unit test, and
+showcases how you might use Catch to write a unit test,
 \item Add a test file \code{tests/testthat/test-cpp.R}, which ensures that
 \code{testthat} will run your compiled tests during invocations of
-\code{devtools::test()} or \code{R CMD check}.
+\code{devtools::test()} or \code{R CMD check}, and
+\item Create a file \code{R/catch-routine-registration.R}, which ensures that
+\R will automatically register this routine when
+\code{tools::package_native_routine_registration_skeleton()} is invoked.
 }
 
 C++ unit tests can be added to C++ source files within the
