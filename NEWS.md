@@ -1,57 +1,100 @@
-# testthat 1.0.2.9000
+# testthat 1.0.2.9000 (2.0.0 on release)
 
-* JUnit reporter now includes file and line numbers (#640, @nealrichardson).
+## API changes
 
-*  Updated Catch to 1.9.6. `testthat` now understands and makes use of the package
-   routine registration mechanism required by CRAN with R >= 3.4.0. 
-   (@kevinushey)
+* `is_null()` and `matches()` have been deprecated because they conflict
+  with other functions in the tidyverse (#523).
 
-* Implement `expect_known_failure()` a useful regression test if you're 
-  developing you're own expectations.
+## Expectations
 
-* New `expect_condition()` works like `expect_error()` but captures any
+### New and improved expectations
+
+* `expect_condition()` works like `expect_error()` but captures any
   condition, not just error conditions (#621).
 
-* Failure messages from `expect_message()`, `expect_warning()` and 
-  `expect_error()` have been tweaked to be more clear.
+* `expect_error()` gains a `class` argument that allows you to make an 
+  assertion about the class of the error object (#530).
 
-* New `expect_known_hash()` which lets you check that complex objects are
-  equal to a known good hash without having to save them to disk.
+* `expect_reference()` checks if two names point to the same object (#622).
 
-* `expect_known_value()` gains an update argument defaulting to `TRUE`.
-  This changes behaviour from the previous version, and soft-deprecated
-  `expect_equal_to_reference()` gets `update = FALSE`. 
+* `expect_setequal()` compares two sets (stored in vectors), ignoring
+  duplicates and differences in order (#528).
 
-* `expect_known_ouput()` and `expect_known_value()` replace 
-  `expect_output_file()` and `expect_equal_to_reference()`. The
-  previous versions have been soft-deprecated.
+### New and improved skips
+
+* `skip_if()` makes it easy to skip a test when a condition is true (#571).
+  For example, use `skip_if(getRversion() <= 3.1)` to skip a test for older
+  R versions.
 
 * `skip_if_translated()` skips tests if you're running in an locale
   where translations are likely to occur (#565). Use this to avoid
   spurious failures when checking the text of error messages in non-English
   locales.
-
-* All expectations can now use unquoting. This makes it much easier to 
-  generate informative failure messages when running tests in a for loop.
   
-    ```R
-    f <- function(i) if (i > 3) i * 9 else i * 10
+* `skip_if_not_installed()` gains new `minimum_version` argument (#487, #499).
 
-    for (i in 1:5) {
-      expect_equal(f(i), i * 10)
-    }
-    
-    for (i in 1:5) {
-      expect_equal(f(!!i), !!(i * 10))
-    }
-    ```
-    
-    In the first case you get the failure "Error: `f(i)` not equal to `i * 10`."
-    which is hard to diagnose. In the second, you get `f(4L)` not equal to 40.`
-    (#626).
-    
-    (Note that this is not tidy evaluation per se, but is closely related.
-    At this time you can not unquote quosures.)
+### Known good values
+
+We have identified a useful family of expectations that compares the results of an expression to a known good value stored in a file. They are designed to be use in conjunction with git so that you can see what precisely has changed, and revert it if needed.
+
+* `expect_known_output()` replaces `expect_output_file()`, which has
+  been soft-deprecated. It now defaults to `update = TRUE` and warn, rather
+  than failing on the first run. It gains a `print` argument to automatically 
+  print the input (#627). It also sets the width option to 80 to ensure 
+  consistent output across environments (#514)
+
+* `expect_known_value()` replaces `expect_equal_to_reference()`, which
+  has been soft-deprecated. It gains an update argument defaulting to `TRUE`.
+  This changes behaviour from the previous version, and soft-deprecated
+  `expect_equal_to_reference()` gets `update = FALSE`. 
+
+* `expect_known_failure()` stored and compares the failure message from
+  an expectation. It's a useful regression test when developing informative
+  failure messges for your own expectations.
+
+### Quasiquotation support
+
+All expectations can now use unquoting (#626). This makes it much easier to generate informative failure messages when running tests in a for loop.
+
+For example take this test:
+
+```R
+f <- function(i) if (i > 3) i * 9 else i * 10
+
+for (i in 1:5) {
+  expect_equal(f(i), i * 10)
+}
+```
+
+When it fails, you'll see the message "Error: `f(i)` not equal to `i * 10`".
+That's hard to diagnose because you don't know which iteration caused the problem!
+
+```R
+for (i in 1:5) {
+  expect_equal(f(!!i), !!(i * 10))
+}
+```
+
+If you unquote the values using `!!`, you get the failure message "`f(4L)` not equal to 40.`". This is much easier to diagnose!
+
+(Note that this is not tidy evaluation per se, but is closely related. At this time you can not unquote quosures.)
+
+## New features
+
+### Setup and teardown
+
+* New `setup()` and `teardown()` functions allow you to run at the start and
+  end of each test file. This is useful if you want to pair cleanup code
+  with the code that messes up state (#536). 
+
+* Two new prefixes are recognised in the `test/` directory. Files starting
+  with `setup` are run before tests (but unlike `helpers` are not run in
+  `devtools::load_all()`). Files starting with `teardown` are run after all
+  tests are completed (#589).
+
+### Other new features
+
+* All files are now read and written as UTF-8 (#510, #605).
 
 * `is_testing()` allows you to tell if your code is being run inside a 
   testing environment (#631). Rather than taking a run-time dependency on testthat
@@ -65,165 +108,123 @@
     
     It's frequently useful to combine with `interactive()`.
 
+### New default reporter
+
+A new default reporter, `ReporterProgress`, produces more aesthetically pleasing output and makes the most important information available upfront (#529). You can return to the previous default by setting `option(testthat.default_reporter = "summary")`.
+
+### Reporters
+
 * Output colours have been tweaked to be consistent with clang:
   warnings are now in magenta, and skips in blue.
 
-* New default reporter `ReporterProgress` replaces the previous 
-  `SummaryReporter`. It's a careful rethinking of the default output that is
-  both more aesthetically pleasing and makes the most important information
-  available upfront (#529).
+* New `default_reporter()` which returns the default report (#504).
 
-* `test_dir()` (and hence `test_package()`, and `test_check()`) now unsets
-  the `R_TESTS` env var (#603)
+* New `DebugReporter` that calls a better version of `recover()` in case of 
+  failures, errors, or warnings (#360, #470).
 
-* `expect_setequal()` compares two set (represented by vectors), ignoring
-  duplicates and differences in order (#528).
+* New `JunitReporter` generates reports in JUnit compatible format.  
+  (#481, @lbartnik; #640, @nealrichardson; #575)
 
-* `expect_output_file()` received a few tweaks. It now defaults to 
-  `update = TRUE` and no longer fails on first run. It gains a `print` 
-  argument to automatically print the input (#627).
-  
-* Two new prefixes are recognised in the `test/` directory. Files starting
-  with `setup` are run before tests (but unlike `helpers` are not run in
-  `devtools::load_all()`). Files starting with `teardown` are run after all
-  tests are completed (#589).
+* New `LocationReporter` which just prints the location of every expectation.
+  This is useful for locating segfaults and C/C++ breakpoints (#551).
 
-* `with_mock()` disallows mocking of functions in base packages, because this doesn't work with the current development version of R (#553).
+* `SummaryReporter` recieved a number of smaller tweaks
 
-* `test_dir()`, `test_package()`, and `test_check()` gain `stop_on_failure` 
-  and `stop_on_waring` arguments that control whether or not an error 
-  is signalled if any tests fail or generate warnings (#609, #619).
+  * Aborts testing as soon the limit given by the option 
+    `testthat.summary.max_reports` (default 10) is reached (#520).
+    
+  * New option `testthat.summary.omit_dots = TRUE` hides the progress dots
+    speeding up tests by a small amount (#502).
 
-* `expect_reference()` checks if two names point to the same object (#622).
-
-* Output expectations (`expect_output()`, `expect_message()`, 
-  `expect_warning()`, and `expect_silent()`) all invisibly return the first
-  argument to be consistent with the other expectations (#615).
-
-* The `encoding` argument to `test_file()`, `source_file()`, and `test_dir()` 
-  has been deprecated. All files are now read and written as UTF-8 (#510, #605).
-
-* New `skip_if()` makes it easy to skip a test when a condition is true (#571).
-
-* `test_examples()` now works with installed packages as well as source
-  packages (@jimhester, #532).
-
-* Improved behavior of the `SummaryReporter` when the maximum number of errors
-  reported is reached.
-
-* `expect_match()` now accepts explicit `perl` and `fixed` arguments, and adapts
-  the failure message to the value of `fixed`. This also affects other expectations
-  that forward to `expect_match()`, like `expect_output()`, `expect_message()`,
-  `expect_warning()`, and `expect_error()`.
+  * Bring back random praise and encouragement which I accidentally dropped 
+    (#478).
 
 * New option `testthat.default_check_reporter`, defaults to `"check"`. 
   Continuous Integration system can set this option before evaluating
   package test sources in order to direct test result details to known
   location.
 
-* Reporters accept a ``"file"`` argument on initialization. If provided, reporters
-  will write the test results to the provided path rather than
-  standard output. This output destination can also be controlled with the option 
-  `testthat.output_file` (#635, @nealrichardson).
+* All reporters now accept a `file` argument on initialization. If provided, 
+  reporters will write the test results to that path. This output destination 
+  can also be controlled with the option `testthat.output_file` 
+  (#635, @nealrichardson).
 
-* Fixed JUnitReporter output format (#575). The testcase element now
-  includes both the `classname` attribute, which contains the testthat 
-  context, and the `name` attribute, which contains the testthat 
-  test name.
+## Minor improvements and bug fixes
 
-* The default summary reporter aborts testing as soon as the limit given by the
-  option `testthat.summary.max_reports` (default 15) is reached
-  (#520).
+* Updated Catch to 1.9.6. `testthat` now understands and makes use of the package
+  routine registration mechanism required by CRAN with R >= 3.4.0. 
+  (@kevinushey)
 
-* New option `testthat.summary.omit_dots`, default to `FALSE`. Setting to `TRUE`
-  hides the progress dots from the output of the summary reporter, which speeds
-  up tests by a small margin (#502).
+* Better reporting for deeply nested failures, limiting the stack trace to the 
+  first and last 10 entries (#474).
 
-* New `LocationReporter` which just prints the location of every expectation.
-  This is useful for locating segfaults and C/C++ breakpoints (#551).
+* Bare expectations notify the reporter once again. This is achieved by running 
+  all tests inside `test_code()` by default (#427, #498). This behaviour can be 
+  overridden by setting `wrap = FALSE` in `test_dir()` and friends (#586).
 
-* `expect_equivalent()` now passes `...` on to `compare()` (#552).
-
-* New `default_reporter()` which returns the default report. You can override
-  the default "summary" by setting option "testthat.default_reporter" (#504).
+* `auto_test()` and `auto_test_package()` provide `hash` parameter to enable 
+  switching to faster, time-stamp-based modification detection
+  (#598, @katrinleinweber). `auto_test_package()` works correctly on windows 
+  (#465). 
 
 * `capture_output_lines()` is now exported (#504).
 
-* New `teardown()` allows you to run code that is guaranteed to be executed at 
-  the end of a `test_file()`. This is useful if you want to pair cleanup code
-  with the code that messes up state (#536). `setup()` is a similar helper
-  that works like `local()` and allows you to run code during setup.
+* `compare.character()` works correctly for vectors of length > 5 (#513, @brodieG)
+
+* `compare.default()` gains a `max_diffs` argument and defaults to printing
+  out only the first 9 differences (#538).
+
+* `compare.numeric()` respects `check.attributes()` so `expect_equivalent()`
+  correctly ignores attributes of numeric vectors (#485).
+
+* `expect_equivalent()` now passes `...` on to `compare()` (#552).
+
+* Output expectations (`expect_output()`, `expect_message()`, 
+  `expect_warning()`, and `expect_silent()`) all invisibly return the first
+  argument to be consistent with the other expectations (#615).
+
+* `expect_length()` works with any object that has a `length` method, not
+  just vectors (#564, @nealrichardson)
+
+* `expect_match()` now accepts explicit `perl` and `fixed` arguments, and adapts
+  the failure message to the value of `fixed`. This also affects other expectations
+  that forward to `expect_match()`, like `expect_output()`, `expect_message()`,
+  `expect_warning()`, and `expect_error()`.
+
+* `expect_match()` escapes special regular expression characters when printing 
+  (#522, @jimhester).
+
+* `expect_message()`, `expect_warning()` and `expect_error()` produce clearer
+  failure messages.
+
+* `find_test_scripts()` only looks for `\.[rR]` in the extension 
+  (#492, @brodieG)
+  
+* `test_dir()`, `test_package()`, `test_check()` unset the `R_TESTS` env var 
+  (#603)
+
+* `test_examples()` now works with installed packages as well as source
+  packages (@jimhester, #532).
+
+* `with_mock()` disallows mocking of functions in base packages, because this 
+  doesn't work with the current development version of R (#553).
+
+* `test_dir()`, `test_package()`, and `test_check()` gain `stop_on_failure` 
+  and `stop_on_waring` arguments that control whether or not an error 
+  is signalled if any tests fail or generate warnings (#609, #619).
+
+* `test_file()` now triggers a `gc()` after tests are run. This helps
+  to ensure that finalisers are run earlier (#535).
 
 * `test_path()` now generates correct path when called from within 
   `tools::testInstalledPackage()` (#542).
 
 * `test_path()` no longer assumes that the path exists (#448).
 
-* Empty tests now generate a default `skip()` (#413).
+* `test_that()` calls without any expectations generate a default `skip()` 
+  (#413).
 
-* The default `compare()` gains a `max_diffs` argument and defaults to printing
-  out only the first 9 differences (#538).
-
-* `expect_output_file()` now:
-
-  * Sets the width to 80 to ensure consistent output (#514)
-  * Saves the output on the first run (#554)
-  * Correctly calls internal `expect_output_file()` to avoid error (#517)
-
-* `expect_error()` gains a `class` argument that allows you to make an assertion
-  about the class of the error object (#530).
-
-* `is_null()` and `matches()` have been deprecated because they conflict
-  with other functions in the tidyverse (#523).
-
-* `test_file()` now triggers a `gc()` after tests are run. This helps
-  to ensure that finalisers are run earlier (#535).
-
-* New argument `encoding` in `test_file()` and `source_file()` (@hansharhoff, #550, hadley/devtools#1306)
-
-* Special regular expression characters are escaped when printing errors in
-  `expect_match()` (#522, @jimhester).
-
-* New argument `load_helpers` in `test_dir()` (#505).
-
-* Bare expectations notify the reporter again. This is achieved by running all 
-  tests inside `test_code()` by default (#427, #498). This behaviour can be 
-  overridden by setting `wrap = FALSE` in `test_dir()` and friends (#586).
-
-* New `DebugReporter` that calls a better version of `recover()` in case of failures, errors, or warnings (#360, #470).
-
-* `compare.numeric()` respects `check.attributes()` so `expect_equivalent()`
-  correctly ignores attributes of numeric vectors (#485).
-
-* New argument `minimum_version` to `skip_if_not_installed()` (#487, #499).
-
-* Properly report endless recursion, limiting the stack trace to the first and last 10 entries (#474).
-
-* Fix context test (#494).
-
-* `ListReporter` can add results without an active test (#494).
-
-* Catch differences in check reporter in tests (#491).
-
-* Bring back random praise and encouragement which I accidentally dropped 
-  (#478).
-
-* Fixed filtering in `find_test_scripts` for files containing `\.[rR]` in the
-  body of the filename and not just in the extension (#492, @brodieG)
-  
-* `auto_test_package()` now works correctly on windows (#465). 
-
-* Fixed `compare.character` for vectors of length > 5 (#513, @brodieG)
-
-* New JUnit reporter `JunitReporter`. (#481, @lbartnik)
-
-* Mirror `hash` parameter in `auto_test()` and `auto_test_package()` in order 
-  to enable switching to faster, time-stamp-based modification detection 
-  (#598, @katrinleinweber)
-
-* Clarified `skip` semantics in documentation (@brodieG)
-
-* Extend `expect_length()` to work with any object that has a `length` method (#564, @nealrichardson)
+* `test_dir()` gains `load_helpers` argument  (#505).
 
 # testthat 1.0.2
 
