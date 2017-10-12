@@ -7,10 +7,11 @@ Authors@R: c(
     person("R Core team", role = "ctb",
       comment = "Implementation of utils::recover()")
     )
-Description: A unit testing system designed to be fun, flexible and easy to
-    set up.
+Description: Software testing is important, but, in part because it is 
+    frustrating and boring, many of us avoid it. testthat is a testing framework 
+    for R that is easy learn and use, and integrates with your existing workflow.
 License: MIT + file LICENSE
-URL: https://github.com/r-lib/testthat
+URL: http://testthat.r-lib.org, https://github.com/r-lib/testthat
 BugReports: https://github.com/r-lib/testthat/issues
 Encoding: UTF-8
 Depends: 
