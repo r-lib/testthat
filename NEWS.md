@@ -210,9 +210,6 @@ A new default reporter, `ReporterProgress`, produces more aesthetically pleasing
 * `test_examples()` now works with installed packages as well as source
   packages (@jimhester, #532).
 
-* `with_mock()` disallows mocking of functions in base packages, because this 
-  doesn't work with the current development version of R (#553).
-
 * `test_dir()`, `test_package()`, and `test_check()` gain `stop_on_failure` 
   and `stop_on_waring` arguments that control whether or not an error 
   is signalled if any tests fail or generate warnings (#609, #619).
@@ -229,6 +226,9 @@ A new default reporter, `ReporterProgress`, produces more aesthetically pleasing
   (#413).
 
 * `test_dir()` gains `load_helpers` argument  (#505).
+
+* `with_mock()` disallows mocking of functions in base packages, because this 
+  doesn't work with the current development version of R (#553).
 
 # testthat 1.0.2
 
