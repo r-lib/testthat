@@ -36,7 +36,7 @@ expect_true <- function(object, info = NULL, label = NULL) {
     sprintf("%s isn't true.", act$lab),
     info = info
   )
-  invisible(object)
+  invisible(act$val)
 }
 
 #' @export
@@ -49,5 +49,5 @@ expect_false <- function(object, info = NULL, label = NULL) {
     sprintf("%s isn't false.", act$lab),
     info = info
   )
-  invisible(object)
+  invisible(act$val)
 }

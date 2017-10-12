@@ -59,7 +59,7 @@ expect_equal <- function(object, expected, ..., info = NULL, label = NULL,
     info = info
   )
 
-  invisible(object)
+  invisible(act$val)
 }
 
 
@@ -79,7 +79,7 @@ expect_setequal <- function(object, expected) {
     sprintf("%s not set-equal to %s.\n%s", act$lab, exp$lab, comp$message)
   )
 
-  invisible(object)
+  invisible(act$val)
 }
 
 
@@ -96,7 +96,7 @@ expect_equivalent <- function(object, expected, ..., info = NULL, label = NULL,
     sprintf("%s not equivalent to %s.\n%s", act$lab, exp$lab, comp$message),
     info = info
   )
-  invisible(object)
+  invisible(act$val)
 }
 
 #' @export
@@ -124,7 +124,7 @@ expect_identical <- function(object, expected, info = NULL, label = NULL,
     sprintf("%s not identical to %s.\n%s", act$lab, exp$lab, msg),
     info = info
   )
-  invisible(object)
+  invisible(act$val)
 }
 
 #' @export
@@ -152,7 +152,7 @@ expect_identical <- function(object, expected, info = NULL, label = NULL,
     sprintf("%s not identical to %s.\n%s", act$lab, exp$lab, msg),
     info = info
   )
-  invisible(object)
+  invisible(act$val)
 }
 
 #' @export
@@ -168,5 +168,5 @@ expect_reference <- function(object, expected, info = NULL, label = NULL,
     sprintf("%s not a reference %s.", act$lab, exp$lab),
     info = info
   )
-  invisible(object)
+  invisible(act$val)
 }

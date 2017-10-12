@@ -51,5 +51,5 @@ expect_match <- function(object, regexp, perl = FALSE, fixed = FALSE, ..., all =
     ),
     info = info
   )
-  invisible(object)
+  invisible(act$val)
 }
