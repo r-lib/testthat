@@ -1,9 +1,15 @@
 # testthat 1.0.2.9000 (2.0.0 on release)
 
-## API changes
+## Breaking changes
 
 * `is_null()` and `matches()` have been deprecated because they conflict
   with other functions in the tidyverse (#523).
+
+* `expect_equivalent()` now passes `...` on to `compare()` (#552). This
+  leads to a number of tests failures where the `info` argument was
+  supply by position - specify it by name in order to fix the issue.
+  A similar problem can be seen with `expect_error()` which gained a
+  class argument.
 
 ## Expectations
 
@@ -176,8 +182,6 @@ A new default reporter, `ReporterProgress`, produces more aesthetically pleasing
 
 * `compare.numeric()` respects `check.attributes()` so `expect_equivalent()`
   correctly ignores attributes of numeric vectors (#485).
-
-* `expect_equivalent()` now passes `...` on to `compare()` (#552).
 
 * Output expectations (`expect_output()`, `expect_message()`, 
   `expect_warning()`, and `expect_silent()`) all invisibly return the first
