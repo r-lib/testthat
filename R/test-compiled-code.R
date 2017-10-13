@@ -101,6 +101,23 @@ expect_cpp_tests_pass <- function(package) {
 #' currently unsupported by Catch). This should make it
 #' easier to submit packages to CRAN that use Catch.
 #'
+#' @section Symbol Registration:
+#'
+#' If you've opted to disable dynamic symbol lookup in your
+#' package, then you'll need to explicitly export a symbol
+#' in your package that `testthat` can use to run your unit
+#' tests. `testthat` will look for a routine with one of the names:
+#'
+#' \preformatted{
+#'     C_run_testthat_tests
+#'     c_run_testthat_tests
+#'     run_testthat_tests
+#' }
+#'
+#' See [Controlling Visibility](https://cran.r-project.org/doc/manuals/r-release/R-exts.html#Controlling-visibility)
+#' and [Registering Symbols](https://cran.r-project.org/doc/manuals/r-release/R-exts.html#Registering-symbols)
+#' in the **Writing R Extensions** manual for more information.
+#'
 #' @section Advanced Usage:
 #'
 #' If you'd like to write your own Catch test runner, you can
@@ -202,15 +219,35 @@ use_catch <- function(dir = getwd()) {
 
 get_routine <- function(package, routine) {
 
-  resolved <- tryCatch(
-    getNativeSymbolInfo(routine, PACKAGE = package),
-    error = function(e) NULL
-  )
+  # check to see if the package has explicitly exported
+  # the associated routine (check common prefixes as we
+  # don't necessarily have access to the NAMESPACE and
+  # know what the prefix is)
+  namespace <- asNamespace(package)
+  prefixes <- c("C_", "c_", "C", "c", "_", "")
+  for (prefix in prefixes) {
+    name <- paste(prefix, routine, sep = "")
+    if (exists(name, envir = namespace)) {
+      symbol <- get(name, envir = namespace)
+      if (inherits(symbol, "NativeSymbolInfo"))
+        return(symbol)
+    }
+  }
 
-  if (is.null(resolved))
-    stop("failed to locate routine '", routine, "' in package '", package, "'", call. = FALSE)
+  # otherwise, try to resolve the symbol dynamically
+  for (prefix in prefixes) {
+    name <- paste(prefix, routine, sep = "")
+    resolved <- tryCatch(
+      getNativeSymbolInfo(routine, PACKAGE = package),
+      error = function(e) NULL
+    )
+    if (inherits(resolved, "NativeSymbolInfo"))
+      return(symbol)
+  }
 
-  resolved
+  # if we got here, we failed to find the symbol -- throw an error
+  fmt <- "failed to locate routine '%s' in package '%s'"
+  stop(sprintf(fmt, routine, package), call. = FALSE)
 }
 
 (function() {

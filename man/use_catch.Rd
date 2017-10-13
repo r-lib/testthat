@@ -77,6 +77,25 @@ currently unsupported by Catch). This should make it
 easier to submit packages to CRAN that use Catch.
 }
 
+\section{Symbol Registration}{
+
+
+If you've opted to disable dynamic symbol lookup in your
+package, then you'll need to explicitly export a symbol
+in your package that \code{testthat} can use to run your unit
+tests. \code{testthat} will look for a routine with one of the names:
+
+\preformatted{
+    C_run_testthat_tests
+    c_run_testthat_tests
+    run_testthat_tests
+}
+
+See \href{https://cran.r-project.org/doc/manuals/r-release/R-exts.html#Controlling-visibility}{Controlling Visibility}
+and \href{https://cran.r-project.org/doc/manuals/r-release/R-exts.html#Registering-symbols}{Registering Symbols}
+in the \strong{Writing R Extensions} manual for more information.
+}
+
 \section{Advanced Usage}{
 
 
