@@ -1,16 +1,41 @@
 # testthat 1.0.2.9000 (2.0.0 on release)
 
-## Breaking changes
+## Breaking API changes
 
-* `is_null()` and `matches()` have been deprecated because they conflict
-  with other functions in the tidyverse (#523).
+This section lists deliberate API changes that have caused R CMD check failures in more than one packge.
 
-* `expect_equivalent()` now passes `...` on to `compare()` (#552). This
-  leads to a number of tests failures where the `info` argument was
-  supply by position - specify it by name in order to fix the issue.
-  A similar problem can be seen with `expect_error()` which gained a
-  class argument.
+* "Can't mock functions in base packages": You can no longer use `with_mock()` 
+  to mocking functions in base packages, because this no longer works in 
+  R-devel due to changes with the byte code compiler.
 
+* The order of arguments to `expect_equivalent()` and `expect_error()` have
+  change slightly as both now pass `...` on another function. This reveals
+  itself with a number of different errors, like:
+  
+  > 'what' must be a character vector
+  > 'check.attributes' must be logical
+  > 'tolerance' should be numeric
+  > argument is not interpretable as logical
+  > threw an error with unexpected class
+  > argument "quo" is missing, with no default
+  > argument is missing, with no default
+
+  If you see one of these errors, check the number, order, and names of 
+  arguments to the expectation.
+
+* "Failure: (unknown)". The last release mistakenly failed to test 
+  bare expectations not wrapped inside `test_that()`. If you see "(unknown)"
+  in a failure message, this is a failing expectation that you previously
+  weren't seeing. As well as fixing the failure, please also wrap inside
+  a `test_that()` with an informative name.
+  
+* "Error: the argument has already been evaluated": the way in which 
+  expectations now need create labels has changed, which caused a couple 
+  of failures with unusual usage when combined with `Reduce`, `lapply()`, 
+  and `Map()`. Avoid these functions in favour of for loops. I'd recommend
+  also reading the section on quasiquotation support in order to create
+  more informative failure messages.
+  
 ## Expectations
 
 ### New and improved expectations
@@ -155,6 +180,11 @@ A new default reporter, `ReporterProgress`, produces more aesthetically pleasing
   reporters will write the test results to that path. This output destination 
   can also be controlled with the option `testthat.output_file` 
   (#635, @nealrichardson).
+
+## Deprecated functions
+
+* `is_null()` and `matches()` have been deprecated because they conflict
+  with other functions in the tidyverse (#523).
 
 ## Minor improvements and bug fixes
 
