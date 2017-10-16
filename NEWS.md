@@ -1,4 +1,5 @@
-# testthat 1.0.2.9000 (2.0.0 on release)
+# testthat 1.0.2.9000 
+(testhat 2.0.0 on release)
 
 ## Breaking API changes
 

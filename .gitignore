@@ -3,3 +3,5 @@
 .RData
 .httr-oauth
 inst/doc
+revdep/checks
+revdep/library
