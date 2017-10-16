@@ -123,7 +123,8 @@ A new default reporter, `ReporterProgress`, produces more aesthetically pleasing
 * Output colours have been tweaked to be consistent with clang:
   warnings are now in magenta, and skips in blue.
 
-* New `default_reporter()` which returns the default report (#504).
+* New `default_reporter()` and `check_reporter()` which returns the default 
+  reporters for interactive and check environments (#504).
 
 * New `DebugReporter` that calls a better version of `recover()` in case of 
   failures, errors, or warnings (#360, #470).

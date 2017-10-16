@@ -113,11 +113,18 @@ fancy_line <- function(x) {
 
 #' Retrieve the default reporter.
 #'
-#' This will be [SummaryReporter()] unless option
-#' `testthat.default_reporter` is set
+#' The defaults are:
+#' * [SummaryReporter] for interactive; override with `testthat.default_reporter`
+#' * [CheckReporter] for R CMD check; override with `testthat.default_check_reporter`
 #'
 #' @export
 #' @keywords internal
 default_reporter <- function() {
   getOption("testthat.default_reporter", "progress")
+}
+
+#' @export
+#' @rdname default_reporter
+check_repoter <- function() {
+  getOption("testthat.default_check_reporter", "check")
 }

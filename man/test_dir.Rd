@@ -11,11 +11,10 @@ test_dir(path, filter = NULL, reporter = default_reporter(),
   env = test_env(), ..., encoding = "unknown", load_helpers = TRUE,
   stop_on_failure = FALSE, stop_on_warning = FALSE, wrap = TRUE)
 
-test_package(package, filter = NULL, reporter = default_reporter(), ...,
+test_package(package, filter = NULL, reporter = check_repoter(), ...,
   stop_on_failure = TRUE, stop_on_warning = FALSE)
 
-test_check(package, filter = NULL,
-  reporter = getOption("testthat.default_check_reporter", "check"), ...,
+test_check(package, filter = NULL, reporter = check_repoter(), ...,
   stop_on_failure = TRUE, stop_on_warning = FALSE, wrap = TRUE)
 
 is_testing()
