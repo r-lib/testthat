@@ -55,8 +55,6 @@ expectation <- function(type, message, srcref = NULL) {
 #' @param x object to test for class membership
 is.expectation <- function(x) inherits(x, "expectation")
 
-
-
 #' Quasi-labelling
 #'
 #' The first argument to every `expect_` function can use unquoting to
@@ -91,7 +89,7 @@ quasi_label <- function(quo, label = NULL) {
 
   list(
     val = eval_bare(get_expr(quo), get_env(quo)),
-    lab = label %||% quo_label(quo)
+    lab = label %||% expr_label(get_expr(quo))
   )
 }
 
@@ -103,14 +101,7 @@ quasi_capture <- function(quo, capture, label = NULL) {
   act
 }
 
-
-add_info <- function(message, info = NULL) {
-  paste(c(message, info), collapse = "\n")
-}
-
-label <- function(x) {
-  x <- find_label(x)
-
+expr_label <- function(x) {
   if (is.character(x)) {
     encodeString(x, quote = '"')
   } else if (is.atomic(x)) {
@@ -129,10 +120,6 @@ label <- function(x) {
     }
     chr
   }
-}
-
-find_label <- function(x) {
-  .Call(find_label_, quote(x), environment())
 }
 
 expectation_type <- function(exp) {
@@ -190,6 +177,10 @@ as.expectation.logical <- function(x, message, ..., srcref = NULL, info = NULL) 
   type <- if (x) "success" else "failure"
   message <- if (x) "success" else add_info(message, info)
   expectation(type, message, srcref = srcref)
+}
+
+add_info <- function(message, info = NULL) {
+  paste(c(message, info), collapse = "\n")
 }
 
 #' @export

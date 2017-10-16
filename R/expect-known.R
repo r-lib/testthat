@@ -127,7 +127,7 @@ expect_equal_to_reference <- function(..., update = FALSE) {
 #'   to use in the test output.
 expect_known_hash <- function(object, hash = NULL) {
 
-  act <- quasi_label(enquo(object), label)
+  act <- quasi_label(enquo(object))
   act_hash <- digest::digest(act$val)
   if (!is.null(hash)) {
     act_hash <- substr(act_hash, 1, nchar(hash))
