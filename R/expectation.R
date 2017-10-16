@@ -87,6 +87,8 @@ is.expectation <- function(x) inherits(x, "expectation")
 #' # variable name
 #' show_failure(expect_equal(f(!!i), !!(i * 10)))
 quasi_label <- function(quo, label = NULL) {
+  force(quo)
+
   list(
     val = eval_bare(get_expr(quo), get_env(quo)),
     lab = label %||% quo_label(quo)
