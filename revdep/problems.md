@@ -95,30 +95,6 @@ Version: 1.4.2
 
 Version: 1.0.0
 
-## Newly broken
-
-*   checking tests ...
-    ```
-     ERROR
-    Running the tests in ‘tests/run-all.R’ failed.
-    Last 13 lines of output:
-      Loading required package: XML
-      > 
-      > test_package("aidar")
-      ✔ | OK F W S | Context
-      Error in x[[method]](...) : attempt to apply non-function
-      Calls: test_package ... <Anonymous> -> o_apply -> lapply -> FUN -> <Anonymous>
-      In addition: Warning message:
-      Placing tests in `inst/tests` is deprecated. Please use `tests/testthat` instead 
-      
-      ═ Results ══════════════════════════════════════════════════════════════════════
-      OK:       0
-      Failed:   4
-      Warnings: 1
-      Skipped:  0
-      Execution halted
-    ```
-
 ## In both
 
 *   checking DESCRIPTION meta-information ... NOTE
@@ -945,6 +921,18 @@ Version: 0.2.0
       All declared Imports should be used.
     ```
 
+# basictabler
+
+Version: 0.1.0
+
+## In both
+
+*   checking dependencies in R code ... NOTE
+    ```
+    Namespace in Imports field not imported from: ‘dplyr’
+      All declared Imports should be used.
+    ```
+
 # BatchExperiments
 
 Version: 1.4.1
@@ -1328,6 +1316,42 @@ Version: 0.3.1
 *   checking Rd cross-references ... NOTE
     ```
     Package unavailable to check Rd xrefs: ‘bigrquery’
+    ```
+
+# bigstatsr
+
+Version: 0.2.2
+
+## In both
+
+*   checking tests ...
+    ```
+     ERROR
+    Running the tests in ‘tests/testthat.R’ failed.
+    Last 13 lines of output:
+      'dimnames' applied to non-array
+      1: sparseSVM::sparseSVM(X2, y.factor, alpha = alpha, lambda.min = lambda.min, penalty.factor = m) at testthat/test-spSVM.R:32
+      
+      2. Error: equality with sparseSVM with only half the data (@test-spSVM.R#68) ---
+      'dimnames' applied to non-array
+      1: sparseSVM::sparseSVM(X2[ind, ], y.factor[ind], alpha = alpha, lambda.min = lambda.min, 
+             penalty.factor = m) at testthat/test-spSVM.R:68
+      
+      testthat results ================================================================
+      OK: 1633 SKIPPED: 0 FAILED: 2
+      1. Error: equality with sparseSVM with all data (@test-spSVM.R#32) 
+      2. Error: equality with sparseSVM with only half the data (@test-spSVM.R#68) 
+      
+      Error: testthat unit tests failed
+      Execution halted
+    ```
+
+*   checking installed package size ... NOTE
+    ```
+      installed size is 12.7Mb
+      sub-directories of 1Mb or more:
+        extdata   2.3Mb
+        libs      9.6Mb
     ```
 
 # bikedata
@@ -2780,11 +2804,11 @@ Version: 1.2.0
 ```
 * installing *source* package ‘chromstaR’ ...
 ** libs
+g++  -I/usr/share/R/include -DNDEBUG     -fopenmp -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c R_interface.cpp -o R_interface.o
 g++  -I/usr/share/R/include -DNDEBUG     -fopenmp -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c utility.cpp -o utility.o
 g++  -I/usr/share/R/include -DNDEBUG     -fopenmp -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c densities.cpp -o densities.o
 g++  -I/usr/share/R/include -DNDEBUG     -fopenmp -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c scalehmm.cpp -o scalehmm.o
 g++  -I/usr/share/R/include -DNDEBUG     -fopenmp -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c init.cpp -o init.o
-g++  -I/usr/share/R/include -DNDEBUG     -fopenmp -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c R_interface.cpp -o R_interface.o
 g++ -shared -L/usr/lib/R/lib -Wl,-Bsymbolic-functions -Wl,-z,relro -o chromstaR.so R_interface.o densities.o init.o scalehmm.o utility.o -fopenmp -L/usr/lib/R/lib -lR
 installing to /home/muelleki/git/R/testthat/revdep/checks/chromstaR/new/chromstaR.Rcheck/chromstaR/libs
 ** R
@@ -2804,8 +2828,8 @@ ERROR: lazy loading failed for package ‘chromstaR’
 * installing *source* package ‘chromstaR’ ...
 ** libs
 g++  -I/usr/share/R/include -DNDEBUG     -fopenmp -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c init.cpp -o init.o
-g++  -I/usr/share/R/include -DNDEBUG     -fopenmp -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c utility.cpp -o utility.o
 g++  -I/usr/share/R/include -DNDEBUG     -fopenmp -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c R_interface.cpp -o R_interface.o
+g++  -I/usr/share/R/include -DNDEBUG     -fopenmp -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c utility.cpp -o utility.o
 g++  -I/usr/share/R/include -DNDEBUG     -fopenmp -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c densities.cpp -o densities.o
 g++  -I/usr/share/R/include -DNDEBUG     -fopenmp -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c scalehmm.cpp -o scalehmm.o
 g++ -shared -L/usr/lib/R/lib -Wl,-Bsymbolic-functions -Wl,-z,relro -o chromstaR.so R_interface.o densities.o init.o scalehmm.o utility.o -fopenmp -L/usr/lib/R/lib -lR
@@ -4301,14 +4325,14 @@ Version: 0.2.0
     Running the tests in ‘tests/testthat.R’ failed.
     Last 13 lines of output:
       Looking up history[1], period 1: (0, 536871054, 0)
-      Looking up history[2], period 0: (1, 536870926, 0)
+      Looking up history[2], period 0: (1, 536870925, 0)
+      Looking up history[3], period 1: (0, 536870936, 0)
+      Looking up history[4], period 1: (0, 536870922, 0)
+      Looking up history[1], period 1: (0, 536870925, 0)
+      Looking up history[2], period 0: (1, 536870925, 0)
       Looking up history[3], period 1: (0, 536870925, 0)
-      Looking up history[4], period 1: (0, 536870925, 0)
-      Looking up history[1], period 1: (0, 536870928, 0)
-      Looking up history[2], period 0: (1, 536870928, 0)
-      Looking up history[3], period 1: (0, 536870990, 0)
-      Looking up history[4], period 1: (0, 536870926, 0)
-      Looking up history[1], period 1: (1, 536870928, 0)
+      Looking up history[4], period 1: (0, 536871054, 0)
+      Looking up history[1], period 1: (1, 536870925, 0)
       testthat results ================================================================
       OK: 7 SKIPPED: 0 FAILED: 1
       1. Error: evolve_model() returns warnings and errors (@test_mainfunc.R#27) 
@@ -4656,30 +4680,6 @@ Version: 1.0
 # ddgraph
 
 Version: 1.20.0
-
-## Newly broken
-
-*   checking tests ...
-    ```
-     ERROR
-    Running the tests in ‘tests/test-all.R’ failed.
-    Last 13 lines of output:
-      ⠦ |  7       | 0
-      ⠧ |  8       | 0
-      ⠇ |  9       | 0
-      ⠏ | 10       | 0
-      ⠋ | 11       | 0Error in x[[method]](...) : attempt to apply non-function
-      Calls: test_package ... <Anonymous> -> o_apply -> lapply -> FUN -> <Anonymous>
-      In addition: Warning message:
-      Placing tests in `inst/tests` is deprecated. Please use `tests/testthat` instead 
-      
-      ═ Results ══════════════════════════════════════════════════════════════════════
-      OK:       11
-      Failed:   4
-      Warnings: 1
-      Skipped:  0
-      Execution halted
-    ```
 
 ## In both
 
@@ -5345,7 +5345,7 @@ Version: 0.1.6
       ⠼ |  5       | warnings
       ⠴ |  6       | warnings
       ⠦ |  7       | warnings
-      ✔ |  7       | warnings [0.4 s]
+      ✔ |  7       | warnings [0.3 s]
       
       ═ Results ══════════════════════════════════════════════════════════════════════
       OK:       425
@@ -6503,30 +6503,6 @@ Version: 0.3.0
 # EnrichedHeatmap
 
 Version: 1.6.0
-
-## Newly broken
-
-*   checking tests ...
-    ```
-     ERROR
-    Running the tests in ‘tests/test-all.R’ failed.
-    Last 13 lines of output:
-      ⠼ | 15       | 0
-      ⠴ | 16       | 0
-      ⠦ | 17       | 0
-      ⠧ | 18       | 0
-      ⠇ | 19       | 0Error in x[[method]](...) : attempt to apply non-function
-      Calls: test_package ... <Anonymous> -> o_apply -> lapply -> FUN -> <Anonymous>
-      In addition: Warning message:
-      Placing tests in `inst/tests` is deprecated. Please use `tests/testthat` instead 
-      
-      ═ Results ══════════════════════════════════════════════════════════════════════
-      OK:       19
-      Failed:   2
-      Warnings: 1
-      Skipped:  0
-      Execution halted
-    ```
 
 ## In both
 
@@ -9000,7 +8976,7 @@ Version: 1.4.1
       
         ordinary text without R code
       
-      /usr/bin/pandoc +RTS -K512m -RTS Full_test_suite.utf8.md --to html --from markdown+autolink_bare_uris+ascii_identifiers+tex_math_single_backslash --output /home/muelleki/tmp/RtmpMNk2ny/tmp.html --smart --email-obfuscation none --standalone --section-divs --template /home/muelleki/git/R/testthat/revdep/library/Gmisc/rmarkdown/rmd/h/default.html --no-highlight --css docx.css 
+      /usr/bin/pandoc +RTS -K512m -RTS Full_test_suite.utf8.md --to html --from markdown+autolink_bare_uris+ascii_identifiers+tex_math_single_backslash --output /home/muelleki/tmp/Rtmp8ucTrz/tmp.html --smart --email-obfuscation none --standalone --section-divs --template /home/muelleki/git/R/testthat/revdep/library/Gmisc/rmarkdown/rmd/h/default.html --no-highlight --css docx.css 
       testthat results ================================================================
       OK: 288 SKIPPED: 0 FAILED: 2
       1. Failure: Test figure caption basic functionality (@test-figCapNo.R#10) 
@@ -9021,6 +8997,47 @@ Version: 0.2.1
       installed size is 20.9Mb
       sub-directories of 1Mb or more:
         libs  19.9Mb
+    ```
+
+# googleAuthR
+
+Version: 0.5.1
+
+## Newly broken
+
+*   checking tests ...
+    ```
+     ERROR
+    Running the tests in ‘tests/testthat.R’ failed.
+    Last 13 lines of output:
+      11: oauth_listener(url)
+      12: httpuv::startServer(use$host, use$port, list(call = listen))
+      13: stop("Failed to create server")
+      
+      testthat results ================================================================
+      OK: 19 SKIPPED: 3 FAILED: 6
+      1. Error: A batch call works (@test-batch.R#95) 
+      2. Error: A walk batch call works but with no returned data (@test-batch.R#103) 
+      3. Error: Can authenticate .httr looking for existing file (@test-gaAuthR.R#65) 
+      4. Error: Can authenticate .httr passing a token (@test-gaAuthR.R#71) 
+      5. Error: Can authenticate default auto settings (@test-gaAuthR.R#112) 
+      6. Error: Right message when wrong token file location given (@test-gaAuthR.R#124) 
+      
+      Error: testthat unit tests failed
+      Execution halted
+    ```
+
+## Newly fixed
+
+*   R CMD check timed out
+    
+
+## In both
+
+*   checking dependencies in R code ... NOTE
+    ```
+    Namespace in Imports field not imported from: ‘R6’
+      All declared Imports should be used.
     ```
 
 # googleCloudStorageR
@@ -9184,25 +9201,25 @@ $(SHLIB): $(BUILD_LIB)
 	ICD_OS=icd_linux
 ***********************************************
 ** libs
+g++ -std=gnu++11 -I/usr/share/R/include -DNDEBUG -I../inst/include -DCL_HPP_MINIMUM_OPENCL_VERSION=110 -DCL_USE_DEPRECATED_OPENCL_1_2_APIS -DCL_HPP_TARGET_OPENCL_VERSION=120 -I'/usr/include/' -DHAVE_CL_CL2_HPP -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/Rcpp/include" -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/RcppEigen/include" -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/RViennaCL/include" -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/BH/include"    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g -c RcppExports.cpp -o RcppExports.o
 g++ -std=gnu++11 -I/usr/share/R/include -DNDEBUG -I../inst/include -DCL_HPP_MINIMUM_OPENCL_VERSION=110 -DCL_USE_DEPRECATED_OPENCL_1_2_APIS -DCL_HPP_TARGET_OPENCL_VERSION=120 -I'/usr/include/' -DHAVE_CL_CL2_HPP -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/Rcpp/include" -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/RcppEigen/include" -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/RViennaCL/include" -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/BH/include"    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g -c platform.cpp -o platform.o
 g++ -std=gnu++11 -I/usr/share/R/include -DNDEBUG -I../inst/include -DCL_HPP_MINIMUM_OPENCL_VERSION=110 -DCL_USE_DEPRECATED_OPENCL_1_2_APIS -DCL_HPP_TARGET_OPENCL_VERSION=120 -I'/usr/include/' -DHAVE_CL_CL2_HPP -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/Rcpp/include" -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/RcppEigen/include" -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/RViennaCL/include" -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/BH/include"    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g -c context.cpp -o context.o
 g++ -std=gnu++11 -I/usr/share/R/include -DNDEBUG -I../inst/include -DCL_HPP_MINIMUM_OPENCL_VERSION=110 -DCL_USE_DEPRECATED_OPENCL_1_2_APIS -DCL_HPP_TARGET_OPENCL_VERSION=120 -I'/usr/include/' -DHAVE_CL_CL2_HPP -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/Rcpp/include" -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/RcppEigen/include" -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/RViennaCL/include" -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/BH/include"    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g -c device.cpp -o device.o
 g++ -std=gnu++11 -I/usr/share/R/include -DNDEBUG -I../inst/include -DCL_HPP_MINIMUM_OPENCL_VERSION=110 -DCL_USE_DEPRECATED_OPENCL_1_2_APIS -DCL_HPP_TARGET_OPENCL_VERSION=120 -I'/usr/include/' -DHAVE_CL_CL2_HPP -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/Rcpp/include" -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/RcppEigen/include" -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/RViennaCL/include" -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/BH/include"    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g -c utils-vcl.cpp -o utils-vcl.o
-g++ -std=gnu++11 -I/usr/share/R/include -DNDEBUG -I../inst/include -DCL_HPP_MINIMUM_OPENCL_VERSION=110 -DCL_USE_DEPRECATED_OPENCL_1_2_APIS -DCL_HPP_TARGET_OPENCL_VERSION=120 -I'/usr/include/' -DHAVE_CL_CL2_HPP -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/Rcpp/include" -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/RcppEigen/include" -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/RViennaCL/include" -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/BH/include"    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g -c RcppExports.cpp -o RcppExports.o
-g++ -std=gnu++11 -I/usr/share/R/include -DNDEBUG -I../inst/include -DCL_HPP_MINIMUM_OPENCL_VERSION=110 -DCL_USE_DEPRECATED_OPENCL_1_2_APIS -DCL_HPP_TARGET_OPENCL_VERSION=120 -I'/usr/include/' -DHAVE_CL_CL2_HPP -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/Rcpp/include" -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/RcppEigen/include" -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/RViennaCL/include" -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/BH/include"    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g -c chol.cpp -o chol.o
-g++ -std=gnu++11 -I/usr/share/R/include -DNDEBUG -I../inst/include -DCL_HPP_MINIMUM_OPENCL_VERSION=110 -DCL_USE_DEPRECATED_OPENCL_1_2_APIS -DCL_HPP_TARGET_OPENCL_VERSION=120 -I'/usr/include/' -DHAVE_CL_CL2_HPP -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/Rcpp/include" -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/RcppEigen/include" -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/RViennaCL/include" -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/BH/include"    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g -c gpuMatrix_igemm.cpp -o gpuMatrix_igemm.o
 g++ -std=gnu++11 -I/usr/share/R/include -DNDEBUG -I../inst/include -DCL_HPP_MINIMUM_OPENCL_VERSION=110 -DCL_USE_DEPRECATED_OPENCL_1_2_APIS -DCL_HPP_TARGET_OPENCL_VERSION=120 -I'/usr/include/' -DHAVE_CL_CL2_HPP -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/Rcpp/include" -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/RcppEigen/include" -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/RViennaCL/include" -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/BH/include"    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g -c trunc_gpuMat.cpp -o trunc_gpuMat.o
 g++ -std=gnu++11 -I/usr/share/R/include -DNDEBUG -I../inst/include -DCL_HPP_MINIMUM_OPENCL_VERSION=110 -DCL_USE_DEPRECATED_OPENCL_1_2_APIS -DCL_HPP_TARGET_OPENCL_VERSION=120 -I'/usr/include/' -DHAVE_CL_CL2_HPP -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/Rcpp/include" -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/RcppEigen/include" -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/RViennaCL/include" -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/BH/include"    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g -c utils.cpp -o utils.o
+g++ -std=gnu++11 -I/usr/share/R/include -DNDEBUG -I../inst/include -DCL_HPP_MINIMUM_OPENCL_VERSION=110 -DCL_USE_DEPRECATED_OPENCL_1_2_APIS -DCL_HPP_TARGET_OPENCL_VERSION=120 -I'/usr/include/' -DHAVE_CL_CL2_HPP -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/Rcpp/include" -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/RcppEigen/include" -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/RViennaCL/include" -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/BH/include"    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g -c gpuMatrix_igemm.cpp -o gpuMatrix_igemm.o
 g++ -std=gnu++11 -I/usr/share/R/include -DNDEBUG -I../inst/include -DCL_HPP_MINIMUM_OPENCL_VERSION=110 -DCL_USE_DEPRECATED_OPENCL_1_2_APIS -DCL_HPP_TARGET_OPENCL_VERSION=120 -I'/usr/include/' -DHAVE_CL_CL2_HPP -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/Rcpp/include" -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/RcppEigen/include" -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/RViennaCL/include" -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/BH/include"    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g -c set_row_order.cpp -o set_row_order.o
+g++ -std=gnu++11 -I/usr/share/R/include -DNDEBUG -I../inst/include -DCL_HPP_MINIMUM_OPENCL_VERSION=110 -DCL_USE_DEPRECATED_OPENCL_1_2_APIS -DCL_HPP_TARGET_OPENCL_VERSION=120 -I'/usr/include/' -DHAVE_CL_CL2_HPP -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/Rcpp/include" -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/RcppEigen/include" -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/RViennaCL/include" -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/BH/include"    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g -c chol.cpp -o chol.o
 g++ -std=gnu++11 -I/usr/share/R/include -DNDEBUG -I../inst/include -DCL_HPP_MINIMUM_OPENCL_VERSION=110 -DCL_USE_DEPRECATED_OPENCL_1_2_APIS -DCL_HPP_TARGET_OPENCL_VERSION=120 -I'/usr/include/' -DHAVE_CL_CL2_HPP -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/Rcpp/include" -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/RcppEigen/include" -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/RViennaCL/include" -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/BH/include"    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g -c vclPtr.cpp -o vclPtr.o
 g++ -std=gnu++11 -I/usr/share/R/include -DNDEBUG -I../inst/include -DCL_HPP_MINIMUM_OPENCL_VERSION=110 -DCL_USE_DEPRECATED_OPENCL_1_2_APIS -DCL_HPP_TARGET_OPENCL_VERSION=120 -I'/usr/include/' -DHAVE_CL_CL2_HPP -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/Rcpp/include" -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/RcppEigen/include" -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/RViennaCL/include" -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/BH/include"    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g -c gpuEigenPtr.cpp -o gpuEigenPtr.o
 g++ -std=gnu++11 -I/usr/share/R/include -DNDEBUG -I../inst/include -DCL_HPP_MINIMUM_OPENCL_VERSION=110 -DCL_USE_DEPRECATED_OPENCL_1_2_APIS -DCL_HPP_TARGET_OPENCL_VERSION=120 -I'/usr/include/' -DHAVE_CL_CL2_HPP -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/Rcpp/include" -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/RcppEigen/include" -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/RViennaCL/include" -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/BH/include"    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g -c vienna_svd.cpp -o vienna_svd.o
-g++ -std=gnu++11 -I/usr/share/R/include -DNDEBUG -I../inst/include -DCL_HPP_MINIMUM_OPENCL_VERSION=110 -DCL_USE_DEPRECATED_OPENCL_1_2_APIS -DCL_HPP_TARGET_OPENCL_VERSION=120 -I'/usr/include/' -DHAVE_CL_CL2_HPP -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/Rcpp/include" -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/RcppEigen/include" -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/RViennaCL/include" -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/BH/include"    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g -c vienna_blas1.cpp -o vienna_blas1.o
 g++ -std=gnu++11 -I/usr/share/R/include -DNDEBUG -I../inst/include -DCL_HPP_MINIMUM_OPENCL_VERSION=110 -DCL_USE_DEPRECATED_OPENCL_1_2_APIS -DCL_HPP_TARGET_OPENCL_VERSION=120 -I'/usr/include/' -DHAVE_CL_CL2_HPP -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/Rcpp/include" -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/RcppEigen/include" -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/RViennaCL/include" -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/BH/include"    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g -c solve.cpp -o solve.o
 g++ -std=gnu++11 -I/usr/share/R/include -DNDEBUG -I../inst/include -DCL_HPP_MINIMUM_OPENCL_VERSION=110 -DCL_USE_DEPRECATED_OPENCL_1_2_APIS -DCL_HPP_TARGET_OPENCL_VERSION=120 -I'/usr/include/' -DHAVE_CL_CL2_HPP -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/Rcpp/include" -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/RcppEigen/include" -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/RViennaCL/include" -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/BH/include"    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g -c vienna_blas3.cpp -o vienna_blas3.o
-g++ -std=gnu++11 -I/usr/share/R/include -DNDEBUG -I../inst/include -DCL_HPP_MINIMUM_OPENCL_VERSION=110 -DCL_USE_DEPRECATED_OPENCL_1_2_APIS -DCL_HPP_TARGET_OPENCL_VERSION=120 -I'/usr/include/' -DHAVE_CL_CL2_HPP -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/Rcpp/include" -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/RcppEigen/include" -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/RViennaCL/include" -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/BH/include"    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g -c vienna_stats.cpp -o vienna_stats.o
-g++ -std=gnu++11 -I/usr/share/R/include -DNDEBUG -I../inst/include -DCL_HPP_MINIMUM_OPENCL_VERSION=110 -DCL_USE_DEPRECATED_OPENCL_1_2_APIS -DCL_HPP_TARGET_OPENCL_VERSION=120 -I'/usr/include/' -DHAVE_CL_CL2_HPP -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/Rcpp/include" -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/RcppEigen/include" -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/RViennaCL/include" -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/BH/include"    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g -c vienna_eigen.cpp -o vienna_eigen.o
+g++ -std=gnu++11 -I/usr/share/R/include -DNDEBUG -I../inst/include -DCL_HPP_MINIMUM_OPENCL_VERSION=110 -DCL_USE_DEPRECATED_OPENCL_1_2_APIS -DCL_HPP_TARGET_OPENCL_VERSION=120 -I'/usr/include/' -DHAVE_CL_CL2_HPP -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/Rcpp/include" -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/RcppEigen/include" -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/RViennaCL/include" -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/BH/include"    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g -c vienna_blas1.cpp -o vienna_blas1.o
 g++ -std=gnu++11 -I/usr/share/R/include -DNDEBUG -I../inst/include -DCL_HPP_MINIMUM_OPENCL_VERSION=110 -DCL_USE_DEPRECATED_OPENCL_1_2_APIS -DCL_HPP_TARGET_OPENCL_VERSION=120 -I'/usr/include/' -DHAVE_CL_CL2_HPP -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/Rcpp/include" -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/RcppEigen/include" -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/RViennaCL/include" -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/BH/include"    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g -c vienna_qr.cpp -o vienna_qr.o
+g++ -std=gnu++11 -I/usr/share/R/include -DNDEBUG -I../inst/include -DCL_HPP_MINIMUM_OPENCL_VERSION=110 -DCL_USE_DEPRECATED_OPENCL_1_2_APIS -DCL_HPP_TARGET_OPENCL_VERSION=120 -I'/usr/include/' -DHAVE_CL_CL2_HPP -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/Rcpp/include" -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/RcppEigen/include" -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/RViennaCL/include" -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/BH/include"    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g -c vienna_eigen.cpp -o vienna_eigen.o
+g++ -std=gnu++11 -I/usr/share/R/include -DNDEBUG -I../inst/include -DCL_HPP_MINIMUM_OPENCL_VERSION=110 -DCL_USE_DEPRECATED_OPENCL_1_2_APIS -DCL_HPP_TARGET_OPENCL_VERSION=120 -I'/usr/include/' -DHAVE_CL_CL2_HPP -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/Rcpp/include" -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/RcppEigen/include" -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/RViennaCL/include" -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/BH/include"    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g -c vienna_stats.cpp -o vienna_stats.o
 g++ -std=gnu++11 -shared -L/usr/lib/R/lib -Wl,-Bsymbolic-functions -Wl,-z,relro -o gpuR.so RcppExports.o chol.o context.o device.o gpuEigenPtr.o gpuMatrix_igemm.o platform.o set_row_order.o solve.o trunc_gpuMat.o utils-vcl.o utils.o vclPtr.o vienna_blas1.o vienna_blas3.o vienna_eigen.o vienna_qr.o vienna_stats.o vienna_svd.o -lOpenCL -L/usr/lib/R/lib -lR
 installing to /home/muelleki/git/R/testthat/revdep/checks/gpuR/new/gpuR.Rcheck/gpuR/libs
 ** R
@@ -9273,16 +9290,16 @@ $(SHLIB): $(BUILD_LIB)
 	ICD_OS=icd_linux
 ***********************************************
 ** libs
-g++ -std=gnu++11 -I/usr/share/R/include -DNDEBUG -I../inst/include -DCL_HPP_MINIMUM_OPENCL_VERSION=110 -DCL_USE_DEPRECATED_OPENCL_1_2_APIS -DCL_HPP_TARGET_OPENCL_VERSION=120 -I'/usr/include/' -DHAVE_CL_CL2_HPP -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/Rcpp/include" -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/RcppEigen/include" -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/RViennaCL/include" -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/BH/include"    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g -c platform.cpp -o platform.o
-g++ -std=gnu++11 -I/usr/share/R/include -DNDEBUG -I../inst/include -DCL_HPP_MINIMUM_OPENCL_VERSION=110 -DCL_USE_DEPRECATED_OPENCL_1_2_APIS -DCL_HPP_TARGET_OPENCL_VERSION=120 -I'/usr/include/' -DHAVE_CL_CL2_HPP -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/Rcpp/include" -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/RcppEigen/include" -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/RViennaCL/include" -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/BH/include"    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g -c context.cpp -o context.o
-g++ -std=gnu++11 -I/usr/share/R/include -DNDEBUG -I../inst/include -DCL_HPP_MINIMUM_OPENCL_VERSION=110 -DCL_USE_DEPRECATED_OPENCL_1_2_APIS -DCL_HPP_TARGET_OPENCL_VERSION=120 -I'/usr/include/' -DHAVE_CL_CL2_HPP -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/Rcpp/include" -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/RcppEigen/include" -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/RViennaCL/include" -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/BH/include"    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g -c device.cpp -o device.o
 g++ -std=gnu++11 -I/usr/share/R/include -DNDEBUG -I../inst/include -DCL_HPP_MINIMUM_OPENCL_VERSION=110 -DCL_USE_DEPRECATED_OPENCL_1_2_APIS -DCL_HPP_TARGET_OPENCL_VERSION=120 -I'/usr/include/' -DHAVE_CL_CL2_HPP -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/Rcpp/include" -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/RcppEigen/include" -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/RViennaCL/include" -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/BH/include"    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g -c RcppExports.cpp -o RcppExports.o
+g++ -std=gnu++11 -I/usr/share/R/include -DNDEBUG -I../inst/include -DCL_HPP_MINIMUM_OPENCL_VERSION=110 -DCL_USE_DEPRECATED_OPENCL_1_2_APIS -DCL_HPP_TARGET_OPENCL_VERSION=120 -I'/usr/include/' -DHAVE_CL_CL2_HPP -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/Rcpp/include" -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/RcppEigen/include" -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/RViennaCL/include" -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/BH/include"    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g -c platform.cpp -o platform.o
+g++ -std=gnu++11 -I/usr/share/R/include -DNDEBUG -I../inst/include -DCL_HPP_MINIMUM_OPENCL_VERSION=110 -DCL_USE_DEPRECATED_OPENCL_1_2_APIS -DCL_HPP_TARGET_OPENCL_VERSION=120 -I'/usr/include/' -DHAVE_CL_CL2_HPP -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/Rcpp/include" -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/RcppEigen/include" -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/RViennaCL/include" -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/BH/include"    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g -c device.cpp -o device.o
+g++ -std=gnu++11 -I/usr/share/R/include -DNDEBUG -I../inst/include -DCL_HPP_MINIMUM_OPENCL_VERSION=110 -DCL_USE_DEPRECATED_OPENCL_1_2_APIS -DCL_HPP_TARGET_OPENCL_VERSION=120 -I'/usr/include/' -DHAVE_CL_CL2_HPP -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/Rcpp/include" -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/RcppEigen/include" -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/RViennaCL/include" -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/BH/include"    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g -c context.cpp -o context.o
 g++ -std=gnu++11 -I/usr/share/R/include -DNDEBUG -I../inst/include -DCL_HPP_MINIMUM_OPENCL_VERSION=110 -DCL_USE_DEPRECATED_OPENCL_1_2_APIS -DCL_HPP_TARGET_OPENCL_VERSION=120 -I'/usr/include/' -DHAVE_CL_CL2_HPP -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/Rcpp/include" -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/RcppEigen/include" -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/RViennaCL/include" -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/BH/include"    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g -c utils-vcl.cpp -o utils-vcl.o
-g++ -std=gnu++11 -I/usr/share/R/include -DNDEBUG -I../inst/include -DCL_HPP_MINIMUM_OPENCL_VERSION=110 -DCL_USE_DEPRECATED_OPENCL_1_2_APIS -DCL_HPP_TARGET_OPENCL_VERSION=120 -I'/usr/include/' -DHAVE_CL_CL2_HPP -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/Rcpp/include" -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/RcppEigen/include" -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/RViennaCL/include" -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/BH/include"    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g -c utils.cpp -o utils.o
-g++ -std=gnu++11 -I/usr/share/R/include -DNDEBUG -I../inst/include -DCL_HPP_MINIMUM_OPENCL_VERSION=110 -DCL_USE_DEPRECATED_OPENCL_1_2_APIS -DCL_HPP_TARGET_OPENCL_VERSION=120 -I'/usr/include/' -DHAVE_CL_CL2_HPP -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/Rcpp/include" -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/RcppEigen/include" -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/RViennaCL/include" -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/BH/include"    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g -c gpuMatrix_igemm.cpp -o gpuMatrix_igemm.o
 g++ -std=gnu++11 -I/usr/share/R/include -DNDEBUG -I../inst/include -DCL_HPP_MINIMUM_OPENCL_VERSION=110 -DCL_USE_DEPRECATED_OPENCL_1_2_APIS -DCL_HPP_TARGET_OPENCL_VERSION=120 -I'/usr/include/' -DHAVE_CL_CL2_HPP -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/Rcpp/include" -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/RcppEigen/include" -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/RViennaCL/include" -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/BH/include"    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g -c chol.cpp -o chol.o
-g++ -std=gnu++11 -I/usr/share/R/include -DNDEBUG -I../inst/include -DCL_HPP_MINIMUM_OPENCL_VERSION=110 -DCL_USE_DEPRECATED_OPENCL_1_2_APIS -DCL_HPP_TARGET_OPENCL_VERSION=120 -I'/usr/include/' -DHAVE_CL_CL2_HPP -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/Rcpp/include" -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/RcppEigen/include" -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/RViennaCL/include" -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/BH/include"    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g -c trunc_gpuMat.cpp -o trunc_gpuMat.o
 g++ -std=gnu++11 -I/usr/share/R/include -DNDEBUG -I../inst/include -DCL_HPP_MINIMUM_OPENCL_VERSION=110 -DCL_USE_DEPRECATED_OPENCL_1_2_APIS -DCL_HPP_TARGET_OPENCL_VERSION=120 -I'/usr/include/' -DHAVE_CL_CL2_HPP -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/Rcpp/include" -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/RcppEigen/include" -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/RViennaCL/include" -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/BH/include"    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g -c set_row_order.cpp -o set_row_order.o
+g++ -std=gnu++11 -I/usr/share/R/include -DNDEBUG -I../inst/include -DCL_HPP_MINIMUM_OPENCL_VERSION=110 -DCL_USE_DEPRECATED_OPENCL_1_2_APIS -DCL_HPP_TARGET_OPENCL_VERSION=120 -I'/usr/include/' -DHAVE_CL_CL2_HPP -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/Rcpp/include" -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/RcppEigen/include" -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/RViennaCL/include" -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/BH/include"    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g -c gpuMatrix_igemm.cpp -o gpuMatrix_igemm.o
+g++ -std=gnu++11 -I/usr/share/R/include -DNDEBUG -I../inst/include -DCL_HPP_MINIMUM_OPENCL_VERSION=110 -DCL_USE_DEPRECATED_OPENCL_1_2_APIS -DCL_HPP_TARGET_OPENCL_VERSION=120 -I'/usr/include/' -DHAVE_CL_CL2_HPP -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/Rcpp/include" -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/RcppEigen/include" -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/RViennaCL/include" -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/BH/include"    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g -c utils.cpp -o utils.o
+g++ -std=gnu++11 -I/usr/share/R/include -DNDEBUG -I../inst/include -DCL_HPP_MINIMUM_OPENCL_VERSION=110 -DCL_USE_DEPRECATED_OPENCL_1_2_APIS -DCL_HPP_TARGET_OPENCL_VERSION=120 -I'/usr/include/' -DHAVE_CL_CL2_HPP -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/Rcpp/include" -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/RcppEigen/include" -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/RViennaCL/include" -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/BH/include"    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g -c trunc_gpuMat.cpp -o trunc_gpuMat.o
 g++ -std=gnu++11 -I/usr/share/R/include -DNDEBUG -I../inst/include -DCL_HPP_MINIMUM_OPENCL_VERSION=110 -DCL_USE_DEPRECATED_OPENCL_1_2_APIS -DCL_HPP_TARGET_OPENCL_VERSION=120 -I'/usr/include/' -DHAVE_CL_CL2_HPP -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/Rcpp/include" -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/RcppEigen/include" -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/RViennaCL/include" -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/BH/include"    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g -c vclPtr.cpp -o vclPtr.o
 g++ -std=gnu++11 -I/usr/share/R/include -DNDEBUG -I../inst/include -DCL_HPP_MINIMUM_OPENCL_VERSION=110 -DCL_USE_DEPRECATED_OPENCL_1_2_APIS -DCL_HPP_TARGET_OPENCL_VERSION=120 -I'/usr/include/' -DHAVE_CL_CL2_HPP -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/Rcpp/include" -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/RcppEigen/include" -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/RViennaCL/include" -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/BH/include"    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g -c gpuEigenPtr.cpp -o gpuEigenPtr.o
 g++ -std=gnu++11 -I/usr/share/R/include -DNDEBUG -I../inst/include -DCL_HPP_MINIMUM_OPENCL_VERSION=110 -DCL_USE_DEPRECATED_OPENCL_1_2_APIS -DCL_HPP_TARGET_OPENCL_VERSION=120 -I'/usr/include/' -DHAVE_CL_CL2_HPP -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/Rcpp/include" -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/RcppEigen/include" -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/RViennaCL/include" -I"/home/muelleki/git/R/testthat/revdep/library/gpuR/BH/include"    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g -c vienna_svd.cpp -o vienna_svd.o
@@ -9878,10 +9895,10 @@ Version: 0.1.6
       > 
       > test_check("HIBPwned")
       1. Failure: account_breaches works for a single account (@test-account_breaches.R#14) 
-      `ncol(res[[acct]])` is not strictly more than 1. Difference: 0
+      ncol(res[[acct]]) is not strictly more than 1. Difference: 0
       
       2. Failure: account_breaches works for a single account (@test-account_breaches.R#34) 
-      `ncol(res[[acct]])` is not strictly more than 1. Difference: 0
+      ncol(res[[acct]]) is not strictly more than 1. Difference: 0
       
       testthat results ================================================================
       OK: 127 SKIPPED: 0 FAILED: 2
@@ -13751,8 +13768,27 @@ Version: 0.4.1
 
 ## In both
 
-*   R CMD check timed out
-    
+*   checking tests ...
+    ```
+     ERROR
+    Running the tests in ‘tests/testthat.R’ failed.
+    Last 13 lines of output:
+      2: In .Internal(gc(verbose, reset)) :
+        Connection is garbage-collected, use dbDisconnect() to avoid this.
+      3: In .Internal(gc(verbose, reset)) :
+        Connection is garbage-collected, use dbDisconnect() to avoid this.
+      4: In .Internal(gc(verbose, reset)) :
+        Connection is garbage-collected, use dbDisconnect() to avoid this.
+      5: In .Internal(gc(verbose, reset)) :
+        Connection is garbage-collected, use dbDisconnect() to avoid this.
+      6: In cb$putconst(fun) :
+        Connection is garbage-collected, use dbDisconnect() to avoid this.
+      7: In cb$putconst(fun) :
+        Connection is garbage-collected, use dbDisconnect() to avoid this.
+      8: In .Internal(gc(verbose, reset)) :
+        Connection is garbage-collected, use dbDisconnect() to avoid this.
+      Execution halted
+    ```
 
 *   checking installed package size ... NOTE
     ```
@@ -14502,12 +14538,13 @@ FFTW library not found, please install fftw-3-3-3 or greater
 configure: creating ./config.status
 config.status: creating src/Makevars
 ** libs
-g++  -I/usr/share/R/include -DNDEBUG  -I"/home/muelleki/git/R/testthat/revdep/library/mwaved/Rcpp/include"    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c RcppExports.cpp -o RcppExports.o
 g++  -I/usr/share/R/include -DNDEBUG  -I"/home/muelleki/git/R/testthat/revdep/library/mwaved/Rcpp/include"    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c mwaved.cpp -o mwaved.o
 mwaved.cpp:1:19: fatal error: fftw3.h: No such file or directory
 compilation terminated.
 /usr/lib/R/etc/Makeconf:168: recipe for target 'mwaved.o' failed
 make: *** [mwaved.o] Error 1
+make: *** Waiting for unfinished jobs....
+g++  -I/usr/share/R/include -DNDEBUG  -I"/home/muelleki/git/R/testthat/revdep/library/mwaved/Rcpp/include"    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c RcppExports.cpp -o RcppExports.o
 ERROR: compilation failed for package ‘mwaved’
 * removing ‘/home/muelleki/git/R/testthat/revdep/checks/mwaved/new/mwaved.Rcheck/mwaved’
 
@@ -14876,34 +14913,6 @@ Version: 0.2
 # netdiffuseR
 
 Version: 1.18.1
-
-## Newly broken
-
-*   checking examples ... ERROR
-    ```
-    ...
-     8: cmpCallSymFun(fun, args, call, cb, cntxt)
-     9: cmpCall(e, cb, cntxt)
-    10: cmp(cases[[i]], cb, cntxt)
-    11: h(e, cb, cntxt)
-    12: tryInline(call, cb, cntxt)
-    13: cmpCall(e, cb, cntxt)
-    14: cmp(subexp, cb, cntxt, setloc = FALSE)
-    15: h(e, cb, cntxt)
-    16: tryInline(call, cb, cntxt)
-    17: cmpCall(e, cb, cntxt)
-    18: cmp(e, cb, cntxt, setloc = FALSE)
-    19: genCode(body(f), ncntxt, loc = loc)
-    20: cmpfun(f)
-    21: doTryCatch(return(expr), name, parentenv, handler)
-    22: tryCatchOne(expr, names, parentenv, handlers[[1L]])
-    23: tryCatchList(expr, classes, parentenv, handlers)
-    24: tryCatch(cmpfun(f), error = function(e) {    notifyCompilerError(paste(e$message, "at", deparse(e$call)))    f})
-    25: compiler:::tryCmpfun(function (graph, attrs, V = NULL, direction = "outgoing",     fun = function(x) x, as.df = FALSE, self = getOption("diffnet.self"),     valued = getOption("diffnet.valued")) {    if (direction == "incoming")         outer <- FALSE    else if (direction == "outgoing")         outer <- TRUE    else stop("-direction- must be either 'incoming' or 'outgoing'")    if (!inherits(graph, "diffnet"))         if (missing(attrs))             stop("If -graph- is not of class 'diffnet', -attrs- must be specified.")    if (inherits(graph, "diffnet")) {        if (missing(attrs))             attrs <- diffnet.attrs(graph)        else {            if (!inherits(attrs, "list"))                 stop("-attrs- must be a list.")            if (length(attrs) != graph$meta$nper)                 stop("-attrs-, ", length(attrs), " elements, must have as many elements as time periods ",                   graph$meta$nper, ".")        }    }    if (!length(V))         V <- 1L:nnodes(graph)    switch(class(graph), diffnet = egonet_attrs.list(graph$graph,         attrs, if (!length(V)) 1:graph$meta$n else V, outer,         fun, as.df, self, valued), list = egonet_attrs.list(graph,         attrs, V, outer, fun, as.df, self, valued), matrix = egonet_attrs.matrix(as_spmat(graph),         attrs, V, outer, fun, as.df, self, valued), dgCMatrix = egonet_attrs.matrix(graph,         attrs, V, outer, fun, as.df, self, valued), array = egonet_attrs.array(graph,         attrs, V, outer, fun, as.df, self, valued), stopifnot_graph(graph))})
-    26: egonet_attrs(net, someattr, fun = function(x) max(x[, "a"]))
-    An irrecoverable exception occurred. R is aborting now ...
-    Segmentation fault (core dumped)
-    ```
 
 ## In both
 
@@ -16165,34 +16174,6 @@ Version: 0.1.0
     ```
     Namespace in Imports field not imported from: ‘RSQLite’
       All declared Imports should be used.
-    ```
-
-# passport
-
-Version: 0.1.1
-
-## Newly broken
-
-*   checking tests ...
-    ```
-     ERROR
-    Running the tests in ‘tests/testthat.R’ failed.
-    Last 13 lines of output:
-                 Sys.sleep(0.02)
-             }
-             components$short_name[vapply(components$types, function(t) {
-                 "country" %in% t
-             }, logical(1))][1]
-         }, character(1), USE.NAMES = FALSE)
-      7: FUN(X[[i]], ...)
-      8: stop(sprintf(message, response$status))
-      
-      testthat results ================================================================
-      OK: 33 SKIPPED: 0 FAILED: 1
-      1. Error: parsing country names with live geocoding APIs works (@test_parse_country.R#59) 
-      
-      Error: testthat unit tests failed
-      Execution halted
     ```
 
 # patentsview
@@ -18439,7 +18420,7 @@ Version: 1.2.0
      ERROR
     Running the tests in ‘tests/testthat.R’ failed.
     Last 13 lines of output:
-      New motif:  GAAGAA 
+      New motif:  GAGAAG 
       1. Error: Testing runReport function (@test_report.R#7) ------------------------
       unused argument (all = FALSE)
       1: expect_error(runReport(genomeVersion = "foo"), regexp = "not a supported genome version.", 
@@ -18602,30 +18583,6 @@ Version: 1.8.0
 # rcellminerData
 
 Version: 1.8.0
-
-## Newly broken
-
-*   checking tests ...
-    ```
-     ERROR
-    Running the tests in ‘tests/runTests.R’ failed.
-    Last 13 lines of output:
-          'citation("Biobase")', and for packages 'citation("pkgname")'.
-      
-      > test_package("rcellminerData")
-      ✔ | OK F W S | Context
-      Error in x[[method]](...) : attempt to apply non-function
-      Calls: test_package ... <Anonymous> -> o_apply -> lapply -> FUN -> <Anonymous>
-      In addition: Warning message:
-      Placing tests in `inst/tests` is deprecated. Please use `tests/testthat` instead 
-      
-      ═ Results ══════════════════════════════════════════════════════════════════════
-      OK:       0
-      Failed:   4
-      Warnings: 0
-      Skipped:  1
-      Execution halted
-    ```
 
 ## In both
 
@@ -21497,32 +21454,6 @@ Version: 1.6.0
     Packages unavailable to check Rd xrefs: ‘RTCGA.clinical’, ‘RTCGA.mutations’, ‘RTCGA.CNV’, ‘RTCGA.RPPA’, ‘RTCGA.mRNA’, ‘RTCGA.miRNASeq’, ‘RTCGA.methylation’
     ```
 
-# rtdists
-
-Version: 0.7-3
-
-## Newly broken
-
-*   checking tests ...
-    ```
-     ERROR
-    Running the tests in ‘tests/testthat.R’ failed.
-    Complete output:
-      > library(testthat)
-      > 
-      > test_check("rtdists")
-      Loading required package: rtdists
-      1. Failure: Norm: pdiffusion corresponds to random derivates (@test-diffusion-math.R#77) 
-      `t3$value$p.value` is not strictly more than `p_max`. Difference: -0.00243
-      
-      testthat results ================================================================
-      OK: 64279 SKIPPED: 0 FAILED: 1
-      1. Failure: Norm: pdiffusion corresponds to random derivates (@test-diffusion-math.R#77) 
-      
-      Error: testthat unit tests failed
-      Execution halted
-    ```
-
 # rtext
 
 Version: 0.1.20
@@ -24041,7 +23972,7 @@ Version: 0.5.1
       > 
       > test_check("swirlify")
       1. Failure: test_lesson() passes with well-formed lesson (@test_test_lesson.R#36) 
-      `all(correct_output %in% readLines(file.path(path, "test.log")))` isn't true.
+      all(correct_output %in% readLines(file.path(path, "test.log"))) isn't true.
       
       testthat results ================================================================
       OK: 7 SKIPPED: 0 FAILED: 1
@@ -24872,44 +24803,6 @@ Version: 0.5.3
       Execution halted
     ```
 
-## Newly fixed
-
-*   checking examples ... ERROR
-    ```
-    ...
-     6 2016-01-11  97.91  98.60  95.39  97.51 29873100    97.51    NA
-     7 2016-01-12  99.00  99.96  97.55  99.37 28395400    99.37    NA
-     8 2016-01-13 100.58 100.58  95.21  95.44 33410600    95.44    NA
-     9 2016-01-14  95.85  98.87  92.45  98.37 48658600    98.37    NA
-    10 2016-01-15  93.98  96.38  93.54  94.97 46132800    94.97 94.97
-    # ... with 242 more rows
-    > 
-    > # Example 3: Using tq_mutate to work with non-OHLC data
-    > tq_get("DCOILWTICO", get = "economic.data") %>%
-    +     tq_mutate(select = price, mutate_fun = lag.xts, k = 1, na.pad = TRUE)
-    Warning: x = 'DCOILWTICO', get = 'economic.data': Error: Failed to download file. Error message:
-    download from 'https://fred.stlouisfed.org/series/DCOILWTICO/downloaddata/DCOILWTICO.csv' failed
-    If this is related to https, possible solutions are:
-    1. Explicitly pass method= via the getSymbols call (or via setDefaults)
-    2. Install downloader, which may be able to automagically determine a method
-    3. Set the download.file.method global option
-    
-    Error in tq_mutate_.default(data = data, select = lazyeval::expr_text(select),  : 
-      data must be a tibble or data.frame object
-    Calls: %>% ... <Anonymous> -> tq_mutate -> tq_mutate_ -> tq_mutate_.default
-    Execution halted
-    ```
-
-*   checking tests ... ERROR
-    ```
-    unable to create ‘/home/muelleki/git/R/testthat/revdep/checks/tidyquant/old/tidyquant.Rcheck/tests’
-    ```
-
-*   checking for unstated dependencies in ‘tests’ ... WARNING
-    ```
-    Fatal error: cannot create 'R_TempDir'
-    ```
-
 ## In both
 
 *   checking dependencies in R code ... NOTE
@@ -24925,80 +24818,11 @@ Version: 0.7.1
 
 ## In both
 
-*   checking whether package ‘tidyr’ can be installed ... ERROR
+*   checking data for non-ASCII characters ... NOTE
     ```
-    Installation failed.
-    See ‘/home/muelleki/git/R/testthat/revdep/checks/tidyr/new/tidyr.Rcheck/00install.out’ for details.
+      Note: found 23 marked UTF-8 strings
     ```
 
-## Installation
-
-### Devel
-
-```
-* installing *source* package ‘tidyr’ ...
-** package ‘tidyr’ successfully unpacked and MD5 sums checked
-** libs
-g++  -I/usr/share/R/include -DNDEBUG  -I"/home/muelleki/git/R/testthat/revdep/library/tidyr/Rcpp/include"    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c fill.cpp -o fill.o
-/usr/lib/R/etc/Makeconf:168: recipe for target 'fill.o' failed
-make: *** [fill.o] Error 1
-make: *** Waiting for unfinished jobs....
-g++  -I/usr/share/R/include -DNDEBUG  -I"/home/muelleki/git/R/testthat/revdep/library/tidyr/Rcpp/include"    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c simplifyPieces.cpp -o simplifyPieces.o
-simplifyPieces.cpp:50:1: fatal error: error writing to /home/muelleki/tmp/ccxdVwqq.s: No space left on device
- }
- ^
-compilation terminated.
-/usr/lib/R/etc/Makeconf:168: recipe for target 'simplifyPieces.o' failed
-make: *** [simplifyPieces.o] Error 1
-g++  -I/usr/share/R/include -DNDEBUG  -I"/home/muelleki/git/R/testthat/revdep/library/tidyr/Rcpp/include"    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c melt.cpp -o melt.o
-melt.cpp:249:1: fatal error: error writing to /home/muelleki/tmp/cc6ea7wk.s: No space left on device
- }
- ^
-compilation terminated.
-/usr/lib/R/etc/Makeconf:168: recipe for target 'melt.o' failed
-make: *** [melt.o] Error 1
-g++  -I/usr/share/R/include -DNDEBUG  -I"/home/muelleki/git/R/testthat/revdep/library/tidyr/Rcpp/include"    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c RcppExports.cpp -o RcppExports.o
-/usr/lib/R/etc/Makeconf:168: recipe for target 'RcppExports.o' failed
-make: *** [RcppExports.o] Error 1
-ERROR: compilation failed for package ‘tidyr’
-* removing ‘/home/muelleki/git/R/testthat/revdep/checks/tidyr/new/tidyr.Rcheck/tidyr’
-
-```
-### CRAN
-
-```
-* installing *source* package ‘tidyr’ ...
-** package ‘tidyr’ successfully unpacked and MD5 sums checked
-** libs
-g++  -I/usr/share/R/include -DNDEBUG  -I"/home/muelleki/git/R/testthat/revdep/library/tidyr/Rcpp/include"    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c fill.cpp -o fill.o
-/usr/lib/R/etc/Makeconf:168: recipe for target 'fill.o' failed
-make: *** [fill.o] Error 1
-make: *** Waiting for unfinished jobs....
-g++  -I/usr/share/R/include -DNDEBUG  -I"/home/muelleki/git/R/testthat/revdep/library/tidyr/Rcpp/include"    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c simplifyPieces.cpp -o simplifyPieces.o
-simplifyPieces.cpp:50:1: fatal error: error writing to /home/muelleki/tmp/ccplhy0S.s: No space left on device
- }
- ^
-compilation terminated.
-/usr/lib/R/etc/Makeconf:168: recipe for target 'simplifyPieces.o' failed
-make: *** [simplifyPieces.o] Error 1
-g++  -I/usr/share/R/include -DNDEBUG  -I"/home/muelleki/git/R/testthat/revdep/library/tidyr/Rcpp/include"    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c RcppExports.cpp -o RcppExports.o
-RcppExports.cpp:74:1: fatal error: error writing to /home/muelleki/tmp/ccJOa0gQ.s: No space left on device
- }
- ^
-compilation terminated.
-/usr/lib/R/etc/Makeconf:168: recipe for target 'RcppExports.o' failed
-make: *** [RcppExports.o] Error 1
-g++  -I/usr/share/R/include -DNDEBUG  -I"/home/muelleki/git/R/testthat/revdep/library/tidyr/Rcpp/include"    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c melt.cpp -o melt.o
-melt.cpp:249:1: fatal error: error writing to /home/muelleki/tmp/ccID9XpQ.s: No space left on device
- }
- ^
-compilation terminated.
-/usr/lib/R/etc/Makeconf:168: recipe for target 'melt.o' failed
-make: *** [melt.o] Error 1
-ERROR: compilation failed for package ‘tidyr’
-* removing ‘/home/muelleki/git/R/testthat/revdep/checks/tidyr/old/tidyr.Rcheck/tidyr’
-
-```
 # tidyRSS
 
 Version: 1.2.2
@@ -25052,80 +24876,6 @@ Version: 0.1.4
 # tidyxl
 
 Version: 0.2.3
-
-## Newly broken
-
-*   checking whether the namespace can be unloaded cleanly ... WARNING
-    ```
-    Fatal error: cannot create 'R_TempDir'
-    ```
-
-## Newly fixed
-
-*   checking examples ... ERROR
-    ```
-    Running massageExamples to create ‘tidyxl-Ex.R’ failed
-    
-     NONE
-    ```
-
-*   checking for missing documentation entries ... WARNING
-    ```
-    Fatal error: cannot create 'R_TempDir'
-    All user-level objects in a package should have documentation entries.
-    See chapter ‘Writing R documentation files’ in the ‘Writing R
-    Extensions’ manual.
-    ```
-
-*   checking for code/documentation mismatches ... WARNING
-    ```
-    Fatal error: cannot create 'R_TempDir'
-    Fatal error: cannot create 'R_TempDir'
-    Fatal error: cannot create 'R_TempDir'
-    ```
-
-*   checking Rd \usage sections ... WARNING
-    ```
-    Fatal error: cannot create 'R_TempDir'
-    Functions with \usage entries need to have the appropriate \alias
-    entries, and all their arguments documented.
-    The \usage entries must correspond to syntactically valid R code.
-    See chapter ‘Writing R documentation files’ in the ‘Writing R
-    Extensions’ manual.
-    Fatal error: cannot create 'R_TempDir'
-    The \usage entries for S3 methods should use the \method markup and not
-    their full name.
-    See chapter ‘Writing R documentation files’ in the ‘Writing R
-    Extensions’ manual.
-    ```
-
-*   checking Rd contents ... WARNING
-    ```
-    Fatal error: cannot create 'R_TempDir'
-    ```
-
-*   checking for unstated dependencies in examples ... WARNING
-    ```
-    Fatal error: cannot create 'R_TempDir'
-    ```
-
-*   checking for unstated dependencies in ‘tests’ ... WARNING
-    ```
-    Fatal error: cannot create 'R_TempDir'
-    ```
-
-*   checking compilation flags in Makevars ... NOTE
-    ```
-    Fatal error: cannot create 'R_TempDir'
-    ```
-
-*   checking compiled code ... NOTE
-    ```
-    Fatal error: cannot create 'R_TempDir'
-    
-    
-    See ‘Writing portable packages’ in the ‘Writing R Extensions’ manual.
-    ```
 
 ## In both
 
@@ -26482,11 +26232,11 @@ Version: 2.0.0
     Running the tests in ‘tests/testthat.R’ failed.
     Last 13 lines of output:
       1. Failure: (unknown) (@test-sink.R#50) ----------------------------------------
-      `readLines(tmp)` not identical to "message".
+      readLines(tmp) not identical to "message".
       Lengths differ: 0 is not 1
       
       2. Failure: (unknown) (@test-sink.R#50) ----------------------------------------
-      `readLines(tmp)` not identical to `c("message", "message 2")`.
+      readLines(tmp) not identical to c("message", "message 2").
       Lengths differ: 0 is not 2
       
       testthat results ================================================================
@@ -26769,34 +26519,6 @@ Version: 1.2.0
 *   checking Rd cross-references ... NOTE
     ```
     Package unavailable to check Rd xrefs: ‘BSgenome.Hsapiens.UCSC.hg19’
-    ```
-
-# zeallot
-
-Version: 0.0.6
-
-## Newly broken
-
-*   checking tests ...
-    ```
-     ERROR
-    Running the tests in ‘tests/testthat.R’ failed.
-    Last 13 lines of output:
-      11: abort("Can't create call to non-callable object")
-      
-      testthat results ================================================================
-      OK: 133 SKIPPED: 1 FAILED: 8
-      1. Error: pair_off single item lists (@test-pair-off.R#8) 
-      2. Error: pair_off multi-item lists (@test-pair-off.R#15) 
-      3. Error: pair_off list with one nested element (@test-pair-off.R#22) 
-      4. Error: pair_off list with multiple nested elements (@test-pair-off.R#39) 
-      5. Error: pair_off heavily nested list (@test-pair-off.R#46) 
-      6. Error: pair_off collects values when ... specified (@test-pair-off.R#53) 
-      7. Error: pair_off list of multi length items (@test-pair-off.R#70) 
-      8. Error: pair_off unpacks strings and data frames (@test-pair-off.R#77) 
-      
-      Error: testthat unit tests failed
-      Execution halted
     ```
 
 # Zelig
