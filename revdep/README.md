@@ -1,9211 +1,2842 @@
-# Setup
+# Platform
 
-## Platform
-
-|setting  |value                        |
+|field    |value                        |
 |:--------|:----------------------------|
-|version  |R version 3.2.4 (2016-03-10) |
-|system   |x86_64, darwin13.4.0         |
+|version  |R version 3.4.2 (2017-09-28) |
+|os       |Ubuntu 16.04.3 LTS           |
+|system   |x86_64, linux-gnu            |
 |ui       |X11                          |
 |language |(EN)                         |
 |collate  |en_US.UTF-8                  |
-|tz       |America/Chicago              |
-|date     |2016-04-18                   |
-
-## Packages
-
-|package  |*  |version |date       |source                  |
-|:--------|:--|:-------|:----------|:-----------------------|
-|covr     |   |2.0.1   |2016-04-06 |CRAN (R 3.2.4)          |
-|crayon   |   |1.3.1   |2015-07-13 |CRAN (R 3.2.0)          |
-|devtools |*  |1.11.0  |2016-04-12 |CRAN (R 3.2.4)          |
-|digest   |   |0.6.9   |2016-01-08 |CRAN (R 3.2.3)          |
-|magrittr |   |1.5     |2014-11-22 |CRAN (R 3.2.0)          |
-|praise   |   |1.0.0   |2015-08-11 |CRAN (R 3.2.0)          |
-|R6       |   |2.1.2   |2016-01-26 |CRAN (R 3.2.3)          |
-|testthat |*  |1.0.1   |2016-04-18 |local (hadley/testthat) |
-|withr    |   |1.0.1   |2016-02-04 |CRAN (R 3.2.3)          |
-
-# Check results
-1101 packages
-
-## abbyyR (0.3)
-Maintainer: Gaurav Sood <gsood07@gmail.com>  
-Bug reports: http://github.com/soodoku/abbyyR/issues
-
-0 errors | 0 warnings | 0 notes
-
-## adegenet (2.0.1)
-Maintainer: Thibaut Jombart <thibautjombart@gmail.com>
-
-0 errors | 0 warnings | 0 notes
-
-## aemo (0.1.0)
-Maintainer: Imanuel Costigan <i.costigan@me.com>
-
-0 errors | 0 warnings | 0 notes
-
-## afex (0.16-1)
-Maintainer: Henrik Singmann <singmann+afex@gmail.com>
-
-0 errors | 1 warning  | 0 notes
-
-```
-checking whether package ‘afex’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: package ‘lme4’ was built under R version 3.2.5
-See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/afex.Rcheck/00install.out’ for details.
-```
-
-## ahp (0.2.8)
-Maintainer: Christoph Glur <christoph.glur@ipub.com>  
-Bug reports: http://github.com/gluc/ahp/issues
-
-0 errors | 0 warnings | 0 notes
-
-## AHR (1.4)
-Maintainer: Matthias Brueckner <mwb@math.uni-bremen.de>
-
-0 errors | 0 warnings | 0 notes
-
-## aidar (1.0.0)
-Maintainer: Andreas Pfeiffer <apfeiffer1@gmail.com>
-
-0 errors | 0 warnings | 3 notes
-
-```
-checking DESCRIPTION meta-information ... NOTE
-Malformed Description field: should contain one or more complete sentences.
-
-checking dependencies in R code ... NOTE
-Package in Depends field not imported from: ‘XML’
-  These packages need to be imported from (in the NAMESPACE file)
-  for when this namespace is loaded but not attached.
-
-checking R code for possible problems ... NOTE
-getAnnotation: no visible global function definition for ‘xmlRoot’
-getAnnotation: no visible global function definition for ‘xmlTreeParse’
-getAnnotation: no visible global function definition for ‘getNodeSet’
-getAnnotation: no visible binding for global variable ‘xmlGetAttr’
-getBins: no visible global function definition for ‘xmlGetAttr’
-getCloud1D: no visible global function definition for ‘xmlRoot’
-getCloud1D: no visible global function definition for ‘xmlTreeParse’
-getCloud1D: no visible global function definition for ‘getNodeSet’
-getCloud1D: no visible binding for global variable ‘xmlGetAttr’
-... 34 lines ...
-getProfile2D: no visible binding for global variable ‘xmlGetAttr’
-getRow: no visible global function definition for ‘getNodeSet’
-getRow: no visible binding for global variable ‘xmlGetAttr’
-getTuple: no visible global function definition for ‘xmlRoot’
-getTuple: no visible global function definition for ‘xmlTreeParse’
-getTuple: no visible global function definition for ‘getNodeSet’
-getTuple: no visible binding for global variable ‘xmlGetAttr’
-getXAxisInfo: no visible global function definition for ‘xmlGetAttr’
-getXStats: no visible global function definition for ‘xmlGetAttr’
-getYAxisInfo: no visible global function definition for ‘xmlGetAttr’
-getYStats: no visible global function definition for ‘xmlGetAttr’
-```
-
-## alakazam (0.2.3)
-Maintainer: Jason Vander Heiden <jason.vanderheiden@yale.edu>  
-Bug reports: https://bitbucket.org/kleinstein/alakazam/issues
-
-0 errors | 0 warnings | 0 notes
-
-## aLFQ (1.3.3)
-Maintainer: George Rosenberger <rosenberger@imsb.biol.ethz.ch>
-
-1 error  | 0 warnings | 0 notes
-
-```
-checking whether package ‘aLFQ’ can be installed ... ERROR
-Installation failed.
-See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/aLFQ.Rcheck/00install.out’ for details.
-```
-
-## AlignStat (1.1.3)
-Maintainer: Thomas Shafee <thomas.shafee@gmail.com>
-
-0 errors | 0 warnings | 0 notes
-
-## alm (0.4.0)
-Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>  
-Bug reports: http://www.github.com/ropensci/alm/issues
-
-0 errors | 0 warnings | 1 note 
-
-```
-checking files in ‘vignettes’ ... NOTE
-The following directory looks like a leftover from 'knitr':
-  ‘figure’
-Please remove from your package.
-```
-
-## ameco (0.2.2)
-Maintainer: Eric Persson <expersso5@gmail.com>  
-Bug reports: http://github.com/expersso/ameco/issues
-
-0 errors | 0 warnings | 1 note 
-
-```
-checking installed package size ... NOTE
-  installed size is 15.3Mb
-  sub-directories of 1Mb or more:
-    data  15.2Mb
-```
-
-## analogsea (0.3.0)
-Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>  
-Bug reports: http://www.github.com/sckott/analogsea/issues
-
-0 errors | 0 warnings | 0 notes
-
-## analogue (0.17-0)
-Maintainer: Gavin L. Simpson <ucfagls@gmail.com>  
-Bug reports: https://github.com/gavinsimpson/analogue/issues
-
-0 errors | 0 warnings | 0 notes
-
-## analogueExtra (0.1-1)
-Maintainer: Gavin L. Simpson <ucfagls@gmail.com>  
-Bug reports: https://github.com/gavinsimpson/analogueExtra/issues
-
-0 errors | 0 warnings | 0 notes
-
-## anonymizer (0.2.0)
-Maintainer: Paul Hendricks <paul.hendricks.2013@owu.edu>  
-Bug reports: https://github.com/paulhendricks/anonymizer/issues
-
-0 errors | 0 warnings | 0 notes
-
-## aoos (0.4.0)
-Maintainer: Sebastian Warnholz <wahani@gmail.com>  
-Bug reports: https://github.com/wahani/aoos/issues
-
-0 errors | 0 warnings | 0 notes
-
-## apaStyle (0.2)
-Maintainer: Jort de Vreeze <j.devreeze@iwm-tuebingen.de>
-
-0 errors | 0 warnings | 0 notes
-
-## apex (1.0.2)
-Maintainer: Thibaut Jombart <t.jombart@imperial.ac.uk>  
-Bug reports: https://github.com/thibautjombart/apex/issues
-
-0 errors | 0 warnings | 0 notes
-
-## apricom (1.0.0)
-Maintainer: Romin Pajouheshnia <R.Pajouheshnia@umcutrecht.nl>
-
-0 errors | 0 warnings | 0 notes
-
-## archivist (2.0.3)
-Maintainer: Przemyslaw Biecek <przemyslaw.biecek@gmail.com>  
-Bug reports: https://github.com/pbiecek/archivist/issues
-
-0 errors | 0 warnings | 0 notes
-
-## argparse (1.0.1)
-Maintainer: Trevor L Davis <trevor.l.davis@stanford.edu>  
-Bug reports: https://github.com/trevorld/argparse/issues
-
-0 errors | 0 warnings | 2 notes
-
-```
-checking DESCRIPTION meta-information ... NOTE
-Malformed Title field: should not end in a period.
-
-checking re-building of vignette outputs ... NOTE
-Error in re-building vignettes:
-  ...
-sh: rst2pdf: command not found
-Error: processing vignette 'argparse.Rrst' failed with diagnostics:
-conversion by rst2pdf failed!
-Execution halted
-
-```
-
-## ArgumentCheck (0.10.2)
-Maintainer: Benjamin Nutter <benjamin.nutter@gmail.com>  
-Bug reports: https://github.com/nutterb/ArgumentCheck/issues/
-
-0 errors | 0 warnings | 0 notes
-
-## ARPobservation (1.1)
-Maintainer: James E. Pustejovsky <jepusto@gmail.com>
-
-0 errors | 0 warnings | 0 notes
-
-## arrApply (1.0.4)
-Maintainer: Serguei Sokol <sokol@insa-toulouse.fr>
-
-0 errors | 0 warnings | 0 notes
-
-## ARTool (0.10.2)
-Maintainer: Matthew Kay <mjskay@uw.edu>  
-Bug reports: https://github.com/mjskay/ARTool/issues/new
-
-0 errors | 0 warnings | 0 notes
-
-## arules (1.4-1)
-Maintainer: Michael Hahsler <mhahsler@lyle.smu.edu>  
-Bug reports: https://github.com/mhahsler/arules/issues
-
-0 errors | 0 warnings | 0 notes
-
-## aRxiv (0.5.10)
-Maintainer: Karl Broman <kbroman@biostat.wisc.edu>  
-Bug reports: https://github.com/ropensci/aRxiv/issues
-
-0 errors | 0 warnings | 0 notes
-
-## assertive.base (0.0-5)
-Maintainer: Richard Cotton <richierocks@gmail.com>  
-Bug reports: https://bitbucket.org/richierocks/assertive.base/issues
-
-0 errors | 0 warnings | 0 notes
-
-## assertive.code (0.0-1)
-Maintainer: Richard Cotton <richierocks@gmail.com>  
-Bug reports: https://bitbucket.org/richierocks/assertive.code/issues
-
-0 errors | 0 warnings | 0 notes
-
-## assertive.data (0.0-1)
-Maintainer: Richard Cotton <richierocks@gmail.com>  
-Bug reports: https://bitbucket.org/richierocks/assertive.data/issues
-
-0 errors | 0 warnings | 0 notes
-
-## assertive.data.uk (0.0-1)
-Maintainer: Richard Cotton <richierocks@gmail.com>  
-Bug reports: https://bitbucket.org/richierocks/assertive.data.uk/issues
-
-0 errors | 0 warnings | 0 notes
-
-## assertive.data.us (0.0-1)
-Maintainer: Richard Cotton <richierocks@gmail.com>  
-Bug reports: https://bitbucket.org/richierocks/assertive.data.us/issues
-
-0 errors | 0 warnings | 0 notes
-
-## assertive.datetimes (0.0-1)
-Maintainer: Richard Cotton <richierocks@gmail.com>  
-Bug reports: 
-        https://bitbucket.org/richierocks/assertive.datetimes/issues
-
-0 errors | 0 warnings | 0 notes
-
-## assertive.files (0.0-1)
-Maintainer: Richard Cotton <richierocks@gmail.com>  
-Bug reports: https://bitbucket.org/richierocks/assertive.files/issues
-
-0 errors | 0 warnings | 0 notes
-
-## assertive.matrices (0.0-1)
-Maintainer: Richard Cotton <richierocks@gmail.com>  
-Bug reports: https://bitbucket.org/richierocks/assertive.matrices/issues
-
-0 errors | 0 warnings | 0 notes
-
-## assertive.models (0.0-1)
-Maintainer: Richard Cotton <richierocks@gmail.com>  
-Bug reports: https://bitbucket.org/richierocks/assertive.models/issues
-
-0 errors | 0 warnings | 0 notes
-
-## assertive.numbers (0.0-1)
-Maintainer: Richard Cotton <richierocks@gmail.com>  
-Bug reports: https://bitbucket.org/richierocks/assertive.numbers/issues
-
-0 errors | 0 warnings | 0 notes
-
-## assertive.properties (0.0-2)
-Maintainer: Richard Cotton <richierocks@gmail.com>  
-Bug reports: 
-        https://bitbucket.org/richierocks/assertive.properties/issues
-
-0 errors | 0 warnings | 0 notes
-
-## assertive (0.3-3)
-Maintainer: Richard Cotton <richierocks@gmail.com>  
-Bug reports: https://bitbucket.org/richierocks/assertive/issues
-
-0 errors | 0 warnings | 0 notes
-
-## assertive.reflection (0.0-3)
-Maintainer: Richard Cotton <richierocks@gmail.com>  
-Bug reports: 
-        https://bitbucket.org/richierocks/assertive.reflection/issues
-
-0 errors | 0 warnings | 0 notes
-
-## assertive.sets (0.0-2)
-Maintainer: Richard Cotton <richierocks@gmail.com>  
-Bug reports: https://bitbucket.org/richierocks/assertive.sets/issues
-
-0 errors | 0 warnings | 0 notes
-
-## assertive.strings (0.0-2)
-Maintainer: Richard Cotton <richierocks@gmail.com>  
-Bug reports: https://bitbucket.org/richierocks/assertive.strings/issues
-
-0 errors | 0 warnings | 0 notes
-
-## assertive.types (0.0-2)
-Maintainer: Richard Cotton <richierocks@gmail.com>  
-Bug reports: https://bitbucket.org/richierocks/assertive.types/issues
-
-0 errors | 0 warnings | 0 notes
-
-## assertr (1.0.0)
-Maintainer: Tony Fischetti <tony.fischetti@gmail.com>  
-Bug reports: https://github.com/tonyfischetti/assertr/issues
-
-0 errors | 0 warnings | 0 notes
-
-## assertthat (0.1)
-Maintainer: 'Hadley Wickham' <h.wickham@gmail.com>
-
-0 errors | 0 warnings | 1 note 
-
-```
-checking DESCRIPTION meta-information ... NOTE
-Malformed Title field: should not end in a period.
-```
-
-## attribrisk (0.1)
-Maintainer: Louis Schenck <louis.schenck@mayo.edu>
-
-0 errors | 0 warnings | 1 note 
-
-```
-checking S3 generic/method consistency ... NOTE
-Found the following apparent S3 methods exported but not registered:
-  summary.attribrisk
-See section ‘Registering S3 methods’ in the ‘Writing R Extensions’
-manual.
-```
-
-## AutoModel (0.4.9)
-Maintainer: Alex Lishinski <alexlishinski@gmail.com>
-
-0 errors | 0 warnings | 0 notes
-
-## autovarCore (1.0-0)
-Maintainer: Ando Emerencia <ando.emerencia@gmail.com>  
-Bug reports: https://github.com/roqua/autovarcore/issues
-
-0 errors | 0 warnings | 0 notes
-
-## aws.signature (0.2.0)
-Maintainer: Thomas J. Leeper <thosjleeper@gmail.com>  
-Bug reports: https://github.com/cloudyr/aws.signature/issues
-
-0 errors | 0 warnings | 0 notes
-
-## AzureML (0.2.10)
-Maintainer: Andrie de Vries <adevries@microsoft.com>  
-Bug reports: https://github.com/RevolutionAnalytics/AzureML/issues
-
-0 errors | 0 warnings | 0 notes
-
-## backpipe (0.1.5)
-Maintainer: Christopher Brown <chris.brown@decisionpatterns.com>  
-Bug reports: https://github.com/decisionpatterns/backpipe/issues
-
-0 errors | 0 warnings | 0 notes
-
-## backports (1.0.2)
-Maintainer: Michel Lang <michellang@gmail.com>
-
-0 errors | 0 warnings | 0 notes
-
-## backShift (0.1.3)
-Maintainer: Christina Heinze <heinze@stat.math.ethz.ch>  
-Bug reports: https://github.com/christinaheinze/backShift/issues
-
-1 error  | 0 warnings | 0 notes
-
-```
-checking whether package ‘backShift’ can be installed ... ERROR
-Installation failed.
-See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/backShift.Rcheck/00install.out’ for details.
-```
-
-## backtestGraphics (0.1.6)
-Maintainer: Miller Zijie Zhu <zijie.miller.zhu@gmail.com>
-
-0 errors | 0 warnings | 0 notes
-
-## bagRboostR (0.0.2)
-Maintainer: Shannon Rush <shannonmrush@gmail.com>
-
-0 errors | 0 warnings | 0 notes
-
-## BatchExperiments (1.4.1)
-Maintainer: Michel Lang <michellang@gmail.com>  
-Bug reports: https://github.com/tudo-r/BatchExperiments/issues
-
-0 errors | 0 warnings | 1 note 
-
-```
-checking dependencies in R code ... NOTE
-Unexported objects imported by ':::' calls:
-  ‘BatchJobs:::addIntModulo’ ‘BatchJobs:::buffer’
-  ‘BatchJobs:::checkDir’ ‘BatchJobs:::checkId’ ‘BatchJobs:::checkIds’
-  ‘BatchJobs:::checkPart’ ‘BatchJobs:::createShardedDirs’
-  ‘BatchJobs:::dbConnectToJobsDB’ ‘BatchJobs:::dbCreateJobStatusTable’
-  ‘BatchJobs:::dbDoQuery’ ‘BatchJobs:::dbFindDone’
-  ‘BatchJobs:::dbFindRunning’ ‘BatchJobs:::dbRemoveJobs’
-  ‘BatchJobs:::dbSelectWithIds’ ‘BatchJobs:::getJobDirs’
-  ‘BatchJobs:::getJobInfoInternal’ ‘BatchJobs:::getKillJob’
-  ‘BatchJobs:::getListJobs’ ‘BatchJobs:::getRandomSeed’
-  ‘BatchJobs:::getResult’ ‘BatchJobs:::isRegistryDir’
-  ‘BatchJobs:::makeRegistryInternal’ ‘BatchJobs:::saveRegistry’
-  ‘BatchJobs:::seeder’ ‘BatchJobs:::syncRegistry’
-  See the note in ?`:::` about the use of this operator.
-```
-
-## BatchJobs (1.6)
-Maintainer: Bernd Bischl <bernd_bischl@gmx.net>  
-Bug reports: https://github.com/tudo-r/BatchJobs/issues
-
-0 errors | 0 warnings | 0 notes
-
-## batman (0.1.0)
-Maintainer: Oliver Keyes <ironholds@gmail.com>  
-Bug reports: https://github.com/ironholds/batman/issues
-
-0 errors | 0 warnings | 1 note 
-
-```
-checking data for non-ASCII characters ... NOTE
-  Note: found 19 marked UTF-8 strings
-```
-
-## bayesboot (0.2.1)
-Maintainer: Rasmus Bååth <rasmus.baath@gmail.com>  
-Bug reports: https://github.com/rasmusab/bayesboot/issues
-
-0 errors | 0 warnings | 0 notes
-
-## BayesFactor (0.9.12-2)
-Maintainer: Richard D. Morey <richarddmorey@gmail.com>  
-Bug reports: https://github.com/richarddmorey/BayesFactor/issues
-
-1 error  | 0 warnings | 0 notes
-
-```
-checking package dependencies ... ERROR
-Package required but not available: ‘RcppEigen’
-
-See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
-manual.
-```
-
-## bayesGDS (0.6.2)
-Maintainer: Michael Braun <braunm@smu.edu>
-
-0 errors | 0 warnings | 0 notes
-
-## BBmisc (1.9)
-Maintainer: Bernd Bischl <bernd_bischl@gmx.net>  
-Bug reports: https://github.com/berndbischl/BBmisc/issues
-
-1 error  | 0 warnings | 0 notes
-
-```
-checking tests ... ERROR
-Running the tests in ‘tests/run-all.R’ failed.
-Last 13 lines of output:
-  1. Failure: makeProgressBar global options (@test_makeProgressBar.R#41) 
-  2. Failure: makeProgressBar global options (@test_makeProgressBar.R#41) 
-  3. Failure: makeProgressBar global options (@test_makeProgressBar.R#41) 
-  4. Failure: makeProgressBar global options (@test_makeProgressBar.R#41) 
-  5. Failure: makeProgressBar global options (@test_makeProgressBar.R#41) 
-  6. Failure: makeProgressBar global options (@test_makeProgressBar.R#41) 
-  7. Failure: suppressAll (@test_suppressAll.R#6) 
-  8. Failure: suppressAll (@test_suppressAll.R#7) 
-  9. Failure: suppressAll (@test_suppressAll.R#7) 
-  1. ...
-  
-  Error: testthat unit tests failed
-  Execution halted
-```
-
-## bbmle (1.0.18)
-Maintainer: Ben Bolker <bolker@mcmaster.ca>
-
-0 errors | 0 warnings | 0 notes
-
-## bdscale (2.0.0)
-Maintainer: Dave Mills <dave.a.mills@gmail.com>
-
-0 errors | 0 warnings | 0 notes
-
-## BEDMatrix (1.2.0)
-Maintainer: Alexander Grueneberg <alexander.grueneberg@googlemail.com>  
-Bug reports: https://github.com/QuantGen/BEDMatrix/issues
-
-0 errors | 0 warnings | 0 notes
-
-## bedr (1.0.2)
-Maintainer: Paul Boutros <Paul.Boutros@oicr.on.ca>
-
-0 errors | 0 warnings | 0 notes
-
-## benchmarkme (0.2.3)
-Maintainer: Colin Gillespie <csgillespie@gmail.com>  
-Bug reports: https://github.com/csgillespie/benchmarkme/issues
-
-0 errors | 0 warnings | 1 note 
-
-```
-checking package dependencies ... NOTE
-Package suggested but not available for checking: ‘RcppZiggurat’
-```
-
-## benchmarkmeData (0.2.2)
-Maintainer: Colin Gillespie <csgillespie@gmail.com>  
-Bug reports: https://github.com/csgillespie/benchmarkme-data/issues
-
-0 errors | 0 warnings | 1 note 
-
-```
-checking package dependencies ... NOTE
-Package suggested but not available for checking: ‘benchmarkme’
-```
-
-## benford.analysis (0.1.3)
-Maintainer: Carlos Cinelli <carloscinelli@hotmail.com>  
-Bug reports: http://github.com/carloscinelli/benford.analysis/issues
-
-0 errors | 0 warnings | 0 notes
-
-## BEQI2 (2.0-0)
-Maintainer: Dennis Walvoort <dennis.Walvoort@wur.nl>
-
-0 errors | 0 warnings | 0 notes
-
-## BerlinData (1.0.1)
-Maintainer: Dirk Schumacher <mail@dirk-schumacher.net>
-
-0 errors | 0 warnings | 1 note 
-
-```
-checking data for non-ASCII characters ... NOTE
-  Note: found 1 marked UTF-8 string
-```
-
-## betalink (2.2.1)
-Maintainer: Timothee Poisot <tim@poisotlab.io>
-
-0 errors | 0 warnings | 0 notes
-
-## bfork (0.1.2)
-Maintainer: Daniel Robertson <danlrobertson89@gmail.com>  
-Bug reports: https://gitlab.com/drobertson/bfork/issues
-
-0 errors | 0 warnings | 0 notes
-
-## bigmemory (4.5.19)
-Maintainer: Michael J. Kane <bigmemoryauthors@gmail.com>
-
-0 errors | 0 warnings | 1 note 
-
-```
-checking package dependencies ... NOTE
-Package which this enhances but not available for checking: ‘bigtabulate’
-```
-
-## bigrquery (0.2.0)
-Maintainer: Hadley Wickham <hadley@rstudio.com>
-
-0 errors | 0 warnings | 0 notes
-
-## binaryLogic (0.3.4)
-Maintainer: Daniel Dörrhöfer <ddo@openmailbox.org>  
-Bug reports: https://github.com/d4ndo/binaryLogic/issues
-
-0 errors | 0 warnings | 0 notes
-
-## binomen (0.1.0)
-Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>  
-Bug reports: https://github.com/ropensci/binomen/issues
-
-0 errors | 0 warnings | 0 notes
-
-## bio3d (2.2-4)
-Maintainer: Barry Grant <bjgrant@umich.edu>
-
-0 errors | 0 warnings | 0 notes
-
-## biogas (1.3.0)
-Maintainer: Sasha D. Hafner <saha@kbm.sdu.dk>
-
-0 errors | 0 warnings | 0 notes
-
-## biogram (1.2)
-Maintainer: Michal Burdukiewicz <michalburdukiewicz@gmail.com>  
-Bug reports: https://github.com/michbur/biogram/issues
-
-0 errors | 0 warnings | 0 notes
-
-## bioinactivation (1.1.2)
-Maintainer: Alberto Garre <garre.alberto@gmail.com>
-
-0 errors | 0 warnings | 0 notes
-
-## biom (0.3.12)
-Maintainer: Paul J. McMurdie <mcmurdie@stanford.edu>  
-Bug reports: https://github.com/joey711/biom/issues
-
-1 error  | 0 warnings | 1 note 
-
-```
-checking tests ... ERROR
-Running the tests in ‘tests/testthat-biom.R’ failed.
-Last 13 lines of output:
-  1. Failure: show method output tests (@test-IO.R#69) ---------------------------
-  `x1` produced no output
-  
-  
-  2. Failure: show method output tests (@test-IO.R#70) ---------------------------
-  `x4` produced no output
-  
-  
-  DONE ===========================================================================
-  Error: Test failures
-  In addition: Warning message:
-  Placing tests in `inst/tests/` is deprecated. Please use `tests/testthat/` instead 
-  Execution halted
-
-checking DESCRIPTION meta-information ... NOTE
-Malformed Title field: should not end in a period.
-```
-
-## biomartr (0.0.3)
-Maintainer: Hajk-Georg Drost <hgd23@cam.ac.uk>  
-Bug reports: https://github.com/HajkD/biomartr/issues
-
-1 error  | 0 warnings | 0 notes
-
-```
-checking package dependencies ... ERROR
-Packages required but not available: ‘biomaRt’ ‘Biostrings’
-
-See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
-manual.
-```
-
-## biomod2 (3.3-7)
-Maintainer: Damien Georges <damien.georges2@gmail.com>  
-Bug reports: <https://r-forge.r-project.org/R/?group_id=302>
-
-0 errors | 0 warnings | 0 notes
-
-## blackbox (1.0)
-Maintainer: François Rousset <francois.rousset@umontpellier.fr>
-
-1 error  | 0 warnings | 0 notes
-
-```
-checking package dependencies ... ERROR
-Package required but not available: ‘RcppEigen’
-
-See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
-manual.
-```
-
-## blme (1.0-4)
-Maintainer: Vincent Dorie <vjd4@nyu.edu>  
-Bug reports: https://github.com/vdorie/blme/issues
-
-0 errors | 1 warning  | 0 notes
-
-```
-checking whether package ‘blme’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: package ‘lme4’ was built under R version 3.2.5
-See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/blme.Rcheck/00install.out’ for details.
-```
-
-## bmp (0.2)
-Maintainer: Gregory Jefferis <jefferis@gmail.com>
-
-0 errors | 0 warnings | 0 notes
-
-## bnclassify (0.3.2)
-Maintainer: Mihaljevic Bojan <bmihaljevic@fi.upm.es>  
-Bug reports: http://github.com/bmihaljevic/bnclassify/issues
-
-1 error  | 0 warnings | 0 notes
-
-```
-checking package dependencies ... ERROR
-Packages required but not available: ‘graph’ ‘RBGL’
-
-Package suggested but not available for checking: ‘Rgraphviz’
-
-See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
-manual.
-```
-
-## bnnSurvival (0.1.4)
-Maintainer: Marvin N. Wright <wright@imbs.uni-luebeck.de>
-
-0 errors | 0 warnings | 0 notes
-
-## bnstruct (1.0)
-Maintainer: Francesco Sambo <francesco.sambo@dei.unipd.it>
-
-0 errors | 0 warnings | 1 note 
-
-```
-checking package dependencies ... NOTE
-Packages suggested but not available for checking: ‘graph’ ‘Rgraphviz’
-```
-
-## bold (0.3.5)
-Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>  
-Bug reports: https://github.com/ropensci/bold/issues
-
-0 errors | 0 warnings | 1 note 
-
-```
-checking package dependencies ... NOTE
-Package suggested but not available for checking: ‘sangerseqR’
-```
-
-## bootLR (1.0)
-Maintainer: Ari B. Friedman <abfriedman@gmail.com>
-
-0 errors | 0 warnings | 0 notes
-
-## boral (0.9.1)
-Maintainer: Francis Hui <fhui28@gmail.com>
-
-1 error  | 0 warnings | 0 notes
-
-```
-checking whether package ‘boral’ can be installed ... ERROR
-Installation failed.
-See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/boral.Rcheck/00install.out’ for details.
-```
-
-## boxr (0.3.2)
-Maintainer: Brendan Rocks <rocks.brendan@gmail.com>  
-Bug reports: https://github.com/brendan-R/boxr/issues
-
-0 errors | 0 warnings | 0 notes
-
-## bpa (0.1.1)
-Maintainer: Brandon Greenwell <greenwell.brandon@gmail.com>  
-Bug reports: https://github.com/bgreenwell/bpa/issues
-
-0 errors | 0 warnings | 0 notes
-
-## brms (0.8.0)
-Maintainer: Paul-Christian Buerkner <paul.buerkner@gmail.com>  
-Bug reports: http://github.com/paul-buerkner/brms/issues
-
-1 error  | 0 warnings | 0 notes
-
-```
-checking whether package ‘brms’ can be installed ... ERROR
-Installation failed.
-See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/brms.Rcheck/00install.out’ for details.
-```
-
-## broman (0.62-1)
-Maintainer: Karl W Broman <kbroman@biostat.wisc.edu>
-
-0 errors | 0 warnings | 0 notes
-
-## broom (0.4.0)
-Maintainer: David Robinson <admiral.david@gmail.com>  
-Bug reports: http://github.com/dgrtwo/broom/issues
-
-0 errors | 0 warnings | 0 notes
-
-## brr (1.0.0)
-Maintainer: Stéphane Laurent <laurent_step@yahoo.fr>
-
-0 errors | 0 warnings | 0 notes
-
-## brranching (0.2.0)
-Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>  
-Bug reports: http://www.github.com/ropensci/brranching/issues
-
-0 errors | 0 warnings | 0 notes
-
-## BWStest (0.1.0)
-Maintainer: Steven E. Pav <shabbychef@gmail.com>  
-Bug reports: https://github.com/shabbychef/BWStest/issues
-
-0 errors | 0 warnings | 0 notes
-
-## captr (0.1.5)
-Maintainer: Gaurav Sood <gsood07@gmail.com>  
-Bug reports: http://github.com/soodoku/captR/issues
-
-0 errors | 0 warnings | 0 notes
-
-## caret (6.0-68)
-Maintainer: Max Kuhn <Max.Kuhn@pfizer.com>  
-Bug reports: https://github.com/topepo/caret/issues
-
-0 errors | 0 warnings | 0 notes
-
-## caretEnsemble (2.0.0)
-Maintainer: Zachary A. Deane-Mayer <zach.mayer@gmail.com>  
-Bug reports: https://github.com/zachmayer/caretEnsemble/issues
-
-0 errors | 0 warnings | 0 notes
-
-## causaldrf (0.3)
-Maintainer: Douglas Galagate <galagated@gmail.com>
-
-0 errors | 0 warnings | 0 notes
-
-## Causata (4.2-0)
-Maintainer: Justin Hemann <justinh@causata.com>
-
-0 errors | 1 warning  | 5 notes
-
-```
-checking whether package ‘Causata’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: package ‘R.utils’ was built under R version 3.2.5
-See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/Causata.Rcheck/00install.out’ for details.
-
-checking DESCRIPTION meta-information ... NOTE
-Malformed Title field: should not end in a period.
-
-checking top-level files ... NOTE
-Non-standard file/directory found at top level:
-  ‘integration_tests’
-
-checking R code for possible problems ... NOTE
-GetMetadata.Connect: no visible global function definition for
-  ‘dbGetQuery’
-GetRawData.Connect: no visible global function definition for
-  ‘dbGetQuery’
-
-checking line endings in Makefiles ... NOTE
-Found the following Makefile(s) without a final LF:
-  inst/doc/Makefile
-Some ‘make’ programs ignore lines not ending in LF.
-
-checking files in ‘vignettes’ ... NOTE
-The following files look like leftovers/mistakes:
-  ‘Causata-vignette.log’
-Please remove them from your package.
-The following directory looks like a leftover from 'knitr':
-  ‘figure’
-Please remove from your package.
-```
-
-## cda (1.5.1)
-Maintainer: Baptiste Auguie <baptiste.auguie@gmail.com>
-
-0 errors | 0 warnings | 2 notes
-
-```
-checking R code for possible problems ... NOTE
-rgl.ellipsoid: no visible global function definition for ‘cube3d’
-rgl_annotate: no visible global function definition for ‘axes3d’
-rgl_annotate: no visible global function definition for ‘axis3d’
-rgl_annotate: no visible global function definition for ‘title3d’
-
-checking for GNU extensions in Makefiles ... NOTE
-GNU make is a SystemRequirements.
-```
-
-## cdcfluview (0.4.0)
-Maintainer: Bob Rudis <bob@rudis.net>  
-Bug reports: https://github.com/hrbrmstr/cdcfluview/issues
-
-0 errors | 0 warnings | 0 notes
-
-## cellranger (1.0.0)
-Maintainer: Jennifer Bryan <jenny@stat.ubc.ca>  
-Bug reports: https://github.com/jennybc/cellranger/issues
-
-1 error  | 0 warnings | 0 notes
-
-```
-checking tests ... ERROR
-Running the tests in ‘tests/testthat.R’ failed.
-Last 13 lines of output:
-  > library(cellranger)
-  > 
-  > test_check("cellranger")
-  1. Failure: Print method works (@test-cell-specification.R#163) ----------------
-  cell_limits(c(NA, 7), c(3, NA)) produced no output
-  
-  
-  testthat results ================================================================
-  OK: 93 SKIPPED: 0 FAILED: 1
-  1. Failure: Print method works (@test-cell-specification.R#163) 
-  
-  Error: testthat unit tests failed
-  Execution halted
-```
-
-## cgdsr (1.2.5)
-Maintainer: Augustin Luna <lunaa@cbio.mskcc.org>
-
-0 errors | 0 warnings | 0 notes
-
-## changepoint (2.2.1)
-Maintainer: Rebecca Killick <r.killick@lancs.ac.uk>  
-Bug reports: <changepoints@lancs.ac.uk>
-
-0 errors | 0 warnings | 0 notes
-
-## CheckDigit (0.1-1)
-Maintainer: Justin Brantley <brantley@uw.edu>
-
-0 errors | 0 warnings | 1 note 
-
-```
-checking DESCRIPTION meta-information ... NOTE
-Malformed Description field: should contain one or more complete sentences.
-```
-
-## checkmate (1.7.4)
-Maintainer: Michel Lang <michellang@gmail.com>  
-Bug reports: https://github.com/mllg/checkmate/issues
-
-0 errors | 0 warnings | 0 notes
-
-## checkpoint (0.3.16)
-Maintainer: Andrie de Vries <adevries@microsoft.com>  
-Bug reports: 
-        https://www.github.com/RevolutionAnalytics/checkpoint/issues
-
-0 errors | 0 warnings | 0 notes
-
-## CHNOSZ (1.0.7)
-Maintainer: Jeffrey Dick <j3ffdick@gmail.com>
-
-0 errors | 0 warnings | 0 notes
-
-## chopthin (0.2.1)
-Maintainer: Axel Gandy <a.gandy@imperial.ac.uk>
-
-0 errors | 0 warnings | 0 notes
-
-## choroplethr (3.5.2)
-Maintainer: Ari Lamstein <arilamstein@gmail.com>  
-Bug reports: https://github.com/arilamstein/choroplethr/issues
-
-0 errors | 0 warnings | 0 notes
-
-## chromer (0.1)
-Maintainer: Matthew Pennell <mwpennell@gmail.com>  
-Bug reports: http://www.github.com/ropensci/chromer/issues/new
-
-0 errors | 0 warnings | 1 note 
-
-```
-checking DESCRIPTION meta-information ... NOTE
-Malformed Description field: should contain one or more complete sentences.
-```
-
-## chunked (0.2.1)
-Maintainer: Edwin de Jonge <edwindjonge@gmail.com>  
-Bug reports: https://github.com/edwindj/chunked/issues
-
-0 errors | 0 warnings | 0 notes
-
-## cjoint (2.0.4)
-Maintainer: Anton Strezhnev <astrezhnev@fas.harvard.edu>
-
-0 errors | 0 warnings | 0 notes
-
-## ckanr (0.1.0)
-Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>  
-Bug reports: http://www.github.com/ropensci/ckanr/issues
-
-0 errors | 0 warnings | 0 notes
-
-## Ckmeans.1d.dp (3.3.1)
-Maintainer: Joe Song <joemsong@cs.nmsu.edu>
-
-0 errors | 0 warnings | 0 notes
-
-## clarifai (0.2)
-Maintainer: Gaurav Sood <gsood07@gmail.com>  
-Bug reports: http://github.com/soodoku/clarifai/issues
-
-0 errors | 0 warnings | 0 notes
-
-## cleangeo (0.1-1)
-Maintainer: Emmanuel Blondel <emmanuel.blondel1@gmail.com>  
-Bug reports: https://github.com/eblondel/cleangeo/issues
-
-0 errors | 1 warning  | 0 notes
-
-```
-checking whether package ‘cleangeo’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: replacing previous import ‘sp::nowrapSpatialLines’ by ‘maptools::nowrapSpatialLines’ when loading ‘cleangeo’
-See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/cleangeo.Rcheck/00install.out’ for details.
-```
-
-## climwin (0.1.2)
-Maintainer: Liam D. Bailey <liam.bailey@anu.edu.au>
-
-0 errors | 0 warnings | 0 notes
-
-## clipr (0.2.0)
-Maintainer: Matthew Lincoln <matthew.d.lincoln@gmail.com>  
-Bug reports: https://github.com/mdlincoln/clipr/issues
-
-0 errors | 0 warnings | 0 notes
-
-## clisymbols (1.0.0)
-Maintainer: Gabor Csardi <csardi.gabor@gmail.com>  
-Bug reports: https://github.com/gaborcsardi/clisymbols/issues
-
-0 errors | 0 warnings | 0 notes
-
-## cmaesr (1.0.1)
-Maintainer: Jakob Bossek <j.bossek@gmail.com>  
-Bug reports: https://github.com/jakobbossek/cmaesr/issues
-
-0 errors | 0 warnings | 0 notes
-
-## cmna (0.1.2)
-Maintainer: "James P. Howard, II" <jh@jameshoward.us>
-
-0 errors | 0 warnings | 0 notes
-
-## coala (0.4.0)
-Maintainer: Paul Staab <develop@paulstaab.de>  
-Bug reports: https://github.com/statgenlmu/coala/issues
-
-0 errors | 0 warnings | 0 notes
-
-## cocor (1.1-2)
-Maintainer: Birk Diedenhofen <mail@birkdiedenhofen.de>
-
-1 error  | 0 warnings | 1 note 
-
-```
-checking tests ... ERROR
-Running the tests in ‘tests/test.cocor.package.R’ failed.
-Last 13 lines of output:
-  10. Failure: Output is correct (@test.r#101) -----------------------------------
-  cocor.indep.groups(...) produced no output
-  
-  
-  11. Failure: Output is correct (@test.r#102) -----------------------------------
-  cocor.indep.groups(...) produced no output
-  
-  
-  DONE ===========================================================================
-  Error: Test failures
-  In addition: Warning message:
-  Placing tests in `inst/tests/` is deprecated. Please use `tests/testthat/` instead 
-  Execution halted
-
-checking package dependencies ... NOTE
-Package which this enhances but not available for checking: ‘rkward’
-```
-
-## cocorresp (0.3-0)
-Maintainer: Gavin L. Simpson <ucfagls@gmail.com>  
-Bug reports: https://github.com/gavinsimpson/cocorresp/issues
-
-0 errors | 0 warnings | 0 notes
-
-## cocron (1.0-1)
-Maintainer: Birk Diedenhofen <mail@birkdiedenhofen.de>
-
-0 errors | 0 warnings | 1 note 
-
-```
-checking package dependencies ... NOTE
-Package which this enhances but not available for checking: ‘rkward’
-```
-
-## codyn (1.0.1)
-Maintainer: Matthew B. Jones <jones@nceas.ucsb.edu>  
-Bug reports: https://github.com/laurenmh/codyn/issues
-
-0 errors | 0 warnings | 0 notes
-
-## coefplot (1.2.4)
-Maintainer: Jared P. Lander <packages@jaredlander.com>
-
-0 errors | 0 warnings | 0 notes
-
-## coenocliner (0.2-1)
-Maintainer: Gavin L. Simpson <ucfagls@gmail.com>  
-Bug reports: https://github.com/gavinsimpson/coenocliner/issues
-
-0 errors | 0 warnings | 0 notes
-
-## CollapsABEL (0.10.8)
-Maintainer: Kaiyin Zhong <kindlychung@gmail.com>  
-Bug reports: https://bitbucket.org/kindlychung/collapsabel2/issues
-
-0 errors | 0 warnings | 0 notes
-
-## collUtils (1.0.5)
-Maintainer: Kaiyin Zhong <kindlychung@gmail.com>  
-Bug reports: https://bitbucket.org/kindlychung/collutils/issues
-
-0 errors | 0 warnings | 0 notes
-
-## colourlovers (0.2.0)
-Maintainer: Thomas J. Leeper <thosjleeper@gmail.com>  
-Bug reports: https://github.com/leeper/colourlovers/issues
-
-0 errors | 0 warnings | 0 notes
-
-## commentr (1.0.4)
-Maintainer: Erik Bulow <erik.bulow@rccvast.se>  
-Bug reports: https://bitbucket.org/cancercentrum/commentr/issues?
-        status=new&status=open
-
-0 errors | 0 warnings | 0 notes
-
-## CompareCausalNetworks (0.1.4)
-Maintainer: Christina Heinze <heinze@stat.math.ethz.ch>  
-Bug reports: 
-        https://github.com/christinaheinze/CompareCausalNetworks/issues
-
-2 errors | 0 warnings | 0 notes
-
-```
-checking examples ... ERROR
-Running examples in ‘CompareCausalNetworks-Ex.R’ failed
-The error most likely occurred in:
-
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
-> ### Name: getParents
-> ### Title: Estimate the connectivity matrix of a causal graph
-> ### Aliases: getParents
-> ### Keywords: Causality, Graph estimations
-> 
-> ### ** Examples
-> 
-> ## load the backShift package for data generation and plotting functionality
-> if(!requireNamespace("backShift", quietly = TRUE))
-+  stop("The package 'backShift' is needed for the examples to
-+  work. Please install it.", call. = FALSE)
-Error: The package 'backShift' is needed for the examples to
- work. Please install it.
-Execution halted
-
-checking tests ... ERROR
-Running the tests in ‘tests/testthat.R’ failed.
-Last 13 lines of output:
-  6: missingDependenciesMessage("pcalg", method)
-  7: stop(paste("The package '", package, "' is needed for ", method, " to \nwork. Please install it.", 
-         sep = ""), call. = FALSE)
-  
-  testthat results ================================================================
-  OK: 12 SKIPPED: 0 FAILED: 4
-  1. Error: Checks output type for pc (@test_getParents_defaults_all_methods.R#19) 
-  2. Error: Checks output type for LINGAM (@test_getParents_defaults_all_methods.R#19) 
-  3. Error: Checks output type for ges (@test_getParents_defaults_all_methods.R#19) 
-  4. Error: Checks output type for rfci (@test_getParents_defaults_all_methods.R#19) 
-  
-  Error: testthat unit tests failed
-  Execution halted
-```
-
-## compareDF (1.0.0)
-Maintainer: Alex Joseph <alexsanjoseph@gmail.com>
-
-0 errors | 0 warnings | 0 notes
-
-## condformat (0.2.0)
-Maintainer: Sergio Oller Moreno <sergioller@gmail.com>  
-Bug reports: http://github.com/zeehio/condformat/issues
-
-0 errors | 0 warnings | 0 notes
-
-## confidence (1.1-0)
-Maintainer: Dennis J. J. Walvoort <dennis.Walvoort@wur.nl>
-
-0 errors | 0 warnings | 0 notes
-
-## corrplot (0.76)
-Maintainer: Taiyun Wei <weitaiyun@gmail.com>  
-Bug reports: https://github.com/taiyun/corrplot/issues
-
-0 errors | 0 warnings | 0 notes
-
-## Countr (3.2.0)
-Maintainer: Tarak Kharrat <tarak.kharrat@manchester.ac.uk>
-
-0 errors | 0 warnings | 0 notes
-
-## countrycode (0.18)
-Maintainer: Vincent Arel-Bundock <vincent.arel-bundock@umontreal.ca>
-
-0 errors | 0 warnings | 1 note 
-
-```
-checking data for non-ASCII characters ... NOTE
-  Note: found 6 marked UTF-8 strings
-```
-
-## covr (2.0.1)
-Maintainer: Jim Hester <james.f.hester@gmail.com>  
-Bug reports: https://github.com/jimhester/covr/issues
-
-0 errors | 0 warnings | 1 note 
-
-```
-checking dependencies in R code ... NOTE
-There are ::: calls to the package's namespace in its code. A package
-  almost never needs to use ::: for its own objects:
-  ‘count’
-```
-
-## cowsay (0.4.0)
-Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>  
-Bug reports: http://www.github.com/sckott/cowsay/issues
-
-0 errors | 0 warnings | 0 notes
-
-## crandatapkgs (0.1.3)
-Maintainer: Thomas J. Leeper <thosjleeper@gmail.com>  
-Bug reports: https://github.com/leeper/crandatapkgs/issues
-
-0 errors | 0 warnings | 0 notes
-
-## crayon (1.3.1)
-Maintainer: Gabor Csardi <csardi.gabor@gmail.com>  
-Bug reports: https://github.com/gaborcsardi/crayon/issues
-
-0 errors | 0 warnings | 0 notes
-
-## creditr (0.6.1)
-Maintainer: Yuanchu Dang <yuanchu.dang@gmail.com>
-
-0 errors | 0 warnings | 0 notes
-
-## crunch (1.9.4)
-Maintainer: Neal Richardson <neal@crunch.io>  
-Bug reports: https://github.com/Crunch-io/rcrunch/issues
-
-0 errors | 0 warnings | 0 notes
-
-## ctsem (1.1.5.2)
-Maintainer: Charles Driver <driver@mpib-berlin.mpg.de>
-
-0 errors | 0 warnings | 1 note 
-
-```
-checking dependencies in R code ... NOTE
-Namespace in Imports field not imported from: ‘methods’
-  All declared Imports should be used.
-```
-
-## curl (0.9.7)
-Maintainer: Jeroen Ooms <jeroen.ooms@stat.ucla.edu>  
-Bug reports: https://github.com/jeroenooms/curl/issues
-
-0 errors | 0 warnings | 0 notes
-
-## curlconverter (0.7.0)
-Maintainer: Bob Rudis <bob@rudis.net>
-
-0 errors | 0 warnings | 0 notes
-
-## cyclocomp (1.0.0)
-Maintainer: Gabor Csardi <gcsardi@mango-solutions.com>  
-Bug reports: https://github.com/MangoTheCat/cyclocomp/issues
-
-0 errors | 0 warnings | 0 notes
-
-## cymruservices (0.2.0)
-Maintainer: Bob Rudis <bob@rudis.net>
-
-0 errors | 0 warnings | 0 notes
-
-## daff (0.1.4)
-Maintainer: Edwin de Jonge <edwindjonge@gmail.com>
-
-0 errors | 0 warnings | 0 notes
-
-## dagitty (0.1-10)
-Maintainer: Johannes Textor <johannes.textor@gmx.de>  
-Bug reports: https://github.com/jtextor/dagitty/issues
-
-0 errors | 0 warnings | 0 notes
-
-## Dark (0.9.4)
-Maintainer: Dr Jeremiah MF Kelly <emkayoh@mac.com>  
-Bug reports: https://github.com/emkayoh/Dark/issues
-
-0 errors | 0 warnings | 0 notes
-
-## data.table (1.9.6)
-Maintainer: Matt Dowle <mattjdowle@gmail.com>  
-Bug reports: https://github.com/Rdatatable/data.table/issues
-
-0 errors | 0 warnings | 1 note 
-
-```
-checking package dependencies ... NOTE
-Package suggested but not available for checking: ‘GenomicRanges’
-```
-
-## data.tree (0.3.5)
-Maintainer: Christoph Glur <christoph.glur@ipub.com>  
-Bug reports: http://github.com/gluc/data.tree/issues
-
-0 errors | 0 warnings | 0 notes
-
-## datacheckr (0.1.1)
-Maintainer: Joe Thorley <joe@poissonconsulting.ca>
-
-0 errors | 0 warnings | 0 notes
-
-## DataCombine (0.2.21)
-Maintainer: Christopher Gandrud <christopher.gandrud@gmail.com>  
-Bug reports: https://github.com/christophergandrud/DataCombine/issues
-
-0 errors | 0 warnings | 0 notes
-
-## datadr (0.8.5)
-Maintainer: Ryan Hafen <rhafen@gmail.com>
-
-0 errors | 0 warnings | 1 note 
-
-```
-checking package dependencies ... NOTE
-Package suggested but not available for checking: ‘Rhipe’
-```
-
-## datafsm (0.1.0)
-Maintainer: Nay John J. <john.j.nay@gmail.com>  
-Bug reports: https://github.com/JohnNay/datafsm/issues
-
-0 errors | 0 warnings | 0 notes
-
-## DataLoader (1.3)
-Maintainer: Srivenkatesh Gandhi <srivenkateshg@sase.ssn.edu.in>
-
-0 errors | 0 warnings | 0 notes
-
-## dataonderivatives (0.2.1)
-Maintainer: Imanuel Costigan <i.costigan@me.com>  
-Bug reports: https://github.com/imanuelcostigan/dataonderivatives/issues
-
-0 errors | 0 warnings | 0 notes
-
-## datapack (1.0.0)
-Maintainer: Matthew B. Jones <jones@nceas.ucsb.edu>  
-Bug reports: https://github.com/ropensci/datapack/issues
-
-1 error  | 0 warnings | 0 notes
-
-```
-checking whether package ‘datapack’ can be installed ... ERROR
-Installation failed.
-See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/datapack.Rcheck/00install.out’ for details.
-```
-
-## dataRetrieval (2.5.3)
-Maintainer: Laura DeCicco <ldecicco@usgs.gov>  
-Bug reports: https://github.com/USGS-R/dataRetrieval/issues
-
-0 errors | 0 warnings | 0 notes
-
-## dbarts (0.8-5)
-Maintainer: Vincent Dorie <vjd4@nyu.edu>  
-Bug reports: https://github.com/vdorie/dbarts/issues
-
-0 errors | 0 warnings | 0 notes
-
-## DBI (0.3.1)
-Maintainer: Hadley Wickham <hadley@rstudio.com>  
-Bug reports: https://github.com/rstats-db/DBI/issues
-
-0 errors | 0 warnings | 1 note 
-
-```
-checking S3 generic/method consistency ... NOTE
-Found the following apparent S3 methods exported but not registered:
-  print.list.pairs
-See section ‘Registering S3 methods’ in the ‘Writing R Extensions’
-manual.
-```
-
-## dbscan (0.9-7)
-Maintainer: Michael Hahsler <mhahsler@lyle.smu.edu>  
-Bug reports: https://github.com/mhahsler/dbscan/issues
-
-0 errors | 0 warnings | 0 notes
-
-## dcemriS4 (0.55)
-Maintainer: Brandon Whitcher <bwhitcher@gmail.com>
-
-0 errors | 0 warnings | 0 notes
-
-## dcmr (1.0)
-Maintainer: Diane Losardo <dlosardo@amplify.com>
-
-0 errors | 0 warnings | 1 note 
-
-```
-checking R code for possible problems ... NOTE
-plot,attribute.class-missing : .local: no visible binding for global
-  variable ‘attr.number’
-plot,attribute.class-missing : .local: no visible binding for global
-  variable ‘mean.attr’
-plot,attribute.profile.class-missing : .local: no visible binding for
-  global variable ‘attr.profile.number’
-plot,attribute.profile.class-missing : .local: no visible binding for
-  global variable ‘mean.attr.profile’
-summary,attribute.class : .local: no visible binding for global
-  variable ‘value’
-summary,attribute.profile.class : .local: no visible binding for global
-  variable ‘max.class’
-```
-
-## ddpcr (1.1.2)
-Maintainer: Dean Attali <daattali@gmail.com>  
-Bug reports: https://github.com/daattali/ddpcr/issues
-
-1 error  | 0 warnings | 0 notes
-
-```
-checking tests ... ERROR
-Running the tests in ‘tests/testthat.R’ failed.
-Last 13 lines of output:
-  
-  
-  2. Failure: quiet works (@test-utils.R#55) -------------------------------------
-  quiet(cat("hello world")) produced no output
-  
-  
-  testthat results ================================================================
-  OK: 268 SKIPPED: 0 FAILED: 2
-  1. Failure: quiet works (@test-utils.R#54) 
-  2. Failure: quiet works (@test-utils.R#55) 
-  
-  Error: testthat unit tests failed
-  Execution halted
-```
-
-## ddR (0.1.2)
-Maintainer: Edward Ma <ema@hpe.com>
-
-0 errors | 0 warnings | 0 notes
-
-## decisionSupport (1.101.1)
-Maintainer: Lutz Göhring <lutz.goehring@gmx.de>
-
-0 errors | 0 warnings | 0 notes
-
-## decompr (4.1.0)
-Maintainer: Bastiaan Quast <bquast@gmail.com>  
-Bug reports: https://github.com/bquast/decompr/issues
-
-0 errors | 0 warnings | 0 notes
-
-## deductive (0.1.0)
-Maintainer: Mark van der Loo <mark.vanderloo@gmail.com>  
-Bug reports: https://github.com/data-cleaning/deductive/issues
-
-0 errors | 0 warnings | 0 notes
-
-## deepboost (0.1.4)
-Maintainer: Daniel Marcous <dmarcous@gmail.com>  
-Bug reports: https://github.com/dmarcous/CRAN_deepboost/issues
-
-0 errors | 0 warnings | 0 notes
-
-## Delaporte (2.2-3)
-Maintainer: Avraham Adler <Avraham.Adler@gmail.com>  
-Bug reports: https://bitbucket.org/aadler/delaporte/issues
-
-0 errors | 0 warnings | 0 notes
-
-## DeLorean (1.2.0)
-Maintainer: John Reid <john.reid@mrc-bsu.cam.ac.uk>
-
-0 errors | 0 warnings | 1 note 
-
-```
-checking re-building of vignette outputs ... NOTE
-Error in re-building vignettes:
-  ...
-The following objects are masked from 'package:stats':
-
-    filter, lag
-
-The following objects are masked from 'package:base':
-
-    intersect, setdiff, setequal, union
-... 8 lines ...
-Have 20 genes after filtering
-Joining by: "gene"
-Joining by: "gene"
-Joining by: "gene"
-Joining by: "cell"
-Joining by: "cell"
-Compiling model
-Quitting from lines 139-140 (DeLorean.Rmd) 
-Error: processing vignette 'DeLorean.Rmd' failed with diagnostics:
-Eigen not found; call install.packages('RcppEigen')
-Execution halted
-```
-
-## DEMOVA (1.0)
-Maintainer: Vinca Prana <vinca.prana@free.fr>
-
-0 errors | 0 warnings | 0 notes
-
-## dendextend (1.1.8)
-Maintainer: Tal Galili <tal.galili@gmail.com>  
-Bug reports: https://github.com/talgalili/dendextend/issues
-
-0 errors | 0 warnings | 2 notes
-
-```
-checking package dependencies ... NOTE
-Package which this enhances but not available for checking: ‘labeltodendro’
-
-checking Rd cross-references ... NOTE
-Packages unavailable to check Rd xrefs: ‘WGCNA’, ‘moduleColor’
-```
-
-## dendextendRcpp (0.6.1)
-Maintainer: Tal Galili <tal.galili@gmail.com>  
-Bug reports: https://github.com/talgalili/dendextendRcpp/issues
-
-0 errors | 0 warnings | 0 notes
-
-## dendroextras (0.2.1)
-Maintainer: Gregory Jefferis <jefferis@gmail.com>
-
-0 errors | 0 warnings | 0 notes
-
-## densityClust (0.2.1)
-Maintainer: Thomas Lin Pedersen <thomasp85@gmail.com>
-
-0 errors | 0 warnings | 0 notes
-
-## Deriv (3.7.0)
-Maintainer: Serguei Sokol <sokol@insa-toulouse.fr>  
-Bug reports: https://github.com/sgsokol/Deriv/issues
-
-0 errors | 0 warnings | 0 notes
-
-## DescribeDisplay (0.2.5)
-Maintainer: Di Cook <dicook@monash.edu>  
-Bug reports: https://github.com/ggobi/DescribeDisplay/issues
-
-0 errors | 0 warnings | 0 notes
-
-## describer (0.2.0)
-Maintainer: Paul Hendricks <paul.hendricks.2013@owu.edu>  
-Bug reports: https://github.com/paulhendricks/describer/issues
-
-1 error  | 0 warnings | 0 notes
-
-```
-checking tests ... ERROR
-Running the tests in ‘tests/testthat.R’ failed.
-Last 13 lines of output:
-    expect_equal(hello(), 'Hello World')    
-                                        ^~~~
-  tests/testthat/test_dir/test-helper.R:7:1: style: Trailing blank lines are superfluous.
-  
-  ^
-  
-  
-  testthat results ================================================================
-  OK: 9 SKIPPED: 0 FAILED: 1
-  1. Failure: Package Style (@test-styling.R#4) 
-  
-  Error: testthat unit tests failed
-  Execution halted
-```
-
-## detector (0.1.0)
-Maintainer: Paul Hendricks <paul.hendricks.2013@owu.edu>  
-Bug reports: https://github.com/paulhendricks/detector/issues
-
-0 errors | 0 warnings | 0 notes
-
-## devtools (1.11.0)
-Maintainer: Hadley Wickham <hadley@rstudio.com>  
-Bug reports: https://github.com/hadley/devtools/issues
-
-0 errors | 0 warnings | 1 note 
-
-```
-checking package dependencies ... NOTE
-Package suggested but not available for checking: ‘BiocInstaller’
-```
-
-## df2json (0.0.2)
-Maintainer: Nacho Caballero <nachocab@gmail.com>
-
-0 errors | 0 warnings | 0 notes
-
-## diagonals (0.4.0)
-Maintainer: Bastiaan Quast <bquast@gmail.com>  
-Bug reports: https://github.com/bquast/diagonals/issues
-
-0 errors | 0 warnings | 0 notes
-
-## DiagrammeR (0.8.2)
-Maintainer: Richard Iannone <riannone@me.com>  
-Bug reports: https://github.com/rich-iannone/DiagrammeR/issues
-
-0 errors | 0 warnings | 1 note 
-
-```
-checking installed package size ... NOTE
-  installed size is  9.5Mb
-  sub-directories of 1Mb or more:
-    examples      2.4Mb
-    htmlwidgets   4.6Mb
-    img           2.2Mb
-```
-
-## DiceKriging (1.5.5)
-Maintainer: Olivier Roustant <roustant@emse.fr>
-
-0 errors | 0 warnings | 0 notes
-
-## dils (0.8.1)
-Maintainer: Stephen R. Haptonstahl <srh@haptonstahl.org>
-
-0 errors | 0 warnings | 3 notes
-
-```
-checking DESCRIPTION meta-information ... NOTE
-Malformed Title field: should not end in a period.
-
-checking dependencies in R code ... NOTE
-Packages in Depends field not imported from:
-  ‘Rcpp’ ‘igraph’
-  These packages need to be imported from (in the NAMESPACE file)
-  for when this namespace is loaded but not attached.
-
-checking R code for possible problems ... NOTE
-EdgelistFromIgraph: no visible global function definition for
-  ‘get.adjacency’
-EdgelistFromIgraph: no visible global function definition for ‘V’
-EdgelistFromIgraph: no visible global function definition for ‘vcount’
-IgraphFromEdgelist: no visible global function definition for
-  ‘graph.adjacency’
-IgraphFromEdgelist: no visible global function definition for ‘V’
-IgraphFromEdgelist: no visible global function definition for ‘V<-’
-MeasureNetworkInformation: no visible binding for global variable
-... 10 lines ...
-RelativeNetworkInformation: no visible binding for global variable
-  ‘betweenness’
-RssSuggestedNetwork: no visible global function definition for
-  ‘get.adjacency’
-RssSuggestedNetwork: no visible global function definition for
-  ‘is.directed’
-RssSuggestedNetwork: no visible global function definition for ‘vcount’
-RssSuggestedNetwork: no visible global function definition for
-  ‘graph.adjacency’
-RssSuggestedNetwork: no visible global function definition for
-  ‘graph.density’
-```
-
-## DirichletReg (0.6-3)
-Maintainer: Marco Johannes Maier <marco.maier@wu.ac.at>
-
-0 errors | 0 warnings | 0 notes
-
-## discreteRV (1.2.2)
-Maintainer: Eric Hare <erichare@iastate.edu>  
-Bug reports: https://github.com/erichare/discreteRV/issues
-
-0 errors | 0 warnings | 0 notes
-
-## disposables (1.0.1)
-Maintainer: Gabor Csardi <csardi.gabor@gmail.com>  
-Bug reports: https://github.com/gaborcsardi/disposables/issues
-
-0 errors | 0 warnings | 0 notes
-
-## Distance (0.9.4)
-Maintainer: David Lawrence Miller <dave@ninepointeightone.net>
-
-0 errors | 0 warnings | 0 notes
-
-## dml (1.1.0)
-Maintainer: Yuan Tang <terrytangyuan@gmail.com>  
-Bug reports: https://github.com/terrytangyuan/dml/issues
-
-0 errors | 0 warnings | 0 notes
-
-## DNAprofiles (0.3.1)
-Maintainer: Maarten Kruijver <m.v.kruijver@vu.nl>
-
-0 errors | 0 warnings | 0 notes
-
-## docopt (0.4.3.3)
-Maintainer: Edwin de Jonge <edwindjonge@gmail.com>
-
-0 errors | 0 warnings | 0 notes
-
-## docopulae (0.3.2)
-Maintainer: Andreas Rappold <arappold@gmx.at>  
-Bug reports: https://github.com/arappold/docopulae/issues
-
-0 errors | 0 warnings | 0 notes
-
-## docxtractr (0.1.0.9000)
-Maintainer: Bob Rudis <bob@rudis.net>
-
-0 errors | 0 warnings | 0 notes
-
-## dostats (1.3.2)
-Maintainer: Andrew Redd <Andrew.Redd@hsc.utah.edu>
-
-0 errors | 0 warnings | 0 notes
-
-## Dowd (0.12)
-Maintainer: Dinesh Acharya <dines.acharya@gmail.com>
-
-0 errors | 1 warning  | 0 notes
-
-```
-checking whether package ‘Dowd’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: package ‘forecast’ was built under R version 3.2.5
-See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/Dowd.Rcheck/00install.out’ for details.
-```
-
-## downloader (0.4)
-Maintainer: Winston Chang <winston@stdout.org>  
-Bug reports: https://github.com/wch/downloader/issues
-
-0 errors | 0 warnings | 0 notes
-
-## dplR (1.6.4)
-Maintainer: Andy Bunn <andy.bunn@wwu.edu>
-
-0 errors | 0 warnings | 1 note 
-
-```
-checking package dependencies ... NOTE
-Package suggested but not available for checking: ‘Biobase’
-```
-
-## dplyr (0.4.3)
-Maintainer: Hadley Wickham <hadley@rstudio.com>  
-Bug reports: https://github.com/hadley/dplyr/issues
-
-0 errors | 0 warnings | 0 notes
-
-## dpmr (0.1.9)
-Maintainer: Christopher Gandrud <christopher.gandrud@gmail.com>  
-Bug reports: https://github.com/christophergandrud/dpmr/issues
-
-0 errors | 0 warnings | 0 notes
-
-## drLumi (0.1.2)
-Maintainer: Hector Sanz <hector.sanz@isglobal.org>
-
-0 errors | 0 warnings | 0 notes
-
-## drsmooth (1.9.0)
-Maintainer: Anne Bichteler <abichteler@toxstrategies.com>
-
-0 errors | 0 warnings | 0 notes
-
-## DSsim (1.0.4)
-Maintainer: Laura Marshall <lhm@st-and.ac.uk>
-
-1 error  | 0 warnings | 0 notes
-
-```
-checking tests ... ERROR
-Running the tests in ‘tests/run-all.R’ failed.
-Last 13 lines of output:
-  Actual value: "invalid class "Region" object: The lengths of the coords and gaps lists differ, these must be the same and equal to the number of strata."
-  
-  
-  2. Failure: Can create object or return correct error messages (@test_Constructors.R#16) 
-  error$message does not match "You must provide either coordinates or a shapefile.".
-  Actual value: "You must provide either coordinates or a shapefile"
-  
-  
-  DONE ===========================================================================
-  Error: Test failures
-  In addition: Warning message:
-  Placing tests in `inst/tests/` is deprecated. Please use `tests/testthat/` instead 
-  Execution halted
-```
-
-## dtwclust (2.1.1)
-Maintainer: Alexis Sarda <alexis.sarda@gmail.com>  
-Bug reports: https://github.com/asardaes/dtwclust/issues
-
-0 errors | 0 warnings | 0 notes
-
-## dtwSat (0.1.0)
-Maintainer: Victor Maus <vwmaus1@gmail.com>
-
-0 errors | 0 warnings | 0 notes
-
-## dygraphs (0.8)
-Maintainer: JJ Allaire <jj@rstudio.com>
-
-0 errors | 0 warnings | 0 notes
-
-## DYM (0.2)
-Maintainer: Kosei Abe <mail@recyclebin.jp>  
-Bug reports: https://github.com/kos59125/DYM/issues
-
-0 errors | 0 warnings | 0 notes
-
-## dynRB (0.7)
-Maintainer: Manuela Schreyer <manuelalarissa.schreyer@sbg.ac.at>
-
-0 errors | 0 warnings | 0 notes
-
-## easyformatr (0.1.1)
-Maintainer: Brandon Taylor <brandon.taylor221@gmail.com>  
-Bug reports: https://github.com/bramtayl/easyformatr/issues
-
-0 errors | 0 warnings | 0 notes
-
-## easyVerification (0.2.0)
-Maintainer: Jonas Bhend <jonas.bhend@meteoswiss.ch>  
-Bug reports: https://github.com/MeteoSwiss/easyVerification/issues
-
-0 errors | 0 warnings | 0 notes
-
-## ecb (0.2)
-Maintainer: Eric Persson <expersso5@gmail.com>
-
-0 errors | 0 warnings | 0 notes
-
-## ECctmc (0.1.0)
-Maintainer: Jon Fintzi <fintzij@uw.edu>  
-Bug reports: https://github.com/fintzij/ECctmc/issues
-
-0 errors | 0 warnings | 0 notes
-
-## ecd (0.6.4)
-Maintainer: Stephen H-T. Lihn <stevelihn@gmail.com>
-
-0 errors | 0 warnings | 0 notes
-
-## ecoengine (1.9.1)
-Maintainer: Karthik Ram <karthik.ram@gmail.com>  
-Bug reports: https://github.com/ropensci/ecoengine/issues
-
-0 errors | 0 warnings | 0 notes
-
-## EcoSimR (0.1.0)
-Maintainer: Edmund Hart <edmund.m.hart@gmail.com>  
-Bug reports: https://github.com/GotelliLab/EcoSimR/issues
-
-0 errors | 0 warnings | 0 notes
-
-## ECOSolveR (0.2)
-Maintainer: Balasubramanian Narasimhan <naras@stat.Stanford.EDU>  
-Bug reports: https://github.com/bnaras/ECOSolveR/issues
-
-0 errors | 0 warnings | 0 notes
-
-## edfReader (1.1.0)
-Maintainer: Jan Vis <jan@visconsultancy.eu>
-
-0 errors | 0 warnings | 0 notes
-
-## EDISON (1.1.1)
-Maintainer: Frank Dondelinger <fdondelinger.work@gmail.com>
-
-0 errors | 0 warnings | 0 notes
-
-## EEM (1.0.4)
-Maintainer: Vipavee Trivittayasil <vipavee.tri@gmail.com>
-
-0 errors | 0 warnings | 0 notes
-
-## eeptools (0.9.1)
-Maintainer: Jared E. Knowles <jknowles@gmail.com>
-
-0 errors | 0 warnings | 0 notes
-
-## eggCounts (1.0)
-Maintainer: Craig Wang <craig.wang@uzh.ch>
-
-1 error  | 0 warnings | 0 notes
-
-```
-checking package dependencies ... ERROR
-Packages required but not available: ‘StanHeaders’ ‘RcppEigen’
-
-See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
-manual.
-```
-
-## EGRET (2.4.3)
-Maintainer: Laura DeCicco <ldecicco@usgs.gov>
-
-0 errors | 0 warnings | 0 notes
-
-## EGRETci (1.0.2)
-Maintainer: Laura DeCicco <ldecicco@usgs.gov>  
-Bug reports: https://github.com/USGS-R/EGRETci/issues
-
-0 errors | 0 warnings | 0 notes
-
-## eHOF (1.7)
-Maintainer: Florian Jansen <jansen@uni-greifswald.de>
-
-0 errors | 0 warnings | 0 notes
-
-## elastic (0.6.0)
-Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>  
-Bug reports: https://github.com/ropensci/elastic/issues
-
-0 errors | 0 warnings | 0 notes
-
-## emdbook (1.3.9)
-Maintainer: Ben Bolker <bolker@mcmaster.ca>
-
-0 errors | 0 warnings | 0 notes
-
-## emil (2.2.3)
-Maintainer: Christofer Backlin <emil@christofer.backlin.se>  
-Bug reports: https://github.com/Molmed/emil/issues
-
-0 errors | 0 warnings | 0 notes
-
-## emuR (0.1.7)
-Maintainer: Raphael Winkelmann <raphael@phonetik.uni-muenchen.de>  
-Bug reports: https://github.com/IPS-LMU/emuR/issues
-
-0 errors | 0 warnings | 0 notes
-
-## enigma (0.2.0)
-Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>  
-Bug reports: https://github.com/ropengov/enigma/issues
-
-0 errors | 0 warnings | 0 notes
-
-## ensurer (1.1)
-Maintainer: Stefan Milton Bache <stefan@stefanbache.dk>  
-Bug reports: https://github.com/smbache/ensurer/issues
-
-0 errors | 0 warnings | 0 notes
-
-## EpiModel (1.2.5)
-Maintainer: Samuel Jenness <samuel.m.jenness@emory.edu>  
-Bug reports: https://github.com/statnet/EpiModel/issues
-
-0 errors | 0 warnings | 0 notes
-
-## episensr (0.7.2)
-Maintainer: Denis Haine <denis.haine@gmail.com>  
-Bug reports: https://github.com/dhaine/episensr/issues
-
-0 errors | 0 warnings | 0 notes
-
-## estatapi (0.2)
-Maintainer: Hiroaki Yutani <yutani.ini@gmail.com>
-
-0 errors | 0 warnings | 0 notes
-
-## eurostat (1.2.21)
-Maintainer: Lahti Leo <louhos@googlegroups.com>  
-Bug reports: https://github.com/ropengov/eurostat/issues
-
-0 errors | 0 warnings | 0 notes
-
-## evaluate (0.8.3)
-Maintainer: Yihui Xie <xie@yihui.name>  
-Bug reports: https://github.com/hadley/evaluate/issues
-
-0 errors | 0 warnings | 0 notes
-
-## evolqg (0.2-2)
-Maintainer: Diogo Melo <diogro@usp.br>  
-Bug reports: https://github.com/lem-usp/evolqg/issues
-
-0 errors | 0 warnings | 0 notes
-
-## excursions (2.1.1)
-Maintainer: David Bolin <davidbolin@gmail.com>
-
-0 errors | 0 warnings | 1 note 
-
-```
-checking package dependencies ... NOTE
-Package suggested but not available for checking: ‘INLA’
-```
-
-## exif (0.1.0)
-Maintainer: Oliver Keyes <ironholds@gmail.com>  
-Bug reports: https://github.com/Ironholds/exif/issues
-
-0 errors | 0 warnings | 0 notes
-
-## explor (0.2.1)
-Maintainer: Julien Barnier <julien.barnier@ens-lyon.fr>  
-Bug reports: https://github.com/juba/explor/issues
-
-0 errors | 0 warnings | 0 notes
-
-## extraTrees (1.0.5)
-Maintainer: Jaak Simm <jaak.simm@gmail.com>
-
-0 errors | 0 warnings | 0 notes
-
-## eyetrackingR (0.1.6)
-Maintainer: Jacob Dink <jacobwdink@gmail.com>  
-Bug reports: https://github.com/jwdink/eyetrackingR/issues
-
-0 errors | 0 warnings | 0 notes
-
-## ezec (0.1.0)
-Maintainer: Zhian N. Kamvar <kamvarz@science.oregonstate.edu>
-
-0 errors | 0 warnings | 0 notes
-
-## ezknitr (0.3.1)
-Maintainer: Dean Attali <daattali@gmail.com>  
-Bug reports: https://github.com/daattali/ezknitr/issues
-
-0 errors | 0 warnings | 0 notes
-
-## ezsummary (0.1.9)
-Maintainer: Hao Zhu <haozhu@hsl.harvard.edu>
-
-0 errors | 0 warnings | 0 notes
-
-## fail (1.3)
-Maintainer: Michel Lang <michellang@gmail.com>
-
-0 errors | 0 warnings | 0 notes
-
-## falsy (1.0.1)
-Maintainer: Gabor Csardi <csardi.gabor@gmail.com>  
-Bug reports: https://github.com/gaborcsardi/falsy/issues
-
-1 error  | 0 warnings | 0 notes
-
-```
-checking tests ... ERROR
-Running the tests in ‘tests/testthat.R’ failed.
-Last 13 lines of output:
-  > library(falsy)
-  > 
-  > test_check("falsy")
-  1. Failure: try_quietly works (@test_falsy.R#126) ------------------------------
-  try_quietly(stop("foo!")) produced no output
-  
-  
-  testthat results ================================================================
-  OK: 46 SKIPPED: 0 FAILED: 1
-  1. Failure: try_quietly works (@test_falsy.R#126) 
-  
-  Error: testthat unit tests failed
-  Execution halted
-```
-
-## fanovaGraph (1.4.8)
-Maintainer: Jana Fruth <fruth@statistik.tu-dortmund.de>
-
-0 errors | 0 warnings | 0 notes
-
-## fastAdaboost (1.0.0)
-Maintainer: Sourav Chatterjee <souravc83@gmail.com>  
-Bug reports: https://github.com/souravc83/fastAdaboost/issues
-
-0 errors | 0 warnings | 0 notes
-
-## FastImputation (1.3)
-Maintainer: Stephen R. Haptonstahl <srh@haptonstahl.org>
-
-0 errors | 0 warnings | 0 notes
-
-## ffbase (0.12.3)
-Maintainer: Edwin de Jonge <edwindjonge@gmail.com>
-
-0 errors | 0 warnings | 0 notes
-
-## Fgmutils (0.4)
-Maintainer: Clayton Vieira Fraga <altoe.wagner@gmail.com>
-
-0 errors | 0 warnings | 0 notes
-
-## filenamer (0.2.1)
-Maintainer: David J. H. Shih <djh.shih@gmail.com>  
-Bug reports: https://bitbucket.org/djhshih/filenamer/issues
-
-0 errors | 0 warnings | 0 notes
-
-## FinancialInstrument (1.2.0)
-Maintainer: Garrett See <gsee000@gmail.com>
-
-0 errors | 0 warnings | 1 note 
-
-```
-checking dependencies in R code ... NOTE
-'library' or 'require' calls in package code:
-  ‘XML’ ‘foreach’ ‘its’ ‘timeSeries’ ‘utils’
-  Please use :: or requireNamespace() instead.
-  See section 'Suggested packages' in the 'Writing R Extensions' manual.
-```
-
-## findpython (1.0.1)
-Maintainer: Trevor L Davis <trevor.l.davis@stanford.edu>  
-Bug reports: https://github.com/trevorld/findpython/issues
-
-0 errors | 0 warnings | 0 notes
-
-## finreportr (1.0.0)
-Maintainer: Seward Lee <sewardlee337@gmail.com>
-
-0 errors | 0 warnings | 0 notes
-
-## flacco (1.2)
-Maintainer: Pascal Kerschke <kerschke@uni-muenster.de>  
-Bug reports: https://github.com/kerschke/flacco/issues
-
-0 errors | 0 warnings | 0 notes
-
-## flexsurv (0.7.1)
-Maintainer: Christopher Jackson <chris.jackson@mrc-bsu.cam.ac.uk>  
-Bug reports: https://github.com/chjackson/flexsurv-dev/issues
-
-0 errors | 0 warnings | 0 notes
-
-## flora (0.2.7)
-Maintainer: Gustavo Carvalho <gustavo.bio@gmail.com>  
-Bug reports: http://www.github.com/gustavobio/flora/issues
-
-0 errors | 0 warnings | 0 notes
-
-## flowr (0.9.9.5)
-Maintainer: Sahil Seth <me@sahilseth.com>  
-Bug reports: https://github.com/sahilseth/flowr/issues
-
-0 errors | 0 warnings | 0 notes
-
-## flsa (1.05)
-Maintainer: Holger Hoefling <hhoeflin@gmail.com>
-
-0 errors | 0 warnings | 2 notes
-
-```
-checking DESCRIPTION meta-information ... NOTE
-Malformed Description field: should contain one or more complete sentences.
-
-checking Rd line widths ... NOTE
-Rd file 'flsa.Rd':
-  \usage lines wider than 90 characters:
-     flsa(y, lambda1=0, lambda2=NULL, connListObj = NULL, splitCheckSize=1e+09, verbose=FALSE, thr = 1e-09, maxGrpNum=4*length(y))
-  \examples lines wider than 100 characters:
-     ### therefore, res2Dim does not give out the solution as a 2 dimensional matrix (unlike the direct version above)
-
-These lines will be truncated in the PDF manual.
-```
-
-## ForeCA (0.2.4)
-Maintainer: Georg M. Goerg <im@gmge.org>
-
-0 errors | 0 warnings | 0 notes
-
-## forecast (7.1)
-Maintainer: Rob Hyndman <Rob.Hyndman@monash.edu>  
-Bug reports: https://github.com/robjhyndman/forecast/issues
-
-0 errors | 0 warnings | 1 note 
-
-```
-checking dependencies in R code ... NOTE
-There are ::: calls to the package's namespace in its code. A package
-  almost never needs to use ::: for its own objects:
-  ‘datamat’
-```
-
-## forecastHybrid (0.1.5)
-Maintainer: David Shaub <davidshaub@gmx.com>  
-Bug reports: https://github.com/ellisp/forecastHybrid/issues
-
-0 errors | 1 warning  | 0 notes
-
-```
-checking whether package ‘forecastHybrid’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: package ‘forecast’ was built under R version 3.2.5
-See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/forecastHybrid.Rcheck/00install.out’ for details.
-```
-
-## forestplot (1.4)
-Maintainer: Max Gordon <max@gforge.se>  
-Bug reports: https://github.com/gforge/forestplot/issues
-
-0 errors | 0 warnings | 1 note 
-
-```
-checking Rd cross-references ... NOTE
-Package unavailable to check Rd xrefs: ‘rmeta’
-```
-
-## formattable (0.1.5)
-Maintainer: Kun Ren <ken@renkun.me>  
-Bug reports: https://github.com/renkun-ken/formattable/issues
-
-0 errors | 0 warnings | 0 notes
-
-## formula.tools (1.5.4)
-Maintainer: Christopher Brown <chris.brown@decisionpatterns.com>  
-Bug reports: https://github.com/decisionpatterns/formula.tools/issues
-
-0 errors | 0 warnings | 0 notes
-
-## fpCompare (0.2.1)
-Maintainer: Alex M Chubaty <alexander.chubaty@canada.ca>  
-Bug reports: https://github.com/PredictiveEcology/fpCompare/issues
-
-0 errors | 0 warnings | 0 notes
-
-## frailtySurv (1.2.2)
-Maintainer: John V. Monaco <vincent@vmonaco.com>  
-Bug reports: https://github.com/vmonaco/frailtySurv/issues
-
-0 errors | 0 warnings | 0 notes
-
-## franc (1.1.1)
-Maintainer: Gabor Csardi <gcsardi@mango-solutions.com>  
-Bug reports: https://github.com/mangothecat/franc/issues
-
-0 errors | 0 warnings | 0 notes
-
-## freqweights (1.0.2)
-Maintainer: Emilio Torres-Manzanera <torres@uniovi.es>
-
-0 errors | 0 warnings | 0 notes
-
-## fromo (0.1.3)
-Maintainer: Steven E. Pav <shabbychef@gmail.com>  
-Bug reports: https://github.com/shabbychef/fromo/issues
-
-0 errors | 0 warnings | 0 notes
-
-## FSA (0.8.6)
-Maintainer: Derek Ogle <derek@derekogle.com>  
-Bug reports: https://github.com/droglenc/FSA/issues
-
-0 errors | 0 warnings | 1 note 
-
-```
-checking Rd cross-references ... NOTE
-Packages unavailable to check Rd xrefs: ‘alr3’, ‘prettyR’, ‘epitools’, ‘RMark’, ‘asbio’, ‘agricolae’
-```
-
-## fulltext (0.1.6)
-Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>  
-Bug reports: https://github.com/ropensci/fulltext/issues
-
-0 errors | 0 warnings | 0 notes
-
-## FunChisq (2.2.3)
-Maintainer: Joe Song <joemsong@cs.nmsu.edu>
-
-0 errors | 1 warning  | 0 notes
-
-```
-checking whether package ‘FunChisq’ can be installed ... WARNING
-Found the following significant warnings:
-  /usr/local/include/boost/math/special_functions/detail/lanczos_sse2.hpp:54:4: warning: 'register' storage class specifier is deprecated [-Wdeprecated-register]
-  /usr/local/include/boost/math/special_functions/detail/lanczos_sse2.hpp:55:4: warning: 'register' storage class specifier is deprecated [-Wdeprecated-register]
-  /usr/local/include/boost/math/special_functions/detail/lanczos_sse2.hpp:56:4: warning: 'register' storage class specifier is deprecated [-Wdeprecated-register]
-  /usr/local/include/boost/math/special_functions/detail/lanczos_sse2.hpp:57:4: warning: 'register' storage class specifier is deprecated [-Wdeprecated-register]
-  /usr/local/include/boost/math/special_functions/detail/lanczos_sse2.hpp:58:4: warning: 'register' storage class specifier is deprecated [-Wdeprecated-register]
-  /usr/local/include/boost/math/special_functions/detail/lanczos_sse2.hpp:139:4: warning: 'register' storage class specifier is deprecated [-Wdeprecated-register]
-  /usr/local/include/boost/math/special_functions/detail/lanczos_sse2.hpp:140:4: warning: 'register' storage class specifier is deprecated [-Wdeprecated-register]
-  /usr/local/include/boost/math/special_functions/detail/lanczos_sse2.hpp:141:4: warning: 'register' storage class specifier is deprecated [-Wdeprecated-register]
-  /usr/local/include/boost/math/special_functions/detail/lanczos_sse2.hpp:142:4: warning: 'register' storage class specifier is deprecated [-Wdeprecated-register]
-  /usr/local/include/boost/math/special_functions/detail/lanczos_sse2.hpp:143:4: warning: 'register' storage class specifier is deprecated [-Wdeprecated-register]
-See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/FunChisq.Rcheck/00install.out’ for details.
-```
-
-## functools (0.2.0)
-Maintainer: Paul Hendricks <paul.hendricks.2013@owu.edu>  
-Bug reports: https://github.com/paulhendricks/functools/issues
-
-0 errors | 0 warnings | 0 notes
-
-## futile.any (1.3.2)
-Maintainer: Brian Lee Yung Rowe <r@zatonovo.com>
-
-0 errors | 0 warnings | 0 notes
-
-## futile.logger (1.4.1)
-Maintainer: Brian Lee Yung Rowe <r@zatonovo.com>
-
-1 error  | 0 warnings | 0 notes
-
-```
-checking tests ... ERROR
-Running the tests in ‘tests/testthat.R’ failed.
-Last 13 lines of output:
-  > library(testthat)
-  > test_check("futile.logger")
-  Loading required package: futile.logger
-  1. Failure: lower levels are not logged (@test_debug.R#19) ---------------------
-  flog.trace("testlog") produced no output
-  
-  
-  testthat results ================================================================
-  OK: 68 SKIPPED: 0 FAILED: 1
-  1. Failure: lower levels are not logged (@test_debug.R#19) 
-  
-  Error: testthat unit tests failed
-  Execution halted
-```
-
-## futureheatwaves (1.0.0)
-Maintainer: Brooke Anderson <brooke.anderson@colostate.edu>
-
-0 errors | 0 warnings | 0 notes
-
-## fuzzyjoin (0.1)
-Maintainer: David Robinson <drobinson@stackoverflow.com>
-
-0 errors | 0 warnings | 0 notes
-
-## games (1.1.2)
-Maintainer: Brenton Kenkel <brenton.kenkel@gmail.com>
-
-0 errors | 0 warnings | 0 notes
-
-## gapminder (0.2.0)
-Maintainer: Jennifer Bryan <jenny@stat.ubc.ca>  
-Bug reports: https://github.com/jennybc/gapminder/issues
-
-0 errors | 0 warnings | 0 notes
-
-## GDELTtools (1.2)
-Maintainer: Stephen R. Haptonstahl <srh@haptonstahl.org>
-
-0 errors | 0 warnings | 2 notes
-
-```
-checking dependencies in R code ... NOTE
-Package in Depends field not imported from: ‘tools’
-  These packages need to be imported from (in the NAMESPACE file)
-  for when this namespace is loaded but not attached.
-
-checking R code for possible problems ... NOTE
-IsValidGDELT: no visible global function definition for ‘md5sum’
-```
-
-## gdtools (0.0.7)
-Maintainer: David Gohel <david.gohel@ardata.fr>  
-Bug reports: https://github.com/davidgohel/gdtools/issues
-
-0 errors | 0 warnings | 0 notes
-
-## gear (0.1.1)
-Maintainer: Joshua French <joshua.french@ucdenver.edu>
-
-0 errors | 0 warnings | 0 notes
-
-## gemtc (0.8)
-Maintainer: Gert van Valkenhoef <g.h.m.van.valkenhoef@rug.nl>
-
-1 error  | 0 warnings | 0 notes
-
-```
-checking examples ... ERROR
-Running examples in ‘gemtc-Ex.R’ failed
-The error most likely occurred in:
-
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
-> ### Name: mtc.hy.prior
-> ### Title: Set priors for the heterogeneity parameter
-> ### Aliases: mtc.hy.prior mtc.hy.empirical.lor
-> 
-> ### ** Examples
-> 
-> # NOTE: the mtc.run commands below are for illustrative purposes, such a small
-> # number of iterations should obviously not be used in practice.
-> 
-> # set a uniform prior standard deviation
-> model1 <- mtc.model(smoking, hy.prior=mtc.hy.prior("std.dev", "dunif", 0, 2))
-> result <- mtc.run(model1, n.adapt=10, n.iter=10)
-Error: .onLoad failed in loadNamespace() for 'rjags', details:
-  call: dyn.load(file, DLLpath = DLLpath, ...)
-  error: unable to load shared object '/Users/hadley/R-revdep/rjags/libs/rjags.so':
-  dlopen(/Users/hadley/R-revdep/rjags/libs/rjags.so, 10): Library not loaded: /usr/local/lib/libjags.3.dylib
-  Referenced from: /Users/hadley/R-revdep/rjags/libs/rjags.so
-  Reason: image not found
-Execution halted
-```
-
-## gender (0.5.1)
-Maintainer: Lincoln Mullen <lincoln@lincolnmullen.com>  
-Bug reports: https://github.com/ropensci/gender/issues
-
-0 errors | 0 warnings | 1 note 
-
-```
-checking package dependencies ... NOTE
-Package suggested but not available for checking: ‘genderdata’
-```
-
-## genderizeR (1.2.0)
-Maintainer: Kamil Wais <kamil.wais@gmail.com>  
-Bug reports: https://github.com/kalimu/genderizeR
-
-0 errors | 0 warnings | 0 notes
-
-## generator (0.1.0)
-Maintainer: Paul Hendricks <paul.hendricks.2013@owu.edu>  
-Bug reports: https://github.com/paulhendricks/generator/issues
-
-0 errors | 0 warnings | 0 notes
-
-## geneSLOPE (0.36.6)
-Maintainer: Piotr Sobczyk <piotr.sobczyk@pwr.edu.pl>  
-Bug reports: https://github.com/psobczyk/geneSLOPE/issues
-
-0 errors | 0 warnings | 0 notes
-
-## genie (1.0.0)
-Maintainer: Marek Gagolewski <gagolews@rexamine.com>
-
-0 errors | 0 warnings | 0 notes
-
-## geoaxe (0.1.0)
-Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>  
-Bug reports: https://github.com/ropenscilabs/geoaxe/issues
-
-0 errors | 0 warnings | 0 notes
-
-## geohash (0.1.1)
-Maintainer: Oliver Keyes <ironholds@gmail.com>  
-Bug reports: https://github.com/Ironholds/geohash/issues
-
-0 errors | 0 warnings | 0 notes
-
-## geojsonio (0.1.8)
-Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>  
-Bug reports: http://www.github.com/ropensci/geojsonio/issues
-
-1 error  | 0 warnings | 0 notes
-
-```
-checking tests ... ERROR
-Running the tests in ‘tests/test-all.R’ failed.
-Last 13 lines of output:
-  5: val_fxn(x)
-  6: POST(v_url(), body = upload_file(file))
-  7: request_perform(req, hu$handle$handle)
-  8: request_fetch(req$output, req$url, handle)
-  9: request_fetch.write_memory(req$output, req$url, handle)
-  10: curl::curl_fetch_memory(url, handle = handle)
-  
-  testthat results ================================================================
-  OK: 288 SKIPPED: 22 FAILED: 1
-  1. Error: validate works with SpatialGridDataFrame inputs (@test-validate.R#160) 
-  
-  Error: testthat unit tests failed
-  Execution halted
-```
-
-## geoknife (1.3.0)
-Maintainer: Jordan Read <jread@usgs.gov>  
-Bug reports: https://github.com/USGS-R/geoknife/issues
-
-0 errors | 0 warnings | 0 notes
-
-## geometry (0.3-6)
-Maintainer: David C. Sterratt <david.c.sterratt@ed.ac.uk>  
-Bug reports: https://r-forge.r-project.org/tracker/?group_id=1149
-
-0 errors | 0 warnings | 0 notes
-
-## geozoo (0.5.0)
-Maintainer: Barret Schloerke <schloerke@gmail.com>  
-Bug reports: https://github.com/schloerke/geozoo/issues
-
-0 errors | 0 warnings | 0 notes
-
-## GERGM (0.7.4)
-Maintainer: Matthew J. Denny <mdenny@psu.edu>
-
-0 errors | 0 warnings | 0 notes
-
-## getopt (1.20.0)
-Maintainer: Trevor L Davis <trevor.l.davis@stanford.edu>  
-Bug reports: https://github.com/trevorld/getopt/issues
-
-0 errors | 0 warnings | 1 note 
-
-```
-checking DESCRIPTION meta-information ... NOTE
-Malformed Title field: should not end in a period.
-```
-
-## GetoptLong (0.1.2)
-Maintainer: Zuguang Gu <z.gu@dkfz.de>
-
-1 error  | 0 warnings | 0 notes
-
-```
-checking tests ... ERROR
-Running the tests in ‘tests/test-all.R’ failed.
-Last 13 lines of output:
-  
-  27. test `version` and `help` options (@test_GetoptLong.R#247) - cannot remove file '/tmp/RtmpqAUdMC/fileae967ce26d7e.json', reason 'No such file or directory'
-  
-  Failed -------------------------------------------------------------------------
-  1. Failure: test `cat_prefix` (@test_qq.R#85) ----------------------------------
-  qqcat("a") produced no output
-  
-  
-  DONE ===========================================================================
-  Error: Test failures
-  In addition: Warning message:
-  Placing tests in `inst/tests/` is deprecated. Please use `tests/testthat/` instead 
-  Execution halted
-```
-
-## GetTDData (1.1)
-Maintainer: Marcelo Perlin <marceloperlin@gmail.com>  
-Bug reports: https://github.com/msperlin/GetTDData/issues
-
-0 errors | 0 warnings | 0 notes
-
-## GGally (1.0.1)
-Maintainer: Barret Schloerke <schloerke@gmail.com>  
-Bug reports: https://github.com/ggobi/ggally/issues
-
-0 errors | 0 warnings | 1 note 
-
-```
-checking installed package size ... NOTE
-  installed size is  7.6Mb
-  sub-directories of 1Mb or more:
-    doc   6.8Mb
-```
-
-## ggalt (0.1.1)
-Maintainer: Bob Rudis <bob@rudis.net>  
-Bug reports: https://github.com/hrbrmstr/ggalt/issues
-
-0 errors | 0 warnings | 0 notes
-
-## ggdendro (0.1-18)
-Maintainer: Andrie de Vries <apdevries@gmail.com>  
-Bug reports: https://github.com/andrie/ggdendro/issues
-
-0 errors | 0 warnings | 0 notes
-
-## ggfortify (0.1.0)
-Maintainer: Masaaki Horikoshi <sinhrks@gmail.com>
-
-1 error  | 0 warnings | 0 notes
-
-```
-checking tests ... ERROR
-Running the tests in ‘tests/test-all.R’ failed.
-Last 13 lines of output:
-  names(fortified) not equal to `expected_names`.
-  Lengths differ: 6 vs 7
-  
-  
-  Loading required package: urca
-  Loading required package: lmtest
-  testthat results ================================================================
-  OK: 554 SKIPPED: 1 FAILED: 2
-  1. Failure: fortify.cpt works for AirPassengers (@test-changepoint.R#24) 
-  2. Failure: fortify.ets works for austres (@test-forecast.R#83) 
-  
-  Error: testthat unit tests failed
-  Execution halted
-```
-
-## ggnetwork (0.5.1)
-Maintainer: Francois Briatte <f.briatte@gmail.com>
-
-0 errors | 0 warnings | 0 notes
-
-## ggplot2 (2.1.0)
-Maintainer: Hadley Wickham <hadley@rstudio.com>  
-Bug reports: https://github.com/hadley/ggplot2/issues
-
-0 errors | 0 warnings | 0 notes
-
-## ggRandomForests (1.2.1)
-Maintainer: John Ehrlinger <john.ehrlinger@gmail.com>  
-Bug reports: https://github.com/ehrlinger/ggRandomForests/issues
-
-0 errors | 0 warnings | 1 note 
-
-```
-checking installed package size ... NOTE
-  installed size is  5.9Mb
-  sub-directories of 1Mb or more:
-    data   2.6Mb
-    doc    3.0Mb
-```
-
-## ggseas (0.4.0)
-Maintainer: Peter Ellis <peter.ellis2013nz@gmail.com>  
-Bug reports: https://github.com/ellisp/ggseas/issues
-
-0 errors | 0 warnings | 0 notes
-
-## ggswissmaps (0.0.8)
-Maintainer: Sandro Petrillo Burri <gibo.gaf@gmail.com>
-
-0 errors | 0 warnings | 0 notes
-
-## ggthemes (3.0.3)
-Maintainer: Jeffrey B. Arnold <jeffrey.arnold@gmail.com>  
-Bug reports: http://github.com/jrnold/ggthemes
-
-0 errors | 0 warnings | 0 notes
-
-## ggvis (0.4.2)
-Maintainer: Winston Chang <winston@rstudio.com>
-
-0 errors | 0 warnings | 0 notes
-
-## ghit (0.2.5)
-Maintainer: Thomas J. Leeper <thosjleeper@gmail.com>  
-Bug reports: https://github.com/leeper/ghit/issues
-
-0 errors | 0 warnings | 0 notes
-
-## gistr (0.3.6)
-Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>  
-Bug reports: http://www.github.com/ropensci/gistr/issues
-
-0 errors | 0 warnings | 0 notes
-
-## gitlabr (0.6.4)
-Maintainer: Jirka Lewandowski <jirka.lewandowski@wzb.eu>  
-Bug reports: 
-        http://gitlab.points-of-interest.cc/points-of-interest/gitlabr/
-        issues/
-
-0 errors | 0 warnings | 0 notes
-
-## glcm (1.6.1)
-Maintainer: Alex Zvoleff <azvoleff@conservation.org>  
-Bug reports: https://github.com/azvoleff/glcm/issues
-
-0 errors | 0 warnings | 0 notes
-
-## glm.ddR (0.1.0)
-Maintainer: Vishrut Gupta <vishrut.gupta@hpe.com>
-
-0 errors | 0 warnings | 0 notes
-
-## glmmsr (0.1.1)
-Maintainer: Helen Ogden <heogden12@gmail.com>  
-Bug reports: http://github.com/heogden/glmmsr/issues
-
-1 error  | 0 warnings | 0 notes
-
-```
-checking package dependencies ... ERROR
-Package required but not available: ‘RcppEigen’
-
-See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
-manual.
-```
-
-## GlobalOptions (0.0.10)
-Maintainer: Zuguang Gu <z.gu@dkfz.de>
-
-0 errors | 0 warnings | 0 notes
-
-## glycanr (0.3.0)
-Maintainer: Ivo Ugrina <ivo@iugrina.com>  
-Bug reports: https://github.com/iugrina/glycanr/issues
-
-2 errors | 0 warnings | 1 note 
-
-```
-checking examples ... ERROR
-Running examples in ‘glycanr-Ex.R’ failed
-The error most likely occurred in:
-
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
-> ### Name: quantilenorm
-> ### Title: Quantile Normalization of glycan data
-> ### Aliases: quantilenorm
-> 
-> ### ** Examples
-> 
-> data(mpiu)
-> mpiun <- quantilenorm(mpiu)
-Error in quantilenorm(mpiu) : 
-  Unable to proceed since package preprocessCore from
-        BioConductor is not available on this system. This
-        package is a prerequisite to use the quantilenorm function!
-Execution halted
-
-checking tests ... ERROR
-Running the tests in ‘tests/testthat.R’ failed.
-Last 13 lines of output:
-  
-  The following objects are masked from 'package:base':
-  
-      intersect, setdiff, setequal, union
-  
-  Error in quantilenorm(mpiu, transpose = TRUE) : 
-    Unable to proceed since package preprocessCore from
-          BioConductor is not available on this system. This
-          package is a prerequisite to use the quantilenorm function!
-  Calls: test_check ... force -> source_file -> eval -> eval -> quantilenorm
-  testthat results ================================================================
-  OK: 5 SKIPPED: 0 FAILED: 0
-  Execution halted
-
-checking package dependencies ... NOTE
-Package suggested but not available for checking: ‘preprocessCore’
-```
-
-## gmailr (0.7.1)
-Maintainer: Jim Hester <james.f.hester@gmail.com>  
-Bug reports: https://github.com/jimhester/gmailr/issues
-
-0 errors | 0 warnings | 0 notes
-
-## GMCM (1.2.3)
-Maintainer: Anders Ellern Bilgrau <anders.ellern.bilgrau@gmail.com>  
-Bug reports: https://github.com/AEBilgrau/GMCM/issues
-
-0 errors | 0 warnings | 0 notes
-
-## Gmisc (1.3.1)
-Maintainer: Max Gordon <max@gforge.se>  
-Bug reports: https://github.com/gforge/Gmisc/issues
-
-1 error  | 0 warnings | 0 notes
-
-```
-checking tests ... ERROR
-Running the tests in ‘tests/testthat.R’ failed.
-Last 13 lines of output:
-   $ echo: logi TRUE
-  
-    ordinary text without R code
-  
-  output file: Full_test_suite.knit.md
-  
-  /usr/local/bin/pandoc +RTS -K512m -RTS Full_test_suite.utf8.md --to html --from markdown+autolink_bare_uris+ascii_identifiers+tex_math_single_backslash --output /tmp/Rtmpv4ksiL/tmp.html --smart --email-obfuscation none --standalone --section-divs --template /Users/hadley/R-revdep/rmarkdown/rmd/h/default.html --css docx.css --no-highlight 
-  
-  Output created: /tmp/Rtmpv4ksiL/tmp.html
-  
-   *** caught segfault ***
-  address 0x0, cause 'unknown'
-  aborting ...
-```
-
-## gmum.r (0.2.1)
-Maintainer: Stanislaw Jastrzebski <staszek.jastrzebski@gmail.com>  
-Bug reports: https://github.com/gmum/gmum.r/issues
-
-0 errors | 0 warnings | 0 notes
-
-## gmwm (2.0.0)
-Maintainer: Stephane Guerrier <stephane@illinois.edu>  
-Bug reports: https://github.com/SMAC-Group/gmwm/issues
-
-0 errors | 0 warnings | 1 note 
-
-```
-checking package dependencies ... NOTE
-Package suggested but not available for checking: ‘imudata’
-```
-
-## GoodmanKruskal (0.0.2)
-Maintainer: Ron Pearson <ronald.k.pearson@gmail.com>
-
-0 errors | 0 warnings | 0 notes
-
-## googleformr (0.0.2)
-Maintainer: Steve Simpson <steven.troy.simpson@gmail.com>
-
-0 errors | 0 warnings | 0 notes
-
-## googlesheets (0.2.0)
-Maintainer: Jennifer Bryan <jenny@stat.ubc.ca>  
-Bug reports: https://github.com/jennybc/googlesheets/issues
-
-0 errors | 0 warnings | 0 notes
-
-## gpuR (1.1.2)
-Maintainer: Charles Determan Jr. <cdetermanjr@gmail.com>  
-Bug reports: http://github.com/cdeterman/gpuR/issues/new
-
-1 error  | 0 warnings | 0 notes
-
-```
-checking package dependencies ... ERROR
-Packages required but not available: ‘RcppEigen’ ‘RViennaCL’
-
-See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
-manual.
-```
-
-## graphTweets (0.3.1)
-Maintainer: John Coene <jcoenep@gmail.com>  
-Bug reports: https://github.com/JohnCoene/graphTweets/issues
-
-0 errors | 0 warnings | 0 notes
-
-## graticule (0.1.2)
-Maintainer: Michael D. Sumner <mdsumner@gmail.com>  
-Bug reports: https://github.com/mdsumner/graticule/issues
-
-0 errors | 0 warnings | 0 notes
-
-## Greg (1.2)
-Maintainer: Max Gordon <max@gforge.se>
-
-0 errors | 0 warnings | 1 note 
-
-```
-checking Rd cross-references ... NOTE
-Package unavailable to check Rd xrefs: ‘rmeta’
-```
-
-## gridExtra (2.2.1)
-Maintainer: Baptiste Auguie <baptiste.auguie@gmail.com>
-
-0 errors | 0 warnings | 0 notes
-
-## growcurves (0.2.4.0)
-Maintainer: Terrance Savitsky <tds151@gmail.com>
-
-0 errors | 0 warnings | 0 notes
-
-## growfunctions (0.12)
-Maintainer: Terrance Savitsky <tds151@gmail.com>
-
-0 errors | 0 warnings | 0 notes
-
-## growthcurver (0.2.1)
-Maintainer: Kathleen sprouffske <sprouffske@gmail.com>  
-Bug reports: https://github.com/sprouffske/growthcurver/issues
-
-0 errors | 0 warnings | 0 notes
-
-## grpregOverlap (1.0-1)
-Maintainer: Yaohui Zeng <yaohui-zeng@uiowa.edu>
-
-0 errors | 0 warnings | 0 notes
-
-## gsheet (0.2.1)
-Maintainer: Max Conway <conway.max1@gmail.com>  
-Bug reports: https://github.com/maxconway/gsheet/issues
-
-0 errors | 0 warnings | 0 notes
-
-## gtable (0.2.0)
-Maintainer: Hadley Wickham <hadley@rstudio.com>
-
-0 errors | 0 warnings | 0 notes
-
-## guess (0.1)
-Maintainer: Gaurav Sood <gsood07@gmail.com>  
-Bug reports: http://github.com/soodoku/guess/issues
-
-0 errors | 0 warnings | 0 notes
-
-## gvc (0.5.2)
-Maintainer: Bastiaan Quast <bquast@gmail.com>  
-Bug reports: https://github.com/bquast/gvc/issues
-
-0 errors | 0 warnings | 0 notes
-
-## gWidgets2RGtk2 (1.0-4)
-Maintainer: John Verzani <jverzani@gmail.com>
-
-1 error  | 0 warnings | 0 notes
-
-```
-checking tests ... ERROR
-Running the tests in ‘tests/run-tests.R’ failed.
-Last 13 lines of output:
-  > 
-  > sapply(f, function(i) {
-  +   message("testing ", i)
-  +   source(i)
-  + })
-  testing /Users/hadley/R-revdep/gWidgets2/tests/button.R
-  Loading required package: gWidgets2RGtk2
-  Loading required package: memoise
-  Loading required package: RGtk2
-  R session is headless; GTK+ not initialized.
-  Error in guiToolkit() : Can't load RGtk2
-  Calls: sapply ... withVisible -> eval -> eval -> gwindow -> guiToolkit
-  Execution halted
-```
-
-## gWidgets2tcltk (1.0-4)
-Maintainer: John Verzani <jverzani@gmail.com>
-
-1 error  | 0 warnings | 0 notes
-
-```
-checking whether package ‘gWidgets2tcltk’ can be installed ... ERROR
-Installation failed.
-See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/gWidgets2tcltk.Rcheck/00install.out’ for details.
-```
-
-## GWLelast (1.1)
-Maintainer: Daisuke Yoneoka <blue.sky.sea.dy@gmail.com>
-
-0 errors | 0 warnings | 0 notes
-
-## h2o (3.8.1.3)
-Maintainer: Tom Kraljevic <tomk@0xdata.com>
-
-0 errors | 0 warnings | 1 note 
-
-```
-checking installed package size ... NOTE
-  installed size is 55.3Mb
-  sub-directories of 1Mb or more:
-    java  54.4Mb
-```
-
-## h5 (0.9.5)
-Maintainer: Mario Annau <mario.annau@gmail.com>  
-Bug reports: https://github.com/mannau/h5/issues
-
-1 error  | 0 warnings | 1 note 
-
-```
-checking whether package ‘h5’ can be installed ... ERROR
-Installation failed.
-See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/h5.Rcheck/00install.out’ for details.
-
-checking package dependencies ... NOTE
-Package suggested but not available for checking: ‘highlight’
-```
-
-## hail (0.1.0)
-Maintainer: Oliver Keyes <ironholds@gmail.com>  
-Bug reports: https://github.com/ironholds/hail/issues
-
-0 errors | 0 warnings | 0 notes
-
-## haplotyper (0.1)
-Maintainer: Gaston Quero <gastonquero@gmail.com>
-
-0 errors | 0 warnings | 0 notes
-
-## harvestr (0.6.0)
-Maintainer: Andrew Redd <andrew.redd@hsc.utah.edu>
-
-1 error  | 0 warnings | 0 notes
-
-```
-checking tests ... ERROR
-Running the tests in ‘tests/testthat-package.R’ failed.
-Last 13 lines of output:
-  'arg' must be NULL or a character vector
-  1: expect_that(harvest(x, mean, time = T), has_time) at /Users/hadley/Documents/devtools/testthat/revdep/checks/harvestr.Rcheck/harvestr/tests/test-timing.R:74
-  2: condition(object) at /Users/hadley/Documents/devtools/testthat/R/expect-that.R:22
-  3: expectation(T, "") at /Users/hadley/Documents/devtools/testthat/revdep/checks/harvestr.Rcheck/harvestr/tests/test-timing.R:37
-  4: match.arg(type, c("success", "failure", "error", "skip", "warning")) at /Users/hadley/Documents/devtools/testthat/R/expectation.R:15
-  5: stop("'arg' must be NULL or a character vector")
-  
-  DONE ===========================================================================
-  Error: Test failures
-  In addition: Warning messages:
-  1: Placing tests in `inst/tests/` is deprecated. Please use `tests/testthat/` instead 
-  2: package 'MCMCpack' was built under R version 3.2.5 
-  Execution halted
-```
-
-## hash (2.2.6)
-Maintainer: Christopher Brown <chris.brown@decisionpatterns.com>
-
-0 errors | 0 warnings | 3 notes
-
-```
-checking top-level files ... NOTE
-File
-  LICENSE
-is not mentioned in the DESCRIPTION file.
-Non-standard file/directory found at top level:
-  ‘dev’
-
-checking dependencies in R code ... NOTE
-Package in Depends field not imported from: ‘methods’
-  These packages need to be imported from (in the NAMESPACE file)
-  for when this namespace is loaded but not attached.
-
-checking S3 generic/method consistency ... NOTE
-Found the following apparent S3 methods exported but not registered:
-  as.list.hash names.hash
-See section ‘Registering S3 methods’ in the ‘Writing R Extensions’
-manual.
-```
-
-## hashids (0.9.0)
-Maintainer: Alex Shum <Alex@ALShum.com>  
-Bug reports: https://github.com/ALShum/hashids-r/issues
-
-0 errors | 0 warnings | 0 notes
-
-## hashmap (0.1.0)
-Maintainer: Nathan Russell <russell.nr2012@gmail.com>  
-Bug reports: https://github.com/nathan-russell/hashmap/issues
-
-0 errors | 0 warnings | 0 notes
-
-## hashr (0.1.0)
-Maintainer: Mark van der Loo <mark.vanderloo@gmail.com>  
-Bug reports: https://github.com/markvanderloo/hashr/issues
-
-0 errors | 0 warnings | 0 notes
-
-## haven (0.2.0)
-Maintainer: Hadley Wickham <hadley@rstudio.com>  
-Bug reports: https://github.com/hadley/haven/issues
-
-0 errors | 0 warnings | 0 notes
-
-## hdm (0.1.0)
-Maintainer: Martin Spindler <spindler@mea.mpisoc.mpg.de>
-
-0 errors | 0 warnings | 0 notes
-
-## heemod (0.3.1)
-Maintainer: Antoine Filipovic-Pierucci <pierucci@gmail.com>  
-Bug reports: https://github.com/pierucci/heemod/issues
-
-0 errors | 0 warnings | 0 notes
-
-## hellno (0.0.1)
-Maintainer: Peter Meissner <retep.meissner@gmail.com>  
-Bug reports: https://github.com/petermeissner/hellno/issues
-
-0 errors | 0 warnings | 0 notes
-
-## hit (0.2-1)
-Maintainer: Jonas Klasen <qtcat@gmx.de>  
-Bug reports: https://github.com/QTCAT/hit/issues
-
-0 errors | 0 warnings | 0 notes
-
-## hitandrun (0.5-2)
-Maintainer: Gert van Valkenhoef <g.h.m.van.valkenhoef@rug.nl>
-
-0 errors | 0 warnings | 0 notes
-
-## htmltab (0.6.0)
-Maintainer: Christian Rubba <christian.rubba@gmail.com>  
-Bug reports: https://github.com/crubba/htmltab/issues
-
-0 errors | 0 warnings | 0 notes
-
-## htmlTable (1.5)
-Maintainer: Max Gordon <max@gforge.se>  
-Bug reports: https://github.com/gforge/htmlTable/issues
-
-0 errors | 0 warnings | 0 notes
-
-## htmltools (0.3.5)
-Maintainer: Joe Cheng <joe@rstudio.com>  
-Bug reports: https://github.com/rstudio/htmltools/issues
-
-0 errors | 0 warnings | 0 notes
-
-## hts (5.0)
-Maintainer: Rob J Hyndman <Rob.Hyndman@monash.edu>  
-Bug reports: https://github.com/robjhyndman/hts/issues
-
-1 error  | 0 warnings | 0 notes
-
-```
-checking package dependencies ... ERROR
-Package required but not available: ‘RcppEigen’
-
-See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
-manual.
-```
-
-## httpcache (0.1.4)
-Maintainer: Neal Richardson <neal.p.richardson@gmail.com>  
-Bug reports: https://github.com/nealrichardson/httpcache/issues
-
-0 errors | 0 warnings | 0 notes
-
-## httping (0.1.0)
-Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>  
-Bug reports: https://github.com/sckott/httping/issues
-
-0 errors | 0 warnings | 0 notes
-
-## httr (1.1.0)
-Maintainer: Hadley Wickham <hadley@rstudio.com>
-
-0 errors | 0 warnings | 0 notes
-
-## humanFormat (1.0)
-Maintainer: Dustin Sallings <dustin@spy.net>  
-Bug reports: https://github.com/dustin/humanFormat/issues
-
-0 errors | 0 warnings | 1 note 
-
-```
-checking dependencies in R code ... NOTE
-Package in Depends field not imported from: ‘testthat’
-  These packages need to be imported from (in the NAMESPACE file)
-  for when this namespace is loaded but not attached.
-```
-
-## humaniformat (0.5.0)
-Maintainer: Oliver Keyes <ironholds@gmail.com>  
-Bug reports: https://github.com/ironholds/humaniformat/issues
-
-0 errors | 0 warnings | 0 notes
-
-## hunspell (1.2)
-Maintainer: Jeroen Ooms <jeroen.ooms@stat.ucla.edu>  
-Bug reports: https://github.com/jeroenooms/hunspell/issues
-
-1 error  | 0 warnings | 0 notes
-
-```
-checking whether package ‘hunspell’ can be installed ... ERROR
-Installation failed.
-See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/hunspell.Rcheck/00install.out’ for details.
-```
-
-## hybridEnsemble (1.0.0)
-Maintainer: Michel Ballings <Michel.Ballings@GMail.com>
-
-0 errors | 0 warnings | 0 notes
-
-## HydeNet (0.10.3)
-Maintainer: Benjamin Nutter <benjamin.nutter@gmail.com>  
-Bug reports: https://github.com/nutterb/HydeNet/issues
-
-1 error  | 0 warnings | 0 notes
-
-```
-checking package dependencies ... ERROR
-Package required but not available: ‘graph’
-
-See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
-manual.
-```
-
-## hyperSpec (0.98-20150304)
-Maintainer: Claudia Beleites <chemometrie@beleites.de>
-
-0 errors | 0 warnings | 1 note 
-
-```
-checking R code for possible problems ... NOTE
-Warning: local assignments to syntactic functions: ~
-Warning: local assignments to syntactic functions: ~
-```
-
-## hyphenatr (0.3.0)
-Maintainer: Bob Rudis <bob@rudis.net>
-
-0 errors | 0 warnings | 0 notes
-
-## IalsaSynthesis (0.1.6)
-Maintainer: Will Beasley <wibeasley@hotmail.com>  
-Bug reports: https://github.com/IALSA/IalsaSynthesis/issues
-
-0 errors | 0 warnings | 0 notes
-
-## ibr (2.0-2)
-Maintainer: "Pierre-Andre Cornillon" <pierre-andre.cornillon@univ-rennes2.fr>
-
-0 errors | 0 warnings | 0 notes
-
-## icarus (0.2.0)
-Maintainer: Antoine Rebecq <antoine.rebecq@m4x.org>
-
-0 errors | 0 warnings | 0 notes
-
-## icd (2.0.1)
-Maintainer: Jack O. Wasey <jack@jackwasey.com>  
-Bug reports: https://github.com/jackwasey/icd/issues
-
-0 errors | 0 warnings | 3 notes
-
-```
-checking package dependencies ... NOTE
-Package suggested but not available for checking: ‘RODBC’
-
-checking installed package size ... NOTE
-  installed size is  6.1Mb
-  sub-directories of 1Mb or more:
-    data   1.9Mb
-    doc    2.1Mb
-    libs   1.1Mb
-
-checking data for non-ASCII characters ... NOTE
-  Note: found 14 marked Latin-1 strings
-  Note: found 96 marked UTF-8 strings
-```
-
-## icd9 (1.3.1)
-Maintainer: Jack O. Wasey <jack@jackwasey.com>  
-Bug reports: https://github.com/jackwasey/icd9/issues
-
-0 errors | 0 warnings | 1 note 
-
-```
-checking data for non-ASCII characters ... NOTE
-  Note: found 14 marked Latin-1 strings
-  Note: found 39 marked UTF-8 strings
-```
-
-## icensmis (1.3.1)
-Maintainer: Xiangdong Gu <ustcgxd@gmail.com>
-
-0 errors | 0 warnings | 0 notes
-
-## identifyr (0.1.3)
-Maintainer: George Miranda <georgemirandajr@gmail.com>  
-Bug reports: https://github.com/georgemirandajr/identifyr/issues
-
-1 error  | 0 warnings | 0 notes
-
-```
-checking tests ... ERROR
-Running the tests in ‘tests/testthat.R’ failed.
-Last 13 lines of output:
-  1. Failure: string is padding correctly when PB is present (@test_pbnum.R#8) 
-  2. Failure: string is padding correctly when PB is present (@test_pbnum.R#11) 
-  3. Failure: string is padding correctly when PB is present (@test_pbnum.R#14) 
-  4. Failure: string is padding correctly when PB is present (@test_pbnum.R#15) 
-  5. Failure: string is padding correctly when PB is present (@test_pbnum.R#16) 
-  6. Failure: string is padding correctly when PB is present (@test_pbnum.R#17) 
-  7. Failure: string is padding correctly when PB is present (@test_pbnum.R#18) 
-  8. Failure: string is padding correctly when X is present (@test_xnum.R#8) 
-  9. Failure: string is padding correctly when X is present (@test_xnum.R#11) 
-  1. ...
-  
-  Error: testthat unit tests failed
-  Execution halted
-```
-
-## ifaTools (0.8)
-Maintainer: Joshua N. Pritikin <jpritikin@pobox.com>
-
-0 errors | 0 warnings | 0 notes
-
-## ifctools (0.3.2)
-Maintainer: Luca Braglia <lbraglia@gmail.com>  
-Bug reports: http://github.com/lbraglia/ifctools/issues
-
-0 errors | 0 warnings | 0 notes
-
-## IgorR (0.8)
-Maintainer: Greg Jefferis <jefferis@gmail.com>
-
-0 errors | 0 warnings | 1 note 
-
-```
-checking R code for possible problems ... NOTE
-Found the following assignments to the global environment:
-File ‘IgorR/R/ReadIgorBinary.R’:
-  assign(WaveName, rval, envir = .GlobalEnv)
-```
-
-## inbreedR (0.3.1)
-Maintainer: Martin A. Stoffel <martin.adam.stoffel@gmail.com>
-
-0 errors | 0 warnings | 0 notes
-
-## iNEXT (2.0.8)
-Maintainer: T. C. Hsieh <euler96@gmail.com>  
-Bug reports: https://github.com/JohnsonHsieh/iNEXT/issues
-
-0 errors | 0 warnings | 0 notes
-
-## inferference (0.4.62)
-Maintainer: Bradley Saul <saulb@live.unc.edu>
-
-0 errors | 0 warnings | 0 notes
-
-## influenceR (0.1.0)
-Maintainer: Khanna Aditya <khanna7@uchicago.edu>
-
-0 errors | 0 warnings | 0 notes
-
-## infuser (0.2.3)
-Maintainer: Bart Smeets <bartsmeets86@gmail.com>  
-Bug reports: https://github.com/bart6114/infuser/issues
-
-0 errors | 0 warnings | 0 notes
-
-## injectoR (0.2.4)
-Maintainer: Lev Kuznetsov <levk@jimmy.harvard.edu>  
-Bug reports: https://github.com/dfci-cccb/injectoR/issues
-
-0 errors | 0 warnings | 0 notes
-
-## inpdfr (0.1.3)
-Maintainer: Rebaudo Francois <francois.rebaudo@ird.fr>
-
-0 errors | 0 warnings | 0 notes
-
-## intercure (0.1.0)
-Maintainer: Julio Brettas <jbrettas@ime.usp.br>  
-Bug reports: https://github.com/JBrettas/intercure/issues
-
-0 errors | 0 warnings | 0 notes
-
-## intergraph (2.0-2)
-Maintainer: Michal Bojanowski <m.bojanowski@icm.edu.pl>
-
-0 errors | 0 warnings | 0 notes
-
-## internetarchive (0.1.5)
-Maintainer: Lincoln Mullen <lincoln@lincolnmullen.com>  
-Bug reports: https://github.com/ropensci/internetarchive/issues
-
-0 errors | 0 warnings | 0 notes
-
-## investr (1.4.0)
-Maintainer: Brandon M. Greenwell <greenwell.brandon@gmail.com>
-
-0 errors | 0 warnings | 0 notes
-
-## io (0.2.4)
-Maintainer: David J. H. Shih <djh.shih@gmail.com>  
-Bug reports: https://bitbucket.org/djhshih/io/issues
-
-0 errors | 0 warnings | 1 note 
-
-```
-checking package dependencies ... NOTE
-Package suggested but not available for checking: ‘rhdf5’
-```
-
-## iotools (0.1-12)
-Maintainer: Simon Urbanek <Simon.Urbanek@r-project.org>
-
-0 errors | 0 warnings | 1 note 
-
-```
-checking compiled code ... NOTE
-File ‘iotools/libs/iotools.so’:
-  Found non-API call to R: ‘getConnection’
-
-Compiled code should not call non-API entry points in R.
-
-See ‘Writing portable packages’ in the ‘Writing R Extensions’ manual.
-```
-
-## ipdw (0.2-4)
-Maintainer: Joseph Stachelek <jstachel@sfwmd.gov>  
-Bug reports: http://www.github.com/jsta/ipdw/issues
-
-0 errors | 0 warnings | 0 notes
-
-## iptools (0.4.0)
-Maintainer: Bob Rudis <bob@rudis.net>  
-Bug reports: https://github.com/hrbrmstr/iptools/issues
-
-1 error  | 0 warnings | 0 notes
-
-```
-checking whether package ‘iptools’ can be installed ... ERROR
-Installation failed.
-See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/iptools.Rcheck/00install.out’ for details.
-```
-
-## ISOweek (0.6-2)
-Maintainer: Uwe Block <u.block.mz@googlemail.com>
-
-0 errors | 0 warnings | 0 notes
-
-## iterpc (0.2.9)
-Maintainer: Randy Lai <randy.cs.lai@gmail.com>
-
-0 errors | 0 warnings | 1 note 
-
-```
-checking for GNU extensions in Makefiles ... NOTE
-GNU make is a SystemRequirements.
-```
-
-## itertools2 (0.1.1)
-Maintainer: John A. Ramey <johnramey@gmail.com>
-
-0 errors | 0 warnings | 0 notes
-
-## jaatha (3.1.1)
-Maintainer: Paul Staab <develop@paulstaab.de>  
-Bug reports: https://github.com/statgenlmu/jaatha/issues
-
-0 errors | 0 warnings | 0 notes
-
-## james.analysis (1.0.1)
-Maintainer: Herman De Beukelaer <Herman.DeBeukelaer@UGent.be>
-
-0 errors | 0 warnings | 0 notes
-
-## jiebaR (0.8)
-Maintainer: Qin Wenfeng <mail@qinwenfeng.com>  
-Bug reports: https://github.com/qinwf/jiebaR/issues
-
-0 errors | 0 warnings | 0 notes
-
-## Jmisc (0.3.1)
-Maintainer: TszKin Julian Chan <ctszkin@gmail.com>  
-Bug reports: TszKin Julian Chan <ctszkin@gmail.com>
-
-0 errors | 0 warnings | 1 note 
-
-```
-checking DESCRIPTION meta-information ... NOTE
-Malformed Description field: should contain one or more complete sentences.
-```
-
-## jmotif (1.0.2)
-Maintainer: Pavel Senin <seninp@gmail.com>  
-Bug reports: https://github.com/jMotif/jmotif-R/issues
-
-0 errors | 0 warnings | 0 notes
-
-## jqr (0.2.0)
-Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>  
-Bug reports: https://github.com/ropensci/jqr/issues
-
-0 errors | 0 warnings | 0 notes
-
-## jsonlite (0.9.19)
-Maintainer: Jeroen Ooms <jeroen.ooms@stat.ucla.edu>  
-Bug reports: http://github.com/jeroenooms/jsonlite/issues
-
-0 errors | 0 warnings | 0 notes
-
-## jug (0.1.1)
-Maintainer: Bart Smeets <bartsmeets86@gmail.com>
-
-0 errors | 0 warnings | 0 notes
-
-## junr (0.1.0)
-Maintainer: Frans van Dunné <frans@ixpantia.com>  
-Bug reports: https://github.com/fvd/junr/issues
-
-0 errors | 0 warnings | 0 notes
-
-## kantorovich (1.1.0)
-Maintainer: Stéphane Laurent <laurent_step@yahoo.fr>
-
-0 errors | 0 warnings | 0 notes
-
-## kelvin (2.0-0)
-Maintainer: Andrew J Barbour <andy.barbour@gmail.com>  
-Bug reports: https://github.com/abarbour/kelvin/issues
-
-0 errors | 0 warnings | 0 notes
-
-## kergp (0.2.0)
-Maintainer: Yves Deville <deville.yves@alpestat.com>
-
-0 errors | 0 warnings | 0 notes
-
-## KFAS (1.2.2)
-Maintainer: Jouni Helske <jouni.helske@jyu.fi>  
-Bug reports: https://github.com/helske/KFAS/issues
-
-1 error  | 0 warnings | 0 notes
-
-```
-checking whether package ‘KFAS’ can be installed ... ERROR
-Installation failed.
-See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/KFAS.Rcheck/00install.out’ for details.
-```
-
-## kimisc (0.3)
-Maintainer: Kirill Müller <krlmlr+r@mailbox.org>  
-Bug reports: https://github.com/krlmlr/kimisc/issues
-
-0 errors | 0 warnings | 0 notes
-
-## kmeans.ddR (0.1.0)
-Maintainer: Vishrut Gupta <vishrut.gupta@hpe.com>
-
-0 errors | 0 warnings | 0 notes
-
-## Kmisc (0.5.0)
-Maintainer: Kevin Ushey <kevinushey@gmail.com>  
-Bug reports: https://github.com/kevinushey/Kmisc/issues
-
-0 errors | 0 warnings | 0 notes
-
-## kmodR (0.1.0)
-Maintainer: David Charles Howe <kmodR@edgecondition.com>
-
-0 errors | 0 warnings | 0 notes
-
-## knitcitations (1.0.7)
-Maintainer: Carl Boettiger <cboettig@gmail.com>  
-Bug reports: https://github.com/cboettig/knitcitations/issues
-
-0 errors | 0 warnings | 1 note 
-
-```
-checking re-building of vignette outputs ... NOTE
-Error in re-building vignettes:
-  ...
-Quitting from lines 63-86 (tutorial.Rmd) 
-Error: processing vignette 'tutorial.Rmd' failed with diagnostics:
-Timeout was reached
-Execution halted
-
-```
-
-## knitrBootstrap (1.0.0)
-Maintainer: Jim Hester <james.f.hester@gmail.com>  
-Bug reports: https://github.com/jimhester/knitrBootstrap/issues
-
-0 errors | 0 warnings | 0 notes
-
-## knockoff (0.2.1)
-Maintainer: Evan Patterson <epatters@stanford.edu>
-
-0 errors | 0 warnings | 0 notes
-
-## koRpus (0.06-4)
-Maintainer: m.eik michalke <meik.michalke@hhu.de>
-
-0 errors | 0 warnings | 2 notes
-
-```
-checking package dependencies ... NOTE
-Package which this enhances but not available for checking: ‘rkward’
-
-checking data for non-ASCII characters ... NOTE
-  Note: found 22852 marked UTF-8 strings
-```
-
-## kriens (0.1)
-Maintainer: Matteo Provenzano <matteo.provenzano@alephdue.com>
-
-0 errors | 0 warnings | 0 notes
-
-## kselection (0.2.0)
-Maintainer: Daniel Rodriguez <daniel.rodriguez.perez@gmail.com>  
-Bug reports: https://github.com/drodriguezperez/kselection/issues
-
-0 errors | 0 warnings | 0 notes
-
-## labelled (0.1.2)
-Maintainer: Joseph Larmarange <joseph@larmarange.net>  
-Bug reports: https://github.com/larmarange/labelled/issues
-
-0 errors | 0 warnings | 0 notes
-
-## LaF (0.6.2)
-Maintainer: Jan van der Laan <djvanderlaan@unrealizedtime.nl>
-
-0 errors | 0 warnings | 0 notes
-
-## lambda.tools (1.0.7)
-Maintainer: Brian Lee Yung Rowe <r@zatonovo.com>
-
-0 errors | 0 warnings | 0 notes
-
-## Lambda4 (3.0)
-Maintainer: Tyler Hunt <tyler@psychoanalytix.com>  
-Bug reports: https://github.com/JackStat/Lambda4/issues
-
-0 errors | 0 warnings | 3 notes
-
-```
-checking DESCRIPTION meta-information ... NOTE
-Malformed Title field: should not end in a period.
-
-checking dependencies in R code ... NOTE
-'library' or 'require' calls in package code:
-  ‘GPArotation’ ‘mice’
-  Please use :: or requireNamespace() instead.
-  See section 'Suggested packages' in the 'Writing R Extensions' manual.
-
-checking R code for possible problems ... NOTE
-impute.cov: no visible global function definition for ‘complete’
-impute.cov: no visible global function definition for ‘mice’
-```
-
-## LambertW (0.6.4)
-Maintainer: Georg M. Goerg <im@gmge.org>
-
-0 errors | 0 warnings | 0 notes
-
-## lamW (1.1.0)
-Maintainer: Avraham Adler <Avraham.Adler@gmail.com>  
-Bug reports: https://bitbucket.org/aadler/lamw/issues
-
-0 errors | 0 warnings | 0 notes
-
-## lasvmR (0.1.2)
-Maintainer: Aydin Demircioglu <aydin.demircioglu@ini.rub.de>  
-Bug reports: http://github.com/aydindemircioglu/lasvmR/issues
-
-0 errors | 0 warnings | 0 notes
-
-## latex2exp (0.4.0)
-Maintainer: Stefano Meschiari <stefano.meschiari@gmail.com>  
-Bug reports: https://github.com/stefano-meschiari/latex2exp/issues
-
-0 errors | 0 warnings | 0 notes
-
-## lava (1.4.3)
-Maintainer: Klaus K. Holst <kkho@biostat.ku.dk>
-
-1 error  | 0 warnings | 1 note 
-
-```
-checking tests ... ERROR
-Running the tests in ‘tests/test-all.R’ failed.
-Last 13 lines of output:
-  4: getNamespace(ns)
-  5: tryCatch(loadNamespace(name), error = function(e) stop(e))
-  6: tryCatchList(expr, classes, parentenv, handlers)
-  7: tryCatchOne(expr, names, parentenv, handlers[[1L]])
-  8: value[[3L]](cond)
-  
-  testthat results ================================================================
-  OK: 245 SKIPPED: 0 FAILED: 2
-  1. Error: Effects (@test-inference.R#27) 
-  2. Error: Graph attributes (@test-model.R#82) 
-  
-  Error: testthat unit tests failed
-  Execution halted
-
-checking package dependencies ... NOTE
-Packages suggested but not available for checking: ‘graph’ ‘Rgraphviz’
-```
-
-## lavaan.survey (1.1.3)
-Maintainer: Daniel Oberski <daniel.oberski@gmail.com>
-
-0 errors | 0 warnings | 0 notes
-
-## lawn (0.1.6)
-Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>  
-Bug reports: http://www.github.com/ropensci/lawn/issues
-
-1 error  | 0 warnings | 0 notes
-
-```
-checking tests ... ERROR
-Running the tests in ‘tests/test-all.R’ failed.
-Last 13 lines of output:
-  > test_check("lawn")
-  Loading required package: lawn
-  1. Failure: lawn_union fails correctly (@test-union.R#51) ----------------------
-  error$message does not match "Error : ReferenceError: afa is not defined\n".
-  Actual value: "ReferenceError: afa is not defined"
-  
-  
-  testthat results ================================================================
-  OK: 892 SKIPPED: 0 FAILED: 1
-  1. Failure: lawn_union fails correctly (@test-union.R#51) 
-  
-  Error: testthat unit tests failed
-  Execution halted
-```
-
-## lazyeval (0.1.10)
-Maintainer: Hadley Wickham <hadley@rstudio.com>
-
-0 errors | 0 warnings | 0 notes
-
-## lazysql (0.1.3)
-Maintainer: Uwe Block <u.block.mz@gmail.com>  
-Bug reports: https://github.com/UweBlock/lazysql/issues
-
-0 errors | 0 warnings | 0 notes
-
-## lazyWeave (3.0.1)
-Maintainer: Benjamin Nutter <nutter@battelle.org>
-
-0 errors | 0 warnings | 0 notes
-
-## learNN (0.2.0)
-Maintainer: Bastiaan Quast <bquast@gmail.com>
-
-0 errors | 0 warnings | 0 notes
-
-## letsR (2.4)
-Maintainer: Bruno Vilela <brunovilelasilva@hotmail.com>  
-Bug reports: https://github.com/macroecology/letsR/issues
-
-0 errors | 1 warning  | 0 notes
-
-```
-checking whether package ‘letsR’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: replacing previous import ‘maptools::nowrapSpatialLines’ by ‘sp::nowrapSpatialLines’ when loading ‘letsR’
-See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/letsR.Rcheck/00install.out’ for details.
-```
-
-## lettercase (0.13.1)
-Maintainer: Christopher Brown <chris.brown@decisionpatterns.com>
-
-0 errors | 0 warnings | 0 notes
-
-## lfactors (0.9.2)
-Maintainer: Paul Bailey <pbailey@air.org>
-
-0 errors | 0 warnings | 0 notes
-
-## lfda (1.1.1)
-Maintainer: Yuan Tang <terrytangyuan@gmail.com>  
-Bug reports: https://github.com/terrytangyuan/lfda/issues
-
-0 errors | 0 warnings | 0 notes
-
-## lfl (1.2)
-Maintainer: Michal Burda <michal.burda@osu.cz>
-
-0 errors | 0 warnings | 0 notes
-
-## lfstat (0.8.0)
-Maintainer: Tobias Gauster <t.gauster@boku.ac.at>
-
-2 errors | 0 warnings | 0 notes
-
-```
-checking examples ... ERROR
-Running examples in ‘lfstat-Ex.R’ failed
-The error most likely occurred in:
-
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
-> ### Name: tyears
-> ### Title: Calculate Low-Flow Quantiles for given Return Periods
-> ### Aliases: tyears
-> ### Keywords: low-flow fitting
-> 
-... 73 lines ...
-> 
-> # applying a moving average before fitting
-> ng2 <- ng
-> ng2$flow <- ma(ng2$flow, n = 4)
-> tyears(ng2, dist = c("gum", "wei", "ln3", "pe3"), event = rp,
-+        plot = FALSE)
-Warning in FUN(X[[i]], ...) :
-  no non-missing arguments to min; returning Inf
-Error in samlmu(xx) : NA/NaN/Inf in foreign function call (arg 1)
-Calls: tyears -> evfit -> samlmu -> .Fortran
-Execution halted
-
-checking tests ... ERROR
-Running the tests in ‘tests/testthat.R’ failed.
-Last 13 lines of output:
-  1. Failure: water_year() interprets the origin argument correctly (@test-utils.R#11) 
-  2. Failure: water_year() interprets the origin argument correctly (@test-utils.R#15) 
-  3. Failure: water_year() interprets the origin argument correctly (@test-utils.R#19) 
-  4. Failure: water_year() interprets the origin argument correctly (@test-utils.R#21) 
-  5. Failure: water_year() interprets the origin argument correctly (@test-utils.R#25) 
-  6. Failure: water_year() interprets the origin argument correctly (@test-utils.R#27) 
-  7. Failure: water_year() interprets the assign argument correctly (@test-utils.R#33) 
-  8. Failure: water_year() interprets the assign argument correctly (@test-utils.R#35) 
-  9. Failure: water_year() interprets the assign argument correctly (@test-utils.R#38) 
-  1. ...
-  
-  Error: testthat unit tests failed
-  Execution halted
-```
-
-## LiblineaR.ACF (1.94-2)
-Maintainer: Aydin Demircioglu <aydin.demircioglu@ini.rub.de>
-
-0 errors | 0 warnings | 0 notes
-
-## lifecontingencies (1.1.10)
-Maintainer: Giorgio Alfredo Spedicato <spedicato_giorgio@yahoo.it>  
-Bug reports: http://github.com/spedygiorgio/lifecontingencies/issues
-
-0 errors | 0 warnings | 0 notes
-
-## lightsout (0.2.1)
-Maintainer: Dean Attali <daattali@gmail.com>  
-Bug reports: https://github.com/daattali/lightsout/issues
-
-0 errors | 0 warnings | 0 notes
-
-## LinearizedSVR (1.3)
-Maintainer: Ken Williams <ken.williams@windlogics.com>
-
-0 errors | 0 warnings | 0 notes
-
-## lineup (0.37-6)
-Maintainer: Karl W Broman <kbroman@biostat.wisc.edu>
-
-0 errors | 0 warnings | 0 notes
-
-## LinkedMatrix (1.1.0)
-Maintainer: Alexander Grueneberg <alexander.grueneberg@googlemail.com>  
-Bug reports: https://github.com/QuantGen/LinkedMatrix/issues
-
-0 errors | 0 warnings | 0 notes
-
-## lint (0.3)
-Maintainer: Andrew Redd <andrew.redd@hsc.utah.edu>
-
-0 errors | 0 warnings | 1 note 
-
-```
-checking R code for possible problems ... NOTE
-autotest_style: no visible global function definition for ‘test_that’
-test_style: no visible global function definition for
-  ‘expect_equivalent’
-```
-
-## lintools (0.1.1.1)
-Maintainer: Mark van der Loo <mark.vanderloo@gmail.com>  
-Bug reports: https://github.com/data-cleaning/lintools/issues
-
-0 errors | 0 warnings | 0 notes
-
-## lintr (1.0.0)
-Maintainer: Jim Hester <james.f.hester@gmail.com>  
-Bug reports: https://github.com/jimhester/lintr/issues
-
-0 errors | 0 warnings | 0 notes
-
-## list (8.0)
-Maintainer: Graeme Blair <graeme.blair@columbia.edu>
-
-0 errors | 0 warnings | 0 notes
-
-## listWithDefaults (1.0.0)
-Maintainer: Russell S. Pierce <russell.s.pierce@gmail.com>
-
-0 errors | 0 warnings | 0 notes
-
-## llama (0.9.1)
-Maintainer: Lars Kotthoff <larsko@cs.ubc.ca>
-
-0 errors | 0 warnings | 0 notes
-
-## LLSR (0.0.2.0)
-Maintainer: Diego F Coelho <diegofcoelho@gmail.com>  
-Bug reports: https://github.com/hutchr/LLSR/issues
-
-0 errors | 0 warnings | 0 notes
-
-## lme4 (1.1-12)
-Maintainer: Ben Bolker <bbolker+lme4@gmail.com>  
-Bug reports: https://github.com/lme4/lme4/issues
-
-1 error  | 0 warnings | 0 notes
-
-```
-checking package dependencies ... ERROR
-Package required but not available: ‘RcppEigen’
-
-See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
-manual.
-```
-
-## log4r (0.2)
-Maintainer: Kirill Müller <krlmlr+r@mailbox.org>  
-Bug reports: https://github.com/johnmyleswhite/log4r/issues
-
-0 errors | 0 warnings | 1 note 
-
-```
-checking DESCRIPTION meta-information ... NOTE
-Malformed Title field: should not end in a period.
-```
-
-## logisticPCA (0.2)
-Maintainer: Andrew J. Landgraf <andland@gmail.com>
-
-0 errors | 0 warnings | 0 notes
-
-## longurl (0.1.1)
-Maintainer: Bob Rudis <bob@rudis.net>
-
-0 errors | 0 warnings | 0 notes
-
-## loo (0.1.6)
-Maintainer: Jonah Gabry <jsg2201@columbia.edu>  
-Bug reports: https://github.com/stan-dev/loo/issues
-
-0 errors | 0 warnings | 0 notes
-
-## lookupTable (0.1)
-Maintainer: Enzo Jia <enzo.jia@gmail.com>
-
-0 errors | 0 warnings | 0 notes
-
-## lrequire (0.1.3)
-Maintainer: Rick Wargo <lrequire@rickwargo.com>  
-Bug reports: https://github.com/rickwargo/lrequire/issues
-
-0 errors | 0 warnings | 0 notes
-
-## lsbclust (1.0.4)
-Maintainer: Pieter Schoonees <schoonees@gmail.com>
-
-0 errors | 0 warnings | 0 notes
-
-## ltmle (0.9-7)
-Maintainer: Joshua Schwab <joshuaschwab@yahoo.com>  
-Bug reports: https://github.com/joshuaschwab/ltmle/issues
-
-0 errors | 0 warnings | 0 notes
-
-## lubridate (1.5.6)
-Maintainer: Vitalie Spinu <spinuvit@gmail.com>  
-Bug reports: https://github.com/hadley/lubridate/issues
-
-0 errors | 0 warnings | 1 note 
-
-```
-checking package dependencies ... NOTE
-Packages which this enhances but not available for checking: ‘tis’ ‘fts’
-```
-
-## lucr (0.1.1)
-Maintainer: Oliver Keyes <ironholds@gmail.com>  
-Bug reports: https://github.com/ironholds/lucr/issues
-
-0 errors | 0 warnings | 0 notes
-
-## lumendb (0.2.0)
-Maintainer: Thomas J. Leeper <thosjleeper@gmail.com>  
-Bug reports: https://github.com/leeper/lumendb/issues
-
-0 errors | 0 warnings | 0 notes
-
-## luzlogr (0.2.0)
-Maintainer: Ben Bond-Lamberty <bondlamberty@pnnl.gov>
-
-0 errors | 0 warnings | 0 notes
-
-## LW1949 (1.0.0)
-Maintainer: Jean V. Adams <jvadams@usgs.gov>  
-Bug reports: https://github.com/JVAdams/LW1949/issues
-
-0 errors | 0 warnings | 0 notes
-
-## madness (0.2.0)
-Maintainer: Steven E. Pav <shabbychef@gmail.com>  
-Bug reports: https://github.com/shabbychef/madness/issues
-
-0 errors | 0 warnings | 0 notes
-
-## mads (0.1.3)
-Maintainer: Laura Marshall <lhm@st-and.ac.uk>
-
-0 errors | 0 warnings | 0 notes
-
-## magrittr (1.5)
-Maintainer: Stefan Milton Bache <stefan@stefanbache.dk>
-
-0 errors | 0 warnings | 0 notes
-
-## MakefileR (1.0)
-Maintainer: Kirill Müller <krlmlr+r@mailbox.org>  
-Bug reports: https://github.com/krlmlr/MakefileR/issues
-
-0 errors | 0 warnings | 0 notes
-
-## MALDIquant (1.14)
-Maintainer: Sebastian Gibb <mail@sebastiangibb.de>  
-Bug reports: https://github.com/sgibb/MALDIquant/issues/
-
-0 errors | 0 warnings | 0 notes
-
-## MALDIquantForeign (0.10)
-Maintainer: Sebastian Gibb <mail@sebastiangibb.de>  
-Bug reports: https://github.com/sgibb/MALDIquantForeign/issues/
-
-0 errors | 0 warnings | 0 notes
-
-## manifestoR (1.2)
-Maintainer: Jirka Lewandowski <jirka.lewandowski@wzb.eu>  
-Bug reports: https://github.com/ManifestoProject/manifestoR/issues
-
-0 errors | 0 warnings | 0 notes
-
-## mapr (0.2.0)
-Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>  
-Bug reports: https://github.com/ropensci/mapr/issues
-
-0 errors | 0 warnings | 0 notes
-
-## markmyassignment (0.6.0)
-Maintainer: Mans Magnusson <mons.magnusson@gmail.com>
-
-0 errors | 0 warnings | 0 notes
-
-## markophylo (1.0.4)
-Maintainer: Utkarsh J. Dang <udang@mcmaster.ca>
-
-0 errors | 0 warnings | 0 notes
-
-## markovchain (0.4.3.1)
-Maintainer: Giorgio Alfredo Spedicato <spedicato_giorgio@yahoo.it>  
-Bug reports: http://github.com/spedygiorgio/markovchain/issues
-
-0 errors | 0 warnings | 0 notes
-
-## MarkowitzR (0.1502)
-Maintainer: Steven E. Pav <shabbychef@gmail.com>  
-Bug reports: https://github.com/shabbychef/MarkowitzR/issues
-
-0 errors | 0 warnings | 0 notes
-
-## matchingMarkets (0.2-1)
-Maintainer: Thilo Klein <thilo@klein.uk>  
-Bug reports: https://github.com/thiloklein/matchingMarkets/issues
-
-0 errors | 0 warnings | 0 notes
-
-## matchingR (1.2.1)
-Maintainer: Jan Tilly <jtilly@econ.upenn.edu>  
-Bug reports: https://github.com/jtilly/matchingR/issues/
-
-0 errors | 0 warnings | 0 notes
-
-## matchMulti (1.1)
-Maintainer: Sam Pimentel <spi@wharton.upenn.edu>
-
-0 errors | 0 warnings | 0 notes
-
-## matconv (0.3.0)
-Maintainer: Siddarta Jairam <sidjsb@gmail.com>
-
-0 errors | 0 warnings | 0 notes
-
-## MazamaSpatialUtils (0.4.3)
-Maintainer: Jonathan Callahan <jonathan.s.callahan@gmail.com>
-
-0 errors | 0 warnings | 0 notes
-
-## mbbefd (0.8-0)
-Maintainer: Giorgio Spedicato <spedicato_giorgio@yahoo.it>  
-Bug reports: http://github.com/spedygiorgio/mbbefd/issues
-
-0 errors | 0 warnings | 0 notes
-
-## mbest (0.5)
-Maintainer: Patrick O. Perry <pperry@stern.nyu.edu>
-
-0 errors | 0 warnings | 0 notes
-
-## mboost (2.6-0)
-Maintainer: Benjamin Hofner <benjamin.hofner@fau.de>  
-Bug reports: https://github.com/boost-R/mboost/issues
-
-0 errors | 0 warnings | 0 notes
-
-## mcIRT (0.41)
-Maintainer: Manuel Reif <manuel.reif@univie.ac.at>
-
-0 errors | 0 warnings | 0 notes
-
-## mcmcse (1.2-1)
-Maintainer: James M. Flegal <jflegal@ucr.edu>
-
-0 errors | 0 warnings | 0 notes
-
-## mco (1.0-15.1)
-Maintainer: Olaf Mersmann <olafm@p-value.net>
-
-0 errors | 0 warnings | 2 notes
-
-```
-checking DESCRIPTION meta-information ... NOTE
-Malformed Description field: should contain one or more complete sentences.
-
-checking dependencies in R code ... NOTE
-'library' or 'require' call to ‘scatterplot3d’ in package code.
-  Please use :: or requireNamespace() instead.
-  See section 'Suggested packages' in the 'Writing R Extensions' manual.
-```
-
-## mcparallelDo (1.0.0)
-Maintainer: Russell S. Pierce <russell.s.pierce@gmail.com>
-
-0 errors | 0 warnings | 0 notes
-
-## medicalrisk (1.2)
-Maintainer: Patrick McCormick <patrick.mccormick@alum.mit.edu>  
-Bug reports: https://github.com/patrickmdnet/medicalrisk/issues
-
-0 errors | 0 warnings | 0 notes
-
-## memoise (1.0.0)
-Maintainer: Jim Hester <jim.hester@rstudio.com>  
-Bug reports: https://github.com/hadley/memoise/issues
-
-0 errors | 0 warnings | 0 notes
-
-## merTools (0.2.1)
-Maintainer: Jared E. Knowles <jknowles@gmail.com>  
-Bug reports: https://www.github.com/jknowles/merTools
-
-0 errors | 1 warning  | 0 notes
-
-```
-checking whether package ‘merTools’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: package ‘lme4’ was built under R version 3.2.5
-See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/merTools.Rcheck/00install.out’ for details.
-```
-
-## metacom (1.4.4)
-Maintainer: Tad Dallas <tdallas@uga.edu>  
-Bug reports: https://github.com/taddallas/metacom/issues
-
-0 errors | 0 warnings | 0 notes
-
-## metafor (1.9-8)
-Maintainer: Wolfgang Viechtbauer <wvb@metafor-project.org>
-
-0 errors | 0 warnings | 0 notes
-
-## metaheur (0.1.0)
-Maintainer: Markus Vattulainen <markus.vattulainen@gmail.com>
-
-0 errors | 0 warnings | 0 notes
-
-## meteR (1.1)
-Maintainer: Cory Merow <cory.merow@gmail.com>  
-Bug reports: https://github.com/cmerow/meteR/issues
-
-0 errors | 0 warnings | 0 notes
-
-## metricsgraphics (0.9.0)
-Maintainer: Bob Rudis <bob@rudis.net>  
-Bug reports: https://github.com/hrbrmstr/metricsgraphics/issues
-
-0 errors | 0 warnings | 0 notes
-
-## metricTester (1.0.0)
-Maintainer: Eliot Miller <eliot.isaac@gmail.com>  
-Bug reports: https://github.com/eliotmiller/metricTester/issues
-
-0 errors | 0 warnings | 0 notes
-
-## mets (1.1.1)
-Maintainer: Klaus K. Holst <klaus@holst.it>
-
-0 errors | 0 warnings | 0 notes
-
-## mgarchBEKK (0.0.2)
-Maintainer: Vehbi Sinan Tunalioglu <vst@vsthost.com>
-
-0 errors | 0 warnings | 0 notes
-
-## mHG (1.0)
-Maintainer: Kobi Perl <kobipe3@gmail.com>
-
-0 errors | 0 warnings | 0 notes
-
-## midasr (0.5)
-Maintainer: Vaidotas Zemlys <zemlys@gmail.com>  
-Bug reports: https://github.com/mpiktas/midasr/issues
-
-0 errors | 0 warnings | 0 notes
-
-## MIIVsem (0.4.7)
-Maintainer: Zachary Fisher <fish.zachary@gmail.com>
-
-0 errors | 0 warnings | 0 notes
-
-## miniCRAN (0.2.5)
-Maintainer: Andrie de
- Vries <adevries@microsoft.com>  
-Bug reports: https://github.com/RevolutionAnalytics/miniCRAN/issues
-
-0 errors | 0 warnings | 0 notes
-
-## minimap (0.1.0)
-Maintainer: Sean Kross <sean@seankross.com>
-
-0 errors | 0 warnings | 0 notes
-
-## MInt (1.0.1)
-Maintainer: Surojit Biswas <surojitbiswas@g.harvard.edu>
-
-0 errors | 0 warnings | 0 notes
-
-## mirtCAT (0.8)
-Maintainer: Phil Chalmers <rphilip.chalmers@gmail.com>  
-Bug reports: https://github.com/philchalmers/mirtCAT/issues?state=open
-
-0 errors | 0 warnings | 0 notes
-
-## mizer (0.2)
-Maintainer: Finlay Scott <finlay.scott@jrc.ec.europa.eu>
-
-0 errors | 0 warnings | 1 note 
-
-```
-checking R code for possible problems ... NOTE
-getFMort,MizerSim-missing : .local: warning in
-  get_time_elements(object, time_range, slot = "effort"): partial
-  argument match of 'slot' to 'slot_name'
-getFMortGear,MizerSim-missing : .local: warning in
-  get_time_elements(object, time_range, slot = "effort"): partial
-  argument match of 'slot' to 'slot_name'
-plotFMort,MizerSim : .local: warning in scale_y_continuous(name =
-  "Total fishing mortality", lim = c(0, max(plot_dat$value))): partial
-  argument match of 'lim' to 'limits'
-... 32 lines ...
-  ‘Species’
-plotYield,MizerSim : .local: no visible binding for global variable
-  ‘value’
-plotYield,MizerSim : .local: no visible binding for global variable
-  ‘Species’
-plotYieldGear,MizerSim : .local: no visible binding for global variable
-  ‘value’
-plotYieldGear,MizerSim : .local: no visible binding for global variable
-  ‘Species’
-plotYieldGear,MizerSim : .local: no visible binding for global variable
-  ‘gear’
-```
-
-## mkin (0.9.42)
-Maintainer: Johannes Ranke <jranke@uni-bremen.de>  
-Bug reports: http://github.com/jranke/mkin/issues
-
-0 errors | 0 warnings | 0 notes
-
-## mlr (2.8)
-Maintainer: Bernd Bischl <bernd_bischl@gmx.net>  
-Bug reports: https://github.com/mlr-org/mlr/issues
-
-1 error  | 0 warnings | 0 notes
-
-```
-checking tests ... ERROR
-Running the tests in ‘tests/run-base.R’ failed.
-Last 13 lines of output:
-  
-  testthat results ================================================================
-  OK: 2008 SKIPPED: 1 FAILED: 7
-  1. Failure: chains (@test_base_chains.R#11) 
-  2. Error: generateCalibrationData (@test_base_generateCalibration.R#14) 
-  3. Error: generateLearningCurve (@test_base_generateLearningCurve.R#11) 
-  4. Error: generatePartialPredictionData (@test_base_generatePartialPrediction.R#21) 
-  5. Error: generateThreshVsPerfData (@test_base_generateThreshVsPerf.R#12) 
-  6. Failure: getParamSet (@test_base_getParamSet.R#16) 
-  7. Error: BenchmarkResult (@test_base_plotBMRBoxplots.R#12) 
-  
-  Error: testthat unit tests failed
-  Execution halted
-```
-
-## mlsjunkgen (0.1.1)
-Maintainer: Steve Myles <steve@mylesandmyles.info>  
-Bug reports: https://github.com/scumdogsteev/mlsjunkgen/issues
-
-0 errors | 0 warnings | 0 notes
-
-## mmand (1.3.0)
-Maintainer: Jon Clayden <code@clayden.org>  
-Bug reports: https://github.com/jonclayden/mmand/issues
-
-1 error  | 0 warnings | 0 notes
-
-```
-checking package dependencies ... ERROR
-Package required but not available: ‘RcppEigen’
-
-See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
-manual.
-```
-
-## MMWRweek (0.1.1)
-Maintainer: Jarad Niemi <niemi@iastate.edu>
-
-0 errors | 0 warnings | 0 notes
-
-## modules (0.4.0)
-Maintainer: Sebastian Warnholz <wahani@gmail.com>  
-Bug reports: https://github.com/wahani/modules/issues
-
-0 errors | 0 warnings | 0 notes
-
-## Momocs (1.0.0)
-Maintainer: Vincent Bonhomme <bonhomme.vincent@gmail.com>  
-Bug reports: https://github.com/vbonhomme/Momocs/issues
-
-0 errors | 0 warnings | 0 notes
-
-## MonoPhy (1.1)
-Maintainer: Orlando Schwery <oschwery@vols.utk.edu>
-
-0 errors | 0 warnings | 0 notes
-
-## moonBook (0.1.3)
-Maintainer: Keon-Woong Moon <cardiomoon@gmail.com>
-
-0 errors | 0 warnings | 1 note 
-
-```
-checking files in ‘vignettes’ ... NOTE
-The following directory looks like a leftover from 'knitr':
-  ‘figure’
-Please remove from your package.
-```
-
-## morgenstemning (1.0)
-Maintainer: James Manton <ajd.manton@googlemail.com>
-
-0 errors | 0 warnings | 0 notes
-
-## Morpho (2.3.1.1)
-Maintainer: Stefan Schlager <stefan.schlager@uniklinik-freiburg.de>  
-Bug reports: https://github.com/zarquon42b/Morpho/issues
-
-0 errors | 0 warnings | 0 notes
-
-## morse (2.1.1)
-Maintainer: Philippe Ruiz <philippe.ruiz@univ-lyon1.fr>
-
-1 error  | 0 warnings | 0 notes
-
-```
-checking whether package ‘morse’ can be installed ... ERROR
-Installation failed.
-See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/morse.Rcheck/00install.out’ for details.
-```
-
-## mosaic (0.13.0)
-Maintainer: Randall Pruim <rpruim@calvin.edu>  
-Bug reports: https://github.com/ProjectMOSAIC/mosaic/issues
-
-0 errors | 0 warnings | 0 notes
-
-## MotilityLab (0.2-4)
-Maintainer: Johannes Textor <johannes.textor@gmx.de>
-
-0 errors | 0 warnings | 0 notes
-
-## mousetrap (1.0.0)
-Maintainer: Pascal J. Kieslich <kieslich@psychologie.uni-mannheim.de>  
-Bug reports: https://github.com/pascalkieslich/mousetrap/issues
-
-0 errors | 0 warnings | 0 notes
-
-## move (1.6.541)
-Maintainer: Bart Kranstauber <bart.kranstauber@uni-konstanz.de>
-
-1 error  | 0 warnings | 0 notes
-
-```
-checking whether package ‘move’ can be installed ... ERROR
-Installation failed.
-See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/move.Rcheck/00install.out’ for details.
-```
-
-## moveHMM (1.1)
-Maintainer: Theo Michelot <theo.michelot@insa-rouen.fr>
-
-0 errors | 0 warnings | 0 notes
-
-## MplusAutomation (0.6-3)
-Maintainer: Michael Hallquist <michael.hallquist@gmail.com>
-
-0 errors | 0 warnings | 3 notes
-
-```
-checking package dependencies ... NOTE
-Package suggested but not available for checking: ‘rhdf5’
-
-checking dependencies in R code ... NOTE
-'library' or 'require' calls in package code:
-  ‘relimp’ ‘rhdf5’ ‘tcltk’
-  Please use :: or requireNamespace() instead.
-  See section 'Suggested packages' in the 'Writing R Extensions' manual.
-
-checking R code for possible problems ... NOTE
-readModels: no visible global function definition for ‘h5dump’
-showSummaryTable: no visible global function definition for ‘showData’
-```
-
-## mpoly (1.0.0)
-Maintainer: David Kahle <david.kahle@gmail.com>  
-Bug reports: https://github.com/dkahle/mpoly/issues
-
-0 errors | 0 warnings | 0 notes
-
-## mrds (2.1.14)
-Maintainer: David Miller <dave@ninepointeightone.net>
-
-0 errors | 0 warnings | 0 notes
-
-## MRMR (0.1.3)
-Maintainer: Brian A. Fannin <BFannin@RedwoodsGroup.com>
-
-1 error  | 0 warnings | 2 notes
-
-```
-checking examples ... ERROR
-Running examples in ‘MRMR-Ex.R’ failed
-The error most likely occurred in:
-
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
-> ### Name: CreateDevelopmentLags
-> ### Title: Create triangle development lags
-> ### Aliases: CreateDevelopmentLags
-> 
-> ### ** Examples
-... 16 lines ...
-> DevelopmentLags
-[1] "12m 0d 0H 0M 0S" "24m 0d 0H 0M 0S" "12m 0d 0H 0M 0S"
-> 
-> # Case 3
-> OriginStart = c(mdy("1/1/2000"), mdy("1/1/2000"), mdy("1/1/2001"))
-> OriginEnd = c(mdy("12/31/2000"), mdy("12/31/2000"), mdy("12/31/2001"))
-> OriginPeriods = CreateOriginPeriods(OriginStart, OriginEnd)
-Error in OriginPeriodFromDates(OriginStart, OriginEnd) : 
-  OriginStart and OriginEnd were supplied, but OriginStart is not a POSIXct or POSIXt class variable.
-Calls: CreateOriginPeriods -> OriginPeriodFromDates
-Execution halted
-
-checking DESCRIPTION meta-information ... NOTE
-Malformed Description field: should contain one or more complete sentences.
-
-checking R code for possible problems ... NOTE
-PlotResiduals: no visible global function definition for ‘.’
-```
-
-## MScombine (1.1)
-Maintainer: Monica Calderon-Santiago <b42casam@uco.es>
-
-0 errors | 0 warnings | 0 notes
-
-## msm (1.6.1)
-Maintainer: Christopher Jackson <chris.jackson@mrc-bsu.cam.ac.uk>
-
-0 errors | 0 warnings | 0 notes
-
-## mtconnectR (0.2.0)
-Maintainer: Alex Joseph <alex@systeminsights.com>
-
-0 errors | 0 warnings | 0 notes
-
-## MTurkR (0.7.0)
-Maintainer: Thomas J. Leeper <thosjleeper@gmail.com>  
-Bug reports: https://github.com/leeper/MTurkR/issues
-
-0 errors | 0 warnings | 0 notes
-
-## multifwf (0.2.2)
-Maintainer: Panos Rontogiannis <p.g.ronto@gmail.com>  
-Bug reports: https://github.com/prontog/multifwf/issues
-
-0 errors | 0 warnings | 0 notes
-
-## MultiGHQuad (1.0)
-Maintainer: Karel Kroeze <k.a.kroeze@utwente.nl>
-
-1 error  | 0 warnings | 0 notes
-
-```
-checking tests ... ERROR
-Running the tests in ‘tests/testthat.R’ failed.
-Last 13 lines of output:
-  > 
-  > test_check("MultiGHQuad")
-  1. Error: Sum of weights is 1, pruning does not take too much (@test_generate_quadpoints.R#36) 
-  unused argument (info = "q 2 ip 6")
-  1: expect_less_than(1 - sum(not.pruned), 0.01, info = paste("q", q, "ip", ip)) at testthat/test_generate_quadpoints.R:36
-  2: expect_lt(...) at /Users/hadley/Documents/devtools/testthat/R/expect-comparison.R:81
-  
-  testthat results ================================================================
-  OK: 66 SKIPPED: 0 FAILED: 1
-  1. Error: Sum of weights is 1, pruning does not take too much (@test_generate_quadpoints.R#36) 
-  
-  Error: testthat unit tests failed
-  Execution halted
-```
-
-## multilevelPSA (1.2.4)
-Maintainer: Jason Bryer <jason@bryer.org>  
-Bug reports: https://github.com/jbryer/multilevelPSA/issues
-
-0 errors | 0 warnings | 0 notes
-
-## multitable (1.6)
-Maintainer: Steve C Walker <steve.walker@utoronto.ca>
-
-1 error  | 0 warnings | 1 note 
-
-```
-checking running R code from vignettes ... ERROR
-Errors in running code in vignettes:
-when running code in ‘multitable.Rnw’
-  ...
-> p <- p + geom_point(aes(x = width, y = abundance, 
-+     shape = life.history))
-
-> p <- p + stat_smooth(aes(x = width, y = abundance), 
-+     se = FALSE, method = "bayesglm", family = poisson, form = y ~ 
-+         x + I(x^2), colo .... [TRUNCATED] 
-
-  When sourcing ‘multitable.R’:
-Error: Unknown parameters: family, form
-Execution halted
-
-
-checking re-building of vignette outputs ... NOTE
-Error in re-building vignettes:
-  ...
-The following object is masked from ‘package:arm’:
-
-    rescale
-
-dimids automatically generated
-dimids automatically generated
-omitting width because it is not replicated along MARGIN
-... 8 lines ...
-
-omitting life.history because of the following error:
- Error in median.default(newX[, i], ...) : need numeric data
-
-omitting trophic because it is not replicated along MARGIN
-omitting life.history because it is not replicated along MARGIN
-
-Error: processing vignette 'multitable.Rnw' failed with diagnostics:
- chunk 57 (label = a faceted ggplot scatterplot from a data list) 
-Error : Unknown parameters: family, form
-Execution halted
-```
-
-## munsell (0.4.3)
-Maintainer: Charlotte Wickham <cwickham@gmail.com>
-
-0 errors | 0 warnings | 0 notes
-
-## mvnfast (0.1.4)
-Maintainer: Matteo Fasiolo <matteo.fasiolo@gmail.com>
-
-0 errors | 0 warnings | 0 notes
-
-## mvtboost (0.4.1)
-Maintainer: Patrick Miller <patrick.mil10@gmail.com>  
-Bug reports: https://github.com/patr1ckm/mvtboost/issues
-
-1 error  | 0 warnings | 0 notes
-
-```
-checking tests ... ERROR
-Running the tests in ‘tests/testthat.R’ failed.
-Last 13 lines of output:
-  
-  Type 'demo()' for some demos, 'help()' for on-line help, or
-  'help.start()' for an HTML browser interface to help.
-  Type 'q()' to quit R.
-  
-  > library(testthat)
-  > library(mvtboost)
-  > 
-  > test_check("mvtboost")
-  Error: mvtb.covex(out) produced no output
-  testthat results ================================================================
-  OK: 72 SKIPPED: 0 FAILED: 0
-  Execution halted
-```
-
-## mwaved (1.1.4)
-Maintainer: Justin Rory Wishart <justin.wishart@mq.edu.au>  
-Bug reports: https://github.com/jrwishart/mwaved/issues
-
-1 error  | 0 warnings | 0 notes
-
-```
-checking whether package ‘mwaved’ can be installed ... ERROR
-Installation failed.
-See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/mwaved.Rcheck/00install.out’ for details.
-```
-
-## mycor (0.1)
-Maintainer: Keon-Woong Moon <cardiomoon@gmail.com>
-
-0 errors | 0 warnings | 1 note 
-
-```
-checking S3 generic/method consistency ... NOTE
-Found the following apparent S3 methods exported but not registered:
-  mycor.default mycor.formula plot.mycor print.mycor summary.mycor
-See section ‘Registering S3 methods’ in the ‘Writing R Extensions’
-manual.
-```
-
-## myTAI (0.3.0)
-Maintainer: Hajk-Georg Drost <hajk-georg.drost@informatik.uni-halle.de>  
-Bug reports: https://github.com/HajkD/myTAI/issues
-
-1 error  | 0 warnings | 0 notes
-
-```
-checking package dependencies ... ERROR
-Package required but not available: ‘edgeR’
-
-See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
-manual.
-```
-
-## nabor (0.4.6)
-Maintainer: Gregory Jefferis <jefferis@gmail.com>  
-Bug reports: https://github.com/jefferis/nabor/issues
-
-1 error  | 0 warnings | 0 notes
-
-```
-checking package dependencies ... ERROR
-Package required but not available: ‘RcppEigen’
-
-See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
-manual.
-```
-
-## nat.nblast (1.5)
-Maintainer: James Manton <ajd.manton@googlemail.com>
-
-0 errors | 0 warnings | 0 notes
-
-## nat (1.8.1)
-Maintainer: Greg Jefferis <jefferis@gmail.com>  
-Bug reports: https://github.com/jefferis/nat/issues
-
-1 error  | 0 warnings | 0 notes
-
-```
-checking tests ... ERROR
-Running the tests in ‘tests/test-all.R’ failed.
-Last 13 lines of output:
-    adding: DL3/EBH20L.swc (deflated 54%)
-    adding: DL3/EBI22R.swc (deflated 53%)
-  1. Failure: write.nrrd.header.for.file (@test-nrrd-io.R#132) -------------------
-  error$message does not match "read.im3d".
-  Actual value: "Unable to read data saved in format: am"
-  
-  
-  testthat results ================================================================
-  OK: 726 SKIPPED: 0 FAILED: 1
-  1. Failure: write.nrrd.header.for.file (@test-nrrd-io.R#132) 
-  
-  Error: testthat unit tests failed
-  Execution halted
-```
-
-## nat.templatebrains (0.6.2)
-Maintainer: James Manton <ajd.manton@googlemail.com>
-
-0 errors | 0 warnings | 0 notes
-
-## nat.utils (0.5.1)
-Maintainer: Gregory Jefferis <jefferis@gmail.com>
-
-0 errors | 0 warnings | 0 notes
-
-## naturalsort (0.1.2)
-Maintainer: Kosei Abe <mail@recyclebin.jp>  
-Bug reports: https://github.com/kos59125/naturalsort/issues
-
-0 errors | 0 warnings | 0 notes
-
-## nbpMatching (1.5.0)
-Maintainer: Cole Beck <cole.beck@vanderbilt.edu>
-
-0 errors | 0 warnings | 0 notes
-
-## NCA (1.1)
-Maintainer: Govert Buijs <buijs@rsm.nl>
-
-0 errors | 0 warnings | 0 notes
-
-## ncappc (0.2.1.1)
-Maintainer: Chayan Acharya <chayan.acharya@farmbio.uu.se>
-
-0 errors | 0 warnings | 0 notes
-
-## ndtv (0.9.0)
-Maintainer: Skye Bender-deMoll <skyebend@uw.edu>
-
-0 errors | 0 warnings | 0 notes
-
-## needy (0.2)
-Maintainer: Ryan Grannell <r.grannell2@gmail.com>  
-Bug reports: <r.grannell2@gmail.com>
-
-0 errors | 0 warnings | 0 notes
-
-## neotoma (1.5.0)
-Maintainer: Simon J. Goring <goring@wisc.edu>  
-Bug reports: https://github.com/ropensci/neotoma/issues
-
-0 errors | 0 warnings | 0 notes
-
-## nestedRanksTest (0.2)
-Maintainer: Douglas G. Scofield <douglasgscofield@gmail.com>
-
-0 errors | 0 warnings | 0 notes
-
-## netdiffuseR (1.16.2)
-Maintainer: George Vega Yon <g.vegayon@gmail.com>  
-Bug reports: https://github.com/USCCANA/netdiffuseR/issues
-
-1 error  | 0 warnings | 0 notes
-
-```
-checking tests ... ERROR
-Running the tests in ‘tests/testthat.R’ failed.
-Last 13 lines of output:
-  6. Failure: Length of inputs in edgelist_adjmat should match (detecting error) - edgelist data.frame (@test-adjmat.R#31) 
-  7. Failure: Changing toa (@test-diffnet-class.R#36) 
-  8. Failure: Changing toa (@test-diffnet-class.R#40) 
-  9. Failure: diffnet print and summary (@test-diffnet-methods.R#111) 
-  1. ...
-  
-  Error: testthat unit tests failed
-  In addition: Warning messages:
-  1: In as_diffnet(graph, times) : Coercing -toa- into integer.
-  2: In as_diffnet(listgraph, toa) : Coercing -toa- into integer.
-  3: In as_diffnet(listgraph, toa) : Coercing -toa- into integer.
-  4: In as_diffnet(dyngraph, c(1, 1, 3, 2)) : Coercing -toa- into integer.
-  Execution halted
-```
-
-## netgen (1.3)
-Maintainer: Jakob Bossek <j.bossek@gmail.com>  
-Bug reports: https://github.com/jakobbossek/netgen/issues
-
-0 errors | 0 warnings | 0 notes
-
-## network (1.13.0)
-Maintainer: Carter T. Butts <buttsc@uci.edu>
-
-0 errors | 0 warnings | 0 notes
-
-## networkDynamic (0.9.0)
-Maintainer: Skye Bender-deMoll <skyebend@uw.edu>
-
-0 errors | 0 warnings | 0 notes
-
-## neuroim (0.0.6)
-Maintainer: Bradley Buchsbaum <brad.buchsbaum@gmail.com>
-
-0 errors | 0 warnings | 0 notes
-
-## ngramrr (0.2.0)
-Maintainer: Chung-hong Chan <chainsawtiney@gmail.com>
-
-0 errors | 0 warnings | 0 notes
-
-## nima (0.3.0)
-Maintainer: Nima Hejazi <nhejazi@berkeley.edu>
-
-0 errors | 0 warnings | 0 notes
-
-## nlmeU (0.70-3)
-Maintainer: Andrzej Galecki <agalecki@umich.edu>
-
-0 errors | 0 warnings | 1 note 
-
-```
-checking DESCRIPTION meta-information ... NOTE
-Malformed Title field: should not end in a period.
-```
-
-## nloptr (1.0.4)
-Maintainer: Jelmer Ypma <uctpjyy@ucl.ac.uk>
-
-0 errors | 0 warnings | 0 notes
-
-## NlsyLinks (2.0.1)
-Maintainer: Will Beasley <wibeasley@hotmail.com>  
-Bug reports: https://github.com/LiveOak/NlsyLinks/issues
-
-1 error  | 0 warnings | 1 note 
-
-```
-checking tests ... ERROR
-Running the tests in ‘tests/test-all.R’ failed.
-Last 13 lines of output:
-  
-  2. Failure: SubjectTag -NA values (@test-OutcomeDatasetFixture.R#58) -----------
-  error$message does not match "The column 'SubjectTag' should contain only positive values, but does not.".
-  Actual value: "missing value where TRUE/FALSE needed"
-  
-  
-  testthat results ================================================================
-  OK: 230 SKIPPED: 0 FAILED: 2
-  1. Failure: show AceEstimate shows something (@test-AceEstimationFixture.R#69) 
-  2. Failure: SubjectTag -NA values (@test-OutcomeDatasetFixture.R#58) 
-  
-  Error: testthat unit tests failed
-  Execution halted
-
-checking installed package size ... NOTE
-  installed size is  6.3Mb
-  sub-directories of 1Mb or more:
-    data   4.3Mb
-    doc    1.0Mb
-```
-
-## NNLM (0.4.1)
-Maintainer: Xihui Lin <xihuil.silence@gmail.com>  
-Bug reports: https://github.com/linxihui/NNLM/issues
-
-0 errors | 0 warnings | 0 notes
-
-## NNTbiomarker (0.29.11)
-Maintainer: Roger Day <day01@pitt.edu>
-
-0 errors | 0 warnings | 0 notes
-
-## nodiv (1.1.4)
-Maintainer: Michael Krabbe Borregaard <mkborregaard@snm.ku.dk>
-
-0 errors | 0 warnings | 0 notes
-
-## noncompliance (0.2.2)
-Maintainer: Wen Wei Loh <wloh@uw.edu>
-
-0 errors | 0 warnings | 0 notes
-
-## nonnest2 (0.3)
-Maintainer: Edgar Merkle <merklee@missouri.edu>
-
-0 errors | 0 warnings | 0 notes
-
-## nscancor (0.6)
-Maintainer: Christian Sigg <christian@sigg-iten.ch>
-
-0 errors | 0 warnings | 0 notes
-
-## nsprcomp (0.5)
-Maintainer: Christian Sigg <christian@sigg-iten.ch>
-
-0 errors | 0 warnings | 0 notes
-
-## oai (0.2.0)
-Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>  
-Bug reports: https://github.com/sckott/oai/issues
-
-0 errors | 0 warnings | 0 notes
-
-## OasisR (1.0.0)
-Maintainer: Mihai Tivadar <mihai.tivadar@irstea.fr>
-
-0 errors | 0 warnings | 0 notes
-
-## obAnalytics (0.1.0)
-Maintainer: Philip Stubbings <phil@parasec.net>  
-Bug reports: https://github.com/phil8192/ob-analytics/issues
-
-0 errors | 0 warnings | 0 notes
-
-## oce (0.9-18)
-Maintainer: Dan Kelley <Dan.Kelley@Dal.Ca>  
-Bug reports: https://github.com/dankelley/oce/issues?
-        sort=created&direction=desc&state=open
-
-0 errors | 0 warnings | 0 notes
-
-## OECD (0.2.2)
-Maintainer: Eric Persson <expersso5@gmail.com>  
-Bug reports: https://www.github.com/expersso/OECD/issues
-
-0 errors | 0 warnings | 0 notes
-
-## olctools (0.2.1)
-Maintainer: Oliver Keyes <ironholds@gmail.com>
-
-0 errors | 0 warnings | 0 notes
-
-## OLScurve (0.2.0)
-Maintainer: Phil Chalmers <rphilip.chalmers@gmail.com>
-
-0 errors | 0 warnings | 0 notes
-
-## omics (0.1-4)
-Maintainer: Gianluca Campanella <gianluca@campanella.org>
-
-0 errors | 0 warnings | 0 notes
-
-## openssl (0.9.2)
-Maintainer: Jeroen Ooms <jeroen.ooms@stat.ucla.edu>  
-Bug reports: https://github.com/jeroenooms/openssl/issues
-
-0 errors | 0 warnings | 0 notes
-
-## openxlsx (3.0.0)
-Maintainer: Alexander Walker <Alexander.Walker1989@gmail.com>  
-Bug reports: https://github.com/awalker89/openxlsx/issues
-
-0 errors | 0 warnings | 0 notes
-
-## operator.tools (1.4.4)
-Maintainer: Christopher Brown <chris.brown@decisionpatterns.com>  
-Bug reports: https://github.com/decisionpatterns/operator.tools/issues
-
-0 errors | 0 warnings | 0 notes
-
-## operators (0.1-8)
-Maintainer: Romain Francois <romain@r-enthusiasts.com>  
-Bug reports: https://github.com/romainfrancois/operators/issues
-
-0 errors | 0 warnings | 0 notes
-
-## optigrab (0.7.3)
-Maintainer: Christopher Brown <chris.brown@decisionpatterns.com>  
-Bug reports: https://github.com/decisionpatterns/optigrab/issues
-
-0 errors | 0 warnings | 0 notes
-
-## OptiQuantR (0.0.1)
-Maintainer: Joao Pinelo Silva <j.pinelo@mac.com>
-
-0 errors | 0 warnings | 0 notes
-
-## optiRum (0.37.3)
-Maintainer: Stephanie Locke <stephanie.g.locke@gmail.com>  
-Bug reports: https://github.com/stephlocke/optiRum/issues
-
-0 errors | 0 warnings | 0 notes
-
-## optmatch (0.9-5)
-Maintainer: Mark M. Fredrickson <mark.m.fredrickson@gmail.com>
-
-1 error  | 0 warnings | 0 notes
-
-```
-checking tests ... ERROR
-Running the tests in ‘tests/testthat-tests.R’ failed.
-Last 13 lines of output:
-      to be the same as your original data.
-  
-  Failed -------------------------------------------------------------------------
-  1. Failure: Invalid mean.controls input (@test.fullmatch.infeasible.recovery.R#15) 
-  error$message does not match "omit.fraction and mean.controls cannot both be specified.".
-  Actual value: "omit.fraction and mean.controls cannot both be specified"
-  
-  
-  DONE ===========================================================================
-  Error: Test failures
-  In addition: Warning message:
-  Placing tests in `inst/tests/` is deprecated. Please use `tests/testthat/` instead 
-  Execution halted
-```
-
-## optparse (1.3.2)
-Maintainer: Trevor L Davis <trevor.l.davis@gmail.com>  
-Bug reports: https://github.com/trevorld/optparse/issues
-
-0 errors | 0 warnings | 1 note 
-
-```
-checking re-building of vignette outputs ... NOTE
-Error in re-building vignettes:
-  ...
-sh: rst2pdf: command not found
-Error: processing vignette 'optparse.Rrst' failed with diagnostics:
-conversion by rst2pdf failed!
-Execution halted
-
-```
-
-## ordinal (2015.6-28)
-Maintainer: Rune Haubo Bojesen Christensen <rune.haubo@gmail.com>
-
-0 errors | 0 warnings | 0 notes
-
-## ordinalNet (1.4)
-Maintainer: Mike Wurm <wurm@wisc.edu>
-
-0 errors | 0 warnings | 0 notes
-
-## ore (1.3.0)
-Maintainer: Jon Clayden <code@clayden.org>  
-Bug reports: https://github.com/jonclayden/ore/issues
-
-0 errors | 0 warnings | 0 notes
-
-## ores (0.1.0)
-Maintainer: Oliver Keyes <ironholds@gmail.com>  
-Bug reports: https://github.com/Ironholds/ores/issues
-
-0 errors | 0 warnings | 0 notes
-
-## oro.dicom (0.5.0)
-Maintainer: Brandon Whitcher <bwhitcher@gmail.com>
-
-0 errors | 0 warnings | 0 notes
-
-## oro.nifti (0.5.2)
-Maintainer: Brandon Whitcher <bwhitcher@gmail.com>
-
-0 errors | 0 warnings | 2 notes
-
-```
-checking package dependencies ... NOTE
-Package which this enhances but not available for checking: ‘fmri’
-
-checking installed package size ... NOTE
-  installed size is  6.5Mb
-  sub-directories of 1Mb or more:
-    nifti   3.8Mb
-```
-
-## OrthoPanels (0.9-1)
-Maintainer: Davor Cubranic <cubranic@stat.ubc.ca>
-
-0 errors | 0 warnings | 0 notes
-
-## packrat (0.4.7-1)
-Maintainer: Kevin Ushey <kevin@rstudio.com>  
-Bug reports: https://github.com/rstudio/packrat/issues
-
-0 errors | 0 warnings | 1 note 
-
-```
-checking package dependencies ... NOTE
-Package which this enhances but not available for checking: ‘BiocInstaller’
-```
-
-## pacman (0.4.1)
-Maintainer: Tyler Rinker <tyler.rinker@gmail.com>  
-Bug reports: https://github.com/trinker/pacman/issues?state=open
-
-0 errors | 0 warnings | 0 notes
-
-## Pade (0.1-4)
-Maintainer: Avraham Adler <Avraham.Adler@gmail.com>  
-Bug reports: https://bitbucket.org/aadler/pade/issues
-
-0 errors | 0 warnings | 0 notes
-
-## pageviews (0.2.0)
-Maintainer: Oliver Keyes <ironholds@gmail.com>  
-Bug reports: https://github.com/ironholds/pageviews
-
-0 errors | 0 warnings | 0 notes
-
-## paleobioDB (0.3)
-Maintainer: Sara Varela <svarela@paleobiogeography.org>  
-Bug reports: https://github.com/ropensci/paleobioDB/issues
-
-0 errors | 0 warnings | 1 note 
-
-```
-checking DESCRIPTION meta-information ... NOTE
-Malformed Description field: should contain one or more complete sentences.
-```
-
-## papeR (1.0-1)
-Maintainer: Benjamin Hofner <benjamin.hofner@fau.de>
-
-0 errors | 0 warnings | 0 notes
-
-## parallelMap (1.3)
-Maintainer: Bernd Bischl <bernd_bischl@gmx.net>  
-Bug reports: https://github.com/berndbischl/parallelMap/issues
-
-0 errors | 0 warnings | 2 notes
-
-```
-checking package dependencies ... NOTE
-Package suggested but not available for checking: ‘Rmpi’
-
-checking Rd cross-references ... NOTE
-Package unavailable to check Rd xrefs: ‘Rmpi’
-```
-
-## ParamHelpers (1.7)
-Maintainer: Bernd Bischl <bernd_bischl@gmx.net>  
-Bug reports: https://github.com/berndbischl/ParamHelpers/issues
-
-1 error  | 0 warnings | 0 notes
-
-```
-checking tests ... ERROR
-Running the tests in ‘tests/run-all.R’ failed.
-Last 13 lines of output:
-  1. Failure: dropParams (@test_dropParams.R#11) 
-  2. Failure: filter empty paramset (@test_filterParams.R#5) 
-  3. Failure: filter empty paramset (@test_filterParams.R#6) 
-  4. Failure: filter empty paramset (@test_filterParams.R#7) 
-  5. Failure: filter empty paramset (@test_filterParams.R#8) 
-  6. Failure: filter empty paramset (@test_filterParams.R#9) 
-  7. Failure: filter empty paramset (@test_filterParams.R#10) 
-  8. Failure: filter empty paramset (@test_filterParams.R#11) 
-  9. Failure: filter empty paramset (@test_filterParams.R#12) 
-  1. ...
-  
-  Error: testthat unit tests failed
-  Execution halted
-```
-
-## params (0.5.0)
-Maintainer: Sahil Seth <me@sahilseth.com>  
-Bug reports: https://github.com/sahilseth/params/issues
-
-0 errors | 0 warnings | 0 notes
-
-## parsedate (1.1.1)
-Maintainer: Gabor Csardi <csardi.gabor@gmail.com>  
-Bug reports: https://github.com/gaborcsardi/parsedate/issues
-
-1 error  | 0 warnings | 0 notes
-
-```
-checking tests ... ERROR
-Running the tests in ‘tests/testthat.R’ failed.
-Last 13 lines of output:
-  1. Error: Filling in is correct (@test-git.r#6) 
-  2. Failure: Issue #4 is resolved (@test-git.r#39) 
-  3. Failure: Pelago non-matching (@test-iso8601.r#142) 
-  4. Failure: Pelago non-matching (@test-iso8601.r#142) 
-  5. Failure: Pelago non-matching (@test-iso8601.r#142) 
-  6. Failure: Pelago non-matching (@test-iso8601.r#142) 
-  7. Failure: Pelago non-matching (@test-iso8601.r#142) 
-  8. Failure: Pelago non-matching (@test-iso8601.r#142) 
-  9. Failure: Pelago non-matching (@test-iso8601.r#142) 
-  1. ...
-  
-  Error: testthat unit tests failed
-  Execution halted
-```
-
-## pathological (0.0-7)
-Maintainer: Richard Cotton <richierocks@gmail.com>  
-Bug reports: https://github.com/richierocks/pathological/issues
-
-0 errors | 0 warnings | 0 notes
-
-## pbo (1.3.4)
-Maintainer: Matt Barry <mrb@softisms.com>  
-Bug reports: https://github.com/mrbcuda/pbo/issues
-
-0 errors | 0 warnings | 2 notes
-
-```
-checking dependencies in R code ... NOTE
-'library' or 'require' call to ‘foreach’ in package code.
-  Please use :: or requireNamespace() instead.
-  See section 'Suggested packages' in the 'Writing R Extensions' manual.
-
-checking R code for possible problems ... NOTE
-pbo: no visible global function definition for ‘%dopar%’
-pbo: no visible global function definition for ‘foreach’
-xyplot.pbo: no visible global function definition for ‘doubleYScale’
-```
-
-## PDQutils (0.1.4)
-Maintainer: Steven E. Pav <shabbychef@gmail.com>  
-Bug reports: https://github.com/shabbychef/PDQutils/issues
-
-0 errors | 0 warnings | 0 notes
-
-## Perc (0.1.1)
-Maintainer: Jian Jin <jinjian.pku@gmail.com>
-
-1 error  | 0 warnings | 0 notes
-
-```
-checking tests ... ERROR
-Running the tests in ‘tests/testthat.R’ failed.
-Last 13 lines of output:
-  > library(Perc)
-  > 
-  > test_check("Perc")
-  1. Failure: outputs are of correct format for valueConverter (@test-Converters.R#29) 
-  class(vcOutput) produced no output
-  
-  
-  testthat results ================================================================
-  OK: 61 SKIPPED: 0 FAILED: 1
-  1. Failure: outputs are of correct format for valueConverter (@test-Converters.R#29) 
-  
-  Error: testthat unit tests failed
-  Execution halted
-```
-
-## permute (0.9-0)
-Maintainer: Gavin L. Simpson <ucfagls@gmail.com>  
-Bug reports: https://github.com/gavinsimpson/permute/issues
-
-0 errors | 0 warnings | 0 notes
-
-## phangorn (2.0.2)
-Maintainer: Klaus Schliep <klaus.schliep@gmail.com>
-
-0 errors | 0 warnings | 2 notes
-
-```
-checking package dependencies ... NOTE
-Packages suggested but not available for checking: ‘seqLogo’ ‘Biostrings’
-
-checking re-building of vignette outputs ... NOTE
-Error in re-building vignettes:
-  ...
-Loading required package: ape
-Loading required package: seqLogo
-Warning in library(package, lib.loc = lib.loc, character.only = TRUE, logical.return = TRUE,  :
-  there is no package called ‘seqLogo’
-Loading required package: seqLogo
-Warning in library(package, lib.loc = lib.loc, character.only = TRUE, logical.return = TRUE,  :
-  there is no package called ‘seqLogo’
-Error in texi2dvi(file = file, pdf = TRUE, clean = clean, quiet = quiet,  : 
-  Running 'texi2dvi' on 'Ancestral.tex' failed.
-LaTeX errors:
-!pdfTeX error: pdflatex (file ./Ancestral-figLOGO.pdf): PDF inclusion: required
- page does not exist <0>
- ==> Fatal error occurred, no output PDF file produced!
-Calls: buildVignettes -> texi2pdf -> texi2dvi
-Execution halted
-
-```
-
-## phonenumber (0.2.2)
-Maintainer: Steve Myles <steve@mylesandmyles.info>  
-Bug reports: https://github.com/scumdogsteev/phonenumber/issues
-
-0 errors | 0 warnings | 0 notes
-
-## phonics (0.7.3)
-Maintainer: "James P. Howard, II" <jh@jameshoward.us>  
-Bug reports: https://github.com/howardjp/phonics/issues
-
-0 errors | 0 warnings | 0 notes
-
-## photobiology (0.9.7)
-Maintainer: Pedro J. Aphalo <pedro.aphalo@helsinki.fi>  
-Bug reports: https://bitbucket.org/aphalo/photobiology/issues
-
-0 errors | 0 warnings | 0 notes
-
-## Phxnlme (1.0.0)
-Maintainer: Chay Ngee Lim <limxx356@umn.edu>
-
-0 errors | 0 warnings | 0 notes
-
-## phylobase (0.8.2)
-Maintainer: Francois Michonneau <francois.michonneau@gmail.com>  
-Bug reports: https://github.com/fmichonneau/phylobase/issues
-
-0 errors | 0 warnings | 0 notes
-
-## phylometrics (0.0.1)
-Maintainer: Xia Hua <xia.hua@anu.edu.au>
-
-0 errors | 0 warnings | 0 notes
-
-## phyloTop (2.0.0)
-Maintainer: Michelle Kendall <m.kendall@imperial.ac.uk>
-
-0 errors | 0 warnings | 0 notes
-
-## phyndr (0.1.0)
-Maintainer: Matt Pennell <mwpennell@gmail.com>
-
-0 errors | 0 warnings | 0 notes
-
-## physiology (0.2.2)
-Maintainer: Jack O. Wasey <jack@jackwasey.com>  
-Bug reports: https://github.com/jackwasey/physiology/issues
-
-0 errors | 0 warnings | 0 notes
-
-## pingr (1.1.0)
-Maintainer: "Gabor Csardi" <csardi.gabor@gmail.com>  
-Bug reports: https://github.com/gaborcsardi/pingr/issues
-
-1 error  | 0 warnings | 0 notes
-
-```
-checking tests ... ERROR
-Running the tests in ‘tests/testthat.R’ failed.
-Last 13 lines of output:
-  > if (Sys.getenv("NOT_CRAN") != "") {
-  +   test_check("pingr")
-  + }
-  1. Error: We can ping localhost (@test-tcp.r#13) -------------------------------
-  LENGTH or similar applied to closure object
-  1: ping_port("127.0.0.1", port = tools:::httpdPort, count = 1) at testthat/test-tcp.r:13
-  
-  testthat results ================================================================
-  OK: 15 SKIPPED: 0 FAILED: 1
-  1. Error: We can ping localhost (@test-tcp.r#13) 
-  
-  Error: testthat unit tests failed
-  Execution halted
-```
-
-## pipeR (0.6.1.3)
-Maintainer: Kun Ren <ken@renkun.me>  
-Bug reports: https://github.com/renkun-ken/pipeR/issues
-
-0 errors | 0 warnings | 0 notes
-
-## pitchRx (1.8.2)
-Maintainer: Carson Sievert <cpsievert1@gmail.com>  
-Bug reports: http://github.com/cpsievert/pitchRx/issues
-
-0 errors | 0 warnings | 1 note 
-
-```
-checking package dependencies ... NOTE
-Package suggested but not available for checking: ‘ggsubplot’
-```
-
-## pixiedust (0.7.0)
-Maintainer: Benjamin Nutter <nutter@battelle.org>  
-Bug reports: https://github.com/nutterb/pixiedust/issues
-
-0 errors | 0 warnings | 0 notes
-
-## pkgconfig (2.0.0)
-Maintainer: Gabor Csardi <csardi.gabor@gmail.com>  
-Bug reports: https://github.com/gaborcsardi/pkgconfig/issues
-
-0 errors | 0 warnings | 0 notes
-
-## pkgmaker (0.22)
-Maintainer: Renaud Gaujoux <renaud@tx.technion.ac.il>  
-Bug reports: http://github.com/renozao/pkgmaker/issues
-
-0 errors | 0 warnings | 3 notes
-
-```
-checking package dependencies ... NOTE
-Package suggested but not available for checking: ‘ReportingTools’
-
-checking dependencies in R code ... NOTE
-'library' or 'require' calls in package code:
-  ‘argparse’ ‘devtools’ ‘knitr’
-  Please use :: or requireNamespace() instead.
-  See section 'Suggested packages' in the 'Writing R Extensions' manual.
-
-checking R code for possible problems ... NOTE
-.existsTestLogger: no visible binding for global variable ‘.testLogger’
-CLIArgumentParser: no visible global function definition for
-  ‘ArgumentParser’
-CLIArgumentParser: no visible global function definition for ‘proto’
-chunkOutputHook : <anonymous> : <anonymous>: no visible binding for
-  global variable ‘knit_hooks’
-cite_pkg: no visible global function definition for ‘read.bib’
-hook_backspace : <anonymous>: no visible binding for global variable
-  ‘knit_hooks’
-... 31 lines ...
-  ‘is.package’
-utest,character : .local: no visible global function definition for
-  ‘load_all’
-utest,character : .local: no visible global function definition for
-  ‘defineTestSuite’
-utest,character : .local: no visible global function definition for
-  ‘test_dir’
-utest,character : .local: no visible global function definition for
-  ‘runTestFile’
-utest,character : .local: no visible global function definition for
-  ‘test_file’
-```
-
-## PKNCA (0.7)
-Maintainer: Bill Denney <bill@denney.ws>  
-Bug reports: https://github.com/billdenney/pknca/issues
-
-1 error  | 0 warnings | 0 notes
-
-```
-checking tests ... ERROR
-Running the tests in ‘tests/testthat.R’ failed.
-Last 13 lines of output:
-  
-  
-  2. Failure: PKNCAresults and summary (@test-data.classes.R#253) ----------------
-  myresult <- pk.nca(mydata) showed 0 warnings
-  
-  
-  testthat results ================================================================
-  OK: 832 SKIPPED: 0 FAILED: 2
-  1. Failure: PKNCAresults and summary (@test-data.classes.R#232) 
-  2. Failure: PKNCAresults and summary (@test-data.classes.R#253) 
-  
-  Error: testthat unit tests failed
-  Execution halted
-```
-
-## planar (1.6)
-Maintainer: Baptiste Auguie <baptiste.auguie@gmail.com>
-
-0 errors | 0 warnings | 0 notes
-
-## plotly (3.4.13)
-Maintainer: Carson Sievert <cpsievert1@gmail.com>  
-Bug reports: https://github.com/ropensci/plotly/issues
-
-0 errors | 0 warnings | 0 notes
-
-## plotROC (2.0.1)
-Maintainer: Michael C Sachs <sachsmc@gmail.com>  
-Bug reports: http://github.com/sachsmc/plotROC/issues
-
-0 errors | 0 warnings | 0 notes
-
-## plspm (0.4.7)
-Maintainer: Gaston Sanchez <gaston.stat@gmail.com>  
-Bug reports: https://github.com/gastonstat/plspm/issues
-
-0 errors | 0 warnings | 0 notes
-
-## plumber (0.2.4)
-Maintainer: Jeff Allen <cran@trestletech.com>
-
-0 errors | 0 warnings | 0 notes
-
-## plumbr (0.6.9)
-Maintainer: Michael Lawrence <michafla@gene.com>
-
-0 errors | 0 warnings | 0 notes
-
-## plyr (1.8.3)
-Maintainer: Hadley Wickham <hadley@rstudio.com>  
-Bug reports: https://github.com/hadley/plyr/issues
-
-0 errors | 0 warnings | 0 notes
-
-## pmc (1.0.1)
-Maintainer: Carl Boettiger <cboettig@gmail.com>  
-Bug reports: https://github.com/cboettig/pmc/issues
-
-1 error  | 0 warnings | 0 notes
-
-```
-checking package dependencies ... ERROR
-Package required but not available: ‘ouch’
-
-See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
-manual.
-```
-
-## pmml (1.5.0)
-Maintainer: Tridivesh Jena <rpmmlsupport@zementis.net>
-
-0 errors | 0 warnings | 0 notes
-
-## pmmlTransformations (1.3.0)
-Maintainer: Tridivesh Jena <rpmmlsupport@zementis.net>
-
-0 errors | 0 warnings | 0 notes
-
-## pnn (1.0.1)
-Maintainer: Pierre-Olivier Chasset <pierre-olivier@chasset.net>
-
-0 errors | 0 warnings | 3 notes
-
-```
-checking top-level files ... NOTE
-Non-standard file/directory found at top level:
-  ‘TODO.md’
-
-checking dependencies in R code ... NOTE
-'library' or 'require' call to ‘rgenoud’ in package code.
-  Please use :: or requireNamespace() instead.
-  See section 'Suggested packages' in the 'Writing R Extensions' manual.
-
-checking R code for possible problems ... NOTE
-smooth: no visible global function definition for ‘genoud’
-```
-
-## pollstR (1.2.2)
-Maintainer: Jeffrey B. Arnold <jeffrey.arnold@gmail.com>  
-Bug reports: https://github.com/rOpenGov/pollstR/issues
-
-0 errors | 0 warnings | 0 notes
-
-## polyCub (0.5-2)
-Maintainer: Sebastian Meyer <Sebastian.Meyer@ifspm.uzh.ch>  
-Bug reports: https://github.com/WastlM/polyCub/issues
-
-0 errors | 0 warnings | 0 notes
-
-## PopED (0.3.0)
-Maintainer: Andrew C. Hooker <andrew.hooker@farmbio.uu.se>  
-Bug reports: https://github.com/andrewhooker/PopED/issues
-
-0 errors | 0 warnings | 0 notes
-
-## popEpi (0.3.0)
-Maintainer: Joonas Miettinen <joonas.miettinen@cancer.fi>  
-Bug reports: https://github.com/WetRobot/popEpi/issues
-
-0 errors | 0 warnings | 0 notes
-
-## popgraph (1.4)
-Maintainer: Rodney J. Dyer <rjdyer@vcu.edu>
-
-0 errors | 0 warnings | 1 note 
-
-```
-checking DESCRIPTION meta-information ... NOTE
-Malformed Title field: should not end in a period.
-```
-
-## poplite (0.99.16)
-Maintainer: Daniel Bottomly <bottomly@ohsu.edu>
-
-0 errors | 1 warning  | 3 notes
-
-```
-checking running R code from vignettes ... WARNING
-Errors in running code in vignettes:
-when running code in ‘poplite.Rnw’
-  ...
-8             8         8    18      0  1.6844357  0.53539884          2     F
-9             9         9    20      1  0.9113913 -0.55527835          2     F
-10           10        10    12      1  0.2374303  1.77950291          1     M
-..          ...       ...   ...    ...        ...         ...        ...   ...
-
-> library(VariantAnnotation)
-
-  When sourcing ‘poplite.R’:
-Error: there is no package called ‘VariantAnnotation’
-Execution halted
-
-
-checking package dependencies ... NOTE
-Package suggested but not available for checking: ‘VariantAnnotation’
-
-checking R code for possible problems ... NOTE
-join,Database : .local: no visible binding for global variable
-  ‘new.ancil’
-
-checking re-building of vignette outputs ... NOTE
-Error in re-building vignettes:
-  ...
-
-    select
-
-The following object is masked from ‘package:stats’:
-
-    filter
-
-... 8 lines ...
-Loading required package: DBI
-Starting gender
-Starting clinical
-Starting samples
-Starting dna
-
-Error: processing vignette 'poplite.Rnw' failed with diagnostics:
- chunk 15 
-Error in library(VariantAnnotation) : 
-  there is no package called ‘VariantAnnotation’
-Execution halted
-```
-
-## poppr (2.1.1)
-Maintainer: Zhian N. Kamvar <kamvarz@science.oregonstate.edu>  
-Bug reports: https://github.com/grunwaldlab/poppr/issues
-
-0 errors | 0 warnings | 0 notes
-
-## popprxl (0.1.1)
-Maintainer: Zhian N. Kamvar <kamvarz@science.oregonstate.edu>  
-Bug reports: https://github.com/zkamvar/popprxl/issues
-
-0 errors | 0 warnings | 0 notes
-
-## PortfolioAnalytics (1.0.3636)
-Maintainer: Brian G. Peterson <brian@braverock.com>
-
-0 errors | 0 warnings | 1 note 
-
-```
-checking package dependencies ... NOTE
-Package suggested but not available for checking: ‘ROI.plugin.symphony’
-```
-
-## powerbydesign (1.0.2)
-Maintainer: Frank Papenmeier <frank.papenmeier@uni-tuebingen.de>
-
-0 errors | 0 warnings | 0 notes
-
-## poweRlaw (0.60.3)
-Maintainer: Colin Gillespie <csgillespie@gmail.com>  
-Bug reports: https://github.com/csgillespie/poweRlaw/issues
-
-0 errors | 0 warnings | 0 notes
-
-## PP (0.5.3)
-Maintainer: Manuel Reif <manuel.reif@gmail.com>
-
-0 errors | 0 warnings | 0 notes
-
-## praise (1.0.0)
-Maintainer: Gabor Csardi <csardi.gabor@gmail.com>  
-Bug reports: https://github.com/gaborcsardi/praise/issues
-
-0 errors | 0 warnings | 0 notes
-
-## prcbench (0.3.2)
-Maintainer: Takaya Saito <takaya.saito@outlook.com>  
-Bug reports: https://github.com/takayasaito/prcbench/issues
-
-2 errors | 0 warnings | 1 note 
-
-```
-checking examples ... ERROR
-Running examples in ‘prcbench-Ex.R’ failed
-The error most likely occurred in:
-
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
-> ### Name: autoplot.evalcurve
-> ### Title: Plot the result of Precision-Recall curve evaluation
-> ### Aliases: autoplot.evalcurve
-> 
-> ### ** Examples
-> 
-> library(ggplot2)
-> 
-> ## Plot evaluation results on test datasets r1, r2, and r3
-> testset <- create_testset("curve", c("c1", "c2", "c3"))
-> toolset <- create_toolset(set_names = "crv5")
-> eres1 <- run_evalcurve(testset, toolset)
-Error: PerfMeas needed for this function to work. Please install it.
-Execution halted
-
-checking tests ... ERROR
-Running the tests in ‘tests/testthat.R’ failed.
-Last 13 lines of output:
-  1. Error: run_benchmark (@test_main_benchmark.R#32) 
-  2. Failure: run_benchmark: testset (@test_main_benchmark.R#58) 
-  3. Failure: run_benchmark: testset (@test_main_benchmark.R#61) 
-  4. Failure: run_benchmark: toolset (@test_main_benchmark.R#84) 
-  5. Failure: run_benchmark: toolset (@test_main_benchmark.R#87) 
-  6. Error: run_benchmark: times (@test_main_benchmark.R#109) 
-  7. Failure: run_benchmark: unit (@test_main_benchmark.R#144) 
-  8. Failure: run_benchmark: unit (@test_main_benchmark.R#144) 
-  9. Failure: run_benchmark: unit (@test_main_benchmark.R#144) 
-  1. ...
-  
-  Error: testthat unit tests failed
-  Execution halted
-
-checking re-building of vignette outputs ... NOTE
-Error in re-building vignettes:
-  ...
-Quitting from lines 119-124 (introduction.Rmd) 
-Error: processing vignette 'introduction.Rmd' failed with diagnostics:
-PerfMeas needed for this function to work. Please install it.
-Execution halted
-
-```
-
-## precrec (0.3.2)
-Maintainer: Takaya Saito <takaya.saito@outlook.com>  
-Bug reports: https://github.com/takayasaito/precrec/issues
-
-0 errors | 0 warnings | 0 notes
-
-## prepdat (1.0.7)
-Maintainer: Ayala S. Allon <ayalaallon@gmail.com>  
-Bug reports: http://github.com/ayalaallon/prepdat/issues
-
-0 errors | 0 warnings | 0 notes
-
-## preprocomb (0.2.0)
-Maintainer: Markus Vattulainen <markus.vattulainen@gmail.com>  
-Bug reports: https://github.com/mvattulainen/preprocomb/issues
-
-0 errors | 0 warnings | 0 notes
-
-## preproviz (0.1.1)
-Maintainer: Markus Vattulainen <markus.vattulainen@gmail.com>  
-Bug reports: https://github.com/mvattulainen/preproviz/issues
-
-0 errors | 0 warnings | 0 notes
-
-## prereg (0.1.0)
-Maintainer: Frederik Aust <frederik.aust@uni-koeln.de>  
-Bug reports: https://github.com/crsh/prereg/issues
-
-0 errors | 0 warnings | 0 notes
-
-## prettyunits (1.0.2)
-Maintainer: Gabor Csardi <csardi.gabor@gmail.com>  
-Bug reports: https://github.com/gaborcsardi/prettyunits/issues
-
-0 errors | 0 warnings | 0 notes
-
-## primes (0.1.0)
-Maintainer: Oliver Keyes <ironholds@gmail.com>
-
-0 errors | 0 warnings | 0 notes
-
-## prism (0.0.7)
-Maintainer: Hart Edmund <Edmund.m.hart@gmail.com>  
-Bug reports: http://github.com/ropensci/prism/issues
-
-0 errors | 0 warnings | 0 notes
-
-## profilr (0.1.0)
-Maintainer: Paul Hendricks <paul.hendricks.2013@owu.edu>  
-Bug reports: https://github.com/paulhendricks/profilr/issues
-
-0 errors | 0 warnings | 0 notes
-
-## progress (1.0.2)
-Maintainer: Gabor Csardi <csardi.gabor@gmail.com>  
-Bug reports: https://github.com/gaborcsardi/progress/issues
-
-0 errors | 0 warnings | 0 notes
-
-## ProjectTemplate (0.6)
-Maintainer: Kirill Mueller <krlmlr+r@mailbox.org>  
-Bug reports: https://github.com/johnmyleswhite/ProjectTemplate/issues
-
-1 error  | 0 warnings | 2 notes
-
-```
-checking tests ... ERROR
-Running the tests in ‘tests/run-all.R’ failed.
-Last 13 lines of output:
-  
-  
-  testthat results ================================================================
-  OK: 307 SKIPPED: 0 FAILED: 6
-  1. Error: All elements have length 1 (@test-load.R#4) 
-  2. Failure: Test full project into existing directory (@test-overwrite.R#5) 
-  3. Error: Test full project into existing directory (@test-overwrite.R#9) 
-  4. Failure: Test minimal project into existing directory with an unrelated entry (@test-overwrite.R#45) 
-  5. Error: Test minimal project into existing directory with an unrelated entry (@test-overwrite.R#53) 
-  6. Failure: Test failure creating project into existing directory with an unrelated entry if merge.existing is not set (@test-overwrite.R#75) 
-  
-  Error: testthat unit tests failed
-  Execution halted
-
-checking package dependencies ... NOTE
-Package suggested but not available for checking: ‘RODBC’
-
-checking DESCRIPTION meta-information ... NOTE
-Malformed Title field: should not end in a period.
-```
-
-## ProteinDescriptors (0.1.0)
-Maintainer: Berat Kurar <beratkurar@gmail.com>
-
-0 errors | 0 warnings | 0 notes
-
-## protoclass (1.0)
-Maintainer: Jacob Bien <jbien@cornell.edu>
-
-0 errors | 0 warnings | 3 notes
-
-```
-checking DESCRIPTION meta-information ... NOTE
-Malformed Description field: should contain one or more complete sentences.
-
-checking dependencies in R code ... NOTE
-'library' or 'require' call to ‘class’ which was already attached by Depends.
-  Please remove these calls from your code.
-Package in Depends field not imported from: ‘class’
-  These packages need to be imported from (in the NAMESPACE file)
-  for when this namespace is loaded but not attached.
-
-checking R code for possible problems ... NOTE
-predict.protoclass: no visible global function definition for ‘knn1’
-```
-
-## PRROC (1.1)
-Maintainer: Jan Grau <grau@informatik.uni-halle.de>
-
-0 errors | 0 warnings | 0 notes
-
-## pryr (0.1.2)
-Maintainer: Hadley Wickham <hadley@rstudio.com>  
-Bug reports: https://github.com/hadley/pryr/issues
-
-0 errors | 0 warnings | 1 note 
-
-```
-checking dependencies in R code ... NOTE
-Missing or unexported object: ‘tools::nonS3methods’
-```
-
-## psd (1.0-1)
-Maintainer: Andrew J. Barbour <andy.barbour@gmail.com>  
-Bug reports: https://github.com/abarbour/psd/issues
-
-0 errors | 0 warnings | 0 notes
-
-## pseval (1.0.0)
-Maintainer: Michael C Sachs <sachsmc@gmail.com>
-
-0 errors | 0 warnings | 1 note 
-
-```
-checking package dependencies ... NOTE
-Package suggested but not available for checking: ‘printr’
-```
-
-## psidR (1.3)
-Maintainer: Florian Oswald <florian.oswald@gmail.com>
-
-0 errors | 0 warnings | 0 notes
-
-## pubprint (0.1.1)
-Maintainer: Rudolf Siegel <rs.os@t-online.de>  
-Bug reports: https://bitbucket.org/mutluyum/pubprint/issues/
-
-0 errors | 0 warnings | 0 notes
-
-## purge (0.2.0)
-Maintainer: Marc Maier <mmaier@massmutual.com>
-
-0 errors | 0 warnings | 0 notes
-
-## purrr (0.2.1)
-Maintainer: Hadley Wickham <hadley@rstudio.com>  
-Bug reports: https://github.com/hadley/purrr/issues
-
-0 errors | 0 warnings | 0 notes
-
-## pvar (2.2)
-Maintainer: Vygantas Butkus <Vygantas.Butkus@gmail.com>
-
-1 error  | 0 warnings | 1 note 
-
-```
-checking tests ... ERROR
-Running the tests in ‘tests/test-all.R’ failed.
-Last 13 lines of output:
-  Failed -------------------------------------------------------------------------
-  1. Error: Basic (@test-pvar.R#14) ----------------------------------------------
-  argument "expected" is missing, with no default
-  1: expect_that(pvar(rnorm(10), 2), has_names()) at /Users/hadley/Documents/devtools/testthat/revdep/checks/pvar.Rcheck/pvar/tests/test-pvar.R:14
-  2: condition(object) at /Users/hadley/Documents/devtools/testthat/R/expect-that.R:22
-  3: expect_named(x, expected = expected, ignore.order = ignore.order, ignore.case = ignore.case) at /Users/hadley/Documents/devtools/testthat/R/old-school.R:42
-  4: normalise_names(expected, ignore.order, ignore.case) at /Users/hadley/Documents/devtools/testthat/R/expect-named.R:40
-  
-  DONE ===========================================================================
-  Error: Test failures
-  In addition: Warning message:
-  Placing tests in `inst/tests/` is deprecated. Please use `tests/testthat/` instead 
-  Execution halted
-
-checking DESCRIPTION meta-information ... NOTE
-Malformed Description field: should contain one or more complete sentences.
-```
-
-## pwrRasch (0.1-2)
-Maintainer: Takuya Yanagida <takuya.yanagida@univie.ac.at>
-
-0 errors | 0 warnings | 0 notes
-
-## pxweb (0.6.0)
-Maintainer: Mans Magnusson <mons.magnusson@gmail.com>  
-Bug reports: https://github.com/rOpenGov/pxweb/issues
-
-1 error  | 0 warnings | 0 notes
-
-```
-checking tests ... ERROR
-Running the tests in ‘tests/testthat_interactive.R’ failed.
-Last 13 lines of output:
-  
-  
-  2. Failure: findData.inputBaseCat (@test-interactive_pxweb.R#9) ----------------
-  pxweb:::findData.inputBaseCat(c(3, 6), test_codedAlt) produced no output
-  
-  
-  testthat results ================================================================
-  OK: 23 SKIPPED: 0 FAILED: 2
-  1. Failure: findData.inputBaseCat (@test-interactive_pxweb.R#7) 
-  2. Failure: findData.inputBaseCat (@test-interactive_pxweb.R#9) 
-  
-  Error: testthat unit tests failed
-  Execution halted
-```
-
-## pystr (1.0.0)
-Maintainer: Nicole White <nicole.m.white@outlook.com>  
-Bug reports: https://github.com/nicolewhite/pystr/issues
-
-0 errors | 0 warnings | 0 notes
-
-## QCApro (1.0-0)
-Maintainer: Alrik Thiem <alrik.thiem@unige.ch>
-
-0 errors | 0 warnings | 0 notes
-
-## qdap (2.2.4)
-Maintainer: Tyler Rinker <tyler.rinker@gmail.com>  
-Bug reports: http://github.com/trinker/qdap/issues
-
-0 errors | 0 warnings | 0 notes
-
-## qdapRegex (0.6.0)
-Maintainer: Tyler Rinker <tyler.rinker@gmail.com>  
-Bug reports: http://github.com/trinker/qdapRegex/issues
-
-0 errors | 0 warnings | 0 notes
-
-## qdapTools (1.3.1)
-Maintainer: Tyler Rinker <tyler.rinker@gmail.com>  
-Bug reports: http://github.com/trinker/qdapTools/issues
-
-0 errors | 0 warnings | 0 notes
-
-## qiimer (0.9.4)
-Maintainer: Kyle Bittinger <kylebittinger@gmail.com>
-
-0 errors | 0 warnings | 0 notes
-
-## qtl (1.39-5)
-Maintainer: Karl W Broman <kbroman@biostat.wisc.edu>
-
-0 errors | 0 warnings | 2 notes
-
-```
-checking installed package size ... NOTE
-  installed size is  9.8Mb
-  sub-directories of 1Mb or more:
-    contrib   3.7Mb
-    doc       3.6Mb
-
-checking S3 generic/method consistency ... NOTE
-Found the following apparent S3 methods exported but not registered:
-  plot.errorlod plot.geno plot.info plot.missing plot.pheno plot.pxg
-  plot.rf
-See section ‘Registering S3 methods’ in the ‘Writing R Extensions’
-manual.
-```
-
-## qtlcharts (0.5-25)
-Maintainer: Karl W Broman <kbroman@biostat.wisc.edu>
-
-0 errors | 0 warnings | 1 note 
-
-```
-checking installed package size ... NOTE
-  installed size is  5.5Mb
-  sub-directories of 1Mb or more:
-    doc           3.8Mb
-    htmlwidgets   1.3Mb
-```
-
-## quadrupen (0.2-4)
-Maintainer: Julien Chiquet <julien.chiquet@genopole.cnrs.fr>
-
-0 errors | 0 warnings | 1 note 
-
-```
-checking R code for possible problems ... NOTE
-plot,cvpen : .local: no visible binding for global variable ‘lambda1’
-plot,cvpen : .local: no visible binding for global variable ‘lambda2’
-plot,cvpen : .local: no visible binding for global variable ‘serr’
-plot,cvpen : .local: no visible binding for global variable ‘xval’
-plot,cvpen : .local: no visible binding for global variable
-  ‘lambda.choice’
-plot,quadrupen : .local: no visible binding for global variable
-  ‘variables’
-plot,stability.path : .local: no visible binding for global variable
-  ‘variables’
-```
-
-## Quandl (2.7.0)
-Maintainer: Raymond McTaggart <raymond@quandl.com>  
-Bug reports: https://github.com/quandl/quandl-r/issues
-
-0 errors | 0 warnings | 0 notes
-
-## quanteda (0.9.4)
-Maintainer: Kenneth Benoit <kbenoit@lse.ac.uk>  
-Bug reports: https://github.com/kbenoit/quanteda/issues
-
-0 errors | 0 warnings | 1 note 
-
-```
-checking data for non-ASCII characters ... NOTE
-  Note: found 1 marked Latin-1 string
-  Note: found 750 marked UTF-8 strings
-  Note: found 7 strings marked as "bytes"
-```
-
-## quantspec (1.2-1)
-Maintainer: Tobias Kley <t.kley@lse.ac.uk>  
-Bug reports: http://github.com/tobiaskley/quantspec/issues
-
-0 errors | 0 warnings | 0 notes
-
-## questionr (0.5)
-Maintainer: Julien Barnier <julien.barnier@ens-lyon.fr>
-
-0 errors | 0 warnings | 1 note 
-
-```
-checking data for non-ASCII characters ... NOTE
-  Note: found 21 marked Latin-1 strings
-  Note: found 7 marked UTF-8 strings
-```
-
-## quickmapr (0.1.1)
-Maintainer: Jeffrey W. Hollister <hollister.jeff@epa.gov>  
-Bug reports: https://github.com/jhollist/quickmapr/issues
-
-0 errors | 0 warnings | 0 notes
-
-## R2admb (0.7.13)
-Maintainer: Ben Bolker <bolker@mcmaster.ca>
-
-0 errors | 0 warnings | 1 note 
-
-```
-checking R code for possible problems ... NOTE
-Found the following calls to attach():
-File ‘R2admb/R/check_section.R’:
-  attach(R_list, name = "R_list", warn.conflicts = FALSE)
-See section ‘Good practice’ in ‘?attach’.
-```
-
-## R4CouchDB (0.7.1)
-Maintainer: Thomas Bock <thsteinbock@web.de>
-
-0 errors | 0 warnings | 0 notes
-
-## R6 (2.1.2)
-Maintainer: Winston Chang <winston@stdout.org>
-
-0 errors | 0 warnings | 0 notes
-
-## radarchart (0.1.2)
-Maintainer: Doug Ashton <dashton@mango-solutions.com>  
-Bug reports: https://github.com/mangothecat/radarchart/issues
-
-0 errors | 0 warnings | 0 notes
-
-## radiomics (0.1.1)
-Maintainer: Joel Carlson <jnkcarlson@gmail.com>
-
-0 errors | 0 warnings | 0 notes
-
-## rags2ridges (2.0)
-Maintainer: Carel F.W. Peeters <cf.peeters@vumc.nl>
-
-0 errors | 0 warnings | 1 note 
-
-```
-checking package dependencies ... NOTE
-Packages suggested but not available for checking: ‘KEGGgraph’ ‘graph’
-```
-
-## rAltmetric (0.6)
-Maintainer: Karthik Ram <karthik.ram@gmail.com>  
-Bug reports: https://github.com/ropensci/rAltmetric/issues/
-
-0 errors | 0 warnings | 0 notes
-
-## RAM (1.2.1.3)
-Maintainer: Wen Chen <Wen.Chen@agr.gc.ca>  
-Bug reports: https://bitbucket.org/Wen_Chen/ram_releases/issues/
-
-0 errors | 0 warnings | 2 notes
-
-```
-checking package dependencies ... NOTE
-Package suggested but not available for checking: ‘Heatplus’
-
-checking Rd cross-references ... NOTE
-Package unavailable to check Rd xrefs: ‘Heatplus’
-```
-
-## rAmCharts (2.0.0)
-Maintainer: Jeffery Petit <jeffery.petit@datastorm.fr>  
-Bug reports: https://github.com/datastorm-open/rAmCharts/issues/
-
-1 error  | 0 warnings | 1 note 
-
-```
-checking tests ... ERROR
-Running the tests in ‘tests/testthat.R’ failed.
-Last 13 lines of output:
-  error$message does not match "*.toto*.".
-  Actual value: "toto must be of class 'numeric' instead of 'logical'"
-  
-  
-  testthat results ================================================================
-  OK: 204 SKIPPED: 0 FAILED: 4
-  1. Failure: .testNumeric (@test_amTests.R#12) 
-  2. Failure: .testLogical (@test_amTests.R#25) 
-  3. Failure: .testCharacter (@test_amTests.R#40) 
-  4. Failure: .testInterval (@test_amTests.R#54) 
-  
-  Error: testthat unit tests failed
-  Execution halted
-
-checking installed package size ... NOTE
-  installed size is  7.1Mb
-  sub-directories of 1Mb or more:
-    htmlwidgets   5.9Mb
-```
-
-## Ramd (0.2)
-Maintainer: Robert Krzyzanowski <technoguyrob@gmail.com>
-
-0 errors | 0 warnings | 0 notes
-
-## ramify (0.3.2)
-Maintainer: Brandon Greenwell <greenwell.brandon@gmail.com>  
-Bug reports: https://github.com/bgreenwell/ramify/issues
-
-0 errors | 0 warnings | 0 notes
-
-## randNames (0.2.2)
-Maintainer: Karthik Ram <karthik.ram@gmail.com>  
-Bug reports: https://github.com/karthik/randNames/issues
-
-0 errors | 0 warnings | 0 notes
-
-## randomForest.ddR (0.1.1)
-Maintainer: Vishrut Gupta <vishrut.gupta@hpe.com>
-
-0 errors | 0 warnings | 0 notes
-
-## randomizeR (1.2.0)
-Maintainer: Diane Uschner <duschner@ukaachen.de>
-
-0 errors | 0 warnings | 0 notes
-
-## randomizr (0.3.0)
-Maintainer: Alexander Coppock <ac3242@columbia.edu>
-
-0 errors | 0 warnings | 0 notes
-
-## rangeMapper (0.3-0)
-Maintainer: Mihai Valcu <valcu@orn.mpg.de>
-
-0 errors | 0 warnings | 0 notes
-
-## ranger (0.4.0)
-Maintainer: Marvin N. Wright <wright@imbs.uni-luebeck.de>
-
-0 errors | 0 warnings | 0 notes
-
-## rankdist (1.1.2)
-Maintainer: Zhaozhi Qian <qianzhaozhi@connect.hku.hk>
-
-0 errors | 0 warnings | 0 notes
-
-## RANN.L1 (2.5)
-Maintainer: Kirill Müller <krlmlr+r@mailbox.org>
-
-0 errors | 0 warnings | 0 notes
-
-## RANN (2.5)
-Maintainer: Gregory Jefferis <jefferis@gmail.com>
-
-0 errors | 0 warnings | 0 notes
-
-## RAppArmor (2.0.1)
-Maintainer: Jeroen Ooms <jeroen.ooms@stat.ucla.edu>  
-Bug reports: http://github.com/jeroenooms/RAppArmor/issues
-
-1 error  | 0 warnings | 0 notes
-
-```
-checking whether package ‘RAppArmor’ can be installed ... ERROR
-Installation failed.
-See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/RAppArmor.Rcheck/00install.out’ for details.
-```
-
-## rappdirs (0.3.1)
-Maintainer: Hadley Wickham <hadley@rstudio.com>  
-Bug reports: https://github.com/hadley/rappdirs/issues
-
-0 errors | 0 warnings | 0 notes
-
-## rAvis (0.1.4)
-Maintainer: Sara Varela <svarela@paleobiogeography.org>  
-Bug reports: https://github.com/ropensci/rAvis/issues
-
-0 errors | 1 warning  | 0 notes
-
-```
-checking whether package ‘rAvis’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: replacing previous import ‘maptools::nowrapSpatialLines’ by ‘sp::nowrapSpatialLines’ when loading ‘rAvis’
-See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/rAvis.Rcheck/00install.out’ for details.
-```
-
-## rbhl (0.2.0)
-Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>  
-Bug reports: https://github.com/ropensci/rbhl/issues
-
-0 errors | 0 warnings | 0 notes
-
-## rbison (0.4.8)
-Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>  
-Bug reports: https://github.com/ropensci/rbison/issues
-
-0 errors | 0 warnings | 0 notes
-
-## rbokeh (0.4.2)
-Maintainer: Ryan Hafen <rhafen@gmail.com>  
-Bug reports: https://github.com/hafen/rbokeh/issues
-
-0 errors | 0 warnings | 0 notes
-
-## Rborist (0.1-0)
-Maintainer: Mark Seligman <mseligman@suiji.org>
-
-0 errors | 0 warnings | 0 notes
-
-## RBPcurve (1.0-33)
-Maintainer: Giuseppe Casalicchio <giuseppe.casalicchio@stat.uni-muenchen.de>  
-Bug reports: https://github.com/giuseppec/RBPcurve/issues
-
-0 errors | 0 warnings | 0 notes
-
-## rbundler (0.3.7)
-Maintainer: Yoni Ben-Meshulam <yoni.bmesh@gmail.com>
-
-0 errors | 0 warnings | 2 notes
-
-```
-checking DESCRIPTION meta-information ... NOTE
-Malformed Title field: should not end in a period.
-
-checking R code for possible problems ... NOTE
-install_version: no visible global function definition for
-  ‘install_url’
-```
-
-## rcanvec (0.2.0)
-Maintainer: Dewey Dunnington <dewey@fishandwhistle.net>  
-Bug reports: https://github.com/paleolimbot/rcanvec/issues
-
-0 errors | 0 warnings | 0 notes
-
-## rcbalance (1.8.2)
-Maintainer: Samuel D. Pimentel <spi@wharton.upenn.edu>
-
-0 errors | 0 warnings | 0 notes
-
-## rcbsubset (1.1.2)
-Maintainer: Samuel D. Pimentel <spi@wharton.upenn.edu>
-
-0 errors | 0 warnings | 0 notes
-
-## Rcereal (1.1.2)
-Maintainer: Wush Wu <wush978@gmail.com>
-
-0 errors | 0 warnings | 0 notes
-
-## rClinicalCodes (1.0.1)
-Maintainer: David Springate <daspringate@gmail.com>
-
-0 errors | 0 warnings | 1 note 
-
-```
-checking DESCRIPTION meta-information ... NOTE
-Malformed Description field: should contain one or more complete sentences.
-```
-
-## rclinicaltrials (1.4.1)
-Maintainer: Michael C Sachs <sachsmc@gmail.com>
-
-0 errors | 0 warnings | 0 notes
-
-## rcmdcheck (1.1.0)
-Maintainer: Gabor Csardi <gcsardi@mango-solutions.com>  
-Bug reports: https://github.com/MangoTheCat/rcmdcheck/issues
-
-0 errors | 0 warnings | 0 notes
-
-## RCMIP5 (1.1)
-Maintainer: Kathe Todd-Brown <ktoddbrown@gmail.com>
-
-0 errors | 0 warnings | 2 notes
-
-```
-checking package dependencies ... NOTE
-Package suggested but not available for checking: ‘ncdf’
-
-checking dependencies in R code ... NOTE
-'library' or 'require' calls in package code:
-  ‘ggplot2’ ‘ncdf’ ‘ncdf4’
-  Please use :: or requireNamespace() instead.
-  See section 'Suggested packages' in the 'Writing R Extensions' manual.
-```
-
-## RcppFaddeeva (0.1.0)
-Maintainer: Baptiste Auguie <baptiste.auguie@gmail.com>
-
-0 errors | 0 warnings | 0 notes
-
-## RcppRoll (0.2.2)
-Maintainer: Kevin Ushey <kevinushey@gmail.com>
-
-0 errors | 0 warnings | 0 notes
-
-## RcppShark (0.1)
-Maintainer: Aydin Demircioglu <aydin.demircioglu@ini.rub.de>  
-Bug reports: http://github.com/aydindemircioglu/RcppShark/issues
-
-0 errors | 0 warnings | 1 note 
-
-```
-checking installed package size ... NOTE
-  installed size is 62.9Mb
-  sub-directories of 1Mb or more:
-    include   4.0Mb
-    lib      57.2Mb
-    libs      1.6Mb
-```
-
-## rcrossref (0.5.2)
-Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>  
-Bug reports: https://github.com/ropensci/rcrossref/issues
-
-0 errors | 0 warnings | 0 notes
-
-## rcrypt (0.1.1)
-Maintainer: Brett Klamer <rcrypt@brettklamer.com>
-
-1 error  | 0 warnings | 0 notes
-
-```
-checking whether package ‘rcrypt’ can be installed ... ERROR
-Installation failed.
-See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/rcrypt.Rcheck/00install.out’ for details.
-```
-
-## RDataCanvas (0.1)
-Maintainer: Xiaolin Zhang <leoncamel@gmail.com>  
-Bug reports: https://github.com/DataCanvasIO/RDataCanvas/issues
-
-0 errors | 0 warnings | 0 notes
-
-## rdatacite (0.1.0)
-Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>  
-Bug reports: https://github.com/ropensci/rdatacite/issues
-
-0 errors | 0 warnings | 0 notes
-
-## rddtools (0.4.0)
-Maintainer: Bastiaan Quast <bquast@gmail.com>  
-Bug reports: https://github.com/bquast/RDDtools/issues
-
-0 errors | 0 warnings | 0 notes
-
-## rDEA (1.2-3)
-Maintainer: Jaak Simm <jaak.simm@gmail.com>
-
-1 error  | 0 warnings | 0 notes
-
-```
-checking whether package ‘rDEA’ can be installed ... ERROR
-Installation failed.
-See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/rDEA.Rcheck/00install.out’ for details.
-```
-
-## rdian (0.1.1)
-Maintainer: Oliver Keyes <ironholds@gmail.com>  
-Bug reports: https://github.com/ironholds/rdian
-
-0 errors | 0 warnings | 0 notes
-
-## rdrop2 (0.7.0)
-Maintainer: Karthik Ram <karthik.ram@gmail.com>  
-Bug reports: https://github.com/karthik/rdrop2/issues
-
-0 errors | 0 warnings | 0 notes
-
-## rdryad (0.2.0)
-Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>  
-Bug reports: https://github.com/ropensci/rdryad/issues
-
-0 errors | 0 warnings | 0 notes
-
-## RDS (0.7-6)
-Maintainer: Mark S. Handcock <handcock@stat.ucla.edu>
-
-0 errors | 0 warnings | 0 notes
-
-## readbitmap (0.1-4)
-Maintainer: Gregory Jefferis <jefferis@gmail.com>  
-Bug reports: https://github.com/jefferis/readbitmap/issues
-
-0 errors | 0 warnings | 0 notes
-
-## readGenalex (1.0)
-Maintainer: Douglas G. Scofield <douglasgscofield@gmail.com>  
-Bug reports: https://github.com/douglasgscofield/readGenalex/issues
-
-1 error  | 0 warnings | 0 notes
-
-```
-checking tests ... ERROR
-Running the tests in ‘tests/testthat.R’ failed.
-Last 13 lines of output:
-  
-  Error: as.genetics(x1) produced no output
-  testthat results ================================================================
-  OK: 343 SKIPPED: 0 FAILED: 6
-  1. Failure: summary.genalex summarises pops etc., genotypes, and extra data (@test_all.R#231) 
-  2. Failure: summary.genalex summarises pops etc., genotypes, and extra data (@test_all.R#232) 
-  3. Failure: summary.genalex summarises pops etc., genotypes, and extra data (@test_all.R#233) 
-  4. Failure: summary.genalex summarises pops etc., genotypes, and extra data (@test_all.R#236) 
-  5. Failure: summary.genalex summarises pops etc., genotypes, and extra data (@test_all.R#237) 
-  6. Failure: Return is invisible with quiet=FALSE (@test_checkNullAlleles.R#68) 
-  
-  Error: testthat unit tests failed
-  Execution halted
-```
-
-## readODS (1.6.2)
-Maintainer: Chung-hong Chan <chainsawtiney@gmail.com>
-
-0 errors | 0 warnings | 0 notes
-
-## readr (0.2.2)
-Maintainer: Hadley Wickham <hadley@rstudio.com>  
-Bug reports: https://github.com/hadley/readr/issues
-
-0 errors | 0 warnings | 0 notes
-
-## readxl (0.1.1)
-Maintainer: Hadley Wickham <hadley@rstudio.com>
-
-0 errors | 0 warnings | 0 notes
-
-## rebird (0.3.0)
-Maintainer: Sebastian Pardo <sebpardo@gmail.com>  
-Bug reports: http://github.com/ropensci/rebird/issues
-
-0 errors | 0 warnings | 0 notes
-
-## rebus.base (0.0-1)
-Maintainer: Richard Cotton <richierocks@gmail.com>
-
-0 errors | 0 warnings | 0 notes
-
-## rebus.datetimes (0.0-1)
-Maintainer: Richard Cotton <richierocks@gmail.com>
-
-0 errors | 0 warnings | 0 notes
-
-## rebus.numbers (0.0-1)
-Maintainer: Richard Cotton <richierocks@gmail.com>
-
-0 errors | 0 warnings | 0 notes
-
-## rebus (0.1-0)
-Maintainer: Richard Cotton <richierocks@gmail.com>
-
-0 errors | 0 warnings | 0 notes
-
-## reconstructr (1.1.0)
-Maintainer: Oliver Keyes <ironholds@gmail.com>
-
-0 errors | 0 warnings | 0 notes
-
-## REDCapR (0.9.3)
-Maintainer: Will Beasley <wibeasley@hotmail.com>  
-Bug reports: https://github.com/OuhscBbmc/REDCapR/issues
-
-0 errors | 0 warnings | 1 note 
-
-```
-checking package dependencies ... NOTE
-Package suggested but not available for checking: ‘RODBC’
-```
-
-## redland (1.0.17-7)
-Maintainer: Matthew B. Jones <jones@nceas.ucsb.edu>  
-Bug reports: https://github.com/ropensci/redland-bindings/issues
-
-1 error  | 0 warnings | 0 notes
-
-```
-checking whether package ‘redland’ can be installed ... ERROR
-Installation failed.
-See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/redland.Rcheck/00install.out’ for details.
-```
-
-## RefManageR (0.10.13)
-Maintainer: Mathew W. McLean <mathew.w.mclean@gmail.com>  
-Bug reports: https://github.com/mwmclean/RefManageR/issues
-
-0 errors | 0 warnings | 1 note 
-
-```
-checking foreign function calls ... NOTE
-Foreign function call to a different package:
-  .External("do_read_bib", ..., PACKAGE = "bibtex")
-See chapter ‘System and foreign language interfaces’ in the ‘Writing R
-Extensions’ manual.
-```
-
-## refset (0.1.0)
-Maintainer: David Hugh-Jones <davidhughjones@gmail.com>
-
-0 errors | 0 warnings | 0 notes
-
-## regexr (1.1.0)
-Maintainer: Tyler Rinker <tyler.rinker@gmail.com>  
-Bug reports: http://github.com/trinker/regexr/issues
-
-0 errors | 0 warnings | 0 notes
-
-## ReliabilityTheory (0.1.5)
-Maintainer: Louis Aslett <aslett@stats.ox.ac.uk>
-
-0 errors | 0 warnings | 0 notes
-
-## rEMM (1.0-11)
-Maintainer: Michael Hahsler <mhahsler@lyle.smu.edu>
-
-0 errors | 0 warnings | 1 note 
-
-```
-checking package dependencies ... NOTE
-Packages suggested but not available for checking: ‘graph’ ‘Rgraphviz’
-```
-
-## rentrez (1.0.1)
-Maintainer: David Winter <david.winter@gmail.com>
-
-0 errors | 0 warnings | 1 note 
-
-```
-checking re-building of vignette outputs ... NOTE
-Error in re-building vignettes:
-  ...
-Quitting from lines 593-598 (rentrez_tutorial.Rmd) 
-Error: processing vignette 'rentrez_tutorial.Rmd' failed with diagnostics:
-'names' attribute [1] must be the same length as the vector [0]
-Execution halted
-
-```
-
-## repijson (0.1.0)
-Maintainer: Andy South <southandy@gmail.com>
-
-0 errors | 0 warnings | 0 notes
-
-## ReporteRs (0.8.6)
-Maintainer: David Gohel <david.gohel@lysis-consultants.fr>  
-Bug reports: https://github.com/davidgohel/ReporteRs/issues
-
-0 errors | 0 warnings | 0 notes
-
-## reportr (1.2.1)
-Maintainer: Jon Clayden <code@clayden.org>  
-Bug reports: https://github.com/jonclayden/reportr/issues
-
-0 errors | 0 warnings | 0 notes
-
-## request (0.1.0)
-Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>  
-Bug reports: https://github.com/sckott/request/issues
-
-0 errors | 0 warnings | 0 notes
-
-## rerddap (0.3.4)
-Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>  
-Bug reports: http://www.github.com/ropensci/rerddap/issues
-
-0 errors | 0 warnings | 0 notes
-
-## reshape2 (1.4.1)
-Maintainer: Hadley Wickham <h.wickham@gmail.com>  
-Bug reports: https://github.com/hadley/reshape/issues
-
-0 errors | 0 warnings | 1 note 
-
-```
-checking DESCRIPTION meta-information ... NOTE
-Malformed Title field: should not end in a period.
-```
-
-## restimizeapi (1.0.0)
-Maintainer: Thomas P. Fuller <thomas.fuller@coherentlogic.com>
-
-0 errors | 0 warnings | 0 notes
-
-## resumer (0.0.1)
-Maintainer: Jared Lander <packages@jaredlander.com>  
-Bug reports: https://github.com/jaredlander/resumer/issues
-
-0 errors | 0 warnings | 0 notes
-
-## rethinker (1.0.0)
-Maintainer: Miron B. Kursa <M.Kursa@icm.edu.pl>
-
-0 errors | 0 warnings | 0 notes
-
-## retistruct (0.5.10)
-Maintainer: David C. Sterratt <david.c.sterratt@ed.ac.uk>  
-Bug reports: https://github.com/davidcsterratt/retistruct/issues
-
-0 errors | 0 warnings | 0 notes
-
-## reutils (0.2.2)
-Maintainer: Gerhard Schöfl <gerhard.schofl@gmail.com>  
-Bug reports: https://github.com/gschofl/reutils/issues
-
-0 errors | 0 warnings | 0 notes
-
-## revealjs (0.6)
-Maintainer: JJ Allaire <jj@rstudio.com>  
-Bug reports: https://github.com/rstudio/revealjs/issues
-
-0 errors | 0 warnings | 0 notes
-
-## rex (1.1.1)
-Maintainer: Jim Hester <james.f.hester@gmail.com>  
-Bug reports: https://github.com/kevinushey/rex/issues
-
-0 errors | 0 warnings | 0 notes
-
-## Rexperigen (0.2.0)
-Maintainer: Daniel Szeredi <daniel@szeredi.hu>
-
-0 errors | 0 warnings | 0 notes
-
-## rfigshare (0.3.7)
-Maintainer: Carl Boettiger <cboettig@gmail.com>  
-Bug reports: https://github.com/ropensci/rfigshare/issues
-
-0 errors | 0 warnings | 0 notes
-
-## rfishbase (2.1.0)
-Maintainer: Carl Boettiger <cboettig@ropensci.org>  
-Bug reports: https://github.com/ropensci/rfishbase/issues
-
-0 errors | 0 warnings | 1 note 
-
-```
-checking data for non-ASCII characters ... NOTE
-  Note: found 33 marked UTF-8 strings
-```
-
-## Rfit (0.22.0)
-Maintainer: John Kloke <kloke@biostat.wisc.edu>
-
-0 errors | 0 warnings | 0 notes
-
-## rfml (0.1.0)
-Maintainer: Mats Stellwall <mats.stellwall@gmail.com>  
-Bug reports: https://github.com/mstellwa/rfml/issues
-
-0 errors | 0 warnings | 0 notes
-
-## RForcecom (0.8)
-Maintainer: Takekatsu Hiramura <thira@plavox.info>  
-Bug reports: https://github.com/hiratake55/RForcecom/issues
-
-0 errors | 0 warnings | 0 notes
-
-## RFormatter (0.1.0)
-Maintainer: Benjamin Fischer <benjamin.fischer@evolutics.info>  
-Bug reports: https://github.com/evolutics/RFormatter/issues
-
-0 errors | 0 warnings | 0 notes
-
-## RGA (0.4.2)
-Maintainer: Artem Klevtsov <a.a.klevtsov@gmail.com>  
-Bug reports: https://github.com/artemklevtsov/RGA/issues
-
-0 errors | 0 warnings | 0 notes
-
-## rgbif (0.9.3)
-Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>  
-Bug reports: https://github.com/ropensci/rgbif/issues
-
-0 errors | 0 warnings | 0 notes
-
-## rgeolocate (0.5.0)
-Maintainer: Oliver Keyes <ironholds@gmail.com>  
-Bug reports: https://github.com/ironholds/rgeolocate/issues
-
-0 errors | 0 warnings | 0 notes
-
-## rgeos (0.3-19)
-Maintainer: Roger Bivand <Roger.Bivand@nhh.no>
-
-0 errors | 0 warnings | 0 notes
-
-## rgho (0.0.1)
-Maintainer: Antoine Filipovic-Pierucci <pierucci@gmail.com>  
-Bug reports: https://github.com/pierucci/rgho/issues
-
-0 errors | 0 warnings | 0 notes
-
-## rglobi (0.2.9)
-Maintainer: Jorrit Poelen <jhpoelen@xs4all.nl>  
-Bug reports: https://github.com/ropensci/rglobi/issues
-
-0 errors | 0 warnings | 0 notes
-
-## RGoogleAnalytics (0.1.1)
-Maintainer: Kushan Shah <kushan@tatvic.com>  
-Bug reports: https://github.com/Tatvic/RGoogleAnalytics/issues
-
-0 errors | 0 warnings | 1 note 
-
-```
-checking DESCRIPTION meta-information ... NOTE
-Malformed Description field: should contain one or more complete sentences.
-```
-
-## rGroovy (1.0)
-Maintainer: Thomas P. Fuller <thomas.fuller@coherentlogic.com>
-
-0 errors | 0 warnings | 0 notes
-
-## riceware (0.4)
-Maintainer: Francois Michonneau <francois.michonneau@gmail.com>  
-Bug reports: https://github.com/fmichonneau/riceware/issues
-
-0 errors | 0 warnings | 0 notes
-
-## ridigbio (0.3.3)
-Maintainer: Matthew Collins <mcollins@acis.ufl.edu>  
-Bug reports: https://github.com/iDigBio/ridigbio/issues
-
-0 errors | 0 warnings | 0 notes
-
-## RImageJROI (0.1.1)
-Maintainer: David C Sterratt <david.c.sterratt@ed.ac.uk>
-
-0 errors | 0 warnings | 0 notes
-
-## RImagePalette (0.1.1)
-Maintainer: Joel Carlson <jnkcarlson@gmail.com>
-
-0 errors | 0 warnings | 0 notes
-
-## rio (0.3.0)
-Maintainer: Thomas J. Leeper <thosjleeper@gmail.com>
-
-0 errors | 0 warnings | 0 notes
-
-## RItools (0.1-13)
-Maintainer: Jake Bowers <jwbowers@illinois.edu>
-
-0 errors | 0 warnings | 0 notes
-
-## rjstat (0.2.1)
-Maintainer: Aaron Schumacher <ajschumacher@gmail.com>  
-Bug reports: https://github.com/ajschumacher/rjstat/issues
-
-0 errors | 0 warnings | 0 notes
-
-## Rlibeemd (1.3.7)
-Maintainer: Jouni Helske <jouni.helske@jyu.fi>  
-Bug reports: https://github.com/helske/Rlibeemd/issues
-
-1 error  | 0 warnings | 0 notes
-
-```
-checking whether package ‘Rlibeemd’ can be installed ... ERROR
-Installation failed.
-See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/Rlibeemd.Rcheck/00install.out’ for details.
-```
-
-## rlist (0.4.6.1)
-Maintainer: Kun Ren <ken@renkun.me>  
-Bug reports: https://github.com/renkun-ken/rlist/issues
-
-0 errors | 0 warnings | 0 notes
-
-## RLumModel (0.1.0)
-Maintainer: Johannes Friedrich <johannes.friedrich@uni-bayreuth.de>
-
-1 error  | 0 warnings | 0 notes
-
-```
-checking tests ... ERROR
-Running the tests in ‘tests/testthat.R’ failed.
-Last 13 lines of output:
-  .set_pars("Pagonis2008") produced no output
-  
-  
-  testthat results ================================================================
-  OK: 5 SKIPPED: 0 FAILED: 5
-  1. Failure: check inputs set_pars (@test-set_pars.R#4) 
-  2. Failure: check inputs set_pars (@test-set_pars.R#5) 
-  3. Failure: check inputs set_pars (@test-set_pars.R#6) 
-  4. Failure: check inputs set_pars (@test-set_pars.R#7) 
-  5. Failure: check inputs set_pars (@test-set_pars.R#8) 
-  
-  Error: testthat unit tests failed
-  Execution halted
-```
-
-## rmarkdown (0.9.5)
-Maintainer: JJ Allaire <jj@rstudio.com>
-
-0 errors | 0 warnings | 1 note 
-
-```
-checking installed package size ... NOTE
-  installed size is  5.7Mb
-  sub-directories of 1Mb or more:
-    rmd   5.3Mb
-```
-
-## rmumps (5.0.1.9-1)
-Maintainer: Serguei Sokol <sokol@insa-toulouse.fr>  
-Bug reports: https://github.com/sgsokol/rmumps/issues
-
-1 error  | 0 warnings | 0 notes
-
-```
-checking whether package ‘rmumps’ can be installed ... ERROR
-Installation failed.
-See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/rmumps.Rcheck/00install.out’ for details.
-```
-
-## RMySQL (0.10.8)
-Maintainer: Jeroen Ooms <jeroen.ooms@stat.ucla.edu>  
-Bug reports: https://github.com/rstats-db/rmysql/issues
-
-0 errors | 0 warnings | 0 notes
-
-## rnbn (1.0.3)
-Maintainer: Tom August <tomaug@ceh.ac.uk>  
-Bug reports: https://github.com/ropensci/rnbn/issues
-
-0 errors | 0 warnings | 0 notes
-
-## rncl (0.6.0)
-Maintainer: Francois Michonneau <francois.michonneau@gmail.com>  
-Bug reports: https://github.com/fmichonneau/rncl/issues
-
-0 errors | 0 warnings | 0 notes
-
-## RndTexExams (1.1.1)
-Maintainer: Marcelo Perlin <marceloperlin@gmail.com>
-
-0 errors | 0 warnings | 0 notes
-
-## RNeo4j (1.6.4)
-Maintainer: Nicole White <nicole@neo4j.com>  
-Bug reports: https://github.com/nicolewhite/RNeo4j/issues
-
-0 errors | 0 warnings | 0 notes
-
-## rnetcarto (0.2.4)
-Maintainer: Guilhem Doulcier <guilhem.doulcier@ens.fr>
-
-1 error  | 0 warnings | 0 notes
-
-```
-checking whether package ‘rnetcarto’ can be installed ... ERROR
-Installation failed.
-See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/rnetcarto.Rcheck/00install.out’ for details.
-```
-
-## RNeXML (2.0.6)
-Maintainer: Carl Boettiger <cboettig@gmail.com>  
-Bug reports: https://github.com/ropensci/RNeXML/issues
-
-0 errors | 0 warnings | 1 note 
-
-```
-checking package dependencies ... NOTE
-Packages suggested but not available for checking: ‘rrdf’ ‘Sxslt’
-```
-
-## RNiftyReg (2.2.0)
-Maintainer: Jon Clayden <code@clayden.org>  
-Bug reports: https://github.com/jonclayden/RNiftyReg/issues
-
-1 error  | 0 warnings | 0 notes
-
-```
-checking package dependencies ... ERROR
-Package required but not available: ‘RcppEigen’
-
-See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
-manual.
-```
-
-## rnn (0.3.0)
-Maintainer: Bastiaan Quast <bquast@gmail.com>
-
-0 errors | 0 warnings | 0 notes
-
-## rnoaa (0.5.2)
-Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>  
-Bug reports: http://www.github.com/ropensci/rnoaa/issues
-
-0 errors | 0 warnings | 0 notes
-
-## roahd (1.0)
-Maintainer: Nicholas Tarabelloni <nicholas.tarabelloni@polimi.it>
-
-0 errors | 0 warnings | 0 notes
-
-## robotstxt (0.1.2)
-Maintainer: Peter Meissner <retep.meissner@gmail.com>  
-Bug reports: https://github.com/petermeissner/robotstxt/issues
-
-0 errors | 0 warnings | 0 notes
-
-## RObsDat (16.03)
-Maintainer: Dominik Reusser <reusser@pik-potsdam.de>
-
-0 errors | 0 warnings | 1 note 
-
-```
-checking package dependencies ... NOTE
-Package suggested but not available for checking: ‘SSOAP’
-```
-
-## RODBCDBI (0.1.1)
-Maintainer: Nagi Teramo <teramonagi@gmail.com>
-
-1 error  | 0 warnings | 0 notes
-
-```
-checking package dependencies ... ERROR
-Package required but not available: ‘RODBC’
-
-See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
-manual.
-```
-
-## rollply (0.5.0)
-Maintainer: Alexandre Genin <alex@lecairn.org>  
-Bug reports: https://github.com/alexgenin/rollply
-
-0 errors | 0 warnings | 0 notes
-
-## rorcid (0.2.2)
-Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>  
-Bug reports: https://github.com/ropensci/rorcid/issues
-
-0 errors | 0 warnings | 0 notes
-
-## rorutadis (0.3.1)
-Maintainer: Krzysztof Ciomek <k.ciomek@gmail.com>
-
-0 errors | 0 warnings | 0 notes
-
-## rotations (1.5)
-Maintainer: Bryan Stanfill <bstanfill2003@gmail.com>  
-Bug reports: https://github.com/stanfill/rotationsC/issues
-
-0 errors | 0 warnings | 0 notes
-
-## rotl (0.5.0)
-Maintainer: Francois Michonneau <francois.michonneau@gmail.com>  
-Bug reports: https://github.com/ropensci/rotl/issues
-
-0 errors | 0 warnings | 0 notes
-
-## roxygen2 (5.0.1)
-Maintainer: Hadley Wickham <hadley@rstudio.com>
-
-0 errors | 0 warnings | 0 notes
-
-## RPANDA (1.2)
-Maintainer: Hélène Morlon <morlon@biologie.ens.fr>
-
-0 errors | 0 warnings | 0 notes
-
-## rpartitions (0.1)
-Maintainer: Daniel McGlinn <danmcglinn@gmail.com>
-
-0 errors | 0 warnings | 3 notes
-
-```
-checking DESCRIPTION meta-information ... NOTE
-License components which are templates and need '+ file LICENSE':
-  MIT
-
-checking dependencies in R code ... NOTE
-Package in Depends field not imported from: ‘hash’
-  These packages need to be imported from (in the NAMESPACE file)
-  for when this namespace is loaded but not attached.
-
-checking R code for possible problems ... NOTE
-P: no visible global function definition for ‘has.key’
-rand_partitions: no visible global function definition for ‘hash’
-```
-
-## rpcdsearch (1.0)
-Maintainer: David Springate <daspringate@gmail.com>
-
-0 errors | 0 warnings | 0 notes
-
-## rpdo (0.1.2)
-Maintainer: Joe Thorley <joe@poissonconsulting.ca>
-
-0 errors | 0 warnings | 0 notes
-
-## rpf (0.51)
-Maintainer: Joshua Pritikin <jpritikin@pobox.com>
-
-1 error  | 0 warnings | 0 notes
-
-```
-checking package dependencies ... ERROR
-Package required but not available: ‘RcppEigen’
-
-See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
-manual.
-```
-
-## rpivotTable (0.1.5.7)
-Maintainer: Enzo Martoglio  <enzo@smartinsightsfromdata.com>
-
-1 error  | 0 warnings | 0 notes
-
-```
-checking tests ... ERROR
-Running the tests in ‘tests/testthat.R’ failed.
-Last 13 lines of output:
-  1. Error: parameters handled correctly (@test_params.R#4) ----------------------
-  is.character(object) is not TRUE
-  1: expect_match(rpivotTable(data.frame(), rows = c("arow"))$x$params$rows, "arow") at testthat/test_params.R:4
-  2: stopifnot(is.character(object)) at /Users/hadley/Documents/devtools/testthat/R/expectations-matches.R:26
-  3: stop(sprintf(ngettext(length(r), "%s is not TRUE", "%s are not all TRUE"), ch), call. = FALSE, 
-         domain = NA)
-  
-  testthat results ================================================================
-  OK: 11 SKIPPED: 0 FAILED: 1
-  1. Error: parameters handled correctly (@test_params.R#4) 
-  
-  Error: testthat unit tests failed
-  Execution halted
-```
-
-## rplexos (1.1.4)
-Maintainer: Eduardo Ibanez <edu.ibanez@gmail.com>  
-Bug reports: https://github.com/NREL/rplexos/issues
-
-0 errors | 0 warnings | 0 notes
-
-## rplos (0.5.6)
-Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>  
-Bug reports: https://github.com/ropensci/rplos/issues
-
-0 errors | 0 warnings | 0 notes
-
-## rpnf (1.0.4)
-Maintainer: Sascha Herrmann <sascha.herrmann.consulting@gmail.com>
-
-0 errors | 0 warnings | 0 notes
-
-## rPref (1.0.0)
-Maintainer: Patrick Roocks <mail@p-roocks.de>
-
-0 errors | 0 warnings | 1 note 
-
-```
-checking for GNU extensions in Makefiles ... NOTE
-GNU make is a SystemRequirements.
-```
-
-## RPresto (1.2.1)
-Maintainer: Onur Ismail Filiz <onur@fb.com>  
-Bug reports: https://github.com/prestodb/RPresto/issues
-
-0 errors | 0 warnings | 0 notes
-
-## rprime (0.1.0)
-Maintainer: Tristan Mahr <tristan.mahr@wisc.edu>  
-Bug reports: http://github.com/tjmahr/rprime/issues
-
-0 errors | 0 warnings | 0 notes
-
-## rprintf (0.2.1)
-Maintainer: Kun Ren <ken@renkun.me>  
-Bug reports: https://github.com/renkun-ken/rprintf/issues
-
-0 errors | 0 warnings | 0 notes
-
-## rprojroot (1.0-2)
-Maintainer: Kirill Müller <krlmlr+r@mailbox.org>  
-Bug reports: https://github.com/krlmlr/rprojroot/issues
-
-0 errors | 0 warnings | 0 notes
-
-## rr (1.3)
-Maintainer: Graeme Blair <graeme.blair@columbia.edu>
-
-1 error  | 0 warnings | 0 notes
-
-```
-checking tests ... ERROR
-Running the tests in ‘tests/testthat.R’ failed.
-Last 13 lines of output:
-  
-  testthat results ================================================================
-  OK: 70 SKIPPED: 3 FAILED: 7
-  1. Failure: basic code runs when there are covariates sent to the mixed model (@test-bayes-mixed.R#155) 
-  2. Failure: standard functions coef, sd.rrreg.bayes, summary work (@test-bayes-mixed.R#219) 
-  3. Failure: doing multiple chains works as well as coef, sd.rrreg.bayes, summary work (@test-bayes-mixed.R#339) 
-  4. Failure: doing multiple chains works as well as coef, sd.rrreg.bayes, summary work (@test-bayes-mixed.R#343) 
-  5. Failure: standard functions coef, sd.rrreg.bayes, summary work (@test-bayes.R#108) 
-  6. Failure: doing multiple chains works as well as coef, sd.rrreg.bayes, summary work (@test-bayes.R#164) 
-  7. Failure: doing multiple chains works as well as coef, sd.rrreg.bayes, summary work (@test-bayes.R#168) 
-  
-  Error: testthat unit tests failed
-  Execution halted
-```
-
-## rredlist (0.1.0)
-Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>  
-Bug reports: https://github.com/ropenscilabs/rredlist/issues
-
-0 errors | 0 warnings | 0 notes
-
-## rscimark (1.0)
-Maintainer: Jakob Bossek <j.bossek@gmail.com>  
-Bug reports: https://github.com/berndbischl/rscimark/issues
-
-0 errors | 0 warnings | 0 notes
-
-## rsconnect (0.4.2.1)
-Maintainer: JJ Allaire <jj@rstudio.com>
-
-0 errors | 0 warnings | 1 note 
-
-```
-checking package dependencies ... NOTE
-Package which this enhances but not available for checking: ‘BiocInstaller’
-```
-
-## rscorecard (0.2.4)
-Maintainer: Benjamin Skinner <b.skinner@vanderbilt.edu>  
-Bug reports: http://github.com/btskinner/rscorecard/issues
-
-0 errors | 0 warnings | 0 notes
-
-## rsdmx (0.5-3)
-Maintainer: Emmanuel Blondel <emmanuel.blondel1@gmail.com>  
-Bug reports: https://github.com/opensdmx/rsdmx/issues
-
-0 errors | 0 warnings | 0 notes
-
-## RSelenium (1.3.5)
-Maintainer: John Harrison <johndharrison0@gmail.com>  
-Bug reports: http://github.com/ropensci/RSelenium/issues
-
-0 errors | 0 warnings | 3 notes
-
-```
-checking package dependencies ... NOTE
-Package suggested but not available for checking: ‘Rcompression’
-
-checking DESCRIPTION meta-information ... NOTE
-Malformed Title field: should not end in a period.
-
-checking S3 generic/method consistency ... NOTE
-Found the following apparent S3 methods exported but not registered:
-  .DollarNames.errorHandler .DollarNames.remoteDriver
-  .DollarNames.webElement
-See section ‘Registering S3 methods’ in the ‘Writing R Extensions’
-manual.
-```
-
-## rsig (1.0)
-Maintainer: Sangkyun Lee <sangkyun.lee@tu-dortmund.de>
-
-1 error  | 0 warnings | 0 notes
-
-```
-checking package dependencies ... ERROR
-Package required but not available: ‘survcomp’
-
-See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
-manual.
-```
-
-## RSiteCatalyst (1.4.8)
-Maintainer: Randy Zwitch <rzwitch+rsitecatalyst@gmail.com>  
-Bug reports: https://github.com/randyzwitch/RSiteCatalyst
-
-0 errors | 0 warnings | 0 notes
-
-## rsnps (0.1.6)
-Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>  
-Bug reports: https://github.com/ropensci/rsnps/issues
-
-0 errors | 0 warnings | 0 notes
-
-## RSocrata (1.7.0-14)
-Maintainer: "Tom Schenk Jr." <developers@cityofchicago.org>  
-Bug reports: https://github.com/Chicago/RSocrata/issues
-
-0 errors | 0 warnings | 0 notes
-
-## rspa (0.1.8)
-Maintainer: Mark van der Loo <mark.vanderloo@gmail.com>  
-Bug reports: https://github.com/markvanderloo/rspa/issues
-
-0 errors | 0 warnings | 0 notes
-
-## RSQLite (1.0.0)
-Maintainer: Hadley Wickham <hadley@rstudio.com>  
-Bug reports: https://github.com/rstats-db/RSQLite/issues
-
-0 errors | 0 warnings | 1 note 
-
-```
-checking compiled code ... NOTE
-File ‘RSQLite/libs/RSQLite.so’:
-  Found ‘___stderrp’, possibly from ‘stderr’ (C)
-    Object: ‘sqlite-all.o’
-  Found ‘_random’, possibly from ‘random’ (C)
-    Object: ‘sqlite-all.o’
-
-Compiled code should not call entry points which might terminate R nor
-write to stdout/stderr instead of to the console, nor the system RNG.
-
-See ‘Writing portable packages’ in the ‘Writing R Extensions’ manual.
-```
-
-## RSQLServer (0.2.0)
-Maintainer: Imanuel Costigan <i.costigan@me.com>  
-Bug reports: https://github.com/imanuelcostigan/RSQLServer/issues
-
-0 errors | 0 warnings | 0 notes
-
-## Rssa (0.13-1)
-Maintainer: Anton Korobeynikov <anton@korobeynikov.info>
-
-1 error  | 0 warnings | 0 notes
-
-```
-checking whether package ‘Rssa’ can be installed ... ERROR
-Installation failed.
-See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/Rssa.Rcheck/00install.out’ for details.
-```
-
-## rstackdeque (1.1.1)
-Maintainer: Shawn T. O'Neil <shawn.oneil@cgrb.oregonstate.edu>  
-Bug reports: https://github.com/oneilsh/rstackdeque/issues
-
-0 errors | 0 warnings | 0 notes
-
-## rstanarm (2.9.0-3)
-Maintainer: Ben Goodrich <benjamin.goodrich@columbia.edu>  
-Bug reports: https://github.com/stan-dev/rstanarm/issues
-
-1 error  | 0 warnings | 0 notes
-
-```
-checking package dependencies ... ERROR
-Packages required but not available: ‘StanHeaders’ ‘RcppEigen’
-
-See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
-manual.
-```
-
-## RStoolbox (0.1.4)
-Maintainer: Benjamin Leutner <benjamin.leutner@uni-wuerzburg.de>  
-Bug reports: https://github.com/bleutner/RStoolbox/issues
-
-0 errors | 0 warnings | 0 notes
-
-## rstudioapi (0.5)
-Maintainer: JJ Allaire <jj@rstudio.com>
-
-0 errors | 0 warnings | 0 notes
-
-## rsunlight (0.4.2)
-Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>  
-Bug reports: https://github.com/ropengov/rsunlight/issues
-
-0 errors | 0 warnings | 0 notes
-
-## rsvd (0.3)
-Maintainer: N. Benjamin Erichson <nbe@st-andrews.ac.uk>  
-Bug reports: https://github.com/Benli11/rPCA
-
-0 errors | 0 warnings | 0 notes
-
-## rtdists (0.4-9)
-Maintainer: Henrik Singmann <singmann+rtdists@gmail.com>
-
-0 errors | 0 warnings | 0 notes
-
-## rticles (0.1)
-Maintainer: JJ Allaire <jj@rstudio.com>
-
-0 errors | 0 warnings | 1 note 
-
-```
-checking for GNU extensions in Makefiles ... NOTE
-GNU make is a SystemRequirements.
-```
-
-## rtimes (0.3.0)
-Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>  
-Bug reports: https://github.com/ropengov/rtimes/issues
-
-0 errors | 0 warnings | 0 notes
-
-## Rtsne (0.10)
-Maintainer: Jesse Krijthe <jkrijthe@gmail.com>
-
-0 errors | 0 warnings | 0 notes
-
-## rtson (1.1)
-Maintainer: Alexandre Maurel <alexandre.maurel@gmail.com>  
-Bug reports: https://github.com/amaurel/TSON/issues
-
-0 errors | 0 warnings | 0 notes
-
-## rtype (0.1-1)
-Maintainer: Kun Ren <ken@renkun.me>  
-Bug reports: https://github.com/renkun-ken/rtype/issues
-
-0 errors | 0 warnings | 0 notes
-
-## rtypeform (0.1.1)
-Maintainer: Colin Gillespie <csgillespie@gmail.com>  
-Bug reports: https://github.com/csgillespie/rtypeform/issues
-
-0 errors | 0 warnings | 0 notes
-
-## Ruchardet (0.0-3)
-Maintainer: Heewon Jeon <madjakarta@gmail.com>
-
-0 errors | 0 warnings | 1 note 
-
-```
-checking for GNU extensions in Makefiles ... NOTE
-GNU make is a SystemRequirements.
-```
-
-## rUnemploymentData (1.0.0)
-Maintainer: Ari Lamstein <arilamstein@gmail.com>  
-Bug reports: https://github.com/trulia/choroplethr/issues
-
-0 errors | 0 warnings | 0 notes
-
-## runittotestthat (0.0-2)
-Maintainer: Richard Cotton <richierocks@gmail.com>
-
-0 errors | 0 warnings | 0 notes
-
-## rusda (1.0.8)
-Maintainer: Franz-Sebastian Krah <f.krah@mailbox.org>
-
-0 errors | 0 warnings | 0 notes
-
-## rvertnet (0.4.4)
-Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>  
-Bug reports: https://github.com/ropensci/rvertnet/issues
-
-0 errors | 0 warnings | 0 notes
-
-## rvest (0.3.1)
-Maintainer: Hadley Wickham <hadley@rstudio.com>
-
-0 errors | 0 warnings | 0 notes
-
-## rvg (0.0.8)
-Maintainer: David Gohel <david.gohel@ardata.fr>  
-Bug reports: https://github.com/davidgohel/rvg/issues
-
-0 errors | 0 warnings | 0 notes
-
-## rvgtest (0.7.4)
-Maintainer: Josef Leydold <josef.leydold@wu.ac.at>
-
-0 errors | 0 warnings | 1 note 
-
-```
-checking R code for possible problems ... NOTE
-rvgt.ftable : myrdist: no visible global function definition for ‘ur’
-uerror: no visible global function definition for ‘unuran.is.inversion’
-uerror : myaqdist: no visible global function definition for ‘uq’
-unuran.distr.class: no visible global function definition for
-  ‘unuran.details’
-xerror: no visible global function definition for ‘unuran.is.inversion’
-xerror : myaqdist: no visible global function definition for ‘uq’
-```
-
-## rwirelesscom (1.4.3)
-Maintainer: Alberto Gutierrez <algutier1@gmail.com>
-
-0 errors | 0 warnings | 0 notes
-
-## rYoutheria (1.0.3)
-Maintainer: Tom August <tomaug@ceh.ac.uk>  
-Bug reports: 
-        https://github.com/biologicalrecordscentre/rYoutheria/issues
-
-0 errors | 0 warnings | 0 notes
-
-## sadists (0.2.2)
-Maintainer: Steven E. Pav <shabbychef@gmail.com>  
-Bug reports: https://github.com/shabbychef/sadists/issues
-
-0 errors | 0 warnings | 0 notes
-
-## saeSim (0.7.0)
-Maintainer: Sebastian Warnholz <Sebastian.Warnholz@fu-berlin.de>  
-Bug reports: https://github.com/wahani/saeSim/issues
-
-0 errors | 0 warnings | 0 notes
-
-## sankey (1.0.0)
-Maintainer: Gabor Csardi <gcsardi@mango-solutions.com>  
-Bug reports: https://github.com/mangothecat/sankey/issues
-
-0 errors | 0 warnings | 0 notes
-
-## satellite (0.2.0)
-Maintainer: Tim Appelhans
- <admin@environmentalinformatics-marburg.de>
-
-0 errors | 0 warnings | 0 notes
-
-## scales (0.4.0)
-Maintainer: Hadley Wickham <hadley@rstudio.com>  
-Bug reports: https://github.com/hadley/scales/issues
-
-0 errors | 0 warnings | 0 notes
-
-## SchemaOnRead (1.0.2)
-Maintainer: Michael North <north@anl.gov>
-
-0 errors | 0 warnings | 0 notes
-
-## SciencesPo (1.3.9)
-Maintainer: Daniel Marcelino <dmarcelino@live.com>  
-Bug reports: http://github.com/danielmarcelino/SciencesPo/issues
-
-0 errors | 0 warnings | 1 note 
-
-```
-checking re-building of vignette outputs ... NOTE
-Error in re-building vignettes:
-  ...
-Units                 Measurement System Units
-bhodrick93            Bekaert's and Hodrick's (1993) Data
-cathedrals            Cathedrals
-cgreene76             Christensen's and Greene's (1976) Data
-galton                Galton's Family Data on Human Stature.
-griliches76           Griliches's (1976) Data
-ltaylor96             Lothian's and Taylor's (1996) Data Set
-... 8 lines ...
-turnout               Turnout Data
-twins                 Burt's twin data
-words                 Word frequencies from Mosteller and Wallace
-
-Loading required package: SciencesPo
-initializing ... done
-
-Quitting from lines 395-399 (SciencesPo.Rmd) 
-Error: processing vignette 'SciencesPo.Rmd' failed with diagnostics:
-polygon edge not found
-Execution halted
-```
-
-## scorer (0.2.0)
-Maintainer: Paul Hendricks <paul.hendricks.2013@owu.edu>  
-Bug reports: https://github.com/paulhendricks/scorer/issues
-
-0 errors | 0 warnings | 0 notes
-
-## scoring (0.5-1)
-Maintainer: Ed Merkle <merklee@missouri.edu>
-
-0 errors | 0 warnings | 1 note 
-
-```
-checking S3 generic/method consistency ... NOTE
-Found the following apparent S3 methods exported but not registered:
-  calcscore.default calcscore.formula
-See section ‘Registering S3 methods’ in the ‘Writing R Extensions’
-manual.
-```
-
-## ScrabbleScore (1.0)
-Maintainer: Will Kurt <wckurt@gmail.com>
-
-0 errors | 0 warnings | 1 note 
-
-```
-checking DESCRIPTION meta-information ... NOTE
-License components which are templates and need '+ file LICENSE':
-  MIT License
-```
-
-## scrm (1.6.0-2)
-Maintainer: Paul Staab <develop@paulstaab.de>
-
-0 errors | 0 warnings | 0 notes
-
-## scrubr (0.1.1)
-Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>  
-Bug reports: https://github.com/ropenscilabs/scrubr/issues
-
-0 errors | 0 warnings | 0 notes
-
-## sdcMicro (4.6.0)
-Maintainer: Matthias Templ <matthias.templ@gmail.com>
-
-0 errors | 0 warnings | 0 notes
-
-## sdcTable (0.20.5)
-Maintainer: Bernhard Meindl <bernhard.meindl@statistik.gv.at>  
-Bug reports: https://github.com/bernhard-da/sdcTable/issues
-
-1 error  | 0 warnings | 0 notes
-
-```
-checking whether package ‘sdcTable’ can be installed ... ERROR
-Installation failed.
-See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/sdcTable.Rcheck/00install.out’ for details.
-```
-
-## sdmvspecies (0.3.2)
-Maintainer: Xiaoquan Kong <u1mail2me@gmail.com>  
-Bug reports: https://github.com/howl-anderson/sdmvspecies/issues
-
-0 errors | 1 warning  | 0 notes
-
-```
-checking for executable files ... WARNING
-Found the following executable file:
-  inst/external/env/bio14.bil
-Source packages should not contain undeclared executable files.
-See section ‘Package structure’ in the ‘Writing R Extensions’ manual.
-```
-
-## searchable (0.3.3.1)
-Maintainer: Christopher Brown <chris.brown@decisionpatterns.com>  
-Bug reports: https://github.com/decisionpatterns/searchable/issues
-
-0 errors | 0 warnings | 0 notes
-
-## segmag (1.2.2)
-Maintainer: Frank Papenmeier <frank.papenmeier@uni-tuebingen.de>
-
-0 errors | 0 warnings | 0 notes
-
-## selectr (0.2-3)
-Maintainer: Simon Potter <simon@sjp.co.nz>  
-Bug reports: https://github.com/sjp/selectr/issues
-
-0 errors | 0 warnings | 0 notes
-
-## SEMID (0.2)
-Maintainer: Mathias Drton <md5@uw.edu>
-
-0 errors | 0 warnings | 0 notes
-
-## sensR (1.4-7)
-Maintainer: Per Bruun Brockhoff <perbb@dtu.dk>
-
-0 errors | 0 warnings | 0 notes
-
-## seqMeta (1.6.5)
-Maintainer: Brian Davis <Brian.Davis281@gmail.com>  
-Bug reports: https://github.com/DavisBrian/seqMeta/issues
-
-0 errors | 0 warnings | 0 notes
-
-## seqminer (5.0)
-Maintainer: Xiaowei Zhan <zhanxw@gmail.com>
-
-0 errors | 0 warnings | 0 notes
-
-## sequences (0.5.9)
-Maintainer: Laurent Gatto <lg390@cam.ac.uk>
-
-0 errors | 0 warnings | 0 notes
-
-## seriation (1.2-0)
-Maintainer: Michael Hahsler <mhahsler@lyle.smu.edu>  
-Bug reports: https://github.com/mhahsler/seriation/issues
-
-0 errors | 0 warnings | 0 notes
-
-## seroincidence (1.0.5)
-Maintainer: Chantal Quinten <seroincidence@ecdc.europa.eu>
-
-0 errors | 0 warnings | 0 notes
-
-## setter (0.0-1)
-Maintainer: Richard Cotton <richierocks@gmail.com>  
-Bug reports: https://bitbucket.org/richierocks/setter/issues
-
-0 errors | 0 warnings | 0 notes
-
-## settings (0.2.4)
-Maintainer: Mark van der Loo <mark.vanderloo@gmail.com>  
-Bug reports: https://github.com/markvanderloo/settings/issues
-
-0 errors | 0 warnings | 0 notes
-
-## sgd (1.1)
-Maintainer: Dustin Tran <dustin@cs.columbia.edu>  
-Bug reports: https://github.com/airoldilab/sgd/issues
-
-1 error  | 0 warnings | 0 notes
-
-```
-checking whether package ‘sgd’ can be installed ... ERROR
-Installation failed.
-See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/sgd.Rcheck/00install.out’ for details.
-```
-
-## shades (0.1.0)
-Maintainer: Jon Clayden <code@clayden.org>
-
-0 errors | 0 warnings | 0 notes
-
-## SharpeR (1.1.0)
-Maintainer: Steven E. Pav <shabbychef@gmail.com>  
-Bug reports: https://github.com/shabbychef/SharpeR/issues
-
-0 errors | 0 warnings | 0 notes
-
-## shazam (0.1.2)
-Maintainer: Jason Vander Heiden <jason.vanderheiden@yale.edu>  
-Bug reports: https://bitbucket.org/kleinstein/shazam/issues
-
-0 errors | 0 warnings | 0 notes
-
-## SHELF (1.1.0)
-Maintainer: Jeremy Oakley <j.oakley@sheffield.ac.uk>  
-Bug reports: https://github.com/OakleyJ/SHELF/issues
-
-0 errors | 0 warnings | 0 notes
-
-## shiny (0.13.2)
-Maintainer: Winston Chang <winston@rstudio.com>  
-Bug reports: https://github.com/rstudio/shiny/issues
-
-0 errors | 0 warnings | 1 note 
-
-```
-checking installed package size ... NOTE
-  installed size is  6.2Mb
-  sub-directories of 1Mb or more:
-    www   5.1Mb
-```
-
-## shinyAce (0.2.1)
-Maintainer: Jeff Allen <cran@trestletechnology.net>  
-Bug reports: https://github.com/trestletech/shinyAce/issues
-
-0 errors | 0 warnings | 1 note 
-
-```
-checking installed package size ... NOTE
-  installed size is  9.9Mb
-  sub-directories of 1Mb or more:
-    www   9.7Mb
-```
-
-## shinyjs (0.5.2)
-Maintainer: Dean Attali <daattali@gmail.com>  
-Bug reports: https://github.com/daattali/shinyjs/issues
-
-0 errors | 0 warnings | 0 notes
-
-## shinyRGL (0.1.0)
-Maintainer: Jeff Allen <jeff@trestletech.com>  
-Bug reports: https://github.com/trestletech/shinyRGL/issues
-
-0 errors | 0 warnings | 0 notes
-
-## shinystan (2.1.0)
-Maintainer: Jonah Gabry <jsg2201@columbia.edu>  
-Bug reports: https://github.com/stan-dev/shinystan/issues/
-
-0 errors | 0 warnings | 0 notes
-
-## shinyTree (0.2.2)
-Maintainer: Jeff Allen <cran@trestletechnology.net>  
-Bug reports: https://github.com/trestletech/shinyTree/issues
-
-0 errors | 0 warnings | 0 notes
-
-## simmer (3.2.0)
-Maintainer: Iñaki Ucar <i.ucar86@gmail.com>  
-Bug reports: https://github.com/Enchufa2/simmer/issues
-
-0 errors | 0 warnings | 0 notes
-
-## simplegraph (1.0.0)
-Maintainer: Gabor Csardi <gcsardi@mango-solutions.com>  
-Bug reports: https://github.com/mangothecat/simplegraph/issues
-
-0 errors | 0 warnings | 0 notes
-
-## simplr (0.1-1)
-Maintainer: Oliver Flasch <of@sourcewerk.de>
-
-0 errors | 0 warnings | 0 notes
-
-## simr (1.0.1)
-Maintainer: Peter Green <greenp@landcareresearch.co.nz>  
-Bug reports: https://github.com/pitakakariki/simr/issues
-
-0 errors | 1 warning  | 0 notes
-
-```
-checking whether package ‘simr’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: package ‘lme4’ was built under R version 3.2.5
-See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/simr.Rcheck/00install.out’ for details.
-```
-
-## sisal (0.46)
-Maintainer: Mikko Korpela <mvkorpel@iki.fi>
-
-0 errors | 0 warnings | 2 notes
-
-```
-checking package dependencies ... NOTE
-Packages suggested but not available for checking: ‘graph’ ‘Rgraphviz’
-
-checking Rd cross-references ... NOTE
-Packages unavailable to check Rd xrefs: ‘Rgraphviz’, ‘graph’
-```
-
-## SixSigma (0.9-3)
-Maintainer: Emilio L. Cano <emilio.lopez@urjc.es>
-
-0 errors | 0 warnings | 0 notes
-
-## sjPlot (1.9.4)
-Maintainer: Daniel Lüdecke <d.luedecke@uke.de>  
-Bug reports: https://github.com/sjPlot/devel/issues
-
-0 errors | 0 warnings | 0 notes
-
-## slackr (1.2)
-Maintainer: Bob Rudis <bob@rudis.net>  
-Bug reports: https://github.com/hrbrmstr/slackr/issues
-
-0 errors | 0 warnings | 0 notes
-
-## SLOPE (0.1.3)
-Maintainer: Evan Patterson <epatters@stanford.edu>
-
-0 errors | 0 warnings | 0 notes
-
-## smacpod (1.4.1)
-Maintainer: Joshua French <joshua.french@ucdenver.edu>
-
-0 errors | 0 warnings | 0 notes
-
-## smcUtils (0.2.2)
-Maintainer: Jarad Niemi <niemi@iastate.edu>
-
-0 errors | 0 warnings | 1 note 
-
-```
-checking Rd line widths ... NOTE
-Rd file 'resampling.Rd':
-  \usage lines wider than 90 characters:
-     residual.resample(   weights, num.samples = length(weights), engine="R", rrf = "stratified")
-
-These lines will be truncated in the PDF manual.
-```
-
-## smerc (0.2.2)
-Maintainer: Joshua French <joshua.french@ucdenver.edu>
-
-0 errors | 0 warnings | 0 notes
-
-## SmithWilsonYieldCurve (1.0.1)
-Maintainer: Phil Joubert <phil.joubert@not-normal-consulting.co.uk>
-
-0 errors | 0 warnings | 1 note 
-
-```
-checking DESCRIPTION meta-information ... NOTE
-Malformed Description field: should contain one or more complete sentences.
-```
-
-## smoof (1.3)
-Maintainer: Jakob Bossek <j.bossek@gmail.com>  
-Bug reports: https://github.com/jakobbossek/smoof/issues
-
-0 errors | 0 warnings | 0 notes
-
-## SNSequate (1.2.1)
-Maintainer: Jorge Gonzalez Burgos <jgonzale@mat.puc.cl>
-
-0 errors | 0 warnings | 0 notes
-
-## solr (0.1.6)
-Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>  
-Bug reports: http://www.github.com/ropensci/solr/issues
-
-0 errors | 0 warnings | 0 notes
-
-## solrium (0.3.0)
-Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>  
-Bug reports: http://www.github.com/ropensci/solrium/issues
-
-0 errors | 0 warnings | 0 notes
-
-## SortableHTMLTables (0.1-3)
-Maintainer: John Myles White <jmw@johnmyleswhite.com>
-
-0 errors | 0 warnings | 3 notes
-
-```
-checking for hidden files and directories ... NOTE
-Found the following hidden files and directories:
-  .gitignore
-These were most likely included in error. See section ‘Package
-structure’ in the ‘Writing R Extensions’ manual.
-
-checking DESCRIPTION meta-information ... NOTE
-Malformed Title field: should not end in a period.
-License components which are templates and need '+ file LICENSE':
-  MIT
-
-checking top-level files ... NOTE
-Non-standard files/directories found at top level:
-  ‘README.markdown’ ‘build_package.sh’ ‘upload.sh’
-```
-
-## sortinghat (0.1)
-Maintainer: John A. Ramey <johnramey@gmail.com>
-
-0 errors | 0 warnings | 0 notes
-
-## sorvi (0.7.26)
-Maintainer: Leo Lahti <louhos@googlegroups.com>  
-Bug reports: https://github.com/ropengov/sorvi/issues
-
-0 errors | 0 warnings | 0 notes
-
-## sourcetools (0.1.2)
-Maintainer: Kevin Ushey <kevinushey@gmail.com>
-
-0 errors | 0 warnings | 0 notes
-
-## SpaDES (1.1.2)
-Maintainer: Alex M Chubaty <alexander.chubaty@canada.ca>  
-Bug reports: https://github.com/PredictiveEcology/SpaDES/issues
-
-1 error  | 0 warnings | 0 notes
-
-```
-checking package dependencies ... ERROR
-Package required but not available: ‘secr’
-
-Package suggested but not available for checking: ‘fastshp’
-
-See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
-manual.
-```
-
-## spaero (0.1.0)
-Maintainer: Eamon O'Dea <odea35@gmail.com>
-
-1 error  | 0 warnings | 0 notes
-
-```
-checking tests ... ERROR
-Running the tests in ‘tests/testthat.R’ failed.
-Last 13 lines of output:
-    expect_equal(hello(), 'Hello World')    
-                                        ^~~~
-  tests/testthat/test_dir/test-helper.R:7:1: style: Trailing blank lines are superfluous.
-  
-  ^
-  
-  
-  testthat results ================================================================
-  OK: 93 SKIPPED: 0 FAILED: 1
-  1. Failure: Package Style (@test-stats.R#4) 
-  
-  Error: testthat unit tests failed
-  Execution halted
-```
-
-## spaMM (1.8.0)
-Maintainer: François Rousset <francois.rousset@umontpellier.fr>
-
-1 error  | 0 warnings | 0 notes
-
-```
-checking package dependencies ... ERROR
-Package required but not available: ‘RcppEigen’
-
-See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
-manual.
-```
-
-## spareserver (1.0.1)
-Maintainer: Gabor Csardi <csardi.gabor@gmail.com>  
-Bug reports: https://github.com/metacran/spareserver/issues
-
-0 errors | 0 warnings | 0 notes
-
-## spark (1.0.1)
-Maintainer: Gabor Csardi <csardi.gabor@gmail.com>  
-Bug reports: https://github.com/gaborcsardi/spark/issues
-
-0 errors | 0 warnings | 0 notes
-
-## SparseGrid (0.8.2)
-Maintainer: Jelmer Ypma <uctpjyy@ucl.ac.uk>
-
-0 errors | 0 warnings | 1 note 
-
-```
-checking DESCRIPTION meta-information ... NOTE
-Malformed Description field: should contain one or more complete sentences.
-```
-
-## sparseHessianFD (0.3.0)
-Maintainer: Michael Braun <braunm@smu.edu>
-
-1 error  | 0 warnings | 0 notes
-
-```
-checking package dependencies ... ERROR
-Package required but not available: ‘RcppEigen’
-
-See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
-manual.
-```
-
-## sparseMVN (0.2.0)
-Maintainer: Michael Braun <braunm@smu.edu>
-
-0 errors | 0 warnings | 1 note 
-
-```
-checking DESCRIPTION meta-information ... NOTE
-Malformed Title field: should not end in a period.
-```
-
-## spatialprobit (0.9-11)
-Maintainer: Stefan Wilhelm <wilhelm@financial.com>
-
-0 errors | 0 warnings | 0 notes
-
-## spcadjust (1.0)
-Maintainer: Axel Gandy <a.gandy@imperial.ac.uk>
-
-0 errors | 0 warnings | 0 notes
-
-## spduration (0.15.0)
-Maintainer: Andreas Beger <adbeger@gmail.com>
-
-1 error  | 0 warnings | 0 notes
-
-```
-checking tests ... ERROR
-Running the tests in ‘tests/testthat.R’ failed.
-Last 13 lines of output:
-  plot_hazard(model.coups, zvals = c(1, -5), ci = FALSE, col = "blue") produced no output
-  
-  
-  testthat results ================================================================
-  OK: 17 SKIPPED: 0 FAILED: 5
-  1. Failure: plot_hazard accepts all input options (@test_plotting.R#8) 
-  2. Failure: plot_hazard accepts all input options (@test_plotting.R#10) 
-  3. Failure: plot_hazard accepts all input options (@test_plotting.R#13) 
-  4. Failure: plot_hazard accepts all input options (@test_plotting.R#17) 
-  5. Failure: plot_hazard accepts all input options (@test_plotting.R#22) 
-  
-  Error: testthat unit tests failed
-  Execution halted
-```
-
-## spdynmod (1.1.3)
-Maintainer: Javier Martinez-Lopez <javi.martinez.lopez@gmail.com>  
-Bug reports: http://github.com/javimarlop/spdynmod/issues
-
-0 errors | 0 warnings | 0 notes
-
-## spiders (1.2)
-Maintainer: Edward A. Roualdes <eroualdes@csuchico.edu>
-
-0 errors | 0 warnings | 0 notes
-
-## spocc (0.4.5)
-Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>  
-Bug reports: https://github.com/ropensci/spocc/issues
-
-0 errors | 0 warnings | 0 notes
-
-## spoccutils (0.1.0)
-Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>  
-Bug reports: https://github.com/ropensci/spoccutils/issues
-
-0 errors | 0 warnings | 0 notes
-
-## srvyr (0.1.1)
-Maintainer: Greg Freedman <greg.freedman@gmail.com>  
-Bug reports: https://github.com/gergness/srvyr/issues
-
-0 errors | 0 warnings | 0 notes
-
-## sspse (0.5-1)
-Maintainer: Mark S. Handcock <handcock@stat.ucla.edu>
-
-0 errors | 0 warnings | 0 notes
-
-## sss (0.0-14)
-Maintainer: Andrie de Vries <apdevries@gmail.com>  
-Bug reports: https://github.com/andrie/sss/issues
-
-0 errors | 0 warnings | 0 notes
-
-## StableEstim (2.0)
-Maintainer: Tarak Kharrat <tarak.kharrat@manchester.ac.uk>
-
-1 error  | 0 warnings | 0 notes
-
-```
-checking examples ... ERROR
-Running examples in ‘StableEstim-Ex.R’ failed
-The error most likely occurred in:
-
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
-> ### Name: expect_almost_equal
-> ### Title: test approximate equality
-> ### Aliases: expect_almost_equal
-> ### Keywords: general-functions
-> 
-> ### ** Examples
-> 
-> x=1.1 ; y=1.5
-> expect_almost_equal(x,y,1) ## pass
-Error in match.arg(type, c("success", "failure", "error", "skip", "warning")) : 
-  'arg' must be NULL or a character vector
-Calls: expect_almost_equal ... expect_that -> condition -> expectation -> match.arg
-Execution halted
-```
-
-## stablespec (0.1.3)
-Maintainer: Ridho Rahmadi <r.rahmadi@cs.ru.nl>
-
-1 error  | 0 warnings | 0 notes
-
-```
-checking package dependencies ... ERROR
-Packages required but not available: ‘graph’ ‘Rgraphviz’
-
-See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
-manual.
-```
-
-## statar (0.6.0)
-Maintainer: Matthieu Gomez <mattg@princeton.edu>  
-Bug reports: https://github.com/matthieugomez/statar/issues
-
-1 error  | 0 warnings | 0 notes
-
-```
-checking tests ... ERROR
-Running the tests in ‘tests/testthat.R’ failed.
-Last 13 lines of output:
-  
-  The following objects are masked from 'package:lubridate':
-  
-      hour, mday, month, quarter, wday, week, yday, year
-  
-  testthat results ================================================================
-  OK: 35 SKIPPED: 0 FAILED: 3
-  1. Failure: conversion works (@test_elapsed.R#14) 
-  2. Failure: rounding (@test_elapsed.R#20) 
-  3. Failure: rounding (@test_elapsed.R#21) 
-  
-  Error: testthat unit tests failed
-  Execution halted
-```
-
-## statebins (1.2.2)
-Maintainer: Bob Rudis <bob@rudis.net>  
-Bug reports: https://github.com/hrbrmstr/statebins/issues
-
-0 errors | 0 warnings | 0 notes
-
-## stationaRy (0.4.1)
-Maintainer: Richard Iannone <riannone@me.com>  
-Bug reports: https://github.com/rich-iannone/stationaRy/issues
-
-0 errors | 0 warnings | 1 note 
-
-```
-checking installed package size ... NOTE
-  installed size is  8.1Mb
-```
-
-## StatRank (0.0.6)
-Maintainer: Hossein Azari Soufiani <azari.hossein@gmail.com>
-
-0 errors | 0 warnings | 0 notes
-
-## stcov (0.1.0)
-Maintainer: Brett Naul <brettnaul@gmail.com>
-
-0 errors | 0 warnings | 0 notes
-
-## stlplus (0.5.1)
-Maintainer: Ryan Hafen <rhafen@gmail.com>  
-Bug reports: https://github.com/hafen/stlplus/issues
-
-0 errors | 0 warnings | 0 notes
-
-## storr (1.0.0)
-Maintainer: Rich FitzJohn <rich.fitzjohn@gmail.com>
-
-1 error  | 0 warnings | 1 note 
-
-```
-checking examples ... ERROR
-Running examples in ‘storr-Ex.R’ failed
-The error most likely occurred in:
-
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
-> ### Name: test_driver
-> ### Title: Test a storr driver
-> ### Aliases: test_driver
-> 
-> ### ** Examples
-> 
-> ## Testing the environment driver is nice and fast:
-> if (requireNamespace("testthat")) {
-+   test_driver(function() driver_environment())
-+ }
-Loading required namespace: testthat
-Error in test_driver(function() driver_environment()) : 
-  attempt to apply non-function
-Execution halted
-
-checking re-building of vignette outputs ... NOTE
-Error in re-building vignettes:
-  ...
-Quitting from lines 419-420 (drivers.Rmd) 
-Error: processing vignette 'drivers.Rmd' failed with diagnostics:
-attempt to apply non-function
-Execution halted
-
-```
-
-## stplanr (0.1.1)
-Maintainer: Robin Lovelace <rob00x@gmail.com>  
-Bug reports: https://github.com/ropensci/stplanr/issues
-
-0 errors | 0 warnings | 0 notes
-
-## stream (1.2-2)
-Maintainer: Michael Hahsler <mhahsler@lyle.smu.edu>  
-Bug reports: https://r-forge.r-project.org/projects/clusterds/
-
-0 errors | 0 warnings | 0 notes
-
-## stressr (1.0.0)
-Maintainer: Matt Barry <mrb@softisms.com>  
-Bug reports: https://github.com/mrbcuda/stressr/issues
-
-0 errors | 0 warnings | 1 note 
-
-```
-checking DESCRIPTION meta-information ... NOTE
-Malformed Title field: should not end in a period.
-```
-
-## stringdist (0.9.4.1)
-Maintainer: Mark van der Loo <mark.vanderloo@gmail.com>  
-Bug reports: https://github.com/markvanderloo/stringdist/issues
-
-0 errors | 0 warnings | 0 notes
-
-## stringr (1.0.0)
-Maintainer: Hadley Wickham <hadley@rstudio.com>
-
-0 errors | 0 warnings | 0 notes
-
-## strvalidator (1.6.0)
-Maintainer: Oskar Hansson <oskar.hansson@fhi.no>  
-Bug reports: https://github.com/OskarHansson/strvalidator/issues
-
-1 error  | 0 warnings | 0 notes
-
-```
-checking whether package ‘strvalidator’ can be installed ... ERROR
-Installation failed.
-See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/strvalidator.Rcheck/00install.out’ for details.
-```
-
-## stubthat (1.0.0)
-Maintainer: Sainath Adapa <adapasainath@gmail.com>  
-Bug reports: https://github.com/sainathadapa/stubthat/issues
-
-0 errors | 0 warnings | 0 notes
-
-## surveillance (1.12.0)
-Maintainer: Sebastian Meyer <Sebastian.Meyer@ifspm.uzh.ch>  
-Bug reports: https://r-forge.r-project.org/tracker/?group_id=45
-
-0 errors | 0 warnings | 2 notes
-
-```
-checking package dependencies ... NOTE
-Package suggested but not available for checking: ‘INLA’
-
-checking installed package size ... NOTE
-  installed size is  5.0Mb
-  sub-directories of 1Mb or more:
-    doc   1.7Mb
-```
-
-## sValues (0.1.4)
-Maintainer: Carlos Cinelli <carloscinelli@hotmail.com>  
-Bug reports: https://github.com/carloscinelli/sValues
-
-0 errors | 0 warnings | 0 notes
-
-## svd (0.4)
-Maintainer: Anton Korobeynikov <anton@korobeynikov.info>
-
-0 errors | 0 warnings | 0 notes
-
-## svglite (1.1.0)
-Maintainer: Hadley Wickham <hadley@rstudio.com>  
-Bug reports: https://github.com/hadley/svglite/issues
-
-0 errors | 0 warnings | 0 notes
-
-## svyPVpack (0.1-1)
-Maintainer: Manuel Reif <Manuel.Reif@statistik.gv.at>
-
-0 errors | 0 warnings | 0 notes
-
-## SwarmSVM (0.1)
-Maintainer: Tong He <hetong007@gmail.com>
-
-0 errors | 0 warnings | 0 notes
-
-## sweidnumbr (1.2.0)
-Maintainer: Mans Magnusson <mons.magnusson@gmail.com>  
-Bug reports: https://github.com/rOpenGov/sweidnumbr/issues
-
-0 errors | 0 warnings | 0 notes
-
-## swirl (2.4.1)
-Maintainer: Sean Kross <sean@seankross.com>
-
-0 errors | 0 warnings | 0 notes
-
-## swirlify (0.4.1)
-Maintainer: Sean Kross <sean@seankross.com>
-
-0 errors | 1 warning  | 0 notes
-
-```
-checking whether package ‘swirlify’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: package ‘swirl’ was built under R version 3.2.5
-See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/swirlify.Rcheck/00install.out’ for details.
-```
-
-## systemicrisk (0.3)
-Maintainer: Axel Gandy <a.gandy@imperial.ac.uk>
-
-0 errors | 0 warnings | 0 notes
-
-## syuzhet (0.2.0)
-Maintainer: Matthew Jockers <mjockers@gmail.com>
-
-0 errors | 0 warnings | 0 notes
-
-## tableone (0.7.3)
-Maintainer: Kazuki Yoshida <kazukiyoshida@mail.harvard.edu>
-
-0 errors | 0 warnings | 0 notes
-
-## tadaatoolbox (0.9.0)
-Maintainer: Lukas Burk <lukas@quantenbrot.de>  
-Bug reports: https://github.com/tadaadata/tadaatoolbox/issues
-
-0 errors | 0 warnings | 1 note 
-
-```
-checking data for non-ASCII characters ... NOTE
-  Note: found 1 marked UTF-8 string
-```
-
-## TauStar (1.1.0)
-Maintainer: Luca Weihs <lucaw@uw.edu>
-
-0 errors | 0 warnings | 0 notes
-
-## taxize (0.7.5)
-Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>  
-Bug reports: https://github.com/ropensci/taxize/issues
-
-0 errors | 0 warnings | 0 notes
-
-## tbdiag (0.1)
-Maintainer: Matt Parker <mattmparker@gmail.com>
-
-0 errors | 0 warnings | 1 note 
-
-```
-checking DESCRIPTION meta-information ... NOTE
-License components which are templates and need '+ file LICENSE':
-  MIT
-```
-
-## tester (0.1.7)
-Maintainer: Gaston Sanchez <gaston.stat@gmail.com>
-
-0 errors | 0 warnings | 0 notes
-
-## testthatsomemore (0.1)
-Maintainer: Robert Krzyzanowski <technoguyrob@gmail.com>
-
-1 error  | 0 warnings | 0 notes
-
-```
-checking examples ... ERROR
-Running examples in ‘testthatsomemore-Ex.R’ failed
-The error most likely occurred in:
-
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
-> ### Name: assert
-> ### Title: Explicitly state that we expect no errors to occur.
-> ### Aliases: assert
-> 
-> ### ** Examples
-> 
-> assert(1 + 1) # This will throw no error.
-> stopifnot(is(tryCatch(error = identity, assert(not_existent)), 'error'))
-Error: is(result, "error") isn't false.
-Execution halted
-```
-
-## text2vec (0.3.0)
-Maintainer: Dmitriy Selivanov <selivanov.dmitriy@gmail.com>  
-Bug reports: https://github.com/dselivanov/text2vec/issues
-
-0 errors | 0 warnings | 1 note 
-
-```
-checking for GNU extensions in Makefiles ... NOTE
-GNU make is a SystemRequirements.
-```
-
-## textreg (0.1.3)
-Maintainer: Luke Miratrix <lmiratrix@stat.harvard.edu>
-
-0 errors | 0 warnings | 0 notes
-
-## textreuse (0.1.3)
-Maintainer: Lincoln Mullen <lincoln@lincolnmullen.com>  
-Bug reports: https://github.com/ropensci/textreuse/issues
-
-0 errors | 0 warnings | 0 notes
-
-## TFMPvalue (0.0.6)
-Maintainer: Ge Tan <ge.tan09@imperial.ac.uk>  
-Bug reports: https://github.com/ge11232002/TFMPvalue/issues
-
-0 errors | 0 warnings | 0 notes
-
-## threewords (0.1.0)
-Maintainer: Oliver Keyes <ironholds@gmail.com>
-
-0 errors | 0 warnings | 0 notes
-
-## tibble (1.0)
-Maintainer: Kirill Müller <krlmlr+r@mailbox.org>  
-Bug reports: https://github.com/hadley/tibble/issues
-
-0 errors | 0 warnings | 0 notes
-
-## tidyjson (0.2.1)
-Maintainer: Jeremy Stanley <jeremy.stanley@gmail.com>
-
-0 errors | 0 warnings | 0 notes
-
-## tidyr (0.4.1)
-Maintainer: Hadley Wickham <hadley@rstudio.com>  
-Bug reports: https://github.com/hadley/tidyr/issues
-
-0 errors | 0 warnings | 0 notes
-
-## tigris (0.2.2)
-Maintainer: Kyle Walker <kyle.walker@tcu.edu>
-
-0 errors | 1 warning  | 0 notes
-
-```
-checking whether package ‘tigris’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: replacing previous import ‘maptools::nowrapSpatialLines’ by ‘sp::nowrapSpatialLines’ when loading ‘tigris’
-See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/tigris.Rcheck/00install.out’ for details.
-```
-
-## tikzDevice (0.10-1)
-Maintainer: Kirill Müller <krlmlr+r@mailbox.org>  
-Bug reports: https://github.com/yihui/tikzDevice/issues
-
-0 errors | 0 warnings | 0 notes
-
-## TimeProjection (0.2.0)
-Maintainer: Jeffrey Wong <jeff.ct.wong@gmail.com>
-
-0 errors | 0 warnings | 2 notes
-
-```
-checking dependencies in R code ... NOTE
-'library' or 'require' calls in package code:
-  ‘ggplot2’ ‘plyr’
-  Please use :: or requireNamespace() instead.
-  See section 'Suggested packages' in the 'Writing R Extensions' manual.
-Packages in Depends field not imported from:
-  ‘Matrix’ ‘lubridate’ ‘timeDate’
-  These packages need to be imported from (in the NAMESPACE file)
-  for when this namespace is loaded but not attached.
-
-checking R code for possible problems ... NOTE
-is.Bizday: no visible global function definition for ‘isWeekday’
-plotCalendarHeatmap: no visible global function definition for ‘ddply’
-plotCalendarHeatmap: no visible global function definition for ‘.’
-plotCalendarHeatmap: no visible binding for global variable ‘year’
-plotCalendarHeatmap: no visible binding for global variable ‘month’
-plotCalendarHeatmap: no visible binding for global variable ‘week’
-plotCalendarHeatmap: no visible global function definition for ‘ggplot’
-plotCalendarHeatmap: no visible global function definition for ‘aes’
-plotCalendarHeatmap: no visible binding for global variable ‘monthweek’
-plotCalendarHeatmap: no visible binding for global variable ‘weekday’
-plotCalendarHeatmap: no visible global function definition for
-  ‘geom_tile’
-plotCalendarHeatmap: no visible global function definition for
-  ‘facet_grid’
-plotCalendarHeatmap: no visible global function definition for
-  ‘scale_fill_gradientn’
-projectDate: no visible global function definition for ‘holidayNYSE’
-projectDate: no visible global function definition for
-  ‘sparse.model.matrix’
-```
-
-## tm.plugin.webmining (1.3)
-Maintainer: Mario Annau <mario.annau@gmail.com>  
-Bug reports: https://github.com/mannau/tm.plugin.webmining/issues
-
-0 errors | 0 warnings | 0 notes
-
-## tmod (0.24)
-Maintainer: January Weiner <january.weiner@gmail.com>
-
-2 errors | 0 warnings | 2 notes
-
-```
-checking examples ... ERROR
-Running examples in ‘tmod-Ex.R’ failed
-The error most likely occurred in:
-
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
-> ### Name: tmodLimmaTest
-> ### Title: Run tmod enrichment tests directly on a limma object
-> ### Aliases: tmodLimmaTest
-> 
-> ### ** Examples
-> 
-> library(limma)
-Error in library(limma) : there is no package called ‘limma’
-Execution halted
-
-checking tests ... ERROR
-Running the tests in ‘tests/testthat.R’ failed.
-Last 13 lines of output:
-  
-  
-  2. Failure: tmod is sane (@test_data.R#8) --------------------------------------
-  `tmod` produced no output
-  
-  
-  testthat results ================================================================
-  OK: 15 SKIPPED: 0 FAILED: 2
-  1. Failure: tmod is sane (@test_data.R#7) 
-  2. Failure: tmod is sane (@test_data.R#8) 
-  
-  Error: testthat unit tests failed
-  Execution halted
-
-checking package dependencies ... NOTE
-Packages suggested but not available for checking: ‘limma’ ‘org.Hs.eg.db’
-
-checking re-building of vignette outputs ... NOTE
-Error in re-building vignettes:
-  ...
-Quitting from lines 46-56 (tmod.rmd) 
-Error: processing vignette 'tmod.rmd' failed with diagnostics:
-there is no package called 'limma'
-Execution halted
-
-```
-
-## toaster (0.5.1)
-Maintainer: Gregory Kanevsky <gregory.kanevsky@teradata.com>  
-Bug reports: https://github.com/teradata-aster-field/toaster/issues
-
-1 error  | 0 warnings | 0 notes
-
-```
-checking package dependencies ... ERROR
-Package required but not available: ‘RODBC’
-
-See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
-manual.
-```
-
-## tokenizers (0.1.2)
-Maintainer: Lincoln Mullen <lincoln@lincolnmullen.com>  
-Bug reports: https://github.com/lmullen/tokenizers/issues
-
-0 errors | 0 warnings | 0 notes
-
-## toOrdinal (0.0-6)
-Maintainer: Damian W. Betebenner <dbetebenner@nciea.org>  
-Bug reports: https://github.com/CenterForAssessment/toOrdinal/issues
-
-0 errors | 0 warnings | 0 notes
-
-## tourr (0.5.4)
-Maintainer: Hadley Wickham <h.wickham@gmail.com>  
-Bug reports: https://github.com/ggobi/tourr/
-
-0 errors | 0 warnings | 1 note 
-
-```
-checking dependencies in R code ... NOTE
-'library' or 'require' calls in package code:
-  ‘TeachingDemos’ ‘ash’
-  Please use :: or requireNamespace() instead.
-  See section 'Suggested packages' in the 'Writing R Extensions' manual.
-```
-
-## trackeR (0.0.1)
-Maintainer: Hannah Frick <h.frick@ucl.ac.uk>
-
-0 errors | 0 warnings | 0 notes
-
-## traitr (0.14)
-Maintainer: John Verzani <jverzani@gmail.com>
-
-0 errors | 0 warnings | 1 note 
-
-```
-checking DESCRIPTION meta-information ... NOTE
-Malformed Title field: should not end in a period.
-```
-
-## traits (0.2.0)
-Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>  
-Bug reports: http://www.github.com/ropensci/traits/issues
-
-0 errors | 0 warnings | 0 notes
-
-## treatSens (2.0.1)
-Maintainer: Nicole Bohme Carnegie <carnegin@uwm.edu>  
-Bug reports: https://github.com/vdorie/treatSens/issues
-
-0 errors | 0 warnings | 0 notes
-
-## treebase (0.1.2)
-Maintainer: Carl Boettiger <cboettig@gmail.com>  
-Bug reports: http://www.github.com/ropensci/treebase/issues
-
-0 errors | 0 warnings | 0 notes
-
-## treeclim (1.0.16)
-Maintainer: Christian Zang <christian.zang@wzw.tum.de>
-
-0 errors | 0 warnings | 0 notes
-
-## treeman (1.0)
-Maintainer: D.J. Bennett <dominic.john.bennett@gmail.com>
-
-0 errors | 0 warnings | 0 notes
-
-## treescape (1.8.16)
-Maintainer: Michelle Kendall <m.kendall@imperial.ac.uk>
-
-0 errors | 0 warnings | 0 notes
-
-## trelliscope (0.9.4)
-Maintainer: Ryan Hafen <rhafen@gmail.com>  
-Bug reports: https://github.com/tesseradata/trelliscope/issues
-
-0 errors | 0 warnings | 0 notes
-
-## trustOptim (0.8.5)
-Maintainer: Michael Braun <braunm@smu.edu>
-
-1 error  | 0 warnings | 0 notes
-
-```
-checking package dependencies ... ERROR
-Package required but not available: ‘RcppEigen’
-
-See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
-manual.
-```
-
-## TSdist (3.2)
-Maintainer: Usue Mori <usue.mori@ehu.es>
-
-0 errors | 0 warnings | 0 notes
-
-## tsna (0.2.0)
-Maintainer: Skye Bender-deMoll <skyebend@uw.edu>
-
-0 errors | 0 warnings | 0 notes
-
-## TSP (1.1-4)
-Maintainer: Michael Hahsler <mhahsler@lyle.smu.edu>  
-Bug reports: https://github.com/mhahsler/TSP/issues
-
-0 errors | 0 warnings | 0 notes
-
-## tsPI (1.0.1)
-Maintainer: Jouni Helske <jouni.helske@jyu.fi>  
-Bug reports: https://github.com/helske/tsPI/issues
-
-1 error  | 0 warnings | 0 notes
-
-```
-checking whether package ‘tsPI’ can be installed ... ERROR
-Installation failed.
-See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/tsPI.Rcheck/00install.out’ for details.
-```
-
-## tspmeta (1.2)
-Maintainer: Bernd Bischl <bernd_bischl@gmx.net>  
-Bug reports: https://github.com/berndbischl/tspmeta/issues
-
-0 errors | 0 warnings | 0 notes
-
-## tufterhandout (1.2.1)
-Maintainer: Michael C Sachs <sachsmc@gmail.com>  
-Bug reports: http://github.com/sachsmc/tufterhandout/issues
-
-0 errors | 0 warnings | 1 note 
-
-```
-checking DESCRIPTION meta-information ... NOTE
-Malformed Description field: should contain one or more complete sentences.
-```
-
-## tumgr (0.0.4)
-Maintainer: Julia Wilkerson <jmwilkers@outlook.com>
-
-0 errors | 0 warnings | 0 notes
-
-## turner (0.1.7)
-Maintainer: Gaston Sanchez <gaston.stat@gmail.com>
-
-0 errors | 0 warnings | 0 notes
-
-## tutorial (0.2.2)
-Maintainer: Filip Schouwenaars <filip@datacamp.com>  
-Bug reports: https://github.com/datacamp/tutorial/issues
-
-0 errors | 0 warnings | 0 notes
-
-## tvm (0.3.0)
-Maintainer: Juan Manuel Truppia <jmtruppia@gmail.com>
-
-0 errors | 0 warnings | 0 notes
-
-## umx (1.2.5)
-Maintainer: Timothy C Bates <timothy.c.bates@gmail.com>  
-Bug reports: http://github.com/tbates/umx/issues
-
-0 errors | 0 warnings | 0 notes
-
-## UNF (2.0.1)
-Maintainer: Thomas Leeper <thosjleeper@gmail.com>  
-Bug reports: https://github.com/leeper/UNF/issues
-
-0 errors | 0 warnings | 0 notes
-
-## uniqtag (1.0)
-Maintainer: Shaun Jackman <sjackman@gmail.com>  
-Bug reports: https://github.com/sjackman/uniqtag/issues
-
-0 errors | 0 warnings | 0 notes
-
-## unitedR (0.2)
-Maintainer: David Schindler <dv.schindler@gmail.com>
-
-0 errors | 0 warnings | 0 notes
-
-## uptimeRobot (1.0.0)
-Maintainer: Gabriele Baldassarre <gabriele@gabrielebaldassarre.com>  
-Bug reports: https://github.com/theclue/uptimeRobot/issues
-
-0 errors | 0 warnings | 0 notes
-
-## urlshorteneR (0.9.2)
-Maintainer: John Malc <cincenko@outlook.com>  
-Bug reports: https://github.com/dmpe/urlshorteneR/issues
-
-0 errors | 0 warnings | 0 notes
-
-## urltools (1.4.0)
-Maintainer: Oliver Keyes <ironholds@gmail.com>  
-Bug reports: https://github.com/Ironholds/urltools/issues
-
-0 errors | 0 warnings | 1 note 
-
-```
-checking data for non-ASCII characters ... NOTE
-  Note: found 393 marked UTF-8 strings
-```
-
-## USAboundaries (0.2.0)
-Maintainer: Lincoln Mullen <lincoln@lincolnmullen.com>  
-Bug reports: https://github.com/ropensci/USAboundaries/issues
-
-0 errors | 0 warnings | 1 note 
-
-```
-checking package dependencies ... NOTE
-Package suggested but not available for checking: ‘USAboundariesData’
-```
-
-## useful (1.2.0)
-Maintainer: Jared P. Lander <packages@jaredlander.com>
-
-1 error  | 0 warnings | 0 notes
-
-```
-checking tests ... ERROR
-Running the tests in ‘tests/testthat.R’ failed.
-Last 13 lines of output:
-  4. Failure: simple.impute.default properly imputes the mean (@test-simple-impute.r#41) 
-  all.equal(...) produced no output
-  
-  
-  testthat results ================================================================
-  OK: 324 SKIPPED: 0 FAILED: 4
-  1. Failure: simple.impute.default properly imputes the mean (@test-simple-impute.r#32) 
-  2. Failure: simple.impute.default properly imputes the mean (@test-simple-impute.r#35) 
-  3. Failure: simple.impute.default properly imputes the mean (@test-simple-impute.r#38) 
-  4. Failure: simple.impute.default properly imputes the mean (@test-simple-impute.r#41) 
-  
-  Error: testthat unit tests failed
-  Execution halted
-```
-
-## utiml (0.1.0)
-Maintainer: Adriano Rivolli <rivolli@utfpr.edu.br>  
-Bug reports: https://github.com/rivolli/utiml
-
-0 errors | 0 warnings | 0 notes
-
-## V8 (1.0.1)
-Maintainer: Jeroen Ooms <jeroen.ooms@stat.ucla.edu>  
-Bug reports: https://github.com/jeroenooms/v8/issues
-
-1 error  | 0 warnings | 0 notes
-
-```
-checking whether package ‘V8’ can be installed ... ERROR
-Installation failed.
-See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/V8.Rcheck/00install.out’ for details.
-```
-
-## validate (0.1.4)
-Maintainer: Mark van der Loo <mark.vanderloo@gmail.com>  
-Bug reports: https://github.com/data-cleaning/validate/issues
-
-0 errors | 0 warnings | 0 notes
-
-## varian (0.2.2)
-Maintainer: Joshua F. Wiley <josh@elkhartgroup.com>  
-Bug reports: https://github.com/ElkhartGroup/varian/issues
-
-0 errors | 0 warnings | 0 notes
-
-## vartors (0.2.6)
-Maintainer: Joris Muller <joris.muller@etu.unistra.fr>  
-Bug reports: https://github.com/jomuller/vartors/issues/new
-
-1 error  | 0 warnings | 1 note 
-
-```
-checking tests ... ERROR
-Running the tests in ‘tests/test-all.R’ failed.
-Last 13 lines of output:
-  OK: 102 SKIPPED: 0 FAILED: 8
-  1. Failure: rep_columns_names should be placed properly (@test-DatabaseDef.R#35) 
-  2. Failure: numeric var for Rmd_fr template (@test-Rmd_fr_template.R#21) 
-  3. Failure: add default values (@test-VariableDef.R#83) 
-  4. Failure: add default values (@test-VariableDef.R#84) 
-  5. Failure: DatabaseDef create_script methods (@test-create_script.R#49) 
-  6. Failure: header and footer could be turn off (@test-create_script.R#71) 
-  7. Failure: header and footer could be turn off (@test-create_script.R#74) 
-  8. Failure: fix7 : when no label given with level, names=levels (@test-create_script.R#79) 
-  
-  Error: testthat unit tests failed
-  In addition: There were 31 warnings (use warnings() to see them)
-  Execution halted
-
-checking R code for possible problems ... NOTE
-descvars_skeleton: no visible binding for global variable ‘example_df’
-```
-
-## vcfR (1.0.0)
-Maintainer: Brian J. Knaus <briank.lists@gmail.com>
-
-0 errors | 0 warnings | 0 notes
-
-## vdmR (0.2.2)
-Maintainer: Tomokazu Fujino <fujino@fwu.ac.jp>
-
-0 errors | 0 warnings | 0 notes
-
-## vegalite (0.6.1)
-Maintainer: Bob Rudis <bob@rudis.net>  
-Bug reports: https://github.com/hrbrmstr/vegalite/issues
-
-0 errors | 0 warnings | 0 notes
-
-## vegdata (0.8.9)
-Maintainer: Florian Jansen <jansen@uni-greifswald.de>
-
-0 errors | 0 warnings | 0 notes
-
-## VennDiagram (1.6.17)
-Maintainer: Paul Boutros <Paul.Boutros@oicr.on.ca>
-
-0 errors | 0 warnings | 0 notes
-
-## vines (1.1.4)
-Maintainer: Yasser Gonzalez-Fernandez <ygonzalezfernandez@gmail.com>
-
-0 errors | 0 warnings | 0 notes
-
-## vipor (0.3.2)
-Maintainer: Scott Sherrill-Mix <shescott@upenn.edu>
-
-0 errors | 0 warnings | 0 notes
-
-## VSURF (1.0.2)
-Maintainer: Robin Genuer <Robin.Genuer@isped.u-bordeaux2.fr>  
-Bug reports: https://github.com/robingenuer/VSURF/issues
-
-0 errors | 0 warnings | 0 notes
-
-## VTrack (1.11)
-Maintainer: Ross Dwyer <ross.dwyer@uq.edu.au>
-
-0 errors | 0 warnings | 0 notes
-
-## vtreat (0.5.22)
-Maintainer: John Mount <jmount@win-vector.com>
-
-0 errors | 0 warnings | 0 notes
-
-## waffle (0.5.0)
-Maintainer: Bob Rudis <bob@rudis.net>  
-Bug reports: https://github.com/hrbrmstr/waffle/issues
-
-0 errors | 0 warnings | 0 notes
-
-## wakefield (0.2.1)
-Maintainer: Tyler Rinker <tyler.rinker@gmail.com>  
-Bug reports: https://github.com/trinker/wakefield/issues
-
-0 errors | 0 warnings | 0 notes
-
-## walkr (0.3.3)
-Maintainer: Andy Yao <andy.yao17@gmail.com>  
-Bug reports: https://github.com/andyyao95/walkr/issues
-
-1 error  | 0 warnings | 0 notes
-
-```
-checking package dependencies ... ERROR
-Package required but not available: ‘RcppEigen’
-
-See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
-manual.
-```
-
-## Wats (0.10.3)
-Maintainer: Will Beasley <wibeasley@hotmail.com>  
-Bug reports: https://github.com/OuhscBbmc/Wats/issues
-
-0 errors | 0 warnings | 0 notes
-
-## weatherData (0.4.1)
-Maintainer: Ram Narasimhan <ramnarasimhan@gmail.com>
-
-0 errors | 0 warnings | 1 note 
-
-```
-checking R code for possible problems ... NOTE
-getStationCode: no visible binding for global variable
-  ‘USAirportWeatherStations’
-getStationCode: no visible binding for global variable ‘IntlWxStations’
-```
-
-## webchem (0.1.0.0)
-Maintainer: Eduard Szöcs <eduardszoecs@gmail.com>  
-Bug reports: https://github.com/ropensci/webchem/issues
-
-0 errors | 0 warnings | 0 notes
-
-## webreadr (0.4.0)
-Maintainer: Oliver Keyes <ironholds@gmail.com>  
-Bug reports: https://github.com/Ironholds/webreadr/issues
-
-0 errors | 0 warnings | 0 notes
-
-## webuse (0.1.2)
-Maintainer: Thomas J. Leeper <thosjleeper@gmail.com>  
-Bug reports: https://github.com/leeper/webuse/issues
-
-0 errors | 0 warnings | 0 notes
-
-## wellknown (0.1.0)
-Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>  
-Bug reports: https://github.com/ropensci/wellknown/issues
-
-0 errors | 0 warnings | 0 notes
-
-## wgsea (1.8)
-Maintainer: Chris Wallace <chris.wallace@cimr.cam.ac.uk>
-
-1 error  | 0 warnings | 0 notes
-
-```
-checking package dependencies ... ERROR
-Package required but not available: ‘snpStats’
-
-See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
-manual.
-```
-
-## WHO (0.2)
-Maintainer: Eric Persson <expersso5@gmail.com>  
-Bug reports: https://www.github.com/expersso/WHO/issues
-
-0 errors | 0 warnings | 0 notes
-
-## whoami (1.1.1)
-Maintainer: Gabor Csardi <csardi.gabor@gmail.com>  
-Bug reports: https://github.com/gaborcsardi/whoami/issues
-
-0 errors | 0 warnings | 0 notes
-
-## whoapi (0.1.1)
-Maintainer: Oliver Keyes <ironholds@gmail.com>
-
-0 errors | 0 warnings | 0 notes
-
-## WikidataR (1.0.1)
-Maintainer: Oliver Keyes <ironholds@gmail.com>  
-Bug reports: https://github.com/Ironholds/WikidataR/issues
-
-0 errors | 0 warnings | 0 notes
-
-## wikipediatrend (1.1.10)
-Maintainer: Peter Meissner <retep.meissner@gmail.com>  
-Bug reports: https://github.com/petermeissner/wikipediatrend/issues
-
-0 errors | 0 warnings | 1 note 
-
-```
-checking package dependencies ... NOTE
-Packages suggested but not available for checking:
-  ‘AnomalyDetection’ ‘BreakoutDetection’
-```
-
-## WikipediR (1.3.0)
-Maintainer: Oliver Keyes <ironholds@gmail.com>  
-Bug reports: https://github.com/Ironholds/WikipediR/issues
-
-0 errors | 0 warnings | 0 notes
-
-## withr (1.0.1)
-Maintainer: Jim Hester <james.f.hester@gmail.com>  
-Bug reports: http://github.com/jimhester/withr/issues
-
-0 errors | 0 warnings | 0 notes
-
-## wkb (0.3-0)
-Maintainer: Ian Cook <ianmcook@gmail.com>  
-Bug reports: https://github.com/ianmcook/wkb/issues
-
-0 errors | 0 warnings | 0 notes
-
-## wppExplorer (1.8-0)
-Maintainer: Hana Sevcikova <hanas@uw.edu>
-
-0 errors | 0 warnings | 0 notes
-
-## wrassp (0.1.3)
-Maintainer: Raphael Winkelmann <raphael@phonetik.uni-muenchen.de>  
-Bug reports: https://github.com/IPS-LMU/wrassp/issues
-
-0 errors | 0 warnings | 1 note 
-
-```
-checking files in ‘vignettes’ ... NOTE
-The following directory looks like a leftover from 'knitr':
-  ‘figure’
-Please remove from your package.
-```
-
-## wrswoR (1.0-1)
-Maintainer: Kirill Müller <krlmlr+r@mailbox.org>  
-Bug reports: https://github.com/krlmlr/wrswoR/issues
-
-0 errors | 0 warnings | 0 notes
-
-## WufooR (0.6.1)
-Maintainer: John Malc <cincenko@outlook.com>  
-Bug reports: http://github.com/dmpe/wufoor/issues
-
-0 errors | 0 warnings | 0 notes
-
-## XiMpLe (0.03-23)
-Maintainer: Meik Michalke <meik.michalke@hhu.de>
-
-0 errors | 0 warnings | 0 notes
-
-## xml2 (0.1.2)
-Maintainer: Hadley Wickham <hadley@rstudio.com>  
-Bug reports: https://github.com/hadley/xml2/issues/
-
-0 errors | 0 warnings | 0 notes
-
-## xoi (0.66-9)
-Maintainer: Karl W Broman <kbroman@biostat.wisc.edu>
-
-0 errors | 0 warnings | 0 notes
-
-## yakmoR (0.1.1)
-Maintainer: Aydin Demircioglu <aydin.demircioglu@ini.rub.de>
-
-0 errors | 0 warnings | 0 notes
-
-## yaml (2.1.13)
-Maintainer: Jeremy Stephens <jeremy.stephens@vanderbilt.edu>
-
-0 errors | 0 warnings | 0 notes
-
-## yCrypticRNAs (0.99.2)
-Maintainer: Nicole Uwimana <nicole.uwimana@gmail.com>  
-Bug reports: https://bitbucket.org/nuwimana/ycrypticrnas/issues
-
-1 error  | 0 warnings | 0 notes
-
-```
-checking package dependencies ... ERROR
-Packages required but not available: ‘biomaRt’ ‘IRanges’ ‘Rsamtools’
-
-See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
-manual.
-```
-
-## yummlyr (0.1.1)
-Maintainer: Roman Tsegelskyi <roman.tsegelskyi@gmail.com>  
-Bug reports: https://github.com/RomanTsegelskyi/yummlyr/issues
-
-0 errors | 0 warnings | 0 notes
-
-## Zelig (5.0-12)
-Maintainer: James Honaker <zelig-zee@iq.harvard.edu>
-
-0 errors | 0 warnings | 0 notes
-
-## ZeligChoice (0.9-0)
-Maintainer: James Honaker <zelig-zee@iq.harvard.edu>
-
-0 errors | 1 warning  | 0 notes
-
-```
-checking whether package ‘ZeligChoice’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: namespace ‘Rgraphviz’ is not available and has been replaced
-See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks/ZeligChoice.Rcheck/00install.out’ for details.
-```
-
-## ZillowR (0.1.0)
-Maintainer: Justin Brantley <fascinatingfingers@icloud.com>
-
-0 errors | 0 warnings | 0 notes
-
-## zoom (2.0.4)
-Maintainer: Corentin M Barbu <corentin.barbu@gmail.com>
-
-0 errors | 0 warnings | 1 note 
-
-```
-checking DESCRIPTION meta-information ... NOTE
-Malformed Description field: should contain one or more complete sentences.
-```
-
-## zoon (0.4.23)
-Maintainer: Tom August <tomaug@ceh.ac.uk>
-
-1 error  | 0 warnings | 0 notes
-
-```
-checking package dependencies ... ERROR
-Package required and available but unsuitable version: ‘raster’
-
-See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
-manual.
-```
-
-## ztable (0.1.5)
-Maintainer: Keon-Woong Moon <cardiomoon@gmail.com>
-
-0 errors | 0 warnings | 0 notes
+|tz       |Zulu                         |
+|date     |2017-10-16                   |
+
+# Dependencies
+
+|package    |old    |new        |Δ  |
+|:----------|:------|:----------|:--|
+|testthat   |1.0.2  |1.0.2.9000 |*  |
+|clisymbols |NA     |1.2.0      |*  |
+|crayon     |1.3.4  |1.3.4      |   |
+|digest     |0.6.12 |0.6.12     |   |
+|magrittr   |1.5    |1.5        |   |
+|praise     |1.0.0  |1.0.0      |   |
+|R6         |2.2.2  |2.2.2      |   |
+|rlang      |NA     |0.1.2      |*  |
+|withr      |NA     |2.0.0      |*  |
+
+# Revdeps
+
+## Couldn't check (28)
+
+|package                                          |version |error  |warning |note |
+|:------------------------------------------------|:-------|:------|:-------|:----|
+|basictabler                                      |?       |       |        |     |
+|BayesianTools                                    |?       |       |        |     |
+|bigstatsr                                        |?       |       |        |     |
+|[briskaR](problems.md#briskar)                   |0.1.1   |1      |        |     |
+|[canceR](problems.md#cancer)                     |1.8.0   |1      |        |1    |
+|[chromstaR](problems.md#chromstar)               |1.2.0   |1      |        |     |
+|CSSP                                             |?       |       |        |     |
+|econullnetr                                      |?       |       |        |     |
+|[gpuR](problems.md#gpur)                         |1.2.1   |1      |        |     |
+|[gWidgets2tcltk](problems.md#gwidgets2tcltk)     |1.0-5   |1      |        |     |
+|[jqr](problems.md#jqr)                           |1.0.0   |1      |        |     |
+|[keyring](problems.md#keyring)                   |1.0.0   |1      |        |     |
+|[kmcudaR](problems.md#kmcudar)                   |1.0.0   |1      |        |     |
+|[loon](problems.md#loon)                         |1.1.0   |1      |        |     |
+|[markmyassignment](problems.md#markmyassignment) |0.6.1   |__+1__ |        |-1   |
+|[MonetDBLite](problems.md#monetdblite)           |0.4.1   |1      |        |1    |
+|[mwaved](problems.md#mwaved)                     |1.1.5   |1      |        |     |
+|[normr](problems.md#normr)                       |1.2.0   |1      |        |     |
+|OSMscale                                         |?       |       |        |     |
+|[RAppArmor](problems.md#rapparmor)               |2.0.2   |1      |        |     |
+|[redux](problems.md#redux)                       |1.0.0   |1      |        |1    |
+|SeqKat                                           |?       |       |        |     |
+|[SnakeCharmR](problems.md#snakecharmr)           |1.0.7   |1      |        |     |
+|[sys](problems.md#sys)                           |1.5     |1      |        |     |
+|[textTinyR](problems.md#texttinyr)               |1.0.7   |1      |        |     |
+|[tidyr](problems.md#tidyr)                       |0.7.1   |1      |        |     |
+|[zstdr](problems.md#zstdr)                       |0.1.1   |1      |        |     |
+|googleAuthR                                      |?       |       |        |     |
+
+## Broken (73)
+
+|package                                              |version |error     |warning   |note |
+|:----------------------------------------------------|:-------|:---------|:---------|:----|
+|[aidar](problems.md#aidar)                           |1.0.0   |__+1__    |          |3    |
+|[AlphaVantageClient](problems.md#alphavantageclient) |0.0.1   |__+1__    |          |     |
+|[antaresRead](problems.md#antaresread)               |1.1.4   |__+1__    |          |     |
+|[autoimage](problems.md#autoimage)                   |1.3     |__+1__    |          |     |
+|[autovarCore](problems.md#autovarcore)               |1.0-0   |__+1__    |          |     |
+|[batchtools](problems.md#batchtools)                 |0.9.6   |__+1__    |          |1    |
+|[binman](problems.md#binman)                         |0.1.0   |__+1__    |          |     |
+|[callr](problems.md#callr)                           |1.0.0   |__+1__    |          |     |
+|[checkpoint](problems.md#checkpoint)                 |0.4.1   |__+1__    |          |     |
+|[civis](problems.md#civis)                           |1.0.2   |__+1__    |          |     |
+|[clust.bin.pair](problems.md#clust.bin.pair)         |0.0.6   |__+1__    |          |     |
+|[corpus](problems.md#corpus)                         |0.9.3   |__+1__    |          |2    |
+|[Crossover](problems.md#crossover)                   |0.1-16  |__+1__    |1         |     |
+|[data.world](problems.md#data.world)                 |1.1.1   |__+1__    |          |     |
+|[datafsm](problems.md#datafsm)                       |0.2.0   |__+1__    |          |     |
+|[ddgraph](problems.md#ddgraph)                       |1.20.0  |1 __+1__  |          |2    |
+|[debugme](problems.md#debugme)                       |1.0.2   |__+1__    |          |     |
+|[devtools](problems.md#devtools)                     |1.13.3  |__+1__    |          |     |
+|[dgo](problems.md#dgo)                               |0.2.10  |__+1__    |          |     |
+|[diffobj](problems.md#diffobj)                       |0.1.6   |__+1__    |          |     |
+|[dotCall64](problems.md#dotcall64)                   |0.9-04  |__+1__    |          |     |
+|[drake](problems.md#drake)                           |4.2.0   |__+1__    |          |     |
+|[dwapi](problems.md#dwapi)                           |0.1.1   |__+1__    |          |1    |
+|[dynamichazard](problems.md#dynamichazard)           |0.4.0   |__+1__    |1         |1    |
+|[EAinference](problems.md#eainference)               |0.2.1   |__+1__    |          |     |
+|[EnrichedHeatmap](problems.md#enrichedheatmap)       |1.6.0   |__+1__    |          |1    |
+|[expss](problems.md#expss)                           |0.8.2   |__+1__    |          |     |
+|[ggloop](problems.md#ggloop)                         |0.1.0   |__+1__    |          |     |
+|[githubinstall](problems.md#githubinstall)           |0.2.1   |__+1__    |          |     |
+|[Gmisc](problems.md#gmisc)                           |1.4.1   |__+1__    |          |     |
+|[HIBPwned](problems.md#hibpwned)                     |0.1.6   |__+1__    |          |1    |
+|[httptest](problems.md#httptest)                     |2.1.2   |__+2__    |          |     |
+|[hutils](problems.md#hutils)                         |0.8.0   |__+1__    |          |     |
+|[kernelboot](problems.md#kernelboot)                 |0.1.2   |__+1__    |          |     |
+|[kimisc](problems.md#kimisc)                         |0.3     |__+1__    |          |1    |
+|[lintr](problems.md#lintr)                           |1.0.1   |__+1__    |          |     |
+|[lme4](problems.md#lme4)                             |1.1-14  |__+1__    |          |1    |
+|[mockery](problems.md#mockery)                       |0.3.0   |__+1__    |          |1    |
+|[modmarg](problems.md#modmarg)                       |0.6.0   |__+1__    |          |     |
+|[move](problems.md#move)                             |3.0.1   |__+1__    |          |     |
+|[msde](problems.md#msde)                             |1.0.2   |__+1__    |          |     |
+|[narray](problems.md#narray)                         |0.2.2   |__+1__    |          |     |
+|[nat](problems.md#nat)                               |1.8.9   |__+1__    |          |     |
+|[netdiffuseR](problems.md#netdiffuser)               |1.18.1  |__+1__    |          |1    |
+|[nofrills](problems.md#nofrills)                     |0.2.0   |__+1__    |          |     |
+|[optimus](problems.md#optimus)                       |0.1.0   |__+1__    |          |1    |
+|[passport](problems.md#passport)                     |0.1.1   |__+1__    |          |     |
+|[quanteda](problems.md#quanteda)                     |0.99.12 |__+1__    |          |2    |
+|[raptr](problems.md#raptr)                           |0.0.5   |__+2__    |          |2    |
+|[RCAS](problems.md#rcas)                             |1.2.0   |__+1__    |          |1    |
+|[rcellminerData](problems.md#rcellminerdata)         |1.8.0   |1 __+1__  |1         |3    |
+|[remotes](problems.md#remotes)                       |1.1.0   |__+1__    |          |     |
+|[revdbayes](problems.md#revdbayes)                   |1.2.1   |__+1__    |          |     |
+|[rex](problems.md#rex)                               |1.1.1   |__+1__    |          |     |
+|[rGoodData](problems.md#rgooddata)                   |0.1.0   |__+1__    |          |     |
+|[rlang](problems.md#rlang)                           |0.1.2   |__+1__    |          |     |
+|[RNeXML](problems.md#rnexml)                         |2.0.7   |__+1__    |          |1    |
+|[rprojroot](problems.md#rprojroot)                   |1.2     |__+1__    |          |     |
+|[rpsftm](problems.md#rpsftm)                         |1.2.0   |__+1__    |          |     |
+|[rtdists](problems.md#rtdists)                       |0.7-3   |__+1__    |          |     |
+|[sankey](problems.md#sankey)                         |1.0.0   |__+1__    |          |     |
+|[spam](problems.md#spam)                             |2.1-1   |__+1__    |          |1    |
+|[subprocess](problems.md#subprocess)                 |0.8.1   |__+1__    |          |     |
+|[swirlify](problems.md#swirlify)                     |0.5.1   |__+1__    |          |     |
+|[tidyquant](problems.md#tidyquant)                   |0.5.3   |-2 __+1__ |-1        |1    |
+|[tidyxl](problems.md#tidyxl)                         |0.2.3   |-1        |-6 __+1__ |1 -2 |
+|[unitizer](problems.md#unitizer)                     |1.4.4   |__+1__    |          |     |
+|[wdman](problems.md#wdman)                           |0.2.2   |__+1__    |          |     |
+|[whoami](problems.md#whoami)                         |1.1.1   |__+1__    |          |     |
+|[withr](problems.md#withr)                           |2.0.0   |__+1__    |          |     |
+|[zeallot](problems.md#zeallot)                       |0.0.6   |__+1__    |          |     |
+|[Zelig](problems.md#zelig)                           |5.1-4   |__+1__    |          |     |
+|[zonator](problems.md#zonator)                       |0.5.8   |__+1__    |          |1    |
+
+## All (2697)
+
+|package                                                                |version       |error     |warning   |note |
+|:----------------------------------------------------------------------|:-------------|:---------|:---------|:----|
+|[ABAEnrichment](problems.md#abaenrichment)                             |1.6.0         |          |          |3    |
+|[abbyyR](problems.md#abbyyr)                                           |0.5.1         |1         |          |     |
+|ABCoptim                                                               |0.14.0        |          |          |     |
+|[abjutils](problems.md#abjutils)                                       |0.0.1         |          |          |1    |
+|acepack                                                                |1.4.1         |          |          |     |
+|acnr                                                                   |1.0.0         |          |          |     |
+|adeba                                                                  |1.0.2         |          |          |     |
+|adegenet                                                               |2.1.0         |          |          |     |
+|adepro                                                                 |0.1.0         |          |          |     |
+|admixturegraph                                                         |1.0.2         |          |          |     |
+|[ADPclust](problems.md#adpclust)                                       |0.7           |          |          |1    |
+|aemo                                                                   |0.2.0         |          |          |     |
+|[afex](problems.md#afex)                                               |0.18-0        |          |          |1    |
+|afpt                                                                   |1.0.0         |          |          |     |
+|ahp                                                                    |0.2.11        |          |          |     |
+|[AHR](problems.md#ahr)                                                 |1.4.2         |          |          |1    |
+|[aidar](problems.md#aidar)                                             |1.0.0         |__+1__    |          |3    |
+|ajv                                                                    |1.0.0         |          |          |     |
+|[ALA4R](problems.md#ala4r)                                             |1.5.6         |1         |1         |     |
+|alakazam                                                               |0.2.8         |          |          |     |
+|aLFQ                                                                   |1.3.4         |          |          |     |
+|alfred                                                                 |0.1.4         |          |          |     |
+|AlignStat                                                              |1.3.1         |          |          |     |
+|AllelicImbalance                                                       |1.14.0        |          |          |     |
+|alluvial                                                               |0.1-2         |          |          |     |
+|[AlphaVantageClient](problems.md#alphavantageclient)                   |0.0.1         |__+1__    |          |     |
+|[alphavantager](problems.md#alphavantager)                             |0.1.0         |          |          |1    |
+|alpine                                                                 |1.2.0         |          |          |     |
+|[alR](problems.md#alr)                                                 |2.2.0         |          |          |1    |
+|[ameco](problems.md#ameco)                                             |0.2.7         |1         |          |1    |
+|[analogsea](problems.md#analogsea)                                     |0.5.0         |1         |          |     |
+|analogue                                                               |0.17-0        |          |          |     |
+|analogueExtra                                                          |0.1-1         |          |          |     |
+|[AneuFinder](problems.md#aneufinder)                                   |1.4.0         |          |          |1    |
+|angstroms                                                              |0.0.1         |          |          |     |
+|anim.plots                                                             |0.2           |          |          |     |
+|[ANLP](problems.md#anlp)                                               |1.3           |          |          |1    |
+|[AnnotationBustR](problems.md#annotationbustr)                         |1.1           |1         |          |     |
+|AnnotationFilter                                                       |1.0.0         |          |          |     |
+|[annotatr](problems.md#annotatr)                                       |1.2.1         |          |          |1    |
+|[anomalyDetection](problems.md#anomalydetection)                       |0.2.4         |          |          |1    |
+|anonymizer                                                             |0.2.0         |          |          |     |
+|antaresProcessing                                                      |0.11          |          |          |     |
+|[antaresRead](problems.md#antaresread)                                 |1.1.4         |__+1__    |          |     |
+|[antaresViz](problems.md#antaresviz)                                   |0.11          |          |          |1    |
+|aoos                                                                   |0.5.0         |          |          |     |
+|apa                                                                    |0.2.0         |          |          |     |
+|apaStyle                                                               |0.5           |          |          |     |
+|apaTables                                                              |1.5.1         |          |          |     |
+|apdesign                                                               |1.0.0         |          |          |     |
+|[apercu](problems.md#apercu)                                           |0.2.3         |          |          |1    |
+|apex                                                                   |1.0.3         |          |          |     |
+|APfun                                                                  |0.1.2         |          |          |     |
+|aphid                                                                  |1.0.1         |          |          |     |
+|apricom                                                                |1.0.0         |          |          |     |
+|[archivist](problems.md#archivist)                                     |2.1.2         |          |          |2    |
+|argparse                                                               |1.0.7         |          |          |     |
+|ArgumentCheck                                                          |0.10.2        |          |          |     |
+|[ari](problems.md#ari)                                                 |0.1.0         |1         |          |     |
+|[ARPobservation](problems.md#arpobservation)                           |1.1           |          |          |1    |
+|arrApply                                                               |2.0.1         |          |          |     |
+|arsenal                                                                |0.6.0         |          |          |     |
+|ARTool                                                                 |0.10.4        |          |          |     |
+|arules                                                                 |1.5-4         |          |          |     |
+|arulesCBA                                                              |1.1.2         |          |          |     |
+|aRxiv                                                                  |0.5.16        |          |          |     |
+|ASAFE                                                                  |1.2.0         |          |          |     |
+|[ashr](problems.md#ashr)                                               |2.0.5         |          |          |1    |
+|aslib                                                                  |0.1           |          |          |     |
+|aspi                                                                   |0.2.0         |          |          |     |
+|[asremlPlus](problems.md#asremlplus)                                   |2.0-12        |          |          |1    |
+|assertive                                                              |0.3-5         |          |          |     |
+|[assertive.base](problems.md#assertive.base)                           |0.0-7         |          |          |1    |
+|assertive.code                                                         |0.0-1         |          |          |     |
+|assertive.data                                                         |0.0-1         |          |          |     |
+|assertive.data.uk                                                      |0.0-1         |          |          |     |
+|assertive.data.us                                                      |0.0-1         |          |          |     |
+|assertive.datetimes                                                    |0.0-2         |          |          |     |
+|assertive.files                                                        |0.0-2         |          |          |     |
+|[assertive.matrices](problems.md#assertive.matrices)                   |0.0-1         |          |          |1    |
+|assertive.models                                                       |0.0-1         |          |          |     |
+|assertive.numbers                                                      |0.0-2         |          |          |     |
+|assertive.properties                                                   |0.0-4         |          |          |     |
+|[assertive.reflection](problems.md#assertive.reflection)               |0.0-4         |          |          |1    |
+|[assertive.sets](problems.md#assertive.sets)                           |0.0-3         |          |          |1    |
+|assertive.strings                                                      |0.0-3         |          |          |     |
+|[assertive.types](problems.md#assertive.types)                         |0.0-3         |          |          |1    |
+|assertr                                                                |2.0.2.2       |          |          |     |
+|assertthat                                                             |0.2.0         |          |          |     |
+|[ASSIGN](problems.md#assign)                                           |1.12.0        |          |          |1    |
+|assignPOP                                                              |1.1.3         |          |          |     |
+|atlantistools                                                          |0.4.3         |          |          |     |
+|attrCUSUM                                                              |0.1.0         |          |          |     |
+|[attribrisk](problems.md#attribrisk)                                   |0.1           |          |          |1    |
+|auk                                                                    |0.0.2         |          |          |     |
+|[aurelius](problems.md#aurelius)                                       |0.8.4         |          |          |1    |
+|[autoBagging](problems.md#autobagging)                                 |0.1.0         |          |          |1    |
+|[autoimage](problems.md#autoimage)                                     |1.3           |__+1__    |          |     |
+|AutoModel                                                              |0.4.9         |          |          |     |
+|automultinomial                                                        |1.0.0         |          |          |     |
+|[autothresholdr](problems.md#autothresholdr)                           |0.6.0         |1         |          |     |
+|[autovarCore](problems.md#autovarcore)                                 |1.0-0         |__+1__    |          |     |
+|aws.alexa                                                              |0.1.4         |          |          |     |
+|aws.cloudtrail                                                         |0.1.5         |          |          |     |
+|aws.lambda                                                             |0.1.6         |          |          |     |
+|aws.s3                                                                 |0.3.3         |          |          |     |
+|[aws.signature](problems.md#aws.signature)                             |0.3.5         |1         |          |     |
+|aws.sqs                                                                |0.1.10        |          |          |     |
+|awsjavasdk                                                             |0.2.0         |-1        |          |     |
+|AzureML                                                                |0.2.13        |          |          |     |
+|backpipe                                                               |0.1.8.1       |          |          |     |
+|[backShift](problems.md#backshift)                                     |0.1.4.2       |          |          |1    |
+|[backtestGraphics](problems.md#backtestgraphics)                       |0.1.6         |1         |          |     |
+|[bacon](problems.md#bacon)                                             |1.4.0         |          |          |1    |
+|[badgecreatr](problems.md#badgecreatr)                                 |0.1.0         |          |          |1    |
+|[bagRboostR](problems.md#bagrboostr)                                   |0.0.2         |          |          |1    |
+|[ballgown](problems.md#ballgown)                                       |2.8.4         |          |          |1    |
+|bamsignals                                                             |1.8.0         |          |          |     |
+|[banocc](problems.md#banocc)                                           |1.0.0         |1         |          |1    |
+|[banR](problems.md#banr)                                               |0.2.0         |          |          |1    |
+|base64url                                                              |1.2           |          |          |     |
+|baseballDBR                                                            |0.1.2         |          |          |     |
+|basecallQC                                                             |1.0.1         |          |          |     |
+|basictabler                                                            |?             |          |          |     |
+|[BatchExperiments](problems.md#batchexperiments)                       |1.4.1         |          |          |2    |
+|BatchGetSymbols                                                        |1.2           |          |          |     |
+|BatchJobs                                                              |1.6           |          |          |     |
+|[BatchQC](problems.md#batchqc)                                         |1.4.0         |          |1         |1    |
+|[batchtools](problems.md#batchtools)                                   |0.9.6         |__+1__    |          |1    |
+|BaTFLED3D                                                              |0.2.11        |          |          |     |
+|[batman](problems.md#batman)                                           |0.1.0         |          |          |1    |
+|bayesAB                                                                |1.1.0         |          |          |     |
+|bayesbio                                                               |1.0.0         |          |          |     |
+|bayesboot                                                              |0.2.1         |          |          |     |
+|BayesCombo                                                             |1.0           |          |          |     |
+|[bayesDP](problems.md#bayesdp)                                         |1.2.2         |          |          |1    |
+|[BayesFactor](problems.md#bayesfactor)                                 |0.9.12-2      |          |          |1    |
+|bayesGDS                                                               |0.6.2         |          |          |     |
+|BayesianTools                                                          |?             |          |          |     |
+|[bayesplot](problems.md#bayesplot)                                     |1.4.0         |          |          |1    |
+|bazar                                                                  |0.1.6         |          |          |     |
+|BBmisc                                                                 |1.11          |          |          |     |
+|[bbmle](problems.md#bbmle)                                             |1.0.19        |          |1         |     |
+|bcs                                                                    |1.0.0         |          |          |     |
+|bdscale                                                                |2.0.0         |          |          |     |
+|[beanz](problems.md#beanz)                                             |2.1           |          |          |1    |
+|[BEDMatrix](problems.md#bedmatrix)                                     |1.4.0         |          |          |2    |
+|bedr                                                                   |1.0.3         |          |          |     |
+|benchmarkme                                                            |0.6.0         |          |          |     |
+|[benchmarkmeData](problems.md#benchmarkmedata)                         |0.5.1         |          |          |1    |
+|benchr                                                                 |0.2.0         |          |          |     |
+|benford.analysis                                                       |0.1.4.1       |          |          |     |
+|[BEQI2](problems.md#beqi2)                                             |2.0-0         |          |1         |1    |
+|[betalink](problems.md#betalink)                                       |2.2.1         |          |          |1    |
+|bfork                                                                  |0.1.2         |          |          |     |
+|BGData                                                                 |1.0.0         |          |          |     |
+|BgeeDB                                                                 |2.2.0         |          |          |     |
+|bgmfiles                                                               |0.0.6         |          |          |     |
+|bgmm                                                                   |1.8.3         |          |          |     |
+|bib2df                                                                 |1.0.0         |          |          |     |
+|bibliospec                                                             |0.0.4         |          |          |     |
+|bibtex                                                                 |0.4.2         |          |          |     |
+|BIEN                                                                   |1.2.2         |          |          |     |
+|[bigKRLS](problems.md#bigkrls)                                         |2.0.2         |          |          |1    |
+|[BIGL](problems.md#bigl)                                               |1.1.0         |          |1         |     |
+|[biglasso](problems.md#biglasso)                                       |1.3-6         |          |          |1    |
+|[bigmemory](problems.md#bigmemory)                                     |4.5.19        |          |          |2    |
+|[bigQueryR](problems.md#bigqueryr)                                     |0.3.1         |1         |          |1    |
+|bigrquery                                                              |0.4.1         |          |          |     |
+|bigstatsr                                                              |?             |          |          |     |
+|bigstep                                                                |0.7.4         |          |          |     |
+|[bikedata](problems.md#bikedata)                                       |0.0.4         |          |          |1    |
+|billboarder                                                            |0.0.3         |          |          |     |
+|binaryLogic                                                            |0.3.5         |          |          |     |
+|bindr                                                                  |0.1           |          |          |     |
+|bindrcpp                                                               |0.2           |          |          |     |
+|[binman](problems.md#binman)                                           |0.1.0         |__+1__    |          |     |
+|binomen                                                                |0.1.2         |          |          |     |
+|binst                                                                  |0.2.0         |          |          |     |
+|[bio3d](problems.md#bio3d)                                             |2.3-3         |1         |          |1    |
+|bioassayR                                                              |1.14.0        |          |          |     |
+|[biobroom](problems.md#biobroom)                                       |1.8.0         |          |          |2    |
+|[bioCancer](problems.md#biocancer)                                     |1.4.0         |          |          |2    |
+|BiocFileCache                                                          |1.0.1         |          |          |     |
+|BioCor                                                                 |1.0.1         |          |          |     |
+|[biogas](problems.md#biogas)                                           |1.8.1         |          |1         |     |
+|[biogram](problems.md#biogram)                                         |1.4           |          |          |1    |
+|bioinactivation                                                        |1.1.5         |          |          |     |
+|BioInstaller                                                           |0.2.1         |-1        |          |     |
+|[biolink](problems.md#biolink)                                         |0.1.2         |1         |          |1    |
+|[biomaRt](problems.md#biomart)                                         |2.32.1        |-1        |          |1    |
+|[biomartr](problems.md#biomartr)                                       |0.5.2         |1         |          |     |
+|[biomformat](problems.md#biomformat)                                   |1.4.0         |          |          |2    |
+|[biomod2](problems.md#biomod2)                                         |3.3-7         |          |          |2    |
+|bioOED                                                                 |0.1.1         |          |          |     |
+|[BioQC](problems.md#bioqc)                                             |1.4.0         |          |          |2    |
+|bioset                                                                 |0.1.0         |          |          |     |
+|biotic                                                                 |0.1.2         |          |          |     |
+|[biotmle](problems.md#biotmle)                                         |1.0.4         |          |          |1    |
+|birdnik                                                                |0.1.0         |          |          |     |
+|birtr                                                                  |1.0.0         |          |          |     |
+|[BisRNA](problems.md#bisrna)                                           |0.2.1         |          |          |1    |
+|biwavelet                                                              |0.20.11       |          |          |     |
+|[bizdays](problems.md#bizdays)                                         |1.0.4         |          |          |1    |
+|[blackbox](problems.md#blackbox)                                       |1.1.2         |          |          |1    |
+|[blastula](problems.md#blastula)                                       |0.1           |          |          |1    |
+|[blme](problems.md#blme)                                               |1.0-4         |          |          |1    |
+|BLModel                                                                |1.0.2         |          |          |     |
+|blob                                                                   |1.1.0         |          |          |     |
+|blscrapeR                                                              |3.0.1         |          |          |     |
+|[BMhyb](problems.md#bmhyb)                                             |1.5.2         |          |1         |     |
+|bmp                                                                    |0.3           |          |          |     |
+|[bnclassify](problems.md#bnclassify)                                   |0.3.3         |          |          |1    |
+|bnnSurvival                                                            |0.1.5         |          |          |     |
+|BNPMediation                                                           |0.1.0         |          |          |     |
+|bnstruct                                                               |1.0.2         |          |          |     |
+|bold                                                                   |0.5.0         |          |          |     |
+|[bomrang](problems.md#bomrang)                                         |0.0.7         |1         |          |     |
+|bootLR                                                                 |1.0           |          |          |     |
+|[bossMaps](problems.md#bossmaps)                                       |0.1.0         |          |          |1    |
+|boxr                                                                   |0.3.4         |          |          |     |
+|bpa                                                                    |0.1.1         |          |          |     |
+|[BPRMeth](problems.md#bprmeth)                                         |1.2.0         |          |          |1    |
+|[breathtestcore](problems.md#breathtestcore)                           |0.4.0         |          |          |1    |
+|[breathteststan](problems.md#breathteststan)                           |0.3.0         |          |          |1    |
+|brglm2                                                                 |0.1.5         |          |          |     |
+|BridgeDbR                                                              |1.10.2        |          |          |     |
+|bridgedist                                                             |0.1.0         |          |          |     |
+|bridger2                                                               |0.1.0         |          |          |     |
+|bridgesampling                                                         |0.2-2         |          |          |     |
+|[briskaR](problems.md#briskar)                                         |0.1.1         |1         |          |     |
+|[brms](problems.md#brms)                                               |1.10.0        |1         |1         |1    |
+|broman                                                                 |0.65-4        |          |          |     |
+|[broom](problems.md#broom)                                             |0.4.2         |2         |          |     |
+|brr                                                                    |1.0.0         |          |          |     |
+|brranching                                                             |0.2.0         |          |          |     |
+|[bsplus](problems.md#bsplus)                                           |0.1.0         |          |          |1    |
+|[bssm](problems.md#bssm)                                               |0.1.1-1       |          |          |1    |
+|[BTYDplus](problems.md#btydplus)                                       |1.0.1         |1         |          |     |
+|BUMHMM                                                                 |1.0.0         |          |          |     |
+|[bumphunter](problems.md#bumphunter)                                   |1.16.0        |1         |          |4    |
+|bunchr                                                                 |1.2.0         |          |          |     |
+|burnr                                                                  |0.2.1         |          |          |     |
+|[BurStMisc](problems.md#burstmisc)                                     |1.1           |          |          |1    |
+|[BuyseTest](problems.md#buysetest)                                     |1.0           |1         |1         |     |
+|BWStest                                                                |0.2.1         |          |          |     |
+|c2c                                                                    |0.1.0         |          |          |     |
+|[callr](problems.md#callr)                                             |1.0.0         |__+1__    |          |     |
+|camsRad                                                                |0.3.0         |          |          |     |
+|[canceR](problems.md#cancer)                                           |1.8.0         |1         |          |1    |
+|[CancerInSilico](problems.md#cancerinsilico)                           |1.2.0         |          |          |3    |
+|[canvasXpress](problems.md#canvasxpress)                               |1.17.4        |          |          |1    |
+|captr                                                                  |0.3.0         |          |          |     |
+|CARBayesST                                                             |2.5.1         |          |          |     |
+|[Cardinal](problems.md#cardinal)                                       |1.8.0         |          |          |1    |
+|[caret](problems.md#caret)                                             |6.0-77        |          |          |1    |
+|[caretEnsemble](problems.md#caretensemble)                             |2.0.0         |1         |          |     |
+|carpenter                                                              |0.2.1         |          |          |     |
+|casebase                                                               |0.1.0         |          |          |     |
+|catcont                                                                |0.3.0         |          |          |     |
+|catmap                                                                 |1.6.4         |          |          |     |
+|[catSurv](problems.md#catsurv)                                         |1.0.3         |          |          |2    |
+|CATTexact                                                              |0.1.0         |          |          |     |
+|causaldrf                                                              |0.3           |          |          |     |
+|CausalImpact                                                           |1.2.3         |          |          |     |
+|[Causata](problems.md#causata)                                         |4.2-0         |          |          |2    |
+|cbar                                                                   |0.1.2         |          |          |     |
+|ccafs                                                                  |0.1.0         |          |          |     |
+|ccdrAlgorithm                                                          |0.0.4         |          |          |     |
+|[ccmap](problems.md#ccmap)                                             |1.2.0         |1         |1         |3    |
+|[ccrepe](problems.md#ccrepe)                                           |1.12.0        |1         |          |1    |
+|cctools                                                                |0.1.0         |          |          |     |
+|[cda](problems.md#cda)                                                 |2.0.0         |          |          |1    |
+|cdata                                                                  |0.1.6         |          |          |     |
+|cdcfluview                                                             |0.5.1         |          |          |     |
+|CDVineCopulaConditional                                                |0.1.1         |          |          |     |
+|cellity                                                                |1.4.0         |          |          |     |
+|cellranger                                                             |1.1.0         |          |          |     |
+|[Census2016](problems.md#census2016)                                   |0.2.0         |          |          |1    |
+|[censys](problems.md#censys)                                           |0.1.0         |1         |          |     |
+|cgdsr                                                                  |1.2.6         |          |          |     |
+|[changepoint](problems.md#changepoint)                                 |2.2.2         |          |          |1    |
+|charlatan                                                              |0.1.0         |          |          |     |
+|[CheckDigit](problems.md#checkdigit)                                   |0.1-1         |          |          |1    |
+|checkmate                                                              |1.8.4         |          |          |     |
+|[checkpoint](problems.md#checkpoint)                                   |0.4.1         |__+1__    |          |     |
+|[Chicago](problems.md#chicago)                                         |1.4.0         |          |1         |3    |
+|[chimeraviz](problems.md#chimeraviz)                                   |1.0.2         |          |          |2    |
+|chipenrich                                                             |2.0.1         |          |          |     |
+|[chipenrich.data](problems.md#chipenrich.data)                         |2.0.0         |          |          |1    |
+|ChIPexoQual                                                            |1.0.0         |          |          |     |
+|[ChIPpeakAnno](problems.md#chippeakanno)                               |3.10.2        |2         |1         |3    |
+|ChIPseeker                                                             |1.12.1        |          |          |     |
+|CHNOSZ                                                                 |1.1.0         |          |          |     |
+|chopthin                                                               |0.2.2         |          |          |     |
+|chords                                                                 |0.95.4        |          |          |     |
+|choroplethr                                                            |3.6.1         |          |          |     |
+|[chromer](problems.md#chromer)                                         |0.1           |          |          |2    |
+|[chromstaR](problems.md#chromstar)                                     |1.2.0         |1         |          |     |
+|chunked                                                                |0.4           |          |          |     |
+|[CINdex](problems.md#cindex)                                           |1.4.0         |          |1         |2    |
+|citr                                                                   |0.2.0         |          |          |     |
+|[civis](problems.md#civis)                                             |1.0.2         |__+1__    |          |     |
+|cjoint                                                                 |2.0.5         |          |          |     |
+|ck37r                                                                  |1.0.0         |          |          |     |
+|ckanr                                                                  |0.1.0         |          |          |     |
+|Ckmeans.1d.dp                                                          |4.2.1         |          |          |     |
+|clampSeg                                                               |1.0-1         |          |          |     |
+|clarifai                                                               |0.4.2         |          |          |     |
+|[classifierplots](problems.md#classifierplots)                         |1.3.3         |          |          |1    |
+|classiFunc                                                             |0.1.0         |          |          |     |
+|[cld2](problems.md#cld2)                                               |1.1           |1         |          |2    |
+|[cld3](problems.md#cld3)                                               |1.0           |          |          |1    |
+|[cleanEHR](problems.md#cleanehr)                                       |0.1           |          |          |1    |
+|cleangeo                                                               |0.2-2         |          |          |     |
+|cleanNLP                                                               |1.10.0        |          |          |     |
+|[cleaver](problems.md#cleaver)                                         |1.14.0        |          |          |1    |
+|clifro                                                                 |3.1-5         |          |          |     |
+|climbeR                                                                |0.0.1         |          |          |     |
+|climwin                                                                |1.1.0         |          |          |     |
+|clipr                                                                  |0.3.3         |          |          |     |
+|clisymbols                                                             |1.2.0         |          |          |     |
+|clubSandwich                                                           |0.2.3         |          |          |     |
+|[clust.bin.pair](problems.md#clust.bin.pair)                           |0.0.6         |__+1__    |          |     |
+|[clusterExperiment](problems.md#clusterexperiment)                     |1.2.0         |          |1         |1    |
+|clusterhap                                                             |0.1           |          |          |     |
+|[clustermq](problems.md#clustermq)                                     |0.7.0         |1         |          |     |
+|clusternomics                                                          |0.1.1         |          |          |     |
+|clusterProfiler                                                        |3.4.4         |          |          |     |
+|[ClusterR](problems.md#clusterr)                                       |1.0.7         |          |          |1    |
+|[ClusterSignificance](problems.md#clustersignificance)                 |1.4.1         |          |          |1    |
+|[clusterSim](problems.md#clustersim)                                   |0.46-2        |          |          |1    |
+|cmaesr                                                                 |1.0.3         |          |          |     |
+|cmna                                                                   |1.0.0         |          |          |     |
+|cnbdistr                                                               |1.0.1         |          |          |     |
+|[CNEr](problems.md#cner)                                               |1.12.1        |          |1         |2    |
+|[CNPBayes](problems.md#cnpbayes)                                       |1.6.1         |          |1         |3    |
+|[coala](problems.md#coala)                                             |0.5.0         |          |          |1    |
+|[cocor](problems.md#cocor)                                             |1.1-3         |          |          |1    |
+|[cocorresp](problems.md#cocorresp)                                     |0.3-0         |          |          |1    |
+|[cocron](problems.md#cocron)                                           |1.0-1         |          |          |1    |
+|codyn                                                                  |1.1.0         |          |          |     |
+|[coefplot](problems.md#coefplot)                                       |1.2.4         |          |          |1    |
+|coenocliner                                                            |0.2-2         |          |          |     |
+|coga                                                                   |0.2.1         |          |          |     |
+|[CoGAPS](problems.md#cogaps)                                           |2.10.0        |          |          |2    |
+|coinmarketcapr                                                         |0.1           |          |          |     |
+|cointReg                                                               |0.2.0         |          |          |     |
+|colf                                                                   |0.1.3         |          |          |     |
+|CollapsABEL                                                            |0.10.11       |          |          |     |
+|[collapsibleTree](problems.md#collapsibletree)                         |0.1.6         |          |          |1    |
+|collUtils                                                              |1.0.5         |          |          |     |
+|[colordistance](problems.md#colordistance)                             |0.8.0         |          |          |1    |
+|colorednoise                                                           |0.0.1         |          |          |     |
+|colormap                                                               |0.1.4         |          |          |     |
+|[colorpatch](problems.md#colorpatch)                                   |0.1.2         |          |          |1    |
+|colorplaner                                                            |0.1.3         |          |          |     |
+|colourlovers                                                           |0.2.2         |          |          |     |
+|colourvision                                                           |2.0           |          |          |     |
+|combiter                                                               |1.0.2         |          |          |     |
+|commentr                                                               |1.0.4         |          |          |     |
+|CompareCausalNetworks                                                  |0.1.9         |          |          |     |
+|compareDF                                                              |1.2.0         |          |          |     |
+|[COMPASS](problems.md#compass)                                         |1.14.0        |1         |1         |4    |
+|[ComplexHeatmap](problems.md#complexheatmap)                           |1.14.0        |          |          |1    |
+|comtradr                                                               |0.0.2         |-1        |          |     |
+|concatenate                                                            |1.0.0         |          |          |     |
+|concaveman                                                             |1.0.0         |          |          |     |
+|[condformat](problems.md#condformat)                                   |0.6.0         |          |          |1    |
+|conditions                                                             |0.1           |          |          |     |
+|condvis                                                                |0.4-2         |          |          |     |
+|[confidence](problems.md#confidence)                                   |1.1-2         |          |1         |     |
+|config                                                                 |0.2           |          |          |     |
+|ConfigParser                                                           |1.0.0         |          |          |     |
+|[configr](problems.md#configr)                                         |0.3.1         |          |          |1    |
+|confinterpret                                                          |1.0.0         |          |          |     |
+|[ConR](problems.md#conr)                                               |1.2.1         |          |          |1    |
+|[constants](problems.md#constants)                                     |0.0.1         |          |          |1    |
+|convertr                                                               |0.1           |          |          |     |
+|[convexjlr](problems.md#convexjlr)                                     |0.6.1         |1         |          |     |
+|convey                                                                 |0.2.0         |          |          |     |
+|coppeCosenzaR                                                          |0.1.2         |          |          |     |
+|[coRanking](problems.md#coranking)                                     |0.1.3         |          |          |1    |
+|corehunter                                                             |3.2.0         |          |          |     |
+|coreSim                                                                |0.2.4         |          |          |     |
+|[corpus](problems.md#corpus)                                           |0.9.3         |__+1__    |          |2    |
+|[corpustools](problems.md#corpustools)                                 |0.3           |          |          |1    |
+|corrgram                                                               |1.12          |          |          |     |
+|corrplot                                                               |0.77          |          |          |     |
+|corrr                                                                  |0.2.1         |          |          |     |
+|corset                                                                 |0.1-4         |          |          |     |
+|coseq                                                                  |1.0.1         |          |          |     |
+|[COSMIC.67](problems.md#cosmic.67)                                     |1.12.0        |          |          |2    |
+|couchDB                                                                |1.4.1         |          |          |     |
+|[Countr](problems.md#countr)                                           |3.2.8         |          |          |1    |
+|[countrycode](problems.md#countrycode)                                 |0.19          |          |          |1    |
+|[countyfloods](problems.md#countyfloods)                               |0.0.2         |          |1         |     |
+|covfefe                                                                |0.1.0         |          |          |     |
+|[covr](problems.md#covr)                                               |3.0.0         |1         |          |     |
+|[cowbell](problems.md#cowbell)                                         |0.1.0         |          |          |1    |
+|cowsay                                                                 |0.5.0         |          |          |     |
+|CPBayes                                                                |0.2.0         |          |          |     |
+|cpr                                                                    |0.2.3         |          |          |     |
+|cprr                                                                   |0.1.1         |          |          |     |
+|CPsurv                                                                 |1.0.0         |          |          |     |
+|crandatapkgs                                                           |0.1.8         |          |          |     |
+|cranlike                                                               |1.0.1         |          |          |     |
+|crayon                                                                 |1.3.4         |          |          |     |
+|creditr                                                                |0.6.1         |          |          |     |
+|CreditRisk                                                             |0.1.1         |          |          |     |
+|[crisprseekplus](problems.md#crisprseekplus)                           |1.2.0         |          |1         |     |
+|CrispRVariants                                                         |1.4.1         |          |          |     |
+|crminer                                                                |0.1.4         |          |          |     |
+|crochet                                                                |1.0.0         |          |          |     |
+|cronR                                                                  |0.3.0         |          |          |     |
+|[crossmeta](problems.md#crossmeta)                                     |1.2.0         |          |1         |3    |
+|[Crossover](problems.md#crossover)                                     |0.1-16        |__+1__    |1         |     |
+|crtests                                                                |0.2.1         |          |          |     |
+|[crul](problems.md#crul)                                               |0.4.0         |          |          |1    |
+|crunchy                                                                |0.2.0         |          |          |     |
+|CSSP                                                                   |?             |          |          |     |
+|csvy                                                                   |0.1.3         |          |          |     |
+|ctsem                                                                  |2.4.0         |          |          |     |
+|ctsGE                                                                  |1.2.0         |          |          |     |
+|cubature                                                               |1.3-11        |          |          |     |
+|[curatedMetagenomicData](problems.md#curatedmetagenomicdata)           |1.2.0         |          |          |6    |
+|[curl](problems.md#curl)                                               |3.0           |          |          |1    |
+|[CVE](problems.md#cve)                                                 |1.2.0         |          |1         |2    |
+|cvequality                                                             |0.1.1         |          |          |     |
+|cyclocomp                                                              |1.1.0         |          |          |     |
+|[Cyclops](problems.md#cyclops)                                         |1.3.0         |          |          |1    |
+|[cydar](problems.md#cydar)                                             |1.0.0         |          |1         |1    |
+|cymruservices                                                          |0.2.0         |          |          |     |
+|CytobankAPI                                                            |1.1.0         |          |          |     |
+|[cytofkit](problems.md#cytofkit)                                       |1.8.4         |          |1         |2    |
+|cytominer                                                              |0.1.0         |          |          |     |
+|[CytoML](problems.md#cytoml)                                           |1.2.1         |          |1         |6    |
+|[d3r](problems.md#d3r)                                                 |0.7.0         |1         |          |1    |
+|dae                                                                    |3.0-04        |          |          |     |
+|daff                                                                   |0.3.0         |          |          |     |
+|dagitty                                                                |0.2-2         |          |          |     |
+|dagLogo                                                                |1.14.0        |          |          |     |
+|[DAISIE](problems.md#daisie)                                           |1.4           |          |          |1    |
+|DamiaNN                                                                |1.0.0         |          |          |     |
+|[DaMiRseq](problems.md#damirseq)                                       |1.0.0         |          |          |2    |
+|dams                                                                   |0.2           |          |          |     |
+|[DAPAR](problems.md#dapar)                                             |1.8.7         |          |1         |1    |
+|darch                                                                  |0.12.0        |          |          |     |
+|Dark                                                                   |0.9.8         |          |          |     |
+|[darksky](problems.md#darksky)                                         |1.3.0         |1         |          |     |
+|[dat](problems.md#dat)                                                 |0.3.0         |1         |          |     |
+|data.table                                                             |1.10.4-2      |          |          |     |
+|[data.tree](problems.md#data.tree)                                     |0.7.3         |          |1         |     |
+|[data.world](problems.md#data.world)                                   |1.1.1         |__+1__    |          |     |
+|datacheckr                                                             |0.2.0         |          |          |     |
+|DataCombine                                                            |0.2.21        |          |          |     |
+|dataCompareR                                                           |0.1.0         |          |          |     |
+|datadogr                                                               |0.1.1         |          |          |     |
+|[datadr](problems.md#datadr)                                           |0.8.6         |          |          |1    |
+|DataExplorer                                                           |0.4.0         |          |          |     |
+|[datafsm](problems.md#datafsm)                                         |0.2.0         |__+1__    |          |     |
+|DataLoader                                                             |1.3           |          |          |     |
+|[dataonderivatives](problems.md#dataonderivatives)                     |0.3.0         |1         |          |1    |
+|dataone                                                                |2.1.0         |          |          |     |
+|datapack                                                               |1.3.1         |          |          |     |
+|[datapasta](problems.md#datapasta)                                     |2.0.0         |1         |          |     |
+|[dataPreparation](problems.md#datapreparation)                         |0.2           |2         |2         |     |
+|dataRetrieval                                                          |2.7.3         |          |          |     |
+|[datarobot](problems.md#datarobot)                                     |2.7.1         |          |          |1    |
+|datasauRus                                                             |0.1.2         |          |          |     |
+|datastepr                                                              |0.0.2         |          |          |     |
+|[datastructures](problems.md#datastructures)                           |0.2.0         |          |          |1    |
+|dataverse                                                              |0.2.0         |          |          |     |
+|dbarts                                                                 |0.8-7         |          |          |     |
+|dbfaker                                                                |0.1.0         |          |          |     |
+|[dbhydroR](problems.md#dbhydror)                                       |0.2-3         |2         |          |     |
+|DBI                                                                    |0.7           |          |          |     |
+|[DBItest](problems.md#dbitest)                                         |1.5           |          |          |1    |
+|dbmss                                                                  |2.4-0         |          |          |     |
+|[dbplyr](problems.md#dbplyr)                                           |1.1.0         |          |          |1    |
+|[dbscan](problems.md#dbscan)                                           |1.1-1         |          |          |1    |
+|[dcemriS4](problems.md#dcemris4)                                       |0.55          |          |          |1    |
+|DCG                                                                    |0.9.2         |          |          |     |
+|[DChIPRep](problems.md#dchiprep)                                       |1.6.2         |          |          |1    |
+|dcmodify                                                               |0.1.1         |          |          |     |
+|[dcmr](problems.md#dcmr)                                               |1.0           |          |          |1    |
+|[ddgraph](problems.md#ddgraph)                                         |1.20.0        |1 __+1__  |          |2    |
+|ddpcr                                                                  |1.8           |          |          |     |
+|ddR                                                                    |0.1.2         |          |          |     |
+|deBInfer                                                               |0.4.1         |          |          |     |
+|[debrowser](problems.md#debrowser)                                     |1.4.5         |          |1         |2    |
+|[debugme](problems.md#debugme)                                         |1.0.2         |__+1__    |          |     |
+|decisionSupport                                                        |1.102.1       |          |          |     |
+|decoder                                                                |1.1.12        |          |          |     |
+|[decompr](problems.md#decompr)                                         |4.5.0         |          |          |1    |
+|deductive                                                              |0.1.2         |          |          |     |
+|deepboost                                                              |0.1.5         |          |          |     |
+|default                                                                |1.0.0         |          |          |     |
+|[DEFormats](problems.md#deformats)                                     |1.4.0         |          |          |1    |
+|dejaVu                                                                 |0.2.0         |          |          |     |
+|[Delaporte](problems.md#delaporte)                                     |6.1.0         |          |          |1    |
+|[DeLorean](problems.md#delorean)                                       |1.2.5         |          |1         |     |
+|DEMOVA                                                                 |1.0           |          |          |     |
+|[dendextend](problems.md#dendextend)                                   |1.5.2         |          |          |2    |
+|dendroExtra                                                            |0.0.2         |          |          |     |
+|dendroextras                                                           |0.2.2         |          |          |     |
+|dendroTools                                                            |0.0.3         |          |          |     |
+|densityClust                                                           |0.2.1         |          |          |     |
+|[DEploid](problems.md#deploid)                                         |0.4.4         |          |          |1    |
+|[DepthProc](problems.md#depthproc)                                     |2.0.2         |          |          |1    |
+|[derfinder](problems.md#derfinder)                                     |1.10.6        |          |1         |2    |
+|[derfinderHelper](problems.md#derfinderhelper)                         |1.10.0        |          |1         |     |
+|[derfinderPlot](problems.md#derfinderplot)                             |1.10.0        |          |          |1    |
+|Deriv                                                                  |3.8.1         |          |          |     |
+|desc                                                                   |1.1.1         |          |          |     |
+|DescribeDisplay                                                        |0.2.5         |          |          |     |
+|[describer](problems.md#describer)                                     |0.2.0         |1         |          |     |
+|descriptr                                                              |0.2.0         |          |          |     |
+|[DESeq2](problems.md#deseq2)                                           |1.16.1        |1         |1         |1    |
+|desplot                                                                |1.3           |          |          |     |
+|[destiny](problems.md#destiny)                                         |2.4.5         |          |          |7    |
+|detector                                                               |0.1.0         |          |          |     |
+|devRate                                                                |0.1.3         |          |          |     |
+|[devtools](problems.md#devtools)                                       |1.13.3        |__+1__    |          |     |
+|[dexter](problems.md#dexter)                                           |0.4.4         |          |          |2    |
+|df2json                                                                |0.0.2         |          |          |     |
+|DGCA                                                                   |1.0.1         |          |          |     |
+|[dggridR](problems.md#dggridr)                                         |2.0.1         |          |          |1    |
+|[dgo](problems.md#dgo)                                                 |0.2.10        |__+1__    |          |     |
+|[DHARMa](problems.md#dharma)                                           |0.1.5         |          |          |1    |
+|diagis                                                                 |0.1.3         |          |          |     |
+|diagonals                                                              |0.4.0         |          |          |     |
+|DiagrammeR                                                             |0.9.2         |          |          |     |
+|[DiceKriging](problems.md#dicekriging)                                 |1.5.5         |          |          |1    |
+|diceR                                                                  |0.2.0         |          |          |     |
+|DidacticBoost                                                          |0.1.1         |          |          |     |
+|[DiffBind](problems.md#diffbind)                                       |2.4.8         |          |          |3    |
+|[DiffLogo](problems.md#difflogo)                                       |1.6.0         |          |          |1    |
+|[diffloop](problems.md#diffloop)                                       |1.4.0         |          |          |1    |
+|[diffobj](problems.md#diffobj)                                         |0.1.6         |__+1__    |          |     |
+|diffpriv                                                               |0.4.2         |          |          |     |
+|diffrprojects                                                          |0.1.14        |          |          |     |
+|diffrprojectswidget                                                    |0.1.5         |          |          |     |
+|[diffusr](problems.md#diffusr)                                         |0.1.1         |          |          |2    |
+|digitize                                                               |0.0.4         |          |          |     |
+|[dils](problems.md#dils)                                               |0.8.1         |          |          |3    |
+|dimRed                                                                 |0.1.0         |          |          |     |
+|DirichletReg                                                           |0.6-3         |          |          |     |
+|[discgolf](problems.md#discgolf)                                       |0.1.0         |1         |          |     |
+|[discretecdAlgorithm](problems.md#discretecdalgorithm)                 |0.0.5         |          |          |1    |
+|discreteRV                                                             |1.2.2         |          |          |     |
+|disparityfilter                                                        |2.2.3         |          |          |     |
+|disposables                                                            |1.0.3         |          |          |     |
+|Distance                                                               |0.9.7         |          |          |     |
+|distances                                                              |0.1.2         |          |          |     |
+|divest                                                                 |0.4.1         |          |          |     |
+|[DLMtool](problems.md#dlmtool)                                         |4.4.1         |          |1         |1    |
+|dml                                                                    |1.1.0         |          |          |     |
+|[DMRScan](problems.md#dmrscan)                                         |1.0.0         |          |          |1    |
+|dmutate                                                                |0.1.2         |          |          |     |
+|[DNAshapeR](problems.md#dnashaper)                                     |1.4.0         |          |          |1    |
+|docker                                                                 |0.0.2         |          |          |     |
+|docopt                                                                 |0.4.5         |          |          |     |
+|docopulae                                                              |0.3.3         |          |          |     |
+|[document](problems.md#document)                                       |2.1.0         |1         |          |     |
+|[docuSignr](problems.md#docusignr)                                     |0.0.2         |1         |          |     |
+|docxtractr                                                             |0.2.0         |          |          |     |
+|[dodgr](problems.md#dodgr)                                             |0.0.1         |          |          |1    |
+|[domino](problems.md#domino)                                           |0.3.0         |1         |          |     |
+|[DOSE](problems.md#dose)                                               |3.2.0         |          |          |1    |
+|[dostats](problems.md#dostats)                                         |1.3.2         |          |          |1    |
+|[dotCall64](problems.md#dotcall64)                                     |0.9-04        |__+1__    |          |     |
+|Dowd                                                                   |0.12          |          |          |     |
+|downloader                                                             |0.4           |          |          |     |
+|downsize                                                               |0.2.2         |          |          |     |
+|dparser                                                                |0.1.7         |          |          |     |
+|dplR                                                                   |1.6.6         |          |          |     |
+|[dplyr](problems.md#dplyr)                                             |0.7.4         |          |          |2    |
+|dpmr                                                                   |0.1.9         |          |          |     |
+|[drake](problems.md#drake)                                             |4.2.0         |__+1__    |          |     |
+|DrBats                                                                 |0.1.4         |          |          |     |
+|DRIMSeq                                                                |1.4.1         |          |          |     |
+|drLumi                                                                 |0.1.2         |          |          |     |
+|drsmooth                                                               |1.9.0         |          |          |     |
+|[drtmle](problems.md#drtmle)                                           |1.0.0         |          |1         |     |
+|dsrTest                                                                |0.2.1         |          |          |     |
+|[DSsim](problems.md#dssim)                                             |1.1.2         |          |          |1    |
+|dtangle                                                                |0.1.0         |          |          |     |
+|dtplyr                                                                 |0.0.2         |          |          |     |
+|[dtwclust](problems.md#dtwclust)                                       |4.1.1         |1         |          |1    |
+|dtwSat                                                                 |0.2.3         |          |          |     |
+|duckduckr                                                              |1.0.0         |          |          |     |
+|[dwapi](problems.md#dwapi)                                             |0.1.1         |__+1__    |          |1    |
+|[dygraphs](problems.md#dygraphs)                                       |1.1.1.4       |          |          |1    |
+|[DYM](problems.md#dym)                                                 |0.2           |          |          |1    |
+|[dynamichazard](problems.md#dynamichazard)                             |0.4.0         |__+1__    |1         |1    |
+|[dynetNLAResistance](problems.md#dynetnlaresistance)                   |0.1.0         |          |          |1    |
+|[dynr](problems.md#dynr)                                               |0.1.11-8      |          |          |2    |
+|dynRB                                                                  |0.9           |          |          |     |
+|[EAinference](problems.md#eainference)                                 |0.2.1         |__+1__    |          |     |
+|earthtones                                                             |0.1.0         |          |          |     |
+|easyformatr                                                            |0.1.2         |          |          |     |
+|[easyml](problems.md#easyml)                                           |0.1.0         |          |          |1    |
+|easyVerification                                                       |0.4.3         |          |          |     |
+|EbayesThresh                                                           |1.4-12        |          |          |     |
+|[EBSeq](problems.md#ebseq)                                             |1.16.0        |          |          |2    |
+|ecb                                                                    |0.2           |          |          |     |
+|ECctmc                                                                 |0.2.4         |          |          |     |
+|ecd                                                                    |0.9.1         |          |          |     |
+|ecodist                                                                |2.0.1         |          |          |     |
+|[ecoengine](problems.md#ecoengine)                                     |1.11.0        |          |          |1    |
+|ecolottery                                                             |1.0.0         |          |          |     |
+|econullnetr                                                            |?             |          |          |     |
+|[EcoSimR](problems.md#ecosimr)                                         |0.1.0         |          |          |1    |
+|ECOSolveR                                                              |0.3-2         |          |          |     |
+|ecr                                                                    |2.1.0         |          |          |     |
+|edarf                                                                  |1.1.1         |          |          |     |
+|edfReader                                                              |1.1.2         |          |          |     |
+|[edge](problems.md#edge)                                               |2.8.0         |          |          |1    |
+|EDISON                                                                 |1.1.1         |          |          |     |
+|[edpclient](problems.md#edpclient)                                     |0.2.0         |1         |          |     |
+|EdSurvey                                                               |1.0.6         |          |          |     |
+|[eechidna](problems.md#eechidna)                                       |1.1           |          |          |1    |
+|EEM                                                                    |1.1.1         |          |          |     |
+|eemR                                                                   |0.1.5         |          |          |     |
+|[eeptools](problems.md#eeptools)                                       |1.1.0         |          |1         |     |
+|effsize                                                                |0.7.1         |          |          |     |
+|[EGAD](problems.md#egad)                                               |1.4.1         |          |          |3    |
+|[eggCounts](problems.md#eggcounts)                                     |1.4           |          |          |1    |
+|EGRET                                                                  |2.6.0         |          |          |     |
+|EGRETci                                                                |1.0.2         |          |          |     |
+|[EGSEA](problems.md#egsea)                                             |1.4.1         |          |          |1    |
+|eHOF                                                                   |1.8           |          |          |     |
+|[ElastH](problems.md#elasth)                                           |0.3.1         |          |          |2    |
+|elastic                                                                |0.8.0         |          |          |     |
+|[elasticsearchr](problems.md#elasticsearchr)                           |0.2.0         |1         |          |     |
+|[elementR](problems.md#elementr)                                       |1.3.2         |1         |1         |     |
+|[elevatr](problems.md#elevatr)                                         |0.1.3         |1         |1         |1    |
+|elo                                                                    |0.1.2         |          |          |     |
+|[emdbook](problems.md#emdbook)                                         |1.3.9         |          |          |1    |
+|[emdi](problems.md#emdi)                                               |1.1.1         |          |          |2    |
+|[emil](problems.md#emil)                                               |2.2.8         |          |          |1    |
+|[EML](problems.md#eml)                                                 |1.0.3         |          |          |1    |
+|EMMLi                                                                  |0.0.3         |          |          |     |
+|[EmpiricalBrownsMethod](problems.md#empiricalbrownsmethod)             |1.4.0         |          |          |1    |
+|emuR                                                                   |0.2.3         |          |          |     |
+|[enigma](problems.md#enigma)                                           |0.3.0         |1         |          |     |
+|[EnrichedHeatmap](problems.md#enrichedheatmap)                         |1.6.0         |__+1__    |          |1    |
+|[ensembldb](problems.md#ensembldb)                                     |2.0.4         |2         |1         |2    |
+|ensurer                                                                |1.1           |          |          |     |
+|[entropart](problems.md#entropart)                                     |1.4-7         |          |          |1    |
+|EnvCpt                                                                 |0.1.1         |          |          |     |
+|envDocument                                                            |2.4.0         |          |          |     |
+|epanetReader                                                           |0.5.1         |          |          |     |
+|[epicontacts](problems.md#epicontacts)                                 |1.0.1         |1         |          |1    |
+|epidata                                                                |0.1.0         |          |          |     |
+|EpiModel                                                               |1.5.0         |          |          |     |
+|episensr                                                               |0.9.1         |          |          |     |
+|EpistemicGameTheory                                                    |0.1.2         |          |          |     |
+|[epivizr](problems.md#epivizr)                                         |2.6.0         |          |          |1    |
+|[epivizrData](problems.md#epivizrdata)                                 |1.4.0         |1         |          |     |
+|epivizrServer                                                          |1.4.0         |          |          |     |
+|epivizrStandalone                                                      |1.4.0         |          |          |     |
+|eply                                                                   |0.1.0         |          |          |     |
+|errorlocate                                                            |0.1.2         |          |          |     |
+|errors                                                                 |0.1.0         |          |          |     |
+|esaddle                                                                |0.0.3         |          |          |     |
+|esmisc                                                                 |0.0.3         |          |          |     |
+|estatapi                                                               |0.3.0         |          |          |     |
+|esvis                                                                  |0.1.0         |          |          |     |
+|etl                                                                    |0.3.7         |          |          |     |
+|etrunct                                                                |0.1           |          |          |     |
+|etseed                                                                 |0.1.0         |          |          |     |
+|[eulerr](problems.md#eulerr)                                           |2.0.0         |          |          |1    |
+|europepmc                                                              |0.1.4         |          |          |     |
+|eurostat                                                               |3.1.5         |          |          |     |
+|evaluate                                                               |0.10.1        |          |          |     |
+|[evaluator](problems.md#evaluator)                                     |0.1.0         |          |          |1    |
+|eventstudies                                                           |1.2           |          |          |     |
+|[EventStudy](problems.md#eventstudy)                                   |0.34          |          |          |2    |
+|[evolqg](problems.md#evolqg)                                           |0.2-5         |          |          |1    |
+|evoper                                                                 |0.4.0         |          |          |     |
+|exact2x2                                                               |1.5.2         |          |          |     |
+|exampletestr                                                           |1.0.1         |          |          |     |
+|[excerptr](problems.md#excerptr)                                       |1.3.1         |1         |          |     |
+|[excursions](problems.md#excursions)                                   |2.2.2         |          |          |1    |
+|exif                                                                   |0.1.0         |          |          |     |
+|[exifr](problems.md#exifr)                                             |0.2.1         |          |          |2    |
+|explor                                                                 |0.3.3         |          |          |     |
+|ExpressionAtlas                                                        |1.4.0         |          |          |     |
+|[exprso](problems.md#exprso)                                           |0.1.8         |          |          |1    |
+|[expss](problems.md#expss)                                             |0.8.2         |__+1__    |          |     |
+|extdplyr                                                               |0.1.4         |          |          |     |
+|[extraDistr](problems.md#extradistr)                                   |1.8.7         |          |          |1    |
+|[extraTrees](problems.md#extratrees)                                   |1.0.5         |          |          |1    |
+|extremeStat                                                            |1.3.0         |          |          |     |
+|eyelinker                                                              |0.1           |          |          |     |
+|[eyetrackingR](problems.md#eyetrackingr)                               |0.1.6         |2         |          |     |
+|ezec                                                                   |1.0.1         |          |          |     |
+|[ezknitr](problems.md#ezknitr)                                         |0.6           |          |1         |     |
+|ezsummary                                                              |0.2.1         |          |          |     |
+|facebook.S4                                                            |1.1.0         |          |          |     |
+|fail                                                                   |1.3           |          |          |     |
+|fakeR                                                                  |1.0           |          |          |     |
+|[fanovaGraph](problems.md#fanovagraph)                                 |1.4.8         |          |1         |     |
+|farff                                                                  |1.0           |          |          |     |
+|fastAdaboost                                                           |1.0.0         |          |          |     |
+|fastcmh                                                                |0.2.7         |          |          |     |
+|FastImputation                                                         |2.0           |          |          |     |
+|fastrtext                                                              |0.2.1         |          |          |     |
+|[fauxpas](problems.md#fauxpas)                                         |0.1.0         |          |          |1    |
+|fbar                                                                   |0.1.23        |          |          |     |
+|fcuk                                                                   |0.1.21        |          |          |     |
+|[fdapace](problems.md#fdapace)                                         |0.3.0         |          |          |1    |
+|feather                                                                |0.3.1         |          |          |     |
+|fecR                                                                   |0.0.2         |          |          |     |
+|FedData                                                                |2.4.6         |          |          |     |
+|fedreporter                                                            |0.2.1         |          |          |     |
+|feedeR                                                                 |0.0.7         |          |          |     |
+|fergm                                                                  |0.2.1         |          |          |     |
+|ffbase                                                                 |0.12.3        |          |          |     |
+|[ffstream](problems.md#ffstream)                                       |0.1.5         |          |          |1    |
+|[Fgmutils](problems.md#fgmutils)                                       |0.9.4         |          |1         |     |
+|[fgsea](problems.md#fgsea)                                             |1.2.1         |          |          |1    |
+|[fiery](problems.md#fiery)                                             |1.0.0         |1         |          |1    |
+|fiftystater                                                            |1.0.1         |          |          |     |
+|[filenamer](problems.md#filenamer)                                     |0.2.1         |          |          |1    |
+|filesstrings                                                           |1.1.0         |          |          |     |
+|[FinancialInstrument](problems.md#financialinstrument)                 |1.2.0         |          |          |3    |
+|[finch](problems.md#finch)                                             |0.1.0         |1         |          |     |
+|FindIt                                                                 |1.1.2         |          |          |     |
+|[FindMyFriends](problems.md#findmyfriends)                             |1.6.0         |          |          |2    |
+|findpython                                                             |1.0.2         |          |          |     |
+|findviews                                                              |0.1.3         |          |          |     |
+|fingertipsR                                                            |0.1.3         |          |          |     |
+|finreportr                                                             |1.0.1         |          |          |     |
+|fitplc                                                                 |1.1-7         |          |          |     |
+|flacco                                                                 |1.7           |          |          |     |
+|flexdashboard                                                          |0.5           |          |          |     |
+|FlexDir                                                                |1.0           |          |          |     |
+|[flexsurv](problems.md#flexsurv)                                       |1.1           |          |          |1    |
+|flexsurvcure                                                           |0.0.2         |          |          |     |
+|[flextable](problems.md#flextable)                                     |0.3.0         |1         |1         |1    |
+|flifo                                                                  |0.1.4         |          |          |     |
+|[FLightR](problems.md#flightr)                                         |0.4.6         |          |          |1    |
+|flora                                                                  |0.2.8         |          |          |     |
+|flowAI                                                                 |1.4.4         |          |          |     |
+|[flowClust](problems.md#flowclust)                                     |3.14.0        |          |          |4    |
+|[flowCore](problems.md#flowcore)                                       |1.42.3        |          |2         |6    |
+|flowPloidy                                                             |1.2.0         |          |          |     |
+|flowr                                                                  |0.9.10        |          |          |     |
+|[flowWorkspace](problems.md#flowworkspace)                             |3.24.4        |          |          |7    |
+|[flsa](problems.md#flsa)                                               |1.05          |          |          |1    |
+|fmbasics                                                               |0.2.0         |          |          |     |
+|fmdates                                                                |0.1.3         |          |          |     |
+|[foghorn](problems.md#foghorn)                                         |0.4.4         |1         |          |     |
+|fontquiver                                                             |0.2.1         |          |          |     |
+|forcats                                                                |0.2.0         |          |          |     |
+|ForeCA                                                                 |0.2.4         |          |          |     |
+|[forecast](problems.md#forecast)                                       |8.2           |          |          |2    |
+|ForecastFramework                                                      |0.9.0         |          |          |     |
+|forecastHybrid                                                         |1.1.9         |          |          |     |
+|forecastSNSTS                                                          |1.2-0         |          |          |     |
+|[forestplot](problems.md#forestplot)                                   |1.7.2         |          |          |1    |
+|ForestTools                                                            |0.1.5         |          |          |     |
+|formattable                                                            |0.2.0.1       |          |          |     |
+|formula.tools                                                          |1.6.8         |          |          |     |
+|fpCompare                                                              |0.2.1         |          |          |     |
+|frair                                                                  |0.5.100       |          |          |     |
+|franc                                                                  |1.1.1         |          |          |     |
+|frequencies                                                            |0.1.1         |          |          |     |
+|frequencyConnectedness                                                 |0.1.6         |          |          |     |
+|[freqweights](problems.md#freqweights)                                 |1.0.4         |          |          |1    |
+|[FRK](problems.md#frk)                                                 |0.1.6         |          |          |2    |
+|fromo                                                                  |0.1.3         |          |          |     |
+|[FSA](problems.md#fsa)                                                 |0.8.16        |          |          |1    |
+|[FSelectorRcpp](problems.md#fselectorrcpp)                             |0.1.8         |          |          |1    |
+|fst                                                                    |0.7.2         |          |          |     |
+|FTRLProximal                                                           |0.3.0         |          |          |     |
+|fulltext                                                               |0.1.8         |          |          |     |
+|FunChisq                                                               |2.4.3         |          |          |     |
+|functools                                                              |0.2.0         |          |          |     |
+|funData                                                                |1.1           |          |          |     |
+|funr                                                                   |0.3.2         |          |          |     |
+|funrar                                                                 |1.2.0         |          |          |     |
+|furniture                                                              |1.6.0         |          |          |     |
+|[fuser](problems.md#fuser)                                             |1.0.0         |          |          |1    |
+|futile.any                                                             |1.3.2         |          |          |     |
+|futile.logger                                                          |1.4.3         |          |          |     |
+|futureheatwaves                                                        |1.0.3         |          |          |     |
+|fuzzr                                                                  |0.2.1         |          |          |     |
+|fuzzyjoin                                                              |0.1.3         |          |          |     |
+|fuzzywuzzyR                                                            |1.0.1         |          |          |     |
+|[GA4GHclient](problems.md#ga4ghclient)                                 |1.0.0         |1         |          |     |
+|gambin                                                                 |2.1.1         |          |          |     |
+|[games](problems.md#games)                                             |1.1.2         |          |          |1    |
+|[gamesGA](problems.md#gamesga)                                         |1.1.3.2       |          |          |1    |
+|[gapfill](problems.md#gapfill)                                         |0.9.5-3       |          |          |1    |
+|gapminder                                                              |0.2.0         |          |          |     |
+|[GAS](problems.md#gas)                                                 |0.2.4         |          |          |1    |
+|gasfluxes                                                              |0.2-1         |          |          |     |
+|[gastempt](problems.md#gastempt)                                       |0.4.01        |          |          |1    |
+|gatepoints                                                             |0.1.3         |          |          |     |
+|[GauPro](problems.md#gaupro)                                           |0.2.2         |          |          |1    |
+|[GBJ](problems.md#gbj)                                                 |0.5.0         |1         |          |     |
+|[gbp](problems.md#gbp)                                                 |0.1.0.4       |          |          |2    |
+|gbts                                                                   |1.2.0         |          |          |     |
+|GCalignR                                                               |1.0.0         |          |          |     |
+|[GDELTtools](problems.md#gdelttools)                                   |1.2           |          |          |2    |
+|[GDINA](problems.md#gdina)                                             |1.4.2         |          |          |1    |
+|gdns                                                                   |0.2.1         |          |          |     |
+|gdtools                                                                |0.1.6         |          |          |     |
+|gear                                                                   |0.1.1         |          |          |     |
+|geeM                                                                   |0.10.0        |          |          |     |
+|[geex](problems.md#geex)                                               |1.0.3         |          |          |1    |
+|GEint                                                                  |0.1.4         |          |          |     |
+|[GEM](problems.md#gem)                                                 |1.2.0         |          |1         |     |
+|gemtc                                                                  |0.8-2         |          |          |     |
+|genBaRcode                                                             |1.0.0         |          |          |     |
+|[gender](problems.md#gender)                                           |0.5.1         |          |          |1    |
+|[genderizeR](problems.md#genderizer)                                   |2.0.0         |          |          |1    |
+|geneAttribution                                                        |1.2.0         |          |          |     |
+|geneClassifiers                                                        |1.0.0         |          |          |     |
+|[genepop](problems.md#genepop)                                         |1.0.5         |          |          |1    |
+|generator                                                              |0.1.0         |          |          |     |
+|geneSLOPE                                                              |0.37.0        |          |          |     |
+|genie                                                                  |1.0.4         |          |          |     |
+|[GenoGAM](problems.md#genogam)                                         |1.4.0         |          |          |2    |
+|[GenomicDataCommons](problems.md#genomicdatacommons)                   |1.0.5         |          |          |2    |
+|[GenomicInteractions](problems.md#genomicinteractions)                 |1.10.0        |          |          |1    |
+|[GenomicTuples](problems.md#genomictuples)                             |1.10.0        |          |          |3    |
+|[genotypeeval](problems.md#genotypeeval)                               |1.8.0         |          |1         |     |
+|[genotypeR](problems.md#genotyper)                                     |0.0.1.6       |          |          |1    |
+|[GenRank](problems.md#genrank)                                         |1.4.0         |          |          |1    |
+|[GenVisR](problems.md#genvisr)                                         |1.6.3         |          |          |1    |
+|geoaxe                                                                 |0.1.0         |          |          |     |
+|[geofacet](problems.md#geofacet)                                       |0.1.5         |1         |          |1    |
+|geohash                                                                |0.3.0         |          |          |     |
+|[geojson](problems.md#geojson)                                         |0.1.2         |1         |          |     |
+|[geojsonio](problems.md#geojsonio)                                     |0.4.2         |1         |          |2    |
+|geojsonlint                                                            |0.2.0         |          |          |     |
+|[geojsonR](problems.md#geojsonr)                                       |1.0.3         |          |          |1    |
+|[geoknife](problems.md#geoknife)                                       |1.5.5         |1         |1         |     |
+|GeomComb                                                               |1.0           |          |          |     |
+|geometa                                                                |0.1-0         |          |          |     |
+|geometry                                                               |0.3-6         |          |          |     |
+|GeoMongo                                                               |1.0.1         |          |          |     |
+|[geoparser](problems.md#geoparser)                                     |0.1.1         |1         |1         |     |
+|geosapi                                                                |0.1-0         |          |          |     |
+|geoSpectral                                                            |0.17.4        |          |          |     |
+|geozoo                                                                 |0.5.1         |          |          |     |
+|[GERGM](problems.md#gergm)                                             |0.11.2        |          |          |1    |
+|[GerminaR](problems.md#germinar)                                       |1.1           |          |          |1    |
+|gesis                                                                  |0.2.1         |          |          |     |
+|getCRUCLdata                                                           |0.1.9         |          |          |     |
+|GetHFData                                                              |1.4           |          |          |     |
+|GetITRData                                                             |0.5           |          |          |     |
+|getlandsat                                                             |0.1.0         |          |          |     |
+|GetLattesData                                                          |0.5           |          |          |     |
+|getmstatistic                                                          |0.1.1         |          |          |     |
+|[getopt](problems.md#getopt)                                           |1.20.0        |          |          |2    |
+|GetoptLong                                                             |0.1.6         |          |          |     |
+|[GetTDData](problems.md#gettddata)                                     |1.3           |1         |1         |     |
+|[GeuvadisTranscriptExpr](problems.md#geuvadistranscriptexpr)           |1.4.0         |          |          |1    |
+|ggallin                                                                |0.1.1         |          |          |     |
+|GGally                                                                 |1.3.2         |          |          |     |
+|[ggalt](problems.md#ggalt)                                             |0.4.0         |          |          |1    |
+|[ggbio](problems.md#ggbio)                                             |1.24.1        |1         |          |2    |
+|[ggconf](problems.md#ggconf)                                           |0.1           |          |          |1    |
+|[ggcyto](problems.md#ggcyto)                                           |1.4.1         |          |          |3    |
+|ggdendro                                                               |0.1-20        |          |          |     |
+|gge                                                                    |1.2           |          |          |     |
+|[ggExtra](problems.md#ggextra)                                         |0.7           |          |          |1    |
+|ggfittext                                                              |0.4.3         |          |          |     |
+|ggformula                                                              |0.6           |          |          |     |
+|[ggfortify](problems.md#ggfortify)                                     |0.4.1         |2         |          |1    |
+|gggenes                                                                |0.2.0         |          |          |     |
+|ggghost                                                                |0.2.1         |          |          |     |
+|[ggguitar](problems.md#ggguitar)                                       |0.1.1         |          |          |1    |
+|gghalfnorm                                                             |1.1.2         |          |          |     |
+|gghighlight                                                            |0.0.1         |          |          |     |
+|GGIR                                                                   |1.5-12        |          |          |     |
+|[ggiraphExtra](problems.md#ggiraphextra)                               |0.1.0         |          |          |1    |
+|ggjoy                                                                  |0.4.0         |          |          |     |
+|[ggloop](problems.md#ggloop)                                           |0.1.0         |__+1__    |          |     |
+|ggnetwork                                                              |0.5.1         |          |          |     |
+|[ggplot2](problems.md#ggplot2)                                         |2.2.1         |          |          |1    |
+|[ggQC](problems.md#ggqc)                                               |0.0.1         |          |          |1    |
+|ggquiver                                                               |0.1.0         |          |          |     |
+|[ggRandomForests](problems.md#ggrandomforests)                         |2.0.1         |          |          |1    |
+|[ggraptR](problems.md#ggraptr)                                         |1.0           |1         |          |1    |
+|[ggrepel](problems.md#ggrepel)                                         |0.7.0         |          |1         |     |
+|[ggridges](problems.md#ggridges)                                       |0.4.1         |          |          |1    |
+|ggseas                                                                 |0.5.1         |          |          |     |
+|ggsignif                                                               |0.4.0         |          |          |     |
+|[ggstance](problems.md#ggstance)                                       |0.3           |          |          |1    |
+|ggswissmaps                                                            |0.1.1         |          |          |     |
+|[ggthemes](problems.md#ggthemes)                                       |3.4.0         |          |          |1    |
+|[ggtree](problems.md#ggtree)                                           |1.8.2         |          |          |2    |
+|[ggvis](problems.md#ggvis)                                             |0.4.3         |          |          |1    |
+|gh                                                                     |1.0.1         |          |          |     |
+|ghit                                                                   |0.2.18        |          |          |     |
+|gifti                                                                  |0.7.4         |          |          |     |
+|[gistr](problems.md#gistr)                                             |0.4.0         |1         |          |     |
+|[githubinstall](problems.md#githubinstall)                             |0.2.1         |__+1__    |          |     |
+|gitlabr                                                                |0.9           |          |          |     |
+|givitiR                                                                |1.3           |          |          |     |
+|gk                                                                     |0.5.0         |          |          |     |
+|GK2011                                                                 |0.1.3         |          |          |     |
+|[glassdoor](problems.md#glassdoor)                                     |0.7.6         |          |          |1    |
+|glcm                                                                   |1.6.1         |          |          |     |
+|gldrm                                                                  |1.1           |          |          |     |
+|[Glimma](problems.md#glimma)                                           |1.4.0         |          |          |1    |
+|glm.ddR                                                                |0.1.1         |          |          |     |
+|[glmmsr](problems.md#glmmsr)                                           |0.2.0         |1         |1         |1    |
+|[glmmTMB](problems.md#glmmtmb)                                         |0.1.1         |          |1         |1    |
+|glmnetUtils                                                            |1.1           |          |          |     |
+|GlobalOptions                                                          |0.0.12        |          |          |     |
+|globalSeq                                                              |1.4.2         |          |          |     |
+|glue                                                                   |1.1.1         |          |          |     |
+|glycanr                                                                |0.3.0         |          |          |     |
+|gmailr                                                                 |0.7.1         |          |          |     |
+|GMCM                                                                   |1.2.4         |          |          |     |
+|[Gmisc](problems.md#gmisc)                                             |1.4.1         |__+1__    |          |     |
+|GMSE                                                                   |0.2.2.7       |          |          |     |
+|[gmum.r](problems.md#gmum.r)                                           |0.2.1         |          |          |1    |
+|gofastr                                                                |0.2.1         |          |          |     |
+|gogamer                                                                |0.4.3         |          |          |     |
+|goldi                                                                  |1.0.1         |          |          |     |
+|GoodmanKruskal                                                         |0.0.2         |          |          |     |
+|googleAnalyticsR                                                       |0.4.1         |          |          |     |
+|[googleCloudStorageR](problems.md#googlecloudstorager)                 |0.3.0         |1         |          |     |
+|[googleComputeEngineR](problems.md#googlecomputeenginer)               |0.2.0         |1         |          |     |
+|googledrive                                                            |0.1.1         |          |          |     |
+|googleformr                                                            |0.0.3         |          |          |     |
+|[GoogleGenomics](problems.md#googlegenomics)                           |1.8.1         |1         |          |     |
+|[googlesheets](problems.md#googlesheets)                               |0.2.2         |1         |1         |     |
+|googleway                                                              |2.2.0         |          |          |     |
+|GOpro                                                                  |1.2.0         |          |          |     |
+|GOSemSim                                                               |2.2.0         |          |          |     |
+|goSTAG                                                                 |1.0.1         |          |          |     |
+|gower                                                                  |0.1.2         |          |          |     |
+|gphmm                                                                  |0.99.0        |          |          |     |
+|GPoM                                                                   |1.0           |          |          |     |
+|[gpuR](problems.md#gpur)                                               |1.2.1         |1         |          |     |
+|[gqlr](problems.md#gqlr)                                               |0.0.1         |          |          |2    |
+|grapes                                                                 |1.0.0         |          |          |     |
+|[graphite](problems.md#graphite)                                       |1.22.0        |          |          |3    |
+|graphql                                                                |1.4           |          |          |     |
+|graphTweets                                                            |0.3.2         |          |          |     |
+|graticule                                                              |0.1.2         |          |          |     |
+|[grattan](problems.md#grattan)                                         |1.5.1.2       |          |          |1    |
+|[Greg](problems.md#greg)                                               |1.2           |          |          |2    |
+|greta                                                                  |0.2.0         |          |          |     |
+|[grf](problems.md#grf)                                                 |0.9.3         |          |          |2    |
+|gridExtra                                                              |2.3           |          |          |     |
+|[gridsampler](problems.md#gridsampler)                                 |0.6           |          |          |1    |
+|groupdata2                                                             |0.1.0         |          |          |     |
+|[growcurves](problems.md#growcurves)                                   |0.2.4.1       |          |          |1    |
+|[growfunctions](problems.md#growfunctions)                             |0.13          |          |          |1    |
+|growthcurver                                                           |0.2.1         |          |          |     |
+|grpregOverlap                                                          |2.2-0         |          |          |     |
+|grpSLOPE                                                               |0.2.1         |          |          |     |
+|[GrpString](problems.md#grpstring)                                     |0.3.2         |          |          |1    |
+|[GRridge](problems.md#grridge)                                         |1.0.0         |          |2         |2    |
+|gsheet                                                                 |0.4.2         |          |          |     |
+|GSODR                                                                  |1.0.6         |          |          |     |
+|[gsrc](problems.md#gsrc)                                               |1.1           |          |          |1    |
+|gsw                                                                    |1.0-5         |          |          |     |
+|gt4ireval                                                              |2.0           |          |          |     |
+|gtable                                                                 |0.2.0         |          |          |     |
+|gtrellis                                                               |1.8.0         |          |          |     |
+|guess                                                                  |0.1           |          |          |     |
+|GUILDS                                                                 |1.3           |          |          |     |
+|[gutenbergr](problems.md#gutenbergr)                                   |0.1.3         |          |          |1    |
+|gvc                                                                    |0.5.2         |          |          |     |
+|gwdegree                                                               |0.1.1         |          |          |     |
+|[gWidgets2RGtk2](problems.md#gwidgets2rgtk2)                           |1.0-6         |1         |          |     |
+|[gWidgets2tcltk](problems.md#gwidgets2tcltk)                           |1.0-5         |1         |          |     |
+|[GWLelast](problems.md#gwlelast)                                       |1.1           |          |          |1    |
+|gym                                                                    |0.1.0         |          |          |     |
+|h5                                                                     |0.9.9         |          |          |     |
+|hail                                                                   |0.1.1         |          |          |     |
+|[hansard](problems.md#hansard)                                         |0.5.5         |1         |          |     |
+|haplotyper                                                             |0.1           |          |          |     |
+|HARtools                                                               |0.0.5         |          |          |     |
+|harvestr                                                               |0.7.1         |          |          |     |
+|[hash](problems.md#hash)                                               |2.2.6         |          |          |3    |
+|hashids                                                                |0.9.0         |          |          |     |
+|[hashmap](problems.md#hashmap)                                         |0.2.0         |          |          |1    |
+|hashr                                                                  |0.1.0         |          |          |     |
+|[haven](problems.md#haven)                                             |1.1.0         |          |          |2    |
+|[hddtools](problems.md#hddtools)                                       |0.7           |1         |          |     |
+|hdm                                                                    |0.2.0         |          |          |     |
+|healthcareai                                                           |1.0.0         |          |          |     |
+|[heatmaply](problems.md#heatmaply)                                     |0.11.1        |          |          |2    |
+|[heatmaps](problems.md#heatmaps)                                       |1.0.0         |1         |          |     |
+|heemod                                                                 |0.9.2         |          |          |     |
+|[hei](problems.md#hei)                                                 |0.1.0         |          |1         |     |
+|heims                                                                  |0.2.4         |          |          |     |
+|hellno                                                                 |0.0.1         |          |          |     |
+|heuristica                                                             |1.0.1         |          |          |     |
+|[hiAnnotator](problems.md#hiannotator)                                 |1.11.1        |          |          |2    |
+|[HIBPwned](problems.md#hibpwned)                                       |0.1.6         |__+1__    |          |1    |
+|hicrep                                                                 |1.0.0         |          |          |     |
+|highlightHTML                                                          |0.1.1         |          |          |     |
+|[HilbertCurve](problems.md#hilbertcurve)                               |1.6.0         |          |          |1    |
+|[hiReadsProcessor](problems.md#hireadsprocessor)                       |1.12.0        |          |          |2    |
+|hisse                                                                  |1.8.5         |          |          |     |
+|hit                                                                    |0.4.0         |          |          |     |
+|hitandrun                                                              |0.5-3         |          |          |     |
+|hms                                                                    |0.3           |          |          |     |
+|hNMF                                                                   |0.3           |          |          |     |
+|hoardr                                                                 |0.2.0         |          |          |     |
+|homeR                                                                  |0.3.0         |          |          |     |
+|hpar                                                                   |1.18.1        |          |          |     |
+|hrbrthemes                                                             |0.1.0         |          |          |     |
+|htmltab                                                                |0.7.1         |          |          |     |
+|[htmlTable](problems.md#htmltable)                                     |1.9           |          |          |1    |
+|htmltidy                                                               |0.4.0         |          |          |     |
+|[htmltools](problems.md#htmltools)                                     |0.3.6         |          |          |2    |
+|hts                                                                    |5.1.4         |          |          |     |
+|HTSFilter                                                              |1.16.0        |          |          |     |
+|HTSSIP                                                                 |1.2.0         |          |          |     |
+|[httping](problems.md#httping)                                         |0.1.0         |1         |          |     |
+|[httptest](problems.md#httptest)                                       |2.1.2         |__+2__    |          |     |
+|httr                                                                   |1.3.1         |          |          |     |
+|[humanFormat](problems.md#humanformat)                                 |1.0           |          |          |1    |
+|humaniformat                                                           |0.6.0         |          |          |     |
+|[hunspell](problems.md#hunspell)                                       |2.6           |          |          |1    |
+|HURDAT                                                                 |0.1.0         |          |          |     |
+|[hutils](problems.md#hutils)                                           |0.8.0         |__+1__    |          |     |
+|[huxtable](problems.md#huxtable)                                       |1.0.0         |1         |          |1    |
+|[hybridEnsemble](problems.md#hybridensemble)                           |1.0.0         |1         |          |1    |
+|HydeNet                                                                |0.10.5        |          |          |     |
+|hydrogeo                                                               |0.6-1         |          |          |     |
+|[hyperSpec](problems.md#hyperspec)                                     |0.99-20171005 |          |          |2    |
+|hyphenatr                                                              |0.3.0         |          |          |     |
+|hypoparsr                                                              |0.1.0         |          |          |     |
+|hypothesisr                                                            |0.1.1         |          |          |     |
+|IAbin                                                                  |1.0           |          |          |     |
+|iadf                                                                   |0.1.0         |          |          |     |
+|IalsaSynthesis                                                         |0.1.6         |          |          |     |
+|[IAPWS95](problems.md#iapws95)                                         |1.0.0         |          |          |2    |
+|ibmcraftr                                                              |1.0.0         |          |          |     |
+|icarus                                                                 |0.3.0         |          |          |     |
+|[icd](problems.md#icd)                                                 |2.3.1         |          |          |2    |
+|[icd9](problems.md#icd9)                                               |1.3.1         |          |          |2    |
+|icensmis                                                               |1.3.1         |          |          |     |
+|icesDatras                                                             |1.2-0         |          |          |     |
+|icesSAG                                                                |1.3-2         |          |          |     |
+|icesVocab                                                              |1.1-2         |          |          |     |
+|iCOBRA                                                                 |1.4.0         |          |          |     |
+|[ideal](problems.md#ideal)                                             |1.0.0         |          |          |2    |
+|ids                                                                    |1.0.1         |          |          |     |
+|ifaTools                                                               |0.14          |          |          |     |
+|ifctools                                                               |0.3.2         |          |          |     |
+|IgorR                                                                  |0.8.1         |          |          |     |
+|[IGP](problems.md#igp)                                                 |0.1.0         |1         |          |     |
+|[igraph](problems.md#igraph)                                           |1.1.2         |          |          |1    |
+|[IHW](problems.md#ihw)                                                 |1.4.0         |          |          |1    |
+|[IHWpaper](problems.md#ihwpaper)                                       |1.4.0         |          |          |2    |
+|[imager](problems.md#imager)                                           |0.40.2        |          |          |2    |
+|imaginator                                                             |0.1.1         |          |          |     |
+|[ImmuneSpaceR](problems.md#immunespacer)                               |1.4.0         |          |1         |2    |
+|implyr                                                                 |0.2.1         |          |          |     |
+|[imputeMulti](problems.md#imputemulti)                                 |0.6.4         |          |          |1    |
+|imputeR                                                                |2.0           |          |          |     |
+|imputeTS                                                               |2.5           |          |          |     |
+|inbreedR                                                               |0.3.2         |          |          |     |
+|[incadata](problems.md#incadata)                                       |0.6.1         |          |          |1    |
+|[incgraph](problems.md#incgraph)                                       |1.0.1         |          |          |1    |
+|[incidence](problems.md#incidence)                                     |1.2.0         |1         |          |     |
+|[indelmiss](problems.md#indelmiss)                                     |1.0.7         |1         |          |     |
+|iNEXT                                                                  |2.0.12        |          |          |     |
+|inferference                                                           |0.5.4         |          |          |     |
+|inferr                                                                 |0.1.1         |          |          |     |
+|influenceR                                                             |0.1.0         |          |          |     |
+|[influxdbr](problems.md#influxdbr)                                     |0.13.0        |1         |          |     |
+|InformativeCensoring                                                   |0.3.4         |          |          |     |
+|infuser                                                                |0.2.8         |          |          |     |
+|Infusion                                                               |1.1.0         |          |          |     |
+|ini                                                                    |0.3.0         |          |          |     |
+|injectoR                                                               |0.2.4         |          |          |     |
+|[INLAutils](problems.md#inlautils)                                     |0.0.4         |          |          |2    |
+|inlmisc                                                                |0.3.3         |          |          |     |
+|inpdfr                                                                 |0.1.5         |          |          |     |
+|[InteractionSet](problems.md#interactionset)                           |1.4.0         |          |          |1    |
+|intercure                                                              |0.1.0         |          |          |     |
+|[InterfaceqPCR](problems.md#interfaceqpcr)                             |1.0           |1         |1         |     |
+|intergraph                                                             |2.0-2         |          |          |     |
+|[internetarchive](problems.md#internetarchive)                         |0.1.6         |1         |          |     |
+|[investr](problems.md#investr)                                         |1.4.0         |          |          |1    |
+|io                                                                     |0.2.4         |          |          |     |
+|[IONiseR](problems.md#ioniser)                                         |2.0.0         |          |          |2    |
+|[iotools](problems.md#iotools)                                         |0.1-12        |          |          |1    |
+|ipdw                                                                   |0.2-6         |          |          |     |
+|[iprior](problems.md#iprior)                                           |0.6.5         |          |          |1    |
+|[iptools](problems.md#iptools)                                         |0.4.0         |          |          |1    |
+|ircor                                                                  |1.0           |          |          |     |
+|IRdisplay                                                              |0.4.4         |          |          |     |
+|isdparser                                                              |0.2.0         |          |          |     |
+|[ISOweek](problems.md#isoweek)                                         |0.6-2         |          |          |1    |
+|iterpc                                                                 |0.3.3         |          |          |     |
+|itertools2                                                             |0.1.1         |          |          |     |
+|[ITGM](problems.md#itgm)                                               |0.6           |          |1         |     |
+|[itunesr](problems.md#itunesr)                                         |0.1           |          |          |1    |
+|jaatha                                                                 |3.2.0         |          |          |     |
+|[james.analysis](problems.md#james.analysis)                           |1.0.1         |          |          |1    |
+|[janeaustenr](problems.md#janeaustenr)                                 |0.1.5         |          |          |1    |
+|janitor                                                                |0.3.0         |          |          |     |
+|[jaod](problems.md#jaod)                                               |0.1.0         |1         |          |     |
+|[Jdmbs](problems.md#jdmbs)                                             |1.0           |          |1         |     |
+|[jiebaR](problems.md#jiebar)                                           |0.9.1         |          |          |1    |
+|[Jmisc](problems.md#jmisc)                                             |0.3.1         |          |          |2    |
+|[jmotif](problems.md#jmotif)                                           |1.0.2.900     |          |          |1    |
+|[jmv](problems.md#jmv)                                                 |0.8           |          |          |1    |
+|[jmvcore](problems.md#jmvcore)                                         |0.8           |          |          |1    |
+|joineR                                                                 |1.2.2         |          |          |     |
+|[joineRML](problems.md#joinerml)                                       |0.3.0         |          |1         |1    |
+|[jose](problems.md#jose)                                               |0.1           |          |          |1    |
+|[JOUSBoost](problems.md#jousboost)                                     |2.1.0         |          |1         |1    |
+|[jpmesh](problems.md#jpmesh)                                           |0.4.0         |          |          |1    |
+|[jpndistrict](problems.md#jpndistrict)                                 |0.2.0         |          |          |1    |
+|[jqr](problems.md#jqr)                                                 |1.0.0         |1         |          |     |
+|[JSM](problems.md#jsm)                                                 |0.1.2         |          |          |1    |
+|[jsonlite](problems.md#jsonlite)                                       |1.5           |          |          |1    |
+|jsonvalidate                                                           |1.0.0         |          |          |     |
+|[jtools](problems.md#jtools)                                           |0.8.0         |          |          |1    |
+|jug                                                                    |0.1.7         |          |          |     |
+|[JuliaCall](problems.md#juliacall)                                     |0.9.3         |1         |          |     |
+|junr                                                                   |0.1.2         |          |          |     |
+|JWileymisc                                                             |0.2.1         |          |          |     |
+|[jwutil](problems.md#jwutil)                                           |1.1.1         |1         |          |     |
+|[kableExtra](problems.md#kableextra)                                   |0.5.2         |          |          |1    |
+|kader                                                                  |0.0.8         |          |          |     |
+|kamila                                                                 |0.1.1.1       |          |          |     |
+|kantorovich                                                            |2.0.0         |          |          |     |
+|[karyoploteR](problems.md#karyoploter)                                 |1.2.2         |          |          |3    |
+|kdecopula                                                              |0.9.1         |          |          |     |
+|kdevine                                                                |0.4.1         |          |          |     |
+|kelvin                                                                 |2.0-0         |          |          |     |
+|[keras](problems.md#keras)                                             |2.0.8         |          |          |1    |
+|kerasR                                                                 |0.6.1         |          |          |     |
+|kergp                                                                  |0.2.0         |          |          |     |
+|[kernelboot](problems.md#kernelboot)                                   |0.1.2         |__+1__    |          |     |
+|KernelKnn                                                              |1.0.5         |          |          |     |
+|[keyring](problems.md#keyring)                                         |1.0.0         |1         |          |     |
+|KFAS                                                                   |1.2.9         |          |          |     |
+|kgschart                                                               |1.3.5         |          |          |     |
+|[kimisc](problems.md#kimisc)                                           |0.3           |__+1__    |          |1    |
+|[kmcudaR](problems.md#kmcudar)                                         |1.0.0         |1         |          |     |
+|kmeans.ddR                                                             |0.1.0         |          |          |     |
+|[Kmisc](problems.md#kmisc)                                             |0.5.0         |          |          |1    |
+|[kmodR](problems.md#kmodr)                                             |0.1.0         |          |          |1    |
+|knitcitations                                                          |1.0.8         |          |          |     |
+|knitrBootstrap                                                         |1.0.1         |          |          |     |
+|[knockoff](problems.md#knockoff)                                       |0.2.1         |          |          |1    |
+|Knoema                                                                 |0.1.9         |          |          |     |
+|[knor](problems.md#knor)                                               |0.0-2         |          |          |1    |
+|kntnr                                                                  |0.4.1         |          |          |     |
+|[kokudosuuchi](problems.md#kokudosuuchi)                               |0.2.0         |          |          |1    |
+|[komadown](problems.md#komadown)                                       |0.1.0         |          |          |1    |
+|[koRpus](problems.md#korpus)                                           |0.10-2        |          |1         |3    |
+|[KraljicMatrix](problems.md#kraljicmatrix)                             |0.1.2         |          |          |1    |
+|kriens                                                                 |0.1           |          |          |     |
+|[kselection](problems.md#kselection)                                   |0.2.0         |          |          |1    |
+|kvh                                                                    |1.0.1         |          |          |     |
+|[labelled](problems.md#labelled)                                       |1.0.0         |          |          |2    |
+|LaF                                                                    |0.7.1         |          |          |     |
+|lambda.tools                                                           |1.0.9         |          |          |     |
+|[Lambda4](problems.md#lambda4)                                         |3.0           |          |          |3    |
+|LambertW                                                               |0.6.4         |          |          |     |
+|[lamW](problems.md#lamw)                                               |1.3.0         |          |          |2    |
+|languagelayeR                                                          |1.1.0         |          |          |     |
+|lans2r                                                                 |1.0.5         |          |          |     |
+|largeList                                                              |0.3.1         |          |          |     |
+|[largeVis](problems.md#largevis)                                       |0.2.1         |1         |          |1    |
+|lasvmR                                                                 |0.1.2         |          |          |     |
+|latex2exp                                                              |0.4.0         |          |          |     |
+|lava                                                                   |1.5.1         |          |          |     |
+|lavaan                                                                 |0.5-23.1097   |          |          |     |
+|lavaan.survey                                                          |1.1.3.1       |          |          |     |
+|[lawn](problems.md#lawn)                                               |0.4.2         |          |          |1    |
+|lazyeval                                                               |0.2.0         |          |          |     |
+|lazyrmd                                                                |0.2.0         |          |          |     |
+|lazysql                                                                |0.1.3         |          |          |     |
+|lazyWeave                                                              |3.0.1         |          |          |     |
+|ldamatch                                                               |1.0.1         |          |          |     |
+|ldhmm                                                                  |0.4.2         |          |          |     |
+|[leaflet](problems.md#leaflet)                                         |1.1.0         |          |          |2    |
+|leaflet.minicharts                                                     |0.5.1         |          |          |     |
+|LEANR                                                                  |1.4.9         |          |          |     |
+|LearnGeom                                                              |1.0           |          |          |     |
+|[learningCurve](problems.md#learningcurve)                             |1.1.1         |          |          |1    |
+|learNN                                                                 |0.2.0         |          |          |     |
+|learnr                                                                 |0.9           |          |          |     |
+|[LedPred](problems.md#ledpred)                                         |1.10.0        |          |          |2    |
+|letsR                                                                  |3.0           |          |          |     |
+|lettercase                                                             |0.13.1        |          |          |     |
+|lexRankr                                                               |0.4.1         |          |          |     |
+|lfactors                                                               |1.0.1         |          |          |     |
+|lfda                                                                   |1.1.2         |          |          |     |
+|LFDREmpiricalBayes                                                     |1.0           |          |          |     |
+|[lfl](problems.md#lfl)                                                 |1.4           |          |          |1    |
+|lfstat                                                                 |0.9.4         |          |          |     |
+|[LiblineaR.ACF](problems.md#liblinear.acf)                             |1.94-2        |          |          |1    |
+|[lidR](problems.md#lidr)                                               |1.3.1         |          |          |2    |
+|lifecontingencies                                                      |1.3.1         |          |          |     |
+|lifelogr                                                               |0.1.0         |          |          |     |
+|lightsout                                                              |0.3           |          |          |     |
+|lime                                                                   |0.3.0         |          |          |     |
+|[LinearizedSVR](problems.md#linearizedsvr)                             |1.3           |          |          |1    |
+|lineup                                                                 |0.37-6        |          |          |     |
+|[lingtypology](problems.md#lingtypology)                               |1.0.8         |          |          |1    |
+|[LinkageMapView](problems.md#linkagemapview)                           |2.1.0         |          |          |1    |
+|[LinkedMatrix](problems.md#linkedmatrix)                               |1.2.0         |          |          |1    |
+|[Linnorm](problems.md#linnorm)                                         |2.0.8         |1         |          |2    |
+|lintools                                                               |0.1.1.4       |          |          |     |
+|[lintr](problems.md#lintr)                                             |1.0.1         |__+1__    |          |     |
+|liqueueR                                                               |0.0.1         |          |          |     |
+|[liquidSVM](problems.md#liquidsvm)                                     |1.2.1         |1         |          |2    |
+|list                                                                   |8.3           |          |          |     |
+|listWithDefaults                                                       |1.2.0         |          |          |     |
+|[liteq](problems.md#liteq)                                             |1.0.0         |1         |          |     |
+|llama                                                                  |0.9.1         |          |          |     |
+|LLSR                                                                   |0.0.2.0       |          |          |     |
+|[lme4](problems.md#lme4)                                               |1.1-14        |__+1__    |          |1    |
+|lmem.gwaser                                                            |0.1.0         |          |          |     |
+|lmem.qtler                                                             |0.1.1         |          |          |     |
+|[lmeresampler](problems.md#lmeresampler)                               |0.1.0         |          |          |1    |
+|[lmmpar](problems.md#lmmpar)                                           |0.1.0         |          |          |1    |
+|lmPerm                                                                 |2.1.0         |          |          |     |
+|lmvar                                                                  |1.3.0         |          |          |     |
+|loder                                                                  |0.1.2         |          |          |     |
+|[log4r](problems.md#log4r)                                             |0.2           |          |          |2    |
+|LogicOpt                                                               |1.0.0         |          |          |     |
+|logisticPCA                                                            |0.2           |          |          |     |
+|logOfGamma                                                             |0.0.1         |          |          |     |
+|[LOLA](problems.md#lola)                                               |1.6.0         |2         |1         |2    |
+|longpower                                                              |1.0-16        |          |          |     |
+|longurl                                                                |0.3.0         |          |          |     |
+|loo                                                                    |1.1.0         |          |          |     |
+|lookupTable                                                            |0.1           |          |          |     |
+|[loon](problems.md#loon)                                               |1.1.0         |1         |          |     |
+|lowmemtkmeans                                                          |0.1.2         |          |          |     |
+|LowWAFOMNX                                                             |1.1.1         |          |          |     |
+|[LowWAFOMSobol](problems.md#lowwafomsobol)                             |1.1.1         |          |          |1    |
+|[lplyr](problems.md#lplyr)                                             |0.1.6         |1         |1         |     |
+|lrequire                                                               |0.1.3         |          |          |     |
+|lsbclust                                                               |1.0.4         |          |          |     |
+|lspline                                                                |1.0-0         |          |          |     |
+|ltmle                                                                  |1.0-0         |          |          |     |
+|[lubridate](problems.md#lubridate)                                     |1.6.0         |1         |          |1    |
+|lucid                                                                  |1.4           |          |          |     |
+|lucr                                                                   |0.2.0         |          |          |     |
+|lumberjack                                                             |0.2.0         |          |          |     |
+|lumendb                                                                |0.2.2         |          |          |     |
+|[Luminescence](problems.md#luminescence)                               |0.7.5         |          |          |2    |
+|luzlogr                                                                |0.2.0         |          |          |     |
+|lvec                                                                   |0.1.1         |          |          |     |
+|[LW1949](problems.md#lw1949)                                           |1.1.0         |          |1         |1    |
+|LZeroSpikeInference                                                    |1.0.1         |          |          |     |
+|m2r                                                                    |1.0.0         |          |          |     |
+|[M3D](problems.md#m3d)                                                 |1.10.0        |          |          |2    |
+|[macleish](problems.md#macleish)                                       |0.3.1         |          |          |1    |
+|madness                                                                |0.2.2         |          |          |     |
+|mads                                                                   |0.1.5         |          |          |     |
+|[mafs](problems.md#mafs)                                               |0.0.2         |          |          |1    |
+|magclass                                                               |4.51.1        |          |          |     |
+|magicfor                                                               |0.1.0         |          |          |     |
+|magrittr                                                               |1.5           |          |          |     |
+|MakefileR                                                              |1.0           |          |          |     |
+|MALDIquant                                                             |1.16.4        |          |          |     |
+|MALDIquantForeign                                                      |0.11          |          |          |     |
+|MALDIrppa                                                              |1.0.1         |          |          |     |
+|mandelbrot                                                             |0.2.0         |          |          |     |
+|manifestoR                                                             |1.2.4         |          |          |     |
+|manipulateWidget                                                       |0.7.0         |          |          |     |
+|[MANOVA.RM](problems.md#manova.rm)                                     |0.2.1         |          |1         |1    |
+|[mapr](problems.md#mapr)                                               |0.3.4         |1         |          |1    |
+|margins                                                                |0.3.0         |          |          |     |
+|marinespeed                                                            |0.1.0         |          |          |     |
+|[markmyassignment](problems.md#markmyassignment)                       |0.6.1         |__+1__    |          |-1   |
+|markophylo                                                             |1.0.4         |          |          |     |
+|[markovchain](problems.md#markovchain)                                 |0.6.9.8-1     |          |          |1    |
+|MarkowitzR                                                             |0.9900.0      |          |          |     |
+|[mason](problems.md#mason)                                             |0.2.5         |          |          |1    |
+|[MAST](problems.md#mast)                                               |1.2.1         |          |          |1    |
+|matchbook                                                              |1.0.7         |          |          |     |
+|matchingR                                                              |1.2.1         |          |          |     |
+|[MatchIt](problems.md#matchit)                                         |3.0.1         |          |          |1    |
+|matchMulti                                                             |1.1.5         |          |          |     |
+|matconv                                                                |0.3.2         |          |          |     |
+|[mathpix](problems.md#mathpix)                                         |0.1.0         |1         |          |     |
+|[Matrix.utils](problems.md#matrix.utils)                               |0.9.6         |          |          |1    |
+|matter                                                                 |1.2.0         |          |          |     |
+|[MaxContrastProjection](problems.md#maxcontrastprojection)             |1.0.0         |1         |          |     |
+|MazamaSpatialUtils                                                     |0.5.1         |          |          |     |
+|mbbefd                                                                 |0.8.8.1       |          |          |     |
+|[mbest](problems.md#mbest)                                             |0.5           |          |          |1    |
+|mboost                                                                 |2.8-1         |          |          |     |
+|[MCbiclust](problems.md#mcbiclust)                                     |1.0.1         |          |          |1    |
+|mccr                                                                   |0.4.4         |          |          |     |
+|mcglm                                                                  |0.3.0         |          |          |     |
+|[mcIRT](problems.md#mcirt)                                             |0.41          |          |          |2    |
+|mcmcse                                                                 |1.3-2         |          |          |     |
+|[mcMST](problems.md#mcmst)                                             |1.0.1         |          |          |1    |
+|[mco](problems.md#mco)                                                 |1.0-15.1      |          |          |3    |
+|mcompanion                                                             |0.4-5         |          |          |     |
+|mcparallelDo                                                           |1.1.0         |          |          |     |
+|mdftracks                                                              |0.2.0         |          |          |     |
+|mdsOpt                                                                 |0.1-4         |          |          |     |
+|[MEAL](problems.md#meal)                                               |1.6.0         |          |          |1    |
+|[meaRtools](problems.md#meartools)                                     |1.0.1         |          |1         |1    |
+|medicalrisk                                                            |1.2           |          |          |     |
+|medicare                                                               |0.2.1         |          |          |     |
+|[medmod](problems.md#medmod)                                           |1.0.0         |          |          |1    |
+|Meiosis                                                                |1.0.2         |          |          |     |
+|memo                                                                   |1.0           |          |          |     |
+|memoise                                                                |1.1.0         |          |          |     |
+|merTools                                                               |0.3.0         |          |          |     |
+|metaBMA                                                                |0.3.9         |          |          |     |
+|metacoder                                                              |0.1.3         |          |          |     |
+|metacom                                                                |1.4.9         |          |          |     |
+|MetaComp                                                               |1.0.1         |          |          |     |
+|metafor                                                                |2.0-0         |          |          |     |
+|[metagear](problems.md#metagear)                                       |0.4           |1         |          |     |
+|[metagenomeFeatures](problems.md#metagenomefeatures)                   |1.8.1         |          |          |2    |
+|metagenomeSeq                                                          |1.18.0        |          |          |     |
+|metaheur                                                               |0.2.0         |          |          |     |
+|metavizr                                                               |1.0.2         |          |          |     |
+|meteR                                                                  |1.2           |          |          |     |
+|[methylKit](problems.md#methylkit)                                     |1.2.4         |          |          |2    |
+|[MethylMix](problems.md#methylmix)                                     |2.4.0         |          |          |1    |
+|metricsgraphics                                                        |0.9.0         |          |          |     |
+|metricTester                                                           |1.3.3         |          |          |     |
+|[mets](problems.md#mets)                                               |1.2.2         |          |          |1    |
+|mfe                                                                    |0.1.0         |          |          |     |
+|MFKnockoffs                                                            |0.9.1         |          |          |     |
+|[MFPCA](problems.md#mfpca)                                             |1.1           |          |          |1    |
+|mgarchBEKK                                                             |0.0.2         |          |          |     |
+|[mgsa](problems.md#mgsa)                                               |1.24.0        |          |1         |3    |
+|mHG                                                                    |1.1           |          |          |     |
+|[micompr](problems.md#micompr)                                         |1.0.2         |2         |1         |2    |
+|[microdemic](problems.md#microdemic)                                   |0.1.0         |1         |          |     |
+|microPop                                                               |1.3           |          |          |     |
+|midasr                                                                 |0.6           |          |          |     |
+|milr                                                                   |0.3.0         |          |          |     |
+|[mimager](problems.md#mimager)                                         |1.0.0         |1         |          |     |
+|[MIMOSA](problems.md#mimosa)                                           |1.14.0        |          |          |2    |
+|minerva                                                                |1.4.7         |          |          |     |
+|miniCRAN                                                               |0.2.9         |          |          |     |
+|minimap                                                                |0.1.0         |          |          |     |
+|[MInt](problems.md#mint)                                               |1.0.1         |          |          |1    |
+|[minval](problems.md#minval)                                           |0.8           |          |1         |1    |
+|[miRBaseVersions.db](problems.md#mirbaseversions.db)                   |0.99.5        |          |          |2    |
+|[miRNAmeConverter](problems.md#mirnameconverter)                       |1.4.0         |          |          |1    |
+|[miRNAtap](problems.md#mirnatap)                                       |1.10.0        |          |          |2    |
+|MittagLeffleR                                                          |0.1.0         |          |          |     |
+|[MixSIAR](problems.md#mixsiar)                                         |3.1.7         |1         |          |2    |
+|mize                                                                   |0.1.1         |          |          |     |
+|[mizer](problems.md#mizer)                                             |0.2           |          |          |1    |
+|[mkin](problems.md#mkin)                                               |0.9.46.2      |          |          |1    |
+|mljar                                                                  |0.1.1         |          |          |     |
+|[mlr](problems.md#mlr)                                                 |2.11          |          |1         |2    |
+|[mlrMBO](problems.md#mlrmbo)                                           |1.1.0         |          |1         |     |
+|mlsjunkgen                                                             |0.1.1         |          |          |     |
+|mmand                                                                  |1.5.3         |          |          |     |
+|mmod                                                                   |1.3.3         |          |          |     |
+|mmpf                                                                   |0.0.3         |          |          |     |
+|[MMWRweek](problems.md#mmwrweek)                                       |0.1.1         |2         |          |     |
+|[mnis](problems.md#mnis)                                               |0.2.7         |1         |          |     |
+|MNP                                                                    |3.1-0         |          |          |     |
+|[mockery](problems.md#mockery)                                         |0.3.0         |__+1__    |          |1    |
+|mockr                                                                  |0.1           |          |          |     |
+|ModelMetrics                                                           |1.1.0         |          |          |     |
+|[modelr](problems.md#modelr)                                           |0.1.1         |          |          |1    |
+|[modelwordcloud](problems.md#modelwordcloud)                           |0.1           |          |          |1    |
+|[modeval](problems.md#modeval)                                         |0.1.3         |          |1         |     |
+|[MODIStsp](problems.md#modistsp)                                       |1.3.3.1       |1         |          |     |
+|[modmarg](problems.md#modmarg)                                         |0.6.0         |__+1__    |          |     |
+|[modules](problems.md#modules)                                         |0.6.0         |1         |          |     |
+|MOEADr                                                                 |1.0.0         |          |          |     |
+|moezipfR                                                               |1.0.2         |          |          |     |
+|[momentuHMM](problems.md#momentuhmm)                                   |1.1.1         |          |          |1    |
+|[Momocs](problems.md#momocs)                                           |1.2.2         |          |          |1    |
+|[MonetDBLite](problems.md#monetdblite)                                 |0.4.1         |1         |          |1    |
+|[monkeylearn](problems.md#monkeylearn)                                 |0.1.3         |1         |          |     |
+|[monocle](problems.md#monocle)                                         |2.4.0         |          |1         |1    |
+|MonoPhy                                                                |1.2           |          |          |     |
+|MonteCarlo                                                             |1.0.2         |          |          |     |
+|[moonBook](problems.md#moonbook)                                       |0.1.3         |          |          |3    |
+|[MoonlightR](problems.md#moonlightr)                                   |1.2.0         |          |1         |1    |
+|[morgenstemning](problems.md#morgenstemning)                           |1.0           |          |          |1    |
+|[Morpho](problems.md#morpho)                                           |2.5.1         |          |          |1    |
+|morse                                                                  |2.2.0         |          |          |     |
+|[mosaic](problems.md#mosaic)                                           |1.1.0         |          |          |2    |
+|mosaicCalc                                                             |0.5.0         |          |          |     |
+|mosaicCore                                                             |0.4.0         |          |          |     |
+|[mosaicModel](problems.md#mosaicmodel)                                 |0.3.0         |          |          |1    |
+|motifcounter                                                           |1.0.0         |          |          |     |
+|MotilityLab                                                            |0.2-5         |          |          |     |
+|mountainplot                                                           |1.2           |          |          |     |
+|[mousetrap](problems.md#mousetrap)                                     |3.1.0         |          |          |1    |
+|[move](problems.md#move)                                               |3.0.1         |__+1__    |          |     |
+|moveHMM                                                                |1.5           |          |          |     |
+|moveWindSpeed                                                          |0.2.1         |          |          |     |
+|MplusAutomation                                                        |0.7           |          |          |     |
+|mpoly                                                                  |1.0.5         |          |          |     |
+|mrbsizeR                                                               |1.0.1         |          |          |     |
+|mrds                                                                   |2.1.18        |          |          |     |
+|[mregions](problems.md#mregions)                                       |0.1.4         |          |          |1    |
+|[mrgsolve](problems.md#mrgsolve)                                       |0.8.9         |          |          |1    |
+|MRMR                                                                   |0.1.4         |          |          |     |
+|MScombine                                                              |1.1           |          |          |     |
+|[mscstexta4r](problems.md#mscstexta4r)                                 |0.1.2         |1         |          |     |
+|[mscsweblm4r](problems.md#mscsweblm4r)                                 |0.1.2         |1         |          |     |
+|[msde](problems.md#msde)                                               |1.0.2         |__+1__    |          |     |
+|[MSGARCH](problems.md#msgarch)                                         |1.1           |          |          |1    |
+|[MSGFgui](problems.md#msgfgui)                                         |1.10.0        |          |          |2    |
+|[MSGFplus](problems.md#msgfplus)                                       |1.10.1        |          |          |1    |
+|msgtools                                                               |0.2.7         |          |          |     |
+|msm                                                                    |1.6.4         |          |          |     |
+|msmtools                                                               |1.3           |          |          |     |
+|[MSnbase](problems.md#msnbase)                                         |2.2.0         |          |1         |3    |
+|[msPurity](problems.md#mspurity)                                       |1.2.0         |          |          |3    |
+|[msqc1](problems.md#msqc1)                                             |1.4.0         |          |          |1    |
+|mstherm                                                                |0.4.7         |          |          |     |
+|msu                                                                    |0.0.1         |          |          |     |
+|mtconnectR                                                             |1.1.0         |          |          |     |
+|MTSYS                                                                  |1.2.0         |          |          |     |
+|MTurkR                                                                 |0.8.0         |          |          |     |
+|[mudata](problems.md#mudata)                                           |0.1           |          |          |1    |
+|multdyn                                                                |1.6           |          |          |     |
+|[MultiAssayExperiment](problems.md#multiassayexperiment)               |1.2.1         |          |1         |1    |
+|[MultiBD](problems.md#multibd)                                         |0.2.0         |          |          |1    |
+|multiCA                                                                |1.1           |          |          |     |
+|[MultiDataSet](problems.md#multidataset)                               |1.4.0         |          |1         |3    |
+|multifwf                                                               |0.2.2         |          |          |     |
+|MultiGHQuad                                                            |1.2.0         |          |          |     |
+|[multilevelPSA](problems.md#multilevelpsa)                             |1.2.4         |          |          |1    |
+|multiplyr                                                              |0.1.1         |          |          |     |
+|munsell                                                                |0.4.3         |          |          |     |
+|[MutationalPatterns](problems.md#mutationalpatterns)                   |1.2.1         |          |          |1    |
+|MVN                                                                    |4.0.2         |          |          |     |
+|[mvnfast](problems.md#mvnfast)                                         |0.2.2         |          |          |1    |
+|mvtboost                                                               |0.5.0         |          |          |     |
+|[mwaved](problems.md#mwaved)                                           |1.1.5         |1         |          |     |
+|[mycor](problems.md#mycor)                                             |0.1           |          |          |1    |
+|[myTAI](problems.md#mytai)                                             |0.6.0         |          |          |1    |
+|[mzID](problems.md#mzid)                                               |1.14.0        |          |          |2    |
+|[nabor](problems.md#nabor)                                             |0.4.7         |          |          |1    |
+|NADfinder                                                              |1.0.1         |          |          |     |
+|namedCapture                                                           |2017.06.01    |          |          |     |
+|[nandb](problems.md#nandb)                                             |0.2.1         |1         |          |     |
+|naniar                                                                 |0.1.0         |          |          |     |
+|[NanoStringDiff](problems.md#nanostringdiff)                           |1.6.0         |          |          |1    |
+|[NanoStringQCPro](problems.md#nanostringqcpro)                         |1.8.0         |          |          |1    |
+|naptime                                                                |1.3.0         |          |          |     |
+|[narray](problems.md#narray)                                           |0.2.2         |__+1__    |          |     |
+|[nat](problems.md#nat)                                                 |1.8.9         |__+1__    |          |     |
+|nat.nblast                                                             |1.6.2         |          |          |     |
+|nat.templatebrains                                                     |0.8.2         |          |          |     |
+|nat.utils                                                              |0.5.1         |          |          |     |
+|[natserv](problems.md#natserv)                                         |0.1.4         |1         |          |     |
+|naturalsort                                                            |0.1.3         |          |          |     |
+|nauf                                                                   |1.1.0         |          |          |     |
+|[nbc4va](problems.md#nbc4va)                                           |1.0           |          |          |1    |
+|NCA                                                                    |2.0           |          |          |     |
+|ncappc                                                                 |0.2.1.1       |          |          |     |
+|[ncdfFlow](problems.md#ncdfflow)                                       |2.22.2        |          |          |4    |
+|ncdump                                                                 |0.0.3         |          |          |     |
+|ndjson                                                                 |0.5.0         |          |          |     |
+|ndtv                                                                   |0.10.0        |          |          |     |
+|[needy](problems.md#needy)                                             |0.2           |          |          |1    |
+|neighbr                                                                |1.0           |          |          |     |
+|neotoma                                                                |1.7.0         |          |          |     |
+|[nestedRanksTest](problems.md#nestedrankstest)                         |0.2           |          |          |1    |
+|net.security                                                           |0.3.0         |          |          |     |
+|[netdiffuseR](problems.md#netdiffuser)                                 |1.18.1        |__+1__    |          |1    |
+|netgen                                                                 |1.3           |          |          |     |
+|[netReg](problems.md#netreg)                                           |1.0.1         |          |          |1    |
+|[NetRep](problems.md#netrep)                                           |1.0.4         |          |          |1    |
+|[network](problems.md#network)                                         |1.13.0        |          |          |1    |
+|networkDynamic                                                         |0.9.0         |          |          |     |
+|NetworkInference                                                       |1.1.1         |          |          |     |
+|networkreporting                                                       |0.1.1         |          |          |     |
+|NetworkRiskMeasures                                                    |0.1.2         |          |          |     |
+|neurobase                                                              |1.13.2        |          |          |     |
+|neuroim                                                                |0.0.6         |          |          |     |
+|[NFP](problems.md#nfp)                                                 |0.99.2        |          |          |2    |
+|ngramrr                                                                |0.2.0         |          |          |     |
+|ngstk                                                                  |0.1.0         |          |          |     |
+|[nima](problems.md#nima)                                               |0.4.5         |          |          |1    |
+|[nimble](problems.md#nimble)                                           |0.6-6         |          |          |1    |
+|[nlmeU](problems.md#nlmeu)                                             |0.70-3        |          |          |2    |
+|[nloptr](problems.md#nloptr)                                           |1.0.4         |          |1         |1    |
+|nlstimedist                                                            |1.1.1         |          |          |     |
+|[NlsyLinks](problems.md#nlsylinks)                                     |2.0.6         |          |          |1    |
+|nLTT                                                                   |1.3.1         |          |          |     |
+|[nmaINLA](problems.md#nmainla)                                         |0.1.1         |1         |          |1    |
+|nneo                                                                   |0.1.0         |          |          |     |
+|[NNLM](problems.md#nnlm)                                               |0.4.1         |          |          |1    |
+|NNTbiomarker                                                           |0.29.11       |          |          |     |
+|[noaastormevents](problems.md#noaastormevents)                         |0.1.0         |          |          |2    |
+|nodiv                                                                  |1.1.6         |          |          |     |
+|[nofrills](problems.md#nofrills)                                       |0.2.0         |__+1__    |          |     |
+|[NoiseFiltersR](problems.md#noisefiltersr)                             |0.1.0         |          |1         |1    |
+|noncompliance                                                          |0.2.2         |          |          |     |
+|nonlinearICP                                                           |0.1.2.1       |          |          |     |
+|nonnest2                                                               |0.4-1         |          |          |     |
+|normalr                                                                |0.0.3         |          |          |     |
+|[normr](problems.md#normr)                                             |1.2.0         |1         |          |     |
+|[nscancor](problems.md#nscancor)                                       |0.6           |          |          |1    |
+|nse                                                                    |1-00.17       |          |          |     |
+|nsprcomp                                                               |0.5           |          |          |     |
+|numform                                                                |0.3.0         |          |          |     |
+|[nzelect](problems.md#nzelect)                                         |0.4.0         |          |          |1    |
+|oai                                                                    |0.2.2         |-1        |          |     |
+|OasisR                                                                 |3.0.0         |          |          |     |
+|obAnalytics                                                            |0.1.1         |          |          |     |
+|[observer](problems.md#observer)                                       |0.1.2         |          |          |1    |
+|[oce](problems.md#oce)                                                 |0.9-22        |1         |          |1    |
+|[odbc](problems.md#odbc)                                               |1.1.3         |1         |          |1    |
+|oddsratio                                                              |1.0.0         |          |          |     |
+|odeintr                                                                |1.7.1         |          |          |     |
+|odr                                                                    |0.3.2         |          |          |     |
+|OECD                                                                   |0.2.2         |          |          |     |
+|[officer](problems.md#officer)                                         |0.1.8         |2         |1         |     |
+|olctools                                                               |0.3.0         |          |          |     |
+|[OLScurve](problems.md#olscurve)                                       |0.2.0         |          |          |1    |
+|olsrr                                                                  |0.3.0         |          |          |     |
+|omics                                                                  |0.1-5         |          |          |     |
+|OmicsMarkeR                                                            |1.8.0         |          |          |     |
+|OmicsPLS                                                               |1.0.3         |          |          |     |
+|ompr                                                                   |0.6.0         |          |          |     |
+|ompr.roi                                                               |0.6.0         |          |          |     |
+|OncoScore                                                              |1.4.2         |          |          |     |
+|[OncoSimulR](problems.md#oncosimulr)                                   |2.6.0         |          |          |1    |
+|[OOBCurve](problems.md#oobcurve)                                       |0.1           |          |          |1    |
+|[openadds](problems.md#openadds)                                       |0.2.0         |1         |          |     |
+|[opencage](problems.md#opencage)                                       |0.1.2         |1         |1         |     |
+|[openCyto](problems.md#opencyto)                                       |1.14.0        |          |1         |4    |
+|openEBGM                                                               |0.2.0         |          |          |     |
+|[OpenImageR](problems.md#openimager)                                   |1.0.6         |          |          |1    |
+|OpenML                                                                 |1.6           |          |          |     |
+|openssl                                                                |0.9.7         |          |          |     |
+|[openxlsx](problems.md#openxlsx)                                       |4.0.17        |          |          |1    |
+|opera                                                                  |1.0           |          |          |     |
+|operator.tools                                                         |1.6.3         |          |          |     |
+|operators                                                              |0.1-8         |          |          |     |
+|optigrab                                                               |0.7.3         |          |          |     |
+|optim.functions                                                        |0.1           |          |          |     |
+|[optimus](problems.md#optimus)                                         |0.1.0         |__+1__    |          |1    |
+|[optiRum](problems.md#optirum)                                         |0.37.3        |1         |          |     |
+|[optmatch](problems.md#optmatch)                                       |0.9-7         |          |          |2    |
+|optparse                                                               |1.4.4         |          |          |     |
+|[optrdd](problems.md#optrdd)                                           |0.9           |1         |          |1    |
+|[ordinal](problems.md#ordinal)                                         |2015.6-28     |          |          |1    |
+|ordinalNet                                                             |2.3           |          |          |     |
+|ore                                                                    |1.6.0         |          |          |     |
+|ores                                                                   |0.3.0         |          |          |     |
+|[Organism.dplyr](problems.md#organism.dplyr)                           |1.2.2         |          |          |1    |
+|[origami](problems.md#origami)                                         |0.8.0         |          |          |1    |
+|originr                                                                |0.2.0         |          |          |     |
+|[oro.dicom](problems.md#oro.dicom)                                     |0.5.0         |          |          |1    |
+|[oro.nifti](problems.md#oro.nifti)                                     |0.7.2         |          |          |2    |
+|OrthoPanels                                                            |1.1-0         |          |          |     |
+|osc                                                                    |1.0.0         |          |          |     |
+|[Oscope](problems.md#oscope)                                           |1.6.0         |          |          |1    |
+|osi                                                                    |0.1.0         |          |          |     |
+|[osmdata](problems.md#osmdata)                                         |0.0.5         |          |          |1    |
+|[osmplotr](problems.md#osmplotr)                                       |0.3.0         |          |          |1    |
+|OSMscale                                                               |?             |          |          |     |
+|outbreaks                                                              |1.3.0         |          |          |     |
+|outreg                                                                 |0.2.2         |          |          |     |
+|owmr                                                                   |0.7.2         |          |          |     |
+|packagedocs                                                            |0.4.0         |          |          |     |
+|[packrat](problems.md#packrat)                                         |0.4.8-1       |1         |          |1    |
+|pacman                                                                 |0.4.6         |-1        |          |     |
+|paco                                                                   |0.3.2         |          |          |     |
+|[pacotest](problems.md#pacotest)                                       |0.2.2         |          |          |1    |
+|[Pade](problems.md#pade)                                               |0.1-4         |          |          |1    |
+|padr                                                                   |0.3.0         |          |          |     |
+|pafdR                                                                  |1.0           |          |          |     |
+|pagenum                                                                |1.1           |          |          |     |
+|pageviews                                                              |0.3.0         |          |          |     |
+|paleobioDB                                                             |0.5.0         |          |          |     |
+|paleomorph                                                             |0.1.4         |          |          |     |
+|palm                                                                   |1.0.0         |          |          |     |
+|palr                                                                   |0.0.6         |          |          |     |
+|pals                                                                   |1.4           |          |          |     |
+|[pangaear](problems.md#pangaear)                                       |0.3.0         |1         |          |     |
+|PANICr                                                                 |1.0.0         |          |          |     |
+|[PanVizGenerator](problems.md#panvizgenerator)                         |1.4.0         |          |          |2    |
+|papeR                                                                  |1.0-2         |          |          |     |
+|[parallelDist](problems.md#paralleldist)                               |0.2.0         |          |          |1    |
+|[parallelMap](problems.md#parallelmap)                                 |1.3           |          |          |1    |
+|ParamHelpers                                                           |1.10          |          |          |     |
+|[params](problems.md#params)                                           |0.6.1         |          |          |1    |
+|[parlitools](problems.md#parlitools)                                   |0.2.1         |          |          |1    |
+|parsedate                                                              |1.1.3         |          |          |     |
+|[parsemsf](problems.md#parsemsf)                                       |0.1.0         |2         |1         |1    |
+|partitionComparison                                                    |0.2.2         |          |          |     |
+|partools                                                               |1.1.6         |          |          |     |
+|PasillaTranscriptExpr                                                  |1.4.0         |          |          |     |
+|[passport](problems.md#passport)                                       |0.1.1         |__+1__    |          |     |
+|[patentsview](problems.md#patentsview)                                 |0.1.0         |2         |1         |     |
+|[pathological](problems.md#pathological)                               |0.1-2         |          |          |1    |
+|PathoStat                                                              |1.2.0         |          |          |     |
+|pavo                                                                   |1.3.1         |          |          |     |
+|[paxtoolsr](problems.md#paxtoolsr)                                     |1.10.0        |          |          |3    |
+|[Pbase](problems.md#pbase)                                             |0.16.0        |2         |          |1    |
+|[pbo](problems.md#pbo)                                                 |1.3.4         |          |          |2    |
+|[pcaExplorer](problems.md#pcaexplorer)                                 |2.2.1         |          |          |2    |
+|[PCHiCdata](problems.md#pchicdata)                                     |1.4.0         |          |          |1    |
+|PCSinR                                                                 |0.1.0         |          |          |     |
+|pdfsearch                                                              |0.1.1         |          |          |     |
+|pdftools                                                               |1.4           |          |          |     |
+|[pdp](problems.md#pdp)                                                 |0.6.0         |          |          |1    |
+|PDQutils                                                               |0.1.6         |          |          |     |
+|[pdSpecEst](problems.md#pdspecest)                                     |1.1.1         |          |          |1    |
+|PeakError                                                              |2017.06.19    |          |          |     |
+|PeakSegDP                                                              |2017.08.15    |          |          |     |
+|PeakSegJoint                                                           |2017.08.11    |          |          |     |
+|PeakSegOptimal                                                         |2017.07.12    |          |          |     |
+|PeerPerformance                                                        |2.1.2         |          |          |     |
+|penaltyLearning                                                        |2017.07.11    |          |          |     |
+|PepSAVIms                                                              |0.9.1         |          |          |     |
+|Peptides                                                               |2.2           |          |          |     |
+|Perc                                                                   |0.1.2         |          |          |     |
+|permGS                                                                 |0.2.5         |          |          |     |
+|permute                                                                |0.9-4         |          |          |     |
+|pgca                                                                   |1.0.0         |          |          |     |
+|phangorn                                                               |2.2.0         |          |          |     |
+|PhenotypeSimulator                                                     |0.1.3         |          |          |     |
+|philentropy                                                            |0.0.3         |          |          |     |
+|[philr](problems.md#philr)                                             |1.2.0         |          |          |2    |
+|phonenumber                                                            |0.2.2         |          |          |     |
+|phonics                                                                |0.7.5         |          |          |     |
+|[phosphonormalizer](problems.md#phosphonormalizer)                     |1.0.0         |          |          |1    |
+|photobiology                                                           |0.9.17        |          |          |     |
+|photobiologyInOut                                                      |0.4.13        |          |          |     |
+|phrasemachine                                                          |1.1.2         |          |          |     |
+|[phuse](problems.md#phuse)                                             |0.1.4         |1         |          |     |
+|Phxnlme                                                                |1.0.0         |          |          |     |
+|phybreak                                                               |0.2.0         |          |          |     |
+|phylobase                                                              |0.8.4         |          |          |     |
+|PhylogeneticEM                                                         |1.1.0         |          |          |     |
+|phylogram                                                              |1.0.1         |          |          |     |
+|[phylolm](problems.md#phylolm)                                         |2.5           |          |          |1    |
+|phylometrics                                                           |0.0.1         |          |          |     |
+|[phyloseq](problems.md#phyloseq)                                       |1.20.0        |          |          |4    |
+|[phyloTop](problems.md#phylotop)                                       |2.1.0         |          |1         |     |
+|phyndr                                                                 |0.1.0         |          |          |     |
+|physiology                                                             |0.2.2         |          |          |     |
+|[pifpaf](problems.md#pifpaf)                                           |1.0.1         |          |          |1    |
+|pim                                                                    |2.0.1         |          |          |     |
+|pingr                                                                  |1.1.2         |          |          |     |
+|pipefittr                                                              |0.1.2         |          |          |     |
+|pipeliner                                                              |0.1.1         |          |          |     |
+|pipeR                                                                  |0.6.1.3       |          |          |     |
+|[pitchRx](problems.md#pitchrx)                                         |1.8.2         |          |          |1    |
+|piton                                                                  |0.1.1         |          |          |     |
+|PivotalR                                                               |0.1.18.3      |          |          |     |
+|pivottabler                                                            |0.4.0         |          |          |     |
+|pixiedust                                                              |0.8.1         |          |          |     |
+|pkgconfig                                                              |2.0.1         |          |          |     |
+|[pkgmaker](problems.md#pkgmaker)                                       |0.22          |          |          |2    |
+|PKNCA                                                                  |0.8.1         |          |          |     |
+|[PKPDmisc](problems.md#pkpdmisc)                                       |2.0.0         |          |          |1    |
+|[plac](problems.md#plac)                                               |0.1.1         |          |          |1    |
+|[planar](problems.md#planar)                                           |1.6           |          |          |1    |
+|plantecophys                                                           |1.3           |          |          |     |
+|plater                                                                 |1.0.1         |          |          |     |
+|platetools                                                             |0.0.2         |          |          |     |
+|pleiades                                                               |0.2.0         |          |          |     |
+|[plotluck](problems.md#plotluck)                                       |1.1.0         |          |          |1    |
+|plotly                                                                 |4.7.1         |          |          |     |
+|plotROC                                                                |2.2.0         |          |          |     |
+|plotwidgets                                                            |0.4           |          |          |     |
+|plspm                                                                  |0.4.9         |          |          |     |
+|pltesim                                                                |1.0           |          |          |     |
+|plumber                                                                |0.4.2         |          |          |     |
+|plumbr                                                                 |0.6.9         |          |          |     |
+|[plyr](problems.md#plyr)                                               |1.8.4         |          |          |1    |
+|pmc                                                                    |1.0.2         |          |          |     |
+|pmml                                                                   |1.5.2         |          |          |     |
+|pmmlTransformations                                                    |1.3.1         |          |          |     |
+|[pnn](problems.md#pnn)                                                 |1.0.1         |          |          |2    |
+|[pointblank](problems.md#pointblank)                                   |0.1           |          |          |1    |
+|[poio](problems.md#poio)                                               |0.0-3         |          |          |2    |
+|pollen                                                                 |0.53.00       |          |          |     |
+|[polmineR](problems.md#polminer)                                       |0.7.5         |          |          |1    |
+|polyCub                                                                |0.6.1         |          |          |     |
+|polypoly                                                               |0.0.2         |          |          |     |
+|pool                                                                   |0.1.1         |          |          |     |
+|pop                                                                    |0.1           |          |          |     |
+|PopED                                                                  |0.3.2         |          |          |     |
+|popEpi                                                                 |0.4.3         |          |          |     |
+|poplite                                                                |0.99.19       |          |          |     |
+|poppr                                                                  |2.5.0         |          |          |     |
+|popprxl                                                                |0.1.3         |          |          |     |
+|[PortfolioAnalytics](problems.md#portfolioanalytics)                   |1.0.3636      |          |          |2    |
+|[PortfolioEffectHFT](problems.md#portfolioeffecthft)                   |1.8           |          |          |1    |
+|PortfolioOptim                                                         |1.0.3         |          |          |     |
+|postGIStools                                                           |0.2.1         |          |          |     |
+|postlightmercury                                                       |1.2           |          |          |     |
+|[POUMM](problems.md#poumm)                                             |1.3.2         |          |          |1    |
+|powerbydesign                                                          |1.0.3         |          |          |     |
+|poweRlaw                                                               |0.70.1        |          |          |     |
+|[powerlmm](problems.md#powerlmm)                                       |0.1.0         |          |          |1    |
+|PP                                                                     |0.6.1         |          |          |     |
+|[PPInfer](problems.md#ppinfer)                                         |1.2.4         |          |          |4    |
+|[pqsfinder](problems.md#pqsfinder)                                     |1.4.9         |          |          |4    |
+|praise                                                                 |1.0.0         |          |          |     |
+|prcbench                                                               |0.7.3         |          |          |     |
+|pre                                                                    |0.4           |          |          |     |
+|[precrec](problems.md#precrec)                                         |0.9.1         |          |          |1    |
+|predatory                                                              |1.1           |          |          |     |
+|[prediction](problems.md#prediction)                                   |0.2.0         |          |          |2    |
+|prefeR                                                                 |0.1.1         |          |          |     |
+|preference                                                             |0.1.0         |          |          |     |
+|prepdat                                                                |1.0.8         |          |          |     |
+|preprocomb                                                             |0.3.0         |          |          |     |
+|preproviz                                                              |0.2.0         |          |          |     |
+|prereg                                                                 |0.3.0         |          |          |     |
+|preText                                                                |0.6.0         |          |          |     |
+|prettycode                                                             |1.0.0         |          |          |     |
+|[prettymapr](problems.md#prettymapr)                                   |0.2.2         |          |          |1    |
+|prettyunits                                                            |1.0.2         |          |          |     |
+|primefactr                                                             |0.1.0         |          |          |     |
+|primes                                                                 |0.1.0         |          |          |     |
+|[prioritylasso](problems.md#prioritylasso)                             |0.2.1         |          |          |1    |
+|prism                                                                  |0.0.7         |          |          |     |
+|[PRISMAstatement](problems.md#prismastatement)                         |1.0.1         |          |          |1    |
+|[prisonbrief](problems.md#prisonbrief)                                 |0.1.0         |          |          |1    |
+|pROC                                                                   |1.10.0        |          |          |     |
+|[processx](problems.md#processx)                                       |2.0.0.1       |          |          |1    |
+|prodest                                                                |0.1.1         |          |          |     |
+|[prodigenr](problems.md#prodigenr)                                     |0.3.0         |          |          |1    |
+|productplots                                                           |0.1.1         |          |          |     |
+|prof.tree                                                              |0.1.0         |          |          |     |
+|profilr                                                                |0.1.0         |          |          |     |
+|profvis                                                                |0.3.3         |          |          |     |
+|progress                                                               |1.1.2         |          |          |     |
+|projector                                                              |0.0.1         |          |          |     |
+|ProjectTemplate                                                        |0.8           |          |          |     |
+|[projmanr](problems.md#projmanr)                                       |0.1.0         |          |          |1    |
+|[pRoloc](problems.md#proloc)                                           |1.16.1        |          |          |4    |
+|[pRolocdata](problems.md#prolocdata)                                   |1.14.0        |          |1         |1    |
+|[prophet](problems.md#prophet)                                         |0.2           |          |          |1    |
+|[propr](problems.md#propr)                                             |3.0.7         |          |          |1    |
+|PROscorer                                                              |0.0.1         |          |          |     |
+|PROscorerTools                                                         |0.0.1         |          |          |     |
+|Prostar                                                                |1.8.5         |          |          |     |
+|ProteinDescriptors                                                     |0.1.0         |          |          |     |
+|[proteinProfiles](problems.md#proteinprofiles)                         |1.16.0        |          |          |1    |
+|[ProteomicsAnnotationHubData](problems.md#proteomicsannotationhubdata) |1.6.0         |          |          |1    |
+|proto                                                                  |1.0.0         |          |          |     |
+|[protoclass](problems.md#protoclass)                                   |1.0           |          |          |3    |
+|[protolite](problems.md#protolite)                                     |1.7           |          |          |2    |
+|[proustr](problems.md#proustr)                                         |0.2.1         |          |          |1    |
+|PRROC                                                                  |1.3           |          |          |     |
+|[pryr](problems.md#pryr)                                               |0.1.2         |          |          |1    |
+|[psd](problems.md#psd)                                                 |1.0-1         |          |          |2    |
+|[psda](problems.md#psda)                                               |1.0.0         |          |          |1    |
+|pseval                                                                 |1.3.0         |          |          |     |
+|psichomics                                                             |1.2.1         |          |          |     |
+|psidR                                                                  |1.4           |          |          |     |
+|[psycho](problems.md#psycho)                                           |0.0.2         |          |          |1    |
+|[psygenet2r](problems.md#psygenet2r)                                   |1.9.1         |          |1         |3    |
+|[ptstem](problems.md#ptstem)                                           |0.0.3         |          |          |1    |
+|[PTXQC](problems.md#ptxqc)                                             |0.92.0        |          |          |1    |
+|[pubprint](problems.md#pubprint)                                       |0.2.1         |          |          |2    |
+|pulsar                                                                 |0.2.5         |          |          |     |
+|pulver                                                                 |0.1.0         |          |          |     |
+|purge                                                                  |0.2.1         |          |          |     |
+|purrr                                                                  |0.2.3         |          |          |     |
+|[purrrlyr](problems.md#purrrlyr)                                       |0.0.2         |          |          |1    |
+|pvar                                                                   |2.2.2         |          |          |     |
+|[PWMEnrich](problems.md#pwmenrich)                                     |4.12.0        |          |          |3    |
+|pwrAB                                                                  |0.1.0         |          |          |     |
+|pwrRasch                                                               |0.1-2         |          |          |     |
+|[pxweb](problems.md#pxweb)                                             |0.6.3         |1         |          |     |
+|qap                                                                    |0.1-1         |          |          |     |
+|[QCApro](problems.md#qcapro)                                           |1.1-1         |          |          |1    |
+|[qdap](problems.md#qdap)                                               |2.2.8         |          |          |1    |
+|qdapRegex                                                              |0.7.2         |          |          |     |
+|qdapTools                                                              |1.3.3         |          |          |     |
+|QFASA                                                                  |1.0.2         |          |          |     |
+|qfasar                                                                 |1.2.0         |          |          |     |
+|qicharts2                                                              |0.1.1         |          |          |     |
+|[qiimer](problems.md#qiimer)                                           |0.9.4         |          |          |1    |
+|[qiitr](problems.md#qiitr)                                             |0.1.0         |1         |          |     |
+|qrencoder                                                              |0.1.0         |          |          |     |
+|[qrqc](problems.md#qrqc)                                               |1.30.0        |          |          |4    |
+|qsea                                                                   |1.2.0         |          |          |     |
+|[qtl](problems.md#qtl)                                                 |1.41-6        |          |          |1    |
+|qtlcharts                                                              |0.9-6         |          |          |     |
+|quadprogXT                                                             |0.0.1         |          |          |     |
+|[quadrupen](problems.md#quadrupen)                                     |0.2-5         |          |          |1    |
+|[qualpalr](problems.md#qualpalr)                                       |0.4.2         |          |          |1    |
+|qualtRics                                                              |2.0           |          |          |     |
+|Quandl                                                                 |2.8.0         |          |          |     |
+|[quanteda](problems.md#quanteda)                                       |0.99.12       |__+1__    |          |2    |
+|quantspec                                                              |1.2-1         |          |          |     |
+|QuantumClone                                                           |1.0.0.4       |          |          |     |
+|[questionr](problems.md#questionr)                                     |0.6.1         |          |          |3    |
+|queuecomputer                                                          |0.8.1         |          |          |     |
+|quhomology                                                             |1.1.0         |          |          |     |
+|quickblock                                                             |0.1.0         |          |          |     |
+|quickmapr                                                              |0.2.0         |          |          |     |
+|quickmatch                                                             |0.1.2         |          |          |     |
+|[quickPlot](problems.md#quickplot)                                     |0.1.2         |          |          |2    |
+|[quickReg](problems.md#quickreg)                                       |1.5.0         |          |          |2    |
+|[qwraps2](problems.md#qwraps2)                                         |0.2.4         |          |          |1    |
+|R2admb                                                                 |0.7.15        |          |          |     |
+|[r2glmm](problems.md#r2glmm)                                           |0.1.2         |          |          |1    |
+|R4CouchDB                                                              |0.7.5         |          |          |     |
+|R6                                                                     |2.2.2         |          |          |     |
+|[R6Frame](problems.md#r6frame)                                         |0.1.0         |1         |          |     |
+|radarchart                                                             |0.3.1         |          |          |     |
+|[radiant](problems.md#radiant)                                         |0.8.0         |          |          |1    |
+|radiant.basics                                                         |0.8.0         |          |          |     |
+|radiant.data                                                           |0.8.1         |          |          |     |
+|radiant.design                                                         |0.8.0         |          |          |     |
+|[radiant.model](problems.md#radiant.model)                             |0.8.0         |          |          |1    |
+|[radiant.multivariate](problems.md#radiant.multivariate)               |0.8.0         |          |          |1    |
+|[radiomics](problems.md#radiomics)                                     |0.1.2         |          |1         |     |
+|radmixture                                                             |0.0.1         |          |          |     |
+|[RaggedExperiment](problems.md#raggedexperiment)                       |1.0.0         |          |1         |1    |
+|[rags2ridges](problems.md#rags2ridges)                                 |2.2           |          |          |1    |
+|ragtop                                                                 |0.5           |          |          |     |
+|rakeR                                                                  |0.2.1         |          |          |     |
+|rAltmetric                                                             |0.7.0         |          |          |     |
+|RAM                                                                    |1.2.1.3       |          |          |     |
+|Ramble                                                                 |0.1.1         |          |          |     |
+|[rAmCharts](problems.md#ramcharts)                                     |2.1.5         |          |          |1    |
+|ramcmc                                                                 |0.1.0         |          |          |     |
+|ramify                                                                 |0.3.3         |          |          |     |
+|randgeo                                                                |0.2.0         |          |          |     |
+|randNames                                                              |0.2.3         |          |          |     |
+|randomForest.ddR                                                       |0.1.2         |          |          |     |
+|[randomizeR](problems.md#randomizer)                                   |1.4           |          |1         |     |
+|randomizr                                                              |0.6.0         |          |          |     |
+|[rangeMapper](problems.md#rangemapper)                                 |0.3-1         |          |          |1    |
+|[ranger](problems.md#ranger)                                           |0.8.0         |          |          |1    |
+|rankdist                                                               |1.1.2         |          |          |     |
+|RANN                                                                   |2.5.1         |          |          |     |
+|RANN.L1                                                                |2.5           |          |          |     |
+|rapiclient                                                             |0.1.2         |          |          |     |
+|[RAppArmor](problems.md#rapparmor)                                     |2.0.2         |1         |          |     |
+|rappdirs                                                               |0.3.1         |          |          |     |
+|[raptr](problems.md#raptr)                                             |0.0.5         |__+2__    |          |2    |
+|[Rariant](problems.md#rariant)                                         |1.12.0        |          |1         |3    |
+|rasterList                                                             |0.5.8         |          |          |     |
+|ratelimitr                                                             |0.3.9         |          |          |     |
+|ratesci                                                                |0.2-0         |          |          |     |
+|[rAvis](problems.md#ravis)                                             |0.1.4         |          |          |1    |
+|rbcb                                                                   |0.1.1         |          |          |     |
+|[RBesT](problems.md#rbest)                                             |1.2-3         |          |          |2    |
+|rbgm                                                                   |0.0.4         |          |          |     |
+|[rbhl](problems.md#rbhl)                                               |0.8.0         |1         |          |     |
+|[rbi](problems.md#rbi)                                                 |0.8.0         |1         |          |1    |
+|[rbison](problems.md#rbison)                                           |0.5.4         |1         |          |     |
+|[rbokeh](problems.md#rbokeh)                                           |0.5.0         |          |          |2    |
+|[Rborist](problems.md#rborist)                                         |0.1-8         |1         |          |2    |
+|RBPcurve                                                               |1.2           |          |          |     |
+|[rbundler](problems.md#rbundler)                                       |0.3.7         |          |          |2    |
+|rcanvec                                                                |0.2.1         |          |          |     |
+|[RCAS](problems.md#rcas)                                               |1.2.0         |__+1__    |          |1    |
+|rcbalance                                                              |1.8.4         |          |          |     |
+|rcbsubset                                                              |1.1.2         |          |          |     |
+|rccdates                                                               |1.0.0         |          |          |     |
+|[rccmisc](problems.md#rccmisc)                                         |0.3.7         |          |          |1    |
+|[rcellminer](problems.md#rcellminer)                                   |1.8.0         |2         |1         |3    |
+|[rcellminerData](problems.md#rcellminerdata)                           |1.8.0         |1 __+1__  |1         |3    |
+|Rcereal                                                                |1.2.1         |          |          |     |
+|rclimateca                                                             |0.2           |          |          |     |
+|[rClinicalCodes](problems.md#rclinicalcodes)                           |1.0.1         |          |          |2    |
+|RClone                                                                 |1.0.2         |          |          |     |
+|rcmdcheck                                                              |1.2.1         |          |          |     |
+|[RcmdrPlugin.lfstat](problems.md#rcmdrplugin.lfstat)                   |0.8.1         |          |1         |     |
+|RCMIP5                                                                 |1.2.0         |          |          |     |
+|[rcongresso](problems.md#rcongresso)                                   |0.1.3         |1         |          |1    |
+|[rcoreoa](problems.md#rcoreoa)                                         |0.1.0         |1         |          |     |
+|[RcppFaddeeva](problems.md#rcppfaddeeva)                               |0.1.0         |          |          |1    |
+|[RcppRoll](problems.md#rcpproll)                                       |0.2.2         |          |          |1    |
+|[RcppShark](problems.md#rcppshark)                                     |3.1.1         |          |          |1    |
+|RcppTN                                                                 |0.2-1         |          |          |     |
+|[RcppXPtrUtils](problems.md#rcppxptrutils)                             |0.1.0         |          |          |1    |
+|[rcrossref](problems.md#rcrossref)                                     |0.7.0         |1         |          |     |
+|rcrypt                                                                 |0.1.1         |          |          |     |
+|Rd2md                                                                  |0.0.2         |          |          |     |
+|RDataCanvas                                                            |0.1           |          |          |     |
+|[rdatacite](problems.md#rdatacite)                                     |0.1.0         |1         |          |     |
+|rddtools                                                               |0.4.0         |          |          |     |
+|[rDEA](problems.md#rdea)                                               |1.2-5         |          |          |1    |
+|rdefra                                                                 |0.3.4         |          |          |     |
+|[rDGIdb](problems.md#rdgidb)                                           |1.2.1         |1         |1         |     |
+|rdian                                                                  |0.1.1         |          |          |     |
+|rdist                                                                  |0.0.2         |          |          |     |
+|rdiversity                                                             |1.0           |          |          |     |
+|RDML                                                                   |0.9-9         |          |          |     |
+|rdomains                                                               |0.1.5         |          |          |     |
+|[RDota2](problems.md#rdota2)                                           |0.1.6         |1         |1         |     |
+|[rDotNet](problems.md#rdotnet)                                         |0.9.1         |          |1         |     |
+|rdoxygen                                                               |1.0.0         |          |          |     |
+|[rdpla](problems.md#rdpla)                                             |0.2.0         |1         |          |     |
+|[rdrop2](problems.md#rdrop2)                                           |0.8.1         |1         |          |1    |
+|[rdryad](problems.md#rdryad)                                           |0.2.0         |1         |          |     |
+|RDS                                                                    |0.8-0         |          |          |     |
+|rdwd                                                                   |0.8.0         |          |          |     |
+|[re2r](problems.md#re2r)                                               |0.2.0         |          |          |2    |
+|ReactomePA                                                             |1.20.2        |          |          |     |
+|readability                                                            |0.1.1         |          |          |     |
+|[readat](problems.md#readat)                                           |1.2.1         |          |          |1    |
+|readbitmap                                                             |0.1-4         |          |          |     |
+|readODS                                                                |1.6.4         |          |          |     |
+|[readr](problems.md#readr)                                             |1.1.1         |          |          |2    |
+|readstata13                                                            |0.9.0         |          |          |     |
+|[readtext](problems.md#readtext)                                       |0.50          |1         |          |     |
+|[readxl](problems.md#readxl)                                           |1.0.0         |          |          |1    |
+|realestateDK                                                           |0.1.0         |          |          |     |
+|rebird                                                                 |0.4.0         |          |          |     |
+|rebus                                                                  |0.1-3         |          |          |     |
+|[rebus.base](problems.md#rebus.base)                                   |0.0-3         |          |          |1    |
+|[rebus.datetimes](problems.md#rebus.datetimes)                         |0.0-1         |1         |          |     |
+|rebus.numbers                                                          |0.0-1         |          |          |     |
+|[recexcavAAR](problems.md#recexcavaar)                                 |0.3.0         |          |          |1    |
+|recipes                                                                |0.1.0         |          |          |     |
+|recmap                                                                 |0.5.24        |          |          |     |
+|recombinator                                                           |1.0.0         |          |          |     |
+|recommenderlab                                                         |0.2-2         |          |          |     |
+|reconstructr                                                           |2.0.0         |          |          |     |
+|[recount](problems.md#recount)                                         |1.2.3         |2         |1         |3    |
+|[REDCapR](problems.md#redcapr)                                         |0.9.8         |1         |          |     |
+|[redist](problems.md#redist)                                           |1.3-1         |          |          |1    |
+|[redland](problems.md#redland)                                         |1.0.17-9      |          |          |1    |
+|[redlistr](problems.md#redlistr)                                       |1.0.0         |          |          |1    |
+|[redux](problems.md#redux)                                             |1.0.0         |1         |          |1    |
+|[refimpact](problems.md#refimpact)                                     |1.0.0         |          |          |2    |
+|RefManageR                                                             |0.14.20       |          |          |     |
+|refnr                                                                  |0.1.0         |          |          |     |
+|refset                                                                 |0.1.0         |          |          |     |
+|regexr                                                                 |1.1.0         |          |          |     |
+|reghelper                                                              |0.3.3         |          |          |     |
+|[regioneR](problems.md#regioner)                                       |1.8.1         |          |          |2    |
+|regsplice                                                              |1.2.0         |          |          |     |
+|RegularizedSCA                                                         |0.4.2         |          |          |     |
+|[ReinforcementLearning](problems.md#reinforcementlearning)             |1.0.1         |          |          |1    |
+|ReIns                                                                  |1.0.5         |          |          |     |
+|reinstallr                                                             |0.1.4         |          |          |     |
+|ReliabilityTheory                                                      |0.1.5         |          |          |     |
+|RelimpPCR                                                              |0.2.3         |          |          |     |
+|rematch                                                                |1.0.1         |          |          |     |
+|rematch2                                                               |2.0.1         |          |          |     |
+|rEMM                                                                   |1.0-11        |          |          |     |
+|[remotes](problems.md#remotes)                                         |1.1.0         |__+1__    |          |     |
+|[rENA](problems.md#rena)                                               |0.1.0         |          |          |1    |
+|rentrez                                                                |1.1.0         |          |          |     |
+|repijson                                                               |0.1.0         |          |          |     |
+|[replyr](problems.md#replyr)                                           |0.5.3         |          |          |2    |
+|[repo](problems.md#repo)                                               |2.1.1         |1         |          |     |
+|ReporteRs                                                              |0.8.8         |          |          |     |
+|reportr                                                                |1.2.2         |          |          |     |
+|[repr](problems.md#repr)                                               |0.12.0        |          |          |1    |
+|represtools                                                            |0.1.2         |          |          |     |
+|reprex                                                                 |0.1.1         |          |          |     |
+|reproducer                                                             |0.1.9         |          |          |     |
+|reproducible                                                           |0.1.3         |          |          |     |
+|[repurrrsive](problems.md#repurrrsive)                                 |0.1.0         |          |          |1    |
+|reqres                                                                 |0.2.0         |          |          |     |
+|request                                                                |0.1.0         |          |          |     |
+|[rerddap](problems.md#rerddap)                                         |0.4.2         |1         |          |1    |
+|reshape2                                                               |1.4.2         |          |          |     |
+|restimizeapi                                                           |1.0.0         |          |          |     |
+|restrictedMVN                                                          |1.0           |          |          |     |
+|resumer                                                                |0.0.3         |          |          |     |
+|rethinker                                                              |1.0.0         |          |          |     |
+|reticulate                                                             |1.2           |          |          |     |
+|retistruct                                                             |0.5.12        |          |          |     |
+|reutils                                                                |0.2.3         |          |          |     |
+|[revdbayes](problems.md#revdbayes)                                     |1.2.1         |__+1__    |          |     |
+|revealjs                                                               |0.9           |          |          |     |
+|[rex](problems.md#rex)                                                 |1.1.1         |__+1__    |          |     |
+|Rexperigen                                                             |0.2.1         |          |          |     |
+|RFc                                                                    |0.1-2         |          |          |     |
+|[rfigshare](problems.md#rfigshare)                                     |0.3.7         |          |          |1    |
+|[rfishbase](problems.md#rfishbase)                                     |2.1.2         |          |          |1    |
+|Rfit                                                                   |0.23.0        |          |          |     |
+|[rfml](problems.md#rfml)                                               |0.1.0         |1         |          |     |
+|RForcecom                                                              |1.1           |          |          |     |
+|RFormatter                                                             |0.1.1         |          |          |     |
+|RGA                                                                    |0.4.2         |          |          |     |
+|[rgbif](problems.md#rgbif)                                             |0.9.8         |1         |          |     |
+|[rgeolocate](problems.md#rgeolocate)                                   |1.0.1         |          |          |1    |
+|rgeos                                                                  |0.3-25        |          |          |     |
+|[rgho](problems.md#rgho)                                               |1.0.1         |1         |1         |     |
+|rglobi                                                                 |0.2.11        |          |          |     |
+|[rGoodData](problems.md#rgooddata)                                     |0.1.0         |__+1__    |          |     |
+|[RGoogleAnalytics](problems.md#rgoogleanalytics)                       |0.1.1         |          |          |1    |
+|[rGREAT](problems.md#rgreat)                                           |1.8.0         |          |          |1    |
+|[rGroovy](problems.md#rgroovy)                                         |1.0           |1         |          |     |
+|rhoR                                                                   |1.1.0.0       |          |          |     |
+|RI2by2                                                                 |1.3           |          |          |     |
+|[RiboProfiling](problems.md#riboprofiling)                             |1.6.0         |          |1         |1    |
+|riceware                                                               |0.4           |          |          |     |
+|ridigbio                                                               |0.3.5         |          |          |     |
+|riem                                                                   |0.1.1         |          |          |     |
+|[rif](problems.md#rif)                                                 |0.2.0         |1         |          |     |
+|Rilostat                                                               |0.2           |          |          |     |
+|[RImageJROI](problems.md#rimagejroi)                                   |0.1.1         |          |          |1    |
+|RImagePalette                                                          |0.1.1         |          |          |     |
+|rinat                                                                  |0.1.5         |          |          |     |
+|ring                                                                   |1.0.0         |          |          |     |
+|rintrojs                                                               |0.2.0         |          |          |     |
+|rio                                                                    |0.5.5         |          |          |     |
+|[RiskPortfolios](problems.md#riskportfolios)                           |2.1.1         |          |          |1    |
+|[riskRegression](problems.md#riskregression)                           |1.4.3         |          |          |1    |
+|ritis                                                                  |0.6.0         |          |          |     |
+|[RItools](problems.md#ritools)                                         |0.1-15        |          |          |1    |
+|[RIVER](problems.md#river)                                             |1.0.0         |          |          |1    |
+|riverdist                                                              |0.15.0        |          |          |     |
+|[rjsonapi](problems.md#rjsonapi)                                       |0.1.0         |          |          |1    |
+|rjstat                                                                 |0.3.0         |          |          |     |
+|rKIN                                                                   |0.1           |          |          |     |
+|rLakeAnalyzer                                                          |1.11.0        |          |          |     |
+|[rlang](problems.md#rlang)                                             |0.1.2         |__+1__    |          |     |
+|rLDCP                                                                  |1.0.1         |          |          |     |
+|Rlibeemd                                                               |1.3.7         |          |          |     |
+|rlist                                                                  |0.4.6.1       |          |          |     |
+|RLumModel                                                              |0.2.2         |          |          |     |
+|rly                                                                    |1.4.2         |          |          |     |
+|rmapshaper                                                             |0.3.0         |          |          |     |
+|[rmapzen](problems.md#rmapzen)                                         |0.3.3         |1         |          |1    |
+|[RMariaDB](problems.md#rmariadb)                                       |1.0-2         |1         |          |     |
+|[rmarkdown](problems.md#rmarkdown)                                     |1.6           |          |          |1    |
+|[rmcfs](problems.md#rmcfs)                                             |1.2.6         |          |          |1    |
+|[rmonad](problems.md#rmonad)                                           |0.3.0         |          |          |1    |
+|[rmumps](problems.md#rmumps)                                           |5.1.1-3       |          |          |2    |
+|RMySQL                                                                 |0.10.13       |          |          |     |
+|[rnaturalearth](problems.md#rnaturalearth)                             |0.1.0         |          |          |2    |
+|[rnaturalearthdata](problems.md#rnaturalearthdata)                     |0.1.0         |          |          |1    |
+|[rncl](problems.md#rncl)                                               |0.8.2         |          |          |1    |
+|RndTexExams                                                            |1.4           |          |          |     |
+|RNeo4j                                                                 |1.6.4         |          |          |     |
+|rnetcarto                                                              |0.2.4         |          |          |     |
+|[RNeXML](problems.md#rnexml)                                           |2.0.7         |__+1__    |          |1    |
+|[RNHANES](problems.md#rnhanes)                                         |1.1.0         |1         |          |     |
+|[RNifti](problems.md#rnifti)                                           |0.7.1         |          |          |1    |
+|[RNiftyReg](problems.md#rniftyreg)                                     |2.6.0         |          |          |1    |
+|rnn                                                                    |0.8.0         |          |          |     |
+|[rnoaa](problems.md#rnoaa)                                             |0.7.0         |1         |          |     |
+|[rnpn](problems.md#rnpn)                                               |0.1.0         |1         |          |     |
+|rnrfa                                                                  |1.3.0         |          |          |     |
+|[roadoi](problems.md#roadoi)                                           |0.4           |          |1         |     |
+|roahd                                                                  |1.3           |          |          |     |
+|roar                                                                   |1.12.0        |          |          |     |
+|Robocoap                                                               |0.1-1         |          |          |     |
+|robotstxt                                                              |0.4.1         |          |          |     |
+|[RObsDat](problems.md#robsdat)                                         |16.03         |          |          |1    |
+|[RODBCDBI](problems.md#rodbcdbi)                                       |0.1.1         |1         |          |     |
+|RODBCext                                                               |0.3.1         |          |          |     |
+|[rODE](problems.md#rode)                                               |0.99.5        |          |          |1    |
+|[rodham](problems.md#rodham)                                           |0.1.1         |          |          |2    |
+|[ROI.plugin.clp](problems.md#roi.plugin.clp)                           |0.4           |1         |          |     |
+|rollmatch                                                              |1.0.0         |          |          |     |
+|rollply                                                                |0.5.0         |          |          |     |
+|rolr                                                                   |1.0.0         |          |          |     |
+|[rols](problems.md#rols)                                               |2.4.0         |1         |1         |     |
+|[rolypoly](problems.md#rolypoly)                                       |0.1.0         |          |          |1    |
+|ropenaq                                                                |0.2.2         |          |          |     |
+|ROpenFIGI                                                              |0.2.8         |          |          |     |
+|[rorcid](problems.md#rorcid)                                           |0.3.0         |1         |          |     |
+|rorutadis                                                              |0.4.2         |          |          |     |
+|rosetteApi                                                             |1.7.0         |          |          |     |
+|[rosm](problems.md#rosm)                                               |0.2.2         |          |          |1    |
+|[rotations](problems.md#rotations)                                     |1.5           |          |          |1    |
+|[rotl](problems.md#rotl)                                               |3.0.3         |1         |          |     |
+|[ROTS](problems.md#rots)                                               |1.4.0         |1         |          |     |
+|[routr](problems.md#routr)                                             |0.2.0         |          |          |1    |
+|roxygen2                                                               |6.0.1         |          |          |     |
+|RPANDA                                                                 |1.3           |          |          |     |
+|[rpartitions](problems.md#rpartitions)                                 |0.1           |          |          |3    |
+|rpatrec                                                                |1.0.1         |          |          |     |
+|rpcdsearch                                                             |1.0           |          |          |     |
+|rpdo                                                                   |0.2.2         |          |          |     |
+|[rpf](problems.md#rpf)                                                 |0.55          |          |          |1    |
+|[rpivotTable](problems.md#rpivottable)                                 |0.2.0         |          |          |1    |
+|[rplos](problems.md#rplos)                                             |0.6.4         |1         |          |1    |
+|rpn                                                                    |1.0           |          |          |     |
+|rpnf                                                                   |1.0.5         |          |          |     |
+|[rpostgisLT](problems.md#rpostgislt)                                   |0.5.0         |          |          |1    |
+|rPraat                                                                 |1.0.8         |          |          |     |
+|[rPref](problems.md#rpref)                                             |1.2           |          |          |1    |
+|RPresto                                                                |1.3.0         |          |          |     |
+|rprev                                                                  |0.2.4         |          |          |     |
+|[rprime](problems.md#rprime)                                           |0.1.0         |          |          |1    |
+|rprintf                                                                |0.2.1         |          |          |     |
+|[rprojroot](problems.md#rprojroot)                                     |1.2           |__+1__    |          |     |
+|[rpsftm](problems.md#rpsftm)                                           |1.2.0         |__+1__    |          |     |
+|[rptR](problems.md#rptr)                                               |0.9.2         |          |          |1    |
+|rpubchem                                                               |1.5.10        |          |          |     |
+|rpx                                                                    |1.12.3        |          |          |     |
+|[Rqc](problems.md#rqc)                                                 |1.10.2        |          |          |1    |
+|[RQGIS](problems.md#rqgis)                                             |1.0.1         |1         |          |     |
+|rr                                                                     |1.4           |          |          |     |
+|[rredlist](problems.md#rredlist)                                       |0.4.0         |1         |          |     |
+|[rrr](problems.md#rrr)                                                 |1.0.0         |          |          |1    |
+|rsample                                                                |0.0.1         |          |          |     |
+|[RSauceLabs](problems.md#rsaucelabs)                                   |0.1.6         |1         |          |     |
+|rscimark                                                               |1.0           |          |          |     |
+|[rsconnect](problems.md#rsconnect)                                     |0.8.5         |1         |          |2    |
+|[rscopus](problems.md#rscopus)                                         |0.5.3         |          |          |1    |
+|[rscorecard](problems.md#rscorecard)                                   |0.4.0         |          |1         |     |
+|RSDA                                                                   |2.0.2         |          |          |     |
+|[rsdmx](problems.md#rsdmx)                                             |0.5-9         |1         |          |     |
+|[RSelenium](problems.md#rselenium)                                     |1.7.1         |1         |1         |2    |
+|RSentiment                                                             |2.2           |          |          |     |
+|[rsig](problems.md#rsig)                                               |1.0           |          |          |2    |
+|[RSiteCatalyst](problems.md#rsitecatalyst)                             |1.4.13        |1         |          |     |
+|rslp                                                                   |0.1.0         |          |          |     |
+|[rslurm](problems.md#rslurm)                                           |0.3.3         |          |1         |1    |
+|[rsnps](problems.md#rsnps)                                             |0.2.0         |1         |          |     |
+|RSocrata                                                               |1.7.3-2       |-1        |          |     |
+|[rsoi](problems.md#rsoi)                                               |0.3.0         |          |          |1    |
+|rspa                                                                   |0.2.1         |          |          |     |
+|[rsparkling](problems.md#rsparkling)                                   |0.2.2         |1         |          |     |
+|[RSQLite](problems.md#rsqlite)                                         |2.0           |1         |          |2    |
+|RSQLServer                                                             |0.3.0         |          |          |     |
+|rSQM                                                                   |1.2.42        |          |          |     |
+|Rssa                                                                   |1.0           |          |          |     |
+|[RSSL](problems.md#rssl)                                               |0.6.1         |          |          |1    |
+|rstack                                                                 |1.0.0         |          |          |     |
+|rstackdeque                                                            |1.1.1         |          |          |     |
+|[rstanarm](problems.md#rstanarm)                                       |2.15.3        |1         |          |2    |
+|rstansim                                                               |0.1.1         |          |          |     |
+|rstantools                                                             |1.3.0         |          |          |     |
+|[RStoolbox](problems.md#rstoolbox)                                     |0.1.9         |          |          |1    |
+|[rstudioapi](problems.md#rstudioapi)                                   |0.7           |          |          |1    |
+|[rsunlight](problems.md#rsunlight)                                     |0.4.2         |1         |          |1    |
+|rsvd                                                                   |0.6           |          |          |     |
+|rt3                                                                    |0.1.2         |          |          |     |
+|[RTCGA](problems.md#rtcga)                                             |1.6.0         |1         |          |3    |
+|[rtdists](problems.md#rtdists)                                         |0.7-3         |__+1__    |          |     |
+|[rtext](problems.md#rtext)                                             |0.1.20        |          |          |2    |
+|[rticles](problems.md#rticles)                                         |0.4.1         |1         |          |1    |
+|rtide                                                                  |0.0.4         |          |          |     |
+|[rtimes](problems.md#rtimes)                                           |0.5.0         |1         |          |     |
+|[rtimicropem](problems.md#rtimicropem)                                 |1.3           |          |          |1    |
+|[rtk](problems.md#rtk)                                                 |0.2.5.3       |          |          |1    |
+|RTriangle                                                              |1.6-0.9       |          |          |     |
+|rtrie                                                                  |0.1.1         |          |          |     |
+|rtrim                                                                  |1.0.1         |          |          |     |
+|Rtsne                                                                  |0.13          |          |          |     |
+|rtson                                                                  |1.3           |          |          |     |
+|[rtweet](problems.md#rtweet)                                           |0.4.0         |1         |          |     |
+|rtype                                                                  |0.1-1         |          |          |     |
+|rtypeform                                                              |0.3.2         |          |          |     |
+|[Ruchardet](problems.md#ruchardet)                                     |0.0-3         |          |          |1    |
+|rucrdtw                                                                |0.1.3         |          |          |     |
+|rUnemploymentData                                                      |1.1.0         |          |          |     |
+|[runittotestthat](problems.md#runittotestthat)                         |0.0-2         |          |          |1    |
+|rusda                                                                  |1.0.8         |          |          |     |
+|rust                                                                   |1.2.3         |          |          |     |
+|rvertnet                                                               |0.6.2         |          |          |     |
+|rvest                                                                  |0.3.2         |          |          |     |
+|[rvg](problems.md#rvg)                                                 |0.1.6         |          |          |1    |
+|[rvgtest](problems.md#rvgtest)                                         |0.7.4         |          |          |1    |
+|[rvinecopulib](problems.md#rvinecopulib)                               |0.1.0.1.1     |          |          |1    |
+|rwars                                                                  |1.0.0         |          |          |     |
+|rWind                                                                  |0.4.1         |          |          |     |
+|[RxODE](problems.md#rxode)                                             |0.6-1         |          |          |1    |
+|[rxylib](problems.md#rxylib)                                           |0.2.0         |          |          |1    |
+|[Ryacas](problems.md#ryacas)                                           |0.3-1         |          |          |1    |
+|rYoutheria                                                             |1.0.3         |          |          |     |
+|[SADISA](problems.md#sadisa)                                           |1.0           |          |          |1    |
+|sadists                                                                |0.2.3         |          |          |     |
+|saeRobust                                                              |0.1.0         |          |          |     |
+|saeSim                                                                 |0.9.0         |          |          |     |
+|[SanFranBeachWater](problems.md#sanfranbeachwater)                     |0.1.0         |          |          |1    |
+|[sankey](problems.md#sankey)                                           |1.0.0         |__+1__    |          |     |
+|[sasMap](problems.md#sasmap)                                           |1.0.0         |          |          |1    |
+|satellite                                                              |1.0.0         |          |          |     |
+|[savR](problems.md#savr)                                               |1.14.0        |          |          |1    |
+|[sbart](problems.md#sbart)                                             |0.1.0         |          |          |1    |
+|sBIC                                                                   |0.2.0         |          |          |     |
+|sbtools                                                                |1.1.6         |          |          |     |
+|[SC3](problems.md#sc3)                                                 |1.4.2         |          |1         |     |
+|[scales](problems.md#scales)                                           |0.5.0         |          |          |1    |
+|[scanstatistics](problems.md#scanstatistics)                           |1.0.0         |          |          |2    |
+|[scater](problems.md#scater)                                           |1.4.0         |          |          |2    |
+|scclust                                                                |0.1.1         |          |          |     |
+|scdhlm                                                                 |0.3.1         |          |          |     |
+|SchemaOnRead                                                           |1.0.2         |          |          |     |
+|[SciencesPo](problems.md#sciencespo)                                   |1.4.1         |          |1         |1    |
+|[scone](problems.md#scone)                                             |1.0.0         |          |          |1    |
+|scorer                                                                 |0.2.0         |          |          |     |
+|[scoring](problems.md#scoring)                                         |0.5-1         |          |          |1    |
+|scoringRules                                                           |0.9.3         |          |          |     |
+|[SCORPIUS](problems.md#scorpius)                                       |1.0           |          |          |1    |
+|[ScrabbleScore](problems.md#scrabblescore)                             |1.0           |          |          |1    |
+|scran                                                                  |1.4.5         |          |          |     |
+|[scrm](problems.md#scrm)                                               |1.7.2-0       |          |          |1    |
+|scrubr                                                                 |0.1.1         |          |          |     |
+|[sdcMicro](problems.md#sdcmicro)                                       |5.0.3         |          |          |1    |
+|[sdcTable](problems.md#sdctable)                                       |0.22.8        |2         |          |     |
+|[SDMPlay](problems.md#sdmplay)                                         |1.2           |          |          |1    |
+|sdmpredictors                                                          |0.2.6         |          |          |     |
+|sdmvspecies                                                            |0.3.2         |          |          |     |
+|searchable                                                             |0.3.3.1       |          |          |     |
+|secret                                                                 |1.0.0         |          |          |     |
+|segmag                                                                 |1.2.4         |          |          |     |
+|selectr                                                                |0.3-1         |          |          |     |
+|[seleniumPipes](problems.md#seleniumpipes)                             |0.3.7         |1         |          |     |
+|SEMID                                                                  |0.3.1         |          |          |     |
+|semisup                                                                |1.0.2         |          |          |     |
+|semver                                                                 |0.2.0         |          |          |     |
+|SensMap                                                                |0.4           |          |          |     |
+|[sensR](problems.md#sensr)                                             |1.5-0         |          |          |1    |
+|[SentimentAnalysis](problems.md#sentimentanalysis)                     |1.2-0         |          |          |1    |
+|[sentimentr](problems.md#sentimentr)                                   |1.0.0         |          |          |1    |
+|[seplyr](problems.md#seplyr)                                           |0.1.5         |          |          |1    |
+|SeqKat                                                                 |?             |          |          |     |
+|seqMeta                                                                |1.6.7         |          |          |     |
+|[seqminer](problems.md#seqminer)                                       |6.0           |          |          |1    |
+|[seqplots](problems.md#seqplots)                                       |1.14.1        |          |          |3    |
+|sequences                                                              |0.5.9         |          |          |     |
+|[sergeant](problems.md#sergeant)                                       |0.5.2         |1         |          |     |
+|[seriation](problems.md#seriation)                                     |1.2-2         |          |          |1    |
+|seroincidence                                                          |1.0.5         |          |          |     |
+|sessioninfo                                                            |1.0.0         |          |          |     |
+|setter                                                                 |0.0-1         |          |          |     |
+|settings                                                               |0.2.4         |          |          |     |
+|[Seurat](problems.md#seurat)                                           |2.1.0         |          |          |1    |
+|sevenbridges                                                           |1.6.4         |          |          |     |
+|[sf](problems.md#sf)                                                   |0.5-4         |          |          |1    |
+|sfdct                                                                  |0.0.4         |          |          |     |
+|sfinx                                                                  |1.7.99        |          |          |     |
+|[sgd](problems.md#sgd)                                                 |1.1           |1         |          |     |
+|sglg                                                                   |0.1.0         |          |          |     |
+|sgmcmc                                                                 |0.2.0         |          |          |     |
+|[shades](problems.md#shades)                                           |0.2.0         |          |          |1    |
+|[shadow](problems.md#shadow)                                           |0.3.5         |          |1         |1    |
+|SharpeR                                                                |1.1.0         |          |          |     |
+|[shazam](problems.md#shazam)                                           |0.1.8         |          |          |1    |
+|SHELF                                                                  |1.2.3         |          |          |     |
+|[shiny](problems.md#shiny)                                             |1.0.5         |          |          |1    |
+|[shinyAce](problems.md#shinyace)                                       |0.2.1         |          |          |1    |
+|shinyjs                                                                |0.9.1         |          |          |     |
+|shinyRGL                                                               |0.1.0         |          |          |     |
+|shinyShortcut                                                          |0.1.0         |          |          |     |
+|shinystan                                                              |2.4.0         |          |          |     |
+|[shinyTree](problems.md#shinytree)                                     |0.2.2         |          |          |1    |
+|shinyWidgets                                                           |0.3.5         |          |          |     |
+|sights                                                                 |1.2.0         |          |          |     |
+|sigmoid                                                                |0.2.1         |          |          |     |
+|sigr                                                                   |0.2.0         |          |          |     |
+|sim1000G                                                               |1.32          |          |          |     |
+|simglm                                                                 |0.6.0         |          |          |     |
+|[SIMLR](problems.md#simlr)                                             |1.2.3         |          |          |1    |
+|[simmer](problems.md#simmer)                                           |3.6.3         |          |          |1    |
+|simmer.plot                                                            |0.1.10        |          |          |     |
+|SimPhe                                                                 |0.1.1         |          |          |     |
+|[simpleCache](problems.md#simplecache)                                 |0.3.1         |          |          |1    |
+|simplegraph                                                            |1.0.0         |          |          |     |
+|simplr                                                                 |0.1-1         |          |          |     |
+|simputation                                                            |0.2.2         |          |          |     |
+|simr                                                                   |1.0.3         |          |          |     |
+|simstudy                                                               |0.1.5         |          |          |     |
+|simsurv                                                                |0.1.0         |          |          |     |
+|simulator                                                              |0.2.0         |          |          |     |
+|sisal                                                                  |0.46          |          |          |     |
+|SixSigma                                                               |0.9-51        |          |          |     |
+|skeletor                                                               |1.0.4         |          |          |     |
+|[skpr](problems.md#skpr)                                               |0.35.1        |          |          |1    |
+|slackr                                                                 |1.4.2         |          |          |     |
+|slim                                                                   |0.1.1         |          |          |     |
+|[SLOPE](problems.md#slope)                                             |0.1.3         |1         |          |     |
+|[slowraker](problems.md#slowraker)                                     |0.1.0         |          |          |1    |
+|smacpod                                                                |1.4.1         |          |          |     |
+|[smapr](problems.md#smapr)                                             |0.1.0         |1         |          |1    |
+|SmartSifter                                                            |0.1.0         |          |          |     |
+|[smcUtils](problems.md#smcutils)                                       |0.2.2         |          |          |1    |
+|smerc                                                                  |0.2.2         |          |          |     |
+|[Smisc](problems.md#smisc)                                             |0.3.6         |2         |          |     |
+|[SmithWilsonYieldCurve](problems.md#smithwilsonyieldcurve)             |1.0.1         |          |          |2    |
+|[smoof](problems.md#smoof)                                             |1.5.1         |          |          |1    |
+|[smooth](problems.md#smooth)                                           |2.1.1         |          |          |1    |
+|[smoothAPC](problems.md#smoothapc)                                     |0.2           |          |          |1    |
+|smpic                                                                  |0.1.0         |          |          |     |
+|snakecase                                                              |0.5.1         |          |          |     |
+|[SnakeCharmR](problems.md#snakecharmr)                                 |1.0.7         |1         |          |     |
+|SNPediaR                                                               |1.2.0         |          |          |     |
+|SNPknock                                                               |0.5           |          |          |     |
+|SNSequate                                                              |1.3.1         |          |          |     |
+|SobolSequence                                                          |1.0           |          |          |     |
+|SocialMediaLab                                                         |0.23.2        |          |          |     |
+|sofa                                                                   |0.2.0         |          |          |     |
+|[soGGi](problems.md#soggi)                                             |1.8.0         |          |2         |2    |
+|solr                                                                   |0.1.6         |          |          |     |
+|[solrium](problems.md#solrium)                                         |0.4.0         |1         |          |1    |
+|solvebio                                                               |2.1.0         |          |          |     |
+|[SomaticCancerAlterations](problems.md#somaticcanceralterations)       |1.12.0        |          |          |2    |
+|[SomaticSignatures](problems.md#somaticsignatures)                     |2.12.1        |          |          |1    |
+|[SortableHTMLTables](problems.md#sortablehtmltables)                   |0.1-3         |          |          |2    |
+|[sortinghat](problems.md#sortinghat)                                   |0.1           |          |          |1    |
+|[sorvi](problems.md#sorvi)                                             |0.7.26        |          |          |1    |
+|sotkanet                                                               |0.9.48        |          |          |     |
+|[sourceR](problems.md#sourcer)                                         |1.0.1         |          |          |1    |
+|sourcetools                                                            |0.1.6         |          |          |     |
+|SpaCCr                                                                 |0.1.0         |          |          |     |
+|[spacyr](problems.md#spacyr)                                           |0.9.0         |1         |          |2    |
+|[SpaDES](problems.md#spades)                                           |2.0.0         |          |2         |1    |
+|[SpaDES.addins](problems.md#spades.addins)                             |0.1.0         |          |1         |1    |
+|[SpaDES.core](problems.md#spades.core)                                 |0.1.0         |          |1         |1    |
+|[SpaDES.tools](problems.md#spades.tools)                               |0.1.0         |          |          |1    |
+|spaero                                                                 |0.2.0         |          |          |     |
+|[spam](problems.md#spam)                                               |2.1-1         |__+1__    |          |1    |
+|[spaMM](problems.md#spamm)                                             |2.2.0         |          |          |2    |
+|[spareserver](problems.md#spareserver)                                 |1.0.1         |1         |          |     |
+|spark                                                                  |2.0.0         |          |          |     |
+|[sparklyr](problems.md#sparklyr)                                       |0.6.3         |1         |          |     |
+|[SparkR](problems.md#sparkr)                                           |2.1.2         |1         |1         |     |
+|sparsebn                                                               |0.0.5         |          |          |     |
+|[sparsebnUtils](problems.md#sparsebnutils)                             |0.0.5         |          |          |2    |
+|sparsediscrim                                                          |0.2.4         |          |          |     |
+|[SparseGrid](problems.md#sparsegrid)                                   |0.8.2         |          |          |1    |
+|[sparseHessianFD](problems.md#sparsehessianfd)                         |0.3.3.1       |          |1         |     |
+|sparseMVN                                                              |0.2.1         |          |          |     |
+|sparsevar                                                              |0.0.10        |          |          |     |
+|sparsio                                                                |1.0.0         |          |          |     |
+|spatialprobit                                                          |0.9-11        |          |          |     |
+|spbabel                                                                |0.4.8         |          |          |     |
+|spcadjust                                                              |1.1           |          |          |     |
+|spdplyr                                                                |0.1.3         |          |          |     |
+|spduration                                                             |0.17.0        |          |          |     |
+|spdynmod                                                               |1.1.3         |          |          |     |
+|SpecsVerification                                                      |0.5-2         |          |          |     |
+|[spectrolab](problems.md#spectrolab)                                   |0.0.2         |          |          |1    |
+|[sperrorest](problems.md#sperrorest)                                   |2.1.0         |1         |          |     |
+|spex                                                                   |0.4.0         |          |          |     |
+|[spiderbar](problems.md#spiderbar)                                     |0.2.0         |1         |          |     |
+|[SpidermiR](problems.md#spidermir)                                     |1.7.4         |          |          |1    |
+|spiders                                                                |1.2           |          |          |     |
+|[spind](problems.md#spind)                                             |2.1.1         |          |          |1    |
+|[splashr](problems.md#splashr)                                         |0.4.0         |1         |          |     |
+|splatter                                                               |1.0.3         |          |          |     |
+|splines2                                                               |0.2.6         |          |          |     |
+|splithalf                                                              |0.2.0         |          |          |     |
+|[spocc](problems.md#spocc)                                             |0.7.0         |1         |          |     |
+|SPOT                                                                   |2.0.1         |          |          |     |
+|SqlRender                                                              |1.4.3         |          |          |     |
+|sqlscore                                                               |0.1.2         |          |          |     |
+|squid                                                                  |0.1.1         |          |          |     |
+|srvyr                                                                  |0.2.2         |          |          |     |
+|[SSDM](problems.md#ssdm)                                               |0.2.3         |          |1         |1    |
+|sspse                                                                  |0.5-2         |          |          |     |
+|[sss](problems.md#sss)                                                 |0.1-0         |          |          |1    |
+|StableEstim                                                            |2.1           |          |          |     |
+|stablespec                                                             |0.3.0         |          |          |     |
+|stabs                                                                  |0.6-3         |          |          |     |
+|[stacomiR](problems.md#stacomir)                                       |0.5.3         |1         |          |     |
+|standardize                                                            |0.2.1         |          |          |     |
+|[StarBioTrek](problems.md#starbiotrek)                                 |1.2.1         |          |          |2    |
+|[starmie](problems.md#starmie)                                         |0.1.2         |          |          |2    |
+|statar                                                                 |0.6.5         |          |          |     |
+|statebins                                                              |1.2.2         |          |          |     |
+|[stationaRy](problems.md#stationary)                                   |0.4.1         |          |          |1    |
+|[statip](problems.md#statip)                                           |0.1.4         |          |          |1    |
+|[statisticalModeling](problems.md#statisticalmodeling)                 |0.3.0         |1         |1         |1    |
+|StatRank                                                               |0.0.6         |          |          |     |
+|[statsDK](problems.md#statsdk)                                         |0.1.1         |          |          |1    |
+|[statsgrokse](problems.md#statsgrokse)                                 |0.1.4         |1         |          |     |
+|statTarget                                                             |1.6.1         |          |          |     |
+|stcov                                                                  |0.1.0         |          |          |     |
+|STEPCAM                                                                |1.2           |          |          |     |
+|[stepR](problems.md#stepr)                                             |2.0-1         |          |1         |1    |
+|sticky                                                                 |0.5.2         |          |          |     |
+|stlplus                                                                |0.5.1         |          |          |     |
+|stm                                                                    |1.3.0         |          |          |     |
+|stmgui                                                                 |0.1.6         |          |          |     |
+|storr                                                                  |1.1.2         |          |          |     |
+|stplanr                                                                |0.1.9         |          |          |     |
+|stR                                                                    |0.3           |          |          |     |
+|strat                                                                  |0.1           |          |          |     |
+|[strataG](problems.md#stratag)                                         |2.0.2         |          |          |2    |
+|[stream](problems.md#stream)                                           |1.2-4         |          |          |1    |
+|[stressr](problems.md#stressr)                                         |1.0.0         |          |          |1    |
+|stringb                                                                |0.1.13        |          |          |     |
+|stringdist                                                             |0.9.4.6       |          |          |     |
+|[stringr](problems.md#stringr)                                         |1.2.0         |          |          |1    |
+|strip                                                                  |0.1.1         |          |          |     |
+|striprtf                                                               |0.4.5         |          |          |     |
+|strvalidator                                                           |2.0.0         |          |          |     |
+|stubthat                                                               |1.2.0         |          |          |     |
+|subgroup.discovery                                                     |0.2.0         |          |          |     |
+|[subprocess](problems.md#subprocess)                                   |0.8.1         |__+1__    |          |     |
+|[subSeq](problems.md#subseq)                                           |1.6.0         |          |          |1    |
+|sugrrants                                                              |0.1.0         |          |          |     |
+|summariser                                                             |0.1.0         |          |          |     |
+|[sunburstR](problems.md#sunburstr)                                     |1.0.2         |          |          |1    |
+|[SuperGauss](problems.md#supergauss)                                   |1.0           |1         |          |     |
+|superheat                                                              |0.1.0         |          |          |     |
+|SuperLearner                                                           |2.0-22        |          |-1        |     |
+|[supervisedPRIM](problems.md#supervisedprim)                           |2.0.0         |          |1         |     |
+|[sure](problems.md#sure)                                               |0.2.0         |          |          |1    |
+|[surveillance](problems.md#surveillance)                               |1.15.0        |          |          |3    |
+|surveybootstrap                                                        |0.0.1         |          |          |     |
+|surveydata                                                             |0.2.0         |          |          |     |
+|[survivALL](problems.md#survivall)                                     |0.9.1         |          |          |1    |
+|survivalsvm                                                            |0.0.2         |          |          |     |
+|survtmle                                                               |1.0.0         |          |          |     |
+|sva                                                                    |3.24.4        |          |          |     |
+|sValues                                                                |0.1.4         |          |          |     |
+|svd                                                                    |0.4.1         |          |          |     |
+|svglite                                                                |1.2.1         |          |          |     |
+|[svyPVpack](problems.md#svypvpack)                                     |0.1-1         |          |          |1    |
+|SwarmSVM                                                               |0.1-2         |          |          |     |
+|[SWATH2stats](problems.md#swath2stats)                                 |1.6.1         |          |          |2    |
+|[sweep](problems.md#sweep)                                             |0.2.0         |          |          |1    |
+|sweidnumbr                                                             |1.4.1         |          |          |     |
+|swirl                                                                  |2.4.3         |          |          |     |
+|[swirlify](problems.md#swirlify)                                       |0.5.1         |__+1__    |          |     |
+|switchde                                                               |1.2.0         |          |          |     |
+|syllable                                                               |0.1.3         |          |          |     |
+|[sylly](problems.md#sylly)                                             |0.1-3         |          |1         |1    |
+|symDMatrix                                                             |1.0.0         |          |          |     |
+|[synapter](problems.md#synapter)                                       |2.0.0         |          |1         |4    |
+|SyncRNG                                                                |1.2.1         |          |          |     |
+|[synlet](problems.md#synlet)                                           |1.6.0         |          |          |1    |
+|synthACS                                                               |1.0.1         |          |          |     |
+|[sys](problems.md#sys)                                                 |1.5           |1         |          |     |
+|systemicrisk                                                           |0.4           |          |          |     |
+|syuzhet                                                                |1.0.1         |          |          |     |
+|[tableHTML](problems.md#tablehtml)                                     |1.0.1         |          |          |1    |
+|tableone                                                               |0.8.1         |          |          |     |
+|tabularaster                                                           |0.3.0         |          |          |     |
+|[tadaatoolbox](problems.md#tadaatoolbox)                               |0.13.0        |          |          |2    |
+|tangram                                                                |0.3.2         |          |          |     |
+|[tatoo](problems.md#tatoo)                                             |1.0.8         |          |          |1    |
+|TauStar                                                                |1.1.3         |          |          |     |
+|[taxa](problems.md#taxa)                                               |0.1.0         |          |          |1    |
+|[taxize](problems.md#taxize)                                           |0.9.0         |1         |          |     |
+|[taxizedb](problems.md#taxizedb)                                       |0.1.4         |1         |          |     |
+|taxonomizr                                                             |0.2.2         |          |          |     |
+|[tbdiag](problems.md#tbdiag)                                           |0.1           |          |          |1    |
+|[TCGAbiolinks](problems.md#tcgabiolinks)                               |2.5.9         |          |1         |3    |
+|[TCGAbiolinksGUI](problems.md#tcgabiolinksgui)                         |1.2.1         |          |1         |3    |
+|[TCGAWorkflowData](problems.md#tcgaworkflowdata)                       |1.0.0         |          |1         |1    |
+|[TCIApathfinder](problems.md#tciapathfinder)                           |1.0.1         |1         |          |1    |
+|Tcomp                                                                  |1.0.0         |          |          |     |
+|[TCseq](problems.md#tcseq)                                             |1.0.0         |          |          |1    |
+|[teachingApps](problems.md#teachingapps)                               |1.0.2         |          |          |2    |
+|teda                                                                   |0.1.1         |          |          |     |
+|templates                                                              |0.2.0         |          |          |     |
+|tensorflow                                                             |1.4           |          |          |     |
+|tensorr                                                                |0.1.0         |          |          |     |
+|tester                                                                 |0.1.7         |          |          |     |
+|TeXCheckR                                                              |0.2.0         |          |          |     |
+|texmex                                                                 |2.3           |          |          |     |
+|[texmexseq](problems.md#texmexseq)                                     |0.3           |1         |          |     |
+|[text2vec](problems.md#text2vec)                                       |0.5.0         |          |          |3    |
+|textclean                                                              |0.3.1         |          |          |     |
+|textgRid                                                               |1.0.1         |          |          |     |
+|[textmining](problems.md#textmining)                                   |0.0.1         |          |1         |     |
+|[textreadr](problems.md#textreadr)                                     |0.5.1         |1         |          |     |
+|textreg                                                                |0.1.4         |          |          |     |
+|[textreuse](problems.md#textreuse)                                     |0.1.4         |          |          |1    |
+|[textshape](problems.md#textshape)                                     |1.5.0         |          |          |1    |
+|textstem                                                               |0.0.1         |          |          |     |
+|[textTinyR](problems.md#texttinyr)                                     |1.0.7         |1         |          |     |
+|[TFBSTools](problems.md#tfbstools)                                     |1.14.2        |          |          |1    |
+|TFMPvalue                                                              |0.0.6         |          |          |     |
+|tfruns                                                                 |1.0           |          |          |     |
+|thankr                                                                 |1.0.0         |          |          |     |
+|ThankYouStars                                                          |0.1.0         |          |          |     |
+|themetagenomics                                                        |0.1.0         |          |          |     |
+|ThreeArmedTrials                                                       |1.0-0         |          |          |     |
+|[threewords](problems.md#threewords)                                   |0.1.0         |1         |          |     |
+|threshr                                                                |1.0.0         |          |          |     |
+|tibble                                                                 |1.3.4         |          |          |     |
+|tibbletime                                                             |0.0.2         |          |          |     |
+|tictactoe                                                              |0.2.2         |          |          |     |
+|tidygenomics                                                           |0.1.0         |          |          |     |
+|tidygraph                                                              |1.0.0         |          |          |     |
+|[tidyjson](problems.md#tidyjson)                                       |0.2.2         |1         |          |     |
+|[tidyquant](problems.md#tidyquant)                                     |0.5.3         |-2 __+1__ |-1        |1    |
+|[tidyr](problems.md#tidyr)                                             |0.7.1         |1         |          |     |
+|[tidyRSS](problems.md#tidyrss)                                         |1.2.2         |-1        |          |1    |
+|tidyselect                                                             |0.2.2         |          |          |     |
+|tidystringdist                                                         |0.1.0         |          |          |     |
+|[tidytext](problems.md#tidytext)                                       |0.1.4         |1         |          |     |
+|[tidyxl](problems.md#tidyxl)                                           |0.2.3         |-1        |-6 __+1__ |1 -2 |
+|tigger                                                                 |0.2.11        |          |          |     |
+|[tigris](problems.md#tigris)                                           |0.5.3         |1         |          |     |
+|[tikzDevice](problems.md#tikzdevice)                                   |0.10-1        |          |1         |     |
+|TileManager                                                            |0.2.0         |          |          |     |
+|[timekit](problems.md#timekit)                                         |0.3.1         |          |          |1    |
+|timelineR                                                              |0.1.0         |          |          |     |
+|[TimeProjection](problems.md#timeprojection)                           |0.2.0         |1         |          |2    |
+|[timetk](problems.md#timetk)                                           |0.1.0         |          |          |1    |
+|timevis                                                                |0.4           |          |          |     |
+|tinsel                                                                 |0.0.1         |          |          |     |
+|tinyProject                                                            |0.5           |          |          |     |
+|[tm.plugin.webmining](problems.md#tm.plugin.webmining)                 |1.3           |          |          |1    |
+|tmod                                                                   |0.31          |          |          |     |
+|TNC                                                                    |0.1.0         |          |          |     |
+|[toaster](problems.md#toaster)                                         |0.5.5         |          |          |1    |
+|[tofsims](problems.md#tofsims)                                         |1.4.0         |1         |1         |1    |
+|tokenizers                                                             |0.1.4         |          |          |     |
+|toOrdinal                                                              |1.0-0.0       |          |          |     |
+|tourr                                                                  |0.5.5         |          |          |     |
+|[toxboot](problems.md#toxboot)                                         |0.1.1         |          |          |1    |
+|[toxplot](problems.md#toxplot)                                         |0.1.0         |          |1         |1    |
+|[TPP](problems.md#tpp)                                                 |3.4.3         |          |          |3    |
+|tracer                                                                 |1.0.0         |          |          |     |
+|[trackeR](problems.md#tracker)                                         |0.0.5         |          |          |1    |
+|[traitr](problems.md#traitr)                                           |0.14          |          |          |1    |
+|traits                                                                 |0.3.0         |          |          |     |
+|transcriptR                                                            |1.4.0         |          |          |     |
+|[treatSens](problems.md#treatsens)                                     |2.1.2         |          |          |1    |
+|[treebase](problems.md#treebase)                                       |0.1.4         |1         |          |     |
+|TreeBUGS                                                               |1.1.1         |          |          |     |
+|[treeclim](problems.md#treeclim)                                       |2.0.0         |          |          |2    |
+|treeio                                                                 |1.0.2         |          |          |     |
+|treeman                                                                |1.1.1         |          |          |     |
+|[treemapify](problems.md#treemapify)                                   |2.3.2         |          |          |1    |
+|[treespace](problems.md#treespace)                                     |1.0.0         |          |1         |     |
+|trelliscope                                                            |0.9.8         |          |          |     |
+|[triebeard](problems.md#triebeard)                                     |0.3.0         |          |          |1    |
+|trip                                                                   |1.5.0         |          |          |     |
+|TRONCO                                                                 |2.8.2         |          |          |     |
+|tropr                                                                  |0.1.2         |          |          |     |
+|[trustOptim](problems.md#trustoptim)                                   |0.8.6.1       |          |          |1    |
+|TSdist                                                                 |3.4           |          |          |     |
+|tsensembler                                                            |0.0.2         |          |          |     |
+|tsna                                                                   |0.2.0         |          |          |     |
+|TSP                                                                    |1.1-5         |          |          |     |
+|tsPI                                                                   |1.0.2         |          |          |     |
+|tspmeta                                                                |1.2           |          |          |     |
+|[tuber](problems.md#tuber)                                             |0.9.1         |1         |          |     |
+|tubern                                                                 |0.1.0         |          |          |     |
+|tuckerR.mmgg                                                           |1.5.0         |          |          |     |
+|[tufterhandout](problems.md#tufterhandout)                             |1.2.1         |          |          |1    |
+|tumgr                                                                  |0.0.4         |          |          |     |
+|turner                                                                 |0.1.7         |          |          |     |
+|tutorial                                                               |0.4.3         |          |          |     |
+|tvm                                                                    |0.3.0         |          |          |     |
+|[TVTB](problems.md#tvtb)                                               |1.2.0         |2         |1         |     |
+|[twilio](problems.md#twilio)                                           |0.1.0         |1         |          |     |
+|twoddpcr                                                               |1.0.6         |          |          |     |
+|tximport                                                               |1.4.0         |          |          |     |
+|uaparserjs                                                             |0.1.0         |          |          |     |
+|ubeR                                                                   |0.1.4         |          |          |     |
+|UBL                                                                    |0.0.6         |          |          |     |
+|udapi                                                                  |0.1.0         |          |          |     |
+|uGMAR                                                                  |1.0.1         |          |          |     |
+|[umx](problems.md#umx)                                                 |1.7.5         |          |          |1    |
+|UNF                                                                    |2.0.6         |          |          |     |
+|[ungeneanno](problems.md#ungeneanno)                                   |0.1.6         |1         |          |     |
+|[uniqtag](problems.md#uniqtag)                                         |1.0           |          |          |1    |
+|Uniquorn                                                               |1.4.2         |          |          |     |
+|unitedR                                                                |0.2           |          |          |     |
+|[unitizer](problems.md#unitizer)                                       |1.4.4         |__+1__    |          |     |
+|units                                                                  |0.4-6         |          |          |     |
+|unix                                                                   |1.3           |          |          |     |
+|unjoin                                                                 |0.0.3         |          |          |     |
+|unpivotr                                                               |0.2.1         |          |          |     |
+|[uptasticsearch](problems.md#uptasticsearch)                           |0.1.0         |1         |          |     |
+|[uptimeRobot](problems.md#uptimerobot)                                 |1.0.0         |1         |          |     |
+|urlshorteneR                                                           |0.9.2         |          |          |     |
+|[urltools](problems.md#urltools)                                       |1.6.0         |          |          |2    |
+|[USAboundaries](problems.md#usaboundaries)                             |0.3.0         |          |          |1    |
+|usedist                                                                |0.1.0         |          |          |     |
+|useful                                                                 |1.2.3         |          |          |     |
+|[usmap](problems.md#usmap)                                             |0.2.1         |          |          |3    |
+|[uSORT](problems.md#usort)                                             |1.2.0         |          |1         |     |
+|[utilsIPEA](problems.md#utilsipea)                                     |0.0.3         |          |          |1    |
+|utiml                                                                  |0.1.3         |          |          |     |
+|V8                                                                     |1.5           |          |          |     |
+|[valaddin](problems.md#valaddin)                                       |0.1.2         |          |          |1    |
+|validaRA                                                               |0.1.0         |          |          |     |
+|[validate](problems.md#validate)                                       |0.2.0         |          |          |2    |
+|validatejsonr                                                          |1.0.4         |          |          |     |
+|[valr](problems.md#valr)                                               |0.3.1         |          |          |1    |
+|valuer                                                                 |1.1.1         |          |          |     |
+|[vanddraabe](problems.md#vanddraabe)                                   |1.0.0         |1         |          |     |
+|varbvs                                                                 |2.4-0         |          |          |     |
+|varian                                                                 |0.2.2         |          |          |     |
+|VarReg                                                                 |1.0.1         |          |          |     |
+|[vcfR](problems.md#vcfr)                                               |1.5.0         |          |          |1    |
+|vdiffr                                                                 |0.2.1         |          |          |     |
+|[vdmR](problems.md#vdmr)                                               |0.2.4         |          |          |1    |
+|[veccompare](problems.md#veccompare)                                   |0.1.0         |          |          |1    |
+|vegalite                                                               |0.6.1         |          |          |     |
+|vegdata                                                                |0.9.1         |          |          |     |
+|vembedr                                                                |0.1.3         |          |          |     |
+|VennDiagram                                                            |1.6.17        |          |          |     |
+|[vietnamcode](problems.md#vietnamcode)                                 |0.1.1         |          |          |1    |
+|vines                                                                  |1.1.5         |          |          |     |
+|vipor                                                                  |0.4.5         |          |          |     |
+|[viridis](problems.md#viridis)                                         |0.4.0         |          |1         |1    |
+|viridisLite                                                            |0.2.0         |          |          |     |
+|[virustotal](problems.md#virustotal)                                   |0.2.1         |1         |          |     |
+|visdat                                                                 |0.1.0         |          |          |     |
+|vortexR                                                                |1.1.4         |          |          |     |
+|[vqtl](problems.md#vqtl)                                               |1.2.0         |          |          |1    |
+|[vsn](problems.md#vsn)                                                 |3.44.0        |          |          |2    |
+|VSURF                                                                  |1.0.3         |          |          |     |
+|VTrack                                                                 |1.11          |          |          |     |
+|vtreat                                                                 |1.0.0         |          |          |     |
+|[waccR](problems.md#waccr)                                             |0.1.0         |          |          |1    |
+|waffle                                                                 |0.7.0         |          |          |     |
+|wakefield                                                              |0.3.0         |          |          |     |
+|[walker](problems.md#walker)                                           |0.2.0         |          |          |1    |
+|[walkr](problems.md#walkr)                                             |0.3.4         |          |          |1    |
+|wally                                                                  |1.0.9         |          |          |     |
+|wand                                                                   |0.2.0         |          |          |     |
+|[Wats](problems.md#wats)                                               |0.10.3        |          |          |1    |
+|waver                                                                  |0.2.0         |          |          |     |
+|[wdman](problems.md#wdman)                                             |0.2.2         |__+1__    |          |     |
+|weatherData                                                            |0.5.0         |          |          |     |
+|webchem                                                                |0.2           |          |          |     |
+|webmockr                                                               |0.1.0         |          |          |     |
+|webreadr                                                               |0.4.0         |          |          |     |
+|webTRISr                                                               |0.1.0         |          |          |     |
+|webuse                                                                 |0.1.2         |          |          |     |
+|webutils                                                               |0.6           |          |          |     |
+|WeightedROC                                                            |2017.07.12    |          |          |     |
+|wellknown                                                              |0.1.0         |          |          |     |
+|[wgsea](problems.md#wgsea)                                             |1.8           |          |          |2    |
+|WhatIf                                                                 |1.5-9         |          |          |     |
+|[WHO](problems.md#who)                                                 |0.2           |2         |1         |     |
+|[whoami](problems.md#whoami)                                           |1.1.1         |__+1__    |          |     |
+|whoapi                                                                 |0.1.2         |          |          |     |
+|[wicket](problems.md#wicket)                                           |0.3.0         |          |          |1    |
+|[widyr](problems.md#widyr)                                             |0.1.0         |          |          |1    |
+|[wiggleplotr](problems.md#wiggleplotr)                                 |1.0.0         |1         |1         |     |
+|[WikidataR](problems.md#wikidatar)                                     |1.4.0         |          |          |1    |
+|[wikilake](problems.md#wikilake)                                       |0.3           |          |          |1    |
+|wikipediatrend                                                         |1.1.14        |          |          |     |
+|WikipediR                                                              |1.5.0         |          |          |     |
+|[wikitaxa](problems.md#wikitaxa)                                       |0.1.4         |1         |          |1    |
+|wildcard                                                               |1.1.0         |          |          |     |
+|[withr](problems.md#withr)                                             |2.0.0         |__+1__    |          |     |
+|wkb                                                                    |0.3-0         |          |          |     |
+|Wmisc                                                                  |0.3.3         |          |          |     |
+|wooldridge                                                             |1.2.0         |          |          |     |
+|WordR                                                                  |0.2.2         |          |          |     |
+|worrms                                                                 |0.2.0         |          |          |     |
+|wppExplorer                                                            |2.1-1         |          |          |     |
+|wrapr                                                                  |1.0.0         |          |          |     |
+|wrassp                                                                 |0.1.4         |          |          |     |
+|writexl                                                                |0.2           |          |          |     |
+|[wrswoR](problems.md#wrswor)                                           |1.0-1         |          |1         |     |
+|[wru](problems.md#wru)                                                 |0.1-7         |          |          |1    |
+|WufooR                                                                 |0.6.2         |          |          |     |
+|[WVPlots](problems.md#wvplots)                                         |0.2.6         |          |          |1    |
+|[XBSeq](problems.md#xbseq)                                             |1.6.0         |1         |          |2    |
+|[xgboost](problems.md#xgboost)                                         |0.6-4         |          |          |1    |
+|[XiMpLe](problems.md#ximple)                                           |0.10-1        |          |1         |     |
+|[XKCDdata](problems.md#xkcddata)                                       |0.1.0         |          |          |1    |
+|xlutils3                                                               |0.1.0         |          |          |     |
+|[xml2](problems.md#xml2)                                               |1.1.1         |          |          |1    |
+|xmlparsedata                                                           |1.0.1         |          |          |     |
+|xoi                                                                    |0.66-9        |          |          |     |
+|xpose4                                                                 |4.6.0         |          |          |     |
+|xslt                                                                   |1.2           |          |          |     |
+|xsp                                                                    |0.1.2         |          |          |     |
+|[xxIRT](problems.md#xxirt)                                             |2.0.3         |          |          |1    |
+|yakmoR                                                                 |0.1.1         |          |          |     |
+|yaml                                                                   |2.1.14        |          |          |     |
+|[yamss](problems.md#yamss)                                             |1.2.0         |1         |          |     |
+|[YAPSA](problems.md#yapsa)                                             |1.2.0         |1         |1         |2    |
+|yarn                                                                   |1.2.0         |          |          |     |
+|yCrypticRNAs                                                           |0.99.2        |          |          |     |
+|yearn                                                                  |0.1.1         |          |          |     |
+|yesno                                                                  |0.0.2         |          |          |     |
+|yummlyr                                                                |0.1.1         |          |          |     |
+|[zeallot](problems.md#zeallot)                                         |0.0.6         |__+1__    |          |     |
+|[Zelig](problems.md#zelig)                                             |5.1-4         |__+1__    |          |     |
+|ZeligChoice                                                            |0.9-6         |          |          |     |
+|ZeligEI                                                                |0.1-2         |          |          |     |
+|[zeligverse](problems.md#zeligverse)                                   |0.1.1         |          |          |1    |
+|[zFactor](problems.md#zfactor)                                         |0.1.6         |          |          |1    |
+|ZillowR                                                                |0.1.0         |          |          |     |
+|zip                                                                    |1.0.0         |          |          |     |
+|[zonator](problems.md#zonator)                                         |0.5.8         |__+1__    |          |1    |
+|[zoom](problems.md#zoom)                                               |2.0.4         |          |          |2    |
+|[zoon](problems.md#zoon)                                               |0.6           |1         |          |     |
+|[zstdr](problems.md#zstdr)                                             |0.1.1         |1         |          |     |
+|[ztable](problems.md#ztable)                                           |0.1.5         |          |          |1    |
+|googleAuthR                                                            |?             |          |          |     |
 
