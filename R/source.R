@@ -18,7 +18,7 @@ source_file <- function(path, env = test_env(), chdir = TRUE,
   stopifnot(file.exists(path))
   stopifnot(is.environment(env))
 
-  if (!missing(encoding)) {
+  if (!missing(encoding) && !identical(encoding, "UTF-8")) {
     warning("`encoding` is deprecated; all files now assumed to be UTF-8", call. = FALSE)
   }
 
