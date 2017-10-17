@@ -111,7 +111,7 @@ ProgressReporter <- R6::R6Class("ProgressReporter", inherit = Reporter,
       self$show_status(complete = TRUE)
 
       if (time[[3]] > self$min_time) {
-        self$cat(crayon::white(sprintf(" [%.1f s]", time[[3]])))
+        self$cat(crayon::cyan(sprintf(" [%.1f s]", time[[3]])))
       }
       self$cat_line()
 
