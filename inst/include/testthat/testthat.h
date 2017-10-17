@@ -52,7 +52,7 @@ inline int rand() { return 42; }
 // Catch has calls to 'exit' on failure, which upsets R CMD check.
 // We won't bump into them during normal test execution so just override
 // it in the Catch namespace before we include 'catch'.
-inline void exit(int status) throw() {}
+inline void exit(int) throw() {}
 
 }
 # include "vendor/catch.h"
