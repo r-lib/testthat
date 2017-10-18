@@ -108,7 +108,7 @@ for (i in 1:5) {
 }
 ```
 
-If you unquote the values using `!!`, you get the failure message "`f(4L)` not equal to 40.`". This is much easier to diagnose!  See `?quasi_label()` for more details.
+If you unquote the values using `!!`, you get the failure message `"f(4L) not equal to 40."`. This is much easier to diagnose!  See `?quasi_label()` for more details.
 
 (Note that this is not tidy evaluation per se, but is closely related. At this time you can not unquote quosures.)
 
