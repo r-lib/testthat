@@ -94,7 +94,7 @@ test_dir <- function(path,
 #' @rdname test_dir
 test_package <- function(package,
                          filter = NULL,
-                         reporter = check_repoter(),
+                         reporter = check_reporter(),
                          ...,
                          stop_on_failure = TRUE,
                          stop_on_warning = FALSE
@@ -144,7 +144,7 @@ test_package <- function(package,
 #' @rdname test_dir
 test_check <- function(package,
                        filter = NULL,
-                       reporter = check_repoter(),
+                       reporter = check_reporter(),
                        ...,
                        stop_on_failure = TRUE,
                        stop_on_warning = FALSE,
