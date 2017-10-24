@@ -16,7 +16,6 @@
 #'   4
 #' })
 evaluate_promise <- function(code, print = FALSE) {
-
   warnings <- Stack$new()
   handle_warning <- function(condition) {
     warnings$push(condition)
@@ -32,7 +31,8 @@ evaluate_promise <- function(code, print = FALSE) {
   temp <- file()
   on.exit(close(temp))
 
-  result <- withr::with_output_sink(temp,
+  result <- withr::with_output_sink(
+    temp,
     withCallingHandlers(
       withVisible(code),
       warning = handle_warning,

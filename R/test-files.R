@@ -127,8 +127,10 @@ test_file <- function(path, reporter = default_reporter(), env = test_env(),
     {
       lister$start_file(basename(path))
 
-      source_file(path, new.env(parent = env),
-        chdir = TRUE, wrap = wrap)
+      source_file(
+        path, new.env(parent = env),
+        chdir = TRUE, wrap = wrap
+      )
 
       end_context()
     }

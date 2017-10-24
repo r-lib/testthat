@@ -8,7 +8,6 @@ Stack <- R6Class(
   "Stack",
   class = FALSE,
   public = list(
-
     initialize = function(init = 20L) {
       # init is the initial size of the list. It is also used as the minimum
       # size of the list as it shrinks.
@@ -43,8 +42,8 @@ Stack <- R6Class(
   ),
 
   private = list(
-    stack = NULL,   # A list that holds the items
-    count = 0L,     # Current number of items in the stack
-    init = 20L      # Initial and minimum size of the stack
+    stack = NULL, # A list that holds the items
+    count = 0L, # Current number of items in the stack
+    init = 20L # Initial and minimum size of the stack
   )
 )

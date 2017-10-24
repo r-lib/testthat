@@ -26,17 +26,18 @@ classnameOK <- function(text) {
 #' \url{http://llg.cubic.org/docs/junit/}
 #'
 #' @export
-JunitReporter <- R6::R6Class("JunitReporter", inherit = Reporter,
+JunitReporter <- R6::R6Class(
+  "JunitReporter", inherit = Reporter,
   public = list(
-    results  = NULL,
-    timer    = NULL,
-    doc      = NULL,
-    errors   = NULL,
+    results = NULL,
+    timer = NULL,
+    doc = NULL,
+    errors = NULL,
     failures = NULL,
-    skipped  = NULL,
-    tests    = NULL,
-    root     = NULL,
-    suite    = NULL,
+    skipped = NULL,
+    tests = NULL,
+    root = NULL,
+    suite = NULL,
     suite_time = NULL,
 
     elapsed_time = function() {
@@ -45,11 +46,11 @@ JunitReporter <- R6::R6Class("JunitReporter", inherit = Reporter,
       time
     },
 
-    reset_suite = function () {
-      self$errors   <- 0
+    reset_suite = function() {
+      self$errors <- 0
       self$failures <- 0
-      self$skipped  <- 0
-      self$tests    <- 0
+      self$skipped <- 0
+      self$tests <- 0
       self$suite_time <- 0
     },
 
@@ -59,17 +60,18 @@ JunitReporter <- R6::R6Class("JunitReporter", inherit = Reporter,
       }
 
       self$timer <- private$proctime()
-      self$doc   <- xml2::xml_new_document()
-      self$root  <- xml2::xml_add_child(self$doc, "testsuites")
+      self$doc <- xml2::xml_new_document()
+      self$root <- xml2::xml_add_child(self$doc, "testsuites")
       self$reset_suite()
     },
 
     start_context = function(context) {
-      self$suite <- xml2::xml_add_child(self$root,
+      self$suite <- xml2::xml_add_child(
+        self$root,
         "testsuite",
-        name      = context,
+        name = context,
         timestamp = private$timestamp(),
-        hostname  = private$hostname()
+        hostname = private$hostname()
       )
     },
 
@@ -91,7 +93,8 @@ JunitReporter <- R6::R6Class("JunitReporter", inherit = Reporter,
 
       # XML node for test case
       name <- test %||% "(unnamed)"
-      testcase <- xml2::xml_add_child(self$suite, "testcase",
+      testcase <- xml2::xml_add_child(
+        self$suite, "testcase",
         time = toString(time),
         classname = classnameOK(context),
         name = classnameOK(name)
@@ -107,13 +110,11 @@ JunitReporter <- R6::R6Class("JunitReporter", inherit = Reporter,
         error <- xml2::xml_add_child(testcase, "error", type = "error", message = first_line(result))
         xml2::xml_text(error) <- format(result)
         self$errors <- self$errors + 1
-
       } else if (expectation_failure(result)) {
         # "type" in Java is the type of assertion that failed
         failure <- xml2::xml_add_child(testcase, "failure", type = "failure", message = first_line(result))
         xml2::xml_text(failure) <- format(result)
         self$failures <- self$failures + 1
-
       } else if (expectation_skip(result)) {
         xml2::xml_add_child(testcase, "skipped")
         self$skipped <- self$skipped + 1
@@ -133,14 +134,14 @@ JunitReporter <- R6::R6Class("JunitReporter", inherit = Reporter,
     } # end_reporter
   ), # public
 
-  private = list (
-    proctime = function () {
+  private = list(
+    proctime = function() {
       proc.time()
     },
-    timestamp = function () {
+    timestamp = function() {
       toString(Sys.time())
     },
-    hostname = function () {
+    hostname = function() {
       Sys.info()[["nodename"]]
     }
   ) # private

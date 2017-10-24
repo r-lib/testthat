@@ -9,7 +9,7 @@ test_that("length computed correctly", {
 
 test_that("uses S4 length method", {
   A <- setClass("ExpectLengthA", slots = c(x = "numeric", y = "numeric"))
-  setMethod("length", "ExpectLengthA", function (x) 5L)
+  setMethod("length", "ExpectLengthA", function(x) 5L)
   expect_success(expect_length(A(x = 1:9, y = 3), 5))
 })
 

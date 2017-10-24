@@ -13,7 +13,6 @@
 #'
 #' @export
 expect_cpp_tests_pass <- function(package) {
-
   run_testthat_tests <- get_routine(package, "run_testthat_tests")
 
   output <- ""
@@ -30,7 +29,6 @@ expect_cpp_tests_pass <- function(package) {
   info <- paste(output[-1], collapse = "\n")
 
   expect(tests_passed, paste("C++ unit tests:", info, sep = "\n"))
-
 }
 
 #' Use Catch for C++ Unit Testing
@@ -157,19 +155,21 @@ expect_cpp_tests_pass <- function(package) {
 #' @seealso \href{https://github.com/philsquared/Catch}{Catch}, the
 #'   library used to enable C++ unit testing.
 use_catch <- function(dir = getwd()) {
-
   desc_path <- file.path(dir, "DESCRIPTION")
-  if (!file.exists(desc_path))
+  if (!file.exists(desc_path)) {
     stop("no DESCRIPTION file at path '", desc_path, "'", call. = FALSE)
+  }
 
   desc <- read.dcf(desc_path, all = TRUE)
   pkg <- desc$Package
-  if (!nzchar(pkg))
+  if (!nzchar(pkg)) {
     stop("no 'Package' field in DESCRIPTION file '", desc_path, "'", call. = FALSE)
+  }
 
   src_dir <- file.path(dir, "src")
-  if (!file.exists(src_dir) && !dir.create(src_dir))
+  if (!file.exists(src_dir) && !dir.create(src_dir)) {
     stop("failed to create 'src/' directory '", src_dir, "'", call. = FALSE)
+  }
 
   test_runner_path <- file.path(src_dir, "test-runner.cpp")
 
@@ -180,8 +180,9 @@ use_catch <- function(dir = getwd()) {
     overwrite = TRUE
   )
 
-  if (!success)
+  if (!success) {
     stop("failed to copy 'test-runner.cpp' to '", src_dir, "'", call. = FALSE)
+  }
 
   # Copy the test example.
   success <- file.copy(
@@ -190,13 +191,15 @@ use_catch <- function(dir = getwd()) {
     overwrite = TRUE
   )
 
-  if (!success)
+  if (!success) {
     stop("failed to copy 'test-example.cpp' to '", src_dir, "'", call. = FALSE)
+  }
 
   # Copy the 'test-cpp.R' file.
   test_dir <- file.path(dir, "tests", "testthat")
-  if (!file.exists(test_dir) && !dir.create(test_dir, recursive = TRUE))
+  if (!file.exists(test_dir) && !dir.create(test_dir, recursive = TRUE)) {
     stop("failed to create 'tests/testthat/' directory '", test_dir, "'", call. = FALSE)
+  }
 
   template_file <- system.file(package = "testthat", "resources", "test-cpp.R")
   contents <- readChar(template_file, file.info(template_file)$size, TRUE)
@@ -214,7 +217,6 @@ use_catch <- function(dir = getwd()) {
   message("> Added C++ unit testing infrastructure.")
   message("> Please ensure you have 'LinkingTo: testthat' in your DESCRIPTION.")
   message("> Please ensure you have 'useDynLib(", pkg, ", .registration = TRUE)' in your NAMESPACE.")
-
 }
 
 get_routine <- function(package, routine) {
@@ -229,8 +231,9 @@ get_routine <- function(package, routine) {
     name <- paste(prefix, routine, sep = "")
     if (exists(name, envir = namespace)) {
       symbol <- get(name, envir = namespace)
-      if (inherits(symbol, "NativeSymbolInfo"))
+      if (inherits(symbol, "NativeSymbolInfo")) {
         return(symbol)
+      }
     }
   }
 
@@ -241,8 +244,9 @@ get_routine <- function(package, routine) {
       getNativeSymbolInfo(routine, PACKAGE = package),
       error = function(e) NULL
     )
-    if (inherits(resolved, "NativeSymbolInfo"))
+    if (inherits(resolved, "NativeSymbolInfo")) {
       return(symbol)
+    }
   }
 
   # if we got here, we failed to find the symbol -- throw an error

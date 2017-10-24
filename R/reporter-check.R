@@ -8,7 +8,8 @@ NULL
 #'
 #' @export
 #' @family reporters
-CheckReporter <- R6::R6Class("CheckReporter", inherit = Reporter,
+CheckReporter <- R6::R6Class(
+  "CheckReporter", inherit = Reporter,
   public = list(
     failures = list(),
     n_ok = 0L,
@@ -62,8 +63,9 @@ CheckReporter <- R6::R6Class("CheckReporter", inherit = Reporter,
       labels <- format(paste0(1:length(show), "."))
       self$cat_paragraph(paste0(labels, " ", fails, collapse = "\n"))
 
-      if (self$stop_on_failure)
+      if (self$stop_on_failure) {
         stop("testthat unit tests failed", call. = FALSE)
+      }
     }
   )
 )

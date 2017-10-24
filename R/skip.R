@@ -113,15 +113,17 @@ skip_on_cran <- function() {
 #'   `"windows"`, `"mac"`, `"linux"` and `"solaris"`.
 #' @rdname skip
 skip_on_os <- function(os) {
-  os <- match.arg(os, c("windows", "mac", "linux", "solaris"),
-    several.ok = TRUE)
+  os <- match.arg(
+    os, c("windows", "mac", "linux", "solaris"),
+    several.ok = TRUE
+  )
   sysname <- tolower(Sys.info()[["sysname"]])
 
   switch(sysname,
     windows = if ("windows" %in% os) skip("On windows"),
-    darwin =  if ("mac" %in% os) skip("On Mac"),
-    linux =   if ("linux" %in% os) skip("On Linux"),
-    sunos =   if ("solaris" %in% os) skip("On Solaris")
+    darwin = if ("mac" %in% os) skip("On Mac"),
+    linux = if ("linux" %in% os) skip("On Linux"),
+    sunos = if ("solaris" %in% os) skip("On Solaris")
   )
 
   invisible(TRUE)

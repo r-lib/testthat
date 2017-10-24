@@ -3,11 +3,11 @@ context("Reporter")
 test_that("can locate reporter from name", {
   expect_that(find_reporter("minimal"), equals(MinimalReporter$new()))
   expect_that(find_reporter("summary"), equals(SummaryReporter$new()))
-  expect_that(find_reporter("tap"),     equals(TapReporter$new()))
-  expect_that(find_reporter("list"),    equals(ListReporter$new()))
-  expect_that(find_reporter("multi"),   equals(MultiReporter$new()))
-  expect_that(find_reporter("junit"),   equals(JunitReporter$new()))
-  expect_that(find_reporter(""),        equals(Reporter$new()))
+  expect_that(find_reporter("tap"), equals(TapReporter$new()))
+  expect_that(find_reporter("list"), equals(ListReporter$new()))
+  expect_that(find_reporter("multi"), equals(MultiReporter$new()))
+  expect_that(find_reporter("junit"), equals(JunitReporter$new()))
+  expect_that(find_reporter(""), equals(Reporter$new()))
 })
 
 test_that("useful error message if can't find reporter", {
@@ -23,7 +23,8 @@ test_that("character vector yields multi reporter", {
     MultiReporter$new(
       reporters = list(
         SummaryReporter$new(),
-        StopReporter$new())
+        StopReporter$new()
+      )
     )
   )
   expect_equal(
@@ -53,8 +54,10 @@ test_that("reporters produce consistent output", {
 
   with_mock(
     show_menu = function(choices, title = NULL) {
-      cat(paste0(format(seq_along(choices)), ": ", choices, sep = "\n"), "\n",
-        sep = "")
+      cat(
+        paste0(format(seq_along(choices)), ": ", choices, sep = "\n"), "\n",
+        sep = ""
+      )
       0L
     },
     sink_number = function() 0L,
@@ -77,10 +80,12 @@ test_that("reporters produce consistent output", {
   tap_file <- tempfile()
   save_report("summary", reporter = MultiReporter$new(list(
     SummaryReporter$new(show_praise = FALSE, omit_dots = FALSE),
-    TapReporter$new(file = tap_file))
-  ))
-  expect_identical(read_lines(tap_file),
-    read_lines(test_path("reporters", "tap.txt")))
+    TapReporter$new(file = tap_file)
+  )))
+  expect_identical(
+    read_lines(tap_file),
+    read_lines(test_path("reporters", "tap.txt"))
+  )
 })
 
 

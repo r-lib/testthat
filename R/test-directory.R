@@ -102,8 +102,9 @@ test_package <- function(package,
   # Ensure that test package returns silently if called recursively - this
   # will occur if test-all.R ends up in the same directory as all the other
   # tests.
-  if (env_test$in_test)
+  if (env_test$in_test) {
     return(invisible())
+  }
 
   env_test$in_test <- TRUE
   env_test$package <- package
@@ -113,8 +114,9 @@ test_package <- function(package,
   })
 
   test_path <- system.file("tests", package = package)
-  if (test_path == "")
+  if (test_path == "") {
     stop("No tests found for ", package, call. = FALSE)
+  }
 
   # If testthat subdir exists, use that
   test_path2 <- file.path(test_path, "testthat")

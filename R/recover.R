@@ -31,7 +31,9 @@ recover2 <- function(start_frame = 1L, end_frame = sys.nframe()) {
       frame <- sys.frame(start_frame - 2 + which)
       browse_frame(frame, skip = 7 - which)
     }
-    else break
+    else {
+      break
+    }
   }
 }
 
@@ -40,6 +42,8 @@ show_menu <- function(choices, title = NULL) {
 }
 
 browse_frame <- function(frame, skip) {
-  eval(substitute(browser(skipCalls = skip), list(skip = skip)),
-    envir = frame)
+  eval(
+    substitute(browser(skipCalls = skip), list(skip = skip)),
+    envir = frame
+  )
 }

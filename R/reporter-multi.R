@@ -8,7 +8,8 @@ NULL
 #'
 #' @export
 #' @family reporters
-MultiReporter <- R6::R6Class("MultiReporter", inherit = Reporter,
+MultiReporter <- R6::R6Class(
+  "MultiReporter", inherit = Reporter,
   public = list(
     reporters = list(),
 

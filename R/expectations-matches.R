@@ -20,7 +20,6 @@
 #' }
 expect_match <- function(object, regexp, perl = FALSE, fixed = FALSE, ..., all = TRUE,
                          info = NULL, label = NULL) {
-
   if (fixed) escape <- identity
   else escape <- escape_regex
 
@@ -38,8 +37,10 @@ expect_match <- function(object, regexp, perl = FALSE, fixed = FALSE, ..., all =
   if (length(act$val) == 1) {
     values <- paste0("Actual value: \"", escape(encodeString(act$val)), "\"")
   } else {
-    values <- paste0("Actual values:\n",
-      paste0("* ", escape(encodeString(act$val)), collapse = "\n"))
+    values <- paste0(
+      "Actual values:\n",
+      paste0("* ", escape(encodeString(act$val)), collapse = "\n")
+    )
   }
   expect(
     if (all) all(matches) else any(matches),

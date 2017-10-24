@@ -24,5 +24,4 @@ test_that("ListReporter with test_file", {
 
   fl <- last_results[[1]]
   expect_equal(expectation_type(fl), "failure")
-
 })

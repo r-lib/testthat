@@ -28,9 +28,9 @@ expect_compare <- function(operator = c("<", "<=", ">", ">="), act, exp) {
   stopifnot(is.numeric(exp$val), length(exp$val) == 1)
 
   msg <- c(
-    "<" =  "not strictly less than",
+    "<" = "not strictly less than",
     "<=" = "not less than",
-    ">"  = "not strictly more than",
+    ">" = "not strictly more than",
     ">=" = "not more than"
   )[[operator]]
 

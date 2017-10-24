@@ -12,7 +12,7 @@ test_that("test_dir()", {
   res <- test_dir(test_path("test_dir"), reporter = "silent")
 
   df <- as.data.frame(res)
-  df$user <- df$system  <- df$real <- NULL
+  df$user <- df$system <- df$real <- NULL
 
   expect_known_value(df, "test_dir.rds")
 })
@@ -20,7 +20,7 @@ test_that("test_dir()", {
 test_that("test_dir() filter", {
   res <- test_dir("test_dir", reporter = "silent", filter = "basic|empty")
   df <- as.data.frame(res)
-  expect_identical(unique(df$context),  c("Basic", "empty"))
+  expect_identical(unique(df$context), c("Basic", "empty"))
 })
 
 test_that("test_dir() helpers", {

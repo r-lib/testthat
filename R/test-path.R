@@ -15,8 +15,10 @@ test_path <- function(...) {
   } else {
     base <- "tests/testthat"
     if (!file.exists(base)) {
-      stop("Can't find `tests/testthat` in current directory.",
-        call. = FALSE)
+      stop(
+        "Can't find `tests/testthat` in current directory.",
+        call. = FALSE
+      )
     }
     path <- file.path(base, ...)
   }
@@ -27,8 +29,9 @@ test_path <- function(...) {
 in_testing_dir <- function(path) {
   path <- normalizePath(path)
 
-  if (basename(path) != "testthat")
+  if (basename(path) != "testthat") {
     return(FALSE)
+  }
 
   parent <- dirname(path)
   if (grepl("-tests$", parent)) {

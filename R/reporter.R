@@ -8,7 +8,8 @@
 #' @export Reporter
 #' @aliases Reporter
 #' @importFrom R6 R6Class
-Reporter <- R6::R6Class("Reporter",
+Reporter <- R6::R6Class(
+  "Reporter",
   public = list(
     start_reporter = function() {},
     start_context =  function(context) {},
@@ -80,7 +81,6 @@ Reporter <- R6::R6Class("Reporter",
     # in the same way as tests and expectations.
     .context = NULL,
     .start_context = function(context) {
-
       if (!is.null(self$.context)) {
         self$end_context(self$.context)
       }

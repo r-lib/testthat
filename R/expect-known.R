@@ -44,7 +44,6 @@ expect_known_output <- function(object, file,
                                 label = NULL,
                                 print = FALSE,
                                 width = 80) {
-
   act <- list()
   act$quo <- enquo(object)
   act$lab <- label %||% quo_label(act$quo)
@@ -86,7 +85,6 @@ expect_known_value <- function(object, file,
                                ...,
                                info = NULL,
                                label = NULL) {
-
   act <- quasi_label(enquo(object), label)
 
   if (!file.exists(file)) {
@@ -126,7 +124,6 @@ expect_equal_to_reference <- function(..., update = FALSE) {
 #' @param hash Known hash value. Leave empty and you'll be informed what
 #'   to use in the test output.
 expect_known_hash <- function(object, hash = NULL) {
-
   act <- quasi_label(enquo(object))
   act_hash <- digest::digest(act$val)
   if (!is.null(hash)) {

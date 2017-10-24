@@ -79,8 +79,9 @@ test_that("can access variables defined in function", {
 })
 
 test_that("can mock if package is not loaded", {
-  if ("package:devtools" %in% search())
+  if ("package:devtools" %in% search()) {
     skip("devtools is loaded")
+  }
   skip_if_not_installed("devtools")
   with_mock(`devtools::add_path` = identity, expect_identical(devtools::add_path, identity))
 })

@@ -56,7 +56,7 @@
 #' })
 
 describe <- function(description, code) {
-  is_invalid_description <- function (description) {
+  is_invalid_description <- function(description) {
     !is.character(description) || length(description) != 1 ||
       nchar(description) == 0
   }

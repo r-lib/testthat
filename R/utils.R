@@ -64,8 +64,9 @@ env_name <- function(x) {
 find_first_srcref <- function(calls) {
   for (call in calls) {
     srcref <- attr(call, "srcref")
-    if (!is.null(srcref))
+    if (!is.null(srcref)) {
       return(srcref)
+    }
   }
   NULL
 }
