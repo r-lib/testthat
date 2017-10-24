@@ -46,8 +46,8 @@ test_that("watcher works correctly", {
   loc <- tempfile("watcher", tmpdir = "/tmp")
   dir.create(loc)
 
-  code_path = file.path(loc, "R")
-  test_path = file.path(loc, "tests")
+  code_path <- file.path(loc, "R")
+  test_path <- file.path(loc, "tests")
 
   dir.create(code_path)
   dir.create(test_path)
