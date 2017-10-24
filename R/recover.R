@@ -15,8 +15,7 @@
 #
 #  A copy of the GNU General Public License is available at
 #  https://www.R-project.org/Licenses/
-recover2 <- function(start_frame = 1L, end_frame = sys.nframe())
-{
+recover2 <- function(start_frame = 1L, end_frame = sys.nframe()) {
   calls <- sys.calls()
 
   if (.isMethodsDispatchOn()) {

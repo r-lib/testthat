@@ -115,6 +115,8 @@ test_that("mocks can access local variables", {
 
   with_mock(
     expect_equal(2 * 3, 4),
-    compare = function(x, y, ...) {value}
+    compare = function(x, y, ...) {
+      value
+    }
   )
 })

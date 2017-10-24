@@ -29,9 +29,15 @@ test_that("Error:1", {
 })
 
 test_that("Error:3", {
-  f <- function() {g()}
-  g <- function() {h()}
-  h <- function() {stop("!")}
+  f <- function() {
+    g()
+  }
+  g <- function() {
+    h()
+  }
+  h <- function() {
+    stop("!")
+  }
 
   f()
 })
@@ -52,7 +58,9 @@ test_that("Skip:1", {
 })
 
 test_that("Skip:2", {
-  f <- function() {skip("skip")}
+  f <- function() {
+    skip("skip")
+  }
   f()
 })
 
@@ -65,7 +73,9 @@ test_that("Warning:1", {
   warning("abc")
 })
 test_that("Warning:2", {
-  f <- function() {warning("ghi")}
+  f <- function() {
+    warning("ghi")
+  }
   warning("def")
   f()
 })
