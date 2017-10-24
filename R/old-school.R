@@ -136,4 +136,3 @@ takes_less_than <- function(amount) {
     )
   }
 }
-

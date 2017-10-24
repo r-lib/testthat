@@ -25,4 +25,3 @@ create_traceback <- function(callstack) {
 
   first_last(calls)
 }
-

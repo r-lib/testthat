@@ -161,7 +161,7 @@ test_check <- function(package,
   })
 
   test_path <- "testthat"
-  if (!utils::file_test('-d', test_path)) {
+  if (!utils::file_test("-d", test_path)) {
     stop("No tests found for ", package, call. = FALSE)
   }
 

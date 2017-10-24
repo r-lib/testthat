@@ -58,7 +58,7 @@ normalise_names <- function(x, ignore.order = FALSE, ignore.case = FALSE) {
   if (is.null(x)) return()
 
   if (ignore.order) x <- sort(x)
-  if (ignore.case)  x <- tolower(x)
+  if (ignore.case) x <- tolower(x)
 
   x
 }

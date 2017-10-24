@@ -5,7 +5,7 @@
 # A Stack object backed by a list. The backing list will grow or shrink as
 # the stack changes in size.
 Stack <- R6Class(
-  'Stack',
+  "Stack",
   class = FALSE,
   public = list(
 

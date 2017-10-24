@@ -60,7 +60,7 @@ JunitReporter <- R6::R6Class("JunitReporter", inherit = Reporter,
 
       self$timer <- private$proctime()
       self$doc   <- xml2::xml_new_document()
-      self$root  <- xml2::xml_add_child(self$doc, 'testsuites')
+      self$root  <- xml2::xml_add_child(self$doc, "testsuites")
       self$reset_suite()
     },
 
@@ -104,13 +104,13 @@ JunitReporter <- R6::R6Class("JunitReporter", inherit = Reporter,
       # add an extra XML child node if not a success
       if (expectation_error(result)) {
         # "type" in Java is the exception class
-        error <- xml2::xml_add_child(testcase, 'error', type = 'error', message = first_line(result))
+        error <- xml2::xml_add_child(testcase, "error", type = "error", message = first_line(result))
         xml2::xml_text(error) <- format(result)
         self$errors <- self$errors + 1
 
       } else if (expectation_failure(result)) {
         # "type" in Java is the type of assertion that failed
-        failure <- xml2::xml_add_child(testcase, 'failure', type = 'failure', message = first_line(result))
+        failure <- xml2::xml_add_child(testcase, "failure", type = "failure", message = first_line(result))
         xml2::xml_text(failure) <- format(result)
         self$failures <- self$failures + 1
 
@@ -128,10 +128,10 @@ JunitReporter <- R6::R6Class("JunitReporter", inherit = Reporter,
         xml2::write_xml(self$doc, file, format = TRUE)
         write_lines(read_lines(file), self$out)
       } else {
-        stop('unsupported output type: ', toString(self$out))
+        stop("unsupported output type: ", toString(self$out))
       }
     } # end_reporter
-  ), #public
+  ), # public
 
   private = list (
     proctime = function () {

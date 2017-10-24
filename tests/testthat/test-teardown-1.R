@@ -37,4 +37,3 @@ test_that("file is created", {
 teardown({
   file.remove("teardown.txt")
 })
-

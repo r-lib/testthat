@@ -44,4 +44,3 @@ MultiReporter <- R6::R6Class("MultiReporter", inherit = Reporter,
 o_apply <- function(objects, method, ...) {
   lapply(objects, function(x) x[[method]](...))
 }
-

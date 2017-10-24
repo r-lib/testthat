@@ -53,4 +53,3 @@ evaluate_promise <- function(code, print = FALSE) {
     messages = get_messages(messages$as_list())
   )
 }
-

@@ -7,7 +7,7 @@ test_that("basically principles of equality hold", {
 
 test_that("default labels use unquoting", {
   x <- 2
-  expect_failure(expect_equal(1, !!x), "1 not equal to 2")
+  expect_failure(expect_equal(1, !! x), "1 not equal to 2")
 })
 
 test_that("expect_equivalent ignores attributes for integers", {

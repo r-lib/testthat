@@ -129,11 +129,11 @@ expect_error <- function(object,
 #' @export
 #' @rdname output-expectations
 expect_condition <- function(object,
-                         regexp = NULL,
-                         class = NULL,
-                         ...,
-                         info = NULL,
-                         label = NULL) {
+                             regexp = NULL,
+                             class = NULL,
+                             ...,
+                             info = NULL,
+                             label = NULL) {
 
   act <- quasi_capture(enquo(object), capture_condition, label = label)
   msg <- compare_condition(act$cap, act$lab, regexp = regexp, class = class, ...,
@@ -253,10 +253,10 @@ compare_condition <- function(cond, lab, regexp = NULL, class = NULL, ...,
 
 
 compare_messages <- function(messages,
-                            lab,
-                            regexp = NA, ...,
-                            all = FALSE,
-                            cond_type = "messages") {
+                             lab,
+                             regexp = NA, ...,
+                             all = FALSE,
+                             cond_type = "messages") {
 
   bullets <- paste0("* ", messages, collapse = "\n")
   # Expecting no messages

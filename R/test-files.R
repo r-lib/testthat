@@ -19,7 +19,7 @@ test_files <- function(paths,
                        wrap = TRUE
                        ) {
   if (length(paths) == 0) {
-    stop('No matching test file in dir')
+    stop("No matching test file in dir")
   }
 
   current_reporter <- find_reporter(reporter)

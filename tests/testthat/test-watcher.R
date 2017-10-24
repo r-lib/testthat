@@ -28,7 +28,7 @@ test_that("compare state works correctly", {
   expect_that(basename(diff$added), equals("test-2.txt"))
 
   diff <- compare_state(c(file1 = "62da2", file2 = "e14a6", file3 = "6e6dd"),
-                        c(file1 = "62da2", file2 = "e14a6", file21= "532fa", file3 = "3f4sa"))
+                        c(file1 = "62da2", file2 = "e14a6", file21 = "532fa", file3 = "3f4sa"))
   expect_that(diff$n, equals(2))
   expect_that(basename(diff$added), equals("file21"))
   expect_that(basename(diff$modified), equals("file3"))
@@ -53,7 +53,7 @@ test_that("watcher works correctly", {
   dir.create(test_path)
 
   delayed.bash.cmd <- function(command) {
-    system(paste0("bash -c 'sleep 1;", command, "'"), wait=FALSE)
+    system(paste0("bash -c 'sleep 1;", command, "'"), wait = FALSE)
   }
 
   add.code.file <- function(file.name) {

@@ -2,7 +2,7 @@
 NULL
 
 
-methods::setOldClass('proc_time')
+methods::setOldClass("proc_time")
 
 #' List reporter: gather all test results along with elapsed time and
 #' file information.
@@ -120,7 +120,7 @@ sumarize_one_test_results <- function(test) {
     nb_warning <- sum(vapply(test_results, expectation_warning, logical(1)))
   }
 
-  context <- if (length(test$context) > 0) test$context else ''
+  context <- if (length(test$context) > 0) test$context else ""
 
   res <- data.frame(file = test$file, context = context, test = test$test,
     nb = nb_tests, failed = nb_failed, skipped = as.logical(nb_skipped),
@@ -136,4 +136,3 @@ sumarize_one_test_results <- function(test) {
 print.testthat_results <- function(x, ...) {
   print(as.data.frame(x))
 }
-

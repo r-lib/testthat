@@ -253,4 +253,3 @@ get_routine <- function(package, routine) {
 (function() {
   .Call(run_testthat_tests)
 })
-
