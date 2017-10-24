@@ -18,7 +18,7 @@ DebugReporter <- R6::R6Class("DebugReporter", inherit = Reporter,
         }
 
         recover2(start_frame = result$start_frame,
-                 end_frame = result$end_frame)
+          end_frame = result$end_frame)
       }
     }
   )

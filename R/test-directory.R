@@ -63,8 +63,7 @@ test_dir <- function(path,
                      load_helpers = TRUE,
                      stop_on_failure = FALSE,
                      stop_on_warning = FALSE,
-                     wrap = TRUE
-                     ) {
+                     wrap = TRUE) {
   if (!missing(encoding) && !identical(encoding, "UTF-8")) {
     warning("`encoding` is deprecated; all files now assumed to be UTF-8", call. = FALSE)
   }
@@ -97,8 +96,7 @@ test_package <- function(package,
                          reporter = check_repoter(),
                          ...,
                          stop_on_failure = TRUE,
-                         stop_on_warning = FALSE
-                         ) {
+                         stop_on_warning = FALSE) {
   library(testthat)
 
   # Ensure that test package returns silently if called recursively - this
@@ -148,8 +146,7 @@ test_check <- function(package,
                        ...,
                        stop_on_failure = TRUE,
                        stop_on_warning = FALSE,
-                       wrap = TRUE
-  ) {
+                       wrap = TRUE) {
   library(testthat)
   require(package, character.only = TRUE)
 

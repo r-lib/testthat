@@ -54,7 +54,7 @@ test_that("reporters produce consistent output", {
   with_mock(
     show_menu = function(choices, title = NULL) {
       cat(paste0(format(seq_along(choices)), ": ", choices, sep = "\n"), "\n",
-          sep = "")
+        sep = "")
       0L
     },
     sink_number = function() 0L,

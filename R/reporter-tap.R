@@ -44,7 +44,7 @@ TapReporter <- R6::R6Class("TapReporter", inherit = Reporter,
           self$cat_line(msg)
         } else {
           self$cat_line("ok ", i, " # ", toupper(expectation_type(result)), " ",
-                        format(result))
+            format(result))
         }
       }
     }

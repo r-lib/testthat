@@ -16,8 +16,7 @@ test_files <- function(paths,
                        env = test_env(),
                        stop_on_failure = FALSE,
                        stop_on_warning = FALSE,
-                       wrap = TRUE
-                       ) {
+                       wrap = TRUE) {
   if (length(paths) == 0) {
     stop("No matching test file in dir")
   }
@@ -129,7 +128,7 @@ test_file <- function(path, reporter = default_reporter(), env = test_env(),
       lister$start_file(basename(path))
 
       source_file(path, new.env(parent = env),
-                  chdir = TRUE, wrap = wrap)
+        chdir = TRUE, wrap = wrap)
 
       end_context()
     }

@@ -43,7 +43,7 @@ with_mock <- function(..., .env = topenv()) {
 
   if (all(mock_qual_names == "")) {
     warning("Not mocking anything. Please use named parameters to specify the functions you want to mock.",
-            call. = FALSE)
+      call. = FALSE)
     code_pos <- rep(TRUE, length(new_values))
   } else {
     code_pos <- (mock_qual_names == "")
@@ -95,7 +95,7 @@ extract_mocks <- function(new_values, .env, eval_env = parent.frame()) {
 
       if (!exists(name, envir = env, mode = "function"))
         stop("Function ", name, " not found in environment ",
-             environmentName(env), ".", call. = FALSE)
+          environmentName(env), ".", call. = FALSE)
       mock(name = name, env = env, new = eval(new_values[[qual_name]], eval_env, eval_env))
     }
   )

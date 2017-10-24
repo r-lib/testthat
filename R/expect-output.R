@@ -204,7 +204,7 @@ compare_condition <- function(cond, lab, regexp = NULL, class = NULL, ...,
         cond_type,
         cond$message,
         paste(class(cond), collapse = "/")
-        ))
+      ))
     } else {
       return()
     }

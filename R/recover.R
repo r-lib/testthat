@@ -42,5 +42,5 @@ show_menu <- function(choices, title = NULL) {
 
 browse_frame <- function(frame, skip) {
   eval(substitute(browser(skipCalls = skip), list(skip = skip)),
-       envir = frame)
+    envir = frame)
 }
