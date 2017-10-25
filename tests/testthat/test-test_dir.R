@@ -8,28 +8,28 @@ test_that("TESTHAT env var set to true", {
   expect_true(is_testing())
 })
 
-test_that('test_dir()', {
-  res <- test_dir(test_path('test_dir'), reporter = 'silent')
+test_that("test_dir()", {
+  res <- test_dir(test_path("test_dir"), reporter = "silent")
 
   df <- as.data.frame(res)
-  df$user <- df$system  <- df$real <- NULL
+  df$user <- df$system <- df$real <- NULL
 
   expect_known_value(df, "test_dir.rds")
 })
 
-test_that('test_dir() filter', {
-  res <- test_dir('test_dir', reporter = 'silent', filter = 'basic|empty')
+test_that("test_dir() filter", {
+  res <- test_dir("test_dir", reporter = "silent", filter = "basic|empty")
   df <- as.data.frame(res)
-  expect_identical(unique(df$context),  c("Basic", "empty"))
+  expect_identical(unique(df$context), c("Basic", "empty"))
 })
 
-test_that('test_dir() helpers', {
-  res <- test_dir('test_dir', reporter = 'silent', filter = 'helper')
+test_that("test_dir() helpers", {
+  res <- test_dir("test_dir", reporter = "silent", filter = "helper")
   df <- as.data.frame(res)
   expect_true(all(!df$error & df$failed == 0))
 })
 
-test_that('filter_test_scripts() with tricky names', {
+test_that("filter_test_scripts() with tricky names", {
   files <- c(
     "test-basic.R", "test-blah.really.Rtrick.R", "test-hello.rtest.R"
   )
@@ -45,7 +45,7 @@ test_that('filter_test_scripts() with tricky names', {
 
 # errors ------------------------------------------------------------------
 
-test_that("can control if failures generate errors",{
+test_that("can control if failures generate errors", {
   test_error <- function(...) {
     test_dir(test_path("test-error"), reporter = "silent", ...)
   }
@@ -55,7 +55,7 @@ test_that("can control if failures generate errors",{
 })
 
 
-test_that("can control if warnings errors",{
+test_that("can control if warnings errors", {
   test_warning <- function(...) {
     test_dir(test_path("test-warning"), reporter = "silent", ...)
   }

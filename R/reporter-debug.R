@@ -8,7 +8,8 @@ NULL
 #'
 #' @export
 #' @family reporters
-DebugReporter <- R6::R6Class("DebugReporter", inherit = Reporter,
+DebugReporter <- R6::R6Class("DebugReporter",
+  inherit = Reporter,
   public = list(
     add_result = function(context, test, result) {
       if (!expectation_success(result)) {
@@ -17,8 +18,10 @@ DebugReporter <- R6::R6Class("DebugReporter", inherit = Reporter,
           on.exit(sink(), add = TRUE)
         }
 
-        recover2(start_frame = result$start_frame,
-                 end_frame = result$end_frame)
+        recover2(
+          start_frame = result$start_frame,
+          end_frame = result$end_frame
+        )
       }
     }
   )

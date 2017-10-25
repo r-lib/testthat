@@ -11,4 +11,3 @@ test_that("MultiReporter", {
   expect_equal(dfs[[2]][1:7], dfs[[1]][1:7])
   expect_equal(dfs[[3]][1:7], dfs[[1]][1:7])
 })
-

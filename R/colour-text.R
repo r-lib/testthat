@@ -15,4 +15,3 @@ colourise <- function(text, as = c("success", "skip", "warning", "failure", "err
   )
   testthat_colours[[as]](text)
 }
-

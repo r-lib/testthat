@@ -17,7 +17,6 @@
 #' @export
 #' @keywords internal
 watch <- function(path, callback, pattern = NULL, hash = TRUE) {
-
   prev <- dir_state(path, pattern, hash = hash)
 
   repeat {

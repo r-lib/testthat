@@ -9,7 +9,8 @@ NULL
 #'
 #' @export
 #' @family reporters
-TapReporter <- R6::R6Class("TapReporter", inherit = Reporter,
+TapReporter <- R6::R6Class("TapReporter",
+  inherit = Reporter,
   public = list(
     results = list(),
     n = 0L,
@@ -27,8 +28,9 @@ TapReporter <- R6::R6Class("TapReporter", inherit = Reporter,
     },
 
     end_reporter = function() {
-      if (!self$has_tests)
+      if (!self$has_tests) {
         return()
+      }
 
       self$cat_line("1..", self$n)
       for (i in 1:self$n) {
@@ -43,8 +45,10 @@ TapReporter <- R6::R6Class("TapReporter", inherit = Reporter,
           msg <- gsub("(^|\n)", "\\1  ", format(result))
           self$cat_line(msg)
         } else {
-          self$cat_line("ok ", i, " # ", toupper(expectation_type(result)), " ",
-                        format(result))
+          self$cat_line(
+            "ok ", i, " # ", toupper(expectation_type(result)), " ",
+            format(result)
+          )
         }
       }
     }

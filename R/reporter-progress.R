@@ -13,7 +13,8 @@ NULL
 #' @export
 #' @family reporters
 #' @importFrom clisymbols symbol
-ProgressReporter <- R6::R6Class("ProgressReporter", inherit = Reporter,
+ProgressReporter <- R6::R6Class("ProgressReporter",
+  inherit = Reporter,
   public = list(
     show_praise = TRUE,
     min_time = 0.1,
@@ -76,7 +77,6 @@ ProgressReporter <- R6::R6Class("ProgressReporter", inherit = Reporter,
     },
 
     show_status = function(complete = FALSE) {
-
       if (complete) {
         if (self$ctxt_n_fail > 0) {
           status <- crayon::red(symbol$cross)
@@ -134,7 +134,6 @@ ProgressReporter <- R6::R6Class("ProgressReporter", inherit = Reporter,
         self$n_fail <- self$n_fail + 1
         self$ctxt_n_fail <- self$ctxt_n_fail + 1
         self$ctxt_issues$push(result)
-
       } else if (expectation_skip(result)) {
         self$n_skip <- self$n_skip + 1
         self$ctxt_n_skip <- self$ctxt_n_skip + 1
@@ -170,8 +169,9 @@ ProgressReporter <- R6::R6Class("ProgressReporter", inherit = Reporter,
       self$cat_line("Warnings: ", colour_if(self$n_warn, "warn"))
       self$cat_line("Skipped:  ", colour_if(self$n_skip, "skip"))
 
-      if (!self$show_praise || runif(1) > 0.1)
+      if (!self$show_praise || runif(1) > 0.1) {
         return()
+      }
 
       self$cat_line()
       if (self$n_fail == 0) {

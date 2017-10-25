@@ -9,7 +9,8 @@ NULL
 #'
 #' @export
 #' @family reporters
-LocationReporter <- R6::R6Class("LocationReporter", inherit = Reporter,
+LocationReporter <- R6::R6Class("LocationReporter",
+  inherit = Reporter,
   public = list(
     start_test = function(context, test) {
       self$cat_line("Start test: ", test)

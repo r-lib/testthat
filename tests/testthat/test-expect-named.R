@@ -17,4 +17,3 @@ test_that("expected_named optionally ignores case", {
 test_that("expected_named optionally ignores order", {
   expect_success(expect_named(c(a = 1, b = 2), c("b", "a"), ignore.order = TRUE))
 })
-
