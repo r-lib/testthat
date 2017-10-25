@@ -9,8 +9,8 @@ NULL
 #'
 #' @export
 #' @family reporters
-TapReporter <- R6::R6Class(
-  "TapReporter", inherit = Reporter,
+TapReporter <- R6::R6Class("TapReporter",
+  inherit = Reporter,
   public = list(
     results = list(),
     n = 0L,

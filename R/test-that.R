@@ -155,15 +155,15 @@ test_code <- function(test, code, env = test_env(), skip_on_empty = TRUE) {
         }
       },
       expectation = handle_expectation,
-      skip = handle_skip,
-      warning = handle_warning,
-      message = handle_message,
-      error = handle_error
+      skip =        handle_skip,
+      warning =     handle_warning,
+      message =     handle_message,
+      error =       handle_error
     ),
     # some errors may need handling here, e.g., stack overflow
     error = handle_fatal,
     # skip silently terminate code
-    skip = function(e) {}
+    skip  = function(e) {}
   )
 
 

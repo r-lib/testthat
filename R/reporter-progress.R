@@ -13,8 +13,8 @@ NULL
 #' @export
 #' @family reporters
 #' @importFrom clisymbols symbol
-ProgressReporter <- R6::R6Class(
-  "ProgressReporter", inherit = Reporter,
+ProgressReporter <- R6::R6Class("ProgressReporter",
+  inherit = Reporter,
   public = list(
     show_praise = TRUE,
     min_time = 0.1,

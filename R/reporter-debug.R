@@ -8,8 +8,8 @@ NULL
 #'
 #' @export
 #' @family reporters
-DebugReporter <- R6::R6Class(
-  "DebugReporter", inherit = Reporter,
+DebugReporter <- R6::R6Class("DebugReporter",
+  inherit = Reporter,
   public = list(
     add_result = function(context, test, result) {
       if (!expectation_success(result)) {

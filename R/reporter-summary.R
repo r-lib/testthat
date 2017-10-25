@@ -16,8 +16,8 @@ NULL
 #'
 #' @export
 #' @family reporters
-SummaryReporter <- R6::R6Class(
-  "SummaryReporter", inherit = Reporter,
+SummaryReporter <- R6::R6Class("SummaryReporter",
+  inherit = Reporter,
   public = list(
     failures = NULL,
     skips = NULL,

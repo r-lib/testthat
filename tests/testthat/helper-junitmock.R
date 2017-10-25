@@ -7,10 +7,9 @@
 #   - hostname  - originally wrapper for Sys.info()[["nodename"]]
 #
 createJunitReporterMock <- function(...) {
-  JunitReporterMock <- R6::R6Class(
-    "JunitReporterMock",
+  JunitReporterMock <- R6::R6Class("JunitReporterMock",
     inherit = JunitReporter,
-    public = list(),
+    public  = list(),
     private = list(
       proctime = function() {
         c(user = 0, system = 0, elapsed = 0)

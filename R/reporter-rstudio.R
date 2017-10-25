@@ -8,8 +8,8 @@ NULL
 #'
 #' @export
 #' @family reporters
-RstudioReporter <- R6::R6Class(
-  "RstudioReporter", inherit = Reporter,
+RstudioReporter <- R6::R6Class("RstudioReporter",
+  inherit = Reporter,
   public = list(
     add_result = function(context, test, result) {
       if (expectation_success(result)) {

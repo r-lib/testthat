@@ -9,8 +9,8 @@ NULL
 #'
 #' @export
 #' @family reporters
-TeamcityReporter <- R6::R6Class(
-  "TeamcityReporter", inherit = Reporter,
+TeamcityReporter <- R6::R6Class("TeamcityReporter",
+  inherit = Reporter,
   public = list(
     i = NA_integer_,
 

@@ -8,8 +8,7 @@
 #' @export Reporter
 #' @aliases Reporter
 #' @importFrom R6 R6Class
-Reporter <- R6::R6Class(
-  "Reporter",
+Reporter <- R6::R6Class("Reporter",
   public = list(
     start_reporter = function() {},
     start_context =  function(context) {},

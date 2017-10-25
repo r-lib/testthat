@@ -236,9 +236,9 @@ format.expectation <- function(x, ...) {
 
 single_letter_summary <- function(x) {
   switch(expectation_type(x),
-    skip = colourise("S", "skip"),
+    skip    = colourise("S", "skip"),
     success = colourise(".", "success"),
-    error = colourise("E", "error"),
+    error   = colourise("E", "error"),
     failure = colourise("F", "failure"),
     warning = colourise("W", "warning"),
     "?"

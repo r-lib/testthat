@@ -8,8 +8,8 @@ NULL
 #'
 #' @export
 #' @family reporters
-CheckReporter <- R6::R6Class(
-  "CheckReporter", inherit = Reporter,
+CheckReporter <- R6::R6Class("CheckReporter",
+  inherit = Reporter,
   public = list(
     failures = list(),
     n_ok = 0L,

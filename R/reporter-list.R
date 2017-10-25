@@ -12,8 +12,8 @@ methods::setOldClass("proc_time")
 #'
 #' @export
 #' @family reporters
-ListReporter <- R6::R6Class(
-  "ListReporter", inherit = Reporter,
+ListReporter <- R6::R6Class("ListReporter",
+  inherit = Reporter,
   public = list(
     current_start_time = NA,
     current_expectations = NULL,
@@ -40,12 +40,12 @@ ListReporter <- R6::R6Class(
       elapsed <- as.double(proc.time() - self$current_start_time)
 
       self$results$push(list(
-        file = self$current_file %||% NA_character_,
+        file =    self$current_file %||% NA_character_,
         context = context,
-        test = test,
-        user = elapsed[1],
-        system = elapsed[2],
-        real = elapsed[3],
+        test =    test,
+        user =    elapsed[1],
+        system =  elapsed[2],
+        real =    elapsed[3],
         results = self$current_expectations$as_list()
       ))
     },

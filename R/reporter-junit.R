@@ -26,18 +26,18 @@ classnameOK <- function(text) {
 #' \url{http://llg.cubic.org/docs/junit/}
 #'
 #' @export
-JunitReporter <- R6::R6Class(
-  "JunitReporter", inherit = Reporter,
+JunitReporter <- R6::R6Class("JunitReporter",
+  inherit = Reporter,
   public = list(
-    results = NULL,
-    timer = NULL,
-    doc = NULL,
-    errors = NULL,
+    results  = NULL,
+    timer    = NULL,
+    doc      = NULL,
+    errors   = NULL,
     failures = NULL,
-    skipped = NULL,
-    tests = NULL,
-    root = NULL,
-    suite = NULL,
+    skipped  = NULL,
+    tests    = NULL,
+    root     = NULL,
+    suite    = NULL,
     suite_time = NULL,
 
     elapsed_time = function() {
@@ -69,9 +69,9 @@ JunitReporter <- R6::R6Class(
       self$suite <- xml2::xml_add_child(
         self$root,
         "testsuite",
-        name = context,
+        name      = context,
         timestamp = private$timestamp(),
-        hostname = private$hostname()
+        hostname  = private$hostname()
       )
     },
 
