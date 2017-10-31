@@ -29,6 +29,10 @@ test_examples_source <- function(path = "../..") {
 }
 
 test_examples_installed <- function(package = env_test$package) {
+  if (is.null(package)) {
+    return()
+  }
+
   Rd <- tools::Rd_db(package = package)
   if (length(Rd) == 0) {
     return()

@@ -24,7 +24,7 @@ describe("describe", {
   it("has to have a description for the block", {
     expect_that(describe({
     }), throws_error())
-    expect_that(describe("",{
+    expect_that(describe("", {
     }), throws_error())
     expect_that(describe("test", {
       it()

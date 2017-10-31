@@ -63,8 +63,7 @@ test_dir <- function(path,
                      load_helpers = TRUE,
                      stop_on_failure = FALSE,
                      stop_on_warning = FALSE,
-                     wrap = TRUE
-                     ) {
+                     wrap = TRUE) {
   if (!missing(encoding) && !identical(encoding, "UTF-8")) {
     warning("`encoding` is deprecated; all files now assumed to be UTF-8", call. = FALSE)
   }
@@ -97,15 +96,15 @@ test_package <- function(package,
                          reporter = check_reporter(),
                          ...,
                          stop_on_failure = TRUE,
-                         stop_on_warning = FALSE
-                         ) {
+                         stop_on_warning = FALSE) {
   library(testthat)
 
   # Ensure that test package returns silently if called recursively - this
   # will occur if test-all.R ends up in the same directory as all the other
   # tests.
-  if (env_test$in_test)
+  if (env_test$in_test) {
     return(invisible())
+  }
 
   env_test$in_test <- TRUE
   env_test$package <- package
@@ -115,8 +114,9 @@ test_package <- function(package,
   })
 
   test_path <- system.file("tests", package = package)
-  if (test_path == "")
+  if (test_path == "") {
     stop("No tests found for ", package, call. = FALSE)
+  }
 
   # If testthat subdir exists, use that
   test_path2 <- file.path(test_path, "testthat")
@@ -148,8 +148,7 @@ test_check <- function(package,
                        ...,
                        stop_on_failure = TRUE,
                        stop_on_warning = FALSE,
-                       wrap = TRUE
-  ) {
+                       wrap = TRUE) {
   library(testthat)
   require(package, character.only = TRUE)
 
@@ -161,7 +160,7 @@ test_check <- function(package,
   })
 
   test_path <- "testthat"
-  if (!utils::file_test('-d', test_path)) {
+  if (!utils::file_test("-d", test_path)) {
     stop("No tests found for ", package, call. = FALSE)
   }
 

@@ -160,8 +160,10 @@ as.expectation <- function(x, ...) UseMethod("as.expectation", x)
 
 #' @export
 as.expectation.default <- function(x, ..., srcref = NULL) {
-  stop("Don't know how to convert '", paste(class(x), collapse = "', '"),
-       "' to expectation.", call. = FALSE)
+  stop(
+    "Don't know how to convert '", paste(class(x), collapse = "', '"),
+    "' to expectation.", call. = FALSE
+  )
 }
 
 #' @export

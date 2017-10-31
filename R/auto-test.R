@@ -61,7 +61,6 @@ auto_test <- function(code_path, test_path, reporter = default_reporter(),
     TRUE
   }
   watch(c(code_path, test_path), watcher, hash = hash)
-
 }
 
 #' Watches a package for changes, rerunning tests as appropriate.
@@ -75,8 +74,10 @@ auto_test <- function(code_path, test_path, reporter = default_reporter(),
 #' @seealso [auto_test()] for details on how method works
 auto_test_package <- function(pkg = ".", reporter = default_reporter(), hash = TRUE) {
   if (!requireNamespace("devtools", quietly = TRUE)) {
-    stop("devtools required to run auto_test_package(). Please install.",
-      call. = FALSE)
+    stop(
+      "devtools required to run auto_test_package(). Please install.",
+      call. = FALSE
+    )
   }
 
   pkg <- devtools::as.package(pkg)
@@ -120,5 +121,4 @@ auto_test_package <- function(pkg = ".", reporter = default_reporter(), hash = T
     TRUE
   }
   watch(c(code_path, test_path), watcher, hash = hash)
-
 }

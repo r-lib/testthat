@@ -48,7 +48,6 @@ NULL
 #' @param ... other values passed to [all.equal()]
 expect_equal <- function(object, expected, ..., info = NULL, label = NULL,
                          expected.label = NULL) {
-
   act <- quasi_label(enquo(object), label)
   exp <- quasi_label(enquo(expected), expected.label)
 
@@ -66,7 +65,6 @@ expect_equal <- function(object, expected, ..., info = NULL, label = NULL,
 #' @export
 #' @rdname equality-expectations
 expect_setequal <- function(object, expected) {
-
   act <- quasi_label(enquo(object))
   exp <- quasi_label(enquo(expected))
 
@@ -103,7 +101,6 @@ expect_equivalent <- function(object, expected, ..., info = NULL, label = NULL,
 #' @rdname equality-expectations
 expect_identical <- function(object, expected, info = NULL, label = NULL,
                              expected.label = NULL) {
-
   act <- quasi_label(enquo(object), label)
   exp <- quasi_label(enquo(expected), expected.label)
 
@@ -131,7 +128,6 @@ expect_identical <- function(object, expected, info = NULL, label = NULL,
 #' @rdname equality-expectations
 expect_identical <- function(object, expected, info = NULL, label = NULL,
                              expected.label = NULL) {
-
   act <- quasi_label(enquo(object), label)
   exp <- quasi_label(enquo(expected), expected.label)
 
@@ -159,7 +155,6 @@ expect_identical <- function(object, expected, info = NULL, label = NULL,
 #' @rdname equality-expectations
 expect_reference <- function(object, expected, info = NULL, label = NULL,
                              expected.label = NULL) {
-
   act <- quasi_label(enquo(object), label)
   exp <- quasi_label(enquo(expected), expected.label)
 

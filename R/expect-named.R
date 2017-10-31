@@ -28,7 +28,6 @@
 expect_named <- function(object, expected, ignore.order = FALSE,
                          ignore.case = FALSE, info = NULL,
                          label = NULL) {
-
   act <- quasi_label(enquo(object), label = label)
   act$names <- names(act$val)
 
@@ -43,7 +42,8 @@ expect_named <- function(object, expected, ignore.order = FALSE,
 
     expect(
       identical(act$names, exp_names),
-      sprintf("Names of %s (%s) don't match %s",
+      sprintf(
+        "Names of %s (%s) don't match %s",
         act$lab,
         paste0("'", act$names, "'", collapse = ", "),
         paste0("'", exp_names, "'", collapse = ", ")
@@ -58,7 +58,7 @@ normalise_names <- function(x, ignore.order = FALSE, ignore.case = FALSE) {
   if (is.null(x)) return()
 
   if (ignore.order) x <- sort(x)
-  if (ignore.case)  x <- tolower(x)
+  if (ignore.case) x <- tolower(x)
 
   x
 }

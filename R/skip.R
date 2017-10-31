@@ -113,8 +113,10 @@ skip_on_cran <- function() {
 #'   `"windows"`, `"mac"`, `"linux"` and `"solaris"`.
 #' @rdname skip
 skip_on_os <- function(os) {
-  os <- match.arg(os, c("windows", "mac", "linux", "solaris"),
-    several.ok = TRUE)
+  os <- match.arg(
+    os, c("windows", "mac", "linux", "solaris"),
+    several.ok = TRUE
+  )
   sysname <- tolower(Sys.info()[["sysname"]])
 
   switch(sysname,

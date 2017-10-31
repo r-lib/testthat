@@ -20,8 +20,10 @@ compare.numeric <- function(x, y,
                             tolerance = .Machine$double.eps ^ 0.5,
                             check.attributes = TRUE,
                             ..., max_diffs = 9) {
-  all_equal <- all.equal(x, y, tolerance = tolerance,
-    check.attributes = check.attributes, ...)
+  all_equal <- all.equal(
+    x, y, tolerance = tolerance,
+    check.attributes = check.attributes, ...
+  )
   if (isTRUE(all_equal)) {
     return(no_difference())
   }
@@ -65,7 +67,6 @@ mismatch_numeric <- function(x, y, diff = !vector_equal(x, y)) {
 
 #' @export
 format.mismatch_numeric <- function(x, ..., max_diffs = 9, digits = 3) {
-
   summary <- paste0(x$n_diff, "/", x$n, " mismatches")
   if (x$n_diff > 1) {
     mu <- format(x$mu_diff, digits = digits, trim = TRUE)

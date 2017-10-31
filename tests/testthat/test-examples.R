@@ -7,7 +7,7 @@ test_that("test_examples works with installed packages", {
     test_rd = identity,
     {
       res <- test_examples()
-
-    })
+    }
+  )
   expect_true(length(res) > 1)
 })

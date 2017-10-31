@@ -7,7 +7,6 @@ test_that("old school logical works", {
 
 test_that("old school types still work", {
   expect_success(expect_that(1L, is_a("integer")))
-
 })
 
 test_that("tidyverse conflicts throw warnings", {

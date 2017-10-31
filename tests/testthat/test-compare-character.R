@@ -49,7 +49,7 @@ test_that("equal if both missing or both the same (multiple values)", {
 # Output ------------------------------------------------------------------
 
 test_that("computes correct number of mismatches", {
-  x <- mismatch_character(c("a","b","c"), c("c", "d", "e"))
+  x <- mismatch_character(c("a", "b", "c"), c("c", "d", "e"))
   expect_equal(x$n, 3)
 })
 
@@ -73,7 +73,7 @@ test_that("not all lines are shown", {
 })
 
 test_that("vectors longer than `max_diffs` (#513)", {
-  comp <- compare(letters[1:2], LETTERS[1:2], max_diffs=1)
+  comp <- compare(letters[1:2], LETTERS[1:2], max_diffs = 1)
   expect_is(comp, "comparison")
   expect_false(comp$equal)
   expect_equal(comp$message, "2/2 mismatches\nx[1]: \"a\"\ny[1]: \"A\"")
