@@ -42,7 +42,7 @@
 
 ##teamcity[testSuiteStarted name='Error:3']
 ##teamcity[testStarted name='expectation 1']
-##teamcity[testFailed name='expectation 1' message='!' details='1: f() at reporters/tests.R:36|n2: g() at reporters/tests.R:32|n3: h() at reporters/tests.R:33|n4: stop("!") at reporters/tests.R:34']
+##teamcity[testFailed name='expectation 1' message='!' details='1: f() at reporters/tests.R:42|n2: g() at reporters/tests.R:33|n3: h() at reporters/tests.R:36|n4: stop("!") at reporters/tests.R:39']
 ##teamcity[testFinished name='expectation 1']
 ##teamcity[testSuiteFinished name='Error:3']
 
@@ -52,7 +52,7 @@
 ##teamcity[testSuiteStarted name='Recursion']
 ##teamcity[testSuiteStarted name='Recursion:1']
 ##teamcity[testStarted name='expectation 1']
-##teamcity[testFailed name='expectation 1' message='This is deep' details='1: f(25) at reporters/tests.R:45|n2: f(x - 1) at reporters/tests.R:43|n3: f(x - 1) at reporters/tests.R:43|n4: f(x - 1) at reporters/tests.R:43|n5: f(x - 1) at reporters/tests.R:43|n6: f(x - 1) at reporters/tests.R:43|n7: f(x - 1) at reporters/tests.R:43|n8: f(x - 1) at reporters/tests.R:43|n9: f(x - 1) at reporters/tests.R:43|n10: f(x - 1) at reporters/tests.R:43|n...|n18: f(x - 1) at reporters/tests.R:43|n19: f(x - 1) at reporters/tests.R:43|n20: f(x - 1) at reporters/tests.R:43|n21: f(x - 1) at reporters/tests.R:43|n22: f(x - 1) at reporters/tests.R:43|n23: f(x - 1) at reporters/tests.R:43|n24: f(x - 1) at reporters/tests.R:43|n25: f(x - 1) at reporters/tests.R:43|n26: f(x - 1) at reporters/tests.R:43|n27: stop("This is deep") at reporters/tests.R:43']
+##teamcity[testFailed name='expectation 1' message='This is deep' details='1: f(25) at reporters/tests.R:51|n2: f(x - 1) at reporters/tests.R:49|n3: f(x - 1) at reporters/tests.R:49|n4: f(x - 1) at reporters/tests.R:49|n5: f(x - 1) at reporters/tests.R:49|n6: f(x - 1) at reporters/tests.R:49|n7: f(x - 1) at reporters/tests.R:49|n8: f(x - 1) at reporters/tests.R:49|n9: f(x - 1) at reporters/tests.R:49|n10: f(x - 1) at reporters/tests.R:49|n...|n18: f(x - 1) at reporters/tests.R:49|n19: f(x - 1) at reporters/tests.R:49|n20: f(x - 1) at reporters/tests.R:49|n21: f(x - 1) at reporters/tests.R:49|n22: f(x - 1) at reporters/tests.R:49|n23: f(x - 1) at reporters/tests.R:49|n24: f(x - 1) at reporters/tests.R:49|n25: f(x - 1) at reporters/tests.R:49|n26: f(x - 1) at reporters/tests.R:49|n27: stop("This is deep") at reporters/tests.R:49']
 ##teamcity[testFinished name='expectation 1']
 ##teamcity[testSuiteFinished name='Recursion:1']
 
