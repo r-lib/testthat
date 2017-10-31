@@ -67,7 +67,8 @@ show_failure <- function(expr) {
 #' @rdname expect_success
 #' @param path Path to save failure output
 expect_known_failure <- function(path, expr) {
-  FailureReporter <- R6::R6Class("FailureReporter", inherit = CheckReporter,
+  FailureReporter <- R6::R6Class("FailureReporter",
+    inherit = CheckReporter,
     public = list(end_reporter = function(...) {})
   )
 

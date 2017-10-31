@@ -35,8 +35,9 @@ try_again <- function(times, code) {
       }
     )
 
-    if (is.null(e))
+    if (is.null(e)) {
       return(invisible(TRUE))
+    }
 
     times <- times - 1L
   }

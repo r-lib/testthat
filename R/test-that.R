@@ -147,10 +147,12 @@ test_code <- function(test, code, env = test_env(), skip_on_empty = TRUE) {
 
   test_env <- new.env(parent = env)
   tryCatch(
-    withCallingHandlers({
-      eval(code, test_env)
-      if (!handled && !is.null(test))
-        skip_empty()
+    withCallingHandlers(
+      {
+        eval(code, test_env)
+        if (!handled && !is.null(test)) {
+          skip_empty()
+        }
       },
       expectation = handle_expectation,
       skip =        handle_skip,
@@ -161,7 +163,7 @@ test_code <- function(test, code, env = test_env(), skip_on_empty = TRUE) {
     # some errors may need handling here, e.g., stack overflow
     error = handle_fatal,
     # skip silently terminate code
-    skip =  function(e) {}
+    skip  = function(e) {}
   )
 
 

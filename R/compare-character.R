@@ -27,7 +27,6 @@
 compare.character <- function(x, y, check.attributes = TRUE, ...,
                               max_diffs = 5, max_lines = 5,
                               width = console_width()) {
-
   if (identical(x, y)) {
     return(no_difference())
   }
@@ -61,7 +60,6 @@ compare.character <- function(x, y, check.attributes = TRUE, ...,
 }
 
 mismatch_character <- function(x, y, diff = !vector_equal(x, y)) {
-
   structure(
     list(
       i = which(diff),

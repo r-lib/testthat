@@ -44,7 +44,7 @@ print.comparison <- function(x, ...) {
 
 #' @export
 #' @rdname compare
-compare.default <- function(x, y, ..., max_diffs = 9){
+compare.default <- function(x, y, ..., max_diffs = 9) {
   same <- all.equal(x, y, ...)
   if (length(same) > max_diffs) {
     same <- c(same[1:max_diffs], "...")
@@ -67,8 +67,9 @@ same_type <- function(x, y) identical(typeof(x), typeof(y))
 diff_type <- function(x, y) difference(fmt = "Types not compatible: %s is not %s", typeof(x), typeof(y))
 
 same_class <- function(x, y) {
-  if (!is.object(x) && !is.object(y))
+  if (!is.object(x) && !is.object(y)) {
     return(TRUE)
+  }
   identical(class(x), class(y))
 }
 diff_class <- function(x, y) {
@@ -92,4 +93,3 @@ vector_equal <- function(x, y) {
 vector_equal_tol <- function(x, y, tolerance = .Machine$double.eps ^ 0.5) {
   (is.na(x) & is.na(y)) | (!is.na(x) & !is.na(y) & abs(x - y) < tolerance)
 }
-

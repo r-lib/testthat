@@ -10,7 +10,8 @@ NULL
 #'
 #' @export
 #' @family reporters
-MinimalReporter <- R6::R6Class("MinimalReporter", inherit = Reporter,
+MinimalReporter <- R6::R6Class("MinimalReporter",
+  inherit = Reporter,
   public = list(
     add_result = function(context, test, result) {
       self$cat_tight(single_letter_summary(result))

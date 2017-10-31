@@ -89,8 +89,8 @@ expectation_lines <- function(code) {
 
 test_that("line numbers captured in simple case", {
   lines <- expectation_lines({
-    context('testing testFile')  # line 1
-    test_that('simple', {        # line 2
+    context("testing testFile")  # line 1
+    test_that("simple", {        # line 2
       expect_true(FALSE)         # line 3
     })                           # line 4
   })
@@ -99,7 +99,7 @@ test_that("line numbers captured in simple case", {
 
 test_that("line numbers captured inside another function", {
   lines <- expectation_lines({
-    test_that('simple', {                    # line 1
+    test_that("simple", {                    # line 1
       suppressMessages(expect_true(FALSE))   # line 2
     })
   })
@@ -108,8 +108,8 @@ test_that("line numbers captured inside another function", {
 
 test_that("line numbers captured inside a loop", {
   lines <- expectation_lines({
-    test_that('simple', {               # line 1
-      for(i in 1:4) expect_true(TRUE)   # line 2
+    test_that("simple", {               # line 1
+      for (i in 1:4) expect_true(TRUE)  # line 2
     })
   })
   expect_equal(lines, rep(2, 4))
@@ -117,7 +117,7 @@ test_that("line numbers captured inside a loop", {
 
 test_that("line numbers captured for skip()s", {
   lines <- expectation_lines({
-    test_that('simple', {             # line 1
+    test_that("simple", {             # line 1
       skip("Not this time")           # line 2
     })                                # line 3
   })
@@ -126,7 +126,7 @@ test_that("line numbers captured for skip()s", {
 
 test_that("line numbers captured for stop()s", {
   lines <- expectation_lines({
-    test_that('simple', {             # line 1
+    test_that("simple", {             # line 1
       skip("Not this time")           # line 2
     })                                # line 3
   })

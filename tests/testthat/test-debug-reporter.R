@@ -11,7 +11,7 @@ get_frame_from_debug_reporter <- function(choice, fun, envir = parent.frame()) {
 
   with_mock(
     show_menu = function(choices, title = NULL) {
-      #if (choice > 0) print(choices)
+      # if (choice > 0) print(choices)
       my_choice <- choice
       choice <<- 0L
       my_choice

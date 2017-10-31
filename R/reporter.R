@@ -80,7 +80,6 @@ Reporter <- R6::R6Class("Reporter",
     # in the same way as tests and expectations.
     .context = NULL,
     .start_context = function(context) {
-
       if (!is.null(self$.context)) {
         self$end_context(self$.context)
       }

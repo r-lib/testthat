@@ -2,7 +2,7 @@
 NULL
 
 
-methods::setOldClass('proc_time')
+methods::setOldClass("proc_time")
 
 #' List reporter: gather all test results along with elapsed time and
 #' file information.
@@ -12,7 +12,8 @@ methods::setOldClass('proc_time')
 #'
 #' @export
 #' @family reporters
-ListReporter <- R6::R6Class("ListReporter", inherit = Reporter,
+ListReporter <- R6::R6Class("ListReporter",
+  inherit = Reporter,
   public = list(
     current_start_time = NA,
     current_expectations = NULL,
@@ -30,8 +31,9 @@ ListReporter <- R6::R6Class("ListReporter", inherit = Reporter,
     },
 
     add_result = function(context, test, result) {
-      if (!is.null(self$current_expectations))
+      if (!is.null(self$current_expectations)) {
         self$current_expectations$push(result)
+      }
     },
 
     end_test = function(context, test) {
@@ -65,23 +67,25 @@ ListReporter <- R6::R6Class("ListReporter", inherit = Reporter,
 #' @return its list argument as a `testthat_results` object
 #' @seealso ListReporter
 #' @keywords internal
-testthat_results  <- function(results) {
+testthat_results <- function(results) {
   stopifnot(is.list(results))
   structure(results, class = "testthat_results")
 }
 
 # return if all tests are successful w/o error
 all_passed <- function(res) {
-  if (length(res) == 0)
+  if (length(res) == 0) {
     return(TRUE)
+  }
 
   df <- as.data.frame.testthat_results(res)
   sum(df$failed) == 0 && all(!df$error)
 }
 
 any_warnings <- function(res) {
-  if (length(res) == 0)
+  if (length(res) == 0) {
     return(FALSE)
+  }
 
   df <- as.data.frame.testthat_results(res)
   any(df$warning > 0)
@@ -90,8 +94,9 @@ any_warnings <- function(res) {
 
 #' @export
 as.data.frame.testthat_results <- function(x, ...) {
-  if (length(x) == 0)
+  if (length(x) == 0) {
     return(data.frame())
+  }
 
   rows <- lapply(x, sumarize_one_test_results)
   do.call(rbind, rows)
@@ -114,19 +119,21 @@ sumarize_one_test_results <- function(test) {
       nb_tests <- length(test_results)
     }
 
-    nb_passed <-  sum(vapply(test_results, expectation_success, logical(1)))
+    nb_passed <- sum(vapply(test_results, expectation_success, logical(1)))
     nb_skipped <- sum(vapply(test_results, expectation_skip, logical(1)))
     nb_failed <- sum(vapply(test_results, expectation_failure, logical(1)))
     nb_warning <- sum(vapply(test_results, expectation_warning, logical(1)))
   }
 
-  context <- if (length(test$context) > 0) test$context else ''
+  context <- if (length(test$context) > 0) test$context else ""
 
-  res <- data.frame(file = test$file, context = context, test = test$test,
+  res <- data.frame(
+    file = test$file, context = context, test = test$test,
     nb = nb_tests, failed = nb_failed, skipped = as.logical(nb_skipped),
     error = error, warning = nb_warning,
     user = test$user, system = test$system, real = test$real,
-    stringsAsFactors = FALSE)
+    stringsAsFactors = FALSE
+  )
 
   res
 }
@@ -136,4 +143,3 @@ sumarize_one_test_results <- function(test) {
 print.testthat_results <- function(x, ...) {
   print(as.data.frame(x))
 }
-

@@ -12,10 +12,14 @@ create_traceback <- function(callstack) {
   # Extract srcrefs
   srcrefs <- lapply(callstack, attr, "srcref")
   has_ref <- vapply(srcrefs, function(x) inherits(x, "srcref"), logical(1))
-  files <-  vapply(srcrefs[has_ref], function(x) attr(x, "srcfile")$filename,
-    FUN.VALUE = character(1))
-  lines <-  vapply(srcrefs[has_ref], function(x) as.vector(x)[1],
-    FUN.VALUE = integer(1))
+  files <- vapply(
+    srcrefs[has_ref], function(x) attr(x, "srcfile")$filename,
+    FUN.VALUE = character(1)
+  )
+  lines <- vapply(
+    srcrefs[has_ref], function(x) as.vector(x)[1],
+    FUN.VALUE = integer(1)
+  )
 
   calls[has_ref] <- paste0(calls[has_ref], " at ", files, ":", lines)
 
@@ -25,4 +29,3 @@ create_traceback <- function(callstack) {
 
   first_last(calls)
 }
-

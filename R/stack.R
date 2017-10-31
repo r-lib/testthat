@@ -5,10 +5,9 @@
 # A Stack object backed by a list. The backing list will grow or shrink as
 # the stack changes in size.
 Stack <- R6Class(
-  'Stack',
+  "Stack",
   class = FALSE,
   public = list(
-
     initialize = function(init = 20L) {
       # init is the initial size of the list. It is also used as the minimum
       # size of the list as it shrinks.

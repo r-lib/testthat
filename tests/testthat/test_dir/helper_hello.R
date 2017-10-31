@@ -1,1 +1,1 @@
-hello <- function() 'Hello World'
+hello <- function() "Hello World"

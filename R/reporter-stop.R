@@ -13,7 +13,8 @@ NULL
 #'
 #' @export
 #' @family reporters
-StopReporter <- R6::R6Class("StopReporter", inherit = Reporter,
+StopReporter <- R6::R6Class("StopReporter",
+  inherit = Reporter,
   public = list(
     failures = NULL,
 
