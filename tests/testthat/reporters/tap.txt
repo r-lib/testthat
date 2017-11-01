@@ -18,34 +18,34 @@ not ok 7 Error:1
   1: stop("stop") at reporters/tests.R:28
 not ok 8 Error:3
   !
-  1: f() at reporters/tests.R:36
-  2: g() at reporters/tests.R:32
-  3: h() at reporters/tests.R:33
-  4: stop("!") at reporters/tests.R:34
+  1: f() at reporters/tests.R:42
+  2: g() at reporters/tests.R:33
+  3: h() at reporters/tests.R:36
+  4: stop("!") at reporters/tests.R:39
 # Context Recursion
 not ok 9 Recursion:1
   This is deep
-  1: f(25) at reporters/tests.R:45
-  2: f(x - 1) at reporters/tests.R:43
-  3: f(x - 1) at reporters/tests.R:43
-  4: f(x - 1) at reporters/tests.R:43
-  5: f(x - 1) at reporters/tests.R:43
-  6: f(x - 1) at reporters/tests.R:43
-  7: f(x - 1) at reporters/tests.R:43
-  8: f(x - 1) at reporters/tests.R:43
-  9: f(x - 1) at reporters/tests.R:43
-  10: f(x - 1) at reporters/tests.R:43
+  1: f(25) at reporters/tests.R:51
+  2: f(x - 1) at reporters/tests.R:49
+  3: f(x - 1) at reporters/tests.R:49
+  4: f(x - 1) at reporters/tests.R:49
+  5: f(x - 1) at reporters/tests.R:49
+  6: f(x - 1) at reporters/tests.R:49
+  7: f(x - 1) at reporters/tests.R:49
+  8: f(x - 1) at reporters/tests.R:49
+  9: f(x - 1) at reporters/tests.R:49
+  10: f(x - 1) at reporters/tests.R:49
   ...
-  18: f(x - 1) at reporters/tests.R:43
-  19: f(x - 1) at reporters/tests.R:43
-  20: f(x - 1) at reporters/tests.R:43
-  21: f(x - 1) at reporters/tests.R:43
-  22: f(x - 1) at reporters/tests.R:43
-  23: f(x - 1) at reporters/tests.R:43
-  24: f(x - 1) at reporters/tests.R:43
-  25: f(x - 1) at reporters/tests.R:43
-  26: f(x - 1) at reporters/tests.R:43
-  27: stop("This is deep") at reporters/tests.R:43
+  18: f(x - 1) at reporters/tests.R:49
+  19: f(x - 1) at reporters/tests.R:49
+  20: f(x - 1) at reporters/tests.R:49
+  21: f(x - 1) at reporters/tests.R:49
+  22: f(x - 1) at reporters/tests.R:49
+  23: f(x - 1) at reporters/tests.R:49
+  24: f(x - 1) at reporters/tests.R:49
+  25: f(x - 1) at reporters/tests.R:49
+  26: f(x - 1) at reporters/tests.R:49
+  27: stop("This is deep") at reporters/tests.R:49
 # Context Skips
 ok 10 # SKIP skip
 ok 11 # SKIP skip
