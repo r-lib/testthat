@@ -2,7 +2,7 @@
 #'
 #' The expectation is that the files can be sourced in alphabetical order.
 #' Helper scripts are R scripts accompanying test scripts but prefixed by
-#' `helper`. These scripts are once before the tests are run.
+#' `helper`. These scripts are run once before the tests are run.
 #'
 #' @param path Path to tests
 #' @param pattern Regular expression used to filter files
