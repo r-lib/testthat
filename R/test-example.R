@@ -49,7 +49,7 @@ test_example <- function(path) {
 
   env <- new.env(parent = globalenv())
 
-  ok <- test_code(path, parse(ex_path), env = env)
+  ok <- test_code(path, parse(ex_path, encoding = "UTF-8"), env = env)
   if (ok) succeed(path)
 
   invisible()
@@ -65,7 +65,7 @@ test_rd <- function(rd) {
 
   env <- new.env(parent = globalenv())
 
-  ok <- test_code(path, parse(ex_path), env = env)
+  ok <- test_code(path, parse(ex_path, encoding = "UTF-8"), env = env)
   if (ok) succeed(path)
 
   invisible()

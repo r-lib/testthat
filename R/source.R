@@ -24,7 +24,12 @@ source_file <- function(path, env = test_env(), chdir = TRUE,
 
   lines <- read_lines(path)
   srcfile <- srcfilecopy(path, lines, file.info(path)[1, "mtime"], isFile = TRUE)
-  exprs <- parse(text = lines, n = -1, srcfile = srcfile)
+
+  ## We need to parse from a connection, because parse() has a bug,
+  ## and converts the input to the native encoding, if the text arg is used
+  exprs <- parse(
+    textConnection(lines, encoding = "UTF-8"),
+    n = -1, srcfile = srcfile, encoding = "UTF-8")
 
   n <- length(exprs)
   if (n == 0L) return(invisible())
