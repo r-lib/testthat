@@ -98,6 +98,10 @@ test_file <- function(path, reporter = default_reporter(), env = test_env(),
                       encoding = "unknown", wrap = TRUE) {
   library(testthat)
 
+  if (!file.exists(path)) {
+    stop("`path` does not exist", call. = FALSE)
+  }
+
   if (!missing(encoding) && !identical(encoding, "UTF-8")) {
     warning("`encoding` is deprecated; all files now assumed to be UTF-8", call. = FALSE)
   }
