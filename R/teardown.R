@@ -39,9 +39,13 @@ teardown_reset <- function() {
 }
 
 teardown_run <- function(path = ".") {
+  if (length(teardown_env$queue) == 0)
+    return()
+
   old_dir <- setwd(path)
   on.exit(setwd(old_dir), add = TRUE)
 
   lapply(teardown_env$queue, function(f) try(f()))
   teardown_reset()
+  gc()
 }

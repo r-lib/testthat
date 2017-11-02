@@ -120,10 +120,7 @@ test_file <- function(path, reporter = default_reporter(), env = test_env(),
     reporter <- lister
   }
 
-  on.exit({
-    teardown_run(dirname(path))
-    gc()
-  }, add = TRUE)
+  on.exit(teardown_run(dirname(path)), add = TRUE)
 
   with_reporter(
     reporter = reporter,
