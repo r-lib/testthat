@@ -37,6 +37,6 @@ that all expectations are reported, even if outside a test block.}
 \description{
 The expectation is that the files can be sourced in alphabetical order.
 Helper scripts are R scripts accompanying test scripts but prefixed by
-\code{helper}. These scripts are once before the tests are run.
+\code{helper}. These scripts are run once before the tests are run.
 }
 \keyword{internal}
