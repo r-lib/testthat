@@ -12,7 +12,6 @@ NULL
 #'
 #' @export
 #' @family reporters
-#' @importFrom clisymbols symbol
 ProgressReporter <- R6::R6Class("ProgressReporter",
   inherit = Reporter,
   public = list(
@@ -70,7 +69,7 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
 
     show_header = function() {
       self$cat_line(
-        symbol$tick, " | OK ",
+        cli::symbol$tick, " | OK ",
         colourise("F", "failure"), " ",
         colourise("W", "warning"), " ",
         colourise("S", "skip"), " | ",
@@ -81,9 +80,9 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
     show_status = function(complete = FALSE) {
       if (complete) {
         if (self$ctxt_n_fail > 0) {
-          status <- crayon::red(symbol$cross)
+          status <- crayon::red(cli::symbol$cross)
         } else {
-          status <- crayon::green(symbol$tick)
+          status <- crayon::green(cli::symbol$tick)
         }
       } else {
         status <- spinner(self$ctxt_n)
@@ -194,15 +193,9 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
 
 
 spinner <- function(i) {
-  frames <- c(
-    "\u280b", "\u2819", "\u2839", "\u2838", "\u283c", "\u2834",
-    "\u2826", "\u2827", "\u2807", "\u280f"
-  )
-  # c("⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏" )
-
+  frames <- cli::get_spinner()$frames
   frames[((i - 1) %% length(frames)) + 1]
 }
-
 
 issue_summary <- function(x) {
   type <- expectation_type(x)
