@@ -18,6 +18,7 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
   public = list(
     show_praise = TRUE,
     min_time = 0.1,
+    start_time = NULL,
 
     max_fail = NULL,
     n_ok = 0,
@@ -49,6 +50,7 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
     },
 
     start_reporter = function(context) {
+      self$start_time <- proc.time()
       self$show_header()
     },
 
@@ -164,6 +166,12 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
       }
 
       self$rule(crayon::bold("Results"), pad = "=")
+      time <- proc.time() - self$start_time
+      if (time[[3]] > self$min_time) {
+        self$cat_line(crayon::cyan(paste0("Duration: ", sprintf("%.1f s", time[[3]]), "")))
+        self$cat_line()
+      }
+
       self$cat_line("OK:       ", colourise(self$n_ok, "success"))
       self$cat_line("Failed:   ", colour_if(self$n_fail, "fail"))
       self$cat_line("Warnings: ", colour_if(self$n_warn, "warn"))
