@@ -113,9 +113,10 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
       self$show_status(complete = TRUE)
 
       if (time[[3]] > self$min_time) {
-        self$cat(crayon::cyan(sprintf(" [%.1f s]", time[[3]])))
+        self$cat_line(sprintf(" [%.1f s]", time[[3]]), col = "cyan")
+      } else {
+        self$cat_line()
       }
-      self$cat_line()
 
       if (self$ctxt_issues$size() > 0) {
         self$rule()
@@ -156,7 +157,7 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
       self$cat_line()
 
       if (self$is_full()) {
-        self$rule("Terminating early", pad = "=")
+        self$rule("Terminating early", line = 2)
         self$cat_line("Too many failures")
         return()
       }
@@ -165,10 +166,10 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
         colourise(n, if (n == 0) "success" else type)
       }
 
-      self$rule(crayon::bold("Results"), pad = "=")
+      self$rule(crayon::bold("Results"), line = 2)
       time <- proc.time() - self$start_time
       if (time[[3]] > self$min_time) {
-        self$cat_line(crayon::cyan(paste0("Duration: ", sprintf("%.1f s", time[[3]]), "")))
+        self$cat_line("Duration: ", sprintf("%.1f s", time[[3]]), col = "cyan")
         self$cat_line()
       }
 

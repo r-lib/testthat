@@ -1,22 +1,22 @@
-1. Failure:  (@test-expect-error.R#45) -----------------------------------------
+── 1. Failure:  (@test-expect-error.R#45)  ─────────────────────────────────────
 `null()` did not throw an error.
 
-2. Failure:  (@test-expect-error.R#46) -----------------------------------------
+── 2. Failure:  (@test-expect-error.R#46)  ─────────────────────────────────────
 `stop("!")` threw an error.
 Message: !
 Class:   simpleError/error/condition
 
-3. Failure:  (@test-expect-error.R#48) -----------------------------------------
+── 3. Failure:  (@test-expect-error.R#48)  ─────────────────────────────────────
 `stop("xxx")` threw an error with unexpected message.
 Expected match: "zzz"
 Actual message: "xxx"
 
-4. Failure:  (@test-expect-error.R#49) -----------------------------------------
+── 4. Failure:  (@test-expect-error.R#49)  ─────────────────────────────────────
 `stop("xxx")` threw an error with unexpected class.
 Expected class: zzz
 Actual class:   simpleError/error/condition
 
-5. Failure:  (@test-expect-error.R#50) -----------------------------------------
+── 5. Failure:  (@test-expect-error.R#50)  ─────────────────────────────────────
 `stop("xxx")` threw an error with unexpected class and message.
 Expected class: zzz
 Actual class:   simpleError/error/condition

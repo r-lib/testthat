@@ -4,14 +4,17 @@ colourise <- function(text, as = c("success", "skip", "warning", "failure", "err
     return(text)
   }
 
-  as <- match.arg(as)
+  crayon::style(text, testthat_style(as))
+}
 
-  testthat_colours <- list(
-    success = crayon::green,
-    skip = crayon::blue,
-    warning = crayon::magenta,
-    failure = crayon::red,
-    error = crayon::red
-  )
-  testthat_colours[[as]](text)
+testthat_style <- function(type = c("success", "skip", "warning", "failure", "error")) {
+  type <- match.arg(type)
+
+  c(
+    success = "green",
+    skip = "blue",
+    warning = "magenta",
+    failure = "red",
+    error = "red"
+  )[[type]]
 }
