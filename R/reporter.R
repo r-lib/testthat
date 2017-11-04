@@ -29,48 +29,16 @@ Reporter <- R6::R6Class("Reporter",
       }
     },
 
-    cat = function(..., file = NULL, sep = " ", fill = FALSE, labels = NULL,
-                   append = NULL) {
-      if (!is.null(file)) {
-        warning("file ignored", call. = FALSE)
-      }
-      if (!is.null(append)) {
-        warning("append ignored", call. = FALSE)
-      }
-
-      cat(
-        ...,
-        file = self$out,
-        sep = sep,
-        fill = fill,
-        labels = labels,
-        append = is.character(self$out) # If writing to file, append=TRUE
-      )
-    },
-
     cat_tight = function(...) {
-      self$cat(..., sep = "")
+      cat(..., sep = "", file = self$out, append = TRUE)
     },
 
     cat_line = function(...) {
-      self$cat_tight(..., "\n")
+      cli::cat_line(..., file = self$out)
     },
 
-    cat_paragraph = function(...) {
-      self$cat_tight(..., "\n\n")
-    },
-
-    rule = function(..., pad = "-") {
-      title <- c(...)
-      pad <- fancy_line(pad)
-
-      if (length(title) == 0) {
-        title <- ""
-      } else {
-        title <- paste0(pad, " ", ..., " ")
-      }
-      width <- console_width() - nchar(title)
-      self$cat_line(title, paste(rep(pad, width, collapse = "")))
+    rule = function(...) {
+      cli::cat_rule(..., file = self$out)
     },
 
     # The hierarchy of contexts are implied - a context starts with a

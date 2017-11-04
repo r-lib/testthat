@@ -20,7 +20,8 @@ TeamcityReporter <- R6::R6Class("TeamcityReporter",
 
     end_context = function(context) {
       private$report_event("testSuiteFinished", context)
-      self$cat_paragraph()
+      self$cat_line()
+      self$cat_line()
     },
 
     start_test = function(context, test) {

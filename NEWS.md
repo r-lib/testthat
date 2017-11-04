@@ -14,16 +14,16 @@ This section lists deliberate API changes that have caused R CMD check failures 
   change slightly as both now pass `...` on another function. This reveals
   itself with a number of different errors, like:
   
-  > 'what' must be a character vector
-  > 'check.attributes' must be logical
-  > 'tolerance' should be numeric
-  > argument is not interpretable as logical
-  > threw an error with unexpected class
-  > argument "quo" is missing, with no default
-  > argument is missing, with no default
-
-  If you see one of these errors, check the number, order, and names of 
-  arguments to the expectation.
+    * 'what' must be a character vector
+    * 'check.attributes' must be logical
+    * 'tolerance' should be numeric
+    * argument is not interpretable as logical
+    * threw an error with unexpected class
+    * argument "quo" is missing, with no default
+    * argument is missing, with no default
+    
+    If you see one of these errors, check the number, order, and names of 
+    arguments to the expectation.
 
 * "Failure: (unknown)". The last release mistakenly failed to test 
   bare expectations not wrapped inside `test_that()`. If you see "(unknown)"
@@ -99,7 +99,7 @@ for (i in 1:5) {
 }
 ```
 
-When it fails, you'll see the message "Error: `f(i)` not equal to `i * 10`".
+When it fails, you'll see the message ``Error: `f(i)` not equal to `i * 10` ``.
 That's hard to diagnose because you don't know which iteration caused the problem!
 
 ```R
@@ -108,7 +108,7 @@ for (i in 1:5) {
 }
 ```
 
-If you unquote the values using `!!`, you get the failure message "`f(4L)` not equal to 40.`". This is much easier to diagnose!  See `?quasi_label()` for more details.
+If you unquote the values using `!!`, you get the failure message `` `f(4L)` not equal to 40.``. This is much easier to diagnose!  See `?quasi_label()` for more details.
 
 (Note that this is not tidy evaluation per se, but is closely related. At this time you can not unquote quosures.)
 

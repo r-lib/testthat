@@ -12,12 +12,12 @@ NULL
 #'
 #' @export
 #' @family reporters
-#' @importFrom clisymbols symbol
 ProgressReporter <- R6::R6Class("ProgressReporter",
   inherit = Reporter,
   public = list(
     show_praise = TRUE,
     min_time = 0.1,
+    start_time = NULL,
 
     max_fail = NULL,
     n_ok = 0,
@@ -49,6 +49,7 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
     },
 
     start_reporter = function(context) {
+      self$start_time <- proc.time()
       self$show_header()
     },
 
@@ -68,7 +69,7 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
 
     show_header = function() {
       self$cat_line(
-        symbol$tick, " | OK ",
+        cli::symbol$tick, " | OK ",
         colourise("F", "failure"), " ",
         colourise("W", "warning"), " ",
         colourise("S", "skip"), " | ",
@@ -79,9 +80,9 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
     show_status = function(complete = FALSE) {
       if (complete) {
         if (self$ctxt_n_fail > 0) {
-          status <- crayon::red(symbol$cross)
+          status <- crayon::red(cli::symbol$cross)
         } else {
-          status <- crayon::green(symbol$tick)
+          status <- crayon::green(cli::symbol$tick)
         }
       } else {
         status <- spinner(self$ctxt_n)
@@ -111,9 +112,10 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
       self$show_status(complete = TRUE)
 
       if (time[[3]] > self$min_time) {
-        self$cat(crayon::cyan(sprintf(" [%.1f s]", time[[3]])))
+        self$cat_line(sprintf(" [%.1f s]", time[[3]]), col = "cyan")
+      } else {
+        self$cat_line()
       }
-      self$cat_line()
 
       if (self$ctxt_issues$size() > 0) {
         self$rule()
@@ -154,7 +156,7 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
       self$cat_line()
 
       if (self$is_full()) {
-        self$rule("Terminating early", pad = "=")
+        self$rule("Terminating early", line = 2)
         self$cat_line("Too many failures")
         return()
       }
@@ -163,7 +165,13 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
         colourise(n, if (n == 0) "success" else type)
       }
 
-      self$rule(crayon::bold("Results"), pad = "=")
+      self$rule(crayon::bold("Results"), line = 2)
+      time <- proc.time() - self$start_time
+      if (time[[3]] > self$min_time) {
+        self$cat_line("Duration: ", sprintf("%.1f s", time[[3]]), col = "cyan")
+        self$cat_line()
+      }
+
       self$cat_line("OK:       ", colourise(self$n_ok, "success"))
       self$cat_line("Failed:   ", colour_if(self$n_fail, "fail"))
       self$cat_line("Warnings: ", colour_if(self$n_warn, "warn"))
@@ -185,15 +193,9 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
 
 
 spinner <- function(i) {
-  frames <- c(
-    "\u280b", "\u2819", "\u2839", "\u2838", "\u283c", "\u2834",
-    "\u2826", "\u2827", "\u2807", "\u280f"
-  )
-  # c("⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏" )
-
+  frames <- cli::get_spinner()$frames
   frames[((i - 1) %% length(frames)) + 1]
 }
-
 
 issue_summary <- function(x) {
   type <- expectation_type(x)
