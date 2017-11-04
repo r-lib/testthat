@@ -98,7 +98,11 @@ test_file <- function(path, reporter = default_reporter(), env = test_env(),
                       encoding = "unknown", wrap = TRUE) {
   library(testthat)
 
-  if (!missing(encoding)) {
+  if (!file.exists(path)) {
+    stop("`path` does not exist", call. = FALSE)
+  }
+
+  if (!missing(encoding) && !identical(encoding, "UTF-8")) {
     warning("`encoding` is deprecated; all files now assumed to be UTF-8", call. = FALSE)
   }
 
@@ -116,10 +120,7 @@ test_file <- function(path, reporter = default_reporter(), env = test_env(),
     reporter <- lister
   }
 
-  on.exit({
-    teardown_run(dirname(path))
-    gc()
-  }, add = TRUE)
+  on.exit(teardown_run(dirname(path)), add = TRUE)
 
   with_reporter(
     reporter = reporter,

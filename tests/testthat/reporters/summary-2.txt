@@ -5,29 +5,29 @@ Skips: SSS
 Warnings: WWW
 Output: ..
 
-─ Skipped ──────────────────────────────────────────────────────────────────────
-1. Skip:1 (@tests.R#51) - skip
+══ Skipped ═════════════════════════════════════════════════════════════════════
+1. Skip:1 (@tests.R#57) - skip
 
-2. Skip:2 (@tests.R#56) - skip
+2. Skip:2 (@tests.R#64) - skip
 
-3. Skip:3 (@tests.R#59) - Empty test
+3. Skip:3 (@tests.R#67) - Empty test
 
-─ Warnings ─────────────────────────────────────────────────────────────────────
-1. Warning:1 (@tests.R#65) - abc
+══ Warnings ════════════════════════════════════════════════════════════════════
+1. Warning:1 (@tests.R#73) - abc
 
-2. Warning:2 (@tests.R#69) - def
+2. Warning:2 (@tests.R#79) - def
 
-3. Warning:2 (@tests.R#70) - ghi
+3. Warning:2 (@tests.R#80) - ghi
 
-─ Failed ───────────────────────────────────────────────────────────────────────
-1. Failure: Failure:1 (@tests.R#8) ---------------------------------------------
+══ Failed ══════════════════════════════════════════════════════════════════════
+── 1. Failure: Failure:1 (@tests.R#8)  ─────────────────────────────────────────
 Failure has been forced
 
-2. Failure: Failure:2a (@tests.R#12) -------------------------------------------
+── 2. Failure: Failure:2a (@tests.R#12)  ───────────────────────────────────────
 Failure has been forced
   ... and 5 more
 
 
 Maximum number of 2 failures reached, some test results may be missing.
 
-═ DONE ═════════════════════════════════════════════════════════════════════════
+══ DONE ════════════════════════════════════════════════════════════════════════

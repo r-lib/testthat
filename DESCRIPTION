@@ -13,11 +13,10 @@ Description: Software testing is important, but, in part because it is
 License: MIT + file LICENSE
 URL: http://testthat.r-lib.org, https://github.com/r-lib/testthat
 BugReports: https://github.com/r-lib/testthat/issues
-Encoding: UTF-8
 Depends: 
     R (>= 3.1)
 Imports: 
-    clisymbols,
+    cli,
     crayon,
     digest,
     magrittr,
@@ -29,9 +28,12 @@ Imports:
 Suggests: 
     covr,
     devtools,
-    xml2,
     knitr,
-    rmarkdown
+    rmarkdown,
+    xml2
+VignetteBuilder: knitr
+Encoding: UTF-8
+Remotes: r-lib/cli
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 6.0.1
 Collate: 
@@ -95,4 +97,3 @@ Collate:
     'utils-io.R'
     'utils.R'
     'watcher.R'
-VignetteBuilder: knitr

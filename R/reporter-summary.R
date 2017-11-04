@@ -85,7 +85,7 @@ SummaryReporter <- R6::R6Class("SummaryReporter",
         self$cat_line()
       }
 
-      self$rule("DONE", pad = "=")
+      self$rule("DONE", line = 2)
       if (self$show_praise) {
         if (length(failures) == 0 && runif(1) < 0.1) {
           self$cat_line(colourise(praise(), "success"))
@@ -115,7 +115,7 @@ SummaryReporter <- R6::R6Class("SummaryReporter",
         return()
       }
 
-      self$rule(header)
+      self$rule(header, line = 2)
 
       if (n > max_n) {
         expectations <- expectations[seq_len(max_n)]
@@ -133,7 +133,8 @@ SummaryReporter <- R6::R6Class("SummaryReporter",
         self$cat_line("  ... and ", n - max_n, " more")
       }
 
-      self$cat_paragraph()
+      self$cat_line()
+      self$cat_line()
     }
   )
 )
