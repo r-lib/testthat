@@ -16,22 +16,14 @@ FALSE isn't true.
 stop
 1: stop("stop") at reporters/tests.R:28
 
-<<<<<<< HEAD
-6. Error: Error:3 (@tests.R#42) ------------------------------------------------
-=======
 ── 6. Error: Error:3 (@tests.R#42)  ────────────────────────────────────────────
->>>>>>> master
 !
 1: f() at reporters/tests.R:42
 2: g() at reporters/tests.R:33
 3: h() at reporters/tests.R:36
 4: stop("!") at reporters/tests.R:39
 
-<<<<<<< HEAD
-7. Error: Recursion:1 (@tests.R#51) --------------------------------------------
-=======
 ── 7. Error: Recursion:1 (@tests.R#51)  ────────────────────────────────────────
->>>>>>> master
 This is deep
 1: f(25) at reporters/tests.R:51
 2: f(x - 1) at reporters/tests.R:49
@@ -55,11 +47,7 @@ This is deep
 26: f(x - 1) at reporters/tests.R:49
 27: stop("This is deep") at reporters/tests.R:49
 
-<<<<<<< HEAD
-testthat results ================================================================
-=======
 ══ testthat results  ═══════════════════════════════════════════════════════════
->>>>>>> master
 OK: 7 SKIPPED: 3 FAILED: 7
 1. Failure: Failure:1 (@tests.R#8) 
 2. Failure: Failure:2a (@tests.R#12) 

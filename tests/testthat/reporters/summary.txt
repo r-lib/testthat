@@ -5,22 +5,14 @@ Skips: SSS
 Warnings: WWW
 Output: ..
 
-<<<<<<< HEAD
-─ Skipped ──────────────────────────────────────────────────────────────────────
-=======
 ══ Skipped ═════════════════════════════════════════════════════════════════════
->>>>>>> master
 1. Skip:1 (@tests.R#57) - skip
 
 2. Skip:2 (@tests.R#64) - skip
 
 3. Skip:3 (@tests.R#67) - Empty test
 
-<<<<<<< HEAD
-─ Warnings ─────────────────────────────────────────────────────────────────────
-=======
 ══ Warnings ════════════════════════════════════════════════════════════════════
->>>>>>> master
 1. Warning:1 (@tests.R#73) - abc
 
 2. Warning:2 (@tests.R#79) - def
@@ -46,22 +38,14 @@ FALSE isn't true.
 stop
 1: stop("stop") at reporters/tests.R:28
 
-<<<<<<< HEAD
-6. Error: Error:3 (@tests.R#42) ------------------------------------------------
-=======
 ── 6. Error: Error:3 (@tests.R#42)  ────────────────────────────────────────────
->>>>>>> master
 !
 1: f() at reporters/tests.R:42
 2: g() at reporters/tests.R:33
 3: h() at reporters/tests.R:36
 4: stop("!") at reporters/tests.R:39
 
-<<<<<<< HEAD
-7. Error: Recursion:1 (@tests.R#51) --------------------------------------------
-=======
 ── 7. Error: Recursion:1 (@tests.R#51)  ────────────────────────────────────────
->>>>>>> master
 This is deep
 1: f(25) at reporters/tests.R:51
 2: f(x - 1) at reporters/tests.R:49
