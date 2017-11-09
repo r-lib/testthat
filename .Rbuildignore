@@ -3,7 +3,7 @@
 ^\.travis\.yml$
 ^cran-comments\.md$
 ^appveyor\.yml$
-^revdep$
+^revdep/
 ^.*\.o$
 ^\.httr-oauth$
 ^codecov\.yml$
