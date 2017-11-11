@@ -135,6 +135,11 @@ sumarize_one_test_results <- function(test) {
     stringsAsFactors = FALSE
   )
 
+  # Added at end for backward compatibility
+  res$passed <- nb_passed
+
+  # Cannot easily add list columns in data.frame()
+  res$result <- list(test_results)
   res
 }
 
