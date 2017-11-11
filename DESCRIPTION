@@ -33,7 +33,9 @@ Suggests:
     xml2
 VignetteBuilder: knitr
 Encoding: UTF-8
-Remotes: r-lib/cli
+Remotes: 
+    r-lib/cli,
+    r-lib/rlang
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 6.0.1
 Collate: 
