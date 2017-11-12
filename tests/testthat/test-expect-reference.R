@@ -1,7 +1,7 @@
 context("expect-reference")
 
 test_that("can check for references", {
-  skip_if_not_installed("rlang", "0.1.2.9000")
+  skip_if_not_installed("rlang", "0.1.4.9000")
 
   x1 <- 1:10
   x2 <- x1
