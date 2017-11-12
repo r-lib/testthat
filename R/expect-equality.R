@@ -165,3 +165,6 @@ expect_reference <- function(object, expected, info = NULL, label = NULL,
   )
   invisible(act$val)
 }
+
+# expect_reference() needs dev version of rlang
+utils::globalVariables("is_reference")
