@@ -59,7 +59,7 @@ expect_known_output <- function(object, file,
       write_lines(act$out, file)
     }
 
-    comp <- compare(act$out, ref_out, ...)
+    comp <- compare(act$out, enc2native(ref_out), ...)
     expect(
       comp$equal,
       sprintf(
