@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Generate default testing environment. — test_env • testthat</title>
+<title>Quasi-labelling — quasi_label • testthat</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -92,24 +92,69 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Generate default testing environment.</h1>
+    <h1>Quasi-labelling</h1>
     </div>
 
     
-    <p>We use a new environment which inherits from <code>globalenv()</code>.
-In an ideal world, we'd avoid putting the global environment on the
-search path for tests, but it's not currently possible without losing
-the ability to load packages in tests.</p>
+    <p>The first argument to every <code>expect_</code> function can use unquoting to
+construct better labels. This makes it easy to create informative labels
+expectations are used inside a function or a for loop. <code>quasi_label()</code> wraps
+up the details, returning the expression and label.</p>
     
 
-    <pre class="usage"><span class='fu'>test_env</span>()</pre>
-        
+    <pre class="usage"><span class='fu'>quasi_label</span>(<span class='no'>quo</span>, <span class='kw'>label</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+    
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>quo</th>
+      <td><p>A quosure created by <code><a href='http://www.rdocumentation.org/packages/rlang/topics/quosure'>rlang::enquo()</a></code>.</p></td>
+    </tr>
+    <tr>
+      <th>label</th>
+      <td><p>An optional label to override the default. This is
+only provided for internal usage. Modern expectations should not
+include a <code>label</code> parameter.</p></td>
+    </tr>
+    </table>
+    
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
+    <p>A list containing two elements:</p>
+<dt>val</dt><dd><p>The evaluate value of <code>quo</code></p></dd>
+<dt>lab</dt><dd><p>The quasiquoted label generated from <code>quo</code></p></dd>
+
+    
+
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='no'>f</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>(<span class='no'>i</span>) <span class='kw'>if</span> (<span class='no'>i</span> <span class='kw'>&gt;</span> <span class='fl'>3</span>) <span class='no'>i</span> * <span class='fl'>9</span> <span class='kw'>else</span> <span class='no'>i</span> * <span class='fl'>10</span>
+<span class='no'>i</span> <span class='kw'>&lt;-</span> <span class='fl'>10</span>
+
+<span class='co'># This short of expression commonly occurs inside a for loop or function</span>
+<span class='co'># And the failure isn't helpful because you can't see the value of i</span>
+<span class='co'># that caused the problem:</span>
+<span class='fu'><a href='expect_success.html'>show_failure</a></span>(<span class='fu'><a href='equality-expectations.html'>expect_equal</a></span>(<span class='fu'>f</span>(<span class='no'>i</span>), <span class='no'>i</span> * <span class='fl'>10</span>))</div><div class='output co'>#&gt; Failued expectation:
+#&gt; f(i) not equal to i * 10.
+#&gt; 1/1 mismatches
+#&gt; [1] 90 - 100 == -10</div><div class='input'>
+<span class='co'># To overcome this issue, testthat allows you to unquote expressions using</span>
+<span class='co'># !!. This causes the failure message to show the value rather than the</span>
+<span class='co'># variable name</span>
+<span class='fu'><a href='expect_success.html'>show_failure</a></span>(<span class='fu'><a href='equality-expectations.html'>expect_equal</a></span>(<span class='fu'>f</span>(!!<span class='no'>i</span>), !!(<span class='no'>i</span> * <span class='fl'>10</span>)))</div><div class='output co'>#&gt; Failued expectation:
+#&gt; f(10) not equal to 100.
+#&gt; 1/1 mismatches
+#&gt; [1] 90 - 100 == -10</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-                </ul>
+      <li><a href="#arguments">Arguments</a></li>
+      
+      <li><a href="#value">Value</a></li>
+      
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
   </div>
 </div>
