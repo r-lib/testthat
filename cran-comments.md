@@ -1,28 +1,165 @@
-## Release overview
-
-This release includes two fixes for Solaris:
-
-* 'std::logic_error()' is now properly constructed using a 'std::string'.
-* The unit tests involving POSIXct now pass on Solaris.
-
-This now passes R CMD check locally on both Solaris sparc and x86. 
-
-There is some small possibility it may fail on the CRAN test machine. The crux of the problem appears to be that ` as.POSIXlt()` has different defaults for the timezone. On Linux/Mac/Windows the first element of the tzone attribute has "" for the local timezone, whereas in Solaris it has `Sys.timezone()`. (i.e. the output of `attr(as.POSIXlt(Sys.time()), "tzone")[[1]]` appears to be different on solaris compared to Linux/Mac/Windows).
-
-Thanks for your patience dealing with these issues - it's greatly appreciated.
-
 ## Test environments
 
-* local OS X install, R 3.2.4
-* ubuntu 12.04 (on travis-ci), R 3.2.4
-* win-builder (devel and release)
+* local OS X install (R-release)
+* travis-ci.org (R-3.1, R-3.2, R-oldrel, R-release, R-devel)
+* win-builder (R-devel)
 
 ## R CMD check results
 
-There were no ERRORs, WARNINGs. There was 1 NOTEs:
+There were no ERRORs, WARNINGs, or NOTEs.
 
-* The package is MIT licensed and has a license template.
+## revdepcheck results
 
-## Downstream dependencies
+We checked 2773 reverse dependencies (2499 from CRAN + 274 from BioConductor), comparing R CMD check results across CRAN and dev versions of this package.
 
-* I did not re-check downstream dependencies
+ * We saw 41 new problems
+ * We failed to check 17 packages
+
+Issues with CRAN packages are summarised below. We confirmed that all new failures were due to deliberate API changes and notified authors twice (once a month ago, and again three days ago).
+
+### New problems
+(This reports the first line of each new failure)
+
+* antaresRead
+  checking tests ...
+
+* autovarCore
+  checking tests ...
+
+* batchtools
+  checking tests ...
+
+* binman
+  checking tests ...
+
+* callr
+  checking tests ...
+
+* checkpoint
+  checking tests ...
+
+* civis
+  checking tests ...
+
+* clust.bin.pair
+  checking tests ...
+
+* Crossover
+  checking tests ...
+
+* data.world
+  checking tests ...
+
+* diffobj
+  checking tests ...
+
+* dwapi
+  checking tests ...
+
+* dynamichazard
+  checking tests ...
+
+* EAinference
+  checking tests ...
+
+* ggloop
+  checking tests ...
+
+* githubinstall
+  checking tests ...
+
+* GSODR
+  checking tests ...
+
+* HIBPwned
+  checking tests ...
+
+* iheatmapr
+  checking tests ...
+
+* kernelboot
+  checking tests ...
+
+* kimisc
+  checking tests ...
+
+* lme4
+  checking tests ...
+
+* msde
+  checking tests ...
+
+* narray
+  checking tests ...
+
+* nat
+  checking tests ...
+
+* nofrills
+  checking tests ...
+
+* optimus
+  checking tests ...
+
+* petro.One
+  checking tests ...
+
+* quanteda
+  checking tests ...
+
+* raptr
+  checking examples ... ERROR
+  checking tests ...
+
+* remotes
+  checking tests ...
+
+* rGoodData
+  checking tests ...
+
+* RNeXML
+  checking tests ...
+
+* rprojroot
+  checking tests ...
+
+* spam
+  checking tests ...
+
+* swirlify
+  checking tests ...
+
+* unitizer
+  checking tests ...
+
+* wdman
+  checking tests ...
+
+* withr
+  checking tests ...
+
+* Zelig
+  checking tests ...
+
+* zonator
+  checking tests ...
+
+### Failed to check
+
+* briskaR          (failed to install)
+* curl             (failed to install)
+* dataRetrieval    (check timed out)
+* gWidgets2tcltk   (failed to install)
+* jqr              (failed to install)
+* keyring          (failed to install)
+* kmcudaR          (failed to install)
+* loon             (failed to install)
+* markmyassignment (failed to install)
+* mwaved           (failed to install)
+* openssl          (failed to install)
+* RAppArmor        (failed to install)
+* redux            (failed to install)
+* SnakeCharmR      (failed to install)
+* sys              (failed to install)
+* textTinyR        (failed to install)
+* zstdr            (failed to install)

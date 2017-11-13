@@ -1,17 +1,14 @@
-# testthat 1.0.2.9000 
-(testhat 2.0.0 on release)
+# testthat 2.0.0
 
 ## Breaking API changes
 
-This section lists deliberate API changes that have caused R CMD check failures in more than one packge.
-
 * "Can't mock functions in base packages": You can no longer use `with_mock()` 
-  to mocking functions in base packages, because this no longer works in 
-  R-devel due to changes with the byte code compiler. I'd recommend using
+  to mock functions in base packages, because this no longer works in 
+  R-devel due to changes with the byte code compiler. I recommend using
   [mockery](https://github.com/n-s-f/mockery) instead.
 
-* The order of arguments to `expect_equivalent()` and `expect_error()` have
-  change slightly as both now pass `...` on another function. This reveals
+* The order of arguments to `expect_equivalent()` and `expect_error()` has
+  changed slightly as both now pass `...` on another function. This reveals
   itself with a number of different errors, like:
   
     * 'what' must be a character vector
@@ -34,9 +31,9 @@ This section lists deliberate API changes that have caused R CMD check failures 
 * "Error: the argument has already been evaluated": the way in which 
   expectations now need create labels has changed, which caused a couple 
   of failures with unusual usage when combined with `Reduce`, `lapply()`, 
-  and `Map()`. Avoid these functions in favour of for loops. I'd recommend
-  also reading the section on quasiquotation support in order to create
-  more informative failure messages.
+  and `Map()`. Avoid these functions in favour of for loops. I also recommend
+  reading the section below on quasiquotation support in order to create more 
+  informative failure messages.
   
 ## Expectations
 
@@ -56,7 +53,7 @@ This section lists deliberate API changes that have caused R CMD check failures 
 ### New and improved skips
 
 * `skip_if()` makes it easy to skip a test when a condition is true (#571).
-  For example, use `skip_if(getRversion() <= 3.1)` to skip a test for older
+  For example, use `skip_if(getRversion() <= 3.1)` to skip a test in older
   R versions.
 
 * `skip_if_translated()` skips tests if you're running in an locale
