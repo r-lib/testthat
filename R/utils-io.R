@@ -8,3 +8,7 @@ read_lines <- function(path, n = -1L, encoding = "UTF-8") {
 write_lines <- function(text, path) {
   base::writeLines(enc2utf8(text), path, useBytes = TRUE)
 }
+
+all_utf8 <- function(x) {
+  ! any(is.na(iconv(x, "UTF-8", "UTF-8")))
+}

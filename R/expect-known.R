@@ -57,6 +57,12 @@ expect_known_output <- function(object, file,
     ref_out <- read_lines(file)
     if (update) {
       write_lines(act$out, file)
+      if (!all_utf8(act$out)) {
+        warning("New reference output is not UTF-8 encoded", call. = FALSE)
+      }
+    }
+    if (!all_utf8(ref_out)) {
+      warning("Reference output is not UTF-8 encoded", call. = FALSE)
     }
 
     comp <- compare(act$out, enc2native(ref_out), ...)
