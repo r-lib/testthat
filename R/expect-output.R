@@ -102,7 +102,7 @@ expect_output <- function(object, regexp = NULL, ..., info = NULL, label = NULL)
       info = info
     )
   } else {
-    expect_match(act$cap, regexp, ..., info = info, label = act$lab)
+    expect_match(act$cap, enc2native(regexp), ..., info = info, label = act$lab)
   }
 
   invisible(act$val)

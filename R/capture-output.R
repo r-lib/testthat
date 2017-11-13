@@ -51,6 +51,6 @@ eval_with_output <- function(code, print = FALSE, width = 80) {
   list(
     val = result$value,
     vis = result$visible,
-    out = read_lines(temp)
+    out = read_lines(temp, encoding = "unknown")
   )
 }

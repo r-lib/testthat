@@ -30,3 +30,8 @@ test_that("... passed on to grepl", {
 test_that("returns first argument", {
   expect_equal(expect_output(1, NA), 1)
 })
+
+test_that("Unicode characters in output", {
+  bar <- "\u2551"
+  expect_success(expect_output(cat(bar), "\u2551"))
+})
