@@ -38,3 +38,16 @@ test_that("updates by default", {
   expect_failure(expect_known_output(cat("oops"), file, update = TRUE))
   expect_success(expect_known_output(cat("oops"), file))
 })
+
+test_that("Warning for non-UTF-8 reference files", {
+  x <- "\xe9\xe1\xed\xf6\xfc"
+  Encoding(x) <- "latin1"
+
+  tmp <- tempfile()
+  on.exit(unlink(tmp), add = TRUE)
+  writeBin(x, tmp)
+
+  expect_failure(
+    expect_warning(expect_known_output("foobar", tmp, update = FALSE))
+  )
+})
