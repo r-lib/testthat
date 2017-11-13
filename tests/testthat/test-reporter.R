@@ -49,7 +49,10 @@ test_reporter <- function(reporter) {
 test_that("reporters produce consistent output", {
   save_report <- function(name, reporter = find_reporter(name)) {
     path <- test_path("reporters", paste0(name, ".txt"))
-    expect_known_output(test_reporter(reporter), path)
+    withr::with_options(
+      c(cli.unicode = TRUE),
+      expect_known_output(test_reporter(reporter), path)
+    )
   }
 
   with_mock(
@@ -97,8 +100,11 @@ expect_report_to_file <- function(name,
   # as an argument to Reporter$new() (here, via the ...), or whether it is set
   # in an option.
   path <- test_path("reporters", paste0(name, ".txt"))
-  expect_silent(test_reporter(reporter))
-  expect_equal(read_lines(output_file), read_lines(path))
+  withr::with_options(
+    c(cli.unicode = TRUE),
+    expect_silent(test_reporter(reporter))
+  )
+  expect_equal(read_lines(output_file, encoding = "unknown"), enc2native(read_lines(path)))
 }
 
 test_that("reporters accept a 'file' arugment and write to that location", {
