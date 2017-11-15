@@ -8,7 +8,7 @@ This section lists deliberate API changes that have caused R CMD check failures 
 * "Can't mock functions in base packages": You can no longer use `with_mock()` 
   to mocking functions in base packages, because this no longer works in 
   R-devel due to changes with the byte code compiler. I'd recommend using
-  [mockery](https://github.com/n-s-f/mockery) instead.
+  [mockery](https://github.com/n-s-f/mockery) or [mockr](https://github.com/krlmlr/mockr) instead.
 
 * The order of arguments to `expect_equivalent()` and `expect_error()` have
   change slightly as both now pass `...` on another function. This reveals
