@@ -17,3 +17,21 @@ test_that("first run is successful", {
   )
   unlink("two.rds")
 })
+
+test_that("equal_to_ref does not overwrite existing", {
+  tmp_rds <- tempfile(fileext=".rds")
+  on.exit(unlink(tmp_rds))
+  ref_obj1 <- 1:3
+  ref_obj2 <- 2:4
+  saveRDS(ref_obj1, tmp_rds)
+
+  expect_success(expect_equal_to_reference(ref_obj1, tmp_rds))
+
+  # Failure does not update object
+  expect_failure(expect_equal_to_reference(ref_obj2, tmp_rds))
+  expect_equal(readRDS(tmp_rds), ref_obj1)
+
+  # Now failure does update object
+  expect_failure(expect_equal_to_reference(ref_obj2, tmp_rds, update=TRUE))
+  expect_success(expect_equal_to_reference(ref_obj2, tmp_rds))
+})
