@@ -15,7 +15,7 @@ We checked 2773 reverse dependencies (2499 from CRAN + 274 from BioConductor), c
  * We saw 41 new problems
  * We failed to check 17 packages
 
-Issues with CRAN packages are summarised below. We confirmed that all new failures were due to deliberate API changes and notified authors twice (once a month ago, and again three days ago).
+Issues with CRAN packages are summarised below. We confirmed that all new failures were due to deliberate API changes and notified authors twice (once six weeks ago, and again two weeks ago).
 
 ### New problems
 (This reports the first line of each new failure)
