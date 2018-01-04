@@ -150,7 +150,7 @@ If you unquote the values using `!!`, you get the failure message `` `f(4L)` not
 
 ### New default reporter
 
-A new default reporter, `ReporterProgress`, produces more aesthetically pleasing output and makes the most important information available upfront (#529). You can return to the previous default by setting `option(testthat.default_reporter = "summary")`.
+A new default reporter, `ReporterProgress`, produces more aesthetically pleasing output and makes the most important information available upfront (#529). You can return to the previous default by setting `options(testthat.default_reporter = "summary")`.
 
 ### Reporters
 
