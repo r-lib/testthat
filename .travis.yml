@@ -9,7 +9,11 @@ r:
 - 3.2
 - oldrel
 - release
-- devel
+
+include:
+  matrix:
+    r: devel
+    warnings_are_errors: false
 
 after_success:
   - |
