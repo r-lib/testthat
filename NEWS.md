@@ -1,5 +1,9 @@
 # testthat 2.0.0.9000
 
+* ProgressReporter gains a `update_interval` parameter to control how often
+  updates are printed (default 0.1 s). This prevents large printing overhead
+  for very quick tests. (#701, @jimhester)
+
 # testthat 2.0.0
 
 ## Breaking API changes
