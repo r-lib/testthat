@@ -19,8 +19,8 @@ encourage <- function() {
   x <- c(
     "Keep trying!",
     "Don't worry, you'll get it.",
-    "No-one is perfect!",
-    "No-one gets it right on their first try",
+    "No one is perfect!",
+    "No one gets it right on their first try",
     "Frustration is a natural part of programming :)",
     "I believe in you!"
   )
