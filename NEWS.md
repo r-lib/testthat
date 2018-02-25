@@ -1,5 +1,8 @@
 # testthat 2.0.0.9000
 
+* Fixed an issue where the `run_testthat_tests` entrypoint would fail to
+  be dynamically resolved when not explicitly registered.
+
 * ProgressReporter gains a `update_interval` parameter to control how often
   updates are printed (default 0.1 s). This prevents large printing overhead
   for very quick tests. (#701, @jimhester)
