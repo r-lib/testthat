@@ -92,6 +92,6 @@ default_reporter <- function() {
 
 #' @export
 #' @rdname default_reporter
-check_repoter <- function() {
+check_reporter <- function() {
   getOption("testthat.default_check_reporter", "check")
 }
