@@ -7,6 +7,9 @@
 
 ## Minor improvements and bug fixes
 
+* `expect_identical()` gains a `...` argument, to pass additional arguments
+  down to `identical()` (#714).
+
 * `expect_equal_to_reference` `update` parameter default value restored to
   FALSE ([#683 @BrodieG](https://github.com/r-lib/testthat/issues/683)).
 

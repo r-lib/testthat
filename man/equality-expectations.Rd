@@ -6,7 +6,6 @@
 \alias{expect_setequal}
 \alias{expect_equivalent}
 \alias{expect_identical}
-\alias{expect_identical}
 \alias{expect_reference}
 \title{Expectation: is the object equal to a value?}
 \usage{
@@ -19,10 +18,7 @@ expect_equivalent(object, expected, ..., info = NULL, label = NULL,
   expected.label = NULL)
 
 expect_identical(object, expected, info = NULL, label = NULL,
-  expected.label = NULL)
-
-expect_identical(object, expected, info = NULL, label = NULL,
-  expected.label = NULL)
+  expected.label = NULL, ...)
 
 expect_reference(object, expected, info = NULL, label = NULL,
   expected.label = NULL)
@@ -32,7 +28,7 @@ expect_reference(object, expected, info = NULL, label = NULL,
 
 \item{expected}{Expected value}
 
-\item{...}{other values passed to \code{\link[=all.equal]{all.equal()}}}
+\item{...}{other values passed to \code{\link[=all.equal]{all.equal()}} or \code{[identical()]}.}
 
 \item{info}{extra information to be included in the message (useful when
 writing tests in loops).}
