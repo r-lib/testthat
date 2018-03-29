@@ -52,4 +52,4 @@ devtools::install_github("r-lib/testthat")
 
 ## Usage
 
-The easiest way to get started is with [usethis](https://github.com/r-lib/usethis). Assuming you're in a package directory, just run `usethis::use_test("name")` to create a test file, and set up all the other infrastructure you need. If you're using RStudio, press Cmd/Ctrl + Shift + T to run all the tests in a package.
+The easiest way to get started is with [usethis](https://github.com/r-lib/usethis). Assuming you're in a package directory, just run `usethis::use_test("name")` to create a test file, and set up all the other infrastructure you need. If you're using RStudio, press Cmd/Ctrl + Shift + T (or run `devtools::test()` if not) to run all the tests in a package.
