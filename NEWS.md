@@ -17,6 +17,8 @@
   updates are printed (default 0.1 s). This prevents large printing overhead
   for very quick tests. (#701, @jimhester)
 
+* `expect_error()` now returns the error object as documentated (#724).
+
 # testthat 2.0.0
 
 ## Breaking API changes

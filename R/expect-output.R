@@ -121,7 +121,7 @@ expect_error <- function(object,
   msg <- compare_condition(act$cap, act$lab, regexp = regexp, class = class, ...)
   expect(is.null(msg), msg, info = info)
 
-  invisible(act$val %||% act$err)
+  invisible(act$val %||% act$cap)
 }
 
 #' @export
@@ -139,7 +139,7 @@ expect_condition <- function(object,
   )
   expect(is.null(msg), msg, info = info)
 
-  invisible(act$val %||% act$err)
+  invisible(act$val %||% act$cap)
 }
 
 
