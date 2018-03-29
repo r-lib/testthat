@@ -108,7 +108,7 @@ expect_identical <- function(object, expected, info = NULL, label = NULL,
   if (ident) {
     msg <- ""
   } else {
-    compare <- compare(obj$val, exp$val)
+    compare <- compare(act$val, exp$val)
     if (compare$equal) {
       msg <- "Objects equal but not identical"
     } else {
