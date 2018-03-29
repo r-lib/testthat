@@ -126,33 +126,6 @@ expect_identical <- function(object, expected, info = NULL, label = NULL,
 
 #' @export
 #' @rdname equality-expectations
-expect_identical <- function(object, expected, info = NULL, label = NULL,
-                             expected.label = NULL) {
-  act <- quasi_label(enquo(object), label)
-  exp <- quasi_label(enquo(expected), expected.label)
-
-  ident <- identical(act$val, exp$val)
-  if (ident) {
-    msg <- ""
-  } else {
-    compare <- compare(act$val, exp$val)
-    if (compare$equal) {
-      msg <- "Objects equal but not identical"
-    } else {
-      msg <- compare$message
-    }
-  }
-
-  expect(
-    ident,
-    sprintf("%s not identical to %s.\n%s", act$lab, exp$lab, msg),
-    info = info
-  )
-  invisible(act$val)
-}
-
-#' @export
-#' @rdname equality-expectations
 expect_reference <- function(object, expected, info = NULL, label = NULL,
                              expected.label = NULL) {
   act <- quasi_label(enquo(object), label)
