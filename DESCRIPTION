@@ -27,6 +27,7 @@ Imports:
     withr (>= 2.0.0)
 Suggests: 
     covr,
+    curl (>= 0.9.5),
     devtools,
     knitr,
     rmarkdown,

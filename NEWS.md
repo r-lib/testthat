@@ -1,5 +1,10 @@
 # testthat 2.0.0.9000
 
+## New and improved skips
+
+* `skip_if_offline()` skips tests if an internet connection is not available
+  (#685).
+
 ## Minor improvements and bug fixes
 
 * `expect_equal_to_reference` `update` parameter default value restored to
