@@ -7,6 +7,9 @@
 
 ## Minor improvements and bug fixes
 
+* `expect_lt()`, `expect_lte()`, `expect_gt()` `expect_gte()` now handle `Inf`
+  and `NA` arguments appropriately (#732).
+
 * `expect_identical()` gains a `...` argument, to pass additional arguments
   down to `identical()` (#714).
 
