@@ -1,5 +1,10 @@
 # testthat 2.0.0.9000
 
+## Minor improvements and bug fixes
+
+* `expect_equal_to_reference` `update` parameter default value restored to
+  FALSE ([#683 @BrodieG](https://github.com/r-lib/testthat/issues/683)).
+
 * Fixed an issue where the `run_testthat_tests` entrypoint would fail to
   be dynamically resolved when not explicitly registered.
 
@@ -436,7 +441,7 @@ The reporters system class has been considerably refactored to make existing rep
   back to string comparison if objects have different lengths. Complex numbers 
   are compared using the same routine (#309, @krlmlr).
 
-* `compare.numeric()` and `compare.chacter()` recieved another overhaul. This 
+* `compare.numeric()` and `compare.character()` received another overhaul. This 
   should improve behaviour of edge cases, and provides a strong foundation for 
   further work. Added `compare.POSIXt()` for better reporting of datetime
   differences.

@@ -122,7 +122,7 @@ expect_known_value <- function(object, file,
 #' @rdname expect_known_output
 #' @usage NULL
 expect_equal_to_reference <- function(..., update = FALSE) {
-  expect_known_value(..., update = TRUE)
+  expect_known_value(..., update = update)
 }
 
 #' @export
