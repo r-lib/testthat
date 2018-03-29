@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Expectation class. — expectation • testthat</title>
+<title>Construct an expectation object — expectation • testthat</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -52,13 +52,25 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="..//index.html">
+  <a href="../index.html">
     <span class="fa fa-home fa-lg"></span>
      
   </a>
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Articles
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="../articles/custom-expectation.html">Custom expectations</a>
+    </li>
+  </ul>
 </li>
 <li>
   <a href="../news/index.html">News</a>
@@ -80,21 +92,14 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Expectation class.</h1>
+    <h1>Construct an expectation object</h1>
     </div>
 
     
-    <p>You generate an expectation object with <code>expectation()</code>, and signal
-an expectation with <code>expect()</code>. If you're making your own expectation
-function, you'll typically call <code>expect(condition, "failure message")</code>.
-See the source code for the built-in expectations for details.</p>
+    <p>For advanced use only.</p>
     
 
     <pre class="usage"><span class='fu'>expectation</span>(<span class='no'>type</span>, <span class='no'>message</span>, <span class='kw'>srcref</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
-
-<span class='fu'>expect</span>(<span class='no'>exp</span>, <span class='no'>...</span>, <span class='kw'>srcref</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
-
-<span class='fu'>quasi_label</span>(<span class='no'>quo</span>, <span class='kw'>label</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
 
 <span class='fu'>is.expectation</span>(<span class='no'>x</span>)</pre>
     
@@ -102,28 +107,8 @@ See the source code for the built-in expectations for details.</p>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>message</th>
-      <td><p>A text description of failure</p></td>
-    </tr>
-    <tr>
-      <th>srcref</th>
-      <td><p>Source reference, if known</p></td>
-    </tr>
-    <tr>
-      <th>quo, label</th>
-      <td><p><code>make_label</code> is used to generate informative labels for
-expressions. <code>quo</code> should be created with <code><a href='http://www.rdocumentation.org/packages/rlang/topics/quosure'>rlang::enquo()</a></code>, making it
-possible to use unquoting to generate informative labels when running
-multiple tests in a function or for loop.</p></td>
-    </tr>
-    <tr>
       <th>x</th>
       <td><p>object to test for class membership</p></td>
-    </tr>
-    <tr>
-      <th>passed</th>
-      <td><p>a single logical value indicating whether the test passed
-(<code>TRUE</code>), failed (<code>FALSE</code>), or threw an error (<code>NA</code>)</p></td>
     </tr>
     </table>
     

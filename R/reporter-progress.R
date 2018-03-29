@@ -18,6 +18,8 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
     show_praise = TRUE,
     min_time = 0.1,
     start_time = NULL,
+    last_update = NULL,
+    update_interval = NULL,
 
     max_fail = NULL,
     n_ok = 0,
@@ -37,11 +39,13 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
     initialize = function(show_praise = TRUE,
                           max_failures = getOption("testthat.progress.max_fails", 10L),
                           min_time = 0.1,
+                          update_interval = 0.1,
                           ...) {
       super$initialize(...)
       self$max_fail <- max_failures
       self$show_praise <- show_praise
       self$min_time <- min_time
+      self$update_interval <- update_interval
     },
 
     is_full = function() {
@@ -85,6 +89,11 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
           status <- crayon::green(cli::symbol$tick)
         }
       } else {
+
+        # Do not print if not enough time has passed since we last printed.
+        if (!self$should_update()) {
+          return()
+        }
         status <- spinner(self$ctxt_n)
       }
 
@@ -109,6 +118,7 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
     end_context = function(context) {
       time <- proc.time() - self$ctxt_start_time
 
+      self$last_update <- NULL
       self$show_status(complete = TRUE)
 
       if (time[[3]] > self$min_time) {
@@ -187,6 +197,20 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
       } else {
         self$cat_line(colourise(encourage(), "error"))
       }
+    },
+
+    should_update = function() {
+      if (self$update_interval == 0) {
+        return(TRUE)
+      }
+
+      time <- proc.time()[[3]]
+      if (!is.null(self$last_update) &&
+        (time - self$last_update) < self$update_interval) {
+        return(FALSE)
+      }
+      self$last_update <- time
+      TRUE
     }
   )
 )

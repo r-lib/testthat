@@ -52,13 +52,25 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="..//index.html">
+  <a href="../index.html">
     <span class="fa fa-home fa-lg"></span>
      
   </a>
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Articles
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="../articles/custom-expectation.html">Custom expectations</a>
+    </li>
+  </ul>
 </li>
 <li>
   <a href="../news/index.html">News</a>
@@ -95,7 +107,7 @@ you examples of where the failures occured.</p>
 
 <span class='co'># S3 method for character</span>
 <span class='fu'>compare</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='kw'>check.attributes</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='no'>...</span>,
-  <span class='kw'>max_diffs</span> <span class='kw'>=</span> <span class='fl'>5</span>, <span class='kw'>max_lines</span> <span class='kw'>=</span> <span class='fl'>5</span>, <span class='kw'>width</span> <span class='kw'>=</span> <span class='fu'>console_width</span>())
+  <span class='kw'>max_diffs</span> <span class='kw'>=</span> <span class='fl'>5</span>, <span class='kw'>max_lines</span> <span class='kw'>=</span> <span class='fl'>5</span>, <span class='kw'>width</span> <span class='kw'>=</span> <span class='kw pkg'>cli</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/cli/topics/console_width'>console_width</a></span>())
 
 <span class='co'># S3 method for numeric</span>
 <span class='fu'>compare</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='kw'>tolerance</span> <span class='kw'>=</span> <span class='no'>.Machine</span>$<span class='no'>double.eps</span>^<span class='fl'>0.5</span>,
@@ -175,25 +187,25 @@ value will be ignored.</p></td>
  tincidunt auctor. Vestibulum ac metus1 bibendum, facilisis nisi non, pulvinar
  dolor. Donec pretium iaculis nulla, ut interdum sapien ultricies a. "</span>
 <span class='fu'>compare</span>(<span class='no'>x</span>, <span class='no'>y</span>)</div><div class='output co'>#&gt; 1/1 mismatches
-#&gt; x[1]: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis cursus\n tincidunt auctor. Vestibulum ac 
-#&gt; x[1]: metus bibendum, facilisis nisi non, pulvinar\n dolor. Donec pretium iaculis nulla, ut interdum sapien ul
-#&gt; x[1]: tricies a. "
-#&gt; y[1]: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis cursus\n tincidunt auctor. Vestibulum ac 
-#&gt; y[1]: metus1 bibendum, facilisis nisi non, pulvinar\n dolor. Donec pretium iaculis nulla, ut interdum sapien u
-#&gt; y[1]: ltricies a. "</div><div class='input'><span class='fu'>compare</span>(<span class='fu'>c</span>(<span class='no'>x</span>, <span class='no'>x</span>), <span class='fu'>c</span>(<span class='no'>y</span>, <span class='no'>y</span>))</div><div class='output co'>#&gt; 2/2 mismatches
-#&gt; x[1]: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis cursus\n tincidunt auctor. Vestibulum ac 
-#&gt; x[1]: metus bibendum, facilisis nisi non, pulvinar\n dolor. Donec pretium iaculis nulla, ut interdum sapien ul
-#&gt; x[1]: tricies a. "
-#&gt; y[1]: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis cursus\n tincidunt auctor. Vestibulum ac 
-#&gt; y[1]: metus1 bibendum, facilisis nisi non, pulvinar\n dolor. Donec pretium iaculis nulla, ut interdum sapien u
-#&gt; y[1]: ltricies a. "
+#&gt; x[1]: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis cursus\n tincidunt auctor. Vestibul
+#&gt; x[1]: um ac metus bibendum, facilisis nisi non, pulvinar\n dolor. Donec pretium iaculis nulla, ut interd
+#&gt; x[1]: um sapien ultricies a. "
+#&gt; y[1]: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis cursus\n tincidunt auctor. Vestibul
+#&gt; y[1]: um ac metus1 bibendum, facilisis nisi non, pulvinar\n dolor. Donec pretium iaculis nulla, ut inter
+#&gt; y[1]: dum sapien ultricies a. "</div><div class='input'><span class='fu'>compare</span>(<span class='fu'>c</span>(<span class='no'>x</span>, <span class='no'>x</span>), <span class='fu'>c</span>(<span class='no'>y</span>, <span class='no'>y</span>))</div><div class='output co'>#&gt; 2/2 mismatches
+#&gt; x[1]: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis cursus\n tincidunt auctor. Vestibul
+#&gt; x[1]: um ac metus bibendum, facilisis nisi non, pulvinar\n dolor. Donec pretium iaculis nulla, ut interd
+#&gt; x[1]: um sapien ultricies a. "
+#&gt; y[1]: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis cursus\n tincidunt auctor. Vestibul
+#&gt; y[1]: um ac metus1 bibendum, facilisis nisi non, pulvinar\n dolor. Donec pretium iaculis nulla, ut inter
+#&gt; y[1]: dum sapien ultricies a. "
 #&gt; 
-#&gt; x[2]: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis cursus\n tincidunt auctor. Vestibulum ac 
-#&gt; x[2]: metus bibendum, facilisis nisi non, pulvinar\n dolor. Donec pretium iaculis nulla, ut interdum sapien ul
-#&gt; x[2]: tricies a. "
-#&gt; y[2]: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis cursus\n tincidunt auctor. Vestibulum ac 
-#&gt; y[2]: metus1 bibendum, facilisis nisi non, pulvinar\n dolor. Donec pretium iaculis nulla, ut interdum sapien u
-#&gt; y[2]: ltricies a. "</div><div class='input'>
+#&gt; x[2]: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis cursus\n tincidunt auctor. Vestibul
+#&gt; x[2]: um ac metus bibendum, facilisis nisi non, pulvinar\n dolor. Donec pretium iaculis nulla, ut interd
+#&gt; x[2]: um sapien ultricies a. "
+#&gt; y[2]: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis cursus\n tincidunt auctor. Vestibul
+#&gt; y[2]: um ac metus1 bibendum, facilisis nisi non, pulvinar\n dolor. Donec pretium iaculis nulla, ut inter
+#&gt; y[2]: dum sapien ultricies a. "</div><div class='input'>
 <span class='co'># Numeric -------------------------------------------------------------------</span>
 
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='no'>y</span> <span class='kw'>&lt;-</span> <span class='fu'>runif</span>(<span class='fl'>100</span>)

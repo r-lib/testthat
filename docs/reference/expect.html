@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Generate default testing environment. — test_env • testthat</title>
+<title>The building block of all <code>expect_</code> functions — expect • testthat</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -92,23 +92,46 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Generate default testing environment.</h1>
+    <h1>The building block of all <code>expect_</code> functions</h1>
     </div>
 
     
-    <p>We use a new environment which inherits from <code>globalenv()</code>.
-In an ideal world, we'd avoid putting the global environment on the
-search path for tests, but it's not currently possible without losing
-the ability to load packages in tests.</p>
+    <p>Use this if you are writing your own expectation. See
+<code><a href='../articles/custom-expectation.html'>vignette("custom-expectation")</a></code> for details</p>
     
 
-    <pre class="usage"><span class='fu'>test_env</span>()</pre>
-        
+    <pre class="usage"><span class='fu'>expect</span>(<span class='no'>ok</span>, <span class='no'>failure_message</span>, <span class='kw'>info</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>srcref</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+    
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>ok</th>
+      <td><p>Was the expectation successful?</p></td>
+    </tr>
+    <tr>
+      <th>failure_message</th>
+      <td><p>What message should be shown if the expectation was
+not successful?</p></td>
+    </tr>
+    <tr>
+      <th>info</th>
+      <td><p>Additional information. Included for backward compatibility
+only and new expectations should not use it.</p></td>
+    </tr>
+    <tr>
+      <th>srcref</th>
+      <td><p>Only needed in very rare circumstances where you need to
+forward a srcref captured elsewhere.</p></td>
+    </tr>
+    </table>
+    
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
+      <li><a href="#arguments">Arguments</a></li>
                 </ul>
 
   </div>

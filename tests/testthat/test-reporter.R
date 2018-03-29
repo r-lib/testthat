@@ -67,7 +67,7 @@ test_that("reporters produce consistent output", {
     save_report("debug")
   )
   save_report("check", CheckReporter$new(stop_on_failure = FALSE))
-  save_report("progress", ProgressReporter$new(show_praise = FALSE, min_time = Inf))
+  save_report("progress", ProgressReporter$new(show_praise = FALSE, min_time = Inf, update_interval = 0))
   save_report("summary", SummaryReporter$new(show_praise = FALSE, omit_dots = FALSE))
   save_report("summary-2", SummaryReporter$new(show_praise = FALSE, max_reports = 2))
   save_report("summary-no-dots", SummaryReporter$new(show_praise = FALSE, omit_dots = TRUE))
@@ -107,7 +107,7 @@ expect_report_to_file <- function(name,
   expect_equal(read_lines(output_file, encoding = "unknown"), enc2native(read_lines(path)))
 }
 
-test_that("reporters accept a 'file' arugment and write to that location", {
+test_that("reporters accept a 'file' argument and write to that location", {
   output <- tempfile()
   expect_report_to_file(
     "check",
@@ -116,7 +116,7 @@ test_that("reporters accept a 'file' arugment and write to that location", {
   )
   expect_report_to_file(
     "progress",
-    ProgressReporter$new(show_praise = FALSE, min_time = Inf, file = output),
+    ProgressReporter$new(show_praise = FALSE, min_time = Inf, update_interval = 0, file = output),
     output_file = output
   )
   expect_report_to_file(

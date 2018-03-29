@@ -52,13 +52,25 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="..//index.html">
+  <a href="../index.html">
     <span class="fa fa-home fa-lg"></span>
      
   </a>
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Articles
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="../articles/custom-expectation.html">Custom expectations</a>
+    </li>
+  </ul>
 </li>
 <li>
   <a href="../news/index.html">News</a>
@@ -97,11 +109,10 @@ dependency on testthat.</p>
   <span class='kw'>env</span> <span class='kw'>=</span> <span class='fu'><a href='test_env.html'>test_env</a></span>(), <span class='no'>...</span>, <span class='kw'>encoding</span> <span class='kw'>=</span> <span class='st'>"unknown"</span>, <span class='kw'>load_helpers</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
   <span class='kw'>stop_on_failure</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>stop_on_warning</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>wrap</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
 
-<span class='fu'>test_package</span>(<span class='no'>package</span>, <span class='kw'>filter</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>reporter</span> <span class='kw'>=</span> <span class='fu'><a href='default_reporter.html'>default_reporter</a></span>(), <span class='no'>...</span>,
+<span class='fu'>test_package</span>(<span class='no'>package</span>, <span class='kw'>filter</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>reporter</span> <span class='kw'>=</span> <span class='fu'><a href='default_reporter.html'>check_repoter</a></span>(), <span class='no'>...</span>,
   <span class='kw'>stop_on_failure</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>stop_on_warning</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
-<span class='fu'>test_check</span>(<span class='no'>package</span>, <span class='kw'>filter</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>reporter</span> <span class='kw'>=</span> <span class='fu'>getOption</span>(<span class='st'>"testthat.default_check_reporter"</span>, <span class='st'>"check"</span>), <span class='no'>...</span>,
+<span class='fu'>test_check</span>(<span class='no'>package</span>, <span class='kw'>filter</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>reporter</span> <span class='kw'>=</span> <span class='fu'><a href='default_reporter.html'>check_repoter</a></span>(), <span class='no'>...</span>,
   <span class='kw'>stop_on_failure</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>stop_on_warning</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>wrap</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
 
 <span class='fu'>is_testing</span>()</pre>

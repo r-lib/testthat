@@ -52,13 +52,25 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="..//index.html">
+  <a href="../index.html">
     <span class="fa fa-home fa-lg"></span>
      
   </a>
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Articles
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="../articles/custom-expectation.html">Custom expectations</a>
+    </li>
+  </ul>
 </li>
 <li>
   <a href="../news/index.html">News</a>
@@ -84,12 +96,16 @@
     </div>
 
     
-    <p>Use these expectations to test other expectations.</p>
+    <p>Use these expectations to test other expectations.
+Use <code>show_failure()</code> in examples to print the failure message without
+throwing an erorr.</p>
     
 
     <pre class="usage"><span class='fu'>expect_success</span>(<span class='no'>expr</span>)
 
 <span class='fu'>expect_failure</span>(<span class='no'>expr</span>, <span class='kw'>message</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>)
+
+<span class='fu'>show_failure</span>(<span class='no'>expr</span>)
 
 <span class='fu'>expect_known_failure</span>(<span class='no'>path</span>, <span class='no'>expr</span>)</pre>
     
