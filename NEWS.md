@@ -1,10 +1,31 @@
 # testthat 2.0.0.9000
 
+## New and improved skips
+
+* `skip_if_offline()` skips tests if an internet connection is not available
+  (#685).
+
+## Minor improvements and bug fixes
+
 * Pass through warnings when `options(warn = 2)` is set (#721, @yutannihilation).
+
+* `expect_lt()`, `expect_lte()`, `expect_gt()` `expect_gte()` now handle `Inf`
+  and `NA` arguments appropriately (#732).
+
+* `expect_identical()` gains a `...` argument, to pass additional arguments
+  down to `identical()` (#714).
+
+* `expect_equal_to_reference` `update` parameter default value restored to
+  FALSE ([#683 @BrodieG](https://github.com/r-lib/testthat/issues/683)).
+
+* Fixed an issue where the `run_testthat_tests` entrypoint would fail to
+  be dynamically resolved when not explicitly registered.
 
 * ProgressReporter gains a `update_interval` parameter to control how often
   updates are printed (default 0.1 s). This prevents large printing overhead
   for very quick tests. (#701, @jimhester)
+
+* `expect_error()` now returns the error object as documentated (#724).
 
 # testthat 2.0.0
 
@@ -149,7 +170,7 @@ If you unquote the values using `!!`, you get the failure message `` `f(4L)` not
 
 ### New default reporter
 
-A new default reporter, `ReporterProgress`, produces more aesthetically pleasing output and makes the most important information available upfront (#529). You can return to the previous default by setting `option(testthat.default_reporter = "summary")`.
+A new default reporter, `ReporterProgress`, produces more aesthetically pleasing output and makes the most important information available upfront (#529). You can return to the previous default by setting `options(testthat.default_reporter = "summary")`.
 
 ### Reporters
 
@@ -435,7 +456,7 @@ The reporters system class has been considerably refactored to make existing rep
   back to string comparison if objects have different lengths. Complex numbers 
   are compared using the same routine (#309, @krlmlr).
 
-* `compare.numeric()` and `compare.chacter()` recieved another overhaul. This 
+* `compare.numeric()` and `compare.character()` received another overhaul. This 
   should improve behaviour of edge cases, and provides a strong foundation for 
   further work. Added `compare.POSIXt()` for better reporting of datetime
   differences.

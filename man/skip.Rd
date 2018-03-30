@@ -5,6 +5,7 @@
 \alias{skip_if_not}
 \alias{skip_if}
 \alias{skip_if_not_installed}
+\alias{skip_if_offline}
 \alias{skip_on_cran}
 \alias{skip_on_os}
 \alias{skip_on_travis}
@@ -20,6 +21,8 @@ skip_if_not(condition, message = deparse(substitute(condition)))
 skip_if(condition, message = deparse(substitute(condition)))
 
 skip_if_not_installed(pkg, minimum_version = NULL)
+
+skip_if_offline(host = "r-project.org")
 
 skip_on_cran()
 
@@ -43,6 +46,8 @@ skip_if_translated()
 
 \item{minimum_version}{Minimum required version for the package}
 
+\item{host}{A string with a hostname to lookup}
+
 \item{os}{Character vector of system names. Supported values are
 \code{"windows"}, \code{"mac"}, \code{"linux"} and \code{"solaris"}.}
 }
@@ -62,6 +67,9 @@ statement, not how many expectations were skipped.
 
 \code{skip_if_not()} works like \code{\link[=stopifnot]{stopifnot()}}, generating
 a message automatically based on the first argument.
+
+\code{skip_if_offline()} skips tests if an internet connection is not available
+using \code{\link[curl:nslookup]{curl::nslookup()}}.
 
 \code{skip_on_cran()} skips tests on CRAN, using the \code{NOT_CRAN}
 environment variable set by devtools.

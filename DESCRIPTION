@@ -17,7 +17,7 @@ Depends:
     R (>= 3.1)
 Imports: 
     cli,
-    crayon,
+    crayon (>= 1.3.4),
     digest,
     magrittr,
     methods,
@@ -27,6 +27,7 @@ Imports:
     withr (>= 2.0.0)
 Suggests: 
     covr,
+    curl (>= 0.9.5),
     devtools,
     knitr,
     rmarkdown,

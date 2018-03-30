@@ -34,10 +34,10 @@ expect_compare <- function(operator = c("<", "<=", ">", ">="), act, exp) {
     ">=" = "not more than"
   )[[operator]]
 
-  diff <- act$val - exp$val
+  cmp <- op(act$val, exp$val)
   expect(
-    op(diff, 0),
-    sprintf("%s is %s %s. Difference: %.3g", act$lab, msg, exp$lab, diff)
+    if (!is.na(cmp)) cmp else FALSE,
+    sprintf("%s is %s %s. Difference: %.3g", act$lab, msg, exp$lab, act$val - exp$val)
   )
   invisible(act$val)
 }

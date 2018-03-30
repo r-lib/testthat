@@ -245,7 +245,7 @@ get_routine <- function(package, routine) {
       error = function(e) NULL
     )
     if (inherits(resolved, "NativeSymbolInfo")) {
-      return(symbol)
+      return(resolved)
     }
   }
 
