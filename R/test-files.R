@@ -126,6 +126,7 @@ test_file <- function(path, reporter = default_reporter(), env = test_env(),
     reporter = reporter,
     start_end_reporter = start_end_reporter,
     {
+      get_reporter()$start_file(basename(path))
       lister$start_file(basename(path))
 
       source_file(

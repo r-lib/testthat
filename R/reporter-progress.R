@@ -34,7 +34,8 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
     ctxt_n_skip = 0,
     ctxt_n_warn = 0,
     ctxt_n_fail = 0,
-    ctxt_name = 0,
+    ctxt_name = "",
+    file_name = "",
 
     initialize = function(show_praise = TRUE,
                           max_failures = getOption("testthat.progress.max_fails", 10L),
@@ -55,6 +56,16 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
     start_reporter = function(context) {
       self$start_time <- proc.time()
       self$show_header()
+    },
+
+    start_file = function(file) {
+      self$file_name <- file
+    },
+
+    start_test = function(context, test) {
+      if (is.null(context)) {
+        context(self$file_name)
+      }
     },
 
     start_context = function(context) {

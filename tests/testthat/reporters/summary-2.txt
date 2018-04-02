@@ -1,29 +1,31 @@
-Expectations: .1234.
+.Expectations: .1234.
+Expectations2: 
 Errors: 56
 Recursion: 7
 Skips: SSS
 Warnings: WWW
 Output: ..
+End: 
 
 ══ Skipped ═════════════════════════════════════════════════════════════════════
-1. Skip:1 (@tests.R#57) - skip
+1. Skip:1 (@tests.R#62) - skip
 
-2. Skip:2 (@tests.R#64) - skip
+2. Skip:2 (@tests.R#69) - skip
 
-3. Skip:3 (@tests.R#67) - Empty test
+3. Skip:3 (@tests.R#72) - Empty test
 
 ══ Warnings ════════════════════════════════════════════════════════════════════
-1. Warning:1 (@tests.R#73) - abc
+1. Warning:1 (@tests.R#78) - abc
 
-2. Warning:2 (@tests.R#79) - def
+2. Warning:2 (@tests.R#84) - def
 
-3. Warning:2 (@tests.R#80) - ghi
+3. Warning:2 (@tests.R#85) - ghi
 
 ══ Failed ══════════════════════════════════════════════════════════════════════
-── 1. Failure: Failure:1 (@tests.R#8)  ─────────────────────────────────────────
+── 1. Failure: Failure:1 (@tests.R#12)  ────────────────────────────────────────
 Failure has been forced
 
-── 2. Failure: Failure:2a (@tests.R#12)  ───────────────────────────────────────
+── 2. Failure: Failure:2a (@tests.R#16)  ───────────────────────────────────────
 Failure has been forced
   ... and 5 more
 

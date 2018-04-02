@@ -65,6 +65,12 @@ JunitReporter <- R6::R6Class("JunitReporter",
       self$reset_suite()
     },
 
+    start_test = function(context, test) {
+      if (is.null(context)) {
+        context(self$file_name)
+      }
+    },
+
     start_context = function(context) {
       self$suite <- xml2::xml_add_child(
         self$root,
