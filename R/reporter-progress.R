@@ -70,7 +70,7 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
         # is called by a reporter inside the multi-reporter we need to assign
         # self$.context in the multi-reporter rather than in the contained
         # reporter.
-        context(self$file_name)
+        context(context_name(self$file_name))
       }
     },
 
