@@ -10,6 +10,9 @@
 * Pass through warnings when `options(warn = 2)` is set (#721, @yutannihilation).
 * Progress reporter now generates a context from the filename and no longer
   errors if tests occur before a context (#700, #705).
+* The progress reporter now uses a 3 character wide column to display test
+  successes, so up to 999 successful tests can be displayed without changing
+  the alignment (#712).
 
 * `expect_lt()`, `expect_lte()`, `expect_gt()` `expect_gte()` now handle `Inf`
   and `NA` arguments appropriately (#732).

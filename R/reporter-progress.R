@@ -90,7 +90,7 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
 
     show_header = function() {
       self$cat_line(
-        cli::symbol$tick, " | OK ",
+        cli::symbol$tick, " |  OK ",
         colourise("F", "failure"), " ",
         colourise("W", "warning"), " ",
         colourise("S", "skip"), " | ",
@@ -124,7 +124,7 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
 
       self$cat_tight(
         "\r",
-        status, " | ", sprintf("%2d", self$ctxt_n_ok), " ",
+        status, " | ", sprintf("%3d", self$ctxt_n_ok), " ",
         col_format(self$ctxt_n_fail, "fail"), " ",
         col_format(self$ctxt_n_warn, "warn"), " ",
         col_format(self$ctxt_n_skip, "skip"), " | ",
