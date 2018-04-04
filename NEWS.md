@@ -1,5 +1,10 @@
 # testthat 2.0.0.9000
 
+## Deprecated functions
+
+*  `is_true()` and `is_false()` have been deprecated, because they conflict
+   with other functions in the tidyverse.
+
 ## New and improved skips
 
 * `skip_if_offline()` skips tests if an internet connection is not available
