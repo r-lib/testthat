@@ -21,6 +21,9 @@ MultiReporter <- R6::R6Class("MultiReporter",
     start_reporter = function() {
       o_apply(self$reporters, "start_reporter")
     },
+    start_file = function(filename) {
+      o_apply(self$reporters, "start_file", filename)
+    },
     start_context = function(context) {
       o_apply(self$reporters, "start_context", context)
     },
@@ -38,6 +41,9 @@ MultiReporter <- R6::R6Class("MultiReporter",
     },
     end_reporter = function() {
       o_apply(self$reporters, "end_reporter")
+    },
+    end_file = function() {
+      o_apply(self$reporters, "end_file")
     }
   )
 )
