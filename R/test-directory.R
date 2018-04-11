@@ -6,7 +6,8 @@
 #' inside of `R CMD check`.
 #'
 #' In your own code, you can use `is_testing()` to determine if code is being
-#' run as part of a test. You can also check the underlying env var directly
+#' run as part of a test and `testing_package()` to retrieve the name of the
+#' package being tested. You can also check the underlying env var directly
 #' `identical(Sys.getenv("TESTTHAT"), "true")` to avoid creating a run-time
 #' dependency on testthat.
 #'
@@ -187,6 +188,7 @@ test_package_dir <- function(package, test_path, filter, reporter, ...,
   env <- test_pkg_env(package)
   withr::local_options(list(topLevelEnvironment = env))
 
+  withr::local_envvar(list(TESTTHAT_PKG = package))
   test_dir(
     path = test_path,
     reporter = reporter,
@@ -205,6 +207,11 @@ is_testing <- function() {
   identical(Sys.getenv("TESTTHAT"), "true")
 }
 
+#' @export
+#' @rdname test_dir
+testing_package <- function() {
+  Sys.getenv("TESTTHAT_PKG")
+}
 
 # Environment utils -------------------------------------------------------
 
