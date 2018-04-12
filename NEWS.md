@@ -12,6 +12,9 @@
 
 ## Minor improvements and bug fixes
 
+* `testing_package()` function added to retrieve the name of the package
+  currently being tested (#699).
+
 * Pass through warnings when `options(warn = 2)` is set (#721, @yutannihilation).
 * Progress reporter now generates a context from the filename and no longer
   errors if tests occur before a context (#700, #705).
