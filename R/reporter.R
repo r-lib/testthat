@@ -83,13 +83,14 @@ fancy_line <- function(x) {
 #' Retrieve the default reporter.
 #'
 #' The defaults are:
-#' * [SummaryReporter] for interactive; override with `testthat.default_reporter`
+#' * [ProgressReporter] for interactive iterminal and [SummaryReporter] for dumb terminal;
+#'     override with `testthat.default_reporter`
 #' * [CheckReporter] for R CMD check; override with `testthat.default_check_reporter`
 #'
 #' @export
 #' @keywords internal
 default_reporter <- function() {
-  getOption("testthat.default_reporter", "progress")
+  getOption("testthat.default_reporter", if (isatty(stdout())) "progress" else "summary")
 }
 
 #' @export
