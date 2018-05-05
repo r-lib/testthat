@@ -1,8 +1,12 @@
 #' @include reporter.R
 NULL
 
+#' Strip illegal chars from a context or test_that description string.
+#'
+#' To allow the Java-style class name format that Jenkins prefers,
+#' "package_name_or_domain.ClassName", allow "."s in the class name.
 classnameOK <- function(text) {
-  gsub("[ \\.]", "_", text)
+  gsub("[^.-_A-Za-z0-9]+", "_", text)
 }
 
 
