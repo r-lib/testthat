@@ -87,7 +87,7 @@ auto_test_package <- function(pkg = ".", reporter = default_reporter(), hash = T
   test_path <- normalizePath(file.path(pkg$path, "tests", "testthat"))
 
   # Start by loading all code and running all tests
-  env <- devtools::load_all(pkg)$env
+  env <- devtools::load_all(pkg$path)$env
   withr::with_envvar(
     devtools::r_env_vars(),
     test_dir(test_path, env = env, reporter = reporter$clone(deep = TRUE))
@@ -104,7 +104,7 @@ auto_test_package <- function(pkg = ".", reporter = default_reporter(), hash = T
       # Reload code and rerun all tests
       cat("Changed code: ", paste0(basename(code), collapse = ", "), "\n")
       cat("Rerunning all tests\n")
-      env <<- devtools::load_all(pkg, quiet = TRUE)$env
+      env <<- devtools::load_all(pkg$path, quiet = TRUE)$env
       withr::with_envvar(
         devtools::r_env_vars(),
         test_dir(test_path, env = env, reporter = reporter$clone(deep = TRUE))
