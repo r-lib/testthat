@@ -1,0 +1,6 @@
+pandoc: 2.0.5
+pkgdown: 1.0.0
+pkgdown_sha: ~
+articles:
+  custom-expectation: custom-expectation.html
+
