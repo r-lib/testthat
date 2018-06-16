@@ -65,7 +65,7 @@ test_dir <- function(path,
                      stop_on_failure = FALSE,
                      stop_on_warning = FALSE,
                      wrap = TRUE) {
-  if (!missing(encoding) && !identical(encoding, "UTF-8")) {
+  if (!identical(encoding, "unknown")) {
     warning("`encoding` is deprecated; all files now assumed to be UTF-8", call. = FALSE)
   }
 
