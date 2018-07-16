@@ -40,6 +40,9 @@
 
 * `expect_error()` now returns the error object as documentated (#724).
 
+* `expect_lt()` and friends now work with any object that defines the
+  appropriate comparison method. (#777)
+
 # testthat 2.0.0
 
 ## Breaking API changes

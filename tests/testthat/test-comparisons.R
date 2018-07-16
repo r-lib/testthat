@@ -31,3 +31,12 @@ test_that("comparisons with NA work", {
   expect_failure(expect_gt(NA_real_, NA_real_))
   expect_failure(expect_gte(NA_real_, NA_real_))
 })
+
+test_that("comparisons with more complicated objects work", {
+  time <- Sys.time()
+  time2 <- Sys.time()
+  expect_success(expect_lt(time, time2))
+  expect_success(expect_lte(time, time2))
+  expect_success(expect_gt(time2, time))
+  expect_success(expect_gte(time2, time))
+})

@@ -24,8 +24,8 @@ expect_compare <- function(operator = c("<", "<=", ">", ">="), act, exp) {
   operator <- match.arg(operator)
   op <- match.fun(operator)
 
-  stopifnot(is.numeric(act$val), length(act$val) == 1)
-  stopifnot(is.numeric(exp$val), length(exp$val) == 1)
+  stopifnot(methods::hasMethod(operator, class(act$val)), length(act$val) == 1)
+  stopifnot(methods::hasMethod(operator, class(exp$val)), length(exp$val) == 1)
 
   msg <- c(
     "<" =  "not strictly less than",
