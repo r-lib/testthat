@@ -12,6 +12,10 @@
 
 ## Minor improvements and bug fixes
 
+* Fixed an issue where `devtools::test()` could fail if run multiple times
+  within the same R session for a package containing Catch tests.
+  ([devtools #1832](https://github.com/r-lib/devtools/issues/1832))
+
 * `testing_package()` function added to retrieve the name of the package
   currently being tested (#699).
 
