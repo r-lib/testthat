@@ -69,13 +69,13 @@ test_dir <- function(path,
     warning("`encoding` is deprecated; all files now assumed to be UTF-8", call. = FALSE)
   }
 
+  withr::local_envvar(list(R_TESTS = "", TESTTHAT = "true"))
+
   if (load_helpers) {
     source_test_helpers(path, env)
   }
   source_test_setup(path, env)
   on.exit(source_test_teardown(path, env), add = TRUE)
-
-  withr::local_envvar(list(R_TESTS = "", TESTTHAT = "true"))
 
   # Promote retirement stages except on CRAN
   if (identical(Sys.getenv("NOT_CRAN"), "true")) {
