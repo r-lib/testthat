@@ -21,6 +21,8 @@
 #' @param update Should the file be updated? Defaults to `TRUE`, with
 #'   the expectation that you'll notice changes because of the first failure,
 #'   and then see the modified files in git.
+#' @param wildcard Character matching arbitrary string, without a new line.
+#'   By default there is no wildcard.
 #' @inheritParams expect_equal
 #' @inheritParams capture_output_lines
 #' @examples
@@ -29,7 +31,7 @@
 #' # The first run always succeeds
 #' expect_known_output(mtcars[1:10, ], tmp, print = TRUE)
 #'
-#' # Subsequent runs will suceed only if the file is unchanged
+#' # Subsequent runs will succeed only if the file is unchanged
 #' # This will succeed:
 #' expect_known_output(mtcars[1:10, ], tmp, print = TRUE)
 #'
@@ -37,8 +39,12 @@
 #' # This will fail
 #' expect_known_output(mtcars[1:9, ], tmp, print = TRUE)
 #' }
+#'
+#' writeLines('a%e', tmp)
+#' expect_known_output(cat('abcde'), tmp, wildcard = '%')
 expect_known_output <- function(object, file,
                                 update = TRUE,
+                                wildcard = NULL,
                                 ...,
                                 info = NULL,
                                 label = NULL,
@@ -55,17 +61,23 @@ expect_known_output <- function(object, file,
     succeed()
   } else {
     ref_out <- read_lines(file)
-    if (update) {
+    if (!all_utf8(ref_out)) {
+      warning("Reference output is not UTF-8 encoded", call. = FALSE)
+    }
+
+    if (is.null(wildcard)) {
+      comp <- compare(act$out, enc2native(ref_out), ...)
+    } else {
+      comp <- match(act$out, enc2native(ref_out), wildcard)
+    }
+
+    if (!comp$equal && update) {
       write_lines(act$out, file)
       if (!all_utf8(act$out)) {
         warning("New reference output is not UTF-8 encoded", call. = FALSE)
       }
     }
-    if (!all_utf8(ref_out)) {
-      warning("Reference output is not UTF-8 encoded", call. = FALSE)
-    }
 
-    comp <- compare(act$out, enc2native(ref_out), ...)
     expect(
       comp$equal,
       sprintf(

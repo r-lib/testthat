@@ -66,3 +66,17 @@ test_that("Warning for non-UTF-8 reference files", {
     expect_warning(expect_known_output("foobar", tmp, update = FALSE))
   )
 })
+
+test_that("accepts wildcard", {
+  file <- tempfile()
+  write_lines("a%e", file)
+  expect_success(expect_known_output(cat("abcde"), file, wildcard = '%'))
+  expect_equal(read_lines(file), "a%e")
+})
+
+test_that("updates if wildcard does not match", {
+  file <- tempfile()
+  write_lines("a%e", file)
+  expect_failure(expect_known_output(cat("abcd"), file, wildcard = '%'))
+  expect_equal(read_lines(file), "abcd")
+})

@@ -62,6 +62,7 @@ Collate:
     'expectation.R'
     'expectations-matches.R'
     'make-expectation.R'
+    'match.R'
     'mock.R'
     'old-school.R'
     'praise.R'
