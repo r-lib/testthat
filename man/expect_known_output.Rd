@@ -8,8 +8,8 @@
 \alias{expect_known_hash}
 \title{Expectations: is the output or the value equal to a known good value?}
 \usage{
-expect_known_output(object, file, update = TRUE, ..., info = NULL,
-  label = NULL, print = FALSE, width = 80)
+expect_known_output(object, file, update = TRUE, wildcard = NULL, ...,
+  info = NULL, label = NULL, print = FALSE, width = 80)
 
 expect_known_value(object, file, update = TRUE, ..., info = NULL,
   label = NULL)
@@ -24,6 +24,9 @@ expect_known_hash(object, hash = NULL)
 \item{update}{Should the file be updated? Defaults to \code{TRUE}, with
 the expectation that you'll notice changes because of the first failure,
 and then see the modified files in git.}
+
+\item{wildcard}{Character matching arbitrary string, without a new line.
+By default there is no wildcard.}
 
 \item{...}{other values passed to \code{\link[=all.equal]{all.equal()}} or \code{[identical()]}.}
 
@@ -65,7 +68,7 @@ tmp <- tempfile()
 # The first run always succeeds
 expect_known_output(mtcars[1:10, ], tmp, print = TRUE)
 
-# Subsequent runs will suceed only if the file is unchanged
+# Subsequent runs will succeed only if the file is unchanged
 # This will succeed:
 expect_known_output(mtcars[1:10, ], tmp, print = TRUE)
 
@@ -73,4 +76,7 @@ expect_known_output(mtcars[1:10, ], tmp, print = TRUE)
 # This will fail
 expect_known_output(mtcars[1:9, ], tmp, print = TRUE)
 }
+
+writeLines('a\%e', tmp)
+expect_known_output(cat('abcde'), tmp, wildcard = '\%')
 }
