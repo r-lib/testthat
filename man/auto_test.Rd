@@ -5,7 +5,7 @@
 \title{Watches code and tests for changes, rerunning tests as appropriate.}
 \usage{
 auto_test(code_path, test_path, reporter = default_reporter(),
-  env = test_env(), hash = TRUE)
+  env = test_env(), hash = TRUE, chdir = TRUE)
 }
 \arguments{
 \item{code_path}{path to directory containing code}
@@ -18,6 +18,8 @@ auto_test(code_path, test_path, reporter = default_reporter(),
 
 \item{hash}{Passed on to \code{\link[=watch]{watch()}}. When FALSE, uses less accurate
 modification time stamps, but those are faster for large files.}
+
+\item{chdir}{Change working directory to \code{dirname(path)}?}
 }
 \description{
 The idea behind \code{auto_test()} is that you just leave it running while

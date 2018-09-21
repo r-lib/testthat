@@ -64,7 +64,9 @@ test_dir <- function(path,
                      load_helpers = TRUE,
                      stop_on_failure = FALSE,
                      stop_on_warning = FALSE,
-                     wrap = TRUE) {
+                     wrap = TRUE,
+                     chdir = TRUE
+                     ) {
   if (!missing(encoding) && !identical(encoding, "UTF-8")) {
     warning("`encoding` is deprecated; all files now assumed to be UTF-8", call. = FALSE)
   }
@@ -90,7 +92,8 @@ test_dir <- function(path,
     env = env,
     stop_on_failure = stop_on_failure,
     stop_on_warning = stop_on_warning,
-    wrap = wrap
+    wrap = wrap,
+    chdir = chdir
   )
 }
 
@@ -101,7 +104,8 @@ test_package <- function(package,
                          reporter = check_reporter(),
                          ...,
                          stop_on_failure = TRUE,
-                         stop_on_warning = FALSE) {
+                         stop_on_warning = FALSE,
+                         chdir = TRUE) {
   library(testthat)
 
   # Ensure that test package returns silently if called recursively - this
@@ -141,7 +145,8 @@ test_package <- function(package,
     reporter = reporter,
     ...,
     stop_on_failure = stop_on_failure,
-    stop_on_warning = stop_on_warning
+    stop_on_warning = stop_on_warning,
+    chdir = chdir
   )
 }
 
@@ -153,7 +158,8 @@ test_check <- function(package,
                        ...,
                        stop_on_failure = TRUE,
                        stop_on_warning = FALSE,
-                       wrap = TRUE) {
+                       wrap = TRUE,
+                       chdir = TRUE) {
   library(testthat)
   require(package, character.only = TRUE)
 
@@ -177,14 +183,15 @@ test_check <- function(package,
     ...,
     stop_on_failure = stop_on_failure,
     stop_on_warning = stop_on_warning,
-    wrap = wrap
+    wrap = wrap,
+    chdir = chdir
   )
 }
 
 test_package_dir <- function(package, test_path, filter, reporter, ...,
                              stop_on_failure = TRUE,
                              stop_on_warning = FALSE,
-                             wrap = TRUE) {
+                             wrap = TRUE, chdir = TRUE) {
   env <- test_pkg_env(package)
   withr::local_options(list(topLevelEnvironment = env))
 
@@ -197,7 +204,8 @@ test_package_dir <- function(package, test_path, filter, reporter, ...,
     ...,
     stop_on_failure = stop_on_failure,
     stop_on_warning = stop_on_warning,
-    wrap = wrap
+    wrap = wrap,
+    chdir = chdir
   )
 }
 

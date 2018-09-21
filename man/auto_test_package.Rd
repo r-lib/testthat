@@ -4,7 +4,8 @@
 \alias{auto_test_package}
 \title{Watches a package for changes, rerunning tests as appropriate.}
 \usage{
-auto_test_package(pkg = ".", reporter = default_reporter(), hash = TRUE)
+auto_test_package(pkg = ".", reporter = default_reporter(), hash = TRUE,
+  chdir = chdir)
 }
 \arguments{
 \item{pkg}{path to package}
@@ -13,6 +14,8 @@ auto_test_package(pkg = ".", reporter = default_reporter(), hash = TRUE)
 
 \item{hash}{Passed on to \code{\link[=watch]{watch()}}.  When FALSE, uses less accurate
 modification time stamps, but those are faster for large files.}
+
+\item{chdir}{Change working directory to \code{dirname(path)}?}
 }
 \description{
 Watches a package for changes, rerunning tests as appropriate.

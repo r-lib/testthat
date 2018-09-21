@@ -6,7 +6,7 @@
 \usage{
 test_file(path, reporter = default_reporter(), env = test_env(),
   start_end_reporter = TRUE, load_helpers = TRUE, encoding = "unknown",
-  wrap = TRUE)
+  wrap = TRUE, chdir = TRUE)
 }
 \arguments{
 \item{path}{path to file}
@@ -24,6 +24,8 @@ test_file(path, reporter = default_reporter(), env = test_env(),
 
 \item{wrap}{Automatically wrap all code within \code{\link[=test_that]{test_that()}}? This ensures
 that all expectations are reported, even if outside a test block.}
+
+\item{chdir}{Change working directory to \code{dirname(path)}?}
 }
 \value{
 the results as a "testthat_results" (list)

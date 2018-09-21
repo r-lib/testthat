@@ -10,13 +10,15 @@
 \usage{
 test_dir(path, filter = NULL, reporter = default_reporter(),
   env = test_env(), ..., encoding = "unknown", load_helpers = TRUE,
-  stop_on_failure = FALSE, stop_on_warning = FALSE, wrap = TRUE)
+  stop_on_failure = FALSE, stop_on_warning = FALSE, wrap = TRUE,
+  chdir = TRUE)
 
 test_package(package, filter = NULL, reporter = check_reporter(), ...,
-  stop_on_failure = TRUE, stop_on_warning = FALSE)
+  stop_on_failure = TRUE, stop_on_warning = FALSE, chdir = TRUE)
 
 test_check(package, filter = NULL, reporter = check_reporter(), ...,
-  stop_on_failure = TRUE, stop_on_warning = FALSE, wrap = TRUE)
+  stop_on_failure = TRUE, stop_on_warning = FALSE, wrap = TRUE,
+  chdir = TRUE)
 
 is_testing()
 
@@ -47,6 +49,8 @@ warnings.}
 
 \item{wrap}{Automatically wrap all code within \code{\link[=test_that]{test_that()}}? This ensures
 that all expectations are reported, even if outside a test block.}
+
+\item{chdir}{Change working directory to \code{dirname(path)}?}
 
 \item{package}{package name}
 }

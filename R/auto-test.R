@@ -27,10 +27,11 @@
 #' @param env environment in which to execute test suite.
 #' @param hash Passed on to [watch()]. When FALSE, uses less accurate
 #'   modification time stamps, but those are faster for large files.
+#' @inheritParams test_dir
 #' @keywords debugging
 auto_test <- function(code_path, test_path, reporter = default_reporter(),
                       env = test_env(),
-                      hash = TRUE) {
+                      hash = TRUE, chdir = TRUE) {
   reporter <- find_reporter(reporter)
   code_path <- normalizePath(code_path)
   test_path <- normalizePath(test_path)
@@ -55,7 +56,7 @@ auto_test <- function(code_path, test_path, reporter = default_reporter(),
     } else if (length(tests) > 0) {
       # If test changes, rerun just that test
       cat("Rerunning tests: ", paste0(basename(tests), collapse = ", "), "\n")
-      test_files(tests, env = env, reporter = reporter$clone(deep = TRUE))
+      test_files(tests, env = env, reporter = reporter$clone(deep = TRUE), chdir = chdir)
     }
 
     TRUE
@@ -70,9 +71,11 @@ auto_test <- function(code_path, test_path, reporter = default_reporter(),
 #' @param reporter test reporter to use
 #' @param hash Passed on to [watch()].  When FALSE, uses less accurate
 #'   modification time stamps, but those are faster for large files.
+#' @inheritParams test_package
 #' @keywords debugging
 #' @seealso [auto_test()] for details on how method works
-auto_test_package <- function(pkg = ".", reporter = default_reporter(), hash = TRUE) {
+auto_test_package <- function(pkg = ".", reporter = default_reporter(),
+                              hash = TRUE, chdir = chdir) {
   if (!requireNamespace("devtools", quietly = TRUE)) {
     stop(
       "devtools required to run auto_test_package(). Please install.",
@@ -107,14 +110,16 @@ auto_test_package <- function(pkg = ".", reporter = default_reporter(), hash = T
       env <<- devtools::load_all(pkg, quiet = TRUE)$env
       withr::with_envvar(
         devtools::r_env_vars(),
-        test_dir(test_path, env = env, reporter = reporter$clone(deep = TRUE))
+        test_dir(test_path, env = env,
+                 reporter = reporter$clone(deep = TRUE), chdir = chdir)
       )
     } else if (length(tests) > 0) {
       # If test changes, rerun just that test
       cat("Rerunning tests: ", paste0(basename(tests), collapse = ", "), "\n")
       withr::with_envvar(
         devtools::r_env_vars(),
-        test_files(tests, env = env, reporter = reporter$clone(deep = TRUE))
+        test_files(tests, env = env,
+                   reporter = reporter$clone(deep = TRUE), chdir = chdir)
       )
     }
 
