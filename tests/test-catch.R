@@ -16,6 +16,9 @@ local({
   if (!requireNamespace("devtools", quietly = TRUE))
     return()
 
+  if (!requireNamespace("usethis", quietly = TRUE))
+    return()
+
   devel <- try(devtools::has_devel(), silent = TRUE)
   if (!isTRUE(devel))
     return()
@@ -41,7 +44,7 @@ local({
       unlink(libPath, recursive = TRUE)
     }, add = TRUE)
 
-    quietly(devtools::create(pkgPath))
+    quietly(usethis::create_package(pkgPath))
     quietly(testthat::use_catch(pkgPath))
 
     cat("LinkingTo: testthat",

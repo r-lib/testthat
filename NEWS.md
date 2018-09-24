@@ -1,3 +1,7 @@
+# testthat 2.0.1
+
+* Fix failing tests with devtools 2.0.0
+
 # testthat 2.0.0
 
 ## Breaking API changes
