@@ -53,8 +53,8 @@ context("Exception handling") {
   test_that("we can use Catch to test for exceptions") {
 
     expect_error(ouch());
-    expect_error_as(ouch(), std::exception);
-    expect_error_as(ouch(), std::logic_error);
+    expect_error_as(ouch(), std::exception&);
+    expect_error_as(ouch(), std::logic_error&);
 
   }
 }
