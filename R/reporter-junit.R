@@ -91,7 +91,8 @@ JunitReporter <- R6::R6Class("JunitReporter",
       xml2::xml_attr(self$suite, "skipped") <- as.character(self$skipped)
       xml2::xml_attr(self$suite, "failures") <- as.character(self$failures)
       xml2::xml_attr(self$suite, "errors") <- as.character(self$errors)
-      xml2::xml_attr(self$suite, "time") <- as.character(self$suite_time)
+      #jenkins junit plugin requires time has at most 3 digits
+      xml2::xml_attr(self$suite, "time") <- as.character(round(self$suite_time, 3))
 
       self$reset_suite()
     },
