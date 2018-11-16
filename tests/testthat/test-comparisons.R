@@ -40,3 +40,15 @@ test_that("comparisons with more complicated objects work", {
   expect_success(expect_gt(time2, time))
   expect_success(expect_gte(time2, time))
 })
+
+test_that("info parameters are preserved", {
+  msg = "ImPrObAbLe"
+  expect_error(expect_lt(10, 10, info = msg),
+               regexp = msg)
+  expect_error(expect_lte(20, 10, info = msg),
+               regexp = msg)
+  expect_error(expect_gt(10, 10, info = msg),
+               regexp = msg)
+  expect_error(expect_gte(10, 20, info = msg),
+               regexp = msg)
+})
