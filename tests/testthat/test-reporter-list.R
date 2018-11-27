@@ -1,10 +1,13 @@
 context("ListReporter")
 
 test_that("ListReporter with test_file", {
-  report <- ListReporter$new()
-  report$start_file("context.R")
 
-  test_file(test_path("context.R"), report)
+  path <- 'test-list-reporter/test-exercise-list-reporter.R'
+
+  report <- ListReporter$new()
+  report$start_file(path)
+
+  test_file(test_path(path), report)
 
   res <- report$results$as_list()
   expect_is(res, "list")
@@ -15,7 +18,7 @@ test_that("ListReporter with test_file", {
   expect_equal(contexts, rep(c("First context.", "Second context."), each = 2))
 
   files <- sapply(res, "[[", "file")
-  expect_equal(files, rep(c("context.R"), 4))
+  expect_equal(files, rep(c(basename(path)), 4))
 
   # Check results are as expected
   last_results <- res[[4]]$results
