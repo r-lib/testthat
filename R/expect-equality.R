@@ -97,6 +97,8 @@ expect_equivalent <- function(object, expected, ..., info = NULL, label = NULL,
   invisible(act$val)
 }
 
+setGeneric("identical")
+
 #' @export
 #' @rdname equality-expectations
 expect_identical <- function(object, expected, info = NULL, label = NULL,
