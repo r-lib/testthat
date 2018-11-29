@@ -10,6 +10,6 @@ test_that("empty hash succeeds with warning", {
 })
 
 test_that("only succeeds if hash is correct", {
-  expect_success(expect_known_hash(1:10, "c08951d2c2"))
+  expect_success(expect_known_hash(1:10, "65e11d78de"))
   expect_failure(expect_known_hash(1:10, "c08951d2c3"))
 })
