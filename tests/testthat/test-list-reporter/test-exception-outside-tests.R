@@ -1,6 +1,10 @@
 context('exception outside test')
 
+expect_true(TRUE)
+
 test_that("before", expect_true(TRUE))
+
+expect_true(false)
 
 stop('dying outside of tests')
 

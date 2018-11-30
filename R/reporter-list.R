@@ -31,8 +31,12 @@ ListReporter <- R6::R6Class("ListReporter",
     },
 
     add_result = function(context, test, result) {
-      if (is.null(self$current_expectations))
+      if (is.null(self$current_expectations)) {
+        # we received an unexpected result: could be a bare expectation or an exception/error
+        if (!inherits(result, 'error')) return()
         self$current_expectations <- Stack$new()
+      }
+
       self$current_expectations$push(result)
     },
 
@@ -61,23 +65,25 @@ ListReporter <- R6::R6Class("ListReporter",
     },
 
     end_context = function(context) {
+      results <- self$current_expectations
+      if (is.null(results)) return()
+
+      self$current_expectations <- NULL
+
       # look for exceptions raised outside of tests
       # they happened just before end_context since they interrupt the test_file execution
-      if (!is.null(self$current_expectations)) {
-        results <- self$current_expectations$as_list()
-        if (length(results) > 0) {
-          self$results$push(list(
-            file =    self$current_file %||% NA_character_,
-            context = context,
-            test =    NA_character_,
-            user =    NA_real_,
-            system =  NA_real_,
-            real =    NA_real_,
-            results = results
-           ))
-        }
-        self$current_expectations <- NULL
-      }
+      results <- results$as_list()
+      if (length(results) == 0) return()
+
+      self$results$push(list(
+        file =    self$current_file %||% NA_character_,
+        context = context,
+        test =    NA_character_,
+        user =    NA_real_,
+        system =  NA_real_,
+        real =    NA_real_,
+        results = results
+       ))
     },
 
     get_results = function() {
