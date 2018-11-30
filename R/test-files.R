@@ -107,7 +107,7 @@ test_file <- function(path, reporter = default_reporter(), env = test_env(),
   }
 
   reporter <- find_reporter(reporter)
-  if (reporter$is_full()) return()
+  if (!is.null(reporter) && reporter$is_full()) return()
 
   if (load_helpers) {
     source_test_helpers(dirname(path), env = env)
@@ -126,10 +126,7 @@ test_file <- function(path, reporter = default_reporter(), env = test_env(),
     reporter = reporter,
     start_end_reporter = start_end_reporter,
     {
-      # We need to notify the lister separately from the reporter, which is why
-      # we call start_file methods twice.
       get_reporter()$start_file(basename(path))
-      lister$start_file(basename(path))
 
       source_file(
         path, new.env(parent = env),
