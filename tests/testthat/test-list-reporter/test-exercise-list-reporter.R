@@ -19,3 +19,9 @@ test_that("A passing test", {
 test_that("A failing test", {
   expect_that(TRUE, equals(FALSE))
 })
+
+
+test_that("A crashing test", {
+  stop('argh')
+  expect_true(TRUE)
+})
