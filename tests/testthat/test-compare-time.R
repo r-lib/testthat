@@ -45,3 +45,12 @@ test_that("uses all.equal tolerance", {
   x2 <- structure(1457284588.837, class = c("POSIXct", "POSIXt"))
   expect_true(compare(x1, x2)$equal)
 })
+
+test_that("check.attributes", {
+  x = as.POSIXct('2016-1-1')
+  y = x
+  attr(y, 'tclass') = attr(y, 'class')
+  expect_false(compare(x, y, check.attributes = T)$equal)
+  expect_true(compare(x, y, check.attributes = F)$equal)
+  expect_equal(compare(x, y, check.attributes = F)$message, "Equal")
+})

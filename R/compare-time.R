@@ -1,6 +1,6 @@
 #' @rdname compare
 #' @export
-compare.POSIXt <- function(x, y, tolerance = 0.001, ..., max_diffs = 9) {
+compare.POSIXt <- function(x, y, tolerance = 0.001, check.attributes = T, ..., max_diffs = 9) {
   if (!inherits(y, "POSIXt")) {
     return(diff_class(x, y))
   }
@@ -11,7 +11,7 @@ compare.POSIXt <- function(x, y, tolerance = 0.001, ..., max_diffs = 9) {
   x <- standardise_tzone(as.POSIXct(x))
   y <- standardise_tzone(as.POSIXct(y))
 
-  if (!same_attr(x, y)) {
+  if (check.attributes && !same_attr(x, y)) {
     return(diff_attr(x, y))
   }
 
