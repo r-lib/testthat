@@ -26,8 +26,8 @@
 #' `skip_on_appveyor()` skips tests on appveyor by inspecting the
 #' `APPVEYOR` environment variable.
 #'
-#'#' `skip_on_circle()` skips tests on circleci by inspecting the
-#' `CIRCLECI` environment variable.
+#'#' `skip_on_ci()` skips tests on continuous integration systems by inspecting
+#' the `CI` environment variable.
 #'
 #' `skip_on_bioc()` skips tests on Bioconductor by inspecting the
 #' `BBS_HOME` environment variable.
@@ -168,12 +168,13 @@ skip_on_appveyor <- function() {
 
 #' @export
 #' @rdname skip
-skip_on_circle <- function() {
-  if (!identical(Sys.getenv("CIRCLECI"), "true")) {
+skip_on_ci <- function() {
+  ci <- Sys.getenv("CI")
+  if (!any(identical(ci, "true"), identical(ci, "True"))) {
     return(invisible(TRUE))
   }
 
-  skip("On CircleCI")
+  skip("On CI")
 }
 
 #' @export
