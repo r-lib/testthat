@@ -9,6 +9,8 @@
 
 * `skip_if_offline()` skips tests if an internet connection is not available
   (#685).
+* `skip_on_ci()` skips tests on continuous integration systems 
+  (@mbjoseph, #825).
 
 ## Minor improvements and bug fixes
 

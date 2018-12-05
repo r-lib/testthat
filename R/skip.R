@@ -169,8 +169,7 @@ skip_on_appveyor <- function() {
 #' @export
 #' @rdname skip
 skip_on_ci <- function() {
-  ci <- Sys.getenv("CI")
-  if (!any(identical(ci, "true"), identical(ci, "True"))) {
+  if (!isTRUE(as.logical(Sys.getenv("CI")))) {
     return(invisible(TRUE))
   }
 
