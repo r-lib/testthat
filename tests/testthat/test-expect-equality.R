@@ -66,3 +66,7 @@ test_that("expect_setequal ignores order and duplicates", {
 test_that("expect_setequal doesn't ignore genuine differnces", {
   expect_failure(expect_setequal(letters, letters[-1]))
 })
+
+test_that("expect_setequal accepts named lists", {
+  expect_setequal(list(a = 1, b = 2), list(b = 2, a = 1))
+})

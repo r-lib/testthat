@@ -12,6 +12,9 @@
 
 ## Minor improvements and bug fixes
 
+* `expect_setequal()` now accepts named R lists for comparison -- the lists
+  are reordered according to their names (#750).
+
 * Fixed an issue where `devtools::test()` could fail if run multiple times
   within the same R session for a package containing Catch tests.
   ([devtools #1832](https://github.com/r-lib/devtools/issues/1832))

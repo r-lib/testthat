@@ -68,8 +68,8 @@ expect_setequal <- function(object, expected) {
   act <- quasi_label(enquo(object))
   exp <- quasi_label(enquo(expected))
 
-  act$val <- sort(unique(act$val))
-  exp$val <- sort(unique(exp$val))
+  act$val <- sort_unique(act$val)
+  exp$val <- sort_unique(exp$val)
 
   comp <- compare(act$val, exp$val)
   expect(

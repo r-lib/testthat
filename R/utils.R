@@ -27,6 +27,13 @@ first_last <- function(x, max = 10, filler = "...") {
   }
 }
 
+sort_unique <- function(x) {
+  if (is.list(x))
+    x[sort(unique(names(x)))]
+  else
+    sort(unique(x))
+}
+
 # Tools for finding srcrefs -----------------------------------------------
 
 show_stack <- function(star = integer(), n = sys.nframe() - 1L) {
