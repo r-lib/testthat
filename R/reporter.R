@@ -13,10 +13,12 @@ Reporter <- R6::R6Class("Reporter",
     start_reporter = function() {},
     start_context =  function(context) {},
     start_test =     function(context, test) {},
+    start_file =     function(filename) {},
     add_result =     function(context, test, result) {},
     end_test =       function(context, test) {},
     end_context =    function(context) {},
     end_reporter =   function() {},
+    end_file =       function() {},
     is_full =        function() FALSE,
 
     out = NULL,
@@ -92,6 +94,6 @@ default_reporter <- function() {
 
 #' @export
 #' @rdname default_reporter
-check_repoter <- function() {
+check_reporter <- function() {
   getOption("testthat.default_check_reporter", "check")
 }

@@ -8,6 +8,10 @@ test_that("TESTHAT env var set to true", {
   expect_true(is_testing())
 })
 
+test_that("TESTHAT_PKG env var set to the package being tested", {
+  expect_equal(testing_package(), "testthat")
+})
+
 test_that("test_dir()", {
   res <- test_dir(test_path("test_dir"), reporter = "silent")
 

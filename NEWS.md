@@ -1,6 +1,51 @@
-# testthat 2.0.1
+# testthat 2.0.0.9000
 
-* Fix failing tests with devtools 2.0.0
+## Deprecated functions
+
+*  `is_true()` and `is_false()` have been deprecated, because they conflict
+   with other functions in the tidyverse.
+
+## New and improved skips
+
+* `skip_if_offline()` skips tests if an internet connection is not available
+  (#685).
+
+## Minor improvements and bug fixes
+
+* Fixed an issue where `devtools::test()` could fail if run multiple times
+  within the same R session for a package containing Catch tests.
+  ([devtools #1832](https://github.com/r-lib/devtools/issues/1832))
+
+* `testing_package()` function added to retrieve the name of the package
+  currently being tested (#699).
+
+* Pass through warnings when `options(warn = 2)` is set (#721, @yutannihilation).
+* Progress reporter now generates a context from the filename and no longer
+  errors if tests occur before a context (#700, #705).
+* The progress reporter now uses a 3 character wide column to display test
+  successes, so up to 999 successful tests can be displayed without changing
+  the alignment (#712).
+
+* `expect_lt()`, `expect_lte()`, `expect_gt()` `expect_gte()` now handle `Inf`
+  and `NA` arguments appropriately (#732).
+
+* `expect_identical()` gains a `...` argument, to pass additional arguments
+  down to `identical()` (#714).
+
+* `expect_equal_to_reference` `update` parameter default value restored to
+  FALSE ([#683 @BrodieG](https://github.com/r-lib/testthat/issues/683)).
+
+* Fixed an issue where the `run_testthat_tests` entrypoint would fail to
+  be dynamically resolved when not explicitly registered.
+
+* ProgressReporter gains a `update_interval` parameter to control how often
+  updates are printed (default 0.1 s). This prevents large printing overhead
+  for very quick tests. (#701, @jimhester)
+
+* `expect_error()` now returns the error object as documentated (#724).
+
+* `expect_lt()` and friends now work with any object that defines the
+  appropriate comparison method. (#777)
 
 # testthat 2.0.0
 
@@ -9,10 +54,8 @@
 * "Can't mock functions in base packages": You can no longer use `with_mock()` 
   to mock functions in base packages, because this no longer works in 
   R-devel due to changes with the byte code compiler. I recommend using
-  [mockery](https://github.com/n-s-f/mockery) instead.
-  to mocking functions in base packages, because this no longer works in 
-  R-devel due to changes with the byte code compiler. I'd recommend using
-  [mockery](https://github.com/n-s-f/mockery) or [mockr](https://github.com/krlmlr/mockr) instead.
+  [mockery](https://github.com/n-s-f/mockery) or 
+  [mockr](https://github.com/krlmlr/mockr) instead.
 
 * The order of arguments to `expect_equivalent()` and `expect_error()` has
   changed slightly as both now pass `...` on another function. This reveals
@@ -147,7 +190,7 @@ If you unquote the values using `!!`, you get the failure message `` `f(4L)` not
 
 ### New default reporter
 
-A new default reporter, `ReporterProgress`, produces more aesthetically pleasing output and makes the most important information available upfront (#529). You can return to the previous default by setting `option(testthat.default_reporter = "summary")`.
+A new default reporter, `ReporterProgress`, produces more aesthetically pleasing output and makes the most important information available upfront (#529). You can return to the previous default by setting `options(testthat.default_reporter = "summary")`.
 
 ### Reporters
 
@@ -433,7 +476,7 @@ The reporters system class has been considerably refactored to make existing rep
   back to string comparison if objects have different lengths. Complex numbers 
   are compared using the same routine (#309, @krlmlr).
 
-* `compare.numeric()` and `compare.chacter()` recieved another overhaul. This 
+* `compare.numeric()` and `compare.character()` received another overhaul. This 
   should improve behaviour of edge cases, and provides a strong foundation for 
   further work. Added `compare.POSIXt()` for better reporting of datetime
   differences.

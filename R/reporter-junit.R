@@ -39,6 +39,7 @@ JunitReporter <- R6::R6Class("JunitReporter",
     root     = NULL,
     suite    = NULL,
     suite_time = NULL,
+    file_name = NULL,
 
     elapsed_time = function() {
       time <- round((private$proctime() - self$timer)[["elapsed"]], 2)
@@ -63,6 +64,16 @@ JunitReporter <- R6::R6Class("JunitReporter",
       self$doc <- xml2::xml_new_document()
       self$root <- xml2::xml_add_child(self$doc, "testsuites")
       self$reset_suite()
+    },
+
+    start_file = function(file) {
+      self$file_name <- file
+    },
+
+    start_test = function(context, test) {
+      if (is.null(context)) {
+        context(context_name(self$file_name))
+      }
     },
 
     start_context = function(context) {

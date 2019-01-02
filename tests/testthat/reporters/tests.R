@@ -1,3 +1,7 @@
+test_that("Success", {
+  succeed()
+})
+
 context("Expectations")
 
 test_that("Success", {
@@ -21,6 +25,7 @@ test_that("Failure:loop", {
   }
 })
 
+context("Expectations2")
 
 context("Errors")
 
@@ -85,3 +90,5 @@ context("Output")
 test_that("Output:1", {
   expect_output(expect_false(FALSE), NA)
 })
+
+context("End")

@@ -81,3 +81,15 @@ escape_regex <- function(x) {
 dir.exists <- function(paths) {
   file.exists(paths) & file.info(paths)$isdir
 }
+
+# Simplify a test filename to a context name
+context_name <- function(filename) {
+
+  # Remove test- prefix
+  filename <- gsub("test-", "", filename)
+
+  # Remove extension
+  filename <- gsub("[.][Rr]", "", filename)
+
+  filename
+}

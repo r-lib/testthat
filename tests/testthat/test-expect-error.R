@@ -50,3 +50,10 @@ test_that("generates informative failures", {
     expect_error(stop("xxx"), regexp = "zzz", class = "zzz")
   })
 })
+
+test_that("warnings are converted to errors when options('warn') >= 2", {
+  withr::with_options(
+    c(warn = 2),
+    expect_error(warning("foo"))
+  )
+})

@@ -2,12 +2,12 @@
 % Please edit documentation in R/reporter.R
 \name{default_reporter}
 \alias{default_reporter}
-\alias{check_repoter}
+\alias{check_reporter}
 \title{Retrieve the default reporter.}
 \usage{
 default_reporter()
 
-check_repoter()
+check_reporter()
 }
 \description{
 The defaults are:
