@@ -14,3 +14,12 @@ test_that("correct reporting of expected label", {
   expect_failure(expect_match("[a]", "[b]"), escape_regex("[a]"), fixed = TRUE)
   expect_failure(expect_match("[a]", "[b]", fixed = TRUE), "[a]", fixed = TRUE)
 })
+
+test_that("errors if obj is empty str", {
+  expect_error(expect_match(character(0), 'asdf'), 'is empty')
+})
+
+test_that("prints multiple unmatched values", {
+  expect_error(expect_match(c('x', 'y'), 'z'), "x.*y")
+})
+
