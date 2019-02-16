@@ -22,4 +22,3 @@ test_that("errors if obj is empty str", {
 test_that("prints multiple unmatched values", {
   expect_error(expect_match(c('x', 'y'), 'z'), "x.*y")
 })
-
