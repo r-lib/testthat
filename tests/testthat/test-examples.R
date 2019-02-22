@@ -15,7 +15,3 @@ test_that("test_examples works with installed packages", {
 test_that("test_examples fails if no examples", {
   expect_error(test_examples("asdf"), "Could not find examples")
 })
-
-test_that("test_example runs", {
-  test_example("../../man/expect_that.Rd")
-})
