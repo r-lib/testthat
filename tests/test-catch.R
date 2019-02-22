@@ -41,7 +41,7 @@ local({
       unlink(libPath, recursive = TRUE)
     }, add = TRUE)
 
-    quietly(devtools::create(pkgPath))
+    quietly(usethis::create_package(pkgPath))
     quietly(testthat::use_catch(pkgPath))
 
     cat("LinkingTo: testthat",
