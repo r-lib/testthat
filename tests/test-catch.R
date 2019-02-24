@@ -41,8 +41,8 @@ local({
       unlink(libPath, recursive = TRUE)
     }, add = TRUE)
 
-    quietly(usethis::create_package(pkgPath))
-    quietly(testthat::use_catch(pkgPath))
+    usethis::create_package(pkgPath)
+    testthat::use_catch(pkgPath)
 
     cat("LinkingTo: testthat",
         file = file.path(pkgPath, "DESCRIPTION"),
@@ -72,10 +72,10 @@ local({
 
     }
 
-    quietly(devtools::install(pkgPath, quick = TRUE, quiet = TRUE))
+    devtools::install(pkgPath, quick = TRUE, quiet = TRUE)
 
     library(pkgName, character.only = TRUE)
-    stopifnot(quietly(.Call("run_testthat_tests", PACKAGE = pkgName)))
+    stopifnot(.Call("run_testthat_tests", PACKAGE = pkgName))
 
     devtools::unload(pkgName)
   }
