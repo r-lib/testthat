@@ -72,7 +72,7 @@ local({
 
     }
 
-    devtools::install(pkgPath, quick = TRUE, quiet = TRUE)
+    devtools::install(pkgPath, quick = TRUE, quiet = FALSE)
 
     library(pkgName, character.only = TRUE)
     stopifnot(.Call("run_testthat_tests", PACKAGE = pkgName))
@@ -80,7 +80,9 @@ local({
     devtools::unload(pkgName)
   }
 
-  perform_test("testthatclient1",  TRUE)
-  perform_test("testthatclient2", FALSE)
+  withr::with_envvar(c(R_TESTS = ''),
+                       perform_test("testthatclient1",  TRUE))
+  withr::with_envvar(c(R_TESTS = ''),
+                     perform_test("testthatclient2", FALSE))
 
 })
