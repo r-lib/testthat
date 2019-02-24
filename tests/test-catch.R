@@ -50,7 +50,7 @@ local({
         sep = "\n")
 
     cat(
-      sprintf("useDynLib(%s)", pkgName),
+      sprintf("useDynLib(%s, .registration=TRUE)", pkgName),
       file = file.path(pkgPath, "NAMESPACE"),
       append = TRUE,
       sep = "\n"
