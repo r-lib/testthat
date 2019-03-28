@@ -1,4 +1,4 @@
-# testthat 2.0.0.9000
+# testthat (development version)
 
 ## Deprecated functions
 
