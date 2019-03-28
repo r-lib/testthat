@@ -56,7 +56,7 @@ show_failure <- function(expr) {
   exp <- capture_expectation(expr)
 
   if (!is.null(exp) && expectation_failure(exp)) {
-    cat(crayon::bold("Failued expectation:\n"))
+    cat(crayon::bold("Failed expectation:\n"))
     cat(exp$message, "\n", sep = "")
   }
 

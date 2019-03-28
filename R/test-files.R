@@ -126,6 +126,9 @@ test_file <- function(path, reporter = default_reporter(), env = test_env(),
     reporter = reporter,
     start_end_reporter = start_end_reporter,
     {
+      # We need to notify the lister separately from the reporter, which is why
+      # we call start_file methods twice.
+      get_reporter()$start_file(basename(path))
       lister$start_file(basename(path))
 
       source_file(

@@ -45,7 +45,7 @@ NULL
 
 #' @export
 #' @rdname equality-expectations
-#' @param ... other values passed to [all.equal()]
+#' @param ... other values passed to [all.equal()] or `[identical()]`.
 expect_equal <- function(object, expected, ..., info = NULL, label = NULL,
                          expected.label = NULL) {
   act <- quasi_label(enquo(object), label)
@@ -100,38 +100,11 @@ expect_equivalent <- function(object, expected, ..., info = NULL, label = NULL,
 #' @export
 #' @rdname equality-expectations
 expect_identical <- function(object, expected, info = NULL, label = NULL,
-                             expected.label = NULL) {
+                             expected.label = NULL, ...) {
   act <- quasi_label(enquo(object), label)
   exp <- quasi_label(enquo(expected), expected.label)
 
-  ident <- identical(act$val, exp$val)
-  if (ident) {
-    msg <- ""
-  } else {
-    compare <- compare(obj$val, exp$val)
-    if (compare$equal) {
-      msg <- "Objects equal but not identical"
-    } else {
-      msg <- compare$message
-    }
-  }
-
-  expect(
-    ident,
-    sprintf("%s not identical to %s.\n%s", act$lab, exp$lab, msg),
-    info = info
-  )
-  invisible(act$val)
-}
-
-#' @export
-#' @rdname equality-expectations
-expect_identical <- function(object, expected, info = NULL, label = NULL,
-                             expected.label = NULL) {
-  act <- quasi_label(enquo(object), label)
-  exp <- quasi_label(enquo(expected), expected.label)
-
-  ident <- identical(act$val, exp$val)
+  ident <- identical(act$val, exp$val, ...)
   if (ident) {
     msg <- ""
   } else {

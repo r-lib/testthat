@@ -5,19 +5,22 @@
 \alias{test_package}
 \alias{test_check}
 \alias{is_testing}
+\alias{testing_package}
 \title{Run all tests in directory or package}
 \usage{
 test_dir(path, filter = NULL, reporter = default_reporter(),
   env = test_env(), ..., encoding = "unknown", load_helpers = TRUE,
   stop_on_failure = FALSE, stop_on_warning = FALSE, wrap = TRUE)
 
-test_package(package, filter = NULL, reporter = check_repoter(), ...,
+test_package(package, filter = NULL, reporter = check_reporter(), ...,
   stop_on_failure = TRUE, stop_on_warning = FALSE)
 
-test_check(package, filter = NULL, reporter = check_repoter(), ...,
+test_check(package, filter = NULL, reporter = check_reporter(), ...,
   stop_on_failure = TRUE, stop_on_warning = FALSE, wrap = TRUE)
 
 is_testing()
+
+testing_package()
 }
 \arguments{
 \item{path}{path to tests}
@@ -58,7 +61,8 @@ Use \code{test_dir()} for a collection of tests in a directory; use
 inside of \code{R CMD check}.
 
 In your own code, you can use \code{is_testing()} to determine if code is being
-run as part of a test. You can also check the underlying env var directly
+run as part of a test and \code{testing_package()} to retrieve the name of the
+package being tested. You can also check the underlying env var directly
 \code{identical(Sys.getenv("TESTTHAT"), "true")} to avoid creating a run-time
 dependency on testthat.
 }

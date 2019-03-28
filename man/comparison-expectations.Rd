@@ -27,7 +27,7 @@ expect_gte(object, expected, label = NULL, expected.label = NULL)
 
 \item{expected.label}{Equivalent of \code{label} for shortcut form.}
 
-\item{...}{other values passed to \code{\link[=all.equal]{all.equal()}}}
+\item{...}{other values passed to \code{\link[=all.equal]{all.equal()}} or \code{[identical()]}.}
 }
 \description{
 Expectation: is returned value less or greater than specified value?
