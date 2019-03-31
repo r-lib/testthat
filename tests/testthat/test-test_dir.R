@@ -17,7 +17,7 @@ test_that("test_dir()", {
   res <- test_dir(test_path("test_dir"), reporter = "silent")
 
   df <- as.data.frame(res)
-  df$user <- df$system <- df$real <- NULL
+  df$user <- df$system <- df$real <- df$result <- NULL
 
   expect_known_value(df, "test_dir.rds")
 })
