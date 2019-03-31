@@ -1,5 +1,8 @@
 # testthat (development version)
 
+* Number of passed tests and original results are available when converting
+  test results to a data frame (#675).
+
 *  `is_true()` and `is_false()` have been deprecated, because they conflict
    with other functions in the tidyverse.
 
