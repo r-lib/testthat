@@ -5,7 +5,7 @@ NULL
 #'
 #' Use these expectations to test other expectations.
 #' Use `show_failure()` in examples to print the failure message without
-#' throwing an erorr.
+#' throwing an error.
 #'
 #' @param expr Expression that evaluates a single expectation.
 #' @param message Check that the failure message matches this regexp.
