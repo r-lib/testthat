@@ -1,16 +1,10 @@
 # testthat (development version)
 
-## Deprecated functions
-
 *  `is_true()` and `is_false()` have been deprecated, because they conflict
    with other functions in the tidyverse.
 
-## New and improved skips
-
 * `skip_if_offline()` skips tests if an internet connection is not available
   (#685).
-
-## Minor improvements and bug fixes
 
 * Fixed an issue where `devtools::test()` could fail if run multiple times
   within the same R session for a package containing Catch tests.
@@ -20,8 +14,10 @@
   currently being tested (#699).
 
 * Pass through warnings when `options(warn = 2)` is set (#721, @yutannihilation).
+
 * Progress reporter now generates a context from the filename and no longer
   errors if tests occur before a context (#700, #705).
+
 * The progress reporter now uses a 3 character wide column to display test
   successes, so up to 999 successful tests can be displayed without changing
   the alignment (#712).
