@@ -51,3 +51,4 @@ Other expectations: \code{\link{comparison-expectations}},
   \code{\link{inheritance-expectations}},
   \code{\link{output-expectations}}
 }
+\concept{expectations}

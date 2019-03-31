@@ -33,4 +33,5 @@ Other reporters: \code{\link{CheckReporter}},
   \code{\link{SilentReporter}}, \code{\link{StopReporter}},
   \code{\link{TapReporter}}, \code{\link{TeamcityReporter}}
 }
+\concept{reporters}
 \keyword{datasets}

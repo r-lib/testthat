@@ -15,8 +15,8 @@ expect_output(object, regexp = NULL, ..., info = NULL, label = NULL)
 expect_error(object, regexp = NULL, class = NULL, ..., info = NULL,
   label = NULL)
 
-expect_condition(object, regexp = NULL, class = NULL, ..., info = NULL,
-  label = NULL)
+expect_condition(object, regexp = NULL, class = NULL, ...,
+  info = NULL, label = NULL)
 
 expect_message(object, regexp = NULL, ..., all = FALSE, info = NULL,
   label = NULL)
@@ -136,3 +136,4 @@ Other expectations: \code{\link{comparison-expectations}},
   \code{\link{inheritance-expectations}},
   \code{\link{logical-expectations}}
 }
+\concept{expectations}

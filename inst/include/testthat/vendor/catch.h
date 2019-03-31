@@ -548,8 +548,8 @@ namespace Catch {
 #define TWOBLUECUBES_CATCH_PTR_HPP_INCLUDED
 
 #ifdef __clang__
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wpadded"
+# pragma clang diagnostic push
+# pragma clang diagnostic ignored "-Wpadded"
 #endif
 
 namespace Catch {
@@ -624,7 +624,7 @@ namespace Catch {
 } // end namespace Catch
 
 #ifdef __clang__
-#pragma clang diagnostic pop
+# pragma clang diagnostic pop
 #endif
 
 namespace Catch {
@@ -1274,9 +1274,9 @@ namespace Catch {
 #define TWOBLUECUBES_CATCH_EVALUATE_HPP_INCLUDED
 
 #ifdef _MSC_VER
-#pragma warning(push)
-#pragma warning(disable:4389) // '==' : signed/unsigned mismatch
-#pragma warning(disable:4312) // Converting int to T* using reinterpret_cast (issue on x64 platform)
+# pragma warning(push)
+# pragma warning(disable:4389) // '==' : signed/unsigned mismatch
+# pragma warning(disable:4312) // Converting int to T* using reinterpret_cast (issue on x64 platform)
 #endif
 
 #include <cstddef>
@@ -1477,7 +1477,7 @@ namespace Internal {
 } // end of namespace Catch
 
 #ifdef _MSC_VER
-#pragma warning(pop)
+# pragma warning(pop)
 #endif
 
 // #included from: catch_tostring.h
@@ -1519,13 +1519,13 @@ inline id performOptionalSelector( id obj, SEL sel ) {
 inline void arcSafeRelease( NSObject* ){}
 inline id performOptionalSelector( id obj, SEL sel ) {
 #ifdef __clang__
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+# pragma clang diagnostic push
+# pragma clang diagnostic ignored "-Warc-performSelector-leaks"
 #endif
     if( [obj respondsToSelector: sel] )
         return [obj performSelector: sel];
 #ifdef __clang__
-#pragma clang diagnostic pop
+# pragma clang diagnostic pop
 #endif
     return nil;
 }
@@ -3217,8 +3217,8 @@ namespace Catch {
 #include <set>
 
 #ifdef __clang__
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wpadded"
+# pragma clang diagnostic push
+# pragma clang diagnostic ignored "-Wpadded"
 #endif
 
 namespace Catch {
@@ -3289,7 +3289,7 @@ namespace Catch {
 }
 
 #ifdef __clang__
-#pragma clang diagnostic pop
+# pragma clang diagnostic pop
 #endif
 
 
@@ -3521,8 +3521,8 @@ LeakDetector leakDetector;
 // These are the equivalent of what would usually be cpp files
 
 #ifdef __clang__
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wweak-vtables"
+# pragma clang diagnostic push
+# pragma clang diagnostic ignored "-Wweak-vtables"
 #endif
 
 // #included from: ../catch_session.hpp
@@ -3538,16 +3538,16 @@ LeakDetector leakDetector;
 #define TWOBLUECUBES_CATCH_TEST_SPEC_PARSER_HPP_INCLUDED
 
 #ifdef __clang__
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wpadded"
+# pragma clang diagnostic push
+# pragma clang diagnostic ignored "-Wpadded"
 #endif
 
 // #included from: catch_test_spec.hpp
 #define TWOBLUECUBES_CATCH_TEST_SPEC_HPP_INCLUDED
 
 #ifdef __clang__
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wpadded"
+# pragma clang diagnostic push
+# pragma clang diagnostic ignored "-Wpadded"
 #endif
 
 // #included from: catch_wildcard_pattern.hpp
@@ -3595,12 +3595,12 @@ namespace Catch
             }
 
 #ifdef __clang__
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wunreachable-code"
+# pragma clang diagnostic push
+# pragma clang diagnostic ignored "-Wunreachable-code"
 #endif
             throw std::logic_error( "Unknown enum" );
 #ifdef __clang__
-#pragma clang diagnostic pop
+# pragma clang diagnostic pop
 #endif
         }
     private:
@@ -3689,7 +3689,7 @@ namespace Catch {
 }
 
 #ifdef __clang__
-#pragma clang diagnostic pop
+# pragma clang diagnostic pop
 #endif
 
 namespace Catch {
@@ -3802,7 +3802,7 @@ namespace Catch {
 } // namespace Catch
 
 #ifdef __clang__
-#pragma clang diagnostic pop
+# pragma clang diagnostic pop
 #endif
 
 // #included from: catch_interfaces_config.h
@@ -8512,8 +8512,8 @@ namespace Catch
 // #included from: catch_timer.hpp
 
 #ifdef __clang__
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wc++11-long-long"
+# pragma clang diagnostic push
+# pragma clang diagnostic ignored "-Wc++11-long-long"
 #endif
 
 #ifdef CATCH_PLATFORM_WINDOWS
@@ -8563,7 +8563,7 @@ namespace Catch {
 } // namespace Catch
 
 #ifdef __clang__
-#pragma clang diagnostic pop
+# pragma clang diagnostic pop
 #endif
 // #included from: catch_common.hpp
 #define TWOBLUECUBES_CATCH_COMMON_HPP_INCLUDED
@@ -8695,8 +8695,8 @@ namespace Catch {
     }
 
 #if defined(_MSC_VER)
-#pragma warning(push)
-#pragma warning(disable:4996) // std::uncaught_exception is deprecated in C++17
+# pragma warning(push)
+# pragma warning(disable:4996) // std::uncaught_exception is deprecated in C++17
 #endif
     Section::~Section() {
         if( m_sectionIncluded ) {
@@ -8708,7 +8708,7 @@ namespace Catch {
         }
     }
 #if defined(_MSC_VER)
-#pragma warning(pop)
+# pragma warning(pop)
 #endif
 
     // This indicates whether the section should be executed or not
@@ -11307,7 +11307,7 @@ namespace Catch {
 }
 
 #ifdef __clang__
-#pragma clang diagnostic pop
+# pragma clang diagnostic pop
 #endif
 
 #endif
@@ -11542,4 +11542,3 @@ using Catch::Detail::Approx;
 #endif
 
 #endif // TWOBLUECUBES_SINGLE_INCLUDE_CATCH_HPP_INCLUDED
-
