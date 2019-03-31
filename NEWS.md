@@ -1,4 +1,4 @@
-# testthat 2.0.0.9000
+# testthat (development version)
 
 ## Deprecated functions
 
@@ -46,6 +46,10 @@
 
 * `expect_lt()` and friends now work with any object that defines the
   appropriate comparison method. (#777)
+
+# testthat 2.0.1
+
+* Fix failing tests with devtools 2.0.0
 
 # testthat 2.0.0
 

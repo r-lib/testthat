@@ -29,4 +29,5 @@ Other reporters: \code{\link{CheckReporter}},
   \code{\link{SummaryReporter}}, \code{\link{TapReporter}},
   \code{\link{TeamcityReporter}}
 }
+\concept{reporters}
 \keyword{datasets}

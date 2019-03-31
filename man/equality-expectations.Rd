@@ -85,3 +85,4 @@ Other expectations: \code{\link{comparison-expectations}},
   \code{\link{logical-expectations}},
   \code{\link{output-expectations}}
 }
+\concept{expectations}
