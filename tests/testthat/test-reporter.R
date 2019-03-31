@@ -49,7 +49,10 @@ test_reporter <- function(reporter) {
 test_that("reporters produce consistent output", {
   save_report <- function(name, reporter = find_reporter(name)) {
     path <- test_path("reporters", paste0(name, ".txt"))
-    expect_known_output(test_reporter(reporter), path)
+    withr::with_options(
+      c(cli.unicode = TRUE),
+      expect_known_output(test_reporter(reporter), path)
+    )
   }
 
   with_mock(
@@ -64,7 +67,7 @@ test_that("reporters produce consistent output", {
     save_report("debug")
   )
   save_report("check", CheckReporter$new(stop_on_failure = FALSE))
-  save_report("progress", ProgressReporter$new(show_praise = FALSE, min_time = Inf))
+  save_report("progress", ProgressReporter$new(show_praise = FALSE, min_time = Inf, update_interval = 0))
   save_report("summary", SummaryReporter$new(show_praise = FALSE, omit_dots = FALSE))
   save_report("summary-2", SummaryReporter$new(show_praise = FALSE, max_reports = 2))
   save_report("summary-no-dots", SummaryReporter$new(show_praise = FALSE, omit_dots = TRUE))
@@ -97,11 +100,14 @@ expect_report_to_file <- function(name,
   # as an argument to Reporter$new() (here, via the ...), or whether it is set
   # in an option.
   path <- test_path("reporters", paste0(name, ".txt"))
-  expect_silent(test_reporter(reporter))
-  expect_equal(read_lines(output_file), read_lines(path))
+  withr::with_options(
+    c(cli.unicode = TRUE),
+    expect_silent(test_reporter(reporter))
+  )
+  expect_equal(read_lines(output_file, encoding = "unknown"), enc2native(read_lines(path)))
 }
 
-test_that("reporters accept a 'file' arugment and write to that location", {
+test_that("reporters accept a 'file' argument and write to that location", {
   output <- tempfile()
   expect_report_to_file(
     "check",
@@ -110,7 +116,7 @@ test_that("reporters accept a 'file' arugment and write to that location", {
   )
   expect_report_to_file(
     "progress",
-    ProgressReporter$new(show_praise = FALSE, min_time = Inf, file = output),
+    ProgressReporter$new(show_praise = FALSE, min_time = Inf, update_interval = 0, file = output),
     output_file = output
   )
   expect_report_to_file(

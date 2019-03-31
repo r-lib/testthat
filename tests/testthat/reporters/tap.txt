@@ -1,59 +1,60 @@
-1..17
-# Context Expectations
+1..18
 ok 1 Success
-not ok 2 Failure:1
+# Context Expectations
+ok 2 Success
+not ok 3 Failure:1
   Failure has been forced
-not ok 3 Failure:2a
+not ok 4 Failure:2a
   Failure has been forced
-not ok 4 Failure:2b
+not ok 5 Failure:2b
   FALSE isn't true.
-not ok 5 Failure:loop
+not ok 6 Failure:loop
   `i` not equal to 2.
   1/1 mismatches
   [1] 1 - 2 == -1
-ok 6 Failure:loop
+ok 7 Failure:loop
 # Context Errors
-not ok 7 Error:1
+not ok 8 Error:1
   stop
-  1: stop("stop") at reporters/tests.R:28
-not ok 8 Error:3
+  1: stop("stop") at reporters/tests.R:33
+not ok 9 Error:3
   !
-  1: f() at reporters/tests.R:42
-  2: g() at reporters/tests.R:33
-  3: h() at reporters/tests.R:36
-  4: stop("!") at reporters/tests.R:39
+  1: f() at reporters/tests.R:47
+  2: g() at reporters/tests.R:38
+  3: h() at reporters/tests.R:41
+  4: stop("!") at reporters/tests.R:44
 # Context Recursion
-not ok 9 Recursion:1
+not ok 10 Recursion:1
   This is deep
-  1: f(25) at reporters/tests.R:51
-  2: f(x - 1) at reporters/tests.R:49
-  3: f(x - 1) at reporters/tests.R:49
-  4: f(x - 1) at reporters/tests.R:49
-  5: f(x - 1) at reporters/tests.R:49
-  6: f(x - 1) at reporters/tests.R:49
-  7: f(x - 1) at reporters/tests.R:49
-  8: f(x - 1) at reporters/tests.R:49
-  9: f(x - 1) at reporters/tests.R:49
-  10: f(x - 1) at reporters/tests.R:49
+  1: f(25) at reporters/tests.R:56
+  2: f(x - 1) at reporters/tests.R:54
+  3: f(x - 1) at reporters/tests.R:54
+  4: f(x - 1) at reporters/tests.R:54
+  5: f(x - 1) at reporters/tests.R:54
+  6: f(x - 1) at reporters/tests.R:54
+  7: f(x - 1) at reporters/tests.R:54
+  8: f(x - 1) at reporters/tests.R:54
+  9: f(x - 1) at reporters/tests.R:54
+  10: f(x - 1) at reporters/tests.R:54
   ...
-  18: f(x - 1) at reporters/tests.R:49
-  19: f(x - 1) at reporters/tests.R:49
-  20: f(x - 1) at reporters/tests.R:49
-  21: f(x - 1) at reporters/tests.R:49
-  22: f(x - 1) at reporters/tests.R:49
-  23: f(x - 1) at reporters/tests.R:49
-  24: f(x - 1) at reporters/tests.R:49
-  25: f(x - 1) at reporters/tests.R:49
-  26: f(x - 1) at reporters/tests.R:49
-  27: stop("This is deep") at reporters/tests.R:49
+  18: f(x - 1) at reporters/tests.R:54
+  19: f(x - 1) at reporters/tests.R:54
+  20: f(x - 1) at reporters/tests.R:54
+  21: f(x - 1) at reporters/tests.R:54
+  22: f(x - 1) at reporters/tests.R:54
+  23: f(x - 1) at reporters/tests.R:54
+  24: f(x - 1) at reporters/tests.R:54
+  25: f(x - 1) at reporters/tests.R:54
+  26: f(x - 1) at reporters/tests.R:54
+  27: stop("This is deep") at reporters/tests.R:54
 # Context Skips
-ok 10 # SKIP skip
 ok 11 # SKIP skip
-ok 12 # SKIP Empty test
+ok 12 # SKIP skip
+ok 13 # SKIP Empty test
 # Context Warnings
-ok 13 # WARNING abc
-ok 14 # WARNING def
-ok 15 # WARNING ghi
+ok 14 # WARNING abc
+ok 15 # WARNING def
+ok 16 # WARNING ghi
 # Context Output
-ok 16 Output:1
 ok 17 Output:1
+ok 18 Output:1

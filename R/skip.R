@@ -14,6 +14,9 @@
 #' `skip_if_not()` works like [stopifnot()], generating
 #' a message automatically based on the first argument.
 #'
+#' `skip_if_offline()` skips tests if an internet connection is not available
+#' using [curl::nslookup()].
+#'
 #' `skip_on_cran()` skips tests on CRAN, using the `NOT_CRAN`
 #' environment variable set by devtools.
 #'
@@ -31,6 +34,7 @@
 #' a side effect, because the package is likely to be used anyway.
 #'
 #' @param message A message describing why the test was skipped.
+#' @param host A string with a hostname to lookup
 #' @export
 #' @examples
 #' if (FALSE) skip("No internet connection")
@@ -96,6 +100,16 @@ skip_if_not_installed <- function(pkg, minimum_version = NULL) {
   }
 
   return(invisible(TRUE))
+}
+
+#' @export
+#' @rdname skip
+skip_if_offline <- function(host = "r-project.org") {
+  skip_if_not_installed("curl")
+  has_internet <- !is.null(curl::nslookup(host, error = FALSE))
+  if (!has_internet) {
+    skip("offline")
+  }
 }
 
 #' @export

@@ -24,8 +24,8 @@ expect_compare <- function(operator = c("<", "<=", ">", ">="), act, exp) {
   operator <- match.arg(operator)
   op <- match.fun(operator)
 
-  stopifnot(is.numeric(act$val), length(act$val) == 1)
-  stopifnot(is.numeric(exp$val), length(exp$val) == 1)
+  stopifnot(methods::hasMethod(operator, class(act$val)), length(act$val) == 1)
+  stopifnot(methods::hasMethod(operator, class(exp$val)), length(exp$val) == 1)
 
   msg <- c(
     "<" =  "not strictly less than",
@@ -34,10 +34,10 @@ expect_compare <- function(operator = c("<", "<=", ">", ">="), act, exp) {
     ">=" = "not more than"
   )[[operator]]
 
-  diff <- act$val - exp$val
+  cmp <- op(act$val, exp$val)
   expect(
-    op(diff, 0),
-    sprintf("%s is %s %s. Difference: %.3g", act$lab, msg, exp$lab, diff)
+    if (!is.na(cmp)) cmp else FALSE,
+    sprintf("%s is %s %s. Difference: %.3g", act$lab, msg, exp$lab, act$val - exp$val)
   )
   invisible(act$val)
 }

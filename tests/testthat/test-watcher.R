@@ -68,7 +68,7 @@ test_that("watcher works correctly", {
 
   test.added <- function(added, deleted, modified) {
     expect_that(length(added), equals(1))
-    expect_that(grepl("test1.R", added), is_true())
+    expect_true(grepl("test1.R", added))
     expect_that(length(deleted), equals(0))
     expect_that(length(modified), equals(0))
     FALSE
@@ -77,7 +77,7 @@ test_that("watcher works correctly", {
   test.removed <- function(added, deleted, modified) {
     expect_that(length(added), equals(0))
     expect_that(length(deleted), equals(1))
-    expect_that(grepl("test1.R", deleted), is_true())
+    expect_true(grepl("test1.R", deleted))
     expect_that(length(modified), equals(0))
     FALSE
   }

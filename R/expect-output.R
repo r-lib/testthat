@@ -102,7 +102,7 @@ expect_output <- function(object, regexp = NULL, ..., info = NULL, label = NULL)
       info = info
     )
   } else {
-    expect_match(act$cap, regexp, ..., info = info, label = act$lab)
+    expect_match(act$cap, enc2native(regexp), ..., info = info, label = act$lab)
   }
 
   invisible(act$val)
@@ -121,7 +121,7 @@ expect_error <- function(object,
   msg <- compare_condition(act$cap, act$lab, regexp = regexp, class = class, ...)
   expect(is.null(msg), msg, info = info)
 
-  invisible(act$val %||% act$err)
+  invisible(act$val %||% act$cap)
 }
 
 #' @export
@@ -139,7 +139,7 @@ expect_condition <- function(object,
   )
   expect(is.null(msg), msg, info = info)
 
-  invisible(act$val %||% act$err)
+  invisible(act$val %||% act$cap)
 }
 
 

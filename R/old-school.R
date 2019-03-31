@@ -15,7 +15,7 @@ NULL
 #' @rdname oldskool
 is_null <- function() {
   warning(
-    "is_null is deprecated. Please use `expect_null` instead.",
+    "`is_null()` is deprecated. Please use `expect_null()` instead.",
     call. = FALSE
   )
   function(x) expect_null(x)
@@ -30,13 +30,25 @@ is_a <- function(class) {
 #' @export
 #' @rdname oldskool
 is_true <- function() {
-  function(x) expect_true(x)
+  function(x) {
+    warning(
+      "`is_true()` is deprecated. Please use `expect_true()` instead.",
+      call. = FALSE
+    )
+    expect_true(x)
+  }
 }
 
 #' @export
 #' @rdname oldskool
 is_false <- function() {
-  function(x) expect_false(x)
+  function(x) {
+    warning(
+      "`is_false()` is deprecated. Please use `expect_false()` instead.",
+      call. = FALSE
+    )
+    expect_false(x)
+  }
 }
 
 #' @export
@@ -111,7 +123,7 @@ throws_error <- function(regexp = NULL, ...) {
 #' @rdname oldskool
 matches <- function(regexp, all = TRUE, ...) {
   warning(
-    "`matches` is deprecated. Please use `expect_match` instead.",
+    "`matches()` is deprecated. Please use `expect_match()` instead.",
     call. = FALSE
   )
   function(x) expect_match(x, regexp, all = all, ...)

@@ -122,6 +122,10 @@ test_code <- function(test, code, env = test_env(), skip_on_empty = TRUE) {
     invokeRestart("continue_test")
   }
   handle_warning <- function(e) {
+    # When options(warn) >= 2, a warning will be converted to an error.
+    # So, do not handle it here so that it will be handled by handle_error.
+    if (getOption("warn") >= 2) return()
+
     handled <<- TRUE
     e$expectation_calls <- frame_calls(11, 5)
     register_expectation(e)
@@ -187,7 +191,7 @@ test_code <- function(test, code, env = test_env(), skip_on_empty = TRUE) {
 #' @useDynLib testthat, .registration = TRUE
 #' @references Wickham, H (2011). testthat: Get Started with Testing.
 #' \strong{The R Journal} \emph{3/1} 5-10.
-#' \url{http://journal.r-project.org/archive/2011-1/RJournal_2011-1_Wickham.pdf}
+#' \url{https://journal.r-project.org/archive/2011-1/RJournal_2011-1_Wickham.pdf}
 #'
 #' \url{http://adv-r.had.co.nz/Testing.html}
 #'

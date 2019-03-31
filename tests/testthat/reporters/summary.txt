@@ -1,72 +1,74 @@
-Expectations: .1234.
+.Expectations: .1234.
+Expectations2: 
 Errors: 56
 Recursion: 7
 Skips: SSS
 Warnings: WWW
 Output: ..
+End: 
 
 ══ Skipped ═════════════════════════════════════════════════════════════════════
-1. Skip:1 (@tests.R#57) - skip
+1. Skip:1 (@tests.R#62) - skip
 
-2. Skip:2 (@tests.R#64) - skip
+2. Skip:2 (@tests.R#69) - skip
 
-3. Skip:3 (@tests.R#67) - Empty test
+3. Skip:3 (@tests.R#72) - Empty test
 
 ══ Warnings ════════════════════════════════════════════════════════════════════
-1. Warning:1 (@tests.R#73) - abc
+1. Warning:1 (@tests.R#78) - abc
 
-2. Warning:2 (@tests.R#79) - def
+2. Warning:2 (@tests.R#84) - def
 
-3. Warning:2 (@tests.R#80) - ghi
+3. Warning:2 (@tests.R#85) - ghi
 
 ══ Failed ══════════════════════════════════════════════════════════════════════
-── 1. Failure: Failure:1 (@tests.R#8)  ─────────────────────────────────────────
+── 1. Failure: Failure:1 (@tests.R#12)  ────────────────────────────────────────
 Failure has been forced
 
-── 2. Failure: Failure:2a (@tests.R#12)  ───────────────────────────────────────
+── 2. Failure: Failure:2a (@tests.R#16)  ───────────────────────────────────────
 Failure has been forced
 
-── 3. Failure: Failure:2b (@tests.R#15)  ───────────────────────────────────────
+── 3. Failure: Failure:2b (@tests.R#19)  ───────────────────────────────────────
 FALSE isn't true.
 
-── 4. Failure: Failure:loop (@tests.R#20)  ─────────────────────────────────────
+── 4. Failure: Failure:loop (@tests.R#24)  ─────────────────────────────────────
 `i` not equal to 2.
 1/1 mismatches
 [1] 1 - 2 == -1
 
-── 5. Error: Error:1 (@tests.R#28)  ────────────────────────────────────────────
+── 5. Error: Error:1 (@tests.R#33)  ────────────────────────────────────────────
 stop
-1: stop("stop") at reporters/tests.R:28
+1: stop("stop") at reporters/tests.R:33
 
-── 6. Error: Error:3 (@tests.R#42)  ────────────────────────────────────────────
+── 6. Error: Error:3 (@tests.R#47)  ────────────────────────────────────────────
 !
-1: f() at reporters/tests.R:42
-2: g() at reporters/tests.R:33
-3: h() at reporters/tests.R:36
-4: stop("!") at reporters/tests.R:39
+1: f() at reporters/tests.R:47
+2: g() at reporters/tests.R:38
+3: h() at reporters/tests.R:41
+4: stop("!") at reporters/tests.R:44
 
-── 7. Error: Recursion:1 (@tests.R#51)  ────────────────────────────────────────
+── 7. Error: Recursion:1 (@tests.R#56)  ────────────────────────────────────────
 This is deep
-1: f(25) at reporters/tests.R:51
-2: f(x - 1) at reporters/tests.R:49
-3: f(x - 1) at reporters/tests.R:49
-4: f(x - 1) at reporters/tests.R:49
-5: f(x - 1) at reporters/tests.R:49
-6: f(x - 1) at reporters/tests.R:49
-7: f(x - 1) at reporters/tests.R:49
-8: f(x - 1) at reporters/tests.R:49
-9: f(x - 1) at reporters/tests.R:49
-10: f(x - 1) at reporters/tests.R:49
+1: f(25) at reporters/tests.R:56
+2: f(x - 1) at reporters/tests.R:54
+3: f(x - 1) at reporters/tests.R:54
+4: f(x - 1) at reporters/tests.R:54
+5: f(x - 1) at reporters/tests.R:54
+6: f(x - 1) at reporters/tests.R:54
+7: f(x - 1) at reporters/tests.R:54
+8: f(x - 1) at reporters/tests.R:54
+9: f(x - 1) at reporters/tests.R:54
+10: f(x - 1) at reporters/tests.R:54
 ...
-18: f(x - 1) at reporters/tests.R:49
-19: f(x - 1) at reporters/tests.R:49
-20: f(x - 1) at reporters/tests.R:49
-21: f(x - 1) at reporters/tests.R:49
-22: f(x - 1) at reporters/tests.R:49
-23: f(x - 1) at reporters/tests.R:49
-24: f(x - 1) at reporters/tests.R:49
-25: f(x - 1) at reporters/tests.R:49
-26: f(x - 1) at reporters/tests.R:49
-27: stop("This is deep") at reporters/tests.R:49
+18: f(x - 1) at reporters/tests.R:54
+19: f(x - 1) at reporters/tests.R:54
+20: f(x - 1) at reporters/tests.R:54
+21: f(x - 1) at reporters/tests.R:54
+22: f(x - 1) at reporters/tests.R:54
+23: f(x - 1) at reporters/tests.R:54
+24: f(x - 1) at reporters/tests.R:54
+25: f(x - 1) at reporters/tests.R:54
+26: f(x - 1) at reporters/tests.R:54
+27: stop("This is deep") at reporters/tests.R:54
 
 ══ DONE ════════════════════════════════════════════════════════════════════════

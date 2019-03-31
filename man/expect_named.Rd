@@ -4,8 +4,8 @@
 \alias{expect_named}
 \title{Expectation: does object have names?}
 \usage{
-expect_named(object, expected, ignore.order = FALSE, ignore.case = FALSE,
-  info = NULL, label = NULL)
+expect_named(object, expected, ignore.order = FALSE,
+  ignore.case = FALSE, info = NULL, label = NULL)
 }
 \arguments{
 \item{object}{object to test}
@@ -51,3 +51,4 @@ Other expectations: \code{\link{comparison-expectations}},
   \code{\link{logical-expectations}},
   \code{\link{output-expectations}}
 }
+\concept{expectations}
