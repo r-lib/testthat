@@ -98,11 +98,11 @@ as.data.frame.testthat_results <- function(x, ...) {
     return(data.frame())
   }
 
-  rows <- lapply(x, sumarize_one_test_results)
+  rows <- lapply(x, summarize_one_test_results)
   do.call(rbind, rows)
 }
 
-sumarize_one_test_results <- function(test) {
+summarize_one_test_results <- function(test) {
   test_results <- test$results
   nb_tests <- length(test_results)
 
