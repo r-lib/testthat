@@ -4,8 +4,8 @@
 \alias{expect_match}
 \title{Expectation: does string match a regular expression?}
 \usage{
-expect_match(object, regexp, perl = FALSE, fixed = FALSE, ..., all = TRUE,
-  info = NULL, label = NULL)
+expect_match(object, regexp, perl = FALSE, fixed = FALSE, ...,
+  all = TRUE, info = NULL, label = NULL)
 }
 \arguments{
 \item{object}{object to test}
@@ -56,3 +56,4 @@ Other expectations: \code{\link{comparison-expectations}},
   \code{\link{logical-expectations}},
   \code{\link{output-expectations}}
 }
+\concept{expectations}

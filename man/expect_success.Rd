@@ -27,6 +27,6 @@ expect_known_failure(path, expr)
 \description{
 Use these expectations to test other expectations.
 Use \code{show_failure()} in examples to print the failure message without
-throwing an erorr.
+throwing an error.
 }
 \keyword{internal}
