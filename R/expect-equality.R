@@ -63,7 +63,6 @@ expect_equal <- function(object, expected, ..., info = NULL, label = NULL,
   invisible(act$val)
 }
 
-
 #' @export
 #' @rdname equality-expectations
 expect_setequal <- function(object, expected) {
@@ -81,7 +80,6 @@ expect_setequal <- function(object, expected) {
 
   invisible(act$val)
 }
-
 
 #' @export
 #' @rdname equality-expectations

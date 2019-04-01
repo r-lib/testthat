@@ -52,6 +52,7 @@ Collate:
     'expect-comparison.R'
     'expect-equality.R'
     'expect-inheritance.R'
+    'expect-invisible.R'
     'expect-known.R'
     'expect-length.R'
     'expect-logical.R'

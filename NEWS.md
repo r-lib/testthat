@@ -1,5 +1,8 @@
 # testthat (development version)
 
+* New `expect_visible()` and `expect_invisible()` make it easier to check if
+  a function call returns its result visibly or invisibly (#719).
+
 * New `local_mock()` which allows you to mock function without having to
   add additional layer of indentation as `with_mock()` does (#856).
 
