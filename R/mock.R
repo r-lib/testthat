@@ -17,6 +17,8 @@
 #' @param .env the environment in which to patch the functions,
 #'   defaults to the top-level environment.  A character is interpreted as
 #'   package name.
+#' @param .local_env Environment in which to add exit hander.
+#'   For expert use only.
 #' @keywords internal
 #' @return The result of the last unnamed parameter
 #' @references Suraj Gupta (2012): \href{http://obeautifulcode.com/R/How-R-Searches-And-Finds-Stuff}{How R Searches And Finds Stuff}
@@ -37,6 +39,17 @@
 #'   ),
 #'   1
 #' )
+#'
+#' # local_mock() -------------------------------
+#' plus <- function(x, y) x + y
+#' test_that("plus(1, 1) == 2", {
+#'   expect_equal(plus(1, 1), 2)
+#' })
+#'
+#' test_that("plus(1, 1) == 3", {
+#'   local_mock(plus = function(x, y) 3)
+#'   expect_equal(plus(1, 1), 3)
+#' })
 with_mock <- function(..., .env = topenv()) {
   dots <- eval(substitute(alist(...)))
   mock_qual_names <- names(dots)
@@ -66,6 +79,19 @@ with_mock <- function(..., .env = topenv()) {
     # Isolate last item for visibility
     eval(code[[length(code)]], parent.frame())
   }
+}
+
+#' @export
+#' @rdname with_mock
+local_mock <- function(..., .env = topenv(), .local_envir = parent.frame()) {
+  mocks <- extract_mocks(list(...), .env = .env)
+  on_exit <- bquote(
+    on.exit(lapply(.(mocks), .(reset_mock)), add = TRUE),
+  )
+
+  lapply(mocks, set_mock)
+  eval_bare(on_exit, .local_envir)
+  invisible()
 }
 
 pkg_rx <- ".*[^:]"

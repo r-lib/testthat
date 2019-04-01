@@ -1,5 +1,8 @@
 # testthat (development version)
 
+* New `local_mock()` which allows you to mock function without having to
+  add additional layer of indentation as `with_mock()` does (#856).
+
 * `expect_s3_class()` now works with unquoting (@jalsalam, #771).
 
 * All expectations give clearer error messages if you forget the `object`
