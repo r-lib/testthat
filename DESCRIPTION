@@ -23,7 +23,7 @@ Imports:
     methods,
     praise,
     R6 (>= 2.2.0),
-    rlang,
+    rlang (>= 0.3.0),
     withr (>= 2.0.0)
 Suggests: 
     covr,
