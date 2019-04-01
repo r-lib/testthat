@@ -21,6 +21,14 @@ test_that("multiline outputs captures and matches", {
   expect_success(expect_output(cat("1\n2"), "1\n2"))
 })
 
+test_that("expect_output sets width", {
+  x <- expect_output(getOption("width"), NA)
+  expect_equal(x, 80)
+
+  x <- expect_output(getOption("width"), NA, width = 20)
+  expect_equal(x, 20)
+})
+
 test_that("... passed on to grepl", {
   expect_success(expect_output(print("X"), "x", ignore.case = TRUE))
 })

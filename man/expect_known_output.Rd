@@ -36,7 +36,9 @@ writing tests in loops).}
 visible this will print the result, ensuring that the output of printing
 the object is included in the overall output}
 
-\item{width}{Number of characters per line of output}
+\item{width}{Number of characters per line of output. This does not
+inherit from \code{getOption("width")} so that tests always use the same
+output width, minimising spurious differences.}
 
 \item{hash}{Known hash value. Leave empty and you'll be informed what
 to use in the test output.}

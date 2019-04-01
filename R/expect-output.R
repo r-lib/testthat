@@ -86,13 +86,15 @@ NULL
 
 #' @export
 #' @rdname output-expectations
+#' @inheritParams capture_output
 expect_output <- function(object,
                           regexp = NULL,
                           ...,
                           info = NULL,
-                          label = NULL
+                          label = NULL,
+                          width = 80
                           ) {
-  act <- quasi_capture(enquo(object), label, capture_output)
+  act <- quasi_capture(enquo(object), label, capture_output, width = width)
 
   if (identical(regexp, NA)) {
     expect(

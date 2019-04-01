@@ -1,5 +1,9 @@
 # testthat (development version)
 
+* `expect_output()` gains `width` argument, allowing you to control the 
+  output width. This does not inherit from `getOption("width")`, ensuring 
+  that tests return the same results regardless of environment (#805).
+
 * Number of passed tests and original results are available when converting
   test results to a data frame (#675).
 
