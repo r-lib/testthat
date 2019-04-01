@@ -1,5 +1,8 @@
 # testthat (development version)
 
+* `auto_test_package()` works better with recent devtools and also watches
+  `src/` for changes (#809).
+
 * `expect_equal()` compares infinite values correctly (#789).
 
 * `expect_output()` gains `width` argument, allowing you to control the 
