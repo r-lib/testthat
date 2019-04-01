@@ -43,13 +43,12 @@ use only.}
 }
 \description{
 \itemize{
-\item \code{expect_identical} tests with \code{\link[=identical]{identical()}}
-\item \code{expect_equal} tests with \code{\link[=all.equal]{all.equal()}}
-\item \code{expect_setequal} ignores order and duplicates
-\item \code{expect_equivalent} tests with \code{\link[=all.equal]{all.equal()}} and
+\item \code{expect_identical()} compares values with \code{\link[=identical]{identical()}}.
+\item \code{expect_equal()} compares values  with \code{\link[=all.equal]{all.equal()}}
+\item \code{expect_equivalent()} compares values with \code{\link[=all.equal]{all.equal()}} and
 \code{check.attributes = FALSE}
-\item \code{expect_reference} tests if two symbols point to the same underlying
-object in memory (requires rlang 1.2.9000 or greater)
+\item \code{expect_setequal()} compares values, ignoring order and duplicates.
+\item \code{expect_reference()} compares the underlying memory addresses.
 }
 }
 \examples{

@@ -1,12 +1,11 @@
 #' Expectation: is the object equal to a value?
 #'
-#' - `expect_identical` tests with [identical()]
-#' - `expect_equal` tests with [all.equal()]
-#' - `expect_setequal` ignores order and duplicates
-#' - `expect_equivalent` tests with [all.equal()] and
-#'   `check.attributes = FALSE`
-#' - `expect_reference` tests if two symbols point to the same underlying
-#'    object in memory (requires rlang 1.2.9000 or greater)
+#' - `expect_identical()` compares values with [identical()].
+#' - `expect_equal()` compares values  with [all.equal()]
+#' - `expect_equivalent()` compares values with [all.equal()] and
+#'    `check.attributes = FALSE`
+#' - `expect_setequal()` compares values, ignoring order and duplicates.
+#' - `expect_reference()` compares the underlying memory addresses.
 #
 #' @param object,expected Computation and value to compare it to.
 #'
