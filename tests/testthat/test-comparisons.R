@@ -32,7 +32,7 @@ test_that("comparisons with NA work", {
 
 test_that("comparisons with more complicated objects work", {
   time <- Sys.time()
-  time2 <- Sys.time()
+  time2 <- time + 1
   expect_success(expect_lt(time, time2))
   expect_success(expect_lte(time, time2))
   expect_success(expect_gt(time2, time))
