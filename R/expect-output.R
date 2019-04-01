@@ -86,7 +86,12 @@ NULL
 
 #' @export
 #' @rdname output-expectations
-expect_output <- function(object, regexp = NULL, ..., info = NULL, label = NULL) {
+expect_output <- function(object,
+                          regexp = NULL,
+                          ...,
+                          info = NULL,
+                          label = NULL
+                          ) {
   act <- quasi_capture(enquo(object), label, capture_output)
 
   if (identical(regexp, NA)) {
@@ -116,7 +121,8 @@ expect_error <- function(object,
                          class = NULL,
                          ...,
                          info = NULL,
-                         label = NULL) {
+                         label = NULL
+                         ) {
   act <- quasi_capture(enquo(object), label, capture_error)
   msg <- compare_condition(act$cap, act$lab, regexp = regexp, class = class, ...)
   expect(is.null(msg), msg, info = info)
@@ -131,7 +137,8 @@ expect_condition <- function(object,
                              class = NULL,
                              ...,
                              info = NULL,
-                             label = NULL) {
+                             label = NULL
+                             ) {
   act <- quasi_capture(enquo(object), label, capture_condition)
   msg <- compare_condition(
     act$cap, act$lab, regexp = regexp, class = class, ...,
@@ -145,8 +152,13 @@ expect_condition <- function(object,
 
 #' @export
 #' @rdname output-expectations
-expect_message <- function(object, regexp = NULL, ..., all = FALSE,
-                           info = NULL, label = NULL) {
+expect_message <- function(object,
+                           regexp = NULL,
+                           ...,
+                           all = FALSE,
+                           info = NULL,
+                           label = NULL
+                           ) {
   act <- quasi_capture(enquo(object), label, capture_messages)
   msg <- compare_messages(act$cap, act$lab, regexp = regexp, all = all, ...)
   expect(is.null(msg), msg, info = info)
@@ -156,8 +168,13 @@ expect_message <- function(object, regexp = NULL, ..., all = FALSE,
 
 #' @export
 #' @rdname output-expectations
-expect_warning <- function(object, regexp = NULL, ..., all = FALSE,
-                           info = NULL, label = NULL) {
+expect_warning <- function(object,
+                           regexp = NULL,
+                           ...,
+                           all = FALSE,
+                           info = NULL,
+                           label = NULL
+                           ) {
   act <- quasi_capture(enquo(object), label, capture_warnings)
   msg <- compare_messages(
     act$cap, act$lab, regexp = regexp, all = all, ...,
