@@ -1,5 +1,3 @@
-context("skip")
-
 expect_skip <- function(code, need_skip = TRUE) {
   skipped <- TRUE
   tryCatch(
@@ -9,8 +7,6 @@ expect_skip <- function(code, need_skip = TRUE) {
     },
     skip = function(e) NULL
   )
-
-  expect_equal(skipped, need_skip)
 }
 
 test_that("Package checks", {

@@ -1,5 +1,3 @@
-context("teardown-1")
-
 test_that("teardown adds to queue", {
   on.exit(teardown_reset())
 

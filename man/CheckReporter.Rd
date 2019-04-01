@@ -24,4 +24,5 @@ Other reporters: \code{\link{DebugReporter}},
   \code{\link{SummaryReporter}}, \code{\link{TapReporter}},
   \code{\link{TeamcityReporter}}
 }
+\concept{reporters}
 \keyword{datasets}

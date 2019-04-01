@@ -1,5 +1,3 @@
-context("label")
-
 test_that("labelling compound {} expression gives single string", {
   out <- expr_label(quote({
     1 + 2

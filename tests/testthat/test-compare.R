@@ -1,5 +1,3 @@
-context("compare")
-
 test_that("list comparison truncates to max_diffs", {
   x <- as.list(as.character(1:1e3))
   y <- lapply(x, paste0, ".")

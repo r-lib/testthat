@@ -3,14 +3,15 @@
 
 # testthat <img src="man/figures/logo.png" align="right" />
 
-[![Travis-CI Build
-Status](https://travis-ci.org/r-lib/testthat.svg?branch=master)](https://travis-ci.org/r-lib/testthat)
-[![AppVeyor Build
-Status](https://ci.appveyor.com/api/projects/status/github/r-lib/testthat?branch=master&svg=true)](https://ci.appveyor.com/project/r-lib/testthat)
-[![Coverage
-status](https://codecov.io/gh/r-lib/testthat/branch/master/graph/badge.svg)](https://codecov.io/github/r-lib/testthat?branch=master)
+<!-- badges: start -->
+
 [![CRAN
-version](http://www.r-pkg.org/badges/version/testthat)](https://cran.r-project.org/package=testthat)
+status](https://www.r-pkg.org/badges/version/testthat)](https://cran.r-project.org/package=testthat)
+[![Travis build
+status](https://travis-ci.org/r-lib/testthat.svg?branch=master)](https://travis-ci.org/r-lib/testthat)
+[![Codecov test
+coverage](https://codecov.io/gh/r-lib/testthat/branch/master/graph/badge.svg)](https://codecov.io/gh/r-lib/testthat?branch=master)
+<!-- badges: end -->
 
 ## Overview
 

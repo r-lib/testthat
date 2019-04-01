@@ -1,5 +1,3 @@
-context("expect_known_output")
-
 test_that("uses specified width", {
   old <- options(width = 20)
   on.exit(options(old), add = TRUE)

@@ -1,5 +1,3 @@
-context("ListReporter")
-
 test_that("ListReporter with test_file", {
   report <- ListReporter$new()
   report$start_file("context.R")

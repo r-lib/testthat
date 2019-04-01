@@ -1,5 +1,3 @@
-context("Watcher components")
-
 test_that("compare state works correctly", {
   loc <- tempfile("watcher")
   dir.create(loc)

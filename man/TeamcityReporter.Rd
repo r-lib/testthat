@@ -25,4 +25,5 @@ Other reporters: \code{\link{CheckReporter}},
   \code{\link{SilentReporter}}, \code{\link{StopReporter}},
   \code{\link{SummaryReporter}}, \code{\link{TapReporter}}
 }
+\concept{reporters}
 \keyword{datasets}

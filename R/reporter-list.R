@@ -98,15 +98,15 @@ as.data.frame.testthat_results <- function(x, ...) {
     return(data.frame())
   }
 
-  rows <- lapply(x, sumarize_one_test_results)
+  rows <- lapply(x, summarize_one_test_results)
   do.call(rbind, rows)
 }
 
-sumarize_one_test_results <- function(test) {
+summarize_one_test_results <- function(test) {
   test_results <- test$results
   nb_tests <- length(test_results)
 
-  nb_failed <- nb_skipped <- nb_warning <- 0L
+  nb_failed <- nb_skipped <- nb_warning <- nb_passed <- 0L
   error <- FALSE
 
   if (nb_tests > 0) {
@@ -135,6 +135,11 @@ sumarize_one_test_results <- function(test) {
     stringsAsFactors = FALSE
   )
 
+  # Added at end for backward compatibility
+  res$passed <- nb_passed
+
+  # Cannot easily add list columns in data.frame()
+  res$result <- list(test_results)
   res
 }
 
