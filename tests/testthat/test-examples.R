@@ -9,3 +9,7 @@ test_that("test_examples works with installed packages", {
   )
   expect_true(length(res) > 1)
 })
+
+test_that("test_examples fails if no examples", {
+  expect_error(test_examples("asdf"), "Could not find examples")
+})
