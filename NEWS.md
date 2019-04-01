@@ -8,6 +8,8 @@
 
 * `skip_if_offline()` skips tests if an internet connection is not available
   (#685).
+* `skip_on_ci()` skips tests on continuous integration systems 
+  (@mbjoseph, #825).
 
 * Fixed an issue where `devtools::test()` could fail if run multiple times
   within the same R session for a package containing Catch tests.
