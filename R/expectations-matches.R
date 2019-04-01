@@ -1,5 +1,9 @@
 #' Expectation: does string match a regular expression?
 #'
+#' @details
+#' `expect_match()` is a wrapper around [grepl()]. See its documentation for
+#' more detail about the individual arguments.
+#'
 #' @inheritParams expect_that
 #' @inheritParams base::grepl
 #' @param regexp Regular expression to test against.

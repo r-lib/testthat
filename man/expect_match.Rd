@@ -37,6 +37,10 @@ writing tests in loops).}
 \description{
 Expectation: does string match a regular expression?
 }
+\details{
+\code{expect_match()} is a wrapper around \code{\link[=grepl]{grepl()}}. See its documentation for
+more detail about the individual arguments.
+}
 \examples{
 expect_match("Testing is fun", "fun")
 expect_match("Testing is fun", "f.n")
