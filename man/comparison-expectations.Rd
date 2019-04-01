@@ -27,8 +27,9 @@ expect_gte(object, expected, label = NULL, expected.label = NULL)
 
 \item{expected.label}{Equivalent of \code{label} for shortcut form.}
 
-\item{...}{Other values passed to \code{\link[=compare]{compare()}} to control the details of
-the comparison.}
+\item{...}{For \code{expect_equal()} and \code{expect_equivalent()}, passed on
+\code{\link[=compare]{compare()}}, for \code{expect_identical()} passed on to \code{\link[=identical]{identical()}}.
+Used to control the details of the comparison.}
 }
 \description{
 Expectation: is returned value less or greater than specified value?
