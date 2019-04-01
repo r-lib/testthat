@@ -32,7 +32,7 @@ NULL
 #' @export
 #' @rdname inheritance-expectations
 expect_null <- function(object, info = NULL, label = NULL) {
-  act <- quasi_label(enquo(object), label)
+  act <- quasi_label(enquo(object), label, arg = "object")
 
   expect(
     is.null(act$val),
@@ -47,7 +47,7 @@ expect_null <- function(object, info = NULL, label = NULL) {
 expect_type <- function(object, type) {
   stopifnot(is.character(type), length(type) == 1)
 
-  act <- quasi_label(enquo(object))
+  act <- quasi_label(enquo(object), arg = "object")
   act_type <- typeof(act$val)
 
   expect(
@@ -64,7 +64,7 @@ expect_type <- function(object, type) {
 expect_is <- function(object, class, info = NULL, label = NULL) {
   stopifnot(is.character(class))
 
-  act <- quasi_label(enquo(object), label)
+  act <- quasi_label(enquo(object), label, arg = "object")
   act$class <- klass(act$val)
   exp_lab <- paste(class, collapse = "/")
 
@@ -81,7 +81,7 @@ expect_is <- function(object, class, info = NULL, label = NULL) {
 expect_s3_class <- function(object, class) {
   stopifnot(is.character(class))
 
-  act <- quasi_label(enquo(object))
+  act <- quasi_label(enquo(object), arg = "object")
   act$class <- klass(object)
   exp_lab <- paste(class, collapse = "/")
 
@@ -101,7 +101,7 @@ expect_s3_class <- function(object, class) {
 expect_s4_class <- function(object, class) {
   stopifnot(is.character(class))
 
-  act <- quasi_label(enquo(object))
+  act <- quasi_label(enquo(object), arg = "object")
   act_val_lab <- paste(methods::is(object), collapse = "/")
   exp_lab <- paste(class, collapse = "/")
 

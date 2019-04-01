@@ -14,7 +14,7 @@
 expect_length <- function(object, n) {
   stopifnot(is.numeric(n), length(n) == 1)
 
-  act <- quasi_label(enquo(object))
+  act <- quasi_label(enquo(object), arg = "object")
   act$n <- length(act$val)
 
   expect(

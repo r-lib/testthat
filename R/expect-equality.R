@@ -48,8 +48,8 @@ NULL
 #' @param ... other values passed to [all.equal()] or `[identical()]`.
 expect_equal <- function(object, expected, ..., info = NULL, label = NULL,
                          expected.label = NULL) {
-  act <- quasi_label(enquo(object), label)
-  exp <- quasi_label(enquo(expected), expected.label)
+  act <- quasi_label(enquo(object), label, arg = "object")
+  exp <- quasi_label(enquo(expected), expected.label, arg = "expected")
 
   comp <- compare(act$val, exp$val, ...)
   expect(
@@ -65,8 +65,8 @@ expect_equal <- function(object, expected, ..., info = NULL, label = NULL,
 #' @export
 #' @rdname equality-expectations
 expect_setequal <- function(object, expected) {
-  act <- quasi_label(enquo(object))
-  exp <- quasi_label(enquo(expected))
+  act <- quasi_label(enquo(object), arg = "object")
+  exp <- quasi_label(enquo(expected), arg = "expected")
 
   act$val <- sort(unique(act$val))
   exp$val <- sort(unique(exp$val))
@@ -85,8 +85,8 @@ expect_setequal <- function(object, expected) {
 #' @rdname equality-expectations
 expect_equivalent <- function(object, expected, ..., info = NULL, label = NULL,
                               expected.label = NULL) {
-  act <- quasi_label(enquo(object), label)
-  exp <- quasi_label(enquo(expected), expected.label)
+  act <- quasi_label(enquo(object), label, arg = "object")
+  exp <- quasi_label(enquo(expected), expected.label, arg = "expected")
 
   comp <- compare(act$val, exp$val, ..., check.attributes = FALSE)
   expect(
@@ -101,8 +101,8 @@ expect_equivalent <- function(object, expected, ..., info = NULL, label = NULL,
 #' @rdname equality-expectations
 expect_identical <- function(object, expected, info = NULL, label = NULL,
                              expected.label = NULL, ...) {
-  act <- quasi_label(enquo(object), label)
-  exp <- quasi_label(enquo(expected), expected.label)
+  act <- quasi_label(enquo(object), label, arg = "object")
+  exp <- quasi_label(enquo(expected), expected.label, arg = "expected")
 
   ident <- identical(act$val, exp$val, ...)
   if (ident) {
@@ -128,8 +128,8 @@ expect_identical <- function(object, expected, info = NULL, label = NULL,
 #' @rdname equality-expectations
 expect_reference <- function(object, expected, info = NULL, label = NULL,
                              expected.label = NULL) {
-  act <- quasi_label(enquo(object), label)
-  exp <- quasi_label(enquo(expected), expected.label)
+  act <- quasi_label(enquo(object), label, arg = "object")
+  exp <- quasi_label(enquo(expected), expected.label, arg = "expected")
 
   expect(
     is_reference(act$val, exp$val),

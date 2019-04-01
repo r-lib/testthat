@@ -1,5 +1,8 @@
 # testthat (development version)
 
+* All expectations give clearer error messages if you forget the `object`
+  or `expected` arguments (#743).
+
 * `skip()` now always produces a `message` of length 1, as expected elsewhere
   in testthat (#791).
 

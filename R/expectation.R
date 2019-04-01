@@ -66,6 +66,7 @@ is.expectation <- function(x) inherits(x, "expectation")
 #' @param label An optional label to override the default. This is
 #'   only provided for internal usage. Modern expectations should not
 #'   include a `label` parameter.
+#' @param arg Argument name shown in error message if `quo` is missing.
 #' @keywords internal
 #' @return A list containing two elements:
 #' \item{val}{The evaluate value of `quo`}
@@ -84,8 +85,11 @@ is.expectation <- function(x) inherits(x, "expectation")
 #' # !!. This causes the failure message to show the value rather than the
 #' # variable name
 #' show_failure(expect_equal(f(!!i), !!(i * 10)))
-quasi_label <- function(quo, label = NULL) {
+quasi_label <- function(quo, label = NULL, arg = "quo") {
   force(quo)
+  if (quo_is_missing(quo)) {
+    stop("argument `", arg, "` is missing, with no default.", call. = FALSE)
+  }
 
   list(
     val = eval_bare(get_expr(quo), get_env(quo)),
