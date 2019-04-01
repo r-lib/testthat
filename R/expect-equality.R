@@ -45,7 +45,8 @@ NULL
 
 #' @export
 #' @rdname equality-expectations
-#' @param ... other values passed to [all.equal()] or `[identical()]`.
+#' @param ... Other values passed to [compare()] to control the details of
+#'   the comparison.
 expect_equal <- function(object, expected, ..., info = NULL, label = NULL,
                          expected.label = NULL) {
   act <- quasi_label(enquo(object), label, arg = "object")

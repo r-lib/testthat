@@ -28,7 +28,8 @@ expect_reference(object, expected, info = NULL, label = NULL,
 
 \item{expected}{Expected value}
 
-\item{...}{other values passed to \code{\link[=all.equal]{all.equal()}} or \code{[identical()]}.}
+\item{...}{Other values passed to \code{\link[=compare]{compare()}} to control the details of
+the comparison.}
 
 \item{info}{extra information to be included in the message (useful when
 writing tests in loops).}

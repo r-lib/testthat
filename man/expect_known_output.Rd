@@ -25,7 +25,8 @@ expect_known_hash(object, hash = NULL)
 the expectation that you'll notice changes because of the first failure,
 and then see the modified files in git.}
 
-\item{...}{other values passed to \code{\link[=all.equal]{all.equal()}} or \code{[identical()]}.}
+\item{...}{Other values passed to \code{\link[=compare]{compare()}} to control the details of
+the comparison.}
 
 \item{info}{extra information to be included in the message (useful when
 writing tests in loops).}
