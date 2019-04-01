@@ -1,5 +1,10 @@
 # testthat (development version)
 
+* `expect_error()` warns if you're using a custom expectation class and you're
+  not testing for `class`. This is good practice as it decouples the error
+  object (which tends to be stable) from its rendering to the use (which tends
+  to fragile) (#816).
+
 * New `expect_visible()` and `expect_invisible()` make it easier to check if
   a function call returns its result visibly or invisibly (#719).
 

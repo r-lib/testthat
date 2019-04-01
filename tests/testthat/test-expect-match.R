@@ -14,9 +14,18 @@ test_that("correct reporting of expected label", {
 })
 
 test_that("errors if obj is empty str", {
-  expect_error(expect_match(character(0), 'asdf'), 'is empty')
+  x <- character(0)
+  err <- expect_error(
+    expect_match(x, 'asdf'),
+    class = "expectation_failure"
+  )
+  expect_match(err$message, 'is empty')
 })
 
 test_that("prints multiple unmatched values", {
-  expect_error(expect_match(c('x', 'y'), 'z'), "x.*y")
+  err <- expect_error(
+    expect_match(letters[1:10], 'asdf'),
+    class = "expectation_failure"
+  )
+  expect_match(err$message, "does not match")
 })

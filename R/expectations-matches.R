@@ -24,12 +24,9 @@
 #' }
 expect_match <- function(object, regexp, perl = FALSE, fixed = FALSE, ..., all = TRUE,
                          info = NULL, label = NULL) {
-  if (fixed) escape <- identity
-  else escape <- escape_regex
-
-  stopifnot(is.character(regexp), length(regexp) == 1)
 
   act <- quasi_label(enquo(object), label, arg = "object")
+  stopifnot(is.character(regexp), length(regexp) == 1)
 
   stopifnot(is.character(act$val))
   if (length(object) == 0) {
@@ -37,6 +34,7 @@ expect_match <- function(object, regexp, perl = FALSE, fixed = FALSE, ..., all =
   }
 
   matches <- grepl(regexp, act$val, perl = perl, fixed = fixed, ...)
+  escape <- if (fixed) identity else escape_regex
 
   if (length(act$val) == 1) {
     values <- paste0("Actual value: \"", escape(encodeString(act$val)), "\"")

@@ -125,9 +125,20 @@ expect_error <- function(object,
                          info = NULL,
                          label = NULL
                          ) {
+
   act <- quasi_capture(enquo(object), label, capture_error)
   msg <- compare_condition(act$cap, act$lab, regexp = regexp, class = class, ...)
   expect(is.null(msg), msg, info = info)
+
+  if (!is.null(act$cap)) {
+    if (!simple_error(act$cap) && is.null(class) && !is.null(regexp)) {
+      klass <- paste0(class(act$cap), collapse = "/")
+      warn(paste0(
+        act$lab, " generated a condition with class ", klass, ".\n",
+        "It is less fragile to test custom conditions with `class`"
+      ))
+    }
+  }
 
   invisible(act$val %||% act$cap)
 }
@@ -269,6 +280,17 @@ compare_condition <- function(cond, lab, regexp = NULL, class = NULL, ...,
   )
 }
 
+simple_error <- function(x) {
+  if (!inherits(x, "error")) {
+    return(FALSE)
+  }
+
+  if (inherits(x, "simpleError")) {
+    return(TRUE)
+  }
+
+  inherits_only(x, c("rlang_error", "error", "condition"))
+}
 
 compare_messages <- function(messages,
                              lab,
