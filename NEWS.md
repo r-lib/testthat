@@ -1,5 +1,7 @@
 # testthat (development version)
 
+* `expect_equal()` compares infinite values correctly (#789).
+
 * `expect_output()` gains `width` argument, allowing you to control the 
   output width. This does not inherit from `getOption("width")`, ensuring 
   that tests return the same results regardless of environment (#805).
