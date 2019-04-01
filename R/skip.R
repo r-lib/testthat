@@ -52,6 +52,7 @@
 #'   expect_equal(1, 3)     # this one is also skipped
 #' })
 skip <- function(message) {
+  message <- paste0(message, collapse = "\n")
   cond <- structure(list(message = message), class = c("skip", "condition"))
   stop(cond)
 }

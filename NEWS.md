@@ -1,5 +1,8 @@
 # testthat (development version)
 
+* `skip()` now always produces a `message` of length 1, as expected elsewhere
+  in testthat (#791).
+
 * `auto_test_package()` works better with recent devtools and also watches
   `src/` for changes (#809).
 
