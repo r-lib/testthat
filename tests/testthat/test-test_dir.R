@@ -1,5 +1,3 @@
-context("test_dir")
-
 test_that("R_TESTS envar is unset", {
   expect_equal(Sys.getenv("R_TESTS"), "")
 })

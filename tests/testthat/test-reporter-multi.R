@@ -1,5 +1,3 @@
-context("MultiReporter")
-
 test_that("MultiReporter", {
   reports <- lapply(seq_len(3), function(x) ListReporter$new())
   reporter <- MultiReporter$new(reporters = reports)

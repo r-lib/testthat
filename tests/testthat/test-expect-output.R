@@ -1,5 +1,3 @@
-context("expect_output")
-
 f <- function() NULL
 g <- function() cat("!")
 

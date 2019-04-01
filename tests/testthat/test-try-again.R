@@ -1,5 +1,3 @@
-context("try_again")
-
 succeed_after <- function(i) {
   function() {
     i <<- i - 1

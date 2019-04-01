@@ -1,5 +1,3 @@
-context("skip")
-
 test_that("Package checks", {
   expect_skip <- function(code, need_skip = TRUE) {
     skipped <- TRUE

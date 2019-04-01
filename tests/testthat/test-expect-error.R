@@ -1,5 +1,3 @@
-context("expect_error")
-
 test_that("regexp = NULL checks for presence of error", {
   expect_success(expect_error(stop()))
   expect_failure(expect_error(null()), "did not throw an error")
