@@ -1,5 +1,3 @@
-context("Contexts")
-
 CountReporter <- R6::R6Class("CountReporter",
   inherit = Reporter,
   public = list(

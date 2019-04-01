@@ -25,7 +25,7 @@ expect_match <- function(object, regexp, perl = FALSE, fixed = FALSE, ..., all =
 
   stopifnot(is.character(regexp), length(regexp) == 1)
 
-  act <- quasi_label(enquo(object), label)
+  act <- quasi_label(enquo(object), label, arg = "object")
 
   stopifnot(is.character(act$val))
   if (length(object) == 0) {

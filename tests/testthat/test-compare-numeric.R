@@ -1,5 +1,3 @@
-context("compare.numeric")
-
 # Metadata ----------------------------------------------------------------
 
 test_that("numeric types are compatible", {

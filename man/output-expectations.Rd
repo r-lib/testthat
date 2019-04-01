@@ -10,13 +10,14 @@
 \alias{expect_silent}
 \title{Expectation: does code produce output/message/warning/error?}
 \usage{
-expect_output(object, regexp = NULL, ..., info = NULL, label = NULL)
+expect_output(object, regexp = NULL, ..., info = NULL, label = NULL,
+  width = 80)
 
 expect_error(object, regexp = NULL, class = NULL, ..., info = NULL,
   label = NULL)
 
-expect_condition(object, regexp = NULL, class = NULL, ..., info = NULL,
-  label = NULL)
+expect_condition(object, regexp = NULL, class = NULL, ...,
+  info = NULL, label = NULL)
 
 expect_message(object, regexp = NULL, ..., all = FALSE, info = NULL,
   label = NULL)
@@ -50,6 +51,10 @@ or does only one need to match (FALSE)}
 writing tests in loops).}
 
 \item{label}{object label. When \code{NULL}, computed from deparsed object.}
+
+\item{width}{Number of characters per line of output. This does not
+inherit from \code{getOption("width")} so that tests always use the same
+output width, minimising spurious differences.}
 
 \item{class}{Instead of supplying a regular expression, you can also supply
 a class name. This is useful for "classed" conditions.}
@@ -136,3 +141,4 @@ Other expectations: \code{\link{comparison-expectations}},
   \code{\link{inheritance-expectations}},
   \code{\link{logical-expectations}}
 }
+\concept{expectations}

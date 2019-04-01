@@ -91,7 +91,7 @@ expect_known_value <- function(object, file,
                                ...,
                                info = NULL,
                                label = NULL) {
-  act <- quasi_label(enquo(object), label)
+  act <- quasi_label(enquo(object), label, arg = "object")
 
   if (!file.exists(file)) {
     warning("Creating reference value", call. = FALSE)
@@ -130,7 +130,7 @@ expect_equal_to_reference <- function(..., update = FALSE) {
 #' @param hash Known hash value. Leave empty and you'll be informed what
 #'   to use in the test output.
 expect_known_hash <- function(object, hash = NULL) {
-  act <- quasi_label(enquo(object))
+  act <- quasi_label(enquo(object), arg = "object")
   act_hash <- digest::digest(act$val)
   if (!is.null(hash)) {
     act_hash <- substr(act_hash, 1, nchar(hash))
@@ -142,7 +142,7 @@ expect_known_hash <- function(object, hash = NULL) {
   } else {
     expect(
       hash == act_hash,
-      sprintf("Value hashes to %s does not hash not %s", act_hash, hash)
+      sprintf("Value hashes to %s, not %s", act_hash, hash)
     )
   }
 

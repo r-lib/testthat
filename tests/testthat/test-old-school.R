@@ -1,5 +1,3 @@
-context("old-school expectations")
-
 test_that("old school logical works", {
   expect_warning(
     expect_success(expect_that(TRUE, is_true())),

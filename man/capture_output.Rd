@@ -16,7 +16,9 @@ capture_output_lines(code, print = FALSE, width = 80)
 visible this will print the result, ensuring that the output of printing
 the object is included in the overall output}
 
-\item{width}{Number of characters per line of output}
+\item{width}{Number of characters per line of output. This does not
+inherit from \code{getOption("width")} so that tests always use the same
+output width, minimising spurious differences.}
 }
 \value{
 \code{capture_output()} returns a single string. \code{capture_output_lines()}

@@ -4,7 +4,7 @@
 \alias{quasi_label}
 \title{Quasi-labelling}
 \usage{
-quasi_label(quo, label = NULL)
+quasi_label(quo, label = NULL, arg = "quo")
 }
 \arguments{
 \item{quo}{A quosure created by \code{rlang::enquo()}.}
@@ -12,6 +12,8 @@ quasi_label(quo, label = NULL)
 \item{label}{An optional label to override the default. This is
 only provided for internal usage. Modern expectations should not
 include a \code{label} parameter.}
+
+\item{arg}{Argument name shown in error message if \code{quo} is missing.}
 }
 \value{
 A list containing two elements:

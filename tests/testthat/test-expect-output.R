@@ -1,5 +1,3 @@
-context("expect_output")
-
 f <- function() NULL
 g <- function() cat("!")
 
@@ -21,6 +19,14 @@ test_that("expect = string checks for match", {
 
 test_that("multiline outputs captures and matches", {
   expect_success(expect_output(cat("1\n2"), "1\n2"))
+})
+
+test_that("expect_output sets width", {
+  x <- expect_output(getOption("width"), NA)
+  expect_equal(x, 80)
+
+  x <- expect_output(getOption("width"), NA, width = 20)
+  expect_equal(x, 20)
 })
 
 test_that("... passed on to grepl", {

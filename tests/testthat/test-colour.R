@@ -1,5 +1,3 @@
-context("Colours")
-
 test_that("can supress colours", {
   op <- options(
     crayon.enabled = TRUE,

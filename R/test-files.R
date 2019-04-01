@@ -128,7 +128,7 @@ test_file <- function(path, reporter = default_reporter(), env = test_env(),
     {
       # We need to notify the lister separately from the reporter, which is why
       # we call start_file methods twice.
-      get_reporter()$start_file(basename(path))
+      reporter$start_file(basename(path))
       lister$start_file(basename(path))
 
       source_file(
@@ -136,7 +136,8 @@ test_file <- function(path, reporter = default_reporter(), env = test_env(),
         chdir = TRUE, wrap = wrap
       )
 
-      end_context()
+      reporter$end_context()
+      reporter$end_file()
     }
   )
 

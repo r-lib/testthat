@@ -1,3 +1,3 @@
 # CODEOWNERS for testthat
 # https://www.tidyverse.org/development/understudies
-* @hadley @jimhester
+.github/CODEOWNERS @hadley @jimhester

@@ -1,5 +1,3 @@
-context("expect_known_value")
-
 test_that("correctly matches to a file", {
   x <- 1
   expect_success(expect_known_value(x, "one.rds"))

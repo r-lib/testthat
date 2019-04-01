@@ -1,5 +1,3 @@
-context("compare.time")
-
 # Metadata ----------------------------------------------------------------
 
 test_that("both POSIXt classes are compatible", {

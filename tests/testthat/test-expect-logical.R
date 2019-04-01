@@ -1,5 +1,3 @@
-context("expect-logical")
-
 test_that("logical tests act as expected", {
   expect_success(expect_true(TRUE))
   expect_success(expect_false(FALSE))

@@ -60,6 +60,10 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
 
     start_file = function(file) {
       self$file_name <- file
+
+      # Need to set here in case file doesn't contain any tests
+      self$ctxt_issues <- Stack$new()
+      self$ctxt_start_time <- proc.time()
     },
 
     start_test = function(context, test) {
