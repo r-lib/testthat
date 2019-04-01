@@ -1,5 +1,9 @@
 # testthat (development version)
 
+* `reporter$end_reporter()` is now only called when testing complete 
+  successfully. This ensures that you don't get reporter messaging when
+  the tests fails halfway through (#727)
+  
 * `expect_error()` warns if you're using a custom expectation class and you're
   not testing for `class`. This is good practice as it decouples the error
   object (which tends to be stable) from its rendering to the use (which tends
