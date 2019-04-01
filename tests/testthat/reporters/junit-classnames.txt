@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="junit.domain.name.TestClass1" timestamp="1999:12:31 23:59:59" hostname="nodename" tests="1" skipped="0" failures="0" errors="0" time="0">
+    <testcase time="0" classname="junit.domain.name.TestClass1" name="JSuccess"/>
+  </testsuite>
+  <testsuite name="junit.domain.name.TestClass2" timestamp="1999:12:31 23:59:59" hostname="nodename" tests="1" skipped="0" failures="1" errors="0" time="0">
+    <testcase time="0" classname="junit.domain.name.TestClass2" name="JFailure">
+      <failure type="failure" message="Failure has been forced (@junit-classname-tests.R#10)">Failure has been forced</failure>
+    </testcase>
+  </testsuite>
+  <testsuite name="End" timestamp="1999:12:31 23:59:59" hostname="nodename" tests="0" skipped="0" failures="0" errors="0" time="0"/>
+</testsuites>

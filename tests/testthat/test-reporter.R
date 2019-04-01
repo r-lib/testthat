@@ -152,3 +152,39 @@ test_that("silent reporter accepts the 'file' argument but doesn't write anythin
   expect_silent(test_reporter(SilentReporter$new(file = output)))
   expect_false(file.exists(output))
 })
+
+test_that("JUnitReporter handles fully qualified Java class names", {
+  junit_test_reporter <- function(reporter) {
+    withr::local_options(list(width = 80, crayon.enabled = FALSE))
+    withr::local_envvar(list(RSTUDIO_CONSOLE_WIDTH = 80))
+
+    test_file(test_path("reporters/junit-classname-tests.R"), reporter, wrap = FALSE)
+  }
+
+  expect_testsuite_names <- function(object, file,
+                                  update = TRUE,
+                                  ...,
+                                  print = FALSE,
+                                  width = 80) {
+    out <- capture_output_lines(object, print = print, width = width)
+    if (!file.exists(file)) {
+      warning("Creating reference output", call. = FALSE)
+    }
+    write_lines(out, file)
+    doc <- xml2::read_xml(file)
+    expect_equal(xml2::xml_length(doc), 3)
+    expect_equal(xml2::xml_attr(xml2::xml_child(doc, 1), "name"), "junit.domain.name.TestClass1")
+    expect_equal(xml2::xml_attr(xml2::xml_child(doc, 2), "name"), "junit.domain.name.TestClass2")
+    expect_equal(xml2::xml_attr(xml2::xml_child(doc, 3), "name"), "End")
+  }
+
+  save_report <- function(name, reporter = find_reporter(name)) {
+    path <- test_path("reporters", paste0(name, ".txt"))
+    withr::with_options(
+      c(cli.unicode = TRUE),
+      expect_testsuite_names(junit_test_reporter(reporter), path)
+    )
+  }
+
+  save_report("junit-classnames", reporter = createJunitReporterMock())
+})
