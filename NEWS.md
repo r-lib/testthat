@@ -1,5 +1,7 @@
 # testthat (development version)
 
+* `expect_s3_class()` now works with unquoting (@jalsalam, #771).
+
 * All expectations give clearer error messages if you forget the `object`
   or `expected` arguments (#743).
 
