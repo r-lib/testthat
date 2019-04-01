@@ -17,7 +17,7 @@ is met, and if not, an error message to display.}
 
 \item{info}{Extra information to be included in the message. This argument
 is soft-deprecated and should not be used in new code. Instead see
-alternatives in \link{quasi-label}.}
+alternatives in \link{quasi_label}.}
 
 \item{label}{Used to customise failure messages. For expert use only.}
 }
