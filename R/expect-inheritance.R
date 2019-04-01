@@ -82,10 +82,10 @@ expect_s3_class <- function(object, class) {
   stopifnot(is.character(class))
 
   act <- quasi_label(enquo(object), arg = "object")
-  act$class <- klass(object)
+  act$class <- klass(act$val)
   exp_lab <- paste(class, collapse = "/")
 
-  if (!isS3(object)) {
+  if (!isS3(act$val)) {
     fail(sprintf("%s is not an S3 object", act$lab))
   }
 
