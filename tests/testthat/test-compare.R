@@ -23,3 +23,4 @@ test_that("vector_equal_tol handles infinity", {
 test_that("vector_equal_tol handles na", {
   expect_true(vector_equal_tol(NA, NA))
   expect_false(vector_equal_tol(NA, 0))
+})
