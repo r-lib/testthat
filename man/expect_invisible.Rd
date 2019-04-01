@@ -12,7 +12,7 @@ expect_visible(call, label = NULL)
 \arguments{
 \item{call}{A function call.}
 
-\item{label}{object label. When \code{NULL}, computed from deparsed object.}
+\item{label}{Used to customise failure messages. For expert use only.}
 }
 \value{
 The evaluated \code{call}, invisibly.

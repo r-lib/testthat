@@ -20,12 +20,16 @@ expect_s3_class(object, class)
 expect_s4_class(object, class)
 }
 \arguments{
-\item{object}{object to test}
+\item{object}{Object to test.
 
-\item{info}{extra information to be included in the message (useful when
-writing tests in loops).}
+Supports limited unquoting to make it easier to generate readable failures
+within a function or for loop. See \link{quasi_label} for more details.}
 
-\item{label}{object label. When \code{NULL}, computed from deparsed object.}
+\item{info}{Extra information to be included in the message. This argument
+is soft-deprecated and should not be used in new code. Instead see
+alternatives in \link{quasi-label}.}
+
+\item{label}{Used to customise failure messages. For expert use only.}
 
 \item{type}{String giving base type (as returned by \code{\link[=typeof]{typeof()}}).}
 

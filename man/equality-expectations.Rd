@@ -24,20 +24,22 @@ expect_reference(object, expected, info = NULL, label = NULL,
   expected.label = NULL)
 }
 \arguments{
-\item{object}{object to test}
+\item{object, expected}{Computation and value to compare it to.
 
-\item{expected}{Expected value}
+Both arguments supports limited unquoting to make it easier to generate
+readable failures within a function or for loop. See \link{quasi_label} for
+more details.}
 
 \item{...}{For \code{expect_equal()} and \code{expect_equivalent()}, passed on
 \code{\link[=compare]{compare()}}, for \code{expect_identical()} passed on to \code{\link[=identical]{identical()}}.
 Used to control the details of the comparison.}
 
-\item{info}{extra information to be included in the message (useful when
-writing tests in loops).}
+\item{info}{Extra information to be included in the message. This argument
+is soft-deprecated and should not be used in new code. Instead see
+alternatives in \link{quasi-label}.}
 
-\item{label}{object label. When \code{NULL}, computed from deparsed object.}
-
-\item{expected.label}{Equivalent of \code{label} for shortcut form.}
+\item{label, expected.label}{Used to customise failure messages. For expert
+use only.}
 }
 \description{
 \itemize{

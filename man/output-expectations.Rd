@@ -28,7 +28,10 @@ expect_warning(object, regexp = NULL, ..., all = FALSE, info = NULL,
 expect_silent(object)
 }
 \arguments{
-\item{object}{object to test}
+\item{object}{Object to test.
+
+Supports limited unquoting to make it easier to generate readable failures
+within a function or for loop. See \link{quasi_label} for more details.}
 
 \item{regexp}{regular expression to test against.
 
@@ -47,10 +50,11 @@ or does only one need to match (FALSE)}
     matched as is.  Overrides all conflicting arguments.}
 }}
 
-\item{info}{extra information to be included in the message (useful when
-writing tests in loops).}
+\item{info}{Extra information to be included in the message. This argument
+is soft-deprecated and should not be used in new code. Instead see
+alternatives in \link{quasi-label}.}
 
-\item{label}{object label. When \code{NULL}, computed from deparsed object.}
+\item{label}{Used to customise failure messages. For expert use only.}
 
 \item{width}{Number of characters per line of output. This does not
 inherit from \code{getOption("width")} so that tests always use the same

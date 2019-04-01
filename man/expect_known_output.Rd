@@ -17,7 +17,11 @@ expect_known_value(object, file, update = TRUE, ..., info = NULL,
 expect_known_hash(object, hash = NULL)
 }
 \arguments{
-\item{object}{object to test}
+\item{object}{Computation and value to compare it to.
+
+Both arguments supports limited unquoting to make it easier to generate
+readable failures within a function or for loop. See \link{quasi_label} for
+more details.}
 
 \item{file}{File path where known value/output will be stored.}
 
@@ -29,10 +33,12 @@ and then see the modified files in git.}
 \code{\link[=compare]{compare()}}, for \code{expect_identical()} passed on to \code{\link[=identical]{identical()}}.
 Used to control the details of the comparison.}
 
-\item{info}{extra information to be included in the message (useful when
-writing tests in loops).}
+\item{info}{Extra information to be included in the message. This argument
+is soft-deprecated and should not be used in new code. Instead see
+alternatives in \link{quasi-label}.}
 
-\item{label}{object label. When \code{NULL}, computed from deparsed object.}
+\item{label}{Used to customise failure messages. For expert
+use only.}
 
 \item{print}{If \code{TRUE} and the result of evaluating \code{code} is
 visible this will print the result, ensuring that the output of printing

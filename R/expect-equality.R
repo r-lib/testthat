@@ -8,8 +8,13 @@
 #' - `expect_reference` tests if two symbols point to the same underlying
 #'    object in memory (requires rlang 1.2.9000 or greater)
 #
-#' @param expected Expected value
-#' @param expected.label Equivalent of `label` for shortcut form.
+#' @param object,expected Computation and value to compare it to.
+#'
+#'   Both arguments supports limited unquoting to make it easier to generate
+#'   readable failures within a function or for loop. See [quasi_label] for
+#'   more details.
+#' @param label,expected.label Used to customise failure messages. For expert
+#'   use only.
 #' @inheritParams expect_that
 #' @family expectations
 #' @examples

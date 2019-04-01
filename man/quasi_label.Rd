@@ -26,6 +26,14 @@ construct better labels. This makes it easy to create informative labels
 expectations are used inside a function or a for loop. \code{quasi_label()} wraps
 up the details, returning the expression and label.
 }
+\section{Limitations}{
+
+Because all \code{expect_} function use unquoting to generate more informative
+labels, you can not use unquoting for other purposes. Instead, you'll need
+to perform all other unquoting outside of the expectation and only test
+the results.
+}
+
 \examples{
 f <- function(i) if (i > 3) i * 9 else i * 10
 i <- 10

@@ -7,7 +7,10 @@
 expect_length(object, n)
 }
 \arguments{
-\item{object}{object to test}
+\item{object}{Object to test.
+
+Supports limited unquoting to make it easier to generate readable failures
+within a function or for loop. See \link{quasi_label} for more details.}
 
 \item{n}{Expected length.}
 }

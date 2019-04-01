@@ -62,6 +62,12 @@ is.expectation <- function(x) inherits(x, "expectation")
 #' expectations are used inside a function or a for loop. `quasi_label()` wraps
 #' up the details, returning the expression and label.
 #'
+#' @section Limitations:
+#' Because all `expect_` function use unquoting to generate more informative
+#' labels, you can not use unquoting for other purposes. Instead, you'll need
+#' to perform all other unquoting outside of the expectation and only test
+#' the results.
+#'
 #' @param quo A quosure created by `rlang::enquo()`.
 #' @param label An optional label to override the default. This is
 #'   only provided for internal usage. Modern expectations should not
