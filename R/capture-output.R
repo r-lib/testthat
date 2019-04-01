@@ -7,7 +7,9 @@
 #' @param print If `TRUE` and the result of evaluating `code` is
 #'   visible this will print the result, ensuring that the output of printing
 #'   the object is included in the overall output
-#' @param width Number of characters per line of output
+#' @param width Number of characters per line of output. This does not
+#'   inherit from `getOption("width")` so that tests always use the same
+#'   output width, minimising spurious differences.
 #' @return `capture_output()` returns a single string. `capture_output_lines()`
 #'   returns a character vector with one entry for each line
 #' @keywords internal

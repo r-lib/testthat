@@ -1,5 +1,3 @@
-context("expect_named")
-
 test_that("expected_named verifies presence of names", {
   expect_success(expect_named(c(a = 1)))
   expect_failure(expect_named(1:10))

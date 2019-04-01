@@ -1,5 +1,3 @@
-context("Mock")
-
 test_that("can make 3 = 5", {
   with_mock(
     compare = function(x, y, ...) list(equal = TRUE, message = "TRUE"),

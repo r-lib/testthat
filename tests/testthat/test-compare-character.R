@@ -1,5 +1,3 @@
-context("compare.character")
-
 # Metadata ----------------------------------------------------------------
 
 test_that("types must be the same", {

@@ -1,5 +1,3 @@
-context("source")
-
 test_that("source_file always uses UTF-8 encoding", {
   has_locale <- function(l) {
     has <- TRUE

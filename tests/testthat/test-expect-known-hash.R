@@ -1,5 +1,3 @@
-context("expect_known_hash")
-
 test_that("empty hash succeeds with warning", {
   expect_success(
     expect_warning(
