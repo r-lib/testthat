@@ -93,10 +93,10 @@ quasi_label <- function(quo, label = NULL) {
   )
 }
 
-quasi_capture <- function(quo, capture, label = NULL) {
+quasi_capture <- function(.quo, .label, .capture, ...) {
   act <- list()
-  act$lab <- label %||% quo_label(quo)
-  act$cap <- capture(act$val <- eval_bare(get_expr(quo), get_env(quo)))
+  act$lab <- .label %||% quo_label(.quo)
+  act$cap <- .capture(act$val <- eval_bare(get_expr(.quo), get_env(.quo)), ...)
 
   act
 }
