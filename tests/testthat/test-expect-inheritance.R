@@ -1,5 +1,3 @@
-context("expect-inheritance")
-
 test_that("expect_type checks typeof", {
   expect_success(expect_type(factor("a"), "integer"))
   expect_failure(expect_type(factor("a"), "double"))
@@ -39,4 +37,9 @@ test_that("test_s3_class respects class hierarchy", {
   expect_success(expect_s3_class(x, "a"))
   expect_success(expect_s3_class(x, "b"))
   expect_failure(expect_s3_class(x, "c"), "inherits from `a/b`")
+})
+
+test_that("expect_s3_class allows unquoting of first argument", {
+  f <- factor("a")
+  expect_success(expect_s3_class(!! rlang::quo(f), "factor"))
 })

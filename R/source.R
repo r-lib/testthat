@@ -1,14 +1,13 @@
-#' Source a file, directory, or all helpers.
+#' Source a file, directory of files, or various important subsets
 #'
-#' The expectation is that the files can be sourced in alphabetical order.
-#' Helper scripts are R scripts accompanying test scripts but prefixed by
-#' `helper`. These scripts are run once before the tests are run.
+#' These are used by [test_dir()] and friends
 #'
-#' @param path Path to tests
-#' @param pattern Regular expression used to filter files
+#' @inheritSection test_dir Test files
+#' @param path Path to files.
+#' @param pattern Regular expression used to filter files.
 #' @param env Environment in which to evaluate code.
 #' @param chdir Change working directory to `dirname(path)`?
-#' @param encoding Deprecated
+#' @param encoding Deprecated.
 #' @param wrap Automatically wrap all code within [test_that()]? This ensures
 #'   that all expectations are reported, even if outside a test block.
 #' @export

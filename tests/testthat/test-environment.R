@@ -1,5 +1,3 @@
-context("Environment")
-
 env <- new.env()
 setClass("MyClass", where = env)
 

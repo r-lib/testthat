@@ -7,18 +7,21 @@
 expect(ok, failure_message, info = NULL, srcref = NULL)
 }
 \arguments{
-\item{ok}{Was the expectation successful?}
+\item{ok}{\code{TRUE} or \code{FALSE} indicating if the expectation was successful.}
 
-\item{failure_message}{What message should be shown if the expectation was
-not successful?}
+\item{failure_message}{Message to show if the expectation failed.}
 
-\item{info}{Additional information. Included for backward compatibility
-only and new expectations should not use it.}
+\item{info}{Character vector continuing additional information. Included
+for backward compatibility only and new expectations should not use it.}
 
-\item{srcref}{Only needed in very rare circumstances where you need to
-forward a srcref captured elsewhere.}
+\item{srcref}{Location of the failure. Should only needed to be explicitly
+supplied when you need to forward a srcref captured elsewhere.}
+}
+\value{
+An expectation object. Signals the expectation condition
+with a \code{continue_test} restart.
 }
 \description{
-Use this if you are writing your own expectation. See
-\code{vignette("custom-expectation")} for details
+Call this function when writing your own expectations. See
+\code{vignette("custom-expectation")} for details.
 }

@@ -1,6 +1,3 @@
-context("evaluate promise")
-
-
 test_that("captures warnings, messages and output", {
   out <- evaluate_promise({
     message("m", appendLF = FALSE)

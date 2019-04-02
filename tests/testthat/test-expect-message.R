@@ -1,5 +1,3 @@
-context("expect_message")
-
 test_that("inputs evaluated in correct scope", {
   expect_message({
     message("a")

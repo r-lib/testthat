@@ -1,5 +1,3 @@
-context("debug-reporter")
-
 get_vars_from_debug_reporter <- function(choice, fun, envir = parent.frame()) {
   frame <- get_frame_from_debug_reporter(choice, fun, envir)
   ls(frame)

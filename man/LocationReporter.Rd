@@ -19,10 +19,11 @@ Other reporters: \code{\link{CheckReporter}},
   \code{\link{ListReporter}},
   \code{\link{MinimalReporter}},
   \code{\link{MultiReporter}},
-  \code{\link{ProgressReporter}},
+  \code{\link{ProgressReporter}}, \code{\link{Reporter}},
   \code{\link{RstudioReporter}},
   \code{\link{SilentReporter}}, \code{\link{StopReporter}},
   \code{\link{SummaryReporter}}, \code{\link{TapReporter}},
   \code{\link{TeamcityReporter}}
 }
+\concept{reporters}
 \keyword{datasets}

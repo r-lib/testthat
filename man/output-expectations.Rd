@@ -10,13 +10,14 @@
 \alias{expect_silent}
 \title{Expectation: does code produce output/message/warning/error?}
 \usage{
-expect_output(object, regexp = NULL, ..., info = NULL, label = NULL)
+expect_output(object, regexp = NULL, ..., info = NULL, label = NULL,
+  width = 80)
 
 expect_error(object, regexp = NULL, class = NULL, ..., info = NULL,
   label = NULL)
 
-expect_condition(object, regexp = NULL, class = NULL, ..., info = NULL,
-  label = NULL)
+expect_condition(object, regexp = NULL, class = NULL, ...,
+  info = NULL, label = NULL)
 
 expect_message(object, regexp = NULL, ..., all = FALSE, info = NULL,
   label = NULL)
@@ -27,7 +28,10 @@ expect_warning(object, regexp = NULL, ..., all = FALSE, info = NULL,
 expect_silent(object)
 }
 \arguments{
-\item{object}{object to test}
+\item{object}{Object to test.
+
+Supports limited unquoting to make it easier to generate readable failures
+within a function or for loop. See \link{quasi_label} for more details.}
 
 \item{regexp}{regular expression to test against.
 
@@ -46,10 +50,15 @@ or does only one need to match (FALSE)}
     matched as is.  Overrides all conflicting arguments.}
 }}
 
-\item{info}{extra information to be included in the message (useful when
-writing tests in loops).}
+\item{info}{Extra information to be included in the message. This argument
+is soft-deprecated and should not be used in new code. Instead see
+alternatives in \link{quasi_label}.}
 
-\item{label}{object label. When \code{NULL}, computed from deparsed object.}
+\item{label}{Used to customise failure messages. For expert use only.}
+
+\item{width}{Number of characters per line of output. This does not
+inherit from \code{getOption("width")} so that tests always use the same
+output width, minimising spurious differences.}
 
 \item{class}{Instead of supplying a regular expression, you can also supply
 a class name. This is useful for "classed" conditions.}
@@ -136,3 +145,4 @@ Other expectations: \code{\link{comparison-expectations}},
   \code{\link{inheritance-expectations}},
   \code{\link{logical-expectations}}
 }
+\concept{expectations}

@@ -23,22 +23,26 @@ is_testing()
 testing_package()
 }
 \arguments{
-\item{path}{path to tests}
+\item{path}{Path to directory containing tests.}
 
 \item{filter}{If not \code{NULL}, only tests with file names matching this
-regular expression will be executed.  Matching will take on the file
+regular expression will be executed. Matching be performed on the file
 name after it has been stripped of \code{"test-"} and \code{".R"}.}
 
-\item{reporter}{reporter to use}
+\item{reporter}{Reporter to use to summarise output. Can be supplied
+as a string (e.g. "summary") or as an R6 object
+(e.g. \code{SummaryReporter$new()}).
 
-\item{env}{environment in which to execute the tests}
+See \link{Reporter} for more details and a list of built-in reporters.}
+
+\item{env}{Environment in which to execute the tests. Expert use only.}
 
 \item{...}{Additional arguments passed to \code{\link[=grepl]{grepl()}} to control filtering.}
 
-\item{encoding}{File encoding, default is "unknown"
-\code{unknown}.}
+\item{encoding}{Deprecated. All files now assumed to be UTF-8.}
 
-\item{load_helpers}{Source helper files before running the tests?}
+\item{load_helpers}{Source helper files before running the tests?
+See \code{\link[=source_test_helpers]{source_test_helpers()}} for more details.}
 
 \item{stop_on_failure}{If \code{TRUE}, throw an error if any tests fail.}
 
@@ -48,12 +52,10 @@ warnings.}
 \item{wrap}{Automatically wrap all code within \code{\link[=test_that]{test_that()}}? This ensures
 that all expectations are reported, even if outside a test block.}
 
-\item{package}{package name}
+\item{package}{Name of installed package.}
 }
 \value{
-The results of the reporter function on all test results.
-
-The results as a "testthat_results" (list)
+A list of test results.
 }
 \description{
 Use \code{test_dir()} for a collection of tests in a directory; use
@@ -101,5 +103,6 @@ test_check("yourpackage")
 }
 
 \examples{
-\dontrun{test_package("testthat")}
+test_dir(testthat_examples(), reporter = "summary")
+test_dir(testthat_examples(), reporter = "minimal")
 }

@@ -1,22 +1,14 @@
 # R for travis: see documentation at https://docs.travis-ci.com/user/languages/r
 
 language: R
-sudo: false
 cache: packages
 
-r:
-- 3.1
-- 3.2
-- oldrel
-- release
-
-include:
-  matrix:
-    r: devel
-    warnings_are_errors: false
-
-after_success:
-  - |
-    Rscript \
-      --default-packages='datasets,utils,grDevices,graphics,stats,methods' \
-      -e 'covr::codecov(line_exclusions = c("inst/include/testthat/testthat.h", "inst/include/testthat/vendor/catch.h"))'
+matrix:
+  include:
+  - r: devel
+  - r: release
+    after_success:
+    - Rscript -e 'covr::codecov()'
+  - r: oldrel
+  - r: 3.3
+  - r: 3.2

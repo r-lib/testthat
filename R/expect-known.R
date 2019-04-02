@@ -3,7 +3,7 @@
 #' For complex printed output and objects, it is often challenging to describe
 #' exactly what you expect to see. `expect_known_value()` and
 #' `expect_known_output()` provide a slightly weaker guarantee, simply
-#' asserting that the values have no changed since the last time that you ran
+#' asserting that the values have not changed since the last time that you ran
 #' them.
 #'
 #' These expectations should be used in conjunction with git, as otherwise
@@ -11,9 +11,9 @@
 #' in conjunction with `expect_known_output()` as the diffs will show you
 #' exactly what has changed.
 #'
-#' Note that known values updates will only updated when running tests
+#' Note that known values updates will only be updated when running tests
 #' interactively. `R CMD check` clones the package source so any changes to
-#' the reference files will occured a temporary directory, and will not be
+#' the reference files will occur in a temporary directory, and will not be
 #' synchronised back to the source package.
 #'
 #' @export
@@ -91,7 +91,7 @@ expect_known_value <- function(object, file,
                                ...,
                                info = NULL,
                                label = NULL) {
-  act <- quasi_label(enquo(object), label)
+  act <- quasi_label(enquo(object), label, arg = "object")
 
   if (!file.exists(file)) {
     warning("Creating reference value", call. = FALSE)
@@ -130,7 +130,7 @@ expect_equal_to_reference <- function(..., update = FALSE) {
 #' @param hash Known hash value. Leave empty and you'll be informed what
 #'   to use in the test output.
 expect_known_hash <- function(object, hash = NULL) {
-  act <- quasi_label(enquo(object))
+  act <- quasi_label(enquo(object), arg = "object")
   act_hash <- digest::digest(act$val)
   if (!is.null(hash)) {
     act_hash <- substr(act_hash, 1, nchar(hash))
@@ -142,7 +142,7 @@ expect_known_hash <- function(object, hash = NULL) {
   } else {
     expect(
       hash == act_hash,
-      sprintf("Value hashes to %s does not hash not %s", act_hash, hash)
+      sprintf("Value hashes to %s, not %s", act_hash, hash)
     )
   }
 

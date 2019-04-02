@@ -5,7 +5,7 @@
 \alias{set_reporter}
 \alias{get_reporter}
 \alias{with_reporter}
-\title{Get/set reporter; execute code in specified reporter.}
+\title{Get and set active reporter.}
 \usage{
 set_reporter(reporter)
 
@@ -14,18 +14,24 @@ get_reporter()
 with_reporter(reporter, code, start_end_reporter = TRUE)
 }
 \arguments{
-\item{reporter}{test reporter to use}
+\item{reporter}{Reporter to use to summarise output. Can be supplied
+as a string (e.g. "summary") or as an R6 object
+(e.g. \code{SummaryReporter$new()}).
 
-\item{code}{code block to execute}
+See \link{Reporter} for more details and a list of built-in reporters.}
 
-\item{start_end_reporter}{whether to start and end the reporter}
+\item{code}{Code to execute.}
+
+\item{start_end_reporter}{Should the reporters \code{start_reporter()} and
+\code{end_reporter()} methods be called? For expert use only.}
+}
+\value{
+\code{with_reporter()} invisible returns the reporter active when \code{code}
+was evaluated.
 }
 \description{
-Changes global reporter to that specified, runs code and the returns
-global reporter back to previous value.
-}
-\details{
-The \code{with_reporter()} function returns the reporter that has been used
-for running the code.
+\code{get_reporter()} and \code{set_reporter()} access and modify the current "active"
+reporter. Generally, these functions should not be called directly; instead
+use \code{with_reporter()} to temporarily change, then reset, the active reporter.
 }
 \keyword{internal}

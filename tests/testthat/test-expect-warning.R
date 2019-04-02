@@ -1,5 +1,3 @@
-context("expect_warning")
-
 test_that("regexp = NULL checks for presence of warning", {
   expect_success(expect_warning(warning("!")))
   expect_failure(expect_warning(null()), "did not produce any warnings")

@@ -1,5 +1,3 @@
-context("Mock")
-
 test_that("can make 3 = 5", {
   with_mock(
     compare = function(x, y, ...) list(equal = TRUE, message = "TRUE"),
@@ -83,7 +81,7 @@ test_that("can mock if package is not loaded", {
     skip("devtools is loaded")
   }
   skip_if_not_installed("devtools")
-  with_mock(`devtools::add_path` = identity, expect_identical(devtools::add_path, identity))
+  with_mock(`devtools::test` = identity, expect_identical(devtools::test, identity))
 })
 
 test_that("changes to variables are preserved between calls and visible outside", {
@@ -120,4 +118,17 @@ test_that("mocks can access local variables", {
       value
     }
   )
+})
+
+
+# local_mock --------------------------------------------------------------
+
+test_that("local_mock operates locally", {
+  f <- function() {
+    local_mock(compare = function(x, y) FALSE)
+    compare(1, 1)
+  }
+
+  expect_false(f())
+  expect_equal(compare(1, 1), no_difference())
 })

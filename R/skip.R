@@ -26,6 +26,9 @@
 #' `skip_on_appveyor()` skips tests on appveyor by inspecting the
 #' `APPVEYOR` environment variable.
 #'
+#'#' `skip_on_ci()` skips tests on continuous integration systems by inspecting
+#' the `CI` environment variable.
+#'
 #' `skip_on_bioc()` skips tests on Bioconductor by inspecting the
 #' `BBS_HOME` environment variable.
 #'
@@ -49,6 +52,7 @@
 #'   expect_equal(1, 3)     # this one is also skipped
 #' })
 skip <- function(message) {
+  message <- paste0(message, collapse = "\n")
   cond <- structure(list(message = message), class = c("skip", "condition"))
   stop(cond)
 }
@@ -161,6 +165,16 @@ skip_on_appveyor <- function() {
   }
 
   skip("On Appveyor")
+}
+
+#' @export
+#' @rdname skip
+skip_on_ci <- function() {
+  if (!isTRUE(as.logical(Sys.getenv("CI")))) {
+    return(invisible(TRUE))
+  }
+
+  skip("On CI")
 }
 
 #' @export

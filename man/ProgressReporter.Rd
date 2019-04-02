@@ -23,10 +23,11 @@ Other reporters: \code{\link{CheckReporter}},
   \code{\link{ListReporter}},
   \code{\link{LocationReporter}},
   \code{\link{MinimalReporter}},
-  \code{\link{MultiReporter}},
+  \code{\link{MultiReporter}}, \code{\link{Reporter}},
   \code{\link{RstudioReporter}},
   \code{\link{SilentReporter}}, \code{\link{StopReporter}},
   \code{\link{SummaryReporter}}, \code{\link{TapReporter}},
   \code{\link{TeamcityReporter}}
 }
+\concept{reporters}
 \keyword{datasets}

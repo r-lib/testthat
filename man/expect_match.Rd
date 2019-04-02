@@ -4,11 +4,14 @@
 \alias{expect_match}
 \title{Expectation: does string match a regular expression?}
 \usage{
-expect_match(object, regexp, perl = FALSE, fixed = FALSE, ..., all = TRUE,
-  info = NULL, label = NULL)
+expect_match(object, regexp, perl = FALSE, fixed = FALSE, ...,
+  all = TRUE, info = NULL, label = NULL)
 }
 \arguments{
-\item{object}{object to test}
+\item{object}{Object to test.
+
+Supports limited unquoting to make it easier to generate readable failures
+within a function or for loop. See \link{quasi_label} for more details.}
 
 \item{regexp}{Regular expression to test against.}
 
@@ -29,13 +32,18 @@ expect_match(object, regexp, perl = FALSE, fixed = FALSE, ..., all = TRUE,
 \item{all}{Should all elements of actual value match \code{regexp} (TRUE),
 or does only one need to match (FALSE)}
 
-\item{info}{extra information to be included in the message (useful when
-writing tests in loops).}
+\item{info}{Extra information to be included in the message. This argument
+is soft-deprecated and should not be used in new code. Instead see
+alternatives in \link{quasi_label}.}
 
-\item{label}{object label. When \code{NULL}, computed from deparsed object.}
+\item{label}{Used to customise failure messages. For expert use only.}
 }
 \description{
 Expectation: does string match a regular expression?
+}
+\details{
+\code{expect_match()} is a wrapper around \code{\link[=grepl]{grepl()}}. See its documentation for
+more detail about the individual arguments.
 }
 \examples{
 expect_match("Testing is fun", "fun")
@@ -56,3 +64,4 @@ Other expectations: \code{\link{comparison-expectations}},
   \code{\link{logical-expectations}},
   \code{\link{output-expectations}}
 }
+\concept{expectations}

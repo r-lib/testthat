@@ -1,5 +1,3 @@
-context("test_path")
-
 test_that("returns local path when called in tests", {
   expect_equal(test_path("test-test-path.R"), "test-test-path.R")
 

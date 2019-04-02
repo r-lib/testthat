@@ -12,9 +12,16 @@
  * Force 'testthat' to be disabled by defining TESTTHAT_DISABLED.
  * TESTTHAT_DISABLED takes precedence.
  * 'testthat' is disabled on Solaris by default.
+ *
+ * Hide symbols containing static members on gcc, to work around issues
+ * with DLL unload due to static members in inline functions.
+ * https://github.com/r-lib/devtools/issues/1832
  */
 #if defined(__GNUC__) || defined(__clang__)
 # define TESTTHAT_ENABLED
+# define TESTTHAT_ATTRIBUTE_HIDDEN __attribute__ ((visibility("hidden")))
+#else
+# define TESTTHAT_ATTRIBUTE_HIDDEN
 #endif
 
 #if defined(__SUNPRO_C) || defined(__SUNPRO_CC) || defined(__sun) || defined(__SVR4)
@@ -107,6 +114,7 @@ public:
 // exported by testthat.
 # ifdef CATCH_CONFIG_RUNNER
 
+TESTTHAT_ATTRIBUTE_HIDDEN
 inline Catch::Session& catchSession()
 {
   static Catch::Session instance;
@@ -124,12 +132,14 @@ inline bool run_tests()
 
 namespace Catch {
 
+TESTTHAT_ATTRIBUTE_HIDDEN
 inline std::ostream& cout()
 {
   static testthat::r_ostream instance;
   return instance;
 }
 
+TESTTHAT_ATTRIBUTE_HIDDEN
 inline std::ostream& cerr()
 {
   static testthat::r_ostream instance;

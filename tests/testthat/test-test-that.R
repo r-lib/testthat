@@ -37,7 +37,7 @@ test_that("failures are errors", {
     expect_false(TRUE)
   }
 
-  expect_error(f(), "isn't true")
+  expect_error(f(), "isn't true", class = "expectation_failure")
 })
 
 test_that("infinite recursion is captured", {

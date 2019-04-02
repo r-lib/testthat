@@ -1,5 +1,3 @@
-context("test_examples")
-
 test_that("test_examples works with installed packages", {
   env_test$package <- "testthat"
   on.exit(env_test$package <- NULL)
@@ -10,4 +8,8 @@ test_that("test_examples works with installed packages", {
     }
   )
   expect_true(length(res) > 1)
+})
+
+test_that("test_examples fails if no examples", {
+  expect_error(test_examples("asdf"), "Could not find examples")
 })

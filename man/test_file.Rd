@@ -2,32 +2,49 @@
 % Please edit documentation in R/test-files.R
 \name{test_file}
 \alias{test_file}
-\title{Run all tests in specified file.}
+\title{Run all tests in specified file}
 \usage{
 test_file(path, reporter = default_reporter(), env = test_env(),
-  start_end_reporter = TRUE, load_helpers = TRUE, encoding = "unknown",
-  wrap = TRUE)
+  start_end_reporter = TRUE, load_helpers = TRUE,
+  encoding = "unknown", wrap = TRUE)
 }
 \arguments{
-\item{path}{path to file}
+\item{path}{Path to file.}
 
-\item{reporter}{reporter to use}
+\item{reporter}{Reporter to use to summarise output. Can be supplied
+as a string (e.g. "summary") or as an R6 object
+(e.g. \code{SummaryReporter$new()}).
 
-\item{env}{environment in which to execute the tests}
+See \link{Reporter} for more details and a list of built-in reporters.}
 
-\item{start_end_reporter}{whether to start and end the reporter}
+\item{env}{Environment in which to execute the tests. Expert use only.}
 
-\item{load_helpers}{Source helper files before running the tests?}
+\item{start_end_reporter}{Should the reporters \code{start_reporter()} and
+\code{end_reporter()} methods be called? For expert use only.}
 
-\item{encoding}{File encoding, default is "unknown"
-\code{unknown}.}
+\item{load_helpers}{Source helper files before running the tests?
+See \code{\link[=source_test_helpers]{source_test_helpers()}} for more details.}
+
+\item{encoding}{Deprecated. All files now assumed to be UTF-8.}
 
 \item{wrap}{Automatically wrap all code within \code{\link[=test_that]{test_that()}}? This ensures
 that all expectations are reported, even if outside a test block.}
 }
 \value{
-the results as a "testthat_results" (list)
+Invisibily, a list with one element for each test.
 }
 \description{
-Run all tests in specified file.
+Execute code in the specified file, displaying results using a \code{reporter}.
+Use this function when you want to run a single file's worth of tests.
+You are responsible for ensuring that the functions to test are available
+in the global environment.
+}
+\examples{
+path <- testthat_example("success")
+test_file(path, reporter = "minimal")
+
+# test_file() invisibly returns a list, with one element for each test.
+# This can be useful if you want to compute on your test results.
+out <- test_file(path, reporter = "minimal")
+str(out[[1]])
 }

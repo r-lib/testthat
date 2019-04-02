@@ -80,14 +80,18 @@ auto_test_package <- function(pkg = ".", reporter = default_reporter(), hash = T
     )
   }
 
+  reporter <- find_reporter(reporter)
+
+  path <- pkg
   pkg <- devtools::as.package(pkg)
 
-  reporter <- find_reporter(reporter)
-  code_path <- normalizePath(file.path(pkg$path, "R"))
+  code_path <- file.path(pkg$path, c("R", "src"))
+  code_path <- code_path[file.exists(code_path)]
+  code_path <- normalizePath(code_path)
   test_path <- normalizePath(file.path(pkg$path, "tests", "testthat"))
 
   # Start by loading all code and running all tests
-  env <- devtools::load_all(pkg)$env
+  env <- devtools::load_all(path)$env
   withr::with_envvar(
     devtools::r_env_vars(),
     test_dir(test_path, env = env, reporter = reporter$clone(deep = TRUE))

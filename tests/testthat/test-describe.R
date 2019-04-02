@@ -1,5 +1,3 @@
-context("Describe")
-
 someExternalVariable <- 1
 describe("describe", {
   it("can contain nested describe blocks", {

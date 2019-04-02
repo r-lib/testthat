@@ -1,7 +1,3 @@
-template:
-  package: tidytemplate
-  default_assets: false
-
 home:
   strip_header: true
   links:
@@ -19,7 +15,6 @@ reference:
   contents:
   - starts_with("test_")
   - starts_with("auto_test")
-  - context
   - describe
   - teardown
   - use_catch

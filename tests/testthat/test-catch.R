@@ -1,5 +1,3 @@
-context("Catch")
-
 test_that("get_routine() finds own 'run_testthat_tests'", {
   routine <- get_routine("testthat", "run_testthat_tests")
   expect_is(routine, "NativeSymbolInfo")

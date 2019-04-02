@@ -1,5 +1,3 @@
-context("expect-comparisons")
-
 test_that("basic comparisons work", {
   expect_success(expect_lt(10, 11))
   expect_failure(expect_lt(10, 10))
@@ -30,4 +28,13 @@ test_that("comparisons with NA work", {
   expect_failure(expect_gt(NA_real_, 10))
   expect_failure(expect_gt(NA_real_, NA_real_))
   expect_failure(expect_gte(NA_real_, NA_real_))
+})
+
+test_that("comparisons with more complicated objects work", {
+  time <- Sys.time()
+  time2 <- time + 1
+  expect_success(expect_lt(time, time2))
+  expect_success(expect_lte(time, time2))
+  expect_success(expect_gt(time2, time))
+  expect_success(expect_gte(time2, time))
 })

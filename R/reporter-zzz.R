@@ -1,17 +1,25 @@
 #' @include reporter-stop.R
 NULL
 
-#' Get/set reporter; execute code in specified reporter.
+#' Get and set active reporter.
 #'
-#' Changes global reporter to that specified, runs code and the returns
-#' global reporter back to previous value.
+#' `get_reporter()` and `set_reporter()` access and modify the current "active"
+#' reporter. Generally, these functions should not be called directly; instead
+#' use `with_reporter()` to temporarily change, then reset, the active reporter.
 #'
-#' The `with_reporter()` function returns the reporter that has been used
-#' for running the code.
 #'
+#' @inheritParams test_file
+#' @param reporter Reporter to use to summarise output. Can be supplied
+#'   as a string (e.g. "summary") or as an R6 object
+#'   (e.g. `SummaryReporter$new()`).
+#'
+#'   See [Reporter] for more details and a list of built-in reporters.
+#' @param code Code to execute.
+#' @return `with_reporter()` invisible returns the reporter active when `code`
+#'   was evaluated.
+#' @param start_end_reporter Should the reporters `start_reporter()` and
+#'   `end_reporter()` methods be called? For expert use only.
 #' @keywords internal
-#' @param reporter test reporter to use
-#' @param code code block to execute
 #' @name reporter-accessors
 NULL
 
@@ -36,7 +44,6 @@ get_reporter <- function() {
 }
 
 #' @rdname reporter-accessors
-#' @param start_end_reporter whether to start and end the reporter
 #' @export
 with_reporter <- function(reporter, code, start_end_reporter = TRUE) {
   reporter <- find_reporter(reporter)
@@ -46,11 +53,13 @@ with_reporter <- function(reporter, code, start_end_reporter = TRUE) {
 
   if (start_end_reporter) {
     reporter$start_reporter()
-    # This will be executed *before* resetting the reporter, by design
-    on.exit(reporter$end_reporter(), add = TRUE)
   }
 
   force(code)
+
+  if (start_end_reporter) {
+    reporter$end_reporter()
+  }
 
   invisible(reporter)
 }

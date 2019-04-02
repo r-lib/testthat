@@ -2,12 +2,16 @@
 #'
 #' An old style of testing that's no longer encouraged.
 #'
-#' @param object object to test
+#' @param object Object to test.
+#'
+#'   Supports limited unquoting to make it easier to generate readable failures
+#'   within a function or for loop. See [quasi_label] for more details.
 #' @param condition, a function that returns whether or not the condition
 #'   is met, and if not, an error message to display.
-#' @param label object label. When `NULL`, computed from deparsed object.
-#' @param info extra information to be included in the message (useful when
-#'   writing tests in loops).
+#' @param label Used to customise failure messages. For expert use only.
+#' @param info Extra information to be included in the message. This argument
+#'   is soft-deprecated and should not be used in new code. Instead see
+#'   alternatives in [quasi_label].
 #' @return the (internal) expectation result as an invisible list
 #' @keywords internal
 #' @export

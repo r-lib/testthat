@@ -1,5 +1,3 @@
-context("expect_output")
-
 f <- function() NULL
 g <- function() cat("!")
 
@@ -23,6 +21,14 @@ test_that("multiline outputs captures and matches", {
   expect_success(expect_output(cat("1\n2"), "1\n2"))
 })
 
+test_that("expect_output sets width", {
+  x <- expect_output(getOption("width"), NA)
+  expect_equal(x, 80)
+
+  x <- expect_output(getOption("width"), NA, width = 20)
+  expect_equal(x, 20)
+})
+
 test_that("... passed on to grepl", {
   expect_success(expect_output(print("X"), "x", ignore.case = TRUE))
 })
@@ -34,4 +40,12 @@ test_that("returns first argument", {
 test_that("Unicode characters in output", {
   bar <- "\u2551"
   expect_success(expect_output(cat(bar), "\u2551"))
+})
+
+test_that("simple_error returns TRUE for basic errors", {
+  is_simple <- function(x) simple_error(catch_cnd(x))
+
+  expect_true(is_simple(stop("!")))
+  expect_true(is_simple(abort("!")))
+  expect_false(is_simple(abort("!", .subclass = "error_custom")))
 })
