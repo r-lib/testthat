@@ -3,7 +3,7 @@
 #' For complex printed output and objects, it is often challenging to describe
 #' exactly what you expect to see. `expect_known_value()` and
 #' `expect_known_output()` provide a slightly weaker guarantee, simply
-#' asserting that the values have no changed since the last time that you ran
+#' asserting that the values have not changed since the last time that you ran
 #' them.
 #'
 #' These expectations should be used in conjunction with git, as otherwise
@@ -11,9 +11,9 @@
 #' in conjunction with `expect_known_output()` as the diffs will show you
 #' exactly what has changed.
 #'
-#' Note that known values updates will only updated when running tests
+#' Note that known values updates will only be updated when running tests
 #' interactively. `R CMD check` clones the package source so any changes to
-#' the reference files will occured a temporary directory, and will not be
+#' the reference files will occur in a temporary directory, and will not be
 #' synchronised back to the source package.
 #'
 #' @export
