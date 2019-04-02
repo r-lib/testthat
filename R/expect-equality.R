@@ -4,7 +4,6 @@
 #' - `expect_equal()` compares values  with [all.equal()]
 #' - `expect_equivalent()` compares values with [all.equal()] and
 #'    `check.attributes = FALSE`
-#' - `expect_setequal()` compares values, ignoring order and duplicates.
 #' - `expect_reference()` compares the underlying memory addresses.
 #
 #' @param object,expected Computation and value to compare it to.
@@ -14,6 +13,7 @@
 #'   more details.
 #' @param label,expected.label Used to customise failure messages. For expert
 #'   use only.
+#' @seealso `expect_setequal()` to test for set equality.
 #' @inheritParams expect_that
 #' @family expectations
 #' @examples
@@ -62,24 +62,6 @@ expect_equal <- function(object, expected, ..., info = NULL, label = NULL,
     comp$equal,
     sprintf("%s not equal to %s.\n%s", act$lab, exp$lab, comp$message),
     info = info
-  )
-
-  invisible(act$val)
-}
-
-#' @export
-#' @rdname equality-expectations
-expect_setequal <- function(object, expected) {
-  act <- quasi_label(enquo(object), arg = "object")
-  exp <- quasi_label(enquo(expected), arg = "expected")
-
-  act$val <- sort(unique(act$val))
-  exp$val <- sort(unique(exp$val))
-
-  comp <- compare(act$val, exp$val)
-  expect(
-    comp$equal,
-    sprintf("%s not set-equal to %s.\n%s", act$lab, exp$lab, comp$message)
   )
 
   invisible(act$val)

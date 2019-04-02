@@ -62,6 +62,7 @@ Collate:
     'expect-output.R'
     'reporter.R'
     'expect-self-test.R'
+    'expect-setequal.R'
     'expect-that.R'
     'expect-vector.R'
     'expectation.R'

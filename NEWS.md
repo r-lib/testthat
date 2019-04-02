@@ -1,5 +1,10 @@
 # testthat (development version)
 
+* `expect_setequal()` now works with more vector types (including lists),
+  because it now uses `vctrs::vec_is()` behind the scenes. It also warns
+  if the inputs are named, as this suggests that your mental model of 
+  how `expect_setequal()` works is wrong (#750).
+
 * New `testthat_examples()` and `testthat_example()` make it easy to access
   new test files bundled with the package. These are used in various examples
   to make it easier to understand how to use the package in novel ways.
