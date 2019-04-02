@@ -21,7 +21,7 @@ is.expectation(x)
 }
 \description{
 For advanced use only. If you are creating your own expectation, you should
-call \code{expect()} instead. See \code{vignette("custom-expectation")} for more
+call \code{\link[=expect]{expect()}} instead. See \code{vignette("custom-expectation")} for more
 details.
 }
 \keyword{internal}

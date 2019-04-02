@@ -21,7 +21,7 @@ There are three main parts to writing an expectation, as illustrated by `expect_
 ```{r}
 expect_length <- function(object, n) {
   # 1. Capture object and label
-  act <- quasi_label(rlang::enquo(object))
+  act <- quasi_label(rlang::enquo(object), arg = "object")
 
   # 2. Call expect()
   act$n <- length(act$val)
@@ -37,7 +37,7 @@ expect_length <- function(object, n) {
 
 ## Quasi-labelling
 
-The first step in any expectation is to capture the actual object, and generate a label for it to use if a failure occur. All testthat expectations supporting quasiquotation so that you can unquote variables. This makes it easier to generate good labels when the expectation is called from a function or within a for loop.
+The first step in any expectation is to capture the actual object, and generate a label for it to use if a failure occur. All testthat expectations support quasiquotation so that you can unquote variables. This makes it easier to generate good labels when the expectation is called from a function or within a for loop.
 
 By convention, the first argument to every `expect_` function is called `object`, and you capture it's value (`val`) and label (`lab`) with `act <- quasi_label(enquo(object))`, where `act` is short for actual.
 
@@ -66,6 +66,25 @@ mtcars %>%
   expect_type("list") %>%
   expect_s3_class("data.frame") %>% 
   expect_length(11)
+```
+
+## `suceed()` and `fail()`
+
+For expectations with more complex logic governing when success or failure occurs, you can use `succeed()` and `fail()`. These are simple wrappers around `expect()` that allow you to write code that looks like this:
+
+```{r}
+expect_length <- function(object, n) {
+  act <- quasi_label(rlang::enquo(object), arg = "object")
+
+  act$n <- length(act$val)
+  if (act$n == n) {
+    succeed()
+    invisible(act$val)
+  }
+  
+  message <- sprintf("%s has length %i, not length %i.", act$lab, act$n, n)
+  fail(message)
+}
 ```
 
 ## Testing your expectations
