@@ -1,5 +1,7 @@
 # testthat (development version)
 
+* The JUnit Reporter no longer replaces `.` in class names (#753).
+
 * `expect_setequal()` now works with more vector types (including lists),
   because it now uses `vctrs::vec_is()` behind the scenes. It also warns
   if the inputs are named, as this suggests that your mental model of 
