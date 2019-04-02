@@ -69,6 +69,7 @@ Collate:
     'mock.R'
     'old-school.R'
     'praise.R'
+    'quasi-label.R'
     'recover.R'
     'reporter-check.R'
     'reporter-debug.R'
