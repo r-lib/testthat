@@ -1,4 +1,7 @@
-#' Stub object for managing a reporter of tests.
+#' Managing test reporting
+#'
+#' The job of a reporter is to aggregate the results from files, tests, and
+#' expectations and display in some informative way.
 #'
 #' Do not clone directly from this object - children should implement all
 #' methods.
@@ -8,6 +11,7 @@
 #' @export Reporter
 #' @aliases Reporter
 #' @importFrom R6 R6Class
+#' @family reporters
 Reporter <- R6::R6Class("Reporter",
   public = list(
     start_reporter = function() {},

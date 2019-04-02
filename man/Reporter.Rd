@@ -3,13 +3,31 @@
 \docType{data}
 \name{Reporter}
 \alias{Reporter}
-\title{Stub object for managing a reporter of tests.}
+\title{Managing test reporting}
 \format{An object of class \code{R6ClassGenerator} of length 24.}
 \usage{
 Reporter
 }
 \description{
+The job of a reporter is to aggregate the results from files, tests, and
+expectations and display in some informative way.
+}
+\details{
 Do not clone directly from this object - children should implement all
 methods.
 }
+\seealso{
+Other reporters: \code{\link{CheckReporter}},
+  \code{\link{DebugReporter}}, \code{\link{FailReporter}},
+  \code{\link{ListReporter}},
+  \code{\link{LocationReporter}},
+  \code{\link{MinimalReporter}},
+  \code{\link{MultiReporter}},
+  \code{\link{ProgressReporter}},
+  \code{\link{RstudioReporter}},
+  \code{\link{SilentReporter}}, \code{\link{StopReporter}},
+  \code{\link{SummaryReporter}}, \code{\link{TapReporter}},
+  \code{\link{TeamcityReporter}}
+}
+\concept{reporters}
 \keyword{internal}
