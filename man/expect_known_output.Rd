@@ -55,7 +55,7 @@ to use in the test output.}
 For complex printed output and objects, it is often challenging to describe
 exactly what you expect to see. \code{expect_known_value()} and
 \code{expect_known_output()} provide a slightly weaker guarantee, simply
-asserting that the values have no changed since the last time that you ran
+asserting that the values have not changed since the last time that you ran
 them.
 }
 \details{
@@ -64,9 +64,9 @@ there is no way to revert to previous values. Git is particularly useful
 in conjunction with \code{expect_known_output()} as the diffs will show you
 exactly what has changed.
 
-Note that known values updates will only updated when running tests
+Note that known values updates will only be updated when running tests
 interactively. \code{R CMD check} clones the package source so any changes to
-the reference files will occured a temporary directory, and will not be
+the reference files will occur in a temporary directory, and will not be
 synchronised back to the source package.
 }
 \examples{
