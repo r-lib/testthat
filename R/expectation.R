@@ -1,7 +1,7 @@
 #' The building block of all `expect_` functions
 #'
 #' Use this if you are writing your own expectation. See
-#' `vignette("custom-expectation")` for details
+#' `vignette("custom-expectation")` for details.
 #'
 #' @param ok Was the expectation successful?
 #' @param failure_message What message should be shown if the expectation was
@@ -12,7 +12,9 @@
 #'   forward a srcref captured elsewhere.
 #' @export
 expect <- function(ok, failure_message, info = NULL, srcref = NULL) {
-  exp <- as.expectation.logical(ok, failure_message, info = info, srcref = srcref)
+  type <- if (ok) "success" else "failure"
+  message <- paste(c(failure_message, info), collapse = "\n")
+  exp <- expectation(type, message, srcref = srcref)
 
   withRestarts(
     if (expectation_broken(exp)) {
@@ -28,8 +30,14 @@ expect <- function(ok, failure_message, info = NULL, srcref = NULL) {
 
 #' Construct an expectation object
 #'
-#' For advanced use only.
+#' For advanced use only. If you are creating your own expectation, you should
+#' call `expect()` instead. See `vignette("custom-expectation")` for more
+#' details.
 #'
+#' @param type Expectation type. Must be one of "success", "failure", "error",
+#'   "skip", "warning".
+#' @param message Message describing test failure
+#' @param srcref Optional `srcref` giving location of test.
 #' @keywords internal
 #' @export
 expectation <- function(type, message, srcref = NULL) {
@@ -185,17 +193,6 @@ as.expectation.expectation <- function(x, ..., srcref = NULL) {
 }
 
 #' @export
-as.expectation.logical <- function(x, message, ..., srcref = NULL, info = NULL) {
-  type <- if (x) "success" else "failure"
-  message <- if (x) "success" else add_info(message, info)
-  expectation(type, message, srcref = srcref)
-}
-
-add_info <- function(message, info = NULL) {
-  paste(c(message, info), collapse = "\n")
-}
-
-#' @export
 as.expectation.error <- function(x, ..., srcref = NULL) {
   error <- x$message
 
@@ -227,7 +224,9 @@ as.expectation.skip <- function(x, ..., srcref = NULL) {
 }
 
 #' @export
-print.expectation <- function(x, ...) cat(format(x), "\n")
+print.expectation <- function(x, ...) {
+  cat(format(x), "\n")
+}
 
 #' @export
 format.expectation_success <- function(x, ...) {

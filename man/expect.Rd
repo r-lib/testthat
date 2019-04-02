@@ -20,5 +20,5 @@ forward a srcref captured elsewhere.}
 }
 \description{
 Use this if you are writing your own expectation. See
-\code{vignette("custom-expectation")} for details
+\code{vignette("custom-expectation")} for details.
 }

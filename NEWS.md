@@ -1,5 +1,8 @@
 # testthat (development version)
 
+* Expectation object always contains the failure message, even when succesful 
+  (#836)
+
 * New `expect_vector()` is a wrapper around `vctrs::vec_assert()` making it
   easy to test against the vctrs definitions of prototype and size (#846).
 
