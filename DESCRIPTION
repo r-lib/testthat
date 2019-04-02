@@ -24,7 +24,7 @@ Imports:
     praise,
     R6 (>= 2.2.0),
     rlang (>= 0.3.0),
-    vctrs,
+    vctrs (>= 0.1.0),
     withr (>= 2.0.0)
 Suggests: 
     covr,
@@ -34,6 +34,7 @@ Suggests:
     rmarkdown,
     usethis,
     xml2
+Remotes: r-lib/vctrs
 VignetteBuilder: knitr
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
