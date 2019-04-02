@@ -26,9 +26,9 @@ source_file <- function(path, env = test_env(), chdir = TRUE,
 
   ## We need to parse from a connection, because parse() has a bug,
   ## and converts the input to the native encoding, if the text arg is used
-  exprs <- parse(
-    textConnection(lines, encoding = "UTF-8"),
-    n = -1, srcfile = srcfile, encoding = "UTF-8")
+  con <- textConnection(lines, encoding = "UTF-8")
+  on.exit(close(con))
+  exprs <- parse(con, n = -1, srcfile = srcfile, encoding = "UTF-8")
 
   n <- length(exprs)
   if (n == 0L) return(invisible())
