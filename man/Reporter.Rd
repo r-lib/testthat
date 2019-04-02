@@ -3,18 +3,34 @@
 \docType{data}
 \name{Reporter}
 \alias{Reporter}
-\title{Managing test reporting}
+\title{Manage test reporting}
 \format{An object of class \code{R6ClassGenerator} of length 24.}
 \usage{
 Reporter
 }
 \description{
 The job of a reporter is to aggregate the results from files, tests, and
-expectations and display in some informative way.
+expectations and display them in an informative way. Every testtthat function
+that runs multiple tests provides a \code{reporter} argument which you can
+use to override the default (which is selected by \code{\link[=default_reporter]{default_reporter()}}).
+Typically this will
 }
 \details{
-Do not clone directly from this object - children should implement all
-methods.
+You only need to use this \code{Reporter} object directly if you are creating
+a new reporter. Currently, creating new Reporters is undocumented,
+so if you want to create your own, you'll need to make sure that you're
+familiar with \href{https://adv-r.hadley.nz/R6.html}{R6} and then need read the
+source code for a few.
+}
+\examples{
+path <- testthat_example("success")
+
+# The default reporter - doesn't display well in examples because
+# it's designed to work in an interactive console.
+test_file(path)
+
+# Override the default by supplying the name of a reporter
+test_file(path, reporter = "minimal")
 }
 \seealso{
 Other reporters: \code{\link{CheckReporter}},

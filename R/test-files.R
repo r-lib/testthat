@@ -81,21 +81,37 @@ find_test_scripts <- function(path, filter = NULL, invert = FALSE, ...) {
   filter_test_scripts(files, filter, invert, ...)
 }
 
-#' Run all tests in specified file.
+#' Run all tests in specified file
 #'
-#' @param path path to file
-#' @param reporter reporter to use
-#' @param env environment in which to execute the tests
+#' Execute code in the specified file, displaying results using a `reporter`.
+#' Use this function when you want to run a single file's worth of tests.
+#' You are responsible for ensuring that the functions to test are available
+#' in the global environment.
+#'
+#' @param path Path to file.
+#' @param env Environment in which to execute the tests. Expert use only.
 #' @param load_helpers Source helper files before running the tests?
-#' @param encoding File encoding, default is "unknown"
-#' `unknown`.
+#'   See [source_test_helpers()] for more details.
+#' @param encoding Deprecated. All files now assumed to be UTF-8.
 #' @inheritParams with_reporter
 #' @inheritParams source_file
-#' @return the results as a "testthat_results" (list)
+#' @return Invisibily, a list with one element for each test.
 #' @export
-test_file <- function(path, reporter = default_reporter(), env = test_env(),
-                      start_end_reporter = TRUE, load_helpers = TRUE,
-                      encoding = "unknown", wrap = TRUE) {
+#' @examples
+#' path <- testthat_example("success")
+#' test_file(path, reporter = "minimal")
+#'
+#' # test_file() invisibly returns a list, with one element for each test.
+#' # This can be useful if you want to compute on your test results.
+#' out <- test_file(path, reporter = "minimal")
+#' str(out[[1]])
+test_file <- function(path,
+                      reporter = default_reporter(),
+                      env = test_env(),
+                      start_end_reporter = TRUE,
+                      load_helpers = TRUE,
+                      encoding = "unknown",
+                      wrap = TRUE) {
   library(testthat)
 
   if (!file.exists(path)) {

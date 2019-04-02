@@ -1,5 +1,11 @@
 # testthat (development version)
 
+* New `testthat_examples()` and `testthat_example()` make it easy to access
+  new test files bundled with the package. These are used in various examples
+  to make it easier to understand how to use the package in novel ways.
+  
+* Documentation of reporters has been considerably improved (#657).
+
 * Expectation object always contains the failure message, even when succesful 
   (#836)
 

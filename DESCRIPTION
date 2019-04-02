@@ -50,6 +50,7 @@ Collate:
     'context.R'
     'describe.R'
     'evaluate-promise.R'
+    'example.R'
     'expect-comparison.R'
     'expect-equality.R'
     'expect-inheritance.R'

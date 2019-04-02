@@ -1,10 +1,16 @@
-#' Managing test reporting
+#' Manage test reporting
 #'
 #' The job of a reporter is to aggregate the results from files, tests, and
-#' expectations and display in some informative way.
+#' expectations and display them in an informative way. Every testtthat function
+#' that runs multiple tests provides a `reporter` argument which you can
+#' use to override the default (which is selected by [default_reporter()]).
+#' Typically this will
 #'
-#' Do not clone directly from this object - children should implement all
-#' methods.
+#' You only need to use this `Reporter` object directly if you are creating
+#' a new reporter. Currently, creating new Reporters is undocumented,
+#' so if you want to create your own, you'll need to make sure that you're
+#' familiar with [R6](https://adv-r.hadley.nz/R6.html) and then need read the
+#' source code for a few.
 #'
 #' @keywords internal
 #' @export
@@ -12,6 +18,15 @@
 #' @aliases Reporter
 #' @importFrom R6 R6Class
 #' @family reporters
+#' @examples
+#' path <- testthat_example("success")
+#'
+#' # The default reporter - doesn't display well in examples because
+#' # it's designed to work in an interactive console.
+#' test_file(path)
+#'
+#' # Override the default by supplying the name of a reporter
+#' test_file(path, reporter = "minimal")
 Reporter <- R6::R6Class("Reporter",
   public = list(
     start_reporter = function() {},
@@ -72,22 +87,10 @@ Reporter <- R6::R6Class("Reporter",
   )
 )
 
-fancy_line <- function(x) {
-  if (!l10n_info()$`UTF-8`) {
-    return(x)
-  }
-
-  switch(x,
-    "-" = "\u2500",
-    "=" = "\u2550",
-    x
-  )
-}
-
-#' Retrieve the default reporter.
+#' Retrieve the default reporter
 #'
 #' The defaults are:
-#' * [SummaryReporter] for interactive; override with `testthat.default_reporter`
+#' * [ProgressReporter] for interactive; override with `testthat.default_reporter`
 #' * [CheckReporter] for R CMD check; override with `testthat.default_check_reporter`
 #'
 #' @export
