@@ -53,7 +53,7 @@ use only.}
 \code{expect_setequal(x, y)} tests that every element of \code{x} occurs in \code{y},
 and that every element of \code{y} occurs in \code{x}. Note that this definition
 ignores names, and you will be warned if both \code{object} and \code{expected} have
-names.
+names. (Powered by \code{\link[vctrs:vec_in]{vctrs::vec_in()}}.)
 }
 \examples{
 a <- 10
