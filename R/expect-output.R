@@ -289,6 +289,10 @@ simple_error <- function(x) {
     return(TRUE)
   }
 
+  if (inherits(x, "Rcpp::exception")) {
+    return(TRUE)
+  }
+
   inherits_only(x, c("rlang_error", "error", "condition"))
 }
 
