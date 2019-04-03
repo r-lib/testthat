@@ -16,11 +16,17 @@ expect <- function(ok, failure_message, info = NULL, srcref = NULL) {
   type <- if (ok) "success" else "failure"
 
   # Preserve existing API which appear to be used in package test code
+  # Can remove in next major release
   if (missing(failure_message)) {
     warn("`failure_message` is missing, with no default.")
     message <- "unknown failure"
   } else {
-    message <- paste(c(failure_message, info), collapse = "\n")
+    # A few packages include code in info that errors on evaluation
+    if (ok) {
+      message <- paste(failure_message, collapse = "\n")
+    } else {
+      message <- paste(c(failure_message, info), collapse = "\n")
+    }
   }
 
   exp <- expectation(type, message, srcref = srcref)
