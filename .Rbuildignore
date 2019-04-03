@@ -1,3 +1,4 @@
+^revdep$
 ^\.covrignore$
 ^.*\.Rproj$
 ^\.Rproj\.user$
