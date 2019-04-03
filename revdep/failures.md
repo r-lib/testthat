@@ -1652,6 +1652,23 @@ Version: 0.0.5
     See ‘/Users/max/github/forks/testthat/revdep/checks.noindex/discretecdAlgorithm/new/discretecdAlgorithm.Rcheck/00install.out’ for details.
     ```
 
+# dplyr
+
+Version: 0.8.0.1
+
+## In both
+
+*   R CMD check timed out
+    
+
+*   checking installed package size ... NOTE
+    ```
+      installed size is  6.5Mb
+      sub-directories of 1Mb or more:
+        R      2.0Mb
+        libs   2.7Mb
+    ```
+
 # dqrng
 
 Version: 0.1.1
@@ -1663,6 +1680,15 @@ Version: 0.1.1
     Installation failed.
     See ‘/Users/max/github/forks/testthat/revdep/checks.noindex/dqrng/new/dqrng.Rcheck/00install.out’ for details.
     ```
+
+# drake
+
+Version: 7.0.0
+
+## In both
+
+*   R CMD check timed out
+    
 
 # DropletUtils
 

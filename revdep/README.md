@@ -1,5 +1,3 @@
-These are *partial* results!
-
 # Platform
 
 |field    |value                        |
@@ -22,7 +20,7 @@ These are *partial* results!
 
 # Revdeps
 
-## Failed to check (472)
+## Failed to check (474)
 
 |package                      |version    |error    |warning |note |source                                                                                  |
 |:----------------------------|:----------|:--------|:-------|:----|:---------------------------------------------------------------------------------------|
@@ -139,7 +137,9 @@ These are *partial* results!
 |dina                         |2.0.0      |1        |        |     |[cran/dina](https://github.com/cran/dina)                                               |
 |disclapmix                   |1.7.3      |1        |        |     |[cran/disclapmix](https://github.com/cran/disclapmix)                                   |
 |discretecdAlgorithm          |0.0.5      |1        |        |     |[cran/discretecdAlgorithm](https://github.com/cran/discretecdAlgorithm)                 |
+|dplyr                        |0.8.0.1    |1        |        |1    |[cran/dplyr](https://github.com/cran/dplyr)                                             |
 |dqrng                        |0.1.1      |1        |        |     |[cran/dqrng](https://github.com/cran/dqrng)                                             |
+|drake                        |7.0.0      |1        |        |     |[cran/drake](https://github.com/cran/drake)                                             |
 |DropletUtils                 |1.2.2      |1        |        |     |[cran/DropletUtils](https://github.com/cran/DropletUtils)                               |
 |DtD                          |0.2.1      |1        |        |     |[cran/DtD](https://github.com/cran/DtD)                                                 |
 |dtwclust                     |5.5.2      |1        |        |     |[cran/dtwclust](https://github.com/cran/dtwclust)                                       |
@@ -499,37 +499,20 @@ These are *partial* results!
 |xgboost                      |0.82.1     |1        |        |     |[cran/xgboost](https://github.com/cran/xgboost)                                         |
 |zinbwave                     |1.4.2      |1        |        |1    |[cran/zinbwave](https://github.com/cran/zinbwave)                                       |
 
-## New problems (29)
+## New problems (12)
 
-|package                                            |version |error  |warning |note |source                                                              |
-|:--------------------------------------------------|:-------|:------|:-------|:----|:-------------------------------------------------------------------|
-|[BayesianTools](problems.md#bayesiantools)         |0.1.6   |__+1__ |        |     |[cran/BayesianTools](https://github.com/cran/BayesianTools)         |
-|[broom.mixed](problems.md#broommixed)              |0.2.4   |__+1__ |        |1    |[cran/broom.mixed](https://github.com/cran/broom.mixed)             |
-|[dbx](problems.md#dbx)                             |0.2.4   |__+1__ |        |     |[cran/dbx](https://github.com/cran/dbx)                             |
-|[diffdf](problems.md#diffdf)                       |1.0.3   |__+1__ |        |     |[cran/diffdf](https://github.com/cran/diffdf)                       |
-|[dplyr](problems.md#dplyr)                         |0.8.0.1 |__+1__ |        |2    |[cran/dplyr](https://github.com/cran/dplyr)                         |
-|[drake](problems.md#drake)                         |7.0.0   |__+1__ |        |     |[cran/drake](https://github.com/cran/drake)                         |
-|[ExpressionAtlas](problems.md#expressionatlas)     |1.10.0  |__+1__ |        |     |[cran/ExpressionAtlas](https://github.com/cran/ExpressionAtlas)     |
-|[HGNChelper](problems.md#hgnchelper)               |0.7.1   |__+1__ |        |     |[cran/HGNChelper](https://github.com/cran/HGNChelper)               |
-|[jetpack](problems.md#jetpack)                     |0.4.2   |__+1__ |        |     |[cran/jetpack](https://github.com/cran/jetpack)                     |
-|[lifecontingencies](problems.md#lifecontingencies) |1.3.6   |__+1__ |        |1    |[cran/lifecontingencies](https://github.com/cran/lifecontingencies) |
-|[markmyassignment](problems.md#markmyassignment)   |0.8.1   |       |__+1__  |1    |[cran/markmyassignment](https://github.com/cran/markmyassignment)   |
-|[multicolor](problems.md#multicolor)               |0.1.2   |__+1__ |        |1    |[cran/multicolor](https://github.com/cran/multicolor)               |
-|[nat](problems.md#nat)                             |1.8.11  |__+1__ |        |     |[cran/nat](https://github.com/cran/nat)                             |
-|[ndexr](problems.md#ndexr)                         |1.4.1   |__+1__ |        |3    |[cran/ndexr](https://github.com/cran/ndexr)                         |
-|[nodiv](problems.md#nodiv)                         |1.3.0   |__+1__ |        |     |[cran/nodiv](https://github.com/cran/nodiv)                         |
-|[parallelMap](problems.md#parallelmap)             |1.3     |__+1__ |        |1    |[cran/parallelMap](https://github.com/cran/parallelMap)             |
-|[PathoStat](problems.md#pathostat)                 |1.8.4   |__+1__ |        |1    |[cran/PathoStat](https://github.com/cran/PathoStat)                 |
-|[platetools](problems.md#platetools)               |0.1.1   |__+1__ |        |     |[cran/platetools](https://github.com/cran/platetools)               |
-|[projpred](problems.md#projpred)                   |1.1.1   |__+1__ |        |     |[cran/projpred](https://github.com/cran/projpred)                   |
-|[raustats](problems.md#raustats)                   |0.1.0   |__+1__ |__+1__  |1    |[cran/raustats](https://github.com/cran/raustats)                   |
-|[Rpolyhedra](problems.md#rpolyhedra)               |0.4.2   |__+1__ |        |1    |[cran/Rpolyhedra](https://github.com/cran/Rpolyhedra)               |
-|[RTest](problems.md#rtest)                         |1.2.3   |__+2__ |        |     |[cran/RTest](https://github.com/cran/RTest)                         |
-|[simTool](problems.md#simtool)                     |1.1.3   |__+1__ |        |     |[cran/simTool](https://github.com/cran/simTool)                     |
-|[skimr](problems.md#skimr)                         |1.0.5   |__+1__ |        |1    |[cran/skimr](https://github.com/cran/skimr)                         |
-|[slinky](problems.md#slinky)                       |1.0.2   |__+1__ |        |     |[cran/slinky](https://github.com/cran/slinky)                       |
-|[stars](problems.md#stars)                         |0.3-0   |__+1__ |        |2    |[cran/stars](https://github.com/cran/stars)                         |
-|[tabula](problems.md#tabula)                       |1.2.0   |__+1__ |        |1    |[cran/tabula](https://github.com/cran/tabula)                       |
-|[thriftr](problems.md#thriftr)                     |1.1.5   |__+1__ |        |     |[cran/thriftr](https://github.com/cran/thriftr)                     |
-|[unpivotr](problems.md#unpivotr)                   |0.5.1   |__+1__ |        |     |[cran/unpivotr](https://github.com/cran/unpivotr)                   |
+|package                                          |version |error    |warning |note |source                                                            |
+|:------------------------------------------------|:-------|:--------|:-------|:----|:-----------------------------------------------------------------|
+|[diffdf](problems.md#diffdf)                     |1.0.3   |__+1__   |        |     |[cran/diffdf](https://github.com/cran/diffdf)                     |
+|[jetpack](problems.md#jetpack)                   |0.4.2   |__+1__   |        |     |[cran/jetpack](https://github.com/cran/jetpack)                   |
+|[markmyassignment](problems.md#markmyassignment) |0.8.1   |         |__+1__  |1    |[cran/markmyassignment](https://github.com/cran/markmyassignment) |
+|[multicolor](problems.md#multicolor)             |0.1.2   |__+1__   |        |1    |[cran/multicolor](https://github.com/cran/multicolor)             |
+|[nat](problems.md#nat)                           |1.8.11  |__+1__   |1       |     |[cran/nat](https://github.com/cran/nat)                           |
+|[ndexr](problems.md#ndexr)                       |1.4.1   |__+1__   |        |3    |[cran/ndexr](https://github.com/cran/ndexr)                       |
+|[parallelMap](problems.md#parallelmap)           |1.3     |__+1__   |        |3    |[cran/parallelMap](https://github.com/cran/parallelMap)           |
+|[platetools](problems.md#platetools)             |0.1.1   |__+1__   |        |1    |[cran/platetools](https://github.com/cran/platetools)             |
+|[projpred](problems.md#projpred)                 |1.1.1   |__+1__   |        |     |[cran/projpred](https://github.com/cran/projpred)                 |
+|[raustats](problems.md#raustats)                 |0.1.0   |__+1__   |__+1__  |1    |[cran/raustats](https://github.com/cran/raustats)                 |
+|[RTest](problems.md#rtest)                       |1.2.3   |1 __+1__ |        |     |[cran/RTest](https://github.com/cran/RTest)                       |
+|[tabula](problems.md#tabula)                     |1.2.0   |__+1__   |        |1    |[cran/tabula](https://github.com/cran/tabula)                     |
 

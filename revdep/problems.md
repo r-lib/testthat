@@ -1,66 +1,3 @@
-# BayesianTools
-
-Version: 0.1.6
-
-## Newly broken
-
-*   checking tests ...
-    ```
-     ERROR
-    Running the tests in ‘tests/testthat.R’ failed.
-    Last 13 lines of output:
-       Running DEzs-MCMC, chain  1 iteration 9000 of 10002 . Current logp  -12.35851 -15.87325 -12.1476 . Please wait! 
-      
-       Running DEzs-MCMC, chain  1 iteration 9300 of 10002 . Current logp  -12.28111 -18.23172 -12.47133 . Please wait! 
-      
-       Running DEzs-MCMC, chain  1 iteration 9600 of 10002 . Current logp  -12.94864 -12.53324 -12.33997 . Please wait! 
-      
-       Running DEzs-MCMC, chain  1 iteration 9900 of 10002 . Current logp  -12.42213 -16.62652 -12.3143 . Please wait! 
-      
-       Running DEzs-MCMC, chain  1 iteration 10002 of 10002 . Current logp  -12.34446 -12.0431 -12.2045 . Please wait! 
-      ══ testthat results  ═══════════════════════════════════════════════════════════
-      OK: 40 SKIPPED: 11 FAILED: 1
-      1. Error: likelihood properly handles exceptions (@test-createBayesianSetup.R#90) 
-      
-      Error: testthat unit tests failed
-      Execution halted
-    ```
-
-# broom.mixed
-
-Version: 0.2.4
-
-## Newly broken
-
-*   checking tests ...
-    ```
-     ERROR
-    Running the tests in ‘tests/test-all.R’ failed.
-    Last 13 lines of output:
-      1: expect(!("deviance" %in% names(glance(lmm0)))) at testthat/test-lme4.R:59
-      2: paste(c(failure_message, info), collapse = "\n") at /private/tmp/Rtmp92v0RV/R.INSTALLc6a2447ef5c1/testthat/R/expectation.R:17
-      
-      [31m──[39m [31m2. Error: glance includes deviance iff method='ML' (@test-nlme.R#88) [39m [31m──────────────────────────[39m
-      argument "failure_message" is missing, with no default
-      1: expect(!("deviance" %in% names(glance(lmm0)))) at testthat/test-nlme.R:88
-      2: paste(c(failure_message, info), collapse = "\n") at /private/tmp/Rtmp92v0RV/R.INSTALLc6a2447ef5c1/testthat/R/expectation.R:17
-      
-      ══ testthat results  ══════════════════════════════════════════════════════════════════════════════
-      OK: 205 SKIPPED: 0 FAILED: 2
-      1. Error: glance includes deviance iff method='ML' (@test-lme4.R#59) 
-      2. Error: glance includes deviance iff method='ML' (@test-nlme.R#88) 
-      
-      Error: testthat unit tests failed
-      Execution halted
-    ```
-
-## In both
-
-*   checking package dependencies ... NOTE
-    ```
-    Package suggested but not available for checking: ‘glmmADMB’
-    ```
-
 # cicero
 
 Version: 1.0.15
@@ -181,34 +118,6 @@ Version: 1.0.3
 *   R CMD check timed out
     
 
-# dbx
-
-Version: 0.2.4
-
-## Newly broken
-
-*   checking tests ...
-    ```
-     ERROR
-    Running the tests in ‘tests/testthat.R’ failed.
-    Last 13 lines of output:
-      
-      [31m──[39m [31m4. Error: dates works (@helper-run-data-type-tests.R#114) [39m [31m─────────────────────────────────────[39m
-      argument "failure_message" is missing, with no default
-      1: expect(all(format(res$created_on, "%Z") == "UTC")) at /Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/dbx/new/dbx.Rcheck/tests/testthat/helper-run-data-type-tests.R:114
-      2: paste(c(failure_message, info), collapse = "\n") at /private/tmp/Rtmp92v0RV/R.INSTALLc6a2447ef5c1/testthat/R/expectation.R:17
-      
-      ══ testthat results  ══════════════════════════════════════════════════════════════════════════════
-      OK: 75 SKIPPED: 19 FAILED: 4
-      1. Error: empty insert works (@helper-run-insert-tests.R#12) 
-      2. Error: empty update works (@helper-run-update-tests.R#20) 
-      3. Error: empty upsert works (@helper-run-upsert-tests.R#54) 
-      4. Error: dates works (@helper-run-data-type-tests.R#114) 
-      
-      Error: testthat unit tests failed
-      Execution halted
-    ```
-
 # diffdf
 
 Version: 1.0.3
@@ -220,8 +129,8 @@ Version: 1.0.3
      ERROR
     Running the tests in ‘tests/testthat.R’ failed.
     Last 13 lines of output:
-      ══ testthat results  ══════════════════════════════════════════════════════════════════════════════
-      OK: 268 SKIPPED: 0 FAILED: 12
+      ══ testthat results  ════════════════════════════════════════════════════════════════════════════════════════════
+      OK: 268 SKIPPED: 0 WARNINGS: 0 FAILED: 12
       1. Error: Check comparision of equal objects (@test-identify_mode_differences.R#136) 
       2. Error: Check comparision of non equal objects aiming for differences of length 1 (@test-identify_mode_differences.R#173) 
       3. Error: Check comparision of non equal objects aiming for differences of length 2 (@test-identify_mode_differences.R#215) 
@@ -232,137 +141,6 @@ Version: 1.0.3
       8. Error: Check comparision of non equal objects aiming for differences of length 1 (@test-identify_mode_differences.R#173) 
       9. Error: Check comparision of non equal objects aiming for differences of length 2 (@test-identify_mode_differences.R#215) 
       1. ...
-      
-      Error: testthat unit tests failed
-      Execution halted
-    ```
-
-# dplyr
-
-Version: 0.8.0.1
-
-## Newly broken
-
-*   checking tests ...
-    ```
-     ERROR
-    Running the tests in ‘tests/testthat.R’ failed.
-    Last 13 lines of output:
-      1. Failure: Coercion from integer to logicalvalue (@helper-combine.R#264) 
-      2. Failure: Coercion from factor to logicalvalue (@helper-combine.R#264) 
-      3. Failure: Coercion from another_factor to logicalvalue (@helper-combine.R#264) 
-      4. Failure: Coercion from double to logicalvalue (@helper-combine.R#264) 
-      5. Failure: Coercion from character to logicalvalue (@helper-combine.R#264) 
-      6. Failure: Coercion from POSIXct to logicalvalue (@helper-combine.R#264) 
-      7. Failure: Coercion from Date to logicalvalue (@helper-combine.R#264) 
-      8. Failure: Coercion from complex to logicalvalue (@helper-combine.R#264) 
-      9. Failure: Coercion from logicalvalue to integer (@helper-combine.R#264) 
-      1. ...
-      
-      Error: testthat unit tests failed
-      In addition: Warning message:
-      call dbDisconnect() when finished working with a connection 
-      Execution halted
-    ```
-
-## In both
-
-*   checking installed package size ... NOTE
-    ```
-      installed size is  6.6Mb
-      sub-directories of 1Mb or more:
-        R      2.0Mb
-        libs   2.7Mb
-    ```
-
-*   checking data for non-ASCII characters ... NOTE
-    ```
-      Note: found 4 marked UTF-8 strings
-    ```
-
-# drake
-
-Version: 7.0.0
-
-## Newly broken
-
-*   checking tests ...
-    ```
-     ERROR
-    Running the tests in ‘tests/testthat.R’ failed.
-    Last 13 lines of output:
-      3: run_native_backend(config) at /Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/drake/new/drake.Rcheck/00_pkg_src/drake/R/exec-backend.R:3
-      4: get(paste0("backend_", parallelism), envir = getNamespace("drake"))(config) at /Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/drake/new/drake.Rcheck/00_pkg_src/drake/R/exec-backend.R:15
-      5: loop_build(target = targets[i], config = config, downstream = targets[-seq_len(i)]) at /Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/drake/new/drake.Rcheck/00_pkg_src/drake/R/backend-loop.R:8
-      6: conclude_build(build = build, config = config) at /Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/drake/new/drake.Rcheck/00_pkg_src/drake/R/backend-loop.R:27
-      7: handle_build_exceptions(target = target, meta = meta, config = config) at /Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/drake/new/drake.Rcheck/00_pkg_src/drake/R/exec-build.R:38
-      8: drake_error("Target `", target, "` failed. Call `diagnose(", target, ")` for details. Error message:\n  ", 
-             meta$error$message, config = config) at /Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/drake/new/drake.Rcheck/00_pkg_src/drake/R/utils-handlers.R:26
-      9: stop(..., call. = FALSE) at /Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/drake/new/drake.Rcheck/00_pkg_src/drake/R/vis-console.R:218
-      
-      ══ testthat results  ══════════════════════════════════════════════════════════════════════════════
-      OK: 803 SKIPPED: 207 FAILED: 1
-      1. Error: lock_envir works (@test-edge-cases.R#15) 
-      
-      Error: testthat unit tests failed
-      Execution halted
-    ```
-
-# ExpressionAtlas
-
-Version: 1.10.0
-
-## Newly broken
-
-*   checking examples ... ERROR
-    ```
-    ...
-    Running examples in ‘ExpressionAtlas-Ex.R’ failed
-    The error most likely occurred in:
-    
-    > ### Name:  searchAtlasExperiments 
-    > ### Title: Search for Expression Atlas experiments
-    > ### Aliases: ' searchAtlasExperiments '
-    > 
-    > ### ** Examples
-    > 
-    >     
-    >     # Search for experiments on salt in rice.
-    >     atlasRes <- searchAtlasExperiments( "salt", "Oryza sativa" )
-    Searching for Expression Atlas experiments matching your query ...
-    Query successful.
-    No results found. Cannot continue.
-    > 
-    >     # Download data for all experiments found.
-    >     atlasData <- getAtlasData( atlasRes$Accession )
-    Error in getAtlasData(atlasRes$Accession) : 
-      Please provide experiment accessions as a vector.
-    Execution halted
-    ```
-
-# HGNChelper
-
-Version: 0.7.1
-
-## Newly broken
-
-*   checking tests ...
-    ```
-     ERROR
-    Running the tests in ‘tests/testthat.R’ failed.
-    Last 13 lines of output:
-      > library(testthat)
-      > library(HGNChelper)
-      > 
-      > test_check("HGNChelper")
-      [31m──[39m [31m1. Error: (unknown) (@test_checkGeneSymbols.R#77) [39m [31m─────────────────────────────────────────────[39m
-      argument "failure_message" is missing, with no default
-      1: expect(identical(res, res2)) at testthat/test_checkGeneSymbols.R:77
-      2: paste(c(failure_message, info), collapse = "\n") at /private/tmp/Rtmp92v0RV/R.INSTALLc6a2447ef5c1/testthat/R/expectation.R:17
-      
-      ══ testthat results  ══════════════════════════════════════════════════════════════════════════════
-      OK: 38 SKIPPED: 0 FAILED: 1
-      1. Error: (unknown) (@test_checkGeneSymbols.R#77) 
       
       Error: testthat unit tests failed
       Execution halted
@@ -379,79 +157,21 @@ Version: 0.4.2
      ERROR
     Running the tests in ‘tests/testthat.R’ failed.
     Last 13 lines of output:
-             jetpack::update("randomForest")
-             jetpack::remove("randomForest")
-             expect(!contains("DESCRIPTION", "randomForest"))
-             expect(!contains("packrat.lock", "randomForest"))
-         }) at testthat/test-jetpack.R:15
-      4: force(code)
-      5: expect(file.exists("DESCRIPTION")) at testthat/test-jetpack.R:17
-      6: paste(c(failure_message, info), collapse = "\n") at /private/tmp/Rtmp92v0RV/R.INSTALLc6a2447ef5c1/testthat/R/expectation.R:17
+      9: suppressMessages(packrat::snapshot(project = dir, prompt = FALSE, ignore.stale = TRUE, snapshot.sources = FALSE)) at /Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/jetpack/new/jetpack.Rcheck/00_pkg_src/jetpack/R/helpers.R:168
+      10: withCallingHandlers(expr, message = function(c) invokeRestart("muffleMessage"))
+      11: packrat::snapshot(project = dir, prompt = FALSE, ignore.stale = TRUE, snapshot.sources = FALSE) at /Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/jetpack/new/jetpack.Rcheck/00_pkg_src/jetpack/R/helpers.R:168
+      12: snapshotImpl(project, available, lib.loc, dry.run, ignore.stale = ignore.stale, prompt = prompt && !dry.run, snapshot.sources = snapshot.sources, 
+             infer.dependencies = infer.dependencies)
+      13: annotatePkgDesc(record, project, libDir(project))
+      14: stopifnot(nrow(content) == 1)
       
-      ══ testthat results  ══════════════════════════════════════════════════════════════════════════════
-      OK: 0 SKIPPED: 0 FAILED: 1
+      ══ testthat results  ════════════════════════════════════════════════════════════════════════════════════════════
+      OK: 3 SKIPPED: 0 WARNINGS: 3 FAILED: 2
       1. Error: it works (@test-jetpack.R#14) 
+      2. Error: it works (@test-jetpack.R#14) 
       
       Error: testthat unit tests failed
       Execution halted
-    ```
-
-# lifecontingencies
-
-Version: 1.3.6
-
-## Newly broken
-
-*   checking running R code from vignettes ...
-    ```
-       ‘an_introduction_to_lifecontingencies_package.Rnw’ using ‘UTF-8’ ... failed
-       ‘mortality_projection.Rnw’ using ‘UTF-8’ ... OK
-       ‘PensionPlanVal.Rmd’ using ‘UTF-8’ ... OK
-       ‘compute-detail.Rmd’ using ‘UTF-8’ ... OK
-       ‘introToLifecontingencies.Rmd’ using ‘UTF-8’ ... OK
-       ‘pensionfunding.Rmd’ using ‘UTF-8’ ... OK
-     ERROR
-    Errors in running code in vignettes:
-    when running code in ‘an_introduction_to_lifecontingencies_package.Rnw’
-      ...
-    > require(parallel)
-    Loading required package: parallel
-    
-    > cl <- makeCluster(1)
-    Warning in socketConnection("localhost", port = port, server = TRUE, blocking = TRUE,  :
-      port 11215 cannot be opened
-    
-      When sourcing 'an_introduction_to_lifecontingencies_package.R':
-    Error: cannot open the connection
-    Execution halted
-    ```
-
-## In both
-
-*   checking re-building of vignette outputs ... NOTE
-    ```
-    ...
-    Version:  0.6.9.14
-    Date:     2019-01-20
-    BugReport: http://github.com/spedygiorgio/markovchain/issues
-    
-    Loading required package: parallel
-    Error in texi2dvi(file = file, pdf = TRUE, clean = clean, quiet = quiet,  : 
-      Running 'texi2dvi' on 'an_introduction_to_lifecontingencies_package.tex' failed.
-    LaTeX errors:
-    ! LaTeX Error: File `ae.sty' not found.
-    
-    Type X to quit or <RETURN> to proceed,
-    or enter new name. (Default extension: sty)
-    
-    ! Emergency stop.
-    <read *> 
-             
-    l.55 \RequirePackage
-                        [T1]{fontenc}^^M
-    !  ==> Fatal error occurred, no output PDF file produced!
-    Calls: buildVignettes -> texi2pdf -> texi2dvi
-    Execution halted
     ```
 
 # markmyassignment
@@ -464,7 +184,7 @@ Version: 0.8.1
     ```
     Found the following significant warnings:
       Warning: replacing previous import ‘checkmate::expect_vector’ by ‘testthat::expect_vector’ when loading ‘markmyassignment’
-    See ‘/Users/max/github/forks/testthat/revdep/checks.noindex/markmyassignment/new/markmyassignment.Rcheck/00install.out’ for details.
+    See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/markmyassignment/new/markmyassignment.Rcheck/00install.out’ for details.
     ```
 
 ## In both
@@ -486,17 +206,17 @@ Version: 0.1.2
      ERROR
     Running the tests in ‘tests/testthat.R’ failed.
     Last 13 lines of output:
-      ── 1. Error: baseline works (@test-multicolor.R#39)  ───────────────────────────
+      > test_check("multicolor")
+      [31m──[39m [31m1. Error: baseline works (@test-multicolor.R#39) [39m [31m────────────────────────────────────────────────────────────[39m
       'names' attribute [2] must be the same length as the vector [1]
-      1: expect_error(suppressMessages(multi_color(colors = c("seafoamgreen", "green"))), 
-             expect_error(suppressMessages(multi_color(colors = c("maroon4", "bisque2"), direction = "one")))) at testthat/test-multicolor.R:39
-      2: compare_condition(act$cap, act$lab, regexp = regexp, class = class, ...)
-      3: sprintf("Expected match: %s\nActual message: %s", encodeString(regexp, quote = "\""), 
-             encodeString(cond$message, quote = "\""))
-      4: encodeString(regexp, quote = "\"")
+      1: expect_error(suppressMessages(multi_color(colors = c("seafoamgreen", "green"))), expect_error(suppressMessages(multi_color(colors = c("maroon4", 
+             "bisque2"), direction = "one")))) at testthat/test-multicolor.R:39
+      2: compare_condition(act$cap, act$lab, regexp = regexp, class = class, ...) at /private/tmp/RtmpqGjk4F/R.INSTALL18218400c5d64/testthat/R/expect-output.R:130
+      3: sprintf("Expected match: %s\nActual message: %s", encodeString(regexp, quote = "\""), encodeString(cond$message, quote = "\"")) at /private/tmp/RtmpqGjk4F/R.INSTALL18218400c5d64/testthat/R/expect-output.R:266
+      4: encodeString(regexp, quote = "\"") at /private/tmp/RtmpqGjk4F/R.INSTALL18218400c5d64/testthat/R/expect-output.R:266
       
-      ══ testthat results  ═══════════════════════════════════════════════════════════
-      OK: 26 SKIPPED: 1 FAILED: 1
+      ══ testthat results  ════════════════════════════════════════════════════════════════════════════════════════════
+      OK: 27 SKIPPED: 0 WARNINGS: 0 FAILED: 1
       1. Error: baseline works (@test-multicolor.R#39) 
       
       Error: testthat unit tests failed
@@ -522,21 +242,30 @@ Version: 1.8.11
      ERROR
     Running the tests in ‘tests/test-all.R’ failed.
     Last 13 lines of output:
-      3: stopifnot(methods::hasMethod(operator, class(act$val)), length(act$val) == 1)
+      3: stopifnot(methods::hasMethod(operator, class(act$val)), length(act$val) == 1) at /private/tmp/RtmpqGjk4F/R.INSTALL18218400c5d64/testthat/R/expect-comparison.R:27
       
-      ── 2. Error: we can plot dotprops in 3D (@test-neuron.R#146)  ──────────────────
+      [31m──[39m [31m2. Error: we can plot dotprops in 3D (@test-neuron.R#146) [39m [31m───────────────────────────────────────────────────[39m
       methods::hasMethod(operator, class(act$val)) is not TRUE
       1: expect_gt(plottedSegments, 0) at testthat/test-neuron.R:146
-      2: expect_compare(">", act, exp)
-      3: stopifnot(methods::hasMethod(operator, class(act$val)), length(act$val) == 1)
+      2: expect_compare(">", act, exp) at /private/tmp/RtmpqGjk4F/R.INSTALL18218400c5d64/testthat/R/expect-comparison.R:68
+      3: stopifnot(methods::hasMethod(operator, class(act$val)), length(act$val) == 1) at /private/tmp/RtmpqGjk4F/R.INSTALL18218400c5d64/testthat/R/expect-comparison.R:27
       
-      ══ testthat results  ═══════════════════════════════════════════════════════════
-      OK: 792 SKIPPED: 4 FAILED: 2
+      ══ testthat results  ════════════════════════════════════════════════════════════════════════════════════════════
+      OK: 792 SKIPPED: 4 WARNINGS: 0 FAILED: 2
       1. Error: we can plot neurons in 3D (@test-neuron.R#141) 
       2. Error: we can plot dotprops in 3D (@test-neuron.R#146) 
       
       Error: testthat unit tests failed
       Execution halted
+    ```
+
+## In both
+
+*   checking whether package ‘nat’ can be installed ... WARNING
+    ```
+    Found the following significant warnings:
+      Warning: partial match of 'OS' to 'OS.type'
+    See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/nat/new/nat.Rcheck/00install.out’ for details.
     ```
 
 # ndexr
@@ -550,17 +279,17 @@ Version: 1.4.1
      ERROR
     Running the tests in ‘tests/testthat.R’ failed.
     Last 13 lines of output:
-      ── 1. Error: Get network aspect as CX (ndex_network_get_aspect) (@test_04_networ
+      > 
+      > test_check("ndexr")
+      [31m──[39m [31m1. Error: Get network aspect as CX (ndex_network_get_aspect) (@test_04_network_aspects_and_metadata.r#99) [39m [31m───[39m
       object 'apiVersion' not found
-      1: expect_is(metData, "data.frame", info = paste0("Checking class of aspect (api ", 
-             apiVersion, ", aspect ", asp, ")")) at testthat/test_04_network_aspects_and_metadata.r:99
-      2: expect(inherits(act$val, class), sprintf("%s inherits from `%s` not `%s`.", act$lab, 
-             act$class, exp_lab), info = info)
-      3: paste(c(failure_message, info), collapse = "\n")
-      4: paste0("Checking class of aspect (api ", apiVersion, ", aspect ", asp, ")")
+      1: expect_is(metData, "data.frame", info = paste0("Checking class of aspect (api ", apiVersion, ", aspect ", asp, ")")) at testthat/test_04_network_aspects_and_metadata.r:99
+      2: expect(inherits(act$val, class), sprintf("%s inherits from `%s` not `%s`.", act$lab, act$class, exp_lab), info = info) at /private/tmp/RtmpqGjk4F/R.INSTALL18218400c5d64/testthat/R/expect-inheritance.R:71
+      3: paste(c(failure_message, info), collapse = "\n") at /private/tmp/RtmpqGjk4F/R.INSTALL18218400c5d64/testthat/R/expectation.R:23
+      4: paste0("Checking class of aspect (api ", apiVersion, ", aspect ", asp, ")") at /private/tmp/RtmpqGjk4F/R.INSTALL18218400c5d64/testthat/R/expect-inheritance.R:71
       
-      ══ testthat results  ═══════════════════════════════════════════════════════════
-      OK: 125 SKIPPED: 0 FAILED: 1
+      ══ testthat results  ════════════════════════════════════════════════════════════════════════════════════════════
+      OK: 125 SKIPPED: 0 WARNINGS: 0 FAILED: 1
       1. Error: Get network aspect as CX (ndex_network_get_aspect) (@test_04_network_aspects_and_metadata.r#99) 
       
       Error: testthat unit tests failed
@@ -586,55 +315,27 @@ Version: 1.4.1
 *   checking R code for possible problems ... NOTE
     ```
     ...
-    ndex_rest_GET: no visible global function definition for
-      ‘packageVersion’
-    ndex_rest_POST: no visible global function definition for
-      ‘packageVersion’
-    ndex_rest_PUT: no visible global function definition for
-      ‘packageVersion’
-    rcx_fromRCXgraph: no visible binding for global variable ‘po’
-    rcx_toRCXgraph: no visible global function definition for ‘V’
-    rcx_toRCXgraph: no visible global function definition for ‘V<-’
     rcx_toRCXgraph: no visible global function definition for ‘E’
+      (/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/ndexr/new/ndexr.Rcheck/00_pkg_src/ndexr/R/ndex_RCXgraph.r:117)
     rcx_toRCXgraph: no visible global function definition for ‘E<-’
+      (/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/ndexr/new/ndexr.Rcheck/00_pkg_src/ndexr/R/ndex_RCXgraph.r:117)
     rcxgraph_fromRCX: no visible global function definition for ‘V’
+      (/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/ndexr/new/ndexr.Rcheck/00_pkg_src/ndexr/R/ndex_RCXgraph.r:116)
     rcxgraph_fromRCX: no visible global function definition for ‘V<-’
+      (/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/ndexr/new/ndexr.Rcheck/00_pkg_src/ndexr/R/ndex_RCXgraph.r:116)
     rcxgraph_fromRCX: no visible global function definition for ‘E’
+      (/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/ndexr/new/ndexr.Rcheck/00_pkg_src/ndexr/R/ndex_RCXgraph.r:117)
     rcxgraph_fromRCX: no visible global function definition for ‘E<-’
+      (/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/ndexr/new/ndexr.Rcheck/00_pkg_src/ndexr/R/ndex_RCXgraph.r:117)
     rcxgraph_toRCX: no visible binding for global variable ‘po’
+      (/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/ndexr/new/ndexr.Rcheck/00_pkg_src/ndexr/R/ndex_RCXgraph.r:268)
+    rcxgraph_toRCX: no visible binding for global variable ‘po’
+      (/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/ndexr/new/ndexr.Rcheck/00_pkg_src/ndexr/R/ndex_RCXgraph.r:294)
     Undefined global functions or variables:
       E E<- V V<- packageVersion po tail
     Consider adding
       importFrom("utils", "packageVersion", "tail")
     to your NAMESPACE file.
-    ```
-
-# nodiv
-
-Version: 1.3.0
-
-## Newly broken
-
-*   checking tests ...
-    ```
-     ERROR
-    Running the tests in ‘tests/testthat.R’ failed.
-    Last 13 lines of output:
-        |                                                                            
-        |=========================================================             |  82%
-        |                                                                            
-        |============================================================          |  86%
-        |                                                                            
-        |================================================================      |  91%
-        |                                                                            
-        |===================================================================   |  95%
-        |                                                                            
-        |======================================================================| 100%══ testthat results  ═══════════════════════════════════════════════════════════
-      OK: 63 SKIPPED: 0 FAILED: 1
-      1. Error: add shape to object (@test_adding.R#4) 
-      
-      Error: testthat unit tests failed
-      Execution halted
     ```
 
 # parallelMap
@@ -650,15 +351,15 @@ Version: 1.3
     Last 13 lines of output:
       3: suppressMessages({
              reg = BatchJobs::makeRegistry(id = basename(fd), file.dir = fd, work.dir = wd)
-         })
+         }) at /Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/parallelMap/new/parallelMap.Rcheck/00_pkg_src/parallelMap/R/parallelStart.R:173
       4: withCallingHandlers(expr, message = function(c) invokeRestart("muffleMessage"))
-      5: BatchJobs::makeRegistry(id = basename(fd), file.dir = fd, work.dir = wd)
+      5: BatchJobs::makeRegistry(id = basename(fd), file.dir = fd, work.dir = wd) at /Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/parallelMap/new/parallelMap.Rcheck/00_pkg_src/parallelMap/R/parallelStart.R:174
       6: dbCreateJobStatusTable(reg)
       7: dbDoQuery(reg, query, flags = "rwc")
       8: stopf("Error in dbDoQuery. %s (%s)", res, query)
       
-      ══ testthat results  ═══════════════════════════════════════════════════════════
-      OK: 350 SKIPPED: 0 FAILED: 1
+      ══ testthat results  ════════════════════════════════════════════════════════════════════════════════════════════
+      OK: 62 SKIPPED: 0 WARNINGS: 288 FAILED: 1
       1. Error: warn on unregisterred level (@test_registerLevels.R#30) 
       
       Error: testthat unit tests failed
@@ -667,15 +368,29 @@ Version: 1.3
 
 ## In both
 
+*   checking package dependencies ... NOTE
+    ```
+    Package suggested but not available for checking: ‘Rmpi’
+    ```
+
 *   checking R code for possible problems ... NOTE
     ```
-    parallelExport: no visible global function definition for ‘setNames’
+    ...
     parallelGetOptions: no visible global function definition for
       ‘setNames’
+      (/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/parallelMap/new/parallelMap.Rcheck/00_pkg_src/parallelMap/R/parallelShowOptions.R:17)
+    parallelGetOptions: no visible global function definition for
+      ‘setNames’
+      (/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/parallelMap/new/parallelMap.Rcheck/00_pkg_src/parallelMap/R/parallelShowOptions.R:18)
     parallelStop: no visible global function definition for
       ‘getFromNamespace’
+      (/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/parallelMap/new/parallelMap.Rcheck/00_pkg_src/parallelMap/R/parallelStop.R:30)
     stopWithJobErrorMessages: no visible global function definition for
       ‘head’
+      (/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/parallelMap/new/parallelMap.Rcheck/00_pkg_src/parallelMap/R/displayErrorMessages.R:11)
+    stopWithJobErrorMessages: no visible global function definition for
+      ‘head’
+      (/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/parallelMap/new/parallelMap.Rcheck/00_pkg_src/parallelMap/R/displayErrorMessages.R:12)
     Undefined global functions or variables:
       getFromNamespace head setNames
     Consider adding
@@ -684,43 +399,9 @@ Version: 1.3
     to your NAMESPACE file.
     ```
 
-# PathoStat
-
-Version: 1.8.4
-
-## Newly broken
-
-*   checking examples ... ERROR
+*   checking Rd cross-references ... NOTE
     ```
-    Running examples in ‘PathoStat-Ex.R’ failed
-    The error most likely occurred in:
-    
-    > ### Name: findTaxonomy
-    > ### Title: Find the taxonomy for unlimited tids
-    > ### Aliases: findTaxonomy
-    > 
-    > ### ** Examples
-    > 
-    > example_data_dir <- system.file("example/data", package = "PathoStat")
-    > pathoreport_file_suffix <- "-sam-report.tsv"
-    > datlist <- readPathoscopeData(example_data_dir, pathoreport_file_suffix,
-    + input.files.name.vec = as.character(1:6))
-    > dat <- datlist$data
-    > ids <- rownames(dat)
-    > tids <- unlist(lapply(ids, FUN = grepTid))
-    > taxonLevels <- findTaxonomy(tids[1:5])
-    Error: HTTP failure: 429
-    {"error":"API rate limit exceeded","api-key":"208.103.64.29","count":"4","limit":"3"}
-    Execution halted
-    ```
-
-## In both
-
-*   checking dependencies in R code ... NOTE
-    ```
-    Namespaces in Imports field not imported from:
-      ‘ComplexHeatmap’ ‘RColorBrewer’
-      All declared Imports should be used.
+    Package unavailable to check Rd xrefs: ‘Rmpi’
     ```
 
 # platetools
@@ -734,21 +415,28 @@ Version: 0.1.1
      ERROR
     Running the tests in ‘tests/testthat.R’ failed.
     Last 13 lines of output:
-      ── 1. Error: missing_wells errors when expected (@test-missing_wells.R#20)  ────
+      > 
+      > test_check("platetools")
+      [31m──[39m [31m1. Error: missing_wells errors when expected (@test-missing_wells.R#20) [39m [31m─────────────────────────────────────[39m
       'names' attribute [2] must be the same length as the vector [1]
-      1: expect_error(missing_wells(as.list(full), well = full$well), expect_error(missing_wells(full, 
-             well = missing$wel))) at testthat/test-missing_wells.R:20
-      2: compare_condition(act$cap, act$lab, regexp = regexp, class = class, ...)
-      3: sprintf("Expected match: %s\nActual message: %s", encodeString(regexp, quote = "\""), 
-             encodeString(cond$message, quote = "\""))
-      4: encodeString(regexp, quote = "\"")
+      1: expect_error(missing_wells(as.list(full), well = full$well), expect_error(missing_wells(full, well = missing$wel))) at testthat/test-missing_wells.R:20
+      2: compare_condition(act$cap, act$lab, regexp = regexp, class = class, ...) at /private/tmp/RtmpqGjk4F/R.INSTALL18218400c5d64/testthat/R/expect-output.R:130
+      3: sprintf("Expected match: %s\nActual message: %s", encodeString(regexp, quote = "\""), encodeString(cond$message, quote = "\"")) at /private/tmp/RtmpqGjk4F/R.INSTALL18218400c5d64/testthat/R/expect-output.R:266
+      4: encodeString(regexp, quote = "\"") at /private/tmp/RtmpqGjk4F/R.INSTALL18218400c5d64/testthat/R/expect-output.R:266
       
-      ══ testthat results  ═══════════════════════════════════════════════════════════
-      OK: 183 SKIPPED: 4 FAILED: 1
+      ══ testthat results  ════════════════════════════════════════════════════════════════════════════════════════════
+      OK: 178 SKIPPED: 4 WARNINGS: 5 FAILED: 1
       1. Error: missing_wells errors when expected (@test-missing_wells.R#20) 
       
       Error: testthat unit tests failed
       Execution halted
+    ```
+
+## In both
+
+*   checking Rd cross-references ... NOTE
+    ```
+    Packages unavailable to check Rd xrefs: ‘S4Vectors’, ‘data.table’
     ```
 
 # projpred
@@ -762,17 +450,17 @@ Version: 1.1.1
      ERROR
     Running the tests in ‘tests/testthat.R’ failed.
     Last 13 lines of output:
+      - Plotting theme set to bayesplot::theme_default().
       > 
       > test_check("projpred")
-      ── 1. Error: project: setting vind to 1:2 has an expected effect (@test_project.
+      [31m──[39m [31m1. Error: project: setting vind to 1:2 has an expected effect (@test_project.R#153) [39m [31m─────────────────────────[39m
       object 'i_inf' not found
       1: expect_equal(nrow(p$beta), length(vind), info = i_inf) at testthat/test_project.R:153
-      2: expect(comp$equal, sprintf("%s not equal to %s.\n%s", act$lab, exp$lab, comp$message), 
-             info = info)
-      3: paste(c(failure_message, info), collapse = "\n")
+      2: expect(comp$equal, sprintf("%s not equal to %s.\n%s", act$lab, exp$lab, comp$message), info = info) at /private/tmp/RtmpqGjk4F/R.INSTALL18218400c5d64/testthat/R/expect-equality.R:61
+      3: paste(c(failure_message, info), collapse = "\n") at /private/tmp/RtmpqGjk4F/R.INSTALL18218400c5d64/testthat/R/expectation.R:23
       
-      ══ testthat results  ═══════════════════════════════════════════════════════════
-      OK: 1581 SKIPPED: 0 FAILED: 1
+      ══ testthat results  ════════════════════════════════════════════════════════════════════════════════════════════
+      OK: 1581 SKIPPED: 0 WARNINGS: 0 FAILED: 1
       1. Error: project: setting vind to 1:2 has an expected effect (@test_project.R#153) 
       
       Error: testthat unit tests failed
@@ -787,6 +475,7 @@ Version: 0.1.0
 
 *   checking examples ... ERROR
     ```
+    ...
     Running examples in ‘raustats-Ex.R’ failed
     The error most likely occurred in:
     
@@ -803,6 +492,7 @@ Version: 0.1.0
     > 
     >  ## ABS indicator search
     >  x <- abs_search(pattern = "all groups", dataset="CPI")
+    >  x <- abs_search(pattern = c("all groups", "capital cities"), dataset="CPI")
     Error in doc_parse_raw(x, encoding = encoding, base_url = base_url, as_html = as_html,  : 
       Entity 'nbsp' not defined [26]
     Calls: abs_search ... read_xml.connection -> read_xml.raw -> doc_parse_raw
@@ -822,7 +512,7 @@ Version: 0.1.0
     Navigating to /AUSSTATS/abs@.nsf/DetailsPage/5206.0Sep%202017?OpenDocument
     Navigating to /AUSSTATS/abs@.nsf/DetailsPage/1270.0.55.001July%202016?OpenDocument
     Navigating to /AUSSTATS/abs@.nsf/DetailsPage/5206.0Dec%202018?OpenDocument
-    Quitting from lines 576-578 (raustats_introduction.Rmd) 
+    Quitting from lines 448-450 (raustats_introduction.Rmd) 
     Error: processing vignette 'raustats_introduction.Rmd' failed with diagnostics:
     Entity 'nbsp' not defined [26]
     Execution halted
@@ -833,43 +523,6 @@ Version: 0.1.0
 *   checking data for non-ASCII characters ... NOTE
     ```
       Note: found 12 marked UTF-8 strings
-    ```
-
-# Rpolyhedra
-
-Version: 0.4.2
-
-## Newly broken
-
-*   checking tests ...
-    ```
-     ERROR
-    Running the tests in ‘tests/testthat.R’ failed.
-    Last 13 lines of output:
-      trying URL 'https://api.github.com/repos/qbotics/RpolyhedraDB/zipball/v0.4.2'
-      downloaded 5.1 MB
-      
-      ── 2. Error: test on package lib functions (@test_package_lib.R#44)  ───────────
-      argument "failure_message" is missing, with no default
-      1: testthat::expect(!is.null(getPackageVersion())) at testthat/test_package_lib.R:44
-      2: paste(c(failure_message, info), collapse = "\n")
-      
-      ══ testthat results  ═══════════════════════════════════════════════════════════
-      OK: 645 SKIPPED: 0 FAILED: 2
-      1. Error: test on env lib functions (@test_env_lib.R#27) 
-      2. Error: test on package lib functions (@test_package_lib.R#44) 
-      
-      Error: testthat unit tests failed
-      Execution halted
-    ```
-
-## In both
-
-*   checking dependencies in R code ... NOTE
-    ```
-    Namespaces in Imports field not imported from:
-      ‘dplyr’ ‘testthat’
-      All declared Imports should be used.
     ```
 
 # RTest
@@ -904,6 +557,8 @@ Version: 1.2.3
     Execution halted
     ```
 
+## In both
+
 *   checking tests ...
     ```
      ERROR
@@ -926,144 +581,6 @@ Version: 1.2.3
       Execution halted
     ```
 
-# simTool
-
-Version: 1.1.3
-
-## Newly broken
-
-*   checking tests ...
-    ```
-     ERROR
-    Running the tests in ‘tests/testthat.R’ failed.
-    Last 13 lines of output:
-      2: prepare_cluster(cluster, ncpus, cluster_global_objects, cluster_libraries, cluster_seed, 
-             df, pf)
-      3: parallel::makeCluster(rep("localhost", ncpus), type = "PSOCK")
-      4: makePSOCKcluster(names = spec, ...)
-      5: newPSOCKnode(names[[i]], options = options, rank = i)
-      6: socketConnection("localhost", port = port, server = TRUE, blocking = TRUE, open = "a+b", 
-             timeout = timeout)
-      
-      ══ testthat results  ═══════════════════════════════════════════════════════════
-      OK: 109 SKIPPED: 0 FAILED: 2
-      1. Error: (unknown) (@test_evalGrids.R#3) 
-      2. Error: (unknown) (@test_eval_tibbles.R#838) 
-      
-      Error: testthat unit tests failed
-      Execution halted
-    ```
-
-# skimr
-
-Version: 1.0.5
-
-## Newly broken
-
-*   checking tests ...
-    ```
-     ERROR
-    Running the tests in ‘tests/testthat.R’ failed.
-    Last 13 lines of output:
-      ══ testthat results  ═══════════════════════════════════════════════════════════
-      OK: 369 SKIPPED: 2 FAILED: 77
-      1. Error: Setting skimmers to an empty list does not throw an error (@test-functions.R#335) 
-      2. Failure: Skimming a data frame works as expected (@test-skim.R#8) 
-      3. Failure: Skimming a data frame works as expected (@test-skim.R#15) 
-      4. Failure: Skimming a data frame works as expected (@test-skim.R#17) 
-      5. Failure: Skimming a data frame works as expected (@test-skim.R#21) 
-      6. Failure: Skimming a data frame works as expected (@test-skim.R#23) 
-      7. Failure: Skimming a data frame works as expected (@test-skim.R#27) 
-      8. Failure: Skimming a data frame works as expected (@test-skim.R#30) 
-      9. Failure: Using skim_tee prints out the object (@test-skim.R#44) 
-      1. ...
-      
-      Error: testthat unit tests failed
-      Execution halted
-    ```
-
-## In both
-
-*   checking Rd cross-references ... NOTE
-    ```
-    Package unavailable to check Rd xrefs: ‘dtplyr’
-    ```
-
-# slinky
-
-Version: 1.0.2
-
-## Newly broken
-
-*   checking tests ...
-    ```
-     ERROR
-    Running the tests in ‘tests/testthat.R’ failed.
-    Last 13 lines of output:
-      > library(testthat)
-      > library(slinky)
-      > 
-      > test_check("slinky")
-      ── 1. Error: Scoring on landmark genes only works. (@test_score.R#35)  ─────────
-      argument "failure_message" is missing, with no default
-      1: expect(all.equal(zs[1:978, ], zs2)) at testthat/test_score.R:35
-      2: paste(c(failure_message, info), collapse = "\n")
-      
-      ══ testthat results  ═══════════════════════════════════════════════════════════
-      OK: 44 SKIPPED: 0 FAILED: 1
-      1. Error: Scoring on landmark genes only works. (@test_score.R#35) 
-      
-      Error: testthat unit tests failed
-      Execution halted
-    ```
-
-# stars
-
-Version: 0.3-0
-
-## Newly broken
-
-*   checking tests ...
-    ```
-    ...
-    > x        1 1440      0  0.25     NA    NA   NULL [x]
-    > y        1  720     90 -0.25     NA    NA   NULL [y]
-    > times    1    3     NA    NA     NA    NA   NULL    
-     ERROR
-    Running the tests in ‘tests/testthat.R’ failed.
-    Last 13 lines of output:
-      1: expect(all(st_dim$x$values < -74 & st_dim$x$values > -81)) at testthat/test_ncdf.R:67
-      2: paste(c(failure_message, info), collapse = "\n")
-      
-      ── 2. Error: same number of values as rows/cols (@test_rectilinear.R#47)  ──────
-      argument "failure_message" is missing, with no default
-      1: expect(sf::st_crs(r_ce_dim$x$refsys) == sf::st_crs("+init=epsg:5070")) at testthat/test_rectilinear.R:47
-      2: paste(c(failure_message, info), collapse = "\n")
-      
-      ══ testthat results  ═══════════════════════════════════════════════════════════
-      OK: 29 SKIPPED: 0 FAILED: 2
-      1. Error: curvilinear (@test_ncdf.R#67) 
-      2. Error: same number of values as rows/cols (@test_rectilinear.R#47) 
-      
-      Error: testthat unit tests failed
-      Execution halted
-    ```
-
-## In both
-
-*   checking package dependencies ... NOTE
-    ```
-    Package suggested but not available for checking: ‘starsdata’
-    ```
-
-*   checking installed package size ... NOTE
-    ```
-      installed size is 15.0Mb
-      sub-directories of 1Mb or more:
-        doc  10.3Mb
-        nc    3.5Mb
-    ```
-
 # tabula
 
 Version: 1.2.0
@@ -1075,8 +592,8 @@ Version: 1.2.0
      ERROR
     Running the tests in ‘tests/testthat.R’ failed.
     Last 13 lines of output:
-      ══ testthat results  ═══════════════════════════════════════════════════════════
-      OK: 433 SKIPPED: 0 FAILED: 1
+      ══ testthat results  ════════════════════════════════════════════════════════════════════════════════════════════
+      OK: 433 SKIPPED: 0 WARNINGS: 0 FAILED: 1
       1. Error: Similiraty measure (presence/absence data) (@test-similarity.R#37) 
       
       Error: testthat unit tests failed
@@ -1098,61 +615,5 @@ Version: 1.2.0
     ```
     Namespace in Imports field not imported from: ‘plyr’
       All declared Imports should be used.
-    ```
-
-# thriftr
-
-Version: 1.1.5
-
-## Newly broken
-
-*   checking tests ...
-    ```
-     ERROR
-    Running the tests in ‘tests/testthat.R’ failed.
-    Last 13 lines of output:
-      > #! /usr/bin/env Rscript
-      > 
-      > library(testthat)
-      > library(thriftr)
-      > 
-      > test_check("thriftr")
-      ── 1. Failure: test_inet_socket (@test.test_socket.R#37)  ──────────────────────
-      ...[[]] isn't true.
-      
-      ══ testthat results  ═══════════════════════════════════════════════════════════
-      OK: 273 SKIPPED: 2 FAILED: 1
-      1. Failure: test_inet_socket (@test.test_socket.R#37) 
-      
-      Error: testthat unit tests failed
-      Execution halted
-    ```
-
-# unpivotr
-
-Version: 0.5.1
-
-## Newly broken
-
-*   checking tests ...
-    ```
-     ERROR
-    Running the tests in ‘tests/testthat.R’ failed.
-    Last 13 lines of output:
-      1: expect(all(colnames(z) %in% colnames(x))) at testthat/test-pack.R:52
-      2: paste(c(failure_message, info), collapse = "\n")
-      
-      ── 2. Error: rectify() works on common data types (@test-rectify.R#207)  ───────
-      argument "failure_message" is missing, with no default
-      1: expect(all(purrr::map2_lgl(y, x, identical))) at testthat/test-rectify.R:207
-      2: paste(c(failure_message, info), collapse = "\n")
-      
-      ══ testthat results  ═══════════════════════════════════════════════════════════
-      OK: 251 SKIPPED: 0 FAILED: 2
-      1. Error: unpack() works on common data types (@test-pack.R#52) 
-      2. Error: rectify() works on common data types (@test-rectify.R#207) 
-      
-      Error: testthat unit tests failed
-      Execution halted
     ```
 
