@@ -34,61 +34,6 @@ Version: 2.3.1
     See ‘/Users/max/github/forks/testthat/revdep/checks.noindex/ANN2/new/ANN2.Rcheck/00install.out’ for details.
     ```
 
-# annotatr
-
-Version: 1.8.0
-
-## In both
-
-*   checking examples ... ERROR
-    ```
-    Running examples in ‘annotatr-Ex.R’ failed
-    The error most likely occurred in:
-    
-    > ### Name: build_annotations
-    > ### Title: A function to build annotations from TxDb.* and AnnotationHub
-    > ###   resources
-    > ### Aliases: build_annotations
-    > 
-    > ### ** Examples
-    > 
-    > # Example with hg19 gene promoters
-    > annots = c('hg19_genes_promoters')
-    > annots_gr = build_annotations(genome = 'hg19', annotations = annots)
-    Error in get(txdb_name) : 
-      object 'TxDb.Hsapiens.UCSC.hg19.knownGene' not found
-    Calls: build_annotations
-    Execution halted
-    ```
-
-*   R CMD check timed out
-    
-
-*   checking package dependencies ... NOTE
-    ```
-    Packages suggested but not available for checking:
-      ‘org.Dm.eg.db’ ‘org.Gg.eg.db’ ‘org.Rn.eg.db’
-      ‘TxDb.Dmelanogaster.UCSC.dm3.ensGene’
-      ‘TxDb.Dmelanogaster.UCSC.dm6.ensGene’
-      ‘TxDb.Ggallus.UCSC.galGal5.refGene’
-      ‘TxDb.Hsapiens.UCSC.hg19.knownGene’
-      ‘TxDb.Hsapiens.UCSC.hg38.knownGene’
-      ‘TxDb.Mmusculus.UCSC.mm9.knownGene’
-      ‘TxDb.Mmusculus.UCSC.mm10.knownGene’
-      ‘TxDb.Rnorvegicus.UCSC.rn4.ensGene’
-      ‘TxDb.Rnorvegicus.UCSC.rn5.refGene’
-      ‘TxDb.Rnorvegicus.UCSC.rn6.refGene’
-    ```
-
-*   checking R code for possible problems ... NOTE
-    ```
-    plot_coannotations: no visible binding for global variable ‘.’
-    plot_numerical_coannotations: no visible binding for global variable
-      ‘.’
-    Undefined global functions or variables:
-      .
-    ```
-
 # aphid
 
 Version: 1.3.2
@@ -275,14 +220,10 @@ Version: 2.8.0
 
 ## In both
 
-*   R CMD check timed out
-    
-
-*   checking top-level files ... NOTE
+*   checking whether package ‘BgeeDB’ can be installed ... ERROR
     ```
-    File
-      LICENSE
-    is not mentioned in the DESCRIPTION file.
+    Installation failed.
+    See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/BgeeDB/new/BgeeDB.Rcheck/00install.out’ for details.
     ```
 
 # BIEN
@@ -825,30 +766,6 @@ Version: 1.1.1
 
 Version: 1.0.15
 
-## Newly broken
-
-*   checking tests ...
-    ```
-     ERROR
-    Running the tests in ‘tests/testthat.R’ failed.
-    Last 13 lines of output:
-      [1] "Determining overlaps"
-      [1] "Assigning labels"
-      [1] "Merging to fData table"
-      ── 1. Error: find_overlapping_coordinates works (@test-utils.R#239)  ───────────
-      argument "failure_message" is missing, with no default
-      1: expect(all(is.na(find_overlapping_coordinates(test_coords, c("chr19_10226_10602", 
-             "chr19:11604-246234"), maxgap = 1)))) at testthat/test-utils.R:239
-      2: paste(c(failure_message, info), collapse = "\n")
-      
-      ══ testthat results  ═══════════════════════════════════════════════════════════
-      OK: 230 SKIPPED: 53 FAILED: 1
-      1. Error: find_overlapping_coordinates works (@test-utils.R#239) 
-      
-      Error: testthat unit tests failed
-      Execution halted
-    ```
-
 ## In both
 
 *   R CMD check timed out
@@ -857,11 +774,16 @@ Version: 1.0.15
 *   checking R code for possible problems ... NOTE
     ```
     aggregate_nearby_peaks: no visible binding for global variable 'val'
+      (/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/cicero/new/cicero.Rcheck/00_pkg_src/cicero/R/aggregate.R:37)
     assemble_connections: no visible binding for global variable 'value'
+      (/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/cicero/new/cicero.Rcheck/00_pkg_src/cicero/R/runCicero.R:640-641)
     find_overlapping_ccans: no visible binding for global variable 'CCAN'
+      (/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/cicero/new/cicero.Rcheck/00_pkg_src/cicero/R/runCicero.R:919-922)
     generate_windows: no visible binding for global variable 'V1'
+      (/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/cicero/new/cicero.Rcheck/00_pkg_src/cicero/R/runCicero.R:663-667)
     plot_accessibility_in_pseudotime: no visible binding for global
       variable 'f_id'
+      (/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/cicero/new/cicero.Rcheck/00_pkg_src/cicero/R/plotting.R:676-695)
     Undefined global functions or variables:
       CCAN V1 f_id val value
     ```
@@ -1046,7 +968,7 @@ Version: 1.12.0
 
 *   checking installed package size ... NOTE
     ```
-      installed size is  7.2Mb
+      installed size is  7.1Mb
       sub-directories of 1Mb or more:
         R     2.0Mb
         doc   3.5Mb
@@ -1070,36 +992,14 @@ Version: 3.2.40
 
 ## Newly broken
 
-*   checking tests ...
-    ```
-     ERROR
-    Running the tests in ‘tests/testthat.R’ failed.
-    Last 13 lines of output:
-          worker 4 is starting!
-          worker 5 is starting!
-      -- Calibration Phase --
-      -- Sampling Phase --
-          worker 1 is finished! Time: 00:00:00
-          worker 2 is finished! Time: 00:00:00
-          worker 3 is finished! Time: 00:00:00
-          worker 4 is finished! Time: 00:00:00
-          worker 5 is finished! Time: 00:00:00
-      ══ testthat results  ══════════════════════════════════════════════════════════════════════════════
-      OK: 70 SKIPPED: 0 FAILED: 1
-      1. Error: Catch unit tests pass (@test_cpp.R#13) 
-      
-      Error: testthat unit tests failed
-      Execution halted
-    ```
-
-## In both
-
 *   R CMD check timed out
     
 
+## In both
+
 *   checking installed package size ... NOTE
     ```
-      installed size is 22.0Mb
+      installed size is 21.9Mb
       sub-directories of 1Mb or more:
         extdata  19.6Mb
     ```
@@ -1254,15 +1154,6 @@ Version: 1.16.1
     ```
     Package suggested but not available for checking: ‘TxDb.Mmusculus.UCSC.mm10.knownGene’
     ```
-
-# cTRAP
-
-Version: 1.0.3
-
-## Newly broken
-
-*   R CMD check timed out
-    
 
 # ctsem
 
@@ -1559,20 +1450,16 @@ Version: 2.10.0
 
 ## In both
 
-*   R CMD check timed out
-    
+*   checking whether package ‘DiffBind’ can be installed ... ERROR
+    ```
+    Installation failed.
+    See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/DiffBind/new/DiffBind.Rcheck/00install.out’ for details.
+    ```
 
 *   checking package dependencies ... NOTE
     ```
-    Package which this enhances but not available for checking: ‘XLConnect’
-    ```
-
-*   checking R code for possible problems ... NOTE
-    ```
-    pv.DBAplotVolcano: no visible binding for global variable ‘Fold’
-    pv.DBAplotVolcano: no visible binding for global variable ‘Legend’
-    Undefined global functions or variables:
-      Fold Legend
+    Packages which this enhances but not available for checking:
+      ‘rgl’ ‘XLConnect’
     ```
 
 # diffHic
@@ -1652,23 +1539,6 @@ Version: 0.0.5
     See ‘/Users/max/github/forks/testthat/revdep/checks.noindex/discretecdAlgorithm/new/discretecdAlgorithm.Rcheck/00install.out’ for details.
     ```
 
-# dplyr
-
-Version: 0.8.0.1
-
-## In both
-
-*   R CMD check timed out
-    
-
-*   checking installed package size ... NOTE
-    ```
-      installed size is  6.5Mb
-      sub-directories of 1Mb or more:
-        R      2.0Mb
-        libs   2.7Mb
-    ```
-
 # dqrng
 
 Version: 0.1.1
@@ -1680,15 +1550,6 @@ Version: 0.1.1
     Installation failed.
     See ‘/Users/max/github/forks/testthat/revdep/checks.noindex/dqrng/new/dqrng.Rcheck/00install.out’ for details.
     ```
-
-# drake
-
-Version: 7.0.0
-
-## In both
-
-*   R CMD check timed out
-    
 
 # DropletUtils
 
@@ -1806,31 +1667,6 @@ Version: 1.0.1
     ```
     Installation failed.
     See ‘/Users/max/github/forks/testthat/revdep/checks.noindex/elmNNRcpp/new/elmNNRcpp.Rcheck/00install.out’ for details.
-    ```
-
-# EnrichedHeatmap
-
-Version: 1.12.0
-
-## In both
-
-*   R CMD check timed out
-    
-
-*   checking installed package size ... NOTE
-    ```
-      installed size is 10.8Mb
-      sub-directories of 1Mb or more:
-        doc       7.7Mb
-        extdata   2.6Mb
-    ```
-
-*   checking R code for possible problems ... NOTE
-    ```
-    as.normalizedMatrix: no visible binding for global variable
-      ‘target_is_single_point’
-    Undefined global functions or variables:
-      target_is_single_point
     ```
 
 # esATAC
@@ -2043,15 +1879,6 @@ Version: 0.3.3
     Installation failed.
     See ‘/Users/max/github/forks/testthat/revdep/checks.noindex/feather/new/feather.Rcheck/00install.out’ for details.
     ```
-
-# FELLA
-
-Version: 1.2.0
-
-## In both
-
-*   R CMD check timed out
-    
 
 # fgsea
 
@@ -2342,9 +2169,9 @@ Version: 0.4-0
 
 *   checking installed package size ... NOTE
     ```
-      installed size is  9.0Mb
+      installed size is 10.0Mb
       sub-directories of 1Mb or more:
-        R         7.0Mb
+        R         8.0Mb
         extdata   1.3Mb
     ```
 
@@ -2468,8 +2295,33 @@ Version: 1.28.2
 
 ## In both
 
+*   checking examples ... ERROR
+    ```
+    Running examples in ‘graphite-Ex.R’ failed
+    The error most likely occurred in:
+    
+    > ### Name: convertIdentifiers
+    > ### Title: Convert the node identifiers of a pathway.
+    > ### Aliases: convertIdentifiers
+    > 
+    > ### ** Examples
+    > 
+    >   r <- pathways("hsapiens", "reactome")
+    >   convertIdentifiers(r$`mTOR signalling`, "symbol")
+    Warning in library(package, lib.loc = lib.loc, character.only = TRUE, logical.return = TRUE,  :
+      there is no package called ‘org.Hs.eg.db’
+    Error: package "org.Hs.eg.db" is missing
+    Execution halted
+    ```
+
 *   R CMD check timed out
     
+
+*   checking package dependencies ... NOTE
+    ```
+    Packages suggested but not available for checking:
+      ‘hgu133plus2.db’ ‘hgu95av2.db’ ‘org.Hs.eg.db’
+    ```
 
 # graphql
 
@@ -2614,7 +2466,7 @@ Version: 1.4.1
 
 *   checking installed package size ... NOTE
     ```
-      installed size is 10.2Mb
+      installed size is 10.6Mb
       sub-directories of 1Mb or more:
         data      3.8Mb
         doc       1.7Mb
@@ -2631,6 +2483,7 @@ Version: 1.4.1
 *   checking R code for possible problems ... NOTE
     ```
     heatmap_plot: no visible binding for global variable ‘var’
+      (/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/hipathia/new/hipathia.Rcheck/00_pkg_src/hipathia/R/chart.R:115)
     Undefined global functions or variables:
       var
     Consider adding
@@ -3737,14 +3590,41 @@ Version: 2.8.3
 
 ## In both
 
+*   checking examples ... ERROR
+    ```
+    Running examples in ‘MSnbase-Ex.R’ failed
+    The error most likely occurred in:
+    
+    > ### Name: FeatComp-class
+    > ### Title: Class '"FeatComp"'
+    > ### Aliases: FeatComp-class compfnames-methods
+    > ###   compfnames,MSnSet,MSnSet-method compfnames,list,missing-method
+    > ###   compfnames show,FeatComp-method names,FeatComp-method
+    > ###   common,FeatComp-method common,methods common unique1,FeatComp-method
+    > ###   unique1,methods unique1 unique2,FeatComp-method unique2,methods
+    > ###   unique2
+    > ### Keywords: classes
+    > 
+    > ### ** Examples
+    > 
+    > library("pRolocdata")
+    Error in library("pRolocdata") : there is no package called ‘pRolocdata’
+    Execution halted
+    ```
+
 *   R CMD check timed out
     
 
+*   checking package dependencies ... NOTE
+    ```
+    Package suggested but not available for checking: ‘pRolocdata’
+    ```
+
 *   checking installed package size ... NOTE
     ```
-      installed size is 13.1Mb
+      installed size is 15.1Mb
       sub-directories of 1Mb or more:
-        R      2.0Mb
+        R      4.0Mb
         data   1.9Mb
         doc    7.8Mb
     ```
@@ -3773,6 +3653,30 @@ Version: 2.8.3
 
 Version: 1.8.1
 
+## Newly broken
+
+*   checking tests ...
+    ```
+     ERROR
+    Running the tests in ‘tests/testthat.R’ failed.
+    Last 13 lines of output:
+      [1] "## Check groupPeaks (function only)               ##"
+      [1] "########################################################"
+      [1] "=== check single core ==="
+      [1] "########################################################"
+      [1] "## Check mzML Workflow                                ##"
+      [1] "########################################################"
+      [1] "averaging spectra"
+      [1] "filtering spectra"
+      [1] "subtracting"
+      [1] "purity prediction"
+      Error in close.connection(con) : invalid connection
+      Calls: test_check ... with_reporter -> force -> source_file -> close -> close.connection
+      In addition: Warning message:
+      call dbDisconnect() when finished working with a connection 
+      Execution halted
+    ```
+
 ## In both
 
 *   R CMD check timed out
@@ -3789,14 +3693,14 @@ Version: 1.8.1
 *   checking R code for possible problems ... NOTE
     ```
     ...
-    stde: no visible global function definition for ‘sd’
-    stderror: no visible global function definition for ‘sd’
-    xcmsGroupPurity: no visible binding for global variable ‘median’
-    xcmsGroupPurity: no visible global function definition for ‘median’
-    averageSpectra,purityD: no visible binding for global variable ‘i’
     subtract,purityD: no visible binding for global variable ‘i’
+      (/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/msPurity/new/msPurity.Rcheck/00_pkg_src/msPurity/R/purityD-subtract.R:38)
     validate,purityA: no visible global function definition for ‘head’
+      (/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/msPurity/new/msPurity.Rcheck/00_pkg_src/msPurity/R/purityA-validate.R:26)
     writeOut,purityD: no visible global function definition for ‘write.csv’
+      (/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/msPurity/new/msPurity.Rcheck/00_pkg_src/msPurity/R/purityD-writeOut.R:37)
+    writeOut,purityD: no visible global function definition for ‘write.csv’
+      (/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/msPurity/new/msPurity.Rcheck/00_pkg_src/msPurity/R/purityD-writeOut.R:42)
     Undefined global functions or variables:
       abline alli approxfun as.dist dev.off dist dnorm fix head i idx
       legend lines median mtch mtchi na.omit parallel plot png points
@@ -4243,42 +4147,6 @@ Version: 0.1.3
     See ‘/Users/max/github/forks/testthat/revdep/checks.noindex/parglm/new/parglm.Rcheck/00install.out’ for details.
     ```
 
-# PathwaySplice
-
-Version: 1.6.1
-
-## In both
-
-*   R CMD check timed out
-    
-
-*   checking DESCRIPTION meta-information ... NOTE
-    ```
-    Malformed Description field: should contain one or more complete sentences.
-    ```
-
-*   checking R code for possible problems ... NOTE
-    ```
-    compareResults2: no visible global function definition for 'ggplot'
-    compareResults2: no visible global function definition for 'aes'
-    compareResults2: no visible binding for global variable
-      'random_sampling_200k'
-    compareResults2: no visible binding for global variable 'PValue'
-    compareResults2: no visible binding for global variable 'PathwaySplice'
-    compareResults2: no visible global function definition for 'geom_point'
-    compareResults2: no visible global function definition for
-      'geom_smooth'
-    compareResults2: no visible global function definition for 'labs'
-    compareResults2: no visible global function definition for
-      'scale_colour_manual'
-    compareResults2: no visible global function definition for
-      'scale_shape_manual'
-    netplot: no visible global function definition for 'get.col.scale'
-    Undefined global functions or variables:
-      PValue PathwaySplice aes geom_point geom_smooth get.col.scale ggplot
-      labs random_sampling_200k scale_colour_manual scale_shape_manual
-    ```
-
 # paxtoolsr
 
 Version: 1.16.0
@@ -4397,20 +4265,6 @@ Version: 2.5.3
     ```
     Installation failed.
     See ‘/Users/max/github/forks/testthat/revdep/checks.noindex/phangorn/new/phangorn.Rcheck/00install.out’ for details.
-    ```
-
-# PharmacoGx
-
-Version: 1.12.0
-
-## In both
-
-*   R CMD check timed out
-    
-
-*   checking data for non-ASCII characters ... NOTE
-    ```
-      Note: found 2251 marked UTF-8 strings
     ```
 
 # phenofit
@@ -4591,40 +4445,6 @@ Version: 4.0.2
     Packages suggested but not available for checking: ‘gurobi’ ‘Rsymphony’
     ```
 
-# pRoloc
-
-Version: 1.22.2
-
-## In both
-
-*   R CMD check timed out
-    
-
-*   checking installed package size ... NOTE
-    ```
-      installed size is 14.6Mb
-      sub-directories of 1Mb or more:
-        R     1.1Mb
-        doc  12.0Mb
-    ```
-
-*   checking dependencies in R code ... NOTE
-    ```
-    Unexported objects imported by ':::' calls:
-      ‘MLInterfaces:::.macroF1’ ‘MLInterfaces:::.precision’
-      ‘MLInterfaces:::.recall’ ‘MLInterfaces:::es2df’
-      ‘MSnbase:::.sameNbCol’ ‘MSnbase:::getVariableName’
-      ‘MSnbase:::logging’ ‘MSnbase:::nologging’ ‘caret:::predict.plsda’
-      See the note in ?`:::` about the use of this operator.
-    ```
-
-*   checking R code for possible problems ... NOTE
-    ```
-    Found the following possibly unsafe calls:
-    File ‘pRoloc/R/annotation.R’:
-      unlockBinding("params", .pRolocEnv)
-    ```
-
 # prophet
 
 Version: 0.4
@@ -4715,45 +4535,35 @@ Version: 1.12.2
     > ### ** Examples
     > 
     > library(TxDb.Hsapiens.UCSC.hg19.knownGene)
-    Error in library(TxDb.Hsapiens.UCSC.hg19.knownGene) : 
-      there is no package called ‘TxDb.Hsapiens.UCSC.hg19.knownGene’
+    Loading required package: GenomicFeatures
+    Warning: package ‘GenomicFeatures’ was built under R version 3.5.3
+    Loading required package: AnnotationDbi
+    > library(org.Hs.eg.db)
+    Error in library(org.Hs.eg.db) : 
+      there is no package called ‘org.Hs.eg.db’
     Execution halted
-    ```
-
-*   checking tests ...
-    ```
-     ERROR
-    Running the tests in ‘tests/testthat.R’ failed.
-    Last 13 lines of output:
-      
-      FATAL [2019-04-02 20:25:14] The normal.panel.vcf.file contains only a single sample. 
-      
-      FATAL [2019-04-02 20:25:14]  
-      
-      FATAL [2019-04-02 20:25:14] This is most likely a user error due to invalid input data or 
-      
-      FATAL [2019-04-02 20:25:14] parameters (PureCN 1.12.2). 
-      
-      ══ testthat results  ═══════════════════════════════════════════════════════════
-      OK: 303 SKIPPED: 0 FAILED: 1
-      1. Error: (unknown) (@test_annotateTargets.R#2) 
-      
-      Error: testthat unit tests failed
-      Execution halted
     ```
 
 *   R CMD check timed out
     
 
+*   checking whether package ‘PureCN’ can be installed ... WARNING
+    ```
+    Found the following significant warnings:
+      Warning: package ‘VariantAnnotation’ was built under R version 3.5.3
+    See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/PureCN/new/PureCN.Rcheck/00install.out’ for details.
+    ```
+
 *   checking package dependencies ... NOTE
     ```
-    Package suggested but not available for checking: ‘TxDb.Hsapiens.UCSC.hg19.knownGene’
+    Package suggested but not available for checking: ‘org.Hs.eg.db’
     ```
 
 *   checking installed package size ... NOTE
     ```
-      installed size is  7.4Mb
+      installed size is  9.1Mb
       sub-directories of 1Mb or more:
+        R         2.0Mb
         data      1.1Mb
         doc       2.6Mb
         extdata   3.1Mb
@@ -5063,43 +4873,21 @@ Version: 1.8.2
 
 ## In both
 
-*   checking examples ... ERROR
-    ```
-    Running examples in ‘recount-Ex.R’ failed
-    The error most likely occurred in:
-    
-    > ### Name: find_geo
-    > ### Title: Find the GEO accession id for a given SRA run
-    > ### Aliases: find_geo
-    > 
-    > ### ** Examples
-    > 
-    > ## Find the GEO accession id for for SRX110461
-    > find_geo('SRX110461')
-    Error: HTTP failure: 429
-    {"error":"API rate limit exceeded","api-key":"208.103.64.29","count":"4","limit":"3"}
-    Execution halted
-    ```
-
 *   R CMD check timed out
     
 
 *   checking package dependencies ... NOTE
     ```
-    Package suggested but not available for checking: ‘EnsDb.Hsapiens.v79’
+    Packages suggested but not available for checking:
+      ‘EnsDb.Hsapiens.v79’ ‘org.Hs.eg.db’
     ```
 
 *   checking installed package size ... NOTE
     ```
-      installed size is 15.6Mb
+      installed size is 15.7Mb
       sub-directories of 1Mb or more:
         data  12.1Mb
         doc    3.3Mb
-    ```
-
-*   checking data for non-ASCII characters ... NOTE
-    ```
-      Note: found 347 marked UTF-8 strings
     ```
 
 # redland
@@ -5314,6 +5102,11 @@ Version: 2.10.1
 
 *   R CMD check timed out
     
+
+*   checking package dependencies ... NOTE
+    ```
+    Package suggested but not available for checking: ‘GO.db’
+    ```
 
 # rootWishart
 
@@ -5645,32 +5438,6 @@ Version: 1.0.3
       .Call(ShortRead:::.set_omp_threads, ...)
     See chapter ‘System and foreign language interfaces’ in the ‘Writing R
     Extensions’ manual.
-    ```
-
-*   checking R code for possible problems ... NOTE
-    ```
-    ...
-      'reads_mapped_to_genome'
-    tenxBamqc: no visible binding for global variable
-      'reads_mapped_to_genes'
-    tenxBamqc: no visible binding for global variable 'cb'
-    tenxBamqc: no visible binding for global variable 'cell_barcode'
-    tenxBamqc: no visible binding for global variable 'number_of_cells'
-    Undefined global functions or variables:
-      . .x CB GX MM NH avg_reads_per_corrected_umi avg_reads_per_umi
-      barcode bc_correct capture.output cb cell_barcode cell_index
-      exon_number experiment fastq_path filename gene_biotype gene_id
-      gene_name geneid inferred_umi lane length1 level median
-      median_reads_per_corrected_umi median_reads_per_umi min.phred1
-      mt_counts number_of_cells percent_assigned project
-      protein_coding_counts protein_coding_genes qtring1 qtring2 read1
-      read1_path read2 read2_path readname reads reads_mapped_to_genes
-      reads_mapped_to_genome rname1 rname2 total_counts transcript_id
-      transcript_name type umi x x1 x2 y y1 y2
-    Consider adding
-      importFrom("stats", "median")
-      importFrom("utils", "capture.output")
-    to your NAMESPACE file.
     ```
 
 # sdcTable
@@ -6521,14 +6288,14 @@ Version: 1.14.1
 *   checking R code for possible problems ... NOTE
     ```
     ...
-    estimateRealCount,XBSeqDataSet: no visible global function definition
-      for ‘assay’
-    estimateRealCount,XBSeqDataSet: no visible global function definition
-      for ‘assay<-’
+      ‘conditions’
+      (/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/XBSeq/new/XBSeq.Rcheck/00_pkg_src/XBSeq/R/core_functions.R:106)
     estimateSCV,XBSeqDataSet: no visible global function definition for
       ‘conditions’
+      (/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/XBSeq/new/XBSeq.Rcheck/00_pkg_src/XBSeq/R/core_functions.R:107)
     estimateSCV,XBSeqDataSet: no visible global function definition for
       ‘dispTable<-’
+      (/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/XBSeq/new/XBSeq.Rcheck/00_pkg_src/XBSeq/R/core_functions.R:108)
     Undefined global functions or variables:
       ..count.. DataFrame Gamma Group Sample SummarizedExperiment assay
       assay<- assays baseMean coefficients complete.cases conditions cor
