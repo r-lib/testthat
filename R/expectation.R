@@ -14,7 +14,15 @@
 #' @export
 expect <- function(ok, failure_message, info = NULL, srcref = NULL) {
   type <- if (ok) "success" else "failure"
-  message <- paste(c(failure_message, info), collapse = "\n")
+
+  # Preserve existing API which appear to be used in package test code
+  if (missing(failure_message)) {
+    warn("`failure_message` is missing, with no default.")
+    message <- "unknown failure"
+  } else {
+    message <- paste(c(failure_message, info), collapse = "\n")
+  }
+
   exp <- expectation(type, message, srcref = srcref)
 
   withRestarts(
