@@ -1,5 +1,7 @@
 # testthat (development version)
 
+* The R CMD check reporter now includes a count of warnings in the output.
+
 * The JUnit Reporter no longer replaces `.` in class names (#753).
 
 * `expect_setequal()` now works with more vector types (including lists),
