@@ -38,3 +38,7 @@ test_that("comparisons with more complicated objects work", {
   expect_success(expect_gt(time2, time))
   expect_success(expect_gte(time2, time))
 })
+
+test_that("comparison must yield a single logical", {
+  expect_error(expect_lt(1:10, 5), "single logical")
+})

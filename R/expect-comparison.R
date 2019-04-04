@@ -24,9 +24,6 @@ expect_compare <- function(operator = c("<", "<=", ">", ">="), act, exp) {
   operator <- match.arg(operator)
   op <- match.fun(operator)
 
-  stopifnot(methods::hasMethod(operator, class(act$val)), length(act$val) == 1)
-  stopifnot(methods::hasMethod(operator, class(exp$val)), length(exp$val) == 1)
-
   msg <- c(
     "<" =  "not strictly less than",
     "<=" = "not less than",
@@ -35,6 +32,9 @@ expect_compare <- function(operator = c("<", "<=", ">", ">="), act, exp) {
   )[[operator]]
 
   cmp <- op(act$val, exp$val)
+  if (length(cmp) != 1 || !is.logical(cmp)) {
+    abort("Result of comparison must be a single logical value")
+  }
   expect(
     if (!is.na(cmp)) cmp else FALSE,
     sprintf("%s is %s %s. Difference: %.3g", act$lab, msg, exp$lab, act$val - exp$val)

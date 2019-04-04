@@ -100,9 +100,6 @@
 
 * `expect_error()` now returns the error object as documentated (#724).
 
-* `expect_lt()` and friends now work with any object that defines the
-  appropriate comparison method. (#777)
-
 * improve junit xml compatibility for jenkins. (#806, @comicfans)
 
 # testthat 2.0.1
