@@ -1,3 +1,36 @@
+# CAMTHC
+
+Version: 1.0.0
+
+## Newly broken
+
+*   checking tests ...
+    ```
+     ERROR
+    Running the tests in ‘tests/testthat.R’ failed.
+    Last 13 lines of output:
+      > test_check("CAMTHC")
+      [31m──[39m [31m1. Error: corners are detected correctly (@test_corner_sort.R#8) [39m [31m───────────────────────────────[39m
+      'vec_is' is not an exported object from 'namespace:vctrs'
+      1: expect_setequal(c(topconv$idx), c(3, 4, 5)) at testthat/test_corner_sort.R:8
+      2: vctrs::vec_is at /private/tmp/RtmpsgTGOA/R.INSTALL166ff2286b6d1/testthat/R/expect-setequal.R:18
+      3: getExportedValue(pkg, name)
+      4: stop(gettextf("'%s' is not an exported object from 'namespace:%s'", name, getNamespaceName(ns)), call. = FALSE, 
+             domain = NA)
+      
+      ══ testthat results  ═══════════════════════════════════════════════════════════════════════════════
+      OK: 4 SKIPPED: 0 WARNINGS: 0 FAILED: 1
+      1. Error: corners are detected correctly (@test_corner_sort.R#8) 
+      
+      Error: testthat unit tests failed
+      Execution halted
+    ```
+
+## In both
+
+*   R CMD check timed out
+    
+
 # CoGAPS
 
 Version: 3.2.40
@@ -58,13 +91,41 @@ Version: 7.0.0
       5: loop_build(target = targets[i], config = config, downstream = targets[-seq_len(i)]) at /Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/drake/new/drake.Rcheck/00_pkg_src/drake/R/backend-loop.R:8
       6: conclude_build(build = build, config = config) at /Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/drake/new/drake.Rcheck/00_pkg_src/drake/R/backend-loop.R:27
       7: handle_build_exceptions(target = target, meta = meta, config = config) at /Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/drake/new/drake.Rcheck/00_pkg_src/drake/R/exec-build.R:38
-      8: drake_error("Target `", target, "` failed. Call `diagnose(", target, ")` for details. Error message:\n  ", meta$error$message, 
-             config = config) at /Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/drake/new/drake.Rcheck/00_pkg_src/drake/R/utils-handlers.R:26
+      8: drake_error("Target `", target, "` failed. Call `diagnose(", target, ")` for details. Error message:\n  ", 
+             meta$error$message, config = config) at /Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/drake/new/drake.Rcheck/00_pkg_src/drake/R/utils-handlers.R:26
       9: stop(..., call. = FALSE) at /Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/drake/new/drake.Rcheck/00_pkg_src/drake/R/vis-console.R:218
       
-      ══ testthat results  ════════════════════════════════════════════════════════════════════════════════════════════
+      ══ testthat results  ═══════════════════════════════════════════════════════════════════════════════
       OK: 803 SKIPPED: 207 WARNINGS: 0 FAILED: 1
       1. Error: lock_envir works (@test-edge-cases.R#15) 
+      
+      Error: testthat unit tests failed
+      Execution halted
+    ```
+
+# isoband
+
+Version: 0.1.0
+
+## Newly broken
+
+*   checking tests ...
+    ```
+     ERROR
+    Running the tests in ‘tests/testthat.R’ failed.
+    Last 13 lines of output:
+      ══ testthat results  ═══════════════════════════════════════════════════════════════════════════════
+      OK: 16 SKIPPED: 0 WARNINGS: 0 FAILED: 10
+      1.  Error: elementary polygons get merged (@test-isobands.R#8) 
+      2.  Error: NAs are handled correctly (@test-isobands.R#50) 
+      3.  Error: All elementary shapes are calculated correctly (@test-isobands.R#83) 
+      4.  Error: Six-sided saddles (@test-isobands.R#153) 
+      5.  Error: Seven-sided saddles (@test-isobands.R#193) 
+      6.  Error: Eight-sided saddles (@test-isobands.R#243) 
+      7.  Error: line segments get merged (@test-isolines.R#8) 
+      8.  Error: NAs are handled correctly (@test-isolines.R#49) 
+      9.  Error: All elementary segments are calculated correctly (@test-isolines.R#67) 
+      10. Error: Saddles (@test-isolines.R#93) 
       
       Error: testthat unit tests failed
       Execution halted
@@ -81,13 +142,13 @@ Version: 0.4.2
      ERROR
     Running the tests in ‘tests/testthat.R’ failed.
     Last 13 lines of output:
-      9: suppressMessages(packrat::snapshot(project = dir, prompt = FALSE, ignore.stale = TRUE, snapshot.sources = FALSE)) at /Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/jetpack/new/jetpack.Rcheck/00_pkg_src/jetpack/R/helpers.R:168
-      10: withCallingHandlers(expr, message = function(c) invokeRestart("muffleMessage"))
-      11: packrat::snapshot(project = dir, prompt = FALSE, ignore.stale = TRUE, snapshot.sources = FALSE) at /Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/jetpack/new/jetpack.Rcheck/00_pkg_src/jetpack/R/helpers.R:168
-      12: snapshotImpl(project, available, lib.loc, dry.run, ignore.stale = ignore.stale, prompt = prompt && !dry.run, snapshot.sources = snapshot.sources, 
-             infer.dependencies = infer.dependencies)
-      13: annotatePkgDesc(record, project, libDir(project))
-      14: stopifnot(nrow(content) == 1)
+                 stop(msg)
+             }
+         }) at /Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/jetpack/new/jetpack.Rcheck/00_pkg_src/jetpack/R/helpers.R:50
+      11: tryCatchList(expr, classes, parentenv, handlers)
+      12: tryCatchOne(expr, names, parentenv, handlers[[1L]])
+      13: value[[3L]](cond)
+      14: stop(msg) at /Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/jetpack/new/jetpack.Rcheck/00_pkg_src/jetpack/R/helpers.R:57
       
       ══ testthat results  ════════════════════════════════════════════════════════════════════════════════════════════
       OK: 6 SKIPPED: 0 WARNINGS: 6 FAILED: 2
@@ -96,6 +157,41 @@ Version: 0.4.2
       
       Error: testthat unit tests failed
       Execution halted
+    ```
+
+# knor
+
+Version: 0.0-6
+
+## Newly broken
+
+*   checking tests ...
+    ```
+     ERROR
+    Running the tests in ‘tests/testthat.R’ failed.
+    Last 13 lines of output:
+      11: tryCatchList(expr, classes, parentenv, handlers)
+      12: tryCatch(withCallingHandlers({    eval(code, test_env)    if (!handled && !is.null(test)) {        skip_empty()    }}, expectation = handle_expectation, skip = handle_skip, warning = handle_warning,     message = handle_message, error = handle_error), error = handle_fatal,     skip = function(e) {    })
+      13: test_code(NULL, exprs, env)
+      14: source_file(path, new.env(parent = env), chdir = TRUE, wrap = wrap)
+      15: force(code)
+      16: with_reporter(reporter = reporter, start_end_reporter = start_end_reporter,     {        reporter$start_file(basename(path))        lister$start_file(basename(path))        source_file(path, new.env(parent = env), chdir = TRUE,             wrap = wrap)        reporter$end_context()        reporter$end_file()    })
+      17: FUN(X[[i]], ...)
+      18: lapply(paths, test_file, env = env, reporter = current_reporter,     start_end_reporter = FALSE, load_helpers = FALSE, wrap = wrap)
+      19: force(code)
+      20: with_reporter(reporter = current_reporter, results <- lapply(paths,     test_file, env = env, reporter = current_reporter, start_end_reporter = FALSE,     load_helpers = FALSE, wrap = wrap))
+      21: test_files(paths, reporter = reporter, env = env, stop_on_failure = stop_on_failure,     stop_on_warning = stop_on_warning, wrap = wrap)
+      22: test_dir(path = test_path, reporter = reporter, env = env, filter = filter,     ..., stop_on_failure = stop_on_failure, stop_on_warning = stop_on_warning,     wrap = wrap)
+      23: test_package_dir(package = package, test_path = test_path, filter = filter,     reporter = reporter, ..., stop_on_failure = stop_on_failure,     stop_on_warning = stop_on_warning, wrap = wrap)
+      24: test_check("knor")
+      An irrecoverable exception occurred. R is aborting now ...
+    ```
+
+## In both
+
+*   checking for GNU extensions in Makefiles ... NOTE
+    ```
+    GNU make is a SystemRequirements.
     ```
 
 # markmyassignment
@@ -197,16 +293,16 @@ Version: 0.1.2
      ERROR
     Running the tests in ‘tests/testthat.R’ failed.
     Last 13 lines of output:
-      > test_check("multicolor")
-      [31m──[39m [31m1. Error: baseline works (@test-multicolor.R#39) [39m [31m────────────────────────────────────────────────────────────[39m
+      [31m──[39m [31m1. Error: baseline works (@test-multicolor.R#39) [39m [31m───────────────────────────────────────────────[39m
       'names' attribute [2] must be the same length as the vector [1]
       1: expect_error(suppressMessages(multi_color(colors = c("seafoamgreen", "green"))), expect_error(suppressMessages(multi_color(colors = c("maroon4", 
              "bisque2"), direction = "one")))) at testthat/test-multicolor.R:39
       2: compare_condition(act$cap, act$lab, regexp = regexp, class = class, ...) at /private/tmp/RtmpsgTGOA/R.INSTALL166ff2286b6d1/testthat/R/expect-output.R:130
-      3: sprintf("Expected match: %s\nActual message: %s", encodeString(regexp, quote = "\""), encodeString(cond$message, quote = "\"")) at /private/tmp/RtmpsgTGOA/R.INSTALL166ff2286b6d1/testthat/R/expect-output.R:266
+      3: sprintf("Expected match: %s\nActual message: %s", encodeString(regexp, quote = "\""), encodeString(cond$message, 
+             quote = "\"")) at /private/tmp/RtmpsgTGOA/R.INSTALL166ff2286b6d1/testthat/R/expect-output.R:266
       4: encodeString(regexp, quote = "\"") at /private/tmp/RtmpsgTGOA/R.INSTALL166ff2286b6d1/testthat/R/expect-output.R:266
       
-      ══ testthat results  ════════════════════════════════════════════════════════════════════════════════════════════
+      ══ testthat results  ═══════════════════════════════════════════════════════════════════════════════
       OK: 27 SKIPPED: 0 WARNINGS: 0 FAILED: 1
       1. Error: baseline works (@test-multicolor.R#39) 
       
@@ -235,13 +331,13 @@ Version: 1.8.11
     Last 13 lines of output:
       3: stopifnot(methods::hasMethod(operator, class(act$val)), length(act$val) == 1) at /private/tmp/RtmpsgTGOA/R.INSTALL166ff2286b6d1/testthat/R/expect-comparison.R:27
       
-      [31m──[39m [31m2. Error: we can plot dotprops in 3D (@test-neuron.R#146) [39m [31m───────────────────────────────────────────────────[39m
+      [31m──[39m [31m2. Error: we can plot dotprops in 3D (@test-neuron.R#146) [39m [31m──────────────────────────────────────[39m
       methods::hasMethod(operator, class(act$val)) is not TRUE
       1: expect_gt(plottedSegments, 0) at testthat/test-neuron.R:146
       2: expect_compare(">", act, exp) at /private/tmp/RtmpsgTGOA/R.INSTALL166ff2286b6d1/testthat/R/expect-comparison.R:68
       3: stopifnot(methods::hasMethod(operator, class(act$val)), length(act$val) == 1) at /private/tmp/RtmpsgTGOA/R.INSTALL166ff2286b6d1/testthat/R/expect-comparison.R:27
       
-      ══ testthat results  ════════════════════════════════════════════════════════════════════════════════════════════
+      ══ testthat results  ═══════════════════════════════════════════════════════════════════════════════
       OK: 792 SKIPPED: 4 WARNINGS: 0 FAILED: 2
       1. Error: we can plot neurons in 3D (@test-neuron.R#141) 
       2. Error: we can plot dotprops in 3D (@test-neuron.R#146) 
@@ -279,7 +375,7 @@ Version: 1.3
       7: dbDoQuery(reg, query, flags = "rwc")
       8: stopf("Error in dbDoQuery. %s (%s)", res, query)
       
-      ══ testthat results  ════════════════════════════════════════════════════════════════════════════════════════════
+      ══ testthat results  ═══════════════════════════════════════════════════════════════════════════════
       OK: 62 SKIPPED: 0 WARNINGS: 288 FAILED: 1
       1. Error: warn on unregisterred level (@test_registerLevels.R#30) 
       
@@ -336,16 +432,16 @@ Version: 0.1.1
      ERROR
     Running the tests in ‘tests/testthat.R’ failed.
     Last 13 lines of output:
-      > 
       > test_check("platetools")
-      [31m──[39m [31m1. Error: missing_wells errors when expected (@test-missing_wells.R#20) [39m [31m─────────────────────────────────────[39m
+      [31m──[39m [31m1. Error: missing_wells errors when expected (@test-missing_wells.R#20) [39m [31m────────────────────────[39m
       'names' attribute [2] must be the same length as the vector [1]
       1: expect_error(missing_wells(as.list(full), well = full$well), expect_error(missing_wells(full, well = missing$wel))) at testthat/test-missing_wells.R:20
       2: compare_condition(act$cap, act$lab, regexp = regexp, class = class, ...) at /private/tmp/RtmpsgTGOA/R.INSTALL166ff2286b6d1/testthat/R/expect-output.R:130
-      3: sprintf("Expected match: %s\nActual message: %s", encodeString(regexp, quote = "\""), encodeString(cond$message, quote = "\"")) at /private/tmp/RtmpsgTGOA/R.INSTALL166ff2286b6d1/testthat/R/expect-output.R:266
+      3: sprintf("Expected match: %s\nActual message: %s", encodeString(regexp, quote = "\""), encodeString(cond$message, 
+             quote = "\"")) at /private/tmp/RtmpsgTGOA/R.INSTALL166ff2286b6d1/testthat/R/expect-output.R:266
       4: encodeString(regexp, quote = "\"") at /private/tmp/RtmpsgTGOA/R.INSTALL166ff2286b6d1/testthat/R/expect-output.R:266
       
-      ══ testthat results  ════════════════════════════════════════════════════════════════════════════════════════════
+      ══ testthat results  ═══════════════════════════════════════════════════════════════════════════════
       OK: 178 SKIPPED: 4 WARNINGS: 5 FAILED: 1
       1. Error: missing_wells errors when expected (@test-missing_wells.R#20) 
       
@@ -379,7 +475,7 @@ Version: 0.1.0
     Navigating to /AUSSTATS/abs@.nsf/DetailsPage/5206.0Sep%202017?OpenDocument
     Navigating to /AUSSTATS/abs@.nsf/DetailsPage/1270.0.55.001July%202016?OpenDocument
     Navigating to /AUSSTATS/abs@.nsf/DetailsPage/5206.0Dec%202018?OpenDocument
-    Quitting from lines 647-652 (raustats_introduction.Rmd) 
+    Quitting from lines 636-639 (raustats_introduction.Rmd) 
     Error: processing vignette 'raustats_introduction.Rmd' failed with diagnostics:
     Entity 'nbsp' not defined [26]
     Execution halted
