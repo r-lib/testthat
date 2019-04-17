@@ -9,6 +9,10 @@ matrix:
   - r: release
     after_success:
     - Rscript -e 'covr::codecov()'
+  - r: release
+    before_deploy:
+    - Rscript -e 'remotes::install_github("r-lib/vctrs")'
+    env: vctrs='github'
   - r: oldrel
   - r: 3.3
   - r: 3.2

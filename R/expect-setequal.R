@@ -3,7 +3,7 @@
 #' `expect_setequal(x, y)` tests that every element of `x` occurs in `y`,
 #' and that every element of `y` occurs in `x`. Note that this definition
 #' ignores names, and you will be warned if both `object` and `expected` have
-#' names. (Powered by [vctrs::vec_in()].)
+#' names.
 #'
 #' @inheritParams expect_equal
 #' @export
@@ -15,7 +15,7 @@ expect_setequal <- function(object, expected) {
   act <- quasi_label(enquo(object), arg = "object")
   exp <- quasi_label(enquo(expected), arg = "expected")
 
-  if (!vctrs::vec_is(act$val) || !vctrs::vec_is(exp$val)) {
+  if (!is_vector(act$val) || !is_vector(exp$val)) {
     abort("`object` and `expected` must both be vectors")
   }
 
@@ -23,14 +23,14 @@ expect_setequal <- function(object, expected) {
     warn("expect_setequal() ignores names")
   }
 
-  act_miss <- !vctrs::vec_in(act$val, exp$val)
+  act_miss <- !act$val %in% exp$val
   if (any(act_miss)) {
     fail(
       paste0(act$lab, "[", locations(act_miss), "] absent from ", exp$lab)
     )
   }
 
-  exp_miss <- !vctrs::vec_in(exp$val, act$val)
+  exp_miss <- !exp$val %in% act$val
   if (any(exp_miss)) {
     fail(
       paste0(exp$lab, "[", locations(exp_miss), "] absent from ", act$lab)
@@ -43,6 +43,8 @@ expect_setequal <- function(object, expected) {
 
   invisible(act$val)
 }
+
+is_vector <- function(x) is.list(x) || (is.atomic(x) && !is.null(x))
 
 locations <- function(i) {
   loc <- which(i)
