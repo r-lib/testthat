@@ -1,16 +1,24 @@
 #' Expectation: do two vectors contain the same values?
 #'
-#' `expect_setequal(x, y)` tests that every element of `x` occurs in `y`,
-#' and that every element of `y` occurs in `x`. Note that this definition
-#' ignores names, and you will be warned if both `object` and `expected` have
-#' names.
+#' * `expect_setequal(x, y)` tests that every element of `x` occurs in `y`,
+#'    and that every element of `y` occurs in `x`.
+#' * `expect_mapequal(x, y)` tests that `x` and `y` have the same names, and
+#'    that `x[names(y)]` equals `x`.
+#'
+#' Note that `expect_setequal()` ignores names, and you will be warned if both
+#' `object` and `expected` have them.
 #'
 #' @inheritParams expect_equal
 #' @export
-#' @rdname equality-expectations
 #' @examples
 #' expect_setequal(letters, rev(letters))
 #' show_failure(expect_setequal(letters[-1], rev(letters)))
+#'
+#' x <- list(b = 2, a = 1)
+#' expect_mapequal(x, list(a = 1, b = 2))
+#' show_failure(expect_mapequal(x, list(a = 1)))
+#' show_failure(expect_mapequal(x, list(a = 1, b = "x")))
+#' show_failure(expect_mapequal(x, list(a = 1, b = 2, c = 3)))
 expect_setequal <- function(object, expected) {
   act <- quasi_label(enquo(object), arg = "object")
   exp <- quasi_label(enquo(expected), arg = "expected")
@@ -59,3 +67,35 @@ locations <- function(i) {
   paste0("c(", paste0(loc, collapse = ", "), ")")
 }
 
+
+#' @export
+#' @rdname expect_setequal
+expect_mapequal <- function(object, expected) {
+  act <- quasi_label(enquo(object), arg = "object")
+  exp <- quasi_label(enquo(expected), arg = "expected")
+
+  if (!is_vector(act$val) || !is_vector(exp$val)) {
+    abort("`object` and `expected` must both be vectors")
+  }
+
+  act_nms <- names(act$val)
+  exp_nms <- names(exp$val)
+
+  if (!setequal(act_nms, exp_nms)) {
+    act_miss <- setdiff(exp_nms, act_nms)
+    if (length(act_miss) > 0) {
+      vals <- paste0(encodeString(act_miss, quote = '"'), ", ")
+      fail(paste0("Names absent from `object`: ", vals))
+    }
+
+    exp_miss <- setdiff(act_nms, exp_nms)
+    if (length(exp_miss) > 0) {
+      vals <- paste0(encodeString(exp_miss, quote = '"'), ", ")
+      fail(paste0("Names absent from `expected`: ", vals))
+    }
+  } else {
+    expect_equal(act$val[exp_nms], exp$val)
+  }
+
+  invisible(act$val)
+}

@@ -5,6 +5,10 @@
 * New `expect_visible()` and `expect_invisible()` make it easier to check if
   a function call returns its result visibly or invisibly (#719).
 
+* New `expect_mapequal(x, y)` checks that `x` and `y` have the same names,
+  and the same value associated with each name (i.e. they compare the values
+  of the vector standardising the order of the names) (#863).
+
 * New `expect_vector()` is a wrapper around `vctrs::vec_assert()` making it
   easy to test against the vctrs definitions of prototype and size (#846).
   (Currently requires development version of vctrs.)
