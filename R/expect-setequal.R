@@ -80,6 +80,7 @@ expect_mapequal <- function(object, expected) {
 
   # Length-0 vectors are OK whether named or unnamed.
   if (length(act$val) == 0 && length(exp$val) == 0) {
+    warn("`object` and `expected` are empty lists")
     succeed()
   }
 
