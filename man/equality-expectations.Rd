@@ -91,7 +91,7 @@ show_failure(expect_setequal(letters[-1], rev(letters)))
 
 Other expectations: \code{\link{comparison-expectations}},
   \code{\link{expect_length}}, \code{\link{expect_match}},
-  \code{\link{expect_named}},
+  \code{\link{expect_named}}, \code{\link{expect_null}},
   \code{\link{inheritance-expectations}},
   \code{\link{logical-expectations}},
   \code{\link{output-expectations}}

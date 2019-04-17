@@ -55,7 +55,7 @@ expect_gt(9, 10)
 \seealso{
 Other expectations: \code{\link{equality-expectations}},
   \code{\link{expect_length}}, \code{\link{expect_match}},
-  \code{\link{expect_named}},
+  \code{\link{expect_named}}, \code{\link{expect_null}},
   \code{\link{inheritance-expectations}},
   \code{\link{logical-expectations}},
   \code{\link{output-expectations}}

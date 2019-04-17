@@ -60,6 +60,7 @@ Collate:
     'expect-length.R'
     'expect-logical.R'
     'expect-named.R'
+    'expect-null.R'
     'expect-output.R'
     'reporter.R'
     'expect-self-test.R'

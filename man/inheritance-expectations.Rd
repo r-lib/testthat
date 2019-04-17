@@ -2,18 +2,12 @@
 % Please edit documentation in R/expect-inheritance.R
 \name{inheritance-expectations}
 \alias{inheritance-expectations}
-\alias{expect_null}
 \alias{expect_type}
-\alias{expect_is}
 \alias{expect_s3_class}
 \alias{expect_s4_class}
-\title{Expectation: does the object inherit from a S3 or S4 class, or a base type?}
+\title{Expectation: does the object inherit from a S3 or S4 class, or is it a base type?}
 \usage{
-expect_null(object, info = NULL, label = NULL)
-
 expect_type(object, type)
-
-expect_is(object, class, info = NULL, label = NULL)
 
 expect_s3_class(object, class)
 
@@ -25,49 +19,44 @@ expect_s4_class(object, class)
 Supports limited unquoting to make it easier to generate readable failures
 within a function or for loop. See \link{quasi_label} for more details.}
 
-\item{info}{Extra information to be included in the message. This argument
-is soft-deprecated and should not be used in new code. Instead see
-alternatives in \link{quasi_label}.}
-
-\item{label}{Used to customise failure messages. For expert use only.}
-
 \item{type}{String giving base type (as returned by \code{\link[=typeof]{typeof()}}).}
 
 \item{class}{character vector of class names}
 }
 \description{
-Tests whether or not an object inherits from any of a list of classes, or
-is an instance of a base type. \code{expect_null()} is a special case designed
-for detecting \code{NULL}.
+See \url{https://adv-r.hadley.nz/oo.html} for an overview of R's OO systems, and
+the vocabulary used here.
+\itemize{
+\item \code{expect_type(x, type)} checks that \code{typeof(x)} is \code{type}.
+\item \code{expect_s3_class(x, class)} checks that \code{x} is an S3 object that
+\code{\link[=inherits]{inherits()}} from \code{class}
+\item \code{expect_s4_class(x, class)} checks that \code{x} is an S4 object that
+\code{\link[=is]{is()}} \code{class}.
 }
-\details{
-\code{expect_is()} is an older form. I'd recommend using \code{expect_s3_class()}
-or \code{expect_s4_class()} in order to more clearly convey intent.
 }
 \examples{
-expect_is(1, "numeric")
-a <- matrix(1:10, nrow = 5)
-expect_is(a, "matrix")
+x <- data.frame(x = 1:10, y = "x")
+# A data frame is an S3 object with class data.frame
+expect_s3_class(x, "data.frame")
+show_failure(expect_s4_class(x, "data.frame"))
+# A data frame is built from a list:
+expect_type(x, "list")
 
-expect_is(mtcars, "data.frame")
-# alternatively for classes that have an is method
-expect_true(is.data.frame(mtcars))
+# An integer vector is an atomic vector of type "integer"
+expect_type(x$x, "integer")
+# It is not an S3 object
+show_failure(expect_s3_class(x$x, "integer"))
 
-f <- factor("a")
-expect_is(f, "factor")
-expect_s3_class(f, "factor")
-expect_type(f, "integer")
-
-expect_null(NULL)
-
+# By default data.frame() converts characters to factors:
+show_failure(expect_type(x$y, "character"))
+expect_s3_class(x$y, "factor")
+expect_type(x$y, "integer")
 }
 \seealso{
-\code{\link[=inherits]{inherits()}}
-
 Other expectations: \code{\link{comparison-expectations}},
   \code{\link{equality-expectations}},
   \code{\link{expect_length}}, \code{\link{expect_match}},
-  \code{\link{expect_named}},
+  \code{\link{expect_named}}, \code{\link{expect_null}},
   \code{\link{logical-expectations}},
   \code{\link{output-expectations}}
 }

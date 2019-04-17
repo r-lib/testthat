@@ -29,6 +29,7 @@ expect_length(1:10, 1)
 Other expectations: \code{\link{comparison-expectations}},
   \code{\link{equality-expectations}},
   \code{\link{expect_match}}, \code{\link{expect_named}},
+  \code{\link{expect_null}},
   \code{\link{inheritance-expectations}},
   \code{\link{logical-expectations}},
   \code{\link{output-expectations}}
