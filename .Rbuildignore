@@ -1,3 +1,4 @@
+^pkgdown$
 ^revdep$
 ^\.covrignore$
 ^.*\.Rproj$
