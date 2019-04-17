@@ -78,8 +78,31 @@ expect_mapequal <- function(object, expected) {
     abort("`object` and `expected` must both be vectors")
   }
 
+  # Length-0 vectors are OK whether named or unnamed.
+  if (length(act$val) == 0 && length(exp$val) == 0) {
+    succeed()
+  }
+
   act_nms <- names(act$val)
   exp_nms <- names(exp$val)
+
+  if (anyDuplicated(act_nms)) {
+    fail(
+      paste0("Duplicate names in `object`: ", unique(act_nms[duplicated(act_nms)]))
+    )
+  }
+  if (anyDuplicated(exp_nms)) {
+    fail(
+      paste0("Duplicate names in `expected`: ", unique(exp_nms[duplicated(exp_nms)]))
+    )
+  }
+  if (any(act_nms == "")) {
+    fail(paste0("All elements in `object` must be named"))
+  }
+  if (any(exp_nms == "")) {
+    fail(paste0("All elements in `expected` must be named"))
+  }
+
 
   if (!setequal(act_nms, exp_nms)) {
     act_miss <- setdiff(exp_nms, act_nms)

@@ -29,6 +29,16 @@ test_that("ignores order", {
   expect_success(expect_mapequal(list(a = 1, b = 2), list(b = 2, a = 1)))
 })
 
+test_that("fails if any names are duplicated", {
+  expect_failure(expect_mapequal(list(a = 1, b = 2, b = 3), list(b = 2, a = 1)))
+  expect_failure(expect_mapequal(list(a = 1, b = 2), list(b = 3, b = 2, a = 1)))
+  expect_failure(expect_mapequal(list(a = 1, b = 2, b = 3), list(b = 3, b = 2, a = 1)))
+})
+
+test_that("handling NULLs", {
+  expect_success(expect_mapequal(list(a = 1, b = NULL), list(b = NULL, a = 1)))
+})
+
 test_that("fail if names don't match", {
   expect_failure(expect_mapequal(list(a = 1, b = 2), list(a = 1)))
   expect_failure(expect_mapequal(list(a = 1), list(a = 1, b = 2)))
@@ -40,4 +50,18 @@ test_that("fails if values don't match", {
 
 test_that("error for non-vectors", {
   expect_error(expect_mapequal(sum, sum), "be vectors")
+  expect_error(expect_mapequal(NULL, NULL), "be vectors")
+})
+
+test_that("fails if any unnamed values", {
+  expect_failure(expect_mapequal(list(1, b = 2), list(1, b = 2)))
+  expect_failure(expect_mapequal(list(1, b = 2), list(b = 2, 1)))
+})
+
+test_that("succeeds if comparing empty named and unnamed vectors", {
+  expect_success(expect_mapequal(list(a=1)[0], list(a=1)[0]))
+  expect_success(expect_mapequal(list(), list(a=1)[0]))
+  expect_success(expect_mapequal(list(a=1)[0], list()))
+  expect_success(expect_mapequal(list(), list()))
+  expect_success(expect_mapequal(numeric(), c(a=1)[0]))
 })
