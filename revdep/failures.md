@@ -18,7 +18,7 @@ Run `revdep_details(,"aslib")` for more info
 *   checking whether package ‘aslib’ can be installed ... ERROR
     ```
     Installation failed.
-    See ‘/Users/max/github/forks/testthat/revdep/checks.noindex/aslib/new/aslib.Rcheck/00install.out’ for details.
+    See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/aslib/new/aslib.Rcheck/00install.out’ for details.
     ```
 
 ## Installation
@@ -32,12 +32,12 @@ Run `revdep_details(,"aslib")` for more info
 ** byte-compile and prepare package for lazy loading
 Error : .onLoad failed in loadNamespace() for 'rJava', details:
   call: dyn.load(file, DLLpath = DLLpath, ...)
-  error: unable to load shared object '/Users/max/github/forks/testthat/revdep/library.noindex/aslib/rJava/libs/rJava.so':
-  dlopen(/Users/max/github/forks/testthat/revdep/library.noindex/aslib/rJava/libs/rJava.so, 6): Library not loaded: /Library/Java/JavaVirtualMachines/jdk-11.0.1.jdk/Contents/Home/lib/server/libjvm.dylib
-  Referenced from: /Users/max/github/forks/testthat/revdep/library.noindex/aslib/rJava/libs/rJava.so
+  error: unable to load shared object '/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/aslib/rJava/libs/rJava.so':
+  dlopen(/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/aslib/rJava/libs/rJava.so, 6): Library not loaded: /Library/Java/JavaVirtualMachines/jdk-11.0.1.jdk/Contents/Home/lib/server/libjvm.dylib
+  Referenced from: /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/aslib/rJava/libs/rJava.so
   Reason: image not found
 ERROR: lazy loading failed for package ‘aslib’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/aslib/new/aslib.Rcheck/aslib’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/aslib/new/aslib.Rcheck/aslib’
 
 ```
 ### CRAN
@@ -49,12 +49,12 @@ ERROR: lazy loading failed for package ‘aslib’
 ** byte-compile and prepare package for lazy loading
 Error : .onLoad failed in loadNamespace() for 'rJava', details:
   call: dyn.load(file, DLLpath = DLLpath, ...)
-  error: unable to load shared object '/Users/max/github/forks/testthat/revdep/library.noindex/aslib/rJava/libs/rJava.so':
-  dlopen(/Users/max/github/forks/testthat/revdep/library.noindex/aslib/rJava/libs/rJava.so, 6): Library not loaded: /Library/Java/JavaVirtualMachines/jdk-11.0.1.jdk/Contents/Home/lib/server/libjvm.dylib
-  Referenced from: /Users/max/github/forks/testthat/revdep/library.noindex/aslib/rJava/libs/rJava.so
+  error: unable to load shared object '/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/aslib/rJava/libs/rJava.so':
+  dlopen(/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/aslib/rJava/libs/rJava.so, 6): Library not loaded: /Library/Java/JavaVirtualMachines/jdk-11.0.1.jdk/Contents/Home/lib/server/libjvm.dylib
+  Referenced from: /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/aslib/rJava/libs/rJava.so
   Reason: image not found
 ERROR: lazy loading failed for package ‘aslib’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/aslib/old/aslib.Rcheck/aslib’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/aslib/old/aslib.Rcheck/aslib’
 
 ```
 # awsjavasdk
@@ -77,7 +77,7 @@ Run `revdep_details(,"awsjavasdk")` for more info
 *   checking whether package ‘awsjavasdk’ can be installed ... ERROR
     ```
     Installation failed.
-    See ‘/Users/max/github/forks/testthat/revdep/checks.noindex/awsjavasdk/new/awsjavasdk.Rcheck/00install.out’ for details.
+    See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/awsjavasdk/new/awsjavasdk.Rcheck/00install.out’ for details.
     ```
 
 ## Installation
@@ -92,12 +92,12 @@ Run `revdep_details(,"awsjavasdk")` for more info
 ** byte-compile and prepare package for lazy loading
 Error : .onLoad failed in loadNamespace() for 'rJava', details:
   call: dyn.load(file, DLLpath = DLLpath, ...)
-  error: unable to load shared object '/Users/max/github/forks/testthat/revdep/library.noindex/awsjavasdk/rJava/libs/rJava.so':
-  dlopen(/Users/max/github/forks/testthat/revdep/library.noindex/awsjavasdk/rJava/libs/rJava.so, 6): Library not loaded: /Library/Java/JavaVirtualMachines/jdk-11.0.1.jdk/Contents/Home/lib/server/libjvm.dylib
-  Referenced from: /Users/max/github/forks/testthat/revdep/library.noindex/awsjavasdk/rJava/libs/rJava.so
+  error: unable to load shared object '/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/awsjavasdk/rJava/libs/rJava.so':
+  dlopen(/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/awsjavasdk/rJava/libs/rJava.so, 6): Library not loaded: /Library/Java/JavaVirtualMachines/jdk-11.0.1.jdk/Contents/Home/lib/server/libjvm.dylib
+  Referenced from: /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/awsjavasdk/rJava/libs/rJava.so
   Reason: image not found
 ERROR: lazy loading failed for package ‘awsjavasdk’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/awsjavasdk/new/awsjavasdk.Rcheck/awsjavasdk’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/awsjavasdk/new/awsjavasdk.Rcheck/awsjavasdk’
 
 ```
 ### CRAN
@@ -110,12 +110,12 @@ ERROR: lazy loading failed for package ‘awsjavasdk’
 ** byte-compile and prepare package for lazy loading
 Error : .onLoad failed in loadNamespace() for 'rJava', details:
   call: dyn.load(file, DLLpath = DLLpath, ...)
-  error: unable to load shared object '/Users/max/github/forks/testthat/revdep/library.noindex/awsjavasdk/rJava/libs/rJava.so':
-  dlopen(/Users/max/github/forks/testthat/revdep/library.noindex/awsjavasdk/rJava/libs/rJava.so, 6): Library not loaded: /Library/Java/JavaVirtualMachines/jdk-11.0.1.jdk/Contents/Home/lib/server/libjvm.dylib
-  Referenced from: /Users/max/github/forks/testthat/revdep/library.noindex/awsjavasdk/rJava/libs/rJava.so
+  error: unable to load shared object '/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/awsjavasdk/rJava/libs/rJava.so':
+  dlopen(/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/awsjavasdk/rJava/libs/rJava.so, 6): Library not loaded: /Library/Java/JavaVirtualMachines/jdk-11.0.1.jdk/Contents/Home/lib/server/libjvm.dylib
+  Referenced from: /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/awsjavasdk/rJava/libs/rJava.so
   Reason: image not found
 ERROR: lazy loading failed for package ‘awsjavasdk’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/awsjavasdk/old/awsjavasdk.Rcheck/awsjavasdk’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/awsjavasdk/old/awsjavasdk.Rcheck/awsjavasdk’
 
 ```
 # Ball
@@ -138,7 +138,7 @@ Run `revdep_details(,"Ball")` for more info
 *   checking whether package ‘Ball’ can be installed ... ERROR
     ```
     Installation failed.
-    See ‘/Users/max/github/forks/testthat/revdep/checks.noindex/Ball/new/Ball.Rcheck/00install.out’ for details.
+    See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/Ball/new/Ball.Rcheck/00install.out’ for details.
     ```
 
 ## Installation
@@ -149,21 +149,11 @@ Run `revdep_details(,"Ball")` for more info
 * installing *source* package ‘Ball’ ...
 ** package ‘Ball’ successfully unpacked and MD5 sums checked
 ** libs
-clang -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I/usr/local/include  -fopenmp -fPIC  -Wall -g -O2  -c BD.c -o BD.o
-clang -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I/usr/local/include  -fopenmp -fPIC  -Wall -g -O2  -c BI.c -o BI.o
-clang -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I/usr/local/include  -fopenmp -fPIC  -Wall -g -O2  -c ball_init.c -o ball_init.o
-clang -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I/usr/local/include  -fopenmp -fPIC  -Wall -g -O2  -c bcor.c -o bcor.o
+ccache clang -Qunused-arguments  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I/usr/local/include  -fopenmp -fPIC  -Wall -g -O2  -c BD.c -o BD.o
 clang: error: unsupported option '-fopenmp'
-make: *** [bcor.o] Error 1
-make: *** Waiting for unfinished jobs....
-clang: error: unsupported option '-fopenmp'
-clang: error: unsupported option '-fopenmp'
-clang: error: unsupported option '-fopenmp'
-make: *** [BI.o] Error 1
 make: *** [BD.o] Error 1
-make: *** [ball_init.o] Error 1
 ERROR: compilation failed for package ‘Ball’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/Ball/new/Ball.Rcheck/Ball’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/Ball/new/Ball.Rcheck/Ball’
 
 ```
 ### CRAN
@@ -172,21 +162,11 @@ ERROR: compilation failed for package ‘Ball’
 * installing *source* package ‘Ball’ ...
 ** package ‘Ball’ successfully unpacked and MD5 sums checked
 ** libs
-clang -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I/usr/local/include  -fopenmp -fPIC  -Wall -g -O2  -c BD.c -o BD.o
-clang -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I/usr/local/include  -fopenmp -fPIC  -Wall -g -O2  -c BI.c -o BI.o
-clang -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I/usr/local/include  -fopenmp -fPIC  -Wall -g -O2  -c ball_init.c -o ball_init.o
-clang -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I/usr/local/include  -fopenmp -fPIC  -Wall -g -O2  -c bcor.c -o bcor.o
+ccache clang -Qunused-arguments  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I/usr/local/include  -fopenmp -fPIC  -Wall -g -O2  -c BD.c -o BD.o
 clang: error: unsupported option '-fopenmp'
-clang: error: unsupported option '-fopenmp'
-clang: error: unsupported option '-fopenmp'
-clang: error: unsupported option '-fopenmp'
-make: *** [ball_init.o] Error 1
-make: *** Waiting for unfinished jobs....
-make: *** [BI.o] Error 1
-make: *** [bcor.o] Error 1
 make: *** [BD.o] Error 1
 ERROR: compilation failed for package ‘Ball’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/Ball/old/Ball.Rcheck/Ball’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/Ball/old/Ball.Rcheck/Ball’
 
 ```
 # BayesRS
@@ -207,7 +187,7 @@ Run `revdep_details(,"BayesRS")` for more info
 *   checking whether package ‘BayesRS’ can be installed ... ERROR
     ```
     Installation failed.
-    See ‘/Users/max/github/forks/testthat/revdep/checks.noindex/BayesRS/new/BayesRS.Rcheck/00install.out’ for details.
+    See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/BayesRS/new/BayesRS.Rcheck/00install.out’ for details.
     ```
 
 ## Installation
@@ -224,12 +204,12 @@ Run `revdep_details(,"BayesRS")` for more info
 ** byte-compile and prepare package for lazy loading
 Error : .onLoad failed in loadNamespace() for 'rjags', details:
   call: dyn.load(file, DLLpath = DLLpath, ...)
-  error: unable to load shared object '/Users/max/github/forks/testthat/revdep/library.noindex/BayesRS/rjags/libs/rjags.so':
-  dlopen(/Users/max/github/forks/testthat/revdep/library.noindex/BayesRS/rjags/libs/rjags.so, 10): Library not loaded: /usr/local/lib/libjags.4.dylib
-  Referenced from: /Users/max/github/forks/testthat/revdep/library.noindex/BayesRS/rjags/libs/rjags.so
+  error: unable to load shared object '/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/BayesRS/rjags/libs/rjags.so':
+  dlopen(/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/BayesRS/rjags/libs/rjags.so, 10): Library not loaded: /usr/local/lib/libjags.4.dylib
+  Referenced from: /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/BayesRS/rjags/libs/rjags.so
   Reason: image not found
 ERROR: lazy loading failed for package ‘BayesRS’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/BayesRS/new/BayesRS.Rcheck/BayesRS’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/BayesRS/new/BayesRS.Rcheck/BayesRS’
 
 ```
 ### CRAN
@@ -244,100 +224,12 @@ ERROR: lazy loading failed for package ‘BayesRS’
 ** byte-compile and prepare package for lazy loading
 Error : .onLoad failed in loadNamespace() for 'rjags', details:
   call: dyn.load(file, DLLpath = DLLpath, ...)
-  error: unable to load shared object '/Users/max/github/forks/testthat/revdep/library.noindex/BayesRS/rjags/libs/rjags.so':
-  dlopen(/Users/max/github/forks/testthat/revdep/library.noindex/BayesRS/rjags/libs/rjags.so, 10): Library not loaded: /usr/local/lib/libjags.4.dylib
-  Referenced from: /Users/max/github/forks/testthat/revdep/library.noindex/BayesRS/rjags/libs/rjags.so
+  error: unable to load shared object '/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/BayesRS/rjags/libs/rjags.so':
+  dlopen(/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/BayesRS/rjags/libs/rjags.so, 10): Library not loaded: /usr/local/lib/libjags.4.dylib
+  Referenced from: /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/BayesRS/rjags/libs/rjags.so
   Reason: image not found
 ERROR: lazy loading failed for package ‘BayesRS’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/BayesRS/old/BayesRS.Rcheck/BayesRS’
-
-```
-# beanz
-
-<details>
-
-* Version: 2.4
-* Source code: https://github.com/cran/beanz
-* Date/Publication: 2018-11-05 21:30:03 UTC
-* Number of recursive dependencies: 77
-
-Run `revdep_details(,"beanz")` for more info
-
-</details>
-
-## In both
-
-*   checking whether package ‘beanz’ can be installed ... ERROR
-    ```
-    Installation failed.
-    See ‘/Users/max/github/forks/testthat/revdep/checks.noindex/beanz/new/beanz.Rcheck/00install.out’ for details.
-    ```
-
-## Installation
-
-### Devel
-
-```
-* installing *source* package ‘beanz’ ...
-** package ‘beanz’ successfully unpacked and MD5 sums checked
-** libs
-"/Library/Frameworks/R.framework/Resources/bin/Rscript" -e "source(file.path('..', 'tools', 'make_cc.R')); make_cc(commandArgs(TRUE))" stan_files/bs.stan
-"/Library/Frameworks/R.framework/Resources/bin/Rscript" -e "source(file.path('..', 'tools', 'make_cc.R')); make_cc(commandArgs(TRUE))" stan_files/ds.stan
-"/Library/Frameworks/R.framework/Resources/bin/Rscript" -e "source(file.path('..', 'tools', 'make_cc.R')); make_cc(commandArgs(TRUE))" stan_files/eds.stan
-"/Library/Frameworks/R.framework/Resources/bin/Rscript" -e "source(file.path('..', 'tools', 'make_cc.R')); make_cc(commandArgs(TRUE))" stan_files/fs.stan
-Wrote C++ file "stan_files/bs.cc"
-Wrote C++ file "stan_files/fs.cc"
-Wrote C++ file "stan_files/eds.cc"
-Wrote C++ file "stan_files/ds.cc"
-Error in readRDS("/var/folders/lb/xhxqmcrd7gv302_b1pdfykh80000gn/T//Rtmpfpz96c/file184d612a915b9") : 
-  error reading from connection
-Calls: .Last -> readRDS
-Execution halted
-"/Library/Frameworks/R.framework/Resources/bin/Rscript" -e "source(file.path('..', 'tools', 'make_cc.R')); make_cc(commandArgs(TRUE))" stan_files/nse.stan
-"/Library/Frameworks/R.framework/Resources/bin/Rscript" -e "source(file.path('..', 'tools', 'make_cc.R')); make_cc(commandArgs(TRUE))" stan_files/sr.stan
-make: *** [stan_files/eds.cc] Error 1
-make: *** Waiting for unfinished jobs....
-Wrote C++ file "stan_files/sr.cc"
-Wrote C++ file "stan_files/nse.cc"
-Error in readRDS("/var/folders/lb/xhxqmcrd7gv302_b1pdfykh80000gn/T//Rtmpfpz96c/file184d612a915b9") : 
-  error reading from connection
-Calls: .Last -> readRDS
-Execution halted
-make: *** [stan_files/nse.cc] Error 1
-rm stan_files/fs.cc stan_files/sr.cc stan_files/bs.cc stan_files/eds.cc stan_files/nse.cc stan_files/ds.cc
-ERROR: compilation failed for package ‘beanz’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/beanz/new/beanz.Rcheck/beanz’
-
-```
-### CRAN
-
-```
-* installing *source* package ‘beanz’ ...
-** package ‘beanz’ successfully unpacked and MD5 sums checked
-** libs
-"/Library/Frameworks/R.framework/Resources/bin/Rscript" -e "source(file.path('..', 'tools', 'make_cc.R')); make_cc(commandArgs(TRUE))" stan_files/bs.stan
-"/Library/Frameworks/R.framework/Resources/bin/Rscript" -e "source(file.path('..', 'tools', 'make_cc.R')); make_cc(commandArgs(TRUE))" stan_files/ds.stan
-"/Library/Frameworks/R.framework/Resources/bin/Rscript" -e "source(file.path('..', 'tools', 'make_cc.R')); make_cc(commandArgs(TRUE))" stan_files/eds.stan
-"/Library/Frameworks/R.framework/Resources/bin/Rscript" -e "source(file.path('..', 'tools', 'make_cc.R')); make_cc(commandArgs(TRUE))" stan_files/fs.stan
-Wrote C++ file "stan_files/eds.cc"
-Wrote C++ file "stan_files/ds.cc"
-Wrote C++ file "stan_files/fs.cc"
-Wrote C++ file "stan_files/bs.cc"
-Error in readRDS("/var/folders/lb/xhxqmcrd7gv302_b1pdfykh80000gn/T//Rtmpfpz96c/file184d65d251c92") : 
-  error reading from connection
-Calls: .Last -> readRDS
-Execution halted
-"/Library/Frameworks/R.framework/Resources/bin/Rscript" -e "source(file.path('..', 'tools', 'make_cc.R')); make_cc(commandArgs(TRUE))" stan_files/nse.stan
-"/Library/Frameworks/R.framework/Resources/bin/Rscript" -e "source(file.path('..', 'tools', 'make_cc.R')); make_cc(commandArgs(TRUE))" stan_files/sr.stan
-"/Library/Frameworks/R.framework/Resources/bin/Rscript" -e "source(file.path('..', 'tools', 'make_cc.R')); make_cc(commandArgs(TRUE))" stan_files/srs.stan
-make: *** [stan_files/bs.cc] Error 1
-make: *** Waiting for unfinished jobs....
-Wrote C++ file "stan_files/sr.cc"
-Wrote C++ file "stan_files/nse.cc"
-Wrote C++ file "stan_files/srs.cc"
-rm stan_files/fs.cc stan_files/sr.cc stan_files/bs.cc stan_files/srs.cc stan_files/eds.cc stan_files/nse.cc stan_files/ds.cc
-ERROR: compilation failed for package ‘beanz’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/beanz/old/beanz.Rcheck/beanz’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/BayesRS/old/BayesRS.Rcheck/BayesRS’
 
 ```
 # BgeeDB
@@ -413,161 +305,6 @@ Run `revdep_details(,"BIEN")` for more info
 *   R CMD check timed out
     
 
-# bioCancer
-
-<details>
-
-* Version: 
-* Source code: ???
-* URL: https://github.com/r-lib/revdepcheck#readme
-* BugReports: https://github.com/r-lib/revdepcheck/issues
-* Number of recursive dependencies: 0
-
-Run `revdep_details(,"")` for more info
-
-</details>
-
-## Error before installation
-
-### Devel
-
-```
-
-
-
-installing the source packages ‘GO.db’, ‘org.Hs.eg.db’, ‘reactome.db’
-
-
-
-```
-### CRAN
-
-```
-
-
-
-installing the source packages ‘GO.db’, ‘org.Hs.eg.db’, ‘reactome.db’
-
-
-
-```
-# BioCor
-
-<details>
-
-* Version: 
-* Source code: ???
-* URL: https://github.com/r-lib/revdepcheck#readme
-* BugReports: https://github.com/r-lib/revdepcheck/issues
-* Number of recursive dependencies: 0
-
-Run `revdep_details(,"")` for more info
-
-</details>
-
-## Error before installation
-
-### Devel
-
-```
-
-
-
-installing the source packages ‘airway’, ‘GO.db’, ‘org.Hs.eg.db’, ‘reactome.db’
-
-
-
-```
-### CRAN
-
-```
-
-
-
-installing the source packages ‘airway’, ‘GO.db’, ‘org.Hs.eg.db’, ‘reactome.db’
-
-
-
-```
-# BiocSklearn
-
-<details>
-
-* Version: 1.4.0
-* Source code: https://github.com/cran/BiocSklearn
-* Date/Publication: 2018-10-30
-* Number of recursive dependencies: 95
-
-Run `revdep_details(,"BiocSklearn")` for more info
-
-</details>
-
-## In both
-
-*   checking whether package ‘BiocSklearn’ can be installed ... ERROR
-    ```
-    Installation failed.
-    See ‘/Users/max/github/forks/testthat/revdep/checks.noindex/BiocSklearn/new/BiocSklearn.Rcheck/00install.out’ for details.
-    ```
-
-*   checking for hidden files and directories ... NOTE
-    ```
-    Found the following hidden files and directories:
-      .BBSoptions
-    These were most likely included in error. See section ‘Package
-    structure’ in the ‘Writing R Extensions’ manual.
-    ```
-
-## Installation
-
-### Devel
-
-```
-* installing *source* package ‘BiocSklearn’ ...
-** R
-** inst
-** byte-compile and prepare package for lazy loading
-** help
-*** installing help indices
-** building package indices
-** installing vignettes
-** testing if installed package can be loaded
-Error in py_module_import(module, convert = convert) : 
-  ImportError: No module named sklearn
-Error: package or namespace load failed for ‘BiocSklearn’:
- .onAttach failed in attachNamespace() for 'BiocSklearn', details:
-  call: fun(libname, pkgname)
-  error: sklearn not found in python environment
-Error: loading failed
-Execution halted
-ERROR: loading failed
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/BiocSklearn/new/BiocSklearn.Rcheck/BiocSklearn’
-
-```
-### CRAN
-
-```
-* installing *source* package ‘BiocSklearn’ ...
-** R
-** inst
-** byte-compile and prepare package for lazy loading
-** help
-*** installing help indices
-** building package indices
-** installing vignettes
-** testing if installed package can be loaded
-Error in py_module_import(module, convert = convert) : 
-  ImportError: No module named sklearn
-Error: package or namespace load failed for ‘BiocSklearn’:
- .onAttach failed in attachNamespace() for 'BiocSklearn', details:
-  call: fun(libname, pkgname)
-  error: sklearn not found in python environment
-Error: loading failed
-Execution halted
-ERROR: loading failed
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/BiocSklearn/old/BiocSklearn.Rcheck/BiocSklearn’
-
-```
 # BMSC
 
 <details>
@@ -581,1645 +318,18 @@ Run `revdep_details(,"BMSC")` for more info
 
 </details>
 
-## Newly broken
+## In both
 
-*   checking whether package ‘BMSC’ can be installed ... ERROR
-    ```
-    Installation failed.
-    See ‘/Users/max/github/forks/testthat/revdep/checks.noindex/BMSC/new/BMSC.Rcheck/00install.out’ for details.
-    ```
-
-## Newly fixed
+*   R CMD check timed out
+    
 
 *   checking installed package size ... NOTE
     ```
-      installed size is  6.9Mb
+      installed size is  6.7Mb
       sub-directories of 1Mb or more:
-        libs   6.5Mb
+        libs   6.2Mb
     ```
 
-## Installation
-
-### Devel
-
-```
-* installing *source* package ‘BMSC’ ...
-** package ‘BMSC’ successfully unpacked and MD5 sums checked
-** libs
-"/Library/Frameworks/R.framework/Resources/bin/Rscript" -e "source(file.path('..', 'tools', 'make_cc.R')); make_cc(commandArgs(TRUE))" stan_files/linReg.stan
-"/Library/Frameworks/R.framework/Resources/bin/Rscript" -e "source(file.path('..', 'tools', 'make_cc.R')); make_cc(commandArgs(TRUE))" stan_files/linRegHorseHoe.stan
-"/Library/Frameworks/R.framework/Resources/bin/Rscript" -e "source(file.path('..', 'tools', 'make_cc.R')); make_cc(commandArgs(TRUE))" stan_files/linRegHorseHoeUnConstr.stan
-"/Library/Frameworks/R.framework/Resources/bin/Rscript" -e "source(file.path('..', 'tools', 'make_cc.R')); make_cc(commandArgs(TRUE))" stan_files/linRegUnConstr.stan
-Wrote C++ file "stan_files/linRegHorseHoeUnConstr.cc"
-Wrote C++ file "stan_files/linRegHorseHoe.cc"
-Wrote C++ file "stan_files/linReg.cc"
-Wrote C++ file "stan_files/linRegUnConstr.cc"
-Error in readRDS("/var/folders/lb/xhxqmcrd7gv302_b1pdfykh80000gn/T//Rtmpfpz96c/file184d6267ecd97") : 
-  error reading from connection
-Calls: .Last -> readRDS
-Execution halted
-"/Library/Frameworks/R.framework/Resources/bin/Rscript" -e "source(file.path('..', 'tools', 'make_cc.R')); make_cc(commandArgs(TRUE))" stan_files/linRegXU.stan
-make: *** [stan_files/linRegHorseHoe.cc] Error 1
-make: *** Waiting for unfinished jobs....
-Wrote C++ file "stan_files/linRegXU.cc"
-rm stan_files/linRegXU.cc stan_files/linRegUnConstr.cc stan_files/linRegHorseHoe.cc stan_files/linRegHorseHoeUnConstr.cc stan_files/linReg.cc
-ERROR: compilation failed for package ‘BMSC’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/BMSC/new/BMSC.Rcheck/BMSC’
-
-```
-### CRAN
-
-```
-* installing *source* package ‘BMSC’ ...
-** package ‘BMSC’ successfully unpacked and MD5 sums checked
-** libs
-"/Library/Frameworks/R.framework/Resources/bin/Rscript" -e "source(file.path('..', 'tools', 'make_cc.R')); make_cc(commandArgs(TRUE))" stan_files/linReg.stan
-"/Library/Frameworks/R.framework/Resources/bin/Rscript" -e "source(file.path('..', 'tools', 'make_cc.R')); make_cc(commandArgs(TRUE))" stan_files/linRegHorseHoe.stan
-"/Library/Frameworks/R.framework/Resources/bin/Rscript" -e "source(file.path('..', 'tools', 'make_cc.R')); make_cc(commandArgs(TRUE))" stan_files/linRegHorseHoeUnConstr.stan
-"/Library/Frameworks/R.framework/Resources/bin/Rscript" -e "source(file.path('..', 'tools', 'make_cc.R')); make_cc(commandArgs(TRUE))" stan_files/linRegUnConstr.stan
-Wrote C++ file "stan_files/linRegUnConstr.cc"
-Wrote C++ file "stan_files/linReg.cc"
-Wrote C++ file "stan_files/linRegHorseHoe.cc"
-Wrote C++ file "stan_files/linRegHorseHoeUnConstr.cc"
-"/Library/Frameworks/R.framework/Resources/bin/Rscript" -e "source(file.path('..', 'tools', 'make_cc.R')); make_cc(commandArgs(TRUE))" stan_files/linRegXU.stan
-"/Library/Frameworks/R.framework/Resources/bin/Rscript" -e "source(file.path('..', 'tools', 'make_cc.R')); make_cc(commandArgs(TRUE))" stan_files/linRegUnConstrXU.stan
-/usr/local/clang6/bin/clang++ -std=gnu++14 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -I"../inst/include" -I"`"/Library/Frameworks/R.framework/Resources/bin/Rscript" --vanilla -e "cat(system.file('include', 'src', package = 'StanHeaders'))"`" -DBOOST_RESULT_OF_USE_TR1 -DBOOST_NO_DECLTYPE -DBOOST_DISABLE_ASSERTS -DEIGEN_NO_DEBUG -DBOOST_MATH_OVERFLOW_ERROR_POLICY=errno_on_error -I"/Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/BMSC/BH/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/BMSC/Rcpp/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include" -I/usr/local/include   -fPIC  -Wall -g -O2 -c init.cpp -o init.o
-/usr/local/clang6/bin/clang++ -std=gnu++14 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -I"../inst/include" -I"`"/Library/Frameworks/R.framework/Resources/bin/Rscript" --vanilla -e "cat(system.file('include', 'src', package = 'StanHeaders'))"`" -DBOOST_RESULT_OF_USE_TR1 -DBOOST_NO_DECLTYPE -DBOOST_DISABLE_ASSERTS -DEIGEN_NO_DEBUG -DBOOST_MATH_OVERFLOW_ERROR_POLICY=errno_on_error -I"/Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/BMSC/BH/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/BMSC/Rcpp/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include" -I/usr/local/include   -fPIC  -Wall -g -O2 -c stan_files/linReg.cc -o stan_files/linReg.o
-/usr/local/clang6/bin/clang++ -std=gnu++14 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -I"../inst/include" -I"`"/Library/Frameworks/R.framework/Resources/bin/Rscript" --vanilla -e "cat(system.file('include', 'src', package = 'StanHeaders'))"`" -DBOOST_RESULT_OF_USE_TR1 -DBOOST_NO_DECLTYPE -DBOOST_DISABLE_ASSERTS -DEIGEN_NO_DEBUG -DBOOST_MATH_OVERFLOW_ERROR_POLICY=errno_on_error -I"/Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/BMSC/BH/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/BMSC/Rcpp/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include" -I/usr/local/include   -fPIC  -Wall -g -O2 -c stan_files/linRegHorseHoe.cc -o stan_files/linRegHorseHoe.o
-Wrote C++ file "stan_files/linRegXU.cc"
-Wrote C++ file "stan_files/linRegUnConstrXU.cc"
-/usr/local/clang6/bin/clang++ -std=gnu++14 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -I"../inst/include" -I"`"/Library/Frameworks/R.framework/Resources/bin/Rscript" --vanilla -e "cat(system.file('include', 'src', package = 'StanHeaders'))"`" -DBOOST_RESULT_OF_USE_TR1 -DBOOST_NO_DECLTYPE -DBOOST_DISABLE_ASSERTS -DEIGEN_NO_DEBUG -DBOOST_MATH_OVERFLOW_ERROR_POLICY=errno_on_error -I"/Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/BMSC/BH/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/BMSC/Rcpp/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include" -I/usr/local/include   -fPIC  -Wall -g -O2 -c stan_files/linRegHorseHoeUnConstr.cc -o stan_files/linRegHorseHoeUnConstr.o
-/usr/local/clang6/bin/clang++ -std=gnu++14 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -I"../inst/include" -I"`"/Library/Frameworks/R.framework/Resources/bin/Rscript" --vanilla -e "cat(system.file('include', 'src', package = 'StanHeaders'))"`" -DBOOST_RESULT_OF_USE_TR1 -DBOOST_NO_DECLTYPE -DBOOST_DISABLE_ASSERTS -DEIGEN_NO_DEBUG -DBOOST_MATH_OVERFLOW_ERROR_POLICY=errno_on_error -I"/Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/BMSC/BH/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/BMSC/Rcpp/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include" -I/usr/local/include   -fPIC  -Wall -g -O2 -c stan_files/linRegUnConstr.cc -o stan_files/linRegUnConstr.o
-In file included from stan_files/linReg.cc:3:
-In file included from stan_files/linReg.hpp:18:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/rstaninc.hpp:3:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/stan_fit.hpp:15:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/BH/include/boost/random/additive_combine.hpp:27:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/BH/include/boost/random/linear_congruential.hpp:30:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/BH/include/boost/random/detail/const_mod.hpp:23:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/BH/include/boost/random/detail/large_arithmetic.hpp:19:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/BH/include/boost/random/detail/integer_log2.hpp:19:
-/Users/max/github/forks/testthat/revdep/library.noindex/BMSC/BH/include/boost/pending/integer_log2.hpp:7:1: warning: This header is deprecated. Use <boost/integer/integer_log2.hpp> instead. [-W#pragma-messages]
-BOOST_HEADER_DEPRECATED("<boost/integer/integer_log2.hpp>");
-^
-/Users/max/github/forks/testthat/revdep/library.noindex/BMSC/BH/include/boost/config/header_deprecated.hpp:23:37: note: expanded from macro 'BOOST_HEADER_DEPRECATED'
-# define BOOST_HEADER_DEPRECATED(a) BOOST_PRAGMA_MESSAGE("This header is deprecated. Use " a " instead.")
-                                    ^
-/Users/max/github/forks/testthat/revdep/library.noindex/BMSC/BH/include/boost/config/pragma_message.hpp:24:34: note: expanded from macro 'BOOST_PRAGMA_MESSAGE'
-# define BOOST_PRAGMA_MESSAGE(x) _Pragma(BOOST_STRINGIZE(message(x)))
-                                 ^
-<scratch space>:32:2: note: expanded from here
- message("This header is deprecated. Use " "<boost/integer/integer_log2.hpp>" " instead.")
- ^
-In file included from stan_files/linRegHorseHoe.cc:3:
-In file included from stan_files/linRegHorseHoe.hpp:18:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/rstaninc.hpp:3:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/stan_fit.hpp:15:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/BH/include/boost/random/additive_combine.hpp:27:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/BH/include/boost/random/linear_congruential.hpp:30:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/BH/include/boost/random/detail/const_mod.hpp:23:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/BH/include/boost/random/detail/large_arithmetic.hpp:19:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/BH/include/boost/random/detail/integer_log2.hpp:19:
-/Users/max/github/forks/testthat/revdep/library.noindex/BMSC/BH/include/boost/pending/integer_log2.hpp:7:1: warning: This header is deprecated. Use <boost/integer/integer_log2.hpp> instead. [-W#pragma-messages]
-BOOST_HEADER_DEPRECATED("<boost/integer/integer_log2.hpp>");
-^
-/Users/max/github/forks/testthat/revdep/library.noindex/BMSC/BH/include/boost/config/header_deprecated.hpp:23:37: note: expanded from macro 'BOOST_HEADER_DEPRECATED'
-# define BOOST_HEADER_DEPRECATED(a) BOOST_PRAGMA_MESSAGE("This header is deprecated. Use " a " instead.")
-                                    ^
-/Users/max/github/forks/testthat/revdep/library.noindex/BMSC/BH/include/boost/config/pragma_message.hpp:24:34: note: expanded from macro 'BOOST_PRAGMA_MESSAGE'
-# define BOOST_PRAGMA_MESSAGE(x) _Pragma(BOOST_STRINGIZE(message(x)))
-                                 ^
-<scratch space>:32:2: note: expanded from here
- message("This header is deprecated. Use " "<boost/integer/integer_log2.hpp>" " instead.")
- ^
-In file included from stan_files/linReg.cc:3:
-In file included from stan_files/linReg.hpp:18:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/rstaninc.hpp:3:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/stan_fit.hpp:34:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/mat.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/core.hpp:14:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/core/matrix_vari.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/mat/fun/Eigen_NumTraits.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/Dense:1:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/Core:535:
-/Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
-    #pragma clang diagnostic pop
-                             ^
-In file included from stan_files/linReg.cc:3:
-In file included from stan_files/linReg.hpp:18:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/rstaninc.hpp:3:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/stan_fit.hpp:34:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/mat.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/core.hpp:14:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/core/matrix_vari.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/mat/fun/Eigen_NumTraits.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/Dense:2:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/LU:47:
-/Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
-    #pragma clang diagnostic pop
-                             ^
-In file included from stan_files/linReg.cc:3:
-In file included from stan_files/linReg.hpp:18:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/rstaninc.hpp:3:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/stan_fit.hpp:34:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/mat.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/core.hpp:14:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/core/matrix_vari.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/mat/fun/Eigen_NumTraits.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/Dense:3:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/Cholesky:12:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/Jacobi:29:
-/Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
-    #pragma clang diagnostic pop
-                             ^
-In file included from stan_files/linReg.cc:3:
-In file included from stan_files/linReg.hpp:18:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/rstaninc.hpp:3:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/stan_fit.hpp:34:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/mat.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/core.hpp:14:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/core/matrix_vari.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/mat/fun/Eigen_NumTraits.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/Dense:3:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/Cholesky:43:
-/Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
-    #pragma clang diagnostic pop
-                             ^
-In file included from stan_files/linReg.cc:3:
-In file included from stan_files/linReg.hpp:18:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/rstaninc.hpp:3:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/stan_fit.hpp:34:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/mat.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/core.hpp:14:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/core/matrix_vari.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/mat/fun/Eigen_NumTraits.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/Dense:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/QR:17:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/Householder:27:
-/Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
-    #pragma clang diagnostic pop
-                             ^
-In file included from stan_files/linReg.cc:3:
-In file included from stan_files/linReg.hpp:18:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/rstaninc.hpp:3:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/stan_fit.hpp:34:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/mat.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/core.hpp:14:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/core/matrix_vari.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/mat/fun/Eigen_NumTraits.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/Dense:5:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/SVD:48:
-/Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
-    #pragma clang diagnostic pop
-                             ^
-In file included from stan_files/linReg.cc:3:
-In file included from stan_files/linReg.hpp:18:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/rstaninc.hpp:3:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/stan_fit.hpp:34:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/mat.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/core.hpp:14:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/core/matrix_vari.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/mat/fun/Eigen_NumTraits.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/Dense:6:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/Geometry:58:
-/Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
-    #pragma clang diagnostic pop
-                             ^
-In file included from stan_files/linRegHorseHoe.cc:3:
-In file included from stan_files/linRegHorseHoe.hpp:18:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/rstaninc.hpp:3:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/stan_fit.hpp:34:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/mat.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/core.hpp:14:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/core/matrix_vari.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/mat/fun/Eigen_NumTraits.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/Dense:1:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/Core:535:
-/Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
-    #pragma clang diagnostic pop
-                             ^
-In file included from stan_files/linReg.cc:3:
-In file included from stan_files/linReg.hpp:18:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/rstaninc.hpp:3:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/stan_fit.hpp:34:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/mat.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/core.hpp:14:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/core/matrix_vari.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/mat/fun/Eigen_NumTraits.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/Dense:7:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/Eigenvalues:58:
-/Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
-    #pragma clang diagnostic pop
-                             ^
-In file included from stan_files/linRegUnConstr.cc:3:
-In file included from stan_files/linRegUnConstr.hpp:18:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/rstaninc.hpp:3:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/stan_fit.hpp:15:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/BH/include/boost/random/additive_combine.hpp:27:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/BH/include/boost/random/linear_congruential.hpp:30:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/BH/include/boost/random/detail/const_mod.hpp:23:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/BH/include/boost/random/detail/large_arithmetic.hpp:19:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/BH/include/boost/random/detail/integer_log2.hpp:19:
-/Users/max/github/forks/testthat/revdep/library.noindex/BMSC/BH/include/boost/pending/integer_log2.hpp:7:1: warning: This header is deprecated. Use <boost/integer/integer_log2.hpp> instead. [-W#pragma-messages]
-BOOST_HEADER_DEPRECATED("<boost/integer/integer_log2.hpp>");
-^
-/Users/max/github/forks/testthat/revdep/library.noindex/BMSC/BH/include/boost/config/header_deprecated.hpp:23:37: note: expanded from macro 'BOOST_HEADER_DEPRECATED'
-# define BOOST_HEADER_DEPRECATED(a) BOOST_PRAGMA_MESSAGE("This header is deprecated. Use " a " instead.")
-                                    ^
-/Users/max/github/forks/testthat/revdep/library.noindex/BMSC/BH/include/boost/config/pragma_message.hpp:24:34: note: expanded from macro 'BOOST_PRAGMA_MESSAGE'
-# define BOOST_PRAGMA_MESSAGE(x) _Pragma(BOOST_STRINGIZE(message(x)))
-                                 ^
-<scratch space>:32:2: note: expanded from here
- message("This header is deprecated. Use " "<boost/integer/integer_log2.hpp>" " instead.")
- ^
-In file included from stan_files/linRegHorseHoe.cc:3:
-In file included from stan_files/linRegHorseHoe.hpp:18:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/rstaninc.hpp:3:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/stan_fit.hpp:34:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/mat.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/core.hpp:14:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/core/matrix_vari.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/mat/fun/Eigen_NumTraits.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/Dense:2:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/LU:47:
-/Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
-    #pragma clang diagnostic pop
-                             ^
-In file included from stan_files/linRegHorseHoe.cc:3:
-In file included from stan_files/linRegHorseHoe.hpp:18:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/rstaninc.hpp:3:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/stan_fit.hpp:34:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/mat.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/core.hpp:14:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/core/matrix_vari.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/mat/fun/Eigen_NumTraits.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/Dense:3:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/Cholesky:12:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/Jacobi:29:
-/Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
-    #pragma clang diagnostic pop
-                             ^
-In file included from stan_files/linRegHorseHoe.cc:3:
-In file included from stan_files/linRegHorseHoe.hpp:18:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/rstaninc.hpp:3:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/stan_fit.hpp:34:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/mat.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/core.hpp:14:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/core/matrix_vari.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/mat/fun/Eigen_NumTraits.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/Dense:3:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/Cholesky:43:
-/Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
-    #pragma clang diagnostic pop
-                             ^
-In file included from stan_files/linRegHorseHoe.cc:3:
-In file included from stan_files/linRegHorseHoe.hpp:18:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/rstaninc.hpp:3:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/stan_fit.hpp:34:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/mat.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/core.hpp:14:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/core/matrix_vari.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/mat/fun/Eigen_NumTraits.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/Dense:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/QR:17:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/Householder:27:
-/Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
-    #pragma clang diagnostic pop
-                             ^
-In file included from stan_files/linRegHorseHoeUnConstr.cc:3:
-In file included from stan_files/linRegHorseHoeUnConstr.hpp:18:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/rstaninc.hpp:3:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/stan_fit.hpp:15:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/BH/include/boost/random/additive_combine.hpp:27:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/BH/include/boost/random/linear_congruential.hpp:30:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/BH/include/boost/random/detail/const_mod.hpp:23:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/BH/include/boost/random/detail/large_arithmetic.hpp:19:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/BH/include/boost/random/detail/integer_log2.hpp:19:
-/Users/max/github/forks/testthat/revdep/library.noindex/BMSC/BH/include/boost/pending/integer_log2.hpp:7:1: warning: This header is deprecated. Use <boost/integer/integer_log2.hpp> instead. [-W#pragma-messages]
-BOOST_HEADER_DEPRECATED("<boost/integer/integer_log2.hpp>");
-^
-/Users/max/github/forks/testthat/revdep/library.noindex/BMSC/BH/include/boost/config/header_deprecated.hpp:23:37: note: expanded from macro 'BOOST_HEADER_DEPRECATED'
-# define BOOST_HEADER_DEPRECATED(a) BOOST_PRAGMA_MESSAGE("This header is deprecated. Use " a " instead.")
-                                    ^
-/Users/max/github/forks/testthat/revdep/library.noindex/BMSC/BH/include/boost/config/pragma_message.hpp:24:34: note: expanded from macro 'BOOST_PRAGMA_MESSAGE'
-# define BOOST_PRAGMA_MESSAGE(x) _Pragma(BOOST_STRINGIZE(message(x)))
-                                 ^
-<scratch space>:32:2: note: expanded from here
- message("This header is deprecated. Use " "<boost/integer/integer_log2.hpp>" " instead.")
- ^
-In file included from stan_files/linRegHorseHoe.cc:3:
-In file included from stan_files/linRegHorseHoe.hpp:18:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/rstaninc.hpp:3:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/stan_fit.hpp:34:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/mat.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/core.hpp:14:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/core/matrix_vari.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/mat/fun/Eigen_NumTraits.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/Dense:5:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/SVD:48:
-/Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
-    #pragma clang diagnostic pop
-                             ^
-In file included from stan_files/linRegHorseHoe.cc:3:
-In file included from stan_files/linRegHorseHoe.hpp:18:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/rstaninc.hpp:3:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/stan_fit.hpp:34:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/mat.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/core.hpp:14:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/core/matrix_vari.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/mat/fun/Eigen_NumTraits.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/Dense:6:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/Geometry:58:
-/Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
-    #pragma clang diagnostic pop
-                             ^
-In file included from stan_files/linRegHorseHoe.cc:3:
-In file included from stan_files/linRegHorseHoe.hpp:18:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/rstaninc.hpp:3:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/stan_fit.hpp:34:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/mat.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/core.hpp:14:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/core/matrix_vari.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/mat/fun/Eigen_NumTraits.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/Dense:7:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/Eigenvalues:58:
-/Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
-    #pragma clang diagnostic pop
-                             ^
-In file included from stan_files/linRegUnConstr.cc:3:
-In file included from stan_files/linRegUnConstr.hpp:18:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/rstaninc.hpp:3:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/stan_fit.hpp:34:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/mat.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/core.hpp:14:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/core/matrix_vari.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/mat/fun/Eigen_NumTraits.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/Dense:1:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/Core:535:
-/Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
-    #pragma clang diagnostic pop
-                             ^
-In file included from stan_files/linRegUnConstr.cc:3:
-In file included from stan_files/linRegUnConstr.hpp:18:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/rstaninc.hpp:3:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/stan_fit.hpp:34:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/mat.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/core.hpp:14:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/core/matrix_vari.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/mat/fun/Eigen_NumTraits.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/Dense:2:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/LU:47:
-/Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
-    #pragma clang diagnostic pop
-                             ^
-In file included from stan_files/linRegUnConstr.cc:3:
-In file included from stan_files/linRegUnConstr.hpp:18:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/rstaninc.hpp:3:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/stan_fit.hpp:34:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/mat.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/core.hpp:14:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/core/matrix_vari.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/mat/fun/Eigen_NumTraits.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/Dense:3:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/Cholesky:12:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/Jacobi:29:
-/Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
-    #pragma clang diagnostic pop
-                             ^
-In file included from stan_files/linRegUnConstr.cc:3:
-In file included from stan_files/linRegUnConstr.hpp:18:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/rstaninc.hpp:3:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/stan_fit.hpp:34:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/mat.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/core.hpp:14:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/core/matrix_vari.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/mat/fun/Eigen_NumTraits.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/Dense:3:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/Cholesky:43:
-/Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
-    #pragma clang diagnostic pop
-                             ^
-In file included from stan_files/linRegUnConstr.cc:3:
-In file included from stan_files/linRegUnConstr.hpp:18:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/rstaninc.hpp:3:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/stan_fit.hpp:34:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/mat.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/core.hpp:14:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/core/matrix_vari.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/mat/fun/Eigen_NumTraits.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/Dense:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/QR:17:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/Householder:27:
-/Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
-    #pragma clang diagnostic pop
-                             ^
-In file included from stan_files/linRegHorseHoeUnConstr.cc:3:
-In file included from stan_files/linRegHorseHoeUnConstr.hpp:18:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/rstaninc.hpp:3:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/stan_fit.hpp:34:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/mat.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/core.hpp:14:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/core/matrix_vari.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/mat/fun/Eigen_NumTraits.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/Dense:1:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/Core:535:
-/Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
-    #pragma clang diagnostic pop
-                             ^
-In file included from stan_files/linRegHorseHoeUnConstr.cc:3:
-In file included from stan_files/linRegHorseHoeUnConstr.hpp:18:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/rstaninc.hpp:3:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/stan_fit.hpp:34:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/mat.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/core.hpp:14:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/core/matrix_vari.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/mat/fun/Eigen_NumTraits.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/Dense:2:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/LU:47:
-/Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
-    #pragma clang diagnostic pop
-                             ^
-In file included from stan_files/linRegHorseHoeUnConstr.cc:3:
-In file included from stan_files/linRegHorseHoeUnConstr.hpp:18:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/rstaninc.hpp:3:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/stan_fit.hpp:34:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/mat.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/core.hpp:14:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/core/matrix_vari.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/mat/fun/Eigen_NumTraits.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/Dense:3:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/Cholesky:12:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/Jacobi:29:
-/Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
-    #pragma clang diagnostic pop
-                             ^
-In file included from stan_files/linRegHorseHoeUnConstr.cc:3:
-In file included from stan_files/linRegHorseHoeUnConstr.hpp:18:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/rstaninc.hpp:3:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/stan_fit.hpp:34:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/mat.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/core.hpp:14:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/core/matrix_vari.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/mat/fun/Eigen_NumTraits.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/Dense:3:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/Cholesky:43:
-/Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
-    #pragma clang diagnostic pop
-                             ^
-In file included from stan_files/linRegUnConstr.cc:3:
-In file included from stan_files/linRegUnConstr.hpp:18:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/rstaninc.hpp:3:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/stan_fit.hpp:34:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/mat.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/core.hpp:14:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/core/matrix_vari.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/mat/fun/Eigen_NumTraits.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/Dense:5:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/SVD:48:
-/Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
-    #pragma clang diagnostic pop
-                             ^
-In file included from stan_files/linRegHorseHoeUnConstr.cc:3:
-In file included from stan_files/linRegHorseHoeUnConstr.hpp:18:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/rstaninc.hpp:3:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/stan_fit.hpp:34:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/mat.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/core.hpp:14:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/core/matrix_vari.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/mat/fun/Eigen_NumTraits.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/Dense:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/QR:17:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/Householder:27:
-/Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
-    #pragma clang diagnostic pop
-                             ^
-In file included from stan_files/linRegHorseHoeUnConstr.cc:3:
-In file included from stan_files/linRegHorseHoeUnConstr.hpp:18:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/rstaninc.hpp:3:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/stan_fit.hpp:34:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/mat.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/core.hpp:14:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/core/matrix_vari.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/mat/fun/Eigen_NumTraits.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/Dense:5:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/SVD:48:
-/Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
-    #pragma clang diagnostic pop
-                             ^
-In file included from stan_files/linRegUnConstr.cc:3:
-In file included from stan_files/linRegUnConstr.hpp:18:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/rstaninc.hpp:3:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/stan_fit.hpp:34:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/mat.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/core.hpp:14:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/core/matrix_vari.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/mat/fun/Eigen_NumTraits.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/Dense:6:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/Geometry:58:
-/Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
-    #pragma clang diagnostic pop
-                             ^
-In file included from stan_files/linRegUnConstr.cc:3:
-In file included from stan_files/linRegUnConstr.hpp:18:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/rstaninc.hpp:3:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/stan_fit.hpp:34:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/mat.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/core.hpp:14:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/core/matrix_vari.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/mat/fun/Eigen_NumTraits.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/Dense:7:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/Eigenvalues:58:
-/Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
-    #pragma clang diagnostic pop
-                             ^
-In file included from stan_files/linReg.cc:3:
-In file included from stan_files/linReg.hpp:18:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/rstaninc.hpp:3:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/stan_fit.hpp:34:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/mat.hpp:12:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/prim/mat.hpp:96:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/prim/mat/fun/csr_extract_u.hpp:6:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/Sparse:26:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/SparseCore:66:
-/Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
-    #pragma clang diagnostic pop
-                             ^
-In file included from stan_files/linReg.cc:3:
-In file included from stan_files/linReg.hpp:18:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/rstaninc.hpp:3:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/stan_fit.hpp:34:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/mat.hpp:12:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/prim/mat.hpp:96:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/prim/mat/fun/csr_extract_u.hpp:6:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/Sparse:27:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/OrderingMethods:71:
-/Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
-    #pragma clang diagnostic pop
-                             ^
-In file included from stan_files/linRegHorseHoeUnConstr.cc:3:
-In file included from stan_files/linRegHorseHoeUnConstr.hpp:18:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/rstaninc.hpp:3:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/stan_fit.hpp:34:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/mat.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/core.hpp:14:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/core/matrix_vari.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/mat/fun/Eigen_NumTraits.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/Dense:6:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/Geometry:58:
-/Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
-    #pragma clang diagnostic pop
-                             ^
-In file included from stan_files/linReg.cc:3:
-In file included from stan_files/linReg.hpp:18:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/rstaninc.hpp:3:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/stan_fit.hpp:34:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/mat.hpp:12:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/prim/mat.hpp:96:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/prim/mat/fun/csr_extract_u.hpp:6:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/Sparse:29:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/SparseCholesky:43:
-/Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
-    #pragma clang diagnostic pop
-                             ^
-In file included from stan_files/linRegHorseHoeUnConstr.cc:3:
-In file included from stan_files/linRegHorseHoeUnConstr.hpp:18:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/rstaninc.hpp:3:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/stan_fit.hpp:34:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/mat.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/core.hpp:14:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/core/matrix_vari.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/mat/fun/Eigen_NumTraits.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/Dense:7:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/Eigenvalues:58:
-/Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
-    #pragma clang diagnostic pop
-                             ^
-In file included from stan_files/linReg.cc:3:
-In file included from stan_files/linReg.hpp:18:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/rstaninc.hpp:3:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/stan_fit.hpp:34:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/mat.hpp:12:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/prim/mat.hpp:96:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/prim/mat/fun/csr_extract_u.hpp:6:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/Sparse:32:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/SparseQR:35:
-/Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
-    #pragma clang diagnostic pop
-                             ^
-In file included from stan_files/linReg.cc:3:
-In file included from stan_files/linReg.hpp:18:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/rstaninc.hpp:3:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/stan_fit.hpp:34:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/mat.hpp:12:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/prim/mat.hpp:96:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/prim/mat/fun/csr_extract_u.hpp:6:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/Sparse:33:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/IterativeLinearSolvers:46:
-/Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
-    #pragma clang diagnostic pop
-                             ^
-In file included from stan_files/linRegHorseHoe.cc:3:
-In file included from stan_files/linRegHorseHoe.hpp:18:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/rstaninc.hpp:3:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/stan_fit.hpp:34:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/mat.hpp:12:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/prim/mat.hpp:96:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/prim/mat/fun/csr_extract_u.hpp:6:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/Sparse:26:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/SparseCore:66:
-/Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
-    #pragma clang diagnostic pop
-                             ^
-In file included from stan_files/linRegHorseHoe.cc:3:
-In file included from stan_files/linRegHorseHoe.hpp:18:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/rstaninc.hpp:3:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/stan_fit.hpp:34:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/mat.hpp:12:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/prim/mat.hpp:96:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/prim/mat/fun/csr_extract_u.hpp:6:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/Sparse:27:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/OrderingMethods:71:
-/Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
-    #pragma clang diagnostic pop
-                             ^
-In file included from stan_files/linRegHorseHoe.cc:3:
-In file included from stan_files/linRegHorseHoe.hpp:18:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/rstaninc.hpp:3:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/stan_fit.hpp:34:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/mat.hpp:12:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/prim/mat.hpp:96:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/prim/mat/fun/csr_extract_u.hpp:6:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/Sparse:29:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/SparseCholesky:43:
-/Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
-    #pragma clang diagnostic pop
-                             ^
-In file included from stan_files/linRegHorseHoe.cc:3:
-In file included from stan_files/linRegHorseHoe.hpp:18:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/rstaninc.hpp:3:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/stan_fit.hpp:34:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/mat.hpp:12:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/prim/mat.hpp:96:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/prim/mat/fun/csr_extract_u.hpp:6:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/Sparse:32:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/SparseQR:35:
-/Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
-    #pragma clang diagnostic pop
-                             ^
-In file included from stan_files/linRegHorseHoe.cc:3:
-In file included from stan_files/linRegHorseHoe.hpp:18:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/rstaninc.hpp:3:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/stan_fit.hpp:34:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/mat.hpp:12:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/prim/mat.hpp:96:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/prim/mat/fun/csr_extract_u.hpp:6:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/Sparse:33:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/IterativeLinearSolvers:46:
-/Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
-    #pragma clang diagnostic pop
-                             ^
-In file included from stan_files/linRegUnConstr.cc:3:
-In file included from stan_files/linRegUnConstr.hpp:18:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/rstaninc.hpp:3:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/stan_fit.hpp:34:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/mat.hpp:12:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/prim/mat.hpp:96:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/prim/mat/fun/csr_extract_u.hpp:6:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/Sparse:26:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/SparseCore:66:
-/Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
-    #pragma clang diagnostic pop
-                             ^
-In file included from stan_files/linRegUnConstr.cc:3:
-In file included from stan_files/linRegUnConstr.hpp:18:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/rstaninc.hpp:3:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/stan_fit.hpp:34:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/mat.hpp:12:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/prim/mat.hpp:96:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/prim/mat/fun/csr_extract_u.hpp:6:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/Sparse:27:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/OrderingMethods:71:
-/Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
-    #pragma clang diagnostic pop
-                             ^
-In file included from stan_files/linRegUnConstr.cc:3:
-In file included from stan_files/linRegUnConstr.hpp:18:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/rstaninc.hpp:3:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/stan_fit.hpp:34:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/mat.hpp:12:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/prim/mat.hpp:96:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/prim/mat/fun/csr_extract_u.hpp:6:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/Sparse:29:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/SparseCholesky:43:
-/Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
-    #pragma clang diagnostic pop
-                             ^
-In file included from stan_files/linRegUnConstr.cc:3:
-In file included from stan_files/linRegUnConstr.hpp:18:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/rstaninc.hpp:3:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/stan_fit.hpp:34:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/mat.hpp:12:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/prim/mat.hpp:96:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/prim/mat/fun/csr_extract_u.hpp:6:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/Sparse:32:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/SparseQR:35:
-/Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
-    #pragma clang diagnostic pop
-                             ^
-In file included from stan_files/linRegUnConstr.cc:3:
-In file included from stan_files/linRegUnConstr.hpp:18:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/rstaninc.hpp:3:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/stan_fit.hpp:34:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/mat.hpp:12:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/prim/mat.hpp:96:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/prim/mat/fun/csr_extract_u.hpp:6:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/Sparse:33:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/IterativeLinearSolvers:46:
-/Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
-    #pragma clang diagnostic pop
-                             ^
-In file included from stan_files/linRegHorseHoeUnConstr.cc:3:
-In file included from stan_files/linRegHorseHoeUnConstr.hpp:18:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/rstaninc.hpp:3:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/stan_fit.hpp:34:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/mat.hpp:12:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/prim/mat.hpp:96:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/prim/mat/fun/csr_extract_u.hpp:6:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/Sparse:26:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/SparseCore:66:
-/Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
-    #pragma clang diagnostic pop
-                             ^
-In file included from stan_files/linRegHorseHoeUnConstr.cc:3:
-In file included from stan_files/linRegHorseHoeUnConstr.hpp:18:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/rstaninc.hpp:3:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/stan_fit.hpp:34:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/mat.hpp:12:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/prim/mat.hpp:96:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/prim/mat/fun/csr_extract_u.hpp:6:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/Sparse:27:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/OrderingMethods:71:
-/Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
-    #pragma clang diagnostic pop
-                             ^
-In file included from stan_files/linRegHorseHoeUnConstr.cc:3:
-In file included from stan_files/linRegHorseHoeUnConstr.hpp:18:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/rstaninc.hpp:3:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/stan_fit.hpp:34:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/mat.hpp:12:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/prim/mat.hpp:96:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/prim/mat/fun/csr_extract_u.hpp:6:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/Sparse:29:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/SparseCholesky:43:
-/Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
-    #pragma clang diagnostic pop
-                             ^
-In file included from stan_files/linRegHorseHoeUnConstr.cc:3:
-In file included from stan_files/linRegHorseHoeUnConstr.hpp:18:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/rstaninc.hpp:3:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/stan_fit.hpp:34:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/mat.hpp:12:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/prim/mat.hpp:96:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/prim/mat/fun/csr_extract_u.hpp:6:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/Sparse:32:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/SparseQR:35:
-/Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
-    #pragma clang diagnostic pop
-                             ^
-In file included from stan_files/linRegHorseHoeUnConstr.cc:3:
-In file included from stan_files/linRegHorseHoeUnConstr.hpp:18:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/rstaninc.hpp:3:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/stan_fit.hpp:34:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/mat.hpp:12:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/prim/mat.hpp:96:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/prim/mat/fun/csr_extract_u.hpp:6:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/Sparse:33:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/IterativeLinearSolvers:46:
-/Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
-    #pragma clang diagnostic pop
-                             ^
-In file included from stan_files/linReg.cc:3:
-In file included from stan_files/linReg.hpp:18:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/rstaninc.hpp:3:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/stan_fit.hpp:34:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/mat.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/core.hpp:44:
-/Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/core/set_zero_all_adjoints.hpp:14:13: warning: unused function 'set_zero_all_adjoints' [-Wunused-function]
-static void set_zero_all_adjoints() {
-            ^
-In file included from stan_files/linReg.cc:3:
-In file included from stan_files/linReg.hpp:18:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/rstaninc.hpp:3:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/stan_fit.hpp:34:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/mat.hpp:12:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/prim/mat.hpp:70:
-/Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/prim/mat/fun/autocorrelation.hpp:18:8: warning: function 'fft_next_good_size' is not needed and will not be emitted [-Wunneeded-internal-declaration]
-size_t fft_next_good_size(size_t N) {
-       ^
-In file included from stan_files/linRegHorseHoe.cc:3:
-In file included from stan_files/linRegHorseHoe.hpp:18:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/rstaninc.hpp:3:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/stan_fit.hpp:34:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/mat.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/core.hpp:44:
-/Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/core/set_zero_all_adjoints.hpp:14:13: warning: unused function 'set_zero_all_adjoints' [-Wunused-function]
-static void set_zero_all_adjoints() {
-            ^
-In file included from stan_files/linRegHorseHoe.cc:3:
-In file included from stan_files/linRegHorseHoe.hpp:18:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/rstaninc.hpp:3:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/stan_fit.hpp:34:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/mat.hpp:12:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/prim/mat.hpp:70:
-/Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/prim/mat/fun/autocorrelation.hpp:18:8: warning: function 'fft_next_good_size' is not needed and will not be emitted [-Wunneeded-internal-declaration]
-size_t fft_next_good_size(size_t N) {
-       ^
-In file included from stan_files/linRegUnConstr.cc:3:
-In file included from stan_files/linRegUnConstr.hpp:18:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/rstaninc.hpp:3:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/stan_fit.hpp:34:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/mat.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/core.hpp:44:
-/Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/core/set_zero_all_adjoints.hpp:14:13: warning: unused function 'set_zero_all_adjoints' [-Wunused-function]
-static void set_zero_all_adjoints() {
-            ^
-In file included from stan_files/linRegUnConstr.cc:3:
-In file included from stan_files/linRegUnConstr.hpp:18:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/rstaninc.hpp:3:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/stan_fit.hpp:34:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/mat.hpp:12:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/prim/mat.hpp:70:
-/Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/prim/mat/fun/autocorrelation.hpp:18:8: warning: function 'fft_next_good_size' is not needed and will not be emitted [-Wunneeded-internal-declaration]
-size_t fft_next_good_size(size_t N) {
-       ^
-In file included from stan_files/linRegHorseHoeUnConstr.cc:3:
-In file included from stan_files/linRegHorseHoeUnConstr.hpp:18:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/rstaninc.hpp:3:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/stan_fit.hpp:34:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/mat.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/core.hpp:44:
-/Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/core/set_zero_all_adjoints.hpp:14:13: warning: unused function 'set_zero_all_adjoints' [-Wunused-function]
-static void set_zero_all_adjoints() {
-            ^
-In file included from stan_files/linRegHorseHoeUnConstr.cc:3:
-In file included from stan_files/linRegHorseHoeUnConstr.hpp:18:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/rstaninc.hpp:3:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/stan_fit.hpp:34:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/mat.hpp:12:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/prim/mat.hpp:70:
-/Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/prim/mat/fun/autocorrelation.hpp:18:8: warning: function 'fft_next_good_size' is not needed and will not be emitted [-Wunneeded-internal-declaration]
-size_t fft_next_good_size(size_t N) {
-       ^
-16 warnings generated.
-/usr/local/clang6/bin/clang++ -std=gnu++14 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -I"../inst/include" -I"`"/Library/Frameworks/R.framework/Resources/bin/Rscript" --vanilla -e "cat(system.file('include', 'src', package = 'StanHeaders'))"`" -DBOOST_RESULT_OF_USE_TR1 -DBOOST_NO_DECLTYPE -DBOOST_DISABLE_ASSERTS -DEIGEN_NO_DEBUG -DBOOST_MATH_OVERFLOW_ERROR_POLICY=errno_on_error -I"/Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/BMSC/BH/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/BMSC/Rcpp/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include" -I/usr/local/include   -fPIC  -Wall -g -O2 -c stan_files/linRegXU.cc -o stan_files/linRegXU.o
-16 warnings generated.
-/usr/local/clang6/bin/clang++ -std=gnu++14 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -I"../inst/include" -I"`"/Library/Frameworks/R.framework/Resources/bin/Rscript" --vanilla -e "cat(system.file('include', 'src', package = 'StanHeaders'))"`" -DBOOST_RESULT_OF_USE_TR1 -DBOOST_NO_DECLTYPE -DBOOST_DISABLE_ASSERTS -DEIGEN_NO_DEBUG -DBOOST_MATH_OVERFLOW_ERROR_POLICY=errno_on_error -I"/Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/BMSC/BH/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/BMSC/Rcpp/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include" -I/usr/local/include   -fPIC  -Wall -g -O2 -c stan_files/linRegUnConstrXU.cc -o stan_files/linRegUnConstrXU.o
-In file included from stan_files/linRegXU.cc:3:
-In file included from stan_files/linRegXU.hpp:18:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/rstaninc.hpp:3:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/stan_fit.hpp:15:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/BH/include/boost/random/additive_combine.hpp:27:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/BH/include/boost/random/linear_congruential.hpp:30:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/BH/include/boost/random/detail/const_mod.hpp:23:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/BH/include/boost/random/detail/large_arithmetic.hpp:19:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/BH/include/boost/random/detail/integer_log2.hpp:19:
-/Users/max/github/forks/testthat/revdep/library.noindex/BMSC/BH/include/boost/pending/integer_log2.hpp:7:1: warning: This header is deprecated. Use <boost/integer/integer_log2.hpp> instead. [-W#pragma-messages]
-BOOST_HEADER_DEPRECATED("<boost/integer/integer_log2.hpp>");
-^
-/Users/max/github/forks/testthat/revdep/library.noindex/BMSC/BH/include/boost/config/header_deprecated.hpp:23:37: note: expanded from macro 'BOOST_HEADER_DEPRECATED'
-# define BOOST_HEADER_DEPRECATED(a) BOOST_PRAGMA_MESSAGE("This header is deprecated. Use " a " instead.")
-                                    ^
-/Users/max/github/forks/testthat/revdep/library.noindex/BMSC/BH/include/boost/config/pragma_message.hpp:24:34: note: expanded from macro 'BOOST_PRAGMA_MESSAGE'
-# define BOOST_PRAGMA_MESSAGE(x) _Pragma(BOOST_STRINGIZE(message(x)))
-                                 ^
-<scratch space>:32:2: note: expanded from here
- message("This header is deprecated. Use " "<boost/integer/integer_log2.hpp>" " instead.")
- ^
-16 warnings generated.
-In file included from stan_files/linRegUnConstrXU.cc:3:
-In file included from stan_files/linRegUnConstrXU.hpp:18:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/rstaninc.hpp:3:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/stan_fit.hpp:15:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/BH/include/boost/random/additive_combine.hpp:27:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/BH/include/boost/random/linear_congruential.hpp:30:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/BH/include/boost/random/detail/const_mod.hpp:23:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/BH/include/boost/random/detail/large_arithmetic.hpp:19:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/BH/include/boost/random/detail/integer_log2.hpp:19:
-/Users/max/github/forks/testthat/revdep/library.noindex/BMSC/BH/include/boost/pending/integer_log2.hpp:7:1: warning: This header is deprecated. Use <boost/integer/integer_log2.hpp> instead. [-W#pragma-messages]
-BOOST_HEADER_DEPRECATED("<boost/integer/integer_log2.hpp>");
-^
-/Users/max/github/forks/testthat/revdep/library.noindex/BMSC/BH/include/boost/config/header_deprecated.hpp:23:37: note: expanded from macro 'BOOST_HEADER_DEPRECATED'
-# define BOOST_HEADER_DEPRECATED(a) BOOST_PRAGMA_MESSAGE("This header is deprecated. Use " a " instead.")
-                                    ^
-/Users/max/github/forks/testthat/revdep/library.noindex/BMSC/BH/include/boost/config/pragma_message.hpp:24:34: note: expanded from macro 'BOOST_PRAGMA_MESSAGE'
-# define BOOST_PRAGMA_MESSAGE(x) _Pragma(BOOST_STRINGIZE(message(x)))
-                                 ^
-<scratch space>:32:2: note: expanded from here
- message("This header is deprecated. Use " "<boost/integer/integer_log2.hpp>" " instead.")
- ^
-In file included from stan_files/linRegXU.cc:3:
-In file included from stan_files/linRegXU.hpp:18:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/rstaninc.hpp:3:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/stan_fit.hpp:34:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/mat.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/core.hpp:14:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/core/matrix_vari.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/mat/fun/Eigen_NumTraits.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/Dense:1:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/Core:535:
-/Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
-    #pragma clang diagnostic pop
-                             ^
-In file included from stan_files/linRegXU.cc:3:
-In file included from stan_files/linRegXU.hpp:18:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/rstaninc.hpp:3:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/stan_fit.hpp:34:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/mat.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/core.hpp:14:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/core/matrix_vari.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/mat/fun/Eigen_NumTraits.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/Dense:2:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/LU:47:
-/Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
-    #pragma clang diagnostic pop
-                             ^
-In file included from stan_files/linRegXU.cc:3:
-In file included from stan_files/linRegXU.hpp:18:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/rstaninc.hpp:3:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/stan_fit.hpp:34:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/mat.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/core.hpp:14:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/core/matrix_vari.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/mat/fun/Eigen_NumTraits.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/Dense:3:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/Cholesky:12:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/Jacobi:29:
-/Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
-    #pragma clang diagnostic pop
-                             ^
-In file included from stan_files/linRegXU.cc:3:
-In file included from stan_files/linRegXU.hpp:18:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/rstaninc.hpp:3:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/stan_fit.hpp:34:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/mat.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/core.hpp:14:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/core/matrix_vari.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/mat/fun/Eigen_NumTraits.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/Dense:3:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/Cholesky:43:
-/Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
-    #pragma clang diagnostic pop
-                             ^
-In file included from stan_files/linRegXU.cc:3:
-In file included from stan_files/linRegXU.hpp:18:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/rstaninc.hpp:3:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/stan_fit.hpp:34:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/mat.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/core.hpp:14:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/core/matrix_vari.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/mat/fun/Eigen_NumTraits.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/Dense:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/QR:17:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/Householder:27:
-/Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
-    #pragma clang diagnostic pop
-                             ^
-In file included from stan_files/linRegXU.cc:3:
-In file included from stan_files/linRegXU.hpp:18:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/rstaninc.hpp:3:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/stan_fit.hpp:34:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/mat.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/core.hpp:14:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/core/matrix_vari.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/mat/fun/Eigen_NumTraits.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/Dense:5:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/SVD:48:
-/Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
-    #pragma clang diagnostic pop
-                             ^
-16 warnings generated.
-In file included from stan_files/linRegXU.cc:3:
-In file included from stan_files/linRegXU.hpp:18:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/rstaninc.hpp:3:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/stan_fit.hpp:34:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/mat.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/core.hpp:14:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/core/matrix_vari.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/mat/fun/Eigen_NumTraits.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/Dense:6:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/Geometry:58:
-/Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
-    #pragma clang diagnostic pop
-                             ^
-In file included from stan_files/linRegXU.cc:3:
-In file included from stan_files/linRegXU.hpp:18:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/rstaninc.hpp:3:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/stan_fit.hpp:34:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/mat.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/core.hpp:14:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/core/matrix_vari.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/mat/fun/Eigen_NumTraits.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/Dense:7:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/Eigenvalues:58:
-/Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
-    #pragma clang diagnostic pop
-                             ^
-In file included from stan_files/linRegUnConstrXU.cc:3:
-In file included from stan_files/linRegUnConstrXU.hpp:18:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/rstaninc.hpp:3:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/stan_fit.hpp:34:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/mat.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/core.hpp:14:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/core/matrix_vari.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/mat/fun/Eigen_NumTraits.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/Dense:1:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/Core:535:
-/Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
-    #pragma clang diagnostic pop
-                             ^
-In file included from stan_files/linRegUnConstrXU.cc:3:
-In file included from stan_files/linRegUnConstrXU.hpp:18:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/rstaninc.hpp:3:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/stan_fit.hpp:34:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/mat.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/core.hpp:14:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/core/matrix_vari.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/mat/fun/Eigen_NumTraits.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/Dense:2:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/LU:47:
-/Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
-    #pragma clang diagnostic pop
-                             ^
-In file included from stan_files/linRegUnConstrXU.cc:3:
-In file included from stan_files/linRegUnConstrXU.hpp:18:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/rstaninc.hpp:3:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/stan_fit.hpp:34:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/mat.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/core.hpp:14:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/core/matrix_vari.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/mat/fun/Eigen_NumTraits.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/Dense:3:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/Cholesky:12:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/Jacobi:29:
-/Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
-    #pragma clang diagnostic pop
-                             ^
-In file included from stan_files/linRegUnConstrXU.cc:3:
-In file included from stan_files/linRegUnConstrXU.hpp:18:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/rstaninc.hpp:3:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/stan_fit.hpp:34:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/mat.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/core.hpp:14:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/core/matrix_vari.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/mat/fun/Eigen_NumTraits.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/Dense:3:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/Cholesky:43:
-/Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
-    #pragma clang diagnostic pop
-                             ^
-In file included from stan_files/linRegUnConstrXU.cc:3:
-In file included from stan_files/linRegUnConstrXU.hpp:18:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/rstaninc.hpp:3:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/stan_fit.hpp:34:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/mat.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/core.hpp:14:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/core/matrix_vari.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/mat/fun/Eigen_NumTraits.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/Dense:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/QR:17:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/Householder:27:
-/Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
-    #pragma clang diagnostic pop
-                             ^
-In file included from stan_files/linRegUnConstrXU.cc:3:
-In file included from stan_files/linRegUnConstrXU.hpp:18:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/rstaninc.hpp:3:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/stan_fit.hpp:34:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/mat.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/core.hpp:14:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/core/matrix_vari.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/mat/fun/Eigen_NumTraits.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/Dense:5:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/SVD:48:
-/Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
-    #pragma clang diagnostic pop
-                             ^
-In file included from stan_files/linRegUnConstrXU.cc:3:
-In file included from stan_files/linRegUnConstrXU.hpp:18:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/rstaninc.hpp:3:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/stan_fit.hpp:34:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/mat.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/core.hpp:14:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/core/matrix_vari.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/mat/fun/Eigen_NumTraits.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/Dense:6:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/Geometry:58:
-/Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
-    #pragma clang diagnostic pop
-                             ^
-In file included from stan_files/linRegUnConstrXU.cc:3:
-In file included from stan_files/linRegUnConstrXU.hpp:18:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/rstaninc.hpp:3:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/stan_fit.hpp:34:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/mat.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/core.hpp:14:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/core/matrix_vari.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/mat/fun/Eigen_NumTraits.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/Dense:7:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/Eigenvalues:58:
-/Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
-    #pragma clang diagnostic pop
-                             ^
-In file included from stan_files/linRegXU.cc:3:
-In file included from stan_files/linRegXU.hpp:18:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/rstaninc.hpp:3:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/stan_fit.hpp:34:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/mat.hpp:12:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/prim/mat.hpp:96:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/prim/mat/fun/csr_extract_u.hpp:6:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/Sparse:26:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/SparseCore:66:
-/Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
-    #pragma clang diagnostic pop
-                             ^
-In file included from stan_files/linRegXU.cc:3:
-In file included from stan_files/linRegXU.hpp:18:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/rstaninc.hpp:3:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/stan_fit.hpp:34:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/mat.hpp:12:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/prim/mat.hpp:96:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/prim/mat/fun/csr_extract_u.hpp:6:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/Sparse:27:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/OrderingMethods:71:
-/Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
-    #pragma clang diagnostic pop
-                             ^
-In file included from stan_files/linRegXU.cc:3:
-In file included from stan_files/linRegXU.hpp:18:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/rstaninc.hpp:3:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/stan_fit.hpp:34:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/mat.hpp:12:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/prim/mat.hpp:96:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/prim/mat/fun/csr_extract_u.hpp:6:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/Sparse:29:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/SparseCholesky:43:
-/Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
-    #pragma clang diagnostic pop
-                             ^
-In file included from stan_files/linRegXU.cc:3:
-In file included from stan_files/linRegXU.hpp:18:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/rstaninc.hpp:3:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/stan_fit.hpp:34:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/mat.hpp:12:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/prim/mat.hpp:96:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/prim/mat/fun/csr_extract_u.hpp:6:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/Sparse:32:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/SparseQR:35:
-/Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
-    #pragma clang diagnostic pop
-                             ^
-In file included from stan_files/linRegXU.cc:3:
-In file included from stan_files/linRegXU.hpp:18:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/rstaninc.hpp:3:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/stan_fit.hpp:34:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/mat.hpp:12:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/prim/mat.hpp:96:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/prim/mat/fun/csr_extract_u.hpp:6:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/Sparse:33:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/IterativeLinearSolvers:46:
-/Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
-    #pragma clang diagnostic pop
-                             ^
-In file included from stan_files/linRegUnConstrXU.cc:3:
-In file included from stan_files/linRegUnConstrXU.hpp:18:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/rstaninc.hpp:3:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/stan_fit.hpp:34:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/mat.hpp:12:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/prim/mat.hpp:96:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/prim/mat/fun/csr_extract_u.hpp:6:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/Sparse:26:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/SparseCore:66:
-/Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
-    #pragma clang diagnostic pop
-                             ^
-In file included from stan_files/linRegUnConstrXU.cc:3:
-In file included from stan_files/linRegUnConstrXU.hpp:18:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/rstaninc.hpp:3:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/stan_fit.hpp:34:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/mat.hpp:12:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/prim/mat.hpp:96:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/prim/mat/fun/csr_extract_u.hpp:6:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/Sparse:27:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/OrderingMethods:71:
-/Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
-    #pragma clang diagnostic pop
-                             ^
-In file included from stan_files/linRegUnConstrXU.cc:3:
-In file included from stan_files/linRegUnConstrXU.hpp:18:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/rstaninc.hpp:3:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/stan_fit.hpp:34:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/mat.hpp:12:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/prim/mat.hpp:96:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/prim/mat/fun/csr_extract_u.hpp:6:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/Sparse:29:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/SparseCholesky:43:
-/Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
-    #pragma clang diagnostic pop
-                             ^
-In file included from stan_files/linRegUnConstrXU.cc:3:
-In file included from stan_files/linRegUnConstrXU.hpp:18:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/rstaninc.hpp:3:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/stan_fit.hpp:34:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/mat.hpp:12:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/prim/mat.hpp:96:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/prim/mat/fun/csr_extract_u.hpp:6:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/Sparse:32:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/SparseQR:35:
-/Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
-    #pragma clang diagnostic pop
-                             ^
-In file included from stan_files/linRegUnConstrXU.cc:3:
-In file included from stan_files/linRegUnConstrXU.hpp:18:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/rstaninc.hpp:3:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/stan_fit.hpp:34:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/mat.hpp:12:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/prim/mat.hpp:96:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/prim/mat/fun/csr_extract_u.hpp:6:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/Sparse:33:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/IterativeLinearSolvers:46:
-/Users/max/github/forks/testthat/revdep/library.noindex/BMSC/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
-    #pragma clang diagnostic pop
-                             ^
-In file included from stan_files/linRegXU.cc:3:
-In file included from stan_files/linRegXU.hpp:18:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/rstaninc.hpp:3:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/stan_fit.hpp:34:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/mat.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/core.hpp:44:
-/Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/core/set_zero_all_adjoints.hpp:14:13: warning: unused function 'set_zero_all_adjoints' [-Wunused-function]
-static void set_zero_all_adjoints() {
-            ^
-In file included from stan_files/linRegXU.cc:3:
-In file included from stan_files/linRegXU.hpp:18:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/rstaninc.hpp:3:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/stan_fit.hpp:34:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/mat.hpp:12:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/prim/mat.hpp:70:
-/Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/prim/mat/fun/autocorrelation.hpp:18:8: warning: function 'fft_next_good_size' is not needed and will not be emitted [-Wunneeded-internal-declaration]
-size_t fft_next_good_size(size_t N) {
-       ^
-In file included from stan_files/linRegUnConstrXU.cc:3:
-In file included from stan_files/linRegUnConstrXU.hpp:18:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/rstaninc.hpp:3:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/stan_fit.hpp:34:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/mat.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/core.hpp:44:
-/Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/core/set_zero_all_adjoints.hpp:14:13: warning: unused function 'set_zero_all_adjoints' [-Wunused-function]
-static void set_zero_all_adjoints() {
-            ^
-In file included from stan_files/linRegUnConstrXU.cc:3:
-In file included from stan_files/linRegUnConstrXU.hpp:18:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/rstaninc.hpp:3:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/rstan/include/rstan/stan_fit.hpp:34:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/rev/mat.hpp:12:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/prim/mat.hpp:70:
-/Users/max/github/forks/testthat/revdep/library.noindex/BMSC/StanHeaders/include/stan/math/prim/mat/fun/autocorrelation.hpp:18:8: warning: function 'fft_next_good_size' is not needed and will not be emitted [-Wunneeded-internal-declaration]
-size_t fft_next_good_size(size_t N) {
-       ^
-16 warnings generated.
-16 warnings generated.
-/usr/local/clang6/bin/clang++ -std=gnu++14 -dynamiclib -Wl,-headerpad_max_install_names -undefined dynamic_lookup -single_module -multiply_defined suppress -L/Library/Frameworks/R.framework/Resources/lib -L/usr/local/lib -o BMSC.so stan_files/linReg.o stan_files/linRegHorseHoe.o stan_files/linRegHorseHoeUnConstr.o stan_files/linRegUnConstr.o stan_files/linRegXU.o stan_files/linRegUnConstrXU.o init.o -F/Library/Frameworks/R.framework/.. -framework R -Wl,-framework -Wl,CoreFoundation
-ld: warning: text-based stub file /System/Library/Frameworks//CoreFoundation.framework/CoreFoundation.tbd and library file /System/Library/Frameworks//CoreFoundation.framework/CoreFoundation are out of sync. Falling back to library file for linking.
-rm stan_files/linRegXU.cc stan_files/linRegUnConstr.cc stan_files/linRegHorseHoe.cc stan_files/linRegUnConstrXU.cc stan_files/linRegHorseHoeUnConstr.cc stan_files/linReg.cc
-installing to /Users/max/github/forks/testthat/revdep/checks.noindex/BMSC/old/BMSC.Rcheck/BMSC/libs
-** R
-** inst
-** byte-compile and prepare package for lazy loading
-** help
-*** installing help indices
-** building package indices
-** testing if installed package can be loaded
-* DONE (BMSC)
-
-```
 # BridgeDbR
 
 <details>
@@ -2240,7 +350,7 @@ Run `revdep_details(,"BridgeDbR")` for more info
 *   checking whether package ‘BridgeDbR’ can be installed ... ERROR
     ```
     Installation failed.
-    See ‘/Users/max/github/forks/testthat/revdep/checks.noindex/BridgeDbR/new/BridgeDbR.Rcheck/00install.out’ for details.
+    See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/BridgeDbR/new/BridgeDbR.Rcheck/00install.out’ for details.
     ```
 
 ## Installation
@@ -2255,13 +365,13 @@ Run `revdep_details(,"BridgeDbR")` for more info
 Error: package or namespace load failed for ‘rJava’:
  .onLoad failed in loadNamespace() for 'rJava', details:
   call: dyn.load(file, DLLpath = DLLpath, ...)
-  error: unable to load shared object '/Users/max/github/forks/testthat/revdep/library.noindex/BridgeDbR/rJava/libs/rJava.so':
-  dlopen(/Users/max/github/forks/testthat/revdep/library.noindex/BridgeDbR/rJava/libs/rJava.so, 6): Library not loaded: /Library/Java/JavaVirtualMachines/jdk-11.0.1.jdk/Contents/Home/lib/server/libjvm.dylib
-  Referenced from: /Users/max/github/forks/testthat/revdep/library.noindex/BridgeDbR/rJava/libs/rJava.so
+  error: unable to load shared object '/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/BridgeDbR/rJava/libs/rJava.so':
+  dlopen(/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/BridgeDbR/rJava/libs/rJava.so, 6): Library not loaded: /Library/Java/JavaVirtualMachines/jdk-11.0.1.jdk/Contents/Home/lib/server/libjvm.dylib
+  Referenced from: /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/BridgeDbR/rJava/libs/rJava.so
   Reason: image not found
 Error : package ‘rJava’ could not be loaded
 ERROR: lazy loading failed for package ‘BridgeDbR’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/BridgeDbR/new/BridgeDbR.Rcheck/BridgeDbR’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/BridgeDbR/new/BridgeDbR.Rcheck/BridgeDbR’
 
 ```
 ### CRAN
@@ -2274,13 +384,13 @@ ERROR: lazy loading failed for package ‘BridgeDbR’
 Error: package or namespace load failed for ‘rJava’:
  .onLoad failed in loadNamespace() for 'rJava', details:
   call: dyn.load(file, DLLpath = DLLpath, ...)
-  error: unable to load shared object '/Users/max/github/forks/testthat/revdep/library.noindex/BridgeDbR/rJava/libs/rJava.so':
-  dlopen(/Users/max/github/forks/testthat/revdep/library.noindex/BridgeDbR/rJava/libs/rJava.so, 6): Library not loaded: /Library/Java/JavaVirtualMachines/jdk-11.0.1.jdk/Contents/Home/lib/server/libjvm.dylib
-  Referenced from: /Users/max/github/forks/testthat/revdep/library.noindex/BridgeDbR/rJava/libs/rJava.so
+  error: unable to load shared object '/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/BridgeDbR/rJava/libs/rJava.so':
+  dlopen(/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/BridgeDbR/rJava/libs/rJava.so, 6): Library not loaded: /Library/Java/JavaVirtualMachines/jdk-11.0.1.jdk/Contents/Home/lib/server/libjvm.dylib
+  Referenced from: /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/BridgeDbR/rJava/libs/rJava.so
   Reason: image not found
 Error : package ‘rJava’ could not be loaded
 ERROR: lazy loading failed for package ‘BridgeDbR’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/BridgeDbR/old/BridgeDbR.Rcheck/BridgeDbR’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/BridgeDbR/old/BridgeDbR.Rcheck/BridgeDbR’
 
 ```
 # CAMTHC
@@ -2302,7 +412,7 @@ Run `revdep_details(,"CAMTHC")` for more info
 *   checking whether package ‘CAMTHC’ can be installed ... ERROR
     ```
     Installation failed.
-    See ‘/Users/max/github/forks/testthat/revdep/checks.noindex/CAMTHC/new/CAMTHC.Rcheck/00install.out’ for details.
+    See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/CAMTHC/new/CAMTHC.Rcheck/00install.out’ for details.
     ```
 
 ## Installation
@@ -2317,12 +427,12 @@ Run `revdep_details(,"CAMTHC")` for more info
 ** byte-compile and prepare package for lazy loading
 Error : .onLoad failed in loadNamespace() for 'rJava', details:
   call: dyn.load(file, DLLpath = DLLpath, ...)
-  error: unable to load shared object '/Users/max/github/forks/testthat/revdep/library.noindex/CAMTHC/rJava/libs/rJava.so':
-  dlopen(/Users/max/github/forks/testthat/revdep/library.noindex/CAMTHC/rJava/libs/rJava.so, 6): Library not loaded: /Library/Java/JavaVirtualMachines/jdk-11.0.1.jdk/Contents/Home/lib/server/libjvm.dylib
-  Referenced from: /Users/max/github/forks/testthat/revdep/library.noindex/CAMTHC/rJava/libs/rJava.so
+  error: unable to load shared object '/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/CAMTHC/rJava/libs/rJava.so':
+  dlopen(/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/CAMTHC/rJava/libs/rJava.so, 6): Library not loaded: /Library/Java/JavaVirtualMachines/jdk-11.0.1.jdk/Contents/Home/lib/server/libjvm.dylib
+  Referenced from: /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/CAMTHC/rJava/libs/rJava.so
   Reason: image not found
 ERROR: lazy loading failed for package ‘CAMTHC’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/CAMTHC/new/CAMTHC.Rcheck/CAMTHC’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/CAMTHC/new/CAMTHC.Rcheck/CAMTHC’
 
 ```
 ### CRAN
@@ -2335,12 +445,12 @@ ERROR: lazy loading failed for package ‘CAMTHC’
 ** byte-compile and prepare package for lazy loading
 Error : .onLoad failed in loadNamespace() for 'rJava', details:
   call: dyn.load(file, DLLpath = DLLpath, ...)
-  error: unable to load shared object '/Users/max/github/forks/testthat/revdep/library.noindex/CAMTHC/rJava/libs/rJava.so':
-  dlopen(/Users/max/github/forks/testthat/revdep/library.noindex/CAMTHC/rJava/libs/rJava.so, 6): Library not loaded: /Library/Java/JavaVirtualMachines/jdk-11.0.1.jdk/Contents/Home/lib/server/libjvm.dylib
-  Referenced from: /Users/max/github/forks/testthat/revdep/library.noindex/CAMTHC/rJava/libs/rJava.so
+  error: unable to load shared object '/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/CAMTHC/rJava/libs/rJava.so':
+  dlopen(/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/CAMTHC/rJava/libs/rJava.so, 6): Library not loaded: /Library/Java/JavaVirtualMachines/jdk-11.0.1.jdk/Contents/Home/lib/server/libjvm.dylib
+  Referenced from: /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/CAMTHC/rJava/libs/rJava.so
   Reason: image not found
 ERROR: lazy loading failed for package ‘CAMTHC’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/CAMTHC/old/CAMTHC.Rcheck/CAMTHC’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/CAMTHC/old/CAMTHC.Rcheck/CAMTHC’
 
 ```
 # canceR
@@ -2380,7 +490,7 @@ Run `revdep_details(,"catSurv")` for more info
 *   checking whether package ‘catSurv’ can be installed ... ERROR
     ```
     Installation failed.
-    See ‘/Users/max/github/forks/testthat/revdep/checks.noindex/catSurv/new/catSurv.Rcheck/00install.out’ for details.
+    See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/catSurv/new/catSurv.Rcheck/00install.out’ for details.
     ```
 
 ## Installation
@@ -2391,24 +501,7 @@ Run `revdep_details(,"catSurv")` for more info
 * installing *source* package ‘catSurv’ ...
 ** package ‘catSurv’ successfully unpacked and MD5 sums checked
 ** libs
-/usr/local/clang6/bin/clang++ -std=gnu++11 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/max/github/forks/testthat/revdep/library.noindex/catSurv/BH/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/catSurv/Rcpp/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/catSurv/RcppArmadillo/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/catSurv/RcppGSL/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/catSurv/RcppParallel/include" -I/usr/local/include   -fPIC  -Wall -g -O2 -c Cat.cpp -o Cat.o
-/usr/local/clang6/bin/clang++ -std=gnu++11 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/max/github/forks/testthat/revdep/library.noindex/catSurv/BH/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/catSurv/Rcpp/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/catSurv/RcppArmadillo/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/catSurv/RcppGSL/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/catSurv/RcppParallel/include" -I/usr/local/include   -fPIC  -Wall -g -O2 -c CheckRules.cpp -o CheckRules.o
-/usr/local/clang6/bin/clang++ -std=gnu++11 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/max/github/forks/testthat/revdep/library.noindex/catSurv/BH/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/catSurv/Rcpp/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/catSurv/RcppArmadillo/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/catSurv/RcppGSL/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/catSurv/RcppParallel/include" -I/usr/local/include   -fPIC  -Wall -g -O2 -c EAPEstimator.cpp -o EAPEstimator.o
-/usr/local/clang6/bin/clang++ -std=gnu++11 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/max/github/forks/testthat/revdep/library.noindex/catSurv/BH/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/catSurv/Rcpp/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/catSurv/RcppArmadillo/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/catSurv/RcppGSL/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/catSurv/RcppParallel/include" -I/usr/local/include   -fPIC  -Wall -g -O2 -c EPVSelector.cpp -o EPVSelector.o
-In file included from EAPEstimator.cpp:1:
-In file included from ./EAPEstimator.h:2:
-./Estimator.h:4:10: fatal error: 'gsl/gsl_math.h' file not found
-#include <gsl/gsl_math.h>
-         ^~~~~~~~~~~~~~~~
-1 error generated.
-make: *** [EAPEstimator.o] Error 1
-make: *** Waiting for unfinished jobs....
-In file included from EPVSelector.cpp:1:
-In file included from ./EPVSelector.h:2:
-In file included from ./Selector.h:5:
-./Estimator.h:4:10: fatal error: 'gsl/gsl_math.h' file not found
-#include <gsl/gsl_math.h>
-         ^~~~~~~~~~~~~~~~
+clang++ -std=gnu++11 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/catSurv/BH/include" -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/catSurv/Rcpp/include" -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/catSurv/RcppArmadillo/include" -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/catSurv/RcppGSL/include" -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/catSurv/RcppParallel/include" -I/usr/local/include   -fPIC  -Wall -g -O2 -c Cat.cpp -o Cat.o
 In file included from Cat.cpp:4:
 In file included from ./Cat.h:6:
 ./Estimator.h:4:10: fatal error: 'gsl/gsl_math.h' file not found
@@ -2416,10 +509,8 @@ In file included from ./Cat.h:6:
          ^~~~~~~~~~~~~~~~
 1 error generated.
 make: *** [Cat.o] Error 1
-1 error generated.
-make: *** [EPVSelector.o] Error 1
 ERROR: compilation failed for package ‘catSurv’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/catSurv/new/catSurv.Rcheck/catSurv’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/catSurv/new/catSurv.Rcheck/catSurv’
 
 ```
 ### CRAN
@@ -2428,24 +519,7 @@ ERROR: compilation failed for package ‘catSurv’
 * installing *source* package ‘catSurv’ ...
 ** package ‘catSurv’ successfully unpacked and MD5 sums checked
 ** libs
-/usr/local/clang6/bin/clang++ -std=gnu++11 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/max/github/forks/testthat/revdep/library.noindex/catSurv/BH/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/catSurv/Rcpp/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/catSurv/RcppArmadillo/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/catSurv/RcppGSL/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/catSurv/RcppParallel/include" -I/usr/local/include   -fPIC  -Wall -g -O2 -c Cat.cpp -o Cat.o
-/usr/local/clang6/bin/clang++ -std=gnu++11 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/max/github/forks/testthat/revdep/library.noindex/catSurv/BH/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/catSurv/Rcpp/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/catSurv/RcppArmadillo/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/catSurv/RcppGSL/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/catSurv/RcppParallel/include" -I/usr/local/include   -fPIC  -Wall -g -O2 -c CheckRules.cpp -o CheckRules.o
-/usr/local/clang6/bin/clang++ -std=gnu++11 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/max/github/forks/testthat/revdep/library.noindex/catSurv/BH/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/catSurv/Rcpp/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/catSurv/RcppArmadillo/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/catSurv/RcppGSL/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/catSurv/RcppParallel/include" -I/usr/local/include   -fPIC  -Wall -g -O2 -c EAPEstimator.cpp -o EAPEstimator.o
-/usr/local/clang6/bin/clang++ -std=gnu++11 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/max/github/forks/testthat/revdep/library.noindex/catSurv/BH/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/catSurv/Rcpp/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/catSurv/RcppArmadillo/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/catSurv/RcppGSL/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/catSurv/RcppParallel/include" -I/usr/local/include   -fPIC  -Wall -g -O2 -c EPVSelector.cpp -o EPVSelector.o
-In file included from EAPEstimator.cpp:1:
-In file included from ./EAPEstimator.h:2:
-./Estimator.h:4:10: fatal error: 'gsl/gsl_math.h' file not found
-#include <gsl/gsl_math.h>
-         ^~~~~~~~~~~~~~~~
-1 error generated.
-make: *** [EAPEstimator.o] Error 1
-make: *** Waiting for unfinished jobs....
-In file included from EPVSelector.cpp:1:
-In file included from ./EPVSelector.h:2:
-In file included from ./Selector.h:5:
-./Estimator.h:4:10: fatal error: 'gsl/gsl_math.h' file not found
-#include <gsl/gsl_math.h>
-         ^~~~~~~~~~~~~~~~
+clang++ -std=gnu++11 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/catSurv/BH/include" -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/catSurv/Rcpp/include" -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/catSurv/RcppArmadillo/include" -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/catSurv/RcppGSL/include" -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/catSurv/RcppParallel/include" -I/usr/local/include   -fPIC  -Wall -g -O2 -c Cat.cpp -o Cat.o
 In file included from Cat.cpp:4:
 In file included from ./Cat.h:6:
 ./Estimator.h:4:10: fatal error: 'gsl/gsl_math.h' file not found
@@ -2453,10 +527,8 @@ In file included from ./Cat.h:6:
          ^~~~~~~~~~~~~~~~
 1 error generated.
 make: *** [Cat.o] Error 1
-1 error generated.
-make: *** [EPVSelector.o] Error 1
 ERROR: compilation failed for package ‘catSurv’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/catSurv/old/catSurv.Rcheck/catSurv’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/catSurv/old/catSurv.Rcheck/catSurv’
 
 ```
 # ChIPpeakAnno
@@ -2465,8 +537,8 @@ ERROR: compilation failed for package ‘catSurv’
 
 * Version: 
 * Source code: ???
-* URL: https://github.com/r-lib/revdepcheck#readme
-* BugReports: https://github.com/r-lib/revdepcheck/issues
+* URL: http://testthat.r-lib.org, https://github.com/r-lib/testthat
+* BugReports: https://github.com/r-lib/testthat/issues
 * Number of recursive dependencies: 0
 
 Run `revdep_details(,"")` for more info
@@ -2483,9 +555,8 @@ Run `revdep_details(,"")` for more info
 
 Packages which are only available in source form, and may need
   compilation of C/C++/Fortran: ‘BSgenome.Celegans.UCSC.ce10’
-  ‘BSgenome.Drerio.UCSC.danRer7’ ‘BSgenome.Ecoli.NCBI.20080805’
-  ‘BSgenome.Hsapiens.UCSC.hg19’
-installing the source packages ‘EnsDb.Hsapiens.v75’, ‘EnsDb.Hsapiens.v79’, ‘GO.db’, ‘org.Ce.eg.db’, ‘org.Hs.eg.db’, ‘reactome.db’, ‘TxDb.Hsapiens.UCSC.hg19.knownGene’, ‘TxDb.Hsapiens.UCSC.hg38.knownGene’
+  ‘BSgenome.Ecoli.NCBI.20080805’ ‘BSgenome.Hsapiens.UCSC.hg19’
+installing the source packages ‘BSgenome.Drerio.UCSC.danRer7’, ‘EnsDb.Hsapiens.v75’, ‘EnsDb.Hsapiens.v79’, ‘GO.db’, ‘org.Ce.eg.db’, ‘org.Hs.eg.db’
 
 
 
@@ -2498,9 +569,8 @@ installing the source packages ‘EnsDb.Hsapiens.v75’, ‘EnsDb.Hsapiens.v79�
 
 Packages which are only available in source form, and may need
   compilation of C/C++/Fortran: ‘BSgenome.Celegans.UCSC.ce10’
-  ‘BSgenome.Drerio.UCSC.danRer7’ ‘BSgenome.Ecoli.NCBI.20080805’
-  ‘BSgenome.Hsapiens.UCSC.hg19’
-installing the source packages ‘EnsDb.Hsapiens.v75’, ‘EnsDb.Hsapiens.v79’, ‘GO.db’, ‘org.Ce.eg.db’, ‘org.Hs.eg.db’, ‘reactome.db’, ‘TxDb.Hsapiens.UCSC.hg19.knownGene’, ‘TxDb.Hsapiens.UCSC.hg38.knownGene’
+  ‘BSgenome.Ecoli.NCBI.20080805’ ‘BSgenome.Hsapiens.UCSC.hg19’
+installing the source packages ‘BSgenome.Drerio.UCSC.danRer7’, ‘EnsDb.Hsapiens.v75’, ‘EnsDb.Hsapiens.v79’, ‘GO.db’, ‘org.Ce.eg.db’, ‘org.Hs.eg.db’
 
 
 
@@ -2509,10 +579,68 @@ installing the source packages ‘EnsDb.Hsapiens.v75’, ‘EnsDb.Hsapiens.v79�
 
 <details>
 
+* Version: 1.18.0
+* Source code: https://github.com/cran/ChIPseeker
+* URL: https://guangchuangyu.github.io/software/ChIPseeker
+* BugReports: https://github.com/GuangchuangYu/ChIPseeker/issues
+* Date/Publication: 2018-10-30
+* Number of recursive dependencies: 145
+
+Run `revdep_details(,"ChIPseeker")` for more info
+
+</details>
+
+## In both
+
+*   checking whether package ‘ChIPseeker’ can be installed ... ERROR
+    ```
+    Installation failed.
+    See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/ChIPseeker/new/ChIPseeker.Rcheck/00install.out’ for details.
+    ```
+
+*   checking package dependencies ... NOTE
+    ```
+    Package suggested but not available for checking: ‘org.Hs.eg.db’
+    ```
+
+## Installation
+
+### Devel
+
+```
+* installing *source* package ‘ChIPseeker’ ...
+** R
+** data
+** inst
+** byte-compile and prepare package for lazy loading
+Error in loadNamespace(j <- i[[1L]], c(lib.loc, .libPaths()), versionCheck = vI[[j]]) : 
+  there is no package called ‘GO.db’
+ERROR: lazy loading failed for package ‘ChIPseeker’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/ChIPseeker/new/ChIPseeker.Rcheck/ChIPseeker’
+
+```
+### CRAN
+
+```
+* installing *source* package ‘ChIPseeker’ ...
+** R
+** data
+** inst
+** byte-compile and prepare package for lazy loading
+Error in loadNamespace(j <- i[[1L]], c(lib.loc, .libPaths()), versionCheck = vI[[j]]) : 
+  there is no package called ‘GO.db’
+ERROR: lazy loading failed for package ‘ChIPseeker’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/ChIPseeker/old/ChIPseeker.Rcheck/ChIPseeker’
+
+```
+# chromstaR
+
+<details>
+
 * Version: 
 * Source code: ???
-* URL: https://github.com/r-lib/revdepcheck#readme
-* BugReports: https://github.com/r-lib/revdepcheck/issues
+* URL: http://testthat.r-lib.org, https://github.com/r-lib/testthat
+* BugReports: https://github.com/r-lib/testthat/issues
 * Number of recursive dependencies: 0
 
 Run `revdep_details(,"")` for more info
@@ -2527,7 +655,7 @@ Run `revdep_details(,"")` for more info
 
 
 
-installing the source packages ‘GO.db’, ‘org.Hs.eg.db’, ‘reactome.db’, ‘TxDb.Hsapiens.UCSC.hg19.knownGene’
+installing the source package ‘chromstaRData’
 
 
 
@@ -2538,78 +666,9 @@ installing the source packages ‘GO.db’, ‘org.Hs.eg.db’, ‘reactome.db�
 
 
 
-installing the source packages ‘GO.db’, ‘org.Hs.eg.db’, ‘reactome.db’, ‘TxDb.Hsapiens.UCSC.hg19.knownGene’
+installing the source package ‘chromstaRData’
 
 
-
-```
-# chromstaR
-
-<details>
-
-* Version: 1.8.1
-* Source code: https://github.com/cran/chromstaR
-* URL: https://github.com/ataudt/chromstaR
-* BugReports: https://github.com/ataudt/chromstaR/issues
-* Date/Publication: 2019-01-04
-* Number of recursive dependencies: 100
-
-Run `revdep_details(,"chromstaR")` for more info
-
-</details>
-
-## In both
-
-*   checking whether package ‘chromstaR’ can be installed ... ERROR
-    ```
-    Installation failed.
-    See ‘/Users/max/github/forks/testthat/revdep/checks.noindex/chromstaR/new/chromstaR.Rcheck/00install.out’ for details.
-    ```
-
-## Installation
-
-### Devel
-
-```
-* installing *source* package ‘chromstaR’ ...
-** libs
-clang++  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I/usr/local/include  -fopenmp -fPIC  -Wall -g -O2  -c R_interface.cpp -o R_interface.o
-clang++  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I/usr/local/include  -fopenmp -fPIC  -Wall -g -O2  -c densities.cpp -o densities.o
-clang++  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I/usr/local/include  -fopenmp -fPIC  -Wall -g -O2  -c init.cpp -o init.o
-clang++  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I/usr/local/include  -fopenmp -fPIC  -Wall -g -O2  -c scalehmm.cpp -o scalehmm.o
-clang: error: unsupported option '-fopenmp'
-clang: error: unsupported option '-fopenmp'clangclang: error: unsupported option '-fopenmp': error: 
-unsupported option '-fopenmp'
-
-make: *** [init.o] Error 1
-make: *** Waiting for unfinished jobs....
-make: *** [densities.o] Error 1
-make: *** [scalehmm.o] Error 1
-make: *** [R_interface.o] Error 1
-ERROR: compilation failed for package ‘chromstaR’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/chromstaR/new/chromstaR.Rcheck/chromstaR’
-
-```
-### CRAN
-
-```
-* installing *source* package ‘chromstaR’ ...
-** libs
-clang++  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I/usr/local/include  -fopenmp -fPIC  -Wall -g -O2  -c R_interface.cpp -o R_interface.o
-clang++  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I/usr/local/include  -fopenmp -fPIC  -Wall -g -O2  -c densities.cpp -o densities.o
-clang++  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I/usr/local/include  -fopenmp -fPIC  -Wall -g -O2  -c init.cpp -o init.o
-clang++  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I/usr/local/include  -fopenmp -fPIC  -Wall -g -O2  -c scalehmm.cpp -o scalehmm.o
-clang: error: unsupported option '-fopenmp'
-clang: error: unsupported option '-fopenmp'clang: error: unsupported option '-fopenmp'clang
-: error: unsupported option '-fopenmp'
-
-make: *** [scalehmm.o] Error 1
-make: *** Waiting for unfinished jobs....
-make: *** [R_interface.o] Error 1
-make: *** [init.o] Error 1
-make: *** [densities.o] Error 1
-ERROR: compilation failed for package ‘chromstaR’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/chromstaR/old/chromstaR.Rcheck/chromstaR’
 
 ```
 # CINdex
@@ -2618,8 +677,8 @@ ERROR: compilation failed for package ‘chromstaR’
 
 * Version: 
 * Source code: ???
-* URL: https://github.com/r-lib/revdepcheck#readme
-* BugReports: https://github.com/r-lib/revdepcheck/issues
+* URL: http://testthat.r-lib.org, https://github.com/r-lib/testthat
+* BugReports: https://github.com/r-lib/testthat/issues
 * Number of recursive dependencies: 0
 
 Run `revdep_details(,"")` for more info
@@ -2634,7 +693,7 @@ Run `revdep_details(,"")` for more info
 
 
 
-installing the source packages ‘GO.db’, ‘Homo.sapiens’, ‘org.Hs.eg.db’, ‘pd.genomewidesnp.6’, ‘reactome.db’, ‘TxDb.Hsapiens.UCSC.hg18.knownGene’, ‘TxDb.Hsapiens.UCSC.hg19.knownGene’
+installing the source packages ‘GO.db’, ‘Homo.sapiens’, ‘org.Hs.eg.db’, ‘pd.genomewidesnp.6’
 
 
 
@@ -2645,85 +704,9 @@ installing the source packages ‘GO.db’, ‘Homo.sapiens’, ‘org.Hs.eg.db�
 
 
 
-installing the source packages ‘GO.db’, ‘Homo.sapiens’, ‘org.Hs.eg.db’, ‘pd.genomewidesnp.6’, ‘reactome.db’, ‘TxDb.Hsapiens.UCSC.hg18.knownGene’, ‘TxDb.Hsapiens.UCSC.hg19.knownGene’
+installing the source packages ‘GO.db’, ‘Homo.sapiens’, ‘org.Hs.eg.db’, ‘pd.genomewidesnp.6’
 
 
-
-```
-# cld3
-
-<details>
-
-* Version: 1.1
-* Source code: https://github.com/cran/cld3
-* URL: https://github.com/ropensci/cld3 (devel) https://github.com/google/cld3 (upstream)
-* Date/Publication: 2018-06-28 19:48:06 UTC
-* Number of recursive dependencies: 12
-
-Run `revdep_details(,"cld3")` for more info
-
-</details>
-
-## In both
-
-*   checking whether package ‘cld3’ can be installed ... ERROR
-    ```
-    Installation failed.
-    See ‘/Users/max/github/forks/testthat/revdep/checks.noindex/cld3/new/cld3.Rcheck/00install.out’ for details.
-    ```
-
-## Installation
-
-### Devel
-
-```
-* installing *source* package ‘cld3’ ...
-** package ‘cld3’ successfully unpacked and MD5 sums checked
-Package protobuf was not found in the pkg-config search path.
-Perhaps you should add the directory containing `protobuf.pc'
-to the PKG_CONFIG_PATH environment variable
-No package 'protobuf' found
-Using PKG_CFLAGS=-I/usr/local/opt/protobuf/include
-Using PKG_LIBS=-L/usr/local/opt/protobuf/lib -lprotobuf
-------------------------- ANTICONF ERROR ---------------------------
-Configuration failed because protobuf was not found. Try installing:
- * deb: libprotobuf-dev (Debian, Ubuntu, etc)
- * rpm: protobuf-devel (Fedora, EPEL)
- * csw: protobuf_dev (Solaris)
- * brew: protobuf (OSX)
-If protobuf is already installed, check that 'pkg-config' is in your
-PATH and PKG_CONFIG_PATH contains a protobuf.pc file. If pkg-config
-is unavailable you can set INCLUDE_DIR and LIB_DIR manually via:
-R CMD INSTALL --configure-vars='INCLUDE_DIR=... LIB_DIR=...'
---------------------------------------------------------------------
-ERROR: configuration failed for package ‘cld3’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/cld3/new/cld3.Rcheck/cld3’
-
-```
-### CRAN
-
-```
-* installing *source* package ‘cld3’ ...
-** package ‘cld3’ successfully unpacked and MD5 sums checked
-Package protobuf was not found in the pkg-config search path.
-Perhaps you should add the directory containing `protobuf.pc'
-to the PKG_CONFIG_PATH environment variable
-No package 'protobuf' found
-Using PKG_CFLAGS=-I/usr/local/opt/protobuf/include
-Using PKG_LIBS=-L/usr/local/opt/protobuf/lib -lprotobuf
-------------------------- ANTICONF ERROR ---------------------------
-Configuration failed because protobuf was not found. Try installing:
- * deb: libprotobuf-dev (Debian, Ubuntu, etc)
- * rpm: protobuf-devel (Fedora, EPEL)
- * csw: protobuf_dev (Solaris)
- * brew: protobuf (OSX)
-If protobuf is already installed, check that 'pkg-config' is in your
-PATH and PKG_CONFIG_PATH contains a protobuf.pc file. If pkg-config
-is unavailable you can set INCLUDE_DIR and LIB_DIR manually via:
-R CMD INSTALL --configure-vars='INCLUDE_DIR=... LIB_DIR=...'
---------------------------------------------------------------------
-ERROR: configuration failed for package ‘cld3’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/cld3/old/cld3.Rcheck/cld3’
 
 ```
 # clusterExperiment
@@ -2780,44 +763,6 @@ Run `revdep_details(,"clusterExperiment")` for more info
     Packages unavailable to check Rd xrefs: ‘ConsensusClusterPlus’, ‘scRNAseq’
     ```
 
-# clusterProfiler
-
-<details>
-
-* Version: 
-* Source code: ???
-* URL: https://github.com/r-lib/revdepcheck#readme
-* BugReports: https://github.com/r-lib/revdepcheck/issues
-* Number of recursive dependencies: 0
-
-Run `revdep_details(,"")` for more info
-
-</details>
-
-## Error before installation
-
-### Devel
-
-```
-
-
-
-installing the source packages ‘GO.db’, ‘org.Hs.eg.db’, ‘reactome.db’
-
-
-
-```
-### CRAN
-
-```
-
-
-
-installing the source packages ‘GO.db’, ‘org.Hs.eg.db’, ‘reactome.db’
-
-
-
-```
 # coga
 
 <details>
@@ -2838,7 +783,7 @@ Run `revdep_details(,"coga")` for more info
 *   checking whether package ‘coga’ can be installed ... ERROR
     ```
     Installation failed.
-    See ‘/Users/max/github/forks/testthat/revdep/checks.noindex/coga/new/coga.Rcheck/00install.out’ for details.
+    See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/coga/new/coga.Rcheck/00install.out’ for details.
     ```
 
 ## Installation
@@ -2851,7 +796,7 @@ Run `revdep_details(,"coga")` for more info
 checking for gsl-config... no
 configure: error: gsl-config not found, is GSL installed?
 ERROR: configuration failed for package ‘coga’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/coga/new/coga.Rcheck/coga’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/coga/new/coga.Rcheck/coga’
 
 ```
 ### CRAN
@@ -2862,7 +807,7 @@ ERROR: configuration failed for package ‘coga’
 checking for gsl-config... no
 configure: error: gsl-config not found, is GSL installed?
 ERROR: configuration failed for package ‘coga’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/coga/old/coga.Rcheck/coga’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/coga/old/coga.Rcheck/coga’
 
 ```
 # CollapsABEL
@@ -2885,7 +830,7 @@ Run `revdep_details(,"CollapsABEL")` for more info
 *   checking whether package ‘CollapsABEL’ can be installed ... ERROR
     ```
     Installation failed.
-    See ‘/Users/max/github/forks/testthat/revdep/checks.noindex/CollapsABEL/new/CollapsABEL.Rcheck/00install.out’ for details.
+    See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/CollapsABEL/new/CollapsABEL.Rcheck/00install.out’ for details.
     ```
 
 ## Installation
@@ -2900,13 +845,13 @@ Run `revdep_details(,"CollapsABEL")` for more info
 Error: package or namespace load failed for ‘rJava’:
  .onLoad failed in loadNamespace() for 'rJava', details:
   call: dyn.load(file, DLLpath = DLLpath, ...)
-  error: unable to load shared object '/Users/max/github/forks/testthat/revdep/library.noindex/CollapsABEL/rJava/libs/rJava.so':
-  dlopen(/Users/max/github/forks/testthat/revdep/library.noindex/CollapsABEL/rJava/libs/rJava.so, 6): Library not loaded: /Library/Java/JavaVirtualMachines/jdk-11.0.1.jdk/Contents/Home/lib/server/libjvm.dylib
-  Referenced from: /Users/max/github/forks/testthat/revdep/library.noindex/CollapsABEL/rJava/libs/rJava.so
+  error: unable to load shared object '/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/CollapsABEL/rJava/libs/rJava.so':
+  dlopen(/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/CollapsABEL/rJava/libs/rJava.so, 6): Library not loaded: /Library/Java/JavaVirtualMachines/jdk-11.0.1.jdk/Contents/Home/lib/server/libjvm.dylib
+  Referenced from: /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/CollapsABEL/rJava/libs/rJava.so
   Reason: image not found
 Error : package ‘rJava’ could not be loaded
 ERROR: lazy loading failed for package ‘CollapsABEL’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/CollapsABEL/new/CollapsABEL.Rcheck/CollapsABEL’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/CollapsABEL/new/CollapsABEL.Rcheck/CollapsABEL’
 
 ```
 ### CRAN
@@ -2919,13 +864,13 @@ ERROR: lazy loading failed for package ‘CollapsABEL’
 Error: package or namespace load failed for ‘rJava’:
  .onLoad failed in loadNamespace() for 'rJava', details:
   call: dyn.load(file, DLLpath = DLLpath, ...)
-  error: unable to load shared object '/Users/max/github/forks/testthat/revdep/library.noindex/CollapsABEL/rJava/libs/rJava.so':
-  dlopen(/Users/max/github/forks/testthat/revdep/library.noindex/CollapsABEL/rJava/libs/rJava.so, 6): Library not loaded: /Library/Java/JavaVirtualMachines/jdk-11.0.1.jdk/Contents/Home/lib/server/libjvm.dylib
-  Referenced from: /Users/max/github/forks/testthat/revdep/library.noindex/CollapsABEL/rJava/libs/rJava.so
+  error: unable to load shared object '/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/CollapsABEL/rJava/libs/rJava.so':
+  dlopen(/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/CollapsABEL/rJava/libs/rJava.so, 6): Library not loaded: /Library/Java/JavaVirtualMachines/jdk-11.0.1.jdk/Contents/Home/lib/server/libjvm.dylib
+  Referenced from: /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/CollapsABEL/rJava/libs/rJava.so
   Reason: image not found
 Error : package ‘rJava’ could not be loaded
 ERROR: lazy loading failed for package ‘CollapsABEL’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/CollapsABEL/old/CollapsABEL.Rcheck/CollapsABEL’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/CollapsABEL/old/CollapsABEL.Rcheck/CollapsABEL’
 
 ```
 # collUtils
@@ -2948,7 +893,7 @@ Run `revdep_details(,"collUtils")` for more info
 *   checking whether package ‘collUtils’ can be installed ... ERROR
     ```
     Installation failed.
-    See ‘/Users/max/github/forks/testthat/revdep/checks.noindex/collUtils/new/collUtils.Rcheck/00install.out’ for details.
+    See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/collUtils/new/collUtils.Rcheck/00install.out’ for details.
     ```
 
 ## Installation
@@ -2959,29 +904,28 @@ Run `revdep_details(,"collUtils")` for more info
 * installing *source* package ‘collUtils’ ...
 ** package ‘collUtils’ successfully unpacked and MD5 sums checked
 ** libs
-clang++  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/max/github/forks/testthat/revdep/library.noindex/collUtils/Rcpp/include" -I/usr/local/include   -fPIC  -Wall -g -O2  -c RcppExports.cpp -o RcppExports.o
-clang++  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/max/github/forks/testthat/revdep/library.noindex/collUtils/Rcpp/include" -I/usr/local/include   -fPIC  -Wall -g -O2  -c countlines.cpp -o countlines.o
-clang++  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/max/github/forks/testthat/revdep/library.noindex/collUtils/Rcpp/include" -I/usr/local/include   -fPIC  -Wall -g -O2  -c fileExists.cpp -o fileExists.o
-clang++  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/max/github/forks/testthat/revdep/library.noindex/collUtils/Rcpp/include" -I/usr/local/include   -fPIC  -Wall -g -O2  -c fileSize.cpp -o fileSize.o
-clang++  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/max/github/forks/testthat/revdep/library.noindex/collUtils/Rcpp/include" -I/usr/local/include   -fPIC  -Wall -g -O2  -c ncols.cpp -o ncols.o
-clang++  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/max/github/forks/testthat/revdep/library.noindex/collUtils/Rcpp/include" -I/usr/local/include   -fPIC  -Wall -g -O2  -c readcol.cpp -o readcol.o
-clang++  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/max/github/forks/testthat/revdep/library.noindex/collUtils/Rcpp/include" -I/usr/local/include   -fPIC  -Wall -g -O2  -c readcols.cpp -o readcols.o
-clang++ -dynamiclib -Wl,-headerpad_max_install_names -undefined dynamic_lookup -single_module -multiply_defined suppress -L/Library/Frameworks/R.framework/Resources/lib -L/usr/local/lib -o collUtils.so RcppExports.o countlines.o fileExists.o fileSize.o ncols.o readcol.o readcols.o -F/Library/Frameworks/R.framework/.. -framework R -Wl,-framework -Wl,CoreFoundation
-ld: warning: text-based stub file /System/Library/Frameworks//CoreFoundation.framework/CoreFoundation.tbd and library file /System/Library/Frameworks//CoreFoundation.framework/CoreFoundation are out of sync. Falling back to library file for linking.
-installing to /Users/max/github/forks/testthat/revdep/checks.noindex/collUtils/new/collUtils.Rcheck/collUtils/libs
+ccache clang++ -Qunused-arguments  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/collUtils/Rcpp/include" -I/usr/local/include   -fPIC  -Wall -g -O2  -c RcppExports.cpp -o RcppExports.o
+ccache clang++ -Qunused-arguments  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/collUtils/Rcpp/include" -I/usr/local/include   -fPIC  -Wall -g -O2  -c countlines.cpp -o countlines.o
+ccache clang++ -Qunused-arguments  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/collUtils/Rcpp/include" -I/usr/local/include   -fPIC  -Wall -g -O2  -c fileExists.cpp -o fileExists.o
+ccache clang++ -Qunused-arguments  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/collUtils/Rcpp/include" -I/usr/local/include   -fPIC  -Wall -g -O2  -c fileSize.cpp -o fileSize.o
+ccache clang++ -Qunused-arguments  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/collUtils/Rcpp/include" -I/usr/local/include   -fPIC  -Wall -g -O2  -c ncols.cpp -o ncols.o
+ccache clang++ -Qunused-arguments  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/collUtils/Rcpp/include" -I/usr/local/include   -fPIC  -Wall -g -O2  -c readcol.cpp -o readcol.o
+ccache clang++ -Qunused-arguments  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/collUtils/Rcpp/include" -I/usr/local/include   -fPIC  -Wall -g -O2  -c readcols.cpp -o readcols.o
+ccache clang++ -Qunused-arguments -dynamiclib -Wl,-headerpad_max_install_names -undefined dynamic_lookup -single_module -multiply_defined suppress -L/Library/Frameworks/R.framework/Resources/lib -L/usr/local/lib -o collUtils.so RcppExports.o countlines.o fileExists.o fileSize.o ncols.o readcol.o readcols.o -F/Library/Frameworks/R.framework/.. -framework R -Wl,-framework -Wl,CoreFoundation
+installing to /Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/collUtils/new/collUtils.Rcheck/collUtils/libs
 ** R
 ** inst
 ** byte-compile and prepare package for lazy loading
 Error: package or namespace load failed for ‘rJava’:
  .onLoad failed in loadNamespace() for 'rJava', details:
   call: dyn.load(file, DLLpath = DLLpath, ...)
-  error: unable to load shared object '/Users/max/github/forks/testthat/revdep/library.noindex/collUtils/rJava/libs/rJava.so':
-  dlopen(/Users/max/github/forks/testthat/revdep/library.noindex/collUtils/rJava/libs/rJava.so, 6): Library not loaded: /Library/Java/JavaVirtualMachines/jdk-11.0.1.jdk/Contents/Home/lib/server/libjvm.dylib
-  Referenced from: /Users/max/github/forks/testthat/revdep/library.noindex/collUtils/rJava/libs/rJava.so
+  error: unable to load shared object '/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/collUtils/rJava/libs/rJava.so':
+  dlopen(/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/collUtils/rJava/libs/rJava.so, 6): Library not loaded: /Library/Java/JavaVirtualMachines/jdk-11.0.1.jdk/Contents/Home/lib/server/libjvm.dylib
+  Referenced from: /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/collUtils/rJava/libs/rJava.so
   Reason: image not found
 Error : package ‘rJava’ could not be loaded
 ERROR: lazy loading failed for package ‘collUtils’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/collUtils/new/collUtils.Rcheck/collUtils’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/collUtils/new/collUtils.Rcheck/collUtils’
 
 ```
 ### CRAN
@@ -2990,29 +934,28 @@ ERROR: lazy loading failed for package ‘collUtils’
 * installing *source* package ‘collUtils’ ...
 ** package ‘collUtils’ successfully unpacked and MD5 sums checked
 ** libs
-clang++  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/max/github/forks/testthat/revdep/library.noindex/collUtils/Rcpp/include" -I/usr/local/include   -fPIC  -Wall -g -O2  -c RcppExports.cpp -o RcppExports.o
-clang++  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/max/github/forks/testthat/revdep/library.noindex/collUtils/Rcpp/include" -I/usr/local/include   -fPIC  -Wall -g -O2  -c countlines.cpp -o countlines.o
-clang++  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/max/github/forks/testthat/revdep/library.noindex/collUtils/Rcpp/include" -I/usr/local/include   -fPIC  -Wall -g -O2  -c fileExists.cpp -o fileExists.o
-clang++  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/max/github/forks/testthat/revdep/library.noindex/collUtils/Rcpp/include" -I/usr/local/include   -fPIC  -Wall -g -O2  -c fileSize.cpp -o fileSize.o
-clang++  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/max/github/forks/testthat/revdep/library.noindex/collUtils/Rcpp/include" -I/usr/local/include   -fPIC  -Wall -g -O2  -c ncols.cpp -o ncols.o
-clang++  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/max/github/forks/testthat/revdep/library.noindex/collUtils/Rcpp/include" -I/usr/local/include   -fPIC  -Wall -g -O2  -c readcol.cpp -o readcol.o
-clang++  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/max/github/forks/testthat/revdep/library.noindex/collUtils/Rcpp/include" -I/usr/local/include   -fPIC  -Wall -g -O2  -c readcols.cpp -o readcols.o
-clang++ -dynamiclib -Wl,-headerpad_max_install_names -undefined dynamic_lookup -single_module -multiply_defined suppress -L/Library/Frameworks/R.framework/Resources/lib -L/usr/local/lib -o collUtils.so RcppExports.o countlines.o fileExists.o fileSize.o ncols.o readcol.o readcols.o -F/Library/Frameworks/R.framework/.. -framework R -Wl,-framework -Wl,CoreFoundation
-ld: warning: text-based stub file /System/Library/Frameworks//CoreFoundation.framework/CoreFoundation.tbd and library file /System/Library/Frameworks//CoreFoundation.framework/CoreFoundation are out of sync. Falling back to library file for linking.
-installing to /Users/max/github/forks/testthat/revdep/checks.noindex/collUtils/old/collUtils.Rcheck/collUtils/libs
+ccache clang++ -Qunused-arguments  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/collUtils/Rcpp/include" -I/usr/local/include   -fPIC  -Wall -g -O2  -c RcppExports.cpp -o RcppExports.o
+ccache clang++ -Qunused-arguments  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/collUtils/Rcpp/include" -I/usr/local/include   -fPIC  -Wall -g -O2  -c countlines.cpp -o countlines.o
+ccache clang++ -Qunused-arguments  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/collUtils/Rcpp/include" -I/usr/local/include   -fPIC  -Wall -g -O2  -c fileExists.cpp -o fileExists.o
+ccache clang++ -Qunused-arguments  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/collUtils/Rcpp/include" -I/usr/local/include   -fPIC  -Wall -g -O2  -c fileSize.cpp -o fileSize.o
+ccache clang++ -Qunused-arguments  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/collUtils/Rcpp/include" -I/usr/local/include   -fPIC  -Wall -g -O2  -c ncols.cpp -o ncols.o
+ccache clang++ -Qunused-arguments  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/collUtils/Rcpp/include" -I/usr/local/include   -fPIC  -Wall -g -O2  -c readcol.cpp -o readcol.o
+ccache clang++ -Qunused-arguments  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/collUtils/Rcpp/include" -I/usr/local/include   -fPIC  -Wall -g -O2  -c readcols.cpp -o readcols.o
+ccache clang++ -Qunused-arguments -dynamiclib -Wl,-headerpad_max_install_names -undefined dynamic_lookup -single_module -multiply_defined suppress -L/Library/Frameworks/R.framework/Resources/lib -L/usr/local/lib -o collUtils.so RcppExports.o countlines.o fileExists.o fileSize.o ncols.o readcol.o readcols.o -F/Library/Frameworks/R.framework/.. -framework R -Wl,-framework -Wl,CoreFoundation
+installing to /Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/collUtils/old/collUtils.Rcheck/collUtils/libs
 ** R
 ** inst
 ** byte-compile and prepare package for lazy loading
 Error: package or namespace load failed for ‘rJava’:
  .onLoad failed in loadNamespace() for 'rJava', details:
   call: dyn.load(file, DLLpath = DLLpath, ...)
-  error: unable to load shared object '/Users/max/github/forks/testthat/revdep/library.noindex/collUtils/rJava/libs/rJava.so':
-  dlopen(/Users/max/github/forks/testthat/revdep/library.noindex/collUtils/rJava/libs/rJava.so, 6): Library not loaded: /Library/Java/JavaVirtualMachines/jdk-11.0.1.jdk/Contents/Home/lib/server/libjvm.dylib
-  Referenced from: /Users/max/github/forks/testthat/revdep/library.noindex/collUtils/rJava/libs/rJava.so
+  error: unable to load shared object '/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/collUtils/rJava/libs/rJava.so':
+  dlopen(/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/collUtils/rJava/libs/rJava.so, 6): Library not loaded: /Library/Java/JavaVirtualMachines/jdk-11.0.1.jdk/Contents/Home/lib/server/libjvm.dylib
+  Referenced from: /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/collUtils/rJava/libs/rJava.so
   Reason: image not found
 Error : package ‘rJava’ could not be loaded
 ERROR: lazy loading failed for package ‘collUtils’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/collUtils/old/collUtils.Rcheck/collUtils’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/collUtils/old/collUtils.Rcheck/collUtils’
 
 ```
 # colorednoise
@@ -3034,7 +977,7 @@ Run `revdep_details(,"colorednoise")` for more info
 *   checking whether package ‘colorednoise’ can be installed ... ERROR
     ```
     Installation failed.
-    See ‘/Users/max/github/forks/testthat/revdep/checks.noindex/colorednoise/new/colorednoise.Rcheck/00install.out’ for details.
+    See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/colorednoise/new/colorednoise.Rcheck/00install.out’ for details.
     ```
 
 ## Installation
@@ -3045,18 +988,11 @@ Run `revdep_details(,"colorednoise")` for more info
 * installing *source* package ‘colorednoise’ ...
 ** package ‘colorednoise’ successfully unpacked and MD5 sums checked
 ** libs
-clang++  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/max/github/forks/testthat/revdep/library.noindex/colorednoise/Rcpp/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/colorednoise/RcppArmadillo/include" -I/usr/local/include  -fopenmp -fPIC  -Wall -g -O2  -c RcppExports.cpp -o RcppExports.o
-clang++  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/max/github/forks/testthat/revdep/library.noindex/colorednoise/Rcpp/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/colorednoise/RcppArmadillo/include" -I/usr/local/include  -fopenmp -fPIC  -Wall -g -O2  -c noise.cpp -o noise.o
-clang++  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/max/github/forks/testthat/revdep/library.noindex/colorednoise/Rcpp/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/colorednoise/RcppArmadillo/include" -I/usr/local/include  -fopenmp -fPIC  -Wall -g -O2  -c simulation.cpp -o simulation.o
+ccache clang++ -Qunused-arguments  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/colorednoise/Rcpp/include" -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/colorednoise/RcppArmadillo/include" -I/usr/local/include  -fopenmp -fPIC  -Wall -g -O2  -c RcppExports.cpp -o RcppExports.o
 clang: error: unsupported option '-fopenmp'
-clang: error: unsupported option '-fopenmp'
-clang: error: unsupported option '-fopenmp'
-make: *** [simulation.o] Error 1
-make: *** Waiting for unfinished jobs....
-make: *** [noise.o] Error 1
 make: *** [RcppExports.o] Error 1
 ERROR: compilation failed for package ‘colorednoise’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/colorednoise/new/colorednoise.Rcheck/colorednoise’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/colorednoise/new/colorednoise.Rcheck/colorednoise’
 
 ```
 ### CRAN
@@ -3065,18 +1001,11 @@ ERROR: compilation failed for package ‘colorednoise’
 * installing *source* package ‘colorednoise’ ...
 ** package ‘colorednoise’ successfully unpacked and MD5 sums checked
 ** libs
-clang++  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/max/github/forks/testthat/revdep/library.noindex/colorednoise/Rcpp/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/colorednoise/RcppArmadillo/include" -I/usr/local/include  -fopenmp -fPIC  -Wall -g -O2  -c RcppExports.cpp -o RcppExports.o
-clang++  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/max/github/forks/testthat/revdep/library.noindex/colorednoise/Rcpp/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/colorednoise/RcppArmadillo/include" -I/usr/local/include  -fopenmp -fPIC  -Wall -g -O2  -c noise.cpp -o noise.o
-clang++  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/max/github/forks/testthat/revdep/library.noindex/colorednoise/Rcpp/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/colorednoise/RcppArmadillo/include" -I/usr/local/include  -fopenmp -fPIC  -Wall -g -O2  -c simulation.cpp -o simulation.o
-clang: error: unsupported option '-fopenmp'clang: error: unsupported option '-fopenmp'
-
+ccache clang++ -Qunused-arguments  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/colorednoise/Rcpp/include" -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/colorednoise/RcppArmadillo/include" -I/usr/local/include  -fopenmp -fPIC  -Wall -g -O2  -c RcppExports.cpp -o RcppExports.o
 clang: error: unsupported option '-fopenmp'
-make: *** [simulation.o] Error 1
-make: *** Waiting for unfinished jobs....
-make: *** [noise.o] Error 1
 make: *** [RcppExports.o] Error 1
 ERROR: compilation failed for package ‘colorednoise’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/colorednoise/old/colorednoise.Rcheck/colorednoise’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/colorednoise/old/colorednoise.Rcheck/colorednoise’
 
 ```
 # corehunter
@@ -3097,7 +1026,7 @@ Run `revdep_details(,"corehunter")` for more info
 *   checking whether package ‘corehunter’ can be installed ... ERROR
     ```
     Installation failed.
-    See ‘/Users/max/github/forks/testthat/revdep/checks.noindex/corehunter/new/corehunter.Rcheck/00install.out’ for details.
+    See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/corehunter/new/corehunter.Rcheck/00install.out’ for details.
     ```
 
 ## Installation
@@ -3113,13 +1042,13 @@ Run `revdep_details(,"corehunter")` for more info
 Error: package or namespace load failed for ‘rJava’:
  .onLoad failed in loadNamespace() for 'rJava', details:
   call: dyn.load(file, DLLpath = DLLpath, ...)
-  error: unable to load shared object '/Users/max/github/forks/testthat/revdep/library.noindex/corehunter/rJava/libs/rJava.so':
-  dlopen(/Users/max/github/forks/testthat/revdep/library.noindex/corehunter/rJava/libs/rJava.so, 6): Library not loaded: /Library/Java/JavaVirtualMachines/jdk-11.0.1.jdk/Contents/Home/lib/server/libjvm.dylib
-  Referenced from: /Users/max/github/forks/testthat/revdep/library.noindex/corehunter/rJava/libs/rJava.so
+  error: unable to load shared object '/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/corehunter/rJava/libs/rJava.so':
+  dlopen(/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/corehunter/rJava/libs/rJava.so, 6): Library not loaded: /Library/Java/JavaVirtualMachines/jdk-11.0.1.jdk/Contents/Home/lib/server/libjvm.dylib
+  Referenced from: /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/corehunter/rJava/libs/rJava.so
   Reason: image not found
 Error : package ‘rJava’ could not be loaded
 ERROR: lazy loading failed for package ‘corehunter’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/corehunter/new/corehunter.Rcheck/corehunter’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/corehunter/new/corehunter.Rcheck/corehunter’
 
 ```
 ### CRAN
@@ -3133,13 +1062,13 @@ ERROR: lazy loading failed for package ‘corehunter’
 Error: package or namespace load failed for ‘rJava’:
  .onLoad failed in loadNamespace() for 'rJava', details:
   call: dyn.load(file, DLLpath = DLLpath, ...)
-  error: unable to load shared object '/Users/max/github/forks/testthat/revdep/library.noindex/corehunter/rJava/libs/rJava.so':
-  dlopen(/Users/max/github/forks/testthat/revdep/library.noindex/corehunter/rJava/libs/rJava.so, 6): Library not loaded: /Library/Java/JavaVirtualMachines/jdk-11.0.1.jdk/Contents/Home/lib/server/libjvm.dylib
-  Referenced from: /Users/max/github/forks/testthat/revdep/library.noindex/corehunter/rJava/libs/rJava.so
+  error: unable to load shared object '/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/corehunter/rJava/libs/rJava.so':
+  dlopen(/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/corehunter/rJava/libs/rJava.so, 6): Library not loaded: /Library/Java/JavaVirtualMachines/jdk-11.0.1.jdk/Contents/Home/lib/server/libjvm.dylib
+  Referenced from: /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/corehunter/rJava/libs/rJava.so
   Reason: image not found
 Error : package ‘rJava’ could not be loaded
 ERROR: lazy loading failed for package ‘corehunter’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/corehunter/old/corehunter.Rcheck/corehunter’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/corehunter/old/corehunter.Rcheck/corehunter’
 
 ```
 # Crossover
@@ -3162,7 +1091,7 @@ Run `revdep_details(,"Crossover")` for more info
 *   checking whether package ‘Crossover’ can be installed ... ERROR
     ```
     Installation failed.
-    See ‘/Users/max/github/forks/testthat/revdep/checks.noindex/Crossover/new/Crossover.Rcheck/00install.out’ for details.
+    See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/Crossover/new/Crossover.Rcheck/00install.out’ for details.
     ```
 
 ## Installation
@@ -3173,15 +1102,16 @@ Run `revdep_details(,"Crossover")` for more info
 * installing *source* package ‘Crossover’ ...
 ** package ‘Crossover’ successfully unpacked and MD5 sums checked
 ** libs
-clang -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/max/github/forks/testthat/revdep/library.noindex/Crossover/Rcpp/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/Crossover/RcppArmadillo/include" -I/usr/local/include   -fPIC  -Wall -g -O2  -c Crossover_init.c -o Crossover_init.o
-clang++  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/max/github/forks/testthat/revdep/library.noindex/Crossover/Rcpp/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/Crossover/RcppArmadillo/include" -I/usr/local/include   -fPIC  -Wall -g -O2  -c searchCOD.cpp -o searchCOD.o
+ccache clang -Qunused-arguments  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/Crossover/Rcpp/include" -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/Crossover/RcppArmadillo/include" -I/usr/local/include   -fPIC  -Wall -g -O2  -c Crossover_init.c -o Crossover_init.o
+ccache clang++ -Qunused-arguments  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/Crossover/Rcpp/include" -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/Crossover/RcppArmadillo/include" -I/usr/local/include   -fPIC  -Wall -g -O2  -c searchCOD.cpp -o searchCOD.o
 searchCOD.cpp:122:11: warning: ignoring return value of function declared with 'warn_unused_result' attribute [-Wunused-result]
           pinv(trans(X) * cor * X);
           ^~~~
 1 warning generated.
-clang++ -dynamiclib -Wl,-headerpad_max_install_names -undefined dynamic_lookup -single_module -multiply_defined suppress -L/Library/Frameworks/R.framework/Resources/lib -L/usr/local/lib -o Crossover.so Crossover_init.o searchCOD.o -L/Library/Frameworks/R.framework/Resources/lib -lRlapack -L/Library/Frameworks/R.framework/Resources/lib -lRblas -L/usr/local/gfortran/lib/gcc/x86_64-apple-darwin15/6.1.0 -L/usr/local/gfortran/lib -lgfortran -lquadmath -lm -F/Library/Frameworks/R.framework/.. -framework R -Wl,-framework -Wl,CoreFoundation
-ld: warning: text-based stub file /System/Library/Frameworks//CoreFoundation.framework/CoreFoundation.tbd and library file /System/Library/Frameworks//CoreFoundation.framework/CoreFoundation are out of sync. Falling back to library file for linking.
-installing to /Users/max/github/forks/testthat/revdep/checks.noindex/Crossover/new/Crossover.Rcheck/Crossover/libs
+ccache clang++ -Qunused-arguments -dynamiclib -Wl,-headerpad_max_install_names -undefined dynamic_lookup -single_module -multiply_defined suppress -L/Library/Frameworks/R.framework/Resources/lib -L/usr/local/lib -o Crossover.so Crossover_init.o searchCOD.o -L/Library/Frameworks/R.framework/Resources/lib -lRlapack -L/Library/Frameworks/R.framework/Resources/lib -lRblas -L/usr/local/gfortran/lib/gcc/x86_64-apple-darwin15/6.1.0 -L/usr/local/gfortran/lib -lgfortran -lquadmath -lm -F/Library/Frameworks/R.framework/.. -framework R -Wl,-framework -Wl,CoreFoundation
+ld: warning: directory not found for option '-L/usr/local/gfortran/lib/gcc/x86_64-apple-darwin15/6.1.0'
+ld: warning: directory not found for option '-L/usr/local/gfortran/lib'
+installing to /Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/Crossover/new/Crossover.Rcheck/Crossover/libs
 ** R
 ** data
 ** inst
@@ -3189,13 +1119,13 @@ installing to /Users/max/github/forks/testthat/revdep/checks.noindex/Crossover/n
 Error: package or namespace load failed for ‘rJava’:
  .onLoad failed in loadNamespace() for 'rJava', details:
   call: dyn.load(file, DLLpath = DLLpath, ...)
-  error: unable to load shared object '/Users/max/github/forks/testthat/revdep/library.noindex/Crossover/rJava/libs/rJava.so':
-  dlopen(/Users/max/github/forks/testthat/revdep/library.noindex/Crossover/rJava/libs/rJava.so, 6): Library not loaded: /Library/Java/JavaVirtualMachines/jdk-11.0.1.jdk/Contents/Home/lib/server/libjvm.dylib
-  Referenced from: /Users/max/github/forks/testthat/revdep/library.noindex/Crossover/rJava/libs/rJava.so
+  error: unable to load shared object '/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/Crossover/rJava/libs/rJava.so':
+  dlopen(/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/Crossover/rJava/libs/rJava.so, 6): Library not loaded: /Library/Java/JavaVirtualMachines/jdk-11.0.1.jdk/Contents/Home/lib/server/libjvm.dylib
+  Referenced from: /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/Crossover/rJava/libs/rJava.so
   Reason: image not found
 Error : package ‘rJava’ could not be loaded
 ERROR: lazy loading failed for package ‘Crossover’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/Crossover/new/Crossover.Rcheck/Crossover’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/Crossover/new/Crossover.Rcheck/Crossover’
 
 ```
 ### CRAN
@@ -3204,15 +1134,16 @@ ERROR: lazy loading failed for package ‘Crossover’
 * installing *source* package ‘Crossover’ ...
 ** package ‘Crossover’ successfully unpacked and MD5 sums checked
 ** libs
-clang -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/max/github/forks/testthat/revdep/library.noindex/Crossover/Rcpp/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/Crossover/RcppArmadillo/include" -I/usr/local/include   -fPIC  -Wall -g -O2  -c Crossover_init.c -o Crossover_init.o
-clang++  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/max/github/forks/testthat/revdep/library.noindex/Crossover/Rcpp/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/Crossover/RcppArmadillo/include" -I/usr/local/include   -fPIC  -Wall -g -O2  -c searchCOD.cpp -o searchCOD.o
+ccache clang -Qunused-arguments  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/Crossover/Rcpp/include" -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/Crossover/RcppArmadillo/include" -I/usr/local/include   -fPIC  -Wall -g -O2  -c Crossover_init.c -o Crossover_init.o
+ccache clang++ -Qunused-arguments  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/Crossover/Rcpp/include" -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/Crossover/RcppArmadillo/include" -I/usr/local/include   -fPIC  -Wall -g -O2  -c searchCOD.cpp -o searchCOD.o
 searchCOD.cpp:122:11: warning: ignoring return value of function declared with 'warn_unused_result' attribute [-Wunused-result]
           pinv(trans(X) * cor * X);
           ^~~~
 1 warning generated.
-clang++ -dynamiclib -Wl,-headerpad_max_install_names -undefined dynamic_lookup -single_module -multiply_defined suppress -L/Library/Frameworks/R.framework/Resources/lib -L/usr/local/lib -o Crossover.so Crossover_init.o searchCOD.o -L/Library/Frameworks/R.framework/Resources/lib -lRlapack -L/Library/Frameworks/R.framework/Resources/lib -lRblas -L/usr/local/gfortran/lib/gcc/x86_64-apple-darwin15/6.1.0 -L/usr/local/gfortran/lib -lgfortran -lquadmath -lm -F/Library/Frameworks/R.framework/.. -framework R -Wl,-framework -Wl,CoreFoundation
-ld: warning: text-based stub file /System/Library/Frameworks//CoreFoundation.framework/CoreFoundation.tbd and library file /System/Library/Frameworks//CoreFoundation.framework/CoreFoundation are out of sync. Falling back to library file for linking.
-installing to /Users/max/github/forks/testthat/revdep/checks.noindex/Crossover/old/Crossover.Rcheck/Crossover/libs
+ccache clang++ -Qunused-arguments -dynamiclib -Wl,-headerpad_max_install_names -undefined dynamic_lookup -single_module -multiply_defined suppress -L/Library/Frameworks/R.framework/Resources/lib -L/usr/local/lib -o Crossover.so Crossover_init.o searchCOD.o -L/Library/Frameworks/R.framework/Resources/lib -lRlapack -L/Library/Frameworks/R.framework/Resources/lib -lRblas -L/usr/local/gfortran/lib/gcc/x86_64-apple-darwin15/6.1.0 -L/usr/local/gfortran/lib -lgfortran -lquadmath -lm -F/Library/Frameworks/R.framework/.. -framework R -Wl,-framework -Wl,CoreFoundation
+ld: warning: directory not found for option '-L/usr/local/gfortran/lib/gcc/x86_64-apple-darwin15/6.1.0'
+ld: warning: directory not found for option '-L/usr/local/gfortran/lib'
+installing to /Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/Crossover/old/Crossover.Rcheck/Crossover/libs
 ** R
 ** data
 ** inst
@@ -3220,13 +1151,13 @@ installing to /Users/max/github/forks/testthat/revdep/checks.noindex/Crossover/o
 Error: package or namespace load failed for ‘rJava’:
  .onLoad failed in loadNamespace() for 'rJava', details:
   call: dyn.load(file, DLLpath = DLLpath, ...)
-  error: unable to load shared object '/Users/max/github/forks/testthat/revdep/library.noindex/Crossover/rJava/libs/rJava.so':
-  dlopen(/Users/max/github/forks/testthat/revdep/library.noindex/Crossover/rJava/libs/rJava.so, 6): Library not loaded: /Library/Java/JavaVirtualMachines/jdk-11.0.1.jdk/Contents/Home/lib/server/libjvm.dylib
-  Referenced from: /Users/max/github/forks/testthat/revdep/library.noindex/Crossover/rJava/libs/rJava.so
+  error: unable to load shared object '/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/Crossover/rJava/libs/rJava.so':
+  dlopen(/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/Crossover/rJava/libs/rJava.so, 6): Library not loaded: /Library/Java/JavaVirtualMachines/jdk-11.0.1.jdk/Contents/Home/lib/server/libjvm.dylib
+  Referenced from: /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/Crossover/rJava/libs/rJava.so
   Reason: image not found
 Error : package ‘rJava’ could not be loaded
 ERROR: lazy loading failed for package ‘Crossover’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/Crossover/old/Crossover.Rcheck/Crossover’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/Crossover/old/Crossover.Rcheck/Crossover’
 
 ```
 # ctsem
@@ -3261,6 +1192,62 @@ Run `revdep_details(,"ctsem")` for more info
     GNU make is a SystemRequirements.
     ```
 
+# curl
+
+<details>
+
+* Version: 3.3
+* Source code: https://github.com/cran/curl
+* URL: https://github.com/jeroen/curl#readme (devel) https://curl.haxx.se/libcurl/ (upstream)
+* BugReports: https://github.com/jeroen/curl/issues
+* Date/Publication: 2019-01-10 12:50:03 UTC
+* Number of recursive dependencies: 35
+
+Run `revdep_details(,"curl")` for more info
+
+</details>
+
+## Newly broken
+
+*   R CMD check timed out
+    
+
+## Newly fixed
+
+*   checking tests ...
+    ```
+     ERROR
+    Running the tests in ‘tests/testthat.R’ failed.
+    Last 13 lines of output:
+      > if(curl::has_internet()){
+      +   test_check("curl")
+      + }
+      This is libcurl version 7.54.0 with LibreSSL/2.6.4 
+      Using test server: http://hb.opencpu.org 
+      [31m──[39m [31m1. Error: callbacks are protected (@test-progress.R#8) [39m [31m────────────────────────────────────────────[39m
+      Timeout was reached: Resolving timed out after 1484036 milliseconds
+      1: curl_fetch_memory("https://cloud.r-project.org/web/packages/curl/curl.pdf", handle = h) at testthat/test-progress.R:8
+      
+      ══ testthat results  ══════════════════════════════════════════════════════════════════════════════════
+      OK: 196 SKIPPED: 1 FAILED: 1
+      1. Error: callbacks are protected (@test-progress.R#8) 
+      
+      Error: testthat unit tests failed
+      Execution halted
+    ```
+
+## In both
+
+*   checking compiled code ... NOTE
+    ```
+    File ‘curl/libs/curl.so’:
+      Found non-API call to R: ‘R_new_custom_connection’
+    
+    Compiled code should not call non-API entry points in R.
+    
+    See ‘Writing portable packages’ in the ‘Writing R Extensions’ manual.
+    ```
+
 # DaMiRseq
 
 <details>
@@ -3279,7 +1266,7 @@ Run `revdep_details(,"DaMiRseq")` for more info
 *   checking whether package ‘DaMiRseq’ can be installed ... ERROR
     ```
     Installation failed.
-    See ‘/Users/max/github/forks/testthat/revdep/checks.noindex/DaMiRseq/new/DaMiRseq.Rcheck/00install.out’ for details.
+    See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/DaMiRseq/new/DaMiRseq.Rcheck/00install.out’ for details.
     ```
 
 ## Installation
@@ -3295,12 +1282,12 @@ Run `revdep_details(,"DaMiRseq")` for more info
 ** byte-compile and prepare package for lazy loading
 Error : .onLoad failed in loadNamespace() for 'rJava', details:
   call: dyn.load(file, DLLpath = DLLpath, ...)
-  error: unable to load shared object '/Users/max/github/forks/testthat/revdep/library.noindex/DaMiRseq/rJava/libs/rJava.so':
-  dlopen(/Users/max/github/forks/testthat/revdep/library.noindex/DaMiRseq/rJava/libs/rJava.so, 6): Library not loaded: /Library/Java/JavaVirtualMachines/jdk-11.0.1.jdk/Contents/Home/lib/server/libjvm.dylib
-  Referenced from: /Users/max/github/forks/testthat/revdep/library.noindex/DaMiRseq/rJava/libs/rJava.so
+  error: unable to load shared object '/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DaMiRseq/rJava/libs/rJava.so':
+  dlopen(/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DaMiRseq/rJava/libs/rJava.so, 6): Library not loaded: /Library/Java/JavaVirtualMachines/jdk-11.0.1.jdk/Contents/Home/lib/server/libjvm.dylib
+  Referenced from: /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DaMiRseq/rJava/libs/rJava.so
   Reason: image not found
 ERROR: lazy loading failed for package ‘DaMiRseq’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/DaMiRseq/new/DaMiRseq.Rcheck/DaMiRseq’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/DaMiRseq/new/DaMiRseq.Rcheck/DaMiRseq’
 
 ```
 ### CRAN
@@ -3314,12 +1301,12 @@ ERROR: lazy loading failed for package ‘DaMiRseq’
 ** byte-compile and prepare package for lazy loading
 Error : .onLoad failed in loadNamespace() for 'rJava', details:
   call: dyn.load(file, DLLpath = DLLpath, ...)
-  error: unable to load shared object '/Users/max/github/forks/testthat/revdep/library.noindex/DaMiRseq/rJava/libs/rJava.so':
-  dlopen(/Users/max/github/forks/testthat/revdep/library.noindex/DaMiRseq/rJava/libs/rJava.so, 6): Library not loaded: /Library/Java/JavaVirtualMachines/jdk-11.0.1.jdk/Contents/Home/lib/server/libjvm.dylib
-  Referenced from: /Users/max/github/forks/testthat/revdep/library.noindex/DaMiRseq/rJava/libs/rJava.so
+  error: unable to load shared object '/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DaMiRseq/rJava/libs/rJava.so':
+  dlopen(/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DaMiRseq/rJava/libs/rJava.so, 6): Library not loaded: /Library/Java/JavaVirtualMachines/jdk-11.0.1.jdk/Contents/Home/lib/server/libjvm.dylib
+  Referenced from: /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DaMiRseq/rJava/libs/rJava.so
   Reason: image not found
 ERROR: lazy loading failed for package ‘DaMiRseq’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/DaMiRseq/old/DaMiRseq.Rcheck/DaMiRseq’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/DaMiRseq/old/DaMiRseq.Rcheck/DaMiRseq’
 
 ```
 # DatabaseConnector
@@ -3342,7 +1329,7 @@ Run `revdep_details(,"DatabaseConnector")` for more info
 *   checking whether package ‘DatabaseConnector’ can be installed ... ERROR
     ```
     Installation failed.
-    See ‘/Users/max/github/forks/testthat/revdep/checks.noindex/DatabaseConnector/new/DatabaseConnector.Rcheck/00install.out’ for details.
+    See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/DatabaseConnector/new/DatabaseConnector.Rcheck/00install.out’ for details.
     ```
 
 ## Installation
@@ -3357,12 +1344,12 @@ Run `revdep_details(,"DatabaseConnector")` for more info
 ** byte-compile and prepare package for lazy loading
 Error : .onLoad failed in loadNamespace() for 'rJava', details:
   call: dyn.load(file, DLLpath = DLLpath, ...)
-  error: unable to load shared object '/Users/max/github/forks/testthat/revdep/library.noindex/DatabaseConnector/rJava/libs/rJava.so':
-  dlopen(/Users/max/github/forks/testthat/revdep/library.noindex/DatabaseConnector/rJava/libs/rJava.so, 6): Library not loaded: /Library/Java/JavaVirtualMachines/jdk-11.0.1.jdk/Contents/Home/lib/server/libjvm.dylib
-  Referenced from: /Users/max/github/forks/testthat/revdep/library.noindex/DatabaseConnector/rJava/libs/rJava.so
+  error: unable to load shared object '/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DatabaseConnector/rJava/libs/rJava.so':
+  dlopen(/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DatabaseConnector/rJava/libs/rJava.so, 6): Library not loaded: /Library/Java/JavaVirtualMachines/jdk-11.0.1.jdk/Contents/Home/lib/server/libjvm.dylib
+  Referenced from: /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DatabaseConnector/rJava/libs/rJava.so
   Reason: image not found
 ERROR: lazy loading failed for package ‘DatabaseConnector’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/DatabaseConnector/new/DatabaseConnector.Rcheck/DatabaseConnector’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/DatabaseConnector/new/DatabaseConnector.Rcheck/DatabaseConnector’
 
 ```
 ### CRAN
@@ -3375,12 +1362,12 @@ ERROR: lazy loading failed for package ‘DatabaseConnector’
 ** byte-compile and prepare package for lazy loading
 Error : .onLoad failed in loadNamespace() for 'rJava', details:
   call: dyn.load(file, DLLpath = DLLpath, ...)
-  error: unable to load shared object '/Users/max/github/forks/testthat/revdep/library.noindex/DatabaseConnector/rJava/libs/rJava.so':
-  dlopen(/Users/max/github/forks/testthat/revdep/library.noindex/DatabaseConnector/rJava/libs/rJava.so, 6): Library not loaded: /Library/Java/JavaVirtualMachines/jdk-11.0.1.jdk/Contents/Home/lib/server/libjvm.dylib
-  Referenced from: /Users/max/github/forks/testthat/revdep/library.noindex/DatabaseConnector/rJava/libs/rJava.so
+  error: unable to load shared object '/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DatabaseConnector/rJava/libs/rJava.so':
+  dlopen(/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DatabaseConnector/rJava/libs/rJava.so, 6): Library not loaded: /Library/Java/JavaVirtualMachines/jdk-11.0.1.jdk/Contents/Home/lib/server/libjvm.dylib
+  Referenced from: /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DatabaseConnector/rJava/libs/rJava.so
   Reason: image not found
 ERROR: lazy loading failed for package ‘DatabaseConnector’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/DatabaseConnector/old/DatabaseConnector.Rcheck/DatabaseConnector’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/DatabaseConnector/old/DatabaseConnector.Rcheck/DatabaseConnector’
 
 ```
 # DataLoader
@@ -3401,7 +1388,7 @@ Run `revdep_details(,"DataLoader")` for more info
 *   checking whether package ‘DataLoader’ can be installed ... ERROR
     ```
     Installation failed.
-    See ‘/Users/max/github/forks/testthat/revdep/checks.noindex/DataLoader/new/DataLoader.Rcheck/00install.out’ for details.
+    See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/DataLoader/new/DataLoader.Rcheck/00install.out’ for details.
     ```
 
 ## Installation
@@ -3416,13 +1403,13 @@ Run `revdep_details(,"DataLoader")` for more info
 Error: package or namespace load failed for ‘xlsx’:
  .onLoad failed in loadNamespace() for 'rJava', details:
   call: dyn.load(file, DLLpath = DLLpath, ...)
-  error: unable to load shared object '/Users/max/github/forks/testthat/revdep/library.noindex/DataLoader/rJava/libs/rJava.so':
-  dlopen(/Users/max/github/forks/testthat/revdep/library.noindex/DataLoader/rJava/libs/rJava.so, 6): Library not loaded: /Library/Java/JavaVirtualMachines/jdk-11.0.1.jdk/Contents/Home/lib/server/libjvm.dylib
-  Referenced from: /Users/max/github/forks/testthat/revdep/library.noindex/DataLoader/rJava/libs/rJava.so
+  error: unable to load shared object '/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DataLoader/rJava/libs/rJava.so':
+  dlopen(/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DataLoader/rJava/libs/rJava.so, 6): Library not loaded: /Library/Java/JavaVirtualMachines/jdk-11.0.1.jdk/Contents/Home/lib/server/libjvm.dylib
+  Referenced from: /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DataLoader/rJava/libs/rJava.so
   Reason: image not found
 Error : package ‘xlsx’ could not be loaded
 ERROR: lazy loading failed for package ‘DataLoader’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/DataLoader/new/DataLoader.Rcheck/DataLoader’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/DataLoader/new/DataLoader.Rcheck/DataLoader’
 
 ```
 ### CRAN
@@ -3435,24 +1422,24 @@ ERROR: lazy loading failed for package ‘DataLoader’
 Error: package or namespace load failed for ‘xlsx’:
  .onLoad failed in loadNamespace() for 'rJava', details:
   call: dyn.load(file, DLLpath = DLLpath, ...)
-  error: unable to load shared object '/Users/max/github/forks/testthat/revdep/library.noindex/DataLoader/rJava/libs/rJava.so':
-  dlopen(/Users/max/github/forks/testthat/revdep/library.noindex/DataLoader/rJava/libs/rJava.so, 6): Library not loaded: /Library/Java/JavaVirtualMachines/jdk-11.0.1.jdk/Contents/Home/lib/server/libjvm.dylib
-  Referenced from: /Users/max/github/forks/testthat/revdep/library.noindex/DataLoader/rJava/libs/rJava.so
+  error: unable to load shared object '/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DataLoader/rJava/libs/rJava.so':
+  dlopen(/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DataLoader/rJava/libs/rJava.so, 6): Library not loaded: /Library/Java/JavaVirtualMachines/jdk-11.0.1.jdk/Contents/Home/lib/server/libjvm.dylib
+  Referenced from: /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DataLoader/rJava/libs/rJava.so
   Reason: image not found
 Error : package ‘xlsx’ could not be loaded
 ERROR: lazy loading failed for package ‘DataLoader’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/DataLoader/old/DataLoader.Rcheck/DataLoader’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/DataLoader/old/DataLoader.Rcheck/DataLoader’
 
 ```
 # deisotoper
 
 <details>
 
-* Version: 0.0.3
+* Version: 0.0.7
 * Source code: https://github.com/cran/deisotoper
 * URL: https://github.com/protViz/deisotoper/
 * BugReports: https://github.com/protViz/deisotoper/issues deisotoper.R
-* Date/Publication: 2017-12-19 11:40:28 UTC
+* Date/Publication: 2019-04-18 10:30:03 UTC
 * Number of recursive dependencies: 89
 
 Run `revdep_details(,"deisotoper")` for more info
@@ -3464,7 +1451,7 @@ Run `revdep_details(,"deisotoper")` for more info
 *   checking whether package ‘deisotoper’ can be installed ... ERROR
     ```
     Installation failed.
-    See ‘/Users/max/github/forks/testthat/revdep/checks.noindex/deisotoper/new/deisotoper.Rcheck/00install.out’ for details.
+    See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/deisotoper/new/deisotoper.Rcheck/00install.out’ for details.
     ```
 
 ## Installation
@@ -3480,13 +1467,13 @@ Run `revdep_details(,"deisotoper")` for more info
 Error: package or namespace load failed for ‘rJava’:
  .onLoad failed in loadNamespace() for 'rJava', details:
   call: dyn.load(file, DLLpath = DLLpath, ...)
-  error: unable to load shared object '/Users/max/github/forks/testthat/revdep/library.noindex/deisotoper/rJava/libs/rJava.so':
-  dlopen(/Users/max/github/forks/testthat/revdep/library.noindex/deisotoper/rJava/libs/rJava.so, 6): Library not loaded: /Library/Java/JavaVirtualMachines/jdk-11.0.1.jdk/Contents/Home/lib/server/libjvm.dylib
-  Referenced from: /Users/max/github/forks/testthat/revdep/library.noindex/deisotoper/rJava/libs/rJava.so
+  error: unable to load shared object '/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/deisotoper/rJava/libs/rJava.so':
+  dlopen(/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/deisotoper/rJava/libs/rJava.so, 6): Library not loaded: /Library/Java/JavaVirtualMachines/jdk-11.0.1.jdk/Contents/Home/lib/server/libjvm.dylib
+  Referenced from: /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/deisotoper/rJava/libs/rJava.so
   Reason: image not found
 Error : package ‘rJava’ could not be loaded
 ERROR: lazy loading failed for package ‘deisotoper’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/deisotoper/new/deisotoper.Rcheck/deisotoper’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/deisotoper/new/deisotoper.Rcheck/deisotoper’
 
 ```
 ### CRAN
@@ -3500,13 +1487,13 @@ ERROR: lazy loading failed for package ‘deisotoper’
 Error: package or namespace load failed for ‘rJava’:
  .onLoad failed in loadNamespace() for 'rJava', details:
   call: dyn.load(file, DLLpath = DLLpath, ...)
-  error: unable to load shared object '/Users/max/github/forks/testthat/revdep/library.noindex/deisotoper/rJava/libs/rJava.so':
-  dlopen(/Users/max/github/forks/testthat/revdep/library.noindex/deisotoper/rJava/libs/rJava.so, 6): Library not loaded: /Library/Java/JavaVirtualMachines/jdk-11.0.1.jdk/Contents/Home/lib/server/libjvm.dylib
-  Referenced from: /Users/max/github/forks/testthat/revdep/library.noindex/deisotoper/rJava/libs/rJava.so
+  error: unable to load shared object '/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/deisotoper/rJava/libs/rJava.so':
+  dlopen(/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/deisotoper/rJava/libs/rJava.so, 6): Library not loaded: /Library/Java/JavaVirtualMachines/jdk-11.0.1.jdk/Contents/Home/lib/server/libjvm.dylib
+  Referenced from: /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/deisotoper/rJava/libs/rJava.so
   Reason: image not found
 Error : package ‘rJava’ could not be loaded
 ERROR: lazy loading failed for package ‘deisotoper’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/deisotoper/old/deisotoper.Rcheck/deisotoper’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/deisotoper/old/deisotoper.Rcheck/deisotoper’
 
 ```
 # DelayedMatrixStats
@@ -3545,6 +1532,2195 @@ Run `revdep_details(,"DelayedMatrixStats")` for more info
       See the note in ?`:::` about the use of this operator.
     ```
 
+# DeLorean
+
+<details>
+
+* Version: 1.5.0
+* Source code: https://github.com/cran/DeLorean
+* Date/Publication: 2018-10-17 22:30:16 UTC
+* Number of recursive dependencies: 124
+
+Run `revdep_details(,"DeLorean")` for more info
+
+</details>
+
+## In both
+
+*   checking whether package ‘DeLorean’ can be installed ... ERROR
+    ```
+    Installation failed.
+    See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/DeLorean/new/DeLorean.Rcheck/00install.out’ for details.
+    ```
+
+## Installation
+
+### Devel
+
+```
+* installing *source* package ‘DeLorean’ ...
+** package ‘DeLorean’ successfully unpacked and MD5 sums checked
+** libs
+"/Library/Frameworks/R.framework/Resources/bin/Rscript" -e "source(file.path('..', 'tools', 'make_cc.R')); make_cc(commandArgs(TRUE))" stan_files/exact.stan
+Wrote C++ file "stan_files/exact.cc"
+clang++ -std=gnu++14 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -I"../inst/include" -I"`"/Library/Frameworks/R.framework/Resources/bin/Rscript" --vanilla -e "cat(system.file('include', 'src', package = 'StanHeaders'))"`" -DBOOST_DISABLE_ASSERTS -DEIGEN_NO_DEBUG -DBOOST_MATH_OVERFLOW_ERROR_POLICY=errno_on_error -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/BH/include" -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/Rcpp/include" -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include" -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include" -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include" -I/usr/local/include   -fPIC  -Wall -g -O2 -c stan_files/exact.cc -o stan_files/exact.o
+In file included from stan_files/exact.cc:3:
+In file included from stan_files/exact.hpp:25:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/rstaninc.hpp:3:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/stan_fit.hpp:15:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/BH/include/boost/random/additive_combine.hpp:27:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/BH/include/boost/random/linear_congruential.hpp:30:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/BH/include/boost/random/detail/const_mod.hpp:23:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/BH/include/boost/random/detail/large_arithmetic.hpp:19:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/BH/include/boost/random/detail/integer_log2.hpp:19:
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/BH/include/boost/pending/integer_log2.hpp:7:1: warning: This header is deprecated. Use <boost/integer/integer_log2.hpp> instead. [-W#pragma-messages]
+BOOST_HEADER_DEPRECATED("<boost/integer/integer_log2.hpp>");
+^
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/BH/include/boost/config/header_deprecated.hpp:23:37: note: expanded from macro 'BOOST_HEADER_DEPRECATED'
+# define BOOST_HEADER_DEPRECATED(a) BOOST_PRAGMA_MESSAGE("This header is deprecated. Use " a " instead.")
+                                    ^
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/BH/include/boost/config/pragma_message.hpp:24:34: note: expanded from macro 'BOOST_PRAGMA_MESSAGE'
+# define BOOST_PRAGMA_MESSAGE(x) _Pragma(BOOST_STRINGIZE(message(x)))
+                                 ^
+<scratch space>:106:2: note: expanded from here
+ message("This header is deprecated. Use " "<boost/integer/integer_log2.hpp>" " instead.")
+ ^
+In file included from stan_files/exact.cc:3:
+In file included from stan_files/exact.hpp:25:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/rstaninc.hpp:3:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/stan_fit.hpp:34:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/core.hpp:14:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/core/matrix_vari.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat/fun/Eigen_NumTraits.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Dense:1:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Core:535:
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+In file included from stan_files/exact.cc:3:
+In file included from stan_files/exact.hpp:25:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/rstaninc.hpp:3:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/stan_fit.hpp:34:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/core.hpp:14:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/core/matrix_vari.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat/fun/Eigen_NumTraits.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Dense:2:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/LU:47:
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+In file included from stan_files/exact.cc:3:
+In file included from stan_files/exact.hpp:25:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/rstaninc.hpp:3:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/stan_fit.hpp:34:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/core.hpp:14:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/core/matrix_vari.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat/fun/Eigen_NumTraits.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Dense:3:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Cholesky:12:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Jacobi:29:
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+In file included from stan_files/exact.cc:3:
+In file included from stan_files/exact.hpp:25:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/rstaninc.hpp:3:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/stan_fit.hpp:34:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/core.hpp:14:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/core/matrix_vari.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat/fun/Eigen_NumTraits.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Dense:3:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Cholesky:43:
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+In file included from stan_files/exact.cc:3:
+In file included from stan_files/exact.hpp:25:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/rstaninc.hpp:3:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/stan_fit.hpp:34:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/core.hpp:14:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/core/matrix_vari.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat/fun/Eigen_NumTraits.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Dense:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/QR:17:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Householder:27:
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+In file included from stan_files/exact.cc:3:
+In file included from stan_files/exact.hpp:25:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/rstaninc.hpp:3:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/stan_fit.hpp:34:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/core.hpp:14:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/core/matrix_vari.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat/fun/Eigen_NumTraits.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Dense:5:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/SVD:48:
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+In file included from stan_files/exact.cc:3:
+In file included from stan_files/exact.hpp:25:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/rstaninc.hpp:3:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/stan_fit.hpp:34:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/core.hpp:14:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/core/matrix_vari.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat/fun/Eigen_NumTraits.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Dense:6:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Geometry:58:
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+In file included from stan_files/exact.cc:3:
+In file included from stan_files/exact.hpp:25:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/rstaninc.hpp:3:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/stan_fit.hpp:34:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/core.hpp:14:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/core/matrix_vari.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat/fun/Eigen_NumTraits.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Dense:7:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Eigenvalues:58:
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+In file included from stan_files/exact.cc:3:
+In file included from stan_files/exact.hpp:25:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/rstaninc.hpp:3:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/stan_fit.hpp:34:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat.hpp:12:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat.hpp:96:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat/fun/csr_extract_u.hpp:6:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Sparse:26:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/SparseCore:66:
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+In file included from stan_files/exact.cc:3:
+In file included from stan_files/exact.hpp:25:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/rstaninc.hpp:3:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/stan_fit.hpp:34:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat.hpp:12:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat.hpp:96:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat/fun/csr_extract_u.hpp:6:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Sparse:27:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/OrderingMethods:71:
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+In file included from stan_files/exact.cc:3:
+In file included from stan_files/exact.hpp:25:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/rstaninc.hpp:3:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/stan_fit.hpp:34:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat.hpp:12:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat.hpp:96:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat/fun/csr_extract_u.hpp:6:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Sparse:29:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/SparseCholesky:43:
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+In file included from stan_files/exact.cc:3:
+In file included from stan_files/exact.hpp:25:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/rstaninc.hpp:3:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/stan_fit.hpp:34:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat.hpp:12:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat.hpp:96:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat/fun/csr_extract_u.hpp:6:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Sparse:32:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/SparseQR:35:
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+In file included from stan_files/exact.cc:3:
+In file included from stan_files/exact.hpp:25:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/rstaninc.hpp:3:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/stan_fit.hpp:34:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat.hpp:12:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat.hpp:96:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat/fun/csr_extract_u.hpp:6:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Sparse:33:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/IterativeLinearSolvers:46:
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+In file included from stan_files/exact.cc:3:
+In file included from stan_files/exact.hpp:25:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/rstaninc.hpp:3:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/stan_fit.hpp:34:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/core.hpp:44:
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/core/set_zero_all_adjoints.hpp:14:13: warning: unused function 'set_zero_all_adjoints' [-Wunused-function]
+static void set_zero_all_adjoints() {
+            ^
+In file included from stan_files/exact.cc:3:
+In file included from stan_files/exact.hpp:25:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/rstaninc.hpp:3:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/stan_fit.hpp:34:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat.hpp:12:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat.hpp:70:
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat/fun/autocorrelation.hpp:18:8: warning: function 'fft_next_good_size' is not needed and will not be emitted [-Wunneeded-internal-declaration]
+size_t fft_next_good_size(size_t N) {
+       ^
+In file included from stan_files/exact.cc:3:
+stan_files/exact.hpp:397:30: warning: unused typedef 'fun_return_scalar_t__' [-Wunused-local-typedef]
+    typedef local_scalar_t__ fun_return_scalar_t__;
+                             ^
+17 warnings generated.
+"/Library/Frameworks/R.framework/Resources/bin/Rscript" -e "source(file.path('..', 'tools', 'make_cc.R')); make_cc(commandArgs(TRUE))" stan_files/exactsizes.stan
+Wrote C++ file "stan_files/exactsizes.cc"
+clang++ -std=gnu++14 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -I"../inst/include" -I"`"/Library/Frameworks/R.framework/Resources/bin/Rscript" --vanilla -e "cat(system.file('include', 'src', package = 'StanHeaders'))"`" -DBOOST_DISABLE_ASSERTS -DEIGEN_NO_DEBUG -DBOOST_MATH_OVERFLOW_ERROR_POLICY=errno_on_error -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/BH/include" -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/Rcpp/include" -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include" -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include" -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include" -I/usr/local/include   -fPIC  -Wall -g -O2 -c stan_files/exactsizes.cc -o stan_files/exactsizes.o
+In file included from stan_files/exactsizes.cc:3:
+In file included from stan_files/exactsizes.hpp:25:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/rstaninc.hpp:3:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/stan_fit.hpp:15:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/BH/include/boost/random/additive_combine.hpp:27:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/BH/include/boost/random/linear_congruential.hpp:30:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/BH/include/boost/random/detail/const_mod.hpp:23:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/BH/include/boost/random/detail/large_arithmetic.hpp:19:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/BH/include/boost/random/detail/integer_log2.hpp:19:
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/BH/include/boost/pending/integer_log2.hpp:7:1: warning: This header is deprecated. Use <boost/integer/integer_log2.hpp> instead. [-W#pragma-messages]
+BOOST_HEADER_DEPRECATED("<boost/integer/integer_log2.hpp>");
+^
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/BH/include/boost/config/header_deprecated.hpp:23:37: note: expanded from macro 'BOOST_HEADER_DEPRECATED'
+# define BOOST_HEADER_DEPRECATED(a) BOOST_PRAGMA_MESSAGE("This header is deprecated. Use " a " instead.")
+                                    ^
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/BH/include/boost/config/pragma_message.hpp:24:34: note: expanded from macro 'BOOST_PRAGMA_MESSAGE'
+# define BOOST_PRAGMA_MESSAGE(x) _Pragma(BOOST_STRINGIZE(message(x)))
+                                 ^
+<scratch space>:106:2: note: expanded from here
+ message("This header is deprecated. Use " "<boost/integer/integer_log2.hpp>" " instead.")
+ ^
+In file included from stan_files/exactsizes.cc:3:
+In file included from stan_files/exactsizes.hpp:25:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/rstaninc.hpp:3:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/stan_fit.hpp:34:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/core.hpp:14:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/core/matrix_vari.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat/fun/Eigen_NumTraits.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Dense:1:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Core:535:
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+In file included from stan_files/exactsizes.cc:3:
+In file included from stan_files/exactsizes.hpp:25:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/rstaninc.hpp:3:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/stan_fit.hpp:34:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/core.hpp:14:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/core/matrix_vari.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat/fun/Eigen_NumTraits.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Dense:2:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/LU:47:
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+In file included from stan_files/exactsizes.cc:3:
+In file included from stan_files/exactsizes.hpp:25:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/rstaninc.hpp:3:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/stan_fit.hpp:34:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/core.hpp:14:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/core/matrix_vari.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat/fun/Eigen_NumTraits.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Dense:3:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Cholesky:12:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Jacobi:29:
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+In file included from stan_files/exactsizes.cc:3:
+In file included from stan_files/exactsizes.hpp:25:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/rstaninc.hpp:3:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/stan_fit.hpp:34:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/core.hpp:14:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/core/matrix_vari.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat/fun/Eigen_NumTraits.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Dense:3:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Cholesky:43:
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+In file included from stan_files/exactsizes.cc:3:
+In file included from stan_files/exactsizes.hpp:25:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/rstaninc.hpp:3:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/stan_fit.hpp:34:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/core.hpp:14:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/core/matrix_vari.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat/fun/Eigen_NumTraits.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Dense:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/QR:17:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Householder:27:
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+In file included from stan_files/exactsizes.cc:3:
+In file included from stan_files/exactsizes.hpp:25:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/rstaninc.hpp:3:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/stan_fit.hpp:34:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/core.hpp:14:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/core/matrix_vari.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat/fun/Eigen_NumTraits.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Dense:5:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/SVD:48:
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+In file included from stan_files/exactsizes.cc:3:
+In file included from stan_files/exactsizes.hpp:25:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/rstaninc.hpp:3:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/stan_fit.hpp:34:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/core.hpp:14:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/core/matrix_vari.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat/fun/Eigen_NumTraits.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Dense:6:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Geometry:58:
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+In file included from stan_files/exactsizes.cc:3:
+In file included from stan_files/exactsizes.hpp:25:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/rstaninc.hpp:3:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/stan_fit.hpp:34:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/core.hpp:14:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/core/matrix_vari.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat/fun/Eigen_NumTraits.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Dense:7:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Eigenvalues:58:
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+In file included from stan_files/exactsizes.cc:3:
+In file included from stan_files/exactsizes.hpp:25:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/rstaninc.hpp:3:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/stan_fit.hpp:34:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat.hpp:12:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat.hpp:96:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat/fun/csr_extract_u.hpp:6:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Sparse:26:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/SparseCore:66:
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+In file included from stan_files/exactsizes.cc:3:
+In file included from stan_files/exactsizes.hpp:25:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/rstaninc.hpp:3:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/stan_fit.hpp:34:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat.hpp:12:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat.hpp:96:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat/fun/csr_extract_u.hpp:6:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Sparse:27:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/OrderingMethods:71:
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+In file included from stan_files/exactsizes.cc:3:
+In file included from stan_files/exactsizes.hpp:25:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/rstaninc.hpp:3:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/stan_fit.hpp:34:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat.hpp:12:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat.hpp:96:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat/fun/csr_extract_u.hpp:6:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Sparse:29:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/SparseCholesky:43:
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+In file included from stan_files/exactsizes.cc:3:
+In file included from stan_files/exactsizes.hpp:25:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/rstaninc.hpp:3:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/stan_fit.hpp:34:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat.hpp:12:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat.hpp:96:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat/fun/csr_extract_u.hpp:6:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Sparse:32:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/SparseQR:35:
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+In file included from stan_files/exactsizes.cc:3:
+In file included from stan_files/exactsizes.hpp:25:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/rstaninc.hpp:3:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/stan_fit.hpp:34:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat.hpp:12:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat.hpp:96:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat/fun/csr_extract_u.hpp:6:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Sparse:33:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/IterativeLinearSolvers:46:
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+In file included from stan_files/exactsizes.cc:3:
+In file included from stan_files/exactsizes.hpp:25:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/rstaninc.hpp:3:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/stan_fit.hpp:34:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/core.hpp:44:
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/core/set_zero_all_adjoints.hpp:14:13: warning: unused function 'set_zero_all_adjoints' [-Wunused-function]
+static void set_zero_all_adjoints() {
+            ^
+In file included from stan_files/exactsizes.cc:3:
+In file included from stan_files/exactsizes.hpp:25:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/rstaninc.hpp:3:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/stan_fit.hpp:34:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat.hpp:12:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat.hpp:70:
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat/fun/autocorrelation.hpp:18:8: warning: function 'fft_next_good_size' is not needed and will not be emitted [-Wunneeded-internal-declaration]
+size_t fft_next_good_size(size_t N) {
+       ^
+In file included from stan_files/exactsizes.cc:3:
+stan_files/exactsizes.hpp:397:30: warning: unused typedef 'fun_return_scalar_t__' [-Wunused-local-typedef]
+    typedef local_scalar_t__ fun_return_scalar_t__;
+                             ^
+17 warnings generated.
+"/Library/Frameworks/R.framework/Resources/bin/Rscript" -e "source(file.path('..', 'tools', 'make_cc.R')); make_cc(commandArgs(TRUE))" stan_files/lowrank.stan
+Wrote C++ file "stan_files/lowrank.cc"
+clang++ -std=gnu++14 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -I"../inst/include" -I"`"/Library/Frameworks/R.framework/Resources/bin/Rscript" --vanilla -e "cat(system.file('include', 'src', package = 'StanHeaders'))"`" -DBOOST_DISABLE_ASSERTS -DEIGEN_NO_DEBUG -DBOOST_MATH_OVERFLOW_ERROR_POLICY=errno_on_error -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/BH/include" -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/Rcpp/include" -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include" -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include" -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include" -I/usr/local/include   -fPIC  -Wall -g -O2 -c stan_files/lowrank.cc -o stan_files/lowrank.o
+In file included from stan_files/lowrank.cc:3:
+In file included from stan_files/lowrank.hpp:25:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/rstaninc.hpp:3:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/stan_fit.hpp:15:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/BH/include/boost/random/additive_combine.hpp:27:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/BH/include/boost/random/linear_congruential.hpp:30:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/BH/include/boost/random/detail/const_mod.hpp:23:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/BH/include/boost/random/detail/large_arithmetic.hpp:19:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/BH/include/boost/random/detail/integer_log2.hpp:19:
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/BH/include/boost/pending/integer_log2.hpp:7:1: warning: This header is deprecated. Use <boost/integer/integer_log2.hpp> instead. [-W#pragma-messages]
+BOOST_HEADER_DEPRECATED("<boost/integer/integer_log2.hpp>");
+^
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/BH/include/boost/config/header_deprecated.hpp:23:37: note: expanded from macro 'BOOST_HEADER_DEPRECATED'
+# define BOOST_HEADER_DEPRECATED(a) BOOST_PRAGMA_MESSAGE("This header is deprecated. Use " a " instead.")
+                                    ^
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/BH/include/boost/config/pragma_message.hpp:24:34: note: expanded from macro 'BOOST_PRAGMA_MESSAGE'
+# define BOOST_PRAGMA_MESSAGE(x) _Pragma(BOOST_STRINGIZE(message(x)))
+                                 ^
+<scratch space>:106:2: note: expanded from here
+ message("This header is deprecated. Use " "<boost/integer/integer_log2.hpp>" " instead.")
+ ^
+In file included from stan_files/lowrank.cc:3:
+In file included from stan_files/lowrank.hpp:25:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/rstaninc.hpp:3:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/stan_fit.hpp:34:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/core.hpp:14:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/core/matrix_vari.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat/fun/Eigen_NumTraits.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Dense:1:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Core:535:
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+In file included from stan_files/lowrank.cc:3:
+In file included from stan_files/lowrank.hpp:25:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/rstaninc.hpp:3:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/stan_fit.hpp:34:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/core.hpp:14:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/core/matrix_vari.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat/fun/Eigen_NumTraits.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Dense:2:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/LU:47:
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+In file included from stan_files/lowrank.cc:3:
+In file included from stan_files/lowrank.hpp:25:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/rstaninc.hpp:3:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/stan_fit.hpp:34:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/core.hpp:14:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/core/matrix_vari.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat/fun/Eigen_NumTraits.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Dense:3:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Cholesky:12:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Jacobi:29:
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+In file included from stan_files/lowrank.cc:3:
+In file included from stan_files/lowrank.hpp:25:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/rstaninc.hpp:3:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/stan_fit.hpp:34:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/core.hpp:14:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/core/matrix_vari.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat/fun/Eigen_NumTraits.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Dense:3:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Cholesky:43:
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+In file included from stan_files/lowrank.cc:3:
+In file included from stan_files/lowrank.hpp:25:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/rstaninc.hpp:3:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/stan_fit.hpp:34:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/core.hpp:14:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/core/matrix_vari.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat/fun/Eigen_NumTraits.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Dense:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/QR:17:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Householder:27:
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+In file included from stan_files/lowrank.cc:3:
+In file included from stan_files/lowrank.hpp:25:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/rstaninc.hpp:3:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/stan_fit.hpp:34:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/core.hpp:14:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/core/matrix_vari.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat/fun/Eigen_NumTraits.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Dense:5:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/SVD:48:
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+In file included from stan_files/lowrank.cc:3:
+In file included from stan_files/lowrank.hpp:25:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/rstaninc.hpp:3:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/stan_fit.hpp:34:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/core.hpp:14:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/core/matrix_vari.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat/fun/Eigen_NumTraits.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Dense:6:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Geometry:58:
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+In file included from stan_files/lowrank.cc:3:
+In file included from stan_files/lowrank.hpp:25:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/rstaninc.hpp:3:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/stan_fit.hpp:34:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/core.hpp:14:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/core/matrix_vari.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat/fun/Eigen_NumTraits.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Dense:7:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Eigenvalues:58:
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+In file included from stan_files/lowrank.cc:3:
+In file included from stan_files/lowrank.hpp:25:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/rstaninc.hpp:3:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/stan_fit.hpp:34:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat.hpp:12:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat.hpp:96:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat/fun/csr_extract_u.hpp:6:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Sparse:26:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/SparseCore:66:
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+In file included from stan_files/lowrank.cc:3:
+In file included from stan_files/lowrank.hpp:25:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/rstaninc.hpp:3:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/stan_fit.hpp:34:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat.hpp:12:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat.hpp:96:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat/fun/csr_extract_u.hpp:6:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Sparse:27:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/OrderingMethods:71:
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+In file included from stan_files/lowrank.cc:3:
+In file included from stan_files/lowrank.hpp:25:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/rstaninc.hpp:3:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/stan_fit.hpp:34:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat.hpp:12:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat.hpp:96:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat/fun/csr_extract_u.hpp:6:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Sparse:29:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/SparseCholesky:43:
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+In file included from stan_files/lowrank.cc:3:
+In file included from stan_files/lowrank.hpp:25:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/rstaninc.hpp:3:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/stan_fit.hpp:34:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat.hpp:12:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat.hpp:96:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat/fun/csr_extract_u.hpp:6:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Sparse:32:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/SparseQR:35:
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+In file included from stan_files/lowrank.cc:3:
+In file included from stan_files/lowrank.hpp:25:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/rstaninc.hpp:3:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/stan_fit.hpp:34:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat.hpp:12:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat.hpp:96:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat/fun/csr_extract_u.hpp:6:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Sparse:33:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/IterativeLinearSolvers:46:
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+In file included from stan_files/lowrank.cc:3:
+In file included from stan_files/lowrank.hpp:25:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/rstaninc.hpp:3:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/stan_fit.hpp:34:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/core.hpp:44:
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/core/set_zero_all_adjoints.hpp:14:13: warning: unused function 'set_zero_all_adjoints' [-Wunused-function]
+static void set_zero_all_adjoints() {
+            ^
+In file included from stan_files/lowrank.cc:3:
+In file included from stan_files/lowrank.hpp:25:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/rstaninc.hpp:3:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/stan_fit.hpp:34:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat.hpp:12:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat.hpp:70:
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat/fun/autocorrelation.hpp:18:8: warning: function 'fft_next_good_size' is not needed and will not be emitted [-Wunneeded-internal-declaration]
+size_t fft_next_good_size(size_t N) {
+       ^
+In file included from stan_files/lowrank.cc:3:
+stan_files/lowrank.hpp:495:30: warning: unused typedef 'fun_return_scalar_t__' [-Wunused-local-typedef]
+    typedef local_scalar_t__ fun_return_scalar_t__;
+                             ^
+17 warnings generated.
+"/Library/Frameworks/R.framework/Resources/bin/Rscript" -e "source(file.path('..', 'tools', 'make_cc.R')); make_cc(commandArgs(TRUE))" stan_files/lowranksizes.stan
+Wrote C++ file "stan_files/lowranksizes.cc"
+clang++ -std=gnu++14 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -I"../inst/include" -I"`"/Library/Frameworks/R.framework/Resources/bin/Rscript" --vanilla -e "cat(system.file('include', 'src', package = 'StanHeaders'))"`" -DBOOST_DISABLE_ASSERTS -DEIGEN_NO_DEBUG -DBOOST_MATH_OVERFLOW_ERROR_POLICY=errno_on_error -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/BH/include" -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/Rcpp/include" -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include" -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include" -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include" -I/usr/local/include   -fPIC  -Wall -g -O2 -c stan_files/lowranksizes.cc -o stan_files/lowranksizes.o
+In file included from stan_files/lowranksizes.cc:3:
+In file included from stan_files/lowranksizes.hpp:25:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/rstaninc.hpp:3:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/stan_fit.hpp:15:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/BH/include/boost/random/additive_combine.hpp:27:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/BH/include/boost/random/linear_congruential.hpp:30:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/BH/include/boost/random/detail/const_mod.hpp:23:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/BH/include/boost/random/detail/large_arithmetic.hpp:19:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/BH/include/boost/random/detail/integer_log2.hpp:19:
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/BH/include/boost/pending/integer_log2.hpp:7:1: warning: This header is deprecated. Use <boost/integer/integer_log2.hpp> instead. [-W#pragma-messages]
+BOOST_HEADER_DEPRECATED("<boost/integer/integer_log2.hpp>");
+^
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/BH/include/boost/config/header_deprecated.hpp:23:37: note: expanded from macro 'BOOST_HEADER_DEPRECATED'
+# define BOOST_HEADER_DEPRECATED(a) BOOST_PRAGMA_MESSAGE("This header is deprecated. Use " a " instead.")
+                                    ^
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/BH/include/boost/config/pragma_message.hpp:24:34: note: expanded from macro 'BOOST_PRAGMA_MESSAGE'
+# define BOOST_PRAGMA_MESSAGE(x) _Pragma(BOOST_STRINGIZE(message(x)))
+                                 ^
+<scratch space>:106:2: note: expanded from here
+ message("This header is deprecated. Use " "<boost/integer/integer_log2.hpp>" " instead.")
+ ^
+In file included from stan_files/lowranksizes.cc:3:
+In file included from stan_files/lowranksizes.hpp:25:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/rstaninc.hpp:3:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/stan_fit.hpp:34:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/core.hpp:14:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/core/matrix_vari.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat/fun/Eigen_NumTraits.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Dense:1:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Core:535:
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+In file included from stan_files/lowranksizes.cc:3:
+In file included from stan_files/lowranksizes.hpp:25:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/rstaninc.hpp:3:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/stan_fit.hpp:34:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/core.hpp:14:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/core/matrix_vari.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat/fun/Eigen_NumTraits.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Dense:2:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/LU:47:
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+In file included from stan_files/lowranksizes.cc:3:
+In file included from stan_files/lowranksizes.hpp:25:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/rstaninc.hpp:3:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/stan_fit.hpp:34:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/core.hpp:14:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/core/matrix_vari.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat/fun/Eigen_NumTraits.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Dense:3:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Cholesky:12:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Jacobi:29:
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+In file included from stan_files/lowranksizes.cc:3:
+In file included from stan_files/lowranksizes.hpp:25:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/rstaninc.hpp:3:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/stan_fit.hpp:34:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/core.hpp:14:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/core/matrix_vari.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat/fun/Eigen_NumTraits.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Dense:3:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Cholesky:43:
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+In file included from stan_files/lowranksizes.cc:3:
+In file included from stan_files/lowranksizes.hpp:25:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/rstaninc.hpp:3:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/stan_fit.hpp:34:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/core.hpp:14:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/core/matrix_vari.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat/fun/Eigen_NumTraits.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Dense:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/QR:17:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Householder:27:
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+In file included from stan_files/lowranksizes.cc:3:
+In file included from stan_files/lowranksizes.hpp:25:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/rstaninc.hpp:3:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/stan_fit.hpp:34:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/core.hpp:14:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/core/matrix_vari.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat/fun/Eigen_NumTraits.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Dense:5:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/SVD:48:
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+In file included from stan_files/lowranksizes.cc:3:
+In file included from stan_files/lowranksizes.hpp:25:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/rstaninc.hpp:3:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/stan_fit.hpp:34:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/core.hpp:14:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/core/matrix_vari.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat/fun/Eigen_NumTraits.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Dense:6:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Geometry:58:
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+In file included from stan_files/lowranksizes.cc:3:
+In file included from stan_files/lowranksizes.hpp:25:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/rstaninc.hpp:3:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/stan_fit.hpp:34:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/core.hpp:14:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/core/matrix_vari.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat/fun/Eigen_NumTraits.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Dense:7:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Eigenvalues:58:
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+In file included from stan_files/lowranksizes.cc:3:
+In file included from stan_files/lowranksizes.hpp:25:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/rstaninc.hpp:3:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/stan_fit.hpp:34:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat.hpp:12:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat.hpp:96:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat/fun/csr_extract_u.hpp:6:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Sparse:26:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/SparseCore:66:
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+In file included from stan_files/lowranksizes.cc:3:
+In file included from stan_files/lowranksizes.hpp:25:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/rstaninc.hpp:3:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/stan_fit.hpp:34:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat.hpp:12:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat.hpp:96:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat/fun/csr_extract_u.hpp:6:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Sparse:27:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/OrderingMethods:71:
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+In file included from stan_files/lowranksizes.cc:3:
+In file included from stan_files/lowranksizes.hpp:25:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/rstaninc.hpp:3:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/stan_fit.hpp:34:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat.hpp:12:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat.hpp:96:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat/fun/csr_extract_u.hpp:6:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Sparse:29:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/SparseCholesky:43:
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+In file included from stan_files/lowranksizes.cc:3:
+In file included from stan_files/lowranksizes.hpp:25:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/rstaninc.hpp:3:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/stan_fit.hpp:34:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat.hpp:12:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat.hpp:96:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat/fun/csr_extract_u.hpp:6:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Sparse:32:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/SparseQR:35:
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+In file included from stan_files/lowranksizes.cc:3:
+In file included from stan_files/lowranksizes.hpp:25:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/rstaninc.hpp:3:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/stan_fit.hpp:34:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat.hpp:12:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat.hpp:96:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat/fun/csr_extract_u.hpp:6:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Sparse:33:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/IterativeLinearSolvers:46:
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+In file included from stan_files/lowranksizes.cc:3:
+In file included from stan_files/lowranksizes.hpp:25:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/rstaninc.hpp:3:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/stan_fit.hpp:34:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/core.hpp:44:
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/core/set_zero_all_adjoints.hpp:14:13: warning: unused function 'set_zero_all_adjoints' [-Wunused-function]
+static void set_zero_all_adjoints() {
+            ^
+In file included from stan_files/lowranksizes.cc:3:
+In file included from stan_files/lowranksizes.hpp:25:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/rstaninc.hpp:3:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/stan_fit.hpp:34:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat.hpp:12:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat.hpp:70:
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat/fun/autocorrelation.hpp:18:8: warning: function 'fft_next_good_size' is not needed and will not be emitted [-Wunneeded-internal-declaration]
+size_t fft_next_good_size(size_t N) {
+       ^
+In file included from stan_files/lowranksizes.cc:3:
+stan_files/lowranksizes.hpp:495:30: warning: unused typedef 'fun_return_scalar_t__' [-Wunused-local-typedef]
+    typedef local_scalar_t__ fun_return_scalar_t__;
+                             ^
+17 warnings generated.
+clang++ -std=gnu++14 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -I"../inst/include" -I"`"/Library/Frameworks/R.framework/Resources/bin/Rscript" --vanilla -e "cat(system.file('include', 'src', package = 'StanHeaders'))"`" -DBOOST_DISABLE_ASSERTS -DEIGEN_NO_DEBUG -DBOOST_MATH_OVERFLOW_ERROR_POLICY=errno_on_error -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/BH/include" -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/Rcpp/include" -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include" -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include" -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include" -I/usr/local/include   -fPIC  -Wall -g -O2 -c init.cpp -o init.o
+clang++ -std=gnu++14 -dynamiclib -Wl,-headerpad_max_install_names -undefined dynamic_lookup -single_module -multiply_defined suppress -L/Library/Frameworks/R.framework/Resources/lib -L/usr/local/lib -o DeLorean.so stan_files/exact.o stan_files/exactsizes.o stan_files/lowrank.o stan_files/lowranksizes.o init.o -F/Library/Frameworks/R.framework/.. -framework R -Wl,-framework -Wl,CoreFoundation
+rm stan_files/exact.cc stan_files/exactsizes.cc stan_files/lowranksizes.cc stan_files/lowrank.cc
+installing to /Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/DeLorean/new/DeLorean.Rcheck/DeLorean/libs
+** R
+** data
+*** moving datasets to lazyload DB
+Error in data2LazyLoadDB(pkg_name, lib, compress = data_compress) : 
+  there is no package called 'DeLorean'
+ERROR: lazydata failed for package ‘DeLorean’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/DeLorean/new/DeLorean.Rcheck/DeLorean’
+
+```
+### CRAN
+
+```
+* installing *source* package ‘DeLorean’ ...
+** package ‘DeLorean’ successfully unpacked and MD5 sums checked
+** libs
+"/Library/Frameworks/R.framework/Resources/bin/Rscript" -e "source(file.path('..', 'tools', 'make_cc.R')); make_cc(commandArgs(TRUE))" stan_files/exact.stan
+Wrote C++ file "stan_files/exact.cc"
+clang++ -std=gnu++14 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -I"../inst/include" -I"`"/Library/Frameworks/R.framework/Resources/bin/Rscript" --vanilla -e "cat(system.file('include', 'src', package = 'StanHeaders'))"`" -DBOOST_DISABLE_ASSERTS -DEIGEN_NO_DEBUG -DBOOST_MATH_OVERFLOW_ERROR_POLICY=errno_on_error -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/BH/include" -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/Rcpp/include" -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include" -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include" -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include" -I/usr/local/include   -fPIC  -Wall -g -O2 -c stan_files/exact.cc -o stan_files/exact.o
+In file included from stan_files/exact.cc:3:
+In file included from stan_files/exact.hpp:25:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/rstaninc.hpp:3:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/stan_fit.hpp:15:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/BH/include/boost/random/additive_combine.hpp:27:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/BH/include/boost/random/linear_congruential.hpp:30:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/BH/include/boost/random/detail/const_mod.hpp:23:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/BH/include/boost/random/detail/large_arithmetic.hpp:19:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/BH/include/boost/random/detail/integer_log2.hpp:19:
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/BH/include/boost/pending/integer_log2.hpp:7:1: warning: This header is deprecated. Use <boost/integer/integer_log2.hpp> instead. [-W#pragma-messages]
+BOOST_HEADER_DEPRECATED("<boost/integer/integer_log2.hpp>");
+^
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/BH/include/boost/config/header_deprecated.hpp:23:37: note: expanded from macro 'BOOST_HEADER_DEPRECATED'
+# define BOOST_HEADER_DEPRECATED(a) BOOST_PRAGMA_MESSAGE("This header is deprecated. Use " a " instead.")
+                                    ^
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/BH/include/boost/config/pragma_message.hpp:24:34: note: expanded from macro 'BOOST_PRAGMA_MESSAGE'
+# define BOOST_PRAGMA_MESSAGE(x) _Pragma(BOOST_STRINGIZE(message(x)))
+                                 ^
+<scratch space>:106:2: note: expanded from here
+ message("This header is deprecated. Use " "<boost/integer/integer_log2.hpp>" " instead.")
+ ^
+In file included from stan_files/exact.cc:3:
+In file included from stan_files/exact.hpp:25:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/rstaninc.hpp:3:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/stan_fit.hpp:34:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/core.hpp:14:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/core/matrix_vari.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat/fun/Eigen_NumTraits.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Dense:1:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Core:535:
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+In file included from stan_files/exact.cc:3:
+In file included from stan_files/exact.hpp:25:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/rstaninc.hpp:3:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/stan_fit.hpp:34:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/core.hpp:14:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/core/matrix_vari.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat/fun/Eigen_NumTraits.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Dense:2:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/LU:47:
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+In file included from stan_files/exact.cc:3:
+In file included from stan_files/exact.hpp:25:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/rstaninc.hpp:3:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/stan_fit.hpp:34:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/core.hpp:14:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/core/matrix_vari.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat/fun/Eigen_NumTraits.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Dense:3:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Cholesky:12:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Jacobi:29:
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+In file included from stan_files/exact.cc:3:
+In file included from stan_files/exact.hpp:25:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/rstaninc.hpp:3:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/stan_fit.hpp:34:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/core.hpp:14:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/core/matrix_vari.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat/fun/Eigen_NumTraits.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Dense:3:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Cholesky:43:
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+In file included from stan_files/exact.cc:3:
+In file included from stan_files/exact.hpp:25:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/rstaninc.hpp:3:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/stan_fit.hpp:34:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/core.hpp:14:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/core/matrix_vari.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat/fun/Eigen_NumTraits.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Dense:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/QR:17:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Householder:27:
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+In file included from stan_files/exact.cc:3:
+In file included from stan_files/exact.hpp:25:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/rstaninc.hpp:3:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/stan_fit.hpp:34:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/core.hpp:14:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/core/matrix_vari.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat/fun/Eigen_NumTraits.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Dense:5:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/SVD:48:
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+In file included from stan_files/exact.cc:3:
+In file included from stan_files/exact.hpp:25:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/rstaninc.hpp:3:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/stan_fit.hpp:34:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/core.hpp:14:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/core/matrix_vari.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat/fun/Eigen_NumTraits.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Dense:6:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Geometry:58:
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+In file included from stan_files/exact.cc:3:
+In file included from stan_files/exact.hpp:25:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/rstaninc.hpp:3:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/stan_fit.hpp:34:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/core.hpp:14:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/core/matrix_vari.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat/fun/Eigen_NumTraits.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Dense:7:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Eigenvalues:58:
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+In file included from stan_files/exact.cc:3:
+In file included from stan_files/exact.hpp:25:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/rstaninc.hpp:3:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/stan_fit.hpp:34:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat.hpp:12:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat.hpp:96:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat/fun/csr_extract_u.hpp:6:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Sparse:26:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/SparseCore:66:
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+In file included from stan_files/exact.cc:3:
+In file included from stan_files/exact.hpp:25:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/rstaninc.hpp:3:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/stan_fit.hpp:34:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat.hpp:12:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat.hpp:96:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat/fun/csr_extract_u.hpp:6:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Sparse:27:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/OrderingMethods:71:
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+In file included from stan_files/exact.cc:3:
+In file included from stan_files/exact.hpp:25:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/rstaninc.hpp:3:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/stan_fit.hpp:34:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat.hpp:12:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat.hpp:96:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat/fun/csr_extract_u.hpp:6:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Sparse:29:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/SparseCholesky:43:
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+In file included from stan_files/exact.cc:3:
+In file included from stan_files/exact.hpp:25:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/rstaninc.hpp:3:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/stan_fit.hpp:34:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat.hpp:12:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat.hpp:96:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat/fun/csr_extract_u.hpp:6:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Sparse:32:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/SparseQR:35:
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+In file included from stan_files/exact.cc:3:
+In file included from stan_files/exact.hpp:25:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/rstaninc.hpp:3:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/stan_fit.hpp:34:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat.hpp:12:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat.hpp:96:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat/fun/csr_extract_u.hpp:6:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Sparse:33:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/IterativeLinearSolvers:46:
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+In file included from stan_files/exact.cc:3:
+In file included from stan_files/exact.hpp:25:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/rstaninc.hpp:3:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/stan_fit.hpp:34:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/core.hpp:44:
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/core/set_zero_all_adjoints.hpp:14:13: warning: unused function 'set_zero_all_adjoints' [-Wunused-function]
+static void set_zero_all_adjoints() {
+            ^
+In file included from stan_files/exact.cc:3:
+In file included from stan_files/exact.hpp:25:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/rstaninc.hpp:3:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/stan_fit.hpp:34:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat.hpp:12:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat.hpp:70:
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat/fun/autocorrelation.hpp:18:8: warning: function 'fft_next_good_size' is not needed and will not be emitted [-Wunneeded-internal-declaration]
+size_t fft_next_good_size(size_t N) {
+       ^
+In file included from stan_files/exact.cc:3:
+stan_files/exact.hpp:397:30: warning: unused typedef 'fun_return_scalar_t__' [-Wunused-local-typedef]
+    typedef local_scalar_t__ fun_return_scalar_t__;
+                             ^
+17 warnings generated.
+"/Library/Frameworks/R.framework/Resources/bin/Rscript" -e "source(file.path('..', 'tools', 'make_cc.R')); make_cc(commandArgs(TRUE))" stan_files/exactsizes.stan
+Wrote C++ file "stan_files/exactsizes.cc"
+clang++ -std=gnu++14 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -I"../inst/include" -I"`"/Library/Frameworks/R.framework/Resources/bin/Rscript" --vanilla -e "cat(system.file('include', 'src', package = 'StanHeaders'))"`" -DBOOST_DISABLE_ASSERTS -DEIGEN_NO_DEBUG -DBOOST_MATH_OVERFLOW_ERROR_POLICY=errno_on_error -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/BH/include" -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/Rcpp/include" -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include" -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include" -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include" -I/usr/local/include   -fPIC  -Wall -g -O2 -c stan_files/exactsizes.cc -o stan_files/exactsizes.o
+In file included from stan_files/exactsizes.cc:3:
+In file included from stan_files/exactsizes.hpp:25:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/rstaninc.hpp:3:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/stan_fit.hpp:15:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/BH/include/boost/random/additive_combine.hpp:27:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/BH/include/boost/random/linear_congruential.hpp:30:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/BH/include/boost/random/detail/const_mod.hpp:23:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/BH/include/boost/random/detail/large_arithmetic.hpp:19:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/BH/include/boost/random/detail/integer_log2.hpp:19:
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/BH/include/boost/pending/integer_log2.hpp:7:1: warning: This header is deprecated. Use <boost/integer/integer_log2.hpp> instead. [-W#pragma-messages]
+BOOST_HEADER_DEPRECATED("<boost/integer/integer_log2.hpp>");
+^
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/BH/include/boost/config/header_deprecated.hpp:23:37: note: expanded from macro 'BOOST_HEADER_DEPRECATED'
+# define BOOST_HEADER_DEPRECATED(a) BOOST_PRAGMA_MESSAGE("This header is deprecated. Use " a " instead.")
+                                    ^
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/BH/include/boost/config/pragma_message.hpp:24:34: note: expanded from macro 'BOOST_PRAGMA_MESSAGE'
+# define BOOST_PRAGMA_MESSAGE(x) _Pragma(BOOST_STRINGIZE(message(x)))
+                                 ^
+<scratch space>:106:2: note: expanded from here
+ message("This header is deprecated. Use " "<boost/integer/integer_log2.hpp>" " instead.")
+ ^
+In file included from stan_files/exactsizes.cc:3:
+In file included from stan_files/exactsizes.hpp:25:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/rstaninc.hpp:3:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/stan_fit.hpp:34:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/core.hpp:14:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/core/matrix_vari.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat/fun/Eigen_NumTraits.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Dense:1:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Core:535:
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+In file included from stan_files/exactsizes.cc:3:
+In file included from stan_files/exactsizes.hpp:25:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/rstaninc.hpp:3:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/stan_fit.hpp:34:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/core.hpp:14:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/core/matrix_vari.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat/fun/Eigen_NumTraits.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Dense:2:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/LU:47:
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+In file included from stan_files/exactsizes.cc:3:
+In file included from stan_files/exactsizes.hpp:25:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/rstaninc.hpp:3:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/stan_fit.hpp:34:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/core.hpp:14:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/core/matrix_vari.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat/fun/Eigen_NumTraits.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Dense:3:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Cholesky:12:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Jacobi:29:
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+In file included from stan_files/exactsizes.cc:3:
+In file included from stan_files/exactsizes.hpp:25:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/rstaninc.hpp:3:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/stan_fit.hpp:34:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/core.hpp:14:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/core/matrix_vari.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat/fun/Eigen_NumTraits.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Dense:3:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Cholesky:43:
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+In file included from stan_files/exactsizes.cc:3:
+In file included from stan_files/exactsizes.hpp:25:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/rstaninc.hpp:3:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/stan_fit.hpp:34:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/core.hpp:14:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/core/matrix_vari.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat/fun/Eigen_NumTraits.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Dense:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/QR:17:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Householder:27:
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+In file included from stan_files/exactsizes.cc:3:
+In file included from stan_files/exactsizes.hpp:25:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/rstaninc.hpp:3:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/stan_fit.hpp:34:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/core.hpp:14:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/core/matrix_vari.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat/fun/Eigen_NumTraits.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Dense:5:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/SVD:48:
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+In file included from stan_files/exactsizes.cc:3:
+In file included from stan_files/exactsizes.hpp:25:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/rstaninc.hpp:3:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/stan_fit.hpp:34:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/core.hpp:14:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/core/matrix_vari.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat/fun/Eigen_NumTraits.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Dense:6:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Geometry:58:
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+In file included from stan_files/exactsizes.cc:3:
+In file included from stan_files/exactsizes.hpp:25:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/rstaninc.hpp:3:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/stan_fit.hpp:34:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/core.hpp:14:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/core/matrix_vari.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat/fun/Eigen_NumTraits.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Dense:7:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Eigenvalues:58:
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+In file included from stan_files/exactsizes.cc:3:
+In file included from stan_files/exactsizes.hpp:25:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/rstaninc.hpp:3:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/stan_fit.hpp:34:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat.hpp:12:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat.hpp:96:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat/fun/csr_extract_u.hpp:6:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Sparse:26:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/SparseCore:66:
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+In file included from stan_files/exactsizes.cc:3:
+In file included from stan_files/exactsizes.hpp:25:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/rstaninc.hpp:3:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/stan_fit.hpp:34:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat.hpp:12:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat.hpp:96:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat/fun/csr_extract_u.hpp:6:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Sparse:27:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/OrderingMethods:71:
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+In file included from stan_files/exactsizes.cc:3:
+In file included from stan_files/exactsizes.hpp:25:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/rstaninc.hpp:3:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/stan_fit.hpp:34:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat.hpp:12:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat.hpp:96:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat/fun/csr_extract_u.hpp:6:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Sparse:29:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/SparseCholesky:43:
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+In file included from stan_files/exactsizes.cc:3:
+In file included from stan_files/exactsizes.hpp:25:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/rstaninc.hpp:3:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/stan_fit.hpp:34:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat.hpp:12:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat.hpp:96:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat/fun/csr_extract_u.hpp:6:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Sparse:32:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/SparseQR:35:
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+In file included from stan_files/exactsizes.cc:3:
+In file included from stan_files/exactsizes.hpp:25:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/rstaninc.hpp:3:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/stan_fit.hpp:34:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat.hpp:12:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat.hpp:96:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat/fun/csr_extract_u.hpp:6:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Sparse:33:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/IterativeLinearSolvers:46:
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+In file included from stan_files/exactsizes.cc:3:
+In file included from stan_files/exactsizes.hpp:25:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/rstaninc.hpp:3:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/stan_fit.hpp:34:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/core.hpp:44:
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/core/set_zero_all_adjoints.hpp:14:13: warning: unused function 'set_zero_all_adjoints' [-Wunused-function]
+static void set_zero_all_adjoints() {
+            ^
+In file included from stan_files/exactsizes.cc:3:
+In file included from stan_files/exactsizes.hpp:25:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/rstaninc.hpp:3:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/stan_fit.hpp:34:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat.hpp:12:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat.hpp:70:
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat/fun/autocorrelation.hpp:18:8: warning: function 'fft_next_good_size' is not needed and will not be emitted [-Wunneeded-internal-declaration]
+size_t fft_next_good_size(size_t N) {
+       ^
+In file included from stan_files/exactsizes.cc:3:
+stan_files/exactsizes.hpp:397:30: warning: unused typedef 'fun_return_scalar_t__' [-Wunused-local-typedef]
+    typedef local_scalar_t__ fun_return_scalar_t__;
+                             ^
+17 warnings generated.
+"/Library/Frameworks/R.framework/Resources/bin/Rscript" -e "source(file.path('..', 'tools', 'make_cc.R')); make_cc(commandArgs(TRUE))" stan_files/lowrank.stan
+Wrote C++ file "stan_files/lowrank.cc"
+clang++ -std=gnu++14 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -I"../inst/include" -I"`"/Library/Frameworks/R.framework/Resources/bin/Rscript" --vanilla -e "cat(system.file('include', 'src', package = 'StanHeaders'))"`" -DBOOST_DISABLE_ASSERTS -DEIGEN_NO_DEBUG -DBOOST_MATH_OVERFLOW_ERROR_POLICY=errno_on_error -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/BH/include" -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/Rcpp/include" -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include" -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include" -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include" -I/usr/local/include   -fPIC  -Wall -g -O2 -c stan_files/lowrank.cc -o stan_files/lowrank.o
+In file included from stan_files/lowrank.cc:3:
+In file included from stan_files/lowrank.hpp:25:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/rstaninc.hpp:3:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/stan_fit.hpp:15:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/BH/include/boost/random/additive_combine.hpp:27:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/BH/include/boost/random/linear_congruential.hpp:30:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/BH/include/boost/random/detail/const_mod.hpp:23:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/BH/include/boost/random/detail/large_arithmetic.hpp:19:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/BH/include/boost/random/detail/integer_log2.hpp:19:
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/BH/include/boost/pending/integer_log2.hpp:7:1: warning: This header is deprecated. Use <boost/integer/integer_log2.hpp> instead. [-W#pragma-messages]
+BOOST_HEADER_DEPRECATED("<boost/integer/integer_log2.hpp>");
+^
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/BH/include/boost/config/header_deprecated.hpp:23:37: note: expanded from macro 'BOOST_HEADER_DEPRECATED'
+# define BOOST_HEADER_DEPRECATED(a) BOOST_PRAGMA_MESSAGE("This header is deprecated. Use " a " instead.")
+                                    ^
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/BH/include/boost/config/pragma_message.hpp:24:34: note: expanded from macro 'BOOST_PRAGMA_MESSAGE'
+# define BOOST_PRAGMA_MESSAGE(x) _Pragma(BOOST_STRINGIZE(message(x)))
+                                 ^
+<scratch space>:106:2: note: expanded from here
+ message("This header is deprecated. Use " "<boost/integer/integer_log2.hpp>" " instead.")
+ ^
+In file included from stan_files/lowrank.cc:3:
+In file included from stan_files/lowrank.hpp:25:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/rstaninc.hpp:3:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/stan_fit.hpp:34:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/core.hpp:14:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/core/matrix_vari.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat/fun/Eigen_NumTraits.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Dense:1:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Core:535:
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+In file included from stan_files/lowrank.cc:3:
+In file included from stan_files/lowrank.hpp:25:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/rstaninc.hpp:3:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/stan_fit.hpp:34:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/core.hpp:14:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/core/matrix_vari.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat/fun/Eigen_NumTraits.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Dense:2:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/LU:47:
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+In file included from stan_files/lowrank.cc:3:
+In file included from stan_files/lowrank.hpp:25:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/rstaninc.hpp:3:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/stan_fit.hpp:34:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/core.hpp:14:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/core/matrix_vari.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat/fun/Eigen_NumTraits.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Dense:3:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Cholesky:12:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Jacobi:29:
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+In file included from stan_files/lowrank.cc:3:
+In file included from stan_files/lowrank.hpp:25:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/rstaninc.hpp:3:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/stan_fit.hpp:34:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/core.hpp:14:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/core/matrix_vari.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat/fun/Eigen_NumTraits.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Dense:3:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Cholesky:43:
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+In file included from stan_files/lowrank.cc:3:
+In file included from stan_files/lowrank.hpp:25:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/rstaninc.hpp:3:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/stan_fit.hpp:34:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/core.hpp:14:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/core/matrix_vari.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat/fun/Eigen_NumTraits.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Dense:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/QR:17:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Householder:27:
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+In file included from stan_files/lowrank.cc:3:
+In file included from stan_files/lowrank.hpp:25:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/rstaninc.hpp:3:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/stan_fit.hpp:34:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/core.hpp:14:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/core/matrix_vari.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat/fun/Eigen_NumTraits.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Dense:5:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/SVD:48:
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+In file included from stan_files/lowrank.cc:3:
+In file included from stan_files/lowrank.hpp:25:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/rstaninc.hpp:3:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/stan_fit.hpp:34:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/core.hpp:14:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/core/matrix_vari.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat/fun/Eigen_NumTraits.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Dense:6:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Geometry:58:
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+In file included from stan_files/lowrank.cc:3:
+In file included from stan_files/lowrank.hpp:25:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/rstaninc.hpp:3:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/stan_fit.hpp:34:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/core.hpp:14:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/core/matrix_vari.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat/fun/Eigen_NumTraits.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Dense:7:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Eigenvalues:58:
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+In file included from stan_files/lowrank.cc:3:
+In file included from stan_files/lowrank.hpp:25:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/rstaninc.hpp:3:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/stan_fit.hpp:34:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat.hpp:12:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat.hpp:96:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat/fun/csr_extract_u.hpp:6:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Sparse:26:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/SparseCore:66:
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+In file included from stan_files/lowrank.cc:3:
+In file included from stan_files/lowrank.hpp:25:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/rstaninc.hpp:3:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/stan_fit.hpp:34:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat.hpp:12:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat.hpp:96:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat/fun/csr_extract_u.hpp:6:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Sparse:27:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/OrderingMethods:71:
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+In file included from stan_files/lowrank.cc:3:
+In file included from stan_files/lowrank.hpp:25:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/rstaninc.hpp:3:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/stan_fit.hpp:34:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat.hpp:12:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat.hpp:96:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat/fun/csr_extract_u.hpp:6:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Sparse:29:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/SparseCholesky:43:
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+In file included from stan_files/lowrank.cc:3:
+In file included from stan_files/lowrank.hpp:25:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/rstaninc.hpp:3:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/stan_fit.hpp:34:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat.hpp:12:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat.hpp:96:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat/fun/csr_extract_u.hpp:6:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Sparse:32:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/SparseQR:35:
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+In file included from stan_files/lowrank.cc:3:
+In file included from stan_files/lowrank.hpp:25:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/rstaninc.hpp:3:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/stan_fit.hpp:34:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat.hpp:12:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat.hpp:96:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat/fun/csr_extract_u.hpp:6:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Sparse:33:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/IterativeLinearSolvers:46:
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+In file included from stan_files/lowrank.cc:3:
+In file included from stan_files/lowrank.hpp:25:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/rstaninc.hpp:3:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/stan_fit.hpp:34:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/core.hpp:44:
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/core/set_zero_all_adjoints.hpp:14:13: warning: unused function 'set_zero_all_adjoints' [-Wunused-function]
+static void set_zero_all_adjoints() {
+            ^
+In file included from stan_files/lowrank.cc:3:
+In file included from stan_files/lowrank.hpp:25:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/rstaninc.hpp:3:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/stan_fit.hpp:34:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat.hpp:12:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat.hpp:70:
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat/fun/autocorrelation.hpp:18:8: warning: function 'fft_next_good_size' is not needed and will not be emitted [-Wunneeded-internal-declaration]
+size_t fft_next_good_size(size_t N) {
+       ^
+In file included from stan_files/lowrank.cc:3:
+stan_files/lowrank.hpp:495:30: warning: unused typedef 'fun_return_scalar_t__' [-Wunused-local-typedef]
+    typedef local_scalar_t__ fun_return_scalar_t__;
+                             ^
+17 warnings generated.
+"/Library/Frameworks/R.framework/Resources/bin/Rscript" -e "source(file.path('..', 'tools', 'make_cc.R')); make_cc(commandArgs(TRUE))" stan_files/lowranksizes.stan
+Wrote C++ file "stan_files/lowranksizes.cc"
+clang++ -std=gnu++14 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -I"../inst/include" -I"`"/Library/Frameworks/R.framework/Resources/bin/Rscript" --vanilla -e "cat(system.file('include', 'src', package = 'StanHeaders'))"`" -DBOOST_DISABLE_ASSERTS -DEIGEN_NO_DEBUG -DBOOST_MATH_OVERFLOW_ERROR_POLICY=errno_on_error -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/BH/include" -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/Rcpp/include" -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include" -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include" -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include" -I/usr/local/include   -fPIC  -Wall -g -O2 -c stan_files/lowranksizes.cc -o stan_files/lowranksizes.o
+In file included from stan_files/lowranksizes.cc:3:
+In file included from stan_files/lowranksizes.hpp:25:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/rstaninc.hpp:3:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/stan_fit.hpp:15:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/BH/include/boost/random/additive_combine.hpp:27:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/BH/include/boost/random/linear_congruential.hpp:30:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/BH/include/boost/random/detail/const_mod.hpp:23:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/BH/include/boost/random/detail/large_arithmetic.hpp:19:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/BH/include/boost/random/detail/integer_log2.hpp:19:
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/BH/include/boost/pending/integer_log2.hpp:7:1: warning: This header is deprecated. Use <boost/integer/integer_log2.hpp> instead. [-W#pragma-messages]
+BOOST_HEADER_DEPRECATED("<boost/integer/integer_log2.hpp>");
+^
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/BH/include/boost/config/header_deprecated.hpp:23:37: note: expanded from macro 'BOOST_HEADER_DEPRECATED'
+# define BOOST_HEADER_DEPRECATED(a) BOOST_PRAGMA_MESSAGE("This header is deprecated. Use " a " instead.")
+                                    ^
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/BH/include/boost/config/pragma_message.hpp:24:34: note: expanded from macro 'BOOST_PRAGMA_MESSAGE'
+# define BOOST_PRAGMA_MESSAGE(x) _Pragma(BOOST_STRINGIZE(message(x)))
+                                 ^
+<scratch space>:106:2: note: expanded from here
+ message("This header is deprecated. Use " "<boost/integer/integer_log2.hpp>" " instead.")
+ ^
+In file included from stan_files/lowranksizes.cc:3:
+In file included from stan_files/lowranksizes.hpp:25:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/rstaninc.hpp:3:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/stan_fit.hpp:34:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/core.hpp:14:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/core/matrix_vari.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat/fun/Eigen_NumTraits.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Dense:1:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Core:535:
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+In file included from stan_files/lowranksizes.cc:3:
+In file included from stan_files/lowranksizes.hpp:25:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/rstaninc.hpp:3:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/stan_fit.hpp:34:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/core.hpp:14:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/core/matrix_vari.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat/fun/Eigen_NumTraits.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Dense:2:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/LU:47:
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+In file included from stan_files/lowranksizes.cc:3:
+In file included from stan_files/lowranksizes.hpp:25:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/rstaninc.hpp:3:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/stan_fit.hpp:34:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/core.hpp:14:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/core/matrix_vari.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat/fun/Eigen_NumTraits.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Dense:3:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Cholesky:12:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Jacobi:29:
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+In file included from stan_files/lowranksizes.cc:3:
+In file included from stan_files/lowranksizes.hpp:25:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/rstaninc.hpp:3:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/stan_fit.hpp:34:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/core.hpp:14:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/core/matrix_vari.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat/fun/Eigen_NumTraits.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Dense:3:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Cholesky:43:
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+In file included from stan_files/lowranksizes.cc:3:
+In file included from stan_files/lowranksizes.hpp:25:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/rstaninc.hpp:3:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/stan_fit.hpp:34:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/core.hpp:14:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/core/matrix_vari.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat/fun/Eigen_NumTraits.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Dense:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/QR:17:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Householder:27:
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+In file included from stan_files/lowranksizes.cc:3:
+In file included from stan_files/lowranksizes.hpp:25:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/rstaninc.hpp:3:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/stan_fit.hpp:34:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/core.hpp:14:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/core/matrix_vari.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat/fun/Eigen_NumTraits.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Dense:5:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/SVD:48:
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+In file included from stan_files/lowranksizes.cc:3:
+In file included from stan_files/lowranksizes.hpp:25:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/rstaninc.hpp:3:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/stan_fit.hpp:34:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/core.hpp:14:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/core/matrix_vari.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat/fun/Eigen_NumTraits.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Dense:6:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Geometry:58:
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+In file included from stan_files/lowranksizes.cc:3:
+In file included from stan_files/lowranksizes.hpp:25:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/rstaninc.hpp:3:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/stan_fit.hpp:34:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/core.hpp:14:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/core/matrix_vari.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat/fun/Eigen_NumTraits.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Dense:7:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Eigenvalues:58:
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+In file included from stan_files/lowranksizes.cc:3:
+In file included from stan_files/lowranksizes.hpp:25:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/rstaninc.hpp:3:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/stan_fit.hpp:34:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat.hpp:12:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat.hpp:96:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat/fun/csr_extract_u.hpp:6:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Sparse:26:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/SparseCore:66:
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+In file included from stan_files/lowranksizes.cc:3:
+In file included from stan_files/lowranksizes.hpp:25:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/rstaninc.hpp:3:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/stan_fit.hpp:34:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat.hpp:12:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat.hpp:96:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat/fun/csr_extract_u.hpp:6:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Sparse:27:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/OrderingMethods:71:
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+In file included from stan_files/lowranksizes.cc:3:
+In file included from stan_files/lowranksizes.hpp:25:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/rstaninc.hpp:3:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/stan_fit.hpp:34:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat.hpp:12:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat.hpp:96:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat/fun/csr_extract_u.hpp:6:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Sparse:29:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/SparseCholesky:43:
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+In file included from stan_files/lowranksizes.cc:3:
+In file included from stan_files/lowranksizes.hpp:25:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/rstaninc.hpp:3:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/stan_fit.hpp:34:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat.hpp:12:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat.hpp:96:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat/fun/csr_extract_u.hpp:6:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Sparse:32:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/SparseQR:35:
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+In file included from stan_files/lowranksizes.cc:3:
+In file included from stan_files/lowranksizes.hpp:25:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/rstaninc.hpp:3:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/stan_fit.hpp:34:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat.hpp:12:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat.hpp:96:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat/fun/csr_extract_u.hpp:6:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/Sparse:33:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/IterativeLinearSolvers:46:
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include/Eigen/src/Core/util/ReenableStupidWarnings.h:10:30: warning: pragma diagnostic pop could not pop, no matching push [-Wunknown-pragmas]
+    #pragma clang diagnostic pop
+                             ^
+In file included from stan_files/lowranksizes.cc:3:
+In file included from stan_files/lowranksizes.hpp:25:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/rstaninc.hpp:3:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/stan_fit.hpp:34:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/core.hpp:44:
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/core/set_zero_all_adjoints.hpp:14:13: warning: unused function 'set_zero_all_adjoints' [-Wunused-function]
+static void set_zero_all_adjoints() {
+            ^
+In file included from stan_files/lowranksizes.cc:3:
+In file included from stan_files/lowranksizes.hpp:25:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/rstaninc.hpp:3:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include/rstan/stan_fit.hpp:34:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/services/diagnose/diagnose.hpp:10:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/test_gradients.hpp:7:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/src/stan/model/log_prob_grad.hpp:4:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/rev/mat.hpp:12:
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat.hpp:70:
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include/stan/math/prim/mat/fun/autocorrelation.hpp:18:8: warning: function 'fft_next_good_size' is not needed and will not be emitted [-Wunneeded-internal-declaration]
+size_t fft_next_good_size(size_t N) {
+       ^
+In file included from stan_files/lowranksizes.cc:3:
+stan_files/lowranksizes.hpp:495:30: warning: unused typedef 'fun_return_scalar_t__' [-Wunused-local-typedef]
+    typedef local_scalar_t__ fun_return_scalar_t__;
+                             ^
+17 warnings generated.
+clang++ -std=gnu++14 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -I"../inst/include" -I"`"/Library/Frameworks/R.framework/Resources/bin/Rscript" --vanilla -e "cat(system.file('include', 'src', package = 'StanHeaders'))"`" -DBOOST_DISABLE_ASSERTS -DEIGEN_NO_DEBUG -DBOOST_MATH_OVERFLOW_ERROR_POLICY=errno_on_error -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/BH/include" -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/Rcpp/include" -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/RcppEigen/include" -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/rstan/include" -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/DeLorean/StanHeaders/include" -I/usr/local/include   -fPIC  -Wall -g -O2 -c init.cpp -o init.o
+clang++ -std=gnu++14 -dynamiclib -Wl,-headerpad_max_install_names -undefined dynamic_lookup -single_module -multiply_defined suppress -L/Library/Frameworks/R.framework/Resources/lib -L/usr/local/lib -o DeLorean.so stan_files/exact.o stan_files/exactsizes.o stan_files/lowrank.o stan_files/lowranksizes.o init.o -F/Library/Frameworks/R.framework/.. -framework R -Wl,-framework -Wl,CoreFoundation
+rm stan_files/exact.cc stan_files/exactsizes.cc stan_files/lowranksizes.cc stan_files/lowrank.cc
+installing to /Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/DeLorean/old/DeLorean.Rcheck/DeLorean/libs
+** R
+** data
+*** moving datasets to lazyload DB
+Error in data2LazyLoadDB(pkg_name, lib, compress = data_compress) : 
+  there is no package called 'DeLorean'
+ERROR: lazydata failed for package ‘DeLorean’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/DeLorean/old/DeLorean.Rcheck/DeLorean’
+
+```
 # DiffBind
 
 <details>
@@ -3596,7 +3772,7 @@ Run `revdep_details(,"dotCall64")` for more info
 *   checking whether package ‘dotCall64’ can be installed ... ERROR
     ```
     Installation failed.
-    See ‘/Users/max/github/forks/testthat/revdep/checks.noindex/dotCall64/new/dotCall64.Rcheck/00install.out’ for details.
+    See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/dotCall64/new/dotCall64.Rcheck/00install.out’ for details.
     ```
 
 ## Installation
@@ -3607,21 +3783,11 @@ Run `revdep_details(,"dotCall64")` for more info
 * installing *source* package ‘dotCall64’ ...
 ** package ‘dotCall64’ successfully unpacked and MD5 sums checked
 ** libs
-clang -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I/usr/local/include  -fopenmp -I../inst/include/ -DDOTCAL64_PRIVATE -fPIC  -Wall -g -O2  -c dotCall64.c -o dotCall64.o
-clang -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I/usr/local/include  -fopenmp -I../inst/include/ -DDOTCAL64_PRIVATE -fPIC  -Wall -g -O2  -c dotCall64helpers.c -o dotCall64helpers.o
-clang -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I/usr/local/include  -fopenmp -I../inst/include/ -DDOTCAL64_PRIVATE -fPIC  -Wall -g -O2  -c init.c -o init.o
-clang -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I/usr/local/include  -fopenmp -I../inst/include/ -DDOTCAL64_PRIVATE -fPIC  -Wall -g -O2  -c testfunctions_c.c -o testfunctions_c.o
-clangclang: clangerror: error: : errorunsupported option '-fopenmp': clang: unsupported option '-fopenmp': error
-: 
-unsupported option '-fopenmp'unsupported option '-fopenmp'
-
-make: *** [testfunctions_c.o] Error 1
-make: *** Waiting for unfinished jobs....
-make: *** [init.o] Error 1
-make: *** [dotCall64helpers.o] Error 1
+ccache clang -Qunused-arguments  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I/usr/local/include  -fopenmp -I../inst/include/ -DDOTCAL64_PRIVATE -fPIC  -Wall -g -O2  -c dotCall64.c -o dotCall64.o
+clang: error: unsupported option '-fopenmp'
 make: *** [dotCall64.o] Error 1
 ERROR: compilation failed for package ‘dotCall64’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/dotCall64/new/dotCall64.Rcheck/dotCall64’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/dotCall64/new/dotCall64.Rcheck/dotCall64’
 
 ```
 ### CRAN
@@ -3630,21 +3796,11 @@ ERROR: compilation failed for package ‘dotCall64’
 * installing *source* package ‘dotCall64’ ...
 ** package ‘dotCall64’ successfully unpacked and MD5 sums checked
 ** libs
-clang -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I/usr/local/include  -fopenmp -I../inst/include/ -DDOTCAL64_PRIVATE -fPIC  -Wall -g -O2  -c dotCall64.c -o dotCall64.o
-clang -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I/usr/local/include  -fopenmp -I../inst/include/ -DDOTCAL64_PRIVATE -fPIC  -Wall -g -O2  -c dotCall64helpers.c -o dotCall64helpers.o
-clang -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I/usr/local/include  -fopenmp -I../inst/include/ -DDOTCAL64_PRIVATE -fPIC  -Wall -g -O2  -c init.c -o init.o
-clang -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I/usr/local/include  -fopenmp -I../inst/include/ -DDOTCAL64_PRIVATE -fPIC  -Wall -g -O2  -c testfunctions_c.c -o testfunctions_c.o
-clang: error: unsupported option '-fopenmp'clang: error: unsupported option '-fopenmp'
-
+ccache clang -Qunused-arguments  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I/usr/local/include  -fopenmp -I../inst/include/ -DDOTCAL64_PRIVATE -fPIC  -Wall -g -O2  -c dotCall64.c -o dotCall64.o
 clang: error: unsupported option '-fopenmp'
-make: *** [dotCall64helpers.o] Error 1
-make: *** Waiting for unfinished jobs....
 make: *** [dotCall64.o] Error 1
-make: *** [testfunctions_c.o] Error 1
-clang: error: unsupported option '-fopenmp'
-make: *** [init.o] Error 1
 ERROR: compilation failed for package ‘dotCall64’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/dotCall64/old/dotCall64.Rcheck/dotCall64’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/dotCall64/old/dotCall64.Rcheck/dotCall64’
 
 ```
 # dynr
@@ -3665,7 +3821,7 @@ Run `revdep_details(,"dynr")` for more info
 *   checking whether package ‘dynr’ can be installed ... ERROR
     ```
     Installation failed.
-    See ‘/Users/max/github/forks/testthat/revdep/checks.noindex/dynr/new/dynr.Rcheck/00install.out’ for details.
+    See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/dynr/new/dynr.Rcheck/00install.out’ for details.
     ```
 
 ## Installation
@@ -3678,7 +3834,7 @@ Run `revdep_details(,"dynr")` for more info
 checking for gsl-config... no
 configure: error: gsl-config not found, is GSL installed?
 ERROR: configuration failed for package ‘dynr’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/dynr/new/dynr.Rcheck/dynr’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/dynr/new/dynr.Rcheck/dynr’
 
 ```
 ### CRAN
@@ -3689,104 +3845,7 @@ ERROR: configuration failed for package ‘dynr’
 checking for gsl-config... no
 configure: error: gsl-config not found, is GSL installed?
 ERROR: configuration failed for package ‘dynr’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/dynr/old/dynr.Rcheck/dynr’
-
-```
-# eggCounts
-
-<details>
-
-* Version: 2.1-2
-* Source code: https://github.com/cran/eggCounts
-* URL: https://www.math.uzh.ch/pages/eggcount/
-* Date/Publication: 2018-11-09 14:30:32 UTC
-* Number of recursive dependencies: 74
-
-Run `revdep_details(,"eggCounts")` for more info
-
-</details>
-
-## In both
-
-*   checking whether package ‘eggCounts’ can be installed ... ERROR
-    ```
-    Installation failed.
-    See ‘/Users/max/github/forks/testthat/revdep/checks.noindex/eggCounts/new/eggCounts.Rcheck/00install.out’ for details.
-    ```
-
-*   checking package dependencies ... NOTE
-    ```
-    Package suggested but not available for checking: ‘eggCountsExtra’
-    ```
-
-## Installation
-
-### Devel
-
-```
-* installing *source* package ‘eggCounts’ ...
-** package ‘eggCounts’ successfully unpacked and MD5 sums checked
-** libs
-"/Library/Frameworks/R.framework/Resources/bin/Rscript" -e "source(file.path('..', 'tools', 'make_cc.R')); make_cc(commandArgs(TRUE))" stan_files/indefficacy.stan
-"/Library/Frameworks/R.framework/Resources/bin/Rscript" -e "source(file.path('..', 'tools', 'make_cc.R')); make_cc(commandArgs(TRUE))" stan_files/nb.stan
-"/Library/Frameworks/R.framework/Resources/bin/Rscript" -e "source(file.path('..', 'tools', 'make_cc.R')); make_cc(commandArgs(TRUE))" stan_files/paired.stan
-"/Library/Frameworks/R.framework/Resources/bin/Rscript" -e "source(file.path('..', 'tools', 'make_cc.R')); make_cc(commandArgs(TRUE))" stan_files/simple.stan
-Wrote C++ file "stan_files/simple.cc"
-Wrote C++ file "stan_files/nb.cc"
-Wrote C++ file "stan_files/indefficacy.cc"
-Wrote C++ file "stan_files/paired.cc"
-Error in readRDS("/var/folders/lb/xhxqmcrd7gv302_b1pdfykh80000gn/T//Rtmpfpz96c/file184d623467c63") : 
-  error reading from connection
-Calls: .Last -> readRDS
-Execution halted
-Error in readRDS("/var/folders/lb/xhxqmcrd7gv302_b1pdfykh80000gn/T//Rtmpfpz96c/file184d623467c63") : 
-  error reading from connection
-Calls: .Last -> readRDS
-Execution halted
-make: *** [stan_files/simple.cc] Error 1
-make: *** Waiting for unfinished jobs....
-make: *** [stan_files/indefficacy.cc] Error 1
-rm stan_files/indefficacy.cc stan_files/paired.cc stan_files/simple.cc stan_files/nb.cc
-ERROR: compilation failed for package ‘eggCounts’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/eggCounts/new/eggCounts.Rcheck/eggCounts’
-
-```
-### CRAN
-
-```
-* installing *source* package ‘eggCounts’ ...
-** package ‘eggCounts’ successfully unpacked and MD5 sums checked
-** libs
-"/Library/Frameworks/R.framework/Resources/bin/Rscript" -e "source(file.path('..', 'tools', 'make_cc.R')); make_cc(commandArgs(TRUE))" stan_files/indefficacy.stan
-"/Library/Frameworks/R.framework/Resources/bin/Rscript" -e "source(file.path('..', 'tools', 'make_cc.R')); make_cc(commandArgs(TRUE))" stan_files/nb.stan
-"/Library/Frameworks/R.framework/Resources/bin/Rscript" -e "source(file.path('..', 'tools', 'make_cc.R')); make_cc(commandArgs(TRUE))" stan_files/paired.stan
-"/Library/Frameworks/R.framework/Resources/bin/Rscript" -e "source(file.path('..', 'tools', 'make_cc.R')); make_cc(commandArgs(TRUE))" stan_files/simple.stan
-Wrote C++ file "stan_files/nb.cc"
-Wrote C++ file "stan_files/simple.cc"
-Wrote C++ file "stan_files/paired.cc"
-Wrote C++ file "stan_files/indefficacy.cc"
-"/Library/Frameworks/R.framework/Resources/bin/Rscript" -e "source(file.path('..', 'tools', 'make_cc.R')); make_cc(commandArgs(TRUE))" stan_files/unpaired.stan
-"/Library/Frameworks/R.framework/Resources/bin/Rscript" -e "source(file.path('..', 'tools', 'make_cc.R')); make_cc(commandArgs(TRUE))" stan_files/zinb.stan
-"/Library/Frameworks/R.framework/Resources/bin/Rscript" -e "source(file.path('..', 'tools', 'make_cc.R')); make_cc(commandArgs(TRUE))" stan_files/zipaired.stan
-"/Library/Frameworks/R.framework/Resources/bin/Rscript" -e "source(file.path('..', 'tools', 'make_cc.R')); make_cc(commandArgs(TRUE))" stan_files/ziunpaired.stan
-
-
-Wrote C++ file "stan_files/zinb.cc"
-Wrote C++ file "stan_files/unpaired.cc"
-Wrote C++ file "stan_files/ziunpaired.cc"
-Wrote C++ file "stan_files/zipaired.cc"
-Error in readRDS("/var/folders/lb/xhxqmcrd7gv302_b1pdfykh80000gn/T//Rtmpfpz96c/file184d63f36e0ed") : 
-  error reading from connection
-Calls: .Last -> readRDS
-Execution halted
-/usr/local/clang6/bin/clang++ -std=gnu++14 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -I"../inst/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/eggCounts/StanHeaders/include/src" -DBOOST_DISABLE_ASSERTS -DEIGEN_NO_DEBUG -DBOOST_MATH_OVERFLOW_ERROR_POLICY=errno_on_error -I"/Users/max/github/forks/testthat/revdep/library.noindex/eggCounts/StanHeaders/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/eggCounts/rstan/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/eggCounts/BH/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/eggCounts/Rcpp/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/eggCounts/RcppEigen/include" -I/usr/local/include   -fPIC  -Wall -g -O2 -c init.cpp -o init.o
-
-
-make: *** [stan_files/ziunpaired.cc] Error 1
-make: *** Waiting for unfinished jobs....
-rm stan_files/ziunpaired.cc stan_files/unpaired.cc stan_files/indefficacy.cc stan_files/paired.cc stan_files/simple.cc stan_files/zinb.cc stan_files/zipaired.cc stan_files/nb.cc
-ERROR: compilation failed for package ‘eggCounts’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/eggCounts/old/eggCounts.Rcheck/eggCounts’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/dynr/old/dynr.Rcheck/dynr’
 
 ```
 # ELMER
@@ -3807,7 +3866,7 @@ Run `revdep_details(,"ELMER")` for more info
 *   checking whether package ‘ELMER’ can be installed ... ERROR
     ```
     Installation failed.
-    See ‘/Users/max/github/forks/testthat/revdep/checks.noindex/ELMER/new/ELMER.Rcheck/00install.out’ for details.
+    See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/ELMER/new/ELMER.Rcheck/00install.out’ for details.
     ```
 
 ## Installation
@@ -3822,7 +3881,7 @@ Run `revdep_details(,"ELMER")` for more info
 Error in loadNamespace(i, c(lib.loc, .libPaths()), versionCheck = vI[[i]]) : 
   there is no package called 'sesameData'
 ERROR: lazy loading failed for package 'ELMER'
-* removing '/Users/max/github/forks/testthat/revdep/checks.noindex/ELMER/new/ELMER.Rcheck/ELMER'
+* removing '/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/ELMER/new/ELMER.Rcheck/ELMER'
 
 ```
 ### CRAN
@@ -3835,7 +3894,7 @@ ERROR: lazy loading failed for package 'ELMER'
 Error in loadNamespace(i, c(lib.loc, .libPaths()), versionCheck = vI[[i]]) : 
   there is no package called 'sesameData'
 ERROR: lazy loading failed for package 'ELMER'
-* removing '/Users/max/github/forks/testthat/revdep/checks.noindex/ELMER/old/ELMER.Rcheck/ELMER'
+* removing '/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/ELMER/old/ELMER.Rcheck/ELMER'
 
 ```
 # esATAC
@@ -3858,13 +3917,13 @@ Run `revdep_details(,"esATAC")` for more info
 *   checking whether package ‘esATAC’ can be installed ... ERROR
     ```
     Installation failed.
-    See ‘/Users/max/github/forks/testthat/revdep/checks.noindex/esATAC/new/esATAC.Rcheck/00install.out’ for details.
+    See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/esATAC/new/esATAC.Rcheck/00install.out’ for details.
     ```
 
 *   checking package dependencies ... NOTE
     ```
     Packages suggested but not available for checking:
-      ‘BSgenome.Hsapiens.UCSC.hg19’ ‘TxDb.Hsapiens.UCSC.hg19.knownGene’
+      ‘BSgenome.Hsapiens.UCSC.hg19’ ‘org.Hs.eg.db’
     ```
 
 *   checking for hidden files and directories ... NOTE
@@ -3882,17 +3941,17 @@ Run `revdep_details(,"esATAC")` for more info
 ```
 * installing *source* package ‘esATAC’ ...
 ** libs
-/usr/local/clang6/bin/clang++ -std=gnu++11 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -DNDEBUG -DPLF_SYS_LINUX  -DR_EVN_FLAG -I"/Users/max/github/forks/testthat/revdep/library.noindex/esATAC/Rcpp/include" -I/usr/local/include   -fPIC  -Wall -g -O2 -c BedLine.cpp -o BedLine.o
-/usr/local/clang6/bin/clang++ -std=gnu++11 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -DNDEBUG -DPLF_SYS_LINUX  -DR_EVN_FLAG -I"/Users/max/github/forks/testthat/revdep/library.noindex/esATAC/Rcpp/include" -I/usr/local/include   -fPIC  -Wall -g -O2 -c BedUtils.cpp -o BedUtils.o
-/usr/local/clang6/bin/clang++ -std=gnu++11 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -DNDEBUG -DPLF_SYS_LINUX  -DR_EVN_FLAG -I"/Users/max/github/forks/testthat/revdep/library.noindex/esATAC/Rcpp/include" -I/usr/local/include   -fPIC  -Wall -g -O2 -c ChrDivi.cpp -o ChrDivi.o
-/usr/local/clang6/bin/clang++ -std=gnu++11 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -DNDEBUG -DPLF_SYS_LINUX  -DR_EVN_FLAG -I"/Users/max/github/forks/testthat/revdep/library.noindex/esATAC/Rcpp/include" -I/usr/local/include   -fPIC  -Wall -g -O2 -c CutCountPre.cpp -o CutCountPre.o
-/usr/local/clang6/bin/clang++ -std=gnu++11 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -DNDEBUG -DPLF_SYS_LINUX  -DR_EVN_FLAG -I"/Users/max/github/forks/testthat/revdep/library.noindex/esATAC/Rcpp/include" -I/usr/local/include   -fPIC  -Wall -g -O2 -c CutSiteCount.cpp -o CutSiteCount.o
-/usr/local/clang6/bin/clang++ -std=gnu++11 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -DNDEBUG -DPLF_SYS_LINUX  -DR_EVN_FLAG -I"/Users/max/github/forks/testthat/revdep/library.noindex/esATAC/Rcpp/include" -I/usr/local/include   -fPIC  -Wall -g -O2 -c LibComplexQC.cpp -o LibComplexQC.o
-/usr/local/clang6/bin/clang++ -std=gnu++11 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -DNDEBUG -DPLF_SYS_LINUX  -DR_EVN_FLAG -I"/Users/max/github/forks/testthat/revdep/library.noindex/esATAC/Rcpp/include" -I/usr/local/include   -fPIC  -Wall -g -O2 -c RcppExports.cpp -o RcppExports.o
-/usr/local/clang6/bin/clang++ -std=gnu++11 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -DNDEBUG -DPLF_SYS_LINUX  -DR_EVN_FLAG -I"/Users/max/github/forks/testthat/revdep/library.noindex/esATAC/Rcpp/include" -I/usr/local/include   -fPIC  -Wall -g -O2 -c SortBed.cpp -o SortBed.o
-/usr/local/clang6/bin/clang++ -std=gnu++11 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -DNDEBUG -DPLF_SYS_LINUX  -DR_EVN_FLAG -I"/Users/max/github/forks/testthat/revdep/library.noindex/esATAC/Rcpp/include" -I/usr/local/include   -fPIC  -Wall -g -O2 -c rcpp_wrapper.cpp -o rcpp_wrapper.o
-/usr/local/clang6/bin/clang++ -std=gnu++11 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -DNDEBUG -DPLF_SYS_LINUX  -DR_EVN_FLAG -I"/Users/max/github/forks/testthat/revdep/library.noindex/esATAC/Rcpp/include" -I/usr/local/include   -fPIC  -Wall -g -O2 -c renamer.cpp -o renamer.o
-/usr/local/clang6/bin/clang++ -std=gnu++11 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -DNDEBUG -DPLF_SYS_LINUX  -DR_EVN_FLAG -I"/Users/max/github/forks/testthat/revdep/library.noindex/esATAC/Rcpp/include" -I/usr/local/include   -fPIC  -Wall -g -O2 -c sam2bed.cc -o sam2bed.o
+clang++ -std=gnu++11 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -DNDEBUG -DPLF_SYS_LINUX  -DR_EVN_FLAG -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/esATAC/Rcpp/include" -I/usr/local/include   -fPIC  -Wall -g -O2 -c BedLine.cpp -o BedLine.o
+clang++ -std=gnu++11 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -DNDEBUG -DPLF_SYS_LINUX  -DR_EVN_FLAG -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/esATAC/Rcpp/include" -I/usr/local/include   -fPIC  -Wall -g -O2 -c BedUtils.cpp -o BedUtils.o
+clang++ -std=gnu++11 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -DNDEBUG -DPLF_SYS_LINUX  -DR_EVN_FLAG -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/esATAC/Rcpp/include" -I/usr/local/include   -fPIC  -Wall -g -O2 -c ChrDivi.cpp -o ChrDivi.o
+clang++ -std=gnu++11 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -DNDEBUG -DPLF_SYS_LINUX  -DR_EVN_FLAG -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/esATAC/Rcpp/include" -I/usr/local/include   -fPIC  -Wall -g -O2 -c CutCountPre.cpp -o CutCountPre.o
+clang++ -std=gnu++11 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -DNDEBUG -DPLF_SYS_LINUX  -DR_EVN_FLAG -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/esATAC/Rcpp/include" -I/usr/local/include   -fPIC  -Wall -g -O2 -c CutSiteCount.cpp -o CutSiteCount.o
+clang++ -std=gnu++11 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -DNDEBUG -DPLF_SYS_LINUX  -DR_EVN_FLAG -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/esATAC/Rcpp/include" -I/usr/local/include   -fPIC  -Wall -g -O2 -c LibComplexQC.cpp -o LibComplexQC.o
+clang++ -std=gnu++11 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -DNDEBUG -DPLF_SYS_LINUX  -DR_EVN_FLAG -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/esATAC/Rcpp/include" -I/usr/local/include   -fPIC  -Wall -g -O2 -c RcppExports.cpp -o RcppExports.o
+clang++ -std=gnu++11 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -DNDEBUG -DPLF_SYS_LINUX  -DR_EVN_FLAG -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/esATAC/Rcpp/include" -I/usr/local/include   -fPIC  -Wall -g -O2 -c SortBed.cpp -o SortBed.o
+clang++ -std=gnu++11 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -DNDEBUG -DPLF_SYS_LINUX  -DR_EVN_FLAG -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/esATAC/Rcpp/include" -I/usr/local/include   -fPIC  -Wall -g -O2 -c rcpp_wrapper.cpp -o rcpp_wrapper.o
+clang++ -std=gnu++11 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -DNDEBUG -DPLF_SYS_LINUX  -DR_EVN_FLAG -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/esATAC/Rcpp/include" -I/usr/local/include   -fPIC  -Wall -g -O2 -c renamer.cpp -o renamer.o
+clang++ -std=gnu++11 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -DNDEBUG -DPLF_SYS_LINUX  -DR_EVN_FLAG -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/esATAC/Rcpp/include" -I/usr/local/include   -fPIC  -Wall -g -O2 -c sam2bed.cc -o sam2bed.o
 sam2bed.cc:111:16: warning: unused variable 'xspm' [-Wunused-variable]
     regmatch_t xspm[1];
                ^
@@ -3900,16 +3959,15 @@ sam2bed.cc:280:16: warning: unused variable 'xspm' [-Wunused-variable]
     regmatch_t xspm[1];
                ^
 2 warnings generated.
-/usr/local/clang6/bin/clang++ -std=gnu++11 -dynamiclib -Wl,-headerpad_max_install_names -undefined dynamic_lookup -single_module -multiply_defined suppress -L/Library/Frameworks/R.framework/Resources/lib -L/usr/local/lib -o esATAC.so BedLine.o BedUtils.o ChrDivi.o CutCountPre.o CutSiteCount.o LibComplexQC.o RcppExports.o SortBed.o rcpp_wrapper.o renamer.o sam2bed.o -F/Library/Frameworks/R.framework/.. -framework R -Wl,-framework -Wl,CoreFoundation
-ld: warning: text-based stub file /System/Library/Frameworks//CoreFoundation.framework/CoreFoundation.tbd and library file /System/Library/Frameworks//CoreFoundation.framework/CoreFoundation are out of sync. Falling back to library file for linking.
-installing to /Users/max/github/forks/testthat/revdep/checks.noindex/esATAC/new/esATAC.Rcheck/esATAC/libs
+clang++ -std=gnu++11 -dynamiclib -Wl,-headerpad_max_install_names -undefined dynamic_lookup -single_module -multiply_defined suppress -L/Library/Frameworks/R.framework/Resources/lib -L/usr/local/lib -o esATAC.so BedLine.o BedUtils.o ChrDivi.o CutCountPre.o CutSiteCount.o LibComplexQC.o RcppExports.o SortBed.o rcpp_wrapper.o renamer.o sam2bed.o -F/Library/Frameworks/R.framework/.. -framework R -Wl,-framework -Wl,CoreFoundation
+installing to /Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/esATAC/new/esATAC.Rcheck/esATAC/libs
 ** R
 ** inst
 ** byte-compile and prepare package for lazy loading
 Error in loadNamespace(j <- i[[1L]], c(lib.loc, .libPaths()), versionCheck = vI[[j]]) : 
-  there is no package called ‘TxDb.Hsapiens.UCSC.hg19.knownGene’
+  there is no package called ‘GO.db’
 ERROR: lazy loading failed for package ‘esATAC’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/esATAC/new/esATAC.Rcheck/esATAC’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/esATAC/new/esATAC.Rcheck/esATAC’
 
 ```
 ### CRAN
@@ -3917,17 +3975,17 @@ ERROR: lazy loading failed for package ‘esATAC’
 ```
 * installing *source* package ‘esATAC’ ...
 ** libs
-/usr/local/clang6/bin/clang++ -std=gnu++11 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -DNDEBUG -DPLF_SYS_LINUX  -DR_EVN_FLAG -I"/Users/max/github/forks/testthat/revdep/library.noindex/esATAC/Rcpp/include" -I/usr/local/include   -fPIC  -Wall -g -O2 -c BedLine.cpp -o BedLine.o
-/usr/local/clang6/bin/clang++ -std=gnu++11 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -DNDEBUG -DPLF_SYS_LINUX  -DR_EVN_FLAG -I"/Users/max/github/forks/testthat/revdep/library.noindex/esATAC/Rcpp/include" -I/usr/local/include   -fPIC  -Wall -g -O2 -c BedUtils.cpp -o BedUtils.o
-/usr/local/clang6/bin/clang++ -std=gnu++11 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -DNDEBUG -DPLF_SYS_LINUX  -DR_EVN_FLAG -I"/Users/max/github/forks/testthat/revdep/library.noindex/esATAC/Rcpp/include" -I/usr/local/include   -fPIC  -Wall -g -O2 -c ChrDivi.cpp -o ChrDivi.o
-/usr/local/clang6/bin/clang++ -std=gnu++11 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -DNDEBUG -DPLF_SYS_LINUX  -DR_EVN_FLAG -I"/Users/max/github/forks/testthat/revdep/library.noindex/esATAC/Rcpp/include" -I/usr/local/include   -fPIC  -Wall -g -O2 -c CutCountPre.cpp -o CutCountPre.o
-/usr/local/clang6/bin/clang++ -std=gnu++11 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -DNDEBUG -DPLF_SYS_LINUX  -DR_EVN_FLAG -I"/Users/max/github/forks/testthat/revdep/library.noindex/esATAC/Rcpp/include" -I/usr/local/include   -fPIC  -Wall -g -O2 -c CutSiteCount.cpp -o CutSiteCount.o
-/usr/local/clang6/bin/clang++ -std=gnu++11 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -DNDEBUG -DPLF_SYS_LINUX  -DR_EVN_FLAG -I"/Users/max/github/forks/testthat/revdep/library.noindex/esATAC/Rcpp/include" -I/usr/local/include   -fPIC  -Wall -g -O2 -c LibComplexQC.cpp -o LibComplexQC.o
-/usr/local/clang6/bin/clang++ -std=gnu++11 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -DNDEBUG -DPLF_SYS_LINUX  -DR_EVN_FLAG -I"/Users/max/github/forks/testthat/revdep/library.noindex/esATAC/Rcpp/include" -I/usr/local/include   -fPIC  -Wall -g -O2 -c RcppExports.cpp -o RcppExports.o
-/usr/local/clang6/bin/clang++ -std=gnu++11 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -DNDEBUG -DPLF_SYS_LINUX  -DR_EVN_FLAG -I"/Users/max/github/forks/testthat/revdep/library.noindex/esATAC/Rcpp/include" -I/usr/local/include   -fPIC  -Wall -g -O2 -c SortBed.cpp -o SortBed.o
-/usr/local/clang6/bin/clang++ -std=gnu++11 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -DNDEBUG -DPLF_SYS_LINUX  -DR_EVN_FLAG -I"/Users/max/github/forks/testthat/revdep/library.noindex/esATAC/Rcpp/include" -I/usr/local/include   -fPIC  -Wall -g -O2 -c rcpp_wrapper.cpp -o rcpp_wrapper.o
-/usr/local/clang6/bin/clang++ -std=gnu++11 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -DNDEBUG -DPLF_SYS_LINUX  -DR_EVN_FLAG -I"/Users/max/github/forks/testthat/revdep/library.noindex/esATAC/Rcpp/include" -I/usr/local/include   -fPIC  -Wall -g -O2 -c renamer.cpp -o renamer.o
-/usr/local/clang6/bin/clang++ -std=gnu++11 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -DNDEBUG -DPLF_SYS_LINUX  -DR_EVN_FLAG -I"/Users/max/github/forks/testthat/revdep/library.noindex/esATAC/Rcpp/include" -I/usr/local/include   -fPIC  -Wall -g -O2 -c sam2bed.cc -o sam2bed.o
+clang++ -std=gnu++11 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -DNDEBUG -DPLF_SYS_LINUX  -DR_EVN_FLAG -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/esATAC/Rcpp/include" -I/usr/local/include   -fPIC  -Wall -g -O2 -c BedLine.cpp -o BedLine.o
+clang++ -std=gnu++11 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -DNDEBUG -DPLF_SYS_LINUX  -DR_EVN_FLAG -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/esATAC/Rcpp/include" -I/usr/local/include   -fPIC  -Wall -g -O2 -c BedUtils.cpp -o BedUtils.o
+clang++ -std=gnu++11 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -DNDEBUG -DPLF_SYS_LINUX  -DR_EVN_FLAG -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/esATAC/Rcpp/include" -I/usr/local/include   -fPIC  -Wall -g -O2 -c ChrDivi.cpp -o ChrDivi.o
+clang++ -std=gnu++11 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -DNDEBUG -DPLF_SYS_LINUX  -DR_EVN_FLAG -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/esATAC/Rcpp/include" -I/usr/local/include   -fPIC  -Wall -g -O2 -c CutCountPre.cpp -o CutCountPre.o
+clang++ -std=gnu++11 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -DNDEBUG -DPLF_SYS_LINUX  -DR_EVN_FLAG -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/esATAC/Rcpp/include" -I/usr/local/include   -fPIC  -Wall -g -O2 -c CutSiteCount.cpp -o CutSiteCount.o
+clang++ -std=gnu++11 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -DNDEBUG -DPLF_SYS_LINUX  -DR_EVN_FLAG -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/esATAC/Rcpp/include" -I/usr/local/include   -fPIC  -Wall -g -O2 -c LibComplexQC.cpp -o LibComplexQC.o
+clang++ -std=gnu++11 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -DNDEBUG -DPLF_SYS_LINUX  -DR_EVN_FLAG -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/esATAC/Rcpp/include" -I/usr/local/include   -fPIC  -Wall -g -O2 -c RcppExports.cpp -o RcppExports.o
+clang++ -std=gnu++11 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -DNDEBUG -DPLF_SYS_LINUX  -DR_EVN_FLAG -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/esATAC/Rcpp/include" -I/usr/local/include   -fPIC  -Wall -g -O2 -c SortBed.cpp -o SortBed.o
+clang++ -std=gnu++11 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -DNDEBUG -DPLF_SYS_LINUX  -DR_EVN_FLAG -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/esATAC/Rcpp/include" -I/usr/local/include   -fPIC  -Wall -g -O2 -c rcpp_wrapper.cpp -o rcpp_wrapper.o
+clang++ -std=gnu++11 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -DNDEBUG -DPLF_SYS_LINUX  -DR_EVN_FLAG -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/esATAC/Rcpp/include" -I/usr/local/include   -fPIC  -Wall -g -O2 -c renamer.cpp -o renamer.o
+clang++ -std=gnu++11 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -DNDEBUG -DPLF_SYS_LINUX  -DR_EVN_FLAG -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/esATAC/Rcpp/include" -I/usr/local/include   -fPIC  -Wall -g -O2 -c sam2bed.cc -o sam2bed.o
 sam2bed.cc:111:16: warning: unused variable 'xspm' [-Wunused-variable]
     regmatch_t xspm[1];
                ^
@@ -3935,81 +3993,15 @@ sam2bed.cc:280:16: warning: unused variable 'xspm' [-Wunused-variable]
     regmatch_t xspm[1];
                ^
 2 warnings generated.
-/usr/local/clang6/bin/clang++ -std=gnu++11 -dynamiclib -Wl,-headerpad_max_install_names -undefined dynamic_lookup -single_module -multiply_defined suppress -L/Library/Frameworks/R.framework/Resources/lib -L/usr/local/lib -o esATAC.so BedLine.o BedUtils.o ChrDivi.o CutCountPre.o CutSiteCount.o LibComplexQC.o RcppExports.o SortBed.o rcpp_wrapper.o renamer.o sam2bed.o -F/Library/Frameworks/R.framework/.. -framework R -Wl,-framework -Wl,CoreFoundation
-ld: warning: text-based stub file /System/Library/Frameworks//CoreFoundation.framework/CoreFoundation.tbd and library file /System/Library/Frameworks//CoreFoundation.framework/CoreFoundation are out of sync. Falling back to library file for linking.
-installing to /Users/max/github/forks/testthat/revdep/checks.noindex/esATAC/old/esATAC.Rcheck/esATAC/libs
+clang++ -std=gnu++11 -dynamiclib -Wl,-headerpad_max_install_names -undefined dynamic_lookup -single_module -multiply_defined suppress -L/Library/Frameworks/R.framework/Resources/lib -L/usr/local/lib -o esATAC.so BedLine.o BedUtils.o ChrDivi.o CutCountPre.o CutSiteCount.o LibComplexQC.o RcppExports.o SortBed.o rcpp_wrapper.o renamer.o sam2bed.o -F/Library/Frameworks/R.framework/.. -framework R -Wl,-framework -Wl,CoreFoundation
+installing to /Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/esATAC/old/esATAC.Rcheck/esATAC/libs
 ** R
 ** inst
 ** byte-compile and prepare package for lazy loading
 Error in loadNamespace(j <- i[[1L]], c(lib.loc, .libPaths()), versionCheck = vI[[j]]) : 
-  there is no package called ‘TxDb.Hsapiens.UCSC.hg19.knownGene’
+  there is no package called ‘GO.db’
 ERROR: lazy loading failed for package ‘esATAC’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/esATAC/old/esATAC.Rcheck/esATAC’
-
-```
-# evoper
-
-<details>
-
-* Version: 0.5.0
-* Source code: https://github.com/cran/evoper
-* URL: https://github.com/antonio-pgarcia/evoper
-* BugReports: https://github.com/antonio-pgarcia/evoper/issues
-* Date/Publication: 2018-08-30 23:20:06 UTC
-* Number of recursive dependencies: 58
-
-Run `revdep_details(,"evoper")` for more info
-
-</details>
-
-## In both
-
-*   checking whether package ‘evoper’ can be installed ... ERROR
-    ```
-    Installation failed.
-    See ‘/Users/max/github/forks/testthat/revdep/checks.noindex/evoper/new/evoper.Rcheck/00install.out’ for details.
-    ```
-
-## Installation
-
-### Devel
-
-```
-* installing *source* package ‘evoper’ ...
-** package ‘evoper’ successfully unpacked and MD5 sums checked
-** R
-** inst
-** byte-compile and prepare package for lazy loading
-Error: package or namespace load failed for ‘rJava’:
- .onLoad failed in loadNamespace() for 'rJava', details:
-  call: dyn.load(file, DLLpath = DLLpath, ...)
-  error: unable to load shared object '/Users/max/github/forks/testthat/revdep/library.noindex/evoper/rJava/libs/rJava.so':
-  dlopen(/Users/max/github/forks/testthat/revdep/library.noindex/evoper/rJava/libs/rJava.so, 6): Library not loaded: /Library/Java/JavaVirtualMachines/jdk-11.0.1.jdk/Contents/Home/lib/server/libjvm.dylib
-  Referenced from: /Users/max/github/forks/testthat/revdep/library.noindex/evoper/rJava/libs/rJava.so
-  Reason: image not found
-Error : package ‘rJava’ could not be loaded
-ERROR: lazy loading failed for package ‘evoper’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/evoper/new/evoper.Rcheck/evoper’
-
-```
-### CRAN
-
-```
-* installing *source* package ‘evoper’ ...
-** package ‘evoper’ successfully unpacked and MD5 sums checked
-** R
-** inst
-** byte-compile and prepare package for lazy loading
-Error: package or namespace load failed for ‘rJava’:
- .onLoad failed in loadNamespace() for 'rJava', details:
-  call: dyn.load(file, DLLpath = DLLpath, ...)
-  error: unable to load shared object '/Users/max/github/forks/testthat/revdep/library.noindex/evoper/rJava/libs/rJava.so':
-  dlopen(/Users/max/github/forks/testthat/revdep/library.noindex/evoper/rJava/libs/rJava.so, 6): Library not loaded: /Library/Java/JavaVirtualMachines/jdk-11.0.1.jdk/Contents/Home/lib/server/libjvm.dylib
-  Referenced from: /Users/max/github/forks/testthat/revdep/library.noindex/evoper/rJava/libs/rJava.so
-  Reason: image not found
-Error : package ‘rJava’ could not be loaded
-ERROR: lazy loading failed for package ‘evoper’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/evoper/old/evoper.Rcheck/evoper’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/esATAC/old/esATAC.Rcheck/esATAC’
 
 ```
 # excursions
@@ -4030,7 +4022,7 @@ Run `revdep_details(,"excursions")` for more info
 *   checking whether package ‘excursions’ can be installed ... ERROR
     ```
     Installation failed.
-    See ‘/Users/max/github/forks/testthat/revdep/checks.noindex/excursions/new/excursions.Rcheck/00install.out’ for details.
+    See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/excursions/new/excursions.Rcheck/00install.out’ for details.
     ```
 
 *   checking package dependencies ... NOTE
@@ -4046,15 +4038,14 @@ Run `revdep_details(,"excursions")` for more info
 * installing *source* package ‘excursions’ ...
 ** package ‘excursions’ successfully unpacked and MD5 sums checked
 ** libs
-clang -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I/usr/local/include  -ISuiteSparse_config -ICAMD/Include -fPIC  -Wall -g -O2  -c RngStream.c -o RngStream.o
-clang -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I/usr/local/include  -ISuiteSparse_config -ICAMD/Include -fPIC  -Wall -g -O2  -c excursions_init.c -o excursions_init.o
-clang -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I/usr/local/include  -ISuiteSparse_config -ICAMD/Include -fPIC  -Wall -g -O2  -c gsl_fix.c -o gsl_fix.o
-clang++  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I/usr/local/include  -fopenmp -ISuiteSparse_config -ICAMD/Include -fPIC  -Wall -g -O2  -c integration.cpp -o integration.o
+ccache clang -Qunused-arguments  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I/usr/local/include  -ISuiteSparse_config -ICAMD/Include -fPIC  -Wall -g -O2  -c RngStream.c -o RngStream.o
+ccache clang -Qunused-arguments  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I/usr/local/include  -ISuiteSparse_config -ICAMD/Include -fPIC  -Wall -g -O2  -c excursions_init.c -o excursions_init.o
+ccache clang -Qunused-arguments  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I/usr/local/include  -ISuiteSparse_config -ICAMD/Include -fPIC  -Wall -g -O2  -c gsl_fix.c -o gsl_fix.o
+ccache clang++ -Qunused-arguments  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I/usr/local/include  -fopenmp -ISuiteSparse_config -ICAMD/Include -fPIC  -Wall -g -O2  -c integration.cpp -o integration.o
 clang: error: unsupported option '-fopenmp'
 make: *** [integration.o] Error 1
-make: *** Waiting for unfinished jobs....
 ERROR: compilation failed for package ‘excursions’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/excursions/new/excursions.Rcheck/excursions’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/excursions/new/excursions.Rcheck/excursions’
 
 ```
 ### CRAN
@@ -4063,79 +4054,14 @@ ERROR: compilation failed for package ‘excursions’
 * installing *source* package ‘excursions’ ...
 ** package ‘excursions’ successfully unpacked and MD5 sums checked
 ** libs
-clang -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I/usr/local/include  -ISuiteSparse_config -ICAMD/Include -fPIC  -Wall -g -O2  -c RngStream.c -o RngStream.o
-clang -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I/usr/local/include  -ISuiteSparse_config -ICAMD/Include -fPIC  -Wall -g -O2  -c excursions_init.c -o excursions_init.o
-clang -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I/usr/local/include  -ISuiteSparse_config -ICAMD/Include -fPIC  -Wall -g -O2  -c gsl_fix.c -o gsl_fix.o
-clang++  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I/usr/local/include  -fopenmp -ISuiteSparse_config -ICAMD/Include -fPIC  -Wall -g -O2  -c integration.cpp -o integration.o
+ccache clang -Qunused-arguments  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I/usr/local/include  -ISuiteSparse_config -ICAMD/Include -fPIC  -Wall -g -O2  -c RngStream.c -o RngStream.o
+ccache clang -Qunused-arguments  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I/usr/local/include  -ISuiteSparse_config -ICAMD/Include -fPIC  -Wall -g -O2  -c excursions_init.c -o excursions_init.o
+ccache clang -Qunused-arguments  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I/usr/local/include  -ISuiteSparse_config -ICAMD/Include -fPIC  -Wall -g -O2  -c gsl_fix.c -o gsl_fix.o
+ccache clang++ -Qunused-arguments  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I/usr/local/include  -fopenmp -ISuiteSparse_config -ICAMD/Include -fPIC  -Wall -g -O2  -c integration.cpp -o integration.o
 clang: error: unsupported option '-fopenmp'
 make: *** [integration.o] Error 1
-make: *** Waiting for unfinished jobs....
 ERROR: compilation failed for package ‘excursions’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/excursions/old/excursions.Rcheck/excursions’
-
-```
-# extraTrees
-
-<details>
-
-* Version: 1.0.5
-* Source code: https://github.com/cran/extraTrees
-* URL: http://github.com/jaak-s/extraTrees
-* Date/Publication: 2014-12-27 23:41:04
-* Number of recursive dependencies: 13
-
-Run `revdep_details(,"extraTrees")` for more info
-
-</details>
-
-## In both
-
-*   checking whether package ‘extraTrees’ can be installed ... ERROR
-    ```
-    Installation failed.
-    See ‘/Users/max/github/forks/testthat/revdep/checks.noindex/extraTrees/new/extraTrees.Rcheck/00install.out’ for details.
-    ```
-
-## Installation
-
-### Devel
-
-```
-* installing *source* package ‘extraTrees’ ...
-** package ‘extraTrees’ successfully unpacked and MD5 sums checked
-** R
-** inst
-** byte-compile and prepare package for lazy loading
-Error: package or namespace load failed for ‘rJava’:
- .onLoad failed in loadNamespace() for 'rJava', details:
-  call: dyn.load(file, DLLpath = DLLpath, ...)
-  error: unable to load shared object '/Users/max/github/forks/testthat/revdep/library.noindex/extraTrees/rJava/libs/rJava.so':
-  dlopen(/Users/max/github/forks/testthat/revdep/library.noindex/extraTrees/rJava/libs/rJava.so, 6): Library not loaded: /Library/Java/JavaVirtualMachines/jdk-11.0.1.jdk/Contents/Home/lib/server/libjvm.dylib
-  Referenced from: /Users/max/github/forks/testthat/revdep/library.noindex/extraTrees/rJava/libs/rJava.so
-  Reason: image not found
-Error : package ‘rJava’ could not be loaded
-ERROR: lazy loading failed for package ‘extraTrees’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/extraTrees/new/extraTrees.Rcheck/extraTrees’
-
-```
-### CRAN
-
-```
-* installing *source* package ‘extraTrees’ ...
-** package ‘extraTrees’ successfully unpacked and MD5 sums checked
-** R
-** inst
-** byte-compile and prepare package for lazy loading
-Error: package or namespace load failed for ‘rJava’:
- .onLoad failed in loadNamespace() for 'rJava', details:
-  call: dyn.load(file, DLLpath = DLLpath, ...)
-  error: unable to load shared object '/Users/max/github/forks/testthat/revdep/library.noindex/extraTrees/rJava/libs/rJava.so':
-  dlopen(/Users/max/github/forks/testthat/revdep/library.noindex/extraTrees/rJava/libs/rJava.so, 6): Library not loaded: /Library/Java/JavaVirtualMachines/jdk-11.0.1.jdk/Contents/Home/lib/server/libjvm.dylib
-  Referenced from: /Users/max/github/forks/testthat/revdep/library.noindex/extraTrees/rJava/libs/rJava.so
-  Reason: image not found
-Error : package ‘rJava’ could not be loaded
-ERROR: lazy loading failed for package ‘extraTrees’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/extraTrees/old/extraTrees.Rcheck/extraTrees’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/excursions/old/excursions.Rcheck/excursions’
 
 ```
 # fastLink
@@ -4157,7 +4083,7 @@ Run `revdep_details(,"fastLink")` for more info
 *   checking whether package ‘fastLink’ can be installed ... ERROR
     ```
     Installation failed.
-    See ‘/Users/max/github/forks/testthat/revdep/checks.noindex/fastLink/new/fastLink.Rcheck/00install.out’ for details.
+    See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/fastLink/new/fastLink.Rcheck/00install.out’ for details.
     ```
 
 ## Installation
@@ -4168,19 +4094,11 @@ Run `revdep_details(,"fastLink")` for more info
 * installing *source* package ‘fastLink’ ...
 ** package ‘fastLink’ successfully unpacked and MD5 sums checked
 ** libs
-clang++  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/max/github/forks/testthat/revdep/library.noindex/fastLink/RcppArmadillo/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/fastLink/Rcpp/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/fastLink/RcppEigen/include" -I/usr/local/include  -fopenmp  -fPIC  -Wall -g -O2  -c RcppExports.cpp -o RcppExports.o
-clang -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/max/github/forks/testthat/revdep/library.noindex/fastLink/RcppArmadillo/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/fastLink/Rcpp/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/fastLink/RcppEigen/include" -I/usr/local/include   -fPIC  -Wall -g -O2  -c fastLink_init.c -o fastLink_init.o
-clang++  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/max/github/forks/testthat/revdep/library.noindex/fastLink/RcppArmadillo/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/fastLink/Rcpp/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/fastLink/RcppEigen/include" -I/usr/local/include  -fopenmp  -fPIC  -Wall -g -O2  -c helpers.cpp -o helpers.o
-clang++  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/max/github/forks/testthat/revdep/library.noindex/fastLink/RcppArmadillo/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/fastLink/Rcpp/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/fastLink/RcppEigen/include" -I/usr/local/include  -fopenmp  -fPIC  -Wall -g -O2  -c m_func_cpp.cpp -o m_func_cpp.o
+ccache clang++ -Qunused-arguments  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/fastLink/RcppArmadillo/include" -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/fastLink/Rcpp/include" -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/fastLink/RcppEigen/include" -I/usr/local/include  -fopenmp  -fPIC  -Wall -g -O2  -c RcppExports.cpp -o RcppExports.o
 clang: error: unsupported option '-fopenmp'
-clang: error: unsupported option '-fopenmp'
-clang: error: unsupported option '-fopenmp'
-make: *** [m_func_cpp.o] Error 1
-make: *** Waiting for unfinished jobs....
-make: *** [helpers.o] Error 1
 make: *** [RcppExports.o] Error 1
 ERROR: compilation failed for package ‘fastLink’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/fastLink/new/fastLink.Rcheck/fastLink’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/fastLink/new/fastLink.Rcheck/fastLink’
 
 ```
 ### CRAN
@@ -4189,57 +4107,11 @@ ERROR: compilation failed for package ‘fastLink’
 * installing *source* package ‘fastLink’ ...
 ** package ‘fastLink’ successfully unpacked and MD5 sums checked
 ** libs
-clang++  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/max/github/forks/testthat/revdep/library.noindex/fastLink/RcppArmadillo/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/fastLink/Rcpp/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/fastLink/RcppEigen/include" -I/usr/local/include  -fopenmp  -fPIC  -Wall -g -O2  -c RcppExports.cpp -o RcppExports.o
-clang -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/max/github/forks/testthat/revdep/library.noindex/fastLink/RcppArmadillo/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/fastLink/Rcpp/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/fastLink/RcppEigen/include" -I/usr/local/include   -fPIC  -Wall -g -O2  -c fastLink_init.c -o fastLink_init.o
-clang++  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/max/github/forks/testthat/revdep/library.noindex/fastLink/RcppArmadillo/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/fastLink/Rcpp/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/fastLink/RcppEigen/include" -I/usr/local/include  -fopenmp  -fPIC  -Wall -g -O2  -c helpers.cpp -o helpers.o
-clang++  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/max/github/forks/testthat/revdep/library.noindex/fastLink/RcppArmadillo/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/fastLink/Rcpp/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/fastLink/RcppEigen/include" -I/usr/local/include  -fopenmp  -fPIC  -Wall -g -O2  -c m_func_cpp.cpp -o m_func_cpp.o
+ccache clang++ -Qunused-arguments  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/fastLink/RcppArmadillo/include" -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/fastLink/Rcpp/include" -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/fastLink/RcppEigen/include" -I/usr/local/include  -fopenmp  -fPIC  -Wall -g -O2  -c RcppExports.cpp -o RcppExports.o
 clang: error: unsupported option '-fopenmp'
-clang: error: unsupported option '-fopenmp'
-clang: error: unsupported option '-fopenmp'
-make: *** [helpers.o] Error 1
-make: *** Waiting for unfinished jobs....
-make: *** [m_func_cpp.o] Error 1
 make: *** [RcppExports.o] Error 1
 ERROR: compilation failed for package ‘fastLink’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/fastLink/old/fastLink.Rcheck/fastLink’
-
-```
-# fgsea
-
-<details>
-
-* Version: 
-* Source code: ???
-* URL: https://github.com/r-lib/revdepcheck#readme
-* BugReports: https://github.com/r-lib/revdepcheck/issues
-* Number of recursive dependencies: 0
-
-Run `revdep_details(,"")` for more info
-
-</details>
-
-## Error before installation
-
-### Devel
-
-```
-
-
-
-installing the source packages ‘org.Mm.eg.db’, ‘reactome.db’
-
-
-
-```
-### CRAN
-
-```
-
-
-
-installing the source packages ‘org.Mm.eg.db’, ‘reactome.db’
-
-
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/fastLink/old/fastLink.Rcheck/fastLink’
 
 ```
 # FlowSorted.Blood.EPIC
@@ -4248,8 +4120,8 @@ installing the source packages ‘org.Mm.eg.db’, ‘reactome.db’
 
 * Version: 
 * Source code: ???
-* URL: https://github.com/r-lib/revdepcheck#readme
-* BugReports: https://github.com/r-lib/revdepcheck/issues
+* URL: http://testthat.r-lib.org, https://github.com/r-lib/testthat
+* BugReports: https://github.com/r-lib/testthat/issues
 * Number of recursive dependencies: 0
 
 Run `revdep_details(,"")` for more info
@@ -4282,67 +4154,6 @@ Package which is only available in source form, and may need
 installing the source packages ‘FlowSorted.Blood.450k’, ‘FlowSorted.CordBlood.450k’, ‘FlowSorted.CordBloodNorway.450k’, ‘IlluminaHumanMethylation450kanno.ilmn12.hg19’, ‘IlluminaHumanMethylationEPICanno.ilm10b2.hg19’, ‘IlluminaHumanMethylationEPICanno.ilm10b4.hg19’
 
 
-
-```
-# GARS
-
-<details>
-
-* Version: 1.2.0
-* Source code: https://github.com/cran/GARS
-* Date/Publication: 2018-10-30
-* Number of recursive dependencies: 205
-
-Run `revdep_details(,"GARS")` for more info
-
-</details>
-
-## In both
-
-*   checking whether package ‘GARS’ can be installed ... ERROR
-    ```
-    Installation failed.
-    See ‘/Users/max/github/forks/testthat/revdep/checks.noindex/GARS/new/GARS.Rcheck/00install.out’ for details.
-    ```
-
-## Installation
-
-### Devel
-
-```
-* installing *source* package ‘GARS’ ...
-** R
-** data
-*** moving datasets to lazyload DB
-** inst
-** byte-compile and prepare package for lazy loading
-Error : .onLoad failed in loadNamespace() for 'rJava', details:
-  call: dyn.load(file, DLLpath = DLLpath, ...)
-  error: unable to load shared object '/Users/max/github/forks/testthat/revdep/library.noindex/GARS/rJava/libs/rJava.so':
-  dlopen(/Users/max/github/forks/testthat/revdep/library.noindex/GARS/rJava/libs/rJava.so, 6): Library not loaded: /Library/Java/JavaVirtualMachines/jdk-11.0.1.jdk/Contents/Home/lib/server/libjvm.dylib
-  Referenced from: /Users/max/github/forks/testthat/revdep/library.noindex/GARS/rJava/libs/rJava.so
-  Reason: image not found
-ERROR: lazy loading failed for package ‘GARS’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/GARS/new/GARS.Rcheck/GARS’
-
-```
-### CRAN
-
-```
-* installing *source* package ‘GARS’ ...
-** R
-** data
-*** moving datasets to lazyload DB
-** inst
-** byte-compile and prepare package for lazy loading
-Error : .onLoad failed in loadNamespace() for 'rJava', details:
-  call: dyn.load(file, DLLpath = DLLpath, ...)
-  error: unable to load shared object '/Users/max/github/forks/testthat/revdep/library.noindex/GARS/rJava/libs/rJava.so':
-  dlopen(/Users/max/github/forks/testthat/revdep/library.noindex/GARS/rJava/libs/rJava.so, 6): Library not loaded: /Library/Java/JavaVirtualMachines/jdk-11.0.1.jdk/Contents/Home/lib/server/libjvm.dylib
-  Referenced from: /Users/max/github/forks/testthat/revdep/library.noindex/GARS/rJava/libs/rJava.so
-  Reason: image not found
-ERROR: lazy loading failed for package ‘GARS’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/GARS/old/GARS.Rcheck/GARS’
 
 ```
 # genphen
@@ -4421,7 +4232,7 @@ Run `revdep_details(,"GFORCE")` for more info
 *   checking whether package ‘GFORCE’ can be installed ... ERROR
     ```
     Installation failed.
-    See ‘/Users/max/github/forks/testthat/revdep/checks.noindex/GFORCE/new/GFORCE.Rcheck/00install.out’ for details.
+    See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/GFORCE/new/GFORCE.Rcheck/00install.out’ for details.
     ```
 
 ## Installation
@@ -4432,21 +4243,11 @@ Run `revdep_details(,"GFORCE")` for more info
 * installing *source* package ‘GFORCE’ ...
 ** package ‘GFORCE’ successfully unpacked and MD5 sums checked
 ** libs
-clang -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I/usr/local/include  -fopenmp -fPIC  -Wall -g -O2  -c FORCE.c -o FORCE.o
-clang -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I/usr/local/include  -fopenmp -fPIC  -Wall -g -O2  -c FORCE_adapt.c -o FORCE_adapt.o
-clang -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I/usr/local/include  -fopenmp -fPIC  -Wall -g -O2  -c FORCE_certify.c -o FORCE_certify.o
-clang -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I/usr/local/include  -fopenmp -fPIC  -Wall -g -O2  -c gamma_alternative_estimator.c -o gamma_alternative_estimator.o
+ccache clang -Qunused-arguments  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I/usr/local/include  -fopenmp -fPIC  -Wall -g -O2  -c FORCE.c -o FORCE.o
 clang: error: unsupported option '-fopenmp'
-clang: error: unsupported option '-fopenmp'
-clang: error: unsupported option '-fopenmp'
-clang: error: unsupported option '-fopenmp'
-make: *** [FORCE_certify.o] Error 1
-make: *** Waiting for unfinished jobs....
-make: *** [gamma_alternative_estimator.o] Error 1
 make: *** [FORCE.o] Error 1
-make: *** [FORCE_adapt.o] Error 1
 ERROR: compilation failed for package ‘GFORCE’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/GFORCE/new/GFORCE.Rcheck/GFORCE’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/GFORCE/new/GFORCE.Rcheck/GFORCE’
 
 ```
 ### CRAN
@@ -4455,21 +4256,11 @@ ERROR: compilation failed for package ‘GFORCE’
 * installing *source* package ‘GFORCE’ ...
 ** package ‘GFORCE’ successfully unpacked and MD5 sums checked
 ** libs
-clang -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I/usr/local/include  -fopenmp -fPIC  -Wall -g -O2  -c FORCE.c -o FORCE.o
-clang -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I/usr/local/include  -fopenmp -fPIC  -Wall -g -O2  -c FORCE_adapt.c -o FORCE_adapt.o
-clang -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I/usr/local/include  -fopenmp -fPIC  -Wall -g -O2  -c FORCE_certify.c -o FORCE_certify.o
-clang -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I/usr/local/include  -fopenmp -fPIC  -Wall -g -O2  -c gamma_alternative_estimator.c -o gamma_alternative_estimator.o
+ccache clang -Qunused-arguments  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I/usr/local/include  -fopenmp -fPIC  -Wall -g -O2  -c FORCE.c -o FORCE.o
 clang: error: unsupported option '-fopenmp'
-clang: error: unsupported option '-fopenmp'
-clang: error: unsupported option '-fopenmp'clang: error: unsupported option '-fopenmp'
-
 make: *** [FORCE.o] Error 1
-make: *** Waiting for unfinished jobs....
-make: *** [FORCE_certify.o] Error 1
-make: *** [gamma_alternative_estimator.o] Error 1
-make: *** [FORCE_adapt.o] Error 1
 ERROR: compilation failed for package ‘GFORCE’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/GFORCE/old/GFORCE.Rcheck/GFORCE’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/GFORCE/old/GFORCE.Rcheck/GFORCE’
 
 ```
 # gower
@@ -4492,7 +4283,7 @@ Run `revdep_details(,"gower")` for more info
 *   checking whether package ‘gower’ can be installed ... ERROR
     ```
     Installation failed.
-    See ‘/Users/max/github/forks/testthat/revdep/checks.noindex/gower/new/gower.Rcheck/00install.out’ for details.
+    See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/gower/new/gower.Rcheck/00install.out’ for details.
     ```
 
 ## Installation
@@ -4503,15 +4294,11 @@ Run `revdep_details(,"gower")` for more info
 * installing *source* package ‘gower’ ...
 ** package ‘gower’ successfully unpacked and MD5 sums checked
 ** libs
-clang -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I/usr/local/include  -fopenmp -fPIC  -Wall -g -O2  -c R_register_native.c -o R_register_native.o
-clang -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I/usr/local/include  -fopenmp -fPIC  -Wall -g -O2  -c gower.c -o gower.o
-clang: error: unsupported option '-fopenmp'
-make: *** [gower.o] Error 1
-make: *** Waiting for unfinished jobs....
+ccache clang -Qunused-arguments  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I/usr/local/include  -fopenmp -fPIC  -Wall -g -O2  -c R_register_native.c -o R_register_native.o
 clang: error: unsupported option '-fopenmp'
 make: *** [R_register_native.o] Error 1
 ERROR: compilation failed for package ‘gower’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/gower/new/gower.Rcheck/gower’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/gower/new/gower.Rcheck/gower’
 
 ```
 ### CRAN
@@ -4520,15 +4307,11 @@ ERROR: compilation failed for package ‘gower’
 * installing *source* package ‘gower’ ...
 ** package ‘gower’ successfully unpacked and MD5 sums checked
 ** libs
-clang -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I/usr/local/include  -fopenmp -fPIC  -Wall -g -O2  -c R_register_native.c -o R_register_native.o
-clang -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I/usr/local/include  -fopenmp -fPIC  -Wall -g -O2  -c gower.c -o gower.o
-clang: error: unsupported option '-fopenmp'
+ccache clang -Qunused-arguments  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I/usr/local/include  -fopenmp -fPIC  -Wall -g -O2  -c R_register_native.c -o R_register_native.o
 clang: error: unsupported option '-fopenmp'
 make: *** [R_register_native.o] Error 1
-make: *** Waiting for unfinished jobs....
-make: *** [gower.o] Error 1
 ERROR: compilation failed for package ‘gower’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/gower/old/gower.Rcheck/gower’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/gower/old/gower.Rcheck/gower’
 
 ```
 # graphite
@@ -4549,79 +4332,6 @@ Run `revdep_details(,"graphite")` for more info
 *   R CMD check timed out
     
 
-# GroupSeq
-
-<details>
-
-* Version: 1.3.5
-* Source code: https://github.com/cran/GroupSeq
-* URL: https://github.com/rpahl/GroupSeq
-* BugReports: https://github.com/rpahl/GroupSeq/issues
-* Date/Publication: 2018-04-11 15:00:32 UTC
-* Number of recursive dependencies: 10
-
-Run `revdep_details(,"GroupSeq")` for more info
-
-</details>
-
-## In both
-
-*   checking whether package ‘GroupSeq’ can be installed ... ERROR
-    ```
-    Installation failed.
-    See ‘/Users/max/github/forks/testthat/revdep/checks.noindex/GroupSeq/new/GroupSeq.Rcheck/00install.out’ for details.
-    ```
-
-## Installation
-
-### Devel
-
-```
-* installing *source* package ‘GroupSeq’ ...
-** package ‘GroupSeq’ successfully unpacked and MD5 sums checked
-** R
-** byte-compile and prepare package for lazy loading
-Warning in fun(libname, pkgname) : couldn't connect to display ""
-** help
-*** installing help indices
-** building package indices
-** testing if installed package can be loaded
-Warning in fun(libname, pkgname) : couldn't connect to display ""
-Error: package or namespace load failed for ‘GroupSeq’:
- .onAttach failed in attachNamespace() for 'GroupSeq', details:
-  call: structure(.External(.C_dotTclObjv, objv), class = "tclObj")
-  error: [tcl] invalid command name "toplevel".
-
-Error: loading failed
-Execution halted
-ERROR: loading failed
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/GroupSeq/new/GroupSeq.Rcheck/GroupSeq’
-
-```
-### CRAN
-
-```
-* installing *source* package ‘GroupSeq’ ...
-** package ‘GroupSeq’ successfully unpacked and MD5 sums checked
-** R
-** byte-compile and prepare package for lazy loading
-Warning in fun(libname, pkgname) : couldn't connect to display ""
-** help
-*** installing help indices
-** building package indices
-** testing if installed package can be loaded
-Warning in fun(libname, pkgname) : couldn't connect to display ""
-Error: package or namespace load failed for ‘GroupSeq’:
- .onAttach failed in attachNamespace() for 'GroupSeq', details:
-  call: structure(.External(.C_dotTclObjv, objv), class = "tclObj")
-  error: [tcl] invalid command name "toplevel".
-
-Error: loading failed
-Execution halted
-ERROR: loading failed
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/GroupSeq/old/GroupSeq.Rcheck/GroupSeq’
-
-```
 # gWidgets2tcltk
 
 <details>
@@ -4641,7 +4351,7 @@ Run `revdep_details(,"gWidgets2tcltk")` for more info
 *   checking whether package ‘gWidgets2tcltk’ can be installed ... ERROR
     ```
     Installation failed.
-    See ‘/Users/max/github/forks/testthat/revdep/checks.noindex/gWidgets2tcltk/new/gWidgets2tcltk.Rcheck/00install.out’ for details.
+    See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/gWidgets2tcltk/new/gWidgets2tcltk.Rcheck/00install.out’ for details.
     ```
 
 ## Installation
@@ -4661,7 +4371,7 @@ Error in structure(.External(.C_dotTclObjv, objv), class = "tclObj") :
 
 Error : unable to load R code in package ‘gWidgets2tcltk’
 ERROR: lazy loading failed for package ‘gWidgets2tcltk’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/gWidgets2tcltk/new/gWidgets2tcltk.Rcheck/gWidgets2tcltk’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/gWidgets2tcltk/new/gWidgets2tcltk.Rcheck/gWidgets2tcltk’
 
 ```
 ### CRAN
@@ -4679,7 +4389,7 @@ Error in structure(.External(.C_dotTclObjv, objv), class = "tclObj") :
 
 Error : unable to load R code in package ‘gWidgets2tcltk’
 ERROR: lazy loading failed for package ‘gWidgets2tcltk’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/gWidgets2tcltk/old/gWidgets2tcltk.Rcheck/gWidgets2tcltk’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/gWidgets2tcltk/old/gWidgets2tcltk.Rcheck/gWidgets2tcltk’
 
 ```
 # hashr
@@ -4702,7 +4412,7 @@ Run `revdep_details(,"hashr")` for more info
 *   checking whether package ‘hashr’ can be installed ... ERROR
     ```
     Installation failed.
-    See ‘/Users/max/github/forks/testthat/revdep/checks.noindex/hashr/new/hashr.Rcheck/00install.out’ for details.
+    See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/hashr/new/hashr.Rcheck/00install.out’ for details.
     ```
 
 ## Installation
@@ -4713,15 +4423,11 @@ Run `revdep_details(,"hashr")` for more info
 * installing *source* package ‘hashr’ ...
 ** package ‘hashr’ successfully unpacked and MD5 sums checked
 ** libs
-clang -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I/usr/local/include  -fopenmp -fPIC  -Wall -g -O2  -c R_hash.c -o R_hash.o
-clang -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I/usr/local/include  -fopenmp -fPIC  -Wall -g -O2  -c sfh.c -o sfh.o
-clangclang: error: : unsupported option '-fopenmp'error: unsupported option '-fopenmp'
-
-make: *** [sfh.o] Error 1
-make: *** Waiting for unfinished jobs....
+ccache clang -Qunused-arguments  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I/usr/local/include  -fopenmp -fPIC  -Wall -g -O2  -c R_hash.c -o R_hash.o
+clang: error: unsupported option '-fopenmp'
 make: *** [R_hash.o] Error 1
 ERROR: compilation failed for package ‘hashr’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/hashr/new/hashr.Rcheck/hashr’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/hashr/new/hashr.Rcheck/hashr’
 
 ```
 ### CRAN
@@ -4730,77 +4436,11 @@ ERROR: compilation failed for package ‘hashr’
 * installing *source* package ‘hashr’ ...
 ** package ‘hashr’ successfully unpacked and MD5 sums checked
 ** libs
-clang -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I/usr/local/include  -fopenmp -fPIC  -Wall -g -O2  -c R_hash.c -o R_hash.o
-clang -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I/usr/local/include  -fopenmp -fPIC  -Wall -g -O2  -c sfh.c -o sfh.o
+ccache clang -Qunused-arguments  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I/usr/local/include  -fopenmp -fPIC  -Wall -g -O2  -c R_hash.c -o R_hash.o
 clang: error: unsupported option '-fopenmp'
-clang: error: unsupported option '-fopenmp'
-make: *** [sfh.o] Error 1
-make: *** Waiting for unfinished jobs....
 make: *** [R_hash.o] Error 1
 ERROR: compilation failed for package ‘hashr’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/hashr/old/hashr.Rcheck/hashr’
-
-```
-# imageData
-
-<details>
-
-* Version: 0.1-50
-* Source code: https://github.com/cran/imageData
-* URL: http://chris.brien.name
-* Date/Publication: 2018-06-11 13:25:44 UTC
-* Number of recursive dependencies: 71
-
-Run `revdep_details(,"imageData")` for more info
-
-</details>
-
-## In both
-
-*   checking whether package ‘imageData’ can be installed ... ERROR
-    ```
-    Installation failed.
-    See ‘/Users/max/github/forks/testthat/revdep/checks.noindex/imageData/new/imageData.Rcheck/00install.out’ for details.
-    ```
-
-## Installation
-
-### Devel
-
-```
-* installing *source* package ‘imageData’ ...
-** package ‘imageData’ successfully unpacked and MD5 sums checked
-** R
-** data
-** inst
-** byte-compile and prepare package for lazy loading
-Error : .onLoad failed in loadNamespace() for 'rJava', details:
-  call: dyn.load(file, DLLpath = DLLpath, ...)
-  error: unable to load shared object '/Users/max/github/forks/testthat/revdep/library.noindex/imageData/rJava/libs/rJava.so':
-  dlopen(/Users/max/github/forks/testthat/revdep/library.noindex/imageData/rJava/libs/rJava.so, 6): Library not loaded: /Library/Java/JavaVirtualMachines/jdk-11.0.1.jdk/Contents/Home/lib/server/libjvm.dylib
-  Referenced from: /Users/max/github/forks/testthat/revdep/library.noindex/imageData/rJava/libs/rJava.so
-  Reason: image not found
-ERROR: lazy loading failed for package ‘imageData’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/imageData/new/imageData.Rcheck/imageData’
-
-```
-### CRAN
-
-```
-* installing *source* package ‘imageData’ ...
-** package ‘imageData’ successfully unpacked and MD5 sums checked
-** R
-** data
-** inst
-** byte-compile and prepare package for lazy loading
-Error : .onLoad failed in loadNamespace() for 'rJava', details:
-  call: dyn.load(file, DLLpath = DLLpath, ...)
-  error: unable to load shared object '/Users/max/github/forks/testthat/revdep/library.noindex/imageData/rJava/libs/rJava.so':
-  dlopen(/Users/max/github/forks/testthat/revdep/library.noindex/imageData/rJava/libs/rJava.so, 6): Library not loaded: /Library/Java/JavaVirtualMachines/jdk-11.0.1.jdk/Contents/Home/lib/server/libjvm.dylib
-  Referenced from: /Users/max/github/forks/testthat/revdep/library.noindex/imageData/rJava/libs/rJava.so
-  Reason: image not found
-ERROR: lazy loading failed for package ‘imageData’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/imageData/old/imageData.Rcheck/imageData’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/hashr/old/hashr.Rcheck/hashr’
 
 ```
 # imbalance
@@ -4823,7 +4463,7 @@ Run `revdep_details(,"imbalance")` for more info
 *   checking whether package ‘imbalance’ can be installed ... ERROR
     ```
     Installation failed.
-    See ‘/Users/max/github/forks/testthat/revdep/checks.noindex/imbalance/new/imbalance.Rcheck/00install.out’ for details.
+    See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/imbalance/new/imbalance.Rcheck/00install.out’ for details.
     ```
 
 ## Installation
@@ -4834,21 +4474,11 @@ Run `revdep_details(,"imbalance")` for more info
 * installing *source* package ‘imbalance’ ...
 ** package ‘imbalance’ successfully unpacked and MD5 sums checked
 ** libs
-clang++  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/max/github/forks/testthat/revdep/library.noindex/imbalance/Rcpp/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/imbalance/RcppArmadillo/include" -I/usr/local/include  -fopenmp  -fPIC  -Wall -g -O2  -c RcppExports.cpp -o RcppExports.o
-clang++  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/max/github/forks/testthat/revdep/library.noindex/imbalance/Rcpp/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/imbalance/RcppArmadillo/include" -I/usr/local/include  -fopenmp  -fPIC  -Wall -g -O2  -c mwmote.cpp -o mwmote.o
-clang++  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/max/github/forks/testthat/revdep/library.noindex/imbalance/Rcpp/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/imbalance/RcppArmadillo/include" -I/usr/local/include  -fopenmp  -fPIC  -Wall -g -O2  -c neater.cpp -o neater.o
-clang++  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/max/github/forks/testthat/revdep/library.noindex/imbalance/Rcpp/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/imbalance/RcppArmadillo/include" -I/usr/local/include  -fopenmp  -fPIC  -Wall -g -O2  -c pdfos.cpp -o pdfos.o
-clang: error: unsupported option '-fopenmp'clang
-: error: unsupported option '-fopenmp'
-clang: error: unsupported option '-fopenmp'
+ccache clang++ -Qunused-arguments  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/imbalance/Rcpp/include" -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/imbalance/RcppArmadillo/include" -I/usr/local/include  -fopenmp  -fPIC  -Wall -g -O2  -c RcppExports.cpp -o RcppExports.o
 clang: error: unsupported option '-fopenmp'
 make: *** [RcppExports.o] Error 1
-make: *** Waiting for unfinished jobs....
-make: *** [mwmote.o] Error 1
-make: *** [pdfos.o] Error 1
-make: *** [neater.o] Error 1
 ERROR: compilation failed for package ‘imbalance’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/imbalance/new/imbalance.Rcheck/imbalance’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/imbalance/new/imbalance.Rcheck/imbalance’
 
 ```
 ### CRAN
@@ -4857,21 +4487,11 @@ ERROR: compilation failed for package ‘imbalance’
 * installing *source* package ‘imbalance’ ...
 ** package ‘imbalance’ successfully unpacked and MD5 sums checked
 ** libs
-clang++  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/max/github/forks/testthat/revdep/library.noindex/imbalance/Rcpp/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/imbalance/RcppArmadillo/include" -I/usr/local/include  -fopenmp  -fPIC  -Wall -g -O2  -c RcppExports.cpp -o RcppExports.o
-clang++  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/max/github/forks/testthat/revdep/library.noindex/imbalance/Rcpp/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/imbalance/RcppArmadillo/include" -I/usr/local/include  -fopenmp  -fPIC  -Wall -g -O2  -c mwmote.cpp -o mwmote.o
-clang++  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/max/github/forks/testthat/revdep/library.noindex/imbalance/Rcpp/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/imbalance/RcppArmadillo/include" -I/usr/local/include  -fopenmp  -fPIC  -Wall -g -O2  -c neater.cpp -o neater.o
-clang++  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/max/github/forks/testthat/revdep/library.noindex/imbalance/Rcpp/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/imbalance/RcppArmadillo/include" -I/usr/local/include  -fopenmp  -fPIC  -Wall -g -O2  -c pdfos.cpp -o pdfos.o
+ccache clang++ -Qunused-arguments  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/imbalance/Rcpp/include" -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/imbalance/RcppArmadillo/include" -I/usr/local/include  -fopenmp  -fPIC  -Wall -g -O2  -c RcppExports.cpp -o RcppExports.o
 clang: error: unsupported option '-fopenmp'
-clang: error: unsupported option '-fopenmp'
-clang: error: unsupported option '-fopenmp'
-clang: error: unsupported option '-fopenmp'
-make: *** [mwmote.o] Error 1
-make: *** Waiting for unfinished jobs....
 make: *** [RcppExports.o] Error 1
-make: *** [pdfos.o] Error 1
-make: *** [neater.o] Error 1
 ERROR: compilation failed for package ‘imbalance’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/imbalance/old/imbalance.Rcheck/imbalance’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/imbalance/old/imbalance.Rcheck/imbalance’
 
 ```
 # influenceR
@@ -4893,7 +4513,7 @@ Run `revdep_details(,"influenceR")` for more info
 *   checking whether package ‘influenceR’ can be installed ... ERROR
     ```
     Installation failed.
-    See ‘/Users/max/github/forks/testthat/revdep/checks.noindex/influenceR/new/influenceR.Rcheck/00install.out’ for details.
+    See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/influenceR/new/influenceR.Rcheck/00install.out’ for details.
     ```
 
 ## Installation
@@ -4904,21 +4524,11 @@ Run `revdep_details(,"influenceR")` for more info
 * installing *source* package ‘influenceR’ ...
 ** package ‘influenceR’ successfully unpacked and MD5 sums checked
 ** libs
-clang -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I/usr/local/include  -fopenmp -fPIC  -Wall -g -O2  -c bridging.c -o bridging.o
-clang -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I/usr/local/include  -fopenmp -fPIC  -Wall -g -O2  -c keyplayer-utils.c -o keyplayer-utils.o
-clang -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I/usr/local/include  -fopenmp -fPIC  -Wall -g -O2  -c keyplayer.c -o keyplayer.o
-clang -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I/usr/local/include  -fopenmp -fPIC  -Wall -g -O2  -c prefix_sums.c -o prefix_sums.o
-clang: error: unsupported option '-fopenmp'clang: error: 
-unsupported option '-fopenmp'
-clang: error: unsupported option '-fopenmp'clang: error: 
-unsupported option '-fopenmp'
-make: *** [prefix_sums.o] Error 1
-make: *** Waiting for unfinished jobs....
-make: *** [keyplayer.o] Error 1
-make: *** [keyplayer-utils.o] Error 1
+ccache clang -Qunused-arguments  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I/usr/local/include  -fopenmp -fPIC  -Wall -g -O2  -c bridging.c -o bridging.o
+clang: error: unsupported option '-fopenmp'
 make: *** [bridging.o] Error 1
 ERROR: compilation failed for package ‘influenceR’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/influenceR/new/influenceR.Rcheck/influenceR’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/influenceR/new/influenceR.Rcheck/influenceR’
 
 ```
 ### CRAN
@@ -4927,84 +4537,11 @@ ERROR: compilation failed for package ‘influenceR’
 * installing *source* package ‘influenceR’ ...
 ** package ‘influenceR’ successfully unpacked and MD5 sums checked
 ** libs
-clang -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I/usr/local/include  -fopenmp -fPIC  -Wall -g -O2  -c bridging.c -o bridging.o
-clang -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I/usr/local/include  -fopenmp -fPIC  -Wall -g -O2  -c keyplayer-utils.c -o keyplayer-utils.o
-clang -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I/usr/local/include  -fopenmp -fPIC  -Wall -g -O2  -c keyplayer.c -o keyplayer.o
-clang -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I/usr/local/include  -fopenmp -fPIC  -Wall -g -O2  -c prefix_sums.c -o prefix_sums.o
+ccache clang -Qunused-arguments  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I/usr/local/include  -fopenmp -fPIC  -Wall -g -O2  -c bridging.c -o bridging.o
 clang: error: unsupported option '-fopenmp'
-clang: error: unsupported option '-fopenmp'
-clang: error: unsupported option '-fopenmp'clang: errormake: : *** [bridging.o] Error 1
-
-unsupported option '-fopenmp'
-make: *** Waiting for unfinished jobs....
-make: *** [keyplayer.o] Error 1
-make: *** [prefix_sums.o] Error 1
-make: *** [keyplayer-utils.o] Error 1
+make: *** [bridging.o] Error 1
 ERROR: compilation failed for package ‘influenceR’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/influenceR/old/influenceR.Rcheck/influenceR’
-
-```
-# InterfaceqPCR
-
-<details>
-
-* Version: 1.0
-* Source code: https://github.com/cran/InterfaceqPCR
-* Date/Publication: 2017-04-01 06:30:13 UTC
-* Number of recursive dependencies: 20
-
-Run `revdep_details(,"InterfaceqPCR")` for more info
-
-</details>
-
-## In both
-
-*   checking whether package ‘InterfaceqPCR’ can be installed ... ERROR
-    ```
-    Installation failed.
-    See ‘/Users/max/github/forks/testthat/revdep/checks.noindex/InterfaceqPCR/new/InterfaceqPCR.Rcheck/00install.out’ for details.
-    ```
-
-## Installation
-
-### Devel
-
-```
-* installing *source* package ‘InterfaceqPCR’ ...
-** package ‘InterfaceqPCR’ successfully unpacked and MD5 sums checked
-** R
-** inst
-** byte-compile and prepare package for lazy loading
-Warning in fun(libname, pkgname) : couldn't connect to display ""
-Warning: loading Rplot failed
-Error : .onLoad failed in loadNamespace() for 'rJava', details:
-  call: dyn.load(file, DLLpath = DLLpath, ...)
-  error: unable to load shared object '/Users/max/github/forks/testthat/revdep/library.noindex/InterfaceqPCR/rJava/libs/rJava.so':
-  dlopen(/Users/max/github/forks/testthat/revdep/library.noindex/InterfaceqPCR/rJava/libs/rJava.so, 6): Library not loaded: /Library/Java/JavaVirtualMachines/jdk-11.0.1.jdk/Contents/Home/lib/server/libjvm.dylib
-  Referenced from: /Users/max/github/forks/testthat/revdep/library.noindex/InterfaceqPCR/rJava/libs/rJava.so
-  Reason: image not found
-ERROR: lazy loading failed for package ‘InterfaceqPCR’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/InterfaceqPCR/new/InterfaceqPCR.Rcheck/InterfaceqPCR’
-
-```
-### CRAN
-
-```
-* installing *source* package ‘InterfaceqPCR’ ...
-** package ‘InterfaceqPCR’ successfully unpacked and MD5 sums checked
-** R
-** inst
-** byte-compile and prepare package for lazy loading
-Warning in fun(libname, pkgname) : couldn't connect to display ""
-Warning: loading Rplot failed
-Error : .onLoad failed in loadNamespace() for 'rJava', details:
-  call: dyn.load(file, DLLpath = DLLpath, ...)
-  error: unable to load shared object '/Users/max/github/forks/testthat/revdep/library.noindex/InterfaceqPCR/rJava/libs/rJava.so':
-  dlopen(/Users/max/github/forks/testthat/revdep/library.noindex/InterfaceqPCR/rJava/libs/rJava.so, 6): Library not loaded: /Library/Java/JavaVirtualMachines/jdk-11.0.1.jdk/Contents/Home/lib/server/libjvm.dylib
-  Referenced from: /Users/max/github/forks/testthat/revdep/library.noindex/InterfaceqPCR/rJava/libs/rJava.so
-  Reason: image not found
-ERROR: lazy loading failed for package ‘InterfaceqPCR’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/InterfaceqPCR/old/InterfaceqPCR.Rcheck/InterfaceqPCR’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/influenceR/old/influenceR.Rcheck/influenceR’
 
 ```
 # island
@@ -5025,7 +4562,7 @@ Run `revdep_details(,"island")` for more info
 *   checking whether package ‘island’ can be installed ... ERROR
     ```
     Installation failed.
-    See ‘/Users/max/github/forks/testthat/revdep/checks.noindex/island/new/island.Rcheck/00install.out’ for details.
+    See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/island/new/island.Rcheck/00install.out’ for details.
     ```
 
 ## Installation
@@ -5038,7 +4575,7 @@ Run `revdep_details(,"island")` for more info
 checking for gsl-config... no
 configure: error: gsl-config not found, is GSL installed?
 ERROR: configuration failed for package ‘island’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/island/new/island.Rcheck/island’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/island/new/island.Rcheck/island’
 
 ```
 ### CRAN
@@ -5049,88 +4586,7 @@ ERROR: configuration failed for package ‘island’
 checking for gsl-config... no
 configure: error: gsl-config not found, is GSL installed?
 ERROR: configuration failed for package ‘island’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/island/old/island.Rcheck/island’
-
-```
-# jdx
-
-<details>
-
-* Version: 0.1.3
-* Source code: https://github.com/cran/jdx
-* URL: https://github.com/floidgilbert/jdx
-* BugReports: https://github.com/floidgilbert/jdx/issues
-* Date/Publication: 2018-03-29 15:48:54 UTC
-* Number of recursive dependencies: 28
-
-Run `revdep_details(,"jdx")` for more info
-
-</details>
-
-## In both
-
-*   checking whether package ‘jdx’ can be installed ... ERROR
-    ```
-    Installation failed.
-    See ‘/Users/max/github/forks/testthat/revdep/checks.noindex/jdx/new/jdx.Rcheck/00install.out’ for details.
-    ```
-
-## Installation
-
-### Devel
-
-```
-* installing *source* package ‘jdx’ ...
-** package ‘jdx’ successfully unpacked and MD5 sums checked
-** R
-** inst
-** byte-compile and prepare package for lazy loading
-** help
-*** installing help indices
-** building package indices
-** installing vignettes
-** testing if installed package can be loaded
-Error: package or namespace load failed for ‘jdx’:
- .onLoad failed in loadNamespace() for 'jdx', details:
-  call: NULL
-  error: .onLoad failed in loadNamespace() for 'rJava', details:
-  call: dyn.load(file, DLLpath = DLLpath, ...)
-  error: unable to load shared object '/Users/max/github/forks/testthat/revdep/library.noindex/jdx/rJava/libs/rJava.so':
-  dlopen(/Users/max/github/forks/testthat/revdep/library.noindex/jdx/rJava/libs/rJava.so, 6): Library not loaded: /Library/Java/JavaVirtualMachines/jdk-11.0.1.jdk/Contents/Home/lib/server/libjvm.dylib
-  Referenced from: /Users/max/github/forks/testthat/revdep/library.noindex/jdx/rJava/libs/rJava.so
-  Reason: image not found
-Error: loading failed
-Execution halted
-ERROR: loading failed
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/jdx/new/jdx.Rcheck/jdx’
-
-```
-### CRAN
-
-```
-* installing *source* package ‘jdx’ ...
-** package ‘jdx’ successfully unpacked and MD5 sums checked
-** R
-** inst
-** byte-compile and prepare package for lazy loading
-** help
-*** installing help indices
-** building package indices
-** installing vignettes
-** testing if installed package can be loaded
-Error: package or namespace load failed for ‘jdx’:
- .onLoad failed in loadNamespace() for 'jdx', details:
-  call: NULL
-  error: .onLoad failed in loadNamespace() for 'rJava', details:
-  call: dyn.load(file, DLLpath = DLLpath, ...)
-  error: unable to load shared object '/Users/max/github/forks/testthat/revdep/library.noindex/jdx/rJava/libs/rJava.so':
-  dlopen(/Users/max/github/forks/testthat/revdep/library.noindex/jdx/rJava/libs/rJava.so, 6): Library not loaded: /Library/Java/JavaVirtualMachines/jdk-11.0.1.jdk/Contents/Home/lib/server/libjvm.dylib
-  Referenced from: /Users/max/github/forks/testthat/revdep/library.noindex/jdx/rJava/libs/rJava.so
-  Reason: image not found
-Error: loading failed
-Execution halted
-ERROR: loading failed
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/jdx/old/jdx.Rcheck/jdx’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/island/old/island.Rcheck/island’
 
 ```
 # joineRML
@@ -5153,7 +4609,7 @@ Run `revdep_details(,"joineRML")` for more info
 *   checking whether package ‘joineRML’ can be installed ... ERROR
     ```
     Installation failed.
-    See ‘/Users/max/github/forks/testthat/revdep/checks.noindex/joineRML/new/joineRML.Rcheck/00install.out’ for details.
+    See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/joineRML/new/joineRML.Rcheck/00install.out’ for details.
     ```
 
 ## Installation
@@ -5164,21 +4620,11 @@ Run `revdep_details(,"joineRML")` for more info
 * installing *source* package ‘joineRML’ ...
 ** package ‘joineRML’ successfully unpacked and MD5 sums checked
 ** libs
-clang++  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/max/github/forks/testthat/revdep/library.noindex/joineRML/Rcpp/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/joineRML/RcppArmadillo/include" -I/usr/local/include  -fopenmp -fPIC  -Wall -g -O2  -c RcppExports.cpp -o RcppExports.o
-clang++  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/max/github/forks/testthat/revdep/library.noindex/joineRML/Rcpp/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/joineRML/RcppArmadillo/include" -I/usr/local/include  -fopenmp -fPIC  -Wall -g -O2  -c expW.cpp -o expW.o
-clang++  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/max/github/forks/testthat/revdep/library.noindex/joineRML/Rcpp/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/joineRML/RcppArmadillo/include" -I/usr/local/include  -fopenmp -fPIC  -Wall -g -O2  -c gammaUpdate.cpp -o gammaUpdate.o
-clang++  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/max/github/forks/testthat/revdep/library.noindex/joineRML/Rcpp/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/joineRML/RcppArmadillo/include" -I/usr/local/include  -fopenmp -fPIC  -Wall -g -O2  -c gammaUpdate_approx.cpp -o gammaUpdate_approx.o
-clang: error: unsupported option '-fopenmp'clang: error: unsupported option '-fopenmp'
-
+ccache clang++ -Qunused-arguments  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/joineRML/Rcpp/include" -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/joineRML/RcppArmadillo/include" -I/usr/local/include  -fopenmp -fPIC  -Wall -g -O2  -c RcppExports.cpp -o RcppExports.o
 clang: error: unsupported option '-fopenmp'
-clang: error: unsupported option '-fopenmp'
-make: *** [expW.o] Error 1
-make: *** Waiting for unfinished jobs....
 make: *** [RcppExports.o] Error 1
-make: *** [gammaUpdate_approx.o] Error 1
-make: *** [gammaUpdate.o] Error 1
 ERROR: compilation failed for package ‘joineRML’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/joineRML/new/joineRML.Rcheck/joineRML’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/joineRML/new/joineRML.Rcheck/joineRML’
 
 ```
 ### CRAN
@@ -5187,21 +4633,11 @@ ERROR: compilation failed for package ‘joineRML’
 * installing *source* package ‘joineRML’ ...
 ** package ‘joineRML’ successfully unpacked and MD5 sums checked
 ** libs
-clang++  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/max/github/forks/testthat/revdep/library.noindex/joineRML/Rcpp/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/joineRML/RcppArmadillo/include" -I/usr/local/include  -fopenmp -fPIC  -Wall -g -O2  -c RcppExports.cpp -o RcppExports.o
-clang++  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/max/github/forks/testthat/revdep/library.noindex/joineRML/Rcpp/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/joineRML/RcppArmadillo/include" -I/usr/local/include  -fopenmp -fPIC  -Wall -g -O2  -c expW.cpp -o expW.o
-clang++  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/max/github/forks/testthat/revdep/library.noindex/joineRML/Rcpp/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/joineRML/RcppArmadillo/include" -I/usr/local/include  -fopenmp -fPIC  -Wall -g -O2  -c gammaUpdate.cpp -o gammaUpdate.o
-clang++  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/max/github/forks/testthat/revdep/library.noindex/joineRML/Rcpp/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/joineRML/RcppArmadillo/include" -I/usr/local/include  -fopenmp -fPIC  -Wall -g -O2  -c gammaUpdate_approx.cpp -o gammaUpdate_approx.o
+ccache clang++ -Qunused-arguments  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/joineRML/Rcpp/include" -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/joineRML/RcppArmadillo/include" -I/usr/local/include  -fopenmp -fPIC  -Wall -g -O2  -c RcppExports.cpp -o RcppExports.o
 clang: error: unsupported option '-fopenmp'
-clang: error: unsupported option '-fopenmp'
-clang: error: unsupported option '-fopenmp'clang: error: unsupported option '-fopenmp'
-
 make: *** [RcppExports.o] Error 1
-make: *** Waiting for unfinished jobs....
-make: *** [expW.o] Error 1
-make: *** [gammaUpdate_approx.o] Error 1
-make: *** [gammaUpdate.o] Error 1
 ERROR: compilation failed for package ‘joineRML’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/joineRML/old/joineRML.Rcheck/joineRML’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/joineRML/old/joineRML.Rcheck/joineRML’
 
 ```
 # JointAI
@@ -5224,7 +4660,7 @@ Run `revdep_details(,"JointAI")` for more info
 *   checking whether package ‘JointAI’ can be installed ... ERROR
     ```
     Installation failed.
-    See ‘/Users/max/github/forks/testthat/revdep/checks.noindex/JointAI/new/JointAI.Rcheck/00install.out’ for details.
+    See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/JointAI/new/JointAI.Rcheck/00install.out’ for details.
     ```
 
 ## Installation
@@ -5242,13 +4678,13 @@ Run `revdep_details(,"JointAI")` for more info
 Error: package or namespace load failed for ‘rjags’:
  .onLoad failed in loadNamespace() for 'rjags', details:
   call: dyn.load(file, DLLpath = DLLpath, ...)
-  error: unable to load shared object '/Users/max/github/forks/testthat/revdep/library.noindex/JointAI/rjags/libs/rjags.so':
-  dlopen(/Users/max/github/forks/testthat/revdep/library.noindex/JointAI/rjags/libs/rjags.so, 10): Library not loaded: /usr/local/lib/libjags.4.dylib
-  Referenced from: /Users/max/github/forks/testthat/revdep/library.noindex/JointAI/rjags/libs/rjags.so
+  error: unable to load shared object '/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/JointAI/rjags/libs/rjags.so':
+  dlopen(/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/JointAI/rjags/libs/rjags.so, 10): Library not loaded: /usr/local/lib/libjags.4.dylib
+  Referenced from: /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/JointAI/rjags/libs/rjags.so
   Reason: image not found
 Error : package ‘rjags’ could not be loaded
 ERROR: lazy loading failed for package ‘JointAI’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/JointAI/new/JointAI.Rcheck/JointAI’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/JointAI/new/JointAI.Rcheck/JointAI’
 
 ```
 ### CRAN
@@ -5264,13 +4700,13 @@ ERROR: lazy loading failed for package ‘JointAI’
 Error: package or namespace load failed for ‘rjags’:
  .onLoad failed in loadNamespace() for 'rjags', details:
   call: dyn.load(file, DLLpath = DLLpath, ...)
-  error: unable to load shared object '/Users/max/github/forks/testthat/revdep/library.noindex/JointAI/rjags/libs/rjags.so':
-  dlopen(/Users/max/github/forks/testthat/revdep/library.noindex/JointAI/rjags/libs/rjags.so, 10): Library not loaded: /usr/local/lib/libjags.4.dylib
-  Referenced from: /Users/max/github/forks/testthat/revdep/library.noindex/JointAI/rjags/libs/rjags.so
+  error: unable to load shared object '/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/JointAI/rjags/libs/rjags.so':
+  dlopen(/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/JointAI/rjags/libs/rjags.so, 10): Library not loaded: /usr/local/lib/libjags.4.dylib
+  Referenced from: /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/JointAI/rjags/libs/rjags.so
   Reason: image not found
 Error : package ‘rjags’ could not be loaded
 ERROR: lazy loading failed for package ‘JointAI’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/JointAI/old/JointAI.Rcheck/JointAI’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/JointAI/old/JointAI.Rcheck/JointAI’
 
 ```
 # jqr
@@ -5293,7 +4729,7 @@ Run `revdep_details(,"jqr")` for more info
 *   checking whether package ‘jqr’ can be installed ... ERROR
     ```
     Installation failed.
-    See ‘/Users/max/github/forks/testthat/revdep/checks.noindex/jqr/new/jqr.Rcheck/00install.out’ for details.
+    See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/jqr/new/jqr.Rcheck/00install.out’ for details.
     ```
 
 ## Installation
@@ -5320,7 +4756,7 @@ If  is already installed set INCLUDE_DIR and LIB_DIR manually via:
 R CMD INSTALL --configure-vars='INCLUDE_DIR=... LIB_DIR=...'
 --------------------------------------------------------------------
 ERROR: configuration failed for package ‘jqr’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/jqr/new/jqr.Rcheck/jqr’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/jqr/new/jqr.Rcheck/jqr’
 
 ```
 ### CRAN
@@ -5345,92 +4781,7 @@ If  is already installed set INCLUDE_DIR and LIB_DIR manually via:
 R CMD INSTALL --configure-vars='INCLUDE_DIR=... LIB_DIR=...'
 --------------------------------------------------------------------
 ERROR: configuration failed for package ‘jqr’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/jqr/old/jqr.Rcheck/jqr’
-
-```
-# jsr223
-
-<details>
-
-* Version: 0.3.3
-* Source code: https://github.com/cran/jsr223
-* URL: https://github.com/floidgilbert/jsr223
-* BugReports: https://github.com/floidgilbert/jsr223/issues
-* Date/Publication: 2018-12-12 23:40:03 UTC
-* Number of recursive dependencies: 30
-
-Run `revdep_details(,"jsr223")` for more info
-
-</details>
-
-## In both
-
-*   checking whether package ‘jsr223’ can be installed ... ERROR
-    ```
-    Installation failed.
-    See ‘/Users/max/github/forks/testthat/revdep/checks.noindex/jsr223/new/jsr223.Rcheck/00install.out’ for details.
-    ```
-
-## Installation
-
-### Devel
-
-```
-* installing *source* package ‘jsr223’ ...
-** package ‘jsr223’ successfully unpacked and MD5 sums checked
-** R
-** inst
-** byte-compile and prepare package for lazy loading
-** help
-*** installing help indices
-** building package indices
-** installing vignettes
-** testing if installed package can be loaded
-Error: package or namespace load failed for ‘jsr223’:
- .onLoad failed in loadNamespace() for 'jsr223', details:
-  call: NULL
-  error: .onLoad failed in loadNamespace() for 'jdx', details:
-  call: NULL
-  error: .onLoad failed in loadNamespace() for 'rJava', details:
-  call: dyn.load(file, DLLpath = DLLpath, ...)
-  error: unable to load shared object '/Users/max/github/forks/testthat/revdep/library.noindex/jsr223/rJava/libs/rJava.so':
-  dlopen(/Users/max/github/forks/testthat/revdep/library.noindex/jsr223/rJava/libs/rJava.so, 6): Library not loaded: /Library/Java/JavaVirtualMachines/jdk-11.0.1.jdk/Contents/Home/lib/server/libjvm.dylib
-  Referenced from: /Users/max/github/forks/testthat/revdep/library.noindex/jsr223/rJava/libs/rJava.so
-  Reason: image not found
-Error: loading failed
-Execution halted
-ERROR: loading failed
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/jsr223/new/jsr223.Rcheck/jsr223’
-
-```
-### CRAN
-
-```
-* installing *source* package ‘jsr223’ ...
-** package ‘jsr223’ successfully unpacked and MD5 sums checked
-** R
-** inst
-** byte-compile and prepare package for lazy loading
-** help
-*** installing help indices
-** building package indices
-** installing vignettes
-** testing if installed package can be loaded
-Error: package or namespace load failed for ‘jsr223’:
- .onLoad failed in loadNamespace() for 'jsr223', details:
-  call: NULL
-  error: .onLoad failed in loadNamespace() for 'jdx', details:
-  call: NULL
-  error: .onLoad failed in loadNamespace() for 'rJava', details:
-  call: dyn.load(file, DLLpath = DLLpath, ...)
-  error: unable to load shared object '/Users/max/github/forks/testthat/revdep/library.noindex/jsr223/rJava/libs/rJava.so':
-  dlopen(/Users/max/github/forks/testthat/revdep/library.noindex/jsr223/rJava/libs/rJava.so, 6): Library not loaded: /Library/Java/JavaVirtualMachines/jdk-11.0.1.jdk/Contents/Home/lib/server/libjvm.dylib
-  Referenced from: /Users/max/github/forks/testthat/revdep/library.noindex/jsr223/rJava/libs/rJava.so
-  Reason: image not found
-Error: loading failed
-Execution halted
-ERROR: loading failed
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/jsr223/old/jsr223.Rcheck/jsr223’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/jqr/old/jqr.Rcheck/jqr’
 
 ```
 # jwutil
@@ -5453,7 +4804,7 @@ Run `revdep_details(,"jwutil")` for more info
 *   checking whether package ‘jwutil’ can be installed ... ERROR
     ```
     Installation failed.
-    See ‘/Users/max/github/forks/testthat/revdep/checks.noindex/jwutil/new/jwutil.Rcheck/00install.out’ for details.
+    See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/jwutil/new/jwutil.Rcheck/00install.out’ for details.
     ```
 
 ## Installation
@@ -5464,21 +4815,11 @@ Run `revdep_details(,"jwutil")` for more info
 * installing *source* package ‘jwutil’ ...
 ** package ‘jwutil’ successfully unpacked and MD5 sums checked
 ** libs
-clang++  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/max/github/forks/testthat/revdep/library.noindex/jwutil/Rcpp/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/testthat/new/testthat/include" -I/usr/local/include  -fopenmp -fPIC  -Wall -g -O2  -c RcppExports.cpp -o RcppExports.o
-clang++  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/max/github/forks/testthat/revdep/library.noindex/jwutil/Rcpp/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/testthat/new/testthat/include" -I/usr/local/include  -fopenmp -fPIC  -Wall -g -O2  -c attr.cpp -o attr.o
-clang++  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/max/github/forks/testthat/revdep/library.noindex/jwutil/Rcpp/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/testthat/new/testthat/include" -I/usr/local/include  -fopenmp -fPIC  -Wall -g -O2  -c omp.cpp -o omp.o
-clang -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/max/github/forks/testthat/revdep/library.noindex/jwutil/Rcpp/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/testthat/new/testthat/include" -I/usr/local/include  -fopenmp -fPIC  -Wall -g -O2  -c registration.c -o registration.o
-clang: clang: error: error: unsupported option '-fopenmp'unsupported option '-fopenmp'
-
+ccache clang++ -Qunused-arguments  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/jwutil/Rcpp/include" -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/testthat/new/testthat/include" -I/usr/local/include  -fopenmp -fPIC  -Wall -g -O2  -c RcppExports.cpp -o RcppExports.o
 clang: error: unsupported option '-fopenmp'
-clang: error: unsupported option '-fopenmp'
-make: *** [attr.o] Error 1
-make: *** Waiting for unfinished jobs....
 make: *** [RcppExports.o] Error 1
-make: *** [omp.o] Error 1
-make: *** [registration.o] Error 1
 ERROR: compilation failed for package ‘jwutil’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/jwutil/new/jwutil.Rcheck/jwutil’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/jwutil/new/jwutil.Rcheck/jwutil’
 
 ```
 ### CRAN
@@ -5487,21 +4828,11 @@ ERROR: compilation failed for package ‘jwutil’
 * installing *source* package ‘jwutil’ ...
 ** package ‘jwutil’ successfully unpacked and MD5 sums checked
 ** libs
-clang++  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/max/github/forks/testthat/revdep/library.noindex/jwutil/Rcpp/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/testthat/old/testthat/include" -I/usr/local/include  -fopenmp -fPIC  -Wall -g -O2  -c RcppExports.cpp -o RcppExports.o
-clang++  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/max/github/forks/testthat/revdep/library.noindex/jwutil/Rcpp/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/testthat/old/testthat/include" -I/usr/local/include  -fopenmp -fPIC  -Wall -g -O2  -c attr.cpp -o attr.o
-clang++  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/max/github/forks/testthat/revdep/library.noindex/jwutil/Rcpp/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/testthat/old/testthat/include" -I/usr/local/include  -fopenmp -fPIC  -Wall -g -O2  -c omp.cpp -o omp.o
-clang -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/max/github/forks/testthat/revdep/library.noindex/jwutil/Rcpp/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/testthat/old/testthat/include" -I/usr/local/include  -fopenmp -fPIC  -Wall -g -O2  -c registration.c -o registration.o
+ccache clang++ -Qunused-arguments  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/jwutil/Rcpp/include" -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/testthat/old/testthat/include" -I/usr/local/include  -fopenmp -fPIC  -Wall -g -O2  -c RcppExports.cpp -o RcppExports.o
 clang: error: unsupported option '-fopenmp'
-clang: error: unsupported option '-fopenmp'clang: errorclang: error: unsupported option '-fopenmp': 
-
-unsupported option '-fopenmp'
-make: *** [registration.o] Error 1
-make: *** Waiting for unfinished jobs....
 make: *** [RcppExports.o] Error 1
-make: *** [omp.o] Error 1
-make: *** [attr.o] Error 1
 ERROR: compilation failed for package ‘jwutil’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/jwutil/old/jwutil.Rcheck/jwutil’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/jwutil/old/jwutil.Rcheck/jwutil’
 
 ```
 # kmcudaR
@@ -5522,7 +4853,7 @@ Run `revdep_details(,"kmcudaR")` for more info
 *   checking whether package ‘kmcudaR’ can be installed ... ERROR
     ```
     Installation failed.
-    See ‘/Users/max/github/forks/testthat/revdep/checks.noindex/kmcudaR/new/kmcudaR.Rcheck/00install.out’ for details.
+    See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/kmcudaR/new/kmcudaR.Rcheck/00install.out’ for details.
     ```
 
 ## Installation
@@ -5548,7 +4879,7 @@ checking "Checking environment variable CUDA_HOME"... "CUDA_HOME not set; using 
 checking for /bin/nvcc... no
 configure: error: "NVCC not found; check CUDA install"
 ERROR: configuration failed for package ‘kmcudaR’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/kmcudaR/new/kmcudaR.Rcheck/kmcudaR’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/kmcudaR/new/kmcudaR.Rcheck/kmcudaR’
 
 ```
 ### CRAN
@@ -5572,7 +4903,7 @@ checking "Checking environment variable CUDA_HOME"... "CUDA_HOME not set; using 
 checking for /bin/nvcc... no
 configure: error: "NVCC not found; check CUDA install"
 ERROR: configuration failed for package ‘kmcudaR’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/kmcudaR/old/kmcudaR.Rcheck/kmcudaR’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/kmcudaR/old/kmcudaR.Rcheck/kmcudaR’
 
 ```
 # KRIG
@@ -5595,7 +4926,7 @@ Run `revdep_details(,"KRIG")` for more info
 *   checking whether package ‘KRIG’ can be installed ... ERROR
     ```
     Installation failed.
-    See ‘/Users/max/github/forks/testthat/revdep/checks.noindex/KRIG/new/KRIG.Rcheck/00install.out’ for details.
+    See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/KRIG/new/KRIG.Rcheck/00install.out’ for details.
     ```
 
 ## Installation
@@ -5606,23 +4937,12 @@ Run `revdep_details(,"KRIG")` for more info
 * installing *source* package ‘KRIG’ ...
 ** package ‘KRIG’ successfully unpacked and MD5 sums checked
 ** libs
-/usr/local/clang6/bin/clang++ -std=gnu++11 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG `gsl-config --cflags` -fopenmp -I. -I"/Users/max/github/forks/testthat/revdep/library.noindex/KRIG/Rcpp/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/KRIG/RcppArmadillo/include" -I/usr/local/include   -fPIC  -Wall -g -O2 -c RcppExports.cpp -o RcppExports.o
-/usr/local/clang6/bin/clang++ -std=gnu++11 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG `gsl-config --cflags` -fopenmp -I. -I"/Users/max/github/forks/testthat/revdep/library.noindex/KRIG/Rcpp/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/KRIG/RcppArmadillo/include" -I/usr/local/include   -fPIC  -Wall -g -O2 -c krig_distance.cpp -o krig_distance.o
-/usr/local/clang6/bin/clang++ -std=gnu++11 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG `gsl-config --cflags` -fopenmp -I. -I"/Users/max/github/forks/testthat/revdep/library.noindex/KRIG/Rcpp/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/KRIG/RcppArmadillo/include" -I/usr/local/include   -fPIC  -Wall -g -O2 -c krig_integral.cpp -o krig_integral.o
-/usr/local/clang6/bin/clang++ -std=gnu++11 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG `gsl-config --cflags` -fopenmp -I. -I"/Users/max/github/forks/testthat/revdep/library.noindex/KRIG/Rcpp/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/KRIG/RcppArmadillo/include" -I/usr/local/include   -fPIC  -Wall -g -O2 -c krig_kernels.cpp -o krig_kernels.o
+clang++ -std=gnu++11 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG `gsl-config --cflags` -fopenmp -I. -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/KRIG/Rcpp/include" -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/KRIG/RcppArmadillo/include" -I/usr/local/include   -fPIC  -Wall -g -O2 -c RcppExports.cpp -o RcppExports.o
 /bin/sh: gsl-config: command not found
-/bin/sh: gsl-config: command not found
-/bin/sh: gsl-config: command not found
-/bin/sh: gsl-config: command not found
-In file included from krig_kernels.cpp:2:
-./krig_kernels.h:5:10: fatal error: 'gsl/gsl_sf_bessel.h' file not found
-#include <gsl/gsl_sf_bessel.h>
-         ^~~~~~~~~~~~~~~~~~~~~
-1 error generated.
-make: *** [krig_kernels.o] Error 1
-make: *** Waiting for unfinished jobs....
+clang: error: unsupported option '-fopenmp'
+make: *** [RcppExports.o] Error 1
 ERROR: compilation failed for package ‘KRIG’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/KRIG/new/KRIG.Rcheck/KRIG’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/KRIG/new/KRIG.Rcheck/KRIG’
 
 ```
 ### CRAN
@@ -5631,23 +4951,12 @@ ERROR: compilation failed for package ‘KRIG’
 * installing *source* package ‘KRIG’ ...
 ** package ‘KRIG’ successfully unpacked and MD5 sums checked
 ** libs
-/usr/local/clang6/bin/clang++ -std=gnu++11 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG `gsl-config --cflags` -fopenmp -I. -I"/Users/max/github/forks/testthat/revdep/library.noindex/KRIG/Rcpp/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/KRIG/RcppArmadillo/include" -I/usr/local/include   -fPIC  -Wall -g -O2 -c RcppExports.cpp -o RcppExports.o
-/usr/local/clang6/bin/clang++ -std=gnu++11 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG `gsl-config --cflags` -fopenmp -I. -I"/Users/max/github/forks/testthat/revdep/library.noindex/KRIG/Rcpp/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/KRIG/RcppArmadillo/include" -I/usr/local/include   -fPIC  -Wall -g -O2 -c krig_distance.cpp -o krig_distance.o
-/usr/local/clang6/bin/clang++ -std=gnu++11 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG `gsl-config --cflags` -fopenmp -I. -I"/Users/max/github/forks/testthat/revdep/library.noindex/KRIG/Rcpp/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/KRIG/RcppArmadillo/include" -I/usr/local/include   -fPIC  -Wall -g -O2 -c krig_integral.cpp -o krig_integral.o
-/usr/local/clang6/bin/clang++ -std=gnu++11 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG `gsl-config --cflags` -fopenmp -I. -I"/Users/max/github/forks/testthat/revdep/library.noindex/KRIG/Rcpp/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/KRIG/RcppArmadillo/include" -I/usr/local/include   -fPIC  -Wall -g -O2 -c krig_kernels.cpp -o krig_kernels.o
+clang++ -std=gnu++11 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG `gsl-config --cflags` -fopenmp -I. -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/KRIG/Rcpp/include" -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/KRIG/RcppArmadillo/include" -I/usr/local/include   -fPIC  -Wall -g -O2 -c RcppExports.cpp -o RcppExports.o
 /bin/sh: gsl-config: command not found
-/bin/sh: gsl-config: command not found
-/bin/sh: gsl-config: command not found
-/bin/sh: gsl-config: command not found
-In file included from krig_kernels.cpp:2:
-./krig_kernels.h:5:10: fatal error: 'gsl/gsl_sf_bessel.h' file not found
-#include <gsl/gsl_sf_bessel.h>
-         ^~~~~~~~~~~~~~~~~~~~~
-1 error generated.
-make: *** [krig_kernels.o] Error 1
-make: *** Waiting for unfinished jobs....
+clang: error: unsupported option '-fopenmp'
+make: *** [RcppExports.o] Error 1
 ERROR: compilation failed for package ‘KRIG’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/KRIG/old/KRIG.Rcheck/KRIG’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/KRIG/old/KRIG.Rcheck/KRIG’
 
 ```
 # libstableR
@@ -5668,7 +4977,7 @@ Run `revdep_details(,"libstableR")` for more info
 *   checking whether package ‘libstableR’ can be installed ... ERROR
     ```
     Installation failed.
-    See ‘/Users/max/github/forks/testthat/revdep/checks.noindex/libstableR/new/libstableR.Rcheck/00install.out’ for details.
+    See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/libstableR/new/libstableR.Rcheck/00install.out’ for details.
     ```
 
 ## Installation
@@ -5679,32 +4988,16 @@ Run `revdep_details(,"libstableR")` for more info
 * installing *source* package ‘libstableR’ ...
 ** package ‘libstableR’ successfully unpacked and MD5 sums checked
 ** libs
-clang++  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -I/include -I"/Users/max/github/forks/testthat/revdep/library.noindex/libstableR/Rcpp/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/libstableR/RcppGSL/include" -I/usr/local/include   -fPIC  -Wall -g -O2  -c RcppExports.cpp -o RcppExports.o
-clang -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -I/include -I"/Users/max/github/forks/testthat/revdep/library.noindex/libstableR/Rcpp/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/libstableR/RcppGSL/include" -I/usr/local/include   -fPIC  -Wall -g -O2  -c mcculloch.c -o mcculloch.o
-clang -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -I/include -I"/Users/max/github/forks/testthat/revdep/library.noindex/libstableR/Rcpp/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/libstableR/RcppGSL/include" -I/usr/local/include   -fPIC  -Wall -g -O2  -c methods.c -o methods.o
-clang++  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -I/include -I"/Users/max/github/forks/testthat/revdep/library.noindex/libstableR/Rcpp/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/libstableR/RcppGSL/include" -I/usr/local/include   -fPIC  -Wall -g -O2  -c stable_R.cpp -o stable_R.o
-In file included from methods.c:31:
-./stable.h:42:10: fatal error: 'gsl/gsl_integration.h' file not found
-#include <gsl/gsl_integration.h>
-         ^~~~~~~~~~~~~~~~~~~~~~~
-1 error generated.
-make: *** [methods.o] Error 1
-make: *** Waiting for unfinished jobs....
+ccache clang++ -Qunused-arguments  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -I/include -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/libstableR/Rcpp/include" -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/libstableR/RcppGSL/include" -I/usr/local/include   -fPIC  -Wall -g -O2  -c RcppExports.cpp -o RcppExports.o
 In file included from RcppExports.cpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/libstableR/RcppGSL/include/RcppGSL.h:25:
-/Users/max/github/forks/testthat/revdep/library.noindex/libstableR/RcppGSL/include/RcppGSLForward.h:26:10: fatal error: 'gsl/gsl_vector.h' file not found
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/libstableR/RcppGSL/include/RcppGSL.h:25:
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/libstableR/RcppGSL/include/RcppGSLForward.h:26:10: fatal error: 'gsl/gsl_vector.h' file not found
 #include <gsl/gsl_vector.h> 
          ^~~~~~~~~~~~~~~~~~
 1 error generated.
 make: *** [RcppExports.o] Error 1
-In file included from stable_R.cpp:39:
-./stable.h:42:10: fatal error: 'gsl/gsl_integration.h' file not found
-#include <gsl/gsl_integration.h>
-         ^~~~~~~~~~~~~~~~~~~~~~~
-1 error generated.
-make: *** [stable_R.o] Error 1
 ERROR: compilation failed for package ‘libstableR’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/libstableR/new/libstableR.Rcheck/libstableR’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/libstableR/new/libstableR.Rcheck/libstableR’
 
 ```
 ### CRAN
@@ -5713,309 +5006,16 @@ ERROR: compilation failed for package ‘libstableR’
 * installing *source* package ‘libstableR’ ...
 ** package ‘libstableR’ successfully unpacked and MD5 sums checked
 ** libs
-clang++  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -I/include -I"/Users/max/github/forks/testthat/revdep/library.noindex/libstableR/Rcpp/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/libstableR/RcppGSL/include" -I/usr/local/include   -fPIC  -Wall -g -O2  -c RcppExports.cpp -o RcppExports.o
-clang -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -I/include -I"/Users/max/github/forks/testthat/revdep/library.noindex/libstableR/Rcpp/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/libstableR/RcppGSL/include" -I/usr/local/include   -fPIC  -Wall -g -O2  -c mcculloch.c -o mcculloch.o
-clang -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -I/include -I"/Users/max/github/forks/testthat/revdep/library.noindex/libstableR/Rcpp/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/libstableR/RcppGSL/include" -I/usr/local/include   -fPIC  -Wall -g -O2  -c methods.c -o methods.o
-clang++  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -I/include -I"/Users/max/github/forks/testthat/revdep/library.noindex/libstableR/Rcpp/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/libstableR/RcppGSL/include" -I/usr/local/include   -fPIC  -Wall -g -O2  -c stable_R.cpp -o stable_R.o
-In file included from methods.c:31:
-./stable.h:42:10: fatal error: 'gsl/gsl_integration.h' file not found
-#include <gsl/gsl_integration.h>
-         ^~~~~~~~~~~~~~~~~~~~~~~
-1 error generated.
-make: *** [methods.o] Error 1
-make: *** Waiting for unfinished jobs....
+ccache clang++ -Qunused-arguments  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -I/include -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/libstableR/Rcpp/include" -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/libstableR/RcppGSL/include" -I/usr/local/include   -fPIC  -Wall -g -O2  -c RcppExports.cpp -o RcppExports.o
 In file included from RcppExports.cpp:4:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/libstableR/RcppGSL/include/RcppGSL.h:25:
-/Users/max/github/forks/testthat/revdep/library.noindex/libstableR/RcppGSL/include/RcppGSLForward.h:26:10: fatal error: 'gsl/gsl_vector.h' file not found
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/libstableR/RcppGSL/include/RcppGSL.h:25:
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/libstableR/RcppGSL/include/RcppGSLForward.h:26:10: fatal error: 'gsl/gsl_vector.h' file not found
 #include <gsl/gsl_vector.h> 
          ^~~~~~~~~~~~~~~~~~
 1 error generated.
 make: *** [RcppExports.o] Error 1
-In file included from stable_R.cpp:39:
-./stable.h:42:10: fatal error: 'gsl/gsl_integration.h' file not found
-#include <gsl/gsl_integration.h>
-         ^~~~~~~~~~~~~~~~~~~~~~~
-1 error generated.
-make: *** [stable_R.o] Error 1
 ERROR: compilation failed for package ‘libstableR’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/libstableR/old/libstableR.Rcheck/libstableR’
-
-```
-# lilikoi
-
-<details>
-
-* Version: 0.1.0
-* Source code: https://github.com/cran/lilikoi
-* URL: https://github.com/lanagarmire/lilikoi
-* BugReports: https://github.com/lanagarmire/lilikoi/issues
-* Date/Publication: 2018-07-30 11:10:03 UTC
-* Number of recursive dependencies: 128
-
-Run `revdep_details(,"lilikoi")` for more info
-
-</details>
-
-## In both
-
-*   checking whether package ‘lilikoi’ can be installed ... ERROR
-    ```
-    Installation failed.
-    See ‘/Users/max/github/forks/testthat/revdep/checks.noindex/lilikoi/new/lilikoi.Rcheck/00install.out’ for details.
-    ```
-
-## Installation
-
-### Devel
-
-```
-* installing *source* package ‘lilikoi’ ...
-** package ‘lilikoi’ successfully unpacked and MD5 sums checked
-** R
-** data
-*** moving datasets to lazyload DB
-** inst
-** byte-compile and prepare package for lazy loading
-Error : .onLoad failed in loadNamespace() for 'rJava', details:
-  call: dyn.load(file, DLLpath = DLLpath, ...)
-  error: unable to load shared object '/Users/max/github/forks/testthat/revdep/library.noindex/lilikoi/rJava/libs/rJava.so':
-  dlopen(/Users/max/github/forks/testthat/revdep/library.noindex/lilikoi/rJava/libs/rJava.so, 6): Library not loaded: /Library/Java/JavaVirtualMachines/jdk-11.0.1.jdk/Contents/Home/lib/server/libjvm.dylib
-  Referenced from: /Users/max/github/forks/testthat/revdep/library.noindex/lilikoi/rJava/libs/rJava.so
-  Reason: image not found
-ERROR: lazy loading failed for package ‘lilikoi’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/lilikoi/new/lilikoi.Rcheck/lilikoi’
-
-```
-### CRAN
-
-```
-* installing *source* package ‘lilikoi’ ...
-** package ‘lilikoi’ successfully unpacked and MD5 sums checked
-** R
-** data
-*** moving datasets to lazyload DB
-** inst
-** byte-compile and prepare package for lazy loading
-Error : .onLoad failed in loadNamespace() for 'rJava', details:
-  call: dyn.load(file, DLLpath = DLLpath, ...)
-  error: unable to load shared object '/Users/max/github/forks/testthat/revdep/library.noindex/lilikoi/rJava/libs/rJava.so':
-  dlopen(/Users/max/github/forks/testthat/revdep/library.noindex/lilikoi/rJava/libs/rJava.so, 6): Library not loaded: /Library/Java/JavaVirtualMachines/jdk-11.0.1.jdk/Contents/Home/lib/server/libjvm.dylib
-  Referenced from: /Users/max/github/forks/testthat/revdep/library.noindex/lilikoi/rJava/libs/rJava.so
-  Reason: image not found
-ERROR: lazy loading failed for package ‘lilikoi’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/lilikoi/old/lilikoi.Rcheck/lilikoi’
-
-```
-# llama
-
-<details>
-
-* Version: 0.9.2
-* Source code: https://github.com/cran/llama
-* URL: https://bitbucket.org/lkotthoff/llama
-* Date/Publication: 2018-07-11 14:30:03 UTC
-* Number of recursive dependencies: 46
-
-Run `revdep_details(,"llama")` for more info
-
-</details>
-
-## In both
-
-*   checking whether package ‘llama’ can be installed ... ERROR
-    ```
-    Installation failed.
-    See ‘/Users/max/github/forks/testthat/revdep/checks.noindex/llama/new/llama.Rcheck/00install.out’ for details.
-    ```
-
-## Installation
-
-### Devel
-
-```
-* installing *source* package ‘llama’ ...
-** package ‘llama’ successfully unpacked and MD5 sums checked
-** R
-** data
-** inst
-** byte-compile and prepare package for lazy loading
-Error : .onLoad failed in loadNamespace() for 'rJava', details:
-  call: dyn.load(file, DLLpath = DLLpath, ...)
-  error: unable to load shared object '/Users/max/github/forks/testthat/revdep/library.noindex/llama/rJava/libs/rJava.so':
-  dlopen(/Users/max/github/forks/testthat/revdep/library.noindex/llama/rJava/libs/rJava.so, 6): Library not loaded: /Library/Java/JavaVirtualMachines/jdk-11.0.1.jdk/Contents/Home/lib/server/libjvm.dylib
-  Referenced from: /Users/max/github/forks/testthat/revdep/library.noindex/llama/rJava/libs/rJava.so
-  Reason: image not found
-ERROR: lazy loading failed for package ‘llama’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/llama/new/llama.Rcheck/llama’
-
-```
-### CRAN
-
-```
-* installing *source* package ‘llama’ ...
-** package ‘llama’ successfully unpacked and MD5 sums checked
-** R
-** data
-** inst
-** byte-compile and prepare package for lazy loading
-Error : .onLoad failed in loadNamespace() for 'rJava', details:
-  call: dyn.load(file, DLLpath = DLLpath, ...)
-  error: unable to load shared object '/Users/max/github/forks/testthat/revdep/library.noindex/llama/rJava/libs/rJava.so':
-  dlopen(/Users/max/github/forks/testthat/revdep/library.noindex/llama/rJava/libs/rJava.so, 6): Library not loaded: /Library/Java/JavaVirtualMachines/jdk-11.0.1.jdk/Contents/Home/lib/server/libjvm.dylib
-  Referenced from: /Users/max/github/forks/testthat/revdep/library.noindex/llama/rJava/libs/rJava.so
-  Reason: image not found
-ERROR: lazy loading failed for package ‘llama’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/llama/old/llama.Rcheck/llama’
-
-```
-# LLSR
-
-<details>
-
-* Version: 0.0.2.19
-* Source code: https://github.com/cran/LLSR
-* URL: https://CRAN.R-project.org/package=LLSR
-* BugReports: https://github.com/diegofcoelho/LLSR/issues
-* Date/Publication: 2019-03-05 22:20:11 UTC
-* Number of recursive dependencies: 51
-
-Run `revdep_details(,"LLSR")` for more info
-
-</details>
-
-## In both
-
-*   checking whether package ‘LLSR’ can be installed ... ERROR
-    ```
-    Installation failed.
-    See ‘/Users/max/github/forks/testthat/revdep/checks.noindex/LLSR/new/LLSR.Rcheck/00install.out’ for details.
-    ```
-
-## Installation
-
-### Devel
-
-```
-* installing *source* package ‘LLSR’ ...
-** package ‘LLSR’ successfully unpacked and MD5 sums checked
-** R
-** data
-*** moving datasets to lazyload DB
-** inst
-** byte-compile and prepare package for lazy loading
-Error : .onLoad failed in loadNamespace() for 'rJava', details:
-  call: dyn.load(file, DLLpath = DLLpath, ...)
-  error: unable to load shared object '/Users/max/github/forks/testthat/revdep/library.noindex/LLSR/rJava/libs/rJava.so':
-  dlopen(/Users/max/github/forks/testthat/revdep/library.noindex/LLSR/rJava/libs/rJava.so, 6): Library not loaded: /Library/Java/JavaVirtualMachines/jdk-11.0.1.jdk/Contents/Home/lib/server/libjvm.dylib
-  Referenced from: /Users/max/github/forks/testthat/revdep/library.noindex/LLSR/rJava/libs/rJava.so
-  Reason: image not found
-ERROR: lazy loading failed for package ‘LLSR’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/LLSR/new/LLSR.Rcheck/LLSR’
-
-```
-### CRAN
-
-```
-* installing *source* package ‘LLSR’ ...
-** package ‘LLSR’ successfully unpacked and MD5 sums checked
-** R
-** data
-*** moving datasets to lazyload DB
-** inst
-** byte-compile and prepare package for lazy loading
-Error : .onLoad failed in loadNamespace() for 'rJava', details:
-  call: dyn.load(file, DLLpath = DLLpath, ...)
-  error: unable to load shared object '/Users/max/github/forks/testthat/revdep/library.noindex/LLSR/rJava/libs/rJava.so':
-  dlopen(/Users/max/github/forks/testthat/revdep/library.noindex/LLSR/rJava/libs/rJava.so, 6): Library not loaded: /Library/Java/JavaVirtualMachines/jdk-11.0.1.jdk/Contents/Home/lib/server/libjvm.dylib
-  Referenced from: /Users/max/github/forks/testthat/revdep/library.noindex/LLSR/rJava/libs/rJava.so
-  Reason: image not found
-ERROR: lazy loading failed for package ‘LLSR’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/LLSR/old/LLSR.Rcheck/LLSR’
-
-```
-# loon
-
-<details>
-
-* Version: 1.2.2
-* Source code: https://github.com/cran/loon
-* URL: http://waddella.github.io/loon/
-* BugReports: https://github.com/waddella/loon/issues
-* Date/Publication: 2019-03-23 23:20:17 UTC
-* Number of recursive dependencies: 89
-
-Run `revdep_details(,"loon")` for more info
-
-</details>
-
-## In both
-
-*   checking whether package ‘loon’ can be installed ... ERROR
-    ```
-    Installation failed.
-    See ‘/Users/max/github/forks/testthat/revdep/checks.noindex/loon/new/loon.Rcheck/00install.out’ for details.
-    ```
-
-## Installation
-
-### Devel
-
-```
-* installing *source* package ‘loon’ ...
-** package ‘loon’ successfully unpacked and MD5 sums checked
-** R
-** data
-*** moving datasets to lazyload DB
-** demo
-** inst
-** byte-compile and prepare package for lazy loading
-Warning in fun(libname, pkgname) : couldn't connect to display ""
-** help
-*** installing help indices
-*** copying figures
-** building package indices
-** installing vignettes
-** testing if installed package can be loaded
-Warning in fun(libname, pkgname) : couldn't connect to display ""
-Error: package or namespace load failed for ‘loon’:
- .onLoad failed in loadNamespace() for 'loon', details:
-  call: structure(.External(.C_dotTcl, ...), class = "tclObj")
-  error: [tcl] couldn't connect to display "".
-
-Error: loading failed
-Execution halted
-ERROR: loading failed
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/loon/new/loon.Rcheck/loon’
-
-```
-### CRAN
-
-```
-* installing *source* package ‘loon’ ...
-** package ‘loon’ successfully unpacked and MD5 sums checked
-** R
-** data
-*** moving datasets to lazyload DB
-** demo
-** inst
-** byte-compile and prepare package for lazy loading
-Warning in fun(libname, pkgname) : couldn't connect to display ""
-** help
-*** installing help indices
-*** copying figures
-** building package indices
-** installing vignettes
-** testing if installed package can be loaded
-Warning in fun(libname, pkgname) : couldn't connect to display ""
-Error: package or namespace load failed for ‘loon’:
- .onLoad failed in loadNamespace() for 'loon', details:
-  call: structure(.External(.C_dotTcl, ...), class = "tclObj")
-  error: [tcl] couldn't connect to display "".
-
-Error: loading failed
-Execution halted
-ERROR: loading failed
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/loon/old/loon.Rcheck/loon’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/libstableR/old/libstableR.Rcheck/libstableR’
 
 ```
 # ludic
@@ -6036,7 +5036,7 @@ Run `revdep_details(,"ludic")` for more info
 *   checking whether package ‘ludic’ can be installed ... ERROR
     ```
     Installation failed.
-    See ‘/Users/max/github/forks/testthat/revdep/checks.noindex/ludic/new/ludic.Rcheck/00install.out’ for details.
+    See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/ludic/new/ludic.Rcheck/00install.out’ for details.
     ```
 
 ## Installation
@@ -6047,21 +5047,11 @@ Run `revdep_details(,"ludic")` for more info
 * installing *source* package ‘ludic’ ...
 ** package ‘ludic’ successfully unpacked and MD5 sums checked
 ** libs
-clang++  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/max/github/forks/testthat/revdep/library.noindex/ludic/Rcpp/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/ludic/RcppArmadillo/include" -I/usr/local/include  -fopenmp  -fPIC  -Wall -g -O2  -c RcppExports.cpp -o RcppExports.o
-clang++  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/max/github/forks/testthat/revdep/library.noindex/ludic/Rcpp/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/ludic/RcppArmadillo/include" -I/usr/local/include  -fopenmp  -fPIC  -Wall -g -O2  -c agree_C.cpp -o agree_C.o
-clang++  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/max/github/forks/testthat/revdep/library.noindex/ludic/Rcpp/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/ludic/RcppArmadillo/include" -I/usr/local/include  -fopenmp  -fPIC  -Wall -g -O2  -c estep_C.cpp -o estep_C.o
-clang++  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/max/github/forks/testthat/revdep/library.noindex/ludic/Rcpp/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/ludic/RcppArmadillo/include" -I/usr/local/include  -fopenmp  -fPIC  -Wall -g -O2  -c loglik_FUN_C.cpp -o loglik_FUN_C.o
+ccache clang++ -Qunused-arguments  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/ludic/Rcpp/include" -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/ludic/RcppArmadillo/include" -I/usr/local/include  -fopenmp  -fPIC  -Wall -g -O2  -c RcppExports.cpp -o RcppExports.o
 clang: error: unsupported option '-fopenmp'
-clang: error: unsupported option '-fopenmp'
-clang: error: unsupported option '-fopenmp'
-clang: error: unsupported option '-fopenmp'
-make: *** [loglik_FUN_C.o] Error 1
-make: *** Waiting for unfinished jobs....
-make: *** [estep_C.o] Error 1
 make: *** [RcppExports.o] Error 1
-make: *** [agree_C.o] Error 1
 ERROR: compilation failed for package ‘ludic’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/ludic/new/ludic.Rcheck/ludic’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/ludic/new/ludic.Rcheck/ludic’
 
 ```
 ### CRAN
@@ -6070,126 +5060,11 @@ ERROR: compilation failed for package ‘ludic’
 * installing *source* package ‘ludic’ ...
 ** package ‘ludic’ successfully unpacked and MD5 sums checked
 ** libs
-clang++  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/max/github/forks/testthat/revdep/library.noindex/ludic/Rcpp/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/ludic/RcppArmadillo/include" -I/usr/local/include  -fopenmp  -fPIC  -Wall -g -O2  -c RcppExports.cpp -o RcppExports.o
-clang++  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/max/github/forks/testthat/revdep/library.noindex/ludic/Rcpp/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/ludic/RcppArmadillo/include" -I/usr/local/include  -fopenmp  -fPIC  -Wall -g -O2  -c agree_C.cpp -o agree_C.o
-clang++  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/max/github/forks/testthat/revdep/library.noindex/ludic/Rcpp/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/ludic/RcppArmadillo/include" -I/usr/local/include  -fopenmp  -fPIC  -Wall -g -O2  -c estep_C.cpp -o estep_C.o
-clang++  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/max/github/forks/testthat/revdep/library.noindex/ludic/Rcpp/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/ludic/RcppArmadillo/include" -I/usr/local/include  -fopenmp  -fPIC  -Wall -g -O2  -c loglik_FUN_C.cpp -o loglik_FUN_C.o
+ccache clang++ -Qunused-arguments  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/ludic/Rcpp/include" -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/ludic/RcppArmadillo/include" -I/usr/local/include  -fopenmp  -fPIC  -Wall -g -O2  -c RcppExports.cpp -o RcppExports.o
 clang: error: unsupported option '-fopenmp'
-make: *** [agree_C.o] Error 1
-make: *** Waiting for unfinished jobs....
-clang: error: unsupported option '-fopenmp'
-clang: error: unsupported option '-fopenmp'clang: error: 
-unsupported option '-fopenmp'
 make: *** [RcppExports.o] Error 1
-make: *** [loglik_FUN_C.o] Error 1
-make: *** [estep_C.o] Error 1
 ERROR: compilation failed for package ‘ludic’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/ludic/old/ludic.Rcheck/ludic’
-
-```
-# lwgeom
-
-<details>
-
-* Version: 0.1-6
-* Source code: https://github.com/cran/lwgeom
-* URL: https://github.com/r-spatial/lwgeom/
-* BugReports: https://github.com/r-spatial/lwgeom/issues/
-* Date/Publication: 2019-02-18 17:10:06 UTC
-* Number of recursive dependencies: 31
-
-Run `revdep_details(,"lwgeom")` for more info
-
-</details>
-
-## In both
-
-*   checking whether package ‘lwgeom’ can be installed ... ERROR
-    ```
-    Installation failed.
-    See ‘/Users/max/github/forks/testthat/revdep/checks.noindex/lwgeom/new/lwgeom.Rcheck/00install.out’ for details.
-    ```
-
-## Installation
-
-### Devel
-
-```
-* installing *source* package ‘lwgeom’ ...
-** package ‘lwgeom’ successfully unpacked and MD5 sums checked
-configure: CC: clang
-configure: CXX: clang++
-configure: pkg-config proj exists, will use it
-checking for gcc... clang
-checking whether the C compiler works... yes
-checking for C compiler default output file name... a.out
-checking for suffix of executables... 
-checking whether we are cross compiling... no
-checking for suffix of object files... o
-checking whether we are using the GNU C compiler... yes
-checking whether clang accepts -g... yes
-checking for clang option to accept ISO C89... none needed
-checking how to run the C preprocessor... clang -E
-checking for grep that handles long lines and -e... /usr/bin/grep
-checking for egrep... /usr/bin/grep -E
-checking for ANSI C header files... rm: conftest.dSYM: is a directory
-rm: conftest.dSYM: is a directory
-yes
-checking for sys/types.h... yes
-checking for sys/stat.h... yes
-checking for stdlib.h... yes
-checking for string.h... yes
-checking for memory.h... yes
-checking for strings.h... yes
-checking for inttypes.h... yes
-checking for stdint.h... yes
-checking for unistd.h... yes
-checking proj_api.h usability... no
-checking proj_api.h presence... no
-checking for proj_api.h... no
-configure: error: proj_api.h not found in standard or given locations.
-ERROR: configuration failed for package ‘lwgeom’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/lwgeom/new/lwgeom.Rcheck/lwgeom’
-
-```
-### CRAN
-
-```
-* installing *source* package ‘lwgeom’ ...
-** package ‘lwgeom’ successfully unpacked and MD5 sums checked
-configure: CC: clang
-configure: CXX: clang++
-configure: pkg-config proj exists, will use it
-checking for gcc... clang
-checking whether the C compiler works... yes
-checking for C compiler default output file name... a.out
-checking for suffix of executables... 
-checking whether we are cross compiling... no
-checking for suffix of object files... o
-checking whether we are using the GNU C compiler... yes
-checking whether clang accepts -g... yes
-checking for clang option to accept ISO C89... none needed
-checking how to run the C preprocessor... clang -E
-checking for grep that handles long lines and -e... /usr/bin/grep
-checking for egrep... /usr/bin/grep -E
-checking for ANSI C header files... rm: conftest.dSYM: is a directory
-rm: conftest.dSYM: is a directory
-yes
-checking for sys/types.h... yes
-checking for sys/stat.h... yes
-checking for stdlib.h... yes
-checking for string.h... yes
-checking for memory.h... yes
-checking for strings.h... yes
-checking for inttypes.h... yes
-checking for stdint.h... yes
-checking for unistd.h... yes
-checking proj_api.h usability... no
-checking proj_api.h presence... no
-checking for proj_api.h... no
-configure: error: proj_api.h not found in standard or given locations.
-ERROR: configuration failed for package ‘lwgeom’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/lwgeom/old/lwgeom.Rcheck/lwgeom’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/ludic/old/ludic.Rcheck/ludic’
 
 ```
 # martini
@@ -6210,7 +5085,7 @@ Run `revdep_details(,"martini")` for more info
 *   checking whether package ‘martini’ can be installed ... ERROR
     ```
     Installation failed.
-    See ‘/Users/max/github/forks/testthat/revdep/checks.noindex/martini/new/martini.Rcheck/00install.out’ for details.
+    See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/martini/new/martini.Rcheck/00install.out’ for details.
     ```
 
 ## Installation
@@ -6220,18 +5095,11 @@ Run `revdep_details(,"martini")` for more info
 ```
 * installing *source* package ‘martini’ ...
 ** libs
-clang++  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -DAS_GINLIB -DAS_RGINLIB -fopenmp -I"/Users/max/github/forks/testthat/revdep/library.noindex/martini/Rgin/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/martini/Rcpp/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/martini/RcppEigen/include" -I/usr/local/include   -fPIC  -Wall -g -O2  -c RcppExports.cpp -o RcppExports.o
-clang++  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -DAS_GINLIB -DAS_RGINLIB -fopenmp -I"/Users/max/github/forks/testthat/revdep/library.noindex/martini/Rgin/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/martini/Rcpp/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/martini/RcppEigen/include" -I/usr/local/include   -fPIC  -Wall -g -O2  -c evo.cpp -o evo.o
-clang++  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -DAS_GINLIB -DAS_RGINLIB -fopenmp -I"/Users/max/github/forks/testthat/revdep/library.noindex/martini/Rgin/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/martini/Rcpp/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/martini/RcppEigen/include" -I/usr/local/include   -fPIC  -Wall -g -O2  -c run_scones.cpp -o run_scones.o
+ccache clang++ -Qunused-arguments  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -DAS_GINLIB -DAS_RGINLIB -fopenmp -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/martini/Rgin/include" -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/martini/Rcpp/include" -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/martini/RcppEigen/include" -I/usr/local/include   -fPIC  -Wall -g -O2  -c RcppExports.cpp -o RcppExports.o
 clang: error: unsupported option '-fopenmp'
-clang: error: unsupported option '-fopenmp'
-clang: error: unsupported option '-fopenmp'
-make: *** [evo.o] Error 1
-make: *** Waiting for unfinished jobs....
-make: *** [run_scones.o] Error 1
 make: *** [RcppExports.o] Error 1
 ERROR: compilation failed for package ‘martini’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/martini/new/martini.Rcheck/martini’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/martini/new/martini.Rcheck/martini’
 
 ```
 ### CRAN
@@ -6239,18 +5107,11 @@ ERROR: compilation failed for package ‘martini’
 ```
 * installing *source* package ‘martini’ ...
 ** libs
-clang++  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -DAS_GINLIB -DAS_RGINLIB -fopenmp -I"/Users/max/github/forks/testthat/revdep/library.noindex/martini/Rgin/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/martini/Rcpp/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/martini/RcppEigen/include" -I/usr/local/include   -fPIC  -Wall -g -O2  -c RcppExports.cpp -o RcppExports.o
-clang++  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -DAS_GINLIB -DAS_RGINLIB -fopenmp -I"/Users/max/github/forks/testthat/revdep/library.noindex/martini/Rgin/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/martini/Rcpp/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/martini/RcppEigen/include" -I/usr/local/include   -fPIC  -Wall -g -O2  -c evo.cpp -o evo.o
-clang++  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -DAS_GINLIB -DAS_RGINLIB -fopenmp -I"/Users/max/github/forks/testthat/revdep/library.noindex/martini/Rgin/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/martini/Rcpp/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/martini/RcppEigen/include" -I/usr/local/include   -fPIC  -Wall -g -O2  -c run_scones.cpp -o run_scones.o
+ccache clang++ -Qunused-arguments  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -DAS_GINLIB -DAS_RGINLIB -fopenmp -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/martini/Rgin/include" -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/martini/Rcpp/include" -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/martini/RcppEigen/include" -I/usr/local/include   -fPIC  -Wall -g -O2  -c RcppExports.cpp -o RcppExports.o
 clang: error: unsupported option '-fopenmp'
 make: *** [RcppExports.o] Error 1
-make: *** Waiting for unfinished jobs....
-clang: error: unsupported option '-fopenmp'clang: error: unsupported option '-fopenmp'
-
-make: *** [run_scones.o] Error 1
-make: *** [evo.o] Error 1
 ERROR: compilation failed for package ‘martini’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/martini/old/martini.Rcheck/martini’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/martini/old/martini.Rcheck/martini’
 
 ```
 # mcmcabn
@@ -6273,7 +5134,7 @@ Run `revdep_details(,"mcmcabn")` for more info
 *   checking whether package ‘mcmcabn’ can be installed ... ERROR
     ```
     Installation failed.
-    See ‘/Users/max/github/forks/testthat/revdep/checks.noindex/mcmcabn/new/mcmcabn.Rcheck/00install.out’ for details.
+    See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/mcmcabn/new/mcmcabn.Rcheck/00install.out’ for details.
     ```
 
 ## Installation
@@ -6290,12 +5151,12 @@ Run `revdep_details(,"mcmcabn")` for more info
 ** byte-compile and prepare package for lazy loading
 Error : .onLoad failed in loadNamespace() for 'rjags', details:
   call: dyn.load(file, DLLpath = DLLpath, ...)
-  error: unable to load shared object '/Users/max/github/forks/testthat/revdep/library.noindex/mcmcabn/rjags/libs/rjags.so':
-  dlopen(/Users/max/github/forks/testthat/revdep/library.noindex/mcmcabn/rjags/libs/rjags.so, 10): Library not loaded: /usr/local/lib/libjags.4.dylib
-  Referenced from: /Users/max/github/forks/testthat/revdep/library.noindex/mcmcabn/rjags/libs/rjags.so
+  error: unable to load shared object '/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/mcmcabn/rjags/libs/rjags.so':
+  dlopen(/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/mcmcabn/rjags/libs/rjags.so, 10): Library not loaded: /usr/local/lib/libjags.4.dylib
+  Referenced from: /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/mcmcabn/rjags/libs/rjags.so
   Reason: image not found
 ERROR: lazy loading failed for package ‘mcmcabn’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/mcmcabn/new/mcmcabn.Rcheck/mcmcabn’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/mcmcabn/new/mcmcabn.Rcheck/mcmcabn’
 
 ```
 ### CRAN
@@ -6310,12 +5171,12 @@ ERROR: lazy loading failed for package ‘mcmcabn’
 ** byte-compile and prepare package for lazy loading
 Error : .onLoad failed in loadNamespace() for 'rjags', details:
   call: dyn.load(file, DLLpath = DLLpath, ...)
-  error: unable to load shared object '/Users/max/github/forks/testthat/revdep/library.noindex/mcmcabn/rjags/libs/rjags.so':
-  dlopen(/Users/max/github/forks/testthat/revdep/library.noindex/mcmcabn/rjags/libs/rjags.so, 10): Library not loaded: /usr/local/lib/libjags.4.dylib
-  Referenced from: /Users/max/github/forks/testthat/revdep/library.noindex/mcmcabn/rjags/libs/rjags.so
+  error: unable to load shared object '/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/mcmcabn/rjags/libs/rjags.so':
+  dlopen(/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/mcmcabn/rjags/libs/rjags.so, 10): Library not loaded: /usr/local/lib/libjags.4.dylib
+  Referenced from: /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/mcmcabn/rjags/libs/rjags.so
   Reason: image not found
 ERROR: lazy loading failed for package ‘mcmcabn’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/mcmcabn/old/mcmcabn.Rcheck/mcmcabn’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/mcmcabn/old/mcmcabn.Rcheck/mcmcabn’
 
 ```
 # MEAL
@@ -6324,8 +5185,8 @@ ERROR: lazy loading failed for package ‘mcmcabn’
 
 * Version: 
 * Source code: ???
-* URL: https://github.com/r-lib/revdepcheck#readme
-* BugReports: https://github.com/r-lib/revdepcheck/issues
+* URL: http://testthat.r-lib.org, https://github.com/r-lib/testthat
+* BugReports: https://github.com/r-lib/testthat/issues
 * Number of recursive dependencies: 0
 
 Run `revdep_details(,"")` for more info
@@ -6343,7 +5204,7 @@ Run `revdep_details(,"")` for more info
 Packages which are only available in source form, and may need
   compilation of C/C++/Fortran: ‘FDb.InfiniumMethylation.hg19’
   ‘IlluminaHumanMethylation450kmanifest’
-installing the source packages ‘DMRcatedata’, ‘GO.db’, ‘IlluminaHumanMethylation450kanno.ilmn12.hg19’, ‘IlluminaHumanMethylationEPICanno.ilm10b2.hg19’, ‘IlluminaHumanMethylationEPICanno.ilm10b4.hg19’, ‘IlluminaHumanMethylationEPICmanifest’, ‘minfiData’, ‘org.Hs.eg.db’, ‘TxDb.Hsapiens.UCSC.hg19.knownGene’
+installing the source packages ‘brgedata’, ‘DMRcatedata’, ‘GO.db’, ‘IlluminaHumanMethylation450kanno.ilmn12.hg19’, ‘IlluminaHumanMethylationEPICanno.ilm10b2.hg19’, ‘IlluminaHumanMethylationEPICanno.ilm10b4.hg19’, ‘IlluminaHumanMethylationEPICmanifest’, ‘minfiData’, ‘org.Hs.eg.db’
 
 
 
@@ -6357,7 +5218,7 @@ installing the source packages ‘DMRcatedata’, ‘GO.db’, ‘IlluminaHumanM
 Packages which are only available in source form, and may need
   compilation of C/C++/Fortran: ‘FDb.InfiniumMethylation.hg19’
   ‘IlluminaHumanMethylation450kmanifest’
-installing the source packages ‘DMRcatedata’, ‘GO.db’, ‘IlluminaHumanMethylation450kanno.ilmn12.hg19’, ‘IlluminaHumanMethylationEPICanno.ilm10b2.hg19’, ‘IlluminaHumanMethylationEPICanno.ilm10b4.hg19’, ‘IlluminaHumanMethylationEPICmanifest’, ‘minfiData’, ‘org.Hs.eg.db’, ‘TxDb.Hsapiens.UCSC.hg19.knownGene’
+installing the source packages ‘brgedata’, ‘DMRcatedata’, ‘GO.db’, ‘IlluminaHumanMethylation450kanno.ilmn12.hg19’, ‘IlluminaHumanMethylationEPICanno.ilm10b2.hg19’, ‘IlluminaHumanMethylationEPICanno.ilm10b4.hg19’, ‘IlluminaHumanMethylationEPICmanifest’, ‘minfiData’, ‘org.Hs.eg.db’
 
 
 
@@ -6368,8 +5229,8 @@ installing the source packages ‘DMRcatedata’, ‘GO.db’, ‘IlluminaHumanM
 
 * Version: 
 * Source code: ???
-* URL: https://github.com/r-lib/revdepcheck#readme
-* BugReports: https://github.com/r-lib/revdepcheck/issues
+* URL: http://testthat.r-lib.org, https://github.com/r-lib/testthat
+* BugReports: https://github.com/r-lib/testthat/issues
 * Number of recursive dependencies: 0
 
 Run `revdep_details(,"")` for more info
@@ -6387,7 +5248,7 @@ Run `revdep_details(,"")` for more info
 Packages which are only available in source form, and may need
   compilation of C/C++/Fortran: ‘FDb.InfiniumMethylation.hg19’
   ‘IlluminaHumanMethylation450kmanifest’
-installing the source packages ‘GO.db’, ‘IlluminaHumanMethylation450kanno.ilmn12.hg19’, ‘IlluminaHumanMethylationEPICanno.ilm10b2.hg19’, ‘IlluminaHumanMethylationEPICanno.ilm10b4.hg19’, ‘IlluminaHumanMethylationEPICmanifest’, ‘org.Hs.eg.db’, ‘reactome.db’, ‘TxDb.Hsapiens.UCSC.hg19.knownGene’
+installing the source packages ‘GO.db’, ‘IlluminaHumanMethylation450kanno.ilmn12.hg19’, ‘IlluminaHumanMethylationEPICanno.ilm10b2.hg19’, ‘IlluminaHumanMethylationEPICanno.ilm10b4.hg19’, ‘IlluminaHumanMethylationEPICmanifest’, ‘org.Hs.eg.db’
 
 
 
@@ -6401,7 +5262,7 @@ installing the source packages ‘GO.db’, ‘IlluminaHumanMethylation450kanno.
 Packages which are only available in source form, and may need
   compilation of C/C++/Fortran: ‘FDb.InfiniumMethylation.hg19’
   ‘IlluminaHumanMethylation450kmanifest’
-installing the source packages ‘GO.db’, ‘IlluminaHumanMethylation450kanno.ilmn12.hg19’, ‘IlluminaHumanMethylationEPICanno.ilm10b2.hg19’, ‘IlluminaHumanMethylationEPICanno.ilm10b4.hg19’, ‘IlluminaHumanMethylationEPICmanifest’, ‘org.Hs.eg.db’, ‘reactome.db’, ‘TxDb.Hsapiens.UCSC.hg19.knownGene’
+installing the source packages ‘GO.db’, ‘IlluminaHumanMethylation450kanno.ilmn12.hg19’, ‘IlluminaHumanMethylationEPICanno.ilm10b2.hg19’, ‘IlluminaHumanMethylationEPICanno.ilm10b4.hg19’, ‘IlluminaHumanMethylationEPICmanifest’, ‘org.Hs.eg.db’
 
 
 
@@ -6425,7 +5286,12 @@ Run `revdep_details(,"mgsa")` for more info
 *   checking whether package ‘mgsa’ can be installed ... ERROR
     ```
     Installation failed.
-    See ‘/Users/max/github/forks/testthat/revdep/checks.noindex/mgsa/new/mgsa.Rcheck/00install.out’ for details.
+    See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/mgsa/new/mgsa.Rcheck/00install.out’ for details.
+    ```
+
+*   checking package dependencies ... NOTE
+    ```
+    Package suggested but not available for checking: ‘GO.db’
     ```
 
 ## Installation
@@ -6437,18 +5303,11 @@ Run `revdep_details(,"mgsa")` for more info
 configure: creating ./config.status
 config.status: creating src/Makevars
 ** libs
-clang -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I/usr/local/include  -I. -fopenmp -fPIC  -Wall -g -O2  -c mgsa-core.c -o mgsa-core.o
-clang -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I/usr/local/include  -I. -fopenmp -fPIC  -Wall -g -O2  -c mgsa.c -o mgsa.o
-clang -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I/usr/local/include  -I. -fopenmp -fPIC  -Wall -g -O2  -c mt.c -o mt.o
-clang: error: unsupported option '-fopenmp'clang: 
-error: unsupported option '-fopenmp'
+ccache clang -Qunused-arguments  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I/usr/local/include  -I. -fopenmp -fPIC  -Wall -g -O2  -c mgsa-core.c -o mgsa-core.o
 clang: error: unsupported option '-fopenmp'
-make: *** [mt.o] Error 1
-make: *** Waiting for unfinished jobs....
 make: *** [mgsa-core.o] Error 1
-make: *** [mgsa.o] Error 1
 ERROR: compilation failed for package ‘mgsa’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/mgsa/new/mgsa.Rcheck/mgsa’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/mgsa/new/mgsa.Rcheck/mgsa’
 
 ```
 ### CRAN
@@ -6458,117 +5317,39 @@ ERROR: compilation failed for package ‘mgsa’
 configure: creating ./config.status
 config.status: creating src/Makevars
 ** libs
-clang -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I/usr/local/include  -I. -fopenmp -fPIC  -Wall -g -O2  -c mgsa-core.c -o mgsa-core.o
-clang -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I/usr/local/include  -I. -fopenmp -fPIC  -Wall -g -O2  -c mgsa.c -o mgsa.o
-clang -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I/usr/local/include  -I. -fopenmp -fPIC  -Wall -g -O2  -c mt.c -o mt.o
-clangclang: error: unsupported option '-fopenmp': error: clang: error: unsupported option '-fopenmp'unsupported option '-fopenmp'
-
-
-make: *** [mt.o] Error 1
-make: *** Waiting for unfinished jobs....
-make: *** [mgsa.o] Error 1
+ccache clang -Qunused-arguments  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I/usr/local/include  -I. -fopenmp -fPIC  -Wall -g -O2  -c mgsa-core.c -o mgsa-core.o
+clang: error: unsupported option '-fopenmp'
 make: *** [mgsa-core.o] Error 1
 ERROR: compilation failed for package ‘mgsa’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/mgsa/old/mgsa.Rcheck/mgsa’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/mgsa/old/mgsa.Rcheck/mgsa’
 
 ```
 # miRSM
 
 <details>
 
-* Version: 
-* Source code: ???
-* URL: https://github.com/r-lib/revdepcheck#readme
-* BugReports: https://github.com/r-lib/revdepcheck/issues
-* Number of recursive dependencies: 0
+* Version: 1.0.0
+* Source code: https://github.com/cran/miRSM
+* URL: https://github.com/zhangjunpeng411/miRSM
+* BugReports: https://github.com/zhangjunpeng411/miRSM/issues
+* Date/Publication: 2018-10-30
+* Number of recursive dependencies: 204
 
-Run `revdep_details(,"")` for more info
-
-</details>
-
-## Error before installation
-
-### Devel
-
-```
-
-
-
-installing the source packages ‘GO.db’, ‘org.Hs.eg.db’, ‘reactome.db’
-
-
-
-```
-### CRAN
-
-```
-
-
-
-installing the source packages ‘GO.db’, ‘org.Hs.eg.db’, ‘reactome.db’
-
-
-
-```
-# miRsponge
-
-<details>
-
-* Version: 
-* Source code: ???
-* URL: https://github.com/r-lib/revdepcheck#readme
-* BugReports: https://github.com/r-lib/revdepcheck/issues
-* Number of recursive dependencies: 0
-
-Run `revdep_details(,"")` for more info
-
-</details>
-
-## Error before installation
-
-### Devel
-
-```
-
-
-
-installing the source packages ‘GO.db’, ‘org.Hs.eg.db’, ‘reactome.db’
-
-
-
-```
-### CRAN
-
-```
-
-
-
-installing the source packages ‘GO.db’, ‘org.Hs.eg.db’, ‘reactome.db’
-
-
-
-```
-# mleap
-
-<details>
-
-* Version: 0.1.3
-* Source code: https://github.com/cran/mleap
-* URL: https://github.com/rstudio/mleap
-* BugReports: https://github.com/rstudio/mleap/issues
-* Date/Publication: 2018-11-01 09:40:03 UTC
-* Number of recursive dependencies: 69
-
-Run `revdep_details(,"mleap")` for more info
+Run `revdep_details(,"miRSM")` for more info
 
 </details>
 
 ## In both
 
-*   checking whether package ‘mleap’ can be installed ... ERROR
+*   checking whether package ‘miRSM’ can be installed ... ERROR
     ```
     Installation failed.
-    See ‘/Users/max/github/forks/testthat/revdep/checks.noindex/mleap/new/mleap.Rcheck/00install.out’ for details.
+    See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/miRSM/new/miRSM.Rcheck/00install.out’ for details.
+    ```
+
+*   checking package dependencies ... NOTE
+    ```
+    Package suggested but not available for checking: ‘org.Hs.eg.db’
     ```
 
 ## Installation
@@ -6576,55 +5357,39 @@ Run `revdep_details(,"mleap")` for more info
 ### Devel
 
 ```
-* installing *source* package ‘mleap’ ...
-** package ‘mleap’ successfully unpacked and MD5 sums checked
+* installing *source* package ‘miRSM’ ...
+** libs
+ccache clang -Qunused-arguments  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I/usr/local/include   -fPIC  -Wall -g -O2  -c complex.c -o complex.o
+ccache clang -Qunused-arguments  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I/usr/local/include   -fPIC  -Wall -g -O2  -c registerDynamicSymbol.c -o registerDynamicSymbol.o
+ccache clang -Qunused-arguments -dynamiclib -Wl,-headerpad_max_install_names -undefined dynamic_lookup -single_module -multiply_defined suppress -L/Library/Frameworks/R.framework/Resources/lib -L/usr/local/lib -o miRSM.so complex.o registerDynamicSymbol.o -F/Library/Frameworks/R.framework/.. -framework R -Wl,-framework -Wl,CoreFoundation
+installing to /Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/miRSM/new/miRSM.Rcheck/miRSM/libs
 ** R
+** data
 ** inst
 ** byte-compile and prepare package for lazy loading
-** help
-*** installing help indices
-** building package indices
-** testing if installed package can be loaded
-Error: package or namespace load failed for ‘mleap’:
- .onLoad failed in loadNamespace() for 'mleap', details:
-  call: NULL
-  error: .onLoad failed in loadNamespace() for 'rJava', details:
-  call: dyn.load(file, DLLpath = DLLpath, ...)
-  error: unable to load shared object '/Users/max/github/forks/testthat/revdep/library.noindex/mleap/rJava/libs/rJava.so':
-  dlopen(/Users/max/github/forks/testthat/revdep/library.noindex/mleap/rJava/libs/rJava.so, 6): Library not loaded: /Library/Java/JavaVirtualMachines/jdk-11.0.1.jdk/Contents/Home/lib/server/libjvm.dylib
-  Referenced from: /Users/max/github/forks/testthat/revdep/library.noindex/mleap/rJava/libs/rJava.so
-  Reason: image not found
-Error: loading failed
-Execution halted
-ERROR: loading failed
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/mleap/new/mleap.Rcheck/mleap’
+Error in loadNamespace(i, c(lib.loc, .libPaths()), versionCheck = vI[[i]]) : 
+  there is no package called ‘GO.db’
+ERROR: lazy loading failed for package ‘miRSM’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/miRSM/new/miRSM.Rcheck/miRSM’
 
 ```
 ### CRAN
 
 ```
-* installing *source* package ‘mleap’ ...
-** package ‘mleap’ successfully unpacked and MD5 sums checked
+* installing *source* package ‘miRSM’ ...
+** libs
+ccache clang -Qunused-arguments  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I/usr/local/include   -fPIC  -Wall -g -O2  -c complex.c -o complex.o
+ccache clang -Qunused-arguments  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I/usr/local/include   -fPIC  -Wall -g -O2  -c registerDynamicSymbol.c -o registerDynamicSymbol.o
+ccache clang -Qunused-arguments -dynamiclib -Wl,-headerpad_max_install_names -undefined dynamic_lookup -single_module -multiply_defined suppress -L/Library/Frameworks/R.framework/Resources/lib -L/usr/local/lib -o miRSM.so complex.o registerDynamicSymbol.o -F/Library/Frameworks/R.framework/.. -framework R -Wl,-framework -Wl,CoreFoundation
+installing to /Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/miRSM/old/miRSM.Rcheck/miRSM/libs
 ** R
+** data
 ** inst
 ** byte-compile and prepare package for lazy loading
-** help
-*** installing help indices
-** building package indices
-** testing if installed package can be loaded
-Error: package or namespace load failed for ‘mleap’:
- .onLoad failed in loadNamespace() for 'mleap', details:
-  call: NULL
-  error: .onLoad failed in loadNamespace() for 'rJava', details:
-  call: dyn.load(file, DLLpath = DLLpath, ...)
-  error: unable to load shared object '/Users/max/github/forks/testthat/revdep/library.noindex/mleap/rJava/libs/rJava.so':
-  dlopen(/Users/max/github/forks/testthat/revdep/library.noindex/mleap/rJava/libs/rJava.so, 6): Library not loaded: /Library/Java/JavaVirtualMachines/jdk-11.0.1.jdk/Contents/Home/lib/server/libjvm.dylib
-  Referenced from: /Users/max/github/forks/testthat/revdep/library.noindex/mleap/rJava/libs/rJava.so
-  Reason: image not found
-Error: loading failed
-Execution halted
-ERROR: loading failed
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/mleap/old/mleap.Rcheck/mleap’
+Error in loadNamespace(i, c(lib.loc, .libPaths()), versionCheck = vI[[i]]) : 
+  there is no package called ‘GO.db’
+ERROR: lazy loading failed for package ‘miRSM’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/miRSM/old/miRSM.Rcheck/miRSM’
 
 ```
 # ModelMetrics
@@ -6645,7 +5410,7 @@ Run `revdep_details(,"ModelMetrics")` for more info
 *   checking whether package ‘ModelMetrics’ can be installed ... ERROR
     ```
     Installation failed.
-    See ‘/Users/max/github/forks/testthat/revdep/checks.noindex/ModelMetrics/new/ModelMetrics.Rcheck/00install.out’ for details.
+    See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/ModelMetrics/new/ModelMetrics.Rcheck/00install.out’ for details.
     ```
 
 ## Installation
@@ -6656,18 +5421,15 @@ Run `revdep_details(,"ModelMetrics")` for more info
 * installing *source* package ‘ModelMetrics’ ...
 ** package ‘ModelMetrics’ successfully unpacked and MD5 sums checked
 ** libs
-clang++  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/max/github/forks/testthat/revdep/library.noindex/ModelMetrics/Rcpp/include" -I/usr/local/include   -fPIC  -Wall -g -O2  -c RcppExports.cpp -o RcppExports.o
-clang++  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/max/github/forks/testthat/revdep/library.noindex/ModelMetrics/Rcpp/include" -I/usr/local/include   -fPIC  -Wall -g -O2  -c auc_.cpp -o auc_.o
-clang++  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/max/github/forks/testthat/revdep/library.noindex/ModelMetrics/Rcpp/include" -I/usr/local/include   -fPIC  -Wall -g -O2  -c confusionMatrix_.cpp -o confusionMatrix_.o
-clang++  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/max/github/forks/testthat/revdep/library.noindex/ModelMetrics/Rcpp/include" -I/usr/local/include   -fPIC  -Wall -g -O2  -c error.cpp -o error.o
+ccache clang++ -Qunused-arguments  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/ModelMetrics/Rcpp/include" -I/usr/local/include   -fPIC  -Wall -g -O2  -c RcppExports.cpp -o RcppExports.o
+ccache clang++ -Qunused-arguments  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/ModelMetrics/Rcpp/include" -I/usr/local/include   -fPIC  -Wall -g -O2  -c auc_.cpp -o auc_.o
 auc_.cpp:2:10: fatal error: 'omp.h' file not found
 #include <omp.h>
          ^~~~~~~
 1 error generated.
 make: *** [auc_.o] Error 1
-make: *** Waiting for unfinished jobs....
 ERROR: compilation failed for package ‘ModelMetrics’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/ModelMetrics/new/ModelMetrics.Rcheck/ModelMetrics’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/ModelMetrics/new/ModelMetrics.Rcheck/ModelMetrics’
 
 ```
 ### CRAN
@@ -6676,18 +5438,15 @@ ERROR: compilation failed for package ‘ModelMetrics’
 * installing *source* package ‘ModelMetrics’ ...
 ** package ‘ModelMetrics’ successfully unpacked and MD5 sums checked
 ** libs
-clang++  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/max/github/forks/testthat/revdep/library.noindex/ModelMetrics/Rcpp/include" -I/usr/local/include   -fPIC  -Wall -g -O2  -c RcppExports.cpp -o RcppExports.o
-clang++  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/max/github/forks/testthat/revdep/library.noindex/ModelMetrics/Rcpp/include" -I/usr/local/include   -fPIC  -Wall -g -O2  -c auc_.cpp -o auc_.o
-clang++  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/max/github/forks/testthat/revdep/library.noindex/ModelMetrics/Rcpp/include" -I/usr/local/include   -fPIC  -Wall -g -O2  -c confusionMatrix_.cpp -o confusionMatrix_.o
-clang++  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/max/github/forks/testthat/revdep/library.noindex/ModelMetrics/Rcpp/include" -I/usr/local/include   -fPIC  -Wall -g -O2  -c error.cpp -o error.o
+ccache clang++ -Qunused-arguments  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/ModelMetrics/Rcpp/include" -I/usr/local/include   -fPIC  -Wall -g -O2  -c RcppExports.cpp -o RcppExports.o
+ccache clang++ -Qunused-arguments  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/ModelMetrics/Rcpp/include" -I/usr/local/include   -fPIC  -Wall -g -O2  -c auc_.cpp -o auc_.o
 auc_.cpp:2:10: fatal error: 'omp.h' file not found
 #include <omp.h>
          ^~~~~~~
 1 error generated.
 make: *** [auc_.o] Error 1
-make: *** Waiting for unfinished jobs....
 ERROR: compilation failed for package ‘ModelMetrics’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/ModelMetrics/old/ModelMetrics.Rcheck/ModelMetrics’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/ModelMetrics/old/ModelMetrics.Rcheck/ModelMetrics’
 
 ```
 # MoonlightR
@@ -6710,7 +5469,7 @@ Run `revdep_details(,"MoonlightR")` for more info
 *   checking whether package ‘MoonlightR’ can be installed ... ERROR
     ```
     Installation failed.
-    See ‘/Users/max/github/forks/testthat/revdep/checks.noindex/MoonlightR/new/MoonlightR.Rcheck/00install.out’ for details.
+    See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/MoonlightR/new/MoonlightR.Rcheck/00install.out’ for details.
     ```
 
 ## Installation
@@ -6725,10 +5484,10 @@ Run `revdep_details(,"MoonlightR")` for more info
 ** inst
 ** byte-compile and prepare package for lazy loading
 Warning in fun(libname, pkgname) : couldn't connect to display ""
-Error in loadNamespace(i, c(lib.loc, .libPaths()), versionCheck = vI[[i]]) : 
-  there is no package called ‘sesameData’
+Error in loadNamespace(j <- i[[1L]], c(lib.loc, .libPaths()), versionCheck = vI[[j]]) : 
+  there is no package called ‘GO.db’
 ERROR: lazy loading failed for package ‘MoonlightR’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/MoonlightR/new/MoonlightR.Rcheck/MoonlightR’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/MoonlightR/new/MoonlightR.Rcheck/MoonlightR’
 
 ```
 ### CRAN
@@ -6741,10 +5500,10 @@ ERROR: lazy loading failed for package ‘MoonlightR’
 ** inst
 ** byte-compile and prepare package for lazy loading
 Warning in fun(libname, pkgname) : couldn't connect to display ""
-Error in loadNamespace(i, c(lib.loc, .libPaths()), versionCheck = vI[[i]]) : 
-  there is no package called ‘sesameData’
+Error in loadNamespace(j <- i[[1L]], c(lib.loc, .libPaths()), versionCheck = vI[[j]]) : 
+  there is no package called ‘GO.db’
 ERROR: lazy loading failed for package ‘MoonlightR’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/MoonlightR/old/MoonlightR.Rcheck/MoonlightR’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/MoonlightR/old/MoonlightR.Rcheck/MoonlightR’
 
 ```
 # Morpho
@@ -6767,7 +5526,7 @@ Run `revdep_details(,"Morpho")` for more info
 *   checking whether package ‘Morpho’ can be installed ... ERROR
     ```
     Installation failed.
-    See ‘/Users/max/github/forks/testthat/revdep/checks.noindex/Morpho/new/Morpho.Rcheck/00install.out’ for details.
+    See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/Morpho/new/Morpho.Rcheck/00install.out’ for details.
     ```
 
 ## Installation
@@ -6778,21 +5537,11 @@ Run `revdep_details(,"Morpho")` for more info
 * installing *source* package ‘Morpho’ ...
 ** package ‘Morpho’ successfully unpacked and MD5 sums checked
 ** libs
-clang++  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/max/github/forks/testthat/revdep/library.noindex/Morpho/Rcpp/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/Morpho/RcppArmadillo/include" -I/usr/local/include  -fopenmp -fPIC  -Wall -g -O2  -c CVAdists.cpp -o CVAdists.o
-clang++  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/max/github/forks/testthat/revdep/library.noindex/Morpho/Rcpp/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/Morpho/RcppArmadillo/include" -I/usr/local/include  -fopenmp -fPIC  -Wall -g -O2  -c CubeStuff.cpp -o CubeStuff.o
-clang++  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/max/github/forks/testthat/revdep/library.noindex/Morpho/Rcpp/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/Morpho/RcppArmadillo/include" -I/usr/local/include  -fopenmp -fPIC  -Wall -g -O2  -c ang_calc.cpp -o ang_calc.o
-clang++  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/max/github/forks/testthat/revdep/library.noindex/Morpho/Rcpp/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/Morpho/RcppArmadillo/include" -I/usr/local/include  -fopenmp -fPIC  -Wall -g -O2  -c armaGinvCpp.cpp -o armaGinvCpp.o
+ccache clang++ -Qunused-arguments  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/Morpho/Rcpp/include" -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/Morpho/RcppArmadillo/include" -I/usr/local/include  -fopenmp -fPIC  -Wall -g -O2  -c CVAdists.cpp -o CVAdists.o
 clang: error: unsupported option '-fopenmp'
-clang: error: unsupported option '-fopenmp'clang: error: 
-unsupported option '-fopenmp'clang: error: unsupported option '-fopenmp'
-
 make: *** [CVAdists.o] Error 1
-make: *** Waiting for unfinished jobs....
-make: *** [armaGinvCpp.o] Error 1
-make: *** [ang_calc.o] Error 1
-make: *** [CubeStuff.o] Error 1
 ERROR: compilation failed for package ‘Morpho’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/Morpho/new/Morpho.Rcheck/Morpho’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/Morpho/new/Morpho.Rcheck/Morpho’
 
 ```
 ### CRAN
@@ -6801,21 +5550,11 @@ ERROR: compilation failed for package ‘Morpho’
 * installing *source* package ‘Morpho’ ...
 ** package ‘Morpho’ successfully unpacked and MD5 sums checked
 ** libs
-clang++  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/max/github/forks/testthat/revdep/library.noindex/Morpho/Rcpp/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/Morpho/RcppArmadillo/include" -I/usr/local/include  -fopenmp -fPIC  -Wall -g -O2  -c CVAdists.cpp -o CVAdists.o
-clang++  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/max/github/forks/testthat/revdep/library.noindex/Morpho/Rcpp/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/Morpho/RcppArmadillo/include" -I/usr/local/include  -fopenmp -fPIC  -Wall -g -O2  -c CubeStuff.cpp -o CubeStuff.o
-clang++  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/max/github/forks/testthat/revdep/library.noindex/Morpho/Rcpp/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/Morpho/RcppArmadillo/include" -I/usr/local/include  -fopenmp -fPIC  -Wall -g -O2  -c ang_calc.cpp -o ang_calc.o
-clang++  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/max/github/forks/testthat/revdep/library.noindex/Morpho/Rcpp/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/Morpho/RcppArmadillo/include" -I/usr/local/include  -fopenmp -fPIC  -Wall -g -O2  -c armaGinvCpp.cpp -o armaGinvCpp.o
-clang: error: unsupported option '-fopenmp'
-clang: error: unsupported option '-fopenmp'clang
-: error: unsupported option '-fopenmp'
+ccache clang++ -Qunused-arguments  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/Morpho/Rcpp/include" -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/Morpho/RcppArmadillo/include" -I/usr/local/include  -fopenmp -fPIC  -Wall -g -O2  -c CVAdists.cpp -o CVAdists.o
 clang: error: unsupported option '-fopenmp'
 make: *** [CVAdists.o] Error 1
-make: *** Waiting for unfinished jobs....
-make: *** [armaGinvCpp.o] Error 1
-make: *** [ang_calc.o] Error 1
-make: *** [CubeStuff.o] Error 1
 ERROR: compilation failed for package ‘Morpho’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/Morpho/old/Morpho.Rcheck/Morpho’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/Morpho/old/Morpho.Rcheck/Morpho’
 
 ```
 # morse
@@ -6838,7 +5577,7 @@ Run `revdep_details(,"morse")` for more info
 *   checking whether package ‘morse’ can be installed ... ERROR
     ```
     Installation failed.
-    See ‘/Users/max/github/forks/testthat/revdep/checks.noindex/morse/new/morse.Rcheck/00install.out’ for details.
+    See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/morse/new/morse.Rcheck/00install.out’ for details.
     ```
 
 ## Installation
@@ -6855,12 +5594,12 @@ Run `revdep_details(,"morse")` for more info
 ** byte-compile and prepare package for lazy loading
 Error : .onLoad failed in loadNamespace() for 'rjags', details:
   call: dyn.load(file, DLLpath = DLLpath, ...)
-  error: unable to load shared object '/Users/max/github/forks/testthat/revdep/library.noindex/morse/rjags/libs/rjags.so':
-  dlopen(/Users/max/github/forks/testthat/revdep/library.noindex/morse/rjags/libs/rjags.so, 10): Library not loaded: /usr/local/lib/libjags.4.dylib
-  Referenced from: /Users/max/github/forks/testthat/revdep/library.noindex/morse/rjags/libs/rjags.so
+  error: unable to load shared object '/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/morse/rjags/libs/rjags.so':
+  dlopen(/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/morse/rjags/libs/rjags.so, 10): Library not loaded: /usr/local/lib/libjags.4.dylib
+  Referenced from: /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/morse/rjags/libs/rjags.so
   Reason: image not found
 ERROR: lazy loading failed for package ‘morse’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/morse/new/morse.Rcheck/morse’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/morse/new/morse.Rcheck/morse’
 
 ```
 ### CRAN
@@ -6875,12 +5614,12 @@ ERROR: lazy loading failed for package ‘morse’
 ** byte-compile and prepare package for lazy loading
 Error : .onLoad failed in loadNamespace() for 'rjags', details:
   call: dyn.load(file, DLLpath = DLLpath, ...)
-  error: unable to load shared object '/Users/max/github/forks/testthat/revdep/library.noindex/morse/rjags/libs/rjags.so':
-  dlopen(/Users/max/github/forks/testthat/revdep/library.noindex/morse/rjags/libs/rjags.so, 10): Library not loaded: /usr/local/lib/libjags.4.dylib
-  Referenced from: /Users/max/github/forks/testthat/revdep/library.noindex/morse/rjags/libs/rjags.so
+  error: unable to load shared object '/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/morse/rjags/libs/rjags.so':
+  dlopen(/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/morse/rjags/libs/rjags.so, 10): Library not loaded: /usr/local/lib/libjags.4.dylib
+  Referenced from: /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/morse/rjags/libs/rjags.so
   Reason: image not found
 ERROR: lazy loading failed for package ‘morse’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/morse/old/morse.Rcheck/morse’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/morse/old/morse.Rcheck/morse’
 
 ```
 # motifcounter
@@ -6901,7 +5640,7 @@ Run `revdep_details(,"motifcounter")` for more info
 *   checking whether package ‘motifcounter’ can be installed ... ERROR
     ```
     Installation failed.
-    See ‘/Users/max/github/forks/testthat/revdep/checks.noindex/motifcounter/new/motifcounter.Rcheck/00install.out’ for details.
+    See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/motifcounter/new/motifcounter.Rcheck/00install.out’ for details.
     ```
 
 *   checking for hidden files and directories ... NOTE
@@ -6919,21 +5658,11 @@ Run `revdep_details(,"motifcounter")` for more info
 ```
 * installing *source* package ‘motifcounter’ ...
 ** libs
-clang -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I/usr/local/include  -fopenmp -DIN_R -fPIC  -Wall -g -O2  -c Rbackground.c -o Rbackground.o
-clang -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I/usr/local/include  -fopenmp -DIN_R -fPIC  -Wall -g -O2  -c Rcombinatorial.c -o Rcombinatorial.o
-clang -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I/usr/local/include  -fopenmp -DIN_R -fPIC  -Wall -g -O2  -c Rcompoundpoisson.c -o Rcompoundpoisson.o
-clang -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I/usr/local/include  -fopenmp -DIN_R -fPIC  -Wall -g -O2  -c Rminmaxscore.c -o Rminmaxscore.o
+ccache clang -Qunused-arguments  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I/usr/local/include  -fopenmp -DIN_R -fPIC  -Wall -g -O2  -c Rbackground.c -o Rbackground.o
 clang: error: unsupported option '-fopenmp'
-clang: error: unsupported option '-fopenmp'
-clang: error: unsupported option '-fopenmp'
-clang: error: unsupported option '-fopenmp'
-make: *** [Rminmaxscore.o] Error 1
-make: *** Waiting for unfinished jobs....
-make: *** [Rcompoundpoisson.o] Error 1
-make: *** [Rcombinatorial.o] Error 1
 make: *** [Rbackground.o] Error 1
 ERROR: compilation failed for package ‘motifcounter’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/motifcounter/new/motifcounter.Rcheck/motifcounter’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/motifcounter/new/motifcounter.Rcheck/motifcounter’
 
 ```
 ### CRAN
@@ -6941,96 +5670,11 @@ ERROR: compilation failed for package ‘motifcounter’
 ```
 * installing *source* package ‘motifcounter’ ...
 ** libs
-clang -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I/usr/local/include  -fopenmp -DIN_R -fPIC  -Wall -g -O2  -c Rbackground.c -o Rbackground.o
-clang -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I/usr/local/include  -fopenmp -DIN_R -fPIC  -Wall -g -O2  -c Rcombinatorial.c -o Rcombinatorial.o
-clang -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I/usr/local/include  -fopenmp -DIN_R -fPIC  -Wall -g -O2  -c Rcompoundpoisson.c -o Rcompoundpoisson.o
-clang -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I/usr/local/include  -fopenmp -DIN_R -fPIC  -Wall -g -O2  -c Rminmaxscore.c -o Rminmaxscore.o
+ccache clang -Qunused-arguments  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I/usr/local/include  -fopenmp -DIN_R -fPIC  -Wall -g -O2  -c Rbackground.c -o Rbackground.o
 clang: error: unsupported option '-fopenmp'
-clang: error: unsupported option '-fopenmp'
-clang: error: unsupported option '-fopenmp'
-clang: error: unsupported option '-fopenmp'
-make: *** [Rcombinatorial.o] Error 1
-make: *** Waiting for unfinished jobs....
 make: *** [Rbackground.o] Error 1
-make: *** [Rcompoundpoisson.o] Error 1
-make: *** [Rminmaxscore.o] Error 1
 ERROR: compilation failed for package ‘motifcounter’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/motifcounter/old/motifcounter.Rcheck/motifcounter’
-
-```
-# MSGFgui
-
-<details>
-
-* Version: 1.16.1
-* Source code: https://github.com/cran/MSGFgui
-* Date/Publication: 2019-01-04
-* Number of recursive dependencies: 55
-
-Run `revdep_details(,"MSGFgui")` for more info
-
-</details>
-
-## In both
-
-*   checking whether package ‘MSGFgui’ can be installed ... ERROR
-    ```
-    Installation failed.
-    See ‘/Users/max/github/forks/testthat/revdep/checks.noindex/MSGFgui/new/MSGFgui.Rcheck/00install.out’ for details.
-    ```
-
-## Installation
-
-### Devel
-
-```
-* installing *source* package ‘MSGFgui’ ...
-** R
-** inst
-** byte-compile and prepare package for lazy loading
-Warning in fun(libname, pkgname) :
-  mzR has been built against a different Rcpp version (1.0.0)
-than is installed on your system (1.0.1). This might lead to errors
-when loading mzR. If you encounter such issues, please send a report,
-including the output of sessionInfo() to the Bioc support forum at 
-https://support.bioconductor.org/. For details see also
-https://github.com/sneumann/mzR/wiki/mzR-Rcpp-compiler-linker-issue.
-Error: package or namespace load failed for ‘xlsx’:
- .onLoad failed in loadNamespace() for 'rJava', details:
-  call: dyn.load(file, DLLpath = DLLpath, ...)
-  error: unable to load shared object '/Users/max/github/forks/testthat/revdep/library.noindex/MSGFgui/rJava/libs/rJava.so':
-  dlopen(/Users/max/github/forks/testthat/revdep/library.noindex/MSGFgui/rJava/libs/rJava.so, 6): Library not loaded: /Library/Java/JavaVirtualMachines/jdk-11.0.1.jdk/Contents/Home/lib/server/libjvm.dylib
-  Referenced from: /Users/max/github/forks/testthat/revdep/library.noindex/MSGFgui/rJava/libs/rJava.so
-  Reason: image not found
-Error : package ‘xlsx’ could not be loaded
-ERROR: lazy loading failed for package ‘MSGFgui’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/MSGFgui/new/MSGFgui.Rcheck/MSGFgui’
-
-```
-### CRAN
-
-```
-* installing *source* package ‘MSGFgui’ ...
-** R
-** inst
-** byte-compile and prepare package for lazy loading
-Warning in fun(libname, pkgname) :
-  mzR has been built against a different Rcpp version (1.0.0)
-than is installed on your system (1.0.1). This might lead to errors
-when loading mzR. If you encounter such issues, please send a report,
-including the output of sessionInfo() to the Bioc support forum at 
-https://support.bioconductor.org/. For details see also
-https://github.com/sneumann/mzR/wiki/mzR-Rcpp-compiler-linker-issue.
-Error: package or namespace load failed for ‘xlsx’:
- .onLoad failed in loadNamespace() for 'rJava', details:
-  call: dyn.load(file, DLLpath = DLLpath, ...)
-  error: unable to load shared object '/Users/max/github/forks/testthat/revdep/library.noindex/MSGFgui/rJava/libs/rJava.so':
-  dlopen(/Users/max/github/forks/testthat/revdep/library.noindex/MSGFgui/rJava/libs/rJava.so, 6): Library not loaded: /Library/Java/JavaVirtualMachines/jdk-11.0.1.jdk/Contents/Home/lib/server/libjvm.dylib
-  Referenced from: /Users/max/github/forks/testthat/revdep/library.noindex/MSGFgui/rJava/libs/rJava.so
-  Reason: image not found
-Error : package ‘xlsx’ could not be loaded
-ERROR: lazy loading failed for package ‘MSGFgui’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/MSGFgui/old/MSGFgui.Rcheck/MSGFgui’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/motifcounter/old/motifcounter.Rcheck/motifcounter’
 
 ```
 # MSnbase
@@ -7100,7 +5744,7 @@ Run `revdep_details(,"mvabund")` for more info
 *   checking whether package ‘mvabund’ can be installed ... ERROR
     ```
     Installation failed.
-    See ‘/Users/max/github/forks/testthat/revdep/checks.noindex/mvabund/new/mvabund.Rcheck/00install.out’ for details.
+    See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/mvabund/new/mvabund.Rcheck/00install.out’ for details.
     ```
 
 ## Installation
@@ -7111,51 +5755,18 @@ Run `revdep_details(,"mvabund")` for more info
 * installing *source* package ‘mvabund’ ...
 ** package ‘mvabund’ successfully unpacked and MD5 sums checked
 ** libs
-/usr/local/clang6/bin/clang++ -std=gnu++11 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -I. -I../inst/include `/Library/Frameworks/R.framework/Resources/bin/Rscript -e "RcppGSL:::CFlags()"` -I"/Users/max/github/forks/testthat/revdep/library.noindex/mvabund/Rcpp/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/mvabund/RcppGSL/include" -I/usr/local/include   -fPIC  -Wall -g -O2 -c RcppExports.cpp -o RcppExports.o
-/usr/local/clang6/bin/clang++ -std=gnu++11 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -I. -I../inst/include `/Library/Frameworks/R.framework/Resources/bin/Rscript -e "RcppGSL:::CFlags()"` -I"/Users/max/github/forks/testthat/revdep/library.noindex/mvabund/Rcpp/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/mvabund/RcppGSL/include" -I/usr/local/include   -fPIC  -Wall -g -O2 -c Rinterface.cpp -o Rinterface.o
-/usr/local/clang6/bin/clang++ -std=gnu++11 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -I. -I../inst/include `/Library/Frameworks/R.framework/Resources/bin/Rscript -e "RcppGSL:::CFlags()"` -I"/Users/max/github/forks/testthat/revdep/library.noindex/mvabund/Rcpp/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/mvabund/RcppGSL/include" -I/usr/local/include   -fPIC  -Wall -g -O2 -c anova.cpp -o anova.o
-/usr/local/clang6/bin/clang++ -std=gnu++11 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -I. -I../inst/include `/Library/Frameworks/R.framework/Resources/bin/Rscript -e "RcppGSL:::CFlags()"` -I"/Users/max/github/forks/testthat/revdep/library.noindex/mvabund/Rcpp/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/mvabund/RcppGSL/include" -I/usr/local/include   -fPIC  -Wall -g -O2 -c calctest.cpp -o calctest.o
+clang++ -std=gnu++11 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -I. -I../inst/include `/Library/Frameworks/R.framework/Resources/bin/Rscript -e "RcppGSL:::CFlags()"` -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/mvabund/Rcpp/include" -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/mvabund/RcppGSL/include" -I/usr/local/include   -fPIC  -Wall -g -O2 -c RcppExports.cpp -o RcppExports.o
 Warning message:
 No 'gsl-config' config script found, limiting extensibility. 
-Warning message:
-No 'gsl-config' config script found, limiting extensibility. 
-Warning message:
-No 'gsl-config' config script found, limiting extensibility. 
-Warning message:
-No 'gsl-config' config script found, limiting extensibility. 
-Error in readRDS("/var/folders/lb/xhxqmcrd7gv302_b1pdfykh80000gn/T//Rtmpfpz96c/file184d67d388d1f") : 
-  error reading from connection
-Calls: .Last -> readRDS
-Execution halted
-In file included from calctest.cpp:5:
-./resampTest.h:30:10: fatal error: 'gsl/gsl_blas.h' file not found
-#include <gsl/gsl_blas.h>
-         ^~~~~~~~~~~~~~~~
-In file included from anova.cpp:5:
-./resampTest.h:30:10: fatal error: 'gsl/gsl_blas.h' file not found
-#include <gsl/gsl_blas.h>
-         ^~~~~~~~~~~~~~~~
-1 error generated.
-1 error generated.
-make: *** [anova.o] Error 1
-make: *** Waiting for unfinished jobs....
-make: *** [calctest.o] Error 1
 In file included from RcppExports.cpp:5:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/mvabund/RcppGSL/include/RcppGSL.h:25:
-/Users/max/github/forks/testthat/revdep/library.noindex/mvabund/RcppGSL/include/RcppGSLForward.h:26:10: fatal error: 'gsl/gsl_vector.h' file not found
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/mvabund/RcppGSL/include/RcppGSL.h:25:
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/mvabund/RcppGSL/include/RcppGSLForward.h:26:10: fatal error: 'gsl/gsl_vector.h' file not found
 #include <gsl/gsl_vector.h> 
          ^~~~~~~~~~~~~~~~~~
-In file included from Rinterface.cpp:9:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/mvabund/RcppGSL/include/RcppGSL.h:25:
-/Users/max/github/forks/testthat/revdep/library.noindex/mvabund/RcppGSL/include/RcppGSLForward.h:26:10: fatal error: 'gsl/gsl_vector.h' file not found
-#include <gsl/gsl_vector.h> 
-         ^~~~~~~~~~~~~~~~~~
-1 error generated.
-make: *** [Rinterface.o] Error 1
 1 error generated.
 make: *** [RcppExports.o] Error 1
 ERROR: compilation failed for package ‘mvabund’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/mvabund/new/mvabund.Rcheck/mvabund’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/mvabund/new/mvabund.Rcheck/mvabund’
 
 ```
 ### CRAN
@@ -7164,47 +5775,18 @@ ERROR: compilation failed for package ‘mvabund’
 * installing *source* package ‘mvabund’ ...
 ** package ‘mvabund’ successfully unpacked and MD5 sums checked
 ** libs
-/usr/local/clang6/bin/clang++ -std=gnu++11 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -I. -I../inst/include `/Library/Frameworks/R.framework/Resources/bin/Rscript -e "RcppGSL:::CFlags()"` -I"/Users/max/github/forks/testthat/revdep/library.noindex/mvabund/Rcpp/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/mvabund/RcppGSL/include" -I/usr/local/include   -fPIC  -Wall -g -O2 -c RcppExports.cpp -o RcppExports.o
-/usr/local/clang6/bin/clang++ -std=gnu++11 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -I. -I../inst/include `/Library/Frameworks/R.framework/Resources/bin/Rscript -e "RcppGSL:::CFlags()"` -I"/Users/max/github/forks/testthat/revdep/library.noindex/mvabund/Rcpp/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/mvabund/RcppGSL/include" -I/usr/local/include   -fPIC  -Wall -g -O2 -c Rinterface.cpp -o Rinterface.o
-/usr/local/clang6/bin/clang++ -std=gnu++11 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -I. -I../inst/include `/Library/Frameworks/R.framework/Resources/bin/Rscript -e "RcppGSL:::CFlags()"` -I"/Users/max/github/forks/testthat/revdep/library.noindex/mvabund/Rcpp/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/mvabund/RcppGSL/include" -I/usr/local/include   -fPIC  -Wall -g -O2 -c anova.cpp -o anova.o
-/usr/local/clang6/bin/clang++ -std=gnu++11 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -I. -I../inst/include `/Library/Frameworks/R.framework/Resources/bin/Rscript -e "RcppGSL:::CFlags()"` -I"/Users/max/github/forks/testthat/revdep/library.noindex/mvabund/Rcpp/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/mvabund/RcppGSL/include" -I/usr/local/include   -fPIC  -Wall -g -O2 -c calctest.cpp -o calctest.o
+clang++ -std=gnu++11 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -I. -I../inst/include `/Library/Frameworks/R.framework/Resources/bin/Rscript -e "RcppGSL:::CFlags()"` -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/mvabund/Rcpp/include" -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/mvabund/RcppGSL/include" -I/usr/local/include   -fPIC  -Wall -g -O2 -c RcppExports.cpp -o RcppExports.o
 Warning message:
 No 'gsl-config' config script found, limiting extensibility. 
-Warning message:
-No 'gsl-config' config script found, limiting extensibility. 
-Warning message:
-No 'gsl-config' config script found, limiting extensibility. 
-Warning message:
-No 'gsl-config' config script found, limiting extensibility. 
-In file included from calctest.cpp:5:
-./resampTest.h:30:10: fatal error: 'gsl/gsl_blas.h' file not found
-#include <gsl/gsl_blas.h>
-         ^~~~~~~~~~~~~~~~
-In file included from anova.cpp:5:
-./resampTest.h:30:10: fatal error: 'gsl/gsl_blas.h' file not found
-#include <gsl/gsl_blas.h>
-         ^~~~~~~~~~~~~~~~
-1 error generated.
-1 error generated.
-make: *** [calctest.o] Error 1
-make: *** Waiting for unfinished jobs....
-make: *** [anova.o] Error 1
 In file included from RcppExports.cpp:5:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/mvabund/RcppGSL/include/RcppGSL.h:25:
-/Users/max/github/forks/testthat/revdep/library.noindex/mvabund/RcppGSL/include/RcppGSLForward.h:26:10: fatal error: 'gsl/gsl_vector.h' file not found
-#include <gsl/gsl_vector.h> 
-         ^~~~~~~~~~~~~~~~~~
-In file included from Rinterface.cpp:9:
-In file included from /Users/max/github/forks/testthat/revdep/library.noindex/mvabund/RcppGSL/include/RcppGSL.h:25:
-/Users/max/github/forks/testthat/revdep/library.noindex/mvabund/RcppGSL/include/RcppGSLForward.h:26:10: fatal error: 'gsl/gsl_vector.h' file not found
+In file included from /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/mvabund/RcppGSL/include/RcppGSL.h:25:
+/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/mvabund/RcppGSL/include/RcppGSLForward.h:26:10: fatal error: 'gsl/gsl_vector.h' file not found
 #include <gsl/gsl_vector.h> 
          ^~~~~~~~~~~~~~~~~~
 1 error generated.
 make: *** [RcppExports.o] Error 1
-1 error generated.
-make: *** [Rinterface.o] Error 1
 ERROR: compilation failed for package ‘mvabund’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/mvabund/old/mvabund.Rcheck/mvabund’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/mvabund/old/mvabund.Rcheck/mvabund’
 
 ```
 # mwaved
@@ -7227,7 +5809,7 @@ Run `revdep_details(,"mwaved")` for more info
 *   checking whether package ‘mwaved’ can be installed ... ERROR
     ```
     Installation failed.
-    See ‘/Users/max/github/forks/testthat/revdep/checks.noindex/mwaved/new/mwaved.Rcheck/00install.out’ for details.
+    See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/mwaved/new/mwaved.Rcheck/00install.out’ for details.
     ```
 
 ## Installation
@@ -7246,16 +5828,15 @@ FFTW library not found, please install fftw-3-3-3 or greater
 configure: creating ./config.status
 config.status: creating src/Makevars
 ** libs
-clang++  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/max/github/forks/testthat/revdep/library.noindex/mwaved/Rcpp/include" -I/usr/local/include   -fPIC  -Wall -g -O2  -c RcppExports.cpp -o RcppExports.o
-clang++  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/max/github/forks/testthat/revdep/library.noindex/mwaved/Rcpp/include" -I/usr/local/include   -fPIC  -Wall -g -O2  -c mwaved.cpp -o mwaved.o
+ccache clang++ -Qunused-arguments  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/mwaved/Rcpp/include" -I/usr/local/include   -fPIC  -Wall -g -O2  -c RcppExports.cpp -o RcppExports.o
+ccache clang++ -Qunused-arguments  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/mwaved/Rcpp/include" -I/usr/local/include   -fPIC  -Wall -g -O2  -c mwaved.cpp -o mwaved.o
 mwaved.cpp:1:10: fatal error: 'fftw3.h' file not found
 #include <fftw3.h>
          ^~~~~~~~~
 1 error generated.
 make: *** [mwaved.o] Error 1
-make: *** Waiting for unfinished jobs....
 ERROR: compilation failed for package ‘mwaved’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/mwaved/new/mwaved.Rcheck/mwaved’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/mwaved/new/mwaved.Rcheck/mwaved’
 
 ```
 ### CRAN
@@ -7272,16 +5853,15 @@ FFTW library not found, please install fftw-3-3-3 or greater
 configure: creating ./config.status
 config.status: creating src/Makevars
 ** libs
-clang++  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/max/github/forks/testthat/revdep/library.noindex/mwaved/Rcpp/include" -I/usr/local/include   -fPIC  -Wall -g -O2  -c RcppExports.cpp -o RcppExports.o
-clang++  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/max/github/forks/testthat/revdep/library.noindex/mwaved/Rcpp/include" -I/usr/local/include   -fPIC  -Wall -g -O2  -c mwaved.cpp -o mwaved.o
+ccache clang++ -Qunused-arguments  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/mwaved/Rcpp/include" -I/usr/local/include   -fPIC  -Wall -g -O2  -c RcppExports.cpp -o RcppExports.o
+ccache clang++ -Qunused-arguments  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/mwaved/Rcpp/include" -I/usr/local/include   -fPIC  -Wall -g -O2  -c mwaved.cpp -o mwaved.o
 mwaved.cpp:1:10: fatal error: 'fftw3.h' file not found
 #include <fftw3.h>
          ^~~~~~~~~
 1 error generated.
 make: *** [mwaved.o] Error 1
-make: *** Waiting for unfinished jobs....
 ERROR: compilation failed for package ‘mwaved’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/mwaved/old/mwaved.Rcheck/mwaved’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/mwaved/old/mwaved.Rcheck/mwaved’
 
 ```
 # NNLM
@@ -7304,7 +5884,7 @@ Run `revdep_details(,"NNLM")` for more info
 *   checking whether package ‘NNLM’ can be installed ... ERROR
     ```
     Installation failed.
-    See ‘/Users/max/github/forks/testthat/revdep/checks.noindex/NNLM/new/NNLM.Rcheck/00install.out’ for details.
+    See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/NNLM/new/NNLM.Rcheck/00install.out’ for details.
     ```
 
 ## Installation
@@ -7315,21 +5895,11 @@ Run `revdep_details(,"NNLM")` for more info
 * installing *source* package ‘NNLM’ ...
 ** package ‘NNLM’ successfully unpacked and MD5 sums checked
 ** libs
-clang++  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -fopenmp -I"/Users/max/github/forks/testthat/revdep/library.noindex/NNLM/Rcpp/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/NNLM/RcppArmadillo/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/NNLM/RcppProgress/include" -I/usr/local/include   -fPIC  -Wall -g -O2  -c RcppExports.cpp -o RcppExports.o
-clang++  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -fopenmp -I"/Users/max/github/forks/testthat/revdep/library.noindex/NNLM/Rcpp/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/NNLM/RcppArmadillo/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/NNLM/RcppProgress/include" -I/usr/local/include   -fPIC  -Wall -g -O2  -c base_algorithms.cpp -o base_algorithms.o
-clang++  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -fopenmp -I"/Users/max/github/forks/testthat/revdep/library.noindex/NNLM/Rcpp/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/NNLM/RcppArmadillo/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/NNLM/RcppProgress/include" -I/usr/local/include   -fPIC  -Wall -g -O2  -c nnlm.cpp -o nnlm.o
-clang++  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -fopenmp -I"/Users/max/github/forks/testthat/revdep/library.noindex/NNLM/Rcpp/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/NNLM/RcppArmadillo/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/NNLM/RcppProgress/include" -I/usr/local/include   -fPIC  -Wall -g -O2  -c nnmf.cpp -o nnmf.o
+ccache clang++ -Qunused-arguments  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -fopenmp -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/NNLM/Rcpp/include" -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/NNLM/RcppArmadillo/include" -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/NNLM/RcppProgress/include" -I/usr/local/include   -fPIC  -Wall -g -O2  -c RcppExports.cpp -o RcppExports.o
 clang: error: unsupported option '-fopenmp'
-clang: error: unsupported option '-fopenmp'clang
-: error: unsupported option '-fopenmp'clang: error: unsupported option '-fopenmp'
-
 make: *** [RcppExports.o] Error 1
-make: *** Waiting for unfinished jobs....
-make: *** [nnlm.o] Error 1
-make: *** [base_algorithms.o] Error 1
-make: *** [nnmf.o] Error 1
 ERROR: compilation failed for package ‘NNLM’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/NNLM/new/NNLM.Rcheck/NNLM’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/NNLM/new/NNLM.Rcheck/NNLM’
 
 ```
 ### CRAN
@@ -7338,21 +5908,11 @@ ERROR: compilation failed for package ‘NNLM’
 * installing *source* package ‘NNLM’ ...
 ** package ‘NNLM’ successfully unpacked and MD5 sums checked
 ** libs
-clang++  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -fopenmp -I"/Users/max/github/forks/testthat/revdep/library.noindex/NNLM/Rcpp/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/NNLM/RcppArmadillo/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/NNLM/RcppProgress/include" -I/usr/local/include   -fPIC  -Wall -g -O2  -c RcppExports.cpp -o RcppExports.o
-clang++  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -fopenmp -I"/Users/max/github/forks/testthat/revdep/library.noindex/NNLM/Rcpp/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/NNLM/RcppArmadillo/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/NNLM/RcppProgress/include" -I/usr/local/include   -fPIC  -Wall -g -O2  -c base_algorithms.cpp -o base_algorithms.o
-clang++  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -fopenmp -I"/Users/max/github/forks/testthat/revdep/library.noindex/NNLM/Rcpp/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/NNLM/RcppArmadillo/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/NNLM/RcppProgress/include" -I/usr/local/include   -fPIC  -Wall -g -O2  -c nnlm.cpp -o nnlm.o
-clang++  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -fopenmp -I"/Users/max/github/forks/testthat/revdep/library.noindex/NNLM/Rcpp/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/NNLM/RcppArmadillo/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/NNLM/RcppProgress/include" -I/usr/local/include   -fPIC  -Wall -g -O2  -c nnmf.cpp -o nnmf.o
+ccache clang++ -Qunused-arguments  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -fopenmp -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/NNLM/Rcpp/include" -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/NNLM/RcppArmadillo/include" -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/NNLM/RcppProgress/include" -I/usr/local/include   -fPIC  -Wall -g -O2  -c RcppExports.cpp -o RcppExports.o
 clang: error: unsupported option '-fopenmp'
-clang: error: unsupported option '-fopenmp'
-clang: error: unsupported option '-fopenmp'
-clang: error: unsupported option '-fopenmp'
-make: *** [nnlm.o] Error 1
-make: *** Waiting for unfinished jobs....
-make: *** [nnmf.o] Error 1
-make: *** [base_algorithms.o] Error 1
 make: *** [RcppExports.o] Error 1
 ERROR: compilation failed for package ‘NNLM’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/NNLM/old/NNLM.Rcheck/NNLM’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/NNLM/old/NNLM.Rcheck/NNLM’
 
 ```
 # normr
@@ -7375,7 +5935,7 @@ Run `revdep_details(,"normr")` for more info
 *   checking whether package ‘normr’ can be installed ... ERROR
     ```
     Installation failed.
-    See ‘/Users/max/github/forks/testthat/revdep/checks.noindex/normr/new/normr.Rcheck/00install.out’ for details.
+    See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/normr/new/normr.Rcheck/00install.out’ for details.
     ```
 
 ## Installation
@@ -7385,14 +5945,11 @@ Run `revdep_details(,"normr")` for more info
 ```
 * installing *source* package ‘normr’ ...
 ** libs
-/usr/local/clang6/bin/clang++ -std=gnu++11 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -fopenmp -D_GLIBCXX_USE_C99 -I"/Users/max/github/forks/testthat/revdep/library.noindex/normr/Rcpp/include" -I/usr/local/include   -fPIC  -Wall -g -O2 -c RcppExports.cpp -o RcppExports.o
-/usr/local/clang6/bin/clang++ -std=gnu++11 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -fopenmp -D_GLIBCXX_USE_C99 -I"/Users/max/github/forks/testthat/revdep/library.noindex/normr/Rcpp/include" -I/usr/local/include   -fPIC  -Wall -g -O2 -c em.cpp -o em.o
-clang -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -fopenmp -D_GLIBCXX_USE_C99 -I"/Users/max/github/forks/testthat/revdep/library.noindex/normr/Rcpp/include" -I/usr/local/include   -fPIC  -Wall -g -O2  -c normr_init.c -o normr_init.o
+clang++ -std=gnu++11 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -fopenmp -D_GLIBCXX_USE_C99 -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/normr/Rcpp/include" -I/usr/local/include   -fPIC  -Wall -g -O2 -c RcppExports.cpp -o RcppExports.o
 clang: error: unsupported option '-fopenmp'
-make: *** [normr_init.o] Error 1
-make: *** Waiting for unfinished jobs....
+make: *** [RcppExports.o] Error 1
 ERROR: compilation failed for package ‘normr’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/normr/new/normr.Rcheck/normr’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/normr/new/normr.Rcheck/normr’
 
 ```
 ### CRAN
@@ -7400,36 +5957,38 @@ ERROR: compilation failed for package ‘normr’
 ```
 * installing *source* package ‘normr’ ...
 ** libs
-/usr/local/clang6/bin/clang++ -std=gnu++11 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -fopenmp -D_GLIBCXX_USE_C99 -I"/Users/max/github/forks/testthat/revdep/library.noindex/normr/Rcpp/include" -I/usr/local/include   -fPIC  -Wall -g -O2 -c RcppExports.cpp -o RcppExports.o
-/usr/local/clang6/bin/clang++ -std=gnu++11 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -fopenmp -D_GLIBCXX_USE_C99 -I"/Users/max/github/forks/testthat/revdep/library.noindex/normr/Rcpp/include" -I/usr/local/include   -fPIC  -Wall -g -O2 -c em.cpp -o em.o
-clang -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -fopenmp -D_GLIBCXX_USE_C99 -I"/Users/max/github/forks/testthat/revdep/library.noindex/normr/Rcpp/include" -I/usr/local/include   -fPIC  -Wall -g -O2  -c normr_init.c -o normr_init.o
+clang++ -std=gnu++11 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -fopenmp -D_GLIBCXX_USE_C99 -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/normr/Rcpp/include" -I/usr/local/include   -fPIC  -Wall -g -O2 -c RcppExports.cpp -o RcppExports.o
 clang: error: unsupported option '-fopenmp'
-make: *** [normr_init.o] Error 1
-make: *** Waiting for unfinished jobs....
+make: *** [RcppExports.o] Error 1
 ERROR: compilation failed for package ‘normr’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/normr/old/normr.Rcheck/normr’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/normr/old/normr.Rcheck/normr’
 
 ```
-# OSMscale
+# OUTRIDER
 
 <details>
 
-* Version: 0.5.1
-* Source code: https://github.com/cran/OSMscale
-* URL: https://github.com/brry/OSMscale
-* Date/Publication: 2017-04-12 13:34:22 UTC
-* Number of recursive dependencies: 42
+* Version: 1.0.4
+* Source code: https://github.com/cran/OUTRIDER
+* URL: https://github.com/gagneurlab/OUTRIDER
+* Date/Publication: 2019-03-19
+* Number of recursive dependencies: 151
 
-Run `revdep_details(,"OSMscale")` for more info
+Run `revdep_details(,"OUTRIDER")` for more info
 
 </details>
 
 ## In both
 
-*   checking whether package ‘OSMscale’ can be installed ... ERROR
+*   checking whether package ‘OUTRIDER’ can be installed ... ERROR
     ```
     Installation failed.
-    See ‘/Users/max/github/forks/testthat/revdep/checks.noindex/OSMscale/new/OSMscale.Rcheck/00install.out’ for details.
+    See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/OUTRIDER/new/OUTRIDER.Rcheck/00install.out’ for details.
+    ```
+
+*   checking package dependencies ... NOTE
+    ```
+    Package suggested but not available for checking: ‘org.Hs.eg.db’
     ```
 
 ## Installation
@@ -7437,37 +5996,25 @@ Run `revdep_details(,"OSMscale")` for more info
 ### Devel
 
 ```
-* installing *source* package ‘OSMscale’ ...
-** package ‘OSMscale’ successfully unpacked and MD5 sums checked
-** R
-** data
-** byte-compile and prepare package for lazy loading
-Error : .onLoad failed in loadNamespace() for 'rJava', details:
-  call: dyn.load(file, DLLpath = DLLpath, ...)
-  error: unable to load shared object '/Users/max/github/forks/testthat/revdep/library.noindex/OSMscale/rJava/libs/rJava.so':
-  dlopen(/Users/max/github/forks/testthat/revdep/library.noindex/OSMscale/rJava/libs/rJava.so, 6): Library not loaded: /Library/Java/JavaVirtualMachines/jdk-11.0.1.jdk/Contents/Home/lib/server/libjvm.dylib
-  Referenced from: /Users/max/github/forks/testthat/revdep/library.noindex/OSMscale/rJava/libs/rJava.so
-  Reason: image not found
-ERROR: lazy loading failed for package ‘OSMscale’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/OSMscale/new/OSMscale.Rcheck/OSMscale’
+* installing *source* package ‘OUTRIDER’ ...
+** libs
+clang++ -std=gnu++11 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/OUTRIDER/Rcpp/include" -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/OUTRIDER/RcppArmadillo/include" -I/usr/local/include  -fopenmp  -fPIC  -Wall -g -O2 -c RcppExports.cpp -o RcppExports.o
+clang: error: unsupported option '-fopenmp'
+make: *** [RcppExports.o] Error 1
+ERROR: compilation failed for package ‘OUTRIDER’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/OUTRIDER/new/OUTRIDER.Rcheck/OUTRIDER’
 
 ```
 ### CRAN
 
 ```
-* installing *source* package ‘OSMscale’ ...
-** package ‘OSMscale’ successfully unpacked and MD5 sums checked
-** R
-** data
-** byte-compile and prepare package for lazy loading
-Error : .onLoad failed in loadNamespace() for 'rJava', details:
-  call: dyn.load(file, DLLpath = DLLpath, ...)
-  error: unable to load shared object '/Users/max/github/forks/testthat/revdep/library.noindex/OSMscale/rJava/libs/rJava.so':
-  dlopen(/Users/max/github/forks/testthat/revdep/library.noindex/OSMscale/rJava/libs/rJava.so, 6): Library not loaded: /Library/Java/JavaVirtualMachines/jdk-11.0.1.jdk/Contents/Home/lib/server/libjvm.dylib
-  Referenced from: /Users/max/github/forks/testthat/revdep/library.noindex/OSMscale/rJava/libs/rJava.so
-  Reason: image not found
-ERROR: lazy loading failed for package ‘OSMscale’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/OSMscale/old/OSMscale.Rcheck/OSMscale’
+* installing *source* package ‘OUTRIDER’ ...
+** libs
+clang++ -std=gnu++11 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/OUTRIDER/Rcpp/include" -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/OUTRIDER/RcppArmadillo/include" -I/usr/local/include  -fopenmp  -fPIC  -Wall -g -O2 -c RcppExports.cpp -o RcppExports.o
+clang: error: unsupported option '-fopenmp'
+make: *** [RcppExports.o] Error 1
+ERROR: compilation failed for package ‘OUTRIDER’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/OUTRIDER/old/OUTRIDER.Rcheck/OUTRIDER’
 
 ```
 # PathwaySplice
@@ -7515,132 +6062,6 @@ Run `revdep_details(,"PathwaySplice")` for more info
       labs random_sampling_200k scale_colour_manual scale_shape_manual
     ```
 
-# paxtoolsr
-
-<details>
-
-* Version: 1.16.0
-* Source code: https://github.com/cran/paxtoolsr
-* URL: https://github.com/BioPAX/paxtoolsr
-* Date/Publication: 2018-10-30
-* Number of recursive dependencies: 85
-
-Run `revdep_details(,"paxtoolsr")` for more info
-
-</details>
-
-## In both
-
-*   checking whether package ‘paxtoolsr’ can be installed ... ERROR
-    ```
-    Installation failed.
-    See ‘/Users/max/github/forks/testthat/revdep/checks.noindex/paxtoolsr/new/paxtoolsr.Rcheck/00install.out’ for details.
-    ```
-
-## Installation
-
-### Devel
-
-```
-* installing *source* package ‘paxtoolsr’ ...
-** R
-** inst
-** byte-compile and prepare package for lazy loading
-Error: package or namespace load failed for ‘rJava’:
- .onLoad failed in loadNamespace() for 'rJava', details:
-  call: dyn.load(file, DLLpath = DLLpath, ...)
-  error: unable to load shared object '/Users/max/github/forks/testthat/revdep/library.noindex/paxtoolsr/rJava/libs/rJava.so':
-  dlopen(/Users/max/github/forks/testthat/revdep/library.noindex/paxtoolsr/rJava/libs/rJava.so, 6): Library not loaded: /Library/Java/JavaVirtualMachines/jdk-11.0.1.jdk/Contents/Home/lib/server/libjvm.dylib
-  Referenced from: /Users/max/github/forks/testthat/revdep/library.noindex/paxtoolsr/rJava/libs/rJava.so
-  Reason: image not found
-Error : package ‘rJava’ could not be loaded
-ERROR: lazy loading failed for package ‘paxtoolsr’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/paxtoolsr/new/paxtoolsr.Rcheck/paxtoolsr’
-
-```
-### CRAN
-
-```
-* installing *source* package ‘paxtoolsr’ ...
-** R
-** inst
-** byte-compile and prepare package for lazy loading
-Error: package or namespace load failed for ‘rJava’:
- .onLoad failed in loadNamespace() for 'rJava', details:
-  call: dyn.load(file, DLLpath = DLLpath, ...)
-  error: unable to load shared object '/Users/max/github/forks/testthat/revdep/library.noindex/paxtoolsr/rJava/libs/rJava.so':
-  dlopen(/Users/max/github/forks/testthat/revdep/library.noindex/paxtoolsr/rJava/libs/rJava.so, 6): Library not loaded: /Library/Java/JavaVirtualMachines/jdk-11.0.1.jdk/Contents/Home/lib/server/libjvm.dylib
-  Referenced from: /Users/max/github/forks/testthat/revdep/library.noindex/paxtoolsr/rJava/libs/rJava.so
-  Reason: image not found
-Error : package ‘rJava’ could not be loaded
-ERROR: lazy loading failed for package ‘paxtoolsr’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/paxtoolsr/old/paxtoolsr.Rcheck/paxtoolsr’
-
-```
-# petro.One
-
-<details>
-
-* Version: 0.2.3
-* Source code: https://github.com/cran/petro.One
-* URL: https://github.com/f0nzie/petro.One
-* Date/Publication: 2019-01-13 16:20:03 UTC
-* Number of recursive dependencies: 78
-
-Run `revdep_details(,"petro.One")` for more info
-
-</details>
-
-## In both
-
-*   checking whether package ‘petro.One’ can be installed ... ERROR
-    ```
-    Installation failed.
-    See ‘/Users/max/github/forks/testthat/revdep/checks.noindex/petro.One/new/petro.One.Rcheck/00install.out’ for details.
-    ```
-
-## Installation
-
-### Devel
-
-```
-* installing *source* package ‘petro.One’ ...
-** package ‘petro.One’ successfully unpacked and MD5 sums checked
-** R
-** data
-*** moving datasets to lazyload DB
-** inst
-** byte-compile and prepare package for lazy loading
-Error : .onLoad failed in loadNamespace() for 'rJava', details:
-  call: dyn.load(file, DLLpath = DLLpath, ...)
-  error: unable to load shared object '/Users/max/github/forks/testthat/revdep/library.noindex/petro.One/rJava/libs/rJava.so':
-  dlopen(/Users/max/github/forks/testthat/revdep/library.noindex/petro.One/rJava/libs/rJava.so, 6): Library not loaded: /Library/Java/JavaVirtualMachines/jdk-11.0.1.jdk/Contents/Home/lib/server/libjvm.dylib
-  Referenced from: /Users/max/github/forks/testthat/revdep/library.noindex/petro.One/rJava/libs/rJava.so
-  Reason: image not found
-ERROR: lazy loading failed for package ‘petro.One’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/petro.One/new/petro.One.Rcheck/petro.One’
-
-```
-### CRAN
-
-```
-* installing *source* package ‘petro.One’ ...
-** package ‘petro.One’ successfully unpacked and MD5 sums checked
-** R
-** data
-*** moving datasets to lazyload DB
-** inst
-** byte-compile and prepare package for lazy loading
-Error : .onLoad failed in loadNamespace() for 'rJava', details:
-  call: dyn.load(file, DLLpath = DLLpath, ...)
-  error: unable to load shared object '/Users/max/github/forks/testthat/revdep/library.noindex/petro.One/rJava/libs/rJava.so':
-  dlopen(/Users/max/github/forks/testthat/revdep/library.noindex/petro.One/rJava/libs/rJava.so, 6): Library not loaded: /Library/Java/JavaVirtualMachines/jdk-11.0.1.jdk/Contents/Home/lib/server/libjvm.dylib
-  Referenced from: /Users/max/github/forks/testthat/revdep/library.noindex/petro.One/rJava/libs/rJava.so
-  Reason: image not found
-ERROR: lazy loading failed for package ‘petro.One’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/petro.One/old/petro.One.Rcheck/petro.One’
-
-```
 # PharmacoGx
 
 <details>
@@ -7685,7 +6106,7 @@ Run `revdep_details(,"poppr")` for more info
 *   checking whether package ‘poppr’ can be installed ... ERROR
     ```
     Installation failed.
-    See ‘/Users/max/github/forks/testthat/revdep/checks.noindex/poppr/new/poppr.Rcheck/00install.out’ for details.
+    See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/poppr/new/poppr.Rcheck/00install.out’ for details.
     ```
 
 ## Installation
@@ -7696,21 +6117,11 @@ Run `revdep_details(,"poppr")` for more info
 * installing *source* package ‘poppr’ ...
 ** package ‘poppr’ successfully unpacked and MD5 sums checked
 ** libs
-clang -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I/usr/local/include  -fopenmp -fPIC  -Wall -g -O2  -c adjust_missing.c -o adjust_missing.o
-clang -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I/usr/local/include  -fopenmp -fPIC  -Wall -g -O2  -c bitwise_distance.c -o bitwise_distance.o
-clang -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I/usr/local/include  -fopenmp -fPIC  -Wall -g -O2  -c init.c -o init.o
-clang -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I/usr/local/include  -fopenmp -fPIC  -Wall -g -O2  -c mlg_clustering.c -o mlg_clustering.o
+ccache clang -Qunused-arguments  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I/usr/local/include  -fopenmp -fPIC  -Wall -g -O2  -c adjust_missing.c -o adjust_missing.o
 clang: error: unsupported option '-fopenmp'
-clang: error: unsupported option '-fopenmp'clang: errorclang: error: : unsupported option '-fopenmp'unsupported option '-fopenmp'
-
-
-make: *** [bitwise_distance.o] Error 1
-make: *** Waiting for unfinished jobs....
-make: *** [mlg_clustering.o] Error 1
-make: *** [init.o] Error 1
 make: *** [adjust_missing.o] Error 1
 ERROR: compilation failed for package ‘poppr’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/poppr/new/poppr.Rcheck/poppr’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/poppr/new/poppr.Rcheck/poppr’
 
 ```
 ### CRAN
@@ -7719,87 +6130,11 @@ ERROR: compilation failed for package ‘poppr’
 * installing *source* package ‘poppr’ ...
 ** package ‘poppr’ successfully unpacked and MD5 sums checked
 ** libs
-clang -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I/usr/local/include  -fopenmp -fPIC  -Wall -g -O2  -c adjust_missing.c -o adjust_missing.o
-clang -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I/usr/local/include  -fopenmp -fPIC  -Wall -g -O2  -c bitwise_distance.c -o bitwise_distance.o
-clang -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I/usr/local/include  -fopenmp -fPIC  -Wall -g -O2  -c init.c -o init.o
-clang -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I/usr/local/include  -fopenmp -fPIC  -Wall -g -O2  -c mlg_clustering.c -o mlg_clustering.o
+ccache clang -Qunused-arguments  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I/usr/local/include  -fopenmp -fPIC  -Wall -g -O2  -c adjust_missing.c -o adjust_missing.o
 clang: error: unsupported option '-fopenmp'
-clang: error: unsupported option '-fopenmp'clangclang: error: : error: unsupported option '-fopenmp'unsupported option '-fopenmp'
-
-
-make: *** [mlg_clustering.o] Error 1
-make: *** Waiting for unfinished jobs....
-make: *** [init.o] Error 1
-make: *** [bitwise_distance.o] Error 1
 make: *** [adjust_missing.o] Error 1
 ERROR: compilation failed for package ‘poppr’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/poppr/old/poppr.Rcheck/poppr’
-
-```
-# PortfolioEffectHFT
-
-<details>
-
-* Version: 1.8
-* Source code: https://github.com/cran/PortfolioEffectHFT
-* URL: https://www.portfolioeffect.com/
-* Date/Publication: 2017-03-24 19:54:25 UTC
-* Number of recursive dependencies: 37
-
-Run `revdep_details(,"PortfolioEffectHFT")` for more info
-
-</details>
-
-## In both
-
-*   checking whether package ‘PortfolioEffectHFT’ can be installed ... ERROR
-    ```
-    Installation failed.
-    See ‘/Users/max/github/forks/testthat/revdep/checks.noindex/PortfolioEffectHFT/new/PortfolioEffectHFT.Rcheck/00install.out’ for details.
-    ```
-
-## Installation
-
-### Devel
-
-```
-* installing *source* package ‘PortfolioEffectHFT’ ...
-** package ‘PortfolioEffectHFT’ successfully unpacked and MD5 sums checked
-** R
-** data
-*** moving datasets to lazyload DB
-** demo
-** inst
-** byte-compile and prepare package for lazy loading
-Error : .onLoad failed in loadNamespace() for 'rJava', details:
-  call: dyn.load(file, DLLpath = DLLpath, ...)
-  error: unable to load shared object '/Users/max/github/forks/testthat/revdep/library.noindex/PortfolioEffectHFT/rJava/libs/rJava.so':
-  dlopen(/Users/max/github/forks/testthat/revdep/library.noindex/PortfolioEffectHFT/rJava/libs/rJava.so, 6): Library not loaded: /Library/Java/JavaVirtualMachines/jdk-11.0.1.jdk/Contents/Home/lib/server/libjvm.dylib
-  Referenced from: /Users/max/github/forks/testthat/revdep/library.noindex/PortfolioEffectHFT/rJava/libs/rJava.so
-  Reason: image not found
-ERROR: lazy loading failed for package ‘PortfolioEffectHFT’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/PortfolioEffectHFT/new/PortfolioEffectHFT.Rcheck/PortfolioEffectHFT’
-
-```
-### CRAN
-
-```
-* installing *source* package ‘PortfolioEffectHFT’ ...
-** package ‘PortfolioEffectHFT’ successfully unpacked and MD5 sums checked
-** R
-** data
-*** moving datasets to lazyload DB
-** demo
-** inst
-** byte-compile and prepare package for lazy loading
-Error : .onLoad failed in loadNamespace() for 'rJava', details:
-  call: dyn.load(file, DLLpath = DLLpath, ...)
-  error: unable to load shared object '/Users/max/github/forks/testthat/revdep/library.noindex/PortfolioEffectHFT/rJava/libs/rJava.so':
-  dlopen(/Users/max/github/forks/testthat/revdep/library.noindex/PortfolioEffectHFT/rJava/libs/rJava.so, 6): Library not loaded: /Library/Java/JavaVirtualMachines/jdk-11.0.1.jdk/Contents/Home/lib/server/libjvm.dylib
-  Referenced from: /Users/max/github/forks/testthat/revdep/library.noindex/PortfolioEffectHFT/rJava/libs/rJava.so
-  Reason: image not found
-ERROR: lazy loading failed for package ‘PortfolioEffectHFT’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/PortfolioEffectHFT/old/PortfolioEffectHFT.Rcheck/PortfolioEffectHFT’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/poppr/old/poppr.Rcheck/poppr’
 
 ```
 # praznik
@@ -7822,7 +6157,7 @@ Run `revdep_details(,"praznik")` for more info
 *   checking whether package ‘praznik’ can be installed ... ERROR
     ```
     Installation failed.
-    See ‘/Users/max/github/forks/testthat/revdep/checks.noindex/praznik/new/praznik.Rcheck/00install.out’ for details.
+    See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/praznik/new/praznik.Rcheck/00install.out’ for details.
     ```
 
 ## Installation
@@ -7833,11 +6168,11 @@ Run `revdep_details(,"praznik")` for more info
 * installing *source* package ‘praznik’ ...
 ** package ‘praznik’ successfully unpacked and MD5 sums checked
 ** libs
-clang -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I/usr/local/include   -fopenmp -fPIC  -Wall -g -O2  -c praznik.c -o praznik.o
+ccache clang -Qunused-arguments  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I/usr/local/include   -fopenmp -fPIC  -Wall -g -O2  -c praznik.c -o praznik.o
 clang: error: unsupported option '-fopenmp'
 make: *** [praznik.o] Error 1
 ERROR: compilation failed for package ‘praznik’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/praznik/new/praznik.Rcheck/praznik’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/praznik/new/praznik.Rcheck/praznik’
 
 ```
 ### CRAN
@@ -7846,362 +6181,11 @@ ERROR: compilation failed for package ‘praznik’
 * installing *source* package ‘praznik’ ...
 ** package ‘praznik’ successfully unpacked and MD5 sums checked
 ** libs
-clang -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I/usr/local/include   -fopenmp -fPIC  -Wall -g -O2  -c praznik.c -o praznik.o
+ccache clang -Qunused-arguments  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I/usr/local/include   -fopenmp -fPIC  -Wall -g -O2  -c praznik.c -o praznik.o
 clang: error: unsupported option '-fopenmp'
 make: *** [praznik.o] Error 1
 ERROR: compilation failed for package ‘praznik’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/praznik/old/praznik.Rcheck/praznik’
-
-```
-# protolite
-
-<details>
-
-* Version: 1.8
-* Source code: https://github.com/cran/protolite
-* URL: https://github.com/jeroen/protolite#readme
-* BugReports: https://github.com/jeroen/protolite/issues
-* Date/Publication: 2018-06-26 18:57:58 UTC
-* Number of recursive dependencies: 15
-
-Run `revdep_details(,"protolite")` for more info
-
-</details>
-
-## In both
-
-*   checking whether package ‘protolite’ can be installed ... ERROR
-    ```
-    Installation failed.
-    See ‘/Users/max/github/forks/testthat/revdep/checks.noindex/protolite/new/protolite.Rcheck/00install.out’ for details.
-    ```
-
-## Installation
-
-### Devel
-
-```
-* installing *source* package ‘protolite’ ...
-** package ‘protolite’ successfully unpacked and MD5 sums checked
-Package protobuf was not found in the pkg-config search path.
-Perhaps you should add the directory containing `protobuf.pc'
-to the PKG_CONFIG_PATH environment variable
-No package 'protobuf' found
-Using PKG_CFLAGS=-I/usr/local/opt/protobuf/include
-Using PKG_LIBS=-L/usr/local/opt/protobuf/lib -lprotobuf
-------------------------- ANTICONF ERROR ---------------------------
-Configuration failed because protobuf was not found. Try installing:
- * deb: libprotobuf-dev (Debian, Ubuntu, etc)
- * rpm: protobuf-devel (Fedora, EPEL)
- * csw: protobuf_dev (Solaris)
- * brew: protobuf (OSX)
-If protobuf is already installed, check that 'pkg-config' is in your
-PATH and PKG_CONFIG_PATH contains a protobuf.pc file. If pkg-config
-is unavailable you can set INCLUDE_DIR and LIB_DIR manually via:
-R CMD INSTALL --configure-vars='INCLUDE_DIR=... LIB_DIR=...'
---------------------------------------------------------------------
-ERROR: configuration failed for package ‘protolite’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/protolite/new/protolite.Rcheck/protolite’
-
-```
-### CRAN
-
-```
-* installing *source* package ‘protolite’ ...
-** package ‘protolite’ successfully unpacked and MD5 sums checked
-Package protobuf was not found in the pkg-config search path.
-Perhaps you should add the directory containing `protobuf.pc'
-to the PKG_CONFIG_PATH environment variable
-No package 'protobuf' found
-Using PKG_CFLAGS=-I/usr/local/opt/protobuf/include
-Using PKG_LIBS=-L/usr/local/opt/protobuf/lib -lprotobuf
-------------------------- ANTICONF ERROR ---------------------------
-Configuration failed because protobuf was not found. Try installing:
- * deb: libprotobuf-dev (Debian, Ubuntu, etc)
- * rpm: protobuf-devel (Fedora, EPEL)
- * csw: protobuf_dev (Solaris)
- * brew: protobuf (OSX)
-If protobuf is already installed, check that 'pkg-config' is in your
-PATH and PKG_CONFIG_PATH contains a protobuf.pc file. If pkg-config
-is unavailable you can set INCLUDE_DIR and LIB_DIR manually via:
-R CMD INSTALL --configure-vars='INCLUDE_DIR=... LIB_DIR=...'
---------------------------------------------------------------------
-ERROR: configuration failed for package ‘protolite’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/protolite/old/protolite.Rcheck/protolite’
-
-```
-# qdap
-
-<details>
-
-* Version: 2.3.2
-* Source code: https://github.com/cran/qdap
-* URL: http://trinker.github.com/qdap/
-* BugReports: http://github.com/trinker/qdap/issues
-* Date/Publication: 2019-01-02 13:40:07 UTC
-* Number of recursive dependencies: 86
-
-Run `revdep_details(,"qdap")` for more info
-
-</details>
-
-## In both
-
-*   checking whether package ‘qdap’ can be installed ... ERROR
-    ```
-    Installation failed.
-    See ‘/Users/max/github/forks/testthat/revdep/checks.noindex/qdap/new/qdap.Rcheck/00install.out’ for details.
-    ```
-
-## Installation
-
-### Devel
-
-```
-* installing *source* package ‘qdap’ ...
-** package ‘qdap’ successfully unpacked and MD5 sums checked
-** R
-** data
-*** moving datasets to lazyload DB
-** inst
-** byte-compile and prepare package for lazy loading
-Error : .onLoad failed in loadNamespace() for 'rJava', details:
-  call: dyn.load(file, DLLpath = DLLpath, ...)
-  error: unable to load shared object '/Users/max/github/forks/testthat/revdep/library.noindex/qdap/rJava/libs/rJava.so':
-  dlopen(/Users/max/github/forks/testthat/revdep/library.noindex/qdap/rJava/libs/rJava.so, 6): Library not loaded: /Library/Java/JavaVirtualMachines/jdk-11.0.1.jdk/Contents/Home/lib/server/libjvm.dylib
-  Referenced from: /Users/max/github/forks/testthat/revdep/library.noindex/qdap/rJava/libs/rJava.so
-  Reason: image not found
-ERROR: lazy loading failed for package ‘qdap’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/qdap/new/qdap.Rcheck/qdap’
-
-```
-### CRAN
-
-```
-* installing *source* package ‘qdap’ ...
-** package ‘qdap’ successfully unpacked and MD5 sums checked
-** R
-** data
-*** moving datasets to lazyload DB
-** inst
-** byte-compile and prepare package for lazy loading
-Error : .onLoad failed in loadNamespace() for 'rJava', details:
-  call: dyn.load(file, DLLpath = DLLpath, ...)
-  error: unable to load shared object '/Users/max/github/forks/testthat/revdep/library.noindex/qdap/rJava/libs/rJava.so':
-  dlopen(/Users/max/github/forks/testthat/revdep/library.noindex/qdap/rJava/libs/rJava.so, 6): Library not loaded: /Library/Java/JavaVirtualMachines/jdk-11.0.1.jdk/Contents/Home/lib/server/libjvm.dylib
-  Referenced from: /Users/max/github/forks/testthat/revdep/library.noindex/qdap/rJava/libs/rJava.so
-  Reason: image not found
-ERROR: lazy loading failed for package ‘qdap’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/qdap/old/qdap.Rcheck/qdap’
-
-```
-# rapidraker
-
-<details>
-
-* Version: 0.1.0
-* Source code: https://github.com/cran/rapidraker
-* URL: https://crew102.github.io/slowraker/articles/rapidraker.html
-* BugReports: https://github.com/crew102/rapidraker/issues
-* Date/Publication: 2018-01-05 19:14:49 UTC
-* Number of recursive dependencies: 32
-
-Run `revdep_details(,"rapidraker")` for more info
-
-</details>
-
-## In both
-
-*   checking whether package ‘rapidraker’ can be installed ... ERROR
-    ```
-    Installation failed.
-    See ‘/Users/max/github/forks/testthat/revdep/checks.noindex/rapidraker/new/rapidraker.Rcheck/00install.out’ for details.
-    ```
-
-## Installation
-
-### Devel
-
-```
-* installing *source* package ‘rapidraker’ ...
-** package ‘rapidraker’ successfully unpacked and MD5 sums checked
-** R
-** inst
-** byte-compile and prepare package for lazy loading
-Error : .onLoad failed in loadNamespace() for 'rJava', details:
-  call: dyn.load(file, DLLpath = DLLpath, ...)
-  error: unable to load shared object '/Users/max/github/forks/testthat/revdep/library.noindex/rapidraker/rJava/libs/rJava.so':
-  dlopen(/Users/max/github/forks/testthat/revdep/library.noindex/rapidraker/rJava/libs/rJava.so, 6): Library not loaded: /Library/Java/JavaVirtualMachines/jdk-11.0.1.jdk/Contents/Home/lib/server/libjvm.dylib
-  Referenced from: /Users/max/github/forks/testthat/revdep/library.noindex/rapidraker/rJava/libs/rJava.so
-  Reason: image not found
-ERROR: lazy loading failed for package ‘rapidraker’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/rapidraker/new/rapidraker.Rcheck/rapidraker’
-
-```
-### CRAN
-
-```
-* installing *source* package ‘rapidraker’ ...
-** package ‘rapidraker’ successfully unpacked and MD5 sums checked
-** R
-** inst
-** byte-compile and prepare package for lazy loading
-Error : .onLoad failed in loadNamespace() for 'rJava', details:
-  call: dyn.load(file, DLLpath = DLLpath, ...)
-  error: unable to load shared object '/Users/max/github/forks/testthat/revdep/library.noindex/rapidraker/rJava/libs/rJava.so':
-  dlopen(/Users/max/github/forks/testthat/revdep/library.noindex/rapidraker/rJava/libs/rJava.so, 6): Library not loaded: /Library/Java/JavaVirtualMachines/jdk-11.0.1.jdk/Contents/Home/lib/server/libjvm.dylib
-  Referenced from: /Users/max/github/forks/testthat/revdep/library.noindex/rapidraker/rJava/libs/rJava.so
-  Reason: image not found
-ERROR: lazy loading failed for package ‘rapidraker’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/rapidraker/old/rapidraker.Rcheck/rapidraker’
-
-```
-# rcellminer
-
-<details>
-
-* Version: 2.4.0
-* Source code: https://github.com/cran/rcellminer
-* URL: http://discover.nci.nih.gov/cellminer/
-* Date/Publication: 2018-10-30
-* Number of recursive dependencies: 110
-
-Run `revdep_details(,"rcellminer")` for more info
-
-</details>
-
-## In both
-
-*   checking whether package ‘rcellminer’ can be installed ... ERROR
-    ```
-    Installation failed.
-    See ‘/Users/max/github/forks/testthat/revdep/checks.noindex/rcellminer/new/rcellminer.Rcheck/00install.out’ for details.
-    ```
-
-*   checking for hidden files and directories ... NOTE
-    ```
-    Found the following hidden files and directories:
-      .BBSoptions
-    These were most likely included in error. See section ‘Package
-    structure’ in the ‘Writing R Extensions’ manual.
-    ```
-
-## Installation
-
-### Devel
-
-```
-* installing *source* package ‘rcellminer’ ...
-** R
-** data
-*** moving datasets to lazyload DB
-** inst
-** byte-compile and prepare package for lazy loading
-Error: package or namespace load failed for ‘rJava’:
- .onLoad failed in loadNamespace() for 'rJava', details:
-  call: dyn.load(file, DLLpath = DLLpath, ...)
-  error: unable to load shared object '/Users/max/github/forks/testthat/revdep/library.noindex/rcellminer/rJava/libs/rJava.so':
-  dlopen(/Users/max/github/forks/testthat/revdep/library.noindex/rcellminer/rJava/libs/rJava.so, 6): Library not loaded: /Library/Java/JavaVirtualMachines/jdk-11.0.1.jdk/Contents/Home/lib/server/libjvm.dylib
-  Referenced from: /Users/max/github/forks/testthat/revdep/library.noindex/rcellminer/rJava/libs/rJava.so
-  Reason: image not found
-Error : package ‘rJava’ could not be loaded
-ERROR: lazy loading failed for package ‘rcellminer’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/rcellminer/new/rcellminer.Rcheck/rcellminer’
-
-```
-### CRAN
-
-```
-* installing *source* package ‘rcellminer’ ...
-** R
-** data
-*** moving datasets to lazyload DB
-** inst
-** byte-compile and prepare package for lazy loading
-Error: package or namespace load failed for ‘rJava’:
- .onLoad failed in loadNamespace() for 'rJava', details:
-  call: dyn.load(file, DLLpath = DLLpath, ...)
-  error: unable to load shared object '/Users/max/github/forks/testthat/revdep/library.noindex/rcellminer/rJava/libs/rJava.so':
-  dlopen(/Users/max/github/forks/testthat/revdep/library.noindex/rcellminer/rJava/libs/rJava.so, 6): Library not loaded: /Library/Java/JavaVirtualMachines/jdk-11.0.1.jdk/Contents/Home/lib/server/libjvm.dylib
-  Referenced from: /Users/max/github/forks/testthat/revdep/library.noindex/rcellminer/rJava/libs/rJava.so
-  Reason: image not found
-Error : package ‘rJava’ could not be loaded
-ERROR: lazy loading failed for package ‘rcellminer’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/rcellminer/old/rcellminer.Rcheck/rcellminer’
-
-```
-# rcrypt
-
-<details>
-
-* Version: 0.1.1
-* Source code: https://github.com/cran/rcrypt
-* URL: http://brettklamer.com/work/rcrypt/
-* Date/Publication: 2015-09-20 08:01:09
-* Number of recursive dependencies: 10
-
-Run `revdep_details(,"rcrypt")` for more info
-
-</details>
-
-## In both
-
-*   checking whether package ‘rcrypt’ can be installed ... ERROR
-    ```
-    Installation failed.
-    See ‘/Users/max/github/forks/testthat/revdep/checks.noindex/rcrypt/new/rcrypt.Rcheck/00install.out’ for details.
-    ```
-
-## Installation
-
-### Devel
-
-```
-* installing *source* package ‘rcrypt’ ...
-** package ‘rcrypt’ successfully unpacked and MD5 sums checked
-** R
-** byte-compile and prepare package for lazy loading
-** help
-*** installing help indices
-** building package indices
-** testing if installed package can be loaded
-Warning in system2("gpg", "--version", stdout = FALSE, stderr = FALSE) :
-  error in running command
-Error: package or namespace load failed for ‘rcrypt’:
- .onLoad failed in loadNamespace() for 'rcrypt', details:
-  call: fun(libname, pkgname)
-  error: Please install GPG first or check if GPG can be run from the command line.
-      The rcrypt package is just an interface to GPG. See https://gnupg.org/ for
-      installation guidelines.
-Error: loading failed
-Execution halted
-ERROR: loading failed
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/rcrypt/new/rcrypt.Rcheck/rcrypt’
-
-```
-### CRAN
-
-```
-* installing *source* package ‘rcrypt’ ...
-** package ‘rcrypt’ successfully unpacked and MD5 sums checked
-** R
-** byte-compile and prepare package for lazy loading
-** help
-*** installing help indices
-** building package indices
-** testing if installed package can be loaded
-Warning in system2("gpg", "--version", stdout = FALSE, stderr = FALSE) :
-  error in running command
-Error: package or namespace load failed for ‘rcrypt’:
- .onLoad failed in loadNamespace() for 'rcrypt', details:
-  call: fun(libname, pkgname)
-  error: Please install GPG first or check if GPG can be run from the command line.
-      The rcrypt package is just an interface to GPG. See https://gnupg.org/ for
-      installation guidelines.
-Error: loading failed
-Execution halted
-ERROR: loading failed
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/rcrypt/old/rcrypt.Rcheck/rcrypt’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/praznik/old/praznik.Rcheck/praznik’
 
 ```
 # rDEA
@@ -8223,7 +6207,7 @@ Run `revdep_details(,"rDEA")` for more info
 *   checking whether package ‘rDEA’ can be installed ... ERROR
     ```
     Installation failed.
-    See ‘/Users/max/github/forks/testthat/revdep/checks.noindex/rDEA/new/rDEA.Rcheck/00install.out’ for details.
+    See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/rDEA/new/rDEA.Rcheck/00install.out’ for details.
     ```
 
 ## Installation
@@ -8237,7 +6221,7 @@ Run `revdep_details(,"rDEA")` for more info
 /bin/sh: line 0: cd: GLPK: No such file or directory
 make: *** [GLPK.ts] Error 1
 ERROR: compilation failed for package ‘rDEA’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/rDEA/new/rDEA.Rcheck/rDEA’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/rDEA/new/rDEA.Rcheck/rDEA’
 
 ```
 ### CRAN
@@ -8249,7 +6233,7 @@ ERROR: compilation failed for package ‘rDEA’
 /bin/sh: line 0: cd: GLPK: No such file or directory
 make: *** [GLPK.ts] Error 1
 ERROR: compilation failed for package ‘rDEA’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/rDEA/old/rDEA.Rcheck/rDEA’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/rDEA/old/rDEA.Rcheck/rDEA’
 
 ```
 # rdist
@@ -8272,7 +6256,7 @@ Run `revdep_details(,"rdist")` for more info
 *   checking whether package ‘rdist’ can be installed ... ERROR
     ```
     Installation failed.
-    See ‘/Users/max/github/forks/testthat/revdep/checks.noindex/rdist/new/rdist.Rcheck/00install.out’ for details.
+    See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/rdist/new/rdist.Rcheck/00install.out’ for details.
     ```
 
 ## Installation
@@ -8283,21 +6267,11 @@ Run `revdep_details(,"rdist")` for more info
 * installing *source* package ‘rdist’ ...
 ** package ‘rdist’ successfully unpacked and MD5 sums checked
 ** libs
-clang++  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/max/github/forks/testthat/revdep/library.noindex/rdist/Rcpp/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/rdist/RcppArmadillo/include" -I/usr/local/include  -fopenmp  -fPIC  -Wall -g -O2  -c RcppExports.cpp -o RcppExports.o
-clang++  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/max/github/forks/testthat/revdep/library.noindex/rdist/Rcpp/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/rdist/RcppArmadillo/include" -I/usr/local/include  -fopenmp  -fPIC  -Wall -g -O2  -c canberra.cpp -o canberra.o
-clang++  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/max/github/forks/testthat/revdep/library.noindex/rdist/Rcpp/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/rdist/RcppArmadillo/include" -I/usr/local/include  -fopenmp  -fPIC  -Wall -g -O2  -c dist.cpp -o dist.o
-clang++  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/max/github/forks/testthat/revdep/library.noindex/rdist/Rcpp/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/rdist/RcppArmadillo/include" -I/usr/local/include  -fopenmp  -fPIC  -Wall -g -O2  -c euclidean.cpp -o euclidean.o
+ccache clang++ -Qunused-arguments  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/rdist/Rcpp/include" -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/rdist/RcppArmadillo/include" -I/usr/local/include  -fopenmp  -fPIC  -Wall -g -O2  -c RcppExports.cpp -o RcppExports.o
 clang: error: unsupported option '-fopenmp'
-clang: error: clang: error: unsupported option '-fopenmp'unsupported option '-fopenmp'clang
-: error: unsupported option '-fopenmp'
-
-make: *** [dist.o] Error 1
-make: *** Waiting for unfinished jobs....
-make: *** [canberra.o] Error 1
 make: *** [RcppExports.o] Error 1
-make: *** [euclidean.o] Error 1
 ERROR: compilation failed for package ‘rdist’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/rdist/new/rdist.Rcheck/rdist’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/rdist/new/rdist.Rcheck/rdist’
 
 ```
 ### CRAN
@@ -8306,126 +6280,67 @@ ERROR: compilation failed for package ‘rdist’
 * installing *source* package ‘rdist’ ...
 ** package ‘rdist’ successfully unpacked and MD5 sums checked
 ** libs
-clang++  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/max/github/forks/testthat/revdep/library.noindex/rdist/Rcpp/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/rdist/RcppArmadillo/include" -I/usr/local/include  -fopenmp  -fPIC  -Wall -g -O2  -c RcppExports.cpp -o RcppExports.o
-clang++  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/max/github/forks/testthat/revdep/library.noindex/rdist/Rcpp/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/rdist/RcppArmadillo/include" -I/usr/local/include  -fopenmp  -fPIC  -Wall -g -O2  -c canberra.cpp -o canberra.o
-clang++  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/max/github/forks/testthat/revdep/library.noindex/rdist/Rcpp/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/rdist/RcppArmadillo/include" -I/usr/local/include  -fopenmp  -fPIC  -Wall -g -O2  -c dist.cpp -o dist.o
-clang++  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/max/github/forks/testthat/revdep/library.noindex/rdist/Rcpp/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/rdist/RcppArmadillo/include" -I/usr/local/include  -fopenmp  -fPIC  -Wall -g -O2  -c euclidean.cpp -o euclidean.o
-clang: error: unsupported option '-fopenmp'
-clang: error: unsupported option '-fopenmp'
-make: *** [canberra.o] Error 1
-make: *** Waiting for unfinished jobs....
-clang: error: unsupported option '-fopenmp'
+ccache clang++ -Qunused-arguments  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/rdist/Rcpp/include" -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/rdist/RcppArmadillo/include" -I/usr/local/include  -fopenmp  -fPIC  -Wall -g -O2  -c RcppExports.cpp -o RcppExports.o
 clang: error: unsupported option '-fopenmp'
 make: *** [RcppExports.o] Error 1
-make: *** [euclidean.o] Error 1
-make: *** [dist.o] Error 1
 ERROR: compilation failed for package ‘rdist’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/rdist/old/rdist.Rcheck/rdist’
-
-```
-# Rdrools
-
-<details>
-
-* Version: 1.1.1
-* Source code: https://github.com/cran/Rdrools
-* Date/Publication: 2018-12-08 15:00:13 UTC
-* Number of recursive dependencies: 64
-
-Run `revdep_details(,"Rdrools")` for more info
-
-</details>
-
-## In both
-
-*   checking whether package ‘Rdrools’ can be installed ... ERROR
-    ```
-    Installation failed.
-    See ‘/Users/max/github/forks/testthat/revdep/checks.noindex/Rdrools/new/Rdrools.Rcheck/00install.out’ for details.
-    ```
-
-## Installation
-
-### Devel
-
-```
-* installing *source* package ‘Rdrools’ ...
-** package ‘Rdrools’ successfully unpacked and MD5 sums checked
-** R
-** data
-*** moving datasets to lazyload DB
-** inst
-** byte-compile and prepare package for lazy loading
-Error: package or namespace load failed for ‘rJava’:
- .onLoad failed in loadNamespace() for 'rJava', details:
-  call: dyn.load(file, DLLpath = DLLpath, ...)
-  error: unable to load shared object '/Users/max/github/forks/testthat/revdep/library.noindex/Rdrools/rJava/libs/rJava.so':
-  dlopen(/Users/max/github/forks/testthat/revdep/library.noindex/Rdrools/rJava/libs/rJava.so, 6): Library not loaded: /Library/Java/JavaVirtualMachines/jdk-11.0.1.jdk/Contents/Home/lib/server/libjvm.dylib
-  Referenced from: /Users/max/github/forks/testthat/revdep/library.noindex/Rdrools/rJava/libs/rJava.so
-  Reason: image not found
-Error : package ‘rJava’ could not be loaded
-ERROR: lazy loading failed for package ‘Rdrools’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/Rdrools/new/Rdrools.Rcheck/Rdrools’
-
-```
-### CRAN
-
-```
-* installing *source* package ‘Rdrools’ ...
-** package ‘Rdrools’ successfully unpacked and MD5 sums checked
-** R
-** data
-*** moving datasets to lazyload DB
-** inst
-** byte-compile and prepare package for lazy loading
-Error: package or namespace load failed for ‘rJava’:
- .onLoad failed in loadNamespace() for 'rJava', details:
-  call: dyn.load(file, DLLpath = DLLpath, ...)
-  error: unable to load shared object '/Users/max/github/forks/testthat/revdep/library.noindex/Rdrools/rJava/libs/rJava.so':
-  dlopen(/Users/max/github/forks/testthat/revdep/library.noindex/Rdrools/rJava/libs/rJava.so, 6): Library not loaded: /Library/Java/JavaVirtualMachines/jdk-11.0.1.jdk/Contents/Home/lib/server/libjvm.dylib
-  Referenced from: /Users/max/github/forks/testthat/revdep/library.noindex/Rdrools/rJava/libs/rJava.so
-  Reason: image not found
-Error : package ‘rJava’ could not be loaded
-ERROR: lazy loading failed for package ‘Rdrools’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/Rdrools/old/Rdrools.Rcheck/Rdrools’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/rdist/old/rdist.Rcheck/rdist’
 
 ```
 # ReactomePA
 
 <details>
 
-* Version: 
-* Source code: ???
-* URL: https://github.com/r-lib/revdepcheck#readme
-* BugReports: https://github.com/r-lib/revdepcheck/issues
-* Number of recursive dependencies: 0
+* Version: 1.26.0
+* Source code: https://github.com/cran/ReactomePA
+* URL: https://guangchuangyu.github.io/software/ReactomePA
+* BugReports: https://github.com/GuangchuangYu/ReactomePA/issues
+* Date/Publication: 2018-10-30
+* Number of recursive dependencies: 119
 
-Run `revdep_details(,"")` for more info
+Run `revdep_details(,"ReactomePA")` for more info
 
 </details>
 
-## Error before installation
+## In both
+
+*   checking whether package ‘ReactomePA’ can be installed ... ERROR
+    ```
+    Installation failed.
+    See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/ReactomePA/new/ReactomePA.Rcheck/00install.out’ for details.
+    ```
+
+*   checking package dependencies ... NOTE
+    ```
+    Package suggested but not available for checking: ‘org.Hs.eg.db’
+    ```
+
+## Installation
 
 ### Devel
 
 ```
-
-
-
-installing the source packages ‘GO.db’, ‘org.Hs.eg.db’, ‘reactome.db’
-
-
+* installing *source* package ‘ReactomePA’ ...
+** R
+** inst
+** byte-compile and prepare package for lazy loading
+Error in loadNamespace(j <- i[[1L]], c(lib.loc, .libPaths()), versionCheck = vI[[j]]) : 
+  there is no package called ‘GO.db’
+ERROR: lazy loading failed for package ‘ReactomePA’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/ReactomePA/new/ReactomePA.Rcheck/ReactomePA’
 
 ```
 ### CRAN
 
 ```
-
-
-
-installing the source packages ‘GO.db’, ‘org.Hs.eg.db’, ‘reactome.db’
-
-
+* installing *source* package ‘ReactomePA’ ...
+** R
+** inst
+** byte-compile and prepare package for lazy loading
+Error in loadNamespace(j <- i[[1L]], c(lib.loc, .libPaths()), versionCheck = vI[[j]]) : 
+  there is no package called ‘GO.db’
+ERROR: lazy loading failed for package ‘ReactomePA’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/ReactomePA/old/ReactomePA.Rcheck/ReactomePA’
 
 ```
 # recount
@@ -8530,7 +6445,7 @@ Run `revdep_details(,"redland")` for more info
 *   checking whether package ‘redland’ can be installed ... ERROR
     ```
     Installation failed.
-    See ‘/Users/max/github/forks/testthat/revdep/checks.noindex/redland/new/redland.Rcheck/00install.out’ for details.
+    See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/redland/new/redland.Rcheck/00install.out’ for details.
     ```
 
 ## Installation
@@ -8565,7 +6480,7 @@ is unavailable you can set INCLUDE_DIR and LIB_DIR manually via:
 R CMD INSTALL --configure-vars='INCLUDE_DIR=... LIB_DIR=...'
 --------------------------------------------------------------------
 ERROR: configuration failed for package ‘redland’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/redland/new/redland.Rcheck/redland’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/redland/new/redland.Rcheck/redland’
 
 ```
 ### CRAN
@@ -8598,7 +6513,7 @@ is unavailable you can set INCLUDE_DIR and LIB_DIR manually via:
 R CMD INSTALL --configure-vars='INCLUDE_DIR=... LIB_DIR=...'
 --------------------------------------------------------------------
 ERROR: configuration failed for package ‘redland’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/redland/old/redland.Rcheck/redland’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/redland/old/redland.Rcheck/redland’
 
 ```
 # redux
@@ -8621,7 +6536,7 @@ Run `revdep_details(,"redux")` for more info
 *   checking whether package ‘redux’ can be installed ... ERROR
     ```
     Installation failed.
-    See ‘/Users/max/github/forks/testthat/revdep/checks.noindex/redux/new/redux.Rcheck/00install.out’ for details.
+    See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/redux/new/redux.Rcheck/00install.out’ for details.
     ```
 
 ## Installation
@@ -8648,7 +6563,7 @@ is unavailable you can set INCLUDE_DIR and LIB_DIR manually via:
 R CMD INSTALL --configure-vars='INCLUDE_DIR=... LIB_DIR=...'
 --------------------------------------------------------------------
 ERROR: configuration failed for package ‘redux’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/redux/new/redux.Rcheck/redux’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/redux/new/redux.Rcheck/redux’
 
 ```
 ### CRAN
@@ -8673,7 +6588,7 @@ is unavailable you can set INCLUDE_DIR and LIB_DIR manually via:
 R CMD INSTALL --configure-vars='INCLUDE_DIR=... LIB_DIR=...'
 --------------------------------------------------------------------
 ERROR: configuration failed for package ‘redux’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/redux/old/redux.Rcheck/redux’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/redux/old/redux.Rcheck/redux’
 
 ```
 # rFerns
@@ -8696,7 +6611,7 @@ Run `revdep_details(,"rFerns")` for more info
 *   checking whether package ‘rFerns’ can be installed ... ERROR
     ```
     Installation failed.
-    See ‘/Users/max/github/forks/testthat/revdep/checks.noindex/rFerns/new/rFerns.Rcheck/00install.out’ for details.
+    See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/rFerns/new/rFerns.Rcheck/00install.out’ for details.
     ```
 
 ## Installation
@@ -8707,11 +6622,11 @@ Run `revdep_details(,"rFerns")` for more info
 * installing *source* package ‘rFerns’ ...
 ** package ‘rFerns’ successfully unpacked and MD5 sums checked
 ** libs
-clang -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I/usr/local/include   -fopenmp -fPIC  -Wall -g -O2  -c ferns.c -o ferns.o
+ccache clang -Qunused-arguments  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I/usr/local/include   -fopenmp -fPIC  -Wall -g -O2  -c ferns.c -o ferns.o
 clang: error: unsupported option '-fopenmp'
 make: *** [ferns.o] Error 1
 ERROR: compilation failed for package ‘rFerns’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/rFerns/new/rFerns.Rcheck/rFerns’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/rFerns/new/rFerns.Rcheck/rFerns’
 
 ```
 ### CRAN
@@ -8720,73 +6635,11 @@ ERROR: compilation failed for package ‘rFerns’
 * installing *source* package ‘rFerns’ ...
 ** package ‘rFerns’ successfully unpacked and MD5 sums checked
 ** libs
-clang -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I/usr/local/include   -fopenmp -fPIC  -Wall -g -O2  -c ferns.c -o ferns.o
+ccache clang -Qunused-arguments  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I/usr/local/include   -fopenmp -fPIC  -Wall -g -O2  -c ferns.c -o ferns.o
 clang: error: unsupported option '-fopenmp'
 make: *** [ferns.o] Error 1
 ERROR: compilation failed for package ‘rFerns’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/rFerns/old/rFerns.Rcheck/rFerns’
-
-```
-# rGroovy
-
-<details>
-
-* Version: 1.3
-* Source code: https://github.com/cran/rGroovy
-* URL: http://groovy-lang.org/, http://www.groovy-lang.org/indy.html, http://docs.groovy-lang.org/latest/html/api/index.html, https://coherentlogic.com/wordpress/middleware-development/rgroovy?source=cran
-* Date/Publication: 2018-04-01 12:29:43 UTC
-* Number of recursive dependencies: 11
-
-Run `revdep_details(,"rGroovy")` for more info
-
-</details>
-
-## In both
-
-*   checking whether package ‘rGroovy’ can be installed ... ERROR
-    ```
-    Installation failed.
-    See ‘/Users/max/github/forks/testthat/revdep/checks.noindex/rGroovy/new/rGroovy.Rcheck/00install.out’ for details.
-    ```
-
-## Installation
-
-### Devel
-
-```
-* installing *source* package ‘rGroovy’ ...
-** package ‘rGroovy’ successfully unpacked and MD5 sums checked
-** R
-** byte-compile and prepare package for lazy loading
-Error: package or namespace load failed for ‘rJava’:
- .onLoad failed in loadNamespace() for 'rJava', details:
-  call: dyn.load(file, DLLpath = DLLpath, ...)
-  error: unable to load shared object '/Users/max/github/forks/testthat/revdep/library.noindex/rGroovy/rJava/libs/rJava.so':
-  dlopen(/Users/max/github/forks/testthat/revdep/library.noindex/rGroovy/rJava/libs/rJava.so, 6): Library not loaded: /Library/Java/JavaVirtualMachines/jdk-11.0.1.jdk/Contents/Home/lib/server/libjvm.dylib
-  Referenced from: /Users/max/github/forks/testthat/revdep/library.noindex/rGroovy/rJava/libs/rJava.so
-  Reason: image not found
-Error : package ‘rJava’ could not be loaded
-ERROR: lazy loading failed for package ‘rGroovy’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/rGroovy/new/rGroovy.Rcheck/rGroovy’
-
-```
-### CRAN
-
-```
-* installing *source* package ‘rGroovy’ ...
-** package ‘rGroovy’ successfully unpacked and MD5 sums checked
-** R
-** byte-compile and prepare package for lazy loading
-Error: package or namespace load failed for ‘rJava’:
- .onLoad failed in loadNamespace() for 'rJava', details:
-  call: dyn.load(file, DLLpath = DLLpath, ...)
-  error: unable to load shared object '/Users/max/github/forks/testthat/revdep/library.noindex/rGroovy/rJava/libs/rJava.so':
-  dlopen(/Users/max/github/forks/testthat/revdep/library.noindex/rGroovy/rJava/libs/rJava.so, 6): Library not loaded: /Library/Java/JavaVirtualMachines/jdk-11.0.1.jdk/Contents/Home/lib/server/libjvm.dylib
-  Referenced from: /Users/max/github/forks/testthat/revdep/library.noindex/rGroovy/rJava/libs/rJava.so
-  Reason: image not found
-Error : package ‘rJava’ could not be loaded
-ERROR: lazy loading failed for package ‘rGroovy’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/rGroovy/old/rGroovy.Rcheck/rGroovy’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/rFerns/old/rFerns.Rcheck/rFerns’
 
 ```
 # Rlibeemd
@@ -8808,7 +6661,7 @@ Run `revdep_details(,"Rlibeemd")` for more info
 *   checking whether package ‘Rlibeemd’ can be installed ... ERROR
     ```
     Installation failed.
-    See ‘/Users/max/github/forks/testthat/revdep/checks.noindex/Rlibeemd/new/Rlibeemd.Rcheck/00install.out’ for details.
+    See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/Rlibeemd/new/Rlibeemd.Rcheck/00install.out’ for details.
     ```
 
 ## Installation
@@ -8821,7 +6674,7 @@ Run `revdep_details(,"Rlibeemd")` for more info
 checking for gsl-config... no
 configure: error: gsl-config not found, is GSL installed?
 ERROR: configuration failed for package ‘Rlibeemd’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/Rlibeemd/new/Rlibeemd.Rcheck/Rlibeemd’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/Rlibeemd/new/Rlibeemd.Rcheck/Rlibeemd’
 
 ```
 ### CRAN
@@ -8832,209 +6685,7 @@ ERROR: configuration failed for package ‘Rlibeemd’
 checking for gsl-config... no
 configure: error: gsl-config not found, is GSL installed?
 ERROR: configuration failed for package ‘Rlibeemd’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/Rlibeemd/old/Rlibeemd.Rcheck/Rlibeemd’
-
-```
-# RMariaDB
-
-<details>
-
-* Version: 1.0.6
-* Source code: https://github.com/cran/RMariaDB
-* URL: https://github.com/r-dbi/RMariaDB, https://downloads.mariadb.org/connector-c/
-* BugReports: https://github.com/r-dbi/RMariaDB/issues
-* Date/Publication: 2018-05-06 20:21:29 UTC
-* Number of recursive dependencies: 24
-
-Run `revdep_details(,"RMariaDB")` for more info
-
-</details>
-
-## In both
-
-*   checking whether package ‘RMariaDB’ can be installed ... ERROR
-    ```
-    Installation failed.
-    See ‘/Users/max/github/forks/testthat/revdep/checks.noindex/RMariaDB/new/RMariaDB.Rcheck/00install.out’ for details.
-    ```
-
-## Installation
-
-### Devel
-
-```
-* installing *source* package ‘RMariaDB’ ...
-** package ‘RMariaDB’ successfully unpacked and MD5 sums checked
-Using PKG_CFLAGS=-I/usr/local/opt/mariadb-connector-c/include/mariadb
-Using PKG_LIBS=-L/usr/local/opt/{openssl/lib,mariadb-connector-c/lib/mariadb} -lmariadbclient -lssl -lcrypto -lz
-------------------------- ANTICONF ERROR ---------------------------
-Configuration failed because no mysql client library was found. Try installing:
- * deb: libmariadbclient-dev | libmariadb-client-lgpl-dev (Debian, Ubuntu)
- * rpm: mariadb-connector-c-devel | mariadb-devel | mysql-devel (Fedora, CentOS, RHEL)
- * csw: mysql56_dev (Solaris)
- * brew: mariadb-connector-c (OSX)
-If you already have a mysql client library installed, verify that either
-mariadb_config or mysql_config is on your PATH. If these are unavailable
-you can also set INCLUDE_DIR and LIB_DIR manually via:
-R CMD INSTALL --configure-vars='INCLUDE_DIR=... LIB_DIR=...'
---------------------------------------------------------------------
-ERROR: configuration failed for package ‘RMariaDB’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/RMariaDB/new/RMariaDB.Rcheck/RMariaDB’
-
-```
-### CRAN
-
-```
-* installing *source* package ‘RMariaDB’ ...
-** package ‘RMariaDB’ successfully unpacked and MD5 sums checked
-Using PKG_CFLAGS=-I/usr/local/opt/mariadb-connector-c/include/mariadb
-Using PKG_LIBS=-L/usr/local/opt/{openssl/lib,mariadb-connector-c/lib/mariadb} -lmariadbclient -lssl -lcrypto -lz
-------------------------- ANTICONF ERROR ---------------------------
-Configuration failed because no mysql client library was found. Try installing:
- * deb: libmariadbclient-dev | libmariadb-client-lgpl-dev (Debian, Ubuntu)
- * rpm: mariadb-connector-c-devel | mariadb-devel | mysql-devel (Fedora, CentOS, RHEL)
- * csw: mysql56_dev (Solaris)
- * brew: mariadb-connector-c (OSX)
-If you already have a mysql client library installed, verify that either
-mariadb_config or mysql_config is on your PATH. If these are unavailable
-you can also set INCLUDE_DIR and LIB_DIR manually via:
-R CMD INSTALL --configure-vars='INCLUDE_DIR=... LIB_DIR=...'
---------------------------------------------------------------------
-ERROR: configuration failed for package ‘RMariaDB’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/RMariaDB/old/RMariaDB.Rcheck/RMariaDB’
-
-```
-# rmcfs
-
-<details>
-
-* Version: 1.2.15
-* Source code: https://github.com/cran/rmcfs
-* URL: www.ipipan.eu/staff/m.draminski/mcfs.html
-* Date/Publication: 2018-10-20 18:40:03 UTC
-* Number of recursive dependencies: 48
-
-Run `revdep_details(,"rmcfs")` for more info
-
-</details>
-
-## In both
-
-*   checking whether package ‘rmcfs’ can be installed ... ERROR
-    ```
-    Installation failed.
-    See ‘/Users/max/github/forks/testthat/revdep/checks.noindex/rmcfs/new/rmcfs.Rcheck/00install.out’ for details.
-    ```
-
-## Installation
-
-### Devel
-
-```
-* installing *source* package ‘rmcfs’ ...
-** package ‘rmcfs’ successfully unpacked and MD5 sums checked
-** R
-** inst
-** byte-compile and prepare package for lazy loading
-Error: package or namespace load failed for ‘rJava’:
- .onLoad failed in loadNamespace() for 'rJava', details:
-  call: dyn.load(file, DLLpath = DLLpath, ...)
-  error: unable to load shared object '/Users/max/github/forks/testthat/revdep/library.noindex/rmcfs/rJava/libs/rJava.so':
-  dlopen(/Users/max/github/forks/testthat/revdep/library.noindex/rmcfs/rJava/libs/rJava.so, 6): Library not loaded: /Library/Java/JavaVirtualMachines/jdk-11.0.1.jdk/Contents/Home/lib/server/libjvm.dylib
-  Referenced from: /Users/max/github/forks/testthat/revdep/library.noindex/rmcfs/rJava/libs/rJava.so
-  Reason: image not found
-Error : package ‘rJava’ could not be loaded
-ERROR: lazy loading failed for package ‘rmcfs’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/rmcfs/new/rmcfs.Rcheck/rmcfs’
-
-```
-### CRAN
-
-```
-* installing *source* package ‘rmcfs’ ...
-** package ‘rmcfs’ successfully unpacked and MD5 sums checked
-** R
-** inst
-** byte-compile and prepare package for lazy loading
-Error: package or namespace load failed for ‘rJava’:
- .onLoad failed in loadNamespace() for 'rJava', details:
-  call: dyn.load(file, DLLpath = DLLpath, ...)
-  error: unable to load shared object '/Users/max/github/forks/testthat/revdep/library.noindex/rmcfs/rJava/libs/rJava.so':
-  dlopen(/Users/max/github/forks/testthat/revdep/library.noindex/rmcfs/rJava/libs/rJava.so, 6): Library not loaded: /Library/Java/JavaVirtualMachines/jdk-11.0.1.jdk/Contents/Home/lib/server/libjvm.dylib
-  Referenced from: /Users/max/github/forks/testthat/revdep/library.noindex/rmcfs/rJava/libs/rJava.so
-  Reason: image not found
-Error : package ‘rJava’ could not be loaded
-ERROR: lazy loading failed for package ‘rmcfs’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/rmcfs/old/rmcfs.Rcheck/rmcfs’
-
-```
-# RMySQL
-
-<details>
-
-* Version: 0.10.17
-* Source code: https://github.com/cran/RMySQL
-* URL: https://downloads.mariadb.org/connector-c/ (upstream)
-* BugReports: https://github.com/r-dbi/rmysql/issues
-* Date/Publication: 2019-03-04 15:10:03 UTC
-* Number of recursive dependencies: 20
-
-Run `revdep_details(,"RMySQL")` for more info
-
-</details>
-
-## In both
-
-*   checking whether package ‘RMySQL’ can be installed ... ERROR
-    ```
-    Installation failed.
-    See ‘/Users/max/github/forks/testthat/revdep/checks.noindex/RMySQL/new/RMySQL.Rcheck/00install.out’ for details.
-    ```
-
-## Installation
-
-### Devel
-
-```
-* installing *source* package ‘RMySQL’ ...
-** package ‘RMySQL’ successfully unpacked and MD5 sums checked
-Using PKG_CFLAGS=-I/usr/local/opt/mariadb-connector-c/include/mariadb
-Using PKG_LIBS=-L/usr/local/opt/{openssl/lib,mariadb-connector-c/lib/mariadb} -lmariadbclient -lssl -lcrypto -lz
-------------------------- ANTICONF ERROR ---------------------------
-Configuration failed because no mysql client library was found. Try installing:
- * deb: libmariadbclient-dev | libmariadb-client-lgpl-dev (Debian, Ubuntu)
- * rpm: mariadb-connector-c-devel | mariadb-devel | mysql-devel (Fedora, CentOS, RHEL)
- * csw: mysql56_dev (Solaris)
- * brew: mariadb-connector-c (OSX)
-If you already have a mysql client library installed, verify that either
-mariadb_config or mysql_config is on your PATH. If these are unavailable
-you can also set INCLUDE_DIR and LIB_DIR manually via:
-R CMD INSTALL --configure-vars='INCLUDE_DIR=... LIB_DIR=...'
---------------------------------------------------------------------
-ERROR: configuration failed for package ‘RMySQL’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/RMySQL/new/RMySQL.Rcheck/RMySQL’
-
-```
-### CRAN
-
-```
-* installing *source* package ‘RMySQL’ ...
-** package ‘RMySQL’ successfully unpacked and MD5 sums checked
-Using PKG_CFLAGS=-I/usr/local/opt/mariadb-connector-c/include/mariadb
-Using PKG_LIBS=-L/usr/local/opt/{openssl/lib,mariadb-connector-c/lib/mariadb} -lmariadbclient -lssl -lcrypto -lz
-------------------------- ANTICONF ERROR ---------------------------
-Configuration failed because no mysql client library was found. Try installing:
- * deb: libmariadbclient-dev | libmariadb-client-lgpl-dev (Debian, Ubuntu)
- * rpm: mariadb-connector-c-devel | mariadb-devel | mysql-devel (Fedora, CentOS, RHEL)
- * csw: mysql56_dev (Solaris)
- * brew: mariadb-connector-c (OSX)
-If you already have a mysql client library installed, verify that either
-mariadb_config or mysql_config is on your PATH. If these are unavailable
-you can also set INCLUDE_DIR and LIB_DIR manually via:
-R CMD INSTALL --configure-vars='INCLUDE_DIR=... LIB_DIR=...'
---------------------------------------------------------------------
-ERROR: configuration failed for package ‘RMySQL’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/RMySQL/old/RMySQL.Rcheck/RMySQL’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/Rlibeemd/old/Rlibeemd.Rcheck/Rlibeemd’
 
 ```
 # rnetcarto
@@ -9055,7 +6706,7 @@ Run `revdep_details(,"rnetcarto")` for more info
 *   checking whether package ‘rnetcarto’ can be installed ... ERROR
     ```
     Installation failed.
-    See ‘/Users/max/github/forks/testthat/revdep/checks.noindex/rnetcarto/new/rnetcarto.Rcheck/00install.out’ for details.
+    See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/rnetcarto/new/rnetcarto.Rcheck/00install.out’ for details.
     ```
 
 ## Installation
@@ -9077,7 +6728,7 @@ checking for gcc option to accept ISO C89... none needed
 checking for gsl-config... no
 configure: error: gsl-config not found, is GSL installed?
 ERROR: configuration failed for package ‘rnetcarto’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/rnetcarto/new/rnetcarto.Rcheck/rnetcarto’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/rnetcarto/new/rnetcarto.Rcheck/rnetcarto’
 
 ```
 ### CRAN
@@ -9097,7 +6748,7 @@ checking for gcc option to accept ISO C89... none needed
 checking for gsl-config... no
 configure: error: gsl-config not found, is GSL installed?
 ERROR: configuration failed for package ‘rnetcarto’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/rnetcarto/old/rnetcarto.Rcheck/rnetcarto’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/rnetcarto/old/rnetcarto.Rcheck/rnetcarto’
 
 ```
 # rols
@@ -9120,65 +6771,6 @@ Run `revdep_details(,"rols")` for more info
 *   R CMD check timed out
     
 
-# rpcdsearch
-
-<details>
-
-* Version: 1.0
-* Source code: https://github.com/cran/rpcdsearch
-* Date/Publication: 2016-01-18 10:05:38
-* Number of recursive dependencies: 49
-
-Run `revdep_details(,"rpcdsearch")` for more info
-
-</details>
-
-## In both
-
-*   checking whether package ‘rpcdsearch’ can be installed ... ERROR
-    ```
-    Installation failed.
-    See ‘/Users/max/github/forks/testthat/revdep/checks.noindex/rpcdsearch/new/rpcdsearch.Rcheck/00install.out’ for details.
-    ```
-
-## Installation
-
-### Devel
-
-```
-* installing *source* package ‘rpcdsearch’ ...
-** package ‘rpcdsearch’ successfully unpacked and MD5 sums checked
-** R
-** inst
-** byte-compile and prepare package for lazy loading
-Error : .onLoad failed in loadNamespace() for 'rJava', details:
-  call: dyn.load(file, DLLpath = DLLpath, ...)
-  error: unable to load shared object '/Users/max/github/forks/testthat/revdep/library.noindex/rpcdsearch/rJava/libs/rJava.so':
-  dlopen(/Users/max/github/forks/testthat/revdep/library.noindex/rpcdsearch/rJava/libs/rJava.so, 6): Library not loaded: /Library/Java/JavaVirtualMachines/jdk-11.0.1.jdk/Contents/Home/lib/server/libjvm.dylib
-  Referenced from: /Users/max/github/forks/testthat/revdep/library.noindex/rpcdsearch/rJava/libs/rJava.so
-  Reason: image not found
-ERROR: lazy loading failed for package ‘rpcdsearch’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/rpcdsearch/new/rpcdsearch.Rcheck/rpcdsearch’
-
-```
-### CRAN
-
-```
-* installing *source* package ‘rpcdsearch’ ...
-** package ‘rpcdsearch’ successfully unpacked and MD5 sums checked
-** R
-** inst
-** byte-compile and prepare package for lazy loading
-Error : .onLoad failed in loadNamespace() for 'rJava', details:
-  call: dyn.load(file, DLLpath = DLLpath, ...)
-  error: unable to load shared object '/Users/max/github/forks/testthat/revdep/library.noindex/rpcdsearch/rJava/libs/rJava.so':
-  dlopen(/Users/max/github/forks/testthat/revdep/library.noindex/rpcdsearch/rJava/libs/rJava.so, 6): Library not loaded: /Library/Java/JavaVirtualMachines/jdk-11.0.1.jdk/Contents/Home/lib/server/libjvm.dylib
-  Referenced from: /Users/max/github/forks/testthat/revdep/library.noindex/rpcdsearch/rJava/libs/rJava.so
-  Reason: image not found
-ERROR: lazy loading failed for package ‘rpcdsearch’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/rpcdsearch/old/rpcdsearch.Rcheck/rpcdsearch’
-
-```
 # rpf
 
 <details>
@@ -9198,7 +6790,7 @@ Run `revdep_details(,"rpf")` for more info
 *   checking whether package ‘rpf’ can be installed ... ERROR
     ```
     Installation failed.
-    See ‘/Users/max/github/forks/testthat/revdep/checks.noindex/rpf/new/rpf.Rcheck/00install.out’ for details.
+    See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/rpf/new/rpf.Rcheck/00install.out’ for details.
     ```
 
 ## Installation
@@ -9209,21 +6801,11 @@ Run `revdep_details(,"rpf")` for more info
 * installing *source* package ‘rpf’ ...
 ** package ‘rpf’ successfully unpacked and MD5 sums checked
 ** libs
-clang++  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/max/github/forks/testthat/revdep/library.noindex/rpf/RcppEigen/include" -I/usr/local/include  -fopenmp    -fPIC  -Wall -g -O2  -c ba81quad.cpp -o ba81quad.o
-clang++  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/max/github/forks/testthat/revdep/library.noindex/rpf/RcppEigen/include" -I/usr/local/include  -fopenmp    -fPIC  -Wall -g -O2  -c dataframe.cpp -o dataframe.o
-clang++  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/max/github/forks/testthat/revdep/library.noindex/rpf/RcppEigen/include" -I/usr/local/include  -fopenmp    -fPIC  -Wall -g -O2  -c diagnose.cpp -o diagnose.o
-clang++  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/max/github/forks/testthat/revdep/library.noindex/rpf/RcppEigen/include" -I/usr/local/include  -fopenmp    -fPIC  -Wall -g -O2  -c dmvnorm.cpp -o dmvnorm.o
+ccache clang++ -Qunused-arguments  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/rpf/RcppEigen/include" -I/usr/local/include  -fopenmp    -fPIC  -Wall -g -O2  -c ba81quad.cpp -o ba81quad.o
 clang: error: unsupported option '-fopenmp'
-clang: error: unsupported option '-fopenmp'
-clang: error: unsupported option '-fopenmp'
-clang: error: unsupported option '-fopenmp'
-make: *** [dataframe.o] Error 1
-make: *** Waiting for unfinished jobs....
-make: *** [dmvnorm.o] Error 1
-make: *** [diagnose.o] Error 1
 make: *** [ba81quad.o] Error 1
 ERROR: compilation failed for package ‘rpf’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/rpf/new/rpf.Rcheck/rpf’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/rpf/new/rpf.Rcheck/rpf’
 
 ```
 ### CRAN
@@ -9232,21 +6814,11 @@ ERROR: compilation failed for package ‘rpf’
 * installing *source* package ‘rpf’ ...
 ** package ‘rpf’ successfully unpacked and MD5 sums checked
 ** libs
-clang++  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/max/github/forks/testthat/revdep/library.noindex/rpf/RcppEigen/include" -I/usr/local/include  -fopenmp    -fPIC  -Wall -g -O2  -c ba81quad.cpp -o ba81quad.o
-clang++  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/max/github/forks/testthat/revdep/library.noindex/rpf/RcppEigen/include" -I/usr/local/include  -fopenmp    -fPIC  -Wall -g -O2  -c dataframe.cpp -o dataframe.o
-clang++  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/max/github/forks/testthat/revdep/library.noindex/rpf/RcppEigen/include" -I/usr/local/include  -fopenmp    -fPIC  -Wall -g -O2  -c diagnose.cpp -o diagnose.o
-clang++  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/max/github/forks/testthat/revdep/library.noindex/rpf/RcppEigen/include" -I/usr/local/include  -fopenmp    -fPIC  -Wall -g -O2  -c dmvnorm.cpp -o dmvnorm.o
+ccache clang++ -Qunused-arguments  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/rpf/RcppEigen/include" -I/usr/local/include  -fopenmp    -fPIC  -Wall -g -O2  -c ba81quad.cpp -o ba81quad.o
 clang: error: unsupported option '-fopenmp'
-clang: error: unsupported option '-fopenmp'
-clang: error: unsupported option '-fopenmp'clang: 
-error: unsupported option '-fopenmp'
-make: *** [diagnose.o] Error 1
-make: *** Waiting for unfinished jobs....
-make: *** [dmvnorm.o] Error 1
-make: *** [dataframe.o] Error 1
 make: *** [ba81quad.o] Error 1
 ERROR: compilation failed for package ‘rpf’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/rpf/old/rpf.Rcheck/rpf’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/rpf/old/rpf.Rcheck/rpf’
 
 ```
 # rrd
@@ -9267,7 +6839,7 @@ Run `revdep_details(,"rrd")` for more info
 *   checking whether package ‘rrd’ can be installed ... ERROR
     ```
     Installation failed.
-    See ‘/Users/max/github/forks/testthat/revdep/checks.noindex/rrd/new/rrd.Rcheck/00install.out’ for details.
+    See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/rrd/new/rrd.Rcheck/00install.out’ for details.
     ```
 
 ## Installation
@@ -9278,16 +6850,15 @@ Run `revdep_details(,"rrd")` for more info
 * installing *source* package ‘rrd’ ...
 ** package ‘rrd’ successfully unpacked and MD5 sums checked
 ** libs
-clang -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I/usr/local/include   -fPIC  -Wall -g -O2  -c registerDynamicSymbol.c -o registerDynamicSymbol.o
-clang -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I/usr/local/include   -fPIC  -Wall -g -O2  -c rrd.c -o rrd.o
+ccache clang -Qunused-arguments  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I/usr/local/include   -fPIC  -Wall -g -O2  -c registerDynamicSymbol.c -o registerDynamicSymbol.o
+ccache clang -Qunused-arguments  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I/usr/local/include   -fPIC  -Wall -g -O2  -c rrd.c -o rrd.o
 rrd.c:1:10: fatal error: 'rrd.h' file not found
 #include <rrd.h>
          ^~~~~~~
 1 error generated.
 make: *** [rrd.o] Error 1
-make: *** Waiting for unfinished jobs....
 ERROR: compilation failed for package ‘rrd’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/rrd/new/rrd.Rcheck/rrd’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/rrd/new/rrd.Rcheck/rrd’
 
 ```
 ### CRAN
@@ -9296,80 +6867,15 @@ ERROR: compilation failed for package ‘rrd’
 * installing *source* package ‘rrd’ ...
 ** package ‘rrd’ successfully unpacked and MD5 sums checked
 ** libs
-clang -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I/usr/local/include   -fPIC  -Wall -g -O2  -c registerDynamicSymbol.c -o registerDynamicSymbol.o
-clang -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I/usr/local/include   -fPIC  -Wall -g -O2  -c rrd.c -o rrd.o
+ccache clang -Qunused-arguments  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I/usr/local/include   -fPIC  -Wall -g -O2  -c registerDynamicSymbol.c -o registerDynamicSymbol.o
+ccache clang -Qunused-arguments  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I/usr/local/include   -fPIC  -Wall -g -O2  -c rrd.c -o rrd.o
 rrd.c:1:10: fatal error: 'rrd.h' file not found
 #include <rrd.h>
          ^~~~~~~
 1 error generated.
 make: *** [rrd.o] Error 1
-make: *** Waiting for unfinished jobs....
 ERROR: compilation failed for package ‘rrd’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/rrd/old/rrd.Rcheck/rrd’
-
-```
-# RSCAT
-
-<details>
-
-* Version: 1.0.0
-* Source code: https://github.com/cran/RSCAT
-* BugReports: https://github.com/act-org/RSCAT/issues
-* Date/Publication: 2019-04-12 08:32:42 UTC
-* Number of recursive dependencies: 50
-
-Run `revdep_details(,"RSCAT")` for more info
-
-</details>
-
-## In both
-
-*   checking whether package ‘RSCAT’ can be installed ... ERROR
-    ```
-    Installation failed.
-    See ‘/Users/max/github/forks/testthat/revdep/checks.noindex/RSCAT/new/RSCAT.Rcheck/00install.out’ for details.
-    ```
-
-## Installation
-
-### Devel
-
-```
-* installing *source* package ‘RSCAT’ ...
-** package ‘RSCAT’ successfully unpacked and MD5 sums checked
-** R
-** inst
-** byte-compile and prepare package for lazy loading
-Error: package or namespace load failed for ‘rJava’:
- .onLoad failed in loadNamespace() for 'rJava', details:
-  call: dyn.load(file, DLLpath = DLLpath, ...)
-  error: unable to load shared object '/Users/max/github/forks/testthat/revdep/library.noindex/RSCAT/rJava/libs/rJava.so':
-  dlopen(/Users/max/github/forks/testthat/revdep/library.noindex/RSCAT/rJava/libs/rJava.so, 6): Library not loaded: /Library/Java/JavaVirtualMachines/jdk-11.0.1.jdk/Contents/Home/lib/server/libjvm.dylib
-  Referenced from: /Users/max/github/forks/testthat/revdep/library.noindex/RSCAT/rJava/libs/rJava.so
-  Reason: image not found
-Error : package ‘rJava’ could not be loaded
-ERROR: lazy loading failed for package ‘RSCAT’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/RSCAT/new/RSCAT.Rcheck/RSCAT’
-
-```
-### CRAN
-
-```
-* installing *source* package ‘RSCAT’ ...
-** package ‘RSCAT’ successfully unpacked and MD5 sums checked
-** R
-** inst
-** byte-compile and prepare package for lazy loading
-Error: package or namespace load failed for ‘rJava’:
- .onLoad failed in loadNamespace() for 'rJava', details:
-  call: dyn.load(file, DLLpath = DLLpath, ...)
-  error: unable to load shared object '/Users/max/github/forks/testthat/revdep/library.noindex/RSCAT/rJava/libs/rJava.so':
-  dlopen(/Users/max/github/forks/testthat/revdep/library.noindex/RSCAT/rJava/libs/rJava.so, 6): Library not loaded: /Library/Java/JavaVirtualMachines/jdk-11.0.1.jdk/Contents/Home/lib/server/libjvm.dylib
-  Referenced from: /Users/max/github/forks/testthat/revdep/library.noindex/RSCAT/rJava/libs/rJava.so
-  Reason: image not found
-Error : package ‘rJava’ could not be loaded
-ERROR: lazy loading failed for package ‘RSCAT’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/RSCAT/old/RSCAT.Rcheck/RSCAT’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/rrd/old/rrd.Rcheck/rrd’
 
 ```
 # rstanarm
@@ -9429,7 +6935,7 @@ Run `revdep_details(,"Rtsne")` for more info
 *   checking whether package ‘Rtsne’ can be installed ... ERROR
     ```
     Installation failed.
-    See ‘/Users/max/github/forks/testthat/revdep/checks.noindex/Rtsne/new/Rtsne.Rcheck/00install.out’ for details.
+    See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/Rtsne/new/Rtsne.Rcheck/00install.out’ for details.
     ```
 
 ## Installation
@@ -9440,21 +6946,11 @@ Run `revdep_details(,"Rtsne")` for more info
 * installing *source* package ‘Rtsne’ ...
 ** package ‘Rtsne’ successfully unpacked and MD5 sums checked
 ** libs
-clang++  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/max/github/forks/testthat/revdep/library.noindex/Rtsne/Rcpp/include" -I/usr/local/include  -fopenmp -fPIC  -Wall -g -O2  -c RcppExports.cpp -o RcppExports.o
-clang++  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/max/github/forks/testthat/revdep/library.noindex/Rtsne/Rcpp/include" -I/usr/local/include  -fopenmp -fPIC  -Wall -g -O2  -c Rtsne.cpp -o Rtsne.o
-clang++  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/max/github/forks/testthat/revdep/library.noindex/Rtsne/Rcpp/include" -I/usr/local/include  -fopenmp -fPIC  -Wall -g -O2  -c normalize_input.cpp -o normalize_input.o
-clang++  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/max/github/forks/testthat/revdep/library.noindex/Rtsne/Rcpp/include" -I/usr/local/include  -fopenmp -fPIC  -Wall -g -O2  -c sptree.cpp -o sptree.o
-clang: error: clang: error: clangunsupported option '-fopenmp': error: clangunsupported option '-fopenmp': error: unsupported option '-fopenmp'unsupported option '-fopenmp'
-
-
-
-make: *** [sptree.o] Error 1
-make: *** Waiting for unfinished jobs....
-make: *** [normalize_input.o] Error 1
-make: *** [Rtsne.o] Error 1
+ccache clang++ -Qunused-arguments  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/Rtsne/Rcpp/include" -I/usr/local/include  -fopenmp -fPIC  -Wall -g -O2  -c RcppExports.cpp -o RcppExports.o
+clang: error: unsupported option '-fopenmp'
 make: *** [RcppExports.o] Error 1
 ERROR: compilation failed for package ‘Rtsne’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/Rtsne/new/Rtsne.Rcheck/Rtsne’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/Rtsne/new/Rtsne.Rcheck/Rtsne’
 
 ```
 ### CRAN
@@ -9463,21 +6959,11 @@ ERROR: compilation failed for package ‘Rtsne’
 * installing *source* package ‘Rtsne’ ...
 ** package ‘Rtsne’ successfully unpacked and MD5 sums checked
 ** libs
-clang++  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/max/github/forks/testthat/revdep/library.noindex/Rtsne/Rcpp/include" -I/usr/local/include  -fopenmp -fPIC  -Wall -g -O2  -c RcppExports.cpp -o RcppExports.o
-clang++  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/max/github/forks/testthat/revdep/library.noindex/Rtsne/Rcpp/include" -I/usr/local/include  -fopenmp -fPIC  -Wall -g -O2  -c Rtsne.cpp -o Rtsne.o
-clang++  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/max/github/forks/testthat/revdep/library.noindex/Rtsne/Rcpp/include" -I/usr/local/include  -fopenmp -fPIC  -Wall -g -O2  -c normalize_input.cpp -o normalize_input.o
-clang++  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/max/github/forks/testthat/revdep/library.noindex/Rtsne/Rcpp/include" -I/usr/local/include  -fopenmp -fPIC  -Wall -g -O2  -c sptree.cpp -o sptree.o
+ccache clang++ -Qunused-arguments  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/Rtsne/Rcpp/include" -I/usr/local/include  -fopenmp -fPIC  -Wall -g -O2  -c RcppExports.cpp -o RcppExports.o
 clang: error: unsupported option '-fopenmp'
-clangclang: error: unsupported option '-fopenmp': 
-clang: error: unsupported option '-fopenmp'error: unsupported option '-fopenmp'
-
-make: *** [normalize_input.o] Error 1
-make: *** Waiting for unfinished jobs....
-make: *** [sptree.o] Error 1
-make: *** [Rtsne.o] Error 1
 make: *** [RcppExports.o] Error 1
 ERROR: compilation failed for package ‘Rtsne’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/Rtsne/old/Rtsne.Rcheck/Rtsne’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/Rtsne/old/Rtsne.Rcheck/Rtsne’
 
 ```
 # sdcTable
@@ -9500,7 +6986,7 @@ Run `revdep_details(,"sdcTable")` for more info
 *   checking whether package ‘sdcTable’ can be installed ... ERROR
     ```
     Installation failed.
-    See ‘/Users/max/github/forks/testthat/revdep/checks.noindex/sdcTable/new/sdcTable.Rcheck/00install.out’ for details.
+    See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/sdcTable/new/sdcTable.Rcheck/00install.out’ for details.
     ```
 
 ## Installation
@@ -9512,7 +6998,7 @@ Run `revdep_details(,"sdcTable")` for more info
 ** package ‘sdcTable’ successfully unpacked and MD5 sums checked
 GLPK is not available
 ERROR: configuration failed for package ‘sdcTable’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/sdcTable/new/sdcTable.Rcheck/sdcTable’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/sdcTable/new/sdcTable.Rcheck/sdcTable’
 
 ```
 ### CRAN
@@ -9522,7 +7008,7 @@ ERROR: configuration failed for package ‘sdcTable’
 ** package ‘sdcTable’ successfully unpacked and MD5 sums checked
 GLPK is not available
 ERROR: configuration failed for package ‘sdcTable’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/sdcTable/old/sdcTable.Rcheck/sdcTable’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/sdcTable/old/sdcTable.Rcheck/sdcTable’
 
 ```
 # sf
@@ -9545,7 +7031,7 @@ Run `revdep_details(,"sf")` for more info
 *   checking whether package ‘sf’ can be installed ... ERROR
     ```
     Installation failed.
-    See ‘/Users/max/github/forks/testthat/revdep/checks.noindex/sf/new/sf.Rcheck/00install.out’ for details.
+    See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/sf/new/sf.Rcheck/00install.out’ for details.
     ```
 
 ## Installation
@@ -9555,22 +7041,22 @@ Run `revdep_details(,"sf")` for more info
 ```
 * installing *source* package ‘sf’ ...
 ** package ‘sf’ successfully unpacked and MD5 sums checked
-configure: CC: clang
-configure: CXX: /usr/local/clang6/bin/clang++ -std=gnu++11
+configure: CC: ccache clang -Qunused-arguments
+configure: CXX: clang++ -std=gnu++11
 checking for gdal-config... /usr/local/bin/gdal-config
 checking gdal-config usability... yes
-configure: GDAL: 2.4.1
+configure: GDAL: 2.1.2
 checking GDAL version >= 2.0.0... yes
-checking for gcc... clang
+checking for gcc... ccache clang -Qunused-arguments
 checking whether the C compiler works... yes
 checking for C compiler default output file name... a.out
 checking for suffix of executables... 
 checking whether we are cross compiling... no
 checking for suffix of object files... o
 checking whether we are using the GNU C compiler... yes
-checking whether clang accepts -g... yes
-checking for clang option to accept ISO C89... none needed
-checking how to run the C preprocessor... clang -E
+checking whether ccache clang -Qunused-arguments accepts -g... yes
+checking for ccache clang -Qunused-arguments option to accept ISO C89... none needed
+checking how to run the C preprocessor... ccache clang -Qunused-arguments -E
 checking for grep that handles long lines and -e... /usr/bin/grep
 checking for egrep... /usr/bin/grep -E
 checking for ANSI C header files... rm: conftest.dSYM: is a directory
@@ -9589,16 +7075,16 @@ checking gdal.h usability... yes
 checking gdal.h presence... yes
 checking for gdal.h... yes
 checking GDAL: linking with --libs only... yes
-checking GDAL: /usr/local/Cellar/gdal/2.4.1/share/gdal/pcs.csv readable... yes
+checking GDAL: /usr/local/Cellar/gdal2/2.1.2/share/gdal/pcs.csv readable... yes
 checking GDAL: checking whether PROJ is available for linking:... yes
-checking GDAL: checking whether PROJ is available fur running:... yes
-configure: pkg-config proj exists, will use it
-checking proj_api.h usability... no
-checking proj_api.h presence... no
-checking for proj_api.h... no
-configure: error: proj_api.h not found in standard or given locations.
+checking GDAL: checking whether PROJ is available fur running:... dyld: Library not loaded: /usr/local/opt/webp/lib/libwebp.6.dylib
+  Referenced from: /usr/local/opt/gdal2/lib/libgdal.20.dylib
+  Reason: image not found
+./configure: line 3606:  7095 Abort trap: 6           ./gdal_proj
+no
+configure: error: OGRCoordinateTransformation() does not return a coord.trans: PROJ not available?
 ERROR: configuration failed for package ‘sf’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/sf/new/sf.Rcheck/sf’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/sf/new/sf.Rcheck/sf’
 
 ```
 ### CRAN
@@ -9606,22 +7092,22 @@ ERROR: configuration failed for package ‘sf’
 ```
 * installing *source* package ‘sf’ ...
 ** package ‘sf’ successfully unpacked and MD5 sums checked
-configure: CC: clang
-configure: CXX: /usr/local/clang6/bin/clang++ -std=gnu++11
+configure: CC: ccache clang -Qunused-arguments
+configure: CXX: clang++ -std=gnu++11
 checking for gdal-config... /usr/local/bin/gdal-config
 checking gdal-config usability... yes
-configure: GDAL: 2.4.1
+configure: GDAL: 2.1.2
 checking GDAL version >= 2.0.0... yes
-checking for gcc... clang
+checking for gcc... ccache clang -Qunused-arguments
 checking whether the C compiler works... yes
 checking for C compiler default output file name... a.out
 checking for suffix of executables... 
 checking whether we are cross compiling... no
 checking for suffix of object files... o
 checking whether we are using the GNU C compiler... yes
-checking whether clang accepts -g... yes
-checking for clang option to accept ISO C89... none needed
-checking how to run the C preprocessor... clang -E
+checking whether ccache clang -Qunused-arguments accepts -g... yes
+checking for ccache clang -Qunused-arguments option to accept ISO C89... none needed
+checking how to run the C preprocessor... ccache clang -Qunused-arguments -E
 checking for grep that handles long lines and -e... /usr/bin/grep
 checking for egrep... /usr/bin/grep -E
 checking for ANSI C header files... rm: conftest.dSYM: is a directory
@@ -9640,16 +7126,16 @@ checking gdal.h usability... yes
 checking gdal.h presence... yes
 checking for gdal.h... yes
 checking GDAL: linking with --libs only... yes
-checking GDAL: /usr/local/Cellar/gdal/2.4.1/share/gdal/pcs.csv readable... yes
+checking GDAL: /usr/local/Cellar/gdal2/2.1.2/share/gdal/pcs.csv readable... yes
 checking GDAL: checking whether PROJ is available for linking:... yes
-checking GDAL: checking whether PROJ is available fur running:... yes
-configure: pkg-config proj exists, will use it
-checking proj_api.h usability... no
-checking proj_api.h presence... no
-checking for proj_api.h... no
-configure: error: proj_api.h not found in standard or given locations.
+checking GDAL: checking whether PROJ is available fur running:... dyld: Library not loaded: /usr/local/opt/webp/lib/libwebp.6.dylib
+  Referenced from: /usr/local/opt/gdal2/lib/libgdal.20.dylib
+  Reason: image not found
+./configure: line 3606:  5849 Abort trap: 6           ./gdal_proj
+no
+configure: error: OGRCoordinateTransformation() does not return a coord.trans: PROJ not available?
 ERROR: configuration failed for package ‘sf’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/sf/old/sf.Rcheck/sf’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/sf/old/sf.Rcheck/sf’
 
 ```
 # simputation
@@ -9672,7 +7158,7 @@ Run `revdep_details(,"simputation")` for more info
 *   checking whether package ‘simputation’ can be installed ... ERROR
     ```
     Installation failed.
-    See ‘/Users/max/github/forks/testthat/revdep/checks.noindex/simputation/new/simputation.Rcheck/00install.out’ for details.
+    See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/simputation/new/simputation.Rcheck/00install.out’ for details.
     ```
 
 ## Installation
@@ -9683,15 +7169,11 @@ Run `revdep_details(,"simputation")` for more info
 * installing *source* package ‘simputation’ ...
 ** package ‘simputation’ successfully unpacked and MD5 sums checked
 ** libs
-clang -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I/usr/local/include  -fopenmp -fPIC  -Wall -g -O2  -c R_register_native.c -o R_register_native.o
-clang -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I/usr/local/include  -fopenmp -fPIC  -Wall -g -O2  -c pmm.c -o pmm.o
+ccache clang -Qunused-arguments  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I/usr/local/include  -fopenmp -fPIC  -Wall -g -O2  -c R_register_native.c -o R_register_native.o
 clang: error: unsupported option '-fopenmp'
-clang: error: unsupported option '-fopenmp'
-make: *** [pmm.o] Error 1
-make: *** Waiting for unfinished jobs....
 make: *** [R_register_native.o] Error 1
 ERROR: compilation failed for package ‘simputation’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/simputation/new/simputation.Rcheck/simputation’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/simputation/new/simputation.Rcheck/simputation’
 
 ```
 ### CRAN
@@ -9700,15 +7182,11 @@ ERROR: compilation failed for package ‘simputation’
 * installing *source* package ‘simputation’ ...
 ** package ‘simputation’ successfully unpacked and MD5 sums checked
 ** libs
-clang -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I/usr/local/include  -fopenmp -fPIC  -Wall -g -O2  -c R_register_native.c -o R_register_native.o
-clang -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I/usr/local/include  -fopenmp -fPIC  -Wall -g -O2  -c pmm.c -o pmm.o
+ccache clang -Qunused-arguments  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I/usr/local/include  -fopenmp -fPIC  -Wall -g -O2  -c R_register_native.c -o R_register_native.o
 clang: error: unsupported option '-fopenmp'
-clang: error: unsupported option '-fopenmp'
-make: *** [pmm.o] Error 1
-make: *** Waiting for unfinished jobs....
 make: *** [R_register_native.o] Error 1
 ERROR: compilation failed for package ‘simputation’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/simputation/old/simputation.Rcheck/simputation’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/simputation/old/simputation.Rcheck/simputation’
 
 ```
 # SiMRiv
@@ -9731,7 +7209,7 @@ Run `revdep_details(,"SiMRiv")` for more info
 *   checking whether package ‘SiMRiv’ can be installed ... ERROR
     ```
     Installation failed.
-    See ‘/Users/max/github/forks/testthat/revdep/checks.noindex/SiMRiv/new/SiMRiv.Rcheck/00install.out’ for details.
+    See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/SiMRiv/new/SiMRiv.Rcheck/00install.out’ for details.
     ```
 
 ## Installation
@@ -9742,21 +7220,11 @@ Run `revdep_details(,"SiMRiv")` for more info
 * installing *source* package ‘SiMRiv’ ...
 ** package ‘SiMRiv’ successfully unpacked and MD5 sums checked
 ** libs
-clang -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I/usr/local/include  -fopenmp -fPIC  -Wall -g -O2  -c init.c -o init.o
-clang -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I/usr/local/include  -fopenmp -fPIC  -Wall -g -O2  -c misc.c -o misc.o
-clang -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I/usr/local/include  -fopenmp -fPIC  -Wall -g -O2  -c raster-fn.c -o raster-fn.o
-clang -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I/usr/local/include  -fopenmp -fPIC  -Wall -g -O2  -c simulate.c -o simulate.o
+ccache clang -Qunused-arguments  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I/usr/local/include  -fopenmp -fPIC  -Wall -g -O2  -c init.c -o init.o
 clang: error: unsupported option '-fopenmp'
-clang: errorclang: error: unsupported option '-fopenmp'
-: unsupported option '-fopenmp'
-clang: error: unsupported option '-fopenmp'
-make: *** [raster-fn.o] Error 1
-make: *** Waiting for unfinished jobs....
 make: *** [init.o] Error 1
-make: *** [simulate.o] Error 1
-make: *** [misc.o] Error 1
 ERROR: compilation failed for package ‘SiMRiv’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/SiMRiv/new/SiMRiv.Rcheck/SiMRiv’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/SiMRiv/new/SiMRiv.Rcheck/SiMRiv’
 
 ```
 ### CRAN
@@ -9765,82 +7233,11 @@ ERROR: compilation failed for package ‘SiMRiv’
 * installing *source* package ‘SiMRiv’ ...
 ** package ‘SiMRiv’ successfully unpacked and MD5 sums checked
 ** libs
-clang -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I/usr/local/include  -fopenmp -fPIC  -Wall -g -O2  -c init.c -o init.o
-clang -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I/usr/local/include  -fopenmp -fPIC  -Wall -g -O2  -c misc.c -o misc.o
-clang -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I/usr/local/include  -fopenmp -fPIC  -Wall -g -O2  -c raster-fn.c -o raster-fn.o
-clang -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I/usr/local/include  -fopenmp -fPIC  -Wall -g -O2  -c simulate.c -o simulate.o
-clang: error: unsupported option '-fopenmp'clang: error: clang
-unsupported option '-fopenmp': error: unsupported option '-fopenmp'
-
+ccache clang -Qunused-arguments  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I/usr/local/include  -fopenmp -fPIC  -Wall -g -O2  -c init.c -o init.o
 clang: error: unsupported option '-fopenmp'
-make: *** [misc.o] Error 1
-make: *** Waiting for unfinished jobs....
-make: *** [simulate.o] Error 1
-make: *** [raster-fn.o] Error 1
 make: *** [init.o] Error 1
 ERROR: compilation failed for package ‘SiMRiv’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/SiMRiv/old/SiMRiv.Rcheck/SiMRiv’
-
-```
-# SqlRender
-
-<details>
-
-* Version: 1.6.0
-* Source code: https://github.com/cran/SqlRender
-* URL: https://ohdsi.github.io/SqlRender, https://github.com/OHDSI/SqlRender
-* BugReports: https://github.com/OHDSI/SqlRender/issues
-* Date/Publication: 2019-02-15 10:40:03 UTC
-* Number of recursive dependencies: 35
-
-Run `revdep_details(,"SqlRender")` for more info
-
-</details>
-
-## In both
-
-*   checking whether package ‘SqlRender’ can be installed ... ERROR
-    ```
-    Installation failed.
-    See ‘/Users/max/github/forks/testthat/revdep/checks.noindex/SqlRender/new/SqlRender.Rcheck/00install.out’ for details.
-    ```
-
-## Installation
-
-### Devel
-
-```
-* installing *source* package ‘SqlRender’ ...
-** package ‘SqlRender’ successfully unpacked and MD5 sums checked
-** R
-** inst
-** byte-compile and prepare package for lazy loading
-Error : .onLoad failed in loadNamespace() for 'rJava', details:
-  call: dyn.load(file, DLLpath = DLLpath, ...)
-  error: unable to load shared object '/Users/max/github/forks/testthat/revdep/library.noindex/SqlRender/rJava/libs/rJava.so':
-  dlopen(/Users/max/github/forks/testthat/revdep/library.noindex/SqlRender/rJava/libs/rJava.so, 6): Library not loaded: /Library/Java/JavaVirtualMachines/jdk-11.0.1.jdk/Contents/Home/lib/server/libjvm.dylib
-  Referenced from: /Users/max/github/forks/testthat/revdep/library.noindex/SqlRender/rJava/libs/rJava.so
-  Reason: image not found
-ERROR: lazy loading failed for package ‘SqlRender’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/SqlRender/new/SqlRender.Rcheck/SqlRender’
-
-```
-### CRAN
-
-```
-* installing *source* package ‘SqlRender’ ...
-** package ‘SqlRender’ successfully unpacked and MD5 sums checked
-** R
-** inst
-** byte-compile and prepare package for lazy loading
-Error : .onLoad failed in loadNamespace() for 'rJava', details:
-  call: dyn.load(file, DLLpath = DLLpath, ...)
-  error: unable to load shared object '/Users/max/github/forks/testthat/revdep/library.noindex/SqlRender/rJava/libs/rJava.so':
-  dlopen(/Users/max/github/forks/testthat/revdep/library.noindex/SqlRender/rJava/libs/rJava.so, 6): Library not loaded: /Library/Java/JavaVirtualMachines/jdk-11.0.1.jdk/Contents/Home/lib/server/libjvm.dylib
-  Referenced from: /Users/max/github/forks/testthat/revdep/library.noindex/SqlRender/rJava/libs/rJava.so
-  Reason: image not found
-ERROR: lazy loading failed for package ‘SqlRender’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/SqlRender/old/SqlRender.Rcheck/SqlRender’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/SiMRiv/old/SiMRiv.Rcheck/SiMRiv’
 
 ```
 # ssh
@@ -9861,7 +7258,7 @@ Run `revdep_details(,"ssh")` for more info
 *   checking whether package ‘ssh’ can be installed ... ERROR
     ```
     Installation failed.
-    See ‘/Users/max/github/forks/testthat/revdep/checks.noindex/ssh/new/ssh.Rcheck/00install.out’ for details.
+    See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/ssh/new/ssh.Rcheck/00install.out’ for details.
     ```
 
 ## Installation
@@ -9888,7 +7285,7 @@ is unavailable you can set INCLUDE_DIR and LIB_DIR manually via:
 R CMD INSTALL --configure-vars='INCLUDE_DIR=... LIB_DIR=...'
 --------------------------------------------------------------------
 ERROR: configuration failed for package ‘ssh’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/ssh/new/ssh.Rcheck/ssh’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/ssh/new/ssh.Rcheck/ssh’
 
 ```
 ### CRAN
@@ -9913,7 +7310,7 @@ is unavailable you can set INCLUDE_DIR and LIB_DIR manually via:
 R CMD INSTALL --configure-vars='INCLUDE_DIR=... LIB_DIR=...'
 --------------------------------------------------------------------
 ERROR: configuration failed for package ‘ssh’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/ssh/old/ssh.Rcheck/ssh’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/ssh/old/ssh.Rcheck/ssh’
 
 ```
 # StarBioTrek
@@ -9936,7 +7333,7 @@ Run `revdep_details(,"StarBioTrek")` for more info
 *   checking whether package ‘StarBioTrek’ can be installed ... ERROR
     ```
     Installation failed.
-    See ‘/Users/max/github/forks/testthat/revdep/checks.noindex/StarBioTrek/new/StarBioTrek.Rcheck/00install.out’ for details.
+    See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/StarBioTrek/new/StarBioTrek.Rcheck/00install.out’ for details.
     ```
 
 ## Installation
@@ -9953,7 +7350,7 @@ Run `revdep_details(,"StarBioTrek")` for more info
 Error in loadNamespace(i, c(lib.loc, .libPaths()), versionCheck = vI[[i]]) : 
   there is no package called ‘miRNAtap.db’
 ERROR: lazy loading failed for package ‘StarBioTrek’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/StarBioTrek/new/StarBioTrek.Rcheck/StarBioTrek’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/StarBioTrek/new/StarBioTrek.Rcheck/StarBioTrek’
 
 ```
 ### CRAN
@@ -9968,7 +7365,7 @@ ERROR: lazy loading failed for package ‘StarBioTrek’
 Error in loadNamespace(i, c(lib.loc, .libPaths()), versionCheck = vI[[i]]) : 
   there is no package called ‘miRNAtap.db’
 ERROR: lazy loading failed for package ‘StarBioTrek’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/StarBioTrek/old/StarBioTrek.Rcheck/StarBioTrek’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/StarBioTrek/old/StarBioTrek.Rcheck/StarBioTrek’
 
 ```
 # stringdist
@@ -9991,7 +7388,7 @@ Run `revdep_details(,"stringdist")` for more info
 *   checking whether package ‘stringdist’ can be installed ... ERROR
     ```
     Installation failed.
-    See ‘/Users/max/github/forks/testthat/revdep/checks.noindex/stringdist/new/stringdist.Rcheck/00install.out’ for details.
+    See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/stringdist/new/stringdist.Rcheck/00install.out’ for details.
     ```
 
 ## Installation
@@ -10002,21 +7399,11 @@ Run `revdep_details(,"stringdist")` for more info
 * installing *source* package ‘stringdist’ ...
 ** package ‘stringdist’ successfully unpacked and MD5 sums checked
 ** libs
-clang -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -I../inst/include  -I/usr/local/include  -fopenmp -fPIC  -Wall -g -O2  -c R_register_native.c -o R_register_native.o
-clang -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -I../inst/include  -I/usr/local/include  -fopenmp -fPIC  -Wall -g -O2  -c Rstringdist.c -o Rstringdist.o
-clang -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -I../inst/include  -I/usr/local/include  -fopenmp -fPIC  -Wall -g -O2  -c dl.c -o dl.o
-clang -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -I../inst/include  -I/usr/local/include  -fopenmp -fPIC  -Wall -g -O2  -c hamming.c -o hamming.o
+ccache clang -Qunused-arguments  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -I../inst/include  -I/usr/local/include  -fopenmp -fPIC  -Wall -g -O2  -c R_register_native.c -o R_register_native.o
 clang: error: unsupported option '-fopenmp'
-clang: error: unsupported option '-fopenmp'
-clang: error: unsupported option '-fopenmp'clang: error: 
-unsupported option '-fopenmp'
 make: *** [R_register_native.o] Error 1
-make: *** Waiting for unfinished jobs....
-make: *** [hamming.o] Error 1
-make: *** [Rstringdist.o] Error 1
-make: *** [dl.o] Error 1
 ERROR: compilation failed for package ‘stringdist’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/stringdist/new/stringdist.Rcheck/stringdist’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/stringdist/new/stringdist.Rcheck/stringdist’
 
 ```
 ### CRAN
@@ -10025,21 +7412,11 @@ ERROR: compilation failed for package ‘stringdist’
 * installing *source* package ‘stringdist’ ...
 ** package ‘stringdist’ successfully unpacked and MD5 sums checked
 ** libs
-clang -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -I../inst/include  -I/usr/local/include  -fopenmp -fPIC  -Wall -g -O2  -c R_register_native.c -o R_register_native.o
-clang -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -I../inst/include  -I/usr/local/include  -fopenmp -fPIC  -Wall -g -O2  -c Rstringdist.c -o Rstringdist.o
-clang -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -I../inst/include  -I/usr/local/include  -fopenmp -fPIC  -Wall -g -O2  -c dl.c -o dl.o
-clang -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -I../inst/include  -I/usr/local/include  -fopenmp -fPIC  -Wall -g -O2  -c hamming.c -o hamming.o
+ccache clang -Qunused-arguments  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -I../inst/include  -I/usr/local/include  -fopenmp -fPIC  -Wall -g -O2  -c R_register_native.c -o R_register_native.o
 clang: error: unsupported option '-fopenmp'
-clang: error: unsupported option '-fopenmp'
-clang: error: unsupported option '-fopenmp'
-clang: error: unsupported option '-fopenmp'
-make: *** [dl.o] Error 1
-make: *** Waiting for unfinished jobs....
-make: *** [Rstringdist.o] Error 1
-make: *** [hamming.o] Error 1
 make: *** [R_register_native.o] Error 1
 ERROR: compilation failed for package ‘stringdist’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/stringdist/old/stringdist.Rcheck/stringdist’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/stringdist/old/stringdist.Rcheck/stringdist’
 
 ```
 # SuperGauss
@@ -10060,7 +7437,7 @@ Run `revdep_details(,"SuperGauss")` for more info
 *   checking whether package ‘SuperGauss’ can be installed ... ERROR
     ```
     Installation failed.
-    See ‘/Users/max/github/forks/testthat/revdep/checks.noindex/SuperGauss/new/SuperGauss.Rcheck/00install.out’ for details.
+    See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/SuperGauss/new/SuperGauss.Rcheck/00install.out’ for details.
     ```
 
 ## Installation
@@ -10070,20 +7447,20 @@ Run `revdep_details(,"SuperGauss")` for more info
 ```
 * installing *source* package ‘SuperGauss’ ...
 ** package ‘SuperGauss’ successfully unpacked and MD5 sums checked
-checking for gcc... clang
+checking for gcc... ccache clang -Qunused-arguments
 checking whether the C compiler works... yes
 checking for C compiler default output file name... a.out
 checking for suffix of executables... 
 checking whether we are cross compiling... no
 checking for suffix of object files... o
 checking whether we are using the GNU C compiler... yes
-checking whether clang accepts -g... yes
-checking for clang option to accept ISO C89... none needed
-checking how to run the C preprocessor... clang -E
-checking for gcc... (cached) clang
+checking whether ccache clang -Qunused-arguments accepts -g... yes
+checking for ccache clang -Qunused-arguments option to accept ISO C89... none needed
+checking how to run the C preprocessor... ccache clang -Qunused-arguments -E
+checking for gcc... (cached) ccache clang -Qunused-arguments
 checking whether we are using the GNU C compiler... (cached) yes
-checking whether clang accepts -g... (cached) yes
-checking for clang option to accept ISO C89... (cached) none needed
+checking whether ccache clang -Qunused-arguments accepts -g... (cached) yes
+checking for ccache clang -Qunused-arguments option to accept ISO C89... (cached) none needed
 checking for pkg-config... /usr/local/bin/pkg-config
 checking pkg-config is at least version 0.9.0... yes
 checking for FFTW... configure: error: Package requirements (fftw3) were not met:
@@ -10098,7 +7475,7 @@ and FFTW_LIBS to avoid the need to call pkg-config.
 See the pkg-config man page for more details.
 
 ERROR: configuration failed for package ‘SuperGauss’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/SuperGauss/new/SuperGauss.Rcheck/SuperGauss’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/SuperGauss/new/SuperGauss.Rcheck/SuperGauss’
 
 ```
 ### CRAN
@@ -10106,20 +7483,20 @@ ERROR: configuration failed for package ‘SuperGauss’
 ```
 * installing *source* package ‘SuperGauss’ ...
 ** package ‘SuperGauss’ successfully unpacked and MD5 sums checked
-checking for gcc... clang
+checking for gcc... ccache clang -Qunused-arguments
 checking whether the C compiler works... yes
 checking for C compiler default output file name... a.out
 checking for suffix of executables... 
 checking whether we are cross compiling... no
 checking for suffix of object files... o
 checking whether we are using the GNU C compiler... yes
-checking whether clang accepts -g... yes
-checking for clang option to accept ISO C89... none needed
-checking how to run the C preprocessor... clang -E
-checking for gcc... (cached) clang
+checking whether ccache clang -Qunused-arguments accepts -g... yes
+checking for ccache clang -Qunused-arguments option to accept ISO C89... none needed
+checking how to run the C preprocessor... ccache clang -Qunused-arguments -E
+checking for gcc... (cached) ccache clang -Qunused-arguments
 checking whether we are using the GNU C compiler... (cached) yes
-checking whether clang accepts -g... (cached) yes
-checking for clang option to accept ISO C89... (cached) none needed
+checking whether ccache clang -Qunused-arguments accepts -g... (cached) yes
+checking for ccache clang -Qunused-arguments option to accept ISO C89... (cached) none needed
 checking for pkg-config... /usr/local/bin/pkg-config
 checking pkg-config is at least version 0.9.0... yes
 checking for FFTW... configure: error: Package requirements (fftw3) were not met:
@@ -10134,72 +7511,7 @@ and FFTW_LIBS to avoid the need to call pkg-config.
 See the pkg-config man page for more details.
 
 ERROR: configuration failed for package ‘SuperGauss’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/SuperGauss/old/SuperGauss.Rcheck/SuperGauss’
-
-```
-# tabulizer
-
-<details>
-
-* Version: 0.2.2
-* Source code: https://github.com/cran/tabulizer
-* URL: https://github.com/ropensci/tabulizer
-* BugReports: https://github.com/ropensci/tabulizer/issues
-* Date/Publication: 2018-06-07 19:16:06 UTC
-* Number of recursive dependencies: 34
-
-Run `revdep_details(,"tabulizer")` for more info
-
-</details>
-
-## In both
-
-*   checking whether package ‘tabulizer’ can be installed ... ERROR
-    ```
-    Installation failed.
-    See ‘/Users/max/github/forks/testthat/revdep/checks.noindex/tabulizer/new/tabulizer.Rcheck/00install.out’ for details.
-    ```
-
-## Installation
-
-### Devel
-
-```
-* installing *source* package ‘tabulizer’ ...
-** package ‘tabulizer’ successfully unpacked and MD5 sums checked
-** R
-** inst
-** byte-compile and prepare package for lazy loading
-Error : .onLoad failed in loadNamespace() for 'tabulizerjars', details:
-  call: NULL
-  error: .onLoad failed in loadNamespace() for 'rJava', details:
-  call: dyn.load(file, DLLpath = DLLpath, ...)
-  error: unable to load shared object '/Users/max/github/forks/testthat/revdep/library.noindex/tabulizer/rJava/libs/rJava.so':
-  dlopen(/Users/max/github/forks/testthat/revdep/library.noindex/tabulizer/rJava/libs/rJava.so, 6): Library not loaded: /Library/Java/JavaVirtualMachines/jdk-11.0.1.jdk/Contents/Home/lib/server/libjvm.dylib
-  Referenced from: /Users/max/github/forks/testthat/revdep/library.noindex/tabulizer/rJava/libs/rJava.so
-  Reason: image not found
-ERROR: lazy loading failed for package ‘tabulizer’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/tabulizer/new/tabulizer.Rcheck/tabulizer’
-
-```
-### CRAN
-
-```
-* installing *source* package ‘tabulizer’ ...
-** package ‘tabulizer’ successfully unpacked and MD5 sums checked
-** R
-** inst
-** byte-compile and prepare package for lazy loading
-Error : .onLoad failed in loadNamespace() for 'tabulizerjars', details:
-  call: NULL
-  error: .onLoad failed in loadNamespace() for 'rJava', details:
-  call: dyn.load(file, DLLpath = DLLpath, ...)
-  error: unable to load shared object '/Users/max/github/forks/testthat/revdep/library.noindex/tabulizer/rJava/libs/rJava.so':
-  dlopen(/Users/max/github/forks/testthat/revdep/library.noindex/tabulizer/rJava/libs/rJava.so, 6): Library not loaded: /Library/Java/JavaVirtualMachines/jdk-11.0.1.jdk/Contents/Home/lib/server/libjvm.dylib
-  Referenced from: /Users/max/github/forks/testthat/revdep/library.noindex/tabulizer/rJava/libs/rJava.so
-  Reason: image not found
-ERROR: lazy loading failed for package ‘tabulizer’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/tabulizer/old/tabulizer.Rcheck/tabulizer’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/SuperGauss/old/SuperGauss.Rcheck/SuperGauss’
 
 ```
 # TCGAbiolinks
@@ -10222,7 +7534,7 @@ Run `revdep_details(,"TCGAbiolinks")` for more info
 *   checking whether package ‘TCGAbiolinks’ can be installed ... ERROR
     ```
     Installation failed.
-    See ‘/Users/max/github/forks/testthat/revdep/checks.noindex/TCGAbiolinks/new/TCGAbiolinks.Rcheck/00install.out’ for details.
+    See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/TCGAbiolinks/new/TCGAbiolinks.Rcheck/00install.out’ for details.
     ```
 
 ## Installation
@@ -10232,8 +7544,6 @@ Run `revdep_details(,"TCGAbiolinks")` for more info
 ```
 * installing *source* package ‘TCGAbiolinks’ ...
 ** R
-Warning in lazyLoadDBinsertVariable(vars[i], from, datafile, ascii, compress,  :
-  internal error 10 in R_compress3
 ** data
 *** moving datasets to lazyload DB
 ** inst
@@ -10241,7 +7551,7 @@ Warning in lazyLoadDBinsertVariable(vars[i], from, datafile, ascii, compress,  :
 Error in loadNamespace(i, c(lib.loc, .libPaths()), versionCheck = vI[[i]]) : 
   there is no package called ‘sesameData’
 ERROR: lazy loading failed for package ‘TCGAbiolinks’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/TCGAbiolinks/new/TCGAbiolinks.Rcheck/TCGAbiolinks’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/TCGAbiolinks/new/TCGAbiolinks.Rcheck/TCGAbiolinks’
 
 ```
 ### CRAN
@@ -10249,8 +7559,6 @@ ERROR: lazy loading failed for package ‘TCGAbiolinks’
 ```
 * installing *source* package ‘TCGAbiolinks’ ...
 ** R
-Warning in lazyLoadDBinsertVariable(vars[i], from, datafile, ascii, compress,  :
-  internal error 10 in R_compress3
 ** data
 *** moving datasets to lazyload DB
 ** inst
@@ -10258,133 +7566,7 @@ Warning in lazyLoadDBinsertVariable(vars[i], from, datafile, ascii, compress,  :
 Error in loadNamespace(i, c(lib.loc, .libPaths()), versionCheck = vI[[i]]) : 
   there is no package called ‘sesameData’
 ERROR: lazy loading failed for package ‘TCGAbiolinks’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/TCGAbiolinks/old/TCGAbiolinks.Rcheck/TCGAbiolinks’
-
-```
-# textmining
-
-<details>
-
-* Version: 0.0.1
-* Source code: https://github.com/cran/textmining
-* Date/Publication: 2016-09-26 00:56:23
-* Number of recursive dependencies: 91
-
-Run `revdep_details(,"textmining")` for more info
-
-</details>
-
-## In both
-
-*   checking whether package ‘textmining’ can be installed ... ERROR
-    ```
-    Installation failed.
-    See ‘/Users/max/github/forks/testthat/revdep/checks.noindex/textmining/new/textmining.Rcheck/00install.out’ for details.
-    ```
-
-## Installation
-
-### Devel
-
-```
-* installing *source* package ‘textmining’ ...
-** package ‘textmining’ successfully unpacked and MD5 sums checked
-** R
-** byte-compile and prepare package for lazy loading
-Warning in fun(libname, pkgname) : couldn't connect to display ""
-Error : .onLoad failed in loadNamespace() for 'mallet', details:
-  call: NULL
-  error: .onLoad failed in loadNamespace() for 'rJava', details:
-  call: dyn.load(file, DLLpath = DLLpath, ...)
-  error: unable to load shared object '/Users/max/github/forks/testthat/revdep/library.noindex/textmining/rJava/libs/rJava.so':
-  dlopen(/Users/max/github/forks/testthat/revdep/library.noindex/textmining/rJava/libs/rJava.so, 6): Library not loaded: /Library/Java/JavaVirtualMachines/jdk-11.0.1.jdk/Contents/Home/lib/server/libjvm.dylib
-  Referenced from: /Users/max/github/forks/testthat/revdep/library.noindex/textmining/rJava/libs/rJava.so
-  Reason: image not found
-ERROR: lazy loading failed for package ‘textmining’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/textmining/new/textmining.Rcheck/textmining’
-
-```
-### CRAN
-
-```
-* installing *source* package ‘textmining’ ...
-** package ‘textmining’ successfully unpacked and MD5 sums checked
-** R
-** byte-compile and prepare package for lazy loading
-Warning in fun(libname, pkgname) : couldn't connect to display ""
-Error : .onLoad failed in loadNamespace() for 'mallet', details:
-  call: NULL
-  error: .onLoad failed in loadNamespace() for 'rJava', details:
-  call: dyn.load(file, DLLpath = DLLpath, ...)
-  error: unable to load shared object '/Users/max/github/forks/testthat/revdep/library.noindex/textmining/rJava/libs/rJava.so':
-  dlopen(/Users/max/github/forks/testthat/revdep/library.noindex/textmining/rJava/libs/rJava.so, 6): Library not loaded: /Library/Java/JavaVirtualMachines/jdk-11.0.1.jdk/Contents/Home/lib/server/libjvm.dylib
-  Referenced from: /Users/max/github/forks/testthat/revdep/library.noindex/textmining/rJava/libs/rJava.so
-  Reason: image not found
-ERROR: lazy loading failed for package ‘textmining’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/textmining/old/textmining.Rcheck/textmining’
-
-```
-# tm.plugin.webmining
-
-<details>
-
-* Version: 1.3
-* Source code: https://github.com/cran/tm.plugin.webmining
-* URL: https://github.com/mannau/tm.plugin.webmining
-* BugReports: https://github.com/mannau/tm.plugin.webmining/issues
-* Date/Publication: 2015-05-11 00:20:43
-* Number of recursive dependencies: 22
-
-Run `revdep_details(,"tm.plugin.webmining")` for more info
-
-</details>
-
-## In both
-
-*   checking whether package ‘tm.plugin.webmining’ can be installed ... ERROR
-    ```
-    Installation failed.
-    See ‘/Users/max/github/forks/testthat/revdep/checks.noindex/tm.plugin.webmining/new/tm.plugin.webmining.Rcheck/00install.out’ for details.
-    ```
-
-## Installation
-
-### Devel
-
-```
-* installing *source* package ‘tm.plugin.webmining’ ...
-** package ‘tm.plugin.webmining’ successfully unpacked and MD5 sums checked
-** R
-** data
-** inst
-** byte-compile and prepare package for lazy loading
-Error : .onLoad failed in loadNamespace() for 'rJava', details:
-  call: dyn.load(file, DLLpath = DLLpath, ...)
-  error: unable to load shared object '/Users/max/github/forks/testthat/revdep/library.noindex/tm.plugin.webmining/rJava/libs/rJava.so':
-  dlopen(/Users/max/github/forks/testthat/revdep/library.noindex/tm.plugin.webmining/rJava/libs/rJava.so, 6): Library not loaded: /Library/Java/JavaVirtualMachines/jdk-11.0.1.jdk/Contents/Home/lib/server/libjvm.dylib
-  Referenced from: /Users/max/github/forks/testthat/revdep/library.noindex/tm.plugin.webmining/rJava/libs/rJava.so
-  Reason: image not found
-ERROR: lazy loading failed for package ‘tm.plugin.webmining’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/tm.plugin.webmining/new/tm.plugin.webmining.Rcheck/tm.plugin.webmining’
-
-```
-### CRAN
-
-```
-* installing *source* package ‘tm.plugin.webmining’ ...
-** package ‘tm.plugin.webmining’ successfully unpacked and MD5 sums checked
-** R
-** data
-** inst
-** byte-compile and prepare package for lazy loading
-Error : .onLoad failed in loadNamespace() for 'rJava', details:
-  call: dyn.load(file, DLLpath = DLLpath, ...)
-  error: unable to load shared object '/Users/max/github/forks/testthat/revdep/library.noindex/tm.plugin.webmining/rJava/libs/rJava.so':
-  dlopen(/Users/max/github/forks/testthat/revdep/library.noindex/tm.plugin.webmining/rJava/libs/rJava.so, 6): Library not loaded: /Library/Java/JavaVirtualMachines/jdk-11.0.1.jdk/Contents/Home/lib/server/libjvm.dylib
-  Referenced from: /Users/max/github/forks/testthat/revdep/library.noindex/tm.plugin.webmining/rJava/libs/rJava.so
-  Reason: image not found
-ERROR: lazy loading failed for package ‘tm.plugin.webmining’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/tm.plugin.webmining/old/tm.plugin.webmining.Rcheck/tm.plugin.webmining’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/TCGAbiolinks/old/TCGAbiolinks.Rcheck/TCGAbiolinks’
 
 ```
 # TreeBUGS
@@ -10406,7 +7588,7 @@ Run `revdep_details(,"TreeBUGS")` for more info
 *   checking whether package ‘TreeBUGS’ can be installed ... ERROR
     ```
     Installation failed.
-    See ‘/Users/max/github/forks/testthat/revdep/checks.noindex/TreeBUGS/new/TreeBUGS.Rcheck/00install.out’ for details.
+    See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/TreeBUGS/new/TreeBUGS.Rcheck/00install.out’ for details.
     ```
 
 ## Installation
@@ -10417,13 +7599,14 @@ Run `revdep_details(,"TreeBUGS")` for more info
 * installing *source* package ‘TreeBUGS’ ...
 ** package ‘TreeBUGS’ successfully unpacked and MD5 sums checked
 ** libs
-clang++  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/max/github/forks/testthat/revdep/library.noindex/TreeBUGS/Rcpp/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/TreeBUGS/RcppArmadillo/include" -I/usr/local/include   -fPIC  -Wall -g -O2  -c RcppExports.cpp -o RcppExports.o
-clang++  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/max/github/forks/testthat/revdep/library.noindex/TreeBUGS/Rcpp/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/TreeBUGS/RcppArmadillo/include" -I/usr/local/include   -fPIC  -Wall -g -O2  -c betaMPT.cpp -o betaMPT.o
-clang -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/max/github/forks/testthat/revdep/library.noindex/TreeBUGS/Rcpp/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/TreeBUGS/RcppArmadillo/include" -I/usr/local/include   -fPIC  -Wall -g -O2  -c init.c -o init.o
-clang++  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/max/github/forks/testthat/revdep/library.noindex/TreeBUGS/Rcpp/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/TreeBUGS/RcppArmadillo/include" -I/usr/local/include   -fPIC  -Wall -g -O2  -c loglikMPT.cpp -o loglikMPT.o
-clang++ -dynamiclib -Wl,-headerpad_max_install_names -undefined dynamic_lookup -single_module -multiply_defined suppress -L/Library/Frameworks/R.framework/Resources/lib -L/usr/local/lib -o TreeBUGS.so RcppExports.o betaMPT.o init.o loglikMPT.o -L/Library/Frameworks/R.framework/Resources/lib -lRlapack -L/Library/Frameworks/R.framework/Resources/lib -lRblas -L/usr/local/gfortran/lib/gcc/x86_64-apple-darwin15/6.1.0 -L/usr/local/gfortran/lib -lgfortran -lquadmath -lm -F/Library/Frameworks/R.framework/.. -framework R -Wl,-framework -Wl,CoreFoundation
-ld: warning: text-based stub file /System/Library/Frameworks//CoreFoundation.framework/CoreFoundation.tbd and library file /System/Library/Frameworks//CoreFoundation.framework/CoreFoundation are out of sync. Falling back to library file for linking.
-installing to /Users/max/github/forks/testthat/revdep/checks.noindex/TreeBUGS/new/TreeBUGS.Rcheck/TreeBUGS/libs
+ccache clang++ -Qunused-arguments  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/TreeBUGS/Rcpp/include" -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/TreeBUGS/RcppArmadillo/include" -I/usr/local/include   -fPIC  -Wall -g -O2  -c RcppExports.cpp -o RcppExports.o
+ccache clang++ -Qunused-arguments  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/TreeBUGS/Rcpp/include" -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/TreeBUGS/RcppArmadillo/include" -I/usr/local/include   -fPIC  -Wall -g -O2  -c betaMPT.cpp -o betaMPT.o
+ccache clang -Qunused-arguments  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/TreeBUGS/Rcpp/include" -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/TreeBUGS/RcppArmadillo/include" -I/usr/local/include   -fPIC  -Wall -g -O2  -c init.c -o init.o
+ccache clang++ -Qunused-arguments  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/TreeBUGS/Rcpp/include" -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/TreeBUGS/RcppArmadillo/include" -I/usr/local/include   -fPIC  -Wall -g -O2  -c loglikMPT.cpp -o loglikMPT.o
+ccache clang++ -Qunused-arguments -dynamiclib -Wl,-headerpad_max_install_names -undefined dynamic_lookup -single_module -multiply_defined suppress -L/Library/Frameworks/R.framework/Resources/lib -L/usr/local/lib -o TreeBUGS.so RcppExports.o betaMPT.o init.o loglikMPT.o -L/Library/Frameworks/R.framework/Resources/lib -lRlapack -L/Library/Frameworks/R.framework/Resources/lib -lRblas -L/usr/local/gfortran/lib/gcc/x86_64-apple-darwin15/6.1.0 -L/usr/local/gfortran/lib -lgfortran -lquadmath -lm -F/Library/Frameworks/R.framework/.. -framework R -Wl,-framework -Wl,CoreFoundation
+ld: warning: directory not found for option '-L/usr/local/gfortran/lib/gcc/x86_64-apple-darwin15/6.1.0'
+ld: warning: directory not found for option '-L/usr/local/gfortran/lib'
+installing to /Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/TreeBUGS/new/TreeBUGS.Rcheck/TreeBUGS/libs
 ** R
 ** data
 *** moving datasets to lazyload DB
@@ -10431,12 +7614,12 @@ installing to /Users/max/github/forks/testthat/revdep/checks.noindex/TreeBUGS/ne
 ** byte-compile and prepare package for lazy loading
 Error : .onLoad failed in loadNamespace() for 'rjags', details:
   call: dyn.load(file, DLLpath = DLLpath, ...)
-  error: unable to load shared object '/Users/max/github/forks/testthat/revdep/library.noindex/TreeBUGS/rjags/libs/rjags.so':
-  dlopen(/Users/max/github/forks/testthat/revdep/library.noindex/TreeBUGS/rjags/libs/rjags.so, 10): Library not loaded: /usr/local/lib/libjags.4.dylib
-  Referenced from: /Users/max/github/forks/testthat/revdep/library.noindex/TreeBUGS/rjags/libs/rjags.so
+  error: unable to load shared object '/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/TreeBUGS/rjags/libs/rjags.so':
+  dlopen(/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/TreeBUGS/rjags/libs/rjags.so, 10): Library not loaded: /usr/local/lib/libjags.4.dylib
+  Referenced from: /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/TreeBUGS/rjags/libs/rjags.so
   Reason: image not found
 ERROR: lazy loading failed for package ‘TreeBUGS’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/TreeBUGS/new/TreeBUGS.Rcheck/TreeBUGS’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/TreeBUGS/new/TreeBUGS.Rcheck/TreeBUGS’
 
 ```
 ### CRAN
@@ -10445,13 +7628,14 @@ ERROR: lazy loading failed for package ‘TreeBUGS’
 * installing *source* package ‘TreeBUGS’ ...
 ** package ‘TreeBUGS’ successfully unpacked and MD5 sums checked
 ** libs
-clang++  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/max/github/forks/testthat/revdep/library.noindex/TreeBUGS/Rcpp/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/TreeBUGS/RcppArmadillo/include" -I/usr/local/include   -fPIC  -Wall -g -O2  -c RcppExports.cpp -o RcppExports.o
-clang++  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/max/github/forks/testthat/revdep/library.noindex/TreeBUGS/Rcpp/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/TreeBUGS/RcppArmadillo/include" -I/usr/local/include   -fPIC  -Wall -g -O2  -c betaMPT.cpp -o betaMPT.o
-clang -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/max/github/forks/testthat/revdep/library.noindex/TreeBUGS/Rcpp/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/TreeBUGS/RcppArmadillo/include" -I/usr/local/include   -fPIC  -Wall -g -O2  -c init.c -o init.o
-clang++  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/max/github/forks/testthat/revdep/library.noindex/TreeBUGS/Rcpp/include" -I"/Users/max/github/forks/testthat/revdep/library.noindex/TreeBUGS/RcppArmadillo/include" -I/usr/local/include   -fPIC  -Wall -g -O2  -c loglikMPT.cpp -o loglikMPT.o
-clang++ -dynamiclib -Wl,-headerpad_max_install_names -undefined dynamic_lookup -single_module -multiply_defined suppress -L/Library/Frameworks/R.framework/Resources/lib -L/usr/local/lib -o TreeBUGS.so RcppExports.o betaMPT.o init.o loglikMPT.o -L/Library/Frameworks/R.framework/Resources/lib -lRlapack -L/Library/Frameworks/R.framework/Resources/lib -lRblas -L/usr/local/gfortran/lib/gcc/x86_64-apple-darwin15/6.1.0 -L/usr/local/gfortran/lib -lgfortran -lquadmath -lm -F/Library/Frameworks/R.framework/.. -framework R -Wl,-framework -Wl,CoreFoundation
-ld: warning: text-based stub file /System/Library/Frameworks//CoreFoundation.framework/CoreFoundation.tbd and library file /System/Library/Frameworks//CoreFoundation.framework/CoreFoundation are out of sync. Falling back to library file for linking.
-installing to /Users/max/github/forks/testthat/revdep/checks.noindex/TreeBUGS/old/TreeBUGS.Rcheck/TreeBUGS/libs
+ccache clang++ -Qunused-arguments  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/TreeBUGS/Rcpp/include" -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/TreeBUGS/RcppArmadillo/include" -I/usr/local/include   -fPIC  -Wall -g -O2  -c RcppExports.cpp -o RcppExports.o
+ccache clang++ -Qunused-arguments  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/TreeBUGS/Rcpp/include" -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/TreeBUGS/RcppArmadillo/include" -I/usr/local/include   -fPIC  -Wall -g -O2  -c betaMPT.cpp -o betaMPT.o
+ccache clang -Qunused-arguments  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/TreeBUGS/Rcpp/include" -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/TreeBUGS/RcppArmadillo/include" -I/usr/local/include   -fPIC  -Wall -g -O2  -c init.c -o init.o
+ccache clang++ -Qunused-arguments  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/TreeBUGS/Rcpp/include" -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/TreeBUGS/RcppArmadillo/include" -I/usr/local/include   -fPIC  -Wall -g -O2  -c loglikMPT.cpp -o loglikMPT.o
+ccache clang++ -Qunused-arguments -dynamiclib -Wl,-headerpad_max_install_names -undefined dynamic_lookup -single_module -multiply_defined suppress -L/Library/Frameworks/R.framework/Resources/lib -L/usr/local/lib -o TreeBUGS.so RcppExports.o betaMPT.o init.o loglikMPT.o -L/Library/Frameworks/R.framework/Resources/lib -lRlapack -L/Library/Frameworks/R.framework/Resources/lib -lRblas -L/usr/local/gfortran/lib/gcc/x86_64-apple-darwin15/6.1.0 -L/usr/local/gfortran/lib -lgfortran -lquadmath -lm -F/Library/Frameworks/R.framework/.. -framework R -Wl,-framework -Wl,CoreFoundation
+ld: warning: directory not found for option '-L/usr/local/gfortran/lib/gcc/x86_64-apple-darwin15/6.1.0'
+ld: warning: directory not found for option '-L/usr/local/gfortran/lib'
+installing to /Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/TreeBUGS/old/TreeBUGS.Rcheck/TreeBUGS/libs
 ** R
 ** data
 *** moving datasets to lazyload DB
@@ -10459,12 +7643,12 @@ installing to /Users/max/github/forks/testthat/revdep/checks.noindex/TreeBUGS/ol
 ** byte-compile and prepare package for lazy loading
 Error : .onLoad failed in loadNamespace() for 'rjags', details:
   call: dyn.load(file, DLLpath = DLLpath, ...)
-  error: unable to load shared object '/Users/max/github/forks/testthat/revdep/library.noindex/TreeBUGS/rjags/libs/rjags.so':
-  dlopen(/Users/max/github/forks/testthat/revdep/library.noindex/TreeBUGS/rjags/libs/rjags.so, 10): Library not loaded: /usr/local/lib/libjags.4.dylib
-  Referenced from: /Users/max/github/forks/testthat/revdep/library.noindex/TreeBUGS/rjags/libs/rjags.so
+  error: unable to load shared object '/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/TreeBUGS/rjags/libs/rjags.so':
+  dlopen(/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/TreeBUGS/rjags/libs/rjags.so, 10): Library not loaded: /usr/local/lib/libjags.4.dylib
+  Referenced from: /Users/hadley/Documents/devtools/testthat/revdep/library.noindex/TreeBUGS/rjags/libs/rjags.so
   Reason: image not found
 ERROR: lazy loading failed for package ‘TreeBUGS’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/TreeBUGS/old/TreeBUGS.Rcheck/TreeBUGS’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/TreeBUGS/old/TreeBUGS.Rcheck/TreeBUGS’
 
 ```
 # units
@@ -10487,7 +7671,7 @@ Run `revdep_details(,"units")` for more info
 *   checking whether package ‘units’ can be installed ... ERROR
     ```
     Installation failed.
-    See ‘/Users/max/github/forks/testthat/revdep/checks.noindex/units/new/units.Rcheck/00install.out’ for details.
+    See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/units/new/units.Rcheck/00install.out’ for details.
     ```
 
 ## Installation
@@ -10504,8 +7688,8 @@ checking for suffix of executables...
 checking whether we are cross compiling... no
 checking for suffix of object files... o
 checking whether we are using the GNU C++ compiler... yes
-checking whether clang++ accepts -g... yes
-checking how to run the C++ preprocessor... clang++ -E
+checking whether ccache clang++ -Qunused-arguments accepts -g... yes
+checking how to run the C++ preprocessor... ccache clang++ -Qunused-arguments -E
 checking for grep that handles long lines and -e... /usr/bin/grep
 checking for egrep... /usr/bin/grep -E
 checking for ANSI C header files... rm: conftest.dSYM: is a directory
@@ -10523,10 +7707,10 @@ checking for unistd.h... yes
 checking for stdbool.h that conforms to C99... no
 checking for _Bool... no
 checking for error_at_line... no
-checking for gcc... clang
+checking for gcc... ccache clang -Qunused-arguments
 checking whether we are using the GNU C compiler... yes
-checking whether clang accepts -g... yes
-checking for clang option to accept ISO C89... none needed
+checking whether ccache clang -Qunused-arguments accepts -g... yes
+checking for ccache clang -Qunused-arguments option to accept ISO C89... none needed
 checking for XML_ParserCreate in -lexpat... yes
 checking udunits2.h usability... no
 checking udunits2.h presence... no
@@ -10535,7 +7719,7 @@ checking udunits2/udunits2.h usability... no
 checking udunits2/udunits2.h presence... no
 checking for udunits2/udunits2.h... no
 checking for ut_read_xml in -ludunits2... no
-configure: error: in `/Users/max/github/forks/testthat/revdep/checks.noindex/units/new/units.Rcheck/00_pkg_src/units':
+configure: error: in `/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/units/new/units.Rcheck/00_pkg_src/units':
 configure: error: 
 --------------------------------------------------------------------------------
   Configuration failed because libudunits2.so was not found. Try installing:
@@ -10552,7 +7736,7 @@ configure: error:
 
 See `config.log' for more details
 ERROR: configuration failed for package ‘units’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/units/new/units.Rcheck/units’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/units/new/units.Rcheck/units’
 
 ```
 ### CRAN
@@ -10567,8 +7751,8 @@ checking for suffix of executables...
 checking whether we are cross compiling... no
 checking for suffix of object files... o
 checking whether we are using the GNU C++ compiler... yes
-checking whether clang++ accepts -g... yes
-checking how to run the C++ preprocessor... clang++ -E
+checking whether ccache clang++ -Qunused-arguments accepts -g... yes
+checking how to run the C++ preprocessor... ccache clang++ -Qunused-arguments -E
 checking for grep that handles long lines and -e... /usr/bin/grep
 checking for egrep... /usr/bin/grep -E
 checking for ANSI C header files... rm: conftest.dSYM: is a directory
@@ -10586,10 +7770,10 @@ checking for unistd.h... yes
 checking for stdbool.h that conforms to C99... no
 checking for _Bool... no
 checking for error_at_line... no
-checking for gcc... clang
+checking for gcc... ccache clang -Qunused-arguments
 checking whether we are using the GNU C compiler... yes
-checking whether clang accepts -g... yes
-checking for clang option to accept ISO C89... none needed
+checking whether ccache clang -Qunused-arguments accepts -g... yes
+checking for ccache clang -Qunused-arguments option to accept ISO C89... none needed
 checking for XML_ParserCreate in -lexpat... yes
 checking udunits2.h usability... no
 checking udunits2.h presence... no
@@ -10598,7 +7782,7 @@ checking udunits2/udunits2.h usability... no
 checking udunits2/udunits2.h presence... no
 checking for udunits2/udunits2.h... no
 checking for ut_read_xml in -ludunits2... no
-configure: error: in `/Users/max/github/forks/testthat/revdep/checks.noindex/units/old/units.Rcheck/00_pkg_src/units':
+configure: error: in `/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/units/old/units.Rcheck/00_pkg_src/units':
 configure: error: 
 --------------------------------------------------------------------------------
   Configuration failed because libudunits2.so was not found. Try installing:
@@ -10615,7 +7799,7 @@ configure: error:
 
 See `config.log' for more details
 ERROR: configuration failed for package ‘units’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/units/old/units.Rcheck/units’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/units/old/units.Rcheck/units’
 
 ```
 # V8
@@ -10638,7 +7822,7 @@ Run `revdep_details(,"V8")` for more info
 *   checking whether package ‘V8’ can be installed ... ERROR
     ```
     Installation failed.
-    See ‘/Users/max/github/forks/testthat/revdep/checks.noindex/V8/new/V8.Rcheck/00install.out’ for details.
+    See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/V8/new/V8.Rcheck/00install.out’ for details.
     ```
 
 ## Installation
@@ -10660,7 +7844,7 @@ To use a custom libv8, set INCLUDE_DIR and LIB_DIR manually via:
 R CMD INSTALL --configure-vars='INCLUDE_DIR=... LIB_DIR=...'
 --------------------------------------------------------------------
 ERROR: configuration failed for package ‘V8’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/V8/new/V8.Rcheck/V8’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/V8/new/V8.Rcheck/V8’
 
 ```
 ### CRAN
@@ -10680,7 +7864,7 @@ To use a custom libv8, set INCLUDE_DIR and LIB_DIR manually via:
 R CMD INSTALL --configure-vars='INCLUDE_DIR=... LIB_DIR=...'
 --------------------------------------------------------------------
 ERROR: configuration failed for package ‘V8’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/V8/old/V8.Rcheck/V8’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/V8/old/V8.Rcheck/V8’
 
 ```
 # vapour
@@ -10703,7 +7887,7 @@ Run `revdep_details(,"vapour")` for more info
 *   checking whether package ‘vapour’ can be installed ... ERROR
     ```
     Installation failed.
-    See ‘/Users/max/github/forks/testthat/revdep/checks.noindex/vapour/new/vapour.Rcheck/00install.out’ for details.
+    See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/vapour/new/vapour.Rcheck/00install.out’ for details.
     ```
 
 ## Installation
@@ -10713,22 +7897,22 @@ Run `revdep_details(,"vapour")` for more info
 ```
 * installing *source* package ‘vapour’ ...
 ** package ‘vapour’ successfully unpacked and MD5 sums checked
-configure: CC: clang
-configure: CXX: clang++
+configure: CC: ccache clang -Qunused-arguments
+configure: CXX: ccache clang++ -Qunused-arguments
 checking for gdal-config... /usr/local/bin/gdal-config
 checking gdal-config usability... yes
-configure: GDAL: 2.4.1
+configure: GDAL: 2.1.2
 checking GDAL version >= 2.0.0... yes
-checking for gcc... clang
+checking for gcc... ccache clang -Qunused-arguments
 checking whether the C compiler works... yes
 checking for C compiler default output file name... a.out
 checking for suffix of executables... 
 checking whether we are cross compiling... no
 checking for suffix of object files... o
 checking whether we are using the GNU C compiler... yes
-checking whether clang accepts -g... yes
-checking for clang option to accept ISO C89... none needed
-checking how to run the C preprocessor... clang -E
+checking whether ccache clang -Qunused-arguments accepts -g... yes
+checking for ccache clang -Qunused-arguments option to accept ISO C89... none needed
+checking how to run the C preprocessor... ccache clang -Qunused-arguments -E
 checking for grep that handles long lines and -e... /usr/bin/grep
 checking for egrep... /usr/bin/grep -E
 checking for ANSI C header files... rm: conftest.dSYM: is a directory
@@ -10746,42 +7930,17 @@ checking for unistd.h... yes
 checking gdal.h usability... yes
 checking gdal.h presence... yes
 checking for gdal.h... yes
-checking GDAL: linking with --libs only... no
-checking GDAL: linking with --libs and --dep-libs... no
-In file included from gdal_test.cpp:1:
-In file included from /usr/local/Cellar/gdal/2.4.1/include/gdal.h:45:
-/usr/local/Cellar/gdal/2.4.1/include/cpl_port.h:187:6: error: Must have C++11 or newer.
-#    error Must have C++11 or newer.
-     ^
-In file included from gdal_test.cpp:1:
-In file included from /usr/local/Cellar/gdal/2.4.1/include/gdal.h:48:
-In file included from /usr/local/Cellar/gdal/2.4.1/include/cpl_virtualmem.h:37:
-/usr/local/Cellar/gdal/2.4.1/include/cpl_vsi.h:337:39: warning: deleted function definitions are a C++11 extension [-Wc++11-extensions]
-    VSIDIREntry(const VSIDIREntry&) = delete;
-                                      ^
-/usr/local/Cellar/gdal/2.4.1/include/cpl_vsi.h:338:44: warning: deleted function definitions are a C++11 extension [-Wc++11-extensions]
-    VSIDIREntry& operator=(VSIDIREntry&) = delete;
-                                           ^
-2 warnings and 1 error generated.
-In file included from gdal_test.cpp:1:
-In file included from /usr/local/Cellar/gdal/2.4.1/include/gdal.h:45:
-/usr/local/Cellar/gdal/2.4.1/include/cpl_port.h:187:6: error: Must have C++11 or newer.
-#    error Must have C++11 or newer.
-     ^
-In file included from gdal_test.cpp:1:
-In file included from /usr/local/Cellar/gdal/2.4.1/include/gdal.h:48:
-In file included from /usr/local/Cellar/gdal/2.4.1/include/cpl_virtualmem.h:37:
-/usr/local/Cellar/gdal/2.4.1/include/cpl_vsi.h:337:39: warning: deleted function definitions are a C++11 extension [-Wc++11-extensions]
-    VSIDIREntry(const VSIDIREntry&) = delete;
-                                      ^
-/usr/local/Cellar/gdal/2.4.1/include/cpl_vsi.h:338:44: warning: deleted function definitions are a C++11 extension [-Wc++11-extensions]
-    VSIDIREntry& operator=(VSIDIREntry&) = delete;
-                                           ^
-2 warnings and 1 error generated.
-configure: Install failure: compilation and/or linkage problems.
-configure: error: GDALAllRegister not found in libgdal.
+checking GDAL: linking with --libs only... yes
+checking GDAL: /usr/local/Cellar/gdal2/2.1.2/share/gdal/pcs.csv readable... yes
+checking GDAL: checking whether PROJ.4 is available for linking:... yes
+checking GDAL: checking whether PROJ.4 is available fur running:... dyld: Library not loaded: /usr/local/opt/webp/lib/libwebp.6.dylib
+  Referenced from: /usr/local/opt/gdal2/lib/libgdal.20.dylib
+  Reason: image not found
+./configure: line 3586: 22229 Abort trap: 6           ./gdal_proj
+no
+configure: error: OGRCoordinateTransformation() does not return a coord.trans: PROJ.4 not available?
 ERROR: configuration failed for package ‘vapour’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/vapour/new/vapour.Rcheck/vapour’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/vapour/new/vapour.Rcheck/vapour’
 
 ```
 ### CRAN
@@ -10789,22 +7948,22 @@ ERROR: configuration failed for package ‘vapour’
 ```
 * installing *source* package ‘vapour’ ...
 ** package ‘vapour’ successfully unpacked and MD5 sums checked
-configure: CC: clang
-configure: CXX: clang++
+configure: CC: ccache clang -Qunused-arguments
+configure: CXX: ccache clang++ -Qunused-arguments
 checking for gdal-config... /usr/local/bin/gdal-config
 checking gdal-config usability... yes
-configure: GDAL: 2.4.1
+configure: GDAL: 2.1.2
 checking GDAL version >= 2.0.0... yes
-checking for gcc... clang
+checking for gcc... ccache clang -Qunused-arguments
 checking whether the C compiler works... yes
 checking for C compiler default output file name... a.out
 checking for suffix of executables... 
 checking whether we are cross compiling... no
 checking for suffix of object files... o
 checking whether we are using the GNU C compiler... yes
-checking whether clang accepts -g... yes
-checking for clang option to accept ISO C89... none needed
-checking how to run the C preprocessor... clang -E
+checking whether ccache clang -Qunused-arguments accepts -g... yes
+checking for ccache clang -Qunused-arguments option to accept ISO C89... none needed
+checking how to run the C preprocessor... ccache clang -Qunused-arguments -E
 checking for grep that handles long lines and -e... /usr/bin/grep
 checking for egrep... /usr/bin/grep -E
 checking for ANSI C header files... rm: conftest.dSYM: is a directory
@@ -10822,105 +7981,17 @@ checking for unistd.h... yes
 checking gdal.h usability... yes
 checking gdal.h presence... yes
 checking for gdal.h... yes
-checking GDAL: linking with --libs only... no
-checking GDAL: linking with --libs and --dep-libs... no
-In file included from gdal_test.cpp:1:
-In file included from /usr/local/Cellar/gdal/2.4.1/include/gdal.h:45:
-/usr/local/Cellar/gdal/2.4.1/include/cpl_port.h:187:6: error: Must have C++11 or newer.
-#    error Must have C++11 or newer.
-     ^
-In file included from gdal_test.cpp:1:
-In file included from /usr/local/Cellar/gdal/2.4.1/include/gdal.h:48:
-In file included from /usr/local/Cellar/gdal/2.4.1/include/cpl_virtualmem.h:37:
-/usr/local/Cellar/gdal/2.4.1/include/cpl_vsi.h:337:39: warning: deleted function definitions are a C++11 extension [-Wc++11-extensions]
-    VSIDIREntry(const VSIDIREntry&) = delete;
-                                      ^
-/usr/local/Cellar/gdal/2.4.1/include/cpl_vsi.h:338:44: warning: deleted function definitions are a C++11 extension [-Wc++11-extensions]
-    VSIDIREntry& operator=(VSIDIREntry&) = delete;
-                                           ^
-2 warnings and 1 error generated.
-In file included from gdal_test.cpp:1:
-In file included from /usr/local/Cellar/gdal/2.4.1/include/gdal.h:45:
-/usr/local/Cellar/gdal/2.4.1/include/cpl_port.h:187:6: error: Must have C++11 or newer.
-#    error Must have C++11 or newer.
-     ^
-In file included from gdal_test.cpp:1:
-In file included from /usr/local/Cellar/gdal/2.4.1/include/gdal.h:48:
-In file included from /usr/local/Cellar/gdal/2.4.1/include/cpl_virtualmem.h:37:
-/usr/local/Cellar/gdal/2.4.1/include/cpl_vsi.h:337:39: warning: deleted function definitions are a C++11 extension [-Wc++11-extensions]
-    VSIDIREntry(const VSIDIREntry&) = delete;
-                                      ^
-/usr/local/Cellar/gdal/2.4.1/include/cpl_vsi.h:338:44: warning: deleted function definitions are a C++11 extension [-Wc++11-extensions]
-    VSIDIREntry& operator=(VSIDIREntry&) = delete;
-                                           ^
-2 warnings and 1 error generated.
-configure: Install failure: compilation and/or linkage problems.
-configure: error: GDALAllRegister not found in libgdal.
+checking GDAL: linking with --libs only... yes
+checking GDAL: /usr/local/Cellar/gdal2/2.1.2/share/gdal/pcs.csv readable... yes
+checking GDAL: checking whether PROJ.4 is available for linking:... yes
+checking GDAL: checking whether PROJ.4 is available fur running:... dyld: Library not loaded: /usr/local/opt/webp/lib/libwebp.6.dylib
+  Referenced from: /usr/local/opt/gdal2/lib/libgdal.20.dylib
+  Reason: image not found
+./configure: line 3586: 22202 Abort trap: 6           ./gdal_proj
+no
+configure: error: OGRCoordinateTransformation() does not return a coord.trans: PROJ.4 not available?
 ERROR: configuration failed for package ‘vapour’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/vapour/old/vapour.Rcheck/vapour’
-
-```
-# vortexR
-
-<details>
-
-* Version: 1.1.6
-* Source code: https://github.com/cran/vortexR
-* URL: https://github.com/carlopacioni/vortexR/
-* BugReports: https://github.com/carlopacioni/vortexR/issues
-* Date/Publication: 2019-02-06 12:50:03 UTC
-* Number of recursive dependencies: 104
-
-Run `revdep_details(,"vortexR")` for more info
-
-</details>
-
-## In both
-
-*   checking whether package ‘vortexR’ can be installed ... ERROR
-    ```
-    Installation failed.
-    See ‘/Users/max/github/forks/testthat/revdep/checks.noindex/vortexR/new/vortexR.Rcheck/00install.out’ for details.
-    ```
-
-## Installation
-
-### Devel
-
-```
-* installing *source* package ‘vortexR’ ...
-** package ‘vortexR’ successfully unpacked and MD5 sums checked
-** R
-** data
-** inst
-** byte-compile and prepare package for lazy loading
-Error : .onLoad failed in loadNamespace() for 'rJava', details:
-  call: dyn.load(file, DLLpath = DLLpath, ...)
-  error: unable to load shared object '/Users/max/github/forks/testthat/revdep/library.noindex/vortexR/rJava/libs/rJava.so':
-  dlopen(/Users/max/github/forks/testthat/revdep/library.noindex/vortexR/rJava/libs/rJava.so, 6): Library not loaded: /Library/Java/JavaVirtualMachines/jdk-11.0.1.jdk/Contents/Home/lib/server/libjvm.dylib
-  Referenced from: /Users/max/github/forks/testthat/revdep/library.noindex/vortexR/rJava/libs/rJava.so
-  Reason: image not found
-ERROR: lazy loading failed for package ‘vortexR’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/vortexR/new/vortexR.Rcheck/vortexR’
-
-```
-### CRAN
-
-```
-* installing *source* package ‘vortexR’ ...
-** package ‘vortexR’ successfully unpacked and MD5 sums checked
-** R
-** data
-** inst
-** byte-compile and prepare package for lazy loading
-Error : .onLoad failed in loadNamespace() for 'rJava', details:
-  call: dyn.load(file, DLLpath = DLLpath, ...)
-  error: unable to load shared object '/Users/max/github/forks/testthat/revdep/library.noindex/vortexR/rJava/libs/rJava.so':
-  dlopen(/Users/max/github/forks/testthat/revdep/library.noindex/vortexR/rJava/libs/rJava.so, 6): Library not loaded: /Library/Java/JavaVirtualMachines/jdk-11.0.1.jdk/Contents/Home/lib/server/libjvm.dylib
-  Referenced from: /Users/max/github/forks/testthat/revdep/library.noindex/vortexR/rJava/libs/rJava.so
-  Reason: image not found
-ERROR: lazy loading failed for package ‘vortexR’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/vortexR/old/vortexR.Rcheck/vortexR’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/vapour/old/vapour.Rcheck/vapour’
 
 ```
 # wand
@@ -10943,7 +8014,7 @@ Run `revdep_details(,"wand")` for more info
 *   checking whether package ‘wand’ can be installed ... ERROR
     ```
     Installation failed.
-    See ‘/Users/max/github/forks/testthat/revdep/checks.noindex/wand/new/wand.Rcheck/00install.out’ for details.
+    See ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/wand/new/wand.Rcheck/00install.out’ for details.
     ```
 
 ## Installation
@@ -10955,18 +8026,14 @@ Run `revdep_details(,"wand")` for more info
 ** package ‘wand’ successfully unpacked and MD5 sums checked
 Checking to see if libmagic is available...
 ** libs
-clang++  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -L/usr/include -L/usr/local/include -I"/Users/max/github/forks/testthat/revdep/library.noindex/wand/Rcpp/include" -I/usr/local/include   -fPIC  -Wall -g -O2  -c RcppExports.cpp -o RcppExports.o
-clang++  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -L/usr/include -L/usr/local/include -I"/Users/max/github/forks/testthat/revdep/library.noindex/wand/Rcpp/include" -I/usr/local/include   -fPIC  -Wall -g -O2  -c wand.cpp -o wand.o
-clang: warning: argument unused during compilation: '-L/usr/include' [-Wunused-command-line-argument]
-clang: warning: argument unused during compilation: '-L/usr/local/include' [-Wunused-command-line-argument]clang
-: warning: argument unused during compilation: '-L/usr/include' [-Wunused-command-line-argument]
-clang: warning: argument unused during compilation: '-L/usr/local/include' [-Wunused-command-line-argument]
-clang++ -dynamiclib -Wl,-headerpad_max_install_names -undefined dynamic_lookup -single_module -multiply_defined suppress -L/Library/Frameworks/R.framework/Resources/lib -L/usr/local/lib -o wand.so RcppExports.o wand.o -L/usr/local/lib -L/usr/lib -lmagic -F/Library/Frameworks/R.framework/.. -framework R -Wl,-framework -Wl,CoreFoundation
+ccache clang++ -Qunused-arguments  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -L/usr/local/include -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/wand/Rcpp/include" -I/usr/local/include   -fPIC  -Wall -g -O2  -c RcppExports.cpp -o RcppExports.o
+ccache clang++ -Qunused-arguments  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -L/usr/local/include -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/wand/Rcpp/include" -I/usr/local/include   -fPIC  -Wall -g -O2  -c wand.cpp -o wand.o
+ccache clang++ -Qunused-arguments -dynamiclib -Wl,-headerpad_max_install_names -undefined dynamic_lookup -single_module -multiply_defined suppress -L/Library/Frameworks/R.framework/Resources/lib -L/usr/local/lib -o wand.so RcppExports.o wand.o -L/usr/local/lib -L/usr/lib -lmagic -F/Library/Frameworks/R.framework/.. -framework R -Wl,-framework -Wl,CoreFoundation
 ld: library not found for -lmagic
 clang: error: linker command failed with exit code 1 (use -v to see invocation)
 make: *** [wand.so] Error 1
 ERROR: compilation failed for package ‘wand’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/wand/new/wand.Rcheck/wand’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/wand/new/wand.Rcheck/wand’
 
 ```
 ### CRAN
@@ -10976,18 +8043,14 @@ ERROR: compilation failed for package ‘wand’
 ** package ‘wand’ successfully unpacked and MD5 sums checked
 Checking to see if libmagic is available...
 ** libs
-clang++  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -L/usr/include -L/usr/local/include -I"/Users/max/github/forks/testthat/revdep/library.noindex/wand/Rcpp/include" -I/usr/local/include   -fPIC  -Wall -g -O2  -c RcppExports.cpp -o RcppExports.o
-clang++  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -L/usr/include -L/usr/local/include -I"/Users/max/github/forks/testthat/revdep/library.noindex/wand/Rcpp/include" -I/usr/local/include   -fPIC  -Wall -g -O2  -c wand.cpp -o wand.o
-clang: warning: argument unused during compilation: '-L/usr/include' [-Wunused-command-line-argument]
-clang: warning: argument unused during compilation: '-L/usr/local/include' [-Wunused-command-line-argument]
-clang: warning: argument unused during compilation: '-L/usr/include' [-Wunused-command-line-argument]
-clang: warning: argument unused during compilation: '-L/usr/local/include' [-Wunused-command-line-argument]
-clang++ -dynamiclib -Wl,-headerpad_max_install_names -undefined dynamic_lookup -single_module -multiply_defined suppress -L/Library/Frameworks/R.framework/Resources/lib -L/usr/local/lib -o wand.so RcppExports.o wand.o -L/usr/local/lib -L/usr/lib -lmagic -F/Library/Frameworks/R.framework/.. -framework R -Wl,-framework -Wl,CoreFoundation
+ccache clang++ -Qunused-arguments  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -L/usr/local/include -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/wand/Rcpp/include" -I/usr/local/include   -fPIC  -Wall -g -O2  -c RcppExports.cpp -o RcppExports.o
+ccache clang++ -Qunused-arguments  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -L/usr/local/include -I"/Users/hadley/Documents/devtools/testthat/revdep/library.noindex/wand/Rcpp/include" -I/usr/local/include   -fPIC  -Wall -g -O2  -c wand.cpp -o wand.o
+ccache clang++ -Qunused-arguments -dynamiclib -Wl,-headerpad_max_install_names -undefined dynamic_lookup -single_module -multiply_defined suppress -L/Library/Frameworks/R.framework/Resources/lib -L/usr/local/lib -o wand.so RcppExports.o wand.o -L/usr/local/lib -L/usr/lib -lmagic -F/Library/Frameworks/R.framework/.. -framework R -Wl,-framework -Wl,CoreFoundation
 ld: library not found for -lmagic
 clang: error: linker command failed with exit code 1 (use -v to see invocation)
 make: *** [wand.so] Error 1
 ERROR: compilation failed for package ‘wand’
-* removing ‘/Users/max/github/forks/testthat/revdep/checks.noindex/wand/old/wand.Rcheck/wand’
+* removing ‘/Users/hadley/Documents/devtools/testthat/revdep/checks.noindex/wand/old/wand.Rcheck/wand’
 
 ```
 # XBSeq
