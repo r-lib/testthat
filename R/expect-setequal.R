@@ -88,9 +88,8 @@ expect_mapequal <- function(object, expected) {
   act_nms <- names(act$val)
   exp_nms <- names(exp$val)
 
-  if (!names_ok(act_nms, "object") || !names_ok(exp_nms, "expected")) {
-    return(act$val)
-  }
+  check_names_ok(act_nms, "object")
+  check_names_ok(exp_nms, "expected")
 
   if (!setequal(act_nms, exp_nms)) {
     act_miss <- setdiff(exp_nms, act_nms)
@@ -111,19 +110,11 @@ expect_mapequal <- function(object, expected) {
   invisible(act$val)
 }
 
-names_ok <- function(x, label) {
-  ok <- TRUE
-
+check_names_ok <- function(x, label) {
   if (anyDuplicated(x)) {
-    ok <- FALSE
-    fail(
-      paste0("Duplicate names in `", label, "`: ", unique(x[duplicated(x)]))
-    )
+    stop("Duplicate names in `", label, "`: ", unique(x[duplicated(x)]))
   }
   if (any(x == "")) {
-    ok <- FALSE
-    fail(paste0("All elements in `", label, "` must be named"))
+    stop("All elements in `", label, "` must be named")
   }
-
-  ok
 }

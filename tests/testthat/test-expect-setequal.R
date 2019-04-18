@@ -29,10 +29,10 @@ test_that("ignores order", {
   expect_success(expect_mapequal(list(a = 1, b = 2), list(b = 2, a = 1)))
 })
 
-test_that("fails if any names are duplicated", {
-  expect_failure(expect_mapequal(list(a = 1, b = 2, b = 3), list(b = 2, a = 1)))
-  expect_failure(expect_mapequal(list(a = 1, b = 2), list(b = 3, b = 2, a = 1)))
-  expect_failure(expect_mapequal(list(a = 1, b = 2, b = 3), list(b = 3, b = 2, a = 1)))
+test_that("error if any names are duplicated", {
+  expect_error(expect_mapequal(list(a = 1, b = 2, b = 3), list(b = 2, a = 1)))
+  expect_error(expect_mapequal(list(a = 1, b = 2), list(b = 3, b = 2, a = 1)))
+  expect_error(expect_mapequal(list(a = 1, b = 2, b = 3), list(b = 3, b = 2, a = 1)))
 })
 
 test_that("handling NULLs", {
@@ -53,9 +53,9 @@ test_that("error for non-vectors", {
   expect_error(expect_mapequal(NULL, NULL), "be vectors")
 })
 
-test_that("fails if any unnamed values", {
-  expect_failure(expect_mapequal(list(1, b = 2), list(1, b = 2)))
-  expect_failure(expect_mapequal(list(1, b = 2), list(b = 2, 1)))
+test_that("error if any unnamed values", {
+  expect_error(expect_mapequal(list(1, b = 2), list(1, b = 2)))
+  expect_error(expect_mapequal(list(1, b = 2), list(b = 2, 1)))
 })
 
 test_that("succeeds if comparing empty named and unnamed vectors", {
