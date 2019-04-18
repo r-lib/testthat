@@ -78,8 +78,18 @@ expect_mapequal <- function(object, expected) {
     abort("`object` and `expected` must both be vectors")
   }
 
+  # Length-0 vectors are OK whether named or unnamed.
+  if (length(act$val) == 0 && length(exp$val) == 0) {
+    warn("`object` and `expected` are empty lists")
+    succeed()
+    return(invisible(act$val))
+  }
+
   act_nms <- names(act$val)
   exp_nms <- names(exp$val)
+
+  check_names_ok(act_nms, "object")
+  check_names_ok(exp_nms, "expected")
 
   if (!setequal(act_nms, exp_nms)) {
     act_miss <- setdiff(exp_nms, act_nms)
@@ -98,4 +108,13 @@ expect_mapequal <- function(object, expected) {
   }
 
   invisible(act$val)
+}
+
+check_names_ok <- function(x, label) {
+  if (anyDuplicated(x)) {
+    stop("Duplicate names in `", label, "`: ", unique(x[duplicated(x)]))
+  }
+  if (any(x == "")) {
+    stop("All elements in `", label, "` must be named")
+  }
 }
