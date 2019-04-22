@@ -12,17 +12,13 @@ There were no ERRORs, WARNINGs, or NOTEs.
 
 We checked 4279 reverse dependencies (3808 from CRAN + 471 from BioConductor), comparing R CMD check results across CRAN and dev versions of this package.
 
- * We saw 5 new problems
+ * We saw 4 new problems
  * We failed to check 71 packages
 
 Issues with CRAN packages are summarised below.
 
 ### New problems
 (This reports the first line of each new failure)
-
-* drake
-  checking tests ...
-  https://github.com/ropensci/drake/issues/849
 
 * markmyassignment
   checking whether package ‘markmyassignment’ can be installed ... WARNING

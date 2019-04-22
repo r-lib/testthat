@@ -1,4 +1,4 @@
-# testthat (development version)
+# testthat 2.1.0
 
 ## New expectations
 

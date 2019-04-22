@@ -15,3 +15,4 @@
 ^README\.Rmd$
 ^\.github$
 ^NEWS\.Rmd$
+^CRAN-RELEASE$
