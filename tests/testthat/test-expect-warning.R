@@ -30,6 +30,8 @@ test_that("returns first argument", {
 })
 
 test_that("generates informative failures", {
+  skip_if_not(l10n_info()$`UTF-8`)
+
   expect_known_failure("test-expect-warning.txt", {
     foo <- function() {
       warning("xxx")

@@ -39,6 +39,8 @@ test_that("... passed on to grepl", {
 })
 
 test_that("generates informative failures", {
+  skip_if_not(l10n_info()$`UTF-8`)
+
   expect_known_failure("test-expect-error.txt", {
     expect_error(null())
     expect_error(stop("!"), NA)

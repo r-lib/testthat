@@ -21,3 +21,8 @@ matrix:
   - r: oldrel
   - r: 3.3
   - r: 3.2
+  - name: Strict Latin-1 locale
+    r: release
+    before_script:
+      - sudo locale-gen en_US
+      - export LC_ALL=en_US
