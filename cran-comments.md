@@ -1,3 +1,7 @@
+This is a patch release to fix the test failures in a strict latin1 locale. This did not involve any changes to testthat code, so I did not re-run the revdep tests.
+
+---
+
 ## Test environments
 
 * local OS X install (R-release)

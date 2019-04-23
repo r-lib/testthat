@@ -1,4 +1,6 @@
-# testthat (development version)
+# testthat 2.1.1
+
+* Fix test failures in strict latin1 locale
 
 # testthat 2.1.0
 
