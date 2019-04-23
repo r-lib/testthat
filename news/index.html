@@ -70,7 +70,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">testthat</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.0.1.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.1.0</span>
       </span>
     </div>
 
@@ -125,6 +125,87 @@
       <small>Source: <a href='https://github.com/r-lib/testthat/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
+    <div id="testthat-2-1-0" class="section level1">
+<h1 class="page-header">
+<a href="#testthat-2-1-0" class="anchor"></a>testthat 2.1.0<small> 2019-04-22 </small>
+</h1>
+<div id="new-expectations" class="section level2">
+<h2 class="hasAnchor">
+<a href="#new-expectations" class="anchor"></a>New expectations</h2>
+<ul>
+<li><p>New <code><a href="../reference/expect_invisible.html">expect_visible()</a></code> and <code><a href="../reference/expect_invisible.html">expect_invisible()</a></code> make it easier to check if a function call returns its result visibly or invisibly (<a href='https://github.com/r-lib/testthat/issues/719'>#719</a>).</p></li>
+<li><p>New <code><a href="../reference/expect_setequal.html">expect_mapequal(x, y)</a></code> checks that <code>x</code> and <code>y</code> have the same names, and the same value associated with each name (i.e. they compare the values of the vector standardising the order of the names) (<a href='https://github.com/r-lib/testthat/issues/863'>#863</a>).</p></li>
+<li><p>New <code><a href="../reference/expect_vector.html">expect_vector()</a></code> is a wrapper around <code><a href="https://www.rdocumentation.org/packages/vctrs/topics/vec_assert">vctrs::vec_assert()</a></code> making it easy to test against the vctrs definitions of prototype and size (<a href='https://github.com/r-lib/testthat/issues/846'>#846</a>). (Currently requires development version of vctrs.)</p></li>
+</ul>
+</div>
+<div id="improvements-to-existing-expectations" class="section level2">
+<h2 class="hasAnchor">
+<a href="#improvements-to-existing-expectations" class="anchor"></a>Improvements to existing expectations</h2>
+<ul>
+<li><p>All expectations give clearer error messages if you forget the <code>object</code> or <code>expected</code> arguments (<a href='https://github.com/r-lib/testthat/issues/743'>#743</a>).</p></li>
+<li><p><code><a href="../reference/equality-expectations.html">expect_equal()</a></code> now correctly compares infinite values (<a href='https://github.com/r-lib/testthat/issues/789'>#789</a>).</p></li>
+<li><p>In <code><a href="../reference/expect_known_output.html">expect_equal_to_reference()</a></code>, the default value for <code>update</code> is now <code>FALSE</code> (<a href='https://github.com/BrodieG'>@BrodieG</a>, <a href='https://github.com/r-lib/testthat/issues/683'>#683</a>).</p></li>
+<li><p><code><a href="../reference/output-expectations.html">expect_error()</a></code> now returns the error object as documentated (<a href='https://github.com/r-lib/testthat/issues/724'>#724</a>). It also now warns if you’re using a classed expectation and you’re not using the <code>class</code> argument. This is good practice as it decouples the error object (which tends to be stable) from its rendering to the user (which tends to be fragile) (<a href='https://github.com/r-lib/testthat/issues/816'>#816</a>).</p></li>
+<li><p><code><a href="../reference/equality-expectations.html">expect_identical()</a></code> gains a <code>...</code> argument to pass additional arguments down to <code><a href="https://www.rdocumentation.org/packages/base/topics/identical">identical()</a></code> (<a href='https://github.com/r-lib/testthat/issues/714'>#714</a>).</p></li>
+<li><p><code><a href="../reference/comparison-expectations.html">expect_lt()</a></code>, <code><a href="../reference/comparison-expectations.html">expect_lte()</a></code>, <code><a href="../reference/comparison-expectations.html">expect_gt()</a></code> <code><a href="../reference/comparison-expectations.html">expect_gte()</a></code> now handle <code>Inf</code> and <code>NA</code> arguments appropriately (<a href='https://github.com/r-lib/testthat/issues/732'>#732</a>), and no longer require the inputs to be numeric.</p></li>
+<li><p><code><a href="../reference/output-expectations.html">expect_output()</a></code> gains a <code>width</code> argument, allowing you to control the output width. This does not inherit from <code><a href="https://www.rdocumentation.org/packages/base/topics/options">getOption("width")</a></code>, ensuring that tests return the same results regardless of environment (<a href='https://github.com/r-lib/testthat/issues/805'>#805</a>).</p></li>
+<li><p><code><a href="../reference/expect_setequal.html">expect_setequal()</a></code> now works with more vector types (including lists), because it uses <code>%in%</code>, rather than <code><a href="https://www.rdocumentation.org/packages/base/topics/sort">sort()</a></code>. It also warns if the inputs are named, as this suggests that your mental model of how <code><a href="../reference/expect_setequal.html">expect_setequal()</a></code> works is wrong (<a href='https://github.com/r-lib/testthat/issues/750'>#750</a>).</p></li>
+<li><p><code><a href="../reference/oldskool.html">is_true()</a></code> and <code><a href="../reference/oldskool.html">is_false()</a></code> have been deprecated because they conflict with other functions in the tidyverse.</p></li>
+</ul>
+</div>
+<div id="reporters" class="section level2">
+<h2 class="hasAnchor">
+<a href="#reporters" class="anchor"></a>Reporters</h2>
+<ul>
+<li><p>Reporter documentation has been considerably improved (<a href='https://github.com/r-lib/testthat/issues/657'>#657</a>).</p></li>
+<li><p><code>CheckReporter</code>, used by R CMD check, now includes a count of warnings.</p></li>
+<li><p><code>JUnitReporter</code> no longer replaces <code>.</code> in class names (<a href='https://github.com/r-lib/testthat/issues/753'>#753</a>), and creates ouput that should be more compatible with Jenkins (<a href='https://github.com/r-lib/testthat/issues/806'>#806</a>, <a href='https://github.com/comicfans'>@comicfans</a>).</p></li>
+<li><p><code>ListReporter</code> now records number of passed tests and original results in new columns (<a href='https://github.com/r-lib/testthat/issues/675'>#675</a>).</p></li>
+<li>
+<p><code>ProgressReporter</code>, the default reporter, now:</p>
+<ul>
+<li>
+<p>Automatically generates a context from the file name. We no longer recommend the use of <code><a href="../reference/context.html">context()</a></code> and instead encourage you to delete it, allowing the context to be autogenerated from the file name.</p>
+<p>This also eliminates the error that occured if tests can before the first <code><a href="../reference/context.html">context()</a></code> (<a href='https://github.com/r-lib/testthat/issues/700'>#700</a>, <a href='https://github.com/r-lib/testthat/issues/705'>#705</a>).</p>
+</li>
+<li><p>Gains a <code>update_interval</code> parameter to control how often updates are printed (default 0.1 s). This prevents large printing overhead for very fast tests. (<a href='https://github.com/r-lib/testthat/issues/701'>#701</a>, <a href='https://github.com/jimhester'>@jimhester</a>)</p></li>
+<li><p>Uses a 3 character wide column to display test successes, so up to 999 successful tests can be displayed without changing the alignment (<a href='https://github.com/r-lib/testthat/issues/712'>#712</a>).</p></li>
+</ul>
+</li>
+<li><p><code>reporter$end_reporter()</code> is now only called when testing completes successfully. This ensures that you don’t get unnecessary output when the test fails partway through (<a href='https://github.com/r-lib/testthat/issues/727'>#727</a>).</p></li>
+</ul>
+</div>
+<div id="skips" class="section level2">
+<h2 class="hasAnchor">
+<a href="#skips" class="anchor"></a>Skips</h2>
+<ul>
+<li><p><code><a href="../reference/skip.html">skip_if_offline()</a></code> skips tests if an internet connection is not available (<a href='https://github.com/r-lib/testthat/issues/685'>#685</a>).</p></li>
+<li><p><code><a href="../reference/skip.html">skip_on_ci()</a></code> skips tests on continuous integration systems (<a href='https://github.com/mbjoseph'>@mbjoseph</a>, <a href='https://github.com/r-lib/testthat/issues/825'>#825</a>) by looking for a <code>CI</code> env var..</p></li>
+</ul>
+</div>
+<div id="other-new-features" class="section level2">
+<h2 class="hasAnchor">
+<a href="#other-new-features" class="anchor"></a>Other new features</h2>
+<ul>
+<li><p>New <code><a href="../reference/testthat_examples.html">testthat_examples()</a></code> and <code><a href="../reference/testthat_examples.html">testthat_example()</a></code> make it easy to access new test files bundled with the package. These are used in various examples to make it easier to understand how to use the package.</p></li>
+<li><p>New <code><a href="../reference/with_mock.html">local_mock()</a></code> which allows you to mock a function without having to add an additional layer of indentation as with <code><a href="../reference/with_mock.html">with_mock()</a></code> (<a href='https://github.com/r-lib/testthat/issues/856'>#856</a>).</p></li>
+</ul>
+</div>
+<div id="other-minor-improvements-and-bug-fixes" class="section level2">
+<h2 class="hasAnchor">
+<a href="#other-minor-improvements-and-bug-fixes" class="anchor"></a>Other minor improvements and bug fixes</h2>
+<ul>
+<li><p><code><a href="../reference/auto_test_package.html">auto_test_package()</a></code> works better with recent devtools and also watches <code>src/</code> for changes (<a href='https://github.com/r-lib/testthat/issues/809'>#809</a>).</p></li>
+<li><p><code><a href="../reference/inheritance-expectations.html">expect_s3_class()</a></code> now works with unquoting (<a href='https://github.com/jalsalam'>@jalsalam</a>, <a href='https://github.com/r-lib/testthat/issues/771'>#771</a>).</p></li>
+<li><p><code>expectation</code> objects now contain the failure message, even when successful (<a href='https://github.com/r-lib/testthat/issues/836'>#836</a>)</p></li>
+<li><p><code><a href="https://www.rdocumentation.org/packages/devtools/topics/test">devtools::test()</a></code> no longer fails if run multiple times within the same R session for a package containing Catch tests. (<a href="https://github.com/r-lib/devtools/issues/1832">devtools <a href='https://github.com/r-lib/testthat/issues/1832'>#1832</a></a>)</p></li>
+<li><p>New <code><a href="../reference/test_dir.html">testing_package()</a></code> retrieves the name of the package currently being tested (<a href='https://github.com/r-lib/testthat/issues/699'>#699</a>).</p></li>
+<li><p><code>run_testthat_tests</code> C entrypoint is registered more robustly.</p></li>
+<li><p><code><a href="../reference/skip.html">skip()</a></code> now always produces a <code>message</code> of length 1, as expected elsewhere in testthat (<a href='https://github.com/r-lib/testthat/issues/791'>#791</a>).</p></li>
+<li><p>Warnings are passed through even when <code><a href="https://www.rdocumentation.org/packages/base/topics/options">options(warn = 2)</a></code> is set (<a href='https://github.com/yutannihilation'>@yutannihilation</a>, <a href='https://github.com/r-lib/testthat/issues/721'>#721</a>).</p></li>
+</ul>
+</div>
+</div>
     <div id="testthat-2-0-1" class="section level1">
 <h1 class="page-header">
 <a href="#testthat-2-0-1" class="anchor"></a>testthat 2.0.1<small> 2018-10-13 </small>
@@ -651,6 +732,7 @@
     <div id="tocnav">
       <h2>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
+        <li><a href="#testthat-2-1-0">2.1.0</a></li>
         <li><a href="#testthat-2-0-1">2.0.1</a></li>
         <li><a href="#testthat-2-0-0">2.0.0</a></li>
         <li><a href="#testthat-1-0-2">1.0.2</a></li>
