@@ -59,9 +59,11 @@ test_that("error if any unnamed values", {
 })
 
 test_that("succeeds if comparing empty named and unnamed vectors", {
-  expect_success(expect_mapequal(list(a=1)[0], list(a=1)[0]))
-  expect_success(expect_mapequal(list(), list(a=1)[0]))
-  expect_success(expect_mapequal(list(a=1)[0], list()))
-  expect_success(expect_mapequal(list(), list()))
-  expect_success(expect_mapequal(numeric(), c(a=1)[0]))
+  x1 <- list()
+  x2 <- setNames(list(), character())
+
+  expect_warning(expect_success(expect_mapequal(x1, x1)))
+  expect_warning(expect_success(expect_mapequal(x1, x2)))
+  expect_warning(expect_success(expect_mapequal(x2, x1)))
+  expect_warning(expect_success(expect_mapequal(x2, x2)))
 })
