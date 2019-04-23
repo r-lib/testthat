@@ -23,7 +23,6 @@ matrix:
   - r: 3.2
   - name: Strict Latin-1 locale
     r: release
-    script:
+    before_script:
       - sudo locale-gen en_US
-      - R CMD build --no-manual .
-      - LC_ALL=en_US R CMD check --as-cran *tar.gz
+      - export LC_ALL=en_US
