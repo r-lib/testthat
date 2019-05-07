@@ -1,5 +1,11 @@
 # testthat (development version)
 
+* `skip()` now reports reason for skipping as: `Reason: [skip condition]` (#868).
+
+* `skip_if()` and `skip_if_not()` now report `Reason: [skip condition] is TRUE` and 
+`Reason: [skip condition] is not TRUE` respectively (#868).
+
+
 # testthat 2.1.1
 
 * Fix test failures in strict latin1 locale
