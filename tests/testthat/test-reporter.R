@@ -29,7 +29,7 @@ test_that("reporters produce consistent output", {
   expect_report_unchanged("teamcity")
   expect_report_unchanged("silent")
   expect_report_unchanged("rstudio")
-  expect_report_unchanged("junit", reporter = createJunitReporterMock())
+  expect_report_unchanged("junit", reporter = JunitReporterMock)
 
   # Test that MultiReporter can write to two different places
   tap_file <- tempfile()
