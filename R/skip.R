@@ -53,14 +53,15 @@
 #' })
 skip <- function(message) {
   message <- paste0(message, collapse = "\n")
-  cond <- structure(list(message = message), class = c("skip", "condition"))
+  cond <- structure(list(message = paste('Reason:', message)),
+                    class = c("skip", "condition"))
   stop(cond)
 }
 
 # Called automatically if the test contains no expectations
 skip_empty <- function() {
   cond <- structure(
-    list(message = "Empty test"),
+    list(message = "Reason: empty"),
     class = c("skip_empty", "skip", "condition")
   )
   stop(cond)
