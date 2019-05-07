@@ -2,7 +2,7 @@ Expectations: 1234
 Expectations2: 
 Errors: 56
 Recursion: 7
-Skips: SSS
+Skips: SSSS
 Warnings: WWW
 Output: 
 End: 
@@ -14,12 +14,14 @@ End:
 
 3. Skip:3 (@tests.R#72) - Reason: empty
 
+4. Skip:4 (@tests.R#77) - Reason: condition is TRUE
+
 ══ Warnings ════════════════════════════════════════════════════════════════════
-1. Warning:1 (@tests.R#78) - abc
+1. Warning:1 (@tests.R#83) - abc
 
-2. Warning:2 (@tests.R#84) - def
+2. Warning:2 (@tests.R#89) - def
 
-3. Warning:2 (@tests.R#85) - ghi
+3. Warning:2 (@tests.R#90) - ghi
 
 ══ Failed ══════════════════════════════════════════════════════════════════════
 ── 1. Failure: Failure:1 (@tests.R#12)  ────────────────────────────────────────

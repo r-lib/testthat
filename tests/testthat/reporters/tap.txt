@@ -1,4 +1,4 @@
-1..18
+1..19
 ok 1 Success
 # Context Expectations
 ok 2 Success
@@ -51,10 +51,11 @@ not ok 10 Recursion:1
 ok 11 # SKIP Reason: skip
 ok 12 # SKIP Reason: skip
 ok 13 # SKIP Reason: empty
+ok 14 # SKIP Reason: condition is TRUE
 # Context Warnings
-ok 14 # WARNING abc
-ok 15 # WARNING def
-ok 16 # WARNING ghi
+ok 15 # WARNING abc
+ok 16 # WARNING def
+ok 17 # WARNING ghi
 # Context Output
-ok 17 Output:1
 ok 18 Output:1
+ok 19 Output:1

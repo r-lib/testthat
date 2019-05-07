@@ -81,7 +81,8 @@ This is deep
 ⠋ |   0     1 | Skips
 ⠙ |   0     2 | Skips
 ⠹ |   0     3 | Skips
-✔ |   0     3 | Skips
+⠸ |   0     4 | Skips
+✔ |   0     4 | Skips
 ────────────────────────────────────────────────────────────────────────────────
 tests.R:62: skip: Skip:1
 Reason: skip
@@ -91,6 +92,9 @@ Reason: skip
 
 tests.R:72: skip: Skip:3
 Reason: empty
+
+tests.R:77: skip: Skip:4
+Reason: condition is TRUE
 ────────────────────────────────────────────────────────────────────────────────
 
 ⠏ |   0       | Warnings
@@ -99,13 +103,13 @@ Reason: empty
 ⠹ |   0   3   | Warnings
 ✔ |   0   3   | Warnings
 ────────────────────────────────────────────────────────────────────────────────
-tests.R:78: warning: Warning:1
+tests.R:83: warning: Warning:1
 abc
 
-tests.R:84: warning: Warning:2
+tests.R:89: warning: Warning:2
 def
 
-tests.R:85: warning: Warning:2
+tests.R:90: warning: Warning:2
 ghi
 ────────────────────────────────────────────────────────────────────────────────
 
@@ -121,4 +125,4 @@ ghi
 OK:       5
 Failed:   7
 Warnings: 3
-Skipped:  3
+Skipped:  4

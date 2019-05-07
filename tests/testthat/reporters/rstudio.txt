@@ -8,6 +8,7 @@ reporters/tests.R#56:1 [error] Recursion:1. This is deep
 reporters/tests.R#62:1 [skip] Skip:1. Reason: skip
 reporters/tests.R#69:1 [skip] Skip:2. Reason: skip
 reporters/tests.R#72:1 [skip] Skip:3. Reason: empty
-reporters/tests.R#78:1 [warning] Warning:1. abc
-reporters/tests.R#84:1 [warning] Warning:2. def
-reporters/tests.R#85:1 [warning] Warning:2. ghi
+reporters/tests.R#77:1 [skip] Skip:4. Reason: condition is TRUE
+reporters/tests.R#83:1 [warning] Warning:1. abc
+reporters/tests.R#89:1 [warning] Warning:2. def
+reporters/tests.R#90:1 [warning] Warning:2. ghi

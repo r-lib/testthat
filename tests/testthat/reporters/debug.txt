@@ -50,10 +50,13 @@
 1: tests.R#72: test_that("Skip:3", {
 })
 
-1: tests.R#78: warning("abc")
+1: tests.R#77: skip_if(condition)
+2: skip.R#86: skip(message)
 
-1: tests.R#84: warning("def")
+1: tests.R#83: warning("abc")
 
-1: tests.R#85: f()
-2: tests.R#82: warning("ghi")
+1: tests.R#89: warning("def")
+
+1: tests.R#90: f()
+2: tests.R#87: warning("ghi")
 
