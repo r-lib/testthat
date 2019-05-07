@@ -71,7 +71,8 @@ skip_empty <- function() {
 #' @rdname skip
 #' @param condition Boolean condition to check. `skip_if_not()` will skip if
 #'   `FALSE`, `skip_if()` will skip if `TRUE`.
-skip_if_not <- function(condition, message = deparse(substitute(condition))) {
+skip_if_not <- function(condition,message = deparse(substitute(condition))) {
+  message <- paste(message, 'is not TRUE')
   if (!isTRUE(condition)) {
     skip(message)
   }
@@ -80,6 +81,7 @@ skip_if_not <- function(condition, message = deparse(substitute(condition))) {
 #' @export
 #' @rdname skip
 skip_if <- function(condition, message = deparse(substitute(condition))) {
+  message <- paste(message, 'is TRUE')
   if (isTRUE(condition)) {
     skip(message)
   }
