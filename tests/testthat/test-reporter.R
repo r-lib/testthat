@@ -36,8 +36,7 @@ test_that("reporters produce consistent output", {
 })
 
 test_that('debug reporter produces consistent output', {
-  skip_on_cran()
-  skip_on_ci()
+  skip_if_not(interactive())
   with_mock(
     show_menu = function(choices, title = NULL) {
       cat(paste0(format(seq_along(choices)), ": ", choices, sep = "\n"), "\n", sep = "")
