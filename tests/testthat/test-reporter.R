@@ -9,14 +9,6 @@ expect_report_unchanged <- function(name, reporter = find_reporter(name)) {
 }
 
 test_that("reporters produce consistent output", {
-  with_mock(
-    show_menu = function(choices, title = NULL) {
-      cat(paste0(format(seq_along(choices)), ": ", choices, sep = "\n"), "\n", sep = "")
-      0L
-    },
-    sink_number = function() 0L,
-    expect_report_unchanged("debug")
-  )
 
   expect_report_unchanged("check", CheckReporter$new())
   expect_report_unchanged("progress", ProgressReporter$new(show_praise = FALSE, min_time = Inf, update_interval = 0))
@@ -40,6 +32,19 @@ test_that("reporters produce consistent output", {
   expect_identical(
     read_lines(tap_file),
     read_lines(test_path("reporters", "tap.txt"))
+  )
+})
+
+test_that('debug reporter produces consistent output', {
+  skip_on_cran()
+  skip_on_ci()
+  with_mock(
+    show_menu = function(choices, title = NULL) {
+      cat(paste0(format(seq_along(choices)), ": ", choices, sep = "\n"), "\n", sep = "")
+      0L
+    },
+    sink_number = function() 0L,
+    expect_report_unchanged("debug")
   )
 })
 
