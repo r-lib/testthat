@@ -62,7 +62,6 @@ test_that("reporters accept a 'file' argument and write to that location", {
   expect_report_to_file(TapReporter)
   expect_report_to_file(TeamcityReporter)
   expect_report_to_file(RstudioReporter)
-  expect_report_to_file(SilentReporter)
 })
 
 test_that("reporters write to 'testthat.output_file', if specified", {
