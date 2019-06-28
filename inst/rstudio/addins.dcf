@@ -1,0 +1,4 @@
+Name: Continuously test your package
+Description: Continuously watches a package for changes, rerunning tests as appropriate.
+Binding: auto_test_package
+Interactive: true
