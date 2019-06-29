@@ -27,11 +27,23 @@ test_that("temp file have the expected name and content", {
   expect_equal(content2, "c")
 })
 
+test_that(
+  "verify_job_exists returns error is job is not provided nor exists",
+  {
+    skip_if(!rstudioapi::isAvailable("1.2"))
 
+    expect_error(job_exists(), "Must specify job ID")
+    expect_error(job_exists(1), "does not exist")
+  }
+)
 
-test_that("verify_job_exists works", {
-  skip_if(!rstudioapi::isAvailable("1.2"))
-
-  expect_error(job_exists(), "Must specify job ID")
-  expect_error(job_exists(1), "does not exist")
+test_that("explain_how_to_close_job return messages and FALSE", {
+  expect_warning(explain_how_to_close_job(),
+    "jobs cannot be closed automatically"
+  )
+  expect_message(
+    suppressWarnings(explain_how_to_close_job()),
+    "Jobs can be stopped manually"
+  )
+  expect_false(suppressWarnings(explain_how_to_close_job()))
 })

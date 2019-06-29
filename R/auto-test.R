@@ -175,31 +175,11 @@ auto_test_package_job <- function(pkg = ".", ...) {
 stop_auto_test_job <- function(job) {
   check_dep_version("rstudioapi")
   rstudioapi::verifyAvailable("1.2")
+  verify_job_exists(job)
 
-  tryCatch(
-    rstudioapi::jobAddProgress(job, 0),
-    error = function(e) {
-      if (grepl("not exists", e)) {
-        stop(paste0("Job ID ", job, " does not exists"), call. = FALSE)
-      } else {
-        stop(e, call. = FALSE)
-      }
-    }
-  )
-
-  tryCatch({
-      rstudioapi::launcherControlJob(job, "stop")
-      cat(paste0("Job ", colourise(job, "skip"), " stopped.\n"))
-      cat("The package is no more contiuously tested.\n")
-      return(invisible(TRUE))
-    },
-      error = function(e) {
-        cat(colourise(e, 'error'))
-        cat(paste(
-          'Stop the job from the ', colourise("Jobs", "success"),
-          ' pane, or restarting the current R session.\n'
-        ))
-        return(invisible(FALSE))
-      }
-  )
+  if (can_close_job()) {
+    close_auto_test_package_job(job)
+  } else {
+    explain_how_to_close_job()
+  }
 }
