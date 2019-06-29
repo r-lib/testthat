@@ -137,6 +137,12 @@ auto_test_package <- function(pkg = ".", reporter = default_reporter(), hash = T
 #' @keywords debugging
 #' @seealso [auto_test()] for details on how method works
 auto_test_package_job <- function(pkg = ".", ...) {
+  if (!requireNamespace("rstudioapi", quietly = TRUE)) {
+    stop(
+      "rstudioapi required to run auto_test_package_job(). Please install.",
+      call. = FALSE
+    )
+  }
   if (!rstudioapi::isAvailable())
     usethis::ui_stop("`auto_test_package_job` must runs in RStudio.")
 
@@ -176,6 +182,12 @@ testthat::auto_test_package(pkg = "', path_to_write(pkg_path), '")
 }
 
 stop_auto_test_job <- function(job) {
+  if (!requireNamespace("rstudioapi", quietly = TRUE)) {
+    stop(
+      "rstudioapi required to run auto_test_package_job(). Please install.",
+      call. = FALSE
+    )
+  }
   if (!rstudioapi::isAvailable())
     usethis::ui_stop("`stop_auto_test_job` must runs in RStudio.")
 
