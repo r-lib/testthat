@@ -126,3 +126,73 @@ auto_test_package <- function(pkg = ".", reporter = default_reporter(), hash = T
   }
   watch(c(code_path, test_path), watcher, hash = hash)
 }
+
+
+#' Run auto_test_package in a local job of RStudio
+#'
+#' @param pkg path to package
+#' @param ... Argument to be passed to \code{\link{auto_test_package}}
+#'
+#' @export
+#' @keywords debugging
+#' @seealso [auto_test()] for details on how method works
+auto_test_package_job <- function(pkg = ".", ...) {
+  if (!rstudioapi::isAvailable())
+    usethis::ui_stop("`auto_test_package_job` must runs in RStudio.")
+
+  pkg_path <- normalizePath(pkg)
+  pkg_name <- basename(pkg_path)
+
+  # File name is reported in the Job tab.
+  tmp <- tempfile(paste0(pkg_name, "_auto_test-"), fileext = ".r")
+
+  paste0('
+testthat::auto_test_package(pkg = "', path_to_write(pkg_path), '")
+
+'
+  ) %>%
+    write_lines(tmp)
+
+
+  job <- rstudioapi::jobRunScript(tmp)
+
+
+  usethis::ui_done(paste0(
+    "Job {usethis::ui_value(job)} is testing the package ",
+    "{usethis::ui_field(basename(pkg_path))} continuously."
+  ))
+  usethis::ui_info(paste0(
+    "Tests will rerunning at any saved change into ",
+    "{usethis::ui_field('R/')}, {usethis::ui_field('src/')}, or ",
+    "{usethis::ui_field('test/testthat/')} folders."
+  ))
+  usethis::ui_todo(paste(
+    'Stop the job from the {ui_field("Jobs")} pane,',
+    'restarting the current R session, or calling:'
+  ))
+  usethis::ui_code_block('stop_auto_test_job("{job}")')
+
+  invisible(job)
+}
+
+stop_auto_test_job <- function(job) {
+  if (!rstudioapi::isAvailable())
+    usethis::ui_stop("`stop_auto_test_job` must runs in RStudio.")
+
+
+  tryCatch({
+      rstudioapi::launcherControlJob(job, "stop")
+      usethis::ui_done("Job {job} stopped.")
+      usethis::ui_info("The package is no more contiuously tested.")
+    },
+      error = function(e) {
+        usethis::ui_oops(e)
+        usethis::ui_todo(paste(
+          'Stop the job from the {ui_field("Jobs")} pane, or',
+          'restarting the current R session.'
+        ))
+      }
+  )
+
+  invisible(job)
+}
