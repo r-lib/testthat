@@ -177,7 +177,7 @@ stop_auto_test_job <- function(job) {
   rstudioapi::verifyAvailable("1.2")
   verify_job_exists(job)
 
-  if (can_close_job()) {
+  if (can_close_jobs()) {
     close_auto_test_package_job(job)
   } else {
     explain_how_to_close_job()

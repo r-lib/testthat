@@ -32,8 +32,8 @@ test_that(
   {
     skip_if(!rstudioapi::isAvailable("1.2"))
 
-    expect_error(job_exists(), "Must specify job ID")
-    expect_error(job_exists(1), "does not exist")
+    expect_error(verify_job_exists(), "Must specify job ID")
+    expect_error(verify_job_exists(1), "does not exist")
   }
 )
 

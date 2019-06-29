@@ -8,12 +8,12 @@ tmp_for_job <- function(name, content) {
   invisible(tmp)
 }
 
-job_exists <- function(job) {
+verify_job_exists <- function(job) {
   rstudioapi::jobAddProgress(job, 0)
   invisible(TRUE)
 }
 
-can_close_job <- function() {
+can_close_jobs <- function() {
   rstudioapi::hasFun("launcher.controlJob")
 }
 
