@@ -132,7 +132,7 @@ auto_test_package <- function(pkg = ".", reporter = default_reporter(), hash = T
 #'
 #' @param pkg path to package
 #' @param ... Argument to be passed to \code{\link{auto_test_package}}
-#'
+#' @return the opened job's id (invisibly)
 #' @export
 #' @keywords debugging
 #' @seealso [auto_test()] for details on how method works
@@ -144,7 +144,7 @@ auto_test_package_job <- function(pkg = ".", ...) {
     )
   }
   if (!rstudioapi::isAvailable())
-    usethis::ui_stop("`auto_test_package_job` must runs in RStudio.")
+    stop("`auto_test_package_job` must runs in RStudio.", call. = FALSE)
 
   pkg_path <- normalizePath(pkg)
   pkg_name <- basename(pkg_path)
@@ -163,24 +163,32 @@ testthat::auto_test_package(pkg = "', path_to_write(pkg_path), '")
   job <- rstudioapi::jobRunScript(tmp)
 
 
-  usethis::ui_done(paste0(
-    "Job {usethis::ui_value(job)} is testing the package ",
-    "{usethis::ui_field(basename(pkg_path))} continuously."
+  cat(paste0(
+    "Job ", colourise(job, "skip"), " is testing the package ",
+    colourise(basename(pkg_path), "success"), " continuously.\n"
   ))
-  usethis::ui_info(paste0(
+  cat(paste0(
     "Tests will rerunning at any saved change into ",
-    "{usethis::ui_field('R/')}, {usethis::ui_field('src/')}, or ",
-    "{usethis::ui_field('test/testthat/')} folders."
+    colourise('R/', 'success'), ", ", colourise('src/', 'success'),
+    ", or ", colourise('test/testthat/', 'success'), " folders.\n"
   ))
-  usethis::ui_todo(paste(
-    'Stop the job from the {ui_field("Jobs")} pane,',
-    'restarting the current R session, or calling:'
+  cat(paste0(
+    'Stop the job from the ', colourise("Jobs", "success"), ' pane, ',
+    'restarting the current R session, or calling:
+    ',colourise(paste0('stop_auto_test_job("', job, '")'), 'skip'), '\n'
   ))
-  usethis::ui_code_block('stop_auto_test_job("{job}")')
 
   invisible(job)
 }
 
+#' @param job The job id
+#' @export
+#' @return TRUE (invisibly) if the job is closed, FALSE otherwise.
+#' @keywords debugging
+#' @describeIn auto_test_package_job Stop the process running the
+#'   continuous tests on the package (if it is run not in the
+#'   open-source edition of RStudio), or describe two alternative to
+#'   stop it manually.
 stop_auto_test_job <- function(job) {
   if (!requireNamespace("rstudioapi", quietly = TRUE)) {
     stop(
@@ -188,23 +196,34 @@ stop_auto_test_job <- function(job) {
       call. = FALSE
     )
   }
-  if (!rstudioapi::isAvailable())
-    usethis::ui_stop("`stop_auto_test_job` must runs in RStudio.")
 
+  if (!rstudioapi::isAvailable(version_needed = "1.2"))
+    stop("`stop_auto_test_job` must runs in RStudio.", call. = FALSE)
+
+  tryCatch(
+    rstudioapi::jobAddProgress(job, 0),
+    error = function(e) {
+      if (grepl("not exists", e)) {
+        stop(paste0("Job ID ", job, " does not exists"), call. = FALSE)
+      } else {
+        stop(e, call. = FALSE)
+      }
+    }
+  )
 
   tryCatch({
       rstudioapi::launcherControlJob(job, "stop")
-      usethis::ui_done("Job {job} stopped.")
-      usethis::ui_info("The package is no more contiuously tested.")
+      cat(paste0("Job ", colourise(job, "skip"), " stopped.\n"))
+      cat("The package is no more contiuously tested.\n")
+      return(invisible(TRUE))
     },
       error = function(e) {
-        usethis::ui_oops(e)
-        usethis::ui_todo(paste(
-          'Stop the job from the {ui_field("Jobs")} pane, or',
-          'restarting the current R session.'
+        cat(colourise(e, 'error'))
+        cat(paste(
+          'Stop the job from the ', colourise("Jobs", "success"),
+          ' pane, or restarting the current R session.\n'
         ))
+        return(invisible(FALSE))
       }
   )
-
-  invisible(job)
 }
