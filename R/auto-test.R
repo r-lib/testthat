@@ -136,20 +136,14 @@ auto_test_package_job <- function(pkg = ".", ...) {
   rstudioapi::verifyAvailable("1.2")
 
   pkg_path <- normalizePath(pkg)
-  pkg_name <- basename(pkg_path)
 
   # File name is reported in the Job tab.
-  tmp <- tempfile(paste0(pkg_name, "_auto_test-"), fileext = ".r")
+  tmp_name    <- paste0(basename(pkg_path), "_auto_test")
+  tmp_content <- paste0(
+    'testthat::auto_test_package(pkg = "', path_to_write(pkg_path), '")'
+)
 
-  paste0('
-testthat::auto_test_package(pkg = "', path_to_write(pkg_path), '")
-
-'
-  ) %>%
-    write_lines(tmp)
-
-
-  job <- rstudioapi::jobRunScript(tmp)
+  job <- rstudioapi::jobRunScript(tmp_for_job(tmp_name, tmp_content))
 
 
   cat(paste0(
