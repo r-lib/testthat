@@ -12,7 +12,3 @@ write_lines <- function(text, path) {
 all_utf8 <- function(x) {
   !any(is.na(iconv(x, "UTF-8", "UTF-8")))
 }
-
-path_to_write <- function(x) {
-  normalizePath(x, winslash = "/", mustWork = FALSE)
-}
