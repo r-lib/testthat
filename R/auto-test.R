@@ -80,6 +80,8 @@ auto_test_package <- function(pkg = ".", reporter = default_reporter(), hash = T
     )
   }
 
+  stopifnot(is.logical(hash))
+
   reporter <- find_reporter(reporter)
 
   path <- pkg
