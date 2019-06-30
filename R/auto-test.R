@@ -73,7 +73,13 @@ auto_test <- function(code_path, test_path, reporter = default_reporter(),
 #' @keywords debugging
 #' @seealso [auto_test()] for details on how method works
 auto_test_package <- function(pkg = ".", reporter = default_reporter(), hash = TRUE) {
-  check_dep_version("devtools")
+  if (!requireNamespace("devtools", quietly = TRUE)) {
+    stop(
+      "devtools required to run auto_test_package(). Please install.",
+      call. = FALSE
+    )
+  }
+
 
   reporter <- find_reporter(reporter)
 
@@ -132,7 +138,13 @@ auto_test_package <- function(pkg = ".", reporter = default_reporter(), hash = T
 #' @keywords debugging
 #' @seealso [auto_test()] for details on how method works
 auto_test_package_job <- function(pkg = ".", ...) {
-  check_dep_version("rstudioapi")
+  if (!requireNamespace("devtools", quietly = TRUE)) {
+    stop(
+      "devtools required to run auto_test_package(). Please install.",
+      call. = FALSE
+    )
+  }
+  devtools::check_dep_version("rstudioapi")
   rstudioapi::verifyAvailable("1.2")
 
   pkg_path <- normalizePath(pkg)

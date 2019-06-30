@@ -104,5 +104,6 @@ Collate:
     'traceback.R'
     'try-again.R'
     'utils-io.R'
+    'utils-job.R'
     'utils.R'
     'watcher.R'

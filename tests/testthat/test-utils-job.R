@@ -27,9 +27,7 @@ test_that("temp file have the expected name and content", {
   expect_equal(content2, "c")
 })
 
-test_that(
-  "verify_job_exists returns error is job is not provided nor exists",
-  {
+test_that("verify_job_exists returns error correctly", {
     skip_if(!rstudioapi::isAvailable("1.2"))
 
     expect_error(verify_job_exists(), "Must specify job ID")
