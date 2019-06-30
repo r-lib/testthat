@@ -36,3 +36,14 @@ explain_how_to_close_job <- function() {
   ))
   invisible(FALSE)
 }
+
+
+devtools_required <- function() {
+  if (!requireNamespace("devtools", quietly = TRUE)) {
+    stop(
+      "devtools required to run auto_test_package(). Please install.",
+      call. = FALSE
+    )
+  }
+
+}

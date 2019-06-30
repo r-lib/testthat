@@ -73,13 +73,7 @@ auto_test <- function(code_path, test_path, reporter = default_reporter(),
 #' @keywords debugging
 #' @seealso [auto_test()] for details on how method works
 auto_test_package <- function(pkg = ".", reporter = default_reporter(), hash = TRUE) {
-  if (!requireNamespace("devtools", quietly = TRUE)) {
-    stop(
-      "devtools required to run auto_test_package(). Please install.",
-      call. = FALSE
-    )
-  }
-
+  devtools_required()
 
   reporter <- find_reporter(reporter)
 
@@ -138,12 +132,7 @@ auto_test_package <- function(pkg = ".", reporter = default_reporter(), hash = T
 #' @keywords debugging
 #' @seealso [auto_test()] for details on how method works
 auto_test_package_job <- function(pkg = ".", ...) {
-  if (!requireNamespace("devtools", quietly = TRUE)) {
-    stop(
-      "devtools required to run auto_test_package(). Please install.",
-      call. = FALSE
-    )
-  }
+  devtools_required()
   devtools::check_dep_version("rstudioapi")
   rstudioapi::verifyAvailable("1.2")
 
@@ -185,7 +174,8 @@ auto_test_package_job <- function(pkg = ".", ...) {
 #'   open-source edition of RStudio), or describe two alternative to
 #'   stop it manually.
 stop_auto_test_job <- function(job) {
-  check_dep_version("rstudioapi")
+  devtools_required()
+  devtools::check_dep_version("rstudioapi")
   rstudioapi::verifyAvailable("1.2")
   verify_job_exists(job)
 
