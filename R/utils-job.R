@@ -15,12 +15,12 @@ verify_job_exists <- function(job) {
   invisible(TRUE)
 }
 
-can_close_jobs <- function() {
+can_stop_jobs <- function() {
   if (!rstudioapi::isAvailable("1.2")) return(FALSE)
   rstudioapi::hasFun("launcher.controlJob")
 }
 
-close_auto_test_package_job <- function(job) {
+stop_auto_test_package_job <- function(job) {
   rstudioapi::verifyAvailable("1.2")
 
   rstudioapi::launcherControlJob(job, "stop")
@@ -29,9 +29,9 @@ close_auto_test_package_job <- function(job) {
   invisible(TRUE)
 }
 
-explain_how_to_close_job <- function() {
+explain_how_to_stop_job <- function() {
   warning(colourise(
-    "In this version of RStudio, jobs cannot be closed automatically\n",
+    "In this version of RStudio, jobs cannot be stopped automatically\n",
     "warning"
   ), call. = FALSE)
   message(paste0(

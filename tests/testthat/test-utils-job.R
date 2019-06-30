@@ -36,33 +36,33 @@ test_that("verify_job_exists returns error correctly", {
   }
 })
 
-test_that("explain_how_to_close_job return messages and FALSE", {
-  expect_warning(explain_how_to_close_job(),
-    "jobs cannot be closed automatically"
+test_that("explain_how_to_stop_job return messages and FALSE", {
+  expect_warning(explain_how_to_stop_job(),
+    "jobs cannot be stopped automatically"
   )
   expect_message(
-    suppressWarnings(explain_how_to_close_job()),
+    suppressWarnings(explain_how_to_stop_job()),
     "Jobs can be stopped manually"
   )
-  expect_false(suppressWarnings(explain_how_to_close_job()))
+  expect_false(suppressWarnings(explain_how_to_stop_job()))
 })
 
 
-test_that("can_close_jobs", {
+test_that("can_stop_jobs", {
   if (!rstudioapi::isAvailable("1.2")) {
-    expect_false(can_close_jobs())
+    expect_false(can_stop_jobs())
   } else if (rstudioapi::hasFun("launcher.controlJob")) {
-    expect_true(can_close_jobs())
+    expect_true(can_stop_jobs())
   } else {
-    expect_false(can_close_jobs())
+    expect_false(can_stop_jobs())
   }
 })
 
 
-test_that("close_auto_test_package_job", {
+test_that("stop_auto_test_package_job", {
   if (!rstudioapi::isAvailable("1.2")) {
     expect_error(
-      close_auto_test_package_job(),
+      stop_auto_test_package_job(),
       "Need at least|RStudio not running"
     )
   }

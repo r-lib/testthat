@@ -24,16 +24,16 @@ test_that("stop_auto_test_job throw expected errors", {
     )
 
 
-  } else if (can_close_jobs()) {
+  } else if (can_stop_jobs()) {
     expect_error(stop_auto_test_job(1), "does not exists")
 
   } else {
     expect_warning(stop_auto_test_job(),
-      "jobs cannot be closed automatically"
+      "jobs cannot be stopped automatically"
     )
 
     expect_message(suppressWarnings(stop_auto_test_job()),
-      "jobs can be closed manually"
+      "Jobs can be stopped manually"
     )
   }
 })

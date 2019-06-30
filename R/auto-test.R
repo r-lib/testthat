@@ -171,7 +171,7 @@ auto_test_package_job <- function(pkg = ".", ...) {
 
 #' @param job The job id
 #' @export
-#' @return TRUE (invisibly) if the job is closed, FALSE otherwise.
+#' @return TRUE (invisibly) if the job is stopped, FALSE otherwise.
 #' @keywords debugging
 #' @describeIn auto_test_package_job Stop the process running the
 #'   continuous tests on the package (if it is run not in the
@@ -181,10 +181,10 @@ stop_auto_test_job <- function(job) {
   rstudioapi_required()
   rstudioapi::verifyAvailable("1.2")
 
-  if (can_close_jobs()) {
+  if (can_stop_jobs()) {
     verify_job_exists(job)
-    close_auto_test_package_job(job)
+    stop_auto_test_package_job(job)
   } else {
-    explain_how_to_close_job()
+    explain_how_to_stop_job()
   }
 }
