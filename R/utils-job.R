@@ -42,11 +42,10 @@ explain_how_to_close_job <- function() {
   invisible(FALSE)
 }
 
-
-devtools_required <- function() {
-  if (!requireNamespace("devtools", quietly = TRUE)) {
+rstudioapi_required <- function() {
+  if (!requireNamespace("rstudioapi", quietly = TRUE)) {
     stop(
-      "devtools required to run auto_test_package(). Please install.",
+      "rstudioapi required to run auto_test_package_job(). Please install.",
       call. = FALSE
     )
   }
