@@ -19,7 +19,7 @@ stop_auto_test_job(job)
 \value{
 the opened job's id (invisibly)
 
-TRUE (invisibly) if the job is closed, FALSE otherwise.
+TRUE (invisibly) if the job is stopped, FALSE otherwise.
 }
 \description{
 Run auto_test_package in a local job of RStudio
