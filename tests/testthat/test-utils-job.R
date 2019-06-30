@@ -28,12 +28,13 @@ test_that("temp file have the expected name and content", {
 })
 
 test_that("verify_job_exists returns error correctly", {
-    skip_if(!rstudioapi::isAvailable("1.2"))
-
+  if (!rstudioapi::isAvailable("1.2")) {
+    expect_false(verify_job_exists())
+  } else {
     expect_error(verify_job_exists(), "Must specify job ID")
     expect_error(verify_job_exists(1), "does not exist")
   }
-)
+})
 
 test_that("explain_how_to_close_job return messages and FALSE", {
   expect_warning(explain_how_to_close_job(),
@@ -44,4 +45,35 @@ test_that("explain_how_to_close_job return messages and FALSE", {
     "Jobs can be stopped manually"
   )
   expect_false(suppressWarnings(explain_how_to_close_job()))
+})
+
+
+test_that("can_close_jobs", {
+  if (!rstudioapi::isAvailable("1.2")) {
+    expect_false(can_close_jobs())
+  } else if (rstudioapi::hasFun("launcher.controlJob")) {
+    expect_true(can_close_jobs())
+  } else {
+    expect_false(can_close_jobs())
+  }
+})
+
+
+test_that("close_auto_test_package_job", {
+  if (!rstudioapi::isAvailable("1.2")) {
+    expect_error(
+      close_auto_test_package_job(),
+      "Need at least|RStudio not running"
+    )
+  }
+})
+
+
+
+test_that("devtools_required", {
+  if (requireNamespace("devtools")) {
+    expect_true(devtools_required())
+  } else {
+    expect_error(devtools_required(), "devtools required")
+  }
 })

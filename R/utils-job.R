@@ -9,15 +9,20 @@ tmp_for_job <- function(name, content) {
 }
 
 verify_job_exists <- function(job) {
+  if (!rstudioapi::isAvailable("1.2")) return(FALSE)
+
   rstudioapi::jobAddProgress(job, 0)
   invisible(TRUE)
 }
 
 can_close_jobs <- function() {
+  if (!rstudioapi::isAvailable("1.2")) return(FALSE)
   rstudioapi::hasFun("launcher.controlJob")
 }
 
 close_auto_test_package_job <- function(job) {
+  rstudioapi::verifyAvailable("1.2")
+
   rstudioapi::launcherControlJob(job, "stop")
   cat(paste0("Job ", colourise(job, "skip"), " stopped.\n"))
   cat("The package is no more contiuously tested.\n")
@@ -45,5 +50,7 @@ devtools_required <- function() {
       call. = FALSE
     )
   }
-
+  invisible(TRUE)
 }
+
+
