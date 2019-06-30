@@ -70,10 +70,10 @@ test_that("close_auto_test_package_job", {
 
 
 
-test_that("devtools_required", {
-  if (requireNamespace("devtools")) {
-    expect_true(devtools_required())
+test_that("rstudioapi_required", {
+  if (requireNamespace("rstudioapi")) {
+    expect_true(rstudioapi_required())
   } else {
-    expect_error(devtools_required(), "devtools required")
+    expect_error(rstudioapi_required(), "rstudioapi required")
   }
 })
