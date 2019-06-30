@@ -32,8 +32,9 @@ auto_test <- function(code_path, test_path, reporter = default_reporter(),
                       env = test_env(),
                       hash = TRUE) {
   reporter <- find_reporter(reporter)
-  code_path <- normalizePath(code_path)
-  test_path <- normalizePath(test_path)
+
+  code_path <- normalizePath(code_path, mustWork = TRUE)
+  test_path <- normalizePath(test_path, mustWork = TRUE)
 
   # Start by loading all code and running all tests
   source_dir(code_path, env = env)
