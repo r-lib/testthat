@@ -178,12 +178,11 @@ auto_test_package_job <- function(pkg = ".", ...) {
 #'   open-source edition of RStudio), or describe two alternative to
 #'   stop it manually.
 stop_auto_test_job <- function(job) {
-  devtools_required()
-  devtools::check_dep_version("rstudioapi")
+  rstudioapi_required()
   rstudioapi::verifyAvailable("1.2")
-  verify_job_exists(job)
 
   if (can_close_jobs()) {
+    verify_job_exists(job)
     close_auto_test_package_job(job)
   } else {
     explain_how_to_close_job()
