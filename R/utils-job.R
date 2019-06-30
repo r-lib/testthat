@@ -52,4 +52,12 @@ rstudioapi_required <- function() {
   invisible(TRUE)
 }
 
+code_path_from_pkg <- function(pkg) {
+  code_path <- file.path(pkg$path, c("R", "src"))
+  code_path <- code_path[file.exists(code_path)]
+  normalizePath(code_path)
+}
 
+test_path_from_pkg <- function(pkg) {
+  normalizePath(file.path(pkg$path, "tests", "testthat"))
+}

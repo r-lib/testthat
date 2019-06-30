@@ -47,7 +47,6 @@ test_that("auto_test_package throw expected error", {
 })
 
 test_that("auto_test throw expected error", {
-  cat("\n\n\n1111111111111111111111111111111111111111111111111111\n\n\n")
   expect_error(auto_test(), "missing")
   expect_error(auto_test(1), "invalid 'path'")
   expect_error(auto_test("./test_dir/", test_path = 1), "invalid 'path'")
@@ -59,14 +58,11 @@ test_that("auto_test throw expected error", {
     auto_test("./test_dir/", "./test_dir/", env = 1),
     "is not TRUE"
   )
-  cat("\n\n\n222222222222222222222222222222222222222222222222222\n\n\n")
   expect_error(
     auto_test("./test_dir/aaaaaaaaaaa", "./test_dir/")
   )
-  cat("\n\n\n333333333333333333333333333333333333333333333333333\n\n\n")
   expect_error(
     auto_test("./test_dir/", "./test_dir/aaaaaaaaaaa")
   )
-  cat("\n\n\n444444444444444444444444444444444444444444444444444\n\n\n")
 })
 

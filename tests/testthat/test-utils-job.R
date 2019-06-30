@@ -68,12 +68,27 @@ test_that("stop_auto_test_package_job", {
   }
 })
 
-
-
 test_that("rstudioapi_required", {
   if (requireNamespace("rstudioapi")) {
     expect_true(rstudioapi_required())
   } else {
     expect_error(rstudioapi_required(), "rstudioapi required")
   }
+})
+
+
+test_that("code_path_from_pkg", {
+  pkg <- devtools::as.package("../..")
+  expect_equal(
+    basename(code_path_from_pkg(pkg)),
+    c("R", "src")
+  )
+})
+
+test_that("test_path_from_pkg", {
+  pkg <- devtools::as.package("../..")
+  expect_equal(
+    basename(test_path_from_pkg(pkg)),
+    c("testthat")
+  )
 })
