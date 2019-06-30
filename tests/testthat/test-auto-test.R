@@ -38,11 +38,34 @@ test_that("stop_auto_test_job throw expected errors", {
   }
 })
 
-test_that("auto_test throw expected error", {
+test_that("auto_test_package throw expected error", {
   expect_error(auto_test_package(1), "must be a string")
   expect_error(auto_test_package(reporter = 1), "Invalid input")
   expect_error(
     auto_test_package("abcdefghijklmnopqrstuzv"),
     "Can't find")
+})
+
+test_that("auto_test throw expected error", {
+  cat(getwd())
+  expect_error(auto_test(), "missing")
+  expect_error(auto_test(1), "invalid 'path'")
+  expect_error(auto_test("./test_dir/", test_path = 1), "invalid 'path'")
+  expect_error(
+    auto_test("./test_dir/", "./test_dir/", reporter = 1),
+    "Invalid input"
+  )
+  expect_error(
+    auto_test("./test_dir/", "./test_dir/", env = 1),
+    "is not TRUE"
+  )
+  expect_error(
+    auto_test("./test_dir/aaaaaaaaaaa", "./test_dir/"),
+    "cannot find"
+  )
+  expect_error(
+    auto_test("./test_dir/", "./test_dir/aaaaaaaaaaa"),
+    "cannot find"
+  )
 })
 
