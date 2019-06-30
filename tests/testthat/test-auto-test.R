@@ -40,7 +40,7 @@ test_that("stop_auto_test_job throw expected errors", {
 
 test_that("auto_test throw expected error", {
   expect_error(auto_test_package(1), "must be a string")
-  expect_error(auto_test_package(reporter = 1), "invalid input")
+  expect_error(auto_test_package(reporter = 1), "Invalid input")
   expect_error(
     auto_test_package("abcdefghijklmnopqrstuzv"),
     "Can't find")
