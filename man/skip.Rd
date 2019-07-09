@@ -11,6 +11,7 @@
 \alias{skip_on_travis}
 \alias{skip_on_appveyor}
 \alias{skip_on_ci}
+\alias{skip_on_covr}
 \alias{skip_on_bioc}
 \alias{skip_if_translated}
 \title{Skip a test.}
@@ -34,6 +35,8 @@ skip_on_travis()
 skip_on_appveyor()
 
 skip_on_ci()
+
+skip_on_covr()
 
 skip_on_bioc()
 
@@ -85,6 +88,9 @@ environment variable set by devtools.
 
 #' \code{skip_on_ci()} skips tests on continuous integration systems by inspecting
 the \code{CI} environment variable.
+
+\code{skip_on_covr()} skips tests when covr is running by inspecting the
+\code{R_COVR} environment variable
 
 \code{skip_on_bioc()} skips tests on Bioconductor by inspecting the
 \code{BBS_HOME} environment variable.

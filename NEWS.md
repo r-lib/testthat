@@ -1,5 +1,8 @@
 # testthat (development version)
 
+* `skip_on_covr()` allows you to skip tests when covr is running.
+  (Thanks to @ianmcook)
+
 # testthat 2.1.1
 
 * Fix test failures in strict latin1 locale
