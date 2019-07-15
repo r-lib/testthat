@@ -45,3 +45,15 @@ test_that("serializes to version 2 by default", {
 
   expect_identical(tools:::get_serialization_version(tmp_rds)[[1]], 2L)
 })
+
+test_that("version 3 is possible", {
+  tmp_rds <- tempfile(fileext = ".rds")
+  on.exit(unlink(tmp_rds))
+
+  expect_warning(
+    expect_known_value("a", tmp_rds, version = 3),
+    "Creating reference"
+  )
+
+  expect_identical(tools:::get_serialization_version(tmp_rds)[[1]], 3L)
+})
