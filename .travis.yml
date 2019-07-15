@@ -19,6 +19,7 @@ matrix:
     - Rscript -e 'remotes::install_github("r-lib/vctrs")'
     env: vctrs='github'
   - r: oldrel
+  - r: 3.4
   - r: 3.3
   - r: 3.2
   - name: Strict Latin-1 locale

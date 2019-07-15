@@ -1,5 +1,9 @@
 # testthat (development version)
 
+* `expect_known_value()` gains a new serialisation `version` argument,
+  defaulting to 2. Prevents the `.rds` files created to hold reference objects
+  from making a package appear to require R >= 3.5 (#888 @jennybc).
+
 # testthat 2.1.1
 
 * Fix test failures in strict latin1 locale
