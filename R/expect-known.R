@@ -21,6 +21,9 @@
 #' @param update Should the file be updated? Defaults to `TRUE`, with
 #'   the expectation that you'll notice changes because of the first failure,
 #'   and then see the modified files in git.
+#' @param version The serialization format version to use. The default, 2, was
+#'   the default format from R 1.4.0 to 3.5.3. Version 3 became the default from
+#'   R 3.6.0 and can only be read by R versions 3.5.0 and higher.
 #' @inheritParams expect_equal
 #' @inheritParams capture_output_lines
 #' @examples
@@ -90,18 +93,19 @@ expect_known_value <- function(object, file,
                                update = TRUE,
                                ...,
                                info = NULL,
-                               label = NULL) {
+                               label = NULL,
+                               version = 2) {
   act <- quasi_label(enquo(object), label, arg = "object")
 
   if (!file.exists(file)) {
     warning("Creating reference value", call. = FALSE)
-    saveRDS(object, file)
+    saveRDS(object, file, version = version)
     succeed()
   } else {
     ref_val <- readRDS(file)
     comp <- compare(act$val, ref_val, ...)
     if (update && !comp$equal) {
-      saveRDS(act$val, file)
+      saveRDS(act$val, file, version = version)
     }
 
 
