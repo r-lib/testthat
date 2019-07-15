@@ -176,7 +176,7 @@ them.</p>
   <span class='kw'>label</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>print</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>width</span> <span class='kw'>=</span> <span class='fl'>80</span>)
 
 <span class='fu'>expect_known_value</span>(<span class='no'>object</span>, <span class='no'>file</span>, <span class='kw'>update</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='no'>...</span>, <span class='kw'>info</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>label</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
+  <span class='kw'>label</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>version</span> <span class='kw'>=</span> <span class='fl'>2</span>)
 
 <span class='fu'>expect_known_hash</span>(<span class='no'>object</span>, <span class='kw'>hash</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
     
@@ -228,6 +228,12 @@ the object is included in the overall output</p></td>
       <td><p>Number of characters per line of output. This does not
 inherit from <code><a href='https://www.rdocumentation.org/packages/base/topics/options'>getOption("width")</a></code> so that tests always use the same
 output width, minimising spurious differences.</p></td>
+    </tr>
+    <tr>
+      <th>version</th>
+      <td><p>The serialization format version to use. The default, 2, was
+the default format from R 1.4.0 to 3.5.3. Version 3 became the default from
+R 3.6.0 and can only be read by R versions 3.5.0 and higher.</p></td>
     </tr>
     <tr>
       <th>hash</th>
