@@ -51,7 +51,7 @@
 })
 
 1: tests.R#77: skip_if(condition)
-2: skip.R#86: skip(message)
+2: skip.R#88: skip(message)
 
 1: tests.R#83: warning("abc")
 

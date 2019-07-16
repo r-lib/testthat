@@ -91,7 +91,7 @@ tests.R:69: skip: Skip:2
 Reason: skip
 
 tests.R:72: skip: Skip:3
-Reason: empty
+Reason: empty test
 
 tests.R:77: skip: Skip:4
 Reason: condition is TRUE

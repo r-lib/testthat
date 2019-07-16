@@ -12,7 +12,7 @@ End:
 
 2. Skip:2 (@tests.R#69) - Reason: skip
 
-3. Skip:3 (@tests.R#72) - Reason: empty
+3. Skip:3 (@tests.R#72) - Reason: empty test
 
 4. Skip:4 (@tests.R#77) - Reason: condition is TRUE
 
