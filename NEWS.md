@@ -1,5 +1,10 @@
 # testthat (development version)
 
+* `skip()` now reports reason for skipping as: `Reason: {skip condition}` 
+  (@patr1ckm, #868).
+
+* `skip_if()` and `skip_if_not()` now report `Reason: {skip condition} is TRUE` 
+  and `Reason: {skip condition} is not TRUE` respectively (@	patr1ckm, #868).
 * `as.data.frame.testthat_results()` now returns a data frame with 13 columns with predefined names, even if the input object is of length 0 (@jozefhajnala, #887).
 
 * `expect_known_value()` gains a new serialisation `version` argument,
