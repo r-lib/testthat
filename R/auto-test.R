@@ -103,21 +103,16 @@ auto_test_package <- function(pkg = ".", reporter = default_reporter(), hash = T
 
     tests <- changed[starts_with(changed, test_path)]
     helper <- tests[starts_with(basename(tests), "helper-")]
-    tests <- setdiff(tests, helper)
     code <- changed[starts_with(changed, code_path)]
+
+    # Remove helper from test and add it to code (if a helper changed,
+    # like for code, reload all and rerun all tests)
+    tests <- setdiff(tests, helper)
+    code <- c(code, helper)
 
     if (length(code) > 0) {
       # Reload code and rerun all tests
       cat("Changed code: ", paste0(basename(code), collapse = ", "), "\n")
-      cat("Rerunning all tests\n")
-      env <<- devtools::load_all(pkg, quiet = TRUE)$env
-      withr::with_envvar(
-        devtools::r_env_vars(),
-        test_dir(test_path, env = env, reporter = reporter$clone(deep = TRUE))
-      )
-    } else if (length(helper) > 0) {
-      # Reload code and rerun all tests
-      cat("Changed helper: ", paste0(basename(helper), collapse = ", "), "\n")
       cat("Rerunning all tests\n")
       env <<- devtools::load_all(pkg, quiet = TRUE)$env
       withr::with_envvar(
