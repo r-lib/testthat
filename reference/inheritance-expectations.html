@@ -180,7 +180,7 @@ the vocabulary used here.</p><ul>
 
     <pre class="usage"><span class='fu'>expect_type</span>(<span class='no'>object</span>, <span class='no'>type</span>)
 
-<span class='fu'>expect_s3_class</span>(<span class='no'>object</span>, <span class='no'>class</span>)
+<span class='fu'>expect_s3_class</span>(<span class='no'>object</span>, <span class='no'>class</span>, <span class='kw'>exact</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
 <span class='fu'>expect_s4_class</span>(<span class='no'>object</span>, <span class='no'>class</span>)</pre>
     
@@ -200,6 +200,12 @@ within a function or for loop. See <a href='quasi_label.html'>quasi_label</a> fo
     <tr>
       <th>class</th>
       <td><p>character vector of class names</p></td>
+    </tr>
+    <tr>
+      <th>exact</th>
+      <td><p>If <code>FALSE</code>, the default, checks that <code>object</code> inherits
+from <code>class</code>. If <code>TRUE</code>, checks that object has a class that's identical
+to <code>class</code>.</p></td>
     </tr>
     </table>
     
