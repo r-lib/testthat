@@ -1,5 +1,8 @@
 # testthat (development version)
 
+* `expect_s3_class()` gains new `expect` argument that allows you to check
+  for an exact class match, not just inheritance (#885).
+
 * `skip()` now reports reason for skipping as: `Reason: {skip condition}` 
   (@patr1ckm, #868).
 
