@@ -72,11 +72,6 @@ test_that("Skip:2", {
 test_that("Skip:3", {
 })
 
-test_that("Skip:4", {
-  condition <- TRUE
-  skip_if(condition)
-})
-
 context("Warnings")
 
 test_that("Warning:1", {

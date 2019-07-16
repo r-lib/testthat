@@ -61,7 +61,7 @@
 27: stop("This is deep") at reporters/tests.R:54</error>
     </testcase>
   </testsuite>
-  <testsuite name="Skips" timestamp="1999:12:31 23:59:59" hostname="nodename" tests="4" skipped="4" failures="0" errors="0" time="0">
+  <testsuite name="Skips" timestamp="1999:12:31 23:59:59" hostname="nodename" tests="3" skipped="3" failures="0" errors="0" time="0">
     <testcase time="0" classname="Skips" name="Skip_1">
       <skipped/>
     </testcase>
@@ -69,9 +69,6 @@
       <skipped/>
     </testcase>
     <testcase time="0" classname="Skips" name="Skip_3">
-      <skipped/>
-    </testcase>
-    <testcase time="0" classname="Skips" name="Skip_4">
       <skipped/>
     </testcase>
   </testsuite>

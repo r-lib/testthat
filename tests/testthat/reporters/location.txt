@@ -47,21 +47,17 @@ Start test: Skip:3
   tests.R#72:1 [skip]
 End test: Skip:3
 
-Start test: Skip:4
-  tests.R#77:1 [skip]
-End test: Skip:4
-
 Start test: Warning:1
-  tests.R#83:1 [warning]
+  tests.R#78:1 [warning]
 End test: Warning:1
 
 Start test: Warning:2
-  tests.R#89:1 [warning]
-  tests.R#90:1 [warning]
+  tests.R#84:1 [warning]
+  tests.R#85:1 [warning]
 End test: Warning:2
 
 Start test: Output:1
-  tests.R#96:1 [success]
-  tests.R#96:1 [success]
+  tests.R#91:1 [success]
+  tests.R#91:1 [success]
 End test: Output:1
 
