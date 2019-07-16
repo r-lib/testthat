@@ -95,7 +95,16 @@ any_warnings <- function(res) {
 #' @export
 as.data.frame.testthat_results <- function(x, ...) {
   if (length(x) == 0) {
-    return(data.frame())
+    return(
+      data.frame(
+        file = character(0), context = character(0), test = character(0),
+        nb = integer(0), failed = integer(0), skipped = logical(0),
+        error = logical(0), warning = integer(0),
+        user = numeric(0), system = numeric(0), real = numeric(0),
+        passed = integer(0), result = list(),
+        stringsAsFactors = FALSE
+      )
+    )
   }
 
   rows <- lapply(x, summarize_one_test_results)

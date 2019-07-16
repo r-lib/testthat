@@ -4,6 +4,10 @@ home:
   - text: Learn more
     href: http://r-pkgs.had.co.nz/tests.html
 
+template:
+  params:
+    ganalytics: UA-115082821-1
+
 reference:
 - title: Expectations
   contents:

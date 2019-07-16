@@ -5,6 +5,11 @@
 
 * `skip_if()` and `skip_if_not()` now report `Reason: {skip condition} is TRUE` 
   and `Reason: {skip condition} is not TRUE` respectively (@	patr1ckm, #868).
+* `as.data.frame.testthat_results()` now returns a data frame with 13 columns with predefined names, even if the input object is of length 0 (@jozefhajnala, #887).
+
+* `expect_known_value()` gains a new serialisation `version` argument,
+  defaulting to 2. Prevents the `.rds` files created to hold reference objects
+  from making a package appear to require R >= 3.5 (#888 @jennybc).
 
 # testthat 2.1.1
 

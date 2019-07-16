@@ -12,7 +12,7 @@ expect_known_output(object, file, update = TRUE, ..., info = NULL,
   label = NULL, print = FALSE, width = 80)
 
 expect_known_value(object, file, update = TRUE, ..., info = NULL,
-  label = NULL)
+  label = NULL, version = 2)
 
 expect_known_hash(object, hash = NULL)
 }
@@ -47,6 +47,10 @@ the object is included in the overall output}
 \item{width}{Number of characters per line of output. This does not
 inherit from \code{getOption("width")} so that tests always use the same
 output width, minimising spurious differences.}
+
+\item{version}{The serialization format version to use. The default, 2, was
+the default format from R 1.4.0 to 3.5.3. Version 3 became the default from
+R 3.6.0 and can only be read by R versions 3.5.0 and higher.}
 
 \item{hash}{Known hash value. Leave empty and you'll be informed what
 to use in the test output.}
