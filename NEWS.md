@@ -5,6 +5,7 @@
   `auto_test_package()` automatically reloads the updated package environment
   and reruns all test, as is always the case when you modify a `test-*.R`
   file (@CorradoLanera, #376, #896).
+  
 * `expect_s3_class()` gains new `expect` argument that allows you to check
   for an exact class match, not just inheritance (#885).
 
