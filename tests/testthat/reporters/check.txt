@@ -48,7 +48,7 @@ This is deep
 27: stop("This is deep") at reporters/tests.R:54
 
 ══ testthat results  ═══════════════════════════════════════════════════════════
-OK: 8 SKIPPED: 3 WARNINGS: 0 FAILED: 7
+[ OK: 5 | SKIPPED: 3 | WARNINGS: 3 | FAILED: 7 ]
 1. Failure: Failure:1 (@tests.R#12) 
 2. Failure: Failure:2a (@tests.R#16) 
 3. Failure: Failure:2b (@tests.R#19) 

@@ -104,6 +104,12 @@ auto_test_package <- function(pkg = ".", reporter = default_reporter(), hash = T
     tests <- changed[starts_with(changed, test_path)]
     code <- changed[starts_with(changed, code_path)]
 
+    # Remove helper from test and add it to code (if a helper changed,
+    # like for code, reload all and rerun all tests)
+    helper <- tests[starts_with(basename(tests), "helper-")]
+    tests <- setdiff(tests, helper)
+    code <- c(code, helper)
+
     if (length(code) > 0) {
       # Reload code and rerun all tests
       cat("Changed code: ", paste0(basename(code), collapse = ", "), "\n")

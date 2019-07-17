@@ -48,10 +48,12 @@ CheckReporter <- R6::R6Class("CheckReporter",
     end_reporter = function() {
       self$rule("testthat results ", line = 2)
       self$cat_line(
-        "OK: ", self$n_ok, " ",
-        "SKIPPED: ", self$n_skip, " ",
-        "WARNINGS: ", self$n_warn, " ",
-        "FAILED: ", self$n_fail
+        "[ ",
+        "OK: ", self$n_ok, " | ",
+        "SKIPPED: ", self$n_skip, " | ",
+        "WARNINGS: ", self$n_warn, " | ",
+        "FAILED: ", self$n_fail,
+        " ]"
       )
 
       if (self$n_fail == 0) return()
