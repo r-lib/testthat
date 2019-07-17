@@ -51,7 +51,10 @@ expect_type <- function(object, type) {
 
 #' @export
 #' @rdname inheritance-expectations
-expect_s3_class <- function(object, class) {
+#' @param exact If `FALSE`, the default, checks that `object` inherits
+#'   from `class`. If `TRUE`, checks that object has a class that's identical
+#'   to `class`.
+expect_s3_class <- function(object, class, exact = FALSE) {
   stopifnot(is.character(class))
 
   act <- quasi_label(enquo(object), arg = "object")
@@ -62,10 +65,17 @@ expect_s3_class <- function(object, class) {
     fail(sprintf("%s is not an S3 object", act$lab))
   }
 
-  expect(
-    inherits(act$val, class),
-    sprintf("%s inherits from `%s` not `%s`.", act$lab, act$class, exp_lab)
-  )
+  if (exact) {
+    expect(
+      identical(class(act$val), class),
+      sprintf("%s has class `%s`, not `%s`.", act$lab, act$class, exp_lab)
+    )
+  } else {
+    expect(
+      inherits(act$val, class),
+      sprintf("%s inherits from `%s` not `%s`.", act$lab, act$class, exp_lab)
+    )
+  }
   invisible(act$val)
 }
 
