@@ -1,5 +1,11 @@
 # testthat (development version)
 
+* `auto_test_package()` now handles files `helper-*.R` stored into the
+  `tests/testthat/` folder. Whenever you save changes in a file `helper-*.R`,
+  `auto_test_package()` automatically reloads the updated package environment
+  and reruns all test, as is always the case when you modify a `test-*.R`
+  file (@CorradoLanera, #376, #896).
+
 # testthat 2.1.1
 
 * Fix test failures in strict latin1 locale
