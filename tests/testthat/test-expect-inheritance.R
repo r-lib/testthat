@@ -39,6 +39,13 @@ test_that("test_s3_class respects class hierarchy", {
   expect_failure(expect_s3_class(x, "c"), "inherits from `a/b`")
 })
 
+test_that("test_s3_class can request exact match", {
+  x <- structure(list(), class = c("a", "b"))
+  expect_failure(expect_s3_class(x, "a", exact = TRUE))
+  expect_success(expect_s3_class(x, c("a", "b"), exact = TRUE))
+})
+
+
 test_that("expect_s3_class allows unquoting of first argument", {
   f <- factor("a")
   expect_success(expect_s3_class(!! rlang::quo(f), "factor"))

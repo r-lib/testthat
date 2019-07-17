@@ -8,11 +8,11 @@ Output:
 End: 
 
 ══ Skipped ═════════════════════════════════════════════════════════════════════
-1. Skip:1 (@tests.R#62) - skip
+1. Skip:1 (@tests.R#62) - Reason: skip
 
-2. Skip:2 (@tests.R#69) - skip
+2. Skip:2 (@tests.R#69) - Reason: skip
 
-3. Skip:3 (@tests.R#72) - Empty test
+3. Skip:3 (@tests.R#72) - Reason: empty test
 
 ══ Warnings ════════════════════════════════════════════════════════════════════
 1. Warning:1 (@tests.R#78) - abc

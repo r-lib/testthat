@@ -33,3 +33,29 @@ test_that("equal_to_ref does not overwrite existing", {
   expect_failure(expect_equal_to_reference(ref_obj2, tmp_rds, update=TRUE))
   expect_success(expect_equal_to_reference(ref_obj2, tmp_rds))
 })
+
+test_that("serializes to version 2 by default", {
+  skip_if(getRversion() < 3.5)
+  tmp_rds <- tempfile(fileext = ".rds")
+  on.exit(unlink(tmp_rds))
+
+  expect_warning(
+    expect_known_value("a", tmp_rds),
+    "Creating reference"
+  )
+
+  expect_identical(tools:::get_serialization_version(tmp_rds)[[1]], 2L)
+})
+
+test_that("version 3 is possible", {
+  skip_if(getRversion() < 3.5)
+  tmp_rds <- tempfile(fileext = ".rds")
+  on.exit(unlink(tmp_rds))
+
+  expect_warning(
+    expect_known_value("a", tmp_rds, version = 3),
+    "Creating reference"
+  )
+
+  expect_identical(tools:::get_serialization_version(tmp_rds)[[1]], 3L)
+})

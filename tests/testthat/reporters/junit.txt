@@ -5,29 +5,29 @@
   </testsuite>
   <testsuite name="Expectations" timestamp="1999:12:31 23:59:59" hostname="nodename" tests="6" skipped="0" failures="4" errors="0" time="0">
     <testcase time="0" classname="Expectations" name="Success"/>
-    <testcase time="0" classname="Expectations" name="Failure:1">
+    <testcase time="0" classname="Expectations" name="Failure_1">
       <failure type="failure" message="Failure has been forced (@tests.R#12)">Failure has been forced</failure>
     </testcase>
-    <testcase time="0" classname="Expectations" name="Failure:2a">
+    <testcase time="0" classname="Expectations" name="Failure_2a">
       <failure type="failure" message="Failure has been forced (@tests.R#16)">Failure has been forced</failure>
     </testcase>
-    <testcase time="0" classname="Expectations" name="Failure:2b">
+    <testcase time="0" classname="Expectations" name="Failure_2b">
       <failure type="failure" message="FALSE isn't true. (@tests.R#19)">FALSE isn't true.</failure>
     </testcase>
-    <testcase time="0" classname="Expectations" name="Failure:loop">
+    <testcase time="0" classname="Expectations" name="Failure_loop">
       <failure type="failure" message="`i` not equal to 2. (@tests.R#24)">`i` not equal to 2.
 1/1 mismatches
 [1] 1 - 2 == -1</failure>
     </testcase>
-    <testcase time="0" classname="Expectations" name="Failure:loop"/>
+    <testcase time="0" classname="Expectations" name="Failure_loop"/>
   </testsuite>
   <testsuite name="Expectations2" timestamp="1999:12:31 23:59:59" hostname="nodename" tests="0" skipped="0" failures="0" errors="0" time="0"/>
   <testsuite name="Errors" timestamp="1999:12:31 23:59:59" hostname="nodename" tests="2" skipped="0" failures="0" errors="2" time="0">
-    <testcase time="0" classname="Errors" name="Error:1">
+    <testcase time="0" classname="Errors" name="Error_1">
       <error type="error" message="stop (@tests.R#33)">stop
 1: stop("stop") at reporters/tests.R:33</error>
     </testcase>
-    <testcase time="0" classname="Errors" name="Error:3">
+    <testcase time="0" classname="Errors" name="Error_3">
       <error type="error" message="! (@tests.R#47)">!
 1: f() at reporters/tests.R:47
 2: g() at reporters/tests.R:38
@@ -36,7 +36,7 @@
     </testcase>
   </testsuite>
   <testsuite name="Recursion" timestamp="1999:12:31 23:59:59" hostname="nodename" tests="1" skipped="0" failures="0" errors="1" time="0">
-    <testcase time="0" classname="Recursion" name="Recursion:1">
+    <testcase time="0" classname="Recursion" name="Recursion_1">
       <error type="error" message="This is deep (@tests.R#56)">This is deep
 1: f(25) at reporters/tests.R:56
 2: f(x - 1) at reporters/tests.R:54
@@ -62,24 +62,24 @@
     </testcase>
   </testsuite>
   <testsuite name="Skips" timestamp="1999:12:31 23:59:59" hostname="nodename" tests="3" skipped="3" failures="0" errors="0" time="0">
-    <testcase time="0" classname="Skips" name="Skip:1">
+    <testcase time="0" classname="Skips" name="Skip_1">
       <skipped/>
     </testcase>
-    <testcase time="0" classname="Skips" name="Skip:2">
+    <testcase time="0" classname="Skips" name="Skip_2">
       <skipped/>
     </testcase>
-    <testcase time="0" classname="Skips" name="Skip:3">
+    <testcase time="0" classname="Skips" name="Skip_3">
       <skipped/>
     </testcase>
   </testsuite>
   <testsuite name="Warnings" timestamp="1999:12:31 23:59:59" hostname="nodename" tests="3" skipped="0" failures="0" errors="0" time="0">
-    <testcase time="0" classname="Warnings" name="Warning:1"/>
-    <testcase time="0" classname="Warnings" name="Warning:2"/>
-    <testcase time="0" classname="Warnings" name="Warning:2"/>
+    <testcase time="0" classname="Warnings" name="Warning_1"/>
+    <testcase time="0" classname="Warnings" name="Warning_2"/>
+    <testcase time="0" classname="Warnings" name="Warning_2"/>
   </testsuite>
   <testsuite name="Output" timestamp="1999:12:31 23:59:59" hostname="nodename" tests="2" skipped="0" failures="0" errors="0" time="0">
-    <testcase time="0" classname="Output" name="Output:1"/>
-    <testcase time="0" classname="Output" name="Output:1"/>
+    <testcase time="0" classname="Output" name="Output_1"/>
+    <testcase time="0" classname="Output" name="Output_1"/>
   </testsuite>
   <testsuite name="End" timestamp="1999:12:31 23:59:59" hostname="nodename" tests="0" skipped="0" failures="0" errors="0" time="0"/>
 </testsuites>

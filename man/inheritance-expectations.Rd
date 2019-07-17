@@ -9,7 +9,7 @@
 \usage{
 expect_type(object, type)
 
-expect_s3_class(object, class)
+expect_s3_class(object, class, exact = FALSE)
 
 expect_s4_class(object, class)
 }
@@ -22,6 +22,10 @@ within a function or for loop. See \link{quasi_label} for more details.}
 \item{type}{String giving base type (as returned by \code{\link[=typeof]{typeof()}}).}
 
 \item{class}{character vector of class names}
+
+\item{exact}{If \code{FALSE}, the default, checks that \code{object} inherits
+from \code{class}. If \code{TRUE}, checks that object has a class that's identical
+to \code{class}.}
 }
 \description{
 See \url{https://adv-r.hadley.nz/oo.html} for an overview of R's OO systems, and
