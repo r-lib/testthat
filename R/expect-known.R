@@ -52,34 +52,38 @@ expect_known_output <- function(object, file,
   act$lab <- label %||% quo_label(act$quo)
   act <- append(act, eval_with_output(object, print = print, width = width))
 
-  if (!file.exists(file)) {
-    warning("Creating reference output", call. = FALSE)
-    write_lines(act$out, file)
-    succeed()
-  } else {
-    ref_out <- read_lines(file)
-    if (update) {
-      write_lines(act$out, file)
-      if (!all_utf8(act$out)) {
-        warning("New reference output is not UTF-8 encoded", call. = FALSE)
-      }
-    }
-    if (!all_utf8(ref_out)) {
-      warning("Reference output is not UTF-8 encoded", call. = FALSE)
-    }
+  compare_file(file, act$out, update = update, info = info, ...)
+  invisible(act$val)
+}
 
-    comp <- compare(act$out, enc2native(ref_out), ...)
-    expect(
-      comp$equal,
-      sprintf(
-        "%s has changed from known value recorded in %s.\n%s",
-        act$lab, encodeString(file, quote = "'"), comp$message
-      ),
-      info = info
-    )
+compare_file <- function(path, lines, ..., update = TRUE, info = NULL) {
+  if (!file.exists(path)) {
+    warning("Creating reference output", call. = FALSE)
+    write_lines(lines, path)
+    succeed()
+    return()
   }
 
-  invisible(act$val)
+  old_lines <- read_lines(path)
+  if (update) {
+    write_lines(lines, path)
+    if (!all_utf8(lines)) {
+      warning("New reference output is not UTF-8 encoded", call. = FALSE)
+    }
+  }
+  if (!all_utf8(old_lines)) {
+    warning("Reference output is not UTF-8 encoded", call. = FALSE)
+  }
+
+  comp <- compare(lines, enc2native(old_lines), ...)
+  expect(
+    comp$equal,
+    sprintf(
+      "Results have changed from known value recorded in %s.\n%s",
+      encodeString(path, quote = "'"), comp$message
+    ),
+    info = info
+  )
 }
 
 #' @export
