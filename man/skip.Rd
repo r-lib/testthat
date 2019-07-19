@@ -37,7 +37,7 @@ skip_on_ci()
 
 skip_on_bioc()
 
-skip_if_translated()
+skip_if_translated(msgid = "'\%s' not found")
 }
 \arguments{
 \item{message}{A message describing why the test was skipped.}
@@ -53,6 +53,10 @@ skip_if_translated()
 
 \item{os}{Character vector of system names. Supported values are
 \code{"windows"}, \code{"mac"}, \code{"linux"} and \code{"solaris"}.}
+
+\item{msgid}{R message identifier used to check for translation: the default
+uses a message included in most translation packs. See the complete list in
+\href{https://github.com/wch/r-source/blob/master/src/library/base/po/R-base.pot}{R-base.pot}.}
 }
 \description{
 This function allows you to skip a test if it's not currently available.

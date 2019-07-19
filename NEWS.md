@@ -1,5 +1,11 @@
 # testthat (development version)
 
+* `skip_if_translated()` now tests for translation of a specific message. 
+  This is more robust than the previous approach because translation
+  happens message-by-message, not necessarily for the entire session (#879)
+  (and in general, it's impossible to determine what language R is currently
+  using).
+
 * `auto_test_package()` now handles files `helper-*.R` stored into the
   `tests/testthat/` folder. Whenever you save changes in a file `helper-*.R`,
   `auto_test_package()` automatically reloads the updated package environment
