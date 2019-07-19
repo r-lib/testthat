@@ -1,5 +1,10 @@
 # testthat (development version)
 
+* `fail()` and `suceed()` gain `info` argument, which is passed along to 
+  `expect()`.
+  
+* `expect_match()` now displays use `info` even when match length is 0 (#867).
+
 * `skip_on_covr()` allows you to skip tests when covr is running.
   (@ianmcook, #895)
 

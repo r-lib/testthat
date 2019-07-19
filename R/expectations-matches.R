@@ -30,7 +30,7 @@ expect_match <- function(object, regexp, perl = FALSE, fixed = FALSE, ..., all =
 
   stopifnot(is.character(act$val))
   if (length(object) == 0) {
-    fail(sprintf("%s is empty.", act$lab))
+    fail(sprintf("%s is empty.", act$lab), info = info)
   }
 
   matches <- grepl(regexp, act$val, perl = perl, fixed = fixed, ...)
