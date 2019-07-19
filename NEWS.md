@@ -1,5 +1,9 @@
 # testthat (development version)
 
+* `test_examples()` gets some minor fixes: it now returns the results 
+  invisibly, doesn't assume that examples should contain tests, and 
+  documents that you shouldn't be using it routinely (#841).
+
 * `fail()` and `suceed()` gain `info` argument, which is passed along to 
   `expect()`.
   
