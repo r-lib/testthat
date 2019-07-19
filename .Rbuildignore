@@ -16,3 +16,4 @@
 ^\.github$
 ^NEWS\.Rmd$
 ^CRAN-RELEASE$
+^LICENSE\.md$

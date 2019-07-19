@@ -152,7 +152,7 @@ test_file <- function(path,
         chdir = TRUE, wrap = wrap
       )
 
-      reporter$end_context()
+      reporter$.end_context() # only ends if context was started
       reporter$end_file()
     }
   )

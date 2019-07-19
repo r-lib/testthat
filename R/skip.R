@@ -56,14 +56,17 @@
 #' })
 skip <- function(message) {
   message <- paste0(message, collapse = "\n")
-  cond <- structure(list(message = message), class = c("skip", "condition"))
+  cond <- structure(
+    list(message = paste0("Reason: ", message)),
+    class = c("skip", "condition")
+  )
   stop(cond)
 }
 
 # Called automatically if the test contains no expectations
 skip_empty <- function() {
   cond <- structure(
-    list(message = "Empty test"),
+    list(message = "Reason: empty test"),
     class = c("skip_empty", "skip", "condition")
   )
   stop(cond)
@@ -74,6 +77,7 @@ skip_empty <- function() {
 #' @param condition Boolean condition to check. `skip_if_not()` will skip if
 #'   `FALSE`, `skip_if()` will skip if `TRUE`.
 skip_if_not <- function(condition, message = deparse(substitute(condition))) {
+  message <- paste0(message, " is not TRUE")
   if (!isTRUE(condition)) {
     skip(message)
   }
@@ -82,6 +86,7 @@ skip_if_not <- function(condition, message = deparse(substitute(condition))) {
 #' @export
 #' @rdname skip
 skip_if <- function(condition, message = deparse(substitute(condition))) {
+  message <- paste0(message, " is TRUE")
   if (isTRUE(condition)) {
     skip(message)
   }
@@ -201,26 +206,14 @@ skip_on_bioc <- function() {
 }
 
 #' @export
+#' @param msgid R message identifier used to check for translation: the default
+#'   uses a message included in most translation packs. See the complete list in
+#'   [`R-base.pot`](https://github.com/wch/r-source/blob/master/src/library/base/po/R-base.pot).
 #' @rdname skip
-skip_if_translated <- function() {
-  if (!is_english()) {
+skip_if_translated <- function(msgid = "'%s' not found") {
+  if (gettext(msgid, domain = "R") == msgid) {
     return(invisible(TRUE))
   }
 
-  skip("Running in non-English environment")
-}
-
-is_english <- function() {
-  lang <- Sys.getenv("LANGUAGE")
-  if (identical(lang, "en")) {
-    return(TRUE)
-  }
-
-  if (.Platform$OS.type == "windows") {
-    lc <- sub("\\..*", "", sub("_.*", "", Sys.getlocale("LC_CTYPE")))
-    lc == "C" || lc == "English"
-  } else {
-    lc <- sub("\\..*", "", Sys.getlocale("LC_MESSAGES"))
-    lc == "C" || substr(lc, 1, 2) == "en"
-  }
+  skip(paste0("\"", msgid, "\" is translated"))
 }

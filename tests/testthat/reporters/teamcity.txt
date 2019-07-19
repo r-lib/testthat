@@ -70,15 +70,15 @@
 
 ##teamcity[testSuiteStarted name='Skips']
 ##teamcity[testSuiteStarted name='Skip:1']
-##teamcity[testIgnored name='expectation 1' message='skip']
+##teamcity[testIgnored name='expectation 1' message='Reason: skip']
 ##teamcity[testSuiteFinished name='Skip:1']
 
 ##teamcity[testSuiteStarted name='Skip:2']
-##teamcity[testIgnored name='expectation 1' message='skip']
+##teamcity[testIgnored name='expectation 1' message='Reason: skip']
 ##teamcity[testSuiteFinished name='Skip:2']
 
 ##teamcity[testSuiteStarted name='Skip:3']
-##teamcity[testIgnored name='expectation 1' message='Empty test']
+##teamcity[testIgnored name='expectation 1' message='Reason: empty test']
 ##teamcity[testSuiteFinished name='Skip:3']
 
 ##teamcity[testSuiteFinished name='Skips']

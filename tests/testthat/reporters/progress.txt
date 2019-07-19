@@ -84,13 +84,13 @@ This is deep
 ✔ |   0     3 | Skips
 ────────────────────────────────────────────────────────────────────────────────
 tests.R:62: skip: Skip:1
-skip
+Reason: skip
 
 tests.R:69: skip: Skip:2
-skip
+Reason: skip
 
 tests.R:72: skip: Skip:3
-Empty test
+Reason: empty test
 ────────────────────────────────────────────────────────────────────────────────
 
 ⠏ |   0       | Warnings
