@@ -257,9 +257,10 @@ compare_condition <- function(cond, lab, regexp = NULL, class = NULL, ...,
   details <- c(
     if (!ok_class) {
       sprintf(
-        "Expected class: %s\nActual class:   %s",
+        "Expected class: %s\nActual class:   %s\nMessage:        %s",
         paste0(class, collapse = "/"),
-        paste0(class(cond), collapse = "/")
+        paste0(class(cond), collapse = "/"),
+        cond$message
       )
     },
     if (!ok_msg) {

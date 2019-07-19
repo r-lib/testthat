@@ -15,11 +15,13 @@ Actual message: "xxx"
 `stop("xxx")` threw an error with unexpected class.
 Expected class: zzz
 Actual class:   simpleError/error/condition
+Message:        xxx
 
 ── 5. Failure:  (@test-expect-error.R#50)  ─────────────────────────────────────
 `stop("xxx")` threw an error with unexpected class and message.
 Expected class: zzz
 Actual class:   simpleError/error/condition
+Message:        xxx
 Expected match: "zzz"
 Actual message: "xxx"
 
