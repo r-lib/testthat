@@ -190,7 +190,7 @@ suite to fail.</p>
 
 <span class='fu'>skip_on_bioc</span>()
 
-<span class='fu'>skip_if_translated</span>()</pre>
+<span class='fu'>skip_if_translated</span>(<span class='kw'>msgid</span> <span class='kw'>=</span> <span class='st'>"'%s' not found"</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -220,6 +220,12 @@ suite to fail.</p>
       <th>os</th>
       <td><p>Character vector of system names. Supported values are
 <code>"windows"</code>, <code>"mac"</code>, <code>"linux"</code> and <code>"solaris"</code>.</p></td>
+    </tr>
+    <tr>
+      <th>msgid</th>
+      <td><p>R message identifier used to check for translation: the default
+uses a message included in most translation packs. See the complete list in
+<a href='https://github.com/wch/r-source/blob/master/src/library/base/po/R-base.pot'>R-base.pot</a>.</p></td>
     </tr>
     </table>
     
