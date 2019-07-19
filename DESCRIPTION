@@ -34,8 +34,7 @@ Suggests:
     rmarkdown,
     usethis,
     vctrs (>= 0.1.0),
-    xml2,
-    testthat (>= 2.1.0)
+    xml2
 VignetteBuilder: knitr
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)

@@ -37,11 +37,11 @@ verify_output <- function(path, code, width = 80, crayon = FALSE) {
     exprs <- list(expr)
   }
 
-  exprs <- lapply(exprs, function(x) if (is.character(x)) paste0("# ", x) else expr_deparse(x))
-  source <- unlist(exprs, recursive = FALSE)
-
   withr::local_options(list(width = width, crayon.enabled = crayon))
   withr::local_envvar(list(RSTUDIO_CONSOLE_WIDTH = width))
+
+  exprs <- lapply(exprs, function(x) if (is.character(x)) paste0("# ", x) else expr_deparse(x))
+  source <- unlist(exprs, recursive = FALSE)
 
   results <- evaluate::evaluate(source, envir = env)
   output <- unlist(lapply(results, output_replay))

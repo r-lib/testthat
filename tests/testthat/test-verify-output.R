@@ -23,5 +23,6 @@ test_that("can record all types of output", {
 })
 
 test_that("can't record plots", {
+  skip_if(interactive())
   expect_error(verify_output("path", plot(1:10)), "Plots")
 })
