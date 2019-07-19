@@ -32,7 +32,7 @@
 #' # The first run always succeeds
 #' expect_known_output(mtcars[1:10, ], tmp, print = TRUE)
 #'
-#' # Subsequent runs will suceed only if the file is unchanged
+#' # Subsequent runs will succeed only if the file is unchanged
 #' # This will succeed:
 #' expect_known_output(mtcars[1:10, ], tmp, print = TRUE)
 #'

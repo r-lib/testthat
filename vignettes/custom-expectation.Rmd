@@ -68,7 +68,7 @@ mtcars %>%
   expect_length(11)
 ```
 
-## `suceed()` and `fail()`
+## `succeed()` and `fail()`
 
 For expectations with more complex logic governing when success or failure occurs, you can use `succeed()` and `fail()`. These are simple wrappers around `expect()` that allow you to write code that looks like this:
 
