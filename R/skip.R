@@ -20,14 +20,17 @@
 #' `skip_on_cran()` skips tests on CRAN, using the `NOT_CRAN`
 #' environment variable set by devtools.
 #'
-#' `skip_on_travis()` skips tests on travis by inspecting the
+#' `skip_on_travis()` skips tests on Travis CI by inspecting the
 #' `TRAVIS` environment variable.
 #'
-#' `skip_on_appveyor()` skips tests on appveyor by inspecting the
+#' `skip_on_appveyor()` skips tests on AppVeyor by inspecting the
 #' `APPVEYOR` environment variable.
 #'
-#'#' `skip_on_ci()` skips tests on continuous integration systems by inspecting
+#' `skip_on_ci()` skips tests on continuous integration systems by inspecting
 #' the `CI` environment variable.
+#'
+#' `skip_on_covr()` skips tests when covr is running by inspecting the
+#' `R_COVR` environment variable
 #'
 #' `skip_on_bioc()` skips tests on Bioconductor by inspecting the
 #' `BBS_HOME` environment variable.
@@ -180,6 +183,16 @@ skip_on_ci <- function() {
   }
 
   skip("On CI")
+}
+
+#' @export
+#' @rdname skip
+skip_on_covr <- function() {
+  if (!identical(Sys.getenv("R_COVR"), "true")) {
+    return(invisible(TRUE))
+  }
+
+  skip("On covr")
 }
 
 #' @export

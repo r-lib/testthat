@@ -23,6 +23,7 @@ test_that("Skip env vars", {
   expect_skip_with_env(c("NOT_CRAN" = "false"), skip_on_cran)
   expect_skip_with_env(c("TRAVIS" = "true"), skip_on_travis)
   expect_skip_with_env(c("APPVEYOR" = "True"), skip_on_appveyor)
+  expect_skip_with_env(c("R_COVR" = "true"), skip_on_covr)
   expect_skip_with_env(c("BBS_HOME" = "asdf"), skip_on_bioc)
 })
 

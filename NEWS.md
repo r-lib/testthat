@@ -1,5 +1,8 @@
 # testthat (development version)
 
+* `skip_on_covr()` allows you to skip tests when covr is running.
+  (@ianmcook, #895)
+
 * `test_file()` only calls `Reporter$end_context()` if a context was started,
   fixing an error in `TeamcityReporter` (@atheriel, #883).
 
