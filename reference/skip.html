@@ -188,6 +188,8 @@ suite to fail.</p>
 
 <span class='fu'>skip_on_ci</span>()
 
+<span class='fu'>skip_on_covr</span>()
+
 <span class='fu'>skip_on_bioc</span>()
 
 <span class='fu'>skip_if_translated</span>(<span class='kw'>msgid</span> <span class='kw'>=</span> <span class='st'>"'%s' not found"</span>)</pre>
@@ -246,12 +248,14 @@ a message automatically based on the first argument.</p>
 using <code><a href='https://www.rdocumentation.org/packages/curl/topics/nslookup'>curl::nslookup()</a></code>.</p>
 <p><code>skip_on_cran()</code> skips tests on CRAN, using the <code>NOT_CRAN</code>
 environment variable set by devtools.</p>
-<p><code>skip_on_travis()</code> skips tests on travis by inspecting the
+<p><code>skip_on_travis()</code> skips tests on Travis CI by inspecting the
 <code>TRAVIS</code> environment variable.</p>
-<p><code>skip_on_appveyor()</code> skips tests on appveyor by inspecting the
+<p><code>skip_on_appveyor()</code> skips tests on AppVeyor by inspecting the
 <code>APPVEYOR</code> environment variable.</p>
-<p>#' <code>skip_on_ci()</code> skips tests on continuous integration systems by inspecting
+<p><code>skip_on_ci()</code> skips tests on continuous integration systems by inspecting
 the <code>CI</code> environment variable.</p>
+<p><code>skip_on_covr()</code> skips tests when covr is running by inspecting the
+<code>R_COVR</code> environment variable</p>
 <p><code>skip_on_bioc()</code> skips tests on Bioconductor by inspecting the
 <code>BBS_HOME</code> environment variable.</p>
 <p><code>skip_if_not_installed()</code> skips a tests if a package is not installed
