@@ -2,7 +2,7 @@ test_that("reporters produce consistent output", {
   expect_report_unchanged("location")
   expect_report_unchanged("minimal")
   expect_report_unchanged("tap")
-  # expect_report_unchanged("teamcity")
+  expect_report_unchanged("teamcity")
   expect_report_unchanged("silent")
   expect_report_unchanged("rstudio")
 
@@ -46,7 +46,6 @@ test_that("reporters accept a 'file' argument and write to that location", {
   expect_report_to_file(TapReporter)
   expect_report_to_file(TeamcityReporter)
   expect_report_to_file(RstudioReporter)
-  expect_report_to_file(SilentReporter)
 })
 
 test_that("reporters write to 'testthat.output_file', if specified", {

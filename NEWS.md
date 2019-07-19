@@ -1,5 +1,8 @@
 # testthat (development version)
 
+* `test_file()` only calls `Reporter$end_context()` if a context was started,
+  fixing an error in `TeamcityReporter` (@atheriel, #883).
+
 * `skip_if_translated()` now tests for translation of a specific message. 
   This is more robust than the previous approach because translation
   happens message-by-message, not necessarily for the entire session (#879)
