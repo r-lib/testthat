@@ -4,7 +4,7 @@
   invisibly, doesn't assume that examples should contain tests, and 
   documents that you shouldn't be using it routinely (#841).
 
-* `fail()` and `suceed()` gain `info` argument, which is passed along to 
+* `fail()` and `succeed()` gain `info` argument, which is passed along to 
   `expect()`.
   
 * `expect_match()` now displays use `info` even when match length is 0 (#867).
