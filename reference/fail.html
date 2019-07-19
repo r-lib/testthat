@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Default expectations that alway succeed or fail. — fail • testthat</title>
+<title>Default expectations that always succeed or fail. — fail • testthat</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -37,7 +37,7 @@
 
 
 
-<meta property="og:title" content="Default expectations that alway succeed or fail. — fail" />
+<meta property="og:title" content="Default expectations that always succeed or fail. — fail" />
 
 <meta property="og:description" content="These allow you to manually trigger success or failure. Failure is
 particularly useful to a pre-condition or mark a test as not yet
@@ -155,7 +155,7 @@ implemented." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Default expectations that alway succeed or fail.</h1>
+    <h1>Default expectations that always succeed or fail.</h1>
     <small class="dont-index">Source: <a href='https://github.com/r-lib/testthat/blob/master/R/expect-that.R'><code>R/expect-that.R</code></a></small>
     <div class="hidden name"><code>fail.Rd</code></div>
     </div>
@@ -168,9 +168,9 @@ implemented.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>fail</span>(<span class='kw'>message</span> <span class='kw'>=</span> <span class='st'>"Failure has been forced"</span>)
+    <pre class="usage"><span class='fu'>fail</span>(<span class='kw'>message</span> <span class='kw'>=</span> <span class='st'>"Failure has been forced"</span>, <span class='kw'>info</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
 
-<span class='fu'>succeed</span>(<span class='kw'>message</span> <span class='kw'>=</span> <span class='st'>"Success has been forced"</span>)</pre>
+<span class='fu'>succeed</span>(<span class='kw'>message</span> <span class='kw'>=</span> <span class='st'>"Success has been forced"</span>, <span class='kw'>info</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -178,6 +178,11 @@ implemented.</p>
     <tr>
       <th>message</th>
       <td><p>a string to display.</p></td>
+    </tr>
+    <tr>
+      <th>info</th>
+      <td><p>Character vector continuing additional information. Included
+for backward compatibility only and new expectations should not use it.</p></td>
     </tr>
     </table>
     
