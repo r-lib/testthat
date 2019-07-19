@@ -259,7 +259,7 @@ synchronised back to the source package.</p>
 
 <span class='co'># The first run always succeeds</span>
 <span class='fu'>expect_known_output</span>(<span class='no'>mtcars</span>[<span class='fl'>1</span>:<span class='fl'>10</span>, ], <span class='no'>tmp</span>, <span class='kw'>print</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: Creating reference output</span></div><div class='input'>
-<span class='co'># Subsequent runs will suceed only if the file is unchanged</span>
+<span class='co'># Subsequent runs will succeed only if the file is unchanged</span>
 <span class='co'># This will succeed:</span>
 <span class='fu'>expect_known_output</span>(<span class='no'>mtcars</span>[<span class='fl'>1</span>:<span class='fl'>10</span>, ], <span class='no'>tmp</span>, <span class='kw'>print</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><span class='co'># NOT RUN {</span>
 <span class='co'># This will fail</span>
