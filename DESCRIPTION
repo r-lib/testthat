@@ -19,6 +19,7 @@ Imports:
     cli,
     crayon (>= 1.3.4),
     digest,
+    evaluate,
     magrittr,
     methods,
     praise,
@@ -104,4 +105,5 @@ Collate:
     'try-again.R'
     'utils-io.R'
     'utils.R'
+    'verify-output.R'
     'watcher.R'

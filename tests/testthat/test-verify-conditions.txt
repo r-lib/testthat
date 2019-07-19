@@ -1,0 +1,12 @@
+> message("Message")
+Message: Message
+> # With calls
+> warning("Warning")
+Warning in eval(expr, envir, enclos): Warning
+> stop("Error")
+Error in eval(expr, envir, enclos): Error
+> # Without calls
+> warning("Warning", call. = FALSE)
+Warning: Warning
+> stop("Error", call. = FALSE)
+Error: Error
