@@ -2,146 +2,218 @@
 
 |field    |value                        |
 |:--------|:----------------------------|
-|version  |R version 3.5.2 (2018-12-20) |
-|os       |macOS Mojave 10.14.3         |
+|version  |R version 3.6.0 (2019-04-26) |
+|os       |macOS High Sierra 10.13.6    |
 |system   |x86_64, darwin15.6.0         |
 |ui       |X11                          |
 |language |(EN)                         |
 |collate  |en_US.UTF-8                  |
 |ctype    |en_US.UTF-8                  |
-|tz       |America/Chicago              |
-|date     |2019-04-18                   |
+|tz       |America/New_York             |
+|date     |2019-07-20                   |
 
 # Dependencies
 
-|package    |old   |new        |Δ  |
-|:----------|:-----|:----------|:--|
-|testthat   |2.0.1 |2.0.1.9000 |*  |
-|assertthat |NA    |0.2.1      |*  |
-|cli        |NA    |1.1.0      |*  |
-|rlang      |NA    |0.3.4      |*  |
+|package  |old   |new        |Δ  |
+|:--------|:-----|:----------|:--|
+|testthat |2.1.1 |2.1.1.9000 |*  |
 
 # Revdeps
 
-## Failed to check (107)
+## Failed to check (177)
 
-|package                        |version   |error       |warning |note |
-|:------------------------------|:---------|:-----------|:-------|:----|
-|aslib                          |0.1       |1           |        |     |
-|awsjavasdk                     |0.2.0     |1           |        |     |
-|Ball                           |1.3.7     |1           |        |     |
-|BayesRS                        |0.1.3     |1           |        |     |
-|[BgeeDB](failures.md#bgeedb)   |2.8.0     |__+2__      |        |1    |
-|BIEN                           |1.2.3     |1           |        |     |
-|BMSC                           |0.2.0     |1           |        |1    |
-|BridgeDbR                      |1.16.1    |1           |        |     |
-|CAMTHC                         |1.0.0     |1           |        |     |
-|canceR                         |1.16.02   |1           |        |     |
-|catSurv                        |1.0.3     |1           |        |     |
-|ChIPpeakAnno                   |?         |            |        |     |
-|ChIPseeker                     |1.18.0    |1           |        |1    |
-|chromstaR                      |?         |            |        |     |
-|CINdex                         |?         |            |        |     |
-|clusterExperiment              |2.2.0     |1           |        |5    |
-|coga                           |1.0.0     |1           |        |     |
-|CollapsABEL                    |0.10.11   |1           |        |     |
-|collUtils                      |1.0.5     |1           |        |     |
-|colorednoise                   |1.0.4     |1           |        |     |
-|corehunter                     |3.2.1     |1           |        |     |
-|Crossover                      |0.1-17    |1           |        |     |
-|ctsem                          |2.9.0     |1           |        |2    |
-|[curl](failures.md#curl)       |3.3       |-1 __+1__   |        |1    |
-|DaMiRseq                       |1.6.2     |1           |        |     |
-|DatabaseConnector              |2.3.0     |1           |        |     |
-|DataLoader                     |1.3       |1           |        |     |
-|deisotoper                     |0.0.7     |1           |        |     |
-|DelayedMatrixStats             |1.4.0     |1           |        |1    |
-|DeLorean                       |1.5.0     |1           |        |     |
-|DiffBind                       |2.10.0    |1           |        |2    |
-|dotCall64                      |1.0-0     |1           |        |     |
-|dynr                           |0.1.14-9  |1           |        |     |
-|ELMER                          |2.6.3     |1           |        |     |
-|esATAC                         |1.4.5     |1           |        |2    |
-|excursions                     |2.4.4     |1           |        |1    |
-|fastLink                       |0.5.0     |1           |        |     |
-|FlowSorted.Blood.EPIC          |?         |            |        |     |
-|genphen                        |1.10.3    |1           |        |2    |
-|geometa                        |0.4-0     |1           |        |1    |
-|GFORCE                         |0.1.4     |1           |        |     |
-|gower                          |0.2.0     |1           |        |     |
-|graphite                       |1.28.2    |1           |        |     |
-|gWidgets2tcltk                 |1.0-6     |1           |        |     |
-|hashr                          |0.1.0     |1           |        |     |
-|imbalance                      |1.0.0     |1           |        |     |
-|influenceR                     |0.1.0     |1           |        |     |
-|island                         |0.2.4     |1           |        |     |
-|joineRML                       |0.4.2     |1           |        |     |
-|JointAI                        |0.5.0     |1           |        |     |
-|jqr                            |1.1.0     |1           |        |     |
-|jwutil                         |1.2.1     |1           |        |     |
-|kmcudaR                        |1.1.0     |1           |        |     |
-|KRIG                           |0.1.0     |1           |        |     |
-|libstableR                     |1.0.2     |1           |        |     |
-|ludic                          |0.1.6     |1           |        |     |
-|martini                        |1.2.0     |1           |        |     |
-|mcmcabn                        |0.1       |1           |        |     |
-|MEAL                           |?         |            |        |     |
-|methylGSA                      |?         |            |        |     |
-|mgsa                           |1.30.0    |1           |        |1    |
-|miRSM                          |1.0.0     |1           |        |1    |
-|ModelMetrics                   |1.2.2     |1           |        |     |
-|MoonlightR                     |1.8.0     |1           |        |     |
-|Morpho                         |2.6       |1           |        |     |
-|morse                          |3.2.2     |1           |        |     |
-|motifcounter                   |1.6.0     |1           |        |1    |
-|MSnbase                        |2.8.3     |1           |        |3    |
-|mvabund                        |4.0.1     |1           |        |     |
-|mwaved                         |1.1.6     |1           |        |     |
-|NNLM                           |0.4.2     |1           |        |     |
-|normr                          |1.8.0     |1           |        |     |
-|OUTRIDER                       |1.0.4     |1           |        |1    |
-|PathwaySplice                  |1.6.1     |1           |        |2    |
-|PharmacoGx                     |1.12.0    |1           |        |1    |
-|poppr                          |2.8.2     |1           |        |     |
-|praznik                        |5.0.0     |1           |        |     |
-|rDEA                           |1.2-5     |1           |        |     |
-|rdist                          |0.0.3     |1           |        |     |
-|ReactomePA                     |1.26.0    |1           |        |1    |
-|[recount](failures.md#recount) |1.8.2     |1 -1 __+1__ |        |3    |
-|redland                        |1.0.17-10 |1           |        |     |
-|redux                          |1.1.0     |1           |        |     |
-|rFerns                         |3.0.0     |1           |        |     |
-|Rlibeemd                       |1.4.1     |1           |        |     |
-|rnetcarto                      |0.2.4     |1           |        |     |
-|rols                           |2.10.1    |1           |        |     |
-|rpf                            |0.62      |1           |        |     |
-|rrd                            |0.2.1     |1           |        |     |
-|rstanarm                       |2.18.2    |1           |        |3    |
-|Rtsne                          |0.15      |1           |        |     |
-|sdcTable                       |0.27      |1           |        |     |
-|sf                             |0.7-3     |1           |        |     |
-|simputation                    |0.2.2     |1           |        |     |
-|SiMRiv                         |1.0.3     |1           |        |     |
-|ssh                            |0.6       |1           |        |     |
-|StarBioTrek                    |1.8.5     |1           |        |     |
-|stringdist                     |0.9.5.1   |1           |        |     |
-|SuperGauss                     |1.0.1     |1           |        |     |
-|TCGAbiolinks                   |2.10.5    |1           |        |     |
-|TreeBUGS                       |1.4.3     |1           |        |     |
-|units                          |0.6-2     |1           |        |     |
-|V8                             |2.2       |1           |        |     |
-|vapour                         |0.1.0     |1           |        |     |
-|wand                           |0.2.0     |1           |        |     |
-|XBSeq                          |1.14.1    |1           |        |2    |
-|xcms                           |3.4.4     |1           |        |4    |
+|package                            |version   |error  |warning |note |
+|:----------------------------------|:---------|:------|:-------|:----|
+|aslib                              |0.1       |1      |        |     |
+|av                                 |0.2       |1      |        |     |
+|aws.alexa                          |0.1.7     |1      |        |     |
+|aws.cloudtrail                     |0.1.5     |1      |        |     |
+|aws.comprehend                     |0.1.2     |1      |        |     |
+|aws.kms                            |0.1.2     |1      |        |     |
+|aws.lambda                         |0.1.6     |1      |        |     |
+|aws.s3                             |0.3.12    |1      |        |     |
+|aws.sqs                            |0.1.10    |1      |        |     |
+|aws.transcribe                     |0.1.2     |1      |        |     |
+|awsjavasdk                         |0.2.0     |1      |        |     |
+|Ball                               |1.3.8     |1      |        |     |
+|BayesRS                            |0.1.3     |1      |        |     |
+|BgeeDB                             |2.8.0     |1      |        |1    |
+|BIEN                               |1.2.3     |1      |        |     |
+|bioCancer                          |?         |       |        |     |
+|BioCor                             |?         |       |        |     |
+|BiocSklearn                        |1.4.0     |1      |        |1    |
+|BridgeDbR                          |1.16.1    |1      |        |     |
+|CAMTHC                             |1.0.0     |1      |        |     |
+|canceR                             |1.16.02   |1      |        |     |
+|catSurv                            |1.0.3     |1      |        |     |
+|ChIPpeakAnno                       |?         |       |        |     |
+|ChIPseeker                         |?         |       |        |     |
+|chromstaR                          |1.8.1     |1      |        |     |
+|CINdex                             |?         |       |        |     |
+|cld3                               |1.2       |1      |        |     |
+|clusterExperiment                  |2.2.0     |1      |        |1    |
+|clusterProfiler                    |?         |       |        |     |
+|coga                               |1.0.0     |1      |        |     |
+|CollapsABEL                        |0.10.11   |1      |        |     |
+|collector                          |0.1.2     |1      |        |     |
+|collUtils                          |1.0.5     |1      |        |     |
+|colorednoise                       |1.0.4     |1      |        |     |
+|corehunter                         |3.2.1     |1      |        |     |
+|Crossover                          |0.1-18    |1      |        |     |
+|ctsem                              |2.9.6     |1      |        |1    |
+|DaMiRseq                           |1.6.2     |1      |        |     |
+|DatabaseConnector                  |2.4.1     |1      |        |     |
+|DataLoader                         |1.3       |1      |        |     |
+|deisotoper                         |0.0.7     |1      |        |     |
+|Delaporte                          |7.0.2     |1      |        |     |
+|DelayedMatrixStats                 |1.4.0     |1      |        |1    |
+|dialr                              |0.3.0     |1      |        |     |
+|dialrjars                          |8.10.14   |1      |        |     |
+|DiffBind                           |2.10.0    |1      |        |3    |
+|dotCall64                          |1.0-0     |1      |        |     |
+|dynr                               |0.1.14-9  |1      |        |     |
+|[eggCounts](failures.md#eggcounts) |2.2       |__+1__ |        |1 -3 |
+|EGSEA                              |1.10.1    |1      |        |     |
+|esATAC                             |1.4.5     |1      |        |2    |
+|evaluator                          |0.4.0     |1      |        |     |
+|evoper                             |0.5.0     |1      |        |     |
+|excursions                         |2.4.4     |1      |        |1    |
+|extraTrees                         |1.0.5     |1      |        |     |
+|fastLink                           |0.5.0     |1      |        |     |
+|fgsea                              |?         |       |        |     |
+|flowCore                           |1.48.1    |1      |        |     |
+|FlowSorted.Blood.EPIC              |?         |       |        |     |
+|frailtypack                        |3.0.3.2   |1      |        |     |
+|GARS                               |1.2.0     |1      |        |     |
+|geneXtendeR                        |1.8.0     |1      |        |5    |
+|genphen                            |1.10.3    |1      |        |     |
+|gert                               |0.1       |1      |        |     |
+|GFORCE                             |0.1.4     |1      |        |     |
+|ggbio                              |1.30.0    |1      |        |1    |
+|graphite                           |1.28.2    |2      |        |2    |
+|GroupSeq                           |1.3.5     |1      |        |     |
+|growthPheno                        |1.0-15    |1      |        |     |
+|gWidgets2RGtk2                     |1.0-7     |1      |        |     |
+|gWidgets2tcltk                     |1.0-6     |1      |        |     |
+|hashr                              |0.1.0     |1      |        |     |
+|ideal                              |1.6.1     |1      |        |1    |
+|imageData                          |0.1-59    |1      |        |     |
+|imbalance                          |1.0.0     |1      |        |     |
+|influenceR                         |0.1.0     |1      |        |     |
+|InterfaceqPCR                      |1.0       |1      |        |     |
+|island                             |0.2.4     |1      |        |     |
+|jdx                                |0.1.3     |1      |        |     |
+|joineRML                           |0.4.2     |1      |        |     |
+|JointAI                            |0.5.2     |1      |        |     |
+|jqr                                |1.1.0     |1      |        |     |
+|jSDM                               |0.1.0     |1      |        |     |
+|jsr223                             |0.3.3     |1      |        |     |
+|kmcudaR                            |1.1.0     |1      |        |     |
+|KRIG                               |0.1.0     |1      |        |     |
+|libstableR                         |1.0.2     |1      |        |     |
+|lidR                               |2.1.0     |1      |        |     |
+|lilikoi                            |0.1.0     |1      |        |     |
+|llama                              |0.9.2     |1      |        |     |
+|LLSR                               |0.0.2.19  |1      |        |     |
+|loon                               |1.2.2     |1      |        |     |
+|ludic                              |0.1.6     |1      |        |     |
+|martini                            |1.2.0     |1      |        |     |
+|mcmcabn                            |0.2       |1      |        |     |
+|MEAL                               |?         |       |        |     |
+|[MetaStan](failures.md#metastan)   |0.1.0     |__+1__ |        |-2   |
+|methylGSA                          |?         |       |        |     |
+|mgsa                               |1.30.0    |1      |        |     |
+|miRSM                              |?         |       |        |     |
+|miRsponge                          |?         |       |        |     |
+|mleap                              |0.1.3     |1      |        |     |
+|MoonlightR                         |1.8.0     |1      |        |     |
+|Morpho                             |2.7       |1      |        |     |
+|morse                              |3.2.4     |1      |        |     |
+|motifcounter                       |1.6.0     |1      |        |1    |
+|MSGFgui                            |1.16.1    |1      |        |     |
+|MSnbase                            |2.8.3     |2      |        |6    |
+|multiHiCcompare                    |1.0.0     |1      |        |     |
+|mvabund                            |4.0.1     |1      |        |     |
+|mwaved                             |1.1.6     |1      |        |     |
+|netReg                             |1.6.0     |1      |        |     |
+|netSmooth                          |1.2.0     |1      |        |1    |
+|nlmixr                             |1.0.0-7   |1      |        |     |
+|NNLM                               |0.4.3     |1      |        |     |
+|normr                              |1.8.0     |1      |        |     |
+|OSMscale                           |0.5.1     |1      |        |     |
+|paxtoolsr                          |1.16.0    |1      |        |1    |
+|petro.One                          |0.2.3     |1      |        |     |
+|PharmacoGx                         |1.12.0    |1      |        |     |
+|poppr                              |2.8.3     |1      |        |     |
+|PortfolioEffectHFT                 |1.8       |1      |        |     |
+|praznik                            |6.0.0     |1      |        |     |
+|pRoloc                             |1.22.2    |1      |1       |3    |
+|Prostar                            |1.14.12   |1      |        |     |
+|protolite                          |1.9       |1      |        |     |
+|psichomics                         |1.8.2     |1      |        |     |
+|psycho                             |?         |       |        |     |
+|qdap                               |2.3.2     |1      |        |     |
+|qMRI                               |1.0.1     |1      |        |     |
+|rapidraker                         |0.1.0     |1      |        |     |
+|rcellminer                         |2.4.0     |1      |        |1    |
+|rcrypt                             |0.1.1     |1      |        |     |
+|rDEA                               |1.2-5     |1      |        |     |
+|rdist                              |0.0.3     |1      |        |     |
+|Rdrools                            |1.1.1     |1      |        |     |
+|ReactomePA                         |?         |       |        |     |
+|recount                            |1.8.2     |2      |        |3    |
+|redland                            |1.0.17-10 |1      |        |     |
+|redux                              |1.1.0     |1      |        |     |
+|rehh                               |3.0.1     |1      |        |     |
+|rFerns                             |3.0.0     |1      |        |     |
+|rGroovy                            |1.3       |1      |        |     |
+|Rlibeemd                           |1.4.1     |1      |        |     |
+|RMariaDB                           |1.0.6     |1      |        |     |
+|rmcfs                              |1.3.0     |1      |        |     |
+|RMySQL                             |0.10.17   |1      |        |     |
+|rnetcarto                          |0.2.4     |1      |        |     |
+|rols                               |2.10.1    |1      |        |     |
+|rpcdsearch                         |1.0       |1      |        |     |
+|rpf                                |0.62      |1      |        |     |
+|rrd                                |0.2.2     |1      |        |     |
+|RSCAT                              |1.0.0     |1      |        |     |
+|rstanarm                           |2.18.2    |1      |        |2    |
+|[rstap](failures.md#rstap)         |1.0.3     |__+1__ |        |-3   |
+|Rtsne                              |0.15      |1      |        |     |
+|sdcTable                           |0.28      |1      |        |     |
+|SiMRiv                             |1.0.3     |1      |        |     |
+|slingshot                          |1.0.0     |1      |        |     |
+|SqlRender                          |1.6.2     |1      |        |     |
+|ssh                                |0.6       |1      |        |     |
+|StarBioTrek                        |1.8.5     |1      |        |     |
+|SuperGauss                         |1.0.1     |1      |        |     |
+|tabulizer                          |0.2.2     |1      |        |     |
+|TCGAbiolinks                       |2.10.5    |1      |        |1    |
+|TCseq                              |1.6.1     |1      |        |     |
+|textmining                         |0.0.1     |1      |        |     |
+|tm.plugin.webmining                |1.3       |1      |        |     |
+|treatSens                          |2.1.3     |1      |        |     |
+|TreeBUGS                           |1.4.3     |1      |        |     |
+|TVTB                               |1.8.0     |1      |        |1    |
+|units                              |0.6-3     |1      |        |     |
+|V8                                 |2.3       |1      |        |     |
+|vapour                             |0.2.0     |1      |        |     |
+|vortexR                            |1.1.6     |1      |        |     |
+|XBSeq                              |1.14.1    |1      |        |2    |
+|xcms                               |3.4.4     |1      |        |5    |
 
-## New problems (5)
+## New problems (10)
 
-|package                                          |version |error  |warning |note |
-|:------------------------------------------------|:-------|:------|:-------|:----|
-|[drake](problems.md#drake)                       |7.1.0   |__+1__ |        |     |
-|[markmyassignment](problems.md#markmyassignment) |0.8.1   |       |__+1__  |1    |
-|[parallelMap](problems.md#parallelmap)           |1.3     |__+1__ |        |3    |
-|[platetools](problems.md#platetools)             |0.1.1   |__+1__ |        |1    |
-|[rentrez](problems.md#rentrez)                   |1.2.1   |__+1__ |        |     |
+|package                                        |version |error  |warning |note   |
+|:----------------------------------------------|:-------|:------|:-------|:------|
+|[AnnotationBustR](problems.md#annotationbustr) |1.2     |__+1__ |        |       |
+|[FLightR](problems.md#flightr)                 |0.4.9   |__+1__ |        |1      |
+|[ipc](problems.md#ipc)                         |0.1.3   |__+1__ |        |       |
+|[lme4](problems.md#lme4)                       |1.1-21  |__+1__ |        |1      |
+|[metaBMA](problems.md#metabma)                 |0.6.1   |-1     |        |__+2__ |
+|[ODEsensitivity](problems.md#odesensitivity)   |1.1.2   |__+1__ |        |       |
+|[quantspec](problems.md#quantspec)             |1.2-1   |__+1__ |        |       |
+|[rdefra](problems.md#rdefra)                   |0.3.6   |__+1__ |        |       |
+|[seminr](problems.md#seminr)                   |0.7.0   |__+1__ |        |       |
+|[surveillance](problems.md#surveillance)       |1.17.0  |__+1__ |        |3      |
 
