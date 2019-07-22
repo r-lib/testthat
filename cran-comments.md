@@ -1,7 +1,3 @@
-This is a patch release to fix the test failures in a strict latin1 locale. This did not involve any changes to testthat code, so I did not re-run the revdep tests.
-
----
-
 ## Test environments
 
 * local OS X install (R-release)
@@ -14,102 +10,140 @@ There were no ERRORs, WARNINGs, or NOTEs.
 
 ## revdepcheck results
 
-We checked 4279 reverse dependencies (3808 from CRAN + 471 from BioConductor), comparing R CMD check results across CRAN and dev versions of this package.
+We checked 4577 reverse dependencies (4105 from CRAN + 472 from BioConductor), comparing R CMD check results across CRAN and dev versions of this package.
 
- * We saw 4 new problems
- * We failed to check 71 packages
+ * We saw 2 new problems
+ * We failed to check 117 packages
 
 Issues with CRAN packages are summarised below.
 
 ### New problems
 (This reports the first line of each new failure)
 
-* markmyassignment
-  checking whether package ‘markmyassignment’ can be installed ... WARNING
-  https://github.com/MansMeg/markmyassignment/issues/103
-  
-* parallelMap
-  checking tests ...
-  https://github.com/berndbischl/parallelMap/issues/64
-
-* platetools
-  checking tests ...
-  https://github.com/Swarchal/platetools/issues/19
-
-* rentrez
+* quantspec
   checking examples ... ERROR
-  Web failure
+  Random socket failure
+
+* rdefra
+  checking tests ...
+  Now archived from CRAN
 
 ### Failed to check
 
-* aslib             (NA)
-* awsjavasdk        (NA)
-* Ball              (NA)
-* BayesRS           (NA)
-* BIEN              (NA)
-* BMSC              (NA)
-* catSurv           (NA)
-* coga              (NA)
-* CollapsABEL       (NA)
-* collUtils         (NA)
-* colorednoise      (NA)
-* corehunter        (NA)
-* Crossover         (NA)
-* ctsem             (NA)
-* curl              (NA)
-* DatabaseConnector (NA)
-* DataLoader        (NA)
-* deisotoper        (NA)
-* DeLorean          (NA)
-* dotCall64         (NA)
-* dynr              (NA)
-* excursions        (NA)
-* fastLink          (NA)
-* geometa           (NA)
-* GFORCE            (NA)
-* gower             (NA)
-* gWidgets2tcltk    (NA)
-* hashr             (NA)
-* imbalance         (NA)
-* influenceR        (NA)
-* island            (NA)
-* joineRML          (NA)
-* JointAI           (NA)
-* jqr               (NA)
-* jwutil            (NA)
-* kmcudaR           (NA)
-* KRIG              (NA)
-* libstableR        (NA)
-* ludic             (NA)
-* mcmcabn           (NA)
-* ModelMetrics      (NA)
-* Morpho            (NA)
-* morse             (NA)
-* mvabund           (NA)
-* mwaved            (NA)
-* NNLM              (NA)
-* poppr             (NA)
-* praznik           (NA)
-* rDEA              (NA)
-* rdist             (NA)
-* redland           (NA)
-* redux             (NA)
-* rFerns            (NA)
-* Rlibeemd          (NA)
-* rnetcarto         (NA)
-* rpf               (NA)
-* rrd               (NA)
-* rstanarm          (NA)
-* Rtsne             (NA)
-* sdcTable          (NA)
-* sf                (NA)
-* simputation       (NA)
-* SiMRiv            (NA)
-* ssh               (NA)
-* stringdist        (NA)
-* SuperGauss        (NA)
-* TreeBUGS          (NA)
-* units             (NA)
-* V8                (NA)
-* vapour            (NA)
-* wand              (NA)
+* aslib               (NA)
+* av                  (NA)
+* aws.alexa           (NA)
+* aws.cloudtrail      (NA)
+* aws.comprehend      (NA)
+* aws.kms             (NA)
+* aws.lambda          (NA)
+* aws.s3              (NA)
+* aws.sqs             (NA)
+* aws.transcribe      (NA)
+* awsjavasdk          (NA)
+* Ball                (NA)
+* BayesRS             (NA)
+* BIEN                (NA)
+* catSurv             (NA)
+* cld3                (NA)
+* coga                (NA)
+* CollapsABEL         (NA)
+* collector           (NA)
+* collUtils           (NA)
+* colorednoise        (NA)
+* corehunter          (NA)
+* Crossover           (NA)
+* ctsem               (NA)
+* DatabaseConnector   (NA)
+* DataLoader          (NA)
+* deisotoper          (NA)
+* Delaporte           (NA)
+* dialr               (NA)
+* dialrjars           (NA)
+* dotCall64           (NA)
+* dynr                (NA)
+* evaluator           (NA)
+* evoper              (NA)
+* excursions          (NA)
+* extraTrees          (NA)
+* fastLink            (NA)
+* frailtypack         (NA)
+* gert                (NA)
+* GFORCE              (NA)
+* GroupSeq            (NA)
+* growthPheno         (NA)
+* gWidgets2RGtk2      (NA)
+* gWidgets2tcltk      (NA)
+* hashr               (NA)
+* imageData           (NA)
+* imbalance           (NA)
+* influenceR          (NA)
+* InterfaceqPCR       (NA)
+* island              (NA)
+* jdx                 (NA)
+* joineRML            (NA)
+* JointAI             (NA)
+* jqr                 (NA)
+* jSDM                (NA)
+* jsr223              (NA)
+* kmcudaR             (NA)
+* KRIG                (NA)
+* libstableR          (NA)
+* lidR                (NA)
+* lilikoi             (NA)
+* llama               (NA)
+* LLSR                (NA)
+* loon                (NA)
+* ludic               (NA)
+* mcmcabn             (NA)
+* mleap               (NA)
+* Morpho              (NA)
+* morse               (NA)
+* mvabund             (NA)
+* mwaved              (NA)
+* nlmixr              (NA)
+* NNLM                (NA)
+* OSMscale            (NA)
+* petro.One           (NA)
+* poppr               (NA)
+* PortfolioEffectHFT  (NA)
+* praznik             (NA)
+* protolite           (NA)
+* qdap                (NA)
+* qMRI                (NA)
+* rapidraker          (NA)
+* rcrypt              (NA)
+* rDEA                (NA)
+* rdist               (NA)
+* Rdrools             (NA)
+* redland             (NA)
+* redux               (NA)
+* rehh                (NA)
+* rFerns              (NA)
+* rGroovy             (NA)
+* Rlibeemd            (NA)
+* RMariaDB            (NA)
+* rmcfs               (NA)
+* RMySQL              (NA)
+* rnetcarto           (NA)
+* rpcdsearch          (NA)
+* rpf                 (NA)
+* rrd                 (NA)
+* RSCAT               (NA)
+* rstanarm            (NA)
+* rstap               (NA)
+* Rtsne               (NA)
+* sdcTable            (NA)
+* SiMRiv              (NA)
+* SqlRender           (NA)
+* ssh                 (NA)
+* SuperGauss          (NA)
+* tabulizer           (NA)
+* textmining          (NA)
+* tm.plugin.webmining (NA)
+* treatSens           (NA)
+* TreeBUGS            (NA)
+* units               (NA)
+* V8                  (NA)
+* vapour              (NA)
+* vortexR             (NA)
