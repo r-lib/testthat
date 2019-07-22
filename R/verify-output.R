@@ -60,7 +60,7 @@ output_replay <- function(x) {
 
 #' @export
 output_replay.character <- function(x) {
-  sub("\n$", "", x)
+  c(strsplit(x, "\n")[[1]], "")
 }
 
 #' @export
