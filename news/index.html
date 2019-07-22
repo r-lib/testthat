@@ -80,7 +80,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">testthat</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.1.1.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.2.0.9000</span>
       </span>
     </div>
 
@@ -155,6 +155,36 @@
       <small>Source: <a href='https://github.com/r-lib/testthat/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
+    <div id="testthat-2-2-0" class="section level1">
+<h1 class="page-header">
+<a href="#testthat-2-2-0" class="anchor"></a>testthat 2.2.0<small> Unreleased </small>
+</h1>
+<div id="new-features" class="section level2">
+<h2 class="hasAnchor">
+<a href="#new-features" class="anchor"></a>New features</h2>
+<ul>
+<li>New <code><a href="../reference/verify_output.html">verify_output()</a></code> is designed for testing output aimed at humans (most commonly print methods and error messages). It is a regression test that saves output in a way that makes it easy to review. It is automatically skipped on CRAN (<a href='https://github.com/r-lib/testthat/issues/782'>#782</a>, <a href='https://github.com/r-lib/testthat/issues/834'>#834</a>).</li>
+</ul>
+</div>
+<div id="minor-improvements-and-bug-fixes" class="section level2">
+<h2 class="hasAnchor">
+<a href="#minor-improvements-and-bug-fixes" class="anchor"></a>Minor improvements and bug fixes</h2>
+<ul>
+<li><p><code>as.data.frame.testthat_results()</code> now always returns a data frame with 13 columns (<a href='https://github.com/jozefhajnala'>@jozefhajnala</a>, <a href='https://github.com/r-lib/testthat/issues/887'>#887</a>).</p></li>
+<li><p><code><a href="../reference/auto_test_package.html">auto_test_package()</a></code> now correctly handles helper files (<code>tests/testthat/helper-*.R</code>), automatically reloading all code and rerunning all tests (<a href='https://github.com/CorradoLanera'>@CorradoLanera</a>, <a href='https://github.com/r-lib/testthat/issues/376'>#376</a>, <a href='https://github.com/r-lib/testthat/issues/896'>#896</a>).</p></li>
+<li><p><code><a href="../reference/expect_match.html">expect_match()</a></code> now displays <code>info</code> even when match length is 0 (<a href='https://github.com/r-lib/testthat/issues/867'>#867</a>).</p></li>
+<li><p><code><a href="../reference/inheritance-expectations.html">expect_s3_class()</a></code> gains new <code>expect</code> argument that allows you to check for an exact class match, not just inheritance (<a href='https://github.com/r-lib/testthat/issues/885'>#885</a>).</p></li>
+<li><p><code><a href="../reference/fail.html">fail()</a></code> and <code><a href="../reference/fail.html">succeed()</a></code> gain <code>info</code> argument, which is passed along to <code><a href="../reference/expect.html">expect()</a></code>.</p></li>
+<li><p><code><a href="../reference/test_examples.html">test_examples()</a></code> gets some minor fixes: it now returns the results invisibly, doesn’t assume that examples should contain tests, and documents that you shouldn’t be using it routinely (<a href='https://github.com/r-lib/testthat/issues/841'>#841</a>).</p></li>
+<li><p><code><a href="../reference/test_file.html">test_file()</a></code> only calls <code>Reporter$end_context()</code> if a context was started, fixing an error in <code>TeamcityReporter</code> (<a href='https://github.com/atheriel'>@atheriel</a>, <a href='https://github.com/r-lib/testthat/issues/883'>#883</a>).</p></li>
+<li><p><code><a href="../reference/skip.html">skip()</a></code> now reports reason for skipping as: <code>Reason: {skip condition}</code> (<a href='https://github.com/patr1ckm'>@patr1ckm</a>, <a href='https://github.com/r-lib/testthat/issues/868'>#868</a>).</p></li>
+<li><p><code><a href="../reference/skip.html">skip_if()</a></code> and <code><a href="../reference/skip.html">skip_if_not()</a></code> now report <code>Reason: {skip condition} is TRUE</code> and <code>Reason: {skip condition} is not TRUE</code> respectively (@ patr1ckm, <a href='https://github.com/r-lib/testthat/issues/868'>#868</a>).</p></li>
+<li><p><code><a href="../reference/skip.html">skip_if_translated()</a></code> now tests for translation of a specific message. This is more robust than the previous approach because translation happens message-by-message, not necessarily for the entire session (<a href='https://github.com/r-lib/testthat/issues/879'>#879</a>) (and in general, it’s impossible to determine what language R is currently using).</p></li>
+<li><p><code><a href="../reference/skip.html">skip_on_covr()</a></code> allows you to skip tests when covr is running. (<a href='https://github.com/ianmcook'>@ianmcook</a>, <a href='https://github.com/r-lib/testthat/issues/895'>#895</a>)</p></li>
+<li><p><code><a href="../reference/expect_known_output.html">expect_known_value()</a></code> gains a new serialisation <code>version</code> argument, defaulting to 2. Prevents the <code>.rds</code> files created to hold reference objects from making a package appear to require R &gt;= 3.5 (<a href='https://github.com/r-lib/testthat/issues/888'>#888</a> <a href='https://github.com/jennybc'>@jennybc</a>).</p></li>
+</ul>
+</div>
+</div>
     <div id="testthat-2-1-1" class="section level1">
 <h1 class="page-header">
 <a href="#testthat-2-1-1" class="anchor"></a>testthat 2.1.1<small> 2019-04-23 </small>
@@ -328,9 +358,9 @@
 <p>(Note that this is not tidy evaluation per se, but is closely related. At this time you can not unquote quosures.)</p>
 </div>
 </div>
-<div id="new-features" class="section level2">
+<div id="new-features-1" class="section level2">
 <h2 class="hasAnchor">
-<a href="#new-features" class="anchor"></a>New features</h2>
+<a href="#new-features-1" class="anchor"></a>New features</h2>
 <div id="setup-and-teardown" class="section level3">
 <h3 class="hasAnchor">
 <a href="#setup-and-teardown" class="anchor"></a>Setup and teardown</h3>
@@ -389,9 +419,9 @@
 <code><a href="../reference/oldskool.html">is_null()</a></code> and <code><a href="../reference/oldskool.html">matches()</a></code> have been deprecated because they conflict with other functions in the tidyverse (<a href='https://github.com/r-lib/testthat/issues/523'>#523</a>).</li>
 </ul>
 </div>
-<div id="minor-improvements-and-bug-fixes" class="section level2">
+<div id="minor-improvements-and-bug-fixes-1" class="section level2">
 <h2 class="hasAnchor">
-<a href="#minor-improvements-and-bug-fixes" class="anchor"></a>Minor improvements and bug fixes</h2>
+<a href="#minor-improvements-and-bug-fixes-1" class="anchor"></a>Minor improvements and bug fixes</h2>
 <ul>
 <li>Updated Catch to 1.9.6. <code>testthat</code> now understands and makes use of the package routine registration mechanism required by CRAN with R &gt;= 3.4.0.
 <p>(<a href='https://github.com/kevinushey'>@kevinushey</a>)</p>
@@ -594,9 +624,9 @@
 <h1 class="page-header">
 <a href="#testthat-0-9" class="anchor"></a>testthat 0.9<small> 2014-09-22 </small>
 </h1>
-<div id="new-features-1" class="section level2">
+<div id="new-features-2" class="section level2">
 <h2 class="hasAnchor">
-<a href="#new-features-1" class="anchor"></a>New features</h2>
+<a href="#new-features-2" class="anchor"></a>New features</h2>
 <ul>
 <li><p>BDD: testhat now comes with an initial behaviour driven development (BDD) interface. The language is similiar to RSpec for Ruby or Mocha for JavaScript. BDD tests read like sentences, so they should make it easier to understand the specification of a function. See <code>?describe()</code> for further information and examples.</p></li>
 <li><p>It’s now possible to <code><a href="../reference/skip.html">skip()</a></code> a test with an informative message - this is useful when tests are only available under certain conditions, as when not on CRAN, or when an internet connection is available (<a href='https://github.com/r-lib/testthat/issues/141'>#141</a>).</p></li>
@@ -605,9 +635,9 @@
 <li><p>A new expectation, <code><a href="../reference/expect_known_output.html">expect_equal_to_reference()</a></code> has been added. It tests for equality to a reference value stored in a file (<a href='https://github.com/r-lib/testthat/issues/148'>#148</a>, <a href='https://github.com/jonclayden'>@jonclayden</a>).</p></li>
 </ul>
 </div>
-<div id="minor-improvements-and-bug-fixes-1" class="section level2">
+<div id="minor-improvements-and-bug-fixes-2" class="section level2">
 <h2 class="hasAnchor">
-<a href="#minor-improvements-and-bug-fixes-1" class="anchor"></a>Minor improvements and bug fixes</h2>
+<a href="#minor-improvements-and-bug-fixes-2" class="anchor"></a>Minor improvements and bug fixes</h2>
 <ul>
 <li><p><code><a href="../reference/auto_test_package.html">auto_test_package()</a></code> works once more, and now uses <code><a href="https://www.rdocumentation.org/packages/devtools/topics/load_all">devtools::load_all()</a></code> for higher fidelity loading (<a href='https://github.com/r-lib/testthat/issues/138'>#138</a>, <a href='https://github.com/r-lib/testthat/issues/151'>#151</a>).</p></li>
 <li><p>Bug in <code><a href="../reference/compare.html">compare.character()</a></code> fixed, as reported by Georgi Boshnakov.</p></li>
@@ -661,9 +691,9 @@
 <li><p><code><a href="../reference/comparison-expectations.html">expect_more_than()</a></code>, <code><a href="../reference/oldskool.html">is_more_than()</a></code>, <code><a href="../reference/comparison-expectations.html">expect_less_than()</a></code>, <code><a href="../reference/oldskool.html">is_less_than()</a></code> to check values above or below a threshold. (<a href='https://github.com/r-lib/testthat/issues/77'>#77</a>, thanks to <a href='https://github.com/jknowles'>@jknowles</a>)</p></li>
 </ul>
 </div>
-<div id="minor-improvements-and-bug-fixes-2" class="section level2">
+<div id="minor-improvements-and-bug-fixes-3" class="section level2">
 <h2 class="hasAnchor">
-<a href="#minor-improvements-and-bug-fixes-2" class="anchor"></a>Minor improvements and bug fixes</h2>
+<a href="#minor-improvements-and-bug-fixes-3" class="anchor"></a>Minor improvements and bug fixes</h2>
 <ul>
 <li><p><code><a href="../reference/expect_that.html">expect_that()</a></code> (and thus all <code>expect_*</code> functions) now invisibly return the expectation result, and stops if info or label arguments have length &gt; 1 (thanks to <a href='https://github.com/kforner'>@kforner</a>)</p></li>
 <li><p>fixed two bugs with source_dir(): it did not look for the source scripts at the right place, and it did not use its <code>chdir</code> argument.</p></li>
@@ -770,6 +800,7 @@
     <div id="tocnav">
       <h2>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
+        <li><a href="#testthat-2-2-0">2.2.0</a></li>
         <li><a href="#testthat-2-1-1">2.1.1</a></li>
         <li><a href="#testthat-2-1-0">2.1.0</a></li>
         <li><a href="#testthat-2-0-1">2.0.1</a></li>
