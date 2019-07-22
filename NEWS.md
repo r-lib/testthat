@@ -1,3 +1,5 @@
+# testthat (development version)
+
 # testthat 2.2.0
 
 ## New features
