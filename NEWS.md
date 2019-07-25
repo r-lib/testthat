@@ -1,5 +1,8 @@
 # testthat (development version)
 
+* Repair regression in `test_rd()` and add a couple of tests to hopefully 
+  detect the problem earlier in the future.
+
 # testthat 2.2.0
 
 ## New features

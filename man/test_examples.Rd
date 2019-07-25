@@ -8,9 +8,9 @@
 \usage{
 test_examples(path = "../..")
 
-test_rd(rd)
+test_rd(rd, title = attr(rd, "Rdfile"))
 
-test_example(path)
+test_example(path, title = path)
 }
 \arguments{
 \item{path}{For \code{test_examples()}, path to directory containing Rd files.
@@ -18,6 +18,8 @@ For \code{test_example()}, path to a single Rd file. Remember the working
 directory for tests is \code{tests/testthat}.}
 
 \item{rd}{A parsed Rd object, obtained from \code{\link[tools:Rd_db]{tools::Rd_db()}} or otherwise.}
+
+\item{title}{Test title to use}
 }
 \description{
 These helper functions make it easier to test the examples in a package.

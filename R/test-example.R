@@ -9,6 +9,7 @@
 #' @param path For `test_examples()`, path to directory containing Rd files.
 #'   For `test_example()`, path to a single Rd file. Remember the working
 #'   directory for tests is `tests/testthat`.
+#' @param title Test title to use
 #' @param rd A parsed Rd object, obtained from [tools::Rd_db()] or otherwise.
 #' @export
 test_examples <- function(path = "../..") {
@@ -45,20 +46,22 @@ test_examples_installed <- function(package = env_test$package) {
 
 #' @export
 #' @rdname test_examples
-test_rd <- function(rd) {
-  test_example(attr(rd, "Rdfile"))
+test_rd <- function(rd, title = attr(rd, "Rdfile")) {
+  test_example(rd, title)
 }
 
 #' @export
 #' @rdname test_examples
-test_example <- function(path) {
-  ex_path <- file.path(tempdir(), paste0(tools::file_path_sans_ext(basename(path)), ".R"))
+test_example <- function(path, title = path) {
+  ex_path <- tempfile(fileext = ".R")
   tools::Rd2ex(path, ex_path)
-  if (!file.exists(ex_path)) return(invisible())
+  if (!file.exists(ex_path)) {
+    return(invisible(FALSE))
+  }
 
   env <- new.env(parent = globalenv())
 
-  ok <- test_code(path,
+  ok <- test_code(title,
     parse(ex_path, encoding = "UTF-8"),
     env = env,
     skip_on_empty = FALSE
