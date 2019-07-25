@@ -85,7 +85,7 @@ recommended in routine practice." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">testthat</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.2.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.2.1</span>
       </span>
     </div>
 
@@ -172,9 +172,9 @@ recommended in routine practice.</p>
 
     <pre class="usage"><span class='fu'>test_examples</span>(<span class='kw'>path</span> <span class='kw'>=</span> <span class='st'>"../.."</span>)
 
-<span class='fu'>test_rd</span>(<span class='no'>rd</span>)
+<span class='fu'>test_rd</span>(<span class='no'>rd</span>, <span class='kw'>title</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/attr'>attr</a></span>(<span class='no'>rd</span>, <span class='st'>"Rdfile"</span>))
 
-<span class='fu'>test_example</span>(<span class='no'>path</span>)</pre>
+<span class='fu'>test_example</span>(<span class='no'>path</span>, <span class='kw'>title</span> <span class='kw'>=</span> <span class='no'>path</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -188,6 +188,10 @@ directory for tests is <code>tests/testthat</code>.</p></td>
     <tr>
       <th>rd</th>
       <td><p>A parsed Rd object, obtained from <code><a href='https://www.rdocumentation.org/packages/tools/topics/Rdutils'>tools::Rd_db()</a></code> or otherwise.</p></td>
+    </tr>
+    <tr>
+      <th>title</th>
+      <td><p>Test title to use</p></td>
     </tr>
     </table>
     
