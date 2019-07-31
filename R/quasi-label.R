@@ -1,7 +1,7 @@
 #' Quasi-labelling
 #'
 #' The first argument to every `expect_` function can use unquoting to
-#' construct better labels. This makes it easy to create informative labels
+#' construct better labels. This makes it easy to create informative labels when
 #' expectations are used inside a function or a for loop. `quasi_label()` wraps
 #' up the details, returning the expression and label.
 #'
@@ -25,7 +25,7 @@
 #' f <- function(i) if (i > 3) i * 9 else i * 10
 #' i <- 10
 #'
-#' # This short of expression commonly occurs inside a for loop or function
+#' # This sort of expression commonly occurs inside a for loop or function
 #' # And the failure isn't helpful because you can't see the value of i
 #' # that caused the problem:
 #' show_failure(expect_equal(f(i), i * 10))
