@@ -64,7 +64,7 @@ expectation <- function(type, message, srcref = NULL, env = NULL) {
   type <- match.arg(type, c("success", "failure", "error", "skip", "warning"))
 
   if (type %in% c("failure", "error")) {
-    trace <- trace_back(test_data$trace_top, env)
+    trace <- trace_back(bottom = env)
   } else {
     trace <- NULL
   }

@@ -31,9 +31,6 @@ test_that <- function(desc, code) {
   test_code(desc, code, env = parent.frame())
 }
 
-test_data <- env(emptyenv())
-test_data$trace_top <- NULL
-
 test_code <- function(test, code, env = test_env(), skip_on_empty = TRUE) {
   if (!is.null(test)) {
     get_reporter()$start_test(context = get_reporter()$.context, test = test)
@@ -160,7 +157,8 @@ test_code <- function(test, code, env = test_env(), skip_on_empty = TRUE) {
   }
 
   test_env <- new.env(parent = env)
-  test_data$trace_top <- test_env
+  old <- options(rlang_trace_top_env = test_env)[[1]]
+  on.exit(options(rlang_trace_top_env = old), add = TRUE)
 
   tryCatch(
     withCallingHandlers(
