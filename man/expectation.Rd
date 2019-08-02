@@ -5,7 +5,7 @@
 \alias{is.expectation}
 \title{Construct an expectation object}
 \usage{
-expectation(type, message, srcref = NULL)
+expectation(type, message, srcref = NULL, env = NULL)
 
 is.expectation(x)
 }
@@ -16,6 +16,12 @@ is.expectation(x)
 \item{message}{Message describing test failure}
 
 \item{srcref}{Optional \code{srcref} giving location of test.}
+
+\item{env}{The environment of the \code{expect_} function. You should
+only pass this when you're calling \code{expect()} from an internal
+helper. This environment is passed to \code{\link[rlang:trace_back]{rlang::trace_back()}} as
+\code{bottom} argument, in order to remove the uninformative testthat
+context from backtraces.}
 
 \item{x}{object to test for class membership}
 }

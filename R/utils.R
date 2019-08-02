@@ -93,3 +93,7 @@ context_name <- function(filename) {
 
   filename
 }
+
+paste_line <- function(...) {
+  paste(chr(...), collapse = "\n")
+}

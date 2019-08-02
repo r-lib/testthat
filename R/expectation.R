@@ -9,10 +9,18 @@
 #'   for backward compatibility only and new expectations should not use it.
 #' @param srcref Location of the failure. Should only needed to be explicitly
 #'   supplied when you need to forward a srcref captured elsewhere.
+#' @param env The environment of the `expect_` function. You should
+#'   only pass this when you're calling `expect()` from an internal
+#'   helper. This environment is passed to [rlang::trace_back()] as
+#'   `bottom` argument, in order to remove the uninformative testthat
+#'   context from backtraces.
 #' @return An expectation object. Signals the expectation condition
 #'   with a `continue_test` restart.
 #' @export
-expect <- function(ok, failure_message, info = NULL, srcref = NULL) {
+expect <- function(ok, failure_message, info = NULL, srcref = NULL,
+                   env = NULL) {
+  env <- env %||% caller_env()
+
   type <- if (ok) "success" else "failure"
 
   # Preserve existing API which appear to be used in package test code
@@ -29,7 +37,7 @@ expect <- function(ok, failure_message, info = NULL, srcref = NULL) {
     }
   }
 
-  exp <- expectation(type, message, srcref = srcref)
+  exp <- expectation(type, message, srcref = srcref, env = env)
 
   withRestarts(
     if (ok) signalCondition(exp) else stop(exp),
@@ -49,15 +57,23 @@ expect <- function(ok, failure_message, info = NULL, srcref = NULL) {
 #'   "skip", "warning".
 #' @param message Message describing test failure
 #' @param srcref Optional `srcref` giving location of test.
+#' @inheritParams expect
 #' @keywords internal
 #' @export
-expectation <- function(type, message, srcref = NULL) {
+expectation <- function(type, message, srcref = NULL, env = NULL) {
   type <- match.arg(type, c("success", "failure", "error", "skip", "warning"))
+
+  if (type %in% c("failure", "error")) {
+    trace <- trace_back(test_data$trace_top, env)
+  } else {
+    trace <- NULL
+  }
 
   structure(
     list(
       message = message,
-      srcref = srcref
+      srcref = srcref,
+      trace = trace
     ),
     class = c(
       paste0("expectation_", type),
@@ -86,12 +102,20 @@ format.expectation_success <- function(x, ...) {
 
 #' @export
 format.expectation_error <- function(x, ...) {
-  paste(c(x$message, create_traceback(x$call)), collapse = "\n")
+  format_with_trace(x)
 }
 
 #' @export
 format.expectation <- function(x, ...) {
   x$message
+}
+
+format_with_trace <- function(exp) {
+  paste_line(
+    paste0("Message: ", crayon::italic(exp$message)),
+    "Backtrace:",
+    !!!format(exp$trace, simplify = "branch")
+  )
 }
 
 # as.expectation ----------------------------------------------------------
@@ -120,7 +144,7 @@ as.expectation.error <- function(x, ..., srcref = NULL) {
   # Remove trailing newline to be consistent with other conditons
   msg <- gsub("\n$", "", msg)
 
-  expectation("error", msg, srcref)
+  expectation("error", msg, srcref, env = x$trace_bottom)
 }
 
 #' @export

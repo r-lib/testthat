@@ -31,6 +31,9 @@ test_that <- function(desc, code) {
   test_code(desc, code, env = parent.frame())
 }
 
+test_data <- env(emptyenv())
+test_data$trace_top <- NULL
+
 test_code <- function(test, code, env = test_env(), skip_on_empty = TRUE) {
   if (!is.null(test)) {
     get_reporter()$start_test(context = get_reporter()$.context, test = test)
@@ -89,6 +92,11 @@ test_code <- function(test, code, env = test_env(), skip_on_empty = TRUE) {
     # withCallingHandlers), and first calls from start (added by
     # tryCatch etc).
     e$expectation_calls <- frame_calls(11, 2)
+
+    # FIXME: Export from rlang
+    nframe <- sys.nframe() - 1
+    info <- rlang:::signal_context_info(nframe)
+    e$trace_bottom <- sys.frame(info[[2]])
 
     test_error <<- e
 
@@ -152,6 +160,8 @@ test_code <- function(test, code, env = test_env(), skip_on_empty = TRUE) {
   }
 
   test_env <- new.env(parent = env)
+  test_data$trace_top <- test_env
+
   tryCatch(
     withCallingHandlers(
       {
