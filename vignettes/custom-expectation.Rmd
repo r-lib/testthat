@@ -79,9 +79,9 @@ expect_length <- function(object, n) {
   act$n <- length(act$val)
   if (act$n == n) {
     succeed()
-    invisible(act$val)
+    return(invisible(act$val))
   }
-  
+
   message <- sprintf("%s has length %i, not length %i.", act$lab, act$n, n)
   fail(message)
 }
