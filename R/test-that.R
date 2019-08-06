@@ -90,10 +90,9 @@ test_code <- function(test, code, env = test_env(), skip_on_empty = TRUE) {
     # tryCatch etc).
     e$expectation_calls <- frame_calls(11, 2)
 
-    # FIXME: Export from rlang
     nframe <- sys.nframe() - 1
-    info <- rlang:::signal_context_info(nframe)
-    e$trace_bottom <- sys.frame(info[[2]])
+    signal_depth <- signal_context_info(nframe)$depth
+    e$trace_bottom <- sys.frame(signal_depth)
 
     test_error <<- e
 
