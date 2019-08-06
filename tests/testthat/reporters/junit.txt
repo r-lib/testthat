@@ -24,41 +24,49 @@
   <testsuite name="Expectations2" timestamp="1999:12:31 23:59:59" hostname="nodename" tests="0" skipped="0" failures="0" errors="0" time="0"/>
   <testsuite name="Errors" timestamp="1999:12:31 23:59:59" hostname="nodename" tests="2" skipped="0" failures="0" errors="2" time="0">
     <testcase time="0" classname="Errors" name="Error_1">
-      <error type="error" message="stop (@tests.R#33)">stop
-1: stop("stop") at reporters/tests.R:33</error>
+      <error type="error" message="stop (@tests.R#33)">Message: stop
+Backtrace:
+ 1. NULL
+ 2. base::eval(code, test_env)</error>
     </testcase>
     <testcase time="0" classname="Errors" name="Error_3">
-      <error type="error" message="! (@tests.R#47)">!
-1: f() at reporters/tests.R:47
-2: g() at reporters/tests.R:38
-3: h() at reporters/tests.R:41
-4: stop("!") at reporters/tests.R:44</error>
+      <error type="error" message="! (@tests.R#47)">Message: !
+Backtrace:
+ 1. f()
+ 2. g()
+ 3. h()</error>
     </testcase>
   </testsuite>
   <testsuite name="Recursion" timestamp="1999:12:31 23:59:59" hostname="nodename" tests="1" skipped="0" failures="0" errors="1" time="0">
     <testcase time="0" classname="Recursion" name="Recursion_1">
-      <error type="error" message="This is deep (@tests.R#56)">This is deep
-1: f(25) at reporters/tests.R:56
-2: f(x - 1) at reporters/tests.R:54
-3: f(x - 1) at reporters/tests.R:54
-4: f(x - 1) at reporters/tests.R:54
-5: f(x - 1) at reporters/tests.R:54
-6: f(x - 1) at reporters/tests.R:54
-7: f(x - 1) at reporters/tests.R:54
-8: f(x - 1) at reporters/tests.R:54
-9: f(x - 1) at reporters/tests.R:54
-10: f(x - 1) at reporters/tests.R:54
-...
-18: f(x - 1) at reporters/tests.R:54
-19: f(x - 1) at reporters/tests.R:54
-20: f(x - 1) at reporters/tests.R:54
-21: f(x - 1) at reporters/tests.R:54
-22: f(x - 1) at reporters/tests.R:54
-23: f(x - 1) at reporters/tests.R:54
-24: f(x - 1) at reporters/tests.R:54
-25: f(x - 1) at reporters/tests.R:54
-26: f(x - 1) at reporters/tests.R:54
-27: stop("This is deep") at reporters/tests.R:54</error>
+      <error type="error" message="This is deep (@tests.R#56)">Message: This is deep
+Backtrace:
+  1. f(25)
+  2. f(x - 1)
+  3. f(x - 1)
+  4. f(x - 1)
+  5. f(x - 1)
+  6. f(x - 1)
+  7. f(x - 1)
+  8. f(x - 1)
+  9. f(x - 1)
+ 10. f(x - 1)
+ 11. f(x - 1)
+ 12. f(x - 1)
+ 13. f(x - 1)
+ 14. f(x - 1)
+ 15. f(x - 1)
+ 16. f(x - 1)
+ 17. f(x - 1)
+ 18. f(x - 1)
+ 19. f(x - 1)
+ 20. f(x - 1)
+ 21. f(x - 1)
+ 22. f(x - 1)
+ 23. f(x - 1)
+ 24. f(x - 1)
+ 25. f(x - 1)
+ 26. f(x - 1)</error>
     </testcase>
   </testsuite>
   <testsuite name="Skips" timestamp="1999:12:31 23:59:59" hostname="nodename" tests="3" skipped="3" failures="0" errors="0" time="0">
@@ -80,6 +88,36 @@
   <testsuite name="Output" timestamp="1999:12:31 23:59:59" hostname="nodename" tests="2" skipped="0" failures="0" errors="0" time="0">
     <testcase time="0" classname="Output" name="Output_1"/>
     <testcase time="0" classname="Output" name="Output_1"/>
+  </testsuite>
+  <testsuite name="Backtraces" timestamp="1999:12:31 23:59:59" hostname="nodename" tests="4" skipped="0" failures="0" errors="4" time="0">
+    <testcase time="0" classname="Backtraces" name="errors_thrown_at_block_level_are_entraced">
+      <error type="error" message="foo (@tests.R#99)">Message: foo
+Backtrace:
+ 1. f()
+ 2. g()</error>
+    </testcase>
+    <testcase time="0" classname="Backtraces" name="errors_thrown_from_a_quasi_labelled_argument_are_entraced">
+      <error type="error" message="foo (@tests.R#104)">Message: foo
+Backtrace:
+ 1. testthat::expect_is(foo(), "foo")
+ 4. foo()</error>
+    </testcase>
+    <testcase time="0" classname="Backtraces" name="errors_thrown_from_a_quasi_labelled_argument_are_entraced_deep_case_">
+      <error type="error" message="foo (@tests.R#111)">Message: foo
+Backtrace:
+ 1. testthat::expect_is(f(), "foo")
+ 4. f()
+ 5. g()
+ 9. foo()</error>
+    </testcase>
+    <testcase time="0" classname="Backtraces" name="errors_thrown_from_a_quasi_labelled_argument_are_entraced_deep_deep_case_">
+      <error type="error" message="foobar (@tests.R#121)">Message: foobar
+Backtrace:
+ 1. f()
+ 2. g()
+ 6. foo()
+ 7. bar()</error>
+    </testcase>
   </testsuite>
   <testsuite name="End" timestamp="1999:12:31 23:59:59" hostname="nodename" tests="0" skipped="0" failures="0" errors="0" time="0"/>
 </testsuites>

@@ -1,3 +1,7 @@
+
+# Disable srcrefs because they differ across systems
+withr::local_options(list(rlang_trace_format_srcrefs = FALSE))
+
 test_that("reporters produce consistent output", {
   expect_report_unchanged("location")
   expect_report_unchanged("minimal")
