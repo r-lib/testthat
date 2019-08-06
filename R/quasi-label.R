@@ -40,16 +40,18 @@ quasi_label <- function(quo, label = NULL, arg = "quo") {
     stop("argument `", arg, "` is missing, with no default.", call. = FALSE)
   }
 
+  expr <- quo_get_expr(quo)
+
   list(
-    val = eval_bare(get_expr(quo), get_env(quo)),
-    lab = label %||% expr_label(get_expr(quo))
+    val = eval_bare(expr, quo_get_env(quo)),
+    lab = label %||% expr_label(expr)
   )
 }
 
 quasi_capture <- function(.quo, .label, .capture, ...) {
   act <- list()
   act$lab <- .label %||% quo_label(.quo)
-  act$cap <- .capture(act$val <- eval_bare(get_expr(.quo), get_env(.quo)), ...)
+  act$cap <- .capture(act$val <- eval_bare(quo_get_expr(.quo), quo_get_env(.quo)), ...)
 
   act
 }

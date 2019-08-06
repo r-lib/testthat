@@ -21,7 +21,7 @@
 #' out <- expect_invisible(greet("Hadley"))
 #' expect_equal(out, "Hadley")
 expect_invisible <- function(call, label = NULL) {
-  lab <- label %||% expr_label(get_expr(enquo(call)))
+  lab <- label %||% expr_label(enexpr(call))
   vis <- withVisible(call)
 
   expect(
@@ -34,7 +34,7 @@ expect_invisible <- function(call, label = NULL) {
 #' @export
 #' @rdname expect_invisible
 expect_visible <- function(call, label = NULL) {
-  lab <- label %||% expr_label(get_expr(enquo(call)))
+  lab <- label %||% expr_label(enexpr(call))
   vis <- withVisible(call)
 
   expect(

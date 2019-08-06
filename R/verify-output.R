@@ -28,8 +28,8 @@
 verify_output <- function(path, code, width = 80, crayon = FALSE) {
   code <- enquo(code)
 
-  env <- get_env(code)
-  expr <- get_expr(code)
+  env <- quo_get_env(code)
+  expr <- quo_get_expr(code)
 
   if (is_call(expr, "{")) {
     exprs <- as.list(expr[-1])
