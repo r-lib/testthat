@@ -59,3 +59,8 @@ test_that("reporters write to 'testthat.output_file', if specified", {
   test_file(test_path("reporters/tests.R"), MinimalReporter$new(), wrap = FALSE)
   expect_true(file.exists(path))
 })
+
+test_that("backtraces are reported", {
+  expect_report_unchanged("progress-backtraces", file = "reporters/backtraces.R", ProgressReporter$new(show_praise = FALSE, min_time = Inf, update_interval = 0))
+  expect_report_unchanged("summary-backtraces", file = "reporters/backtraces.R", SummaryReporter$new(show_praise = FALSE, omit_dots = FALSE))
+})

@@ -122,54 +122,11 @@ ghi
 ⠙ |   2       | Output
 ✔ |   2       | Output
 
-⠏ |   0       | Backtraces
-⠋ |   0 1     | Backtraces
-⠙ |   0 2     | Backtraces
-⠹ |   0 3     | Backtraces
-⠸ |   0 4     | Backtraces
-⠼ |   0 5     | Backtraces
-✖ |   0 5     | Backtraces
-────────────────────────────────────────────────────────────────────────────────
-tests.R:99: error: errors thrown at block level are entraced
-foo
-Backtrace:
- 1. f()
- 2. g()
-
-tests.R:104: error: errors thrown from a quasi-labelled argument are entraced
-foo
-Backtrace:
- 1. testthat::expect_is(foo(), "foo")
- 4. foo()
-
-tests.R:111: error: errors thrown from a quasi-labelled argument are entraced (deep case)
-foo
-Backtrace:
- 1. testthat::expect_is(f(), "foo")
- 4. f()
- 5. g()
- 9. foo()
-
-tests.R:121: error: errors thrown from a quasi-labelled argument are entraced (deep deep case)
-foobar
-Backtrace:
- 1. f()
- 2. g()
- 6. foo()
- 7. bar()
-
-tests.R:127: failure: failed expect_error() prints a backtrace
-`f()` threw an error with unexpected message.
-Expected match: "foo"
-Actual message: "bar"
-Backtrace:
- 1. testthat::expect_error(f(), "foo")
- 6. f()
- 7. g()
-────────────────────────────────────────────────────────────────────────────────
-
 ⠏ |   0       | End
 ✔ |   0       | End
 
-══ Terminating early ═══════════════════════════════════════════════════════════
-Too many failures
+══ Results ═════════════════════════════════════════════════════════════════════
+OK:       5
+Failed:   7
+Warnings: 3
+Skipped:  3

@@ -61,23 +61,3 @@ Start test: Output:1
   tests.R#91:1 [success]
 End test: Output:1
 
-Start test: errors thrown at block level are entraced
-  tests.R#99:1 [error]
-End test: errors thrown at block level are entraced
-
-Start test: errors thrown from a quasi-labelled argument are entraced
-  tests.R#104:1 [error]
-End test: errors thrown from a quasi-labelled argument are entraced
-
-Start test: errors thrown from a quasi-labelled argument are entraced (deep case)
-  tests.R#111:1 [error]
-End test: errors thrown from a quasi-labelled argument are entraced (deep case)
-
-Start test: errors thrown from a quasi-labelled argument are entraced (deep deep case)
-  tests.R#121:1 [error]
-End test: errors thrown from a quasi-labelled argument are entraced (deep deep case)
-
-Start test: failed expect_error() prints a backtrace
-  tests.R#127:1 [failure]
-End test: failed expect_error() prints a backtrace
-

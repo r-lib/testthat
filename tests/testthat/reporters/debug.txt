@@ -57,35 +57,3 @@
 1: tests.R#85: f()
 2: tests.R#82: warning("ghi")
 
-1: tests.R#99: f()
-2: tests.R#97: g()
-3: tests.R#98: stop("foo")
-
-1: tests.R#104: expect_is(foo(), "foo")
-2: expect-inheritance.R#117: quasi_label(enquo(object), label, arg = "object")
-3: quasi-label.R#45: eval_bare(expr, quo_get_env(quo))
-4: eval.R#99: foo()
-5: tests.R#103: stop("foo")
-
- 1: tests.R#111: expect_is(f(), "foo")
- 2: expect-inheritance.R#117: quasi_label(enquo(object), label, arg = "object")
- 3: quasi-label.R#45: eval_bare(expr, quo_get_env(quo))
- 4: eval.R#99: f()
- 5: tests.R#109: g()
- 6: tests.R#110: expect_is(foo(), "foo")
- 7: expect-inheritance.R#117: quasi_label(enquo(object), label, arg = "object")
- 8: quasi-label.R#45: eval_bare(expr, quo_get_env(quo))
- 9: eval.R#99: foo()
-10: tests.R#108: stop("foo")
-
-1: tests.R#121: f()
-2: tests.R#118: g()
-3: tests.R#119: expect_is(foo(), "foo")
-4: expect-inheritance.R#117: quasi_label(enquo(object), label, arg = "object")
-5: quasi-label.R#45: eval_bare(expr, quo_get_env(quo))
-6: eval.R#99: foo()
-7: tests.R#115: bar()
-8: tests.R#116: stop("foobar")
-
-1: tests.R#127: expect_error(f(), "foo")
-

@@ -5,7 +5,6 @@ Recursion: 7
 Skips: SSS
 Warnings: WWW
 Output: ..
-Backtraces: 89abc
 End: 
 
 ══ Skipped ═════════════════════════════════════════════════════════════════════
@@ -79,29 +78,5 @@ Backtrace:
  24. f(x - 1)
  25. f(x - 1)
  26. f(x - 1)
-
-── 8. Error: errors thrown at block level are entraced (@tests.R#99)  ──────────
-foo
-Backtrace:
- 1. f()
- 2. g()
-
-── 9. Error: errors thrown from a quasi-labelled argument are entraced (@tests.R
-foo
-Backtrace:
- 1. testthat::expect_is(foo(), "foo")
- 4. foo()
-
-── 10. Error: errors thrown from a quasi-labelled argument are entraced (deep ca
-foo
-Backtrace:
- 1. testthat::expect_is(f(), "foo")
- 4. f()
- 5. g()
- 9. foo()
-  ... and 2 more
-
-
-Maximum number of 10 failures reached, some test results may be missing.
 
 ══ DONE ════════════════════════════════════════════════════════════════════════

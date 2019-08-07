@@ -1,4 +1,4 @@
-1..23
+1..18
 ok 1 Success
 # Context Expectations
 ok 2 Success
@@ -66,36 +66,3 @@ ok 16 # WARNING ghi
 # Context Output
 ok 17 Output:1
 ok 18 Output:1
-# Context Backtraces
-not ok 19 errors thrown at block level are entraced
-  foo
-  Backtrace:
-   1. f()
-   2. g()
-not ok 20 errors thrown from a quasi-labelled argument are entraced
-  foo
-  Backtrace:
-   1. testthat::expect_is(foo(), "foo")
-   4. foo()
-not ok 21 errors thrown from a quasi-labelled argument are entraced (deep case)
-  foo
-  Backtrace:
-   1. testthat::expect_is(f(), "foo")
-   4. f()
-   5. g()
-   9. foo()
-not ok 22 errors thrown from a quasi-labelled argument are entraced (deep deep case)
-  foobar
-  Backtrace:
-   1. f()
-   2. g()
-   6. foo()
-   7. bar()
-not ok 23 failed expect_error() prints a backtrace
-  `f()` threw an error with unexpected message.
-  Expected match: "foo"
-  Actual message: "bar"
-  Backtrace:
-   1. testthat::expect_error(f(), "foo")
-   6. f()
-   7. g()

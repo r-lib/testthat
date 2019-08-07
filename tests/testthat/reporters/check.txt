@@ -55,45 +55,8 @@ Backtrace:
  25. f(x - 1)
  26. f(x - 1)
 
-── 8. Error: errors thrown at block level are entraced (@tests.R#99)  ──────────
-foo
-Backtrace:
- 1. f()
- 2. g()
-
-── 9. Error: errors thrown from a quasi-labelled argument are entraced (@tests.R
-foo
-Backtrace:
- 1. testthat::expect_is(foo(), "foo")
- 4. foo()
-
-── 10. Error: errors thrown from a quasi-labelled argument are entraced (deep ca
-foo
-Backtrace:
- 1. testthat::expect_is(f(), "foo")
- 4. f()
- 5. g()
- 9. foo()
-
-── 11. Error: errors thrown from a quasi-labelled argument are entraced (deep de
-foobar
-Backtrace:
- 1. f()
- 2. g()
- 6. foo()
- 7. bar()
-
-── 12. Failure: failed expect_error() prints a backtrace (@tests.R#127)  ───────
-`f()` threw an error with unexpected message.
-Expected match: "foo"
-Actual message: "bar"
-Backtrace:
- 1. testthat::expect_error(f(), "foo")
- 6. f()
- 7. g()
-
 ══ testthat results  ═══════════════════════════════════════════════════════════
-[ OK: 5 | SKIPPED: 3 | WARNINGS: 3 | FAILED: 12 ]
+[ OK: 5 | SKIPPED: 3 | WARNINGS: 3 | FAILED: 7 ]
 1. Failure: Failure:1 (@tests.R#12) 
 2. Failure: Failure:2a (@tests.R#16) 
 3. Failure: Failure:2b (@tests.R#19) 
@@ -101,7 +64,4 @@ Backtrace:
 5. Error: Error:1 (@tests.R#33) 
 6. Error: Error:3 (@tests.R#47) 
 7. Error: Recursion:1 (@tests.R#56) 
-8. Error: errors thrown at block level are entraced (@tests.R#99) 
-9. Error: errors thrown from a quasi-labelled argument are entraced (@tests.R#104) 
-1. ...
 
