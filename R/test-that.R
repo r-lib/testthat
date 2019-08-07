@@ -90,9 +90,8 @@ test_code <- function(test, code, env = test_env(), skip_on_empty = TRUE) {
     # tryCatch etc).
     e$expectation_calls <- frame_calls(11, 2)
 
-    nframe <- sys.nframe() - 1
-    signal_depth <- signal_context_info(nframe)$depth
-    e$trace_bottom <- sys.frame(signal_depth)
+    # Add structured backtrace to the expectation
+    e <- cnd_entrace(e)
 
     test_error <<- e
 

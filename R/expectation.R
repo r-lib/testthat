@@ -137,8 +137,7 @@ as.expectation.error <- function(x, ..., srcref = NULL) {
   # Remove trailing newline to be consistent with other conditons
   msg <- gsub("\n$", "", msg)
 
-  trace <- trace_back(bottom = x$trace_bottom)
-  expectation("error", msg, srcref, trace = trace)
+  expectation("error", msg, srcref, trace = x$trace)
 }
 
 #' @export

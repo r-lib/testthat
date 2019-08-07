@@ -24,7 +24,7 @@ Imports:
     methods,
     praise,
     R6 (>= 2.2.0),
-    rlang (>= 0.3.0),
+    rlang (>= 0.4.0.9001),
     withr (>= 2.0.0)
 Suggests: 
     covr,
@@ -35,6 +35,8 @@ Suggests:
     usethis,
     vctrs (>= 0.1.0),
     xml2
+Remotes:
+    r-lib/rlang@add-testthat-utils
 VignetteBuilder: knitr
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
