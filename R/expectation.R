@@ -111,10 +111,11 @@ format.expectation <- function(x, ...) {
 }
 
 format_with_trace <- function(exp) {
+  trace_lines <- format(exp$trace, simplify = "branch")
   paste_line(
-    paste0("Message: ", crayon::italic(exp$message)),
-    "Backtrace:",
-    !!!format(exp$trace, simplify = "branch")
+    exp$message,
+    crayon::bold("Backtrace:"),
+    !!!trace_lines
   )
 }
 

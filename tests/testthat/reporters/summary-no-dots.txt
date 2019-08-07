@@ -38,20 +38,20 @@ FALSE isn't true.
 [1] 1 - 2 == -1
 
 ── 5. Error: Error:1 (@tests.R#33)  ────────────────────────────────────────────
-Message: stop
+stop
 Backtrace:
  1. NULL
  2. base::eval(code, test_env)
 
 ── 6. Error: Error:3 (@tests.R#47)  ────────────────────────────────────────────
-Message: !
+!
 Backtrace:
  1. f()
  2. g()
  3. h()
 
 ── 7. Error: Recursion:1 (@tests.R#56)  ────────────────────────────────────────
-Message: This is deep
+This is deep
 Backtrace:
   1. f(25)
   2. f(x - 1)
@@ -81,19 +81,19 @@ Backtrace:
  26. f(x - 1)
 
 ── 8. Error: errors thrown at block level are entraced (@tests.R#99)  ──────────
-Message: foo
+foo
 Backtrace:
  1. f()
  2. g()
 
 ── 9. Error: errors thrown from a quasi-labelled argument are entraced (@tests.R
-Message: foo
+foo
 Backtrace:
  1. testthat::expect_is(foo(), "foo")
  4. foo()
 
 ── 10. Error: errors thrown from a quasi-labelled argument are entraced (deep ca
-Message: foo
+foo
 Backtrace:
  1. testthat::expect_is(f(), "foo")
  4. f()

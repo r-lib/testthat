@@ -37,13 +37,13 @@ tests.R:24: failure: Failure:loop
 ✖ |   0 2     | Errors
 ────────────────────────────────────────────────────────────────────────────────
 tests.R:33: error: Error:1
-Message: stop
+stop
 Backtrace:
  1. NULL
  2. base::eval(code, test_env)
 
 tests.R:47: error: Error:3
-Message: !
+!
 Backtrace:
  1. f()
  2. g()
@@ -55,7 +55,7 @@ Backtrace:
 ✖ |   0 1     | Recursion
 ────────────────────────────────────────────────────────────────────────────────
 tests.R:56: error: Recursion:1
-Message: This is deep
+This is deep
 Backtrace:
   1. f(25)
   2. f(x - 1)
@@ -130,19 +130,19 @@ ghi
 ✖ |   0 4     | Backtraces
 ────────────────────────────────────────────────────────────────────────────────
 tests.R:99: error: errors thrown at block level are entraced
-Message: foo
+foo
 Backtrace:
  1. f()
  2. g()
 
 tests.R:104: error: errors thrown from a quasi-labelled argument are entraced
-Message: foo
+foo
 Backtrace:
  1. testthat::expect_is(foo(), "foo")
  4. foo()
 
 tests.R:111: error: errors thrown from a quasi-labelled argument are entraced (deep case)
-Message: foo
+foo
 Backtrace:
  1. testthat::expect_is(f(), "foo")
  4. f()
@@ -150,7 +150,7 @@ Backtrace:
  9. foo()
 
 tests.R:121: error: errors thrown from a quasi-labelled argument are entraced (deep deep case)
-Message: foobar
+foobar
 Backtrace:
  1. f()
  2. g()

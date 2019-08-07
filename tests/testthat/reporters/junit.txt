@@ -24,13 +24,13 @@
   <testsuite name="Expectations2" timestamp="1999:12:31 23:59:59" hostname="nodename" tests="0" skipped="0" failures="0" errors="0" time="0"/>
   <testsuite name="Errors" timestamp="1999:12:31 23:59:59" hostname="nodename" tests="2" skipped="0" failures="0" errors="2" time="0">
     <testcase time="0" classname="Errors" name="Error_1">
-      <error type="error" message="stop (@tests.R#33)">Message: stop
+      <error type="error" message="stop (@tests.R#33)">stop
 Backtrace:
  1. NULL
  2. base::eval(code, test_env)</error>
     </testcase>
     <testcase time="0" classname="Errors" name="Error_3">
-      <error type="error" message="! (@tests.R#47)">Message: !
+      <error type="error" message="! (@tests.R#47)">!
 Backtrace:
  1. f()
  2. g()
@@ -39,7 +39,7 @@ Backtrace:
   </testsuite>
   <testsuite name="Recursion" timestamp="1999:12:31 23:59:59" hostname="nodename" tests="1" skipped="0" failures="0" errors="1" time="0">
     <testcase time="0" classname="Recursion" name="Recursion_1">
-      <error type="error" message="This is deep (@tests.R#56)">Message: This is deep
+      <error type="error" message="This is deep (@tests.R#56)">This is deep
 Backtrace:
   1. f(25)
   2. f(x - 1)
@@ -91,19 +91,19 @@ Backtrace:
   </testsuite>
   <testsuite name="Backtraces" timestamp="1999:12:31 23:59:59" hostname="nodename" tests="4" skipped="0" failures="0" errors="4" time="0">
     <testcase time="0" classname="Backtraces" name="errors_thrown_at_block_level_are_entraced">
-      <error type="error" message="foo (@tests.R#99)">Message: foo
+      <error type="error" message="foo (@tests.R#99)">foo
 Backtrace:
  1. f()
  2. g()</error>
     </testcase>
     <testcase time="0" classname="Backtraces" name="errors_thrown_from_a_quasi_labelled_argument_are_entraced">
-      <error type="error" message="foo (@tests.R#104)">Message: foo
+      <error type="error" message="foo (@tests.R#104)">foo
 Backtrace:
  1. testthat::expect_is(foo(), "foo")
  4. foo()</error>
     </testcase>
     <testcase time="0" classname="Backtraces" name="errors_thrown_from_a_quasi_labelled_argument_are_entraced_deep_case_">
-      <error type="error" message="foo (@tests.R#111)">Message: foo
+      <error type="error" message="foo (@tests.R#111)">foo
 Backtrace:
  1. testthat::expect_is(f(), "foo")
  4. f()
@@ -111,7 +111,7 @@ Backtrace:
  9. foo()</error>
     </testcase>
     <testcase time="0" classname="Backtraces" name="errors_thrown_from_a_quasi_labelled_argument_are_entraced_deep_deep_case_">
-      <error type="error" message="foobar (@tests.R#121)">Message: foobar
+      <error type="error" message="foobar (@tests.R#121)">foobar
 Backtrace:
  1. f()
  2. g()

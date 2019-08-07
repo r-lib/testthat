@@ -15,19 +15,19 @@ not ok 6 Failure:loop
 ok 7 Failure:loop
 # Context Errors
 not ok 8 Error:1
-  Message: stop
+  stop
   Backtrace:
    1. NULL
    2. base::eval(code, test_env)
 not ok 9 Error:3
-  Message: !
+  !
   Backtrace:
    1. f()
    2. g()
    3. h()
 # Context Recursion
 not ok 10 Recursion:1
-  Message: This is deep
+  This is deep
   Backtrace:
     1. f(25)
     2. f(x - 1)
@@ -68,24 +68,24 @@ ok 17 Output:1
 ok 18 Output:1
 # Context Backtraces
 not ok 19 errors thrown at block level are entraced
-  Message: foo
+  foo
   Backtrace:
    1. f()
    2. g()
 not ok 20 errors thrown from a quasi-labelled argument are entraced
-  Message: foo
+  foo
   Backtrace:
    1. testthat::expect_is(foo(), "foo")
    4. foo()
 not ok 21 errors thrown from a quasi-labelled argument are entraced (deep case)
-  Message: foo
+  foo
   Backtrace:
    1. testthat::expect_is(f(), "foo")
    4. f()
    5. g()
    9. foo()
 not ok 22 errors thrown from a quasi-labelled argument are entraced (deep deep case)
-  Message: foobar
+  foobar
   Backtrace:
    1. f()
    2. g()
