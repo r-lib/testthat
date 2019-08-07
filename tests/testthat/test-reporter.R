@@ -2,6 +2,8 @@
 # Disable srcrefs because they differ across systems
 withr::local_options(list(rlang_trace_format_srcrefs = FALSE))
 
+skip_if(getRversion() < "3.4", "Fails because of new `eval()` call structure")
+
 test_that("reporters produce consistent output", {
   expect_report_unchanged("location")
   expect_report_unchanged("minimal")
