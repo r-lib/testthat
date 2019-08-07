@@ -1,3 +1,25 @@
+
+bang <- function(expr, env = caller_env()) {
+  eval_bare(enexpr(expr), env)
+}
+new_capture <- function(class) {
+  exiting_handlers <- rep_named(class, list(identity))
+
+  calling_handlers <- rep_named(class, alist(function(cnd) {
+    cnd <- cnd_entrace(cnd)
+    return_from(env, cnd)
+  }))
+
+  bang(function(code, entrace = FALSE) {
+    if (!entrace) {
+      return(tryCatch({ code; NULL }, !!!exiting_handlers))
+    }
+
+    env <- environment()
+    withCallingHandlers({ code; NULL }, !!!calling_handlers)
+  })
+}
+
 #' Capture conditions, including messeages, warnings, expectations, and errors.
 #'
 #' These functions allow you to capture the side-effects of a function call
@@ -34,17 +56,7 @@ capture_condition <- function(code) {
 
 #' @export
 #' @rdname capture_condition
-capture_error <- function(code, entrace = FALSE) {
-  if (entrace) {
-    env <- environment()
-    withCallingHandlers({ code; NULL }, error = function(e) {
-      e <- cnd_entrace(e)
-      return_from(env, e)
-    })
-  } else {
-    tryCatch({code; NULL}, error = function(e) e)
-  }
-}
+capture_error <- new_capture("error")
 
 #' @export
 #' @rdname capture_condition
