@@ -28,6 +28,7 @@ Imports:
     rlang (>= 0.4.0.9001),
     withr (>= 2.0.0)
 Suggests: 
+    bench,
     covr,
     curl (>= 0.9.5),
     devtools,
@@ -109,3 +110,5 @@ Collate:
     'utils.R'
     'verify-output.R'
     'watcher.R'
+Remotes:
+    r-lib/bench

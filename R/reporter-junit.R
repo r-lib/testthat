@@ -44,7 +44,7 @@ JunitReporter <- R6::R6Class("JunitReporter",
     file_name = NULL,
 
     elapsed_time = function() {
-      time <- round((private$proctime() - self$timer)[["elapsed"]], 2)
+      time <- round((private$proctime() - self$timer), 2)
       self$timer <- private$proctime()
       time
     },
@@ -60,6 +60,10 @@ JunitReporter <- R6::R6Class("JunitReporter",
     start_reporter = function() {
       if (!is_installed("xml2")) {
         stop("Please install the `xml2` package", call. = FALSE)
+      }
+
+      if (!is_installed("bench")) {
+        stop("Please install the `bench` package", call. = FALSE)
       }
 
       self$timer <- private$proctime()
@@ -150,10 +154,10 @@ JunitReporter <- R6::R6Class("JunitReporter",
 
   private = list(
     proctime = function() {
-      proc.time()
+      bench::hires_time()
     },
     timestamp = function() {
-      toString(Sys.time())
+      strftime(Sys.time(), "%Y-%m-%dT%H:%M:%SZ", tz = "UTC")
     },
     hostname = function() {
       Sys.info()[["nodename"]]
