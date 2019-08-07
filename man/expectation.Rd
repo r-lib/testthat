@@ -5,7 +5,7 @@
 \alias{is.expectation}
 \title{Construct an expectation object}
 \usage{
-expectation(type, message, srcref = NULL, trace = NULL, env = NULL)
+expectation(type, message, srcref = NULL, trace = NULL)
 
 is.expectation(x)
 }
@@ -19,13 +19,6 @@ is.expectation(x)
 
 \item{trace}{An optional backtrace created by \code{\link[rlang:trace_back]{rlang::trace_back()}}.
 When supplied, the expectation is displayed with the backtrace.}
-
-\item{env}{The environment of the \code{expect_} function. You should
-only pass this when you're calling \code{expect()} from an internal
-helper. This environment is passed to \code{\link[rlang:trace_back]{rlang::trace_back()}} as
-\code{bottom} argument, in order to remove the uninformative testthat
-context from backtraces when an unexpected error occurs during
-evaluation of \code{ok}. Has no effect if \code{trace} is supplied.}
 
 \item{x}{object to test for class membership}
 }

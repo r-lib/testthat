@@ -4,8 +4,7 @@
 \alias{expect}
 \title{The building block of all \code{expect_} functions}
 \usage{
-expect(ok, failure_message, info = NULL, srcref = NULL, trace = NULL,
-  env = NULL)
+expect(ok, failure_message, info = NULL, srcref = NULL, trace = NULL)
 }
 \arguments{
 \item{ok}{\code{TRUE} or \code{FALSE} indicating if the expectation was successful.}
@@ -20,13 +19,6 @@ supplied when you need to forward a srcref captured elsewhere.}
 
 \item{trace}{An optional backtrace created by \code{\link[rlang:trace_back]{rlang::trace_back()}}.
 When supplied, the expectation is displayed with the backtrace.}
-
-\item{env}{The environment of the \code{expect_} function. You should
-only pass this when you're calling \code{expect()} from an internal
-helper. This environment is passed to \code{\link[rlang:trace_back]{rlang::trace_back()}} as
-\code{bottom} argument, in order to remove the uninformative testthat
-context from backtraces when an unexpected error occurs during
-evaluation of \code{ok}. Has no effect if \code{trace} is supplied.}
 }
 \value{
 An expectation object. Signals the expectation condition

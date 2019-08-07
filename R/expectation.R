@@ -11,19 +11,10 @@
 #'   supplied when you need to forward a srcref captured elsewhere.
 #' @param trace An optional backtrace created by [rlang::trace_back()].
 #'   When supplied, the expectation is displayed with the backtrace.
-#' @param env The environment of the `expect_` function. You should
-#'   only pass this when you're calling `expect()` from an internal
-#'   helper. This environment is passed to [rlang::trace_back()] as
-#'   `bottom` argument, in order to remove the uninformative testthat
-#'   context from backtraces when an unexpected error occurs during
-#'   evaluation of `ok`. Has no effect if `trace` is supplied.
 #' @return An expectation object. Signals the expectation condition
 #'   with a `continue_test` restart.
 #' @export
-expect <- function(ok, failure_message, info = NULL, srcref = NULL,
-                   trace = NULL, env = NULL) {
-  env <- env %||% caller_env()
-
+expect <- function(ok, failure_message, info = NULL, srcref = NULL, trace = NULL) {
   type <- if (ok) "success" else "failure"
 
   # Preserve existing API which appear to be used in package test code
@@ -40,7 +31,7 @@ expect <- function(ok, failure_message, info = NULL, srcref = NULL,
     }
   }
 
-  exp <- expectation(type, message, srcref = srcref, env = env, trace = trace)
+  exp <- expectation(type, message, srcref = srcref, trace = trace)
 
   withRestarts(
     if (ok) signalCondition(exp) else stop(exp),
@@ -63,12 +54,8 @@ expect <- function(ok, failure_message, info = NULL, srcref = NULL,
 #' @inheritParams expect
 #' @keywords internal
 #' @export
-expectation <- function(type, message, srcref = NULL, trace = NULL, env = NULL) {
+expectation <- function(type, message, srcref = NULL, trace = NULL) {
   type <- match.arg(type, c("success", "failure", "error", "skip", "warning"))
-
-  if (is.null(trace) && type == "error") {
-    trace <- trace_back(bottom = env)
-  }
 
   structure(
     list(
@@ -150,7 +137,8 @@ as.expectation.error <- function(x, ..., srcref = NULL) {
   # Remove trailing newline to be consistent with other conditons
   msg <- gsub("\n$", "", msg)
 
-  expectation("error", msg, srcref, env = x$trace_bottom)
+  trace <- trace_back(bottom = x$trace_bottom)
+  expectation("error", msg, srcref, trace = trace)
 }
 
 #' @export
