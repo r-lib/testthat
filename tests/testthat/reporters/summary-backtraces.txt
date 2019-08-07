@@ -1,4 +1,4 @@
-Backtraces: 12345
+Backtraces: 123456
 
 ══ Failed ══════════════════════════════════════════════════════════════════════
 ── 1. Error: errors thrown at block level are entraced (@backtraces.R#6)  ──────
@@ -29,13 +29,21 @@ Backtrace:
  6. foo()
  7. bar()
 
-── 5. Failure: failed expect_error() prints a backtrace (@backtraces.R#34)  ────
+── 5. Failure: failed expect_error() prints a backtrace (@backtraces.R#35)  ────
+`f()` threw an condition with unexpected class.
+
+Backtrace:
+ 1. testthat::expect_condition(f(), class = "foo")
+ 6. f()
+ 7. signaller()
+
+── 6. Failure: failed expect_error() prints a backtrace (@backtraces.R#38)  ────
 `f()` threw an error with unexpected message.
 Expected match: "foo"
 Actual message: "bar"
 Backtrace:
  1. testthat::expect_error(f(), "foo")
  6. f()
- 7. g()
+ 7. signaller()
 
 ══ DONE ════════════════════════════════════════════════════════════════════════

@@ -10,15 +10,15 @@
 \alias{capture_warnings}
 \title{Capture conditions, including messeages, warnings, expectations, and errors.}
 \usage{
-capture_condition(code)
+capture_condition(code, entrace = FALSE)
 
 capture_error(code, entrace = FALSE)
 
-capture_expectation(code)
+capture_expectation(code, entrace = FALSE)
 
-capture_message(code)
+capture_message(code, entrace = FALSE)
 
-capture_warning(code)
+capture_warning(code, entrace = FALSE)
 
 capture_messages(code)
 

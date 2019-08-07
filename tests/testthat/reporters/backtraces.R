@@ -29,7 +29,11 @@ test_that("errors thrown from a quasi-labelled argument are entraced (deep deep 
 })
 
 test_that("failed expect_error() prints a backtrace", {
-  f <- function() g()
-  g <- function() stop("bar")
+  f <- function() signaller()
+
+  signaller <- function() signalCondition(structure(list(), class = "bar"))
+  expect_condition(f(), class = "foo")
+
+  signaller <- function() stop("bar")
   expect_error(f(), "foo")
 })

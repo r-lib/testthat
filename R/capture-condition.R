@@ -50,9 +50,7 @@ new_capture <- function(class) {
 #'
 #' # Condition will capture anything
 #' capture_condition(f())
-capture_condition <- function(code) {
-  tryCatch({code; NULL}, condition = function(e) e)
-}
+capture_condition <- new_capture("condition")
 
 #' @export
 #' @rdname capture_condition
@@ -60,21 +58,15 @@ capture_error <- new_capture("error")
 
 #' @export
 #' @rdname capture_condition
-capture_expectation <- function(code) {
-  tryCatch({code; NULL}, expectation = function(e) e)
-}
+capture_expectation <- new_capture("expectation")
 
 #' @export
 #' @rdname capture_condition
-capture_message <- function(code) {
-  tryCatch({code; NULL}, message = function(e) e)
-}
+capture_message <- new_capture("condition")
 
 #' @export
 #' @rdname capture_condition
-capture_warning <- function(code) {
-  tryCatch({code; NULL}, warning = function(e) e)
-}
+capture_warning <- new_capture("warning")
 
 #' @export
 #' @rdname capture_condition
