@@ -89,7 +89,7 @@ Backtrace:
     <testcase time="0" classname="Output" name="Output_1"/>
     <testcase time="0" classname="Output" name="Output_1"/>
   </testsuite>
-  <testsuite name="Backtraces" timestamp="1999:12:31 23:59:59" hostname="nodename" tests="4" skipped="0" failures="0" errors="4" time="0">
+  <testsuite name="Backtraces" timestamp="1999:12:31 23:59:59" hostname="nodename" tests="5" skipped="0" failures="1" errors="4" time="0">
     <testcase time="0" classname="Backtraces" name="errors_thrown_at_block_level_are_entraced">
       <error type="error" message="foo (@tests.R#99)">foo
 Backtrace:
@@ -117,6 +117,15 @@ Backtrace:
  2. g()
  6. foo()
  7. bar()</error>
+    </testcase>
+    <testcase time="0" classname="Backtraces" name="failed_expect_error_prints_a_backtrace">
+      <failure type="failure" message="`f()` threw an error with unexpected message. (@tests.R#127)">`f()` threw an error with unexpected message.
+Expected match: "foo"
+Actual message: "bar"
+Backtrace:
+ 1. testthat::expect_error(f(), "foo")
+ 6. f()
+ 7. g()</failure>
     </testcase>
   </testsuite>
   <testsuite name="End" timestamp="1999:12:31 23:59:59" hostname="nodename" tests="0" skipped="0" failures="0" errors="0" time="0"/>

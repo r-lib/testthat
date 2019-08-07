@@ -1,4 +1,4 @@
-1..22
+1..23
 ok 1 Success
 # Context Expectations
 ok 2 Success
@@ -91,3 +91,11 @@ not ok 22 errors thrown from a quasi-labelled argument are entraced (deep deep c
    2. g()
    6. foo()
    7. bar()
+not ok 23 failed expect_error() prints a backtrace
+  `f()` threw an error with unexpected message.
+  Expected match: "foo"
+  Actual message: "bar"
+  Backtrace:
+   1. testthat::expect_error(f(), "foo")
+   6. f()
+   7. g()

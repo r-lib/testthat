@@ -136,6 +136,12 @@
 ##teamcity[testFinished name='expectation 1']
 ##teamcity[testSuiteFinished name='errors thrown from a quasi-labelled argument are entraced (deep deep case)']
 
+##teamcity[testSuiteStarted name='failed expect_error() prints a backtrace']
+##teamcity[testStarted name='expectation 1']
+##teamcity[testFailed name='expectation 1' message='`f()` threw an error with unexpected message.' details='Expected match: "foo"|nActual message: "bar"|nBacktrace:|n 1. testthat::expect_error(f(), "foo")|n 6. f()|n 7. g()']
+##teamcity[testFinished name='expectation 1']
+##teamcity[testSuiteFinished name='failed expect_error() prints a backtrace']
+
 ##teamcity[testSuiteFinished name='Backtraces']
 
 

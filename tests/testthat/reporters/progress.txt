@@ -127,7 +127,8 @@ ghi
 ⠙ |   0 2     | Backtraces
 ⠹ |   0 3     | Backtraces
 ⠸ |   0 4     | Backtraces
-✖ |   0 4     | Backtraces
+⠼ |   0 5     | Backtraces
+✖ |   0 5     | Backtraces
 ────────────────────────────────────────────────────────────────────────────────
 tests.R:99: error: errors thrown at block level are entraced
 foo
@@ -156,6 +157,15 @@ Backtrace:
  2. g()
  6. foo()
  7. bar()
+
+tests.R:127: failure: failed expect_error() prints a backtrace
+`f()` threw an error with unexpected message.
+Expected match: "foo"
+Actual message: "bar"
+Backtrace:
+ 1. testthat::expect_error(f(), "foo")
+ 6. f()
+ 7. g()
 ────────────────────────────────────────────────────────────────────────────────
 
 ⠏ |   0       | End

@@ -87,3 +87,5 @@
 7: tests.R#115: bar()
 8: tests.R#116: stop("foobar")
 
+1: tests.R#127: expect_error(f(), "foo")
+

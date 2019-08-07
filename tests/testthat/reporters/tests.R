@@ -121,4 +121,10 @@ test_that("errors thrown from a quasi-labelled argument are entraced (deep deep 
   f()
 })
 
+test_that("failed expect_error() prints a backtrace", {
+  f <- function() g()
+  g <- function() stop("bar")
+  expect_error(f(), "foo")
+})
+
 context("End")

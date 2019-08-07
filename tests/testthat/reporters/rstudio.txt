@@ -15,3 +15,4 @@ reporters/tests.R#99:1 [error] errors thrown at block level are entraced. foo
 reporters/tests.R#104:1 [error] errors thrown from a quasi-labelled argument are entraced. foo
 reporters/tests.R#111:1 [error] errors thrown from a quasi-labelled argument are entraced (deep case). foo
 reporters/tests.R#121:1 [error] errors thrown from a quasi-labelled argument are entraced (deep deep case). foobar
+reporters/tests.R#127:1 [failure] failed expect_error() prints a backtrace. `f()` threw an error with unexpected message.

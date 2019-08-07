@@ -83,8 +83,17 @@ Backtrace:
  6. foo()
  7. bar()
 
+── 12. Failure: failed expect_error() prints a backtrace (@tests.R#127)  ───────
+`f()` threw an error with unexpected message.
+Expected match: "foo"
+Actual message: "bar"
+Backtrace:
+ 1. testthat::expect_error(f(), "foo")
+ 6. f()
+ 7. g()
+
 ══ testthat results  ═══════════════════════════════════════════════════════════
-[ OK: 5 | SKIPPED: 3 | WARNINGS: 3 | FAILED: 11 ]
+[ OK: 5 | SKIPPED: 3 | WARNINGS: 3 | FAILED: 12 ]
 1. Failure: Failure:1 (@tests.R#12) 
 2. Failure: Failure:2a (@tests.R#16) 
 3. Failure: Failure:2b (@tests.R#19) 

@@ -12,7 +12,7 @@
 \usage{
 capture_condition(code)
 
-capture_error(code)
+capture_error(code, entrace = FALSE)
 
 capture_expectation(code)
 
@@ -26,6 +26,9 @@ capture_warnings(code)
 }
 \arguments{
 \item{code}{Code to evaluate}
+
+\item{entrace}{Whether to add a \link[rlang:trace_back]{backtrace} to
+the captured condition.}
 }
 \value{
 Singular functions (\code{capture_condition}, \code{capture_expectation} etc)

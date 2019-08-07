@@ -6,6 +6,8 @@
 #' [expect_warning()], and [expect_silent()].
 #'
 #' @param code Code to evaluate
+#' @param entrace Whether to add a [backtrace][rlang::trace_back] to
+#'   the captured condition.
 #' @return Singular functions (`capture_condition`, `capture_expectation` etc)
 #'   return a condition object. `capture_messages()` and `capture_warnings`
 #'   return a character vector of message text.
@@ -32,8 +34,16 @@ capture_condition <- function(code) {
 
 #' @export
 #' @rdname capture_condition
-capture_error <- function(code) {
-  tryCatch({code; NULL}, error = function(e) e)
+capture_error <- function(code, entrace = FALSE) {
+  if (entrace) {
+    env <- environment()
+    withCallingHandlers({ code; NULL }, error = function(e) {
+      e <- cnd_entrace(e)
+      return_from(env, e)
+    })
+  } else {
+    tryCatch({code; NULL}, error = function(e) e)
+  }
 }
 
 #' @export

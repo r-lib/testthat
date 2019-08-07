@@ -77,3 +77,7 @@ Start test: errors thrown from a quasi-labelled argument are entraced (deep deep
   tests.R#121:1 [error]
 End test: errors thrown from a quasi-labelled argument are entraced (deep deep case)
 
+Start test: failed expect_error() prints a backtrace
+  tests.R#127:1 [failure]
+End test: failed expect_error() prints a backtrace
+

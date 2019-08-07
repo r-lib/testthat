@@ -9,16 +9,19 @@
 #'   for backward compatibility only and new expectations should not use it.
 #' @param srcref Location of the failure. Should only needed to be explicitly
 #'   supplied when you need to forward a srcref captured elsewhere.
+#' @param trace An optional backtrace created by [rlang::trace_back()].
+#'   When supplied, the expectation is displayed with the backtrace.
 #' @param env The environment of the `expect_` function. You should
 #'   only pass this when you're calling `expect()` from an internal
 #'   helper. This environment is passed to [rlang::trace_back()] as
 #'   `bottom` argument, in order to remove the uninformative testthat
-#'   context from backtraces.
+#'   context from backtraces when an unexpected error occurs during
+#'   evaluation of `ok`. Has no effect if `trace` is supplied.
 #' @return An expectation object. Signals the expectation condition
 #'   with a `continue_test` restart.
 #' @export
 expect <- function(ok, failure_message, info = NULL, srcref = NULL,
-                   env = NULL) {
+                   trace = NULL, env = NULL) {
   env <- env %||% caller_env()
 
   type <- if (ok) "success" else "failure"
@@ -37,7 +40,7 @@ expect <- function(ok, failure_message, info = NULL, srcref = NULL,
     }
   }
 
-  exp <- expectation(type, message, srcref = srcref, env = env)
+  exp <- expectation(type, message, srcref = srcref, env = env, trace = trace)
 
   withRestarts(
     if (ok) signalCondition(exp) else stop(exp),
@@ -60,13 +63,11 @@ expect <- function(ok, failure_message, info = NULL, srcref = NULL,
 #' @inheritParams expect
 #' @keywords internal
 #' @export
-expectation <- function(type, message, srcref = NULL, env = NULL) {
+expectation <- function(type, message, srcref = NULL, trace = NULL, env = NULL) {
   type <- match.arg(type, c("success", "failure", "error", "skip", "warning"))
 
-  if (type %in% c("failure", "error")) {
+  if (is.null(trace) && type == "error") {
     trace <- trace_back(bottom = env)
-  } else {
-    trace <- NULL
   }
 
   structure(
@@ -107,7 +108,11 @@ format.expectation_error <- function(x, ...) {
 
 #' @export
 format.expectation <- function(x, ...) {
-  x$message
+  if (is.null(x$trace)) {
+    x$message
+  } else {
+    format_with_trace(x)
+  }
 }
 
 format_with_trace <- function(exp) {

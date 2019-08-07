@@ -5,7 +5,7 @@ Recursion: 7
 Skips: SSS
 Warnings: WWW
 Output: ..
-Backtraces: 89ab
+Backtraces: 89abc
 End: 
 
 ══ Skipped ═════════════════════════════════════════════════════════════════════
@@ -99,7 +99,7 @@ Backtrace:
  4. f()
  5. g()
  9. foo()
-  ... and 1 more
+  ... and 2 more
 
 
 Maximum number of 10 failures reached, some test results may be missing.
