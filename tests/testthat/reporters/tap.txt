@@ -16,9 +16,6 @@ ok 7 Failure:loop
 # Context Errors
 not ok 8 Error:1
   stop
-  Backtrace:
-   1. NULL
-   2. base::eval(code, test_env)
 not ok 9 Error:3
   !
   Backtrace:

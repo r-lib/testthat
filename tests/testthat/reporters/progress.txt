@@ -38,9 +38,6 @@ tests.R:24: failure: Failure:loop
 ────────────────────────────────────────────────────────────────────────────────
 tests.R:33: error: Error:1
 stop
-Backtrace:
- 1. NULL
- 2. base::eval(code, test_env)
 
 tests.R:47: error: Error:3
 !

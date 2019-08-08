@@ -45,7 +45,7 @@
 ##teamcity[testSuiteStarted name='Errors']
 ##teamcity[testSuiteStarted name='Error:1']
 ##teamcity[testStarted name='expectation 1']
-##teamcity[testFailed name='expectation 1' message='stop' details='Backtrace:|n 1. NULL|n 2. base::eval(code, test_env)']
+##teamcity[testFailed name='expectation 1' message='stop' details='']
 ##teamcity[testFinished name='expectation 1']
 ##teamcity[testSuiteFinished name='Error:1']
 

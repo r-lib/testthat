@@ -24,10 +24,7 @@
   <testsuite name="Expectations2" timestamp="1999:12:31 23:59:59" hostname="nodename" tests="0" skipped="0" failures="0" errors="0" time="0"/>
   <testsuite name="Errors" timestamp="1999:12:31 23:59:59" hostname="nodename" tests="2" skipped="0" failures="0" errors="2" time="0">
     <testcase time="0" classname="Errors" name="Error_1">
-      <error type="error" message="stop (@tests.R#33)">stop
-Backtrace:
- 1. NULL
- 2. base::eval(code, test_env)</error>
+      <error type="error" message="stop (@tests.R#33)">stop</error>
     </testcase>
     <testcase time="0" classname="Errors" name="Error_3">
       <error type="error" message="! (@tests.R#47)">!

@@ -89,13 +89,8 @@ format.expectation_success <- function(x, ...) {
 }
 
 #' @export
-format.expectation_error <- function(x, ...) {
-  format_with_trace(x)
-}
-
-#' @export
 format.expectation <- function(x, ...) {
-  if (is.null(x$trace)) {
+  if (is.null(x$trace) || trace_length(x$trace) == 0L) {
     x$message
   } else {
     format_with_trace(x)

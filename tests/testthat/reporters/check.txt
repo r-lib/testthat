@@ -14,9 +14,6 @@ FALSE isn't true.
 
 ── 5. Error: Error:1 (@tests.R#33)  ────────────────────────────────────────────
 stop
-Backtrace:
- 1. NULL
- 2. base::eval(code, test_env)
 
 ── 6. Error: Error:3 (@tests.R#47)  ────────────────────────────────────────────
 !
