@@ -41,6 +41,9 @@ test_that("... passed on to grepl", {
 test_that("generates informative failures", {
   skip_if_not(l10n_info()$`UTF-8`)
 
+  # rlang backtraces are sensitive to upstream changes
+  skip_on_cran()
+
   # Disable srcrefs because they differ across systems
   withr::local_options(list(rlang_trace_format_srcrefs = FALSE))
 
