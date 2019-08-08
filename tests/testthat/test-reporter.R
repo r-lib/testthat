@@ -1,3 +1,12 @@
+
+# Disable srcrefs because they differ across systems
+withr::local_options(list(rlang_trace_format_srcrefs = FALSE))
+
+skip_if(getRversion() < "3.4", "Fails because of new `eval()` call structure")
+
+# rlang backtraces are sensitive to upstream changes
+skip_on_cran()
+
 test_that("reporters produce consistent output", {
   expect_report_unchanged("location")
   expect_report_unchanged("minimal")
@@ -54,4 +63,8 @@ test_that("reporters write to 'testthat.output_file', if specified", {
 
   test_file(test_path("reporters/tests.R"), MinimalReporter$new(), wrap = FALSE)
   expect_true(file.exists(path))
+})
+
+test_that("backtraces are reported", {
+  expect_report_unchanged("progress-backtraces", file = "reporters/backtraces.R", ProgressReporter$new(show_praise = FALSE, min_time = Inf, update_interval = 0))
 })

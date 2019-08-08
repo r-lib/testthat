@@ -1,27 +1,39 @@
-── 1. Failure:  (@test-expect-error.R#45)  ─────────────────────────────────────
+── 1. Failure:  (@test-expect-error.R#55)  ─────────────────────────────────────
 `null()` did not throw an error.
 
-── 2. Failure:  (@test-expect-error.R#46)  ─────────────────────────────────────
-`stop("!")` threw an error.
+── 2. Failure:  (@test-expect-error.R#56)  ─────────────────────────────────────
+`fail("!")` threw an error.
 Message: !
 Class:   simpleError/error/condition
+Backtrace:
+ 1. testthat::expect_error(fail("!"), NA)
+ 6. testthat::fail("!")
 
-── 3. Failure:  (@test-expect-error.R#48)  ─────────────────────────────────────
-`stop("xxx")` threw an error with unexpected message.
+── 3. Failure:  (@test-expect-error.R#58)  ─────────────────────────────────────
+`fail("xxx")` threw an error with unexpected message.
 Expected match: "zzz"
 Actual message: "xxx"
+Backtrace:
+ 1. testthat::expect_error(fail("xxx"), regexp = "zzz")
+ 6. testthat::fail("xxx")
 
-── 4. Failure:  (@test-expect-error.R#49)  ─────────────────────────────────────
-`stop("xxx")` threw an error with unexpected class.
+── 4. Failure:  (@test-expect-error.R#59)  ─────────────────────────────────────
+`fail("xxx")` threw an error with unexpected class.
 Expected class: zzz
 Actual class:   simpleError/error/condition
 Message:        xxx
+Backtrace:
+ 1. testthat::expect_error(fail("xxx"), class = "zzz")
+ 6. testthat::fail("xxx")
 
-── 5. Failure:  (@test-expect-error.R#50)  ─────────────────────────────────────
-`stop("xxx")` threw an error with unexpected class and message.
+── 5. Failure:  (@test-expect-error.R#60)  ─────────────────────────────────────
+`fail("xxx")` threw an error with unexpected class and message.
 Expected class: zzz
 Actual class:   simpleError/error/condition
 Message:        xxx
 Expected match: "zzz"
 Actual message: "xxx"
+Backtrace:
+ 1. testthat::expect_error(fail("xxx"), regexp = "zzz", class = "zzz")
+ 6. testthat::fail("xxx")
 

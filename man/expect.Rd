@@ -4,7 +4,7 @@
 \alias{expect}
 \title{The building block of all \code{expect_} functions}
 \usage{
-expect(ok, failure_message, info = NULL, srcref = NULL)
+expect(ok, failure_message, info = NULL, srcref = NULL, trace = NULL)
 }
 \arguments{
 \item{ok}{\code{TRUE} or \code{FALSE} indicating if the expectation was successful.}
@@ -16,6 +16,9 @@ for backward compatibility only and new expectations should not use it.}
 
 \item{srcref}{Location of the failure. Should only needed to be explicitly
 supplied when you need to forward a srcref captured elsewhere.}
+
+\item{trace}{An optional backtrace created by \code{\link[rlang:trace_back]{rlang::trace_back()}}.
+When supplied, the expectation is displayed with the backtrace.}
 }
 \value{
 An expectation object. Signals the expectation condition

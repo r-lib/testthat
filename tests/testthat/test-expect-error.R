@@ -41,13 +41,23 @@ test_that("... passed on to grepl", {
 test_that("generates informative failures", {
   skip_if_not(l10n_info()$`UTF-8`)
 
-  expect_known_failure("test-expect-error.txt", {
-    expect_error(null())
-    expect_error(stop("!"), NA)
+  # rlang backtraces are sensitive to upstream changes
+  skip_on_cran()
 
-    expect_error(stop("xxx"), regexp = "zzz")
-    expect_error(stop("xxx"), class = "zzz")
-    expect_error(stop("xxx"), regexp = "zzz", class = "zzz")
+  # Disable srcrefs because they differ across systems
+  withr::local_options(list(rlang_trace_format_srcrefs = FALSE))
+
+  expect_known_failure("test-expect-error.txt", {
+    # Call `stop()` indirectly to create more realistic backtraces in
+    # captured output
+    fail <- function(msg) stop(msg)
+
+    expect_error(null())
+    expect_error(fail("!"), NA)
+
+    expect_error(fail("xxx"), regexp = "zzz")
+    expect_error(fail("xxx"), class = "zzz")
+    expect_error(fail("xxx"), regexp = "zzz", class = "zzz")
   })
 })
 

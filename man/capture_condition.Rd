@@ -10,15 +10,15 @@
 \alias{capture_warnings}
 \title{Capture conditions, including messeages, warnings, expectations, and errors.}
 \usage{
-capture_condition(code)
+capture_condition(code, entrace = FALSE)
 
-capture_error(code)
+capture_error(code, entrace = FALSE)
 
-capture_expectation(code)
+capture_expectation(code, entrace = FALSE)
 
-capture_message(code)
+capture_message(code, entrace = FALSE)
 
-capture_warning(code)
+capture_warning(code, entrace = FALSE)
 
 capture_messages(code)
 
@@ -26,6 +26,9 @@ capture_warnings(code)
 }
 \arguments{
 \item{code}{Code to evaluate}
+
+\item{entrace}{Whether to add a \link[rlang:trace_back]{backtrace} to
+the captured condition.}
 }
 \value{
 Singular functions (\code{capture_condition}, \code{capture_expectation} etc)

@@ -125,10 +125,9 @@ expect_error <- function(object,
                          info = NULL,
                          label = NULL
                          ) {
-
-  act <- quasi_capture(enquo(object), label, capture_error)
+  act <- quasi_capture(enquo(object), label, capture_error, entrace = TRUE)
   msg <- compare_condition(act$cap, act$lab, regexp = regexp, class = class, ...)
-  expect(is.null(msg), msg, info = info)
+  expect(is.null(msg), msg, info = info, trace = act$cap$trace)
 
   if (!is.null(act$cap)) {
     if (!simple_error(act$cap) && is.null(class) && !is.null(regexp)) {
@@ -152,12 +151,12 @@ expect_condition <- function(object,
                              info = NULL,
                              label = NULL
                              ) {
-  act <- quasi_capture(enquo(object), label, capture_condition)
+  act <- quasi_capture(enquo(object), label, capture_condition, entrace = TRUE)
   msg <- compare_condition(
     act$cap, act$lab, regexp = regexp, class = class, ...,
     cond_type = "condition"
   )
-  expect(is.null(msg), msg, info = info)
+  expect(is.null(msg), msg, info = info, trace = act$cap$trace)
 
   invisible(act$val %||% act$cap)
 }
