@@ -61,7 +61,7 @@
 ##teamcity[testSuiteStarted name='Recursion']
 ##teamcity[testSuiteStarted name='Recursion:1']
 ##teamcity[testStarted name='expectation 1']
-##teamcity[testFailed name='expectation 1' message='This is deep' details='Backtrace:|n  1. f(25)|n  2. f(x - 1)|n  3. f(x - 1)|n  4. f(x - 1)|n  5. f(x - 1)|n  6. f(x - 1)|n  7. f(x - 1)|n  8. f(x - 1)|n  9. f(x - 1)|n 10. f(x - 1)|n 11. f(x - 1)|n 12. f(x - 1)|n 13. f(x - 1)|n 14. f(x - 1)|n 15. f(x - 1)|n 16. f(x - 1)|n 17. f(x - 1)|n 18. f(x - 1)|n 19. f(x - 1)|n 20. f(x - 1)|n 21. f(x - 1)|n 22. f(x - 1)|n 23. f(x - 1)|n 24. f(x - 1)|n 25. f(x - 1)|n 26. f(x - 1)']
+##teamcity[testFailed name='expectation 1' message='This is deep' details='Backtrace:|n  1. f(25)|n  2. f(x - 1)|n  3. f(x - 1)|n  4. f(x - 1)|n  5. f(x - 1)|n  6. f(x - 1)|n  7. f(x - 1)|n  8. f(x - 1)|n  9. f(x - 1)|n 10. f(x - 1)|n     ...|n 17. f(x - 1)|n 18. f(x - 1)|n 19. f(x - 1)|n 20. f(x - 1)|n 21. f(x - 1)|n 22. f(x - 1)|n 23. f(x - 1)|n 24. f(x - 1)|n 25. f(x - 1)|n 26. f(x - 1)']
 ##teamcity[testFinished name='expectation 1']
 ##teamcity[testSuiteFinished name='Recursion:1']
 
