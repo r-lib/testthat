@@ -104,7 +104,6 @@ Collate:
     'test-files.R'
     'test-path.R'
     'test-that.R'
-    'traceback.R'
     'try-again.R'
     'utils-io.R'
     'utils.R'
