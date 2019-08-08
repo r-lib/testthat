@@ -40,13 +40,14 @@ test_code <- function(test, code, env = test_env(), skip_on_empty = TRUE) {
   ok <- TRUE
   register_expectation <- function(e) {
     calls <- e$expectation_calls
-    srcref <- find_first_srcref(calls)
 
+    srcref <- e$srcref %||% find_first_srcref(test_env)
     e <- as.expectation(e, srcref = srcref)
-    e$call <- calls
+
     e$start_frame <- attr(calls, "start_frame")
     e$end_frame <- e$start_frame + length(calls) - 1L
     e$test <- test %||% "(unknown)"
+
     ok <<- ok && expectation_ok(e)
     get_reporter()$add_result(context = get_reporter()$.context, test = test, result = e)
   }
@@ -144,7 +145,9 @@ test_code <- function(test, code, env = test_env(), skip_on_empty = TRUE) {
     handled <<- TRUE
 
     if (inherits(e, "skip_empty")) {
-      # Need to generate call as if from test_that
+      # If we get here, `code` has already finished its evaluation.
+      # Find the srcref in the `test_that()` frame above.
+      e$srcref <- find_first_srcref(frame - 1)
       e$expectation_calls <- frame_calls(0, 12, frame - 1)
     } else {
       e$expectation_calls <- frame_calls(11, 2)

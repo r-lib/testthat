@@ -52,7 +52,14 @@ env_name <- function(x) {
   gsub("<environment: |>", "", str)
 }
 
-find_first_srcref <- function(calls) {
+find_first_srcref <- function(start) {
+  if (is_environment(start)) {
+    # Find test environment on the stack and trim all frames above it
+    start <- eval_bare(quote(base::sys.nframe()), start) + 1L
+  }
+  calls <- sys.calls()
+  calls <- calls[seq2(start, length(calls))]
+
   for (call in calls) {
     srcref <- attr(call, "srcref")
     if (!is.null(srcref)) {
