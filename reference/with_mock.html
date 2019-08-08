@@ -238,27 +238,11 @@ worked around easily by defining a wrapper function.</p>
   <span class='fu'><a href='equality-expectations.html'>expect_equal</a></span>(<span class='fu'>plus</span>(<span class='fl'>1</span>, <span class='fl'>1</span>), <span class='fl'>3</span>)
 })</div><div class='output co'>#&gt; <span class='error'>Error: Test failed: 'plus(1, 1) == 3'</span>
 #&gt; <span class='error'>* Function plus not found in environment testthat.</span>
-#&gt; <span class='error'>1: local_mock(plus = function(x, y) 3) at &lt;text&gt;:24</span>
-#&gt; <span class='error'>2: extract_mocks(list(...), .env = .env) at /home/travis/build/r-lib/testthat/R/mock.R:87</span>
-#&gt; <span class='error'>3: lapply(stats::setNames(nm = mock_qual_names), function(qual_name) {</span>
-#&gt; <span class='error'>       pkg_name &lt;- gsub(pkg_and_name_rx, "\\1", qual_name)</span>
-#&gt; <span class='error'>       if (is_base_pkg(pkg_name)) {</span>
-#&gt; <span class='error'>           stop("Can't mock functions in base packages (", pkg_name, ")", call. = FALSE)</span>
-#&gt; <span class='error'>       }</span>
-#&gt; <span class='error'>       name &lt;- gsub(pkg_and_name_rx, "\\2", qual_name)</span>
-#&gt; <span class='error'>       if (pkg_name == "") {</span>
-#&gt; <span class='error'>           pkg_name &lt;- .env</span>
-#&gt; <span class='error'>       }</span>
-#&gt; <span class='error'>       env &lt;- asNamespace(pkg_name)</span>
-#&gt; <span class='error'>       if (!exists(name, envir = env, mode = "function")) {</span>
-#&gt; <span class='error'>           stop("Function ", name, " not found in environment ", environmentName(env), </span>
-#&gt; <span class='error'>               ".", call. = FALSE)</span>
-#&gt; <span class='error'>       }</span>
-#&gt; <span class='error'>       mock(name = name, env = env, new = funs[[qual_name]])</span>
-#&gt; <span class='error'>   }) at /home/travis/build/r-lib/testthat/R/mock.R:108</span>
-#&gt; <span class='error'>4: FUN(X[[i]], ...)</span>
-#&gt; <span class='error'>5: stop("Function ", name, " not found in environment ", environmentName(env), ".", </span>
-#&gt; <span class='error'>       call. = FALSE) at /home/travis/build/r-lib/testthat/R/mock.R:129</span></div></pre>
+#&gt; <span class='error'><span style='font-weight: bold;'>Backtrace:</span><span></span>
+#&gt; <span class='error'></span><span style='color: #555555;'> 1. </span><span>testthat::local_mock(plus = function(x, y) 3)</span>
+#&gt; <span class='error'></span><span style='color: #555555;'> 2. </span><span>testthat:::extract_mocks(list(...), .env = .env) </span><span style='color: #555555;'>hometravisbuildr-libtestthatRmock.R:87:2</span><span></span>
+#&gt; <span class='error'></span><span style='color: #555555;'> 3. </span><span>base::lapply(...) </span><span style='color: #555555;'>hometravisbuildr-libtestthatRmock.R:108:2</span><span></span>
+#&gt; <span class='error'></span><span style='color: #555555;'> 4. </span><span>testthat:::FUN(X[[i]], ...)</span></div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

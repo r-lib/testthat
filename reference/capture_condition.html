@@ -170,15 +170,15 @@ code for <code><a href='output-expectations.html'>expect_output()</a></code>, <c
     
     </div>
 
-    <pre class="usage"><span class='fu'>capture_condition</span>(<span class='no'>code</span>)
+    <pre class="usage"><span class='fu'>capture_condition</span>(<span class='no'>code</span>, <span class='kw'>entrace</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
-<span class='fu'>capture_error</span>(<span class='no'>code</span>)
+<span class='fu'>capture_error</span>(<span class='no'>code</span>, <span class='kw'>entrace</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
-<span class='fu'>capture_expectation</span>(<span class='no'>code</span>)
+<span class='fu'>capture_expectation</span>(<span class='no'>code</span>, <span class='kw'>entrace</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
-<span class='fu'>capture_message</span>(<span class='no'>code</span>)
+<span class='fu'>capture_message</span>(<span class='no'>code</span>, <span class='kw'>entrace</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
-<span class='fu'>capture_warning</span>(<span class='no'>code</span>)
+<span class='fu'>capture_warning</span>(<span class='no'>code</span>, <span class='kw'>entrace</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
 <span class='fu'>capture_messages</span>(<span class='no'>code</span>)
 
@@ -190,6 +190,11 @@ code for <code><a href='output-expectations.html'>expect_output()</a></code>, <c
     <tr>
       <th>code</th>
       <td><p>Code to evaluate</p></td>
+    </tr>
+    <tr>
+      <th>entrace</th>
+      <td><p>Whether to add a <a href='https://rlang.r-lib.org/reference/trace_back.html'>backtrace</a> to
+the captured condition.</p></td>
     </tr>
     </table>
     

@@ -166,7 +166,7 @@ vignette(&quot;custom-expectation&quot;) for details." />
     
     </div>
 
-    <pre class="usage"><span class='fu'>expect</span>(<span class='no'>ok</span>, <span class='no'>failure_message</span>, <span class='kw'>info</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>srcref</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+    <pre class="usage"><span class='fu'>expect</span>(<span class='no'>ok</span>, <span class='no'>failure_message</span>, <span class='kw'>info</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>srcref</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>trace</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -188,6 +188,11 @@ for backward compatibility only and new expectations should not use it.</p></td>
       <th>srcref</th>
       <td><p>Location of the failure. Should only needed to be explicitly
 supplied when you need to forward a srcref captured elsewhere.</p></td>
+    </tr>
+    <tr>
+      <th>trace</th>
+      <td><p>An optional backtrace created by <code><a href='https://rlang.r-lib.org/reference/trace_back.html'>rlang::trace_back()</a></code>.
+When supplied, the expectation is displayed with the backtrace.</p></td>
     </tr>
     </table>
     
