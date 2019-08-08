@@ -37,7 +37,7 @@ Suggests:
     vctrs (>= 0.1.0),
     xml2
 Remotes:
-    r-lib/rlang@add-testthat-utils
+    r-lib/rlang
 VignetteBuilder: knitr
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
