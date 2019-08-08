@@ -12,7 +12,7 @@ DebugReporter <- R6::R6Class("DebugReporter",
   inherit = Reporter,
   public = list(
     add_result = function(context, test, result) {
-      if (!expectation_success(result)) {
+      if (!expectation_success(result) && !is.null(result$start_frame)) {
         if (sink_number() > 0) {
           sink(self$out)
           on.exit(sink(), add = TRUE)

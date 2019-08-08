@@ -47,9 +47,6 @@
 1: tests.R#69: f()
 2: tests.R#67: skip("skip")
 
-1: tests.R#72: test_that("Skip:3", {
-})
-
 1: tests.R#78: warning("abc")
 
 1: tests.R#84: warning("def")

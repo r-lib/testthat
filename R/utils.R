@@ -53,10 +53,6 @@ env_name <- function(x) {
 }
 
 find_first_srcref <- function(start) {
-  if (is_environment(start)) {
-    # Find test environment on the stack and trim all frames above it
-    start <- eval_bare(quote(base::sys.nframe()), start) + 1L
-  }
   calls <- sys.calls()
   calls <- calls[seq2(start, length(calls))]
 
