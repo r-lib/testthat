@@ -98,7 +98,12 @@ format.expectation <- function(x, ...) {
 }
 
 format_with_trace <- function(exp) {
-  trace_lines <- format(exp$trace, simplify = "branch", max_frames = 20)
+  trace_lines <- format(
+    exp$trace,
+    simplify = "branch",
+    max_frames = 20,
+    dir = Sys.getenv("TESTTHAT_DIR") %||% getwd()
+  )
   paste_line(
     exp$message,
     crayon::bold("Backtrace:"),

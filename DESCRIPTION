@@ -22,6 +22,7 @@ Imports:
     evaluate,
     magrittr,
     methods,
+    pkgload,
     praise,
     R6 (>= 2.2.0),
     rlang (>= 0.4.0.9001),

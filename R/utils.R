@@ -97,3 +97,7 @@ context_name <- function(filename) {
 paste_line <- function(...) {
   paste(chr(...), collapse = "\n")
 }
+
+maybe_root_dir <- function(path) {
+  tryCatch(pkgload::pkg_path(path), error = function(...) path)
+}
