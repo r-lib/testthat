@@ -1,7 +1,4 @@
 
-bang <- function(expr, env = caller_env()) {
-  eval_bare(enexpr(expr), env)
-}
 new_capture <- function(class) {
   exiting_handlers <- rep_named(class, list(identity))
 
@@ -10,7 +7,12 @@ new_capture <- function(class) {
     return_from(env, cnd)
   }))
 
-  bang(function(code, entrace = FALSE) {
+  formals <- pairlist2(code = , entrace = FALSE)
+
+  # R CMD check global variable NOTE
+  code <- entrace <- NULL
+
+  body <- expr({
     if (!entrace) {
       return(tryCatch({ code; NULL }, !!!exiting_handlers))
     }
@@ -18,6 +20,8 @@ new_capture <- function(class) {
     env <- environment()
     withCallingHandlers({ code; NULL }, !!!calling_handlers)
   })
+
+  new_function(formals, body, ns_env("testthat"))
 }
 
 #' Capture conditions, including messeages, warnings, expectations, and errors.
