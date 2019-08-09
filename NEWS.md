@@ -1,10 +1,10 @@
 
 # testthat (development version)
 
- * Unexpected errors are now printed with a simplified backtrace.
+* Unexpected errors are now printed with a simplified backtrace.
 
- * `expect_error()` and `expect_condition()` now display a backtrace
-   when the error doesn't conform to expectations (#729).
+* `expect_error()` and `expect_condition()` now display a backtrace
+  when the error doesn't conform to expectations (#729).
 
 
 # testthat 2.2.1
