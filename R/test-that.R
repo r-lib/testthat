@@ -123,11 +123,12 @@ test_code <- function(test, code, env = test_env(), skip_on_empty = TRUE) {
 
     handled <<- TRUE
     register_expectation(e, 5)
-    invokeRestart("muffleWarning")
+
+    maybe_restart("muffleWarning")
   }
   handle_message <- function(e) {
     handled <<- TRUE
-    invokeRestart("muffleMessage")
+    maybe_restart("muffleMessage")
   }
   handle_skip <- function(e) {
     handled <<- TRUE

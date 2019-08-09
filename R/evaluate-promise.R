@@ -19,13 +19,13 @@ evaluate_promise <- function(code, print = FALSE) {
   warnings <- Stack$new()
   handle_warning <- function(condition) {
     warnings$push(condition)
-    invokeRestart("muffleWarning")
+    maybe_restart("muffleWarning")
   }
 
   messages <- Stack$new()
   handle_message <- function(condition) {
     messages$push(condition)
-    invokeRestart("muffleMessage")
+    maybe_restart("muffleMessage")
   }
 
   temp <- file()

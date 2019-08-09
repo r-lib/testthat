@@ -81,7 +81,7 @@ capture_messages <- function(code) {
     code,
     message = function(condition) {
       out$push(condition)
-      invokeRestart("muffleMessage")
+      maybe_restart("muffleMessage")
     }
   )
 
@@ -97,7 +97,7 @@ capture_warnings <- function(code) {
     code,
     warning = function(condition) {
       out$push(condition)
-      invokeRestart("muffleWarning")
+      maybe_restart("muffleWarning")
     }
   )
 

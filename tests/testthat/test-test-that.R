@@ -132,3 +132,10 @@ test_that("line numbers captured for stop()s", {
   })
   expect_equal(lines, 2)
 })
+
+test_that("can signal warnings and messages without restart", {
+  expect_null(signalCondition(message_cnd("foo")))
+
+  return("Skipping following test because it verbosely registers the warning")
+  expect_null(signalCondition(warning_cnd("foo")))
+})
