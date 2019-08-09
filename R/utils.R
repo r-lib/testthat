@@ -104,3 +104,9 @@ paste_line <- function(...) {
 maybe_root_dir <- function(path) {
   tryCatch(pkgload::pkg_path(path), error = function(...) path)
 }
+
+maybe_restart <- function(restart) {
+  if (!is.null(findRestart(restart))) {
+    invokeRestart(restart)
+  }
+}

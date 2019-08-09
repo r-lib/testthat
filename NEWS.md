@@ -1,6 +1,10 @@
 
 # testthat (development version)
 
+* Existence of restarts is first checked before invokation. This makes
+  it possible to signal warnings or messages with a different
+  condition signaller (#874).
+
 * Unexpected errors are now printed with a simplified backtrace.
 
 * `expect_error()` and `expect_condition()` now display a backtrace
