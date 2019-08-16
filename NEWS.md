@@ -1,6 +1,9 @@
 
 # testthat (development version)
 
+* JunitReporter now reports tests in ISO 8601 in the UTC timezone and also uses
+  the maximum 3 decimal place precision (#923).
+
 * Existence of restarts is first checked before invokation. This makes
   it possible to signal warnings or messages with a different
   condition signaller (#874).
