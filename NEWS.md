@@ -36,7 +36,7 @@
 
 * `expect_match()` now displays `info` even when match length is 0 (#867).
 
-* `expect_s3_class()` gains new `expect` argument that allows you to check
+* `expect_s3_class()` gains new `exact` argument that allows you to check
   for an exact class match, not just inheritance (#885).
 
 * `fail()` and `succeed()` gain `info` argument, which is passed along to 
