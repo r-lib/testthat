@@ -2,10 +2,14 @@
 % Please edit documentation in R/expectation.R
 \name{expectation}
 \alias{expectation}
+\alias{new_expectation}
 \alias{is.expectation}
 \title{Construct an expectation object}
 \usage{
 expectation(type, message, srcref = NULL, trace = NULL)
+
+new_expectation(type, message, ..., srcref = NULL, trace = NULL,
+  .subclass = NULL)
 
 is.expectation(x)
 }
@@ -19,6 +23,10 @@ is.expectation(x)
 
 \item{trace}{An optional backtrace created by \code{\link[rlang:trace_back]{rlang::trace_back()}}.
 When supplied, the expectation is displayed with the backtrace.}
+
+\item{...}{Additional attributes for the expectation object.}
+
+\item{.subclass}{An optional subclass for the expectation object.}
 
 \item{x}{object to test for class membership}
 }

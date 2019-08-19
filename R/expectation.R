@@ -55,6 +55,18 @@ expect <- function(ok, failure_message, info = NULL, srcref = NULL, trace = NULL
 #' @keywords internal
 #' @export
 expectation <- function(type, message, srcref = NULL, trace = NULL) {
+  new_expectation(type, message, srcref = srcref, trace = trace)
+}
+#' @rdname expectation
+#' @param ... Additional attributes for the expectation object.
+#' @param .subclass An optional subclass for the expectation object.
+#' @export
+new_expectation <- function(type,
+                            message,
+                            ...,
+                            srcref = NULL,
+                            trace = NULL,
+                            .subclass = NULL) {
   type <- match.arg(type, c("success", "failure", "error", "skip", "warning"))
 
   structure(
@@ -64,12 +76,14 @@ expectation <- function(type, message, srcref = NULL, trace = NULL) {
       trace = trace
     ),
     class = c(
+      .subclass,
       paste0("expectation_", type),
       "expectation",
       # Make broken expectations catchable by try()
       if (type %in% c("failure", "error")) "error",
       "condition"
-    )
+    ),
+    ...
   )
 }
 
