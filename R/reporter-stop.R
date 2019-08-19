@@ -33,9 +33,15 @@ StopReporter <- R6::R6Class("StopReporter",
       self$failures$initialize()
 
       messages <- vapply(failures, format, character(1))
-      messages <- paste0("* ", messages, collapse = "\n")
+      locations <- vapply(failures, exp_location, character(1))
+      messages <- paste0("* ", locations, ": ", messages, collapse = "\n")
+      message <- paste_line(
+        paste0("Test failed: '", test, "'"),
+        !!!messages
+      )
 
-      stop("Test failed: '", test, "'\n", messages, call. = FALSE)
+      cat(message, "\n", file = stderr())
+      invokeRestart("abort")
     },
 
     add_result = function(context, test, result) {
