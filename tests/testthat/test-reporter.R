@@ -35,6 +35,7 @@ test_that("reporters produce consistent output", {
 })
 
 test_that('debug reporter produces consistent output', {
+  withr::local_options(c(testthat_format_srcrefs = FALSE))
   with_mock(
     show_menu = function(choices, title = NULL) {
       cat(paste0(format(seq_along(choices)), ": ", choices, sep = "\n"), "\n", sep = "")
