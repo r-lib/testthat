@@ -25,6 +25,23 @@ An expectation object. Signals the expectation condition
 with a \code{continue_test} restart.
 }
 \description{
-Call this function when writing your own expectations. See
+Call \code{expect()} when writing your own expectations. See
 \code{vignette("custom-expectation")} for details.
+}
+\details{
+While \code{\link[=expect]{expect()}} creates and signals an expectation in one go,
+\code{signal_expectation()} separately signals an expectation that you
+have manually created with \code{\link[=new_expectation]{new_expectation()}}. Expectations are
+signalled with the following protocol:
+\itemize{
+\item If the expectation is a failure or an error, it is signalled with
+\code{\link[base:stop]{base::stop()}}. Otherwise, it is signalled with
+\code{\link[base:signalCondition]{base::signalCondition()}}.
+\item The \code{continue_test} restart is registered. When invoked, failing
+expectations are ignored and normal control flow is resumed to
+run the other tests.
+}
+}
+\seealso{
+\code{\link[=exp_signal]{exp_signal()}}
 }

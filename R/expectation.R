@@ -1,6 +1,6 @@
 #' The building block of all `expect_` functions
 #'
-#' Call this function when writing your own expectations. See
+#' Call `expect()` when writing your own expectations. See
 #' `vignette("custom-expectation")` for details.
 #'
 #' @param ok `TRUE` or `FALSE` indicating if the expectation was successful.
@@ -13,6 +13,23 @@
 #'   When supplied, the expectation is displayed with the backtrace.
 #' @return An expectation object. Signals the expectation condition
 #'   with a `continue_test` restart.
+#'
+#' @details
+#'
+#' While [expect()] creates and signals an expectation in one go,
+#' `signal_expectation()` separately signals an expectation that you
+#' have manually created with [new_expectation()]. Expectations are
+#' signalled with the following protocol:
+#'
+#' * If the expectation is a failure or an error, it is signalled with
+#'   [base::stop()]. Otherwise, it is signalled with
+#'   [base::signalCondition()].
+#'
+#' * The `continue_test` restart is registered. When invoked, failing
+#'   expectations are ignored and normal control flow is resumed to
+#'   run the other tests.
+#'
+#' @seealso [exp_signal()]
 #' @export
 expect <- function(ok, failure_message, info = NULL, srcref = NULL, trace = NULL) {
   type <- if (ok) "success" else "failure"
@@ -32,9 +49,21 @@ expect <- function(ok, failure_message, info = NULL, srcref = NULL, trace = NULL
   }
 
   exp <- expectation(type, message, srcref = srcref, trace = trace)
+  exp_signal(exp)
+}
 
+#' Signal an expectation
+#'
+#' @param exp An expectation object, as created by
+#'   [new_expectation()].
+#' @export
+exp_signal <- function(exp) {
   withRestarts(
-    if (ok) signalCondition(exp) else stop(exp),
+    if (expectation_broken(exp)) {
+      stop(exp)
+    } else {
+      signalCondition(exp)
+    },
     continue_test = function(e) NULL
   )
 
