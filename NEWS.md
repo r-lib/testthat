@@ -1,6 +1,15 @@
 
 # testthat (development version)
 
+* New `exp_signal()` function. This is a condition signaller that
+  implements the testthat protocol (signal with `stop()` if the
+  expectation is broken, with a `continue_test` restart).
+
+* Expectations can now be explicitly subclassed with
+  `new_expectation()`. This constructor follows our new conventions
+  for S3 classes and takes an optional subclass and optional
+  attributes.
+
 * Existence of restarts is first checked before invokation. This makes
   it possible to signal warnings or messages with a different
   condition signaller (#874).
