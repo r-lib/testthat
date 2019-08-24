@@ -39,7 +39,7 @@
 
 <meta property="og:title" content="The building block of all <code>expect_</code> functions — expect" />
 
-<meta property="og:description" content="Call this function when writing your own expectations. See
+<meta property="og:description" content="Call expect() when writing your own expectations. See
 vignette(&quot;custom-expectation&quot;) for details." />
 
 <meta property="og:image" content="/logo.png" />
@@ -161,7 +161,7 @@ vignette(&quot;custom-expectation&quot;) for details." />
 
     <div class="ref-description">
     
-    <p>Call this function when writing your own expectations. See
+    <p>Call <code>expect()</code> when writing your own expectations. See
 <code><a href='../articles/custom-expectation.html'>vignette("custom-expectation")</a></code> for details.</p>
     
     </div>
@@ -201,6 +201,24 @@ When supplied, the expectation is displayed with the backtrace.</p></td>
     <p>An expectation object. Signals the expectation condition
 with a <code>continue_test</code> restart.</p>
     
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>While <code>expect()</code> creates and signals an expectation in one go,
+<code><a href='expectation.html'>exp_signal()</a></code> separately signals an expectation that you
+have manually created with <code><a href='expectation.html'>new_expectation()</a></code>. Expectations are
+signalled with the following protocol:</p><ul>
+<li><p>If the expectation is a failure or an error, it is signalled with
+<code><a href='https://www.rdocumentation.org/packages/base/topics/stop'>base::stop()</a></code>. Otherwise, it is signalled with
+<code><a href='https://www.rdocumentation.org/packages/base/topics/conditions'>base::signalCondition()</a></code>.</p></li>
+<li><p>The <code>continue_test</code> restart is registered. When invoked, failing
+expectations are ignored and normal control flow is resumed to
+run the other tests.</p></li>
+</ul>
+    
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p><code><a href='expectation.html'>exp_signal()</a></code></p></div>
+    
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -209,6 +227,10 @@ with a <code>continue_test</code> restart.</p>
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
+
+      <li><a href="#details">Details</a></li>
+
+      <li><a href="#see-also">See also</a></li>
           </ul>
 
   </div>

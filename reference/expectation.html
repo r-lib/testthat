@@ -170,6 +170,11 @@ details.</p>
 
     <pre class="usage"><span class='fu'>expectation</span>(<span class='no'>type</span>, <span class='no'>message</span>, <span class='kw'>srcref</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>trace</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
 
+<span class='fu'>new_expectation</span>(<span class='no'>type</span>, <span class='no'>message</span>, <span class='no'>...</span>, <span class='kw'>srcref</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>trace</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>.subclass</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
+
+<span class='fu'>exp_signal</span>(<span class='no'>exp</span>)
+
 <span class='fu'>is.expectation</span>(<span class='no'>x</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -194,10 +199,28 @@ details.</p>
 When supplied, the expectation is displayed with the backtrace.</p></td>
     </tr>
     <tr>
+      <th>...</th>
+      <td><p>Additional attributes for the expectation object.</p></td>
+    </tr>
+    <tr>
+      <th>.subclass</th>
+      <td><p>An optional subclass for the expectation object.</p></td>
+    </tr>
+    <tr>
+      <th>exp</th>
+      <td><p>An expectation object, as created by
+<code>new_expectation()</code>.</p></td>
+    </tr>
+    <tr>
       <th>x</th>
       <td><p>object to test for class membership</p></td>
     </tr>
     </table>
+    
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>Create an expectation with <code>expectation()</code> or <code>new_expectation()</code>
+and signal it with <code>exp_signal()</code>.</p>
     
 
   </div>
@@ -205,7 +228,9 @@ When supplied, the expectation is displayed with the backtrace.</p></td>
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-                </ul>
+      
+      <li><a href="#details">Details</a></li>
+          </ul>
 
   </div>
 </div>
