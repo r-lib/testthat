@@ -16,8 +16,8 @@
 #'
 #' @details
 #'
-#' While [expect()] creates and signals an expectation in one go,
-#' `signal_expectation()` separately signals an expectation that you
+#' While `expect()` creates and signals an expectation in one go,
+#' `exp_signal()` separately signals an expectation that you
 #' have manually created with [new_expectation()]. Expectations are
 #' signalled with the following protocol:
 #'
