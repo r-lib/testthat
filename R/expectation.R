@@ -52,29 +52,14 @@ expect <- function(ok, failure_message, info = NULL, srcref = NULL, trace = NULL
   exp_signal(exp)
 }
 
-#' Signal an expectation
-#'
-#' @param exp An expectation object, as created by
-#'   [new_expectation()].
-#' @export
-exp_signal <- function(exp) {
-  withRestarts(
-    if (expectation_broken(exp)) {
-      stop(exp)
-    } else {
-      signalCondition(exp)
-    },
-    continue_test = function(e) NULL
-  )
-
-  invisible(exp)
-}
-
 #' Construct an expectation object
 #'
 #' For advanced use only. If you are creating your own expectation, you should
 #' call [expect()] instead. See `vignette("custom-expectation")` for more
 #' details.
+#'
+#' Create an expectation with `expectation()` or `new_expectation()`
+#' and signal it with `exp_signal()`.
 #'
 #' @param type Expectation type. Must be one of "success", "failure", "error",
 #'   "skip", "warning".
@@ -115,6 +100,23 @@ new_expectation <- function(type,
     ...
   )
 }
+#' @rdname expectation
+#' @param exp An expectation object, as created by
+#'   [new_expectation()].
+#' @export
+exp_signal <- function(exp) {
+  withRestarts(
+    if (expectation_broken(exp)) {
+      stop(exp)
+    } else {
+      signalCondition(exp)
+    },
+    continue_test = function(e) NULL
+  )
+
+  invisible(exp)
+}
+
 
 #' @export
 #' @rdname expectation

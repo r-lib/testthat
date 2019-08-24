@@ -29,8 +29,8 @@ Call \code{expect()} when writing your own expectations. See
 \code{vignette("custom-expectation")} for details.
 }
 \details{
-While \code{\link[=expect]{expect()}} creates and signals an expectation in one go,
-\code{signal_expectation()} separately signals an expectation that you
+While \code{expect()} creates and signals an expectation in one go,
+\code{exp_signal()} separately signals an expectation that you
 have manually created with \code{\link[=new_expectation]{new_expectation()}}. Expectations are
 signalled with the following protocol:
 \itemize{
