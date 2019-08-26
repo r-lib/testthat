@@ -1,8 +1,18 @@
 
 # testthat (development version)
 
+
 * JunitReporter now reports tests in ISO 8601 in the UTC timezone and also uses
   the maximum 3 decimal place precision (#923).
+
+* New `exp_signal()` function. This is a condition signaller that
+  implements the testthat protocol (signal with `stop()` if the
+  expectation is broken, with a `continue_test` restart).
+
+* Expectations can now be explicitly subclassed with
+  `new_expectation()`. This constructor follows our new conventions
+  for S3 classes and takes an optional subclass and optional
+  attributes.
 
 * Existence of restarts is first checked before invokation. This makes
   it possible to signal warnings or messages with a different
@@ -39,7 +49,7 @@
 
 * `expect_match()` now displays `info` even when match length is 0 (#867).
 
-* `expect_s3_class()` gains new `expect` argument that allows you to check
+* `expect_s3_class()` gains new `exact` argument that allows you to check
   for an exact class match, not just inheritance (#885).
 
 * `fail()` and `succeed()` gain `info` argument, which is passed along to 

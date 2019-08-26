@@ -1,6 +1,6 @@
 #' The building block of all `expect_` functions
 #'
-#' Call this function when writing your own expectations. See
+#' Call `expect()` when writing your own expectations. See
 #' `vignette("custom-expectation")` for details.
 #'
 #' @param ok `TRUE` or `FALSE` indicating if the expectation was successful.
@@ -13,6 +13,23 @@
 #'   When supplied, the expectation is displayed with the backtrace.
 #' @return An expectation object. Signals the expectation condition
 #'   with a `continue_test` restart.
+#'
+#' @details
+#'
+#' While `expect()` creates and signals an expectation in one go,
+#' `exp_signal()` separately signals an expectation that you
+#' have manually created with [new_expectation()]. Expectations are
+#' signalled with the following protocol:
+#'
+#' * If the expectation is a failure or an error, it is signalled with
+#'   [base::stop()]. Otherwise, it is signalled with
+#'   [base::signalCondition()].
+#'
+#' * The `continue_test` restart is registered. When invoked, failing
+#'   expectations are ignored and normal control flow is resumed to
+#'   run the other tests.
+#'
+#' @seealso [exp_signal()]
 #' @export
 expect <- function(ok, failure_message, info = NULL, srcref = NULL, trace = NULL) {
   type <- if (ok) "success" else "failure"
@@ -32,13 +49,7 @@ expect <- function(ok, failure_message, info = NULL, srcref = NULL, trace = NULL
   }
 
   exp <- expectation(type, message, srcref = srcref, trace = trace)
-
-  withRestarts(
-    if (ok) signalCondition(exp) else stop(exp),
-    continue_test = function(e) NULL
-  )
-
-  invisible(exp)
+  exp_signal(exp)
 }
 
 #' Construct an expectation object
@@ -46,6 +57,9 @@ expect <- function(ok, failure_message, info = NULL, srcref = NULL, trace = NULL
 #' For advanced use only. If you are creating your own expectation, you should
 #' call [expect()] instead. See `vignette("custom-expectation")` for more
 #' details.
+#'
+#' Create an expectation with `expectation()` or `new_expectation()`
+#' and signal it with `exp_signal()`.
 #'
 #' @param type Expectation type. Must be one of "success", "failure", "error",
 #'   "skip", "warning".
@@ -55,6 +69,18 @@ expect <- function(ok, failure_message, info = NULL, srcref = NULL, trace = NULL
 #' @keywords internal
 #' @export
 expectation <- function(type, message, srcref = NULL, trace = NULL) {
+  new_expectation(type, message, srcref = srcref, trace = trace)
+}
+#' @rdname expectation
+#' @param ... Additional attributes for the expectation object.
+#' @param .subclass An optional subclass for the expectation object.
+#' @export
+new_expectation <- function(type,
+                            message,
+                            ...,
+                            srcref = NULL,
+                            trace = NULL,
+                            .subclass = NULL) {
   type <- match.arg(type, c("success", "failure", "error", "skip", "warning"))
 
   structure(
@@ -64,14 +90,33 @@ expectation <- function(type, message, srcref = NULL, trace = NULL) {
       trace = trace
     ),
     class = c(
+      .subclass,
       paste0("expectation_", type),
       "expectation",
       # Make broken expectations catchable by try()
       if (type %in% c("failure", "error")) "error",
       "condition"
-    )
+    ),
+    ...
   )
 }
+#' @rdname expectation
+#' @param exp An expectation object, as created by
+#'   [new_expectation()].
+#' @export
+exp_signal <- function(exp) {
+  withRestarts(
+    if (expectation_broken(exp)) {
+      stop(exp)
+    } else {
+      signalCondition(exp)
+    },
+    continue_test = function(e) NULL
+  )
+
+  invisible(exp)
+}
+
 
 #' @export
 #' @rdname expectation
@@ -174,4 +219,13 @@ single_letter_summary <- function(x) {
     warning = colourise("W", "warning"),
     "?"
   )
+}
+
+exp_location <- function(exp) {
+  if (is.null(exp$srcref)) {
+    "???"
+  } else {
+    filename <- attr(exp$srcref, "srcfile")$filename
+    paste0(basename(filename), ":", exp$srcref[1])
+  }
 }

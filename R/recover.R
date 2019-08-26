@@ -24,7 +24,13 @@ recover2 <- function(start_frame = 1L, end_frame = sys.nframe()) {
   }
   from <- min(end_frame, length(calls))
 
-  calls <- utils::limitedLabels(calls[start_frame:from])
+  calls <- calls[start_frame:from]
+
+  if (rlang::is_false(peek_option("testthat_format_srcrefs"))) {
+    calls <- lapply(calls, zap_srcref)
+  }
+  calls <- utils::limitedLabels(calls)
+
   repeat {
     which <- show_menu(calls, "\nEnter a frame number, or 0 to exit  ")
     if (which) {
@@ -35,6 +41,11 @@ recover2 <- function(start_frame = 1L, end_frame = sys.nframe()) {
       break
     }
   }
+}
+
+zap_srcref <- function(x) {
+  attr(x, "srcref") <- NULL
+  x
 }
 
 show_menu <- function(choices, title = NULL) {

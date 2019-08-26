@@ -35,6 +35,7 @@ test_that("reporters produce consistent output", {
 })
 
 test_that('debug reporter produces consistent output', {
+  withr::local_options(c(testthat_format_srcrefs = FALSE))
   with_mock(
     show_menu = function(choices, title = NULL) {
       cat(paste0(format(seq_along(choices)), ": ", choices, sep = "\n"), "\n", sep = "")
@@ -67,4 +68,8 @@ test_that("reporters write to 'testthat.output_file', if specified", {
 
 test_that("backtraces are reported", {
   expect_report_unchanged("progress-backtraces", file = "reporters/backtraces.R", ProgressReporter$new(show_praise = FALSE, min_time = Inf, update_interval = 0))
+})
+
+test_that("stop reporter stops at first failure", {
+  expect_report_unchanged("stop", find_reporter("stop"), file = "reporters/fail.R")
 })
