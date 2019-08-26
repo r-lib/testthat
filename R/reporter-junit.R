@@ -44,7 +44,7 @@ JunitReporter <- R6::R6Class("JunitReporter",
     file_name = NULL,
 
     elapsed_time = function() {
-      time <- round((private$proctime() - self$timer)[["elapsed"]], 2)
+      time <- (private$proctime() - self$timer)[["elapsed"]]
       self$timer <- private$proctime()
       time
     },
@@ -153,7 +153,7 @@ JunitReporter <- R6::R6Class("JunitReporter",
       proc.time()
     },
     timestamp = function() {
-      toString(Sys.time())
+      strftime(Sys.time(), "%Y-%m-%dT%H:%M:%SZ", tz = "UTC")
     },
     hostname = function() {
       Sys.info()[["nodename"]]

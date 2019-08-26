@@ -1,6 +1,10 @@
 
 # testthat (development version)
 
+
+* JunitReporter now reports tests in ISO 8601 in the UTC timezone and also uses
+  the maximum 3 decimal place precision (#923).
+
 * New `exp_signal()` function. This is a condition signaller that
   implements the testthat protocol (signal with `stop()` if the
   expectation is broken, with a `continue_test` restart).
