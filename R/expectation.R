@@ -220,3 +220,12 @@ single_letter_summary <- function(x) {
     "?"
   )
 }
+
+exp_location <- function(exp) {
+  if (is.null(exp$srcref)) {
+    "???"
+  } else {
+    filename <- attr(exp$srcref, "srcfile")$filename
+    paste0(basename(filename), ":", exp$srcref[1])
+  }
+}

@@ -55,7 +55,10 @@ with_reporter <- function(reporter, code, start_end_reporter = TRUE) {
     reporter$start_reporter()
   }
 
-  force(code)
+  withRestarts(
+    testthat_abort_reporter = function() NULL,
+    force(code)
+  )
 
   if (start_end_reporter) {
     reporter$end_reporter()
