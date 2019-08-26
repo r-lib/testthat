@@ -1,0 +1,3 @@
+Test failed: 'two failures'
+* fail.R:4: FALSE isn't true.
+* fail.R:5: TRUE isn't false. 
