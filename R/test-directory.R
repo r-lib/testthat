@@ -41,6 +41,19 @@
 #' test_check("yourpackage")
 #' ```
 #'
+#' @section A note on function defaults:
+#' The behavior of `test_dir()`, `test_package()`, and `test_check()` when failing
+#' tests are found is controlled by keyword argument `stop_on_failure`. Note that the default
+#' value of that argument is `TRUE` for `test_package()` and `test_check()` but `FALSE` for
+#' `test_dir()`.
+#'
+#' This means that if you want to use `test_dir()` in settings where it is desirable to have test
+#' failures throw an error, you need to explicitly supply `stop_on_failure = TRUE`.
+#'
+#' The default values are inconsistent between these functions because `devtools::test()` uses
+#' `test_dir()` and its expected default behavior is that failing tests do not cause an error
+#' to be thrown.
+#'
 #' @param path Path to directory containing tests.
 #' @param package Name of installed package.
 #' @param filter If not `NULL`, only tests with file names matching this
