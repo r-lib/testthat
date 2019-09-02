@@ -48,6 +48,11 @@
 #'   name after it has been stripped of `"test-"` and `".R"`.
 #' @param ... Additional arguments passed to [grepl()] to control filtering.
 #' @param stop_on_failure If `TRUE`, throw an error if any tests fail.
+#'
+#'   For historical reasons, the default value of `stop_on_failure` is `TRUE`
+#'   for  `test_package()` and `test_check()` but `FALSE` for `test_dir()`, so
+#'   if you're calling `test_dir()` you may want to consider explicitly setting
+#'   `stop_on_failure = TRUE`.
 #' @param stop_on_warning If `TRUE`, throw an error if any tests generate
 #'   warnings.
 #' @inheritParams test_file
