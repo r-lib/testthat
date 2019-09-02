@@ -15,11 +15,13 @@
 <link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png" />
 <link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png" />
 <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png" />
+
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous" />
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
 
 <!-- Font Awesome icons -->
@@ -37,14 +39,14 @@
 
 
 
-<meta property="og:title" content="Skip a test. — skip" />
 
+<meta property="og:title" content="Skip a test. — skip" />
 <meta property="og:description" content="This function allows you to skip a test if it's not currently available.
 This will produce an informative message, but will not cause the test
 suite to fail." />
-
 <meta property="og:image" content="/logo.png" />
 <meta name="twitter:card" content="summary" />
+
 
 
 
@@ -135,7 +137,6 @@ suite to fail." />
   </ul>
 </li>
       </ul>
-      
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/r-lib/testthat">
@@ -161,11 +162,9 @@ suite to fail." />
     </div>
 
     <div class="ref-description">
-    
     <p>This function allows you to skip a test if it's not currently available.
 This will produce an informative message, but will not cause the test
 suite to fail.</p>
-    
     </div>
 
     <pre class="usage"><span class='fu'>skip</span>(<span class='no'>message</span>)
@@ -193,7 +192,7 @@ suite to fail.</p>
 <span class='fu'>skip_on_bioc</span>()
 
 <span class='fu'>skip_if_translated</span>(<span class='kw'>msgid</span> <span class='kw'>=</span> <span class='st'>"'%s' not found"</span>)</pre>
-    
+
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
@@ -230,7 +229,7 @@ uses a message included in most translation packs. See the complete list in
 <a href='https://github.com/wch/r-source/blob/master/src/library/base/po/R-base.pot'>R-base.pot</a>.</p></td>
     </tr>
     </table>
-    
+
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p><code>skip*</code> functions are intended for use within <code><a href='test_that.html'>test_that()</a></code>
@@ -238,7 +237,6 @@ blocks.  All expectations following the <code>skip*</code> statement within the
 same <code>test_that</code> block will be skipped.  Test summaries that report skip
 counts are reporting how many <code>test_that</code> blocks triggered a <code>skip*</code>
 statement, not how many expectations were skipped.</p>
-    
     <h2 class="hasAnchor" id="helpers"><a class="anchor" href="#helpers"></a>Helpers</h2>
 
     
@@ -261,7 +259,6 @@ the <code>CI</code> environment variable.</p>
 <p><code>skip_if_not_installed()</code> skips a tests if a package is not installed
 or cannot be loaded (useful for suggested packages).  It loads the package as
 a side effect, because the package is likely to be used anyway.</p>
-    
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) <span class='fu'>skip</span>(<span class='st'>"No internet connection"</span>)
@@ -280,11 +277,8 @@ a side effect, because the package is likely to be used anyway.</p>
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      
       <li><a href="#details">Details</a></li>
-
       <li><a href="#helpers">Helpers</a></li>
-      
       <li><a href="#examples">Examples</a></li>
     </ul>
 

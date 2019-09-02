@@ -15,11 +15,13 @@
 <link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png" />
 <link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png" />
 <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png" />
+
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous" />
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
 
 <!-- Font Awesome icons -->
@@ -37,16 +39,16 @@
 
 
 
-<meta property="og:title" content="Expectations: is the output or the value equal to a known good value? — expect_known_output" />
 
+<meta property="og:title" content="Expectations: is the output or the value equal to a known good value? — expect_known_output" />
 <meta property="og:description" content="For complex printed output and objects, it is often challenging to describe
 exactly what you expect to see. expect_known_value() and
 expect_known_output() provide a slightly weaker guarantee, simply
 asserting that the values have not changed since the last time that you ran
 them." />
-
 <meta property="og:image" content="/logo.png" />
 <meta name="twitter:card" content="summary" />
+
 
 
 
@@ -137,7 +139,6 @@ them." />
   </ul>
 </li>
       </ul>
-      
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/r-lib/testthat">
@@ -163,13 +164,11 @@ them." />
     </div>
 
     <div class="ref-description">
-    
     <p>For complex printed output and objects, it is often challenging to describe
 exactly what you expect to see. <code>expect_known_value()</code> and
 <code>expect_known_output()</code> provide a slightly weaker guarantee, simply
 asserting that the values have not changed since the last time that you ran
 them.</p>
-    
     </div>
 
     <pre class="usage"><span class='fu'>expect_known_output</span>(<span class='no'>object</span>, <span class='no'>file</span>, <span class='kw'>update</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='no'>...</span>, <span class='kw'>info</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
@@ -179,7 +178,7 @@ them.</p>
   <span class='kw'>label</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>version</span> <span class='kw'>=</span> <span class='fl'>2</span>)
 
 <span class='fu'>expect_known_hash</span>(<span class='no'>object</span>, <span class='kw'>hash</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
-    
+
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
@@ -241,7 +240,7 @@ R 3.6.0 and can only be read by R versions 3.5.0 and higher.</p></td>
 to use in the test output.</p></td>
     </tr>
     </table>
-    
+
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>These expectations should be used in conjunction with git, as otherwise
@@ -252,7 +251,6 @@ exactly what has changed.</p>
 interactively. <code>R CMD check</code> clones the package source so any changes to
 the reference files will occur in a temporary directory, and will not be
 synchronised back to the source package.</p>
-    
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='no'>tmp</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/tempfile'>tempfile</a></span>()
@@ -270,9 +268,7 @@ synchronised back to the source package.</p>
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      
       <li><a href="#details">Details</a></li>
-      
       <li><a href="#examples">Examples</a></li>
     </ul>
 

@@ -15,11 +15,13 @@
 <link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png" />
 <link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png" />
 <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png" />
+
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous" />
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
 
 <!-- Font Awesome icons -->
@@ -37,14 +39,14 @@
 
 
 
-<meta property="og:title" content="Use Catch for C++ Unit Testing — use_catch" />
 
+<meta property="og:title" content="Use Catch for C++ Unit Testing — use_catch" />
 <meta property="og:description" content="Add the necessary infrastructure to enable C++ unit testing
 in R packages with
 Catch and testthat." />
-
 <meta property="og:image" content="/logo.png" />
 <meta name="twitter:card" content="summary" />
+
 
 
 
@@ -135,7 +137,6 @@ Catch and testthat." />
   </ul>
 </li>
       </ul>
-      
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/r-lib/testthat">
@@ -161,15 +162,13 @@ Catch and testthat." />
     </div>
 
     <div class="ref-description">
-    
     <p>Add the necessary infrastructure to enable C++ unit testing
 in <span style="R">R</span> packages with
 <a href='https://github.com/philsquared/Catch'>Catch</a> and <code>testthat</code>.</p>
-    
     </div>
 
     <pre class="usage"><span class='fu'>use_catch</span>(<span class='kw'>dir</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/getwd'>getwd</a></span>())</pre>
-    
+
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
@@ -178,7 +177,7 @@ in <span style="R">R</span> packages with
       <td><p>The directory containing an <span style="R">R</span> package.</p></td>
     </tr>
     </table>
-    
+
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>Calling <code>use_catch()</code> will:</p><ol>
@@ -210,7 +209,6 @@ context("C++ Unit Test") {
 for running these tests will be compiled into your <span style="R">R</span> package,
 with the C entry point <code>run_testthat_tests()</code>. <code>testthat</code>
 will use that entry point to run your unit tests when detected.</p>
-    
     <h2 class="hasAnchor" id="functions"><a class="anchor" href="#functions"></a>Functions</h2>
 
     
@@ -247,7 +245,6 @@ ensure that any unit tests within will not be compiled or
 run when using the Solaris Studio compilers (as these are
 currently unsupported by Catch). This should make it
 easier to submit packages to CRAN that use Catch.</p>
-    
     <h2 class="hasAnchor" id="symbol-registration"><a class="anchor" href="#symbol-registration"></a>Symbol Registration</h2>
 
     
@@ -263,7 +260,6 @@ tests. <code>testthat</code> will look for a routine with one of the names:</p>
     <p>See <a href='https://cran.r-project.org/doc/manuals/r-release/R-exts.html#Controlling-visibility'>Controlling Visibility</a>
 and <a href='https://cran.r-project.org/doc/manuals/r-release/R-exts.html#Registering-symbols'>Registering Symbols</a>
 in the <strong>Writing R Extensions</strong> manual for more information.</p>
-    
     <h2 class="hasAnchor" id="advanced-usage"><a class="anchor" href="#advanced-usage"></a>Advanced Usage</h2>
 
     
@@ -281,7 +277,6 @@ with the form:</p>
 </pre>
     <p>This can be useful if you'd like to run your unit tests
 with custom arguments passed to the Catch session.</p>
-    
     <h2 class="hasAnchor" id="standalone-usage"><a class="anchor" href="#standalone-usage"></a>Standalone Usage</h2>
 
     
@@ -293,31 +288,23 @@ by inserting a call to:</p>
 .Call("run_testthat_tests", PACKAGE = &lt;pkgName&gt;)
 </pre>
     <p>as necessary within your unit test suite.</p>
-    
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p><a href='https://github.com/philsquared/Catch'>Catch</a>, the
 library used to enable C++ unit testing.</p></div>
-    
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      
       <li><a href="#details">Details</a></li>
-
       <li><a href="#functions">Functions</a></li>
-
       <li><a href="#symbol-registration">Symbol Registration</a></li>
-
       <li><a href="#advanced-usage">Advanced Usage</a></li>
-
       <li><a href="#standalone-usage">Standalone Usage</a></li>
-
       <li><a href="#see-also">See also</a></li>
-          </ul>
+    </ul>
 
   </div>
 </div>

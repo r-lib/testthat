@@ -15,11 +15,13 @@
 <link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png" />
 <link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png" />
 <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png" />
+
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous" />
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
 
 <!-- Font Awesome icons -->
@@ -37,15 +39,15 @@
 
 
 
-<meta property="og:title" content="Expectation: does the object inherit from a given class? — expect_is" />
 
+<meta property="og:title" content="Expectation: does the object inherit from a given class? — expect_is" />
 <meta property="og:description" content="expect_is() is an older form that uses inherits() without checking
 whether x is S3, S4, or neither. Intead, I'd recommend using
 expect_type(), expect_s3_class() or expect_s4_class() to more clearly
 convey your  intent." />
-
 <meta property="og:image" content="/logo.png" />
 <meta name="twitter:card" content="summary" />
+
 
 
 
@@ -136,7 +138,6 @@ convey your  intent." />
   </ul>
 </li>
       </ul>
-      
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/r-lib/testthat">
@@ -162,16 +163,14 @@ convey your  intent." />
     </div>
 
     <div class="ref-description">
-    
     <p><code>expect_is()</code> is an older form that uses <code><a href='https://www.rdocumentation.org/packages/base/topics/class'>inherits()</a></code> without checking
 whether <code>x</code> is S3, S4, or neither. Intead, I'd recommend using
 <code><a href='inheritance-expectations.html'>expect_type()</a></code>, <code><a href='inheritance-expectations.html'>expect_s3_class()</a></code> or <code><a href='inheritance-expectations.html'>expect_s4_class()</a></code> to more clearly
 convey your  intent.</p>
-    
     </div>
 
     <pre class="usage"><span class='fu'>expect_is</span>(<span class='no'>object</span>, <span class='no'>class</span>, <span class='kw'>info</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>label</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
-    
+
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
@@ -186,14 +185,14 @@ within a function or for loop. See <a href='quasi_label.html'>quasi_label</a> fo
       <td><p>character vector of class names</p></td>
     </tr>
     </table>
-    
+
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-                </ul>
+    </ul>
 
   </div>
 </div>

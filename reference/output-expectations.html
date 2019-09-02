@@ -15,11 +15,13 @@
 <link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png" />
 <link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png" />
 <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png" />
+
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous" />
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
 
 <!-- Font Awesome icons -->
@@ -37,15 +39,15 @@
 
 
 
-<meta property="og:title" content="Expectation: does code produce output/message/warning/error? — output-expectations" />
 
+<meta property="og:title" content="Expectation: does code produce output/message/warning/error? — output-expectations" />
 <meta property="og:description" content="Use expect_output(), expect_message() and expect_warning() to
 match specified outputs. Use expect_error() or expect_condition() to
 match individual errors or conditions. Use expect_silent() to assert that
 there should be no output of any type." />
-
 <meta property="og:image" content="/logo.png" />
 <meta name="twitter:card" content="summary" />
+
 
 
 
@@ -136,7 +138,6 @@ there should be no output of any type." />
   </ul>
 </li>
       </ul>
-      
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/r-lib/testthat">
@@ -162,12 +163,10 @@ there should be no output of any type." />
     </div>
 
     <div class="ref-description">
-    
     <p>Use <code>expect_output()</code>, <code>expect_message()</code> and <code>expect_warning()</code> to
 match specified outputs. Use <code>expect_error()</code> or <code>expect_condition()</code> to
 match individual errors or conditions. Use <code>expect_silent()</code> to assert that
 there should be no output of any type.</p>
-    
     </div>
 
     <pre class="usage"><span class='fu'>expect_output</span>(<span class='no'>object</span>, <span class='kw'>regexp</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>, <span class='kw'>info</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>label</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
@@ -186,7 +185,7 @@ there should be no output of any type.</p>
   <span class='kw'>label</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
 
 <span class='fu'>expect_silent</span>(<span class='no'>object</span>)</pre>
-    
+
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
@@ -241,17 +240,15 @@ a class name. This is useful for "classed" conditions.</p></td>
 (TRUE), or does only one need to match (FALSE)</p></td>
     </tr>
     </table>
-    
+
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>The first argument, invisibly. If <code>expect_error()</code> captures an
 error, that is returned instead of the value.</p>
-    
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>Note that warnings are captured by a custom signal handler: this means
 that <code><a href='https://www.rdocumentation.org/packages/base/topics/options'>options(warn)</a></code> has no effect.</p>
-    
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other expectations: <code><a href='comparison-expectations.html'>comparison-expectations</a></code>,
@@ -260,7 +257,6 @@ that <code><a href='https://www.rdocumentation.org/packages/base/topics/options'
   <code><a href='expect_named.html'>expect_named</a></code>, <code><a href='expect_null.html'>expect_null</a></code>,
   <code><a href='inheritance-expectations.html'>inheritance-expectations</a></code>,
   <code><a href='logical-expectations.html'>logical-expectations</a></code></p></div>
-    
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># Output --------------------------------------------------------------------</span>
@@ -332,13 +328,9 @@ that <code><a href='https://www.rdocumentation.org/packages/base/topics/options'
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      
       <li><a href="#value">Value</a></li>
-
       <li><a href="#details">Details</a></li>
-
       <li><a href="#see-also">See also</a></li>
-      
       <li><a href="#examples">Examples</a></li>
     </ul>
 

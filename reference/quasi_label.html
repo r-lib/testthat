@@ -15,11 +15,13 @@
 <link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png" />
 <link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png" />
 <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png" />
+
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous" />
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
 
 <!-- Font Awesome icons -->
@@ -37,15 +39,15 @@
 
 
 
-<meta property="og:title" content="Quasi-labelling — quasi_label" />
 
+<meta property="og:title" content="Quasi-labelling — quasi_label" />
 <meta property="og:description" content="The first argument to every expect_ function can use unquoting to
 construct better labels. This makes it easy to create informative labels when
 expectations are used inside a function or a for loop. quasi_label() wraps
 up the details, returning the expression and label." />
-
 <meta property="og:image" content="/logo.png" />
 <meta name="twitter:card" content="summary" />
+
 
 
 
@@ -136,7 +138,6 @@ up the details, returning the expression and label." />
   </ul>
 </li>
       </ul>
-      
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/r-lib/testthat">
@@ -162,16 +163,14 @@ up the details, returning the expression and label." />
     </div>
 
     <div class="ref-description">
-    
     <p>The first argument to every <code>expect_</code> function can use unquoting to
 construct better labels. This makes it easy to create informative labels when
 expectations are used inside a function or a for loop. <code>quasi_label()</code> wraps
 up the details, returning the expression and label.</p>
-    
     </div>
 
     <pre class="usage"><span class='fu'>quasi_label</span>(<span class='no'>quo</span>, <span class='kw'>label</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>arg</span> <span class='kw'>=</span> <span class='st'>"quo"</span>)</pre>
-    
+
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
@@ -190,14 +189,13 @@ include a <code>label</code> parameter.</p></td>
       <td><p>Argument name shown in error message if <code>quo</code> is missing.</p></td>
     </tr>
     </table>
-    
+
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>A list containing two elements:</p>
 <dt>val</dt><dd><p>The evaluate value of <code>quo</code></p></dd>
 <dt>lab</dt><dd><p>The quasiquoted label generated from <code>quo</code></p></dd>
 
-    
     <h2 class="hasAnchor" id="limitations"><a class="anchor" href="#limitations"></a>Limitations</h2>
 
     
@@ -205,7 +203,6 @@ include a <code>label</code> parameter.</p></td>
 labels, you can not use unquoting for other purposes. Instead, you'll need
 to perform all other unquoting outside of the expectation and only test
 the results.</p>
-    
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='no'>f</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>(<span class='no'>i</span>) <span class='kw'>if</span> (<span class='no'>i</span> <span class='kw'>&gt;</span> <span class='fl'>3</span>) <span class='no'>i</span> * <span class='fl'>9</span> <span class='kw'>else</span> <span class='no'>i</span> * <span class='fl'>10</span>
@@ -230,11 +227,8 @@ the results.</p>
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      
       <li><a href="#value">Value</a></li>
-
       <li><a href="#limitations">Limitations</a></li>
-      
       <li><a href="#examples">Examples</a></li>
     </ul>
 

@@ -15,11 +15,13 @@
 <link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png" />
 <link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png" />
 <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png" />
+
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous" />
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
 
 <!-- Font Awesome icons -->
@@ -37,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Verify output — verify_output" />
 
+<meta property="og:title" content="Verify output — verify_output" />
 <meta property="og:description" content="This is a regression test records interwoven code and output into a file,
 similar to Rmd. It's designed particularly for testing print methods and
 error messages, where the primary goal is to ensure that the output is
@@ -46,9 +48,9 @@ helpful to a human. Obviously, there's no way to test that automatically,
 so the best we can do is make the results explicit by saving to a text file.
 This makes the presentation easier to see in code reviews, and avoids
 changing it accidentally." />
-
 <meta property="og:image" content="/logo.png" />
 <meta name="twitter:card" content="summary" />
+
 
 
 
@@ -139,7 +141,6 @@ changing it accidentally." />
   </ul>
 </li>
       </ul>
-      
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/r-lib/testthat">
@@ -165,7 +166,6 @@ changing it accidentally." />
     </div>
 
     <div class="ref-description">
-    
     <p>This is a regression test records interwoven code and output into a file,
 similar to Rmd. It's designed particularly for testing print methods and
 error messages, where the primary goal is to ensure that the output is
@@ -173,11 +173,10 @@ helpful to a human. Obviously, there's no way to test that automatically,
 so the best we can do is make the results explicit by saving to a text file.
 This makes the presentation easier to see in code reviews, and avoids
 changing it accidentally.</p>
-    
     </div>
 
     <pre class="usage"><span class='fu'>verify_output</span>(<span class='no'>path</span>, <span class='no'>code</span>, <span class='kw'>width</span> <span class='kw'>=</span> <span class='fl'>80</span>, <span class='kw'>crayon</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
-    
+
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
@@ -199,7 +198,7 @@ changing it accidentally.</p>
       <td><p>Enable crayon package colouring?</p></td>
     </tr>
     </table>
-    
+
     <h2 class="hasAnchor" id="cran"><a class="anchor" href="#cran"></a>CRAN</h2>
 
     
@@ -207,25 +206,21 @@ changing it accidentally.</p>
 beause tests of print methods and error messages are often fragile due to
 implicit dependencies on other packages, and failure does not imply
 incorrect computation, just a change in presentation.</p>
-    
     <h2 class="hasAnchor" id="differences-to-rmd"><a class="anchor" href="#differences-to-rmd"></a>Differences to Rmd</h2>
 
     
     <p><code>verify_output()</code> can only capture the abstract syntax tree, losing all
 whitespace and comments. To mildy offset this limitation, bare string
 are turned into comments.</p>
-    
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      
       <li><a href="#cran">CRAN</a></li>
-
       <li><a href="#differences-to-rmd">Differences to Rmd</a></li>
-          </ul>
+    </ul>
 
   </div>
 </div>
