@@ -44,7 +44,12 @@ See \link{Reporter} for more details and a list of built-in reporters.}
 \item{load_helpers}{Source helper files before running the tests?
 See \code{\link[=source_test_helpers]{source_test_helpers()}} for more details.}
 
-\item{stop_on_failure}{If \code{TRUE}, throw an error if any tests fail.}
+\item{stop_on_failure}{If \code{TRUE}, throw an error if any tests fail.
+
+For historical reasons, the default value of \code{stop_on_failure} is \code{TRUE}
+for  \code{test_package()} and \code{test_check()} but \code{FALSE} for \code{test_dir()}, so
+if you're calling \code{test_dir()} you may want to consider explicitly setting
+\code{stop_on_failure = TRUE}.}
 
 \item{stop_on_warning}{If \code{TRUE}, throw an error if any tests generate
 warnings.}

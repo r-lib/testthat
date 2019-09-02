@@ -41,19 +41,6 @@
 #' test_check("yourpackage")
 #' ```
 #'
-#' @section A note on function defaults:
-#' The behavior of `test_dir()`, `test_package()`, and `test_check()` when failing
-#' tests are found is controlled by keyword argument `stop_on_failure`. Note that the default
-#' value of that argument is `TRUE` for `test_package()` and `test_check()` but `FALSE` for
-#' `test_dir()`.
-#'
-#' This means that if you want to use `test_dir()` in settings where it is desirable to have test
-#' failures throw an error, you need to explicitly supply `stop_on_failure = TRUE`.
-#'
-#' The default values are inconsistent between these functions because `devtools::test()` uses
-#' `test_dir()` and its expected default behavior is that failing tests do not cause an error
-#' to be thrown.
-#'
 #' @param path Path to directory containing tests.
 #' @param package Name of installed package.
 #' @param filter If not `NULL`, only tests with file names matching this
@@ -61,6 +48,11 @@
 #'   name after it has been stripped of `"test-"` and `".R"`.
 #' @param ... Additional arguments passed to [grepl()] to control filtering.
 #' @param stop_on_failure If `TRUE`, throw an error if any tests fail.
+#'
+#'   For historical reasons, the default value of `stop_on_failure` is `TRUE`
+#'   for  `test_package()` and `test_check()` but `FALSE` for `test_dir()`, so
+#'   if you're calling `test_dir()` you may want to consider explicitly setting
+#'   `stop_on_failure = TRUE`.
 #' @param stop_on_warning If `TRUE`, throw an error if any tests generate
 #'   warnings.
 #' @inheritParams test_file
