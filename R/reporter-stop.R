@@ -41,7 +41,7 @@ StopReporter <- R6::R6Class("StopReporter",
       )
 
       cat(message, "\n")
-      invokeRestart("testthat_abort_reporter")
+      maybe_restart("testthat_abort_reporter")
     },
 
     add_result = function(context, test, result) {
