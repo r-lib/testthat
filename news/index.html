@@ -25,13 +25,15 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
 
-<!-- sticky kit -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
+<!-- headroom.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -66,6 +68,7 @@
 
   gtag('config', 'UA-115082821-1');
 </script>
+
 
   </head>
 
@@ -137,7 +140,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/r-lib/testthat">
-    <span class="fa fa-github fa-lg"></span>
+    <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -148,6 +151,7 @@
 </div><!--/.navbar -->
 
       
+
       </header>
 
 <div class="row">
@@ -157,6 +161,19 @@
       <small>Source: <a href='https://github.com/r-lib/testthat/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
+    <div id="testthat-development-version" class="section level1">
+<h1 class="page-header">
+<a href="#testthat-development-version" class="anchor"></a>testthat (development version)<small> Unreleased </small>
+</h1>
+<ul>
+<li><p>JunitReporter now reports tests in ISO 8601 in the UTC timezone and also uses the maximum 3 decimal place precision (<a href='https://github.com/r-lib/testthat/issues/923'>#923</a>).</p></li>
+<li><p>New <code><a href="../reference/expectation.html">exp_signal()</a></code> function. This is a condition signaller that implements the testthat protocol (signal with <code><a href="https://rdrr.io/r/base/stop.html">stop()</a></code> if the expectation is broken, with a <code>continue_test</code> restart).</p></li>
+<li><p>Expectations can now be explicitly subclassed with <code><a href="../reference/expectation.html">new_expectation()</a></code>. This constructor follows our new conventions for S3 classes and takes an optional subclass and optional attributes.</p></li>
+<li><p>Existence of restarts is first checked before invokation. This makes it possible to signal warnings or messages with a different condition signaller (<a href='https://github.com/r-lib/testthat/issues/874'>#874</a>).</p></li>
+<li><p>Unexpected errors are now printed with a simplified backtrace.</p></li>
+<li><p><code><a href="../reference/output-expectations.html">expect_error()</a></code> and <code><a href="../reference/output-expectations.html">expect_condition()</a></code> now display a backtrace when the error doesn’t conform to expectations (<a href='https://github.com/r-lib/testthat/issues/729'>#729</a>).</p></li>
+</ul>
+</div>
     <div id="testthat-2-2-1" class="section level1">
 <h1 class="page-header">
 <a href="#testthat-2-2-1" class="anchor"></a>testthat 2.2.1<small> 2019-07-25 </small>
@@ -213,7 +230,7 @@
 <ul>
 <li><p>New <code><a href="../reference/expect_invisible.html">expect_visible()</a></code> and <code><a href="../reference/expect_invisible.html">expect_invisible()</a></code> make it easier to check if a function call returns its result visibly or invisibly (<a href='https://github.com/r-lib/testthat/issues/719'>#719</a>).</p></li>
 <li><p>New <code><a href="../reference/expect_setequal.html">expect_mapequal(x, y)</a></code> checks that <code>x</code> and <code>y</code> have the same names, and the same value associated with each name (i.e. they compare the values of the vector standardising the order of the names) (<a href='https://github.com/r-lib/testthat/issues/863'>#863</a>).</p></li>
-<li><p>New <code><a href="../reference/expect_vector.html">expect_vector()</a></code> is a wrapper around <code><a href="https://www.rdocumentation.org/packages/vctrs/topics/vec_assert">vctrs::vec_assert()</a></code> making it easy to test against the vctrs definitions of prototype and size (<a href='https://github.com/r-lib/testthat/issues/846'>#846</a>). (Currently requires development version of vctrs.)</p></li>
+<li><p>New <code><a href="../reference/expect_vector.html">expect_vector()</a></code> is a wrapper around <code><a href="https://rdrr.io/pkg/vctrs/man/vec_assert.html">vctrs::vec_assert()</a></code> making it easy to test against the vctrs definitions of prototype and size (<a href='https://github.com/r-lib/testthat/issues/846'>#846</a>). (Currently requires development version of vctrs.)</p></li>
 </ul>
 </div>
 <div id="improvements-to-existing-expectations" class="section level2">
@@ -224,10 +241,10 @@
 <li><p><code><a href="../reference/equality-expectations.html">expect_equal()</a></code> now correctly compares infinite values (<a href='https://github.com/r-lib/testthat/issues/789'>#789</a>).</p></li>
 <li><p>In <code><a href="../reference/expect_known_output.html">expect_equal_to_reference()</a></code>, the default value for <code>update</code> is now <code>FALSE</code> (<a href='https://github.com/BrodieG'>@BrodieG</a>, <a href='https://github.com/r-lib/testthat/issues/683'>#683</a>).</p></li>
 <li><p><code><a href="../reference/output-expectations.html">expect_error()</a></code> now returns the error object as documentated (<a href='https://github.com/r-lib/testthat/issues/724'>#724</a>). It also now warns if you’re using a classed expectation and you’re not using the <code>class</code> argument. This is good practice as it decouples the error object (which tends to be stable) from its rendering to the user (which tends to be fragile) (<a href='https://github.com/r-lib/testthat/issues/816'>#816</a>).</p></li>
-<li><p><code><a href="../reference/equality-expectations.html">expect_identical()</a></code> gains a <code>...</code> argument to pass additional arguments down to <code><a href="https://www.rdocumentation.org/packages/base/topics/identical">identical()</a></code> (<a href='https://github.com/r-lib/testthat/issues/714'>#714</a>).</p></li>
+<li><p><code><a href="../reference/equality-expectations.html">expect_identical()</a></code> gains a <code>...</code> argument to pass additional arguments down to <code><a href="https://rdrr.io/r/base/identical.html">identical()</a></code> (<a href='https://github.com/r-lib/testthat/issues/714'>#714</a>).</p></li>
 <li><p><code><a href="../reference/comparison-expectations.html">expect_lt()</a></code>, <code><a href="../reference/comparison-expectations.html">expect_lte()</a></code>, <code><a href="../reference/comparison-expectations.html">expect_gt()</a></code> <code><a href="../reference/comparison-expectations.html">expect_gte()</a></code> now handle <code>Inf</code> and <code>NA</code> arguments appropriately (<a href='https://github.com/r-lib/testthat/issues/732'>#732</a>), and no longer require the inputs to be numeric.</p></li>
-<li><p><code><a href="../reference/output-expectations.html">expect_output()</a></code> gains a <code>width</code> argument, allowing you to control the output width. This does not inherit from <code><a href="https://www.rdocumentation.org/packages/base/topics/options">getOption("width")</a></code>, ensuring that tests return the same results regardless of environment (<a href='https://github.com/r-lib/testthat/issues/805'>#805</a>).</p></li>
-<li><p><code><a href="../reference/expect_setequal.html">expect_setequal()</a></code> now works with more vector types (including lists), because it uses <code>%in%</code>, rather than <code><a href="https://www.rdocumentation.org/packages/base/topics/sort">sort()</a></code>. It also warns if the inputs are named, as this suggests that your mental model of how <code><a href="../reference/expect_setequal.html">expect_setequal()</a></code> works is wrong (<a href='https://github.com/r-lib/testthat/issues/750'>#750</a>).</p></li>
+<li><p><code><a href="../reference/output-expectations.html">expect_output()</a></code> gains a <code>width</code> argument, allowing you to control the output width. This does not inherit from <code><a href="https://rdrr.io/r/base/options.html">getOption("width")</a></code>, ensuring that tests return the same results regardless of environment (<a href='https://github.com/r-lib/testthat/issues/805'>#805</a>).</p></li>
+<li><p><code><a href="../reference/expect_setequal.html">expect_setequal()</a></code> now works with more vector types (including lists), because it uses <code><a href="https://rdrr.io/r/base/match.html">%in%</a></code>, rather than <code><a href="https://rdrr.io/r/base/sort.html">sort()</a></code>. It also warns if the inputs are named, as this suggests that your mental model of how <code><a href="../reference/expect_setequal.html">expect_setequal()</a></code> works is wrong (<a href='https://github.com/r-lib/testthat/issues/750'>#750</a>).</p></li>
 <li><p><code><a href="../reference/oldskool.html">is_true()</a></code> and <code><a href="../reference/oldskool.html">is_false()</a></code> have been deprecated because they conflict with other functions in the tidyverse.</p></li>
 </ul>
 </div>
@@ -276,11 +293,11 @@
 <li><p><code><a href="../reference/auto_test_package.html">auto_test_package()</a></code> works better with recent devtools and also watches <code>src/</code> for changes (<a href='https://github.com/r-lib/testthat/issues/809'>#809</a>).</p></li>
 <li><p><code><a href="../reference/inheritance-expectations.html">expect_s3_class()</a></code> now works with unquoting (<a href='https://github.com/jalsalam'>@jalsalam</a>, <a href='https://github.com/r-lib/testthat/issues/771'>#771</a>).</p></li>
 <li><p><code>expectation</code> objects now contain the failure message, even when successful (<a href='https://github.com/r-lib/testthat/issues/836'>#836</a>)</p></li>
-<li><p><code><a href="https://www.rdocumentation.org/packages/devtools/topics/test">devtools::test()</a></code> no longer fails if run multiple times within the same R session for a package containing Catch tests. (<a href="https://github.com/r-lib/devtools/issues/1832">devtools <a href='https://github.com/r-lib/testthat/issues/1832'>#1832</a></a>)</p></li>
+<li><p><code><a href="https://rdrr.io/pkg/devtools/man/test.html">devtools::test()</a></code> no longer fails if run multiple times within the same R session for a package containing Catch tests. (<a href="https://github.com/r-lib/devtools/issues/1832">devtools <a href='https://github.com/r-lib/testthat/issues/1832'>#1832</a></a>)</p></li>
 <li><p>New <code><a href="../reference/test_dir.html">testing_package()</a></code> retrieves the name of the package currently being tested (<a href='https://github.com/r-lib/testthat/issues/699'>#699</a>).</p></li>
 <li><p><code>run_testthat_tests</code> C entrypoint is registered more robustly.</p></li>
 <li><p><code><a href="../reference/skip.html">skip()</a></code> now always produces a <code>message</code> of length 1, as expected elsewhere in testthat (<a href='https://github.com/r-lib/testthat/issues/791'>#791</a>).</p></li>
-<li><p>Warnings are passed through even when <code><a href="https://www.rdocumentation.org/packages/base/topics/options">options(warn = 2)</a></code> is set (<a href='https://github.com/yutannihilation'>@yutannihilation</a>, <a href='https://github.com/r-lib/testthat/issues/721'>#721</a>).</p></li>
+<li><p>Warnings are passed through even when <code><a href="https://rdrr.io/r/base/options.html">options(warn = 2)</a></code> is set (<a href='https://github.com/yutannihilation'>@yutannihilation</a>, <a href='https://github.com/r-lib/testthat/issues/721'>#721</a>).</p></li>
 </ul>
 </div>
 </div>
@@ -315,7 +332,7 @@
 <p>If you see one of these errors, check the number, order, and names of arguments to the expectation.</p>
 </li>
 <li><p>“Failure: (unknown)”. The last release mistakenly failed to test bare expectations not wrapped inside <code><a href="../reference/test_that.html">test_that()</a></code>. If you see “(unknown)” in a failure message, this is a failing expectation that you previously weren’t seeing. As well as fixing the failure, please also wrap inside a <code><a href="../reference/test_that.html">test_that()</a></code> with an informative name.</p></li>
-<li><p>“Error: the argument has already been evaluated”: the way in which expectations now need create labels has changed, which caused a couple of failures with unusual usage when combined with <code>Reduce</code>, <code><a href="https://www.rdocumentation.org/packages/base/topics/lapply">lapply()</a></code>, and <code><a href="https://www.rdocumentation.org/packages/base/topics/funprog">Map()</a></code>. Avoid these functions in favour of for loops. I also recommend reading the section below on quasiquotation support in order to create more informative failure messages.</p></li>
+<li><p>“Error: the argument has already been evaluated”: the way in which expectations now need create labels has changed, which caused a couple of failures with unusual usage when combined with <code>Reduce</code>, <code><a href="https://rdrr.io/r/base/lapply.html">lapply()</a></code>, and <code><a href="https://rdrr.io/r/base/funprog.html">Map()</a></code>. Avoid these functions in favour of for loops. I also recommend reading the section below on quasiquotation support in order to create more informative failure messages.</p></li>
 </ul>
 </div>
 <div id="expectations" class="section level2">
@@ -376,7 +393,7 @@
 <a href="#setup-and-teardown" class="anchor"></a>Setup and teardown</h3>
 <ul>
 <li><p>New <code><a href="../reference/teardown.html">setup()</a></code> and <code><a href="../reference/teardown.html">teardown()</a></code> functions allow you to run at the start and end of each test file. This is useful if you want to pair cleanup code with the code that messes up state (<a href='https://github.com/r-lib/testthat/issues/536'>#536</a>).</p></li>
-<li><p>Two new prefixes are recognised in the <code>test/</code> directory. Files starting with <code>setup</code> are run before tests (but unlike <code>helpers</code> are not run in <code><a href="https://www.rdocumentation.org/packages/devtools/topics/load_all">devtools::load_all()</a></code>). Files starting with <code>teardown</code> are run after all tests are completed (<a href='https://github.com/r-lib/testthat/issues/589'>#589</a>).</p></li>
+<li><p>Two new prefixes are recognised in the <code>test/</code> directory. Files starting with <code>setup</code> are run before tests (but unlike <code>helpers</code> are not run in <code><a href="https://rdrr.io/pkg/devtools/man/load_all.html">devtools::load_all()</a></code>). Files starting with <code>teardown</code> are run after all tests are completed (<a href='https://github.com/r-lib/testthat/issues/589'>#589</a>).</p></li>
 </ul>
 </div>
 <div id="other-new-features-1" class="section level3">
@@ -387,16 +404,16 @@
 <li>
 <p><code><a href="../reference/test_dir.html">is_testing()</a></code> allows you to tell if your code is being run inside a testing environment (<a href='https://github.com/r-lib/testthat/issues/631'>#631</a>). Rather than taking a run-time dependency on testthat you may want to inline the function into your own package:</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">is_testing &lt;-<span class="st"> </span><span class="cf">function</span>() {</a>
-<a class="sourceLine" id="cb3-2" data-line-number="2">  <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/identical">identical</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/Sys.getenv">Sys.getenv</a></span>(<span class="st">"TESTTHAT"</span>), <span class="st">"true"</span>)</a>
+<a class="sourceLine" id="cb3-2" data-line-number="2">  <span class="kw"><a href="https://rdrr.io/r/base/identical.html">identical</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/Sys.getenv.html">Sys.getenv</a></span>(<span class="st">"TESTTHAT"</span>), <span class="st">"true"</span>)</a>
 <a class="sourceLine" id="cb3-3" data-line-number="3">}</a></code></pre></div>
-<p>It’s frequently useful to combine with <code><a href="https://www.rdocumentation.org/packages/base/topics/interactive">interactive()</a></code>.</p>
+<p>It’s frequently useful to combine with <code><a href="https://rdrr.io/r/base/interactive.html">interactive()</a></code>.</p>
 </li>
 </ul>
 </div>
 <div id="new-default-reporter" class="section level3">
 <h3 class="hasAnchor">
 <a href="#new-default-reporter" class="anchor"></a>New default reporter</h3>
-<p>A new default reporter, <code>ReporterProgress</code>, produces more aesthetically pleasing output and makes the most important information available upfront (<a href='https://github.com/r-lib/testthat/issues/529'>#529</a>). You can return to the previous default by setting <code><a href="https://www.rdocumentation.org/packages/base/topics/options">options(testthat.default_reporter = "summary")</a></code>.</p>
+<p>A new default reporter, <code>ReporterProgress</code>, produces more aesthetically pleasing output and makes the most important information available upfront (<a href='https://github.com/r-lib/testthat/issues/529'>#529</a>). You can return to the previous default by setting <code><a href="https://rdrr.io/r/base/options.html">options(testthat.default_reporter = "summary")</a></code>.</p>
 </div>
 <div id="reporters-1" class="section level3">
 <h3 class="hasAnchor">
@@ -404,7 +421,7 @@
 <ul>
 <li><p>Output colours have been tweaked to be consistent with clang: warnings are now in magenta, and skips in blue.</p></li>
 <li><p>New <code><a href="../reference/default_reporter.html">default_reporter()</a></code> and <code><a href="../reference/default_reporter.html">check_reporter()</a></code> which returns the default reporters for interactive and check environments (<a href='https://github.com/r-lib/testthat/issues/504'>#504</a>).</p></li>
-<li><p>New <code>DebugReporter</code> that calls a better version of <code><a href="https://www.rdocumentation.org/packages/utils/topics/recover">recover()</a></code> in case of failures, errors, or warnings (<a href='https://github.com/r-lib/testthat/issues/360'>#360</a>, <a href='https://github.com/r-lib/testthat/issues/470'>#470</a>).</p></li>
+<li><p>New <code>DebugReporter</code> that calls a better version of <code><a href="https://rdrr.io/r/utils/recover.html">recover()</a></code> in case of failures, errors, or warnings (<a href='https://github.com/r-lib/testthat/issues/360'>#360</a>, <a href='https://github.com/r-lib/testthat/issues/470'>#470</a>).</p></li>
 <li><p>New <code>JunitReporter</code> generates reports in JUnit compatible format.<br>
 (<a href='https://github.com/r-lib/testthat/issues/481'>#481</a>, <a href='https://github.com/lbartnik'>@lbartnik</a>; <a href='https://github.com/r-lib/testthat/issues/640'>#640</a>, <a href='https://github.com/nealrichardson'>@nealrichardson</a>; <a href='https://github.com/r-lib/testthat/issues/575'>#575</a>)</p></li>
 <li><p>New <code>LocationReporter</code> which just prints the location of every expectation. This is useful for locating segfaults and C/C++ breakpoints (<a href='https://github.com/r-lib/testthat/issues/551'>#551</a>).</p></li>
@@ -452,8 +469,8 @@
 <li><p><code><a href="../reference/test_dir.html">test_dir()</a></code>, <code><a href="../reference/test_dir.html">test_package()</a></code>, <code><a href="../reference/test_dir.html">test_check()</a></code> unset the <code>R_TESTS</code> env var (<a href='https://github.com/r-lib/testthat/issues/603'>#603</a>)</p></li>
 <li><p><code><a href="../reference/test_examples.html">test_examples()</a></code> now works with installed packages as well as source packages (<a href='https://github.com/jimhester'>@jimhester</a>, <a href='https://github.com/r-lib/testthat/issues/532'>#532</a>).</p></li>
 <li><p><code><a href="../reference/test_dir.html">test_dir()</a></code>, <code><a href="../reference/test_dir.html">test_package()</a></code>, and <code><a href="../reference/test_dir.html">test_check()</a></code> gain <code>stop_on_failure</code> and <code>stop_on_waring</code> arguments that control whether or not an error is signalled if any tests fail or generate warnings (<a href='https://github.com/r-lib/testthat/issues/609'>#609</a>, <a href='https://github.com/r-lib/testthat/issues/619'>#619</a>).</p></li>
-<li><p><code><a href="../reference/test_file.html">test_file()</a></code> now triggers a <code><a href="https://www.rdocumentation.org/packages/base/topics/gc">gc()</a></code> after tests are run. This helps to ensure that finalisers are run earlier (<a href='https://github.com/r-lib/testthat/issues/535'>#535</a>).</p></li>
-<li><p><code><a href="../reference/test_path.html">test_path()</a></code> now generates correct path when called from within <code><a href="https://www.rdocumentation.org/packages/tools/topics/testInstalledPackage">tools::testInstalledPackage()</a></code> (<a href='https://github.com/r-lib/testthat/issues/542'>#542</a>).</p></li>
+<li><p><code><a href="../reference/test_file.html">test_file()</a></code> now triggers a <code><a href="https://rdrr.io/r/base/gc.html">gc()</a></code> after tests are run. This helps to ensure that finalisers are run earlier (<a href='https://github.com/r-lib/testthat/issues/535'>#535</a>).</p></li>
+<li><p><code><a href="../reference/test_path.html">test_path()</a></code> now generates correct path when called from within <code><a href="https://rdrr.io/r/tools/testInstalledPackage.html">tools::testInstalledPackage()</a></code> (<a href='https://github.com/r-lib/testthat/issues/542'>#542</a>).</p></li>
 <li><p><code><a href="../reference/test_path.html">test_path()</a></code> no longer assumes that the path exists (<a href='https://github.com/r-lib/testthat/issues/448'>#448</a>).</p></li>
 <li><p><code><a href="../reference/test_that.html">test_that()</a></code> calls without any expectations generate a default <code><a href="../reference/skip.html">skip()</a></code> (<a href='https://github.com/r-lib/testthat/issues/413'>#413</a>).</p></li>
 <li><p><code><a href="../reference/test_dir.html">test_dir()</a></code> gains <code>load_helpers</code> argument (<a href='https://github.com/r-lib/testthat/issues/505'>#505</a>).</p></li>
@@ -478,7 +495,7 @@
 <li><p>New <code><a href="../reference/expect_known_output.html">expect_output_file()</a></code> to compare output of a function with a text file, and optionally update it (<a href='https://github.com/r-lib/testthat/issues/443'>#443</a>, <a href='https://github.com/krlmlr'>@krlmlr</a>).</p></li>
 <li><p>Properly scoped use + compilation of C++ unit testing code using Catch to <code>gcc</code> and <code>clang</code> only, as Catch includes code that does not strictly conform to the C++98 standard. (<a href='https://github.com/kevinushey'>@kevinushey</a>)</p></li>
 <li><p>Fixed an out-of-bounds memory access when routing Catch output through <code>Rprintf()</code>. (<a href='https://github.com/kevinushey'>@kevinushey</a>)</p></li>
-<li>Ensure that unit tests run on R-oldrel (remove use of <code><a href="https://www.rdocumentation.org/packages/base/topics/files2">dir.exists()</a></code>).
+<li>Ensure that unit tests run on R-oldrel (remove use of <code><a href="https://rdrr.io/r/base/files2.html">dir.exists()</a></code>).
 <p>(<a href='https://github.com/kevinushey'>@kevinushey</a>)</p>
 </li>
 <li><p>Improved overriding of calls to <code>exit()</code> within Catch, to ensure compatibility with GCC 6.0. (<a href='https://github.com/krlmlr'>@krlmlr</a>)</p></li>
@@ -501,7 +518,7 @@
 <a href="#new-expectations-1" class="anchor"></a>New expectations</h2>
 <p>The expectation system got a thorough overhaul (<a href='https://github.com/r-lib/testthat/issues/217'>#217</a>). This primarily makes it easier to add new expectations in the future, but also included a thorough review of the documentation, ensuring that related expectations are documented together, and have evocative names.</p>
 <p>One useful change is that most expectations invisibly return the input <code>object</code>. This makes it possible to chain together expectations with magrittr:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/factor">factor</a></span>(<span class="st">"a"</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/factor.html">factor</a></span>(<span class="st">"a"</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb4-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="../reference/inheritance-expectations.html">expect_type</a></span>(<span class="st">"integer"</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb4-3" data-line-number="3"><span class="st">  </span><span class="kw"><a href="../reference/inheritance-expectations.html">expect_s3_class</a></span>(<span class="st">"factor"</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb4-4" data-line-number="4"><span class="st">  </span><span class="kw"><a href="../reference/expect_length.html">expect_length</a></span>(<span class="dv">1</span>)</a></code></pre></div>
@@ -524,7 +541,7 @@
 <div id="expectations-are-conditions" class="section level2">
 <h2 class="hasAnchor">
 <a href="#expectations-are-conditions" class="anchor"></a>Expectations are conditions</h2>
-<p>Now all expectations are also conditions, and R’s condition system is used to signal failures and successes (<a href='https://github.com/r-lib/testthat/issues/360'>#360</a>, <a href='https://github.com/krlmlr'>@krlmlr</a>). All known conditions (currently, “error”, “warning”, “message”, “failure”, and “success”) are converted to expectations using the new <code>as.expectation()</code>. This allows third-party test packages (such as <code>assertthat</code>, <code>testit</code>, <code>ensurer</code>, <code>checkmate</code>, <code>assertive</code>) to seamlessly establish <code>testthat</code> compatibility by issuing custom error conditions (e.g., <code><a href="https://www.rdocumentation.org/packages/base/topics/structure">structure(list(message = "Error message"), class = c("customError", "error", "condition"))</a></code>) and then implementing <code>as.expectation.customError()</code>. The <code>assertthat</code> package contains an example.</p>
+<p>Now all expectations are also conditions, and R’s condition system is used to signal failures and successes (<a href='https://github.com/r-lib/testthat/issues/360'>#360</a>, <a href='https://github.com/krlmlr'>@krlmlr</a>). All known conditions (currently, “error”, “warning”, “message”, “failure”, and “success”) are converted to expectations using the new <code>as.expectation()</code>. This allows third-party test packages (such as <code>assertthat</code>, <code>testit</code>, <code>ensurer</code>, <code>checkmate</code>, <code>assertive</code>) to seamlessly establish <code>testthat</code> compatibility by issuing custom error conditions (e.g., <code><a href="https://rdrr.io/r/base/structure.html">structure(list(message = "Error message"), class = c("customError", "error", "condition"))</a></code>) and then implementing <code>as.expectation.customError()</code>. The <code>assertthat</code> package contains an example.</p>
 </div>
 <div id="reporters-2" class="section level2">
 <h2 class="hasAnchor">
@@ -544,7 +561,7 @@
 </ul>
 </li>
 <li><p>Warnings are now captured and reported in most reporters.</p></li>
-<li><p>The reporter output goes to the original standard output and is not affected by <code><a href="https://www.rdocumentation.org/packages/base/topics/sink">sink()</a></code> and <code><a href="../reference/output-expectations.html">expect_output()</a></code> (<a href='https://github.com/r-lib/testthat/issues/420'>#420</a>, <a href='https://github.com/krlmlr'>@krlmlr</a>).</p></li>
+<li><p>The reporter output goes to the original standard output and is not affected by <code><a href="https://rdrr.io/r/base/sink.html">sink()</a></code> and <code><a href="../reference/output-expectations.html">expect_output()</a></code> (<a href='https://github.com/r-lib/testthat/issues/420'>#420</a>, <a href='https://github.com/krlmlr'>@krlmlr</a>).</p></li>
 <li><p>The default summary reporter lists all warnings (<a href='https://github.com/r-lib/testthat/issues/310'>#310</a>), and all skipped tests (<a href='https://github.com/krlmlr'>@krlmlr</a>, <a href='https://github.com/r-lib/testthat/issues/343'>#343</a>). New option <code>testthat.summary.max_reports</code> limits the number of reports printed by the summary reporter. The default is 15 (<a href='https://github.com/krlmlr'>@krlmlr</a>, <a href='https://github.com/r-lib/testthat/issues/354'>#354</a>).</p></li>
 <li><p><code>MinimalReporter</code> correct labels errors with E and failures with F (<a href='https://github.com/r-lib/testthat/issues/311'>#311</a>).</p></li>
 <li><p>New <code>FailReporter</code> to stop in case of failures or errors after all tests (<a href='https://github.com/r-lib/testthat/issues/308'>#308</a>, <a href='https://github.com/krlmlr'>@krlmlr</a>).</p></li>
@@ -608,7 +625,7 @@
 <li><p>Add an ‘invert’ argument to <code>find_tests_scripts()</code>. This allows one to select only tests which do <em>not</em> match a pattern. (<a href='https://github.com/r-lib/testthat/issues/239'>#239</a>, <a href='https://github.com/jimhester'>@jimhester</a>).</p></li>
 <li><p>Deprecated <code>library_if_available()</code> has been removed.</p></li>
 <li><p>test (<code><a href="../reference/test_dir.html">test_dir()</a></code>, <code><a href="../reference/test_file.html">test_file()</a></code>, <code><a href="../reference/test_dir.html">test_package()</a></code>, <code><a href="../reference/test_dir.html">test_check()</a></code>) functions now return a <code>testthat_results</code> object that contains all results, and can be printed or converted to data frame.</p></li>
-<li><p><code><a href="../reference/test_dir.html">test_dir()</a></code>, <code><a href="../reference/test_dir.html">test_package()</a></code>, and <code><a href="../reference/test_dir.html">test_check()</a></code> have an added <code>...</code> argument that allows filtering of test files using, e.g., Perl-style regular expressions,or <code>fixed</code> character filtering. Arguments in <code>...</code> are passed to <code><a href="https://www.rdocumentation.org/packages/base/topics/grep">grepl()</a></code> (<a href='https://github.com/leeper'>@leeper</a>).</p></li>
+<li><p><code><a href="../reference/test_dir.html">test_dir()</a></code>, <code><a href="../reference/test_dir.html">test_package()</a></code>, and <code><a href="../reference/test_dir.html">test_check()</a></code> have an added <code>...</code> argument that allows filtering of test files using, e.g., Perl-style regular expressions,or <code>fixed</code> character filtering. Arguments in <code>...</code> are passed to <code><a href="https://rdrr.io/r/base/grep.html">grepl()</a></code> (<a href='https://github.com/leeper'>@leeper</a>).</p></li>
 <li><p><code><a href="../reference/test_dir.html">test_check()</a></code> uses a new reporter specifically designed for <code>R CMD check</code>. It displays a summary at the end of the tests, designed to be &lt;13 lines long so test failures in <code>R CMD check</code> display something more useful. This will hopefully stop BDR from calling testthat a “test obfuscation suite” (<a href='https://github.com/r-lib/testthat/issues/201'>#201</a>).</p></li>
 <li><p><code><a href="../reference/compare.html">compare()</a></code> is now documented and exported. Added a numeric method so when long numeric vectors don’t match you’ll see some examples of where the problem is (<a href='https://github.com/r-lib/testthat/issues/177'>#177</a>). The line spacing in <code><a href="../reference/compare.html">compare.character()</a></code> was tweaked.</p></li>
 <li><p><code><a href="../reference/skip.html">skip_if_not_installed()</a></code> skips tests if a package isn’t installed (<a href='https://github.com/r-lib/testthat/issues/192'>#192</a>).</p></li>
@@ -649,10 +666,10 @@
 <h2 class="hasAnchor">
 <a href="#minor-improvements-and-bug-fixes-2" class="anchor"></a>Minor improvements and bug fixes</h2>
 <ul>
-<li><p><code><a href="../reference/auto_test_package.html">auto_test_package()</a></code> works once more, and now uses <code><a href="https://www.rdocumentation.org/packages/devtools/topics/load_all">devtools::load_all()</a></code> for higher fidelity loading (<a href='https://github.com/r-lib/testthat/issues/138'>#138</a>, <a href='https://github.com/r-lib/testthat/issues/151'>#151</a>).</p></li>
+<li><p><code><a href="../reference/auto_test_package.html">auto_test_package()</a></code> works once more, and now uses <code><a href="https://rdrr.io/pkg/devtools/man/load_all.html">devtools::load_all()</a></code> for higher fidelity loading (<a href='https://github.com/r-lib/testthat/issues/138'>#138</a>, <a href='https://github.com/r-lib/testthat/issues/151'>#151</a>).</p></li>
 <li><p>Bug in <code><a href="../reference/compare.html">compare.character()</a></code> fixed, as reported by Georgi Boshnakov.</p></li>
 <li><p><code>colourise()</code> now uses option <code>testthat.use_colours</code> (default: <code>TRUE</code>). If it is <code>FALSE</code>, output is not colourised (<a href='https://github.com/r-lib/testthat/issues/153'>#153</a>, <a href='https://github.com/mbojan'>@mbojan</a>).</p></li>
-<li><p><code><a href="../reference/oldskool.html">is_identical_to()</a></code> only calls <code><a href="https://www.rdocumentation.org/packages/base/topics/all.equal">all.equal()</a></code> to generate an informative error message if the two objects are not identical (<a href='https://github.com/r-lib/testthat/issues/165'>#165</a>).</p></li>
+<li><p><code><a href="../reference/oldskool.html">is_identical_to()</a></code> only calls <code><a href="https://rdrr.io/r/base/all.equal.html">all.equal()</a></code> to generate an informative error message if the two objects are not identical (<a href='https://github.com/r-lib/testthat/issues/165'>#165</a>).</p></li>
 <li><p><code><a href="../reference/safe_digest.html">safe_digest()</a></code> uses a better strategy, and returns NA for directories (<a href='https://github.com/r-lib/testthat/issues/138'>#138</a>, <a href='https://github.com/r-lib/testthat/issues/146'>#146</a>).</p></li>
 <li><p>Random praise is renabled by default (again!) (<a href='https://github.com/r-lib/testthat/issues/164'>#164</a>).</p></li>
 <li><p>Teamcity reporter now correctly escapes output messages (<a href='https://github.com/r-lib/testthat/issues/150'>#150</a>, <a href='https://github.com/windelinckx'>@windelinckx</a>). It also uses nested suites to include test names.</p></li>
@@ -810,6 +827,7 @@
     <div id="tocnav">
       <h2>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
+        <li><a href="#testthat-development-version">development version</a></li>
         <li><a href="#testthat-2-2-1">2.2.1</a></li>
         <li><a href="#testthat-2-2-0">2.2.0</a></li>
         <li><a href="#testthat-2-1-1">2.1.1</a></li>
@@ -838,19 +856,23 @@
 
 </div>
 
+
       <footer>
       <div class="copyright">
   <p>Developed by <a href='http://hadley.nz'>Hadley Wickham</a>, <a href='https://www.rstudio.com'><img src='https://www.tidyverse.org/rstudio-logo.svg' alt='RStudio' height='24' /></a>.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
 </div>
+
       </footer>
    </div>
 
   
 
+
   </body>
 </html>
+
 

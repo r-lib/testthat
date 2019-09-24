@@ -25,13 +25,15 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
 
-<!-- sticky kit -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
+<!-- headroom.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -42,10 +44,12 @@
 
 <meta property="og:title" content="Expectation: do two vectors contain the same values? — expect_setequal" />
 <meta property="og:description" content="
+
 expect_setequal(x, y) tests that every element of x occurs in y,
 and that every element of y occurs in x.
 expect_mapequal(x, y) tests that x and y have the same names, and
 that x[names(y)] equals x.
+
 " />
 <meta property="og:image" content="/logo.png" />
 <meta name="twitter:card" content="summary" />
@@ -72,6 +76,7 @@ that x[names(y)] equals x.
 
   gtag('config', 'UA-115082821-1');
 </script>
+
 
   </head>
 
@@ -143,7 +148,7 @@ that x[names(y)] equals x.
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/r-lib/testthat">
-    <span class="fa fa-github fa-lg"></span>
+    <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -154,6 +159,7 @@ that x[names(y)] equals x.
 </div><!--/.navbar -->
 
       
+
       </header>
 
 <div class="row">
@@ -165,12 +171,14 @@ that x[names(y)] equals x.
     </div>
 
     <div class="ref-description">
-    <ul>
+    
+<ul>
 <li><p><code>expect_setequal(x, y)</code> tests that every element of <code>x</code> occurs in <code>y</code>,
 and that every element of <code>y</code> occurs in <code>x</code>.</p></li>
 <li><p><code>expect_mapequal(x, y)</code> tests that <code>x</code> and <code>y</code> have the same names, and
 that <code>x[names(y)]</code> equals <code>x</code>.</p></li>
 </ul>
+
     </div>
 
     <pre class="usage"><span class='fu'>expect_setequal</span>(<span class='no'>object</span>, <span class='no'>expected</span>)
@@ -202,16 +210,16 @@ more details.</p></td>
 <code>object</code> and <code>expected</code> have them.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>expect_setequal</span>(<span class='no'>letters</span>, <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/rev'>rev</a></span>(<span class='no'>letters</span>))
-<span class='fu'><a href='expect_success.html'>show_failure</a></span>(<span class='fu'>expect_setequal</span>(<span class='no'>letters</span>[-<span class='fl'>1</span>], <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/rev'>rev</a></span>(<span class='no'>letters</span>)))</div><div class='output co'>#&gt; <span style='font-weight: bold;'>Failed expectation:
+    <pre class="examples"><div class='input'><span class='fu'>expect_setequal</span>(<span class='no'>letters</span>, <span class='fu'><a href='https://rdrr.io/r/base/rev.html'>rev</a></span>(<span class='no'>letters</span>))
+<span class='fu'><a href='expect_success.html'>show_failure</a></span>(<span class='fu'>expect_setequal</span>(<span class='no'>letters</span>[-<span class='fl'>1</span>], <span class='fu'><a href='https://rdrr.io/r/base/rev.html'>rev</a></span>(<span class='no'>letters</span>)))</div><div class='output co'>#&gt; <span style='font-weight: bold;'>Failed expectation:
 #&gt; </span><span>rev(letters)[26] absent from letters[-1]</div><div class='input'>
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/list'>list</a></span>(<span class='kw'>b</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>a</span> <span class='kw'>=</span> <span class='fl'>1</span>)
-<span class='fu'>expect_mapequal</span>(<span class='no'>x</span>, <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/list'>list</a></span>(<span class='kw'>a</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>b</span> <span class='kw'>=</span> <span class='fl'>2</span>))
-<span class='fu'><a href='expect_success.html'>show_failure</a></span>(<span class='fu'>expect_mapequal</span>(<span class='no'>x</span>, <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/list'>list</a></span>(<span class='kw'>a</span> <span class='kw'>=</span> <span class='fl'>1</span>)))</div><div class='output co'>#&gt; </span><span style='font-weight: bold;'>Failed expectation:
-#&gt; </span><span>Names absent from `expected`: "b", </div><div class='input'><span class='fu'><a href='expect_success.html'>show_failure</a></span>(<span class='fu'>expect_mapequal</span>(<span class='no'>x</span>, <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/list'>list</a></span>(<span class='kw'>a</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>b</span> <span class='kw'>=</span> <span class='st'>"x"</span>)))</div><div class='output co'>#&gt; </span><span style='font-weight: bold;'>Failed expectation:
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>b</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>a</span> <span class='kw'>=</span> <span class='fl'>1</span>)
+<span class='fu'>expect_mapequal</span>(<span class='no'>x</span>, <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>a</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>b</span> <span class='kw'>=</span> <span class='fl'>2</span>))
+<span class='fu'><a href='expect_success.html'>show_failure</a></span>(<span class='fu'>expect_mapequal</span>(<span class='no'>x</span>, <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>a</span> <span class='kw'>=</span> <span class='fl'>1</span>)))</div><div class='output co'>#&gt; </span><span style='font-weight: bold;'>Failed expectation:
+#&gt; </span><span>Names absent from `expected`: "b", </div><div class='input'><span class='fu'><a href='expect_success.html'>show_failure</a></span>(<span class='fu'>expect_mapequal</span>(<span class='no'>x</span>, <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>a</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>b</span> <span class='kw'>=</span> <span class='st'>"x"</span>)))</div><div class='output co'>#&gt; </span><span style='font-weight: bold;'>Failed expectation:
 #&gt; </span><span>act$val[exp_nms] not equal to exp$val.
 #&gt; Component “b”: Modes: numeric, character
-#&gt; Component “b”: target is numeric, current is character</div><div class='input'><span class='fu'><a href='expect_success.html'>show_failure</a></span>(<span class='fu'>expect_mapequal</span>(<span class='no'>x</span>, <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/list'>list</a></span>(<span class='kw'>a</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>b</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>c</span> <span class='kw'>=</span> <span class='fl'>3</span>)))</div><div class='output co'>#&gt; </span><span style='font-weight: bold;'>Failed expectation:
+#&gt; Component “b”: target is numeric, current is character</div><div class='input'><span class='fu'><a href='expect_success.html'>show_failure</a></span>(<span class='fu'>expect_mapequal</span>(<span class='no'>x</span>, <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>a</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>b</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>c</span> <span class='kw'>=</span> <span class='fl'>3</span>)))</div><div class='output co'>#&gt; </span><span style='font-weight: bold;'>Failed expectation:
 #&gt; </span><span>Names absent from `object`: "c", </div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -225,19 +233,23 @@ more details.</p></td>
   </div>
 </div>
 
+
       <footer>
       <div class="copyright">
   <p>Developed by <a href='http://hadley.nz'>Hadley Wickham</a>, <a href='https://www.rstudio.com'><img src='https://www.tidyverse.org/rstudio-logo.svg' alt='RStudio' height='24' /></a>.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
 </div>
+
       </footer>
    </div>
 
   
 
+
   </body>
 </html>
+
 

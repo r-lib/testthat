@@ -25,13 +25,15 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
 
-<!-- sticky kit -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
+<!-- headroom.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -42,11 +44,13 @@
 
 <meta property="og:title" content="Expectation: is the object equal to a value? — equality-expectations" />
 <meta property="og:description" content="
+
 expect_identical() compares values with identical().
 expect_equal() compares values  with all.equal()
 expect_equivalent() compares values with all.equal() and
 check.attributes = FALSE
 expect_reference() compares the underlying memory addresses.
+
 " />
 <meta property="og:image" content="/logo.png" />
 <meta name="twitter:card" content="summary" />
@@ -73,6 +77,7 @@ expect_reference() compares the underlying memory addresses.
 
   gtag('config', 'UA-115082821-1');
 </script>
+
 
   </head>
 
@@ -144,7 +149,7 @@ expect_reference() compares the underlying memory addresses.
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/r-lib/testthat">
-    <span class="fa fa-github fa-lg"></span>
+    <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -155,6 +160,7 @@ expect_reference() compares the underlying memory addresses.
 </div><!--/.navbar -->
 
       
+
       </header>
 
 <div class="row">
@@ -166,13 +172,15 @@ expect_reference() compares the underlying memory addresses.
     </div>
 
     <div class="ref-description">
-    <ul>
-<li><p><code>expect_identical()</code> compares values with <code><a href='https://www.rdocumentation.org/packages/base/topics/identical'>identical()</a></code>.</p></li>
-<li><p><code>expect_equal()</code> compares values  with <code><a href='https://www.rdocumentation.org/packages/base/topics/all.equal'>all.equal()</a></code></p></li>
-<li><p><code>expect_equivalent()</code> compares values with <code><a href='https://www.rdocumentation.org/packages/base/topics/all.equal'>all.equal()</a></code> and
+    
+<ul>
+<li><p><code>expect_identical()</code> compares values with <code><a href='https://rdrr.io/r/base/identical.html'>identical()</a></code>.</p></li>
+<li><p><code>expect_equal()</code> compares values  with <code><a href='https://rdrr.io/r/base/all.equal.html'>all.equal()</a></code></p></li>
+<li><p><code>expect_equivalent()</code> compares values with <code><a href='https://rdrr.io/r/base/all.equal.html'>all.equal()</a></code> and
 <code>check.attributes = FALSE</code></p></li>
 <li><p><code>expect_reference()</code> compares the underlying memory addresses.</p></li>
 </ul>
+
     </div>
 
     <pre class="usage"><span class='fu'>expect_equal</span>(<span class='no'>object</span>, <span class='no'>expected</span>, <span class='no'>...</span>, <span class='kw'>info</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>label</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
@@ -200,7 +208,7 @@ more details.</p></td>
     <tr>
       <th>...</th>
       <td><p>For <code>expect_equal()</code> and <code>expect_equivalent()</code>, passed on
-<code><a href='compare.html'>compare()</a></code>, for <code>expect_identical()</code> passed on to <code><a href='https://www.rdocumentation.org/packages/base/topics/identical'>identical()</a></code>.
+<code><a href='compare.html'>compare()</a></code>, for <code>expect_identical()</code> passed on to <code><a href='https://rdrr.io/r/base/identical.html'>identical()</a></code>.
 Used to control the details of the comparison.</p></td>
     </tr>
     <tr>
@@ -231,24 +239,27 @@ use only.</p></td>
 <span class='fu'>expect_equal</span>(<span class='no'>a</span>, <span class='fl'>10</span>)
 
 <span class='co'># Use expect_equal() when testing for numeric equality</span>
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/MathFun'>sqrt</a></span>(<span class='fl'>2</span>) ^ <span class='fl'>2</span> - <span class='fl'>1</span></div><div class='output co'>#&gt; [1] 1</div><div class='input'><span class='fu'>expect_equal</span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/MathFun'>sqrt</a></span>(<span class='fl'>2</span>) ^ <span class='fl'>2</span>, <span class='fl'>2</span>)
+<span class='fu'><a href='https://rdrr.io/r/base/MathFun.html'>sqrt</a></span>(<span class='fl'>2</span>) ^ <span class='fl'>2</span> - <span class='fl'>1</span></div><div class='output co'>#&gt; [1] 1</div><div class='input'><span class='fu'>expect_equal</span>(<span class='fu'><a href='https://rdrr.io/r/base/MathFun.html'>sqrt</a></span>(<span class='fl'>2</span>) ^ <span class='fl'>2</span>, <span class='fl'>2</span>)
 <span class='co'># Neither of these forms take floating point representation errors into</span>
-<span class='co'># account</span></div><span class='co'># NOT RUN {</span>
-<span class='fu'><a href='logical-expectations.html'>expect_true</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/MathFun'>sqrt</a></span>(<span class='fl'>2</span>) ^ <span class='fl'>2</span> <span class='kw'>==</span> <span class='fl'>2</span>)
-<span class='fu'>expect_identical</span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/MathFun'>sqrt</a></span>(<span class='fl'>2</span>) ^ <span class='fl'>2</span>, <span class='fl'>2</span>)
-<span class='co'># }</span><div class='input'>
-# You can pass on additional arguments to all.equal:
-</div><span class='co'># NOT RUN {</span>
+<span class='co'># account</span>
+<span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
+<span class='fu'><a href='logical-expectations.html'>expect_true</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/MathFun.html'>sqrt</a></span>(<span class='fl'>2</span>) ^ <span class='fl'>2</span> <span class='kw'>==</span> <span class='fl'>2</span>)
+<span class='fu'>expect_identical</span>(<span class='fu'><a href='https://rdrr.io/r/base/MathFun.html'>sqrt</a></span>(<span class='fl'>2</span>) ^ <span class='fl'>2</span>, <span class='fl'>2</span>)
+}
+
+<span class='co'># You can pass on additional arguments to all.equal:</span>
+<span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
 <span class='co'># Test the ABSOLUTE difference is within .002</span>
 <span class='fu'>expect_equal</span>(<span class='fl'>10.01</span>, <span class='fl'>10</span>, <span class='kw'>tolerance</span> <span class='kw'>=</span> <span class='fl'>.002</span>, <span class='kw'>scale</span> <span class='kw'>=</span> <span class='fl'>1</span>)
-<span class='co'># }</span><div class='input'>
+}
+
 <span class='co'># Test the RELATIVE difference is within .002</span>
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fl'>10</span>
 <span class='fu'>expect_equal</span>(<span class='fl'>10.01</span>, <span class='kw'>expected</span> <span class='kw'>=</span> <span class='no'>x</span>, <span class='kw'>tolerance</span> <span class='kw'>=</span> <span class='fl'>0.002</span>, <span class='kw'>scale</span> <span class='kw'>=</span> <span class='no'>x</span>)
 
 <span class='co'># expect_equivalent ignores attributes</span>
 <span class='no'>a</span> <span class='kw'>&lt;-</span> <span class='no'>b</span> <span class='kw'>&lt;-</span> <span class='fl'>1</span>:<span class='fl'>3</span>
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/names'>names</a></span>(<span class='no'>b</span>) <span class='kw'>&lt;-</span> <span class='no'>letters</span>[<span class='fl'>1</span>:<span class='fl'>3</span>]
+<span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span>(<span class='no'>b</span>) <span class='kw'>&lt;-</span> <span class='no'>letters</span>[<span class='fl'>1</span>:<span class='fl'>3</span>]
 <span class='fu'>expect_equivalent</span>(<span class='no'>a</span>, <span class='no'>b</span>)</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -262,19 +273,23 @@ use only.</p></td>
   </div>
 </div>
 
+
       <footer>
       <div class="copyright">
   <p>Developed by <a href='http://hadley.nz'>Hadley Wickham</a>, <a href='https://www.rstudio.com'><img src='https://www.tidyverse.org/rstudio-logo.svg' alt='RStudio' height='24' /></a>.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
 </div>
+
       </footer>
    </div>
 
   
 
+
   </body>
 </html>
+
 

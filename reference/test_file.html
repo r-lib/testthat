@@ -25,13 +25,15 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
 
-<!-- sticky kit -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
+<!-- headroom.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -70,6 +72,7 @@ in the global environment." />
 
   gtag('config', 'UA-115082821-1');
 </script>
+
 
   </head>
 
@@ -141,7 +144,7 @@ in the global environment." />
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/r-lib/testthat">
-    <span class="fa fa-github fa-lg"></span>
+    <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -152,6 +155,7 @@ in the global environment." />
 </div><!--/.navbar -->
 
       
+
       </header>
 
 <div class="row">
@@ -221,7 +225,7 @@ that all expectations are reported, even if outside a test block.</p></td>
 <span class='fu'>test_file</span>(<span class='no'>path</span>, <span class='kw'>reporter</span> <span class='kw'>=</span> <span class='st'>"minimal"</span>)</div><div class='output co'>#&gt; <span style='color: #00BB00;'>.</span><span style='color: #0000BB;'>S</span><span style='color: #BB00BB;'>W</span><span style='color: #00BB00;'>...</span><span></div><div class='input'>
 <span class='co'># test_file() invisibly returns a list, with one element for each test.</span>
 <span class='co'># This can be useful if you want to compute on your test results.</span>
-<span class='no'>out</span> <span class='kw'>&lt;-</span> <span class='fu'>test_file</span>(<span class='no'>path</span>, <span class='kw'>reporter</span> <span class='kw'>=</span> <span class='st'>"minimal"</span>)</div><div class='output co'>#&gt; </span><span style='color: #00BB00;'>.</span><span style='color: #0000BB;'>S</span><span style='color: #BB00BB;'>W</span><span style='color: #00BB00;'>...</span><span></div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/str'>str</a></span>(<span class='no'>out</span><span class='kw'>[[</span><span class='fl'>1</span>]])</div><div class='output co'>#&gt; List of 7
+<span class='no'>out</span> <span class='kw'>&lt;-</span> <span class='fu'>test_file</span>(<span class='no'>path</span>, <span class='kw'>reporter</span> <span class='kw'>=</span> <span class='st'>"minimal"</span>)</div><div class='output co'>#&gt; </span><span style='color: #00BB00;'>.</span><span style='color: #0000BB;'>S</span><span style='color: #BB00BB;'>W</span><span style='color: #00BB00;'>...</span><span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span>(<span class='no'>out</span><span class='kw'>[[</span><span class='fl'>1</span>]])</div><div class='output co'>#&gt; List of 7
 #&gt;  $ file   : chr "test-success.R"
 #&gt;  $ context: NULL
 #&gt;  $ test   : chr "one plus one is two"
@@ -232,10 +236,10 @@ that all expectations are reported, even if outside a test block.</p></td>
 #&gt;   ..$ :List of 6
 #&gt;   .. ..$ message    : chr "1 + 1 not equal to 2.\nEqual"
 #&gt;   .. ..$ srcref     : 'srcref' int [1:8] 2 3 2 24 3 24 2 2
-#&gt;   .. .. ..- attr(*, "srcfile")=Classes 'srcfilecopy', 'srcfile' &lt;environment: 0x8ce22d0&gt; 
+#&gt;   .. .. ..- attr(*, "srcfile")=Classes 'srcfilecopy', 'srcfile' &lt;environment: 0x6354200&gt; 
 #&gt;   .. ..$ trace      : NULL
-#&gt;   .. ..$ start_frame: int 68
-#&gt;   .. ..$ end_frame  : num 69
+#&gt;   .. ..$ start_frame: int 64
+#&gt;   .. ..$ end_frame  : num 65
 #&gt;   .. ..$ test       : chr "one plus one is two"
 #&gt;   .. ..- attr(*, "class")= chr [1:3] "expectation_success" "expectation" "condition"</div></span></pre>
   </div>
@@ -250,19 +254,23 @@ that all expectations are reported, even if outside a test block.</p></td>
   </div>
 </div>
 
+
       <footer>
       <div class="copyright">
   <p>Developed by <a href='http://hadley.nz'>Hadley Wickham</a>, <a href='https://www.rstudio.com'><img src='https://www.tidyverse.org/rstudio-logo.svg' alt='RStudio' height='24' /></a>.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
 </div>
+
       </footer>
    </div>
 
   
 
+
   </body>
 </html>
+
 

@@ -25,13 +25,15 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
 
-<!-- sticky kit -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
+<!-- headroom.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -69,6 +71,7 @@ Catch and testthat." />
 
   gtag('config', 'UA-115082821-1');
 </script>
+
 
   </head>
 
@@ -140,7 +143,7 @@ Catch and testthat." />
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/r-lib/testthat">
-    <span class="fa fa-github fa-lg"></span>
+    <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -151,6 +154,7 @@ Catch and testthat." />
 </div><!--/.navbar -->
 
       
+
       </header>
 
 <div class="row">
@@ -167,7 +171,7 @@ in <span style="R">R</span> packages with
 <a href='https://github.com/philsquared/Catch'>Catch</a> and <code>testthat</code>.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>use_catch</span>(<span class='kw'>dir</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/getwd'>getwd</a></span>())</pre>
+    <pre class="usage"><span class='fu'>use_catch</span>(<span class='kw'>dir</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/getwd.html'>getwd</a></span>())</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -188,12 +192,13 @@ unit tests,</p></li>
 showcases how you might use Catch to write a unit test,</p></li>
 <li><p>Add a test file <code>tests/testthat/test-cpp.R</code>, which ensures that
 <code>testthat</code> will run your compiled tests during invocations of
-<code><a href='https://www.rdocumentation.org/packages/devtools/topics/test'>devtools::test()</a></code> or <code>R CMD check</code>, and</p></li>
+<code><a href='https://rdrr.io/pkg/devtools/man/test.html'>devtools::test()</a></code> or <code>R CMD check</code>, and</p></li>
 <li><p>Create a file <code>R/catch-routine-registration.R</code>, which ensures that
 <span style="R">R</span> will automatically register this routine when
-<code><a href='https://www.rdocumentation.org/packages/tools/topics/package_native_routine_registration_skeleton'>tools::package_native_routine_registration_skeleton()</a></code> is invoked.</p></li>
+<code><a href='https://rdrr.io/r/tools/package_native_routine_registration_skeleton.html'>tools::package_native_routine_registration_skeleton()</a></code> is invoked.</p></li>
 </ol>
-    <p>C++ unit tests can be added to C++ source files within the
+
+<p>C++ unit tests can be added to C++ source files within the
 <code>src</code> directory of your package, with a format similar
 to <span style="R">R</span> code tested with <code>testthat</code>. Here's a simple example
 of a unit test written with <code>testthat</code> + Catch:</p>
@@ -205,41 +210,34 @@ context("C++ Unit Test") {
   }
 }
 </pre>
-    <p>When your package is compiled, unit tests alongside a harness
+
+<p>When your package is compiled, unit tests alongside a harness
 for running these tests will be compiled into your <span style="R">R</span> package,
 with the C entry point <code>run_testthat_tests()</code>. <code>testthat</code>
 will use that entry point to run your unit tests when detected.</p>
     <h2 class="hasAnchor" id="functions"><a class="anchor" href="#functions"></a>Functions</h2>
 
     
-    <p>All of the functions provided by Catch are
+
+
+<p>All of the functions provided by Catch are
 available with the <code>CATCH_</code> prefix -- see
 <a href='https://github.com/philsquared/Catch/blob/master/docs/assertions.md'>here</a>
 for a full list. <code>testthat</code> provides the
 following wrappers, to conform with <code>testthat</code>'s
 <span style="R">R</span> interface:</p>
 <table class='table'>
-<tr><td></td><td><strong>Function</strong></td><td></td></tr>
-<tr><td></td><td><strong>Catch</strong></td><td></td></tr>
-<tr><td></td><td><strong>Description</strong></td><td></td></tr>
-<tr><td></td><td><code>context</code></td><td></td></tr>
-<tr><td></td><td><code>CATCH_TEST_CASE</code></td><td></td></tr>
-<tr><td>The context of a set of tests.</td><td></td><td><code>test_that</code></td></tr>
-<tr><td></td><td></td><td><code>CATCH_SECTION</code></td></tr>
-<tr><td></td><td>A test section.</td><td></td></tr>
-<tr><td><code>expect_true</code></td><td></td><td></td></tr>
-<tr><td><code>CATCH_CHECK</code></td><td></td><td>Test that an expression evaluates to</td></tr>
-<tr><td><code>true</code></td><td>.</td><td></td></tr>
-<tr><td><code>expect_false</code></td><td></td><td></td></tr>
-<tr><td><code>CATCH_CHECK_FALSE</code></td><td></td><td>Test that an expression evalutes to</td></tr>
-<tr><td><code>false</code></td><td>.</td><td></td></tr>
-<tr><td><code>expect_error</code></td><td></td><td></td></tr>
-<tr><td><code>CATCH_CHECK_THROWS</code></td><td></td><td>Test that evaluation of an expression throws an exception.</td></tr>
-<tr><td></td><td><code>expect_error_as</code></td><td></td></tr>
-<tr><td></td><td><code>CATCH_CHECK_THROWS_AS</code></td><td></td></tr>
-<tr><td>Test that evaluation of an expression throws an exception of a specific class.</td><td></td><td></td></tr>
+<tr><td><strong>Function</strong></td><td><strong>Catch</strong></td><td><strong>Description</strong></td></tr>
+<tr><td><code>context</code></td><td><code>CATCH_TEST_CASE</code></td><td>The context of a set of tests.</td></tr>
+<tr><td><code>test_that</code></td><td><code>CATCH_SECTION</code></td><td>A test section.</td></tr>
+<tr><td><code>expect_true</code></td><td><code>CATCH_CHECK</code></td><td>Test that an expression evaluates to <code>true</code>.</td></tr>
+<tr><td><code>expect_false</code></td><td><code>CATCH_CHECK_FALSE</code></td><td>Test that an expression evalutes to <code>false</code>.</td></tr>
+<tr><td><code>expect_error</code></td><td><code>CATCH_CHECK_THROWS</code></td><td>Test that evaluation of an expression throws an exception.</td></tr>
+<tr><td><code>expect_error_as</code></td><td><code>CATCH_CHECK_THROWS_AS</code></td><td>Test that evaluation of an expression throws an exception of a specific class.</td></tr>
 </table>
-    <p>In general, you should prefer using the <code>testthat</code>
+
+
+<p>In general, you should prefer using the <code>testthat</code>
 wrappers, as <code>testthat</code> also does some work to
 ensure that any unit tests within will not be compiled or
 run when using the Solaris Studio compilers (as these are
@@ -248,7 +246,9 @@ easier to submit packages to CRAN that use Catch.</p>
     <h2 class="hasAnchor" id="symbol-registration"><a class="anchor" href="#symbol-registration"></a>Symbol Registration</h2>
 
     
-    <p>If you've opted to disable dynamic symbol lookup in your
+
+
+<p>If you've opted to disable dynamic symbol lookup in your
 package, then you'll need to explicitly export a symbol
 in your package that <code>testthat</code> can use to run your unit
 tests. <code>testthat</code> will look for a routine with one of the names:</p>
@@ -257,37 +257,45 @@ tests. <code>testthat</code> will look for a routine with one of the names:</p>
     c_run_testthat_tests
     run_testthat_tests
 </pre>
-    <p>See <a href='https://cran.r-project.org/doc/manuals/r-release/R-exts.html#Controlling-visibility'>Controlling Visibility</a>
+
+<p>See <a href='https://cran.r-project.org/doc/manuals/r-release/R-exts.html#Controlling-visibility'>Controlling Visibility</a>
 and <a href='https://cran.r-project.org/doc/manuals/r-release/R-exts.html#Registering-symbols'>Registering Symbols</a>
 in the <strong>Writing R Extensions</strong> manual for more information.</p>
     <h2 class="hasAnchor" id="advanced-usage"><a class="anchor" href="#advanced-usage"></a>Advanced Usage</h2>
 
     
-    <p>If you'd like to write your own Catch test runner, you can
+
+
+<p>If you'd like to write your own Catch test runner, you can
 instead use the <code>testthat::catchSession()</code> object in a file
 with the form:</p>
 <pre>
 #define TESTTHAT_TEST_RUNNER
 #include &lt;testthat.h&gt;
-    void run()
+
+void run()
 {
     Catch::Session&amp; session = testthat::catchSession();
     // interact with the session object as desired
 }
 </pre>
-    <p>This can be useful if you'd like to run your unit tests
+
+<p>This can be useful if you'd like to run your unit tests
 with custom arguments passed to the Catch session.</p>
     <h2 class="hasAnchor" id="standalone-usage"><a class="anchor" href="#standalone-usage"></a>Standalone Usage</h2>
 
     
-    <p>If you'd like to use the C++ unit testing facilities provided
+
+
+<p>If you'd like to use the C++ unit testing facilities provided
 by Catch, but would prefer not to use the regular <code>testthat</code>
 <span style="R">R</span> testing infrastructure, you can manually run the unit tests
 by inserting a call to:</p>
 <pre>
 .Call("run_testthat_tests", PACKAGE = &lt;pkgName&gt;)
 </pre>
-    <p>as necessary within your unit test suite.</p>
+
+<p>as necessary within your unit test suite.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p><a href='https://github.com/philsquared/Catch'>Catch</a>, the
@@ -309,19 +317,23 @@ library used to enable C++ unit testing.</p></div>
   </div>
 </div>
 
+
       <footer>
       <div class="copyright">
   <p>Developed by <a href='http://hadley.nz'>Hadley Wickham</a>, <a href='https://www.rstudio.com'><img src='https://www.tidyverse.org/rstudio-logo.svg' alt='RStudio' height='24' /></a>.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
 </div>
+
       </footer>
    </div>
 
   
 
+
   </body>
 </html>
+
 

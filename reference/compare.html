@@ -25,13 +25,15 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
 
-<!-- sticky kit -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
+<!-- headroom.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -68,6 +70,7 @@ you examples of where the failures occured." />
 
   gtag('config', 'UA-115082821-1');
 </script>
+
 
   </head>
 
@@ -139,7 +142,7 @@ you examples of where the failures occured." />
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/r-lib/testthat">
-    <span class="fa fa-github fa-lg"></span>
+    <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -150,6 +153,7 @@ you examples of where the failures occured." />
 </div><!--/.navbar -->
 
       
+
       </header>
 
 <div class="row">
@@ -161,7 +165,7 @@ you examples of where the failures occured." />
     </div>
 
     <div class="ref-description">
-    <p><code>compare</code> is similar to <code><a href='https://www.rdocumentation.org/packages/base/topics/all.equal'>base::all.equal()</a></code>, but shows
+    <p><code>compare</code> is similar to <code><a href='https://rdrr.io/r/base/all.equal.html'>base::all.equal()</a></code>, but shows
 you examples of where the failures occured.</p>
     </div>
 
@@ -172,7 +176,7 @@ you examples of where the failures occured.</p>
 
 <span class='co'># S3 method for character</span>
 <span class='fu'>compare</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='kw'>check.attributes</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='no'>...</span>,
-  <span class='kw'>max_diffs</span> <span class='kw'>=</span> <span class='fl'>5</span>, <span class='kw'>max_lines</span> <span class='kw'>=</span> <span class='fl'>5</span>, <span class='kw'>width</span> <span class='kw'>=</span> <span class='kw pkg'>cli</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/cli/topics/console_width'>console_width</a></span>())
+  <span class='kw'>max_diffs</span> <span class='kw'>=</span> <span class='fl'>5</span>, <span class='kw'>max_lines</span> <span class='kw'>=</span> <span class='fl'>5</span>, <span class='kw'>width</span> <span class='kw'>=</span> <span class='kw pkg'>cli</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/cli/man/console_width.html'>console_width</a></span>())
 
 <span class='co'># S3 method for numeric</span>
 <span class='fu'>compare</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='kw'>tolerance</span> <span class='kw'>=</span> <span class='no'>.Machine</span>$<span class='no'>double.eps</span>^<span class='fl'>0.5</span>,
@@ -218,9 +222,9 @@ value will be ignored.</p></td>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># Character -----------------------------------------------------------------</span>
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"abc"</span>, <span class='st'>"def"</span>, <span class='st'>"jih"</span>)
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"abc"</span>, <span class='st'>"def"</span>, <span class='st'>"jih"</span>)
 <span class='fu'>compare</span>(<span class='no'>x</span>, <span class='no'>x</span>)</div><div class='output co'>#&gt; Equal</div><div class='input'>
-<span class='no'>y</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/paste'>paste0</a></span>(<span class='no'>x</span>, <span class='st'>"y"</span>)
+<span class='no'>y</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span>(<span class='no'>x</span>, <span class='st'>"y"</span>)
 <span class='fu'>compare</span>(<span class='no'>x</span>, <span class='no'>y</span>)</div><div class='output co'>#&gt; 3/3 mismatches
 #&gt; x[1]: "abc"
 #&gt; y[1]: "abcy"
@@ -230,7 +234,7 @@ value will be ignored.</p></td>
 #&gt; 
 #&gt; x[3]: "jih"
 #&gt; y[3]: "jihy"</div><div class='input'>
-<span class='fu'>compare</span>(<span class='no'>letters</span>, <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/paste'>paste0</a></span>(<span class='no'>letters</span>, <span class='st'>"-"</span>))</div><div class='output co'>#&gt; 26/26 mismatches
+<span class='fu'>compare</span>(<span class='no'>letters</span>, <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span>(<span class='no'>letters</span>, <span class='st'>"-"</span>))</div><div class='output co'>#&gt; 26/26 mismatches
 #&gt; x[1]: "a"
 #&gt; y[1]: "a-"
 #&gt; 
@@ -257,7 +261,7 @@ value will be ignored.</p></td>
 #&gt; x[1]: \n dolor. Donec pretium iaculis nulla, ut interdum sapien ultricies a. "
 #&gt; y[1]: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis cursus\n ti
 #&gt; y[1]: ncidunt auctor. Vestibulum ac metus1 bibendum, facilisis nisi non, pulvina
-#&gt; y[1]: r\n dolor. Donec pretium iaculis nulla, ut interdum sapien ultricies a. "</div><div class='input'><span class='fu'>compare</span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='no'>x</span>, <span class='no'>x</span>), <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='no'>y</span>, <span class='no'>y</span>))</div><div class='output co'>#&gt; 2/2 mismatches
+#&gt; y[1]: r\n dolor. Donec pretium iaculis nulla, ut interdum sapien ultricies a. "</div><div class='input'><span class='fu'>compare</span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='no'>x</span>, <span class='no'>x</span>), <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='no'>y</span>, <span class='no'>y</span>))</div><div class='output co'>#&gt; 2/2 mismatches
 #&gt; x[1]: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis cursus\n ti
 #&gt; x[1]: ncidunt auctor. Vestibulum ac metus bibendum, facilisis nisi non, pulvinar
 #&gt; x[1]: \n dolor. Donec pretium iaculis nulla, ut interdum sapien ultricies a. "
@@ -273,8 +277,8 @@ value will be ignored.</p></td>
 #&gt; y[2]: r\n dolor. Donec pretium iaculis nulla, ut interdum sapien ultricies a. "</div><div class='input'>
 <span class='co'># Numeric -------------------------------------------------------------------</span>
 
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='no'>y</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/Uniform'>runif</a></span>(<span class='fl'>100</span>)
-<span class='no'>y</span>[<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/sample'>sample</a></span>(<span class='fl'>100</span>, <span class='fl'>10</span>)] <span class='kw'>&lt;-</span> <span class='fl'>5</span>
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='no'>y</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/Uniform.html'>runif</a></span>(<span class='fl'>100</span>)
+<span class='no'>y</span>[<span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample</a></span>(<span class='fl'>100</span>, <span class='fl'>10</span>)] <span class='kw'>&lt;-</span> <span class='fl'>5</span>
 <span class='fu'>compare</span>(<span class='no'>x</span>, <span class='no'>y</span>)</div><div class='output co'>#&gt; 10/100 mismatches (average diff: 4.43)
 #&gt; [5]  0.7725 - 5 == -4.23
 #&gt; [13] 0.0637 - 5 == -4.94
@@ -306,19 +310,23 @@ value will be ignored.</p></td>
   </div>
 </div>
 
+
       <footer>
       <div class="copyright">
   <p>Developed by <a href='http://hadley.nz'>Hadley Wickham</a>, <a href='https://www.rstudio.com'><img src='https://www.tidyverse.org/rstudio-logo.svg' alt='RStudio' height='24' /></a>.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
 </div>
+
       </footer>
    </div>
 
   
 
+
   </body>
 </html>
+
 
