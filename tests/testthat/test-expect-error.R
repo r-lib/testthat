@@ -96,6 +96,16 @@ local({
       class = "expectation_failure"
     )
   })
+
+  test_that("message method is called with expected warnings", {
+    foobar <- warning_cnd("foobar")
+    expect_warning(warning(foobar), "dispatched!")
+  })
+
+  test_that("message method is called with expected messages", {
+    foobar <- message_cnd("foobar")
+    expect_message(message(foobar), "dispatched!")
+  })
 })
 
 test_that("rlang backtrace reminders are not included in error message", {
