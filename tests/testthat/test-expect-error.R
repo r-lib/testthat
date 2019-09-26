@@ -97,3 +97,10 @@ local({
     )
   })
 })
+
+test_that("rlang backtrace reminders are not included in error message", {
+  f <- function() g()
+  g <- function() h()
+  h <- function() abort("foo")
+  expect_error(f(), "foo$")
+})

@@ -230,7 +230,7 @@ compare_condition <- function(cond, lab, regexp = NULL, class = NULL, ...,
         "%s threw an %s.\nMessage: %s\nClass:   %s",
         lab,
         cond_type,
-        conditionMessage(cond),
+        cnd_message(cond),
         paste(class(cond), collapse = "/")
       ))
     } else {
@@ -243,7 +243,7 @@ compare_condition <- function(cond, lab, regexp = NULL, class = NULL, ...,
     return(sprintf("%s did not throw an %s.", lab, cond_type))
   }
 
-  message <- conditionMessage(cond)
+  message <- cnd_message(cond)
 
   ok_class <- is.null(class) || inherits(cond, class)
   ok_msg <- is.null(regexp) || grepl(regexp, message, ...)
@@ -280,6 +280,13 @@ compare_condition <- function(cond, lab, regexp = NULL, class = NULL, ...,
     paste(problems, collapse = " and "),
     paste(details, collapse = "\n")
   )
+}
+
+# Disable rlang backtrace reminders so they don't interfere with
+# expected error messages
+cnd_message <- function(x) {
+  withr::local_options(c(rlang_backtrace_on_error = "none"))
+  conditionMessage(x)
 }
 
 simple_error <- function(x) {
