@@ -230,7 +230,7 @@ compare_condition <- function(cond, lab, regexp = NULL, class = NULL, ...,
         "%s threw an %s.\nMessage: %s\nClass:   %s",
         lab,
         cond_type,
-        cond$message,
+        conditionMessage(cond),
         paste(class(cond), collapse = "/")
       ))
     } else {
@@ -243,8 +243,10 @@ compare_condition <- function(cond, lab, regexp = NULL, class = NULL, ...,
     return(sprintf("%s did not throw an %s.", lab, cond_type))
   }
 
+  message <- conditionMessage(cond)
+
   ok_class <- is.null(class) || inherits(cond, class)
-  ok_msg <- is.null(regexp) || grepl(regexp, cond$message, ...)
+  ok_msg <- is.null(regexp) || grepl(regexp, message, ...)
 
   # All good
   if (ok_msg && ok_class) {
@@ -259,14 +261,14 @@ compare_condition <- function(cond, lab, regexp = NULL, class = NULL, ...,
         "Expected class: %s\nActual class:   %s\nMessage:        %s",
         paste0(class, collapse = "/"),
         paste0(class(cond), collapse = "/"),
-        cond$message
+        message
       )
     },
     if (!ok_msg) {
       sprintf(
         "Expected match: %s\nActual message: %s",
         encodeString(regexp, quote = '"'),
-        encodeString(cond$message, quote = '"')
+        encodeString(message, quote = '"')
       )
     }
   )

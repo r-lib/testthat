@@ -67,3 +67,33 @@ test_that("warnings are converted to errors when options('warn') >= 2", {
     expect_error(warning("foo"))
   )
 })
+
+local({
+  # Define method in the global environment so it's consistently reached
+  scoped_bindings(
+    conditionMessage.foobar = function(err) "dispatched!",
+    .env = global_env()
+  )
+  foobar <- error_cnd("foobar")
+
+  test_that("message method is called when expecting error", {
+    expect_error(stop(foobar), "dispatched!", class = "foobar")
+  })
+
+  test_that("message method is called with unexpected message", {
+    expect_error(
+      expect_error(stop(foobar), "unexpected", class = "foobar"),
+      "Actual message: \"dispatched!\"",
+      fixed = TRUE,
+      class = "expectation_failure"
+    )
+  })
+
+  test_that("message method is called with unexpected error", {
+    expect_error(
+      expect_error(stop(foobar), NA, class = "foobar"),
+      "dispatched!",
+      class = "expectation_failure"
+    )
+  })
+})
