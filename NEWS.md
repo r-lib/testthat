@@ -1,6 +1,10 @@
 
 # testthat (development version)
 
+* `expect_error()`, `expect_warning()` and `expect_message()` now call
+  `conditionMessage()` to get the condition message. This generic
+  makes it possible to generate messages at print-time rather than
+  signal-time.
 
 * JunitReporter now reports tests in ISO 8601 in the UTC timezone and also uses
   the maximum 3 decimal place precision (#923).

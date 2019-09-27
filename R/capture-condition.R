@@ -105,5 +105,5 @@ capture_warnings <- function(code) {
 }
 
 get_messages <- function(x) {
-  vapply(x, "[[", "message", FUN.VALUE = character(1))
+  vapply(x, cnd_message, FUN.VALUE = character(1))
 }
