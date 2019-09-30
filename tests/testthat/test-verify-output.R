@@ -9,6 +9,13 @@ test_that("can record all types of output", {
 })
 
 test_that("can record all types of output", {
+  scoped_bindings(
+    .env = global_env(),
+    conditionMessage.foobar = function(cnd) {
+      paste("Dispatched!", cnd$message)
+    }
+  )
+
   verify_output(test_path("test-verify-conditions.txt"), {
     message("Message")
 
@@ -19,6 +26,11 @@ test_that("can record all types of output", {
     "Without calls"
     warning("Warning", call. = FALSE)
     stop("Error", call. = FALSE)
+
+    "With `conditionMessage()` method"
+    cnd_signal(message_cnd("foobar", message = "Message"))
+    cnd_signal(warning_cnd("foobar", message = "Warning"))
+    cnd_signal(error_cnd("foobar", message = "Error"))
   })
 })
 
