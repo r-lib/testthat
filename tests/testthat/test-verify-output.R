@@ -38,3 +38,11 @@ test_that("can't record plots", {
   skip_if(interactive())
   expect_error(verify_output("path", plot(1:10)), "Plots")
 })
+
+test_that("verify_output() splits condition messages on newlines", {
+  verify_output(test_path("test-verify-conditions-lines.txt"), {
+    message("First.\nSecond.")
+    warning("First.\nSecond.")
+    stop("First.\nSecond.")
+  })
+})

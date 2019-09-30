@@ -1,6 +1,9 @@
 
 # testthat (development version)
 
+* `verify_output()` now correctly handles multi-line condition
+  messages.
+
 * `expect_error()`, `expect_warning()` and `expect_message()` now call
   `conditionMessage()` to get the condition message. This generic
   makes it possible to generate messages at print-time rather than
