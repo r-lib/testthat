@@ -60,12 +60,12 @@ output_replay <- function(x) {
 
 #' @export
 output_replay.character <- function(x) {
-  c(strsplit(x, "\n")[[1]], "")
+  c(split_lines(x), "")
 }
 
 #' @export
 output_replay.source <- function(x) {
-  lines <- strsplit(x$src, "\n")[[1]]
+  lines <- split_lines(x$src)
   n <- length(lines)
 
   lines[1] <- paste0("> ", lines[1])
@@ -80,31 +80,41 @@ output_replay.source <- function(x) {
 output_replay.error <- function(x) {
   msg <- cnd_message(x)
   if (is.null(x$call)) {
-    paste0("Error: ", msg)
+    msg <- paste0("Error: ", msg)
   } else {
     call <- deparse(x$call)
-    paste0("Error in ", call, ": ", msg)
+    msg <- paste0("Error in ", call, ": ", msg)
   }
+  split_lines(msg)
 }
 
 #' @export
 output_replay.warning <- function(x) {
   msg <- cnd_message(x)
   if (is.null(x$call)) {
-    paste0("Warning: ", msg)
+    msg <- paste0("Warning: ", msg)
   } else {
     call <- deparse(x$call)
-    paste0("Warning in ", call, ": ", msg)
+    msg <- paste0("Warning in ", call, ": ", msg)
   }
+  split_lines(msg)
 }
 
 #' @export
 output_replay.message <- function(x) {
   # Messages are the only conditions where a new line is appended automatically
-  paste0("Message: ", sub("\n$", "", cnd_message(x)))
+  msg <- paste0("Message: ", sub("\n$", "", cnd_message(x)))
+  split_lines(msg)
 }
 
 #' @export
 output_replay.recordedplot <- function(x) {
   abort("Plots are not supported")
+}
+
+
+# Helpers ------------------------------------------------------------
+
+split_lines <- function(x) {
+  strsplit(x, "\n")[[1]]
 }
