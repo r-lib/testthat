@@ -78,28 +78,30 @@ output_replay.source <- function(x) {
 
 #' @export
 output_replay.error <- function(x) {
+  msg <- cnd_message(x)
   if (is.null(x$call)) {
-    paste0("Error: ", x$message)
+    paste0("Error: ", msg)
   } else {
     call <- deparse(x$call)
-    paste0("Error in ", call, ": ", x$message)
+    paste0("Error in ", call, ": ", msg)
   }
 }
 
 #' @export
 output_replay.warning <- function(x) {
+  msg <- cnd_message(x)
   if (is.null(x$call)) {
-    paste0("Warning: ", x$message)
+    paste0("Warning: ", msg)
   } else {
     call <- deparse(x$call)
-    paste0("Warning in ", call, ": ", x$message)
+    paste0("Warning in ", call, ": ", msg)
   }
 }
 
 #' @export
 output_replay.message <- function(x) {
   # Messages are the only conditions where a new line is appended automatically
-  paste0("Message: ", sub("\n$", "", x$message))
+  paste0("Message: ", sub("\n$", "", cnd_message(x)))
 }
 
 #' @export
