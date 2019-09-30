@@ -166,6 +166,7 @@
 <a href="#testthat-development-version" class="anchor"></a>testthat (development version)<small> Unreleased </small>
 </h1>
 <ul>
+<li><p><code><a href="../reference/verify_output.html">verify_output()</a></code> now correctly handles multi-line condition messages.</p></li>
 <li><p><code><a href="../reference/output-expectations.html">expect_error()</a></code>, <code><a href="../reference/output-expectations.html">expect_warning()</a></code> and <code><a href="../reference/output-expectations.html">expect_message()</a></code> now call <code><a href="https://rdrr.io/r/base/conditions.html">conditionMessage()</a></code> to get the condition message. This generic makes it possible to generate messages at print-time rather than signal-time.</p></li>
 <li><p>JunitReporter now reports tests in ISO 8601 in the UTC timezone and also uses the maximum 3 decimal place precision (<a href='https://github.com/r-lib/testthat/issues/923'>#923</a>).</p></li>
 <li><p>New <code><a href="../reference/expectation.html">exp_signal()</a></code> function. This is a condition signaller that implements the testthat protocol (signal with <code><a href="https://rdrr.io/r/base/stop.html">stop()</a></code> if the expectation is broken, with a <code>continue_test</code> restart).</p></li>
