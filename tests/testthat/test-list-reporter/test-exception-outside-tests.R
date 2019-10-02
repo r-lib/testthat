@@ -1,10 +1,8 @@
 context('exception outside test')
-
-expect_true(TRUE)
+# the objective is to test what happens if some code fails outside of tests
+# i.e. not inside a test_that() call.
 
 test_that("before", expect_true(TRUE))
-
-expect_true(false)
 
 stop('dying outside of tests')
 
