@@ -1,3 +1,4 @@
+docs/
 .Rproj.user
 .Rhistory
 .RData
@@ -5,3 +6,5 @@
 inst/doc
 revdep/checks
 revdep/library
+log/runit.html
+log/runit.log

@@ -2,17 +2,47 @@
 % Please edit documentation in R/expectation.R
 \name{expectation}
 \alias{expectation}
+\alias{new_expectation}
+\alias{exp_signal}
 \alias{is.expectation}
 \title{Construct an expectation object}
 \usage{
-expectation(type, message, srcref = NULL)
+expectation(type, message, srcref = NULL, trace = NULL)
+
+new_expectation(type, message, ..., srcref = NULL, trace = NULL,
+  .subclass = NULL)
+
+exp_signal(exp)
 
 is.expectation(x)
 }
 \arguments{
+\item{type}{Expectation type. Must be one of "success", "failure", "error",
+"skip", "warning".}
+
+\item{message}{Message describing test failure}
+
+\item{srcref}{Optional \code{srcref} giving location of test.}
+
+\item{trace}{An optional backtrace created by \code{\link[rlang:trace_back]{rlang::trace_back()}}.
+When supplied, the expectation is displayed with the backtrace.}
+
+\item{...}{Additional attributes for the expectation object.}
+
+\item{.subclass}{An optional subclass for the expectation object.}
+
+\item{exp}{An expectation object, as created by
+\code{\link[=new_expectation]{new_expectation()}}.}
+
 \item{x}{object to test for class membership}
 }
 \description{
-For advanced use only.
+For advanced use only. If you are creating your own expectation, you should
+call \code{\link[=expect]{expect()}} instead. See \code{vignette("custom-expectation")} for more
+details.
+}
+\details{
+Create an expectation with \code{expectation()} or \code{new_expectation()}
+and signal it with \code{exp_signal()}.
 }
 \keyword{internal}

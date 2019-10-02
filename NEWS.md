@@ -1,60 +1,221 @@
+
 # testthat (development version)
 
-* `expect_output()` gains `width` argument, allowing you to control the 
+* `verify_output()` now correctly handles multi-line condition
+  messages.
+
+* `expect_error()`, `expect_warning()` and `expect_message()` now call
+  `conditionMessage()` to get the condition message. This generic
+  makes it possible to generate messages at print-time rather than
+  signal-time.
+
+* JunitReporter now reports tests in ISO 8601 in the UTC timezone and also uses
+  the maximum 3 decimal place precision (#923).
+
+* New `exp_signal()` function. This is a condition signaller that
+  implements the testthat protocol (signal with `stop()` if the
+  expectation is broken, with a `continue_test` restart).
+
+* Expectations can now be explicitly subclassed with
+  `new_expectation()`. This constructor follows our new conventions
+  for S3 classes and takes an optional subclass and optional
+  attributes.
+
+* Existence of restarts is first checked before invokation. This makes
+  it possible to signal warnings or messages with a different
+  condition signaller (#874).
+
+* Unexpected errors are now printed with a simplified backtrace.
+
+* `expect_error()` and `expect_condition()` now display a backtrace
+  when the error doesn't conform to expectations (#729).
+
+
+# testthat 2.2.1
+
+* Repair regression in `test_rd()` and add a couple of tests to hopefully 
+  detect the problem earlier in the future.
+
+# testthat 2.2.0
+
+## New features
+
+* New `verify_output()` is designed for testing output aimed at humans 
+  (most commonly print methods and error messages). It is a regression
+  test that saves output in a way that makes it easy to review. It is
+  automatically skipped on CRAN (#782, #834).
+
+## Minor improvements and bug fixes
+
+* `as.data.frame.testthat_results()` now always returns a data frame with 13 
+  columns (@jozefhajnala, #887).
+
+* `auto_test_package()` now correctly handles helper files 
+  (`tests/testthat/helper-*.R`), automatically reloading all code and 
+  rerunning all tests (@CorradoLanera, #376, #896).
+
+* `expect_match()` now displays `info` even when match length is 0 (#867).
+
+* `expect_s3_class()` gains new `exact` argument that allows you to check
+  for an exact class match, not just inheritance (#885).
+
+* `fail()` and `succeed()` gain `info` argument, which is passed along to 
+  `expect()`.
+  
+* `test_examples()` gets some minor fixes: it now returns the results 
+  invisibly, doesn't assume that examples should contain tests, and 
+  documents that you shouldn't be using it routinely (#841).
+
+* `test_file()` only calls `Reporter$end_context()` if a context was started,
+  fixing an error in `TeamcityReporter` (@atheriel, #883).
+
+* `skip()` now reports reason for skipping as: `Reason: {skip condition}` 
+  (@patr1ckm, #868).
+
+* `skip_if()` and `skip_if_not()` now report `Reason: {skip condition} is TRUE` 
+  and `Reason: {skip condition} is not TRUE` respectively (@	patr1ckm, #868).
+  
+* `skip_if_translated()` now tests for translation of a specific message. 
+  This is more robust than the previous approach because translation
+  happens message-by-message, not necessarily for the entire session (#879)
+  (and in general, it's impossible to determine what language R is currently
+  using).
+
+* `skip_on_covr()` allows you to skip tests when covr is running.
+  (@ianmcook, #895)
+  
+* `expect_known_value()` gains a new serialisation `version` argument,
+  defaulting to 2. Prevents the `.rds` files created to hold reference objects
+  from making a package appear to require R >= 3.5 (#888 @jennybc).
+
+# testthat 2.1.1
+
+* Fix test failures in strict latin1 locale
+
+# testthat 2.1.0
+
+## New expectations
+
+* New `expect_visible()` and `expect_invisible()` make it easier to check if
+  a function call returns its result visibly or invisibly (#719).
+
+* New `expect_mapequal(x, y)` checks that `x` and `y` have the same names,
+  and the same value associated with each name (i.e. they compare the values
+  of the vector standardising the order of the names) (#863).
+
+* New `expect_vector()` is a wrapper around `vctrs::vec_assert()` making it
+  easy to test against the vctrs definitions of prototype and size (#846).
+  (Currently requires development version of vctrs.)
+
+## Improvements to existing expectations
+
+* All expectations give clearer error messages if you forget the `object`
+  or `expected` arguments (#743).
+
+* `expect_equal()` now correctly compares infinite values (#789).
+
+* In `expect_equal_to_reference()`, the default value for `update` is
+  now `FALSE` (@BrodieG, #683).
+
+* `expect_error()` now returns the error object as documentated (#724).
+  It also now warns if you're using a classed expectation and you're
+  not using the `class` argument. This is good practice as it decouples the 
+  error object (which tends to be stable) from its rendering to the user 
+  (which tends to be fragile) (#816).
+
+* `expect_identical()` gains a `...` argument to pass additional arguments
+  down to `identical()` (#714).
+
+* `expect_lt()`, `expect_lte()`, `expect_gt()` `expect_gte()` now handle `Inf`
+  and `NA` arguments appropriately (#732), and no longer require the inputs
+  to be numeric.
+
+* `expect_output()` gains a `width` argument, allowing you to control the 
   output width. This does not inherit from `getOption("width")`, ensuring 
   that tests return the same results regardless of environment (#805).
 
-* Number of passed tests and original results are available when converting
-  test results to a data frame (#675).
+* `expect_setequal()` now works with more vector types (including lists),
+  because it uses `%in%`, rather than `sort()`. It also warns if the inputs 
+  are named, as this suggests that your mental model of how `expect_setequal()` 
+  works is wrong (#750).
 
-*  `is_true()` and `is_false()` have been deprecated, because they conflict
-   with other functions in the tidyverse.
+* `is_true()` and `is_false()` have been deprecated because they conflict
+  with other functions in the tidyverse.
+
+## Reporters
+
+* Reporter documentation has been considerably improved (#657).
+
+* `CheckReporter`, used by R CMD check, now includes a count of warnings.
+
+* `JUnitReporter` no longer replaces `.` in class names (#753), and
+  creates ouput that should be more compatible with Jenkins (#806, @comicfans).
+
+* `ListReporter` now records number of passed tests and original results in 
+  new columns (#675).
+
+* `ProgressReporter`, the default reporter, now:
+
+    * Automatically generates a context from the file name. We no longer
+      recommend the use of `context()` and instead encourage you to delete it,
+      allowing the context to be autogenerated from the file name.
+      
+      This also eliminates the error that occured if tests can before the
+      first `context()` (#700, #705). 
+
+    * Gains a `update_interval` parameter to control how often updates are 
+      printed (default 0.1 s). This prevents large printing overhead
+      for very fast tests. (#701, @jimhester)
+
+    * Uses a 3 character wide column to display test successes, so up to
+      999 successful tests can be displayed without changing the alignment 
+      (#712).
+
+* `reporter$end_reporter()` is now only called when testing completes 
+  successfully. This ensures that you don't get unnecessary output when the 
+  test fails partway through (#727).
+
+## Skips
 
 * `skip_if_offline()` skips tests if an internet connection is not available
   (#685).
-* `skip_on_ci()` skips tests on continuous integration systems 
-  (@mbjoseph, #825).
 
-* Fixed an issue where `devtools::test()` could fail if run multiple times
-  within the same R session for a package containing Catch tests.
+* `skip_on_ci()` skips tests on continuous integration systems 
+  (@mbjoseph, #825) by looking for a `CI` env var..
+
+## Other new features
+
+* New `testthat_examples()` and `testthat_example()` make it easy to access
+  new test files bundled with the package. These are used in various examples
+  to make it easier to understand how to use the package.
+
+* New `local_mock()` which allows you to mock a function without having to
+  add an additional layer of indentation as with `with_mock()` (#856).
+
+## Other minor improvements and bug fixes
+
+* `auto_test_package()` works better with recent devtools and also watches
+  `src/` for changes (#809).
+
+* `expect_s3_class()` now works with unquoting (@jalsalam, #771).
+
+* `expectation` objects now contain the failure message, even when successful 
+  (#836)
+
+* `devtools::test()` no longer fails if run multiple times within the same R 
+  session for a package containing Catch tests.
   ([devtools #1832](https://github.com/r-lib/devtools/issues/1832))
 
-* `testing_package()` function added to retrieve the name of the package
-  currently being tested (#699).
+* New `testing_package()` retrieves the name of the package currently being 
+  tested (#699).
 
-* Pass through warnings when `options(warn = 2)` is set (#721, @yutannihilation).
+* `run_testthat_tests` C entrypoint is registered more robustly.
 
-* Progress reporter now generates a context from the file name and no longer
-  errors if tests occur before a context (#700, #705). We no longer
-  recommend the use of `context()` and instead encourage you to delete it,
-  allowing the context to be autogenerated from the file name.
+* `skip()` now always produces a `message` of length 1, as expected elsewhere
+  in testthat (#791).
 
-* The progress reporter now uses a 3 character wide column to display test
-  successes, so up to 999 successful tests can be displayed without changing
-  the alignment (#712).
-
-* `expect_lt()`, `expect_lte()`, `expect_gt()` `expect_gte()` now handle `Inf`
-  and `NA` arguments appropriately (#732).
-
-* `expect_identical()` gains a `...` argument, to pass additional arguments
-  down to `identical()` (#714).
-
-* `expect_equal_to_reference` `update` parameter default value restored to
-  FALSE ([#683 @BrodieG](https://github.com/r-lib/testthat/issues/683)).
-
-* Fixed an issue where the `run_testthat_tests` entrypoint would fail to
-  be dynamically resolved when not explicitly registered.
-
-* ProgressReporter gains a `update_interval` parameter to control how often
-  updates are printed (default 0.1 s). This prevents large printing overhead
-  for very quick tests. (#701, @jimhester)
-
-* `expect_error()` now returns the error object as documentated (#724).
-
-* `expect_lt()` and friends now work with any object that defines the
-  appropriate comparison method. (#777)
-
-* improve junit xml compatibility for jenkins. (#806, @comicfans)
+* Warnings are passed through even when `options(warn = 2)` is set 
+  (@yutannihilation, #721).
 
 # testthat 2.0.1
 

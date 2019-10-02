@@ -3,7 +3,6 @@
 \name{equality-expectations}
 \alias{equality-expectations}
 \alias{expect_equal}
-\alias{expect_setequal}
 \alias{expect_equivalent}
 \alias{expect_identical}
 \alias{expect_reference}
@@ -11,8 +10,6 @@
 \usage{
 expect_equal(object, expected, ..., info = NULL, label = NULL,
   expected.label = NULL)
-
-expect_setequal(object, expected)
 
 expect_equivalent(object, expected, ..., info = NULL, label = NULL,
   expected.label = NULL)
@@ -24,28 +21,30 @@ expect_reference(object, expected, info = NULL, label = NULL,
   expected.label = NULL)
 }
 \arguments{
-\item{object}{object to test}
+\item{object, expected}{Computation and value to compare it to.
 
-\item{expected}{Expected value}
+Both arguments supports limited unquoting to make it easier to generate
+readable failures within a function or for loop. See \link{quasi_label} for
+more details.}
 
-\item{...}{other values passed to \code{\link[=all.equal]{all.equal()}} or \code{[identical()]}.}
+\item{...}{For \code{expect_equal()} and \code{expect_equivalent()}, passed on
+\code{\link[=compare]{compare()}}, for \code{expect_identical()} passed on to \code{\link[=identical]{identical()}}.
+Used to control the details of the comparison.}
 
-\item{info}{extra information to be included in the message (useful when
-writing tests in loops).}
+\item{info}{Extra information to be included in the message. This argument
+is soft-deprecated and should not be used in new code. Instead see
+alternatives in \link{quasi_label}.}
 
-\item{label}{object label. When \code{NULL}, computed from deparsed object.}
-
-\item{expected.label}{Equivalent of \code{label} for shortcut form.}
+\item{label, expected.label}{Used to customise failure messages. For expert
+use only.}
 }
 \description{
 \itemize{
-\item \code{expect_identical} tests with \code{\link[=identical]{identical()}}
-\item \code{expect_equal} tests with \code{\link[=all.equal]{all.equal()}}
-\item \code{expect_setequal} ignores order and duplicates
-\item \code{expect_equivalent} tests with \code{\link[=all.equal]{all.equal()}} and
+\item \code{expect_identical()} compares values with \code{\link[=identical]{identical()}}.
+\item \code{expect_equal()} compares values  with \code{\link[=all.equal]{all.equal()}}
+\item \code{expect_equivalent()} compares values with \code{\link[=all.equal]{all.equal()}} and
 \code{check.attributes = FALSE}
-\item \code{expect_reference} tests if two symbols point to the same underlying
-object in memory (requires rlang 1.2.9000 or greater)
+\item \code{expect_reference()} compares the underlying memory addresses.
 }
 }
 \examples{
@@ -78,9 +77,11 @@ names(b) <- letters[1:3]
 expect_equivalent(a, b)
 }
 \seealso{
+\code{expect_setequal()} to test for set equality.
+
 Other expectations: \code{\link{comparison-expectations}},
   \code{\link{expect_length}}, \code{\link{expect_match}},
-  \code{\link{expect_named}},
+  \code{\link{expect_named}}, \code{\link{expect_null}},
   \code{\link{inheritance-expectations}},
   \code{\link{logical-expectations}},
   \code{\link{output-expectations}}

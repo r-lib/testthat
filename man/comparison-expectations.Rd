@@ -19,15 +19,21 @@ expect_gt(object, expected, label = NULL, expected.label = NULL)
 expect_gte(object, expected, label = NULL, expected.label = NULL)
 }
 \arguments{
-\item{object}{object to test}
+\item{object}{Object to test.
+
+Supports limited unquoting to make it easier to generate readable failures
+within a function or for loop. See \link{quasi_label} for more details.}
 
 \item{expected}{Single numeric value to compare.}
 
-\item{label}{object label. When \code{NULL}, computed from deparsed object.}
+\item{label}{Used to customise failure messages. For expert use only.}
 
-\item{expected.label}{Equivalent of \code{label} for shortcut form.}
+\item{expected.label}{Used to customise failure messages. For expert
+use only.}
 
-\item{...}{other values passed to \code{\link[=all.equal]{all.equal()}} or \code{[identical()]}.}
+\item{...}{For \code{expect_equal()} and \code{expect_equivalent()}, passed on
+\code{\link[=compare]{compare()}}, for \code{expect_identical()} passed on to \code{\link[=identical]{identical()}}.
+Used to control the details of the comparison.}
 }
 \description{
 Expectation: is returned value less or greater than specified value?
@@ -49,7 +55,7 @@ expect_gt(9, 10)
 \seealso{
 Other expectations: \code{\link{equality-expectations}},
   \code{\link{expect_length}}, \code{\link{expect_match}},
-  \code{\link{expect_named}},
+  \code{\link{expect_named}}, \code{\link{expect_null}},
   \code{\link{inheritance-expectations}},
   \code{\link{logical-expectations}},
   \code{\link{output-expectations}}

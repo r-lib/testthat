@@ -53,7 +53,7 @@ local({
         sep = "\n")
 
     cat(
-      sprintf("useDynLib(%s)", pkgName),
+      sprintf("useDynLib(%s, .registration=TRUE)", pkgName),
       file = file.path(pkgPath, "NAMESPACE"),
       append = TRUE,
       sep = "\n"
@@ -75,15 +75,17 @@ local({
 
     }
 
-    quietly(devtools::install(pkgPath, quick = TRUE, quiet = TRUE))
+    devtools::install(pkgPath, quick = TRUE, quiet = FALSE)
 
     library(pkgName, character.only = TRUE)
-    stopifnot(quietly(.Call("run_testthat_tests", PACKAGE = pkgName)))
+    stopifnot(.Call("run_testthat_tests", PACKAGE = pkgName))
 
     devtools::unload(pkgName)
   }
 
-  perform_test("testthatclient1",  TRUE)
-  perform_test("testthatclient2", FALSE)
+  withr::with_envvar(c(R_TESTS = ''),
+                       perform_test("testthatclient1",  TRUE))
+  withr::with_envvar(c(R_TESTS = ''),
+                     perform_test("testthatclient2", FALSE))
 
 })

@@ -15,6 +15,7 @@ CheckReporter <- R6::R6Class("CheckReporter",
     n_ok = 0L,
     n_skip = 0L,
     n_fail = 0L,
+    n_warn = 0L,
 
     stop_on_failure = TRUE,
 
@@ -26,6 +27,10 @@ CheckReporter <- R6::R6Class("CheckReporter",
     add_result = function(context, test, result) {
       if (expectation_skip(result)) {
         self$n_skip <- self$n_skip + 1L
+        return()
+      }
+      if (expectation_warning(result)) {
+        self$n_warn <- self$n_warn + 1L
         return()
       }
       if (expectation_ok(result)) {
@@ -43,9 +48,12 @@ CheckReporter <- R6::R6Class("CheckReporter",
     end_reporter = function() {
       self$rule("testthat results ", line = 2)
       self$cat_line(
-        "OK: ", self$n_ok, " ",
-        "SKIPPED: ", self$n_skip, " ",
-        "FAILED: ", self$n_fail
+        "[ ",
+        "OK: ", self$n_ok, " | ",
+        "SKIPPED: ", self$n_skip, " | ",
+        "WARNINGS: ", self$n_warn, " | ",
+        "FAILED: ", self$n_fail,
+        " ]"
       )
 
       if (self$n_fail == 0) return()

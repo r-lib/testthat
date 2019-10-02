@@ -8,6 +8,11 @@ test_that("basic comparisons work", {
   expect_success(expect_gte(10, 10))
 })
 
+test_that("comparison result object invisibly", {
+  out <- expect_invisible(expect_lt(1, 10))
+  expect_equal(out, 1)
+})
+
 test_that("comparisons with Inf work", {
   expect_success(expect_lt(10, Inf))
   expect_failure(expect_lt(Inf, Inf))
@@ -32,9 +37,18 @@ test_that("comparisons with NA work", {
 
 test_that("comparisons with more complicated objects work", {
   time <- Sys.time()
-  time2 <- Sys.time()
+  time2 <- time + 1
   expect_success(expect_lt(time, time2))
   expect_success(expect_lte(time, time2))
   expect_success(expect_gt(time2, time))
   expect_success(expect_gte(time2, time))
+})
+
+test_that("comparison must yield a single logical", {
+  expect_error(expect_lt(1:10, 5), "single logical")
+})
+
+test_that("wordly versions are deprecated", {
+  expect_warning(expect_less_than(1, 2), "Deprecated")
+  expect_warning(expect_more_than(2, 1), "Deprecated")
 })

@@ -11,6 +11,7 @@
 \alias{skip_on_travis}
 \alias{skip_on_appveyor}
 \alias{skip_on_ci}
+\alias{skip_on_covr}
 \alias{skip_on_bioc}
 \alias{skip_if_translated}
 \title{Skip a test.}
@@ -35,9 +36,11 @@ skip_on_appveyor()
 
 skip_on_ci()
 
+skip_on_covr()
+
 skip_on_bioc()
 
-skip_if_translated()
+skip_if_translated(msgid = "'\%s' not found")
 }
 \arguments{
 \item{message}{A message describing why the test was skipped.}
@@ -53,6 +56,10 @@ skip_if_translated()
 
 \item{os}{Character vector of system names. Supported values are
 \code{"windows"}, \code{"mac"}, \code{"linux"} and \code{"solaris"}.}
+
+\item{msgid}{R message identifier used to check for translation: the default
+uses a message included in most translation packs. See the complete list in
+\href{https://github.com/wch/r-source/blob/master/src/library/base/po/R-base.pot}{R-base.pot}.}
 }
 \description{
 This function allows you to skip a test if it's not currently available.
@@ -77,14 +84,17 @@ using \code{\link[curl:nslookup]{curl::nslookup()}}.
 \code{skip_on_cran()} skips tests on CRAN, using the \code{NOT_CRAN}
 environment variable set by devtools.
 
-\code{skip_on_travis()} skips tests on travis by inspecting the
+\code{skip_on_travis()} skips tests on Travis CI by inspecting the
 \code{TRAVIS} environment variable.
 
-\code{skip_on_appveyor()} skips tests on appveyor by inspecting the
+\code{skip_on_appveyor()} skips tests on AppVeyor by inspecting the
 \code{APPVEYOR} environment variable.
 
-#' \code{skip_on_ci()} skips tests on continuous integration systems by inspecting
+\code{skip_on_ci()} skips tests on continuous integration systems by inspecting
 the \code{CI} environment variable.
+
+\code{skip_on_covr()} skips tests when covr is running by inspecting the
+\code{R_COVR} environment variable
 
 \code{skip_on_bioc()} skips tests on Bioconductor by inspecting the
 \code{BBS_HOME} environment variable.

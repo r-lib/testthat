@@ -1,85 +1,30 @@
-test_that("can locate reporter from name", {
-  expect_that(find_reporter("minimal"), equals(MinimalReporter$new()))
-  expect_that(find_reporter("summary"), equals(SummaryReporter$new()))
-  expect_that(find_reporter("tap"),     equals(TapReporter$new()))
-  expect_that(find_reporter("list"),    equals(ListReporter$new()))
-  expect_that(find_reporter("multi"),   equals(MultiReporter$new()))
-  expect_that(find_reporter("junit"),   equals(JunitReporter$new()))
-  expect_that(find_reporter(""),        equals(Reporter$new()))
-})
 
-test_that("useful error message if can't find reporter", {
-  expect_error(
-    find_reporter(c("summary", "blah")),
-    "Can not find test reporter blah"
-  )
-})
+# Disable srcrefs because they differ across systems
+withr::local_options(list(rlang_trace_format_srcrefs = FALSE))
 
-test_that("character vector yields multi reporter", {
-  expect_equal(
-    find_reporter(c("summary", "stop")),
-    MultiReporter$new(
-      reporters = list(
-        SummaryReporter$new(),
-        StopReporter$new()
-      )
-    )
-  )
-  expect_equal(
-    find_reporter(c("teamcity", "summary", "list")),
-    MultiReporter$new(
-      reporters = list(
-        TeamcityReporter$new(),
-        SummaryReporter$new(),
-        ListReporter$new()
-      )
-    )
-  )
-})
+skip_if(getRversion() < "3.4", "Fails because of new `eval()` call structure")
 
-test_reporter <- function(reporter) {
-  withr::local_options(list(width = 80, crayon.enabled = FALSE))
-  withr::local_envvar(list(RSTUDIO_CONSOLE_WIDTH = 80))
-
-  test_file(test_path("reporters/tests.R"), reporter, wrap = FALSE)
-}
+# rlang backtraces are sensitive to upstream changes
+skip_on_cran()
 
 test_that("reporters produce consistent output", {
-  save_report <- function(name, reporter = find_reporter(name)) {
-    path <- test_path("reporters", paste0(name, ".txt"))
-    withr::with_options(
-      c(cli.unicode = TRUE),
-      expect_known_output(test_reporter(reporter), path)
-    )
-  }
+  expect_report_unchanged("location")
+  expect_report_unchanged("minimal")
+  expect_report_unchanged("tap")
+  expect_report_unchanged("teamcity")
+  expect_report_unchanged("silent")
+  expect_report_unchanged("rstudio")
 
-  with_mock(
-    show_menu = function(choices, title = NULL) {
-      cat(
-        paste0(format(seq_along(choices)), ": ", choices, sep = "\n"), "\n",
-        sep = ""
-      )
-      0L
-    },
-    sink_number = function() 0L,
-    save_report("debug")
-  )
-  save_report("check", CheckReporter$new(stop_on_failure = FALSE))
-  save_report("progress", ProgressReporter$new(show_praise = FALSE, min_time = Inf, update_interval = 0))
-  save_report("summary", SummaryReporter$new(show_praise = FALSE, omit_dots = FALSE))
-  save_report("summary-2", SummaryReporter$new(show_praise = FALSE, max_reports = 2))
-  save_report("summary-no-dots", SummaryReporter$new(show_praise = FALSE, omit_dots = TRUE))
-  save_report("location")
-  save_report("minimal")
-  save_report("tap")
-  save_report("teamcity")
-  save_report("silent")
-  save_report("rstudio")
-  save_report("junit", reporter = createJunitReporterMock())
+  expect_report_unchanged("check", CheckReporter$new(stop_on_failure = FALSE))
+  expect_report_unchanged("junit", reporter = JunitReporterMock)
+  expect_report_unchanged("progress", ProgressReporter$new(show_praise = FALSE, min_time = Inf, update_interval = 0))
+  expect_report_unchanged("summary", SummaryReporter$new(show_praise = FALSE, omit_dots = FALSE))
+  expect_report_unchanged("summary-2", SummaryReporter$new(show_praise = FALSE, max_reports = 2))
+  expect_report_unchanged("summary-no-dots", SummaryReporter$new(show_praise = FALSE, omit_dots = TRUE))
 
   # Test that MultiReporter can write to two different places
   tap_file <- tempfile()
-  save_report("summary", reporter = MultiReporter$new(list(
+  expect_report_unchanged("summary", reporter = MultiReporter$new(list(
     SummaryReporter$new(show_praise = FALSE, omit_dots = FALSE),
     TapReporter$new(file = tap_file)
   )))
@@ -89,64 +34,42 @@ test_that("reporters produce consistent output", {
   )
 })
 
-
-expect_report_to_file <- function(name,
-                                  reporter = find_reporter_one(name, ...),
-                                  output_file,
-                                  ...) {
-  # output_file is where we expect output to be written to, whether we pass it
-  # as an argument to Reporter$new() (here, via the ...), or whether it is set
-  # in an option.
-  path <- test_path("reporters", paste0(name, ".txt"))
-  withr::with_options(
-    c(cli.unicode = TRUE),
-    expect_silent(test_reporter(reporter))
+test_that('debug reporter produces consistent output', {
+  withr::local_options(c(testthat_format_srcrefs = FALSE))
+  with_mock(
+    show_menu = function(choices, title = NULL) {
+      cat(paste0(format(seq_along(choices)), ": ", choices, sep = "\n"), "\n", sep = "")
+      0L
+    },
+    sink_number = function() 0L,
+    expect_report_unchanged("debug")
   )
-  expect_equal(read_lines(output_file, encoding = "unknown"), enc2native(read_lines(path)))
-}
+})
 
 test_that("reporters accept a 'file' argument and write to that location", {
-  output <- tempfile()
-  expect_report_to_file(
-    "check",
-    CheckReporter$new(stop_on_failure = FALSE, file = output),
-    output_file = output
-  )
-  expect_report_to_file(
-    "progress",
-    ProgressReporter$new(show_praise = FALSE, min_time = Inf, update_interval = 0, file = output),
-    output_file = output
-  )
-  expect_report_to_file(
-    "summary",
-    SummaryReporter$new(show_praise = FALSE, omit_dots = FALSE, file = output),
-    output_file = output
-  )
-  expect_report_to_file("location", file = output, output_file = output)
-  expect_report_to_file("minimal", file = output, output_file = output)
-  expect_report_to_file("tap", file = output, output_file = output)
-  expect_report_to_file("teamcity", file = output, output_file = output)
-  expect_report_to_file("rstudio", file = output, output_file = output)
-  expect_report_to_file(
-    "junit",
-    reporter = createJunitReporterMock(file = output),
-    output_file = output
-  )
+  expect_report_to_file(CheckReporter, stop_on_failure = FALSE)
+  expect_report_to_file(JunitReporterMock)
+  expect_report_to_file(LocationReporter)
+  expect_report_to_file(MinimalReporter)
+  expect_report_to_file(ProgressReporter, show_praise = FALSE, min_time = Inf, update_interval = 0)
+  expect_report_to_file(SummaryReporter, show_praise = FALSE, omit_dots = FALSE)
+  expect_report_to_file(TapReporter)
+  expect_report_to_file(TeamcityReporter)
+  expect_report_to_file(RstudioReporter)
 })
 
 test_that("reporters write to 'testthat.output_file', if specified", {
-  output_option <- tempfile()
-  withr::with_options(list(testthat.output_file = output_option), {
-    expect_report_to_file(
-      "summary",
-      SummaryReporter$new(show_praise = FALSE, omit_dots = FALSE),
-      output_file = output_option
-    )
-  })
+  path <- tempfile()
+  withr::local_options(c(testthat.output_file = path))
+
+  test_file(test_path("reporters/tests.R"), MinimalReporter$new(), wrap = FALSE)
+  expect_true(file.exists(path))
 })
 
-test_that("silent reporter accepts the 'file' argument but doesn't write anything", {
-  output <- tempfile()
-  expect_silent(test_reporter(SilentReporter$new(file = output)))
-  expect_false(file.exists(output))
+test_that("backtraces are reported", {
+  expect_report_unchanged("progress-backtraces", file = "reporters/backtraces.R", ProgressReporter$new(show_praise = FALSE, min_time = Inf, update_interval = 0))
+})
+
+test_that("stop reporter stops at first failure", {
+  expect_report_unchanged("stop", find_reporter("stop"), file = "reporters/fail.R")
 })

@@ -12,12 +12,16 @@ expect_known_output(object, file, update = TRUE, ..., info = NULL,
   label = NULL, print = FALSE, width = 80)
 
 expect_known_value(object, file, update = TRUE, ..., info = NULL,
-  label = NULL)
+  label = NULL, version = 2)
 
 expect_known_hash(object, hash = NULL)
 }
 \arguments{
-\item{object}{object to test}
+\item{object}{Computation and value to compare it to.
+
+Both arguments supports limited unquoting to make it easier to generate
+readable failures within a function or for loop. See \link{quasi_label} for
+more details.}
 
 \item{file}{File path where known value/output will be stored.}
 
@@ -25,12 +29,16 @@ expect_known_hash(object, hash = NULL)
 the expectation that you'll notice changes because of the first failure,
 and then see the modified files in git.}
 
-\item{...}{other values passed to \code{\link[=all.equal]{all.equal()}} or \code{[identical()]}.}
+\item{...}{For \code{expect_equal()} and \code{expect_equivalent()}, passed on
+\code{\link[=compare]{compare()}}, for \code{expect_identical()} passed on to \code{\link[=identical]{identical()}}.
+Used to control the details of the comparison.}
 
-\item{info}{extra information to be included in the message (useful when
-writing tests in loops).}
+\item{info}{Extra information to be included in the message. This argument
+is soft-deprecated and should not be used in new code. Instead see
+alternatives in \link{quasi_label}.}
 
-\item{label}{object label. When \code{NULL}, computed from deparsed object.}
+\item{label}{Used to customise failure messages. For expert
+use only.}
 
 \item{print}{If \code{TRUE} and the result of evaluating \code{code} is
 visible this will print the result, ensuring that the output of printing
@@ -40,6 +48,10 @@ the object is included in the overall output}
 inherit from \code{getOption("width")} so that tests always use the same
 output width, minimising spurious differences.}
 
+\item{version}{The serialization format version to use. The default, 2, was
+the default format from R 1.4.0 to 3.5.3. Version 3 became the default from
+R 3.6.0 and can only be read by R versions 3.5.0 and higher.}
+
 \item{hash}{Known hash value. Leave empty and you'll be informed what
 to use in the test output.}
 }
@@ -47,7 +59,7 @@ to use in the test output.}
 For complex printed output and objects, it is often challenging to describe
 exactly what you expect to see. \code{expect_known_value()} and
 \code{expect_known_output()} provide a slightly weaker guarantee, simply
-asserting that the values have no changed since the last time that you ran
+asserting that the values have not changed since the last time that you ran
 them.
 }
 \details{
@@ -56,9 +68,9 @@ there is no way to revert to previous values. Git is particularly useful
 in conjunction with \code{expect_known_output()} as the diffs will show you
 exactly what has changed.
 
-Note that known values updates will only updated when running tests
+Note that known values updates will only be updated when running tests
 interactively. \code{R CMD check} clones the package source so any changes to
-the reference files will occured a temporary directory, and will not be
+the reference files will occur in a temporary directory, and will not be
 synchronised back to the source package.
 }
 \examples{
@@ -67,7 +79,7 @@ tmp <- tempfile()
 # The first run always succeeds
 expect_known_output(mtcars[1:10, ], tmp, print = TRUE)
 
-# Subsequent runs will suceed only if the file is unchanged
+# Subsequent runs will succeed only if the file is unchanged
 # This will succeed:
 expect_known_output(mtcars[1:10, ], tmp, print = TRUE)
 

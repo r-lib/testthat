@@ -41,25 +41,31 @@
 #' test_check("yourpackage")
 #' ```
 #'
-#' @param path path to tests
-#' @param package   package name
+#' @param path Path to directory containing tests.
+#' @param package Name of installed package.
 #' @param filter If not `NULL`, only tests with file names matching this
-#'   regular expression will be executed.  Matching will take on the file
+#'   regular expression will be executed. Matching be performed on the file
 #'   name after it has been stripped of `"test-"` and `".R"`.
 #' @param ... Additional arguments passed to [grepl()] to control filtering.
 #' @param stop_on_failure If `TRUE`, throw an error if any tests fail.
+#'
+#'   For historical reasons, the default value of `stop_on_failure` is `TRUE`
+#'   for  `test_package()` and `test_check()` but `FALSE` for `test_dir()`, so
+#'   if you're calling `test_dir()` you may want to consider explicitly setting
+#'   `stop_on_failure = TRUE`.
 #' @param stop_on_warning If `TRUE`, throw an error if any tests generate
 #'   warnings.
 #' @inheritParams test_file
-#' @return The results of the reporter function on all test results.
-#' @return The results as a "testthat_results" (list)
+#' @return A list of test results.
 #' @export
 #' @examples
-#' \dontrun{test_package("testthat")}
+#' test_dir(testthat_examples(), reporter = "summary")
+#' test_dir(testthat_examples(), reporter = "minimal")
 test_dir <- function(path,
                      filter = NULL,
                      reporter = default_reporter(),
-                     env = test_env(), ...,
+                     env = test_env(),
+                     ...,
                      encoding = "unknown",
                      load_helpers = TRUE,
                      stop_on_failure = FALSE,
@@ -69,7 +75,15 @@ test_dir <- function(path,
     warning("`encoding` is deprecated; all files now assumed to be UTF-8", call. = FALSE)
   }
 
-  withr::local_envvar(list(R_TESTS = "", TESTTHAT = "true"))
+  # Find package root, if any, so backtrace srcrefs refer to R/ and
+  # tests/ files consistently
+  testthat_dir <- maybe_root_dir(path)
+
+  withr::local_envvar(list(
+    R_TESTS = "",
+    TESTTHAT = "true",
+    TESTTHAT_DIR = testthat_dir
+  ))
 
   if (load_helpers) {
     source_test_helpers(path, env)
@@ -188,7 +202,11 @@ test_package_dir <- function(package, test_path, filter, reporter, ...,
   env <- test_pkg_env(package)
   withr::local_options(list(topLevelEnvironment = env))
 
-  withr::local_envvar(list(TESTTHAT_PKG = package))
+  withr::local_envvar(list(
+    TESTTHAT_PKG = package,
+    TESTTHAT_DIR = maybe_root_dir(test_path)
+  ))
+
   test_dir(
     path = test_path,
     reporter = reporter,

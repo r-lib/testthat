@@ -1,0 +1,48 @@
+test_that("can record all types of output", {
+  verify_output(test_path("test-verify-output.txt"), {
+    "Output"
+    1 + 2
+    invisible(1:10)
+    12345678 + 12345678 + 12345678 + 12345678 + 12345678 + 12345678 +
+      12345678 + 12345678 + 12345678 + 12345678 + 12345678
+  })
+})
+
+test_that("can record all types of output", {
+  scoped_bindings(
+    .env = global_env(),
+    conditionMessage.foobar = function(cnd) {
+      paste("Dispatched!", cnd$message)
+    }
+  )
+
+  verify_output(test_path("test-verify-conditions.txt"), {
+    message("Message")
+
+    "With calls"
+    warning("Warning")
+    stop("Error")
+
+    "Without calls"
+    warning("Warning", call. = FALSE)
+    stop("Error", call. = FALSE)
+
+    "With `conditionMessage()` method"
+    cnd_signal(message_cnd("foobar", message = "Message"))
+    cnd_signal(warning_cnd("foobar", message = "Warning"))
+    cnd_signal(error_cnd("foobar", message = "Error"))
+  })
+})
+
+test_that("can't record plots", {
+  skip_if(interactive())
+  expect_error(verify_output("path", plot(1:10)), "Plots")
+})
+
+test_that("verify_output() splits condition messages on newlines", {
+  verify_output(test_path("test-verify-conditions-lines.txt"), {
+    message("First.\nSecond.")
+    warning("First.\nSecond.")
+    stop("First.\nSecond.")
+  })
+})

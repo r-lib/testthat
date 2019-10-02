@@ -37,7 +37,17 @@ test_that("returns first argument", {
   expect_equal(expect_output(1, NA), 1)
 })
 
-test_that("Unicode characters in output", {
+test_that("uses unicode characters in output where available", {
+  skip_if_not(l10n_info()$`UTF-8`)
+
   bar <- "\u2551"
   expect_success(expect_output(cat(bar), "\u2551"))
+})
+
+test_that("simple_error returns TRUE for basic errors", {
+  is_simple <- function(x) simple_error(catch_cnd(x))
+
+  expect_true(is_simple(stop("!")))
+  expect_true(is_simple(abort("!")))
+  expect_false(is_simple(abort("!", .subclass = "error_custom")))
 })

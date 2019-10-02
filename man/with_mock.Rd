@@ -2,9 +2,12 @@
 % Please edit documentation in R/mock.R
 \name{with_mock}
 \alias{with_mock}
+\alias{local_mock}
 \title{Mock functions in a package.}
 \usage{
 with_mock(..., .env = topenv())
+
+local_mock(..., .env = topenv(), .local_envir = parent.frame())
 }
 \arguments{
 \item{...}{named parameters redefine mocked functions, unnamed parameters
@@ -13,6 +16,9 @@ will be evaluated after mocking the functions}
 \item{.env}{the environment in which to patch the functions,
 defaults to the top-level environment.  A character is interpreted as
 package name.}
+
+\item{.local_env}{Environment in which to add exit hander.
+For expert use only.}
 }
 \value{
 The result of the last unnamed parameter
@@ -38,7 +44,7 @@ with_mock(
   add_one = function(x) x - 1,
   expect_equal(add_one(2), 1)
 )
-square_add_one <- function(x) add_one(x) ^ 2
+square_add_one <- function(x) add_one(x)^2
 expect_equal(square_add_one(2), 9)
 expect_equal(
   with_mock(
@@ -47,6 +53,17 @@ expect_equal(
   ),
   1
 )
+
+# local_mock() -------------------------------
+plus <- function(x, y) x + y
+test_that("plus(1, 1) == 2", {
+  expect_equal(plus(1, 1), 2)
+})
+
+test_that("plus(1, 1) == 3", {
+  local_mock(plus = function(x, y) 3)
+  expect_equal(plus(1, 1), 3)
+})
 }
 \references{
 Suraj Gupta (2012): \href{http://obeautifulcode.com/R/How-R-Searches-And-Finds-Stuff}{How R Searches And Finds Stuff}

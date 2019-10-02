@@ -3,14 +3,17 @@
 \name{fail}
 \alias{fail}
 \alias{succeed}
-\title{Default expectations that alway succeed or fail.}
+\title{Default expectations that always succeed or fail.}
 \usage{
-fail(message = "Failure has been forced")
+fail(message = "Failure has been forced", info = NULL)
 
-succeed(message = "Success has been forced")
+succeed(message = "Success has been forced", info = NULL)
 }
 \arguments{
 \item{message}{a string to display.}
+
+\item{info}{Character vector continuing additional information. Included
+for backward compatibility only and new expectations should not use it.}
 }
 \description{
 These allow you to manually trigger success or failure. Failure is

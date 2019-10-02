@@ -91,5 +91,7 @@ vector_equal <- function(x, y) {
 }
 
 vector_equal_tol <- function(x, y, tolerance = .Machine$double.eps ^ 0.5) {
-  (is.na(x) & is.na(y)) | (!is.na(x) & !is.na(y) & abs(x - y) < tolerance)
+  (is.na(x) & is.na(y)) |
+    (!is.na(x) & !is.na(y)) & (x == y | abs(x - y) < tolerance)
+
 }

@@ -10,6 +10,4 @@ There were no ERRORs, WARNINGs, or NOTEs.
 
 ## revdepcheck results
 
-This is a patch release changing a test that will be broken by an upcoming
-release of devtools. It contains no package changes, so we did not check
-reverse dependencies.
+This is a minor patch to fix a problem with 8 packages reported by Kurt Hornik. I did not re-run my revdep checks since these failed to uncover the initial problem.

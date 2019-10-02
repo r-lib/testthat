@@ -23,7 +23,7 @@ try_again <- function(times, code) {
         },
         warning = function(e) {
           if (identical(e$message, "restarting interrupted promise evaluation")) {
-            invokeRestart("muffleWarning")
+            maybe_restart("muffleWarning")
           }
         }
       ),

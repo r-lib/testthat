@@ -1,3 +1,29 @@
+
+new_capture <- function(class) {
+  exiting_handlers <- rep_named(class, list(identity))
+
+  calling_handlers <- rep_named(class, alist(function(cnd) {
+    cnd <- cnd_entrace(cnd)
+    return_from(env, cnd)
+  }))
+
+  formals <- pairlist2(code = , entrace = FALSE)
+
+  # R CMD check global variable NOTE
+  code <- entrace <- NULL
+
+  body <- expr({
+    if (!entrace) {
+      return(tryCatch({ code; NULL }, !!!exiting_handlers))
+    }
+
+    env <- environment()
+    withCallingHandlers({ code; NULL }, !!!calling_handlers)
+  })
+
+  new_function(formals, body, ns_env("testthat"))
+}
+
 #' Capture conditions, including messeages, warnings, expectations, and errors.
 #'
 #' These functions allow you to capture the side-effects of a function call
@@ -6,6 +32,8 @@
 #' [expect_warning()], and [expect_silent()].
 #'
 #' @param code Code to evaluate
+#' @param entrace Whether to add a [backtrace][rlang::trace_back] to
+#'   the captured condition.
 #' @return Singular functions (`capture_condition`, `capture_expectation` etc)
 #'   return a condition object. `capture_messages()` and `capture_warnings`
 #'   return a character vector of message text.
@@ -26,33 +54,23 @@
 #'
 #' # Condition will capture anything
 #' capture_condition(f())
-capture_condition <- function(code) {
-  tryCatch({code; NULL}, condition = function(e) e)
-}
+capture_condition <- new_capture("condition")
 
 #' @export
 #' @rdname capture_condition
-capture_error <- function(code) {
-  tryCatch({code; NULL}, error = function(e) e)
-}
+capture_error <- new_capture("error")
 
 #' @export
 #' @rdname capture_condition
-capture_expectation <- function(code) {
-  tryCatch({code; NULL}, expectation = function(e) e)
-}
+capture_expectation <- new_capture("expectation")
 
 #' @export
 #' @rdname capture_condition
-capture_message <- function(code) {
-  tryCatch({code; NULL}, message = function(e) e)
-}
+capture_message <- new_capture("condition")
 
 #' @export
 #' @rdname capture_condition
-capture_warning <- function(code) {
-  tryCatch({code; NULL}, warning = function(e) e)
-}
+capture_warning <- new_capture("warning")
 
 #' @export
 #' @rdname capture_condition
@@ -63,7 +81,7 @@ capture_messages <- function(code) {
     code,
     message = function(condition) {
       out$push(condition)
-      invokeRestart("muffleMessage")
+      maybe_restart("muffleMessage")
     }
   )
 
@@ -79,7 +97,7 @@ capture_warnings <- function(code) {
     code,
     warning = function(condition) {
       out$push(condition)
-      invokeRestart("muffleWarning")
+      maybe_restart("muffleWarning")
     }
   )
 
@@ -87,5 +105,5 @@ capture_warnings <- function(code) {
 }
 
 get_messages <- function(x) {
-  vapply(x, "[[", "message", FUN.VALUE = character(1))
+  vapply(x, cnd_message, FUN.VALUE = character(1))
 }

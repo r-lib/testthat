@@ -7,7 +7,10 @@
 expect_length(object, n)
 }
 \arguments{
-\item{object}{object to test}
+\item{object}{Object to test.
+
+Supports limited unquoting to make it easier to generate readable failures
+within a function or for loop. See \link{quasi_label} for more details.}
 
 \item{n}{Expected length.}
 }
@@ -26,6 +29,7 @@ expect_length(1:10, 1)
 Other expectations: \code{\link{comparison-expectations}},
   \code{\link{equality-expectations}},
   \code{\link{expect_match}}, \code{\link{expect_named}},
+  \code{\link{expect_null}},
   \code{\link{inheritance-expectations}},
   \code{\link{logical-expectations}},
   \code{\link{output-expectations}}

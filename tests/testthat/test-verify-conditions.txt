@@ -1,0 +1,19 @@
+> message("Message")
+Message: Message
+> # With calls
+> warning("Warning")
+Warning in eval(expr, envir, enclos): Warning
+> stop("Error")
+Error in eval(expr, envir, enclos): Error
+> # Without calls
+> warning("Warning", call. = FALSE)
+Warning: Warning
+> stop("Error", call. = FALSE)
+Error: Error
+> # With `conditionMessage()` method
+> cnd_signal(message_cnd("foobar", message = "Message"))
+Message: Dispatched! Message
+> cnd_signal(warning_cnd("foobar", message = "Warning"))
+Warning: Dispatched! Warning
+> cnd_signal(error_cnd("foobar", message = "Error"))
+Error: Dispatched! Error

@@ -1,14 +1,13 @@
-#' Source a file, directory, or all helpers.
+#' Source a file, directory of files, or various important subsets
 #'
-#' The expectation is that the files can be sourced in alphabetical order.
-#' Helper scripts are R scripts accompanying test scripts but prefixed by
-#' `helper`. These scripts are run once before the tests are run.
+#' These are used by [test_dir()] and friends
 #'
-#' @param path Path to tests
-#' @param pattern Regular expression used to filter files
+#' @inheritSection test_dir Test files
+#' @param path Path to files.
+#' @param pattern Regular expression used to filter files.
 #' @param env Environment in which to evaluate code.
 #' @param chdir Change working directory to `dirname(path)`?
-#' @param encoding Deprecated
+#' @param encoding Deprecated.
 #' @param wrap Automatically wrap all code within [test_that()]? This ensures
 #'   that all expectations are reported, even if outside a test block.
 #' @export
@@ -27,9 +26,9 @@ source_file <- function(path, env = test_env(), chdir = TRUE,
 
   ## We need to parse from a connection, because parse() has a bug,
   ## and converts the input to the native encoding, if the text arg is used
-  exprs <- parse(
-    textConnection(lines, encoding = "UTF-8"),
-    n = -1, srcfile = srcfile, encoding = "UTF-8")
+  con <- textConnection(lines, encoding = "UTF-8")
+  on.exit(try(close(con), silent = TRUE), add = TRUE)
+  exprs <- parse(con, n = -1, srcfile = srcfile, encoding = "UTF-8")
 
   n <- length(exprs)
   if (n == 0L) return(invisible())

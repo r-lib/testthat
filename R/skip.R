@@ -20,14 +20,17 @@
 #' `skip_on_cran()` skips tests on CRAN, using the `NOT_CRAN`
 #' environment variable set by devtools.
 #'
-#' `skip_on_travis()` skips tests on travis by inspecting the
+#' `skip_on_travis()` skips tests on Travis CI by inspecting the
 #' `TRAVIS` environment variable.
 #'
-#' `skip_on_appveyor()` skips tests on appveyor by inspecting the
+#' `skip_on_appveyor()` skips tests on AppVeyor by inspecting the
 #' `APPVEYOR` environment variable.
 #'
-#'#' `skip_on_ci()` skips tests on continuous integration systems by inspecting
+#' `skip_on_ci()` skips tests on continuous integration systems by inspecting
 #' the `CI` environment variable.
+#'
+#' `skip_on_covr()` skips tests when covr is running by inspecting the
+#' `R_COVR` environment variable
 #'
 #' `skip_on_bioc()` skips tests on Bioconductor by inspecting the
 #' `BBS_HOME` environment variable.
@@ -52,14 +55,18 @@
 #'   expect_equal(1, 3)     # this one is also skipped
 #' })
 skip <- function(message) {
-  cond <- structure(list(message = message), class = c("skip", "condition"))
+  message <- paste0(message, collapse = "\n")
+  cond <- structure(
+    list(message = paste0("Reason: ", message)),
+    class = c("skip", "condition")
+  )
   stop(cond)
 }
 
 # Called automatically if the test contains no expectations
 skip_empty <- function() {
   cond <- structure(
-    list(message = "Empty test"),
+    list(message = "Reason: empty test"),
     class = c("skip_empty", "skip", "condition")
   )
   stop(cond)
@@ -70,6 +77,7 @@ skip_empty <- function() {
 #' @param condition Boolean condition to check. `skip_if_not()` will skip if
 #'   `FALSE`, `skip_if()` will skip if `TRUE`.
 skip_if_not <- function(condition, message = deparse(substitute(condition))) {
+  message <- paste0(message, " is not TRUE")
   if (!isTRUE(condition)) {
     skip(message)
   }
@@ -78,6 +86,7 @@ skip_if_not <- function(condition, message = deparse(substitute(condition))) {
 #' @export
 #' @rdname skip
 skip_if <- function(condition, message = deparse(substitute(condition))) {
+  message <- paste0(message, " is TRUE")
   if (isTRUE(condition)) {
     skip(message)
   }
@@ -178,6 +187,16 @@ skip_on_ci <- function() {
 
 #' @export
 #' @rdname skip
+skip_on_covr <- function() {
+  if (!identical(Sys.getenv("R_COVR"), "true")) {
+    return(invisible(TRUE))
+  }
+
+  skip("On covr")
+}
+
+#' @export
+#' @rdname skip
 skip_on_bioc <- function() {
   if (identical(Sys.getenv("BBS_HOME"), "")) {
     return(invisible(TRUE))
@@ -187,26 +206,14 @@ skip_on_bioc <- function() {
 }
 
 #' @export
+#' @param msgid R message identifier used to check for translation: the default
+#'   uses a message included in most translation packs. See the complete list in
+#'   [`R-base.pot`](https://github.com/wch/r-source/blob/master/src/library/base/po/R-base.pot).
 #' @rdname skip
-skip_if_translated <- function() {
-  if (!is_english()) {
+skip_if_translated <- function(msgid = "'%s' not found") {
+  if (gettext(msgid, domain = "R") == msgid) {
     return(invisible(TRUE))
   }
 
-  skip("Running in non-English environment")
-}
-
-is_english <- function() {
-  lang <- Sys.getenv("LANGUAGE")
-  if (identical(lang, "en")) {
-    return(TRUE)
-  }
-
-  if (.Platform$OS.type == "windows") {
-    lc <- sub("\\..*", "", sub("_.*", "", Sys.getlocale("LC_CTYPE")))
-    lc == "C" || lc == "English"
-  } else {
-    lc <- sub("\\..*", "", Sys.getlocale("LC_MESSAGES"))
-    lc == "C" || substr(lc, 1, 2) == "en"
-  }
+  skip(paste0("\"", msgid, "\" is translated"))
 }

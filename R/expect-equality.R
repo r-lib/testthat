@@ -1,15 +1,19 @@
 #' Expectation: is the object equal to a value?
 #'
-#' - `expect_identical` tests with [identical()]
-#' - `expect_equal` tests with [all.equal()]
-#' - `expect_setequal` ignores order and duplicates
-#' - `expect_equivalent` tests with [all.equal()] and
-#'   `check.attributes = FALSE`
-#' - `expect_reference` tests if two symbols point to the same underlying
-#'    object in memory (requires rlang 1.2.9000 or greater)
+#' - `expect_identical()` compares values with [identical()].
+#' - `expect_equal()` compares values  with [all.equal()]
+#' - `expect_equivalent()` compares values with [all.equal()] and
+#'    `check.attributes = FALSE`
+#' - `expect_reference()` compares the underlying memory addresses.
 #
-#' @param expected Expected value
-#' @param expected.label Equivalent of `label` for shortcut form.
+#' @param object,expected Computation and value to compare it to.
+#'
+#'   Both arguments supports limited unquoting to make it easier to generate
+#'   readable failures within a function or for loop. See [quasi_label] for
+#'   more details.
+#' @param label,expected.label Used to customise failure messages. For expert
+#'   use only.
+#' @seealso `expect_setequal()` to test for set equality.
 #' @inheritParams expect_that
 #' @family expectations
 #' @examples
@@ -45,11 +49,13 @@ NULL
 
 #' @export
 #' @rdname equality-expectations
-#' @param ... other values passed to [all.equal()] or `[identical()]`.
+#' @param ... For `expect_equal()` and `expect_equivalent()`, passed on
+#'   [compare()], for `expect_identical()` passed on to [identical()].
+#'   Used to control the details of the comparison.
 expect_equal <- function(object, expected, ..., info = NULL, label = NULL,
                          expected.label = NULL) {
-  act <- quasi_label(enquo(object), label)
-  exp <- quasi_label(enquo(expected), expected.label)
+  act <- quasi_label(enquo(object), label, arg = "object")
+  exp <- quasi_label(enquo(expected), expected.label, arg = "expected")
 
   comp <- compare(act$val, exp$val, ...)
   expect(
@@ -61,32 +67,12 @@ expect_equal <- function(object, expected, ..., info = NULL, label = NULL,
   invisible(act$val)
 }
 
-
-#' @export
-#' @rdname equality-expectations
-expect_setequal <- function(object, expected) {
-  act <- quasi_label(enquo(object))
-  exp <- quasi_label(enquo(expected))
-
-  act$val <- sort(unique(act$val))
-  exp$val <- sort(unique(exp$val))
-
-  comp <- compare(act$val, exp$val)
-  expect(
-    comp$equal,
-    sprintf("%s not set-equal to %s.\n%s", act$lab, exp$lab, comp$message)
-  )
-
-  invisible(act$val)
-}
-
-
 #' @export
 #' @rdname equality-expectations
 expect_equivalent <- function(object, expected, ..., info = NULL, label = NULL,
                               expected.label = NULL) {
-  act <- quasi_label(enquo(object), label)
-  exp <- quasi_label(enquo(expected), expected.label)
+  act <- quasi_label(enquo(object), label, arg = "object")
+  exp <- quasi_label(enquo(expected), expected.label, arg = "expected")
 
   comp <- compare(act$val, exp$val, ..., check.attributes = FALSE)
   expect(
@@ -101,8 +87,8 @@ expect_equivalent <- function(object, expected, ..., info = NULL, label = NULL,
 #' @rdname equality-expectations
 expect_identical <- function(object, expected, info = NULL, label = NULL,
                              expected.label = NULL, ...) {
-  act <- quasi_label(enquo(object), label)
-  exp <- quasi_label(enquo(expected), expected.label)
+  act <- quasi_label(enquo(object), label, arg = "object")
+  exp <- quasi_label(enquo(expected), expected.label, arg = "expected")
 
   ident <- identical(act$val, exp$val, ...)
   if (ident) {
@@ -128,8 +114,8 @@ expect_identical <- function(object, expected, info = NULL, label = NULL,
 #' @rdname equality-expectations
 expect_reference <- function(object, expected, info = NULL, label = NULL,
                              expected.label = NULL) {
-  act <- quasi_label(enquo(object), label)
-  exp <- quasi_label(enquo(expected), expected.label)
+  act <- quasi_label(enquo(object), label, arg = "object")
+  exp <- quasi_label(enquo(expected), expected.label, arg = "expected")
 
   expect(
     is_reference(act$val, exp$val),

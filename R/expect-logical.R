@@ -29,7 +29,7 @@ NULL
 #' @export
 #' @rdname logical-expectations
 expect_true <- function(object, info = NULL, label = NULL) {
-  act <- quasi_label(enquo(object), label)
+  act <- quasi_label(enquo(object), label, arg = "object")
 
   expect(
     identical(as.vector(act$val), TRUE),
@@ -42,7 +42,7 @@ expect_true <- function(object, info = NULL, label = NULL) {
 #' @export
 #' @rdname logical-expectations
 expect_false <- function(object, info = NULL, label = NULL) {
-  act <- quasi_label(enquo(object), label)
+  act <- quasi_label(enquo(object), label, arg = "object")
 
   expect(
     identical(as.vector(act$val), FALSE),

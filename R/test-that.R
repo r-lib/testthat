@@ -38,29 +38,29 @@ test_code <- function(test, code, env = test_env(), skip_on_empty = TRUE) {
   }
 
   ok <- TRUE
-  register_expectation <- function(e) {
-    calls <- e$expectation_calls
-    srcref <- find_first_srcref(calls)
 
+  # @param debug_end How many frames should be skipped to find the
+  #   last relevant frame call. Only useful for the DebugReporter.
+  register_expectation <- function(e, debug_end) {
+    # Find test environment on the stack
+    start <- eval_bare(quote(base::sys.nframe()), test_env) + 1L
+
+    srcref <- e$srcref %||% find_first_srcref(start)
     e <- as.expectation(e, srcref = srcref)
-    e$call <- calls
-    e$start_frame <- attr(calls, "start_frame")
-    e$end_frame <- e$start_frame + length(calls) - 1L
+
+    # Data for the DebugReporter
+    if (debug_end >= 0) {
+      e$start_frame <- start
+      e$end_frame <- sys.nframe() - debug_end - 1L
+    }
+
     e$test <- test %||% "(unknown)"
+
     ok <<- ok && expectation_ok(e)
     get_reporter()$add_result(context = get_reporter()$.context, test = test, result = e)
   }
 
   frame <- sys.nframe()
-  frame_calls <- function(start_offset, end_offset, start_frame = frame) {
-    sys_calls <- sys.calls()
-    start_frame <- start_frame + start_offset
-    structure(
-      sys_calls[(start_frame):(length(sys_calls) - end_offset - 1)],
-      start_frame = start_frame
-    )
-  }
-
   # Any error will be assigned to this variable first
   # In case of stack overflow, no further processing (not even a call to
   # signalCondition() ) might be possible
@@ -85,16 +85,14 @@ test_code <- function(test, code, env = test_env(), skip_on_empty = TRUE) {
     options(expressions = expressions_opt_new)
     on.exit(options(expressions = expressions_opt), add = TRUE)
 
-    # Capture call stack, removing last calls from end (added by
-    # withCallingHandlers), and first calls from start (added by
-    # tryCatch etc).
-    e$expectation_calls <- frame_calls(11, 2)
+    # Add structured backtrace to the expectation
+    e <- cnd_entrace(e)
 
     test_error <<- e
 
     # Error will be handled by handle_fatal() if this fails; need to do it here
     # to be able to debug with the DebugReporter
-    register_expectation(e)
+    register_expectation(e, 2)
 
     e$handled <- TRUE
     test_error <<- e
@@ -109,47 +107,49 @@ test_code <- function(test, code, env = test_env(), skip_on_empty = TRUE) {
       }
     }
 
-    if (is.null(e$expectation_calls)) {
-      e$expectation_calls <- frame_calls(0, 0)
-    }
-
-    register_expectation(e)
+    register_expectation(e, 0)
   }
   handle_expectation <- function(e) {
     handled <<- TRUE
-    e$expectation_calls <- frame_calls(11, 6)
-    register_expectation(e)
+    register_expectation(e, 6)
     invokeRestart("continue_test")
   }
   handle_warning <- function(e) {
     # When options(warn) >= 2, a warning will be converted to an error.
     # So, do not handle it here so that it will be handled by handle_error.
-    if (getOption("warn") >= 2) return()
+    if (getOption("warn") >= 2) {
+      return()
+    }
 
     handled <<- TRUE
-    e$expectation_calls <- frame_calls(11, 5)
-    register_expectation(e)
-    invokeRestart("muffleWarning")
+    register_expectation(e, 5)
+
+    maybe_restart("muffleWarning")
   }
   handle_message <- function(e) {
     handled <<- TRUE
-    invokeRestart("muffleMessage")
+    maybe_restart("muffleMessage")
   }
   handle_skip <- function(e) {
     handled <<- TRUE
 
     if (inherits(e, "skip_empty")) {
-      # Need to generate call as if from test_that
-      e$expectation_calls <- frame_calls(0, 12, frame - 1)
+      # If we get here, `code` has already finished its evaluation.
+      # Find the srcref in the `test_that()` frame above.
+      e$srcref <- find_first_srcref(frame - 1)
+      debug_end <- -1
     } else {
-      e$expectation_calls <- frame_calls(11, 2)
+      debug_end <- 2
     }
 
-    register_expectation(e)
+    register_expectation(e, debug_end)
     signalCondition(e)
   }
 
   test_env <- new.env(parent = env)
+  old <- options(rlang_trace_top_env = test_env)[[1]]
+  on.exit(options(rlang_trace_top_env = old), add = TRUE)
+
   tryCatch(
     withCallingHandlers(
       {

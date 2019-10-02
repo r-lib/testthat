@@ -17,6 +17,8 @@
 #' @param .env the environment in which to patch the functions,
 #'   defaults to the top-level environment.  A character is interpreted as
 #'   package name.
+#' @param .local_env Environment in which to add exit hander.
+#'   For expert use only.
 #' @keywords internal
 #' @return The result of the last unnamed parameter
 #' @references Suraj Gupta (2012): \href{http://obeautifulcode.com/R/How-R-Searches-And-Finds-Stuff}{How R Searches And Finds Stuff}
@@ -28,7 +30,7 @@
 #'   add_one = function(x) x - 1,
 #'   expect_equal(add_one(2), 1)
 #' )
-#' square_add_one <- function(x) add_one(x) ^ 2
+#' square_add_one <- function(x) add_one(x)^2
 #' expect_equal(square_add_one(2), 9)
 #' expect_equal(
 #'   with_mock(
@@ -37,22 +39,34 @@
 #'   ),
 #'   1
 #' )
+#'
+#' # local_mock() -------------------------------
+#' plus <- function(x, y) x + y
+#' test_that("plus(1, 1) == 2", {
+#'   expect_equal(plus(1, 1), 2)
+#' })
+#'
+#' test_that("plus(1, 1) == 3", {
+#'   local_mock(plus = function(x, y) 3)
+#'   expect_equal(plus(1, 1), 3)
+#' })
 with_mock <- function(..., .env = topenv()) {
-  new_values <- eval(substitute(alist(...)))
-  mock_qual_names <- names(new_values)
+  dots <- eval(substitute(alist(...)))
+  mock_qual_names <- names(dots)
 
   if (all(mock_qual_names == "")) {
     warning(
       "Not mocking anything. Please use named parameters to specify the functions you want to mock.",
       call. = FALSE
     )
-    code_pos <- rep(TRUE, length(new_values))
+    code_pos <- rep(TRUE, length(dots))
   } else {
     code_pos <- (mock_qual_names == "")
   }
-  code <- new_values[code_pos]
+  code <- dots[code_pos]
 
-  mocks <- extract_mocks(new_values = new_values[!code_pos], .env = .env, eval_env = parent.frame())
+  mock_funs <- lapply(dots[!code_pos], eval, parent.frame())
+  mocks <- extract_mocks(mock_funs, .env = .env)
 
   on.exit(lapply(mocks, reset_mock), add = TRUE)
   lapply(mocks, set_mock)
@@ -67,16 +81,29 @@ with_mock <- function(..., .env = topenv()) {
   }
 }
 
+#' @export
+#' @rdname with_mock
+local_mock <- function(..., .env = topenv(), .local_envir = parent.frame()) {
+  mocks <- extract_mocks(list(...), .env = .env)
+  on_exit <- bquote(
+    on.exit(lapply(.(mocks), .(reset_mock)), add = TRUE),
+  )
+
+  lapply(mocks, set_mock)
+  eval_bare(on_exit, .local_envir)
+  invisible()
+}
 
 pkg_rx <- ".*[^:]"
 colons_rx <- "::(?:[:]?)"
 name_rx <- ".*"
 pkg_and_name_rx <- sprintf("^(?:(%s)%s)?(%s)$", pkg_rx, colons_rx, name_rx)
 
-extract_mocks <- function(new_values, .env, eval_env = parent.frame()) {
-  if (is.environment(.env))
+extract_mocks <- function(funs, .env) {
+  if (is.environment(.env)) {
     .env <- environmentName(.env)
-  mock_qual_names <- names(new_values)
+  }
+  mock_qual_names <- names(funs)
 
   lapply(
     stats::setNames(nm = mock_qual_names),
@@ -92,29 +119,34 @@ extract_mocks <- function(new_values, .env, eval_env = parent.frame()) {
 
       name <- gsub(pkg_and_name_rx, "\\2", qual_name)
 
-      if (pkg_name == "")
+      if (pkg_name == "") {
         pkg_name <- .env
+      }
 
       env <- asNamespace(pkg_name)
 
-      if (!exists(name, envir = env, mode = "function"))
+      if (!exists(name, envir = env, mode = "function")) {
         stop("Function ", name, " not found in environment ",
-          environmentName(env), ".", call. = FALSE)
-      mock(name = name, env = env, new = eval(new_values[[qual_name]], eval_env, eval_env))
+          environmentName(env), ".",
+          call. = FALSE
+        )
+      }
+      mock(name = name, env = env, new = funs[[qual_name]])
     }
   )
 }
 
-is_base_pkg <- function(x) {
-  x %in% rownames(utils::installed.packages(priority = "base"))
-}
-
 mock <- function(name, env, new) {
   target_value <- get(name, envir = env, mode = "function")
-  structure(list(
-    env = env, name = as.name(name),
-    orig_value = .Call(duplicate_, target_value), target_value = target_value,
-    new_value = new), class = "mock")
+  structure(
+    list(
+      env = env,
+      name = as.name(name),
+      orig_value = .Call(duplicate_, target_value), target_value = target_value,
+      new_value = new
+    ),
+    class = "mock"
+  )
 }
 
 set_mock <- function(mock) {
@@ -124,3 +156,8 @@ set_mock <- function(mock) {
 reset_mock <- function(mock) {
   .Call(reassign_function, mock$name, mock$env, mock$target_value, mock$orig_value)
 }
+
+is_base_pkg <- function(x) {
+  x %in% rownames(utils::installed.packages(priority = "base"))
+}
+

@@ -125,9 +125,19 @@ expect_error <- function(object,
                          info = NULL,
                          label = NULL
                          ) {
-  act <- quasi_capture(enquo(object), label, capture_error)
+  act <- quasi_capture(enquo(object), label, capture_error, entrace = TRUE)
   msg <- compare_condition(act$cap, act$lab, regexp = regexp, class = class, ...)
-  expect(is.null(msg), msg, info = info)
+  expect(is.null(msg), msg, info = info, trace = act$cap$trace)
+
+  if (!is.null(act$cap)) {
+    if (!simple_error(act$cap) && is.null(class) && !is.null(regexp)) {
+      klass <- paste0(class(act$cap), collapse = "/")
+      warn(paste0(
+        act$lab, " generated a condition with class ", klass, ".\n",
+        "It is less fragile to test custom conditions with `class`"
+      ))
+    }
+  }
 
   invisible(act$val %||% act$cap)
 }
@@ -141,12 +151,12 @@ expect_condition <- function(object,
                              info = NULL,
                              label = NULL
                              ) {
-  act <- quasi_capture(enquo(object), label, capture_condition)
+  act <- quasi_capture(enquo(object), label, capture_condition, entrace = TRUE)
   msg <- compare_condition(
     act$cap, act$lab, regexp = regexp, class = class, ...,
     cond_type = "condition"
   )
-  expect(is.null(msg), msg, info = info)
+  expect(is.null(msg), msg, info = info, trace = act$cap$trace)
 
   invisible(act$val %||% act$cap)
 }
@@ -220,7 +230,7 @@ compare_condition <- function(cond, lab, regexp = NULL, class = NULL, ...,
         "%s threw an %s.\nMessage: %s\nClass:   %s",
         lab,
         cond_type,
-        cond$message,
+        cnd_message(cond),
         paste(class(cond), collapse = "/")
       ))
     } else {
@@ -233,8 +243,10 @@ compare_condition <- function(cond, lab, regexp = NULL, class = NULL, ...,
     return(sprintf("%s did not throw an %s.", lab, cond_type))
   }
 
+  message <- cnd_message(cond)
+
   ok_class <- is.null(class) || inherits(cond, class)
-  ok_msg <- is.null(regexp) || grepl(regexp, cond$message, ...)
+  ok_msg <- is.null(regexp) || grepl(regexp, message, ...)
 
   # All good
   if (ok_msg && ok_class) {
@@ -246,16 +258,17 @@ compare_condition <- function(cond, lab, regexp = NULL, class = NULL, ...,
   details <- c(
     if (!ok_class) {
       sprintf(
-        "Expected class: %s\nActual class:   %s",
+        "Expected class: %s\nActual class:   %s\nMessage:        %s",
         paste0(class, collapse = "/"),
-        paste0(class(cond), collapse = "/")
+        paste0(class(cond), collapse = "/"),
+        message
       )
     },
     if (!ok_msg) {
       sprintf(
         "Expected match: %s\nActual message: %s",
         encodeString(regexp, quote = '"'),
-        encodeString(cond$message, quote = '"')
+        encodeString(message, quote = '"')
       )
     }
   )
@@ -269,6 +282,28 @@ compare_condition <- function(cond, lab, regexp = NULL, class = NULL, ...,
   )
 }
 
+# Disable rlang backtrace reminders so they don't interfere with
+# expected error messages
+cnd_message <- function(x) {
+  withr::local_options(c(rlang_backtrace_on_error = "none"))
+  conditionMessage(x)
+}
+
+simple_error <- function(x) {
+  if (!inherits(x, "error")) {
+    return(FALSE)
+  }
+
+  if (inherits(x, "simpleError")) {
+    return(TRUE)
+  }
+
+  if (inherits(x, "Rcpp::exception")) {
+    return(TRUE)
+  }
+
+  inherits_only(x, c("rlang_error", "error", "condition"))
+}
 
 compare_messages <- function(messages,
                              lab,

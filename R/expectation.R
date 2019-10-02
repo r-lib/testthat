@@ -1,19 +1,110 @@
 #' The building block of all `expect_` functions
 #'
-#' Use this if you are writing your own expectation. See
-#' `vignette("custom-expectation")` for details
+#' Call `expect()` when writing your own expectations. See
+#' `vignette("custom-expectation")` for details.
 #'
-#' @param ok Was the expectation successful?
-#' @param failure_message What message should be shown if the expectation was
-#'   not successful?
-#' @param info Additional information. Included for backward compatibility
-#'   only and new expectations should not use it.
-#' @param srcref Only needed in very rare circumstances where you need to
-#'   forward a srcref captured elsewhere.
+#' @param ok `TRUE` or `FALSE` indicating if the expectation was successful.
+#' @param failure_message Message to show if the expectation failed.
+#' @param info Character vector continuing additional information. Included
+#'   for backward compatibility only and new expectations should not use it.
+#' @param srcref Location of the failure. Should only needed to be explicitly
+#'   supplied when you need to forward a srcref captured elsewhere.
+#' @param trace An optional backtrace created by [rlang::trace_back()].
+#'   When supplied, the expectation is displayed with the backtrace.
+#' @return An expectation object. Signals the expectation condition
+#'   with a `continue_test` restart.
+#'
+#' @details
+#'
+#' While `expect()` creates and signals an expectation in one go,
+#' `exp_signal()` separately signals an expectation that you
+#' have manually created with [new_expectation()]. Expectations are
+#' signalled with the following protocol:
+#'
+#' * If the expectation is a failure or an error, it is signalled with
+#'   [base::stop()]. Otherwise, it is signalled with
+#'   [base::signalCondition()].
+#'
+#' * The `continue_test` restart is registered. When invoked, failing
+#'   expectations are ignored and normal control flow is resumed to
+#'   run the other tests.
+#'
+#' @seealso [exp_signal()]
 #' @export
-expect <- function(ok, failure_message, info = NULL, srcref = NULL) {
-  exp <- as.expectation.logical(ok, failure_message, info = info, srcref = srcref)
+expect <- function(ok, failure_message, info = NULL, srcref = NULL, trace = NULL) {
+  type <- if (ok) "success" else "failure"
 
+  # Preserve existing API which appear to be used in package test code
+  # Can remove in next major release
+  if (missing(failure_message)) {
+    warn("`failure_message` is missing, with no default.")
+    message <- "unknown failure"
+  } else {
+    # A few packages include code in info that errors on evaluation
+    if (ok) {
+      message <- paste(failure_message, collapse = "\n")
+    } else {
+      message <- paste(c(failure_message, info), collapse = "\n")
+    }
+  }
+
+  exp <- expectation(type, message, srcref = srcref, trace = trace)
+  exp_signal(exp)
+}
+
+#' Construct an expectation object
+#'
+#' For advanced use only. If you are creating your own expectation, you should
+#' call [expect()] instead. See `vignette("custom-expectation")` for more
+#' details.
+#'
+#' Create an expectation with `expectation()` or `new_expectation()`
+#' and signal it with `exp_signal()`.
+#'
+#' @param type Expectation type. Must be one of "success", "failure", "error",
+#'   "skip", "warning".
+#' @param message Message describing test failure
+#' @param srcref Optional `srcref` giving location of test.
+#' @inheritParams expect
+#' @keywords internal
+#' @export
+expectation <- function(type, message, srcref = NULL, trace = NULL) {
+  new_expectation(type, message, srcref = srcref, trace = trace)
+}
+#' @rdname expectation
+#' @param ... Additional attributes for the expectation object.
+#' @param .subclass An optional subclass for the expectation object.
+#' @export
+new_expectation <- function(type,
+                            message,
+                            ...,
+                            srcref = NULL,
+                            trace = NULL,
+                            .subclass = NULL) {
+  type <- match.arg(type, c("success", "failure", "error", "skip", "warning"))
+
+  structure(
+    list(
+      message = message,
+      srcref = srcref,
+      trace = trace
+    ),
+    class = c(
+      .subclass,
+      paste0("expectation_", type),
+      "expectation",
+      # Make broken expectations catchable by try()
+      if (type %in% c("failure", "error")) "error",
+      "condition"
+    ),
+    ...
+  )
+}
+#' @rdname expectation
+#' @param exp An expectation object, as created by
+#'   [new_expectation()].
+#' @export
+exp_signal <- function(exp) {
   withRestarts(
     if (expectation_broken(exp)) {
       stop(exp)
@@ -26,135 +117,46 @@ expect <- function(ok, failure_message, info = NULL, srcref = NULL) {
   invisible(exp)
 }
 
-#' Construct an expectation object
-#'
-#' For advanced use only.
-#'
-#' @keywords internal
-#' @export
-expectation <- function(type, message, srcref = NULL) {
-  type <- match.arg(type, c("success", "failure", "error", "skip", "warning"))
-
-  structure(
-    list(
-      message = message,
-      srcref = srcref
-    ),
-    class = c(
-      paste0("expectation_", type),
-      "expectation",
-      # Make broken expectations catchable by try()
-      if (type %in% c("failure", "error")) "error",
-      "condition"
-    )
-  )
-}
 
 #' @export
 #' @rdname expectation
 #' @param x object to test for class membership
 is.expectation <- function(x) inherits(x, "expectation")
 
-#' Quasi-labelling
-#'
-#' The first argument to every `expect_` function can use unquoting to
-#' construct better labels. This makes it easy to create informative labels
-#' expectations are used inside a function or a for loop. `quasi_label()` wraps
-#' up the details, returning the expression and label.
-#'
-#' @param quo A quosure created by `rlang::enquo()`.
-#' @param label An optional label to override the default. This is
-#'   only provided for internal usage. Modern expectations should not
-#'   include a `label` parameter.
-#' @keywords internal
-#' @return A list containing two elements:
-#' \item{val}{The evaluate value of `quo`}
-#' \item{lab}{The quasiquoted label generated from `quo`}
 #' @export
-#' @examples
-#' f <- function(i) if (i > 3) i * 9 else i * 10
-#' i <- 10
-#'
-#' # This short of expression commonly occurs inside a for loop or function
-#' # And the failure isn't helpful because you can't see the value of i
-#' # that caused the problem:
-#' show_failure(expect_equal(f(i), i * 10))
-#'
-#' # To overcome this issue, testthat allows you to unquote expressions using
-#' # !!. This causes the failure message to show the value rather than the
-#' # variable name
-#' show_failure(expect_equal(f(!!i), !!(i * 10)))
-quasi_label <- function(quo, label = NULL) {
-  force(quo)
-
-  list(
-    val = eval_bare(get_expr(quo), get_env(quo)),
-    lab = label %||% expr_label(get_expr(quo))
-  )
+print.expectation <- function(x, ...) {
+  cat(format(x), "\n")
 }
 
-quasi_capture <- function(.quo, .label, .capture, ...) {
-  act <- list()
-  act$lab <- .label %||% quo_label(.quo)
-  act$cap <- .capture(act$val <- eval_bare(get_expr(.quo), get_env(.quo)), ...)
-
-  act
+#' @export
+format.expectation_success <- function(x, ...) {
+  "As expected"
 }
 
-expr_label <- function(x) {
-  if (is.character(x)) {
-    encodeString(x, quote = '"')
-  } else if (is.atomic(x)) {
-    format(x)
-  } else if (is.name(x)) {
-    paste0("`", as.character(x), "`")
+#' @export
+format.expectation <- function(x, ...) {
+  if (is.null(x$trace) || trace_length(x$trace) == 0L) {
+    x$message
   } else {
-    chr <- deparse(x)
-    if (length(chr) > 1) {
-      if (identical(x[[1]], quote(`function`))) {
-        x[[3]] <- quote(...)
-        chr <- paste(deparse(x), collapse = "\n")
-      } else {
-        chr <- paste(deparse(as.call(list(x[[1]], quote(...)))), collapse = "\n")
-      }
-    }
-    chr
+    format_with_trace(x)
   }
 }
 
-expectation_type <- function(exp) {
-  stopifnot(is.expectation(exp))
-  gsub("^expectation_", "", class(exp)[[1]])
+format_with_trace <- function(exp) {
+  trace_lines <- format(
+    exp$trace,
+    simplify = "branch",
+    max_frames = 20,
+    dir = Sys.getenv("TESTTHAT_DIR") %||% getwd()
+  )
+  paste_line(
+    exp$message,
+    crayon::bold("Backtrace:"),
+    !!!trace_lines
+  )
 }
 
-expectation_success <- function(exp) {
-  expectation_type(exp) == "success"
-}
-
-expectation_failure <- function(exp) {
-  expectation_type(exp) == "failure"
-}
-
-expectation_error <- function(exp) {
-  expectation_type(exp) == "error"
-}
-
-expectation_skip <- function(exp) {
-  expectation_type(exp) == "skip"
-}
-
-expectation_warning <- function(exp) {
-  expectation_type(exp) == "warning"
-}
-
-expectation_broken <- function(exp) {
-  expectation_failure(exp) || expectation_error(exp)
-}
-expectation_ok <- function(exp) {
-  expectation_type(exp) %in% c("success", "warning")
-}
-
-
+# as.expectation ----------------------------------------------------------
 
 as.expectation <- function(x, ...) UseMethod("as.expectation", x)
 
@@ -168,21 +170,8 @@ as.expectation.default <- function(x, ..., srcref = NULL) {
 
 #' @export
 as.expectation.expectation <- function(x, ..., srcref = NULL) {
-  if (is.null(x$srcref)) {
-    x$srcref <- srcref
-  }
+  x$srcref <- x$srcref %||% srcref
   x
-}
-
-#' @export
-as.expectation.logical <- function(x, message, ..., srcref = NULL, info = NULL) {
-  type <- if (x) "success" else "failure"
-  message <- if (x) "success" else add_info(message, info)
-  expectation(type, message, srcref = srcref)
-}
-
-add_info <- function(message, info = NULL) {
-  paste(c(message, info), collapse = "\n")
 }
 
 #' @export
@@ -190,49 +179,36 @@ as.expectation.error <- function(x, ..., srcref = NULL) {
   error <- x$message
 
   msg <- gsub("Error.*?: ", "", as.character(error))
-
-  # Need to remove trailing newline from error message to be consistent
-  # with other messages
+  # Remove trailing newline to be consistent with other conditons
   msg <- gsub("\n$", "", msg)
 
-  expectation("error", msg, srcref)
+  expectation("error", msg, srcref, trace = x$trace)
 }
 
 #' @export
 as.expectation.warning <- function(x, ..., srcref = NULL) {
-  msg <- x$message
-
-  # msg <- gsub("Error.*?: ", "", as.character(error))
-  # msg <- gsub("\n$", "", msg)
-
-  expectation("warning", msg, srcref)
+  expectation("warning", x$message, srcref)
 }
 
 #' @export
 as.expectation.skip <- function(x, ..., srcref = NULL) {
-  error <- x$message
-  msg <- gsub("Error.*?: ", "", as.character(error))
-
-  expectation("skip", msg, srcref)
+  expectation("skip", x$message, srcref)
 }
 
-#' @export
-print.expectation <- function(x, ...) cat(format(x), "\n")
+# expectation_type --------------------------------------------------------
 
-#' @export
-format.expectation_success <- function(x, ...) {
-  "As expected"
+expectation_type <- function(exp) {
+  stopifnot(is.expectation(exp))
+  gsub("^expectation_", "", class(exp)[[1]])
 }
 
-#' @export
-format.expectation_error <- function(x, ...) {
-  paste(c(x$message, create_traceback(x$call)), collapse = "\n")
-}
-
-#' @export
-format.expectation <- function(x, ...) {
-  x$message
-}
+expectation_success <- function(exp) expectation_type(exp) == "success"
+expectation_failure <- function(exp) expectation_type(exp) == "failure"
+expectation_error   <- function(exp) expectation_type(exp) == "error"
+expectation_skip    <- function(exp) expectation_type(exp) == "skip"
+expectation_warning <- function(exp) expectation_type(exp) == "warning"
+expectation_broken  <- function(exp) expectation_failure(exp) || expectation_error(exp)
+expectation_ok      <- function(exp) expectation_type(exp) %in% c("success", "warning")
 
 single_letter_summary <- function(x) {
   switch(expectation_type(x),
@@ -243,4 +219,21 @@ single_letter_summary <- function(x) {
     warning = colourise("W", "warning"),
     "?"
   )
+}
+
+exp_location <- function(exp) {
+  srcref <- exp$srcref
+  if (is.null(srcref)) {
+    return("")
+  }
+
+  filename <- attr(srcref, "srcfile")$filename
+  # There is no filename when evaluating `test_that()` blocks
+  # interactively. The line number is not significant in that case so
+  # we return a blank.
+  if (!nzchar(filename)) {
+    return("")
+  }
+
+  paste0(basename(filename), ":", srcref[1], ": ")
 }
