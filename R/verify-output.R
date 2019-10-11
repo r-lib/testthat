@@ -24,9 +24,13 @@
 #' @param code Code to execute.
 #' @param width Width of console output
 #' @param crayon Enable crayon package colouring?
+#' @param unicode Enable cli package UTF-8 symbols? If you set this to
+#'   `TRUE`, call `skip_if(!cli::is_utf8_output())` to disable the
+#'   test on your CI platforms that don't support UTF-8 (e.g. Windows).
 #' @param env The environment to evaluate `code` in.
 #' @export
-verify_output <- function(path, code, width = 80, crayon = FALSE, env = caller_env()) {
+verify_output <- function(path, code, width = 80, crayon = FALSE,
+                          unicode = FALSE, env = caller_env()) {
   expr <- substitute(code)
 
   if (is_call(expr, "{")) {
@@ -35,7 +39,11 @@ verify_output <- function(path, code, width = 80, crayon = FALSE, env = caller_e
     exprs <- list(expr)
   }
 
-  withr::local_options(list(width = width, crayon.enabled = crayon))
+  withr::local_options(list(
+    width = width,
+    crayon.enabled = crayon,
+    cli.unicode = unicode
+  ))
   withr::local_envvar(list(RSTUDIO_CONSOLE_WIDTH = width))
 
   exprs <- lapply(exprs, function(x) if (is.character(x)) paste0("# ", x) else expr_deparse(x))

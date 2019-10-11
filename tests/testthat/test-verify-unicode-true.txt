@@ -1,0 +1,3 @@
+> cat(cli::symbol$info, cli::symbol$cross, "\n")
+ℹ ✖ 
+
