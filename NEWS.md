@@ -1,6 +1,9 @@
 
 # testthat (development version)
 
+* `verify_output()` no longer uses quasiquotation, which fixes issues
+  when verifying the output of tidy eval functions (#945).
+
 * `verify_output()` now correctly handles multi-line condition
   messages.
 

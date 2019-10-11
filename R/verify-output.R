@@ -24,12 +24,10 @@
 #' @param code Code to execute.
 #' @param width Width of console output
 #' @param crayon Enable crayon package colouring?
+#' @param env The environment to evaluate `code` in.
 #' @export
-verify_output <- function(path, code, width = 80, crayon = FALSE) {
-  code <- enquo(code)
-
-  env <- quo_get_env(code)
-  expr <- quo_get_expr(code)
+verify_output <- function(path, code, width = 80, crayon = FALSE, env = caller_env()) {
+  expr <- substitute(code)
 
   if (is_call(expr, "{")) {
     exprs <- as.list(expr[-1])
