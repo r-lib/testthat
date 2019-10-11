@@ -56,3 +56,20 @@ test_that("can use constructed calls in verify_output() (#945)", {
     expr(foo(!!binding))
   })
 })
+
+test_that("verify_output() doesn't use cli unicode by default", {
+  verify_output(
+    test_path("test-verify-unicode-false.txt"),
+    {
+      cat(cli::symbol$info, cli::symbol$cross, "\n")
+    }
+  )
+
+  skip_if(!cli::is_utf8_output())
+  verify_output(
+    test_path("test-verify-unicode-true.txt"),
+    unicode = TRUE,
+    {
+      cat(cli::symbol$info, cli::symbol$cross, "\n")
+    })
+})

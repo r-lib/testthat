@@ -5,7 +5,7 @@
 \title{Verify output}
 \usage{
 verify_output(path, code, width = 80, crayon = FALSE,
-  env = caller_env())
+  unicode = FALSE, env = caller_env())
 }
 \arguments{
 \item{path}{Path to save file. Typically this will be a call to
@@ -16,6 +16,10 @@ verify_output(path, code, width = 80, crayon = FALSE,
 \item{width}{Width of console output}
 
 \item{crayon}{Enable crayon package colouring?}
+
+\item{unicode}{Enable cli package UTF-8 symbols? If you set this to
+\code{TRUE}, call \code{skip_if(!cli::is_utf8_output())} to disable the
+test on your CI platforms that don't support UTF-8 (e.g. Windows).}
 
 \item{env}{The environment to evaluate \code{code} in.}
 }
