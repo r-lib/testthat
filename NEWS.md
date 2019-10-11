@@ -3,6 +3,7 @@
 
 * `verify_output()` no longer uses quasiquotation, which fixes issues
   when verifying the output of tidy eval functions (#945).
+
 * `verify_output()` gains a `unicode` parameter to turn on or off the
   use of Unicode characters by the cli package. It is disabled by
   default to prevent the tests from failing on platforms like Windows
