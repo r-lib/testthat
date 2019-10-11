@@ -46,3 +46,13 @@ test_that("verify_output() splits condition messages on newlines", {
     stop("First.\nSecond.")
   })
 })
+
+test_that("can use constructed calls in verify_output() (#945)", {
+  verify_output(test_path("test-verify-constructed-calls.txt"), {
+    expr(foo(!!c("bar", "baz")))
+
+    # Can unquote local objects
+    binding <- quote(foo)
+    expr(foo(!!binding))
+  })
+})
