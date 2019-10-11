@@ -166,8 +166,7 @@
 <a href="#testthat-development-version" class="anchor"></a>testthat (development version)<small> Unreleased </small>
 </h1>
 <ul>
-<li>
-<code><a href="../reference/verify_output.html">verify_output()</a></code> no longer uses quasiquotation, which fixes issues when verifying the output of tidy eval functions (<a href='https://github.com/r-lib/testthat/issues/945'>#945</a>).</li>
+<li><p><code><a href="../reference/verify_output.html">verify_output()</a></code> no longer uses quasiquotation, which fixes issues when verifying the output of tidy eval functions (<a href='https://github.com/r-lib/testthat/issues/945'>#945</a>).</p></li>
 <li><p><code><a href="../reference/verify_output.html">verify_output()</a></code> gains a <code>unicode</code> parameter to turn on or off the use of Unicode characters by the cli package. It is disabled by default to prevent the tests from failing on platforms like Windows that don’t support UTF-8 (which could be your contributors or your CI machines).</p></li>
 <li><p><code><a href="../reference/verify_output.html">verify_output()</a></code> now correctly handles multi-line condition messages.</p></li>
 <li><p><code><a href="../reference/output-expectations.html">expect_error()</a></code>, <code><a href="../reference/output-expectations.html">expect_warning()</a></code> and <code><a href="../reference/output-expectations.html">expect_message()</a></code> now call <code><a href="https://rdrr.io/r/base/conditions.html">conditionMessage()</a></code> to get the condition message. This generic makes it possible to generate messages at print-time rather than signal-time.</p></li>
