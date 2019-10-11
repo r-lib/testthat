@@ -93,7 +93,7 @@ changing it accidentally." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">testthat</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.2.1.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.2.1.9001</span>
       </span>
     </div>
 
@@ -179,7 +179,8 @@ This makes the presentation easier to see in code reviews, and avoids
 changing it accidentally.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>verify_output</span>(<span class='no'>path</span>, <span class='no'>code</span>, <span class='kw'>width</span> <span class='kw'>=</span> <span class='fl'>80</span>, <span class='kw'>crayon</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+    <pre class="usage"><span class='fu'>verify_output</span>(<span class='no'>path</span>, <span class='no'>code</span>, <span class='kw'>width</span> <span class='kw'>=</span> <span class='fl'>80</span>, <span class='kw'>crayon</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>env</span> <span class='kw'>=</span> <span class='fu'>caller_env</span>())</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -200,6 +201,10 @@ changing it accidentally.</p>
     <tr>
       <th>crayon</th>
       <td><p>Enable crayon package colouring?</p></td>
+    </tr>
+    <tr>
+      <th>env</th>
+      <td><p>The environment to evaluate <code>code</code> in.</p></td>
     </tr>
     </table>
 

@@ -86,7 +86,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">testthat</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.2.1.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.2.1.9001</span>
       </span>
     </div>
 
@@ -166,6 +166,7 @@
 <a href="#testthat-development-version" class="anchor"></a>testthat (development version)<small> Unreleased </small>
 </h1>
 <ul>
+<li><p><code><a href="../reference/verify_output.html">verify_output()</a></code> no longer uses quasiquotation, which fixes issues when verifying the output of tidy eval functions (<a href='https://github.com/r-lib/testthat/issues/945'>#945</a>).</p></li>
 <li><p><code><a href="../reference/verify_output.html">verify_output()</a></code> now correctly handles multi-line condition messages.</p></li>
 <li><p><code><a href="../reference/output-expectations.html">expect_error()</a></code>, <code><a href="../reference/output-expectations.html">expect_warning()</a></code> and <code><a href="../reference/output-expectations.html">expect_message()</a></code> now call <code><a href="https://rdrr.io/r/base/conditions.html">conditionMessage()</a></code> to get the condition message. This generic makes it possible to generate messages at print-time rather than signal-time.</p></li>
 <li><p>JunitReporter now reports tests in ISO 8601 in the UTC timezone and also uses the maximum 3 decimal place precision (<a href='https://github.com/r-lib/testthat/issues/923'>#923</a>).</p></li>
