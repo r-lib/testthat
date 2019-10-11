@@ -180,7 +180,7 @@ changing it accidentally.</p>
     </div>
 
     <pre class="usage"><span class='fu'>verify_output</span>(<span class='no'>path</span>, <span class='no'>code</span>, <span class='kw'>width</span> <span class='kw'>=</span> <span class='fl'>80</span>, <span class='kw'>crayon</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>env</span> <span class='kw'>=</span> <span class='fu'>caller_env</span>())</pre>
+  <span class='kw'>unicode</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>env</span> <span class='kw'>=</span> <span class='fu'>caller_env</span>())</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -201,6 +201,12 @@ changing it accidentally.</p>
     <tr>
       <th>crayon</th>
       <td><p>Enable crayon package colouring?</p></td>
+    </tr>
+    <tr>
+      <th>unicode</th>
+      <td><p>Enable cli package UTF-8 symbols? If you set this to
+<code>TRUE</code>, call <code><a href='skip.html'>skip_if(!cli::is_utf8_output())</a></code> to disable the
+test on your CI platforms that don't support UTF-8 (e.g. Windows).</p></td>
     </tr>
     <tr>
       <th>env</th>
