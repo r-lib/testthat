@@ -1,5 +1,9 @@
 # testthat (development version)
 
+* ListReporter now tracks expectations and errors, even when they occur outside
+  of tests. This ensures that `stop_on_failure` matches the results displayed
+  by the reporter (#936).
+
 * Unquoted inputs not longer potentially generate multiple test messages (#929).
 
 * `compare.numeric()` uses a more sophisticated default tolerance that will

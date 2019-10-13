@@ -32,8 +32,11 @@ ListReporter <- R6::R6Class("ListReporter",
 
     add_result = function(context, test, result) {
       if (is.null(self$current_expectations)) {
-        # we received an unexpected result: could be a bare expectation or an exception/error
-        if (!inherits(result, 'error')) return()
+        # we received a result outside of a test:
+        # could be a bare expectation or an exception/error
+        if (!inherits(result, 'error')) {
+          return()
+        }
         self$current_expectations <- Stack$new()
       }
 
@@ -64,9 +67,16 @@ ListReporter <- R6::R6Class("ListReporter",
       self$current_file <- name
     },
 
+    end_file = function() {
+      # fallback in case we have errors but no expectations
+      self$end_context(self$current_file)
+    },
+
     end_context = function(context) {
       results <- self$current_expectations
-      if (is.null(results)) return()
+      if (is.null(results)) {
+        return()
+      }
 
       self$current_expectations <- NULL
 

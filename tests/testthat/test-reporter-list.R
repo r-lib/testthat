@@ -32,6 +32,13 @@ test_that("ListReporter - exception outside of test_that()", {
 })
 
 
+test_that("captures error if only thing in file", {
+  test_file_path <- 'test-list-reporter/test-only-error.R'
+  res <- test_file(test_path(test_file_path), reporter = NULL)
+
+  expect_length(res, 1)
+  expect_s3_class(res[[1]]$results[[1]], "expectation_error")
+})
 
 # ListReporter on a "standard" test file: 2 contexts, passing, failing and crashing tests
 test_that("exercise ListReporter", {
