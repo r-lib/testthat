@@ -179,8 +179,10 @@ you examples of where the failures occured.</p>
   <span class='kw'>max_diffs</span> <span class='kw'>=</span> <span class='fl'>5</span>, <span class='kw'>max_lines</span> <span class='kw'>=</span> <span class='fl'>5</span>, <span class='kw'>width</span> <span class='kw'>=</span> <span class='kw pkg'>cli</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/cli/man/console_width.html'>console_width</a></span>())
 
 <span class='co'># S3 method for numeric</span>
-<span class='fu'>compare</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='kw'>tolerance</span> <span class='kw'>=</span> <span class='no'>.Machine</span>$<span class='no'>double.eps</span>^<span class='fl'>0.5</span>,
+<span class='fu'>compare</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='kw'>tolerance</span> <span class='kw'>=</span> <span class='fu'>testthat_tolerance</span>(),
   <span class='kw'>check.attributes</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='no'>...</span>, <span class='kw'>max_diffs</span> <span class='kw'>=</span> <span class='fl'>9</span>)
+
+<span class='fu'>testthat_tolerance</span>(<span class='no'>x</span>)
 
 <span class='co'># S3 method for POSIXt</span>
 <span class='fu'>compare</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='kw'>tolerance</span> <span class='kw'>=</span> <span class='fl'>0.001</span>, <span class='no'>...</span>, <span class='kw'>max_diffs</span> <span class='kw'>=</span> <span class='fl'>9</span>)</pre>
@@ -215,7 +217,9 @@ you examples of where the failures occured.</p>
     <tr>
       <th>tolerance</th>
       <td><p>Numerical tolerance: any differences smaller than this
-value will be ignored.</p></td>
+value will be ignored.</p>
+<p>The default tolerance is <code><a href='https://rdrr.io/r/base/MathFun.html'>sqrt(.Machine$double.eps)</a></code>, unless long doubles
+are not available, in which case the test is skipped.</p></td>
     </tr>
     </table>
 

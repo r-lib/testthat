@@ -166,6 +166,7 @@
 <a href="#testthat-development-version" class="anchor"></a>testthat (development version)<small> Unreleased </small>
 </h1>
 <ul>
+<li><p><code><a href="../reference/compare.html">compare.numeric()</a></code> uses a more sophisticated default tolerance that will automatically skip numeric tolernace test if long doubles are non available (<a href='https://github.com/r-lib/testthat/issues/940'>#940</a>).</p></li>
 <li><p><code><a href="../reference/output-expectations.html">expect_error()</a></code> gets a better warning message when you test for a custom error class with <code>regexp</code>.</p></li>
 <li><p><code><a href="../reference/verify_output.html">verify_output()</a></code> no longer uses quasiquotation, which fixes issues when verifying the output of tidy eval functions (<a href='https://github.com/r-lib/testthat/issues/945'>#945</a>).</p></li>
 <li><p><code><a href="../reference/verify_output.html">verify_output()</a></code> gains a <code>unicode</code> parameter to turn on or off the use of Unicode characters by the cli package. It is disabled by default to prevent the tests from failing on platforms like Windows that don’t support UTF-8 (which could be your contributors or your CI machines).</p></li>
