@@ -123,7 +123,7 @@ test_file <- function(path,
   }
 
   reporter <- find_reporter(reporter)
-  if (reporter$is_full()) return()
+  if (!is.null(reporter) && reporter$is_full()) return()
 
   if (load_helpers) {
     source_test_helpers(dirname(path), env = env)
