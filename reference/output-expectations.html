@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Expectation: does code produce output/message/warning/error? — output-expectations • testthat</title>
+<title>Expectation: does code produce errors/warnings/messages? — output-expectations • testthat</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -42,11 +42,10 @@
 
 
 
-<meta property="og:title" content="Expectation: does code produce output/message/warning/error? — output-expectations" />
-<meta property="og:description" content="Use expect_output(), expect_message() and expect_warning() to
-match specified outputs. Use expect_error() or expect_condition() to
-match individual errors or conditions. Use expect_silent() to assert that
-there should be no output of any type." />
+<meta property="og:title" content="Expectation: does code produce errors/warnings/messages? — output-expectations" />
+<meta property="og:description" content="Use expect_message() and expect_warning() to match specified outputs.
+Use expect_error() or expect_condition() to match individual errors or
+conditions." />
 <meta property="og:image" content="/logo.png" />
 <meta name="twitter:card" content="summary" />
 
@@ -161,22 +160,18 @@ there should be no output of any type." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Expectation: does code produce output/message/warning/error?</h1>
+    <h1>Expectation: does code produce errors/warnings/messages?</h1>
     <small class="dont-index">Source: <a href='https://github.com/r-lib/testthat/blob/master/R/expect-output.R'><code>R/expect-output.R</code></a></small>
     <div class="hidden name"><code>output-expectations.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Use <code>expect_output()</code>, <code>expect_message()</code> and <code>expect_warning()</code> to
-match specified outputs. Use <code>expect_error()</code> or <code>expect_condition()</code> to
-match individual errors or conditions. Use <code>expect_silent()</code> to assert that
-there should be no output of any type.</p>
+    <p>Use <code>expect_message()</code> and <code>expect_warning()</code> to match specified outputs.
+Use <code>expect_error()</code> or <code>expect_condition()</code> to match individual errors or
+conditions.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>expect_output</span>(<span class='no'>object</span>, <span class='kw'>regexp</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>, <span class='kw'>info</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>label</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>width</span> <span class='kw'>=</span> <span class='fl'>80</span>)
-
-<span class='fu'>expect_error</span>(<span class='no'>object</span>, <span class='kw'>regexp</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>class</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>, <span class='kw'>info</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+    <pre class="usage"><span class='fu'>expect_error</span>(<span class='no'>object</span>, <span class='kw'>regexp</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>class</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>, <span class='kw'>info</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>label</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
 
 <span class='fu'>expect_condition</span>(<span class='no'>object</span>, <span class='kw'>regexp</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>class</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>,
@@ -186,9 +181,7 @@ there should be no output of any type.</p>
   <span class='kw'>label</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
 
 <span class='fu'>expect_warning</span>(<span class='no'>object</span>, <span class='kw'>regexp</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>, <span class='kw'>all</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>info</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>label</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
-
-<span class='fu'>expect_silent</span>(<span class='no'>object</span>)</pre>
+  <span class='kw'>label</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -206,6 +199,11 @@ within a function or for loop. See <a href='quasi_label.html'>quasi_label</a> fo
 a messsage, a warning, or an error, but does not test for specific value.</p>
 <p>If <code>NA</code>, asserts that there should be no output, messages, warnings,
 or errors.</p></td>
+    </tr>
+    <tr>
+      <th>class</th>
+      <td><p>Instead of supplying a regular expression, you can also supply
+a class name. This is useful for "classed" conditions.</p></td>
     </tr>
     <tr>
       <th>...</th>
@@ -229,17 +227,6 @@ alternatives in <a href='quasi_label.html'>quasi_label</a>.</p></td>
       <td><p>Used to customise failure messages. For expert use only.</p></td>
     </tr>
     <tr>
-      <th>width</th>
-      <td><p>Number of characters per line of output. This does not
-inherit from <code><a href='https://rdrr.io/r/base/options.html'>getOption("width")</a></code> so that tests always use the same
-output width, minimising spurious differences.</p></td>
-    </tr>
-    <tr>
-      <th>class</th>
-      <td><p>Instead of supplying a regular expression, you can also supply
-a class name. This is useful for "classed" conditions.</p></td>
-    </tr>
-    <tr>
       <th>all</th>
       <td><p>For messages and warnings, do all need to match the <code>regexp</code>
 (TRUE), or does only one need to match (FALSE)</p></td>
@@ -254,6 +241,26 @@ error, that is returned instead of the value.</p>
 
     <p>Note that warnings are captured by a custom signal handler: this means
 that <code><a href='https://rdrr.io/r/base/options.html'>options(warn)</a></code> has no effect.</p>
+    <h2 class="hasAnchor" id="testing-message-vs-class"><a class="anchor" href="#testing-message-vs-class"></a>Testing <code>message</code> vs <code>class</code></h2>
+
+    
+
+<p>When checking that code generates an error, it's important to check that the
+error is the one you expect. There are two ways to do this. The first
+way is the simplest: you just provide a <code>regexp</code> that match some fragment
+of the error message. This is easy, but fragile, because the test will
+fail if the error message changes (even if its the same error).</p>
+<p>A more robust way is to test for the class of the error, if it has one.
+You can learn more about custom conditions at
+<a href='https://adv-r.hadley.nz/conditions.html#custom-conditions'>https://adv-r.hadley.nz/conditions.html#custom-conditions</a>, but in
+short, errors are S3 classes and you can generate a custom class and check
+for it using <code>class</code> instead of <code>regexp</code>. Because this is a more reliable
+check, you <code>expect_error()</code> will warn if the error has a custom class but
+you are testing the message. Eliminate the warning by using <code>class</code> instead
+of <code>regexp</code>.</p>
+<p>If you are using <code>expect_error()</code> to check that an error message is
+formatted in such a way that it makes sense to a human, we now recommend
+using <code><a href='verify_output.html'>verify_output()</a></code> instead.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other expectations: <code><a href='comparison-expectations.html'>comparison-expectations</a></code>,
@@ -264,26 +271,7 @@ that <code><a href='https://rdrr.io/r/base/options.html'>options(warn)</a></code
   <code><a href='logical-expectations.html'>logical-expectations</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># Output --------------------------------------------------------------------</span>
-<span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span>(<span class='no'>mtcars</span>)</div><div class='output co'>#&gt; 'data.frame':	32 obs. of  11 variables:
-#&gt;  $ mpg : num  21 21 22.8 21.4 18.7 18.1 14.3 24.4 22.8 19.2 ...
-#&gt;  $ cyl : num  6 6 4 6 8 6 8 4 4 6 ...
-#&gt;  $ disp: num  160 160 108 258 360 ...
-#&gt;  $ hp  : num  110 110 93 110 175 105 245 62 95 123 ...
-#&gt;  $ drat: num  3.9 3.9 3.85 3.08 3.15 2.76 3.21 3.69 3.92 3.92 ...
-#&gt;  $ wt  : num  2.62 2.88 2.32 3.21 3.44 ...
-#&gt;  $ qsec: num  16.5 17 18.6 19.4 17 ...
-#&gt;  $ vs  : num  0 0 1 1 0 1 0 1 1 1 ...
-#&gt;  $ am  : num  1 1 1 0 0 0 0 0 0 0 ...
-#&gt;  $ gear: num  4 4 4 3 3 3 3 4 4 4 ...
-#&gt;  $ carb: num  4 4 1 1 2 1 4 2 2 4 ...</div><div class='input'><span class='fu'>expect_output</span>(<span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span>(<span class='no'>mtcars</span>), <span class='st'>"32 obs"</span>)
-<span class='fu'>expect_output</span>(<span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span>(<span class='no'>mtcars</span>), <span class='st'>"11 variables"</span>)
-
-<span class='co'># You can use the arguments of grepl to control the matching</span>
-<span class='fu'>expect_output</span>(<span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span>(<span class='no'>mtcars</span>), <span class='st'>"11 VARIABLES"</span>, <span class='kw'>ignore.case</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
-<span class='fu'>expect_output</span>(<span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span>(<span class='no'>mtcars</span>), <span class='st'>"$ mpg"</span>, <span class='kw'>fixed</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
-
-<span class='co'># Messages ------------------------------------------------------------------</span>
+    <pre class="examples"><div class='input'><span class='co'># Messages ------------------------------------------------------------------</span>
 
 <span class='no'>f</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>(<span class='no'>x</span>) {
   <span class='kw'>if</span> (<span class='no'>x</span> <span class='kw'>&lt;</span> <span class='fl'>0</span>) <span class='fu'><a href='https://rdrr.io/r/base/message.html'>message</a></span>(<span class='st'>"*x* is already negative"</span>)
@@ -316,19 +304,7 @@ that <code><a href='https://rdrr.io/r/base/options.html'>options(warn)</a></code
 <span class='fu'>expect_error</span>(<span class='fu'>f</span>(), <span class='st'>"My error!"</span>)
 
 <span class='co'># You can use the arguments of grepl to control the matching</span>
-<span class='fu'>expect_error</span>(<span class='fu'>f</span>(), <span class='st'>"my error!"</span>, <span class='kw'>ignore.case</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
-
-<span class='co'># Silent --------------------------------------------------------------------</span>
-<span class='fu'>expect_silent</span>(<span class='st'>"123"</span>)
-
-<span class='no'>f</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>() {
-  <span class='fu'><a href='https://rdrr.io/r/base/message.html'>message</a></span>(<span class='st'>"Hi!"</span>)
-  <span class='fu'><a href='https://rdrr.io/r/base/warning.html'>warning</a></span>(<span class='st'>"Hey!!"</span>)
-  <span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='st'>"OY!!!"</span>)
-}
-<span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
-<span class='fu'>expect_silent</span>(<span class='fu'>f</span>())
-}</div></pre>
+<span class='fu'>expect_error</span>(<span class='fu'>f</span>(), <span class='st'>"my error!"</span>, <span class='kw'>ignore.case</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -336,6 +312,7 @@ that <code><a href='https://rdrr.io/r/base/options.html'>options(warn)</a></code
       <li><a href="#arguments">Arguments</a></li>
       <li><a href="#value">Value</a></li>
       <li><a href="#details">Details</a></li>
+      <li><a href="#testing-message-vs-class">Testing <code>message</code> vs <code>class</code></a></li>
       <li><a href="#see-also">See also</a></li>
       <li><a href="#examples">Examples</a></li>
     </ul>
