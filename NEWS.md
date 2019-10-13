@@ -1,5 +1,7 @@
 # testthat (development version)
 
+* Unquoted inputs not longer potentially generate multiple test messages (#929).
+
 * `compare.numeric()` uses a more sophisticated default tolerance that will
   automatically skip numeric tolernace test if long doubles are non available
   (#940).
