@@ -1,6 +1,11 @@
 #' @include compare.R
 #' @export
 #' @rdname compare
+#' @param tolerance Numerical tolerance: any differences smaller than this
+#'   value will be ignored.
+#'
+#'   The default tolerance is `sqrt(.Machine$double.eps)`, unless long doubles
+#'   are not available, in which case the test is skipped.
 #' @examples
 #' # Numeric -------------------------------------------------------------------
 #'
@@ -17,7 +22,7 @@
 #' # as all.equal.
 #' compare(x, x + 1e-9)
 compare.numeric <- function(x, y,
-                            tolerance = .Machine$double.eps ^ 0.5,
+                            tolerance = testthat_tolerance(),
                             check.attributes = TRUE,
                             ..., max_diffs = 9) {
   all_equal <- all.equal(
@@ -49,6 +54,16 @@ compare.numeric <- function(x, y,
     mismatches <- mismatch_numeric(x, y, diff)
     difference(format(mismatches, max_diffs = max_diffs))
   }
+}
+
+#' @export
+#' @rdname compare
+testthat_tolerance <- function(x) {
+  if (identical(capabilities("long.double"), FALSE)) {
+    skip("Long doubles not available and `tolerance` not supplied")
+  }
+
+  .Machine$double.eps ^ 0.5
 }
 
 mismatch_numeric <- function(x, y, diff = !vector_equal(x, y)) {

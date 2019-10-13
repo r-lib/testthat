@@ -13,7 +13,6 @@ The job of a reporter is to aggregate the results from files, tests, and
 expectations and display them in an informative way. Every testtthat function
 that runs multiple tests provides a \code{reporter} argument which you can
 use to override the default (which is selected by \code{\link[=default_reporter]{default_reporter()}}).
-Typically this will
 }
 \details{
 You only need to use this \code{Reporter} object directly if you are creating

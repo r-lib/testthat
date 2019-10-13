@@ -2,17 +2,12 @@
 % Please edit documentation in R/expect-output.R
 \name{output-expectations}
 \alias{output-expectations}
-\alias{expect_output}
 \alias{expect_error}
 \alias{expect_condition}
 \alias{expect_message}
 \alias{expect_warning}
-\alias{expect_silent}
-\title{Expectation: does code produce output/message/warning/error?}
+\title{Expectation: does code produce errors/warnings/messages?}
 \usage{
-expect_output(object, regexp = NULL, ..., info = NULL, label = NULL,
-  width = 80)
-
 expect_error(object, regexp = NULL, class = NULL, ..., info = NULL,
   label = NULL)
 
@@ -24,8 +19,6 @@ expect_message(object, regexp = NULL, ..., all = FALSE, info = NULL,
 
 expect_warning(object, regexp = NULL, ..., all = FALSE, info = NULL,
   label = NULL)
-
-expect_silent(object)
 }
 \arguments{
 \item{object}{Object to test.
@@ -40,6 +33,9 @@ a messsage, a warning, or an error, but does not test for specific value.
 
 If \code{NA}, asserts that there should be no output, messages, warnings,
 or errors.}
+
+\item{class}{Instead of supplying a regular expression, you can also supply
+a class name. This is useful for "classed" conditions.}
 
 \item{...}{Arguments passed on to \code{expect_match}
 \describe{
@@ -56,13 +52,6 @@ alternatives in \link{quasi_label}.}
 
 \item{label}{Used to customise failure messages. For expert use only.}
 
-\item{width}{Number of characters per line of output. This does not
-inherit from \code{getOption("width")} so that tests always use the same
-output width, minimising spurious differences.}
-
-\item{class}{Instead of supplying a regular expression, you can also supply
-a class name. This is useful for "classed" conditions.}
-
 \item{all}{For messages and warnings, do all need to match the \code{regexp}
 (TRUE), or does only one need to match (FALSE)}
 }
@@ -71,25 +60,37 @@ The first argument, invisibly. If \code{expect_error()} captures an
 error, that is returned instead of the value.
 }
 \description{
-Use \code{expect_output()}, \code{expect_message()} and \code{expect_warning()} to
-match specified outputs. Use \code{expect_error()} or \code{expect_condition()} to
-match individual errors or conditions. Use \code{expect_silent()} to assert that
-there should be no output of any type.
+Use \code{expect_message()} and \code{expect_warning()} to match specified outputs.
+Use \code{expect_error()} or \code{expect_condition()} to match individual errors or
+conditions.
 }
 \details{
 Note that warnings are captured by a custom signal handler: this means
 that \code{options(warn)} has no effect.
 }
+\section{Testing \code{message} vs \code{class}}{
+
+When checking that code generates an error, it's important to check that the
+error is the one you expect. There are two ways to do this. The first
+way is the simplest: you just provide a \code{regexp} that match some fragment
+of the error message. This is easy, but fragile, because the test will
+fail if the error message changes (even if its the same error).
+
+A more robust way is to test for the class of the error, if it has one.
+You can learn more about custom conditions at
+\url{https://adv-r.hadley.nz/conditions.html#custom-conditions}, but in
+short, errors are S3 classes and you can generate a custom class and check
+for it using \code{class} instead of \code{regexp}. Because this is a more reliable
+check, you \code{expect_error()} will warn if the error has a custom class but
+you are testing the message. Eliminate the warning by using \code{class} instead
+of \code{regexp}.
+
+If you are using \code{expect_error()} to check that an error message is
+formatted in such a way that it makes sense to a human, we now recommend
+using \code{\link[=verify_output]{verify_output()}} instead.
+}
+
 \examples{
-# Output --------------------------------------------------------------------
-str(mtcars)
-expect_output(str(mtcars), "32 obs")
-expect_output(str(mtcars), "11 variables")
-
-# You can use the arguments of grepl to control the matching
-expect_output(str(mtcars), "11 VARIABLES", ignore.case = TRUE)
-expect_output(str(mtcars), "$ mpg", fixed = TRUE)
-
 # Messages ------------------------------------------------------------------
 
 f <- function(x) {
@@ -124,18 +125,6 @@ expect_error(f(), "My error!")
 
 # You can use the arguments of grepl to control the matching
 expect_error(f(), "my error!", ignore.case = TRUE)
-
-# Silent --------------------------------------------------------------------
-expect_silent("123")
-
-f <- function() {
-  message("Hi!")
-  warning("Hey!!")
-  print("OY!!!")
-}
-\dontrun{
-expect_silent(f())
-}
 }
 \seealso{
 Other expectations: \code{\link{comparison-expectations}},

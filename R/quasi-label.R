@@ -57,10 +57,12 @@ quasi_capture <- function(.quo, .label, .capture, ...) {
 }
 
 expr_label <- function(x) {
-  if (is.character(x)) {
-    encodeString(x, quote = '"')
-  } else if (is.atomic(x)) {
-    format(x)
+  if (is.atomic(x)) {
+    x <- deparse(x)
+    if (length(x) > 1) {
+      x <- paste0(x[[1]], "...)")
+    }
+    x
   } else if (is.name(x)) {
     paste0("`", as.character(x), "`")
   } else {

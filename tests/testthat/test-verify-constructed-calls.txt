@@ -1,0 +1,7 @@
+> expr(foo(!!c("bar", "baz")))
+foo(c("bar", "baz"))
+
+> binding <- quote(foo)
+> expr(foo(!!binding))
+foo(foo)
+

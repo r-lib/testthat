@@ -1,5 +1,22 @@
-
 # testthat (development version)
+
+* Unquoted inputs not longer potentially generate multiple test messages (#929).
+
+* `compare.numeric()` uses a more sophisticated default tolerance that will
+  automatically skip numeric tolernace test if long doubles are non available
+  (#940).
+
+* `expect_error()` gets a better warning message when you test for a custom 
+  error class with `regexp`.
+
+* `verify_output()` no longer uses quasiquotation, which fixes issues
+  when verifying the output of tidy eval functions (#945).
+
+* `verify_output()` gains a `unicode` parameter to turn on or off the
+  use of Unicode characters by the cli package. It is disabled by
+  default to prevent the tests from failing on platforms like Windows
+  that don't support UTF-8 (which could be your contributors or your
+  CI machines).
 
 * `verify_output()` now correctly handles multi-line condition
   messages.

@@ -4,7 +4,6 @@
 #' expectations and display them in an informative way. Every testtthat function
 #' that runs multiple tests provides a `reporter` argument which you can
 #' use to override the default (which is selected by [default_reporter()]).
-#' Typically this will
 #'
 #' You only need to use this `Reporter` object directly if you are creating
 #' a new reporter. Currently, creating new Reporters is undocumented,
