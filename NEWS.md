@@ -1,17 +1,42 @@
 # testthat (development version)
 
-* ListReporter now tracks expectations and errors, even when they occur outside
-  of tests. This ensures that `stop_on_failure` matches the results displayed
-  by the reporter (#936).
+## Conditions
 
-* Unquoted inputs not longer potentially generate multiple test messages (#929).
+This release mostly focusses on an overhaul of how testthat works with conditions (i.e. errors, warnings and messages). This has relatively few user facing changes, although you should now see more informative back traces from errors and failures.
 
-* `compare.numeric()` uses a more sophisticated default tolerance that will
-  automatically skip numeric tolernace test if long doubles are non available
-  (#940).
+* Unexpected errors are now printed with a simplified backtrace.
+
+* `expect_error()` and `expect_condition()` now display a backtrace
+  when the error doesn't conform to expectations (#729).
+
+* `expect_error()`, `expect_warning()` and `expect_message()` now call
+  `conditionMessage()` to get the condition message. This generic
+  makes it possible to generate messages at print-time rather than
+  signal-time.
 
 * `expect_error()` gets a better warning message when you test for a custom 
   error class with `regexp`.
+
+* New `exp_signal()` function. This is a condition signaller that
+  implements the testthat protocol (signal with `stop()` if the
+  expectation is broken, with a `continue_test` restart).
+
+* Existence of restarts is first checked before invokation. This makes
+  it possible to signal warnings or messages with a different
+  condition signaller (#874).
+
+* `ListReporter` now tracks expectations and errors, even when they occur 
+  outside of tests. This ensures that `stop_on_failure` matches the results 
+  displayed by the reporter (#936).
+
+## Expectations
+
+* Expectations can now be explicitly subclassed with
+  `new_expectation()`. This constructor follows our new conventions
+  for S3 classes and takes an optional subclass and optional
+  attributes.
+
+* Unquoted inputs not longer potentially generate multiple test messages (#929).
 
 * `verify_output()` no longer uses quasiquotation, which fixes issues
   when verifying the output of tidy eval functions (#945).
@@ -25,32 +50,14 @@
 * `verify_output()` now correctly handles multi-line condition
   messages.
 
-* `expect_error()`, `expect_warning()` and `expect_message()` now call
-  `conditionMessage()` to get the condition message. This generic
-  makes it possible to generate messages at print-time rather than
-  signal-time.
+## Other minor improvements and bug fixes
 
-* JunitReporter now reports tests in ISO 8601 in the UTC timezone and also uses
-  the maximum 3 decimal place precision (#923).
+* `compare.numeric()` uses a more sophisticated default tolerance that will
+  automatically skip tests that rely on numeric tolerance if long doubles are 
+  not available (#940).
 
-* New `exp_signal()` function. This is a condition signaller that
-  implements the testthat protocol (signal with `stop()` if the
-  expectation is broken, with a `continue_test` restart).
-
-* Expectations can now be explicitly subclassed with
-  `new_expectation()`. This constructor follows our new conventions
-  for S3 classes and takes an optional subclass and optional
-  attributes.
-
-* Existence of restarts is first checked before invokation. This makes
-  it possible to signal warnings or messages with a different
-  condition signaller (#874).
-
-* Unexpected errors are now printed with a simplified backtrace.
-
-* `expect_error()` and `expect_condition()` now display a backtrace
-  when the error doesn't conform to expectations (#729).
-
+* `JunitReporter` now reports tests in ISO 8601 in the UTC timezone and 
+  uses the maximum precision of 3 decimal places (#923).
 
 # testthat 2.2.1
 
