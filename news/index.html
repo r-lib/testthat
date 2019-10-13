@@ -166,6 +166,7 @@
 <a href="#testthat-development-version" class="anchor"></a>testthat (development version)<small> Unreleased </small>
 </h1>
 <ul>
+<li><p>ListReporter now tracks expectations and errors, even when they occur outside of tests. This ensures that <code>stop_on_failure</code> matches the results displayed by the reporter (<a href='https://github.com/r-lib/testthat/issues/936'>#936</a>).</p></li>
 <li><p>Unquoted inputs not longer potentially generate multiple test messages (<a href='https://github.com/r-lib/testthat/issues/929'>#929</a>).</p></li>
 <li><p><code><a href="../reference/compare.html">compare.numeric()</a></code> uses a more sophisticated default tolerance that will automatically skip numeric tolernace test if long doubles are non available (<a href='https://github.com/r-lib/testthat/issues/940'>#940</a>).</p></li>
 <li><p><code><a href="../reference/output-expectations.html">expect_error()</a></code> gets a better warning message when you test for a custom error class with <code>regexp</code>.</p></li>
