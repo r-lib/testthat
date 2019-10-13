@@ -1,5 +1,9 @@
 # testthat (development version)
 
+* `compare.numeric()` uses a more sophisticated default tolerance that will
+  automatically skip numeric tolernace test if long doubles are non available
+  (#940).
+
 * `expect_error()` gets a better warning message when you test for a custom 
   error class with `regexp`.
 

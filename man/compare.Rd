@@ -6,6 +6,7 @@
 \alias{compare.default}
 \alias{compare.character}
 \alias{compare.numeric}
+\alias{testthat_tolerance}
 \alias{compare.POSIXt}
 \title{Provide human-readable comparison of two objects}
 \usage{
@@ -16,8 +17,10 @@ compare(x, y, ...)
 \method{compare}{character}(x, y, check.attributes = TRUE, ...,
   max_diffs = 5, max_lines = 5, width = cli::console_width())
 
-\method{compare}{numeric}(x, y, tolerance = .Machine$double.eps^0.5,
+\method{compare}{numeric}(x, y, tolerance = testthat_tolerance(),
   check.attributes = TRUE, ..., max_diffs = 9)
+
+testthat_tolerance(x)
 
 \method{compare}{POSIXt}(x, y, tolerance = 0.001, ..., max_diffs = 9)
 }
@@ -35,7 +38,10 @@ compare(x, y, ...)
 \item{width}{Width of output device}
 
 \item{tolerance}{Numerical tolerance: any differences smaller than this
-value will be ignored.}
+value will be ignored.
+
+The default tolerance is \code{sqrt(.Machine$double.eps)}, unless long doubles
+are not available, in which case the test is skipped.}
 }
 \description{
 \code{compare} is similar to \code{\link[base:all.equal]{base::all.equal()}}, but shows
