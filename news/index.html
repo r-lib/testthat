@@ -166,6 +166,7 @@
 <a href="#testthat-development-version" class="anchor"></a>testthat (development version)<small> Unreleased </small>
 </h1>
 <ul>
+<li><p>Unquoted inputs not longer potentially generate multiple test messages (<a href='https://github.com/r-lib/testthat/issues/929'>#929</a>).</p></li>
 <li><p><code><a href="../reference/compare.html">compare.numeric()</a></code> uses a more sophisticated default tolerance that will automatically skip numeric tolernace test if long doubles are non available (<a href='https://github.com/r-lib/testthat/issues/940'>#940</a>).</p></li>
 <li><p><code><a href="../reference/output-expectations.html">expect_error()</a></code> gets a better warning message when you test for a custom error class with <code>regexp</code>.</p></li>
 <li><p><code><a href="../reference/verify_output.html">verify_output()</a></code> no longer uses quasiquotation, which fixes issues when verifying the output of tidy eval functions (<a href='https://github.com/r-lib/testthat/issues/945'>#945</a>).</p></li>
