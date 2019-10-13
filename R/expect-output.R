@@ -1,6 +1,6 @@
-#' Expectation: does code produce output/message/warning/error?
+#' Expectation: does code produce errors/warnings/messages?
 #'
-#' Use `expect_output()`, `expect_message()` and `expect_warning()` to
+#' Use `expect_message()` and `expect_warning()` to
 #' match specified outputs. Use `expect_error()` or `expect_condition()` to
 #' match individual errors or conditions. Use `expect_silent()` to assert that
 #' there should be no output of any type.
@@ -25,15 +25,6 @@
 #' @return The first argument, invisibly. If `expect_error()` captures an
 #'   error, that is returned instead of the value.
 #' @examples
-#' # Output --------------------------------------------------------------------
-#' str(mtcars)
-#' expect_output(str(mtcars), "32 obs")
-#' expect_output(str(mtcars), "11 variables")
-#'
-#' # You can use the arguments of grepl to control the matching
-#' expect_output(str(mtcars), "11 VARIABLES", ignore.case = TRUE)
-#' expect_output(str(mtcars), "$ mpg", fixed = TRUE)
-#'
 #' # Messages ------------------------------------------------------------------
 #'
 #' f <- function(x) {
@@ -83,37 +74,6 @@
 
 #' @name output-expectations
 NULL
-
-#' @export
-#' @rdname output-expectations
-#' @inheritParams capture_output
-expect_output <- function(object,
-                          regexp = NULL,
-                          ...,
-                          info = NULL,
-                          label = NULL,
-                          width = 80
-                          ) {
-  act <- quasi_capture(enquo(object), label, capture_output, width = width)
-
-  if (identical(regexp, NA)) {
-    expect(
-      identical(act$cap, ""),
-      sprintf("%s produced output.\n%s", act$lab, encodeString(act$cap)),
-      info = info
-    )
-  } else if (is.null(regexp) || identical(act$cap, "")) {
-    expect(
-      !identical(act$cap, ""),
-      sprintf("%s produced no output", act$lab),
-      info = info
-    )
-  } else {
-    expect_match(act$cap, enc2native(regexp), ..., info = info, label = act$lab)
-  }
-
-  invisible(act$val)
-}
 
 
 #' @export
@@ -214,6 +174,51 @@ expect_silent <- function(object) {
   )
 
   invisible(act$cap$result)
+}
+
+#' Expectation: does code print output to the console?
+#'
+#' Test for output produced by `print()` or `cat()`. This is best used for
+#' very simple output; for more complex cases use [verify_output()].
+#'
+#' @export
+#' @inheritParams expect_error
+#' @inheritParams capture_output
+#' @inheritDotParams expect_match -object -regexp -info -label
+#' @examples
+#' str(mtcars)
+#' expect_output(str(mtcars), "32 obs")
+#' expect_output(str(mtcars), "11 variables")
+#'
+#' # You can use the arguments of grepl to control the matching
+#' expect_output(str(mtcars), "11 VARIABLES", ignore.case = TRUE)
+#' expect_output(str(mtcars), "$ mpg", fixed = TRUE)
+expect_output <- function(object,
+                          regexp = NULL,
+                          ...,
+                          info = NULL,
+                          label = NULL,
+                          width = 80
+                          ) {
+  act <- quasi_capture(enquo(object), label, capture_output, width = width)
+
+  if (identical(regexp, NA)) {
+    expect(
+      identical(act$cap, ""),
+      sprintf("%s produced output.\n%s", act$lab, encodeString(act$cap)),
+      info = info
+    )
+  } else if (is.null(regexp) || identical(act$cap, "")) {
+    expect(
+      !identical(act$cap, ""),
+      sprintf("%s produced no output", act$lab),
+      info = info
+    )
+  } else {
+    expect_match(act$cap, enc2native(regexp), ..., info = info, label = act$lab)
+  }
+
+  invisible(act$val)
 }
 
 

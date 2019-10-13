@@ -2,17 +2,13 @@
 % Please edit documentation in R/expect-output.R
 \name{output-expectations}
 \alias{output-expectations}
-\alias{expect_output}
 \alias{expect_error}
 \alias{expect_condition}
 \alias{expect_message}
 \alias{expect_warning}
 \alias{expect_silent}
-\title{Expectation: does code produce output/message/warning/error?}
+\title{Expectation: does code produce errors/warnings/messages?}
 \usage{
-expect_output(object, regexp = NULL, ..., info = NULL, label = NULL,
-  width = 80)
-
 expect_error(object, regexp = NULL, class = NULL, ..., info = NULL,
   label = NULL)
 
@@ -41,6 +37,9 @@ a messsage, a warning, or an error, but does not test for specific value.
 If \code{NA}, asserts that there should be no output, messages, warnings,
 or errors.}
 
+\item{class}{Instead of supplying a regular expression, you can also supply
+a class name. This is useful for "classed" conditions.}
+
 \item{...}{Arguments passed on to \code{expect_match}
 \describe{
   \item{all}{Should all elements of actual value match \code{regexp} (TRUE),
@@ -56,13 +55,6 @@ alternatives in \link{quasi_label}.}
 
 \item{label}{Used to customise failure messages. For expert use only.}
 
-\item{width}{Number of characters per line of output. This does not
-inherit from \code{getOption("width")} so that tests always use the same
-output width, minimising spurious differences.}
-
-\item{class}{Instead of supplying a regular expression, you can also supply
-a class name. This is useful for "classed" conditions.}
-
 \item{all}{For messages and warnings, do all need to match the \code{regexp}
 (TRUE), or does only one need to match (FALSE)}
 }
@@ -71,7 +63,7 @@ The first argument, invisibly. If \code{expect_error()} captures an
 error, that is returned instead of the value.
 }
 \description{
-Use \code{expect_output()}, \code{expect_message()} and \code{expect_warning()} to
+Use \code{expect_message()} and \code{expect_warning()} to
 match specified outputs. Use \code{expect_error()} or \code{expect_condition()} to
 match individual errors or conditions. Use \code{expect_silent()} to assert that
 there should be no output of any type.
@@ -81,15 +73,6 @@ Note that warnings are captured by a custom signal handler: this means
 that \code{options(warn)} has no effect.
 }
 \examples{
-# Output --------------------------------------------------------------------
-str(mtcars)
-expect_output(str(mtcars), "32 obs")
-expect_output(str(mtcars), "11 variables")
-
-# You can use the arguments of grepl to control the matching
-expect_output(str(mtcars), "11 VARIABLES", ignore.case = TRUE)
-expect_output(str(mtcars), "$ mpg", fixed = TRUE)
-
 # Messages ------------------------------------------------------------------
 
 f <- function(x) {
