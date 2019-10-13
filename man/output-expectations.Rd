@@ -6,7 +6,6 @@
 \alias{expect_condition}
 \alias{expect_message}
 \alias{expect_warning}
-\alias{expect_silent}
 \title{Expectation: does code produce errors/warnings/messages?}
 \usage{
 expect_error(object, regexp = NULL, class = NULL, ..., info = NULL,
@@ -20,8 +19,6 @@ expect_message(object, regexp = NULL, ..., all = FALSE, info = NULL,
 
 expect_warning(object, regexp = NULL, ..., all = FALSE, info = NULL,
   label = NULL)
-
-expect_silent(object)
 }
 \arguments{
 \item{object}{Object to test.
@@ -63,10 +60,9 @@ The first argument, invisibly. If \code{expect_error()} captures an
 error, that is returned instead of the value.
 }
 \description{
-Use \code{expect_message()} and \code{expect_warning()} to
-match specified outputs. Use \code{expect_error()} or \code{expect_condition()} to
-match individual errors or conditions. Use \code{expect_silent()} to assert that
-there should be no output of any type.
+Use \code{expect_message()} and \code{expect_warning()} to match specified outputs.
+Use \code{expect_error()} or \code{expect_condition()} to match individual errors or
+conditions.
 }
 \details{
 Note that warnings are captured by a custom signal handler: this means
@@ -107,18 +103,6 @@ expect_error(f(), "My error!")
 
 # You can use the arguments of grepl to control the matching
 expect_error(f(), "my error!", ignore.case = TRUE)
-
-# Silent --------------------------------------------------------------------
-expect_silent("123")
-
-f <- function() {
-  message("Hi!")
-  warning("Hey!!")
-  print("OY!!!")
-}
-\dontrun{
-expect_silent(f())
-}
 }
 \seealso{
 Other expectations: \code{\link{comparison-expectations}},

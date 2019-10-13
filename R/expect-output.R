@@ -1,9 +1,8 @@
 #' Expectation: does code produce errors/warnings/messages?
 #'
-#' Use `expect_message()` and `expect_warning()` to
-#' match specified outputs. Use `expect_error()` or `expect_condition()` to
-#' match individual errors or conditions. Use `expect_silent()` to assert that
-#' there should be no output of any type.
+#' Use `expect_message()` and `expect_warning()` to match specified outputs.
+#' Use `expect_error()` or `expect_condition()` to match individual errors or
+#' conditions.
 #'
 #' Note that warnings are captured by a custom signal handler: this means
 #' that `options(warn)` has no effect.
@@ -59,18 +58,6 @@
 #'
 #' # You can use the arguments of grepl to control the matching
 #' expect_error(f(), "my error!", ignore.case = TRUE)
-#'
-#' # Silent --------------------------------------------------------------------
-#' expect_silent("123")
-#'
-#' f <- function() {
-#'   message("Hi!")
-#'   warning("Hey!!")
-#'   print("OY!!!")
-#' }
-#' \dontrun{
-#' expect_silent(f())
-#' }
 
 #' @name output-expectations
 NULL
@@ -157,8 +144,23 @@ expect_warning <- function(object,
   invisible(act$val)
 }
 
+#' Expectation: is the code silent?
+#'
+#' Checks that the code produces no output, messages, or warnings.
+#'
+#' @inheritParams expect_error
 #' @export
-#' @rdname output-expectations
+#' @examples
+#' expect_silent("123")
+#'
+#' f <- function() {
+#'   message("Hi!")
+#'   warning("Hey!!")
+#'   print("OY!!!")
+#' }
+#' \dontrun{
+#' expect_silent(f())
+#' }
 expect_silent <- function(object) {
   act <- quasi_capture(enquo(object), NULL, evaluate_promise)
 
