@@ -1,5 +1,7 @@
-
 # testthat (development version)
+
+* `expect_error()` gets a better warning message when you test for a custom 
+  error class with `regexp`.
 
 * `verify_output()` no longer uses quasiquotation, which fixes issues
   when verifying the output of tidy eval functions (#945).

@@ -68,6 +68,28 @@ conditions.
 Note that warnings are captured by a custom signal handler: this means
 that \code{options(warn)} has no effect.
 }
+\section{Testing \code{message} vs \code{class}}{
+
+When checking that code generates an error, it's important to check that the
+error is the one you expect. There are two ways to do this. The first
+way is the simplest: you just provide a \code{regexp} that match some fragment
+of the error message. This is easy, but fragile, because the test will
+fail if the error message changes (even if its the same error).
+
+A more robust way is to test for the class of the error, if it has one.
+You can learn more about custom conditions at
+\url{https://adv-r.hadley.nz/conditions.html#custom-conditions}, but in
+short, errors are S3 classes and you can generate a custom class and check
+for it using \code{class} instead of \code{regexp}. Because this is a more reliable
+check, you \code{expect_error()} will warn if the error has a custom class but
+you are testing the message. Eliminate the warning by using \code{class} instead
+of \code{regexp}.
+
+If you are using \code{expect_error()} to check that an error message is
+formatted in such a way that it makes sense to a human, we now recommend
+using \code{\link[=verify_output]{verify_output()}} instead.
+}
+
 \examples{
 # Messages ------------------------------------------------------------------
 

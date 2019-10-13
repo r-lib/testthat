@@ -1,0 +1,5 @@
+> expect_error(custom_err(), "Error")
+Warning: `custom_err()` generated an S3 error and you are testing the error message.
+* The error has class = c("custom", "rlang_error", "error", "condition")
+* You are testing using `regexp`, not `class`, which is fragile.
+* Do you want `expect_error(..., class = "custom")`?
