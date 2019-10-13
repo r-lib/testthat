@@ -17,7 +17,7 @@ test_that("test_dir()", {
   df <- as.data.frame(res)
   df$user <- df$system <- df$real <- df$result <- NULL
 
-  expect_known_value(df, "test_dir.rds")
+  verify_output(test_path("test-test_dir.txt"), print(df), width = 200)
 })
 
 test_that("test_dir() filter", {
