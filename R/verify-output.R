@@ -91,7 +91,7 @@ output_replay.error <- function(x) {
     call <- deparse(x$call)
     msg <- paste0("Error in ", call, ": ", msg)
   }
-  split_lines(msg)
+  c(split_lines(msg), "")
 }
 
 #' @export
@@ -103,14 +103,14 @@ output_replay.warning <- function(x) {
     call <- deparse(x$call)
     msg <- paste0("Warning in ", call, ": ", msg)
   }
-  split_lines(msg)
+  c(split_lines(msg), "")
 }
 
 #' @export
 output_replay.message <- function(x) {
   # Messages are the only conditions where a new line is appended automatically
   msg <- paste0("Message: ", sub("\n$", "", cnd_message(x)))
-  split_lines(msg)
+  c(split_lines(msg), "")
 }
 
 #' @export
