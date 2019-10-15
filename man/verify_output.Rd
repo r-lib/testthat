@@ -32,6 +32,14 @@ so the best we can do is make the results explicit by saving to a text file.
 This makes the presentation easier to see in code reviews, and avoids
 changing it accidentally.
 }
+\section{Syntax}{
+
+\itemize{
+\item Strings appear as R comments in the output.
+\item Strings starting with \code{# } appear as headers in the output.
+}
+}
+
 \section{CRAN}{
 
 On CRAN, \code{verify_output()} will not fail if the output changes. This is

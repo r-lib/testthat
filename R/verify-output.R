@@ -8,6 +8,10 @@
 #' This makes the presentation easier to see in code reviews, and avoids
 #' changing it accidentally.
 #'
+#' @section Syntax:
+#' - Strings appear as R comments in the output.
+#' - Strings starting with `# ` appear as headers in the output.
+#'
 #' @section CRAN:
 #' On CRAN, `verify_output()` will not fail if the output changes. This is
 #' beause tests of print methods and error messages are often fragile due to
@@ -72,11 +76,27 @@ output_replay.character <- function(x) {
 #' @export
 output_replay.source <- function(x) {
   lines <- split_lines(x$src)
-  n <- length(lines)
 
-  lines[1] <- paste0("> ", lines[1])
-  if (n > 1) {
-    lines[2:n] <- paste0("+ ", lines[2:n])
+  # Remove header of lines so they don't get prefixed
+  first <- lines[[1]]
+  if (grepl("^# # ", first)) {
+    header <- gsub("^# # ", "", first)
+    lines <- lines[-1]
+  } else {
+    header <- NULL
+  }
+
+  n <- length(lines)
+  if (n > 0) {
+    lines[1] <- paste0("> ", lines[1])
+    if (n > 1) {
+      lines[2:n] <- paste0("+ ", lines[2:n])
+    }
+  }
+
+  if (!is.null(header)) {
+    underline <- paste0(strrep("=", nchar(header)))
+    lines <- c("", header, underline, "", lines)
   }
 
   lines
