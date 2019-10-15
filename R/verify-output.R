@@ -95,7 +95,7 @@ output_replay.source <- function(x) {
   }
 
   if (!is.null(header)) {
-    underline <- paste0(strrep("=", nchar(header)))
+    underline <- strrep("=", nchar(header))
     lines <- c("", header, underline, "", lines)
   }
 
