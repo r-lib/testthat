@@ -5,6 +5,10 @@ test_that("can record all types of output", {
     invisible(1:10)
     12345678 + 12345678 + 12345678 + 12345678 + 12345678 + 12345678 +
       12345678 + 12345678 + 12345678 + 12345678 + 12345678
+
+    "# Header"
+    "Other output"
+    letters
   })
 })
 

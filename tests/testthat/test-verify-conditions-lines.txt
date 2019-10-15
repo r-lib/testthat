@@ -1,9 +1,12 @@
 > message("First.\nSecond.")
 Message: First.
 Second.
+
 > warning("First.\nSecond.")
 Warning in eval(expr, envir, enclos): First.
 Second.
+
 > stop("First.\nSecond.")
 Error in eval(expr, envir, enclos): First.
 Second.
+

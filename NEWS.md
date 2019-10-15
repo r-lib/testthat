@@ -50,6 +50,13 @@ This release mostly focusses on an overhaul of how testthat works with condition
 * `verify_output()` now correctly handles multi-line condition
   messages.
 
+* `verify_output()` now adds spacing after condition messages,
+  consistently with the spacing added after normal output.
+
+* `verify_output()` has a new syntax for inserting headers in output
+  files: insert a `"# Header"` string (starting with `#` as in
+  Markdown) to add a header to a set of outputs.
+
 ## Other minor improvements and bug fixes
 
 * `compare.numeric()` uses a more sophisticated default tolerance that will
