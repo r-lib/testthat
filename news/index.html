@@ -86,7 +86,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">testthat</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.2.1.9001</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.2.1.9002</span>
       </span>
     </div>
 
@@ -188,6 +188,8 @@
 <li><p><code><a href="../reference/verify_output.html">verify_output()</a></code> no longer uses quasiquotation, which fixes issues when verifying the output of tidy eval functions (<a href='https://github.com/r-lib/testthat/issues/945'>#945</a>).</p></li>
 <li><p><code><a href="../reference/verify_output.html">verify_output()</a></code> gains a <code>unicode</code> parameter to turn on or off the use of Unicode characters by the cli package. It is disabled by default to prevent the tests from failing on platforms like Windows that don’t support UTF-8 (which could be your contributors or your CI machines).</p></li>
 <li><p><code><a href="../reference/verify_output.html">verify_output()</a></code> now correctly handles multi-line condition messages.</p></li>
+<li><p><code><a href="../reference/verify_output.html">verify_output()</a></code> now adds spacing after condition messages, consistently with the spacing added after normal output.</p></li>
+<li><p><code><a href="../reference/verify_output.html">verify_output()</a></code> has a new syntax for inserting headers in output files: insert a <code>"# Header"</code> string (starting with <code>#</code> as in Markdown) to add a header to a set of outputs.</p></li>
 </ul>
 </div>
 <div id="other-minor-improvements-and-bug-fixes" class="section level2">
