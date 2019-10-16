@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Expectation: is the object equal to a value? — equality-expectations • testthat</title>
+<title>Expectation: does code throw error or other condition? — expect_error • testthat</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -42,16 +42,10 @@
 
 
 
-<meta property="og:title" content="Expectation: is the object equal to a value? — equality-expectations" />
-<meta property="og:description" content="
-
-expect_identical() compares values with identical().
-expect_equal() compares values  with all.equal()
-expect_equivalent() compares values with all.equal() and
-check.attributes = FALSE
-expect_reference() compares the underlying memory addresses.
-
-" />
+<meta property="og:title" content="Expectation: does code throw error or other condition? — expect_error" />
+<meta property="og:description" content="expect_error() and expect_condition() check that code throws an error
+or condition with a message that matches regexp, or a class that inherits
+from class. See below for more details." />
 <meta property="og:image" content="/logo.png" />
 <meta name="twitter:card" content="summary" />
 
@@ -166,50 +160,57 @@ expect_reference() compares the underlying memory addresses.
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Expectation: is the object equal to a value?</h1>
-    <small class="dont-index">Source: <a href='https://github.com/r-lib/testthat/blob/master/R/expect-equality.R'><code>R/expect-equality.R</code></a></small>
-    <div class="hidden name"><code>equality-expectations.Rd</code></div>
+    <h1>Expectation: does code throw error or other condition?</h1>
+    <small class="dont-index">Source: <a href='https://github.com/r-lib/testthat/blob/master/R/expect-condition.R'><code>R/expect-condition.R</code></a></small>
+    <div class="hidden name"><code>expect_error.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    
-<ul>
-<li><p><code>expect_identical()</code> compares values with <code><a href='https://rdrr.io/r/base/identical.html'>identical()</a></code>.</p></li>
-<li><p><code>expect_equal()</code> compares values  with <code><a href='https://rdrr.io/r/base/all.equal.html'>all.equal()</a></code></p></li>
-<li><p><code>expect_equivalent()</code> compares values with <code><a href='https://rdrr.io/r/base/all.equal.html'>all.equal()</a></code> and
-<code>check.attributes = FALSE</code></p></li>
-<li><p><code>expect_reference()</code> compares the underlying memory addresses.</p></li>
-</ul>
-
+    <p><code>expect_error()</code> and <code>expect_condition()</code> check that code throws an error
+or condition with a message that matches <code>regexp</code>, or a class that inherits
+from <code>class</code>. See below for more details.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>expect_equal</span>(<span class='no'>object</span>, <span class='no'>expected</span>, <span class='no'>...</span>, <span class='kw'>info</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>label</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>expected.label</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
+    <pre class="usage"><span class='fu'>expect_error</span>(<span class='no'>object</span>, <span class='kw'>regexp</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>class</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>, <span class='kw'>info</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>label</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
 
-<span class='fu'>expect_equivalent</span>(<span class='no'>object</span>, <span class='no'>expected</span>, <span class='no'>...</span>, <span class='kw'>info</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>label</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>expected.label</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
-
-<span class='fu'>expect_identical</span>(<span class='no'>object</span>, <span class='no'>expected</span>, <span class='kw'>info</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>label</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>expected.label</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>)
-
-<span class='fu'>expect_reference</span>(<span class='no'>object</span>, <span class='no'>expected</span>, <span class='kw'>info</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>label</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>expected.label</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+<span class='fu'>expect_condition</span>(<span class='no'>object</span>, <span class='kw'>regexp</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>class</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>,
+  <span class='kw'>info</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>label</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>object, expected</th>
-      <td><p>Computation and value to compare it to.</p>
-<p>Both arguments supports limited unquoting to make it easier to generate
-readable failures within a function or for loop. See <a href='quasi_label.html'>quasi_label</a> for
-more details.</p></td>
+      <th>object</th>
+      <td><p>Object to test.</p>
+<p>Supports limited unquoting to make it easier to generate readable failures
+within a function or for loop. See <a href='quasi_label.html'>quasi_label</a> for more details.</p></td>
+    </tr>
+    <tr>
+      <th>regexp</th>
+      <td><p>Regular expression to test against.</p><ul>
+<li><p>A character vector giving a regular expression that must match the
+error message.</p></li>
+<li><p>If <code>NULL</code>, the default, asserts that there should be a error,
+but doesn't test for a specific value.</p></li>
+<li><p>If <code>NA</code>, asserts that there should be no errors.</p></li>
+</ul></td>
+    </tr>
+    <tr>
+      <th>class</th>
+      <td><p>Instead of supplying a regular expression, you can also supply
+a class name. This is useful for "classed" conditions.</p></td>
     </tr>
     <tr>
       <th>...</th>
-      <td><p>For <code>expect_equal()</code> and <code>expect_equivalent()</code>, passed on
-<code><a href='compare.html'>compare()</a></code>, for <code>expect_identical()</code> passed on to <code><a href='https://rdrr.io/r/base/identical.html'>identical()</a></code>.
-Used to control the details of the comparison.</p></td>
+      <td><p>Arguments passed on to <code>expect_match</code></p><dl class='dl-horizontal'>
+  <dt>all</dt><dd><p>Should all elements of actual value match <code>regexp</code> (TRUE),
+or does only one need to match (FALSE)</p></dd>
+  <dt>perl</dt><dd><p>logical.  Should Perl-compatible regexps be used?</p></dd>
+  <dt>fixed</dt><dd><p>logical.  If <code>TRUE</code>, <code>pattern</code> is a string to be
+    matched as is.  Overrides all conflicting arguments.</p></dd>
+
+</dl></td>
     </tr>
     <tr>
       <th>info</th>
@@ -218,55 +219,67 @@ is soft-deprecated and should not be used in new code. Instead see
 alternatives in <a href='quasi_label.html'>quasi_label</a>.</p></td>
     </tr>
     <tr>
-      <th>label, expected.label</th>
-      <td><p>Used to customise failure messages. For expert
-use only.</p></td>
+      <th>label</th>
+      <td><p>Used to customise failure messages. For expert use only.</p></td>
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>If <code>regexp = NA</code>, the value of the first argument; otherwise
+the captured condition.</p>
+    <h2 class="hasAnchor" id="testing-message-vs-class"><a class="anchor" href="#testing-message-vs-class"></a>Testing <code>message</code> vs <code>class</code></h2>
+
+    
+
+<p>When checking that code generates an error, it's important to check that the
+error is the one you expect. There are two ways to do this. The first
+way is the simplest: you just provide a <code>regexp</code> that match some fragment
+of the error message. This is easy, but fragile, because the test will
+fail if the error message changes (even if its the same error).</p>
+<p>A more robust way is to test for the class of the error, if it has one.
+You can learn more about custom conditions at
+<a href='https://adv-r.hadley.nz/conditions.html#custom-conditions'>https://adv-r.hadley.nz/conditions.html#custom-conditions</a>, but in
+short, errors are S3 classes and you can generate a custom class and check
+for it using <code>class</code> instead of <code>regexp</code>. Because this is a more reliable
+check, you <code>expect_error()</code> will warn if the error has a custom class but
+you are testing the message. Eliminate the warning by using <code>class</code> instead
+of <code>regexp</code>.</p>
+<p>If you are using <code>expect_error()</code> to check that an error message is
+formatted in such a way that it makes sense to a human, we now recommend
+using <code><a href='verify_output.html'>verify_output()</a></code> instead.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><code><a href='expect_setequal.html'>expect_setequal()</a></code> to test for set equality.</p>
-<p>Other expectations: <code><a href='comparison-expectations.html'>comparison-expectations</a></code>,
-  <code><a href='expect_error.html'>expect_error</a></code>, <code><a href='expect_length.html'>expect_length</a></code>,
-  <code><a href='expect_match.html'>expect_match</a></code>, <code><a href='expect_message.html'>expect_message</a></code>,
-  <code><a href='expect_named.html'>expect_named</a></code>, <code><a href='expect_null.html'>expect_null</a></code>,
-  <code><a href='expect_output.html'>expect_output</a></code>, <code><a href='expect_silent.html'>expect_silent</a></code>,
+    <div class='dont-index'><p>Other expectations: <code><a href='comparison-expectations.html'>comparison-expectations</a></code>,
+  <code><a href='equality-expectations.html'>equality-expectations</a></code>,
+  <code><a href='expect_length.html'>expect_length</a></code>, <code><a href='expect_match.html'>expect_match</a></code>,
+  <code><a href='expect_message.html'>expect_message</a></code>, <code><a href='expect_named.html'>expect_named</a></code>,
+  <code><a href='expect_null.html'>expect_null</a></code>, <code><a href='expect_output.html'>expect_output</a></code>,
+  <code><a href='expect_silent.html'>expect_silent</a></code>,
   <code><a href='inheritance-expectations.html'>inheritance-expectations</a></code>,
   <code><a href='logical-expectations.html'>logical-expectations</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>a</span> <span class='kw'>&lt;-</span> <span class='fl'>10</span>
-<span class='fu'>expect_equal</span>(<span class='no'>a</span>, <span class='fl'>10</span>)
+    <pre class="examples"><div class='input'><span class='no'>f</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>() <span class='fu'><a href='https://rdrr.io/r/base/stop.html'>stop</a></span>(<span class='st'>"My error!"</span>)
+<span class='fu'>expect_error</span>(<span class='fu'>f</span>())
+<span class='fu'>expect_error</span>(<span class='fu'>f</span>(), <span class='st'>"My error!"</span>)
 
-<span class='co'># Use expect_equal() when testing for numeric equality</span>
-<span class='fu'><a href='https://rdrr.io/r/base/MathFun.html'>sqrt</a></span>(<span class='fl'>2</span>) ^ <span class='fl'>2</span> - <span class='fl'>1</span></div><div class='output co'>#&gt; [1] 1</div><div class='input'><span class='fu'>expect_equal</span>(<span class='fu'><a href='https://rdrr.io/r/base/MathFun.html'>sqrt</a></span>(<span class='fl'>2</span>) ^ <span class='fl'>2</span>, <span class='fl'>2</span>)
-<span class='co'># Neither of these forms take floating point representation errors into</span>
-<span class='co'># account</span>
-<span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
-<span class='fu'><a href='logical-expectations.html'>expect_true</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/MathFun.html'>sqrt</a></span>(<span class='fl'>2</span>) ^ <span class='fl'>2</span> <span class='kw'>==</span> <span class='fl'>2</span>)
-<span class='fu'>expect_identical</span>(<span class='fu'><a href='https://rdrr.io/r/base/MathFun.html'>sqrt</a></span>(<span class='fl'>2</span>) ^ <span class='fl'>2</span>, <span class='fl'>2</span>)
+<span class='co'># You can use the arguments of grepl to control the matching</span>
+<span class='fu'>expect_error</span>(<span class='fu'>f</span>(), <span class='st'>"my error!"</span>, <span class='kw'>ignore.case</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+
+<span class='co'># If you are working with classed conditions, it's better to test for</span>
+<span class='co'># the class name, rather than the error message (which may change over time)</span>
+<span class='no'>custom_err</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>() {
+  <span class='kw pkg'>rlang</span><span class='kw ns'>::</span><span class='fu'><a href='https://rlang.r-lib.org/reference/abort.html'>abort</a></span>(<span class='st'>"A special error"</span>, <span class='kw'>.subclass</span> <span class='kw'>=</span> <span class='st'>"testthat_special"</span>)
 }
-
-<span class='co'># You can pass on additional arguments to all.equal:</span>
-<span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
-<span class='co'># Test the ABSOLUTE difference is within .002</span>
-<span class='fu'>expect_equal</span>(<span class='fl'>10.01</span>, <span class='fl'>10</span>, <span class='kw'>tolerance</span> <span class='kw'>=</span> <span class='fl'>.002</span>, <span class='kw'>scale</span> <span class='kw'>=</span> <span class='fl'>1</span>)
-}
-
-<span class='co'># Test the RELATIVE difference is within .002</span>
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fl'>10</span>
-<span class='fu'>expect_equal</span>(<span class='fl'>10.01</span>, <span class='kw'>expected</span> <span class='kw'>=</span> <span class='no'>x</span>, <span class='kw'>tolerance</span> <span class='kw'>=</span> <span class='fl'>0.002</span>, <span class='kw'>scale</span> <span class='kw'>=</span> <span class='no'>x</span>)
-
-<span class='co'># expect_equivalent ignores attributes</span>
-<span class='no'>a</span> <span class='kw'>&lt;-</span> <span class='no'>b</span> <span class='kw'>&lt;-</span> <span class='fl'>1</span>:<span class='fl'>3</span>
-<span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span>(<span class='no'>b</span>) <span class='kw'>&lt;-</span> <span class='no'>letters</span>[<span class='fl'>1</span>:<span class='fl'>3</span>]
-<span class='fu'>expect_equivalent</span>(<span class='no'>a</span>, <span class='no'>b</span>)</div></pre>
+<span class='fu'>expect_error</span>(<span class='fu'>custom_err</span>(), <span class='kw'>class</span> <span class='kw'>=</span> <span class='st'>"testthat_special"</span>)</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
+      <li><a href="#value">Value</a></li>
+      <li><a href="#testing-message-vs-class">Testing <code>message</code> vs <code>class</code></a></li>
       <li><a href="#see-also">See also</a></li>
       <li><a href="#examples">Examples</a></li>
     </ul>

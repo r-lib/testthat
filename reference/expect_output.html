@@ -183,11 +183,12 @@ within a function or for loop. See <a href='quasi_label.html'>quasi_label</a> fo
     </tr>
     <tr>
       <th>regexp</th>
-      <td><p>regular expression to test against.</p>
-<p>If <code>NULL</code>, the default, asserts that there should be an output,
-a messsage, a warning, or an error, but does not test for specific value.</p>
-<p>If <code>NA</code>, asserts that there should be no output, messages, warnings,
-or errors.</p></td>
+      <td><p>Regular expression to test against.</p><ul>
+<li><p>A character vector giving a regular expression that must match the output.</p></li>
+<li><p>If <code>NULL</code>, the default, asserts that there should output,
+but doesn't check for a specific value.</p></li>
+<li><p>If <code>NA</code>, asserts that there should be no output.</p></li>
+</ul></td>
     </tr>
     <tr>
       <th>...</th>
@@ -218,6 +219,19 @@ output width, minimising spurious differences.</p></td>
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>The first argument, invisibly.</p>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p>Other expectations: <code><a href='comparison-expectations.html'>comparison-expectations</a></code>,
+  <code><a href='equality-expectations.html'>equality-expectations</a></code>,
+  <code><a href='expect_error.html'>expect_error</a></code>, <code><a href='expect_length.html'>expect_length</a></code>,
+  <code><a href='expect_match.html'>expect_match</a></code>, <code><a href='expect_message.html'>expect_message</a></code>,
+  <code><a href='expect_named.html'>expect_named</a></code>, <code><a href='expect_null.html'>expect_null</a></code>,
+  <code><a href='expect_silent.html'>expect_silent</a></code>,
+  <code><a href='inheritance-expectations.html'>inheritance-expectations</a></code>,
+  <code><a href='logical-expectations.html'>logical-expectations</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span>(<span class='no'>mtcars</span>)</div><div class='output co'>#&gt; 'data.frame':	32 obs. of  11 variables:
@@ -242,6 +256,8 @@ output width, minimising spurious differences.</p></td>
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
+      <li><a href="#value">Value</a></li>
+      <li><a href="#see-also">See also</a></li>
       <li><a href="#examples">Examples</a></li>
     </ul>
 
