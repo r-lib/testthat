@@ -11,9 +11,8 @@ template:
 reference:
 - title: Expectations
   contents:
-  - starts_with("expect")
+  - starts_with("expect_")
   - skip
-  - fail
   - verify_output
 
 - title: Run tests
@@ -27,6 +26,12 @@ reference:
 - title: Reporters
   contents:
   - ends_with("Reporter")
+
+- title: Expectation internals
+  contents:
+  - expect
+  - fail
+
 
 navbar:
   components:

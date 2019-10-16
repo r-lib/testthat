@@ -2,7 +2,7 @@
 % Please edit documentation in R/test-compiled-code.R
 \name{expect_cpp_tests_pass}
 \alias{expect_cpp_tests_pass}
-\title{Test Compiled Code in a Package}
+\title{Expectation: do C++ tests past?}
 \usage{
 expect_cpp_tests_pass(package)
 }
@@ -10,12 +10,9 @@ expect_cpp_tests_pass(package)
 \item{package}{The name of the package to test.}
 }
 \description{
-Test compiled code in the package \code{package}. See
-\code{\link[=use_catch]{use_catch()}} for more details.
+Test compiled code in the package \code{package}. A call to this function will
+automatically be generated for you in \code{tests/testthat/test-cpp.R} after
+calling \code{\link[=use_catch]{use_catch()}}; you should not need to manually call this expectation
+yourself.
 }
-\note{
-A call to this function will automatically be generated
-for you in \code{tests/testthat/test-cpp.R} after calling
-\code{use_catch()}; you should not need to manually call
-this expectation yourself.
-}
+\keyword{internal}

@@ -1,16 +1,12 @@
-#' Test Compiled Code in a Package
+#' Expectation: do C++ tests past?
 #'
-#' Test compiled code in the package `package`. See
-#' [use_catch()] for more details.
-#'
-#' @note
-#' A call to this function will automatically be generated
-#' for you in `tests/testthat/test-cpp.R` after calling
-#' `use_catch()`; you should not need to manually call
-#' this expectation yourself.
+#' Test compiled code in the package `package`. A call to this function will
+#' automatically be generated for you in `tests/testthat/test-cpp.R` after
+#' calling [use_catch()]; you should not need to manually call this expectation
+#' yourself.
 #'
 #' @param package The name of the package to test.
-#'
+#' @keywords internal
 #' @export
 expect_cpp_tests_pass <- function(package) {
   run_testthat_tests <- get_routine(package, "run_testthat_tests")

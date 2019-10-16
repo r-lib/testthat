@@ -88,3 +88,4 @@ expect_known_output(mtcars[1:10, ], tmp, print = TRUE)
 expect_known_output(mtcars[1:9, ], tmp, print = TRUE)
 }
 }
+\keyword{internal}
