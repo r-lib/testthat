@@ -16,7 +16,7 @@ test_that("regexp = string matches for error message", {
 
 test_that("classed error generates useful warning", {
   custom_err <- function() abort("This is an error", .subclass = "custom_err")
-  verify_output(test_path("test-expect-error-custom.txt"), {
+  verify_output(test_path("test-expect-condition-custom.txt"), {
     expect_error(custom_err(), "an error")
   })
 })
@@ -54,7 +54,7 @@ test_that("generates informative failures", {
   # Disable srcrefs because they differ across systems
   withr::local_options(list(rlang_trace_format_srcrefs = FALSE))
 
-  expect_known_failure("test-expect-error.txt", {
+  expect_known_failure("test-expect-condition.txt", {
     # Call `stop()` indirectly to create more realistic backtraces in
     # captured output
     fail <- function(msg) stop(msg)
@@ -120,4 +120,13 @@ test_that("rlang backtrace reminders are not included in error message", {
   g <- function() h()
   h <- function() abort("foo")
   expect_error(f(), "foo$")
+})
+
+
+test_that("simple_error returns TRUE for basic errors", {
+  is_simple <- function(x) simple_error(catch_cnd(x))
+
+  expect_true(is_simple(stop("!")))
+  expect_true(is_simple(abort("!")))
+  expect_false(is_simple(abort("!", .subclass = "error_custom")))
 })
