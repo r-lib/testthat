@@ -50,10 +50,11 @@ expect_named(z, NULL)
 \seealso{
 Other expectations: \code{\link{comparison-expectations}},
   \code{\link{equality-expectations}},
-  \code{\link{expect_length}}, \code{\link{expect_match}},
-  \code{\link{expect_null}},
+  \code{\link{expect_error}}, \code{\link{expect_length}},
+  \code{\link{expect_match}}, \code{\link{expect_message}},
+  \code{\link{expect_null}}, \code{\link{expect_output}},
+  \code{\link{expect_silent}},
   \code{\link{inheritance-expectations}},
-  \code{\link{logical-expectations}},
-  \code{\link{output-expectations}}
+  \code{\link{logical-expectations}}
 }
 \concept{expectations}

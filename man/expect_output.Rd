@@ -13,13 +13,13 @@ expect_output(object, regexp = NULL, ..., info = NULL, label = NULL,
 Supports limited unquoting to make it easier to generate readable failures
 within a function or for loop. See \link{quasi_label} for more details.}
 
-\item{regexp}{regular expression to test against.
-
-If \code{NULL}, the default, asserts that there should be an output,
-a messsage, a warning, or an error, but does not test for specific value.
-
-If \code{NA}, asserts that there should be no output, messages, warnings,
-or errors.}
+\item{regexp}{Regular expression to test against.
+\itemize{
+\item A character vector giving a regular expression that must match the output.
+\item If \code{NULL}, the default, asserts that there should output,
+but doesn't check for a specific value.
+\item If \code{NA}, asserts that there should be no output.
+}}
 
 \item{...}{Arguments passed on to \code{expect_match}
 \describe{
@@ -40,6 +40,9 @@ alternatives in \link{quasi_label}.}
 inherit from \code{getOption("width")} so that tests always use the same
 output width, minimising spurious differences.}
 }
+\value{
+The first argument, invisibly.
+}
 \description{
 Test for output produced by \code{print()} or \code{cat()}. This is best used for
 very simple output; for more complex cases use \code{\link[=verify_output]{verify_output()}}.
@@ -53,3 +56,14 @@ expect_output(str(mtcars), "11 variables")
 expect_output(str(mtcars), "11 VARIABLES", ignore.case = TRUE)
 expect_output(str(mtcars), "$ mpg", fixed = TRUE)
 }
+\seealso{
+Other expectations: \code{\link{comparison-expectations}},
+  \code{\link{equality-expectations}},
+  \code{\link{expect_error}}, \code{\link{expect_length}},
+  \code{\link{expect_match}}, \code{\link{expect_message}},
+  \code{\link{expect_named}}, \code{\link{expect_null}},
+  \code{\link{expect_silent}},
+  \code{\link{inheritance-expectations}},
+  \code{\link{logical-expectations}}
+}
+\concept{expectations}
