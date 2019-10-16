@@ -101,7 +101,7 @@ expect_error <- function(object,
       warn(paste0(
         act$lab, " generated an S3 error and you are testing the error message.\n",
         "* The error has class = c(", klass, ")\n",
-        "* You are testing using `regexp`, not `class`, which is fragile.\n",
+        "* Testing with `class` is more robust than testing with `regexp`.\n",
         "* Do you want `expect_error(..., class = \"", class(act$cap)[[1]], "\")`?"
       ))
     }
