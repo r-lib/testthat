@@ -11,7 +11,7 @@ verify_output(path, code, width = 80, crayon = FALSE,
 \item{path}{Path to save file. Typically this will be a call to
 \code{\link[=test_path]{test_path()}} so that the same path when the code is run interactively.}
 
-\item{code}{Code to execute.}
+\item{code}{Code to execute. Use \code{{}} to pass multiple expressions.}
 
 \item{width}{Width of console output}
 
@@ -55,3 +55,20 @@ whitespace and comments. To mildy offset this limitation, bare string
 are turned into comments.
 }
 
+\section{Implementation}{
+
+If \code{code} is a braced expression, it is converted to a list of expressions.
+The list of expressions is passed to \code{\link[evaluate:evaluate]{evaluate::evaluate()}}.
+The results are processed with a custom formatting logic, plots are not
+supported.
+}
+
+\examples{
+if (FALSE) {
+  verify_output("test1.txt", 1 + 2)
+  verify_output("test2.txt", {
+    sin(pi)
+    2 * 3 == 4
+  })
+}
+}

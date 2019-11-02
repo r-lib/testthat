@@ -23,9 +23,15 @@
 #' whitespace and comments. To mildy offset this limitation, bare string
 #' are turned into comments.
 #'
+#' @section Implementation:
+#' If `code` is a braced expression, it is converted to a list of expressions.
+#' The list of expressions is passed to [evaluate::evaluate()].
+#' The results are processed with a custom formatting logic, plots are not
+#' supported.
+#'
 #' @param path Path to save file. Typically this will be a call to
 #'   [test_path()] so that the same path when the code is run interactively.
-#' @param code Code to execute.
+#' @param code Code to execute. Use `{}` to pass multiple expressions.
 #' @param width Width of console output
 #' @param crayon Enable crayon package colouring?
 #' @param unicode Enable cli package UTF-8 symbols? If you set this to
@@ -33,6 +39,14 @@
 #'   test on your CI platforms that don't support UTF-8 (e.g. Windows).
 #' @param env The environment to evaluate `code` in.
 #' @export
+#' @examples
+#' if (FALSE) {
+#'   verify_output("test1.txt", 1 + 2)
+#'   verify_output("test2.txt", {
+#'     sin(pi)
+#'     2 * 3 == 4
+#'   })
+#' }
 verify_output <- function(path, code, width = 80, crayon = FALSE,
                           unicode = FALSE, env = caller_env()) {
   expr <- substitute(code)
