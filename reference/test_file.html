@@ -219,6 +219,10 @@ that all expectations are reported, even if outside a test block.</p></td>
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>Invisibily, a list with one element for each test.</p>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>Any errors that occur in code run outside of <code><a href='test_that.html'>test_that()</a></code> will generate
+a test failure and terminate execution of that test file.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='no'>path</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='testthat_examples.html'>testthat_example</a></span>(<span class='st'>"success"</span>)
@@ -236,7 +240,7 @@ that all expectations are reported, even if outside a test block.</p></td>
 #&gt;   ..$ :List of 6
 #&gt;   .. ..$ message    : chr "1 + 1 not equal to 2.\nEqual"
 #&gt;   .. ..$ srcref     : 'srcref' int [1:8] 2 3 2 24 3 24 2 2
-#&gt;   .. .. ..- attr(*, "srcfile")=Classes 'srcfilecopy', 'srcfile' &lt;environment: 0x4ae2d88&gt; 
+#&gt;   .. .. ..- attr(*, "srcfile")=Classes 'srcfilecopy', 'srcfile' &lt;environment: 0x44f7a60&gt; 
 #&gt;   .. ..$ trace      : NULL
 #&gt;   .. ..$ start_frame: int 64
 #&gt;   .. ..$ end_frame  : num 65
@@ -248,6 +252,7 @@ that all expectations are reported, even if outside a test block.</p></td>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
       <li><a href="#value">Value</a></li>
+      <li><a href="#details">Details</a></li>
       <li><a href="#examples">Examples</a></li>
     </ul>
 
