@@ -212,15 +212,7 @@ is_informative_error <- function(x, ...) {
     return(TRUE)
   }
 
-  if (inherits(x, "simpleError")) {
-    return(FALSE)
-  }
-
-  if (inherits(x, "Rcpp::eval_error")) {
-    return(FALSE)
-  }
-
-  if (inherits(x, "Rcpp::exception")) {
+  if (inherits(x, c("simpleError", "Rcpp::eval_error", "Rcpp::exception"))) {
     return(FALSE)
   }
 
