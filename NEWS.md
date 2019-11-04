@@ -2,7 +2,7 @@
 
 ## Conditions
 
-This release mostly focusses on an overhaul of how testthat works with conditions (i.e. errors, warnings and messages). This has relatively few user facing changes, although you should now see more informative back traces from errors and failures.
+This release mostly focusses on an overhaul of how testthat works with conditions (i.e. errors, warnings and messages). There are relatively few user-facing changes, although you should now see more informative backtraces from errors and failures.
 
 * Unexpected errors are now printed with a simplified backtrace.
 
@@ -17,7 +17,7 @@ This release mostly focusses on an overhaul of how testthat works with condition
 * `expect_error()` gets a better warning message when you test for a custom 
   error class with `regexp`.
 
-* New `exp_signal()` function. This is a condition signaller that
+* New `exp_signal()` function is a condition signaller that
   implements the testthat protocol (signal with `stop()` if the
   expectation is broken, with a `continue_test` restart).
 
@@ -36,7 +36,7 @@ This release mostly focusses on an overhaul of how testthat works with condition
   for S3 classes and takes an optional subclass and optional
   attributes.
 
-* Unquoted inputs not longer potentially generate multiple test messages (#929).
+* Unquoted inputs no longer potentially generate multiple test messages (#929).
 
 * `verify_output()` no longer uses quasiquotation, which fixes issues
   when verifying the output of tidy eval functions (#945).
@@ -44,14 +44,14 @@ This release mostly focusses on an overhaul of how testthat works with condition
 * `verify_output()` gains a `unicode` parameter to turn on or off the
   use of Unicode characters by the cli package. It is disabled by
   default to prevent the tests from failing on platforms like Windows
-  that don't support UTF-8 (which could be your contributors or your
+  that don't support UTF-8 (which could be your contributors' or your
   CI machines).
 
 * `verify_output()` now correctly handles multi-line condition
   messages.
 
 * `verify_output()` now adds spacing after condition messages,
-  consistently with the spacing added after normal output.
+  consistent with the spacing added after normal output.
 
 * `verify_output()` has a new syntax for inserting headers in output
   files: insert a `"# Header"` string (starting with `#` as in
