@@ -192,7 +192,8 @@ changing it accidentally.</p>
     </tr>
     <tr>
       <th>code</th>
-      <td><p>Code to execute.</p></td>
+      <td><p>Code to execute. This will usually be a multiline expression
+contained within <code>{}</code> (similarly to <code><a href='test_that.html'>test_that()</a></code> calls).</p></td>
     </tr>
     <tr>
       <th>width</th>
@@ -239,6 +240,27 @@ incorrect computation, just a change in presentation.</p>
 whitespace and comments. To mildy offset this limitation, bare string
 are turned into comments.</p>
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='co'># The first argument would usually be `test_path("informative-name.txt"`)</span>
+<span class='co'># but that is not permitted in examples</span>
+<span class='fu'>verify_output</span>(<span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempfile</a></span>(), {
+   <span class='fu'><a href='https://rdrr.io/r/base/Trig.html'>sin</a></span>(<span class='no'>pi</span>)
+   <span class='fl'>2</span> * <span class='fl'>3</span> <span class='kw'>==</span> <span class='fl'>4</span>
+})</div><div class='output co'>#&gt; <span class='warning'>Warning: Creating reference output</span></div><div class='input'>
+<span class='co'># Use strings to create comments in the output</span>
+<span class='fu'>verify_output</span>(<span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempfile</a></span>(), {
+   <span class='st'>"Trigonometry"</span>
+   <span class='fu'><a href='https://rdrr.io/r/base/Trig.html'>sin</a></span>(<span class='no'>pi</span>)
+
+   <span class='st'>"Math"</span>
+   <span class='fl'>2</span> * <span class='fl'>3</span> <span class='kw'>==</span> <span class='fl'>4</span>
+})</div><div class='output co'>#&gt; <span class='warning'>Warning: Creating reference output</span></div><div class='input'>
+<span class='co'># Use strings starting with # to create headings</span>
+<span class='fu'>verify_output</span>(<span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempfile</a></span>(), {
+   <span class='st'>"# Mathematical functions"</span>
+   <span class='fu'><a href='https://rdrr.io/r/base/Trig.html'>sin</a></span>(<span class='no'>pi</span>)
+   <span class='fl'>2</span> * <span class='fl'>3</span> <span class='kw'>==</span> <span class='fl'>4</span>
+})</div><div class='output co'>#&gt; <span class='warning'>Warning: Creating reference output</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -247,6 +269,7 @@ are turned into comments.</p>
       <li><a href="#syntax">Syntax</a></li>
       <li><a href="#cran">CRAN</a></li>
       <li><a href="#differences-to-rmd">Differences to Rmd</a></li>
+      <li><a href="#examples">Examples</a></li>
     </ul>
 
   </div>
