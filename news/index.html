@@ -177,6 +177,7 @@
 <li><p>New <code><a href="../reference/expectation.html">exp_signal()</a></code> function is a condition signaller that implements the testthat protocol (signal with <code><a href="https://rdrr.io/r/base/stop.html">stop()</a></code> if the expectation is broken, with a <code>continue_test</code> restart).</p></li>
 <li><p>Existence of restarts is first checked before invokation. This makes it possible to signal warnings or messages with a different condition signaller (<a href='https://github.com/r-lib/testthat/issues/874'>#874</a>).</p></li>
 <li><p><code>ListReporter</code> now tracks expectations and errors, even when they occur outside of tests. This ensures that <code>stop_on_failure</code> matches the results displayed by the reporter (<a href='https://github.com/r-lib/testthat/issues/936'>#936</a>).</p></li>
+<li><p>You can silence warnings about untested error classes by implementing a method for <code>is_uninformative_warning()</code>. This method should be lazily registered, e.g. with <code><a href="https://rdrr.io/pkg/vctrs/man/s3_register.html">vctrs::s3_register()</a></code>. This is useful for introducing an experimental error class without encouraging users to depend on the class in their tests.</p></li>
 </ul>
 </div>
 <div id="expectations" class="section level2">
