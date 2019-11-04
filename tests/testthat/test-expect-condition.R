@@ -123,14 +123,20 @@ test_that("rlang backtrace reminders are not included in error message", {
 })
 
 
-test_that("simple_error returns TRUE for basic errors", {
-  is_simple <- function(x) simple_error(catch_cnd(x))
+test_that("is_informative_error returns TRUE for basic errors", {
+  is_informative <- function(x) is_informative_error(catch_cnd(x))
 
-  expect_true(is_simple(stop("!")))
-  expect_true(is_simple(abort("!")))
+  expect_false(is_informative(stop("!")))
+  expect_false(is_informative(abort("!")))
 
-  expect_true(is_simple(abort("!", .subclass = "Rcpp::eval_error")))
-  expect_true(is_simple(abort("!", .subclass = "Rcpp::exception")))
+  expect_false(is_informative(abort("!", .subclass = "Rcpp::eval_error")))
+  expect_false(is_informative(abort("!", .subclass = "Rcpp::exception")))
 
-  expect_false(is_simple(abort("!", .subclass = "error_custom")))
+  expect_true(is_informative(abort("!", .subclass = "error_custom")))
+
+  with_bindings(
+    .env = global_env(),
+    is_informative_error.error_custom = function(...) FALSE,
+    expect_false(is_informative(abort("!", .subclass = "error_custom")))
+  )
 })
