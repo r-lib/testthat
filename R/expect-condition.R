@@ -18,7 +18,8 @@
 #' for it using `class` instead of `regexp`. Because this is a more reliable
 #' check, you `expect_error()` will warn if the error has a custom class but
 #' you are testing the message. Eliminate the warning by using `class` instead
-#' of `regexp`.
+#' of `regexp`. Alternatively, if you think the warning is a false positive,
+#' use `class = "error"` to suppress it for any input.
 #'
 #' If you are using `expect_error()` to check that an error message is
 #' formatted in such a way that it makes sense to a human, we now recommend

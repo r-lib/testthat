@@ -68,7 +68,8 @@ short, errors are S3 classes and you can generate a custom class and check
 for it using \code{class} instead of \code{regexp}. Because this is a more reliable
 check, you \code{expect_error()} will warn if the error has a custom class but
 you are testing the message. Eliminate the warning by using \code{class} instead
-of \code{regexp}.
+of \code{regexp}. Alternatively, if you think the warning is a false positive,
+use \code{class = "error"} to suppress it for any input.
 
 If you are using \code{expect_error()} to check that an error message is
 formatted in such a way that it makes sense to a human, we now recommend
