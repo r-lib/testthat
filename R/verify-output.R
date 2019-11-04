@@ -103,12 +103,13 @@ verify_output <- function(path, code, width = 80, crayon = FALSE,
   output <- unlist(lapply(results, output_replay))
 
   if (!interactive()) {
-    skip_on_cran()
+    if (on_cran()) {
+      skip("On CRAN")
+    }
   }
   compare_file(path, output, update = TRUE)
   invisible()
 }
-
 
 output_replay <- function(x) {
   UseMethod("output_replay", x)

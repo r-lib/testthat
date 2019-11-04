@@ -85,8 +85,10 @@ skip_if_not <- function(condition, message = deparse(substitute(condition))) {
 
 #' @export
 #' @rdname skip
-skip_if <- function(condition, message = deparse(substitute(condition))) {
-  message <- paste0(message, " is TRUE")
+skip_if <- function(condition, message = NULL) {
+  if (is.null(message)) {
+    message <- paste(deparse(substitute(condition)), " is TRUE")
+  }
   if (isTRUE(condition)) {
     skip(message)
   }
@@ -127,12 +129,10 @@ skip_if_offline <- function(host = "r-project.org") {
 #' @export
 #' @rdname skip
 skip_on_cran <- function() {
-  if (identical(Sys.getenv("NOT_CRAN"), "true")) {
-    return(invisible(TRUE))
-  }
-
-  skip("On CRAN")
+  skip_if(on_cran(), "On CRAN")
 }
+
+on_cran <- function() !identical(Sys.getenv("NOT_CRAN"), "true")
 
 #' @export
 #' @param os Character vector of system names. Supported values are

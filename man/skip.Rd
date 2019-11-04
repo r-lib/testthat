@@ -20,7 +20,7 @@ skip(message)
 
 skip_if_not(condition, message = deparse(substitute(condition)))
 
-skip_if(condition, message = deparse(substitute(condition)))
+skip_if(condition, message = NULL)
 
 skip_if_not_installed(pkg, minimum_version = NULL)
 
