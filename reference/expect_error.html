@@ -244,7 +244,8 @@ short, errors are S3 classes and you can generate a custom class and check
 for it using <code>class</code> instead of <code>regexp</code>. Because this is a more reliable
 check, you <code>expect_error()</code> will warn if the error has a custom class but
 you are testing the message. Eliminate the warning by using <code>class</code> instead
-of <code>regexp</code>.</p>
+of <code>regexp</code>. Alternatively, if you think the warning is a false positive,
+use <code>class = "error"</code> to suppress it for any input.</p>
 <p>If you are using <code>expect_error()</code> to check that an error message is
 formatted in such a way that it makes sense to a human, we now recommend
 using <code><a href='verify_output.html'>verify_output()</a></code> instead.</p>
