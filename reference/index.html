@@ -190,18 +190,6 @@
       </tr><tr>
         
         <td>
-          <p><code><a href="expect.html">expect()</a></code> </p>
-        </td>
-        <td><p>The building block of all <code>expect_</code> functions</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="expect_cpp_tests_pass.html">expect_cpp_tests_pass()</a></code> </p>
-        </td>
-        <td><p>Test Compiled Code in a Package</p></td>
-      </tr><tr>
-        
-        <td>
           <p><code><a href="expect_error.html">expect_error()</a></code> <code><a href="expect_error.html">expect_condition()</a></code> </p>
         </td>
         <td><p>Expectation: does code throw error or other condition?</p></td>
@@ -211,12 +199,6 @@
           <p><code><a href="expect_invisible.html">expect_invisible()</a></code> <code><a href="expect_invisible.html">expect_visible()</a></code> </p>
         </td>
         <td><p>Expectation: does expression return visibily or invisibly?</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="expect_known_output.html">expect_known_output()</a></code> <code><a href="expect_known_output.html">expect_known_value()</a></code> <code><a href="expect_known_output.html">expect_known_hash()</a></code> </p>
-        </td>
-        <td><p>Expectations: is the output or the value equal to a known good value?</p></td>
       </tr><tr>
         
         <td>
@@ -289,12 +271,6 @@
           <p><code><a href="skip.html">skip()</a></code> <code><a href="skip.html">skip_if_not()</a></code> <code><a href="skip.html">skip_if()</a></code> <code><a href="skip.html">skip_if_not_installed()</a></code> <code><a href="skip.html">skip_if_offline()</a></code> <code><a href="skip.html">skip_on_cran()</a></code> <code><a href="skip.html">skip_on_os()</a></code> <code><a href="skip.html">skip_on_travis()</a></code> <code><a href="skip.html">skip_on_appveyor()</a></code> <code><a href="skip.html">skip_on_ci()</a></code> <code><a href="skip.html">skip_on_covr()</a></code> <code><a href="skip.html">skip_on_bioc()</a></code> <code><a href="skip.html">skip_if_translated()</a></code> </p>
         </td>
         <td><p>Skip a test.</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="fail.html">fail()</a></code> <code><a href="fail.html">succeed()</a></code> </p>
-        </td>
-        <td><p>Default expectations that always succeed or fail.</p></td>
       </tr><tr>
         
         <td>
@@ -463,6 +439,26 @@ file information.</p></td>
         </td>
         <td><p>Test reporter: Teamcity format.</p></td>
       </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-expectation-internals" class="hasAnchor"><a href="#section-expectation-internals" class="anchor"></a>Expectation internals</h2>
+          <p class="section-desc"></p>
+        </th>
+      </tr>
+      <tr>
+        
+        <td>
+          <p><code><a href="expect.html">expect()</a></code> </p>
+        </td>
+        <td><p>The building block of all <code>expect_</code> functions</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="fail.html">fail()</a></code> <code><a href="fail.html">succeed()</a></code> </p>
+        </td>
+        <td><p>Default expectations that always succeed or fail.</p></td>
+      </tr>
     </tbody>
     </table>
   </div>
@@ -473,6 +469,7 @@ file information.</p></td>
       <li><a href="#section-expectations">Expectations</a></li>
       <li><a href="#section-run-tests">Run tests</a></li>
       <li><a href="#section-reporters">Reporters</a></li>
+      <li><a href="#section-expectation-internals">Expectation internals</a></li>
     </ul>
   </div>
 </div>

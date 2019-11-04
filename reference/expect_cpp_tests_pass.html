@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Test Compiled Code in a Package — expect_cpp_tests_pass • testthat</title>
+<title>Expectation: do C++ tests past? — expect_cpp_tests_pass • testthat</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -42,9 +42,11 @@
 
 
 
-<meta property="og:title" content="Test Compiled Code in a Package — expect_cpp_tests_pass" />
-<meta property="og:description" content="Test compiled code in the package package. See
-use_catch() for more details." />
+<meta property="og:title" content="Expectation: do C++ tests past? — expect_cpp_tests_pass" />
+<meta property="og:description" content="Test compiled code in the package package. A call to this function will
+automatically be generated for you in tests/testthat/test-cpp.R after
+calling use_catch(); you should not need to manually call this expectation
+yourself." />
 <meta property="og:image" content="/logo.png" />
 <meta name="twitter:card" content="summary" />
 
@@ -159,14 +161,16 @@ use_catch() for more details." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Test Compiled Code in a Package</h1>
+    <h1>Expectation: do C++ tests past?</h1>
     <small class="dont-index">Source: <a href='https://github.com/r-lib/testthat/blob/master/R/test-compiled-code.R'><code>R/test-compiled-code.R</code></a></small>
     <div class="hidden name"><code>expect_cpp_tests_pass.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Test compiled code in the package <code>package</code>. See
-<code><a href='use_catch.html'>use_catch()</a></code> for more details.</p>
+    <p>Test compiled code in the package <code>package</code>. A call to this function will
+automatically be generated for you in <code>tests/testthat/test-cpp.R</code> after
+calling <code><a href='use_catch.html'>use_catch()</a></code>; you should not need to manually call this expectation
+yourself.</p>
     </div>
 
     <pre class="usage"><span class='fu'>expect_cpp_tests_pass</span>(<span class='no'>package</span>)</pre>
@@ -180,19 +184,12 @@ use_catch() for more details." />
     </tr>
     </table>
 
-    <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
-
-    <p>A call to this function will automatically be generated
-for you in <code>tests/testthat/test-cpp.R</code> after calling
-<code><a href='use_catch.html'>use_catch()</a></code>; you should not need to manually call
-this expectation yourself.</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      <li><a href="#note">Note</a></li>
     </ul>
 
   </div>
