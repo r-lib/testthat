@@ -29,6 +29,12 @@ This release mostly focusses on an overhaul of how testthat works with condition
   outside of tests. This ensures that `stop_on_failure` matches the results 
   displayed by the reporter (#936).
 
+* You can silence warnings about untested error classes by
+  implementing a method for `is_uninformative_warning()`. This method
+  should be lazily registered, e.g. with `vctrs::s3_register()`. This
+  is useful for introducing an experimental error class without
+  encouraging users to depend on the class in their tests.
+
 ## Expectations
 
 * Expectations can now be explicitly subclassed with

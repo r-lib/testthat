@@ -174,7 +174,40 @@ cnd_message <- function(x) {
   conditionMessage(x)
 }
 
-is_informative_error <- function(x) {
+#' Is an error informative?
+#'
+#' @description
+#'
+#' `is_informative_error()` is a generic predicate that indicates
+#' whether testthat users should explicitly test for an error
+#' class. When it returns `TRUE` (the default), and `expect_error()`
+#' does not check for the class, a warning is issued during tests.
+#' You can silence the warning by implementing `is_informative_error()`.
+#'
+#' The main use case for overriding this method is to introduce an
+#' experimental error class when you need more experience while
+#' developing an error hierarchy for your package. Override
+#' `is_informative_error()` to return `FALSE` to avoid encouraging
+#' users to depend on the experimental class in their tests.
+#'
+#' Since testthat should be a `Suggest` dependency, methods for
+#' `is_informative_error()` should typically be lazily registered,
+#' e.g. with `vctrs::s3_register()`.
+#'
+#' @param x An error object.
+#' @inheritParams ellipsis::dots_empty
+#'
+#' @details
+#' A few classes are hard-coded as uninformative:
+#' - `simpleError`
+#' - `rlang_error` unless a subclass is detected
+#' - `Rcpp::eval_error`
+#' - `Rcpp::exception`
+#'
+#' @export
+is_informative_error <- function(x, ...) {
+  ellipsis::check_dots_empty()
+
   if (!inherits(x, "error")) {
     return(TRUE)
   }
@@ -191,5 +224,14 @@ is_informative_error <- function(x) {
     return(FALSE)
   }
 
-  !inherits_only(x, c("rlang_error", "error", "condition"))
+  if (inherits_only(x, c("rlang_error", "error", "condition"))) {
+    return(FALSE)
+  }
+
+  UseMethod("is_informative_error")
+}
+
+#' @export
+is_informative_error.default <- function(x, ...) {
+  TRUE
 }

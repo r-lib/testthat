@@ -19,6 +19,7 @@ Imports:
     cli,
     crayon (>= 1.3.4),
     digest,
+    ellipsis,
     evaluate,
     magrittr,
     methods,
