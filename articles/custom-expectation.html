@@ -132,7 +132,7 @@
 <p>There are three main parts to writing an expectation, as illustrated by <code><a href="../reference/expect_length.html">expect_length()</a></code>:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1">expect_length &lt;-<span class="st"> </span><span class="cf">function</span>(object, n) {</a>
 <a class="sourceLine" id="cb1-2" data-line-number="2">  <span class="co"># 1. Capture object and label</span></a>
-<a class="sourceLine" id="cb1-3" data-line-number="3">  act &lt;-<span class="st"> </span><span class="kw"><a href="../reference/quasi_label.html">quasi_label</a></span>(rlang<span class="op">::</span><span class="kw"><a href="https://rlang.r-lib.org/reference/quotation.html">enquo</a></span>(object), <span class="dt">arg =</span> <span class="st">"object"</span>)</a>
+<a class="sourceLine" id="cb1-3" data-line-number="3">  act &lt;-<span class="st"> </span><span class="kw"><a href="../reference/quasi_label.html">quasi_label</a></span>(rlang<span class="op">::</span><span class="kw"><a href="https://rlang.r-lib.org/reference/nse-defuse.html">enquo</a></span>(object), <span class="dt">arg =</span> <span class="st">"object"</span>)</a>
 <a class="sourceLine" id="cb1-4" data-line-number="4"></a>
 <a class="sourceLine" id="cb1-5" data-line-number="5">  <span class="co"># 2. Call expect()</span></a>
 <a class="sourceLine" id="cb1-6" data-line-number="6">  act<span class="op">$</span>n &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/length.html">length</a></span>(act<span class="op">$</span>val)</a>
@@ -179,7 +179,7 @@
 </h2>
 <p>For expectations with more complex logic governing when success or failure occurs, you can use <code><a href="../reference/fail.html">succeed()</a></code> and <code><a href="../reference/fail.html">fail()</a></code>. These are simple wrappers around <code><a href="../reference/expect.html">expect()</a></code> that allow you to write code that looks like this:</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">expect_length &lt;-<span class="st"> </span><span class="cf">function</span>(object, n) {</a>
-<a class="sourceLine" id="cb3-2" data-line-number="2">  act &lt;-<span class="st"> </span><span class="kw"><a href="../reference/quasi_label.html">quasi_label</a></span>(rlang<span class="op">::</span><span class="kw"><a href="https://rlang.r-lib.org/reference/quotation.html">enquo</a></span>(object), <span class="dt">arg =</span> <span class="st">"object"</span>)</a>
+<a class="sourceLine" id="cb3-2" data-line-number="2">  act &lt;-<span class="st"> </span><span class="kw"><a href="../reference/quasi_label.html">quasi_label</a></span>(rlang<span class="op">::</span><span class="kw"><a href="https://rlang.r-lib.org/reference/nse-defuse.html">enquo</a></span>(object), <span class="dt">arg =</span> <span class="st">"object"</span>)</a>
 <a class="sourceLine" id="cb3-3" data-line-number="3"></a>
 <a class="sourceLine" id="cb3-4" data-line-number="4">  act<span class="op">$</span>n &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/length.html">length</a></span>(act<span class="op">$</span>val)</a>
 <a class="sourceLine" id="cb3-5" data-line-number="5">  <span class="cf">if</span> (act<span class="op">$</span>n <span class="op">==</span><span class="st"> </span>n) {</a>
