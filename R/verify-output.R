@@ -2,30 +2,31 @@
 #'
 #' @description
 #' This is a regression test that records interwoven code and output into a
-#' file, similar to `.Rmd`. It's designed particularly for testing print
-#' methods and error messages, where the primary goal is to ensure that the
-#' output is helpful to a human. Obviously, there's no way to test that
-#' automatically, so the best we can do is make the results explicit by saving
-#' to a text file. This makes the results easy to see in code reviews, and
-#' ensures that you don't change the output accidentally.
+#' file, in a similar way to kniting an `.Rmd` (but see caveats below).
+#'
+#' `verify_output()` designed particularly for testing print methods and error
+#' messages, where the primary goal is to ensure that the output is helpful to
+#' a human. Obviously, you can't test that with code, so the best you can do is
+#' make the results explicit by saving them to text file. This makes the output
+#' easy to see in code reviews, and ensures that you don't change the output
+#' accidentally.
 #'
 #' `verify_output()` is designed to be used with git: to see what has changed
-#' between from the previous run, you'll need to use `git diff` or similar.
+#' from the previous run, you'll need to use `git diff` or similar.
 #'
 #' @section Syntax:
-#' - Strings appear as R comments in the output.
-#' - Strings starting with `# ` appear as headers in the output.
+#' `verify_output()` can only capture the abstract syntax tree, losing all
+#' whitespace and comments. To mildy offset this limitation:
+#'
+#' - Strings are converted to R comments in the output.
+#' - Strings starting with `# ` are converted to headers in the output.
 #'
 #' @section CRAN:
-#' On CRAN, `verify_output()` will not fail if the output changes. This is
-#' beause tests of print methods and error messages are often fragile due to
-#' implicit dependencies on other packages, and failure does not imply
-#' incorrect computation, just a change in presentation.
-#'
-#' @section Differences to Rmd:
-#' `verify_output()` can only capture the abstract syntax tree, losing all
-#' whitespace and comments. To mildy offset this limitation, bare string
-#' are turned into comments.
+#' On CRAN, `verify_output()` will never fail, even if the output changes.
+#' This avoids false positives because tests of print methods and error
+#' messages are often fragile due to implicit dependencies on other packages,
+#' and failure does not imply incorrect computation, just a change in
+#' presentation.
 #'
 #' @param path Path to record results.
 #'
@@ -45,25 +46,32 @@
 #' @examples
 #' # The first argument would usually be `test_path("informative-name.txt"`)
 #' # but that is not permitted in examples
-#' verify_output(tempfile(), {
-#'    sin(pi)
-#'    2 * 3 == 4
+#' path <- tempfile()
+#' verify_output(path, {
+#'    head(mtcars)
+#'    log(-10)
+#'    "a" * 3
 #' })
+#' writeLines(readLines(path))
 #'
 #' # Use strings to create comments in the output
 #' verify_output(tempfile(), {
-#'    "Trigonometry"
-#'    sin(pi)
+#'    "Print method"
+#'    head(mtcars)
 #'
-#'    "Math"
-#'    2 * 3 == 4
+#'    "Warning"
+#'    log(-10)
+#'
+#'    "Error"
+#'    "a" * 3
 #' })
 #'
 #' # Use strings starting with # to create headings
 #' verify_output(tempfile(), {
-#'    "# Mathematical functions"
-#'    sin(pi)
-#'    2 * 3 == 4
+#'    "# Base functions"
+#'    head(mtcars)
+#'    log(-10)
+#'    "a" * 3
 #' })
 verify_output <- function(path, code, width = 80, crayon = FALSE,
                           unicode = FALSE, env = caller_env()) {

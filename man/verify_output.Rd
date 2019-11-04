@@ -30,60 +30,65 @@ test on your CI platforms that don't support UTF-8 (e.g. Windows).}
 }
 \description{
 This is a regression test that records interwoven code and output into a
-file, similar to \code{.Rmd}. It's designed particularly for testing print
-methods and error messages, where the primary goal is to ensure that the
-output is helpful to a human. Obviously, there's no way to test that
-automatically, so the best we can do is make the results explicit by saving
-to a text file. This makes the results easy to see in code reviews, and
-ensures that you don't change the output accidentally.
+file, in a similar way to kniting an \code{.Rmd} (but see caveats below).
+
+\code{verify_output()} designed particularly for testing print methods and error
+messages, where the primary goal is to ensure that the output is helpful to
+a human. Obviously, you can't test that with code, so the best you can do is
+make the results explicit by saving them to text file. This makes the output
+easy to see in code reviews, and ensures that you don't change the output
+accidentally.
 
 \code{verify_output()} is designed to be used with git: to see what has changed
-between from the previous run, you'll need to use \code{git diff} or similar.
+from the previous run, you'll need to use \code{git diff} or similar.
 }
 \section{Syntax}{
 
+\code{verify_output()} can only capture the abstract syntax tree, losing all
+whitespace and comments. To mildy offset this limitation:
 \itemize{
-\item Strings appear as R comments in the output.
-\item Strings starting with \code{# } appear as headers in the output.
+\item Strings are converted to R comments in the output.
+\item Strings starting with \code{# } are converted to headers in the output.
 }
 }
 
 \section{CRAN}{
 
-On CRAN, \code{verify_output()} will not fail if the output changes. This is
-beause tests of print methods and error messages are often fragile due to
-implicit dependencies on other packages, and failure does not imply
-incorrect computation, just a change in presentation.
-}
-
-\section{Differences to Rmd}{
-
-\code{verify_output()} can only capture the abstract syntax tree, losing all
-whitespace and comments. To mildy offset this limitation, bare string
-are turned into comments.
+On CRAN, \code{verify_output()} will never fail, even if the output changes.
+This avoids false positives because tests of print methods and error
+messages are often fragile due to implicit dependencies on other packages,
+and failure does not imply incorrect computation, just a change in
+presentation.
 }
 
 \examples{
 # The first argument would usually be `test_path("informative-name.txt"`)
 # but that is not permitted in examples
-verify_output(tempfile(), {
-   sin(pi)
-   2 * 3 == 4
+path <- tempfile()
+verify_output(path, {
+   head(mtcars)
+   log(-10)
+   "a" * 3
 })
+writeLines(readLines(path))
 
 # Use strings to create comments in the output
 verify_output(tempfile(), {
-   "Trigonometry"
-   sin(pi)
+   "Print method"
+   head(mtcars)
 
-   "Math"
-   2 * 3 == 4
+   "Warning"
+   log(-10)
+
+   "Error"
+   "a" * 3
 })
 
 # Use strings starting with # to create headings
 verify_output(tempfile(), {
-   "# Mathematical functions"
-   sin(pi)
-   2 * 3 == 4
+   "# Base functions"
+   head(mtcars)
+   log(-10)
+   "a" * 3
 })
 }
