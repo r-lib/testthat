@@ -191,9 +191,11 @@ between from the previous run, you'll need to use <code>git diff</code> or simil
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>path</th>
-      <td><p>Path to record results. Typically this will be a call to
-<code><a href='test_path.html'>test_path()</a></code> so that the same path is used when the code is run
-interatviely and in a test.</p></td>
+      <td><p>Path to record results.</p>
+<p>This should usually be a call to <code><a href='test_path.html'>test_path()</a></code> to ensures that same path
+is used when run interactively (when the working directory is typically
+the project root), and when run as an autmated test (when the working
+directory will be <code>tests/testthat</code>).</p></td>
     </tr>
     <tr>
       <th>code</th>
