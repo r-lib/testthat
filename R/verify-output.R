@@ -102,10 +102,8 @@ verify_output <- function(path, code, width = 80, crayon = FALSE,
   results <- evaluate::evaluate(source, envir = env, new_device = FALSE)
   output <- unlist(lapply(results, output_replay))
 
-  if (!interactive()) {
-    if (on_cran()) {
-      skip("On CRAN")
-    }
+  if (is_testing() && on_cran()) {
+    skip("On CRAN")
   }
   compare_file(path, output, update = TRUE)
   invisible()
