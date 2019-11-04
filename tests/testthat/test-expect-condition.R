@@ -128,5 +128,9 @@ test_that("simple_error returns TRUE for basic errors", {
 
   expect_true(is_simple(stop("!")))
   expect_true(is_simple(abort("!")))
+
+  expect_true(is_simple(abort("!", .subclass = "Rcpp::eval_error")))
+  expect_true(is_simple(abort("!", .subclass = "Rcpp::exception")))
+
   expect_false(is_simple(abort("!", .subclass = "error_custom")))
 })

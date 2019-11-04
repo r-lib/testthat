@@ -177,6 +177,10 @@ simple_error <- function(x) {
     return(TRUE)
   }
 
+  if (inherits(x, "Rcpp::eval_error")) {
+    return(TRUE)
+  }
+
   if (inherits(x, "Rcpp::exception")) {
     return(TRUE)
   }
