@@ -25,7 +25,8 @@
 #'
 #' @param path Path to save file. Typically this will be a call to
 #'   [test_path()] so that the same path when the code is run interactively.
-#' @param code Code to execute.
+#' @param code Code to execute. This will usually be a multiline expression
+#'   contained within `{}` (similarly to `test_that()` calls).
 #' @param width Width of console output
 #' @param crayon Enable crayon package colouring?
 #' @param unicode Enable cli package UTF-8 symbols? If you set this to
@@ -33,6 +34,29 @@
 #'   test on your CI platforms that don't support UTF-8 (e.g. Windows).
 #' @param env The environment to evaluate `code` in.
 #' @export
+#' @examples
+#' # The first argument would usually be `test_path("informative-name.txt"`)
+#' # but that is not permitted in examples
+#' verify_output(tempfile(), {
+#'    sin(pi)
+#'    2 * 3 == 4
+#' })
+#'
+#' # Use strings to create comments in the output
+#' verify_output(tempfile(), {
+#'    "Trigonometry"
+#'    sin(pi)
+#'
+#'    "Math"
+#'    2 * 3 == 4
+#' })
+#'
+#' # Use strings starting with # to create headings
+#' verify_output(tempfile(), {
+#'    "# Mathematical functions"
+#'    sin(pi)
+#'    2 * 3 == 4
+#' })
 verify_output <- function(path, code, width = 80, crayon = FALSE,
                           unicode = FALSE, env = caller_env()) {
   expr <- substitute(code)

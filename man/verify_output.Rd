@@ -11,7 +11,8 @@ verify_output(path, code, width = 80, crayon = FALSE,
 \item{path}{Path to save file. Typically this will be a call to
 \code{\link[=test_path]{test_path()}} so that the same path when the code is run interactively.}
 
-\item{code}{Code to execute.}
+\item{code}{Code to execute. This will usually be a multiline expression
+contained within \code{{}} (similarly to \code{test_that()} calls).}
 
 \item{width}{Width of console output}
 
@@ -55,3 +56,27 @@ whitespace and comments. To mildy offset this limitation, bare string
 are turned into comments.
 }
 
+\examples{
+# The first argument would usually be `test_path("informative-name.txt"`)
+# but that is not permitted in examples
+verify_output(tempfile(), {
+   sin(pi)
+   2 * 3 == 4
+})
+
+# Use strings to create comments in the output
+verify_output(tempfile(), {
+   "Trigonometry"
+   sin(pi)
+
+   "Math"
+   2 * 3 == 4
+})
+
+# Use strings starting with # to create headings
+verify_output(tempfile(), {
+   "# Mathematical functions"
+   sin(pi)
+   2 * 3 == 4
+})
+}
