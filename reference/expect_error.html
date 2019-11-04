@@ -270,10 +270,15 @@ using <code><a href='verify_output.html'>verify_output()</a></code> instead.</p>
 
 <span class='co'># If you are working with classed conditions, it's better to test for</span>
 <span class='co'># the class name, rather than the error message (which may change over time)</span>
-<span class='no'>custom_err</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>() {
-  <span class='kw pkg'>rlang</span><span class='kw ns'>::</span><span class='fu'><a href='https://rlang.r-lib.org/reference/abort.html'>abort</a></span>(<span class='st'>"A special error"</span>, <span class='kw'>.subclass</span> <span class='kw'>=</span> <span class='st'>"testthat_special"</span>)
+<span class='no'>custom_err</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>(<span class='no'>var</span>) {
+  <span class='kw pkg'>rlang</span><span class='kw ns'>::</span><span class='fu'><a href='https://rlang.r-lib.org/reference/abort.html'>abort</a></span>(<span class='st'>"A special error"</span>, <span class='kw'>var</span> <span class='kw'>=</span> <span class='no'>var</span>, <span class='kw'>.subclass</span> <span class='kw'>=</span> <span class='st'>"testthat_special"</span>)
 }
-<span class='fu'>expect_error</span>(<span class='fu'>custom_err</span>(), <span class='kw'>class</span> <span class='kw'>=</span> <span class='st'>"testthat_special"</span>)</div></pre>
+<span class='fu'>expect_error</span>(<span class='fu'>custom_err</span>(<span class='st'>"a"</span>), <span class='kw'>class</span> <span class='kw'>=</span> <span class='st'>"testthat_special"</span>)
+
+<span class='co'># Note that `expect_error()` returns the error object so you can test</span>
+<span class='co'># its components if needed</span>
+<span class='no'>err</span> <span class='kw'>&lt;-</span> <span class='fu'>expect_error</span>(<span class='fu'>custom_err</span>(<span class='st'>"a"</span>), <span class='kw'>class</span> <span class='kw'>=</span> <span class='st'>"testthat_special"</span>)
+<span class='fu'><a href='equality-expectations.html'>expect_equal</a></span>(<span class='no'>err</span>$<span class='no'>var</span>, <span class='st'>"a"</span>)</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
