@@ -35,6 +35,7 @@ test_that("compare state works correctly", {
 })
 
 test_that("watcher works correctly", {
+  skip_on_ci()
   skip_on_cran()
   if (Sys.which("bash") == "") {
     skip("bash not available")
