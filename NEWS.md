@@ -34,6 +34,8 @@ This release mostly focusses on an overhaul of how testthat works with condition
   should be lazily registered, e.g. with `vctrs::s3_register()`. This
   is useful for introducing an experimental error class without
   encouraging users to depend on the class in their tests.
+  
+* Respect options(warn = -1) to ignore all warnings (@jeroen #958).
 
 ## Expectations
 
