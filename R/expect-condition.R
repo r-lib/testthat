@@ -70,7 +70,7 @@ expect_error <- function(object,
   expect(is.null(msg), msg, info = info, trace = act$cap$trace)
 
   if (!is.null(act$cap)) {
-    if (!simple_error(act$cap) && is.null(class) && !is.null(regexp)) {
+    if (is_informative_error(act$cap) && is.null(class) && !is.null(regexp)) {
       klass <- paste0(encodeString(class(act$cap), quote = '"'), collapse = ", ")
       warn(paste0(
         act$lab, " generated an S3 error and you are testing the error message.\n",
@@ -174,22 +174,22 @@ cnd_message <- function(x) {
   conditionMessage(x)
 }
 
-simple_error <- function(x) {
+is_informative_error <- function(x) {
   if (!inherits(x, "error")) {
-    return(FALSE)
+    return(TRUE)
   }
 
   if (inherits(x, "simpleError")) {
-    return(TRUE)
+    return(FALSE)
   }
 
   if (inherits(x, "Rcpp::eval_error")) {
-    return(TRUE)
+    return(FALSE)
   }
 
   if (inherits(x, "Rcpp::exception")) {
-    return(TRUE)
+    return(FALSE)
   }
 
-  inherits_only(x, c("rlang_error", "error", "condition"))
+  !inherits_only(x, c("rlang_error", "error", "condition"))
 }
