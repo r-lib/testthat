@@ -204,6 +204,7 @@ cnd_message <- function(x) {
 #' - `Rcpp::eval_error`
 #' - `Rcpp::exception`
 #'
+#' @keywords internal
 #' @export
 is_informative_error <- function(x, ...) {
   ellipsis::check_dots_empty()

@@ -37,3 +37,4 @@ A few classes are hard-coded as uninformative:
 \item \code{Rcpp::exception}
 }
 }
+\keyword{internal}
