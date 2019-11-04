@@ -27,9 +27,12 @@
 #' whitespace and comments. To mildy offset this limitation, bare string
 #' are turned into comments.
 #'
-#' @param path Path to record results. Typically this will be a call to
-#'   [test_path()] so that the same path is used when the code is run
-#'   interatviely and in a test.
+#' @param path Path to record results.
+#'
+#'   This should usually be a call to [test_path()] to ensures that same path
+#'   is used when run interactively (when the working directory is typically
+#'   the project root), and when run as an autmated test (when the working
+#'   directory will be `tests/testthat`).
 #' @param code Code to execute. This will usually be a multiline expression
 #'   contained within `{}` (similarly to `test_that()` calls).
 #' @param width Width of console output

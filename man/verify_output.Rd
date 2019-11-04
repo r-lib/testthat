@@ -8,9 +8,12 @@ verify_output(path, code, width = 80, crayon = FALSE,
   unicode = FALSE, env = caller_env())
 }
 \arguments{
-\item{path}{Path to record results. Typically this will be a call to
-\code{\link[=test_path]{test_path()}} so that the same path is used when the code is run
-interatviely and in a test.}
+\item{path}{Path to record results.
+
+This should usually be a call to \code{\link[=test_path]{test_path()}} to ensures that same path
+is used when run interactively (when the working directory is typically
+the project root), and when run as an autmated test (when the working
+directory will be \code{tests/testthat}).}
 
 \item{code}{Code to execute. This will usually be a multiline expression
 contained within \code{{}} (similarly to \code{test_that()} calls).}
