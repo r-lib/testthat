@@ -1,0 +1,64 @@
+on: [push, pull_request]
+
+name: R-full
+
+jobs:
+  macOS:
+    runs-on: macOS-latest
+    strategy:
+      matrix:
+        r: ['3.6', 'devel']
+    steps:
+      - uses: actions/checkout@v1
+      - uses: r-lib/actions/setup-r@master
+        with:
+          r-version: ${{ matrix.r }}
+      - uses: r-lib/actions/setup-pandoc@master
+      - uses: r-lib/actions/setup-tinytex@master
+      - name: Install dependencies
+        env:
+          R_REMOTES_NO_ERRORS_FROM_WARNINGS: true
+        run: Rscript -e "install.packages(c('remotes', 'rcmdcheck'))" -e "remotes::install_deps(dependencies = TRUE)"
+      - name: Check
+        run: Rscript -e "rcmdcheck::rcmdcheck(error_on = 'error')"
+      - name: Test coverage
+        if: matrix.r == '3.6'
+        run: |
+          Rscript -e 'remotes::install_github("r-lib/covr@gh-actions")'
+          Rscript -e 'covr::codecov(token = "${{secrets.CODECOV_TOKEN}}")'
+
+  linux:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        r: ['3.2', '3.3', '3.4', '3.5', '3.6']
+    container: rstudio/r-base:${{ matrix.r }}-xenial
+    env:
+      CRAN: 'https://demo.rstudiopm.com/all/__linux__/xenial/latest'
+    steps:
+      - uses: actions/checkout@v1
+      - uses: r-lib/actions/setup-r@master
+      - uses: r-lib/actions/setup-pandoc@master
+      - uses: r-lib/actions/setup-tinytex@master
+      - name: Install dependencies
+        run: |
+          Rscript -e "install.packages('remotes')" -e "remotes::install_github('r-hub/sysreqs')"
+          sysreqs=$(Rscript -e "cat(sysreqs::sysreq_commands('DESCRIPTION'))")
+          eval "$sysreqs"
+          Rscript -e "remotes::install_deps(dependencies = TRUE)"
+        env:
+          RHUB_PLATFORM: linux-x86_64-ubuntu-gcc
+      - name: Check
+        run: Rscript -e "install.packages('rcmdcheck')" -e "rcmdcheck::rcmdcheck(error_on = 'error')"
+
+  windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: r-lib/actions/setup-r@master
+      - uses: r-lib/actions/setup-pandoc@master
+      - uses: r-lib/actions/setup-tinytex@master
+      - name: Install dependencies
+        run: Rscript -e "install.packages(c('remotes', 'rcmdcheck'))" -e "remotes::install_deps(dependencies = TRUE)"
+      - name: Check
+        run: Rscript -e "rcmdcheck::rcmdcheck(error_on = 'error')"
