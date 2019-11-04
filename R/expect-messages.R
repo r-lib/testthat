@@ -19,25 +19,40 @@
 #' # Messages ------------------------------------------------------------------
 #'
 #' f <- function(x) {
-#'   if (x < 0) message("*x* is already negative")
+#'   if (x < 0) {
+#'     message("*x* is already negative")
+#'     return(x)
+#'   }
+#'
 #'   -x
 #' }
 #' expect_message(f(-1))
 #' expect_message(f(-1), "already negative")
 #' expect_message(f(1), NA)
 #'
+#' # To test message and output, store results to a variable
+#' expect_message(out <- f(-1), "already negative")
+#' expect_equal(out, -1)
+#'
 #' # You can use the arguments of grepl to control the matching
 #' expect_message(f(-1), "*x*", fixed = TRUE)
 #' expect_message(f(-1), "NEGATIVE", ignore.case = TRUE)
 #'
-#' # Warnings --------------------------------------------------------------------
+#' # Warnings ------------------------------------------------------------------
 #' f <- function(x) {
-#'   if (x < 0) warning("*x* is already negative")
+#'   if (x < 0) {
+#'     warning("*x* is already negative")
+#'     return(x)
+#'   }
 #'   -x
 #' }
 #' expect_warning(f(-1))
 #' expect_warning(f(-1), "already negative")
 #' expect_warning(f(1), NA)
+#'
+#' # To test message and output, store results to a variable
+#' expect_warning(out <- f(-1), "already negative")
+#' expect_equal(out, -1)
 #'
 #' # You can use the arguments of grepl to control the matching
 #' expect_warning(f(-1), "*x*", fixed = TRUE)

@@ -86,10 +86,15 @@ expect_error(f(), "my error!", ignore.case = TRUE)
 
 # If you are working with classed conditions, it's better to test for
 # the class name, rather than the error message (which may change over time)
-custom_err <- function() {
-  rlang::abort("A special error", .subclass = "testthat_special")
+custom_err <- function(var) {
+  rlang::abort("A special error", var = var, .subclass = "testthat_special")
 }
-expect_error(custom_err(), class = "testthat_special")
+expect_error(custom_err("a"), class = "testthat_special")
+
+# Note that `expect_error()` returns the error object so you can test
+# its components if needed
+err <- expect_error(custom_err("a"), class = "testthat_special")
+expect_equal(err$var, "a")
 }
 \seealso{
 Other expectations: \code{\link{comparison-expectations}},
