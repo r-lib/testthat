@@ -39,6 +39,10 @@ Use this function when you want to run a single file's worth of tests.
 You are responsible for ensuring that the functions to test are available
 in the global environment.
 }
+\details{
+Any errors that occur in code run outside of \code{test_that()} will generate
+a test failure and terminate execution of that test file.
+}
 \examples{
 path <- testthat_example("success")
 test_file(path, reporter = "minimal")
