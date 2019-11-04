@@ -8,8 +8,9 @@ verify_output(path, code, width = 80, crayon = FALSE,
   unicode = FALSE, env = caller_env())
 }
 \arguments{
-\item{path}{Path to save file. Typically this will be a call to
-\code{\link[=test_path]{test_path()}} so that the same path when the code is run interactively.}
+\item{path}{Path to record results. Typically this will be a call to
+\code{\link[=test_path]{test_path()}} so that the same path is used when the code is run
+interatviely and in a test.}
 
 \item{code}{Code to execute. This will usually be a multiline expression
 contained within \code{{}} (similarly to \code{test_that()} calls).}
@@ -25,13 +26,16 @@ test on your CI platforms that don't support UTF-8 (e.g. Windows).}
 \item{env}{The environment to evaluate \code{code} in.}
 }
 \description{
-This is a regression test records interwoven code and output into a file,
-similar to Rmd. It's designed particularly for testing print methods and
-error messages, where the primary goal is to ensure that the output is
-helpful to a human. Obviously, there's no way to test that automatically,
-so the best we can do is make the results explicit by saving to a text file.
-This makes the presentation easier to see in code reviews, and avoids
-changing it accidentally.
+This is a regression test that records interwoven code and output into a
+file, similar to \code{.Rmd}. It's designed particularly for testing print
+methods and error messages, where the primary goal is to ensure that the
+output is helpful to a human. Obviously, there's no way to test that
+automatically, so the best we can do is make the results explicit by saving
+to a text file. This makes the results easy to see in code reviews, and
+ensures that you don't change the output accidentally.
+
+\code{verify_output()} is designed to be used with git: to see what has changed
+between from the previous run, you'll need to use \code{git diff} or similar.
 }
 \section{Syntax}{
 
