@@ -93,7 +93,13 @@ verify_output <- function(path, code, width = 80, crayon = FALSE,
   exprs <- lapply(exprs, function(x) if (is.character(x)) paste0("# ", x) else expr_deparse(x))
   source <- unlist(exprs, recursive = FALSE)
 
-  results <- evaluate::evaluate(source, envir = env)
+  # Open temporary new device
+  grDevices::png(file = tempfile())
+  grDevices::dev.control(displaylist = "enable")
+  dev <- grDevices::dev.cur()
+  on.exit(grDevices::dev.off(dev), add = TRUE)
+
+  results <- evaluate::evaluate(source, envir = env, new_device = FALSE)
   output <- unlist(lapply(results, output_replay))
 
   if (!interactive()) {
