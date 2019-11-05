@@ -1,3 +1,7 @@
+This is a resubmission that fixes a broken link in the README.
+
+---
+
 ## Test environments
 
 * local OS X install (R-release)

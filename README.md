@@ -9,8 +9,8 @@
 status](https://www.r-pkg.org/badges/version/testthat)](https://cran.r-project.org/package=testthat)
 [![Travis build
 status](https://travis-ci.org/r-lib/testthat.svg?branch=master)](https://travis-ci.org/r-lib/testthat)
-[![R build
-status](https://github.com/r-lib/testthat/workflows/R/badge.svg)](https://github.com/r-lib/testthat/actions?workflow=R)
+![R build
+status](https://github.com/r-lib/testthat/workflows/R-full/badge.svg)
 [![Codecov test
 coverage](https://codecov.io/gh/r-lib/testthat/branch/master/graph/badge.svg)](https://codecov.io/gh/r-lib/testthat?branch=master)
 <!-- badges: end -->
