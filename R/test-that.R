@@ -116,9 +116,14 @@ test_code <- function(test, code, env = test_env(), skip_on_empty = TRUE) {
   }
   handle_warning <- function(e) {
     # When options(warn) < 0, warnings are expected to be ignored.
-    # When options(warn) >= 2, a warning will be converted to an error.
+    if (getOption("warn") < 0) {
+      handled <<- TRUE
+      return()
+    }
+
+    # When options(warn) >= 2, warnings are converted to errors.
     # So, do not handle it here so that it will be handled by handle_error.
-    if (getOption("warn") < 0 || getOption("warn") >= 2) {
+    if (getOption("warn") >= 2) {
       return()
     }
 

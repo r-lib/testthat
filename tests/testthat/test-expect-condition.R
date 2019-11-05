@@ -69,10 +69,19 @@ test_that("generates informative failures", {
 })
 
 test_that("warnings are converted to errors when options('warn') >= 2", {
-  withr::with_options(
-    c(warn = 2),
+  withr::with_options(c(warn = 2), {
+    expect_warning(warning("foo"))
     expect_error(warning("foo"))
-  )
+  })
+})
+
+test_that("can silence warnings", {
+  expect_warning(suppressWarnings(warning("foo")), NA)
+
+  # Can't test with `expect_warning()` because the warning is still
+  # signalled, it's just not printed
+  # https://github.com/wch/r-source/blob/886ab4a0/src/main/errors.c#L388-L484
+  withr::with_options(c(warn = -1), warning("foo"))
 })
 
 local({
