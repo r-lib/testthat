@@ -10,4 +10,7 @@ There were no ERRORs, WARNINGs, or NOTEs.
 
 ## revdepcheck results
 
-This is a minor patch to fix a problem with 8 packages reported by Kurt Hornik. I did not re-run my revdep checks since these failed to uncover the initial problem.
+We checked 79 reverse dependencies (67 from CRAN + 12 from BioConductor), comparing R CMD check results across CRAN and dev versions of this package.
+
+ * We saw 0 new problems
+ * We failed to check 0 packages
