@@ -115,7 +115,13 @@ test_code <- function(test, code, env = test_env(), skip_on_empty = TRUE) {
     invokeRestart("continue_test")
   }
   handle_warning <- function(e) {
-    # When options(warn) >= 2, a warning will be converted to an error.
+    # When options(warn) < 0, warnings are expected to be ignored.
+    if (getOption("warn") < 0) {
+      handled <<- TRUE
+      return()
+    }
+
+    # When options(warn) >= 2, warnings are converted to errors.
     # So, do not handle it here so that it will be handled by handle_error.
     if (getOption("warn") >= 2) {
       return()
