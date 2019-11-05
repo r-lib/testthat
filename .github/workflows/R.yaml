@@ -32,7 +32,12 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        r: ['3.2', '3.3', '3.4', '3.5', '3.6']
+        r:
+        - '3.2'
+        # - '3.3' # problems with mix of binary and source
+        - '3.4'
+        - '3.5'
+        - '3.6'
       fail-fast: false
     container: rstudio/r-base:${{ matrix.r }}-xenial
     env:
