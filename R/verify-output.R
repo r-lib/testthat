@@ -94,7 +94,7 @@ verify_output <- function(path, code, width = 80, crayon = FALSE,
   source <- unlist(exprs, recursive = FALSE)
 
   # Open temporary new device
-  grDevices::png(file = tempfile())
+  grDevices::png(filename = tempfile())
   grDevices::dev.control(displaylist = "enable")
   dev <- grDevices::dev.cur()
   on.exit(grDevices::dev.off(dev), add = TRUE)
