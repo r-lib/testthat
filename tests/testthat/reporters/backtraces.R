@@ -37,3 +37,12 @@ test_that("failed expect_error() prints a backtrace", {
   signaller <- function() stop("bar")
   expect_error(f(), "foo")
 })
+
+test_that("Errors are inspected with `conditionMessage()`", {
+  rlang::scoped_bindings(
+    .env = globalenv(),
+    conditionMessage.foobar = function(...) "dispatched"
+  )
+  rlang::abort("Wrong message", "foobar")
+})
+

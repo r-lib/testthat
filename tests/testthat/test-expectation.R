@@ -26,3 +26,16 @@ test_that("`expect()` and `exp_signal()` signal expectations", {
   expect_error(exp_signal(new_expectation("success", "")), regexp = NA)
   expect_error(exp_signal(new_expectation("failure", "")), class = "expectation_failure")
 })
+
+test_that("conditionMessage() is called during conversion", {
+  local_methods(conditionMessage.foobar = function(...) "dispatched")
+
+  wrn <- warning_cnd("foobar", message = "wrong")
+  expect_identical(as.expectation(wrn)$message, "dispatched")
+
+  err <- error_cnd("foobar", message = "wrong")
+  expect_identical(as.expectation(err)$message, "dispatched")
+
+  err <- cnd(c("foobar", "skip"), message = "wrong")
+  expect_identical(as.expectation(err)$message, "dispatched")
+})
