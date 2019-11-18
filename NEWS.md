@@ -1,5 +1,7 @@
 # testthat (development version)
 
+* Fixed error assertions with rJava errors (#964).
+
 * Fixed issue where error and warning messages were not retrieved with
   `conditionMessage()` under certain circumstances.
 
