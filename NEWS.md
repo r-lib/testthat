@@ -1,5 +1,9 @@
 # testthat (development version)
 
+* Fixed issue where error and warning messages were not retrieved with
+  `conditionMessage()` under certain circumstances.
+
+
 # testthat 2.3.0
 
 ## Conditions

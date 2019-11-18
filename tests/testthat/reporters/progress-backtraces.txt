@@ -7,7 +7,8 @@
 ⠸ |   0 4     | Backtraces
 ⠼ |   0 5     | Backtraces
 ⠴ |   0 6     | Backtraces
-✖ |   0 6     | Backtraces
+⠦ |   0 7     | Backtraces
+✖ |   0 7     | Backtraces
 ────────────────────────────────────────────────────────────────────────────────
 backtraces.R:6: error: errors thrown at block level are entraced
 foo
@@ -53,10 +54,13 @@ Backtrace:
  1. testthat::expect_error(f(), "foo")
  6. f()
  7. signaller()
+
+backtraces.R:46: error: Errors are inspected with `conditionMessage()`
+dispatched
 ────────────────────────────────────────────────────────────────────────────────
 
 ══ Results ═════════════════════════════════════════════════════════════════════
 OK:       0
-Failed:   6
+Failed:   7
 Warnings: 0
 Skipped:  0

@@ -179,7 +179,7 @@ as.expectation.expectation <- function(x, ..., srcref = NULL) {
 
 #' @export
 as.expectation.error <- function(x, ..., srcref = NULL) {
-  error <- x$message
+  error <- cnd_message(x)
 
   msg <- gsub("Error.*?: ", "", as.character(error))
   # Remove trailing newline to be consistent with other conditons
@@ -190,12 +190,12 @@ as.expectation.error <- function(x, ..., srcref = NULL) {
 
 #' @export
 as.expectation.warning <- function(x, ..., srcref = NULL) {
-  expectation("warning", x$message, srcref)
+  expectation("warning", cnd_message(x), srcref)
 }
 
 #' @export
 as.expectation.skip <- function(x, ..., srcref = NULL) {
-  expectation("skip", x$message, srcref)
+  expectation("skip", cnd_message(x), srcref)
 }
 
 # expectation_type --------------------------------------------------------
