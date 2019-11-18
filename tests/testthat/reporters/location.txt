@@ -61,3 +61,7 @@ Start test: Output:1
   tests.R#91:1 [success]
 End test: Output:1
 
+Start test: Error:4
+  tests.R#111:1 [error]
+End test: Error:4
+

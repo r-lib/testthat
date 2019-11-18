@@ -5,6 +5,7 @@ Recursion: 7
 Skips: SSS
 Warnings: WWW
 Output: ..
+Throwable errors: 8
 End: 
 
 ══ Skipped ═════════════════════════════════════════════════════════════════════
@@ -27,7 +28,7 @@ Failure has been forced
 
 ── 2. Failure: Failure:2a (@tests.R#16)  ───────────────────────────────────────
 Failure has been forced
-  ... and 5 more
+  ... and 6 more
 
 
 Maximum number of 2 failures reached, some test results may be missing.

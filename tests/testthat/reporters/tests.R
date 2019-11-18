@@ -91,4 +91,24 @@ test_that("Output:1", {
   expect_output(expect_false(FALSE), NA)
 })
 
+context("Throwable errors")
+
+test_that("Error:4", {
+  local_methods <- function(..., .frame = caller_env()) {
+    rlang::scoped_bindings(.env = globalenv(), .frame = .frame, ...)
+  }
+  local_Throwable_methods <- function(frame = caller_env()) {
+    local_methods(
+      .frame = frame,
+      conditionMessage.Throwable = function(c, ...) unclass(c)$message,
+      conditionCall.Throwable = function(c, ...) unclass(c)$call,
+      `$.Throwable` = function(...) stop("forbidden"),
+      `$<-.Throwable` = function(...) stop("forbidden")
+    )
+  }
+
+  throw <- function(msg) stop(rlang::error_cnd("Throwable", message = msg))
+  throw("Throwable")
+})
+
 context("End")
