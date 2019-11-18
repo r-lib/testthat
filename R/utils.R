@@ -124,3 +124,7 @@ strrep <- function(x, times) {
     paste0(replicate(times, x), collapse = "")
   }, list(x = x, times = times), MoreArgs = list()), use.names = FALSE)
 }
+
+can_entrace <- function(cnd) {
+  !inherits(cnd, "Throwable")
+}

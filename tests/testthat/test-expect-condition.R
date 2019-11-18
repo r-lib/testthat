@@ -149,3 +149,9 @@ test_that("is_informative_error returns TRUE for basic errors", {
     expect_false(is_informative(abort("!", .subclass = "error_custom")))
   )
 })
+
+test_that("can capture Throwable conditions from rJava", {
+  local_Throwable_methods()
+  throw <- function(msg) stop(error_cnd("Throwable", message = msg))
+  expect_error(throw("foo"), "foo", class = "Throwable")
+})
