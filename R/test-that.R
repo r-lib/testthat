@@ -31,6 +31,8 @@ test_that <- function(desc, code) {
   test_code(desc, code, env = parent.frame())
 }
 
+# Access error fields with `[[` rather than `$` because the
+# `$.Throwable` from the rJava package throws with unknown fields
 test_code <- function(test, code, env = test_env(), skip_on_empty = TRUE) {
   if (!is.null(test)) {
     get_reporter()$start_test(context = get_reporter()$.context, test = test)
@@ -45,7 +47,7 @@ test_code <- function(test, code, env = test_env(), skip_on_empty = TRUE) {
     # Find test environment on the stack
     start <- eval_bare(quote(base::sys.nframe()), test_env) + 1L
 
-    srcref <- e$srcref %||% find_first_srcref(start)
+    srcref <- e[["srcref"]] %||% find_first_srcref(start)
     e <- as.expectation(e, srcref = srcref)
 
     # Data for the DebugReporter
@@ -86,7 +88,9 @@ test_code <- function(test, code, env = test_env(), skip_on_empty = TRUE) {
     on.exit(options(expressions = expressions_opt), add = TRUE)
 
     # Add structured backtrace to the expectation
-    e <- cnd_entrace(e)
+    if (can_entrace(e)) {
+      e <- cnd_entrace(e)
+    }
 
     test_error <<- e
 
@@ -94,7 +98,7 @@ test_code <- function(test, code, env = test_env(), skip_on_empty = TRUE) {
     # to be able to debug with the DebugReporter
     register_expectation(e, 2)
 
-    e$handled <- TRUE
+    e[["handled"]] <- TRUE
     test_error <<- e
   }
   handle_fatal <- function(e) {
@@ -102,7 +106,7 @@ test_code <- function(test, code, env = test_env(), skip_on_empty = TRUE) {
     # Error caught in handle_error() has precedence
     if (!is.null(test_error)) {
       e <- test_error
-      if (isTRUE(e$handled)) {
+      if (isTRUE(e[["handled"]])) {
         return()
       }
     }

@@ -3,7 +3,9 @@ new_capture <- function(class) {
   exiting_handlers <- rep_named(class, list(identity))
 
   calling_handlers <- rep_named(class, alist(function(cnd) {
-    cnd <- cnd_entrace(cnd)
+    if (can_entrace(cnd)) {
+      cnd <- cnd_entrace(cnd)
+    }
     return_from(env, cnd)
   }))
 

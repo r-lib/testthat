@@ -47,8 +47,11 @@ Backtrace:
  25. f(x - 1)
  26. f(x - 1)
 
+── 8. Error: Error:4 (@tests.R#111)  ───────────────────────────────────────────
+Throwable
+
 ══ testthat results  ═══════════════════════════════════════════════════════════
-[ OK: 5 | SKIPPED: 3 | WARNINGS: 3 | FAILED: 7 ]
+[ OK: 5 | SKIPPED: 3 | WARNINGS: 3 | FAILED: 8 ]
 1. Failure: Failure:1 (@tests.R#12) 
 2. Failure: Failure:2a (@tests.R#16) 
 3. Failure: Failure:2b (@tests.R#19) 
@@ -56,4 +59,5 @@ Backtrace:
 5. Error: Error:1 (@tests.R#33) 
 6. Error: Error:3 (@tests.R#47) 
 7. Error: Recursion:1 (@tests.R#56) 
+8. Error: Error:4 (@tests.R#111) 
 

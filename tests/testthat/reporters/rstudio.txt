@@ -11,3 +11,4 @@ reporters/tests.R#72:1 [skip] Skip:3. Reason: empty test
 reporters/tests.R#78:1 [warning] Warning:1. abc
 reporters/tests.R#84:1 [warning] Warning:2. def
 reporters/tests.R#85:1 [warning] Warning:2. ghi
+reporters/tests.R#111:1 [error] Error:4. Throwable

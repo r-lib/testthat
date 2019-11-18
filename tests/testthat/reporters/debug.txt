@@ -58,3 +58,5 @@
 1: f()
 2: warning("ghi")
 
+1: throw("Throwable")
+

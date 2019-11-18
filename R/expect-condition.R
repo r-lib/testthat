@@ -67,7 +67,10 @@ expect_error <- function(object,
                          ) {
   act <- quasi_capture(enquo(object), label, capture_error, entrace = TRUE)
   msg <- compare_condition(act$cap, act$lab, regexp = regexp, class = class, ...)
-  expect(is.null(msg), msg, info = info, trace = act$cap$trace)
+
+  # Access error fields with `[[` rather than `$` because the
+  # `$.Throwable` from the rJava package throws with unknown fields
+  expect(is.null(msg), msg, info = info, trace = act$cap[["trace"]])
 
   if (!is.null(act$cap)) {
     if (is_informative_error(act$cap) && is.null(class) && !is.null(regexp)) {
@@ -98,7 +101,7 @@ expect_condition <- function(object,
     act$cap, act$lab, regexp = regexp, class = class, ...,
     cond_type = "condition"
   )
-  expect(is.null(msg), msg, info = info, trace = act$cap$trace)
+  expect(is.null(msg), msg, info = info, trace = act$cap[["trace"]])
 
   invisible(act$val %||% act$cap)
 }

@@ -81,5 +81,10 @@ Backtrace:
     <testcase time="0" classname="Output" name="Output_1"/>
     <testcase time="0" classname="Output" name="Output_1"/>
   </testsuite>
+  <testsuite name="Throwable errors" timestamp="1999:12:31 23:59:59" hostname="nodename" tests="1" skipped="0" failures="0" errors="1" time="0">
+    <testcase time="0" classname="Throwable_errors" name="Error_4">
+      <error type="error" message="Throwable (@tests.R#111)">Throwable</error>
+    </testcase>
+  </testsuite>
   <testsuite name="End" timestamp="1999:12:31 23:59:59" hostname="nodename" tests="0" skipped="0" failures="0" errors="0" time="0"/>
 </testsuites>
