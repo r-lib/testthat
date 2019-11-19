@@ -1,4 +1,5 @@
-# testthat (development version)
+
+# testthat 2.3.1
 
 * The last version of testthat introduced a performance regression in
   error assertions (#963). To fix it, you need to install rlang 0.4.2.

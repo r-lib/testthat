@@ -1,4 +1,4 @@
-This is a resubmission that fixes a broken link in the README.
+This fixes the issues with packages depending on rJava.
 
 ---
 
