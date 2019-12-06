@@ -4,8 +4,7 @@
 \alias{auto_test_package}
 \title{Watches a package for changes, rerunning tests as appropriate.}
 \usage{
-auto_test_package(pkg = ".", reporter = default_reporter(),
-  hash = TRUE)
+auto_test_package(pkg = ".", reporter = default_reporter(), hash = TRUE)
 }
 \arguments{
 \item{pkg}{path to package}

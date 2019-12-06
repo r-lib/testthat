@@ -1,7 +1,7 @@
 #' Provide human-readable comparison of two objects
 #'
 #' `compare` is similar to [base::all.equal()], but shows
-#' you examples of where the failures occured.
+#' you examples of where the failures occurred.
 #'
 #' @export
 #' @param x,y Objects to compare

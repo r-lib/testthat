@@ -8,11 +8,26 @@
 \alias{expect_known_hash}
 \title{Expectations: is the output or the value equal to a known good value?}
 \usage{
-expect_known_output(object, file, update = TRUE, ..., info = NULL,
-  label = NULL, print = FALSE, width = 80)
+expect_known_output(
+  object,
+  file,
+  update = TRUE,
+  ...,
+  info = NULL,
+  label = NULL,
+  print = FALSE,
+  width = 80
+)
 
-expect_known_value(object, file, update = TRUE, ..., info = NULL,
-  label = NULL, version = 2)
+expect_known_value(
+  object,
+  file,
+  update = TRUE,
+  ...,
+  info = NULL,
+  label = NULL,
+  version = 2
+)
 
 expect_known_hash(object, hash = NULL)
 }
@@ -69,7 +84,7 @@ in conjunction with \code{expect_known_output()} as the diffs will show you
 exactly what has changed.
 
 Note that known values updates will only be updated when running tests
-interactively. \code{R CMD check} clones the package source so any changes to
+interactively. \verb{R CMD check} clones the package source so any changes to
 the reference files will occur in a temporary directory, and will not be
 synchronised back to the source package.
 }

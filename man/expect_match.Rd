@@ -4,8 +4,16 @@
 \alias{expect_match}
 \title{Expectation: does string match a regular expression?}
 \usage{
-expect_match(object, regexp, perl = FALSE, fixed = FALSE, ...,
-  all = TRUE, info = NULL, label = NULL)
+expect_match(
+  object,
+  regexp,
+  perl = FALSE,
+  fixed = FALSE,
+  ...,
+  all = TRUE,
+  info = NULL,
+  label = NULL
+)
 }
 \arguments{
 \item{object}{Object to test.
@@ -20,14 +28,15 @@ within a function or for loop. See \link{quasi_label} for more details.}
 \item{fixed}{logical.  If \code{TRUE}, \code{pattern} is a string to be
     matched as is.  Overrides all conflicting arguments.}
 
-\item{...}{Arguments passed on to \code{base::grepl}
-\describe{
-  \item{ignore.case}{if \code{FALSE}, the pattern matching is \emph{case
+\item{...}{
+  Arguments passed on to \code{\link[base:grepl]{base::grepl}}
+  \describe{
+    \item{\code{ignore.case}}{if \code{FALSE}, the pattern matching is \emph{case
       sensitive} and if \code{TRUE}, case is ignored during matching.}
-  \item{useBytes}{logical.  If \code{TRUE} the matching is done
+    \item{\code{useBytes}}{logical.  If \code{TRUE} the matching is done
     byte-by-byte rather than character-by-character.  See
     \sQuote{Details}.}
-}}
+  }}
 
 \item{all}{Should all elements of actual value match \code{regexp} (TRUE),
 or does only one need to match (FALSE)}
@@ -57,13 +66,17 @@ expect_match(character(), ".")
 }
 }
 \seealso{
-Other expectations: \code{\link{comparison-expectations}},
-  \code{\link{equality-expectations}},
-  \code{\link{expect_error}}, \code{\link{expect_length}},
-  \code{\link{expect_message}}, \code{\link{expect_named}},
-  \code{\link{expect_null}}, \code{\link{expect_output}},
-  \code{\link{expect_silent}},
-  \code{\link{inheritance-expectations}},
-  \code{\link{logical-expectations}}
+Other expectations: 
+\code{\link{comparison-expectations}},
+\code{\link{equality-expectations}},
+\code{\link{expect_error}()},
+\code{\link{expect_length}()},
+\code{\link{expect_message}()},
+\code{\link{expect_named}()},
+\code{\link{expect_null}()},
+\code{\link{expect_output}()},
+\code{\link{expect_silent}()},
+\code{\link{inheritance-expectations}},
+\code{\link{logical-expectations}}
 }
 \concept{expectations}

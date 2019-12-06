@@ -5,11 +5,23 @@
 \alias{expect_warning}
 \title{Expectation: does code produce warnings or messages?}
 \usage{
-expect_message(object, regexp = NULL, ..., all = FALSE, info = NULL,
-  label = NULL)
+expect_message(
+  object,
+  regexp = NULL,
+  ...,
+  all = FALSE,
+  info = NULL,
+  label = NULL
+)
 
-expect_warning(object, regexp = NULL, ..., all = FALSE, info = NULL,
-  label = NULL)
+expect_warning(
+  object,
+  regexp = NULL,
+  ...,
+  all = FALSE,
+  info = NULL,
+  label = NULL
+)
 }
 \arguments{
 \item{object}{Object to test.
@@ -21,19 +33,18 @@ within a function or for loop. See \link{quasi_label} for more details.}
 \itemize{
 \item A character vector giving a regular expression that must match the
 message/warning
-\item If \code{NULL}, the default, asserts that there should be a messsage/warning,
+\item If \code{NULL}, the default, asserts that there should be a message/warning,
 but doesn't test for a specific value.
 \item If \code{NA}, asserts that there shouldn't be any messages or warnings.
 }}
 
-\item{...}{Arguments passed on to \code{expect_match}
-\describe{
-  \item{all}{Should all elements of actual value match \code{regexp} (TRUE),
-or does only one need to match (FALSE)}
-  \item{perl}{logical.  Should Perl-compatible regexps be used?}
-  \item{fixed}{logical.  If \code{TRUE}, \code{pattern} is a string to be
+\item{...}{
+  Arguments passed on to \code{\link[=expect_match]{expect_match}}
+  \describe{
+    \item{\code{perl}}{logical.  Should Perl-compatible regexps be used?}
+    \item{\code{fixed}}{logical.  If \code{TRUE}, \code{pattern} is a string to be
     matched as is.  Overrides all conflicting arguments.}
-}}
+  }}
 
 \item{all}{Do messages/warnings need to match the \code{regexp} (\code{TRUE}), or
 does only one need to match (\code{FALSE})?}
@@ -96,13 +107,17 @@ expect_warning(f(-1), "NEGATIVE", ignore.case = TRUE)
 
 }
 \seealso{
-Other expectations: \code{\link{comparison-expectations}},
-  \code{\link{equality-expectations}},
-  \code{\link{expect_error}}, \code{\link{expect_length}},
-  \code{\link{expect_match}}, \code{\link{expect_named}},
-  \code{\link{expect_null}}, \code{\link{expect_output}},
-  \code{\link{expect_silent}},
-  \code{\link{inheritance-expectations}},
-  \code{\link{logical-expectations}}
+Other expectations: 
+\code{\link{comparison-expectations}},
+\code{\link{equality-expectations}},
+\code{\link{expect_error}()},
+\code{\link{expect_length}()},
+\code{\link{expect_match}()},
+\code{\link{expect_named}()},
+\code{\link{expect_null}()},
+\code{\link{expect_output}()},
+\code{\link{expect_silent}()},
+\code{\link{inheritance-expectations}},
+\code{\link{logical-expectations}}
 }
 \concept{expectations}

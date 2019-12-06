@@ -3,7 +3,7 @@ NULL
 
 #' Test reporter: interactive progress bar of errors.
 #'
-#' This reporter is a reimagining of [SummaryReporter] desgined to make the
+#' This reporter is a reimagining of [SummaryReporter] designed to make the
 #' most information available up front, while taking up less space overall. It
 #' is the default reporting reporter used by [test_dir()] and [test_file()].
 #'

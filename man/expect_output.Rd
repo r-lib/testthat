@@ -4,8 +4,14 @@
 \alias{expect_output}
 \title{Expectation: does code print output to the console?}
 \usage{
-expect_output(object, regexp = NULL, ..., info = NULL, label = NULL,
-  width = 80)
+expect_output(
+  object,
+  regexp = NULL,
+  ...,
+  info = NULL,
+  label = NULL,
+  width = 80
+)
 }
 \arguments{
 \item{object}{Object to test.
@@ -21,14 +27,15 @@ but doesn't check for a specific value.
 \item If \code{NA}, asserts that there should be no output.
 }}
 
-\item{...}{Arguments passed on to \code{expect_match}
-\describe{
-  \item{all}{Should all elements of actual value match \code{regexp} (TRUE),
+\item{...}{
+  Arguments passed on to \code{\link[=expect_match]{expect_match}}
+  \describe{
+    \item{\code{all}}{Should all elements of actual value match \code{regexp} (TRUE),
 or does only one need to match (FALSE)}
-  \item{perl}{logical.  Should Perl-compatible regexps be used?}
-  \item{fixed}{logical.  If \code{TRUE}, \code{pattern} is a string to be
+    \item{\code{perl}}{logical.  Should Perl-compatible regexps be used?}
+    \item{\code{fixed}}{logical.  If \code{TRUE}, \code{pattern} is a string to be
     matched as is.  Overrides all conflicting arguments.}
-}}
+  }}
 
 \item{info}{Extra information to be included in the message. This argument
 is soft-deprecated and should not be used in new code. Instead see
@@ -57,13 +64,17 @@ expect_output(str(mtcars), "11 VARIABLES", ignore.case = TRUE)
 expect_output(str(mtcars), "$ mpg", fixed = TRUE)
 }
 \seealso{
-Other expectations: \code{\link{comparison-expectations}},
-  \code{\link{equality-expectations}},
-  \code{\link{expect_error}}, \code{\link{expect_length}},
-  \code{\link{expect_match}}, \code{\link{expect_message}},
-  \code{\link{expect_named}}, \code{\link{expect_null}},
-  \code{\link{expect_silent}},
-  \code{\link{inheritance-expectations}},
-  \code{\link{logical-expectations}}
+Other expectations: 
+\code{\link{comparison-expectations}},
+\code{\link{equality-expectations}},
+\code{\link{expect_error}()},
+\code{\link{expect_length}()},
+\code{\link{expect_match}()},
+\code{\link{expect_message}()},
+\code{\link{expect_named}()},
+\code{\link{expect_null}()},
+\code{\link{expect_silent}()},
+\code{\link{inheritance-expectations}},
+\code{\link{logical-expectations}}
 }
 \concept{expectations}

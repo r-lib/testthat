@@ -4,9 +4,15 @@
 \alias{test_file}
 \title{Run all tests in specified file}
 \usage{
-test_file(path, reporter = default_reporter(), env = test_env(),
-  start_end_reporter = TRUE, load_helpers = TRUE,
-  encoding = "unknown", wrap = TRUE)
+test_file(
+  path,
+  reporter = default_reporter(),
+  env = test_env(),
+  start_end_reporter = TRUE,
+  load_helpers = TRUE,
+  encoding = "unknown",
+  wrap = TRUE
+)
 }
 \arguments{
 \item{path}{Path to file.}
@@ -31,7 +37,7 @@ See \code{\link[=source_test_helpers]{source_test_helpers()}} for more details.}
 that all expectations are reported, even if outside a test block.}
 }
 \value{
-Invisibily, a list with one element for each test.
+Invisibly, a list with one element for each test.
 }
 \description{
 Execute code in the specified file, displaying results using a \code{reporter}.

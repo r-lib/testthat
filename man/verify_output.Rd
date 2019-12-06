@@ -4,15 +4,21 @@
 \alias{verify_output}
 \title{Verify output}
 \usage{
-verify_output(path, code, width = 80, crayon = FALSE,
-  unicode = FALSE, env = caller_env())
+verify_output(
+  path,
+  code,
+  width = 80,
+  crayon = FALSE,
+  unicode = FALSE,
+  env = caller_env()
+)
 }
 \arguments{
 \item{path}{Path to record results.
 
 This should usually be a call to \code{\link[=test_path]{test_path()}} to ensures that same path
 is used when run interactively (when the working directory is typically
-the project root), and when run as an autmated test (when the working
+the project root), and when run as an automated test (when the working
 directory will be \code{tests/testthat}).}
 
 \item{code}{Code to execute. This will usually be a multiline expression
@@ -30,7 +36,7 @@ test on your CI platforms that don't support UTF-8 (e.g. Windows).}
 }
 \description{
 This is a regression test that records interwoven code and output into a
-file, in a similar way to kniting an \code{.Rmd} (but see caveats below).
+file, in a similar way to knitting an \code{.Rmd} (but see caveats below).
 
 \code{verify_output()} designed particularly for testing print methods and error
 messages, where the primary goal is to ensure that the output is helpful to
@@ -40,15 +46,15 @@ easy to see in code reviews, and ensures that you don't change the output
 accidentally.
 
 \code{verify_output()} is designed to be used with git: to see what has changed
-from the previous run, you'll need to use \code{git diff} or similar.
+from the previous run, you'll need to use \verb{git diff} or similar.
 }
 \section{Syntax}{
 
 \code{verify_output()} can only capture the abstract syntax tree, losing all
-whitespace and comments. To mildy offset this limitation:
+whitespace and comments. To mildly offset this limitation:
 \itemize{
 \item Strings are converted to R comments in the output.
-\item Strings starting with \code{# } are converted to headers in the output.
+\item Strings starting with \verb{# } are converted to headers in the output.
 }
 }
 

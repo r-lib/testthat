@@ -2,7 +2,7 @@
 #'
 #' @description
 #' This is a regression test that records interwoven code and output into a
-#' file, in a similar way to kniting an `.Rmd` (but see caveats below).
+#' file, in a similar way to knitting an `.Rmd` (but see caveats below).
 #'
 #' `verify_output()` designed particularly for testing print methods and error
 #' messages, where the primary goal is to ensure that the output is helpful to
@@ -16,7 +16,7 @@
 #'
 #' @section Syntax:
 #' `verify_output()` can only capture the abstract syntax tree, losing all
-#' whitespace and comments. To mildy offset this limitation:
+#' whitespace and comments. To mildly offset this limitation:
 #'
 #' - Strings are converted to R comments in the output.
 #' - Strings starting with `# ` are converted to headers in the output.
@@ -32,7 +32,7 @@
 #'
 #'   This should usually be a call to [test_path()] to ensures that same path
 #'   is used when run interactively (when the working directory is typically
-#'   the project root), and when run as an autmated test (when the working
+#'   the project root), and when run as an automated test (when the working
 #'   directory will be `tests/testthat`).
 #' @param code Code to execute. This will usually be a multiline expression
 #'   contained within `{}` (similarly to `test_that()` calls).

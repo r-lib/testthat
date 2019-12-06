@@ -1,6 +1,6 @@
 #' Locate file in testing directory.
 #'
-#' This function is designed to work both interatively and during tests,
+#' This function is designed to work both interactively and during tests,
 #' locating files in the `tests/testthat` directory
 #'
 #' @param ... Character vectors giving path component.

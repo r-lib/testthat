@@ -7,7 +7,7 @@
 #' @param regexp Regular expression to test against.
 #'   * A character vector giving a regular expression that must match the
 #'     message/warning
-#'   * If `NULL`, the default, asserts that there should be a messsage/warning,
+#'   * If `NULL`, the default, asserts that there should be a message/warning,
 #'     but doesn't test for a specific value.
 #'   * If `NA`, asserts that there shouldn't be any messages or warnings.
 #' @inheritDotParams expect_match -object -regexp -info -label

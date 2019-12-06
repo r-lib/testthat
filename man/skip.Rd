@@ -59,7 +59,7 @@ skip_if_translated(msgid = "'\%s' not found")
 
 \item{msgid}{R message identifier used to check for translation: the default
 uses a message included in most translation packs. See the complete list in
-\href{https://github.com/wch/r-source/blob/master/src/library/base/po/R-base.pot}{R-base.pot}.}
+\href{https://github.com/wch/r-source/blob/master/src/library/base/po/R-base.pot}{\code{R-base.pot}}.}
 }
 \description{
 This function allows you to skip a test if it's not currently available.
@@ -67,10 +67,10 @@ This will produce an informative message, but will not cause the test
 suite to fail.
 }
 \details{
-\code{skip*} functions are intended for use within \code{\link[=test_that]{test_that()}}
+\verb{skip*} functions are intended for use within \code{\link[=test_that]{test_that()}}
 blocks.  All expectations following the \code{skip*} statement within the
 same \code{test_that} block will be skipped.  Test summaries that report skip
-counts are reporting how many \code{test_that} blocks triggered a \code{skip*}
+counts are reporting how many \code{test_that} blocks triggered a \verb{skip*}
 statement, not how many expectations were skipped.
 }
 \section{Helpers}{
