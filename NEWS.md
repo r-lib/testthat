@@ -9,6 +9,7 @@
 * Fixed issue where error and warning messages were not retrieved with
   `conditionMessage()` under certain circumstances.
 
+* Add `skip_on_gh_actions()` helper (#970) (@boshek, @njtieney).
 
 # testthat 2.3.0
 

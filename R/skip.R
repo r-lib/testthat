@@ -206,6 +206,17 @@ skip_on_bioc <- function() {
 }
 
 #' @export
+#' @rdname skip
+skip_on_gh_actions <- function() {
+  if (!identical(Sys.getenv("GITHUB_ACTIONS"), "true")) {
+    return(invisible(TRUE))
+  }
+  skip("On GitHub Actions")
+}
+
+
+
+#' @export
 #' @param msgid R message identifier used to check for translation: the default
 #'   uses a message included in most translation packs. See the complete list in
 #'   [`R-base.pot`](https://github.com/wch/r-source/blob/master/src/library/base/po/R-base.pot).
