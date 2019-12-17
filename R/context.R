@@ -1,6 +1,6 @@
 #' Describe the context of a set of tests.
 #'
-#' Use of `context()` is no longer recommend. Instead omit it, and messages
+#' Use of `context()` is no longer recommended. Instead omit it, and messages
 #' will use the name of the file instead. This ensures that the context and
 #' test file name are always in sync.
 #'
