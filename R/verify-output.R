@@ -90,7 +90,7 @@ verify_output <- function(path, code, width = 80, crayon = FALSE,
   ))
   withr::local_envvar(list(RSTUDIO_CONSOLE_WIDTH = width))
 
-  exprs <- lapply(exprs, function(x) if (is.character(x)) paste0("# ", x) else expr_deparse(x))
+  exprs <- lapply(exprs, function(x) if (is.character(x)) paste0("# ", x) else deparse(x))
   source <- unlist(exprs, recursive = FALSE)
 
   # Open temporary new device
