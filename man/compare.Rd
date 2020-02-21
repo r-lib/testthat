@@ -14,11 +14,24 @@ compare(x, y, ...)
 
 \method{compare}{default}(x, y, ..., max_diffs = 9)
 
-\method{compare}{character}(x, y, check.attributes = TRUE, ...,
-  max_diffs = 5, max_lines = 5, width = cli::console_width())
+\method{compare}{character}(
+  x,
+  y,
+  check.attributes = TRUE,
+  ...,
+  max_diffs = 5,
+  max_lines = 5,
+  width = cli::console_width()
+)
 
-\method{compare}{numeric}(x, y, tolerance = testthat_tolerance(),
-  check.attributes = TRUE, ..., max_diffs = 9)
+\method{compare}{numeric}(
+  x,
+  y,
+  tolerance = testthat_tolerance(),
+  check.attributes = TRUE,
+  ...,
+  max_diffs = 9
+)
 
 testthat_tolerance(x)
 

@@ -8,15 +8,37 @@
 \alias{testing_package}
 \title{Run all tests in directory or package}
 \usage{
-test_dir(path, filter = NULL, reporter = default_reporter(),
-  env = test_env(), ..., encoding = "unknown", load_helpers = TRUE,
-  stop_on_failure = FALSE, stop_on_warning = FALSE, wrap = TRUE)
+test_dir(
+  path,
+  filter = NULL,
+  reporter = default_reporter(),
+  env = test_env(),
+  ...,
+  encoding = "unknown",
+  load_helpers = TRUE,
+  stop_on_failure = FALSE,
+  stop_on_warning = FALSE,
+  wrap = TRUE
+)
 
-test_package(package, filter = NULL, reporter = check_reporter(), ...,
-  stop_on_failure = TRUE, stop_on_warning = FALSE)
+test_package(
+  package,
+  filter = NULL,
+  reporter = check_reporter(),
+  ...,
+  stop_on_failure = TRUE,
+  stop_on_warning = FALSE
+)
 
-test_check(package, filter = NULL, reporter = check_reporter(), ...,
-  stop_on_failure = TRUE, stop_on_warning = FALSE, wrap = TRUE)
+test_check(
+  package,
+  filter = NULL,
+  reporter = check_reporter(),
+  ...,
+  stop_on_failure = TRUE,
+  stop_on_warning = FALSE,
+  wrap = TRUE
+)
 
 is_testing()
 
@@ -65,7 +87,7 @@ A list of test results.
 \description{
 Use \code{test_dir()} for a collection of tests in a directory; use
 \code{test_package()} interactively at the console, and \code{test_check()}
-inside of \code{R CMD check}.
+inside of \verb{R CMD check}.
 
 In your own code, you can use \code{is_testing()} to determine if code is being
 run as part of a test and \code{testing_package()} to retrieve the name of the
@@ -97,9 +119,9 @@ package's namespace environment, so that tests can access internal functions
 and objects.
 }
 
-\section{\code{R CMD check}}{
+\section{\verb{R CMD check}}{
 
-To run testthat automatically from \code{R CMD check}, make sure you have
+To run testthat automatically from \verb{R CMD check}, make sure you have
 a \code{tests/testthat.R} that contains:\preformatted{library(testthat)
 library(yourpackage)
 

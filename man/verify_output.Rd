@@ -4,8 +4,14 @@
 \alias{verify_output}
 \title{Verify output}
 \usage{
-verify_output(path, code, width = 80, crayon = FALSE,
-  unicode = FALSE, env = caller_env())
+verify_output(
+  path,
+  code,
+  width = 80,
+  crayon = FALSE,
+  unicode = FALSE,
+  env = caller_env()
+)
 }
 \arguments{
 \item{path}{Path to record results.
@@ -40,7 +46,7 @@ easy to see in code reviews, and ensures that you don't change the output
 accidentally.
 
 \code{verify_output()} is designed to be used with git: to see what has changed
-from the previous run, you'll need to use \code{git diff} or similar.
+from the previous run, you'll need to use \verb{git diff} or similar.
 }
 \section{Syntax}{
 
@@ -48,7 +54,7 @@ from the previous run, you'll need to use \code{git diff} or similar.
 whitespace and comments. To mildy offset this limitation:
 \itemize{
 \item Strings are converted to R comments in the output.
-\item Strings starting with \code{# } are converted to headers in the output.
+\item Strings starting with \verb{# } are converted to headers in the output.
 }
 }
 

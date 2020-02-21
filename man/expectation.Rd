@@ -9,8 +9,14 @@
 \usage{
 expectation(type, message, srcref = NULL, trace = NULL)
 
-new_expectation(type, message, ..., srcref = NULL, trace = NULL,
-  .subclass = NULL)
+new_expectation(
+  type,
+  message,
+  ...,
+  srcref = NULL,
+  trace = NULL,
+  .subclass = NULL
+)
 
 exp_signal(exp)
 

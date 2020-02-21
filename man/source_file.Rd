@@ -8,11 +8,21 @@
 \alias{source_test_teardown}
 \title{Source a file, directory of files, or various important subsets}
 \usage{
-source_file(path, env = test_env(), chdir = TRUE,
-  encoding = "unknown", wrap = TRUE)
+source_file(
+  path,
+  env = test_env(),
+  chdir = TRUE,
+  encoding = "unknown",
+  wrap = TRUE
+)
 
-source_dir(path, pattern = "\\\\.[rR]$", env = test_env(),
-  chdir = TRUE, wrap = TRUE)
+source_dir(
+  path,
+  pattern = "\\\\.[rR]$",
+  env = test_env(),
+  chdir = TRUE,
+  wrap = TRUE
+)
 
 source_test_helpers(path = "tests/testthat", env = test_env())
 

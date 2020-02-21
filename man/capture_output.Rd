@@ -30,13 +30,13 @@ similar to \code{\link[=capture.output]{capture.output()}}.
 }
 \examples{
 capture_output({
-  cat("Hi!\\n")
-  cat("Bye\\n")
+  cat("Hi!\n")
+  cat("Bye\n")
 })
 
 capture_output_lines({
-  cat("Hi!\\n")
-  cat("Bye\\n")
+  cat("Hi!\n")
+  cat("Bye\n")
 })
 
 capture_output("Hi")

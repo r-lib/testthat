@@ -24,7 +24,7 @@ unit tests,
 showcases how you might use Catch to write a unit test,
 \item Add a test file \code{tests/testthat/test-cpp.R}, which ensures that
 \code{testthat} will run your compiled tests during invocations of
-\code{devtools::test()} or \code{R CMD check}, and
+\code{devtools::test()} or \verb{R CMD check}, and
 \item Create a file \code{R/catch-routine-registration.R}, which ensures that
 \R will automatically register this routine when
 \code{tools::package_native_routine_registration_skeleton()} is invoked.
