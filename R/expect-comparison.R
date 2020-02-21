@@ -1,6 +1,5 @@
 #' Expectation: is returned value less or greater than specified value?
 #'
-#' @inheritParams expect_that
 #' @inheritParams expect_equal
 #' @param expected Single numeric value to compare.
 #' @family expectations
@@ -80,17 +79,21 @@ expect_gte <- function(object, expected, label = NULL, expected.label = NULL) {
 
 # Wordy names -------------------------------------------------------------
 
+#' Deprecated numeric comparison functions
+#'
+#' These functions have been deprecated in favour of the more concise
+#' [expect_gt()] and [expect_lt()].
+#'
 #' @export
-#' @rdname comparison-expectations
-#' @usage NULL
+#' @param ... All arguments passed on to `expect_lt()`/`expect_gt()`.
+#' @keywords internal
 expect_less_than <- function(...) {
   warning("Deprecated: please use `expect_lt()` instead", call. = FALSE)
   expect_lt(...)
 }
 
+#' @rdname expect_less_than
 #' @export
-#' @rdname comparison-expectations
-#' @usage NULL
 expect_more_than <- function(...) {
   warning("Deprecated: please use `expect_gt()` instead", call. = FALSE)
   expect_gt(...)
