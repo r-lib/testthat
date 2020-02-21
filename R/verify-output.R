@@ -88,7 +88,10 @@ verify_output <- function(path, code, width = 80, crayon = FALSE,
     crayon.enabled = crayon,
     cli.unicode = unicode
   ))
-  withr::local_envvar(list(RSTUDIO_CONSOLE_WIDTH = width))
+  withr::local_envvar(list(
+    RSTUDIO = 0,
+    RSTUDIO_CONSOLE_WIDTH = width
+  ))
 
   exprs <- lapply(exprs, function(x) if (is.character(x)) paste0("# ", x) else expr_deparse(x))
   source <- unlist(exprs, recursive = FALSE)
