@@ -15,7 +15,7 @@
 #' @inheritParams expect_that
 #' @family expectations
 #' @examples
-#' x <- data.frame(x = 1:10, y = "x")
+#' x <- data.frame(x = 1:10, y = "x", stringsAsFactors = TRUE)
 #' # A data frame is an S3 object with class data.frame
 #' expect_s3_class(x, "data.frame")
 #' show_failure(expect_s4_class(x, "data.frame"))
@@ -27,7 +27,7 @@
 #' # It is not an S3 object
 #' show_failure(expect_s3_class(x$x, "integer"))
 #'
-#' # By default data.frame() converts characters to factors:
+#' # Above, we requested data.frame() converts strings to factors:
 #' show_failure(expect_type(x$y, "character"))
 #' expect_s3_class(x$y, "factor")
 #' expect_type(x$y, "integer")
