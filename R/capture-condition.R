@@ -26,7 +26,7 @@ new_capture <- function(class) {
   new_function(formals, body, ns_env("testthat"))
 }
 
-#' Capture conditions, including messeages, warnings, expectations, and errors.
+#' Capture conditions, including messages, warnings, expectations, and errors.
 #'
 #' These functions allow you to capture the side-effects of a function call
 #' including printed output, messages and warnings. They are used to evaluate

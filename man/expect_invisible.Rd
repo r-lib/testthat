@@ -3,7 +3,7 @@
 \name{expect_invisible}
 \alias{expect_invisible}
 \alias{expect_visible}
-\title{Expectation: does expression return visibily or invisibly?}
+\title{Expectation: does expression return visibly or invisibly?}
 \usage{
 expect_invisible(call, label = NULL)
 

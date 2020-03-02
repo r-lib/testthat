@@ -1,7 +1,7 @@
 #' Expectation: does object have names?
 #'
 #' You can either check for the presence of names (leaving `expected`
-#' blank), specific names (by suppling a vector of names), or absence of
+#' blank), specific names (by supplying a vector of names), or absence of
 #' names (with `NULL`).
 #'
 #' @inheritParams expect_that

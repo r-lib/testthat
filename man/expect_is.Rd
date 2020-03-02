@@ -16,7 +16,7 @@ within a function or for loop. See \link{quasi_label} for more details.}
 }
 \description{
 \code{expect_is()} is an older form that uses \code{\link[=inherits]{inherits()}} without checking
-whether \code{x} is S3, S4, or neither. Intead, I'd recommend using
+whether \code{x} is S3, S4, or neither. Instead, I'd recommend using
 \code{\link[=expect_type]{expect_type()}}, \code{\link[=expect_s3_class]{expect_s3_class()}} or \code{\link[=expect_s4_class]{expect_s4_class()}} to more clearly
 convey your  intent.
 }

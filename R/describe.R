@@ -8,12 +8,12 @@
 #' Tests using the `describe` syntax not only verify the tested code, but
 #' also document its intended behaviour. Each `describe` block specifies a
 #' larger component or function and contains a set of specifications. A
-#' specification is definied by an `it` block. Each `it` block
+#' specification is defined by an `it` block. Each `it` block
 #' functions as a test and is evaluated in its own environment. You
 #' can also have nested `describe` blocks.
 #'
 #'
-#' This test syntax helps to test the intented behaviour of your code. For
+#' This test syntax helps to test the intended behaviour of your code. For
 #' example: you want to write a new function for your package. Try to describe
 #' the specification first using `describe`, before your write any code.
 #' After that, you start to implement the tests for each specification (i.e.

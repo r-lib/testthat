@@ -98,7 +98,7 @@ find_test_scripts <- function(path, filter = NULL, invert = FALSE, ...) {
 #' @param encoding Deprecated. All files now assumed to be UTF-8.
 #' @inheritParams with_reporter
 #' @inheritParams source_file
-#' @return Invisibily, a list with one element for each test.
+#' @return Invisibly, a list with one element for each test.
 #' @export
 #' @examples
 #' path <- testthat_example("success")

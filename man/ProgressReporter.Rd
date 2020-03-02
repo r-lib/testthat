@@ -4,7 +4,7 @@
 \alias{ProgressReporter}
 \title{Test reporter: interactive progress bar of errors.}
 \description{
-This reporter is a reimagining of \link{SummaryReporter} desgined to make the
+This reporter is a reimagining of \link{SummaryReporter} designed to make the
 most information available up front, while taking up less space overall. It
 is the default reporting reporter used by \code{\link[=test_dir]{test_dir()}} and \code{\link[=test_file]{test_file()}}.
 }

@@ -104,7 +104,7 @@ isS3 <- function(x) is.object(x) && !isS4(x)
 #' Expectation: does the object inherit from a given class?
 #'
 #' `expect_is()` is an older form that uses [inherits()] without checking
-#' whether `x` is S3, S4, or neither. Intead, I'd recommend using
+#' whether `x` is S3, S4, or neither. Instead, I'd recommend using
 #' [expect_type()], [expect_s3_class()] or [expect_s4_class()] to more clearly
 #' convey your  intent.
 #'

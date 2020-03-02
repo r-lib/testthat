@@ -37,7 +37,7 @@ See \code{\link[=source_test_helpers]{source_test_helpers()}} for more details.}
 that all expectations are reported, even if outside a test block.}
 }
 \value{
-Invisibily, a list with one element for each test.
+Invisibly, a list with one element for each test.
 }
 \description{
 Execute code in the specified file, displaying results using a \code{reporter}.

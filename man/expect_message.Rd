@@ -33,7 +33,7 @@ within a function or for loop. See \link{quasi_label} for more details.}
 \itemize{
 \item A character vector giving a regular expression that must match the
 message/warning
-\item If \code{NULL}, the default, asserts that there should be a messsage/warning,
+\item If \code{NULL}, the default, asserts that there should be a message/warning,
 but doesn't test for a specific value.
 \item If \code{NA}, asserts that there shouldn't be any messages or warnings.
 }}

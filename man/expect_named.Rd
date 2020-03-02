@@ -36,7 +36,7 @@ alternatives in \link{quasi_label}.}
 }
 \description{
 You can either check for the presence of names (leaving \code{expected}
-blank), specific names (by suppling a vector of names), or absence of
+blank), specific names (by supplying a vector of names), or absence of
 names (with \code{NULL}).
 }
 \examples{

@@ -58,7 +58,7 @@ are not available, in which case the test is skipped.}
 }
 \description{
 \code{compare} is similar to \code{\link[base:all.equal]{base::all.equal()}}, but shows
-you examples of where the failures occured.
+you examples of where the failures occurred.
 }
 \examples{
 # Character -----------------------------------------------------------------

@@ -8,7 +8,7 @@
 \alias{capture_warning}
 \alias{capture_messages}
 \alias{capture_warnings}
-\title{Capture conditions, including messeages, warnings, expectations, and errors.}
+\title{Capture conditions, including messages, warnings, expectations, and errors.}
 \usage{
 capture_condition(code, entrace = FALSE)
 
