@@ -11,7 +11,6 @@
 #'   ignore the effect of order.
 #' @param ignore.case If `TRUE`, lowercases all names to ignore the
 #'   effect of case.
-#' @param ... Other arguments passed on to [has_names()].
 #' @family expectations
 #' @export
 #' @examples

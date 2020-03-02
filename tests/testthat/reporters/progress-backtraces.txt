@@ -1,4 +1,4 @@
-✔ |  OK F W S | Context
+✓ |  OK F W S | Context
 
 ⠏ |   0       | Backtraces
 ⠋ |   0 1     | Backtraces
@@ -8,7 +8,7 @@
 ⠼ |   0 5     | Backtraces
 ⠴ |   0 6     | Backtraces
 ⠦ |   0 7     | Backtraces
-✖ |   0 7     | Backtraces
+x |   0 7     | Backtraces
 ────────────────────────────────────────────────────────────────────────────────
 backtraces.R:6: error: errors thrown at block level are entraced
 foo

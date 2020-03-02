@@ -8,7 +8,6 @@ NULL
 #' use `with_reporter()` to temporarily change, then reset, the active reporter.
 #'
 #'
-#' @inheritParams test_file
 #' @param reporter Reporter to use to summarise output. Can be supplied
 #'   as a string (e.g. "summary") or as an R6 object
 #'   (e.g. `SummaryReporter$new()`).

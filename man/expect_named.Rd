@@ -33,8 +33,6 @@ is soft-deprecated and should not be used in new code. Instead see
 alternatives in \link{quasi_label}.}
 
 \item{label}{Used to customise failure messages. For expert use only.}
-
-\item{...}{Other arguments passed on to \code{\link[=has_names]{has_names()}}.}
 }
 \description{
 You can either check for the presence of names (leaving \code{expected}
