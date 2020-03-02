@@ -10,7 +10,7 @@ context(desc)
 \item{desc}{description of context.  Should start with a capital letter.}
 }
 \description{
-Use of \code{context()} is no longer recommend. Instead omit it, and messages
+Use of \code{context()} is no longer recommended. Instead omit it, and messages
 will use the name of the file instead. This ensures that the context and
 test file name are always in sync.
 }
