@@ -4,8 +4,14 @@
 \alias{expect_named}
 \title{Expectation: does object have names?}
 \usage{
-expect_named(object, expected, ignore.order = FALSE,
-  ignore.case = FALSE, info = NULL, label = NULL)
+expect_named(
+  object,
+  expected,
+  ignore.order = FALSE,
+  ignore.case = FALSE,
+  info = NULL,
+  label = NULL
+)
 }
 \arguments{
 \item{object}{Object to test.
@@ -27,8 +33,6 @@ is soft-deprecated and should not be used in new code. Instead see
 alternatives in \link{quasi_label}.}
 
 \item{label}{Used to customise failure messages. For expert use only.}
-
-\item{...}{Other arguments passed on to \code{\link[=has_names]{has_names()}}.}
 }
 \description{
 You can either check for the presence of names (leaving \code{expected}
@@ -48,13 +52,17 @@ z <- 1:4
 expect_named(z, NULL)
 }
 \seealso{
-Other expectations: \code{\link{comparison-expectations}},
-  \code{\link{equality-expectations}},
-  \code{\link{expect_error}}, \code{\link{expect_length}},
-  \code{\link{expect_match}}, \code{\link{expect_message}},
-  \code{\link{expect_null}}, \code{\link{expect_output}},
-  \code{\link{expect_silent}},
-  \code{\link{inheritance-expectations}},
-  \code{\link{logical-expectations}}
+Other expectations: 
+\code{\link{comparison-expectations}},
+\code{\link{equality-expectations}},
+\code{\link{expect_error}()},
+\code{\link{expect_length}()},
+\code{\link{expect_match}()},
+\code{\link{expect_message}()},
+\code{\link{expect_null}()},
+\code{\link{expect_output}()},
+\code{\link{expect_silent}()},
+\code{\link{inheritance-expectations}},
+\code{\link{logical-expectations}}
 }
 \concept{expectations}

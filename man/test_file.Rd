@@ -4,9 +4,15 @@
 \alias{test_file}
 \title{Run all tests in specified file}
 \usage{
-test_file(path, reporter = default_reporter(), env = test_env(),
-  start_end_reporter = TRUE, load_helpers = TRUE,
-  encoding = "unknown", wrap = TRUE)
+test_file(
+  path,
+  reporter = default_reporter(),
+  env = test_env(),
+  start_end_reporter = TRUE,
+  load_helpers = TRUE,
+  encoding = "unknown",
+  wrap = TRUE
+)
 }
 \arguments{
 \item{path}{Path to file.}

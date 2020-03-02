@@ -1,6 +1,6 @@
 Package: testthat
 Title: Unit Testing for R
-Version: 2.3.1
+Version: 2.3.2.9000
 Authors@R: c(
     person("Hadley", "Wickham", , "hadley@rstudio.com", c("aut", "cre")),
     person("RStudio", role = c("cph", "fnd")),
@@ -39,8 +39,8 @@ Suggests:
     xml2
 VignetteBuilder: knitr
 Encoding: UTF-8
-Roxygen: list(markdown = TRUE)
-RoxygenNote: 6.1.1
+Roxygen: list(markdown = TRUE, r6 = FALSE)
+RoxygenNote: 7.0.2
 Collate: 
     'auto-test.R'
     'capture-condition.R'

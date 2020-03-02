@@ -5,11 +5,23 @@
 \alias{expect_condition}
 \title{Expectation: does code throw error or other condition?}
 \usage{
-expect_error(object, regexp = NULL, class = NULL, ..., info = NULL,
-  label = NULL)
+expect_error(
+  object,
+  regexp = NULL,
+  class = NULL,
+  ...,
+  info = NULL,
+  label = NULL
+)
 
-expect_condition(object, regexp = NULL, class = NULL, ...,
-  info = NULL, label = NULL)
+expect_condition(
+  object,
+  regexp = NULL,
+  class = NULL,
+  ...,
+  info = NULL,
+  label = NULL
+)
 }
 \arguments{
 \item{object}{Object to test.
@@ -29,14 +41,15 @@ but doesn't test for a specific value.
 \item{class}{Instead of supplying a regular expression, you can also supply
 a class name. This is useful for "classed" conditions.}
 
-\item{...}{Arguments passed on to \code{expect_match}
-\describe{
-  \item{all}{Should all elements of actual value match \code{regexp} (TRUE),
+\item{...}{
+  Arguments passed on to \code{\link[=expect_match]{expect_match}}
+  \describe{
+    \item{\code{all}}{Should all elements of actual value match \code{regexp} (TRUE),
 or does only one need to match (FALSE)}
-  \item{perl}{logical.  Should Perl-compatible regexps be used?}
-  \item{fixed}{logical.  If \code{TRUE}, \code{pattern} is a string to be
+    \item{\code{perl}}{logical.  Should Perl-compatible regexps be used?}
+    \item{\code{fixed}}{logical.  If \code{TRUE}, \code{pattern} is a string to be
     matched as is.  Overrides all conflicting arguments.}
-}}
+  }}
 
 \item{info}{Extra information to be included in the message. This argument
 is soft-deprecated and should not be used in new code. Instead see
@@ -97,13 +110,17 @@ err <- expect_error(custom_err("a"), class = "testthat_special")
 expect_equal(err$var, "a")
 }
 \seealso{
-Other expectations: \code{\link{comparison-expectations}},
-  \code{\link{equality-expectations}},
-  \code{\link{expect_length}}, \code{\link{expect_match}},
-  \code{\link{expect_message}}, \code{\link{expect_named}},
-  \code{\link{expect_null}}, \code{\link{expect_output}},
-  \code{\link{expect_silent}},
-  \code{\link{inheritance-expectations}},
-  \code{\link{logical-expectations}}
+Other expectations: 
+\code{\link{comparison-expectations}},
+\code{\link{equality-expectations}},
+\code{\link{expect_length}()},
+\code{\link{expect_match}()},
+\code{\link{expect_message}()},
+\code{\link{expect_named}()},
+\code{\link{expect_null}()},
+\code{\link{expect_output}()},
+\code{\link{expect_silent}()},
+\code{\link{inheritance-expectations}},
+\code{\link{logical-expectations}}
 }
 \concept{expectations}

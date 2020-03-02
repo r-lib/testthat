@@ -4,8 +4,13 @@
 \alias{auto_test}
 \title{Watches code and tests for changes, rerunning tests as appropriate.}
 \usage{
-auto_test(code_path, test_path, reporter = default_reporter(),
-  env = test_env(), hash = TRUE)
+auto_test(
+  code_path,
+  test_path,
+  reporter = default_reporter(),
+  env = test_env(),
+  hash = TRUE
+)
 }
 \arguments{
 \item{code_path}{path to directory containing code}

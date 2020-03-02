@@ -6,8 +6,6 @@
 \alias{expect_lte}
 \alias{expect_gt}
 \alias{expect_gte}
-\alias{expect_less_than}
-\alias{expect_more_than}
 \title{Expectation: is returned value less or greater than specified value?}
 \usage{
 expect_lt(object, expected, label = NULL, expected.label = NULL)
@@ -19,21 +17,19 @@ expect_gt(object, expected, label = NULL, expected.label = NULL)
 expect_gte(object, expected, label = NULL, expected.label = NULL)
 }
 \arguments{
-\item{object}{Object to test.
+\item{object}{Computation and value to compare it to.
 
-Supports limited unquoting to make it easier to generate readable failures
-within a function or for loop. See \link{quasi_label} for more details.}
+Both arguments supports limited unquoting to make it easier to generate
+readable failures within a function or for loop. See \link{quasi_label} for
+more details.}
 
 \item{expected}{Single numeric value to compare.}
 
-\item{label}{Used to customise failure messages. For expert use only.}
+\item{label}{Used to customise failure messages. For expert
+use only.}
 
 \item{expected.label}{Used to customise failure messages. For expert
 use only.}
-
-\item{...}{For \code{expect_equal()} and \code{expect_equivalent()}, passed on
-\code{\link[=compare]{compare()}}, for \code{expect_identical()} passed on to \code{\link[=identical]{identical()}}.
-Used to control the details of the comparison.}
 }
 \description{
 Expectation: is returned value less or greater than specified value?
@@ -53,12 +49,17 @@ expect_gt(9, 10)
 }
 }
 \seealso{
-Other expectations: \code{\link{equality-expectations}},
-  \code{\link{expect_error}}, \code{\link{expect_length}},
-  \code{\link{expect_match}}, \code{\link{expect_message}},
-  \code{\link{expect_named}}, \code{\link{expect_null}},
-  \code{\link{expect_output}}, \code{\link{expect_silent}},
-  \code{\link{inheritance-expectations}},
-  \code{\link{logical-expectations}}
+Other expectations: 
+\code{\link{equality-expectations}},
+\code{\link{expect_error}()},
+\code{\link{expect_length}()},
+\code{\link{expect_match}()},
+\code{\link{expect_message}()},
+\code{\link{expect_named}()},
+\code{\link{expect_null}()},
+\code{\link{expect_output}()},
+\code{\link{expect_silent}()},
+\code{\link{inheritance-expectations}},
+\code{\link{logical-expectations}}
 }
 \concept{expectations}

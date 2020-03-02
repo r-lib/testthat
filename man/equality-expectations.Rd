@@ -8,17 +8,40 @@
 \alias{expect_reference}
 \title{Expectation: is the object equal to a value?}
 \usage{
-expect_equal(object, expected, ..., info = NULL, label = NULL,
-  expected.label = NULL)
+expect_equal(
+  object,
+  expected,
+  ...,
+  info = NULL,
+  label = NULL,
+  expected.label = NULL
+)
 
-expect_equivalent(object, expected, ..., info = NULL, label = NULL,
-  expected.label = NULL)
+expect_equivalent(
+  object,
+  expected,
+  ...,
+  info = NULL,
+  label = NULL,
+  expected.label = NULL
+)
 
-expect_identical(object, expected, info = NULL, label = NULL,
-  expected.label = NULL, ...)
+expect_identical(
+  object,
+  expected,
+  info = NULL,
+  label = NULL,
+  expected.label = NULL,
+  ...
+)
 
-expect_reference(object, expected, info = NULL, label = NULL,
-  expected.label = NULL)
+expect_reference(
+  object,
+  expected,
+  info = NULL,
+  label = NULL,
+  expected.label = NULL
+)
 }
 \arguments{
 \item{object, expected}{Computation and value to compare it to.
@@ -79,12 +102,17 @@ expect_equivalent(a, b)
 \seealso{
 \code{expect_setequal()} to test for set equality.
 
-Other expectations: \code{\link{comparison-expectations}},
-  \code{\link{expect_error}}, \code{\link{expect_length}},
-  \code{\link{expect_match}}, \code{\link{expect_message}},
-  \code{\link{expect_named}}, \code{\link{expect_null}},
-  \code{\link{expect_output}}, \code{\link{expect_silent}},
-  \code{\link{inheritance-expectations}},
-  \code{\link{logical-expectations}}
+Other expectations: 
+\code{\link{comparison-expectations}},
+\code{\link{expect_error}()},
+\code{\link{expect_length}()},
+\code{\link{expect_match}()},
+\code{\link{expect_message}()},
+\code{\link{expect_named}()},
+\code{\link{expect_null}()},
+\code{\link{expect_output}()},
+\code{\link{expect_silent}()},
+\code{\link{inheritance-expectations}},
+\code{\link{logical-expectations}}
 }
 \concept{expectations}

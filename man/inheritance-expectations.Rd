@@ -39,7 +39,7 @@ the vocabulary used here.
 }
 }
 \examples{
-x <- data.frame(x = 1:10, y = "x")
+x <- data.frame(x = 1:10, y = "x", stringsAsFactors = TRUE)
 # A data frame is an S3 object with class data.frame
 expect_s3_class(x, "data.frame")
 show_failure(expect_s4_class(x, "data.frame"))
@@ -51,18 +51,23 @@ expect_type(x$x, "integer")
 # It is not an S3 object
 show_failure(expect_s3_class(x$x, "integer"))
 
-# By default data.frame() converts characters to factors:
+# Above, we requested data.frame() converts strings to factors:
 show_failure(expect_type(x$y, "character"))
 expect_s3_class(x$y, "factor")
 expect_type(x$y, "integer")
 }
 \seealso{
-Other expectations: \code{\link{comparison-expectations}},
-  \code{\link{equality-expectations}},
-  \code{\link{expect_error}}, \code{\link{expect_length}},
-  \code{\link{expect_match}}, \code{\link{expect_message}},
-  \code{\link{expect_named}}, \code{\link{expect_null}},
-  \code{\link{expect_output}}, \code{\link{expect_silent}},
-  \code{\link{logical-expectations}}
+Other expectations: 
+\code{\link{comparison-expectations}},
+\code{\link{equality-expectations}},
+\code{\link{expect_error}()},
+\code{\link{expect_length}()},
+\code{\link{expect_match}()},
+\code{\link{expect_message}()},
+\code{\link{expect_named}()},
+\code{\link{expect_null}()},
+\code{\link{expect_output}()},
+\code{\link{expect_silent}()},
+\code{\link{logical-expectations}}
 }
 \concept{expectations}
