@@ -1,6 +1,6 @@
-
 # testthat (development version)
 
+* Fix R CMD check issues
 
 # testthat 2.3.1
 
@@ -11,7 +11,6 @@
 
 * Fixed issue where error and warning messages were not retrieved with
   `conditionMessage()` under certain circumstances.
-
 
 # testthat 2.3.0
 
