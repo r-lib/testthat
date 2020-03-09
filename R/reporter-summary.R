@@ -26,9 +26,9 @@ SummaryReporter <- R6::R6Class("SummaryReporter",
     show_praise = TRUE,
     omit_dots = FALSE,
 
-    initialize = function(show_praise = TRUE,
-                          omit_dots = getOption("testthat.summary.omit_dots"),
-                          max_reports = getOption("testthat.summary.max_reports", 10L),
+    initialize = function(show_praise = FALSE,
+                          omit_dots = getOption("testthat.summary.omit_dots", TRUE),
+                          max_reports = getOption("testthat.summary.max_reports", Inf),
                           ...) {
       super$initialize(...)
       self$failures <- Stack$new()
@@ -44,11 +44,15 @@ SummaryReporter <- R6::R6Class("SummaryReporter",
     },
 
     start_context = function(context) {
-      self$cat_tight(context, ": ")
+      if (!isTRUE(self$omit_dots)) {
+        self$cat_tight(context, ": ")
+      }
     },
 
     end_context = function(context) {
-      self$cat_line()
+      if (!isTRUE(self$omit_dots)) {
+        self$cat_line()
+      }
     },
 
     add_result = function(context, test, result) {
@@ -58,13 +62,11 @@ SummaryReporter <- R6::R6Class("SummaryReporter",
         self$skips$push(result)
       } else if (expectation_warning(result)) {
         self$warnings$push(result)
-      } else {
-        if (isTRUE(self$omit_dots)) {
-          return()
-        }
       }
 
-      self$cat_tight(private$get_summary(result))
+      if (!isTRUE(self$omit_dots)) {
+        self$cat_tight(private$get_summary(result))
+      }
     },
 
     end_reporter = function() {
