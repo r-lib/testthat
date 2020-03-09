@@ -127,7 +127,7 @@ JunitReporter <- R6::R6Class("JunitReporter",
       } else if (expectation_failure(result)) {
         # "type" in Java is the type of assertion that failed
         failure <- xml2::xml_add_child(testcase, "failure", type = "failure", message = first_line(result))
-        xml2::xml_text(failure) <- strip_style(format(result))
+        xml2::xml_text(failure) <- crayon::strip_style(format(result))
         self$failures <- self$failures + 1
       } else if (expectation_skip(result)) {
         xml2::xml_add_child(testcase, "skipped")
