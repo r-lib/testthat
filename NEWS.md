@@ -1,5 +1,7 @@
 # testthat (development version)
 
+* `SummaryReporter` by default doesn't show dots, praise, or the "DONE" line, and doesn't limit output. This makes it easier to compose with e.g. the `ProgressReporter` (#990).
+
 # testthat 2.3.2
 
 * Fix R CMD check issues
