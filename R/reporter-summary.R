@@ -87,7 +87,9 @@ SummaryReporter <- R6::R6Class("SummaryReporter",
         self$cat_line()
       }
 
-      self$rule("DONE", line = 2)
+      if (!isTRUE(self$omit_dots)) {
+        self$rule("DONE", line = 2)
+      }
       if (self$show_praise) {
         if (length(failures) == 0 && runif(1) < 0.1) {
           self$cat_line(colourise(praise(), "success"))
