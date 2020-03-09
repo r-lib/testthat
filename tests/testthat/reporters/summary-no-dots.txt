@@ -1,12 +1,3 @@
-Expectations: 1234
-Expectations2: 
-Errors: 56
-Recursion: 7
-Skips: SSS
-Warnings: WWW
-Output: 
-Throwable errors: 8
-End: 
 
 ══ Skipped ═════════════════════════════════════════════════════════════════════
 1. Skip:1 (@tests.R#62) - Reason: skip
@@ -75,4 +66,3 @@ Backtrace:
 ── 8. Error: Error:4 (@tests.R#111)  ───────────────────────────────────────────
 Throwable
 
-══ DONE ════════════════════════════════════════════════════════════════════════

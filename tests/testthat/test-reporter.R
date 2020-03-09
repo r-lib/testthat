@@ -19,7 +19,7 @@ test_that("reporters produce consistent output", {
   expect_report_unchanged("junit", reporter = JunitReporterMock)
   expect_report_unchanged("progress", ProgressReporter$new(show_praise = FALSE, min_time = Inf, update_interval = 0))
   expect_report_unchanged("summary", SummaryReporter$new(show_praise = FALSE, omit_dots = FALSE))
-  expect_report_unchanged("summary-2", SummaryReporter$new(show_praise = FALSE, max_reports = 2))
+  expect_report_unchanged("summary-2", SummaryReporter$new(show_praise = FALSE, max_reports = 2, omit_dots = FALSE))
   expect_report_unchanged("summary-no-dots", SummaryReporter$new(show_praise = FALSE, omit_dots = TRUE))
 
   # Test that MultiReporter can write to two different places
