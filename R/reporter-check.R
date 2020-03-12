@@ -79,15 +79,6 @@ CheckReporter <- R6::R6Class("CheckReporter",
   )
 )
 
-
-skip_summary <- function(x, label) {
-  header <- paste0(label, ". ", x$test)
-
-  paste0(
-    colourise(header, "skip"), src_loc(x$srcref), " - ", x$message
-  )
-}
-
 failure_summary <- function(x, label, width = cli::console_width()) {
   header <- paste0(label, ". ", failure_header(x))
 

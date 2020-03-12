@@ -242,7 +242,7 @@ spinner <- function(i) {
   frames[((i - 1) %% length(frames)) + 1]
 }
 
-issue_summary <- function(x) {
+issue_summary <- function(x, show_type = TRUE) {
   type <- expectation_type(x)
 
   if (is.null(x$srcref)) {
@@ -252,7 +252,11 @@ issue_summary <- function(x) {
     loc <- paste0(basename(filename), ":", x$srcref[1])
   }
 
-  header <- paste0(loc, ": ", colourise(type, type), ": ", x$test)
+  header <- paste0(
+    loc, ": ",
+    if (show_type) paste0(colourise(type, type), ": "),
+    x$test
+  )
 
   paste0(
     crayon::bold(header), "\n",

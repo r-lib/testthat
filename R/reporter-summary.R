@@ -75,9 +75,9 @@ SummaryReporter <- R6::R6Class("SummaryReporter",
       warnings <- self$warnings$as_list()
 
       self$cat_line()
-      private$cat_reports("Skipped", skips, Inf, skip_summary)
-      private$cat_reports("Warnings", warnings, Inf, skip_summary)
-      private$cat_reports("Failed", failures, self$max_reports, failure_summary)
+      private$cat_reports("Skipped", skips, Inf)
+      private$cat_reports("Warnings", warnings, Inf)
+      private$cat_reports("Failed", failures, self$max_reports)
 
       if (self$failures$size() >= self$max_reports) {
         self$cat_line(
@@ -112,7 +112,7 @@ SummaryReporter <- R6::R6Class("SummaryReporter",
       single_letter_summary(result)
     },
 
-    cat_reports = function(header, expectations, max_n, summary_fun,
+    cat_reports = function(header, expectations, max_n,
                            collapse = "\n\n") {
       n <- length(expectations)
       if (n == 0L) {
@@ -125,12 +125,7 @@ SummaryReporter <- R6::R6Class("SummaryReporter",
         expectations <- expectations[seq_len(max_n)]
       }
 
-      labels <- seq_along(expectations)
-      exp_summary <- function(i) {
-        summary_fun(expectations[[i]], labels[i])
-      }
-      report_summary <- vapply(seq_along(expectations), exp_summary, character(1))
-
+      report_summary <- vapply(expectations, issue_summary, show_type = TRUE, character(1))
       self$cat_tight(paste(report_summary, collapse = collapse))
       if (n > max_n) {
         self$cat_line()
