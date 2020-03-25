@@ -163,6 +163,14 @@ output_replay.error <- function(x) {
 }
 
 #' @export
+output_replay.rlang_error <- function(x) {
+  class <- format(cnd(class(x)))
+  msg <- cnd_message(x)
+  msg <- paste0("Error: ", msg)
+  c(class, split_lines(msg), "")
+}
+
+#' @export
 output_replay.warning <- function(x) {
   msg <- cnd_message(x)
   if (is.null(x$call)) {
