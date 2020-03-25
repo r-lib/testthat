@@ -164,7 +164,8 @@ output_replay.error <- function(x) {
 
 #' @export
 output_replay.rlang_error <- function(x) {
-  class <- format(cnd(class(x)))
+  class <- paste0("<", paste(class(x), collapse = "/"), ">")
+
   msg <- cnd_message(x)
   msg <- paste0("Error: ", msg)
   c(class, split_lines(msg), "")

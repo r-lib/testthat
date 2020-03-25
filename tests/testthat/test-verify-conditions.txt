@@ -23,5 +23,6 @@ Message: Dispatched! Message
 Warning: Dispatched! Warning
 
 > cnd_signal(error_cnd("foobar", message = "Error"))
+<foobar/rlang_error/error/condition>
 Error: Dispatched! Error
 
