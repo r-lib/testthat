@@ -27,7 +27,8 @@ Imports:
     praise,
     R6 (>= 2.2.0),
     rlang (>= 0.4.1),
-    withr (>= 2.0.0)
+    withr (>= 2.0.0),
+    waldo (>= 0.0.0.9000)
 Suggests: 
     covr,
     curl (>= 0.9.5),
@@ -111,3 +112,5 @@ Collate:
     'utils.R'
     'verify-output.R'
     'watcher.R'
+Remotes: 
+    r-lib/waldo

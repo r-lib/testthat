@@ -28,8 +28,8 @@ test_that("expect_equal and expect_equivalent pass on ... to compare", {
   x1 <- 1
   x2 <- x1 + 1e-6
 
-  expect_success(expect_equal(x1, x2, tol = 1e-5))
-  expect_success(expect_equivalent(x1, x2, tol = 1e-5))
+  expect_success(expect_equal(x1, x2, tolerance = 1e-5))
+  expect_success(expect_equivalent(x1, x2, tolerance = 1e-5))
 })
 
 test_that("useful message if objects equal but not identical", {
@@ -37,7 +37,7 @@ test_that("useful message if objects equal but not identical", {
   g <- function() x
   environment(g) <- globalenv()
 
-  expect_failure(expect_identical(f, g), "not identical")
+  expect_failure(expect_identical(f, g))
 })
 
 test_that("% is not treated as sprintf format specifier (#445)", {

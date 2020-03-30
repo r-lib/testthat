@@ -52,15 +52,17 @@ NULL
 #' @param ... For `expect_equal()` and `expect_equivalent()`, passed on
 #'   [compare()], for `expect_identical()` passed on to [identical()].
 #'   Used to control the details of the comparison.
-expect_equal <- function(object, expected, ..., info = NULL, label = NULL,
+expect_equal <- function(object, expected, ...,
+                         tolerance = testthat_tolerance(),
+                         info = NULL, label = NULL,
                          expected.label = NULL) {
   act <- quasi_label(enquo(object), label, arg = "object")
   exp <- quasi_label(enquo(expected), expected.label, arg = "expected")
 
-  comp <- compare(act$val, exp$val, ...)
+  comp <- waldo::compare(act$val, exp$val, ..., tolerance = tolerance)
   expect(
-    comp$equal,
-    sprintf("%s not equal to %s.\n%s", act$lab, exp$lab, comp$message),
+    length(comp) == 0,
+    sprintf("%s not equal to %s.\n%s", act$lab, exp$lab, comp),
     info = info
   )
 
@@ -74,10 +76,10 @@ expect_equivalent <- function(object, expected, ..., info = NULL, label = NULL,
   act <- quasi_label(enquo(object), label, arg = "object")
   exp <- quasi_label(enquo(expected), expected.label, arg = "expected")
 
-  comp <- compare(act$val, exp$val, ..., check.attributes = FALSE)
+  comp <- waldo::compare(act$val, exp$val, ..., ignore_attr = TRUE)
   expect(
-    comp$equal,
-    sprintf("%s not equivalent to %s.\n%s", act$lab, exp$lab, comp$message),
+    length(comp) == 0,
+    sprintf("%s not equal to %s.\n%s", act$lab, exp$lab, comp),
     info = info
   )
   invisible(act$val)
@@ -90,21 +92,10 @@ expect_identical <- function(object, expected, info = NULL, label = NULL,
   act <- quasi_label(enquo(object), label, arg = "object")
   exp <- quasi_label(enquo(expected), expected.label, arg = "expected")
 
-  ident <- identical(act$val, exp$val, ...)
-  if (ident) {
-    msg <- ""
-  } else {
-    compare <- compare(act$val, exp$val)
-    if (compare$equal) {
-      msg <- "Objects equal but not identical"
-    } else {
-      msg <- compare$message
-    }
-  }
-
+  comp <- waldo::compare(act$val, exp$val, ...)
   expect(
-    ident,
-    sprintf("%s not identical to %s.\n%s", act$lab, exp$lab, msg),
+    length(comp) == 0,
+    sprintf("%s not equal to %s.\n%s", act$lab, exp$lab, comp),
     info = info
   )
   invisible(act$val)

@@ -10,8 +10,7 @@ not ok 5 Failure:2b
   FALSE isn't true.
 not ok 6 Failure:loop
   `i` not equal to 2.
-  1/1 mismatches
-  [1] 1 - 2 == -1
+  `x`: 1/2
 ok 7 Failure:loop
 # Context Errors
 not ok 8 Error:1

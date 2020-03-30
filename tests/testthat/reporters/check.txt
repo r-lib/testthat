@@ -9,8 +9,7 @@ FALSE isn't true.
 
 ── 4. Failure: Failure:loop (@tests.R#24)  ─────────────────────────────────────
 `i` not equal to 2.
-1/1 mismatches
-[1] 1 - 2 == -1
+`x`: 1/2
 
 ── 5. Error: Error:1 (@tests.R#33)  ────────────────────────────────────────────
 stop
