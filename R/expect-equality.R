@@ -13,6 +13,8 @@
 #'   more details.
 #' @param label,expected.label Used to customise failure messages. For expert
 #'   use only.
+#' @param scale Deprecated. Passing `scale` down to `all.equal()` is no
+#'   longer supported.
 #' @seealso `expect_setequal()` to test for set equality.
 #' @inheritParams expect_that
 #' @family expectations
@@ -30,16 +32,6 @@
 #' expect_identical(sqrt(2) ^ 2, 2)
 #' }
 #'
-#' # You can pass on additional arguments to all.equal:
-#' \dontrun{
-#' # Test the ABSOLUTE difference is within .002
-#' expect_equal(10.01, 10, tolerance = .002, scale = 1)
-#' }
-#'
-#' # Test the RELATIVE difference is within .002
-#' x <- 10
-#' expect_equal(10.01, expected = x, tolerance = 0.002, scale = x)
-#'
 #' # expect_equivalent ignores attributes
 #' a <- b <- 1:3
 #' names(b) <- letters[1:3]
@@ -55,8 +47,14 @@ NULL
 #' @inheritParams waldo::compare
 expect_equal <- function(object, expected, ...,
                          tolerance = testthat_tolerance(),
+                         scale = "deprecated",
                          info = NULL, label = NULL,
                          expected.label = NULL) {
+
+  if (!missing(scale)) {
+    warn("`scale` is deprecated")
+  }
+
   act <- quasi_label(enquo(object), label, arg = "object")
   exp <- quasi_label(enquo(expected), expected.label, arg = "expected")
 

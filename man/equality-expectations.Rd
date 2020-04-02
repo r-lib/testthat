@@ -13,6 +13,7 @@ expect_equal(
   expected,
   ...,
   tolerance = testthat_tolerance(),
+  scale = "deprecated",
   info = NULL,
   label = NULL,
   expected.label = NULL
@@ -67,6 +68,9 @@ with differences. Then we check that
 \code{mean(abs(x_diff - y_diff))} if \code{y_diff} is small) is less than
 \code{tolerance}.}
 
+\item{scale}{Deprecated. Passing \code{scale} down to \code{all.equal()} is no
+longer supported.}
+
 \item{info}{Extra information to be included in the message. This argument
 is soft-deprecated and should not be used in new code. Instead see
 alternatives in \link{quasi_label}.}
@@ -96,16 +100,6 @@ expect_equal(sqrt(2) ^ 2, 2)
 expect_true(sqrt(2) ^ 2 == 2)
 expect_identical(sqrt(2) ^ 2, 2)
 }
-
-# You can pass on additional arguments to all.equal:
-\dontrun{
-# Test the ABSOLUTE difference is within .002
-expect_equal(10.01, 10, tolerance = .002, scale = 1)
-}
-
-# Test the RELATIVE difference is within .002
-x <- 10
-expect_equal(10.01, expected = x, tolerance = 0.002, scale = x)
 
 # expect_equivalent ignores attributes
 a <- b <- 1:3
