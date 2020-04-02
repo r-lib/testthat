@@ -60,14 +60,7 @@ expect_equal <- function(object, expected, ...,
   act <- quasi_label(enquo(object), label, arg = "object")
   exp <- quasi_label(enquo(expected), expected.label, arg = "expected")
 
-  comp <- waldo::compare(act$val, exp$val, ..., tolerance = tolerance)
-  expect(
-    length(comp) == 0,
-    sprintf("%s not equal to %s.\n%s", act$lab, exp$lab, comp),
-    info = info
-  )
-
-  invisible(act$val)
+  expect_waldo_equal(act, exp, info, ..., tolerance = tolerance)
 }
 
 #' @export
@@ -77,13 +70,7 @@ expect_equivalent <- function(object, expected, ..., info = NULL, label = NULL,
   act <- quasi_label(enquo(object), label, arg = "object")
   exp <- quasi_label(enquo(expected), expected.label, arg = "expected")
 
-  comp <- waldo::compare(act$val, exp$val, ..., ignore_attr = TRUE)
-  expect(
-    length(comp) == 0,
-    sprintf("%s not equal to %s.\n%s", act$lab, exp$lab, comp),
-    info = info
-  )
-  invisible(act$val)
+  expect_waldo_equal(act, exp, info, ..., ignore_attr = TRUE)
 }
 
 #' @export
@@ -93,12 +80,17 @@ expect_identical <- function(object, expected, info = NULL, label = NULL,
   act <- quasi_label(enquo(object), label, arg = "object")
   exp <- quasi_label(enquo(expected), expected.label, arg = "expected")
 
-  comp <- waldo::compare(act$val, exp$val, ...)
+  expect_waldo_equal(act, exp, info, ...)
+}
+
+expect_waldo_equal <- function(act, exp, info, ...) {
+  comp <- waldo::compare(act$val, exp$val, ..., x_arg = "actual")
   expect(
     length(comp) == 0,
-    sprintf("%s not equal to %s.\n%s", act$lab, exp$lab, comp),
+    sprintf("%s not equal to %s.\n%s", act$lab, exp$lab, paste0("* ", comp)),
     info = info
   )
+
   invisible(act$val)
 }
 

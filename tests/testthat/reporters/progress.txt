@@ -24,7 +24,7 @@ FALSE isn't true.
 
 tests.R:24: failure: Failure:loop
 `i` not equal to 2.
-`x`: 1/2
+* `actual`: 1/2
 ────────────────────────────────────────────────────────────────────────────────
 
 ⠏ |   0       | Expectations2

@@ -16,7 +16,7 @@
     </testcase>
     <testcase time="0" classname="Expectations" name="Failure_loop">
       <failure type="failure" message="`i` not equal to 2. (@tests.R#24)">`i` not equal to 2.
-`x`: 1/2</failure>
+* `actual`: 1/2</failure>
     </testcase>
     <testcase time="0" classname="Expectations" name="Failure_loop"/>
   </testsuite>
