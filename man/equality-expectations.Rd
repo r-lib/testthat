@@ -12,6 +12,7 @@ expect_equal(
   object,
   expected,
   ...,
+  tolerance = testthat_tolerance(),
   info = NULL,
   label = NULL,
   expected.label = NULL
@@ -53,6 +54,18 @@ more details.}
 \item{...}{For \code{expect_equal()} and \code{expect_equivalent()}, passed on
 \code{\link[=compare]{compare()}}, for \code{expect_identical()} passed on to \code{\link[=identical]{identical()}}.
 Used to control the details of the comparison.}
+
+\item{tolerance}{If non-\code{NULL}, used as threshold for ignoring small
+floating point difference when comparing numeric vectors. Setting to
+any non-\code{NULL} value will cause integer and double vectors to be compared
+based on their values, rather than their types.
+
+It uses the same algorithm as \code{\link[=all.equal]{all.equal()}}, i.e., first we generate
+\code{x_diff} and \code{y_diff} by subsetting \code{x} and \code{y} to look only locations
+with differences. Then we check that
+\code{mean(abs(x_diff - y_diff)) / mean(y_diff)} (or just
+\code{mean(abs(x_diff - y_diff))} if \code{y_diff} is small) is less than
+\code{tolerance}.}
 
 \item{info}{Extra information to be included in the message. This argument
 is soft-deprecated and should not be used in new code. Instead see

@@ -41,7 +41,7 @@ Suggests:
 VignetteBuilder: knitr
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE, r6 = FALSE)
-RoxygenNote: 7.0.2
+RoxygenNote: 7.1.0
 Collate: 
     'auto-test.R'
     'capture-condition.R'
