@@ -16,7 +16,8 @@ void ouch() {
 context("Example Unit Test") {
 
   test_that("4 + 4 == 8") {
-    expect_true((4 + 4) == 8);
+    expect_true((4 + 4) == 6);
+    expect_true((4 + 4) == 7);
   }
 }
 
