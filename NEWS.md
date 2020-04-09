@@ -6,6 +6,7 @@
   informative output when the actual and expected values are different, but
   it is likely there are also minor differences in the comparison - please
   let me know if you encounter these (#447).
+* Catch C++ tests now provide detailed results for each succeeded or failed test (#1008)
 
 # testthat 2.3.2
 
