@@ -27,11 +27,12 @@ expect_cpp_tests_pass <- function(package) {
   )
 
   report <- xml2::read_xml(paste(output, collapse = "\n"))
+  xml2::write_xml(report, "test.xml")
 
   contexts <- xml2::xml_find_all(report, "//TestCase")
 
   for (context in contexts) {
-    context_name <- sub("[|][^|]+$", "", xml2::xml_attr(context, "name"))
+    context_name <- sub(" [|][^|]+$", "", xml2::xml_attr(context, "name"))
 
     get_reporter()$start_context(context = context_name)
 
@@ -43,8 +44,11 @@ expect_cpp_tests_pass <- function(package) {
       successes <- as.integer(xml2::xml_attr(result, "successes"))
 
       get_reporter()$start_test(context = context_name, test = test_name)
+
       for (i in seq_len(successes)) {
-        get_reporter()$add_result(context = context_name, test = test_name, result = expectation("success", TRUE, ""))
+        exp <- expectation("success", "")
+        exp$test <- test_name
+        get_reporter()$add_result(context = context_name, test = test_name, result = exp)
       }
 
       failures <- xml2::xml_find_all(test, "./Expression")
@@ -57,8 +61,26 @@ expect_cpp_tests_pass <- function(package) {
         line <- xml2::xml_attr(failure, "line")
         failure_srcref <- srcref(srcfile(file.path("src", filename)), c(line, line, 1, 1))
 
-        get_reporter()$add_result(context = context_name, test = test_name, result = expectation("failure", org_text, srcref = failure_srcref))
+        exp <- expectation("failure", org_text, srcref = failure_srcref)
+        exp$test <- test_name
+
+        get_reporter()$add_result(context = context_name, test = test_name, result = exp)
       }
+
+      exceptions <- xml2::xml_find_all(test, "./Exception")
+      for (exception in exceptions) {
+        exception_text <- xml2::xml_text(exception, trim = TRUE)
+        filename <- xml2::xml_attr(exception, "filename")
+        line <- xml2::xml_attr(exception, "line")
+
+        exception_srcref <- srcref(srcfile(file.path("src", filename)), c(line, line, 1, 1))
+
+        exp <- expectation("error", exception_text, srcref = exception_srcref)
+        exp$test <- test_name
+
+        get_reporter()$add_result(context = context_name, test = test_name, result = exp)
+      }
+
       get_reporter()$end_test(context = context_name, test = test_name)
     }
 

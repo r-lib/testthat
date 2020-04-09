@@ -1,5 +1,7 @@
 # testthat (development version)
 
+* Catch C++ tests now provide detailed results for each succeeded or failed test (#1008)
+
 # testthat 2.3.2
 
 * Fix R CMD check issues
