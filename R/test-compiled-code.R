@@ -9,6 +9,11 @@
 #' @keywords internal
 #' @export
 expect_cpp_tests_pass <- function(package) {
+
+  if (!is_installed("xml2")) {
+    stop("Please install the `xml2` package", call. = FALSE)
+  }
+
   run_testthat_tests <- get_routine(package, "run_testthat_tests")
 
   output <- ""
@@ -21,10 +26,44 @@ expect_cpp_tests_pass <- function(package) {
     }
   )
 
-  # Drop first line of output (it's jut a '####' delimiter)
-  info <- paste(output[-1], collapse = "\n")
+  report <- xml2::read_xml(paste(output, collapse = "\n"))
 
-  expect(tests_passed, paste("C++ unit tests:", info, sep = "\n"))
+  contexts <- xml2::xml_find_all(report, "//TestCase")
+
+  for (context in contexts) {
+    context_name <- sub("[|][^|]+$", "", xml2::xml_attr(context, "name"))
+
+    get_reporter()$start_context(context = context_name)
+
+    tests <- xml2::xml_find_all(context, "./Section")
+    for (test in tests) {
+      test_name <- xml2::xml_attr(test, "name")
+
+      result <- xml2::xml_find_first(test, "./OverallResults")
+      successes <- as.integer(xml2::xml_attr(result, "successes"))
+
+      get_reporter()$start_test(context = context_name, test = test_name)
+      for (i in seq_len(successes)) {
+        get_reporter()$add_result(context = context_name, test = test_name, result = expectation("success", TRUE, ""))
+      }
+
+      failures <- xml2::xml_find_all(test, "./Expression")
+      for (failure in failures) {
+        org <- xml2::xml_find_first(failure, "Original")
+        org_text <- xml2::xml_text(org, trim = TRUE)
+
+        filename <- xml2::xml_attr(failure, "filename")
+
+        line <- xml2::xml_attr(failure, "line")
+        failure_srcref <- srcref(srcfile(file.path("src", filename)), c(line, line, 1, 1))
+
+        get_reporter()$add_result(context = context_name, test = test_name, result = expectation("failure", org_text, srcref = failure_srcref))
+      }
+      get_reporter()$end_test(context = context_name, test = test_name)
+    }
+
+    get_reporter()$end_context(context = context_name)
+  }
 }
 
 #' Use Catch for C++ Unit Testing

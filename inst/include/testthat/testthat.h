@@ -123,7 +123,8 @@ inline Catch::Session& catchSession()
 
 inline bool run_tests()
 {
-  return catchSession().run() == 0;
+  const char* argv[] = {"catch", "-r", "xml"};
+  return catchSession().run(3, argv) == 0;
 }
 
 # endif // CATCH_CONFIG_RUNNER
