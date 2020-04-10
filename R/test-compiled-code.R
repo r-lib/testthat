@@ -16,7 +16,7 @@ expect_cpp_tests_pass <- function(package) {
   tests_passed <- TRUE
 
   tryCatch(
-    output <- capture_output_lines(tests_passed <- .Call(run_testthat_tests)),
+    output <- capture_output_lines(tests_passed <- .Call(run_testthat_tests, FALSE)),
     error = function(e) {
       warning(sprintf("failed to call test entrypoint '%s'", run_testthat_tests))
     }
@@ -42,7 +42,7 @@ run_cpp_tests <- function(package) {
   tests_passed <- TRUE
 
   tryCatch(
-    output <- capture_output_lines(tests_passed <- .Call(run_testthat_tests)),
+    output <- capture_output_lines(tests_passed <- .Call(run_testthat_tests, TRUE)),
     error = function(e) {
       warning(sprintf("failed to call test entrypoint '%s'", run_testthat_tests))
     }
@@ -333,5 +333,5 @@ get_routine <- function(package, routine) {
 }
 
 (function() {
-  .Call(run_testthat_tests)
+  .Call(run_testthat_tests, TRUE)
 })
