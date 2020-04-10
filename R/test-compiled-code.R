@@ -78,6 +78,16 @@ run_cpp_tests <- function(package) {
         org_text <- xml2::xml_text(org, trim = TRUE)
 
         filename <- xml2::xml_attr(failure, "filename")
+        type <- xml2::xml_attr(failure, "type")
+
+        type_msg <- switch(type,
+          "CATCH_CHECK_FALSE" = "isn't false.",
+          "CATCH_CHECK_THROWS" = "did not throw an exception.",
+          "CATCH_CHECK_THROWS_AS" = "threw an exception with unexpected type.",
+          "isn't true."
+        )
+
+        org_text <- paste(org_text, type_msg)
 
         line <- xml2::xml_attr(failure, "line")
         failure_srcref <- srcref(srcfile(file.path("src", filename)), c(line, line, 1, 1))
