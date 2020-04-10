@@ -10,7 +10,7 @@
 
 1: expect_equal(i, 2)
 2: expect_waldo_equal(act, exp, info, ..., tolerance = tolerance)
-3: expect(length(comp) == 0, sprintf("%s not equal to %s.\n%s", act$lab, exp$l
+3: expect(length(comp) == 0, sprintf("`actual` (%s) not equal to `expected` (%
 
 1: stop("stop")
 

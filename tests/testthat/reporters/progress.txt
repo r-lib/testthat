@@ -23,8 +23,10 @@ tests.R:19: failure: Failure:2b
 FALSE isn't true.
 
 tests.R:24: failure: Failure:loop
-`i` not equal to 2.
-* `actual`: 1/2
+`actual` (`i`) not equal to `expected` (2).
+
+`actual`:   1
+`expected`: 2
 ────────────────────────────────────────────────────────────────────────────────
 
 ⠏ |   0       | Expectations2
