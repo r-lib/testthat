@@ -7,8 +7,30 @@
 #'
 #' @param package The name of the package to test.
 #' @keywords internal
+#' @rdname run_cpp_tests
 #' @export
 expect_cpp_tests_pass <- function(package) {
+  run_testthat_tests <- get_routine(package, "run_testthat_tests")
+
+  output <- ""
+  tests_passed <- TRUE
+
+  tryCatch(
+    output <- capture_output_lines(tests_passed <- .Call(run_testthat_tests)),
+    error = function(e) {
+      warning(sprintf("failed to call test entrypoint '%s'", run_testthat_tests))
+    }
+  )
+
+  # Drop first line of output (it's jut a '####' delimiter)
+  info <- paste(output[-1], collapse = "\n")
+
+  expect(tests_passed, paste("C++ unit tests:", info, sep = "\n"))
+}
+
+#' @keywords internal
+#' @export
+run_cpp_tests <- function(package) {
 
   if (!is_installed("xml2")) {
     stop("Please install the `xml2` package", call. = FALSE)
@@ -27,7 +49,6 @@ expect_cpp_tests_pass <- function(package) {
   )
 
   report <- xml2::read_xml(paste(output, collapse = "\n"))
-  xml2::write_xml(report, "test.xml")
 
   contexts <- xml2::xml_find_all(report, "//TestCase")
 
