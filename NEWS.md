@@ -1,6 +1,7 @@
 # testthat (development version)
 
-* Catch C++ tests now provide detailed results for each succeeded or failed test (#1008)
+* Catch C++ tests now provide detailed results for each succeeded or failed
+  test, to upgrade existing code, re-run `testthat::use_catch()` (#1008)
 
 # testthat 2.3.2
 
