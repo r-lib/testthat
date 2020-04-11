@@ -44,9 +44,9 @@ testthat is the most popular unit testing package for R and is used by
 thousands of CRAN packages.
 
 If you’re not familiar with testthat, the [testing
-chapter](http://r-pkgs.had.co.nz/tests.html) in [R
-packages](http://r-pkgs.had.co.nz/) gives a good overview, along with
-workflow advice and concrete examples.
+chapter](https://r-pkgs.org/tests.html) in [R
+packages](https://r-pkgs.org) gives a good overview, along with workflow
+advice and concrete examples.
 
 ## Installation
 
