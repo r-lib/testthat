@@ -75,13 +75,33 @@
 #' })
 verify_output <- function(path, code, width = 80, crayon = FALSE,
                           unicode = FALSE, env = caller_env()) {
-  expr <- substitute(code)
 
+  expr <- substitute(code)
   if (is_call(expr, "{")) {
     exprs <- as.list(expr[-1])
   } else {
     exprs <- list(expr)
   }
+
+  output <- verify_exec(exprs,
+    width = width,
+    crayon = crayon,
+    unicode = unicode,
+    env = env
+  )
+
+  if (is_testing() && on_cran()) {
+    skip("On CRAN")
+  }
+  compare_file(path, output, update = TRUE)
+  invisible()
+}
+
+verify_exec <- function(exprs,
+                        width = 80,
+                        crayon = FALSE,
+                        unicode = FALSE,
+                        env = caller_env()) {
 
   withr::local_options(list(
     width = width,
@@ -103,13 +123,7 @@ verify_output <- function(path, code, width = 80, crayon = FALSE,
   on.exit(grDevices::dev.off(dev), add = TRUE)
 
   results <- evaluate::evaluate(source, envir = env, new_device = FALSE)
-  output <- unlist(lapply(results, output_replay))
-
-  if (is_testing() && on_cran()) {
-    skip("On CRAN")
-  }
-  compare_file(path, output, update = TRUE)
-  invisible()
+  unlist(lapply(results, output_replay))
 }
 
 output_replay <- function(x) {
