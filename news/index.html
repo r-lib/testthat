@@ -17,23 +17,27 @@
 <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png" />
 
 <!-- jquery -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous" />
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
+
+<!-- bootstrap-toc -->
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
 
 <!-- headroom.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -44,7 +48,6 @@
 
 <meta property="og:title" content="Changelog" />
 <meta property="og:image" content="/logo.png" />
-<meta name="twitter:card" content="summary" />
 
 
 
@@ -72,7 +75,7 @@
 
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target="#toc">
     <div class="container template-news">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -86,7 +89,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">testthat</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.3.1.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.3.2.9000</span>
       </span>
     </div>
 
@@ -142,7 +145,7 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/r-lib/testthat">
+  <a href="https://github.com/r-lib/testthat/">
     <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
@@ -160,18 +163,26 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Changelog <small></small></h1>
+      <h1 data-toc-skip>Changelog <small></small></h1>
       <small>Source: <a href='https://github.com/r-lib/testthat/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
     <div id="testthat-development-version" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="development version">
 <a href="#testthat-development-version" class="anchor"></a>testthat (development version)<small> Unreleased </small>
 </h1>
 </div>
-    <div id="testthat-2-3-1" class="section level1">
-<h1 class="page-header">
-<a href="#testthat-2-3-1" class="anchor"></a>testthat 2.3.1<small> 2019-12-01 </small>
+    <div id="testthat-232" class="section level1">
+<h1 class="page-header" data-toc-text="2.3.2">
+<a href="#testthat-232" class="anchor"></a>testthat 2.3.2<small> 2020-03-02 </small>
+</h1>
+<ul>
+<li>Fix R CMD check issues</li>
+</ul>
+</div>
+    <div id="testthat-231" class="section level1">
+<h1 class="page-header" data-toc-text="2.3.1">
+<a href="#testthat-231" class="anchor"></a>testthat 2.3.1<small> 2019-12-01 </small>
 </h1>
 <ul>
 <li><p>The last version of testthat introduced a performance regression in error assertions (<a href='https://github.com/r-lib/testthat/issues/963'>#963</a>). To fix it, you need to install rlang 0.4.2.</p></li>
@@ -179,9 +190,9 @@
 <li><p>Fixed issue where error and warning messages were not retrieved with <code><a href="https://rdrr.io/r/base/conditions.html">conditionMessage()</a></code> under certain circumstances.</p></li>
 </ul>
 </div>
-    <div id="testthat-2-3-0" class="section level1">
-<h1 class="page-header">
-<a href="#testthat-2-3-0" class="anchor"></a>testthat 2.3.0<small> 2019-11-05 </small>
+    <div id="testthat-230" class="section level1">
+<h1 class="page-header" data-toc-text="2.3.0">
+<a href="#testthat-230" class="anchor"></a>testthat 2.3.0<small> 2019-11-05 </small>
 </h1>
 <div id="conditions" class="section level2">
 <h2 class="hasAnchor">
@@ -221,17 +232,17 @@
 </ul>
 </div>
 </div>
-    <div id="testthat-2-2-1" class="section level1">
-<h1 class="page-header">
-<a href="#testthat-2-2-1" class="anchor"></a>testthat 2.2.1<small> 2019-07-25 </small>
+    <div id="testthat-221" class="section level1">
+<h1 class="page-header" data-toc-text="2.2.1">
+<a href="#testthat-221" class="anchor"></a>testthat 2.2.1<small> 2019-07-25 </small>
 </h1>
 <ul>
 <li>Repair regression in <code><a href="../reference/test_examples.html">test_rd()</a></code> and add a couple of tests to hopefully detect the problem earlier in the future.</li>
 </ul>
 </div>
-    <div id="testthat-2-2-0" class="section level1">
-<h1 class="page-header">
-<a href="#testthat-2-2-0" class="anchor"></a>testthat 2.2.0<small> 2019-07-22 </small>
+    <div id="testthat-220" class="section level1">
+<h1 class="page-header" data-toc-text="2.2.0">
+<a href="#testthat-220" class="anchor"></a>testthat 2.2.0<small> 2019-07-22 </small>
 </h1>
 <div id="new-features" class="section level2">
 <h2 class="hasAnchor">
@@ -259,17 +270,17 @@
 </ul>
 </div>
 </div>
-    <div id="testthat-2-1-1" class="section level1">
-<h1 class="page-header">
-<a href="#testthat-2-1-1" class="anchor"></a>testthat 2.1.1<small> 2019-04-23 </small>
+    <div id="testthat-211" class="section level1">
+<h1 class="page-header" data-toc-text="2.1.1">
+<a href="#testthat-211" class="anchor"></a>testthat 2.1.1<small> 2019-04-23 </small>
 </h1>
 <ul>
 <li>Fix test failures in strict latin1 locale</li>
 </ul>
 </div>
-    <div id="testthat-2-1-0" class="section level1">
-<h1 class="page-header">
-<a href="#testthat-2-1-0" class="anchor"></a>testthat 2.1.0<small> 2019-04-22 </small>
+    <div id="testthat-210" class="section level1">
+<h1 class="page-header" data-toc-text="2.1.0">
+<a href="#testthat-210" class="anchor"></a>testthat 2.1.0<small> 2019-04-22 </small>
 </h1>
 <div id="new-expectations" class="section level2">
 <h2 class="hasAnchor">
@@ -340,7 +351,7 @@
 <li><p><code><a href="../reference/auto_test_package.html">auto_test_package()</a></code> works better with recent devtools and also watches <code>src/</code> for changes (<a href='https://github.com/r-lib/testthat/issues/809'>#809</a>).</p></li>
 <li><p><code><a href="../reference/inheritance-expectations.html">expect_s3_class()</a></code> now works with unquoting (<a href='https://github.com/jalsalam'>@jalsalam</a>, <a href='https://github.com/r-lib/testthat/issues/771'>#771</a>).</p></li>
 <li><p><code>expectation</code> objects now contain the failure message, even when successful (<a href='https://github.com/r-lib/testthat/issues/836'>#836</a>)</p></li>
-<li><p><code><a href="https://rdrr.io/pkg/devtools/man/test.html">devtools::test()</a></code> no longer fails if run multiple times within the same R session for a package containing Catch tests. (<a href="https://github.com/r-lib/devtools/issues/1832">devtools <a href='https://github.com/r-lib/testthat/issues/1832'>#1832</a></a>)</p></li>
+<li><p><code><a href="https://devtools.r-lib.org//reference/test.html">devtools::test()</a></code> no longer fails if run multiple times within the same R session for a package containing Catch tests. (<a href="https://github.com/r-lib/devtools/issues/1832">devtools <a href='https://github.com/r-lib/testthat/issues/1832'>#1832</a></a>)</p></li>
 <li><p>New <code><a href="../reference/test_dir.html">testing_package()</a></code> retrieves the name of the package currently being tested (<a href='https://github.com/r-lib/testthat/issues/699'>#699</a>).</p></li>
 <li><p><code>run_testthat_tests</code> C entrypoint is registered more robustly.</p></li>
 <li><p><code><a href="../reference/skip.html">skip()</a></code> now always produces a <code>message</code> of length 1, as expected elsewhere in testthat (<a href='https://github.com/r-lib/testthat/issues/791'>#791</a>).</p></li>
@@ -348,17 +359,17 @@
 </ul>
 </div>
 </div>
-    <div id="testthat-2-0-1" class="section level1">
-<h1 class="page-header">
-<a href="#testthat-2-0-1" class="anchor"></a>testthat 2.0.1<small> 2018-10-13 </small>
+    <div id="testthat-201" class="section level1">
+<h1 class="page-header" data-toc-text="2.0.1">
+<a href="#testthat-201" class="anchor"></a>testthat 2.0.1<small> 2018-10-13 </small>
 </h1>
 <ul>
 <li>Fix failing tests with devtools 2.0.0</li>
 </ul>
 </div>
-    <div id="testthat-2-0-0" class="section level1">
-<h1 class="page-header">
-<a href="#testthat-2-0-0" class="anchor"></a>testthat 2.0.0<small> 2017-12-13 </small>
+    <div id="testthat-200" class="section level1">
+<h1 class="page-header" data-toc-text="2.0.0">
+<a href="#testthat-200" class="anchor"></a>testthat 2.0.0<small> 2017-12-13 </small>
 </h1>
 <div id="breaking-api-changes" class="section level2">
 <h2 class="hasAnchor">
@@ -419,15 +430,15 @@
 <a href="#quasiquotation-support" class="anchor"></a>Quasiquotation support</h3>
 <p>All expectations can now use unquoting (<a href='https://github.com/r-lib/testthat/issues/626'>#626</a>). This makes it much easier to generate informative failure messages when running tests in a for loop.</p>
 <p>For example take this test:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1">f &lt;-<span class="st"> </span><span class="cf">function</span>(i) <span class="cf">if</span> (i <span class="op">&gt;</span><span class="st"> </span><span class="dv">3</span>) i <span class="op">*</span><span class="st"> </span><span class="dv">9</span> <span class="cf">else</span> i <span class="op">*</span><span class="st"> </span><span class="dv">10</span></a>
-<a class="sourceLine" id="cb1-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb1-3" data-line-number="3"><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>) {</a>
-<a class="sourceLine" id="cb1-4" data-line-number="4">  <span class="kw"><a href="../reference/equality-expectations.html">expect_equal</a></span>(<span class="kw">f</span>(i), i <span class="op">*</span><span class="st"> </span><span class="dv">10</span>)</a>
-<a class="sourceLine" id="cb1-5" data-line-number="5">}</a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="r"><span class="no">f</span> <span class="kw">&lt;-</span> <span class="kw">function</span>(<span class="no">i</span>) <span class="kw">if</span> (<span class="no">i</span> <span class="kw">&gt;</span> <span class="fl">3</span>) <span class="no">i</span> * <span class="fl">9</span> <span class="kw">else</span> <span class="no">i</span> * <span class="fl">10</span>
+
+<span class="kw">for</span> (<span class="no">i</span> <span class="kw">in</span> <span class="fl">1</span>:<span class="fl">5</span>) {
+  <span class="fu"><a href="../reference/equality-expectations.html">expect_equal</a></span>(<span class="fu">f</span>(<span class="no">i</span>), <span class="no">i</span> * <span class="fl">10</span>)
+}</pre></div>
 <p>When it fails, you’ll see the message <code>Error: `f(i)` not equal to `i * 10`</code>. That’s hard to diagnose because you don’t know which iteration caused the problem!</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>) {</a>
-<a class="sourceLine" id="cb2-2" data-line-number="2">  <span class="kw"><a href="../reference/equality-expectations.html">expect_equal</a></span>(<span class="kw">f</span>(<span class="op">!!</span>i), <span class="op">!!</span>(i <span class="op">*</span><span class="st"> </span><span class="dv">10</span>))</a>
-<a class="sourceLine" id="cb2-3" data-line-number="3">}</a></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="r"><span class="kw">for</span> (<span class="no">i</span> <span class="kw">in</span> <span class="fl">1</span>:<span class="fl">5</span>) {
+  <span class="fu"><a href="../reference/equality-expectations.html">expect_equal</a></span>(<span class="fu">f</span>(!!<span class="no">i</span>), !!(<span class="no">i</span> * <span class="fl">10</span>))
+}</pre></div>
 <p>If you unquote the values using <code>!!</code>, you get the failure message <code>`f(4L)` not equal to 40.</code>. This is much easier to diagnose! See <code>?quasi_label()</code> for more details.</p>
 <p>(Note that this is not tidy evaluation per se, but is closely related. At this time you can not unquote quosures.)</p>
 </div>
@@ -440,7 +451,7 @@
 <a href="#setup-and-teardown" class="anchor"></a>Setup and teardown</h3>
 <ul>
 <li><p>New <code><a href="../reference/teardown.html">setup()</a></code> and <code><a href="../reference/teardown.html">teardown()</a></code> functions allow you to run at the start and end of each test file. This is useful if you want to pair cleanup code with the code that messes up state (<a href='https://github.com/r-lib/testthat/issues/536'>#536</a>).</p></li>
-<li><p>Two new prefixes are recognised in the <code>test/</code> directory. Files starting with <code>setup</code> are run before tests (but unlike <code>helpers</code> are not run in <code><a href="https://rdrr.io/pkg/devtools/man/load_all.html">devtools::load_all()</a></code>). Files starting with <code>teardown</code> are run after all tests are completed (<a href='https://github.com/r-lib/testthat/issues/589'>#589</a>).</p></li>
+<li><p>Two new prefixes are recognised in the <code>test/</code> directory. Files starting with <code>setup</code> are run before tests (but unlike <code>helpers</code> are not run in <code><a href="https://devtools.r-lib.org//reference/load_all.html">devtools::load_all()</a></code>). Files starting with <code>teardown</code> are run after all tests are completed (<a href='https://github.com/r-lib/testthat/issues/589'>#589</a>).</p></li>
 </ul>
 </div>
 <div id="other-new-features-1" class="section level3">
@@ -450,9 +461,9 @@
 <li><p>All files are now read and written as UTF-8 (<a href='https://github.com/r-lib/testthat/issues/510'>#510</a>, <a href='https://github.com/r-lib/testthat/issues/605'>#605</a>).</p></li>
 <li>
 <p><code><a href="../reference/test_dir.html">is_testing()</a></code> allows you to tell if your code is being run inside a testing environment (<a href='https://github.com/r-lib/testthat/issues/631'>#631</a>). Rather than taking a run-time dependency on testthat you may want to inline the function into your own package:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">is_testing &lt;-<span class="st"> </span><span class="cf">function</span>() {</a>
-<a class="sourceLine" id="cb3-2" data-line-number="2">  <span class="kw"><a href="https://rdrr.io/r/base/identical.html">identical</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/Sys.getenv.html">Sys.getenv</a></span>(<span class="st">"TESTTHAT"</span>), <span class="st">"true"</span>)</a>
-<a class="sourceLine" id="cb3-3" data-line-number="3">}</a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="r"><span class="no">is_testing</span> <span class="kw">&lt;-</span> <span class="kw">function</span>() {
+  <span class="fu"><a href="https://rdrr.io/r/base/identical.html">identical</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/Sys.getenv.html">Sys.getenv</a></span>(<span class="st">"TESTTHAT"</span>), <span class="st">"true"</span>)
+}</pre></div>
 <p>It’s frequently useful to combine with <code><a href="https://rdrr.io/r/base/interactive.html">interactive()</a></code>.</p>
 </li>
 </ul>
@@ -497,7 +508,8 @@
 <h2 class="hasAnchor">
 <a href="#minor-improvements-and-bug-fixes-1" class="anchor"></a>Minor improvements and bug fixes</h2>
 <ul>
-<li>Updated Catch to 1.9.6. <code>testthat</code> now understands and makes use of the package routine registration mechanism required by CRAN with R &gt;= 3.4.0.
+<li>
+<p>Updated Catch to 1.9.6. <code>testthat</code> now understands and makes use of the package routine registration mechanism required by CRAN with R &gt;= 3.4.0.</p>
 <p>(<a href='https://github.com/kevinushey'>@kevinushey</a>)</p>
 </li>
 <li><p>Better reporting for deeply nested failures, limiting the stack trace to the first and last 10 entries (<a href='https://github.com/r-lib/testthat/issues/474'>#474</a>).</p></li>
@@ -526,23 +538,24 @@
 </ul>
 </div>
 </div>
-    <div id="testthat-1-0-2" class="section level1">
-<h1 class="page-header">
-<a href="#testthat-1-0-2" class="anchor"></a>testthat 1.0.2<small> 2016-04-23 </small>
+    <div id="testthat-102" class="section level1">
+<h1 class="page-header" data-toc-text="1.0.2">
+<a href="#testthat-102" class="anchor"></a>testthat 1.0.2<small> 2016-04-23 </small>
 </h1>
 <ul>
 <li>Ensure <code>std::logic_error()</code> constructed with <code>std::string()</code> argument, to avoid build errors on Solaris.</li>
 </ul>
 </div>
-    <div id="testthat-1-0-1" class="section level1">
-<h1 class="page-header">
-<a href="#testthat-1-0-1" class="anchor"></a>testthat 1.0.1<small> 2016-04-21 </small>
+    <div id="testthat-101" class="section level1">
+<h1 class="page-header" data-toc-text="1.0.1">
+<a href="#testthat-101" class="anchor"></a>testthat 1.0.1<small> 2016-04-21 </small>
 </h1>
 <ul>
 <li><p>New <code><a href="../reference/expect_known_output.html">expect_output_file()</a></code> to compare output of a function with a text file, and optionally update it (<a href='https://github.com/r-lib/testthat/issues/443'>#443</a>, <a href='https://github.com/krlmlr'>@krlmlr</a>).</p></li>
 <li><p>Properly scoped use + compilation of C++ unit testing code using Catch to <code>gcc</code> and <code>clang</code> only, as Catch includes code that does not strictly conform to the C++98 standard. (<a href='https://github.com/kevinushey'>@kevinushey</a>)</p></li>
 <li><p>Fixed an out-of-bounds memory access when routing Catch output through <code>Rprintf()</code>. (<a href='https://github.com/kevinushey'>@kevinushey</a>)</p></li>
-<li>Ensure that unit tests run on R-oldrel (remove use of <code><a href="https://rdrr.io/r/base/files2.html">dir.exists()</a></code>).
+<li>
+<p>Ensure that unit tests run on R-oldrel (remove use of <code><a href="https://rdrr.io/r/base/files2.html">dir.exists()</a></code>).</p>
 <p>(<a href='https://github.com/kevinushey'>@kevinushey</a>)</p>
 </li>
 <li><p>Improved overriding of calls to <code>exit()</code> within Catch, to ensure compatibility with GCC 6.0. (<a href='https://github.com/krlmlr'>@krlmlr</a>)</p></li>
@@ -551,9 +564,9 @@
 <li><p><code><a href="../reference/auto_test.html">auto_test()</a></code> and <code><a href="../reference/auto_test_package.html">auto_test_package()</a></code> show only the results of the current test run and not of previously failed runs (<a href='https://github.com/r-lib/testthat/issues/456'>#456</a>, <a href='https://github.com/krlmlr'>@krlmlr</a>).</p></li>
 </ul>
 </div>
-    <div id="testthat-1-0-0" class="section level1">
-<h1 class="page-header">
-<a href="#testthat-1-0-0" class="anchor"></a>testthat 1.0.0<small> 2016-04-14 </small>
+    <div id="testthat-100" class="section level1">
+<h1 class="page-header" data-toc-text="1.0.0">
+<a href="#testthat-100" class="anchor"></a>testthat 1.0.0<small> 2016-04-14 </small>
 </h1>
 <div id="breaking-changes" class="section level2">
 <h2 class="hasAnchor">
@@ -565,12 +578,12 @@
 <a href="#new-expectations-1" class="anchor"></a>New expectations</h2>
 <p>The expectation system got a thorough overhaul (<a href='https://github.com/r-lib/testthat/issues/217'>#217</a>). This primarily makes it easier to add new expectations in the future, but also included a thorough review of the documentation, ensuring that related expectations are documented together, and have evocative names.</p>
 <p>One useful change is that most expectations invisibly return the input <code>object</code>. This makes it possible to chain together expectations with magrittr:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/factor.html">factor</a></span>(<span class="st">"a"</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="../reference/inheritance-expectations.html">expect_type</a></span>(<span class="st">"integer"</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb4-3" data-line-number="3"><span class="st">  </span><span class="kw"><a href="../reference/inheritance-expectations.html">expect_s3_class</a></span>(<span class="st">"factor"</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb4-4" data-line-number="4"><span class="st">  </span><span class="kw"><a href="../reference/expect_length.html">expect_length</a></span>(<span class="dv">1</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span>(<span class="st">"a"</span>) <span class="kw">%&gt;%</span>
+  <span class="fu"><a href="../reference/inheritance-expectations.html">expect_type</a></span>(<span class="st">"integer"</span>) <span class="kw">%&gt;%</span>
+  <span class="fu"><a href="../reference/inheritance-expectations.html">expect_s3_class</a></span>(<span class="st">"factor"</span>) <span class="kw">%&gt;%</span>
+  <span class="fu"><a href="../reference/expect_length.html">expect_length</a></span>(<span class="fl">1</span>)</pre></div>
 <p>(And to make this style even easier, testthat now re-exports the pipe, <a href='https://github.com/r-lib/testthat/issues/412'>#412</a>).</p>
-<p>The exception to this rule are the expectations that evaluate ( i.e. for messages, warnings, errors, output etc), which invisibly return <code>NULL</code>. These functions are now more consistent: using <code>NA</code> will cause a failure if there is a errors/warnings/mesages/output (i.e. they’re not missing), and will <code>NULL</code> fail if there aren’t any errors/warnings/mesages/output. This previously didn’t work for <code><a href="../reference/expect_output.html">expect_output()</a></code> (<a href='https://github.com/r-lib/testthat/issues/323'>#323</a>), and the error messages were confusing with <code><a href="../reference/expect_error.html">expect_error(..., NA)</a></code> (<a href='https://github.com/r-lib/testthat/issues/342'>#342</a>, <a href='https://github.com/nealrichardson'>@nealrichardson</a> + <a href='https://github.com/krlmlr'>@krlmlr</a>, <a href='https://github.com/r-lib/testthat/issues/317'>#317</a>).</p>
+<p>The exception to this rule are the expectations that evaluate (i.e. for messages, warnings, errors, output etc), which invisibly return <code>NULL</code>. These functions are now more consistent: using <code>NA</code> will cause a failure if there is a errors/warnings/mesages/output (i.e. they’re not missing), and will <code>NULL</code> fail if there aren’t any errors/warnings/mesages/output. This previously didn’t work for <code><a href="../reference/expect_output.html">expect_output()</a></code> (<a href='https://github.com/r-lib/testthat/issues/323'>#323</a>), and the error messages were confusing with <code><a href="../reference/expect_error.html">expect_error(..., NA)</a></code> (<a href='https://github.com/r-lib/testthat/issues/342'>#342</a>, <a href='https://github.com/nealrichardson'>@nealrichardson</a> + <a href='https://github.com/krlmlr'>@krlmlr</a>, <a href='https://github.com/r-lib/testthat/issues/317'>#317</a>).</p>
 <p>Another change is that <code><a href="../reference/expect_output.html">expect_output()</a></code> now requires you to explicitly print the output if you want to test a print method: <code><a href="../reference/expect_output.html">expect_output("a", "a")</a></code> will fail, <code><a href="../reference/expect_output.html">expect_output(print("a"), "a")</a></code> will succeed.</p>
 <p>There are six new expectations:</p>
 <ul>
@@ -580,7 +593,7 @@
 </ul>
 <p>A number of older features have been deprecated:</p>
 <ul>
-<li><p><code><a href="../reference/comparison-expectations.html">expect_more_than()</a></code> and <code><a href="../reference/comparison-expectations.html">expect_less_than()</a></code> have been deprecated. Please use <code><a href="../reference/comparison-expectations.html">expect_gt()</a></code> and <code><a href="../reference/comparison-expectations.html">expect_lt()</a></code> instead.</p></li>
+<li><p><code><a href="../reference/expect_less_than.html">expect_more_than()</a></code> and <code><a href="../reference/expect_less_than.html">expect_less_than()</a></code> have been deprecated. Please use <code><a href="../reference/comparison-expectations.html">expect_gt()</a></code> and <code><a href="../reference/comparison-expectations.html">expect_lt()</a></code> instead.</p></li>
 <li><p><code><a href="../reference/takes_less_than.html">takes_less_than()</a></code> has been deprecated.</p></li>
 <li><p><code><a href="../reference/not.html">not()</a></code> has been deprecated. Please use the explicit individual forms <code><a href="../reference/expect_error.html">expect_error(..., NA)</a></code> , <code><a href="../reference/expect_message.html">expect_warning(.., NA)</a></code> and so on.</p></li>
 </ul>
@@ -640,9 +653,9 @@
 </ul>
 </div>
 </div>
-    <div id="testthat-0-11-0" class="section level1">
-<h1 class="page-header">
-<a href="#testthat-0-11-0" class="anchor"></a>testthat 0.11.0<small> 2015-10-14 </small>
+    <div id="testthat-0110" class="section level1">
+<h1 class="page-header" data-toc-text="0.11.0">
+<a href="#testthat-0110" class="anchor"></a>testthat 0.11.0<small> 2015-10-14 </small>
 </h1>
 <ul>
 <li><p>Handle skipped tests in the TAP reporter (<a href='https://github.com/r-lib/testthat/issues/262'>#262</a>).</p></li>
@@ -650,10 +663,10 @@
 <li><p>New <code><a href="../reference/comparison-expectations.html">expect_lt()</a></code>, <code><a href="../reference/comparison-expectations.html">expect_lte()</a></code>, <code><a href="../reference/comparison-expectations.html">expect_gt()</a></code> and <code><a href="../reference/comparison-expectations.html">expect_gte()</a></code> for comparison with or without equality (<a href='https://github.com/r-lib/testthat/issues/305'>#305</a>, <a href='https://github.com/krlmlr'>@krlmlr</a>).</p></li>
 <li><p><code><a href="../reference/expect_output.html">expect_output()</a></code>, <code><a href="../reference/expect_message.html">expect_message()</a></code>, <code><a href="../reference/expect_message.html">expect_warning()</a></code>, and <code><a href="../reference/expect_error.html">expect_error()</a></code> now accept <code>NA</code> as the second argument to indicate that output, messages, warnings, and errors should be absent (<a href='https://github.com/r-lib/testthat/issues/219'>#219</a>).</p></li>
 <li><p>Praise gets more diverse thanks to the praise package, and you’ll now get random encouragment if your tests don’t pass.</p></li>
-<li><p>testthat no longer muffles warning messages. If you don’t want to see them in your output, you need to explicitly quiet them, or use an expectation that captures them (e.g. <code><a href="../reference/expect_message.html">expect_warning()</a></code>). (<a href='https://github.com/r-lib/testthat/issues/254'>#254</a>)</p></li>
+<li><p>testthat no longer muffles warning messages. If you don’t want to see them in your output, you need to explicitly quiet them, or use an expectation that captures them (e.g. <code><a href="../reference/expect_message.html">expect_warning()</a></code>). (<a href='https://github.com/r-lib/testthat/issues/254'>#254</a>)</p></li>
 <li><p>Use tests in <code>inst/tests</code> is formally deprecated. Please move them into <code>tests/testthat</code> instead (<a href='https://github.com/r-lib/testthat/issues/231'>#231</a>).</p></li>
 <li><p><code><a href="../reference/expect_match.html">expect_match()</a></code> now encodes the match, as well as the output, in the expectation message (<a href='https://github.com/r-lib/testthat/issues/232'>#232</a>).</p></li>
-<li><p><code><a href="../reference/expect_is.html">expect_is()</a></code> gives better failure message when testing multiple inheritance, e.g. <code><a href="../reference/expect_is.html">expect_is(1:10, c("glm", "lm"))</a></code> (<a href='https://github.com/r-lib/testthat/issues/293'>#293</a>).</p></li>
+<li><p><code><a href="../reference/expect_is.html">expect_is()</a></code> gives better failure message when testing multiple inheritance, e.g. <code><a href="../reference/expect_is.html">expect_is(1:10, c("glm", "lm"))</a></code> (<a href='https://github.com/r-lib/testthat/issues/293'>#293</a>).</p></li>
 <li><p>Corrected argument order in <code><a href="../reference/compare.html">compare.numeric()</a></code> (<a href='https://github.com/r-lib/testthat/issues/294'>#294</a>).</p></li>
 <li><p><code>comparison()</code> constructure now checks its arguments are the correct type and length. This bugs a bug where tests failed with an error like “values must be length 1, but FUN(X[[1]]) result is length 2” (<a href='https://github.com/r-lib/testthat/issues/279'>#279</a>).</p></li>
 <li><p>Added <code><a href="../reference/skip.html">skip_on_os()</a></code>, to skip tests on specified operating systems (<a href='https://github.com/kevinushey'>@kevinushey</a>).</p></li>
@@ -663,9 +676,9 @@
 <li><p>Detailed output from <code><a href="../reference/equality-expectations.html">expect_equal()</a></code> doesn’t confuse expected and actual values anymore (<a href='https://github.com/r-lib/testthat/issues/274'>#274</a>, <a href='https://github.com/krlmlr'>@krlmlr</a>).</p></li>
 </ul>
 </div>
-    <div id="testthat-0-10-0" class="section level1">
-<h1 class="page-header">
-<a href="#testthat-0-10-0" class="anchor"></a>testthat 0.10.0<small> 2015-05-22 </small>
+    <div id="testthat-0100" class="section level1">
+<h1 class="page-header" data-toc-text="0.10.0">
+<a href="#testthat-0100" class="anchor"></a>testthat 0.10.0<small> 2015-05-22 </small>
 </h1>
 <ul>
 <li><p>Failure locations are now formated as R error locations.</p></li>
@@ -686,17 +699,17 @@
 <li><p>All equality expectations are now documented together (<a href='https://github.com/r-lib/testthat/issues/173'>#173</a>); all matching expectations are also documented together.</p></li>
 </ul>
 </div>
-    <div id="testthat-0-9-1" class="section level1">
-<h1 class="page-header">
-<a href="#testthat-0-9-1" class="anchor"></a>testthat 0.9.1<small> 2014-10-01 </small>
+    <div id="testthat-091" class="section level1">
+<h1 class="page-header" data-toc-text="0.9.1">
+<a href="#testthat-091" class="anchor"></a>testthat 0.9.1<small> 2014-10-01 </small>
 </h1>
 <ul>
 <li>Bump R version dependency</li>
 </ul>
 </div>
-    <div id="testthat-0-9" class="section level1">
-<h1 class="page-header">
-<a href="#testthat-0-9" class="anchor"></a>testthat 0.9<small> 2014-09-22 </small>
+    <div id="testthat-09" class="section level1">
+<h1 class="page-header" data-toc-text="0.9">
+<a href="#testthat-09" class="anchor"></a>testthat 0.9<small> 2014-09-22 </small>
 </h1>
 <div id="new-features-2" class="section level2">
 <h2 class="hasAnchor">
@@ -713,7 +726,7 @@
 <h2 class="hasAnchor">
 <a href="#minor-improvements-and-bug-fixes-2" class="anchor"></a>Minor improvements and bug fixes</h2>
 <ul>
-<li><p><code><a href="../reference/auto_test_package.html">auto_test_package()</a></code> works once more, and now uses <code><a href="https://rdrr.io/pkg/devtools/man/load_all.html">devtools::load_all()</a></code> for higher fidelity loading (<a href='https://github.com/r-lib/testthat/issues/138'>#138</a>, <a href='https://github.com/r-lib/testthat/issues/151'>#151</a>).</p></li>
+<li><p><code><a href="../reference/auto_test_package.html">auto_test_package()</a></code> works once more, and now uses <code><a href="https://devtools.r-lib.org//reference/load_all.html">devtools::load_all()</a></code> for higher fidelity loading (<a href='https://github.com/r-lib/testthat/issues/138'>#138</a>, <a href='https://github.com/r-lib/testthat/issues/151'>#151</a>).</p></li>
 <li><p>Bug in <code><a href="../reference/compare.html">compare.character()</a></code> fixed, as reported by Georgi Boshnakov.</p></li>
 <li><p><code>colourise()</code> now uses option <code>testthat.use_colours</code> (default: <code>TRUE</code>). If it is <code>FALSE</code>, output is not colourised (<a href='https://github.com/r-lib/testthat/issues/153'>#153</a>, <a href='https://github.com/mbojan'>@mbojan</a>).</p></li>
 <li><p><code><a href="../reference/oldskool.html">is_identical_to()</a></code> only calls <code><a href="https://rdrr.io/r/base/all.equal.html">all.equal()</a></code> to generate an informative error message if the two objects are not identical (<a href='https://github.com/r-lib/testthat/issues/165'>#165</a>).</p></li>
@@ -731,18 +744,18 @@
 </ul>
 </div>
 </div>
-    <div id="testthat-0-8-1" class="section level1">
-<h1 class="page-header">
-<a href="#testthat-0-8-1" class="anchor"></a>testthat 0.8.1<small> 2014-02-22 </small>
+    <div id="testthat-081" class="section level1">
+<h1 class="page-header" data-toc-text="0.8.1">
+<a href="#testthat-081" class="anchor"></a>testthat 0.8.1<small> 2014-02-22 </small>
 </h1>
 <ul>
 <li><p>Better default environment for <code><a href="../reference/test_dir.html">test_check()</a></code> and <code><a href="../reference/test_dir.html">test_package()</a></code> which allows S4 class creation in tests</p></li>
 <li><p><code><a href="../reference/compare.html">compare.character()</a></code> no longer fails when one value is missing.</p></li>
 </ul>
 </div>
-    <div id="testthat-0-8" class="section level1">
-<h1 class="page-header">
-<a href="#testthat-0-8" class="anchor"></a>testthat 0.8<small> 2014-02-20 </small>
+    <div id="testthat-08" class="section level1">
+<h1 class="page-header" data-toc-text="0.8">
+<a href="#testthat-08" class="anchor"></a>testthat 0.8<small> 2014-02-20 </small>
 </h1>
 <p>testthat 0.8 comes with a new recommended structure for storing your tests. To better meet CRAN recommended practices, testthat now recommend that you to put your tests in <code>tests/testthat</code>, instead of <code>inst/tests</code> (this makes it possible for users to choose whether or not to install tests). With this new structure, you’ll need to use <code><a href="../reference/test_dir.html">test_check()</a></code> instead of <code>test_packages()</code> in the test file (usually <code>tests/testthat.R</code>) that runs all testthat unit tests.</p>
 <p>The other big improvement to usability comes from <a href='https://github.com/kforner'>@kforner</a>, who contributed code to allow the default results (i.e. those produced by <code>SummaryReporter</code>) to include source references so you can see exactly where failures occured.</p>
@@ -762,7 +775,7 @@
 <ul>
 <li><p><code><a href="../reference/expect_null.html">expect_null()</a></code> and <code>is_null</code> to check if an object is NULL (<a href='https://github.com/r-lib/testthat/issues/78'>#78</a>)</p></li>
 <li><p><code><a href="../reference/expect_named.html">expect_named()</a></code> and <code><a href="../reference/oldskool.html">has_names()</a></code> to check the names of a vector (<a href='https://github.com/r-lib/testthat/issues/79'>#79</a>)</p></li>
-<li><p><code><a href="../reference/comparison-expectations.html">expect_more_than()</a></code>, <code><a href="../reference/oldskool.html">is_more_than()</a></code>, <code><a href="../reference/comparison-expectations.html">expect_less_than()</a></code>, <code><a href="../reference/oldskool.html">is_less_than()</a></code> to check values above or below a threshold. (<a href='https://github.com/r-lib/testthat/issues/77'>#77</a>, thanks to <a href='https://github.com/jknowles'>@jknowles</a>)</p></li>
+<li><p><code><a href="../reference/expect_less_than.html">expect_more_than()</a></code>, <code><a href="../reference/oldskool.html">is_more_than()</a></code>, <code><a href="../reference/expect_less_than.html">expect_less_than()</a></code>, <code><a href="../reference/oldskool.html">is_less_than()</a></code> to check values above or below a threshold. (<a href='https://github.com/r-lib/testthat/issues/77'>#77</a>, thanks to <a href='https://github.com/jknowles'>@jknowles</a>)</p></li>
 </ul>
 </div>
 <div id="minor-improvements-and-bug-fixes-3" class="section level2">
@@ -784,9 +797,9 @@
 </ul>
 </div>
 </div>
-    <div id="testthat-0-7-1" class="section level1">
-<h1 class="page-header">
-<a href="#testthat-0-7-1" class="anchor"></a>testthat 0.7.1<small> 2013-03-27 </small>
+    <div id="testthat-071" class="section level1">
+<h1 class="page-header" data-toc-text="0.7.1">
+<a href="#testthat-071" class="anchor"></a>testthat 0.7.1<small> 2013-03-27 </small>
 </h1>
 <ul>
 <li><p>Ignore attributes in <code>is_true</code> and <code>is_false</code> (<a href='https://github.com/r-lib/testthat/issues/49'>#49</a>)</p></li>
@@ -797,9 +810,9 @@
 <li><p>Fixed where <code>auto_test</code> would identify the wrong files as having changed. (Thanks to Peter Meilstrup)</p></li>
 </ul>
 </div>
-    <div id="testthat-0-7" class="section level1">
-<h1 class="page-header">
-<a href="#testthat-0-7" class="anchor"></a>testthat 0.7<small> 2012-06-27 </small>
+    <div id="testthat-07" class="section level1">
+<h1 class="page-header" data-toc-text="0.7">
+<a href="#testthat-07" class="anchor"></a>testthat 0.7<small> 2012-06-27 </small>
 </h1>
 <ul>
 <li><p><code>SummaryReporter</code>: still return informative messages even if no tests defined (just bare expectations). (Fixes <a href='https://github.com/r-lib/testthat/issues/31'>#31</a>)</p></li>
@@ -811,9 +824,9 @@
 <li><p><code>auto_test</code> now normalises paths to enable better identification of file changes, and fixes bug in instantiating new reporter object.</p></li>
 </ul>
 </div>
-    <div id="testthat-0-6" class="section level1">
-<h1 class="page-header">
-<a href="#testthat-0-6" class="anchor"></a>testthat 0.6<small> 2011-12-30 </small>
+    <div id="testthat-06" class="section level1">
+<h1 class="page-header" data-toc-text="0.6">
+<a href="#testthat-06" class="anchor"></a>testthat 0.6<small> 2011-12-30 </small>
 </h1>
 <ul>
 <li><p>All <code>mutatr</code> classes have been replaced with ReferenceClasses.</p></li>
@@ -821,17 +834,17 @@
 <li><p><code>test_dir</code> and <code>test_package</code> gain new <code>filter</code> argument which allows you to restrict which tests are run.</p></li>
 </ul>
 </div>
-    <div id="testthat-0-5" class="section level1">
-<h1 class="page-header">
-<a href="#testthat-0-5" class="anchor"></a>testthat 0.5<small> 2011-06-01 </small>
+    <div id="testthat-05" class="section level1">
+<h1 class="page-header" data-toc-text="0.5">
+<a href="#testthat-05" class="anchor"></a>testthat 0.5<small> 2011-06-01 </small>
 </h1>
 <ul>
 <li>bare expectations now correctly throw errors again</li>
 </ul>
 </div>
-    <div id="testthat-0-4" class="section level1">
-<h1 class="page-header">
-<a href="#testthat-0-4" class="anchor"></a>testthat 0.4<small> 2011-03-20 </small>
+    <div id="testthat-04" class="section level1">
+<h1 class="page-header" data-toc-text="0.4">
+<a href="#testthat-04" class="anchor"></a>testthat 0.4<small> 2011-03-20 </small>
 </h1>
 <ul>
 <li><p>autotest correctly loads code and executes tests in same environment</p></li>
@@ -840,9 +853,9 @@
 <li><p>all <code>expect_*</code> short cut functions gain a label argument, thanks to Steve Lianoglou</p></li>
 </ul>
 </div>
-    <div id="testthat-0-3" class="section level1">
-<h1 class="page-header">
-<a href="#testthat-0-3" class="anchor"></a>testthat 0.3<small> 2010-08-31 </small>
+    <div id="testthat-03" class="section level1">
+<h1 class="page-header" data-toc-text="0.3">
+<a href="#testthat-03" class="anchor"></a>testthat 0.3<small> 2010-08-31 </small>
 </h1>
 <ul>
 <li><p>all expectations now have a shortcut form, so instead of expect_that(a, is_identical_to(b)) you can do expect_identical(a, b)</p></li>
@@ -854,9 +867,9 @@
 <li><p>test_package makes it easier to run all tests in an installed package. Code run in this manner has access to non-exported functions and objects. If any errors or failures occur, test_package will throw an error, making it suitable for use with R CMD check.</p></li>
 </ul>
 </div>
-    <div id="testthat-0-2" class="section level1">
-<h1 class="page-header">
-<a href="#testthat-0-2" class="anchor"></a>testthat 0.2<small> 2010-07-25 </small>
+    <div id="testthat-02" class="section level1">
+<h1 class="page-header" data-toc-text="0.2">
+<a href="#testthat-02" class="anchor"></a>testthat 0.2<small> 2010-07-25 </small>
 </h1>
 <ul>
 <li><p>colourise also works in screen terminal</p></li>
@@ -870,37 +883,10 @@
 </div>
   </div>
 
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <div id="tocnav">
-      <h2>Contents</h2>
-      <ul class="nav nav-pills nav-stacked">
-        <li><a href="#testthat-development-version">development version</a></li>
-        <li><a href="#testthat-2-3-1">2.3.1</a></li>
-        <li><a href="#testthat-2-3-0">2.3.0</a></li>
-        <li><a href="#testthat-2-2-1">2.2.1</a></li>
-        <li><a href="#testthat-2-2-0">2.2.0</a></li>
-        <li><a href="#testthat-2-1-1">2.1.1</a></li>
-        <li><a href="#testthat-2-1-0">2.1.0</a></li>
-        <li><a href="#testthat-2-0-1">2.0.1</a></li>
-        <li><a href="#testthat-2-0-0">2.0.0</a></li>
-        <li><a href="#testthat-1-0-2">1.0.2</a></li>
-        <li><a href="#testthat-1-0-1">1.0.1</a></li>
-        <li><a href="#testthat-1-0-0">1.0.0</a></li>
-        <li><a href="#testthat-0-11-0">0.11.0</a></li>
-        <li><a href="#testthat-0-10-0">0.10.0</a></li>
-        <li><a href="#testthat-0-9-1">0.9.1</a></li>
-        <li><a href="#testthat-0-9">0.9</a></li>
-        <li><a href="#testthat-0-8-1">0.8.1</a></li>
-        <li><a href="#testthat-0-8">0.8</a></li>
-        <li><a href="#testthat-0-7-1">0.7.1</a></li>
-        <li><a href="#testthat-0-7">0.7</a></li>
-        <li><a href="#testthat-0-6">0.6</a></li>
-        <li><a href="#testthat-0-5">0.5</a></li>
-        <li><a href="#testthat-0-4">0.4</a></li>
-        <li><a href="#testthat-0-3">0.3</a></li>
-        <li><a href="#testthat-0-2">0.2</a></li>
-      </ul>
-    </div>
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 
 </div>
@@ -912,7 +898,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
 </div>
 
       </footer>

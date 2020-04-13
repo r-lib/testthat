@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Check reporter: 13 line summary of problems — CheckReporter • testthat</title>
+<title>Deprecated numeric comparison functions — expect_less_than • testthat</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,9 +46,9 @@
 
 
 
-<meta property="og:title" content="Check reporter: 13 line summary of problems — CheckReporter" />
-<meta property="og:description" content="R CMD check displays only the last 13 lines of the result, so this
-report is design to ensure that you see something useful there." />
+<meta property="og:title" content="Deprecated numeric comparison functions — expect_less_than" />
+<meta property="og:description" content="These functions have been deprecated in favour of the more concise
+expect_gt() and expect_lt()." />
 <meta property="og:image" content="/logo.png" />
 
 
@@ -165,35 +165,29 @@ report is design to ensure that you see something useful there." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Check reporter: 13 line summary of problems</h1>
-    <small class="dont-index">Source: <a href='https://github.com/r-lib/testthat/blob/master/R/reporter-check.R'><code>R/reporter-check.R</code></a></small>
-    <div class="hidden name"><code>CheckReporter.Rd</code></div>
+    <h1>Deprecated numeric comparison functions</h1>
+    <small class="dont-index">Source: <a href='https://github.com/r-lib/testthat/blob/master/R/expect-comparison.R'><code>R/expect-comparison.R</code></a></small>
+    <div class="hidden name"><code>expect_less_than.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p><code>R CMD check</code> displays only the last 13 lines of the result, so this
-report is design to ensure that you see something useful there.</p>
+    <p>These functions have been deprecated in favour of the more concise
+<code><a href='comparison-expectations.html'>expect_gt()</a></code> and <code><a href='comparison-expectations.html'>expect_lt()</a></code>.</p>
     </div>
 
+    <pre class="usage"><span class='fu'>expect_less_than</span>(<span class='no'>...</span>)
 
+<span class='fu'>expect_more_than</span>(<span class='no'>...</span>)</pre>
 
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>...</th>
+      <td><p>All arguments passed on to <code><a href='comparison-expectations.html'>expect_lt()</a></code>/<code><a href='comparison-expectations.html'>expect_gt()</a></code>.</p></td>
+    </tr>
+    </table>
 
-    <div class='dont-index'><p>Other reporters: 
-<code><a href='DebugReporter.html'>DebugReporter</a></code>,
-<code><a href='FailReporter.html'>FailReporter</a></code>,
-<code><a href='ListReporter.html'>ListReporter</a></code>,
-<code><a href='LocationReporter.html'>LocationReporter</a></code>,
-<code><a href='MinimalReporter.html'>MinimalReporter</a></code>,
-<code><a href='MultiReporter.html'>MultiReporter</a></code>,
-<code><a href='ProgressReporter.html'>ProgressReporter</a></code>,
-<code><a href='Reporter.html'>Reporter</a></code>,
-<code><a href='RstudioReporter.html'>RstudioReporter</a></code>,
-<code><a href='SilentReporter.html'>SilentReporter</a></code>,
-<code><a href='StopReporter.html'>StopReporter</a></code>,
-<code><a href='SummaryReporter.html'>SummaryReporter</a></code>,
-<code><a href='TapReporter.html'>TapReporter</a></code>,
-<code><a href='TeamcityReporter.html'>TeamcityReporter</a></code></p></div>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
