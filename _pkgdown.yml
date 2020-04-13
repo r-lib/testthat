@@ -2,7 +2,7 @@ home:
   strip_header: true
   links:
   - text: Learn more
-    href: http://r-pkgs.had.co.nz/tests.html
+    href: http://r-pkgs.org/tests.html
 
 template:
   params:
