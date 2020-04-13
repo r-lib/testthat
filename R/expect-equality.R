@@ -105,6 +105,7 @@ expect_waldo_equal <- function(act, exp, info, ...) {
 #' two symbols. It is for expert use only.
 #'
 #' @inheritParams expect_equal
+#' @family expectations
 #' @export
 expect_reference <- function(object, expected, info = NULL, label = NULL,
                              expected.label = NULL) {
