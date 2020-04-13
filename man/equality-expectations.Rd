@@ -69,34 +69,37 @@ alternatives in \link{quasi_label}.}
 use only.}
 }
 \description{
-These three function use \href{https://github.com/r-lib/waldo}{waldo} to
-compare some code to an \code{expected} result. They differ in the
-default values passed on to \code{waldo::compare()}:
+These three functions use \href{https://github.com/r-lib/waldo}{waldo} to
+compare the results of some code to an \code{expected} result. They differ in
+their level of strictness, as determined by additional arguments passed on
+to \code{waldo::compare()}:
 \itemize{
 \item \code{expect_identical()} is the strictest comparison.
 \item \code{expect_equal()} sets \code{tolerance = testthat_tolerance()} so that
-small floating point values are igored.
-\item \code{expect_equivalent()} sets \code{ignore_attr = TRUE} to ignore all differences
+small floating point differences are ignored; this also implies that
+(e.g.) \code{1} and \code{1L} are treated as equal.
+\item \code{expect_equivalent()} sets \code{ignore_attr = TRUE}, ignoring all differences
 in attributes.
 }
+
+In most cases you should use \code{expect_equal()}.
 }
 \examples{
 a <- 10
 expect_equal(a, 10)
 
 # Use expect_equal() when testing for numeric equality
-sqrt(2) ^ 2 - 1
-expect_equal(sqrt(2) ^ 2, 2)
-# Neither of these forms take floating point representation errors into
-# account
 \dontrun{
-expect_true(sqrt(2) ^ 2 == 2)
 expect_identical(sqrt(2) ^ 2, 2)
 }
+expect_equal(sqrt(2) ^ 2, 2)
 
-# expect_equivalent ignores attributes
+# expect_equivalent() ignores attributes
 a <- b <- 1:3
 names(b) <- letters[1:3]
+\dontrun{
+expect_equal(a, b)
+}
 expect_equivalent(a, b)
 }
 \seealso{
