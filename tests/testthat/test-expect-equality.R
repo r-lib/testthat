@@ -5,7 +5,7 @@ test_that("basically principles of equality hold", {
 
 test_that("default labels use unquoting", {
   x <- 2
-  expect_failure(expect_equal(1, !! x), "1 not equal to 2")
+  expect_failure(expect_equal(1, !! x), "`actual` (1) not equal to `expected` (2)", fixed = TRUE)
 })
 
 test_that("expect_equivalent ignores attributes for integers", {
@@ -28,8 +28,8 @@ test_that("expect_equal and expect_equivalent pass on ... to compare", {
   x1 <- 1
   x2 <- x1 + 1e-6
 
-  expect_success(expect_equal(x1, x2, tol = 1e-5))
-  expect_success(expect_equivalent(x1, x2, tol = 1e-5))
+  expect_success(expect_equal(x1, x2, tolerance = 1e-5))
+  expect_success(expect_equivalent(x1, x2, tolerance = 1e-5))
 })
 
 test_that("useful message if objects equal but not identical", {
@@ -37,7 +37,7 @@ test_that("useful message if objects equal but not identical", {
   g <- function() x
   environment(g) <- globalenv()
 
-  expect_failure(expect_identical(f, g), "not identical")
+  expect_failure(expect_identical(f, g))
 })
 
 test_that("% is not treated as sprintf format specifier (#445)", {

@@ -1,17 +1,26 @@
-test_that("can make 3 = 5", {
+test_that("can change value of internal function", {
   with_mock(
-    compare = function(x, y, ...) list(equal = TRUE, message = "TRUE"),
-    expect_equal(3, 5)
+    test_mock2 = function() 5,
+    expect_equal(test_mock1(), 5)
   )
-})
 
-test_that("mocked function is restored on error", {
+  # and value is restored on error
   expect_error(
     with_mock(
-      compare = function(x, y, ...) list(equal = TRUE, message = "TRUE"),
-      stop("Simulated error")
-    ),
-    "Simulated error"
+      test_mock2 = function() 5,
+      stop("!")
+    )
+  )
+  expect_equal(test_mock1(), 10)
+})
+
+
+test_that("mocks can access local variables", {
+  x <- 5
+
+  with_mock(
+    test_mock2 = function() x,
+    expect_equal(test_mock1(), 5)
   )
 })
 
@@ -108,19 +117,6 @@ test_that("mock extraction", {
     2
   )
 })
-
-test_that("mocks can access local variables", {
-  value <- compare(0, 0)
-
-  with_mock(
-    expect_equal(2 * 3, 4),
-    compare = function(x, y, ...) {
-      value
-    }
-  )
-})
-
-
 # local_mock --------------------------------------------------------------
 
 test_that("local_mock operates locally", {

@@ -44,9 +44,8 @@ more details.}
 the expectation that you'll notice changes because of the first failure,
 and then see the modified files in git.}
 
-\item{...}{For \code{expect_equal()} and \code{expect_equivalent()}, passed on
-\code{\link[=compare]{compare()}}, for \code{expect_identical()} passed on to \code{\link[=identical]{identical()}}.
-Used to control the details of the comparison.}
+\item{...}{Passed on to \code{\link[waldo:compare]{waldo::compare()}} to control the details of
+the comparison.}
 
 \item{info}{Extra information to be included in the message. This argument
 is soft-deprecated and should not be used in new code. Instead see

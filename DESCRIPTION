@@ -33,7 +33,8 @@ Imports:
     praise,
     R6 (>= 2.2.0),
     rlang (>= 0.4.1),
-    withr (>= 2.0.0)
+    withr (>= 2.0.0),
+    waldo (>= 0.0.0.9000)
 Suggests: 
     covr,
     curl (>= 0.9.5),
@@ -43,7 +44,6 @@ Suggests:
     usethis,
     vctrs (>= 0.1.0),
     xml2
-Remotes: r-lib/xml2
 VignetteBuilder: 
     knitr
 Encoding: UTF-8
@@ -119,3 +119,6 @@ Collate:
     'utils.R'
     'verify-output.R'
     'watcher.R'
+Remotes: 
+    r-lib/xml2,
+    r-lib/waldo

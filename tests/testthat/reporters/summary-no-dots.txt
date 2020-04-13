@@ -33,9 +33,10 @@ Failure has been forced
 FALSE isn't true.
 
 ── 4. Failure: Failure:loop (@tests.R#24)  ─────────────────────────────────────
-`i` not equal to 2.
-1/1 mismatches
-[1] 1 - 2 == -1
+`actual` (`i`) not equal to `expected` (2).
+
+`actual`:   1
+`expected`: 2
 
 ── 5. Error: Error:1 (@tests.R#33)  ────────────────────────────────────────────
 stop

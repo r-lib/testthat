@@ -1,5 +1,12 @@
 # testthat (development version)
 
+* `expect_identical()`, `expect_equal()`, `expect_equivalent()` and
+  `verify_output()` now use `waldo::compare()` to compare actual and expected
+  results. The chief difference should be that you now get much more 
+  informative output when the actual and expected values are different, but
+  it is likely there are also minor differences in the comparison - please
+  let me know if you encounter these (#447).
+
 # testthat 2.3.2
 
 * Fix R CMD check issues
