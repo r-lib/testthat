@@ -7,8 +7,6 @@
 
 [![CRAN
 status](https://www.r-pkg.org/badges/version/testthat)](https://cran.r-project.org/package=testthat)
-[![Travis build
-status](https://travis-ci.org/r-lib/testthat.svg?branch=master)](https://travis-ci.org/r-lib/testthat)
 ![R build
 status](https://github.com/r-lib/testthat/workflows/R-full/badge.svg)
 [![Codecov test
