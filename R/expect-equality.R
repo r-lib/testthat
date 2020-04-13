@@ -1,11 +1,16 @@
 #' Expectation: is the object equal to a value?
 #'
-#' - `expect_identical()` compares values with [identical()].
-#' - `expect_equal()` compares values  with [all.equal()]
-#' - `expect_equivalent()` compares values with [all.equal()] and
-#'    `check.attributes = FALSE`
-#' - `expect_reference()` compares the underlying memory addresses.
-#
+#' @description
+#' These three function use [waldo](https://github.com/r-lib/waldo) to
+#' compare some code to an `expected` result. They differ in the
+#' default values passed on to `waldo::compare()`:
+#'
+#' - `expect_identical()` is the strictest comparison.
+#' - `expect_equal()` sets `tolerance = testthat_tolerance()` so that
+#'   small floating point values are igored.
+#' - `expect_equivalent()` sets `ignore_attr = TRUE` to ignore all differences
+#'   in attributes.
+#'
 #' @param object,expected Computation and value to compare it to.
 #'
 #'   Both arguments supports limited unquoting to make it easier to generate
@@ -95,8 +100,13 @@ expect_waldo_equal <- function(act, exp, info, ...) {
   invisible(act$val)
 }
 
+#' Do two names point to the same underlying object?
+#'
+#' `expect_reference()` compares the underlying memory addresses of
+#' two symbols. It is for expert use only.
+#'
+#' @inheritParams expect_equal
 #' @export
-#' @rdname equality-expectations
 expect_reference <- function(object, expected, info = NULL, label = NULL,
                              expected.label = NULL) {
   act <- quasi_label(enquo(object), label, arg = "object")

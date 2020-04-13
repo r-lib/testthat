@@ -5,7 +5,6 @@
 \alias{expect_equal}
 \alias{expect_equivalent}
 \alias{expect_identical}
-\alias{expect_reference}
 \title{Expectation: is the object equal to a value?}
 \usage{
 expect_equal(
@@ -36,14 +35,6 @@ expect_identical(
   expected.label = NULL,
   ...
 )
-
-expect_reference(
-  object,
-  expected,
-  info = NULL,
-  label = NULL,
-  expected.label = NULL
-)
 }
 \arguments{
 \item{object, expected}{Computation and value to compare it to.
@@ -64,7 +55,7 @@ based on their values, rather than their types.
 It uses the same algorithm as \code{\link[=all.equal]{all.equal()}}, i.e., first we generate
 \code{x_diff} and \code{y_diff} by subsetting \code{x} and \code{y} to look only locations
 with differences. Then we check that
-\code{mean(abs(x_diff - y_diff)) / mean(y_diff)} (or just
+\code{mean(abs(x_diff - y_diff)) / mean(abs(y_diff))} (or just
 \code{mean(abs(x_diff - y_diff))} if \code{y_diff} is small) is less than
 \code{tolerance}.}
 
@@ -79,12 +70,15 @@ alternatives in \link{quasi_label}.}
 use only.}
 }
 \description{
+These three function use \href{https://github.com/r-lib/waldo}{waldo} to
+compare some code to an \code{expected} result. They differ in the
+default values passed on to \code{waldo::compare()}:
 \itemize{
-\item \code{expect_identical()} compares values with \code{\link[=identical]{identical()}}.
-\item \code{expect_equal()} compares values  with \code{\link[=all.equal]{all.equal()}}
-\item \code{expect_equivalent()} compares values with \code{\link[=all.equal]{all.equal()}} and
-\code{check.attributes = FALSE}
-\item \code{expect_reference()} compares the underlying memory addresses.
+\item \code{expect_identical()} is the strictest comparison.
+\item \code{expect_equal()} sets \code{tolerance = testthat_tolerance()} so that
+small floating point values are igored.
+\item \code{expect_equivalent()} sets \code{ignore_attr = TRUE} to ignore all differences
+in attributes.
 }
 }
 \examples{
