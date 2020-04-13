@@ -29,7 +29,7 @@
 
 ##teamcity[testSuiteStarted name='Failure:loop']
 ##teamcity[testStarted name='expectation 1']
-##teamcity[testFailed name='expectation 1' message='`i` not equal to 2.' details='1/1 mismatches|n|[1|] 1 - 2 == -1']
+##teamcity[testFailed name='expectation 1' message='`actual` (`i`) not equal to `expected` (2).' details='|n`actual`:   1|n`expected`: 2']
 ##teamcity[testFinished name='expectation 1']
 ##teamcity[testStarted name='expectation 2']
 ##teamcity[testFinished name='expectation 2']

@@ -1,7 +1,7 @@
 reporters/tests.R#12:1 [failure] Failure:1. Failure has been forced
 reporters/tests.R#16:1 [failure] Failure:2a. Failure has been forced
 reporters/tests.R#19:1 [failure] Failure:2b. FALSE isn't true.
-reporters/tests.R#24:1 [failure] Failure:loop. `i` not equal to 2.
+reporters/tests.R#24:1 [failure] Failure:loop. `actual` (`i`) not equal to `expected` (2).
 reporters/tests.R#33:1 [error] Error:1. stop
 reporters/tests.R#47:1 [error] Error:3. !
 reporters/tests.R#56:1 [error] Recursion:1. This is deep
