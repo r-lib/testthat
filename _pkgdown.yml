@@ -1,3 +1,5 @@
+url: https://testthat.r-lib.org
+
 home:
   strip_header: true
   links:
