@@ -1,8 +1,8 @@
 #' @include compare.R
 #' @export
 #' @rdname compare
-#' @param tolerance Numerical tolerance: any differences smaller than this
-#'   value will be ignored.
+#' @param tolerance Numerical tolerance: any differences (in the sense of
+#'   [base::all.equal()]) smaller than this value will be ignored.
 #'
 #'   The default tolerance is `sqrt(.Machine$double.eps)`, unless long doubles
 #'   are not available, in which case the test is skipped.
