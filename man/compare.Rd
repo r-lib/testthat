@@ -50,8 +50,8 @@ testthat_tolerance(x)
 
 \item{width}{Width of output device}
 
-\item{tolerance}{Numerical tolerance: any differences smaller than this
-value will be ignored.
+\item{tolerance}{Numerical tolerance: any differences (in the sense of
+\code{\link[base:all.equal]{base::all.equal()}}) smaller than this value will be ignored.
 
 The default tolerance is \code{sqrt(.Machine$double.eps)}, unless long doubles
 are not available, in which case the test is skipped.}

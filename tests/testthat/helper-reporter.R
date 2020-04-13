@@ -1,6 +1,7 @@
 expect_report_unchanged <- function(name, reporter = find_reporter(name), file = "reporters/tests.R") {
   path <- test_path("reporters", paste0(name, ".txt"))
   withr::local_options(c(cli.unicode = TRUE))
+  withr::local_envvar(list(RSTUDIO = 0))
 
   expect_known_output(
     test_file(test_path(file), reporter, wrap = FALSE),
