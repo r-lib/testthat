@@ -1,15 +1,18 @@
 > message("First.\nSecond.")
 <simpleMessage/message/condition>
-Message: First.
+  $call .Primitive("call")
+First.
 Second.
 
 > warning("First.\nSecond.")
 <simpleWarning/warning/condition>
-Warning in eval(expr, envir, enclos): First.
+  $call .Primitive("call")
+First.
 Second.
 
 > stop("First.\nSecond.")
 <simpleError/error/condition>
-Error in eval(expr, envir, enclos): First.
+  $call .Primitive("call")
+First.
 Second.
 
