@@ -16,6 +16,8 @@
 #'   Both arguments supports limited unquoting to make it easier to generate
 #'   readable failures within a function or for loop. See [quasi_label] for
 #'   more details.
+#' @param ... Passed on to [waldo::compare()] to control the details of
+#'   the comparison.
 #' @param label,expected.label Used to customise failure messages. For expert
 #'   use only.
 #' @param scale Deprecated. Passing `scale` down to `all.equal()` is no
@@ -46,9 +48,6 @@ NULL
 
 #' @export
 #' @rdname equality-expectations
-#' @param ... For `expect_equal()` and `expect_equivalent()`, passed on
-#'   [compare()], for `expect_identical()` passed on to [identical()].
-#'   Used to control the details of the comparison.
 #' @inheritParams waldo::compare
 expect_equal <- function(object, expected, ...,
                          tolerance = testthat_tolerance(),

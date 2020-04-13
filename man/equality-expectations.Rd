@@ -43,9 +43,8 @@ Both arguments supports limited unquoting to make it easier to generate
 readable failures within a function or for loop. See \link{quasi_label} for
 more details.}
 
-\item{...}{For \code{expect_equal()} and \code{expect_equivalent()}, passed on
-\code{\link[=compare]{compare()}}, for \code{expect_identical()} passed on to \code{\link[=identical]{identical()}}.
-Used to control the details of the comparison.}
+\item{...}{Passed on to \code{\link[waldo:compare]{waldo::compare()}} to control the details of
+the comparison.}
 
 \item{tolerance}{If non-\code{NULL}, used as threshold for ignoring small
 floating point difference when comparing numeric vectors. Setting to
