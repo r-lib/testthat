@@ -47,15 +47,19 @@
 
 
 <meta property="og:title" content="Expectation: is the object equal to a value? — equality-expectations" />
-<meta property="og:description" content="
+<meta property="og:description" content="These three functions use waldo to
+compare the results of some code to an expected result. They differ in
+their level of strictness, as determined by additional arguments passed on
+to waldo::compare():
+expect_identical() is the strictest comparison.
+expect_equal() sets tolerance = testthat_tolerance() so that
+small floating point differences are ignored; this also implies that
+(e.g.) 1 and 1L are treated as equal.
+expect_equivalent() sets ignore_attr = TRUE, ignoring all differences
+in attributes.
 
-expect_identical() compares values with identical().
-expect_equal() compares values  with all.equal()
-expect_equivalent() compares values with all.equal() and
-check.attributes = FALSE
-expect_reference() compares the underlying memory addresses.
 
-" />
+In most cases you should use expect_equal()." />
 <meta property="og:image" content="/logo.png" />
 
 
@@ -178,21 +182,27 @@ expect_reference() compares the underlying memory addresses.
     </div>
 
     <div class="ref-description">
-    
-<ul>
-<li><p><code>expect_identical()</code> compares values with <code><a href='https://rdrr.io/r/base/identical.html'>identical()</a></code>.</p></li>
-<li><p><code>expect_equal()</code> compares values  with <code><a href='https://rdrr.io/r/base/all.equal.html'>all.equal()</a></code></p></li>
-<li><p><code>expect_equivalent()</code> compares values with <code><a href='https://rdrr.io/r/base/all.equal.html'>all.equal()</a></code> and
-<code>check.attributes = FALSE</code></p></li>
-<li><p><code>expect_reference()</code> compares the underlying memory addresses.</p></li>
+    <p>These three functions use <a href='https://github.com/r-lib/waldo'>waldo</a> to
+compare the results of some code to an <code>expected</code> result. They differ in
+their level of strictness, as determined by additional arguments passed on
+to <code><a href='https://rdrr.io/pkg/waldo/man/compare.html'>waldo::compare()</a></code>:</p><ul>
+<li><p><code>expect_identical()</code> is the strictest comparison.</p></li>
+<li><p><code>expect_equal()</code> sets <code>tolerance = testthat_tolerance()</code> so that
+small floating point differences are ignored; this also implies that
+(e.g.) <code>1</code> and <code>1L</code> are treated as equal.</p></li>
+<li><p><code>expect_equivalent()</code> sets <code>ignore_attr = TRUE</code>, ignoring all differences
+in attributes.</p></li>
 </ul>
 
+<p>In most cases you should use <code>expect_equal()</code>.</p>
     </div>
 
     <pre class="usage"><span class='fu'>expect_equal</span>(
   <span class='no'>object</span>,
   <span class='no'>expected</span>,
   <span class='no'>...</span>,
+  <span class='kw'>tolerance</span> <span class='kw'>=</span> <span class='fu'><a href='compare.html'>testthat_tolerance</a></span>(),
+  <span class='kw'>scale</span> <span class='kw'>=</span> <span class='st'>"deprecated"</span>,
   <span class='kw'>info</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>label</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>expected.label</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
@@ -214,14 +224,6 @@ expect_reference() compares the underlying memory addresses.
   <span class='kw'>label</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>expected.label</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='no'>...</span>
-)
-
-<span class='fu'>expect_reference</span>(
-  <span class='no'>object</span>,
-  <span class='no'>expected</span>,
-  <span class='kw'>info</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>label</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>expected.label</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -236,9 +238,26 @@ more details.</p></td>
     </tr>
     <tr>
       <th>...</th>
-      <td><p>For <code>expect_equal()</code> and <code>expect_equivalent()</code>, passed on
-<code><a href='compare.html'>compare()</a></code>, for <code>expect_identical()</code> passed on to <code><a href='https://rdrr.io/r/base/identical.html'>identical()</a></code>.
-Used to control the details of the comparison.</p></td>
+      <td><p>Passed on to <code><a href='https://rdrr.io/pkg/waldo/man/compare.html'>waldo::compare()</a></code> to control the details of
+the comparison.</p></td>
+    </tr>
+    <tr>
+      <th>tolerance</th>
+      <td><p>If non-<code>NULL</code>, used as threshold for ignoring small
+floating point difference when comparing numeric vectors. Setting to
+any non-<code>NULL</code> value will cause integer and double vectors to be compared
+based on their values, rather than their types.</p>
+<p>It uses the same algorithm as <code><a href='https://rdrr.io/r/base/all.equal.html'>all.equal()</a></code>, i.e., first we generate
+<code>x_diff</code> and <code>y_diff</code> by subsetting <code>x</code> and <code>y</code> to look only locations
+with differences. Then we check that
+<code>mean(abs(x_diff - y_diff)) / mean(abs(y_diff))</code> (or just
+<code><a href='https://rdrr.io/r/base/mean.html'>mean(abs(x_diff - y_diff))</a></code> if <code>y_diff</code> is small) is less than
+<code>tolerance</code>.</p></td>
+    </tr>
+    <tr>
+      <th>scale</th>
+      <td><p>Deprecated. Passing <code>scale</code> down to <code><a href='https://rdrr.io/r/base/all.equal.html'>all.equal()</a></code> is no
+longer supported.</p></td>
     </tr>
     <tr>
       <th>info</th>
@@ -265,6 +284,7 @@ use only.</p></td>
 <code><a href='expect_named.html'>expect_named</a>()</code>,
 <code><a href='expect_null.html'>expect_null</a>()</code>,
 <code><a href='expect_output.html'>expect_output</a>()</code>,
+<code><a href='expect_reference.html'>expect_reference</a>()</code>,
 <code><a href='expect_silent.html'>expect_silent</a>()</code>,
 <code><a href='inheritance-expectations.html'>inheritance-expectations</a></code>,
 <code><a href='logical-expectations.html'>logical-expectations</a></code></p></div>
@@ -274,27 +294,17 @@ use only.</p></td>
 <span class='fu'>expect_equal</span>(<span class='no'>a</span>, <span class='fl'>10</span>)
 
 <span class='co'># Use expect_equal() when testing for numeric equality</span>
-<span class='fu'><a href='https://rdrr.io/r/base/MathFun.html'>sqrt</a></span>(<span class='fl'>2</span>) ^ <span class='fl'>2</span> - <span class='fl'>1</span></div><div class='output co'>#&gt; [1] 1</div><div class='input'><span class='fu'>expect_equal</span>(<span class='fu'><a href='https://rdrr.io/r/base/MathFun.html'>sqrt</a></span>(<span class='fl'>2</span>) ^ <span class='fl'>2</span>, <span class='fl'>2</span>)
-<span class='co'># Neither of these forms take floating point representation errors into</span>
-<span class='co'># account</span>
 <span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
-<span class='fu'><a href='logical-expectations.html'>expect_true</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/MathFun.html'>sqrt</a></span>(<span class='fl'>2</span>) ^ <span class='fl'>2</span> <span class='kw'>==</span> <span class='fl'>2</span>)
 <span class='fu'>expect_identical</span>(<span class='fu'><a href='https://rdrr.io/r/base/MathFun.html'>sqrt</a></span>(<span class='fl'>2</span>) ^ <span class='fl'>2</span>, <span class='fl'>2</span>)
 }
+<span class='fu'>expect_equal</span>(<span class='fu'><a href='https://rdrr.io/r/base/MathFun.html'>sqrt</a></span>(<span class='fl'>2</span>) ^ <span class='fl'>2</span>, <span class='fl'>2</span>)
 
-<span class='co'># You can pass on additional arguments to all.equal:</span>
-<span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
-<span class='co'># Test the ABSOLUTE difference is within .002</span>
-<span class='fu'>expect_equal</span>(<span class='fl'>10.01</span>, <span class='fl'>10</span>, <span class='kw'>tolerance</span> <span class='kw'>=</span> <span class='fl'>.002</span>, <span class='kw'>scale</span> <span class='kw'>=</span> <span class='fl'>1</span>)
-}
-
-<span class='co'># Test the RELATIVE difference is within .002</span>
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fl'>10</span>
-<span class='fu'>expect_equal</span>(<span class='fl'>10.01</span>, <span class='kw'>expected</span> <span class='kw'>=</span> <span class='no'>x</span>, <span class='kw'>tolerance</span> <span class='kw'>=</span> <span class='fl'>0.002</span>, <span class='kw'>scale</span> <span class='kw'>=</span> <span class='no'>x</span>)
-
-<span class='co'># expect_equivalent ignores attributes</span>
+<span class='co'># expect_equivalent() ignores attributes</span>
 <span class='no'>a</span> <span class='kw'>&lt;-</span> <span class='no'>b</span> <span class='kw'>&lt;-</span> <span class='fl'>1</span>:<span class='fl'>3</span>
 <span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span>(<span class='no'>b</span>) <span class='kw'>&lt;-</span> <span class='no'>letters</span>[<span class='fl'>1</span>:<span class='fl'>3</span>]
+<span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
+<span class='fu'>expect_equal</span>(<span class='no'>a</span>, <span class='no'>b</span>)
+}
 <span class='fu'>expect_equivalent</span>(<span class='no'>a</span>, <span class='no'>b</span>)</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
