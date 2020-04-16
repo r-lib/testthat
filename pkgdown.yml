@@ -1,7 +1,10 @@
 pandoc: 2.7.3
 pkgdown: 1.5.1.9000
-pkgdown_sha: cb74ce08c4b25adda98256ea46196b1182f4e0ea
+pkgdown_sha: fcc120d996055519db89f37f0097af7ce25d6641
 articles:
   custom-expectation: custom-expectation.html
-last_built: 2020-04-13T22:45Z
+last_built: 2020-04-16T13:27Z
+urls:
+  reference: https://testthat.r-lib.org/reference
+  article: https://testthat.r-lib.org/articles
 
