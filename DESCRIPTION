@@ -34,7 +34,7 @@ Imports:
     R6 (>= 2.2.0),
     rlang (>= 0.4.1),
     withr (>= 2.0.0),
-    waldo (>= 0.0.0.9000)
+    waldo
 Suggests: 
     covr,
     curl (>= 0.9.5),
@@ -120,5 +120,4 @@ Collate:
     'verify-output.R'
     'watcher.R'
 Remotes: 
-    r-lib/xml2,
-    r-lib/waldo
+    r-lib/xml2
