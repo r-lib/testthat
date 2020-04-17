@@ -117,7 +117,7 @@ expect_reference <- function(object, expected, info = NULL, label = NULL,
 
   expect(
     is_reference(act$val, exp$val),
-    sprintf("%s not a reference %s.", act$lab, exp$lab),
+    sprintf("%s not a reference to %s.", act$lab, exp$lab),
     info = info
   )
   invisible(act$val)
