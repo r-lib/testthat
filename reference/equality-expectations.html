@@ -55,8 +55,9 @@ expect_identical() is the strictest comparison.
 expect_equal() sets tolerance = testthat_tolerance() so that
 small floating point differences are ignored; this also implies that
 (e.g.) 1 and 1L are treated as equal.
-expect_equivalent() sets ignore_attr = TRUE, ignoring all differences
-in attributes.
+expect_equivalent() sets ignore_attr = TRUE and
+tolerance = testthat_tolerance(), ignoring small floating point
+differences and all differences in attributes.
 
 
 In most cases you should use expect_equal()." />
@@ -196,8 +197,9 @@ to <code><a href='https://rdrr.io/pkg/waldo/man/compare.html'>waldo::compare()</
 <li><p><code>expect_equal()</code> sets <code>tolerance = testthat_tolerance()</code> so that
 small floating point differences are ignored; this also implies that
 (e.g.) <code>1</code> and <code>1L</code> are treated as equal.</p></li>
-<li><p><code>expect_equivalent()</code> sets <code>ignore_attr = TRUE</code>, ignoring all differences
-in attributes.</p></li>
+<li><p><code>expect_equivalent()</code> sets <code>ignore_attr = TRUE</code> and
+<code>tolerance = testthat_tolerance()</code>, ignoring small floating point
+differences and all differences in attributes.</p></li>
 </ul>
 
 <p>In most cases you should use <code>expect_equal()</code>.</p>
@@ -208,7 +210,6 @@ in attributes.</p></li>
   <span class='no'>expected</span>,
   <span class='no'>...</span>,
   <span class='kw'>tolerance</span> <span class='kw'>=</span> <span class='fu'><a href='compare.html'>testthat_tolerance</a></span>(),
-  <span class='kw'>scale</span> <span class='kw'>=</span> <span class='st'>"deprecated"</span>,
   <span class='kw'>info</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>label</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>expected.label</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
@@ -220,7 +221,8 @@ in attributes.</p></li>
   <span class='no'>...</span>,
   <span class='kw'>info</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>label</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>expected.label</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
+  <span class='kw'>expected.label</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>tolerance</span> <span class='kw'>=</span> <span class='fu'><a href='compare.html'>testthat_tolerance</a></span>()
 )
 
 <span class='fu'>expect_identical</span>(
@@ -259,11 +261,6 @@ with differences. Then we check that
 <code>mean(abs(x_diff - y_diff)) / mean(abs(y_diff))</code> (or just
 <code><a href='https://rdrr.io/r/base/mean.html'>mean(abs(x_diff - y_diff))</a></code> if <code>y_diff</code> is small) is less than
 <code>tolerance</code>.</p></td>
-    </tr>
-    <tr>
-      <th>scale</th>
-      <td><p>Deprecated. Passing <code>scale</code> down to <code><a href='https://rdrr.io/r/base/all.equal.html'>all.equal()</a></code> is no
-longer supported.</p></td>
     </tr>
     <tr>
       <th>info</th>
