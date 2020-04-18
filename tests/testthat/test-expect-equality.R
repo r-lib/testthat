@@ -3,6 +3,14 @@ test_that("basically principles of equality hold", {
   expect_failure(expect_equal(1, 2))
 })
 
+test_that("three forms of equality label themselves in output", {
+  verify_output(test_path("test-expect-equality-label.txt"), {
+    expect_identical(1, "a")
+    expect_equal(1, "a")
+    expect_equivalent(1, "a")
+  })
+})
+
 test_that("default labels use unquoting", {
   x <- 2
   expect_failure(expect_equal(1, !! x), "`actual` (1) not equal to `expected` (2)", fixed = TRUE)
