@@ -8,20 +8,11 @@ test_that("default labels use unquoting", {
   expect_failure(expect_equal(1, !! x), "`actual` (1) not equal to `expected` (2)", fixed = TRUE)
 })
 
-test_that("expect_equivalent ignores attributes for integers", {
-  x1 <- 1:10
-  x2 <- structure(x1, a = 1, b = 2)
-
-  expect_failure(expect_equal(x1, x2))
-  expect_success(expect_equivalent(x1, x2))
-})
-
-test_that("expect_equivalent ignores attributes for characters", {
-  x1 <- letters
-  x2 <- structure(x1, a = 1, b = 2)
-
-  expect_failure(expect_equal(x1, x2))
-  expect_success(expect_equivalent(x1, x2))
+test_that("expect_equivalent ignores attributes and numeric differences", {
+  x <- y <- 1
+  attr(y, "y") <- y
+  expect_success(expect_equivalent(x, y))
+  expect_success(expect_equivalent(x, 1L))
 })
 
 test_that("expect_equal and expect_equivalent pass on ... to compare", {

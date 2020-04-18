@@ -10,8 +10,9 @@
 #' - `expect_equal()` sets `tolerance = testthat_tolerance()` so that
 #'   small floating point differences are ignored; this also implies that
 #'   (e.g.) `1` and `1L` are treated as equal.
-#' - `expect_equivalent()` sets `ignore_attr = TRUE`, ignoring all differences
-#'   in attributes.
+#' - `expect_equivalent()` sets `ignore_attr = TRUE` and
+#'   `tolerance = testthat_tolerance()`, ignoring small floating point
+#'   differences and all differences in attributes.
 #'
 #' In most cases you should use `expect_equal()`.
 #'
@@ -71,11 +72,16 @@ expect_equal <- function(object, expected, ...,
 #' @export
 #' @rdname equality-expectations
 expect_equivalent <- function(object, expected, ..., info = NULL, label = NULL,
-                              expected.label = NULL) {
+                              expected.label = NULL,
+                              tolerance = testthat_tolerance()) {
   act <- quasi_label(enquo(object), label, arg = "object")
   exp <- quasi_label(enquo(expected), expected.label, arg = "expected")
 
-  expect_waldo_equal(act, exp, info, ..., ignore_attr = TRUE)
+  expect_waldo_equal(
+    act, exp, info, ...,
+    ignore_attr = TRUE,
+    tolerance = tolerance
+  )
 }
 
 #' @export

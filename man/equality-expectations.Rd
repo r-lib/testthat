@@ -24,7 +24,8 @@ expect_equivalent(
   ...,
   info = NULL,
   label = NULL,
-  expected.label = NULL
+  expected.label = NULL,
+  tolerance = testthat_tolerance()
 )
 
 expect_identical(
@@ -78,8 +79,9 @@ to \code{waldo::compare()}:
 \item \code{expect_equal()} sets \code{tolerance = testthat_tolerance()} so that
 small floating point differences are ignored; this also implies that
 (e.g.) \code{1} and \code{1L} are treated as equal.
-\item \code{expect_equivalent()} sets \code{ignore_attr = TRUE}, ignoring all differences
-in attributes.
+\item \code{expect_equivalent()} sets \code{ignore_attr = TRUE} and
+\code{tolerance = testthat_tolerance()}, ignoring small floating point
+differences and all differences in attributes.
 }
 
 In most cases you should use \code{expect_equal()}.
