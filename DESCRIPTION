@@ -120,4 +120,5 @@ Collate:
     'verify-output.R'
     'watcher.R'
 Remotes: 
-    r-lib/xml2
+    r-lib/xml2,
+    r-lib/waldo
