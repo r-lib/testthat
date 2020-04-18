@@ -12,7 +12,6 @@ expect_equal(
   expected,
   ...,
   tolerance = testthat_tolerance(),
-  scale = "deprecated",
   info = NULL,
   label = NULL,
   expected.label = NULL
@@ -58,9 +57,6 @@ with differences. Then we check that
 \code{mean(abs(x_diff - y_diff)) / mean(abs(y_diff))} (or just
 \code{mean(abs(x_diff - y_diff))} if \code{y_diff} is small) is less than
 \code{tolerance}.}
-
-\item{scale}{Deprecated. Passing \code{scale} down to \code{all.equal()} is no
-longer supported.}
 
 \item{info}{Extra information to be included in the message. This argument
 is soft-deprecated and should not be used in new code. Instead see
