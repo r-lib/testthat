@@ -1,6 +1,10 @@
 test_that("basically principles of equality hold", {
   expect_success(expect_equal(1, 1))
   expect_failure(expect_equal(1, 2))
+
+  x <- y <- 1
+  expect_success(expect_reference(x, y))
+  expect_failure(expect_reference(x, 1))
 })
 
 test_that("three forms of equality label themselves in output", {
