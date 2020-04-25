@@ -16,7 +16,7 @@ teardown_env$queue <- list()
 #' \dontrun{
 #'
 #' tmp <- tempfile()
-#' setup(writeLines(con = tmp, "some test data"))
+#' setup(writeLines("some test data", tmp))
 #' teardown(unlink(tmp))
 #'
 #' }
