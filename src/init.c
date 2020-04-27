@@ -17,6 +17,8 @@ static const R_CallMethodDef CallEntries[] = {
 
 void R_init_testthat(DllInfo *dll)
 {
+    R_RegisterCCallable("testthat", "duplicate_",  (DL_FUNC) &duplicate_);
+    R_RegisterCCallable("testthat", "reassign_function",  (DL_FUNC) &reassign_function);
     R_registerRoutines(dll, NULL, CallEntries, NULL, NULL);
     R_useDynamicSymbols(dll, FALSE);
 }
