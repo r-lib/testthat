@@ -13,5 +13,5 @@ SEXP reassign_function(SEXP name, SEXP env, SEXP old_fun, SEXP new_fun) {
   static SEXP(*fun)(SEXP, SEXP, SEXP, SEXP) = NULL;
   if (fun == NULL)
     fun = (SEXP(*)(SEXP, SEXP, SEXP, SEXP)) R_GetCCallable("testthat", "reassign_function");
-  return fun(name, nev, old_fun, new_fun);
+  return fun(name, env, old_fun, new_fun);
 }
