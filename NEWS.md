@@ -2,6 +2,8 @@
 
 * `SummaryReporter` by default doesn't show dots, praise, or the "DONE" line, and doesn't limit output. This makes it easier to compose with e.g. the `ProgressReporter` (#990).
 
+* `SummaryReporter` gains a new `"testthat.summary.omit_skips"` option that allows omitting the display of skipped tests (#990).
+
 # testthat 2.3.2
 
 * Fix R CMD check issues

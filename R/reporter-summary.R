@@ -75,7 +75,10 @@ SummaryReporter <- R6::R6Class("SummaryReporter",
       warnings <- self$warnings$as_list()
 
       self$cat_line()
-      private$cat_reports("Skipped", skips, Inf)
+
+      if (rlang::is_false(getOption("testthat.summary.omit_skips", FALSE))) {
+        private$cat_reports("Skipped", skips, Inf)
+      }
       private$cat_reports("Warnings", warnings, Inf)
       private$cat_reports("Failed", failures, self$max_reports)
 
