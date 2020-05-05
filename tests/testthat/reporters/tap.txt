@@ -11,7 +11,7 @@ not ok 5 Failure:2b
 not ok 6 Failure:loop
   `actual` (`i`) not equal to `expected` (2).
   
-  `actual`:   1
+    `actual`: 1
   `expected`: 2
 ok 7 Failure:loop
 # Context Errors

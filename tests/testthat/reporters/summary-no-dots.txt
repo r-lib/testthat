@@ -35,7 +35,7 @@ FALSE isn't true.
 ── 4. Failure: Failure:loop (@tests.R#24)  ─────────────────────────────────────
 `actual` (`i`) not equal to `expected` (2).
 
-`actual`:   1
+  `actual`: 1
 `expected`: 2
 
 ── 5. Error: Error:1 (@tests.R#33)  ────────────────────────────────────────────

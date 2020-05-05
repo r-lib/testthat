@@ -17,7 +17,7 @@
     <testcase time="0" classname="Expectations" name="Failure_loop">
       <failure type="failure" message="`actual` (`i`) not equal to `expected` (2). (@tests.R#24)">`actual` (`i`) not equal to `expected` (2).
 
-`actual`:   1
+  `actual`: 1
 `expected`: 2</failure>
     </testcase>
     <testcase time="0" classname="Expectations" name="Failure_loop"/>
