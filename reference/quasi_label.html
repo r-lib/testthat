@@ -231,7 +231,7 @@ the results.</p>
 <span class='fu'><a href='expect_success.html'>show_failure</a></span>(<span class='fu'><a href='equality-expectations.html'>expect_equal</a></span>(<span class='fu'>f</span>(<span class='no'>i</span>), <span class='no'>i</span> * <span class='fl'>10</span>))</div><div class='output co'>#&gt; <span style='font-weight: bold;'>Failed expectation:
 #&gt; </span><span>`actual` (f(i)) not equal to `expected` (i * 10).
 #&gt; 
-#&gt; `actual`:   </span><span style='color: #00BB00;'>90</span><span> 
+#&gt;   `actual`:  </span><span style='color: #00BB00;'>90</span><span>
 #&gt; `expected`: </span><span style='color: #00BB00;'>100</span><span></div><div class='input'>
 <span class='co'># To overcome this issue, testthat allows you to unquote expressions using</span>
 <span class='co'># !!. This causes the failure message to show the value rather than the</span>
@@ -239,7 +239,7 @@ the results.</p>
 <span class='fu'><a href='expect_success.html'>show_failure</a></span>(<span class='fu'><a href='equality-expectations.html'>expect_equal</a></span>(<span class='fu'>f</span>(!!<span class='no'>i</span>), !!(<span class='no'>i</span> * <span class='fl'>10</span>)))</div><div class='output co'>#&gt; </span><span style='font-weight: bold;'>Failed expectation:
 #&gt; </span><span>`actual` (f(10)) not equal to `expected` (100).
 #&gt; 
-#&gt; `actual`:   </span><span style='color: #00BB00;'>90</span><span> 
+#&gt;   `actual`:  </span><span style='color: #00BB00;'>90</span><span>
 #&gt; `expected`: </span><span style='color: #00BB00;'>100</span><span></div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
