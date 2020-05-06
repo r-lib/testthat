@@ -41,12 +41,25 @@ run_cpp_tests <- function(package) {
   output <- ""
   tests_passed <- TRUE
 
+  catch_error <- FALSE
   tryCatch(
     output <- capture_output_lines(tests_passed <- .Call(run_testthat_tests, TRUE)),
     error = function(e) {
-      warning(sprintf("failed to call test entrypoint '%s'", run_testthat_tests))
+      catch_error <- TRUE
+      reporter <- get_reporter()
+
+      reporter$start_context(context = "Catch")
+      reporter$start_test(context = "Catch", test = "Catch")
+      reporter$add_result(context = "Catch", test = "Catch", result = expectation("failure", e$message))
+      reporter$end_test(context = "Catch", test = "Catch")
+      reporter$end_context(context = "Catch")
     }
   )
+
+
+  if (catch_error) {
+    return()
+  }
 
   report <- xml2::read_xml(paste(output, collapse = "\n"))
 
