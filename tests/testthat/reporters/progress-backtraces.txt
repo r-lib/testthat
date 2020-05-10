@@ -1,28 +1,28 @@
 ✔ |  OK F W S | Context
 
-⠏ |   0       | Backtraces
-⠋ |   0 1     | Backtraces
-⠙ |   0 2     | Backtraces
-⠹ |   0 3     | Backtraces
-⠸ |   0 4     | Backtraces
-⠼ |   0 5     | Backtraces
-⠴ |   0 6     | Backtraces
-⠦ |   0 7     | Backtraces
-✖ |   0 7     | Backtraces
+⠏ |   0       | backtraces
+⠋ |   0 1     | backtraces
+⠙ |   0 2     | backtraces
+⠹ |   0 3     | backtraces
+⠸ |   0 4     | backtraces
+⠼ |   0 5     | backtraces
+⠴ |   0 6     | backtraces
+⠦ |   0 7     | backtraces
+✖ |   0 7     | backtraces
 ────────────────────────────────────────────────────────────────────────────────
-backtraces.R:6: error: errors thrown at block level are entraced
+backtraces.R:4: error: errors thrown at block level are entraced
 foo
 Backtrace:
  1. f()
  2. g()
 
-backtraces.R:11: error: errors thrown from a quasi-labelled argument are entraced
+backtraces.R:9: error: errors thrown from a quasi-labelled argument are entraced
 foo
 Backtrace:
  1. testthat::expect_s3_class(foo(), "foo")
  4. foo()
 
-backtraces.R:18: error: errors thrown from a quasi-labelled argument are entraced (deep case)
+backtraces.R:16: error: errors thrown from a quasi-labelled argument are entraced (deep case)
 foo
 Backtrace:
  1. testthat::expect_s3_class(f(), "foo")
@@ -30,7 +30,7 @@ Backtrace:
  5. g()
  9. foo()
 
-backtraces.R:28: error: errors thrown from a quasi-labelled argument are entraced (deep deep case)
+backtraces.R:26: error: errors thrown from a quasi-labelled argument are entraced (deep deep case)
 foobar
 Backtrace:
  1. f()
@@ -38,7 +38,7 @@ Backtrace:
  6. foo()
  7. bar()
 
-backtraces.R:35: failure: failed expect_error() prints a backtrace
+backtraces.R:33: failure: failed expect_error() prints a backtrace
 `f()` threw an condition with unexpected class.
 
 Backtrace:
@@ -46,7 +46,7 @@ Backtrace:
  6. f()
  7. signaller()
 
-backtraces.R:38: failure: failed expect_error() prints a backtrace
+backtraces.R:36: failure: failed expect_error() prints a backtrace
 `f()` threw an error with unexpected message.
 Expected match: "foo"
 Actual message: "bar"
@@ -55,7 +55,7 @@ Backtrace:
  6. f()
  7. signaller()
 
-backtraces.R:46: error: Errors are inspected with `conditionMessage()`
+backtraces.R:44: error: Errors are inspected with `conditionMessage()`
 dispatched
 ────────────────────────────────────────────────────────────────────────────────
 
