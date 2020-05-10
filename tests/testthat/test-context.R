@@ -28,8 +28,8 @@ CountReporter <- R6::R6Class("CountReporter",
 test_that("contexts are opened, then closed", {
   report <- CountReporter$new()
   test_file("context.R", report, wrap = FALSE)
-  expect_that(report$context_count, equals(2))
-  expect_that(report$context_i, equals(0))
-  expect_that(report$test_count, equals(4))
-  expect_that(report$test_i, equals(0))
+  expect_equal(report$context_count, 2)
+  expect_equal(report$context_i, 0)
+  expect_equal(report$test_count, 4)
+  expect_equal(report$test_i, 0)
 })

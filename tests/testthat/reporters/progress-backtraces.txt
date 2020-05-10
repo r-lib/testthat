@@ -19,13 +19,13 @@ Backtrace:
 backtraces.R:11: error: errors thrown from a quasi-labelled argument are entraced
 foo
 Backtrace:
- 1. testthat::expect_is(foo(), "foo")
+ 1. testthat::expect_s3_class(foo(), "foo")
  4. foo()
 
 backtraces.R:18: error: errors thrown from a quasi-labelled argument are entraced (deep case)
 foo
 Backtrace:
- 1. testthat::expect_is(f(), "foo")
+ 1. testthat::expect_s3_class(f(), "foo")
  4. f()
  5. g()
  9. foo()

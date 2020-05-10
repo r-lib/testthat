@@ -1,5 +1,3 @@
-context("test-expect-invisible")
-
 test_that("basically principles of visibilty hold", {
   expect_success(expect_invisible(x <- 10))
   expect_failure(expect_invisible(x))

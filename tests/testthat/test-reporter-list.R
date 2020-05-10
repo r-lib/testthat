@@ -45,7 +45,7 @@ test_that("exercise ListReporter", {
   test_file_path <- 'test-list-reporter/test-exercise-list-reporter.R'
   res <- test_file(test_path(test_file_path), reporter = NULL)
 
-  expect_is(res, "testthat_results")
+  expect_s3_class(res, "testthat_results")
   expect_length(res, 5) # 5 tests
 
   # we convert the results to data frame for convenience
