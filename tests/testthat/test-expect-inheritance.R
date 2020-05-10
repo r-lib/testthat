@@ -4,6 +4,8 @@ test_that("expect_type checks typeof", {
 })
 
 test_that("expect_is checks class", {
+  local_edition(2)
+
   expect_success(expect_is(factor("a"), "factor"))
   expect_failure(expect_is(factor("a"), "integer"))
 })

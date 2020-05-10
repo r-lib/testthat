@@ -27,6 +27,12 @@ the (internal) expectation result as an invisible list
 \description{
 An old style of testing that's no longer encouraged.
 }
+\section{3rd edition}{
+
+This style of testing is formally deprecated as of the 3rd edition.
+Use a more specific \code{expect_} function instead.
+}
+
 \examples{
 expect_that(5 * 2, equals(10))
 expect_that(sqrt(2) ^ 2, equals(2))

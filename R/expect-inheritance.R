@@ -108,11 +108,18 @@ isS3 <- function(x) is.object(x) && !isS4(x)
 #' [expect_type()], [expect_s3_class()] or [expect_s4_class()] to more clearly
 #' convey your  intent.
 #'
+#' @section 3rd edition:
+#' `expect_is()` is formally deprecated in the 3rd edition.
+#'
 #' @keywords internal
 #' @inheritParams expect_type
 #' @export
 expect_is <- function(object, class, info = NULL, label = NULL) {
   stopifnot(is.character(class))
+  edition_deprecate(3, "expect_is()",
+    "Use `expect_type()`, `expect_s3_class()`, or `expect_s4_class()` instead"
+  )
+
 
   act <- quasi_label(enquo(object), label, arg = "object")
   act$class <- klass(act$val)

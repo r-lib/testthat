@@ -24,6 +24,7 @@ Depends:
 Imports: 
     cli,
     crayon (>= 1.3.4),
+    desc,
     digest,
     ellipsis,
     evaluate,
@@ -60,6 +61,7 @@ Collate:
     'compare-time.R'
     'context.R'
     'describe.R'
+    'edition.R'
     'evaluate-promise.R'
     'example.R'
     'expect-comparison.R'
@@ -122,3 +124,4 @@ Collate:
 Remotes: 
     r-lib/xml2,
     r-lib/waldo
+Config/testthat/edition: 3
