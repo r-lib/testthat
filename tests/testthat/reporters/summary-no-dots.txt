@@ -9,46 +9,46 @@ Throwable errors: 8
 End: 
 
 ══ Skipped ═════════════════════════════════════════════════════════════════════
-1. Skip:1 (@tests.R#62) - Reason: skip
+1. Skip:1 (@tests.R#64) - Reason: skip
 
-2. Skip:2 (@tests.R#69) - Reason: skip
+2. Skip:2 (@tests.R#71) - Reason: skip
 
-3. Skip:3 (@tests.R#72) - Reason: empty test
+3. Skip:3 (@tests.R#74) - Reason: empty test
 
 ══ Warnings ════════════════════════════════════════════════════════════════════
-1. Warning:1 (@tests.R#78) - abc
+1. Warning:1 (@tests.R#80) - abc
 
-2. Warning:2 (@tests.R#84) - def
+2. Warning:2 (@tests.R#86) - def
 
-3. Warning:2 (@tests.R#85) - ghi
+3. Warning:2 (@tests.R#87) - ghi
 
 ══ Failed ══════════════════════════════════════════════════════════════════════
-── 1. Failure: Failure:1 (@tests.R#12)  ────────────────────────────────────────
+── 1. Failure: Failure:1 (@tests.R#14)  ────────────────────────────────────────
 Failure has been forced
 
-── 2. Failure: Failure:2a (@tests.R#16)  ───────────────────────────────────────
+── 2. Failure: Failure:2a (@tests.R#18)  ───────────────────────────────────────
 Failure has been forced
 
-── 3. Failure: Failure:2b (@tests.R#19)  ───────────────────────────────────────
+── 3. Failure: Failure:2b (@tests.R#21)  ───────────────────────────────────────
 FALSE isn't true.
 
-── 4. Failure: Failure:loop (@tests.R#24)  ─────────────────────────────────────
+── 4. Failure: Failure:loop (@tests.R#26)  ─────────────────────────────────────
 `actual` (`i`) not equal to `expected` (2).
 
   `actual`: 1
 `expected`: 2
 
-── 5. Error: Error:1 (@tests.R#33)  ────────────────────────────────────────────
+── 5. Error: Error:1 (@tests.R#35)  ────────────────────────────────────────────
 stop
 
-── 6. Error: Error:3 (@tests.R#47)  ────────────────────────────────────────────
+── 6. Error: Error:3 (@tests.R#49)  ────────────────────────────────────────────
 !
 Backtrace:
  1. f()
  2. g()
  3. h()
 
-── 7. Error: Recursion:1 (@tests.R#56)  ────────────────────────────────────────
+── 7. Error: Recursion:1 (@tests.R#58)  ────────────────────────────────────────
 This is deep
 Backtrace:
   1. f(25)
@@ -73,7 +73,7 @@ Backtrace:
  25. f(x - 1)
  26. f(x - 1)
 
-── 8. Error: Error:4 (@tests.R#111)  ───────────────────────────────────────────
+── 8. Error: Error:4 (@tests.R#113)  ───────────────────────────────────────────
 Throwable
 
 ══ DONE ════════════════════════════════════════════════════════════════════════

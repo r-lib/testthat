@@ -1,29 +1,29 @@
-── 1. Failure: Failure:1 (@tests.R#12)  ────────────────────────────────────────
+── 1. Failure: Failure:1 (@tests.R#14)  ────────────────────────────────────────
 Failure has been forced
 
-── 2. Failure: Failure:2a (@tests.R#16)  ───────────────────────────────────────
+── 2. Failure: Failure:2a (@tests.R#18)  ───────────────────────────────────────
 Failure has been forced
 
-── 3. Failure: Failure:2b (@tests.R#19)  ───────────────────────────────────────
+── 3. Failure: Failure:2b (@tests.R#21)  ───────────────────────────────────────
 FALSE isn't true.
 
-── 4. Failure: Failure:loop (@tests.R#24)  ─────────────────────────────────────
+── 4. Failure: Failure:loop (@tests.R#26)  ─────────────────────────────────────
 `actual` (`i`) not equal to `expected` (2).
 
   `actual`: 1
 `expected`: 2
 
-── 5. Error: Error:1 (@tests.R#33)  ────────────────────────────────────────────
+── 5. Error: Error:1 (@tests.R#35)  ────────────────────────────────────────────
 stop
 
-── 6. Error: Error:3 (@tests.R#47)  ────────────────────────────────────────────
+── 6. Error: Error:3 (@tests.R#49)  ────────────────────────────────────────────
 !
 Backtrace:
  1. f()
  2. g()
  3. h()
 
-── 7. Error: Recursion:1 (@tests.R#56)  ────────────────────────────────────────
+── 7. Error: Recursion:1 (@tests.R#58)  ────────────────────────────────────────
 This is deep
 Backtrace:
   1. f(25)
@@ -48,17 +48,17 @@ Backtrace:
  25. f(x - 1)
  26. f(x - 1)
 
-── 8. Error: Error:4 (@tests.R#111)  ───────────────────────────────────────────
+── 8. Error: Error:4 (@tests.R#113)  ───────────────────────────────────────────
 Throwable
 
 ══ testthat results  ═══════════════════════════════════════════════════════════
 [ OK: 5 | SKIPPED: 3 | WARNINGS: 3 | FAILED: 8 ]
-1. Failure: Failure:1 (@tests.R#12) 
-2. Failure: Failure:2a (@tests.R#16) 
-3. Failure: Failure:2b (@tests.R#19) 
-4. Failure: Failure:loop (@tests.R#24) 
-5. Error: Error:1 (@tests.R#33) 
-6. Error: Error:3 (@tests.R#47) 
-7. Error: Recursion:1 (@tests.R#56) 
-8. Error: Error:4 (@tests.R#111) 
+1. Failure: Failure:1 (@tests.R#14) 
+2. Failure: Failure:2a (@tests.R#18) 
+3. Failure: Failure:2b (@tests.R#21) 
+4. Failure: Failure:loop (@tests.R#26) 
+5. Error: Error:1 (@tests.R#35) 
+6. Error: Error:3 (@tests.R#49) 
+7. Error: Recursion:1 (@tests.R#58) 
+8. Error: Error:4 (@tests.R#113) 
 

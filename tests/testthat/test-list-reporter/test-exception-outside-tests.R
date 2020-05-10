@@ -1,4 +1,3 @@
-context('exception outside test')
 # the objective is to test what happens if some code fails outside of tests
 # i.e. not inside a test_that() call.
 

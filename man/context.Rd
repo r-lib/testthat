@@ -19,6 +19,12 @@ A context defines a set of tests that test related functionality.  Usually
 you will have one context per file, but you may have multiple contexts
 in a single file if you so choose.
 }
+\section{3rd edition}{
+
+\code{context()} is deprecated in the third edition, and the equivalent
+information is instead recorded by the test file name.
+}
+
 \examples{
 context("String processing")
 context("Remote procedure calls")

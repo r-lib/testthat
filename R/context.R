@@ -8,6 +8,10 @@
 #' you will have one context per file, but you may have multiple contexts
 #' in a single file if you so choose.
 #'
+#' @section 3rd edition:
+#' `context()` is deprecated in the third edition, and the equivalent
+#' information is instead recorded by the test file name.
+#'
 #' @param desc description of context.  Should start with a capital letter.
 #' @keywords internal
 #' @export
@@ -15,6 +19,7 @@
 #' context("String processing")
 #' context("Remote procedure calls")
 context <- function(desc) {
+  edition_deprecate("3.0.0", "context()")
   get_reporter()$.start_context(desc)
 }
 
