@@ -1,9 +1,19 @@
 
+# See https://www.tidyverse.org/blog/2019/09/callr-task-q/
+# for a detailed explanation on how the task queue works.
+# Changes in this version, compared to the blog post:
+# * We use data frames instead of tibbles. This requires some caution
+#   and the df_add_row() function below.
+# * We do not collect the results in a result column, because we
+#   just return them immediately, as we get them.
+# * We do not need a pop() method, because poll() will just return
+#   every message.
+
 task_q <- R6::R6Class(
   "task_q",
   public = list(
-    initialize = function(concurrency = 4L) {
-      private$start_workers(concurrency)
+    initialize = function(concurrency = 4L, ...) {
+      private$start_workers(concurrency, ...)
       invisible(self)
     },
     list_tasks = function() private$tasks,
@@ -18,9 +28,10 @@ task_q <- R6::R6Class(
       if (is.null(id)) id <- private$get_next_id()
       if (id %in% private$tasks$id) stop("Duplicate task id")
       before <- which(private$tasks$idle)[1]
-      private$tasks <- tibble::add_row(private$tasks, .before = before,
-        id = id, idle = FALSE, state = "waiting", fun = list(fun),
-        args = list(args), worker = list(NULL), result = list(NULL))
+      private$tasks <- df_add_row(private$tasks, .before = before,
+        id = id, idle = FALSE, state = "waiting", fun = I(list(fun)),
+        args = I(list(args)), worker = I(list(NULL))
+      )
       private$schedule()
       invisible(id)
     },
@@ -35,21 +46,27 @@ task_q <- R6::R6Class(
           private$tasks$worker[topoll],
           function(x) x$get_poll_connection())
         pr <- processx::poll(conns, as_ms(timeout))
-        private$tasks$state[topoll][pr == "ready"] <- "ready"
-        private$schedule()
-        ret <- private$tasks$id[private$tasks$state == "done"]
-        if (is.finite(timeout)) timeout <- limit - Sys.time()
-        if (length(ret) || timeout < 0) break;
-      }
-      ret
-    },
+        ready <- topoll[pr == "ready"]
+        results <- lapply(ready, function(i) {
+          msg <- private$tasks$worker[[i]]$read()
+          ## TODO: why can this be NULL?
+          if (is.null(msg) || msg$code == 301) {
+            private$tasks$state[[i]] <- "running"
+          } else if (msg$code == 201) {
+            private$tasks$state[[i]] <- "ready"
+            msg <- NULL
+          } else {
+            private$tasks$state[[i]] <- "ready"
+          }
+          msg
+        })
+        results <- results[! vapply(results, is.null, logical(1))]
 
-    pop = function(timeout = 0) {
-      if (is.na(done <- self$poll(timeout)[1])) return(NULL)
-      row <- match(done, private$tasks$id)
-      result <- private$tasks$result[[row]]
-      private$tasks <- private$tasks[-row, ]
-      c(result, list(task_id = done))
+        private$schedule()
+        if (is.finite(timeout)) timeout <- limit - Sys.time()
+        if (length(results) || timeout < 0) break;
+      }
+      results
     }
   ),
 
@@ -62,17 +79,20 @@ task_q <- R6::R6Class(
       paste0(".", id)
     },
 
-    start_workers = function(concurrency) {
-      private$tasks <- tibble::tibble(
+    start_workers = function(concurrency, ...) {
+      private$tasks <- data.frame(
+        stringsAsFactors = FALSE,
         id = character(), idle = logical(),
         state = c("waiting", "running", "ready", "done")[NULL],
-        fun = list(), args = list(), worker = list(), result = list())
+        fun = I(list()), args = I(list()), worker = I(list())
+      )
+      rsopts <- callr::r_session_options(...)
       for (i in seq_len(concurrency)) {
-        rs <- callr::r_session$new(wait = FALSE)
-        private$tasks <- tibble::add_row(private$tasks,
+        rs <- callr::r_session$new(rsopts, wait = FALSE)
+        private$tasks <- df_add_row(private$tasks,
           id = paste0(".idle-", i), idle = TRUE, state = "running",
-          fun = list(NULL), args = list(NULL), worker = list(rs),
-          result = list(NULL))
+          fun = I(list(NULL)), args = I(list(NULL)), worker = I(list(rs))
+        )
       }
     },
 
@@ -81,10 +101,11 @@ task_q <- R6::R6Class(
       if (!length(ready)) return()
       rss <- private$tasks$worker[ready]
 
-      private$tasks$result[ready] <- lapply(rss, function(x) x$read())
       private$tasks$worker[ready] <- replicate(length(ready), NULL)
       private$tasks$state[ready] <-
         ifelse(private$tasks$idle[ready], "waiting", "done")
+      done <- which(private$tasks$state == "done")
+      if (any(done)) private$tasks <- private$tasks[-done, ]
 
       waiting <- which(private$tasks$state == "waiting")[1:length(ready)]
       private$tasks$worker[waiting] <- rss
@@ -99,3 +120,15 @@ task_q <- R6::R6Class(
     }
   )
 )
+
+df_add_row <- function(df, ..., .before = NULL) {
+  before <- .before %||% (nrow(df) + 1L)
+  row <- data.frame(stringsAsFactors = FALSE, ...)
+  if (before > nrow(df)) {
+    rbind(df, row)
+  } else if (before <= 1L) {
+    rbind(row, df)
+  } else {
+    rbind(df[1:(before-1), ], row, df[before:nrow(df), ])
+  }
+}

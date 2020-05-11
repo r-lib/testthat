@@ -75,6 +75,21 @@ test_dir <- function(path,
     warning("`encoding` is deprecated; all files now assumed to be UTF-8", call. = FALSE)
   }
 
+  if (tolower(Sys.getenv("TESTTHAT_PARALLEL", "")) %in% c("true", "yes")) {
+    return(test_dir_parallel(
+      path,
+      filter,
+      reporter,
+      env,
+      ...,
+      encoding,
+      load_helpers,
+      stop_on_failure,
+      stop_on_warning,
+      wrap
+    ))
+  }
+
   # Find package root, if any, so backtrace srcrefs refer to R/ and
   # tests/ files consistently
   testthat_dir <- maybe_root_dir(path)
