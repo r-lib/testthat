@@ -123,6 +123,7 @@ test_dir_parallel <- function(path,
   }
 
   files <- list()
+  results <- list()
 
   replay <- function(filename) {
     rtr <- get_reporter()
@@ -147,7 +148,7 @@ test_dir_parallel <- function(path,
           if (m$cmd == "end_file") replay(m$filename)
 
         } else if (x$code == 200) {
-          # a file is done, nothing to do here
+          results <- append(results, list(x$result))
 
         } else if (x$code > 500) {
           # a subprocess has crashed
@@ -156,7 +157,20 @@ test_dir_parallel <- function(path,
         }
       }
     }
-  )
+    )
+
+  results <- unlist(results, recursive = FALSE)
+  results <- testthat_results(results)
+
+  if (stop_on_failure && !all_passed(results)) {
+    stop("Test failures", call. = FALSE)
+  }
+
+  if (stop_on_warning && any_warnings(results)) {
+    stop("Tests generated warnings", call. = FALSE)
+  }
+
+  invisible(results)
 }
 
 # This is the function that is called for each test file, in the subprocess
@@ -169,8 +183,6 @@ subprocess_task <- function(path) {
     load_helpers = FALSE,
     wrap = TRUE
   )
-  # We don't need to return the result to the main process
-  NULL
 }
 
 find_pkg_name <- function(dir) {
