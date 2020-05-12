@@ -4,7 +4,7 @@
 \alias{process_setup}
 \title{This function is called from the subprocess at startup}
 \usage{
-process_setup(path, package, testthat_dir, load_helpers, pkgload = FALSE)
+process_setup(path, package, testthat_dir, load_helpers, pkgload)
 }
 \arguments{
 \item{package}{Name of the tested package. This is needed, because we

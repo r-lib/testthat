@@ -67,13 +67,22 @@ test_dir_parallel <- function(path,
                      stop_on_warning = FALSE,
                      wrap = TRUE) {
 
-  # TODO: `env` will be ignored, silently. Is that ok?
   # TODO: handle stop_on_failure
   # TODO: handle stop_on_warning
   # TODO: support timeouts
 
+  # TODO: This is a trick and we'll change it. If 'env' is child of
+  # global, then we are using pkgload. Otherwise we are in test_check(),
+  # probably, and we can library() the package.
+
+  pkgload <- identical(parent.env(env), .GlobalEnv)
   testthat_dir <- maybe_root_dir(path)
-  pkg_name <- find_pkg_name(testthat_dir)
+
+  if (pkgload) {
+    pkg_name <- find_pkg_name(testthat_dir)
+  } else {
+    pkg_name <- Sys.getenv("TESTTHAT_PKG")
+  }
 
   withr::local_envvar(list(
     R_TESTS = "",
@@ -97,7 +106,8 @@ test_dir_parallel <- function(path,
     paths = paths,
     pkg_name = pkg_name,
     testthat_dir = testthat_dir,
-    load_helpers = load_helpers
+    load_helpers = load_helpers,
+    pkgload = pkgload
   )
 
   # Run the event loop
@@ -178,7 +188,7 @@ find_pkg_name <- function(dir) {
 }
 
 start_test_processes <- function(dir, paths, pkg_name, testthat_dir,
-                                 load_helpers = FALSE) {
+                                 load_helpers, pkgload) {
 
   # TODO: detect number of CPUs
   # TODO: pkgload or not?
@@ -189,7 +199,8 @@ start_test_processes <- function(dir, paths, pkg_name, testthat_dir,
     !!dir,
     !!pkg_name,
     !!testthat_dir,
-    !!load_helpers
+    !!load_helpers,
+    !!pkgload
   ))
   task_q$new(concurrency = num_proc, load_hook = load_hook)
 }
@@ -205,16 +216,21 @@ start_test_processes <- function(dir, paths, pkg_name, testthat_dir,
 #' @keywords internal
 
 process_setup <- function(path, package, testthat_dir, load_helpers,
-                          pkgload = FALSE) {
+                          pkgload) {
 
-  # TODO: decide between library() and pkgload automatically, so we do
-  # not use load_all() in test_check()
+  # TODO: meaningful error if startup fails
+
   library(testthat)
-  ns_env <- pkgload::load_all(
-    path,
-    quiet = TRUE,
-    export_all = TRUE
-  )$env
+  if (pkgload) {
+    ns_env <- pkgload::load_all(
+      path,
+      quiet = TRUE,
+      export_all = TRUE
+    )$env
+  } else {
+    library(package, character.only = TRUE)
+    ns_env <- test_pkg_env(package)
+  }
 
   .GlobalEnv$.test_env <- new.env(parent = ns_env)
 
