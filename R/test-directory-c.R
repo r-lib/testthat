@@ -72,11 +72,6 @@ test_dir_parallel <- function(path,
   # TODO: handle stop_on_warning
   # TODO: support timeouts
 
-  # In case the test code also calls test_dir(), we'll make that
-  # non-parallel, unless explicitly requested.
-
-  Sys.unsetenv("TESTTHAT_PARALLEL")
-
   testthat_dir <- maybe_root_dir(path)
   pkg_name <- find_pkg_name(testthat_dir)
 
@@ -117,24 +112,29 @@ test_dir_parallel <- function(path,
     tasks$push(fun, list(path))
   }
 
-  with_reporter("progress2",
+  files <- list()
+
+  replay <- function(filename) {
+    rtr <- get_reporter()
+    ctx <- context_name(filename)
+    context(ctx)
+    for (event in files[[filename]]) {
+      if ("context" %in% names(event$args)) {
+        event$args["context"] <- list(event$args$context %||% ctx)
+      }
+      do.call(rtr[[event$cmd]], event$args)
+    }
+    files[[filename]] <- NULL
+  }
+
+  with_reporter(reporter,
     while (!tasks$is_idle()) {
       msgs <- tasks$poll(Inf)
       for (x in msgs) {
         if (x$code == 301) {
-          rep <- get_reporter()
           m <- x$message
-          switch(
-            m$cmd,
-            "start-test" = rep$start_test(m$filename, m$context, m$test),
-            "start-file" = rep$start_file(m$filename),
-            "add-result" = {
-              rep$add_result(m$filename, m$context, m$test, m$output)
-            },
-            "end-test" = rep$end_test(m$filename, m$context, m$test),
-            "end-file" = rep$end_file(m$filename),
-            stop("Unknown message from subprocess, internal error")
-          )
+          files[[m$filename]] <- append(files[[m$filename]], list(m))
+          if (m$cmd == "end_file") replay(m$filename)
 
         } else if (x$code == 200) {
           # a file is done, nothing to do here
@@ -142,6 +142,7 @@ test_dir_parallel <- function(path,
         } else if (x$code > 500) {
           # a subprocess has crashed
           # TODO: start another one. Here or in the task queue?
+          # TODO: print the partial result and report the crash
         }
       }
     }
@@ -208,7 +209,6 @@ process_setup <- function(path, package, testthat_dir, load_helpers,
 
   # TODO: decide between library() and pkgload automatically, so we do
   # not use load_all() in test_check()
-  saveRDS(as.list(environment()), file = "/tmp/x.rds")
   library(testthat)
   ns_env <- pkgload::load_all(
     path,
@@ -225,14 +225,13 @@ process_setup <- function(path, package, testthat_dir, load_helpers,
 }
 
 cleanup_test_processes <- function(tasks, path) {
-  cat("Cleaning up\n")
   num <- nrow(tasks) %||% 1L
 
   topoll <- list()
   for (i in seq_len(num)) {
     if (!is.null(tasks$worker[[i]])) {
       tasks[[i]]$call(
-        function(path) { source_test_teardown(path, .GlobalEnv$.ns_path) },
+        function(path) { source_test_teardown(path, .GlobalEnv$.ns_env) },
         list(path)
       )
       topoll <- c(topoll, tasks[[i]]$get_poll_connection())
@@ -263,118 +262,47 @@ cleanup_test_processes <- function(tasks, path) {
 SubprocessReporter <- R6::R6Class("SubprocessReporter",
   inherit = Reporter,
   public = list(
-    start_reporter = function() { },
-    start_context = function(context) {},
+    start_reporter = function(...) { },
+    start_context = function(context) {
+      private$event("start_context", context = context)
+    },
     start_test = function(context, test) {
-      private$event("start-test", test = test)
+      private$event("start_test", context = context, test = test)
     },
     start_file = function(filename) {
       private$filename <- filename
-      private$event("start-file")
+      private$event("start_file", filename)
     },
     add_result = function(context, test, result) {
-
-      if (expectation_broken(result)) {
-        output <- list(
-          result = "failure",
-          message = c(
-            paste0("Failure in ", private$filename),
-            issue_summary(result)
-          )
-        )
-      } else if (expectation_skip(result)) {
-        output <- list(
-          result = "failure",
-          message = c(
-            paste0("Skip in ", private$filename),
-            issue_summary(result)
-          )
-        )
-      } else if (expectation_warning(result)) {
-        output <- list(
-          result = "warning",
-          message = c(
-            paste0("Skip in ", private$filename),
-            issue_summary(result)
-          )
-        )
-      } else {
-        output <- list(
-          result = "success",
-          message = paste0("Success in ", private$filename)
-        )
+      if (inherits(result, "expectation_success")) {
+        result[] <- result[c("message", "test")]
       }
-
-      private$event(
-        "add-result",
-        context = context,
-        test = test,
-        output = output
-      )
+      private$event("add_result", context = context, test = test,
+                    result = result)
     },
     end_test = function(context, test) {
-      private$event("end-test", context = context, test = test)
+      private$event("end_test", context = context, test = test)
     },
-    end_context = function(context) {},
-    end_reporter = function() {},
+    end_context = function(context) {
+      private$event("end_context", context = context)
+    },
+    end_reporter = function(...) {},
     end_file = function() {
-      private$event("end-file")
+      private$event("end_file")
     }
   ),
 
   private = list(
     filename = NULL,
     event = function(cmd, ...) {
-      msg <- list(code = 301, cmd = cmd, filename = private$filename, ...)
+      msg <- list(
+        code = 301,
+        cmd = cmd,
+        filename = private$filename,
+        args = list(...)
+      )
       class(msg) <- c("testthat_message", "callr_message", "condition")
       signalCondition(msg)
     }
-  )
-)
-
-#' @family reporters
-
-Progress2Reporter <- R6::R6Class("Progress2Reporter",
-  inherit = Reporter,
-  public = list(
-    concurrent = TRUE,
-
-    start_reporter = function(...) {
-      self$cat_line("Starting reporter")
-    },
-
-    start_context =  function(...) {},
-
-    start_test = function(filename, context, test) {
-      self$cat_line("Starting ", filename, ", test: ", test)
-    },
-
-    start_file = function(filename) {
-      self$cat_line("Starting file: ", filename)
-    },
-
-    add_result = function(filename, context, test, output) {
-      if (output$result == "success") {
-        self$cat_line("Success in ", filename)
-      } else {
-        self$cat_tight(output$message)
-      }
-    },
-
-    end_test = function(filename, context, test) {
-      self$cat_line("In ", filename, ", done with test: ", test)
-    },
-
-    end_context = function(...) {},
-
-    end_reporter = function(...) {
-      self$cat_line("Done with reporter")
-    },
-
-    end_file = function(filename) {
-      self$cat_line("Done with file: ", filename)
-    },
-
-    is_full = function(...) FALSE
   )
 )
