@@ -123,7 +123,8 @@ test_dir_parallel <- function(path,
   }
 
   files <- list()
-  results <- list()
+
+  lister <- ListReporter$new()
 
   replay <- function(filename) {
     rtr <- get_reporter()
@@ -132,6 +133,7 @@ test_dir_parallel <- function(path,
         event$args["context"] <- list(event$args$context %||% ctx)
       }
       do.call(rtr[[event$cmd]], event$args)
+      do.call(lister[[event$cmd]], event$args)
     }
     files[[filename]] <- NULL
   }
@@ -148,7 +150,7 @@ test_dir_parallel <- function(path,
           if (m$cmd == "end_file") replay(m$filename)
 
         } else if (x$code == 200) {
-          results <- append(results, list(x$result))
+          # File is done, nothing to do here, we'll get an end_file
 
         } else if (x$code > 500) {
           # a subprocess has crashed
@@ -157,10 +159,9 @@ test_dir_parallel <- function(path,
         }
       }
     }
-    )
+  )
 
-  results <- unlist(results, recursive = FALSE)
-  results <- testthat_results(results)
+  results <- lister$get_results()
 
   if (stop_on_failure && !all_passed(results)) {
     stop("Test failures", call. = FALSE)
@@ -183,6 +184,8 @@ subprocess_task <- function(path) {
     load_helpers = FALSE,
     wrap = TRUE
   )
+  # No need to copy the results now, we already copied all the info ...
+  NULL
 }
 
 find_pkg_name <- function(dir) {
