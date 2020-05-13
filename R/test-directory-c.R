@@ -129,9 +129,6 @@ test_dir_parallel <- function(path,
   replay <- function(filename) {
     rtr <- get_reporter()
     for (event in files[[filename]]) {
-      if ("context" %in% names(event$args)) {
-        event$args["context"] <- list(event$args$context %||% ctx)
-      }
       do.call(rtr[[event$cmd]], event$args)
       do.call(lister[[event$cmd]], event$args)
     }
@@ -177,14 +174,19 @@ test_dir_parallel <- function(path,
 # This is the function that is called for each test file, in the subprocess
 
 subprocess_task <- function(path) {
-  test_file(
-    path,
-    reporter = "subprocess",
-    env = .GlobalEnv$.test_env,
-    load_helpers = FALSE,
-    wrap = TRUE
-  )
-  # No need to copy the results now, we already copied all the info ...
+  on.exit(teardown_run(dirname(path)), add = TRUE)
+  env <- .GlobalEnv$.test_env
+  reporter <- find_reporter("subprocess")
+
+  with_reporter(reporter = reporter, code = {
+    reporter$start_file(basename(path))
+    source_file(
+      path, new.env(parent = env),
+      chdir = TRUE, wrap = TRUE
+    )
+    reporter$end_file()
+  })
+
   NULL
 }
 
@@ -295,38 +297,40 @@ SubprocessReporter <- R6::R6Class("SubprocessReporter",
   public = list(
     start_reporter = function(...) { },
     start_context = function(context) {
-      private$ctx <- context
-      private$event("start_context", context)
+      private$event("start_context", context = context)
     },
     start_test = function(context, test) {
-      private$event("start_test", context %||% private$ctx, test)
+      if (is.null(self$.context)) {
+        self$.context <- context_name(private$filename)
+        private$event("start_context", self$.context)
+      }
+      private$event("start_test", context %||% self$.context, test)
     },
     start_file = function(filename) {
       private$filename <- filename
-      private$ctx <- context_name(filename)
       private$event("start_file", filename)
     },
     add_result = function(context, test, result) {
       if (inherits(result, "expectation_success")) {
         result[] <- result[c("message", "test")]
       }
-      private$event("add_result", context %||% private$ctx, test, result)
+      private$event("add_result", context %||% self$.context, test, result)
     },
     end_test = function(context, test) {
-      private$event("end_test", context %||% private$ctx, test)
+      private$event("end_test", context %||% self$.context, test)
     },
     end_context = function(context) {
-      private$event("end_context", context)
+      private$event("end_context", context %||% self$.context)
     },
     end_reporter = function(...) {},
     end_file = function() {
+      self$.end_context()
       private$event("end_file")
     }
   ),
 
   private = list(
     filename = NULL,
-    ctx = NULL,
     event = function(cmd, ...) {
       msg <- list(
         code = 301,
