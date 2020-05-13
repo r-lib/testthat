@@ -67,8 +67,6 @@ test_dir_parallel <- function(path,
                      stop_on_warning = FALSE,
                      wrap = TRUE) {
 
-  # TODO: handle stop_on_failure
-  # TODO: handle stop_on_warning
   # TODO: support timeouts
 
   # TODO: This is a trick and we'll change it. If 'env' is child of
@@ -208,7 +206,6 @@ start_test_processes <- function(dir, paths, pkg_name, testthat_dir,
                                  load_helpers, pkgload) {
 
   # TODO: detect number of CPUs
-  # TODO: pkgload or not?
   num_proc <- min(getOption("Ncpus", 4), length(paths))
   proc <- replicate(num_proc, NULL)
 
