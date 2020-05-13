@@ -127,8 +127,6 @@ test_dir_parallel <- function(path,
 
   replay <- function(filename) {
     rtr <- get_reporter()
-    ctx <- context_name(filename)
-    context(ctx)
     for (event in files[[filename]]) {
       if ("context" %in% names(event$args)) {
         event$args["context"] <- list(event$args$context %||% ctx)
@@ -292,27 +290,28 @@ SubprocessReporter <- R6::R6Class("SubprocessReporter",
   public = list(
     start_reporter = function(...) { },
     start_context = function(context) {
-      private$event("start_context", context = context)
+      private$ctx <- context
+      private$event("start_context", context)
     },
     start_test = function(context, test) {
-      private$event("start_test", context = context, test = test)
+      private$event("start_test", context %||% private$ctx, test)
     },
     start_file = function(filename) {
       private$filename <- filename
+      private$ctx <- context_name(filename)
       private$event("start_file", filename)
     },
     add_result = function(context, test, result) {
       if (inherits(result, "expectation_success")) {
         result[] <- result[c("message", "test")]
       }
-      private$event("add_result", context = context, test = test,
-                    result = result)
+      private$event("add_result", context %||% private$ctx, test, result)
     },
     end_test = function(context, test) {
-      private$event("end_test", context = context, test = test)
+      private$event("end_test", context %||% private$ctx, test)
     },
     end_context = function(context) {
-      private$event("end_context", context = context)
+      private$event("end_context", context)
     },
     end_reporter = function(...) {},
     end_file = function() {
@@ -322,6 +321,7 @@ SubprocessReporter <- R6::R6Class("SubprocessReporter",
 
   private = list(
     filename = NULL,
+    ctx = NULL,
     event = function(cmd, ...) {
       msg <- list(
         code = 301,
