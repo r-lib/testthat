@@ -142,6 +142,8 @@ test_dir_parallel <- function(path,
       for (x in msgs) {
         if (x$code == 301) {
           m <- x$message
+          # TODO: should we keep other messages in the subprocess? Probably.
+          if (!inherits(m, "testthat_message")) next
           files[[m$filename]] <- append(files[[m$filename]], list(m))
           if (m$cmd == "end_file") replay(m$filename)
 
