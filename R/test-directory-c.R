@@ -88,7 +88,7 @@ test_dir_parallel <- function(path,
     TESTTHAT_DIR = testthat_dir
   ))
 
-  paths <- find_test_scripts(path, filter, ...)
+  paths <- sort(find_test_scripts(path, filter, ...))
 
   if (length(paths) == 0) {
     stop("No matching test file in dir")
