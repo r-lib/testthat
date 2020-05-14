@@ -254,17 +254,24 @@ process_setup <- function(path, package, testthat_dir, load_helpers,
   source_test_setup(path, .GlobalEnv$.test_env)
 }
 
-cleanup_test_processes <- function(tasks, path) {
-  num <- nrow(tasks) %||% 1L
+cleanup_test_processes <- function(queue, path) {
+  if (is.null(queue)) return()
+
+  tasks <- queue$list_tasks()
+  num <- nrow(tasks)
 
   topoll <- list()
   for (i in seq_len(num)) {
     if (!is.null(tasks$worker[[i]])) {
-      tasks[[i]]$call(
-        function(path) { source_test_teardown(path, .GlobalEnv$.ns_env) },
+      tasks$worker[[i]]$call(
+        function(path) {
+          testthat::source_test_teardown(path, .GlobalEnv$.test_env)
+          NULL
+        },
         list(path)
       )
-      topoll <- c(topoll, tasks[[i]]$get_poll_connection())
+      close(tasks$worker[[i]]$get_input_connection())
+      topoll <- c(topoll, tasks$worker[[i]]$get_poll_connection())
     }
   }
 
@@ -278,7 +285,7 @@ cleanup_test_processes <- function(tasks, path) {
   for (i in seq_len(num)) {
     if (!is.null(tasks$worker[[i]])) {
       # TODO: kill_tree() only works on Linux, Win, macOS
-      tasks[[i]]$kill_tree()
+      tasks$worker[[i]]$kill_tree()
     }
   }
 }
