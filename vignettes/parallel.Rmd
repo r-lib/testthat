@@ -86,3 +86,38 @@ run the teardown files.
     currently, so parallel testthat only supports these operating
     systems. This will be fixed later.
 -   Testthat cannot yet run its own tests in parallel.
+
+### Benchmarks
+
+These are very preliminary, to have a feeling where the bottlenecks
+might be.
+
+#### Startup time
+
+Startup cost is linear in the number of subprocesses, because we need
+to create them in a loop. This is about 50ms on my laptop. Each
+subprocess needs to load testthat and the tested package, this happens
+in parallel, and we cannot do too much about it.
+
+#### Cleanup time
+
+This is again linear in the number of subprocesses, and it about 80ms
+per subprocess on my laptop. The teardown files run in parallel, of
+course.
+
+#### Messagging costs
+
+To get a sense of messaging costs, I run 1-8 extremely simple test
+files:
+
+    test_that("foobar", {
+      for (i in 1:100) expect_true(TRUE)
+    })
+
+with changing the number of expectations and number of subprocesses.
+It seems that sending a message is about 2ms currently. This is the
+total cost that includes sending the message, receiving it, and
+replying it to a non-parallel reporter. We will improve this by
+avoiding frequent messages in a single subprocess and sending them in
+batches. This will make sure that test suites that have hundreds or
+thousands of expectations will not lose much.
