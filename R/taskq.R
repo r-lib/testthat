@@ -80,19 +80,19 @@ task_q <- R6::R6Class(
     },
 
     start_workers = function(concurrency, ...) {
+      nl <- I(replicate(concurrency, NULL))
       private$tasks <- data.frame(
         stringsAsFactors = FALSE,
-        id = character(), idle = logical(),
-        state = c("waiting", "running", "ready", "done")[NULL],
-        fun = I(list()), args = I(list()), worker = I(list())
-      )
+        id = paste0(".idle-", seq_len(concurrency)),
+        idle = TRUE,
+        state = "running",
+        fun = nl,
+        args = nl,
+        worker = nl)
       rsopts <- callr::r_session_options(...)
       for (i in seq_len(concurrency)) {
         rs <- callr::r_session$new(rsopts, wait = FALSE)
-        private$tasks <- df_add_row(private$tasks,
-          id = paste0(".idle-", i), idle = TRUE, state = "running",
-          fun = I(list(NULL)), args = I(list(NULL)), worker = I(list(rs))
-        )
+        private$tasks$worker[[i]] <- rs
       }
     },
 
