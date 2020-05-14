@@ -97,9 +97,9 @@ test_dir_parallel <- function(path,
   # TODO: do we want to keep the processes for the next test() call?
   # Probably not worth it, they start up in parallel...
 
-  tasks <- NULL
-  on.exit(cleanup_test_processes(tasks, path), add = TRUE)
-  tasks <- start_test_processes(
+  queue <- NULL
+  on.exit(cleanup_test_processes(queue, path), add = TRUE)
+  queue <- start_test_processes(
     dir = path,
     paths = paths,
     pkg_name = pkg_name,
@@ -117,7 +117,7 @@ test_dir_parallel <- function(path,
   environment(fun) <- .GlobalEnv
   fun <- utils::removeSource(fun)
   for (path in paths) {
-    tasks$push(fun, list(path))
+    queue$push(fun, list(path))
   }
 
   files <- list()
@@ -134,8 +134,8 @@ test_dir_parallel <- function(path,
   }
 
   with_reporter(reporter,
-    while (!tasks$is_idle()) {
-      msgs <- tasks$poll(Inf)
+    while (!queue$is_idle()) {
+      msgs <- queue$poll(Inf)
       for (x in msgs) {
         if (x$code == 301) {
           m <- x$message
