@@ -82,11 +82,11 @@ test_dir <- function(path,
       reporter,
       env,
       ...,
-      encoding,
-      load_helpers,
-      stop_on_failure,
-      stop_on_warning,
-      wrap
+      encoding = encoding,
+      load_helpers = load_helpers,
+      stop_on_failure = stop_on_failure,
+      stop_on_warning = stop_on_warning,
+      wrap = wrap
     ))
   }
 

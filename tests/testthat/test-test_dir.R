@@ -17,13 +17,17 @@ test_that("test_dir()", {
   df <- as.data.frame(res)
   df$user <- df$system <- df$real <- df$result <- NULL
 
+  # We order this here, because the order of parallel tests is
+  # not fully predictable.
+  df <- df[order(df$file, df$context,  df$test), ]
+  rownames(df) <- NULL
   verify_output(test_path("test-test_dir.txt"), print(df), width = 200)
 })
 
 test_that("test_dir() filter", {
   res <- test_dir("test_dir", reporter = "silent", filter = "basic|empty")
   df <- as.data.frame(res)
-  expect_identical(unique(df$context), c("Basic", "empty"))
+  expect_identical(sort(unique(df$context)), c("Basic", "empty"))
 })
 
 test_that("test_dir() helpers", {
