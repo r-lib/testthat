@@ -260,16 +260,17 @@ cleanup_test_processes <- function(queue, path) {
   tasks <- queue$list_tasks()
   num <- nrow(tasks)
 
+  fun <- function(path) {
+    testthat::source_test_teardown(path, .GlobalEnv$.test_env)
+    NULL
+  }
+  environment(fun) <- .GlobalEnv
+  fun <- utils::removeSource(fun)
+
   topoll <- list()
   for (i in seq_len(num)) {
     if (!is.null(tasks$worker[[i]])) {
-      tasks$worker[[i]]$call(
-        function(path) {
-          testthat::source_test_teardown(path, .GlobalEnv$.test_env)
-          NULL
-        },
-        list(path)
-      )
+      tasks$worker[[i]]$call(fun, list(path))
       close(tasks$worker[[i]]$get_input_connection())
       topoll <- c(topoll, tasks$worker[[i]]$get_poll_connection())
     }
