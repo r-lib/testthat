@@ -1,3 +1,11 @@
+
+# We cannot currently run test_dir reliably within R CMD check, in parallel
+
+if (Sys.getenv("TESTTHAT_PKG", "") != "" &&
+    tolower(Sys.getenv("TESTTHAT_PARALLEL", "")) %in% c("true", "yes")) {
+  return()
+}
+
 test_that("R_TESTS envar is unset", {
   expect_equal(Sys.getenv("R_TESTS"), "")
 })
