@@ -67,6 +67,12 @@ test_dir_parallel <- function(path,
                      stop_on_warning = FALSE,
                      wrap = TRUE) {
 
+  # We need to set this to TRUE, because test() sets it to FALSE,
+  # after it pre-loads the helpers. But of course we sill need to load
+  # the helpers in the subproceses.
+
+  load_helpers <- TRUE
+
   # TODO: support timeouts
 
   # TODO: This is a trick and we'll change it. If 'env' is child of
