@@ -86,6 +86,8 @@ run the teardown files.
     currently, so parallel testthat only supports these operating
     systems. This will be fixed later.
 -   Testthat cannot yet run its own tests in parallel.
+-   covr might not work for parallel tests, at least it fails for
+    testthat itself.
 
 ### Benchmarks
 
