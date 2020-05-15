@@ -132,3 +132,5 @@ df_add_row <- function(df, ..., .before = NULL) {
     rbind(df[1:(before-1), ], row, df[before:nrow(df), ])
   }
 }
+
+silence_r_cmd_check <- function() callr::r_session
