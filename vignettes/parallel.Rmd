@@ -105,7 +105,7 @@ This is again linear in the number of subprocesses, and it about 80ms
 per subprocess on my laptop. The teardown files run in parallel, of
 course.
 
-#### Messagging costs
+#### Messaging costs
 
 To get a sense of messaging costs, I run 1-8 extremely simple test
 files:
