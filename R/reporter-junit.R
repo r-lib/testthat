@@ -122,12 +122,12 @@ JunitReporter <- R6::R6Class("JunitReporter",
       if (expectation_error(result)) {
         # "type" in Java is the exception class
         error <- xml2::xml_add_child(testcase, "error", type = "error", message = first_line(result))
-        xml2::xml_text(error) <- format(result)
+        xml2::xml_text(error) <- crayon::strip_style(format(result))
         self$errors <- self$errors + 1
       } else if (expectation_failure(result)) {
         # "type" in Java is the type of assertion that failed
         failure <- xml2::xml_add_child(testcase, "failure", type = "failure", message = first_line(result))
-        xml2::xml_text(failure) <- format(result)
+        xml2::xml_text(failure) <- crayon::strip_style(format(result))
         self$failures <- self$failures + 1
       } else if (expectation_skip(result)) {
         xml2::xml_add_child(testcase, "skipped")

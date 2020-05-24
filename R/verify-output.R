@@ -2,14 +2,14 @@
 #'
 #' @description
 #' This is a regression test that records interwoven code and output into a
-#' file, in a similar way to knitting an `.Rmd` (but see caveats below).
+#' file, in a similar way to knitting an `.Rmd` file (but see caveats below).
 #'
-#' `verify_output()` designed particularly for testing print methods and error
+#' `verify_output()` is designed particularly for testing print methods and error
 #' messages, where the primary goal is to ensure that the output is helpful to
 #' a human. Obviously, you can't test that with code, so the best you can do is
-#' make the results explicit by saving them to text file. This makes the output
-#' easy to see in code reviews, and ensures that you don't change the output
-#' accidentally.
+#' make the results explicit by saving them to a text file. This makes the output
+#' easy to verify in code reviews, and ensures that you don't change the output
+#' by accident.
 #'
 #' `verify_output()` is designed to be used with git: to see what has changed
 #' from the previous run, you'll need to use `git diff` or similar.
@@ -30,10 +30,10 @@
 #'
 #' @param path Path to record results.
 #'
-#'   This should usually be a call to [test_path()] to ensures that same path
-#'   is used when run interactively (when the working directory is typically
-#'   the project root), and when run as an automated test (when the working
-#'   directory will be `tests/testthat`).
+#'   This should usually be a call to [test_path()] in order to ensure that
+#'   the same path is used when run interactively (when the working directory
+#'   is typically the project root), and when run as an automated test (when
+#'   the working directory will be `tests/testthat`).
 #' @param code Code to execute. This will usually be a multiline expression
 #'   contained within `{}` (similarly to `test_that()` calls).
 #' @param width Width of console output
@@ -75,13 +75,33 @@
 #' })
 verify_output <- function(path, code, width = 80, crayon = FALSE,
                           unicode = FALSE, env = caller_env()) {
-  expr <- substitute(code)
 
+  expr <- substitute(code)
   if (is_call(expr, "{")) {
     exprs <- as.list(expr[-1])
   } else {
     exprs <- list(expr)
   }
+
+  output <- verify_exec(exprs,
+    width = width,
+    crayon = crayon,
+    unicode = unicode,
+    env = env
+  )
+
+  if (is_testing() && on_cran()) {
+    skip("On CRAN")
+  }
+  compare_file(path, output, update = TRUE)
+  invisible()
+}
+
+verify_exec <- function(exprs,
+                        width = 80,
+                        crayon = FALSE,
+                        unicode = FALSE,
+                        env = caller_env()) {
 
   withr::local_options(list(
     width = width,
@@ -103,13 +123,7 @@ verify_output <- function(path, code, width = 80, crayon = FALSE,
   on.exit(grDevices::dev.off(dev), add = TRUE)
 
   results <- evaluate::evaluate(source, envir = env, new_device = FALSE)
-  output <- unlist(lapply(results, output_replay))
-
-  if (is_testing() && on_cran()) {
-    skip("On CRAN")
-  }
-  compare_file(path, output, update = TRUE)
-  invisible()
+  unlist(lapply(results, output_replay))
 }
 
 output_replay <- function(x) {

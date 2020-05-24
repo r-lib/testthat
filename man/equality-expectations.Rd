@@ -5,13 +5,13 @@
 \alias{expect_equal}
 \alias{expect_equivalent}
 \alias{expect_identical}
-\alias{expect_reference}
 \title{Expectation: is the object equal to a value?}
 \usage{
 expect_equal(
   object,
   expected,
   ...,
+  tolerance = testthat_tolerance(),
   info = NULL,
   label = NULL,
   expected.label = NULL
@@ -23,7 +23,8 @@ expect_equivalent(
   ...,
   info = NULL,
   label = NULL,
-  expected.label = NULL
+  expected.label = NULL,
+  tolerance = testthat_tolerance()
 )
 
 expect_identical(
@@ -34,14 +35,6 @@ expect_identical(
   expected.label = NULL,
   ...
 )
-
-expect_reference(
-  object,
-  expected,
-  info = NULL,
-  label = NULL,
-  expected.label = NULL
-)
 }
 \arguments{
 \item{object, expected}{Computation and value to compare it to.
@@ -50,9 +43,20 @@ Both arguments supports limited unquoting to make it easier to generate
 readable failures within a function or for loop. See \link{quasi_label} for
 more details.}
 
-\item{...}{For \code{expect_equal()} and \code{expect_equivalent()}, passed on
-\code{\link[=compare]{compare()}}, for \code{expect_identical()} passed on to \code{\link[=identical]{identical()}}.
-Used to control the details of the comparison.}
+\item{...}{Passed on to \code{\link[waldo:compare]{waldo::compare()}} to control the details of
+the comparison.}
+
+\item{tolerance}{If non-\code{NULL}, used as threshold for ignoring small
+floating point difference when comparing numeric vectors. Setting to
+any non-\code{NULL} value will cause integer and double vectors to be compared
+based on their values, rather than their types.
+
+It uses the same algorithm as \code{\link[=all.equal]{all.equal()}}, i.e., first we generate
+\code{x_diff} and \code{y_diff} by subsetting \code{x} and \code{y} to look only locations
+with differences. Then we check that
+\code{mean(abs(x_diff - y_diff)) / mean(abs(y_diff))} (or just
+\code{mean(abs(x_diff - y_diff))} if \code{y_diff} is small) is less than
+\code{tolerance}.}
 
 \item{info}{Extra information to be included in the message. This argument
 is soft-deprecated and should not be used in new code. Instead see
@@ -62,41 +66,38 @@ alternatives in \link{quasi_label}.}
 use only.}
 }
 \description{
+These three functions use \href{https://github.com/r-lib/waldo}{waldo} to
+compare the results of some code to an \code{expected} result. They differ in
+their level of strictness, as determined by additional arguments passed on
+to \code{waldo::compare()}:
 \itemize{
-\item \code{expect_identical()} compares values with \code{\link[=identical]{identical()}}.
-\item \code{expect_equal()} compares values  with \code{\link[=all.equal]{all.equal()}}
-\item \code{expect_equivalent()} compares values with \code{\link[=all.equal]{all.equal()}} and
-\code{check.attributes = FALSE}
-\item \code{expect_reference()} compares the underlying memory addresses.
+\item \code{expect_identical()} is the strictest comparison.
+\item \code{expect_equal()} sets \code{tolerance = testthat_tolerance()} so that
+small floating point differences are ignored; this also implies that
+(e.g.) \code{1} and \code{1L} are treated as equal.
+\item \code{expect_equivalent()} sets \code{ignore_attr = TRUE} and
+\code{tolerance = testthat_tolerance()}, ignoring small floating point
+differences and all differences in attributes.
 }
+
+In most cases you should use \code{expect_equal()}.
 }
 \examples{
 a <- 10
 expect_equal(a, 10)
 
 # Use expect_equal() when testing for numeric equality
-sqrt(2) ^ 2 - 1
-expect_equal(sqrt(2) ^ 2, 2)
-# Neither of these forms take floating point representation errors into
-# account
 \dontrun{
-expect_true(sqrt(2) ^ 2 == 2)
 expect_identical(sqrt(2) ^ 2, 2)
 }
+expect_equal(sqrt(2) ^ 2, 2)
 
-# You can pass on additional arguments to all.equal:
-\dontrun{
-# Test the ABSOLUTE difference is within .002
-expect_equal(10.01, 10, tolerance = .002, scale = 1)
-}
-
-# Test the RELATIVE difference is within .002
-x <- 10
-expect_equal(10.01, expected = x, tolerance = 0.002, scale = x)
-
-# expect_equivalent ignores attributes
+# expect_equivalent() ignores attributes
 a <- b <- 1:3
 names(b) <- letters[1:3]
+\dontrun{
+expect_equal(a, b)
+}
 expect_equivalent(a, b)
 }
 \seealso{
@@ -111,6 +112,7 @@ Other expectations:
 \code{\link{expect_named}()},
 \code{\link{expect_null}()},
 \code{\link{expect_output}()},
+\code{\link{expect_reference}()},
 \code{\link{expect_silent}()},
 \code{\link{inheritance-expectations}},
 \code{\link{logical-expectations}}

@@ -1,8 +1,10 @@
+url: https://testthat.r-lib.org
+
 home:
   strip_header: true
   links:
   - text: Learn more
-    href: http://r-pkgs.had.co.nz/tests.html
+    href: http://r-pkgs.org/tests.html
 
 template:
   params:
@@ -32,26 +34,17 @@ reference:
   - expect
   - fail
 
-
-navbar:
-  components:
-    home: ~
-    news:
-      text: News
-      menu:
-      - text: "Release notes"
-      - text: "Version 2.3.0"
-        href: https://www.tidyverse.org/blog/2019/11/testthat-2-3-0/
-      - text: "Version 2.1.0"
-        href: https://www.tidyverse.org/articles/2019/04/testthat-2-1-0/
-      - text: "Version 2.0.0"
-        href: https://www.tidyverse.org/articles/2017/12/testthat-2-0-0/
-      - text: "Version 1.0.0"
-        href: https://blog.rstudio.com/2016/04/29/testthat-1-0-0/
-      - text: "Version 0.10.0"
-        href: https://blog.rstudio.com/2015/05/29/testthat-0-10-0/
-      - text: "Version 0.9.0"
-        href: https://blog.rstudio.com/2014/09/23/testthat-0-9/
-      - text: "------------------"
-      - text: "Change log"
-        href: news/index.html
+news:
+  releases:
+  - text: "Version 2.3.0"
+    href: https://www.tidyverse.org/blog/2019/11/testthat-2-3-0/
+  - text: "Version 2.1.0"
+    href: https://www.tidyverse.org/articles/2019/04/testthat-2-1-0/
+  - text: "Version 2.0.0"
+    href: https://www.tidyverse.org/articles/2017/12/testthat-2-0-0/
+  - text: "Version 1.0.0"
+    href: https://blog.rstudio.com/2016/04/29/testthat-1-0-0/
+  - text: "Version 0.10.0"
+    href: https://blog.rstudio.com/2015/05/29/testthat-0-10-0/
+  - text: "Version 0.9.0"
+    href: https://blog.rstudio.com/2014/09/23/testthat-0-9/

@@ -1,17 +1,23 @@
 Package: testthat
 Title: Unit Testing for R
 Version: 2.3.2.9000
-Authors@R: c(
-    person("Hadley", "Wickham", , "hadley@rstudio.com", c("aut", "cre")),
-    person("RStudio", role = c("cph", "fnd")),
-    person("R Core team", role = "ctb",
-      comment = "Implementation of utils::recover()")
-    )
-Description: Software testing is important, but, in part because it is 
-    frustrating and boring, many of us avoid it. 'testthat' is a testing framework 
-    for R that is easy to learn and use, and integrates with your existing 'workflow'.
+Authors@R: 
+    c(person(given = "Hadley",
+             family = "Wickham",
+             role = c("aut", "cre"),
+             email = "hadley@rstudio.com"),
+      person(given = "RStudio",
+             role = c("cph", "fnd")),
+      person(given = "R Core team",
+             role = "ctb",
+             comment = "Implementation of utils::recover()"))
+Description: Software testing is important, but, in part because
+    it is frustrating and boring, many of us avoid it. 'testthat' is a
+    testing framework for R that is easy to learn and use, and integrates
+    with your existing 'workflow'.
 License: MIT + file LICENSE
-URL: http://testthat.r-lib.org, https://github.com/r-lib/testthat
+URL: http://testthat.r-lib.org,
+    https://github.com/r-lib/testthat
 BugReports: https://github.com/r-lib/testthat/issues
 Depends: 
     R (>= 3.1)
@@ -27,7 +33,8 @@ Imports:
     praise,
     R6 (>= 2.2.0),
     rlang (>= 0.4.1),
-    withr (>= 2.0.0)
+    withr (>= 2.0.0),
+    waldo
 Suggests: 
     covr,
     curl (>= 0.9.5),
@@ -37,10 +44,11 @@ Suggests:
     usethis,
     vctrs (>= 0.1.0),
     xml2
-VignetteBuilder: knitr
+VignetteBuilder: 
+    knitr
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE, r6 = FALSE)
-RoxygenNote: 7.0.2
+RoxygenNote: 7.1.0
 Collate: 
     'auto-test.R'
     'capture-condition.R'
@@ -111,3 +119,6 @@ Collate:
     'utils.R'
     'verify-output.R'
     'watcher.R'
+Remotes: 
+    r-lib/xml2,
+    r-lib/waldo

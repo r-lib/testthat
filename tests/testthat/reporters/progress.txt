@@ -1,8 +1,8 @@
-✓ |  OK F W S | Context
+✔ |  OK F W S | Context
 
 ⠏ |   0       | tests
 ⠋ |   1       | tests
-✓ |   1       | tests
+✔ |   1       | tests
 
 ⠏ |   0       | Expectations
 ⠋ |   1       | Expectations
@@ -11,7 +11,7 @@
 ⠸ |   1 3     | Expectations
 ⠼ |   1 4     | Expectations
 ⠴ |   2 4     | Expectations
-x |   2 4     | Expectations
+✖ |   2 4     | Expectations
 ────────────────────────────────────────────────────────────────────────────────
 tests.R:12: failure: Failure:1
 Failure has been forced
@@ -23,18 +23,19 @@ tests.R:19: failure: Failure:2b
 FALSE isn't true.
 
 tests.R:24: failure: Failure:loop
-`i` not equal to 2.
-1/1 mismatches
-[1] 1 - 2 == -1
+`actual` (`i`) not equal to `expected` (2).
+
+`actual`:   1
+`expected`: 2
 ────────────────────────────────────────────────────────────────────────────────
 
 ⠏ |   0       | Expectations2
-✓ |   0       | Expectations2
+✔ |   0       | Expectations2
 
 ⠏ |   0       | Errors
 ⠋ |   0 1     | Errors
 ⠙ |   0 2     | Errors
-x |   0 2     | Errors
+✖ |   0 2     | Errors
 ────────────────────────────────────────────────────────────────────────────────
 tests.R:33: error: Error:1
 stop
@@ -49,7 +50,7 @@ Backtrace:
 
 ⠏ |   0       | Recursion
 ⠋ |   0 1     | Recursion
-x |   0 1     | Recursion
+✖ |   0 1     | Recursion
 ────────────────────────────────────────────────────────────────────────────────
 tests.R:56: error: Recursion:1
 This is deep
@@ -81,7 +82,7 @@ Backtrace:
 ⠋ |   0     1 | Skips
 ⠙ |   0     2 | Skips
 ⠹ |   0     3 | Skips
-✓ |   0     3 | Skips
+✔ |   0     3 | Skips
 ────────────────────────────────────────────────────────────────────────────────
 tests.R:62: skip: Skip:1
 Reason: skip
@@ -97,7 +98,7 @@ Reason: empty test
 ⠋ |   0   1   | Warnings
 ⠙ |   0   2   | Warnings
 ⠹ |   0   3   | Warnings
-✓ |   0   3   | Warnings
+✔ |   0   3   | Warnings
 ────────────────────────────────────────────────────────────────────────────────
 tests.R:78: warning: Warning:1
 abc
@@ -112,18 +113,18 @@ ghi
 ⠏ |   0       | Output
 ⠋ |   1       | Output
 ⠙ |   2       | Output
-✓ |   2       | Output
+✔ |   2       | Output
 
 ⠏ |   0       | Throwable errors
 ⠋ |   0 1     | Throwable errors
-x |   0 1     | Throwable errors
+✖ |   0 1     | Throwable errors
 ────────────────────────────────────────────────────────────────────────────────
 tests.R:111: error: Error:4
 Throwable
 ────────────────────────────────────────────────────────────────────────────────
 
 ⠏ |   0       | End
-✓ |   0       | End
+✔ |   0       | End
 
 ══ Results ═════════════════════════════════════════════════════════════════════
 OK:       5

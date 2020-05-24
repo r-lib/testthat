@@ -15,9 +15,10 @@
       <failure type="failure" message="FALSE isn't true. (@tests.R#19)">FALSE isn't true.</failure>
     </testcase>
     <testcase time="0" classname="Expectations" name="Failure_loop">
-      <failure type="failure" message="`i` not equal to 2. (@tests.R#24)">`i` not equal to 2.
-1/1 mismatches
-[1] 1 - 2 == -1</failure>
+      <failure type="failure" message="`actual` (`i`) not equal to `expected` (2). (@tests.R#24)">`actual` (`i`) not equal to `expected` (2).
+
+`actual`:   1
+`expected`: 2</failure>
     </testcase>
     <testcase time="0" classname="Expectations" name="Failure_loop"/>
   </testsuite>

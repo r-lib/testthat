@@ -51,10 +51,6 @@ test_that("two identical vectors are the same", {
   expect_true(compare(1:10, 1:10)$equal)
 })
 
-test_that("unnamed arguments to all.equal passed through correctly", {
-  expect_equal(415, 416, 0.01)
-})
-
 test_that("named arguments to all.equal passed through", {
   expect_equal(415, 416, tolerance = 0.01)
 })

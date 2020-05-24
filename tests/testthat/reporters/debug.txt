@@ -9,7 +9,8 @@
 2: expect(identical(as.vector(act$val), TRUE), sprintf("%s isn't true.", act$l
 
 1: expect_equal(i, 2)
-2: expect(comp$equal, sprintf("%s not equal to %s.\n%s", act$lab, exp$lab, com
+2: expect_waldo_equal("equal", act, exp, info, ..., tolerance = tolerance)
+3: expect(length(comp) == 0, sprintf("`actual` (%s) not %s to `expected` (%s).
 
 1: stop("stop")
 

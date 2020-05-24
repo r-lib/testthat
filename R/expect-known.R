@@ -76,12 +76,12 @@ compare_file <- function(path, lines, ..., update = TRUE, info = NULL) {
     warning("Reference output is not UTF-8 encoded", call. = FALSE)
   }
 
-  comp <- compare(lines, enc2native(old_lines), ...)
+  comp <- waldo::compare(lines, enc2native(old_lines), ..., x_arg = "new", y_arg = "old")
   expect(
-    comp$equal,
+    length(comp) == 0,
     sprintf(
-      "Results have changed from known value recorded in %s.\n%s",
-      encodeString(path, quote = "'"), comp$message
+      "Results have changed from known value recorded in %s.\n\n%s",
+      encodeString(path, quote = "'"), paste0(comp, collapse = "\n\n")
     ),
     info = info
   )

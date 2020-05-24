@@ -9,9 +9,10 @@ not ok 4 Failure:2a
 not ok 5 Failure:2b
   FALSE isn't true.
 not ok 6 Failure:loop
-  `i` not equal to 2.
-  1/1 mismatches
-  [1] 1 - 2 == -1
+  `actual` (`i`) not equal to `expected` (2).
+  
+  `actual`:   1
+  `expected`: 2
 ok 7 Failure:loop
 # Context Errors
 not ok 8 Error:1

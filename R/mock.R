@@ -161,3 +161,7 @@ is_base_pkg <- function(x) {
   x %in% rownames(utils::installed.packages(priority = "base"))
 }
 
+test_mock1 <- function() {
+  test_mock2()
+}
+test_mock2 <- function() 10
