@@ -44,7 +44,6 @@ Suggests:
     usethis,
     vctrs (>= 0.1.0),
     xml2
-Remotes: rstudio/rmarkdown
 VignetteBuilder: 
     knitr
 Encoding: UTF-8
@@ -122,4 +121,5 @@ Collate:
     'watcher.R'
 Remotes: 
     r-lib/xml2,
-    r-lib/waldo
+    r-lib/waldo,
+    rstudio/rmarkdown
