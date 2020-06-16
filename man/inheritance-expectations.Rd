@@ -37,6 +37,8 @@ the vocabulary used here.
 \item \code{expect_s4_class(x, class)} checks that \code{x} is an S4 object that
 \code{\link[=is]{is()}} \code{class}.
 }
+
+See \code{\link[=expect_vector]{expect_vector()}} for testing properties of objects created by vctrs.
 }
 \examples{
 x <- data.frame(x = 1:10, y = "x", stringsAsFactors = TRUE)
