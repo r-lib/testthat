@@ -42,9 +42,7 @@ eval_with_output <- function(code, print = FALSE, width = 80) {
   temp <- file()
   on.exit(close(temp), add = TRUE)
 
-  withr::local_options(list(width = width))
-  withr::local_envvar(list(RSTUDIO_CONSOLE_WIDTH = width))
-
+  local_width(width)
   result <- withr::with_output_sink(temp, withVisible(code))
   if (result$visible && print) {
     withr::with_output_sink(temp, print(result$value))

@@ -103,15 +103,7 @@ verify_exec <- function(exprs,
                         unicode = FALSE,
                         env = caller_env()) {
 
-  withr::local_options(list(
-    width = width,
-    crayon.enabled = crayon,
-    cli.unicode = unicode
-  ))
-  withr::local_envvar(list(
-    RSTUDIO = 0,
-    RSTUDIO_CONSOLE_WIDTH = width
-  ))
+  local_reproducible_output(width = width, crayon = crayon, unicode = unicode)
 
   exprs <- lapply(exprs, function(x) if (is.character(x)) paste0("# ", x) else expr_deparse(x))
   source <- unlist(exprs, recursive = FALSE)
