@@ -113,7 +113,9 @@ verify_exec <- function(exprs,
     RSTUDIO_CONSOLE_WIDTH = width
   ))
 
-  exprs <- lapply(exprs, function(x) if (is.character(x)) paste0("# ", x) else expr_deparse(x))
+  exprs <- lapply(exprs, function(x) {
+    if (is.character(x)) paste0("# ", x) else deparse(x, width.cutoff = width)
+  })
   source <- unlist(exprs, recursive = FALSE)
 
   # Open temporary new device

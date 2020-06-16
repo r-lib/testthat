@@ -43,6 +43,12 @@ test_that("can't record plots", {
   expect_error(verify_output(tempfile(), plot(1:10)), "Plots")
 })
 
+test_that("can use non-syntactic names", {
+  verify_output(test_path("test-verify-non-syntactic.txt"), {
+    list(`a b` = 1)
+  })
+})
+
 test_that("verify_output() splits condition messages on newlines", {
   verify_output(test_path("test-verify-conditions-lines.txt"), {
     message("First.\nSecond.")
