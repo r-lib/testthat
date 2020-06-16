@@ -22,7 +22,9 @@ local_reproducible_output <- function(width = 80,
   withr::local_options(
     list(
       crayon.enabled = crayon,
-      cli.unicode = unicode
+      cli.unicode = unicode,
+      useFancyQuotes = FALSE,
+      OutDec = "."
     ),
     .local_envir = .local_envir
   )
