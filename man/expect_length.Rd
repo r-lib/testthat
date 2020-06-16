@@ -26,6 +26,8 @@ expect_length(1:10, 1)
 }
 }
 \seealso{
+\code{\link[=expect_vector]{expect_vector()}} to make assertions about the "size" of a vector
+
 Other expectations: 
 \code{\link{comparison-expectations}},
 \code{\link{equality-expectations}},

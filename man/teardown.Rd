@@ -25,7 +25,7 @@ executed in the order they were created.
 \dontrun{
 
 tmp <- tempfile()
-setup(writeLines(tmp, "some test data"))
+setup(writeLines("some test data", tmp))
 teardown(unlink(tmp))
 
 }
