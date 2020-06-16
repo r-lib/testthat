@@ -1,11 +1,3 @@
-#' Expectation: do C++ tests past?
-#'
-#' Test compiled code in the package `package`. A call to this function will
-#' automatically be generated for you in `tests/testthat/test-cpp.R` after
-#' calling [use_catch()]; you should not need to manually call this expectation
-#' yourself.
-#'
-#' @param package The name of the package to test.
 #' @keywords internal
 #' @rdname run_cpp_tests
 #' @export
@@ -28,6 +20,14 @@ expect_cpp_tests_pass <- function(package) {
   expect(tests_passed, paste("C++ unit tests:", info, sep = "\n"))
 }
 
+#' Expectation: do C++ tests past?
+#'
+#' Test compiled code in the package `package`. A call to this function will
+#' automatically be generated for you in `tests/testthat/test-cpp.R` after
+#' calling [use_catch()]; you should not need to manually call this expectation
+#' yourself.
+#'
+#' @param package The name of the package to test.
 #' @keywords internal
 #' @export
 run_cpp_tests <- function(package) {
@@ -42,8 +42,9 @@ run_cpp_tests <- function(package) {
   tests_passed <- TRUE
 
   catch_error <- FALSE
-  tryCatch(
-    output <- capture_output_lines(tests_passed <- .Call(run_testthat_tests, TRUE)),
+  tryCatch({
+    output <- capture_output_lines(tests_passed <- .Call(run_testthat_tests, TRUE))
+  },
     error = function(e) {
       catch_error <- TRUE
       reporter <- get_reporter()
