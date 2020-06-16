@@ -117,7 +117,7 @@ verify_exec <- function(exprs,
   source <- unlist(exprs, recursive = FALSE)
 
   # Open temporary new device
-  grDevices::png(filename = tempfile())
+  grDevices::pdf(tempfile())
   grDevices::dev.control(displaylist = "enable")
   dev <- grDevices::dev.cur()
   on.exit(grDevices::dev.off(dev), add = TRUE)
