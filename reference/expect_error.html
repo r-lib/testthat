@@ -184,21 +184,21 @@ from <code>class</code>. See below for more details.</p>
     </div>
 
     <pre class="usage"><span class='fu'>expect_error</span>(
-  <span class='no'>object</span>,
-  <span class='kw'>regexp</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>class</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='no'>...</span>,
-  <span class='kw'>info</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>label</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
+  <span class='kw'>object</span>,
+  regexp = <span class='kw'>NULL</span>,
+  class = <span class='kw'>NULL</span>,
+  <span class='kw'>...</span>,
+  info = <span class='kw'>NULL</span>,
+  label = <span class='kw'>NULL</span>
 )
 
 <span class='fu'>expect_condition</span>(
-  <span class='no'>object</span>,
-  <span class='kw'>regexp</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>class</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='no'>...</span>,
-  <span class='kw'>info</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>label</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
+  <span class='kw'>object</span>,
+  regexp = <span class='kw'>NULL</span>,
+  class = <span class='kw'>NULL</span>,
+  <span class='kw'>...</span>,
+  info = <span class='kw'>NULL</span>,
+  label = <span class='kw'>NULL</span>
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -208,7 +208,7 @@ from <code>class</code>. See below for more details.</p>
       <th>object</th>
       <td><p>Object to test.</p>
 <p>Supports limited unquoting to make it easier to generate readable failures
-within a function or for loop. See <a href='quasi_label.html'>quasi_label</a> for more details.</p></td>
+within a function or for loop. See quasi_label for more details.</p></td>
     </tr>
     <tr>
       <th>regexp</th>
@@ -227,7 +227,7 @@ a class name. This is useful for "classed" conditions.</p></td>
     </tr>
     <tr>
       <th>...</th>
-      <td><p>Arguments passed on to <code><a href='expect_match.html'>expect_match</a></code></p><dl>
+      <td><p>Arguments passed on to <code>expect_match</code></p><dl>
     <dt><code>all</code></dt><dd><p>Should all elements of actual value match <code>regexp</code> (TRUE),
 or does only one need to match (FALSE)</p></dd>
     <dt><code>perl</code></dt><dd><p>logical.  Should Perl-compatible regexps be used?</p></dd>
@@ -240,7 +240,7 @@ or does only one need to match (FALSE)</p></dd>
       <th>info</th>
       <td><p>Extra information to be included in the message. This argument
 is soft-deprecated and should not be used in new code. Instead see
-alternatives in <a href='quasi_label.html'>quasi_label</a>.</p></td>
+alternatives in quasi_label.</p></td>
     </tr>
     <tr>
       <th>label</th>
@@ -272,42 +272,42 @@ of <code>regexp</code>. Alternatively, if you think the warning is a false posit
 use <code>class = "error"</code> to suppress it for any input.</p>
 <p>If you are using <code>expect_error()</code> to check that an error message is
 formatted in such a way that it makes sense to a human, we now recommend
-using <code><a href='verify_output.html'>verify_output()</a></code> instead.</p>
+using <code>verify_output()</code> instead.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other expectations: 
-<code><a href='comparison-expectations.html'>comparison-expectations</a></code>,
-<code><a href='equality-expectations.html'>equality-expectations</a></code>,
-<code><a href='expect_length.html'>expect_length</a>()</code>,
-<code><a href='expect_match.html'>expect_match</a>()</code>,
-<code><a href='expect_message.html'>expect_message</a>()</code>,
-<code><a href='expect_named.html'>expect_named</a>()</code>,
-<code><a href='expect_null.html'>expect_null</a>()</code>,
-<code><a href='expect_output.html'>expect_output</a>()</code>,
-<code><a href='expect_reference.html'>expect_reference</a>()</code>,
-<code><a href='expect_silent.html'>expect_silent</a>()</code>,
-<code><a href='inheritance-expectations.html'>inheritance-expectations</a></code>,
-<code><a href='logical-expectations.html'>logical-expectations</a></code></p></div>
+<code>comparison-expectations</code>,
+<code>equality-expectations</code>,
+<code>expect_length()</code>,
+<code>expect_match()</code>,
+<code>expect_message()</code>,
+<code>expect_named()</code>,
+<code>expect_null()</code>,
+<code>expect_output()</code>,
+<code>expect_reference()</code>,
+<code>expect_silent()</code>,
+<code>inheritance-expectations</code>,
+<code>logical-expectations</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>f</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>() <span class='fu'><a href='https://rdrr.io/r/base/stop.html'>stop</a></span>(<span class='st'>"My error!"</span>)
+    <pre class="examples"><div class='input'><span class='kw'>f</span> <span class='op'>&lt;-</span> <span class='fu'>function</span>() <span class='fu'><a href='https://rdrr.io/r/base/stop.html'>stop</a></span>(<span class='st'>"My error!"</span>)
 <span class='fu'>expect_error</span>(<span class='fu'>f</span>())
 <span class='fu'>expect_error</span>(<span class='fu'>f</span>(), <span class='st'>"My error!"</span>)
 
 <span class='co'># You can use the arguments of grepl to control the matching</span>
-<span class='fu'>expect_error</span>(<span class='fu'>f</span>(), <span class='st'>"my error!"</span>, <span class='kw'>ignore.case</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+<span class='fu'>expect_error</span>(<span class='fu'>f</span>(), <span class='st'>"my error!"</span>, ignore.case = <span class='fl'>TRUE</span>)
 
 <span class='co'># If you are working with classed conditions, it's better to test for</span>
 <span class='co'># the class name, rather than the error message (which may change over time)</span>
-<span class='no'>custom_err</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>(<span class='no'>var</span>) {
-  <span class='kw pkg'>rlang</span><span class='kw ns'>::</span><span class='fu'><a href='https://rlang.r-lib.org/reference/abort.html'>abort</a></span>(<span class='st'>"A special error"</span>, <span class='kw'>var</span> <span class='kw'>=</span> <span class='no'>var</span>, <span class='kw'>.subclass</span> <span class='kw'>=</span> <span class='st'>"testthat_special"</span>)
+<span class='kw'>custom_err</span> <span class='op'>&lt;-</span> <span class='fu'>function</span>(<span class='kw'>var</span>) {
+  <span class='kw'>rlang</span>::<span class='fu'><a href='https://rlang.r-lib.org/reference/abort.html'>abort</a></span>(<span class='st'>"A special error"</span>, var = <span class='kw'>var</span>, .subclass = <span class='st'>"testthat_special"</span>)
 }
-<span class='fu'>expect_error</span>(<span class='fu'>custom_err</span>(<span class='st'>"a"</span>), <span class='kw'>class</span> <span class='kw'>=</span> <span class='st'>"testthat_special"</span>)
+<span class='fu'>expect_error</span>(<span class='fu'>custom_err</span>(<span class='st'>"a"</span>), class = <span class='st'>"testthat_special"</span>)
 
 <span class='co'># Note that `expect_error()` returns the error object so you can test</span>
 <span class='co'># its components if needed</span>
-<span class='no'>err</span> <span class='kw'>&lt;-</span> <span class='fu'>expect_error</span>(<span class='fu'>custom_err</span>(<span class='st'>"a"</span>), <span class='kw'>class</span> <span class='kw'>=</span> <span class='st'>"testthat_special"</span>)
-<span class='fu'><a href='equality-expectations.html'>expect_equal</a></span>(<span class='no'>err</span>$<span class='no'>var</span>, <span class='st'>"a"</span>)</div></pre>
+<span class='kw'>err</span> <span class='op'>&lt;-</span> <span class='fu'>expect_error</span>(<span class='fu'>custom_err</span>(<span class='st'>"a"</span>), class = <span class='st'>"testthat_special"</span>)
+<span class='fu'>expect_equal</span>(<span class='kw'>err</span><span class='op'>$</span><span class='kw'>var</span>, <span class='st'>"a"</span>)</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

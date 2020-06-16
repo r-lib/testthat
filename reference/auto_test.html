@@ -186,11 +186,11 @@ failures.</p>
     </div>
 
     <pre class="usage"><span class='fu'>auto_test</span>(
-  <span class='no'>code_path</span>,
-  <span class='no'>test_path</span>,
-  <span class='kw'>reporter</span> <span class='kw'>=</span> <span class='fu'><a href='default_reporter.html'>default_reporter</a></span>(),
-  <span class='kw'>env</span> <span class='kw'>=</span> <span class='fu'><a href='test_env.html'>test_env</a></span>(),
-  <span class='kw'>hash</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>
+  <span class='kw'>code_path</span>,
+  <span class='kw'>test_path</span>,
+  reporter = <span class='fu'>default_reporter</span>(),
+  env = <span class='fu'>test_env</span>(),
+  hash = <span class='fl'>TRUE</span>
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -214,7 +214,7 @@ failures.</p>
     </tr>
     <tr>
       <th>hash</th>
-      <td><p>Passed on to <code><a href='watch.html'>watch()</a></code>. When FALSE, uses less accurate
+      <td><p>Passed on to <code>watch()</code>. When FALSE, uses less accurate
 modification time stamps, but those are faster for large files.</p></td>
     </tr>
     </table>
@@ -237,7 +237,7 @@ and then rerun all tests.</p></li>
 
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><code><a href='auto_test_package.html'>auto_test_package()</a></code></p></div>
+    <div class='dont-index'><p><code>auto_test_package()</code></p></div>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

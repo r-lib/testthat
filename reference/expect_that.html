@@ -179,7 +179,7 @@
     <p>An old style of testing that's no longer encouraged.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>expect_that</span>(<span class='no'>object</span>, <span class='no'>condition</span>, <span class='kw'>info</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>label</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+    <pre class="usage"><span class='fu'>expect_that</span>(<span class='kw'>object</span>, <span class='kw'>condition</span>, info = <span class='kw'>NULL</span>, label = <span class='kw'>NULL</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -188,7 +188,7 @@
       <th>object</th>
       <td><p>Object to test.</p>
 <p>Supports limited unquoting to make it easier to generate readable failures
-within a function or for loop. See <a href='quasi_label.html'>quasi_label</a> for more details.</p></td>
+within a function or for loop. See quasi_label for more details.</p></td>
     </tr>
     <tr>
       <th>condition, </th>
@@ -199,7 +199,7 @@ is met, and if not, an error message to display.</p></td>
       <th>info</th>
       <td><p>Extra information to be included in the message. This argument
 is soft-deprecated and should not be used in new code. Instead see
-alternatives in <a href='quasi_label.html'>quasi_label</a>.</p></td>
+alternatives in quasi_label.</p></td>
     </tr>
     <tr>
       <th>label</th>
@@ -212,13 +212,13 @@ alternatives in <a href='quasi_label.html'>quasi_label</a>.</p></td>
     <p>the (internal) expectation result as an invisible list</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><code><a href='fail.html'>fail()</a></code> for an expectation that always fails.</p></div>
+    <div class='dont-index'><p><code>fail()</code> for an expectation that always fails.</p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>expect_that</span>(<span class='fl'>5</span> * <span class='fl'>2</span>, <span class='fu'><a href='oldskool.html'>equals</a></span>(<span class='fl'>10</span>))
-<span class='fu'>expect_that</span>(<span class='fu'><a href='https://rdrr.io/r/base/MathFun.html'>sqrt</a></span>(<span class='fl'>2</span>) ^ <span class='fl'>2</span>, <span class='fu'><a href='oldskool.html'>equals</a></span>(<span class='fl'>2</span>))
-<span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
-<span class='fu'>expect_that</span>(<span class='fu'><a href='https://rdrr.io/r/base/MathFun.html'>sqrt</a></span>(<span class='fl'>2</span>) ^ <span class='fl'>2</span>, <span class='fu'><a href='oldskool.html'>is_identical_to</a></span>(<span class='fl'>2</span>))
+    <pre class="examples"><div class='input'><span class='fu'>expect_that</span>(<span class='fl'>5</span> <span class='op'>*</span> <span class='fl'>2</span>, <span class='fu'>equals</span>(<span class='fl'>10</span>))
+<span class='fu'>expect_that</span>(<span class='fu'><a href='https://rdrr.io/r/base/MathFun.html'>sqrt</a></span>(<span class='fl'>2</span>) <span class='op'>^</span> <span class='fl'>2</span>, <span class='fu'>equals</span>(<span class='fl'>2</span>))
+<span class='co'>if</span> (<span class='fl'>FALSE</span>) {
+<span class='fu'>expect_that</span>(<span class='fu'><a href='https://rdrr.io/r/base/MathFun.html'>sqrt</a></span>(<span class='fl'>2</span>) <span class='op'>^</span> <span class='fl'>2</span>, <span class='fu'>is_identical_to</span>(<span class='fl'>2</span>))
 }</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

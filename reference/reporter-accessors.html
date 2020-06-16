@@ -183,11 +183,11 @@ reporter. Generally, these functions should not be called directly; instead
 use <code>with_reporter()</code> to temporarily change, then reset, the active reporter.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>set_reporter</span>(<span class='no'>reporter</span>)
+    <pre class="usage"><span class='fu'>set_reporter</span>(<span class='kw'>reporter</span>)
 
 <span class='fu'>get_reporter</span>()
 
-<span class='fu'>with_reporter</span>(<span class='no'>reporter</span>, <span class='no'>code</span>, <span class='kw'>start_end_reporter</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+<span class='fu'>with_reporter</span>(<span class='kw'>reporter</span>, <span class='kw'>code</span>, start_end_reporter = <span class='fl'>TRUE</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -197,7 +197,7 @@ use <code>with_reporter()</code> to temporarily change, then reset, the active r
       <td><p>Reporter to use to summarise output. Can be supplied
 as a string (e.g. "summary") or as an R6 object
 (e.g. <code>SummaryReporter$new()</code>).</p>
-<p>See <a href='Reporter.html'>Reporter</a> for more details and a list of built-in reporters.</p></td>
+<p>See Reporter for more details and a list of built-in reporters.</p></td>
     </tr>
     <tr>
       <th>code</th>

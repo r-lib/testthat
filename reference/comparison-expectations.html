@@ -179,13 +179,13 @@
     <p>Expectation: is returned value less or greater than specified value?</p>
     </div>
 
-    <pre class="usage"><span class='fu'>expect_lt</span>(<span class='no'>object</span>, <span class='no'>expected</span>, <span class='kw'>label</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>expected.label</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
+    <pre class="usage"><span class='fu'>expect_lt</span>(<span class='kw'>object</span>, <span class='kw'>expected</span>, label = <span class='kw'>NULL</span>, expected.label = <span class='kw'>NULL</span>)
 
-<span class='fu'>expect_lte</span>(<span class='no'>object</span>, <span class='no'>expected</span>, <span class='kw'>label</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>expected.label</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
+<span class='fu'>expect_lte</span>(<span class='kw'>object</span>, <span class='kw'>expected</span>, label = <span class='kw'>NULL</span>, expected.label = <span class='kw'>NULL</span>)
 
-<span class='fu'>expect_gt</span>(<span class='no'>object</span>, <span class='no'>expected</span>, <span class='kw'>label</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>expected.label</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
+<span class='fu'>expect_gt</span>(<span class='kw'>object</span>, <span class='kw'>expected</span>, label = <span class='kw'>NULL</span>, expected.label = <span class='kw'>NULL</span>)
 
-<span class='fu'>expect_gte</span>(<span class='no'>object</span>, <span class='no'>expected</span>, <span class='kw'>label</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>expected.label</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+<span class='fu'>expect_gte</span>(<span class='kw'>object</span>, <span class='kw'>expected</span>, label = <span class='kw'>NULL</span>, expected.label = <span class='kw'>NULL</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -194,7 +194,7 @@
       <th>object</th>
       <td><p>Computation and value to compare it to.</p>
 <p>Both arguments supports limited unquoting to make it easier to generate
-readable failures within a function or for loop. See <a href='quasi_label.html'>quasi_label</a> for
+readable failures within a function or for loop. See quasi_label for
 more details.</p></td>
     </tr>
     <tr>
@@ -216,30 +216,30 @@ use only.</p></td>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other expectations: 
-<code><a href='equality-expectations.html'>equality-expectations</a></code>,
-<code><a href='expect_error.html'>expect_error</a>()</code>,
-<code><a href='expect_length.html'>expect_length</a>()</code>,
-<code><a href='expect_match.html'>expect_match</a>()</code>,
-<code><a href='expect_message.html'>expect_message</a>()</code>,
-<code><a href='expect_named.html'>expect_named</a>()</code>,
-<code><a href='expect_null.html'>expect_null</a>()</code>,
-<code><a href='expect_output.html'>expect_output</a>()</code>,
-<code><a href='expect_reference.html'>expect_reference</a>()</code>,
-<code><a href='expect_silent.html'>expect_silent</a>()</code>,
-<code><a href='inheritance-expectations.html'>inheritance-expectations</a></code>,
-<code><a href='logical-expectations.html'>logical-expectations</a></code></p></div>
+<code>equality-expectations</code>,
+<code>expect_error()</code>,
+<code>expect_length()</code>,
+<code>expect_match()</code>,
+<code>expect_message()</code>,
+<code>expect_named()</code>,
+<code>expect_null()</code>,
+<code>expect_output()</code>,
+<code>expect_reference()</code>,
+<code>expect_silent()</code>,
+<code>inheritance-expectations</code>,
+<code>logical-expectations</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>a</span> <span class='kw'>&lt;-</span> <span class='fl'>9</span>
-<span class='fu'>expect_lt</span>(<span class='no'>a</span>, <span class='fl'>10</span>)
+    <pre class="examples"><div class='input'><span class='kw'>a</span> <span class='op'>&lt;-</span> <span class='fl'>9</span>
+<span class='fu'>expect_lt</span>(<span class='kw'>a</span>, <span class='fl'>10</span>)
 
-<span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
+<span class='co'>if</span> (<span class='fl'>FALSE</span>) {
 <span class='fu'>expect_lt</span>(<span class='fl'>11</span>, <span class='fl'>10</span>)
 }
 
-<span class='no'>a</span> <span class='kw'>&lt;-</span> <span class='fl'>11</span>
-<span class='fu'>expect_gt</span>(<span class='no'>a</span>, <span class='fl'>10</span>)
-<span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
+<span class='kw'>a</span> <span class='op'>&lt;-</span> <span class='fl'>11</span>
+<span class='fu'>expect_gt</span>(<span class='kw'>a</span>, <span class='fl'>10</span>)
+<span class='co'>if</span> (<span class='fl'>FALSE</span>) {
 <span class='fu'>expect_gt</span>(<span class='fl'>9</span>, <span class='fl'>10</span>)
 }</div></pre>
   </div>

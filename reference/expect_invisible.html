@@ -183,9 +183,9 @@ output. Typically you'll use this to check that functions called primarily
 for their side-effects return their data argument invisibly.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>expect_invisible</span>(<span class='no'>call</span>, <span class='kw'>label</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
+    <pre class="usage"><span class='fu'>expect_invisible</span>(<span class='kw'>call</span>, label = <span class='kw'>NULL</span>)
 
-<span class='fu'>expect_visible</span>(<span class='no'>call</span>, <span class='kw'>label</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+<span class='fu'>expect_visible</span>(<span class='kw'>call</span>, label = <span class='kw'>NULL</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -205,16 +205,16 @@ for their side-effects return their data argument invisibly.</p>
     <p>The evaluated <code>call</code>, invisibly.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>expect_invisible</span>(<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fl'>10</span>)
-<span class='fu'>expect_visible</span>(<span class='no'>x</span>)
+    <pre class="examples"><div class='input'><span class='fu'>expect_invisible</span>(<span class='kw'>x</span> <span class='op'>&lt;-</span> <span class='fl'>10</span>)
+<span class='fu'>expect_visible</span>(<span class='kw'>x</span>)
 
 <span class='co'># Typically you'll assign the result of the expectation so you can</span>
 <span class='co'># also check that the value is as you expect.</span>
-<span class='no'>greet</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>(<span class='no'>name</span>) {
-  <span class='fu'><a href='https://rdrr.io/r/base/message.html'>message</a></span>(<span class='st'>"Hi "</span>, <span class='no'>name</span>)
-  <span class='fu'><a href='https://rdrr.io/r/base/invisible.html'>invisible</a></span>(<span class='no'>name</span>)
+<span class='kw'>greet</span> <span class='op'>&lt;-</span> <span class='fu'>function</span>(<span class='kw'>name</span>) {
+  <span class='fu'><a href='https://rdrr.io/r/base/message.html'>message</a></span>(<span class='st'>"Hi "</span>, <span class='kw'>name</span>)
+  <span class='fu'><a href='https://rdrr.io/r/base/invisible.html'>invisible</a></span>(<span class='kw'>name</span>)
 }
-<span class='no'>out</span> <span class='kw'>&lt;-</span> <span class='fu'>expect_invisible</span>(<span class='fu'>greet</span>(<span class='st'>"Hadley"</span>))</div><div class='output co'>#&gt; <span class='message'>Hi Hadley</span></div><div class='input'><span class='fu'><a href='equality-expectations.html'>expect_equal</a></span>(<span class='no'>out</span>, <span class='st'>"Hadley"</span>)</div></pre>
+<span class='kw'>out</span> <span class='op'>&lt;-</span> <span class='fu'>expect_invisible</span>(<span class='fu'>greet</span>(<span class='st'>"Hadley"</span>))</div><div class='output co'>#&gt; <span class='message'>Hi Hadley</span></div><div class='input'><span class='fu'>expect_equal</span>(<span class='kw'>out</span>, <span class='st'>"Hadley"</span>)</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

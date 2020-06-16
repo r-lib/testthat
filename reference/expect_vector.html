@@ -179,13 +179,13 @@ details in https://vctrs.r-lib.org/articles/type-size.html" />
     </div>
 
     <div class="ref-description">
-    <p><code>expect_vector()</code> is a thin wrapper around <code><a href='https://rdrr.io/pkg/vctrs/man/vec_assert.html'>vctrs::vec_assert()</a></code>, converting
+    <p><code>expect_vector()</code> is a thin wrapper around <code><a href='https://vctrs.r-lib.org/reference/vec_assert.html'>vctrs::vec_assert()</a></code>, converting
 the results of that function in to the expectations used by testthat. This
 means that it used the vctrs of <code>ptype</code> (prototype) and <code>size</code>. See
 details in <a href='https://vctrs.r-lib.org/articles/type-size.html'>https://vctrs.r-lib.org/articles/type-size.html</a></p>
     </div>
 
-    <pre class="usage"><span class='fu'>expect_vector</span>(<span class='no'>object</span>, <span class='kw'>ptype</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>size</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+    <pre class="usage"><span class='fu'>expect_vector</span>(<span class='kw'>object</span>, ptype = <span class='kw'>NULL</span>, size = <span class='kw'>NULL</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -194,7 +194,7 @@ details in <a href='https://vctrs.r-lib.org/articles/type-size.html'>https://vct
       <th>object</th>
       <td><p>Object to test.</p>
 <p>Supports limited unquoting to make it easier to generate readable failures
-within a function or for loop. See <a href='quasi_label.html'>quasi_label</a> for more details.</p></td>
+within a function or for loop. See quasi_label for more details.</p></td>
     </tr>
     <tr>
       <th>ptype</th>
@@ -209,10 +209,10 @@ size-0 (empty) generalised vector.</p></td>
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fu'><a href='https://rdrr.io/r/base/ns-load.html'>requireNamespace</a></span>(<span class='st'>"vctrs"</span>) <span class='kw'>&amp;&amp;</span> <span class='fu'><a href='https://rdrr.io/r/utils/packageDescription.html'>packageVersion</a></span>(<span class='st'>"vctrs"</span>) <span class='kw'>&gt;</span> <span class='st'>"0.1.0.9002"</span>) {
-<span class='fu'>expect_vector</span>(<span class='fl'>1</span>:<span class='fl'>10</span>, <span class='kw'>ptype</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/integer.html'>integer</a></span>(), <span class='kw'>size</span> <span class='kw'>=</span> <span class='fl'>10</span>)
-<span class='fu'><a href='expect_success.html'>show_failure</a></span>(<span class='fu'>expect_vector</span>(<span class='fl'>1</span>:<span class='fl'>10</span>, <span class='kw'>ptype</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/integer.html'>integer</a></span>(), <span class='kw'>size</span> <span class='kw'>=</span> <span class='fl'>5</span>))
-<span class='fu'><a href='expect_success.html'>show_failure</a></span>(<span class='fu'>expect_vector</span>(<span class='fl'>1</span>:<span class='fl'>10</span>, <span class='kw'>ptype</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/character.html'>character</a></span>(), <span class='kw'>size</span> <span class='kw'>=</span> <span class='fl'>5</span>))
+    <pre class="examples"><div class='input'><span class='co'>if</span> (<span class='fu'><a href='https://rdrr.io/r/base/ns-load.html'>requireNamespace</a></span>(<span class='st'>"vctrs"</span>) <span class='op'>&amp;&amp;</span> <span class='fu'><a href='https://rdrr.io/r/utils/packageDescription.html'>packageVersion</a></span>(<span class='st'>"vctrs"</span>) <span class='op'>&gt;</span> <span class='st'>"0.1.0.9002"</span>) {
+<span class='fu'>expect_vector</span>(<span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span>, ptype = <span class='fu'><a href='https://rdrr.io/r/base/integer.html'>integer</a></span>(), size = <span class='fl'>10</span>)
+<span class='fu'>show_failure</span>(<span class='fu'>expect_vector</span>(<span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span>, ptype = <span class='fu'><a href='https://rdrr.io/r/base/integer.html'>integer</a></span>(), size = <span class='fl'>5</span>))
+<span class='fu'>show_failure</span>(<span class='fu'>expect_vector</span>(<span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span>, ptype = <span class='fu'><a href='https://rdrr.io/r/base/character.html'>character</a></span>(), size = <span class='fl'>5</span>))
 }</div><div class='output co'>#&gt; <span style='font-weight: bold;'>Failed expectation:
 #&gt; </span><span>`1:10` must have size 5, not size 10.
 #&gt; </span><span style='font-weight: bold;'>Failed expectation:

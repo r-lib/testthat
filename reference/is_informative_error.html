@@ -190,7 +190,7 @@ e.g. with vctrs::s3_register()." />
     <div class="ref-description">
     <p><code>is_informative_error()</code> is a generic predicate that indicates
 whether testthat users should explicitly test for an error
-class. When it returns <code>TRUE</code> (the default), and <code><a href='expect_error.html'>expect_error()</a></code>
+class. When it returns <code>TRUE</code> (the default), and <code>expect_error()</code>
 does not check for the class, a warning is issued during tests.
 You can silence the warning by implementing <code>is_informative_error()</code>.</p>
 <p>The main use case for overriding this method is to introduce an
@@ -200,10 +200,10 @@ developing an error hierarchy for your package. Override
 users to depend on the experimental class in their tests.</p>
 <p>Since testthat should be a <code>Suggest</code> dependency, methods for
 <code>is_informative_error()</code> should typically be lazily registered,
-e.g. with <code><a href='https://rdrr.io/pkg/vctrs/man/s3_register.html'>vctrs::s3_register()</a></code>.</p>
+e.g. with <code><a href='https://vctrs.r-lib.org/reference/s3_register.html'>vctrs::s3_register()</a></code>.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>is_informative_error</span>(<span class='no'>x</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>is_informative_error</span>(<span class='kw'>x</span>, <span class='kw'>...</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">

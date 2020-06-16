@@ -183,7 +183,7 @@ in <span style="R">R</span> packages with
 <a href='https://github.com/philsquared/Catch'>Catch</a> and <code>testthat</code>.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>use_catch</span>(<span class='kw'>dir</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/getwd.html'>getwd</a></span>())</pre>
+    <pre class="usage"><span class='fu'><a href='https://testthat.r-lib.org/reference/use_catch.html'>use_catch</a></span>(dir = <span class='fu'><a href='https://rdrr.io/r/base/getwd.html'>getwd</a></span>())</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -196,7 +196,7 @@ in <span style="R">R</span> packages with
 
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>Calling <code>use_catch()</code> will:</p><ol>
+    <p>Calling <code><a href='https://testthat.r-lib.org/reference/use_catch.html'>use_catch()</a></code> will:</p><ol>
 <li><p>Create a file <code>src/test-runner.cpp</code>, which ensures that the
 <code>testthat</code> package will understand how to run your package's
 unit tests,</p></li>
@@ -265,9 +265,9 @@ package, then you'll need to explicitly export a symbol
 in your package that <code>testthat</code> can use to run your unit
 tests. <code>testthat</code> will look for a routine with one of the names:</p>
 <pre>
-    <span class='no'>C_run_testthat_tests</span>
-    <span class='no'>c_run_testthat_tests</span>
-    <span class='no'>run_testthat_tests</span></pre>
+    <span class='kw'>C_run_testthat_tests</span>
+    <span class='kw'>c_run_testthat_tests</span>
+    <span class='kw'>run_testthat_tests</span></pre>
 
 <p>See <a href='https://cran.r-project.org/doc/manuals/r-release/R-exts.html#Controlling-visibility'>Controlling Visibility</a>
 and <a href='https://cran.r-project.org/doc/manuals/r-release/R-exts.html#Registering-symbols'>Registering Symbols</a>
@@ -282,11 +282,11 @@ instead use the <code>testthat::catchSession()</code> object in a file
 with the form:</p>
 <pre>
 #define TESTTHAT_TEST_RUNNER
-#include &amp;lt;testthat.h&amp;gt;
+#include &lt;testthat.h&gt;
 
 void run()
 {
-    Catch::Session&amp;amp; session = testthat::catchSession();
+    Catch::Session&amp; session = testthat::catchSession();
     // interact with the session object as desired
 }
 </pre>
@@ -303,7 +303,7 @@ by Catch, but would prefer not to use the regular <code>testthat</code>
 <span style="R">R</span> testing infrastructure, you can manually run the unit tests
 by inserting a call to:</p>
 <pre>
-.Call("run_testthat_tests", PACKAGE = &amp;lt;pkgName&amp;gt;)
+.Call("run_testthat_tests", PACKAGE = &lt;pkgName&gt;)
 </pre>
 
 <p>as necessary within your unit test suite.</p>

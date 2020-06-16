@@ -194,35 +194,35 @@ dependency on testthat.</p>
     </div>
 
     <pre class="usage"><span class='fu'>test_dir</span>(
-  <span class='no'>path</span>,
-  <span class='kw'>filter</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>reporter</span> <span class='kw'>=</span> <span class='fu'><a href='default_reporter.html'>default_reporter</a></span>(),
-  <span class='kw'>env</span> <span class='kw'>=</span> <span class='fu'><a href='test_env.html'>test_env</a></span>(),
-  <span class='no'>...</span>,
-  <span class='kw'>encoding</span> <span class='kw'>=</span> <span class='st'>"unknown"</span>,
-  <span class='kw'>load_helpers</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>stop_on_failure</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>stop_on_warning</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>wrap</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>
+  <span class='kw'>path</span>,
+  filter = <span class='kw'>NULL</span>,
+  reporter = <span class='fu'>default_reporter</span>(),
+  env = <span class='fu'>test_env</span>(),
+  <span class='kw'>...</span>,
+  encoding = <span class='st'>"unknown"</span>,
+  load_helpers = <span class='fl'>TRUE</span>,
+  stop_on_failure = <span class='fl'>FALSE</span>,
+  stop_on_warning = <span class='fl'>FALSE</span>,
+  wrap = <span class='fl'>TRUE</span>
 )
 
 <span class='fu'>test_package</span>(
-  <span class='no'>package</span>,
-  <span class='kw'>filter</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>reporter</span> <span class='kw'>=</span> <span class='fu'><a href='default_reporter.html'>check_reporter</a></span>(),
-  <span class='no'>...</span>,
-  <span class='kw'>stop_on_failure</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>stop_on_warning</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
+  <span class='kw'>package</span>,
+  filter = <span class='kw'>NULL</span>,
+  reporter = <span class='fu'>check_reporter</span>(),
+  <span class='kw'>...</span>,
+  stop_on_failure = <span class='fl'>TRUE</span>,
+  stop_on_warning = <span class='fl'>FALSE</span>
 )
 
 <span class='fu'>test_check</span>(
-  <span class='no'>package</span>,
-  <span class='kw'>filter</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>reporter</span> <span class='kw'>=</span> <span class='fu'><a href='default_reporter.html'>check_reporter</a></span>(),
-  <span class='no'>...</span>,
-  <span class='kw'>stop_on_failure</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>stop_on_warning</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>wrap</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>
+  <span class='kw'>package</span>,
+  filter = <span class='kw'>NULL</span>,
+  reporter = <span class='fu'>check_reporter</span>(),
+  <span class='kw'>...</span>,
+  stop_on_failure = <span class='fl'>TRUE</span>,
+  stop_on_warning = <span class='fl'>FALSE</span>,
+  wrap = <span class='fl'>TRUE</span>
 )
 
 <span class='fu'>is_testing</span>()
@@ -247,7 +247,7 @@ name after it has been stripped of <code>"test-"</code> and <code>".R"</code>.</
       <td><p>Reporter to use to summarise output. Can be supplied
 as a string (e.g. "summary") or as an R6 object
 (e.g. <code>SummaryReporter$new()</code>).</p>
-<p>See <a href='Reporter.html'>Reporter</a> for more details and a list of built-in reporters.</p></td>
+<p>See Reporter for more details and a list of built-in reporters.</p></td>
     </tr>
     <tr>
       <th>env</th>
@@ -264,7 +264,7 @@ as a string (e.g. "summary") or as an R6 object
     <tr>
       <th>load_helpers</th>
       <td><p>Source helper files before running the tests?
-See <code><a href='source_file.html'>source_test_helpers()</a></code> for more details.</p></td>
+See <code>source_test_helpers()</code> for more details.</p></td>
     </tr>
     <tr>
       <th>stop_on_failure</th>
@@ -281,7 +281,7 @@ warnings.</p></td>
     </tr>
     <tr>
       <th>wrap</th>
-      <td><p>Automatically wrap all code within <code><a href='test_that.html'>test_that()</a></code>? This ensures
+      <td><p>Automatically wrap all code within <code>test_that()</code>? This ensures
 that all expectations are reported, even if outside a test block.</p></td>
     </tr>
     <tr>
@@ -321,14 +321,14 @@ and objects.</p>
     
 
 <p>To run testthat automatically from <code>R CMD check</code>, make sure you have
-a <code>tests/testthat.R</code> that contains:</p><pre><span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>testthat</span>)
-<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>yourpackage</span>)
+a <code>tests/testthat.R</code> that contains:</p><pre><span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='kw'><a href='http://testthat.r-lib.org'>testthat</a></span>)
+<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='kw'>yourpackage</span>)
 
-<span class='fu'>test_check</span>(<span class='st'>"yourpackage"</span>)</pre>
+<span class='fu'><a href='https://testthat.r-lib.org/reference/test_dir.html'>test_check</a></span>(<span class='st'>"yourpackage"</span>)</pre>
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>test_dir</span>(<span class='fu'><a href='testthat_examples.html'>testthat_examples</a></span>(), <span class='kw'>reporter</span> <span class='kw'>=</span> <span class='st'>"summary"</span>)</div><div class='output co'>#&gt; <span style='color: #00BB00;'>.</span><span style='color: #BB0000;'>1</span><span style='color: #00BB00;'>.</span><span style='color: #0000BB;'>S</span><span style='color: #BB00BB;'>W</span><span style='color: #00BB00;'>...</span><span>
+    <pre class="examples"><div class='input'><span class='fu'>test_dir</span>(<span class='fu'>testthat_examples</span>(), reporter = <span class='st'>"summary"</span>)</div><div class='output co'>#&gt; <span style='color: #00BB00;'>.</span><span style='color: #BB0000;'>1</span><span style='color: #00BB00;'>.</span><span style='color: #0000BB;'>S</span><span style='color: #BB00BB;'>W</span><span style='color: #00BB00;'>...</span><span>
 #&gt; ══ Skipped ═════════════════════════════════════════════════════════════════════
 #&gt; </span><span style='color: #0000BB;'>1. you can skip tests if needed</span><span> (@test-success.R#6) - Reason: This tests hasn't been written yet
 #&gt; 
@@ -342,7 +342,7 @@ a <code>tests/testthat.R</code> that contains:</p><pre><span class='fu'><a href=
 #&gt;   `actual`: </span><span style='color: #00BB00;'>2</span><span>
 #&gt; `expected`: </span><span style='color: #00BB00;'>4</span><span>
 #&gt; 
-#&gt; ══ DONE ════════════════════════════════════════════════════════════════════════</div><div class='input'><span class='fu'>test_dir</span>(<span class='fu'><a href='testthat_examples.html'>testthat_examples</a></span>(), <span class='kw'>reporter</span> <span class='kw'>=</span> <span class='st'>"minimal"</span>)</div><div class='output co'>#&gt; </span><span style='color: #00BB00;'>.</span><span style='color: #BB0000;'>F</span><span style='color: #00BB00;'>.</span><span style='color: #0000BB;'>S</span><span style='color: #BB00BB;'>W</span><span style='color: #00BB00;'>...</span><span></div></span></pre>
+#&gt; ══ DONE ════════════════════════════════════════════════════════════════════════</div><div class='input'><span class='fu'>test_dir</span>(<span class='fu'>testthat_examples</span>(), reporter = <span class='st'>"minimal"</span>)</div><div class='output co'>#&gt; </span><span style='color: #00BB00;'>.</span><span style='color: #BB0000;'>F</span><span style='color: #00BB00;'>.</span><span style='color: #0000BB;'>S</span><span style='color: #BB00BB;'>W</span><span style='color: #00BB00;'>...</span><span></div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

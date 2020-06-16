@@ -181,11 +181,11 @@ convey your  intent." />
     <div class="ref-description">
     <p><code>expect_is()</code> is an older form that uses <code><a href='https://rdrr.io/r/base/class.html'>inherits()</a></code> without checking
 whether <code>x</code> is S3, S4, or neither. Instead, I'd recommend using
-<code><a href='inheritance-expectations.html'>expect_type()</a></code>, <code><a href='inheritance-expectations.html'>expect_s3_class()</a></code> or <code><a href='inheritance-expectations.html'>expect_s4_class()</a></code> to more clearly
+<code>expect_type()</code>, <code>expect_s3_class()</code> or <code>expect_s4_class()</code> to more clearly
 convey your  intent.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>expect_is</span>(<span class='no'>object</span>, <span class='no'>class</span>, <span class='kw'>info</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>label</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+    <pre class="usage"><span class='fu'>expect_is</span>(<span class='kw'>object</span>, <span class='kw'>class</span>, info = <span class='kw'>NULL</span>, label = <span class='kw'>NULL</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -194,7 +194,7 @@ convey your  intent.</p>
       <th>object</th>
       <td><p>Object to test.</p>
 <p>Supports limited unquoting to make it easier to generate readable failures
-within a function or for loop. See <a href='quasi_label.html'>quasi_label</a> for more details.</p></td>
+within a function or for loop. See quasi_label for more details.</p></td>
     </tr>
     <tr>
       <th>class</th>

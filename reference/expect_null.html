@@ -178,10 +178,10 @@ check for it either with expect_equal(x, NULL) or expect_type(x, &quot;NULL&quot
 
     <div class="ref-description">
     <p>This is a special case because <code>NULL</code> is a singleton so it's possible
-check for it either with <code><a href='equality-expectations.html'>expect_equal(x, NULL)</a></code> or <code><a href='inheritance-expectations.html'>expect_type(x, "NULL")</a></code>.</p>
+check for it either with <code>expect_equal(x, NULL)</code> or <code>expect_type(x, "NULL")</code>.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>expect_null</span>(<span class='no'>object</span>, <span class='kw'>info</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>label</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+    <pre class="usage"><span class='fu'>expect_null</span>(<span class='kw'>object</span>, info = <span class='kw'>NULL</span>, label = <span class='kw'>NULL</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -190,13 +190,13 @@ check for it either with <code><a href='equality-expectations.html'>expect_equal
       <th>object</th>
       <td><p>Object to test.</p>
 <p>Supports limited unquoting to make it easier to generate readable failures
-within a function or for loop. See <a href='quasi_label.html'>quasi_label</a> for more details.</p></td>
+within a function or for loop. See quasi_label for more details.</p></td>
     </tr>
     <tr>
       <th>info</th>
       <td><p>Extra information to be included in the message. This argument
 is soft-deprecated and should not be used in new code. Instead see
-alternatives in <a href='quasi_label.html'>quasi_label</a>.</p></td>
+alternatives in quasi_label.</p></td>
     </tr>
     <tr>
       <th>label</th>
@@ -207,25 +207,25 @@ alternatives in <a href='quasi_label.html'>quasi_label</a>.</p></td>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other expectations: 
-<code><a href='comparison-expectations.html'>comparison-expectations</a></code>,
-<code><a href='equality-expectations.html'>equality-expectations</a></code>,
-<code><a href='expect_error.html'>expect_error</a>()</code>,
-<code><a href='expect_length.html'>expect_length</a>()</code>,
-<code><a href='expect_match.html'>expect_match</a>()</code>,
-<code><a href='expect_message.html'>expect_message</a>()</code>,
-<code><a href='expect_named.html'>expect_named</a>()</code>,
-<code><a href='expect_output.html'>expect_output</a>()</code>,
-<code><a href='expect_reference.html'>expect_reference</a>()</code>,
-<code><a href='expect_silent.html'>expect_silent</a>()</code>,
-<code><a href='inheritance-expectations.html'>inheritance-expectations</a></code>,
-<code><a href='logical-expectations.html'>logical-expectations</a></code></p></div>
+<code>comparison-expectations</code>,
+<code>equality-expectations</code>,
+<code>expect_error()</code>,
+<code>expect_length()</code>,
+<code>expect_match()</code>,
+<code>expect_message()</code>,
+<code>expect_named()</code>,
+<code>expect_output()</code>,
+<code>expect_reference()</code>,
+<code>expect_silent()</code>,
+<code>inheritance-expectations</code>,
+<code>logical-expectations</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='kw'>NULL</span>
-<span class='no'>y</span> <span class='kw'>&lt;-</span> <span class='fl'>10</span>
+    <pre class="examples"><div class='input'><span class='kw'>x</span> <span class='op'>&lt;-</span> <span class='kw'>NULL</span>
+<span class='kw'>y</span> <span class='op'>&lt;-</span> <span class='fl'>10</span>
 
-<span class='fu'>expect_null</span>(<span class='no'>x</span>)
-<span class='fu'><a href='expect_success.html'>show_failure</a></span>(<span class='fu'>expect_null</span>(<span class='no'>y</span>))</div><div class='output co'>#&gt; <span style='font-weight: bold;'>Failed expectation:
+<span class='fu'>expect_null</span>(<span class='kw'>x</span>)
+<span class='fu'>show_failure</span>(<span class='fu'>expect_null</span>(<span class='kw'>y</span>))</div><div class='output co'>#&gt; <span style='font-weight: bold;'>Failed expectation:
 #&gt; </span><span>`y` is not null.</div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
