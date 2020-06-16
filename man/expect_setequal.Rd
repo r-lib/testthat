@@ -27,7 +27,7 @@ more details.}
 \item \code{expect_setequal(x, y)} tests that every element of \code{x} occurs in \code{y},
 and that every element of \code{y} occurs in \code{x}.
 \item \code{expect_mapequal(x, y)} tests that \code{x} and \code{y} have the same names, and
-that \code{x[names(y)]} equals \code{x}.
+that \code{x[names(y)]} equals \code{y}.
 }
 }
 \details{
