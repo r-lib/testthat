@@ -85,18 +85,6 @@ dir.exists <- function(paths) {
   file.exists(paths) & file.info(paths)$isdir
 }
 
-# Simplify a test filename to a context name
-context_name <- function(filename) {
-
-  # Remove test- prefix
-  filename <- sub("^test-", "", filename)
-
-  # Remove terminal extension
-  filename <- sub("[.][Rr]$", "", filename)
-
-  filename
-}
-
 paste_line <- function(...) {
   paste(chr(...), collapse = "\n")
 }

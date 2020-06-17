@@ -33,3 +33,11 @@ test_that("contexts are opened, then closed", {
   expect_that(report$test_count, equals(4))
   expect_that(report$test_i, equals(0))
 })
+
+test_that("context_name strips prefix and extensions correctly", {
+  expect_equal(context_name("test-check-metrics.R"), "check-metrics") # base case
+  expect_equal(context_name("test-check-metrics.r"), "check-metrics") # lowercase
+  expect_equal(context_name("test-check.RobustMetrics.R"),            # terminal '.R'
+               "check.RobustMetrics")
+  expect_equal(context_name("test-test-metrics.R"), "test-metrics")   # only prefix
+})
