@@ -2,9 +2,12 @@
 % Please edit documentation in R/test-compiled-code.R
 \name{expect_cpp_tests_pass}
 \alias{expect_cpp_tests_pass}
+\alias{run_cpp_tests}
 \title{Expectation: do C++ tests past?}
 \usage{
 expect_cpp_tests_pass(package)
+
+run_cpp_tests(package)
 }
 \arguments{
 \item{package}{The name of the package to test.}

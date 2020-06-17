@@ -121,9 +121,14 @@ inline Catch::Session& catchSession()
   return instance;
 }
 
-inline bool run_tests()
+inline bool run_tests(bool use_xml)
 {
-  return catchSession().run() == 0;
+  if (use_xml) {
+    const char* argv[] = {"catch", "-r", "xml"};
+    return catchSession().run(3, argv) == 0;
+  } else {
+    return catchSession().run() == 0;
+  }
 }
 
 # endif // CATCH_CONFIG_RUNNER
@@ -157,8 +162,9 @@ inline std::ostream& cerr()
 
 #  include <R.h>
 #  include <Rinternals.h>
-extern "C" SEXP run_testthat_tests() {
-  bool success = testthat::run_tests();
+extern "C" SEXP run_testthat_tests(SEXP use_xml_sxp) {
+  bool use_xml = LOGICAL(use_xml_sxp)[0];
+  bool success = testthat::run_tests(use_xml);
   return ScalarLogical(success);
 }
 

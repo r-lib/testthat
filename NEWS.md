@@ -7,6 +7,9 @@
   it is likely there are also minor differences in the comparison - please
   let me know if you encounter these (#447).
 
+* Catch C++ tests now provide detailed results for each succeeded or failed
+  test, to upgrade existing code, re-run `testthat::use_catch()` (#1008)
+
 # testthat 2.3.2
 
 * Fix R CMD check issues
