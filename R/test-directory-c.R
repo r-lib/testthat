@@ -121,7 +121,7 @@ test_dir_parallel <- function(path,
 
   fun <- function(path) asNamespace("testthat")$subprocess_task(path)
   environment(fun) <- .GlobalEnv
-  fun <- utils::removeSource(fun)
+  fun <- remove_source(fun)
   for (path in paths) {
     queue$push(fun, list(path))
   }
@@ -271,7 +271,7 @@ cleanup_test_processes <- function(queue, path) {
     NULL
   }
   environment(fun) <- .GlobalEnv
-  fun <- utils::removeSource(fun)
+  fun <- remove_source(fun)
 
   topoll <- list()
   for (i in seq_len(num)) {
