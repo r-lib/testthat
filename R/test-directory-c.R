@@ -143,17 +143,17 @@ test_dir_parallel <- function(path,
     while (!queue$is_idle()) {
       msgs <- queue$poll(Inf)
       for (x in msgs) {
-        if (x$code == 301) {
+        if (x$code == PROCESS_MSG) {
           m <- x$message
           # TODO: should we keep other messages in the subprocess? Probably.
           if (!inherits(m, "testthat_message")) next
           files[[m$filename]] <- append(files[[m$filename]], list(m))
           if (m$cmd == "end_file") replay(m$filename)
 
-        } else if (x$code == 200) {
+        } else if (x$code == PROCESS_DONE) {
           # File is done, nothing to do here, we'll get an end_file
 
-        } else if (x$code > 500) {
+        } else if (x$code %in% c(PROCESS_CRASHED, PROCESS_CLOSED)) {
           # a subprocess has crashed
           # TODO: start another one. Here or in the task queue?
           # TODO: print the partial result and report the crash
@@ -344,7 +344,7 @@ SubprocessReporter <- R6::R6Class("SubprocessReporter",
     filename = NULL,
     event = function(cmd, ...) {
       msg <- list(
-        code = 301,
+        code = PROCESS_MSG,
         cmd = cmd,
         filename = private$filename,
         args = list(...)

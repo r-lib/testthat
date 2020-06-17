@@ -9,6 +9,13 @@
 # * We do not need a pop() method, because poll() will just return
 #   every message.
 
+PROCESS_DONE    <- 200L
+PROCESS_STARTED <- 201L
+PROCESS_MSG     <- 301L
+PROCESS_EXITED  <- 500L
+PROCESS_CRASHED <- 501L
+PROCESS_CLOSED  <- 502L
+
 task_q <- R6::R6Class(
   "task_q",
   public = list(
@@ -50,9 +57,9 @@ task_q <- R6::R6Class(
         results <- lapply(ready, function(i) {
           msg <- private$tasks$worker[[i]]$read()
           ## TODO: why can this be NULL?
-          if (is.null(msg) || msg$code == 301) {
+          if (is.null(msg) || msg$code == PROCESS_MSG) {
             private$tasks$state[[i]] <- "running"
-          } else if (msg$code == 201) {
+          } else if (msg$code == PROCESS_STARTED) {
             private$tasks$state[[i]] <- "ready"
             msg <- NULL
           } else {
