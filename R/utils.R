@@ -89,10 +89,10 @@ dir.exists <- function(paths) {
 context_name <- function(filename) {
 
   # Remove test- prefix
-  filename <- gsub("test-", "", filename)
+  filename <- sub("^test-", "", filename)
 
-  # Remove extension
-  filename <- gsub("[.][Rr]", "", filename)
+  # Remove terminal extension
+  filename <- sub("[.][Rr]$", "", filename)
 
   filename
 }
