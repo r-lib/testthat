@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Run all tests in specified file — test_file • testthat</title>
+<title>Expectation: do C++ tests past? — expect_cpp_tests_pass • testthat</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,11 +46,11 @@
 
 
 
-<meta property="og:title" content="Run all tests in specified file — test_file" />
-<meta property="og:description" content="Execute code in the specified file, displaying results using a reporter.
-Use this function when you want to run a single file's worth of tests.
-You are responsible for ensuring that the functions to test are available
-in the global environment." />
+<meta property="og:title" content="Expectation: do C++ tests past? — expect_cpp_tests_pass" />
+<meta property="og:description" content="Test compiled code in the package package. A call to this function will
+automatically be generated for you in tests/testthat/test-cpp.R after
+calling use_catch(); you should not need to manually call this expectation
+yourself." />
 <meta property="og:image" content="https://testthat.r-lib.org/logo.png" />
 
 
@@ -173,97 +173,32 @@ in the global environment." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Run all tests in specified file</h1>
-    <small class="dont-index">Source: <a href='https://github.com/r-lib/testthat/blob/master/R/test-files.R'><code>R/test-files.R</code></a></small>
-    <div class="hidden name"><code>test_file.Rd</code></div>
+    <h1>Expectation: do C++ tests past?</h1>
+    <small class="dont-index">Source: <a href='https://github.com/r-lib/testthat/blob/master/R/test-compiled-code.R'><code>R/test-compiled-code.R</code></a></small>
+    <div class="hidden name"><code>run_cpp_tests.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Execute code in the specified file, displaying results using a <code>reporter</code>.
-Use this function when you want to run a single file's worth of tests.
-You are responsible for ensuring that the functions to test are available
-in the global environment.</p>
+    <p>Test compiled code in the package <code>package</code>. A call to this function will
+automatically be generated for you in <code>tests/testthat/test-cpp.R</code> after
+calling <code>use_catch()</code>; you should not need to manually call this expectation
+yourself.</p>
     </div>
 
-    <pre class="usage"><span class='fu'><a href='https://testthat.r-lib.org/reference/test_file.html'>test_file</a></span>(
-  <span class='kw'>path</span>,
-  reporter = <span class='fu'><a href='https://testthat.r-lib.org/reference/default_reporter.html'>default_reporter</a></span>(),
-  env = <span class='fu'><a href='https://testthat.r-lib.org/reference/test_env.html'>test_env</a></span>(),
-  start_end_reporter = <span class='fl'>TRUE</span>,
-  load_helpers = <span class='fl'>TRUE</span>,
-  encoding = <span class='st'>"unknown"</span>,
-  wrap = <span class='fl'>TRUE</span>
-)</pre>
+    <pre class="usage"><span class='fu'>expect_cpp_tests_pass</span>(<span class='kw'>package</span>)
+
+<span class='fu'>run_cpp_tests</span>(<span class='kw'>package</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>path</th>
-      <td><p>Path to file.</p></td>
-    </tr>
-    <tr>
-      <th>reporter</th>
-      <td><p>Reporter to use to summarise output. Can be supplied
-as a string (e.g. "summary") or as an R6 object
-(e.g. <code>SummaryReporter$new()</code>).</p>
-<p>See <a href='https://testthat.r-lib.org/reference/Reporter.html'>Reporter</a> for more details and a list of built-in reporters.</p></td>
-    </tr>
-    <tr>
-      <th>env</th>
-      <td><p>Environment in which to execute the tests. Expert use only.</p></td>
-    </tr>
-    <tr>
-      <th>start_end_reporter</th>
-      <td><p>Should the reporters <code>start_reporter()</code> and
-<code>end_reporter()</code> methods be called? For expert use only.</p></td>
-    </tr>
-    <tr>
-      <th>load_helpers</th>
-      <td><p>Source helper files before running the tests?
-See <code><a href='https://testthat.r-lib.org/reference/source_file.html'>source_test_helpers()</a></code> for more details.</p></td>
-    </tr>
-    <tr>
-      <th>encoding</th>
-      <td><p>Deprecated. All files now assumed to be UTF-8.</p></td>
-    </tr>
-    <tr>
-      <th>wrap</th>
-      <td><p>Automatically wrap all code within <code><a href='https://testthat.r-lib.org/reference/test_that.html'>test_that()</a></code>? This ensures
-that all expectations are reported, even if outside a test block.</p></td>
+      <th>package</th>
+      <td><p>The name of the package to test.</p></td>
     </tr>
     </table>
 
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Invisibly, a list with one element for each test.</p>
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
-
-    <p>Any errors that occur in code run outside of <code><a href='https://testthat.r-lib.org/reference/test_that.html'>test_that()</a></code> will generate
-a test failure and terminate execution of that test file.</p>
-
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>path</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://testthat.r-lib.org/reference/testthat_examples.html'>testthat_example</a></span>(<span class='st'>"success"</span>)
-<span class='fu'><a href='https://testthat.r-lib.org/reference/test_file.html'>test_file</a></span>(<span class='kw'>path</span>, reporter = <span class='st'>"minimal"</span>)</div><div class='output co'>#&gt; <span style='color: #00BB00;'>.</span><span style='color: #0000BB;'>S</span><span style='color: #BB00BB;'>W</span><span style='color: #00BB00;'>...</span><span></div><div class='input'>
-<span class='co'># test_file() invisibly returns a list, with one element for each test.</span>
-<span class='co'># This can be useful if you want to compute on your test results.</span>
-<span class='kw'>out</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://testthat.r-lib.org/reference/test_file.html'>test_file</a></span>(<span class='kw'>path</span>, reporter = <span class='st'>"minimal"</span>)</div><div class='output co'>#&gt; </span><span style='color: #00BB00;'>.</span><span style='color: #0000BB;'>S</span><span style='color: #BB00BB;'>W</span><span style='color: #00BB00;'>...</span><span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span>(<span class='kw'>out</span>[[<span class='fl'>1</span>]])</div><div class='output co'>#&gt; List of 7
-#&gt;  $ file   : chr "test-success.R"
-#&gt;  $ context: NULL
-#&gt;  $ test   : chr "one plus one is two"
-#&gt;  $ user   : num 0.001
-#&gt;  $ system : num 0
-#&gt;  $ real   : num 0.002
-#&gt;  $ results:List of 1
-#&gt;   ..$ :List of 6
-#&gt;   .. ..$ message    : chr "`actual` (1 + 1) not equal to `expected` (2).\n\n"
-#&gt;   .. ..$ srcref     : 'srcref' int [1:8] 2 3 2 24 3 24 2 2
-#&gt;   .. .. ..- attr(*, "srcfile")=Classes 'srcfilecopy', 'srcfile' &lt;environment: 0x7fa69b9c4ea0&gt; 
-#&gt;   .. ..$ trace      : NULL
-#&gt;   .. ..$ start_frame: int 54
-#&gt;   .. ..$ end_frame  : num 56
-#&gt;   .. ..$ test       : chr "one plus one is two"
-#&gt;   .. ..- attr(*, "class")= chr [1:3] "expectation_success" "expectation" "condition"</div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

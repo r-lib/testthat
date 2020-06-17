@@ -94,9 +94,6 @@
     <loc>https://testthat.r-lib.org/reference/expect.html</loc>
   </url>
   <url>
-    <loc>https://testthat.r-lib.org/reference/expect_cpp_tests_pass.html</loc>
-  </url>
-  <url>
     <loc>https://testthat.r-lib.org/reference/expect_error.html</loc>
   </url>
   <url>
@@ -185,6 +182,9 @@
   </url>
   <url>
     <loc>https://testthat.r-lib.org/reference/reporter-accessors.html</loc>
+  </url>
+  <url>
+    <loc>https://testthat.r-lib.org/reference/run_cpp_tests.html</loc>
   </url>
   <url>
     <loc>https://testthat.r-lib.org/reference/safe_digest.html</loc>
