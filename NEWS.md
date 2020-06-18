@@ -2,6 +2,7 @@
 
 * `context_name()` is now exported (#983, @stufield) and only strips first 
   instance of prefix/suffix (#1041, @stufield).
+
 * `verify_output()` now uses the `pdf()` device instead of `png()`; that makes
   it work on systems without X11 (#1011).
 
