@@ -27,7 +27,7 @@ test_that("test_dir()", {
 
   # We order this here, because the order of parallel tests is
   # not fully predictable.
-  df <- df[order(df$file, df$context,  df$test), ]
+  df <- df[order(df$file), ]
   rownames(df) <- NULL
   verify_output(test_path("test-test_dir.txt"), print(df), width = 200)
 })
