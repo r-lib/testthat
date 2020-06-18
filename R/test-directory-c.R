@@ -119,7 +119,7 @@ test_dir_parallel <- function(path,
   # Need to remove the environment and source references, otherwise
   # we need to copy a lot of data to the subprocess.
 
-  fun <- function(path) asNamespace("testthat")$subprocess_task(path)
+  fun <- function(path) asNamespace("testthat")$process_task(path)
   environment(fun) <- .GlobalEnv
   fun <- remove_source(fun)
   for (path in paths) {
@@ -172,7 +172,7 @@ test_dir_parallel <- function(path,
 
 # This is the function that is called for each test file, in the subprocess
 
-subprocess_task <- function(path) {
+process_task <- function(path) {
   on.exit(teardown_run(dirname(path)), add = TRUE)
   env <- .GlobalEnv$.test_env
   reporter <- find_reporter("subprocess")
