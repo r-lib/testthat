@@ -29,7 +29,7 @@ starts more subprocesses than the number of test files.)
 
 ### Test files, test order and state
 
-Testthat starts running the test files in alphabetical order. As soon
+testthat starts running the test files in alphabetical order. As soon
 as a subprocess has finished with a file, it receives another file to
 run from the main process, until all files are done. In general, the
 user cannot make any assumptions about the order of the files, and
@@ -71,21 +71,21 @@ run the teardown files.
     Parallel testthat tricks the reporters by collecting all results
     for a test file, and then "replaying" them at once. Reporters can
     not show the progress within files. This will be fixed later.
--   Testthat does not handle crashes currently. This will be fixed
+-   testthat does not handle crashes currently. This will be fixed
     later.
 -   You cannot currently use the `env` argument of `test_dir()`, etc.
     Do not set this argument if you use parallel testthat. This will
     be fixed later.
 -   Test files that perform many quick expectations might be slow.
     This will be fixed later.
--   Testthat does not currently auto-detect the number of processors.
+-   testthat does not currently auto-detect the number of processors.
     This will be fixed later.
 -   Parallel testhat currently silently ignores failures in the
     helper, startup and teardown files. This will be fixed later.
 -   The process tree cleanup only works on macOS, Windows and Linux
     currently, so parallel testthat only supports these operating
     systems. This will be fixed later.
--   Testthat cannot yet run its own tests in parallel.
+-   testthat cannot yet run its own tests in parallel.
 -   covr might not work for parallel tests, at least it fails for
     testthat itself.
 
