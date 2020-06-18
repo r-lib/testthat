@@ -1,5 +1,8 @@
 # testthat (development version)
 
+* `context_name()` is now exported (#983, @stufield) and only strips first 
+  instance of prefix/suffix (#1041, @stufield).
+
 * `expect_identical()`, `expect_equal()`, `expect_equivalent()` and
   `verify_output()` now use `waldo::compare()` to compare actual and expected
   results. The chief difference should be that you now get much more 

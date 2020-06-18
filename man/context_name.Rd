@@ -8,7 +8,7 @@ context_name(filename)
 }
 \arguments{
 \item{filename}{A character string giving the filename of a test file.
-Standard prefix (\code{test-}) and suffix (\code{*.R}) are stripped.}
+Standard prefix (\verb{test-}) and suffix (\verb{*.R}) are stripped.}
 }
 \description{
 Simplify a test filename to a context name.
