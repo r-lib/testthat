@@ -35,9 +35,8 @@ test_that("contexts are opened, then closed", {
 })
 
 test_that("context_name strips prefix and extensions correctly", {
-  expect_equal(context_name("test-check-metrics.R"), "check-metrics") # base case
-  expect_equal(context_name("test-check-metrics.r"), "check-metrics") # lowercase
-  expect_equal(context_name("test-check.RobustMetrics.R"),            # terminal '.R'
-               "check.RobustMetrics")
-  expect_equal(context_name("test-test-metrics.R"), "test-metrics")   # only prefix
+  expect_equal(context_name("test-metrics.R"), "metrics")     # uppercase
+  expect_equal(context_name("test-metrics.r"), "metrics")     # lowercase
+  expect_equal(context_name("test-check.Rfile.R"), "check.Rfile") # suffix only
+  expect_equal(context_name("test-test-test.R"), "test-test") # 1st prefix only
 })

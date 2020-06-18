@@ -2,19 +2,12 @@
 % Please edit documentation in R/context.R
 \name{context}
 \alias{context}
-\alias{context_name}
 \title{Describe the context of a set of tests.}
 \usage{
 context(desc)
-
-context_name(filename)
 }
 \arguments{
 \item{desc}{description of context.  Should start with a capital letter.}
-
-\item{filename}{A character string corresponding to a
-unit testing file. Ideally beginning with \code{test-} and
-having a \code{*.R} extension.}
 }
 \description{
 Use of \code{context()} is no longer recommended. Instead omit it, and messages
@@ -26,16 +19,8 @@ A context defines a set of tests that test related functionality.  Usually
 you will have one context per file, but you may have multiple contexts
 in a single file if you so choose.
 }
-\section{Functions}{
-\itemize{
-\item \code{context_name}: Simplify a test filename to a context name.
-}}
-
 \examples{
 context("String processing")
 context("Remote procedure calls")
-
-context_name("test-my-function.R")
-context_name("test-myFunction.R")
 }
 \keyword{internal}

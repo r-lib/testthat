@@ -22,25 +22,3 @@ end_context <- function() {
   get_reporter()$.end_context()
 }
 
-
-#' @describeIn context Simplify a test filename to a context name.
-#'
-#' @param filename A character string corresponding to a
-#' unit testing file. Ideally beginning with \code{test-} and
-#' having a \code{*.R} extension.
-#' @export
-#' @examples
-#'
-#' context_name("test-my-function.R")
-#' context_name("test-myFunction.R")
-context_name <- function(filename) {
-
-  # Remove test- prefix
-  filename <- sub("^test-", "", filename)
-
-  # Remove terminal extension
-  filename <- sub("[.][Rr]$", "", filename)
-
-  filename
-}
-
