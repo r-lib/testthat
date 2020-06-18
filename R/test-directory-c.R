@@ -152,11 +152,6 @@ test_dir_parallel <- function(path,
 
         } else if (x$code == PROCESS_DONE) {
           # File is done, nothing to do here, we'll get an end_file
-
-        } else if (x$code %in% c(PROCESS_CRASHED, PROCESS_CLOSED)) {
-          # a subprocess has crashed
-          # TODO: start another one. Here or in the task queue?
-          # TODO: print the partial result and report the crash
         }
       }
     }

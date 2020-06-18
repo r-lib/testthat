@@ -15,6 +15,7 @@ PROCESS_MSG     <- 301L
 PROCESS_EXITED  <- 500L
 PROCESS_CRASHED <- 501L
 PROCESS_CLOSED  <- 502L
+PROCESS_FAILURES <- c(PROCESS_EXITED, PROCESS_CRASHED, PROCESS_CLOSED)
 
 task_q <- R6::R6Class(
   "task_q",
@@ -62,8 +63,27 @@ task_q <- R6::R6Class(
           } else if (msg$code == PROCESS_STARTED) {
             private$tasks$state[[i]] <- "ready"
             msg <- NULL
-          } else {
+          } else if (msg$code == PROCESS_DONE) {
             private$tasks$state[[i]] <- "ready"
+          } else if (msg$code %in% PROCESS_FAILURES) {
+            file <- private$tasks$args[[i]][[1]]
+            abort(
+              paste0("testthat subprocess exited in file `", file, "`"),
+              test_file = file,
+              parent = msg$err,
+              class = c("testthat_process_error", "testthat_error")
+            )
+          } else {
+            file <- private$tasks$args[[i]][[1]]
+            errmsg <- paste0(
+              "unknown message from testthat subprocess: ", msg$code, ", ",
+              "in file `", file, "`"
+            )
+            abort(
+              errmsg,
+              test_file = file,
+              class = c("testthat_process_error", "testthat_error")
+            )
           }
           msg
         })
