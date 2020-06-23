@@ -1,15 +1,11 @@
-context("context1")
+test_that("test1", expect_true(TRUE))
+test_that("test2", expect_true(TRUE))
 
-test_that("dummy1", expect_true(TRUE))
-test_that("dummy2", expect_true(TRUE))
+test_that("test-pass", expect_true(TRUE))
 
-context("context2")
+test_that("test-fail", expect_true(FALSE))
 
-test_that("A passing test", expect_true(TRUE))
-
-test_that("A failing test", expect_true(FALSE))
-
-test_that("A crashing test", {
+test_that("test-error", {
   stop('argh')
   expect_true(TRUE)
 })

@@ -1,14 +1,14 @@
 ✔ |  OK F W S | Context
 
-⠏ |   0       | Backtraces
-⠋ |   0 1     | Backtraces
-⠙ |   0 2     | Backtraces
-⠹ |   0 3     | Backtraces
-⠸ |   0 4     | Backtraces
-⠼ |   0 5     | Backtraces
-⠴ |   0 6     | Backtraces
-⠦ |   0 7     | Backtraces
-✖ |   0 7     | Backtraces
+⠏ |   0       | backtraces
+⠋ |   0 1     | backtraces
+⠙ |   0 2     | backtraces
+⠹ |   0 3     | backtraces
+⠸ |   0 4     | backtraces
+⠼ |   0 5     | backtraces
+⠴ |   0 6     | backtraces
+⠦ |   0 7     | backtraces
+✖ |   0 7     | backtraces
 ────────────────────────────────────────────────────────────────────────────────
 backtraces.R:6: error: errors thrown at block level are entraced
 foo
@@ -19,13 +19,13 @@ Backtrace:
 backtraces.R:11: error: errors thrown from a quasi-labelled argument are entraced
 foo
 Backtrace:
- 1. testthat::expect_is(foo(), "foo")
+ 1. testthat::expect_s3_class(foo(), "foo")
  4. foo()
 
 backtraces.R:18: error: errors thrown from a quasi-labelled argument are entraced (deep case)
 foo
 Backtrace:
- 1. testthat::expect_is(f(), "foo")
+ 1. testthat::expect_s3_class(f(), "foo")
  4. f()
  5. g()
  9. foo()

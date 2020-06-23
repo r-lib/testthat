@@ -1,5 +1,3 @@
-context("test-expect-vector")
-
 test_that("basic properties upheld", {
   skip_if_not_installed("vctrs", "0.1.0.9002")
 
