@@ -1,5 +1,8 @@
 # testthat (development version)
 
+* `verify_output()` now sets `options(useFancyQuotes = FALSE, outDec = ".")`
+  to increase reproducibility across systems (#1000).
+
 * `expect_identical()`, `expect_equal()`, `expect_equivalent()` and
   `verify_output()` now use `waldo::compare()` to compare actual and expected
   results. The chief difference should be that you now get much more 
