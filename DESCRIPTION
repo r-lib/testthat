@@ -87,6 +87,7 @@ Collate:
     'expect-vector.R'
     'expectation.R'
     'expectations-matches.R'
+    'local.R'
     'make-expectation.R'
     'mock.R'
     'old-school.R'
