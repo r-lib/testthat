@@ -13,14 +13,14 @@ void ouch() {
 
 } // anonymous namespace
 
-context("Example Unit Test") {
+context("Catch: Example Unit Test") {
 
   test_that("4 + 4 == 8") {
     expect_true((4 + 4) == 8);
   }
 }
 
-context("A second context") {
+context("Catch: A second context") {
 
   test_that("2 - 2 == 0") {
     expect_true((2 - 2) == 0);
@@ -32,7 +32,7 @@ context("A second context") {
 
 }
 
-context("Respect 'src/Makevars'") {
+context("Catch: Respect 'src/Makevars'") {
 
   bool compiling_testthat;
 
@@ -48,7 +48,7 @@ context("Respect 'src/Makevars'") {
 
 }
 
-context("Exception handling") {
+context("Catch: Exception handling") {
 
   test_that("we can use Catch to test for exceptions") {
 

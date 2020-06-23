@@ -2,6 +2,11 @@
 
 * `verify_output()` now sets `options(useFancyQuotes = FALSE, outDec = ".")`
   to increase reproducibility across systems (#1000).
+* `context_name()` is now exported (#983, @stufield) and only strips first 
+  instance of prefix/suffix (#1041, @stufield).
+
+* `verify_output()` now uses the `pdf()` device instead of `png()`; that makes
+  it work on systems without X11 (#1011).
 
 * `expect_identical()`, `expect_equal()`, `expect_equivalent()` and
   `verify_output()` now use `waldo::compare()` to compare actual and expected
@@ -9,6 +14,9 @@
   informative output when the actual and expected values are different, but
   it is likely there are also minor differences in the comparison - please
   let me know if you encounter these (#447).
+
+* Catch C++ tests now provide detailed results for each succeeded or failed
+  test, to upgrade existing code, re-run `testthat::use_catch()` (#1008)
 
 # testthat 2.3.2
 

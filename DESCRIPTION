@@ -63,6 +63,7 @@ Collate:
     'compare-numeric.R'
     'compare-time.R'
     'context.R'
+    'context_name.R'
     'describe.R'
     'evaluate-promise.R'
     'example.R'
