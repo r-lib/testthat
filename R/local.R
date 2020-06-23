@@ -19,8 +19,6 @@ local_reproducible_output <- function(width = 80,
     ),
     .local_envir = .env
   )
-  withr::local_envvar(
-    list(RSTUDIO = 0),
-    .local_envir = .env
-  )
+  withr::local_envvar(list(RSTUDIO = 0), .local_envir = .env)
+  withr::local_collate("C", .local_envir = .env)
 }
