@@ -77,3 +77,9 @@ test_that("verify_output() doesn't use cli unicode by default", {
       cat(cli::symbol$info, cli::symbol$cross, "\n")
     })
 })
+
+test_that("verify_output() handles line-feeds", {
+  verify_output(test_path("test-verify-conditions-lf.txt"), {
+    cat("\r\n")
+  })
+})

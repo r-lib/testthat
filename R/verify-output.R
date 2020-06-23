@@ -89,6 +89,7 @@ verify_output <- function(path, code, width = 80, crayon = FALSE,
     unicode = unicode,
     env = env
   )
+  output <- gsub("\r", "", output)
 
   if (is_testing() && on_cran()) {
     skip("On CRAN")
