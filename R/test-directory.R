@@ -199,7 +199,7 @@ test_package_dir <- function(package, test_path, filter, reporter, ...,
                              stop_on_failure = TRUE,
                              stop_on_warning = FALSE,
                              wrap = TRUE) {
-  env <- test_pkg_env(package)
+  env <- env_clone(asNamespace(package))
   withr::local_options(list(topLevelEnvironment = env))
 
   withr::local_envvar(list(
@@ -236,10 +236,3 @@ testing_package <- function() {
 env_test <- new.env(parent = emptyenv())
 env_test$in_test <- FALSE
 env_test$package <- NULL
-
-test_pkg_env <- function(package) {
-  list2env(
-    as.list(getNamespace(package), all.names = TRUE),
-    parent = parent.env(getNamespace(package))
-  )
-}
