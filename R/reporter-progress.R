@@ -20,6 +20,7 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
     start_time = NULL,
     last_update = NULL,
     update_interval = NULL,
+    frames = NULL,
 
     max_fail = NULL,
     n_ok = 0,
@@ -47,6 +48,7 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
       self$show_praise <- show_praise
       self$min_time <- min_time
       self$update_interval <- update_interval
+      self$frames <- cli::get_spinner()$frames
     },
 
     is_full = function() {
@@ -115,7 +117,7 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
         if (!self$should_update()) {
           return()
         }
-        status <- spinner(self$ctxt_n)
+        status <- spinner(self$frames, self$ctxt_n)
       }
 
       col_format <- function(n, type) {
@@ -237,8 +239,7 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
 )
 
 
-spinner <- function(i) {
-  frames <- cli::get_spinner()$frames
+spinner <- function(frames, i) {
   frames[((i - 1) %% length(frames)) + 1]
 }
 

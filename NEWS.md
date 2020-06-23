@@ -1,5 +1,10 @@
 # testthat (development version)
 
+* `test_that()` now sets a number of options (`width`, `crayon.enabled`, 
+  `cli.unicode`, `useFancyQuotes`, `OutDec`, `lifecycle_verbosity`) and env 
+  vars (`RSTUDIO`, `RSTUDIO_CONSOLE_WIDTH`) to make output as reproducible as
+  possible (#1044).
+
 * `verify_output()` now sets `options(useFancyQuotes = FALSE, outDec = ".")`  
   to increase reproducibility across systems (#1000). It also sets
   `options(lifecycle_verbosity = "warning")` to ensure that lifecycle 

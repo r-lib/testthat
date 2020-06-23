@@ -75,14 +75,9 @@ test_dir <- function(path,
     warning("`encoding` is deprecated; all files now assumed to be UTF-8", call. = FALSE)
   }
 
-  # Find package root, if any, so backtrace srcrefs refer to R/ and
-  # tests/ files consistently
-  testthat_dir <- maybe_root_dir(path)
-
   withr::local_envvar(list(
     R_TESTS = "",
-    TESTTHAT = "true",
-    TESTTHAT_DIR = testthat_dir
+    TESTTHAT_DIR = maybe_root_dir(path)
   ))
 
   if (load_helpers) {
@@ -90,11 +85,6 @@ test_dir <- function(path,
   }
   source_test_setup(path, env)
   on.exit(source_test_teardown(path, env), add = TRUE)
-
-  # Promote retirement stages except on CRAN
-  if (identical(Sys.getenv("NOT_CRAN"), "true")) {
-    withr::local_options(list(lifecycle_verbose_retirement = TRUE))
-  }
 
   paths <- find_test_scripts(path, filter, ...)
 
@@ -201,11 +191,7 @@ test_package_dir <- function(package, test_path, filter, reporter, ...,
                              wrap = TRUE) {
   env <- test_pkg_env(package)
   withr::local_options(list(topLevelEnvironment = env))
-
-  withr::local_envvar(list(
-    TESTTHAT_PKG = package,
-    TESTTHAT_DIR = maybe_root_dir(test_path)
-  ))
+  withr::local_envvar(list(TESTTHAT_PKG = package))
 
   test_dir(
     path = test_path,
