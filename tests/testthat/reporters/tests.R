@@ -1,9 +1,7 @@
 local_edition(2)
-
 test_that("Success", {
   succeed()
 })
-
 context("Expectations")
 
 test_that("Success", {

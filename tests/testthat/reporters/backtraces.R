@@ -1,3 +1,5 @@
+
+
 test_that("errors thrown at block level are entraced", {
   f <- function() g()
   g <- function() stop("foo")
