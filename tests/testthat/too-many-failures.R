@@ -1,5 +1,3 @@
-context("too many failures")
-
 test_that("SummaryReport gives up if too many errors", {
   expect_equal(Inf, 1)
   expect_equal(Inf, 2)

@@ -1,4 +1,4 @@
-context("Backtraces")
+
 
 test_that("errors thrown at block level are entraced", {
   f <- function() g()
@@ -8,14 +8,14 @@ test_that("errors thrown at block level are entraced", {
 
 test_that("errors thrown from a quasi-labelled argument are entraced", {
   foo <- function() stop("foo")
-  expect_is(foo(), "foo")
+  expect_s3_class(foo(), "foo")
 })
 
 test_that("errors thrown from a quasi-labelled argument are entraced (deep case)", {
   foo <- function() stop("foo")
   f <- function() g()
-  g <- function() expect_is(foo(), "foo")
-  expect_is(f(), "foo")
+  g <- function() expect_s3_class(foo(), "foo")
+  expect_s3_class(f(), "foo")
 })
 
 test_that("errors thrown from a quasi-labelled argument are entraced (deep deep case)", {
@@ -23,7 +23,7 @@ test_that("errors thrown from a quasi-labelled argument are entraced (deep deep 
   bar <- function() stop("foobar")
 
   f <- function() g()
-  g <- function() expect_is(foo(), "foo")
+  g <- function() expect_s3_class(foo(), "foo")
 
   f()
 })

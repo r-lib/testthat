@@ -1,5 +1,3 @@
-context("error")
-
 test_that("simple", {
   stop("argh")
 })
