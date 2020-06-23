@@ -1,5 +1,6 @@
 #' Expectation: does a vector have the specified length?
 #'
+#' @seealso [expect_vector()] to make assertions about the "size" of a vector
 #' @inheritParams expect_that
 #' @param n Expected length.
 #' @family expectations

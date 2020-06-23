@@ -26,3 +26,4 @@ context <- function(desc) {
 end_context <- function() {
   get_reporter()$.end_context()
 }
+

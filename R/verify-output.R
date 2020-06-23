@@ -103,24 +103,12 @@ verify_exec <- function(exprs,
                         unicode = FALSE,
                         env = caller_env()) {
 
-  withr::local_options(list(
-    width = width,
-    crayon.enabled = crayon,
-    cli.unicode = unicode
-  ))
-  withr::local_envvar(list(
-    RSTUDIO = 0,
-    RSTUDIO_CONSOLE_WIDTH = width
-  ))
+  local_reproducible_output(width = width, crayon = crayon, unicode = unicode)
+  withr::local_pdf(tempfile())
+  grDevices::dev.control(displaylist = "enable")
 
   exprs <- lapply(exprs, function(x) if (is.character(x)) paste0("# ", x) else expr_deparse(x))
   source <- unlist(exprs, recursive = FALSE)
-
-  # Open temporary new device
-  grDevices::png(filename = tempfile())
-  grDevices::dev.control(displaylist = "enable")
-  dev <- grDevices::dev.cur()
-  on.exit(grDevices::dev.off(dev), add = TRUE)
 
   results <- evaluate::evaluate(source, envir = env, new_device = FALSE)
   unlist(lapply(results, output_replay))

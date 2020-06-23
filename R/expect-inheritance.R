@@ -10,6 +10,8 @@
 #' * `expect_s4_class(x, class)` checks that `x` is an S4 object that
 #'   [is()] `class`.
 #'
+#' See [expect_vector()] for testing properties of objects created by vctrs.
+#'
 #' @param type String giving base type (as returned by [typeof()]).
 #' @param class character vector of class names
 #' @inheritParams expect_that
