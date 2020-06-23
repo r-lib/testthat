@@ -64,21 +64,33 @@
 test_dir <- function(path,
                      filter = NULL,
                      reporter = default_reporter(),
-                     env = test_env(),
+                     env = NULL,
                      ...,
                      encoding = "unknown",
                      load_helpers = TRUE,
                      stop_on_failure = FALSE,
                      stop_on_warning = FALSE,
-                     wrap = TRUE) {
+                     wrap = TRUE,
+                     package = NULL
+                     ) {
   if (!missing(encoding) && !identical(encoding, "UTF-8")) {
     warning("`encoding` is deprecated; all files now assumed to be UTF-8", call. = FALSE)
   }
 
-  withr::local_envvar(list(
+  withr::local_envvar(compact(list(
     R_TESTS = "",
-    TESTTHAT_DIR = maybe_root_dir(path)
-  ))
+    TESTTHAT_DIR = maybe_root_dir(path),
+    TESTTHAT_PKG = package
+  )))
+
+  if (is.null(env)) {
+    if (is.null(package)) {
+      env <- test_env()
+    } else {
+      env <- env_clone(asNamespace(package))
+    }
+    withr::local_options(list(topLevelEnvironment = env))
+  }
 
   if (load_helpers) {
     source_test_helpers(path, env)
@@ -131,9 +143,9 @@ test_package <- function(package,
     )
   }
 
-  test_package_dir(
+  test_dir(
+    test_path,
     package = package,
-    test_path = test_path,
     filter = filter,
     reporter = reporter,
     ...,
@@ -159,31 +171,11 @@ test_check <- function(package,
     stop("No tests found for ", package, call. = FALSE)
   }
 
-  test_package_dir(
-    package = package,
-    test_path = test_path,
-    filter = filter,
-    reporter = reporter,
-    ...,
-    stop_on_failure = stop_on_failure,
-    stop_on_warning = stop_on_warning,
-    wrap = wrap
-  )
-}
-
-test_package_dir <- function(package, test_path, filter, reporter, ...,
-                             stop_on_failure = TRUE,
-                             stop_on_warning = FALSE,
-                             wrap = TRUE) {
-  env <- env_clone(asNamespace(package))
-  withr::local_options(list(topLevelEnvironment = env))
-  withr::local_envvar(list(TESTTHAT_PKG = package))
-
   test_dir(
-    path = test_path,
-    reporter = reporter,
-    env = env,
+    test_path,
+    package = package,
     filter = filter,
+    reporter = reporter,
     ...,
     stop_on_failure = stop_on_failure,
     stop_on_warning = stop_on_warning,

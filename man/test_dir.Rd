@@ -12,13 +12,14 @@ test_dir(
   path,
   filter = NULL,
   reporter = default_reporter(),
-  env = test_env(),
+  env = NULL,
   ...,
   encoding = "unknown",
   load_helpers = TRUE,
   stop_on_failure = FALSE,
   stop_on_warning = FALSE,
-  wrap = TRUE
+  wrap = TRUE,
+  package = NULL
 )
 
 test_package(
