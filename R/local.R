@@ -24,6 +24,7 @@ local_reproducible_output <- function(width = 80,
       crayon.enabled = crayon,
       cli.unicode = unicode,
       useFancyQuotes = FALSE,
+      lifecycle_verbosity = "warning",
       OutDec = "."
     ),
     .local_envir = .local_envir

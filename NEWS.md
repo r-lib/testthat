@@ -1,7 +1,10 @@
 # testthat (development version)
 
-* `verify_output()` now sets `options(useFancyQuotes = FALSE, outDec = ".")`
-  to increase reproducibility across systems (#1000).
+* `verify_output()` now sets `options(useFancyQuotes = FALSE, outDec = ".")`  
+  to increase reproducibility across systems (#1000). It also sets
+  `options(lifecycle_verbosity = "warning")` to ensure that lifecycle 
+  warnings are always generated in tests.
+  
 * `context_name()` is now exported (#983, @stufield) and only strips first 
   instance of prefix/suffix (#1041, @stufield).
 
