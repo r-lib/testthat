@@ -1,15 +1,8 @@
-test_that("R_TESTS envar is unset", {
+test_that("test_dir() sets environment variables", {
+  expect_true(is_testing())
+  expect_equal(testing_package(), "testthat")
   expect_equal(Sys.getenv("R_TESTS"), "")
 })
-
-test_that("TESTHAT env var set to true", {
-  expect_true(is_testing())
-})
-
-# https://github.com/r-lib/devtools/issues/2015
-# test_that("TESTHAT_PKG env var set to the package being tested", {
-#   expect_equal(testing_package(), "testthat")
-# })
 
 test_that("test_dir()", {
   res <- test_dir(test_path("test_dir"), reporter = "silent")
@@ -17,7 +10,7 @@ test_that("test_dir()", {
   df <- as.data.frame(res)
   df$user <- df$system <- df$real <- df$result <- NULL
 
-  verify_output(test_path("test-test_dir.txt"), print(df), width = 200)
+  verify_output(test_path("test-test-directory.txt"), print(df), width = 200)
 })
 
 test_that("test_dir() filter", {
@@ -65,4 +58,11 @@ test_that("can control if warnings errors", {
 
   expect_error(test_warning(stop_on_warning = TRUE), "Tests generated warnings")
   expect_error(test_warning(stop_on_warning = FALSE), NA)
+})
+
+
+# test_package ------------------------------------------------------------
+
+test_that("test_package() returns NULL inside existing test", {
+  expect_equal(test_package(), NULL)
 })

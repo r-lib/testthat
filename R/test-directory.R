@@ -111,16 +111,9 @@ test_package <- function(package,
   # Ensure that test package returns silently if called recursively - this
   # will occur if test-all.R ends up in the same directory as all the other
   # tests.
-  if (env_test$in_test) {
+  if (is_testing()) {
     return(invisible())
   }
-
-  env_test$in_test <- TRUE
-  env_test$package <- package
-  on.exit({
-    env_test$in_test <- FALSE
-    env_test$package <- NULL
-  })
 
   test_path <- system.file("tests", package = package)
   if (test_path == "") {
@@ -161,13 +154,6 @@ test_check <- function(package,
   library(testthat)
   require(package, character.only = TRUE)
 
-  env_test$in_test <- TRUE
-  env_test$package <- package
-  on.exit({
-    env_test$in_test <- FALSE
-    env_test$package <- NULL
-  })
-
   test_path <- "testthat"
   if (!utils::file_test("-d", test_path)) {
     stop("No tests found for ", package, call. = FALSE)
@@ -189,7 +175,7 @@ test_package_dir <- function(package, test_path, filter, reporter, ...,
                              stop_on_failure = TRUE,
                              stop_on_warning = FALSE,
                              wrap = TRUE) {
-  env <- test_pkg_env(package)
+  env <- env_clone(asNamespace(package))
   withr::local_options(list(topLevelEnvironment = env))
   withr::local_envvar(list(TESTTHAT_PKG = package))
 
@@ -215,17 +201,4 @@ is_testing <- function() {
 #' @rdname test_dir
 testing_package <- function() {
   Sys.getenv("TESTTHAT_PKG")
-}
-
-# Environment utils -------------------------------------------------------
-
-env_test <- new.env(parent = emptyenv())
-env_test$in_test <- FALSE
-env_test$package <- NULL
-
-test_pkg_env <- function(package) {
-  list2env(
-    as.list(getNamespace(package), all.names = TRUE),
-    parent = parent.env(getNamespace(package))
-  )
 }

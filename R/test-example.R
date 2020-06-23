@@ -13,7 +13,7 @@
 #' @param rd A parsed Rd object, obtained from [tools::Rd_db()] or otherwise.
 #' @export
 test_examples <- function(path = "../..") {
-  res <- test_examples_source(path) %||% test_examples_installed(env_test$package)
+  res <- test_examples_source(path) %||% test_examples_installed()
   if (is.null(res)) {
     stop("Could not find examples", call. = FALSE)
   }
@@ -31,8 +31,8 @@ test_examples_source <- function(path = "../..") {
   lapply(Rd, test_rd)
 }
 
-test_examples_installed <- function(package = env_test$package) {
-  if (is.null(package)) {
+test_examples_installed <- function(package = testing_package()) {
+  if (identical(package, "") || is.null(package)) {
     return()
   }
 
