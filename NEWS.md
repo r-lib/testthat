@@ -1,9 +1,11 @@
 # testthat (development version)
 
-* `test_that()` now sets a number of options (`width`, `crayon.enabled`, 
-  `cli.unicode`, `useFancyQuotes`, `OutDec`, `lifecycle_verbosity`,
-  `rlang_interactive`), env vars (`RSTUDIO`, `RSTUDIO_CONSOLE_WIDTH`), and 
-  collation, in order to make output as reproducible as possible (#1044).
+* `test_that()` now sets a number of options and env vars to make output as 
+  reproducible as possible (#1044). Many of these options were previously 
+  set in various places (in `devtools::test()`, `test_dir()`, `test_file()`,
+  or `verify_output()`) but they have now been centralised. You can use in
+  your own code, or when debugging tests interactively with
+  `local_test_context()`.
 
 * `verify_output()` now sets `options(useFancyQuotes = FALSE, outDec = ".")`  
   to increase reproducibility across systems (#1000). It also sets
