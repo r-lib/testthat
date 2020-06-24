@@ -27,8 +27,7 @@
 #' })
 #' }
 test_that <- function(desc, code) {
-  withr::local_envvar(list(TESTTHAT = "true"))
-  local_reproducible_output()
+  local_test_context()
 
   code <- substitute(code)
   test_code(desc, code, env = parent.frame())
