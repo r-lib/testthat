@@ -15,7 +15,8 @@ local_reproducible_output <- function(width = 80,
       cli.unicode = unicode,
       useFancyQuotes = FALSE,
       lifecycle_verbosity = "warning",
-      OutDec = "."
+      OutDec = ".",
+      rlang_interactive = FALSE
     ),
     .local_envir = .env
   )
