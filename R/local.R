@@ -1,4 +1,3 @@
-
 #' Locally set options for maximal test reproducibility
 #'
 #' @description
