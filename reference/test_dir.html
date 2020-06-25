@@ -197,13 +197,14 @@ dependency on testthat.</p>
   <span class='kw'>path</span>,
   filter = <span class='kw'>NULL</span>,
   reporter = <span class='fu'>default_reporter</span>(),
-  env = <span class='fu'>test_env</span>(),
+  env = <span class='kw'>NULL</span>,
   <span class='kw'>...</span>,
   encoding = <span class='st'>"unknown"</span>,
   load_helpers = <span class='fl'>TRUE</span>,
   stop_on_failure = <span class='fl'>FALSE</span>,
   stop_on_warning = <span class='fl'>FALSE</span>,
-  wrap = <span class='fl'>TRUE</span>
+  wrap = <span class='fl'>TRUE</span>,
+  package = <span class='kw'>NULL</span>
 )
 
 <span class='fu'>test_package</span>(
@@ -328,9 +329,9 @@ a <code>tests/testthat.R</code> that contains:</p><pre><span class='fu'><a href=
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>test_dir</span>(<span class='fu'>testthat_examples</span>(), reporter = <span class='st'>"summary"</span>)</div><div class='output co'>#&gt; <span style='color: #00BB00;'>.</span><span style='color: #BB0000;'>1</span><span style='color: #00BB00;'>.</span><span style='color: #0000BB;'>S</span><span style='color: #BB00BB;'>W</span><span style='color: #00BB00;'>...</span><span>
+    <pre class="examples"><div class='input'><span class='fu'>test_dir</span>(<span class='fu'>testthat_examples</span>(), reporter = <span class='st'>"summary"</span>)</div><div class='output co'>#&gt; .1.SW...
 #&gt; ══ Skipped ═════════════════════════════════════════════════════════════════════
-#&gt; </span><span style='color: #0000BB;'>1. you can skip tests if needed</span><span> (@test-success.R#6) - Reason: This tests hasn't been written yet
+#&gt; <span style='color: #0000BB;'>1. you can skip tests if needed</span><span> (@test-success.R#6) - Reason: This tests hasn't been written yet
 #&gt; 
 #&gt; ══ Warnings ════════════════════════════════════════════════════════════════════
 #&gt; </span><span style='color: #0000BB;'>1. some tests have warnings</span><span> (@test-success.R#10) - NaNs produced
@@ -339,10 +340,10 @@ a <code>tests/testthat.R</code> that contains:</p><pre><span class='fu'><a href=
 #&gt; </span><span style='color: #BB0000;'>──</span><span> </span><span style='color: #BB0000;'>1. Failure: two plus two is four (@test-failure.R#8) </span><span> </span><span style='color: #BB0000;'>───────────────────────</span><span>
 #&gt; `actual` (plus(2, 2)) not equal to `expected` (4).
 #&gt; 
-#&gt;   `actual`: </span><span style='color: #00BB00;'>2</span><span>
-#&gt; `expected`: </span><span style='color: #00BB00;'>4</span><span>
+#&gt;   `actual`: 2
+#&gt; `expected`: 4
 #&gt; 
-#&gt; ══ DONE ════════════════════════════════════════════════════════════════════════</div><div class='input'><span class='fu'>test_dir</span>(<span class='fu'>testthat_examples</span>(), reporter = <span class='st'>"minimal"</span>)</div><div class='output co'>#&gt; </span><span style='color: #00BB00;'>.</span><span style='color: #BB0000;'>F</span><span style='color: #00BB00;'>.</span><span style='color: #0000BB;'>S</span><span style='color: #BB00BB;'>W</span><span style='color: #00BB00;'>...</span><span></div></span></pre>
+#&gt; ══ DONE ════════════════════════════════════════════════════════════════════════</div><div class='input'><span class='fu'>test_dir</span>(<span class='fu'>testthat_examples</span>(), reporter = <span class='st'>"minimal"</span>)</div><div class='output co'>#&gt; .F.SW...</div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
