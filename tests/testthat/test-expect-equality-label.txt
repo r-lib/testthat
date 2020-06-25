@@ -10,9 +10,3 @@ Error: `actual` (1) not equal to `expected` ("a").
 `actual` is a double vector (1)
 `expected` is a character vector ('a')
 
-> expect_equivalent(1, "a")
-Error: `actual` (1) not equivalent to `expected` ("a").
-
-`actual` is a double vector (1)
-`expected` is a character vector ('a')
-

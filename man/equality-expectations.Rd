@@ -3,7 +3,6 @@
 \name{equality-expectations}
 \alias{equality-expectations}
 \alias{expect_equal}
-\alias{expect_equivalent}
 \alias{expect_identical}
 \title{Expectation: is the object equal to a value?}
 \usage{
@@ -15,16 +14,6 @@ expect_equal(
   info = NULL,
   label = NULL,
   expected.label = NULL
-)
-
-expect_equivalent(
-  object,
-  expected,
-  ...,
-  info = NULL,
-  label = NULL,
-  expected.label = NULL,
-  tolerance = testthat_tolerance()
 )
 
 expect_identical(
@@ -43,8 +32,10 @@ Both arguments supports limited unquoting to make it easier to generate
 readable failures within a function or for loop. See \link{quasi_label} for
 more details.}
 
-\item{...}{Passed on to \code{\link[waldo:compare]{waldo::compare()}} to control the details of
-the comparison.}
+\item{...}{In the 3rd edition; passed on to \code{\link[waldo:compare]{waldo::compare()}}. See
+its docs to see other ways to control comparison.
+
+(In the second edition passed on to \code{\link[=compare]{compare()}} and \code{\link[=identical]{identical()}}.)}
 
 \item{tolerance}{If non-\code{NULL}, used as threshold for ignoring small
 floating point difference when comparing numeric vectors. Setting to
@@ -66,21 +57,16 @@ alternatives in \link{quasi_label}.}
 use only.}
 }
 \description{
-These three functions use \href{https://github.com/r-lib/waldo}{waldo} to
-compare the results of some code to an \code{expected} result. They differ in
-their level of strictness, as determined by additional arguments passed on
-to \code{waldo::compare()}:
-\itemize{
-\item \code{expect_identical()} is the strictest comparison.
-\item \code{expect_equal()} sets \code{tolerance = testthat_tolerance()} so that
-small floating point differences are ignored; this also implies that
-(e.g.) \code{1} and \code{1L} are treated as equal.
-\item \code{expect_equivalent()} sets \code{ignore_attr = TRUE} and
-\code{tolerance = testthat_tolerance()}, ignoring small floating point
-differences and all differences in attributes.
-}
+These functions provide two levels of strictness when comparing a
+computation to a reference value. \code{expect_identical()} is base line;
+\code{expect_equal()} relaxes the test to ignore small numeric differences.
 
-In most cases you should use \code{expect_equal()}.
+In the 2nd edition, \code{expect_identical()} uses \code{\link[=identical]{identical()}} and
+\code{expect_equal} uses \code{\link[=all.equal]{all.equal()}}. In the 3rd edition, both functions use
+\href{https://github.com/r-lib/waldo}{waldo}. They differ only in that
+\code{expect_equal()} sets \code{tolerance = testthat_tolerance()} so that small
+floating point differences are ignored; this also implies that (e.g.) \code{1}
+and \code{1L} are treated as equal.
 }
 \examples{
 a <- 10
@@ -91,17 +77,12 @@ expect_equal(a, 10)
 expect_identical(sqrt(2) ^ 2, 2)
 }
 expect_equal(sqrt(2) ^ 2, 2)
-
-# expect_equivalent() ignores attributes
-a <- b <- 1:3
-names(b) <- letters[1:3]
-\dontrun{
-expect_equal(a, b)
-}
-expect_equivalent(a, b)
 }
 \seealso{
-\code{expect_setequal()} to test for set equality.
+\itemize{
+\item \code{\link[=expect_setequal]{expect_setequal()}}/\code{\link[=expect_mapequal]{expect_mapequal()}} to test for set equality.
+\item \code{\link[=expect_reference]{expect_reference()}} to test if both point to same memory address.
+}
 
 Other expectations: 
 \code{\link{comparison-expectations}},

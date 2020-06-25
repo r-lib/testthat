@@ -7,17 +7,19 @@ test_that("basically principles of equality hold", {
   expect_failure(expect_reference(x, 1))
 })
 
-test_that("three forms of equality label themselves in output", {
-  verify_output(test_path("test-expect-equality-label.txt"), {
-    expect_identical(1, "a")
-    expect_equal(1, "a")
-    expect_equivalent(1, "a")
-  })
-})
+# test_that("three forms of equality label themselves in output", {
+#   local_edition(3)
+#   verify_output(test_path("test-expect-equality-label.txt"), {
+#     expect_identical(1, "a")
+#     expect_equal(1, "a")
+#   })
+# })
 
 test_that("default labels use unquoting", {
+  local_edition(2)
+
   x <- 2
-  expect_failure(expect_equal(1, !! x), "`actual` (1) not equal to `expected` (2)", fixed = TRUE)
+  expect_failure(expect_equal(1, !! x), "1 not equal to 2", fixed = TRUE)
 })
 
 test_that("expect_equivalent ignores attributes and numeric differences", {
@@ -31,8 +33,12 @@ test_that("expect_equal and expect_equivalent pass on ... to compare", {
   x1 <- 1
   x2 <- x1 + 1e-6
 
+  local_edition(2)
   expect_success(expect_equal(x1, x2, tolerance = 1e-5))
   expect_success(expect_equivalent(x1, x2, tolerance = 1e-5))
+
+  local_edition(3)
+  expect_success(expect_equal(x1, x2, tolerance = 1e-5))
 })
 
 test_that("useful message if objects equal but not identical", {

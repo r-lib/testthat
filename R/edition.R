@@ -28,7 +28,11 @@ local_edition <- function(x, env = caller_env()) {
 }
 
 edition_set <- function(x) {
-  env_poke(testthat_env, "edition", x)
+  if (is_zap(x)) {
+    env_unbind(testthat_env, "edition")
+  } else {
+    env_poke(testthat_env, "edition", x)
+  }
 }
 edition_get <- function() {
   env_get(testthat_env, "edition", default = 2L)

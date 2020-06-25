@@ -44,8 +44,10 @@ more details.}
 the expectation that you'll notice changes because of the first failure,
 and then see the modified files in git.}
 
-\item{...}{Passed on to \code{\link[waldo:compare]{waldo::compare()}} to control the details of
-the comparison.}
+\item{...}{In the 3rd edition; passed on to \code{\link[waldo:compare]{waldo::compare()}}. See
+its docs to see other ways to control comparison.
+
+(In the second edition passed on to \code{\link[=compare]{compare()}} and \code{\link[=identical]{identical()}}.)}
 
 \item{info}{Extra information to be included in the message. This argument
 is soft-deprecated and should not be used in new code. Instead see
