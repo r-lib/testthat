@@ -22,9 +22,9 @@ edition_deprecate <- function(in_edition, what, instead = NULL) {
   ))
 }
 
-local_edition <- function(x, env = caller_env()) {
+local_edition <- function(x, .env = parent.frame()) {
   old <- edition_set(x)
-  withr::defer(edition_set(old), envir = env)
+  withr::defer(edition_set(old), envir = .env)
 }
 
 edition_set <- function(x) {

@@ -66,3 +66,26 @@ local_width <- function(width = 80, .env = parent.frame()) {
   withr::local_options(list(width = width), .local_envir = .env)
   withr::local_envvar(list(RSTUDIO_CONSOLE_WIDTH = width), .local_envir = .env)
 }
+
+
+#' Locally set test directory options
+#'
+#' For expert use only.
+#'
+#' @param path Path to directory of files
+#' @param package Optional package name, if known.
+#' @export
+#' @keywords internal
+local_test_directory <- function(path, package = NULL, .env = parent.frame()) {
+  withr::local_envvar(c(
+    R_TESTS = "",
+    TESTTHAT = "true",
+    TESTTHAT_DIR = maybe_root_dir(path),
+    TESTTHAT_PKG = package
+  ), .local_envir = .env)
+  local_edition(find_edition(path), .env = .env)
+}
+
+maybe_root_dir <- function(path) {
+  tryCatch(pkgload::pkg_path(path), error = function(...) path)
+}
