@@ -1,5 +1,3 @@
-context("test_that")
-
 test_that("messages are suppressed", {
   message("YOU SHOULDN'T SEE ME")
   succeed()
@@ -89,7 +87,7 @@ expectation_lines <- function(code) {
 
 test_that("line numbers captured in simple case", {
   lines <- expectation_lines({
-    context("testing testFile")  # line 1
+                                 # line 1
     test_that("simple", {        # line 2
       expect_true(FALSE)         # line 3
     })                           # line 4

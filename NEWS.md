@@ -6,6 +6,8 @@
   or `verify_output()`) but they have now been centralised. You can use in
   your own code, or when debugging tests interactively with
   `local_test_context()`.
+* `verify_output()` no longer always fails if output contains a carriage return character ("\r")
+  (#1048).
 
 * `verify_output()` now sets `options(useFancyQuotes = FALSE, outDec = ".")`  
   to increase reproducibility across systems (#1000). It also sets

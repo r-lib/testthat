@@ -20,4 +20,9 @@ whether \code{x} is S3, S4, or neither. Instead, I'd recommend using
 \code{\link[=expect_type]{expect_type()}}, \code{\link[=expect_s3_class]{expect_s3_class()}} or \code{\link[=expect_s4_class]{expect_s4_class()}} to more clearly
 convey your  intent.
 }
+\section{3rd edition}{
+
+\code{expect_is()} is formally deprecated in the 3rd edition.
+}
+
 \keyword{internal}

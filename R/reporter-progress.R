@@ -70,13 +70,9 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
 
     start_test = function(context, test) {
       if (is.null(context)) {
-
-        # We call the regular context() function rather than
-        # self$start_context() or self$.start_context() here because when this
-        # is called by a reporter inside the multi-reporter we need to assign
-        # self$.context in the multi-reporter rather than in the contained
-        # reporter.
-        context(context_name(self$file_name))
+        # Have to go via get_reporter() in order to trigger multi-reporter
+        name <- context_name(self$file_name)
+        get_reporter()$.start_context(name)
       }
     },
 
