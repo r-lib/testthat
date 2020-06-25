@@ -78,8 +78,8 @@ test_that("verify_output() doesn't use cli unicode by default", {
     })
 })
 
-test_that("verify_output() handles line-feeds", {
-  verify_output(test_path("test-verify-conditions-lf.txt"), {
+test_that("verify_output() handles carriage return", {
+  verify_output(test_path("test-verify-conditions-cr.txt"), {
     cat("\r\n")
   })
 })

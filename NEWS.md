@@ -1,6 +1,6 @@
 # testthat (development version)
 
-* `verify_output()` no longer always fails if output contains a line feed ("\r")
+* `verify_output()` no longer always fails if output contains a carriage return character ("\r")
   (#1048).
 
 * `verify_output()` now sets `options(useFancyQuotes = FALSE, outDec = ".")`  
