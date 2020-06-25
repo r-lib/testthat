@@ -84,6 +84,7 @@ test_dir <- function(path,
     TESTTHAT = "true",
     TESTTHAT_DIR = testthat_dir
   ))
+  local_edition(find_edition(testthat_dir))
 
   if (load_helpers) {
     source_test_helpers(path, env)

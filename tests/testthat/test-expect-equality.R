@@ -23,6 +23,8 @@ test_that("default labels use unquoting", {
 })
 
 test_that("expect_equivalent ignores attributes and numeric differences", {
+  local_edition(2)
+
   x <- y <- 1
   attr(y, "y") <- y
   expect_success(expect_equivalent(x, y))
