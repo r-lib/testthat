@@ -1,3 +1,4 @@
+> local_edition(3)
 > expect_identical(1, "a")
 Error: `actual` (1) not identical to `expected` ("a").
 
@@ -9,4 +10,13 @@ Error: `actual` (1) not equal to `expected` ("a").
 
 `actual` is a double vector (1)
 `expected` is a character vector ('a')
+
+> local_edition(2)
+> expect_identical(1, "a")
+Error: 1 not identical to "a".
+Types not compatible: double is not character
+
+> expect_equal(1, "a")
+Error: 1 not equal to "a".
+Types not compatible: double is not character
 

@@ -91,7 +91,7 @@ verify_output <- function(path, code, width = 80, crayon = FALSE,
   )
   output <- gsub("\r", "", output, fixed = TRUE)
 
-  if (is_testing() && on_cran()) {
+  if (!interactive() && on_cran()) {
     skip("On CRAN")
   }
   compare_file(path, output, update = TRUE)
