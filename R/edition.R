@@ -8,7 +8,7 @@ find_edition <- function(path) {
     return(2L)
   }
 
-  desc$get_field("Config/testthat/edition", default = 2L)
+  as.integer(desc$get_field("Config/testthat/edition", default = 2L))
 }
 
 edition_deprecate <- function(in_edition, what, instead = NULL) {
