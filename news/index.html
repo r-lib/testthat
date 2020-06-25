@@ -178,6 +178,7 @@
 <a href="#testthat-development-version" class="anchor"></a>testthat (development version)<small> Unreleased </small>
 </h1>
 <ul>
+<li><p><code><a href="https://testthat.r-lib.org/reference/verify_output.html">verify_output()</a></code> no longer always fails if output contains a carriage return character (“\r”) (<a href='https://github.com/r-lib/testthat/issues/1048'>#1048</a>).</p></li>
 <li><p><code><a href="https://testthat.r-lib.org/reference/verify_output.html">verify_output()</a></code> now sets <code><a href="https://rdrr.io/r/base/options.html">options(useFancyQuotes = FALSE, outDec = ".")</a></code><br>
 to increase reproducibility across systems (<a href='https://github.com/r-lib/testthat/issues/1000'>#1000</a>). It also sets <code><a href="https://rdrr.io/r/base/options.html">options(lifecycle_verbosity = "warning")</a></code> to ensure that lifecycle warnings are always generated in tests.</p></li>
 <li><p><code><a href="https://testthat.r-lib.org/reference/context_name.html">context_name()</a></code> is now exported (<a href='https://github.com/r-lib/testthat/issues/983'>#983</a>, <a href='https://github.com/stufield'>@stufield</a>) and only strips first instance of prefix/suffix (<a href='https://github.com/r-lib/testthat/issues/1041'>#1041</a>, <a href='https://github.com/stufield'>@stufield</a>).</p></li>
