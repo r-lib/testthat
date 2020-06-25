@@ -27,6 +27,8 @@
 #' })
 #' }
 test_that <- function(desc, code) {
+  local_test_context()
+
   code <- substitute(code)
   test_code(desc, code, env = parent.frame())
 }

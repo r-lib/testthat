@@ -1,5 +1,12 @@
 # testthat (development version)
 
+* `test_that()` now sets a number of options and env vars to make output as 
+  reproducible as possible (#1044). Many of these options were previously 
+  set in various places (in `devtools::test()`, `test_dir()`, `test_file()`,
+  or `verify_output()`) but they have now been centralised. You can use in
+  your own code, or when debugging tests interactively with
+  `local_test_context()`.
+  
 * `verify_output()` no longer always fails if output contains a carriage return character ("\r")
   (#1048).
 
