@@ -7,6 +7,6 @@ test_that("expected options are set by default", {
 })
 
 test_that("can override usual options", {
-  local_test_directory(tempdir(), "test")
-  expect_equal(testing_package(), "test")
+  local_test_directory(tempdir(), "methods")
+  expect_equal(testing_package(), "methods")
 })

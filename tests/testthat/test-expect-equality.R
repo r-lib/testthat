@@ -49,6 +49,7 @@ test_that("can control numeric tolerance", {
 })
 
 test_that("provide useful feedback on failure", {
+  local_edition(3) # exit handlers not run inside verify_output()
   verify_output(test_path("test-expect-equality.txt"), {
     local_edition(3)
     expect_identical(1, "a")

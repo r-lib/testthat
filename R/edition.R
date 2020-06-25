@@ -1,14 +1,21 @@
-find_edition <- function(path) {
-  desc <- tryCatch(
-    pkgload::pkg_desc(path),
-    error = function(e) NULL
-  )
-
+find_edition <- function(path, package = NULL) {
+  desc <- find_description(path, package)
   if (is.null(desc)) {
     return(2L)
   }
 
   as.integer(desc$get_field("Config/testthat/edition", default = 2L))
+}
+
+find_description <- function(path, package = NULL) {
+  if (!is.null(package)) {
+    return(desc::desc(package = package))
+  } else {
+    tryCatch(
+      pkgload::pkg_desc(path),
+      error = function(e) NULL
+    )
+  }
 }
 
 edition_deprecate <- function(in_edition, what, instead = NULL) {

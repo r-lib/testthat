@@ -15,7 +15,7 @@ test_that("deprecation only fired for newer edition", {
 })
 
 test_that("edition for testthat is 3", {
-  expect_equal(find_edition("."), 3)
+  expect_equal(find_edition(package = "testthat"), 3)
 })
 
 test_that("edition for non-package dir is 2", {

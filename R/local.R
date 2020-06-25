@@ -83,7 +83,7 @@ local_test_directory <- function(path, package = NULL, .env = parent.frame()) {
     TESTTHAT_DIR = maybe_root_dir(path),
     TESTTHAT_PKG = package
   ), .local_envir = .env)
-  local_edition(find_edition(path), .env = .env)
+  local_edition(find_edition(path, package), .env = .env)
 }
 
 maybe_root_dir <- function(path) {
