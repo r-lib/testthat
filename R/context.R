@@ -19,7 +19,7 @@
 #' context("String processing")
 #' context("Remote procedure calls")
 context <- function(desc) {
-  edition_deprecate("3.0.0", "context()")
+  edition_deprecate(3, "context()")
   get_reporter()$.start_context(desc)
 }
 
