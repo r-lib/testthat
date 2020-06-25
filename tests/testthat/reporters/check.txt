@@ -1,28 +1,28 @@
-── 1. Failure: Failure:1 (@tests.R#12)  ────────────────────────────────────────
+-- 1. Failure: Failure:1 (@tests.R#12)  ----------------------------------------
 Failure has been forced
 
-── 2. Failure: Failure:2a (@tests.R#16)  ───────────────────────────────────────
+-- 2. Failure: Failure:2a (@tests.R#16)  ---------------------------------------
 Failure has been forced
 
-── 3. Failure: Failure:2b (@tests.R#19)  ───────────────────────────────────────
+-- 3. Failure: Failure:2b (@tests.R#19)  ---------------------------------------
 FALSE isn't true.
 
-── 4. Failure: Failure:loop (@tests.R#24)  ─────────────────────────────────────
+-- 4. Failure: Failure:loop (@tests.R#24)  -------------------------------------
 `i` not equal to 2.
 1/1 mismatches
 [1] 1 - 2 == -1
 
-── 5. Error: Error:1 (@tests.R#33)  ────────────────────────────────────────────
+-- 5. Error: Error:1 (@tests.R#33)  --------------------------------------------
 stop
 
-── 6. Error: Error:3 (@tests.R#47)  ────────────────────────────────────────────
+-- 6. Error: Error:3 (@tests.R#47)  --------------------------------------------
 !
 Backtrace:
  1. f()
  2. g()
  3. h()
 
-── 7. Error: Recursion:1 (@tests.R#56)  ────────────────────────────────────────
+-- 7. Error: Recursion:1 (@tests.R#56)  ----------------------------------------
 This is deep
 Backtrace:
   1. f(25)
@@ -47,7 +47,7 @@ Backtrace:
  25. f(x - 1)
  26. f(x - 1)
 
-── 8. Error: Error:4 (@tests.R#111)  ───────────────────────────────────────────
+-- 8. Error: Error:4 (@tests.R#111)  -------------------------------------------
 Throwable
 
 ══ testthat results  ═══════════════════════════════════════════════════════════

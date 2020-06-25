@@ -78,8 +78,6 @@ same_attr <- function(x, y) {
   is.null(attr.all.equal(x, y))
 }
 diff_attr <- function(x, y) {
-  withr::local_options(list(useFancyQuotes = FALSE))
-
   out <- attr.all.equal(x, y)
   difference(out)
 }

@@ -116,3 +116,8 @@ strrep <- function(x, times) {
 can_entrace <- function(cnd) {
   !inherits(cnd, "Throwable")
 }
+
+compact <- function(x) {
+  is_null <- vapply(x, is.null, logical(1))
+  x[!is_null]
+}
