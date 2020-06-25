@@ -64,6 +64,7 @@ expect_equal <- function(object, expected, ...,
   }
 }
 
+#' @export
 #' @rdname equality-expectations
 expect_identical <- function(object, expected, info = NULL, label = NULL,
                              expected.label = NULL, ...) {
