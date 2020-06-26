@@ -4,7 +4,7 @@
 \alias{equality-expectations}
 \alias{expect_equal}
 \alias{expect_identical}
-\title{Expectation: is the object equal to a value?}
+\title{Expectation: is an object equal to a reference value?}
 \usage{
 expect_equal(
   object,
@@ -33,9 +33,8 @@ readable failures within a function or for loop. See \link{quasi_label} for
 more details.}
 
 \item{...}{In the 3rd edition; passed on to \code{\link[waldo:compare]{waldo::compare()}}. See
-its docs to see other ways to control comparison.
-
-(In the second edition passed on to \code{\link[=compare]{compare()}} and \code{\link[=identical]{identical()}}.)}
+its docs to see other ways to control comparison. In the 2nd edition;
+passed on to \code{\link[=compare]{compare()}}/\code{\link[=identical]{identical()}}.}
 
 \item{tolerance}{If non-\code{NULL}, used as threshold for ignoring small
 floating point difference when comparing numeric vectors. Setting to
@@ -58,7 +57,7 @@ use only.}
 }
 \description{
 These functions provide two levels of strictness when comparing a
-computation to a reference value. \code{expect_identical()} is base line;
+computation to a reference value. \code{expect_identical()} is the baseline;
 \code{expect_equal()} relaxes the test to ignore small numeric differences.
 
 In the 2nd edition, \code{expect_identical()} uses \code{\link[=identical]{identical()}} and
@@ -81,7 +80,7 @@ expect_equal(sqrt(2) ^ 2, 2)
 \seealso{
 \itemize{
 \item \code{\link[=expect_setequal]{expect_setequal()}}/\code{\link[=expect_mapequal]{expect_mapequal()}} to test for set equality.
-\item \code{\link[=expect_reference]{expect_reference()}} to test if both point to same memory address.
+\item \code{\link[=expect_reference]{expect_reference()}} to test if two names point to same memory address.
 }
 
 Other expectations: 

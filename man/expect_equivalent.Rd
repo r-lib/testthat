@@ -2,7 +2,7 @@
 % Please edit documentation in R/expect-equality.R
 \name{expect_equivalent}
 \alias{expect_equivalent}
-\title{Expectation: is an object equal to a reference, ignoring attributes?}
+\title{Expectation: is an object equal to a reference value, ignoring attributes?}
 \usage{
 expect_equivalent(
   object,
@@ -27,9 +27,8 @@ readable failures within a function or for loop. See \link{quasi_label} for
 more details.}
 
 \item{...}{In the 3rd edition; passed on to \code{\link[waldo:compare]{waldo::compare()}}. See
-its docs to see other ways to control comparison.
-
-(In the second edition passed on to \code{\link[=compare]{compare()}} and \code{\link[=identical]{identical()}}.)}
+its docs to see other ways to control comparison. In the 2nd edition;
+passed on to \code{\link[=compare]{compare()}}/\code{\link[=identical]{identical()}}.}
 
 \item{info}{Extra information to be included in the message. This argument
 is soft-deprecated and should not be used in new code. Instead see

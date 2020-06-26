@@ -1,8 +1,8 @@
-#' Expectation: is the object equal to a value?
+#' Expectation: is an object equal to a reference value?
 #'
 #' @description
 #' These functions provide two levels of strictness when comparing a
-#' computation to a reference value. `expect_identical()` is base line;
+#' computation to a reference value. `expect_identical()` is the baseline;
 #' `expect_equal()` relaxes the test to ignore small numeric differences.
 #'
 #' In the 2nd edition, `expect_identical()` uses [identical()] and
@@ -18,14 +18,13 @@
 #'   readable failures within a function or for loop. See [quasi_label] for
 #'   more details.
 #' @param ... In the 3rd edition; passed on to [waldo::compare()]. See
-#'   its docs to see other ways to control comparison.
-#'
-#'   (In the second edition passed on to [compare()] and [identical()].)
+#'   its docs to see other ways to control comparison. In the 2nd edition;
+#'   passed on to [compare()]/[identical()].
 #' @param label,expected.label Used to customise failure messages. For expert
 #'   use only.
 #' @seealso
 #' * [expect_setequal()]/[expect_mapequal()] to test for set equality.
-#' * [expect_reference()] to test if both point to same memory address.
+#' * [expect_reference()] to test if two names point to same memory address.
 #' @inheritParams expect_that
 #' @family expectations
 #' @examples
@@ -109,7 +108,7 @@ expect_waldo_equal <- function(type, act, exp, info, ...) {
   invisible(act$val)
 }
 
-#' Expectation: is an object equal to a reference, ignoring attributes?
+#' Expectation: is an object equal to a reference value, ignoring attributes?
 #'
 #' Compares `object` and `expected` using [all.equal()] and
 #' `check.attributes = FALSE`.
