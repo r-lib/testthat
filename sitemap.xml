@@ -97,6 +97,9 @@
     <loc>https://testthat.r-lib.org/reference/expect.html</loc>
   </url>
   <url>
+    <loc>https://testthat.r-lib.org/reference/expect_equivalent.html</loc>
+  </url>
+  <url>
     <loc>https://testthat.r-lib.org/reference/expect_error.html</loc>
   </url>
   <url>
@@ -167,6 +170,9 @@
   </url>
   <url>
     <loc>https://testthat.r-lib.org/reference/local_test_context.html</loc>
+  </url>
+  <url>
+    <loc>https://testthat.r-lib.org/reference/local_test_directory.html</loc>
   </url>
   <url>
     <loc>https://testthat.r-lib.org/reference/logical-expectations.html</loc>

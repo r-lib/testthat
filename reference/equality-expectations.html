@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Expectation: is the object equal to a value? — equality-expectations • testthat</title>
+<title>Expectation: is an object equal to a reference value? — equality-expectations • testthat</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,21 +46,16 @@
 
 
 
-<meta property="og:title" content="Expectation: is the object equal to a value? — equality-expectations" />
-<meta property="og:description" content="These three functions use waldo to
-compare the results of some code to an expected result. They differ in
-their level of strictness, as determined by additional arguments passed on
-to waldo::compare():
-expect_identical() is the strictest comparison.
-expect_equal() sets tolerance = testthat_tolerance() so that
-small floating point differences are ignored; this also implies that
-(e.g.) 1 and 1L are treated as equal.
-expect_equivalent() sets ignore_attr = TRUE and
-tolerance = testthat_tolerance(), ignoring small floating point
-differences and all differences in attributes.
-
-
-In most cases you should use expect_equal()." />
+<meta property="og:title" content="Expectation: is an object equal to a reference value? — equality-expectations" />
+<meta property="og:description" content="These functions provide two levels of strictness when comparing a
+computation to a reference value. expect_identical() is the baseline;
+expect_equal() relaxes the test to ignore small numeric differences.
+In the 2nd edition, expect_identical() uses identical() and
+expect_equal uses all.equal(). In the 3rd edition, both functions use
+waldo. They differ only in that
+expect_equal() sets tolerance = testthat_tolerance() so that small
+floating point differences are ignored; this also implies that (e.g.) 1
+and 1L are treated as equal." />
 <meta property="og:image" content="https://testthat.r-lib.org/logo.png" />
 
 
@@ -183,26 +178,21 @@ In most cases you should use expect_equal()." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Expectation: is the object equal to a value?</h1>
+    <h1>Expectation: is an object equal to a reference value?</h1>
     <small class="dont-index">Source: <a href='https://github.com/r-lib/testthat/blob/master/R/expect-equality.R'><code>R/expect-equality.R</code></a></small>
     <div class="hidden name"><code>equality-expectations.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>These three functions use <a href='https://github.com/r-lib/waldo'>waldo</a> to
-compare the results of some code to an <code>expected</code> result. They differ in
-their level of strictness, as determined by additional arguments passed on
-to <code><a href='https://rdrr.io/pkg/waldo/man/compare.html'>waldo::compare()</a></code>:</p><ul>
-<li><p><code>expect_identical()</code> is the strictest comparison.</p></li>
-<li><p><code>expect_equal()</code> sets <code>tolerance = testthat_tolerance()</code> so that
-small floating point differences are ignored; this also implies that
-(e.g.) <code>1</code> and <code>1L</code> are treated as equal.</p></li>
-<li><p><code>expect_equivalent()</code> sets <code>ignore_attr = TRUE</code> and
-<code>tolerance = testthat_tolerance()</code>, ignoring small floating point
-differences and all differences in attributes.</p></li>
-</ul>
-
-<p>In most cases you should use <code>expect_equal()</code>.</p>
+    <p>These functions provide two levels of strictness when comparing a
+computation to a reference value. <code>expect_identical()</code> is the baseline;
+<code>expect_equal()</code> relaxes the test to ignore small numeric differences.</p>
+<p>In the 2nd edition, <code>expect_identical()</code> uses <code><a href='https://rdrr.io/r/base/identical.html'>identical()</a></code> and
+<code>expect_equal</code> uses <code><a href='https://rdrr.io/r/base/all.equal.html'>all.equal()</a></code>. In the 3rd edition, both functions use
+<a href='https://github.com/r-lib/waldo'>waldo</a>. They differ only in that
+<code>expect_equal()</code> sets <code>tolerance = testthat_tolerance()</code> so that small
+floating point differences are ignored; this also implies that (e.g.) <code>1</code>
+and <code>1L</code> are treated as equal.</p>
     </div>
 
     <pre class="usage"><span class='fu'>expect_equal</span>(
@@ -213,16 +203,6 @@ differences and all differences in attributes.</p></li>
   info = <span class='kw'>NULL</span>,
   label = <span class='kw'>NULL</span>,
   expected.label = <span class='kw'>NULL</span>
-)
-
-<span class='fu'>expect_equivalent</span>(
-  <span class='kw'>object</span>,
-  <span class='kw'>expected</span>,
-  <span class='kw'>...</span>,
-  info = <span class='kw'>NULL</span>,
-  label = <span class='kw'>NULL</span>,
-  expected.label = <span class='kw'>NULL</span>,
-  tolerance = <span class='fu'>testthat_tolerance</span>()
 )
 
 <span class='fu'>expect_identical</span>(
@@ -246,8 +226,9 @@ more details.</p></td>
     </tr>
     <tr>
       <th>...</th>
-      <td><p>Passed on to <code><a href='https://rdrr.io/pkg/waldo/man/compare.html'>waldo::compare()</a></code> to control the details of
-the comparison.</p></td>
+      <td><p>In the 3rd edition; passed on to <code><a href='https://rdrr.io/pkg/waldo/man/compare.html'>waldo::compare()</a></code>. See
+its docs to see other ways to control comparison. In the 2nd edition;
+passed on to <code>compare()</code>/<code><a href='https://rdrr.io/r/base/identical.html'>identical()</a></code>.</p></td>
     </tr>
     <tr>
       <th>tolerance</th>
@@ -277,7 +258,12 @@ use only.</p></td>
 
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><code>expect_setequal()</code> to test for set equality.</p>
+    <div class='dont-index'>
+<ul>
+<li><p><code>expect_setequal()</code>/<code>expect_mapequal()</code> to test for set equality.</p></li>
+<li><p><code>expect_reference()</code> to test if two names point to same memory address.</p></li>
+</ul>
+
 <p>Other expectations: 
 <code>comparison-expectations</code>,
 <code>expect_error()</code>,
@@ -300,15 +286,7 @@ use only.</p></td>
 <span class='co'>if</span> (<span class='fl'>FALSE</span>) {
 <span class='fu'>expect_identical</span>(<span class='fu'><a href='https://rdrr.io/r/base/MathFun.html'>sqrt</a></span>(<span class='fl'>2</span>) <span class='op'>^</span> <span class='fl'>2</span>, <span class='fl'>2</span>)
 }
-<span class='fu'>expect_equal</span>(<span class='fu'><a href='https://rdrr.io/r/base/MathFun.html'>sqrt</a></span>(<span class='fl'>2</span>) <span class='op'>^</span> <span class='fl'>2</span>, <span class='fl'>2</span>)
-
-<span class='co'># expect_equivalent() ignores attributes</span>
-<span class='kw'>a</span> <span class='op'>&lt;-</span> <span class='kw'>b</span> <span class='op'>&lt;-</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span>
-<span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span>(<span class='kw'>b</span>) <span class='op'>&lt;-</span> <span class='kw'>letters</span>[<span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span>]
-<span class='co'>if</span> (<span class='fl'>FALSE</span>) {
-<span class='fu'>expect_equal</span>(<span class='kw'>a</span>, <span class='kw'>b</span>)
-}
-<span class='fu'>expect_equivalent</span>(<span class='kw'>a</span>, <span class='kw'>b</span>)</div></pre>
+<span class='fu'>expect_equal</span>(<span class='fu'><a href='https://rdrr.io/r/base/MathFun.html'>sqrt</a></span>(<span class='fl'>2</span>) <span class='op'>^</span> <span class='fl'>2</span>, <span class='fl'>2</span>)</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
