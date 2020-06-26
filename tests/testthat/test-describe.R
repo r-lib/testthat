@@ -3,11 +3,11 @@ describe("describe", {
   it("can contain nested describe blocks", {
     describe("addition", {
       it("should be able to add two numbers", {
-        expect_equivalent(2, 1 + 1)
+        expect_equal(2, 1 + 1)
       })
       describe("sub feature", {
         it("should also work", {
-          expect_equivalent(2, 1 + 1)
+          expect_equal(2, 1 + 1)
         })
       })
     })
@@ -33,8 +33,8 @@ describe("describe", {
 
   someInternalVariable <- 1
   it("should be possible to use variables from outer environments", {
-    expect_equivalent(1, someExternalVariable)
-    expect_equivalent(1, someInternalVariable)
+    expect_equal(1, someExternalVariable)
+    expect_equal(1, someInternalVariable)
   })
 
   it("should not be possible to access variables from other specs (1)", {

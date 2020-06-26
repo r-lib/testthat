@@ -77,11 +77,7 @@ test_dir <- function(path,
     warning("`encoding` is deprecated; all files now assumed to be UTF-8", call. = FALSE)
   }
 
-  withr::local_envvar(compact(list(
-    R_TESTS = "",
-    TESTTHAT_DIR = maybe_root_dir(path),
-    TESTTHAT_PKG = package
-  )))
+  local_test_directory(path, package = package)
 
   if (is.null(env)) {
     if (is.null(package)) {

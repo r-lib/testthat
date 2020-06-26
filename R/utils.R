@@ -89,10 +89,6 @@ paste_line <- function(...) {
   paste(chr(...), collapse = "\n")
 }
 
-maybe_root_dir <- function(path) {
-  tryCatch(pkgload::pkg_path(path), error = function(...) path)
-}
-
 maybe_restart <- function(restart) {
   if (!is.null(findRestart(restart))) {
     invokeRestart(restart)
@@ -115,9 +111,4 @@ strrep <- function(x, times) {
 
 can_entrace <- function(cnd) {
   !inherits(cnd, "Throwable")
-}
-
-compact <- function(x) {
-  is_null <- vapply(x, is.null, logical(1))
-  x[!is_null]
 }

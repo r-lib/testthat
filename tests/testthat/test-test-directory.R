@@ -1,10 +1,3 @@
-test_that("test_dir() sets environment variables", {
-  expect_true(is_testing())
-  expect_false(is_interactive())
-  expect_equal(testing_package(), "testthat")
-  expect_equal(Sys.getenv("R_TESTS"), "")
-})
-
 test_that("test_dir()", {
   res <- test_dir(test_path("test_dir"), reporter = "silent")
 

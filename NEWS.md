@@ -1,5 +1,24 @@
 # testthat (development version)
 
+* testhat 3.0.0 brings with it a 3rd edition that makes a number of breaking
+  changes in order to clean up the interface and help you use our latest
+  recommendations. To opt-in to the 3rd edition for your package, set
+  `Config/testthat/edition: 3` in your `DESCRIPTION`.
+  
+    * `expect_identical()` and `expect_equal()` use `waldo::compare()` to 
+       compare actual and expected results. This mostly yields much more 
+       informative output when the actual and expected values are different,
+       but while writing it uncovered some bugs in the existing comparison
+       code.
+       
+    * `expect_equivalent()` is deprecated.
+    
+    * `context()` is deprecated.
+    
+    * `expect_that()` is deprecated.
+    
+    * `expect_is()` is deprecated.
+
 * `test_that()` now sets a number of options and env vars to make output as 
   reproducible as possible (#1044). Many of these options were previously 
   set in various places (in `devtools::test()`, `test_dir()`, `test_file()`,
@@ -21,12 +40,7 @@
 * `verify_output()` now uses the `pdf()` device instead of `png()`; that makes
   it work on systems without X11 (#1011).
 
-* `expect_identical()`, `expect_equal()`, `expect_equivalent()` and
-  `verify_output()` now use `waldo::compare()` to compare actual and expected
-  results. The chief difference should be that you now get much more 
-  informative output when the actual and expected values are different, but
-  it is likely there are also minor differences in the comparison - please
-  let me know if you encounter these (#447).
+* `verify_output()` uses `waldo::compare()` to give more informative failures.
 
 * Catch C++ tests now provide detailed results for each succeeded or failed
   test, to upgrade existing code, re-run `testthat::use_catch()` (#1008)

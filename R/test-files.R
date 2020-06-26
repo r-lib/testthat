@@ -141,6 +141,11 @@ test_file <- function(path,
 
   on.exit(teardown_run(dirname(path)), add = TRUE)
 
+  if (!is_testing()) {
+    # Only set up if hasn't been done higher up
+    local_test_directory(path)
+  }
+
   with_reporter(
     reporter = reporter,
     start_end_reporter = start_end_reporter,
