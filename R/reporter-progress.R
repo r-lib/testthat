@@ -117,14 +117,14 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
         }
       }
 
-      self$cat_tight(
-        "\r",
+      message <- paste0(
         status, " | ", sprintf("%3d", self$ctxt_n_ok), " ",
         col_format(self$ctxt_n_fail, "fail"), " ",
         col_format(self$ctxt_n_warn, "warn"), " ",
         col_format(self$ctxt_n_skip, "skip"), " | ",
         self$ctxt_name
       )
+      self$cat_tight("\r", strpad(message))
     },
 
     end_context = function(context) {
@@ -133,10 +133,12 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
       self$last_update <- NULL
       self$show_status(complete = TRUE)
 
-      if (time[[3]] > self$min_time) {
-        self$cat_line(sprintf(" [%.1f s]", time[[3]]), col = "cyan")
-      } else {
-        self$cat_line()
+      if (self$ctxt_n > 0) {
+        if (time[[3]] > self$min_time) {
+          self$cat_line(sprintf(" [%.1f s]", time[[3]]), col = "cyan")
+        } else {
+          self$cat_line()
+        }
       }
 
       if (self$ctxt_issues$size() > 0) {
@@ -248,4 +250,9 @@ issue_summary <- function(x) {
     crayon::bold(header), "\n",
     format(x)
   )
+}
+
+strpad <- function(x, width = getOption("width")) {
+  n <- pmax(0, width - nchar(x))
+  paste0(x, strrep(" ", n))
 }
