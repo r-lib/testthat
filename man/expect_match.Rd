@@ -29,7 +29,7 @@ within a function or for loop. See \link{quasi_label} for more details.}
     matched as is.  Overrides all conflicting arguments.}
 
 \item{...}{
-  Arguments passed on to \code{\link[base:grepl]{base::grepl}}
+  Arguments passed on to \code{\link[base:grep]{base::grepl}}
   \describe{
     \item{\code{ignore.case}}{if \code{FALSE}, the pattern matching is \emph{case
       sensitive} and if \code{TRUE}, case is ignored during matching.}

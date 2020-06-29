@@ -14,9 +14,9 @@ This is run automatically by \code{test_that()} but you may want to run it
 yourself if you want to replicate test results interactively. If
 run inside a function, the effects are automatically reversed when the
 function exits; if running in the global environment, use
-\code{\link[withr:deferred_run]{withr::deferred_run()}} to undo.
+\code{\link[withr:defer]{withr::deferred_run()}} to undo.
 
-It sets the following options with \code{\link[withr:local_options]{withr::local_options()}}:
+It sets the following options with \code{\link[withr:with_options]{withr::local_options()}}:
 \itemize{
 \item \code{cli.unicode = FALSE} so that the cli package never generates unicode
 output (normally cli uses unicode on Linux/Mac but not Windows).
