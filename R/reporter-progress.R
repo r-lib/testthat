@@ -62,18 +62,11 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
 
     start_file = function(file) {
       self$file_name <- file
-
-      # Need to set here in case file doesn't contain any tests
       self$ctxt_issues <- Stack$new()
       self$ctxt_start_time <- proc.time()
-    },
 
-    start_test = function(context, test) {
-      if (is.null(context)) {
-        # Have to go via get_reporter() in order to trigger multi-reporter
-        name <- context_name(self$file_name)
-        get_reporter()$.start_context(name)
-      }
+      name <- context_name(self$file_name)
+      get_reporter()$.start_context(name)
     },
 
     start_context = function(context) {
