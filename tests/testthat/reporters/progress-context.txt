@@ -1,9 +1,9 @@
 ✔ |  OK F W S | Context
 
 ⠏ |   0       | context                                                         
-✔ |   0       | context                                                         
+✔ |   0       | context
 ⠏ |   0       | my context                                                      
-✔ |   1       | my context                                                      
+✔ |   1       | my context
 
 ══ Results ═════════════════════════════════════════════════════════════════════
 OK:       1

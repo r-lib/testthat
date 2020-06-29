@@ -101,7 +101,6 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
           status <- crayon::green(cli::symbol$tick)
         }
       } else {
-
         # Do not print if not enough time has passed since we last printed.
         if (!self$should_update()) {
           return()
@@ -124,7 +123,10 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
         col_format(self$ctxt_n_skip, "skip"), " | ",
         self$ctxt_name
       )
-      self$cat_tight("\r", strpad(message))
+      if (!complete) {
+        message <- strpad(message)
+      }
+      self$cat_tight("\r", message)
     },
 
     end_context = function(context) {
@@ -252,7 +254,7 @@ issue_summary <- function(x) {
   )
 }
 
-strpad <- function(x, width = getOption("width")) {
+strpad <- function(x, width = cli::console_width()) {
   n <- pmax(0, width - nchar(x))
   paste0(x, strrep(" ", n))
 }

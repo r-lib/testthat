@@ -1,7 +1,7 @@
 ✔ |  OK F W S | Context
 
 ⠏ |   0       | error-setup                                                     
-✖ |   0 1     | error-setup                                                     
+✖ |   0 1     | error-setup
 ────────────────────────────────────────────────────────────────────────────────
 error-setup.R:4: error: (code run outside of a test)
 !
