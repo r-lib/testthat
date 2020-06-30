@@ -27,6 +27,7 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
     n_skip = 0,
     n_warn = 0,
     n_fail = 0,
+    width = 0,
 
     ctxt_start_time = NULL,
     ctxt_issues = NULL,
@@ -48,7 +49,10 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
       self$show_praise <- show_praise
       self$min_time <- min_time
       self$update_interval <- update_interval
+
+      # Capture at init so not affected by test settings
       self$frames <- cli::get_spinner()$frames
+      self$width <- cli::console_width()
     },
 
     is_full = function() {
@@ -124,7 +128,7 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
         self$ctxt_name
       )
       if (!complete) {
-        message <- strpad(message)
+        message <- strpad(message, self$width)
       }
       self$cat_tight("\r", message)
     },
