@@ -182,17 +182,16 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
         self$ctxt_n_ok <- self$ctxt_n_ok + 1
       }
 
+      if (self$is_full()) {
+        self$end_context()
+        abort_reporter("max_fails exceded")
+      }
+
       self$show_status()
     },
 
     end_reporter = function() {
       self$cat_line()
-
-      if (self$is_full()) {
-        self$rule("Terminating early", line = 2)
-        self$cat_line("Too many failures")
-        return()
-      }
 
       colour_if <- function(n, type) {
         colourise(n, if (n == 0) "success" else type)
@@ -209,6 +208,10 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
       self$cat_line("Failed:   ", colour_if(self$n_fail, "fail"))
       self$cat_line("Warnings: ", colour_if(self$n_warn, "warn"))
       self$cat_line("Skipped:  ", colour_if(self$n_skip, "skip"))
+
+      if (self$is_full()) {
+        self$rule("Terminated early", line = 2)
+      }
 
       if (!self$show_praise || runif(1) > 0.1) {
         return()

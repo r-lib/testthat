@@ -1,0 +1,43 @@
+✔ |  OK F W S | Context
+
+⠏ |   0       | fail-many                                                       
+x |   0 10     | fail-many
+--------------------------------------------------------------------------------
+fail-many.R:3: failure: Example
+FALSE isn't true.
+
+fail-many.R:3: failure: Example
+FALSE isn't true.
+
+fail-many.R:3: failure: Example
+FALSE isn't true.
+
+fail-many.R:3: failure: Example
+FALSE isn't true.
+
+fail-many.R:3: failure: Example
+FALSE isn't true.
+
+fail-many.R:3: failure: Example
+FALSE isn't true.
+
+fail-many.R:3: failure: Example
+FALSE isn't true.
+
+fail-many.R:3: failure: Example
+FALSE isn't true.
+
+fail-many.R:3: failure: Example
+FALSE isn't true.
+
+fail-many.R:3: failure: Example
+FALSE isn't true.
+--------------------------------------------------------------------------------
+max_fails exceded 
+
+══ Results ═════════════════════════════════════════════════════════════════════
+OK:       0
+Failed:   10
+Warnings: 0
+Skipped:  0
+══ Terminated early ════════════════════════════════════════════════════════════

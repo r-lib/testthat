@@ -1,6 +1,11 @@
 # testthat (development version)
 
-* `ProgressReport` (the default reporter) now keeps the stack traces of
+* `ProgressReporter` now checks if you've exceeded the maximum number of
+  failures (from option `testthat.progress.max_fails`) after each expectation,
+  rather than at the end of each file. This is important for tests that 
+  perform many expectations with a for loop or similar (#967).
+
+* `ProgressReporter` (the default reporter) now keeps the stack traces of
   an errors that happen before the before test, making problems substantially
   easier to track down (#1004).
 

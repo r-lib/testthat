@@ -40,12 +40,7 @@ StopReporter <- R6::R6Class("StopReporter",
         !!!messages
       )
 
-      if (is.null(findRestart("testthat_abort_reporter"))) {
-        stop(message, call. = FALSE)
-      } else {
-        cat(message, "\n")
-        invokeRestart("testthat_abort_reporter")
-      }
+      abort_reporter(message)
     },
 
     add_result = function(context, test, result) {

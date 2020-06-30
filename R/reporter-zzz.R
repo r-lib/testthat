@@ -66,6 +66,15 @@ with_reporter <- function(reporter, code, start_end_reporter = TRUE) {
   invisible(reporter)
 }
 
+abort_reporter <- function(message) {
+  if (is.null(findRestart("testthat_abort_reporter"))) {
+    abort(message)
+  } else {
+    cat(message, "\n")
+    invokeRestart("testthat_abort_reporter")
+  }
+}
+
 #' Find reporter object given name or object.
 #'
 #' If not found, will return informative error message.
