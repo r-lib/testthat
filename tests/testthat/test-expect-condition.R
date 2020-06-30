@@ -155,3 +155,32 @@ test_that("can capture Throwable conditions from rJava", {
   throw <- function(msg) stop(error_cnd("Throwable", message = msg))
   expect_error(throw("foo"), "foo", class = "Throwable")
 })
+
+# expect_condition --------------------------------------------------------
+
+test_that("continues evaluation", {
+  expect_condition({
+    message("Hi")
+    new_variable <- 1
+  })
+  expect_equal(exists("new_variable"), TRUE)
+})
+
+test_that("but not after error", {
+  expect_condition({
+    stop("Hi")
+    new_variable <- 1
+  })
+  expect_equal(exists("new_variable"), FALSE)
+})
+
+test_that("captures first condition", {
+  expect_condition({
+    message("Hi")
+    message("Bye")
+  }, "Hi")
+})
+
+test_that("expect_condition() muffles messages", {
+  expect_message(expect_condition(message("Hi")), NA)
+})

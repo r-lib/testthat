@@ -65,6 +65,9 @@ the captured condition.
 \code{expect_error()} and \code{expect_condition()} check that code throws an error
 or condition with a message that matches \code{regexp}, or a class that inherits
 from \code{class}. See below for more details.
+
+If the code throws multiple conditions, \code{expect_condition()}
+only captures the first.
 }
 \section{Testing \code{message} vs \code{class}}{
 

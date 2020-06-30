@@ -58,7 +58,7 @@ test_code <- function(test, code, env = test_env(), skip_on_empty = TRUE) {
       e$end_frame <- sys.nframe() - debug_end - 1L
     }
 
-    e$test <- test %||% "(unknown)"
+    e$test <- test %||% "(code run outside of `test_that()`)"
 
     ok <<- ok && expectation_ok(e)
     get_reporter()$add_result(context = get_reporter()$.context, test = test, result = e)

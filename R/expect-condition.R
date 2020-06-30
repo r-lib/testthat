@@ -1,8 +1,12 @@
 #' Expectation: does code throw error or other condition?
 #'
+#' @description
 #' `expect_error()` and `expect_condition()` check that code throws an error
 #' or condition with a message that matches `regexp`, or a class that inherits
 #' from `class`. See below for more details.
+#'
+#' If the code throws multiple conditions, `expect_condition()`
+#' only captures the first.
 #'
 #' @section Testing `message` vs `class`:
 #' When checking that code generates an error, it's important to check that the
@@ -96,7 +100,7 @@ expect_condition <- function(object,
                              info = NULL,
                              label = NULL
                              ) {
-  act <- quasi_capture(enquo(object), label, capture_condition, entrace = TRUE)
+  act <- quasi_capture(enquo(object), label, capture_first_condition)
   msg <- compare_condition(
     act$cap, act$lab, regexp = regexp, class = class, ...,
     cond_type = "condition"
@@ -104,6 +108,25 @@ expect_condition <- function(object,
   expect(is.null(msg), msg, info = info, trace = act$cap[["trace"]])
 
   invisible(act$val %||% act$cap)
+}
+
+capture_first_condition <- function(expr) {
+  first <- NULL
+
+  tryCatch(
+    withCallingHandlers(expr, condition = function(cnd) {
+      if (is.null(first)) {
+        if (can_entrace(cnd)) {
+          cnd <- cnd_entrace(cnd)
+        }
+        first <<- cnd
+      }
+      cnd_muffle(cnd)
+    }),
+    error = function(cnd) {}
+  )
+
+  first
 }
 
 # Helpers -----------------------------------------------------------------
