@@ -135,16 +135,19 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
 
     end_context = function(context) {
       time <- proc.time() - self$ctxt_start_time
-
       self$last_update <- NULL
-      self$show_status(complete = TRUE)
 
-      if (self$ctxt_n > 0) {
-        if (time[[3]] > self$min_time) {
-          self$cat_line(sprintf(" [%.1f s]", time[[3]]), col = "cyan")
-        } else {
-          self$cat_line()
-        }
+      # context with no expectation = automatic file context in file
+      # that also has manual contexts
+      if (self$ctxt_n == 0) {
+        return()
+      }
+
+      self$show_status(complete = TRUE)
+      if (time[[3]] > self$min_time) {
+        self$cat_line(sprintf(" [%.1f s]", time[[3]]), col = "cyan")
+      } else {
+        self$cat_line()
       }
 
       if (self$ctxt_issues$size() > 0) {
