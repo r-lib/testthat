@@ -141,15 +141,18 @@ format.expectation <- function(x, ...) {
   if (is.null(x[["trace"]]) || trace_length(x[["trace"]]) == 0L) {
     x$message
   } else {
-    format_with_trace(x)
+    format_with_trace(x, ...)
   }
 }
 
-format_with_trace <- function(exp) {
+format_with_trace <- function(exp, simplify = "branch", ...) {
+  max_frames <- if (simplify == "branch") 20 else NULL
+
   trace_lines <- format(
     exp$trace,
-    simplify = "branch",
-    max_frames = 20,
+    simplify = simplify,
+    ...,
+    max_frames = max_frames,
     dir = Sys.getenv("TESTTHAT_DIR") %||% getwd()
   )
   paste_line(

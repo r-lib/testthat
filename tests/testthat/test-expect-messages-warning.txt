@@ -1,19 +1,20 @@
--- 1. Failure:  (@test-expect-messages.R#85)  ----------------------------------
+Starting test: 
+-- Failure:  (@test-expect-messages.R#85) --------------------------------------
 `null()` did not produce any warnings.
 
--- 2. Failure:  (@test-expect-messages.R#86)  ----------------------------------
+-- Failure:  (@test-expect-messages.R#86) --------------------------------------
 `foo()` generated warnings:
 * xxx
 * yyy
 
--- 3. Failure:  (@test-expect-messages.R#87)  ----------------------------------
+-- Failure:  (@test-expect-messages.R#87) --------------------------------------
 `foo()` produced unexpected warnings.
 Expected match: zzz
 Actual values:
 * xxx
 * yyy
 
--- 4. Failure:  (@test-expect-messages.R#88)  ----------------------------------
+-- Failure:  (@test-expect-messages.R#88) --------------------------------------
 `foo()` produced unexpected warnings.
 Expected match: xxx
 Actual values:

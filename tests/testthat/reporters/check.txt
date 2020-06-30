@@ -1,63 +1,95 @@
--- 1. Failure: Failure:1 (@tests.R#12)  ----------------------------------------
+Starting test: Success
+Starting test: Success
+Starting test: Failure:1
+-- Failure: Failure:1 (@tests.R#12) --------------------------------------------
 Failure has been forced
 
--- 2. Failure: Failure:2a (@tests.R#16)  ---------------------------------------
+Starting test: Failure:2a
+-- Failure: Failure:2a (@tests.R#16) -------------------------------------------
 Failure has been forced
 
--- 3. Failure: Failure:2b (@tests.R#19)  ---------------------------------------
+Starting test: Failure:2b
+-- Failure: Failure:2b (@tests.R#19) -------------------------------------------
 FALSE isn't true.
 
--- 4. Failure: Failure:loop (@tests.R#24)  -------------------------------------
+Starting test: Failure:loop
+-- Failure: Failure:loop (@tests.R#24) -----------------------------------------
 `i` not equal to 2.
 1/1 mismatches
 [1] 1 - 2 == -1
 
--- 5. Error: Error:1 (@tests.R#33)  --------------------------------------------
+Starting test: Error:1
+-- Error: Error:1 (@tests.R#33) ------------------------------------------------
 stop
 
--- 6. Error: Error:3 (@tests.R#47)  --------------------------------------------
+Starting test: Error:3
+-- Error: Error:3 (@tests.R#47) ------------------------------------------------
 !
 Backtrace:
- 1. f()
- 2. g()
- 3. h()
+    x
+ 1. \-f()
+ 2.   \-g()
+ 3.     \-h()
 
--- 7. Error: Recursion:1 (@tests.R#56)  ----------------------------------------
+Starting test: Recursion:1
+-- Error: Recursion:1 (@tests.R#56) --------------------------------------------
 This is deep
 Backtrace:
-  1. f(25)
-  2. f(x - 1)
-  3. f(x - 1)
-  4. f(x - 1)
-  5. f(x - 1)
-  6. f(x - 1)
-  7. f(x - 1)
-  8. f(x - 1)
-  9. f(x - 1)
- 10. f(x - 1)
-     ...
- 17. f(x - 1)
- 18. f(x - 1)
- 19. f(x - 1)
- 20. f(x - 1)
- 21. f(x - 1)
- 22. f(x - 1)
- 23. f(x - 1)
- 24. f(x - 1)
- 25. f(x - 1)
- 26. f(x - 1)
+     x
+  1. \-f(25)
+  2.   \-f(x - 1)
+  3.     \-f(x - 1)
+  4.       \-f(x - 1)
+  5.         \-f(x - 1)
+  6.           \-f(x - 1)
+  7.             \-f(x - 1)
+  8.               \-f(x - 1)
+  9.                 \-f(x - 1)
+ 10.                   \-f(x - 1)
+ 11.                     \-f(x - 1)
+ 12.                       \-f(x - 1)
+ 13.                         \-f(x - 1)
+ 14.                           \-f(x - 1)
+ 15.                             \-f(x - 1)
+ 16.                               \-f(x - 1)
+ 17.                                 \-f(x - 1)
+ 18.                                   \-f(x - 1)
+ 19.                                     \-f(x - 1)
+ 20.                                       \-f(x - 1)
+ 21.                                         \-f(x - 1)
+ 22.                                           \-f(x - 1)
+ 23.                                             \-f(x - 1)
+ 24.                                               \-f(x - 1)
+ 25.                                                 \-f(x - 1)
+ 26.                                                   \-f(x - 1)
 
--- 8. Error: Error:4 (@tests.R#111)  -------------------------------------------
+Starting test: Skip:1
+-- Skip: Skip:1 (@tests.R#62) --------------------------------------------------
+Reason: skip
+
+Starting test: Skip:2
+-- Skip: Skip:2 (@tests.R#69) --------------------------------------------------
+Reason: skip
+
+Starting test: Skip:3
+-- Skip: Skip:3 (@tests.R#72) --------------------------------------------------
+Reason: empty test
+
+Starting test: Warning:1
+Starting test: Warning:2
+Starting test: Output:1
+Starting test: Error:4
+-- Error: Error:4 (@tests.R#111) -----------------------------------------------
 Throwable
 
 ══ testthat results  ═══════════════════════════════════════════════════════════
-[ OK: 5 | SKIPPED: 3 | WARNINGS: 3 | FAILED: 8 ]
-1. Failure: Failure:1 (@tests.R#12) 
-2. Failure: Failure:2a (@tests.R#16) 
-3. Failure: Failure:2b (@tests.R#19) 
-4. Failure: Failure:loop (@tests.R#24) 
-5. Error: Error:1 (@tests.R#33) 
-6. Error: Error:3 (@tests.R#47) 
-7. Error: Recursion:1 (@tests.R#56) 
-8. Error: Error:4 (@tests.R#111) 
+[ OK: 8 | SKIPPED: 3 | WARNINGS: 0 | FAILED: 8 ]
+1. Failure: Failure:1 (@tests.R#12)
+2. Failure: Failure:2a (@tests.R#16)
+3. Failure: Failure:2b (@tests.R#19)
+4. Failure: Failure:loop (@tests.R#24)
+5. Error: Error:1 (@tests.R#33)
+6. Error: Error:3 (@tests.R#47)
+7. Error: Recursion:1 (@tests.R#56)
+8. Error: Error:4 (@tests.R#111)
 

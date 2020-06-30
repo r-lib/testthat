@@ -16,32 +16,41 @@ CheckReporter <- R6::R6Class("CheckReporter",
     n_skip = 0L,
     n_fail = 0L,
     n_warn = 0L,
+    skips = NULL,
 
     stop_on_failure = TRUE,
 
     initialize = function(stop_on_failure = TRUE, ...) {
       self$stop_on_failure <- stop_on_failure
+      self$skips <- Stack$new()
       super$initialize(...)
     },
 
+    start_test = function(context, test) {
+      self$cat_line("Starting test: ", test)
+    },
+
     add_result = function(context, test, result) {
-      if (expectation_skip(result)) {
-        self$n_skip <- self$n_skip + 1L
-        return()
-      }
-      if (expectation_warning(result)) {
-        self$n_warn <- self$n_warn + 1L
-        return()
-      }
       if (expectation_ok(result)) {
         self$n_ok <- self$n_ok + 1L
         return()
       }
 
-      self$n_fail <- self$n_fail + 1L
-      self$failures[[self$n_fail]] <- result
+      if (expectation_skip(result)) {
+        self$n_skip <- self$n_skip + 1L
+        self$skips$push(result$message)
+      } else if (expectation_warning(result)) {
+        self$n_warn <- self$n_warn + 1L
+      } else {
+        self$n_fail <- self$n_fail + 1L
+        self$failures[[self$n_fail]] <- result
+      }
 
-      self$cat_line(failure_summary(result, self$n_fail))
+      type <- expectation_type(result)
+      header <- failure_header(result)
+
+      self$rule(header, col = testthat_style(type))
+      self$cat_line(format(result, simplify = "none"))
       self$cat_line()
     },
 
@@ -79,31 +88,10 @@ CheckReporter <- R6::R6Class("CheckReporter",
   )
 )
 
-
-skip_summary <- function(x, label) {
-  header <- paste0(label, ". ", x$test)
-
-  paste0(
-    colourise(header, "skip"), src_loc(x$srcref), " - ", x$message
-  )
-}
-
-failure_summary <- function(x, label, width = cli::console_width()) {
-  header <- paste0(label, ". ", failure_header(x))
-
-  paste0(
-    cli::rule(header, col = testthat_style("error")), "\n",
-    format(x)
-  )
-}
-
 failure_header <- function(x) {
-  type <- switch(expectation_type(x),
-    error = "Error",
-    failure = "Failure"
-  )
-
-  paste0(type, ": ", x$test, src_loc(x$srcref), " ")
+  type <- expectation_type(x)
+  substr(type, 1, 1) <- toupper(substr(type, 1, 1))
+  paste0(type, ": ", x$test, src_loc(x$srcref))
 }
 
 src_loc <- function(ref) {
