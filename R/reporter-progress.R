@@ -20,14 +20,17 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
     start_time = NULL,
     last_update = NULL,
     update_interval = NULL,
-    frames = NULL,
 
     max_fail = NULL,
     n_ok = 0,
     n_skip = 0,
     n_warn = 0,
     n_fail = 0,
+
+    frames = NULL,
     width = 0,
+    unicode = TRUE,
+    colour = TRUE,
 
     ctxt_start_time = NULL,
     ctxt_issues = NULL,
@@ -53,6 +56,8 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
       # Capture at init so not affected by test settings
       self$frames <- cli::get_spinner()$frames
       self$width <- cli::console_width()
+      self$unicode <- getOption("cli.unicode")
+      self$colour <- getOption("crayon.enabled")
     },
 
     is_full = function() {
@@ -183,6 +188,11 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
       }
 
       if (self$is_full()) {
+        local_reproducible_output(
+          width = self$width,
+          crayon = self$crayon,
+          unicode = self$unicode
+        )
         self$end_context()
         abort_reporter("max_fails exceded")
       }
