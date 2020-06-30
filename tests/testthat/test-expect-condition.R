@@ -14,13 +14,6 @@ test_that("regexp = string matches for error message", {
   expect_failure(expect_error("OK", "No"), "did not throw an error")
 })
 
-test_that("classed error generates useful warning", {
-  custom_err <- function() abort("This is an error", .subclass = "custom_err")
-  verify_output(test_path("test-expect-condition-custom.txt"), {
-    expect_error(custom_err(), "an error")
-  })
-})
-
 test_that("class = string matches class of error", {
   blah <- function() {
     cond <- structure(

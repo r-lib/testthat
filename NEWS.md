@@ -1,5 +1,8 @@
 # testthat (development version)
 
+* `expect_error()` no longer encourages you to use `class`. This advice 
+  one type of fragility at the expense of creating a different type (#1013).
+
 * `ProgressReport` (the default reporter) now keeps the stack traces of
   an errors that happen before the before test, making problems substantially
   easier to track down (#1004).
