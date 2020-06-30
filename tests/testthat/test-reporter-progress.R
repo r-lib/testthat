@@ -22,3 +22,15 @@ test_that("gracefully handles multiple contexts", {
     test_path("reporters/progress-context.txt")
   )
 })
+
+test_that("captures backtraces", {
+  local_reproducible_output(unicode = TRUE)
+
+  expect_known_output(
+    test_file(
+      test_path("reporters/backtraces.R"),
+      ProgressReporter$new(show_praise = FALSE, min_time = Inf, update_interval = 0)
+    ),
+    test_path("reporters/progress-backtraces.txt")
+  )
+})

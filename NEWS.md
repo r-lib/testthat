@@ -1,5 +1,8 @@
 # testthat (development version)
 
+* Unexpected warnings now include a backtrace, making it easier to figure
+  out where they came from.
+
 * `ProgressReport` (the default reporter) now keeps the stack traces of
   an errors that happen before the before test, making problems substantially
   easier to track down (#1004).

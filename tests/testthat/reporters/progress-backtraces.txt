@@ -8,59 +8,67 @@
 ⠼ |   0 5     | backtraces                                                      
 ⠴ |   0 6     | backtraces                                                      
 ⠦ |   0 7     | backtraces                                                      
-✖ |   0 7     | backtraces
+⠧ |   0 7 1   | backtraces                                                      
+⠇ |   1 7 1   | backtraces                                                      
+✖ |   1 7 1   | backtraces
 ────────────────────────────────────────────────────────────────────────────────
 backtraces.R:6: error: errors thrown at block level are entraced
 foo
 Backtrace:
- 1. f()
- 2. g()
+ 1. f() reporters/backtraces.R:6:2
+ 2. g() reporters/backtraces.R:4:7
 
 backtraces.R:11: error: errors thrown from a quasi-labelled argument are entraced
 foo
 Backtrace:
- 1. testthat::expect_s3_class(foo(), "foo")
+ 1. testthat::expect_s3_class(foo(), "foo") reporters/backtraces.R:11:2
  4. foo()
 
 backtraces.R:18: error: errors thrown from a quasi-labelled argument are entraced (deep case)
 foo
 Backtrace:
- 1. testthat::expect_s3_class(f(), "foo")
+ 1. testthat::expect_s3_class(f(), "foo") reporters/backtraces.R:18:2
  4. f()
- 5. g()
+ 5. g() reporters/backtraces.R:16:7
  9. foo()
 
 backtraces.R:28: error: errors thrown from a quasi-labelled argument are entraced (deep deep case)
 foobar
 Backtrace:
- 1. f()
- 2. g()
+ 1. f() reporters/backtraces.R:28:2
+ 2. g() reporters/backtraces.R:25:7
  6. foo()
- 7. bar()
+ 7. bar() reporters/backtraces.R:22:9
 
 backtraces.R:35: failure: failed expect_error() prints a backtrace
 `f()` threw an condition with unexpected class.
 
 Backtrace:
- 1. testthat::expect_condition(f(), class = "foo")
+ 1. testthat::expect_condition(f(), class = "foo") reporters/backtraces.R:35:2
  6. f()
- 7. signaller()
+ 7. signaller() reporters/backtraces.R:32:7
 
 backtraces.R:38: failure: failed expect_error() prints a backtrace
 `f()` threw an error with unexpected message.
 Expected match: "foo"
 Actual message: "bar"
 Backtrace:
- 1. testthat::expect_error(f(), "foo")
+ 1. testthat::expect_error(f(), "foo") reporters/backtraces.R:38:2
  6. f()
- 7. signaller()
+ 7. signaller() reporters/backtraces.R:32:7
 
 backtraces.R:46: error: Errors are inspected with `conditionMessage()`
 dispatched
+
+backtraces.R:53: warning: also get backtraces for warnings
+foobar
+Backtrace:
+ 1. foo() reporters/backtraces.R:53:2
+ 2. bar() reporters/backtraces.R:50:9
 ────────────────────────────────────────────────────────────────────────────────
 
 ══ Results ═════════════════════════════════════════════════════════════════════
-OK:       0
+OK:       1
 Failed:   7
-Warnings: 0
+Warnings: 1
 Skipped:  0

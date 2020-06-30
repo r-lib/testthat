@@ -46,3 +46,10 @@ test_that("Errors are inspected with `conditionMessage()`", {
   rlang::abort("Wrong message", "foobar")
 })
 
+test_that("also get backtraces for warnings", {
+  foo <- function() bar()
+  bar <- function() warn("foobar")
+
+  foo()
+  expect_true(TRUE)
+})

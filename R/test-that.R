@@ -133,6 +133,10 @@ test_code <- function(test, code, env = test_env(), skip_on_empty = TRUE) {
       return()
     }
 
+    if (can_entrace(e)) {
+      e <- cnd_entrace(e)
+    }
+
     handled <<- TRUE
     register_expectation(e, 5)
 
@@ -140,6 +144,9 @@ test_code <- function(test, code, env = test_env(), skip_on_empty = TRUE) {
   }
   handle_message <- function(e) {
     handled <<- TRUE
+    if (can_entrace(e)) {
+      e <- cnd_entrace(e)
+    }
     maybe_restart("muffleMessage")
   }
   handle_skip <- function(e) {
