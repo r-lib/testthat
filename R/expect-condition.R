@@ -65,6 +65,8 @@ expect_error <- function(object,
                          info = NULL,
                          label = NULL
                          ) {
+  ellipsis::check_dots_used(action = warn)
+
   act <- quasi_capture(enquo(object), label, capture_error, entrace = TRUE)
   msg <- compare_condition(act$cap, act$lab, regexp = regexp, class = class, ...)
 
@@ -96,6 +98,8 @@ expect_condition <- function(object,
                              info = NULL,
                              label = NULL
                              ) {
+  ellipsis::check_dots_used(action = warn)
+
   act <- quasi_capture(enquo(object), label, capture_condition, entrace = TRUE)
   msg <- compare_condition(
     act$cap, act$lab, regexp = regexp, class = class, ...,

@@ -20,9 +20,9 @@ capture_message(code, entrace = FALSE)
 
 capture_warning(code, entrace = FALSE)
 
-capture_messages(code)
+capture_messages(code, message_only = TRUE)
 
-capture_warnings(code)
+capture_warnings(code, message_only = TRUE)
 }
 \arguments{
 \item{code}{Code to evaluate}

@@ -1,7 +1,8 @@
 #' Expectation: does code produce warnings or messages?
 #'
-#' Use `expect_message()` and `expect_warning()` to check if the messages or
-#' warnings match the given regular expression.
+#' `expect_message()` and `expect_warning()` check if _any_ messages or
+#' warning (respectively) matches the given pattern (regular expression) or
+#' class.
 #'
 #' @inheritParams expect_that
 #' @param regexp Regular expression to test against.
@@ -11,6 +12,9 @@
 #'     but doesn't test for a specific value.
 #'   * If `NA`, asserts that there shouldn't be any messages or warnings.
 #' @inheritDotParams expect_match -object -regexp -info -label
+#' @param class Instead of supplying a regular expression, you can also supply
+#'   a class name. This is useful for "classed" conditions. See
+#'   discussion in [expect_error()] for details.
 #' @param all Do messages/warnings need to match the `regexp` (`TRUE`), or
 #'   does only one need to match (`FALSE`)?
 #' @family expectations
@@ -61,13 +65,23 @@
 #' @export
 expect_message <- function(object,
                            regexp = NULL,
+                           class = NULL,
                            ...,
                            all = FALSE,
                            info = NULL,
                            label = NULL
                            ) {
-  act <- quasi_capture(enquo(object), label, capture_messages)
-  msg <- compare_messages(act$cap, act$lab, regexp = regexp, all = all, ...)
+  ellipsis::check_dots_used(action = warn)
+
+  act <- quasi_capture(enquo(object), label, capture_messages, message_only = FALSE)
+  msg <- compare_conditions(
+    act$cap, act$lab,
+    regexp = regexp,
+    class = class,
+    all = all,
+    ...,
+    cond_type = "message"
+  )
   expect(is.null(msg), msg, info = info)
 
   invisible(act$val)
@@ -77,15 +91,22 @@ expect_message <- function(object,
 #' @rdname expect_message
 expect_warning <- function(object,
                            regexp = NULL,
+                           class = NULL,
                            ...,
                            all = FALSE,
                            info = NULL,
                            label = NULL
                            ) {
-  act <- quasi_capture(enquo(object), label, capture_warnings)
-  msg <- compare_messages(
-    act$cap, act$lab, regexp = regexp, all = all, ...,
-    cond_type = "warnings"
+  ellipsis::check_dots_used(action = warn)
+
+  act <- quasi_capture(enquo(object), label, capture_warnings, message_only = FALSE)
+  msg <- compare_conditions(
+    act$cap, act$lab,
+    regexp = regexp,
+    class = class,
+    all = all,
+    ...,
+    cond_type = "warning"
   )
   expect(is.null(msg), msg, info = info)
 
@@ -94,42 +115,35 @@ expect_warning <- function(object,
 
 # Helpers -----------------------------------------------------------------
 
-compare_messages <- function(messages,
-                             lab,
-                             regexp = NA, ...,
-                             all = FALSE,
-                             cond_type = "messages") {
-  bullets <- paste0("* ", messages, collapse = "\n")
-  # Expecting no messages
+compare_conditions <- function(conds, lab, regexp = NULL, class = NULL, ...,
+                               all = FALSE,
+                               cond_type = "condition") {
+
   if (identical(regexp, NA)) {
-    if (length(messages) > 0) {
+    if (length(conds) > 0) {
+      messages <- get_messages(conds)
+      bullets <- paste0("* ", messages, collapse = "\n")
       return(sprintf("%s generated %s:\n%s", lab, cond_type, bullets))
     } else {
       return()
     }
+  } else if (length(conds) == 0) {
+    return(sprintf("%s did not produce a %s.", lab, cond_type))
   }
 
-  # Otherwise we're definitely expecting messages
-  if (length(messages) == 0) {
-    return(sprintf("%s did not produce any %s.", lab, cond_type))
-  }
-
-  if (is.null(regexp)) {
-    return()
-  }
-
-  matched <- grepl(regexp, messages, ...)
-
-  # all/any ok
-  if ((all && all(matched)) || (!all && any(matched))) {
-    return()
-  }
-
-  sprintf(
-    "%s produced unexpected %s.\n%s\n%s",
-    lab,
-    cond_type,
-    paste0("Expected match: ", encodeString(regexp)),
-    paste0("Actual values:\n", bullets)
+  comp <- lapply(conds, compare_condition,
+    lab = lab,
+    regexp = regexp,
+    class = class,
+    ...,
+    cond_type = cond_type
   )
+
+  ok <- vapply(comp, is.null, logical(1))
+
+  if ((all && all(ok)) || (!all && any(ok))) {
+    return()
+  }
+
+  paste0(unlist(comp[!ok]), collapse = "\n\n")
 }

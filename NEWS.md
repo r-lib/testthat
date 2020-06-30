@@ -1,5 +1,13 @@
 # testthat (development version)
 
+* `expect_message()` and `expect_warning()` gain a `class` argument so that you
+  can assert that message or warnings have a specific class, rather than
+  checking for matching text (#1052).
+
+* `expect_message()`, `expect_warning()`, `expect_error()`, and 
+  `expect_condition()` all warn if you supply additional arguments that aren't
+  actually used.
+
 * `ProgressReport` (the default reporter) now keeps the stack traces of
   an errors that happen before the before test, making problems substantially
   easier to track down (#1004).

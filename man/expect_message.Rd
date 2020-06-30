@@ -8,6 +8,7 @@
 expect_message(
   object,
   regexp = NULL,
+  class = NULL,
   ...,
   all = FALSE,
   info = NULL,
@@ -17,6 +18,7 @@ expect_message(
 expect_warning(
   object,
   regexp = NULL,
+  class = NULL,
   ...,
   all = FALSE,
   info = NULL,
@@ -37,6 +39,10 @@ message/warning
 but doesn't test for a specific value.
 \item If \code{NA}, asserts that there shouldn't be any messages or warnings.
 }}
+
+\item{class}{Instead of supplying a regular expression, you can also supply
+a class name. This is useful for "classed" conditions. See
+discussion in \code{\link[=expect_error]{expect_error()}} for details.}
 
 \item{...}{
   Arguments passed on to \code{\link[=expect_match]{expect_match}}
@@ -59,8 +65,9 @@ alternatives in \link{quasi_label}.}
 The first argument, invisibly.
 }
 \description{
-Use \code{expect_message()} and \code{expect_warning()} to check if the messages or
-warnings match the given regular expression.
+\code{expect_message()} and \code{expect_warning()} check if \emph{any} messages or
+warning (respectively) matches the given pattern (regular expression) or
+class.
 }
 \examples{
 # Messages ------------------------------------------------------------------

@@ -76,23 +76,28 @@ capture_warning <- new_capture("warning")
 
 #' @export
 #' @rdname capture_condition
-capture_messages <- function(code) {
+capture_messages <- function(code, message_only = TRUE) {
   out <- Stack$new()
 
   withCallingHandlers(
     code,
-    message = function(condition) {
-      out$push(condition)
+    message = function(cnd) {
+      out$push(cnd)
+      cnd_muffle(cnd)
       maybe_restart("muffleMessage")
     }
   )
 
-  get_messages(out$as_list())
+  if (message_only) {
+    get_messages(out$as_list())
+  } else {
+    out$as_list()
+  }
 }
 
 #' @export
 #' @rdname capture_condition
-capture_warnings <- function(code) {
+capture_warnings <- function(code, message_only = TRUE) {
   out <- Stack$new()
 
   withCallingHandlers(
@@ -103,7 +108,12 @@ capture_warnings <- function(code) {
     }
   )
 
-  get_messages(out$as_list())
+  if (message_only) {
+    get_messages(out$as_list())
+  } else {
+    out$as_list()
+  }
+
 }
 
 get_messages <- function(x) {

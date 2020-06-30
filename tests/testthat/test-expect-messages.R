@@ -10,12 +10,18 @@ test_that("inputs evaluated in correct scope", {
 
 test_that("regexp = NULL checks for presence of message", {
   expect_success(expect_message(message("!")))
-  expect_failure(expect_message(null()), "did not produce any messages")
+  expect_failure(expect_message(null()), "did not produce a message")
 })
 
 test_that("regexp = NA checks for absence of message", {
   expect_success(expect_message(null(), NA))
   expect_failure(expect_message(message("!"), NA))
+})
+
+test_that("can check for specified class", {
+  f <- function() inform("hi", class = "message_foo")
+  expect_success(expect_message(f(), class = "message_foo"))
+  expect_failure(expect_message(f(), class = "message_bar"))
 })
 
 test_that("regexp = string matches _any_ message", {
@@ -28,7 +34,7 @@ test_that("regexp = string matches _any_ message", {
   expect_success(expect_message(f(), "a"))
   expect_success(expect_message(f(), "b"))
   expect_failure(expect_message(f(), "c"))
-  expect_failure(expect_message("", "c"), "did not produce any messages")
+  expect_failure(expect_message("", "c"), "did not produce a message")
 })
 
 test_that("... passed on to grepl", {
@@ -44,12 +50,18 @@ test_that("returns first argument", {
 
 test_that("regexp = NULL checks for presence of warning", {
   expect_success(expect_warning(warning("!")))
-  expect_failure(expect_warning(null()), "did not produce any warnings")
+  expect_failure(expect_warning(null()), "did not produce a warning")
 })
 
 test_that("regexp = NA checks for absence of warning", {
   expect_success(expect_warning(null(), NA))
   expect_failure(expect_warning(warning("!"), NA))
+})
+
+test_that("can check for specified class", {
+  f <- function() warn("hi", class = "message_foo")
+  expect_success(expect_warning(f(), class = "message_foo"))
+  expect_failure(expect_warning(f(), class = "message_bar"))
 })
 
 test_that("regexp = string matches _any_ warning", {
@@ -62,7 +74,7 @@ test_that("regexp = string matches _any_ warning", {
   expect_success(expect_warning(f(), "a"))
   expect_success(expect_warning(f(), "b"))
   expect_failure(expect_warning(f(), "c"))
-  expect_failure(expect_warning("", "c"), "did not produce any warnings")
+  expect_failure(expect_warning("", "c"), "did not produce a warning")
 })
 
 test_that("... passed on to grepl", {
@@ -76,7 +88,7 @@ test_that("returns first argument", {
 test_that("generates informative failures", {
   skip_if_not(l10n_info()$`UTF-8`)
 
-  expect_known_failure("test-expect-messages-warning.txt", {
+  expect_known_failure(test_path("test-expect-messages-warning.txt"), {
     foo <- function() {
       warning("xxx")
       warning("yyy")
