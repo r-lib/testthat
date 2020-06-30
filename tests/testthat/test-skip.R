@@ -1,15 +1,3 @@
-expect_skip <- function(code) {
-  tryCatch(
-    {
-      skipped <- TRUE
-      code
-      skipped <- FALSE
-    },
-    skip = function(e) NULL
-  )
-  expect(skipped, "skip not active")
-}
-
 test_that("Package checks", {
   expect_skip(skip_if_not_installed("testthat", "9999.9999.999"))
   expect_skip(skip_if_not(FALSE))

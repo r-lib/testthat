@@ -137,3 +137,9 @@ test_that("can signal warnings and messages without restart", {
   return("Skipping following test because it verbosely registers the warning")
   expect_null(signalCondition(warning_cnd("foo")))
 })
+
+test_that("missing package errors become skips", {
+  expect_skip(library(froofy))
+  expect_skip(require(froofy))
+  expect_skip(froofy::roofy())
+})

@@ -50,6 +50,18 @@ expect_failure <- function(expr, message = NULL, ...) {
   invisible(NULL)
 }
 
+expect_skip <- function(code) {
+  tryCatch(
+    {
+      skipped <- TRUE
+      code
+      skipped <- FALSE
+    },
+    skip = function(e) NULL
+  )
+  expect(skipped, "skip not active")
+}
+
 #' @export
 #' @rdname expect_success
 show_failure <- function(expr) {

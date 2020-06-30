@@ -157,6 +157,10 @@ test_code <- function(test, code, env = test_env(), skip_on_empty = TRUE) {
     register_expectation(e, debug_end)
     signalCondition(e)
   }
+  handle_missing_package <- function(err) {
+    handled <<- TRUE
+    skip(paste0(err$package, " not installed"))
+  }
 
   test_env <- new.env(parent = env)
   old <- options(rlang_trace_top_env = test_env)[[1]]
@@ -170,11 +174,12 @@ test_code <- function(test, code, env = test_env(), skip_on_empty = TRUE) {
           skip_empty()
         }
       },
-      expectation = handle_expectation,
-      skip =        handle_skip,
-      warning =     handle_warning,
-      message =     handle_message,
-      error =       handle_error
+      expectation =          handle_expectation,
+      skip =                 handle_skip,
+      warning =              handle_warning,
+      message =              handle_message,
+      packageNotFoundError = handle_missing_package,
+      error =                handle_error
     ),
     # some errors may need handling here, e.g., stack overflow
     error = handle_fatal,

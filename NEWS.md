@@ -1,5 +1,10 @@
 # testthat (development version)
 
+* Tests that rely on unavailable packages are automatically skipped in
+  R ??? and greater. This allows you to write test for suggested/enhanced
+  packages that are not installed without having to worry about manually
+  skipping the tests (#1026).
+
 * `ProgressReport` (the default reporter) now keeps the stack traces of
   an errors that happen before the before test, making problems substantially
   easier to track down (#1004).
