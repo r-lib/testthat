@@ -1,5 +1,9 @@
 # testthat (development version)
 
+* `expect_condition()` now evaluates all code in the block rather than
+  terminating after the first condition. If there are multiple conditions,
+  it captures the first (#998).
+
 * `ProgressReport` (the default reporter) now keeps the stack traces of
   an errors that happen before the before test, making problems substantially
   easier to track down (#1004).
