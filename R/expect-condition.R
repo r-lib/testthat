@@ -68,7 +68,10 @@ expect_error <- function(object,
   ellipsis::check_dots_used(action = warn)
 
   act <- quasi_capture(enquo(object), label, capture_error, entrace = TRUE)
-  msg <- compare_condition(act$cap, act$lab, regexp = regexp, class = class, ...)
+  msg <- compare_condition(
+    act$cap, act$lab, regexp = regexp, class = class, ...,
+    cond_type = "an error"
+  )
 
   # Access error fields with `[[` rather than `$` because the
   # `$.Throwable` from the rJava package throws with unknown fields
@@ -103,7 +106,7 @@ expect_condition <- function(object,
   act <- quasi_capture(enquo(object), label, capture_condition, entrace = TRUE)
   msg <- compare_condition(
     act$cap, act$lab, regexp = regexp, class = class, ...,
-    cond_type = "condition"
+    cond_type = "a condition"
   )
   expect(is.null(msg), msg, info = info, trace = act$cap[["trace"]])
 
@@ -113,13 +116,13 @@ expect_condition <- function(object,
 # Helpers -----------------------------------------------------------------
 
 compare_condition <- function(cond, lab, regexp = NULL, class = NULL, ...,
-                              cond_type = "error") {
+                              cond_type = "a condition") {
 
   # Expecting no condition
   if (identical(regexp, NA)) {
     if (!is.null(cond)) {
       return(sprintf(
-        "%s threw an %s.\nMessage: %s\nClass:   %s",
+        "%s threw %s.\nMessage: %s\nClass:   %s",
         lab,
         cond_type,
         cnd_message(cond),
@@ -132,7 +135,7 @@ compare_condition <- function(cond, lab, regexp = NULL, class = NULL, ...,
 
   # Otherwise we're definitely expecting a condition
   if (is.null(cond)) {
-    return(sprintf("%s did not throw an %s.", lab, cond_type))
+    return(sprintf("%s did not throw %s.", lab, cond_type))
   }
 
   message <- cnd_message(cond)
@@ -166,7 +169,7 @@ compare_condition <- function(cond, lab, regexp = NULL, class = NULL, ...,
   )
 
   sprintf(
-    "%s threw an %s with unexpected %s.\n%s",
+    "%s threw %s with unexpected %s.\n%s",
     lab,
     cond_type,
     paste(problems, collapse = " and "),

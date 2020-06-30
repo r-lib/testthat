@@ -80,7 +80,7 @@ expect_message <- function(object,
     class = class,
     all = all,
     ...,
-    cond_type = "message"
+    cond_type = "a message"
   )
   expect(is.null(msg), msg, info = info)
 
@@ -106,7 +106,7 @@ expect_warning <- function(object,
     class = class,
     all = all,
     ...,
-    cond_type = "warning"
+    cond_type = "a warning"
   )
   expect(is.null(msg), msg, info = info)
 
@@ -128,7 +128,7 @@ compare_conditions <- function(conds, lab, regexp = NULL, class = NULL, ...,
       return()
     }
   } else if (length(conds) == 0) {
-    return(sprintf("%s did not produce a %s.", lab, cond_type))
+    return(sprintf("%s did not produce %s.", lab, cond_type))
   }
 
   comp <- lapply(conds, compare_condition,

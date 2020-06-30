@@ -37,7 +37,7 @@ test_that("class = string matches class of error", {
   )
   expect_failure(
     expect_condition(blah(), class = "blech"),
-    "threw an condition with unexpected class"
+    "threw a condition with unexpected class"
   )
 })
 

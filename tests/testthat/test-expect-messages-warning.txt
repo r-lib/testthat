@@ -2,21 +2,21 @@
 `null()` did not produce a warning.
 
 -- 2. Failure:  (@test-expect-messages.R#98)  ----------------------------------
-`foo()` generated warning:
+`foo()` generated a warning:
 * xxx
 * yyy
 
 -- 3. Failure:  (@test-expect-messages.R#99)  ----------------------------------
-`foo()` threw an warning with unexpected message.
+`foo()` threw a warning with unexpected message.
 Expected match: "zzz"
 Actual message: "xxx"
 
-`foo()` threw an warning with unexpected message.
+`foo()` threw a warning with unexpected message.
 Expected match: "zzz"
 Actual message: "yyy"
 
 -- 4. Failure:  (@test-expect-messages.R#100)  ---------------------------------
-`foo()` threw an warning with unexpected message.
+`foo()` threw a warning with unexpected message.
 Expected match: "xxx"
 Actual message: "yyy"
 
