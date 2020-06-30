@@ -17,16 +17,20 @@ CheckReporter <- R6::R6Class("CheckReporter",
     n_fail = 0L,
     n_warn = 0L,
 
+    skips = NULL,
+
     stop_on_failure = TRUE,
 
     initialize = function(stop_on_failure = TRUE, ...) {
       self$stop_on_failure <- stop_on_failure
+      self$skips <- Stack$new()
       super$initialize(...)
     },
 
     add_result = function(context, test, result) {
       if (expectation_skip(result)) {
         self$n_skip <- self$n_skip + 1L
+        self$skips$push(result$message)
         return()
       }
       if (expectation_warning(result)) {
@@ -46,6 +50,12 @@ CheckReporter <- R6::R6Class("CheckReporter",
     },
 
     end_reporter = function() {
+      if (self$n_skip > 0) {
+        self$rule("Skipped tests ", line = 1)
+        self$cat_line(skip_bullets(self$skips$as_list()))
+        self$cat_line()
+      }
+
       self$rule("testthat results ", line = 2)
       self$cat_line(
         "[ ",

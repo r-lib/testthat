@@ -22,6 +22,8 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
     update_interval = NULL,
     frames = NULL,
 
+    skips = NULL,
+
     max_fail = NULL,
     n_ok = 0,
     n_skip = 0,
@@ -49,6 +51,8 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
       self$show_praise <- show_praise
       self$min_time <- min_time
       self$update_interval <- update_interval
+
+      self$skips <- Stack$new()
 
       # Capture at init so not affected by test settings
       self$frames <- cli::get_spinner()$frames
@@ -173,6 +177,7 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
         self$n_skip <- self$n_skip + 1
         self$ctxt_n_skip <- self$ctxt_n_skip + 1
         self$ctxt_issues$push(result)
+        self$skips$push(result$message)
       } else if (expectation_warning(result)) {
         self$n_warn <- self$n_warn + 1
         self$ctxt_n_warn <- self$ctxt_n_warn + 1
@@ -209,6 +214,10 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
       self$cat_line("Failed:   ", colour_if(self$n_fail, "fail"))
       self$cat_line("Warnings: ", colour_if(self$n_warn, "warn"))
       self$cat_line("Skipped:  ", colour_if(self$n_skip, "skip"))
+
+      if (self$n_skip > 0) {
+        self$cat_line(skip_bullets(self$skips$as_list()))
+      }
 
       if (!self$show_praise || runif(1) > 0.1) {
         return()
@@ -264,4 +273,10 @@ issue_summary <- function(x) {
 strpad <- function(x, width = cli::console_width()) {
   n <- pmax(0, width - nchar(x))
   paste0(x, strrep(" ", n))
+}
+
+skip_bullets <- function(skips) {
+  skips <- gsub("Reason: ", "", unlist(skips))
+  tbl <- table(skips)
+  paste0(cli::symbol$bullet, " ", names(tbl), " (", tbl, ")")
 }

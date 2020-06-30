@@ -1,5 +1,7 @@
 # testthat (development version)
 
+* `ProgressReporter` and `CheckReporter` list skipped tests by type (#1028).
+
 * `expect_error()` no longer encourages you to use `class`. This advice 
   one type of fragility at the expense of creating a different type (#1013).
 
