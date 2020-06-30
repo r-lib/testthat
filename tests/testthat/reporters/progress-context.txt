@@ -1,0 +1,11 @@
+✔ |  OK F W S | Context
+
+⠏ |   0       | context                                                         
+⠏ |   0       | my context                                                      
+✔ |   1       | my context
+
+══ Results ═════════════════════════════════════════════════════════════════════
+OK:       1
+Failed:   0
+Warnings: 0
+Skipped:  0

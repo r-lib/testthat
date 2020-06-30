@@ -1,13 +1,13 @@
 ✔ |  OK F W S | Context
 
-⠏ |   0       | backtraces
-⠋ |   0 1     | backtraces
-⠙ |   0 2     | backtraces
-⠹ |   0 3     | backtraces
-⠸ |   0 4     | backtraces
-⠼ |   0 5     | backtraces
-⠴ |   0 6     | backtraces
-⠦ |   0 7     | backtraces
+⠏ |   0       | backtraces                                                      
+⠋ |   0 1     | backtraces                                                      
+⠙ |   0 2     | backtraces                                                      
+⠹ |   0 3     | backtraces                                                      
+⠸ |   0 4     | backtraces                                                      
+⠼ |   0 5     | backtraces                                                      
+⠴ |   0 6     | backtraces                                                      
+⠦ |   0 7     | backtraces                                                      
 ✖ |   0 7     | backtraces
 ────────────────────────────────────────────────────────────────────────────────
 backtraces.R:6: error: errors thrown at block level are entraced

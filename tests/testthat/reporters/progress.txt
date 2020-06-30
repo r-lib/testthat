@@ -1,16 +1,16 @@
 ✔ |  OK F W S | Context
 
-⠏ |   0       | tests
-⠋ |   1       | tests
+⠏ |   0       | tests                                                           
+⠋ |   1       | tests                                                           
 ✔ |   1       | tests
 
-⠏ |   0       | Expectations
-⠋ |   1       | Expectations
-⠙ |   1 1     | Expectations
-⠹ |   1 2     | Expectations
-⠸ |   1 3     | Expectations
-⠼ |   1 4     | Expectations
-⠴ |   2 4     | Expectations
+⠏ |   0       | Expectations                                                    
+⠋ |   1       | Expectations                                                    
+⠙ |   1 1     | Expectations                                                    
+⠹ |   1 2     | Expectations                                                    
+⠸ |   1 3     | Expectations                                                    
+⠼ |   1 4     | Expectations                                                    
+⠴ |   2 4     | Expectations                                                    
 ✖ |   2 4     | Expectations
 ────────────────────────────────────────────────────────────────────────────────
 tests.R:12: failure: Failure:1
@@ -28,12 +28,10 @@ tests.R:24: failure: Failure:loop
 [1] 1 - 2 == -1
 ────────────────────────────────────────────────────────────────────────────────
 
-⠏ |   0       | Expectations2
-✔ |   0       | Expectations2
-
-⠏ |   0       | Errors
-⠋ |   0 1     | Errors
-⠙ |   0 2     | Errors
+⠏ |   0       | Expectations2                                                   
+⠏ |   0       | Errors                                                          
+⠋ |   0 1     | Errors                                                          
+⠙ |   0 2     | Errors                                                          
 ✖ |   0 2     | Errors
 ────────────────────────────────────────────────────────────────────────────────
 tests.R:33: error: Error:1
@@ -47,8 +45,8 @@ Backtrace:
  3. h()
 ────────────────────────────────────────────────────────────────────────────────
 
-⠏ |   0       | Recursion
-⠋ |   0 1     | Recursion
+⠏ |   0       | Recursion                                                       
+⠋ |   0 1     | Recursion                                                       
 ✖ |   0 1     | Recursion
 ────────────────────────────────────────────────────────────────────────────────
 tests.R:56: error: Recursion:1
@@ -77,10 +75,10 @@ Backtrace:
  26. f(x - 1)
 ────────────────────────────────────────────────────────────────────────────────
 
-⠏ |   0       | Skips
-⠋ |   0     1 | Skips
-⠙ |   0     2 | Skips
-⠹ |   0     3 | Skips
+⠏ |   0       | Skips                                                           
+⠋ |   0     1 | Skips                                                           
+⠙ |   0     2 | Skips                                                           
+⠹ |   0     3 | Skips                                                           
 ✔ |   0     3 | Skips
 ────────────────────────────────────────────────────────────────────────────────
 tests.R:62: skip: Skip:1
@@ -93,10 +91,10 @@ tests.R:72: skip: Skip:3
 Reason: empty test
 ────────────────────────────────────────────────────────────────────────────────
 
-⠏ |   0       | Warnings
-⠋ |   0   1   | Warnings
-⠙ |   0   2   | Warnings
-⠹ |   0   3   | Warnings
+⠏ |   0       | Warnings                                                        
+⠋ |   0   1   | Warnings                                                        
+⠙ |   0   2   | Warnings                                                        
+⠹ |   0   3   | Warnings                                                        
 ✔ |   0   3   | Warnings
 ────────────────────────────────────────────────────────────────────────────────
 tests.R:78: warning: Warning:1
@@ -109,22 +107,20 @@ tests.R:85: warning: Warning:2
 ghi
 ────────────────────────────────────────────────────────────────────────────────
 
-⠏ |   0       | Output
-⠋ |   1       | Output
-⠙ |   2       | Output
+⠏ |   0       | Output                                                          
+⠋ |   1       | Output                                                          
+⠙ |   2       | Output                                                          
 ✔ |   2       | Output
 
-⠏ |   0       | Throwable errors
-⠋ |   0 1     | Throwable errors
+⠏ |   0       | Throwable errors                                                
+⠋ |   0 1     | Throwable errors                                                
 ✖ |   0 1     | Throwable errors
 ────────────────────────────────────────────────────────────────────────────────
 tests.R:111: error: Error:4
 Throwable
 ────────────────────────────────────────────────────────────────────────────────
 
-⠏ |   0       | End
-✔ |   0       | End
-
+⠏ |   0       | End                                                             
 ══ Results ═════════════════════════════════════════════════════════════════════
 OK:       5
 Failed:   8

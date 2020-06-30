@@ -27,6 +27,7 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
     n_skip = 0,
     n_warn = 0,
     n_fail = 0,
+    width = 0,
 
     ctxt_start_time = NULL,
     ctxt_issues = NULL,
@@ -48,7 +49,10 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
       self$show_praise <- show_praise
       self$min_time <- min_time
       self$update_interval <- update_interval
+
+      # Capture at init so not affected by test settings
       self$frames <- cli::get_spinner()$frames
+      self$width <- cli::console_width()
     },
 
     is_full = function() {
@@ -62,18 +66,11 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
 
     start_file = function(file) {
       self$file_name <- file
-
-      # Need to set here in case file doesn't contain any tests
       self$ctxt_issues <- Stack$new()
       self$ctxt_start_time <- proc.time()
-    },
 
-    start_test = function(context, test) {
-      if (is.null(context)) {
-        # Have to go via get_reporter() in order to trigger multi-reporter
-        name <- context_name(self$file_name)
-        get_reporter()$.start_context(name)
-      }
+      name <- context_name(self$file_name)
+      get_reporter()$.start_context(name)
     },
 
     start_context = function(context) {
@@ -108,7 +105,6 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
           status <- crayon::green(cli::symbol$tick)
         }
       } else {
-
         # Do not print if not enough time has passed since we last printed.
         if (!self$should_update()) {
           return()
@@ -124,22 +120,30 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
         }
       }
 
-      self$cat_tight(
-        "\r",
+      message <- paste0(
         status, " | ", sprintf("%3d", self$ctxt_n_ok), " ",
         col_format(self$ctxt_n_fail, "fail"), " ",
         col_format(self$ctxt_n_warn, "warn"), " ",
         col_format(self$ctxt_n_skip, "skip"), " | ",
         self$ctxt_name
       )
+      if (!complete) {
+        message <- strpad(message, self$width)
+      }
+      self$cat_tight("\r", message)
     },
 
     end_context = function(context) {
       time <- proc.time() - self$ctxt_start_time
-
       self$last_update <- NULL
-      self$show_status(complete = TRUE)
 
+      # context with no expectation = automatic file context in file
+      # that also has manual contexts
+      if (self$ctxt_n == 0) {
+        return()
+      }
+
+      self$show_status(complete = TRUE)
       if (time[[3]] > self$min_time) {
         self$cat_line(sprintf(" [%.1f s]", time[[3]]), col = "cyan")
       } else {
@@ -255,4 +259,9 @@ issue_summary <- function(x) {
     crayon::bold(header), "\n",
     format(x)
   )
+}
+
+strpad <- function(x, width = cli::console_width()) {
+  n <- pmax(0, width - nchar(x))
+  paste0(x, strrep(" ", n))
 }
