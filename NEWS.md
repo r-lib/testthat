@@ -1,5 +1,9 @@
 # testthat (development version)
 
+* `ProgressReport` (the default reporter) now keeps the stack traces of
+  an errors that happen before the before test, making problems substantially
+  easier to track down (#1004).
+
 * testhat 3.0.0 brings with it a 3rd edition that makes a number of breaking
   changes in order to clean up the interface and help you use our latest
   recommendations. To opt-in to the 3rd edition for your package, set
