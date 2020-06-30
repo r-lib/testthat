@@ -48,7 +48,7 @@ test_that("Errors are inspected with `conditionMessage()`", {
 
 test_that("also get backtraces for warnings", {
   foo <- function() bar()
-  bar <- function() warn("foobar")
+  bar <- function() warning("foobar", call. = FALSE)
 
   foo()
   expect_true(TRUE)
