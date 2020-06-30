@@ -56,8 +56,8 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
       # Capture at init so not affected by test settings
       self$frames <- cli::get_spinner()$frames
       self$width <- cli::console_width()
-      self$unicode <- getOption("cli.unicode")
-      self$colour <- getOption("crayon.enabled")
+      self$unicode <- cli::is_utf8_output()
+      self$colour <- crayon::has_color()
     },
 
     is_full = function() {
