@@ -73,8 +73,10 @@ test_that("returns first argument", {
   expect_equal(expect_warning(1, NA), 1)
 })
 
-test_that("generates informative failures", {
-  skip_if_not(l10n_info()$`UTF-8`)
+test_that("failures include backtraces", {
+  skip_on_cran()
+  # Disable srcrefs because they differ across systems
+  withr::local_options(list(rlang_trace_format_srcrefs = FALSE))
 
   expect_known_failure("test-expect-messages-warning.txt", {
     foo <- function() {

@@ -81,8 +81,12 @@ capture_messages <- function(code) {
 
   withCallingHandlers(
     code,
-    message = function(condition) {
-      out$push(condition)
+    message = function(cnd) {
+      if (can_entrace(cnd)) {
+        cnd <- cnd_entrace(cnd)
+      }
+      out$push(cnd)
+
       maybe_restart("muffleMessage")
     }
   )
@@ -97,8 +101,11 @@ capture_warnings <- function(code) {
 
   withCallingHandlers(
     code,
-    warning = function(condition) {
-      out$push(condition)
+    warning = function(cnd) {
+      if (can_entrace(cnd)) {
+        cnd <- cnd_entrace(cnd)
+      }
+      out$push(cnd)
       maybe_restart("muffleWarning")
     }
   )
