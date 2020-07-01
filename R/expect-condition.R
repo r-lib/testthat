@@ -96,18 +96,27 @@ expect_condition <- function(object,
 
 capture_first_condition <- function(expr) {
   first <- NULL
+  n <- 0L
 
   tryCatch(
     withCallingHandlers(expr, condition = function(cnd) {
-      if (is.null(first)) {
+      n <<- n + 1L
+      if (n == 1L) {
         if (can_entrace(cnd)) {
           cnd <- cnd_entrace(cnd)
         }
         first <<- cnd
+        if (inherits(cnd, "message") || inherits(cnd, "warning")) {
+          cnd_muffle(cnd)
+        }
       }
-      cnd_muffle(cnd)
     }),
-    error = function(cnd) {}
+    error = function(cnd) {
+      # Rethrow errors after the first
+      if (n > 1) {
+        stop(cnd)
+      }
+    }
   )
 
   first

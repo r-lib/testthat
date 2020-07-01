@@ -167,13 +167,22 @@ test_that("but not after error", {
   expect_equal(exists("new_variable"), FALSE)
 })
 
-test_that("captures first condition", {
-  expect_condition({
-    message("Hi")
-    message("Bye")
-  }, "Hi")
+test_that("captured condition is muffled", {
+  expect_message(expect_condition(message("Hi")), NA)
+  expect_warning(expect_condition(warning("Hi")), NA)
+  expect_error(expect_condition(stop("Hi")), NA)
 })
 
-test_that("expect_condition() muffles messages", {
-  expect_message(expect_condition(message("Hi")), NA)
+test_that("only first condition is captured, others bubble up", {
+  f1 <- function() {
+    message("Hi")
+    message("Bye")
+  }
+  expect_message(expect_condition(f1(), "Hi"), "Bye")
+
+  f2 <- function() {
+    message("Hi")
+    stop("Bye")
+  }
+  expect_error(expect_condition(f2(), "Hi"), "Bye")
 })
