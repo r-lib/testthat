@@ -20,14 +20,19 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
     start_time = NULL,
     last_update = NULL,
     update_interval = NULL,
-    frames = NULL,
+
+    skips = NULL,
 
     max_fail = NULL,
     n_ok = 0,
     n_skip = 0,
     n_warn = 0,
     n_fail = 0,
+
+    frames = NULL,
     width = 0,
+    unicode = TRUE,
+    colour = TRUE,
 
     ctxt_start_time = NULL,
     ctxt_issues = NULL,
@@ -50,9 +55,13 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
       self$min_time <- min_time
       self$update_interval <- update_interval
 
+      self$skips <- Stack$new()
+
       # Capture at init so not affected by test settings
       self$frames <- cli::get_spinner()$frames
       self$width <- cli::console_width()
+      self$unicode <- cli::is_utf8_output()
+      self$colour <- crayon::has_color()
     },
 
     is_full = function() {
@@ -173,6 +182,7 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
         self$n_skip <- self$n_skip + 1
         self$ctxt_n_skip <- self$ctxt_n_skip + 1
         self$ctxt_issues$push(result)
+        self$skips$push(result$message)
       } else if (expectation_warning(result)) {
         self$n_warn <- self$n_warn + 1
         self$ctxt_n_warn <- self$ctxt_n_warn + 1
@@ -182,17 +192,21 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
         self$ctxt_n_ok <- self$ctxt_n_ok + 1
       }
 
+      if (self$is_full()) {
+        local_reproducible_output(
+          width = self$width,
+          crayon = self$crayon,
+          unicode = self$unicode
+        )
+        self$end_context()
+        stop_reporter("max_fails exceded")
+      }
+
       self$show_status()
     },
 
     end_reporter = function() {
       self$cat_line()
-
-      if (self$is_full()) {
-        self$rule("Terminating early", line = 2)
-        self$cat_line("Too many failures")
-        return()
-      }
 
       colour_if <- function(n, type) {
         colourise(n, if (n == 0) "success" else type)
@@ -209,6 +223,14 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
       self$cat_line("Failed:   ", colour_if(self$n_fail, "fail"))
       self$cat_line("Warnings: ", colour_if(self$n_warn, "warn"))
       self$cat_line("Skipped:  ", colour_if(self$n_skip, "skip"))
+
+      if (self$is_full()) {
+        self$rule("Terminated early", line = 2)
+      }
+
+      if (self$n_skip > 0) {
+        self$cat_line(skip_bullets(self$skips$as_list()))
+      }
 
       if (!self$show_praise || runif(1) > 0.1) {
         return()
@@ -264,4 +286,10 @@ issue_summary <- function(x) {
 strpad <- function(x, width = cli::console_width()) {
   n <- pmax(0, width - nchar(x))
   paste0(x, strrep(" ", n))
+}
+
+skip_bullets <- function(skips) {
+  skips <- gsub("Reason: ", "", unlist(skips))
+  tbl <- table(skips)
+  paste0(cli::symbol$bullet, " ", names(tbl), " (", tbl, ")")
 }

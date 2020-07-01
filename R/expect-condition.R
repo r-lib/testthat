@@ -19,11 +19,7 @@
 #' You can learn more about custom conditions at
 #' <https://adv-r.hadley.nz/conditions.html#custom-conditions>, but in
 #' short, errors are S3 classes and you can generate a custom class and check
-#' for it using `class` instead of `regexp`. Because this is a more reliable
-#' check, you `expect_error()` will warn if the error has a custom class but
-#' you are testing the message. Eliminate the warning by using `class` instead
-#' of `regexp`. Alternatively, if you think the warning is a false positive,
-#' use `class = "error"` to suppress it for any input.
+#' for it using `class` instead of `regexp`.
 #'
 #' If you are using `expect_error()` to check that an error message is
 #' formatted in such a way that it makes sense to a human, we now recommend
@@ -75,18 +71,6 @@ expect_error <- function(object,
   # Access error fields with `[[` rather than `$` because the
   # `$.Throwable` from the rJava package throws with unknown fields
   expect(is.null(msg), msg, info = info, trace = act$cap[["trace"]])
-
-  if (!is.null(act$cap)) {
-    if (is_informative_error(act$cap) && is.null(class) && !is.null(regexp)) {
-      klass <- paste0(encodeString(class(act$cap), quote = '"'), collapse = ", ")
-      warn(paste0(
-        act$lab, " generated an S3 error and you are testing the error message.\n",
-        "* The error has class = c(", klass, ")\n",
-        "* Testing with `class` is more robust than testing with `regexp`.\n",
-        "* Do you want `expect_error(..., class = \"", class(act$cap)[[1]], "\")`?"
-      ))
-    }
-  }
 
   invisible(act$val %||% act$cap)
 }

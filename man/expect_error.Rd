@@ -81,11 +81,7 @@ A more robust way is to test for the class of the error, if it has one.
 You can learn more about custom conditions at
 \url{https://adv-r.hadley.nz/conditions.html#custom-conditions}, but in
 short, errors are S3 classes and you can generate a custom class and check
-for it using \code{class} instead of \code{regexp}. Because this is a more reliable
-check, you \code{expect_error()} will warn if the error has a custom class but
-you are testing the message. Eliminate the warning by using \code{class} instead
-of \code{regexp}. Alternatively, if you think the warning is a false positive,
-use \code{class = "error"} to suppress it for any input.
+for it using \code{class} instead of \code{regexp}.
 
 If you are using \code{expect_error()} to check that an error message is
 formatted in such a way that it makes sense to a human, we now recommend
