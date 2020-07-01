@@ -50,6 +50,10 @@ Backtrace:
 -- 8. Error: Error:4 (@tests.R#111)  -------------------------------------------
 Throwable
 
+── Skipped tests  ──────────────────────────────────────────────────────────────
+● empty test (1)
+● skip (2)
+
 ══ testthat results  ═══════════════════════════════════════════════════════════
 [ OK: 5 | SKIPPED: 3 | WARNINGS: 3 | FAILED: 8 ]
 1. Failure: Failure:1 (@tests.R#12) 
