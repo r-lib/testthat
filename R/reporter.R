@@ -90,16 +90,24 @@ Reporter <- R6::R6Class("Reporter",
 #'
 #' The defaults are:
 #' * [ProgressReporter] for interactive; override with `testthat.default_reporter`
+#' * [CompactProgressReporter] for single-file interactive; override with
+#'   `testthat.default_compact_reporter`
 #' * [CheckReporter] for R CMD check; override with `testthat.default_check_reporter`
 #'
 #' @export
 #' @keywords internal
 default_reporter <- function() {
-  getOption("testthat.default_reporter", "progress")
+  getOption("testthat.default_reporter", "Progress")
+}
+
+#' @export
+#' @rdname default_reporter
+default_compact_reporter <- function() {
+  getOption("testthat.default_compact_reporter", "CompactProgress")
 }
 
 #' @export
 #' @rdname default_reporter
 check_reporter <- function() {
-  getOption("testthat.default_check_reporter", "check")
+  getOption("testthat.default_check_reporter", "Check")
 }

@@ -1,7 +1,9 @@
 # testthat (development version)
 
 * New `CompactProgressReporter` tweaks the output of `ProgressReporter` for
-  use with a single file, as in `devtools::test_file()`.
+  use with a single file, as in `devtools::test_file()`. You can pick a 
+  different default by setting `testthat.default_compact_reporter` to
+  the name of a reporter.
 
 * `ProgressReporter` now checks if you've exceeded the maximum number of
   failures (from option `testthat.progress.max_fails`) after each expectation,
