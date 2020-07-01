@@ -178,6 +178,7 @@
 <a href="#testthat-development-version" class="anchor"></a>testthat (development version)<small> Unreleased </small>
 </h1>
 <ul>
+<li><p><code>ProgressReporter</code> now checks if you’ve exceeded the maximum number of failures (from option <code>testthat.progress.max_fails</code>) after each expectation, rather than at the end of each file. This is important for tests that perform many expectations with a for loop or similar (<a href='https://github.com/r-lib/testthat/issues/967'>#967</a>).</p></li>
 <li><p><code>ProgressReporter</code> and <code>CheckReporter</code> list skipped tests by type (<a href='https://github.com/r-lib/testthat/issues/1028'>#1028</a>).</p></li>
 <li><p><code><a href="https://testthat.r-lib.org/reference/expect_error.html">expect_error()</a></code> no longer encourages you to use <code>class</code>. This advice one type of fragility at the expense of creating a different type (<a href='https://github.com/r-lib/testthat/issues/1013'>#1013</a>).</p></li>
 <li><p><code>ProgressReport</code> (the default reporter) now keeps the stack traces of an errors that happen before the before test, making problems substantially easier to track down (<a href='https://github.com/r-lib/testthat/issues/1004'>#1004</a>).</p></li>
