@@ -40,7 +40,7 @@ StopReporter <- R6::R6Class("StopReporter",
         !!!messages
       )
 
-      abort_reporter(message)
+      stop_reporter(message)
     },
 
     add_result = function(context, test, result) {

@@ -66,7 +66,7 @@ with_reporter <- function(reporter, code, start_end_reporter = TRUE) {
   invisible(reporter)
 }
 
-abort_reporter <- function(message) {
+stop_reporter <- function(message) {
   if (is.null(findRestart("testthat_abort_reporter"))) {
     abort(message)
   } else {

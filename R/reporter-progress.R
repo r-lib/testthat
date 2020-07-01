@@ -194,7 +194,7 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
           unicode = self$unicode
         )
         self$end_context()
-        abort_reporter("max_fails exceded")
+        stop_reporter("max_fails exceded")
       }
 
       self$show_status()
