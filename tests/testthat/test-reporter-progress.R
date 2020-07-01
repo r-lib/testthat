@@ -34,3 +34,17 @@ test_that("fails after max_fail tests", {
     test_path("reporters/progress-fail-many.txt")
   )
 })
+
+# compact display ---------------------------------------------------------
+
+test_that("fails after max_fail tests", {
+  local_reproducible_output(unicode = TRUE)
+
+  expect_known_output(
+    test_file(
+      test_path("reporters/tests.R"),
+      CompactProgressReporter$new()
+    ),
+    test_path("reporters/compact.txt")
+  )
+})
