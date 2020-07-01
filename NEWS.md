@@ -1,5 +1,10 @@
 # testthat (development version)
 
+* `ProgressReporter` now checks if you've exceeded the maximum number of
+  failures (from option `testthat.progress.max_fails`) after each expectation,
+  rather than at the end of each file. This is important for tests that 
+  perform many expectations with a for loop or similar (#967).
+
 * `ProgressReporter` and `CheckReporter` list skipped tests by type (#1028).
 
 * `expect_error()` no longer encourages you to use `class`. This advice 

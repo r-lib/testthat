@@ -22,3 +22,15 @@ test_that("gracefully handles multiple contexts", {
     test_path("reporters/progress-context.txt")
   )
 })
+
+test_that("fails after max_fail tests", {
+  local_reproducible_output(unicode = TRUE)
+
+  expect_known_output(
+    test_file(
+      test_path("reporters/fail-many.R"),
+      ProgressReporter$new(show_praise = FALSE)
+    ),
+    test_path("reporters/progress-fail-many.txt")
+  )
+})
