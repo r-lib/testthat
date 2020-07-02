@@ -125,8 +125,8 @@ expect_error(f(), "my error!", ignore.case = TRUE)
 
 # Note that `expect_error()` returns the error object so you can test
 # its components if needed
-err <- expect_error(custom_err("a"), class = "testthat_special")
-expect_equal(err$var, "a")
+err <- expect_error(rlang::abort("a", n = 10))
+expect_equal(err$n, 10)
 
 # Warnings ------------------------------------------------------------------
 f <- function(x) {
