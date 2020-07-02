@@ -1,15 +1,16 @@
 # testthat (development version)
 
 * `expect_error()`, `expect_warning()`, `expect_message()`, and 
+  `expect_condition()` now all use the same underlying logic: they
+  capture the first condition that matches `class`/`regexp` and
+  allow anything else to bubble up (#998/#1052).
+
+* `expect_error()`, `expect_warning()`, `expect_message()`, and 
   `expect_condition()` now warn if there are unexpected arguments
   that are never used.
 
 * Unexpected warnings now include a backtrace, making it easier to figure
   out where they came from.
-  
-* `expect_condition()` now evaluates all code in the block rather than
-  terminating after the first condition. If there are multiple conditions,
-  it captures the first (#998).
   
 * `ProgressReporter` now checks if you've exceeded the maximum number of
   failures (from option `testthat.progress.max_fails`) after each expectation,
