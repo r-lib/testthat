@@ -74,6 +74,7 @@ test_that("returns first argument", {
 
 test_that("generates informative failures", {
   skip_if_not(l10n_info()$`UTF-8`)
+  withr::local_options(list(rlang_trace_format_srcrefs = FALSE))
 
   expect_known_failure("test-expect-messages-warning.txt", {
     foo <- function() {

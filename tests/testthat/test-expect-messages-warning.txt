@@ -1,14 +1,14 @@
--- 1. Failure:  (@test-expect-messages.R#84)  ----------------------------------
+-- 1. Failure:  (@test-expect-messages.R#85)  ----------------------------------
 `object` did not throw the expected warning.
 
--- 2. Failure:  (@test-expect-messages.R#85)  ----------------------------------
+-- 2. Failure:  (@test-expect-messages.R#86)  ----------------------------------
 `object` threw an unexpected warning.
 Message: xxx
 Class:   simpleWarning/warning/condition
 Backtrace:
- 1. testthat::expect_warning(foo(), NA) tests/testthat/test-expect-messages.R:85:4
+ 1. testthat::expect_warning(foo(), NA)
  7. testthat:::foo()
 
--- 3. Failure:  (@test-expect-messages.R#86)  ----------------------------------
+-- 3. Failure:  (@test-expect-messages.R#87)  ----------------------------------
 `object` did not throw the expected warning.
 
