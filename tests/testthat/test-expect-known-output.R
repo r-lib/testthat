@@ -60,7 +60,9 @@ test_that("Warning for non-UTF-8 reference files", {
   on.exit(unlink(tmp), add = TRUE)
   writeBin(x, tmp)
 
-  expect_failure(
-    expect_known_output("foobar", tmp, update = FALSE)
+  suppressWarnings(
+    expect_failure(
+      expect_known_output("foobar", tmp, update = FALSE)
+    )
   )
 })
