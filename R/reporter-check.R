@@ -19,15 +19,20 @@ CheckReporter <- R6::R6Class("CheckReporter",
     skips = NULL,
 
     stop_on_failure = TRUE,
+    ci = FALSE,
 
-    initialize = function(stop_on_failure = TRUE, ...) {
+    initialize = function(stop_on_failure = TRUE, ci = on_ci(), ...) {
       self$stop_on_failure <- stop_on_failure
+      self$ci <- ci
+
       self$skips <- Stack$new()
       super$initialize(...)
     },
 
     start_test = function(context, test) {
-      self$cat_line("Starting test: ", test)
+      if (self$ci) {
+        self$cat_line("Starting test: ", test)
+      }
     },
 
     add_result = function(context, test, result) {

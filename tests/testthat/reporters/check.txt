@@ -1,28 +1,20 @@
-Starting test: Success
-Starting test: Success
-Starting test: Failure:1
 -- Failure: Failure:1 (@tests.R#12) --------------------------------------------
 Failure has been forced
 
-Starting test: Failure:2a
 -- Failure: Failure:2a (@tests.R#16) -------------------------------------------
 Failure has been forced
 
-Starting test: Failure:2b
 -- Failure: Failure:2b (@tests.R#19) -------------------------------------------
 FALSE isn't true.
 
-Starting test: Failure:loop
 -- Failure: Failure:loop (@tests.R#24) -----------------------------------------
 `i` not equal to 2.
 1/1 mismatches
 [1] 1 - 2 == -1
 
-Starting test: Error:1
 -- Error: Error:1 (@tests.R#33) ------------------------------------------------
 stop
 
-Starting test: Error:3
 -- Error: Error:3 (@tests.R#47) ------------------------------------------------
 !
 Backtrace:
@@ -31,7 +23,6 @@ Backtrace:
  2.   \-g()
  3.     \-h()
 
-Starting test: Recursion:1
 -- Error: Recursion:1 (@tests.R#56) --------------------------------------------
 This is deep
 Backtrace:
@@ -63,22 +54,15 @@ Backtrace:
  25.                                                 \-f(x - 1)
  26.                                                   \-f(x - 1)
 
-Starting test: Skip:1
 -- Skip: Skip:1 (@tests.R#62) --------------------------------------------------
 Reason: skip
 
-Starting test: Skip:2
 -- Skip: Skip:2 (@tests.R#69) --------------------------------------------------
 Reason: skip
 
-Starting test: Skip:3
 -- Skip: Skip:3 (@tests.R#72) --------------------------------------------------
 Reason: empty test
 
-Starting test: Warning:1
-Starting test: Warning:2
-Starting test: Output:1
-Starting test: Error:4
 -- Error: Error:4 (@tests.R#111) -----------------------------------------------
 Throwable
 

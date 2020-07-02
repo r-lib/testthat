@@ -73,7 +73,7 @@ expect_known_failure <- function(path, expr) {
   )
 
   expect_known_output(
-    with_reporter(test_that("", expr), reporter = FailureReporter$new()),
+    with_reporter(test_that("", expr), reporter = FailureReporter$new(ci = FALSE)),
     path
   )
 }
