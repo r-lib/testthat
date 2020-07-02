@@ -37,14 +37,12 @@ Backtrace:
  6. foo()
  7. bar()
 
-backtraces.R:35: failure: failed expect_error() prints a backtrace
-`f()` threw an error with unexpected message.
-Expected match: "foo"
-Actual message: "bar"
+backtraces.R:35: error: failed expect_error() prints a backtrace
+bar
 Backtrace:
  1. testthat::expect_error(f(), "foo")
- 6. f()
- 7. signaller()
+ 7. f()
+ 8. signaller()
 
 backtraces.R:43: error: Errors are inspected with `conditionMessage()`
 dispatched

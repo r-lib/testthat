@@ -1,6 +1,6 @@
 test_that("regexp = NULL checks for presence of error", {
   expect_success(expect_error(stop()))
-  expect_failure(expect_error(null()), "did not throw an error")
+  expect_failure(expect_error(null()), "did not throw the expected error")
 })
 
 test_that("regexp = NA checks for absence of error", {
@@ -10,24 +10,17 @@ test_that("regexp = NA checks for absence of error", {
 
 test_that("regexp = string matches for error message", {
   expect_success(expect_error(stop("Yes"), "Yes"))
-  expect_failure(expect_error(stop("Yes"), "No"))
-  expect_failure(expect_error("OK", "No"), "did not throw an error")
+  expect_error(expect_error(stop("Yes"), "No"))
+  expect_failure(expect_error("OK", "No"), "did not throw the expected error")
 })
 
 test_that("class = string matches class of error", {
   blah <- function() {
-    cond <- structure(
-      list(message = "hi"),
-      class = c("blah", "error", "condition")
-    )
-    stop(cond)
+    abort("hi", class = c("blah", "error", "condition"))
   }
 
   expect_success(expect_error(blah(), class = "blah"))
-  expect_failure(
-    expect_error(blah(), class = "blech"),
-    "threw an error with unexpected class"
-  )
+  expect_error(expect_error(blah(), class = "blech"), class = "blah")
 })
 
 test_that("... passed on to grepl", {
@@ -50,10 +43,8 @@ test_that("generates informative failures", {
 
     expect_error(null())
     expect_error(fail("!"), NA)
-
-    expect_error(fail("xxx"), regexp = "zzz")
-    expect_error(fail("xxx"), class = "zzz")
-    expect_error(fail("xxx"), regexp = "zzz", class = "zzz")
+    # error bubbles up, terminating test
+    expect_error(fail("xxx"), "zzz")
   })
 })
 
@@ -88,9 +79,7 @@ local({
   test_that("message method is called with unexpected message", {
     expect_error(
       expect_error(stop(foobar), "unexpected", class = "foobar"),
-      "Actual message: \"dispatched!\"",
-      fixed = TRUE,
-      class = "expectation_failure"
+      "dispatched",
     )
   })
 
