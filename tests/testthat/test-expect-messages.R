@@ -10,7 +10,7 @@ test_that("inputs evaluated in correct scope", {
 
 test_that("regexp = NULL checks for presence of message", {
   expect_success(expect_message(message("!")))
-  expect_failure(expect_message(null()), "did not produce any messages")
+  expect_failure(expect_message(null()), "expected message")
 })
 
 test_that("regexp = NA checks for absence of message", {
@@ -28,7 +28,7 @@ test_that("regexp = string matches _any_ message", {
   expect_success(expect_message(f(), "a"))
   expect_success(expect_message(f(), "b"))
   expect_failure(expect_message(f(), "c"))
-  expect_failure(expect_message("", "c"), "did not produce any messages")
+  expect_failure(expect_message("", "c"), "expected message")
 })
 
 test_that("... passed on to grepl", {
@@ -44,7 +44,7 @@ test_that("returns first argument", {
 
 test_that("regexp = NULL checks for presence of warning", {
   expect_success(expect_warning(warning("!")))
-  expect_failure(expect_warning(null()), "did not produce any warnings")
+  expect_failure(expect_warning(null()), "expected warning")
 })
 
 test_that("regexp = NA checks for absence of warning", {
@@ -52,17 +52,16 @@ test_that("regexp = NA checks for absence of warning", {
   expect_failure(expect_warning(warning("!"), NA))
 })
 
-test_that("regexp = string matches _any_ warning", {
+test_that("regexp = string matches a warning", {
   f <- function() {
     warning("a")
     warning("b")
   }
 
-  expect_success(expect_warning(f()))
-  expect_success(expect_warning(f(), "a"))
-  expect_success(expect_warning(f(), "b"))
-  expect_failure(expect_warning(f(), "c"))
-  expect_failure(expect_warning("", "c"), "did not produce any warnings")
+  expect_warning(expect_warning(f()))
+  expect_warning(expect_failure(expect_warning(f(), NA)))
+  expect_success(expect_warning(expect_warning(f(), "a"), "b"))
+  expect_success(expect_warning(expect_warning(f(), "b"), "a"))
 })
 
 test_that("... passed on to grepl", {

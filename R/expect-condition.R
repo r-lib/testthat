@@ -1,7 +1,8 @@
-#' Expectation: does code throw error or other condition?
+#' Expectation: does code throw an error, warning, message, or other condition?
 #'
 #' @description
-#' `expect_error()` and `expect_condition()` check that code throws an error
+#' `expect_error()`, `expect_warning()`, `expect_message()`, and
+#' `expect_condition()` check that code throws an error, warning, message,
 #' or condition with a message that matches `regexp`, or a class that inherits
 #' from `class`. See below for more details.
 #'
@@ -38,9 +39,13 @@
 #' @inheritDotParams expect_match -object -regexp -info -label -all
 #' @param class Instead of supplying a regular expression, you can also supply
 #'   a class name. This is useful for "classed" conditions.
+#' @param all *DEPRECATED* If you need to test multiple warnings/messages
+#'   you know need to use multiple calls to `expect_message()`/
+#'   `expect_warning()`
 #' @return If `regexp = NA`, the value of the first argument; otherwise
 #'   the captured condition.
 #' @examples
+#' # Errors ------------------------------------------------------------------
 #' f <- function() stop("My error!")
 #' expect_error(f())
 #' expect_error(f(), "My error!")
@@ -48,17 +53,39 @@
 #' # You can use the arguments of grepl to control the matching
 #' expect_error(f(), "my error!", ignore.case = TRUE)
 #'
-#' # If you are working with classed conditions, it's better to test for
-#' # the class name, rather than the error message (which may change over time)
-#' custom_err <- function(var) {
-#'   rlang::abort("A special error", var = var, .subclass = "testthat_special")
-#' }
-#' expect_error(custom_err("a"), class = "testthat_special")
-#'
 #' # Note that `expect_error()` returns the error object so you can test
 #' # its components if needed
 #' err <- expect_error(custom_err("a"), class = "testthat_special")
 #' expect_equal(err$var, "a")
+#'
+#' # Warnings ------------------------------------------------------------------
+#' f <- function(x) {
+#'   if (x < 0) {
+#'     warning("*x* is already negative")
+#'     return(x)
+#'   }
+#'   -x
+#' }
+#' expect_warning(f(-1))
+#' expect_warning(f(-1), "already negative")
+#' expect_warning(f(1), NA)
+#'
+#' # To test message and output, store results to a variable
+#' expect_warning(out <- f(-1), "already negative")
+#' expect_equal(out, -1)
+#'
+#' # Messages ------------------------------------------------------------------
+#' f <- function(x) {
+#'   if (x < 0) {
+#'     message("*x* is already negative")
+#'     return(x)
+#'   }
+#'
+#'   -x
+#' }
+#' expect_message(f(-1))
+#' expect_message(f(-1), "already negative")
+#' expect_message(f(1), NA)
 expect_error <- function(object,
                          regexp = NULL,
                          class = NULL,
@@ -67,6 +94,51 @@ expect_error <- function(object,
                          label = NULL
                          ) {
   expect_condition_matching("error", object,
+    regexp = regexp,
+    class = class,
+    ...,
+    info = info,
+    label = label
+  )
+}
+
+
+#' @export
+#' @rdname expect_error
+expect_warning <- function(object,
+                           regexp = NULL,
+                           class = NULL,
+                           ...,
+                           all = FALSE,
+                           info = NULL,
+                           label = NULL
+                           ) {
+
+  if (!missing(all)) {
+    warn("The `all` argument is deprecated")
+  }
+
+  expect_condition_matching("warning", object,
+    regexp = regexp,
+    class = class,
+    ...,
+    info = info,
+    label = label
+  )
+}
+
+
+#' @export
+#' @rdname expect_error
+expect_message <- function(object,
+                           regexp = NULL,
+                           class = NULL,
+                           ...,
+                           all = FALSE,
+                           info = NULL,
+                           label = NULL
+                           ) {
+  expect_condition_matching("message", object,
     regexp = regexp,
     class = class,
     ...,
@@ -187,59 +259,4 @@ compare_condition <- function(cond_type, cond, lab, expected) {
 cnd_message <- function(x) {
   withr::local_options(c(rlang_backtrace_on_error = "none"))
   conditionMessage(x)
-}
-
-#' Is an error informative?
-#'
-#' @description
-#'
-#' `is_informative_error()` is a generic predicate that indicates
-#' whether testthat users should explicitly test for an error
-#' class. When it returns `TRUE` (the default), and `expect_error()`
-#' does not check for the class, a warning is issued during tests.
-#' You can silence the warning by implementing `is_informative_error()`.
-#'
-#' The main use case for overriding this method is to introduce an
-#' experimental error class when you need more experience while
-#' developing an error hierarchy for your package. Override
-#' `is_informative_error()` to return `FALSE` to avoid encouraging
-#' users to depend on the experimental class in their tests.
-#'
-#' Since testthat should be a `Suggest` dependency, methods for
-#' `is_informative_error()` should typically be lazily registered,
-#' e.g. with `vctrs::s3_register()`.
-#'
-#' @param x An error object.
-#' @inheritParams ellipsis::dots_empty
-#'
-#' @details
-#' A few classes are hard-coded as uninformative:
-#' - `simpleError`
-#' - `rlang_error` unless a subclass is detected
-#' - `Rcpp::eval_error`
-#' - `Rcpp::exception`
-#'
-#' @keywords internal
-#' @export
-is_informative_error <- function(x, ...) {
-  ellipsis::check_dots_empty()
-
-  if (!inherits(x, "error")) {
-    return(TRUE)
-  }
-
-  if (inherits(x, c("simpleError", "Rcpp::eval_error", "Rcpp::exception"))) {
-    return(FALSE)
-  }
-
-  if (inherits_only(x, c("rlang_error", "error", "condition"))) {
-    return(FALSE)
-  }
-
-  UseMethod("is_informative_error")
-}
-
-#' @export
-is_informative_error.default <- function(x, ...) {
-  TRUE
 }

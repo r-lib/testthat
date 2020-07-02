@@ -61,6 +61,6 @@ test_that("Warning for non-UTF-8 reference files", {
   writeBin(x, tmp)
 
   expect_failure(
-    expect_warning(expect_known_output("foobar", tmp, update = FALSE))
+    expect_known_output("foobar", tmp, update = FALSE)
   )
 })
