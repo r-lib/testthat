@@ -23,10 +23,10 @@ End:
 3. Warning:2 (@tests.R#85) - ghi
 
 ══ Failed ══════════════════════════════════════════════════════════════════════
-── 1. Failure: Failure:1 (@tests.R#12)  ────────────────────────────────────────
+── 1. Failure: Failure:1 (@tests.R#12) ─────────────────────────────────────────
 Failure has been forced
 
-── 2. Failure: Failure:2a (@tests.R#16)  ───────────────────────────────────────
+── 2. Failure: Failure:2a (@tests.R#16) ────────────────────────────────────────
 Failure has been forced
   ... and 6 more
 

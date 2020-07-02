@@ -60,6 +60,12 @@ CheckReporter <- R6::R6Class("CheckReporter",
     },
 
     end_reporter = function() {
+      if (self$n_skip > 0) {
+        self$rule("Skipped tests ", line = 1)
+        self$cat_line(skip_bullets(self$skips$as_list()))
+        self$cat_line()
+      }
+
       self$rule("testthat results ", line = 2)
       self$cat_line(
         "[ ",

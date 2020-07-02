@@ -66,6 +66,10 @@ Reason: empty test
 -- Error: Error:4 (@tests.R#111) -----------------------------------------------
 Throwable
 
+── Skipped tests  ──────────────────────────────────────────────────────────────
+● empty test (1)
+● skip (2)
+
 ══ testthat results  ═══════════════════════════════════════════════════════════
 [ OK: 8 | SKIPPED: 3 | WARNINGS: 0 | FAILED: 8 ]
 1. Failure: Failure:1 (@tests.R#12)

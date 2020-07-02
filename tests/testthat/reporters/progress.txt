@@ -126,3 +126,5 @@ OK:       5
 Failed:   8
 Warnings: 3
 Skipped:  3
+● empty test (1)
+● skip (2)
