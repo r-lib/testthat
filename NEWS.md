@@ -1,5 +1,9 @@
 # testthat (development version)
 
+* `expect_error()`, `expect_warning()`, `expect_message()`, and 
+  `expect_condition()` now warn if there are unexpected arguments
+  that are never used.
+
 * Unexpected warnings now include a backtrace, making it easier to figure
   out where they came from.
   

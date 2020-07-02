@@ -173,6 +173,7 @@ expect_condition_matching <- function(base_class,
                                       ...,
                                       info = NULL,
                                       label = NULL) {
+  ellipsis::check_dots_used(action = warn)
 
   act <- quasi_capture(
     enquo(object), label, capture_matching_condition,
