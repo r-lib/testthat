@@ -1,7 +1,7 @@
--- 1. Failure:  (@test-expect-condition.R#44)  ---------------------------------
+-- 1. Failure:  (@test-expect-condition.R#45)  ---------------------------------
 `object` did not throw the expected error.
 
--- 2. Failure:  (@test-expect-condition.R#45)  ---------------------------------
+-- 2. Failure:  (@test-expect-condition.R#46)  ---------------------------------
 `object` threw an unexpected error.
 Message: !
 Class:   simpleError/error/condition
@@ -9,7 +9,7 @@ Backtrace:
  1. testthat::expect_error(fail("!"), NA)
  7. testthat::fail("!")
 
--- 3. Error:  (@test-expect-condition.R#47)  -----------------------------------
+-- 3. Error:  (@test-expect-condition.R#48)  -----------------------------------
 xxx
 Backtrace:
  1. testthat::expect_error(fail("xxx"), "zzz")

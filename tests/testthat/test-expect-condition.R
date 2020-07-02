@@ -1,3 +1,8 @@
+test_that("returns condition or value", {
+  expect_equal(expect_error(1, NA), 1)
+  expect_s3_class(expect_error(stop("!")), "simpleError")
+})
+
 test_that("regexp = NULL checks for presence of error", {
   expect_success(expect_error(stop()))
   expect_failure(expect_error(null()), "did not throw the expected error")
@@ -28,12 +33,8 @@ test_that("... passed on to grepl", {
 })
 
 test_that("generates informative failures", {
-  skip_if_not(l10n_info()$`UTF-8`)
-
   # rlang backtraces are sensitive to upstream changes
   skip_on_cran()
-
-  # Disable srcrefs because they differ across systems
   withr::local_options(list(rlang_trace_format_srcrefs = FALSE))
 
   expect_known_failure("test-expect-condition.txt", {
@@ -47,6 +48,31 @@ test_that("generates informative failures", {
     expect_error(fail("xxx"), "zzz")
   })
 })
+
+test_that("message method is called when expecting error", {
+  local_methods(
+    conditionMessage.foobar = function(err) "dispatched!"
+  )
+  fb <- function() abort("foobar", "foobar")
+
+  expect_error(fb(), "dispatched!", class = "foobar")
+  expect_failure(expect_error(fb(), NA), "dispatched!")
+})
+
+test_that("rlang backtrace reminders are not included in error message", {
+  f <- function() g()
+  g <- function() h()
+  h <- function() abort("foo")
+  expect_error(f(), "foo$")
+})
+
+test_that("can capture Throwable conditions from rJava", {
+  local_Throwable_methods()
+  throw <- function(msg) stop(error_cnd("Throwable", message = msg))
+  expect_error(throw("foo"), "foo", class = "Throwable")
+})
+
+# expect_warning() ----------------------------------------------------------
 
 test_that("warnings are converted to errors when options('warn') >= 2", {
   withr::with_options(c(warn = 2), {
@@ -64,74 +90,11 @@ test_that("can silence warnings", {
   withr::with_options(c(warn = -1), warning("foo"))
 })
 
-local({
-  # Define method in the global environment so it's consistently reached
-  scoped_bindings(
-    conditionMessage.foobar = function(err) "dispatched!",
-    .env = global_env()
-  )
-  foobar <- error_cnd("foobar")
+# expect_message ----------------------------------------------------------
 
-  test_that("message method is called when expecting error", {
-    expect_error(stop(foobar), "dispatched!", class = "foobar")
-  })
-
-  test_that("message method is called with unexpected message", {
-    expect_error(
-      expect_error(stop(foobar), "unexpected", class = "foobar"),
-      "dispatched",
-    )
-  })
-
-  test_that("message method is called with unexpected error", {
-    expect_error(
-      expect_error(stop(foobar), NA, class = "foobar"),
-      "dispatched!",
-      class = "expectation_failure"
-    )
-  })
-
-  test_that("message method is called with expected warnings", {
-    foobar <- warning_cnd("foobar")
-    expect_warning(warning(foobar), "dispatched!")
-  })
-
-  test_that("message method is called with expected messages", {
-    foobar <- message_cnd("foobar")
-    expect_message(message(foobar), "dispatched!")
-  })
-})
-
-test_that("rlang backtrace reminders are not included in error message", {
-  f <- function() g()
-  g <- function() h()
-  h <- function() abort("foo")
-  expect_error(f(), "foo$")
-})
-
-
-test_that("is_informative_error returns TRUE for basic errors", {
-  is_informative <- function(x) is_informative_error(catch_cnd(x))
-
-  expect_false(is_informative(stop("!")))
-  expect_false(is_informative(abort("!")))
-
-  expect_false(is_informative(abort("!", .subclass = "Rcpp::eval_error")))
-  expect_false(is_informative(abort("!", .subclass = "Rcpp::exception")))
-
-  expect_true(is_informative(abort("!", .subclass = "error_custom")))
-
-  with_bindings(
-    .env = global_env(),
-    is_informative_error.error_custom = function(...) FALSE,
-    expect_false(is_informative(abort("!", .subclass = "error_custom")))
-  )
-})
-
-test_that("can capture Throwable conditions from rJava", {
-  local_Throwable_methods()
-  throw <- function(msg) stop(error_cnd("Throwable", message = msg))
-  expect_error(throw("foo"), "foo", class = "Throwable")
+test_that("regexp = NA checks for absence of message", {
+  expect_success(expect_message(null(), NA))
+  expect_failure(expect_message(message("!"), NA))
 })
 
 # expect_condition --------------------------------------------------------
