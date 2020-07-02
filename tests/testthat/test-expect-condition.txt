@@ -1,7 +1,7 @@
--- 1. Failure:  (@test-expect-condition.R#55)  ---------------------------------
+-- 1. Failure:  (@test-expect-condition.R#51)  ---------------------------------
 `null()` did not throw an error.
 
--- 2. Failure:  (@test-expect-condition.R#56)  ---------------------------------
+-- 2. Failure:  (@test-expect-condition.R#52)  ---------------------------------
 `fail("!")` threw an error.
 Message: !
 Class:   simpleError/error/condition
@@ -9,7 +9,7 @@ Backtrace:
  1. testthat::expect_error(fail("!"), NA)
  6. testthat::fail("!")
 
--- 3. Failure:  (@test-expect-condition.R#58)  ---------------------------------
+-- 3. Failure:  (@test-expect-condition.R#54)  ---------------------------------
 `fail("xxx")` threw an error with unexpected message.
 Expected match: "zzz"
 Actual message: "xxx"
@@ -17,7 +17,7 @@ Backtrace:
  1. testthat::expect_error(fail("xxx"), regexp = "zzz")
  6. testthat::fail("xxx")
 
--- 4. Failure:  (@test-expect-condition.R#59)  ---------------------------------
+-- 4. Failure:  (@test-expect-condition.R#55)  ---------------------------------
 `fail("xxx")` threw an error with unexpected class.
 Expected class: zzz
 Actual class:   simpleError/error/condition
@@ -26,7 +26,7 @@ Backtrace:
  1. testthat::expect_error(fail("xxx"), class = "zzz")
  6. testthat::fail("xxx")
 
--- 5. Failure:  (@test-expect-condition.R#60)  ---------------------------------
+-- 5. Failure:  (@test-expect-condition.R#56)  ---------------------------------
 `fail("xxx")` threw an error with unexpected class and message.
 Expected class: zzz
 Actual class:   simpleError/error/condition

@@ -28,10 +28,6 @@ test_that("class = string matches class of error", {
     expect_error(blah(), class = "blech"),
     "threw an error with unexpected class"
   )
-  expect_failure(
-    expect_condition(blah(), class = "blech"),
-    "threw an condition with unexpected class"
-  )
 })
 
 test_that("... passed on to grepl", {
@@ -173,12 +169,13 @@ test_that("captured condition is muffled", {
   expect_error(expect_condition(stop("Hi")), NA)
 })
 
-test_that("only first condition is captured, others bubble up", {
+test_that("only matching condition is captured, others bubble up", {
   f1 <- function() {
     message("Hi")
     message("Bye")
   }
-  expect_message(expect_condition(f1(), "Hi"), "Bye")
+  expect_condition(expect_condition(f1(), "Hi"), "Bye")
+  expect_condition(expect_condition(f1(), "Bye"), "Hi")
 
   f2 <- function() {
     message("Hi")

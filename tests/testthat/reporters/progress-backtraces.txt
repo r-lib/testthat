@@ -7,8 +7,7 @@
 ⠸ |   0 4     | backtraces                                                      
 ⠼ |   0 5     | backtraces                                                      
 ⠴ |   0 6     | backtraces                                                      
-⠦ |   0 7     | backtraces                                                      
-✖ |   0 7     | backtraces
+✖ |   0 6     | backtraces
 ────────────────────────────────────────────────────────────────────────────────
 backtraces.R:6: error: errors thrown at block level are entraced
 foo
@@ -39,14 +38,6 @@ Backtrace:
  7. bar()
 
 backtraces.R:35: failure: failed expect_error() prints a backtrace
-`f()` threw an condition with unexpected class.
-
-Backtrace:
-  1. testthat::expect_condition(f(), class = "foo")
- 10. f()
- 11. signaller()
-
-backtraces.R:38: failure: failed expect_error() prints a backtrace
 `f()` threw an error with unexpected message.
 Expected match: "foo"
 Actual message: "bar"
@@ -55,12 +46,12 @@ Backtrace:
  6. f()
  7. signaller()
 
-backtraces.R:46: error: Errors are inspected with `conditionMessage()`
+backtraces.R:43: error: Errors are inspected with `conditionMessage()`
 dispatched
 ────────────────────────────────────────────────────────────────────────────────
 
 ══ Results ═════════════════════════════════════════════════════════════════════
 OK:       0
-Failed:   7
+Failed:   6
 Warnings: 0
 Skipped:  0

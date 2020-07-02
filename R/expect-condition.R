@@ -84,9 +84,13 @@ expect_condition <- function(object,
                              info = NULL,
                              label = NULL
                              ) {
-  act <- quasi_capture(enquo(object), label, capture_first_condition)
+
+  act <- quasi_capture(
+    enquo(object), label, capture_matching_condition,
+    matches = cnd_matcher(class %||% "condition", regexp, ...)
+  )
   msg <- compare_condition(
-    act$cap, act$lab, regexp = regexp, class = class, ...,
+    act$cap, act$lab, regexp = regexp, class = class,
     cond_type = "condition"
   )
   expect(is.null(msg), msg, info = info, trace = act$cap[["trace"]])
@@ -94,32 +98,43 @@ expect_condition <- function(object,
   invisible(act$val %||% act$cap)
 }
 
-capture_first_condition <- function(expr) {
-  first <- NULL
-  n <- 0L
+cnd_matcher <- function(class, pattern = NULL, ...) {
+  force(class)
+  force(pattern)
 
-  tryCatch(
-    withCallingHandlers(expr, condition = function(cnd) {
-      n <<- n + 1L
-      if (n == 1L) {
-        if (can_entrace(cnd)) {
-          cnd <- cnd_entrace(cnd)
-        }
-        first <<- cnd
-        if (inherits(cnd, "message") || inherits(cnd, "warning")) {
-          cnd_muffle(cnd)
-        }
-      }
-    }),
-    error = function(cnd) {
-      # Rethrow errors after the first
-      if (n > 1) {
-        stop(cnd)
-      }
+  if (is.null(pattern)) {
+    function(cnd) {
+      inherits(cnd, class)
     }
-  )
+  } else {
+    function(cnd) {
+      inherits(cnd, class) && grepl(pattern, conditionMessage(cnd), ...)
+    }
+  }
+}
 
-  first
+capture_matching_condition <- function(expr, matches) {
+  matched <- NULL
+  tl <- current_env()
+
+  withCallingHandlers(expr, condition = function(cnd) {
+    if (!is.null(matched) || !matches(cnd)) {
+      return()
+    }
+
+    if (can_entrace(cnd)) {
+      cnd <- cnd_entrace(cnd)
+    }
+    matched <<- cnd
+
+    if (inherits(cnd, "message") || inherits(cnd, "warning")) {
+      cnd_muffle(cnd)
+    } else if (inherits(cnd, "error")) {
+      return_from(tl, cnd)
+    }
+  })
+
+  matched
 }
 
 # Helpers -----------------------------------------------------------------
