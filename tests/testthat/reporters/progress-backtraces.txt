@@ -7,7 +7,9 @@
 ⠸ |   0 4     | backtraces                                                      
 ⠼ |   0 5     | backtraces                                                      
 ⠴ |   0 6     | backtraces                                                      
-✖ |   0 6     | backtraces
+⠦ |   0 6 1   | backtraces                                                      
+⠧ |   1 6 1   | backtraces                                                      
+✖ |   1 6 1   | backtraces
 ────────────────────────────────────────────────────────────────────────────────
 backtraces.R:6: error: errors thrown at block level are entraced
 foo
@@ -46,10 +48,16 @@ Backtrace:
 
 backtraces.R:43: error: Errors are inspected with `conditionMessage()`
 dispatched
+
+backtraces.R:50: warning: also get backtraces for warnings
+foobar
+Backtrace:
+ 1. foo()
+ 2. bar()
 ────────────────────────────────────────────────────────────────────────────────
 
 ══ Results ═════════════════════════════════════════════════════════════════════
-OK:       0
+OK:       1
 Failed:   6
-Warnings: 0
+Warnings: 1
 Skipped:  0

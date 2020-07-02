@@ -1,8 +1,12 @@
 # testthat (development version)
 
+* Unexpected warnings now include a backtrace, making it easier to figure
+  out where they came from.
+  
 * `expect_condition()` now evaluates all code in the block rather than
   terminating after the first condition. If there are multiple conditions,
   it captures the first (#998).
+  
 * `ProgressReporter` now checks if you've exceeded the maximum number of
   failures (from option `testthat.progress.max_fails`) after each expectation,
   rather than at the end of each file. This is important for tests that 
