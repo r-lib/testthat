@@ -55,6 +55,8 @@ ok 13 # SKIP Reason: empty test
 ok 14 # WARNING abc
 ok 15 # WARNING def
 ok 16 # WARNING ghi
+Backtrace:
+ 1. f()
 # Context Output
 ok 17 Output:1
 ok 18 Output:1

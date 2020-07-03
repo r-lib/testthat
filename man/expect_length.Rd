@@ -33,7 +33,6 @@ Other expectations:
 \code{\link{equality-expectations}},
 \code{\link{expect_error}()},
 \code{\link{expect_match}()},
-\code{\link{expect_message}()},
 \code{\link{expect_named}()},
 \code{\link{expect_null}()},
 \code{\link{expect_output}()},
