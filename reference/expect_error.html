@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Expectation: does code throw error or other condition? — expect_error • testthat</title>
+<title>Expectation: does code throw an error, warning, message, or other condition? — expect_error • testthat</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,10 +46,14 @@
 
 
 
-<meta property="og:title" content="Expectation: does code throw error or other condition? — expect_error" />
-<meta property="og:description" content="expect_error() and expect_condition() check that code throws an error
+<meta property="og:title" content="Expectation: does code throw an error, warning, message, or other condition? — expect_error" />
+<meta property="og:description" content="expect_error(), expect_warning(), expect_message(), and
+expect_condition() check that code throws an error, warning, message,
 or condition with a message that matches regexp, or a class that inherits
-from class. See below for more details." />
+from class. See below for more details.
+If the code throws conditions that don't match regexp/class they will
+bubble up outside of the expectation, so you'll need to handle in some
+other way." />
 <meta property="og:image" content="https://testthat.r-lib.org/logo.png" />
 
 
@@ -172,15 +176,19 @@ from class. See below for more details." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Expectation: does code throw error or other condition?</h1>
+    <h1>Expectation: does code throw an error, warning, message, or other condition?</h1>
     <small class="dont-index">Source: <a href='https://github.com/r-lib/testthat/blob/master/R/expect-condition.R'><code>R/expect-condition.R</code></a></small>
     <div class="hidden name"><code>expect_error.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p><code>expect_error()</code> and <code>expect_condition()</code> check that code throws an error
+    <p><code>expect_error()</code>, <code>expect_warning()</code>, <code>expect_message()</code>, and
+<code>expect_condition()</code> check that code throws an error, warning, message,
 or condition with a message that matches <code>regexp</code>, or a class that inherits
 from <code>class</code>. See below for more details.</p>
+<p>If the code throws conditions that don't match <code>regexp</code>/<code>class</code> they will
+bubble up outside of the expectation, so you'll need to handle in some
+other way.</p>
     </div>
 
     <pre class="usage"><span class='fu'>expect_error</span>(
@@ -188,6 +196,26 @@ from <code>class</code>. See below for more details.</p>
   regexp = <span class='kw'>NULL</span>,
   class = <span class='kw'>NULL</span>,
   <span class='kw'>...</span>,
+  info = <span class='kw'>NULL</span>,
+  label = <span class='kw'>NULL</span>
+)
+
+<span class='fu'>expect_warning</span>(
+  <span class='kw'>object</span>,
+  regexp = <span class='kw'>NULL</span>,
+  class = <span class='kw'>NULL</span>,
+  <span class='kw'>...</span>,
+  all = <span class='fl'>FALSE</span>,
+  info = <span class='kw'>NULL</span>,
+  label = <span class='kw'>NULL</span>
+)
+
+<span class='fu'>expect_message</span>(
+  <span class='kw'>object</span>,
+  regexp = <span class='kw'>NULL</span>,
+  class = <span class='kw'>NULL</span>,
+  <span class='kw'>...</span>,
+  all = <span class='fl'>FALSE</span>,
   info = <span class='kw'>NULL</span>,
   label = <span class='kw'>NULL</span>
 )
@@ -228,8 +256,6 @@ a class name. This is useful for "classed" conditions.</p></td>
     <tr>
       <th>...</th>
       <td><p>Arguments passed on to <code>expect_match</code></p><dl>
-    <dt><code>all</code></dt><dd><p>Should all elements of actual value match <code>regexp</code> (TRUE),
-or does only one need to match (FALSE)</p></dd>
     <dt><code>perl</code></dt><dd><p>logical.  Should Perl-compatible regexps be used?</p></dd>
     <dt><code>fixed</code></dt><dd><p>logical.  If <code>TRUE</code>, <code>pattern</code> is a string to be
     matched as is.  Overrides all conflicting arguments.</p></dd>
@@ -245,6 +271,12 @@ alternatives in quasi_label.</p></td>
     <tr>
       <th>label</th>
       <td><p>Used to customise failure messages. For expert use only.</p></td>
+    </tr>
+    <tr>
+      <th>all</th>
+      <td><p><em>DEPRECATED</em> If you need to test multiple warnings/messages
+you know need to use multiple calls to <code>expect_message()</code>/
+<code>expect_warning()</code></p></td>
     </tr>
     </table>
 
@@ -276,7 +308,6 @@ using <code>verify_output()</code> instead.</p>
 <code>equality-expectations</code>,
 <code>expect_length()</code>,
 <code>expect_match()</code>,
-<code>expect_message()</code>,
 <code>expect_named()</code>,
 <code>expect_null()</code>,
 <code>expect_output()</code>,
@@ -286,24 +317,47 @@ using <code>verify_output()</code> instead.</p>
 <code>logical-expectations</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>f</span> <span class='op'>&lt;-</span> <span class='fu'>function</span>() <span class='fu'><a href='https://rdrr.io/r/base/stop.html'>stop</a></span>(<span class='st'>"My error!"</span>)
+    <pre class="examples"><div class='input'><span class='co'># Errors ------------------------------------------------------------------</span>
+<span class='kw'>f</span> <span class='op'>&lt;-</span> <span class='fu'>function</span>() <span class='fu'><a href='https://rdrr.io/r/base/stop.html'>stop</a></span>(<span class='st'>"My error!"</span>)
 <span class='fu'>expect_error</span>(<span class='fu'>f</span>())
 <span class='fu'>expect_error</span>(<span class='fu'>f</span>(), <span class='st'>"My error!"</span>)
 
 <span class='co'># You can use the arguments of grepl to control the matching</span>
 <span class='fu'>expect_error</span>(<span class='fu'>f</span>(), <span class='st'>"my error!"</span>, ignore.case = <span class='fl'>TRUE</span>)
 
-<span class='co'># If you are working with classed conditions, it's better to test for</span>
-<span class='co'># the class name, rather than the error message (which may change over time)</span>
-<span class='kw'>custom_err</span> <span class='op'>&lt;-</span> <span class='fu'>function</span>(<span class='kw'>var</span>) {
-  <span class='kw'>rlang</span>::<span class='fu'><a href='https://rlang.r-lib.org/reference/abort.html'>abort</a></span>(<span class='st'>"A special error"</span>, var = <span class='kw'>var</span>, .subclass = <span class='st'>"testthat_special"</span>)
-}
-<span class='fu'>expect_error</span>(<span class='fu'>custom_err</span>(<span class='st'>"a"</span>), class = <span class='st'>"testthat_special"</span>)
-
 <span class='co'># Note that `expect_error()` returns the error object so you can test</span>
 <span class='co'># its components if needed</span>
-<span class='kw'>err</span> <span class='op'>&lt;-</span> <span class='fu'>expect_error</span>(<span class='fu'>custom_err</span>(<span class='st'>"a"</span>), class = <span class='st'>"testthat_special"</span>)
-<span class='fu'>expect_equal</span>(<span class='kw'>err</span><span class='op'>$</span><span class='kw'>var</span>, <span class='st'>"a"</span>)</div></pre>
+<span class='kw'>err</span> <span class='op'>&lt;-</span> <span class='fu'>expect_error</span>(<span class='kw'>rlang</span>::<span class='fu'><a href='https://rlang.r-lib.org/reference/abort.html'>abort</a></span>(<span class='st'>"a"</span>, n = <span class='fl'>10</span>))
+<span class='fu'>expect_equal</span>(<span class='kw'>err</span><span class='op'>$</span><span class='kw'>n</span>, <span class='fl'>10</span>)
+
+<span class='co'># Warnings ------------------------------------------------------------------</span>
+<span class='kw'>f</span> <span class='op'>&lt;-</span> <span class='fu'>function</span>(<span class='kw'>x</span>) {
+  <span class='co'>if</span> (<span class='kw'>x</span> <span class='op'>&lt;</span> <span class='fl'>0</span>) {
+    <span class='fu'><a href='https://rdrr.io/r/base/warning.html'>warning</a></span>(<span class='st'>"*x* is already negative"</span>)
+    <span class='fu'><a href='https://rdrr.io/r/base/function.html'>return</a></span>(<span class='kw'>x</span>)
+  }
+  <span class='op'>-</span><span class='kw'>x</span>
+}
+<span class='fu'>expect_warning</span>(<span class='fu'>f</span>(<span class='op'>-</span><span class='fl'>1</span>))
+<span class='fu'>expect_warning</span>(<span class='fu'>f</span>(<span class='op'>-</span><span class='fl'>1</span>), <span class='st'>"already negative"</span>)
+<span class='fu'>expect_warning</span>(<span class='fu'>f</span>(<span class='fl'>1</span>), <span class='fl'>NA</span>)
+
+<span class='co'># To test message and output, store results to a variable</span>
+<span class='fu'>expect_warning</span>(<span class='kw'>out</span> <span class='op'>&lt;-</span> <span class='fu'>f</span>(<span class='op'>-</span><span class='fl'>1</span>), <span class='st'>"already negative"</span>)
+<span class='fu'>expect_equal</span>(<span class='kw'>out</span>, <span class='op'>-</span><span class='fl'>1</span>)
+
+<span class='co'># Messages ------------------------------------------------------------------</span>
+<span class='kw'>f</span> <span class='op'>&lt;-</span> <span class='fu'>function</span>(<span class='kw'>x</span>) {
+  <span class='co'>if</span> (<span class='kw'>x</span> <span class='op'>&lt;</span> <span class='fl'>0</span>) {
+    <span class='fu'><a href='https://rdrr.io/r/base/message.html'>message</a></span>(<span class='st'>"*x* is already negative"</span>)
+    <span class='fu'><a href='https://rdrr.io/r/base/function.html'>return</a></span>(<span class='kw'>x</span>)
+  }
+
+  <span class='op'>-</span><span class='kw'>x</span>
+}
+<span class='fu'>expect_message</span>(<span class='fu'>f</span>(<span class='op'>-</span><span class='fl'>1</span>))
+<span class='fu'>expect_message</span>(<span class='fu'>f</span>(<span class='op'>-</span><span class='fl'>1</span>), <span class='st'>"already negative"</span>)
+<span class='fu'>expect_message</span>(<span class='fu'>f</span>(<span class='fl'>1</span>), <span class='fl'>NA</span>)</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
