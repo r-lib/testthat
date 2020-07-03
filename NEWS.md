@@ -5,6 +5,10 @@
   capture the first condition that matches `class`/`regexp` and
   allow anything else to bubble up (#998/#1052).
 
+* The `all` argument to `expect_message()` and `expect_warning()` is now
+  deprecated. It was never a particularly good idea or well documented, 
+  and is now superseded by the new condition capturing behaviour.
+
 * `expect_error()`, `expect_warning()`, `expect_message()`, and 
   `expect_condition()` now warn if there are unexpected arguments
   that are never used.
