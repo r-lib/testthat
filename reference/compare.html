@@ -312,16 +312,16 @@ are not available, in which case the test is skipped.</p></td>
 
 <span class='kw'>x</span> <span class='op'>&lt;-</span> <span class='kw'>y</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/Uniform.html'>runif</a></span>(<span class='fl'>100</span>)
 <span class='kw'>y</span>[<span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample</a></span>(<span class='fl'>100</span>, <span class='fl'>10</span>)] <span class='op'>&lt;-</span> <span class='fl'>5</span>
-<span class='fu'>compare</span>(<span class='kw'>x</span>, <span class='kw'>y</span>)</div><div class='output co'>#&gt; 10/100 mismatches (average diff: 4.43)
-#&gt; [5]  0.7725 - 5 == -4.23
-#&gt; [13] 0.0637 - 5 == -4.94
-#&gt; [14] 0.3887 - 5 == -4.61
-#&gt; [17] 0.6784 - 5 == -4.32
-#&gt; [32] 0.7064 - 5 == -4.29
-#&gt; [33] 0.9486 - 5 == -4.05
-#&gt; [60] 0.5963 - 5 == -4.40
-#&gt; [76] 0.5279 - 5 == -4.47
-#&gt; [77] 0.6006 - 5 == -4.40
+<span class='fu'>compare</span>(<span class='kw'>x</span>, <span class='kw'>y</span>)</div><div class='output co'>#&gt; 10/100 mismatches (average diff: 4.72)
+#&gt; [5]  0.0074 - 5 == -4.99
+#&gt; [13] 0.0342 - 5 == -4.97
+#&gt; [14] 0.3204 - 5 == -4.68
+#&gt; [17] 0.4035 - 5 == -4.60
+#&gt; [26] 0.7415 - 5 == -4.26
+#&gt; [33] 0.3008 - 5 == -4.70
+#&gt; [60] 0.3542 - 5 == -4.65
+#&gt; [66] 0.1915 - 5 == -4.81
+#&gt; [76] 0.0201 - 5 == -4.98
 #&gt; ...</div><div class='input'>
 <span class='kw'>x</span> <span class='op'>&lt;-</span> <span class='kw'>y</span> <span class='op'>&lt;-</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span>
 <span class='kw'>x</span>[<span class='fl'>5</span>] <span class='op'>&lt;-</span> <span class='fl'>NA</span>

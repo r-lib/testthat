@@ -187,7 +187,7 @@ in the global environment.</p>
 
     <pre class="usage"><span class='fu'><a href='https://testthat.r-lib.org/reference/test_file.html'>test_file</a></span>(
   <span class='kw'>path</span>,
-  reporter = <span class='fu'><a href='https://testthat.r-lib.org/reference/default_reporter.html'>default_reporter</a></span>(),
+  reporter = <span class='fu'><a href='https://testthat.r-lib.org/reference/default_reporter.html'>default_compact_reporter</a></span>(),
   env = <span class='fu'><a href='https://testthat.r-lib.org/reference/test_env.html'>test_env</a></span>(),
   start_end_reporter = <span class='fl'>TRUE</span>,
   load_helpers = <span class='fl'>TRUE</span>,
@@ -253,12 +253,12 @@ a test failure and terminate execution of that test file.</p>
 #&gt;  $ test   : chr "one plus one is two"
 #&gt;  $ user   : num 0.001
 #&gt;  $ system : num 0
-#&gt;  $ real   : num 0.001
+#&gt;  $ real   : num 0.002
 #&gt;  $ results:List of 1
 #&gt;   ..$ :List of 6
 #&gt;   .. ..$ message    : chr "`actual` (1 + 1) not equal to `expected` (2).\n\n"
 #&gt;   .. ..$ srcref     : 'srcref' int [1:8] 2 3 2 24 3 24 2 2
-#&gt;   .. .. ..- attr(*, "srcfile")=Classes 'srcfilecopy', 'srcfile' &lt;environment: 0x7feb0f4fc368&gt; 
+#&gt;   .. .. ..- attr(*, "srcfile")=Classes 'srcfilecopy', 'srcfile' &lt;environment: 0x7fbeb2c36790&gt; 
 #&gt;   .. ..$ trace      : NULL
 #&gt;   .. ..$ start_frame: int 54
 #&gt;   .. ..$ end_frame  : num 56

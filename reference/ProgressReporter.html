@@ -47,9 +47,13 @@
 
 
 <meta property="og:title" content="Test reporter: interactive progress bar of errors. — ProgressReporter" />
-<meta property="og:description" content="This reporter is a reimagining of SummaryReporter designed to make the
-most information available up front, while taking up less space overall. It
-is the default reporting reporter used by test_dir() and test_file()." />
+<meta property="og:description" content="ProgressReporter is designed for interactively use. It's goal is to
+give you actionable insights to help you understand the status of your
+code. This reporter also praises you from time-to-time if all your tests
+pass. It's the default reporter for test_dir().
+CompactProgressReporter is a minimal version of ProgressReporter
+designed for use with single files. It's the default reporter for
+test_file()." />
 <meta property="og:image" content="https://testthat.r-lib.org/logo.png" />
 
 
@@ -178,17 +182,17 @@ is the default reporting reporter used by test_dir() and test_file()." />
     </div>
 
     <div class="ref-description">
-    <p>This reporter is a reimagining of SummaryReporter designed to make the
-most information available up front, while taking up less space overall. It
-is the default reporting reporter used by <code>test_dir()</code> and <code>test_file()</code>.</p>
+    <p><code>ProgressReporter</code> is designed for interactively use. It's goal is to
+give you actionable insights to help you understand the status of your
+code. This reporter also praises you from time-to-time if all your tests
+pass. It's the default reporter for <code>test_dir()</code>.</p>
+<p><code>CompactProgressReporter</code> is a minimal version of <code>ProgressReporter</code>
+designed for use with single files. It's the default reporter for
+<code>test_file()</code>.</p>
     </div>
 
 
 
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
-
-    <p>As an additional benefit, this reporter will praise you from time-to-time
-if all your tests pass.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other reporters: 
