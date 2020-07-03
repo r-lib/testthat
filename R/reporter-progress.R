@@ -273,8 +273,13 @@ CompactProgressReporter <- R6::R6Class("CompactProgressReporter",
       super$initialize(min_time = min_time, ...)
     },
 
+    start_file = function(name) {
+      self$cat_line("Testing ", name)
+    },
+
     start_reporter = function(context) {
     },
+
     end_reporter = function() {
       if (self$n_fail > 0 || self$n_warn > 0 || self$n_skip > 0) {
         self$show_status()
@@ -283,9 +288,10 @@ CompactProgressReporter <- R6::R6Class("CompactProgressReporter",
       if (self$is_full()) {
         self$cat_line(" Terminated early")
       } else {
-        self$cat_line(crayon::bold("Done!"))
+        self$cat_line(crayon::bold(" Done!"))
       }
     },
+
     show_status = function(complete = NULL) {
       status <- paste0(
         colourise("PASS", "success"), " x", self$n_ok, " ",

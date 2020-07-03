@@ -1,8 +1,6 @@
+Testing tests.R
 
-PASS x0 FAIL x0 WARN x0 SKIP x0
 PASS x1 FAIL x0 WARN x0 SKIP x0
-PASS x1 FAIL x0 WARN x0 SKIP x0
-
 PASS x1 FAIL x0 WARN x0 SKIP x0
 PASS x2 FAIL x0 WARN x0 SKIP x0
 PASS x2 FAIL x1 WARN x0 SKIP x0
@@ -104,6 +102,8 @@ def
 
 tests.R:85: warning: Warning:2
 ghi
+Backtrace:
+ 1. f()
 ────────────────────────────────────────────────────────────────────────────────
 
 PASS x3 FAIL x7 WARN x3 SKIP x3
@@ -121,4 +121,4 @@ Throwable
 
 PASS x5 FAIL x8 WARN x3 SKIP x3
 PASS x5 FAIL x8 WARN x3 SKIP x3
-Done!
+ Done!
