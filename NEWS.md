@@ -1,5 +1,10 @@
 # testthat (development version)
 
+* New `CompactProgressReporter` tweaks the output of `ProgressReporter` for
+  use with a single file, as in `devtools::test_file()`. You can pick a 
+  different default by setting `testthat.default_compact_reporter` to
+  the name of a reporter.
+
 * `expect_error()`, `expect_warning()`, `expect_message()`, and 
   `expect_condition()` now all use the same underlying logic: they
   capture the first condition that matches `class`/`regexp` and
