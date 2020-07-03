@@ -1,4 +1,4 @@
-local_edition(2)
+testthat:::local_edition(2)
 test_that("Success", {
   succeed()
 })
