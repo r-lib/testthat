@@ -57,7 +57,6 @@ Roxygen: list(markdown = TRUE, r6 = FALSE)
 RoxygenNote: 7.1.1
 Collate: 
     'auto-test.R'
-    'capture-condition.R'
     'capture-output.R'
     'colour-text.R'
     'compare.R'
@@ -66,6 +65,7 @@ Collate:
     'compare-time.R'
     'context.R'
     'context_name.R'
+    'deprec-condition.R'
     'describe.R'
     'edition.R'
     'evaluate-promise.R'
@@ -78,7 +78,6 @@ Collate:
     'expect-known.R'
     'expect-length.R'
     'expect-logical.R'
-    'expect-messages.R'
     'expect-named.R'
     'expect-null.R'
     'expect-output.R'

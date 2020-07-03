@@ -31,9 +31,6 @@ test_that("errors thrown from a quasi-labelled argument are entraced (deep deep 
 test_that("failed expect_error() prints a backtrace", {
   f <- function() signaller()
 
-  signaller <- function() signalCondition(structure(list(), class = "bar"))
-  expect_condition(f(), class = "foo")
-
   signaller <- function() stop("bar")
   expect_error(f(), "foo")
 })
@@ -44,5 +41,13 @@ test_that("Errors are inspected with `conditionMessage()`", {
     conditionMessage.foobar = function(...) "dispatched"
   )
   rlang::abort("Wrong message", "foobar")
+})
+
+test_that("also get backtraces for warnings", {
+  foo <- function() bar()
+  bar <- function() warning("foobar", call. = FALSE)
+
+  foo()
+  expect_true(TRUE)
 })
 

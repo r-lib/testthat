@@ -190,12 +190,12 @@ as.expectation.error <- function(x, ..., srcref = NULL) {
 
 #' @export
 as.expectation.warning <- function(x, ..., srcref = NULL) {
-  expectation("warning", cnd_message(x), srcref)
+  expectation("warning", cnd_message(x), srcref, trace = x[["trace"]])
 }
 
 #' @export
 as.expectation.skip <- function(x, ..., srcref = NULL) {
-  expectation("skip", cnd_message(x), srcref)
+  expectation("skip", cnd_message(x), srcref, trace = x[["trace"]])
 }
 
 # expectation_type --------------------------------------------------------
