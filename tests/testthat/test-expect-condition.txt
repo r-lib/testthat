@@ -7,11 +7,11 @@ Message: !
 Class:   simpleError/error/condition
 Backtrace:
  1. testthat::expect_error(fail("!"), NA)
- 7. testthat::fail("!")
+ 7. fail("!")
 
 -- 3. Error:  (@test-expect-condition.R#48)  -----------------------------------
 xxx
 Backtrace:
  1. testthat::expect_error(fail("xxx"), "zzz")
- 7. testthat::fail("xxx")
+ 7. fail("xxx")
 

@@ -112,3 +112,5 @@ strrep <- function(x, times) {
 can_entrace <- function(cnd) {
   !inherits(cnd, "Throwable")
 }
+
+isNA <- function(x) length(x) == 1 && is.na(x)

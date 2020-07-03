@@ -28,6 +28,11 @@ test_that("class = string matches class of error", {
   expect_error(expect_error(blah(), class = "blech"), class = "blah")
 })
 
+test_that("check type of class and pattern", {
+  expect_error(expect_error(stop("!"), regexp = 1), "single string")
+  expect_error(expect_error(stop("!"), class = 1), "single string")
+})
+
 test_that("... passed on to grepl", {
   expect_success(expect_error(stop("X"), "x", ignore.case = TRUE))
 })

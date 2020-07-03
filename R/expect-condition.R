@@ -193,10 +193,14 @@ expect_condition_matching <- function(base_class,
 # -------------------------------------------------------------------------
 
 cnd_matcher <- function(class, pattern = NULL, ...) {
-  force(class)
-  force(pattern)
+  if (!is_string(class)) {
+    abort("`class` must be a single string")
+  }
+  if (!is_string(pattern) && !is.null(pattern) && !isNA(pattern)) {
+    abort("`pattern` must be a single string, NULL, or NA")
+  }
 
-  if (is.null(pattern) || identical(pattern, NA)) {
+  if (is.null(pattern) || isNA(pattern)) {
     function(cnd) {
       inherits(cnd, class)
     }
