@@ -127,4 +127,3 @@ Collate:
     'utils.R'
     'verify-output.R'
     'watcher.R'
-    'zzz.R'
