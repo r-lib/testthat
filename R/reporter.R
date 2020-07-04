@@ -36,6 +36,10 @@ Reporter <- R6::R6Class("Reporter",
     end_file =       function() {},
     is_full =        function() FALSE,
 
+    width = 0,
+    unicode = TRUE,
+    colour = TRUE,
+
     out = NULL,
 
     initialize = function(file = getOption("testthat.output_file", stdout())) {
@@ -44,6 +48,22 @@ Reporter <- R6::R6Class("Reporter",
         # If writing to a file, overwrite it if it exists
         file.remove(self$out)
       }
+
+      # Capture at init so not affected by test settings
+      self$width <- cli::console_width()
+      self$unicode <- cli::is_utf8_output()
+      self$colour <- crayon::has_color()
+    },
+
+    # To be used when the reporter needs to produce output inside of an active
+    # test, which is almost always from $add_result()
+    local_user_output = function(.env = parent.frame()) {
+      local_reproducible_output(
+        width = self$width,
+        crayon = self$crayon,
+        unicode = self$unicode,
+        .env = .env
+      )
     },
 
     cat_tight = function(...) {
