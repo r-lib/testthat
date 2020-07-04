@@ -132,3 +132,10 @@ auto_test_package <- function(pkg = ".", reporter = default_reporter(), hash = T
   }
   watch(c(code_path, test_path), watcher, hash = hash)
 }
+
+
+# Helpers -----------------------------------------------------------------
+
+starts_with <- function(string, prefix) {
+  substr(string, 1, nchar(prefix)) == prefix
+}
