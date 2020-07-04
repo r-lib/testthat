@@ -20,10 +20,12 @@
 #' context("Remote procedure calls")
 context <- function(desc) {
   edition_deprecate(3, "context()")
-  get_reporter()$.start_context(desc)
+  context_start(desc)
 }
 
-end_context <- function() {
-  get_reporter()$.end_context()
+context_start <- function(desc) {
+  reporter <- get_reporter()
+  if (!is.null(reporter)) {
+    get_reporter()$.start_context(desc)
+  }
 }
-

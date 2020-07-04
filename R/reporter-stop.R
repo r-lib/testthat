@@ -40,7 +40,7 @@ StopReporter <- R6::R6Class("StopReporter",
         messages
       )
 
-      stop_reporter(paste0(message, collapse = "\n"))
+      stop_reporter(paste0(lines, collapse = "\n"))
     },
 
     add_result = function(context, test, result) {

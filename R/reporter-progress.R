@@ -33,9 +33,6 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
     n_fail = 0,
 
     frames = NULL,
-    width = 0,
-    unicode = TRUE,
-    colour = TRUE,
 
     ctxt_start_time = NULL,
     ctxt_issues = NULL,
@@ -63,9 +60,6 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
 
       # Capture at init so not affected by test settings
       self$frames <- cli::get_spinner()$frames
-      self$width <- cli::console_width()
-      self$unicode <- cli::is_utf8_output()
-      self$colour <- crayon::has_color()
     },
 
     is_full = function() {
@@ -83,7 +77,7 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
       self$ctxt_start_time <- proc.time()
 
       name <- context_name(self$file_name)
-      get_reporter()$.start_context(name)
+      context_start(name)
     },
 
     start_context = function(context) {
@@ -197,11 +191,7 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
       }
 
       if (self$is_full()) {
-        local_reproducible_output(
-          width = self$width,
-          crayon = self$crayon,
-          unicode = self$unicode
-        )
+        self$local_user_output()
         self$end_context()
         stop_reporter("max_fails exceded")
       }
@@ -294,6 +284,7 @@ CompactProgressReporter <- R6::R6Class("CompactProgressReporter",
     },
 
     show_status = function(complete = NULL) {
+      self$local_user_output()
       status <- paste0(
         colourise("PASS", "success"), " x", self$n_ok, " ",
         colourise("FAIL", "fail"),    " x", self$n_fail, " ",

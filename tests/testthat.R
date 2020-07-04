@@ -11,6 +11,7 @@ err <- rlang::catch_cnd(
     expect_true(FALSE)
   })
 )
-expect_is(err, "error")
+expect_s3_class(err, "error")
+expect_match(err$message, "FALSE isn't true")
 
 test_check("testthat")
