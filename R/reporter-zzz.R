@@ -24,10 +24,6 @@ NULL
 
 testthat_env <- new.env(parent = emptyenv())
 
-# Default has to be the stop reporter, since it is this that will be run by
-# default from the command line and in R CMD test.
-testthat_env$reporter <- StopReporter$new()
-
 #' @rdname reporter-accessors
 #' @export
 set_reporter <- function(reporter) {
