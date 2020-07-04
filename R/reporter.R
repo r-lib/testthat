@@ -36,7 +36,7 @@ Reporter <- R6::R6Class("Reporter",
     end_file =       function() {},
     is_full =        function() FALSE,
 
-    width = 0,
+    width = 80,
     unicode = TRUE,
     colour = TRUE,
 
