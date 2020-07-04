@@ -216,9 +216,9 @@ source code for a few.</p>
     <pre class="examples"><div class='input'><span class='kw'>path</span> <span class='op'>&lt;-</span> <span class='fu'>testthat_example</span>(<span class='st'>"success"</span>)
 
 <span class='fu'>test_file</span>(<span class='kw'>path</span>)</div><div class='output co'>#&gt; Testing test-success.R
-#&gt; <span style='color: #00BB00;'>PASS</span><span> x0 </span><span style='color: #BB0000;'>FAIL</span><span> x0 </span><span style='color: #BB00BB;'>WARN</span><span> x0 </span><span style='color: #0000BB;'>SKIP</span><span> x0PASS x1 FAIL x0 WARN x0 SKIP x0PASS x1 FAIL x0 WARN x0 SKIP x1PASS x1 FAIL x0 WARN x1 SKIP x1PASS x2 FAIL x0 WARN x1 SKIP x1PASS x3 FAIL x0 WARN x1 SKIP x1PASS x4 FAIL x0 WARN x1 SKIP x1</span><span style='color: #00BB00;'>PASS</span><span> x4 </span><span style='color: #BB0000;'>FAIL</span><span> x0 </span><span style='color: #BB00BB;'>WARN</span><span> x1 </span><span style='color: #0000BB;'>SKIP</span><span> x1
+#&gt; PASS x0 FAIL x0 WARN x0 SKIP x0PASS x1 FAIL x0 WARN x0 SKIP x0PASS x1 FAIL x0 WARN x0 SKIP x1PASS x1 FAIL x0 WARN x1 SKIP x1PASS x2 FAIL x0 WARN x1 SKIP x1PASS x3 FAIL x0 WARN x1 SKIP x1PASS x4 FAIL x0 WARN x1 SKIP x1PASS x4 FAIL x0 WARN x1 SKIP x1
 #&gt; ────────────────────────────────────────────────────────────────────────────────
-#&gt; </span><span style='font-weight: bold;'>test-success.R:6: </span><span style='color: #0000BB;font-weight: bold;'>skip</span><span style='font-weight: bold;'>: you can skip tests if needed</span><span>
+#&gt; <span style='font-weight: bold;'>test-success.R:6: </span><span style='color: #0000BB;font-weight: bold;'>skip</span><span style='font-weight: bold;'>: you can skip tests if needed</span><span>
 #&gt; Reason: This tests hasn't been written yet
 #&gt; 
 #&gt; </span><span style='font-weight: bold;'>test-success.R:10: </span><span style='color: #BB00BB;font-weight: bold;'>warning</span><span style='font-weight: bold;'>: some tests have warnings</span><span>
@@ -228,7 +228,7 @@ source code for a few.</p>
 #&gt; </span><span style='color: #555555;'> 2. </span><span>testthat::quasi_label(enquo(object), label, arg = "object")
 #&gt; </span><span style='color: #555555;'> 3. </span><span>rlang::eval_bare(expr, quo_get_env(quo))
 #&gt; ────────────────────────────────────────────────────────────────────────────────
-#&gt; </span><span style='color: #00BB00;'>PASS</span><span> x4 </span><span style='color: #BB0000;'>FAIL</span><span> x0 </span><span style='color: #BB00BB;'>WARN</span><span> x1 </span><span style='color: #0000BB;'>SKIP</span><span> x1
+#&gt; PASS x4 FAIL x0 WARN x1 SKIP x1
 #&gt; </span><span style='font-weight: bold;'>Done!</span><span></div><div class='input'><span class='co'># Override the default by supplying the name of a reporter</span>
 <span class='fu'>test_file</span>(<span class='kw'>path</span>, reporter = <span class='st'>"minimal"</span>)</div><div class='output co'>#&gt; .SW...</div></span></pre>
   </div>
