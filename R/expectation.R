@@ -133,12 +133,11 @@ format.expectation_success <- function(x, ...) {
   "As expected"
 }
 
-# Access error fields with `[[` rather than `$` because the
-# `$.Throwable` from the rJava package throws with unknown fields
-
 #' @export
 format.expectation <- function(x, ...) {
   message <- exp_message(x)
+  # Access error fields with `[[` rather than `$` because the
+  # `$.Throwable` from the rJava package throws with unknown fields
   if (is.null(x[["trace"]]) || trace_length(x[["trace"]]) == 0L) {
     return(message)
   }
@@ -163,41 +162,37 @@ exp_message <- function(x) {
 
 # as.expectation ----------------------------------------------------------
 
-as.expectation <- function(x, ...) UseMethod("as.expectation", x)
-
-#' @export
-as.expectation.default <- function(x, ..., srcref = NULL) {
-  stop(
-    "Don't know how to convert '", paste(class(x), collapse = "', '"),
-    "' to expectation.", call. = FALSE
-  )
+as.expectation <- function(x, srcref = NULL) {
+  UseMethod("as.expectation", x)
 }
 
 #' @export
-as.expectation.expectation <- function(x, ..., srcref = NULL) {
+as.expectation.expectation <- function(x, srcref = NULL) {
   x$srcref <- x$srcref %||% srcref
   x
 }
 
 #' @export
-as.expectation.error <- function(x, ..., srcref = NULL) {
-  error <- cnd_message(x)
-
-  msg <- gsub("Error.*?: ", "", as.character(error))
-  # Remove trailing newline to be consistent with other conditons
-  msg <- gsub("\n$", "", msg)
-
-  expectation("error", msg, srcref, trace = x[["trace"]])
+as.expectation.error <- function(x, srcref = NULL) {
+  expectation("error", cnd_message(x), srcref, trace = x[["trace"]])
 }
 
 #' @export
-as.expectation.warning <- function(x, ..., srcref = NULL) {
+as.expectation.warning <- function(x, srcref = NULL) {
   expectation("warning", cnd_message(x), srcref, trace = x[["trace"]])
 }
 
 #' @export
 as.expectation.skip <- function(x, ..., srcref = NULL) {
   expectation("skip", cnd_message(x), srcref, trace = x[["trace"]])
+}
+
+#' @export
+as.expectation.default <- function(x, srcref = NULL) {
+  stop(
+    "Don't know how to convert '", paste(class(x), collapse = "', '"),
+    "' to expectation.", call. = FALSE
+  )
 }
 
 # expectation_type --------------------------------------------------------
