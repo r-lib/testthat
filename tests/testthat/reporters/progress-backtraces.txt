@@ -12,19 +12,19 @@
 ✖ |   1 6 1   | backtraces
 ────────────────────────────────────────────────────────────────────────────────
 backtraces.R:6: error: errors thrown at block level are entraced
-foo
+Error: foo
 Backtrace:
  1. f()
  2. g()
 
 backtraces.R:11: error: errors thrown from a quasi-labelled argument are entraced
-foo
+Error: foo
 Backtrace:
  1. testthat::expect_s3_class(foo(), "foo")
  4. foo()
 
 backtraces.R:18: error: errors thrown from a quasi-labelled argument are entraced (deep case)
-foo
+Error: foo
 Backtrace:
  1. testthat::expect_s3_class(f(), "foo")
  4. f()
@@ -32,7 +32,7 @@ Backtrace:
  9. foo()
 
 backtraces.R:28: error: errors thrown from a quasi-labelled argument are entraced (deep deep case)
-foobar
+Error: foobar
 Backtrace:
  1. f()
  2. g()
@@ -40,14 +40,14 @@ Backtrace:
  7. bar()
 
 backtraces.R:35: error: failed expect_error() prints a backtrace
-bar
+Error: bar
 Backtrace:
  1. testthat::expect_error(f(), "foo")
  7. f()
  8. signaller()
 
 backtraces.R:43: error: Errors are inspected with `conditionMessage()`
-dispatched
+Error: dispatched
 
 backtraces.R:50: warning: also get backtraces for warnings
 foobar

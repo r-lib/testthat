@@ -24,10 +24,10 @@
   <testsuite name="Expectations2" timestamp="1999:12:31 23:59:59" hostname="nodename" tests="0" skipped="0" failures="0" errors="0" time="0"/>
   <testsuite name="Errors" timestamp="1999:12:31 23:59:59" hostname="nodename" tests="2" skipped="0" failures="0" errors="2" time="0">
     <testcase time="0" classname="Errors" name="Error_1">
-      <error type="error" message="stop (@tests.R#33)">stop</error>
+      <error type="error" message="stop (@tests.R#33)">Error: stop</error>
     </testcase>
     <testcase time="0" classname="Errors" name="Error_3">
-      <error type="error" message="! (@tests.R#47)">!
+      <error type="error" message="! (@tests.R#47)">Error: !
 Backtrace:
  1. f()
  2. g()
@@ -36,7 +36,7 @@ Backtrace:
   </testsuite>
   <testsuite name="Recursion" timestamp="1999:12:31 23:59:59" hostname="nodename" tests="1" skipped="0" failures="0" errors="1" time="0">
     <testcase time="0" classname="Recursion" name="Recursion_1">
-      <error type="error" message="This is deep (@tests.R#56)">This is deep
+      <error type="error" message="This is deep (@tests.R#56)">Error: This is deep
 Backtrace:
   1. f(25)
   2. f(x - 1)
@@ -83,7 +83,7 @@ Backtrace:
   </testsuite>
   <testsuite name="Throwable errors" timestamp="1999:12:31 23:59:59" hostname="nodename" tests="1" skipped="0" failures="0" errors="1" time="0">
     <testcase time="0" classname="Throwable_errors" name="Error_4">
-      <error type="error" message="Throwable (@tests.R#111)">Throwable</error>
+      <error type="error" message="Throwable (@tests.R#111)">Error: Throwable</error>
     </testcase>
   </testsuite>
   <testsuite name="End" timestamp="1999:12:31 23:59:59" hostname="nodename" tests="0" skipped="0" failures="0" errors="0" time="0"/>

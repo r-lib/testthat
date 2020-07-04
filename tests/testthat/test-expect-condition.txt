@@ -10,7 +10,7 @@ Backtrace:
  7. testthat::fail("!")
 
 -- 3. Error:  (@test-expect-condition.R#53)  -----------------------------------
-xxx
+Error: xxx
 Backtrace:
  1. testthat::expect_error(fail("xxx"), "zzz")
  7. testthat::fail("xxx")

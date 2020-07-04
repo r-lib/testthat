@@ -35,10 +35,10 @@ tests.R:24: failure: Failure:loop
 ✖ |   0 2     | Errors
 ────────────────────────────────────────────────────────────────────────────────
 tests.R:33: error: Error:1
-stop
+Error: stop
 
 tests.R:47: error: Error:3
-!
+Error: !
 Backtrace:
  1. f()
  2. g()
@@ -50,7 +50,7 @@ Backtrace:
 ✖ |   0 1     | Recursion
 ────────────────────────────────────────────────────────────────────────────────
 tests.R:56: error: Recursion:1
-This is deep
+Error: This is deep
 Backtrace:
   1. f(25)
   2. f(x - 1)
@@ -119,7 +119,7 @@ Backtrace:
 ✖ |   0 1     | Throwable errors
 ────────────────────────────────────────────────────────────────────────────────
 tests.R:111: error: Error:4
-Throwable
+Error: Throwable
 ────────────────────────────────────────────────────────────────────────────────
 
 ⠏ |   0       | End                                                             

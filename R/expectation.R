@@ -138,25 +138,27 @@ format.expectation_success <- function(x, ...) {
 
 #' @export
 format.expectation <- function(x, ...) {
+  message <- exp_message(x)
   if (is.null(x[["trace"]]) || trace_length(x[["trace"]]) == 0L) {
-    x$message
-  } else {
-    format_with_trace(x)
+    return(message)
   }
-}
 
-format_with_trace <- function(exp) {
   trace_lines <- format(
-    exp$trace,
+    x$trace,
     simplify = "branch",
     max_frames = 20,
     dir = Sys.getenv("TESTTHAT_DIR") %||% getwd()
   )
-  paste_line(
-    exp$message,
-    crayon::bold("Backtrace:"),
-    !!!trace_lines
-  )
+  lines <- c(message, crayon::bold("Backtrace:"), trace_lines)
+  paste(lines, collapse = "\n")
+}
+
+exp_message <- function(x) {
+  if (expectation_error(x)) {
+    paste0("Error: ", x$message)
+  } else {
+    x$message
+  }
 }
 
 # as.expectation ----------------------------------------------------------

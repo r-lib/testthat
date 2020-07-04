@@ -85,10 +85,6 @@ dir.exists <- function(paths) {
   file.exists(paths) & file.info(paths)$isdir
 }
 
-paste_line <- function(...) {
-  paste(chr(...), collapse = "\n")
-}
-
 maybe_restart <- function(restart) {
   if (!is.null(findRestart(restart))) {
     invokeRestart(restart)
