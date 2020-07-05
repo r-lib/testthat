@@ -92,8 +92,10 @@ or condition with a message that matches \code{regexp}, or a class that inherits
 from \code{class}. See below for more details.
 
 If the code throws conditions that don't match \code{regexp}/\code{class} they will
-bubble up outside of the expectation, so you'll need to handle in some
-other way.
+bubble up outside of the expectation, so if they're important you'll need
+to catch them with additional \code{expect_message()}/\code{expect_warning()} calls,
+or if they're unimportant you can ignore with
+\code{\link[=suppressMessages]{suppressMessages()}}/\code{\link[=suppressWarnings]{suppressWarnings()}}.
 }
 \section{Testing \code{message} vs \code{class}}{
 
