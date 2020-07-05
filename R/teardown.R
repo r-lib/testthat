@@ -3,10 +3,14 @@ teardown_env$queue <- list()
 
 #' Run code on setup/teardown
 #'
+#' @description
 #' Code in a `setup()` block is run immediately in a clean environment.
 #' Code in a `teardown()` block is run upon completion of a test file,
 #' even if it exits with an error. Multiple calls to `teardown()` will be
 #' executed in the order they were created.
+#'
+#' To run code before or after all tests, use files with names
+#' `tests/testthat/setup-*.R` or `tests/testthat/teardown-*.R`.
 #'
 #' @param code Code to evaluate
 #' @param env Environment in which code will be evaluted. For expert
