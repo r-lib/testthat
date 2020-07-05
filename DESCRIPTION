@@ -64,7 +64,6 @@ Collate:
     'compare-numeric.R'
     'compare-time.R'
     'context.R'
-    'context_name.R'
     'deprec-condition.R'
     'describe.R'
     'edition.R'

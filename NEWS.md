@@ -1,5 +1,8 @@
 # testthat (development version)
 
+* `context_start_file()` is now exported for external reporters (#983, #1082).
+  It now only strips first instance of prefix/suffix (#1041, @stufield).
+
 * New `CompactProgressReporter` tweaks the output of `ProgressReporter` for
   use with a single file, as in `devtools::test_file()`. You can pick a 
   different default by setting `testthat.default_compact_reporter` to
@@ -69,9 +72,6 @@
   `options(lifecycle_verbosity = "warning")` to ensure that lifecycle 
   warnings are always generated in tests.
   
-* `context_name()` is now exported (#983, @stufield) and only strips first 
-  instance of prefix/suffix (#1041, @stufield).
-
 * `verify_output()` now uses the `pdf()` device instead of `png()`; that makes
   it work on systems without X11 (#1011).
 

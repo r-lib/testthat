@@ -76,8 +76,7 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
       self$ctxt_issues <- Stack$new()
       self$ctxt_start_time <- proc.time()
 
-      name <- context_name(self$file_name)
-      context_start(name)
+      context_start_file(self$file_name)
     },
 
     start_context = function(context) {
