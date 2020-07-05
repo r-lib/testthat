@@ -4,8 +4,7 @@
 \alias{test_dir}
 \alias{test_package}
 \alias{test_check}
-\alias{is_testing}
-\alias{testing_package}
+\alias{test_local}
 \title{Run all tests in directory or package}
 \usage{
 test_dir(
@@ -41,9 +40,14 @@ test_check(
   wrap = TRUE
 )
 
-is_testing()
-
-testing_package()
+test_local(
+  path = ".",
+  filter = NULL,
+  reporter = default_reporter(),
+  ...,
+  stop_on_failure = TRUE,
+  stop_on_warning = FALSE
+)
 }
 \arguments{
 \item{path}{Path to directory containing tests.}
@@ -86,15 +90,14 @@ that all expectations are reported, even if outside a test block.}
 A list of test results.
 }
 \description{
-Use \code{test_dir()} for a collection of tests in a directory; use
-\code{test_package()} interactively at the console, and \code{test_check()}
-inside of \verb{R CMD check}.
+\itemize{
+\item \code{test_package()} tests an installed package.
+\item \code{test_local()} tests a local source package.
+\item \code{test_check()} checks a pacakge running \verb{R CMD check}.
+}
 
-In your own code, you can use \code{is_testing()} to determine if code is being
-run as part of a test and \code{testing_package()} to retrieve the name of the
-package being tested. You can also check the underlying env var directly
-\code{identical(Sys.getenv("TESTTHAT"), "true")} to avoid creating a run-time
-dependency on testthat.
+These are all powered by the lower level \code{test_dir()}, runs all test files
+in a directory.
 }
 \section{Test files}{
 
