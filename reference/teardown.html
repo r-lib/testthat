@@ -50,7 +50,9 @@
 <meta property="og:description" content="Code in a setup() block is run immediately in a clean environment.
 Code in a teardown() block is run upon completion of a test file,
 even if it exits with an error. Multiple calls to teardown() will be
-executed in the order they were created." />
+executed in the order they were created.
+To run code before or after all tests, use files with names
+tests/testthat/setup-*.R or tests/testthat/teardown-*.R." />
 <meta property="og:image" content="https://testthat.r-lib.org/logo.png" />
 
 
@@ -183,6 +185,8 @@ executed in the order they were created." />
 Code in a <code>teardown()</code> block is run upon completion of a test file,
 even if it exits with an error. Multiple calls to <code>teardown()</code> will be
 executed in the order they were created.</p>
+<p>To run code before or after all tests, use files with names
+<code>tests/testthat/setup-*.R</code> or <code>tests/testthat/teardown-*.R</code>.</p>
     </div>
 
     <pre class="usage"><span class='fu'>teardown</span>(<span class='kw'>code</span>, env = <span class='fu'><a href='https://rdrr.io/r/base/sys.parent.html'>parent.frame</a></span>())
