@@ -1,5 +1,9 @@
 # testthat (development version)
 
+* New `test_local()` tests a local source package. It's equivalent to
+  `devtools::test()` but doesn't require devtools and all its dependencies
+  to be installed (#1030).
+
 * `context_start_file()` is now exported for external reporters (#983, #1082).
   It now only strips first instance of prefix/suffix (#1041, @stufield).
 

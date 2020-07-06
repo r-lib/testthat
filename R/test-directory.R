@@ -3,10 +3,10 @@
 #' @description
 #' * `test_package()` tests an installed package.
 #' * `test_local()` tests a local source package.
-#' * `test_check()` checks a pacakge running `R CMD check`.
+#' * `test_check()` checks a package during `R CMD check`.
 #'
-#' These are all powered by the lower level `test_dir()`, runs all test files
-#' in a directory.
+#' These are all powered by the lower level `test_dir()`, which runs all test
+#' files in a directory.
 #'
 #' @section Test files:
 #' For package code, tests should live in `tests/testthat`.

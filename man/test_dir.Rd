@@ -93,11 +93,11 @@ A list of test results.
 \itemize{
 \item \code{test_package()} tests an installed package.
 \item \code{test_local()} tests a local source package.
-\item \code{test_check()} checks a pacakge running \verb{R CMD check}.
+\item \code{test_check()} checks a package during \verb{R CMD check}.
 }
 
-These are all powered by the lower level \code{test_dir()}, runs all test files
-in a directory.
+These are all powered by the lower level \code{test_dir()}, which runs all test
+files in a directory.
 }
 \section{Test files}{
 
