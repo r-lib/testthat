@@ -37,23 +37,6 @@ test_that("... passed on to grepl", {
   expect_success(expect_error(stop("X"), "x", ignore.case = TRUE))
 })
 
-test_that("generates informative failures", {
-  # rlang backtraces are sensitive to upstream changes
-  skip_on_cran()
-  withr::local_options(list(rlang_trace_format_srcrefs = FALSE))
-
-  expect_known_failure("test-expect-condition.txt", {
-    # Call `stop()` indirectly to create more realistic backtraces in
-    # captured output
-    fail <- function(msg) stop(msg)
-
-    expect_error(null())
-    expect_error(fail("!"), NA)
-    # error bubbles up, terminating test
-    expect_error(fail("xxx"), "zzz")
-  })
-})
-
 test_that("message method is called when expecting error", {
   local_methods(
     conditionMessage.foobar = function(err) "dispatched!"

@@ -1,5 +1,8 @@
 # testthat (development version)
 
+* `expect_known_failure()` has been removed. As far as I can tell it was
+  only ever used by testthat, and is rather fragile.
+
 * `context_start_file()` is now exported for external reporters (#983, #1082).
   It now only strips first instance of prefix/suffix (#1041, @stufield).
 
