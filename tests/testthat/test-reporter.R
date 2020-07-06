@@ -46,7 +46,7 @@ test_that('debug reporter produces consistent output', {
 })
 
 test_that("reporters accept a 'file' argument and write to that location", {
-  expect_report_to_file(CheckReporter, stop_on_failure = FALSE)
+  expect_report_to_file(CheckReporter)
   expect_report_to_file(JunitReporterMock)
   expect_report_to_file(LocationReporter)
   expect_report_to_file(MinimalReporter)

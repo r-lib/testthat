@@ -12,28 +12,18 @@ CheckReporter <- R6::R6Class("CheckReporter",
   inherit = Reporter,
   public = list(
     problems = NULL,
+    skips = NULL,
+
     n_ok = 0L,
     n_skip = 0L,
     n_fail = 0L,
     n_warn = 0L,
-    skips = NULL,
 
-    stop_on_failure = TRUE,
-    ci = FALSE,
-
-    initialize = function(stop_on_failure = TRUE, ci = on_ci(), ...) {
+    initialize = function(...) {
       self$problems <- Stack$new()
-      self$stop_on_failure <- stop_on_failure
-      self$ci <- ci
-
       self$skips <- Stack$new()
-      super$initialize(...)
-    },
 
-    start_test = function(context, test) {
-      if (self$ci) {
-        self$cat_line("Starting test: ", test)
-      }
+      super$initialize(...)
     },
 
     add_result = function(context, test, result) {
@@ -97,10 +87,6 @@ CheckReporter <- R6::R6Class("CheckReporter",
         self$cat_line("... and ", length(problems) - 10, " more")
       }
       self$cat_line()
-
-      if (self$stop_on_failure) {
-        stop("testthat unit tests failed", call. = FALSE)
-      }
     }
   )
 )
