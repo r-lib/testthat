@@ -93,3 +93,8 @@ compare_state <- function(old, new) {
 
   list(n = n, added = added, deleted = deleted, modified = modified)
 }
+
+# Helpers -----------------------------------------------------------------
+
+is_directory <- function(x) file.info(x)$isdir
+is_readable <- function(x) file.access(x, 4) == 0

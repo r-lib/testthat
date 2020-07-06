@@ -109,7 +109,7 @@ find_test_scripts <- function(path, filter = NULL, invert = FALSE, ...) {
 #' out <- test_file(path, reporter = "minimal")
 #' str(out[[1]])
 test_file <- function(path,
-                      reporter = default_reporter(),
+                      reporter = default_compact_reporter(),
                       env = test_env(),
                       start_end_reporter = TRUE,
                       load_helpers = TRUE,

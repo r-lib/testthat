@@ -2,14 +2,36 @@
 % Please edit documentation in R/expect-condition.R
 \name{expect_error}
 \alias{expect_error}
+\alias{expect_warning}
+\alias{expect_message}
 \alias{expect_condition}
-\title{Expectation: does code throw error or other condition?}
+\title{Expectation: does code throw an error, warning, message, or other condition?}
 \usage{
 expect_error(
   object,
   regexp = NULL,
   class = NULL,
   ...,
+  info = NULL,
+  label = NULL
+)
+
+expect_warning(
+  object,
+  regexp = NULL,
+  class = NULL,
+  ...,
+  all = FALSE,
+  info = NULL,
+  label = NULL
+)
+
+expect_message(
+  object,
+  regexp = NULL,
+  class = NULL,
+  ...,
+  all = FALSE,
   info = NULL,
   label = NULL
 )
@@ -44,8 +66,6 @@ a class name. This is useful for "classed" conditions.}
 \item{...}{
   Arguments passed on to \code{\link[=expect_match]{expect_match}}
   \describe{
-    \item{\code{all}}{Should all elements of actual value match \code{regexp} (TRUE),
-or does only one need to match (FALSE)}
     \item{\code{perl}}{logical.  Should Perl-compatible regexps be used?}
     \item{\code{fixed}}{logical.  If \code{TRUE}, \code{pattern} is a string to be
     matched as is.  Overrides all conflicting arguments.}
@@ -56,15 +76,26 @@ is soft-deprecated and should not be used in new code. Instead see
 alternatives in \link{quasi_label}.}
 
 \item{label}{Used to customise failure messages. For expert use only.}
+
+\item{all}{\emph{DEPRECATED} If you need to test multiple warnings/messages
+you know need to use multiple calls to \code{expect_message()}/
+\code{expect_warning()}}
 }
 \value{
 If \code{regexp = NA}, the value of the first argument; otherwise
 the captured condition.
 }
 \description{
-\code{expect_error()} and \code{expect_condition()} check that code throws an error
+\code{expect_error()}, \code{expect_warning()}, \code{expect_message()}, and
+\code{expect_condition()} check that code throws an error, warning, message,
 or condition with a message that matches \code{regexp}, or a class that inherits
 from \code{class}. See below for more details.
+
+If the code throws conditions that don't match \code{regexp}/\code{class} they will
+bubble up outside of the expectation, so if they're important you'll need
+to catch them with additional \code{expect_message()}/\code{expect_warning()} calls,
+or if they're unimportant you can ignore with
+\code{\link[=suppressMessages]{suppressMessages()}}/\code{\link[=suppressWarnings]{suppressWarnings()}}.
 }
 \section{Testing \code{message} vs \code{class}}{
 
@@ -86,6 +117,7 @@ using \code{\link[=verify_output]{verify_output()}} instead.
 }
 
 \examples{
+# Errors ------------------------------------------------------------------
 f <- function() stop("My error!")
 expect_error(f())
 expect_error(f(), "My error!")
@@ -93,17 +125,39 @@ expect_error(f(), "My error!")
 # You can use the arguments of grepl to control the matching
 expect_error(f(), "my error!", ignore.case = TRUE)
 
-# If you are working with classed conditions, it's better to test for
-# the class name, rather than the error message (which may change over time)
-custom_err <- function(var) {
-  rlang::abort("A special error", var = var, .subclass = "testthat_special")
-}
-expect_error(custom_err("a"), class = "testthat_special")
-
 # Note that `expect_error()` returns the error object so you can test
 # its components if needed
-err <- expect_error(custom_err("a"), class = "testthat_special")
-expect_equal(err$var, "a")
+err <- expect_error(rlang::abort("a", n = 10))
+expect_equal(err$n, 10)
+
+# Warnings ------------------------------------------------------------------
+f <- function(x) {
+  if (x < 0) {
+    warning("*x* is already negative")
+    return(x)
+  }
+  -x
+}
+expect_warning(f(-1))
+expect_warning(f(-1), "already negative")
+expect_warning(f(1), NA)
+
+# To test message and output, store results to a variable
+expect_warning(out <- f(-1), "already negative")
+expect_equal(out, -1)
+
+# Messages ------------------------------------------------------------------
+f <- function(x) {
+  if (x < 0) {
+    message("*x* is already negative")
+    return(x)
+  }
+
+  -x
+}
+expect_message(f(-1))
+expect_message(f(-1), "already negative")
+expect_message(f(1), NA)
 }
 \seealso{
 Other expectations: 
@@ -111,7 +165,6 @@ Other expectations:
 \code{\link{equality-expectations}},
 \code{\link{expect_length}()},
 \code{\link{expect_match}()},
-\code{\link{expect_message}()},
 \code{\link{expect_named}()},
 \code{\link{expect_null}()},
 \code{\link{expect_output}()},

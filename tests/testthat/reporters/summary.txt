@@ -38,17 +38,17 @@ FALSE isn't true.
 [1] 1 - 2 == -1
 
 ── 5. Error: Error:1 (@tests.R#33) ─────────────────────────────────────────────
-stop
+Error: stop
 
 ── 6. Error: Error:3 (@tests.R#47) ─────────────────────────────────────────────
-!
+Error: !
 Backtrace:
  1. f()
  2. g()
  3. h()
 
 ── 7. Error: Recursion:1 (@tests.R#56) ─────────────────────────────────────────
-This is deep
+Error: This is deep
 Backtrace:
   1. f(25)
   2. f(x - 1)
@@ -73,6 +73,6 @@ Backtrace:
  26. f(x - 1)
 
 ── 8. Error: Error:4 (@tests.R#111) ────────────────────────────────────────────
-Throwable
+Error: Throwable
 
 ══ DONE ════════════════════════════════════════════════════════════════════════

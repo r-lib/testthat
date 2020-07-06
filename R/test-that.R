@@ -36,9 +36,11 @@ test_that <- function(desc, code) {
 # Access error fields with `[[` rather than `$` because the
 # `$.Throwable` from the rJava package throws with unknown fields
 test_code <- function(test, code, env = test_env(), skip_on_empty = TRUE) {
-  if (!is.null(test)) {
-    get_reporter()$start_test(context = get_reporter()$.context, test = test)
-    on.exit(get_reporter()$end_test(context = get_reporter()$.context, test = test))
+  reporter <- get_reporter() %||% StopReporter$new()
+
+  if (!is.null(test) && !is.null(reporter)) {
+    reporter$start_test(context = reporter$.context, test = test)
+    on.exit(reporter$end_test(context = reporter$.context, test = test))
   }
 
   ok <- TRUE
@@ -61,7 +63,7 @@ test_code <- function(test, code, env = test_env(), skip_on_empty = TRUE) {
     e$test <- test %||% "(code run outside of `test_that()`)"
 
     ok <<- ok && expectation_ok(e)
-    get_reporter()$add_result(context = get_reporter()$.context, test = test, result = e)
+    reporter$add_result(context = reporter$.context, test = test, result = e)
   }
 
   frame <- sys.nframe()
@@ -131,6 +133,10 @@ test_code <- function(test, code, env = test_env(), skip_on_empty = TRUE) {
     # So, do not handle it here so that it will be handled by handle_error.
     if (getOption("warn") >= 2) {
       return()
+    }
+
+    if (can_entrace(e)) {
+      e <- cnd_entrace(e)
     }
 
     handled <<- TRUE

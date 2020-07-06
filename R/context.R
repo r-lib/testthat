@@ -20,10 +20,31 @@
 #' context("Remote procedure calls")
 context <- function(desc) {
   edition_deprecate(3, "context()")
-  get_reporter()$.start_context(desc)
+  context_start(desc)
 }
 
-end_context <- function() {
-  get_reporter()$.end_context()
+context_start <- function(desc) {
+  reporter <- get_reporter()
+  if (!is.null(reporter)) {
+    get_reporter()$.start_context(desc)
+  }
 }
 
+#' Start test context from a file name
+#'
+#' For use in external reporters
+#'
+#' @param name file name
+#' @keywords internal
+#' @export
+context_start_file <- function(name) {
+  context_start(context_name(name))
+}
+
+context_name <- function(filename) {
+  # Remove test- prefix
+  filename <- sub("^test-", "", filename)
+  # Remove terminal extension
+  filename <- sub("[.][Rr]$", "", filename)
+  filename
+}

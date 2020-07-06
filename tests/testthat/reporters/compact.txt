@@ -1,17 +1,17 @@
-✔ |  OK F W S | Context
+Testing tests.R
 
-⠏ |   0       | tests                                                           
-⠋ |   1       | tests                                                           
-✔ |   1       | tests
+PASS x0 FAIL x0 WARN x0 SKIP x0
+PASS x1 FAIL x0 WARN x0 SKIP x0
+PASS x1 FAIL x0 WARN x0 SKIP x0
 
-⠏ |   0       | Expectations                                                    
-⠋ |   1       | Expectations                                                    
-⠙ |   1 1     | Expectations                                                    
-⠹ |   1 2     | Expectations                                                    
-⠸ |   1 3     | Expectations                                                    
-⠼ |   1 4     | Expectations                                                    
-⠴ |   2 4     | Expectations                                                    
-✖ |   2 4     | Expectations
+PASS x1 FAIL x0 WARN x0 SKIP x0
+PASS x2 FAIL x0 WARN x0 SKIP x0
+PASS x2 FAIL x1 WARN x0 SKIP x0
+PASS x2 FAIL x2 WARN x0 SKIP x0
+PASS x2 FAIL x3 WARN x0 SKIP x0
+PASS x2 FAIL x4 WARN x0 SKIP x0
+PASS x3 FAIL x4 WARN x0 SKIP x0
+PASS x3 FAIL x4 WARN x0 SKIP x0
 ────────────────────────────────────────────────────────────────────────────────
 tests.R:12: failure: Failure:1
 Failure has been forced
@@ -28,11 +28,11 @@ tests.R:24: failure: Failure:loop
 [1] 1 - 2 == -1
 ────────────────────────────────────────────────────────────────────────────────
 
-⠏ |   0       | Expectations2                                                   
-⠏ |   0       | Errors                                                          
-⠋ |   0 1     | Errors                                                          
-⠙ |   0 2     | Errors                                                          
-✖ |   0 2     | Errors
+PASS x3 FAIL x4 WARN x0 SKIP x0
+PASS x3 FAIL x4 WARN x0 SKIP x0
+PASS x3 FAIL x5 WARN x0 SKIP x0
+PASS x3 FAIL x6 WARN x0 SKIP x0
+PASS x3 FAIL x6 WARN x0 SKIP x0
 ────────────────────────────────────────────────────────────────────────────────
 tests.R:33: error: Error:1
 Error: stop
@@ -45,9 +45,9 @@ Backtrace:
  3. h()
 ────────────────────────────────────────────────────────────────────────────────
 
-⠏ |   0       | Recursion                                                       
-⠋ |   0 1     | Recursion                                                       
-✖ |   0 1     | Recursion
+PASS x3 FAIL x6 WARN x0 SKIP x0
+PASS x3 FAIL x7 WARN x0 SKIP x0
+PASS x3 FAIL x7 WARN x0 SKIP x0
 ────────────────────────────────────────────────────────────────────────────────
 tests.R:56: error: Recursion:1
 Error: This is deep
@@ -75,11 +75,11 @@ Backtrace:
  26. f(x - 1)
 ────────────────────────────────────────────────────────────────────────────────
 
-⠏ |   0       | Skips                                                           
-⠋ |   0     1 | Skips                                                           
-⠙ |   0     2 | Skips                                                           
-⠹ |   0     3 | Skips                                                           
-✔ |   0     3 | Skips
+PASS x3 FAIL x7 WARN x0 SKIP x0
+PASS x3 FAIL x7 WARN x0 SKIP x1
+PASS x3 FAIL x7 WARN x0 SKIP x2
+PASS x3 FAIL x7 WARN x0 SKIP x3
+PASS x3 FAIL x7 WARN x0 SKIP x3
 ────────────────────────────────────────────────────────────────────────────────
 tests.R:62: skip: Skip:1
 Reason: skip
@@ -91,11 +91,11 @@ tests.R:72: skip: Skip:3
 Reason: empty test
 ────────────────────────────────────────────────────────────────────────────────
 
-⠏ |   0       | Warnings                                                        
-⠋ |   0   1   | Warnings                                                        
-⠙ |   0   2   | Warnings                                                        
-⠹ |   0   3   | Warnings                                                        
-✔ |   0   3   | Warnings
+PASS x3 FAIL x7 WARN x0 SKIP x3
+PASS x3 FAIL x7 WARN x1 SKIP x3
+PASS x3 FAIL x7 WARN x2 SKIP x3
+PASS x3 FAIL x7 WARN x3 SKIP x3
+PASS x3 FAIL x7 WARN x3 SKIP x3
 ────────────────────────────────────────────────────────────────────────────────
 tests.R:78: warning: Warning:1
 abc
@@ -109,24 +109,19 @@ Backtrace:
  1. f()
 ────────────────────────────────────────────────────────────────────────────────
 
-⠏ |   0       | Output                                                          
-⠋ |   1       | Output                                                          
-⠙ |   2       | Output                                                          
-✔ |   2       | Output
+PASS x3 FAIL x7 WARN x3 SKIP x3
+PASS x4 FAIL x7 WARN x3 SKIP x3
+PASS x5 FAIL x7 WARN x3 SKIP x3
+PASS x5 FAIL x7 WARN x3 SKIP x3
 
-⠏ |   0       | Throwable errors                                                
-⠋ |   0 1     | Throwable errors                                                
-✖ |   0 1     | Throwable errors
+PASS x5 FAIL x7 WARN x3 SKIP x3
+PASS x5 FAIL x8 WARN x3 SKIP x3
+PASS x5 FAIL x8 WARN x3 SKIP x3
 ────────────────────────────────────────────────────────────────────────────────
 tests.R:111: error: Error:4
 Error: Throwable
 ────────────────────────────────────────────────────────────────────────────────
 
-⠏ |   0       | End                                                             
-══ Results ═════════════════════════════════════════════════════════════════════
-OK:       5
-Failed:   8
-Warnings: 3
-Skipped:  3
-● empty test (1)
-● skip (2)
+PASS x5 FAIL x8 WARN x3 SKIP x3
+PASS x5 FAIL x8 WARN x3 SKIP x3
+Done!

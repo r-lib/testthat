@@ -133,72 +133,69 @@ format.expectation_success <- function(x, ...) {
   "As expected"
 }
 
-# Access error fields with `[[` rather than `$` because the
-# `$.Throwable` from the rJava package throws with unknown fields
-
 #' @export
-format.expectation <- function(x, ...) {
+format.expectation <- function(x, simplify = "branch", ...) {
+  message <- exp_message(x)
+  # Access error fields with `[[` rather than `$` because the
+  # `$.Throwable` from the rJava package throws with unknown fields
   if (is.null(x[["trace"]]) || trace_length(x[["trace"]]) == 0L) {
-    x$message
-  } else {
-    format_with_trace(x, ...)
+    return(message)
   }
-}
 
-format_with_trace <- function(exp, simplify = "branch", ...) {
   max_frames <- if (simplify == "branch") 20 else NULL
 
   trace_lines <- format(
-    exp$trace,
+    x$trace,
     simplify = simplify,
     ...,
     max_frames = max_frames,
     dir = Sys.getenv("TESTTHAT_DIR") %||% getwd()
   )
-  paste_line(
-    exp$message,
-    crayon::bold("Backtrace:"),
-    !!!trace_lines
-  )
+  lines <- c(message, crayon::bold("Backtrace:"), trace_lines)
+  paste(lines, collapse = "\n")
+}
+
+exp_message <- function(x) {
+  if (expectation_error(x)) {
+    paste0("Error: ", x$message)
+  } else {
+    x$message
+  }
 }
 
 # as.expectation ----------------------------------------------------------
 
-as.expectation <- function(x, ...) UseMethod("as.expectation", x)
-
-#' @export
-as.expectation.default <- function(x, ..., srcref = NULL) {
-  stop(
-    "Don't know how to convert '", paste(class(x), collapse = "', '"),
-    "' to expectation.", call. = FALSE
-  )
+as.expectation <- function(x, srcref = NULL) {
+  UseMethod("as.expectation", x)
 }
 
 #' @export
-as.expectation.expectation <- function(x, ..., srcref = NULL) {
+as.expectation.expectation <- function(x, srcref = NULL) {
   x$srcref <- x$srcref %||% srcref
   x
 }
 
 #' @export
-as.expectation.error <- function(x, ..., srcref = NULL) {
-  error <- cnd_message(x)
-
-  msg <- gsub("Error.*?: ", "", as.character(error))
-  # Remove trailing newline to be consistent with other conditons
-  msg <- gsub("\n$", "", msg)
-
-  expectation("error", msg, srcref, trace = x[["trace"]])
+as.expectation.error <- function(x, srcref = NULL) {
+  expectation("error", cnd_message(x), srcref, trace = x[["trace"]])
 }
 
 #' @export
-as.expectation.warning <- function(x, ..., srcref = NULL) {
-  expectation("warning", cnd_message(x), srcref)
+as.expectation.warning <- function(x, srcref = NULL) {
+  expectation("warning", cnd_message(x), srcref, trace = x[["trace"]])
 }
 
 #' @export
 as.expectation.skip <- function(x, ..., srcref = NULL) {
-  expectation("skip", cnd_message(x), srcref)
+  expectation("skip", cnd_message(x), srcref, trace = x[["trace"]])
+}
+
+#' @export
+as.expectation.default <- function(x, srcref = NULL) {
+  stop(
+    "Don't know how to convert '", paste(class(x), collapse = "', '"),
+    "' to expectation.", call. = FALSE
+  )
 }
 
 # expectation_type --------------------------------------------------------

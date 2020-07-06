@@ -1,5 +1,29 @@
 # testthat (development version)
 
+* `context_start_file()` is now exported for external reporters (#983, #1082).
+  It now only strips first instance of prefix/suffix (#1041, @stufield).
+
+* New `CompactProgressReporter` tweaks the output of `ProgressReporter` for
+  use with a single file, as in `devtools::test_file()`. You can pick a 
+  different default by setting `testthat.default_compact_reporter` to
+  the name of a reporter.
+
+* `expect_error()`, `expect_warning()`, `expect_message()`, and 
+  `expect_condition()` now all use the same underlying logic: they
+  capture the first condition that matches `class`/`regexp` and
+  allow anything else to bubble up (#998/#1052).
+
+* The `all` argument to `expect_message()` and `expect_warning()` is now
+  deprecated. It was never a particularly good idea or well documented, 
+  and is now superseded by the new condition capturing behaviour.
+
+* `expect_error()`, `expect_warning()`, `expect_message()`, and 
+  `expect_condition()` now warn if there are unexpected arguments
+  that are never used.
+
+* Unexpected warnings now include a backtrace, making it easier to figure
+  out where they came from.
+  
 * `ProgressReporter` now checks if you've exceeded the maximum number of
   failures (from option `testthat.progress.max_fails`) after each expectation,
   rather than at the end of each file. This is important for tests that 
@@ -48,9 +72,6 @@
   `options(lifecycle_verbosity = "warning")` to ensure that lifecycle 
   warnings are always generated in tests.
   
-* `context_name()` is now exported (#983, @stufield) and only strips first 
-  instance of prefix/suffix (#1041, @stufield).
-
 * `verify_output()` now uses the `pdf()` device instead of `png()`; that makes
   it work on systems without X11 (#1011).
 

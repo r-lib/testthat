@@ -20,6 +20,9 @@ Code in a \code{setup()} block is run immediately in a clean environment.
 Code in a \code{teardown()} block is run upon completion of a test file,
 even if it exits with an error. Multiple calls to \code{teardown()} will be
 executed in the order they were created.
+
+To run code before or after all tests, use files with names
+\verb{tests/testthat/setup-*.R} or \verb{tests/testthat/teardown-*.R}.
 }
 \examples{
 \dontrun{

@@ -15,16 +15,16 @@ not ok 6 Failure:loop
 ok 7 Failure:loop
 # Context Errors
 not ok 8 Error:1
-  stop
+  Error: stop
 not ok 9 Error:3
-  !
+  Error: !
   Backtrace:
    1. f()
    2. g()
    3. h()
 # Context Recursion
 not ok 10 Recursion:1
-  This is deep
+  Error: This is deep
   Backtrace:
     1. f(25)
     2. f(x - 1)
@@ -55,9 +55,11 @@ ok 13 # SKIP Reason: empty test
 ok 14 # WARNING abc
 ok 15 # WARNING def
 ok 16 # WARNING ghi
+Backtrace:
+ 1. f()
 # Context Output
 ok 17 Output:1
 ok 18 Output:1
 # Context Throwable errors
 not ok 19 Error:4
-  Throwable
+  Error: Throwable

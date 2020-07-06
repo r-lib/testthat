@@ -19,10 +19,7 @@ source code for a few.
 \examples{
 path <- testthat_example("success")
 
-# The default reporter - doesn't display well in examples because
-# it's designed to work in an interactive console.
 test_file(path)
-
 # Override the default by supplying the name of a reporter
 test_file(path, reporter = "minimal")
 }

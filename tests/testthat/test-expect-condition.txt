@@ -1,59 +1,29 @@
--- Failure:  (@test-expect-condition.R#55) -------------------------------------
-`null()` did not throw an error.
+-- Failure:  (@test-expect-condition.R#50) -------------------------------------
+`object` did not throw the expected error.
 
--- Failure:  (@test-expect-condition.R#56) -------------------------------------
-`fail("!")` threw an error.
+-- Failure:  (@test-expect-condition.R#51) -------------------------------------
+`object` threw an unexpected error.
 Message: !
 Class:   simpleError/error/condition
 Backtrace:
     x
  1. +-testthat::expect_error(fail("!"), NA)
- 2. | \-testthat::quasi_capture(...)
- 3. |   +-testthat:::.capture(...)
- 4. |   | \-base::withCallingHandlers(...)
- 5. |   \-rlang::eval_bare(quo_get_expr(.quo), quo_get_env(.quo))
- 6. \-testthat::fail("!")
+ 2. | \-testthat::expect_condition_matching(...)
+ 3. |   \-testthat::quasi_capture(...)
+ 4. |     +-testthat:::.capture(...)
+ 5. |     | \-base::withCallingHandlers(...)
+ 6. |     \-rlang::eval_bare(quo_get_expr(.quo), quo_get_env(.quo))
+ 7. \-testthat::fail("!")
 
--- Failure:  (@test-expect-condition.R#58) -------------------------------------
-`fail("xxx")` threw an error with unexpected message.
-Expected match: "zzz"
-Actual message: "xxx"
+-- Error:  (@test-expect-condition.R#53) ---------------------------------------
+Error: xxx
 Backtrace:
     x
- 1. +-testthat::expect_error(fail("xxx"), regexp = "zzz")
- 2. | \-testthat::quasi_capture(...)
- 3. |   +-testthat:::.capture(...)
- 4. |   | \-base::withCallingHandlers(...)
- 5. |   \-rlang::eval_bare(quo_get_expr(.quo), quo_get_env(.quo))
- 6. \-testthat::fail("xxx")
-
--- Failure:  (@test-expect-condition.R#59) -------------------------------------
-`fail("xxx")` threw an error with unexpected class.
-Expected class: zzz
-Actual class:   simpleError/error/condition
-Message:        xxx
-Backtrace:
-    x
- 1. +-testthat::expect_error(fail("xxx"), class = "zzz")
- 2. | \-testthat::quasi_capture(...)
- 3. |   +-testthat:::.capture(...)
- 4. |   | \-base::withCallingHandlers(...)
- 5. |   \-rlang::eval_bare(quo_get_expr(.quo), quo_get_env(.quo))
- 6. \-testthat::fail("xxx")
-
--- Failure:  (@test-expect-condition.R#60) -------------------------------------
-`fail("xxx")` threw an error with unexpected class and message.
-Expected class: zzz
-Actual class:   simpleError/error/condition
-Message:        xxx
-Expected match: "zzz"
-Actual message: "xxx"
-Backtrace:
-    x
- 1. +-testthat::expect_error(fail("xxx"), regexp = "zzz", class = "zzz")
- 2. | \-testthat::quasi_capture(...)
- 3. |   +-testthat:::.capture(...)
- 4. |   | \-base::withCallingHandlers(...)
- 5. |   \-rlang::eval_bare(quo_get_expr(.quo), quo_get_env(.quo))
- 6. \-testthat::fail("xxx")
+ 1. +-testthat::expect_error(fail("xxx"), "zzz")
+ 2. | \-testthat::expect_condition_matching(...)
+ 3. |   \-testthat::quasi_capture(...)
+ 4. |     +-testthat:::.capture(...)
+ 5. |     | \-base::withCallingHandlers(...)
+ 6. |     \-rlang::eval_bare(quo_get_expr(.quo), quo_get_env(.quo))
+ 7. \-testthat::fail("xxx")
 

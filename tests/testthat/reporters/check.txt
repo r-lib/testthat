@@ -13,10 +13,10 @@ FALSE isn't true.
 [1] 1 - 2 == -1
 
 -- Error: Error:1 (@tests.R#33) ------------------------------------------------
-stop
+Error: stop
 
 -- Error: Error:3 (@tests.R#47) ------------------------------------------------
-!
+Error: !
 Backtrace:
     x
  1. \-f()
@@ -24,7 +24,7 @@ Backtrace:
  3.     \-h()
 
 -- Error: Recursion:1 (@tests.R#56) --------------------------------------------
-This is deep
+Error: This is deep
 Backtrace:
      x
   1. \-f(25)
@@ -64,7 +64,7 @@ Reason: skip
 Reason: empty test
 
 -- Error: Error:4 (@tests.R#111) -----------------------------------------------
-Throwable
+Error: Throwable
 
 ── Skipped tests  ──────────────────────────────────────────────────────────────
 ● empty test (1)

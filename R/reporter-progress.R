@@ -3,12 +3,15 @@ NULL
 
 #' Test reporter: interactive progress bar of errors.
 #'
-#' This reporter is a reimagining of [SummaryReporter] designed to make the
-#' most information available up front, while taking up less space overall. It
-#' is the default reporting reporter used by [test_dir()] and [test_file()].
+#' @description
+#' `ProgressReporter` is designed for interactively use. It's goal is to
+#' give you actionable insights to help you understand the status of your
+#' code. This reporter also praises you from time-to-time if all your tests
+#' pass. It's the default reporter for [test_dir()].
 #'
-#' As an additional benefit, this reporter will praise you from time-to-time
-#' if all your tests pass.
+#' `CompactProgressReporter` is a minimal version of `ProgressReporter`
+#' designed for use with single files. It's the default reporter for
+#' [test_file()].
 #'
 #' @export
 #' @family reporters
@@ -30,9 +33,6 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
     n_fail = 0,
 
     frames = NULL,
-    width = 0,
-    unicode = TRUE,
-    colour = TRUE,
 
     ctxt_start_time = NULL,
     ctxt_issues = NULL,
@@ -48,6 +48,7 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
                           max_failures = getOption("testthat.progress.max_fails", 10L),
                           min_time = 0.1,
                           update_interval = 0.1,
+                          compact = TRUE,
                           ...) {
       super$initialize(...)
       self$max_fail <- max_failures
@@ -59,9 +60,6 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
 
       # Capture at init so not affected by test settings
       self$frames <- cli::get_spinner()$frames
-      self$width <- cli::console_width()
-      self$unicode <- cli::is_utf8_output()
-      self$colour <- crayon::has_color()
     },
 
     is_full = function() {
@@ -78,8 +76,7 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
       self$ctxt_issues <- Stack$new()
       self$ctxt_start_time <- proc.time()
 
-      name <- context_name(self$file_name)
-      get_reporter()$.start_context(name)
+      context_start_file(self$file_name)
     },
 
     start_context = function(context) {
@@ -193,11 +190,7 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
       }
 
       if (self$is_full()) {
-        local_reproducible_output(
-          width = self$width,
-          crayon = self$crayon,
-          unicode = self$unicode
-        )
+        self$local_user_output()
         self$end_context()
         stop_reporter("max_fails exceded")
       }
@@ -260,6 +253,50 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
   )
 )
 
+#' @export
+#' @rdname ProgressReporter
+CompactProgressReporter <- R6::R6Class("CompactProgressReporter",
+  inherit = ProgressReporter,
+  public = list(
+    initialize = function(min_time = Inf, ...) {
+      super$initialize(min_time = min_time, ...)
+    },
+
+    start_file = function(name) {
+      self$cat_line("Testing ", name)
+      super$start_file(name)
+    },
+
+    start_reporter = function(context) {
+    },
+
+    end_reporter = function() {
+      if (self$n_fail > 0 || self$n_warn > 0 || self$n_skip > 0) {
+        self$show_status()
+        self$cat_line()
+      }
+      if (self$is_full()) {
+        self$cat_line(" Terminated early")
+      } else {
+        self$cat_line(crayon::bold("Done!"))
+      }
+    },
+
+    show_status = function(complete = NULL) {
+      self$local_user_output()
+      status <- paste0(
+        colourise("PASS", "success"), " x", self$n_ok, " ",
+        colourise("FAIL", "fail"),    " x", self$n_fail, " ",
+        colourise("WARN", "warn"),    " x", self$n_warn, " ",
+        colourise("SKIP", "skip"),    " x", self$n_skip
+      )
+      self$cat_tight("\r", status)
+    }
+
+  )
+)
+
+# helpers -----------------------------------------------------------------
 
 spinner <- function(frames, i) {
   frames[((i - 1) %% length(frames)) + 1]
