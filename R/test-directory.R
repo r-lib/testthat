@@ -193,9 +193,11 @@ test_local <- function(path = ".",
   }
 
   library(testthat)
-  pkgload::load_all(path, helpers = FALSE)
+  if (package != "testthat") {
+    pkgload::load_all(path, helpers = FALSE, quiet = TRUE)
+  }
 
-  withr::local_envvar(list("NOT_CRAN" = "true"))
+  withr::local_envvar(c(NOT_CRAN = "true"))
   test_dir(
     test_path,
     package = package,
