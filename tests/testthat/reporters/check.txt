@@ -63,6 +63,18 @@ Reason: skip
 ── Skip: Skip:3 (@tests.R#72) ──────────────────────────────────────────────────
 Reason: empty test
 
+── Warning: Warning:1 (@tests.R#78) ────────────────────────────────────────────
+abc
+
+── Warning: Warning:2 (@tests.R#84) ────────────────────────────────────────────
+def
+
+── Warning: Warning:2 (@tests.R#85) ────────────────────────────────────────────
+ghi
+Backtrace:
+    █
+ 1. └─f()
+
 ── Error: Error:4 (@tests.R#111) ───────────────────────────────────────────────
 Error: Throwable
 
@@ -71,7 +83,7 @@ Error: Throwable
 ● skip (2)
 
 ══ testthat results  ═══════════════════════════════════════════════════════════
-[ OK: 8 | SKIPPED: 3 | WARNINGS: 0 | FAILED: 8 ]
+[ OK: 5 | SKIPPED: 3 | WARNINGS: 3 | FAILED: 8 ]
 1. Failure: Failure:1 (@tests.R#12)
 2. Failure: Failure:2a (@tests.R#16)
 3. Failure: Failure:2b (@tests.R#19)

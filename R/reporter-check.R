@@ -36,7 +36,7 @@ CheckReporter <- R6::R6Class("CheckReporter",
     },
 
     add_result = function(context, test, result) {
-      if (expectation_ok(result)) {
+      if (expectation_success(result)) {
         self$n_ok <- self$n_ok + 1L
         return()
       }
