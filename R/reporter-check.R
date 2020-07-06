@@ -94,13 +94,5 @@ CheckReporter <- R6::R6Class("CheckReporter",
 failure_header <- function(x) {
   type <- expectation_type(x)
   substr(type, 1, 1) <- toupper(substr(type, 1, 1))
-  paste0(type, ": ", x$test, src_loc(x$srcref))
-}
-
-src_loc <- function(ref) {
-  if (is.null(ref)) {
-    ""
-  } else {
-    paste0(" (@", basename(attr(ref, "srcfile")$filename), "#", ref[1], ")")
-  }
+  paste0(type, ": ", x$test, " (", expectation_location(x), ")")
 }

@@ -3,34 +3,34 @@
 ⠏ |   0       | fail-many                                                       
 ✖ |   0 10     | fail-many
 ────────────────────────────────────────────────────────────────────────────────
-fail-many.R:3: failure: Example
+fail-many.R:3:5: failure: Example
 FALSE isn't true.
 
-fail-many.R:3: failure: Example
+fail-many.R:3:5: failure: Example
 FALSE isn't true.
 
-fail-many.R:3: failure: Example
+fail-many.R:3:5: failure: Example
 FALSE isn't true.
 
-fail-many.R:3: failure: Example
+fail-many.R:3:5: failure: Example
 FALSE isn't true.
 
-fail-many.R:3: failure: Example
+fail-many.R:3:5: failure: Example
 FALSE isn't true.
 
-fail-many.R:3: failure: Example
+fail-many.R:3:5: failure: Example
 FALSE isn't true.
 
-fail-many.R:3: failure: Example
+fail-many.R:3:5: failure: Example
 FALSE isn't true.
 
-fail-many.R:3: failure: Example
+fail-many.R:3:5: failure: Example
 FALSE isn't true.
 
-fail-many.R:3: failure: Example
+fail-many.R:3:5: failure: Example
 FALSE isn't true.
 
-fail-many.R:3: failure: Example
+fail-many.R:3:5: failure: Example
 FALSE isn't true.
 ────────────────────────────────────────────────────────────────────────────────
 max_fails exceded 

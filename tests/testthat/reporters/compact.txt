@@ -13,16 +13,16 @@ PASS x2 FAIL x4 WARN x0 SKIP x0
 PASS x3 FAIL x4 WARN x0 SKIP x0
 PASS x3 FAIL x4 WARN x0 SKIP x0
 ────────────────────────────────────────────────────────────────────────────────
-tests.R:12: failure: Failure:1
+tests.R:12:3: failure: Failure:1
 Failure has been forced
 
-tests.R:16: failure: Failure:2a
+tests.R:16:3: failure: Failure:2a
 Failure has been forced
 
-tests.R:19: failure: Failure:2b
+tests.R:19:3: failure: Failure:2b
 FALSE isn't true.
 
-tests.R:24: failure: Failure:loop
+tests.R:24:5: failure: Failure:loop
 `i` not equal to 2.
 1/1 mismatches
 [1] 1 - 2 == -1
@@ -34,10 +34,10 @@ PASS x3 FAIL x5 WARN x0 SKIP x0
 PASS x3 FAIL x6 WARN x0 SKIP x0
 PASS x3 FAIL x6 WARN x0 SKIP x0
 ────────────────────────────────────────────────────────────────────────────────
-tests.R:33: error: Error:1
+tests.R:33:3: error: Error:1
 Error: stop
 
-tests.R:47: error: Error:3
+tests.R:47:3: error: Error:3
 Error: !
 Backtrace:
  1. f()
@@ -49,7 +49,7 @@ PASS x3 FAIL x6 WARN x0 SKIP x0
 PASS x3 FAIL x7 WARN x0 SKIP x0
 PASS x3 FAIL x7 WARN x0 SKIP x0
 ────────────────────────────────────────────────────────────────────────────────
-tests.R:56: error: Recursion:1
+tests.R:56:3: error: Recursion:1
 Error: This is deep
 Backtrace:
   1. f(25)
@@ -81,13 +81,13 @@ PASS x3 FAIL x7 WARN x0 SKIP x2
 PASS x3 FAIL x7 WARN x0 SKIP x3
 PASS x3 FAIL x7 WARN x0 SKIP x3
 ────────────────────────────────────────────────────────────────────────────────
-tests.R:62: skip: Skip:1
+tests.R:62:3: skip: Skip:1
 Reason: skip
 
-tests.R:69: skip: Skip:2
+tests.R:69:3: skip: Skip:2
 Reason: skip
 
-tests.R:72: skip: Skip:3
+tests.R:72:1: skip: Skip:3
 Reason: empty test
 ────────────────────────────────────────────────────────────────────────────────
 
@@ -97,13 +97,13 @@ PASS x3 FAIL x7 WARN x2 SKIP x3
 PASS x3 FAIL x7 WARN x3 SKIP x3
 PASS x3 FAIL x7 WARN x3 SKIP x3
 ────────────────────────────────────────────────────────────────────────────────
-tests.R:78: warning: Warning:1
+tests.R:78:3: warning: Warning:1
 abc
 
-tests.R:84: warning: Warning:2
+tests.R:84:3: warning: Warning:2
 def
 
-tests.R:85: warning: Warning:2
+tests.R:85:3: warning: Warning:2
 ghi
 Backtrace:
  1. f()
@@ -118,7 +118,7 @@ PASS x5 FAIL x7 WARN x3 SKIP x3
 PASS x5 FAIL x8 WARN x3 SKIP x3
 PASS x5 FAIL x8 WARN x3 SKIP x3
 ────────────────────────────────────────────────────────────────────────────────
-tests.R:111: error: Error:4
+tests.R:111:3: error: Error:4
 Error: Throwable
 ────────────────────────────────────────────────────────────────────────────────
 

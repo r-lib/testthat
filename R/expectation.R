@@ -224,19 +224,11 @@ single_letter_summary <- function(x) {
   )
 }
 
-exp_location <- function(exp) {
-  srcref <- exp$srcref
-  if (is.null(srcref)) {
-    return("")
+expectation_location <- function(x) {
+  if (is.null(x$srcref)) {
+    "???"
+  } else {
+    filename <- attr(x$srcref, "srcfile")$filename
+    paste0(basename(filename), ":", x$srcref[1], ":", x$srcref[2])
   }
-
-  filename <- attr(srcref, "srcfile")$filename
-  # There is no filename when evaluating `test_that()` blocks
-  # interactively. The line number is not significant in that case so
-  # we return a blank.
-  if (!nzchar(filename)) {
-    return("")
-  }
-
-  paste0(basename(filename), ":", srcref[1], ": ")
 }
