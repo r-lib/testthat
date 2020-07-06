@@ -73,6 +73,7 @@ CheckReporter <- R6::R6Class("CheckReporter",
       if (length(problems) == 0) {
         return()
       }
+      saveRDS(problems, "testthat-problems.rds")
 
       if (length(problems) > 10) {
         show <- problems[1:9]
