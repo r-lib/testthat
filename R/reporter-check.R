@@ -54,6 +54,7 @@ CheckReporter <- R6::R6Class("CheckReporter",
       type <- expectation_type(result)
       header <- failure_header(result)
 
+      self$local_user_output()
       self$rule(header, col = testthat_style(type))
       self$cat_line(format(result, simplify = "none"))
       self$cat_line()
