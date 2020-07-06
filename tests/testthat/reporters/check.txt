@@ -91,5 +91,7 @@ Error: Throwable
 5. Error: Error:1 (@tests.R#33)
 6. Error: Error:3 (@tests.R#47)
 7. Error: Recursion:1 (@tests.R#56)
-8. Error: Error:4 (@tests.R#111)
+8. Skip: Skip:1 (@tests.R#62)
+9. Skip: Skip:2 (@tests.R#69)
+... and 4 more
 

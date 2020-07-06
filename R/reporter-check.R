@@ -11,7 +11,7 @@ NULL
 CheckReporter <- R6::R6Class("CheckReporter",
   inherit = Reporter,
   public = list(
-    failures = list(),
+    problems = NULL,
     n_ok = 0L,
     n_skip = 0L,
     n_fail = 0L,
@@ -22,6 +22,7 @@ CheckReporter <- R6::R6Class("CheckReporter",
     ci = FALSE,
 
     initialize = function(stop_on_failure = TRUE, ci = on_ci(), ...) {
+      self$problems <- Stack$new()
       self$stop_on_failure <- stop_on_failure
       self$ci <- ci
 
@@ -41,6 +42,8 @@ CheckReporter <- R6::R6Class("CheckReporter",
         return()
       }
 
+      self$problems$push(result)
+
       if (expectation_skip(result)) {
         self$n_skip <- self$n_skip + 1L
         self$skips$push(result$message)
@@ -48,7 +51,6 @@ CheckReporter <- R6::R6Class("CheckReporter",
         self$n_warn <- self$n_warn + 1L
       } else {
         self$n_fail <- self$n_fail + 1L
-        self$failures[[self$n_fail]] <- result
       }
 
       type <- expectation_type(result)
@@ -77,20 +79,23 @@ CheckReporter <- R6::R6Class("CheckReporter",
         " ]"
       )
 
-      if (self$n_fail == 0) return()
+      problems <- self$problems$as_list()
+      if (length(problems) == 0) {
+        return()
+      }
 
-      if (self$n_fail > 10) {
-        show <- self$failures[1:9]
+      if (length(problems) > 10) {
+        show <- problems[1:9]
       } else {
-        show <- self$failures
+        show <- problems
       }
 
       fails <- vapply(show, failure_header, character(1))
-      if (self$n_fail > 10) {
-        fails <- c(fails, "...")
-      }
       labels <- format(paste0(1:length(show), "."))
       self$cat_line(paste0(labels, " ", fails, collapse = "\n"))
+      if (length(problems) > 10) {
+        self$cat_line("... and ", length(problems) - 10, " more")
+      }
       self$cat_line()
 
       if (self$stop_on_failure) {
