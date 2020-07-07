@@ -42,6 +42,7 @@
 #' @rdname test_package
 test_package <- function(package, reporter = check_reporter(), ...) {
   require(package, character.only = TRUE)
+
   test_path <- system.file("tests", "testthat", package = package)
   if (test_path == "") {
     stop("No tests found for ", package, call. = FALSE)
@@ -60,17 +61,12 @@ test_check <- function(package, reporter = check_reporter(), ...) {
 #' @export
 #' @rdname test_package
 test_local <- function(path = ".", reporter = default_reporter(), ...) {
-  path <- pkgload::pkg_path(path)
   package <- pkgload::pkg_name(path)
-
-  test_path <- file.path(path, "tests", "testthat")
-  if (!dir.exists(test_path)) {
-    stop("No tests found for ", package, call. = FALSE)
-  }
-
   if (package != "testthat") {
     pkgload::load_all(path, helpers = FALSE, quiet = TRUE)
   }
+
+  test_path <- file.path(pkgload::pkg_path(path), "tests", "testthat")
 
   withr::local_envvar(c(NOT_CRAN = "true"))
   test_dir(test_path, package = package, reporter = reporter, ...)
