@@ -134,7 +134,7 @@ format.expectation_success <- function(x, ...) {
 }
 
 #' @export
-format.expectation <- function(x, ...) {
+format.expectation <- function(x, simplify = "branch", ...) {
   message <- exp_message(x)
   # Access error fields with `[[` rather than `$` because the
   # `$.Throwable` from the rJava package throws with unknown fields
@@ -142,10 +142,13 @@ format.expectation <- function(x, ...) {
     return(message)
   }
 
+  max_frames <- if (simplify == "branch") 20 else NULL
+
   trace_lines <- format(
     x$trace,
-    simplify = "branch",
-    max_frames = 20,
+    simplify = simplify,
+    ...,
+    max_frames = max_frames,
     dir = Sys.getenv("TESTTHAT_DIR") %||% getwd()
   )
   lines <- c(message, crayon::bold("Backtrace:"), trace_lines)
@@ -221,19 +224,11 @@ single_letter_summary <- function(x) {
   )
 }
 
-exp_location <- function(exp) {
-  srcref <- exp$srcref
-  if (is.null(srcref)) {
-    return("")
+expectation_location <- function(x) {
+  if (is.null(x$srcref)) {
+    "???"
+  } else {
+    filename <- attr(x$srcref, "srcfile")$filename
+    paste0(basename(filename), ":", x$srcref[1], ":", x$srcref[2])
   }
-
-  filename <- attr(srcref, "srcfile")$filename
-  # There is no filename when evaluating `test_that()` blocks
-  # interactively. The line number is not significant in that case so
-  # we return a blank.
-  if (!nzchar(filename)) {
-    return("")
-  }
-
-  paste0(basename(filename), ":", srcref[1], ": ")
 }

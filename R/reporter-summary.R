@@ -140,3 +140,20 @@ SummaryReporter <- R6::R6Class("SummaryReporter",
 )
 
 labels <- c(1:9, letters, LETTERS)
+
+skip_summary <- function(x, label) {
+  header <- paste0(label, ". ", x$test)
+
+  paste0(
+    colourise(header, "skip"), " (", expectation_location(x), ") - ", x$message
+  )
+}
+
+failure_summary <- function(x, label, width = cli::console_width()) {
+  header <- paste0(label, ". ", failure_header(x))
+
+  paste0(
+    cli::rule(header, col = testthat_style("error")), "\n",
+    format(x)
+  )
+}

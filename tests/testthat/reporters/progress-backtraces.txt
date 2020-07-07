@@ -11,19 +11,19 @@
 ⠧ |   1 6 1   | backtraces                                                      
 ✖ |   1 6 1   | backtraces
 ────────────────────────────────────────────────────────────────────────────────
-backtraces.R:6: error: errors thrown at block level are entraced
+backtraces.R:6:3: error: errors thrown at block level are entraced
 Error: foo
 Backtrace:
  1. f()
  2. g()
 
-backtraces.R:11: error: errors thrown from a quasi-labelled argument are entraced
+backtraces.R:11:3: error: errors thrown from a quasi-labelled argument are entraced
 Error: foo
 Backtrace:
  1. testthat::expect_s3_class(foo(), "foo")
  4. foo()
 
-backtraces.R:18: error: errors thrown from a quasi-labelled argument are entraced (deep case)
+backtraces.R:18:3: error: errors thrown from a quasi-labelled argument are entraced (deep case)
 Error: foo
 Backtrace:
  1. testthat::expect_s3_class(f(), "foo")
@@ -31,7 +31,7 @@ Backtrace:
  5. g()
  9. foo()
 
-backtraces.R:28: error: errors thrown from a quasi-labelled argument are entraced (deep deep case)
+backtraces.R:28:3: error: errors thrown from a quasi-labelled argument are entraced (deep deep case)
 Error: foobar
 Backtrace:
  1. f()
@@ -39,17 +39,17 @@ Backtrace:
  6. foo()
  7. bar()
 
-backtraces.R:35: error: failed expect_error() prints a backtrace
+backtraces.R:35:3: error: failed expect_error() prints a backtrace
 Error: bar
 Backtrace:
  1. testthat::expect_error(f(), "foo")
  7. f()
  8. signaller()
 
-backtraces.R:43: error: Errors are inspected with `conditionMessage()`
+backtraces.R:43:3: error: Errors are inspected with `conditionMessage()`
 Error: dispatched
 
-backtraces.R:50: warning: also get backtraces for warnings
+backtraces.R:50:3: warning: also get backtraces for warnings
 foobar
 Backtrace:
  1. foo()

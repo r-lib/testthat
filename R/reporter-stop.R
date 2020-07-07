@@ -33,8 +33,8 @@ StopReporter <- R6::R6Class("StopReporter",
       self$failures$initialize()
 
       messages <- vapply(failures, format, character(1))
-      locations <- vapply(failures, exp_location, character(1))
-      messages <- paste0("* ", locations, messages, collapse = "\n")
+      locations <- vapply(failures, expectation_location, character(1))
+      messages <- paste0("* ", locations, ": ", messages, collapse = "\n")
       lines <- c(
         paste0("Test failed: '", test, "'"),
         messages

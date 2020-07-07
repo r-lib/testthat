@@ -15,7 +15,6 @@ test_that("reporters produce consistent output", {
   expect_report_unchanged("silent")
   expect_report_unchanged("rstudio")
 
-  expect_report_unchanged("check", CheckReporter$new(stop_on_failure = FALSE))
   expect_report_unchanged("junit", reporter = JunitReporterMock)
   expect_report_unchanged("progress", ProgressReporter$new(show_praise = FALSE, min_time = Inf, update_interval = 0))
   expect_report_unchanged("summary", SummaryReporter$new(show_praise = FALSE, omit_dots = FALSE))
@@ -47,7 +46,6 @@ test_that('debug reporter produces consistent output', {
 })
 
 test_that("reporters accept a 'file' argument and write to that location", {
-  expect_report_to_file(CheckReporter, stop_on_failure = FALSE)
   expect_report_to_file(JunitReporterMock)
   expect_report_to_file(LocationReporter)
   expect_report_to_file(MinimalReporter)

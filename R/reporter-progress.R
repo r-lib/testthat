@@ -304,14 +304,7 @@ spinner <- function(frames, i) {
 
 issue_summary <- function(x) {
   type <- expectation_type(x)
-
-  if (is.null(x$srcref)) {
-    loc <- "???"
-  } else {
-    filename <- attr(x$srcref, "srcfile")$filename
-    loc <- paste0(basename(filename), ":", x$srcref[1])
-  }
-
+  loc <- expectation_location(x)
   header <- paste0(loc, ": ", colourise(type, type), ": ", x$test)
 
   paste0(
