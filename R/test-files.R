@@ -4,25 +4,19 @@ test_files <- function(paths,
                        stop_on_failure = FALSE,
                        stop_on_warning = FALSE,
                        wrap = TRUE) {
-  if (length(paths) == 0) {
-    stop("No matching test file in dir")
+  reporter <- find_reporter(reporter)
+  lister <- ListReporter$new()
+  if (!is.null(reporter)) {
+    reporter <- MultiReporter$new(reporters = list(reporter, lister))
+  } else {
+    reporter <- lister
   }
 
-  current_reporter <- find_reporter(reporter)
-  with_reporter(
-    reporter = current_reporter,
-    results <- lapply(
-      paths,
-      test_file,
-      env = env,
-      reporter = current_reporter,
-      start_end_reporter = FALSE,
-      load_helpers = FALSE,
-      wrap = wrap
-    )
+  with_reporter(reporter,
+    lapply(paths, test_one_file, reporter = reporter, env = env)
   )
 
-  results <- unlist(results, recursive = FALSE)
+  results <- lister$get_results()
   results <- testthat_results(results)
 
   if (stop_on_failure && !all_passed(results)) {
@@ -34,6 +28,16 @@ test_files <- function(paths,
   }
 
   invisible(results)
+}
+
+test_one_file <- function(path, reporter, env = test_env()) {
+  # Run any registered teardown helpers with specified working directory
+  on.exit(teardown_run(dirname(path)), add = TRUE)
+
+  reporter$start_file(basename(path))
+  source_file(path, new.env(parent = env), chdir = TRUE)
+  reporter$end_context_if_started()
+  reporter$end_file()
 }
 
 #' Run all tests in specified file
