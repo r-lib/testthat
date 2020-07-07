@@ -1,5 +1,12 @@
 # testthat (development version)
 
+* `CheckReporter` (used inside R CMD check) now prints out all problems
+  (i.e. errors, failures, warnings and skips), and records in machine
+  readable format in `tests/testthat-problems.rds` (#1075).
+
+* All reporters now use exactly the same format when reporting the location
+  of an expectation.
+
 * `expect_known_failure()` has been removed. As far as I can tell it was
   only ever used by testthat, and is rather fragile.
 
