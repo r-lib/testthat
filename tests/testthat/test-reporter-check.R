@@ -2,9 +2,9 @@ test_that("basic report works", {
   local_reproducible_output(unicode = TRUE)
 
   expect_known_output(
-    test_file(
-      test_path("reporters/tests.R"),
-      CheckReporter$new()
+    with_reporter(
+      CheckReporter$new(),
+      test_one_file(test_path("reporters/tests.R"))
     ),
     test_path("reporters/check.txt")
   )

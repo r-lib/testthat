@@ -51,7 +51,7 @@ test_dir <- function(path,
                      package = NULL
                      ) {
 
-  test_paths <- find_test_scripts(path, filter = filter, ...)
+  test_paths <- find_test_scripts(path, filter = filter, ..., full.names = FALSE)
   if (length(test_paths) == 0) {
     abort("No test files found")
   }
@@ -93,7 +93,7 @@ test_file <- function(path, reporter = default_compact_reporter(), package = NUL
   test_files(
     test_dir = dirname(path),
     test_package = package,
-    test_paths = path,
+    test_paths = basename(path),
     reporter = reporter,
     ...
   )
@@ -116,10 +116,10 @@ test_files <- function(test_dir,
 
   # Load helpers, setup, and teardown (on exit)
   if (load_helpers) {
-    source_test_helpers(test_dir, env)
+    source_test_helpers(".", env)
   }
-  source_test_setup(test_dir, env)
-  on.exit(source_test_teardown(test_dir, env), add = TRUE)
+  source_test_setup(".", env)
+  on.exit(source_test_teardown(".", env), add = TRUE)
 
   # Wrap reporter
   reporter <- find_reporter(reporter)
@@ -148,12 +148,10 @@ test_files <- function(test_dir,
 
 test_one_file <- function(path, env = test_env()) {
   reporter <- get_reporter()
+  on.exit(teardown_run(), add = TRUE)
 
-  # Run any registered teardown helpers with specified working directory
-  on.exit(teardown_run(dirname(path)), add = TRUE)
-
-  reporter$start_file(basename(path))
-  source_file(path, new.env(parent = env), chdir = TRUE)
+  reporter$start_file(path)
+  source_file(path, child_env(env))
   reporter$end_context_if_started()
   reporter$end_file()
 }
@@ -169,8 +167,8 @@ test_one_file <- function(path, env = test_env()) {
 #' @return A character vector of paths
 #' @keywords internal
 #' @export
-find_test_scripts <- function(path, filter = NULL, invert = FALSE, ...) {
-  files <- dir(path, "^test.*\\.[rR]$", full.names = TRUE)
+find_test_scripts <- function(path, filter = NULL, invert = FALSE, ..., full.names = TRUE) {
+  files <- dir(path, "^test.*\\.[rR]$", full.names = full.names)
   filter_test_scripts(files, filter, invert, ...)
 }
 

@@ -77,6 +77,7 @@ local_width <- function(width = 80, .env = parent.frame()) {
 #' @export
 #' @keywords internal
 local_test_directory <- function(path, package = NULL, .env = parent.frame()) {
+  withr::local_dir(path, .local_envir = .env)
   withr::local_envvar(c(
     R_TESTS = "",
     TESTTHAT = "true",

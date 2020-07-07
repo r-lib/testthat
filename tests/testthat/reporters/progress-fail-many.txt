@@ -1,7 +1,7 @@
 ✔ |  OK F W S | Context
 
-⠏ |   0       | fail-many                                                       
-✖ |   0 10     | fail-many
+⠏ |   0       | reporters/fail-many                                             
+✖ |   0 10     | reporters/fail-many
 ────────────────────────────────────────────────────────────────────────────────
 fail-many.R:3:5: failure: Example
 FALSE isn't true.

@@ -1,4 +1,4 @@
-Testing tests.R
+Testing reporters/tests.R
 
 PASS x0 FAIL x0 WARN x0 SKIP x0
 PASS x1 FAIL x0 WARN x0 SKIP x0

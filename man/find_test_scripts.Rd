@@ -4,7 +4,7 @@
 \alias{find_test_scripts}
 \title{Find test files}
 \usage{
-find_test_scripts(path, filter = NULL, invert = FALSE, ...)
+find_test_scripts(path, filter = NULL, invert = FALSE, ..., full.names = TRUE)
 }
 \arguments{
 \item{path}{path to tests}

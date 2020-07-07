@@ -1,15 +1,15 @@
 ✔ |  OK F W S | Context
 
-⠏ |   0       | backtraces                                                      
-⠋ |   0 1     | backtraces                                                      
-⠙ |   0 2     | backtraces                                                      
-⠹ |   0 3     | backtraces                                                      
-⠸ |   0 4     | backtraces                                                      
-⠼ |   0 5     | backtraces                                                      
-⠴ |   0 6     | backtraces                                                      
-⠦ |   0 6 1   | backtraces                                                      
-⠧ |   1 6 1   | backtraces                                                      
-✖ |   1 6 1   | backtraces
+⠏ |   0       | reporters/backtraces                                            
+⠋ |   0 1     | reporters/backtraces                                            
+⠙ |   0 2     | reporters/backtraces                                            
+⠹ |   0 3     | reporters/backtraces                                            
+⠸ |   0 4     | reporters/backtraces                                            
+⠼ |   0 5     | reporters/backtraces                                            
+⠴ |   0 6     | reporters/backtraces                                            
+⠦ |   0 6 1   | reporters/backtraces                                            
+⠧ |   1 6 1   | reporters/backtraces                                            
+✖ |   1 6 1   | reporters/backtraces
 ────────────────────────────────────────────────────────────────────────────────
 backtraces.R:6:3: error: errors thrown at block level are entraced
 Error: foo

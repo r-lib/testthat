@@ -1,8 +1,8 @@
 ✔ |  OK F W S | Context
 
-⠏ |   0       | tests                                                           
-⠋ |   1       | tests                                                           
-✔ |   1       | tests
+⠏ |   0       | reporters/tests                                                 
+⠋ |   1       | reporters/tests                                                 
+✔ |   1       | reporters/tests
 
 ⠏ |   0       | Expectations                                                    
 ⠋ |   1       | Expectations                                                    
