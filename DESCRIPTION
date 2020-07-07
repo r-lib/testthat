@@ -116,6 +116,7 @@ Collate:
     'teardown.R'
     'test-compiled-code.R'
     'test-directory.R'
+    'test-env.R'
     'test-example.R'
     'test-files.R'
     'test-path.R'

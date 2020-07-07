@@ -63,17 +63,12 @@ test_dir <- function(path,
                      reporter = default_reporter(),
                      env = NULL,
                      ...,
-                     encoding = "unknown",
                      load_helpers = TRUE,
                      stop_on_failure = FALSE,
                      stop_on_warning = FALSE,
                      wrap = TRUE,
                      package = NULL
                      ) {
-  if (!missing(encoding) && !identical(encoding, "UTF-8")) {
-    warning("`encoding` is deprecated; all files now assumed to be UTF-8", call. = FALSE)
-  }
-
   local_test_directory(path, package = package)
 
   if (is.null(env)) {

@@ -1,16 +1,3 @@
-#' Generate default testing environment.
-#'
-#' We use a new environment which inherits from [globalenv()].
-#' In an ideal world, we'd avoid putting the global environment on the
-#' search path for tests, but it's not currently possible without losing
-#' the ability to load packages in tests.
-#'
-#' @keywords internal
-#' @export
-test_env <- function() {
-  new.env(parent = globalenv())
-}
-
 test_files <- function(paths,
                        reporter = default_reporter(),
                        env = test_env(),
@@ -49,38 +36,6 @@ test_files <- function(paths,
   invisible(results)
 }
 
-# Filter File List for Tests, used by find_test_scripts
-
-filter_test_scripts <- function(files, filter = NULL, invert = FALSE, ...) {
-  if (!is.null(filter)) {
-    test_names <- basename(files)
-    test_names <- sub("^test-?", "", test_names)
-    test_names <- sub("\\.[rR]$", "", test_names)
-
-    which_files <- grepl(filter, test_names, ...)
-
-    if (isTRUE(invert)) {
-      which_files <- !which_files
-    }
-    files <- files[which_files]
-  }
-  files
-}
-
-#' Find the test files.
-#' @param path path to tests
-#' @param filter cf [test_dir()]
-#' @param invert If \sQuote{TRUE} return files which do \emph{not} match.
-#' @param ... Additional arguments passed to [grepl()] to control filtering.
-#' @return the test file paths
-#' @keywords internal
-#' @export
-
-find_test_scripts <- function(path, filter = NULL, invert = FALSE, ...) {
-  files <- dir(path, "^test.*\\.[rR]$", full.names = TRUE)
-  filter_test_scripts(files, filter, invert, ...)
-}
-
 #' Run all tests in specified file
 #'
 #' Execute code in the specified file, displaying results using a `reporter`.
@@ -95,7 +50,6 @@ find_test_scripts <- function(path, filter = NULL, invert = FALSE, ...) {
 #' @param env Environment in which to execute the tests. Expert use only.
 #' @param load_helpers Source helper files before running the tests?
 #'   See [source_test_helpers()] for more details.
-#' @param encoding Deprecated. All files now assumed to be UTF-8.
 #' @inheritParams with_reporter
 #' @inheritParams source_file
 #' @return Invisibly, a list with one element for each test.
@@ -113,16 +67,11 @@ test_file <- function(path,
                       env = test_env(),
                       start_end_reporter = TRUE,
                       load_helpers = TRUE,
-                      encoding = "unknown",
                       wrap = TRUE) {
   library(testthat)
 
   if (!file.exists(path)) {
     stop("`path` does not exist", call. = FALSE)
-  }
-
-  if (!missing(encoding) && !identical(encoding, "UTF-8")) {
-    warning("`encoding` is deprecated; all files now assumed to be UTF-8", call. = FALSE)
   }
 
   reporter <- find_reporter(reporter)
@@ -150,20 +99,40 @@ test_file <- function(path,
     reporter = reporter,
     start_end_reporter = start_end_reporter,
     {
-      # We need to notify the lister separately from the reporter, which is why
-      # we call start_file methods twice.
       reporter$start_file(basename(path))
-      lister$start_file(basename(path))
-
-      source_file(
-        path, new.env(parent = env),
-        chdir = TRUE, wrap = wrap
-      )
-
-      reporter$.end_context() # only ends if context was started
+      source_file(path, new.env(parent = env), chdir = TRUE, wrap = wrap)
+      reporter$end_context_if_started()
       reporter$end_file()
     }
   )
 
   invisible(lister$get_results())
+}
+
+# Helpers -----------------------------------------------------------------
+
+#' Find the test files.
+#'
+#' @param path path to tests
+#' @param filter cf [test_dir()]
+#' @param invert If \sQuote{TRUE} return files which do \emph{not} match.
+#' @param ... Additional arguments passed to [grepl()] to control filtering.
+#' @return the test file paths
+#' @keywords internal
+#' @export
+find_test_scripts <- function(path, filter = NULL, invert = FALSE, ...) {
+  files <- dir(path, "^test.*\\.[rR]$", full.names = TRUE)
+  filter_test_scripts(files, filter, invert, ...)
+}
+
+filter_test_scripts <- function(files, filter = NULL, invert = FALSE, ...) {
+  if (is.null(filter)) {
+    return(files)
+  }
+
+  which_files <- grepl(filter, context_name(files), ...)
+  if (isTRUE(invert)) {
+    which_files <- !which_files
+  }
+  files[which_files]
 }
