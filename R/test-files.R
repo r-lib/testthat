@@ -1,9 +1,21 @@
-test_files <- function(paths,
+test_files <- function(test_dir, test_package, test_paths,
+                       load_helpers = TRUE,
                        reporter = default_reporter(),
-                       env = test_env(),
+                       env = NULL,
                        stop_on_failure = FALSE,
                        stop_on_warning = FALSE,
                        wrap = TRUE) {
+
+  local_test_directory(test_dir, test_package)
+  env <- env %||% testing_env(test_package)
+  withr::local_options(list(topLevelEnvironment = env))
+
+  if (load_helpers) {
+    source_test_helpers(test_dir, env)
+  }
+  source_test_setup(test_dir, env)
+  on.exit(source_test_teardown(test_dir, env), add = TRUE)
+
   reporter <- find_reporter(reporter)
   lister <- ListReporter$new()
   if (!is.null(reporter)) {
@@ -13,7 +25,7 @@ test_files <- function(paths,
   }
 
   with_reporter(reporter,
-    lapply(paths, test_one_file, reporter = reporter, env = env)
+    lapply(test_paths, test_one_file, reporter = reporter, env = env)
   )
 
   results <- lister$get_results()
@@ -38,6 +50,14 @@ test_one_file <- function(path, reporter, env = test_env()) {
   source_file(path, new.env(parent = env), chdir = TRUE)
   reporter$end_context_if_started()
   reporter$end_file()
+}
+
+testing_env <- function(package) {
+  if (is.null(package)) {
+    test_env()
+  } else {
+    env_clone(asNamespace(package))
+  }
 }
 
 #' Run all tests in specified file

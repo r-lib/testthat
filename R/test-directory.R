@@ -72,28 +72,14 @@ test_dir <- function(path,
                      wrap = TRUE,
                      package = NULL
                      ) {
-  local_test_directory(path, package = package)
 
-  if (is.null(env)) {
-    if (is.null(package)) {
-      env <- test_env()
-    } else {
-      env <- env_clone(asNamespace(package))
-    }
-    withr::local_options(list(topLevelEnvironment = env))
-  }
-
-  if (load_helpers) {
-    source_test_helpers(path, env)
-  }
-  source_test_setup(path, env)
-  on.exit(source_test_teardown(path, env), add = TRUE)
-
-  paths <- find_test_scripts(path, filter, ...)
-
+  test_paths <- find_test_scripts(path, filter = filter, ...)
   test_files(
-    paths,
+    test_dir = path,
+    test_paths = test_paths,
+    test_package = package,
     reporter = reporter,
+    load_helpers = load_helpers,
     env = env,
     stop_on_failure = stop_on_failure,
     stop_on_warning = stop_on_warning,
