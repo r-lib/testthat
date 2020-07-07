@@ -40,9 +40,9 @@ test_that("fails after max_fail tests", {
   local_reproducible_output(unicode = TRUE)
 
   expect_known_output(
-    test_file(
-      test_path("reporters/tests.R"),
-      CompactProgressReporter$new()
+    with_reporter(
+      CompactProgressReporter$new(),
+      test_one_file(test_path("reporters/tests.R"))
     ),
     test_path("reporters/compact.txt")
   )

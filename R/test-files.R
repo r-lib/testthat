@@ -129,7 +129,7 @@ test_files <- function(test_dir,
   invisible(results)
 }
 
-test_one_file <- function(path, env = parent.frame()) {
+test_one_file <- function(path, env = test_env()) {
   reporter <- get_reporter()
 
   # Run any registered teardown helpers with specified working directory

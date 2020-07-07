@@ -4,7 +4,7 @@ expect_report_unchanged <- function(name, reporter = find_reporter(name), file =
   local_reproducible_output(unicode = TRUE)
 
   expect_known_output(
-    test_file(test_path(file), reporter, wrap = FALSE),
+    with_reporter(reporter, test_one_file(test_path(file))),
     path
   )
 }
@@ -14,6 +14,6 @@ expect_report_to_file <- function(reporter, ...) {
   on.exit(unlink(path))
   reporter <- reporter$new(file = path, ...)
 
-  test_file(test_path("reporters/tests.R"), reporter, wrap = FALSE)
+  with_reporter(reporter, test_one_file(test_path("reporters/tests.R")))
   expect_true(file.exists(path))
 }

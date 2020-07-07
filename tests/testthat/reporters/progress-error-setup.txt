@@ -7,9 +7,9 @@ error-setup.R:4: error: (code run outside of `test_that()`)
 Error: !
 Backtrace:
  1. testthat::setup(f()) reporters/error-setup.R:4:0
- 3. testthat:::f()
- 4. testthat:::g() reporters/error-setup.R:1:5
- 5. testthat:::h() reporters/error-setup.R:2:5
+ 3. f()
+ 4. g() reporters/error-setup.R:1:5
+ 5. h() reporters/error-setup.R:2:5
 ────────────────────────────────────────────────────────────────────────────────
 
 ══ Results ═════════════════════════════════════════════════════════════════════
