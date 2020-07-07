@@ -178,6 +178,7 @@
 <a href="#testthat-development-version" class="anchor"></a>testthat (development version)<small> Unreleased </small>
 </h1>
 <ul>
+<li><p>New <code><a href="https://testthat.r-lib.org/reference/test_dir.html">test_local()</a></code> tests a local source package directory. It’s equivalent to <code><a href="https://devtools.r-lib.org//reference/test.html">devtools::test()</a></code> but doesn’t require devtools and all its dependencies to be installed (<a href='https://github.com/r-lib/testthat/issues/1030'>#1030</a>).</p></li>
 <li><p>Long deprecated <code>encoding</code> argument to <code><a href="https://testthat.r-lib.org/reference/test_file.html">test_file()</a></code> and <code><a href="https://testthat.r-lib.org/reference/test_dir.html">test_dir()</a></code> has been removed.</p></li>
 <li><p><code><a href="https://testthat.r-lib.org/reference/context_start_file.html">context_start_file()</a></code> is now exported for external reporters (<a href='https://github.com/r-lib/testthat/issues/983'>#983</a>, <a href='https://github.com/r-lib/testthat/issues/1082'>#1082</a>). It now only strips first instance of prefix/suffix (<a href='https://github.com/r-lib/testthat/issues/1041'>#1041</a>, <a href='https://github.com/stufield'>@stufield</a>).</p></li>
 <li><p>New <code>CompactProgressReporter</code> tweaks the output of <code>ProgressReporter</code> for use with a single file, as in <code><a href="https://devtools.r-lib.org//reference/test.html">devtools::test_file()</a></code>. You can pick a different default by setting <code>testthat.default_compact_reporter</code> to the name of a reporter.</p></li>
@@ -388,7 +389,7 @@ to increase reproducibility across systems (<a href='https://github.com/r-lib/te
 <li><p><code><a href="https://testthat.r-lib.org/reference/inheritance-expectations.html">expect_s3_class()</a></code> now works with unquoting (<a href='https://github.com/jalsalam'>@jalsalam</a>, <a href='https://github.com/r-lib/testthat/issues/771'>#771</a>).</p></li>
 <li><p><code>expectation</code> objects now contain the failure message, even when successful (<a href='https://github.com/r-lib/testthat/issues/836'>#836</a>)</p></li>
 <li><p><code><a href="https://devtools.r-lib.org//reference/test.html">devtools::test()</a></code> no longer fails if run multiple times within the same R session for a package containing Catch tests. (<a href="https://github.com/r-lib/devtools/issues/1832">devtools <a href='https://github.com/r-lib/testthat/issues/1832'>#1832</a></a>)</p></li>
-<li><p>New <code><a href="https://testthat.r-lib.org/reference/test_dir.html">testing_package()</a></code> retrieves the name of the package currently being tested (<a href='https://github.com/r-lib/testthat/issues/699'>#699</a>).</p></li>
+<li><p>New <code><a href="https://testthat.r-lib.org/reference/is_testing.html">testing_package()</a></code> retrieves the name of the package currently being tested (<a href='https://github.com/r-lib/testthat/issues/699'>#699</a>).</p></li>
 <li><p><code>run_testthat_tests</code> C entrypoint is registered more robustly.</p></li>
 <li><p><code><a href="https://testthat.r-lib.org/reference/skip.html">skip()</a></code> now always produces a <code>message</code> of length 1, as expected elsewhere in testthat (<a href='https://github.com/r-lib/testthat/issues/791'>#791</a>).</p></li>
 <li><p>Warnings are passed through even when <code><a href="https://rdrr.io/r/base/options.html">options(warn = 2)</a></code> is set (<a href='https://github.com/yutannihilation'>@yutannihilation</a>, <a href='https://github.com/r-lib/testthat/issues/721'>#721</a>).</p></li>
@@ -500,7 +501,7 @@ to increase reproducibility across systems (<a href='https://github.com/r-lib/te
 <ul>
 <li><p>All files are now read and written as UTF-8 (<a href='https://github.com/r-lib/testthat/issues/510'>#510</a>, <a href='https://github.com/r-lib/testthat/issues/605'>#605</a>).</p></li>
 <li>
-<p><code><a href="https://testthat.r-lib.org/reference/test_dir.html">is_testing()</a></code> allows you to tell if your code is being run inside a testing environment (<a href='https://github.com/r-lib/testthat/issues/631'>#631</a>). Rather than taking a run-time dependency on testthat you may want to inline the function into your own package:</p>
+<p><code><a href="https://testthat.r-lib.org/reference/is_testing.html">is_testing()</a></code> allows you to tell if your code is being run inside a testing environment (<a href='https://github.com/r-lib/testthat/issues/631'>#631</a>). Rather than taking a run-time dependency on testthat you may want to inline the function into your own package:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit">
 <span class="kw">is_testing</span> <span class="op">&lt;-</span> <span class="fu">function</span>() {
   <span class="fu"><a href="https://rdrr.io/r/base/identical.html">identical</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/Sys.getenv.html">Sys.getenv</a></span>(<span class="st">"TESTTHAT"</span>), <span class="st">"true"</span>)
