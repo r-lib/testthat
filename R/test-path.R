@@ -7,37 +7,13 @@
 #' @return A character vector giving the path.
 #' @export
 test_path <- function(...) {
-  if (in_testing_dir(".")) {
-    path <- file.path(...)
-    if (length(path) == 0) {
-      path <- "."
-    }
+  if (is_testing()) {
+    file.path(...)
   } else {
     base <- "tests/testthat"
-    if (!file.exists(base)) {
-      stop(
-        "Can't find `tests/testthat` in current directory.",
-        call. = FALSE
-      )
+    if (!dir.exists(base)) {
+      abort("Can't find `tests/testthat/` in current directory.")
     }
-    path <- file.path(base, ...)
-  }
-
-  path
-}
-
-in_testing_dir <- function(path) {
-  path <- normalizePath(path)
-
-  if (basename(path) != "testthat") {
-    return(FALSE)
-  }
-
-  parent <- dirname(path)
-  if (grepl("-tests$", parent)) {
-    # Probably called from tools::testInstalledPackage
-    TRUE
-  } else {
-    basename(parent) %in% c("tests", "tests_x64", "tests_i386")
+    file.path(base, ...)
   }
 }
