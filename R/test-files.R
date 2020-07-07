@@ -115,9 +115,7 @@ test_files <- function(test_dir,
 
   # Run tests tests
   library(testthat)
-  with_reporter(reporter,
-    lapply(test_paths, test_one_file, reporter = reporter, env = env)
-  )
+  with_reporter(reporter, lapply(test_paths, test_one_file, env = env))
 
   # Check results
   results <- lister$get_results()
@@ -131,7 +129,9 @@ test_files <- function(test_dir,
   invisible(results)
 }
 
-test_one_file <- function(path, reporter, env = test_env()) {
+test_one_file <- function(path, env = parent.frame()) {
+  reporter <- get_reporter()
+
   # Run any registered teardown helpers with specified working directory
   on.exit(teardown_run(dirname(path)), add = TRUE)
 
