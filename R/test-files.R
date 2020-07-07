@@ -1,16 +1,3 @@
-#' Generate default testing environment.
-#'
-#' We use a new environment which inherits from [globalenv()].
-#' In an ideal world, we'd avoid putting the global environment on the
-#' search path for tests, but it's not currently possible without losing
-#' the ability to load packages in tests.
-#'
-#' @keywords internal
-#' @export
-test_env <- function() {
-  new.env(parent = globalenv())
-}
-
 test_files <- function(paths,
                        reporter = default_reporter(),
                        env = test_env(),
@@ -47,38 +34,6 @@ test_files <- function(paths,
   }
 
   invisible(results)
-}
-
-# Filter File List for Tests, used by find_test_scripts
-
-filter_test_scripts <- function(files, filter = NULL, invert = FALSE, ...) {
-  if (!is.null(filter)) {
-    test_names <- basename(files)
-    test_names <- sub("^test-?", "", test_names)
-    test_names <- sub("\\.[rR]$", "", test_names)
-
-    which_files <- grepl(filter, test_names, ...)
-
-    if (isTRUE(invert)) {
-      which_files <- !which_files
-    }
-    files <- files[which_files]
-  }
-  files
-}
-
-#' Find the test files.
-#' @param path path to tests
-#' @param filter cf [test_dir()]
-#' @param invert If \sQuote{TRUE} return files which do \emph{not} match.
-#' @param ... Additional arguments passed to [grepl()] to control filtering.
-#' @return the test file paths
-#' @keywords internal
-#' @export
-
-find_test_scripts <- function(path, filter = NULL, invert = FALSE, ...) {
-  files <- dir(path, "^test.*\\.[rR]$", full.names = TRUE)
-  filter_test_scripts(files, filter, invert, ...)
 }
 
 #' Run all tests in specified file
@@ -166,4 +121,32 @@ test_file <- function(path,
   )
 
   invisible(lister$get_results())
+}
+
+# Helpers -----------------------------------------------------------------
+
+#' Find the test files.
+#'
+#' @param path path to tests
+#' @param filter cf [test_dir()]
+#' @param invert If \sQuote{TRUE} return files which do \emph{not} match.
+#' @param ... Additional arguments passed to [grepl()] to control filtering.
+#' @return the test file paths
+#' @keywords internal
+#' @export
+find_test_scripts <- function(path, filter = NULL, invert = FALSE, ...) {
+  files <- dir(path, "^test.*\\.[rR]$", full.names = TRUE)
+  filter_test_scripts(files, filter, invert, ...)
+}
+
+filter_test_scripts <- function(files, filter = NULL, invert = FALSE, ...) {
+  if (is.null(filter)) {
+    return(files)
+  }
+
+  which_files <- grepl(filter, context_name(files), ...)
+  if (isTRUE(invert)) {
+    which_files <- !which_files
+  }
+  files[which_files]
 }
