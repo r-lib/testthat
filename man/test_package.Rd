@@ -6,18 +6,14 @@
 \alias{test_local}
 \title{Run all tests in a package}
 \usage{
-test_package(package, filter = NULL, reporter = check_reporter(), ...)
+test_package(package, reporter = check_reporter(), ...)
 
-test_check(package, filter = NULL, reporter = check_reporter(), ...)
+test_check(package, reporter = check_reporter(), ...)
 
-test_local(path = ".", filter = NULL, reporter = default_reporter(), ...)
+test_local(path = ".", reporter = default_reporter(), ...)
 }
 \arguments{
 \item{package}{Name of installed package.}
-
-\item{filter}{If not \code{NULL}, only tests with file names matching this
-regular expression will be executed. Matching be performed on the file
-name after it has been stripped of \code{"test-"} and \code{".R"}.}
 
 \item{reporter}{Reporter to use to summarise output. Can be supplied
 as a string (e.g. "summary") or as an R6 object

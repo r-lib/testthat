@@ -40,10 +40,7 @@
 #' @return A list of test results.
 #' @export
 #' @rdname test_package
-test_package <- function(package,
-                         filter = NULL,
-                         reporter = check_reporter(),
-                         ...) {
+test_package <- function(package, reporter = check_reporter(), ...) {
   # Ensure that test package returns silently if called recursively - this
   # will occur if test-all.R ends up in the same directory as all the other
   # tests.
@@ -57,37 +54,19 @@ test_package <- function(package,
     stop("No tests found for ", package, call. = FALSE)
   }
 
-  test_dir(
-    test_path,
-    package = package,
-    filter = filter,
-    reporter = reporter,
-    ...
-  )
+  test_dir(test_path, package = package, reporter = reporter, ...)
 }
 
 #' @export
 #' @rdname test_package
-test_check <- function(package,
-                       filter = NULL,
-                       reporter = check_reporter(),
-                       ...) {
+test_check <- function(package, reporter = check_reporter(), ...) {
   require(package, character.only = TRUE)
-  test_dir(
-    "testthat",
-    package = package,
-    filter = filter,
-    reporter = reporter,
-    ...
-  )
+  test_dir("testthat", package = package, reporter = reporter, ...)
 }
 
 #' @export
 #' @rdname test_package
-test_local <- function(path = ".",
-                       filter = NULL,
-                       reporter = default_reporter(),
-                       ...) {
+test_local <- function(path = ".", reporter = default_reporter(), ...) {
   path <- pkgload::pkg_path(path)
   package <- pkgload::pkg_name(path)
 
@@ -101,11 +80,5 @@ test_local <- function(path = ".",
   }
 
   withr::local_envvar(c(NOT_CRAN = "true"))
-  test_dir(
-    test_path,
-    package = package,
-    filter = filter,
-    reporter = reporter,
-    ...
-  )
+  test_dir(test_path, package = package, reporter = reporter, ...)
 }
