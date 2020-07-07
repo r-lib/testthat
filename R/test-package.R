@@ -1,28 +1,11 @@
 #' Run all tests in a package
 #'
 #' @description
-#' * `test_package()` tests an installed package.
 #' * `test_local()` tests a local source package.
+#' * `test_package()` tests an installed package.
 #' * `test_check()` checks a package during `R CMD check`.
 #'
-#' @section Test files:
-#' For package code, tests should live in `tests/testthat`.
-#'
-#' There are four classes of `.R` files that have special behaviour:
-#'
-#' * Test files start with `test` and are executed in alphabetical order.
-#' * Helper files start with `helper` and are executed before tests are
-#'   run and from `devtools::load_all()`.
-#' * Setup files start with `setup` and are executed before tests, but not
-#'   during `devtools::load_all()`.
-#' * Teardown files start with `teardown` and are executed after the tests
-#'   are run.
-#'
-#' @section Environments:
-#' Each test is run in a clean environment to keep tests as isolated as
-#' possible. For package tests, that environment that inherits from the
-#' package's namespace environment, so that tests can access internal functions
-#' and objects.
+#' Tests live in `tests/testthat`.
 #'
 #' @section `R CMD check`:
 #' To run testthat automatically from `R CMD check`, make sure you have
@@ -35,9 +18,10 @@
 #' test_check("yourpackage")
 #' ```
 #'
+#' @inherit test_dir return params
+#' @inheritSection test_dir Special files
+#' @inheritSection test_dir Environments
 #' @param ... Additional arguments passed to [test_dir()]
-#' @inheritParams test_dir
-#' @return A list of test results.
 #' @export
 #' @rdname test_package
 test_package <- function(package, reporter = check_reporter(), ...) {

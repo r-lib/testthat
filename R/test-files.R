@@ -5,8 +5,23 @@
 #' You are responsible for ensuring that the functions to test are available
 #' in the global environment.
 #'
-#' Any errors that occur in code run outside of `test_that()` will generate
-#' a test failure and terminate execution of that test file.
+#' @section Special files:
+#' There are four classes of `.R` files that have special behaviour:
+#'
+#' * Test files start with `test` and are executed in alphabetical order.
+#' * Helper files start with `helper` and are executed before tests are
+#'   run. They're also loaded by `devtools::load_all()`.
+#' * Setup files start with `setup` and are executed before tests.
+#' * Teardown files start with `teardown` and are executed after the tests
+#'   are run.
+#'
+#' All other files are ignored by testthat.
+#'
+#' @section Environments:
+#' Each test is run in a clean environment to keep tests as isolated as
+#' possible. For package tests, that environment that inherits from the
+#' package's namespace environment, so that tests can access internal functions
+#' and objects.
 #'
 #' @param path Path to directory containing tests.
 #' @param package If these tests belong to a package, the name of the package.
@@ -57,12 +72,14 @@ test_dir <- function(path,
 #' Run all tests in a single file
 #'
 #' A variant of [test_dir()] that only tests a single file within a directory.
-#' The directory is still used to locate helpers, setup and teardown files.
+#' Helper, setup, and teardown files located in the same directory as the
+#' test will also be run.
 #'
+#' @inherit test_dir return params
+#' @inheritSection test_dir Special files
+#' @inheritSection test_dir Environments
 #' @param path Path to file.
 #' @param ... Additional parameters passed on to `test_dir()`
-#' @inheritParams test_dir
-#' @return Invisibly, a list with one element for each test.
 #' @export
 #' @examples
 #' path <- testthat_example("success")

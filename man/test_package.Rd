@@ -26,39 +26,17 @@ See \link{Reporter} for more details and a list of built-in reporters.}
 \item{path}{Path to directory containing tests.}
 }
 \value{
-A list of test results.
+A list (invisibly) containing data about the test results.
 }
 \description{
 \itemize{
-\item \code{test_package()} tests an installed package.
 \item \code{test_local()} tests a local source package.
+\item \code{test_package()} tests an installed package.
 \item \code{test_check()} checks a package during \verb{R CMD check}.
 }
+
+Tests live in \code{tests/testthat}.
 }
-\section{Test files}{
-
-For package code, tests should live in \code{tests/testthat}.
-
-There are four classes of \code{.R} files that have special behaviour:
-\itemize{
-\item Test files start with \code{test} and are executed in alphabetical order.
-\item Helper files start with \code{helper} and are executed before tests are
-run and from \code{devtools::load_all()}.
-\item Setup files start with \code{setup} and are executed before tests, but not
-during \code{devtools::load_all()}.
-\item Teardown files start with \code{teardown} and are executed after the tests
-are run.
-}
-}
-
-\section{Environments}{
-
-Each test is run in a clean environment to keep tests as isolated as
-possible. For package tests, that environment that inherits from the
-package's namespace environment, so that tests can access internal functions
-and objects.
-}
-
 \section{\verb{R CMD check}}{
 
 To run testthat automatically from \verb{R CMD check}, make sure you have
@@ -67,5 +45,28 @@ library(yourpackage)
 
 test_check("yourpackage")
 }
+}
+
+\section{Special files}{
+
+There are four classes of \code{.R} files that have special behaviour:
+\itemize{
+\item Test files start with \code{test} and are executed in alphabetical order.
+\item Helper files start with \code{helper} and are executed before tests are
+run. They're also loaded by \code{devtools::load_all()}.
+\item Setup files start with \code{setup} and are executed before tests.
+\item Teardown files start with \code{teardown} and are executed after the tests
+are run.
+}
+
+All other files are ignored by testthat.
+}
+
+\section{Environments}{
+
+Each test is run in a clean environment to keep tests as isolated as
+possible. For package tests, that environment that inherits from the
+package's namespace environment, so that tests can access internal functions
+and objects.
 }
 

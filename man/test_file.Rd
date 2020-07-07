@@ -20,12 +20,36 @@ See \link{Reporter} for more details and a list of built-in reporters.}
 \item{...}{Additional parameters passed on to \code{test_dir()}}
 }
 \value{
-Invisibly, a list with one element for each test.
+A list (invisibly) containing data about the test results.
 }
 \description{
 A variant of \code{\link[=test_dir]{test_dir()}} that only tests a single file within a directory.
-The directory is still used to locate helpers, setup and teardown files.
+Helper, setup, and teardown files located in the same directory as the
+test will also be run.
 }
+\section{Special files}{
+
+There are four classes of \code{.R} files that have special behaviour:
+\itemize{
+\item Test files start with \code{test} and are executed in alphabetical order.
+\item Helper files start with \code{helper} and are executed before tests are
+run. They're also loaded by \code{devtools::load_all()}.
+\item Setup files start with \code{setup} and are executed before tests.
+\item Teardown files start with \code{teardown} and are executed after the tests
+are run.
+}
+
+All other files are ignored by testthat.
+}
+
+\section{Environments}{
+
+Each test is run in a clean environment to keep tests as isolated as
+possible. For package tests, that environment that inherits from the
+package's namespace environment, so that tests can access internal functions
+and objects.
+}
+
 \examples{
 path <- testthat_example("success")
 test_file(path)

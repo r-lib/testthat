@@ -56,7 +56,26 @@ Use this function when you want to run a single file's worth of tests.
 You are responsible for ensuring that the functions to test are available
 in the global environment.
 }
-\details{
-Any errors that occur in code run outside of \code{test_that()} will generate
-a test failure and terminate execution of that test file.
+\section{Special files}{
+
+There are four classes of \code{.R} files that have special behaviour:
+\itemize{
+\item Test files start with \code{test} and are executed in alphabetical order.
+\item Helper files start with \code{helper} and are executed before tests are
+run. They're also loaded by \code{devtools::load_all()}.
+\item Setup files start with \code{setup} and are executed before tests.
+\item Teardown files start with \code{teardown} and are executed after the tests
+are run.
 }
+
+All other files are ignored by testthat.
+}
+
+\section{Environments}{
+
+Each test is run in a clean environment to keep tests as isolated as
+possible. For package tests, that environment that inherits from the
+package's namespace environment, so that tests can access internal functions
+and objects.
+}
+
