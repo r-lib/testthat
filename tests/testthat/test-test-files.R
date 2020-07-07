@@ -8,3 +8,4 @@ test_that("can filter test scripts", {
   expect_equal(filter_test_scripts(x, "test"), character())
   expect_equal(filter_test_scripts(x, ".R"), character())
 })
+

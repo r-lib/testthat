@@ -39,20 +39,4 @@ that all expectations are reported, even if outside a test block.}
 \description{
 These are used by \code{\link[=test_dir]{test_dir()}} and friends
 }
-\section{Test files}{
-
-For package code, tests should live in \code{tests/testthat}.
-
-There are four classes of \code{.R} files that have special behaviour:
-\itemize{
-\item Test files start with \code{test} and are executed in alphabetical order.
-\item Helper files start with \code{helper} and are executed before tests are
-run and from \code{devtools::load_all()}.
-\item Setup files start with \code{setup} and are executed before tests, but not
-during \code{devtools::load_all()}.
-\item Teardown files start with \code{teardown} and are executed after the tests
-are run.
-}
-}
-
 \keyword{internal}

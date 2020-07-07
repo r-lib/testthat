@@ -2,7 +2,7 @@ test_that("MultiReporter", {
   reports <- lapply(seq_len(3), function(x) ListReporter$new())
   reporter <- MultiReporter$new(reporters = reports)
 
-  test_file(test_path("context.R"), reporter)
+  with_reporter(reporter, test_one_file("context.R"))
 
   dfs <- lapply(reports, function(x) as.data.frame(x$get_results()))
 

@@ -2,7 +2,6 @@
 #'
 #' These are used by [test_dir()] and friends
 #'
-#' @inheritSection test_dir Test files
 #' @param path Path to files.
 #' @param pattern Regular expression used to filter files.
 #' @param env Environment in which to evaluate code.

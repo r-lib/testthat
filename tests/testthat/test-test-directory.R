@@ -32,7 +32,6 @@ test_that("filter_test_scripts() with tricky names", {
   )
 })
 
-
 # errors ------------------------------------------------------------------
 
 test_that("can control if failures generate errors", {
@@ -44,7 +43,6 @@ test_that("can control if failures generate errors", {
   expect_error(test_error(stop_on_failure = FALSE), NA)
 })
 
-
 test_that("can control if warnings errors", {
   test_warning <- function(...) {
     test_dir(test_path("test-warning"), reporter = "silent", ...)
@@ -52,11 +50,4 @@ test_that("can control if warnings errors", {
 
   expect_error(test_warning(stop_on_warning = TRUE), "Tests generated warnings")
   expect_error(test_warning(stop_on_warning = FALSE), NA)
-})
-
-
-# test_package ------------------------------------------------------------
-
-test_that("test_package() returns NULL inside existing test", {
-  expect_equal(test_package(), NULL)
 })
