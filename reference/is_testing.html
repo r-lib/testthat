@@ -47,11 +47,16 @@
 
 
 <meta property="og:title" content="Determine testing status — is_testing" />
-<meta property="og:description" content="Use is_testing() to determine if code is being run as part of a test and
-testing_package() to retrieve the name of the package being tested. You
-can also check the underlying env var directly
-identical(Sys.getenv(&quot;TESTTHAT&quot;), &quot;true&quot;) to avoid creating a run-time
-dependency on testthat." />
+<meta property="og:description" content="
+
+is_testing() determine if code is being run as part of a test
+testing_package() gives name of the package being tested.
+testing_directory() gives testing directory.
+
+
+These are thin wrappers that retrieve the values of environment variables.
+To avoid creating a run-time dependency on testthat, you can inline the
+source of these functions directly into your package." />
 <meta property="og:image" content="https://testthat.r-lib.org/logo.png" />
 
 
@@ -180,16 +185,23 @@ dependency on testthat." />
     </div>
 
     <div class="ref-description">
-    <p>Use <code>is_testing()</code> to determine if code is being run as part of a test and
-<code>testing_package()</code> to retrieve the name of the package being tested. You
-can also check the underlying env var directly
-<code><a href='https://rdrr.io/r/base/identical.html'>identical(Sys.getenv("TESTTHAT"), "true")</a></code> to avoid creating a run-time
-dependency on testthat.</p>
+    
+<ul>
+<li><p><code>is_testing()</code> determine if code is being run as part of a test</p></li>
+<li><p><code>testing_package()</code> gives name of the package being tested.</p></li>
+<li><p><code>testing_directory()</code> gives testing directory.</p></li>
+</ul>
+
+<p>These are thin wrappers that retrieve the values of environment variables.
+To avoid creating a run-time dependency on testthat, you can inline the
+source of these functions directly into your package.</p>
     </div>
 
     <pre class="usage"><span class='fu'>is_testing</span>()
 
-<span class='fu'>testing_package</span>()</pre>
+<span class='fu'>testing_package</span>()
+
+<span class='fu'>testing_directory</span>()</pre>
 
 
 
