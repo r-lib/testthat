@@ -93,7 +93,7 @@ Reporter <- R6::R6Class("Reporter",
 
       invisible()
     },
-    .end_context = function(context) {
+    end_context_if_started = function(context) {
       if (!is.null(self$.context)) {
         self$end_context(self$.context)
         self$.context <- NULL
