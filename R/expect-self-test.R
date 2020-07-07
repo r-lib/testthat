@@ -62,3 +62,22 @@ show_failure <- function(expr) {
 
   invisible()
 }
+
+skipped <- function(code) {
+  tryCatch(
+    {
+      skipped <- TRUE
+      code
+      skipped <- FALSE
+    },
+    skip = function(e) NULL
+  )
+  skipped
+}
+
+expect_skip <- function(code) {
+  expect(skipped(code), "skip not active")
+}
+expect_no_skip <- function(code) {
+  expect(!skipped(code), "skip active")
+}
