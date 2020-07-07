@@ -10,6 +10,15 @@
 * `expect_known_failure()` has been removed. As far as I can tell it was
   only ever used by testthat, and is rather fragile.
 
+* `test_file()` now runs helper, setup, and teardown code, and has the
+  same arguments as `test_dir()` (#968).
+
+* testthat no longer supports tests stored in `inst/tests`. This has been
+  deprecated since testthat 0.11.0 (released in 2015).
+
+* `test_dir()` now defaults `stop_on_failure` to `TRUE` for consistency with
+  other `test_` functions.
+
 * New `test_local()` tests a local source package directory. It's equivalent 
   to `devtools::test()` but doesn't require devtools and all its dependencies
   to be installed (#1030).

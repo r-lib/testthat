@@ -60,7 +60,10 @@ test_that("reporters write to 'testthat.output_file', if specified", {
   path <- tempfile()
   withr::local_options(c(testthat.output_file = path))
 
-  test_file(test_path("reporters/tests.R"), MinimalReporter$new(), wrap = FALSE)
+  with_reporter(
+    MinimalReporter$new(),
+    test_one_file(test_path("reporters/tests.R"))
+  )
   expect_true(file.exists(path))
 })
 
