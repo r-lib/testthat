@@ -185,6 +185,7 @@ test_local <- function(path = ".",
                        stop_on_failure = TRUE,
                        stop_on_warning = FALSE
                        ) {
+  path <- pkgload::pkg_path(path)
   package <- pkgload::pkg_name(path)
 
   test_path <- file.path(path, "tests", "testthat")
