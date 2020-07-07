@@ -47,9 +47,9 @@
 
 
 <meta property="og:title" content="Generate default testing environment. — test_env" />
-<meta property="og:description" content="We use a new environment which inherits from globalenv().
-In an ideal world, we'd avoid putting the global environment on the
-search path for tests, but it's not currently possible without losing
+<meta property="og:description" content="We use a new environment which inherits from globalenv() or a package
+namespace. In an ideal world, we'd avoid putting the global environment on
+the search path for tests, but it's not currently possible without losing
 the ability to load packages in tests." />
 <meta property="og:image" content="https://testthat.r-lib.org/logo.png" />
 
@@ -179,13 +179,13 @@ the ability to load packages in tests." />
     </div>
 
     <div class="ref-description">
-    <p>We use a new environment which inherits from <code><a href='https://rdrr.io/r/base/environment.html'>globalenv()</a></code>.
-In an ideal world, we'd avoid putting the global environment on the
-search path for tests, but it's not currently possible without losing
+    <p>We use a new environment which inherits from <code><a href='https://rdrr.io/r/base/environment.html'>globalenv()</a></code> or a package
+namespace. In an ideal world, we'd avoid putting the global environment on
+the search path for tests, but it's not currently possible without losing
 the ability to load packages in tests.</p>
     </div>
 
-    <pre class="usage"><span class='fu'><a href='https://testthat.r-lib.org/reference/test_env.html'>test_env</a></span>()</pre>
+    <pre class="usage"><span class='fu'>test_env</span>(package = <span class='kw'>NULL</span>)</pre>
 
 
 

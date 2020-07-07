@@ -226,6 +226,9 @@
     <loc>https://testthat.r-lib.org/reference/test_file.html</loc>
   </url>
   <url>
+    <loc>https://testthat.r-lib.org/reference/test_package.html</loc>
+  </url>
+  <url>
     <loc>https://testthat.r-lib.org/reference/test_path.html</loc>
   </url>
   <url>

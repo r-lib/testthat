@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Find the test files. — find_test_scripts • testthat</title>
+<title>Find test files — find_test_scripts • testthat</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,8 +46,8 @@
 
 
 
-<meta property="og:title" content="Find the test files. — find_test_scripts" />
-<meta property="og:description" content="Find the test files." />
+<meta property="og:title" content="Find test files — find_test_scripts" />
+<meta property="og:description" content="Find test files" />
 <meta property="og:image" content="https://testthat.r-lib.org/logo.png" />
 
 
@@ -170,13 +170,13 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Find the test files.</h1>
+    <h1>Find test files</h1>
     <small class="dont-index">Source: <a href='https://github.com/r-lib/testthat/blob/master/R/test-files.R'><code>R/test-files.R</code></a></small>
     <div class="hidden name"><code>find_test_scripts.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Find the test files.</p>
+    <p>Find test files</p>
     </div>
 
     <pre class="usage"><span class='fu'>find_test_scripts</span>(<span class='kw'>path</span>, filter = <span class='kw'>NULL</span>, invert = <span class='fl'>FALSE</span>, <span class='kw'>...</span>)</pre>
@@ -190,11 +190,13 @@
     </tr>
     <tr>
       <th>filter</th>
-      <td><p>cf <code>test_dir()</code></p></td>
+      <td><p>If not <code>NULL</code>, only tests with file names matching this
+regular expression will be executed. Matching is performed on the file
+name after it's stripped of <code>"test-"</code> and <code>".R"</code>.</p></td>
     </tr>
     <tr>
       <th>invert</th>
-      <td><p>If &#8216;TRUE&#8217; return files which do <em>not</em> match.</p></td>
+      <td><p>If <code>TRUE</code> return files which <strong>don't</strong> match.</p></td>
     </tr>
     <tr>
       <th>...</th>
@@ -204,7 +206,7 @@
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>the test file paths</p>
+    <p>A character vector of paths</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

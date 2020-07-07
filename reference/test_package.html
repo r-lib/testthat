@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Run all tests in a directory — test_dir • testthat</title>
+<title>Run all tests in a package — test_package • testthat</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,11 +46,15 @@
 
 
 
-<meta property="og:title" content="Run all tests in a directory — test_dir" />
-<meta property="og:description" content="Execute code in the specified file, displaying results using a reporter.
-Use this function when you want to run a single file's worth of tests.
-You are responsible for ensuring that the functions to test are available
-in the global environment." />
+<meta property="og:title" content="Run all tests in a package — test_package" />
+<meta property="og:description" content="
+
+test_local() tests a local source package.
+test_package() tests an installed package.
+test_check() checks a package during R CMD check.
+
+
+Tests live in tests/testthat." />
 <meta property="og:image" content="https://testthat.r-lib.org/logo.png" />
 
 
@@ -173,43 +177,34 @@ in the global environment." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Run all tests in a directory</h1>
-    <small class="dont-index">Source: <a href='https://github.com/r-lib/testthat/blob/master/R/test-files.R'><code>R/test-files.R</code></a></small>
-    <div class="hidden name"><code>test_dir.Rd</code></div>
+    <h1>Run all tests in a package</h1>
+    <small class="dont-index">Source: <a href='https://github.com/r-lib/testthat/blob/master/R/test-package.R'><code>R/test-package.R</code></a></small>
+    <div class="hidden name"><code>test_package.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Execute code in the specified file, displaying results using a <code>reporter</code>.
-Use this function when you want to run a single file's worth of tests.
-You are responsible for ensuring that the functions to test are available
-in the global environment.</p>
+    
+<ul>
+<li><p><code>test_local()</code> tests a local source package.</p></li>
+<li><p><code>test_package()</code> tests an installed package.</p></li>
+<li><p><code>test_check()</code> checks a package during <code>R CMD check</code>.</p></li>
+</ul>
+
+<p>Tests live in <code>tests/testthat</code>.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>test_dir</span>(
-  <span class='kw'>path</span>,
-  filter = <span class='kw'>NULL</span>,
-  reporter = <span class='fu'>default_reporter</span>(),
-  env = <span class='kw'>NULL</span>,
-  <span class='kw'>...</span>,
-  load_helpers = <span class='fl'>TRUE</span>,
-  stop_on_failure = <span class='fl'>FALSE</span>,
-  stop_on_warning = <span class='fl'>FALSE</span>,
-  wrap = <span class='fl'>TRUE</span>,
-  package = <span class='kw'>NULL</span>
-)</pre>
+    <pre class="usage"><span class='fu'>test_package</span>(<span class='kw'>package</span>, reporter = <span class='fu'>check_reporter</span>(), <span class='kw'>...</span>)
+
+<span class='fu'>test_check</span>(<span class='kw'>package</span>, reporter = <span class='fu'>check_reporter</span>(), <span class='kw'>...</span>)
+
+<span class='fu'>test_local</span>(path = <span class='st'>"."</span>, reporter = <span class='fu'>default_reporter</span>(), <span class='kw'>...</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>path</th>
-      <td><p>Path to directory containing tests.</p></td>
-    </tr>
-    <tr>
-      <th>filter</th>
-      <td><p>If not <code>NULL</code>, only tests with file names matching this
-regular expression will be executed. Matching is performed on the file
-name after it's stripped of <code>"test-"</code> and <code>".R"</code>.</p></td>
+      <th>package</th>
+      <td><p>If these tests belong to a package, the name of the package.</p></td>
     </tr>
     <tr>
       <th>reporter</th>
@@ -219,41 +214,28 @@ as a string (e.g. "summary") or as an R6 object
 <p>See Reporter for more details and a list of built-in reporters.</p></td>
     </tr>
     <tr>
-      <th>env</th>
-      <td><p>Environment in which to execute the tests. Expert use only.</p></td>
-    </tr>
-    <tr>
       <th>...</th>
-      <td><p>Additional arguments passed to <code><a href='https://rdrr.io/r/base/grep.html'>grepl()</a></code> to control filtering.</p></td>
+      <td><p>Additional arguments passed to <code>test_dir()</code></p></td>
     </tr>
     <tr>
-      <th>load_helpers</th>
-      <td><p>Source helper files before running the tests?
-See <code>source_test_helpers()</code> for more details.</p></td>
-    </tr>
-    <tr>
-      <th>stop_on_failure</th>
-      <td><p>If <code>TRUE</code>, throw an error if any tests fail.</p></td>
-    </tr>
-    <tr>
-      <th>stop_on_warning</th>
-      <td><p>If <code>TRUE</code>, throw an error if any tests generate
-warnings.</p></td>
-    </tr>
-    <tr>
-      <th>wrap</th>
-      <td><p>Automatically wrap all code within <code>test_that()</code>? This ensures
-that all expectations are reported, even if outside a test block.</p></td>
-    </tr>
-    <tr>
-      <th>package</th>
-      <td><p>If these tests belong to a package, the name of the package.</p></td>
+      <th>path</th>
+      <td><p>Path to directory containing tests.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>A list (invisibly) containing data about the test results.</p>
+    <h2 class="hasAnchor" id="r-cmd-check"><a class="anchor" href="#r-cmd-check"></a><code>R CMD check</code></h2>
+
+    
+
+<p>To run testthat automatically from <code>R CMD check</code>, make sure you have
+a <code>tests/testthat.R</code> that contains:</p><pre><span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='kw'><a href='http://testthat.r-lib.org'>testthat</a></span>)
+<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='kw'>yourpackage</span>)
+
+<span class='fu'><a href='https://testthat.r-lib.org/reference/test_package.html'>test_check</a></span>(<span class='st'>"yourpackage"</span>)</pre>
+
     <h2 class="hasAnchor" id="special-files"><a class="anchor" href="#special-files"></a>Special files</h2>
 
     
