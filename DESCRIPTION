@@ -39,7 +39,6 @@ Imports:
 Suggests: 
     covr,
     curl (>= 0.9.5),
-    devtools,
     knitr,
     rmarkdown,
     usethis,

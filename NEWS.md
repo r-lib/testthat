@@ -1,5 +1,9 @@
 # testthat (development version)
 
+* New `test_local()` tests a local source package directory. It's equivalent 
+  to `devtools::test()` but doesn't require devtools and all its dependencies
+  to be installed (#1030).
+
 * Long deprecated `encoding` argument to `test_file()` and `test_dir()` has 
   been removed.
 
