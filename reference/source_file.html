@@ -179,13 +179,7 @@
     <p>These are used by <code>test_dir()</code> and friends</p>
     </div>
 
-    <pre class="usage"><span class='fu'>source_file</span>(
-  <span class='kw'>path</span>,
-  env = <span class='fu'>test_env</span>(),
-  chdir = <span class='fl'>TRUE</span>,
-  encoding = <span class='st'>"unknown"</span>,
-  wrap = <span class='fl'>TRUE</span>
-)
+    <pre class="usage"><span class='fu'>source_file</span>(<span class='kw'>path</span>, env = <span class='fu'>test_env</span>(), chdir = <span class='fl'>TRUE</span>, wrap = <span class='fl'>TRUE</span>)
 
 <span class='fu'>source_dir</span>(
   <span class='kw'>path</span>,
@@ -215,10 +209,6 @@
     <tr>
       <th>chdir</th>
       <td><p>Change working directory to <code><a href='https://rdrr.io/r/base/basename.html'>dirname(path)</a></code>?</p></td>
-    </tr>
-    <tr>
-      <th>encoding</th>
-      <td><p>Deprecated.</p></td>
     </tr>
     <tr>
       <th>wrap</th>
