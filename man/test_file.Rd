@@ -10,7 +10,6 @@ test_file(
   env = test_env(),
   start_end_reporter = TRUE,
   load_helpers = TRUE,
-  encoding = "unknown",
   wrap = TRUE
 )
 }
@@ -30,8 +29,6 @@ See \link{Reporter} for more details and a list of built-in reporters.}
 
 \item{load_helpers}{Source helper files before running the tests?
 See \code{\link[=source_test_helpers]{source_test_helpers()}} for more details.}
-
-\item{encoding}{Deprecated. All files now assumed to be UTF-8.}
 
 \item{wrap}{Automatically wrap all code within \code{\link[=test_that]{test_that()}}? This ensures
 that all expectations are reported, even if outside a test block.}

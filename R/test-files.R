@@ -50,7 +50,6 @@ test_files <- function(paths,
 #' @param env Environment in which to execute the tests. Expert use only.
 #' @param load_helpers Source helper files before running the tests?
 #'   See [source_test_helpers()] for more details.
-#' @param encoding Deprecated. All files now assumed to be UTF-8.
 #' @inheritParams with_reporter
 #' @inheritParams source_file
 #' @return Invisibly, a list with one element for each test.
@@ -68,16 +67,11 @@ test_file <- function(path,
                       env = test_env(),
                       start_end_reporter = TRUE,
                       load_helpers = TRUE,
-                      encoding = "unknown",
                       wrap = TRUE) {
   library(testthat)
 
   if (!file.exists(path)) {
     stop("`path` does not exist", call. = FALSE)
-  }
-
-  if (!missing(encoding) && !identical(encoding, "UTF-8")) {
-    warning("`encoding` is deprecated; all files now assumed to be UTF-8", call. = FALSE)
   }
 
   reporter <- find_reporter(reporter)

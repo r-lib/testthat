@@ -8,13 +8,7 @@
 \alias{source_test_teardown}
 \title{Source a file, directory of files, or various important subsets}
 \usage{
-source_file(
-  path,
-  env = test_env(),
-  chdir = TRUE,
-  encoding = "unknown",
-  wrap = TRUE
-)
+source_file(path, env = test_env(), chdir = TRUE, wrap = TRUE)
 
 source_dir(
   path,
@@ -36,8 +30,6 @@ source_test_teardown(path = "tests/testthat", env = test_env())
 \item{env}{Environment in which to evaluate code.}
 
 \item{chdir}{Change working directory to \code{dirname(path)}?}
-
-\item{encoding}{Deprecated.}
 
 \item{wrap}{Automatically wrap all code within \code{\link[=test_that]{test_that()}}? This ensures
 that all expectations are reported, even if outside a test block.}

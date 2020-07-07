@@ -1,5 +1,8 @@
 # testthat (development version)
 
+* Long deprecated `encoding` argument to `test_file()` and `test_dir()` has 
+  been removed.
+
 * `context_start_file()` is now exported for external reporters (#983, #1082).
   It now only strips first instance of prefix/suffix (#1041, @stufield).
 

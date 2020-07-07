@@ -14,7 +14,6 @@ test_dir(
   reporter = default_reporter(),
   env = NULL,
   ...,
-  encoding = "unknown",
   load_helpers = TRUE,
   stop_on_failure = FALSE,
   stop_on_warning = FALSE,
@@ -61,8 +60,6 @@ See \link{Reporter} for more details and a list of built-in reporters.}
 \item{env}{Environment in which to execute the tests. Expert use only.}
 
 \item{...}{Additional arguments passed to \code{\link[=grepl]{grepl()}} to control filtering.}
-
-\item{encoding}{Deprecated. All files now assumed to be UTF-8.}
 
 \item{load_helpers}{Source helper files before running the tests?
 See \code{\link[=source_test_helpers]{source_test_helpers()}} for more details.}
