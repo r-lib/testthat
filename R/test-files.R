@@ -51,16 +51,19 @@ test_files <- function(test_dir, test_package, test_paths,
                        stop_on_warning = FALSE,
                        wrap = TRUE) {
 
+  # Define testing environment
   local_test_directory(test_dir, test_package)
-  env <- env %||% testing_env(test_package)
+  env <- env %||% test_env(test_package)
   withr::local_options(list(topLevelEnvironment = env))
 
+  # Load helpers, setup, and teardown (on exit)
   if (load_helpers) {
     source_test_helpers(test_dir, env)
   }
   source_test_setup(test_dir, env)
   on.exit(source_test_teardown(test_dir, env), add = TRUE)
 
+  # Wrap reporter
   reporter <- find_reporter(reporter)
   lister <- ListReporter$new()
   if (!is.null(reporter)) {
@@ -69,18 +72,17 @@ test_files <- function(test_dir, test_package, test_paths,
     reporter <- lister
   }
 
+  # Run tests tests
   library(testthat)
   with_reporter(reporter,
     lapply(test_paths, test_one_file, reporter = reporter, env = env)
   )
 
+  # Check results
   results <- lister$get_results()
-  results <- testthat_results(results)
-
   if (stop_on_failure && !all_passed(results)) {
     stop("Test failures", call. = FALSE)
   }
-
   if (stop_on_warning && any_warnings(results)) {
     stop("Tests generated warnings", call. = FALSE)
   }
@@ -96,14 +98,6 @@ test_one_file <- function(path, reporter, env = test_env()) {
   source_file(path, new.env(parent = env), chdir = TRUE)
   reporter$end_context_if_started()
   reporter$end_file()
-}
-
-testing_env <- function(package) {
-  if (is.null(package)) {
-    test_env()
-  } else {
-    env_clone(asNamespace(package))
-  }
 }
 
 #' Run all tests in specified file

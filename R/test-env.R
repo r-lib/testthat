@@ -20,13 +20,17 @@ testing_package <- function() {
 
 #' Generate default testing environment.
 #'
-#' We use a new environment which inherits from [globalenv()].
-#' In an ideal world, we'd avoid putting the global environment on the
-#' search path for tests, but it's not currently possible without losing
+#' We use a new environment which inherits from [globalenv()] or a package
+#' namespace. In an ideal world, we'd avoid putting the global environment on
+#' the search path for tests, but it's not currently possible without losing
 #' the ability to load packages in tests.
 #'
 #' @keywords internal
 #' @export
-test_env <- function() {
-  new.env(parent = globalenv())
+test_env <- function(package = NULL) {
+  if (is.null(package)) {
+    new.env(parent = globalenv())
+  } else {
+    env_clone(asNamespace(package))
+  }
 }
