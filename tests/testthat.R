@@ -1,5 +1,4 @@
 library(testthat)
-options(testthat.use_colours = FALSE)
 
 out <- test_that("running succeeding test outside of test reporter works", {
   expect_true(TRUE)

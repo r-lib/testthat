@@ -1,5 +1,8 @@
 # testthat (development version)
 
+* `test_dir()` now defaults `stop_on_failure` to `TRUE` for consistency with
+  other `test_` functions.
+
 * New `test_local()` tests a local source package directory. It's equivalent 
   to `devtools::test()` but doesn't require devtools and all its dependencies
   to be installed (#1030).

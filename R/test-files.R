@@ -1,3 +1,48 @@
+#' Run all tests in a directory
+#'
+#' Test all files in a directory.
+#'
+#' @param path Path to directory containing tests.
+#' @param package Name of installed package.
+#' @param filter If not `NULL`, only tests with file names matching this
+#'   regular expression will be executed. Matching be performed on the file
+#'   name after it has been stripped of `"test-"` and `".R"`.
+#' @param ... Additional arguments passed to [grepl()] to control filtering.
+#' @param stop_on_failure If `TRUE`, throw an error if any tests fail.
+#' @param stop_on_warning If `TRUE`, throw an error if any tests generate
+#'   warnings.
+#' @inheritParams test_file
+#' @export
+test_dir <- function(path,
+                     filter = NULL,
+                     reporter = default_reporter(),
+                     env = NULL,
+                     ...,
+                     load_helpers = TRUE,
+                     stop_on_failure = FALSE,
+                     stop_on_warning = FALSE,
+                     wrap = TRUE,
+                     package = NULL
+                     ) {
+
+  test_paths <- find_test_scripts(path, filter = filter, ...)
+  if (length(test_paths) == 0) {
+    abort("No test files found")
+  }
+
+  test_files(
+    test_dir = path,
+    test_paths = test_paths,
+    test_package = package,
+    reporter = reporter,
+    load_helpers = load_helpers,
+    env = env,
+    stop_on_failure = stop_on_failure,
+    stop_on_warning = stop_on_warning,
+    wrap = wrap
+  )
+}
+
 test_files <- function(test_dir, test_package, test_paths,
                        load_helpers = TRUE,
                        reporter = default_reporter(),
@@ -24,6 +69,7 @@ test_files <- function(test_dir, test_package, test_paths,
     reporter <- lister
   }
 
+  library(testthat)
   with_reporter(reporter,
     lapply(test_paths, test_one_file, reporter = reporter, env = env)
   )
