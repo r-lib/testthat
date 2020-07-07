@@ -29,9 +29,10 @@ testing_package <- function() {
 #' @export
 test_env <- function(package = NULL) {
   if (is.null(package)) {
-    parent <- globalenv()
+    child_env(globalenv())
   } else {
-    parent <- asNamespace(package)
+    # Must clone environment so that during R CMD check, it's not locked
+    # preventing creation of S4 classes
+    env_clone(asNamespace(package))
   }
-  child_env(parent)
 }
