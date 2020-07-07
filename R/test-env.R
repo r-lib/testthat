@@ -29,8 +29,9 @@ testing_package <- function() {
 #' @export
 test_env <- function(package = NULL) {
   if (is.null(package)) {
-    new.env(parent = globalenv())
+    parent <- globalenv()
   } else {
-    env_clone(asNamespace(package))
+    parent <- asNamespace(package)
   }
+  child_env(parent)
 }

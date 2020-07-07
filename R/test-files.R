@@ -95,7 +95,7 @@ test_files <- function(test_dir,
   # Define testing environment
   local_test_directory(test_dir, test_package)
   env <- env %||% test_env(test_package)
-  withr::local_options(list(topLevelEnvironment = env))
+  withr::local_options(list(topLevelEnvironment = env_parent(env)))
 
   # Load helpers, setup, and teardown (on exit)
   if (load_helpers) {
