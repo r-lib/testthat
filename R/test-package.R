@@ -41,13 +41,6 @@
 #' @export
 #' @rdname test_package
 test_package <- function(package, reporter = check_reporter(), ...) {
-  # Ensure that test package returns silently if called recursively - this
-  # will occur if test-all.R ends up in the same directory as all the other
-  # tests.
-  if (is_testing()) {
-    return(invisible())
-  }
-
   require(package, character.only = TRUE)
   test_path <- system.file("tests", "testthat", package = package)
   if (test_path == "") {
