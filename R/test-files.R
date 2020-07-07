@@ -68,14 +68,14 @@ test_dir <- function(path,
 #' path <- testthat_example("success")
 #' test_file(path)
 #' test_file(path, reporter = "minimal")
-test_file <- function(path, reporter = default_compact_reporter(), ...) {
+test_file <- function(path, reporter = default_compact_reporter(), package = NULL, ...) {
   if (!file.exists(path)) {
     stop("`path` does not exist", call. = FALSE)
   }
 
   test_files(
     test_dir = dirname(path),
-    test_package = NULL,
+    test_package = package,
     test_paths = path,
     reporter = reporter,
     ...
