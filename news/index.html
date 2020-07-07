@@ -178,6 +178,9 @@
 <a href="#testthat-development-version" class="anchor"></a>testthat (development version)<small> Unreleased </small>
 </h1>
 <ul>
+<li><p><code>CheckReporter</code> (used inside R CMD check) now prints out all problems (i.e. errors, failures, warnings and skips), and records in machine readable format in <code>tests/testthat-problems.rds</code> (<a href='https://github.com/r-lib/testthat/issues/1075'>#1075</a>).</p></li>
+<li><p>All reporters now use exactly the same format when reporting the location of an expectation.</p></li>
+<li><p><code>expect_known_failure()</code> has been removed. As far as I can tell it was only ever used by testthat, and is rather fragile.</p></li>
 <li><p><code><a href="https://testthat.r-lib.org/reference/test_file.html">test_file()</a></code> now runs helper, setup, and teardown code, and has the same arguments as <code><a href="https://testthat.r-lib.org/reference/test_dir.html">test_dir()</a></code> (<a href='https://github.com/r-lib/testthat/issues/968'>#968</a>).</p></li>
 <li><p>testthat no longer supports tests stored in <code>inst/tests</code>. This has been deprecated since testthat 0.11.0 (released in 2015).</p></li>
 <li><p><code><a href="https://testthat.r-lib.org/reference/test_dir.html">test_dir()</a></code> now defaults <code>stop_on_failure</code> to <code>TRUE</code> for consistency with other <code>test_</code> functions.</p></li>
@@ -462,7 +465,7 @@ to increase reproducibility across systems (<a href='https://github.com/r-lib/te
 <ul>
 <li><p><code><a href="https://testthat.r-lib.org/reference/expect_known_output.html">expect_known_output()</a></code> replaces <code><a href="https://testthat.r-lib.org/reference/expect_known_output.html">expect_output_file()</a></code>, which has been soft-deprecated. It now defaults to <code>update = TRUE</code> and warn, rather than failing on the first run. It gains a <code>print</code> argument to automatically print the input (<a href='https://github.com/r-lib/testthat/issues/627'>#627</a>). It also sets the width option to 80 to ensure consistent output across environments (<a href='https://github.com/r-lib/testthat/issues/514'>#514</a>)</p></li>
 <li><p><code><a href="https://testthat.r-lib.org/reference/expect_known_output.html">expect_known_value()</a></code> replaces <code><a href="https://testthat.r-lib.org/reference/expect_known_output.html">expect_equal_to_reference()</a></code>, which has been soft-deprecated. It gains an update argument defaulting to <code>TRUE</code>. This changes behaviour from the previous version, and soft-deprecated <code><a href="https://testthat.r-lib.org/reference/expect_known_output.html">expect_equal_to_reference()</a></code> gets <code>update = FALSE</code>.</p></li>
-<li><p><code><a href="https://testthat.r-lib.org/reference/expect_success.html">expect_known_failure()</a></code> stored and compares the failure message from an expectation. It’s a useful regression test when developing informative failure messges for your own expectations.</p></li>
+<li><p><code>expect_known_failure()</code> stored and compares the failure message from an expectation. It’s a useful regression test when developing informative failure messges for your own expectations.</p></li>
 </ul>
 </div>
 <div id="quasiquotation-support" class="section level3">
