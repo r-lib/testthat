@@ -21,8 +21,8 @@ test_dir(
 \item{path}{Path to directory containing tests.}
 
 \item{filter}{If not \code{NULL}, only tests with file names matching this
-regular expression will be executed. Matching be performed on the file
-name after it has been stripped of \code{"test-"} and \code{".R"}.}
+regular expression will be executed. Matching is performed on the file
+name after it's stripped of \code{"test-"} and \code{".R"}.}
 
 \item{reporter}{Reporter to use to summarise output. Can be supplied
 as a string (e.g. "summary") or as an R6 object
@@ -45,8 +45,18 @@ warnings.}
 \item{wrap}{Automatically wrap all code within \code{\link[=test_that]{test_that()}}? This ensures
 that all expectations are reported, even if outside a test block.}
 
-\item{package}{Name of installed package.}
+\item{package}{If these tests belong to a package, the name of the package.}
+}
+\value{
+A list (invisibly) containing data about the test results.
 }
 \description{
-Test all files in a directory.
+Execute code in the specified file, displaying results using a \code{reporter}.
+Use this function when you want to run a single file's worth of tests.
+You are responsible for ensuring that the functions to test are available
+in the global environment.
+}
+\details{
+Any errors that occur in code run outside of \code{test_that()} will generate
+a test failure and terminate execution of that test file.
 }

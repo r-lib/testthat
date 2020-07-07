@@ -2,16 +2,9 @@
 % Please edit documentation in R/test-files.R
 \name{test_file}
 \alias{test_file}
-\title{Run all tests in specified file}
+\title{Run all tests in a single file}
 \usage{
-test_file(
-  path,
-  reporter = default_compact_reporter(),
-  env = test_env(),
-  start_end_reporter = TRUE,
-  load_helpers = TRUE,
-  wrap = TRUE
-)
+test_file(path, reporter = default_compact_reporter(), ...)
 }
 \arguments{
 \item{path}{Path to file.}
@@ -22,36 +15,17 @@ as a string (e.g. "summary") or as an R6 object
 
 See \link{Reporter} for more details and a list of built-in reporters.}
 
-\item{env}{Environment in which to execute the tests. Expert use only.}
-
-\item{start_end_reporter}{Should the reporters \code{start_reporter()} and
-\code{end_reporter()} methods be called? For expert use only.}
-
-\item{load_helpers}{Source helper files before running the tests?
-See \code{\link[=source_test_helpers]{source_test_helpers()}} for more details.}
-
-\item{wrap}{Automatically wrap all code within \code{\link[=test_that]{test_that()}}? This ensures
-that all expectations are reported, even if outside a test block.}
+\item{...}{Additional parameters passed on to \code{test_dir()}}
 }
 \value{
 Invisibly, a list with one element for each test.
 }
 \description{
-Execute code in the specified file, displaying results using a \code{reporter}.
-Use this function when you want to run a single file's worth of tests.
-You are responsible for ensuring that the functions to test are available
-in the global environment.
-}
-\details{
-Any errors that occur in code run outside of \code{test_that()} will generate
-a test failure and terminate execution of that test file.
+A variant of \code{\link[=test_dir]{test_dir()}} that only tests a single file within a directory.
+The directory is still used to locate helpers, setup and teardown files.
 }
 \examples{
 path <- testthat_example("success")
+test_file(path)
 test_file(path, reporter = "minimal")
-
-# test_file() invisibly returns a list, with one element for each test.
-# This can be useful if you want to compute on your test results.
-out <- test_file(path, reporter = "minimal")
-str(out[[1]])
 }

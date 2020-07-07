@@ -13,7 +13,7 @@ test_check(package, reporter = check_reporter(), ...)
 test_local(path = ".", reporter = default_reporter(), ...)
 }
 \arguments{
-\item{package}{Name of installed package.}
+\item{package}{If these tests belong to a package, the name of the package.}
 
 \item{reporter}{Reporter to use to summarise output. Can be supplied
 as a string (e.g. "summary") or as an R6 object

@@ -12,7 +12,6 @@ test_that("captures error before first test", {
 
 test_that("gracefully handles multiple contexts", {
   local_reproducible_output(unicode = TRUE)
-  local_edition(2)
 
   expect_known_output(
     test_file(
