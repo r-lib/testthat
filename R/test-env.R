@@ -1,11 +1,13 @@
 #' Determine testing status
 #'
-#' Use `is_testing()` to determine if code is being run as part of a test and
-#' `testing_package()` to retrieve the name of the package being tested. You
-#' can also check the underlying env var directly
-#' `identical(Sys.getenv("TESTTHAT"), "true")` to avoid creating a run-time
-#' dependency on testthat.
+#' @description
+#' * `is_testing()` determine if code is being run as part of a test
+#' * `testing_package()` gives name of the package being tested.
+#' * `testing_directory()` gives testing directory.
 #'
+#' These are thin wrappers that retrieve the values of environment variables.
+#' To avoid creating a run-time dependency on testthat, you can inline the
+#' source of these functions directly into your package.
 #'
 #' @export
 is_testing <- function() {
@@ -15,7 +17,13 @@ is_testing <- function() {
 #' @export
 #' @rdname is_testing
 testing_package <- function() {
-  Sys.getenv("TESTTHAT_PKG")
+  Sys.getenv("TESTTHAT_PKG", NA_character_)
+}
+
+#' @export
+#' @rdname is_testing
+testing_directory <- function() {
+  Sys.getenv("TESTTHAT_DIR", NA_character_)
 }
 
 #' Generate default testing environment.

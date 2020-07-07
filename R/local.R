@@ -81,12 +81,8 @@ local_test_directory <- function(path, package = NULL, .env = parent.frame()) {
   withr::local_envvar(c(
     R_TESTS = "",
     TESTTHAT = "true",
-    TESTTHAT_DIR = maybe_root_dir(path),
+    TESTTHAT_DIR = path,
     TESTTHAT_PKG = package
   ), .local_envir = .env)
   local_edition(find_edition(path, package), .env = .env)
-}
-
-maybe_root_dir <- function(path) {
-  tryCatch(pkgload::pkg_path(path), error = function(...) path)
 }

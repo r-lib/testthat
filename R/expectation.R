@@ -149,7 +149,7 @@ format.expectation <- function(x, simplify = "branch", ...) {
     simplify = simplify,
     ...,
     max_frames = max_frames,
-    dir = Sys.getenv("TESTTHAT_DIR") %||% getwd()
+    dir = testing_directory()
   )
   lines <- c(message, crayon::bold("Backtrace:"), trace_lines)
   paste(lines, collapse = "\n")
