@@ -1,15 +1,12 @@
 #' Run all tests in directory or package
 #'
 #' @description
-#' Use `test_dir()` for a collection of tests in a directory; use
-#' `test_package()` interactively at the console, and `test_check()`
-#' inside of `R CMD check`.
+#' * `test_package()` tests an installed package.
+#' * `test_local()` tests a local source package.
+#' * `test_check()` checks a package during `R CMD check`.
 #'
-#' In your own code, you can use `is_testing()` to determine if code is being
-#' run as part of a test and `testing_package()` to retrieve the name of the
-#' package being tested. You can also check the underlying env var directly
-#' `identical(Sys.getenv("TESTTHAT"), "true")` to avoid creating a run-time
-#' dependency on testthat.
+#' These are all powered by the lower level `test_dir()`, which runs all test
+#' files in a directory.
 #'
 #' @section Test files:
 #' For package code, tests should live in `tests/testthat`.
@@ -66,17 +63,12 @@ test_dir <- function(path,
                      reporter = default_reporter(),
                      env = NULL,
                      ...,
-                     encoding = "unknown",
                      load_helpers = TRUE,
                      stop_on_failure = FALSE,
                      stop_on_warning = FALSE,
                      wrap = TRUE,
                      package = NULL
                      ) {
-  if (!missing(encoding) && !identical(encoding, "UTF-8")) {
-    warning("`encoding` is deprecated; all files now assumed to be UTF-8", call. = FALSE)
-  }
-
   local_test_directory(path, package = package)
 
   if (is.null(env)) {
@@ -181,12 +173,54 @@ test_check <- function(package,
 
 #' @export
 #' @rdname test_dir
+test_local <- function(path = ".",
+                       filter = NULL,
+                       reporter = default_reporter(),
+                       ...,
+                       stop_on_failure = TRUE,
+                       stop_on_warning = FALSE
+                       ) {
+  path <- pkgload::pkg_path(path)
+  package <- pkgload::pkg_name(path)
+
+  test_path <- file.path(path, "tests", "testthat")
+  if (!dir.exists(test_path)) {
+    stop("No tests found for ", package, call. = FALSE)
+  }
+
+  library(testthat)
+  if (package != "testthat") {
+    pkgload::load_all(path, helpers = FALSE, quiet = TRUE)
+  }
+
+  withr::local_envvar(c(NOT_CRAN = "true"))
+  test_dir(
+    test_path,
+    package = package,
+    filter = filter,
+    reporter = reporter,
+    ...,
+    stop_on_failure = stop_on_failure,
+    stop_on_warning = stop_on_warning
+  )
+}
+
+#' Determine testing status
+#'
+#' Use `is_testing()` to determine if code is being run as part of a test and
+#' `testing_package()` to retrieve the name of the package being tested. You
+#' can also check the underlying env var directly
+#' `identical(Sys.getenv("TESTTHAT"), "true")` to avoid creating a run-time
+#' dependency on testthat.
+#'
+#'
+#' @export
 is_testing <- function() {
   identical(Sys.getenv("TESTTHAT"), "true")
 }
 
 #' @export
-#' @rdname test_dir
+#' @rdname is_testing
 testing_package <- function() {
   Sys.getenv("TESTTHAT_PKG")
 }
