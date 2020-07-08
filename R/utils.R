@@ -56,3 +56,15 @@ can_entrace <- function(cnd) {
 }
 
 isNA <- function(x) length(x) == 1 && is.na(x)
+
+relish <- function(x, dir = testing_directory()) {
+  if (is.na(dir)) {
+    return(x)
+  }
+
+  if (substr(dir, nchar(dir), nchar(dir)) != "/") {
+    dir <- paste0(dir, "/")
+  }
+
+  gsub(dir, "", x, fixed = TRUE)
+}

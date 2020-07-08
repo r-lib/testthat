@@ -3,7 +3,7 @@ test_that("uses specified width", {
   on.exit(options(old), add = TRUE)
 
   x <- 1:100
-  expect_known_output(print(x), "width-80.txt")
+  expect_known_output(print(x), test_path("width-80.txt"))
 })
 
 test_that("creates file on first run", {

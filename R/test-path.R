@@ -8,7 +8,7 @@
 #' @export
 test_path <- function(...) {
   if (is_testing()) {
-    file.path(...)
+    file.path(testing_directory(), ...)
   } else {
     base <- "tests/testthat"
     if (!dir.exists(base)) {

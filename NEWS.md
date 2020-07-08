@@ -1,5 +1,9 @@
 # testthat (development version)
 
+* In the 3rd edition, `test_that()` now sets the working directory to the
+  `tempdir()` to ensure that you use `test_path()` to refer to files in the
+  testing directory (#1059).
+
 * `CheckReporter` (used inside R CMD check) now prints out all problems
   (i.e. errors, failures, warnings and skips), and records in machine
   readable format in `tests/testthat-problems.rds` (#1075).

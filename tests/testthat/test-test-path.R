@@ -1,16 +1,22 @@
 test_that("returns local path when called in tests", {
-  expect_equal(test_path("test-test-path.R"), "test-test-path.R")
+  expect_equal(
+    test_path("test-test-path.R"),
+    file.path(testing_directory(), "test-test-path.R")
+  )
 
   # even if path doesn't (yet) exists
-  expect_equal(test_path("xxxx"), "xxxx")
+  expect_equal(
+    test_path("xxxx"),
+    file.path(testing_directory(), "xxxx")
+  )
 })
 
 test_that("returns local path when called from tools::testInstalledPackages", {
-  old <- setwd("test-path-installed/testthat-tests/testthat")
-  on.exit(setwd(old))
+  base <- test_path("test-path-installed/testthat-tests/testthat")
+  withr::local_envvar(c(TESTTHAT_DIR = base))
 
-  expect_equal(test_path("test-test-path.R"), "test-test-path.R")
-  expect_equal(test_path("xxxx"), "xxxx")
+  expect_equal(test_path("test-test-path.R"), file.path(base, "test-test-path.R"))
+  expect_equal(test_path("xxxx"), file.path(base, "xxxx"))
 })
 
 test_that("returns full path when called outside tests", {

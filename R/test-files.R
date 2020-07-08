@@ -116,10 +116,10 @@ test_files <- function(test_dir,
 
   # Load helpers, setup, and teardown (on exit)
   if (load_helpers) {
-    source_test_helpers(".", env)
+    source_test_helpers(".", env = env)
   }
   source_test_setup(".", env)
-  on.exit(source_test_teardown(".", env), add = TRUE)
+  withr::defer(source_test_teardown(".", env))
 
   # Wrap reporter
   reporter <- find_reporter(reporter)
@@ -148,9 +148,9 @@ test_files <- function(test_dir,
 
 test_one_file <- function(path, env = test_env()) {
   reporter <- get_reporter()
-  on.exit(teardown_run(), add = TRUE)
+  on.exit(teardown_run(tempdir()), add = TRUE)
 
-  reporter$start_file(path)
+  reporter$start_file(relish(path))
   source_file(path, child_env(env))
   reporter$end_context_if_started()
   reporter$end_file()

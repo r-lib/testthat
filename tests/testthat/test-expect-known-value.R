@@ -1,19 +1,19 @@
 test_that("correctly matches to a file", {
   x <- 1
-  expect_success(expect_known_value(x, "one.rds"))
+  expect_success(expect_known_value(x, test_path("one.rds")))
 
   x <- 2
-  expect_failure(expect_known_value(x, "one.rds", update = FALSE))
+  expect_failure(expect_known_value(x, test_path("one.rds"), update = FALSE))
 })
 
 test_that("first run is successful", {
   expect_success(
     expect_warning(
-      expect_known_value(2, "two.rds"),
+      expect_known_value(2, test_path("two.rds")),
       "Creating reference"
     )
   )
-  unlink("two.rds")
+  unlink(test_path("two.rds"))
 })
 
 test_that("equal_to_ref does not overwrite existing", {

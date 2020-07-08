@@ -29,7 +29,7 @@ test_that("contexts are opened, then closed", {
   local_edition(2)
   report <- CountReporter$new()
 
-  with_reporter(report, test_one_file("context.R"))
+  with_reporter(report, test_one_file(test_path("context.R")))
   expect_equal(report$context_count, 2)
   expect_equal(report$context_i, 0)
   expect_equal(report$test_count, 4)

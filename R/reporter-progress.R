@@ -263,7 +263,7 @@ CompactProgressReporter <- R6::R6Class("CompactProgressReporter",
     },
 
     start_file = function(name) {
-      self$cat_line("Testing ", name)
+      self$cat_line("Testing ", relish(name))
       super$start_file(name)
     },
 

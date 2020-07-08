@@ -38,6 +38,10 @@ details).
 varies with the size of your console).
 }
 
+In the \strong{3rd edition} (and above), it sets the working directory to
+\code{tempdir()}. This means that referring to any path in the test directory
+requires \code{\link[=test_path]{test_path()}}, ensuring that any path problems surface early.
+
 It also sets envvars \code{RSTUDIO = 0} (which ensures that RStudio is never
 detected as running), and \code{TESTTHAT = "true"} (which ensures that
 \code{\link[=is_testing]{is_testing()}} returns \verb{TRUE)}, and sets collation locale to "C"

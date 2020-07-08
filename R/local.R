@@ -27,6 +27,10 @@
 #' * `width = 80` to control the width of printed output (usually this
 #'   varies with the size of your console).
 #'
+#' In the **3rd edition** (and above), it sets the working directory to
+#' `tempdir()`. This means that referring to any path in the test directory
+#' requires [test_path()], ensuring that any path problems surface early.
+#'
 #' It also sets envvars `RSTUDIO = 0` (which ensures that RStudio is never
 #' detected as running), and `TESTTHAT = "true"` (which ensures that
 #' [is_testing()] returns `TRUE)`, and sets collation locale to "C"
@@ -37,6 +41,9 @@
 #' @keywords internal
 #' @param .env Environment to use for scoping; expert use only.
 local_test_context <- function(.env = parent.frame()) {
+  if (edition_get() >= 3) {
+    withr::local_dir(tempdir(), .local_envir = .env)
+  }
   withr::local_envvar(list(TESTTHAT = "true"), .local_envir = .env)
   local_reproducible_output(.env = .env)
 }

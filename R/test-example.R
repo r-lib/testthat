@@ -21,6 +21,7 @@ test_examples <- function(path = "../..") {
 }
 
 test_examples_source <- function(path = "../..") {
+  path <- file.path(testing_directory(), path)
   if (!dir.exists(file.path(path, "man"))) {
     return()
   }

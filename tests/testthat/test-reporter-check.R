@@ -9,7 +9,7 @@ test_that("basic report works", {
     test_path("reporters/check.txt")
   )
 
-  rds <- test_path("testthat-problems.rds")
+  rds <- "testthat-problems.rds"
   expect_true(file.exists(rds))
   unlink(rds)
 })
