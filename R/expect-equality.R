@@ -99,7 +99,7 @@ expect_waldo_equal <- function(type, act, exp, info, ...) {
   expect(
     length(comp) == 0,
     sprintf(
-      "`actual` (%s) not %s to `expected` (%s).\n\n%s",
+      "%s (`actual`) not %s to %s (`expected`).\n\n%s",
       act$lab, type, exp$lab, paste0(comp, collapse = "\n\n")
     ),
     info = info

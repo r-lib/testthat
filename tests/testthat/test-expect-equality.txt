@@ -1,12 +1,12 @@
 > local_edition(3)
 > expect_identical(1, "a")
-Error: `actual` (1) not identical to `expected` ("a").
+Error: 1 (`actual`) not identical to "a" (`expected`).
 
 `actual` is a double vector (1)
 `expected` is a character vector ('a')
 
 > expect_equal(1, "a")
-Error: `actual` (1) not equal to `expected` ("a").
+Error: 1 (`actual`) not equal to "a" (`expected`).
 
 `actual` is a double vector (1)
 `expected` is a character vector ('a')
