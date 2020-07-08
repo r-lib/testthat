@@ -29,7 +29,17 @@ edition_deprecate <- function(in_edition, what, instead = NULL) {
   ))
 }
 
+#' Temporarily change the active testthat edition
+#'
+#' `local_edition()` allows you to temporarily (within a single test or
+#' a single test file) change the active edition of testthat.
+#'
+#' @export
+#' @param x Edition Should be a single integer.
+#' @param .env Environment that controls scope of changes. For expert use only.
+#' @keywords internal
 local_edition <- function(x, .env = parent.frame()) {
+  stopifnot(is.numeric(x) && length(x) == 1)
   old <- edition_set(x)
   withr::defer(edition_set(old), envir = .env)
 }
