@@ -47,8 +47,9 @@
 
 
 <meta property="og:title" content="Provide human-readable comparison of two objects — compare" />
-<meta property="og:description" content="compare is similar to base::all.equal(), but shows
-you examples of where the failures occurred." />
+<meta property="og:description" content="
+compare is similar to base::all.equal(), but somewhat buggy in its
+use of tolerance. Please use waldo instead." />
 <meta property="og:image" content="https://testthat.r-lib.org/logo.png" />
 
 
@@ -177,8 +178,9 @@ you examples of where the failures occurred." />
     </div>
 
     <div class="ref-description">
-    <p><code>compare</code> is similar to <code><a href='https://rdrr.io/r/base/all.equal.html'>base::all.equal()</a></code>, but shows
-you examples of where the failures occurred.</p>
+    <p><a href='https://www.tidyverse.org/lifecycle/#superseded'><img src='figures/lifecycle-superseded.svg' alt='Superseded lifecycle'></a></p>
+<p><code>compare</code> is similar to <code><a href='https://rdrr.io/r/base/all.equal.html'>base::all.equal()</a></code>, but somewhat buggy in its
+use of <code>tolerance</code>. Please use <a href='https://waldo.r-lib.org/'>waldo</a> instead.</p>
     </div>
 
     <pre class="usage"><span class='fu'>compare</span>(<span class='kw'>x</span>, <span class='kw'>y</span>, <span class='kw'>...</span>)

@@ -47,19 +47,11 @@
 
 
 <meta property="og:title" content="Is an error informative? — is_informative_error" />
-<meta property="og:description" content="is_informative_error() is a generic predicate that indicates
+<meta property="og:description" content="
+is_informative_error() is a generic predicate that indicates
 whether testthat users should explicitly test for an error
-class. When it returns TRUE (the default), and expect_error()
-does not check for the class, a warning is issued during tests.
-You can silence the warning by implementing is_informative_error().
-The main use case for overriding this method is to introduce an
-experimental error class when you need more experience while
-developing an error hierarchy for your package. Override
-is_informative_error() to return FALSE to avoid encouraging
-users to depend on the experimental class in their tests.
-Since testthat should be a Suggest dependency, methods for
-is_informative_error() should typically be lazily registered,
-e.g. with vctrs::s3_register()." />
+class. Since we no longer recommend you do that, this generic
+has been deprecated." />
 <meta property="og:image" content="https://testthat.r-lib.org/logo.png" />
 
 
@@ -188,19 +180,11 @@ e.g. with vctrs::s3_register()." />
     </div>
 
     <div class="ref-description">
-    <p><code>is_informative_error()</code> is a generic predicate that indicates
+    <p><img src='figures/lifecycle-deprecated.svg' alt='Deprecated lifecycle' /></p>
+<p><code>is_informative_error()</code> is a generic predicate that indicates
 whether testthat users should explicitly test for an error
-class. When it returns <code>TRUE</code> (the default), and <code>expect_error()</code>
-does not check for the class, a warning is issued during tests.
-You can silence the warning by implementing <code>is_informative_error()</code>.</p>
-<p>The main use case for overriding this method is to introduce an
-experimental error class when you need more experience while
-developing an error hierarchy for your package. Override
-<code>is_informative_error()</code> to return <code>FALSE</code> to avoid encouraging
-users to depend on the experimental class in their tests.</p>
-<p>Since testthat should be a <code>Suggest</code> dependency, methods for
-<code>is_informative_error()</code> should typically be lazily registered,
-e.g. with <code><a href='https://vctrs.r-lib.org/reference/s3_register.html'>vctrs::s3_register()</a></code>.</p>
+class. Since we no longer recommend you do that, this generic
+has been deprecated.</p>
     </div>
 
     <pre class="usage"><span class='fu'>is_informative_error</span>(<span class='kw'>x</span>, <span class='kw'>...</span>)</pre>
