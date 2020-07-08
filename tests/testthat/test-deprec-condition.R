@@ -1,4 +1,6 @@
 test_that("is_informative_error returns TRUE for basic errors", {
+  withr::local_options(list(lifecycle_verbosity = "quiet"))
+
   is_informative <- function(x) is_informative_error(catch_cnd(x))
 
   expect_false(is_informative(stop("!")))
