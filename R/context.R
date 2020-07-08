@@ -1,5 +1,8 @@
 #' Describe the context of a set of tests.
 #'
+#' @description
+#' `r lifecycle::badge("superseded")`
+#'
 #' Use of `context()` is no longer recommended. Instead omit it, and messages
 #' will use the name of the file instead. This ensures that the context and
 #' test file name are always in sync.
@@ -9,6 +12,8 @@
 #' in a single file if you so choose.
 #'
 #' @section 3rd edition:
+#' `r lifecycle::badge("deprecated")`
+#'
 #' `context()` is deprecated in the third edition, and the equivalent
 #' information is instead recorded by the test file name.
 #'

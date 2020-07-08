@@ -53,6 +53,8 @@ throws_error(regexp = NULL, ...)
 matches(regexp, all = TRUE, ...)
 }
 \description{
+\ifelse{html}{\out{<a href='https://www.tidyverse.org/lifecycle/#superseded'><img src='figures/lifecycle-superseded.svg' alt='Superseded lifecycle'></a>}}{\strong{Superseded}}
+
 Initial testthat used a style of testing that looked like
 \verb{expect_that(a, equals(b)))} this allowed expectations to read like
 English sentences, but was verbose and a bit too cutesy. This style

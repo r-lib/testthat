@@ -1,5 +1,8 @@
 #' Old-style expectations.
 #'
+#' @description
+#' `r lifecycle::badge("superseded")`
+#'
 #' Initial testthat used a style of testing that looked like
 #' `expect_that(a, equals(b)))` this allowed expectations to read like
 #' English sentences, but was verbose and a bit too cutesy. This style

@@ -28,10 +28,14 @@ new_capture <- function(class) {
 
 #' Capture conditions, including messages, warnings, expectations, and errors.
 #'
+#' @description
+#' `r lifecycle::badge("superseded")`
+#'
 #' These functions allow you to capture the side-effects of a function call
-#' including printed output, messages and warnings. They are used to evaluate
-#' code for [expect_output()], [expect_message()],
-#' [expect_warning()], and [expect_silent()].
+#' including printed output, messages and warnings. We no longer recommend
+#' that you use these functions, instead relying on the [expect_message()]
+#' and friends to bubble up unmatched conditions. If you just want to silence
+#' unimportant warnings, use [suppressWarnings()].
 #'
 #' @param code Code to evaluate
 #' @param entrace Whether to add a [backtrace][rlang::trace_back] to
@@ -113,22 +117,12 @@ get_messages <- function(x) {
 #' Is an error informative?
 #'
 #' @description
+#' `r lifecycle::badge("deprecated")`
 #'
 #' `is_informative_error()` is a generic predicate that indicates
 #' whether testthat users should explicitly test for an error
-#' class. When it returns `TRUE` (the default), and `expect_error()`
-#' does not check for the class, a warning is issued during tests.
-#' You can silence the warning by implementing `is_informative_error()`.
-#'
-#' The main use case for overriding this method is to introduce an
-#' experimental error class when you need more experience while
-#' developing an error hierarchy for your package. Override
-#' `is_informative_error()` to return `FALSE` to avoid encouraging
-#' users to depend on the experimental class in their tests.
-#'
-#' Since testthat should be a `Suggest` dependency, methods for
-#' `is_informative_error()` should typically be lazily registered,
-#' e.g. with `vctrs::s3_register()`.
+#' class. Since we no longer recommend you do that, this generic
+#' has been deprecated.
 #'
 #' @param x An error object.
 #' @inheritParams ellipsis::dots_empty
@@ -143,6 +137,7 @@ get_messages <- function(x) {
 #' @keywords internal
 #' @export
 is_informative_error <- function(x, ...) {
+  lifecycle::deprecate_warn("3.0.0", "is_informative_error()")
   ellipsis::check_dots_empty()
 
   if (!inherits(x, "error")) {

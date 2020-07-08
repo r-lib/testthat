@@ -1,7 +1,10 @@
 #' Provide human-readable comparison of two objects
 #'
-#' `compare` is similar to [base::all.equal()], but shows
-#' you examples of where the failures occurred.
+#' @description
+#' `r lifecycle::badge("superseded")`
+#'
+#' `compare` is similar to [base::all.equal()], but somewhat buggy in its
+#' use of `tolerance`. Please use [waldo](https://waldo.r-lib.org/) instead.
 #'
 #' @export
 #' @param x,y Objects to compare

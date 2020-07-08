@@ -46,6 +46,8 @@ Compares \code{object} and \code{expected} using \code{\link[=all.equal]{all.equ
 }
 \section{3rd edition}{
 
+\ifelse{html}{\figure{lifecycle-deprecated.svg}{options: alt='Deprecated lifecycle'}}{\strong{Deprecated}}
+
 \code{expect_equivalent()} is deprecated in the 3rd edition. Instead use
 \code{expect_equal(ignore_attr = TRUE)}.
 }

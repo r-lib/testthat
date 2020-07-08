@@ -114,6 +114,8 @@ expect_waldo_equal <- function(type, act, exp, info, ...) {
 #' `check.attributes = FALSE`.
 #'
 #' @section 3rd edition:
+#' `r lifecycle::badge("deprecated")`
+#'
 #' `expect_equivalent()` is deprecated in the 3rd edition. Instead use
 #' `expect_equal(ignore_attr = TRUE)`.
 #'

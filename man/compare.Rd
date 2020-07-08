@@ -57,8 +57,10 @@ The default tolerance is \code{sqrt(.Machine$double.eps)}, unless long doubles
 are not available, in which case the test is skipped.}
 }
 \description{
-\code{compare} is similar to \code{\link[base:all.equal]{base::all.equal()}}, but shows
-you examples of where the failures occurred.
+\ifelse{html}{\out{<a href='https://www.tidyverse.org/lifecycle/#superseded'><img src='figures/lifecycle-superseded.svg' alt='Superseded lifecycle'></a>}}{\strong{Superseded}}
+
+\code{compare} is similar to \code{\link[base:all.equal]{base::all.equal()}}, but somewhat buggy in its
+use of \code{tolerance}. Please use \href{https://waldo.r-lib.org/}{waldo} instead.
 }
 \examples{
 # Character -----------------------------------------------------------------

@@ -1,8 +1,13 @@
 #' Expect that a condition holds.
 #'
+#' @description
+#' `r lifecycle::badge("superseded")`
+#'
 #' An old style of testing that's no longer encouraged.
 #'
 #' @section 3rd edition:
+#' `r lifecycle::badge("deprecated")`
+#'
 #' This style of testing is formally deprecated as of the 3rd edition.
 #' Use a more specific `expect_` function instead.
 #'

@@ -105,12 +105,17 @@ isS3 <- function(x) is.object(x) && !isS4(x)
 
 #' Expectation: does the object inherit from a given class?
 #'
+#' @description
+#' `r lifecycle::badge("superseded")`
+#'
 #' `expect_is()` is an older form that uses [inherits()] without checking
 #' whether `x` is S3, S4, or neither. Instead, I'd recommend using
 #' [expect_type()], [expect_s3_class()] or [expect_s4_class()] to more clearly
 #' convey your  intent.
 #'
 #' @section 3rd edition:
+#' `r lifecycle::badge("deprecated")`
+#'
 #' `expect_is()` is formally deprecated in the 3rd edition.
 #'
 #' @keywords internal

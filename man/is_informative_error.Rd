@@ -12,21 +12,12 @@ is_informative_error(x, ...)
 \item{...}{These dots are for future extensions and must be empty.}
 }
 \description{
+\ifelse{html}{\figure{lifecycle-deprecated.svg}{options: alt='Deprecated lifecycle'}}{\strong{Deprecated}}
+
 \code{is_informative_error()} is a generic predicate that indicates
 whether testthat users should explicitly test for an error
-class. When it returns \code{TRUE} (the default), and \code{expect_error()}
-does not check for the class, a warning is issued during tests.
-You can silence the warning by implementing \code{is_informative_error()}.
-
-The main use case for overriding this method is to introduce an
-experimental error class when you need more experience while
-developing an error hierarchy for your package. Override
-\code{is_informative_error()} to return \code{FALSE} to avoid encouraging
-users to depend on the experimental class in their tests.
-
-Since testthat should be a \code{Suggest} dependency, methods for
-\code{is_informative_error()} should typically be lazily registered,
-e.g. with \code{vctrs::s3_register()}.
+class. Since we no longer recommend you do that, this generic
+has been deprecated.
 }
 \details{
 A few classes are hard-coded as uninformative:
