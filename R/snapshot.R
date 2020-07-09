@@ -16,6 +16,16 @@ expect_snapshot_value <- function(x, serialize = FALSE) {
   expect_snapshot(lab, val)
 }
 
+snapshot_accept <- function(path = "tests/testthat") {
+  changed <- dir(file.path(path, "snaps"), pattern = "\\.new\\.json$", full.names = TRUE)
+
+  cur <- gsub("\\.new\\.json$", "\\.json", changed)
+  unlink(cur)
+  file.rename(changed, cur)
+
+  invisible()
+}
+
 expect_snapshot <- function(lab, val) {
   snapshotter <- get_snapshotter()
   if (is.null(snapshotter)) {
