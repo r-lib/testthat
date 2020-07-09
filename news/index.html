@@ -178,6 +178,7 @@
 <a href="#testthat-development-version" class="anchor"></a>testthat (development version)<small> Unreleased </small>
 </h1>
 <ul>
+<li><p><code><a href="https://testthat.r-lib.org/reference/test_that.html">test_that()</a></code> no longer triggers an error when run outside of tests; instead it produces a more informative summary of all failures, errors, warnings, and skips that occurred inside the test.</p></li>
 <li><p><code>CheckReporter</code> (used inside R CMD check) now prints out all problems (i.e. errors, failures, warnings and skips), and records in machine readable format in <code>tests/testthat-problems.rds</code> (<a href='https://github.com/r-lib/testthat/issues/1075'>#1075</a>).</p></li>
 <li><p>All reporters now use exactly the same format when reporting the location of an expectation.</p></li>
 <li><p><code>expect_known_failure()</code> has been removed. As far as I can tell it was only ever used by testthat, and is rather fragile.</p></li>

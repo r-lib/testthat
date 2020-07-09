@@ -169,6 +169,9 @@
     <loc>https://testthat.r-lib.org/reference/is_testing.html</loc>
   </url>
   <url>
+    <loc>https://testthat.r-lib.org/reference/local_edition.html</loc>
+  </url>
+  <url>
     <loc>https://testthat.r-lib.org/reference/local_test_context.html</loc>
   </url>
   <url>
