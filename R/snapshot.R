@@ -1,3 +1,50 @@
+expect_snapshot_output <- function(x) {
+  lab <- quo_label(enquo(x))
+  val <- capture_output_lines(snapshot_print(x))
+
+  expect_snapshot(lab, val)
+}
+
+expect_snapshot_value <- function(x, serialize = FALSE) {
+  lab <- quo_label(enquo(x))
+  if (serialize) {
+    val <- rawToChar(serialize(x, NULL, ascii = TRUE))
+  } else {
+    val <- x
+  }
+
+  expect_snapshot(lab, val)
+}
+
+expect_snapshot <- function(lab, val) {
+  snapshotter <- get_snapshotter()
+  if (is.null(snapshotter)) {
+    cat("No snapshotter active. Current value: \n")
+    cat(val, sep = "\n")
+  } else {
+    comp <- snapshotter$take_snapshot(val)
+    expect(
+      length(comp) == 0,
+      sprintf(
+        "Shapshot of %s has changed:\n%s\n\n%s",
+        lab,
+        paste0(comp, collapse = "\n\n"),
+        "Run `snapshot_accept()` if this is a deliberate change"
+      )
+    )
+  }
+}
+
+#' @export
+#' @rdname expect_snapshot_output
+snapshot_print <- function(x) {
+  UseMethod("snapshot_print")
+}
+
+#' @export
+snapshot_print.default <- function(x) {
+  print(x)
+}
 
 # Reporter ----------------------------------------------------------------
 
@@ -15,7 +62,7 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
     new_snaps = NULL,
 
     start_file = function(path) {
-      self$file <- context_start_file(context_name(path))
+      self$file <- context_name(path)
       self$file_seen <- c(self$file_seen, path)
 
       self$file_changed <- FALSE
@@ -23,7 +70,7 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
       self$cur_snaps <- list()
       self$new_snaps <- list()
     },
-    start_test = function(test, context) {
+    start_test = function(context, test) {
       self$test <- test
       self$i <- 0L
 
@@ -35,20 +82,23 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
     take_snapshot = function(value) {
       self$i <- self$i + 1L
 
-      old <- self$old_snap[[self$test]][[i]]
-      self$new_snap[[self$test]][[i]] <- value
+      self$new_snaps <- self$snap_append(self$new_snaps, value)
 
-      if (self$has_snapshot(i)) {
-        self$cur_snap[[self$test]][[i]] <- old
+      if (self$has_snapshot(self$i)) {
+        old <- self$old_snaps[[self$test]][[self$i]]
+        self$cur_snaps <- self$snap_append(self$cur_snaps, old)
 
-        comp <- waldo::compare(old, value)
+        comp <- waldo::compare(
+          x = old,   x_arg = "previous",
+          y = value, y_arg = "current"
+        )
 
         if (length(comp) > 0L) {
           self$file_changed <- TRUE
         }
         comp
       } else {
-        self$cur_snap[[self$test]][[i]] <- value
+        self$cur_snaps <- self$snap_append(self$cur_snaps, value)
 
         warn("Adding new snapshot")
         character()
@@ -88,7 +138,7 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
       }
     },
 
-    active = function() {
+    is_active = function() {
       !identical(testing_directory(), "") &&
         !is.null(self$file) &&
         !is.null(self$test)
@@ -97,7 +147,12 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
       if (!has_name(self$old_snaps, self$test)) {
         return(FALSE)
       }
-      length(self$old_snaps[self$test] >= i)
+      i <= length(self$old_snaps[[self$test]])
+    },
+
+    snap_append = function(data, snap) {
+      data[[self$test]] <- c(data[[self$test]], list(snap))
+      data
     },
 
     # File management ----------------------------------------------------------
@@ -108,10 +163,10 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
         list()
       }
     },
-    snaps_write = function(yaml, suffix = "") {
-      yaml <- compact(yaml)
-      if (length(yaml) == 0) {
-        yaml::write_yaml(yaml, self$snap_path(suffix))
+    snaps_write = function(data, suffix = "") {
+      data <- compact(data)
+      if (length(data) > 0) {
+        jsonlite::write_json(data, self$snap_path(suffix), pretty = TRUE)
       } else {
         self$snaps_delete(suffix)
       }
@@ -120,7 +175,7 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
       unlink(self$snap_path(suffix))
     },
     snap_path = function(suffix = "") {
-      file.path("snaps", paste0(self$file, suffix, ".yaml"))
+      file.path("snaps", paste0(self$file, suffix, ".json"))
     }
   )
 )

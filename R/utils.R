@@ -58,6 +58,5 @@ can_entrace <- function(cnd) {
 isNA <- function(x) length(x) == 1 && is.na(x)
 
 compact <- function(x) {
-  is_null <- vapply(x, is.null, logical(1))
-  x[!is_null]
+  x[lengths(x) > 0]
 }
