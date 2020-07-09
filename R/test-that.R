@@ -27,17 +27,18 @@
 #' })
 #' }
 test_that <- function(desc, code) {
+  # Create StopReporter() before override output options
+  reporter <- get_reporter() %||% StopReporter$new(stop_reporter = FALSE)
   local_test_context()
 
   code <- substitute(code)
-  test_code(desc, code, env = parent.frame())
+  test_code(desc, code, env = parent.frame(), reporter = reporter)
 }
 
 # Access error fields with `[[` rather than `$` because the
 # `$.Throwable` from the rJava package throws with unknown fields
-test_code <- function(test, code, env = test_env(), skip_on_empty = TRUE) {
-  reporter <- get_reporter() %||% StopReporter$new()
-
+test_code <- function(test, code, env = test_env(), reporter = get_reporter(), skip_on_empty = TRUE) {
+  reporter <- reporter %||% StopReporter$new(stop_reporter = FALSE)
   if (!is.null(test) && !is.null(reporter)) {
     reporter$start_test(context = reporter$.context, test = test)
     on.exit(reporter$end_test(context = reporter$.context, test = test))

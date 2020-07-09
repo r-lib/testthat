@@ -17,36 +17,51 @@ StopReporter <- R6::R6Class("StopReporter",
   inherit = Reporter,
   public = list(
     failures = NULL,
+    stop_reporter = TRUE,
 
-    initialize = function() {
+    initialize = function(stop_reporter = TRUE) {
       super$initialize()
+      self$failures <- Stack$new()
+      self$stop_reporter <- stop_reporter
+    },
+
+    start_test = function(context, test) {
       self$failures <- Stack$new()
     },
 
-    end_test = function(context, test) {
-      failures <- self$failures$as_list()
-      if (length(failures) == 0) {
+    add_result = function(context, test, result) {
+      if (expectation_success(result)) {
         return()
       }
 
-      # reset failures for next test
-      self$failures$initialize()
-
-      messages <- vapply(failures, format, character(1))
-      locations <- vapply(failures, expectation_location, character(1))
-      messages <- paste0("* ", locations, ": ", messages, collapse = "\n")
-      lines <- c(
-        paste0("Test failed: '", test, "'"),
-        messages
-      )
-
-      stop_reporter(paste0(lines, collapse = "\n"))
+      self$failures$push(result)
     },
 
-    add_result = function(context, test, result) {
-      if (expectation_broken(result)) {
-        self$failures$push(result)
+    end_test = function(context, test) {
+      self$local_user_output()
+
+      failures <- self$failures$as_list()
+      if (length(failures) == 0) {
+        self$cat_line(colourise("Test succeeded", "success"))
+        return()
+      }
+
+      messages <- vapply(failures, stop_summary, character(1))
+      self$cat_line(messages, "\n")
+
+      if (self$stop_reporter) {
+        stop_reporter("Test failed")
       }
     }
   )
 )
+
+stop_summary <- function(x) {
+  type <- expectation_type(x)
+  substr(type, 1, 1) <- toupper(substr(type, 1, 1))
+  type <- colourise(type, expectation_type(x))
+
+  loc <- if (is.null(x$srcref)) "" else paste0(" (line ", x$srcref[1], "): ")
+
+  paste0(type, loc, format(x))
+}
