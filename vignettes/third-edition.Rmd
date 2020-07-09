@@ -22,7 +22,7 @@ library(testthat)
 
 One of the biggest day-to-day differences you'll notice with the 3rd edition is the use of the waldo package inside of `expect_equal()` and `expect_identical()`. The goal of waldo is to find and concisely describe the difference between a pair of R objects, with the primary goal of making it easier to figure out what's gone wrong in your unit tests.
 
-This section provides a brief summary of difference you might hit.
+This section provides a brief summary of differences you might hit.
 
 ```{r}
 local_edition(2)
