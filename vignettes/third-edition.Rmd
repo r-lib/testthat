@@ -1,0 +1,40 @@
+---
+title: "third-edition"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{third-edition}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(testthat)
+```
+
+## waldo
+
+One of the biggest day to differences you'll notice with the 3rd edition is the use of the waldo package inside of `expect_equal()` and `expect_identical()`. The goal of waldo is to find and concisely describe the difference between a pair of R objects, with the primary goal of making it easier to figure out what's gone wrong in your unit tests.
+
+This section provides a brief summary of difference you might hit.
+
+```{r}
+local_edition(2)
+
+```
+
+-   environments of functions and formulas ignored ([\#24](https://github.com/r-lib/waldo/issues/24))
+
+-   extptr handling (via proxy?)
+
+-   R6 objects
+
+-   timezones ignored by all.equal
+
+-   tolerance inconsistency between all.equal and compare ([\#30](https://github.com/r-lib/waldo/issues/30))
