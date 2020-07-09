@@ -17,13 +17,13 @@ is_testing <- function() {
 #' @export
 #' @rdname is_testing
 testing_package <- function() {
-  Sys.getenv("TESTTHAT_PKG", NA_character_)
+  Sys.getenv("TESTTHAT_PKG")
 }
 
 #' @export
 #' @rdname is_testing
 testing_directory <- function() {
-  Sys.getenv("TESTTHAT_DIR", NA_character_)
+  Sys.getenv("TESTTHAT_DIR")
 }
 
 #' Generate default testing environment.
