@@ -1,5 +1,9 @@
 # testthat (development version)
 
+* `test_that()` no longer triggers an error when run outside of tests;
+  instead it produces a more informative summary of all failures, errors,
+  warnings, and skips that occurred inside the test.
+
 * `CheckReporter` (used inside R CMD check) now prints out all problems
   (i.e. errors, failures, warnings and skips), and records in machine
   readable format in `tests/testthat-problems.rds` (#1075).
