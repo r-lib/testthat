@@ -38,7 +38,7 @@ test_that <- function(desc, code) {
 # Access error fields with `[[` rather than `$` because the
 # `$.Throwable` from the rJava package throws with unknown fields
 test_code <- function(test, code, env = test_env(), reporter = get_reporter(), skip_on_empty = TRUE) {
-  reporter <- reporter %||% StopReporter$new(stop_reporter = FALSE)
+  reporter <- reporter %||% StopReporter$new()
   if (!is.null(test) && !is.null(reporter)) {
     reporter$start_test(context = reporter$.context, test = test)
     on.exit(reporter$end_test(context = reporter$.context, test = test))
