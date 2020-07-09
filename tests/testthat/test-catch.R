@@ -6,3 +6,5 @@ test_that("get_routine() finds own 'run_testthat_tests'", {
 test_that("get_routine() fails when no routine exists", {
   expect_error(get_routine("utils", "no_such_routine"))
 })
+
+run_cpp_tests("testthat")
