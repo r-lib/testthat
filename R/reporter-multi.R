@@ -49,6 +49,7 @@ MultiReporter <- R6::R6Class("MultiReporter",
 )
 
 o_apply <- function(objects, method, ...) {
+  x <- NULL # silence check note
   f <- new_function(exprs(x = ), expr(
     `$`(x, !!method)(...)
   ))
