@@ -298,7 +298,7 @@ local_snapshotter <- function(file = NULL, .env = parent.frame()) {
   reporter <- SnapshotReporter$new()
   if (!is.null(file)) {
     reporter$start_file(file)
-    withr::defer(reporter$snaps_cleanup())
+    withr::defer(reporter$snaps_cleanup(), envir = .env)
   }
 
   withr::local_options(
