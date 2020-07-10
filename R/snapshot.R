@@ -21,9 +21,13 @@
 #' The first time that you run a snapshot expectation it will run `x`,
 #' capture the results, and record in `tests/testthat/snap/{test}.json`.
 #' Each test file gets its own snapshot file, e.g. `test-foo.R` will get
-#' `snap/foo.json`. These files should be committed into you git, and are
-#' designed to be human readable, so that when you review a pull request
-#' with snapshot tests, you can see exactly what's been recorded.
+#' `snap/foo.json`.
+#'
+#' It's important to review the JSON files and commit them to git. They are
+#' designed to be human readable, and you should always review new additions
+#' to ensure that the salient information has been capture. They should also
+#' be carefully reviewed in pull requests, to make sure that snapshots have
+#' updated in the expected way.
 #'
 #' On subsequent runs, the result of `x` will be compared to the value stored
 #' on disk. If it's different, the expectation will fail, and a new file
