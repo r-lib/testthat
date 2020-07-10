@@ -85,8 +85,8 @@ expect_snapshot_condition <- function(x, class = "error", cran = FALSE) {
 }
 
 expect_snapshot <- function(lab, val, cran = FALSE, save = identity, load = identity) {
-  if (!cran) {
-    skip_on_cran()
+  if (!interactive() && on_cran()) {
+    skip("On CRAN")
   }
 
   snapshotter <- get_snapshotter()
@@ -218,9 +218,7 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
     },
 
     is_active = function() {
-      !identical(testing_directory(), "") &&
-        !is.null(self$file) &&
-        !is.null(self$test)
+      !is.null(self$file) && !is.null(self$test)
     },
     has_snapshot = function(i) {
       if (!has_name(self$old_snaps, self$test)) {
@@ -252,6 +250,10 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
     },
     snaps_delete = function(suffix = "") {
       unlink(self$snap_path(suffix))
+    },
+    snaps_cleanup = function() {
+      self$snaps_delete()
+      self$snaps_delete(".new")
     },
     snap_path = function(suffix = "") {
       file.path("snaps", paste0(self$file, suffix, ".json"))
@@ -285,8 +287,13 @@ get_snapshotter <- function() {
   x
 }
 
-local_snapshotter <- function(.env = parent.frame()) {
+local_snapshotter <- function(file = NULL, .env = parent.frame()) {
   reporter <- SnapshotReporter$new()
+  if (!is.null(file)) {
+    reporter$start_file(file)
+    withr::defer(reporter$snaps_cleanup())
+  }
+
   withr::local_options(
     list("testthat.snapshotter" = reporter),
     .local_envir = .env
