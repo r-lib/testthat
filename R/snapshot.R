@@ -1,6 +1,45 @@
+#' Snapshot testing
+#'
+#' @description
+#' `r lifecycle::badge("experimental")`
+#'
+#' Snapshot tests (aka golden tests) are similar to unit tests except that the
+#' expected result is stored in a separate file that is managed by testthat.
+#' Snapshot tests are useful for when the expected value is large, or when
+#' the intent of the code is something that can only be verified by a human
+#' (e.g. this is a useful error message).
+#'
+#' * `expect_snapshot_output()` captures the output printed to the console.
+#'   (by [testthat_print()]).
+#' * `expect_snapshot_value()` captures the return value.
+#' * `expect_snapshot_condition()` captures a specified condition.
+#'
+#' (These functions supersede [verify_output()], [expect_known_output()],
+#' [expect_known_value()], and [expect_known_hash()].)
+#'
+#' @section Workflow:
+#' The first time that you run a snapshot expectation it will run `x`,
+#' capture the results, and record in `tests/testthat/snap/{test}.json`.
+#' Each test file gets its own snapshot file, e.g. `test-foo.R` will get
+#' `snap/foo.json`. These files should be committed into you git, and are
+#' designed to be human readable, so that when you review a pull request
+#' with snapshot tests, you can see exactly what's been recorded.
+#'
+#' On subsequent runs, the result of `x` will be compared to the value stored
+#' on disk. If it's different, the expectation will fail, and a new file
+#' `snap/{test}.new.json` will be created. If the change was deliberate,
+#' you can approve the change with [snapshot_accept()] and then the tests will
+#' pass the next time you run them.
+#'
+#' @param x Code to evaluate.
+#' @param cran Should these expectations be verified on CRAN? By default,
+#'   they are not, because snapshot tests tend to be fragile because they
+#'   often rely on minor details of dependencies. Even on CRAN, the
+#'   expectations will still fail if `x` errors.
+#' @export
 expect_snapshot_output <- function(x, cran = FALSE) {
   lab <- quo_label(enquo(x))
-  val <- capture_output_lines(snapshot_print(x))
+  val <- capture_output_lines(x, print = TRUE)
 
   expect_snapshot(lab, val, cran = cran)
 }
@@ -9,6 +48,8 @@ expect_snapshot_output <- function(x, cran = FALSE) {
 #'   of `x`. The major downside is that this produces output that is not
 #'   human readable, making it difficult to review what's changed in pull
 #'   requests.
+#' @export
+#' @rdname expect_snapshot_output
 expect_snapshot_value <- function(x, exact = FALSE, cran = FALSE) {
   lab <- quo_label(enquo(x))
 
@@ -23,11 +64,17 @@ expect_snapshot_value <- function(x, exact = FALSE, cran = FALSE) {
   expect_snapshot(lab, x, save = save, load = load, cran = cran)
 }
 
+#' @param class Expected class of condition, e.g. use `error` for errors,
+#'   `warning` for warnings, `message` for messages. The expectation will
+#'   always fail (even on CRAN) if a condition of this class isn't seen
+#'   when executing `x`.
+#' @export
+#' @rdname expect_snapshot_output
 expect_snapshot_condition <- function(x, class = "error", cran = FALSE) {
   lab <- quo_label(enquo(x))
   val <- capture_matching_condition(x, cnd_matcher(class))
   if (is.null(val)) {
-    fail(sprintf("%s did not throw %s condition", lab, class))
+    fail(sprintf("%s did not throw '%s' condition", lab, class))
   }
 
   expect_snapshot(lab, val, cran = cran)
@@ -56,7 +103,12 @@ expect_snapshot <- function(lab, val, cran = FALSE, save = identity, load = iden
   }
 }
 
-
+#' Snapshot management
+#'
+#' `snapshot_accept()` accepts all changed snapshots.
+#'
+#' @param path Path to tests
+#' @export
 snapshot_accept <- function(path = "tests/testthat") {
   changed <- dir(file.path(path, "snaps"), pattern = "\\.new\\.json$", full.names = TRUE)
 
@@ -65,17 +117,6 @@ snapshot_accept <- function(path = "tests/testthat") {
   file.rename(changed, cur)
 
   invisible()
-}
-
-#' @export
-#' @rdname expect_snapshot_output
-snapshot_print <- function(x) {
-  UseMethod("snapshot_print")
-}
-
-#' @export
-snapshot_print.default <- function(x) {
-  print(x)
 }
 
 # Reporter ----------------------------------------------------------------

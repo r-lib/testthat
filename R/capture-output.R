@@ -3,10 +3,13 @@
 #' Evaluates `code` in a special context in which all output is captured,
 #' similar to [capture.output()].
 #'
+#' Results are printed using the `testthat_print()` generic, which defaults
+#' to `print()`, giving you the ability to customise the printing of your
+#' object in tests, if needed.
+#'
 #' @param code Code to evaluate.
 #' @param print If `TRUE` and the result of evaluating `code` is
-#'   visible this will print the result, ensuring that the output of printing
-#'   the object is included in the overall output
+#'   visible, print the result using `testthat_print()`.
 #' @param width Number of characters per line of output. This does not
 #'   inherit from `getOption("width")` so that tests always use the same
 #'   output width, minimising spurious differences.
@@ -45,7 +48,7 @@ eval_with_output <- function(code, print = FALSE, width = 80) {
   local_width(width)
   result <- withr::with_output_sink(temp, withVisible(code))
   if (result$visible && print) {
-    withr::with_output_sink(temp, print(result$value))
+    withr::with_output_sink(temp, testthat_print(result$value))
   }
 
   list(
@@ -53,4 +56,15 @@ eval_with_output <- function(code, print = FALSE, width = 80) {
     vis = result$visible,
     out = read_lines(temp, encoding = "unknown")
   )
+}
+
+#' @export
+#' @rdname capture_output
+testthat_print <- function(x) {
+  UseMethod("testthat_print")
+}
+
+#' @export
+testthat_print.default <- function(x) {
+  print(x)
 }

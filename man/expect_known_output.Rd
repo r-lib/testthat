@@ -56,8 +56,7 @@ alternatives in \link{quasi_label}.}
 use only.}
 
 \item{print}{If \code{TRUE} and the result of evaluating \code{code} is
-visible this will print the result, ensuring that the output of printing
-the object is included in the overall output}
+visible, print the result using \code{testthat_print()}.}
 
 \item{width}{Number of characters per line of output. This does not
 inherit from \code{getOption("width")} so that tests always use the same

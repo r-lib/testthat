@@ -1,5 +1,10 @@
 # testthat (development version)
 
+* `capture_output()` and `verify_output()` use a new `testthat_print()`
+  generic. This allows you to control the printed representation of your
+  object specifically for tests (i.e. if your usual print method shows
+  data that varies in a way that you don't care about for tests) (#1056).
+
 * `test_that()` no longer triggers an error when run outside of tests;
   instead it produces a more informative summary of all failures, errors,
   warnings, and skips that occurred inside the test.

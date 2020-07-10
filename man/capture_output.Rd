@@ -3,18 +3,20 @@
 \name{capture_output}
 \alias{capture_output}
 \alias{capture_output_lines}
+\alias{testthat_print}
 \title{Capture output to console}
 \usage{
 capture_output(code, print = FALSE, width = 80)
 
 capture_output_lines(code, print = FALSE, width = 80)
+
+testthat_print(x)
 }
 \arguments{
 \item{code}{Code to evaluate.}
 
 \item{print}{If \code{TRUE} and the result of evaluating \code{code} is
-visible this will print the result, ensuring that the output of printing
-the object is included in the overall output}
+visible, print the result using \code{testthat_print()}.}
 
 \item{width}{Number of characters per line of output. This does not
 inherit from \code{getOption("width")} so that tests always use the same
@@ -27,6 +29,11 @@ returns a character vector with one entry for each line
 \description{
 Evaluates \code{code} in a special context in which all output is captured,
 similar to \code{\link[=capture.output]{capture.output()}}.
+}
+\details{
+Results are printed using the \code{testthat_print()} generic, which defaults
+to \code{print()}, giving you the ability to customise the printing of your
+object in tests, if needed.
 }
 \examples{
 capture_output({
