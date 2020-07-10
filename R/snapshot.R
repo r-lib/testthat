@@ -5,34 +5,41 @@ expect_snapshot_output <- function(x) {
   expect_snapshot(lab, val)
 }
 
-expect_snapshot_value <- function(x, serialize = FALSE) {
+#' @param exact Use [serialize()] to produce a more exact serialisation
+#'   of `x`. The major downside is that this produces output that is not
+#'   human readable, making it difficult to review what's changed in pull
+#'   requests.
+expect_snapshot_value <- function(x, exact = FALSE) {
   lab <- quo_label(enquo(x))
-  if (serialize) {
-    val <- rawToChar(serialize(x, NULL, ascii = TRUE))
+
+  if (exact) {
+    save <- function(x) rawToChar(serialize(x, NULL, ascii = TRUE))
+    load <- function(x) unserialize(charToRaw(x))
   } else {
-    val <- x
+    save <- identity
+    load <- identity
+  }
+
+  expect_snapshot(lab, x, save = save, load = load)
+}
+
+expect_snapshot_condition <- function(x, class = "error") {
+  lab <- quo_label(enquo(x))
+  val <- capture_matching_condition(x, cnd_matcher(class))
+  if (is.null(val)) {
+    fail(sprintf("%s did not throw %s condition", lab, class))
   }
 
   expect_snapshot(lab, val)
 }
 
-snapshot_accept <- function(path = "tests/testthat") {
-  changed <- dir(file.path(path, "snaps"), pattern = "\\.new\\.json$", full.names = TRUE)
-
-  cur <- gsub("\\.new\\.json$", "\\.json", changed)
-  unlink(cur)
-  file.rename(changed, cur)
-
-  invisible()
-}
-
-expect_snapshot <- function(lab, val) {
+expect_snapshot <- function(lab, val, save = identity, load = identity) {
   snapshotter <- get_snapshotter()
   if (is.null(snapshotter)) {
     cat("No snapshotter active. Current value: \n")
     cat(val, sep = "\n")
   } else {
-    comp <- snapshotter$take_snapshot(val)
+    comp <- snapshotter$take_snapshot(val, save = save, load = load)
     expect(
       length(comp) == 0,
       sprintf(
@@ -43,6 +50,17 @@ expect_snapshot <- function(lab, val) {
       )
     )
   }
+}
+
+
+snapshot_accept <- function(path = "tests/testthat") {
+  changed <- dir(file.path(path, "snaps"), pattern = "\\.new\\.json$", full.names = TRUE)
+
+  cur <- gsub("\\.new\\.json$", "\\.json", changed)
+  unlink(cur)
+  file.rename(changed, cur)
+
+  invisible()
 }
 
 #' @export
@@ -89,14 +107,14 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
     },
 
     # Called by expectation
-    take_snapshot = function(value) {
+    take_snapshot = function(value, save = identity, load = identity) {
       self$i <- self$i + 1L
 
-      self$new_snaps <- self$snap_append(self$new_snaps, value)
+      self$new_snaps <- self$snap_append(self$new_snaps, save(value))
 
       if (self$has_snapshot(self$i)) {
-        old <- self$old_snaps[[self$test]][[self$i]]
-        self$cur_snaps <- self$snap_append(self$cur_snaps, old)
+        old <- load(self$old_snaps[[self$test]][[self$i]])
+        self$cur_snaps <- self$snap_append(self$cur_snaps, save(old))
 
         comp <- waldo::compare(
           x = old,   x_arg = "previous",
@@ -108,8 +126,10 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
         }
         comp
       } else {
-        self$cur_snaps <- self$snap_append(self$cur_snaps, value)
+        roundtrip <- load(save(value))
+        check_roundtrip(value, roundtrip)
 
+        self$cur_snaps <- self$snap_append(self$cur_snaps, save(value))
         warn("Adding new snapshot")
         character()
       }
@@ -189,6 +209,17 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
     }
   )
 )
+
+check_roundtrip <- function(x, y) {
+  check <- waldo::compare(x, y, x_arg = "value", y_arg = "roundtrip")
+  if (length(check) > 0) {
+    warn(c(
+      "Serialization round-trip is not symmetric.",
+      "You may need to consider another object",
+      check)
+    )
+  }
+}
 
 # set/get active snapshot reporter ----------------------------------------
 

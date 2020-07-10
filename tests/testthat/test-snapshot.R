@@ -9,5 +9,5 @@ test_that("can snapshot output", {
 test_that("can snapshot values", {
   x <- list("a", 1.5, 1L, TRUE)
   expect_snapshot_value(x)
-  expect_snapshot_value(x, serialize = TRUE)
+  expect_snapshot_value(x, exact = TRUE)
 })
