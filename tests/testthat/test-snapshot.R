@@ -12,6 +12,11 @@ test_that("can snapshot values", {
   expect_snapshot_value(x, exact = TRUE)
 })
 
+test_that("can snapshot conditions", {
+  expect_snapshot_condition(stop("!"))
+  expect_snapshot_condition(abort("!", x = 1:5))
+})
+
 test_that("can establish local snapshotter for testing", {
   snapper <- local_snapshotter(cleanup = TRUE)
 

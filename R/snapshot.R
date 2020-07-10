@@ -81,7 +81,13 @@ expect_snapshot_condition <- function(x, class = "error", cran = FALSE) {
     fail(sprintf("%s did not throw '%s' condition", lab, class))
   }
 
-  expect_snapshot(lab, val, cran = cran)
+  fields <- unclass(val)[setdiff(names(val), c("message", "trace", "call", "parent"))]
+  error <- list(
+    message = conditionMessage(val),
+    class = class(val),
+    fields = fields
+  )
+  expect_snapshot(lab, error, cran = cran)
 }
 
 expect_snapshot <- function(lab, val, cran = FALSE, save = identity, load = identity) {

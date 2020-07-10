@@ -13,5 +13,19 @@
       [true]
     ],
     ["A\n3\n198147\n197888\n5\nUTF-8\n19\n4\n16\n1\n262153\n1\na\n14\n1\n1.5\n13\n1\n1\n10\n1\n1\n"]
+  ],
+  "can snapshot conditions": [
+    {
+      "message": ["!"],
+      "class": ["simpleError", "error", "condition"],
+      "fields": {}
+    },
+    {
+      "message": ["!"],
+      "class": ["rlang_error", "error", "condition"],
+      "fields": {
+        "x": [1, 2, 3, 4, 5]
+      }
+    }
   ]
 }
