@@ -1,15 +1,15 @@
-expect_snapshot_output <- function(x) {
+expect_snapshot_output <- function(x, cran = FALSE) {
   lab <- quo_label(enquo(x))
   val <- capture_output_lines(snapshot_print(x))
 
-  expect_snapshot(lab, val)
+  expect_snapshot(lab, val, cran = cran)
 }
 
 #' @param exact Use [serialize()] to produce a more exact serialisation
 #'   of `x`. The major downside is that this produces output that is not
 #'   human readable, making it difficult to review what's changed in pull
 #'   requests.
-expect_snapshot_value <- function(x, exact = FALSE) {
+expect_snapshot_value <- function(x, exact = FALSE, cran = FALSE) {
   lab <- quo_label(enquo(x))
 
   if (exact) {
@@ -20,20 +20,24 @@ expect_snapshot_value <- function(x, exact = FALSE) {
     load <- identity
   }
 
-  expect_snapshot(lab, x, save = save, load = load)
+  expect_snapshot(lab, x, save = save, load = load, cran = cran)
 }
 
-expect_snapshot_condition <- function(x, class = "error") {
+expect_snapshot_condition <- function(x, class = "error", cran = FALSE) {
   lab <- quo_label(enquo(x))
   val <- capture_matching_condition(x, cnd_matcher(class))
   if (is.null(val)) {
     fail(sprintf("%s did not throw %s condition", lab, class))
   }
 
-  expect_snapshot(lab, val)
+  expect_snapshot(lab, val, cran = cran)
 }
 
-expect_snapshot <- function(lab, val, save = identity, load = identity) {
+expect_snapshot <- function(lab, val, cran = FALSE, save = identity, load = identity) {
+  if (!cran) {
+    skip_on_cran()
+  }
+
   snapshotter <- get_snapshotter()
   if (is.null(snapshotter)) {
     cat("No snapshotter active. Current value: \n")
