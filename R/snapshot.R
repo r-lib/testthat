@@ -287,6 +287,13 @@ get_snapshotter <- function() {
   x
 }
 
+#' Instantiate local snapshotting context
+#'
+#' Needed if you want to run snapshot tests outside of the usual testthat
+#' framework. For expert use only.
+#'
+#' @export
+#' @keywords internal
 local_snapshotter <- function(file = NULL, .env = parent.frame()) {
   reporter <- SnapshotReporter$new()
   if (!is.null(file)) {
