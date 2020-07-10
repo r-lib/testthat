@@ -138,7 +138,7 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
     cur_snaps = NULL,
     new_snaps = NULL,
 
-    start_file = function(path) {
+    start_file = function(path, test = NULL) {
       self$file <- context_name(path)
       self$file_seen <- c(self$file_seen, path)
 
@@ -146,6 +146,10 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
       self$old_snaps <- self$snaps_read()
       self$cur_snaps <- list()
       self$new_snaps <- list()
+
+      if (!is.null(test)) {
+        self$start_test(NULL, test)
+      }
     },
     start_test = function(context, test) {
       self$test <- test
@@ -184,10 +188,6 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
       }
     },
 
-    end_test = function(context, test) {
-      self$test <- NULL
-    },
-
     end_file = function() {
       dir.create("snaps", showWarnings = FALSE)
 
@@ -197,9 +197,6 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
       } else {
         self$snaps_delete(".new")
       }
-
-      self$file <- NULL
-      self$cur_snaps <- NULL
     },
     end_reporter = function() {
       # check we've seen all files before cleaning up
@@ -294,10 +291,9 @@ get_snapshotter <- function() {
 #'
 #' @export
 #' @keywords internal
-local_snapshotter <- function(file = NULL, .env = parent.frame()) {
+local_snapshotter <- function(cleanup = FALSE, .env = parent.frame()) {
   reporter <- SnapshotReporter$new()
-  if (!is.null(file)) {
-    reporter$start_file(file)
+  if (cleanup) {
     withr::defer(reporter$snaps_cleanup(), envir = .env)
   }
 
