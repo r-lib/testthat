@@ -42,7 +42,7 @@ StopReporter <- R6::R6Class("StopReporter",
 
       failures <- self$failures$as_list()
       if (length(failures) == 0) {
-        self$cat_line(colourise("Test succeeded", "success"))
+        self$cat_line(colourise("Test succeeded", "success"), " ", praise_emoji())
         return()
       }
 

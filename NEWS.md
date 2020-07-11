@@ -1,5 +1,7 @@
 # testthat (development version)
 
+* `StopReporter` adds random praise emoji when a single test passes (#1094).
+
 * `test_that()` no longer triggers an error when run outside of tests;
   instead it produces a more informative summary of all failures, errors,
   warnings, and skips that occurred inside the test.

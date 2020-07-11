@@ -1,5 +1,5 @@
-Test succeeded
-Test succeeded
+Test succeeded 🥇
+Test succeeded 🎊
 Failure (line 12): Failure has been forced
 
 Failure (line 16): Failure has been forced
@@ -56,6 +56,6 @@ Warning (line 85): ghi
 Backtrace:
  1. f()
 
-Test succeeded
+Test succeeded 🌈
 Error (line 111): Error: Throwable
 
