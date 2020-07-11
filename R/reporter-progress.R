@@ -263,7 +263,8 @@ CompactProgressReporter <- R6::R6Class("CompactProgressReporter",
     },
 
     start_file = function(name) {
-      self$rule(paste0("Testing ", name), line = 2)
+      self$cat_line()
+      self$rule(cli::style_bold(paste0("Testing ", name)), line = 2)
       super$start_file(name)
     },
 
