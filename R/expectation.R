@@ -229,6 +229,10 @@ expectation_location <- function(x) {
     "???"
   } else {
     filename <- attr(x$srcref, "srcfile")$filename
-    paste0(basename(filename), ":", x$srcref[1], ":", x$srcref[2])
+    if (identical(filename, "")) {
+      paste0("Line ", x$srcref[1])
+    } else {
+      paste0(basename(filename), ":", x$srcref[1], ":", x$srcref[2])
+    }
   }
 }

@@ -1,6 +1,8 @@
 # testthat (development version)
 
 * `StopReporter` adds random praise emoji when a single test passes (#1094).
+  It has more refined display of failures, now using the same style 
+  as `CompactProgressReporter`.
 
 * `test_that()` no longer triggers an error when run outside of tests;
   instead it produces a more informative summary of all failures, errors,

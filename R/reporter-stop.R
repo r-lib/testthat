@@ -46,7 +46,7 @@ StopReporter <- R6::R6Class("StopReporter",
         return()
       }
 
-      messages <- vapply(failures, stop_summary, character(1))
+      messages <- vapply(failures, issue_summary, rule = TRUE, character(1))
       self$cat_line(messages, "\n")
 
       if (self$stop_reporter) {
@@ -55,13 +55,3 @@ StopReporter <- R6::R6Class("StopReporter",
     }
   )
 )
-
-stop_summary <- function(x) {
-  type <- expectation_type(x)
-  substr(type, 1, 1) <- toupper(substr(type, 1, 1))
-  type <- colourise(type, expectation_type(x))
-
-  loc <- if (is.null(x$srcref)) "" else paste0(" (line ", x$srcref[1], "): ")
-
-  paste0(type, loc, format(x))
-}
