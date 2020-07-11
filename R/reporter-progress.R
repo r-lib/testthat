@@ -263,22 +263,39 @@ CompactProgressReporter <- R6::R6Class("CompactProgressReporter",
     },
 
     start_file = function(name) {
-      self$cat_line("Testing ", name)
+      self$rule(paste0("Testing ", name), line = 2)
       super$start_file(name)
     },
 
     start_reporter = function(context) {
     },
 
+    end_context = function(context) {
+      if (self$ctxt_issues$size() == 0) {
+        return()
+      }
+
+      self$cat_line()
+      self$cat_line()
+
+      issues <- self$ctxt_issues$as_list()
+      summary <- vapply(issues, issue_summary, rule = TRUE,
+        FUN.VALUE = character(1)
+      )
+      self$cat_tight(paste(summary, collapse = "\n\n"))
+
+      self$cat_line()
+      self$cat_line()
+    },
+
     end_reporter = function() {
       if (self$n_fail > 0 || self$n_warn > 0 || self$n_skip > 0) {
         self$show_status()
         self$cat_line()
-      }
-      if (self$is_full()) {
+      } else if (self$is_full()) {
         self$cat_line(" Terminated early")
       } else {
-        self$cat_line(crayon::bold("Done!"))
+        self$cat_line(crayon::bold(" Done!"))
       }
     },
 
@@ -302,15 +319,17 @@ spinner <- function(frames, i) {
   frames[((i - 1) %% length(frames)) + 1]
 }
 
-issue_summary <- function(x) {
+issue_summary <- function(x, rule = FALSE) {
   type <- expectation_type(x)
   loc <- expectation_location(x)
-  header <- paste0(loc, ": ", colourise(type, type), ": ", x$test)
 
-  paste0(
-    crayon::bold(header), "\n",
-    format(x)
-  )
+  header <- paste0(loc, ": ", colourise(type, type), ": ", x$test)
+  header <- crayon::bold(header)
+  if (rule) {
+    header <- cli::rule(header)
+  }
+
+  paste0(header, "\n", format(x))
 }
 
 strpad <- function(x, width = cli::console_width()) {
