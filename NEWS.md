@@ -86,6 +86,10 @@
     * `expect_that()` is deprecated.
     
     * `expect_is()` is deprecated.
+    
+    * Messages are no longer automatically silenced. Either use 
+      `suppressMessages()` to hide unimportant messages, or
+      `expect_messsage()` to catch important messages (#1095).
 
 * `test_that()` now sets a number of options and env vars to make output as 
   reproducible as possible (#1044). Many of these options were previously 

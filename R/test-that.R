@@ -147,7 +147,9 @@ test_code <- function(test, code, env = test_env(), reporter = get_reporter(), s
   }
   handle_message <- function(e) {
     handled <<- TRUE
-    maybe_restart("muffleMessage")
+    if (edition_get() < 3) {
+     maybe_restart("muffleMessage")
+    }
   }
   handle_skip <- function(e) {
     handled <<- TRUE
