@@ -79,7 +79,8 @@
 * testhat 3.0.0 brings with it a 3rd edition that makes a number of breaking
   changes in order to clean up the interface and help you use our latest
   recommendations. To opt-in to the 3rd edition for your package, set
-  `Config/testthat/edition: 3` in your `DESCRIPTION`.
+  `Config/testthat/edition: 3` in your `DESCRIPTION`. Learn more in 
+  `vignette("third-edition")`.
   
     * `expect_identical()` and `expect_equal()` use `waldo::compare()` to 
        compare actual and expected results. This mostly yields much more 
