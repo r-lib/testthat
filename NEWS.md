@@ -1,5 +1,13 @@
 # testthat (development version)
 
+* `SummaryReporter` now records file start, not just context start. This
+  makes it more compatible with modern style which does not use `context()`
+  (#1089).
+
+* `StopReporter` adds random praise emoji when a single test passes (#1094).
+  It has more refined display of failures, now using the same style 
+  as `CompactProgressReporter`.
+
 * `test_that()` no longer triggers an error when run outside of tests;
   instead it produces a more informative summary of all failures, errors,
   warnings, and skips that occurred inside the test.
@@ -86,6 +94,10 @@
     * `expect_that()` is deprecated.
     
     * `expect_is()` is deprecated.
+    
+    * Messages are no longer automatically silenced. Either use 
+      `suppressMessages()` to hide unimportant messages, or
+      `expect_messsage()` to catch important messages (#1095).
 
 * `test_that()` now sets a number of options and env vars to make output as 
   reproducible as possible (#1044). Many of these options were previously 

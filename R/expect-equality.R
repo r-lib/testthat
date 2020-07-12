@@ -95,6 +95,11 @@ expect_identical <- function(object, expected, info = NULL, label = NULL,
 }
 
 expect_waldo_equal <- function(type, act, exp, info, ...) {
+  reporter <- get_reporter()
+  if (!is.null(reporter)) {
+    reporter$local_user_output()
+  }
+
   comp <- waldo::compare(act$val, exp$val, ..., x_arg = "actual", y_arg = "expected")
   expect(
     length(comp) == 0,

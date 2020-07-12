@@ -7,6 +7,7 @@ test_that("can't access variables from other tests (2)", {
 })
 
 test_that("messages are suppressed", {
+  local_edition(2)
   message("YOU SHOULDN'T SEE ME")
   succeed()
 })

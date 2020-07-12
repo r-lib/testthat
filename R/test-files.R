@@ -119,7 +119,7 @@ test_files <- function(test_dir,
     source_test_helpers(".", env)
   }
   source_test_setup(".", env)
-  on.exit(source_test_teardown(".", env), add = TRUE)
+  withr::defer(source_test_teardown(".", env))
 
   # Wrap reporter
   reporter <- find_reporter(reporter)
