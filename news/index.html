@@ -114,6 +114,9 @@
     <li>
       <a href="../articles/custom-expectation.html">Custom expectations</a>
     </li>
+    <li>
+      <a href="../articles/third-edition.html">testthat 3e</a>
+    </li>
   </ul>
 </li>
 <li class="dropdown">
@@ -200,7 +203,7 @@
 <li><p><code><a href="https://testthat.r-lib.org/reference/expect_error.html">expect_error()</a></code> no longer encourages you to use <code>class</code>. This advice one type of fragility at the expense of creating a different type (<a href='https://github.com/r-lib/testthat/issues/1013'>#1013</a>).</p></li>
 <li><p><code>ProgressReport</code> (the default reporter) now keeps the stack traces of an errors that happen before the before test, making problems substantially easier to track down (<a href='https://github.com/r-lib/testthat/issues/1004'>#1004</a>).</p></li>
 <li>
-<p>testhat 3.0.0 brings with it a 3rd edition that makes a number of breaking changes in order to clean up the interface and help you use our latest recommendations. To opt-in to the 3rd edition for your package, set <code>Config/testthat/edition: 3</code> in your <code>DESCRIPTION</code>.</p>
+<p>testhat 3.0.0 brings with it a 3rd edition that makes a number of breaking changes in order to clean up the interface and help you use our latest recommendations. To opt-in to the 3rd edition for your package, set <code>Config/testthat/edition: 3</code> in your <code>DESCRIPTION</code>. Learn more in <code>vignette("third-edition")</code>.</p>
 <ul>
 <li><p><code><a href="https://testthat.r-lib.org/reference/equality-expectations.html">expect_identical()</a></code> and <code><a href="https://testthat.r-lib.org/reference/equality-expectations.html">expect_equal()</a></code> use <code><a href="https://rdrr.io/pkg/waldo/man/compare.html">waldo::compare()</a></code> to compare actual and expected results. This mostly yields much more informative output when the actual and expected values are different, but while writing it uncovered some bugs in the existing comparison code.</p></li>
 <li><p><code><a href="https://testthat.r-lib.org/reference/expect_equivalent.html">expect_equivalent()</a></code> is deprecated.</p></li>
