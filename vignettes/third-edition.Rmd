@@ -14,27 +14,91 @@ knitr::opts_chunk$set(
 )
 ```
 
-```{r setup}
+testthat 3.0.0 introduces the idea of an "edition" of testthat. An edition is a bundle of new behaviour that you have to explicitly choose to use. This enables us to change the behaviour of testthat in backward incompatible ways. This is particularly important for testthat since it has a very large number of packages that use it (almost 5,000 at last count). The 3rd edition allows you to use our latest recommendations for ongoing and new work, while leaving historical packages alone. This vignette shows you how to activate the 3rd edition, introduces the main features, and discusses common challenges when upgrading a package to the 3rd edition.
+
+```{r, message = FALSE}
 library(testthat)
+local_edition(3)
 ```
 
-## waldo
+(If you have a problem updating your package to use the 3rd edition that this vignette doesn't cover, please let me know so I can add it in order to also help other.)
 
-One of the biggest day-to-day differences you'll notice with the 3rd edition is the use of the waldo package inside of `expect_equal()` and `expect_identical()`. The goal of waldo is to find and concisely describe the difference between a pair of R objects, with the primary goal of making it easier to figure out what's gone wrong in your unit tests.
+## Activating
 
-This section provides a brief summary of differences you might hit.
+The usual way to activate the 3rd edition is to add a line to your `DESCRIPTION`:
+
+`{Config/testthat/edition: 3}`
+
+This will turn it on for every test in your package. You can also opt-in for specified tests by using `testthat::local_edition()`:
 
 ```{r}
-local_edition(2)
-
+test_that("I can use the 3rd edition", {
+  local_edition(3)
+  expect_true(TRUE)
+})
 ```
 
--   environments of functions and formulas ignored ([\#24](https://github.com/r-lib/waldo/issues/24))
+As we'll discuss shortly, this is also useful if you have tests that fail in the 3rd edition and you just want to temporarily switch them back to the 2nd edition:
 
--   extptr handling (via proxy?)
+```{r}
+test_that("I want to use the 2nd edition", {
+  local_edition(2)
+  expect_true(TRUE)
+})
+```
 
--   R6 objects
+## Features
 
--   timezones ignored by all.equal
+### Deprecations
 
--   tolerance inconsistency between all.equal and compare ([\#30](https://github.com/r-lib/waldo/issues/30))
+A number of outdated functions have been deprecated. Most of these functions have not been recommended for a number of years, but before the introduction of the edition idea, I didn't have a good way of preventing people from using them without breaking a lot of code on CRAN.
+
+-   `context()` is formally deprecated in the 3rd edition. testthat has been moving away from `context()` in favour of file names for quite some time, and now you'll be strongly encouraged remove these calls from your tests.
+
+-   `expect_is()` is deprecated in favour of the more specific `expect_type()`, `expect_s3_class()` or `expect_s4_class()`. This ensures that you check both the expected class, and which OO system the object is using.
+
+-   The very old `expect_that()` syntax is now deprecated. This was an excessively clever API that I regretted even before the release of testthat 1.0.0.
+
+-   `expect_equivalent()` has been deprecated since it is now equivalent (HA HA) to `expect_equal(ignore_attr = TRUE)`.
+
+Generally, I fixing these warnings should be straightforward, and the warning message should recommend what you need to do.
+
+### Messages
+
+For reasons that I can no longer remember, testthat silently ignores all messages. As in the 3rd edition, they now bubble up to your test results. You'll have to explicit ignore them with `supressMesssages()`, or if they're important, test for them presence with `expect_message()`.
+
+### waldo
+
+Probably the the biggest day-to-day differences you'll notice with the 3rd edition is the use of the waldo package inside of `expect_equal()` and `expect_identical()`. The goal of waldo is to find and concisely describe the difference between a pair of R objects, with the primary goal of making it easier to figure out what's gone wrong in your unit tests.
+
+```{r, error = TRUE}
+local_edition(2)
+expect_equal(mtcars, tibble::as_tibble(mtcars))
+
+local_edition(3)
+expect_equal(mtcars, tibble::as_tibble(mtcars))
+```
+
+waldo looks even better in your console because it carefully uses colours to help distinguish important changes. The use of waldo also makes precise the difference between `expect_equal()` and `expect_identical()`: `expect_equal()` sets `tolerance` so that waldo will ignore small numerical differences arising from floating point computation.
+
+This change is likely to result in the most work during an upgrade, because waldo gives slightly different results to both `identical()` and `all.equal()`. I believe on the whole the differences are meaningful and useful, so you'll need to handle them yourself.
+
+-   `expect_equal()` previously ignored the environments of formulas and functions. This is most like to arise if you are testing models. It's worth thinking about what the correct values should be, but if that is to annoying you can opt out of the comparison with `ignore_function_env` or `ignore_formula_env`.
+
+-   `expect_equal()` used a combination of `all.equal()` and a home-grown `testthat::compare()` which unfortunately used a slightly different definition of tolerance. Now `expect_equal()` always uses the same defintion of tolerance everywhere, which may require tweaks to your exising tolerance values.
+
+-   `expect_equal()` previously ignored timezone differences when one object had the current timezone set implicitly (with `""`) and the other had it set explictly:
+
+    ```{r, error = TRUE}
+    dt1 <- dt2 <- ISOdatetime(2020, 1, 2, 3, 4, 0)
+    attr(dt1, "tzone") <- ""
+    attr(dt2, "tzone") <- Sys.timezone()
+    dt1
+    dt2
+
+    local_edition(2)
+    expect_equal(dt1, dt2)
+
+    local_edition(3)
+    expect_equal(dt1, dt2)
+    ```
