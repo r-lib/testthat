@@ -1,5 +1,9 @@
 # testthat (development version)
 
+* `SummaryReporter` now records file start, not just context start. This
+  makes it more compatible with modern style which does not use `context()`
+  (#1089).
+
 * `StopReporter` adds random praise emoji when a single test passes (#1094).
   It has more refined display of failures, now using the same style 
   as `CompactProgressReporter`.

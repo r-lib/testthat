@@ -43,6 +43,10 @@ SummaryReporter <- R6::R6Class("SummaryReporter",
       self$failures$size() >= self$max_reports
     },
 
+    start_file = function(file) {
+      context_start_file(file)
+    },
+
     start_context = function(context) {
       self$cat_tight(context, ": ")
     },
