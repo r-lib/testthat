@@ -1,6 +1,3 @@
-#' @include reporter.R
-NULL
-
 #' Test reporter: gather all errors silently.
 #'
 #' This reporter quietly runs all tests, simply gathering all expectations.

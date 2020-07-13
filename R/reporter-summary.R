@@ -1,6 +1,3 @@
-#' @include reporter.R stack.R
-NULL
-
 #' Test reporter: summary of errors.
 #'
 #' This is a reporter designed for interactive usage: it lets you know which

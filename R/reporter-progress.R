@@ -1,6 +1,3 @@
-#' @include reporter.R stack.R
-NULL
-
 #' Test reporter: interactive progress bar of errors.
 #'
 #' @description

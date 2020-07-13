@@ -1,6 +1,3 @@
-#' @include reporter.R
-NULL
-
 #' Test reporter: start recovery.
 #'
 #' This reporter will call a modified version of [recover()] on all

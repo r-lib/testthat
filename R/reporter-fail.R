@@ -1,6 +1,3 @@
-#' @include reporter.R
-NULL
-
 #' Test reporter: fail at end.
 #'
 #' This reporter will simply throw an error if any of the tests failed. It is

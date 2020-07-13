@@ -1,6 +1,3 @@
-#' @include reporter.R
-NULL
-
 #' Multi reporter: combine several reporters in one.
 #'
 #' This reporter is useful to use several reporters at the same time, e.g.

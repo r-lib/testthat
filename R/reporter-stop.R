@@ -1,6 +1,3 @@
-#' @include reporter.R
-NULL
-
 #' Test reporter: stop on error.
 #'
 #' The default reporter, executed when `expect_that` is run interactively.

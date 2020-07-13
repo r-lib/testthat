@@ -1,6 +1,3 @@
-#' @include reporter-stop.R
-NULL
-
 #' Get and set active reporter.
 #'
 #' `get_reporter()` and `set_reporter()` access and modify the current "active"

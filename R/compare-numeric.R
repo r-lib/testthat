@@ -1,4 +1,3 @@
-#' @include compare.R
 #' @export
 #' @rdname compare
 #' @param tolerance Numerical tolerance: any differences (in the sense of

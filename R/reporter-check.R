@@ -1,6 +1,3 @@
-#' @include reporter.R
-NULL
-
 #' Check reporter: 13 line summary of problems
 #'
 #' `R CMD check` displays only the last 13 lines of the result, so this

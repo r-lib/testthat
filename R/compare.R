@@ -10,6 +10,7 @@
 #' @param x,y Objects to compare
 #' @param ... Additional arguments used to control specifics of comparison
 #' @keywords internal
+#' @order 1
 compare <- function(x, y, ...) {
   UseMethod("compare", x)
 }
@@ -45,6 +46,7 @@ print.comparison <- function(x, ...) {
 
 #' @export
 #' @rdname compare
+#' @order 2
 compare.default <- function(x, y, ..., max_diffs = 9) {
   same <- all.equal(x, y, ...)
   if (length(same) > max_diffs) {

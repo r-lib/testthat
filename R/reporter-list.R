@@ -1,7 +1,3 @@
-#' @include reporter.R
-NULL
-
-
 methods::setOldClass("proc_time")
 
 #' List reporter: gather all test results along with elapsed time and

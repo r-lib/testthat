@@ -1,6 +1,3 @@
-#' @include reporter.R
-NULL
-
 #' Test reporter: location
 #'
 #' This reporter simply prints the location of every expectation and error.
