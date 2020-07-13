@@ -1,5 +1,10 @@
 # testthat (development version)
 
+* `capture_output()` and `verify_output()` use a new `testthat_print()`
+  generic. This allows you to control the printed representation of your
+  object specifically for tests (i.e. if your usual print method shows
+  data that varies in a way that you don't care about for tests) (#1056).
+
 * `SummaryReporter` now records file start, not just context start. This
   makes it more compatible with modern style which does not use `context()`
   (#1089).

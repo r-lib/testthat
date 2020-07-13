@@ -111,7 +111,11 @@ verify_exec <- function(exprs,
   exprs <- lapply(exprs, function(x) if (is.character(x)) paste0("# ", x) else expr_deparse(x))
   source <- unlist(exprs, recursive = FALSE)
 
-  results <- evaluate::evaluate(source, envir = env, new_device = FALSE)
+  handler <- evaluate::new_output_handler(value = testthat_print)
+  results <- evaluate::evaluate(source, envir = env,
+    new_device = FALSE,
+    output_handler = handler
+  )
   unlist(lapply(results, output_replay))
 }
 

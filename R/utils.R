@@ -56,3 +56,12 @@ can_entrace <- function(cnd) {
 }
 
 isNA <- function(x) length(x) == 1 && is.na(x)
+
+compact <- function(x) {
+  x[lengths(x) > 0]
+}
+
+# Handled specially in test_code so no backtrace
+testthat_warn <- function(message, ...) {
+  warn(message, class = "testthat_warn", ...)
+}

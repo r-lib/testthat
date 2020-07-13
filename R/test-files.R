@@ -122,13 +122,13 @@ test_files <- function(test_dir,
   withr::defer(source_test_teardown(".", env))
 
   # Wrap reporter
-  reporter <- find_reporter(reporter)
   lister <- ListReporter$new()
-  if (!is.null(reporter)) {
-    reporter <- MultiReporter$new(reporters = list(reporter, lister))
-  } else {
-    reporter <- lister
-  }
+  reporters <- list(
+    find_reporter(reporter),
+    lister, # track data
+    local_snapshotter() # for snapshots
+  )
+  reporter <- MultiReporter$new(reporters = compact(reporters))
 
   # Run tests tests
   library(testthat)
