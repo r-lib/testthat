@@ -139,6 +139,9 @@
     <loc>https://testthat.r-lib.org/reference/expect_silent.html</loc>
   </url>
   <url>
+    <loc>https://testthat.r-lib.org/reference/expect_snapshot_output.html</loc>
+  </url>
+  <url>
     <loc>https://testthat.r-lib.org/reference/expect_success.html</loc>
   </url>
   <url>
@@ -170,6 +173,9 @@
   </url>
   <url>
     <loc>https://testthat.r-lib.org/reference/local_edition.html</loc>
+  </url>
+  <url>
+    <loc>https://testthat.r-lib.org/reference/local_snapshotter.html</loc>
   </url>
   <url>
     <loc>https://testthat.r-lib.org/reference/local_test_context.html</loc>
@@ -206,6 +212,9 @@
   </url>
   <url>
     <loc>https://testthat.r-lib.org/reference/skip.html</loc>
+  </url>
+  <url>
+    <loc>https://testthat.r-lib.org/reference/snapshot_accept.html</loc>
   </url>
   <url>
     <loc>https://testthat.r-lib.org/reference/source_file.html</loc>

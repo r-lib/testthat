@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Retrieve paths to built-in example test files — testthat_examples • testthat</title>
+<title>Snapshot testing — expect_snapshot_output • testthat</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,9 +46,21 @@
 
 
 
-<meta property="og:title" content="Retrieve paths to built-in example test files — testthat_examples" />
-<meta property="og:description" content="testthat_examples() retrieves path to directory of test files,
-testthat_example() retrieves path to a single test file." />
+<meta property="og:title" content="Snapshot testing — expect_snapshot_output" />
+<meta property="og:description" content="
+Snapshot tests (aka golden tests) are similar to unit tests except that the
+expected result is stored in a separate file that is managed by testthat.
+Snapshot tests are useful for when the expected value is large, or when
+the intent of the code is something that can only be verified by a human
+(e.g. this is a useful error message).
+expect_snapshot_output() captures the output printed to the console.
+(by testthat_print()).
+expect_snapshot_value() captures the return value.
+expect_snapshot_condition() captures a specified condition.
+
+
+(These functions supersede verify_output(), expect_known_output(),
+expect_known_value(), and expect_known_hash().)" />
 <meta property="og:image" content="https://testthat.r-lib.org/logo.png" />
 
 
@@ -174,32 +186,95 @@ testthat_example() retrieves path to a single test file." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Retrieve paths to built-in example test files</h1>
-    <small class="dont-index">Source: <a href='https://github.com/r-lib/testthat/blob/master/R/example.R'><code>R/example.R</code></a></small>
-    <div class="hidden name"><code>testthat_examples.Rd</code></div>
+    <h1>Snapshot testing</h1>
+    <small class="dont-index">Source: <a href='https://github.com/r-lib/testthat/blob/master/R/snapshot.R'><code>R/snapshot.R</code></a></small>
+    <div class="hidden name"><code>expect_snapshot_output.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p><code><a href='https://testthat.r-lib.org/reference/testthat_examples.html'>testthat_examples()</a></code> retrieves path to directory of test files,
-<code><a href='https://testthat.r-lib.org/reference/testthat_examples.html'>testthat_example()</a></code> retrieves path to a single test file.</p>
+    <p><a href='https://www.tidyverse.org/lifecycle/#experimental'><img src='figures/lifecycle-experimental.svg' alt='Experimental lifecycle'></a></p>
+<p>Snapshot tests (aka golden tests) are similar to unit tests except that the
+expected result is stored in a separate file that is managed by testthat.
+Snapshot tests are useful for when the expected value is large, or when
+the intent of the code is something that can only be verified by a human
+(e.g. this is a useful error message).</p><ul>
+<li><p><code>expect_snapshot_output()</code> captures the output printed to the console.
+(by <code>testthat_print()</code>).</p></li>
+<li><p><code>expect_snapshot_value()</code> captures the return value.</p></li>
+<li><p><code>expect_snapshot_condition()</code> captures a specified condition.</p></li>
+</ul>
+
+<p>(These functions supersede <code>verify_output()</code>, <code>expect_known_output()</code>,
+<code>expect_known_value()</code>, and <code>expect_known_hash()</code>.)</p>
     </div>
 
-    <pre class="usage"><span class='fu'><a href='https://testthat.r-lib.org/reference/testthat_examples.html'>testthat_examples</a></span>()
+    <pre class="usage"><span class='fu'>expect_snapshot_output</span>(<span class='kw'>x</span>, cran = <span class='fl'>FALSE</span>)
 
-<span class='fu'><a href='https://testthat.r-lib.org/reference/testthat_examples.html'>testthat_example</a></span>(<span class='kw'>filename</span>)</pre>
+<span class='fu'>expect_snapshot_value</span>(
+  <span class='kw'>x</span>,
+  style = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"json"</span>, <span class='st'>"json2"</span>, <span class='st'>"deparse"</span>, <span class='st'>"serialize"</span>),
+  cran = <span class='fl'>FALSE</span>
+)
+
+<span class='fu'>expect_snapshot_condition</span>(<span class='kw'>x</span>, class = <span class='st'>"error"</span>, cran = <span class='fl'>FALSE</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>filename</th>
-      <td><p>Name of test file</p></td>
+      <th>x</th>
+      <td><p>Code to evaluate.</p></td>
+    </tr>
+    <tr>
+      <th>cran</th>
+      <td><p>Should these expectations be verified on CRAN? By default,
+they are not, because snapshot tests tend to be fragile because they
+often rely on minor details of dependencies. Even on CRAN, the
+expectations will still fail if <code>x</code> errors.</p></td>
+    </tr>
+    <tr>
+      <th>style</th>
+      <td><p>Serialization style to use:</p><ul>
+<li><p><code>json</code> uses <code><a href='https://jeroen.cran.dev/jsonlite/reference/fromJSON.html'>jsonlite::fromJSON()</a></code> and <code><a href='https://jeroen.cran.dev/jsonlite/reference/fromJSON.html'>jsonlite::toJSON()</a></code>. This
+produces the simplest output but only works for relatively simple
+objects.</p></li>
+<li><p><code>json2</code> uses <code><a href='https://jeroen.cran.dev/jsonlite/reference/serializeJSON.html'>jsonlite::serializeJSON()</a></code> and <code><a href='https://jeroen.cran.dev/jsonlite/reference/serializeJSON.html'>jsonlite::unserializeJSON()</a></code>
+which are more verbose but work for a wider range of type.</p></li>
+<li><p><code>deparse</code> uses <code><a href='https://rdrr.io/r/base/deparse.html'>deparse()</a></code>, which generates a depiction of the object
+using R code.</p></li>
+<li><p><code><a href='https://rdrr.io/r/base/serialize.html'>serialize()</a></code> produces a binary serialization of the object using
+<code><a href='https://rdrr.io/r/base/serialize.html'>serialize()</a></code>. This is all but guaranteed to work for any R object,
+but produces a completely opaque serialization.</p></li>
+</ul></td>
+    </tr>
+    <tr>
+      <th>class</th>
+      <td><p>Expected class of condition, e.g. use <code>error</code> for errors,
+<code>warning</code> for warnings, <code>message</code> for messages. The expectation will
+always fail (even on CRAN) if a condition of this class isn't seen
+when executing <code>x</code>.</p></td>
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="workflow"><a class="anchor" href="#workflow"></a>Workflow</h2>
 
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/list.files.html'>dir</a></span>(<span class='fu'><a href='https://testthat.r-lib.org/reference/testthat_examples.html'>testthat_examples</a></span>())</div><div class='output co'>#&gt; [1] "_snaps"         "test-failure.R" "test-success.R"</div><div class='input'><span class='fu'><a href='https://testthat.r-lib.org/reference/testthat_examples.html'>testthat_example</a></span>(<span class='st'>"success"</span>)</div><div class='output co'>#&gt; [1] "/Users/runner/work/_temp/Library/testthat/examples/test-success.R"</div></pre>
+    
+
+<p>The first time that you run a snapshot expectation it will run <code>x</code>,
+capture the results, and record in <code>tests/testthat/snap/{test}.json</code>.
+Each test file gets its own snapshot file, e.g. <code>test-foo.R</code> will get
+<code>snap/foo.json</code>.</p>
+<p>It's important to review the JSON files and commit them to git. They are
+designed to be human readable, and you should always review new additions
+to ensure that the salient information has been capture. They should also
+be carefully reviewed in pull requests, to make sure that snapshots have
+updated in the expected way.</p>
+<p>On subsequent runs, the result of <code>x</code> will be compared to the value stored
+on disk. If it's different, the expectation will fail, and a new file
+<code>snap/{test}.new.json</code> will be created. If the change was deliberate,
+you can approve the change with <code>snapshot_accept()</code> and then the tests will
+pass the next time you run them.</p>
+
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Retrieve paths to built-in example test files — testthat_examples • testthat</title>
+<title>Snapshot management — snapshot_accept • testthat</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,9 +46,8 @@
 
 
 
-<meta property="og:title" content="Retrieve paths to built-in example test files — testthat_examples" />
-<meta property="og:description" content="testthat_examples() retrieves path to directory of test files,
-testthat_example() retrieves path to a single test file." />
+<meta property="og:title" content="Snapshot management — snapshot_accept" />
+<meta property="og:description" content="snapshot_accept() accepts all changed snapshots." />
 <meta property="og:image" content="https://testthat.r-lib.org/logo.png" />
 
 
@@ -174,32 +173,27 @@ testthat_example() retrieves path to a single test file." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Retrieve paths to built-in example test files</h1>
-    <small class="dont-index">Source: <a href='https://github.com/r-lib/testthat/blob/master/R/example.R'><code>R/example.R</code></a></small>
-    <div class="hidden name"><code>testthat_examples.Rd</code></div>
+    <h1>Snapshot management</h1>
+    <small class="dont-index">Source: <a href='https://github.com/r-lib/testthat/blob/master/R/snapshot.R'><code>R/snapshot.R</code></a></small>
+    <div class="hidden name"><code>snapshot_accept.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p><code><a href='https://testthat.r-lib.org/reference/testthat_examples.html'>testthat_examples()</a></code> retrieves path to directory of test files,
-<code><a href='https://testthat.r-lib.org/reference/testthat_examples.html'>testthat_example()</a></code> retrieves path to a single test file.</p>
+    <p><code>snapshot_accept()</code> accepts all changed snapshots.</p>
     </div>
 
-    <pre class="usage"><span class='fu'><a href='https://testthat.r-lib.org/reference/testthat_examples.html'>testthat_examples</a></span>()
-
-<span class='fu'><a href='https://testthat.r-lib.org/reference/testthat_examples.html'>testthat_example</a></span>(<span class='kw'>filename</span>)</pre>
+    <pre class="usage"><span class='fu'>snapshot_accept</span>(path = <span class='st'>"tests/testthat"</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>filename</th>
-      <td><p>Name of test file</p></td>
+      <th>path</th>
+      <td><p>Path to tests</p></td>
     </tr>
     </table>
 
 
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/list.files.html'>dir</a></span>(<span class='fu'><a href='https://testthat.r-lib.org/reference/testthat_examples.html'>testthat_examples</a></span>())</div><div class='output co'>#&gt; [1] "_snaps"         "test-failure.R" "test-success.R"</div><div class='input'><span class='fu'><a href='https://testthat.r-lib.org/reference/testthat_examples.html'>testthat_example</a></span>(<span class='st'>"success"</span>)</div><div class='output co'>#&gt; [1] "/Users/runner/work/_temp/Library/testthat/examples/test-success.R"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
