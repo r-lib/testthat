@@ -156,7 +156,7 @@
   <span class="fu"><a href="../reference/local_edition.html">local_edition</a></span>(<span class="fl">3</span>)
   <span class="fu"><a href="../reference/logical-expectations.html">expect_true</a></span>(<span class="fl">TRUE</span>)
 })
-<span class="co">#&gt; Test succeeded 😀</span>
+<span class="co">#&gt; Test succeeded 🥇</span>
 </pre></div>
 <p>This is also useful if you’ve switched to the 3rd edition and have a couple of tests that fail. You can use <code><a href="../reference/local_edition.html">local_edition(2)</a></code> to revert back to the old behaviour, giving you some breathing room to figure out the underlying issue.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit">
@@ -164,7 +164,7 @@
   <span class="fu"><a href="../reference/local_edition.html">local_edition</a></span>(<span class="fl">2</span>)
   <span class="fu"><a href="../reference/logical-expectations.html">expect_true</a></span>(<span class="fl">TRUE</span>)
 })
-<span class="co">#&gt; Test succeeded 🌈</span>
+<span class="co">#&gt; Test succeeded 😸</span>
 </pre></div>
 </div>
 <div id="changes" class="section level2">
@@ -198,23 +198,28 @@
 <a href="#waldo" class="anchor"></a>waldo</h3>
 <p>Probably the the biggest day-to-day difference (and the biggest reason to upgrade!) is the use of <a href="https://waldo.r-lib.org/reference/compare.html"><code>waldo::compare()</code></a> inside of <code><a href="../reference/equality-expectations.html">expect_equal()</a></code> and <code><a href="../reference/equality-expectations.html">expect_identical()</a></code>. The goal of waldo is to find and concisely describe the difference between a pair of R objects, and it’s designed specifically to help you figure out what’s gone wrong in your unit tests.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit">
+<span class="kw">f1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span>(<span class="kw">letters</span>[<span class="fl">1</span><span class="op">:</span><span class="fl">3</span>])
+<span class="kw">f2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">ordered</a></span>(<span class="kw">letters</span>[<span class="fl">1</span><span class="op">:</span><span class="fl">3</span>], levels = <span class="kw">letters</span>[<span class="fl">1</span><span class="op">:</span><span class="fl">4</span>])
+
 <span class="fu"><a href="../reference/local_edition.html">local_edition</a></span>(<span class="fl">2</span>)
-<span class="fu"><a href="../reference/equality-expectations.html">expect_equal</a></span>(<span class="kw">mtcars</span>, <span class="kw">tibble</span>::<span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html">as_tibble</a></span>(<span class="kw">mtcars</span>))
-<span class="co">#&gt; Error: `mtcars` not equal to tibble::as_tibble(mtcars).</span>
-<span class="co">#&gt; Attributes: &lt; Component "class": Lengths (1, 3) differ (string compare on first 1) &gt;</span>
-<span class="co">#&gt; Attributes: &lt; Component "class": 1 string mismatch &gt;</span>
-<span class="co">#&gt; Attributes: &lt; Component "row.names": Modes: character, numeric &gt;</span>
-<span class="co">#&gt; Attributes: &lt; Component "row.names": target is character, current is numeric &gt;</span>
+<span class="fu"><a href="../reference/equality-expectations.html">expect_equal</a></span>(<span class="kw">f1</span>, <span class="kw">f2</span>)
+<span class="co">#&gt; Error: `f1` (`actual`) not equal to `f2` (`expected`).</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; `class(actual)`:             "factor"</span>
+<span class="co">#&gt; `class(expected)`: "ordered" "factor"</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; `levels(actual)`:   "a" "b" "c"    </span>
+<span class="co">#&gt; `levels(expected)`: "a" "b" "c" "d"</span>
 
 <span class="fu"><a href="../reference/local_edition.html">local_edition</a></span>(<span class="fl">3</span>)
-<span class="fu"><a href="../reference/equality-expectations.html">expect_equal</a></span>(<span class="kw">mtcars</span>, <span class="kw">tibble</span>::<span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html">as_tibble</a></span>(<span class="kw">mtcars</span>))
-<span class="co">#&gt; Error: `mtcars` (`actual`) not equal to tibble::as_tibble(mtcars) (`expected`).</span>
+<span class="fu"><a href="../reference/equality-expectations.html">expect_equal</a></span>(<span class="kw">f1</span>, <span class="kw">f2</span>)
+<span class="co">#&gt; Error: `f1` (`actual`) not equal to `f2` (`expected`).</span>
 <span class="co">#&gt; </span>
-<span class="co">#&gt; `class(actual)`:                  "data.frame"</span>
-<span class="co">#&gt; `class(expected)`: "tbl_df" "tbl" "data.frame"</span>
+<span class="co">#&gt; `class(actual)`:             "factor"</span>
+<span class="co">#&gt; `class(expected)`: "ordered" "factor"</span>
 <span class="co">#&gt; </span>
-<span class="co">#&gt; `attr(actual, 'row.names')` is a character vector ('Mazda RX4', 'Mazda RX4 Wag', 'Datsun 710', 'Hornet 4 Drive', 'Hornet Sportabout', ...)</span>
-<span class="co">#&gt; `attr(expected, 'row.names')` is an integer vector (1, 2, 3, 4, 5, ...)</span>
+<span class="co">#&gt; `levels(actual)`:   "a" "b" "c"    </span>
+<span class="co">#&gt; `levels(expected)`: "a" "b" "c" "d"</span>
 </pre></div>
 <p>waldo looks even better in your console because it carefully uses colours to help highlight the differences.</p>
 <p>The use of waldo also makes precise the difference between <code><a href="../reference/equality-expectations.html">expect_equal()</a></code> and <code><a href="../reference/equality-expectations.html">expect_identical()</a></code>: <code><a href="../reference/equality-expectations.html">expect_equal()</a></code> sets <code>tolerance</code> so that waldo will ignore small numerical differences arising from floating point computation. Otherwise the functions are identical (HA HA).</p>
@@ -231,6 +236,10 @@
 
 <span class="fu"><a href="../reference/local_edition.html">local_edition</a></span>(<span class="fl">2</span>)
 <span class="fu"><a href="../reference/equality-expectations.html">expect_equal</a></span>(<span class="kw">dt1</span>, <span class="kw">dt2</span>)
+<span class="co">#&gt; Error: `dt1` (`actual`) not equal to `dt2` (`expected`).</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; `attr(actual, 'tzone')`:   ""   </span>
+<span class="co">#&gt; `attr(expected, 'tzone')`: "UTC"</span>
 
 <span class="fu"><a href="../reference/local_edition.html">local_edition</a></span>(<span class="fl">3</span>)
 <span class="fu"><a href="../reference/equality-expectations.html">expect_equal</a></span>(<span class="kw">dt1</span>, <span class="kw">dt2</span>)
