@@ -84,11 +84,14 @@ For reasons that I can no longer remember, testthat silently ignores all message
 Probably the the biggest day-to-day difference (and the biggest reason to upgrade!) is the use of [`waldo::compare()`](https://waldo.r-lib.org/reference/compare.html) inside of `expect_equal()` and `expect_identical()`. The goal of waldo is to find and concisely describe the difference between a pair of R objects, and it's designed specifically to help you figure out what's gone wrong in your unit tests.
 
 ```{r, error = TRUE}
+f1 <- factor(letters[1:3])
+f2 <- ordered(letters[1:3], levels = letters[1:4])
+
 local_edition(2)
-expect_equal(mtcars, tibble::as_tibble(mtcars))
+expect_equal(f1, f2)
 
 local_edition(3)
-expect_equal(mtcars, tibble::as_tibble(mtcars))
+expect_equal(f1, f2)
 ```
 
 waldo looks even better in your console because it carefully uses colours to help highlight the differences.
