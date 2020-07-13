@@ -309,10 +309,9 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
 check_roundtrip <- function(x, y) {
   check <- waldo::compare(x, y, x_arg = "value", y_arg = "roundtrip")
   if (length(check) > 0) {
-    testthat_warn(c(
-      "Serialization round-trip is not symmetric.",
-      "You may need to consider another object",
-      check)
+    abort(c(
+      paste0("Serialization round-trip is not symmetric.\n\n", check, "\n"),
+      i = "You may need to consider serialization `style`")
     )
   }
 }

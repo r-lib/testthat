@@ -69,3 +69,10 @@ test_that("removing tests removes snap file", {
   snapper$end_file()
   expect_false(file.exists("_snaps/snapshot-3.md"))
 })
+
+test_that("errors if can't roundtrip", {
+  snapper <- local_snapshotter(cleanup = TRUE)
+  snapper$start_file("snapshot-4", "test")
+
+  expect_error(expect_snapshot_value(NULL), "not symmetric")
+})
