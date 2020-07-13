@@ -8,8 +8,10 @@ test_that("can snapshot output", {
 
 test_that("can snapshot values", {
   x <- list("a", 1.5, 1L, TRUE)
-  expect_snapshot_value(x)
-  expect_snapshot_value(x, exact = TRUE)
+  expect_snapshot_value(x, style = "json")
+  expect_snapshot_value(x, style = "json2")
+  expect_snapshot_value(x, style = "deparse")
+  expect_snapshot_value(x, style = "serialize")
 })
 
 test_that("can snapshot conditions", {
@@ -37,22 +39,22 @@ test_that("basic workflow", {
   snapper$start_file("snapshot-2", "test")
   expect_warning(expect_snapshot_output("x"), "Adding new")
   snapper$end_file()
-  expect_true(file.exists("snaps/snapshot-2.json"))
-  expect_false(file.exists("snaps/snapshot-2.new.json"))
+  expect_true(file.exists("_snaps/snapshot-2.md"))
+  expect_false(file.exists("_snaps/snapshot-2.new.md"))
 
   # succeeds if unchanged
   snapper$start_file("snapshot-2", "test")
   expect_success(expect_snapshot_output("x"))
   snapper$end_file()
-  expect_true(file.exists("snaps/snapshot-2.json"))
-  expect_false(file.exists("snaps/snapshot-2.new.json"))
+  expect_true(file.exists("_snaps/snapshot-2.md"))
+  expect_false(file.exists("_snaps/snapshot-2.new.md"))
 
   # fails if changed
   snapper$start_file("snapshot-2", "test")
   expect_failure(expect_snapshot_output("y"))
   snapper$end_file()
-  expect_true(file.exists("snaps/snapshot-2.json"))
-  expect_true(file.exists("snaps/snapshot-2.new.json"))
+  expect_true(file.exists("_snaps/snapshot-2.md"))
+  expect_true(file.exists("_snaps/snapshot-2.new.md"))
 })
 
 test_that("removing tests removes snap file", {
@@ -61,9 +63,9 @@ test_that("removing tests removes snap file", {
   snapper$start_file("snapshot-3", "test")
   expect_warning(expect_snapshot_output("x"), "Adding new")
   snapper$end_file()
-  expect_true(file.exists("snaps/snapshot-3.json"))
+  expect_true(file.exists("_snaps/snapshot-3.md"))
 
   snapper$start_file("snapshot-3", "test")
   snapper$end_file()
-  expect_false(file.exists("snaps/snapshot-3.json"))
+  expect_false(file.exists("_snaps/snapshot-3.md"))
 })

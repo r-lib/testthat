@@ -144,7 +144,7 @@ test_code <- function(test, code, env = test_env(), reporter = get_reporter(), s
       return()
     }
 
-    if (can_entrace(e)) {
+    if (!inherits(e, "testthat_warn")) {
       e <- cnd_entrace(e)
     }
 

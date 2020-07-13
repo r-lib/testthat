@@ -8,7 +8,11 @@
 \usage{
 expect_snapshot_output(x, cran = FALSE)
 
-expect_snapshot_value(x, exact = FALSE, cran = FALSE)
+expect_snapshot_value(
+  x,
+  style = c("json", "json2", "deparse", "serialize"),
+  cran = FALSE
+)
 
 expect_snapshot_condition(x, class = "error", cran = FALSE)
 }
@@ -20,10 +24,19 @@ they are not, because snapshot tests tend to be fragile because they
 often rely on minor details of dependencies. Even on CRAN, the
 expectations will still fail if \code{x} errors.}
 
-\item{exact}{Use \code{\link[=serialize]{serialize()}} to produce a more exact serialisation
-of \code{x}. The major downside is that this produces output that is not
-human readable, making it difficult to review what's changed in pull
-requests.}
+\item{style}{Serialization style to use:
+\itemize{
+\item \code{json} uses \code{\link[jsonlite:fromJSON]{jsonlite::fromJSON()}} and \code{\link[jsonlite:fromJSON]{jsonlite::toJSON()}}. This
+produces the simplest output but only works for relatively simple
+objects.
+\item \code{json2} uses \code{\link[jsonlite:serializeJSON]{jsonlite::serializeJSON()}} and \code{\link[jsonlite:serializeJSON]{jsonlite::unserializeJSON()}}
+which are more verbose but work for a wider range of type.
+\item \code{deparse} uses \code{\link[=deparse]{deparse()}}, which generates a depiction of the object
+using R code.
+\item \code{serialize()} produces a binary serialization of the object using
+\code{\link[=serialize]{serialize()}}. This is all but guaranteed to work for any R object,
+but produces a completely opaque serialization.
+}}
 
 \item{class}{Expected class of condition, e.g. use \code{error} for errors,
 \code{warning} for warnings, \code{message} for messages. The expectation will

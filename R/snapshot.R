@@ -48,22 +48,38 @@ expect_snapshot_output <- function(x, cran = FALSE) {
   expect_snapshot(lab, val, cran = cran)
 }
 
-#' @param exact Use [serialize()] to produce a more exact serialisation
-#'   of `x`. The major downside is that this produces output that is not
-#'   human readable, making it difficult to review what's changed in pull
-#'   requests.
+#' @param style Serialization style to use:
+#'   * `json` uses [jsonlite::fromJSON()] and [jsonlite::toJSON()]. This
+#'      produces the simplest output but only works for relatively simple
+#'      objects.
+#'   * `json2` uses [jsonlite::serializeJSON()] and [jsonlite::unserializeJSON()]
+#'     which are more verbose but work for a wider range of type.
+#'   * `deparse` uses [deparse()], which generates a depiction of the object
+#'     using R code.
+#'   * `serialize()` produces a binary serialization of the object using
+#'     [serialize()]. This is all but guaranteed to work for any R object,
+#'     but produces a completely opaque serialization.
 #' @export
 #' @rdname expect_snapshot_output
-expect_snapshot_value <- function(x, exact = FALSE, cran = FALSE) {
+expect_snapshot_value <- function(x,
+                                  style = c("json", "json2", "deparse", "serialize"),
+                                  cran = FALSE) {
   lab <- quo_label(enquo(x))
 
-  if (exact) {
-    save <- function(x) rawToChar(serialize(x, NULL, ascii = TRUE))
-    load <- function(x) unserialize(charToRaw(x))
-  } else {
-    save <- identity
-    load <- identity
-  }
+  style <- arg_match(style)
+
+  save <- switch(style,
+    json = function(x) jsonlite::toJSON(x, auto_unbox = TRUE, pretty = TRUE),
+    json2 = function(x) jsonlite::serializeJSON(x, pretty = TRUE),
+    deparse = function(x) paste0(deparse(x), collapse = "\n"),
+    serialize = function(x) jsonlite::base64_enc(serialize(x, NULL))
+  )
+  load <- switch(style,
+    json = function(x) jsonlite::fromJSON(x, simplifyVector = FALSE),
+    json2 = function(x) jsonlite::unserializeJSON(x),
+    deparse = function(x) eval(parse(text = x), baseenv()),
+    serialize = function(x) unserialize(jsonlite::base64_dec(x))
+  )
 
   expect_snapshot(lab, x, save = save, load = load, cran = cran)
 }
@@ -87,7 +103,12 @@ expect_snapshot_condition <- function(x, class = "error", cran = FALSE) {
     class = class(val),
     fields = fields
   )
-  expect_snapshot(lab, error, cran = cran)
+  expect_snapshot(
+    lab, error,
+    cran = cran,
+    save = function(x) jsonlite::toJSON(x, pretty = TRUE),
+    load = jsonlite::fromJSON
+  )
 }
 
 expect_snapshot <- function(lab, val, cran = FALSE, save = identity, load = identity) {
@@ -120,7 +141,7 @@ expect_snapshot <- function(lab, val, cran = FALSE, save = identity, load = iden
 #' @param path Path to tests
 #' @export
 snapshot_accept <- function(path = "tests/testthat") {
-  changed <- dir(file.path(path, "snaps"), pattern = "\\.new\\.json$", full.names = TRUE)
+  changed <- dir(file.path(path, "_snaps"), pattern = "\\.new\\.json$", full.names = TRUE)
 
   cur <- gsub("\\.new\\.json$", "\\.json", changed)
   unlink(cur)
@@ -172,9 +193,10 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
       self$new_snaps <- self$snap_append(self$new_snaps, save(value))
 
       if (self$has_snapshot(self$i)) {
-        old <- load(self$old_snaps[[self$test]][[self$i]])
-        self$cur_snaps <- self$snap_append(self$cur_snaps, save(old))
+        old_raw <- self$old_snaps[[self$test]][[self$i]]
+        self$cur_snaps <- self$snap_append(self$cur_snaps, old_raw)
 
+        old <- load(old_raw)
         comp <- waldo::compare(
           x = old,   x_arg = "previous",
           y = value, y_arg = "current"
@@ -185,17 +207,16 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
         }
         comp
       } else {
-        roundtrip <- load(save(value))
-        check_roundtrip(value, roundtrip)
+        check_roundtrip(value, load(save(value)))
 
         self$cur_snaps <- self$snap_append(self$cur_snaps, save(value))
-        warn("Adding new snapshot")
+        testthat_warn("Adding new snapshot")
         character()
       }
     },
 
     end_file = function() {
-      dir.create("snaps", showWarnings = FALSE)
+      dir.create("_snaps", showWarnings = FALSE)
 
       self$snaps_write(self$cur_snaps)
       if (self$file_changed) {
@@ -211,12 +232,12 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
         return()
       }
 
-      snaps <- dir("snaps")
+      snaps <- dir("_snaps")
       outdated <- !context_name(snaps) %in% context_name(tests)
       unlink(snaps[outdated])
 
-      if (length(dir("snaps") == 0)) {
-        unlink("snaps")
+      if (length(dir("_snaps") == 0)) {
+        unlink("_snaps")
       }
     },
 
@@ -238,7 +259,8 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
     # File management ----------------------------------------------------------
     snaps_read = function(suffix = "") {
       if (file.exists(self$snap_path(suffix))) {
-        yaml::read_yaml(self$snap_path(suffix))
+        lines <- read_lines(self$snap_path(suffix))
+        snap_from_md(lines)
       } else {
         list()
       }
@@ -246,7 +268,10 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
     snaps_write = function(data, suffix = "") {
       data <- compact(data)
       if (length(data) > 0) {
-        jsonlite::write_json(data, self$snap_path(suffix), pretty = TRUE)
+        out <- snap_to_md(data)
+        # trim off last line since write_lines() adds one
+        out <- gsub("\n$", "", out)
+        write_lines(out, self$snap_path(suffix))
       } else {
         self$snaps_delete(suffix)
       }
@@ -259,7 +284,7 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
       self$snaps_delete(".new")
     },
     snap_path = function(suffix = "") {
-      file.path("snaps", paste0(self$file, suffix, ".json"))
+      file.path("_snaps", paste0(self$file, suffix, ".md"))
     }
   )
 )
@@ -267,7 +292,7 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
 check_roundtrip <- function(x, y) {
   check <- waldo::compare(x, y, x_arg = "value", y_arg = "roundtrip")
   if (length(check) > 0) {
-    warn(c(
+    testthat_warn(c(
       "Serialization round-trip is not symmetric.",
       "You may need to consider another object",
       check)
