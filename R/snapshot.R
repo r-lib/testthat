@@ -158,9 +158,9 @@ expect_snapshot <- function(lab, val, cran = FALSE, save = identity, load = iden
 #' @param path Path to tests
 #' @export
 snapshot_accept <- function(path = "tests/testthat") {
-  changed <- dir(file.path(path, "_snaps"), pattern = "\\.new\\.json$", full.names = TRUE)
+  changed <- dir(file.path(path, "_snaps"), pattern = "\\.new\\.md$", full.names = TRUE)
 
-  cur <- gsub("\\.new\\.json$", "\\.json", changed)
+  cur <- gsub("\\.new\\.md$", "\\.md", changed)
   unlink(cur)
   file.rename(changed, cur)
 
