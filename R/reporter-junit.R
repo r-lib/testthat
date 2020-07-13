@@ -1,6 +1,3 @@
-#' @include reporter.R
-NULL
-
 # To allow the Java-style class name format that Jenkins prefers,
 # "package_name_or_domain.ClassName", allow "."s in the class name.
 classnameOK <- function(text) {

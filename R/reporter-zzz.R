@@ -1,6 +1,3 @@
-#' @include reporter-stop.R
-NULL
-
 #' Get and set active reporter.
 #'
 #' `get_reporter()` and `set_reporter()` access and modify the current "active"
@@ -36,6 +33,10 @@ set_reporter <- function(reporter) {
 #' @export
 get_reporter <- function() {
   testthat_env$reporter
+}
+
+has_reporter <- function() {
+  !is.null(testthat_env$reporter)
 }
 
 #' @rdname reporter-accessors

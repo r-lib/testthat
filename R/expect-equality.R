@@ -95,12 +95,20 @@ expect_identical <- function(object, expected, info = NULL, label = NULL,
 }
 
 expect_waldo_equal <- function(type, act, exp, info, ...) {
+  reporter <- get_reporter()
+  if (!is.null(reporter)) {
+    reporter$local_user_output()
+  }
+
   comp <- waldo::compare(act$val, exp$val, ..., x_arg = "actual", y_arg = "expected")
   expect(
     length(comp) == 0,
     sprintf(
-      "%s (`actual`) not %s to %s (`expected`).\n\n%s",
-      act$lab, type, exp$lab, paste0(comp, collapse = "\n\n")
+      "%s (%s) not %s to %s (%s).\n\n%s",
+      act$lab, cli::col_blue("`actual`"),
+      type,
+      exp$lab, cli::col_yellow("`expected`"),
+      paste0(comp, collapse = "\n\n")
     ),
     info = info
   )

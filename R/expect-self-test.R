@@ -1,6 +1,3 @@
-#' @include reporter.R
-NULL
-
 #' Tools for testing expectations
 #'
 #' Use these expectations to test other expectations.

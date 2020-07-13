@@ -51,7 +51,13 @@ edition_set <- function(x) {
     env_poke(testthat_env, "edition", x)
   }
 }
-edition_get <- function() {
-  env_get(testthat_env, "edition", default = 2L)
-}
 
+edition_get <- function() {
+  if (has_reporter()) {
+    # set by local_test_directory() in test_files()
+    env_get(testthat_env, "edition", default = 2L)
+  } else {
+    # look in working directory; should only happen in bare expect_equal()
+    find_edition(".")
+  }
+}

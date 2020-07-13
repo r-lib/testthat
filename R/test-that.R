@@ -27,8 +27,16 @@
 #' })
 #' }
 test_that <- function(desc, code) {
-  # Create StopReporter() before override output options
-  reporter <- get_reporter() %||% StopReporter$new(stop_reporter = FALSE)
+  reporter <- get_reporter()
+  # Running test_that() interactively
+  if (is.null(reporter)) {
+    local_edition(find_edition("."))
+
+    reporter <- StopReporter$new(stop_reporter = FALSE)
+    old <- set_reporter(reporter)
+    on.exit(set_reporter(old), add = TRUE)
+  }
+
   local_test_context()
 
   code <- substitute(code)
@@ -147,7 +155,9 @@ test_code <- function(test, code, env = test_env(), reporter = get_reporter(), s
   }
   handle_message <- function(e) {
     handled <<- TRUE
-    maybe_restart("muffleMessage")
+    if (edition_get() < 3) {
+     maybe_restart("muffleMessage")
+    }
   }
   handle_skip <- function(e) {
     handled <<- TRUE

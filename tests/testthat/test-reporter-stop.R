@@ -1,5 +1,6 @@
 test_that("produces useful output", {
   local_reproducible_output(unicode = TRUE)
+  set.seed(1014)
 
   expect_known_output(
     with_reporter(

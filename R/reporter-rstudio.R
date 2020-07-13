@@ -1,6 +1,3 @@
-#' @include reporter.R
-NULL
-
 #' Test reporter: RStudio
 #'
 #' This reporter is designed for output to RStudio. It produces results in

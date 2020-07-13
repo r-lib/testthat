@@ -5,6 +5,14 @@
   object specifically for tests (i.e. if your usual print method shows
   data that varies in a way that you don't care about for tests) (#1056).
 
+* `SummaryReporter` now records file start, not just context start. This
+  makes it more compatible with modern style which does not use `context()`
+  (#1089).
+
+* `StopReporter` adds random praise emoji when a single test passes (#1094).
+  It has more refined display of failures, now using the same style 
+  as `CompactProgressReporter`.
+
 * `test_that()` no longer triggers an error when run outside of tests;
   instead it produces a more informative summary of all failures, errors,
   warnings, and skips that occurred inside the test.
@@ -76,7 +84,8 @@
 * testhat 3.0.0 brings with it a 3rd edition that makes a number of breaking
   changes in order to clean up the interface and help you use our latest
   recommendations. To opt-in to the 3rd edition for your package, set
-  `Config/testthat/edition: 3` in your `DESCRIPTION`.
+  `Config/testthat/edition: 3` in your `DESCRIPTION`. Learn more in 
+  `vignette("third-edition")`.
   
     * `expect_identical()` and `expect_equal()` use `waldo::compare()` to 
        compare actual and expected results. This mostly yields much more 
@@ -91,6 +100,10 @@
     * `expect_that()` is deprecated.
     
     * `expect_is()` is deprecated.
+    
+    * Messages are no longer automatically silenced. Either use 
+      `suppressMessages()` to hide unimportant messages, or
+      `expect_messsage()` to catch important messages (#1095).
 
 * `test_that()` now sets a number of options and env vars to make output as 
   reproducible as possible (#1044). Many of these options were previously 

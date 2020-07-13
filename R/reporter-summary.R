@@ -1,6 +1,3 @@
-#' @include reporter.R stack.R
-NULL
-
 #' Test reporter: summary of errors.
 #'
 #' This is a reporter designed for interactive usage: it lets you know which
@@ -41,6 +38,10 @@ SummaryReporter <- R6::R6Class("SummaryReporter",
 
     is_full = function() {
       self$failures$size() >= self$max_reports
+    },
+
+    start_file = function(file) {
+      context_start_file(file)
     },
 
     start_context = function(context) {

@@ -1,6 +1,3 @@
-#' @include reporter.R
-NULL
-
 #' Test reporter: TAP format.
 #'
 #' This reporter will output results in the Test Anything Protocol (TAP),
