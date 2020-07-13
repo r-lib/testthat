@@ -17,17 +17,6 @@ test_that("reporters produce consistent output", {
 
   expect_report_unchanged("junit", reporter = JunitReporterMock)
   expect_report_unchanged("progress", ProgressReporter$new(show_praise = FALSE, min_time = Inf, update_interval = 0))
-
-  # Test that MultiReporter can write to two different places
-  tap_file <- tempfile()
-  expect_report_unchanged("summary", reporter = MultiReporter$new(list(
-    SummaryReporter$new(show_praise = FALSE, omit_dots = FALSE),
-    TapReporter$new(file = tap_file)
-  )))
-  expect_identical(
-    read_lines(tap_file),
-    read_lines(test_path("reporters", "tap.txt"))
-  )
 })
 
 test_that('debug reporter produces consistent output', {
