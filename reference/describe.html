@@ -224,7 +224,7 @@ the <code>it</code> block).</p>
   <span class='fu'>it</span>(<span class='st'>"can be multiplied by a scalar"</span>, {
     <span class='kw'>m1</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>matrix</a></span>(<span class='fl'>1</span><span class='op'>:</span><span class='fl'>4</span>, <span class='fl'>2</span>, <span class='fl'>2</span>)
     <span class='kw'>m2</span> <span class='op'>&lt;-</span> <span class='kw'>m1</span> <span class='op'>*</span> <span class='fl'>2</span>
-    <span class='fu'>expect_equivalent</span>(<span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>matrix</a></span>(<span class='fl'>1</span><span class='op'>:</span><span class='fl'>4</span> <span class='op'>*</span> <span class='fl'>2</span>, <span class='fl'>2</span>, <span class='fl'>2</span>), <span class='kw'>m2</span>)
+    <span class='fu'>expect_equal</span>(<span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>matrix</a></span>(<span class='fl'>1</span><span class='op'>:</span><span class='fl'>4</span> <span class='op'>*</span> <span class='fl'>2</span>, <span class='fl'>2</span>, <span class='fl'>2</span>), <span class='kw'>m2</span>)
   })
   <span class='fu'>it</span>(<span class='st'>"can have not yet tested specs"</span>)
 })</div><div class='output co'>#&gt; Test succeeded 🥳</div><div class='input'>
