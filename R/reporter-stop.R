@@ -14,6 +14,7 @@ StopReporter <- R6::R6Class("StopReporter",
   inherit = Reporter,
   public = list(
     failures = NULL,
+    n_fail = 0L,
     stop_reporter = TRUE,
 
     initialize = function(stop_reporter = TRUE) {
@@ -31,6 +32,10 @@ StopReporter <- R6::R6Class("StopReporter",
         return()
       }
 
+      if (expectation_broken(result)) {
+        self$n_fail <- self$n_fail + 1
+      }
+
       self$failures$push(result)
     },
 
@@ -46,7 +51,7 @@ StopReporter <- R6::R6Class("StopReporter",
       messages <- vapply(failures, issue_summary, rule = TRUE, character(1))
       self$cat_line(messages, "\n")
 
-      if (self$stop_reporter) {
+      if (self$stop_reporter && self$n_fail > 1) {
         stop_reporter("Test failed")
       }
     }
