@@ -77,11 +77,28 @@ expect_snapshot_value <- function(x,
   load <- switch(style,
     json = function(x) jsonlite::fromJSON(x, simplifyVector = FALSE),
     json2 = function(x) jsonlite::unserializeJSON(x),
-    deparse = function(x) eval(parse(text = x), baseenv()),
+    deparse = function(x) reparse(x),
     serialize = function(x) unserialize(jsonlite::base64_dec(x))
   )
 
   expect_snapshot(lab, x, save = save, load = load, cran = cran)
+}
+
+# Safe environment for evaluating deparsed objects, based on inspection of
+# https://github.com/wch/r-source/blob/5234fe7b40aad8d3929d240c83203fa97d8c79fc/src/main/deparse.c#L845
+reparse <- function(x) {
+  env <- env(emptyenv(),
+    list = list,
+    quote = quote,
+    expression = expression,
+    `function` = `function`,
+    new = methods::new,
+    pairlist = pairlist,
+    alist = alist,
+    as.pairlist = as.pairlist
+  )
+
+  eval(parse(text = x), env)
 }
 
 #' @param class Expected class of condition, e.g. use `error` for errors,
