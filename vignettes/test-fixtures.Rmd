@@ -10,7 +10,9 @@ vignette: >
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
-  comment = "#>"
+  comment = "#>",
+  # Since after is not available prior to 3.5
+  eval = getRversion() >= "3.5"
 )
 ```
 
