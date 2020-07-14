@@ -62,6 +62,13 @@ local_reproducible_output <- function(width = 80,
   withr::local_collate("C", .local_envir = .env)
 }
 
+local_user_output <- function(.env = parent.frame()) {
+  reporter <- get_reporter()
+  if (!is.null(reporter)) {
+    reporter$local_user_output(.env)
+  }
+}
+
 local_width <- function(width = 80, .env = parent.frame()) {
   withr::local_options(list(width = width), .local_envir = .env)
   withr::local_envvar(list(RSTUDIO_CONSOLE_WIDTH = width), .local_envir = .env)

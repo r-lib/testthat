@@ -44,6 +44,8 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
         self$cur_snaps <- self$snap_append(self$cur_snaps, old_raw)
 
         old <- load(old_raw)
+
+        local_user_output()
         comp <- waldo::compare(
           x = old,   x_arg = "previous",
           y = value, y_arg = "current"
@@ -137,6 +139,8 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
 )
 
 check_roundtrip <- function(x, y) {
+  local_user_output()
+
   check <- waldo::compare(x, y, x_arg = "value", y_arg = "roundtrip")
   if (length(check) > 0) {
     abort(c(
