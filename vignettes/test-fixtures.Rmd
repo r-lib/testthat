@@ -262,7 +262,7 @@ One place that we use test fixtures extensively is in the usethis package ([uset
 To solve this problem we create a test fixture, which we place in `R/test-helpers.R` so that's it's available for both testing and interactive experimentation:
 
 ```{r, eval = FALSE}
-create_local_package <- function(dir = file_temp(), env = parent.frame()) {
+local_create_package <- function(dir = file_temp(), env = parent.frame()) {
   old_project <- proj_get_()
   
   # create new folder and package
@@ -281,15 +281,13 @@ create_local_package <- function(dir = file_temp(), env = parent.frame()) {
 }
 ```
 
-(If we wrote this today, would call it `local_create_package()` to emphasise the local-ness of it.)
-
 Note that the cleanup automatically unfolds in the opposite order from the setup. Setup is `A`, then `B`, then `C`; cleanup is `-C`, then `-B`, then `-A`. This is important because we must create directory `dir` before we can make it the working directory; and we must restore the original working directory before we can delete `dir`; we can't delete `dir` while it's still the working directory!
 
 `create_local_package()` is used in over 170 tests. Here's one example that checks that `usethis::use_roxygen_md()` does the setup necessary to use roxygen2 in a package, with markdown support turned on. All 3 expectations consult the DESCRIPTION file, directly or indirectly. So it's very convenient that `create_local_package()` creates a minimal package, with a valid `DESCRIPTION` file, for us to test against. And when the test is done --- poof! --- the package is gone.
 
 ```{r eval = FALSE}
 test_that("use_roxygen_md() adds DESCRIPTION fields", {
-  pkg <- create_local_package()
+  pkg <- local_create_package()
   use_roxygen_md()
   
   expect_true(uses_roxygen_md())
