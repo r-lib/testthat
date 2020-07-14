@@ -1,4 +1,5 @@
 test_that("teardown adds to queue", {
+  local_edition(2)
   on.exit(teardown_reset())
 
   expect_length(teardown_env$queue, 0)
@@ -11,6 +12,7 @@ test_that("teardown adds to queue", {
 })
 
 test_that("teardowns runs in order", {
+  local_edition(2)
   on.exit(teardown_reset())
 
   a <- 1
@@ -32,6 +34,7 @@ test_that("file is created", {
   expect_true(file.exists("teardown.txt"))
 })
 
+local_edition(2)
 teardown({
   file.remove("teardown.txt")
 })

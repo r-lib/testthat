@@ -107,6 +107,9 @@
     * Messages are no longer automatically silenced. Either use 
       `suppressMessages()` to hide unimportant messages, or
       `expect_messsage()` to catch important messages (#1095).
+      
+    * `setup()` and `teardown()` are deprecated in favour of test fixtures.
+      See `vignette("test-fixtures")` for more details.
 
 * `test_that()` now sets a number of options and env vars to make output as 
   reproducible as possible (#1044). Many of these options were previously 

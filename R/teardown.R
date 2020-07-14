@@ -38,6 +38,10 @@ teardown_env$queue <- list()
 #' }
 #' # Then call local_test_data() in your tests
 teardown <- function(code, env = parent.frame()) {
+  edition_deprecate(3, "teardown()",
+    "Please use test fixtures instead see vignette('test-fixtures') for details"
+  )
+
   fun <- new_function(list(), enexpr(code), env = env)
   teardown_env$queue <- append(teardown_env$queue, fun)
 
@@ -47,6 +51,10 @@ teardown <- function(code, env = parent.frame()) {
 #' @export
 #' @rdname teardown
 setup <- function(code, env = parent.frame()) {
+  edition_deprecate(3, "setup()",
+    "Please use test fixtures instead see vignette('test-fixtures') for details"
+  )
+
   out <- eval_tidy(enquo(code), env = env)
   invisible(out)
 }

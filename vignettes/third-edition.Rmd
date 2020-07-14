@@ -73,6 +73,8 @@ A number of outdated functions have been deprecated. Most of these functions hav
 
 -   `expect_equivalent()` has been deprecated since it is now equivalent (HA HA) to `expect_equal(ignore_attr = TRUE)`.
 
+-   `setup())` an `teardown()` are deprecated in favour of test fixtures. See `vignette("test-fixtures")` for details.d
+
 Fixing these deprecation warnings should be straightforward.
 
 ### Messages
