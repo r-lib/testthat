@@ -6,6 +6,11 @@ test_that("can snapshot output", {
   expect_snapshot_output(foo())
 })
 
+test_that("even with multiple lines", {
+  expect_snapshot_output(cat("a\nb\nc"))
+  expect_snapshot_output(cat("a\nb\nc\n"))
+})
+
 test_that("can snapshot values", {
   x <- list("a", 1.5, 1L, TRUE)
   expect_snapshot_value(x, style = "json")

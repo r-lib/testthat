@@ -65,3 +65,11 @@ compact <- function(x) {
 testthat_warn <- function(message, ...) {
   warn(message, class = "testthat_warn", ...)
 }
+
+split_by_line <- function(x) {
+  trailing_nl <- grepl("\n$", x)
+
+  x <- strsplit(x, "\n")
+  x[trailing_nl] <- lapply(x[trailing_nl], c, "")
+  x
+}

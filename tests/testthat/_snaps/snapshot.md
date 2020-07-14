@@ -14,6 +14,18 @@
 
     [1] "y"
 
+## even with multiple lines
+
+    a
+    b
+    c
+
+---
+
+    a
+    b
+    c
+
 ## can snapshot values
 
     [
@@ -78,6 +90,4 @@
         "x": [1, 2, 3, 4, 5]
       }
     }
-    
-    
 

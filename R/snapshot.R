@@ -45,7 +45,10 @@ expect_snapshot_output <- function(x, cran = FALSE) {
   lab <- quo_label(enquo(x))
   val <- capture_output_lines(x, print = TRUE)
 
-  expect_snapshot(lab, val, cran = cran)
+  expect_snapshot(lab, val, cran = cran,
+    save = function(x) paste0(x, collapse = "\n"),
+    load = function(x) split_by_line(x)[[1]]
+  )
 }
 
 #' @param style Serialization style to use:
