@@ -3,7 +3,7 @@
 \name{teardown}
 \alias{teardown}
 \alias{setup}
-\title{Run code on setup/teardown}
+\title{Run code before/after tests}
 \usage{
 teardown(code, env = parent.frame())
 
@@ -12,24 +12,37 @@ setup(code, env = parent.frame())
 \arguments{
 \item{code}{Code to evaluate}
 
-\item{env}{Environment in which code will be evaluted. For expert
+\item{env}{Environment in which code will be evaluated. For expert
 use only.}
 }
 \description{
+\ifelse{html}{\out{<a href='https://www.tidyverse.org/lifecycle/#superseded'><img src='figures/lifecycle-superseded.svg' alt='Superseded lifecycle'></a>}}{\strong{Superseded}}
+
+We no longer recommend using \code{setup()} and \code{teardown()}; instead
+we think it's better practice to use a \strong{test fixture} as described in
+\code{vignette("test-fixtures")}.
+
 Code in a \code{setup()} block is run immediately in a clean environment.
 Code in a \code{teardown()} block is run upon completion of a test file,
 even if it exits with an error. Multiple calls to \code{teardown()} will be
 executed in the order they were created.
-
-To run code before or after all tests, use files with names
-\verb{tests/testthat/setup-*.R} or \verb{tests/testthat/teardown-*.R}.
 }
 \examples{
 \dontrun{
-
+# Old approach
 tmp <- tempfile()
 setup(writeLines("some test data", tmp))
 teardown(unlink(tmp))
+}
 
+# Now recommended:
+local_test_data <- function(env = parent.frame()) {
+  tmp <- tempfile()
+  writeLines("some test data", tmp)
+  withr::defer(unlink(tmp), env)
+
+  tmp
 }
+# Then call local_test_data() in your tests
 }
+\keyword{internal}

@@ -1,5 +1,15 @@
 # testthat (development version)
 
+* New `vignette("test-fixtures")` describes test fixtures; i.e. how to 
+  temporarily and cleanly change global state in order to test parts of
+  your code that otherwise would be hard to run (#1042).
+
+* New `teardown_env()` for use with `withr::defer()`. This allows you to
+  run code after all other tests have been run.
+
+* `setup()` and `teardown()` are superseded in favour of test fixtures,
+  as described in `vignette("test-fixtures")`.
+
 * `capture_output()` and `verify_output()` use a new `testthat_print()`
   generic. This allows you to control the printed representation of your
   object specifically for tests (i.e. if your usual print method shows
@@ -104,6 +114,9 @@
     * Messages are no longer automatically silenced. Either use 
       `suppressMessages()` to hide unimportant messages, or
       `expect_messsage()` to catch important messages (#1095).
+      
+    * `setup()` and `teardown()` are deprecated in favour of test fixtures.
+      See `vignette("test-fixtures")` for more details.
 
 * `test_that()` now sets a number of options and env vars to make output as 
   reproducible as possible (#1044). Many of these options were previously 
