@@ -167,7 +167,7 @@
   <span class="fu"><a href="../reference/local_edition.html">local_edition</a></span>(<span class="fl">2</span>)
   <span class="fu"><a href="../reference/logical-expectations.html">expect_true</a></span>(<span class="fl">TRUE</span>)
 })
-<span class="co">#&gt; Test succeeded 😸</span>
+<span class="co">#&gt; Test succeeded 🎊</span>
 </pre></div>
 </div>
 <div id="changes" class="section level2">
@@ -188,7 +188,8 @@
 <li><p><code><a href="../reference/expect_is.html">expect_is()</a></code> is deprecated in favour of the more specific <code><a href="../reference/inheritance-expectations.html">expect_type()</a></code>, <code><a href="../reference/inheritance-expectations.html">expect_s3_class()</a></code>, and <code><a href="../reference/inheritance-expectations.html">expect_s4_class()</a></code>. This ensures that you check the expected class along with the expected OO system.</p></li>
 <li><p>The very old <code><a href="../reference/expect_that.html">expect_that()</a></code> syntax is now deprecated. This was an overly clever API that I regretted even before the release of testthat 1.0.0.</p></li>
 <li><p><code><a href="../reference/expect_equivalent.html">expect_equivalent()</a></code> has been deprecated since it is now equivalent (HA HA) to <code><a href="../reference/equality-expectations.html">expect_equal(ignore_attr = TRUE)</a></code>.</p></li>
-<li><p><code>setup())</code> an <code><a href="../reference/teardown.html">teardown()</a></code> are deprecated in favour of test fixtures. See <code><a href="../articles/test-fixtures.html">vignette("test-fixtures")</a></code> for details.d</p></li>
+<li><p><code>setup())</code> an <code><a href="../reference/teardown.html">teardown()</a></code> are deprecated in favour of test fixtures. See <code><a href="../articles/test-fixtures.html">vignette("test-fixtures")</a></code> for details.</p></li>
+<li><p><code><a href="../reference/expect_known_output.html">expect_known_output()</a></code>, <code><a href="../reference/expect_known_output.html">expect_known_value()</a></code>, <code><a href="../reference/expect_known_output.html">expect_known_hash()</a></code>, and <code><a href="../reference/expect_known_output.html">expect_equal_to_reference()</a></code> are all deprecated in favour of <code><a href="../reference/expect_snapshot_output.html">expect_snapshot_output()</a></code> and <code><a href="../reference/expect_snapshot_output.html">expect_snapshot_value()</a></code>.</p></li>
 </ul>
 <p>Fixing these deprecation warnings should be straightforward.</p>
 </div>

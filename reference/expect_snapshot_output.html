@@ -56,7 +56,8 @@ the intent of the code is something that can only be verified by a human
 expect_snapshot_output() captures the output printed to the console.
 (by testthat_print()).
 expect_snapshot_value() captures the return value.
-expect_snapshot_condition() captures a specified condition.
+expect_snapshot_error() capture an error message.
+expect_snapshot_condition() captures a condition object.
 
 
 (These functions supersede verify_output(), expect_known_output(),
@@ -204,7 +205,8 @@ the intent of the code is something that can only be verified by a human
 <li><p><code>expect_snapshot_output()</code> captures the output printed to the console.
 (by <code>testthat_print()</code>).</p></li>
 <li><p><code>expect_snapshot_value()</code> captures the return value.</p></li>
-<li><p><code>expect_snapshot_condition()</code> captures a specified condition.</p></li>
+<li><p><code>expect_snapshot_error()</code> capture an error message.</p></li>
+<li><p><code>expect_snapshot_condition()</code> captures a condition object.</p></li>
 </ul>
 
 <p>(These functions supersede <code>verify_output()</code>, <code>expect_known_output()</code>,
@@ -219,7 +221,9 @@ the intent of the code is something that can only be verified by a human
   cran = <span class='fl'>FALSE</span>
 )
 
-<span class='fu'>expect_snapshot_condition</span>(<span class='kw'>x</span>, class = <span class='st'>"error"</span>, cran = <span class='fl'>FALSE</span>)</pre>
+<span class='fu'>expect_snapshot_error</span>(<span class='kw'>x</span>, class = <span class='st'>"error"</span>, cran = <span class='fl'>FALSE</span>)
+
+<span class='fu'>expect_snapshot_condition</span>(<span class='kw'>x</span>, <span class='kw'>class</span>, cran = <span class='fl'>FALSE</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
