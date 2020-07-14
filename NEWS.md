@@ -1,5 +1,9 @@
 # testthat (development version)
 
+* New `vignette("test-fixtures")` describes test fixtures; i.e. how to 
+  temporarily and cleanly change global state in order to test parts of
+  your code that otherwise would be hard to run (#1042).
+
 * New `teardown_env()` for use with `withr::defer()`. This allows you to
   run code after all other tests have been run.
 
