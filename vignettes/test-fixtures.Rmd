@@ -72,9 +72,9 @@ Notice how `pi` prints differently before and after the call to `sloppy()`. Call
 
 ### `on.exit()`
 
-The first function you need to know about is base R's `on.exit()`. `on.exit()` calls the code to suppled to its first argument when the current function exits, regardless of whether it returns a value or errors. You can use `on.exit()` to clean up after yourself by ensuring that every mess-making function call is paired with an `on.exit()` call that cleans up.
+The first function you need to know about is base R's `on.exit()`. `on.exit()` calls the code to supplied to its first argument when the current function exits, regardless of whether it returns a value or errors. You can use `on.exit()` to clean up after yourself by ensuring that every mess-making function call is paired with an `on.exit()` call that cleans up.
 
-We can use this idea to turn `sloppy()` in `neat()`:
+We can use this idea to turn `sloppy()` into `neat()`:
 
 ```{r}
 neat <- function(x, sig_digits) {
@@ -310,7 +310,7 @@ If you move the `local_()` call outside of a `test_that()` block, it will affect
 
 -   But on the downside, if you a test fails and you want to recreate the failure in an interactive environment so you can debug, you need to remember to run all the setup code at the top of the file first.
 
-Generally, I think it's to copy and paste test fixtures across many tests --- sure, it adds some duplication to your code, but it makes debugging test failures so much easier.
+Generally, I think it's better to copy and paste test fixtures across many tests --- sure, it adds some duplication to your code, but it makes debugging test failures so much easier.
 
 ### Package
 
