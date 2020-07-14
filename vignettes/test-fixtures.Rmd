@@ -298,15 +298,33 @@ test_that("use_roxygen_md() adds DESCRIPTION fields", {
 })
 ```
 
-### Scope
+## Scope
 
-So far we have applied our test fixture to individual tests, but it's also possible to apply them to an entire file, just by calling the test fixture at the top of the file. This has both advantages and disadvantages:
+So far we have applied our test fixture to individual tests, but it's also possible to apply them to a file or package.
+
+### File
+
+If you move the `local_()` call outside of a `test_that()` block, it will affect all tests that come after it. This means that by calling the test fixture at the top of the file you can change the behaviour for all tests. This has both advantages and disadvantages:
 
 -   If you would otherwise have called the fixture in every test, you've saved yourself a bunch of work and duplicate code.
 
 -   But on the downside, if you a test fails and you want to recreate the failure in an interactive environment so you can debug, you need to remember to run all the setup code at the top of the file first.
 
 Generally, I think it's to copy and paste test fixtures across many tests --- sure, it adds some duplication to your code, but it makes debugging test failures so much easier.
+
+### Package
+
+To run code before any test is run, you can create a file called `test/testthat/setup.R`. If the code in this file needs clean up, you can use the special `teardown_env()`:
+
+```{r, eval = FALSE}
+# Run before any test
+write.csv("mtcars.csv", mtcars)
+
+# Run after all tests
+withr::local(unlink("mtcars.csv"), teardown_env())
+```
+
+Setup code is typically best used to create external resources that are needed by many tests. It's best kept to a minimum because you will have to manually run it before interactively debugging tests.
 
 ## Other challenges
 
