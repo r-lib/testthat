@@ -1,5 +1,8 @@
 # testthat (development version)
 
+* `setup()` and `teardown()` are superseded in favour of test fixtures,
+  as described in `vignette("test-fixtures")`.
+
 * `capture_output()` and `verify_output()` use a new `testthat_print()`
   generic. This allows you to control the printed representation of your
   object specifically for tests (i.e. if your usual print method shows

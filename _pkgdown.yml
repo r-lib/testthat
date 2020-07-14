@@ -22,7 +22,6 @@ reference:
   - starts_with("test_")
   - starts_with("auto_test")
   - describe
-  - teardown
   - use_catch
 
 - title: Reporters
