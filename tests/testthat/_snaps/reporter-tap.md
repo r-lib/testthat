@@ -1,6 +1,6 @@
 ## reporter works
 
-    1..19
+    1..18
     ok 1 Success
     # Context Expectations
     ok 2 Success
@@ -62,7 +62,4 @@
     # Context Output
     ok 17 Output:1
     ok 18 Output:1
-    # Context Throwable errors
-    not ok 19 Error:4
-      Error: Throwable
 

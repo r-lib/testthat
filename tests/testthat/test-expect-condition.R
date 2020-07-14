@@ -38,8 +38,9 @@ test_that("... passed on to grepl", {
 })
 
 test_that("message method is called when expecting error", {
-  local_methods(
-    conditionMessage.foobar = function(err) "dispatched!"
+  local_bindings(
+    conditionMessage.foobar = function(err) "dispatched!",
+    .env = globalenv()
   )
   fb <- function() abort("foobar", "foobar")
 
@@ -55,7 +56,14 @@ test_that("rlang backtrace reminders are not included in error message", {
 })
 
 test_that("can capture Throwable conditions from rJava", {
-  local_Throwable_methods()
+  local_bindings(
+    conditionMessage.Throwable = function(c, ...) unclass(c)$message,
+    conditionCall.Throwable = function(c, ...) unclass(c)$call,
+    `$.Throwable` = function(...) stop("forbidden"),
+    `$<-.Throwable` = function(...) stop("forbidden"),
+    .env = globalenv()
+  )
+
   throw <- function(msg) stop(error_cnd("Throwable", message = msg))
   expect_error(throw("foo"), "foo", class = "Throwable")
 })

@@ -77,15 +77,12 @@
         █
      1. └─f()
     
-    ── Error: Error:4 (tests.R:111:3) ──────────────────────────────────────────────
-    Error: Throwable
-    
     ── Skipped tests  ──────────────────────────────────────────────────────────────
     ● empty test (1)
     ● skip (2)
     
     ══ testthat results  ═══════════════════════════════════════════════════════════
-    [ OK: 5 | SKIPPED: 3 | WARNINGS: 3 | FAILED: 8 ]
+    [ OK: 5 | SKIPPED: 3 | WARNINGS: 3 | FAILED: 7 ]
     1. Failure: Failure:1 (tests.R:12:3)
     2. Failure: Failure:2a (tests.R:16:3)
     3. Failure: Failure:2b (tests.R:19:3)
@@ -95,6 +92,6 @@
     7. Error: Recursion:1 (tests.R:56:3)
     8. Skip: Skip:1 (tests.R:62:3)
     9. Skip: Skip:2 (tests.R:69:3)
-    ... and 4 more
+    ... and 3 more
     
 

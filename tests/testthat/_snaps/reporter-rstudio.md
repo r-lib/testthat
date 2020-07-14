@@ -13,5 +13,4 @@
     tests.R:78:3 [warning] Warning:1. abc
     tests.R:84:3 [warning] Warning:2. def
     tests.R:85:3 [warning] Warning:2. ghi
-    tests.R:111:3 [error] Error:4. Throwable
 

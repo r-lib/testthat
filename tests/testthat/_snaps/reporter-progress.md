@@ -257,12 +257,5 @@
     PASS x4 FAIL x7 WARN x3 SKIP x3
     PASS x5 FAIL x7 WARN x3 SKIP x3
     PASS x5 FAIL x7 WARN x3 SKIP x3
-    PASS x5 FAIL x8 WARN x3 SKIP x3
-    
-    ── tests.R:111:3: error: Error:4 ───────────────────────────────────────────────
-    Error: Throwable
-    
-    
-    PASS x5 FAIL x8 WARN x3 SKIP x3
-    PASS x5 FAIL x8 WARN x3 SKIP x3
+    PASS x5 FAIL x7 WARN x3 SKIP x3
 

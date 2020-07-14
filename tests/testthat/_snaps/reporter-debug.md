@@ -60,6 +60,4 @@
     1: tests.R#85: f()
     2: tests.R#82: warning("ghi")
     
-    1: tests.R#111: throw("Throwable")
-    
 

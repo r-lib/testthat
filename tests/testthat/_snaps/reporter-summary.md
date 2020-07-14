@@ -8,7 +8,6 @@
     Skips: SSS
     Warnings: WWW
     Output: ..
-    Throwable errors: 8
     End: 
     
     ══ Skipped ═════════════════════════════════════════════════════════════════════
@@ -74,9 +73,6 @@
      24. f(x - 1)
      25. f(x - 1)
      26. f(x - 1)
-    
-    ── 8. Error: Error:4 (tests.R:111:3) ───────────────────────────────────────────
-    Error: Throwable
     
     ══ DONE ════════════════════════════════════════════════════════════════════════
 
@@ -90,7 +86,6 @@
     Skips: SSS
     Warnings: WWW
     Output: 
-    Throwable errors: 8
     End: 
     
     ══ Skipped ═════════════════════════════════════════════════════════════════════
@@ -157,9 +152,6 @@
      25. f(x - 1)
      26. f(x - 1)
     
-    ── 8. Error: Error:4 (tests.R:111:3) ───────────────────────────────────────────
-    Error: Throwable
-    
     ══ DONE ════════════════════════════════════════════════════════════════════════
 
 ## can control maximum reports
@@ -172,7 +164,6 @@
     Skips: SSS
     Warnings: WWW
     Output: ..
-    Throwable errors: 8
     End: 
     
     ══ Skipped ═════════════════════════════════════════════════════════════════════
@@ -195,7 +186,7 @@
     
     ── 2. Failure: Failure:2a (tests.R:16:3) ───────────────────────────────────────
     Failure has been forced
-      ... and 6 more
+      ... and 5 more
     
     
     Maximum number of 2 failures reached, some test results may be missing.

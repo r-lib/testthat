@@ -26,7 +26,10 @@ test_that("`expect()` and `exp_signal()` signal expectations", {
 })
 
 test_that("conditionMessage() is called during conversion", {
-  local_methods(conditionMessage.foobar = function(...) "dispatched")
+  local_bindings(
+    conditionMessage.foobar = function(...) "dispatched",
+    .env = global_env()
+  )
 
   wrn <- warning_cnd("foobar", message = "wrong")
   expect_identical(as.expectation(wrn)$message, "dispatched")

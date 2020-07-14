@@ -113,16 +113,6 @@
     ##teamcity[testSuiteFinished name='Output']
     
     
-    ##teamcity[testSuiteStarted name='Throwable errors']
-    ##teamcity[testSuiteStarted name='Error:4']
-    ##teamcity[testStarted name='expectation 1']
-    ##teamcity[testFailed name='expectation 1' message='Error: Throwable' details='']
-    ##teamcity[testFinished name='expectation 1']
-    ##teamcity[testSuiteFinished name='Error:4']
-    
-    ##teamcity[testSuiteFinished name='Throwable errors']
-    
-    
     ##teamcity[testSuiteStarted name='End']
     ##teamcity[testSuiteFinished name='End']
     
