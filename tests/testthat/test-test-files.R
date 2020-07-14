@@ -2,11 +2,11 @@
 
 test_that("runs all tests and records output", {
   res <- test_dir(test_path("test_dir"), reporter = "silent")
-
   df <- as.data.frame(res)
   df$user <- df$system <- df$real <- df$result <- NULL
 
-  verify_output(test_path("test-test-directory.txt"), print(df), width = 200)
+  local_reproducible_output(width = 200)
+  expect_snapshot_output(print(df))
 })
 
 test_that("complains if no files", {
