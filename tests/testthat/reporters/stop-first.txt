@@ -1,7 +1,0 @@
-── fail.R:4:3: failure: two failures ───────────────────────────────────────────
-FALSE isn't true.
-
-── fail.R:5:3: failure: two failures ───────────────────────────────────────────
-TRUE isn't false.
-
-Test failed 

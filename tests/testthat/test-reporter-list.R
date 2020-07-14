@@ -5,8 +5,6 @@ test_that("ListReporter with test_file and NULL reporter", {
   expect_error(test_file(test_path(test_file_path), reporter = NULL), NA)
 })
 
-
-
 # regression: check that an exception is reported if it is raised in the test file outside
 # of a test (test_that() call).
 # N.B: the exception here happens between two tests: "before" and "after"

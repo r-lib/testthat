@@ -1,24 +1,8 @@
 test_that("produces useful output", {
-  local_reproducible_output(unicode = TRUE)
   set.seed(1014)
-
-  expect_known_output(
-    with_reporter(
-      StopReporter$new(stop_reporter = FALSE),
-      test_one_file(test_path("reporters/tests.R"))
-    ),
-    test_path("reporters/stop.txt")
-  )
+  expect_snapshot_reporter(StopReporter$new(stop_reporter = FALSE))
 })
 
-test_that("stop reporter stops at first failure", {
-  local_reproducible_output(unicode = TRUE)
-
-  expect_known_output(
-    with_reporter(
-      StopReporter$new(),
-      test_one_file(test_path("reporters/fail.R"))
-    ),
-    test_path("reporters/stop-first.txt")
-  )
+test_that("stop stops at first failure", {
+  expect_snapshot_reporter(StopReporter$new(), test_path("reporters/fail.R"))
 })

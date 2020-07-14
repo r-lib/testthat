@@ -59,3 +59,17 @@ show_failure <- function(expr) {
 
   invisible()
 }
+
+expect_snapshot_reporter <- function(reporter, path = test_path("reporters/tests.R")) {
+  # skip_if(getRversion() < "3.4", "Fails because of new `eval()` call structure")
+
+  local_reproducible_output(unicode = TRUE)
+  withr::local_options(list(rlang_trace_format_srcrefs = FALSE))
+
+  expect_snapshot_output(
+    with_reporter(
+      reporter,
+      test_one_file(path)
+    )
+  )
+}

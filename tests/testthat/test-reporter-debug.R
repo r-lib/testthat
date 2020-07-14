@@ -1,3 +1,14 @@
+test_that("produces consistent output", {
+  local_mock(
+    show_menu = function(choices, title = NULL) {
+      cat(paste0(format(seq_along(choices)), ": ", choices, sep = "\n"), "\n", sep = "")
+      0L
+    },
+    sink_number = function() 0L
+  )
+  expect_snapshot_reporter(DebugReporter$new())
+})
+
 get_vars_from_debug_reporter <- function(choice, fun, envir = parent.frame()) {
   frame <- get_frame_from_debug_reporter(choice, fun, envir)
   ls(frame)
@@ -163,3 +174,4 @@ test_that("browser() is called for the correct frame for skips", {
   expect_equal(get_vars_from_debug_reporter(3, fun_3), "g")
   expect_equal(get_vars_from_debug_reporter(4, fun_3), character())
 })
+
