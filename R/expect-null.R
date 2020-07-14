@@ -4,6 +4,7 @@
 #' check for it either with `expect_equal(x, NULL)` or `expect_type(x, "NULL")`.
 #'
 #' @inheritParams expect_that
+#' @keywords internal
 #' @export
 #' @family expectations
 #' @examples
