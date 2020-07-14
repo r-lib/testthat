@@ -45,6 +45,17 @@ test_that("complains if file doesn't exist", {
   expect_error(test_file("DOESNTEXIST"), "does not exist")
 })
 
+
+# setup-teardown ----------------------------------------------------------
+
+test_that("files created by setup still exist", {
+  # These files should be created/delete by package-wide setup/teardown
+  # We check that they exist here to make sure that they're not cleaned up
+  # too early
+  expect_true(file.exists("DELETE-ME"))
+  expect_true(file.exists("DELETE-ME-2"))
+})
+
 # helpers -----------------------------------------------------------------
 
 test_that("can filter test scripts", {

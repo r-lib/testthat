@@ -29,14 +29,24 @@ test will also be run.
 }
 \section{Special files}{
 
-There are four classes of \code{.R} files that have special behaviour:
+There are two types of \code{.R} file that have special behaviour:
 \itemize{
 \item Test files start with \code{test} and are executed in alphabetical order.
+\item Setup files start with \code{setup} and are executed before tests. If
+clean up is needed after all tests have been run, you can use
+\code{withr::defer(clean_up(), teardown_env())}. See \verb{vignette("text-fixtures)}
+for more details.
+}
+
+There are two other types of special file that we no longer recommend using:
+\itemize{
 \item Helper files start with \code{helper} and are executed before tests are
-run. They're also loaded by \code{devtools::load_all()}.
-\item Setup files start with \code{setup} and are executed before tests.
+run. They're also loaded by \code{devtools::load_all()}, so there's no
+real point to them and you should just put your helper code in \verb{R/}.
 \item Teardown files start with \code{teardown} and are executed after the tests
-are run.
+are run. Now we recommend interleave setup and cleanup code in \verb{setup-}
+files, making it easier to check that you automatically clean up every
+mess that you make.
 }
 
 All other files are ignored by testthat.

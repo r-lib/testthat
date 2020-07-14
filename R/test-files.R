@@ -6,14 +6,25 @@
 #' in the global environment.
 #'
 #' @section Special files:
-#' There are four classes of `.R` files that have special behaviour:
+#' There are two types of `.R` file that have special behaviour:
 #'
 #' * Test files start with `test` and are executed in alphabetical order.
+#'
+#' * Setup files start with `setup` and are executed before tests. If
+#'   clean up is needed after all tests have been run, you can use
+#'   `withr::defer(clean_up(), teardown_env())`. See `vignette("text-fixtures)`
+#'   for more details.
+#'
+#' There are two other types of special file that we no longer recommend using:
+#'
 #' * Helper files start with `helper` and are executed before tests are
-#'   run. They're also loaded by `devtools::load_all()`.
-#' * Setup files start with `setup` and are executed before tests.
+#'   run. They're also loaded by `devtools::load_all()`, so there's no
+#'   real point to them and you should just put your helper code in `R/`.
+#'
 #' * Teardown files start with `teardown` and are executed after the tests
-#'   are run.
+#'   are run. Now we recommend interleave setup and cleanup code in `setup-`
+#'   files, making it easier to check that you automatically clean up every
+#'   mess that you make.
 #'
 #' All other files are ignored by testthat.
 #'
@@ -114,12 +125,15 @@ test_files <- function(test_dir,
   env <- env %||% test_env(test_package)
   withr::local_options(list(topLevelEnvironment = env_parent(env)))
 
+
   # Load helpers, setup, and teardown (on exit)
+  local_teardown_env()
   if (load_helpers) {
     source_test_helpers(".", env)
   }
   source_test_setup(".", env)
-  withr::defer(source_test_teardown(".", env))
+  withr::defer(withr::deferred_run(teardown_env())) # new school
+  withr::defer(source_test_teardown(".", env))      # old school
 
   # Wrap reporter
   lister <- ListReporter$new()
@@ -157,6 +171,26 @@ test_one_file <- function(path, env = test_env()) {
 }
 
 # Helpers -----------------------------------------------------------------
+
+#' Run code after all test files
+#'
+#' This environment no purpose except as a handle for [withr::defer()]: use
+#' this environment when you want to run code until after all tests have been
+#' run. Typically, you'll use `withr::defer(cleanup(), teardown_env())`
+#' immediately after you've made a mess in a `setup-*.R` file.
+#'
+#' @export
+teardown_env <- function() {
+  testthat_env$teardown_env
+}
+
+local_teardown_env <- function(env = parent.frame()) {
+  local_bindings(
+    teardown_env = child_env(emptyenv()),
+    .env = testthat_env,
+    .frame = env
+  )
+}
 
 #' Find test files
 #'

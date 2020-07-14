@@ -1,5 +1,8 @@
 # testthat (development version)
 
+* New `teardown_env()` for use with `withr::defer()`. This allows you to
+  run code after all other tests have been run.
+
 * `setup()` and `teardown()` are superseded in favour of test fixtures,
   as described in `vignette("test-fixtures")`.
 
