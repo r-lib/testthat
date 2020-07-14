@@ -1,5 +1,5 @@
-teardown_env <- new.env(parent = emptyenv())
-teardown_env$queue <- list()
+file_teardown_env <- new.env(parent = emptyenv())
+file_teardown_env$queue <- list()
 
 #' Run code before/after tests
 #'
@@ -43,7 +43,7 @@ teardown <- function(code, env = parent.frame()) {
   )
 
   fun <- new_function(list(), enexpr(code), env = env)
-  teardown_env$queue <- append(teardown_env$queue, fun)
+  file_teardown_env$queue <- append(file_teardown_env$queue, fun)
 
   invisible()
 }
@@ -60,17 +60,17 @@ setup <- function(code, env = parent.frame()) {
 }
 
 teardown_reset <- function() {
-  teardown_env$queue <- list()
+  file_teardown_env$queue <- list()
 }
 
 teardown_run <- function(path = ".") {
-  if (length(teardown_env$queue) == 0)
+  if (length(file_teardown_env$queue) == 0)
     return()
 
   old_dir <- setwd(path)
   on.exit(setwd(old_dir), add = TRUE)
 
-  lapply(teardown_env$queue, function(f) try(f()))
+  lapply(file_teardown_env$queue, function(f) try(f()))
   teardown_reset()
   gc()
 }
