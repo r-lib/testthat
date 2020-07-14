@@ -1,47 +1,28 @@
 ## reporter basics work
 
+    ##teamcity[testSuiteStarted name='Successes']
     ##teamcity[testSuiteStarted name='Success']
     ##teamcity[testStarted name='expectation 1']
     ##teamcity[testFinished name='expectation 1']
     ##teamcity[testSuiteFinished name='Success']
     
-    ##teamcity[testSuiteStarted name='Expectations']
-    ##teamcity[testSuiteStarted name='Success']
-    ##teamcity[testStarted name='expectation 1']
-    ##teamcity[testFinished name='expectation 1']
-    ##teamcity[testSuiteFinished name='Success']
+    ##teamcity[testSuiteFinished name='Successes']
     
+    
+    ##teamcity[testSuiteStarted name='Failures']
     ##teamcity[testSuiteStarted name='Failure:1']
     ##teamcity[testStarted name='expectation 1']
-    ##teamcity[testFailed name='expectation 1' message='Failure has been forced' details='']
+    ##teamcity[testFailed name='expectation 1' message='FALSE isn|'t true.' details='']
     ##teamcity[testFinished name='expectation 1']
     ##teamcity[testSuiteFinished name='Failure:1']
     
     ##teamcity[testSuiteStarted name='Failure:2a']
     ##teamcity[testStarted name='expectation 1']
-    ##teamcity[testFailed name='expectation 1' message='Failure has been forced' details='']
+    ##teamcity[testFailed name='expectation 1' message='FALSE isn|'t true.' details='']
     ##teamcity[testFinished name='expectation 1']
     ##teamcity[testSuiteFinished name='Failure:2a']
     
-    ##teamcity[testSuiteStarted name='Failure:2b']
-    ##teamcity[testStarted name='expectation 1']
-    ##teamcity[testFailed name='expectation 1' message='FALSE isn|'t true.' details='']
-    ##teamcity[testFinished name='expectation 1']
-    ##teamcity[testSuiteFinished name='Failure:2b']
-    
-    ##teamcity[testSuiteStarted name='Failure:loop']
-    ##teamcity[testStarted name='expectation 1']
-    ##teamcity[testFailed name='expectation 1' message='`i` not equal to 2.' details='1/1 mismatches|n|[1|] 1 - 2 == -1']
-    ##teamcity[testFinished name='expectation 1']
-    ##teamcity[testStarted name='expectation 2']
-    ##teamcity[testFinished name='expectation 2']
-    ##teamcity[testSuiteFinished name='Failure:loop']
-    
-    ##teamcity[testSuiteFinished name='Expectations']
-    
-    
-    ##teamcity[testSuiteStarted name='Expectations2']
-    ##teamcity[testSuiteFinished name='Expectations2']
+    ##teamcity[testSuiteFinished name='Failures']
     
     
     ##teamcity[testSuiteStarted name='Errors']
@@ -51,70 +32,34 @@
     ##teamcity[testFinished name='expectation 1']
     ##teamcity[testSuiteFinished name='Error:1']
     
-    ##teamcity[testSuiteStarted name='Error:3']
+    ##teamcity[testSuiteStarted name='errors get tracebacks']
     ##teamcity[testStarted name='expectation 1']
     ##teamcity[testFailed name='expectation 1' message='Error: !' details='Backtrace:|n 1. f()|n 2. g()|n 3. h()']
     ##teamcity[testFinished name='expectation 1']
-    ##teamcity[testSuiteFinished name='Error:3']
+    ##teamcity[testSuiteFinished name='errors get tracebacks']
     
     ##teamcity[testSuiteFinished name='Errors']
     
     
-    ##teamcity[testSuiteStarted name='Recursion']
-    ##teamcity[testSuiteStarted name='Recursion:1']
-    ##teamcity[testStarted name='expectation 1']
-    ##teamcity[testFailed name='expectation 1' message='Error: This is deep' details='Backtrace:|n  1. f(25)|n  2. f(x - 1)|n  3. f(x - 1)|n  4. f(x - 1)|n  5. f(x - 1)|n  6. f(x - 1)|n  7. f(x - 1)|n  8. f(x - 1)|n  9. f(x - 1)|n 10. f(x - 1)|n     ...|n 17. f(x - 1)|n 18. f(x - 1)|n 19. f(x - 1)|n 20. f(x - 1)|n 21. f(x - 1)|n 22. f(x - 1)|n 23. f(x - 1)|n 24. f(x - 1)|n 25. f(x - 1)|n 26. f(x - 1)']
-    ##teamcity[testFinished name='expectation 1']
-    ##teamcity[testSuiteFinished name='Recursion:1']
-    
-    ##teamcity[testSuiteFinished name='Recursion']
-    
-    
     ##teamcity[testSuiteStarted name='Skips']
-    ##teamcity[testSuiteStarted name='Skip:1']
+    ##teamcity[testSuiteStarted name='explicit skips are reported']
     ##teamcity[testIgnored name='expectation 1' message='Reason: skip']
-    ##teamcity[testSuiteFinished name='Skip:1']
+    ##teamcity[testSuiteFinished name='explicit skips are reported']
     
-    ##teamcity[testSuiteStarted name='Skip:2']
-    ##teamcity[testIgnored name='expectation 1' message='Reason: skip']
-    ##teamcity[testSuiteFinished name='Skip:2']
-    
-    ##teamcity[testSuiteStarted name='Skip:3']
+    ##teamcity[testSuiteStarted name='empty tests are implicitly skipped']
     ##teamcity[testIgnored name='expectation 1' message='Reason: empty test']
-    ##teamcity[testSuiteFinished name='Skip:3']
+    ##teamcity[testSuiteFinished name='empty tests are implicitly skipped']
     
     ##teamcity[testSuiteFinished name='Skips']
     
     
     ##teamcity[testSuiteStarted name='Warnings']
-    ##teamcity[testSuiteStarted name='Warning:1']
+    ##teamcity[testSuiteStarted name='warnings get backtraces']
     ##teamcity[testStarted name='expectation 1']
     ##teamcity[testFinished name='expectation 1']
-    ##teamcity[testSuiteFinished name='Warning:1']
-    
-    ##teamcity[testSuiteStarted name='Warning:2']
-    ##teamcity[testStarted name='expectation 1']
-    ##teamcity[testFinished name='expectation 1']
-    ##teamcity[testStarted name='expectation 2']
-    ##teamcity[testFinished name='expectation 2']
-    ##teamcity[testSuiteFinished name='Warning:2']
+    ##teamcity[testSuiteFinished name='warnings get backtraces']
     
     ##teamcity[testSuiteFinished name='Warnings']
-    
-    
-    ##teamcity[testSuiteStarted name='Output']
-    ##teamcity[testSuiteStarted name='Output:1']
-    ##teamcity[testStarted name='expectation 1']
-    ##teamcity[testFinished name='expectation 1']
-    ##teamcity[testStarted name='expectation 2']
-    ##teamcity[testFinished name='expectation 2']
-    ##teamcity[testSuiteFinished name='Output:1']
-    
-    ##teamcity[testSuiteFinished name='Output']
-    
-    
-    ##teamcity[testSuiteStarted name='End']
-    ##teamcity[testSuiteFinished name='End']
     
     
 

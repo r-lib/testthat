@@ -51,3 +51,10 @@ test_that("also get backtraces for warnings", {
   expect_true(TRUE)
 })
 
+test_that("deep stacks are trimmed", {
+  f <- function(x) {
+    if (x > 0) f(x - 1) else stop("This is deep")
+  }
+  f(25)
+})
+

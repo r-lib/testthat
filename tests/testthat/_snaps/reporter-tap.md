@@ -1,65 +1,27 @@
 ## reporter works
 
-    1..18
+    1..8
+    # Context Successes
     ok 1 Success
-    # Context Expectations
-    ok 2 Success
-    not ok 3 Failure:1
-      Failure has been forced
-    not ok 4 Failure:2a
-      Failure has been forced
-    not ok 5 Failure:2b
+    # Context Failures
+    not ok 2 Failure:1
       FALSE isn't true.
-    not ok 6 Failure:loop
-      `i` not equal to 2.
-      1/1 mismatches
-      [1] 1 - 2 == -1
-    ok 7 Failure:loop
+    not ok 3 Failure:2a
+      FALSE isn't true.
     # Context Errors
-    not ok 8 Error:1
+    not ok 4 Error:1
       Error: stop
-    not ok 9 Error:3
+    not ok 5 errors get tracebacks
       Error: !
       Backtrace:
        1. f()
        2. g()
        3. h()
-    # Context Recursion
-    not ok 10 Recursion:1
-      Error: This is deep
-      Backtrace:
-        1. f(25)
-        2. f(x - 1)
-        3. f(x - 1)
-        4. f(x - 1)
-        5. f(x - 1)
-        6. f(x - 1)
-        7. f(x - 1)
-        8. f(x - 1)
-        9. f(x - 1)
-       10. f(x - 1)
-           ...
-       17. f(x - 1)
-       18. f(x - 1)
-       19. f(x - 1)
-       20. f(x - 1)
-       21. f(x - 1)
-       22. f(x - 1)
-       23. f(x - 1)
-       24. f(x - 1)
-       25. f(x - 1)
-       26. f(x - 1)
     # Context Skips
-    ok 11 # SKIP Reason: skip
-    ok 12 # SKIP Reason: skip
-    ok 13 # SKIP Reason: empty test
+    ok 6 # SKIP Reason: skip
+    ok 7 # SKIP Reason: empty test
     # Context Warnings
-    ok 14 # WARNING abc
-    ok 15 # WARNING def
-    ok 16 # WARNING ghi
+    ok 8 # WARNING def
     Backtrace:
      1. f()
-    # Context Output
-    ok 17 Output:1
-    ok 18 Output:1
 

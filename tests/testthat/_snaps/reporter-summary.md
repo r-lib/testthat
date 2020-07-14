@@ -1,192 +1,99 @@
 ## can control appearance of dots
 
-    reporters/tests: .
-    Expectations: .1234.
-    Expectations2: 
-    Errors: 56
-    Recursion: 7
-    Skips: SSS
-    Warnings: WWW
-    Output: ..
-    End: 
+    reporters/tests: 
+    Successes: .
+    Failures: 12
+    Errors: 34
+    Skips: SS
+    Warnings: W
     
     ══ Skipped ═════════════════════════════════════════════════════════════════════
-    1. Skip:1 (tests.R:62:3) - Reason: skip
+    1. explicit skips are reported (tests.R:37:3) - Reason: skip
     
-    2. Skip:2 (tests.R:69:3) - Reason: skip
-    
-    3. Skip:3 (tests.R:72:1) - Reason: empty test
+    2. empty tests are implicitly skipped (tests.R:40:1) - Reason: empty test
     
     ══ Warnings ════════════════════════════════════════════════════════════════════
-    1. Warning:1 (tests.R:78:3) - abc
-    
-    2. Warning:2 (tests.R:84:3) - def
-    
-    3. Warning:2 (tests.R:85:3) - ghi
+    1. warnings get backtraces (tests.R:49:3) - def
     
     ══ Failed ══════════════════════════════════════════════════════════════════════
     ── 1. Failure: Failure:1 (tests.R:12:3) ────────────────────────────────────────
-    Failure has been forced
-    
-    ── 2. Failure: Failure:2a (tests.R:16:3) ───────────────────────────────────────
-    Failure has been forced
-    
-    ── 3. Failure: Failure:2b (tests.R:19:3) ───────────────────────────────────────
     FALSE isn't true.
     
-    ── 4. Failure: Failure:loop (tests.R:24:5) ─────────────────────────────────────
-    `i` not equal to 2.
-    1/1 mismatches
-    [1] 1 - 2 == -1
+    ── 2. Failure: Failure:2a (tests.R:17:3) ───────────────────────────────────────
+    FALSE isn't true.
     
-    ── 5. Error: Error:1 (tests.R:33:3) ────────────────────────────────────────────
+    ── 3. Error: Error:1 (tests.R:23:3) ────────────────────────────────────────────
     Error: stop
     
-    ── 6. Error: Error:3 (tests.R:47:3) ────────────────────────────────────────────
+    ── 4. Error: errors get tracebacks (tests.R:31:3) ──────────────────────────────
     Error: !
     Backtrace:
      1. f()
      2. g()
      3. h()
-    
-    ── 7. Error: Recursion:1 (tests.R:56:3) ────────────────────────────────────────
-    Error: This is deep
-    Backtrace:
-      1. f(25)
-      2. f(x - 1)
-      3. f(x - 1)
-      4. f(x - 1)
-      5. f(x - 1)
-      6. f(x - 1)
-      7. f(x - 1)
-      8. f(x - 1)
-      9. f(x - 1)
-     10. f(x - 1)
-         ...
-     17. f(x - 1)
-     18. f(x - 1)
-     19. f(x - 1)
-     20. f(x - 1)
-     21. f(x - 1)
-     22. f(x - 1)
-     23. f(x - 1)
-     24. f(x - 1)
-     25. f(x - 1)
-     26. f(x - 1)
     
     ══ DONE ════════════════════════════════════════════════════════════════════════
 
 ---
 
     reporters/tests: 
-    Expectations: 1234
-    Expectations2: 
-    Errors: 56
-    Recursion: 7
-    Skips: SSS
-    Warnings: WWW
-    Output: 
-    End: 
+    Successes: 
+    Failures: 12
+    Errors: 34
+    Skips: SS
+    Warnings: W
     
     ══ Skipped ═════════════════════════════════════════════════════════════════════
-    1. Skip:1 (tests.R:62:3) - Reason: skip
+    1. explicit skips are reported (tests.R:37:3) - Reason: skip
     
-    2. Skip:2 (tests.R:69:3) - Reason: skip
-    
-    3. Skip:3 (tests.R:72:1) - Reason: empty test
+    2. empty tests are implicitly skipped (tests.R:40:1) - Reason: empty test
     
     ══ Warnings ════════════════════════════════════════════════════════════════════
-    1. Warning:1 (tests.R:78:3) - abc
-    
-    2. Warning:2 (tests.R:84:3) - def
-    
-    3. Warning:2 (tests.R:85:3) - ghi
+    1. warnings get backtraces (tests.R:49:3) - def
     
     ══ Failed ══════════════════════════════════════════════════════════════════════
     ── 1. Failure: Failure:1 (tests.R:12:3) ────────────────────────────────────────
-    Failure has been forced
-    
-    ── 2. Failure: Failure:2a (tests.R:16:3) ───────────────────────────────────────
-    Failure has been forced
-    
-    ── 3. Failure: Failure:2b (tests.R:19:3) ───────────────────────────────────────
     FALSE isn't true.
     
-    ── 4. Failure: Failure:loop (tests.R:24:5) ─────────────────────────────────────
-    `i` not equal to 2.
-    1/1 mismatches
-    [1] 1 - 2 == -1
+    ── 2. Failure: Failure:2a (tests.R:17:3) ───────────────────────────────────────
+    FALSE isn't true.
     
-    ── 5. Error: Error:1 (tests.R:33:3) ────────────────────────────────────────────
+    ── 3. Error: Error:1 (tests.R:23:3) ────────────────────────────────────────────
     Error: stop
     
-    ── 6. Error: Error:3 (tests.R:47:3) ────────────────────────────────────────────
+    ── 4. Error: errors get tracebacks (tests.R:31:3) ──────────────────────────────
     Error: !
     Backtrace:
      1. f()
      2. g()
      3. h()
     
-    ── 7. Error: Recursion:1 (tests.R:56:3) ────────────────────────────────────────
-    Error: This is deep
-    Backtrace:
-      1. f(25)
-      2. f(x - 1)
-      3. f(x - 1)
-      4. f(x - 1)
-      5. f(x - 1)
-      6. f(x - 1)
-      7. f(x - 1)
-      8. f(x - 1)
-      9. f(x - 1)
-     10. f(x - 1)
-         ...
-     17. f(x - 1)
-     18. f(x - 1)
-     19. f(x - 1)
-     20. f(x - 1)
-     21. f(x - 1)
-     22. f(x - 1)
-     23. f(x - 1)
-     24. f(x - 1)
-     25. f(x - 1)
-     26. f(x - 1)
-    
     ══ DONE ════════════════════════════════════════════════════════════════════════
 
 ## can control maximum reports
 
-    reporters/tests: .
-    Expectations: .1234.
-    Expectations2: 
-    Errors: 56
-    Recursion: 7
-    Skips: SSS
-    Warnings: WWW
-    Output: ..
-    End: 
+    reporters/tests: 
+    Successes: .
+    Failures: 12
+    Errors: 34
+    Skips: SS
+    Warnings: W
     
     ══ Skipped ═════════════════════════════════════════════════════════════════════
-    1. Skip:1 (tests.R:62:3) - Reason: skip
+    1. explicit skips are reported (tests.R:37:3) - Reason: skip
     
-    2. Skip:2 (tests.R:69:3) - Reason: skip
-    
-    3. Skip:3 (tests.R:72:1) - Reason: empty test
+    2. empty tests are implicitly skipped (tests.R:40:1) - Reason: empty test
     
     ══ Warnings ════════════════════════════════════════════════════════════════════
-    1. Warning:1 (tests.R:78:3) - abc
-    
-    2. Warning:2 (tests.R:84:3) - def
-    
-    3. Warning:2 (tests.R:85:3) - ghi
+    1. warnings get backtraces (tests.R:49:3) - def
     
     ══ Failed ══════════════════════════════════════════════════════════════════════
     ── 1. Failure: Failure:1 (tests.R:12:3) ────────────────────────────────────────
-    Failure has been forced
+    FALSE isn't true.
     
-    ── 2. Failure: Failure:2a (tests.R:16:3) ───────────────────────────────────────
-    Failure has been forced
-      ... and 5 more
+    ── 2. Failure: Failure:2a (tests.R:17:3) ───────────────────────────────────────
+    FALSE isn't true.
+      ... and 2 more
     
     
     Maximum number of 2 failures reached, some test results may be missing.
