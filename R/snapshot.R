@@ -43,7 +43,7 @@
 #' @export
 expect_snapshot_output <- function(x, cran = FALSE) {
   lab <- quo_label(enquo(x))
-  val <- capture_output_lines(x, print = TRUE)
+  val <- capture_output_lines(x, print = TRUE, width = NULL)
 
   expect_snapshot(lab, val, cran = cran,
     save = function(x) paste0(x, collapse = "\n"),

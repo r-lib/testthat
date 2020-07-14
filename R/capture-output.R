@@ -45,7 +45,9 @@ eval_with_output <- function(code, print = FALSE, width = 80) {
   temp <- file()
   on.exit(close(temp), add = TRUE)
 
-  local_width(width)
+  if (!is.null(width)) {
+    local_width(width)
+  }
   result <- withr::with_output_sink(temp, withVisible(code))
   if (result$visible && print) {
     withr::with_output_sink(temp, testthat_print(result$value))
