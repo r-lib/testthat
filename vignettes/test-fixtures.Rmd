@@ -261,7 +261,7 @@ One place that we use test fixtures extensively is in the usethis package ([uset
 
 To solve this problem we create a test fixture, which we place in `R/test-helpers.R` so that's it's available for both testing and interactive experimentation:
 
-```{r}
+```{r, eval = FALSE}
 create_local_package <- function(dir = file_temp(), env = parent.frame()) {
   old_project <- proj_get_()
   
