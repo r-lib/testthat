@@ -87,6 +87,14 @@ interactively. \verb{R CMD check} clones the package source so any changes to
 the reference files will occur in a temporary directory, and will not be
 synchronised back to the source package.
 }
+\section{3rd edition}{
+
+\ifelse{html}{\figure{lifecycle-deprecated.svg}{options: alt='Deprecated lifecycle'}}{\strong{Deprecated}}
+
+\code{expect_known_output()} and friends are deprecated in the 3rd edition;
+please use \code{\link[=expect_snapshot_output]{expect_snapshot_output()}} and friends instead.
+}
+
 \examples{
 tmp <- tempfile()
 

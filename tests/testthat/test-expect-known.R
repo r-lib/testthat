@@ -1,3 +1,5 @@
+local_edition(2)
+
 # expect_known_output -----------------------------------------------------
 
 test_that("uses specified width", {
