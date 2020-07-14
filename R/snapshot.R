@@ -12,7 +12,8 @@
 #' * `expect_snapshot_output()` captures the output printed to the console.
 #'   (by [testthat_print()]).
 #' * `expect_snapshot_value()` captures the return value.
-#' * `expect_snapshot_condition()` captures a specified condition.
+#' * `expect_snapshot_error()` capture an error message.
+#' * `expect_snapshot_condition()` captures a condition object.
 #'
 #' (These functions supersede [verify_output()], [expect_known_output()],
 #' [expect_known_value()], and [expect_known_hash()].)
@@ -110,7 +111,19 @@ reparse <- function(x) {
 #'   when executing `x`.
 #' @export
 #' @rdname expect_snapshot_output
-expect_snapshot_condition <- function(x, class = "error", cran = FALSE) {
+expect_snapshot_error <- function(x, class = "error", cran = FALSE) {
+  lab <- quo_label(enquo(x))
+  val <- capture_matching_condition(x, cnd_matcher(class))
+  if (is.null(val)) {
+    fail(sprintf("%s did not throw error of class '%s'", lab, class))
+  }
+
+  expect_snapshot(lab, conditionMessage(val), cran = cran)
+}
+
+#' @export
+#' @rdname expect_snapshot_output
+expect_snapshot_condition <- function(x, class, cran = FALSE) {
   lab <- quo_label(enquo(x))
   val <- capture_matching_condition(x, cnd_matcher(class))
   if (is.null(val)) {

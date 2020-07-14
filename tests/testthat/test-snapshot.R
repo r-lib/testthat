@@ -20,6 +20,6 @@ test_that("can snapshot values", {
 })
 
 test_that("can snapshot conditions", {
-  expect_snapshot_condition(stop("!"))
-  expect_snapshot_condition(abort("!", x = 1:5))
+  expect_snapshot_condition(stop("!"), "error")
+  expect_snapshot_condition(abort("!", x = 1:5), "error")
 })

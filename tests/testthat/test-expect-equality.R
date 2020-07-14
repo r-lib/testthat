@@ -49,16 +49,13 @@ test_that("can control numeric tolerance", {
 })
 
 test_that("provide useful feedback on failure", {
-  local_edition(3) # exit handlers not run inside verify_output()
-  verify_output(test_path("test-expect-equality.txt"), {
-    local_edition(3)
-    expect_identical(1, "a")
-    expect_equal(1, "a")
+  local_edition(3)
+  expect_snapshot_error(expect_identical(1, "a"))
+  expect_snapshot_error(expect_equal(1, "a"))
 
-    local_edition(2)
-    expect_identical(1, "a")
-    expect_equal(1, "a")
-  })
+  local_edition(2)
+  expect_snapshot_error(expect_identical(1, "a"))
+  expect_snapshot_error(expect_equal(1, "a"))
 })
 
 test_that("default labels use unquoting", {
