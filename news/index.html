@@ -115,6 +115,9 @@
       <a href="../articles/custom-expectation.html">Custom expectations</a>
     </li>
     <li>
+      <a href="../articles/test-fixtures.html">Test fixtures</a>
+    </li>
+    <li>
       <a href="../articles/third-edition.html">testthat 3e</a>
     </li>
   </ul>
@@ -181,6 +184,9 @@
 <a href="#testthat-development-version" class="anchor"></a>testthat (development version)<small> Unreleased </small>
 </h1>
 <ul>
+<li><p>New <code>vignette("test-fixtures")</code> describes test fixtures; i.e. how to temporarily and cleanly change global state in order to test parts of your code that otherwise would be hard to run (<a href='https://github.com/r-lib/testthat/issues/1042'>#1042</a>).</p></li>
+<li><p>New <code><a href="https://testthat.r-lib.org/reference/teardown_env.html">teardown_env()</a></code> for use with <code><a href="https://rdrr.io/pkg/withr/man/defer.html">withr::defer()</a></code>. This allows you to run code after all other tests have been run.</p></li>
+<li><p><code><a href="https://testthat.r-lib.org/reference/teardown.html">setup()</a></code> and <code><a href="https://testthat.r-lib.org/reference/teardown.html">teardown()</a></code> are superseded in favour of test fixtures, as described in <code>vignette("test-fixtures")</code>.</p></li>
 <li><p><code><a href="https://testthat.r-lib.org/reference/capture_output.html">capture_output()</a></code> and <code><a href="https://testthat.r-lib.org/reference/verify_output.html">verify_output()</a></code> use a new <code><a href="https://testthat.r-lib.org/reference/capture_output.html">testthat_print()</a></code> generic. This allows you to control the printed representation of your object specifically for tests (i.e. if your usual print method shows data that varies in a way that you don’t care about for tests) (<a href='https://github.com/r-lib/testthat/issues/1056'>#1056</a>).</p></li>
 <li><p><code>SummaryReporter</code> now records file start, not just context start. This makes it more compatible with modern style which does not use <code><a href="https://testthat.r-lib.org/reference/context.html">context()</a></code> (<a href='https://github.com/r-lib/testthat/issues/1089'>#1089</a>).</p></li>
 <li><p><code>StopReporter</code> adds random praise emoji when a single test passes (<a href='https://github.com/r-lib/testthat/issues/1094'>#1094</a>). It has more refined display of failures, now using the same style as <code>CompactProgressReporter</code>.</p></li>
@@ -212,6 +218,7 @@
 <li><p><code><a href="https://testthat.r-lib.org/reference/expect_that.html">expect_that()</a></code> is deprecated.</p></li>
 <li><p><code><a href="https://testthat.r-lib.org/reference/expect_is.html">expect_is()</a></code> is deprecated.</p></li>
 <li><p>Messages are no longer automatically silenced. Either use <code><a href="https://rdrr.io/r/base/message.html">suppressMessages()</a></code> to hide unimportant messages, or <code>expect_messsage()</code> to catch important messages (<a href='https://github.com/r-lib/testthat/issues/1095'>#1095</a>).</p></li>
+<li><p><code><a href="https://testthat.r-lib.org/reference/teardown.html">setup()</a></code> and <code><a href="https://testthat.r-lib.org/reference/teardown.html">teardown()</a></code> are deprecated in favour of test fixtures. See <code>vignette("test-fixtures")</code> for more details.</p></li>
 </ul>
 </li>
 <li><p><code><a href="https://testthat.r-lib.org/reference/test_that.html">test_that()</a></code> now sets a number of options and env vars to make output as reproducible as possible (<a href='https://github.com/r-lib/testthat/issues/1044'>#1044</a>). Many of these options were previously set in various places (in <code><a href="https://devtools.r-lib.org//reference/test.html">devtools::test()</a></code>, <code><a href="https://testthat.r-lib.org/reference/test_dir.html">test_dir()</a></code>, <code><a href="https://testthat.r-lib.org/reference/test_file.html">test_file()</a></code>, or <code><a href="https://testthat.r-lib.org/reference/verify_output.html">verify_output()</a></code>) but they have now been centralised. You can use in your own code, or when debugging tests interactively with <code><a href="https://testthat.r-lib.org/reference/local_test_context.html">local_test_context()</a></code>.</p></li>

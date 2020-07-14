@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Test package examples — test_examples • testthat</title>
+<title>Run code after all test files — teardown_env • testthat</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,11 +46,11 @@
 
 
 
-<meta property="og:title" content="Test package examples — test_examples" />
-<meta property="og:description" content="These helper functions make it easier to test the examples in a package.
-Each example counts as one test, and it succeeds if the code runs without
-an error. Generally, this is redundant with R CMD check, and is not
-recommended in routine practice." />
+<meta property="og:title" content="Run code after all test files — teardown_env" />
+<meta property="og:description" content="This environment no purpose except as a handle for withr::defer(): use
+this environment when you want to run code until after all tests have been
+run. Typically, you'll use withr::defer(cleanup(), teardown_env())
+immediately after you've made a mess in a setup-*.R file." />
 <meta property="og:image" content="https://testthat.r-lib.org/logo.png" />
 
 
@@ -179,42 +179,20 @@ recommended in routine practice." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Test package examples</h1>
-    <small class="dont-index">Source: <a href='https://github.com/r-lib/testthat/blob/master/R/test-example.R'><code>R/test-example.R</code></a></small>
-    <div class="hidden name"><code>test_examples.Rd</code></div>
+    <h1>Run code after all test files</h1>
+    <small class="dont-index">Source: <a href='https://github.com/r-lib/testthat/blob/master/R/test-files.R'><code>R/test-files.R</code></a></small>
+    <div class="hidden name"><code>teardown_env.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>These helper functions make it easier to test the examples in a package.
-Each example counts as one test, and it succeeds if the code runs without
-an error. Generally, this is redundant with R CMD check, and is not
-recommended in routine practice.</p>
+    <p>This environment no purpose except as a handle for <code><a href='https://rdrr.io/pkg/withr/man/defer.html'>withr::defer()</a></code>: use
+this environment when you want to run code until after all tests have been
+run. Typically, you'll use <code><a href='https://rdrr.io/pkg/withr/man/defer.html'>withr::defer(cleanup(), teardown_env())</a></code>
+immediately after you've made a mess in a <code>setup-*.R</code> file.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>test_examples</span>(path = <span class='st'>"../.."</span>)
+    <pre class="usage"><span class='fu'>teardown_env</span>()</pre>
 
-<span class='fu'>test_rd</span>(<span class='kw'>rd</span>, title = <span class='fu'><a href='https://rdrr.io/r/base/attr.html'>attr</a></span>(<span class='kw'>rd</span>, <span class='st'>"Rdfile"</span>))
-
-<span class='fu'>test_example</span>(<span class='kw'>path</span>, title = <span class='kw'>path</span>)</pre>
-
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>path</th>
-      <td><p>For <code>test_examples()</code>, path to directory containing Rd files.
-For <code>test_example()</code>, path to a single Rd file. Remember the working
-directory for tests is <code>tests/testthat</code>.</p></td>
-    </tr>
-    <tr>
-      <th>rd</th>
-      <td><p>A parsed Rd object, obtained from <code><a href='https://rdrr.io/r/tools/Rdutils.html'>tools::Rd_db()</a></code> or otherwise.</p></td>
-    </tr>
-    <tr>
-      <th>title</th>
-      <td><p>Test title to use</p></td>
-    </tr>
-    </table>
 
 
   </div>
