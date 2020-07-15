@@ -78,6 +78,7 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
       # check we've seen all files before cleaning up
       tests <- dir()
       if (!all(tests %in% self$files_seen)) {
+        rstudio_tickle()
         return()
       }
 
@@ -88,6 +89,7 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
       if (length(dir("_snaps") == 0)) {
         unlink("_snaps")
       }
+      rstudio_tickle()
     },
 
     is_active = function() {

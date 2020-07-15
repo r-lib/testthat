@@ -73,3 +73,16 @@ split_by_line <- function(x) {
   x[trailing_nl] <- lapply(x[trailing_nl], c, "")
   x
 }
+
+rstudio_tickle <- function() {
+  if (!is_installed("rstudioapi")) {
+    return()
+  }
+
+  if (!rstudioapi::hasFun("executeCommand")) {
+    return()
+  }
+
+  rstudioapi::executeCommand("vcsRefresh")
+  rstudioapi::executeCommand("refreshFiles")
+}

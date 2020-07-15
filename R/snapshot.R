@@ -180,5 +180,7 @@ snapshot_accept <- function(path = "tests/testthat") {
   unlink(cur)
   file.rename(changed, cur)
 
+  rstudio_tickle()
+
   invisible()
 }

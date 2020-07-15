@@ -43,6 +43,7 @@ Suggests:
     curl (>= 0.9.5),
     knitr,
     rmarkdown,
+    rstudioapi,
     usethis,
     vctrs (>= 0.1.0),
     xml2
