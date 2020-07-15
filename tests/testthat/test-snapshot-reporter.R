@@ -56,3 +56,23 @@ test_that("errors if can't roundtrip", {
 
   expect_error(expect_snapshot_value(NULL), "not symmetric")
 })
+
+test_that("errors in test doesn't change snapshot", {
+  withr::local_dir(tempdir())
+  snapper <- local_snapshotter(cleanup = TRUE)
+
+  # First run
+  snapper$start_file("snapshot-5", "test")
+  expect_warning(expect_snapshot_output("x"), "Adding new")
+  snapper$end_file()
+
+  # Second run has error
+  snapper$start_file("snapshot-5", "test")
+  snapper$add_result(NULL, NULL, as.expectation(simpleError("error")))
+  snapper$end_file()
+
+  # Third run
+  snapper$start_file("snapshot-5", "test")
+  expect_warning(expect_snapshot_output("x"), NA)
+  snapper$end_file()
+})

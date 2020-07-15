@@ -64,6 +64,15 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
       }
     },
 
+    add_result = function(context, test, result) {
+      if (!expectation_error(result)) {
+        return()
+      }
+
+      # If expectation errors, we reset all snapshots
+      self$cur_snaps[[self$test]] <- self$old_snaps[[self$test]]
+    },
+
     end_file = function() {
       dir.create("_snaps", showWarnings = FALSE)
 
