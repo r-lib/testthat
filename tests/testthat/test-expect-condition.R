@@ -5,7 +5,7 @@ test_that("returns condition or value", {
 
 test_that("regexp = NULL checks for presence of error", {
   expect_success(expect_error(stop()))
-  expect_failure(expect_error(null()), "did not throw the expected error")
+  expect_snapshot_failure(expect_error(null()))
 })
 
 test_that("regexp = NA checks for absence of error", {
@@ -16,7 +16,7 @@ test_that("regexp = NA checks for absence of error", {
 test_that("regexp = string matches for error message", {
   expect_success(expect_error(stop("Yes"), "Yes"))
   expect_error(expect_error(stop("Yes"), "No"))
-  expect_failure(expect_error("OK", "No"), "did not throw the expected error")
+  expect_snapshot_failure(expect_error("OK", "No"))
 })
 
 test_that("class = string matches class of error", {
@@ -45,7 +45,7 @@ test_that("message method is called when expecting error", {
   fb <- function() abort("foobar", "foobar")
 
   expect_error(fb(), "dispatched!", class = "foobar")
-  expect_failure(expect_error(fb(), NA), "dispatched!")
+  expect_snapshot_failure(expect_error(fb(), NA))
 })
 
 test_that("rlang backtrace reminders are not included in error message", {

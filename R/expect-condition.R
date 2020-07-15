@@ -95,7 +95,7 @@ expect_error <- function(object,
                          info = NULL,
                          label = NULL
                          ) {
-  expect_condition_matching("error", object,
+  expect_condition_matching("error", {{ object }},
     regexp = regexp,
     class = class,
     ...,
@@ -120,7 +120,7 @@ expect_warning <- function(object,
     warn("The `all` argument is deprecated")
   }
 
-  expect_condition_matching("warning", object,
+  expect_condition_matching("warning", {{ object }},
     regexp = regexp,
     class = class,
     ...,
@@ -140,7 +140,7 @@ expect_message <- function(object,
                            info = NULL,
                            label = NULL
                            ) {
-  expect_condition_matching("message", object,
+  expect_condition_matching("message", {{ object }},
     regexp = regexp,
     class = class,
     ...,
@@ -159,7 +159,7 @@ expect_condition <- function(object,
                              label = NULL
                              ) {
 
-  expect_condition_matching("condition", object,
+  expect_condition_matching("condition", {{ object }},
     regexp = regexp,
     class = class,
     ...,
