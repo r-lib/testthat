@@ -1,7 +1,13 @@
 # test_dir() --------------------------------------------------------------
 
+test_that("stops on failure", {
+  expect_error(
+    test_dir(test_path("test_dir"), reporter = "silent")
+  )
+})
+
 test_that("runs all tests and records output", {
-  res <- test_dir(test_path("test_dir"), reporter = "silent")
+  res <- test_dir(test_path("test_dir"), reporter = "silent", stop_on_failure = FALSE)
   df <- as.data.frame(res)
   df$user <- df$system <- df$real <- df$result <- NULL
 

@@ -56,7 +56,7 @@ test_dir <- function(path,
                      env = NULL,
                      ...,
                      load_helpers = TRUE,
-                     stop_on_failure = FALSE,
+                     stop_on_failure = TRUE,
                      stop_on_warning = FALSE,
                      wrap = TRUE,
                      package = NULL
