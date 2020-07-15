@@ -94,8 +94,9 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
         return()
       }
 
-      snaps <- dir("_snaps")
-      outdated <- !context_name(snaps) %in% context_name(tests)
+      snaps <- dir("_snaps", full.names = TRUE)
+      snap_name <- tools::file_path_sans_ext(basename(snaps))
+      outdated <- !snap_name %in% context_name(tests)
       unlink(snaps[outdated])
 
       if (length(dir("_snaps") == 0)) {
