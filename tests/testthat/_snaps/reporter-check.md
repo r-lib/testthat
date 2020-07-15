@@ -1,10 +1,16 @@
 ## basic report works
 
     ── Failure: Failure:1 (tests.R:12:3) ───────────────────────────────────────────
-    FALSE isn't true.
+    FALSE is not TRUE
+    
+    `actual`:   FALSE
+    `expected`: TRUE 
     
     ── Failure: Failure:2a (tests.R:17:3) ──────────────────────────────────────────
-    FALSE isn't true.
+    FALSE is not TRUE
+    
+    `actual`:   FALSE
+    `expected`: TRUE 
     
     ── Error: Error:1 (tests.R:23:3) ───────────────────────────────────────────────
     Error: stop

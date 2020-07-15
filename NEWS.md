@@ -1,5 +1,8 @@
 # testthat (development version)
 
+* `expect_true()`, `expect_false()`, and `expect_null()` now use waldo to
+  produce more informative failures.
+
 * New `vignette("test-fixtures")` describes test fixtures; i.e. how to 
   temporarily and cleanly change global state in order to test parts of
   your code that otherwise would be hard to run (#1042).

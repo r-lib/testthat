@@ -16,10 +16,5 @@
 expect_null <- function(object, info = NULL, label = NULL) {
   act <- quasi_label(enquo(object), label, arg = "object")
 
-  expect(
-    is.null(act$val),
-    sprintf("%s is not null.", act$lab),
-    info = info
-  )
-  invisible(act$val)
+  expect_waldo_constant(act, NULL, info = info)
 }

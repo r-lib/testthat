@@ -1,11 +1,13 @@
 ## produces consistent output
 
     1: tests.R#12: expect_true(FALSE)
-    2: expect-logical.R#34: expect(identical(as.vector(act$val), TRUE), sprintf("%
+    2: expect-logical.R#35: expect_waldo_constant(act, TRUE, info = info)
+    3: expect-logical.R#52: expect(identical(act$val, constant), sprintf("%s is no
     
     1: tests.R#17: f()
     2: tests.R#16: expect_true(FALSE)
-    3: expect-logical.R#34: expect(identical(as.vector(act$val), TRUE), sprintf("%
+    3: expect-logical.R#35: expect_waldo_constant(act, TRUE, info = info)
+    4: expect-logical.R#52: expect(identical(act$val, constant), sprintf("%s is no
     
     1: tests.R#23: stop("stop")
     

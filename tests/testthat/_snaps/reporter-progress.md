@@ -46,34 +46,64 @@
     ✖ |   0 10     | reporters/fail-many
     ────────────────────────────────────────────────────────────────────────────────
     fail-many.R:3:5: failure: Example
-    FALSE isn't true.
+    FALSE is not TRUE
+    
+    `actual`:   FALSE
+    `expected`: TRUE 
     
     fail-many.R:3:5: failure: Example
-    FALSE isn't true.
+    FALSE is not TRUE
+    
+    `actual`:   FALSE
+    `expected`: TRUE 
     
     fail-many.R:3:5: failure: Example
-    FALSE isn't true.
+    FALSE is not TRUE
+    
+    `actual`:   FALSE
+    `expected`: TRUE 
     
     fail-many.R:3:5: failure: Example
-    FALSE isn't true.
+    FALSE is not TRUE
+    
+    `actual`:   FALSE
+    `expected`: TRUE 
     
     fail-many.R:3:5: failure: Example
-    FALSE isn't true.
+    FALSE is not TRUE
+    
+    `actual`:   FALSE
+    `expected`: TRUE 
     
     fail-many.R:3:5: failure: Example
-    FALSE isn't true.
+    FALSE is not TRUE
+    
+    `actual`:   FALSE
+    `expected`: TRUE 
     
     fail-many.R:3:5: failure: Example
-    FALSE isn't true.
+    FALSE is not TRUE
+    
+    `actual`:   FALSE
+    `expected`: TRUE 
     
     fail-many.R:3:5: failure: Example
-    FALSE isn't true.
+    FALSE is not TRUE
+    
+    `actual`:   FALSE
+    `expected`: TRUE 
     
     fail-many.R:3:5: failure: Example
-    FALSE isn't true.
+    FALSE is not TRUE
+    
+    `actual`:   FALSE
+    `expected`: TRUE 
     
     fail-many.R:3:5: failure: Example
-    FALSE isn't true.
+    FALSE is not TRUE
+    
+    `actual`:   FALSE
+    `expected`: TRUE 
     ────────────────────────────────────────────────────────────────────────────────
     max_fails exceded 
     
@@ -193,10 +223,16 @@
     PASS x1 FAIL x2 WARN x0 SKIP x0
     
     ── tests.R:12:3: failure: Failure:1 ────────────────────────────────────────────
-    FALSE isn't true.
+    FALSE is not TRUE
+    
+    `actual`:   FALSE
+    `expected`: TRUE 
     
     ── tests.R:17:3: failure: Failure:2a ───────────────────────────────────────────
-    FALSE isn't true.
+    FALSE is not TRUE
+    
+    `actual`:   FALSE
+    `expected`: TRUE 
     
     
     PASS x1 FAIL x2 WARN x0 SKIP x0

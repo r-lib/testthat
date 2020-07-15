@@ -60,6 +60,10 @@ show_failure <- function(expr) {
   invisible()
 }
 
+expect_snapshot_failure <- function(x) {
+  expect_snapshot_error(x, "expectation_failure")
+}
+
 expect_snapshot_reporter <- function(reporter, path = test_path("reporters/tests.R")) {
   local_reproducible_output(unicode = TRUE)
   set.seed(1014)

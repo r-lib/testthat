@@ -2,10 +2,16 @@
 
     Test succeeded 🥇
     ── tests.R:12:3: failure: Failure:1 ────────────────────────────────────────────
-    FALSE isn't true.
+    FALSE is not TRUE
+    
+    `actual`:   FALSE
+    `expected`: TRUE 
     
     ── tests.R:17:3: failure: Failure:2a ───────────────────────────────────────────
-    FALSE isn't true.
+    FALSE is not TRUE
+    
+    `actual`:   FALSE
+    `expected`: TRUE 
     
     ── tests.R:23:3: error: Error:1 ────────────────────────────────────────────────
     Error: stop
@@ -32,10 +38,16 @@
 ## stop stops at first failure
 
     ── fail.R:4:3: failure: two failures ───────────────────────────────────────────
-    FALSE isn't true.
+    FALSE is not TRUE
+    
+    `actual`:   FALSE
+    `expected`: TRUE 
     
     ── fail.R:5:3: failure: two failures ───────────────────────────────────────────
-    TRUE isn't false.
+    TRUE is not FALSE
+    
+    `actual`:   TRUE 
+    `expected`: FALSE
     
     Test failed 
 

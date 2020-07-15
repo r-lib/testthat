@@ -2,8 +2,8 @@ test_that("logical tests act as expected", {
   expect_success(expect_true(TRUE))
   expect_success(expect_false(FALSE))
 
-  expect_failure(expect_true(FALSE), "FALSE isn't true")
-  expect_failure(expect_false(TRUE), "TRUE isn't false")
+  expect_snapshot_failure(expect_true(FALSE))
+  expect_snapshot_failure(expect_false(TRUE))
 })
 
 test_that("logical tests ignore attributes", {

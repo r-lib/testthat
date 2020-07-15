@@ -30,12 +30,9 @@ NULL
 #' @rdname logical-expectations
 expect_true <- function(object, info = NULL, label = NULL) {
   act <- quasi_label(enquo(object), label, arg = "object")
+  act$val <- as.vector(act$val)
 
-  expect(
-    identical(as.vector(act$val), TRUE),
-    sprintf("%s isn't true.", act$lab),
-    info = info
-  )
+  expect_waldo_constant(act, TRUE, info = info)
   invisible(act$val)
 }
 
@@ -43,11 +40,24 @@ expect_true <- function(object, info = NULL, label = NULL) {
 #' @rdname logical-expectations
 expect_false <- function(object, info = NULL, label = NULL) {
   act <- quasi_label(enquo(object), label, arg = "object")
+  act$val <- as.vector(act$val)
+
+  expect_waldo_constant(act, FALSE, info = info)
+}
+
+expect_waldo_constant <- function(act, constant, info) {
+  local_user_output()
+  comp <- waldo::compare(act$val, constant, x_arg = "actual", y_arg = "expected")
 
   expect(
-    identical(as.vector(act$val), FALSE),
-    sprintf("%s isn't false.", act$lab),
+    identical(act$val, constant),
+    sprintf(
+      "%s is not %s\n\n%s",
+      act$lab, deparse(constant),
+      paste0(comp, collapse = "\n\n")
+    ),
     info = info
   )
+
   invisible(act$val)
 }
