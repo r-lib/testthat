@@ -1,5 +1,5 @@
 test_that("captures error before first test", {
-  local_reproducible_output(crayon = TRUE)
+  local_output_override()
 
   expect_snapshot_reporter(
     ProgressReporter$new(min_time = Inf),

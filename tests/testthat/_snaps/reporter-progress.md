@@ -20,7 +20,7 @@
     Warnings: 0
     Skipped:  0
     
-    No one gets it right on their first try
+    I believe in you!
 
 ## gracefully handles multiple contexts
 
@@ -36,7 +36,7 @@
     Warnings: 0
     Skipped:  0
     
-    Way to go!
+    You rock!
 
 ## fails after max_fail tests
 
@@ -114,7 +114,7 @@
     Skipped:  0
     ══ Terminated early ════════════════════════════════════════════════════════════
     
-    No one gets it right on their first try
+    I believe in you!
 
 ## reports backtraces
 
@@ -208,7 +208,7 @@
     Warnings: 1
     Skipped:  0
     
-    No one gets it right on their first try
+    I believe in you!
 
 ## compact display is informative
 

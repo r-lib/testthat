@@ -66,6 +66,7 @@ expect_snapshot_failure <- function(x) {
 
 expect_snapshot_reporter <- function(reporter, path = test_path("reporters/tests.R")) {
   local_reproducible_output(unicode = TRUE)
+  withr::local_rng_version("3.3")
   set.seed(1014)
 
   expect_snapshot_output(
@@ -75,3 +76,28 @@ expect_snapshot_reporter <- function(reporter, path = test_path("reporters/tests
     )
   )
 }
+
+# Use specifically for testthat tests in order to override the
+# defaults found when starting the reporter
+local_output_override <- function(width = 80, crayon = TRUE, unicode = TRUE,
+                                  .env = parent.frame()) {
+  reporter <- get_reporter()
+  if (is.null(reporter)) {
+    return()
+  }
+
+  old_width <- reporter$width
+  old_crayon <- reporter$crayon
+  old_unicode <- reporter$unicode
+
+  reporter$width <- width
+  reporter$crayon <- crayon
+  reporter$unicode <- unicode
+
+  withr::defer({
+    reporter$width <- old_width
+    reporter$crayon <- old_crayon
+    reporter$unicode <- old_unicode
+  }, .env)
+}
+
