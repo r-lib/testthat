@@ -95,15 +95,14 @@ expect_identical <- function(object, expected, info = NULL, label = NULL,
 }
 
 expect_waldo_equal <- function(type, act, exp, info, ...) {
-  local_user_output()
-  comp <- waldo::compare(act$val, exp$val, ..., x_arg = "actual", y_arg = "expected")
+  comp <- waldo_compare(act$val, exp$val, ..., x_arg = "actual", y_arg = "expected")
   expect(
     length(comp) == 0,
     sprintf(
       "%s (%s) not %s to %s (%s).\n\n%s",
-      act$lab, cli::col_blue("`actual`"),
+      act$lab, "`actual`",
       type,
-      exp$lab, cli::col_yellow("`expected`"),
+      exp$lab, "`expected`",
       paste0(comp, collapse = "\n\n")
     ),
     info = info

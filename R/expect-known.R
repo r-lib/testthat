@@ -87,7 +87,7 @@ compare_file <- function(path, lines, ..., update = TRUE, info = NULL) {
     warning("Reference output is not UTF-8 encoded", call. = FALSE)
   }
 
-  comp <- waldo::compare(lines, enc2native(old_lines), ..., x_arg = "new", y_arg = "old")
+  comp <- waldo_compare(lines, enc2native(old_lines), ..., x_arg = "new", y_arg = "old")
   expect(
     length(comp) == 0,
     sprintf(

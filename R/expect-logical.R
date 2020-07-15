@@ -33,7 +33,6 @@ expect_true <- function(object, info = NULL, label = NULL) {
   act$val <- as.vector(act$val)
 
   expect_waldo_constant(act, TRUE, info = info)
-  invisible(act$val)
 }
 
 #' @export
@@ -46,8 +45,7 @@ expect_false <- function(object, info = NULL, label = NULL) {
 }
 
 expect_waldo_constant <- function(act, constant, info) {
-  local_user_output()
-  comp <- waldo::compare(act$val, constant, x_arg = "actual", y_arg = "expected")
+  comp <- waldo_compare(act$val, constant, x_arg = "actual", y_arg = "expected")
 
   expect(
     identical(act$val, constant),

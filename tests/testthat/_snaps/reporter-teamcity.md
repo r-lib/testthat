@@ -12,13 +12,13 @@
     ##teamcity[testSuiteStarted name='Failures']
     ##teamcity[testSuiteStarted name='Failure:1']
     ##teamcity[testStarted name='expectation 1']
-    ##teamcity[testFailed name='expectation 1' message='FALSE isn|'t true.' details='']
+    ##teamcity[testFailed name='expectation 1' message='FALSE is not TRUE' details='|n`actual`:   FALSE|n`expected`: TRUE ']
     ##teamcity[testFinished name='expectation 1']
     ##teamcity[testSuiteFinished name='Failure:1']
     
     ##teamcity[testSuiteStarted name='Failure:2a']
     ##teamcity[testStarted name='expectation 1']
-    ##teamcity[testFailed name='expectation 1' message='FALSE isn|'t true.' details='']
+    ##teamcity[testFailed name='expectation 1' message='FALSE is not TRUE' details='|n`actual`:   FALSE|n`expected`: TRUE ']
     ##teamcity[testFinished name='expectation 1']
     ##teamcity[testSuiteFinished name='Failure:2a']
     

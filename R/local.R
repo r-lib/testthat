@@ -62,11 +62,13 @@ local_reproducible_output <- function(width = 80,
   withr::local_collate("C", .local_envir = .env)
 }
 
-local_user_output <- function(.env = parent.frame()) {
+waldo_compare <- function(x, y, ..., x_arg = "x", y_arg = "y") {
   reporter <- get_reporter()
   if (!is.null(reporter)) {
-    reporter$local_user_output(.env)
+    reporter$local_user_output()
   }
+
+  waldo::compare(x, y,..., x_arg = x_arg, y_arg = y_arg)
 }
 
 local_width <- function(width = 80, .env = parent.frame()) {

@@ -45,8 +45,7 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
 
         old <- load(old_raw)
 
-        local_user_output()
-        comp <- waldo::compare(
+        comp <- waldo_compare(
           x = value, x_arg = "current",
           y = old,   y_arg = "previous"
         )
@@ -66,6 +65,10 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
 
     add_result = function(context, test, result) {
       if (!expectation_error(result)) {
+        return()
+      }
+
+      if (is.null(self$test)) {
         return()
       }
 
@@ -150,9 +153,7 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
 )
 
 check_roundtrip <- function(x, y) {
-  local_user_output()
-
-  check <- waldo::compare(x, y, x_arg = "value", y_arg = "roundtrip")
+  check <- waldo_compare(x, y, x_arg = "value", y_arg = "roundtrip")
   if (length(check) > 0) {
     abort(c(
       paste0("Serialization round-trip is not symmetric.\n\n", check, "\n"),

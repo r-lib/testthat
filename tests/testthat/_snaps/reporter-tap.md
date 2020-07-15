@@ -5,9 +5,15 @@
     ok 1 Success
     # Context Failures
     not ok 2 Failure:1
-      FALSE isn't true.
+      FALSE is not TRUE
+      
+      `actual`:   FALSE
+      `expected`: TRUE 
     not ok 3 Failure:2a
-      FALSE isn't true.
+      FALSE is not TRUE
+      
+      `actual`:   FALSE
+      `expected`: TRUE 
     # Context Errors
     not ok 4 Error:1
       Error: stop
