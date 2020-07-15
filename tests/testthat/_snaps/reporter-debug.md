@@ -1,24 +1,24 @@
 ## produces consistent output
 
-    1: tests.R#12: expect_true(FALSE)
-    2: expect-logical.R#35: expect_waldo_constant(act, TRUE, info = info)
-    3: expect-logical.R#50: expect(identical(act$val, constant), sprintf("%s is no
+    1: expect_true(FALSE)
+    2: expect_waldo_constant(act, TRUE, info = info)
+    3: expect(identical(act$val, constant), sprintf("%s is not %s\n\n%s", act$lab,
     
-    1: tests.R#17: f()
-    2: tests.R#16: expect_true(FALSE)
-    3: expect-logical.R#35: expect_waldo_constant(act, TRUE, info = info)
-    4: expect-logical.R#50: expect(identical(act$val, constant), sprintf("%s is no
+    1: f()
+    2: expect_true(FALSE)
+    3: expect_waldo_constant(act, TRUE, info = info)
+    4: expect(identical(act$val, constant), sprintf("%s is not %s\n\n%s", act$lab,
     
-    1: tests.R#23: stop("stop")
+    1: stop("stop")
     
-    1: tests.R#31: f()
-    2: tests.R#27: g()
-    3: tests.R#28: h()
-    4: tests.R#29: stop("!")
+    1: f()
+    2: g()
+    3: h()
+    4: stop("!")
     
-    1: tests.R#37: skip("skip")
+    1: skip("skip")
     
-    1: tests.R#49: f()
-    2: tests.R#47: warning("def")
+    1: f()
+    2: warning("def")
     
 

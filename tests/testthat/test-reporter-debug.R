@@ -6,6 +6,7 @@ test_that("produces consistent output", {
     },
     sink_number = function() 0L
   )
+  withr::local_options(list(testthat_format_srcrefs = FALSE))
   expect_snapshot_reporter(DebugReporter$new())
 })
 
