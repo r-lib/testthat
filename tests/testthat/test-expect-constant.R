@@ -1,4 +1,6 @@
 test_that("logical tests act as expected", {
+  local_reproducible_output(crayon = TRUE)
+
   expect_success(expect_true(TRUE))
   expect_success(expect_false(FALSE))
 
@@ -17,6 +19,8 @@ test_that("additional info returned in message", {
 })
 
 test_that("expect_null works", {
+  local_reproducible_output(crayon = TRUE)
+
   expect_success(expect_null(NULL))
   expect_snapshot_failure(expect_null(1L))
   expect_snapshot_failure(expect_null(environment()))

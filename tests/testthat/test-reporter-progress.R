@@ -1,4 +1,6 @@
 test_that("captures error before first test", {
+  local_reproducible_output(crayon = TRUE)
+
   expect_snapshot_reporter(
     ProgressReporter$new(min_time = Inf),
     test_path("reporters/error-setup.R")
