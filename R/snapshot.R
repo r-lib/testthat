@@ -76,7 +76,7 @@ expect_snapshot_value <- function(x,
     json = function(x) jsonlite::toJSON(x, auto_unbox = TRUE, pretty = TRUE),
     json2 = function(x) jsonlite::serializeJSON(x, pretty = TRUE),
     deparse = function(x) paste0(deparse(x), collapse = "\n"),
-    serialize = function(x) jsonlite::base64_enc(serialize(x, NULL))
+    serialize = function(x) jsonlite::base64_enc(serialize(x, NULL, version = 2))
   )
   load <- switch(style,
     json = function(x) jsonlite::fromJSON(x, simplifyVector = FALSE),
@@ -163,7 +163,7 @@ expect_snapshot <- function(lab, val, cran = FALSE, save = identity, load = iden
   snapshotter <- get_snapshotter()
   if (is.null(snapshotter)) {
     cat("No snapshotter active. Current value: \n")
-    cat(val, sep = "\n")
+    cat(save(val), sep = "\n")
   } else {
     comp <- snapshotter$take_snapshot(val, save = save, load = load)
     expect(
