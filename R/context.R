@@ -48,7 +48,7 @@ context_start_file <- function(name) {
 
 context_name <- function(filename) {
   # Remove test- prefix
-  filename <- sub("^test-", "", filename)
+  filename <- sub("^test[-_]", "", filename)
   # Remove terminal extension
   filename <- sub("[.][Rr]$", "", filename)
   filename
