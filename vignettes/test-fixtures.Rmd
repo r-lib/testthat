@@ -321,7 +321,7 @@ To run code before any test is run, you can create a file called `test/testthat/
 write.csv("mtcars.csv", mtcars)
 
 # Run after all tests
-withr::local(unlink("mtcars.csv"), teardown_env())
+withr::defer(unlink("mtcars.csv"), teardown_env())
 ```
 
 Setup code is typically best used to create external resources that are needed by many tests. It's best kept to a minimum because you will have to manually run it before interactively debugging tests.
