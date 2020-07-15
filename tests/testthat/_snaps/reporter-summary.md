@@ -28,9 +28,9 @@
     ── 4. Error: errors get tracebacks (tests.R:31:3) ──────────────────────────────
     Error: !
     Backtrace:
-     1. f()
-     2. g()
-     3. h()
+     1. f() reporters/tests.R:31:2
+     2. g() reporters/tests.R:27:7
+     3. h() reporters/tests.R:28:7
     
     ══ DONE ════════════════════════════════════════════════════════════════════════
 
@@ -64,9 +64,9 @@
     ── 4. Error: errors get tracebacks (tests.R:31:3) ──────────────────────────────
     Error: !
     Backtrace:
-     1. f()
-     2. g()
-     3. h()
+     1. f() reporters/tests.R:31:2
+     2. g() reporters/tests.R:27:7
+     3. h() reporters/tests.R:28:7
     
     ══ DONE ════════════════════════════════════════════════════════════════════════
 

@@ -8,10 +8,10 @@
     error-setup.R:6:1: error: (code run outside of `test_that()`)
     Error: !
     Backtrace:
-     1. testthat::setup(f())
+     1. testthat::setup(f()) reporters/error-setup.R:6:0
      3. f()
-     4. g()
-     5. h()
+     4. g() reporters/error-setup.R:1:5
+     5. h() reporters/error-setup.R:2:5
     ────────────────────────────────────────────────────────────────────────────────
     
     ══ Results ═════════════════════════════════════════════════════════════════════
@@ -19,6 +19,8 @@
     Failed:   1
     Warnings: 0
     Skipped:  0
+    
+    No one gets it right on their first try
 
 ## gracefully handles multiple contexts
 
@@ -33,6 +35,8 @@
     Failed:   0
     Warnings: 0
     Skipped:  0
+    
+    Woot!
 
 ## fails after max_fail tests
 
@@ -79,6 +83,8 @@
     Warnings: 0
     Skipped:  0
     ══ Terminated early ════════════════════════════════════════════════════════════
+    
+    No one gets it right on their first try
 
 ## reports backtraces
 
@@ -99,37 +105,37 @@
     backtraces.R:6:3: error: errors thrown at block level are entraced
     Error: foo
     Backtrace:
-     1. f()
-     2. g()
+     1. f() reporters/backtraces.R:6:2
+     2. g() reporters/backtraces.R:4:7
     
     backtraces.R:11:3: error: errors thrown from a quasi-labelled argument are entraced
     Error: foo
     Backtrace:
-     1. testthat::expect_s3_class(foo(), "foo")
+     1. testthat::expect_s3_class(foo(), "foo") reporters/backtraces.R:11:2
      4. foo()
     
     backtraces.R:18:3: error: errors thrown from a quasi-labelled argument are entraced (deep case)
     Error: foo
     Backtrace:
-     1. testthat::expect_s3_class(f(), "foo")
+     1. testthat::expect_s3_class(f(), "foo") reporters/backtraces.R:18:2
      4. f()
-     5. g()
+     5. g() reporters/backtraces.R:16:7
      9. foo()
     
     backtraces.R:28:3: error: errors thrown from a quasi-labelled argument are entraced (deep deep case)
     Error: foobar
     Backtrace:
-     1. f()
-     2. g()
+     1. f() reporters/backtraces.R:28:2
+     2. g() reporters/backtraces.R:25:7
      6. foo()
-     7. bar()
+     7. bar() reporters/backtraces.R:22:9
     
     backtraces.R:35:3: error: failed expect_error() prints a backtrace
     Error: bar
     Backtrace:
-     1. testthat::expect_error(f(), "foo")
+     1. testthat::expect_error(f(), "foo") reporters/backtraces.R:35:2
      7. f()
-     8. signaller()
+     8. signaller() reporters/backtraces.R:32:7
     
     backtraces.R:43:3: error: Errors are inspected with `conditionMessage()`
     Error: dispatched
@@ -137,33 +143,33 @@
     backtraces.R:50:3: warning: also get backtraces for warnings
     foobar
     Backtrace:
-     1. foo()
-     2. bar()
+     1. foo() reporters/backtraces.R:50:2
+     2. bar() reporters/backtraces.R:47:9
     
     backtraces.R:58:3: error: deep stacks are trimmed
     Error: This is deep
     Backtrace:
-      1. f(25)
-      2. f(x - 1)
-      3. f(x - 1)
-      4. f(x - 1)
-      5. f(x - 1)
-      6. f(x - 1)
-      7. f(x - 1)
-      8. f(x - 1)
-      9. f(x - 1)
-     10. f(x - 1)
+      1. f(25) reporters/backtraces.R:58:2
+      2. f(x - 1) reporters/backtraces.R:56:4
+      3. f(x - 1) reporters/backtraces.R:56:4
+      4. f(x - 1) reporters/backtraces.R:56:4
+      5. f(x - 1) reporters/backtraces.R:56:4
+      6. f(x - 1) reporters/backtraces.R:56:4
+      7. f(x - 1) reporters/backtraces.R:56:4
+      8. f(x - 1) reporters/backtraces.R:56:4
+      9. f(x - 1) reporters/backtraces.R:56:4
+     10. f(x - 1) reporters/backtraces.R:56:4
          ...
-     17. f(x - 1)
-     18. f(x - 1)
-     19. f(x - 1)
-     20. f(x - 1)
-     21. f(x - 1)
-     22. f(x - 1)
-     23. f(x - 1)
-     24. f(x - 1)
-     25. f(x - 1)
-     26. f(x - 1)
+     17. f(x - 1) reporters/backtraces.R:56:4
+     18. f(x - 1) reporters/backtraces.R:56:4
+     19. f(x - 1) reporters/backtraces.R:56:4
+     20. f(x - 1) reporters/backtraces.R:56:4
+     21. f(x - 1) reporters/backtraces.R:56:4
+     22. f(x - 1) reporters/backtraces.R:56:4
+     23. f(x - 1) reporters/backtraces.R:56:4
+     24. f(x - 1) reporters/backtraces.R:56:4
+     25. f(x - 1) reporters/backtraces.R:56:4
+     26. f(x - 1) reporters/backtraces.R:56:4
     ────────────────────────────────────────────────────────────────────────────────
     
     ══ Results ═════════════════════════════════════════════════════════════════════
@@ -171,6 +177,8 @@
     Failed:   7
     Warnings: 1
     Skipped:  0
+    
+    No one gets it right on their first try
 
 ## compact display is informative
 
@@ -223,7 +231,7 @@
     ── tests.R:49:3: warning: warnings get backtraces ──────────────────────────────
     def
     Backtrace:
-     1. f()
+     1. f() reporters/tests.R:49:2
     
     
     PASS x1 FAIL x4 WARN x1 SKIP x2

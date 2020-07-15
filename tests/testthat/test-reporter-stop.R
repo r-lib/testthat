@@ -1,5 +1,4 @@
 test_that("produces useful output", {
-  set.seed(1014)
   expect_snapshot_reporter(StopReporter$new(stop_reporter = FALSE))
 })
 
