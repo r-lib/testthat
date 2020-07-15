@@ -121,6 +121,17 @@ expect_snapshot_error <- function(x, class = "error", cran = FALSE) {
   expect_snapshot(lab, conditionMessage(val), cran = cran)
 }
 
+expect_snapshot_message <- function(x, class = "message", cran = FALSE) {
+  lab <- quo_label(enquo(x))
+  val <- capture_matching_condition(x, cnd_matcher(class))
+  if (is.null(val)) {
+    fail(sprintf("%s did not throw message of class '%s'", lab, class))
+  }
+
+  expect_snapshot(lab, conditionMessage(val), cran = cran)
+}
+
+
 #' @export
 #' @rdname expect_snapshot_output
 expect_snapshot_condition <- function(x, class, cran = FALSE) {
@@ -171,11 +182,28 @@ expect_snapshot <- function(lab, val, cran = FALSE, save = identity, load = iden
 #'
 #' `snapshot_accept()` accepts all changed snapshots.
 #'
+#' @param files Test files to accept snapshots for. Can be full path to
+#'   test (`tests/testthat/test-foo.R`), file name (`test-foo.R`), or
+#'   test name (`foo`).
+#'
+#'   Default, `NULL`, accepts all snapshots.
 #' @param path Path to tests
 #' @export
-snapshot_accept <- function(path = "tests/testthat") {
+snapshot_accept <- function(files = NULL, path = "tests/testthat") {
   changed <- dir(file.path(path, "_snaps"), pattern = "\\.new\\.md$", full.names = TRUE)
 
+  if (!is.null(files)) {
+    file_name <- context_name(basename(files))
+    snap_name <- gsub("\\.new\\.md$", "", basename(changed))
+    changed <- changed[snap_name %in% file_name]
+  }
+
+  if (length(changed) == 0) {
+    inform("No snapshots to update")
+    return(invisible())
+  }
+
+  inform(c("Updating snapshots", basename(changed)))
   cur <- gsub("\\.new\\.md$", "\\.md", changed)
   unlink(cur)
   file.rename(changed, cur)
@@ -183,4 +211,17 @@ snapshot_accept <- function(path = "tests/testthat") {
   rstudio_tickle()
 
   invisible()
+}
+
+
+local_snapshot_dir <- function(snap_names, .env = parent.frame()) {
+  path <- tempfile()
+  withr::defer(unlink(path))
+
+  dir.create(file.path(path, "_snaps"), recursive = TRUE)
+
+  snap_paths <- file.path(path, "_snaps", paste0(snap_names, ".new.md"))
+  lapply(snap_paths, write_lines, text = "")
+
+  path
 }

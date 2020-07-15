@@ -91,3 +91,21 @@
       }
     }
 
+## informs about files being accepted
+
+    Updating snapshots
+    * a.new.md
+    * b.new.md
+    
+
+---
+
+    No snapshots to update
+    
+
+## can accept specific files
+
+    Updating snapshots
+    * a.new.md
+    
+
