@@ -85,8 +85,8 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
     },
     end_reporter = function() {
       # check we've seen all files before cleaning up
-      tests <- dir()
-      if (!all(tests %in% self$files_seen)) {
+      tests <- find_test_scripts(".", full.names = FALSE)
+      if (!all(tests %in% self$file_seen)) {
         rstudio_tickle()
         return()
       }
