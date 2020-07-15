@@ -44,6 +44,29 @@ expect_false <- function(object, info = NULL, label = NULL) {
   expect_waldo_constant(act, FALSE, info = info)
 }
 
+#' Expectation: is an object `NULL`?
+#'
+#' This is a special case because `NULL` is a singleton so it's possible
+#' check for it either with `expect_equal(x, NULL)` or `expect_type(x, "NULL")`.
+#'
+#' @inheritParams expect_that
+#' @keywords internal
+#' @export
+#' @family expectations
+#' @examples
+#' x <- NULL
+#' y <- 10
+#'
+#' expect_null(x)
+#' show_failure(expect_null(y))
+expect_null <- function(object, info = NULL, label = NULL) {
+  act <- quasi_label(enquo(object), label, arg = "object")
+
+  expect_waldo_constant(act, NULL, info = info)
+}
+
+# helpers -----------------------------------------------------------------
+
 expect_waldo_constant <- function(act, constant, info) {
   comp <- waldo_compare(act$val, constant, x_arg = "actual", y_arg = "expected")
 
@@ -59,3 +82,4 @@ expect_waldo_constant <- function(act, constant, info) {
 
   invisible(act$val)
 }
+
