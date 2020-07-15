@@ -1,5 +1,7 @@
 # testthat (development version)
 
+* New emoji-using praise has been added.
+
 * `expect_true()`, `expect_false()`, and `expect_null()` now use waldo to
   produce more informative failures.
 

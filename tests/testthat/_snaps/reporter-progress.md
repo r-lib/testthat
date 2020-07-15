@@ -36,7 +36,7 @@
     Warnings: 0
     Skipped:  0
     
-    Woot!
+    Way to go!
 
 ## fails after max_fail tests
 
