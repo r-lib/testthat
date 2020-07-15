@@ -58,7 +58,7 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
         check_roundtrip(value, load(save(value)))
 
         self$cur_snaps <- self$snap_append(self$cur_snaps, save(value))
-        testthat_warn("Adding new snapshot")
+        testthat_warn(paste0("Adding new snapshot:\n", save(value)))
         character()
       }
     },
