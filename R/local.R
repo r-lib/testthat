@@ -63,8 +63,12 @@ local_reproducible_output <- function(width = 80,
 }
 
 waldo_compare <- function(x, y, ..., x_arg = "x", y_arg = "y") {
+
   reporter <- get_reporter()
   if (!is.null(reporter)) {
+    # Need to very carefully isolate this change to this function - can not set
+    # in expectation functions because part of expectation handling bubbles
+    # up through calling handlers, which are run before on.exit()
     reporter$local_user_output()
   }
 
