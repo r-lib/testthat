@@ -115,7 +115,7 @@ queue_setup <- function(test_paths,
                         load_package) {
 
   # TODO: meaningful error if startup fails
-  load_hook <- expr(testthat:::queue_process_setup(
+  load_hook <- expr(asNamespace("testthat")$queue_process_setup(
     test_package = !!test_package,
     test_dir = !!test_dir,
     load_helpers = !!load_helpers,
@@ -123,7 +123,7 @@ queue_setup <- function(test_paths,
   ))
   queue <- task_q$new(concurrency = num_workers, load_hook = load_hook)
 
-  fun <- transport_fun(function(path) testthat:::queue_task(path))
+  fun <- transport_fun(function(path) asNamespace("testthat")$queue_task(path))
   for (path in test_paths) {
     queue$push(fun, list(path))
   }
