@@ -43,15 +43,14 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
 
     initialize = function(show_praise = TRUE,
                           max_failures = getOption("testthat.progress.max_fails", 10L),
-                          min_time = NULL,
-                          update_interval = NULL,
-                          compact = TRUE,
+                          min_time = 0.1,
+                          update_interval = 0.1,
                           ...) {
       super$initialize(...)
       self$max_fail <- max_failures
       self$show_praise <- show_praise
-      self$min_time <- min_time %||% if (is_testing()) Inf else 0.1
-      self$update_interval <- update_interval %||% if (is_testing()) 0 else 0.1
+      self$min_time <- min_time
+      self$update_interval <- update_interval
 
       self$skips <- Stack$new()
 
@@ -209,17 +208,17 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
         self$cat_line()
       }
 
-      self$cat_line("OK:       ", colourise(self$n_ok, "success"))
-      self$cat_line("Failed:   ", colour_if(self$n_fail, "fail"))
-      self$cat_line("Warnings: ", colour_if(self$n_warn, "warn"))
-      self$cat_line("Skipped:  ", colour_if(self$n_skip, "skip"))
+      if (self$n_skip > 0) {
+        self$rule("Skipped tests ", line = 1)
+        self$cat_line(skip_bullets(self$skips$as_list()))
+        self$cat_line()
+      }
+
+      status <- summary_line(self$n_ok, self$n_fail, self$n_warn, self$n_skip)
+      self$cat_line(status)
 
       if (self$is_full()) {
         self$rule("Terminated early", line = 2)
-      }
-
-      if (self$n_skip > 0) {
-        self$cat_line(skip_bullets(self$skips$as_list()))
       }
 
       if (!self$show_praise || runif(1) > 0.1) {

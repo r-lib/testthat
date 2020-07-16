@@ -16,10 +16,7 @@
     --------------------------------------------------------------------------------
     
     == Results =====================================================================
-    OK:       0
-    Failed:   1
-    Warnings: 0
-    Skipped:  0
+    [ PASS x0 FAIL x1 WARN x0 SKIP x0 ]
     
     I believe in you!
 
@@ -33,10 +30,7 @@
     v |   1       | my context
     
     == Results =====================================================================
-    OK:       1
-    Failed:   0
-    Warnings: 0
-    Skipped:  0
+    [ PASS x1 FAIL x0 WARN x0 SKIP x0 ]
     
     You rock!
 
@@ -119,10 +113,7 @@
     max_fails exceded 
     
     == Results =====================================================================
-    OK:       0
-    Failed:   10
-    Warnings: 0
-    Skipped:  0
+    [ PASS x0 FAIL x10 WARN x0 SKIP x0 ]
     == Terminated early ============================================================
     
     I believe in you!
@@ -214,10 +205,7 @@
     --------------------------------------------------------------------------------
     
     == Results =====================================================================
-    OK:       1
-    Failed:   7
-    Warnings: 1
-    Skipped:  0
+    [ PASS x1 FAIL x7 WARN x1 SKIP x0 ]
     
     I believe in you!
 
