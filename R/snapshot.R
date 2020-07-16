@@ -7,7 +7,8 @@
 #' expected result is stored in a separate file that is managed by testthat.
 #' Snapshot tests are useful for when the expected value is large, or when
 #' the intent of the code is something that can only be verified by a human
-#' (e.g. this is a useful error message).
+#' (e.g. this is a useful error message). Learn more in
+#' `vignette("snapshotting")`.
 #'
 #' * `expect_snapshot_output()` captures the output printed to the console.
 #'   (by [testthat_print()]).

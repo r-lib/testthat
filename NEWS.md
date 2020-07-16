@@ -1,5 +1,9 @@
 # testthat (development version)
 
+* New family of snapshot expectations (`expect_snapshot_output()`, 
+  `expect_snapshot_value()` and more), as documented in 
+  `vignette("snapshotting")`.
+
 * New emoji-using praise has been added.
 
 * `expect_true()`, `expect_false()`, and `expect_null()` now use waldo to
