@@ -3,6 +3,7 @@
     ✔ |  OK F W S | Context
     
     ⠏ |   0       | reporters/error-setup                                           
+    ⠋ |   0 1     | reporters/error-setup                                           
     ✖ |   0 1     | reporters/error-setup
     ────────────────────────────────────────────────────────────────────────────────
     error-setup.R:6:1: error: (code run outside of `test_that()`)
@@ -28,6 +29,7 @@
     
     ⠏ |   0       | reporters/context                                               
     ⠏ |   0       | my context                                                      
+    ⠋ |   1       | my context                                                      
     ✔ |   1       | my context
     
     ══ Results ═════════════════════════════════════════════════════════════════════
@@ -43,6 +45,15 @@
     ✔ |  OK F W S | Context
     
     ⠏ |   0       | reporters/fail-many                                             
+    ⠋ |   0 1     | reporters/fail-many                                             
+    ⠙ |   0 2     | reporters/fail-many                                             
+    ⠹ |   0 3     | reporters/fail-many                                             
+    ⠸ |   0 4     | reporters/fail-many                                             
+    ⠼ |   0 5     | reporters/fail-many                                             
+    ⠴ |   0 6     | reporters/fail-many                                             
+    ⠦ |   0 7     | reporters/fail-many                                             
+    ⠧ |   0 8     | reporters/fail-many                                             
+    ⠇ |   0 9     | reporters/fail-many                                             
     ✖ |   0 10     | reporters/fail-many
     ────────────────────────────────────────────────────────────────────────────────
     fail-many.R:3:5: failure: Example

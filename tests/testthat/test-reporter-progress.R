@@ -2,14 +2,14 @@ test_that("captures error before first test", {
   local_output_override()
 
   expect_snapshot_reporter(
-    ProgressReporter$new(min_time = Inf),
+    ProgressReporter$new(),
     test_path("reporters/error-setup.R")
   )
 })
 
 test_that("gracefully handles multiple contexts", {
   expect_snapshot_reporter(
-    ProgressReporter$new(min_time = Inf),
+    ProgressReporter$new(),
     test_path("reporters/context.R")
   )
 })
@@ -17,14 +17,14 @@ test_that("gracefully handles multiple contexts", {
 
 test_that("fails after max_fail tests", {
   expect_snapshot_reporter(
-    ProgressReporter$new(min_time = Inf),
+    ProgressReporter$new(),
     test_path("reporters/fail-many.R")
   )
 })
 
 test_that("reports backtraces", {
   expect_snapshot_reporter(
-    ProgressReporter$new(min_time = Inf, update_interval = 0),
+    ProgressReporter$new(),
     test_path("reporters/backtraces.R")
   )
 })

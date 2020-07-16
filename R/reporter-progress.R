@@ -43,15 +43,15 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
 
     initialize = function(show_praise = TRUE,
                           max_failures = getOption("testthat.progress.max_fails", 10L),
-                          min_time = 0.1,
-                          update_interval = 0.1,
+                          min_time = NULL,
+                          update_interval = NULL,
                           compact = TRUE,
                           ...) {
       super$initialize(...)
       self$max_fail <- max_failures
       self$show_praise <- show_praise
-      self$min_time <- min_time
-      self$update_interval <- update_interval
+      self$min_time <- min_time %||% if (is_testing()) Inf else 0.1
+      self$update_interval <- update_interval %||% if (is_testing()) 0 else 0.1
 
       self$skips <- Stack$new()
 
