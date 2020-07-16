@@ -222,11 +222,11 @@ teardown_env <- function() {
 }
 
 local_teardown_env <- function(env = parent.frame()) {
-  local_bindings(
-    teardown_env = child_env(emptyenv()),
-    .env = testthat_env,
-    .frame = env
-  )
+  old <- testthat_env$teardown_env
+  testthat_env$teardown_env <- child_env(emptyenv())
+  withr::defer(testthat_env$teardown_env <- old, env)
+
+  invisible()
 }
 
 #' Find test files
