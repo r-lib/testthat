@@ -46,6 +46,10 @@
 #' @param stop_on_failure If `TRUE`, throw an error if any tests fail.
 #' @param stop_on_warning If `TRUE`, throw an error if any tests generate
 #'   warnings.
+#' @param load_package Strategy to use for load package code:
+#'   * "none", the default, doesn't load the package.
+#'   * "installed", uses [library()] to load an installed package.
+#'   * "source", uses [pkgload::load_all()] to a source package.
 #' @return A list (invisibly) containing data about the test results.
 #' @inheritParams with_reporter
 #' @inheritParams source_file
@@ -59,8 +63,11 @@ test_dir <- function(path,
                      stop_on_failure = TRUE,
                      stop_on_warning = FALSE,
                      wrap = TRUE,
-                     package = NULL
+                     package = NULL,
+                     load_package = c("none", "installed", "source")
                      ) {
+
+  load_package <- arg_match(load_package)
 
   test_paths <- find_test_scripts(path, filter = filter, ..., full.names = FALSE)
   if (length(test_paths) == 0) {
@@ -76,7 +83,8 @@ test_dir <- function(path,
     env = env,
     stop_on_failure = stop_on_failure,
     stop_on_warning = stop_on_warning,
-    wrap = wrap
+    wrap = wrap,
+    load_package = load_package
   )
 }
 
@@ -118,10 +126,11 @@ test_files <- function(test_dir,
                        env = NULL,
                        stop_on_failure = FALSE,
                        stop_on_warning = FALSE,
-                       wrap = TRUE) {
+                       wrap = TRUE,
+                       load_package = c("none", "installed", "source")) {
 
-  env <- env %||% test_env(test_package)
-  test_files_setup(test_dir, test_package, load_helpers, env)
+  env <- test_files_setup_env(test_package, test_dir, load_package, env)
+  test_files_setup_state(test_dir, test_package, load_helpers, env)
   reporters <- test_files_reporter(reporter)
 
   with_reporter(reporters$multi, lapply(test_paths, test_one_file, env = env))
@@ -132,8 +141,23 @@ test_files <- function(test_dir,
   )
 }
 
-test_files_setup <- function(test_dir, test_package, load_helpers, env, .env = parent.frame()) {
+test_files_setup_env <- function(test_package,
+                                 test_dir,
+                                 load_package = c("none", "installed", "source"),
+                                 env = NULL) {
   library(testthat)
+
+  load_package <- arg_match(load_package)
+  switch(load_package,
+    none = {},
+    installed = library(test_package, character.only = TRUE),
+    source = pkgload::load_all(test_dir, helpers = FALSE, quiet = TRUE)
+  )
+
+  env %||% test_env(test_package)
+}
+
+test_files_setup_state <- function(test_dir, test_package, load_helpers, env, .env = parent.frame()) {
 
   # Define testing environment
   local_test_directory(test_dir, test_package, .env = .env)

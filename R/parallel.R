@@ -41,7 +41,9 @@ test_files_parallel <- function(
                        env = NULL,
                        stop_on_failure = FALSE,
                        stop_on_warning = FALSE,
-                       wrap = TRUE) {
+                       wrap = TRUE,
+                       load_package = c("none", "installed", "source")
+                       ) {
 
   reporters <- test_files_reporter(reporter)
 
@@ -51,7 +53,7 @@ test_files_parallel <- function(
 
   # Set up work queue ------------------------------------------
   queue <- NULL
-  withr::defer(queue_teardown(queue, path))
+  withr::defer(queue_teardown(queue))
 
   # Start workers in parallel and add test tasks to queue.
   queue <- queue_setup(
@@ -60,7 +62,7 @@ test_files_parallel <- function(
     test_dir = test_dir,
     load_helpers = load_helpers,
     num_workers = num_workers,
-    pkgload = pkgload::is_dev_package(test_package)
+    load_package = load_package
   )
 
   files <- list()
@@ -110,15 +112,14 @@ queue_setup <- function(test_paths,
                         env,
                         num_workers,
                         load_helpers,
-                        pkgload) {
-
+                        load_package) {
 
   # TODO: meaningful error if startup fails
   load_hook <- expr(testthat:::queue_process_setup(
     test_package = !!test_package,
     test_dir = !!test_dir,
     load_helpers = !!load_helpers,
-    pkgload = !!pkgload
+    load_package = !!load_package
   ))
   queue <- task_q$new(concurrency = num_workers, load_hook = load_hook)
 
@@ -130,25 +131,18 @@ queue_setup <- function(test_paths,
   queue
 }
 
-queue_process_setup <- function(test_package, test_dir, load_helpers, pkgload) {
-  # Load code in each process - normally taken care of upstream
-  # TODO: refactor test_package() and friends to avoid this duplication
-  if (pkgload) {
-    pkgload::load_all(test_dir, helpers = FALSE, quiet = TRUE)
-  } else {
-    library(test_package, character.only = TRUE)
-  }
-  env <- test_env(test_package)
-
-  # Save test environment in global env where it can easily be reached
-  .GlobalEnv$.test_env <- env
-  testthat:::test_files_setup(
+queue_process_setup <- function(test_package, test_dir, load_helpers, load_package) {
+  env <- test_files_setup_env(test_package, test_dir, load_package)
+  test_files_setup_state(
     test_dir = test_dir,
     test_package = test_package,
     load_helpers = load_helpers,
     env = env,
-    .env = globalenv()
+    .env = .GlobalEnv
   )
+
+  # Save test environment in global env where it can easily be retrieved
+  .GlobalEnv$.test_env <- env
 }
 
 queue_task <- function(path) {
@@ -162,8 +156,10 @@ queue_task <- function(path) {
 # Clean up subprocesses: we call teardown methods, but we only give them a
 # second, before killing the whole process tree using ps's env var marker
 # method.
-queue_teardown <- function(queue, path) {
-  if (is.null(queue)) return()
+queue_teardown <- function(queue) {
+  if (is.null(queue)) {
+    return()
+  }
 
   tasks <- queue$list_tasks()
   num <- nrow(tasks)
