@@ -166,13 +166,15 @@ expect_snapshot <- function(lab, val, cran = FALSE, save = identity, load = iden
     cat(save(val), sep = "\n")
   } else {
     comp <- snapshotter$take_snapshot(val, save = save, load = load)
+    hint <- paste0("Run `snapshot_accept('", snapshotter$file, "')` if this is a deliberate change")
+
     expect(
       length(comp) == 0,
       sprintf(
         "Shapshot of %s has changed:\n%s\n\n%s",
         lab,
         paste0(comp, collapse = "\n\n"),
-        "Run `snapshot_accept()` if this is a deliberate change"
+        hint
       )
     )
   }
