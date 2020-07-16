@@ -65,7 +65,6 @@ expect_snapshot_failure <- function(x) {
 }
 
 expect_snapshot_reporter <- function(reporter, path = test_path("reporters/tests.R")) {
-  local_reproducible_output(unicode = TRUE)
   withr::local_rng_version("3.3")
   set.seed(1014)
 
