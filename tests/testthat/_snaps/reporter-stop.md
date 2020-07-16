@@ -1,4 +1,4 @@
-## produces useful output
+# produces useful output
 
     Test succeeded 
     -- tests.R:12:3: failure: Failure:1 --------------------------------------------
@@ -35,7 +35,7 @@
      1. f()
     
 
-## stop stops at first failure
+# stop stops at first failure
 
     -- fail.R:4:3: failure: two failures -------------------------------------------
     FALSE is not TRUE

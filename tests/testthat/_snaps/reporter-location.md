@@ -1,4 +1,4 @@
-## reporter as expected
+# reporter as expected
 
     Start test: Success
       tests.R:6:3 [success]

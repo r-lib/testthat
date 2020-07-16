@@ -1,4 +1,4 @@
-## runs all tests and records output
+# runs all tests and records output
 
                   file context                                      test nb failed skipped error warning passed
     1     test-basic.R                     logical tests act as expected  2      0   FALSE FALSE       0      2

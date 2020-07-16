@@ -1,4 +1,4 @@
-## basic report works
+# basic report works
 
     -- Failure: Failure:1 (tests.R:12:3) -------------------------------------------
     FALSE is not TRUE

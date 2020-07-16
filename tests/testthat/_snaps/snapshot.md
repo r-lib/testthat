@@ -1,4 +1,4 @@
-## can snapshot output
+# can snapshot output
 
     [1] "y"
 
@@ -14,7 +14,7 @@
 
     [1] "y"
 
-## even with multiple lines
+# even with multiple lines
 
     a
     b
@@ -26,7 +26,7 @@
     b
     c
 
-## can snapshot values
+# can snapshot values
 
     [
       "a",
@@ -73,7 +73,7 @@
     WAoAAAACAAMGAwACAwAAAAATAAAABAAAABAAAAABAAQACQAAAAFhAAAADgAAAAE/+AAAAAAA
     AAAAAA0AAAABAAAAAQAAAAoAAAABAAAAAQ==
 
-## can snapshot conditions
+# can snapshot conditions
 
     {
       "message": ["!"],
@@ -91,7 +91,7 @@
       }
     }
 
-## informs about files being accepted
+# informs about files being accepted
 
     Updating snapshots
     * a.new.md
@@ -103,7 +103,7 @@
     No snapshots to update
     
 
-## can accept specific files
+# can accept specific files
 
     Updating snapshots
     * a.new.md
