@@ -109,7 +109,7 @@ test_file <- function(path, reporter = default_compact_reporter(), package = NUL
     stop("`path` does not exist", call. = FALSE)
   }
 
-  test_files(
+  test_files_serial(
     test_dir = dirname(path),
     test_package = package,
     test_paths = basename(path),
@@ -119,6 +119,37 @@ test_file <- function(path, reporter = default_compact_reporter(), package = NUL
 }
 
 test_files <- function(test_dir,
+                       test_package,
+                       test_paths,
+                       load_helpers = TRUE,
+                       reporter = default_reporter(),
+                       env = NULL,
+                       stop_on_failure = FALSE,
+                       stop_on_warning = FALSE,
+                       wrap = TRUE,
+                       load_package = c("none", "installed", "source")) {
+
+
+  if (find_parallel(test_dir, test_package)) {
+    test_files <- test_files_parallel
+  } else {
+    test_files <- test_files_serial
+  }
+
+  test_files(
+    test_dir = test_dir,
+    test_package = test_package,
+    test_paths = test_paths,
+    load_helpers = load_helpers,
+    reporter = reporter,
+    env = env,
+    stop_on_failure = stop_on_failure,
+    stop_on_warning = stop_on_warning,
+    load_package = load_package
+  )
+}
+
+test_files_serial <- function(test_dir,
                        test_package,
                        test_paths,
                        load_helpers = TRUE,
