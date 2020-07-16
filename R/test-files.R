@@ -120,36 +120,49 @@ test_files <- function(test_dir,
                        stop_on_warning = FALSE,
                        wrap = TRUE) {
 
-  # Define testing environment
-  local_test_directory(test_dir, test_package)
   env <- env %||% test_env(test_package)
-  withr::local_options(list(topLevelEnvironment = env_parent(env)))
+  test_files_setup(test_dir, test_package, load_helpers, env)
+  reporters <- test_files_reporter(reporter)
 
+  with_reporter(reporters$multi, lapply(test_paths, test_one_file, env = env))
+
+  test_files_check(reporters$list$get_results(),
+    stop_on_failure = stop_on_failure,
+    stop_on_warning = stop_on_warning
+  )
+}
+
+test_files_setup <- function(test_dir, test_package, load_helpers, env, .env = parent.frame()) {
+  library(testthat)
+
+  # Define testing environment
+  local_test_directory(test_dir, test_package, .env = .env)
+  withr::local_options(list(topLevelEnvironment = env_parent(env)), .local_envir = .env)
 
   # Load helpers, setup, and teardown (on exit)
-  local_teardown_env()
+  local_teardown_env(.env)
   if (load_helpers) {
     source_test_helpers(".", env)
   }
   source_test_setup(".", env)
-  withr::defer(withr::deferred_run(teardown_env())) # new school
-  withr::defer(source_test_teardown(".", env))      # old school
+  withr::defer(withr::deferred_run(teardown_env()), .env) # new school
+  withr::defer(source_test_teardown(".", env), .env)      # old school
+}
 
-  # Wrap reporter
+test_files_reporter <- function(reporter, .env = parent.frame()) {
   lister <- ListReporter$new()
   reporters <- list(
     find_reporter(reporter),
     lister, # track data
-    local_snapshotter() # for snapshots
+    local_snapshotter(.env = .env) # for snapshots
   )
-  reporter <- MultiReporter$new(reporters = compact(reporters))
+  list(
+    multi = MultiReporter$new(reporters = compact(reporters)),
+    list = lister
+  )
+}
 
-  # Run tests tests
-  library(testthat)
-  with_reporter(reporter, lapply(test_paths, test_one_file, env = env))
-
-  # Check results
-  results <- lister$get_results()
+test_files_check <- function(results, stop_on_failure = TRUE, stop_on_warning = FALSE) {
   if (stop_on_failure && !all_passed(results)) {
     stop("Test failures", call. = FALSE)
   }

@@ -1,6 +1,7 @@
 
 # See https://www.tidyverse.org/blog/2019/09/callr-task-q/
 # for a detailed explanation on how the task queue works.
+#
 # Changes in this version, compared to the blog post:
 # * We use data frames instead of tibbles. This requires some caution
 #   and the df_add_row() function below.

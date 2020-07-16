@@ -71,6 +71,14 @@ remove_source <- function(x) {
   }
 }
 
+# Need to stip environment and source references to make lightweight
+# function suitable to send to another process
+transport_fun <- function(f) {
+  environment(f) <- .GlobalEnv
+  f <- remove_source(f)
+  f
+}
+
 isNA <- function(x) length(x) == 1 && is.na(x)
 
 compact <- function(x) {
