@@ -1,6 +1,6 @@
 # data is list of character vectors
 snap_to_md <- function(data) {
-  h2 <- paste0("## ", names(data), "\n\n")
+  h2 <- paste0("# ", names(data), "\n\n")
   code_block <- function(x) paste0(indent_add(x), collapse = "\n\n---\n\n")
   data <- vapply(data, code_block, character(1))
 
@@ -10,10 +10,10 @@ snap_to_md <- function(data) {
 snap_from_md <- function(lines) {
   lines <- gsub("\r", "", lines, fixed = TRUE)
 
-  h2 <- grepl("^## ", lines)
+  h2 <- grepl("^# ", lines)
   tests_group <- cumsum(h2)
   tests <- split(lines[!h2], tests_group[!h2])
-  names(tests) <- gsub("^## ", "", lines[h2])
+  names(tests) <- gsub("^# ", "", lines[h2])
 
   split_tests <- function(lines) {
     sep <- grepl("^-{3, }", lines)

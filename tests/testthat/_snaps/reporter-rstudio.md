@@ -1,4 +1,4 @@
-## reporter basics works
+# reporter basics works
 
     tests.R:12:3 [failure] Failure:1. FALSE is not TRUE
     tests.R:17:3 [failure] Failure:2a. FALSE is not TRUE

@@ -1,4 +1,4 @@
-## can control appearance of dots
+# can control appearance of dots
 
     reporters/tests: 
     Successes: .
@@ -82,7 +82,7 @@
     
     == DONE ========================================================================
 
-## can control maximum reports
+# can control maximum reports
 
     reporters/tests: 
     Successes: .

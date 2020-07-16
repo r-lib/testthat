@@ -53,7 +53,8 @@ Snapshot tests (aka golden tests) are similar to unit tests except that the
 expected result is stored in a separate file that is managed by testthat.
 Snapshot tests are useful for when the expected value is large, or when
 the intent of the code is something that can only be verified by a human
-(e.g. this is a useful error message).
+(e.g. this is a useful error message). Learn more in
+\code{vignette("snapshotting")}.
 \itemize{
 \item \code{expect_snapshot_output()} captures the output printed to the console.
 (by \code{\link[=testthat_print]{testthat_print()}}).

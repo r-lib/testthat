@@ -1,4 +1,4 @@
-## produces consistent output
+# produces consistent output
 
     1: expect_true(FALSE)
     2: expect_waldo_constant(act, TRUE, info = info)

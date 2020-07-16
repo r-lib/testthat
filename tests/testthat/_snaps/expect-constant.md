@@ -1,4 +1,4 @@
-## logical tests act as expected
+# logical tests act as expected
 
     FALSE is not TRUE
     
@@ -12,7 +12,7 @@
     `actual`:   [32mTRUE[39m 
     `expected`: [32mFALSE[39m
 
-## expect_null works
+# expect_null works
 
     1L is not NULL
     

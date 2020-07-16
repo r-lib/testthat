@@ -1,4 +1,4 @@
-## captures error before first test
+# captures error before first test
 
     v |  OK F W S | Context
     
@@ -23,7 +23,7 @@
     
     I believe in you!
 
-## gracefully handles multiple contexts
+# gracefully handles multiple contexts
 
     v |  OK F W S | Context
     
@@ -40,7 +40,7 @@
     
     You rock!
 
-## fails after max_fail tests
+# fails after max_fail tests
 
     v |  OK F W S | Context
     
@@ -127,7 +127,7 @@
     
     I believe in you!
 
-## reports backtraces
+# reports backtraces
 
     v |  OK F W S | Context
     
@@ -221,7 +221,7 @@
     
     I believe in you!
 
-## compact display is informative
+# compact display is informative
 
     
     == Testing reporters/tests.R ===================================================
