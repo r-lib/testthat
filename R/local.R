@@ -46,6 +46,12 @@ local_reproducible_output <- function(width = 80,
                                       unicode = FALSE,
                                       .env = parent.frame()) {
 
+  if (unicode) {
+    # If you force unicode display, you _must_ skip the test on non-utf8
+    # locales; otherwise it's gauranteed to fail
+    skip_if(!l10n_info()$`UTF-8`, "non utf8 locale")
+  }
+
   local_width(width = width, .env = .env)
   withr::local_options(
     list(
