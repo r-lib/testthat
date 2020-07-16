@@ -1,6 +1,6 @@
 # produces useful output
 
-    Test succeeded 
+    Test passed 
     -- tests.R:12:3: failure: Failure:1 --------------------------------------------
     FALSE is not TRUE
     
