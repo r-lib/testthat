@@ -43,15 +43,15 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
 
     initialize = function(show_praise = TRUE,
                           max_failures = getOption("testthat.progress.max_fails", 10L),
-                          min_time = 0.1,
-                          update_interval = 0.1,
+                          min_time = NULL,
+                          update_interval = NULL,
                           compact = TRUE,
                           ...) {
       super$initialize(...)
       self$max_fail <- max_failures
       self$show_praise <- show_praise
-      self$min_time <- min_time
-      self$update_interval <- update_interval
+      self$min_time <- min_time %||% if (is_testing()) Inf else 0.1
+      self$update_interval <- update_interval %||% if (is_testing()) 0 else 0.1
 
       self$skips <- Stack$new()
 
@@ -299,12 +299,7 @@ CompactProgressReporter <- R6::R6Class("CompactProgressReporter",
 
     show_status = function(complete = NULL) {
       self$local_user_output()
-      status <- paste0(
-        colourise("PASS", "success"), " x", self$n_ok, " ",
-        colourise("FAIL", "fail"),    " x", self$n_fail, " ",
-        colourise("WARN", "warn"),    " x", self$n_warn, " ",
-        colourise("SKIP", "skip"),    " x", self$n_skip
-      )
+      status <- summary_line(self$n_ok, self$n_fail, self$n_warn, self$n_skip)
       self$cat_tight("\r", status)
     }
 

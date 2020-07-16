@@ -57,14 +57,8 @@ CheckReporter <- R6::R6Class("CheckReporter",
       }
 
       self$rule("testthat results ", line = 2)
-      self$cat_line(
-        "[ ",
-        "OK: ", self$n_ok, " | ",
-        "SKIPPED: ", self$n_skip, " | ",
-        "WARNINGS: ", self$n_warn, " | ",
-        "FAILED: ", self$n_fail,
-        " ]"
-      )
+      status <- summary_line(self$n_ok, self$n_fail, self$n_warn, self$n_skip)
+      self$cat_line(status)
 
       problems <- self$problems$as_list()
       if (length(problems) == 0) {
@@ -72,15 +66,14 @@ CheckReporter <- R6::R6Class("CheckReporter",
       }
       saveRDS(problems, "testthat-problems.rds")
 
-      if (length(problems) > 10) {
-        show <- problems[1:9]
+      # Get 13 lines of output by default
+      if (length(problems) > 11) {
+        show <- problems[1:10]
       } else {
         show <- problems
       }
 
-      fails <- vapply(show, failure_header, character(1))
-      labels <- format(paste0(1:length(show), "."))
-      self$cat_line(paste0(labels, " ", fails, collapse = "\n"))
+      self$cat_line(vapply(show, failure_header, character(1)))
       if (length(problems) > 10) {
         self$cat_line("... and ", length(problems) - 10, " more")
       }
@@ -92,5 +85,17 @@ CheckReporter <- R6::R6Class("CheckReporter",
 failure_header <- function(x) {
   type <- expectation_type(x)
   substr(type, 1, 1) <- toupper(substr(type, 1, 1))
+  type <- colourise(type, expectation_type(x))
   paste0(type, ": ", x$test, " (", expectation_location(x), ")")
+}
+
+summary_line <- function(n_ok, n_fail, n_warn, n_skip) {
+  paste0(
+    "[ ",
+    colourise("PASS", "success"), " x", n_ok, " ",
+    colourise("FAIL", "fail"),    " x", n_fail, " ",
+    colourise("WARN", "warn"),    " x", n_warn, " ",
+    colourise("SKIP", "skip"),    " x", n_skip,
+    " ]"
+  )
 }

@@ -70,8 +70,8 @@
 
 ---
 
-    WAoAAAADAAMGAwADBQAAAAAFVVRGLTgAAAATAAAABAAAABAAAAABAAQACQAAAAFhAAAADgAA
-    AAE/+AAAAAAAAAAAAA0AAAABAAAAAQAAAAoAAAABAAAAAQ==
+    WAoAAAACAAMGAwACAwAAAAATAAAABAAAABAAAAABAAQACQAAAAFhAAAADgAAAAE/+AAAAAAA
+    AAAAAA0AAAABAAAAAQAAAAoAAAABAAAAAQ==
 
 ## can snapshot conditions
 
@@ -90,4 +90,22 @@
         "x": [1, 2, 3, 4, 5]
       }
     }
+
+## informs about files being accepted
+
+    Updating snapshots
+    * a.new.md
+    * b.new.md
+    
+
+---
+
+    No snapshots to update
+    
+
+## can accept specific files
+
+    Updating snapshots
+    * a.new.md
+    
 

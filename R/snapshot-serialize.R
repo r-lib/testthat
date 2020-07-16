@@ -8,6 +8,8 @@ snap_to_md <- function(data) {
 }
 
 snap_from_md <- function(lines) {
+  lines <- gsub("\r", "", lines, fixed = TRUE)
+
   h2 <- grepl("^## ", lines)
   tests_group <- cumsum(h2)
   tests <- split(lines[!h2], tests_group[!h2])

@@ -70,7 +70,6 @@ test_that("verify_output() doesn't use cli unicode by default", {
   )
 
   local_reproducible_output(unicode = TRUE)
-  skip_if(!cli::is_utf8_output())
   verify_output(
     test_path("test-verify-unicode-true.txt"),
     unicode = TRUE,

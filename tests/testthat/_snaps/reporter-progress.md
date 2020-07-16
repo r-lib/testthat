@@ -1,10 +1,11 @@
 ## captures error before first test
 
-    ✔ |  OK F W S | Context
+    v |  OK F W S | Context
     
-    ⠏ |   0       | reporters/error-setup                                           
-    ✖ |   0 1     | reporters/error-setup
-    ────────────────────────────────────────────────────────────────────────────────
+    / |   0       | reporters/error-setup                                           
+    - |   0 1     | reporters/error-setup                                           
+    x |   0 1     | reporters/error-setup
+    --------------------------------------------------------------------------------
     error-setup.R:6:1: error: (code run outside of `test_that()`)
     Error: !
     Backtrace:
@@ -12,39 +13,49 @@
      3. f()
      4. g() reporters/error-setup.R:1:5
      5. h() reporters/error-setup.R:2:5
-    ────────────────────────────────────────────────────────────────────────────────
+    --------------------------------------------------------------------------------
     
-    ══ Results ═════════════════════════════════════════════════════════════════════
+    == Results =====================================================================
     OK:       0
     Failed:   1
     Warnings: 0
     Skipped:  0
     
-    No one gets it right on their first try
+    I believe in you!
 
 ## gracefully handles multiple contexts
 
-    ✔ |  OK F W S | Context
+    v |  OK F W S | Context
     
-    ⠏ |   0       | reporters/context                                               
-    ⠏ |   0       | my context                                                      
-    ✔ |   1       | my context
+    / |   0       | reporters/context                                               
+    / |   0       | my context                                                      
+    - |   1       | my context                                                      
+    v |   1       | my context
     
-    ══ Results ═════════════════════════════════════════════════════════════════════
+    == Results =====================================================================
     OK:       1
     Failed:   0
     Warnings: 0
     Skipped:  0
     
-    Way to go!
+    You rock!
 
 ## fails after max_fail tests
 
-    ✔ |  OK F W S | Context
+    v |  OK F W S | Context
     
-    ⠏ |   0       | reporters/fail-many                                             
-    ✖ |   0 10     | reporters/fail-many
-    ────────────────────────────────────────────────────────────────────────────────
+    / |   0       | reporters/fail-many                                             
+    - |   0 1     | reporters/fail-many                                             
+    \ |   0 2     | reporters/fail-many                                             
+    | |   0 3     | reporters/fail-many                                             
+    / |   0 4     | reporters/fail-many                                             
+    - |   0 5     | reporters/fail-many                                             
+    \ |   0 6     | reporters/fail-many                                             
+    | |   0 7     | reporters/fail-many                                             
+    / |   0 8     | reporters/fail-many                                             
+    - |   0 9     | reporters/fail-many                                             
+    x |   0 10     | reporters/fail-many
+    --------------------------------------------------------------------------------
     fail-many.R:3:5: failure: Example
     FALSE is not TRUE
     
@@ -104,34 +115,34 @@
     
     `actual`:   FALSE
     `expected`: TRUE 
-    ────────────────────────────────────────────────────────────────────────────────
+    --------------------------------------------------------------------------------
     max_fails exceded 
     
-    ══ Results ═════════════════════════════════════════════════════════════════════
+    == Results =====================================================================
     OK:       0
     Failed:   10
     Warnings: 0
     Skipped:  0
-    ══ Terminated early ════════════════════════════════════════════════════════════
+    == Terminated early ============================================================
     
-    No one gets it right on their first try
+    I believe in you!
 
 ## reports backtraces
 
-    ✔ |  OK F W S | Context
+    v |  OK F W S | Context
     
-    ⠏ |   0       | reporters/backtraces                                            
-    ⠋ |   0 1     | reporters/backtraces                                            
-    ⠙ |   0 2     | reporters/backtraces                                            
-    ⠹ |   0 3     | reporters/backtraces                                            
-    ⠸ |   0 4     | reporters/backtraces                                            
-    ⠼ |   0 5     | reporters/backtraces                                            
-    ⠴ |   0 6     | reporters/backtraces                                            
-    ⠦ |   0 6 1   | reporters/backtraces                                            
-    ⠧ |   1 6 1   | reporters/backtraces                                            
-    ⠇ |   1 7 1   | reporters/backtraces                                            
-    ✖ |   1 7 1   | reporters/backtraces
-    ────────────────────────────────────────────────────────────────────────────────
+    / |   0       | reporters/backtraces                                            
+    - |   0 1     | reporters/backtraces                                            
+    \ |   0 2     | reporters/backtraces                                            
+    | |   0 3     | reporters/backtraces                                            
+    / |   0 4     | reporters/backtraces                                            
+    - |   0 5     | reporters/backtraces                                            
+    \ |   0 6     | reporters/backtraces                                            
+    | |   0 6 1   | reporters/backtraces                                            
+    / |   1 6 1   | reporters/backtraces                                            
+    - |   1 7 1   | reporters/backtraces                                            
+    x |   1 7 1   | reporters/backtraces
+    --------------------------------------------------------------------------------
     backtraces.R:6:3: error: errors thrown at block level are entraced
     Error: foo
     Backtrace:
@@ -200,49 +211,49 @@
      24. f(x - 1) reporters/backtraces.R:56:4
      25. f(x - 1) reporters/backtraces.R:56:4
      26. f(x - 1) reporters/backtraces.R:56:4
-    ────────────────────────────────────────────────────────────────────────────────
+    --------------------------------------------------------------------------------
     
-    ══ Results ═════════════════════════════════════════════════════════════════════
+    == Results =====================================================================
     OK:       1
     Failed:   7
     Warnings: 1
     Skipped:  0
     
-    No one gets it right on their first try
+    I believe in you!
 
 ## compact display is informative
 
     
-    ══ Testing reporters/tests.R ═══════════════════════════════════════════════════
+    == Testing reporters/tests.R ===================================================
     
-    PASS x0 FAIL x0 WARN x0 SKIP x0
-    PASS x0 FAIL x0 WARN x0 SKIP x0
-    PASS x1 FAIL x0 WARN x0 SKIP x0
-    PASS x1 FAIL x0 WARN x0 SKIP x0
-    PASS x1 FAIL x1 WARN x0 SKIP x0
-    PASS x1 FAIL x2 WARN x0 SKIP x0
+    [ PASS x0 FAIL x0 WARN x0 SKIP x0 ]
+    [ PASS x0 FAIL x0 WARN x0 SKIP x0 ]
+    [ PASS x1 FAIL x0 WARN x0 SKIP x0 ]
+    [ PASS x1 FAIL x0 WARN x0 SKIP x0 ]
+    [ PASS x1 FAIL x1 WARN x0 SKIP x0 ]
+    [ PASS x1 FAIL x2 WARN x0 SKIP x0 ]
     
-    ── tests.R:12:3: failure: Failure:1 ────────────────────────────────────────────
+    -- tests.R:12:3: failure: Failure:1 --------------------------------------------
     FALSE is not TRUE
     
     `actual`:   FALSE
     `expected`: TRUE 
     
-    ── tests.R:17:3: failure: Failure:2a ───────────────────────────────────────────
+    -- tests.R:17:3: failure: Failure:2a -------------------------------------------
     FALSE is not TRUE
     
     `actual`:   FALSE
     `expected`: TRUE 
     
     
-    PASS x1 FAIL x2 WARN x0 SKIP x0
-    PASS x1 FAIL x3 WARN x0 SKIP x0
-    PASS x1 FAIL x4 WARN x0 SKIP x0
+    [ PASS x1 FAIL x2 WARN x0 SKIP x0 ]
+    [ PASS x1 FAIL x3 WARN x0 SKIP x0 ]
+    [ PASS x1 FAIL x4 WARN x0 SKIP x0 ]
     
-    ── tests.R:23:3: error: Error:1 ────────────────────────────────────────────────
+    -- tests.R:23:3: error: Error:1 ------------------------------------------------
     Error: stop
     
-    ── tests.R:31:3: error: errors get tracebacks ──────────────────────────────────
+    -- tests.R:31:3: error: errors get tracebacks ----------------------------------
     Error: !
     Backtrace:
      1. f()
@@ -250,25 +261,25 @@
      3. h()
     
     
-    PASS x1 FAIL x4 WARN x0 SKIP x0
-    PASS x1 FAIL x4 WARN x0 SKIP x1
-    PASS x1 FAIL x4 WARN x0 SKIP x2
+    [ PASS x1 FAIL x4 WARN x0 SKIP x0 ]
+    [ PASS x1 FAIL x4 WARN x0 SKIP x1 ]
+    [ PASS x1 FAIL x4 WARN x0 SKIP x2 ]
     
-    ── tests.R:37:3: skip: explicit skips are reported ─────────────────────────────
+    -- tests.R:37:3: skip: explicit skips are reported -----------------------------
     Reason: skip
     
-    ── tests.R:40:1: skip: empty tests are implicitly skipped ──────────────────────
+    -- tests.R:40:1: skip: empty tests are implicitly skipped ----------------------
     Reason: empty test
     
     
-    PASS x1 FAIL x4 WARN x0 SKIP x2
-    PASS x1 FAIL x4 WARN x1 SKIP x2
+    [ PASS x1 FAIL x4 WARN x0 SKIP x2 ]
+    [ PASS x1 FAIL x4 WARN x1 SKIP x2 ]
     
-    ── tests.R:49:3: warning: warnings get backtraces ──────────────────────────────
+    -- tests.R:49:3: warning: warnings get backtraces ------------------------------
     def
     Backtrace:
      1. f() reporters/tests.R:49:2
     
     
-    PASS x1 FAIL x4 WARN x1 SKIP x2
+    [ PASS x1 FAIL x4 WARN x1 SKIP x2 ]
 

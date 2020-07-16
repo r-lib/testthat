@@ -49,7 +49,7 @@ test_that("can control numeric tolerance", {
 })
 
 test_that("provide useful feedback on failure", {
-  local_reproducible_output(crayon = TRUE)
+  local_output_override()
 
   local_edition(3)
   expect_snapshot_error(expect_identical(1, "a"))

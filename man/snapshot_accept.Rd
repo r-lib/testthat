@@ -4,9 +4,15 @@
 \alias{snapshot_accept}
 \title{Snapshot management}
 \usage{
-snapshot_accept(path = "tests/testthat")
+snapshot_accept(files = NULL, path = "tests/testthat")
 }
 \arguments{
+\item{files}{Test files to accept snapshots for. Can be full path to
+test (\code{tests/testthat/test-foo.R}), file name (\code{test-foo.R}), or
+test name (\code{foo}).
+
+Default, \code{NULL}, accepts all snapshots.}
+
 \item{path}{Path to tests}
 }
 \description{
