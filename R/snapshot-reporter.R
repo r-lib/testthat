@@ -64,16 +64,18 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
     },
 
     add_result = function(context, test, result) {
-      if (!expectation_error(result)) {
-        return()
-      }
-
       if (is.null(self$test)) {
         return()
       }
 
-      # If expectation errors, we reset all snapshots
-      self$cur_snaps[[self$test]] <- self$old_snaps[[self$test]]
+      # If expectation errors or skips reset all snapshots
+      if (expectation_error(result) || expectation_skip(result)) {
+        self$cur_snaps[[self$test]] <- self$old_snaps[[self$test]]
+
+        if (self$i > 0) {
+          testthat_warn("Snapshots reset after error/skip")
+        }
+      }
     },
 
     end_file = function() {
