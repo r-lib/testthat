@@ -27,16 +27,29 @@
 #' })
 #' }
 test_that <- function(desc, code) {
+  reporter <- get_reporter()
+  # Running test_that() interactively
+  if (is.null(reporter)) {
+    local_edition(find_edition("."))
+
+    reporter <- StopReporter$new(stop_reporter = FALSE)
+    old <- set_reporter(reporter)
+    on.exit(set_reporter(old), add = TRUE)
+  }
+
+  local_test_context()
+
   code <- substitute(code)
-  test_code(desc, code, env = parent.frame())
+  test_code(desc, code, env = parent.frame(), reporter = reporter)
 }
 
 # Access error fields with `[[` rather than `$` because the
 # `$.Throwable` from the rJava package throws with unknown fields
-test_code <- function(test, code, env = test_env(), skip_on_empty = TRUE) {
-  if (!is.null(test)) {
-    get_reporter()$start_test(context = get_reporter()$.context, test = test)
-    on.exit(get_reporter()$end_test(context = get_reporter()$.context, test = test))
+test_code <- function(test, code, env = test_env(), reporter = get_reporter(), skip_on_empty = TRUE) {
+  reporter <- reporter %||% StopReporter$new()
+  if (!is.null(test) && !is.null(reporter)) {
+    reporter$start_test(context = reporter$.context, test = test)
+    on.exit(reporter$end_test(context = reporter$.context, test = test))
   }
 
   ok <- TRUE
@@ -56,10 +69,10 @@ test_code <- function(test, code, env = test_env(), skip_on_empty = TRUE) {
       e$end_frame <- sys.nframe() - debug_end - 1L
     }
 
-    e$test <- test %||% "(unknown)"
+    e$test <- test %||% "(code run outside of `test_that()`)"
 
     ok <<- ok && expectation_ok(e)
-    get_reporter()$add_result(context = get_reporter()$.context, test = test, result = e)
+    reporter$add_result(context = reporter$.context, test = test, result = e)
   }
 
   frame <- sys.nframe()
@@ -131,6 +144,10 @@ test_code <- function(test, code, env = test_env(), skip_on_empty = TRUE) {
       return()
     }
 
+    if (!inherits(e, "testthat_warn")) {
+      e <- cnd_entrace(e)
+    }
+
     handled <<- TRUE
     register_expectation(e, 5)
 
@@ -138,7 +155,9 @@ test_code <- function(test, code, env = test_env(), skip_on_empty = TRUE) {
   }
   handle_message <- function(e) {
     handled <<- TRUE
-    maybe_restart("muffleMessage")
+    if (edition_get() < 3) {
+     maybe_restart("muffleMessage")
+    }
   }
   handle_skip <- function(e) {
     handled <<- TRUE

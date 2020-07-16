@@ -2,15 +2,17 @@
 % Please edit documentation in R/reporter-progress.R
 \name{ProgressReporter}
 \alias{ProgressReporter}
+\alias{CompactProgressReporter}
 \title{Test reporter: interactive progress bar of errors.}
 \description{
-This reporter is a reimagining of \link{SummaryReporter} designed to make the
-most information available up front, while taking up less space overall. It
-is the default reporting reporter used by \code{\link[=test_dir]{test_dir()}} and \code{\link[=test_file]{test_file()}}.
-}
-\details{
-As an additional benefit, this reporter will praise you from time-to-time
-if all your tests pass.
+\code{ProgressReporter} is designed for interactively use. It's goal is to
+give you actionable insights to help you understand the status of your
+code. This reporter also praises you from time-to-time if all your tests
+pass. It's the default reporter for \code{\link[=test_dir]{test_dir()}}.
+
+\code{CompactProgressReporter} is a minimal version of \code{ProgressReporter}
+designed for use with single files. It's the default reporter for
+\code{\link[=test_file]{test_file()}}.
 }
 \seealso{
 Other reporters: 

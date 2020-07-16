@@ -10,15 +10,24 @@ context(desc)
 \item{desc}{description of context.  Should start with a capital letter.}
 }
 \description{
+\ifelse{html}{\out{<a href='https://www.tidyverse.org/lifecycle/#superseded'><img src='figures/lifecycle-superseded.svg' alt='Superseded lifecycle'></a>}}{\strong{Superseded}}
+
 Use of \code{context()} is no longer recommended. Instead omit it, and messages
 will use the name of the file instead. This ensures that the context and
 test file name are always in sync.
-}
-\details{
+
 A context defines a set of tests that test related functionality.  Usually
 you will have one context per file, but you may have multiple contexts
 in a single file if you so choose.
 }
+\section{3rd edition}{
+
+\ifelse{html}{\figure{lifecycle-deprecated.svg}{options: alt='Deprecated lifecycle'}}{\strong{Deprecated}}
+
+\code{context()} is deprecated in the third edition, and the equivalent
+information is instead recorded by the test file name.
+}
+
 \examples{
 context("String processing")
 context("Remote procedure calls")

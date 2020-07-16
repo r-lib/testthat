@@ -13,15 +13,12 @@ local({
   if (isSolaris)
     return()
 
-  if (!requireNamespace("devtools", quietly = TRUE))
-    return()
-
   if (!requireNamespace("usethis", quietly = TRUE))
     return()
 
-  devel <- try(devtools::has_devel(), silent = TRUE)
-  if (!isTRUE(devel))
-    return()
+  # devel <- try(pkgbuild::has_compiler(), silent = TRUE)
+  # if (!isTRUE(devel))
+  #   return()
 
   quietly <- function(expr) {
     suppressMessages(capture_output(result <- expr))
@@ -44,7 +41,7 @@ local({
       unlink(libPath, recursive = TRUE)
     }, add = TRUE)
 
-    quietly(usethis::create_package(pkgPath))
+    quietly(usethis::create_package(pkgPath, open = FALSE))
     quietly(testthat::use_catch(pkgPath))
 
     cat("LinkingTo: testthat",
@@ -75,17 +72,12 @@ local({
 
     }
 
-    devtools::install(pkgPath, quick = TRUE, quiet = FALSE)
-
+    install.packages(pkgs = pkgPath, repos = NULL, type = "source")
     library(pkgName, character.only = TRUE)
-    stopifnot(.Call("run_testthat_tests", PACKAGE = pkgName))
-
-    devtools::unload(pkgName)
+    stopifnot(.Call("run_testthat_tests", FALSE, PACKAGE = pkgName))
+    pkgload::unload(pkgName)
   }
 
-  withr::with_envvar(c(R_TESTS = ''),
-                       perform_test("testthatclient1",  TRUE))
-  withr::with_envvar(c(R_TESTS = ''),
-                     perform_test("testthatclient2", FALSE))
-
+  withr::with_envvar(c(R_TESTS = ''), perform_test("testthatclient1",  TRUE))
+  withr::with_envvar(c(R_TESTS = ''), perform_test("testthatclient2", FALSE))
 })

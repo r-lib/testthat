@@ -1,6 +1,4 @@
 test_that("test_examples works with installed packages", {
-  env_test$package <- "testthat"
-  on.exit(env_test$package <- NULL)
   with_mock(
     test_rd = identity,
     {
@@ -11,5 +9,6 @@ test_that("test_examples works with installed packages", {
 })
 
 test_that("test_examples fails if no examples", {
+  withr::local_envvar(list(TESTTHAT_PKG = ""))
   expect_error(test_examples("asdf"), "Could not find examples")
 })

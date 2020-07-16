@@ -1,6 +1,15 @@
 #' Expect that a condition holds.
 #'
+#' @description
+#' `r lifecycle::badge("superseded")`
+#'
 #' An old style of testing that's no longer encouraged.
+#'
+#' @section 3rd edition:
+#' `r lifecycle::badge("deprecated")`
+#'
+#' This style of testing is formally deprecated as of the 3rd edition.
+#' Use a more specific `expect_` function instead.
 #'
 #' @param object Object to test.
 #'
@@ -23,6 +32,7 @@
 #' expect_that(sqrt(2) ^ 2, is_identical_to(2))
 #' }
 expect_that <- function(object, condition, info = NULL, label = NULL) {
+  edition_deprecate(3, "expect_that()")
   condition(object)
 }
 

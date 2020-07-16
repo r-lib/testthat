@@ -1,6 +1,3 @@
-#' @include reporter.R
-NULL
-
 #' Test reporter: minimal.
 #'
 #' The minimal test reporter provides the absolutely minimum amount of

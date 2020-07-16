@@ -30,7 +30,7 @@
 #'   it("can be multiplied by a scalar", {
 #'     m1 <- matrix(1:4, 2, 2)
 #'     m2 <- m1 * 2
-#'     expect_equivalent(matrix(1:4 * 2, 2, 2), m2)
+#'     expect_equal(matrix(1:4 * 2, 2, 2), m2)
 #'   })
 #'   it("can have not yet tested specs")
 #' })
@@ -44,12 +44,12 @@
 #' describe("math library", {
 #'   describe("addition()", {
 #'     it("can add two numbers", {
-#'       expect_equivalent(1 + 1, addition(1, 1))
+#'       expect_equal(1 + 1, addition(1, 1))
 #'     })
 #'   })
 #'   describe("division()", {
 #'     it("can divide two numbers", {
-#'       expect_equivalent(10 / 2, division(10, 2))
+#'       expect_equal(10 / 2, division(10, 2))
 #'     })
 #'     it("can handle division by 0") #not yet implemented
 #'   })

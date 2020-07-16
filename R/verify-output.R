@@ -89,8 +89,9 @@ verify_output <- function(path, code, width = 80, crayon = FALSE,
     unicode = unicode,
     env = env
   )
+  output <- gsub("\r", "", output, fixed = TRUE)
 
-  if (is_testing() && on_cran()) {
+  if (!interactive() && on_cran()) {
     skip("On CRAN")
   }
   compare_file(path, output, update = TRUE)
@@ -103,26 +104,18 @@ verify_exec <- function(exprs,
                         unicode = FALSE,
                         env = caller_env()) {
 
-  withr::local_options(list(
-    width = width,
-    crayon.enabled = crayon,
-    cli.unicode = unicode
-  ))
-  withr::local_envvar(list(
-    RSTUDIO = 0,
-    RSTUDIO_CONSOLE_WIDTH = width
-  ))
+  local_reproducible_output(width = width, crayon = crayon, unicode = unicode)
+  withr::local_pdf(tempfile())
+  grDevices::dev.control(displaylist = "enable")
 
   exprs <- lapply(exprs, function(x) if (is.character(x)) paste0("# ", x) else expr_deparse(x))
   source <- unlist(exprs, recursive = FALSE)
 
-  # Open temporary new device
-  grDevices::png(filename = tempfile())
-  grDevices::dev.control(displaylist = "enable")
-  dev <- grDevices::dev.cur()
-  on.exit(grDevices::dev.off(dev), add = TRUE)
-
-  results <- evaluate::evaluate(source, envir = env, new_device = FALSE)
+  handler <- evaluate::new_output_handler(value = testthat_print)
+  results <- evaluate::evaluate(source, envir = env,
+    new_device = FALSE,
+    output_handler = handler
+  )
   unlist(lapply(results, output_replay))
 }
 

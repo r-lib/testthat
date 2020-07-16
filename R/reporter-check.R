@@ -1,6 +1,3 @@
-#' @include reporter.R
-NULL
-
 #' Check reporter: 13 line summary of problems
 #'
 #' `R CMD check` displays only the last 13 lines of the result, so this
@@ -11,105 +8,94 @@ NULL
 CheckReporter <- R6::R6Class("CheckReporter",
   inherit = Reporter,
   public = list(
-    failures = list(),
+    problems = NULL,
+    skips = NULL,
+
     n_ok = 0L,
     n_skip = 0L,
     n_fail = 0L,
     n_warn = 0L,
 
-    stop_on_failure = TRUE,
+    initialize = function(...) {
+      self$problems <- Stack$new()
+      self$skips <- Stack$new()
 
-    initialize = function(stop_on_failure = TRUE, ...) {
-      self$stop_on_failure <- stop_on_failure
       super$initialize(...)
     },
 
     add_result = function(context, test, result) {
-      if (expectation_skip(result)) {
-        self$n_skip <- self$n_skip + 1L
-        return()
-      }
-      if (expectation_warning(result)) {
-        self$n_warn <- self$n_warn + 1L
-        return()
-      }
-      if (expectation_ok(result)) {
+      if (expectation_success(result)) {
         self$n_ok <- self$n_ok + 1L
         return()
       }
 
-      self$n_fail <- self$n_fail + 1L
-      self$failures[[self$n_fail]] <- result
+      self$problems$push(result)
 
-      self$cat_line(failure_summary(result, self$n_fail))
+      if (expectation_skip(result)) {
+        self$n_skip <- self$n_skip + 1L
+        self$skips$push(result$message)
+      } else if (expectation_warning(result)) {
+        self$n_warn <- self$n_warn + 1L
+      } else {
+        self$n_fail <- self$n_fail + 1L
+      }
+
+      type <- expectation_type(result)
+      header <- failure_header(result)
+
+      self$local_user_output()
+      self$rule(header, col = testthat_style(type))
+      self$cat_line(format(result, simplify = "none"))
       self$cat_line()
     },
 
     end_reporter = function() {
+      if (self$n_skip > 0) {
+        self$rule("Skipped tests ", line = 1)
+        self$cat_line(skip_bullets(self$skips$as_list()))
+        self$cat_line()
+      }
+
       self$rule("testthat results ", line = 2)
-      self$cat_line(
-        "[ ",
-        "OK: ", self$n_ok, " | ",
-        "SKIPPED: ", self$n_skip, " | ",
-        "WARNINGS: ", self$n_warn, " | ",
-        "FAILED: ", self$n_fail,
-        " ]"
-      )
+      status <- summary_line(self$n_ok, self$n_fail, self$n_warn, self$n_skip)
+      self$cat_line(status)
 
-      if (self$n_fail == 0) return()
+      problems <- self$problems$as_list()
+      if (length(problems) == 0) {
+        return()
+      }
+      saveRDS(problems, "testthat-problems.rds")
 
-      if (self$n_fail > 10) {
-        show <- self$failures[1:9]
+      # Get 13 lines of output by default
+      if (length(problems) > 11) {
+        show <- problems[1:10]
       } else {
-        show <- self$failures
+        show <- problems
       }
 
-      fails <- vapply(show, failure_header, character(1))
-      if (self$n_fail > 10) {
-        fails <- c(fails, "...")
+      self$cat_line(vapply(show, failure_header, character(1)))
+      if (length(problems) > 10) {
+        self$cat_line("... and ", length(problems) - 10, " more")
       }
-      labels <- format(paste0(1:length(show), "."))
-      self$cat_line(paste0(labels, " ", fails, collapse = "\n"))
       self$cat_line()
-
-      if (self$stop_on_failure) {
-        stop("testthat unit tests failed", call. = FALSE)
-      }
     }
   )
 )
 
-
-skip_summary <- function(x, label) {
-  header <- paste0(label, ". ", x$test)
-
-  paste0(
-    colourise(header, "skip"), src_loc(x$srcref), " - ", x$message
-  )
-}
-
-failure_summary <- function(x, label, width = cli::console_width()) {
-  header <- paste0(label, ". ", failure_header(x))
-
-  paste0(
-    cli::rule(header, col = testthat_style("error")), "\n",
-    format(x)
-  )
-}
-
 failure_header <- function(x) {
-  type <- switch(expectation_type(x),
-    error = "Error",
-    failure = "Failure"
-  )
-
-  paste0(type, ": ", x$test, src_loc(x$srcref), " ")
+  type <- expectation_type(x)
+  substr(type, 1, 1) <- toupper(substr(type, 1, 1))
+  type <- colourise(type, expectation_type(x))
+  paste0(type, ": ", x$test, " (", expectation_location(x), ")")
 }
 
-src_loc <- function(ref) {
-  if (is.null(ref)) {
-    ""
-  } else {
-    paste0(" (@", basename(attr(ref, "srcfile")$filename), "#", ref[1], ")")
-  }
+summary_line <- function(n_ok, n_fail, n_warn, n_skip) {
+  paste0(
+    "[ ",
+    colourise("PASS", "success"), " x", n_ok, " ",
+    colourise("FAIL", "fail"),    " x", n_fail, " ",
+    colourise("WARN", "warn"),    " x", n_warn, " ",
+    colourise("SKIP", "skip"),    " x", n_skip,
+    " ]"
+  )
 }

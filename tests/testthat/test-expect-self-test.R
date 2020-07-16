@@ -25,5 +25,5 @@ test_that("expect_failure errors if no failure", {
 
 test_that("show_failure", {
   expect_null(show_failure(NULL))
-  expect_output(show_failure(expect_true(FALSE)), "FALSE isn't true.")
+  expect_output(show_failure(expect_true(FALSE)), "FALSE is not TRUE")
 })

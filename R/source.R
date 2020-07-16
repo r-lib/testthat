@@ -2,24 +2,18 @@
 #'
 #' These are used by [test_dir()] and friends
 #'
-#' @inheritSection test_dir Test files
 #' @param path Path to files.
 #' @param pattern Regular expression used to filter files.
 #' @param env Environment in which to evaluate code.
 #' @param chdir Change working directory to `dirname(path)`?
-#' @param encoding Deprecated.
 #' @param wrap Automatically wrap all code within [test_that()]? This ensures
 #'   that all expectations are reported, even if outside a test block.
 #' @export
 #' @keywords internal
 source_file <- function(path, env = test_env(), chdir = TRUE,
-                        encoding = "unknown", wrap = TRUE) {
+                        wrap = TRUE) {
   stopifnot(file.exists(path))
   stopifnot(is.environment(env))
-
-  if (!missing(encoding) && !identical(encoding, "UTF-8")) {
-    warning("`encoding` is deprecated; all files now assumed to be UTF-8", call. = FALSE)
-  }
 
   lines <- read_lines(path)
   srcfile <- srcfilecopy(path, lines, file.info(path)[1, "mtime"], isFile = TRUE)

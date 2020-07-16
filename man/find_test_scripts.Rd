@@ -2,23 +2,25 @@
 % Please edit documentation in R/test-files.R
 \name{find_test_scripts}
 \alias{find_test_scripts}
-\title{Find the test files.}
+\title{Find test files}
 \usage{
-find_test_scripts(path, filter = NULL, invert = FALSE, ...)
+find_test_scripts(path, filter = NULL, invert = FALSE, ..., full.names = TRUE)
 }
 \arguments{
 \item{path}{path to tests}
 
-\item{filter}{cf \code{\link[=test_dir]{test_dir()}}}
+\item{filter}{If not \code{NULL}, only tests with file names matching this
+regular expression will be executed. Matching is performed on the file
+name after it's stripped of \code{"test-"} and \code{".R"}.}
 
-\item{invert}{If \sQuote{TRUE} return files which do \emph{not} match.}
+\item{invert}{If \code{TRUE} return files which \strong{don't} match.}
 
 \item{...}{Additional arguments passed to \code{\link[=grepl]{grepl()}} to control filtering.}
 }
 \value{
-the test file paths
+A character vector of paths
 }
 \description{
-Find the test files.
+Find test files
 }
 \keyword{internal}

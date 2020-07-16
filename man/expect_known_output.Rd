@@ -44,8 +44,9 @@ more details.}
 the expectation that you'll notice changes because of the first failure,
 and then see the modified files in git.}
 
-\item{...}{Passed on to \code{\link[waldo:compare]{waldo::compare()}} to control the details of
-the comparison.}
+\item{...}{In the 3rd edition; passed on to \code{\link[waldo:compare]{waldo::compare()}}. See
+its docs to see other ways to control comparison. In the 2nd edition;
+passed on to \code{\link[=compare]{compare()}}/\code{\link[=identical]{identical()}}.}
 
 \item{info}{Extra information to be included in the message. This argument
 is soft-deprecated and should not be used in new code. Instead see
@@ -55,8 +56,7 @@ alternatives in \link{quasi_label}.}
 use only.}
 
 \item{print}{If \code{TRUE} and the result of evaluating \code{code} is
-visible this will print the result, ensuring that the output of printing
-the object is included in the overall output}
+visible, print the result using \code{testthat_print()}.}
 
 \item{width}{Number of characters per line of output. This does not
 inherit from \code{getOption("width")} so that tests always use the same
@@ -87,6 +87,14 @@ interactively. \verb{R CMD check} clones the package source so any changes to
 the reference files will occur in a temporary directory, and will not be
 synchronised back to the source package.
 }
+\section{3rd edition}{
+
+\ifelse{html}{\figure{lifecycle-deprecated.svg}{options: alt='Deprecated lifecycle'}}{\strong{Deprecated}}
+
+\code{expect_known_output()} and friends are deprecated in the 3rd edition;
+please use \code{\link[=expect_snapshot_output]{expect_snapshot_output()}} and friends instead.
+}
+
 \examples{
 tmp <- tempfile()
 

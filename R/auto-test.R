@@ -73,29 +73,20 @@ auto_test <- function(code_path, test_path, reporter = default_reporter(),
 #' @keywords debugging
 #' @seealso [auto_test()] for details on how method works
 auto_test_package <- function(pkg = ".", reporter = default_reporter(), hash = TRUE) {
-  if (!requireNamespace("devtools", quietly = TRUE)) {
-    stop(
-      "devtools required to run auto_test_package(). Please install.",
-      call. = FALSE
-    )
-  }
-
   reporter <- find_reporter(reporter)
 
-  path <- pkg
-  pkg <- devtools::as.package(pkg)
+  path <- pkgload::pkg_path(path)
+  package <- pkgload::pkg_name(path)
 
-  code_path <- file.path(pkg$path, c("R", "src"))
+  code_path <- file.path(path, c("R", "src"))
   code_path <- code_path[file.exists(code_path)]
   code_path <- normalizePath(code_path)
-  test_path <- normalizePath(file.path(pkg$path, "tests", "testthat"))
+  test_path <- normalizePath(file.path(path, "tests", "testthat"))
 
   # Start by loading all code and running all tests
-  env <- devtools::load_all(path)$env
-  withr::with_envvar(
-    devtools::r_env_vars(),
-    test_dir(test_path, env = env, reporter = reporter$clone(deep = TRUE))
-  )
+  withr::local_envvar(list("NOT_CRAN" = "true"))
+  pkgload::load_all(path)
+  test_dir(test_path, package = package, reporter = reporter$clone(deep = TRUE))
 
   # Next set up watcher to monitor changes
   watcher <- function(added, deleted, modified) {
@@ -114,21 +105,22 @@ auto_test_package <- function(pkg = ".", reporter = default_reporter(), hash = T
       # Reload code and rerun all tests
       cat("Changed code: ", paste0(basename(code), collapse = ", "), "\n")
       cat("Rerunning all tests\n")
-      env <<- devtools::load_all(pkg, quiet = TRUE)$env
-      withr::with_envvar(
-        devtools::r_env_vars(),
-        test_dir(test_path, env = env, reporter = reporter$clone(deep = TRUE))
-      )
+      pkgload::load_all(path, quiet = TRUE)
+      test_dir(test_path, package = package, reporter = reporter$clone(deep = TRUE))
     } else if (length(tests) > 0) {
       # If test changes, rerun just that test
       cat("Rerunning tests: ", paste0(basename(tests), collapse = ", "), "\n")
-      withr::with_envvar(
-        devtools::r_env_vars(),
-        test_files(tests, env = env, reporter = reporter$clone(deep = TRUE))
-      )
+      env <- env_clone(asNamespace(package))
+      test_files(tests, env, reporter = reporter$clone(deep = TRUE))
     }
 
     TRUE
   }
   watch(c(code_path, test_path), watcher, hash = hash)
+}
+
+# Helpers -----------------------------------------------------------------
+
+starts_with <- function(string, prefix) {
+  substr(string, 1, nchar(prefix)) == prefix
 }

@@ -36,7 +36,7 @@ signalled with the following protocol:
 \itemize{
 \item If the expectation is a failure or an error, it is signalled with
 \code{\link[base:stop]{base::stop()}}. Otherwise, it is signalled with
-\code{\link[base:signalCondition]{base::signalCondition()}}.
+\code{\link[base:conditions]{base::signalCondition()}}.
 \item The \code{continue_test} restart is registered. When invoked, failing
 expectations are ignored and normal control flow is resumed to
 run the other tests.

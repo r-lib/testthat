@@ -1,6 +1,13 @@
-context("test_that")
+test_that("can't access variables from other tests (1)", {
+  a <- 10
+  expect_true(TRUE)
+})
+test_that("can't access variables from other tests (2)", {
+  expect_false(exists("a"))
+})
 
 test_that("messages are suppressed", {
+  local_edition(2)
   message("YOU SHOULDN'T SEE ME")
   succeed()
 })
@@ -37,7 +44,7 @@ test_that("failures are errors", {
     expect_false(TRUE)
   }
 
-  expect_error(f(), "isn't true", class = "expectation_failure")
+  expect_error(f(), "is not TRUE", class = "expectation_failure")
 })
 
 test_that("infinite recursion is captured", {
@@ -89,7 +96,7 @@ expectation_lines <- function(code) {
 
 test_that("line numbers captured in simple case", {
   lines <- expectation_lines({
-    context("testing testFile")  # line 1
+                                 # line 1
     test_that("simple", {        # line 2
       expect_true(FALSE)         # line 3
     })                           # line 4

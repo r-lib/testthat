@@ -5,8 +5,6 @@ test_that("ListReporter with test_file and NULL reporter", {
   expect_error(test_file(test_path(test_file_path), reporter = NULL), NA)
 })
 
-
-
 # regression: check that an exception is reported if it is raised in the test file outside
 # of a test (test_that() call).
 # N.B: the exception here happens between two tests: "before" and "after"
@@ -44,30 +42,21 @@ test_that("captures error if only thing in file", {
 test_that("exercise ListReporter", {
   test_file_path <- 'test-list-reporter/test-exercise-list-reporter.R'
   res <- test_file(test_path(test_file_path), reporter = NULL)
-
-  expect_is(res, "testthat_results")
-  expect_length(res, 5) # 5 tests
+  expect_s3_class(res, "testthat_results")
 
   # we convert the results to data frame for convenience
   df <- as.data.frame(res)
-
-  expect_identical(unique(df$context), c("context1", "context2"))
-  expect_identical(unique(df$file), basename(test_file_path))
+  expect_equal(nrow(df), 5)
+  expect_equal(df$test, c("test1", "test2", "test-pass", "test-fail", "test-error"))
 
   # test "A failing test" is the only failing test
-  failed_idx <- which(df$failed != 0)
-  expect_identical(df$test[failed_idx], "A failing test")
-  failed_test <- res[[failed_idx]]
-  expect_identical(expectation_type(failed_test$results[[1]]), "failure")
+  expect_equal(df$failed, c(0, 0, 0, 1, 0))
+  expect_identical(expectation_type(res[[4]]$results[[1]]), "failure")
 
   # test "A crashing test" is the only crashing test
-  crashed_idx <- which(df$error)
-  expect_identical(df$test[crashed_idx], "A crashing test")
-  crashed_test <- res[[crashed_idx]]
-  expect_identical(expectation_type(crashed_test$results[[1]]), "error")
+  expect_equal(df$error, c(FALSE, FALSE, FALSE, FALSE, TRUE))
+  expect_identical(expectation_type(res[[5]]$results[[1]]), "error")
 })
-
-
 
 # bare expectations are ignored
 test_that("ListReporter and bare expectations", {

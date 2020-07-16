@@ -292,12 +292,9 @@ cleanup_test_processes <- function(queue, path) {
   }
 }
 
-#' The reporter in the subprocess
-#'
-#' It forwards events to the main process.
-#'
-#' @include reporter.R
-
+# The reporter in the subprocess
+#
+# It forwards events to the main process.
 SubprocessReporter <- R6::R6Class("SubprocessReporter",
   inherit = Reporter,
   public = list(

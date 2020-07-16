@@ -1,6 +1,6 @@
 Package: testthat
 Title: Unit Testing for R
-Version: 2.3.2.9000
+Version: 2.99.0.9000
 Authors@R: 
     c(person(given = "Hadley",
              family = "Wickham",
@@ -25,9 +25,12 @@ Imports:
     callr (>= 3.4.3),
     cli,
     crayon (>= 1.3.4),
+    desc,
     digest,
-    ellipsis,
+    ellipsis (>= 0.2.0),
     evaluate,
+    jsonlite,
+    lifecycle,
     magrittr,
     methods,
     pkgload,
@@ -36,94 +39,20 @@ Imports:
     R6 (>= 2.2.0),
     rlang (>= 0.4.1),
     utils,
-    withr (>= 2.0.0),
-    waldo
+    waldo (>= 0.2.0),
+    withr (>= 2.0.0)
 Suggests: 
     covr,
     curl (>= 0.9.5),
-    devtools,
     knitr,
     rmarkdown,
+    rstudioapi,
     usethis,
     vctrs (>= 0.1.0),
     xml2
 VignetteBuilder: 
     knitr
+Config/testthat/edition: 3
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE, r6 = FALSE)
-RoxygenNote: 7.1.0
-Collate: 
-    'auto-test.R'
-    'capture-condition.R'
-    'capture-output.R'
-    'colour-text.R'
-    'compare.R'
-    'compare-character.R'
-    'compare-numeric.R'
-    'compare-time.R'
-    'context.R'
-    'describe.R'
-    'evaluate-promise.R'
-    'example.R'
-    'expect-comparison.R'
-    'expect-condition.R'
-    'expect-equality.R'
-    'expect-inheritance.R'
-    'expect-invisible.R'
-    'expect-known.R'
-    'expect-length.R'
-    'expect-logical.R'
-    'expect-messages.R'
-    'expect-named.R'
-    'expect-null.R'
-    'expect-output.R'
-    'reporter.R'
-    'expect-self-test.R'
-    'expect-setequal.R'
-    'expect-silent.R'
-    'expect-that.R'
-    'expect-vector.R'
-    'expectation.R'
-    'expectations-matches.R'
-    'make-expectation.R'
-    'mock.R'
-    'old-school.R'
-    'praise.R'
-    'quasi-label.R'
-    'recover.R'
-    'reporter-check.R'
-    'reporter-debug.R'
-    'reporter-fail.R'
-    'reporter-junit.R'
-    'reporter-list.R'
-    'reporter-location.R'
-    'reporter-minimal.R'
-    'reporter-multi.R'
-    'stack.R'
-    'reporter-progress.R'
-    'reporter-rstudio.R'
-    'reporter-silent.R'
-    'reporter-stop.R'
-    'reporter-summary.R'
-    'reporter-tap.R'
-    'reporter-teamcity.R'
-    'reporter-zzz.R'
-    'skip.R'
-    'source.R'
-    'taskq.R'
-    'teardown.R'
-    'test-compiled-code.R'
-    'test-directory-c.R'
-    'test-directory.R'
-    'test-example.R'
-    'test-files.R'
-    'test-path.R'
-    'test-that.R'
-    'try-again.R'
-    'utils-io.R'
-    'utils.R'
-    'verify-output.R'
-    'watcher.R'
-Remotes: 
-    r-lib/xml2,
-    r-lib/waldo
+RoxygenNote: 7.1.1

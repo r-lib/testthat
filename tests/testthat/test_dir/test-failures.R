@@ -1,5 +1,3 @@
-context("failures")
-
 test_that("just one failure", {
   expect_true(FALSE)
 })

@@ -1,6 +1,3 @@
-#' @include reporter.R
-NULL
-
 #' Multi reporter: combine several reporters in one.
 #'
 #' This reporter is useful to use several reporters at the same time, e.g.
@@ -49,5 +46,10 @@ MultiReporter <- R6::R6Class("MultiReporter",
 )
 
 o_apply <- function(objects, method, ...) {
-  lapply(objects, function(x) x[[method]](...))
+  x <- NULL # silence check note
+  f <- new_function(exprs(x = ), expr(
+    `$`(x, !!method)(...)
+  ))
+
+  lapply(objects, f)
 }

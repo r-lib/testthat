@@ -1,6 +1,3 @@
-#' @include reporter.R
-NULL
-
 #' Test reporter: stop on error.
 #'
 #' The default reporter, executed when `expect_that` is run interactively.
@@ -17,40 +14,45 @@ StopReporter <- R6::R6Class("StopReporter",
   inherit = Reporter,
   public = list(
     failures = NULL,
+    n_fail = 0L,
+    stop_reporter = TRUE,
 
-    initialize = function() {
+    initialize = function(stop_reporter = TRUE) {
       super$initialize()
+      self$failures <- Stack$new()
+      self$stop_reporter <- stop_reporter
+    },
+
+    start_test = function(context, test) {
       self$failures <- Stack$new()
     },
 
-    end_test = function(context, test) {
-      failures <- self$failures$as_list()
-      if (length(failures) == 0) {
+    add_result = function(context, test, result) {
+      if (expectation_success(result)) {
         return()
       }
 
-      # reset failures for next test
-      self$failures$initialize()
-
-      messages <- vapply(failures, format, character(1))
-      locations <- vapply(failures, exp_location, character(1))
-      messages <- paste0("* ", locations, messages, collapse = "\n")
-      message <- paste_line(
-        paste0("Test failed: '", test, "'"),
-        !!!messages
-      )
-
-      if (is.null(findRestart("testthat_abort_reporter"))) {
-        stop(message, call. = FALSE)
-      } else {
-        cat(message, "\n")
-        invokeRestart("testthat_abort_reporter")
+      if (expectation_broken(result)) {
+        self$n_fail <- self$n_fail + 1
       }
+
+      self$failures$push(result)
     },
 
-    add_result = function(context, test, result) {
-      if (expectation_broken(result)) {
-        self$failures$push(result)
+    end_test = function(context, test) {
+      self$local_user_output()
+
+      failures <- self$failures$as_list()
+      if (length(failures) == 0) {
+        self$cat_line(colourise("Test succeeded", "success"), " ", praise_emoji())
+        return()
+      }
+
+      messages <- vapply(failures, issue_summary, rule = TRUE, character(1))
+      self$cat_line(messages, "\n")
+
+      if (self$stop_reporter && self$n_fail > 1) {
+        stop_reporter("Test failed")
       }
     }
   )

@@ -69,11 +69,17 @@ test_that("verify_output() doesn't use cli unicode by default", {
     }
   )
 
-  skip_if(!cli::is_utf8_output())
+  local_reproducible_output(unicode = TRUE)
   verify_output(
     test_path("test-verify-unicode-true.txt"),
     unicode = TRUE,
     {
       cat(cli::symbol$info, cli::symbol$cross, "\n")
     })
+})
+
+test_that("verify_output() handles carriage return", {
+  verify_output(test_path("test-verify-conditions-cr.txt"), {
+    cat("\r\n")
+  })
 })

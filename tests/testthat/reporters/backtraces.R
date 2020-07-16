@@ -1,4 +1,4 @@
-context("Backtraces")
+
 
 test_that("errors thrown at block level are entraced", {
   f <- function() g()
@@ -8,14 +8,14 @@ test_that("errors thrown at block level are entraced", {
 
 test_that("errors thrown from a quasi-labelled argument are entraced", {
   foo <- function() stop("foo")
-  expect_is(foo(), "foo")
+  expect_s3_class(foo(), "foo")
 })
 
 test_that("errors thrown from a quasi-labelled argument are entraced (deep case)", {
   foo <- function() stop("foo")
   f <- function() g()
-  g <- function() expect_is(foo(), "foo")
-  expect_is(f(), "foo")
+  g <- function() expect_s3_class(foo(), "foo")
+  expect_s3_class(f(), "foo")
 })
 
 test_that("errors thrown from a quasi-labelled argument are entraced (deep deep case)", {
@@ -23,16 +23,13 @@ test_that("errors thrown from a quasi-labelled argument are entraced (deep deep 
   bar <- function() stop("foobar")
 
   f <- function() g()
-  g <- function() expect_is(foo(), "foo")
+  g <- function() expect_s3_class(foo(), "foo")
 
   f()
 })
 
 test_that("failed expect_error() prints a backtrace", {
   f <- function() signaller()
-
-  signaller <- function() signalCondition(structure(list(), class = "bar"))
-  expect_condition(f(), class = "foo")
 
   signaller <- function() stop("bar")
   expect_error(f(), "foo")
@@ -44,5 +41,20 @@ test_that("Errors are inspected with `conditionMessage()`", {
     conditionMessage.foobar = function(...) "dispatched"
   )
   rlang::abort("Wrong message", "foobar")
+})
+
+test_that("also get backtraces for warnings", {
+  foo <- function() bar()
+  bar <- function() warning("foobar", call. = FALSE)
+
+  foo()
+  expect_true(TRUE)
+})
+
+test_that("deep stacks are trimmed", {
+  f <- function(x) {
+    if (x > 0) f(x - 1) else stop("This is deep")
+  }
+  f(25)
 })
 

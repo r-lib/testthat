@@ -2,17 +2,9 @@
 % Please edit documentation in R/test-files.R
 \name{test_file}
 \alias{test_file}
-\title{Run all tests in specified file}
+\title{Run all tests in a single file}
 \usage{
-test_file(
-  path,
-  reporter = default_reporter(),
-  env = test_env(),
-  start_end_reporter = TRUE,
-  load_helpers = TRUE,
-  encoding = "unknown",
-  wrap = TRUE
-)
+test_file(path, reporter = default_compact_reporter(), package = NULL, ...)
 }
 \arguments{
 \item{path}{Path to file.}
@@ -23,38 +15,53 @@ as a string (e.g. "summary") or as an R6 object
 
 See \link{Reporter} for more details and a list of built-in reporters.}
 
-\item{env}{Environment in which to execute the tests. Expert use only.}
+\item{package}{If these tests belong to a package, the name of the package.}
 
-\item{start_end_reporter}{Should the reporters \code{start_reporter()} and
-\code{end_reporter()} methods be called? For expert use only.}
-
-\item{load_helpers}{Source helper files before running the tests?
-See \code{\link[=source_test_helpers]{source_test_helpers()}} for more details.}
-
-\item{encoding}{Deprecated. All files now assumed to be UTF-8.}
-
-\item{wrap}{Automatically wrap all code within \code{\link[=test_that]{test_that()}}? This ensures
-that all expectations are reported, even if outside a test block.}
+\item{...}{Additional parameters passed on to \code{test_dir()}}
 }
 \value{
-Invisibly, a list with one element for each test.
+A list (invisibly) containing data about the test results.
 }
 \description{
-Execute code in the specified file, displaying results using a \code{reporter}.
-Use this function when you want to run a single file's worth of tests.
-You are responsible for ensuring that the functions to test are available
-in the global environment.
+A variant of \code{\link[=test_dir]{test_dir()}} that only tests a single file within a directory.
+Helper, setup, and teardown files located in the same directory as the
+test will also be run.
 }
-\details{
-Any errors that occur in code run outside of \code{test_that()} will generate
-a test failure and terminate execution of that test file.
+\section{Special files}{
+
+There are two types of \code{.R} file that have special behaviour:
+\itemize{
+\item Test files start with \code{test} and are executed in alphabetical order.
+\item Setup files start with \code{setup} and are executed before tests. If
+clean up is needed after all tests have been run, you can use
+\code{withr::defer(clean_up(), teardown_env())}. See \verb{vignette("text-fixtures)}
+for more details.
 }
+
+There are two other types of special file that we no longer recommend using:
+\itemize{
+\item Helper files start with \code{helper} and are executed before tests are
+run. They're also loaded by \code{devtools::load_all()}, so there's no
+real point to them and you should just put your helper code in \verb{R/}.
+\item Teardown files start with \code{teardown} and are executed after the tests
+are run. Now we recommend interleave setup and cleanup code in \verb{setup-}
+files, making it easier to check that you automatically clean up every
+mess that you make.
+}
+
+All other files are ignored by testthat.
+}
+
+\section{Environments}{
+
+Each test is run in a clean environment to keep tests as isolated as
+possible. For package tests, that environment that inherits from the
+package's namespace environment, so that tests can access internal functions
+and objects.
+}
+
 \examples{
 path <- testthat_example("success")
+test_file(path)
 test_file(path, reporter = "minimal")
-
-# test_file() invisibly returns a list, with one element for each test.
-# This can be useful if you want to compute on your test results.
-out <- test_file(path, reporter = "minimal")
-str(out[[1]])
 }

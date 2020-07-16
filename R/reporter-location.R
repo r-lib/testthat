@@ -1,6 +1,3 @@
-#' @include reporter.R
-NULL
-
 #' Test reporter: location
 #'
 #' This reporter simply prints the location of every expectation and error.
@@ -17,15 +14,8 @@ LocationReporter <- R6::R6Class("LocationReporter",
     },
 
     add_result = function(context, test, result) {
-      ref <- result$srcref
-      if (is.null(ref)) {
-        location <- "?#?:?"
-      } else {
-        location <- paste0(basename(attr(ref, "srcfile")$filename), "#", ref[1], ":1")
-      }
-
       status <- expectation_type(result)
-      self$cat_line("  ", location, " [", status, "]")
+      self$cat_line("  ", expectation_location(result), " [", status, "]")
     },
 
     end_test = function(context, test) {

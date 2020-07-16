@@ -10,6 +10,8 @@
 #' * `expect_s4_class(x, class)` checks that `x` is an S4 object that
 #'   [is()] `class`.
 #'
+#' See [expect_vector()] for testing properties of objects created by vctrs.
+#'
 #' @param type String giving base type (as returned by [typeof()]).
 #' @param class character vector of class names
 #' @inheritParams expect_that
@@ -103,16 +105,28 @@ isS3 <- function(x) is.object(x) && !isS4(x)
 
 #' Expectation: does the object inherit from a given class?
 #'
+#' @description
+#' `r lifecycle::badge("superseded")`
+#'
 #' `expect_is()` is an older form that uses [inherits()] without checking
 #' whether `x` is S3, S4, or neither. Instead, I'd recommend using
 #' [expect_type()], [expect_s3_class()] or [expect_s4_class()] to more clearly
 #' convey your  intent.
+#'
+#' @section 3rd edition:
+#' `r lifecycle::badge("deprecated")`
+#'
+#' `expect_is()` is formally deprecated in the 3rd edition.
 #'
 #' @keywords internal
 #' @inheritParams expect_type
 #' @export
 expect_is <- function(object, class, info = NULL, label = NULL) {
   stopifnot(is.character(class))
+  edition_deprecate(3, "expect_is()",
+    "Use `expect_type()`, `expect_s3_class()`, or `expect_s4_class()` instead"
+  )
+
 
   act <- quasi_label(enquo(object), label, arg = "object")
   act$class <- klass(act$val)

@@ -1,31 +1,30 @@
-#' Expectation: is the object equal to a value?
+#' Expectation: is an object equal to a reference value?
 #'
 #' @description
-#' These three functions use [waldo](https://github.com/r-lib/waldo) to
-#' compare the results of some code to an `expected` result. They differ in
-#' their level of strictness, as determined by additional arguments passed on
-#' to `waldo::compare()`:
+#' These functions provide two levels of strictness when comparing a
+#' computation to a reference value. `expect_identical()` is the baseline;
+#' `expect_equal()` relaxes the test to ignore small numeric differences.
 #'
-#' - `expect_identical()` is the strictest comparison.
-#' - `expect_equal()` sets `tolerance = testthat_tolerance()` so that
-#'   small floating point differences are ignored; this also implies that
-#'   (e.g.) `1` and `1L` are treated as equal.
-#' - `expect_equivalent()` sets `ignore_attr = TRUE` and
-#'   `tolerance = testthat_tolerance()`, ignoring small floating point
-#'   differences and all differences in attributes.
-#'
-#' In most cases you should use `expect_equal()`.
+#' In the 2nd edition, `expect_identical()` uses [identical()] and
+#' `expect_equal` uses [all.equal()]. In the 3rd edition, both functions use
+#' [waldo](https://github.com/r-lib/waldo). They differ only in that
+#' `expect_equal()` sets `tolerance = testthat_tolerance()` so that small
+#' floating point differences are ignored; this also implies that (e.g.) `1`
+#' and `1L` are treated as equal.
 #'
 #' @param object,expected Computation and value to compare it to.
 #'
 #'   Both arguments supports limited unquoting to make it easier to generate
 #'   readable failures within a function or for loop. See [quasi_label] for
 #'   more details.
-#' @param ... Passed on to [waldo::compare()] to control the details of
-#'   the comparison.
+#' @param ... In the 3rd edition; passed on to [waldo::compare()]. See
+#'   its docs to see other ways to control comparison. In the 2nd edition;
+#'   passed on to [compare()]/[identical()].
 #' @param label,expected.label Used to customise failure messages. For expert
 #'   use only.
-#' @seealso `expect_setequal()` to test for set equality.
+#' @seealso
+#' * [expect_setequal()]/[expect_mapequal()] to test for set equality.
+#' * [expect_reference()] to test if two names point to same memory address.
 #' @inheritParams expect_that
 #' @family expectations
 #' @examples
@@ -37,14 +36,6 @@
 #' expect_identical(sqrt(2) ^ 2, 2)
 #' }
 #' expect_equal(sqrt(2) ^ 2, 2)
-#'
-#' # expect_equivalent() ignores attributes
-#' a <- b <- 1:3
-#' names(b) <- letters[1:3]
-#' \dontrun{
-#' expect_equal(a, b)
-#' }
-#' expect_equivalent(a, b)
 #' @name equality-expectations
 NULL
 
@@ -59,22 +50,17 @@ expect_equal <- function(object, expected, ...,
   act <- quasi_label(enquo(object), label, arg = "object")
   exp <- quasi_label(enquo(expected), expected.label, arg = "expected")
 
-  expect_waldo_equal("equal", act, exp, info, ..., tolerance = tolerance)
-}
-
-#' @export
-#' @rdname equality-expectations
-expect_equivalent <- function(object, expected, ..., info = NULL, label = NULL,
-                              expected.label = NULL,
-                              tolerance = testthat_tolerance()) {
-  act <- quasi_label(enquo(object), label, arg = "object")
-  exp <- quasi_label(enquo(expected), expected.label, arg = "expected")
-
-  expect_waldo_equal(
-    "equivalent", act, exp, info, ...,
-    ignore_attr = TRUE,
-    tolerance = tolerance
-  )
+  if (edition_get() >= 3) {
+    expect_waldo_equal("equal", act, exp, info, ..., tolerance = tolerance)
+  } else {
+    comp <- compare(act$val, exp$val, ..., tolerance = tolerance)
+    expect(
+      comp$equal,
+      sprintf("%s not equal to %s.\n%s", act$lab, exp$lab, comp$message),
+      info = info
+    )
+    invisible(act$val)
+  }
 }
 
 #' @export
@@ -84,22 +70,87 @@ expect_identical <- function(object, expected, info = NULL, label = NULL,
   act <- quasi_label(enquo(object), label, arg = "object")
   exp <- quasi_label(enquo(expected), expected.label, arg = "expected")
 
-  expect_waldo_equal("identical", act, exp, info, ...)
+  if (edition_get() >= 3) {
+    expect_waldo_equal("identical", act, exp, info, ...)
+  } else {
+    ident <- identical(act$val, exp$val, ...)
+    if (ident) {
+      msg <- ""
+    } else {
+      compare <- compare(act$val, exp$val)
+      if (compare$equal) {
+        msg <- "Objects equal but not identical"
+      } else {
+        msg <- compare$message
+      }
+    }
+
+    expect(
+      ident,
+      sprintf("%s not identical to %s.\n%s", act$lab, exp$lab, msg),
+      info = info
+    )
+    invisible(act$val)
+  }
 }
 
 expect_waldo_equal <- function(type, act, exp, info, ...) {
-  comp <- waldo::compare(act$val, exp$val, ..., x_arg = "actual", y_arg = "expected")
+  comp <- waldo_compare(act$val, exp$val, ..., x_arg = "actual", y_arg = "expected")
   expect(
     length(comp) == 0,
     sprintf(
-      "`actual` (%s) not %s to `expected` (%s).\n\n%s",
-      act$lab, type, exp$lab, paste0(comp, collapse = "\n\n")
+      "%s (%s) not %s to %s (%s).\n\n%s",
+      act$lab, "`actual`",
+      type,
+      exp$lab, "`expected`",
+      paste0(comp, collapse = "\n\n")
     ),
     info = info
   )
 
   invisible(act$val)
 }
+
+#' Expectation: is an object equal to a reference value, ignoring attributes?
+#'
+#' Compares `object` and `expected` using [all.equal()] and
+#' `check.attributes = FALSE`.
+#'
+#' @section 3rd edition:
+#' `r lifecycle::badge("deprecated")`
+#'
+#' `expect_equivalent()` is deprecated in the 3rd edition. Instead use
+#' `expect_equal(ignore_attr = TRUE)`.
+#'
+#' @inheritParams expect_equal
+#' @keywords internal
+#' @export
+#' @examples
+#' #' # expect_equivalent() ignores attributes
+#' a <- b <- 1:3
+#' names(b) <- letters[1:3]
+#' \dontrun{
+#' expect_equal(a, b)
+#' }
+#' expect_equivalent(a, b)
+expect_equivalent <- function(object, expected, ..., info = NULL, label = NULL,
+                              expected.label = NULL) {
+  act <- quasi_label(enquo(object), label, arg = "object")
+  exp <- quasi_label(enquo(expected), expected.label, arg = "expected")
+
+  edition_deprecate(3, "expect_equivalent()",
+    "Use expect_equal(ignore_attr = TRUE)"
+  )
+
+  comp <- compare(act$val, exp$val, ..., check.attributes = FALSE)
+  expect(
+    comp$equal,
+    sprintf("%s not equivalent to %s.\n%s", act$lab, exp$lab, comp$message),
+    info = info
+  )
+  invisible(act$val)
+}
+
 
 #' Do two names point to the same underlying object?
 #'

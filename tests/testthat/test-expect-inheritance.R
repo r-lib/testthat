@@ -4,13 +4,14 @@ test_that("expect_type checks typeof", {
 })
 
 test_that("expect_is checks class", {
+  local_edition(2)
+
   expect_success(expect_is(factor("a"), "factor"))
   expect_failure(expect_is(factor("a"), "integer"))
 })
 
 test_that("expect_s3/s4_class fails if appropriate type", {
   A <- methods::setClass("A", contains = "list")
-  on.exit(methods::removeClass("A"))
 
   expect_failure(expect_s3_class(1, "double"), "not an S3 object")
   expect_failure(expect_s3_class(A(), "double"), "not an S3 object")

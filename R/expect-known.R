@@ -16,6 +16,12 @@
 #' the reference files will occur in a temporary directory, and will not be
 #' synchronised back to the source package.
 #'
+#' @section 3rd edition:
+#' `r lifecycle::badge("deprecated")`
+#'
+#' `expect_known_output()` and friends are deprecated in the 3rd edition;
+#' please use [expect_snapshot_output()] and friends instead.
+#'
 #' @export
 #' @param file File path where known value/output will be stored.
 #' @param update Should the file be updated? Defaults to `TRUE`, with
@@ -48,6 +54,11 @@ expect_known_output <- function(object, file,
                                 label = NULL,
                                 print = FALSE,
                                 width = 80) {
+
+  edition_deprecate(3, "expect_known_output()",
+    "Please use `expect_snapshot_output()` instead"
+  )
+
   act <- list()
   act$quo <- enquo(object)
   act$lab <- label %||% quo_label(act$quo)
@@ -76,7 +87,7 @@ compare_file <- function(path, lines, ..., update = TRUE, info = NULL) {
     warning("Reference output is not UTF-8 encoded", call. = FALSE)
   }
 
-  comp <- waldo::compare(lines, enc2native(old_lines), ..., x_arg = "new", y_arg = "old")
+  comp <- waldo_compare(lines, enc2native(old_lines), ..., x_arg = "new", y_arg = "old")
   expect(
     length(comp) == 0,
     sprintf(
@@ -100,6 +111,10 @@ expect_known_value <- function(object, file,
                                info = NULL,
                                label = NULL,
                                version = 2) {
+  edition_deprecate(3, "expect_known_value()",
+    "Please use `expect_snapshot_value()` instead"
+  )
+
   act <- quasi_label(enquo(object), label, arg = "object")
 
   if (!file.exists(file)) {
@@ -112,7 +127,6 @@ expect_known_value <- function(object, file,
     if (update && !comp$equal) {
       saveRDS(act$val, file, version = version)
     }
-
 
     expect(
       comp$equal,
@@ -131,6 +145,9 @@ expect_known_value <- function(object, file,
 #' @rdname expect_known_output
 #' @usage NULL
 expect_equal_to_reference <- function(..., update = FALSE) {
+  edition_deprecate(3, "expect_equal_to_reference()",
+    "Please use `expect_snapshot_value()` instead"
+  )
   expect_known_value(..., update = update)
 }
 
@@ -139,6 +156,10 @@ expect_equal_to_reference <- function(..., update = FALSE) {
 #' @param hash Known hash value. Leave empty and you'll be informed what
 #'   to use in the test output.
 expect_known_hash <- function(object, hash = NULL) {
+  edition_deprecate(3, "expect_known_hash()",
+    "Please use `expect_snapshot_value()` instead"
+  )
+
   act <- quasi_label(enquo(object), arg = "object")
   act_hash <- digest::digest(act$val)
   if (!is.null(hash)) {

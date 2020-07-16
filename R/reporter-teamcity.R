@@ -1,6 +1,3 @@
-#' @include reporter.R
-NULL
-
 #' Test reporter: Teamcity format.
 #'
 #' This reporter will output results in the Teamcity message format.

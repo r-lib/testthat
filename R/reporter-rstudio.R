@@ -1,6 +1,3 @@
-#' @include reporter.R
-NULL
-
 #' Test reporter: RStudio
 #'
 #' This reporter is designed for output to RStudio. It produces results in
@@ -16,17 +13,11 @@ RstudioReporter <- R6::R6Class("RstudioReporter",
         return()
       }
 
-      ref <- result$srcref
-      if (is.null(ref)) {
-        location <- "?#?:?"
-      } else {
-        location <- paste0(attr(ref, "srcfile")$filename, "#", ref[1], ":1")
-      }
-
+      loc <- expectation_location(result)
       status <- expectation_type(result)
       first_line <- strsplit(result$message, "\n")[[1]][1]
 
-      self$cat_line(location, " [", status, "] ", test, ". ", first_line)
+      self$cat_line(loc, " [", status, "] ", test, ". ", first_line)
     }
   )
 )

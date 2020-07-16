@@ -8,13 +8,7 @@
 \alias{source_test_teardown}
 \title{Source a file, directory of files, or various important subsets}
 \usage{
-source_file(
-  path,
-  env = test_env(),
-  chdir = TRUE,
-  encoding = "unknown",
-  wrap = TRUE
-)
+source_file(path, env = test_env(), chdir = TRUE, wrap = TRUE)
 
 source_dir(
   path,
@@ -37,8 +31,6 @@ source_test_teardown(path = "tests/testthat", env = test_env())
 
 \item{chdir}{Change working directory to \code{dirname(path)}?}
 
-\item{encoding}{Deprecated.}
-
 \item{wrap}{Automatically wrap all code within \code{\link[=test_that]{test_that()}}? This ensures
 that all expectations are reported, even if outside a test block.}
 
@@ -47,20 +39,4 @@ that all expectations are reported, even if outside a test block.}
 \description{
 These are used by \code{\link[=test_dir]{test_dir()}} and friends
 }
-\section{Test files}{
-
-For package code, tests should live in \code{tests/testthat}.
-
-There are four classes of \code{.R} files that have special behaviour:
-\itemize{
-\item Test files start with \code{test} and are executed in alphabetical order.
-\item Helper files start with \code{helper} and are executed before tests are
-run and from \code{devtools::load_all()}.
-\item Setup files start with \code{setup} and are executed before tests, but not
-during \code{devtools::load_all()}.
-\item Teardown files start with \code{teardown} and are executed after the tests
-are run.
-}
-}
-
 \keyword{internal}

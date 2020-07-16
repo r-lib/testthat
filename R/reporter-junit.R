@@ -1,6 +1,3 @@
-#' @include reporter.R
-NULL
-
 # To allow the Java-style class name format that Jenkins prefers,
 # "package_name_or_domain.ClassName", allow "."s in the class name.
 classnameOK <- function(text) {
@@ -74,7 +71,7 @@ JunitReporter <- R6::R6Class("JunitReporter",
 
     start_test = function(context, test) {
       if (is.null(context)) {
-        context(context_name(self$file_name))
+        context_start_file(self$file_name)
       }
     },
 
@@ -115,7 +112,8 @@ JunitReporter <- R6::R6Class("JunitReporter",
       )
 
       first_line <- function(x) {
-        paste0(strsplit(x$message, split = "\n")[[1]][1], src_loc(x$srcref))
+        loc <- expectation_location(x)
+        paste0(strsplit(x$message, split = "\n")[[1]][1], " (", loc, ")")
       }
 
       # add an extra XML child node if not a success
@@ -159,4 +157,28 @@ JunitReporter <- R6::R6Class("JunitReporter",
       Sys.info()[["nodename"]]
     }
   ) # private
+)
+
+# Fix components of JunitReporter that otherwise vary from run-to-run
+#
+# The following functions need to be mocked out to run a unit test
+# against static contents of reporters/junit.txt:
+#   - proctime - originally wrapper for proc.time()
+#   - timestamp - originally wrapper for toString(Sys.time())
+#   - hostname  - originally wrapper for Sys.info()[["nodename"]]
+#
+JunitReporterMock <- R6::R6Class("JunitReporterMock",
+  inherit = JunitReporter,
+  public  = list(),
+  private = list(
+    proctime = function() {
+      c(user = 0, system = 0, elapsed = 0)
+    },
+    timestamp = function() {
+      "1999:12:31 23:59:59"
+    },
+    hostname = function() {
+      "nodename"
+    }
+  )
 )

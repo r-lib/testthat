@@ -86,11 +86,11 @@ test_that("can access variables defined in function", {
 })
 
 test_that("can mock if package is not loaded", {
-  if ("package:devtools" %in% search()) {
-    skip("devtools is loaded")
+  if ("package:curl" %in% search()) {
+    skip("curl is loaded")
   }
-  skip_if_not_installed("devtools")
-  with_mock(`devtools::test` = identity, expect_identical(devtools::test, identity))
+  skip_if_not_installed("curl")
+  with_mock(`curl::curl` = identity, expect_identical(curl::curl, identity))
 })
 
 test_that("changes to variables are preserved between calls and visible outside", {

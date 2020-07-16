@@ -1,5 +1,3 @@
-context('bare expectations')
-
 test_that("before", expect_true(TRUE))
 
 # this is a bare expectation
