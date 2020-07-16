@@ -226,12 +226,12 @@
     
     ══ Testing reporters/tests.R ═══════════════════════════════════════════════════
     
-    PASS x0 FAIL x0 WARN x0 SKIP x0
-    PASS x0 FAIL x0 WARN x0 SKIP x0
-    PASS x1 FAIL x0 WARN x0 SKIP x0
-    PASS x1 FAIL x0 WARN x0 SKIP x0
-    PASS x1 FAIL x1 WARN x0 SKIP x0
-    PASS x1 FAIL x2 WARN x0 SKIP x0
+    [ PASS x0 FAIL x0 WARN x0 SKIP x0 ]
+    [ PASS x0 FAIL x0 WARN x0 SKIP x0 ]
+    [ PASS x1 FAIL x0 WARN x0 SKIP x0 ]
+    [ PASS x1 FAIL x0 WARN x0 SKIP x0 ]
+    [ PASS x1 FAIL x1 WARN x0 SKIP x0 ]
+    [ PASS x1 FAIL x2 WARN x0 SKIP x0 ]
     
     ── tests.R:12:3: failure: Failure:1 ────────────────────────────────────────────
     FALSE is not TRUE
@@ -246,9 +246,9 @@
     `expected`: TRUE 
     
     
-    PASS x1 FAIL x2 WARN x0 SKIP x0
-    PASS x1 FAIL x3 WARN x0 SKIP x0
-    PASS x1 FAIL x4 WARN x0 SKIP x0
+    [ PASS x1 FAIL x2 WARN x0 SKIP x0 ]
+    [ PASS x1 FAIL x3 WARN x0 SKIP x0 ]
+    [ PASS x1 FAIL x4 WARN x0 SKIP x0 ]
     
     ── tests.R:23:3: error: Error:1 ────────────────────────────────────────────────
     Error: stop
@@ -261,9 +261,9 @@
      3. h()
     
     
-    PASS x1 FAIL x4 WARN x0 SKIP x0
-    PASS x1 FAIL x4 WARN x0 SKIP x1
-    PASS x1 FAIL x4 WARN x0 SKIP x2
+    [ PASS x1 FAIL x4 WARN x0 SKIP x0 ]
+    [ PASS x1 FAIL x4 WARN x0 SKIP x1 ]
+    [ PASS x1 FAIL x4 WARN x0 SKIP x2 ]
     
     ── tests.R:37:3: skip: explicit skips are reported ─────────────────────────────
     Reason: skip
@@ -272,8 +272,8 @@
     Reason: empty test
     
     
-    PASS x1 FAIL x4 WARN x0 SKIP x2
-    PASS x1 FAIL x4 WARN x1 SKIP x2
+    [ PASS x1 FAIL x4 WARN x0 SKIP x2 ]
+    [ PASS x1 FAIL x4 WARN x1 SKIP x2 ]
     
     ── tests.R:49:3: warning: warnings get backtraces ──────────────────────────────
     def
@@ -281,5 +281,5 @@
      1. f() reporters/tests.R:49:2
     
     
-    PASS x1 FAIL x4 WARN x1 SKIP x2
+    [ PASS x1 FAIL x4 WARN x1 SKIP x2 ]
 

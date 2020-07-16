@@ -299,12 +299,7 @@ CompactProgressReporter <- R6::R6Class("CompactProgressReporter",
 
     show_status = function(complete = NULL) {
       self$local_user_output()
-      status <- paste0(
-        colourise("PASS", "success"), " x", self$n_ok, " ",
-        colourise("FAIL", "fail"),    " x", self$n_fail, " ",
-        colourise("WARN", "warn"),    " x", self$n_warn, " ",
-        colourise("SKIP", "skip"),    " x", self$n_skip
-      )
+      status <- summary_line(self$n_ok, self$n_fail, self$n_warn, self$n_skip)
       self$cat_tight("\r", status)
     }
 
