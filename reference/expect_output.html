@@ -117,6 +117,9 @@ very simple output; for more complex cases use verify_output()." />
       <a href="../articles/custom-expectation.html">Custom expectations</a>
     </li>
     <li>
+      <a href="../articles/snapshotting.html">Snapshot tests</a>
+    </li>
+    <li>
       <a href="../articles/test-fixtures.html">Test fixtures</a>
     </li>
     <li>
@@ -184,16 +187,16 @@ very simple output; for more complex cases use verify_output()." />
 
     <div class="ref-description">
     <p>Test for output produced by <code><a href='https://rdrr.io/r/base/print.html'>print()</a></code> or <code><a href='https://rdrr.io/r/base/cat.html'>cat()</a></code>. This is best used for
-very simple output; for more complex cases use <code>verify_output()</code>.</p>
+very simple output; for more complex cases use <code><a href='verify_output.html'>verify_output()</a></code>.</p>
     </div>
 
     <pre class="usage"><span class='fu'>expect_output</span>(
-  <span class='kw'>object</span>,
-  regexp = <span class='kw'>NULL</span>,
-  <span class='kw'>...</span>,
-  info = <span class='kw'>NULL</span>,
-  label = <span class='kw'>NULL</span>,
-  width = <span class='fl'>80</span>
+  <span class='no'>object</span>,
+  <span class='kw'>regexp</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='no'>...</span>,
+  <span class='kw'>info</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>label</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>width</span> <span class='kw'>=</span> <span class='fl'>80</span>
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -203,7 +206,7 @@ very simple output; for more complex cases use <code>verify_output()</code>.</p>
       <th>object</th>
       <td><p>Object to test.</p>
 <p>Supports limited unquoting to make it easier to generate readable failures
-within a function or for loop. See quasi_label for more details.</p></td>
+within a function or for loop. See <a href='quasi_label.html'>quasi_label</a> for more details.</p></td>
     </tr>
     <tr>
       <th>regexp</th>
@@ -216,7 +219,7 @@ but doesn't check for a specific value.</p></li>
     </tr>
     <tr>
       <th>...</th>
-      <td><p>Arguments passed on to <code>expect_match</code></p><dl>
+      <td><p>Arguments passed on to <code><a href='expect_match.html'>expect_match</a></code></p><dl'>
     <dt><code>all</code></dt><dd><p>Should all elements of actual value match <code>regexp</code> (TRUE),
 or does only one need to match (FALSE)</p></dd>
     <dt><code>perl</code></dt><dd><p>logical.  Should Perl-compatible regexps be used?</p></dd>
@@ -229,7 +232,7 @@ or does only one need to match (FALSE)</p></dd>
       <th>info</th>
       <td><p>Extra information to be included in the message. This argument
 is soft-deprecated and should not be used in new code. Instead see
-alternatives in quasi_label.</p></td>
+alternatives in <a href='quasi_label.html'>quasi_label</a>.</p></td>
     </tr>
     <tr>
       <th>label</th>
@@ -249,20 +252,20 @@ output width, minimising spurious differences.</p></td>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other expectations: 
-<code>comparison-expectations</code>,
-<code>equality-expectations</code>,
-<code>expect_error()</code>,
-<code>expect_length()</code>,
-<code>expect_match()</code>,
-<code>expect_named()</code>,
-<code>expect_null()</code>,
-<code>expect_reference()</code>,
-<code>expect_silent()</code>,
-<code>inheritance-expectations</code>,
-<code>logical-expectations</code></p></div>
+<code><a href='comparison-expectations.html'>comparison-expectations</a></code>,
+<code><a href='equality-expectations.html'>equality-expectations</a></code>,
+<code><a href='expect_error.html'>expect_error</a>()</code>,
+<code><a href='expect_length.html'>expect_length</a>()</code>,
+<code><a href='expect_match.html'>expect_match</a>()</code>,
+<code><a href='expect_named.html'>expect_named</a>()</code>,
+<code><a href='expect_null.html'>expect_null</a>()</code>,
+<code><a href='expect_reference.html'>expect_reference</a>()</code>,
+<code><a href='expect_silent.html'>expect_silent</a>()</code>,
+<code><a href='inheritance-expectations.html'>inheritance-expectations</a></code>,
+<code><a href='logical-expectations.html'>logical-expectations</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span>(<span class='kw'>mtcars</span>)</div><div class='output co'>#&gt; 'data.frame':	32 obs. of  11 variables:
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span>(<span class='no'>mtcars</span>)</div><div class='output co'>#&gt; 'data.frame':	32 obs. of  11 variables:
 #&gt;  $ mpg : num  21 21 22.8 21.4 18.7 18.1 14.3 24.4 22.8 19.2 ...
 #&gt;  $ cyl : num  6 6 4 6 8 6 8 4 4 6 ...
 #&gt;  $ disp: num  160 160 108 258 360 ...
@@ -273,12 +276,12 @@ output width, minimising spurious differences.</p></td>
 #&gt;  $ vs  : num  0 0 1 1 0 1 0 1 1 1 ...
 #&gt;  $ am  : num  1 1 1 0 0 0 0 0 0 0 ...
 #&gt;  $ gear: num  4 4 4 3 3 3 3 4 4 4 ...
-#&gt;  $ carb: num  4 4 1 1 2 1 4 2 2 4 ...</div><div class='input'><span class='fu'>expect_output</span>(<span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span>(<span class='kw'>mtcars</span>), <span class='st'>"32 obs"</span>)
-<span class='fu'>expect_output</span>(<span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span>(<span class='kw'>mtcars</span>), <span class='st'>"11 variables"</span>)
+#&gt;  $ carb: num  4 4 1 1 2 1 4 2 2 4 ...</div><div class='input'><span class='fu'>expect_output</span>(<span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span>(<span class='no'>mtcars</span>), <span class='st'>"32 obs"</span>)
+<span class='fu'>expect_output</span>(<span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span>(<span class='no'>mtcars</span>), <span class='st'>"11 variables"</span>)
 
 <span class='co'># You can use the arguments of grepl to control the matching</span>
-<span class='fu'>expect_output</span>(<span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span>(<span class='kw'>mtcars</span>), <span class='st'>"11 VARIABLES"</span>, ignore.case = <span class='fl'>TRUE</span>)
-<span class='fu'>expect_output</span>(<span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span>(<span class='kw'>mtcars</span>), <span class='st'>"$ mpg"</span>, fixed = <span class='fl'>TRUE</span>)</div></pre>
+<span class='fu'>expect_output</span>(<span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span>(<span class='no'>mtcars</span>), <span class='st'>"11 VARIABLES"</span>, <span class='kw'>ignore.case</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+<span class='fu'>expect_output</span>(<span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span>(<span class='no'>mtcars</span>), <span class='st'>"$ mpg"</span>, <span class='kw'>fixed</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -294,7 +297,7 @@ output width, minimising spurious differences.</p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
 </div>
 
       </footer>

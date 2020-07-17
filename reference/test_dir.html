@@ -119,6 +119,9 @@ in the global environment." />
       <a href="../articles/custom-expectation.html">Custom expectations</a>
     </li>
     <li>
+      <a href="../articles/snapshotting.html">Snapshot tests</a>
+    </li>
+    <li>
       <a href="../articles/test-fixtures.html">Test fixtures</a>
     </li>
     <li>
@@ -192,16 +195,16 @@ in the global environment.</p>
     </div>
 
     <pre class="usage"><span class='fu'>test_dir</span>(
-  <span class='kw'>path</span>,
-  filter = <span class='kw'>NULL</span>,
-  reporter = <span class='fu'>default_reporter</span>(),
-  env = <span class='kw'>NULL</span>,
-  <span class='kw'>...</span>,
-  load_helpers = <span class='fl'>TRUE</span>,
-  stop_on_failure = <span class='fl'>FALSE</span>,
-  stop_on_warning = <span class='fl'>FALSE</span>,
-  wrap = <span class='fl'>TRUE</span>,
-  package = <span class='kw'>NULL</span>
+  <span class='no'>path</span>,
+  <span class='kw'>filter</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>reporter</span> <span class='kw'>=</span> <span class='fu'><a href='default_reporter.html'>default_reporter</a></span>(),
+  <span class='kw'>env</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='no'>...</span>,
+  <span class='kw'>load_helpers</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>stop_on_failure</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>stop_on_warning</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>wrap</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>package</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -222,7 +225,7 @@ name after it's stripped of <code>"test-"</code> and <code>".R"</code>.</p></td>
       <td><p>Reporter to use to summarise output. Can be supplied
 as a string (e.g. "summary") or as an R6 object
 (e.g. <code>SummaryReporter$new()</code>).</p>
-<p>See Reporter for more details and a list of built-in reporters.</p></td>
+<p>See <a href='Reporter.html'>Reporter</a> for more details and a list of built-in reporters.</p></td>
     </tr>
     <tr>
       <th>env</th>
@@ -235,7 +238,7 @@ as a string (e.g. "summary") or as an R6 object
     <tr>
       <th>load_helpers</th>
       <td><p>Source helper files before running the tests?
-See <code>source_test_helpers()</code> for more details.</p></td>
+See <code><a href='source_file.html'>source_test_helpers()</a></code> for more details.</p></td>
     </tr>
     <tr>
       <th>stop_on_failure</th>
@@ -248,7 +251,7 @@ warnings.</p></td>
     </tr>
     <tr>
       <th>wrap</th>
-      <td><p>Automatically wrap all code within <code>test_that()</code>? This ensures
+      <td><p>Automatically wrap all code within <code><a href='test_that.html'>test_that()</a></code>? This ensures
 that all expectations are reported, even if outside a test block.</p></td>
     </tr>
     <tr>
@@ -307,7 +310,7 @@ and objects.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
 </div>
 
       </footer>

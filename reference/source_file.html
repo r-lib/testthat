@@ -116,6 +116,9 @@
       <a href="../articles/custom-expectation.html">Custom expectations</a>
     </li>
     <li>
+      <a href="../articles/snapshotting.html">Snapshot tests</a>
+    </li>
+    <li>
       <a href="../articles/test-fixtures.html">Test fixtures</a>
     </li>
     <li>
@@ -182,24 +185,24 @@
     </div>
 
     <div class="ref-description">
-    <p>These are used by <code>test_dir()</code> and friends</p>
+    <p>These are used by <code><a href='test_dir.html'>test_dir()</a></code> and friends</p>
     </div>
 
-    <pre class="usage"><span class='fu'>source_file</span>(<span class='kw'>path</span>, env = <span class='fu'>test_env</span>(), chdir = <span class='fl'>TRUE</span>, wrap = <span class='fl'>TRUE</span>)
+    <pre class="usage"><span class='fu'>source_file</span>(<span class='no'>path</span>, <span class='kw'>env</span> <span class='kw'>=</span> <span class='fu'><a href='test_env.html'>test_env</a></span>(), <span class='kw'>chdir</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>wrap</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
 
 <span class='fu'>source_dir</span>(
-  <span class='kw'>path</span>,
-  pattern = <span class='st'>"\\.[rR]$"</span>,
-  env = <span class='fu'>test_env</span>(),
-  chdir = <span class='fl'>TRUE</span>,
-  wrap = <span class='fl'>TRUE</span>
+  <span class='no'>path</span>,
+  <span class='kw'>pattern</span> <span class='kw'>=</span> <span class='st'>"\\.[rR]$"</span>,
+  <span class='kw'>env</span> <span class='kw'>=</span> <span class='fu'><a href='test_env.html'>test_env</a></span>(),
+  <span class='kw'>chdir</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>wrap</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>
 )
 
-<span class='fu'>source_test_helpers</span>(path = <span class='st'>"tests/testthat"</span>, env = <span class='fu'>test_env</span>())
+<span class='fu'>source_test_helpers</span>(<span class='kw'>path</span> <span class='kw'>=</span> <span class='st'>"tests/testthat"</span>, <span class='kw'>env</span> <span class='kw'>=</span> <span class='fu'><a href='test_env.html'>test_env</a></span>())
 
-<span class='fu'>source_test_setup</span>(path = <span class='st'>"tests/testthat"</span>, env = <span class='fu'>test_env</span>())
+<span class='fu'>source_test_setup</span>(<span class='kw'>path</span> <span class='kw'>=</span> <span class='st'>"tests/testthat"</span>, <span class='kw'>env</span> <span class='kw'>=</span> <span class='fu'><a href='test_env.html'>test_env</a></span>())
 
-<span class='fu'>source_test_teardown</span>(path = <span class='st'>"tests/testthat"</span>, env = <span class='fu'>test_env</span>())</pre>
+<span class='fu'>source_test_teardown</span>(<span class='kw'>path</span> <span class='kw'>=</span> <span class='st'>"tests/testthat"</span>, <span class='kw'>env</span> <span class='kw'>=</span> <span class='fu'><a href='test_env.html'>test_env</a></span>())</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -218,7 +221,7 @@
     </tr>
     <tr>
       <th>wrap</th>
-      <td><p>Automatically wrap all code within <code>test_that()</code>? This ensures
+      <td><p>Automatically wrap all code within <code><a href='test_that.html'>test_that()</a></code>? This ensures
 that all expectations are reported, even if outside a test block.</p></td>
     </tr>
     <tr>
@@ -243,7 +246,7 @@ that all expectations are reported, even if outside a test block.</p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
 </div>
 
       </footer>

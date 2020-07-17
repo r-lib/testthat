@@ -118,6 +118,9 @@ contains multiple expectations." />
       <a href="../articles/custom-expectation.html">Custom expectations</a>
     </li>
     <li>
+      <a href="../articles/snapshotting.html">Snapshot tests</a>
+    </li>
+    <li>
       <a href="../articles/test-fixtures.html">Test fixtures</a>
     </li>
     <li>
@@ -185,11 +188,11 @@ contains multiple expectations." />
 
     <div class="ref-description">
     <p>A test encapsulates a series of expectations about small, self-contained
-set of functionality. Each test is contained in a <a href='https://testthat.r-lib.org/reference/context.html'>context</a> and
+set of functionality. Each test is contained in a <a href='context.html'>context</a> and
 contains multiple expectations.</p>
     </div>
 
-    <pre class="usage"><span class='fu'><a href='https://testthat.r-lib.org/reference/test_that.html'>test_that</a></span>(<span class='kw'>desc</span>, <span class='kw'>code</span>)</pre>
+    <pre class="usage"><span class='fu'>test_that</span>(<span class='no'>desc</span>, <span class='no'>code</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -213,16 +216,16 @@ global state.</p>
 expectations are met, otherwise it raises an error.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://testthat.r-lib.org/reference/test_that.html'>test_that</a></span>(<span class='st'>"trigonometric functions match identities"</span>, {
-  <span class='fu'><a href='https://testthat.r-lib.org/reference/equality-expectations.html'>expect_equal</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/Trig.html'>sin</a></span>(<span class='kw'>pi</span> <span class='op'>/</span> <span class='fl'>4</span>), <span class='fl'>1</span> <span class='op'>/</span> <span class='fu'><a href='https://rdrr.io/r/base/MathFun.html'>sqrt</a></span>(<span class='fl'>2</span>))
-  <span class='fu'><a href='https://testthat.r-lib.org/reference/equality-expectations.html'>expect_equal</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/Trig.html'>cos</a></span>(<span class='kw'>pi</span> <span class='op'>/</span> <span class='fl'>4</span>), <span class='fl'>1</span> <span class='op'>/</span> <span class='fu'><a href='https://rdrr.io/r/base/MathFun.html'>sqrt</a></span>(<span class='fl'>2</span>))
-  <span class='fu'><a href='https://testthat.r-lib.org/reference/equality-expectations.html'>expect_equal</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/Trig.html'>tan</a></span>(<span class='kw'>pi</span> <span class='op'>/</span> <span class='fl'>4</span>), <span class='fl'>1</span>)
-})</div><div class='output co'>#&gt; Test succeeded 😸</div><div class='input'><span class='co'># Failing test:</span>
-<span class='co'>if</span> (<span class='fl'>FALSE</span>) {
-<span class='fu'><a href='https://testthat.r-lib.org/reference/test_that.html'>test_that</a></span>(<span class='st'>"trigonometric functions match identities"</span>, {
-  <span class='fu'><a href='https://testthat.r-lib.org/reference/equality-expectations.html'>expect_equal</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/Trig.html'>sin</a></span>(<span class='kw'>pi</span> <span class='op'>/</span> <span class='fl'>4</span>), <span class='fl'>1</span>)
+    <pre class="examples"><div class='input'><span class='fu'>test_that</span>(<span class='st'>"trigonometric functions match identities"</span>, {
+  <span class='fu'><a href='equality-expectations.html'>expect_equal</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/Trig.html'>sin</a></span>(<span class='no'>pi</span> / <span class='fl'>4</span>), <span class='fl'>1</span> / <span class='fu'><a href='https://rdrr.io/r/base/MathFun.html'>sqrt</a></span>(<span class='fl'>2</span>))
+  <span class='fu'><a href='equality-expectations.html'>expect_equal</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/Trig.html'>cos</a></span>(<span class='no'>pi</span> / <span class='fl'>4</span>), <span class='fl'>1</span> / <span class='fu'><a href='https://rdrr.io/r/base/MathFun.html'>sqrt</a></span>(<span class='fl'>2</span>))
+  <span class='fu'><a href='equality-expectations.html'>expect_equal</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/Trig.html'>tan</a></span>(<span class='no'>pi</span> / <span class='fl'>4</span>), <span class='fl'>1</span>)
+})</div><div class='output co'>#&gt; <span style='color: #00BB00;'>Test passed</span><span> 😸</div><div class='input'><span class='co'># Failing test:</span>
+<span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
+<span class='fu'>test_that</span>(<span class='st'>"trigonometric functions match identities"</span>, {
+  <span class='fu'><a href='equality-expectations.html'>expect_equal</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/Trig.html'>sin</a></span>(<span class='no'>pi</span> / <span class='fl'>4</span>), <span class='fl'>1</span>)
 })
-}</div></pre>
+}</div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -238,7 +241,7 @@ expectations are met, otherwise it raises an error.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
 </div>
 
       </footer>

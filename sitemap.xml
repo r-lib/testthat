@@ -277,6 +277,9 @@
     <loc>https://testthat.r-lib.org/articles/custom-expectation.html</loc>
   </url>
   <url>
+    <loc>https://testthat.r-lib.org/articles/snapshotting.html</loc>
+  </url>
+  <url>
     <loc>https://testthat.r-lib.org/articles/test-fixtures.html</loc>
   </url>
   <url>

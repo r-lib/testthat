@@ -124,6 +124,9 @@ suppressMessages()/suppressWarnings()." />
       <a href="../articles/custom-expectation.html">Custom expectations</a>
     </li>
     <li>
+      <a href="../articles/snapshotting.html">Snapshot tests</a>
+    </li>
+    <li>
       <a href="../articles/test-fixtures.html">Test fixtures</a>
     </li>
     <li>
@@ -202,41 +205,41 @@ or if they're unimportant you can ignore with
     </div>
 
     <pre class="usage"><span class='fu'>expect_error</span>(
-  <span class='kw'>object</span>,
-  regexp = <span class='kw'>NULL</span>,
-  class = <span class='kw'>NULL</span>,
-  <span class='kw'>...</span>,
-  info = <span class='kw'>NULL</span>,
-  label = <span class='kw'>NULL</span>
+  <span class='no'>object</span>,
+  <span class='kw'>regexp</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>class</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='no'>...</span>,
+  <span class='kw'>info</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>label</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
 )
 
 <span class='fu'>expect_warning</span>(
-  <span class='kw'>object</span>,
-  regexp = <span class='kw'>NULL</span>,
-  class = <span class='kw'>NULL</span>,
-  <span class='kw'>...</span>,
-  all = <span class='fl'>FALSE</span>,
-  info = <span class='kw'>NULL</span>,
-  label = <span class='kw'>NULL</span>
+  <span class='no'>object</span>,
+  <span class='kw'>regexp</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>class</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='no'>...</span>,
+  <span class='kw'>all</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>info</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>label</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
 )
 
 <span class='fu'>expect_message</span>(
-  <span class='kw'>object</span>,
-  regexp = <span class='kw'>NULL</span>,
-  class = <span class='kw'>NULL</span>,
-  <span class='kw'>...</span>,
-  all = <span class='fl'>FALSE</span>,
-  info = <span class='kw'>NULL</span>,
-  label = <span class='kw'>NULL</span>
+  <span class='no'>object</span>,
+  <span class='kw'>regexp</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>class</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='no'>...</span>,
+  <span class='kw'>all</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>info</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>label</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
 )
 
 <span class='fu'>expect_condition</span>(
-  <span class='kw'>object</span>,
-  regexp = <span class='kw'>NULL</span>,
-  class = <span class='kw'>NULL</span>,
-  <span class='kw'>...</span>,
-  info = <span class='kw'>NULL</span>,
-  label = <span class='kw'>NULL</span>
+  <span class='no'>object</span>,
+  <span class='kw'>regexp</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>class</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='no'>...</span>,
+  <span class='kw'>info</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>label</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -246,7 +249,7 @@ or if they're unimportant you can ignore with
       <th>object</th>
       <td><p>Object to test.</p>
 <p>Supports limited unquoting to make it easier to generate readable failures
-within a function or for loop. See quasi_label for more details.</p></td>
+within a function or for loop. See <a href='quasi_label.html'>quasi_label</a> for more details.</p></td>
     </tr>
     <tr>
       <th>regexp</th>
@@ -265,7 +268,7 @@ a class name. This is useful for "classed" conditions.</p></td>
     </tr>
     <tr>
       <th>...</th>
-      <td><p>Arguments passed on to <code>expect_match</code></p><dl>
+      <td><p>Arguments passed on to <code><a href='expect_match.html'>expect_match</a></code></p><dl'>
     <dt><code>perl</code></dt><dd><p>logical.  Should Perl-compatible regexps be used?</p></dd>
     <dt><code>fixed</code></dt><dd><p>logical.  If <code>TRUE</code>, <code>pattern</code> is a string to be
     matched as is.  Overrides all conflicting arguments.</p></dd>
@@ -276,7 +279,7 @@ a class name. This is useful for "classed" conditions.</p></td>
       <th>info</th>
       <td><p>Extra information to be included in the message. This argument
 is soft-deprecated and should not be used in new code. Instead see
-alternatives in quasi_label.</p></td>
+alternatives in <a href='quasi_label.html'>quasi_label</a>.</p></td>
     </tr>
     <tr>
       <th>label</th>
@@ -310,63 +313,63 @@ short, errors are S3 classes and you can generate a custom class and check
 for it using <code>class</code> instead of <code>regexp</code>.</p>
 <p>If you are using <code>expect_error()</code> to check that an error message is
 formatted in such a way that it makes sense to a human, we now recommend
-using <code>verify_output()</code> instead.</p>
+using <code><a href='verify_output.html'>verify_output()</a></code> instead.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other expectations: 
-<code>comparison-expectations</code>,
-<code>equality-expectations</code>,
-<code>expect_length()</code>,
-<code>expect_match()</code>,
-<code>expect_named()</code>,
-<code>expect_null()</code>,
-<code>expect_output()</code>,
-<code>expect_reference()</code>,
-<code>expect_silent()</code>,
-<code>inheritance-expectations</code>,
-<code>logical-expectations</code></p></div>
+<code><a href='comparison-expectations.html'>comparison-expectations</a></code>,
+<code><a href='equality-expectations.html'>equality-expectations</a></code>,
+<code><a href='expect_length.html'>expect_length</a>()</code>,
+<code><a href='expect_match.html'>expect_match</a>()</code>,
+<code><a href='expect_named.html'>expect_named</a>()</code>,
+<code><a href='expect_null.html'>expect_null</a>()</code>,
+<code><a href='expect_output.html'>expect_output</a>()</code>,
+<code><a href='expect_reference.html'>expect_reference</a>()</code>,
+<code><a href='expect_silent.html'>expect_silent</a>()</code>,
+<code><a href='inheritance-expectations.html'>inheritance-expectations</a></code>,
+<code><a href='logical-expectations.html'>logical-expectations</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># Errors ------------------------------------------------------------------</span>
-<span class='kw'>f</span> <span class='op'>&lt;-</span> <span class='fu'>function</span>() <span class='fu'><a href='https://rdrr.io/r/base/stop.html'>stop</a></span>(<span class='st'>"My error!"</span>)
+<span class='no'>f</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>() <span class='fu'><a href='https://rdrr.io/r/base/stop.html'>stop</a></span>(<span class='st'>"My error!"</span>)
 <span class='fu'>expect_error</span>(<span class='fu'>f</span>())
 <span class='fu'>expect_error</span>(<span class='fu'>f</span>(), <span class='st'>"My error!"</span>)
 
 <span class='co'># You can use the arguments of grepl to control the matching</span>
-<span class='fu'>expect_error</span>(<span class='fu'>f</span>(), <span class='st'>"my error!"</span>, ignore.case = <span class='fl'>TRUE</span>)
+<span class='fu'>expect_error</span>(<span class='fu'>f</span>(), <span class='st'>"my error!"</span>, <span class='kw'>ignore.case</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
 
 <span class='co'># Note that `expect_error()` returns the error object so you can test</span>
 <span class='co'># its components if needed</span>
-<span class='kw'>err</span> <span class='op'>&lt;-</span> <span class='fu'>expect_error</span>(<span class='kw'>rlang</span>::<span class='fu'><a href='https://rlang.r-lib.org/reference/abort.html'>abort</a></span>(<span class='st'>"a"</span>, n = <span class='fl'>10</span>))
-<span class='fu'>expect_equal</span>(<span class='kw'>err</span><span class='op'>$</span><span class='kw'>n</span>, <span class='fl'>10</span>)
+<span class='no'>err</span> <span class='kw'>&lt;-</span> <span class='fu'>expect_error</span>(<span class='kw pkg'>rlang</span><span class='kw ns'>::</span><span class='fu'><a href='https://rlang.r-lib.org/reference/abort.html'>abort</a></span>(<span class='st'>"a"</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>10</span>))
+<span class='fu'><a href='equality-expectations.html'>expect_equal</a></span>(<span class='no'>err</span>$<span class='no'>n</span>, <span class='fl'>10</span>)
 
 <span class='co'># Warnings ------------------------------------------------------------------</span>
-<span class='kw'>f</span> <span class='op'>&lt;-</span> <span class='fu'>function</span>(<span class='kw'>x</span>) {
-  <span class='co'>if</span> (<span class='kw'>x</span> <span class='op'>&lt;</span> <span class='fl'>0</span>) {
+<span class='no'>f</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>(<span class='no'>x</span>) {
+  <span class='kw'>if</span> (<span class='no'>x</span> <span class='kw'>&lt;</span> <span class='fl'>0</span>) {
     <span class='fu'><a href='https://rdrr.io/r/base/warning.html'>warning</a></span>(<span class='st'>"*x* is already negative"</span>)
-    <span class='fu'><a href='https://rdrr.io/r/base/function.html'>return</a></span>(<span class='kw'>x</span>)
+    <span class='fu'><a href='https://rdrr.io/r/base/function.html'>return</a></span>(<span class='no'>x</span>)
   }
-  <span class='op'>-</span><span class='kw'>x</span>
+  -<span class='no'>x</span>
 }
-<span class='fu'>expect_warning</span>(<span class='fu'>f</span>(<span class='op'>-</span><span class='fl'>1</span>))
-<span class='fu'>expect_warning</span>(<span class='fu'>f</span>(<span class='op'>-</span><span class='fl'>1</span>), <span class='st'>"already negative"</span>)
+<span class='fu'>expect_warning</span>(<span class='fu'>f</span>(-<span class='fl'>1</span>))
+<span class='fu'>expect_warning</span>(<span class='fu'>f</span>(-<span class='fl'>1</span>), <span class='st'>"already negative"</span>)
 <span class='fu'>expect_warning</span>(<span class='fu'>f</span>(<span class='fl'>1</span>), <span class='fl'>NA</span>)
 
 <span class='co'># To test message and output, store results to a variable</span>
-<span class='fu'>expect_warning</span>(<span class='kw'>out</span> <span class='op'>&lt;-</span> <span class='fu'>f</span>(<span class='op'>-</span><span class='fl'>1</span>), <span class='st'>"already negative"</span>)
-<span class='fu'>expect_equal</span>(<span class='kw'>out</span>, <span class='op'>-</span><span class='fl'>1</span>)
+<span class='fu'>expect_warning</span>(<span class='no'>out</span> <span class='kw'>&lt;-</span> <span class='fu'>f</span>(-<span class='fl'>1</span>), <span class='st'>"already negative"</span>)
+<span class='fu'><a href='equality-expectations.html'>expect_equal</a></span>(<span class='no'>out</span>, -<span class='fl'>1</span>)
 
 <span class='co'># Messages ------------------------------------------------------------------</span>
-<span class='kw'>f</span> <span class='op'>&lt;-</span> <span class='fu'>function</span>(<span class='kw'>x</span>) {
-  <span class='co'>if</span> (<span class='kw'>x</span> <span class='op'>&lt;</span> <span class='fl'>0</span>) {
+<span class='no'>f</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>(<span class='no'>x</span>) {
+  <span class='kw'>if</span> (<span class='no'>x</span> <span class='kw'>&lt;</span> <span class='fl'>0</span>) {
     <span class='fu'><a href='https://rdrr.io/r/base/message.html'>message</a></span>(<span class='st'>"*x* is already negative"</span>)
-    <span class='fu'><a href='https://rdrr.io/r/base/function.html'>return</a></span>(<span class='kw'>x</span>)
+    <span class='fu'><a href='https://rdrr.io/r/base/function.html'>return</a></span>(<span class='no'>x</span>)
   }
 
-  <span class='op'>-</span><span class='kw'>x</span>
+  -<span class='no'>x</span>
 }
-<span class='fu'>expect_message</span>(<span class='fu'>f</span>(<span class='op'>-</span><span class='fl'>1</span>))
-<span class='fu'>expect_message</span>(<span class='fu'>f</span>(<span class='op'>-</span><span class='fl'>1</span>), <span class='st'>"already negative"</span>)
+<span class='fu'>expect_message</span>(<span class='fu'>f</span>(-<span class='fl'>1</span>))
+<span class='fu'>expect_message</span>(<span class='fu'>f</span>(-<span class='fl'>1</span>), <span class='st'>"already negative"</span>)
 <span class='fu'>expect_message</span>(<span class='fu'>f</span>(<span class='fl'>1</span>), <span class='fl'>NA</span>)</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
@@ -383,7 +386,7 @@ using <code>verify_output()</code> instead.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
 </div>
 
       </footer>

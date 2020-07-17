@@ -117,6 +117,9 @@ check.attributes = FALSE." />
       <a href="../articles/custom-expectation.html">Custom expectations</a>
     </li>
     <li>
+      <a href="../articles/snapshotting.html">Snapshot tests</a>
+    </li>
+    <li>
       <a href="../articles/test-fixtures.html">Test fixtures</a>
     </li>
     <li>
@@ -188,12 +191,12 @@ check.attributes = FALSE." />
     </div>
 
     <pre class="usage"><span class='fu'>expect_equivalent</span>(
-  <span class='kw'>object</span>,
-  <span class='kw'>expected</span>,
-  <span class='kw'>...</span>,
-  info = <span class='kw'>NULL</span>,
-  label = <span class='kw'>NULL</span>,
-  expected.label = <span class='kw'>NULL</span>
+  <span class='no'>object</span>,
+  <span class='no'>expected</span>,
+  <span class='no'>...</span>,
+  <span class='kw'>info</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>label</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>expected.label</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -203,27 +206,27 @@ check.attributes = FALSE." />
       <th>object</th>
       <td><p>Computation and value to compare it to.</p>
 <p>Both arguments supports limited unquoting to make it easier to generate
-readable failures within a function or for loop. See quasi_label for
+readable failures within a function or for loop. See <a href='quasi_label.html'>quasi_label</a> for
 more details.</p></td>
     </tr>
     <tr>
       <th>expected</th>
       <td><p>Computation and value to compare it to.</p>
 <p>Both arguments supports limited unquoting to make it easier to generate
-readable failures within a function or for loop. See quasi_label for
+readable failures within a function or for loop. See <a href='quasi_label.html'>quasi_label</a> for
 more details.</p></td>
     </tr>
     <tr>
       <th>...</th>
       <td><p>In the 3rd edition; passed on to <code><a href='https://rdrr.io/pkg/waldo/man/compare.html'>waldo::compare()</a></code>. See
 its docs to see other ways to control comparison. In the 2nd edition;
-passed on to <code>compare()</code>/<code><a href='https://rdrr.io/r/base/identical.html'>identical()</a></code>.</p></td>
+passed on to <code><a href='compare.html'>compare()</a></code>/<code><a href='https://rdrr.io/r/base/identical.html'>identical()</a></code>.</p></td>
     </tr>
     <tr>
       <th>info</th>
       <td><p>Extra information to be included in the message. This argument
 is soft-deprecated and should not be used in new code. Instead see
-alternatives in quasi_label.</p></td>
+alternatives in <a href='quasi_label.html'>quasi_label</a>.</p></td>
     </tr>
     <tr>
       <th>label</th>
@@ -243,16 +246,16 @@ use only.</p></td>
 
 <p><img src='figures/lifecycle-deprecated.svg' alt='Deprecated lifecycle' /></p>
 <p><code>expect_equivalent()</code> is deprecated in the 3rd edition. Instead use
-<code>expect_equal(ignore_attr = TRUE)</code>.</p>
+<code><a href='equality-expectations.html'>expect_equal(ignore_attr = TRUE)</a></code>.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'>#' # expect_equivalent() ignores attributes</span>
-<span class='kw'>a</span> <span class='op'>&lt;-</span> <span class='kw'>b</span> <span class='op'>&lt;-</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span>
-<span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span>(<span class='kw'>b</span>) <span class='op'>&lt;-</span> <span class='kw'>letters</span>[<span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span>]
-<span class='co'>if</span> (<span class='fl'>FALSE</span>) {
-<span class='fu'>expect_equal</span>(<span class='kw'>a</span>, <span class='kw'>b</span>)
+<span class='no'>a</span> <span class='kw'>&lt;-</span> <span class='no'>b</span> <span class='kw'>&lt;-</span> <span class='fl'>1</span>:<span class='fl'>3</span>
+<span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span>(<span class='no'>b</span>) <span class='kw'>&lt;-</span> <span class='no'>letters</span>[<span class='fl'>1</span>:<span class='fl'>3</span>]
+<span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
+<span class='fu'><a href='equality-expectations.html'>expect_equal</a></span>(<span class='no'>a</span>, <span class='no'>b</span>)
 }
-<span class='fu'>expect_equivalent</span>(<span class='kw'>a</span>, <span class='kw'>b</span>)</div></pre>
+<span class='fu'>expect_equivalent</span>(<span class='no'>a</span>, <span class='no'>b</span>)</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -268,7 +271,7 @@ use only.</p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
 </div>
 
       </footer>

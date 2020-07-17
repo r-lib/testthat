@@ -125,6 +125,9 @@ from the previous run, you'll need to use git diff or similar." />
       <a href="../articles/custom-expectation.html">Custom expectations</a>
     </li>
     <li>
+      <a href="../articles/snapshotting.html">Snapshot tests</a>
+    </li>
+    <li>
       <a href="../articles/test-fixtures.html">Test fixtures</a>
     </li>
     <li>
@@ -193,23 +196,23 @@ from the previous run, you'll need to use git diff or similar." />
     <div class="ref-description">
     <p>This is a regression test that records interwoven code and output into a
 file, in a similar way to knitting an <code>.Rmd</code> file (but see caveats below).</p>
-<p><code><a href='https://testthat.r-lib.org/reference/verify_output.html'>verify_output()</a></code> is designed particularly for testing print methods and error
+<p><code>verify_output()</code> is designed particularly for testing print methods and error
 messages, where the primary goal is to ensure that the output is helpful to
 a human. Obviously, you can't test that with code, so the best you can do is
 make the results explicit by saving them to a text file. This makes the output
 easy to verify in code reviews, and ensures that you don't change the output
 by accident.</p>
-<p><code><a href='https://testthat.r-lib.org/reference/verify_output.html'>verify_output()</a></code> is designed to be used with git: to see what has changed
+<p><code>verify_output()</code> is designed to be used with git: to see what has changed
 from the previous run, you'll need to use <code>git diff</code> or similar.</p>
     </div>
 
-    <pre class="usage"><span class='fu'><a href='https://testthat.r-lib.org/reference/verify_output.html'>verify_output</a></span>(
-  <span class='kw'>path</span>,
-  <span class='kw'>code</span>,
-  width = <span class='fl'>80</span>,
-  crayon = <span class='fl'>FALSE</span>,
-  unicode = <span class='fl'>FALSE</span>,
-  env = <span class='fu'>caller_env</span>()
+    <pre class="usage"><span class='fu'>verify_output</span>(
+  <span class='no'>path</span>,
+  <span class='no'>code</span>,
+  <span class='kw'>width</span> <span class='kw'>=</span> <span class='fl'>80</span>,
+  <span class='kw'>crayon</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>unicode</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>env</span> <span class='kw'>=</span> <span class='fu'>caller_env</span>()
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -218,7 +221,7 @@ from the previous run, you'll need to use <code>git diff</code> or similar.</p>
     <tr>
       <th>path</th>
       <td><p>Path to record results.</p>
-<p>This should usually be a call to <code><a href='https://testthat.r-lib.org/reference/test_path.html'>test_path()</a></code> in order to ensure that
+<p>This should usually be a call to <code><a href='test_path.html'>test_path()</a></code> in order to ensure that
 the same path is used when run interactively (when the working directory
 is typically the project root), and when run as an automated test (when
 the working directory will be <code>tests/testthat</code>).</p></td>
@@ -226,7 +229,7 @@ the working directory will be <code>tests/testthat</code>).</p></td>
     <tr>
       <th>code</th>
       <td><p>Code to execute. This will usually be a multiline expression
-contained within <code>{}</code> (similarly to <code><a href='https://testthat.r-lib.org/reference/test_that.html'>test_that()</a></code> calls).</p></td>
+contained within <code>{}</code> (similarly to <code><a href='test_that.html'>test_that()</a></code> calls).</p></td>
     </tr>
     <tr>
       <th>width</th>
@@ -239,7 +242,7 @@ contained within <code>{}</code> (similarly to <code><a href='https://testthat.r
     <tr>
       <th>unicode</th>
       <td><p>Enable cli package UTF-8 symbols? If you set this to
-<code>TRUE</code>, call <code><a href='https://testthat.r-lib.org/reference/skip.html'>skip_if(!cli::is_utf8_output())</a></code> to disable the
+<code>TRUE</code>, call <code><a href='skip.html'>skip_if(!cli::is_utf8_output())</a></code> to disable the
 test on your CI platforms that don't support UTF-8 (e.g. Windows).</p></td>
     </tr>
     <tr>
@@ -252,7 +255,7 @@ test on your CI platforms that don't support UTF-8 (e.g. Windows).</p></td>
 
     
 
-<p><code><a href='https://testthat.r-lib.org/reference/verify_output.html'>verify_output()</a></code> can only capture the abstract syntax tree, losing all
+<p><code>verify_output()</code> can only capture the abstract syntax tree, losing all
 whitespace and comments. To mildly offset this limitation:</p><ul>
 <li><p>Strings are converted to R comments in the output.</p></li>
 <li><p>Strings starting with <code># </code> are converted to headers in the output.</p></li>
@@ -262,7 +265,7 @@ whitespace and comments. To mildly offset this limitation:</p><ul>
 
     
 
-<p>On CRAN, <code><a href='https://testthat.r-lib.org/reference/verify_output.html'>verify_output()</a></code> will never fail, even if the output changes.
+<p>On CRAN, <code>verify_output()</code> will never fail, even if the output changes.
 This avoids false positives because tests of print methods and error
 messages are often fragile due to implicit dependencies on other packages,
 and failure does not imply incorrect computation, just a change in
@@ -271,12 +274,12 @@ presentation.</p>
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># The first argument would usually be `test_path("informative-name.txt"`)</span>
 <span class='co'># but that is not permitted in examples</span>
-<span class='kw'>path</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempfile</a></span>()
-<span class='fu'><a href='https://testthat.r-lib.org/reference/verify_output.html'>verify_output</a></span>(<span class='kw'>path</span>, {
-   <span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='kw'>mtcars</span>)
-   <span class='fu'><a href='https://rdrr.io/r/base/Log.html'>log</a></span>(<span class='op'>-</span><span class='fl'>10</span>)
-   <span class='st'>"a"</span> <span class='op'>*</span> <span class='fl'>3</span>
-})</div><div class='output co'>#&gt; <span class='warning'>Warning: Creating reference output</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/writeLines.html'>writeLines</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/readLines.html'>readLines</a></span>(<span class='kw'>path</span>))</div><div class='output co'>#&gt; &gt; head(mtcars)
+<span class='no'>path</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempfile</a></span>()
+<span class='fu'>verify_output</span>(<span class='no'>path</span>, {
+   <span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='no'>mtcars</span>)
+   <span class='fu'><a href='https://rdrr.io/r/base/Log.html'>log</a></span>(-<span class='fl'>10</span>)
+   <span class='st'>"a"</span> * <span class='fl'>3</span>
+})</div><div class='output co'>#&gt; <span class='warning'>Warning: Creating reference output</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/writeLines.html'>writeLines</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/readLines.html'>readLines</a></span>(<span class='no'>path</span>))</div><div class='output co'>#&gt; &gt; head(mtcars)
 #&gt;                    mpg cyl disp  hp drat    wt  qsec vs am gear carb
 #&gt; Mazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
 #&gt; Mazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4
@@ -294,22 +297,22 @@ presentation.</p>
 #&gt; Error in "a" * 3: non-numeric argument to binary operator
 #&gt; </div><div class='input'>
 <span class='co'># Use strings to create comments in the output</span>
-<span class='fu'><a href='https://testthat.r-lib.org/reference/verify_output.html'>verify_output</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempfile</a></span>(), {
+<span class='fu'>verify_output</span>(<span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempfile</a></span>(), {
    <span class='st'>"Print method"</span>
-   <span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='kw'>mtcars</span>)
+   <span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='no'>mtcars</span>)
 
    <span class='st'>"Warning"</span>
-   <span class='fu'><a href='https://rdrr.io/r/base/Log.html'>log</a></span>(<span class='op'>-</span><span class='fl'>10</span>)
+   <span class='fu'><a href='https://rdrr.io/r/base/Log.html'>log</a></span>(-<span class='fl'>10</span>)
 
    <span class='st'>"Error"</span>
-   <span class='st'>"a"</span> <span class='op'>*</span> <span class='fl'>3</span>
+   <span class='st'>"a"</span> * <span class='fl'>3</span>
 })</div><div class='output co'>#&gt; <span class='warning'>Warning: Creating reference output</span></div><div class='input'>
 <span class='co'># Use strings starting with # to create headings</span>
-<span class='fu'><a href='https://testthat.r-lib.org/reference/verify_output.html'>verify_output</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempfile</a></span>(), {
+<span class='fu'>verify_output</span>(<span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempfile</a></span>(), {
    <span class='st'>"# Base functions"</span>
-   <span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='kw'>mtcars</span>)
-   <span class='fu'><a href='https://rdrr.io/r/base/Log.html'>log</a></span>(<span class='op'>-</span><span class='fl'>10</span>)
-   <span class='st'>"a"</span> <span class='op'>*</span> <span class='fl'>3</span>
+   <span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='no'>mtcars</span>)
+   <span class='fu'><a href='https://rdrr.io/r/base/Log.html'>log</a></span>(-<span class='fl'>10</span>)
+   <span class='st'>"a"</span> * <span class='fl'>3</span>
 })</div><div class='output co'>#&gt; <span class='warning'>Warning: Creating reference output</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
@@ -326,7 +329,7 @@ presentation.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
 </div>
 
       </footer>

@@ -117,6 +117,9 @@ input stays the same." />
       <a href="../articles/custom-expectation.html">Custom expectations</a>
     </li>
     <li>
+      <a href="../articles/snapshotting.html">Snapshot tests</a>
+    </li>
+    <li>
       <a href="../articles/test-fixtures.html">Test fixtures</a>
     </li>
     <li>
@@ -187,7 +190,7 @@ input stays the same." />
 input stays the same.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>make_expectation</span>(<span class='kw'>x</span>, expectation = <span class='st'>"equals"</span>)</pre>
+    <pre class="usage"><span class='fu'>make_expectation</span>(<span class='no'>x</span>, <span class='kw'>expectation</span> <span class='kw'>=</span> <span class='st'>"equals"</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -205,14 +208,14 @@ input stays the same.</p>
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>x</span> <span class='op'>&lt;-</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span>
-<span class='fu'>make_expectation</span>(<span class='kw'>x</span>)</div><div class='output co'>#&gt; expect_equal(x, 1:10)</div><div class='input'>
-<span class='fu'>make_expectation</span>(<span class='kw'>mtcars</span><span class='op'>$</span><span class='kw'>mpg</span>)</div><div class='output co'>#&gt; expect_equal(mtcars$mpg, c(21, 21, 22.8, 21.4, 18.7, 18.1, 14.3, 
+    <pre class="examples"><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fl'>1</span>:<span class='fl'>10</span>
+<span class='fu'>make_expectation</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; expect_equal(x, 1:10)</div><div class='input'>
+<span class='fu'>make_expectation</span>(<span class='no'>mtcars</span>$<span class='no'>mpg</span>)</div><div class='output co'>#&gt; expect_equal(mtcars$mpg, c(21, 21, 22.8, 21.4, 18.7, 18.1, 14.3, 
 #&gt; 24.4, 22.8, 19.2, 17.8, 16.4, 17.3, 15.2, 10.4, 10.4, 14.7, 32.4, 
 #&gt; 30.4, 33.9, 21.5, 15.5, 15.2, 13.3, 19.2, 27.3, 26, 30.4, 15.8, 
 #&gt; 19.7, 15, 21.4))</div><div class='input'>
-<span class='kw'>df</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span>(x = <span class='fl'>2</span>)
-<span class='fu'>make_expectation</span>(<span class='kw'>df</span>)</div><div class='output co'>#&gt; expect_equal(df, structure(list(x = 2), class = "data.frame", row.names = c(NA, 
+<span class='no'>df</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='fl'>2</span>)
+<span class='fu'>make_expectation</span>(<span class='no'>df</span>)</div><div class='output co'>#&gt; expect_equal(df, structure(list(x = 2), class = "data.frame", row.names = c(NA, 
 #&gt; -1L)))</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
@@ -229,7 +232,7 @@ input stays the same.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
 </div>
 
       </footer>

@@ -117,6 +117,9 @@ two symbols. It is for expert use only." />
       <a href="../articles/custom-expectation.html">Custom expectations</a>
     </li>
     <li>
+      <a href="../articles/snapshotting.html">Snapshot tests</a>
+    </li>
+    <li>
       <a href="../articles/test-fixtures.html">Test fixtures</a>
     </li>
     <li>
@@ -188,11 +191,11 @@ two symbols. It is for expert use only.</p>
     </div>
 
     <pre class="usage"><span class='fu'>expect_reference</span>(
-  <span class='kw'>object</span>,
-  <span class='kw'>expected</span>,
-  info = <span class='kw'>NULL</span>,
-  label = <span class='kw'>NULL</span>,
-  expected.label = <span class='kw'>NULL</span>
+  <span class='no'>object</span>,
+  <span class='no'>expected</span>,
+  <span class='kw'>info</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>label</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>expected.label</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -202,21 +205,21 @@ two symbols. It is for expert use only.</p>
       <th>object</th>
       <td><p>Computation and value to compare it to.</p>
 <p>Both arguments supports limited unquoting to make it easier to generate
-readable failures within a function or for loop. See quasi_label for
+readable failures within a function or for loop. See <a href='quasi_label.html'>quasi_label</a> for
 more details.</p></td>
     </tr>
     <tr>
       <th>expected</th>
       <td><p>Computation and value to compare it to.</p>
 <p>Both arguments supports limited unquoting to make it easier to generate
-readable failures within a function or for loop. See quasi_label for
+readable failures within a function or for loop. See <a href='quasi_label.html'>quasi_label</a> for
 more details.</p></td>
     </tr>
     <tr>
       <th>info</th>
       <td><p>Extra information to be included in the message. This argument
 is soft-deprecated and should not be used in new code. Instead see
-alternatives in quasi_label.</p></td>
+alternatives in <a href='quasi_label.html'>quasi_label</a>.</p></td>
     </tr>
     <tr>
       <th>label</th>
@@ -233,17 +236,17 @@ use only.</p></td>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other expectations: 
-<code>comparison-expectations</code>,
-<code>equality-expectations</code>,
-<code>expect_error()</code>,
-<code>expect_length()</code>,
-<code>expect_match()</code>,
-<code>expect_named()</code>,
-<code>expect_null()</code>,
-<code>expect_output()</code>,
-<code>expect_silent()</code>,
-<code>inheritance-expectations</code>,
-<code>logical-expectations</code></p></div>
+<code><a href='comparison-expectations.html'>comparison-expectations</a></code>,
+<code><a href='equality-expectations.html'>equality-expectations</a></code>,
+<code><a href='expect_error.html'>expect_error</a>()</code>,
+<code><a href='expect_length.html'>expect_length</a>()</code>,
+<code><a href='expect_match.html'>expect_match</a>()</code>,
+<code><a href='expect_named.html'>expect_named</a>()</code>,
+<code><a href='expect_null.html'>expect_null</a>()</code>,
+<code><a href='expect_output.html'>expect_output</a>()</code>,
+<code><a href='expect_silent.html'>expect_silent</a>()</code>,
+<code><a href='inheritance-expectations.html'>inheritance-expectations</a></code>,
+<code><a href='logical-expectations.html'>logical-expectations</a></code></p></div>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
@@ -260,7 +263,7 @@ use only.</p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
 </div>
 
       </footer>

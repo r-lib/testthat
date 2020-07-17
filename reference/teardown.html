@@ -123,6 +123,9 @@ executed in the order they were created." />
       <a href="../articles/custom-expectation.html">Custom expectations</a>
     </li>
     <li>
+      <a href="../articles/snapshotting.html">Snapshot tests</a>
+    </li>
+    <li>
       <a href="../articles/test-fixtures.html">Test fixtures</a>
     </li>
     <li>
@@ -192,16 +195,16 @@ executed in the order they were created." />
     <p><a href='https://www.tidyverse.org/lifecycle/#superseded'><img src='figures/lifecycle-superseded.svg' alt='Superseded lifecycle'></a></p>
 <p>We no longer recommend using <code>setup()</code> and <code>teardown()</code>; instead
 we think it's better practice to use a <strong>test fixture</strong> as described in
-<code>vignette("test-fixtures")</code>.</p>
+<code><a href='../articles/test-fixtures.html'>vignette("test-fixtures")</a></code>.</p>
 <p>Code in a <code>setup()</code> block is run immediately in a clean environment.
 Code in a <code>teardown()</code> block is run upon completion of a test file,
 even if it exits with an error. Multiple calls to <code>teardown()</code> will be
 executed in the order they were created.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>teardown</span>(<span class='kw'>code</span>, env = <span class='fu'><a href='https://rdrr.io/r/base/sys.parent.html'>parent.frame</a></span>())
+    <pre class="usage"><span class='fu'>teardown</span>(<span class='no'>code</span>, <span class='kw'>env</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/sys.parent.html'>parent.frame</a></span>())
 
-<span class='fu'>setup</span>(<span class='kw'>code</span>, env = <span class='fu'><a href='https://rdrr.io/r/base/sys.parent.html'>parent.frame</a></span>())</pre>
+<span class='fu'>setup</span>(<span class='no'>code</span>, <span class='kw'>env</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/sys.parent.html'>parent.frame</a></span>())</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -219,20 +222,20 @@ use only.</p></td>
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'>if</span> (<span class='fl'>FALSE</span>) {
+    <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
 <span class='co'># Old approach</span>
-<span class='kw'>tmp</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempfile</a></span>()
-<span class='fu'>setup</span>(<span class='fu'><a href='https://rdrr.io/r/base/writeLines.html'>writeLines</a></span>(<span class='st'>"some test data"</span>, <span class='kw'>tmp</span>))
-<span class='fu'>teardown</span>(<span class='fu'><a href='https://rdrr.io/r/base/unlink.html'>unlink</a></span>(<span class='kw'>tmp</span>))
+<span class='no'>tmp</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempfile</a></span>()
+<span class='fu'>setup</span>(<span class='fu'><a href='https://rdrr.io/r/base/writeLines.html'>writeLines</a></span>(<span class='st'>"some test data"</span>, <span class='no'>tmp</span>))
+<span class='fu'>teardown</span>(<span class='fu'><a href='https://rdrr.io/r/base/unlink.html'>unlink</a></span>(<span class='no'>tmp</span>))
 }
 
 <span class='co'># Now recommended:</span>
-<span class='kw'>local_test_data</span> <span class='op'>&lt;-</span> <span class='fu'>function</span>(<span class='kw'>env</span> = <span class='fu'><a href='https://rdrr.io/r/base/sys.parent.html'>parent.frame</a></span>()) {
-  <span class='kw'>tmp</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempfile</a></span>()
-  <span class='fu'><a href='https://rdrr.io/r/base/writeLines.html'>writeLines</a></span>(<span class='st'>"some test data"</span>, <span class='kw'>tmp</span>)
-  <span class='kw'>withr</span>::<span class='fu'><a href='https://rdrr.io/pkg/withr/man/defer.html'>defer</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/unlink.html'>unlink</a></span>(<span class='kw'>tmp</span>), <span class='kw'>env</span>)
+<span class='no'>local_test_data</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>(<span class='no'>env</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/sys.parent.html'>parent.frame</a></span>()) {
+  <span class='no'>tmp</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempfile</a></span>()
+  <span class='fu'><a href='https://rdrr.io/r/base/writeLines.html'>writeLines</a></span>(<span class='st'>"some test data"</span>, <span class='no'>tmp</span>)
+  <span class='kw pkg'>withr</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/withr/man/defer.html'>defer</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/unlink.html'>unlink</a></span>(<span class='no'>tmp</span>), <span class='no'>env</span>)
 
-  <span class='kw'>tmp</span>
+  <span class='no'>tmp</span>
 }
 <span class='co'># Then call local_test_data() in your tests</span></div></pre>
   </div>
@@ -250,7 +253,7 @@ use only.</p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
 </div>
 
       </footer>

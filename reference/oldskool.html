@@ -122,6 +122,9 @@ expect_equal(a, b)." />
       <a href="../articles/custom-expectation.html">Custom expectations</a>
     </li>
     <li>
+      <a href="../articles/snapshotting.html">Snapshot tests</a>
+    </li>
+    <li>
       <a href="../articles/test-fixtures.html">Test fixtures</a>
     </li>
     <li>
@@ -194,40 +197,40 @@ expect_equal(a, b)." />
 English sentences, but was verbose and a bit too cutesy. This style
 will continue to work but has been soft-deprecated - it is no longer
 documented, and new expectations will only use the new style
-<code>expect_equal(a, b)</code>.</p>
+<code><a href='equality-expectations.html'>expect_equal(a, b)</a></code>.</p>
     </div>
 
     <pre class="usage"><span class='fu'>is_null</span>()
 
-<span class='fu'>is_a</span>(<span class='kw'>class</span>)
+<span class='fu'>is_a</span>(<span class='no'>class</span>)
 
 <span class='fu'>is_true</span>()
 
 <span class='fu'>is_false</span>()
 
-<span class='fu'>has_names</span>(<span class='kw'>expected</span>, ignore.order = <span class='fl'>FALSE</span>, ignore.case = <span class='fl'>FALSE</span>)
+<span class='fu'>has_names</span>(<span class='no'>expected</span>, <span class='kw'>ignore.order</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>ignore.case</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
-<span class='fu'>is_less_than</span>(<span class='kw'>expected</span>, label = <span class='kw'>NULL</span>, <span class='kw'>...</span>)
+<span class='fu'>is_less_than</span>(<span class='no'>expected</span>, <span class='kw'>label</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>)
 
-<span class='fu'>is_more_than</span>(<span class='kw'>expected</span>, label = <span class='kw'>NULL</span>, <span class='kw'>...</span>)
+<span class='fu'>is_more_than</span>(<span class='no'>expected</span>, <span class='kw'>label</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>)
 
-<span class='fu'>equals</span>(<span class='kw'>expected</span>, label = <span class='kw'>NULL</span>, <span class='kw'>...</span>)
+<span class='fu'>equals</span>(<span class='no'>expected</span>, <span class='kw'>label</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>)
 
-<span class='fu'>is_equivalent_to</span>(<span class='kw'>expected</span>, label = <span class='kw'>NULL</span>)
+<span class='fu'>is_equivalent_to</span>(<span class='no'>expected</span>, <span class='kw'>label</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
 
-<span class='fu'>is_identical_to</span>(<span class='kw'>expected</span>, label = <span class='kw'>NULL</span>)
+<span class='fu'>is_identical_to</span>(<span class='no'>expected</span>, <span class='kw'>label</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
 
-<span class='fu'>equals_reference</span>(<span class='kw'>file</span>, label = <span class='kw'>NULL</span>, <span class='kw'>...</span>)
+<span class='fu'>equals_reference</span>(<span class='no'>file</span>, <span class='kw'>label</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>)
 
-<span class='fu'>shows_message</span>(regexp = <span class='kw'>NULL</span>, all = <span class='fl'>FALSE</span>, <span class='kw'>...</span>)
+<span class='fu'>shows_message</span>(<span class='kw'>regexp</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>all</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='no'>...</span>)
 
-<span class='fu'>gives_warning</span>(regexp = <span class='kw'>NULL</span>, all = <span class='fl'>FALSE</span>, <span class='kw'>...</span>)
+<span class='fu'>gives_warning</span>(<span class='kw'>regexp</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>all</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='no'>...</span>)
 
-<span class='fu'>prints_text</span>(regexp = <span class='kw'>NULL</span>, <span class='kw'>...</span>)
+<span class='fu'>prints_text</span>(<span class='kw'>regexp</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>)
 
-<span class='fu'>throws_error</span>(regexp = <span class='kw'>NULL</span>, <span class='kw'>...</span>)
+<span class='fu'>throws_error</span>(<span class='kw'>regexp</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>)
 
-<span class='fu'>matches</span>(<span class='kw'>regexp</span>, all = <span class='fl'>TRUE</span>, <span class='kw'>...</span>)</pre>
+<span class='fu'>matches</span>(<span class='no'>regexp</span>, <span class='kw'>all</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='no'>...</span>)</pre>
 
 
 
@@ -246,7 +249,7 @@ documented, and new expectations will only use the new style
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
 </div>
 
       </footer>

@@ -123,6 +123,9 @@ that x[names(y)] equals y.
       <a href="../articles/custom-expectation.html">Custom expectations</a>
     </li>
     <li>
+      <a href="../articles/snapshotting.html">Snapshot tests</a>
+    </li>
+    <li>
       <a href="../articles/test-fixtures.html">Test fixtures</a>
     </li>
     <li>
@@ -199,9 +202,9 @@ that <code>x[names(y)]</code> equals <code>y</code>.</p></li>
 
     </div>
 
-    <pre class="usage"><span class='fu'>expect_setequal</span>(<span class='kw'>object</span>, <span class='kw'>expected</span>)
+    <pre class="usage"><span class='fu'>expect_setequal</span>(<span class='no'>object</span>, <span class='no'>expected</span>)
 
-<span class='fu'>expect_mapequal</span>(<span class='kw'>object</span>, <span class='kw'>expected</span>)</pre>
+<span class='fu'>expect_mapequal</span>(<span class='no'>object</span>, <span class='no'>expected</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -210,14 +213,14 @@ that <code>x[names(y)]</code> equals <code>y</code>.</p></li>
       <th>object</th>
       <td><p>Computation and value to compare it to.</p>
 <p>Both arguments supports limited unquoting to make it easier to generate
-readable failures within a function or for loop. See quasi_label for
+readable failures within a function or for loop. See <a href='quasi_label.html'>quasi_label</a> for
 more details.</p></td>
     </tr>
     <tr>
       <th>expected</th>
       <td><p>Computation and value to compare it to.</p>
 <p>Both arguments supports limited unquoting to make it easier to generate
-readable failures within a function or for loop. See quasi_label for
+readable failures within a function or for loop. See <a href='quasi_label.html'>quasi_label</a> for
 more details.</p></td>
     </tr>
     </table>
@@ -228,16 +231,16 @@ more details.</p></td>
 <code>object</code> and <code>expected</code> have them.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>expect_setequal</span>(<span class='kw'>letters</span>, <span class='fu'><a href='https://rdrr.io/r/base/rev.html'>rev</a></span>(<span class='kw'>letters</span>))
-<span class='fu'>show_failure</span>(<span class='fu'>expect_setequal</span>(<span class='kw'>letters</span>[<span class='op'>-</span><span class='fl'>1</span>], <span class='fu'><a href='https://rdrr.io/r/base/rev.html'>rev</a></span>(<span class='kw'>letters</span>)))</div><div class='output co'>#&gt; <span style='font-weight: bold;'>Failed expectation:
+    <pre class="examples"><div class='input'><span class='fu'>expect_setequal</span>(<span class='no'>letters</span>, <span class='fu'><a href='https://rdrr.io/r/base/rev.html'>rev</a></span>(<span class='no'>letters</span>))
+<span class='fu'><a href='expect_success.html'>show_failure</a></span>(<span class='fu'>expect_setequal</span>(<span class='no'>letters</span>[-<span class='fl'>1</span>], <span class='fu'><a href='https://rdrr.io/r/base/rev.html'>rev</a></span>(<span class='no'>letters</span>)))</div><div class='output co'>#&gt; <span style='font-weight: bold;'>Failed expectation:
 #&gt; </span><span>rev(letters)[26] absent from letters[-1]</div><div class='input'>
-<span class='kw'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(b = <span class='fl'>2</span>, a = <span class='fl'>1</span>)
-<span class='fu'>expect_mapequal</span>(<span class='kw'>x</span>, <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(a = <span class='fl'>1</span>, b = <span class='fl'>2</span>))
-<span class='fu'>show_failure</span>(<span class='fu'>expect_mapequal</span>(<span class='kw'>x</span>, <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(a = <span class='fl'>1</span>)))</div><div class='output co'>#&gt; </span><span style='font-weight: bold;'>Failed expectation:
-#&gt; </span><span>Names absent from `expected`: "b", </div><div class='input'><span class='fu'>show_failure</span>(<span class='fu'>expect_mapequal</span>(<span class='kw'>x</span>, <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(a = <span class='fl'>1</span>, b = <span class='st'>"x"</span>)))</div><div class='output co'>#&gt; </span><span style='font-weight: bold;'>Failed expectation:
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>b</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>a</span> <span class='kw'>=</span> <span class='fl'>1</span>)
+<span class='fu'>expect_mapequal</span>(<span class='no'>x</span>, <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>a</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>b</span> <span class='kw'>=</span> <span class='fl'>2</span>))
+<span class='fu'><a href='expect_success.html'>show_failure</a></span>(<span class='fu'>expect_mapequal</span>(<span class='no'>x</span>, <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>a</span> <span class='kw'>=</span> <span class='fl'>1</span>)))</div><div class='output co'>#&gt; </span><span style='font-weight: bold;'>Failed expectation:
+#&gt; </span><span>Names absent from `expected`: "b", </div><div class='input'><span class='fu'><a href='expect_success.html'>show_failure</a></span>(<span class='fu'>expect_mapequal</span>(<span class='no'>x</span>, <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>a</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>b</span> <span class='kw'>=</span> <span class='st'>"x"</span>)))</div><div class='output co'>#&gt; </span><span style='font-weight: bold;'>Failed expectation:
 #&gt; </span><span>act$val[exp_nms] not equal to exp$val.
 #&gt; Component “b”: Modes: numeric, character
-#&gt; Component “b”: target is numeric, current is character</div><div class='input'><span class='fu'>show_failure</span>(<span class='fu'>expect_mapequal</span>(<span class='kw'>x</span>, <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(a = <span class='fl'>1</span>, b = <span class='fl'>2</span>, c = <span class='fl'>3</span>)))</div><div class='output co'>#&gt; </span><span style='font-weight: bold;'>Failed expectation:
+#&gt; Component “b”: target is numeric, current is character</div><div class='input'><span class='fu'><a href='expect_success.html'>show_failure</a></span>(<span class='fu'>expect_mapequal</span>(<span class='no'>x</span>, <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>a</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>b</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>c</span> <span class='kw'>=</span> <span class='fl'>3</span>)))</div><div class='output co'>#&gt; </span><span style='font-weight: bold;'>Failed expectation:
 #&gt; </span><span>Names absent from `object`: "c", </div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
@@ -254,7 +257,7 @@ more details.</p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
 </div>
 
       </footer>

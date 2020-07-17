@@ -120,6 +120,9 @@ convey your  intent." />
       <a href="../articles/custom-expectation.html">Custom expectations</a>
     </li>
     <li>
+      <a href="../articles/snapshotting.html">Snapshot tests</a>
+    </li>
+    <li>
       <a href="../articles/test-fixtures.html">Test fixtures</a>
     </li>
     <li>
@@ -189,11 +192,11 @@ convey your  intent." />
     <p><a href='https://www.tidyverse.org/lifecycle/#superseded'><img src='figures/lifecycle-superseded.svg' alt='Superseded lifecycle'></a></p>
 <p><code>expect_is()</code> is an older form that uses <code><a href='https://rdrr.io/r/base/class.html'>inherits()</a></code> without checking
 whether <code>x</code> is S3, S4, or neither. Instead, I'd recommend using
-<code>expect_type()</code>, <code>expect_s3_class()</code> or <code>expect_s4_class()</code> to more clearly
+<code><a href='inheritance-expectations.html'>expect_type()</a></code>, <code><a href='inheritance-expectations.html'>expect_s3_class()</a></code> or <code><a href='inheritance-expectations.html'>expect_s4_class()</a></code> to more clearly
 convey your  intent.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>expect_is</span>(<span class='kw'>object</span>, <span class='kw'>class</span>, info = <span class='kw'>NULL</span>, label = <span class='kw'>NULL</span>)</pre>
+    <pre class="usage"><span class='fu'>expect_is</span>(<span class='no'>object</span>, <span class='no'>class</span>, <span class='kw'>info</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>label</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -202,7 +205,7 @@ convey your  intent.</p>
       <th>object</th>
       <td><p>Object to test.</p>
 <p>Supports limited unquoting to make it easier to generate readable failures
-within a function or for loop. See quasi_label for more details.</p></td>
+within a function or for loop. See <a href='quasi_label.html'>quasi_label</a> for more details.</p></td>
     </tr>
     <tr>
       <th>class</th>
@@ -232,7 +235,7 @@ within a function or for loop. See quasi_label for more details.</p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
 </div>
 
       </footer>

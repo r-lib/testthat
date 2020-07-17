@@ -121,6 +121,9 @@ unimportant warnings, use suppressWarnings()." />
       <a href="../articles/custom-expectation.html">Custom expectations</a>
     </li>
     <li>
+      <a href="../articles/snapshotting.html">Snapshot tests</a>
+    </li>
+    <li>
       <a href="../articles/test-fixtures.html">Test fixtures</a>
     </li>
     <li>
@@ -190,24 +193,24 @@ unimportant warnings, use suppressWarnings()." />
     <p><a href='https://www.tidyverse.org/lifecycle/#superseded'><img src='figures/lifecycle-superseded.svg' alt='Superseded lifecycle'></a></p>
 <p>These functions allow you to capture the side-effects of a function call
 including printed output, messages and warnings. We no longer recommend
-that you use these functions, instead relying on the <code>expect_message()</code>
+that you use these functions, instead relying on the <code><a href='expect_error.html'>expect_message()</a></code>
 and friends to bubble up unmatched conditions. If you just want to silence
 unimportant warnings, use <code><a href='https://rdrr.io/r/base/warning.html'>suppressWarnings()</a></code>.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>capture_condition</span>(<span class='kw'>code</span>, entrace = <span class='fl'>FALSE</span>)
+    <pre class="usage"><span class='fu'>capture_condition</span>(<span class='no'>code</span>, <span class='kw'>entrace</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
-<span class='fu'>capture_error</span>(<span class='kw'>code</span>, entrace = <span class='fl'>FALSE</span>)
+<span class='fu'>capture_error</span>(<span class='no'>code</span>, <span class='kw'>entrace</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
-<span class='fu'>capture_expectation</span>(<span class='kw'>code</span>, entrace = <span class='fl'>FALSE</span>)
+<span class='fu'>capture_expectation</span>(<span class='no'>code</span>, <span class='kw'>entrace</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
-<span class='fu'>capture_message</span>(<span class='kw'>code</span>, entrace = <span class='fl'>FALSE</span>)
+<span class='fu'>capture_message</span>(<span class='no'>code</span>, <span class='kw'>entrace</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
-<span class='fu'>capture_warning</span>(<span class='kw'>code</span>, entrace = <span class='fl'>FALSE</span>)
+<span class='fu'>capture_warning</span>(<span class='no'>code</span>, <span class='kw'>entrace</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
-<span class='fu'>capture_messages</span>(<span class='kw'>code</span>)
+<span class='fu'>capture_messages</span>(<span class='no'>code</span>)
 
-<span class='fu'>capture_warnings</span>(<span class='kw'>code</span>)</pre>
+<span class='fu'>capture_warnings</span>(<span class='no'>code</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -230,7 +233,7 @@ return a condition object. <code>capture_messages()</code> and <code>capture_war
 return a character vector of message text.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>f</span> <span class='op'>&lt;-</span> <span class='fu'>function</span>() {
+    <pre class="examples"><div class='input'><span class='no'>f</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>() {
   <span class='fu'><a href='https://rdrr.io/r/base/message.html'>message</a></span>(<span class='st'>"First"</span>)
   <span class='fu'><a href='https://rdrr.io/r/base/warning.html'>warning</a></span>(<span class='st'>"Second"</span>)
   <span class='fu'><a href='https://rdrr.io/r/base/message.html'>message</a></span>(<span class='st'>"Third"</span>)
@@ -257,7 +260,7 @@ return a character vector of message text.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
 </div>
 
       </footer>

@@ -52,7 +52,8 @@ Snapshot tests (aka golden tests) are similar to unit tests except that the
 expected result is stored in a separate file that is managed by testthat.
 Snapshot tests are useful for when the expected value is large, or when
 the intent of the code is something that can only be verified by a human
-(e.g. this is a useful error message).
+(e.g. this is a useful error message). Learn more in
+vignette(&quot;snapshotting&quot;).
 expect_snapshot_output() captures the output printed to the console.
 (by testthat_print()).
 expect_snapshot_value() captures the return value.
@@ -130,6 +131,9 @@ expect_known_value(), and expect_known_hash().)" />
       <a href="../articles/custom-expectation.html">Custom expectations</a>
     </li>
     <li>
+      <a href="../articles/snapshotting.html">Snapshot tests</a>
+    </li>
+    <li>
       <a href="../articles/test-fixtures.html">Test fixtures</a>
     </li>
     <li>
@@ -201,29 +205,30 @@ expect_known_value(), and expect_known_hash().)" />
 expected result is stored in a separate file that is managed by testthat.
 Snapshot tests are useful for when the expected value is large, or when
 the intent of the code is something that can only be verified by a human
-(e.g. this is a useful error message).</p><ul>
+(e.g. this is a useful error message). Learn more in
+<code><a href='../articles/snapshotting.html'>vignette("snapshotting")</a></code>.</p><ul>
 <li><p><code>expect_snapshot_output()</code> captures the output printed to the console.
-(by <code>testthat_print()</code>).</p></li>
+(by <code><a href='capture_output.html'>testthat_print()</a></code>).</p></li>
 <li><p><code>expect_snapshot_value()</code> captures the return value.</p></li>
 <li><p><code>expect_snapshot_error()</code> capture an error message.</p></li>
 <li><p><code>expect_snapshot_condition()</code> captures a condition object.</p></li>
 </ul>
 
-<p>(These functions supersede <code>verify_output()</code>, <code>expect_known_output()</code>,
-<code>expect_known_value()</code>, and <code>expect_known_hash()</code>.)</p>
+<p>(These functions supersede <code><a href='verify_output.html'>verify_output()</a></code>, <code><a href='expect_known_output.html'>expect_known_output()</a></code>,
+<code><a href='expect_known_output.html'>expect_known_value()</a></code>, and <code><a href='expect_known_output.html'>expect_known_hash()</a></code>.)</p>
     </div>
 
-    <pre class="usage"><span class='fu'>expect_snapshot_output</span>(<span class='kw'>x</span>, cran = <span class='fl'>FALSE</span>)
+    <pre class="usage"><span class='fu'>expect_snapshot_output</span>(<span class='no'>x</span>, <span class='kw'>cran</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
 <span class='fu'>expect_snapshot_value</span>(
-  <span class='kw'>x</span>,
-  style = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"json"</span>, <span class='st'>"json2"</span>, <span class='st'>"deparse"</span>, <span class='st'>"serialize"</span>),
-  cran = <span class='fl'>FALSE</span>
+  <span class='no'>x</span>,
+  <span class='kw'>style</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"json"</span>, <span class='st'>"json2"</span>, <span class='st'>"deparse"</span>, <span class='st'>"serialize"</span>),
+  <span class='kw'>cran</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
 )
 
-<span class='fu'>expect_snapshot_error</span>(<span class='kw'>x</span>, class = <span class='st'>"error"</span>, cran = <span class='fl'>FALSE</span>)
+<span class='fu'>expect_snapshot_error</span>(<span class='no'>x</span>, <span class='kw'>class</span> <span class='kw'>=</span> <span class='st'>"error"</span>, <span class='kw'>cran</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
-<span class='fu'>expect_snapshot_condition</span>(<span class='kw'>x</span>, <span class='kw'>class</span>, cran = <span class='fl'>FALSE</span>)</pre>
+<span class='fu'>expect_snapshot_condition</span>(<span class='no'>x</span>, <span class='no'>class</span>, <span class='kw'>cran</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -279,7 +284,7 @@ updated in the expected way.</p>
 <p>On subsequent runs, the result of <code>x</code> will be compared to the value stored
 on disk. If it's different, the expectation will fail, and a new file
 <code>snap/{test}.new.json</code> will be created. If the change was deliberate,
-you can approve the change with <code>snapshot_accept()</code> and then the tests will
+you can approve the change with <code><a href='snapshot_accept.html'>snapshot_accept()</a></code> and then the tests will
 pass the next time you run them.</p>
 
   </div>
@@ -297,7 +302,7 @@ pass the next time you run them.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
 </div>
 
       </footer>

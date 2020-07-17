@@ -70,6 +70,9 @@
       <a href="../articles/custom-expectation.html">Custom expectations</a>
     </li>
     <li>
+      <a href="../articles/snapshotting.html">Snapshot tests</a>
+    </li>
+    <li>
       <a href="../articles/test-fixtures.html">Test fixtures</a>
     </li>
     <li>
@@ -161,27 +164,23 @@
 <p>It’s also important that your setup and cleanup is easy to use when working interactively. When a test fails, you want to be able to quickly recreate the exact environment in which the test is run so you can interactively experiment to figure out what went wrong.</p>
 <p>This article introduces a powerful technqiue that allows you to solve both problems: <strong>test fixtures</strong>. We’ll begin with an introduction to the tools that make fixtures possible, then talk about exactly what a test fixture is, and show a few examples.</p>
 <p>Much of this vignette is derived from <a href="https://www.tidyverse.org/blog/2020/04/self-cleaning-test-fixtures/" class="uri">https://www.tidyverse.org/blog/2020/04/self-cleaning-test-fixtures/</a>; if this is your first encounter with <code><a href="https://rdrr.io/r/base/on.exit.html">on.exit()</a></code> or <code><a href="https://rdrr.io/pkg/withr/man/defer.html">withr::defer()</a></code>, I’d recommend starting with that blog as it gives a gentler introduction. This vignette moves a little faster since it’s designed as more of a reference doc.</p>
-<div class="sourceCode" id="cb1"><pre class="downlit">
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="http://testthat.r-lib.org">testthat</a></span>)
-</pre></div>
+<div class="sourceCode" id="cb1"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">testthat</span>)</pre></body></html></div>
 </div>
 <div id="foundations" class="section level2">
 <h2 class="hasAnchor">
 <a href="#foundations" class="anchor"></a>Foundations</h2>
 <p>Before we can talk about test fixtures, we need to lay some foundations to help you understand how they work. We’ll motivate the discussion with a <code>sloppy()</code> function that prints a number with a specific number of significant digits by adjusting an R option:</p>
-<div class="sourceCode" id="cb2"><pre class="downlit">
-<span class="kw">sloppy</span> <span class="op">&lt;-</span> <span class="fu">function</span>(<span class="kw">x</span>, <span class="kw">sig_digits</span>) {
-  <span class="fu"><a href="https://rdrr.io/r/base/options.html">options</a></span>(digits = <span class="kw">sig_digits</span>)
-  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span>(<span class="kw">x</span>)
+<div class="sourceCode" id="cb2"><html><body><pre class="r"><span class="no">sloppy</span> <span class="kw">&lt;-</span> <span class="kw">function</span>(<span class="no">x</span>, <span class="no">sig_digits</span>) {
+  <span class="fu"><a href="https://rdrr.io/r/base/options.html">options</a></span>(<span class="kw">digits</span> <span class="kw">=</span> <span class="no">sig_digits</span>)
+  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span>(<span class="no">x</span>)
 }
 
-<span class="kw">pi</span>
+<span class="no">pi</span>
 <span class="co">#&gt; [1] 3.141593</span>
-<span class="fu">sloppy</span>(<span class="kw">pi</span>, <span class="fl">2</span>)
+<span class="fu">sloppy</span>(<span class="no">pi</span>, <span class="fl">2</span>)
 <span class="co">#&gt; [1] 3.1</span>
-<span class="kw">pi</span>
-<span class="co">#&gt; [1] 3.1</span>
-</pre></div>
+<span class="no">pi</span>
+<span class="co">#&gt; [1] 3.1</span></pre></body></html></div>
 <p>Notice how <code>pi</code> prints differently before and after the call to <code>sloppy()</code>. Calling <code>sloppy()</code> has a side effect: it changes the <code>digits</code> option globally, not just within its own scope of operations. This is what we want to avoid<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>.</p>
 <div id="on-exit" class="section level3">
 <h3 class="hasAnchor">
@@ -189,42 +188,36 @@
 </h3>
 <p>The first function you need to know about is base R’s <code><a href="https://rdrr.io/r/base/on.exit.html">on.exit()</a></code>. <code><a href="https://rdrr.io/r/base/on.exit.html">on.exit()</a></code> calls the code to supplied to its first argument when the current function exits, regardless of whether it returns a value or errors. You can use <code><a href="https://rdrr.io/r/base/on.exit.html">on.exit()</a></code> to clean up after yourself by ensuring that every mess-making function call is paired with an <code><a href="https://rdrr.io/r/base/on.exit.html">on.exit()</a></code> call that cleans up.</p>
 <p>We can use this idea to turn <code>sloppy()</code> into <code>neat()</code>:</p>
-<div class="sourceCode" id="cb3"><pre class="downlit">
-<span class="kw">neat</span> <span class="op">&lt;-</span> <span class="fu">function</span>(<span class="kw">x</span>, <span class="kw">sig_digits</span>) {
-  <span class="kw">op</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/options.html">options</a></span>(digits = <span class="kw">sig_digits</span>)
-  <span class="fu"><a href="https://rdrr.io/r/base/on.exit.html">on.exit</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/options.html">options</a></span>(<span class="kw">op</span>), add = <span class="fl">TRUE</span>, after = <span class="fl">FALSE</span>)
-  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span>(<span class="kw">x</span>)
+<div class="sourceCode" id="cb3"><html><body><pre class="r"><span class="no">neat</span> <span class="kw">&lt;-</span> <span class="kw">function</span>(<span class="no">x</span>, <span class="no">sig_digits</span>) {
+  <span class="no">op</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/options.html">options</a></span>(<span class="kw">digits</span> <span class="kw">=</span> <span class="no">sig_digits</span>)
+  <span class="fu"><a href="https://rdrr.io/r/base/on.exit.html">on.exit</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/options.html">options</a></span>(<span class="no">op</span>), <span class="kw">add</span> <span class="kw">=</span> <span class="fl">TRUE</span>, <span class="kw">after</span> <span class="kw">=</span> <span class="fl">FALSE</span>)
+  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span>(<span class="no">x</span>)
 }
 
-<span class="kw">pi</span>
+<span class="no">pi</span>
 <span class="co">#&gt; [1] 3.141593</span>
-<span class="fu">neat</span>(<span class="kw">pi</span>, <span class="fl">2</span>)
+<span class="fu">neat</span>(<span class="no">pi</span>, <span class="fl">2</span>)
 <span class="co">#&gt; [1] 3.1</span>
-<span class="kw">pi</span>
-<span class="co">#&gt; [1] 3.141593</span>
-</pre></div>
+<span class="no">pi</span>
+<span class="co">#&gt; [1] 3.141593</span></pre></body></html></div>
 <p>Here we make use of a useful pattern <code><a href="https://rdrr.io/r/base/options.html">options()</a></code> implements: when you call <code><a href="https://rdrr.io/r/base/options.html">options(digits = sig_digits)</a></code> it both sets the <code>digits</code> option <em>and</em> (invisibly) returns the previous value of digits. We can then use that value to restore the previous options.</p>
 <p><code><a href="https://rdrr.io/r/base/on.exit.html">on.exit()</a></code> also works in tests:</p>
-<div class="sourceCode" id="cb4"><pre class="downlit">
-<span class="fu"><a href="../reference/test_that.html">test_that</a></span>(<span class="st">"can print one digit of pi"</span>, {
-  <span class="kw">op</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/options.html">options</a></span>(digits = <span class="fl">1</span>)
-  <span class="fu"><a href="https://rdrr.io/r/base/on.exit.html">on.exit</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/options.html">options</a></span>(<span class="kw">op</span>), add = <span class="fl">TRUE</span>, after = <span class="fl">FALSE</span>)
-  
-  <span class="fu"><a href="../reference/expect_output.html">expect_output</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span>(<span class="kw">pi</span>), <span class="st">"3"</span>)
+<div class="sourceCode" id="cb4"><html><body><pre class="r"><span class="fu"><a href="../reference/test_that.html">test_that</a></span>(<span class="st">"can print one digit of pi"</span>, {
+  <span class="no">op</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/options.html">options</a></span>(<span class="kw">digits</span> <span class="kw">=</span> <span class="fl">1</span>)
+  <span class="fu"><a href="https://rdrr.io/r/base/on.exit.html">on.exit</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/options.html">options</a></span>(<span class="no">op</span>), <span class="kw">add</span> <span class="kw">=</span> <span class="fl">TRUE</span>, <span class="kw">after</span> <span class="kw">=</span> <span class="fl">FALSE</span>)
+
+  <span class="fu"><a href="../reference/expect_output.html">expect_output</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span>(<span class="no">pi</span>), <span class="st">"3"</span>)
 })
-<span class="co">#&gt; Test succeeded 🎊</span>
-<span class="kw">pi</span>
-<span class="co">#&gt; [1] 3.141593</span>
-</pre></div>
+<span class="co">#&gt; Test passed 🥳</span>
+<span class="no">pi</span>
+<span class="co">#&gt; [1] 3.141593</span></pre></body></html></div>
 <p>There are three main drawbacks to <code><a href="https://rdrr.io/r/base/on.exit.html">on.exit()</a></code>:</p>
 <ul>
 <li><p>You should always call it with <code>add = TRUE</code> and <code>after = FALSE</code>. These ensure that the call is <strong>added</strong> to the list of deferred tasks (instead of replaces) and is added to the <strong>front</strong> of the stack (not the back, so that cleanup occurs in reverse order to setup). These arguments only matter if you’re using multiple <code><a href="https://rdrr.io/r/base/on.exit.html">on.exit()</a></code> calls, but it’s a good habit to always use them to avoid potential problems down the road.</p></li>
 <li>
 <p>It doesn’t work outside a function or test. If you run the following code in the global environment, you won’t get an error, but the cleanup code will never be run:</p>
-<div class="sourceCode" id="cb5"><pre class="downlit">
-<span class="kw">op</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/options.html">options</a></span>(digits = <span class="fl">1</span>)
-<span class="fu"><a href="https://rdrr.io/r/base/on.exit.html">on.exit</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/options.html">options</a></span>(<span class="kw">op</span>), add = <span class="fl">TRUE</span>, after = <span class="fl">FALSE</span>)
-</pre></div>
+<div class="sourceCode" id="cb5"><html><body><pre class="r"><span class="no">op</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/options.html">options</a></span>(<span class="kw">digits</span> <span class="kw">=</span> <span class="fl">1</span>)
+<span class="fu"><a href="https://rdrr.io/r/base/on.exit.html">on.exit</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/options.html">options</a></span>(<span class="no">op</span>), <span class="kw">add</span> <span class="kw">=</span> <span class="fl">TRUE</span>, <span class="kw">after</span> <span class="kw">=</span> <span class="fl">FALSE</span>)</pre></body></html></div>
 <p>This is annoying when you are running tests interactively.</p>
 </li>
 <li><p>You can’t program with it; <code><a href="https://rdrr.io/r/base/on.exit.html">on.exit()</a></code> always works inside the <em>current</em> function so you can’t wrap up repeated <code><a href="https://rdrr.io/r/base/on.exit.html">on.exit()</a></code> code in a helper function.</p></li>
@@ -236,16 +229,13 @@
 <a href="#withrdefer" class="anchor"></a><code>withr::defer()</code>
 </h3>
 <p><code><a href="https://rdrr.io/pkg/withr/man/defer.html">withr::defer()</a></code> resolves the main drawbacks of <code><a href="https://rdrr.io/r/base/on.exit.html">on.exit()</a></code>. First, it has the behaviour we want by default; no extra arguments needed:</p>
-<div class="sourceCode" id="cb6"><pre class="downlit">
-<span class="kw">neat</span> <span class="op">&lt;-</span> <span class="fu">function</span>(<span class="kw">x</span>, <span class="kw">sig_digits</span>) {
-  <span class="kw">op</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/options.html">options</a></span>(digits = <span class="kw">sig_digits</span>)
-  <span class="kw">withr</span>::<span class="fu"><a href="https://rdrr.io/pkg/withr/man/defer.html">defer</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/options.html">options</a></span>(<span class="kw">op</span>))
-  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span>(<span class="kw">x</span>)
-}
-</pre></div>
+<div class="sourceCode" id="cb6"><html><body><pre class="r"><span class="no">neat</span> <span class="kw">&lt;-</span> <span class="kw">function</span>(<span class="no">x</span>, <span class="no">sig_digits</span>) {
+  <span class="no">op</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/options.html">options</a></span>(<span class="kw">digits</span> <span class="kw">=</span> <span class="no">sig_digits</span>)
+  <span class="kw pkg">withr</span><span class="kw ns">::</span><span class="fu"><a href="https://rdrr.io/pkg/withr/man/defer.html">defer</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/options.html">options</a></span>(<span class="no">op</span>))
+  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span>(<span class="no">x</span>)
+}</pre></body></html></div>
 <p>Second, it works when called in the global environment. Since the global environment isn’t perishable, like a test environment is, you have to call <code>deferred_run()</code> explicitly to execute the deferred events. You can also clear them, without running, with <code>deferred_clear()</code>.</p>
-<div class="sourceCode" id="cb7"><pre class="downlit">
-<span class="kw">withr</span>::<span class="fu"><a href="https://rdrr.io/pkg/withr/man/defer.html">defer</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span>(<span class="st">"hi"</span>))
+<div class="sourceCode" id="cb7"><html><body><pre class="r"><span class="kw pkg">withr</span><span class="kw ns">::</span><span class="fu"><a href="https://rdrr.io/pkg/withr/man/defer.html">defer</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span>(<span class="st">"hi"</span>))
 <span class="co">#&gt; Setting deferred event(s) on global environment.</span>
 <span class="co">#&gt;   * Execute (and clear) with `deferred_run()`.</span>
 <span class="co">#&gt;   * Clear (without executing) with `deferred_clear()`.</span>
@@ -254,53 +244,46 @@
 <span class="co">#&gt;   * Execute (and clear) with `deferred_run()`.</span>
 <span class="co">#&gt;   * Clear (without executing) with `deferred_clear()`.</span>
 
-<span class="kw">withr</span>::<span class="fu"><a href="https://rdrr.io/pkg/withr/man/defer.html">deferred_run</a></span>()
+<span class="kw pkg">withr</span><span class="kw ns">::</span><span class="fu"><a href="https://rdrr.io/pkg/withr/man/defer.html">deferred_run</a></span>()
 <span class="co">#&gt; [1] "hi"</span>
-<span class="co">#&gt; [1] "hi"</span>
-</pre></div>
+<span class="co">#&gt; [1] "hi"</span></pre></body></html></div>
 <p>Finally, <code><a href="https://rdrr.io/pkg/withr/man/defer.html">withr::defer()</a></code> lets you pick which function to bind the clean up behaviour too. This makes it possible to create helper functions.</p>
 </div>
 <div id="local-helpers" class="section level3">
 <h3 class="hasAnchor">
 <a href="#local-helpers" class="anchor"></a>“Local” helpers</h3>
 <p>Imagine we have many functions where we want to temporarily set the digits option. Wouldn’t it be nice if we could write a helper function to automate? Unfortunately we can’t write a helper with <code><a href="https://rdrr.io/r/base/on.exit.html">on.exit()</a></code>:</p>
-<div class="sourceCode" id="cb8"><pre class="downlit">
-<span class="kw">local_digits</span> <span class="op">&lt;-</span> <span class="fu">function</span>(<span class="kw">sig_digits</span>) {
-  <span class="kw">op</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/options.html">options</a></span>(digits = <span class="kw">sig_digits</span>)
-  <span class="fu"><a href="https://rdrr.io/r/base/on.exit.html">on.exit</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/options.html">options</a></span>(<span class="kw">op</span>), add = <span class="fl">TRUE</span>, after = <span class="fl">FALSE</span>)
+<div class="sourceCode" id="cb8"><html><body><pre class="r"><span class="no">local_digits</span> <span class="kw">&lt;-</span> <span class="kw">function</span>(<span class="no">sig_digits</span>) {
+  <span class="no">op</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/options.html">options</a></span>(<span class="kw">digits</span> <span class="kw">=</span> <span class="no">sig_digits</span>)
+  <span class="fu"><a href="https://rdrr.io/r/base/on.exit.html">on.exit</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/options.html">options</a></span>(<span class="no">op</span>), <span class="kw">add</span> <span class="kw">=</span> <span class="fl">TRUE</span>, <span class="kw">after</span> <span class="kw">=</span> <span class="fl">FALSE</span>)
 }
-<span class="kw">neater</span> <span class="op">&lt;-</span> <span class="fu">function</span>(<span class="kw">x</span>, <span class="kw">sig_digits</span>) {
+<span class="no">neater</span> <span class="kw">&lt;-</span> <span class="kw">function</span>(<span class="no">x</span>, <span class="no">sig_digits</span>) {
   <span class="fu">local_digits</span>(<span class="fl">1</span>)
-  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span>(<span class="kw">x</span>)
+  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span>(<span class="no">x</span>)
 }
-<span class="fu">neater</span>(<span class="kw">pi</span>)
-<span class="co">#&gt; [1] 3.141593</span>
-</pre></div>
+<span class="fu">neater</span>(<span class="no">pi</span>)
+<span class="co">#&gt; [1] 3.141593</span></pre></body></html></div>
 <p>This code doesn’t work because the cleanup happens too soon, when <code>local_digits()</code> exists, not when <code>neat()</code> finishes.</p>
 <p>Fortunately, <code><a href="https://rdrr.io/pkg/withr/man/defer.html">withr::defer()</a></code> allows us to solve this problem by providing an <code>envir</code> argument that allows you to control when cleanup occurs. The exact details of how this works are rather complicated, but fortunately there’s a common pattern you can use without understanding all the details. Your helper function should always have an <code>env</code> argument that defaults to <code><a href="https://rdrr.io/r/base/sys.parent.html">parent.frame()</a></code>, which you pass to the second argument of <code>defer()</code>:</p>
-<div class="sourceCode" id="cb9"><pre class="downlit">
-<span class="kw">local_digits</span> <span class="op">&lt;-</span> <span class="fu">function</span>(<span class="kw">sig_digits</span>, <span class="kw">env</span> = <span class="fu"><a href="https://rdrr.io/r/base/sys.parent.html">parent.frame</a></span>()) {
-  <span class="kw">op</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/options.html">options</a></span>(digits = <span class="kw">sig_digits</span>)
-  <span class="kw">withr</span>::<span class="fu"><a href="https://rdrr.io/pkg/withr/man/defer.html">defer</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/options.html">options</a></span>(<span class="kw">op</span>), <span class="kw">env</span>)
+<div class="sourceCode" id="cb9"><html><body><pre class="r"><span class="no">local_digits</span> <span class="kw">&lt;-</span> <span class="kw">function</span>(<span class="no">sig_digits</span>, <span class="no">env</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sys.parent.html">parent.frame</a></span>()) {
+  <span class="no">op</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/options.html">options</a></span>(<span class="kw">digits</span> <span class="kw">=</span> <span class="no">sig_digits</span>)
+  <span class="kw pkg">withr</span><span class="kw ns">::</span><span class="fu"><a href="https://rdrr.io/pkg/withr/man/defer.html">defer</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/options.html">options</a></span>(<span class="no">op</span>), <span class="no">env</span>)
 }
 
-<span class="fu">neater</span>(<span class="kw">pi</span>)
-<span class="co">#&gt; [1] 3</span>
-</pre></div>
+<span class="fu">neater</span>(<span class="no">pi</span>)
+<span class="co">#&gt; [1] 3</span></pre></body></html></div>
 <p>Just like <code><a href="https://rdrr.io/r/base/on.exit.html">on.exit()</a></code> and <code>defer()</code>, our helper also works within tests:</p>
-<div class="sourceCode" id="cb10"><pre class="downlit">
-<span class="fu"><a href="../reference/test_that.html">test_that</a></span>(<span class="st">"withr lets us write custom helpers for local state manipulation"</span>, {
+<div class="sourceCode" id="cb10"><html><body><pre class="r"><span class="fu"><a href="../reference/test_that.html">test_that</a></span>(<span class="st">"withr lets us write custom helpers for local state manipulation"</span>, {
   <span class="fu">local_digits</span>(<span class="fl">1</span>)
   <span class="fu"><a href="../reference/expect_output.html">expect_output</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/Log.html">exp</a></span>(<span class="fl">1</span>)), <span class="st">"3"</span>)
-  
+
   <span class="fu">local_digits</span>(<span class="fl">3</span>)
   <span class="fu"><a href="../reference/expect_output.html">expect_output</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/Log.html">exp</a></span>(<span class="fl">1</span>)), <span class="st">"2.72"</span>)
 })
-<span class="co">#&gt; Test succeeded 🌈</span>
+<span class="co">#&gt; Test passed 🌈</span>
 
 <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/Log.html">exp</a></span>(<span class="fl">1</span>))
-<span class="co">#&gt; [1] 2.718282</span>
-</pre></div>
+<span class="co">#&gt; [1] 2.718282</span></pre></body></html></div>
 <p>We always call these helper functions <code>local_</code>; “local” here refers to the fact that the state change persists only locally, for the lifetime of the associated function or test.</p>
 </div>
 <div id="pre-existing-helpers" class="section level3">
@@ -332,14 +315,12 @@
 </tbody>
 </table>
 <p>We can use <code><a href="https://rdrr.io/pkg/withr/man/with_options.html">withr::local_options()</a></code> to write yet another version of <code>neater()</code>:</p>
-<div class="sourceCode" id="cb11"><pre class="downlit">
-<span class="kw">neatest</span> <span class="op">&lt;-</span> <span class="fu">function</span>(<span class="kw">x</span>, <span class="kw">sig_digits</span>) {
-  <span class="kw">withr</span>::<span class="fu"><a href="https://rdrr.io/pkg/withr/man/with_options.html">local_options</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(digits = <span class="kw">sig_digits</span>))
-  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span>(<span class="kw">x</span>)
+<div class="sourceCode" id="cb11"><html><body><pre class="r"><span class="no">neatest</span> <span class="kw">&lt;-</span> <span class="kw">function</span>(<span class="no">x</span>, <span class="no">sig_digits</span>) {
+  <span class="kw pkg">withr</span><span class="kw ns">::</span><span class="fu"><a href="https://rdrr.io/pkg/withr/man/with_options.html">local_options</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="kw">digits</span> <span class="kw">=</span> <span class="no">sig_digits</span>))
+  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span>(<span class="no">x</span>)
 }
-<span class="fu">neatest</span>(<span class="kw">pi</span>, <span class="fl">3</span>)
-<span class="co">#&gt; [1] 3.14</span>
-</pre></div>
+<span class="fu">neatest</span>(<span class="no">pi</span>, <span class="fl">3</span>)
+<span class="co">#&gt; [1] 3.14</span></pre></body></html></div>
 <p>Each <code>local_*()</code> function has a companion <code>with_()</code> function, which is a nod to <code><a href="https://rdrr.io/r/base/with.html">with()</a></code>, and the inspiration for withr’s name. We won’t use the <code>with_*()</code> functions here, but you can learn more about them at <a href="http://withr.r-lib.org">withr.r-lib.org</a>.</p>
 </div>
 </div>
@@ -347,74 +328,66 @@
 <h2 class="hasAnchor">
 <a href="#test-fixtures" class="anchor"></a>Test fixtures</h2>
 <p>Testing is often demonstrated with cute little tests and functions where all the inputs and expected results can be inlined. But in real packages, things aren’t always so simple and functions often depend on other global state. For example, take this variant on <code><a href="https://rdrr.io/r/base/message.html">message()</a></code> that only shows a message if the <code>verbose</code> option is <code>TRUE</code>. How would you test that setting the option does indeed silence the message?</p>
-<div class="sourceCode" id="cb12"><pre class="downlit">
-<span class="kw">message2</span> <span class="op">&lt;-</span> <span class="fu">function</span>(<span class="kw">...</span>) {
-  <span class="co">if</span> (<span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/Logic.html">isTRUE</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/options.html">getOption</a></span>(<span class="st">"verbose"</span>))) {
+<div class="sourceCode" id="cb12"><html><body><pre class="r"><span class="no">message2</span> <span class="kw">&lt;-</span> <span class="kw">function</span>(<span class="no">...</span>) {
+  <span class="kw">if</span> (!<span class="fu"><a href="https://rdrr.io/r/base/Logic.html">isTRUE</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/options.html">getOption</a></span>(<span class="st">"verbose"</span>))) {
     <span class="fu"><a href="https://rdrr.io/r/base/function.html">return</a></span>()
   }
-  <span class="fu"><a href="https://rdrr.io/r/base/message.html">message</a></span>(<span class="kw">...</span>)
-}
-</pre></div>
+  <span class="fu"><a href="https://rdrr.io/r/base/message.html">message</a></span>(<span class="no">...</span>)
+}</pre></body></html></div>
 <p>In some cases, it’s possible to make the global state an explicit argument to the function. For example, we could refactor <code>message2()</code> to make the verbosity an explicit argument:</p>
-<div class="sourceCode" id="cb13"><pre class="downlit">
-<span class="kw">message3</span> <span class="op">&lt;-</span> <span class="fu">function</span>(<span class="kw">...</span>, <span class="kw">verbose</span> = <span class="fu"><a href="https://rdrr.io/r/base/options.html">getOption</a></span>(<span class="st">"verbose"</span>)) {
-  <span class="co">if</span> (<span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/Logic.html">isTRUE</a></span>(<span class="kw">verbose</span>)) {
+<div class="sourceCode" id="cb13"><html><body><pre class="r"><span class="no">message3</span> <span class="kw">&lt;-</span> <span class="kw">function</span>(<span class="no">...</span>, <span class="no">verbose</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/options.html">getOption</a></span>(<span class="st">"verbose"</span>)) {
+  <span class="kw">if</span> (!<span class="fu"><a href="https://rdrr.io/r/base/Logic.html">isTRUE</a></span>(<span class="no">verbose</span>)) {
     <span class="fu"><a href="https://rdrr.io/r/base/function.html">return</a></span>()
   }
-  <span class="fu"><a href="https://rdrr.io/r/base/message.html">message</a></span>(<span class="kw">...</span>)
-}
-</pre></div>
+  <span class="fu"><a href="https://rdrr.io/r/base/message.html">message</a></span>(<span class="no">...</span>)
+}</pre></body></html></div>
 <p>Making external state explicit is often worthwhile, because it makes it more clear exactly what inputs determine the outputs of your function. But it’s simply not possible in many cases. That’s where test fixtures come in: they allow you to temporarily change global state in order to test your function. Test fixture is a pre-existing term in the software engineering world (and beyond):</p>
 <blockquote>
 <p>A test fixture is something used to consistently test some item, device, or piece of software.</p>
 <p>— <a href="https://en.wikipedia.org/wiki/Test_fixture">Wikipedia</a></p>
 </blockquote>
 <p>A <strong>test fixture</strong> is just a <code>local_</code> function that you use to change state in such a way that you can reach inside and test parts of your code that would otherwise be challenging. For example, here’s how you could use <code><a href="https://rdrr.io/pkg/withr/man/with_options.html">withr::local_options()</a></code> as a test fixture to test <code>message2()</code>:</p>
-<div class="sourceCode" id="cb14"><pre class="downlit">
-<span class="fu"><a href="../reference/test_that.html">test_that</a></span>(<span class="st">"message2() output depends on verbose option"</span>, {
-  <span class="kw">withr</span>::<span class="fu"><a href="https://rdrr.io/pkg/withr/man/with_options.html">local_options</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(verbose = <span class="fl">TRUE</span>))
+<div class="sourceCode" id="cb14"><html><body><pre class="r"><span class="fu"><a href="../reference/test_that.html">test_that</a></span>(<span class="st">"message2() output depends on verbose option"</span>, {
+  <span class="kw pkg">withr</span><span class="kw ns">::</span><span class="fu"><a href="https://rdrr.io/pkg/withr/man/with_options.html">local_options</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="kw">verbose</span> <span class="kw">=</span> <span class="fl">TRUE</span>))
   <span class="fu"><a href="../reference/expect_error.html">expect_message</a></span>(<span class="fu">message2</span>(<span class="st">"Hi!"</span>))
-  
-  <span class="kw">withr</span>::<span class="fu"><a href="https://rdrr.io/pkg/withr/man/with_options.html">local_options</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(verbose = <span class="fl">FALSE</span>))
+
+  <span class="kw pkg">withr</span><span class="kw ns">::</span><span class="fu"><a href="https://rdrr.io/pkg/withr/man/with_options.html">local_options</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="kw">verbose</span> <span class="kw">=</span> <span class="fl">FALSE</span>))
   <span class="fu"><a href="../reference/expect_error.html">expect_message</a></span>(<span class="fu">message2</span>(<span class="st">"Hi!"</span>), <span class="fl">NA</span>)
 })
 <span class="co">#&gt; now dyn.load("/Users/runner/work/_temp/Library/ellipsis/libs/ellipsis.so") ...</span>
-<span class="co">#&gt; Test succeeded 🥇</span>
-</pre></div>
+<span class="co">#&gt; Test passed 🌈</span></pre></body></html></div>
 <div id="case-study-usethis" class="section level3">
 <h3 class="hasAnchor">
 <a href="#case-study-usethis" class="anchor"></a>Case study: usethis</h3>
 <p>One place that we use test fixtures extensively is in the usethis package (<a href="https://usethis.r-lib.org">usethis.r-lib.org</a>), which provides functions for looking after the files and folders in R projects, especially packages. Many of these functions only make sense in the context of a package, which means to test them, we also have to be working inside an R package. We need a way to quickly spin up a minimal package in a temporary directory, then test some functions against it, then destroy it.</p>
 <p>To solve this problem we create a test fixture, which we place in <code>R/test-helpers.R</code> so that’s it’s available for both testing and interactive experimentation:</p>
-<div class="sourceCode" id="cb15"><pre class="downlit">
-<span class="kw">local_create_package</span> <span class="op">&lt;-</span> <span class="fu">function</span>(<span class="kw">dir</span> = <span class="fu">file_temp</span>(), <span class="kw">env</span> = <span class="fu"><a href="https://rdrr.io/r/base/sys.parent.html">parent.frame</a></span>()) {
-  <span class="kw">old_project</span> <span class="op">&lt;-</span> <span class="fu">proj_get_</span>()
-  
+<div class="sourceCode" id="cb15"><html><body><pre class="r"><span class="no">local_create_package</span> <span class="kw">&lt;-</span> <span class="kw">function</span>(<span class="no">dir</span> <span class="kw">=</span> <span class="fu">file_temp</span>(), <span class="no">env</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sys.parent.html">parent.frame</a></span>()) {
+  <span class="no">old_project</span> <span class="kw">&lt;-</span> <span class="fu">proj_get_</span>()
+
   <span class="co"># create new folder and package</span>
-  <span class="fu">create_package</span>(<span class="kw">dir</span>, open = <span class="fl">FALSE</span>) <span class="co"># A</span>
-  <span class="kw">withr</span>::<span class="fu"><a href="https://rdrr.io/pkg/withr/man/defer.html">defer</a></span>(<span class="kw">fs</span>::<span class="fu"><a href="http://fs.r-lib.org/reference/delete.html">dir_delete</a></span>(<span class="kw">dir</span>), envir = <span class="kw">env</span>) <span class="co"># -A</span>
-  
+  <span class="fu">create_package</span>(<span class="no">dir</span>, <span class="kw">open</span> <span class="kw">=</span> <span class="fl">FALSE</span>) <span class="co"># A</span>
+  <span class="kw pkg">withr</span><span class="kw ns">::</span><span class="fu"><a href="https://rdrr.io/pkg/withr/man/defer.html">defer</a></span>(<span class="kw pkg">fs</span><span class="kw ns">::</span><span class="fu"><a href="http://fs.r-lib.org/reference/delete.html">dir_delete</a></span>(<span class="no">dir</span>), <span class="kw">envir</span> <span class="kw">=</span> <span class="no">env</span>) <span class="co"># -A</span>
+
   <span class="co"># change working directory</span>
-  <span class="fu"><a href="https://rdrr.io/r/base/getwd.html">setwd</a></span>(<span class="kw">dir</span>) <span class="co"># B</span>
-  <span class="kw">withr</span>::<span class="fu"><a href="https://rdrr.io/pkg/withr/man/defer.html">defer</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/getwd.html">setwd</a></span>(<span class="kw">old_project</span>), envir = <span class="kw">env</span>) <span class="co"># -B</span>
-  
+  <span class="fu"><a href="https://rdrr.io/r/base/getwd.html">setwd</a></span>(<span class="no">dir</span>) <span class="co"># B</span>
+  <span class="kw pkg">withr</span><span class="kw ns">::</span><span class="fu"><a href="https://rdrr.io/pkg/withr/man/defer.html">defer</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/getwd.html">setwd</a></span>(<span class="no">old_project</span>), <span class="kw">envir</span> <span class="kw">=</span> <span class="no">env</span>) <span class="co"># -B</span>
+
   <span class="co"># switch to new usethis project</span>
-  <span class="fu">proj_set</span>(<span class="kw">dir</span>) <span class="co"># C</span>
-  <span class="kw">withr</span>::<span class="fu"><a href="https://rdrr.io/pkg/withr/man/defer.html">defer</a></span>(<span class="fu">proj_set</span>(<span class="kw">old_project</span>, force = <span class="fl">TRUE</span>), envir = <span class="kw">env</span>) <span class="co"># -C</span>
-  
-  <span class="kw">dir</span>
-}
-</pre></div>
+  <span class="fu">proj_set</span>(<span class="no">dir</span>) <span class="co"># C</span>
+  <span class="kw pkg">withr</span><span class="kw ns">::</span><span class="fu"><a href="https://rdrr.io/pkg/withr/man/defer.html">defer</a></span>(<span class="fu">proj_set</span>(<span class="no">old_project</span>, <span class="kw">force</span> <span class="kw">=</span> <span class="fl">TRUE</span>), <span class="kw">envir</span> <span class="kw">=</span> <span class="no">env</span>) <span class="co"># -C</span>
+
+  <span class="no">dir</span>
+}</pre></body></html></div>
 <p>Note that the cleanup automatically unfolds in the opposite order from the setup. Setup is <code>A</code>, then <code>B</code>, then <code>C</code>; cleanup is <code>-C</code>, then <code>-B</code>, then <code>-A</code>. This is important because we must create directory <code>dir</code> before we can make it the working directory; and we must restore the original working directory before we can delete <code>dir</code>; we can’t delete <code>dir</code> while it’s still the working directory!</p>
 <p><code>create_local_package()</code> is used in over 170 tests. Here’s one example that checks that <code><a href="https://usethis.r-lib.org/reference/use_roxygen_md.html">usethis::use_roxygen_md()</a></code> does the setup necessary to use roxygen2 in a package, with markdown support turned on. All 3 expectations consult the DESCRIPTION file, directly or indirectly. So it’s very convenient that <code>create_local_package()</code> creates a minimal package, with a valid <code>DESCRIPTION</code> file, for us to test against. And when the test is done — poof! — the package is gone.</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a><span class="kw">test_that</span>(<span class="st">"use_roxygen_md() adds DESCRIPTION fields"</span>, {</span>
-<span id="cb16-2"><a href="#cb16-2"></a>  pkg &lt;-<span class="st"> </span><span class="kw">local_create_package</span>()</span>
-<span id="cb16-3"><a href="#cb16-3"></a>  <span class="kw">use_roxygen_md</span>()</span>
-<span id="cb16-4"><a href="#cb16-4"></a>  </span>
-<span id="cb16-5"><a href="#cb16-5"></a>  <span class="kw">expect_true</span>(<span class="kw">uses_roxygen_md</span>())</span>
-<span id="cb16-6"><a href="#cb16-6"></a>  <span class="kw">expect_equal</span>(desc<span class="op">::</span><span class="kw">desc_get</span>(<span class="st">"Roxygen"</span>, pkg)[[<span class="dv">1</span>]], <span class="st">"list(markdown = TRUE)"</span>)<span class="er">)</span></span>
-<span id="cb16-7"><a href="#cb16-7"></a>  <span class="kw">expect_true</span>(desc<span class="op">::</span><span class="kw">desc_has_fields</span>(<span class="st">"RoxygenNote"</span>, pkg))</span>
-<span id="cb16-8"><a href="#cb16-8"></a>})</span></code></pre></div>
+<div class="sourceCode" id="cb16"><html><body><pre class="r">test_that("use_roxygen_md() adds DESCRIPTION fields", {
+  pkg &lt;- local_create_package()
+  use_roxygen_md()
+  
+  expect_true(uses_roxygen_md())
+  expect_equal(desc::desc_get("Roxygen", pkg)[[1]], "list(markdown = TRUE)"))
+  expect_true(desc::desc_has_fields("RoxygenNote", pkg))
+})</pre></body></html></div>
 </div>
 </div>
 <div id="scope" class="section level2">
@@ -435,13 +408,11 @@
 <h3 class="hasAnchor">
 <a href="#package" class="anchor"></a>Package</h3>
 <p>To run code before any test is run, you can create a file called <code>test/testthat/setup.R</code>. If the code in this file needs clean up, you can use the special <code><a href="../reference/teardown_env.html">teardown_env()</a></code>:</p>
-<div class="sourceCode" id="cb17"><pre class="downlit">
-<span class="co"># Run before any test</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/write.table.html">write.csv</a></span>(<span class="st">"mtcars.csv"</span>, <span class="kw">mtcars</span>)
+<div class="sourceCode" id="cb17"><html><body><pre class="r"><span class="co"># Run before any test</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/write.table.html">write.csv</a></span>(<span class="st">"mtcars.csv"</span>, <span class="no">mtcars</span>)
 
 <span class="co"># Run after all tests</span>
-<span class="kw">withr</span>::<span class="fu">local</span>(<span class="fu"><a href="https://rdrr.io/r/base/unlink.html">unlink</a></span>(<span class="st">"mtcars.csv"</span>), <span class="fu"><a href="../reference/teardown_env.html">teardown_env</a></span>())
-</pre></div>
+<span class="kw pkg">withr</span><span class="kw ns">::</span><span class="fu"><a href="https://rdrr.io/pkg/withr/man/defer.html">defer</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/unlink.html">unlink</a></span>(<span class="st">"mtcars.csv"</span>), <span class="fu"><a href="../reference/teardown_env.html">teardown_env</a></span>())</pre></body></html></div>
 <p>Setup code is typically best used to create external resources that are needed by many tests. It’s best kept to a minimum because you will have to manually run it before interactively debugging tests.</p>
 </div>
 </div>
@@ -477,7 +448,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
 </div>
 
       </footer>

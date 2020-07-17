@@ -117,6 +117,9 @@ from function documentation such as expect_that()." />
       <a href="../articles/custom-expectation.html">Custom expectations</a>
     </li>
     <li>
+      <a href="../articles/snapshotting.html">Snapshot tests</a>
+    </li>
+    <li>
       <a href="../articles/test-fixtures.html">Test fixtures</a>
     </li>
     <li>
@@ -184,7 +187,7 @@ from function documentation such as expect_that()." />
 
     <div class="ref-description">
     <p>Try the example below. Have a look at the references and learn more
-from function documentation such as <code><a href='https://testthat.r-lib.org/reference/expect_that.html'>expect_that()</a></code>.</p>
+from function documentation such as <code><a href='expect_that.html'>expect_that()</a></code>.</p>
     </div>
 
 
@@ -216,21 +219,12 @@ reports printed for the summary reporter (default: 10).</p></li>
 </ul>
 
 </div>
-    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
-
-    <p><strong>Maintainer</strong>: Hadley Wickham <a href='mailto:hadley@rstudio.com'>hadley@rstudio.com</a></p>
-<p>Other contributors:</p><ul>
-<li><p>RStudio [copyright holder, funder]</p></li>
-<li><p>R Core team (Implementation of utils::recover()) [contributor]</p></li>
-</ul>
-
-
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='kw'><a href='http://testthat.r-lib.org'>testthat</a></span>)
-<span class='kw'>a</span> <span class='op'>&lt;-</span> <span class='fl'>9</span>
-<span class='fu'><a href='https://testthat.r-lib.org/reference/expect_that.html'>expect_that</a></span>(<span class='kw'>a</span>, <span class='fu'><a href='https://testthat.r-lib.org/reference/oldskool.html'>is_less_than</a></span>(<span class='fl'>10</span>))
-<span class='fu'><a href='https://testthat.r-lib.org/reference/comparison-expectations.html'>expect_lt</a></span>(<span class='kw'>a</span>, <span class='fl'>10</span>)</div></pre>
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>testthat</span>)
+<span class='no'>a</span> <span class='kw'>&lt;-</span> <span class='fl'>9</span>
+<span class='fu'><a href='expect_that.html'>expect_that</a></span>(<span class='no'>a</span>, <span class='fu'><a href='oldskool.html'>is_less_than</a></span>(<span class='fl'>10</span>))
+<span class='fu'><a href='comparison-expectations.html'>expect_lt</a></span>(<span class='no'>a</span>, <span class='fl'>10</span>)</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -246,7 +240,7 @@ reports printed for the summary reporter (default: 10).</p></li>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
 </div>
 
       </footer>

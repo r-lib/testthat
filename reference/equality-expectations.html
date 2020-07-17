@@ -124,6 +124,9 @@ and 1L are treated as equal." />
       <a href="../articles/custom-expectation.html">Custom expectations</a>
     </li>
     <li>
+      <a href="../articles/snapshotting.html">Snapshot tests</a>
+    </li>
+    <li>
       <a href="../articles/test-fixtures.html">Test fixtures</a>
     </li>
     <li>
@@ -202,22 +205,22 @@ and <code>1L</code> are treated as equal.</p>
     </div>
 
     <pre class="usage"><span class='fu'>expect_equal</span>(
-  <span class='kw'>object</span>,
-  <span class='kw'>expected</span>,
-  <span class='kw'>...</span>,
-  tolerance = <span class='fu'>testthat_tolerance</span>(),
-  info = <span class='kw'>NULL</span>,
-  label = <span class='kw'>NULL</span>,
-  expected.label = <span class='kw'>NULL</span>
+  <span class='no'>object</span>,
+  <span class='no'>expected</span>,
+  <span class='no'>...</span>,
+  <span class='kw'>tolerance</span> <span class='kw'>=</span> <span class='fu'><a href='compare.html'>testthat_tolerance</a></span>(),
+  <span class='kw'>info</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>label</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>expected.label</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
 )
 
 <span class='fu'>expect_identical</span>(
-  <span class='kw'>object</span>,
-  <span class='kw'>expected</span>,
-  info = <span class='kw'>NULL</span>,
-  label = <span class='kw'>NULL</span>,
-  expected.label = <span class='kw'>NULL</span>,
-  <span class='kw'>...</span>
+  <span class='no'>object</span>,
+  <span class='no'>expected</span>,
+  <span class='kw'>info</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>label</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>expected.label</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='no'>...</span>
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -227,14 +230,14 @@ and <code>1L</code> are treated as equal.</p>
       <th>object, expected</th>
       <td><p>Computation and value to compare it to.</p>
 <p>Both arguments supports limited unquoting to make it easier to generate
-readable failures within a function or for loop. See quasi_label for
+readable failures within a function or for loop. See <a href='quasi_label.html'>quasi_label</a> for
 more details.</p></td>
     </tr>
     <tr>
       <th>...</th>
       <td><p>In the 3rd edition; passed on to <code><a href='https://rdrr.io/pkg/waldo/man/compare.html'>waldo::compare()</a></code>. See
 its docs to see other ways to control comparison. In the 2nd edition;
-passed on to <code>compare()</code>/<code><a href='https://rdrr.io/r/base/identical.html'>identical()</a></code>.</p></td>
+passed on to <code><a href='compare.html'>compare()</a></code>/<code><a href='https://rdrr.io/r/base/identical.html'>identical()</a></code>.</p></td>
     </tr>
     <tr>
       <th>tolerance</th>
@@ -253,7 +256,7 @@ with differences. Then we check that
       <th>info</th>
       <td><p>Extra information to be included in the message. This argument
 is soft-deprecated and should not be used in new code. Instead see
-alternatives in quasi_label.</p></td>
+alternatives in <a href='quasi_label.html'>quasi_label</a>.</p></td>
     </tr>
     <tr>
       <th>label, expected.label</th>
@@ -266,32 +269,32 @@ use only.</p></td>
 
     <div class='dont-index'>
 <ul>
-<li><p><code>expect_setequal()</code>/<code>expect_mapequal()</code> to test for set equality.</p></li>
-<li><p><code>expect_reference()</code> to test if two names point to same memory address.</p></li>
+<li><p><code><a href='expect_setequal.html'>expect_setequal()</a></code>/<code><a href='expect_setequal.html'>expect_mapequal()</a></code> to test for set equality.</p></li>
+<li><p><code><a href='expect_reference.html'>expect_reference()</a></code> to test if two names point to same memory address.</p></li>
 </ul>
 
 <p>Other expectations: 
-<code>comparison-expectations</code>,
-<code>expect_error()</code>,
-<code>expect_length()</code>,
-<code>expect_match()</code>,
-<code>expect_named()</code>,
-<code>expect_null()</code>,
-<code>expect_output()</code>,
-<code>expect_reference()</code>,
-<code>expect_silent()</code>,
-<code>inheritance-expectations</code>,
-<code>logical-expectations</code></p></div>
+<code><a href='comparison-expectations.html'>comparison-expectations</a></code>,
+<code><a href='expect_error.html'>expect_error</a>()</code>,
+<code><a href='expect_length.html'>expect_length</a>()</code>,
+<code><a href='expect_match.html'>expect_match</a>()</code>,
+<code><a href='expect_named.html'>expect_named</a>()</code>,
+<code><a href='expect_null.html'>expect_null</a>()</code>,
+<code><a href='expect_output.html'>expect_output</a>()</code>,
+<code><a href='expect_reference.html'>expect_reference</a>()</code>,
+<code><a href='expect_silent.html'>expect_silent</a>()</code>,
+<code><a href='inheritance-expectations.html'>inheritance-expectations</a></code>,
+<code><a href='logical-expectations.html'>logical-expectations</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>a</span> <span class='op'>&lt;-</span> <span class='fl'>10</span>
-<span class='fu'>expect_equal</span>(<span class='kw'>a</span>, <span class='fl'>10</span>)
+    <pre class="examples"><div class='input'><span class='no'>a</span> <span class='kw'>&lt;-</span> <span class='fl'>10</span>
+<span class='fu'>expect_equal</span>(<span class='no'>a</span>, <span class='fl'>10</span>)
 
 <span class='co'># Use expect_equal() when testing for numeric equality</span>
-<span class='co'>if</span> (<span class='fl'>FALSE</span>) {
-<span class='fu'>expect_identical</span>(<span class='fu'><a href='https://rdrr.io/r/base/MathFun.html'>sqrt</a></span>(<span class='fl'>2</span>) <span class='op'>^</span> <span class='fl'>2</span>, <span class='fl'>2</span>)
+<span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
+<span class='fu'>expect_identical</span>(<span class='fu'><a href='https://rdrr.io/r/base/MathFun.html'>sqrt</a></span>(<span class='fl'>2</span>) ^ <span class='fl'>2</span>, <span class='fl'>2</span>)
 }
-<span class='fu'>expect_equal</span>(<span class='fu'><a href='https://rdrr.io/r/base/MathFun.html'>sqrt</a></span>(<span class='fl'>2</span>) <span class='op'>^</span> <span class='fl'>2</span>, <span class='fl'>2</span>)</div></pre>
+<span class='fu'>expect_equal</span>(<span class='fu'><a href='https://rdrr.io/r/base/MathFun.html'>sqrt</a></span>(<span class='fl'>2</span>) ^ <span class='fl'>2</span>, <span class='fl'>2</span>)</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -307,7 +310,7 @@ use only.</p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
 </div>
 
       </footer>

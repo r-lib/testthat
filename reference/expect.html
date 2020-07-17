@@ -117,6 +117,9 @@ vignette(&quot;custom-expectation&quot;) for details." />
       <a href="../articles/custom-expectation.html">Custom expectations</a>
     </li>
     <li>
+      <a href="../articles/snapshotting.html">Snapshot tests</a>
+    </li>
+    <li>
       <a href="../articles/test-fixtures.html">Test fixtures</a>
     </li>
     <li>
@@ -184,10 +187,10 @@ vignette(&quot;custom-expectation&quot;) for details." />
 
     <div class="ref-description">
     <p>Call <code>expect()</code> when writing your own expectations. See
-<code>vignette("custom-expectation")</code> for details.</p>
+<code><a href='../articles/custom-expectation.html'>vignette("custom-expectation")</a></code> for details.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>expect</span>(<span class='kw'>ok</span>, <span class='kw'>failure_message</span>, info = <span class='kw'>NULL</span>, srcref = <span class='kw'>NULL</span>, trace = <span class='kw'>NULL</span>)</pre>
+    <pre class="usage"><span class='fu'>expect</span>(<span class='no'>ok</span>, <span class='no'>failure_message</span>, <span class='kw'>info</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>srcref</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>trace</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -224,8 +227,8 @@ with a <code>continue_test</code> restart.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>While <code>expect()</code> creates and signals an expectation in one go,
-<code>exp_signal()</code> separately signals an expectation that you
-have manually created with <code>new_expectation()</code>. Expectations are
+<code><a href='expectation.html'>exp_signal()</a></code> separately signals an expectation that you
+have manually created with <code><a href='expectation.html'>new_expectation()</a></code>. Expectations are
 signalled with the following protocol:</p><ul>
 <li><p>If the expectation is a failure or an error, it is signalled with
 <code><a href='https://rdrr.io/r/base/stop.html'>base::stop()</a></code>. Otherwise, it is signalled with
@@ -237,7 +240,7 @@ run the other tests.</p></li>
 
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><code>exp_signal()</code></p></div>
+    <div class='dont-index'><p><code><a href='expectation.html'>exp_signal()</a></code></p></div>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
@@ -254,7 +257,7 @@ run the other tests.</p></li>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
 </div>
 
       </footer>

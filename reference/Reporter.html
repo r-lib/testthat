@@ -119,6 +119,9 @@ use to override the default (which is selected by default_reporter())." />
       <a href="../articles/custom-expectation.html">Custom expectations</a>
     </li>
     <li>
+      <a href="../articles/snapshotting.html">Snapshot tests</a>
+    </li>
+    <li>
       <a href="../articles/test-fixtures.html">Test fixtures</a>
     </li>
     <li>
@@ -188,7 +191,7 @@ use to override the default (which is selected by default_reporter())." />
     <p>The job of a reporter is to aggregate the results from files, tests, and
 expectations and display them in an informative way. Every testtthat function
 that runs multiple tests provides a <code>reporter</code> argument which you can
-use to override the default (which is selected by <code>default_reporter()</code>).</p>
+use to override the default (which is selected by <code><a href='default_reporter.html'>default_reporter()</a></code>).</p>
     </div>
 
 
@@ -203,27 +206,27 @@ source code for a few.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other reporters: 
-<code>CheckReporter</code>,
-<code>DebugReporter</code>,
-<code>FailReporter</code>,
-<code>ListReporter</code>,
-<code>LocationReporter</code>,
-<code>MinimalReporter</code>,
-<code>MultiReporter</code>,
-<code>ProgressReporter</code>,
-<code>RstudioReporter</code>,
-<code>SilentReporter</code>,
-<code>StopReporter</code>,
-<code>SummaryReporter</code>,
-<code>TapReporter</code>,
-<code>TeamcityReporter</code></p></div>
+<code><a href='CheckReporter.html'>CheckReporter</a></code>,
+<code><a href='DebugReporter.html'>DebugReporter</a></code>,
+<code><a href='FailReporter.html'>FailReporter</a></code>,
+<code><a href='ListReporter.html'>ListReporter</a></code>,
+<code><a href='LocationReporter.html'>LocationReporter</a></code>,
+<code><a href='MinimalReporter.html'>MinimalReporter</a></code>,
+<code><a href='MultiReporter.html'>MultiReporter</a></code>,
+<code><a href='ProgressReporter.html'>ProgressReporter</a></code>,
+<code><a href='RstudioReporter.html'>RstudioReporter</a></code>,
+<code><a href='SilentReporter.html'>SilentReporter</a></code>,
+<code><a href='StopReporter.html'>StopReporter</a></code>,
+<code><a href='SummaryReporter.html'>SummaryReporter</a></code>,
+<code><a href='TapReporter.html'>TapReporter</a></code>,
+<code><a href='TeamcityReporter.html'>TeamcityReporter</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>path</span> <span class='op'>&lt;-</span> <span class='fu'>testthat_example</span>(<span class='st'>"success"</span>)
+    <pre class="examples"><div class='input'><span class='no'>path</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='testthat_examples.html'>testthat_example</a></span>(<span class='st'>"success"</span>)
 
-<span class='fu'>test_file</span>(<span class='kw'>path</span>)</div><div class='output co'>#&gt; 
+<span class='fu'><a href='test_file.html'>test_file</a></span>(<span class='no'>path</span>)</div><div class='output co'>#&gt; 
 #&gt; ══ <span style='font-weight: bold;'>Testing test-success.R</span><span> ══════════════════════════════════════════════════════
-#&gt; PASS x0 FAIL x0 WARN x0 SKIP x0PASS x1 FAIL x0 WARN x0 SKIP x0PASS x1 FAIL x0 WARN x0 SKIP x1PASS x1 FAIL x0 WARN x1 SKIP x1PASS x2 FAIL x0 WARN x1 SKIP x1PASS x3 FAIL x0 WARN x1 SKIP x1PASS x4 FAIL x0 WARN x1 SKIP x1
+#&gt; [ </span><span style='color: #00BB00;'>PASS</span><span> x0 </span><span style='color: #BB0000;'>FAIL</span><span> x0 </span><span style='color: #BB00BB;'>WARN</span><span> x0 </span><span style='color: #0000BB;'>SKIP</span><span> x0 ][ </span><span style='color: #00BB00;'>PASS</span><span> x1 </span><span style='color: #BB0000;'>FAIL</span><span> x0 </span><span style='color: #BB00BB;'>WARN</span><span> x0 </span><span style='color: #0000BB;'>SKIP</span><span> x0 ][ </span><span style='color: #00BB00;'>PASS</span><span> x1 </span><span style='color: #BB0000;'>FAIL</span><span> x0 </span><span style='color: #BB00BB;'>WARN</span><span> x0 </span><span style='color: #0000BB;'>SKIP</span><span> x1 ][ </span><span style='color: #00BB00;'>PASS</span><span> x1 </span><span style='color: #BB0000;'>FAIL</span><span> x0 </span><span style='color: #BB00BB;'>WARN</span><span> x1 </span><span style='color: #0000BB;'>SKIP</span><span> x1 ][ </span><span style='color: #00BB00;'>PASS</span><span> x2 </span><span style='color: #BB0000;'>FAIL</span><span> x0 </span><span style='color: #BB00BB;'>WARN</span><span> x1 </span><span style='color: #0000BB;'>SKIP</span><span> x1 ][ </span><span style='color: #00BB00;'>PASS</span><span> x3 </span><span style='color: #BB0000;'>FAIL</span><span> x0 </span><span style='color: #BB00BB;'>WARN</span><span> x1 </span><span style='color: #0000BB;'>SKIP</span><span> x1 ][ </span><span style='color: #00BB00;'>PASS</span><span> x4 </span><span style='color: #BB0000;'>FAIL</span><span> x0 </span><span style='color: #BB00BB;'>WARN</span><span> x1 </span><span style='color: #0000BB;'>SKIP</span><span> x1 ]
 #&gt; 
 #&gt; ── </span><span style='font-weight: bold;'>test-success.R:6:3: </span><span style='color: #0000BB;font-weight: bold;'>skip</span><span style='font-weight: bold;'>: you can skip tests if needed</span><span> ──────────────────────
 #&gt; Reason: This tests hasn't been written yet
@@ -235,8 +238,8 @@ source code for a few.</p>
 #&gt; </span><span style='color: #555555;'> 2. </span><span>testthat::quasi_label(enquo(object), label, arg = "object")
 #&gt; </span><span style='color: #555555;'> 3. </span><span>rlang::eval_bare(expr, quo_get_env(quo))
 #&gt; 
-#&gt; PASS x4 FAIL x0 WARN x1 SKIP x1</div><div class='input'><span class='co'># Override the default by supplying the name of a reporter</span>
-<span class='fu'>test_file</span>(<span class='kw'>path</span>, reporter = <span class='st'>"minimal"</span>)</div><div class='output co'>#&gt; .SW...</div></span></pre>
+#&gt; [ </span><span style='color: #00BB00;'>PASS</span><span> x4 </span><span style='color: #BB0000;'>FAIL</span><span> x0 </span><span style='color: #BB00BB;'>WARN</span><span> x1 </span><span style='color: #0000BB;'>SKIP</span><span> x1 ]</div><div class='input'><span class='co'># Override the default by supplying the name of a reporter</span>
+<span class='fu'><a href='test_file.html'>test_file</a></span>(<span class='no'>path</span>, <span class='kw'>reporter</span> <span class='kw'>=</span> <span class='st'>"minimal"</span>)</div><div class='output co'>#&gt; .SW...</div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -252,7 +255,7 @@ source code for a few.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
 </div>
 
       </footer>
