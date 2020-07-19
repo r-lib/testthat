@@ -47,10 +47,19 @@
 
 
 <meta property="og:title" content="Mock functions in a package. — with_mock" />
-<meta property="og:description" content="Executes code after temporarily substituting implementations of package
-functions.  This is useful for testing code that relies on functions that are
-slow, have unintended side effects or access resources that may not be
-available when testing." />
+<meta property="og:description" content="
+with_mock() and local_mock() are superseded in favour of the more
+rigorous techniques found in the mockr
+and mockery packages.
+Mocking allows you to temporary replace the implementation of functions
+within a package, which useful for testing code that relies on functions
+that are slow, have unintended side effects or access resources that may
+not be available when testing.
+This works by using some C code to temporarily modify the mocked function
+in place. On exit, all functions are restored to their previous state.
+This is somewhat abusive of R's internals so use with care. In particular,
+functions in base packages cannot be mocked; to work aroud you'll need to
+make a wrapper function in your own package.." />
 <meta property="og:image" content="https://testthat.r-lib.org/logo.png" />
 
 
@@ -188,10 +197,19 @@ available when testing." />
     </div>
 
     <div class="ref-description">
-    <p>Executes code after temporarily substituting implementations of package
-functions.  This is useful for testing code that relies on functions that are
-slow, have unintended side effects or access resources that may not be
-available when testing.</p>
+    <p><a href='https://www.tidyverse.org/lifecycle/#superseded'><img src='figures/lifecycle-superseded.svg' alt='Superseded lifecycle'></a></p>
+<p><code>with_mock()</code> and <code>local_mock()</code> are superseded in favour of the more
+rigorous techniques found in the <a href='https://krlmlr.github.io/mockr/'>mockr</a>
+and <a href='https://github.com/r-lib/mockery#mockery'>mockery</a> packages.</p>
+<p>Mocking allows you to temporary replace the implementation of functions
+within a package, which useful for testing code that relies on functions
+that are slow, have unintended side effects or access resources that may
+not be available when testing.</p>
+<p>This works by using some C code to temporarily modify the mocked function
+<em>in place</em>. On exit, all functions are restored to their previous state.
+This is somewhat abusive of R's internals so use with care. In particular,
+functions in base packages cannot be mocked; to work aroud you'll need to
+make a wrapper function in your own package..</p>
     </div>
 
     <pre class="usage"><span class='fu'>with_mock</span>(<span class='no'>...</span>, <span class='kw'>.env</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/ns-topenv.html'>topenv</a></span>())
@@ -222,13 +240,12 @@ For expert use only.</p></td>
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>The result of the last unnamed parameter</p>
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+    <h2 class="hasAnchor" id="-rd-edition"><a class="anchor" href="#-rd-edition"></a>3rd edition</h2>
 
-    <p>This works by using some C code to temporarily modify the mocked function <em>in place</em>.
-On exit (regular or error), all functions are restored to their previous state.
-This is somewhat abusive of R's internals, and is still experimental, so use with care.</p>
-<p>Functions in base packages cannot be mocked, but this can be
-worked around easily by defining a wrapper function.</p>
+    
+
+<p><img src='figures/lifecycle-deprecated.svg' alt='Deprecated lifecycle' /></p>
+<p><code>with_mock()</code> and <code>local_mock()</code> are deprecated in the third edition.</p>
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
     <p>Suraj Gupta (2012): <a href='http://obeautifulcode.com/R/How-R-Searches-And-Finds-Stuff'>How R Searches And Finds Stuff</a></p>

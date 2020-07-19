@@ -159,7 +159,7 @@
   <span class="fu"><a href="../reference/local_edition.html">local_edition</a></span>(<span class="fl">3</span>)
   <span class="fu"><a href="../reference/logical-expectations.html">expect_true</a></span>(<span class="fl">TRUE</span>)
 })
-<span class="co">#&gt; Test passed 😸</span></pre></body></html></div>
+<span class="co">#&gt; Test passed 🎉</span></pre></body></html></div>
 <p>This is also useful if you’ve switched to the 3rd edition and have a couple of tests that fail. You can use <code><a href="../reference/local_edition.html">local_edition(2)</a></code> to revert back to the old behaviour, giving you some breathing room to figure out the underlying issue.</p>
 <div class="sourceCode" id="cb4"><html><body><pre class="r"><span class="fu"><a href="../reference/test_that.html">test_that</a></span>(<span class="st">"I want to use the 2nd edition"</span>, {
   <span class="fu"><a href="../reference/local_edition.html">local_edition</a></span>(<span class="fl">2</span>)
@@ -187,6 +187,7 @@
 <li><p><code><a href="../reference/expect_equivalent.html">expect_equivalent()</a></code> has been deprecated since it is now equivalent (HA HA) to <code><a href="../reference/equality-expectations.html">expect_equal(ignore_attr = TRUE)</a></code>.</p></li>
 <li><p><code>setup())</code> an <code><a href="../reference/teardown.html">teardown()</a></code> are deprecated in favour of test fixtures. See <code><a href="../articles/test-fixtures.html">vignette("test-fixtures")</a></code> for details.</p></li>
 <li><p><code><a href="../reference/expect_known_output.html">expect_known_output()</a></code>, <code><a href="../reference/expect_known_output.html">expect_known_value()</a></code>, <code><a href="../reference/expect_known_output.html">expect_known_hash()</a></code>, and <code><a href="../reference/expect_known_output.html">expect_equal_to_reference()</a></code> are all deprecated in favour of <code><a href="../reference/expect_snapshot_output.html">expect_snapshot_output()</a></code> and <code><a href="../reference/expect_snapshot_output.html">expect_snapshot_value()</a></code>.</p></li>
+<li><p><code><a href="../reference/with_mock.html">with_mock()</a></code> and <code><a href="../reference/with_mock.html">local_mock()</a></code> are deprecated; please use the <a href="https://krlmlr.github.io/mockr/">mockr</a> or <a href="https://github.com/r-lib/mockery#mockery">mockery</a> instead.</p></li>
 </ul>
 <p>Fixing these deprecation warnings should be straightforward.</p>
 </div>
