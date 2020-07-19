@@ -8,7 +8,11 @@
 #' @export
 test_path <- function(...) {
   if (is_testing()) {
-    file.path(...)
+    if (missing(...)) {
+      "."
+    } else {
+      file.path(...)
+    }
   } else {
     base <- "tests/testthat"
     if (!dir.exists(base)) {
