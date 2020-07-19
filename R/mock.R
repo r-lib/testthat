@@ -1,16 +1,27 @@
 #' Mock functions in a package.
 #'
-#' Executes code after temporarily substituting implementations of package
-#' functions.  This is useful for testing code that relies on functions that are
-#' slow, have unintended side effects or access resources that may not be
-#' available when testing.
+#' @description
+#' `r lifecycle::badge("superseded")`
 #'
-#' This works by using some C code to temporarily modify the mocked function \emph{in place}.
-#' On exit (regular or error), all functions are restored to their previous state.
-#' This is somewhat abusive of R's internals, and is still experimental, so use with care.
+#' `with_mock()` and `local_mock()` are superseded in favour of the more
+#' rigorous techniques found in the [mockr](https://krlmlr.github.io/mockr/)
+#' and [mockery](https://github.com/r-lib/mockery#mockery) packages.
 #'
-#' Functions in base packages cannot be mocked, but this can be
-#' worked around easily by defining a wrapper function.
+#' Mocking allows you to temporary replace the implementation of functions
+#' within a package, which useful for testing code that relies on functions
+#' that are slow, have unintended side effects or access resources that may
+#' not be available when testing.
+#'
+#' This works by using some C code to temporarily modify the mocked function
+#' _in place_. On exit, all functions are restored to their previous state.
+#' This is somewhat abusive of R's internals so use with care. In particular,
+#' functions in base packages cannot be mocked; to work aroud you'll need to
+#' make a wrapper function in your own package..
+#'
+#' @section 3rd edition:
+#' `r lifecycle::badge("deprecated")`
+#'
+#' `with_mock()` and `local_mock()` are deprecated in the third edition.
 #'
 #' @param ... named parameters redefine mocked functions, unnamed parameters
 #'   will be evaluated after mocking the functions
@@ -51,6 +62,10 @@
 #'   expect_equal(plus(1, 1), 3)
 #' })
 with_mock <- function(..., .env = topenv()) {
+  edition_deprecate(3, "with_mock()",
+    "Please use mockr or mockery packages instead"
+  )
+
   dots <- eval(substitute(alist(...)))
   mock_qual_names <- names(dots)
 
@@ -84,6 +99,10 @@ with_mock <- function(..., .env = topenv()) {
 #' @export
 #' @rdname with_mock
 local_mock <- function(..., .env = topenv(), .local_envir = parent.frame()) {
+  edition_deprecate(3, "local_mock()",
+    "Please use mockr or mockery packages instead"
+  )
+
   mocks <- extract_mocks(list(...), .env = .env)
   on_exit <- bquote(
     on.exit(lapply(.(mocks), .(reset_mock)), add = TRUE),

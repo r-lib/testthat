@@ -129,7 +129,10 @@
       
     * `expect_known_output()`, `expect_known_value()`, `expect_known_hash()`,
       and `expect_equal_to_reference()` are all deprecated in favour of
-      `expect_snapshot_output()` and `expect_snapshot_value()`
+      `expect_snapshot_output()` and `expect_snapshot_value()`.
+      
+    * `with_mock()` and `local_mock()` are deprecated; please use the mockr
+      or mockery packages instead (#1099).
 
 * `test_that()` now sets a number of options and env vars to make output as 
   reproducible as possible (#1044). Many of these options were previously 
