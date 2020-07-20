@@ -76,20 +76,10 @@
 verify_output <- function(path, code, width = 80, crayon = FALSE,
                           unicode = FALSE, env = caller_env()) {
 
-  expr <- substitute(code)
-  if (is_call(expr, "{")) {
-    exprs <- as.list(expr[-1])
-  } else {
-    exprs <- list(expr)
-  }
+  local_reproducible_output(width = width, crayon = crayon, unicode = unicode)
 
-  output <- verify_exec(exprs,
-    width = width,
-    crayon = crayon,
-    unicode = unicode,
-    env = env
-  )
-  output <- gsub("\r", "", output, fixed = TRUE)
+  expr <- substitute(code)
+  output <- verify_exec(expr, env = env)
 
   if (!interactive() && on_cran()) {
     skip("On CRAN")
@@ -98,13 +88,14 @@ verify_output <- function(path, code, width = 80, crayon = FALSE,
   invisible()
 }
 
-verify_exec <- function(exprs,
-                        width = 80,
-                        crayon = FALSE,
-                        unicode = FALSE,
-                        env = caller_env()) {
+verify_exec <- function(expr, env = caller_env()) {
 
-  local_reproducible_output(width = width, crayon = crayon, unicode = unicode)
+  if (is_call(expr, "{")) {
+    exprs <- as.list(expr[-1])
+  } else {
+    exprs <- list(expr)
+  }
+
   withr::local_pdf(tempfile())
   grDevices::dev.control(displaylist = "enable")
 
@@ -116,7 +107,9 @@ verify_exec <- function(exprs,
     new_device = FALSE,
     output_handler = handler
   )
-  unlist(lapply(results, output_replay))
+  output <- unlist(lapply(results, output_replay))
+  output <- gsub("\r", "", output, fixed = TRUE)
+  output
 }
 
 output_replay <- function(x) {
