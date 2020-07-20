@@ -56,9 +56,10 @@ the intent of the code is something that can only be verified by a human
 vignette(&quot;snapshotting&quot;).
 expect_snapshot_output() captures the output printed to the console.
 (by testthat_print()).
+expect_snapshot_all() captures all messages, warnings, errors, and
+output from code.
 expect_snapshot_value() captures the return value.
 expect_snapshot_error() capture an error message.
-expect_snapshot_condition() captures a condition object.
 
 
 (These functions supersede verify_output(), expect_known_output(),
@@ -209,9 +210,10 @@ the intent of the code is something that can only be verified by a human
 <code><a href='../articles/snapshotting.html'>vignette("snapshotting")</a></code>.</p><ul>
 <li><p><code>expect_snapshot_output()</code> captures the output printed to the console.
 (by <code><a href='capture_output.html'>testthat_print()</a></code>).</p></li>
+<li><p><code>expect_snapshot_all()</code> captures all messages, warnings, errors, and
+output from code.</p></li>
 <li><p><code>expect_snapshot_value()</code> captures the return value.</p></li>
 <li><p><code>expect_snapshot_error()</code> capture an error message.</p></li>
-<li><p><code>expect_snapshot_condition()</code> captures a condition object.</p></li>
 </ul>
 
 <p>(These functions supersede <code><a href='verify_output.html'>verify_output()</a></code>, <code><a href='expect_known_output.html'>expect_known_output()</a></code>,
@@ -220,15 +222,15 @@ the intent of the code is something that can only be verified by a human
 
     <pre class="usage"><span class='fu'>expect_snapshot_output</span>(<span class='no'>x</span>, <span class='kw'>cran</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
+<span class='fu'>expect_snapshot_all</span>(<span class='no'>x</span>, <span class='kw'>cran</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+
 <span class='fu'>expect_snapshot_value</span>(
   <span class='no'>x</span>,
   <span class='kw'>style</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"json"</span>, <span class='st'>"json2"</span>, <span class='st'>"deparse"</span>, <span class='st'>"serialize"</span>),
   <span class='kw'>cran</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
 )
 
-<span class='fu'>expect_snapshot_error</span>(<span class='no'>x</span>, <span class='kw'>class</span> <span class='kw'>=</span> <span class='st'>"error"</span>, <span class='kw'>cran</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
-
-<span class='fu'>expect_snapshot_condition</span>(<span class='no'>x</span>, <span class='no'>class</span>, <span class='kw'>cran</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+<span class='fu'>expect_snapshot_error</span>(<span class='no'>x</span>, <span class='kw'>class</span> <span class='kw'>=</span> <span class='st'>"error"</span>, <span class='kw'>cran</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
