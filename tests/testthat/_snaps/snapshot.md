@@ -14,6 +14,18 @@
 
     [1] "y"
 
+# can snapshot everything
+
+    > f()
+    [1] "1"
+    
+    Message: 2
+    
+    Warning: 3
+    
+    Error: 4
+    
+
 # even with multiple lines
 
     a
@@ -73,39 +85,24 @@
     WAoAAAACAAMGAwACAwAAAAATAAAABAAAABAAAAABAAQACQAAAAFhAAAADgAAAAE/+AAAAAAA
     AAAAAA0AAAABAAAAAQAAAAoAAAABAAAAAQ==
 
-# can snapshot conditions
-
-    {
-      "message": ["!"],
-      "class": ["simpleError", "error", "condition"],
-      "fields": {}
-    }
-
----
-
-    {
-      "message": ["!"],
-      "class": ["rlang_error", "error", "condition"],
-      "fields": {
-        "x": [1, 2, 3, 4, 5]
-      }
-    }
-
 # informs about files being accepted
 
-    Updating snapshots
+    > snapshot_accept(path = path)
+    Message: Updating snapshots
     * a.new.md
     * b.new.md
     
 
 ---
 
-    No snapshots to update
+    > snapshot_accept(path = path)
+    Message: No snapshots to update
     
 
 # can accept specific files
 
-    Updating snapshots
+    > snapshot_accept("a", path = path)
+    Message: Updating snapshots
     * a.new.md
     
 

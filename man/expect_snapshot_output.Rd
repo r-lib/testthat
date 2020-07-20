@@ -2,12 +2,14 @@
 % Please edit documentation in R/snapshot.R
 \name{expect_snapshot_output}
 \alias{expect_snapshot_output}
+\alias{expect_snapshot_all}
 \alias{expect_snapshot_value}
 \alias{expect_snapshot_error}
-\alias{expect_snapshot_condition}
 \title{Snapshot testing}
 \usage{
 expect_snapshot_output(x, cran = FALSE)
+
+expect_snapshot_all(x, cran = FALSE)
 
 expect_snapshot_value(
   x,
@@ -16,8 +18,6 @@ expect_snapshot_value(
 )
 
 expect_snapshot_error(x, class = "error", cran = FALSE)
-
-expect_snapshot_condition(x, class, cran = FALSE)
 }
 \arguments{
 \item{x}{Code to evaluate.}
@@ -58,9 +58,10 @@ the intent of the code is something that can only be verified by a human
 \itemize{
 \item \code{expect_snapshot_output()} captures the output printed to the console.
 (by \code{\link[=testthat_print]{testthat_print()}}).
+\item \code{expect_snapshot_all()} captures all messages, warnings, errors, and
+output from code.
 \item \code{expect_snapshot_value()} captures the return value.
 \item \code{expect_snapshot_error()} capture an error message.
-\item \code{expect_snapshot_condition()} captures a condition object.
 }
 
 (These functions supersede \code{\link[=verify_output]{verify_output()}}, \code{\link[=expect_known_output]{expect_known_output()}},
