@@ -1,18 +1,18 @@
 # can snapshot output
 
-    [1] "y"
+    y
 
 ---
 
-    [1] "y"
+    y
 
 ---
 
-    [1] "y"
+    y
 
 ---
 
-    [1] "y"
+    y
 
 # can snapshot everything
 

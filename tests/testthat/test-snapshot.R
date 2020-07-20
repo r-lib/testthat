@@ -1,5 +1,5 @@
 test_that("can snapshot output", {
-  foo <- function() "y"
+  foo <- function() cat("y")
   expect_snapshot_output(foo())
   expect_snapshot_output(foo())
   expect_snapshot_output(foo())
