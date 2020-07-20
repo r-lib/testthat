@@ -42,7 +42,7 @@
 #' @param class Instead of supplying a regular expression, you can also supply
 #'   a class name. This is useful for "classed" conditions.
 #' @param all *DEPRECATED* If you need to test multiple warnings/messages
-#'   you know need to use multiple calls to `expect_message()`/
+#'   you now need to use multiple calls to `expect_message()`/
 #'   `expect_warning()`
 #' @return If `regexp = NA`, the value of the first argument; otherwise
 #'   the captured condition.
