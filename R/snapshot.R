@@ -10,12 +10,12 @@
 #' (e.g. this is a useful error message). Learn more in
 #' `vignette("snapshotting")`.
 #'
-#' * `expect_snapshot_output()` captures the output printed to the console.
-#'   (by [testthat_print()]).
-#' * `expect_snapshot_all()` captures all messages, warnings, errors, and
+#' * `expect_snapshot()` captures all messages, warnings, errors, and
 #'    output from code.
+#' * `expect_snapshot_output()` captures just output printed to the console.
+#'   (by [testthat_print()]).
+#' * `expect_snapshot_error()` captures just error messages.
 #' * `expect_snapshot_value()` captures the return value.
-#' * `expect_snapshot_error()` capture an error message.
 #'
 #' (These functions supersede [verify_output()], [expect_known_output()],
 #' [expect_known_value()], and [expect_known_hash()].)
@@ -48,7 +48,7 @@ expect_snapshot_output <- function(x, cran = FALSE) {
   lab <- quo_label(enquo(x))
   val <- capture_output_lines(x, print = TRUE, width = NULL)
 
-  expect_snapshot(lab, val, cran = cran,
+  expect_snapshot_helper(lab, val, cran = cran,
     save = function(x) paste0(x, collapse = "\n"),
     load = function(x) split_by_line(x)[[1]]
   )
@@ -56,10 +56,10 @@ expect_snapshot_output <- function(x, cran = FALSE) {
 
 #' @export
 #' @rdname expect_snapshot_output
-expect_snapshot_all <- function(x, cran = FALSE) {
+expect_snapshot <- function(x, cran = FALSE) {
   x <- enquo(x)
   out <- verify_exec(quo_get_expr(x), quo_get_env(x))
-  expect_snapshot("code", out, cran = cran,
+  expect_snapshot_helper("code", out, cran = cran,
     save = function(x) paste0(x, collapse = "\n"),
     load = function(x) split_by_line(x)[[1]]
   )
@@ -98,7 +98,7 @@ expect_snapshot_value <- function(x,
     serialize = function(x) unserialize(jsonlite::base64_dec(x))
   )
 
-  expect_snapshot(lab, x, save = save, load = load, cran = cran)
+  expect_snapshot_helper(lab, x, save = save, load = load, cran = cran)
 }
 
 # Safe environment for evaluating deparsed objects, based on inspection of
@@ -131,10 +131,10 @@ expect_snapshot_error <- function(x, class = "error", cran = FALSE) {
     fail(sprintf("%s did not throw error of class '%s'", lab, class))
   }
 
-  expect_snapshot(lab, conditionMessage(val), cran = cran)
+  expect_snapshot_helper(lab, conditionMessage(val), cran = cran)
 }
 
-expect_snapshot <- function(lab, val, cran = FALSE, save = identity, load = identity) {
+expect_snapshot_helper <- function(lab, val, cran = FALSE, save = identity, load = identity) {
   if (!interactive() && on_cran()) {
     skip("On CRAN")
   }

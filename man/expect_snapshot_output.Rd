@@ -2,14 +2,14 @@
 % Please edit documentation in R/snapshot.R
 \name{expect_snapshot_output}
 \alias{expect_snapshot_output}
-\alias{expect_snapshot_all}
+\alias{expect_snapshot}
 \alias{expect_snapshot_value}
 \alias{expect_snapshot_error}
 \title{Snapshot testing}
 \usage{
 expect_snapshot_output(x, cran = FALSE)
 
-expect_snapshot_all(x, cran = FALSE)
+expect_snapshot(x, cran = FALSE)
 
 expect_snapshot_value(
   x,

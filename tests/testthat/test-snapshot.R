@@ -14,7 +14,7 @@ test_that("can snapshot everything", {
     abort("4")
   }
 
-  expect_snapshot_all(f())
+  expect_snapshot(f())
 })
 
 test_that("even with multiple lines", {
@@ -35,14 +35,14 @@ test_that("can snapshot values", {
 test_that("informs about files being accepted", {
   path <- local_snapshot_dir(c("a", "b"))
 
-  expect_snapshot_all(snapshot_accept(path = path))
+  expect_snapshot(snapshot_accept(path = path))
   expect_equal(dir(file.path(path, "_snaps")), c("a.md", "b.md"))
 
-  expect_snapshot_all(snapshot_accept(path = path))
+  expect_snapshot(snapshot_accept(path = path))
 })
 
 test_that("can accept specific files", {
   path <- local_snapshot_dir(c("a", "b"))
-  expect_snapshot_all(snapshot_accept("a", path = path))
+  expect_snapshot(snapshot_accept("a", path = path))
   expect_equal(dir(file.path(path, "_snaps")), c("a.md", "b.new.md"))
 })
