@@ -47,6 +47,10 @@ expect_failure <- function(expr, message = NULL, ...) {
   invisible(NULL)
 }
 
+expect_skip <- function(code, regexp = NULL) {
+  expect_condition(code, regexp, class = "skip")
+}
+
 #' @export
 #' @rdname expect_success
 show_failure <- function(expr) {

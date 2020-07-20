@@ -229,7 +229,7 @@ capture_matching_condition <- function(expr, matches) {
 
     if (inherits(cnd, "message") || inherits(cnd, "warning")) {
       cnd_muffle(cnd)
-    } else if (inherits(cnd, "error")) {
+    } else if (inherits(cnd, "error") || inherits(cnd, "skip")) {
       return_from(tl, cnd)
     }
   })
