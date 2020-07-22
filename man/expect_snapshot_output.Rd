@@ -56,12 +56,12 @@ the intent of the code is something that can only be verified by a human
 (e.g. this is a useful error message). Learn more in
 \code{vignette("snapshotting")}.
 \itemize{
-\item \code{expect_snapshot_output()} captures the output printed to the console.
-(by \code{\link[=testthat_print]{testthat_print()}}).
-\item \code{expect_snapshot_all()} captures all messages, warnings, errors, and
+\item \code{expect_snapshot()} captures all messages, warnings, errors, and
 output from code.
+\item \code{expect_snapshot_output()} captures just output printed to the console.
+(by \code{\link[=testthat_print]{testthat_print()}}).
+\item \code{expect_snapshot_error()} captures just error messages.
 \item \code{expect_snapshot_value()} captures the return value.
-\item \code{expect_snapshot_error()} capture an error message.
 }
 
 (These functions supersede \code{\link[=verify_output]{verify_output()}}, \code{\link[=expect_known_output]{expect_known_output()}},
