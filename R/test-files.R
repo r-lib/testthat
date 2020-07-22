@@ -46,6 +46,7 @@
 #' @param stop_on_failure If `TRUE`, throw an error if any tests fail.
 #' @param stop_on_warning If `TRUE`, throw an error if any tests generate
 #'   warnings.
+#' @param wrap DEPRECATED
 #' @return A list (invisibly) containing data about the test results.
 #' @inheritParams with_reporter
 #' @inheritParams source_file
@@ -58,13 +59,17 @@ test_dir <- function(path,
                      load_helpers = TRUE,
                      stop_on_failure = TRUE,
                      stop_on_warning = FALSE,
-                     wrap = TRUE,
+                     wrap = lifecycle::deprecated(),
                      package = NULL
                      ) {
 
   test_paths <- find_test_scripts(path, filter = filter, ..., full.names = FALSE)
   if (length(test_paths) == 0) {
     abort("No test files found")
+  }
+
+  if (!missing(wrap)) {
+    lifecycle::deprecate_warn("3.0.0", "test_dir(wrap = )")
   }
 
   test_files(
@@ -75,8 +80,7 @@ test_dir <- function(path,
     load_helpers = load_helpers,
     env = env,
     stop_on_failure = stop_on_failure,
-    stop_on_warning = stop_on_warning,
-    wrap = wrap
+    stop_on_warning = stop_on_warning
   )
 }
 
@@ -117,8 +121,7 @@ test_files <- function(test_dir,
                        reporter = default_reporter(),
                        env = NULL,
                        stop_on_failure = FALSE,
-                       stop_on_warning = FALSE,
-                       wrap = TRUE) {
+                       stop_on_warning = FALSE) {
 
   # Define testing environment
   local_test_directory(test_dir, test_package)

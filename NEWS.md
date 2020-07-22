@@ -119,7 +119,8 @@ recommendations. To opt-in to the 3rd edition for your package, set
   has been removed.
 
 * `test_dir()` now defaults `stop_on_failure` to `TRUE` for consistency with
-  other `test_` functions.
+  other `test_` functions. The `wrap` argument has been deprecated; it's not
+  clear that it should ever have been exposed.
 
 * New `test_local()` tests a local source package directory. It's equivalent 
   to `devtools::test()` but doesn't require devtools and all its dependencies
