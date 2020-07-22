@@ -143,7 +143,7 @@
 
     
     
-<p>This vignette shows you how to create custom expectations that work identically to the built-in <code>expect_</code> functions.</p>
+<p>This vignette shows you how to create custom expectations that work identically to the built-in <code>expect_</code> functions. Since these functions will need to be loaded when your package is loaded for testing, it is recommended that <code>expect_</code> functions be defined in <code>test-helpers.R</code> in your packages <code>R/</code> directory.</p>
 <div id="creating-an-expectation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#creating-an-expectation" class="anchor"></a>Creating an expectation</h2>
@@ -219,7 +219,7 @@
   <span class="fu"><a href="../reference/expect_success.html">expect_success</a></span>(<span class="fu"><a href="../reference/expect_length.html">expect_length</a></span>(<span class="fl">1</span>:<span class="fl">10</span>, <span class="fl">10</span>))
   <span class="fu"><a href="../reference/expect_success.html">expect_success</a></span>(<span class="fu"><a href="../reference/expect_length.html">expect_length</a></span>(<span class="no">letters</span>[<span class="fl">1</span>:<span class="fl">5</span>], <span class="fl">5</span>))
 })
-<span class="co">#&gt; Test passed 🥇</span></pre></body></html></div>
+<span class="co">#&gt; Test passed 😀</span></pre></body></html></div>
 </div>
   </div>
 
