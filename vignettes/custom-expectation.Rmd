@@ -12,7 +12,7 @@ library(testthat)
 knitr::opts_chunk$set(collapse = TRUE, comment = "#>")
 ```
 
-This vignette shows you how to create custom expectations that work identically to the built-in `expect_` functions.
+This vignette shows you how to create custom expectations that work identically to the built-in `expect_` functions.  Since these functions will need to be loaded when your package is loaded for testing, it is recommended that `expect_` functions be defined in `test-helpers.R` in your packages `R/` directory.
 
 ## Creating an expectation
 
