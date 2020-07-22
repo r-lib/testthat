@@ -78,7 +78,7 @@ alternatives in \link{quasi_label}.}
 \item{label}{Used to customise failure messages. For expert use only.}
 
 \item{all}{\emph{DEPRECATED} If you need to test multiple warnings/messages
-you know need to use multiple calls to \code{expect_message()}/
+you now need to use multiple calls to \code{expect_message()}/
 \code{expect_warning()}}
 }
 \value{
