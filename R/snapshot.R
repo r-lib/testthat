@@ -45,6 +45,7 @@
 #'   expectations will still fail if `x` errors.
 #' @export
 expect_snapshot_output <- function(x, cran = FALSE) {
+  edition_require(3, "expect_snapshot_output()")
   lab <- quo_label(enquo(x))
   val <- capture_output_lines(x, print = TRUE, width = NULL)
 
@@ -57,6 +58,8 @@ expect_snapshot_output <- function(x, cran = FALSE) {
 #' @export
 #' @rdname expect_snapshot_output
 expect_snapshot <- function(x, cran = FALSE) {
+  edition_require(3, "expect_snapshot()")
+
   x <- enquo(x)
   out <- verify_exec(quo_get_expr(x), quo_get_env(x))
   expect_snapshot_helper("code", out, cran = cran,
@@ -81,6 +84,7 @@ expect_snapshot <- function(x, cran = FALSE) {
 expect_snapshot_value <- function(x,
                                   style = c("json", "json2", "deparse", "serialize"),
                                   cran = FALSE) {
+  edition_require(3, "expect_snapshot_value()")
   lab <- quo_label(enquo(x))
 
   style <- arg_match(style)
@@ -125,6 +129,8 @@ reparse <- function(x) {
 #' @export
 #' @rdname expect_snapshot_output
 expect_snapshot_error <- function(x, class = "error", cran = FALSE) {
+  edition_require(3, "expect_snapshot_error()")
+
   lab <- quo_label(enquo(x))
   val <- capture_matching_condition(x, cnd_matcher(class))
   if (is.null(val)) {

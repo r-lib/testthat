@@ -56,6 +56,7 @@ test_that("provide useful feedback on failure", {
   expect_snapshot_error(expect_equal(1, "a"))
 
   local_edition(2)
+  withr::local_options(list(testthat.edition_ignore = TRUE))
   expect_snapshot_error(expect_identical(1, "a"))
   expect_snapshot_error(expect_equal(1, "a"))
 })

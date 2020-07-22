@@ -1,4 +1,5 @@
 test_that("produces consistent output", {
+  withr::local_options(list(testthat.edition_ignore = TRUE))
   local_edition(2)
   local_mock(
     show_menu = function(choices, title = NULL) {

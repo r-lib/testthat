@@ -52,7 +52,7 @@ recommendations. To opt-in to the 3rd edition for your package, set
 
 * New family of snapshot expectations (`expect_snapshot_output()`, 
   `expect_snapshot_value()` and more), as documented in 
-  `vignette("snapshotting")`.
+  `vignette("snapshotting")`. These are only available in the 3rd edition.
 
 ## Fixures
 
