@@ -7,7 +7,7 @@
 #' @return A character vector giving the path.
 #' @export
 test_path <- function(...) {
-  if (is_testing()) {
+  if (is_testing() && !isTRUE(getOption("testthat_interactive"))) {
     if (missing(...)) {
       "."
     } else {

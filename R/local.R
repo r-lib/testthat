@@ -138,3 +138,19 @@ local_test_directory <- function(path, package = NULL, .env = parent.frame()) {
   ), .local_envir = .env)
   local_edition(find_edition(path, package), .env = .env)
 }
+
+local_interactive_reporter <- function(.env = parent.frame()) {
+  # Definitely not on CRAN
+  withr::local_envvar(c(NOT_CRAN = "true"), .local_envir = .env)
+  withr::local_options(list(testthat_interactive = TRUE), .local_envir = .env)
+
+  # Use edition from working directory
+  local_edition(find_edition("."), .env = .env)
+
+  # Use StopReporter
+  reporter <- StopReporter$new(stop_reporter = FALSE)
+  old <- set_reporter(reporter)
+  withr::defer(set_reporter(old), envir = .env)
+
+  reporter
+}

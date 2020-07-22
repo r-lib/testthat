@@ -28,13 +28,8 @@
 #' }
 test_that <- function(desc, code) {
   reporter <- get_reporter()
-  # Running test_that() interactively
   if (is.null(reporter)) {
-    local_edition(find_edition("."))
-
-    reporter <- StopReporter$new(stop_reporter = FALSE)
-    old <- set_reporter(reporter)
-    on.exit(set_reporter(old), add = TRUE)
+    reporter <- local_interactive_reporter()
   }
 
   local_test_context()
