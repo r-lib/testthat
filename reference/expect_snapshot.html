@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Expectations: is the output or the value equal to a known good value? — expect_known_output • testthat</title>
+<title>Snapshot testing — expect_snapshot • testthat</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,12 +46,23 @@
 
 
 
-<meta property="og:title" content="Expectations: is the output or the value equal to a known good value? — expect_known_output" />
-<meta property="og:description" content="For complex printed output and objects, it is often challenging to describe
-exactly what you expect to see. expect_known_value() and
-expect_known_output() provide a slightly weaker guarantee, simply
-asserting that the values have not changed since the last time that you ran
-them." />
+<meta property="og:title" content="Snapshot testing — expect_snapshot" />
+<meta property="og:description" content="
+Snapshot tests (aka golden tests) are similar to unit tests except that the
+expected result is stored in a separate file that is managed by testthat.
+Snapshot tests are useful for when the expected value is large, or when
+the intent of the code is something that can only be verified by a human
+(e.g. this is a useful error message). Learn more in
+vignette(&quot;snapshotting&quot;).
+expect_snapshot() captures all messages, warnings, errors, and
+output from code.
+expect_snapshot_output() captures just output printed to the console.
+expect_snapshot_error() captures just error messages.
+expect_snapshot_value() captures the return value.
+
+
+(These functions supersede verify_output(), expect_known_output(),
+expect_known_value(), and expect_known_hash().)" />
 <meta property="og:image" content="https://testthat.r-lib.org/logo.png" />
 
 
@@ -183,134 +194,99 @@ them." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Expectations: is the output or the value equal to a known good value?</h1>
-    <small class="dont-index">Source: <a href='https://github.com/r-lib/testthat/blob/master/R/expect-known.R'><code>R/expect-known.R</code></a></small>
-    <div class="hidden name"><code>expect_known_output.Rd</code></div>
+    <h1>Snapshot testing</h1>
+    <small class="dont-index">Source: <a href='https://github.com/r-lib/testthat/blob/master/R/snapshot.R'><code>R/snapshot.R</code></a></small>
+    <div class="hidden name"><code>expect_snapshot.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>For complex printed output and objects, it is often challenging to describe
-exactly what you expect to see. <code>expect_known_value()</code> and
-<code>expect_known_output()</code> provide a slightly weaker guarantee, simply
-asserting that the values have not changed since the last time that you ran
-them.</p>
+    <p><a href='https://www.tidyverse.org/lifecycle/#experimental'><img src='figures/lifecycle-experimental.svg' alt='Experimental lifecycle'></a></p>
+<p>Snapshot tests (aka golden tests) are similar to unit tests except that the
+expected result is stored in a separate file that is managed by testthat.
+Snapshot tests are useful for when the expected value is large, or when
+the intent of the code is something that can only be verified by a human
+(e.g. this is a useful error message). Learn more in
+<code><a href='../articles/snapshotting.html'>vignette("snapshotting")</a></code>.</p><ul>
+<li><p><code>expect_snapshot()</code> captures all messages, warnings, errors, and
+output from code.</p></li>
+<li><p><code>expect_snapshot_output()</code> captures just output printed to the console.</p></li>
+<li><p><code>expect_snapshot_error()</code> captures just error messages.</p></li>
+<li><p><code>expect_snapshot_value()</code> captures the return value.</p></li>
+</ul>
+
+<p>(These functions supersede <code><a href='verify_output.html'>verify_output()</a></code>, <code><a href='expect_known_output.html'>expect_known_output()</a></code>,
+<code><a href='expect_known_output.html'>expect_known_value()</a></code>, and <code><a href='expect_known_output.html'>expect_known_hash()</a></code>.)</p>
     </div>
 
-    <pre class="usage"><span class='fu'>expect_known_output</span>(
-  <span class='no'>object</span>,
-  <span class='no'>file</span>,
-  <span class='kw'>update</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='no'>...</span>,
-  <span class='kw'>info</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>label</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>print</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>width</span> <span class='kw'>=</span> <span class='fl'>80</span>
-)
+    <pre class="usage"><span class='fu'>expect_snapshot</span>(<span class='no'>x</span>, <span class='kw'>cran</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
-<span class='fu'>expect_known_value</span>(
-  <span class='no'>object</span>,
-  <span class='no'>file</span>,
-  <span class='kw'>update</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='no'>...</span>,
-  <span class='kw'>info</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>label</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>version</span> <span class='kw'>=</span> <span class='fl'>2</span>
-)
+<span class='fu'>expect_snapshot_output</span>(<span class='no'>x</span>, <span class='kw'>cran</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
-<span class='fu'>expect_known_hash</span>(<span class='no'>object</span>, <span class='kw'>hash</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+<span class='fu'>expect_snapshot_error</span>(<span class='no'>x</span>, <span class='kw'>class</span> <span class='kw'>=</span> <span class='st'>"error"</span>, <span class='kw'>cran</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+
+<span class='fu'>expect_snapshot_value</span>(
+  <span class='no'>x</span>,
+  <span class='kw'>style</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"json"</span>, <span class='st'>"json2"</span>, <span class='st'>"deparse"</span>, <span class='st'>"serialize"</span>),
+  <span class='kw'>cran</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
+)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>object</th>
-      <td><p>Computation and value to compare it to.</p>
-<p>Both arguments supports limited unquoting to make it easier to generate
-readable failures within a function or for loop. See <a href='quasi_label.html'>quasi_label</a> for
-more details.</p></td>
+      <th>x</th>
+      <td><p>Code to evaluate.</p></td>
     </tr>
     <tr>
-      <th>file</th>
-      <td><p>File path where known value/output will be stored.</p></td>
+      <th>cran</th>
+      <td><p>Should these expectations be verified on CRAN? By default,
+they are not, because snapshot tests tend to be fragile because they
+often rely on minor details of dependencies. Even on CRAN, the
+expectations will still fail if <code>x</code> errors.</p></td>
     </tr>
     <tr>
-      <th>update</th>
-      <td><p>Should the file be updated? Defaults to <code>TRUE</code>, with
-the expectation that you'll notice changes because of the first failure,
-and then see the modified files in git.</p></td>
+      <th>class</th>
+      <td><p>Expected class of condition, e.g. use <code>error</code> for errors,
+<code>warning</code> for warnings, <code>message</code> for messages. The expectation will
+always fail (even on CRAN) if a condition of this class isn't seen
+when executing <code>x</code>.</p></td>
     </tr>
     <tr>
-      <th>...</th>
-      <td><p>In the 3rd edition; passed on to <code><a href='https://rdrr.io/pkg/waldo/man/compare.html'>waldo::compare()</a></code>. See
-its docs to see other ways to control comparison. In the 2nd edition;
-passed on to <code><a href='compare.html'>compare()</a></code>/<code><a href='https://rdrr.io/r/base/identical.html'>identical()</a></code>.</p></td>
-    </tr>
-    <tr>
-      <th>info</th>
-      <td><p>Extra information to be included in the message. This argument
-is soft-deprecated and should not be used in new code. Instead see
-alternatives in <a href='quasi_label.html'>quasi_label</a>.</p></td>
-    </tr>
-    <tr>
-      <th>label</th>
-      <td><p>Used to customise failure messages. For expert
-use only.</p></td>
-    </tr>
-    <tr>
-      <th>print</th>
-      <td><p>If <code>TRUE</code> and the result of evaluating <code>code</code> is
-visible, print the result using <code><a href='capture_output.html'>testthat_print()</a></code>.</p></td>
-    </tr>
-    <tr>
-      <th>width</th>
-      <td><p>Number of characters per line of output. This does not
-inherit from <code><a href='https://rdrr.io/r/base/options.html'>getOption("width")</a></code> so that tests always use the same
-output width, minimising spurious differences.</p></td>
-    </tr>
-    <tr>
-      <th>version</th>
-      <td><p>The serialization format version to use. The default, 2, was
-the default format from R 1.4.0 to 3.5.3. Version 3 became the default from
-R 3.6.0 and can only be read by R versions 3.5.0 and higher.</p></td>
-    </tr>
-    <tr>
-      <th>hash</th>
-      <td><p>Known hash value. Leave empty and you'll be informed what
-to use in the test output.</p></td>
+      <th>style</th>
+      <td><p>Serialization style to use:</p><ul>
+<li><p><code>json</code> uses <code><a href='https://jeroen.cran.dev/jsonlite/reference/fromJSON.html'>jsonlite::fromJSON()</a></code> and <code><a href='https://jeroen.cran.dev/jsonlite/reference/fromJSON.html'>jsonlite::toJSON()</a></code>. This
+produces the simplest output but only works for relatively simple
+objects.</p></li>
+<li><p><code>json2</code> uses <code><a href='https://jeroen.cran.dev/jsonlite/reference/serializeJSON.html'>jsonlite::serializeJSON()</a></code> and <code><a href='https://jeroen.cran.dev/jsonlite/reference/serializeJSON.html'>jsonlite::unserializeJSON()</a></code>
+which are more verbose but work for a wider range of type.</p></li>
+<li><p><code>deparse</code> uses <code><a href='https://rdrr.io/r/base/deparse.html'>deparse()</a></code>, which generates a depiction of the object
+using R code.</p></li>
+<li><p><code><a href='https://rdrr.io/r/base/serialize.html'>serialize()</a></code> produces a binary serialization of the object using
+<code><a href='https://rdrr.io/r/base/serialize.html'>serialize()</a></code>. This is all but guaranteed to work for any R object,
+but produces a completely opaque serialization.</p></li>
+</ul></td>
     </tr>
     </table>
 
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
-
-    <p>These expectations should be used in conjunction with git, as otherwise
-there is no way to revert to previous values. Git is particularly useful
-in conjunction with <code>expect_known_output()</code> as the diffs will show you
-exactly what has changed.</p>
-<p>Note that known values updates will only be updated when running tests
-interactively. <code>R CMD check</code> clones the package source so any changes to
-the reference files will occur in a temporary directory, and will not be
-synchronised back to the source package.</p>
-    <h2 class="hasAnchor" id="-rd-edition"><a class="anchor" href="#-rd-edition"></a>3rd edition</h2>
+    <h2 class="hasAnchor" id="workflow"><a class="anchor" href="#workflow"></a>Workflow</h2>
 
     
 
-<p><img src='figures/lifecycle-deprecated.svg' alt='Deprecated lifecycle' /></p>
-<p><code>expect_known_output()</code> and friends are deprecated in the 3rd edition;
-please use <code><a href='expect_snapshot.html'>expect_snapshot_output()</a></code> and friends instead.</p>
+<p>The first time that you run a snapshot expectation it will run <code>x</code>,
+capture the results, and record in <code>tests/testthat/snap/{test}.json</code>.
+Each test file gets its own snapshot file, e.g. <code>test-foo.R</code> will get
+<code>snap/foo.json</code>.</p>
+<p>It's important to review the JSON files and commit them to git. They are
+designed to be human readable, and you should always review new additions
+to ensure that the salient information has been capture. They should also
+be carefully reviewed in pull requests, to make sure that snapshots have
+updated in the expected way.</p>
+<p>On subsequent runs, the result of <code>x</code> will be compared to the value stored
+on disk. If it's different, the expectation will fail, and a new file
+<code>snap/{test}.new.json</code> will be created. If the change was deliberate,
+you can approve the change with <code><a href='snapshot_accept.html'>snapshot_accept()</a></code> and then the tests will
+pass the next time you run them.</p>
 
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>tmp</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempfile</a></span>()
-
-<span class='co'># The first run always succeeds</span>
-<span class='fu'>expect_known_output</span>(<span class='no'>mtcars</span>[<span class='fl'>1</span>:<span class='fl'>10</span>, ], <span class='no'>tmp</span>, <span class='kw'>print</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: Creating reference output</span></div><div class='input'>
-<span class='co'># Subsequent runs will succeed only if the file is unchanged</span>
-<span class='co'># This will succeed:</span>
-<span class='fu'>expect_known_output</span>(<span class='no'>mtcars</span>[<span class='fl'>1</span>:<span class='fl'>10</span>, ], <span class='no'>tmp</span>, <span class='kw'>print</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
-
-<span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
-<span class='co'># This will fail</span>
-<span class='fu'>expect_known_output</span>(<span class='no'>mtcars</span>[<span class='fl'>1</span>:<span class='fl'>9</span>, ], <span class='no'>tmp</span>, <span class='kw'>print</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
-}</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

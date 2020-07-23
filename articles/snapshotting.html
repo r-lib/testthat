@@ -173,10 +173,10 @@
   <span class="fu"><a href="../reference/equality-expectations.html">expect_equal</a></span>(<span class="fu">bullets</span>(<span class="st">"a"</span>, <span class="kw">id</span> <span class="kw">=</span> <span class="st">"x"</span>), <span class="st">"&lt;ul id=\"x\"&gt;\n  &lt;li&gt;a&lt;/li&gt;\n&lt;/ul&gt;\n"</span>)
 })
 <span class="co">#&gt; Test passed 🥇</span></pre></body></html></div>
-<p>This is a great place to use snapshot testing. To do this we make two changes to our code: we use <code><a href="../reference/expect_snapshot_output.html">expect_snapshot_output()</a></code> instead of <code><a href="../reference/equality-expectations.html">expect_equal()</a></code>, and wrap the call in <code><a href="https://rdrr.io/r/base/cat.html">cat()</a></code> (to avoid <code>[1]</code> in the output, like I my first interactive example).</p>
+<p>This is a great place to use snapshot testing. To do this we make two changes to our code: we use <code><a href="../reference/expect_snapshot.html">expect_snapshot_output()</a></code> instead of <code><a href="../reference/equality-expectations.html">expect_equal()</a></code>, and wrap the call in <code><a href="https://rdrr.io/r/base/cat.html">cat()</a></code> (to avoid <code>[1]</code> in the output, like I my first interactive example).</p>
 <div class="sourceCode" id="cb4"><html><body><pre class="r"><span class="fu"><a href="../reference/test_that.html">test_that</a></span>(<span class="st">"bullets"</span>, {
-  <span class="fu"><a href="../reference/expect_snapshot_output.html">expect_snapshot_output</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span>(<span class="fu">bullets</span>(<span class="st">"a"</span>)))
-  <span class="fu"><a href="../reference/expect_snapshot_output.html">expect_snapshot_output</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span>(<span class="fu">bullets</span>(<span class="st">"a"</span>, <span class="st">"b"</span>)))
+  <span class="fu"><a href="../reference/expect_snapshot.html">expect_snapshot_output</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span>(<span class="fu">bullets</span>(<span class="st">"a"</span>)))
+  <span class="fu"><a href="../reference/expect_snapshot.html">expect_snapshot_output</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span>(<span class="fu">bullets</span>(<span class="st">"a"</span>, <span class="st">"b"</span>)))
 })
 <span class="co">#&gt; ── &lt;text&gt;:2:3: warning: bullets ────────────────────────────────────────────────</span>
 <span class="co">#&gt; Adding new snapshot:</span>
@@ -192,8 +192,8 @@
 <p>We we run the test for the first time, it automatically generates reference output, and prints it, so that you can visually confirm that it’s correct. The output is automatically saved in <code>_snaps/{name}.R</code>. The name of the snapshot matches your test file name — e.g. if your test is <code>test-pizza.R</code> then your snapshot will be saved in <code>test/testthat/_snaps/pizza.md</code>. As the file name suggests, this is a markdown file, which I’ll explain shortly.</p>
 <p>If you run the test again, it’ll succeed:</p>
 <div class="sourceCode" id="cb5"><html><body><pre class="r"><span class="fu"><a href="../reference/test_that.html">test_that</a></span>(<span class="st">"bullets"</span>, {
-  <span class="fu"><a href="../reference/expect_snapshot_output.html">expect_snapshot_output</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span>(<span class="fu">bullets</span>(<span class="st">"a"</span>)))
-  <span class="fu"><a href="../reference/expect_snapshot_output.html">expect_snapshot_output</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span>(<span class="fu">bullets</span>(<span class="st">"a"</span>, <span class="st">"b"</span>)))
+  <span class="fu"><a href="../reference/expect_snapshot.html">expect_snapshot_output</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span>(<span class="fu">bullets</span>(<span class="st">"a"</span>)))
+  <span class="fu"><a href="../reference/expect_snapshot.html">expect_snapshot_output</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span>(<span class="fu">bullets</span>(<span class="st">"a"</span>, <span class="st">"b"</span>)))
 })
 <span class="co">#&gt; Test passed 🎊</span></pre></body></html></div>
 <p>But if you change the underlying code, say to tweak the indenting, the test will fail:</p>
@@ -205,8 +205,8 @@
   )
 }
 <span class="fu"><a href="../reference/test_that.html">test_that</a></span>(<span class="st">"bullets"</span>, {
-  <span class="fu"><a href="../reference/expect_snapshot_output.html">expect_snapshot_output</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span>(<span class="fu">bullets</span>(<span class="st">"a"</span>)))
-  <span class="fu"><a href="../reference/expect_snapshot_output.html">expect_snapshot_output</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span>(<span class="fu">bullets</span>(<span class="st">"a"</span>, <span class="st">"b"</span>)))
+  <span class="fu"><a href="../reference/expect_snapshot.html">expect_snapshot_output</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span>(<span class="fu">bullets</span>(<span class="st">"a"</span>)))
+  <span class="fu"><a href="../reference/expect_snapshot.html">expect_snapshot_output</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span>(<span class="fu">bullets</span>(<span class="st">"a"</span>, <span class="st">"b"</span>)))
 })
 <span class="co">#&gt; ── &lt;text&gt;:9:3: failure: bullets ────────────────────────────────────────────────</span>
 <span class="co">#&gt; Shapshot of `cat(bullets("a"))` has changed:</span>
@@ -249,10 +249,10 @@
 <div id="other-types-of-snapshot" class="section level2">
 <h2 class="hasAnchor">
 <a href="#other-types-of-snapshot" class="anchor"></a>Other types of snapshot</h2>
-<p><code><a href="../reference/expect_snapshot_output.html">expect_snapshot_output()</a></code> is probably the most commonly used snapshot function but there are a few other variants that are useful in other case.</p>
+<p><code><a href="../reference/expect_snapshot.html">expect_snapshot_output()</a></code> is probably the most commonly used snapshot function but there are a few other variants that are useful in other case.</p>
 <ul>
-<li><p><code><a href="../reference/expect_snapshot_output.html">expect_snapshot_error()</a></code> works like <code><a href="../reference/expect_snapshot_output.html">expect_snapshot_output()</a></code> but captures an error message, rather than console output.</p></li>
-<li><p><code><a href="../reference/expect_snapshot_output.html">expect_snapshot_value()</a></code> checks that the value of any R object stays the same. It has a number of serialisation approaches built-in that offer a tradeoff between accuracy and human readability.</p></li>
+<li><p><code><a href="../reference/expect_snapshot.html">expect_snapshot_error()</a></code> works like <code><a href="../reference/expect_snapshot.html">expect_snapshot_output()</a></code> but captures an error message, rather than console output.</p></li>
+<li><p><code><a href="../reference/expect_snapshot.html">expect_snapshot_value()</a></code> checks that the value of any R object stays the same. It has a number of serialisation approaches built-in that offer a tradeoff between accuracy and human readability.</p></li>
 </ul>
 </div>
 <div id="previous-work" class="section level2">

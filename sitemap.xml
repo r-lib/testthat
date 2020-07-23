@@ -139,7 +139,7 @@
     <loc>https://testthat.r-lib.org/reference/expect_silent.html</loc>
   </url>
   <url>
-    <loc>https://testthat.r-lib.org/reference/expect_snapshot_output.html</loc>
+    <loc>https://testthat.r-lib.org/reference/expect_snapshot.html</loc>
   </url>
   <url>
     <loc>https://testthat.r-lib.org/reference/expect_success.html</loc>
