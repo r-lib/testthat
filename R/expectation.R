@@ -148,8 +148,7 @@ format.expectation <- function(x, simplify = "branch", ...) {
     x$trace,
     simplify = simplify,
     ...,
-    max_frames = max_frames,
-    dir = testing_directory()
+    max_frames = max_frames
   )
   lines <- c(message, crayon::bold("Backtrace:"), trace_lines)
   paste(lines, collapse = "\n")
