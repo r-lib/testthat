@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Skipping tests • testthat</title>
+<title>Running tests in parallel • testthat</title>
 <!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
 <link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png">
@@ -17,7 +17,7 @@
 <script src="../bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
-<script src="../pkgdown.js"></script><meta property="og:title" content="Skipping tests">
+<script src="../pkgdown.js"></script><meta property="og:title" content="Running tests in parallel">
 <meta property="og:description" content="testthat">
 <meta property="og:image" content="https://testthat.r-lib.org/logo.png">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
@@ -136,61 +136,87 @@
 
       
 
-      </header><script src="skipping_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
+      </header><script src="parallel_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
-      <h1 data-toc-skip>Skipping tests</h1>
+      <h1 data-toc-skip>Running tests in parallel</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/r-lib/testthat/blob/master/vignettes/skipping.Rmd"><code>vignettes/skipping.Rmd</code></a></small>
-      <div class="hidden name"><code>skipping.Rmd</code></div>
+      <small class="dont-index">Source: <a href="https://github.com/r-lib/testthat/blob/master/vignettes/parallel.Rmd"><code>vignettes/parallel.Rmd</code></a></small>
+      <div class="hidden name"><code>parallel.Rmd</code></div>
 
     </div>
 
     
     
-<p>Some times you have tests that you don’t want to run in certain circumstances. This vignette describes how to <strong>skip</strong> tests to avoid execution in undesired environments. Skipping is a relatively advanced topic because in most cases you want all your tests to run everywhere. The most common exceptions are:</p>
-<ul>
-<li><p>You’re testing a web service that occassionally fails, and you don’t want to run the tests on CRAN. Or maybe the API requires authentication, and you can only run the tests when you’ve <a href="https://gargle.r-lib.org/articles/articles/managing-tokens-securely.html">securely distributed</a> some secrets.</p></li>
-<li><p>You’re relying on features that not all operating systems possess, and want to make sure your code doesn’t run on a platform where it doesn’t work. This platform tends to be Windows, since amongst other things, it lacks full utf8 support.</p></li>
-<li><p>You’re writing your tests for multiple versions of R or multiple versions of a dependency and you want to skip when a feature isn’t available. You generally don’t need to skip tests if a suggested package is not installed. This is only needed in exceptional circumstances, e.g. when a package is not available on some operating system.</p></li>
-</ul>
-<div class="sourceCode" id="cb1"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">testthat</span>)</pre></body></html></div>
-<div id="basics" class="section level2">
+<div id="parallel-testthat-preview" class="section level2">
 <h2 class="hasAnchor">
-<a href="#basics" class="anchor"></a>Basics</h2>
-<p>testthat comes with a variety of helpers for the most common situations:</p>
-<ul>
-<li><p><code><a href="../reference/skip.html">skip_on_cran()</a></code> skips tests on CRAN. This is useful for slow tests and tests that occassionally fail for reaons outside of your control.</p></li>
-<li><p><code><a href="../reference/skip.html">skip_on_os()</a></code> allows you to skip tests on a specific operating system. Generally, you should strive to avoid this as much as possible (so your code works the same on all platforms), but sometimes it’s just not possible.</p></li>
-<li><p><code><a href="../reference/skip.html">skip_on_ci()</a></code> skips tests on most continuous integration platforms (e.g. Travis, Appveyor, GitHub actions).</p></li>
-</ul>
-<p>You can also easily implement your own using either <code><a href="../reference/skip.html">skip_if()</a></code> or <code><a href="../reference/skip.html">skip_if_not()</a></code>, which both take an expression that should yield a single <code>TRUE</code> or <code>FALSE</code>.</p>
-<p>All reporters show which tests as skipped. As of testthat 3.0.0, ProgressReporter (used interactively) and CheckReporter (used inside of <code>R CMD check</code>) also display a summary of skips across all tests. It looks something like this:</p>
-<pre><code>── Skipped tests  ───────────────────────────────────────────────────────
-● No token (3)
-● On CRAN (1)</code></pre>
-<p>You should keep an on eye this when developing interactively to make sure that you’re not accidentally skipping the wrong things.</p>
+<a href="#parallel-testthat-preview" class="anchor"></a>Parallel testthat (preview)</h2>
+<div id="turning-on-parallel-tests" class="section level3">
+<h3 class="hasAnchor">
+<a href="#turning-on-parallel-tests" class="anchor"></a>Turning on parallel tests</h3>
+<p>The current development version of testthat supports running test in parallel, in multiple R subprocesses. To turn on this feature, you need to set the <code>TESTTHAT_PARALLEL</code> environment variable to <code>true</code>.</p>
 </div>
-<div id="helpers" class="section level2">
-<h2 class="hasAnchor">
-<a href="#helpers" class="anchor"></a>Helpers</h2>
-<p>If you find yourself using the same <code><a href="../reference/skip.html">skip_if()</a></code>/<code><a href="../reference/skip.html">skip_if_not()</a></code> expression across multiple tests, it’s a good idea to create a helper function. This function should start with <code>skip_</code> and live somewhere in your <code>R/</code> directory.</p>
-<div class="sourceCode" id="cb3"><html><body><pre class="r"><span class="no">skip_if_Tuesday</span> <span class="kw">&lt;-</span> <span class="kw">function</span>() {
-  <span class="kw">if</span> (<span class="fu"><a href="https://rdrr.io/r/base/as.POSIXlt.html">as.POSIXlt</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.Date</a></span>())$<span class="no">wday</span> <span class="kw">==</span> <span class="fl">2</span>) {
-    <span class="fu"><a href="../reference/skip.html">skip</a></span>(<span class="st">"Not run on Tuesday"</span>)
-  }
-}</pre></body></html></div>
-<p>It’s important to test your skip helpers because it’s easy to miss if you’re skipping more often than desired, and the test code is never run. This is unlikely to happen locally (since you’ll see the skipped tests in the summary), but is quite possible in continuous integration.</p>
-<p>For that reason, it’s a good idea to add a test that you skip is activated when you expect. skips are a special type of error, so you can test that they occur with <code><a href="../reference/expect_error.html">expect_error()</a></code>. The basic code looks like this:</p>
-<div class="sourceCode" id="cb4"><html><body><pre class="r"><span class="fu"><a href="../reference/test_that.html">test_that</a></span>(<span class="st">"skips work"</span>, {
-  <span class="co"># Test that a skip happens</span>
-  <span class="fu"><a href="../reference/expect_error.html">expect_error</a></span>(<span class="fu"><a href="../reference/skip.html">skip</a></span>(<span class="st">"Hi"</span>), <span class="kw">class</span> <span class="kw">=</span> <span class="st">"skip"</span>)
-
-  <span class="co"># Test that a skip doesn't happen</span>
-  <span class="fu"><a href="../reference/expect_error.html">expect_error</a></span>(<span class="st">"Hi"</span>, <span class="fl">NA</span>, <span class="kw">class</span> <span class="kw">=</span> <span class="st">"skip"</span>)
-})
-<span class="co">#&gt; Test passed 🎉</span></pre></body></html></div>
+<div id="number-of-parallel-subprocesses" class="section level3">
+<h3 class="hasAnchor">
+<a href="#number-of-parallel-subprocesses" class="anchor"></a>Number of parallel subprocesses</h3>
+<p>The number of subprocesses is taken from the <code>Ncpus</code> option, if set, otherwise it is fixed to 4. This will change later, see the TODO list at <a href="https://github.com/r-lib/testthat/pull/1032" class="uri">https://github.com/r-lib/testthat/pull/1032</a>. (But testthat never starts more subprocesses than the number of test files.)</p>
+</div>
+<div id="test-files-test-order-and-state" class="section level3">
+<h3 class="hasAnchor">
+<a href="#test-files-test-order-and-state" class="anchor"></a>Test files, test order and state</h3>
+<p>testthat starts running the test files in alphabetical order. As soon as a subprocess has finished with a file, it receives another file to run from the main process, until all files are done. In general, the user cannot make any assumptions about the order of the files, and which subprocess they’ll be executed on.</p>
+<p>Test files do not start in a clean R process currently. The first <em>n</em> files, where <em>n</em> is the number of subprocesses, do start in a clean R process, but users should not rely on that. In particular, options (set via <code><a href="https://rdrr.io/r/base/options.html">options()</a></code> or otherwise) are <em>not</em> reset, loaded packages are <em>not</em> unloaded, the global environment is <em>not</em> cleared, etc. In the future the user will be able to request a clean R process for a test file, see the TODO at <a href="https://github.com/r-lib/testthat/pull/1032" class="uri">https://github.com/r-lib/testthat/pull/1032</a> .</p>
+<p>Since files run in alphabetical order, ideally the files that take the longest to run, should be started first. This way, we can avoid starting a long running test file on a subprocess, when the other files have finished already and the other subprocesses have nothing to do. To achive this, you can name your test files like this:</p>
+<pre><code>test-1-slowest.R
+test-2-next-slowest.R
+...</code></pre>
+</div>
+<div id="helper-setup-teardown-files" class="section level3">
+<h3 class="hasAnchor">
+<a href="#helper-setup-teardown-files" class="anchor"></a>Helper, setup, teardown files</h3>
+<p>All test subprocesses run the helper files (if requested in <code><a href="https://devtools.r-lib.org//reference/test.html">devtools::test()</a></code>, <code><a href="../reference/test_dir.html">testthat::test_dir()</a></code>, etc.), then they run the setup files. After the last test file has finished, all subprocesses run the teardown files.</p>
+</div>
+<div id="known-issues" class="section level3">
+<h3 class="hasAnchor">
+<a href="#known-issues" class="anchor"></a>Known issues</h3>
+<ul>
+<li>The <code>location</code> reporter does not work currently. Any reporter that relies on stack traces being present in all test results, will fail.</li>
+<li>The current reporters are not ideal for parallel execution, as they cannot handle running multiple files at the same time. Parallel testthat tricks the reporters by collecting all results for a test file, and then “replaying” them at once. Reporters can not show the progress within files. This will be fixed later.</li>
+<li>testthat does not handle crashes currently. This will be fixed later.</li>
+<li>You cannot currently use the <code>env</code> argument of <code><a href="../reference/test_dir.html">test_dir()</a></code>, etc. Do not set this argument if you use parallel testthat. This will be fixed later.</li>
+<li>Test files that perform many quick expectations might be slow. This will be fixed later.</li>
+<li>testthat does not currently auto-detect the number of processors. This will be fixed later.</li>
+<li>Parallel testhat currently silently ignores failures in the helper, startup and teardown files. This will be fixed later.</li>
+<li>The process tree cleanup only works on macOS, Windows and Linux currently, so parallel testthat only supports these operating systems. This will be fixed later.</li>
+<li>testthat cannot yet run its own tests in parallel.</li>
+<li>covr might not work for parallel tests, at least it fails for testthat itself.</li>
+</ul>
+</div>
+<div id="benchmarks" class="section level3">
+<h3 class="hasAnchor">
+<a href="#benchmarks" class="anchor"></a>Benchmarks</h3>
+<p>These are very preliminary, to have a feeling where the bottlenecks might be.</p>
+<div id="startup-time" class="section level4">
+<h4 class="hasAnchor">
+<a href="#startup-time" class="anchor"></a>Startup time</h4>
+<p>Startup cost is linear in the number of subprocesses, because we need to create them in a loop. This is about 50ms on my laptop. Each subprocess needs to load testthat and the tested package, this happens in parallel, and we cannot do too much about it.</p>
+</div>
+<div id="cleanup-time" class="section level4">
+<h4 class="hasAnchor">
+<a href="#cleanup-time" class="anchor"></a>Cleanup time</h4>
+<p>This is again linear in the number of subprocesses, and it about 80ms per subprocess on my laptop. The teardown files run in parallel, of course.</p>
+</div>
+<div id="messaging-costs" class="section level4">
+<h4 class="hasAnchor">
+<a href="#messaging-costs" class="anchor"></a>Messaging costs</h4>
+<p>To get a sense of messaging costs, I run 1-8 extremely simple test files:</p>
+<pre><code><a href="../reference/test_that.html">test_that("foobar", {
+  for (i in 1:100) expect_true(TRUE)
+})</a></code></pre>
+<p>with changing the number of expectations and number of subprocesses. It seems that sending a message is about 2ms currently. This is the total cost that includes sending the message, receiving it, and replying it to a non-parallel reporter. We will improve this by avoiding frequent messages in a single subprocess and sending them in batches. This will make sure that test suites that have hundreds or thousands of expectations will not lose much.</p>
+</div>
+</div>
 </div>
   </div>
 

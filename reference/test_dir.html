@@ -119,6 +119,9 @@ in the global environment." />
       <a href="../articles/custom-expectation.html">Custom expectations</a>
     </li>
     <li>
+      <a href="../articles/parallel.html">Running tests in parallel</a>
+    </li>
+    <li>
       <a href="../articles/skipping.html">Skipping tests</a>
     </li>
     <li>
@@ -207,7 +210,8 @@ in the global environment.</p>
   <span class='kw'>stop_on_failure</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
   <span class='kw'>stop_on_warning</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
   <span class='kw'>wrap</span> <span class='kw'>=</span> <span class='kw pkg'>lifecycle</span><span class='kw ns'>::</span><span class='fu'><a href='https://lifecycle.r-lib.org/reference/deprecated.html'>deprecated</a></span>(),
-  <span class='kw'>package</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
+  <span class='kw'>package</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>load_package</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"none"</span>, <span class='st'>"installed"</span>, <span class='st'>"source"</span>)
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -259,6 +263,14 @@ warnings.</p></td>
     <tr>
       <th>package</th>
       <td><p>If these tests belong to a package, the name of the package.</p></td>
+    </tr>
+    <tr>
+      <th>load_package</th>
+      <td><p>Strategy to use for load package code:</p><ul>
+<li><p>"none", the default, doesn't load the package.</p></li>
+<li><p>"installed", uses <code><a href='https://rdrr.io/r/base/library.html'>library()</a></code> to load an installed package.</p></li>
+<li><p>"source", uses <code><a href='https://rdrr.io/pkg/pkgload/man/load_all.html'>pkgload::load_all()</a></code> to a source package.</p></li>
+</ul></td>
     </tr>
     </table>
 

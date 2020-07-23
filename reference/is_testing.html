@@ -50,6 +50,7 @@
 <meta property="og:description" content="
 
 is_testing() determine if code is being run as part of a test
+is_parallel() if the test is being run in parallel.
 testing_package() gives name of the package being tested.
 
 
@@ -122,6 +123,9 @@ source of these functions directly into your package." />
   <ul class="dropdown-menu" role="menu">
     <li>
       <a href="../articles/custom-expectation.html">Custom expectations</a>
+    </li>
+    <li>
+      <a href="../articles/parallel.html">Running tests in parallel</a>
     </li>
     <li>
       <a href="../articles/skipping.html">Skipping tests</a>
@@ -199,6 +203,7 @@ source of these functions directly into your package." />
     
 <ul>
 <li><p><code>is_testing()</code> determine if code is being run as part of a test</p></li>
+<li><p><code>is_parallel()</code> if the test is being run in parallel.</p></li>
 <li><p><code>testing_package()</code> gives name of the package being tested.</p></li>
 </ul>
 
@@ -208,6 +213,8 @@ source of these functions directly into your package.</p>
     </div>
 
     <pre class="usage"><span class='fu'>is_testing</span>()
+
+<span class='fu'>is_parallel</span>()
 
 <span class='fu'>testing_package</span>()</pre>
 
