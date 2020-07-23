@@ -238,6 +238,7 @@ SubprocessReporter <- R6::R6Class("SubprocessReporter",
         code = PROCESS_MSG,
         cmd = cmd,
         filename = private$filename,
+        time = proc.time()[[3]],
         args = list(...)
       )
       class(msg) <- c("testthat_message", "callr_message", "condition")
