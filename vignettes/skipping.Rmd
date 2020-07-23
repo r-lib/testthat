@@ -56,6 +56,10 @@ For that reason, it's a good idea to add a test that you skip is activated when 
 
 ```{r}
 test_that("not skipped on CI", {
+  # Test that a skip happens
   expect_error(skip("Hi"), class = "skip")  
+  
+  # Test that a skip doesn't happen
+  expect_error("Hi", NA, class = "skip")  
 })
 ```
