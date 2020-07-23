@@ -101,6 +101,15 @@ recommendations. To opt-in to the 3rd edition for your package, set
 * Catch C++ tests now provide detailed results for each test. 
   To upgrade existing code, re-run `testthat::use_catch()` (#1008).
 
+## Skips
+
+* New `vignette("skipping")` gives more general information on skipping
+  tests, include some basics on testing skipping helpers (#1060).
+
+* `ProgressReporter()` and `CheckReporter()` list the number of skipped tests
+  by reason at the end of the reporter. This makes it easier to check that
+  you're not skipping the wrong tests, particularly on CI services (#1028).
+
 ## Test running
 
 * `test_that()` no longer triggers an error when run outside of tests;
