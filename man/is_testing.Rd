@@ -2,10 +2,13 @@
 % Please edit documentation in R/test-env.R
 \name{is_testing}
 \alias{is_testing}
+\alias{is_parallel}
 \alias{testing_package}
 \title{Determine testing status}
 \usage{
 is_testing()
+
+is_parallel()
 
 testing_package()
 }
