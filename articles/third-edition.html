@@ -159,13 +159,13 @@
   <span class="fu"><a href="../reference/local_edition.html">local_edition</a></span>(<span class="fl">3</span>)
   <span class="fu"><a href="../reference/logical-expectations.html">expect_true</a></span>(<span class="fl">TRUE</span>)
 })
-<span class="co">#&gt; Test passed 🎊</span></pre></body></html></div>
+<span class="co">#&gt; Test passed 😸</span></pre></body></html></div>
 <p>This is also useful if you’ve switched to the 3rd edition and have a couple of tests that fail. You can use <code><a href="../reference/local_edition.html">local_edition(2)</a></code> to revert back to the old behaviour, giving you some breathing room to figure out the underlying issue.</p>
 <div class="sourceCode" id="cb4"><html><body><pre class="r"><span class="fu"><a href="../reference/test_that.html">test_that</a></span>(<span class="st">"I want to use the 2nd edition"</span>, {
   <span class="fu"><a href="../reference/local_edition.html">local_edition</a></span>(<span class="fl">2</span>)
   <span class="fu"><a href="../reference/logical-expectations.html">expect_true</a></span>(<span class="fl">TRUE</span>)
 })
-<span class="co">#&gt; Test passed 😀</span></pre></body></html></div>
+<span class="co">#&gt; Test passed 🎊</span></pre></body></html></div>
 </div>
 <div id="changes" class="section level2">
 <h2 class="hasAnchor">
@@ -205,13 +205,10 @@
 
 <span class="fu"><a href="../reference/local_edition.html">local_edition</a></span>(<span class="fl">2</span>)
 <span class="fu"><a href="../reference/equality-expectations.html">expect_equal</a></span>(<span class="no">f1</span>, <span class="no">f2</span>)
-<span class="co">#&gt; Error: `f1` (`actual`) not equal to `f2` (`expected`).</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; `class(actual)`:             "factor"</span>
-<span class="co">#&gt; `class(expected)`: "ordered" "factor"</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; `levels(actual)`:   "a" "b" "c"    </span>
-<span class="co">#&gt; `levels(expected)`: "a" "b" "c" "d"</span>
+<span class="co">#&gt; Error: `f1` not equal to `f2`.</span>
+<span class="co">#&gt; Attributes: &lt; Component "class": Lengths (1, 2) differ (string compare on first 1) &gt;</span>
+<span class="co">#&gt; Attributes: &lt; Component "class": 1 string mismatch &gt;</span>
+<span class="co">#&gt; Attributes: &lt; Component "levels": Lengths (3, 4) differ (string compare on first 3) &gt;</span>
 
 <span class="fu"><a href="../reference/local_edition.html">local_edition</a></span>(<span class="fl">3</span>)
 <span class="fu"><a href="../reference/equality-expectations.html">expect_equal</a></span>(<span class="no">f1</span>, <span class="no">f2</span>)
@@ -236,10 +233,6 @@
 
 <span class="fu"><a href="../reference/local_edition.html">local_edition</a></span>(<span class="fl">2</span>)
 <span class="fu"><a href="../reference/equality-expectations.html">expect_equal</a></span>(<span class="no">dt1</span>, <span class="no">dt2</span>)
-<span class="co">#&gt; Error: `dt1` (`actual`) not equal to `dt2` (`expected`).</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; `attr(actual, 'tzone')`:   ""   </span>
-<span class="co">#&gt; `attr(expected, 'tzone')`: "UTC"</span>
 
 <span class="fu"><a href="../reference/local_edition.html">local_edition</a></span>(<span class="fl">3</span>)
 <span class="fu"><a href="../reference/equality-expectations.html">expect_equal</a></span>(<span class="no">dt1</span>, <span class="no">dt2</span>)
