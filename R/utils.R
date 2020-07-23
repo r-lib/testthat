@@ -55,6 +55,30 @@ can_entrace <- function(cnd) {
   !inherits(cnd, "Throwable")
 }
 
+remove_source <- function(x) {
+  if (is_closure(x)) {
+    body(x) <- remove_source(body(x))
+    x
+  } else if (is_call(x)) {
+    attr(x, "srcref") <- NULL
+    attr(x, "wholeSrcref") <- NULL
+    attr(x, "srcfile") <- NULL
+
+    x[] <- lapply(x, remove_source)
+    x
+  } else {
+    x
+  }
+}
+
+# Need to stip environment and source references to make lightweight
+# function suitable to send to another process
+transport_fun <- function(f) {
+  environment(f) <- .GlobalEnv
+  f <- remove_source(f)
+  f
+}
+
 isNA <- function(x) length(x) == 1 && is.na(x)
 
 compact <- function(x) {

@@ -46,6 +46,10 @@
 #' @param stop_on_failure If `TRUE`, throw an error if any tests fail.
 #' @param stop_on_warning If `TRUE`, throw an error if any tests generate
 #'   warnings.
+#' @param load_package Strategy to use for load package code:
+#'   * "none", the default, doesn't load the package.
+#'   * "installed", uses [library()] to load an installed package.
+#'   * "source", uses [pkgload::load_all()] to a source package.
 #' @param wrap DEPRECATED
 #' @return A list (invisibly) containing data about the test results.
 #' @inheritParams with_reporter
@@ -60,8 +64,11 @@ test_dir <- function(path,
                      stop_on_failure = TRUE,
                      stop_on_warning = FALSE,
                      wrap = lifecycle::deprecated(),
-                     package = NULL
+                     package = NULL,
+                     load_package = c("none", "installed", "source")
                      ) {
+
+  load_package <- arg_match(load_package)
 
   test_paths <- find_test_scripts(path, filter = filter, ..., full.names = FALSE)
   if (length(test_paths) == 0) {
@@ -72,6 +79,8 @@ test_dir <- function(path,
     lifecycle::deprecate_warn("3.0.0", "test_dir(wrap = )")
   }
 
+  parallel <- find_parallel(path, package) && !is_parallel()
+
   test_files(
     test_dir = path,
     test_paths = test_paths,
@@ -80,7 +89,9 @@ test_dir <- function(path,
     load_helpers = load_helpers,
     env = env,
     stop_on_failure = stop_on_failure,
-    stop_on_warning = stop_on_warning
+    stop_on_warning = stop_on_warning,
+    load_package = load_package,
+    parallel = parallel
   )
 }
 
@@ -121,37 +132,97 @@ test_files <- function(test_dir,
                        reporter = default_reporter(),
                        env = NULL,
                        stop_on_failure = FALSE,
-                       stop_on_warning = FALSE) {
+                       stop_on_warning = FALSE,
+                       load_package = c("none", "installed", "source"),
+                       parallel = FALSE) {
+
+  if (parallel) {
+    test_files <- test_files_parallel
+  } else {
+    test_files <- test_files_serial
+  }
+
+  test_files(
+    test_dir = test_dir,
+    test_package = test_package,
+    test_paths = test_paths,
+    load_helpers = load_helpers,
+    reporter = reporter,
+    env = env,
+    stop_on_failure = stop_on_failure,
+    stop_on_warning = stop_on_warning,
+    load_package = load_package
+  )
+}
+
+test_files_serial <- function(test_dir,
+                       test_package,
+                       test_paths,
+                       load_helpers = TRUE,
+                       reporter = default_reporter(),
+                       env = NULL,
+                       stop_on_failure = FALSE,
+                       stop_on_warning = FALSE,
+                       load_package = c("none", "installed", "source")) {
+
+  env <- test_files_setup_env(test_package, test_dir, load_package, env)
+  test_files_setup_state(test_dir, test_package, load_helpers, env)
+  reporters <- test_files_reporter(reporter)
+
+  with_reporter(reporters$multi, lapply(test_paths, test_one_file, env = env))
+
+  test_files_check(reporters$list$get_results(),
+    stop_on_failure = stop_on_failure,
+    stop_on_warning = stop_on_warning
+  )
+}
+
+test_files_setup_env <- function(test_package,
+                                 test_dir,
+                                 load_package = c("none", "installed", "source"),
+                                 env = NULL) {
+  library(testthat)
+
+  load_package <- arg_match(load_package)
+  switch(load_package,
+    none = {},
+    installed = library(test_package, character.only = TRUE),
+    source = pkgload::load_all(test_dir, helpers = FALSE, quiet = TRUE)
+  )
+
+  env %||% test_env(test_package)
+}
+
+test_files_setup_state <- function(test_dir, test_package, load_helpers, env, .env = parent.frame()) {
 
   # Define testing environment
-  local_test_directory(test_dir, test_package)
-  env <- env %||% test_env(test_package)
-  withr::local_options(list(topLevelEnvironment = env_parent(env)))
+  local_test_directory(test_dir, test_package, .env = .env)
+  withr::local_options(list(topLevelEnvironment = env_parent(env)), .local_envir = .env)
 
   # Load helpers, setup, and teardown (on exit)
-  local_teardown_env()
+  local_teardown_env(.env)
   if (load_helpers) {
     source_test_helpers(".", env)
   }
   source_test_setup(".", env)
-  withr::defer(withr::deferred_run(teardown_env())) # new school
-  withr::defer(source_test_teardown(".", env))      # old school
+  withr::defer(withr::deferred_run(teardown_env()), .env) # new school
+  withr::defer(source_test_teardown(".", env), .env)      # old school
+}
 
-  # Wrap reporter
+test_files_reporter <- function(reporter, .env = parent.frame()) {
   lister <- ListReporter$new()
   reporters <- list(
     find_reporter(reporter),
     lister, # track data
-    local_snapshotter() # for snapshots
+    local_snapshotter(.env = .env) # for snapshots
   )
-  reporter <- MultiReporter$new(reporters = compact(reporters))
+  list(
+    multi = MultiReporter$new(reporters = compact(reporters)),
+    list = lister
+  )
+}
 
-  # Run tests tests
-  library(testthat)
-  with_reporter(reporter, lapply(test_paths, test_one_file, env = env))
-
-  # Check results
-  results <- lister$get_results()
+test_files_check <- function(results, stop_on_failure = TRUE, stop_on_warning = FALSE) {
   if (stop_on_failure && !all_passed(results)) {
     stop("Test failures", call. = FALSE)
   }
@@ -187,11 +258,11 @@ teardown_env <- function() {
 }
 
 local_teardown_env <- function(env = parent.frame()) {
-  local_bindings(
-    teardown_env = child_env(emptyenv()),
-    .env = testthat_env,
-    .frame = env
-  )
+  old <- testthat_env$teardown_env
+  testthat_env$teardown_env <- child_env(emptyenv())
+  withr::defer(testthat_env$teardown_env <- old, env)
+
+  invisible()
 }
 
 #' Find test files

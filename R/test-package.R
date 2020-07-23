@@ -25,33 +25,45 @@
 #' @export
 #' @rdname test_package
 test_package <- function(package, reporter = check_reporter(), ...) {
-  require(package, character.only = TRUE)
-
   test_path <- system.file("tests", "testthat", package = package)
   if (test_path == "") {
     stop("No tests found for ", package, call. = FALSE)
   }
 
-  test_dir(test_path, package = package, reporter = reporter, ...)
+  test_dir(
+    test_path,
+    package = package,
+    reporter = reporter,
+    ...,
+    load_package = "installed"
+  )
 }
 
 #' @export
 #' @rdname test_package
 test_check <- function(package, reporter = check_reporter(), ...) {
   require(package, character.only = TRUE)
-  test_dir("testthat", package = package, reporter = reporter, ...)
+  test_dir(
+    "testthat",
+    package = package,
+    reporter = reporter,
+    ...,
+    load_package = "installed"
+  )
 }
 
 #' @export
 #' @rdname test_package
 test_local <- function(path = ".", reporter = default_reporter(), ...) {
   package <- pkgload::pkg_name(path)
-  if (package != "testthat") {
-    pkgload::load_all(path, helpers = FALSE, quiet = TRUE)
-  }
-
   test_path <- file.path(pkgload::pkg_path(path), "tests", "testthat")
 
   withr::local_envvar(c(NOT_CRAN = "true"))
-  test_dir(test_path, package = package, reporter = reporter, ...)
+  test_dir(
+    test_path,
+    package = package,
+    reporter = reporter,
+    ...,
+    load_package = if (package != "testthat") "source" else "none"
+  )
 }

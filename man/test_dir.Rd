@@ -14,7 +14,8 @@ test_dir(
   stop_on_failure = TRUE,
   stop_on_warning = FALSE,
   wrap = lifecycle::deprecated(),
-  package = NULL
+  package = NULL,
+  load_package = c("none", "installed", "source")
 )
 }
 \arguments{
@@ -45,6 +46,13 @@ warnings.}
 \item{wrap}{DEPRECATED}
 
 \item{package}{If these tests belong to a package, the name of the package.}
+
+\item{load_package}{Strategy to use for load package code:
+\itemize{
+\item "none", the default, doesn't load the package.
+\item "installed", uses \code{\link[=library]{library()}} to load an installed package.
+\item "source", uses \code{\link[pkgload:load_all]{pkgload::load_all()}} to a source package.
+}}
 }
 \value{
 A list (invisibly) containing data about the test results.

@@ -2,16 +2,20 @@
 % Please edit documentation in R/test-env.R
 \name{is_testing}
 \alias{is_testing}
+\alias{is_parallel}
 \alias{testing_package}
 \title{Determine testing status}
 \usage{
 is_testing()
+
+is_parallel()
 
 testing_package()
 }
 \description{
 \itemize{
 \item \code{is_testing()} determine if code is being run as part of a test
+\item \code{is_parallel()} if the test is being run in parallel.
 \item \code{testing_package()} gives name of the package being tested.
 }
 
