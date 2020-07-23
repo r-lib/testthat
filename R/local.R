@@ -129,14 +129,15 @@ local_width <- function(width = 80, .env = parent.frame()) {
 #' @export
 #' @keywords internal
 local_test_directory <- function(path, package = NULL, .env = parent.frame()) {
+  # Set edition before changing working directory in case path is relative
+  local_edition(find_edition(path, package), .env = .env)
+
   withr::local_dir(path, .local_envir = .env)
   withr::local_envvar(c(
     R_TESTS = "",
     TESTTHAT = "true",
-    TESTTHAT_DIR = path,
     TESTTHAT_PKG = package
   ), .local_envir = .env)
-  local_edition(find_edition(path, package), .env = .env)
 }
 
 local_interactive_reporter <- function(.env = parent.frame()) {

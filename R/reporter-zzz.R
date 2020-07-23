@@ -35,10 +35,6 @@ get_reporter <- function() {
   testthat_env$reporter
 }
 
-has_reporter <- function() {
-  !is.null(testthat_env$reporter)
-}
-
 #' @rdname reporter-accessors
 #' @export
 with_reporter <- function(reporter, code, start_end_reporter = TRUE) {

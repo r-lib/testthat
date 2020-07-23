@@ -3,7 +3,6 @@
 #' @description
 #' * `is_testing()` determine if code is being run as part of a test
 #' * `testing_package()` gives name of the package being tested.
-#' * `testing_directory()` gives testing directory.
 #'
 #' These are thin wrappers that retrieve the values of environment variables.
 #' To avoid creating a run-time dependency on testthat, you can inline the
@@ -18,12 +17,6 @@ is_testing <- function() {
 #' @rdname is_testing
 testing_package <- function() {
   Sys.getenv("TESTTHAT_PKG")
-}
-
-#' @export
-#' @rdname is_testing
-testing_directory <- function() {
-  Sys.getenv("TESTTHAT_DIR")
 }
 
 #' Generate default testing environment.
