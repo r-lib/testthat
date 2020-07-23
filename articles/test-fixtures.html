@@ -70,6 +70,9 @@
       <a href="../articles/custom-expectation.html">Custom expectations</a>
     </li>
     <li>
+      <a href="../articles/skipping.html">Skipping tests</a>
+    </li>
+    <li>
       <a href="../articles/snapshotting.html">Snapshot tests</a>
     </li>
     <li>
@@ -208,7 +211,7 @@
 
   <span class="fu"><a href="../reference/expect_output.html">expect_output</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span>(<span class="no">pi</span>), <span class="st">"3"</span>)
 })
-<span class="co">#&gt; Test passed 😸</span>
+<span class="co">#&gt; Test passed 🥳</span>
 <span class="no">pi</span>
 <span class="co">#&gt; [1] 3.141593</span></pre></body></html></div>
 <p>There are three main drawbacks to <code><a href="https://rdrr.io/r/base/on.exit.html">on.exit()</a></code>:</p>
@@ -280,7 +283,7 @@
   <span class="fu">local_digits</span>(<span class="fl">3</span>)
   <span class="fu"><a href="../reference/expect_output.html">expect_output</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/Log.html">exp</a></span>(<span class="fl">1</span>)), <span class="st">"2.72"</span>)
 })
-<span class="co">#&gt; Test passed 🥳</span>
+<span class="co">#&gt; Test passed 😸</span>
 
 <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/Log.html">exp</a></span>(<span class="fl">1</span>))
 <span class="co">#&gt; [1] 2.718282</span></pre></body></html></div>

@@ -115,6 +115,9 @@
       <a href="../articles/custom-expectation.html">Custom expectations</a>
     </li>
     <li>
+      <a href="../articles/skipping.html">Skipping tests</a>
+    </li>
+    <li>
       <a href="../articles/snapshotting.html">Snapshot tests</a>
     </li>
     <li>
@@ -231,6 +234,14 @@
 <li><p>All reporters now use exactly the same format when reporting the location of an expectation.</p></li>
 <li><p>Warnings now include a backtrace, making it easier to figure out where they came from.</p></li>
 <li><p>Catch C++ tests now provide detailed results for each test. To upgrade existing code, re-run <code><a href="../reference/use_catch.html">testthat::use_catch()</a></code> (<a href='https://github.com/r-lib/testthat/issues/1008'>#1008</a>).</p></li>
+</ul>
+</div>
+<div id="skips" class="section level2">
+<h2 class="hasAnchor">
+<a href="#skips" class="anchor"></a>Skips</h2>
+<ul>
+<li><p>New <code><a href="../articles/skipping.html">vignette("skipping")</a></code> gives more general information on skipping tests, include some basics on testing skipping helpers (<a href='https://github.com/r-lib/testthat/issues/1060'>#1060</a>).</p></li>
+<li><p><code><a href="../reference/ProgressReporter.html">ProgressReporter()</a></code> and <code><a href="../reference/CheckReporter.html">CheckReporter()</a></code> list the number of skipped tests by reason at the end of the reporter. This makes it easier to check that you’re not skipping the wrong tests, particularly on CI services (<a href='https://github.com/r-lib/testthat/issues/1028'>#1028</a>).</p></li>
 </ul>
 </div>
 <div id="test-running" class="section level2">
@@ -412,9 +423,9 @@
 <li><p><code>reporter$end_reporter()</code> is now only called when testing completes successfully. This ensures that you don’t get unnecessary output when the test fails partway through (<a href='https://github.com/r-lib/testthat/issues/727'>#727</a>).</p></li>
 </ul>
 </div>
-<div id="skips" class="section level2">
+<div id="skips-1" class="section level2">
 <h2 class="hasAnchor">
-<a href="#skips" class="anchor"></a>Skips</h2>
+<a href="#skips-1" class="anchor"></a>Skips</h2>
 <ul>
 <li><p><code><a href="../reference/skip.html">skip_if_offline()</a></code> skips tests if an internet connection is not available (<a href='https://github.com/r-lib/testthat/issues/685'>#685</a>).</p></li>
 <li><p><code><a href="../reference/skip.html">skip_on_ci()</a></code> skips tests on continuous integration systems (<a href='https://github.com/mbjoseph'>@mbjoseph</a>, <a href='https://github.com/r-lib/testthat/issues/825'>#825</a>) by looking for a <code>CI</code> env var..</p></li>
