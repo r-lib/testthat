@@ -13,7 +13,6 @@
 #' * `expect_snapshot()` captures all messages, warnings, errors, and
 #'    output from code.
 #' * `expect_snapshot_output()` captures just output printed to the console.
-#'   (by [testthat_print()]).
 #' * `expect_snapshot_error()` captures just error messages.
 #' * `expect_snapshot_value()` captures the return value.
 #'
@@ -44,8 +43,52 @@
 #'   often rely on minor details of dependencies. Even on CRAN, the
 #'   expectations will still fail if `x` errors.
 #' @export
+expect_snapshot <- function(x, cran = FALSE) {
+  edition_require(3, "expect_snapshot()")
+
+  x <- enquo(x)
+  out <- verify_exec(quo_get_expr(x), quo_get_env(x), snapshot_replay)
+  expect_snapshot_helper("code", out, cran = cran,
+    save = function(x) paste0(x, collapse = "\n"),
+    load = function(x) split_by_line(x)[[1]]
+  )
+}
+
+snapshot_replay <- function(x) {
+  UseMethod("snapshot_replay", x)
+}
+#' @export
+snapshot_replay.character <- function(x) {
+  c("Output", indent(split_lines(x)))
+}
+#' @export
+snapshot_replay.source <- function(x) {
+  character()
+}
+#' @export
+snapshot_replay.condition <- function(x) {
+  msg <- cnd_message(x)
+  if (inherits(x, "error")) {
+    type <- "Error"
+  } else if (inherits(x, "warning")) {
+    type <- "Warning"
+  } else if (inherits(x, "message")) {
+    type <- "Message"
+    msg <- sub("\n$", "", msg)
+  } else {
+    type <- "Condition"
+  }
+
+  class <- paste0(type, " <", class(x)[[1]], ">")
+
+  c(class, indent(split_lines(msg)))
+}
+
+#' @export
+#' @rdname expect_snapshot
 expect_snapshot_output <- function(x, cran = FALSE) {
   edition_require(3, "expect_snapshot_output()")
+
   lab <- quo_label(enquo(x))
   val <- capture_output_lines(x, print = TRUE, width = NULL)
 
@@ -55,17 +98,22 @@ expect_snapshot_output <- function(x, cran = FALSE) {
   )
 }
 
+#' @param class Expected class of condition, e.g. use `error` for errors,
+#'   `warning` for warnings, `message` for messages. The expectation will
+#'   always fail (even on CRAN) if a condition of this class isn't seen
+#'   when executing `x`.
 #' @export
-#' @rdname expect_snapshot_output
-expect_snapshot <- function(x, cran = FALSE) {
-  edition_require(3, "expect_snapshot()")
+#' @rdname expect_snapshot
+expect_snapshot_error <- function(x, class = "error", cran = FALSE) {
+  edition_require(3, "expect_snapshot_error()")
 
-  x <- enquo(x)
-  out <- verify_exec(quo_get_expr(x), quo_get_env(x))
-  expect_snapshot_helper("code", out, cran = cran,
-    save = function(x) paste0(x, collapse = "\n"),
-    load = function(x) split_by_line(x)[[1]]
-  )
+  lab <- quo_label(enquo(x))
+  val <- capture_matching_condition(x, cnd_matcher(class))
+  if (is.null(val)) {
+    fail(sprintf("%s did not throw error of class '%s'", lab, class))
+  }
+
+  expect_snapshot_helper(lab, conditionMessage(val), cran = cran)
 }
 
 #' @param style Serialization style to use:
@@ -80,7 +128,7 @@ expect_snapshot <- function(x, cran = FALSE) {
 #'     [serialize()]. This is all but guaranteed to work for any R object,
 #'     but produces a completely opaque serialization.
 #' @export
-#' @rdname expect_snapshot_output
+#' @rdname expect_snapshot
 expect_snapshot_value <- function(x,
                                   style = c("json", "json2", "deparse", "serialize"),
                                   cran = FALSE) {
@@ -120,24 +168,6 @@ reparse <- function(x) {
   )
 
   eval(parse(text = x), env)
-}
-
-#' @param class Expected class of condition, e.g. use `error` for errors,
-#'   `warning` for warnings, `message` for messages. The expectation will
-#'   always fail (even on CRAN) if a condition of this class isn't seen
-#'   when executing `x`.
-#' @export
-#' @rdname expect_snapshot_output
-expect_snapshot_error <- function(x, class = "error", cran = FALSE) {
-  edition_require(3, "expect_snapshot_error()")
-
-  lab <- quo_label(enquo(x))
-  val <- capture_matching_condition(x, cnd_matcher(class))
-  if (is.null(val)) {
-    fail(sprintf("%s did not throw error of class '%s'", lab, class))
-  }
-
-  expect_snapshot_helper(lab, conditionMessage(val), cran = cran)
 }
 
 expect_snapshot_helper <- function(lab, val, cran = FALSE, save = identity, load = identity) {
@@ -200,7 +230,6 @@ snapshot_accept <- function(files = NULL, path = "tests/testthat") {
   invisible()
 }
 
-
 local_snapshot_dir <- function(snap_names, .env = parent.frame()) {
   path <- tempfile()
   withr::defer(unlink(path))
@@ -212,3 +241,5 @@ local_snapshot_dir <- function(snap_names, .env = parent.frame()) {
 
   path
 }
+
+indent <- function(x) paste0("  ", x)

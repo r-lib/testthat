@@ -16,15 +16,23 @@
 
 # can snapshot everything
 
-    > f()
-    [1] "1"
-    
-    Message: 2
-    
-    Warning: 3
-    
-    Error: 4
-    
+    Output
+      [1] "1"
+    Message <simpleMessage>
+      2
+    Warning <warning>
+      3
+    Error <rlang_error>
+      4
+
+# captures custom classes
+
+    Message <testthat_greeting>
+      Hello
+    Warning <testthat_farewell>
+      Goodbye
+    Error <testthat_scream>
+      Eeek!
 
 # even with multiple lines
 
@@ -87,22 +95,19 @@
 
 # informs about files being accepted
 
-    > snapshot_accept(path = path)
-    Message: Updating snapshots
-    * a.new.md
-    * b.new.md
-    
+    Message <message>
+      Updating snapshots
+      * a.new.md
+      * b.new.md
 
 ---
 
-    > snapshot_accept(path = path)
-    Message: No snapshots to update
-    
+    Message <message>
+      No snapshots to update
 
 # can accept specific files
 
-    > snapshot_accept("a", path = path)
-    Message: Updating snapshots
-    * a.new.md
-    
+    Message <message>
+      Updating snapshots
+      * a.new.md
 

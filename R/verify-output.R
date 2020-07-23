@@ -88,7 +88,7 @@ verify_output <- function(path, code, width = 80, crayon = FALSE,
   invisible()
 }
 
-verify_exec <- function(expr, env = caller_env()) {
+verify_exec <- function(expr, env = caller_env(), replay = output_replay) {
 
   if (is_call(expr, "{")) {
     exprs <- as.list(expr[-1])
@@ -107,7 +107,7 @@ verify_exec <- function(expr, env = caller_env()) {
     new_device = FALSE,
     output_handler = handler
   )
-  output <- unlist(lapply(results, output_replay))
+  output <- unlist(lapply(results, replay))
   output <- gsub("\r", "", output, fixed = TRUE)
   output
 }

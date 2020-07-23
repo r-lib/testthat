@@ -13,7 +13,15 @@ test_that("can snapshot everything", {
     warn("3")
     abort("4")
   }
+  expect_snapshot(f())
+})
 
+test_that("captures custom classes", {
+  f <- function() {
+    inform("Hello", class = "testthat_greeting")
+    warn("Goodbye", class = "testthat_farewell")
+    abort("Eeek!", class = "testthat_scream")
+  }
   expect_snapshot(f())
 })
 
