@@ -84,7 +84,7 @@ test_files_parallel <- function(
 
         # Record all events until we get end of file, then we replay them all
         # with the local reporters. This prevents out of order reporting.
-        if (m$cmd != "end_file") {
+        if (m$cmd != "DONE") {
           files[[m$filename]] <- append(files[[m$filename]], list(m))
         } else {
           replay_events(reporters$multi, files[[m$filename]])
@@ -224,6 +224,9 @@ SubprocessReporter <- R6::R6Class("SubprocessReporter",
     },
     end_file = function() {
       private$event("end_file")
+    },
+    end_reporter = function() {
+      private$event("DONE")
     }
   ),
 
