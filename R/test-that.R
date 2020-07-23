@@ -197,31 +197,3 @@ test_code <- function(test, code, env = test_env(), reporter = get_reporter(), s
 
   invisible(ok)
 }
-
-#' R package to make testing fun!
-#'
-#' Try the example below. Have a look at the references and learn more
-#' from function documentation such as [expect_that()].
-#'
-#' @section Options:
-#' - `testthat.use_colours`: Should the output be coloured? (Default: `TRUE`).
-#' - `testthat.summary.max_reports`: The maximum number of detailed test
-#'    reports printed for the summary reporter (default: 10).
-#' - `testthat.summary.omit_dots`: Omit progress dots in the summary reporter
-#'    (default: `FALSE`).
-#'
-#' @import rlang
-#' @keywords internal
-#' @useDynLib testthat, .registration = TRUE
-#' @references Wickham, H (2011). testthat: Get Started with Testing.
-#' \strong{The R Journal} \emph{3/1} 5-10.
-#' \url{https://journal.r-project.org/archive/2011-1/RJournal_2011-1_Wickham.pdf}
-#'
-#' \url{http://adv-r.had.co.nz/Testing.html}
-#'
-#' @examples
-#' library(testthat)
-#' a <- 9
-#' expect_that(a, is_less_than(10))
-#' expect_lt(a, 10)
-"_PACKAGE"
