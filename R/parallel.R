@@ -146,9 +146,9 @@ queue_process_setup <- function(test_package, test_dir, load_helpers, load_packa
 
 queue_task <- function(path) {
   env <- .GlobalEnv$.test_env
-  reporter <- SubprocessReporter$new()
 
-  with_reporter(reporter, test_one_file(path, env = env))
+  reporters <- test_files_reporter(SubprocessReporter$new())
+  with_reporter(reporters$multi, test_one_file(path, env = env))
   NULL
 }
 
