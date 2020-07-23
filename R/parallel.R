@@ -88,6 +88,7 @@ test_files_parallel <- function(
           files[[m$filename]] <- append(files[[m$filename]], list(m))
         } else {
           replay_events(reporters$multi, files[[m$filename]])
+          reporters$multi$end_context_if_started()
           files[[m$filename]] <- NULL
         }
       }
