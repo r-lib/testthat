@@ -30,7 +30,7 @@ library(testthat)
 
 testthat comes with a variety of helpers for the most common situations:
 
--   `skip_if_cran()` skips tests on CRAN. This is useful for slow tests and tests that occassionally fail for reaons outside of your control.
+-   `skip_on_cran()` skips tests on CRAN. This is useful for slow tests and tests that occassionally fail for reaons outside of your control.
 
 -   `skip_on_os()` allows you to skip tests on a specific operating system. Generally, you should strive to avoid this as much as possible (so your code works the same on all platforms), but sometimes it's just not possible.
 
