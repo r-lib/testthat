@@ -3,20 +3,16 @@
 \name{is_testing}
 \alias{is_testing}
 \alias{testing_package}
-\alias{testing_directory}
 \title{Determine testing status}
 \usage{
 is_testing()
 
 testing_package()
-
-testing_directory()
 }
 \description{
 \itemize{
 \item \code{is_testing()} determine if code is being run as part of a test
 \item \code{testing_package()} gives name of the package being tested.
-\item \code{testing_directory()} gives testing directory.
 }
 
 These are thin wrappers that retrieve the values of environment variables.

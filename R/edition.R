@@ -24,9 +24,27 @@ edition_deprecate <- function(in_edition, what, instead = NULL) {
   }
 
   warn(c(
-    paste0("`", what, "` is deprecated as of edition ", in_edition, "."),
+    paste0("`", what, "` was deprecated in ", edition_name(in_edition), "."),
     i = instead
   ))
+}
+
+edition_require <- function(in_edition, what) {
+  if (edition_get() >= in_edition || isTRUE(getOption("testthat.edition_ignore"))) {
+    return()
+  }
+
+  stop(paste0("`", what, "` requires ", edition_name(in_edition), "."))
+}
+
+edition_name <- function(x) {
+  if (x == 2) {
+    "the 2nd edition"
+  } else if (x == 3) {
+    "the 3rd edition"
+  } else {
+    paste("edition ", x)
+  }
 }
 
 #' Temporarily change the active testthat edition
@@ -53,11 +71,5 @@ edition_set <- function(x) {
 }
 
 edition_get <- function() {
-  if (has_reporter()) {
-    # set by local_test_directory() in test_files()
-    env_get(testthat_env, "edition", default = 2L)
-  } else {
-    # look in working directory; should only happen in bare expect_equal()
-    find_edition(".")
-  }
+  env_get(testthat_env, "edition", default = 2L)
 }

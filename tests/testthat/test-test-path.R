@@ -28,3 +28,7 @@ test_that("throws error if can't find tests/testthat", {
 
   expect_error(test_path("empty"), "Can't find `tests/testthat/`")
 })
+
+test_that("test_path() always returns a path",{
+  expect_equal(test_path(), ".")
+})

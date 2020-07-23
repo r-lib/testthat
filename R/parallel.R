@@ -41,7 +41,6 @@ test_files_parallel <- function(
                        env = NULL,
                        stop_on_failure = FALSE,
                        stop_on_warning = FALSE,
-                       wrap = TRUE,
                        load_package = c("none", "installed", "source")
                        ) {
 

@@ -1,4 +1,6 @@
 test_that("produces consistent output", {
+  withr::local_options(list(testthat.edition_ignore = TRUE))
+  local_edition(2)
   local_mock(
     show_menu = function(choices, title = NULL) {
       cat(paste0(format(seq_along(choices)), ": ", choices, sep = "\n"), "\n", sep = "")
@@ -16,6 +18,7 @@ get_vars_from_debug_reporter <- function(choice, fun, envir = parent.frame()) {
 }
 
 get_frame_from_debug_reporter <- function(choice, fun, envir = parent.frame()) {
+  local_edition(2)
   force(choice)
   test_debug_reporter_parent_frame <- NULL
 

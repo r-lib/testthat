@@ -47,6 +47,10 @@ expect_failure <- function(expr, message = NULL, ...) {
   invisible(NULL)
 }
 
+expect_skip <- function(code, regexp = NULL) {
+  expect_condition(code, regexp, class = "skip")
+}
+
 #' @export
 #' @rdname expect_success
 show_failure <- function(expr) {
@@ -66,14 +70,14 @@ expect_snapshot_failure <- function(x) {
 
 expect_snapshot_reporter <- function(reporter, path = test_path("reporters/tests.R")) {
   withr::local_rng_version("3.3")
-  set.seed(1014)
-
-  expect_snapshot_output(
-    with_reporter(
-      reporter,
-      test_one_file(path)
+  withr::with_seed(1014, {
+    expect_snapshot_output(
+      with_reporter(
+        reporter,
+        test_one_file(path)
+      )
     )
-  )
+  })
 }
 
 # Use specifically for testthat tests in order to override the

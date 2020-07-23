@@ -1,11 +1,8 @@
 test_that("test_examples works with installed packages", {
-  with_mock(
-    test_rd = identity,
-    {
-      res <- test_examples()
-    }
-  )
-  expect_true(length(res) > 1)
+  local_edition(2)
+
+  local_mock(test_rd = identity)
+  expect_true(length(test_examples()) > 1)
 })
 
 test_that("test_examples fails if no examples", {

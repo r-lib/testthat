@@ -13,7 +13,7 @@ test_dir(
   load_helpers = TRUE,
   stop_on_failure = TRUE,
   stop_on_warning = FALSE,
-  wrap = TRUE,
+  wrap = lifecycle::deprecated(),
   package = NULL,
   load_package = c("none", "installed", "source")
 )
@@ -43,8 +43,7 @@ See \code{\link[=source_test_helpers]{source_test_helpers()}} for more details.}
 \item{stop_on_warning}{If \code{TRUE}, throw an error if any tests generate
 warnings.}
 
-\item{wrap}{Automatically wrap all code within \code{\link[=test_that]{test_that()}}? This ensures
-that all expectations are reported, even if outside a test block.}
+\item{wrap}{DEPRECATED}
 
 \item{package}{If these tests belong to a package, the name of the package.}
 

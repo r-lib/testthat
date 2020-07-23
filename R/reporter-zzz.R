@@ -19,8 +19,6 @@
 #' @name reporter-accessors
 NULL
 
-testthat_env <- new.env(parent = emptyenv())
-
 #' @rdname reporter-accessors
 #' @export
 set_reporter <- function(reporter) {
@@ -33,10 +31,6 @@ set_reporter <- function(reporter) {
 #' @export
 get_reporter <- function() {
   testthat_env$reporter
-}
-
-has_reporter <- function() {
-  !is.null(testthat_env$reporter)
 }
 
 #' @rdname reporter-accessors

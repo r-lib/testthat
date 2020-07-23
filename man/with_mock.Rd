@@ -24,19 +24,30 @@ For expert use only.}
 The result of the last unnamed parameter
 }
 \description{
-Executes code after temporarily substituting implementations of package
-functions.  This is useful for testing code that relies on functions that are
-slow, have unintended side effects or access resources that may not be
-available when testing.
-}
-\details{
-This works by using some C code to temporarily modify the mocked function \emph{in place}.
-On exit (regular or error), all functions are restored to their previous state.
-This is somewhat abusive of R's internals, and is still experimental, so use with care.
+\ifelse{html}{\out{<a href='https://www.tidyverse.org/lifecycle/#superseded'><img src='figures/lifecycle-superseded.svg' alt='Superseded lifecycle'></a>}}{\strong{Superseded}}
 
-Functions in base packages cannot be mocked, but this can be
-worked around easily by defining a wrapper function.
+\code{with_mock()} and \code{local_mock()} are superseded in favour of the more
+rigorous techniques found in the \href{https://krlmlr.github.io/mockr/}{mockr}
+and \href{https://github.com/r-lib/mockery#mockery}{mockery} packages.
+
+Mocking allows you to temporary replace the implementation of functions
+within a package, which useful for testing code that relies on functions
+that are slow, have unintended side effects or access resources that may
+not be available when testing.
+
+This works by using some C code to temporarily modify the mocked function
+\emph{in place}. On exit, all functions are restored to their previous state.
+This is somewhat abusive of R's internals so use with care. In particular,
+functions in base packages cannot be mocked; to work aroud you'll need to
+make a wrapper function in your own package..
 }
+\section{3rd edition}{
+
+\ifelse{html}{\figure{lifecycle-deprecated.svg}{options: alt='Deprecated lifecycle'}}{\strong{Deprecated}}
+
+\code{with_mock()} and \code{local_mock()} are deprecated in the third edition.
+}
+
 \examples{
 add_one <- function(x) x + 1
 expect_equal(add_one(2), 3)

@@ -50,6 +50,7 @@
 #'   * "none", the default, doesn't load the package.
 #'   * "installed", uses [library()] to load an installed package.
 #'   * "source", uses [pkgload::load_all()] to a source package.
+#' @param wrap DEPRECATED
 #' @return A list (invisibly) containing data about the test results.
 #' @inheritParams with_reporter
 #' @inheritParams source_file
@@ -62,7 +63,7 @@ test_dir <- function(path,
                      load_helpers = TRUE,
                      stop_on_failure = TRUE,
                      stop_on_warning = FALSE,
-                     wrap = TRUE,
+                     wrap = lifecycle::deprecated(),
                      package = NULL,
                      load_package = c("none", "installed", "source")
                      ) {
@@ -74,6 +75,10 @@ test_dir <- function(path,
     abort("No test files found")
   }
 
+  if (!missing(wrap)) {
+    lifecycle::deprecate_warn("3.0.0", "test_dir(wrap = )")
+  }
+
   test_files(
     test_dir = path,
     test_paths = test_paths,
@@ -83,7 +88,6 @@ test_dir <- function(path,
     env = env,
     stop_on_failure = stop_on_failure,
     stop_on_warning = stop_on_warning,
-    wrap = wrap,
     load_package = load_package
   )
 }
@@ -126,9 +130,7 @@ test_files <- function(test_dir,
                        env = NULL,
                        stop_on_failure = FALSE,
                        stop_on_warning = FALSE,
-                       wrap = TRUE,
                        load_package = c("none", "installed", "source")) {
-
 
   if (find_parallel(test_dir, test_package)) {
     test_files <- test_files_parallel
@@ -157,7 +159,6 @@ test_files_serial <- function(test_dir,
                        env = NULL,
                        stop_on_failure = FALSE,
                        stop_on_warning = FALSE,
-                       wrap = TRUE,
                        load_package = c("none", "installed", "source")) {
 
   env <- test_files_setup_env(test_package, test_dir, load_package, env)

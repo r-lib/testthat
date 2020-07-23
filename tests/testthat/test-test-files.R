@@ -12,6 +12,7 @@ test_that("runs all tests and records output", {
   df$user <- df$system <- df$real <- df$result <- NULL
 
   local_reproducible_output(width = 200)
+  local_edition(3) # set to 2 in ./test_dir
   expect_snapshot_output(print(df))
 })
 

@@ -1,18 +1,38 @@
 # can snapshot output
 
-    [1] "y"
+    y
 
 ---
 
-    [1] "y"
+    y
 
 ---
 
-    [1] "y"
+    y
 
 ---
 
-    [1] "y"
+    y
+
+# can snapshot everything
+
+    Output
+      [1] "1"
+    Message <simpleMessage>
+      2
+    Warning <warning>
+      3
+    Error <rlang_error>
+      4
+
+# captures custom classes
+
+    Message <testthat_greeting>
+      Hello
+    Warning <testthat_farewell>
+      Goodbye
+    Error <testthat_scream>
+      Eeek!
 
 # even with multiple lines
 
@@ -73,39 +93,21 @@
     WAoAAAACAAMGAwACAwAAAAATAAAABAAAABAAAAABAAQACQAAAAFhAAAADgAAAAE/+AAAAAAA
     AAAAAA0AAAABAAAAAQAAAAoAAAABAAAAAQ==
 
-# can snapshot conditions
-
-    {
-      "message": ["!"],
-      "class": ["simpleError", "error", "condition"],
-      "fields": {}
-    }
-
----
-
-    {
-      "message": ["!"],
-      "class": ["rlang_error", "error", "condition"],
-      "fields": {
-        "x": [1, 2, 3, 4, 5]
-      }
-    }
-
 # informs about files being accepted
 
-    Updating snapshots
-    * a.new.md
-    * b.new.md
-    
+    Message <message>
+      Updating snapshots
+      * a.new.md
+      * b.new.md
 
 ---
 
-    No snapshots to update
-    
+    Message <message>
+      No snapshots to update
 
 # can accept specific files
 
-    Updating snapshots
-    * a.new.md
-    
+    Message <message>
+      Updating snapshots
+      * a.new.md
 
