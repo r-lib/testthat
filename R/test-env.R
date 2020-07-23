@@ -2,6 +2,7 @@
 #'
 #' @description
 #' * `is_testing()` determine if code is being run as part of a test
+#' * `is_parallel()` if the test is being run in parallel.
 #' * `testing_package()` gives name of the package being tested.
 #'
 #' These are thin wrappers that retrieve the values of environment variables.
@@ -11,6 +12,11 @@
 #' @export
 is_testing <- function() {
   identical(Sys.getenv("TESTTHAT"), "true")
+}
+
+#' @export
+is_parallel <- function() {
+  identical(Sys.getenv("TESTTHAT_PARALLEL"), "true")
 }
 
 #' @export

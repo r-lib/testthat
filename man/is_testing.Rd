@@ -12,6 +12,7 @@ testing_package()
 \description{
 \itemize{
 \item \code{is_testing()} determine if code is being run as part of a test
+\item \code{is_parallel()} if the test is being run in parallel.
 \item \code{testing_package()} gives name of the package being tested.
 }
 

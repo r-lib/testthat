@@ -79,6 +79,8 @@ test_dir <- function(path,
     lifecycle::deprecate_warn("3.0.0", "test_dir(wrap = )")
   }
 
+  parallel <- find_parallel(path, package) && !is_parallel()
+
   test_files(
     test_dir = path,
     test_paths = test_paths,
@@ -88,7 +90,8 @@ test_dir <- function(path,
     env = env,
     stop_on_failure = stop_on_failure,
     stop_on_warning = stop_on_warning,
-    load_package = load_package
+    load_package = load_package,
+    parallel = parallel
   )
 }
 
@@ -113,7 +116,7 @@ test_file <- function(path, reporter = default_compact_reporter(), package = NUL
     stop("`path` does not exist", call. = FALSE)
   }
 
-  test_files_serial(
+  test_files(
     test_dir = dirname(path),
     test_package = package,
     test_paths = basename(path),
@@ -130,9 +133,10 @@ test_files <- function(test_dir,
                        env = NULL,
                        stop_on_failure = FALSE,
                        stop_on_warning = FALSE,
-                       load_package = c("none", "installed", "source")) {
+                       load_package = c("none", "installed", "source"),
+                       parallel = FALSE) {
 
-  if (find_parallel(test_dir, test_package)) {
+  if (parallel) {
     test_files <- test_files_parallel
   } else {
     test_files <- test_files_serial

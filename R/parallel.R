@@ -44,6 +44,7 @@ test_files_parallel <- function(
                        load_package = c("none", "installed", "source")
                        ) {
 
+
   reporters <- test_files_reporter(reporter)
 
   # TODO: support timeouts. 20-30s for each file by default?
@@ -147,6 +148,7 @@ queue_process_setup <- function(test_package, test_dir, load_helpers, load_packa
 queue_task <- function(path) {
   env <- .GlobalEnv$.test_env
 
+  withr::local_envvar(c("TESTTHAT_PARALLEL" = "true"))
   reporters <- test_files_reporter(SubprocessReporter$new())
   with_reporter(reporters$multi, test_one_file(path, env = env))
   NULL
