@@ -1,5 +1,3 @@
-
-
 test_that("basic workflow", {
   write_tmp_lines <- function(lines, ext = ".txt") {
     path <- tempfile(fileext = ext)
@@ -28,6 +26,13 @@ test_that("basic workflow", {
   snapper$end_file()
   expect_true(file.exists("_snaps/snapshot-6/letters.txt"))
   expect_true(file.exists("_snaps/snapshot-6/letters.new.txt"))
+
+  # cleans up if reverted
+  snapper$start_file("snapshot-6", "test")
+  expect_success(expect_snapshot_file(write_tmp_lines(letters), "letters.txt"))
+  snapper$end_file()
+  expect_true(file.exists("_snaps/snapshot-6/letters.txt"))
+  expect_false(file.exists("_snaps/snapshot-6/letters.new.txt"))
 })
 
 # -------------------------------------------------------------------------
