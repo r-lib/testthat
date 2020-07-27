@@ -4,7 +4,8 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
   public = list(
     file = NULL,
     test = NULL,
-    file_seen = character(),
+    test_file_seen = character(),
+    snap_file_seen = character(),
     i = 0,
     file_changed = FALSE,
 
@@ -14,7 +15,7 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
 
     start_file = function(path, test = NULL) {
       self$file <- context_name(path)
-      self$file_seen <- c(self$file_seen, path)
+      self$test_file_seen <- c(self$test_file_seen, path)
 
       self$file_changed <- FALSE
       self$old_snaps <- self$snaps_read()
@@ -63,6 +64,32 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
       }
     },
 
+    take_file_snapshot = function(name, path, file_equal) {
+      ext <- tools::file_ext(name)
+      slug <- tools::file_path_sans_ext(name)
+
+      test_path <- file.path("_snaps", self$file)
+      cur_path <- file.path(test_path, name)
+      new_path <- file.path(test_path, paste0(slug, ".new.", ext))
+      self$snap_file_seen <- c(self$snap_file_seen, cur_path)
+
+      if (file.exists(cur_path)) {
+        eq <- file_equal(cur_path, path)
+        if (!eq) {
+          file.copy(path, new_path)
+        } else {
+          # in case it exists from a previous run
+          unlink(new_path)
+        }
+        eq
+      } else {
+        dir.create(test_path, showWarnings = FALSE, recursive = TRUE)
+        file.copy(path, cur_path)
+        testthat_warn(paste0("Adding new file snapshot: '", cur_path, "'"))
+        TRUE
+      }
+    },
+
     add_result = function(context, test, result) {
       if (is.null(self$test)) {
         return()
@@ -91,10 +118,13 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
     end_reporter = function() {
       # check we've seen all files before cleaning up
       tests <- find_test_scripts(".", full.names = FALSE)
-      if (!all(tests %in% self$file_seen)) {
+      if (!all(tests %in% self$test_file_seen)) {
         rstudio_tickle()
         return()
       }
+
+      # TODO: include file snapshots
+      # TODO: report which files are deleted
 
       snaps <- dir("_snaps", full.names = TRUE)
       snaps <- snaps[!grepl(".new.", snaps, fixed = TRUE)]
