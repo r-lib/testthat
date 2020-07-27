@@ -71,5 +71,9 @@ edition_set <- function(x) {
 }
 
 edition_get <- function() {
-  env_get(testthat_env, "edition", default = 2L)
+  if (env_has(testthat_env, "edition")) {
+    env_get(testthat_env, "edition", default = 2L)
+  } else {
+    find_edition(".")
+  }
 }
