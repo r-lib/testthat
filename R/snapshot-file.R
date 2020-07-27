@@ -1,3 +1,24 @@
+#' Snapshot testing for a complete file
+#'
+#' @description
+#' Whole file snapshot testing is primarily designed for testing images.
+#' The first time it is run `expect_snapshot_file()` will create
+#' `_snaps/{test}/{name}.{ext}` containing reference output. Future runs will be
+#' compared to this reference: if different, the test will fail and the new
+#' results will be saved in `_snaps/{test}/{name}.new.{ext}`.
+#'
+#' We generally expect this function to be used via a wrapper that takes care
+#' of ensuring the images are as reproducible as possible, automatically
+#' skipping tests where it's known that the images can't be reproduced exactly
+#' (without extreme efforts it is generally impossible to generate pixel
+#' perfect images across platforms).
+#'
+#' @param path Path to file to snapshot.
+#' @param name Snapshot name, taken from `path` by default.
+#' @param binary If `FALSE`, files are compared line-by-line, ignoring the
+#'   difference between Windows and Mac/Linux line endings.
+#' @inheritParams expect_snapshot
+#' @export
 expect_snapshot_file <- function(path, name = basename(path), binary = TRUE, cran = FALSE) {
   edition_require(3, "expect_snapshot_file()")
   if (cran && !interactive() && on_cran()) {
