@@ -171,7 +171,7 @@ reparse <- function(x) {
 }
 
 expect_snapshot_helper <- function(lab, val, cran = FALSE, save = identity, load = identity) {
-  if (!interactive() && on_cran()) {
+  if (cran && !interactive() && on_cran()) {
     skip("On CRAN")
   }
 
@@ -179,20 +179,20 @@ expect_snapshot_helper <- function(lab, val, cran = FALSE, save = identity, load
   if (is.null(snapshotter)) {
     cat("No snapshotter active. Current value: \n")
     cat(save(val), sep = "\n")
-  } else {
-    comp <- snapshotter$take_snapshot(val, save = save, load = load)
-    hint <- paste0("Run `snapshot_accept('", snapshotter$file, "')` if this is a deliberate change")
-
-    expect(
-      length(comp) == 0,
-      sprintf(
-        "Shapshot of %s has changed:\n%s\n\n%s",
-        lab,
-        paste0(comp, collapse = "\n\n"),
-        hint
-      )
-    )
   }
+
+  comp <- snapshotter$take_snapshot(val, save = save, load = load)
+  hint <- paste0("Run `snapshot_accept('", snapshotter$file, "')` if this is a deliberate change")
+
+  expect(
+    length(comp) == 0,
+    sprintf(
+      "Shapshot of %s has changed:\n%s\n\n%s",
+      lab,
+      paste0(comp, collapse = "\n\n"),
+      hint
+    )
+  )
 }
 
 #' Snapshot management
