@@ -179,6 +179,7 @@ expect_snapshot_helper <- function(lab, val, cran = FALSE, save = identity, load
   if (is.null(snapshotter)) {
     cat("No snapshotter active. Current value: \n")
     cat(save(val), sep = "\n")
+    return()
   }
 
   comp <- snapshotter$take_snapshot(val, save = save, load = load)
