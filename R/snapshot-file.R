@@ -102,8 +102,8 @@ split_path <- function(path) {
   )
 }
 
-write_tmp_lines <- function(lines, ext = ".txt") {
+write_tmp_lines <- function(lines, ext = ".txt", eol = "\n") {
   path <- tempfile(fileext = ext)
-  brio::write_lines(lines, path)
+  brio::write_lines(lines, path, eol = eol)
   path
 }

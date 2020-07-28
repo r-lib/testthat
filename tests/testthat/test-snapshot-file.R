@@ -46,10 +46,8 @@ test_that("warns on first creation", {
 # -------------------------------------------------------------------------
 
 test_that("text comparison ignores CR", {
-  path1 <- tempfile()
-  path2 <- tempfile()
-  brio::write_lines(c("a", "b"), path2)
-  brio::write_lines(c("a", "b"), path1, eol = "\r\n")
+  path1 <- write_tmp_lines(c("a", "b"))
+  path2 <- write_tmp_lines(c("a", "b"), eol = "\r\n")
 
   expect_false(compare_file_binary(path1, path2))
   expect_true(compare_file_text(path1, path2))
