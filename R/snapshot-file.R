@@ -57,3 +57,27 @@ compare_file_text <- function(old, new) {
   new <- brio::read_lines(new)
   identical(old, new)
 }
+
+snapshot_file <- function(test_path, path, file_equal) {
+  ext <- tools::file_ext(name)
+  slug <- tools::file_path_sans_ext(basename(name))
+
+  cur_path <- file.path(test_path, name)
+  new_path <- file.path(test_path, paste0(slug, ".new.", ext))
+
+  if (file.exists(cur_path)) {
+    eq <- file_equal(cur_path, path)
+    if (!eq) {
+      file.copy(path, new_path)
+    } else {
+      # in case it exists from a previous run
+      unlink(new_path)
+    }
+    eq
+  } else {
+    dir.create(test_path, showWarnings = FALSE, recursive = TRUE)
+    file.copy(path, cur_path)
+    testthat_warn(paste0("Adding new file snapshot: '", cur_path, "'"))
+    TRUE
+  }
+}

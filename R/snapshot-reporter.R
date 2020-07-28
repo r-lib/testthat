@@ -65,29 +65,11 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
     },
 
     take_file_snapshot = function(name, path, file_equal) {
-      ext <- tools::file_ext(name)
-      slug <- tools::file_path_sans_ext(name)
-
       test_path <- file.path("_snaps", self$file)
-      cur_path <- file.path(test_path, name)
-      new_path <- file.path(test_path, paste0(slug, ".new.", ext))
       self$snap_file_seen <- c(self$snap_file_seen, cur_path)
 
-      if (file.exists(cur_path)) {
-        eq <- file_equal(cur_path, path)
-        if (!eq) {
-          file.copy(path, new_path)
-        } else {
-          # in case it exists from a previous run
-          unlink(new_path)
-        }
-        eq
-      } else {
-        dir.create(test_path, showWarnings = FALSE, recursive = TRUE)
-        file.copy(path, cur_path)
-        testthat_warn(paste0("Adding new file snapshot: '", cur_path, "'"))
-        TRUE
-      }
+      snapshot_file(test_path, path, file_equal)
+
     },
 
     add_result = function(context, test, result) {
@@ -116,21 +98,14 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
       }
     },
     end_reporter = function() {
-      # check we've seen all files before cleaning up
+      # clean up if we've seen all files
       tests <- find_test_scripts(".", full.names = FALSE)
-      if (!all(tests %in% self$test_file_seen)) {
-        rstudio_tickle()
-        return()
+      if (all(tests %in% self$test_file_seen)) {
+        # TODO: include file snapshots
+        # TODO: report which files are deleted
+        outdated <- snapshot_outdated("_snaps", context_name(tests))
+        unlink(outdated)
       }
-
-      # TODO: include file snapshots
-      # TODO: report which files are deleted
-
-      snaps <- dir("_snaps", full.names = TRUE)
-      snaps <- snaps[!grepl(".new.", snaps, fixed = TRUE)]
-      snap_name <- tools::file_path_sans_ext(basename(snaps))
-      outdated <- !snap_name %in% context_name(tests)
-      unlink(snaps[outdated])
 
       if (length(dir("_snaps") == 0)) {
         unlink("_snaps")
@@ -194,6 +169,14 @@ check_roundtrip <- function(x, y) {
       i = "You may need to consider serialization `style`")
     )
   }
+}
+
+snapshot_outdated <- function(path, tests) {
+  snaps <- dir(path, full.names = TRUE)
+  snaps <- snaps[!grepl(".new.", snaps, fixed = TRUE)]
+  snap_name <- tools::file_path_sans_ext(basename(snaps))
+  outdated <- !snap_name %in% tests
+  snaps[outdated]
 }
 
 # set/get active snapshot reporter ----------------------------------------
