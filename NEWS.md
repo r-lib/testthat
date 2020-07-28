@@ -67,9 +67,9 @@ recommendations. To opt-in to the 3rd edition for your package, set
 ## Reporters
 
 * `CheckReporter` (used inside R CMD check) now prints out all problems
-  (i.e. errors, failures, warnings and skips), lists skips types, and 
-  records problems in machine readable format in `tests/testthat-problems.rds` 
-  (#1075).
+  (i.e. errors, failures, warnings and skips; and not just the first 10), 
+  lists skips types, and records problems in machine readable format in
+  `tests/testthat-problems.rds` (#1075).
   
 * New `CompactProgressReporter` tweaks the output of `ProgressReporter` for
   use with a single file, as in `devtools::test_file()`. You can pick a 

@@ -56,28 +56,16 @@ CheckReporter <- R6::R6Class("CheckReporter",
         self$cat_line()
       }
 
-      self$rule("testthat results ", line = 2)
-      status <- summary_line(self$n_ok, self$n_fail, self$n_warn, self$n_skip)
-      self$cat_line(status)
-
       problems <- self$problems$as_list()
       if (length(problems) == 0) {
         return()
       }
+
       saveRDS(problems, "testthat-problems.rds")
-
-      # Get 13 lines of output by default
-      if (length(problems) > 11) {
-        show <- problems[1:10]
-      } else {
-        show <- problems
-      }
-
-      self$cat_line(vapply(show, failure_header, character(1)))
-      if (length(problems) > 10) {
-        self$cat_line("... and ", length(problems) - 10, " more")
-      }
+      self$rule("testthat results ", line = 2)
+      self$cat_line(vapply(problems, failure_header, character(1)))
       self$cat_line()
+      self$cat_line(summary_line(self$n_ok, self$n_fail, self$n_warn, self$n_skip))
     }
   )
 )
