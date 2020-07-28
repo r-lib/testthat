@@ -28,8 +28,10 @@ evaluate_promise <- function(code, print = FALSE) {
     maybe_restart("muffleMessage")
   }
 
-  temp <- file()
-  on.exit(close(temp))
+  path <- tempfile()
+  withr::defer(unlink(path))
+  temp <- file(path)
+  withr::defer(close(temp))
 
   result <- withr::with_output_sink(
     temp,
@@ -44,7 +46,7 @@ evaluate_promise <- function(code, print = FALSE) {
     withr::with_output_sink(temp, print(result$value))
   }
 
-  output <- paste0(read_lines(temp), collapse = "\n")
+  output <- paste0(brio::read_lines(path), collapse = "\n")
 
   list(
     result = result$value,

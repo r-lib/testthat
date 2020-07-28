@@ -126,7 +126,7 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
     # File management ----------------------------------------------------------
     snaps_read = function(suffix = "") {
       if (file.exists(self$snap_path(suffix))) {
-        lines <- read_lines(self$snap_path(suffix))
+        lines <- brio::read_lines(self$snap_path(suffix))
         snap_from_md(lines)
       } else {
         list()
@@ -138,7 +138,7 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
         out <- snap_to_md(data)
         # trim off last line since write_lines() adds one
         out <- gsub("\n$", "", out)
-        write_lines(out, self$snap_path(suffix))
+        brio::write_lines(out, self$snap_path(suffix))
       } else {
         self$snaps_delete(suffix)
       }

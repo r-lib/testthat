@@ -26,6 +26,8 @@
 #'
 #' In addition, `local_test_context()` sets the following options:
 #'
+#' * `cli.dynamic = FALSE` so that tests assume that they are not run in
+#'   a dynamic console (i.e. one where you can move the cursor around).
 #' * `lifecycle_verbosity = "warning"` so that every lifecycle problem always
 #'   generates a warning (otherwise deprecated functions don't generate a
 #'   warning every time).
@@ -89,6 +91,7 @@ local_reproducible_output <- function(width = 80,
   withr::local_options(
     list(
       crayon.enabled = crayon,
+      cli.dynamic = FALSE,
       cli.unicode = unicode,
       useFancyQuotes = FALSE,
       lifecycle_verbosity = "warning",

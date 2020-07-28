@@ -71,14 +71,14 @@ expect_known_output <- function(object, file,
 compare_file <- function(path, lines, ..., update = TRUE, info = NULL) {
   if (!file.exists(path)) {
     warning("Creating reference output", call. = FALSE)
-    write_lines(lines, path)
+    brio::write_lines(lines, path)
     succeed()
     return()
   }
 
-  old_lines <- read_lines(path)
+  old_lines <- brio::read_lines(path)
   if (update) {
-    write_lines(lines, path)
+    brio::write_lines(lines, path)
     if (!all_utf8(lines)) {
       warning("New reference output is not UTF-8 encoded", call. = FALSE)
     }
@@ -177,4 +177,8 @@ expect_known_hash <- function(object, hash = NULL) {
   }
 
   invisible(act$value)
+}
+
+all_utf8 <- function(x) {
+  ! any(is.na(iconv(x, "UTF-8", "UTF-8")))
 }

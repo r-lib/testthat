@@ -30,7 +30,7 @@ test_that("teardowns runs in order", {
 
 test_that("file is created", {
   # test-testthat-2 confirms that this is deleted.
-  write_lines("test", "teardown.txt")
+  writeLines("test", "teardown.txt")
   expect_true(file.exists("teardown.txt"))
 })
 
