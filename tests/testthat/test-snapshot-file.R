@@ -1,3 +1,7 @@
+test_that("expect_snapshot_file works", {
+  expect_snapshot_file(write_tmp_lines(letters), "foo.txt")
+})
+
 test_that("basic workflow", {
   snapper <- local_snapshotter(tempfile(), cleanup = TRUE)
 
@@ -46,7 +50,48 @@ test_that("warns on first creation", {
   expect_false(file.exists(file.path(tempdir(), "test.new.txt")))
 })
 
-# helpers -------------------------------------------------------------------
+
+# clean up ----------------------------------------------------------------
+
+test_that("detects entire tests to remove", {
+  dir <- local_snap_dir(c("a/foo.txt", "b/foo.txt"))
+
+  expect_equal(
+    snapshot_file_outdated(dir, character(), character()),
+    file.path(dir, c("a", "b"))
+  )
+  expect_equal(
+    snapshot_file_outdated(dir, "a", "a/foo.txt"),
+    file.path(dir, "b")
+  )
+  expect_equal(
+    snapshot_file_outdated(dir, c("a", "b"), c("a/foo.txt", "b/foo.txt")),
+    character()
+  )
+})
+
+test_that("detects individual snapshots to remove", {
+  dir <- local_snap_dir(c("a/a1", "a/a2", "b/b1"))
+  expect_equal(
+    snapshot_file_outdated(dir, c("a", "b"), "a/a1"),
+    file.path(dir, c("a/a2", "b/b1"))
+  )
+})
+
+test_that("doesn't touch files in root dir", {
+  dir <- local_snap_dir(c("a.md", "b.md"))
+  expect_equal(snapshot_file_outdated(dir), character())
+})
+
+test_that("doesn't remove .new files", {
+  dir <- local_snap_dir(c("a/a1.txt", "a/a1.new.txt"))
+  expect_equal(
+    snapshot_file_outdated(dir, "a", "a/a1.txt"),
+    character()
+  )
+})
+
+# helpers -----------------------------------------------------------------
 
 test_that("text comparison ignores CR", {
   path1 <- write_tmp_lines(c("a", "b"))

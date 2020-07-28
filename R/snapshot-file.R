@@ -39,16 +39,16 @@ expect_snapshot_file <- function(path, name = basename(path), binary = TRUE, cra
   expect(
     equal,
     sprintf(
-      "Shapshot of %s (%s) has changed\n%s",
+      "Shapshot of %s to '%s' has changed\n%s",
       lab, paste0(snapshotter$file, "/", name),
       hint
     )
   )
 }
 
-snapshot_file_equal <- function(snap_dir, snap_name, path, file_equal = compare_file_binary) {
-  cur_path <- file.path(snap_dir, snap_name)
-  new_path <- file.path(snap_dir, new_name(snap_name))
+snapshot_file_equal <- function(snap_test_dir, snap_name, path, file_equal = compare_file_binary) {
+  cur_path <- file.path(snap_test_dir, snap_name)
+  new_path <- new_name(cur_path)
 
   if (file.exists(cur_path)) {
     eq <- file_equal(cur_path, path)
@@ -60,18 +60,46 @@ snapshot_file_equal <- function(snap_dir, snap_name, path, file_equal = compare_
     }
     eq
   } else {
-    dir.create(snap_dir, showWarnings = FALSE, recursive = TRUE)
+    dir.create(snap_test_dir, showWarnings = FALSE, recursive = TRUE)
     file.copy(path, cur_path)
     testthat_warn(paste0("Adding new file snapshot: '", cur_path, "'"))
     TRUE
   }
 }
 
+snapshot_file_outdated <- function(snap_dir, tests_seen = character(), snaps_seen = character()) {
+  # 1) Entire test file deleted/moved. Need to delete _snaps/test/
+  # Recognise because missing from tests_seen
+  tests <- list.dirs(snap_dir, recursive = FALSE)
+  tests_outdated <- tests[!basename(tests) %in% tests_seen]
+
+  # 2) Single test deleted. Need to delete _snaps/test/foo.txt
+  # Recognise because missing from snap_seens
+  snaps <- dir(snap_dir, recursive = TRUE, full.names = TRUE)
+  snap_names <- dir(snap_dir, recursive = TRUE, full.names = FALSE)
+
+  # Remove all files in the root snapshot directory - those are managed by
+  # snapshot_outdated()
+  base <- snaps %in% dir(snap_dir, full.names = TRUE)
+  snaps <- snaps[!base]
+  snap_names <- snap_names[!base]
+
+  snaps_outdated <- snaps[
+    !snap_names %in% c(snaps_seen, new_name(snaps_seen)) &
+    dirname(snap_names) %in% tests_seen
+  ]
+
+  c(tests_outdated, snaps_outdated)
+}
+
 # Helpers -----------------------------------------------------------------
 
 new_name <- function(x) {
   pieces <- split_path(x)
-  paste0(pieces$name, ".new.", pieces$ext)
+  paste0(
+    pieces$dir, ifelse(pieces$dir == "", "", "/"),
+    pieces$name, ".new.", pieces$ext
+  )
 }
 
 split_path <- function(path) {
@@ -96,6 +124,19 @@ write_tmp_lines <- function(lines, ext = ".txt", eol = "\n") {
   path <- tempfile(fileext = ext)
   brio::write_lines(lines, path, eol = eol)
   path
+}
+
+local_snap_dir <- function(paths, .env = parent.frame()) {
+  dir <- tempfile()
+  withr::defer(unlink(paths), envir = .env)
+
+  dirs <- file.path(dir, unique(dirname(paths)))
+  for (d in dirs) {
+    dir.create(d, showWarnings = FALSE, recursive = TRUE)
+  }
+  file.create(file.path(dir, paths))
+
+  dir
 }
 
 compare_file_binary <- function(old, new) {

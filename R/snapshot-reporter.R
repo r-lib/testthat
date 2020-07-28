@@ -71,7 +71,7 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
 
     take_file_snapshot = function(name, path, file_equal) {
       snap_dir <- file.path(self$snap_dir, self$file)
-      self$snap_file_seen <- c(self$snap_file_seen, snap_dir)
+      self$snap_file_seen <- c(file.path(self$file, name), self$snap_file_seen)
 
       snapshot_file_equal(snap_dir, name, path, file_equal)
     },
@@ -102,13 +102,19 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
       }
     },
     end_reporter = function() {
-      # clean up if we've seen all files
       tests <- find_test_scripts(".", full.names = FALSE)
       if (all(tests %in% self$test_file_seen)) {
-        # TODO: include file snapshots
-        # TODO: report which files are deleted
-        outdated <- snapshot_outdated(self$snap_dir, context_name(tests))
-        unlink(outdated)
+        # clean up if we've seen all files
+        test_names <- context_name(tests)
+        outdated <- c(
+          snapshot_outdated(self$snap_dir, test_names),
+          snapshot_file_outdated(self$snap_dir, test_names, self$snap_file_seen)
+        )
+
+        if (length(outdated) > 0) {
+          inform(c("Deleting unused snapshots:", outdated))
+          unlink(outdated)
+        }
       }
 
       if (length(dir(self$snap_dir) == 0)) {
