@@ -46,18 +46,6 @@ expect_snapshot_file <- function(path, name = basename(path), binary = TRUE, cra
   )
 }
 
-compare_file_binary <- function(old, new) {
-  old <- brio::read_file_raw(old)
-  new <- brio::read_file_raw(new)
-  identical(old, new)
-}
-
-compare_file_text <- function(old, new) {
-  old <- brio::read_lines(old)
-  new <- brio::read_lines(new)
-  identical(old, new)
-}
-
 snapshot_file_equal <- function(snap_dir, snap_name, path, file_equal = compare_file_binary) {
   cur_path <- file.path(snap_dir, snap_name)
   new_path <- file.path(snap_dir, new_name(snap_name))
@@ -78,6 +66,8 @@ snapshot_file_equal <- function(snap_dir, snap_name, path, file_equal = compare_
     TRUE
   }
 }
+
+# Helpers -----------------------------------------------------------------
 
 new_name <- function(x) {
   pieces <- split_path(x)
@@ -106,4 +96,16 @@ write_tmp_lines <- function(lines, ext = ".txt", eol = "\n") {
   path <- tempfile(fileext = ext)
   brio::write_lines(lines, path, eol = eol)
   path
+}
+
+compare_file_binary <- function(old, new) {
+  old <- brio::read_file_raw(old)
+  new <- brio::read_file_raw(new)
+  identical(old, new)
+}
+
+compare_file_text <- function(old, new) {
+  old <- brio::read_lines(old)
+  new <- brio::read_lines(new)
+  identical(old, new)
 }

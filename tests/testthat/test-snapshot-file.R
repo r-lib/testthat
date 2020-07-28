@@ -31,6 +31,8 @@ test_that("warns on first creation", {
 
   # Unchanged returns TRUE
   expect_true(snapshot_file_equal(tempdir(), "test.txt", path))
+  expect_true(file.exists(file.path(tempdir(), "test.txt")))
+  expect_false(file.exists(file.path(tempdir(), "test.new.txt")))
 
   # Changed returns FALSE
   path2 <- write_tmp_lines(letters[[2]])
@@ -40,10 +42,11 @@ test_that("warns on first creation", {
 
   # Unchanged cleans up
   expect_true(snapshot_file_equal(tempdir(), "test.txt", path))
+  expect_true(file.exists(file.path(tempdir(), "test.txt")))
   expect_false(file.exists(file.path(tempdir(), "test.new.txt")))
 })
 
-# -------------------------------------------------------------------------
+# helpers -------------------------------------------------------------------
 
 test_that("text comparison ignores CR", {
   path1 <- write_tmp_lines(c("a", "b"))
