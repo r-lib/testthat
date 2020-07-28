@@ -2,6 +2,7 @@
 SnapshotReporter <- R6::R6Class("SnapshotReporter",
   inherit = Reporter,
   public = list(
+    snap_dir = character(),
     file = NULL,
     test = NULL,
     test_file_seen = character(),
@@ -12,6 +13,10 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
     old_snaps = NULL,
     cur_snaps = NULL,
     new_snaps = NULL,
+
+    initialize = function(snap_dir = "_snaps") {
+      self$snap_dir <- snap_dir
+    },
 
     start_file = function(path, test = NULL) {
       self$file <- context_name(path)
@@ -65,11 +70,10 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
     },
 
     take_file_snapshot = function(name, path, file_equal) {
-      test_path <- file.path("_snaps", self$file)
-      self$snap_file_seen <- c(self$snap_file_seen, cur_path)
+      snap_dir <- file.path(self$snap_dir, self$file)
+      self$snap_file_seen <- c(self$snap_file_seen, snap_dir)
 
-      snapshot_file(test_path, path, file_equal)
-
+      snapshot_file_equal(snap_dir, name, path, file_equal)
     },
 
     add_result = function(context, test, result) {
@@ -88,7 +92,7 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
     },
 
     end_file = function() {
-      dir.create("_snaps", showWarnings = FALSE)
+      dir.create(self$snap_dir, showWarnings = FALSE)
 
       self$snaps_write(self$cur_snaps)
       if (self$file_changed) {
@@ -103,12 +107,12 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
       if (all(tests %in% self$test_file_seen)) {
         # TODO: include file snapshots
         # TODO: report which files are deleted
-        outdated <- snapshot_outdated("_snaps", context_name(tests))
+        outdated <- snapshot_outdated(self$snap_dir, context_name(tests))
         unlink(outdated)
       }
 
-      if (length(dir("_snaps") == 0)) {
-        unlink("_snaps")
+      if (length(dir(self$snap_dir) == 0)) {
+        unlink(self$snap_dir)
       }
       rstudio_tickle()
     },
@@ -197,12 +201,12 @@ get_snapshotter <- function() {
 #' Instantiate local snapshotting context
 #'
 #' Needed if you want to run snapshot tests outside of the usual testthat
-#' framework. For expert use only.
+#' framework For expert use only.
 #'
 #' @export
 #' @keywords internal
-local_snapshotter <- function(cleanup = FALSE, .env = parent.frame()) {
-  reporter <- SnapshotReporter$new()
+local_snapshotter <- function(snap_dir = "_snaps", cleanup = FALSE, .env = parent.frame()) {
+  reporter <- SnapshotReporter$new(snap_dir = snap_dir)
   if (cleanup) {
     withr::defer(reporter$snaps_cleanup(), envir = .env)
   }

@@ -58,12 +58,9 @@ compare_file_text <- function(old, new) {
   identical(old, new)
 }
 
-snapshot_file <- function(test_path, path, file_equal) {
-  ext <- tools::file_ext(name)
-  slug <- tools::file_path_sans_ext(basename(name))
-
-  cur_path <- file.path(test_path, name)
-  new_path <- file.path(test_path, paste0(slug, ".new.", ext))
+snapshot_file_equal <- function(snap_dir, snap_name, path, file_equal = compare_file_binary) {
+  cur_path <- file.path(snap_dir, snap_name)
+  new_path <- file.path(snap_dir, new_name(snap_name))
 
   if (file.exists(cur_path)) {
     eq <- file_equal(cur_path, path)
@@ -75,9 +72,38 @@ snapshot_file <- function(test_path, path, file_equal) {
     }
     eq
   } else {
-    dir.create(test_path, showWarnings = FALSE, recursive = TRUE)
+    dir.create(snap_dir, showWarnings = FALSE, recursive = TRUE)
     file.copy(path, cur_path)
     testthat_warn(paste0("Adding new file snapshot: '", cur_path, "'"))
     TRUE
   }
+}
+
+new_name <- function(x) {
+  pieces <- split_path(x)
+  paste0(pieces$name, ".new.", pieces$ext)
+}
+
+split_path <- function(path) {
+  dir <- dirname(path)
+  dir[dir == "."] <- ""
+  name <- basename(path)
+
+  ext_loc <- regexpr(".", name, fixed = TRUE)
+  no_ext <- ext_loc == -1L
+
+  name_sans_ext <- ifelse(no_ext, name, substr(name, 1, ext_loc - 1))
+  ext <- ifelse(no_ext, "", substr(name, ext_loc + 1, nchar(name)))
+
+  list(
+    dir = dir,
+    name = name_sans_ext,
+    ext = ext
+  )
+}
+
+write_tmp_lines <- function(lines, ext = ".txt") {
+  path <- tempfile(fileext = ext)
+  brio::write_lines(lines, path)
+  path
 }
