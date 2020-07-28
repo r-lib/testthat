@@ -110,7 +110,8 @@
     `actual`:   FALSE
     `expected`: TRUE 
     --------------------------------------------------------------------------------
-    max_fails exceded 
+    Maximum number of failures exceeded; quitting early.
+    You can increase this number by setting `options(testthat.progress.max_fails)` 
     
     == Results =====================================================================
     [ PASS x0 FAIL x10 WARN x0 SKIP x0 ]

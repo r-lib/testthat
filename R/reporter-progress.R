@@ -188,7 +188,10 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
       if (self$is_full()) {
         self$local_user_output()
         self$end_context()
-        stop_reporter("max_fails exceded")
+        stop_reporter(paste0(
+          "Maximum number of failures exceeded; quitting early.\n",
+          "You can increase this number by setting `options(testthat.progress.max_fails)`"
+        ))
       }
 
       self$show_status()
