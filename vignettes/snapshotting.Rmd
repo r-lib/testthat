@@ -145,6 +145,14 @@ Because the snapshot output uses the the name of the current test file and the c
 
 -   `expect_snapshot_value()` checks that the value of any R object stays the same. It has a number of serialisation approaches built-in that offer a tradeoff between accuracy and human readability.
 
+## Whole file snapshotting
+
+`expect_snapshot()`, `expect_snapshot_output()`, `expect_snapshot_error()`, and `expect_snapshot_value()` all store their snapshots in a single file per test. But that doesn't work for all file types --- for example, what happens if you want to snapshot an image? `expect_snapshot_file()` provides an alternative workflow that generates one snapshot per expectation, rather than one file per test. Assuming you're in `test-burger.R` then the snapshot created by `expect_snapshot(code(), "toppings.png")` would be saved in `tests/testthat/_snaps/burger/toppings.png`. If a future change in the code creates a a different file it will be saved in `tests/testthat/_snaps/burger/toppings.new.png`.
+
+Unlike `expect_snapshot()` and friends, `expect_snapshot()` can't automatically provide an automatic diff when the test fails. Instead you'll need to call `snapshot_review()`. This launches a Shiny app / RStudio widget that allows you to visually review each change and approve or reject it.
+
+In most cases, we expect that you won't use `expect_snapshot_file()` directly, but will instead use it via a wrapper that does its best to gracefully skip tests when differences in platform or package versions make it unlikely to generate perfectable reproducible output.
+
 ## Previous work
 
 This is not the first time that testthat has attempted to provide snapshot testing (although it's the first time I knew what other languages called them). This section describes some of the previous attempts and why we believe the new approach is better.
