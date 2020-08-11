@@ -110,7 +110,6 @@ replay_events <- function(reporter, events) {
 queue_setup <- function(test_paths,
                         test_package,
                         test_dir,
-                        env,
                         num_workers,
                         load_helpers,
                         load_package) {
