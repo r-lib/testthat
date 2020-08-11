@@ -118,6 +118,10 @@ queue_setup <- function(test_paths,
   # OK for the subprocess, because it'll not have the tested package
   if (load_package == "none") load_package <- "source"
 
+  # TODO: similarly, load_helpers = FALSE, coming from devtools,
+  # is not appropriate in the subprocess
+  load_helpers <- TRUE
+
   # TODO: meaningful error if startup fails
   load_hook <- expr(asNamespace("testthat")$queue_process_setup(
     test_package = !!test_package,
