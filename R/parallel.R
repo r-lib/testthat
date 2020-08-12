@@ -122,6 +122,8 @@ queue_setup <- function(test_paths,
   # is not appropriate in the subprocess
   load_helpers <- TRUE
 
+  test_package <- test_package %||% Sys.getenv("TESTTHAT_PKG")
+
   # TODO: meaningful error if startup fails
   load_hook <- expr(asNamespace("testthat")$queue_process_setup(
     test_package = !!test_package,
