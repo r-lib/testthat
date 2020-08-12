@@ -140,8 +140,12 @@ queue_setup <- function(test_paths,
 }
 
 queue_process_setup <- function(test_package, test_dir, load_helpers, load_package) {
-  env <- test_files_setup_env(test_package, test_dir, load_package)
-  test_files_setup_state(
+  env <- asNamespace("testthat")$test_files_setup_env(
+    test_package,
+    test_dir,
+    load_package
+  )
+  asNamespace("testthat")$test_files_setup_state(
     test_dir = test_dir,
     test_package = test_package,
     load_helpers = load_helpers,
