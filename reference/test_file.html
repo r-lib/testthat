@@ -241,7 +241,7 @@ for more details.</p></li>
 
 <p>There are two other types of special file that we no longer recommend using:</p><ul>
 <li><p>Helper files start with <code>helper</code> and are executed before tests are
-run. They're also loaded by <code><a href='https://devtools.r-lib.org//reference/load_all.html'>devtools::load_all()</a></code>, so there's no
+run. They're also loaded by <code>devtools::load_all()</code>, so there's no
 real point to them and you should just put your helper code in <code>R/</code>.</p></li>
 <li><p>Teardown files start with <code>teardown</code> and are executed after the tests
 are run. Now we recommend interleave setup and cleanup code in <code>setup-</code>
