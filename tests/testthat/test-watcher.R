@@ -36,6 +36,7 @@ test_that("compare state works correctly", {
 
 test_that("watcher works correctly", {
   skip_on_ci()
+  skip_on_os("windows")
   skip_on_cran()
   if (Sys.which("bash") == "") {
     skip("bash not available")
@@ -44,7 +45,7 @@ test_that("watcher works correctly", {
     skip("touch (or which) not available")
   }
 
-  loc <- tempfile("watcher", tmpdir = "/tmp")
+  loc <- tempfile("watcher")
   dir.create(loc)
 
   code_path <- file.path(loc, "R")
