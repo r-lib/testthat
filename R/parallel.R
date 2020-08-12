@@ -179,10 +179,14 @@ queue_teardown <- function(queue) {
   tasks <- queue$list_tasks()
   num <- nrow(tasks)
 
+  clean_fn <- function() {
+    withr::deferred_run(.GlobalEnv)
+  }
+
   topoll <- list()
   for (i in seq_len(num)) {
     if (!is.null(tasks$worker[[i]])) {
-      tasks$worker[[i]]$call(withr::deferred_run, list(global_env))
+      tasks$worker[[i]]$call(clean_fn)
       close(tasks$worker[[i]]$get_input_connection())
       topoll <- c(topoll, tasks$worker[[i]]$get_poll_connection())
     }
