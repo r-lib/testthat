@@ -110,10 +110,19 @@ replay_events <- function(reporter, events) {
 queue_setup <- function(test_paths,
                         test_package,
                         test_dir,
-                        env,
                         num_workers,
                         load_helpers,
                         load_package) {
+
+  # TODO: observe `load_package`, but the "none" default is not
+  # OK for the subprocess, because it'll not have the tested package
+  if (load_package == "none") load_package <- "source"
+
+  # TODO: similarly, load_helpers = FALSE, coming from devtools,
+  # is not appropriate in the subprocess
+  load_helpers <- TRUE
+
+  test_package <- test_package %||% Sys.getenv("TESTTHAT_PKG")
 
   # TODO: meaningful error if startup fails
   load_hook <- expr(asNamespace("testthat")$queue_process_setup(
@@ -133,8 +142,12 @@ queue_setup <- function(test_paths,
 }
 
 queue_process_setup <- function(test_package, test_dir, load_helpers, load_package) {
-  env <- test_files_setup_env(test_package, test_dir, load_package)
-  test_files_setup_state(
+  env <- asNamespace("testthat")$test_files_setup_env(
+    test_package,
+    test_dir,
+    load_package
+  )
+  asNamespace("testthat")$test_files_setup_state(
     test_dir = test_dir,
     test_package = test_package,
     load_helpers = load_helpers,
@@ -166,10 +179,14 @@ queue_teardown <- function(queue) {
   tasks <- queue$list_tasks()
   num <- nrow(tasks)
 
+  clean_fn <- function() {
+    withr::deferred_run(.GlobalEnv)
+  }
+
   topoll <- list()
   for (i in seq_len(num)) {
     if (!is.null(tasks$worker[[i]])) {
-      tasks$worker[[i]]$call(withr::deferred_run, list(global_env))
+      tasks$worker[[i]]$call(clean_fn)
       close(tasks$worker[[i]]$get_input_connection())
       topoll <- c(topoll, tasks$worker[[i]]$get_poll_connection())
     }
