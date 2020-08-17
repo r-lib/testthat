@@ -25,7 +25,7 @@ test_that("complains if no files", {
 
 test_that("can control if failures generate errors", {
   test_error <- function(...) {
-    test_dir(test_path("test-error"), reporter = NULL, ...)
+    test_dir(test_path("test-error"), reporter = "silent", ...)
   }
 
   expect_error(test_error(stop_on_failure = TRUE), "Test failures")
@@ -34,7 +34,7 @@ test_that("can control if failures generate errors", {
 
 test_that("can control if warnings errors", {
   test_warning <- function(...) {
-    test_dir(test_path("test-warning"), reporter = NULL, ...)
+    test_dir(test_path("test-warning"), reporter = "silent", ...)
   }
 
   expect_error(test_warning(stop_on_warning = TRUE), "Tests generated warnings")
@@ -44,7 +44,7 @@ test_that("can control if warnings errors", {
 # test_file ---------------------------------------------------------------
 
 test_that("can test single file", {
-  out <- test_file(test_path("test_dir/test-basic.R"), reporter = NULL)
+  out <- test_file(test_path("test_dir/test-basic.R"), reporter = "silent")
   expect_length(out, 5)
 })
 

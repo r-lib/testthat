@@ -47,6 +47,7 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
                           update_interval = 0.1,
                           ...) {
       super$initialize(...)
+      self$capabilities$parallel_support <- TRUE
       self$max_fail <- max_failures
       self$show_praise <- show_praise
       self$min_time <- min_time

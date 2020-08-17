@@ -25,6 +25,7 @@
 #' test_file(path, reporter = "minimal")
 Reporter <- R6::R6Class("Reporter",
   public = list(
+    capabilities = list(parallel_support = FALSE, parallel_updates = FALSE),
     start_reporter = function() {},
     start_context =  function(context) {},
     start_test =     function(context, test) {},

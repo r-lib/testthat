@@ -79,7 +79,10 @@ test_dir <- function(path,
     lifecycle::deprecate_warn("3.0.0", "test_dir(wrap = )")
   }
 
-  parallel <- find_parallel(path, package) && !is_parallel()
+  reporter <- find_reporter(reporter)
+  parallel <- reporter$capabilities$parallel_support &&
+    find_parallel(path, package) &&
+    !is_parallel()
 
   test_files(
     test_dir = path,
