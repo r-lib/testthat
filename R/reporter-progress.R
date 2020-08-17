@@ -435,7 +435,6 @@ ParallelProgressReporter <- R6::R6Class("ParallelProgressReporter",
     update = function(force = FALSE) {
       if (!force && !self$should_update()) return()
       self$spin_frame <- self$spin_frame + 1L
-      cat(self$spin_frame)
       status <- spinner(self$frames, self$spin_frame)
 
       message <- paste(
