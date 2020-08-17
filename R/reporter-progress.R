@@ -329,7 +329,7 @@ issue_summary <- function(x, rule = FALSE) {
 }
 
 strpad <- function(x, width = cli::console_width()) {
-  n <- pmax(0, width - nchar(crayon::strip_style(x)))
+  n <- pmax(0, width - crayon::col_nchar(x))
   paste0(x, strrep(" ", n))
 }
 
@@ -376,7 +376,6 @@ ParallelProgressReporter <- R6::R6Class("ParallelProgressReporter",
 
     end_file = function() {
       fsts <- self$files[[self$file_name]]
-      self$files[[self$file_name]] <- NULL
       time <- proc.time() - fsts$start_time
 
       self$show_complete_status(time)
@@ -392,22 +391,49 @@ ParallelProgressReporter <- R6::R6Class("ParallelProgressReporter",
         self$rule()
       }
 
+      self$files[[self$file_name]] <- NULL
       if (length(self$files)) self$update(force = TRUE)
     },
 
     show_header = function() {
+      super$show_header()
       self$update(force = TRUE)
     },
 
     show_complete_status = function(time) {
-      ## TODO: proper result line
-      timing <- if (time[[3]] > self$min_time) {
-        cli::col_cyan(sprintf(" [%.1f s]", time[[3]]))
+
+      col_format <- function(n, type) {
+        if (n == 0) {
+          " "
+        } else {
+          n
+        }
       }
 
-      message <- paste0(self$file_name, " is done", timing)
+      file <- self$file_name
+      if (self$files[[file]]$n_fail > 0) {
+        status <- crayon::red(cli::symbol$cross)
+      } else {
+        status <- crayon::green(cli::symbol$tick)
+      }
+      message <- paste0(
+        status, " | ",
+        sprintf("%3d", self$files[[file]]$n_ok), " ",
+        col_format(self$files[[file]]$n_fail, "fail"), " ",
+        col_format(self$files[[file]]$n_warn, "warn"), " ",
+        col_format(self$files[[file]]$n_skip, "skip"), " | ",
+        context_name(self$file_name)
+      )
+
+      if (time[[3]] > self$min_time) {
+        message <- paste0(
+          message,
+          cli::col_cyan(sprintf(" [%.1f s]", time[[3]]))
+        )
+      }
+
       message <- strpad(message, self$width)
-      self$cat_line("\r", message)
+      self$cat_line("\r", crayon::col_substr(message, 1, self$width))
     },
 
     add_result = function(context, test, result) {
@@ -415,7 +441,7 @@ ParallelProgressReporter <- R6::R6Class("ParallelProgressReporter",
       file <- self$file_name
       if (expectation_broken(result)) {
         self$n_fail <- self$n_fail + 1
-        self$files[[file]]$n_fail <- self$files[[file]] + 1L
+        self$files[[file]]$n_fail <- self$files[[file]]$n_fail + 1L
         self$files[[file]]$issues$push(result)
       } else if (expectation_skip(result)) {
         self$n_skip <- self$n_skip + 1
@@ -443,8 +469,8 @@ ParallelProgressReporter <- R6::R6Class("ParallelProgressReporter",
         "  ",
         paste(context_name(names(self$files)), collapse = ", ")
       )
-      message <- strpad(crayon::strip_style(message), self$width)
-      message <- substr(message, 1, self$width)
+      message <- strpad(message, self$width)
+      message <- crayon::col_substr(message, 1, self$width)
       self$cat_tight("\r", message)
     }
   )
