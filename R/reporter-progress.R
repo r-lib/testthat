@@ -329,7 +329,7 @@ issue_summary <- function(x, rule = FALSE) {
 }
 
 strpad <- function(x, width = cli::console_width()) {
-  n <- pmax(0, width - nchar(x))
+  n <- pmax(0, width - nchar(crayon::strip_style(x)))
   paste0(x, strrep(" ", n))
 }
 
@@ -338,3 +338,115 @@ skip_bullets <- function(skips) {
   tbl <- table(skips)
   paste0(cli::symbol$bullet, " ", names(tbl), " (", tbl, ")")
 }
+
+ParallelProgressReporter <- R6::R6Class("ParallelProgressReporter",
+  inherit = ProgressReporter,
+  public = list(
+
+    files = list(),
+    spin_frame = 0L,
+
+    initialize = function(...) {
+      super$initialize(...)
+      self$capabilities$parallel_support <- TRUE
+      self$capabilities$parallel_updates <- TRUE
+    },
+
+    start_file = function(file)  {
+      if (! file %in% names(self$files)) {
+        self$files[[file]] <- list(
+          issues = Stack$new(),
+          n_fail = 0L,
+          n_skip_ = 0L,
+          n_warn = 0L,
+          n_ok = 0L,
+          start_time = proc.time()
+        )
+      }
+      self$file_name <- file
+    },
+
+    start_context = function(context) {
+      # we'll just silently ignore this
+    },
+
+    end_context = function(context) {
+      # we'll just silently ignore this
+    },
+
+    end_file = function() {
+      fsts <- self$files[[self$file_name]]
+      self$files[[self$file_name]] <- NULL
+      time <- proc.time() - fsts$start_time
+
+      self$show_complete_status(time)
+
+      if (fsts$issues$size() > 0) {
+        self$rule()
+
+        issues <- fsts$issues$as_list()
+        summary <- vapply(issues, issue_summary, FUN.VALUE = character(1))
+        self$cat_tight(paste(summary, collapse = "\n\n"))
+
+        self$cat_line()
+        self$rule()
+      }
+
+      if (length(self$files)) self$update(force = TRUE)
+    },
+
+    show_header = function() {
+      self$update(force = TRUE)
+    },
+
+    show_complete_status = function(time) {
+      ## TODO: proper result line
+      timing <- if (time[[3]] > self$min_time) {
+        cli::col_cyan(sprintf(" [%.1f s]", time[[3]]))
+      }
+
+      message <- paste0(self$file_name, " is done", timing)
+      message <- strpad(message, self$width)
+      self$cat_line("\r", message)
+    },
+
+    add_result = function(context, test, result) {
+      self$ctxt_n <- self$ctxt_n + 1L
+      file <- self$file_name
+      if (expectation_broken(result)) {
+        self$n_fail <- self$n_fail + 1
+        self$files[[file]]$n_fail <- self$files[[file]] + 1L
+        self$files[[file]]$issues$push(result)
+      } else if (expectation_skip(result)) {
+        self$n_skip <- self$n_skip + 1
+        self$files[[file]]$n_skip <- self$files[[file]]$n_skip + 1L
+        self$files[[file]]$issues$push(result)
+        self$skips$push(result$message)
+      } else if (expectation_warning(result)) {
+        self$n_warn <- self$n_warn + 1
+        self$files[[file]]$n_warn <- self$files[[file]]$n_warn + 1L
+        self$files[[file]]$issues$push(result)
+      } else {
+        self$n_ok <- self$n_ok + 1
+        self$files[[file]]$n_ok <- self$files[[file]]$n_ok + 1
+      }
+    },
+
+    update = function(force = FALSE) {
+      if (!force && !self$should_update()) return()
+      self$spin_frame <- self$spin_frame + 1L
+      cat(self$spin_frame)
+      status <- spinner(self$frames, self$spin_frame)
+
+      message <- paste(
+        status,
+        summary_line(self$n_ok, self$n_fail, self$n_warn, self$n_skip),
+        "  ",
+        paste(context_name(names(self$files)), collapse = ", ")
+      )
+      message <- strpad(crayon::strip_style(message), self$width)
+      message <- substr(message, 1, self$width)
+      self$cat_tight("\r", message)
+    }
+  )
+)

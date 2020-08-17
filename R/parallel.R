@@ -65,12 +65,13 @@ test_files_parallel <- function(
     load_package = load_package
   )
 
+  parallel_update <- reporter$capabilities$parallel_update
+  poll_time <- if (parallel_update) 0.1 else Inf
   files <- list()
 
   with_reporter(reporters$multi,
     while (!queue$is_idle()) {
-      # TODO: poll for 100-200ms to be able to update a spinner
-      msgs <- queue$poll(Inf)
+      msgs <- queue$poll(poll_time)
       for (x in msgs) {
         if (x$code != PROCESS_MSG) {
           next
@@ -82,15 +83,27 @@ test_files_parallel <- function(
           next
         }
 
-        # Record all events until we get end of file, then we replay them all
-        # with the local reporters. This prevents out of order reporting.
-        if (m$cmd != "DONE") {
-          files[[m$filename]] <- append(files[[m$filename]], list(m))
+        if (parallel_update) {
+          if (m$cmd != "DONE") {
+            reporters$multi$start_file(m$filename)
+            do.call(reporter[[m$cmd]], m$args)
+          }
+
         } else {
-          replay_events(reporters$multi, files[[m$filename]])
-          reporters$multi$end_context_if_started()
-          files[[m$filename]] <- NULL
+
+          # Record all events until we get end of file, then we replay them all
+          # with the local reporters. This prevents out of order reporting.
+          if (m$cmd != "DONE") {
+            files[[m$filename]] <- append(files[[m$filename]], list(m))
+          } else {
+            replay_events(reporters$multi, files[[m$filename]])
+            reporters$multi$end_context_if_started()
+            files[[m$filename]] <- NULL
+          }
         }
+      }
+      if (length(msgs) == 0 && parallel_update) {
+        reporters$multi$update()
       }
     }
   )
