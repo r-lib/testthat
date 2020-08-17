@@ -82,11 +82,8 @@ test_files_parallel <- function(
           next
         }
 
-        # Record all events until we get end of file, then we replay them all
-        # with the local reporters. This prevents out of order reporting.
-        if (m$cmd != "DONE") {
-          files[[m$filename]] <- append(files[[m$filename]], list(m))
-        } else {
+        files[[m$filename]] <- c(files[[m$filename]], m$msgs)
+        if (m$done) {
           replay_events(reporters$multi, files[[m$filename]])
           reporters$multi$end_context_if_started()
           files[[m$filename]] <- NULL
@@ -207,17 +204,17 @@ queue_teardown <- function(queue) {
   }
 }
 
-# Reporter that just forwards events in the subprocess back to the main process
+# Reporter that just forwards events in the subprocess back to the main
+# process.
 #
-# Ideally, these messages would be throttled, i.e. if the test code
-# emits many expectation conditions fast, SubprocessReporter should
-# collect several of them and only emit a condition a couple of times
-# a second. End-of-test and end-of-file events would be transmitted
-# immediately.
+# We throttle these events, i.e. if they are quick, then we collect them
+# and send them in batches.
+
 SubprocessReporter <- R6::R6Class("SubprocessReporter",
   inherit = Reporter,
   public = list(
     start_file = function(filename) {
+      private$upd_freq <- as.difftime(0.3 + (runif(1)-.5) / 5, units = "secs")
       private$filename <- filename
       private$event("start_file", filename)
     },
@@ -250,16 +247,35 @@ SubprocessReporter <- R6::R6Class("SubprocessReporter",
 
   private = list(
     filename = NULL,
+    msgs = new.env(parent = emptyenv()),
+    last_msg = .POSIXct(NA),
+    upd_freq = NULL,
+
     event = function(cmd, ...) {
-      msg <- list(
-        code = PROCESS_MSG,
-        cmd = cmd,
-        filename = private$filename,
-        time = proc.time()[[3]],
-        args = list(...)
-      )
-      class(msg) <- c("testthat_message", "callr_message", "condition")
-      signalCondition(msg)
+      if (cmd != "DONE") {
+        msg <- list(
+          cmd = cmd,
+          args = list(...)
+        )
+        assign(as.character(length(private$msgs)), msg, envir = private$msgs)
+      }
+
+      now <- Sys.time()
+      if (is.na(private$last_msg)) private$last_msg <- now
+      if (now - private$last_msg > private$upd_freq || cmd == "DONE") {
+        pmsg <- list(
+          filename = private$filename,
+          msgs = mget(
+            as.character(seq_len(length(private$msgs))-1),
+            private$msgs
+          ),
+          done = cmd == "DONE"
+        )
+        class(pmsg) <- c("testthat_message", "callr_message", "condition")
+        signalCondition(pmsg)
+        private$last_msg <- now
+        rm(list = ls(private$msgs), envir = private$msgs)
+      }
     }
   )
 )
