@@ -8,7 +8,9 @@ test_that("expect_snapshot_file works", {
   expect_snapshot_file(path, "foo.png")
 
   path <- tempfile()
-  write.csv(mtcars, path)
+  mtcars2 <- mtcars
+  # mtcars2$wt[10] <- NA
+  write.csv(mtcars2, path)
   expect_snapshot_file(path, "foo.csv")
 })
 
