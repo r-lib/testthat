@@ -1,5 +1,15 @@
 test_that("expect_snapshot_file works", {
-  expect_snapshot_file(write_tmp_lines(letters), "foo.txt")
+  expect_snapshot_file(write_tmp_lines(letters), "foo.r", binary = FALSE)
+
+  path <- tempfile()
+  png(path, width = 300, height = 300)
+  plot(1:10, xlab = "x", ylab = "y")
+  dev.off()
+  expect_snapshot_file(path, "foo.png")
+
+  path <- tempfile()
+  write.csv(mtcars, path)
+  expect_snapshot_file(path, "foo.csv")
 })
 
 test_that("basic workflow", {
