@@ -1,17 +1,19 @@
-#' Snapshot testing for a complete file
+#' Snapshot testing for whole files
 #'
 #' @description
-#' Whole file snapshot testing is primarily designed for testing images.
-#' The first time it is run `expect_snapshot_file()` will create
-#' `_snaps/{test}/{name}.{ext}` containing reference output. Future runs will be
-#' compared to this reference: if different, the test will fail and the new
-#' results will be saved in `_snaps/{test}/{name}.new.{ext}`.
+#' Whole file snapshot testing is designed for testing objects that don't have
+#' a convenient textual representation, with initial support for images
+#' (`.png`, `.jpg`, `.svg`) and data frames (`.csv`).
+#'
+#' The first time `expect_snapshot_file()` is run, it will create
+#' `_snaps/{test}/{name}.{ext}` containing reference output. Future runs will
+#' be compared to this reference: if different, the test will fail and the new
+#' results will be saved in `_snaps/{test}/{name}.new.{ext}`. To review
+#' failures, call [snapshot_review()].
 #'
 #' We generally expect this function to be used via a wrapper that takes care
-#' of ensuring the images are as reproducible as possible, automatically
-#' skipping tests where it's known that the images can't be reproduced exactly
-#' (without extreme efforts it is generally impossible to generate pixel
-#' perfect images across platforms).
+#' of ensuring that output is as reproducible as possible, e.g. automatically
+#' skipping tests where it's known that images can't be reproduced exactly.
 #'
 #' @param path Path to file to snapshot.
 #' @param name Snapshot name, taken from `path` by default.
@@ -19,6 +21,37 @@
 #'   difference between Windows and Mac/Linux line endings.
 #' @inheritParams expect_snapshot
 #' @export
+#' @examples
+#'
+#' # To use expect_snapshot_file() you'll typically need to start by writing
+#' # a helper function that creates a file from your code, returning a path
+#' save_png <- function(code, width = 400, height = 400) {
+#'   path <- tempfile(fileext = ".png")
+#'   png(path, width = width, height = height)
+#'   on.exit(dev.off())
+#'   code
+#'
+#'   path
+#' }
+#' path <- save_png(plot(1:5))
+#' path
+#'
+#' \dontrun{
+#' expect_snapshot_file(save_png(hist(mtcars)), "plot.png")
+#' }
+#'
+#' # You'd then also provide a helper that skip tests where you can't
+#' # be sure of producing exactly the same output
+#' expect_snapshot_plot <- function(name, code) {
+#'   # Other packages might affect results
+#'   skip_if_not_installed("ggplot2", "2.0.0")
+#'   # Or maybe the output is different on some operation systems
+#'   skip_on_os("windows")
+#'   # You'll need to carefully think about and experiment with these skips
+#'
+#'   path <- save_png(code)
+#'   expect_snapshot_file(path, paste0(name, ".png"))
+#' }
 expect_snapshot_file <- function(path, name = basename(path), binary = TRUE, cran = FALSE) {
   edition_require(3, "expect_snapshot_file()")
   if (cran && !interactive() && on_cran()) {

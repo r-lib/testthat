@@ -93,21 +93,3 @@
     WAoAAAACAAMGAwACAwAAAAATAAAABAAAABAAAAABAAQACQAAAAFhAAAADgAAAAE/+AAAAAAA
     AAAAAA0AAAABAAAAAQAAAAoAAAABAAAAAQ==
 
-# informs about files being accepted
-
-    Message <message>
-      Updating snapshots
-      * a.new.md
-      * b.new.md
-
----
-
-    Message <message>
-      No snapshots to update
-
-# can accept specific files
-
-    Message <message>
-      Updating snapshots
-      * a.new.md
-
