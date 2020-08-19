@@ -68,7 +68,7 @@ jobs:
       - name: Install cairo
         if: runner.os == 'macOS'
         run: |
-          brew install cario
+          brew install cairo
 
       - name: Install dependencies
         run: |
