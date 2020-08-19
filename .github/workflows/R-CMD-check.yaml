@@ -66,7 +66,7 @@ jobs:
           sudo -s eval "$sysreqs"
 
       - name: Install cairo
-        if: runner.os == 'Mac'
+        if: runner.os == 'macOS'
         run: |
           brew install cario
 
