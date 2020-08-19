@@ -51,7 +51,7 @@ review_app <- function(name, old_path, new_path) {
   )
 
   n <- length(name)
-  case_index <- setNames(seq_along(name), name)
+  case_index <- stats::setNames(seq_along(name), name)
   handled <- rep(FALSE, n)
 
   ui <- shiny::fluidPage(style = "margin: 0.5em",
@@ -88,7 +88,7 @@ review_app <- function(name, old_path, new_path) {
     })
     shiny::observeEvent(input$skip, {
       i <- next_case()
-      updateSelectInput(session, "cases", selected = i)
+      shiny::updateSelectInput(session, "cases", selected = i)
     })
 
     update_cases <- function() {
