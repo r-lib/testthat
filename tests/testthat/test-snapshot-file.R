@@ -1,4 +1,5 @@
 test_that("expect_snapshot_file works", {
+  skip_if_not(getRversion() >= "3.6.0")
   expect_snapshot_file(write_tmp_lines(letters), "foo.r", binary = FALSE)
 
   path <- tempfile()
