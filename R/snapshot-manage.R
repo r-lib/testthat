@@ -116,7 +116,11 @@ review_app <- function(name, old_path, new_path) {
     "Starting Shiny app for snapshot review",
     i = "Use Ctrl + C to quit"
   ))
-  shiny::runApp(shiny::shinyApp(ui, server), quiet = TRUE)
+  shiny::runApp(
+    shiny::shinyApp(ui, server),
+    quiet = TRUE,
+    launch.browser = paneViewer()
+  )
   invisible()
 }
 
