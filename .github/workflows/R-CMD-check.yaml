@@ -65,10 +65,10 @@ jobs:
           sysreqs=$(Rscript -e "cat(sysreqs::sysreq_commands('DESCRIPTION'))")
           sudo -s eval "$sysreqs"
 
-      - name: Install cairo
+      - name: Install X11
         if: runner.os == 'macOS'
         run: |
-          brew install cairo
+          brew cask install xquartz
 
       - name: Install dependencies
         run: |
