@@ -65,6 +65,11 @@ jobs:
             eval sudo $cmd
           done < <(Rscript -e 'cat(remotes::system_requirements("ubuntu", "16.04"), sep = "\n")')
 
+      - name: Install X11
+        if: runner.os == 'macOS'
+        run: |
+          brew cask install xquartz
+
       - name: Install dependencies
         run: |
           remotes::install_deps(dependencies = TRUE)

@@ -9,8 +9,7 @@ test_that("can establish local snapshotter for testing", {
 })
 
 test_that("basic workflow", {
-  withr::local_dir(tempdir())
-  snapper <- local_snapshotter(cleanup = TRUE)
+  snapper <- local_snapshotter(tempfile(), cleanup = TRUE)
   snapper$start_file("snapshot-2")
   # output if not active (because test not set here)
   expect_output(expect_snapshot_output("x"), "No snapshotter active")
@@ -38,8 +37,7 @@ test_that("basic workflow", {
 })
 
 test_that("removing tests removes snap file", {
-  withr::local_dir(tempdir())
-  snapper <- local_snapshotter(cleanup = TRUE)
+  snapper <- local_snapshotter(tempfile(), cleanup = TRUE)
   snapper$start_file("snapshot-3", "test")
   expect_warning(expect_snapshot_output("x"), "Adding new")
   snapper$end_file()
@@ -58,8 +56,7 @@ test_that("errors if can't roundtrip", {
 })
 
 test_that("errors in test doesn't change snapshot", {
-  withr::local_dir(tempdir())
-  snapper <- local_snapshotter(cleanup = TRUE)
+  snapper <- local_snapshotter(tempfile(), cleanup = TRUE)
 
   # First run
   snapper$start_file("snapshot-5", "test")
@@ -84,5 +81,4 @@ test_that("errors in test doesn't change snapshot", {
     "reset"
   )
   snapper$end_file()
-
 })
