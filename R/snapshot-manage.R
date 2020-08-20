@@ -65,12 +65,12 @@ review_app <- function(name, old_path, new_path) {
       )
     ),
     shiny::fluidRow(
-      diffviewer::visual_diffOutput("diff")
+      diffviewer::visual_diff_output("diff")
     )
   )
   server <- function(input, output, session) {
     i <- shiny::reactive(as.numeric(input$cases))
-    output$diff <- diffviewer::renderVisual_diff({
+    output$diff <- diffviewer::visual_diff_render({
       diffviewer::visual_diff(old_path[[i()]], new_path[[i()]])
     })
 
