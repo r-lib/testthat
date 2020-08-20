@@ -47,7 +47,14 @@
 
 
 <meta property="og:title" content="Snapshot management — snapshot_accept" />
-<meta property="og:description" content="snapshot_accept() accepts all changed snapshots." />
+<meta property="og:description" content="
+
+snapshot_accept() accepts all modified snapshots.
+snapshot_review() opens a Shiny app that shows a visual diff of each
+modified snapshot. This is particularly useful for whole file snapshots
+created by expect_snapshot_file().
+
+" />
 <meta property="og:image" content="https://testthat.r-lib.org/logo.png" />
 
 
@@ -186,29 +193,37 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Snapshot management</h1>
-    <small class="dont-index">Source: <a href='https://github.com/r-lib/testthat/blob/master/R/snapshot.R'><code>R/snapshot.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/r-lib/testthat/blob/master/R/snapshot-manage.R'><code>R/snapshot-manage.R</code></a></small>
     <div class="hidden name"><code>snapshot_accept.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p><code>snapshot_accept()</code> accepts all changed snapshots.</p>
+    
+<ul>
+<li><p><code>snapshot_accept()</code> accepts all modified snapshots.</p></li>
+<li><p><code>snapshot_review()</code> opens a Shiny app that shows a visual diff of each
+modified snapshot. This is particularly useful for whole file snapshots
+created by <code><a href='expect_snapshot_file.html'>expect_snapshot_file()</a></code>.</p></li>
+</ul>
+
     </div>
 
-    <pre class="usage"><span class='fu'>snapshot_accept</span>(<span class='kw'>files</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>path</span> <span class='kw'>=</span> <span class='st'>"tests/testthat"</span>)</pre>
+    <pre class="usage"><span class='fu'>snapshot_accept</span>(<span class='kw'>files</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>path</span> <span class='kw'>=</span> <span class='st'>"tests/testthat"</span>)
+
+<span class='fu'>snapshot_review</span>(<span class='kw'>files</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>path</span> <span class='kw'>=</span> <span class='st'>"tests/testthat"</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>files</th>
-      <td><p>Test files to accept snapshots for. Can be full path to
-test (<code>tests/testthat/test-foo.R</code>), file name (<code>test-foo.R</code>), or
-test name (<code>foo</code>).</p>
-<p>Default, <code>NULL</code>, accepts all snapshots.</p></td>
+      <td><p>Optionally, filter affects to snapshots from specified test
+files. Can be full path to test (<code>tests/testthat/test-foo.R</code>), file name
+(<code>test-foo.R</code>), or test name (<code>foo</code>).</p></td>
     </tr>
     <tr>
       <th>path</th>
-      <td><p>Path to tests</p></td>
+      <td><p>Path to tests.</p></td>
     </tr>
     </table>
 

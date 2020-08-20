@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Instantiate local snapshotting context — local_snapshotter • testthat</title>
+<title>Snapshot testing for whole files — expect_snapshot_file • testthat</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,9 +46,18 @@
 
 
 
-<meta property="og:title" content="Instantiate local snapshotting context — local_snapshotter" />
-<meta property="og:description" content="Needed if you want to run snapshot tests outside of the usual testthat
-framework For expert use only." />
+<meta property="og:title" content="Snapshot testing for whole files — expect_snapshot_file" />
+<meta property="og:description" content="Whole file snapshot testing is designed for testing objects that don't have
+a convenient textual representation, with initial support for images
+(.png, .jpg, .svg) and data frames (.csv).
+The first time expect_snapshot_file() is run, it will create
+_snaps/{test}/{name}.{ext} containing reference output. Future runs will
+be compared to this reference: if different, the test will fail and the new
+results will be saved in _snaps/{test}/{name}.new.{ext}. To review
+failures, call snapshot_review().
+We generally expect this function to be used via a wrapper that takes care
+of ensuring that output is as reproducible as possible, e.g. automatically
+skipping tests where it's known that images can't be reproduced exactly." />
 <meta property="og:image" content="https://testthat.r-lib.org/logo.png" />
 
 
@@ -186,20 +195,83 @@ framework For expert use only." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Instantiate local snapshotting context</h1>
-    <small class="dont-index">Source: <a href='https://github.com/r-lib/testthat/blob/master/R/snapshot-reporter.R'><code>R/snapshot-reporter.R</code></a></small>
-    <div class="hidden name"><code>local_snapshotter.Rd</code></div>
+    <h1>Snapshot testing for whole files</h1>
+    <small class="dont-index">Source: <a href='https://github.com/r-lib/testthat/blob/master/R/snapshot-file.R'><code>R/snapshot-file.R</code></a></small>
+    <div class="hidden name"><code>expect_snapshot_file.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Needed if you want to run snapshot tests outside of the usual testthat
-framework For expert use only.</p>
+    <p>Whole file snapshot testing is designed for testing objects that don't have
+a convenient textual representation, with initial support for images
+(<code>.png</code>, <code>.jpg</code>, <code>.svg</code>) and data frames (<code>.csv</code>).</p>
+<p>The first time <code>expect_snapshot_file()</code> is run, it will create
+<code>_snaps/{test}/{name}.{ext}</code> containing reference output. Future runs will
+be compared to this reference: if different, the test will fail and the new
+results will be saved in <code>_snaps/{test}/{name}.new.{ext}</code>. To review
+failures, call <code><a href='snapshot_accept.html'>snapshot_review()</a></code>.</p>
+<p>We generally expect this function to be used via a wrapper that takes care
+of ensuring that output is as reproducible as possible, e.g. automatically
+skipping tests where it's known that images can't be reproduced exactly.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>local_snapshotter</span>(<span class='kw'>snap_dir</span> <span class='kw'>=</span> <span class='st'>"_snaps"</span>, <span class='kw'>cleanup</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>.env</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/sys.parent.html'>parent.frame</a></span>())</pre>
+    <pre class="usage"><span class='fu'>expect_snapshot_file</span>(<span class='no'>path</span>, <span class='kw'>name</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/basename.html'>basename</a></span>(<span class='no'>path</span>), <span class='kw'>binary</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>cran</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>path</th>
+      <td><p>Path to file to snapshot.</p></td>
+    </tr>
+    <tr>
+      <th>name</th>
+      <td><p>Snapshot name, taken from <code>path</code> by default.</p></td>
+    </tr>
+    <tr>
+      <th>binary</th>
+      <td><p>If <code>FALSE</code>, files are compared line-by-line, ignoring the
+difference between Windows and Mac/Linux line endings.</p></td>
+    </tr>
+    <tr>
+      <th>cran</th>
+      <td><p>Should these expectations be verified on CRAN? By default,
+they are not, because snapshot tests tend to be fragile because they
+often rely on minor details of dependencies. Even on CRAN, the
+expectations will still fail if <code>x</code> errors.</p></td>
+    </tr>
+    </table>
 
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'>
+<span class='co'># To use expect_snapshot_file() you'll typically need to start by writing</span>
+<span class='co'># a helper function that creates a file from your code, returning a path</span>
+<span class='no'>save_png</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>(<span class='no'>code</span>, <span class='no'>width</span> <span class='kw'>=</span> <span class='fl'>400</span>, <span class='no'>height</span> <span class='kw'>=</span> <span class='fl'>400</span>) {
+  <span class='no'>path</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempfile</a></span>(<span class='kw'>fileext</span> <span class='kw'>=</span> <span class='st'>".png"</span>)
+  <span class='fu'><a href='https://rdrr.io/r/grDevices/png.html'>png</a></span>(<span class='no'>path</span>, <span class='kw'>width</span> <span class='kw'>=</span> <span class='no'>width</span>, <span class='kw'>height</span> <span class='kw'>=</span> <span class='no'>height</span>)
+  <span class='fu'><a href='https://rdrr.io/r/base/on.exit.html'>on.exit</a></span>(<span class='fu'><a href='https://rdrr.io/r/grDevices/dev.html'>dev.off</a></span>())
+  <span class='no'>code</span>
 
+  <span class='no'>path</span>
+}
+<span class='no'>path</span> <span class='kw'>&lt;-</span> <span class='fu'>save_png</span>(<span class='fu'><a href='https://rdrr.io/r/base/plot.html'>plot</a></span>(<span class='fl'>1</span>:<span class='fl'>5</span>))
+<span class='no'>path</span></div><div class='output co'>#&gt; [1] "/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//Rtmpvkg4QU/file7e36e4744d.png"</div><div class='input'>
+<span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
+<span class='fu'>expect_snapshot_file</span>(<span class='fu'>save_png</span>(<span class='fu'><a href='https://rdrr.io/r/graphics/hist.html'>hist</a></span>(<span class='no'>mtcars</span>)), <span class='st'>"plot.png"</span>)
+}
+
+<span class='co'># You'd then also provide a helper that skip tests where you can't</span>
+<span class='co'># be sure of producing exactly the same output</span>
+<span class='no'>expect_snapshot_plot</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>(<span class='no'>name</span>, <span class='no'>code</span>) {
+  <span class='co'># Other packages might affect results</span>
+  <span class='fu'><a href='skip.html'>skip_if_not_installed</a></span>(<span class='st'>"ggplot2"</span>, <span class='st'>"2.0.0"</span>)
+  <span class='co'># Or maybe the output is different on some operation systems</span>
+  <span class='fu'><a href='skip.html'>skip_on_os</a></span>(<span class='st'>"windows"</span>)
+  <span class='co'># You'll need to carefully think about and experiment with these skips</span>
+
+  <span class='no'>path</span> <span class='kw'>&lt;-</span> <span class='fu'>save_png</span>(<span class='no'>code</span>)
+  <span class='fu'>expect_snapshot_file</span>(<span class='no'>path</span>, <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span>(<span class='no'>name</span>, <span class='st'>".png"</span>))
+}</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

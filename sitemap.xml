@@ -142,6 +142,9 @@
     <loc>https://testthat.r-lib.org/reference/expect_snapshot.html</loc>
   </url>
   <url>
+    <loc>https://testthat.r-lib.org/reference/expect_snapshot_file.html</loc>
+  </url>
+  <url>
     <loc>https://testthat.r-lib.org/reference/expect_success.html</loc>
   </url>
   <url>
