@@ -42,5 +42,7 @@ jobs:
         shell: Rscript {0}
 
       - name: Test coverage
-        run: covr::codecov()
+        run: |
+          options(warning.length = 8170)
+          covr::codecov()
         shell: Rscript {0}
