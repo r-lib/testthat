@@ -37,9 +37,7 @@ snapshot_review <- function(files = NULL, path = "tests/testthat") {
     return(invisible())
   }
 
-  test_name <- file.path(basename(dirname(changed$cur)), basename(changed$cur))
-  review_app(test_name, changed$cur, changed$new)
-
+  review_app(changed$name, changed$cur, changed$new)
   rstudio_tickle()
   invisible()
 }
@@ -144,8 +142,13 @@ snapshot_meta <- function(files = NULL, path = "tests/testthat") {
     new[!file.exists(new)] <- NA
   }
 
+  snap_name <- ifelse(snap_file,
+    file.path(snap_test, basename(cur)),
+    basename(cur)
+  )
   out <- data.frame(
     test = snap_test,
+    name = snap_name,
     cur = cur,
     new = new,
     stringsAsFactors = FALSE
