@@ -277,8 +277,11 @@ queue_teardown <- function(queue) {
 
   for (i in seq_len(num)) {
     if (!is.null(tasks$worker[[i]])) {
-      # TODO: kill_tree() only works on Linux, Win, macOS
-      tasks$worker[[i]]$kill_tree()
+      if (ps::ps_is_supported()) {
+        tasks$worker[[i]]$kill_tree()
+      } else {
+        tasks$worker[[i]]$kill()
+      }
     }
   }
 }
