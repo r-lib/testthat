@@ -11,6 +11,11 @@ TeamcityReporter <- R6::R6Class("TeamcityReporter",
   public = list(
     i = NA_integer_,
 
+    initialize = function(...) {
+      super$initialize(...)
+      self$capabilities$parallel_support <- TRUE
+    },
+
     start_context = function(context) {
       private$report_event("testSuiteStarted", context)
     },

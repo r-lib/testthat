@@ -17,6 +17,7 @@ CheckReporter <- R6::R6Class("CheckReporter",
     n_warn = 0L,
 
     initialize = function(...) {
+      self$capabilities$parallel_support <- TRUE
       self$problems <- Stack$new()
       self$skips <- Stack$new()
 

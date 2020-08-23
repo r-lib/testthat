@@ -14,6 +14,7 @@ SilentReporter <- R6::R6Class("SilentReporter",
 
     initialize = function(...) {
       super$initialize(...)
+      self$capabilities$parallel_support <- TRUE
       self$.expectations <- Stack$new()
     },
 
