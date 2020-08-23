@@ -83,8 +83,6 @@ test_files_parallel <- function(
   )
 }
 
-sys_time_dbl <- function() as.double(Sys.time())
-
 parallel_event_loop_smooth <- function(queue, reporters) {
   update_interval <- 0.1
   next_update <- proc.time()[[3]] + update_interval

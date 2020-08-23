@@ -6,6 +6,9 @@
 #' code. This reporter also praises you from time-to-time if all your tests
 #' pass. It's the default reporter for [test_dir()].
 #'
+#' `ParallelProgressReporter` is very similar to `ProgressReporter`, but
+#' works better for packages that want parallel tests.
+#'
 #' `CompactProgressReporter` is a minimal version of `ProgressReporter`
 #' designed for use with single files. It's the default reporter for
 #' [test_file()].
@@ -336,6 +339,9 @@ CompactProgressReporter <- R6::R6Class("CompactProgressReporter",
 )
 
 # parallel progres reporter -----------------------------------------------
+
+#' @export
+#' @rdname ProgressReporter
 
 ParallelProgressReporter <- R6::R6Class("ParallelProgressReporter",
   inherit = ProgressReporter,

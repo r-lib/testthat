@@ -10,7 +10,7 @@ test_package(package, reporter = check_reporter(), ...)
 
 test_check(package, reporter = check_reporter(), ...)
 
-test_local(path = ".", reporter = default_reporter(), ...)
+test_local(path = ".", reporter = NULL, ...)
 }
 \arguments{
 \item{package}{If these tests belong to a package, the name of the package.}
