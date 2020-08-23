@@ -100,9 +100,21 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
       )
     },
 
-    show_status = function(complete = FALSE) {
+    status_data = function() {
+      list(
+        n = self$ctxt_n,
+        n_ok = self$ctxt_n_ok,
+        n_fail = self$ctxt_n_fail,
+        n_warn = self$ctxt_n_warn,
+        n_skip = self$ctxt_n_skip,
+        name = self$ctxt_name
+      )
+    },
+
+    show_status = function(complete = FALSE, time = 0, pad = FALSE) {
+      data <- self$status_data()
       if (complete) {
-        if (self$ctxt_n_fail > 0) {
+        if (data$n_fail > 0) {
           status <- crayon::red(cli::symbol$cross)
         } else {
           status <- crayon::green(cli::symbol$tick)
@@ -112,7 +124,7 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
         if (!self$should_update()) {
           return()
         }
-        status <- spinner(self$frames, self$ctxt_n)
+        status <- spinner(self$frames, data$n)
       }
 
       col_format <- function(n, type) {
@@ -124,16 +136,31 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
       }
 
       message <- paste0(
-        status, " | ", sprintf("%3d", self$ctxt_n_ok), " ",
-        col_format(self$ctxt_n_fail, "fail"), " ",
-        col_format(self$ctxt_n_warn, "warn"), " ",
-        col_format(self$ctxt_n_skip, "skip"), " | ",
-        self$ctxt_name
+        status, " | ", sprintf("%3d", data$n_ok), " ",
+        col_format(data$n_fail, "fail"), " ",
+        col_format(data$n_warn, "warn"), " ",
+        col_format(data$n_skip, "skip"), " | ",
+        data$name
       )
+
+      if (complete && time > self$min_time) {
+        message <- paste0(
+          message,
+          cli::col_cyan(sprintf(" [%.1f s]", time))
+        )
+      }
+
+      if (pad) {
+        message <- strpad(message, self$width)
+        message <- crayon::col_substr(message, 1, self$width)
+      }
+
       if (!complete) {
         message <- strpad(message, self$width)
+        self$cat_tight("\r", message)
+      } else {
+        self$cat_line("\r", message)
       }
-      self$cat_tight("\r", message)
     },
 
     end_context = function(context) {
@@ -146,23 +173,9 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
         return()
       }
 
-      self$show_status(complete = TRUE)
-      if (time[[3]] > self$min_time) {
-        self$cat_line(sprintf(" [%.1f s]", time[[3]]), col = "cyan")
-      } else {
-        self$cat_line()
-      }
+      self$show_status(complete = TRUE, time = time[[3]])
 
-      if (self$ctxt_issues$size() > 0) {
-        self$rule()
-
-        issues <- self$ctxt_issues$as_list()
-        summary <- vapply(issues, issue_summary, FUN.VALUE = character(1))
-        self$cat_tight(paste(summary, collapse = "\n\n"))
-
-        self$cat_line()
-        self$rule()
-      }
+      self$report_issues(self$ctxt_issues)
     },
 
     add_result = function(context, test, result) {
@@ -234,6 +247,19 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
         self$cat_line(colourise(praise(), "success"))
       } else {
         self$cat_line(colourise(encourage(), "error"))
+      }
+    },
+
+    report_issues = function(issues) {
+      if (issues$size() > 0) {
+        self$rule()
+
+        issues <- issues$as_list()
+        summary <- vapply(issues, issue_summary, FUN.VALUE = character(1))
+        self$cat_tight(paste(summary, collapse = "\n\n"))
+
+        self$cat_line()
+        self$rule()
       }
     },
 
@@ -309,35 +335,7 @@ CompactProgressReporter <- R6::R6Class("CompactProgressReporter",
   )
 )
 
-# helpers -----------------------------------------------------------------
-
-spinner <- function(frames, i) {
-  frames[((i - 1) %% length(frames)) + 1]
-}
-
-issue_summary <- function(x, rule = FALSE) {
-  type <- expectation_type(x)
-  loc <- expectation_location(x)
-
-  header <- paste0(loc, ": ", colourise(type, type), ": ", x$test)
-  header <- crayon::bold(header)
-  if (rule) {
-    header <- cli::rule(header)
-  }
-
-  paste0(header, "\n", format(x))
-}
-
-strpad <- function(x, width = cli::console_width()) {
-  n <- pmax(0, width - crayon::col_nchar(x))
-  paste0(x, strrep(" ", n))
-}
-
-skip_bullets <- function(skips) {
-  skips <- gsub("Reason: ", "", unlist(skips))
-  tbl <- table(skips)
-  paste0(cli::symbol$bullet, " ", names(tbl), " (", tbl, ")")
-}
+# parallel progres reporter -----------------------------------------------
 
 ParallelProgressReporter <- R6::R6Class("ParallelProgressReporter",
   inherit = ProgressReporter,
@@ -361,6 +359,7 @@ ParallelProgressReporter <- R6::R6Class("ParallelProgressReporter",
           n_skip_ = 0L,
           n_warn = 0L,
           n_ok = 0L,
+          name = context_name(file),
           start_time = proc.time()
         )
       }
@@ -379,18 +378,8 @@ ParallelProgressReporter <- R6::R6Class("ParallelProgressReporter",
       fsts <- self$files[[self$file_name]]
       time <- proc.time() - fsts$start_time
 
-      self$show_complete_status(time)
-
-      if (fsts$issues$size() > 0) {
-        self$rule()
-
-        issues <- fsts$issues$as_list()
-        summary <- vapply(issues, issue_summary, FUN.VALUE = character(1))
-        self$cat_tight(paste(summary, collapse = "\n\n"))
-
-        self$cat_line()
-        self$rule()
-      }
+      self$show_status(complete = TRUE, time = time[[3]], pad = TRUE)
+      self$report_issues(fsts$issues)
 
       self$files[[self$file_name]] <- NULL
       if (length(self$files)) self$update(force = TRUE)
@@ -406,40 +395,8 @@ ParallelProgressReporter <- R6::R6Class("ParallelProgressReporter",
       self$update(force = TRUE)
     },
 
-    show_complete_status = function(time) {
-
-      col_format <- function(n, type) {
-        if (n == 0) {
-          " "
-        } else {
-          n
-        }
-      }
-
-      file <- self$file_name
-      if (self$files[[file]]$n_fail > 0) {
-        status <- crayon::red(cli::symbol$cross)
-      } else {
-        status <- crayon::green(cli::symbol$tick)
-      }
-      message <- paste0(
-        status, " | ",
-        sprintf("%3d", self$files[[file]]$n_ok), " ",
-        col_format(self$files[[file]]$n_fail, "fail"), " ",
-        col_format(self$files[[file]]$n_warn, "warn"), " ",
-        col_format(self$files[[file]]$n_skip, "skip"), " | ",
-        context_name(self$file_name)
-      )
-
-      if (time[[3]] > self$min_time) {
-        message <- paste0(
-          message,
-          cli::col_cyan(sprintf(" [%.1f s]", time[[3]]))
-        )
-      }
-
-      message <- strpad(message, self$width)
-      self$cat_line("\r", crayon::col_substr(message, 1, self$width))
+    status_data = function() {
+      self$files[[self$file_name]]
     },
 
     add_result = function(context, test, result) {
@@ -472,7 +429,7 @@ ParallelProgressReporter <- R6::R6Class("ParallelProgressReporter",
       message <- paste(
         status,
         summary_line(self$n_ok, self$n_fail, self$n_warn, self$n_skip),
-        "  ",
+        if (length(self$files) > 0) "@" else " starting up...",
         paste(context_name(names(self$files)), collapse = ", ")
       )
       message <- strpad(message, self$width)
@@ -481,3 +438,33 @@ ParallelProgressReporter <- R6::R6Class("ParallelProgressReporter",
     }
   )
 )
+
+# helpers -----------------------------------------------------------------
+
+spinner <- function(frames, i) {
+  frames[((i - 1) %% length(frames)) + 1]
+}
+
+issue_summary <- function(x, rule = FALSE) {
+  type <- expectation_type(x)
+  loc <- expectation_location(x)
+
+  header <- paste0(loc, ": ", colourise(type, type), ": ", x$test)
+  header <- crayon::bold(header)
+  if (rule) {
+    header <- cli::rule(header)
+  }
+
+  paste0(header, "\n", format(x))
+}
+
+strpad <- function(x, width = cli::console_width()) {
+  n <- pmax(0, width - crayon::col_nchar(x))
+  paste0(x, strrep(" ", n))
+}
+
+skip_bullets <- function(skips) {
+  skips <- gsub("Reason: ", "", unlist(skips))
+  tbl <- table(skips)
+  paste0(cli::symbol$bullet, " ", names(tbl), " (", tbl, ")")
+}
