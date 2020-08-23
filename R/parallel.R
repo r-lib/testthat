@@ -80,11 +80,21 @@ test_files_parallel <- function(
   )
 }
 
+sys_time_dbl <- function() as.double(Sys.time())
+
 parallel_event_loop_smooth <- function(queue, reporters) {
-  poll_time <- 0.1
+  update_interval <- 0.1
+  next_update <- proc.time()[[3]] + update_interval
 
   while (!queue$is_idle()) {
+    # How much time do we have to poll before the next UI update?
+    now <- proc.time()[[3]]
+    poll_time <- max(next_update - now, 0)
+    next_update <- now + update_interval
+
     msgs <- queue$poll(poll_time)
+
+    updated <- FALSE
     for (x in msgs) {
       if (x$code != PROCESS_MSG) {
         next
@@ -99,11 +109,12 @@ parallel_event_loop_smooth <- function(queue, reporters) {
       if (m$cmd != "DONE") {
         reporters$multi$start_file(m$filename)
         do.call(reporters$multi[[m$cmd]], m$args)
+        updated <- TRUE
       }
     }
 
     # We need to spin, even if there were no events
-    if (length(msgs)) reporters$multi$update()
+    if (!updated) reporters$multi$update()
   }
 }
 

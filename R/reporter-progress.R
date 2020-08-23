@@ -350,6 +350,7 @@ ParallelProgressReporter <- R6::R6Class("ParallelProgressReporter",
       super$initialize(...)
       self$capabilities$parallel_support <- TRUE
       self$capabilities$parallel_updates <- TRUE
+      self$update_interval <- 0.05
     },
 
     start_file = function(file)  {
@@ -393,6 +394,11 @@ ParallelProgressReporter <- R6::R6Class("ParallelProgressReporter",
 
       self$files[[self$file_name]] <- NULL
       if (length(self$files)) self$update(force = TRUE)
+    },
+
+    end_reporter = function() {
+      self$cat_tight("\r", strpad(""))
+      super$end_reporter()
     },
 
     show_header = function() {
