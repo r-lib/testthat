@@ -435,7 +435,7 @@ ParallelProgressReporter <- R6::R6Class("ParallelProgressReporter",
       message <- paste(
         status,
         summary_line(self$n_ok, self$n_fail, self$n_warn, self$n_skip),
-        if (length(self$files) > 0) "@" else " starting up...",
+        if (length(self$files) > 0) "@" else "Starting up...",
         paste(context_name(names(self$files)), collapse = ", ")
       )
       message <- strpad(message, self$width)
