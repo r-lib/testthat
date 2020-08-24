@@ -23,7 +23,7 @@ Depends:
     R (>= 3.1)
 Imports:
     brio,
-    callr (>= 3.4.3),
+    callr (>= 3.4.3.9000),
     cli,
     crayon (>= 1.3.4),
     desc,
@@ -62,4 +62,6 @@ Config/testthat/parallel: false
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE, r6 = FALSE)
 RoxygenNote: 7.1.1
-Remotes: r-lib/diffviewer
+Remotes:
+    r-lib/diffviewer,
+    r-lib/callr
