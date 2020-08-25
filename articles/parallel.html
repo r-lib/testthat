@@ -149,74 +149,34 @@
 
     
     
-<div id="parallel-testthat-preview" class="section level2">
+<p>To take advantage of parallel tests, add the following line to the <code>DESCRIPTION</code>:</p>
+<pre><code>Config/testthat/parallel: true</code></pre>
+<div id="basic-operation" class="section level2">
 <h2 class="hasAnchor">
-<a href="#parallel-testthat-preview" class="anchor"></a>Parallel testthat (preview)</h2>
-<div id="turning-on-parallel-tests" class="section level3">
-<h3 class="hasAnchor">
-<a href="#turning-on-parallel-tests" class="anchor"></a>Turning on parallel tests</h3>
-<p>The current development version of testthat supports running test in parallel, in multiple R subprocesses. To turn on this feature, you need to set the <code>TESTTHAT_PARALLEL</code> environment variable to <code>true</code>.</p>
+<a href="#basic-operation" class="anchor"></a>Basic operation</h2>
+<p>Starting a new R process is relatively expensive, so testthat begins by creating a pool of workers. The size of the pool will be determined by <code>getOptions("Ncpus")</code>, then the <code>TESTTHAT_MAX_CPUS</code> envvar, then the number of processes reported by <code><a href="https://rdrr.io/pkg/ps/man/ps_cpu_count.html">ps::ps_cpu_count()</a></code>. In any case, testthat will never start more subprocesses than test files.</p>
+<p>Each worker begins by loading testthat and the package being tested. It then runs any setup files (so if you have existing setup files you’ll need to make sure they work when executed in parallel).</p>
+<p>testthat then starts sending test files to workers in alphabetical order: as soon as a subprocess has finished, it receives another file, until all files are done. This means that state is persisted across test files: options are <em>not</em> reset, loaded packages are <em>not</em> unloaded, the global environment is <em>not</em> cleared, etc. You are responsible for making sure each file leaves the world as it finds it.</p>
+<p>Because files are run in alphabetical order, you may want to rename your slowest test files so that they start first, e.g. <code>test-1-slowest.R</code>, <code>test-2-next-slowest.R</code>, etc.</p>
 </div>
-<div id="number-of-parallel-subprocesses" class="section level3">
-<h3 class="hasAnchor">
-<a href="#number-of-parallel-subprocesses" class="anchor"></a>Number of parallel subprocesses</h3>
-<p>The number of subprocesses is taken from the <code>Ncpus</code> option, if set, otherwise it is fixed to 4. This will change later, see the TODO list at <a href="https://github.com/r-lib/testthat/pull/1032" class="uri">https://github.com/r-lib/testthat/pull/1032</a>. (But testthat never starts more subprocesses than the number of test files.)</p>
-</div>
-<div id="test-files-test-order-and-state" class="section level3">
-<h3 class="hasAnchor">
-<a href="#test-files-test-order-and-state" class="anchor"></a>Test files, test order and state</h3>
-<p>testthat starts running the test files in alphabetical order. As soon as a subprocess has finished with a file, it receives another file to run from the main process, until all files are done. In general, the user cannot make any assumptions about the order of the files, and which subprocess they’ll be executed on.</p>
-<p>Test files do not start in a clean R process currently. The first <em>n</em> files, where <em>n</em> is the number of subprocesses, do start in a clean R process, but users should not rely on that. In particular, options (set via <code><a href="https://rdrr.io/r/base/options.html">options()</a></code> or otherwise) are <em>not</em> reset, loaded packages are <em>not</em> unloaded, the global environment is <em>not</em> cleared, etc. In the future the user will be able to request a clean R process for a test file, see the TODO at <a href="https://github.com/r-lib/testthat/pull/1032" class="uri">https://github.com/r-lib/testthat/pull/1032</a> .</p>
-<p>Since files run in alphabetical order, ideally the files that take the longest to run, should be started first. This way, we can avoid starting a long running test file on a subprocess, when the other files have finished already and the other subprocesses have nothing to do. To achive this, you can name your test files like this:</p>
-<pre><code>test-1-slowest.R
-test-2-next-slowest.R
-...</code></pre>
-</div>
-<div id="helper-setup-teardown-files" class="section level3">
-<h3 class="hasAnchor">
-<a href="#helper-setup-teardown-files" class="anchor"></a>Helper, setup, teardown files</h3>
-<p>All test subprocesses run the helper files (if requested in <code>devtools::test()</code>, <code><a href="../reference/test_dir.html">testthat::test_dir()</a></code>, etc.), then they run the setup files. After the last test file has finished, all subprocesses run the teardown files.</p>
-</div>
-<div id="known-issues" class="section level3">
-<h3 class="hasAnchor">
-<a href="#known-issues" class="anchor"></a>Known issues</h3>
+<div id="common-problems" class="section level2">
+<h2 class="hasAnchor">
+<a href="#common-problems" class="anchor"></a>Common problems</h2>
 <ul>
-<li>The <code>location</code> reporter does not work currently. Any reporter that relies on stack traces being present in all test results, will fail.</li>
-<li>The current reporters are not ideal for parallel execution, as they cannot handle running multiple files at the same time. Parallel testthat tricks the reporters by collecting all results for a test file, and then “replaying” them at once. Reporters can not show the progress within files. This will be fixed later.</li>
-<li>testthat does not handle crashes currently. This will be fixed later.</li>
-<li>You cannot currently use the <code>env</code> argument of <code><a href="../reference/test_dir.html">test_dir()</a></code>, etc. Do not set this argument if you use parallel testthat. This will be fixed later.</li>
-<li>Test files that perform many quick expectations might be slow. This will be fixed later.</li>
-<li>testthat does not currently auto-detect the number of processors. This will be fixed later.</li>
-<li>Parallel testhat currently silently ignores failures in the helper, startup and teardown files. This will be fixed later.</li>
-<li>The process tree cleanup only works on macOS, Windows and Linux currently, so parallel testthat only supports these operating systems. This will be fixed later.</li>
-<li>testthat cannot yet run its own tests in parallel.</li>
-<li>covr might not work for parallel tests, at least it fails for testthat itself.</li>
+<li><p>If tests fail stochastically (i.e. they sometimes work and sometimes fail) you may have accidentally introduced a dependency between your test files. This sort of dependency is hard to track down due to the random nature, and you’ll need to check all tests to make sure that they’re not accidentally changing global state.</p></li>
+<li><p>If you use <a href="https://testthat.r-lib.org/articles/test-fixtures.html#package">packaged scope test fixtures</a>, you’ll need to review them to make sure that they work in parallel. For example, if you were previously creating a temporary database in the test directory, you’d need to instead create it in the session temporary directory so that each process gets its on independent version.</p></li>
 </ul>
 </div>
-<div id="benchmarks" class="section level3">
-<h3 class="hasAnchor">
-<a href="#benchmarks" class="anchor"></a>Benchmarks</h3>
-<p>These are very preliminary, to have a feeling where the bottlenecks might be.</p>
-<div id="startup-time" class="section level4">
-<h4 class="hasAnchor">
-<a href="#startup-time" class="anchor"></a>Startup time</h4>
-<p>Startup cost is linear in the number of subprocesses, because we need to create them in a loop. This is about 50ms on my laptop. Each subprocess needs to load testthat and the tested package, this happens in parallel, and we cannot do too much about it.</p>
-</div>
-<div id="cleanup-time" class="section level4">
-<h4 class="hasAnchor">
-<a href="#cleanup-time" class="anchor"></a>Cleanup time</h4>
-<p>This is again linear in the number of subprocesses, and it about 80ms per subprocess on my laptop. The teardown files run in parallel, of course.</p>
-</div>
-<div id="messaging-costs" class="section level4">
-<h4 class="hasAnchor">
-<a href="#messaging-costs" class="anchor"></a>Messaging costs</h4>
-<p>To get a sense of messaging costs, I run 1-8 extremely simple test files:</p>
-<pre><code><a href="../reference/test_that.html">test_that("foobar", {
-  for (i in 1:100) expect_true(TRUE)
-})</a></code></pre>
-<p>with changing the number of expectations and number of subprocesses. It seems that sending a message is about 2ms currently. This is the total cost that includes sending the message, receiving it, and replying it to a non-parallel reporter. We will improve this by avoiding frequent messages in a single subprocess and sending them in batches. This will make sure that test suites that have hundreds or thousands of expectations will not lose much.</p>
-</div>
-</div>
+<div id="performance" class="section level2">
+<h2 class="hasAnchor">
+<a href="#performance" class="anchor"></a>Performance</h2>
+<p>There is some overhead associated with running tests in parallel:</p>
+<ul>
+<li><p>Startup cost is linear in the number of subprocesses, because we need to create them in a loop. This is about 50ms on my laptop. Each subprocess needs to load testthat and the tested package, this happens in parallel, and we cannot do too much about it.</p></li>
+<li><p>Clean up time is again linear in the number of subprocesses, and it about 80ms per subprocess on my laptop.</p></li>
+<li><p>It seems that sending a message (i.e. a passing or failing expectation) is about 2ms currently. This is the total cost that includes sending the message, receiving it, and replying it to a non-parallel reporter.</p></li>
+</ul>
+<p>This overhead generally means that if you have many test files that take a short amount of time, you’re unlikely to see a huge benefit by using parallel tests. For example, testthat itself takes about 10s to run tests in serial, and 8s to run the tests in parallel. That’s because most tests take less than a second to run, and the slowest test (which takes 3s) is started last.</p>
 </div>
   </div>
 
