@@ -11,6 +11,11 @@ FailReporter <- R6::R6Class("FailReporter",
   public = list(
     failed = FALSE,
 
+    initialize = function(...) {
+      self$capabilities$parallel_support <- TRUE
+      super$initialize(...)
+    },
+
     add_result = function(context, test, result) {
       self$failed <- self$failed || expectation_broken(result)
     },

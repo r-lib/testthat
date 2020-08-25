@@ -48,8 +48,12 @@ test_files_parallel <- function(
   reporters <- test_files_reporter(reporter)
 
   # TODO: support timeouts. 20-30s for each file by default?
-  # TODO: detect number of CPUs
-  num_workers <- min(getOption("Ncpus", 4), length(test_paths), 4)
+
+  num_workers <- min(default_num_cpus(), length(test_paths))
+  message(
+    "Starting ", num_workers, " test process",
+    if (num_workers != 1) "es"
+  )
 
   # Set up work queue ------------------------------------------
   queue <- NULL
@@ -65,40 +69,112 @@ test_files_parallel <- function(
     load_package = load_package
   )
 
-  files <- list()
-
-  with_reporter(reporters$multi,
-    while (!queue$is_idle()) {
-      # TODO: poll for 100-200ms to be able to update a spinner
-      msgs <- queue$poll(Inf)
-      for (x in msgs) {
-        if (x$code != PROCESS_MSG) {
-          next
-        }
-
-        m <- x$message
-        if (!inherits(m, "testthat_message")) {
-          message(m)
-          next
-        }
-
-        # Record all events until we get end of file, then we replay them all
-        # with the local reporters. This prevents out of order reporting.
-        if (m$cmd != "DONE") {
-          files[[m$filename]] <- append(files[[m$filename]], list(m))
-        } else {
-          replay_events(reporters$multi, files[[m$filename]])
-          reporters$multi$end_context_if_started()
-          files[[m$filename]] <- NULL
-        }
-      }
+  with_reporter(reporters$multi, {
+    parallel_update <- reporter$capabilities$parallel_update
+    if (parallel_update) {
+      parallel_event_loop_smooth(queue, reporters)
+    } else {
+      parallel_event_loop_chunky(queue, reporters)
     }
-  )
+  })
 
   test_files_check(reporters$list$get_results(),
     stop_on_failure = stop_on_failure,
     stop_on_warning = stop_on_warning
   )
+}
+
+default_num_cpus <- function() {
+  # Use common option, if set
+  ncpus <- getOption("Ncpus", NULL)
+  if (!is.null(ncpus) && !is_integer(ncpus)) {
+    stop("`getOption(Ncpus)` must be integer")
+  }
+
+  if (!is.null(ncpus)) {
+    return(ncpus)
+  }
+
+  # Otherwise detect. If we cannot detect, then compromise.
+  if (ps::ps_is_supported()) {
+    ncpus <- ps::ps_cpu_count()
+  } else {
+    ncpus <- 2L
+  }
+
+  # But allow capping with an env var
+  max_env <- Sys.getenv("TESTTHAT_MAX_CPUS", "")
+  if (max_env != "") {
+    max_env <- as.integer(max_env)
+    if (is.na(max_env)) abort("TESTTHAT_MAX_CPUS must be an integer")
+    ncpus <- min(ncpus, max_env)
+  }
+
+  ncpus
+}
+
+parallel_event_loop_smooth <- function(queue, reporters) {
+  update_interval <- 0.1
+  next_update <- proc.time()[[3]] + update_interval
+
+  while (!queue$is_idle()) {
+    # How much time do we have to poll before the next UI update?
+    now <- proc.time()[[3]]
+    poll_time <- max(next_update - now, 0)
+    next_update <- now + update_interval
+
+    msgs <- queue$poll(poll_time)
+
+    updated <- FALSE
+    for (x in msgs) {
+      if (x$code != PROCESS_MSG) {
+        next
+      }
+
+      m <- x$message
+      if (!inherits(m, "testthat_message")) {
+        message(m)
+        next
+      }
+
+      if (m$cmd != "DONE") {
+        reporters$multi$start_file(m$filename)
+        do.call(reporters$multi[[m$cmd]], m$args)
+        updated <- TRUE
+      }
+    }
+
+    # We need to spin, even if there were no events
+    if (!updated) reporters$multi$update()
+  }
+}
+
+parallel_event_loop_chunky <- function(queue, reporters) {
+  files <- list()
+  while (!queue$is_idle()) {
+    msgs <- queue$poll(Inf)
+    for (x in msgs) {
+      if (x$code != PROCESS_MSG) {
+        next
+      }
+
+      m <- x$message
+      if (!inherits(m, "testthat_message")) {
+        message(m)
+        next
+      }
+
+      # Record all events until we get end of file, then we replay them all
+      # with the local reporters. This prevents out of order reporting.
+      if (m$cmd != "DONE") {
+        files[[m$filename]] <- append(files[[m$filename]], list(m))
+      } else {
+        replay_events(reporters$multi, files[[m$filename]])
+        reporters$multi$end_context_if_started()
+        files[[m$filename]] <- NULL
+      }
+    }
+  }
 }
 
 replay_events <- function(reporter, events) {
@@ -110,10 +186,19 @@ replay_events <- function(reporter, events) {
 queue_setup <- function(test_paths,
                         test_package,
                         test_dir,
-                        env,
                         num_workers,
                         load_helpers,
                         load_package) {
+
+  # TODO: observe `load_package`, but the "none" default is not
+  # OK for the subprocess, because it'll not have the tested package
+  if (load_package == "none") load_package <- "source"
+
+  # TODO: similarly, load_helpers = FALSE, coming from devtools,
+  # is not appropriate in the subprocess
+  load_helpers <- TRUE
+
+  test_package <- test_package %||% Sys.getenv("TESTTHAT_PKG")
 
   # TODO: meaningful error if startup fails
   load_hook <- expr(asNamespace("testthat")$queue_process_setup(
@@ -133,8 +218,12 @@ queue_setup <- function(test_paths,
 }
 
 queue_process_setup <- function(test_package, test_dir, load_helpers, load_package) {
-  env <- test_files_setup_env(test_package, test_dir, load_package)
-  test_files_setup_state(
+  env <- asNamespace("testthat")$test_files_setup_env(
+    test_package,
+    test_dir,
+    load_package
+  )
+  asNamespace("testthat")$test_files_setup_state(
     test_dir = test_dir,
     test_package = test_package,
     load_helpers = load_helpers,
@@ -166,10 +255,14 @@ queue_teardown <- function(queue) {
   tasks <- queue$list_tasks()
   num <- nrow(tasks)
 
+  clean_fn <- function() {
+    withr::deferred_run(.GlobalEnv)
+  }
+
   topoll <- list()
   for (i in seq_len(num)) {
     if (!is.null(tasks$worker[[i]])) {
-      tasks$worker[[i]]$call(withr::deferred_run, list(global_env))
+      tasks$worker[[i]]$call(clean_fn)
       close(tasks$worker[[i]]$get_input_connection())
       topoll <- c(topoll, tasks$worker[[i]]$get_poll_connection())
     }

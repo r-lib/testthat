@@ -2,9 +2,12 @@
 % Please edit documentation in R/edition.R
 \name{local_edition}
 \alias{local_edition}
+\alias{edition_get}
 \title{Temporarily change the active testthat edition}
 \usage{
 local_edition(x, .env = parent.frame())
+
+edition_get()
 }
 \arguments{
 \item{x}{Edition Should be a single integer.}
@@ -14,5 +17,6 @@ local_edition(x, .env = parent.frame())
 \description{
 \code{local_edition()} allows you to temporarily (within a single test or
 a single test file) change the active edition of testthat.
+\code{get_edition()} allows you to retrieve the currently active edition.
 }
 \keyword{internal}

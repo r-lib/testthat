@@ -7,7 +7,7 @@
 test_dir(
   path,
   filter = NULL,
-  reporter = default_reporter(),
+  reporter = NULL,
   env = NULL,
   ...,
   load_helpers = TRUE,

@@ -2,11 +2,14 @@
 % Please edit documentation in R/reporter.R
 \name{default_reporter}
 \alias{default_reporter}
+\alias{default_parallel_reporter}
 \alias{default_compact_reporter}
 \alias{check_reporter}
 \title{Retrieve the default reporter}
 \usage{
 default_reporter()
+
+default_parallel_reporter()
 
 default_compact_reporter()
 
@@ -15,7 +18,10 @@ check_reporter()
 \description{
 The defaults are:
 \itemize{
-\item \link{ProgressReporter} for interactive; override with \code{testthat.default_reporter}
+\item \link{ProgressReporter} for interactive, non-parallel; override with
+\code{testthat.default_reporter}
+\item \link{ParallelProgressReporter} for interactive, parallel packages;
+override with \code{testthat.default_parallel_reporter}
 \item \link{CompactProgressReporter} for single-file interactive; override with
 \code{testthat.default_compact_reporter}
 \item \link{CheckReporter} for R CMD check; override with \code{testthat.default_check_reporter}

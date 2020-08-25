@@ -110,3 +110,14 @@ rstudio_tickle <- function() {
   rstudioapi::executeCommand("vcsRefresh")
   rstudioapi::executeCommand("refreshFiles")
 }
+
+check_installed <- function(pkg, fun) {
+  if (is_installed(pkg)) {
+    return()
+  }
+
+  abort(c(
+    paste0("The ", pkg, " package must be installed in order to use `", fun, "`"),
+    i = paste0("Do you need to run `install.packages('", pkg, "')`?")
+  ))
+}

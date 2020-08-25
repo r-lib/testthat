@@ -34,6 +34,11 @@ jobs:
           key: ${{ runner.os }}-${{ hashFiles('.github/R-version') }}-1-${{ hashFiles('.github/depends.Rds') }}
           restore-keys: ${{ runner.os }}-${{ hashFiles('.github/R-version') }}-1-
 
+      - name: Install X11
+        if: runner.os == 'macOS'
+        run: |
+          brew cask install xquartz
+
       - name: Install dependencies
         run: |
           install.packages(c("remotes"))
@@ -42,5 +47,7 @@ jobs:
         shell: Rscript {0}
 
       - name: Test coverage
-        run: covr::codecov()
+        run: |
+          options(warning.length = 8170)
+          covr::codecov()
         shell: Rscript {0}

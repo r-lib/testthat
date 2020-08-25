@@ -2,9 +2,11 @@
 SnapshotReporter <- R6::R6Class("SnapshotReporter",
   inherit = Reporter,
   public = list(
+    snap_dir = character(),
     file = NULL,
     test = NULL,
-    file_seen = character(),
+    test_file_seen = character(),
+    snap_file_seen = character(),
     i = 0,
     file_changed = FALSE,
 
@@ -12,9 +14,13 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
     cur_snaps = NULL,
     new_snaps = NULL,
 
+    initialize = function(snap_dir = "_snaps") {
+      self$snap_dir <- snap_dir
+    },
+
     start_file = function(path, test = NULL) {
       self$file <- context_name(path)
-      self$file_seen <- c(self$file_seen, path)
+      self$test_file_seen <- c(self$test_file_seen, path)
 
       self$file_changed <- FALSE
       self$old_snaps <- self$snaps_read()
@@ -63,6 +69,13 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
       }
     },
 
+    take_file_snapshot = function(name, path, file_equal) {
+      snap_dir <- file.path(self$snap_dir, self$file)
+      self$snap_file_seen <- c(file.path(self$file, name), self$snap_file_seen)
+
+      snapshot_file_equal(snap_dir, name, path, file_equal)
+    },
+
     add_result = function(context, test, result) {
       if (is.null(self$test)) {
         return()
@@ -79,7 +92,7 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
     },
 
     end_file = function() {
-      dir.create("_snaps", showWarnings = FALSE)
+      dir.create(self$snap_dir, showWarnings = FALSE)
 
       self$snaps_write(self$cur_snaps)
       if (self$file_changed) {
@@ -89,21 +102,23 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
       }
     },
     end_reporter = function() {
-      # check we've seen all files before cleaning up
       tests <- find_test_scripts(".", full.names = FALSE)
-      if (!all(tests %in% self$file_seen)) {
-        rstudio_tickle()
-        return()
+      if (all(tests %in% self$test_file_seen)) {
+        # clean up if we've seen all files
+        test_names <- context_name(tests)
+        outdated <- c(
+          snapshot_outdated(self$snap_dir, test_names),
+          snapshot_file_outdated(self$snap_dir, test_names, self$snap_file_seen)
+        )
+
+        if (length(outdated) > 0) {
+          inform(c("Deleting unused snapshots:", outdated))
+          unlink(outdated)
+        }
       }
 
-      snaps <- dir("_snaps", full.names = TRUE)
-      snaps <- snaps[!grepl(".new.", snaps, fixed = TRUE)]
-      snap_name <- tools::file_path_sans_ext(basename(snaps))
-      outdated <- !snap_name %in% context_name(tests)
-      unlink(snaps[outdated])
-
-      if (length(dir("_snaps") == 0)) {
-        unlink("_snaps")
+      if (length(dir(self$snap_dir) == 0)) {
+        unlink(self$snap_dir)
       }
       rstudio_tickle()
     },
@@ -166,6 +181,14 @@ check_roundtrip <- function(x, y) {
   }
 }
 
+snapshot_outdated <- function(path, tests) {
+  snaps <- dir(path, full.names = TRUE)
+  snaps <- snaps[!grepl(".new.", snaps, fixed = TRUE)]
+  snap_name <- tools::file_path_sans_ext(basename(snaps))
+  outdated <- !snap_name %in% tests
+  snaps[outdated]
+}
+
 # set/get active snapshot reporter ----------------------------------------
 
 get_snapshotter <- function() {
@@ -184,12 +207,12 @@ get_snapshotter <- function() {
 #' Instantiate local snapshotting context
 #'
 #' Needed if you want to run snapshot tests outside of the usual testthat
-#' framework. For expert use only.
+#' framework For expert use only.
 #'
 #' @export
 #' @keywords internal
-local_snapshotter <- function(cleanup = FALSE, .env = parent.frame()) {
-  reporter <- SnapshotReporter$new()
+local_snapshotter <- function(snap_dir = "_snaps", cleanup = FALSE, .env = parent.frame()) {
+  reporter <- SnapshotReporter$new(snap_dir = snap_dir)
   if (cleanup) {
     withr::defer(reporter$snaps_cleanup(), envir = .env)
   }

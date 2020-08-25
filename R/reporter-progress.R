@@ -6,6 +6,9 @@
 #' code. This reporter also praises you from time-to-time if all your tests
 #' pass. It's the default reporter for [test_dir()].
 #'
+#' `ParallelProgressReporter` is very similar to `ProgressReporter`, but
+#' works better for packages that want parallel tests.
+#'
 #' `CompactProgressReporter` is a minimal version of `ProgressReporter`
 #' designed for use with single files. It's the default reporter for
 #' [test_file()].
@@ -47,6 +50,7 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
                           update_interval = 0.1,
                           ...) {
       super$initialize(...)
+      self$capabilities$parallel_support <- TRUE
       self$max_fail <- max_failures
       self$show_praise <- show_praise
       self$min_time <- min_time
@@ -99,9 +103,21 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
       )
     },
 
-    show_status = function(complete = FALSE) {
+    status_data = function() {
+      list(
+        n = self$ctxt_n,
+        n_ok = self$ctxt_n_ok,
+        n_fail = self$ctxt_n_fail,
+        n_warn = self$ctxt_n_warn,
+        n_skip = self$ctxt_n_skip,
+        name = self$ctxt_name
+      )
+    },
+
+    show_status = function(complete = FALSE, time = 0, pad = FALSE) {
+      data <- self$status_data()
       if (complete) {
-        if (self$ctxt_n_fail > 0) {
+        if (data$n_fail > 0) {
           status <- crayon::red(cli::symbol$cross)
         } else {
           status <- crayon::green(cli::symbol$tick)
@@ -111,7 +127,7 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
         if (!self$should_update()) {
           return()
         }
-        status <- spinner(self$frames, self$ctxt_n)
+        status <- spinner(self$frames, data$n)
       }
 
       col_format <- function(n, type) {
@@ -123,16 +139,31 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
       }
 
       message <- paste0(
-        status, " | ", sprintf("%3d", self$ctxt_n_ok), " ",
-        col_format(self$ctxt_n_fail, "fail"), " ",
-        col_format(self$ctxt_n_warn, "warn"), " ",
-        col_format(self$ctxt_n_skip, "skip"), " | ",
-        self$ctxt_name
+        status, " | ", sprintf("%3d", data$n_ok), " ",
+        col_format(data$n_fail, "fail"), " ",
+        col_format(data$n_warn, "warn"), " ",
+        col_format(data$n_skip, "skip"), " | ",
+        data$name
       )
+
+      if (complete && time > self$min_time) {
+        message <- paste0(
+          message,
+          cli::col_cyan(sprintf(" [%.1f s]", time))
+        )
+      }
+
+      if (pad) {
+        message <- strpad(message, self$width)
+        message <- crayon::col_substr(message, 1, self$width)
+      }
+
       if (!complete) {
         message <- strpad(message, self$width)
+        self$cat_tight("\r", message)
+      } else {
+        self$cat_line("\r", message)
       }
-      self$cat_tight("\r", message)
     },
 
     end_context = function(context) {
@@ -145,23 +176,9 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
         return()
       }
 
-      self$show_status(complete = TRUE)
-      if (time[[3]] > self$min_time) {
-        self$cat_line(sprintf(" [%.1f s]", time[[3]]), col = "cyan")
-      } else {
-        self$cat_line()
-      }
+      self$show_status(complete = TRUE, time = time[[3]])
 
-      if (self$ctxt_issues$size() > 0) {
-        self$rule()
-
-        issues <- self$ctxt_issues$as_list()
-        summary <- vapply(issues, issue_summary, FUN.VALUE = character(1))
-        self$cat_tight(paste(summary, collapse = "\n\n"))
-
-        self$cat_line()
-        self$rule()
-      }
+      self$report_issues(self$ctxt_issues)
     },
 
     add_result = function(context, test, result) {
@@ -236,9 +253,25 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
       }
     },
 
+    report_issues = function(issues) {
+      if (issues$size() > 0) {
+        self$rule()
+
+        issues <- issues$as_list()
+        summary <- vapply(issues, issue_summary, FUN.VALUE = character(1))
+        self$cat_tight(paste(summary, collapse = "\n\n"))
+
+        self$cat_line()
+        self$rule()
+      }
+    },
+
     should_update = function() {
       if (self$update_interval == 0) {
         return(TRUE)
+      }
+      if (identical(self$update_interval, Inf)) {
+        return(FALSE)
       }
 
       time <- proc.time()[[3]]
@@ -308,6 +341,119 @@ CompactProgressReporter <- R6::R6Class("CompactProgressReporter",
   )
 )
 
+# parallel progres reporter -----------------------------------------------
+
+#' @export
+#' @rdname ProgressReporter
+
+ParallelProgressReporter <- R6::R6Class("ParallelProgressReporter",
+  inherit = ProgressReporter,
+  public = list(
+
+    files = list(),
+    spin_frame = 0L,
+    is_rstudio = FALSE,
+
+    initialize = function(...) {
+      super$initialize(...)
+      self$capabilities$parallel_support <- TRUE
+      self$capabilities$parallel_updates <- TRUE
+      self$update_interval <- 0.05
+      self$is_rstudio <- Sys.getenv("RSTUDIO", "") == "1"
+    },
+
+    start_file = function(file)  {
+      if (! file %in% names(self$files)) {
+        self$files[[file]] <- list(
+          issues = Stack$new(),
+          n_fail = 0L,
+          n_skip_ = 0L,
+          n_warn = 0L,
+          n_ok = 0L,
+          name = context_name(file),
+          start_time = proc.time()
+        )
+      }
+      self$file_name <- file
+    },
+
+    start_context = function(context) {
+      # we'll just silently ignore this
+    },
+
+    end_context = function(context) {
+      # we'll just silently ignore this
+    },
+
+    end_file = function() {
+      fsts <- self$files[[self$file_name]]
+      time <- proc.time() - fsts$start_time
+
+      # Workaround for https://github.com/rstudio/rstudio/issues/7649
+      if (self$is_rstudio) {
+        self$cat_tight(strpad("\r", self$width + 1)) # +1 for \r
+      }
+      self$show_status(complete = TRUE, time = time[[3]], pad = TRUE)
+      self$report_issues(fsts$issues)
+
+      self$files[[self$file_name]] <- NULL
+      if (length(self$files)) self$update(force = TRUE)
+    },
+
+    end_reporter = function() {
+      self$cat_tight("\r", strpad("", self$width))
+      super$end_reporter()
+    },
+
+    show_header = function() {
+      super$show_header()
+      self$update(force = TRUE)
+    },
+
+    status_data = function() {
+      self$files[[self$file_name]]
+    },
+
+    add_result = function(context, test, result) {
+      self$ctxt_n <- self$ctxt_n + 1L
+      file <- self$file_name
+      if (expectation_broken(result)) {
+        self$n_fail <- self$n_fail + 1
+        self$files[[file]]$n_fail <- self$files[[file]]$n_fail + 1L
+        self$files[[file]]$issues$push(result)
+      } else if (expectation_skip(result)) {
+        self$n_skip <- self$n_skip + 1
+        self$files[[file]]$n_skip <- self$files[[file]]$n_skip + 1L
+        self$files[[file]]$issues$push(result)
+        self$skips$push(result$message)
+      } else if (expectation_warning(result)) {
+        self$n_warn <- self$n_warn + 1
+        self$files[[file]]$n_warn <- self$files[[file]]$n_warn + 1L
+        self$files[[file]]$issues$push(result)
+      } else {
+        self$n_ok <- self$n_ok + 1
+        self$files[[file]]$n_ok <- self$files[[file]]$n_ok + 1
+      }
+    },
+
+    update = function(force = FALSE) {
+      if (!force && !self$should_update()) return()
+      self$spin_frame <- self$spin_frame + 1L
+      status <- spinner(self$frames, self$spin_frame)
+
+      message <- paste(
+        status,
+        summary_line(self$n_ok, self$n_fail, self$n_warn, self$n_skip),
+        if (length(self$files) > 0) "@" else "Starting up...",
+        paste(context_name(names(self$files)), collapse = ", ")
+      )
+      message <- strpad(message, self$width)
+      message <- crayon::col_substr(message, 1, self$width)
+      self$cat_tight("\r", message)
+    }
+  )
+)
+
 # helpers -----------------------------------------------------------------
 
 spinner <- function(frames, i) {
@@ -328,7 +474,7 @@ issue_summary <- function(x, rule = FALSE) {
 }
 
 strpad <- function(x, width = cli::console_width()) {
-  n <- pmax(0, width - nchar(x))
+  n <- pmax(0, width - crayon::col_nchar(x))
   paste0(x, strrep(" ", n))
 }
 

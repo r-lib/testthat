@@ -18,6 +18,7 @@ ListReporter <- R6::R6Class("ListReporter",
 
     initialize = function() {
       super$initialize()
+      self$capabilities$parallel_support <- TRUE
       self$results <- Stack$new()
     },
 

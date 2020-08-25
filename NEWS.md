@@ -5,8 +5,9 @@
 testhat 3.0.0 brings with it a 3rd edition that makes a number of breaking
 changes in order to clean up the interface and help you use our latest
 recommendations. To opt-in to the 3rd edition for your package, set
-`Config/testthat/edition: 3` in your `DESCRIPTION`. Learn more in 
-`vignette("third-edition")`.
+`Config/testthat/edition: 3` in your `DESCRIPTION` or use `local_edition(3)` in
+individual tests. You can retrieve the active edition with `edition_get()`.
+Learn more in `vignette("third-edition")`.
 
 * `context()` is deprecated.
 
@@ -53,6 +54,10 @@ recommendations. To opt-in to the 3rd edition for your package, set
 * New family of snapshot expectations (`expect_snapshot_output()`, 
   `expect_snapshot_value()` and more), as documented in 
   `vignette("snapshotting")`. These are only available in the 3rd edition.
+  
+    `expect_snapshot_file()` along with `snapshot_review()` help snapshot
+    more complex data, with initial support for images and data frames (#1050).
+  
 
 ## Fixures
 
