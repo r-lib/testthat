@@ -91,17 +91,18 @@ default_num_cpus <- function() {
     stop("`getOption(Ncpus)` must be integer")
   }
 
-  if (!is.null(ncpus)) return(ncpus)
+  if (!is.null(ncpus)) {
+    return(ncpus)
+  }
 
   # Otherwise detect
   ncpus <- ps::ps_cpu_count()
 
   # But allow capping with an env var
-  ev <- "TESTTHAT_MAX_CPUS"
-  max_env <- Sys.getenv(ev, "")
+  max_env <- Sys.getenv("TESTTHAT_MAX_CPUS", "")
   if (max_env != "") {
     max_env <- as.integer(max_env)
-    if (is.na(max_env)) stop(ev, " must be an integer")
+    if (is.na(max_env)) abort("TESTTHAT_MAX_CPUS must be an integer")
     ncpus <- min(ncpus, max_env)
   }
 
