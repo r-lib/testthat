@@ -349,12 +349,14 @@ ParallelProgressReporter <- R6::R6Class("ParallelProgressReporter",
 
     files = list(),
     spin_frame = 0L,
+    is_rstudio = FALSE,
 
     initialize = function(...) {
       super$initialize(...)
       self$capabilities$parallel_support <- TRUE
       self$capabilities$parallel_updates <- TRUE
       self$update_interval <- 0.05
+      self$is_rstudio <- Sys.getenv("RSTUDIO", "") == "1"
     },
 
     start_file = function(file)  {
@@ -384,6 +386,10 @@ ParallelProgressReporter <- R6::R6Class("ParallelProgressReporter",
       fsts <- self$files[[self$file_name]]
       time <- proc.time() - fsts$start_time
 
+      # Workaround for https://github.com/rstudio/rstudio/issues/7649
+      if (self$is_rstudio) {
+        self$cat_tight(strpad("\r", self$width + 1)) # +1 for \r
+      }
       self$show_status(complete = TRUE, time = time[[3]], pad = TRUE)
       self$report_issues(fsts$issues)
 
@@ -392,7 +398,7 @@ ParallelProgressReporter <- R6::R6Class("ParallelProgressReporter",
     },
 
     end_reporter = function() {
-      self$cat_tight("\r", strpad(""))
+      self$cat_tight("\r", strpad("", self$width))
       super$end_reporter()
     },
 
