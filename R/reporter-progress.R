@@ -33,6 +33,7 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
     n_fail = 0,
 
     frames = NULL,
+    dynamic = FALSE,
 
     ctxt_start_time = NULL,
     ctxt_issues = NULL,
@@ -60,6 +61,7 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
 
       # Capture at init so not affected by test settings
       self$frames <- cli::get_spinner()$frames
+      self$dynamic <- cli::is_dynamic_tty()
     },
 
     is_full = function() {
@@ -160,9 +162,17 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
 
       if (!complete) {
         message <- strpad(message, self$width)
-        self$cat_tight("\r", message)
+        self$cat_tight(self$cr(), message)
       } else {
-        self$cat_line("\r", message)
+        self$cat_line(self$cr(), message)
+      }
+    },
+
+    cr = function() {
+      if (self$dynamic) {
+        "\r"
+      } else {
+        "\n"
       }
     },
 
@@ -177,7 +187,6 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
       }
 
       self$show_status(complete = TRUE, time = time[[3]])
-
       self$report_issues(self$ctxt_issues)
     },
 
@@ -335,7 +344,7 @@ CompactProgressReporter <- R6::R6Class("CompactProgressReporter",
     show_status = function(complete = NULL) {
       self$local_user_output()
       status <- summary_line(self$n_ok, self$n_fail, self$n_warn, self$n_skip)
-      self$cat_tight("\r", status)
+      self$cat_tight(self$cr(), status)
     }
 
   )
@@ -391,7 +400,7 @@ ParallelProgressReporter <- R6::R6Class("ParallelProgressReporter",
 
       # Workaround for https://github.com/rstudio/rstudio/issues/7649
       if (self$is_rstudio) {
-        self$cat_tight(strpad("\r", self$width + 1)) # +1 for \r
+        self$cat_tight(strpad(self$cr(), self$width + 1)) # +1 for \r
       }
       self$show_status(complete = TRUE, time = time[[3]], pad = TRUE)
       self$report_issues(fsts$issues)
@@ -401,7 +410,7 @@ ParallelProgressReporter <- R6::R6Class("ParallelProgressReporter",
     },
 
     end_reporter = function() {
-      self$cat_tight("\r", strpad("", self$width))
+      self$cat_tight(self$cr(), strpad("", self$width))
       super$end_reporter()
     },
 
@@ -449,7 +458,7 @@ ParallelProgressReporter <- R6::R6Class("ParallelProgressReporter",
       )
       message <- strpad(message, self$width)
       message <- crayon::col_substr(message, 1, self$width)
-      self$cat_tight("\r", message)
+      self$cat_tight(self$cr(), message)
     }
   )
 )
