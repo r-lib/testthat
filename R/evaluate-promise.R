@@ -41,7 +41,7 @@ evaluate_promise <- function(code, print = FALSE) {
   )
 
   if (result$visible && print) {
-    withr::with_output_sink(temp, print(result$value), append = TRUE)
+    withr::with_output_sink(path, print(result$value), append = TRUE)
   }
 
   output <- paste0(brio::read_lines(path), collapse = "\n")
