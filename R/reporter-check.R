@@ -30,7 +30,9 @@ CheckReporter <- R6::R6Class("CheckReporter",
         return()
       }
 
-      self$problems$push(result)
+      if (!expectation_skip(result)) {
+        self$problems$push(result)
+      }
 
       if (expectation_skip(result)) {
         self$n_skip <- self$n_skip + 1L
