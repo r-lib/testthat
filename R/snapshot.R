@@ -188,7 +188,7 @@ expect_snapshot_helper <- function(lab, val, cran = FALSE, save = identity, load
   expect(
     length(comp) == 0,
     sprintf(
-      "Shapshot of %s has changed:\n%s\n\n%s",
+      "Snapshot of %s has changed:\n%s\n\n%s",
       lab,
       paste0(comp, collapse = "\n\n"),
       hint
