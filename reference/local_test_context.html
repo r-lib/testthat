@@ -255,6 +255,8 @@ varies with the size of your console).</p></li>
 </ul>
 
 <p>In addition, <code>local_test_context()</code> sets the following options:</p><ul>
+<li><p><code>cli.dynamic = FALSE</code> so that tests assume that they are not run in
+a dynamic console (i.e. one where you can move the cursor around).</p></li>
 <li><p><code>lifecycle_verbosity = "warning"</code> so that every lifecycle problem always
 generates a warning (otherwise deprecated functions don't generate a
 warning every time).</p></li>
