@@ -51,8 +51,10 @@ test_files_parallel <- function(
   # TODO: detect number of CPUs
   num_workers <- min(getOption("Ncpus", 4), length(test_paths), 4)
 
-  message("Starting work pool of ", num_workers,
-          if (num_workers == 1) " process" else " processes")
+  message(
+    "Starting ", num_workers, " test process",
+    if (num_workers != 1) "es"
+  )
 
   # Set up work queue ------------------------------------------
   queue <- NULL
