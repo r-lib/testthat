@@ -30,11 +30,9 @@ evaluate_promise <- function(code, print = FALSE) {
 
   path <- tempfile()
   withr::defer(unlink(path))
-  temp <- file(path)
-  withr::defer(close(temp))
 
   result <- withr::with_output_sink(
-    temp,
+    path,
     withCallingHandlers(
       withVisible(code),
       warning = handle_warning,
@@ -43,7 +41,7 @@ evaluate_promise <- function(code, print = FALSE) {
   )
 
   if (result$visible && print) {
-    withr::with_output_sink(temp, print(result$value))
+    withr::with_output_sink(temp, print(result$value), append = TRUE)
   }
 
   output <- paste0(brio::read_lines(path), collapse = "\n")

@@ -44,15 +44,13 @@ capture_output_lines <- function(code, print = FALSE, width = 80) {
 eval_with_output <- function(code, print = FALSE, width = 80) {
   path <- tempfile()
   withr::defer(unlink(path))
-  temp <- file(path)
-  withr::defer(close(temp))
 
   if (!is.null(width)) {
     local_width(width)
   }
-  result <- withr::with_output_sink(temp, withVisible(code))
+  result <- withr::with_output_sink(path, withVisible(code))
   if (result$visible && print) {
-    withr::with_output_sink(temp, testthat_print(result$value))
+    withr::with_output_sink(path, testthat_print(result$value), append = TRUE)
   }
 
   list(
