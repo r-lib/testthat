@@ -48,7 +48,10 @@
 
 <meta property="og:title" content="Retrieve the default reporter — default_reporter" />
 <meta property="og:description" content="The defaults are:
-ProgressReporter for interactive; override with testthat.default_reporter
+ProgressReporter for interactive, non-parallel; override with
+testthat.default_reporter
+ParallelProgressReporter for interactive, parallel packages;
+override with testthat.default_parallel_reporter
 CompactProgressReporter for single-file interactive; override with
 testthat.default_compact_reporter
 CheckReporter for R CMD check; override with testthat.default_check_reporter
@@ -198,7 +201,10 @@ CheckReporter for R CMD check; override with testthat.default_check_reporter
 
     <div class="ref-description">
     <p>The defaults are:</p><ul>
-<li><p><a href='ProgressReporter.html'>ProgressReporter</a> for interactive; override with <code>testthat.default_reporter</code></p></li>
+<li><p><a href='ProgressReporter.html'>ProgressReporter</a> for interactive, non-parallel; override with
+<code>testthat.default_reporter</code></p></li>
+<li><p><a href='ProgressReporter.html'>ParallelProgressReporter</a> for interactive, parallel packages;
+override with <code>testthat.default_parallel_reporter</code></p></li>
 <li><p><a href='ProgressReporter.html'>CompactProgressReporter</a> for single-file interactive; override with
 <code>testthat.default_compact_reporter</code></p></li>
 <li><p><a href='CheckReporter.html'>CheckReporter</a> for R CMD check; override with <code>testthat.default_check_reporter</code></p></li>
@@ -207,6 +213,8 @@ CheckReporter for R CMD check; override with testthat.default_check_reporter
     </div>
 
     <pre class="usage"><span class='fu'>default_reporter</span>()
+
+<span class='fu'>default_parallel_reporter</span>()
 
 <span class='fu'>default_compact_reporter</span>()
 
