@@ -79,12 +79,6 @@ compare_file <- function(path, lines, ..., update = TRUE, info = NULL) {
   old_lines <- brio::read_lines(path)
   if (update) {
     brio::write_lines(lines, path)
-    if (!all_utf8(lines)) {
-      warning("New reference output is not UTF-8 encoded", call. = FALSE)
-    }
-  }
-  if (!all_utf8(old_lines)) {
-    warning("Reference output is not UTF-8 encoded", call. = FALSE)
   }
 
   comp <- waldo_compare(lines, enc2native(old_lines), ..., x_arg = "new", y_arg = "old")
@@ -177,8 +171,4 @@ expect_known_hash <- function(object, hash = NULL) {
   }
 
   invisible(act$value)
-}
-
-all_utf8 <- function(x) {
-  ! any(is.na(iconv(x, "UTF-8", "UTF-8")))
 }
