@@ -16,6 +16,14 @@ test_that("can snapshot everything", {
   expect_snapshot(f())
 })
 
+test_that("snapshot captures output if visible", {
+  f_visible <- function() "x"
+  f_invisible <- function() invisible("x")
+
+  expect_snapshot(f_visible())
+  expect_snapshot(f_invisible())
+})
+
 test_that("captures custom classes", {
   f <- function() {
     inform("Hello", class = "testthat_greeting")
