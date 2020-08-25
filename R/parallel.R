@@ -95,8 +95,12 @@ default_num_cpus <- function() {
     return(ncpus)
   }
 
-  # Otherwise detect
-  ncpus <- ps::ps_cpu_count()
+  # Otherwise detect. If we cannot detect, then compromise.
+  if (ps::ps_is_supported()) {
+    ncpus <- ps::ps_cpu_count()
+  } else {
+    ncpus <- 2L
+  }
 
   # But allow capping with an env var
   max_env <- Sys.getenv("TESTTHAT_MAX_CPUS", "")
