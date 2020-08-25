@@ -51,6 +51,7 @@ edition_name <- function(x) {
 #'
 #' `local_edition()` allows you to temporarily (within a single test or
 #' a single test file) change the active edition of testthat.
+#' `get_edition()` allows you to retrieve the currently active edition.
 #'
 #' @export
 #' @param x Edition Should be a single integer.
@@ -70,6 +71,8 @@ edition_set <- function(x) {
   }
 }
 
+#' @export
+#' @rdname local_edition
 edition_get <- function() {
   if (env_has(testthat_env, "edition")) {
     env_get(testthat_env, "edition", default = 2L)
