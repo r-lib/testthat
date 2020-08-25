@@ -52,6 +52,8 @@ varies with the size of your console).
 
 In addition, \code{local_test_context()} sets the following options:
 \itemize{
+\item \code{cli.dynamic = FALSE} so that tests assume that they are not run in
+a dynamic console (i.e. one where you can move the cursor around).
 \item \code{lifecycle_verbosity = "warning"} so that every lifecycle problem always
 generates a warning (otherwise deprecated functions don't generate a
 warning every time).
