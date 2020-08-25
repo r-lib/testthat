@@ -119,7 +119,7 @@ review_app <- function(name, old_path, new_path) {
   shiny::runApp(
     shiny::shinyApp(ui, server),
     quiet = TRUE,
-    launch.browser = paneViewer()
+    launch.browser = shiny::paneViewer()
   )
   invisible()
 }
