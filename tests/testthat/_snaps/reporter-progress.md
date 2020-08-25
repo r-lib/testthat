@@ -119,6 +119,36 @@
     
     I believe in you!
 
+# can fully suppress incremental updates
+
+    v |  OK F W S | Context
+    
+    / |   0       | reporters/successes                                             
+    - |   1       | reporters/successes                                             
+    \ |   2       | reporters/successes                                             
+    | |   3       | reporters/successes                                             
+    / |   4       | reporters/successes                                             
+    - |   5       | reporters/successes                                             
+    \ |   6       | reporters/successes                                             
+    | |   7       | reporters/successes                                             
+    v |   7       | reporters/successes
+    
+    == Results =====================================================================
+    [ PASS x7 FAIL x0 WARN x0 SKIP x0 ]
+    
+    You rock!
+
+---
+
+    v |  OK F W S | Context
+    
+    v |   7       | reporters/successes
+    
+    == Results =====================================================================
+    [ PASS x7 FAIL x0 WARN x0 SKIP x0 ]
+    
+    You rock!
+
 # reports backtraces
 
     v |  OK F W S | Context

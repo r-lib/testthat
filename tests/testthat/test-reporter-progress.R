@@ -23,6 +23,18 @@ test_that("fails after max_fail tests", {
   )
 })
 
+test_that("can fully suppress incremental updates", {
+  expect_snapshot_reporter(
+    ProgressReporter$new(update_interval = 0, min_time = Inf),
+    test_path("reporters/successes.R")
+  )
+
+  expect_snapshot_reporter(
+    ProgressReporter$new(update_interval = Inf, min_time = Inf),
+    test_path("reporters/successes.R")
+  )
+})
+
 test_that("reports backtraces", {
   expect_snapshot_reporter(
     ProgressReporter$new(update_interval = 0, min_time = Inf),

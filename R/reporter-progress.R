@@ -270,6 +270,9 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
       if (self$update_interval == 0) {
         return(TRUE)
       }
+      if (identical(self$update_interval, Inf)) {
+        return(FALSE)
+      }
 
       time <- proc.time()[[3]]
       if (!is.null(self$last_update) &&
