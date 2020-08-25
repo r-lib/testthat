@@ -48,9 +48,8 @@ test_files_parallel <- function(
   reporters <- test_files_reporter(reporter)
 
   # TODO: support timeouts. 20-30s for each file by default?
-  # TODO: detect number of CPUs
-  num_workers <- min(getOption("Ncpus", 4), length(test_paths), 4)
 
+  num_workers <- min(default_num_cpus(), length(test_paths))
   message(
     "Starting ", num_workers, " test process",
     if (num_workers != 1) "es"
@@ -83,6 +82,35 @@ test_files_parallel <- function(
     stop_on_failure = stop_on_failure,
     stop_on_warning = stop_on_warning
   )
+}
+
+default_num_cpus <- function() {
+  # Use common option, if set
+  ncpus <- getOption("Ncpus", NULL)
+  if (!is.null(ncpus) && !is_integer(ncpus)) {
+    stop("`getOption(Ncpus)` must be integer")
+  }
+
+  if (!is.null(ncpus)) {
+    return(ncpus)
+  }
+
+  # Otherwise detect. If we cannot detect, then compromise.
+  if (ps::ps_is_supported()) {
+    ncpus <- ps::ps_cpu_count()
+  } else {
+    ncpus <- 2L
+  }
+
+  # But allow capping with an env var
+  max_env <- Sys.getenv("TESTTHAT_MAX_CPUS", "")
+  if (max_env != "") {
+    max_env <- as.integer(max_env)
+    if (is.na(max_env)) abort("TESTTHAT_MAX_CPUS must be an integer")
+    ncpus <- min(ncpus, max_env)
+  }
+
+  ncpus
 }
 
 parallel_event_loop_smooth <- function(queue, reporters) {
