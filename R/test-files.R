@@ -57,7 +57,7 @@
 #' @export
 test_dir <- function(path,
                      filter = NULL,
-                     reporter = default_reporter(),
+                     reporter = NULL,
                      env = NULL,
                      ...,
                      load_helpers = TRUE,
@@ -79,7 +79,16 @@ test_dir <- function(path,
     lifecycle::deprecate_warn("3.0.0", "test_dir(wrap = )")
   }
 
-  parallel <- find_parallel(path, package) && !is_parallel()
+  want_parallel <- find_parallel(path, package) && !is_parallel()
+  if (is.null(reporter)) {
+    if (want_parallel) {
+      reporter <- default_parallel_reporter()
+    } else {
+      reporter <- default_reporter()
+    }
+  }
+  reporter <- find_reporter(reporter)
+  parallel <- want_parallel && reporter$capabilities$parallel_support
 
   test_files(
     test_dir = path,

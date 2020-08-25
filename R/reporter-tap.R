@@ -14,6 +14,11 @@ TapReporter <- R6::R6Class("TapReporter",
     has_tests = FALSE,
     contexts = NA_character_,
 
+    initialize = function(...) {
+      super$initialize(...)
+      self$capabilities$parallel_support <- TRUE
+    },
+
     start_context = function(context) {
       self$contexts[self$n + 1] <- context
     },

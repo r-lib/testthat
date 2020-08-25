@@ -3,12 +3,16 @@
 \name{ProgressReporter}
 \alias{ProgressReporter}
 \alias{CompactProgressReporter}
+\alias{ParallelProgressReporter}
 \title{Test reporter: interactive progress bar of errors.}
 \description{
 \code{ProgressReporter} is designed for interactively use. It's goal is to
 give you actionable insights to help you understand the status of your
 code. This reporter also praises you from time-to-time if all your tests
 pass. It's the default reporter for \code{\link[=test_dir]{test_dir()}}.
+
+\code{ParallelProgressReporter} is very similar to \code{ProgressReporter}, but
+works better for packages that want parallel tests.
 
 \code{CompactProgressReporter} is a minimal version of \code{ProgressReporter}
 designed for use with single files. It's the default reporter for

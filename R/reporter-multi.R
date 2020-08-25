@@ -12,6 +12,7 @@ MultiReporter <- R6::R6Class("MultiReporter",
 
     initialize = function(reporters = list()) {
       super$initialize()
+      self$capabilities$parallel_support <- TRUE
       self$reporters <- reporters
     },
 
@@ -41,6 +42,9 @@ MultiReporter <- R6::R6Class("MultiReporter",
     },
     end_file = function() {
       o_apply(self$reporters, "end_file")
+    },
+    update = function() {
+      o_apply(self$reporters, "update")
     }
   )
 )

@@ -54,7 +54,7 @@ test_check <- function(package, reporter = check_reporter(), ...) {
 
 #' @export
 #' @rdname test_package
-test_local <- function(path = ".", reporter = default_reporter(), ...) {
+test_local <- function(path = ".", reporter = NULL, ...) {
   package <- pkgload::pkg_name(path)
   test_path <- file.path(pkgload::pkg_path(path), "tests", "testthat")
 

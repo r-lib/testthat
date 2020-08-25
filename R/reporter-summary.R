@@ -28,6 +28,7 @@ SummaryReporter <- R6::R6Class("SummaryReporter",
                           max_reports = getOption("testthat.summary.max_reports", 10L),
                           ...) {
       super$initialize(...)
+      self$capabilities$parallel_support <- TRUE
       self$failures <- Stack$new()
       self$skips <- Stack$new()
       self$warnings <- Stack$new()

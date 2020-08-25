@@ -8,6 +8,11 @@
 RstudioReporter <- R6::R6Class("RstudioReporter",
   inherit = Reporter,
   public = list(
+    initialize = function(...) {
+      self$capabilities$parallel_support <- TRUE
+      super$initialize(...)
+    },
+
     add_result = function(context, test, result) {
       if (expectation_success(result)) {
         return()

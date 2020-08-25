@@ -25,6 +25,7 @@
 #' test_file(path, reporter = "minimal")
 Reporter <- R6::R6Class("Reporter",
   public = list(
+    capabilities = list(parallel_support = FALSE, parallel_updates = FALSE),
     start_reporter = function() {},
     start_context =  function(context) {},
     start_test =     function(context, test) {},
@@ -35,6 +36,7 @@ Reporter <- R6::R6Class("Reporter",
     end_reporter =   function() {},
     end_file =       function() {},
     is_full =        function() FALSE,
+    update =         function() {},
 
     width = 80,
     unicode = TRUE,
@@ -106,7 +108,10 @@ Reporter <- R6::R6Class("Reporter",
 #' Retrieve the default reporter
 #'
 #' The defaults are:
-#' * [ProgressReporter] for interactive; override with `testthat.default_reporter`
+#' * [ProgressReporter] for interactive, non-parallel; override with
+#'   `testthat.default_reporter`
+#' * [ParallelProgressReporter] for interactive, parallel packages;
+#'   override with `testthat.default_parallel_reporter`
 #' * [CompactProgressReporter] for single-file interactive; override with
 #'   `testthat.default_compact_reporter`
 #' * [CheckReporter] for R CMD check; override with `testthat.default_check_reporter`
@@ -115,6 +120,12 @@ Reporter <- R6::R6Class("Reporter",
 #' @keywords internal
 default_reporter <- function() {
   getOption("testthat.default_reporter", "Progress")
+}
+
+#' @export
+#' @rdname default_reporter
+default_parallel_reporter <- function() {
+  getOption("testthat.default_parallel_reporter", "ParallelProgress")
 }
 
 #' @export

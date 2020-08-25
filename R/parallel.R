@@ -51,6 +51,11 @@ test_files_parallel <- function(
   # TODO: detect number of CPUs
   num_workers <- min(getOption("Ncpus", 4), length(test_paths), 4)
 
+  message(
+    "Starting ", num_workers, " test process",
+    if (num_workers != 1) "es"
+  )
+
   # Set up work queue ------------------------------------------
   queue <- NULL
   withr::defer(queue_teardown(queue))
@@ -65,40 +70,83 @@ test_files_parallel <- function(
     load_package = load_package
   )
 
-  files <- list()
-
-  with_reporter(reporters$multi,
-    while (!queue$is_idle()) {
-      # TODO: poll for 100-200ms to be able to update a spinner
-      msgs <- queue$poll(Inf)
-      for (x in msgs) {
-        if (x$code != PROCESS_MSG) {
-          next
-        }
-
-        m <- x$message
-        if (!inherits(m, "testthat_message")) {
-          message(m)
-          next
-        }
-
-        # Record all events until we get end of file, then we replay them all
-        # with the local reporters. This prevents out of order reporting.
-        if (m$cmd != "DONE") {
-          files[[m$filename]] <- append(files[[m$filename]], list(m))
-        } else {
-          replay_events(reporters$multi, files[[m$filename]])
-          reporters$multi$end_context_if_started()
-          files[[m$filename]] <- NULL
-        }
-      }
+  with_reporter(reporters$multi, {
+    parallel_update <- reporter$capabilities$parallel_update
+    if (parallel_update) {
+      parallel_event_loop_smooth(queue, reporters)
+    } else {
+      parallel_event_loop_chunky(queue, reporters)
     }
-  )
+  })
 
   test_files_check(reporters$list$get_results(),
     stop_on_failure = stop_on_failure,
     stop_on_warning = stop_on_warning
   )
+}
+
+parallel_event_loop_smooth <- function(queue, reporters) {
+  update_interval <- 0.1
+  next_update <- proc.time()[[3]] + update_interval
+
+  while (!queue$is_idle()) {
+    # How much time do we have to poll before the next UI update?
+    now <- proc.time()[[3]]
+    poll_time <- max(next_update - now, 0)
+    next_update <- now + update_interval
+
+    msgs <- queue$poll(poll_time)
+
+    updated <- FALSE
+    for (x in msgs) {
+      if (x$code != PROCESS_MSG) {
+        next
+      }
+
+      m <- x$message
+      if (!inherits(m, "testthat_message")) {
+        message(m)
+        next
+      }
+
+      if (m$cmd != "DONE") {
+        reporters$multi$start_file(m$filename)
+        do.call(reporters$multi[[m$cmd]], m$args)
+        updated <- TRUE
+      }
+    }
+
+    # We need to spin, even if there were no events
+    if (!updated) reporters$multi$update()
+  }
+}
+
+parallel_event_loop_chunky <- function(queue, reporters) {
+  files <- list()
+  while (!queue$is_idle()) {
+    msgs <- queue$poll(Inf)
+    for (x in msgs) {
+      if (x$code != PROCESS_MSG) {
+        next
+      }
+
+      m <- x$message
+      if (!inherits(m, "testthat_message")) {
+        message(m)
+        next
+      }
+
+      # Record all events until we get end of file, then we replay them all
+      # with the local reporters. This prevents out of order reporting.
+      if (m$cmd != "DONE") {
+        files[[m$filename]] <- append(files[[m$filename]], list(m))
+      } else {
+        replay_events(reporters$multi, files[[m$filename]])
+        reporters$multi$end_context_if_started()
+        files[[m$filename]] <- NULL
+      }
+    }
+  }
 }
 
 replay_events <- function(reporter, events) {
