@@ -123,3 +123,9 @@ This change is likely to result in the most work during an upgrade, because wald
     local_edition(3)
     expect_equal(dt1, dt2)
     ```
+
+## Alternatives
+
+You might wonder why we came up with the idea of an "edition", rather than creating a new package like testthat3. We decided against making a new package because the 2nd and 3rd edition share a very large amount of code, so making a new package would have substantially increased the maintenance burden: the majority of bugs would've needed to be fixed in two places.
+
+If you're a programmer in other languages, you might wonder why we can't rely on [semantic versioning](https://semver.org). The main reason is that CRAN checks all packages that use testthat with the latest version of testthat, so simply incrementing the major version number doesn't actually help with reducing R CMD check failures on CRAN.
