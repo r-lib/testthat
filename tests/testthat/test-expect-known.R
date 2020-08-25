@@ -44,7 +44,7 @@ test_that("updates by default", {
 test_that("works in non-UTF-8 locale", {
   text <- c("\u00fc", "\u2a5d", "\u6211", "\u0438")
   file <- tempfile()
-  writeLines(text, file)
+  brio::write_lines(text, file)
 
   expect_success(expect_known_output(cat(text, sep = "\n"), file, update = FALSE))
   withr::with_locale(
