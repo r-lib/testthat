@@ -152,7 +152,7 @@ skip_summary <- function(x, label) {
 }
 
 failure_summary <- function(x, label, width = cli::console_width()) {
-  header <- paste0(label, ". ", failure_header(x))
+  header <- paste0(label, ". ", issue_header(x))
 
   paste0(
     cli::rule(header, col = testthat_style("error")), "\n",

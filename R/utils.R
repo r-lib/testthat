@@ -121,3 +121,8 @@ check_installed <- function(pkg, fun) {
     i = paste0("Do you need to run `install.packages('", pkg, "')`?")
   ))
 }
+
+first_upper <- function(x) {
+  substr(x, 1, 1) <- toupper(substr(x, 1, 1))
+  x
+}

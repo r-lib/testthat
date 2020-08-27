@@ -44,11 +44,17 @@ CheckReporter <- R6::R6Class("CheckReporter",
       }
 
       type <- expectation_type(result)
-      header <- failure_header(result)
+      header <- issue_header(result, rule = TRUE)
 
       self$local_user_output()
-      self$rule(header, col = testthat_style(type))
-      self$cat_line(format(result, simplify = "none"))
+      self$cat_line(header)
+      if (expectation_warning(result)) {
+        # A lot of CRAN packages have warnings so showing full traceback
+        # makes it hard to see failures
+        self$cat_line(result$message)
+      } else {
+        self$cat_line(format(result, simplify = "none"))
+      }
       self$cat_line()
     },
 
@@ -66,19 +72,12 @@ CheckReporter <- R6::R6Class("CheckReporter",
 
       saveRDS(problems, "testthat-problems.rds")
       self$rule("testthat results ", line = 2)
-      self$cat_line(vapply(problems, failure_header, character(1)))
+      self$cat_line(vapply(problems, issue_header, character(1)))
       self$cat_line()
       self$cat_line(summary_line(self$n_ok, self$n_fail, self$n_warn, self$n_skip))
     }
   )
 )
-
-failure_header <- function(x) {
-  type <- expectation_type(x)
-  substr(type, 1, 1) <- toupper(substr(type, 1, 1))
-  type <- colourise(type, expectation_type(x))
-  paste0(type, ": ", x$test, " (", expectation_location(x), ")")
-}
 
 summary_line <- function(n_ok, n_fail, n_warn, n_skip) {
   paste0(
