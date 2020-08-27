@@ -143,7 +143,9 @@ Learn more in `vignette("third-edition")`.
 ## Minor improvements and bug fixes
 
 * testthat no longer supports tests stored in `inst/tests`. This has been
-  deprecated since testthat 0.11.0 (released in 2015).
+  deprecated since testthat 0.11.0 (released in 2015). `test_package()` 
+  (previously used for running tests in R CMD check) will fail silently
+  if no tests are found to avoid breaking old packages on CRAN (#1149).
 
 * `capture_output()` and `verify_output()` use a new `testthat_print()`
   generic. This allows you to control the printed representation of your
