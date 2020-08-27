@@ -22,7 +22,7 @@ local_reproducible_output(
 \item{crayon}{Value of the \code{"crayon.enabled"} option.}
 
 \item{unicode}{Value of the \code{"cli.unicode"} option.
-The test is skipped if ``l10n_info()$\verb{UTF-8``` is }FALSE`.}
+The test is skipped if \code{l10n_info()$`UTF-8`} is \code{FALSE}.}
 }
 \description{
 \code{local_test_context()} is run automatically by \code{test_that()} but you may want to run it

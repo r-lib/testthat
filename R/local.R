@@ -65,7 +65,7 @@ local_test_context <- function(.env = parent.frame()) {
 #' @param width Value of the `"width"` option.
 #' @param crayon Value of the `"crayon.enabled"` option.
 #' @param unicode Value of the `"cli.unicode"` option.
-#'   The test is skipped if ``l10n_info()$`UTF-8``` is `FALSE`.
+#'   The test is skipped if `` l10n_info()$`UTF-8` `` is `FALSE`.
 #' @rdname local_test_context
 #' @examples
 #'
