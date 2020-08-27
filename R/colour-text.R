@@ -17,7 +17,7 @@ testthat_style <- function(type = c("success", "skip", "warning", "failure", "er
     success = "green",
     skip = "blue",
     warning = "magenta",
-    failure = "red",
-    error = "red"
+    failure = "orange",
+    error = "orange"
   )[[type]]
 }

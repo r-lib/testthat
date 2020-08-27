@@ -43,5 +43,5 @@
     ERROR (tests.R:31:3): errors get tracebacks
     Warning (tests.R:49:3): warnings get backtraces
     
-    [ PASS x1 FAIL x4 WARN x1 SKIP x2 ]
+    [ FAIL 4 | WARN 1 | SKIP 2 | PASS 1 ]
 

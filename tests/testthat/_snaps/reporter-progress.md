@@ -16,7 +16,7 @@
     --------------------------------------------------------------------------------
     
     == Results =====================================================================
-    [ PASS x0 FAIL x1 WARN x0 SKIP x0 ]
+    [ FAIL 1 | WARN 0 | SKIP 0 | PASS 0 ]
     
     I believe in you!
 
@@ -30,7 +30,7 @@
     v |   1       | my context
     
     == Results =====================================================================
-    [ PASS x1 FAIL x0 WARN x0 SKIP x0 ]
+    [ FAIL 0 | WARN 0 | SKIP 0 | PASS 1 ]
     
     You rock!
 
@@ -114,7 +114,7 @@
     You can increase this number by setting `options(testthat.progress.max_fails)` 
     
     == Results =====================================================================
-    [ PASS x0 FAIL x10 WARN x0 SKIP x0 ]
+    [ FAIL 10 | WARN 0 | SKIP 0 | PASS 0 ]
     == Terminated early ============================================================
     
     I believe in you!
@@ -134,7 +134,7 @@
     v |   7       | reporters/successes
     
     == Results =====================================================================
-    [ PASS x7 FAIL x0 WARN x0 SKIP x0 ]
+    [ FAIL 0 | WARN 0 | SKIP 0 | PASS 7 ]
     
     You rock!
 
@@ -145,7 +145,7 @@
     v |   7       | reporters/successes
     
     == Results =====================================================================
-    [ PASS x7 FAIL x0 WARN x0 SKIP x0 ]
+    [ FAIL 0 | WARN 0 | SKIP 0 | PASS 7 ]
     
     You rock!
 
@@ -236,7 +236,7 @@
     --------------------------------------------------------------------------------
     
     == Results =====================================================================
-    [ PASS x1 FAIL x7 WARN x1 SKIP x0 ]
+    [ FAIL 7 | WARN 1 | SKIP 0 | PASS 1 ]
     
     I believe in you!
 
@@ -245,12 +245,12 @@
     
     == Testing reporters/tests.R ===================================================
     
-    [ PASS x0 FAIL x0 WARN x0 SKIP x0 ]
-    [ PASS x0 FAIL x0 WARN x0 SKIP x0 ]
-    [ PASS x1 FAIL x0 WARN x0 SKIP x0 ]
-    [ PASS x1 FAIL x0 WARN x0 SKIP x0 ]
-    [ PASS x1 FAIL x1 WARN x0 SKIP x0 ]
-    [ PASS x1 FAIL x2 WARN x0 SKIP x0 ]
+    [ FAIL 0 | WARN 0 | SKIP 0 | PASS 0 ]
+    [ FAIL 0 | WARN 0 | SKIP 0 | PASS 0 ]
+    [ FAIL 0 | WARN 0 | SKIP 0 | PASS 1 ]
+    [ FAIL 0 | WARN 0 | SKIP 0 | PASS 1 ]
+    [ FAIL 1 | WARN 0 | SKIP 0 | PASS 1 ]
+    [ FAIL 2 | WARN 0 | SKIP 0 | PASS 1 ]
     
     -- FAILURE (tests.R:12:3): Failure:1 -------------------------------------------
     FALSE is not TRUE
@@ -265,9 +265,9 @@
     `expected`: TRUE 
     
     
-    [ PASS x1 FAIL x2 WARN x0 SKIP x0 ]
-    [ PASS x1 FAIL x3 WARN x0 SKIP x0 ]
-    [ PASS x1 FAIL x4 WARN x0 SKIP x0 ]
+    [ FAIL 2 | WARN 0 | SKIP 0 | PASS 1 ]
+    [ FAIL 3 | WARN 0 | SKIP 0 | PASS 1 ]
+    [ FAIL 4 | WARN 0 | SKIP 0 | PASS 1 ]
     
     -- ERROR (tests.R:23:3): Error:1 -----------------------------------------------
     Error: stop
@@ -280,9 +280,9 @@
      3. h()
     
     
-    [ PASS x1 FAIL x4 WARN x0 SKIP x0 ]
-    [ PASS x1 FAIL x4 WARN x0 SKIP x1 ]
-    [ PASS x1 FAIL x4 WARN x0 SKIP x2 ]
+    [ FAIL 4 | WARN 0 | SKIP 0 | PASS 1 ]
+    [ FAIL 4 | WARN 0 | SKIP 1 | PASS 1 ]
+    [ FAIL 4 | WARN 0 | SKIP 2 | PASS 1 ]
     
     -- Skip (tests.R:37:3): explicit skips are reported ----------------------------
     Reason: skip
@@ -291,8 +291,8 @@
     Reason: empty test
     
     
-    [ PASS x1 FAIL x4 WARN x0 SKIP x2 ]
-    [ PASS x1 FAIL x4 WARN x1 SKIP x2 ]
+    [ FAIL 4 | WARN 0 | SKIP 2 | PASS 1 ]
+    [ FAIL 4 | WARN 1 | SKIP 2 | PASS 1 ]
     
     -- Warning (tests.R:49:3): warnings get backtraces -----------------------------
     def
@@ -300,5 +300,5 @@
      1. f() reporters/tests.R:49:2
     
     
-    [ PASS x1 FAIL x4 WARN x1 SKIP x2 ]
+    [ FAIL 4 | WARN 1 | SKIP 2 | PASS 1 ]
 

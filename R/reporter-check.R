@@ -74,18 +74,19 @@ CheckReporter <- R6::R6Class("CheckReporter",
       self$rule("testthat results ", line = 2)
       self$cat_line(vapply(problems, issue_header, character(1)))
       self$cat_line()
-      self$cat_line(summary_line(self$n_ok, self$n_fail, self$n_warn, self$n_skip))
+      self$cat_line(summary_line(self$n_fail, self$n_warn, self$n_skip, self$n_ok))
     }
   )
 )
 
-summary_line <- function(n_ok, n_fail, n_warn, n_skip) {
+summary_line <- function(n_fail, n_warn, n_skip, n_ok) {
+  # Ordered from most important to least important
   paste0(
     "[ ",
-    colourise("PASS", "success"), " x", n_ok, " ",
-    colourise("FAIL", "fail"),    " x", n_fail, " ",
-    colourise("WARN", "warn"),    " x", n_warn, " ",
-    colourise("SKIP", "skip"),    " x", n_skip,
+    colourise("FAIL", "failure"), " ", n_fail, " | ",
+    colourise("WARN", "warn"),    " ", n_warn, " | ",
+    colourise("SKIP", "skip"),    " ", n_skip, " | ",
+    colourise("PASS", "success"), " ", n_ok,
     " ]"
   )
 }

@@ -234,7 +234,7 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
         self$cat_line()
       }
 
-      status <- summary_line(self$n_ok, self$n_fail, self$n_warn, self$n_skip)
+      status <- summary_line(self$n_fail, self$n_warn, self$n_skip, self$n_ok)
       self$cat_line(status)
 
       if (self$is_full()) {
@@ -334,7 +334,7 @@ CompactProgressReporter <- R6::R6Class("CompactProgressReporter",
 
     show_status = function(complete = NULL) {
       self$local_user_output()
-      status <- summary_line(self$n_ok, self$n_fail, self$n_warn, self$n_skip)
+      status <- summary_line(self$n_fail, self$n_warn, self$n_skip, self$n_ok)
       self$cat_tight("\r", status)
     }
 
@@ -443,7 +443,7 @@ ParallelProgressReporter <- R6::R6Class("ParallelProgressReporter",
 
       message <- paste(
         status,
-        summary_line(self$n_ok, self$n_fail, self$n_warn, self$n_skip),
+        summary_line(self$n_fail, self$n_warn, self$n_skip, self$n_ok),
         if (length(self$files) > 0) "@" else "Starting up...",
         paste(context_name(names(self$files)), collapse = ", ")
       )
