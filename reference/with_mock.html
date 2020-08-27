@@ -279,7 +279,7 @@ For expert use only.</p></td>
 <span class='fu'><a href='test_that.html'>test_that</a></span>(<span class='st'>"plus(1, 1) == 3"</span>, {
   <span class='fu'>local_mock</span>(<span class='kw'>plus</span> <span class='kw'>=</span> <span class='kw'>function</span>(<span class='no'>x</span>, <span class='no'>y</span>) <span class='fl'>3</span>)
   <span class='fu'><a href='equality-expectations.html'>expect_equal</a></span>(<span class='fu'>plus</span>(<span class='fl'>1</span>, <span class='fl'>1</span>), <span class='fl'>3</span>)
-})</div><div class='output co'>#&gt; ── </span><span style='color: #BB0000;font-weight: bold;'>Error</span><span style='font-weight: bold;'> (&lt;text&gt;:24:3): plus(1, 1) == 3</span><span> ────────────────────────────────────────
+})</div><div class='output co'>#&gt; ── </span><span style='color: #BBBB00;font-weight: bold;'>Error</span><span style='font-weight: bold;'> (&lt;text&gt;:24:3): plus(1, 1) == 3</span><span> ────────────────────────────────────────
 #&gt; Error: Function plus not found in environment testthat.
 #&gt; </span><span style='font-weight: bold;'>Backtrace:</span><span>
 #&gt; </span><span style='color: #555555;'> 1. </span><span>testthat::local_mock(plus = function(x, y) 3)
