@@ -214,7 +214,7 @@ and <code>1L</code> are treated as equal.</p>
   <span class='no'>object</span>,
   <span class='no'>expected</span>,
   <span class='no'>...</span>,
-  <span class='kw'>tolerance</span> <span class='kw'>=</span> <span class='fu'><a href='compare.html'>testthat_tolerance</a></span>(),
+  <span class='kw'>tolerance</span> <span class='kw'>=</span> <span class='kw'>if</span> (<span class='fu'><a href='local_edition.html'>edition_get</a></span>() <span class='kw'>&gt;=</span> <span class='fl'>3</span>) <span class='fu'><a href='compare.html'>testthat_tolerance</a></span>(),
   <span class='kw'>info</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>label</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>expected.label</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
@@ -241,22 +241,21 @@ more details.</p></td>
     </tr>
     <tr>
       <th>...</th>
-      <td><p>In the 3rd edition; passed on to <code><a href='https://rdrr.io/pkg/waldo/man/compare.html'>waldo::compare()</a></code>. See
-its docs to see other ways to control comparison. In the 2nd edition;
-passed on to <code><a href='compare.html'>compare()</a></code>/<code><a href='https://rdrr.io/r/base/identical.html'>identical()</a></code>.</p></td>
+      <td><p><strong>3e</strong>: passed on to <code><a href='https://rdrr.io/pkg/waldo/man/compare.html'>waldo::compare()</a></code>. See its docs to see other
+ways to control comparison.</p>
+<p><strong>2e</strong>: passed on to <code><a href='compare.html'>compare()</a></code>/<code><a href='https://rdrr.io/r/base/identical.html'>identical()</a></code>.</p></td>
     </tr>
     <tr>
       <th>tolerance</th>
-      <td><p>If non-<code>NULL</code>, used as threshold for ignoring small
-floating point difference when comparing numeric vectors. Setting to
-any non-<code>NULL</code> value will cause integer and double vectors to be compared
-based on their values, rather than their types.</p>
-<p>It uses the same algorithm as <code><a href='https://rdrr.io/r/base/all.equal.html'>all.equal()</a></code>, i.e., first we generate
-<code>x_diff</code> and <code>y_diff</code> by subsetting <code>x</code> and <code>y</code> to look only locations
-with differences. Then we check that
-<code>mean(abs(x_diff - y_diff)) / mean(abs(y_diff))</code> (or just
-<code><a href='https://rdrr.io/r/base/mean.html'>mean(abs(x_diff - y_diff))</a></code> if <code>y_diff</code> is small) is less than
-<code>tolerance</code>.</p></td>
+      <td><p><strong>3e</strong>: passed on to <code><a href='https://rdrr.io/pkg/waldo/man/compare.html'>waldo::compare()</a></code>. If non-<code>NULL</code>, will
+ignore small floating point differences. It uses same algorithm as
+<code><a href='https://rdrr.io/r/base/all.equal.html'>all.equal()</a></code> so the tolerance is usually relative (i.e.
+<code>mean(abs(x - y) / mean(abs(y)) &lt; tolerance</code>), except when the differences
+are very small, when it becomes absolute (i.e. <code>mean(abs(x - y) &lt; tolerance</code>).
+See waldo documentation for more details.</p>
+<p><strong>2e</strong>: passed on to <code><a href='compare.html'>compare()</a></code>, if set. It's hard to
+reason about exactly what tolerance means because depending on the precise
+code path it could be either an absolute or relative tolerance.</p></td>
     </tr>
     <tr>
       <th>info</th>

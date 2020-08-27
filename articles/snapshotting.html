@@ -184,13 +184,13 @@
   <span class="fu"><a href="../reference/expect_snapshot.html">expect_snapshot_output</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span>(<span class="fu">bullets</span>(<span class="st">"a"</span>)))
   <span class="fu"><a href="../reference/expect_snapshot.html">expect_snapshot_output</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span>(<span class="fu">bullets</span>(<span class="st">"a"</span>, <span class="st">"b"</span>)))
 })
-<span class="co">#&gt; ── &lt;text&gt;:2:3: warning: bullets ────────────────────────────────────────────────</span>
+<span class="co">#&gt; ── Warning (&lt;text&gt;:2:3): bullets ───────────────────────────────────────────────</span>
 <span class="co">#&gt; Adding new snapshot:</span>
 <span class="co">#&gt; &lt;ul&gt;</span>
 <span class="co">#&gt;   &lt;li&gt;a&lt;/li&gt;</span>
 <span class="co">#&gt; &lt;/ul&gt;</span>
 <span class="co">#&gt; </span>
-<span class="co">#&gt; ── &lt;text&gt;:3:3: warning: bullets ────────────────────────────────────────────────</span>
+<span class="co">#&gt; ── Warning (&lt;text&gt;:3:3): bullets ───────────────────────────────────────────────</span>
 <span class="co">#&gt; Adding new snapshot:</span>
 <span class="co">#&gt; &lt;ul id="b"&gt;</span>
 <span class="co">#&gt;   &lt;li&gt;a&lt;/li&gt;</span>
@@ -214,14 +214,14 @@
   <span class="fu"><a href="../reference/expect_snapshot.html">expect_snapshot_output</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span>(<span class="fu">bullets</span>(<span class="st">"a"</span>)))
   <span class="fu"><a href="../reference/expect_snapshot.html">expect_snapshot_output</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span>(<span class="fu">bullets</span>(<span class="st">"a"</span>, <span class="st">"b"</span>)))
 })
-<span class="co">#&gt; ── &lt;text&gt;:9:3: failure: bullets ────────────────────────────────────────────────</span>
+<span class="co">#&gt; ── FAILURE (&lt;text&gt;:9:3): bullets ───────────────────────────────────────────────</span>
 <span class="co">#&gt; Snapshot of `cat(bullets("a"))` has changed:</span>
 <span class="co">#&gt; `current`:  "&lt;ul&gt;" "&lt;li&gt;a&lt;/li&gt;"   "&lt;/ul&gt;"</span>
 <span class="co">#&gt; `previous`: "&lt;ul&gt;" "  &lt;li&gt;a&lt;/li&gt;" "&lt;/ul&gt;"</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; Run `snapshot_accept('pizza')` if this is a deliberate change</span>
 <span class="co">#&gt; </span>
-<span class="co">#&gt; ── &lt;text&gt;:10:3: failure: bullets ───────────────────────────────────────────────</span>
+<span class="co">#&gt; ── FAILURE (&lt;text&gt;:10:3): bullets ──────────────────────────────────────────────</span>
 <span class="co">#&gt; Snapshot of `cat(bullets("a", "b"))` has changed:</span>
 <span class="co">#&gt; `current`:  "&lt;ul id=\"b\"&gt;" "&lt;li&gt;a&lt;/li&gt;"   "&lt;/ul&gt;"</span>
 <span class="co">#&gt; `previous`: "&lt;ul id=\"b\"&gt;" "  &lt;li&gt;a&lt;/li&gt;" "&lt;/ul&gt;"</span>
