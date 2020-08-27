@@ -137,6 +137,9 @@ recommendations. To opt-in to the 3rd edition for your package, set
 
 ## Minor improvements and bug fixes
 
+* `skip` conditions are now re-signaled from `test_code()`, allowing handlers
+  placed on e.g. `test_that()` to see and respond to `skip`s. (#1154)
+  
 * testthat no longer supports tests stored in `inst/tests`. This has been
   deprecated since testthat 0.11.0 (released in 2015).
 
