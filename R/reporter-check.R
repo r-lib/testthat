@@ -44,7 +44,7 @@ CheckReporter <- R6::R6Class("CheckReporter",
       }
 
       type <- expectation_type(result)
-      header <- issue_header(result, rule = TRUE)
+      header <- cli::rule(issue_header(result))
 
       self$local_user_output()
       self$cat_line(header)

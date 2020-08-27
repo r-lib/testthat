@@ -460,7 +460,7 @@ spinner <- function(frames, i) {
   frames[((i - 1) %% length(frames)) + 1]
 }
 
-issue_header <- function(x, rule = FALSE) {
+issue_header <- function(x) {
   type <- expectation_type(x)
   if (has_colour()) {
     type <- colourise(first_upper(type), type)
@@ -469,16 +469,16 @@ issue_header <- function(x, rule = FALSE) {
   }
 
   loc <- expectation_location(x)
-  header <- paste0(type, " (", loc, "): ", x$test)
-  header <- crayon::bold(header)
-  if (rule) {
-    header <- cli::rule(header)
-  }
-  header
+  paste0(type, " (", loc, "): ", x$test)
 }
 
 issue_summary <- function(x, rule = FALSE) {
-  paste0(issue_header(x, rule = rule), "\n", format(x))
+  header <- crayon::bold(issue_header(x))
+  if (rule) {
+    header <- cli::rule(header)
+  }
+
+  paste0(header, "\n", format(x))
 }
 
 strpad <- function(x, width = cli::console_width()) {
