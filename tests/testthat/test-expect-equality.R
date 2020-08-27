@@ -42,10 +42,22 @@ test_that("can control numeric tolerance", {
   expect_failure(expect_equal(x1, x2))
   expect_success(expect_equal(x1, x2, tolerance = 1e-5))
   expect_success(expect_equivalent(x1, x2, tolerance = 1e-5))
+  # with partial matching
+  withr::local_options(list(warnPartialMatchArgs = FALSE))
+  expect_success(expect_equal(x1, x2, tol = 1e-5))
 
   local_edition(3)
   expect_failure(expect_equal(x1, x2))
   expect_success(expect_equal(x1, x2, tolerance = 1e-5))
+})
+
+test_that("second edition only optionally sets tolerance", {
+  local_edition(2)
+
+  # all.equal.POSIXct sets default tolerance to 0.001
+  x <- .POSIXct(1)
+  y <- .POSIXct(1 + 1e-4)
+  expect_success(expect_equal(x, y))
 })
 
 test_that("provide useful feedback on failure", {

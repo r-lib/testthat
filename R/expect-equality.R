@@ -43,7 +43,7 @@ NULL
 #' @rdname equality-expectations
 #' @inheritParams waldo::compare
 expect_equal <- function(object, expected, ...,
-                         tolerance = testthat_tolerance(),
+                         tolerance = NULL,
                          info = NULL, label = NULL,
                          expected.label = NULL) {
 
@@ -51,9 +51,15 @@ expect_equal <- function(object, expected, ...,
   exp <- quasi_label(enquo(expected), expected.label, arg = "expected")
 
   if (edition_get() >= 3) {
+    tolerance <- tolerance %||% testthat_tolerance()
     expect_waldo_equal("equal", act, exp, info, ..., tolerance = tolerance)
   } else {
-    comp <- compare(act$val, exp$val, ..., tolerance = tolerance)
+    if (!is.null(tolerance)) {
+      comp <- compare(act$val, exp$val, ..., tolerance = tolerance)
+    } else {
+      comp <- compare(act$val, exp$val, ...)
+    }
+
     expect(
       comp$equal,
       sprintf("%s not equal to %s.\n%s", act$lab, exp$lab, comp$message),
