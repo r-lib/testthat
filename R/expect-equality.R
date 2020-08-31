@@ -1,4 +1,4 @@
-#' Expectation: is an object equal to a reference value?
+#' Is an object equal to the expected value?
 #'
 #' @description
 #' These functions provide two levels of strictness when comparing a
@@ -128,7 +128,7 @@ expect_waldo_equal <- function(type, act, exp, info, ...) {
   invisible(act$val)
 }
 
-#' Expectation: is an object equal to a reference value, ignoring attributes?
+#' Is an object equal to the expected value, ignoring attributes?
 #'
 #' Compares `object` and `expected` using [all.equal()] and
 #' `check.attributes = FALSE`.
@@ -170,7 +170,7 @@ expect_equivalent <- function(object, expected, ..., info = NULL, label = NULL,
 }
 
 
-#' Do two names point to the same underlying object?
+#' Does code yield a reference to the expected object?
 #'
 #' `expect_reference()` compares the underlying memory addresses of
 #' two symbols. It is for expert use only.

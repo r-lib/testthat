@@ -1,4 +1,4 @@
-#' Expectation: does string match a regular expression?
+#' Does a string match a regular expression?
 #'
 #' @details
 #' `expect_match()` is a wrapper around [grepl()]. See its documentation for

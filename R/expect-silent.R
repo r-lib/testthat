@@ -1,4 +1,4 @@
-#' Expectation: is the code silent?
+#' Does code execute silently?
 #'
 #' Checks that the code produces no output, messages, or warnings.
 #'

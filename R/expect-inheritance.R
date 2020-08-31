@@ -1,4 +1,4 @@
-#' Expectation: does the object inherit from a S3 or S4 class, or is it a base type?
+#' Does an object inherit from a S3 or S4 class, or is it a base type?
 #'
 #' @description
 #' See <https://adv-r.hadley.nz/oo.html> for an overview of R's OO systems, and
@@ -103,7 +103,7 @@ expect_s4_class <- function(object, class) {
 
 isS3 <- function(x) is.object(x) && !isS4(x)
 
-#' Expectation: does the object inherit from a given class?
+#' Does an object inherit from a given class?
 #'
 #' @description
 #' `r lifecycle::badge("superseded")`

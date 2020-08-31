@@ -14,14 +14,24 @@ reference:
 - title: Expectations
   contents:
   - starts_with("expect_")
+  - -starts_with("expect_snapshot_")
+
+- title: Snapshot testing
+  contents:
+  - starts_with("expect_snapshot_")
+  - starts_with("snapshot_")
+
+- test: Test helpers
+  contents:
+  - is_testing
   - skip
-  - verify_output
+  - teardown_env
 
 - title: Run tests
   contents:
-  - starts_with("test_")
   - starts_with("auto_test")
   - describe
+  - starts_with("test_")
   - use_catch
 
 - title: Reporters

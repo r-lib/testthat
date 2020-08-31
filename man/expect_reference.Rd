@@ -2,7 +2,7 @@
 % Please edit documentation in R/expect-equality.R
 \name{expect_reference}
 \alias{expect_reference}
-\title{Do two names point to the same underlying object?}
+\title{Does code yield a reference to the expected object?}
 \usage{
 expect_reference(
   object,

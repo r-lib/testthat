@@ -1,4 +1,4 @@
-#' Expectation: does object have names?
+#' Does a vector have names?
 #'
 #' You can either check for the presence of names (leaving `expected`
 #' blank), specific names (by supplying a vector of names), or absence of

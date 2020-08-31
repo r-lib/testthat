@@ -2,7 +2,7 @@
 % Please edit documentation in R/expect-equality.R
 \name{expect_equivalent}
 \alias{expect_equivalent}
-\title{Expectation: is an object equal to a reference value, ignoring attributes?}
+\title{Is an object equal to the expected value, ignoring attributes?}
 \usage{
 expect_equivalent(
   object,

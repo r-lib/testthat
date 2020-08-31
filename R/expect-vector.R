@@ -1,4 +1,4 @@
-#' Expectation: does the object have vctr properties?
+#' Does a vector have the specified size and/or prototype?
 #'
 #' `expect_vector()` is a thin wrapper around [vctrs::vec_assert()], converting
 #' the results of that function in to the expectations used by testthat. This

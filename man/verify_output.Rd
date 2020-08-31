@@ -98,3 +98,4 @@ verify_output(tempfile(), {
    "a" * 3
 })
 }
+\keyword{internal}

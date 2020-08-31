@@ -43,6 +43,7 @@
 #'   test on your CI platforms that don't support UTF-8 (e.g. Windows).
 #' @param env The environment to evaluate `code` in.
 #' @export
+#' @keywords internal
 #' @examples
 #' # The first argument would usually be `test_path("informative-name.txt"`)
 #' # but that is not permitted in examples

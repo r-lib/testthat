@@ -1,4 +1,4 @@
-#' Expectation: is the object true/false?
+#' Is an object true/false?
 #'
 #' These are fall-back expectations that you can use when none of the other
 #' more specific expectations apply. The disadvantage is that you may get
@@ -44,7 +44,7 @@ expect_false <- function(object, info = NULL, label = NULL) {
   expect_waldo_constant(act, FALSE, info = info)
 }
 
-#' Expectation: is an object `NULL`?
+#' Is an object `NULL`?
 #'
 #' This is a special case because `NULL` is a singleton so it's possible
 #' check for it either with `expect_equal(x, NULL)` or `expect_type(x, "NULL")`.
