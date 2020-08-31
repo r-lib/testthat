@@ -206,20 +206,92 @@
       
     </tbody><tbody>
       
+      <tr>
+        <th colspan="2">
+          <h3 id="section-objects" class="hasAnchor"><a href="#section-objects" class="anchor"></a>Objects</h3>
+          <p class="section-desc"></p>
+        </th>
+      </tr>
+      
+    </tbody><tbody>
+      
       
       <tr>
         
         <td>
-          <p><code><a href="comparison-expectations.html">expect_lt()</a></code> <code><a href="comparison-expectations.html">expect_lte()</a></code> <code><a href="comparison-expectations.html">expect_gt()</a></code> <code><a href="comparison-expectations.html">expect_gte()</a></code> </p>
+          <p><code><a href="equality-expectations.html">expect_equal()</a></code> <code><a href="equality-expectations.html">expect_identical()</a></code> </p>
         </td>
-        <td><p>Is a number greater than or less than the expected value?</p></td>
+        <td><p>Does code return the expected value?</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="equality-expectations.html">expect_equal()</a></code> <code><a href="equality-expectations.html">expect_identical()</a></code> </p>
+          <p><code><a href="inheritance-expectations.html">expect_type()</a></code> <code><a href="inheritance-expectations.html">expect_s3_class()</a></code> <code><a href="inheritance-expectations.html">expect_s4_class()</a></code> </p>
         </td>
-        <td><p>Is an object equal to the expected value?</p></td>
+        <td><p>Does code return an object inheriting from the expected base type, S3 class,
+or S4 class?</p></td>
+      </tr>
+    </tbody><tbody>
+      
+      <tr>
+        <th colspan="2">
+          <h3 id="section-vectors" class="hasAnchor"><a href="#section-vectors" class="anchor"></a>Vectors</h3>
+          <p class="section-desc"></p>
+        </th>
+      </tr>
+      
+    </tbody><tbody>
+      
+      
+      <tr>
+        
+        <td>
+          <p><code><a href="expect_length.html">expect_length()</a></code> </p>
+        </td>
+        <td><p>Does code return a vector with the specified length?</p></td>
       </tr><tr>
+        
+        <td>
+          <p><code><a href="comparison-expectations.html">expect_lt()</a></code> <code><a href="comparison-expectations.html">expect_lte()</a></code> <code><a href="comparison-expectations.html">expect_gt()</a></code> <code><a href="comparison-expectations.html">expect_gte()</a></code> </p>
+        </td>
+        <td><p>Does code return a number greater/less than the expected value?</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="expect_named.html">expect_named()</a></code> </p>
+        </td>
+        <td><p>Does code return a vector with (given) names?</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="expect_setequal.html">expect_setequal()</a></code> <code><a href="expect_setequal.html">expect_mapequal()</a></code> </p>
+        </td>
+        <td><p>Does code return a vector containing the expected values?</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="logical-expectations.html">expect_true()</a></code> <code><a href="logical-expectations.html">expect_false()</a></code> </p>
+        </td>
+        <td><p>Does code return <code>TRUE</code> or <code>FALSE</code>?</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="expect_vector.html">expect_vector()</a></code> </p>
+        </td>
+        <td><p>Does code return a vector with the expected size and/or prototype?</p></td>
+      </tr>
+    </tbody><tbody>
+      
+      <tr>
+        <th colspan="2">
+          <h3 id="section-side-effects" class="hasAnchor"><a href="#section-side-effects" class="anchor"></a>Side-effects</h3>
+          <p class="section-desc"></p>
+        </th>
+      </tr>
+      
+    </tbody><tbody>
+      
+      
+      <tr>
         
         <td>
           <p><code><a href="expect_error.html">expect_error()</a></code> <code><a href="expect_error.html">expect_warning()</a></code> <code><a href="expect_error.html">expect_message()</a></code> <code><a href="expect_error.html">expect_condition()</a></code> </p>
@@ -230,25 +302,7 @@
         <td>
           <p><code><a href="expect_invisible.html">expect_invisible()</a></code> <code><a href="expect_invisible.html">expect_visible()</a></code> </p>
         </td>
-        <td><p>Does code return visibly or invisibly?</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="expect_length.html">expect_length()</a></code> </p>
-        </td>
-        <td><p>Does a vector have the specified length?</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="expect_match.html">expect_match()</a></code> </p>
-        </td>
-        <td><p>Does a string match a regular expression?</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="expect_named.html">expect_named()</a></code> </p>
-        </td>
-        <td><p>Does a vector have names?</p></td>
+        <td><p>Does code return a visible or invisible object?</p></td>
       </tr><tr>
         
         <td>
@@ -258,39 +312,9 @@
       </tr><tr>
         
         <td>
-          <p><code><a href="expect_reference.html">expect_reference()</a></code> </p>
-        </td>
-        <td><p>Does code yield a reference to the expected object?</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="expect_setequal.html">expect_setequal()</a></code> <code><a href="expect_setequal.html">expect_mapequal()</a></code> </p>
-        </td>
-        <td><p>Does a vector contain the same values as the expected vector?</p></td>
-      </tr><tr>
-        
-        <td>
           <p><code><a href="expect_silent.html">expect_silent()</a></code> </p>
         </td>
         <td><p>Does code execute silently?</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="expect_vector.html">expect_vector()</a></code> </p>
-        </td>
-        <td><p>Does a vector have the specified size and/or prototype?</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="inheritance-expectations.html">expect_type()</a></code> <code><a href="inheritance-expectations.html">expect_s3_class()</a></code> <code><a href="inheritance-expectations.html">expect_s4_class()</a></code> </p>
-        </td>
-        <td><p>Does an object inherit from a S3 or S4 class, or is it a base type?</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="logical-expectations.html">expect_true()</a></code> <code><a href="logical-expectations.html">expect_false()</a></code> </p>
-        </td>
-        <td><p>Is an object true/false?</p></td>
       </tr>
     </tbody><tbody>
       <tr>
