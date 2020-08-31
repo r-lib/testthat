@@ -11,6 +11,7 @@
 #'    or does only one need to match (FALSE)
 #' @inheritDotParams base::grepl -pattern -x -perl -fixed
 #' @family expectations
+#' @keywords internal
 #' @export
 #' @examples
 #' expect_match("Testing is fun", "fun")
