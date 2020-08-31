@@ -212,68 +212,99 @@
         <td>
           <p><code><a href="comparison-expectations.html">expect_lt()</a></code> <code><a href="comparison-expectations.html">expect_lte()</a></code> <code><a href="comparison-expectations.html">expect_gt()</a></code> <code><a href="comparison-expectations.html">expect_gte()</a></code> </p>
         </td>
-        <td><p>Expectation: is returned value less or greater than specified value?</p></td>
+        <td><p>Is a number greater than or less than the expected value?</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="equality-expectations.html">expect_equal()</a></code> <code><a href="equality-expectations.html">expect_identical()</a></code> </p>
         </td>
-        <td><p>Expectation: is an object equal to a reference value?</p></td>
+        <td><p>Is an object equal to the expected value?</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="expect_error.html">expect_error()</a></code> <code><a href="expect_error.html">expect_warning()</a></code> <code><a href="expect_error.html">expect_message()</a></code> <code><a href="expect_error.html">expect_condition()</a></code> </p>
         </td>
-        <td><p>Expectation: does code throw an error, warning, message, or other condition?</p></td>
+        <td><p>Does code throw an error, warning, message, or other condition?</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="expect_invisible.html">expect_invisible()</a></code> <code><a href="expect_invisible.html">expect_visible()</a></code> </p>
         </td>
-        <td><p>Expectation: does expression return visibly or invisibly?</p></td>
+        <td><p>Does code return visibly or invisibly?</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="expect_length.html">expect_length()</a></code> </p>
         </td>
-        <td><p>Expectation: does a vector have the specified length?</p></td>
+        <td><p>Does a vector have the specified length?</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="expect_match.html">expect_match()</a></code> </p>
         </td>
-        <td><p>Expectation: does string match a regular expression?</p></td>
+        <td><p>Does a string match a regular expression?</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="expect_named.html">expect_named()</a></code> </p>
         </td>
-        <td><p>Expectation: does object have names?</p></td>
+        <td><p>Does a vector have names?</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="expect_output.html">expect_output()</a></code> </p>
         </td>
-        <td><p>Expectation: does code print output to the console?</p></td>
+        <td><p>Does code print output to the console?</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="expect_reference.html">expect_reference()</a></code> </p>
         </td>
-        <td><p>Do two names point to the same underlying object?</p></td>
+        <td><p>Does code yield a reference to the expected object?</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="expect_setequal.html">expect_setequal()</a></code> <code><a href="expect_setequal.html">expect_mapequal()</a></code> </p>
         </td>
-        <td><p>Expectation: do two vectors contain the same values?</p></td>
+        <td><p>Does a vector contain the same values as the expected vector?</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="expect_silent.html">expect_silent()</a></code> </p>
         </td>
-        <td><p>Expectation: is the code silent?</p></td>
+        <td><p>Does code execute silently?</p></td>
       </tr><tr>
+        
+        <td>
+          <p><code><a href="expect_vector.html">expect_vector()</a></code> </p>
+        </td>
+        <td><p>Does a vector have the specified size and/or prototype?</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="inheritance-expectations.html">expect_type()</a></code> <code><a href="inheritance-expectations.html">expect_s3_class()</a></code> <code><a href="inheritance-expectations.html">expect_s4_class()</a></code> </p>
+        </td>
+        <td><p>Does an object inherit from a S3 or S4 class, or is it a base type?</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="logical-expectations.html">expect_true()</a></code> <code><a href="logical-expectations.html">expect_false()</a></code> </p>
+        </td>
+        <td><p>Is an object true/false?</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-snapshot-testing" class="hasAnchor"><a href="#section-snapshot-testing" class="anchor"></a>Snapshot testing</h2>
+          <p class="section-desc"></p>
+        </th>
+      </tr>
+      
+      
+    </tbody><tbody>
+      
+      
+      <tr>
         
         <td>
           <p><code><a href="expect_snapshot.html">expect_snapshot()</a></code> <code><a href="expect_snapshot.html">expect_snapshot_output()</a></code> <code><a href="expect_snapshot.html">expect_snapshot_error()</a></code> <code><a href="expect_snapshot.html">expect_snapshot_value()</a></code> </p>
@@ -288,21 +319,19 @@
       </tr><tr>
         
         <td>
-          <p><code><a href="expect_vector.html">expect_vector()</a></code> </p>
+          <p><code><a href="snapshot_accept.html">snapshot_accept()</a></code> <code><a href="snapshot_accept.html">snapshot_review()</a></code> </p>
         </td>
-        <td><p>Expectation: does the object have vctr properties?</p></td>
-      </tr><tr>
+        <td><p>Snapshot management</p></td>
+      </tr>
+    </tbody><tbody>
+      
+      
+      <tr>
         
         <td>
-          <p><code><a href="inheritance-expectations.html">expect_type()</a></code> <code><a href="inheritance-expectations.html">expect_s3_class()</a></code> <code><a href="inheritance-expectations.html">expect_s4_class()</a></code> </p>
+          <p><code><a href="is_testing.html">is_testing()</a></code> <code><a href="is_testing.html">is_parallel()</a></code> <code><a href="is_testing.html">testing_package()</a></code> </p>
         </td>
-        <td><p>Expectation: does the object inherit from a S3 or S4 class, or is it a base type?</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="logical-expectations.html">expect_true()</a></code> <code><a href="logical-expectations.html">expect_false()</a></code> </p>
-        </td>
-        <td><p>Expectation: is the object true/false?</p></td>
+        <td><p>Determine testing status</p></td>
       </tr><tr>
         
         <td>
@@ -312,9 +341,9 @@
       </tr><tr>
         
         <td>
-          <p><code><a href="verify_output.html">verify_output()</a></code> </p>
+          <p><code><a href="teardown_env.html">teardown_env()</a></code> </p>
         </td>
-        <td><p>Verify output</p></td>
+        <td><p>Run code after all test files</p></td>
       </tr>
     </tbody><tbody>
       <tr>
@@ -329,6 +358,24 @@
       
       
       <tr>
+        
+        <td>
+          <p><code><a href="auto_test.html">auto_test()</a></code> </p>
+        </td>
+        <td><p>Watches code and tests for changes, rerunning tests as appropriate.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="auto_test_package.html">auto_test_package()</a></code> </p>
+        </td>
+        <td><p>Watches a package for changes, rerunning tests as appropriate.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="describe.html">describe()</a></code> </p>
+        </td>
+        <td><p>describe: a BDD testing language</p></td>
+      </tr><tr>
         
         <td>
           <p><code><a href="test_dir.html">test_dir()</a></code> </p>
@@ -358,24 +405,6 @@
           <p><code><a href="test_that.html">test_that()</a></code> </p>
         </td>
         <td><p>Create a test.</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="auto_test.html">auto_test()</a></code> </p>
-        </td>
-        <td><p>Watches code and tests for changes, rerunning tests as appropriate.</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="auto_test_package.html">auto_test_package()</a></code> </p>
-        </td>
-        <td><p>Watches a package for changes, rerunning tests as appropriate.</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="describe.html">describe()</a></code> </p>
-        </td>
-        <td><p>describe: a BDD testing language</p></td>
       </tr><tr>
         
         <td>

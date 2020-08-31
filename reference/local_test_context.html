@@ -202,7 +202,7 @@ or non-standard width." />
 yourself if you want to replicate test results interactively. If
 run inside a function, the effects are automatically reversed when the
 function exits; if running in the global environment, use
-<code><a href='https://rdrr.io/pkg/withr/man/defer.html'>withr::deferred_run()</a></code> to undo.</p>
+<code><a href='https://withr.r-lib.org/reference/defer.html'>withr::deferred_run()</a></code> to undo.</p>
 <p><code>local_reproducible_output()</code> allows overriding the settings
 inside a test, if you want to test Unicode and colored output
 or non-standard width.</p>
@@ -242,7 +242,7 @@ The test is skipped if <code>l10n_info()$`UTF-8`</code> is <code>FALSE</code>.</
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p><code>local_test_context()</code> and <code>local_reproducible_output()</code>
-set the following options with <code><a href='https://rdrr.io/pkg/withr/man/with_options.html'>withr::local_options()</a></code>:</p><ul>
+set the following options with <code><a href='https://withr.r-lib.org/reference/with_options.html'>withr::local_options()</a></code>:</p><ul>
 <li><p><code>cli.unicode</code> (default: <code>FALSE</code>) so that the cli package never generates unicode
 output (normally cli uses unicode on Linux/Mac but not Windows).
 Windows can't easily save unicode output to disk, so it must be set to

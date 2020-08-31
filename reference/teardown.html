@@ -239,7 +239,7 @@ use only.</p></td>
 <span class='no'>local_test_data</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>(<span class='no'>env</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/sys.parent.html'>parent.frame</a></span>()) {
   <span class='no'>tmp</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempfile</a></span>()
   <span class='fu'><a href='https://rdrr.io/r/base/writeLines.html'>writeLines</a></span>(<span class='st'>"some test data"</span>, <span class='no'>tmp</span>)
-  <span class='kw pkg'>withr</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/withr/man/defer.html'>defer</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/unlink.html'>unlink</a></span>(<span class='no'>tmp</span>), <span class='no'>env</span>)
+  <span class='kw pkg'>withr</span><span class='kw ns'>::</span><span class='fu'><a href='https://withr.r-lib.org/reference/defer.html'>defer</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/unlink.html'>unlink</a></span>(<span class='no'>tmp</span>), <span class='no'>env</span>)
 
   <span class='no'>tmp</span>
 }
