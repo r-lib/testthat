@@ -4,7 +4,7 @@
 \alias{equality-expectations}
 \alias{expect_equal}
 \alias{expect_identical}
-\title{Is an object equal to the expected value?}
+\title{Does code return the expected value?}
 \usage{
 expect_equal(
   object,

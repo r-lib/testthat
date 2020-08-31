@@ -3,7 +3,7 @@
 \name{expect_setequal}
 \alias{expect_setequal}
 \alias{expect_mapequal}
-\title{Does a vector contain the same values as the expected vector?}
+\title{Does code return a vector containing the expected values?}
 \usage{
 expect_setequal(object, expected)
 

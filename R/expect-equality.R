@@ -1,4 +1,4 @@
-#' Is an object equal to the expected value?
+#' Does code return the expected value?
 #'
 #' @description
 #' These functions provide two levels of strictness when comparing a
@@ -170,13 +170,14 @@ expect_equivalent <- function(object, expected, ..., info = NULL, label = NULL,
 }
 
 
-#' Does code yield a reference to the expected object?
+#' Does code return a reference to the expected object?
 #'
 #' `expect_reference()` compares the underlying memory addresses of
 #' two symbols. It is for expert use only.
 #'
 #' @inheritParams expect_equal
 #' @family expectations
+#' @keywords internal
 #' @export
 expect_reference <- function(object, expected, info = NULL, label = NULL,
                              expected.label = NULL) {

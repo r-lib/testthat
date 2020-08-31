@@ -2,7 +2,7 @@
 % Please edit documentation in R/expect-equality.R
 \name{expect_reference}
 \alias{expect_reference}
-\title{Does code yield a reference to the expected object?}
+\title{Does code return a reference to the expected object?}
 \usage{
 expect_reference(
   object,
@@ -54,3 +54,4 @@ Other expectations:
 \code{\link{logical-expectations}}
 }
 \concept{expectations}
+\keyword{internal}

@@ -1,4 +1,5 @@
-#' Does an object inherit from a S3 or S4 class, or is it a base type?
+#' Does code return an object inheriting from the expected base type, S3 class,
+#' or S4 class?
 #'
 #' @description
 #' See <https://adv-r.hadley.nz/oo.html> for an overview of R's OO systems, and
