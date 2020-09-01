@@ -16,6 +16,14 @@ test_that("can snapshot everything", {
   expect_snapshot(f())
 })
 
+test_that("snapshot handles multi-line input", {
+  expect_snapshot({
+    1 + 2
+    3 + 4
+    "this is a comment"
+  })
+})
+
 test_that("snapshot captures output if visible", {
   f_visible <- function() "x"
   f_invisible <- function() invisible("x")

@@ -63,7 +63,7 @@ snapshot_replay.character <- function(x) {
 }
 #' @export
 snapshot_replay.source <- function(x) {
-  character()
+  c("Code", indent(split_lines(x$src)))
 }
 #' @export
 snapshot_replay.condition <- function(x) {
