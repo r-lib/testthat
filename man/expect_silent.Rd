@@ -2,7 +2,7 @@
 % Please edit documentation in R/expect-silent.R
 \name{expect_silent}
 \alias{expect_silent}
-\title{Expectation: is the code silent?}
+\title{Does code execute silently?}
 \usage{
 expect_silent(object)
 }

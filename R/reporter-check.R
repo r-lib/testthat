@@ -30,7 +30,9 @@ CheckReporter <- R6::R6Class("CheckReporter",
         return()
       }
 
-      self$problems$push(result)
+      if (!expectation_skip(result)) {
+        self$problems$push(result)
+      }
 
       if (expectation_skip(result)) {
         self$n_skip <- self$n_skip + 1L
@@ -42,11 +44,17 @@ CheckReporter <- R6::R6Class("CheckReporter",
       }
 
       type <- expectation_type(result)
-      header <- failure_header(result)
+      header <- cli::rule(issue_header(result))
 
       self$local_user_output()
-      self$rule(header, col = testthat_style(type))
-      self$cat_line(format(result, simplify = "none"))
+      self$cat_line(header)
+      if (expectation_warning(result)) {
+        # A lot of CRAN packages have warnings so showing full traceback
+        # makes it hard to see failures
+        self$cat_line(result$message)
+      } else {
+        self$cat_line(format(result, simplify = "none"))
+      }
       self$cat_line()
     },
 
@@ -64,27 +72,21 @@ CheckReporter <- R6::R6Class("CheckReporter",
 
       saveRDS(problems, "testthat-problems.rds")
       self$rule("testthat results ", line = 2)
-      self$cat_line(vapply(problems, failure_header, character(1)))
+      self$cat_line(vapply(problems, issue_header, character(1)))
       self$cat_line()
-      self$cat_line(summary_line(self$n_ok, self$n_fail, self$n_warn, self$n_skip))
+      self$cat_line(summary_line(self$n_fail, self$n_warn, self$n_skip, self$n_ok))
     }
   )
 )
 
-failure_header <- function(x) {
-  type <- expectation_type(x)
-  substr(type, 1, 1) <- toupper(substr(type, 1, 1))
-  type <- colourise(type, expectation_type(x))
-  paste0(type, ": ", x$test, " (", expectation_location(x), ")")
-}
-
-summary_line <- function(n_ok, n_fail, n_warn, n_skip) {
+summary_line <- function(n_fail, n_warn, n_skip, n_ok) {
+  # Ordered from most important to least important
   paste0(
     "[ ",
-    colourise("PASS", "success"), " x", n_ok, " ",
-    colourise("FAIL", "fail"),    " x", n_fail, " ",
-    colourise("WARN", "warn"),    " x", n_warn, " ",
-    colourise("SKIP", "skip"),    " x", n_skip,
+    colourise("FAIL", "failure"), " ", n_fail, " | ",
+    colourise("WARN", "warn"),    " ", n_warn, " | ",
+    colourise("SKIP", "skip"),    " ", n_skip, " | ",
+    colourise("PASS", "success"), " ", n_ok,
     " ]"
   )
 }

@@ -133,7 +133,7 @@ matches <- function(regexp, all = TRUE, ...) {
 }
 
 
-#' Expectation: does expression take less than a fixed amount of time to run?
+#' Does code take less than the expected amount of time to run?
 #'
 #' This is useful for performance regression testing.
 #'

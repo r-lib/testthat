@@ -4,13 +4,13 @@
 \alias{equality-expectations}
 \alias{expect_equal}
 \alias{expect_identical}
-\title{Expectation: is an object equal to a reference value?}
+\title{Does code return the expected value?}
 \usage{
 expect_equal(
   object,
   expected,
   ...,
-  tolerance = testthat_tolerance(),
+  tolerance = if (edition_get() >= 3) testthat_tolerance(),
   info = NULL,
   label = NULL,
   expected.label = NULL
@@ -32,21 +32,21 @@ Both arguments supports limited unquoting to make it easier to generate
 readable failures within a function or for loop. See \link{quasi_label} for
 more details.}
 
-\item{...}{In the 3rd edition; passed on to \code{\link[waldo:compare]{waldo::compare()}}. See
-its docs to see other ways to control comparison. In the 2nd edition;
-passed on to \code{\link[=compare]{compare()}}/\code{\link[=identical]{identical()}}.}
+\item{...}{\strong{3e}: passed on to \code{\link[waldo:compare]{waldo::compare()}}. See its docs to see other
+ways to control comparison.
 
-\item{tolerance}{If non-\code{NULL}, used as threshold for ignoring small
-floating point difference when comparing numeric vectors. Setting to
-any non-\code{NULL} value will cause integer and double vectors to be compared
-based on their values, rather than their types.
+\strong{2e}: passed on to \code{\link[=compare]{compare()}}/\code{\link[=identical]{identical()}}.}
 
-It uses the same algorithm as \code{\link[=all.equal]{all.equal()}}, i.e., first we generate
-\code{x_diff} and \code{y_diff} by subsetting \code{x} and \code{y} to look only locations
-with differences. Then we check that
-\code{mean(abs(x_diff - y_diff)) / mean(abs(y_diff))} (or just
-\code{mean(abs(x_diff - y_diff))} if \code{y_diff} is small) is less than
-\code{tolerance}.}
+\item{tolerance}{\strong{3e}: passed on to \code{\link[waldo:compare]{waldo::compare()}}. If non-\code{NULL}, will
+ignore small floating point differences. It uses same algorithm as
+\code{\link[=all.equal]{all.equal()}} so the tolerance is usually relative (i.e.
+\verb{mean(abs(x - y) / mean(abs(y)) < tolerance}), except when the differences
+are very small, when it becomes absolute (i.e. \verb{mean(abs(x - y) < tolerance}).
+See waldo documentation for more details.
+
+\strong{2e}: passed on to \code{\link[=compare]{compare()}}, if set. It's hard to
+reason about exactly what tolerance means because depending on the precise
+code path it could be either an absolute or relative tolerance.}
 
 \item{info}{Extra information to be included in the message. This argument
 is soft-deprecated and should not be used in new code. Instead see

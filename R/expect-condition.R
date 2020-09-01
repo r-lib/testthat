@@ -1,4 +1,4 @@
-#' Expectation: does code throw an error, warning, message, or other condition?
+#' Does code throw an error, warning, message, or other condition?
 #'
 #' @description
 #' `expect_error()`, `expect_warning()`, `expect_message()`, and

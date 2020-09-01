@@ -1,4 +1,4 @@
-#' Expectation: is returned value less or greater than specified value?
+#' Does code return a number greater/less than the expected value?
 #'
 #' @inheritParams expect_equal
 #' @param expected Single numeric value to compare.

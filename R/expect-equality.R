@@ -1,4 +1,4 @@
-#' Expectation: is an object equal to a reference value?
+#' Does code return the expected value?
 #'
 #' @description
 #' These functions provide two levels of strictness when comparing a
@@ -17,9 +17,22 @@
 #'   Both arguments supports limited unquoting to make it easier to generate
 #'   readable failures within a function or for loop. See [quasi_label] for
 #'   more details.
-#' @param ... In the 3rd edition; passed on to [waldo::compare()]. See
-#'   its docs to see other ways to control comparison. In the 2nd edition;
-#'   passed on to [compare()]/[identical()].
+#' @param ...
+#'   **3e**: passed on to [waldo::compare()]. See its docs to see other
+#'   ways to control comparison.
+#'
+#'   **2e**: passed on to [testthat::compare()]/[identical()].
+#' @param tolerance
+#'   **3e**: passed on to [waldo::compare()]. If non-`NULL`, will
+#'   ignore small floating point differences. It uses same algorithm as
+#'   [all.equal()] so the tolerance is usually relative (i.e.
+#'   `mean(abs(x - y) / mean(abs(y)) < tolerance`), except when the differences
+#'   are very small, when it becomes absolute (i.e. `mean(abs(x - y) < tolerance`).
+#'   See waldo documentation for more details.
+#'
+#'   **2e**: passed on to [testthat::compare()], if set. It's hard to
+#'   reason about exactly what tolerance means because depending on the precise
+#'   code path it could be either an absolute or relative tolerance.
 #' @param label,expected.label Used to customise failure messages. For expert
 #'   use only.
 #' @seealso
@@ -41,9 +54,8 @@ NULL
 
 #' @export
 #' @rdname equality-expectations
-#' @inheritParams waldo::compare
 expect_equal <- function(object, expected, ...,
-                         tolerance = testthat_tolerance(),
+                         tolerance = if (edition_get() >= 3) testthat_tolerance(),
                          info = NULL, label = NULL,
                          expected.label = NULL) {
 
@@ -53,7 +65,12 @@ expect_equal <- function(object, expected, ...,
   if (edition_get() >= 3) {
     expect_waldo_equal("equal", act, exp, info, ..., tolerance = tolerance)
   } else {
-    comp <- compare(act$val, exp$val, ..., tolerance = tolerance)
+    if (!is.null(tolerance)) {
+      comp <- compare(act$val, exp$val, ..., tolerance = tolerance)
+    } else {
+      comp <- compare(act$val, exp$val, ...)
+    }
+
     expect(
       comp$equal,
       sprintf("%s not equal to %s.\n%s", act$lab, exp$lab, comp$message),
@@ -111,7 +128,7 @@ expect_waldo_equal <- function(type, act, exp, info, ...) {
   invisible(act$val)
 }
 
-#' Expectation: is an object equal to a reference value, ignoring attributes?
+#' Is an object equal to the expected value, ignoring attributes?
 #'
 #' Compares `object` and `expected` using [all.equal()] and
 #' `check.attributes = FALSE`.
@@ -123,6 +140,7 @@ expect_waldo_equal <- function(type, act, exp, info, ...) {
 #' `expect_equal(ignore_attr = TRUE)`.
 #'
 #' @inheritParams expect_equal
+#' @param ... Passed on to [compare()].
 #' @keywords internal
 #' @export
 #' @examples
@@ -152,13 +170,14 @@ expect_equivalent <- function(object, expected, ..., info = NULL, label = NULL,
 }
 
 
-#' Do two names point to the same underlying object?
+#' Does code return a reference to the expected object?
 #'
 #' `expect_reference()` compares the underlying memory addresses of
 #' two symbols. It is for expert use only.
 #'
 #' @inheritParams expect_equal
 #' @family expectations
+#' @keywords internal
 #' @export
 expect_reference <- function(object, expected, info = NULL, label = NULL,
                              expected.label = NULL) {

@@ -17,6 +17,6 @@ edition_get()
 \description{
 \code{local_edition()} allows you to temporarily (within a single test or
 a single test file) change the active edition of testthat.
-\code{get_edition()} allows you to retrieve the currently active edition.
+\code{edition_get()} allows you to retrieve the currently active edition.
 }
 \keyword{internal}

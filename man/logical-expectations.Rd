@@ -4,7 +4,7 @@
 \alias{logical-expectations}
 \alias{expect_true}
 \alias{expect_false}
-\title{Expectation: is the object true/false?}
+\title{Does code return \code{TRUE} or \code{FALSE}?}
 \usage{
 expect_true(object, info = NULL, label = NULL)
 

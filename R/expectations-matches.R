@@ -1,4 +1,4 @@
-#' Expectation: does string match a regular expression?
+#' Does a string match a regular expression?
 #'
 #' @details
 #' `expect_match()` is a wrapper around [grepl()]. See its documentation for
@@ -11,6 +11,7 @@
 #'    or does only one need to match (FALSE)
 #' @inheritDotParams base::grepl -pattern -x -perl -fixed
 #' @family expectations
+#' @keywords internal
 #' @export
 #' @examples
 #' expect_match("Testing is fun", "fun")

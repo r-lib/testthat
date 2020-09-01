@@ -6,7 +6,7 @@
 \alias{expect_lte}
 \alias{expect_gt}
 \alias{expect_gte}
-\title{Expectation: is returned value less or greater than specified value?}
+\title{Does code return a number greater/less than the expected value?}
 \usage{
 expect_lt(object, expected, label = NULL, expected.label = NULL)
 
@@ -32,7 +32,7 @@ use only.}
 use only.}
 }
 \description{
-Expectation: is returned value less or greater than specified value?
+Does code return a number greater/less than the expected value?
 }
 \examples{
 a <- 9

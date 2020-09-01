@@ -5,6 +5,9 @@ vignette: >
   %\VignetteIndexEntry{Running tests in parallel}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
+editor_options:
+  markdown:
+    wrap: sentence
 ---
 
 ```{r setup, include = FALSE}
@@ -12,114 +15,46 @@ library(testthat)
 knitr::opts_chunk$set(collapse = TRUE, comment = "#>")
 ```
 
-## Parallel testthat (preview)
+To take advantage of parallel tests, add the following line to the `DESCRIPTION`:
 
-### Turning on parallel tests
+    Config/testthat/parallel: true
 
-The current development version of testthat supports running test in
-parallel, in multiple R subprocesses. To turn on this feature, you
-need to set the `TESTTHAT_PARALLEL` environment variable to `true`.
+## Basic operation
 
-### Number of parallel subprocesses
+Starting a new R process is relatively expensive, so testthat begins by creating a pool of workers.
+The size of the pool will be determined by `getOptions("Ncpus")`, then the `TESTTHAT_MAX_CPUS` envvar, then the number of processes reported by `ps::ps_cpu_count()`.
+In any case, testthat will never start more subprocesses than test files.
 
-The number of subprocesses is taken from the `Ncpus` option, if set,
-otherwise it is fixed to 4. This will change later, see the TODO list
-at <https://github.com/r-lib/testthat/pull/1032>. (But testthat never
-starts more subprocesses than the number of test files.)
+Each worker begins by loading testthat and the package being tested.
+It then runs any setup files (so if you have existing setup files you'll need to make sure they work when executed in parallel).
 
-### Test files, test order and state
+testthat then starts sending test files to workers in alphabetical order: as soon as a subprocess has finished, it receives another file, until all files are done.
+This means that state is persisted across test files: options are *not* reset, loaded packages are *not* unloaded, the global environment is *not* cleared, etc.
+You are responsible for making sure each file leaves the world as it finds it.
 
-testthat starts running the test files in alphabetical order. As soon
-as a subprocess has finished with a file, it receives another file to
-run from the main process, until all files are done. In general, the
-user cannot make any assumptions about the order of the files, and
-which subprocess they'll be executed on.
+Because files are run in alphabetical order, you may want to rename your slowest test files so that they start first, e.g. `test-1-slowest.R`, `test-2-next-slowest.R`, etc.
 
-Test files do not start in a clean R process currently. The first *n*
-files, where *n* is the number of subprocesses, do start in a clean R
-process, but users should not rely on that. In particular, options
-(set via `options()` or otherwise) are *not* reset, loaded packages
-are *not* unloaded, the global environment is *not* cleared, etc. In
-the future the user will be able to request a clean R process for a
-test file, see the TODO at
-<https://github.com/r-lib/testthat/pull/1032> .
+## Common problems
 
-Since files run in alphabetical order, ideally the files that take the
-longest to run, should be started first. This way, we can avoid
-starting a long running test file on a subprocess, when the other
-files have finished already and the other subprocesses have nothing to
-do. To achive this, you can name your test files like this:
+-   If tests fail stochastically (i.e. they sometimes work and sometimes fail) you may have accidentally introduced a dependency between your test files.
+    This sort of dependency is hard to track down due to the random nature, and you'll need to check all tests to make sure that they're not accidentally changing global state.
 
-    test-1-slowest.R
-    test-2-next-slowest.R
-    ...
+-   If you use [packaged scope test fixtures](https://testthat.r-lib.org/articles/test-fixtures.html#package), you'll need to review them to make sure that they work in parallel.
+    For example, if you were previously creating a temporary database in the test directory, you'd need to instead create it in the session temporary directory so that each process gets its on independent version.
 
-### Helper, setup, teardown files
+## Performance
 
-All test subprocesses run the helper files (if requested in
-`devtools::test()`, `testthat::test_dir()`, etc.), then they run the
-setup files. After the last test file has finished, all subprocesses
-run the teardown files.
+There is some overhead associated with running tests in parallel:
 
-### Known issues
+-   Startup cost is linear in the number of subprocesses, because we need to create them in a loop.
+    This is about 50ms on my laptop.
+    Each subprocess needs to load testthat and the tested package, this happens in parallel, and we cannot do too much about it.
 
--   The `location` reporter does not work currently. Any reporter that
-    relies on stack traces being present in all test results, will
-    fail.
--   The current reporters are not ideal for parallel execution, as
-    they cannot handle running multiple files at the same time.
-    Parallel testthat tricks the reporters by collecting all results
-    for a test file, and then "replaying" them at once. Reporters can
-    not show the progress within files. This will be fixed later.
--   testthat does not handle crashes currently. This will be fixed
-    later.
--   You cannot currently use the `env` argument of `test_dir()`, etc.
-    Do not set this argument if you use parallel testthat. This will
-    be fixed later.
--   Test files that perform many quick expectations might be slow.
-    This will be fixed later.
--   testthat does not currently auto-detect the number of processors.
-    This will be fixed later.
--   Parallel testhat currently silently ignores failures in the
-    helper, startup and teardown files. This will be fixed later.
--   The process tree cleanup only works on macOS, Windows and Linux
-    currently, so parallel testthat only supports these operating
-    systems. This will be fixed later.
--   testthat cannot yet run its own tests in parallel.
--   covr might not work for parallel tests, at least it fails for
-    testthat itself.
+-   Clean up time is again linear in the number of subprocesses, and it about 80ms per subprocess on my laptop.
 
-### Benchmarks
+-   It seems that sending a message (i.e. a passing or failing expectation) is about 2ms currently.
+    This is the total cost that includes sending the message, receiving it, and replying it to a non-parallel reporter.
 
-These are very preliminary, to have a feeling where the bottlenecks
-might be.
-
-#### Startup time
-
-Startup cost is linear in the number of subprocesses, because we need
-to create them in a loop. This is about 50ms on my laptop. Each
-subprocess needs to load testthat and the tested package, this happens
-in parallel, and we cannot do too much about it.
-
-#### Cleanup time
-
-This is again linear in the number of subprocesses, and it about 80ms
-per subprocess on my laptop. The teardown files run in parallel, of
-course.
-
-#### Messaging costs
-
-To get a sense of messaging costs, I run 1-8 extremely simple test
-files:
-
-    test_that("foobar", {
-      for (i in 1:100) expect_true(TRUE)
-    })
-
-with changing the number of expectations and number of subprocesses.
-It seems that sending a message is about 2ms currently. This is the
-total cost that includes sending the message, receiving it, and
-replying it to a non-parallel reporter. We will improve this by
-avoiding frequent messages in a single subprocess and sending them in
-batches. This will make sure that test suites that have hundreds or
-thousands of expectations will not lose much.
+This overhead generally means that if you have many test files that take a short amount of time, you're unlikely to see a huge benefit by using parallel tests.
+For example, testthat itself takes about 10s to run tests in serial, and 8s to run the tests in parallel.
+That's because most tests take less than a second to run, and the slowest test (which takes 3s) is started last.

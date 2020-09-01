@@ -12,16 +12,43 @@ template:
 
 reference:
 - title: Expectations
+- subtitle: Objects
   contents:
-  - starts_with("expect_")
+  - expect_equal
+  - expect_type
+
+- subtitle: Vectors
+  contents:
+  - expect_length
+  - expect_gt
+  - expect_named
+  - expect_setequal
+  - expect_true
+  - expect_vector
+
+- subtitle: Side-effects
+  contents:
+  - expect_error
+  - expect_invisible
+  - expect_output
+  - expect_silent
+
+- title: Snapshot testing
+  contents:
+  - starts_with("expect_snapshot_")
+  - starts_with("snapshot_")
+
+- test: Test helpers
+  contents:
+  - is_testing
   - skip
-  - verify_output
+  - teardown_env
 
 - title: Run tests
   contents:
-  - starts_with("test_")
   - starts_with("auto_test")
   - describe
+  - starts_with("test_")
   - use_catch
 
 - title: Reporters

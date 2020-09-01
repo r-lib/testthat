@@ -1,155 +1,217 @@
 ## revdepcheck results
 
-We checked 2773 reverse dependencies (2499 from CRAN + 274 from BioConductor), comparing R CMD check results across CRAN and dev versions of this package.
+We checked 2404 reverse dependencies (2391 from CRAN + 13 from BioConductor), comparing R CMD check results across CRAN and dev versions of this package.
 
- * We saw 41 new problems
- * We failed to check 17 packages
+ * We saw 29 new problems
+ * We failed to check 115 packages
 
 Issues with CRAN packages are summarised below.
 
 ### New problems
 (This reports the first line of each new failure)
 
-* antaresRead
-  checking tests ...
+* analogueExtra
+  checking whether package ‘analogueExtra’ can be installed ... WARNING
 
-* autovarCore
-  checking tests ...
+* crayon
+  checking tests ... ERROR
 
-* batchtools
-  checking tests ...
-
-* binman
-  checking tests ...
-
-* callr
-  checking tests ...
-
-* checkpoint
-  checking tests ...
-
-* civis
-  checking tests ...
-
-* clust.bin.pair
-  checking tests ...
-
-* Crossover
-  checking tests ...
-
-* data.world
-  checking tests ...
+* DiceKriging
+  checking tests ... ERROR
 
 * diffobj
-  checking tests ...
+  checking tests ... ERROR
 
-* dwapi
-  checking tests ...
+* fgeo.analyze
+  checking tests ... ERROR
 
-* dynamichazard
-  checking tests ...
+* ggdag
+  checking examples ... ERROR
 
-* EAinference
-  checking tests ...
+* HandTill2001
+  checking tests ... ERROR
 
-* ggloop
-  checking tests ...
+* httptest
+  checking tests ... ERROR
 
-* githubinstall
-  checking tests ...
+* IBCF.MTME
+  checking tests ... ERROR
 
-* GSODR
-  checking tests ...
-
-* HIBPwned
-  checking tests ...
-
-* iheatmapr
-  checking tests ...
-
-* kernelboot
-  checking tests ...
-
-* kimisc
-  checking tests ...
+* ivdoctr
+  checking whether package ‘ivdoctr’ can be installed ... WARNING
 
 * lme4
-  checking tests ...
+  checking tests ... ERROR
 
-* msde
-  checking tests ...
+* mcmcr
+  checking tests ... ERROR
 
-* narray
-  checking tests ...
+* mlr3pipelines
+  checking tests ... ERROR
 
-* nat
-  checking tests ...
+* modelbased
+  checking tests ... ERROR
 
-* nofrills
-  checking tests ...
+* Morpho
+  checking whether package ‘Morpho’ can be installed ... WARNING
 
-* optimus
-  checking tests ...
+* msm
+  checking tests ... ERROR
 
-* petro.One
-  checking tests ...
+* pillar
+  checking tests ... ERROR
 
-* quanteda
-  checking tests ...
+* prt
+  checking tests ... ERROR
 
-* raptr
+* ps
+  checking tests ... ERROR
+
+* rcmdcheck
+  checking tests ... ERROR
+
+* renv
+  checking package dependencies ... ERROR
+
+* revdbayes
+  checking tests ... ERROR
+
+* ssdtools
+  checking tests ... ERROR
+
+* stemmatology
+  checking tests ... ERROR
+
+* storr
   checking examples ... ERROR
-  checking tests ...
+  checking tests ... ERROR
 
-* remotes
-  checking tests ...
+* testextra
+  checking tests ... ERROR
 
-* rGoodData
-  checking tests ...
+* thor
+  checking tests ... ERROR
 
-* RNeXML
-  checking tests ...
+* tibble
+  checking tests ... ERROR
 
-* rprojroot
-  checking tests ...
-
-* spam
-  checking tests ...
-
-* swirlify
-  checking tests ...
-
-* unitizer
-  checking tests ...
-
-* wdman
-  checking tests ...
-
-* withr
-  checking tests ...
-
-* Zelig
-  checking tests ...
-
-* zonator
-  checking tests ...
+* vdiffr
+  checking tests ... ERROR
 
 ### Failed to check
 
-* briskaR          (failed to install)
-* curl             (failed to install)
-* dataRetrieval    (check timed out)
-* gWidgets2tcltk   (failed to install)
-* jqr              (failed to install)
-* keyring          (failed to install)
-* kmcudaR          (failed to install)
-* loon             (failed to install)
-* markmyassignment (failed to install)
-* mwaved           (failed to install)
-* openssl          (failed to install)
-* RAppArmor        (failed to install)
-* redux            (failed to install)
-* SnakeCharmR      (failed to install)
-* sys              (failed to install)
-* textTinyR        (failed to install)
-* zstdr            (failed to install)
+* ActivePathways        (NA)
+* afex                  (NA)
+* ALA4R                 (NA)
+* ARTool                (NA)
+* av                    (NA)
+* bain                  (NA)
+* batchtools            (NA)
+* Bayesrel              (NA)
+* BayLum                (NA)
+* bdclean               (NA)
+* bfw                   (NA)
+* biolink               (NA)
+* bioOED                (NA)
+* bnstruct              (NA)
+* Boom                  (NA)
+* bsts                  (NA)
+* butcher               (NA)
+* carbonate             (NA)
+* careless              (NA)
+* cbar                  (NA)
+* chicane               (NA)
+* choroplethr           (NA)
+* Claddis               (NA)
+* clustermole           (NA)
+* codebook              (NA)
+* CompareCausalNetworks (NA)
+* conogive              (NA)
+* correlation           (NA)
+* corx                  (NA)
+* DDD                   (NA)
+* decisionSupport       (NA)
+* dispRity              (NA)
+* elementR              (NA)
+* evaluator             (NA)
+* finch                 (NA)
+* fingertipscharts      (NA)
+* ForecastComb          (NA)
+* FSA                   (NA)
+* geojson               (NA)
+* geonapi               (NA)
+* getmstatistic         (NA)
+* gms                   (NA)
+* Greg                  (NA)
+* gwsem                 (NA)
+* hadron                (NA)
+* hillR                 (NA)
+* hisse                 (NA)
+* hNMF                  (NA)
+* huxtable              (NA)
+* ICAMS                 (NA)
+* jqr                   (NA)
+* JWileymisc            (NA)
+* manifestoR            (NA)
+* MDBED                 (NA)
+* mdsOpt                (NA)
+* medmod                (NA)
+* metagam               (NA)
+* metaSEM               (NA)
+* micompr               (NA)
+* mlrCPO                (NA)
+* mlrMBO                (NA)
+* modelDown             (NA)
+* mousetrap             (NA)
+* multilevelPSA         (NA)
+* multilevelTools       (NA)
+* nFactors              (NA)
+* NlsyLinks             (NA)
+* nomisr                (NA)
+* nonnest2              (NA)
+* osmplotr              (NA)
+* ows4R                 (NA)
+* paleotree             (NA)
+* paramtest             (NA)
+* pcFactorStan          (NA)
+* penaltyLearning       (NA)
+* performance           (NA)
+* phylopath             (NA)
+* phyr                  (NA)
+* pompom                (NA)
+* PP                    (NA)
+* prepdat               (NA)
+* pwrRasch              (NA)
+* quickReg              (NA)
+* quokar                (NA)
+* radiant.basics        (NA)
+* radiant.data          (NA)
+* radiant.design        (NA)
+* radiant.model         (NA)
+* regressoR             (NA)
+* RegularizedSCA        (NA)
+* rmRNAseq              (NA)
+* RPANDA                (NA)
+* rrd                   (NA)
+* SADISA                (NA)
+* salesforcer           (NA)
+* sdmvspecies           (NA)
+* secsse                (NA)
+* semnova               (NA)
+* seqgendiff            (NA)
+* SimCorrMix            (NA)
+* SimMultiCorrData      (NA)
+* simstandard           (NA)
+* sjPlot                (NA)
+* smartdata             (NA)
+* SmartEDA              (NA)
+* SMITIDvisu            (NA)
+* spectralAnalysis      (NA)
+* tidySEM               (NA)
+* tmap                  (NA)
+* varrank               (NA)
+* veccompare            (NA)
+* visvow                (NA)
+* webr                  (NA)
+* WeMix                 (NA)
+* wrswoR                (NA)

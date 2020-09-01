@@ -1,4 +1,4 @@
-#' Expectation: does expression return visibly or invisibly?
+#' Does code return a visible or invisible object?
 #'
 #' Use this to test whether a function returns a visible or invisible
 #' output. Typically you'll use this to check that functions called primarily

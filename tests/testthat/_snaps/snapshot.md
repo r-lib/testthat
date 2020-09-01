@@ -25,6 +25,15 @@
     Error <rlang_error>
       4
 
+# snapshot captures output if visible
+
+    Output
+      [1] "x"
+
+---
+
+    
+
 # captures custom classes
 
     Message <testthat_greeting>

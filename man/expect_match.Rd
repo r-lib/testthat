@@ -2,7 +2,7 @@
 % Please edit documentation in R/expectations-matches.R
 \name{expect_match}
 \alias{expect_match}
-\title{Expectation: does string match a regular expression?}
+\title{Does a string match a regular expression?}
 \usage{
 expect_match(
   object,
@@ -48,7 +48,7 @@ alternatives in \link{quasi_label}.}
 \item{label}{Used to customise failure messages. For expert use only.}
 }
 \description{
-Expectation: does string match a regular expression?
+Does a string match a regular expression?
 }
 \details{
 \code{expect_match()} is a wrapper around \code{\link[=grepl]{grepl()}}. See its documentation for
@@ -80,3 +80,4 @@ Other expectations:
 \code{\link{logical-expectations}}
 }
 \concept{expectations}
+\keyword{internal}

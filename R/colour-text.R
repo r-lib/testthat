@@ -1,10 +1,13 @@
 colourise <- function(text, as = c("success", "skip", "warning", "failure", "error")) {
-  colour_config <- getOption("testthat.use_colours", TRUE)
-  if (!isTRUE(colour_config)) {
-    return(text)
+  if (has_colour()) {
+    crayon::style(text, testthat_style(as))
+  } else {
+    text
   }
+}
 
-  crayon::style(text, testthat_style(as))
+has_colour <- function() {
+  isTRUE(getOption("testthat.use_colours", TRUE)) && crayon::has_color()
 }
 
 testthat_style <- function(type = c("success", "skip", "warning", "failure", "error")) {
@@ -14,7 +17,7 @@ testthat_style <- function(type = c("success", "skip", "warning", "failure", "er
     success = "green",
     skip = "blue",
     warning = "magenta",
-    failure = "red",
-    error = "red"
+    failure = "orange",
+    error = "orange"
   )[[type]]
 }

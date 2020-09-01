@@ -1,21 +1,21 @@
 # basic report works
 
-    -- Failure: Failure:1 (tests.R:12:3) -------------------------------------------
+    -- FAILURE (tests.R:12:3): Failure:1 -------------------------------------------
     FALSE is not TRUE
     
     `actual`:   FALSE
     `expected`: TRUE 
     
-    -- Failure: Failure:2a (tests.R:17:3) ------------------------------------------
+    -- FAILURE (tests.R:17:3): Failure:2a ------------------------------------------
     FALSE is not TRUE
     
     `actual`:   FALSE
     `expected`: TRUE 
     
-    -- Error: Error:1 (tests.R:23:3) -----------------------------------------------
+    -- ERROR (tests.R:23:3): Error:1 -----------------------------------------------
     Error: stop
     
-    -- Error: errors get tracebacks (tests.R:31:3) ---------------------------------
+    -- ERROR (tests.R:31:3): errors get tracebacks ---------------------------------
     Error: !
     Backtrace:
         x
@@ -23,30 +23,25 @@
      2.   \-g()
      3.     \-h()
     
-    -- Skip: explicit skips are reported (tests.R:37:3) ----------------------------
+    -- Skip (tests.R:37:3): explicit skips are reported ----------------------------
     Reason: skip
     
-    -- Skip: empty tests are implicitly skipped (tests.R:40:1) ---------------------
+    -- Skip (tests.R:40:1): empty tests are implicitly skipped ---------------------
     Reason: empty test
     
-    -- Warning: warnings get backtraces (tests.R:49:3) -----------------------------
+    -- Warning (tests.R:49:3): warnings get backtraces -----------------------------
     def
-    Backtrace:
-        x
-     1. \-f()
     
     -- Skipped tests  --------------------------------------------------------------
     * empty test (1)
     * skip (1)
     
     == testthat results  ===========================================================
-    Failure: Failure:1 (tests.R:12:3)
-    Failure: Failure:2a (tests.R:17:3)
-    Error: Error:1 (tests.R:23:3)
-    Error: errors get tracebacks (tests.R:31:3)
-    Skip: explicit skips are reported (tests.R:37:3)
-    Skip: empty tests are implicitly skipped (tests.R:40:1)
-    Warning: warnings get backtraces (tests.R:49:3)
+    FAILURE (tests.R:12:3): Failure:1
+    FAILURE (tests.R:17:3): Failure:2a
+    ERROR (tests.R:23:3): Error:1
+    ERROR (tests.R:31:3): errors get tracebacks
+    Warning (tests.R:49:3): warnings get backtraces
     
-    [ PASS x1 FAIL x4 WARN x1 SKIP x2 ]
+    [ FAIL 4 | WARN 1 | SKIP 2 | PASS 1 ]
 

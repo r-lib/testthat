@@ -1,4 +1,4 @@
-#' Expectation: do two vectors contain the same values?
+#' Does code return a vector containing the expected values?
 #'
 #' * `expect_setequal(x, y)` tests that every element of `x` occurs in `y`,
 #'    and that every element of `y` occurs in `x`.

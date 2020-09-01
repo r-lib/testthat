@@ -2,7 +2,7 @@
 % Please edit documentation in R/expect-constant.R
 \name{expect_null}
 \alias{expect_null}
-\title{Expectation: is an object \code{NULL}?}
+\title{Does code return \code{NULL}?}
 \usage{
 expect_null(object, info = NULL, label = NULL)
 }

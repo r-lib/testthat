@@ -51,7 +51,7 @@ edition_name <- function(x) {
 #'
 #' `local_edition()` allows you to temporarily (within a single test or
 #' a single test file) change the active edition of testthat.
-#' `get_edition()` allows you to retrieve the currently active edition.
+#' `edition_get()` allows you to retrieve the currently active edition.
 #'
 #' @export
 #' @param x Edition Should be a single integer.

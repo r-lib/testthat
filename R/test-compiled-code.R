@@ -20,7 +20,7 @@ expect_cpp_tests_pass <- function(package) {
   expect(tests_passed, paste("C++ unit tests:", info, sep = "\n"))
 }
 
-#' Expectation: do C++ tests past?
+#' Do C++ tests past?
 #'
 #' Test compiled code in the package `package`. A call to this function will
 #' automatically be generated for you in `tests/testthat/test-cpp.R` after

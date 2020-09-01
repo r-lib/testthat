@@ -2,7 +2,7 @@
 % Please edit documentation in R/expect-length.R
 \name{expect_length}
 \alias{expect_length}
-\title{Expectation: does a vector have the specified length?}
+\title{Does code return a vector with the specified length?}
 \usage{
 expect_length(object, n)
 }
@@ -15,7 +15,7 @@ within a function or for loop. See \link{quasi_label} for more details.}
 \item{n}{Expected length.}
 }
 \description{
-Expectation: does a vector have the specified length?
+Does code return a vector with the specified length?
 }
 \examples{
 expect_length(1, 1)

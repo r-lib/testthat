@@ -2,7 +2,7 @@
 % Please edit documentation in R/old-school.R
 \name{takes_less_than}
 \alias{takes_less_than}
-\title{Expectation: does expression take less than a fixed amount of time to run?}
+\title{Does code take less than the expected amount of time to run?}
 \usage{
 takes_less_than(amount)
 }

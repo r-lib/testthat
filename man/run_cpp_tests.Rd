@@ -3,7 +3,7 @@
 \name{expect_cpp_tests_pass}
 \alias{expect_cpp_tests_pass}
 \alias{run_cpp_tests}
-\title{Expectation: do C++ tests past?}
+\title{Do C++ tests past?}
 \usage{
 expect_cpp_tests_pass(package)
 
