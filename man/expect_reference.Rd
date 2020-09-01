@@ -39,6 +39,15 @@ use only.}
 \code{expect_reference()} compares the underlying memory addresses of
 two symbols. It is for expert use only.
 }
+\section{3rd edition}{
+
+\ifelse{html}{\figure{lifecycle-deprecated.svg}{options: alt='Deprecated lifecycle'}}{\strong{Deprecated}}
+
+\code{expect_reference()} is deprecated in the third edition. If you know what
+you're doing, and you really need this behaviour, just use \code{is_reference()}
+directly: \code{expect_true(rlang::is_reference(x, y))}.
+}
+
 \seealso{
 Other expectations: 
 \code{\link{comparison-expectations}},
