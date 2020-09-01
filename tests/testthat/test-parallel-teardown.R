@@ -1,5 +1,6 @@
 
 test_that("teardown error", {
+  skip("teardown errors are ignored")
   err <- tryCatch(
     suppressMessages(testthat::test_local(
       test_path("test-parallel", "teardown"),
