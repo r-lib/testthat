@@ -17,7 +17,8 @@ Learn more in `vignette("third-edition")`.
    but while writing it uncovered some bugs in the existing comparison
    code.
    
-* `expect_equivalent()`, `expect_is()` and `expect_that()` are deprecated.
+* `expect_equivalent()`, `expect_reference()`, `expect_is()` and 
+  `expect_that()` are deprecated.
 
 * Messages are no longer automatically silenced. Either use 
   `suppressMessages()` to hide unimportant messages, or
