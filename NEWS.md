@@ -129,6 +129,8 @@ Learn more in `vignette("third-edition")`.
   your own code, or when debugging tests interactively with
   `local_test_context()`.
   
+* `test_that()` now errors if `desc` is not a string (#1161).
+  
 * `test_file()` now runs helper, setup, and teardown code, and has the
   same arguments as `test_dir()` (#968). Long deprecated `encoding` argument 
   has been removed.
