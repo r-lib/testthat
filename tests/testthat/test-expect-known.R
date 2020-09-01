@@ -43,17 +43,12 @@ test_that("updates by default", {
 
 test_that("works in non-UTF-8 locale", {
   text <- c("\u00fc", "\u2a5d", "\u6211", "\u0438")
-  file <- tempfile()
-  brio::write_lines(text, file)
 
-  expect_success(expect_known_output(cat(text, sep = "\n"), file, update = FALSE))
-  withr::with_locale(
-    c(LC_CTYPE = "C"),
-    {
-      expect_false(l10n_info()$`UTF-8`)
-      expect_success(expect_known_output(cat(text, sep = "\n"), file, update = FALSE))
-    }
-  )
+  if (tolower(Sys.info()[["sysname"]]) == "Windows") {
+    expect_known_output(cat(text, sep = "\n"), "test-expect-known-win.txt")
+  } else {
+    expect_known_output(cat(text, sep = "\n"), "test-expect-known.txt")
+  }
 })
 
 test_that("Warning for non-UTF-8 reference files", {
