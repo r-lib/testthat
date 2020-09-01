@@ -47,14 +47,15 @@
 
 
 <meta property="og:title" content="Locally set options for maximal test reproducibility — local_test_context" />
-<meta property="og:description" content="local_test_context() is run automatically by test_that() but you may want to run it
-yourself if you want to replicate test results interactively. If
-run inside a function, the effects are automatically reversed when the
+<meta property="og:description" content="local_test_context() is run automatically by test_that() but you may
+want to run it yourself if you want to replicate test results interactively.
+If run inside a function, the effects are automatically reversed when the
 function exits; if running in the global environment, use
 withr::deferred_run() to undo.
-local_reproducible_output() allows overriding the settings
-inside a test, if you want to test Unicode and colored output
-or non-standard width." />
+local_reproducible_output() is run automatically by test_that() in the
+3rd edition. You might want to call it to override the the default settings
+inside a test, if you want to test Unicode and coloured output or
+non-standard width." />
 <meta property="og:image" content="https://testthat.r-lib.org/logo.png" />
 
 
@@ -198,14 +199,15 @@ or non-standard width." />
     </div>
 
     <div class="ref-description">
-    <p><code>local_test_context()</code> is run automatically by <code><a href='test_that.html'>test_that()</a></code> but you may want to run it
-yourself if you want to replicate test results interactively. If
-run inside a function, the effects are automatically reversed when the
+    <p><code>local_test_context()</code> is run automatically by <code><a href='test_that.html'>test_that()</a></code> but you may
+want to run it yourself if you want to replicate test results interactively.
+If run inside a function, the effects are automatically reversed when the
 function exits; if running in the global environment, use
 <code><a href='https://withr.r-lib.org/reference/defer.html'>withr::deferred_run()</a></code> to undo.</p>
-<p><code>local_reproducible_output()</code> allows overriding the settings
-inside a test, if you want to test Unicode and colored output
-or non-standard width.</p>
+<p><code>local_reproducible_output()</code> is run automatically by <code><a href='test_that.html'>test_that()</a></code> in the
+3rd edition. You might want to call it to override the the default settings
+inside a test, if you want to test Unicode and coloured output or
+non-standard width.</p>
     </div>
 
     <pre class="usage"><span class='fu'>local_test_context</span>(<span class='kw'>.env</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/sys.parent.html'>parent.frame</a></span>())
@@ -282,19 +284,14 @@ locale).</p>
   <span class='fu'><a href='https://rdrr.io/r/base/cat.html'>cat</a></span>(<span class='kw pkg'>crayon</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/crayon/man/crayon.html'>blue</a></span>(<span class='st'>"Text will not be colored"</span>))
   <span class='fu'><a href='https://rdrr.io/r/base/cat.html'>cat</a></span>(<span class='kw pkg'>cli</span><span class='kw ns'>::</span><span class='no'><a href='https://rdrr.io/pkg/cli/man/symbol.html'>symbol</a></span>$<span class='no'>ellipsis</span>)
   <span class='fu'><a href='https://rdrr.io/r/base/cat.html'>cat</a></span>(<span class='st'>"\n"</span>)
-})</div><div class='output co'>#&gt; Text will not be colored...</div><div class='input'>
+})</div><div class='output co'>#&gt; <span style='color: #0000BB;'>Text will not be colored</span><span>…</div><div class='input'>
 <span class='no'>ellipsis</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>cli</span><span class='kw ns'>::</span><span class='no'><a href='https://rdrr.io/pkg/cli/man/symbol.html'>symbol</a></span>$<span class='no'>ellipsis</span>
 <span class='fu'><a href='test_that.html'>test_that</a></span>(<span class='st'>"test ellipsis"</span>, {
   <span class='fu'><a href='equality-expectations.html'>expect_equal</a></span>(<span class='no'>ellipsis</span>, <span class='kw pkg'>cli</span><span class='kw ns'>::</span><span class='no'><a href='https://rdrr.io/pkg/cli/man/symbol.html'>symbol</a></span>$<span class='no'>ellipsis</span>)
 
   <span class='fu'>local_reproducible_output</span>(<span class='kw'>unicode</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
   <span class='fu'><a href='equality-expectations.html'>expect_equal</a></span>(<span class='no'>ellipsis</span>, <span class='kw pkg'>cli</span><span class='kw ns'>::</span><span class='no'><a href='https://rdrr.io/pkg/cli/man/symbol.html'>symbol</a></span>$<span class='no'>ellipsis</span>)
-})</div><div class='output co'>#&gt; ── <span style='color: #BBBB00;font-weight: bold;'>Failure</span><span style='font-weight: bold;'> (&lt;text&gt;:10:3): test ellipsis</span><span> ────────────────────────────────────────
-#&gt; `ellipsis` not equal to cli::symbol$ellipsis.
-#&gt; 1/1 mismatches
-#&gt; x[1]: "…"
-#&gt; y[1]: "..."
-#&gt; </div></span></pre>
+})</div><div class='output co'>#&gt; </span><span style='color: #00BB00;'>Test passed</span><span> 😸</div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
