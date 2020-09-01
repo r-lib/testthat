@@ -31,6 +31,13 @@ Learn more in `vignette("third-edition")`.
   and `expect_equal_to_reference()` are all deprecated in favour of
   `expect_snapshot_output()` and `expect_snapshot_value()`.
   
+* `test_that()` now sets a number of options and env vars to make output as 
+  reproducible as possible (#1044). Many of these options were previously 
+  set in various places (in `devtools::test()`, `test_dir()`, `test_file()`,
+  or `verify_output()`) but they have now been centralised. You can use in
+  your own code, or when debugging tests interactively with
+  `local_test_context()`.
+
 * `with_mock()` and `local_mock()` are deprecated; please use the mockr
   or mockery packages instead (#1099).
 
@@ -122,13 +129,6 @@ Learn more in `vignette("third-edition")`.
   instead it produces a more informative summary of all failures, errors,
   warnings, and skips that occurred inside the test.
 
-* `test_that()` now sets a number of options and env vars to make output as 
-  reproducible as possible (#1044). Many of these options were previously 
-  set in various places (in `devtools::test()`, `test_dir()`, `test_file()`,
-  or `verify_output()`) but they have now been centralised. You can use in
-  your own code, or when debugging tests interactively with
-  `local_test_context()`.
-  
 * `test_that()` now errors if `desc` is not a string (#1161).
   
 * `test_file()` now runs helper, setup, and teardown code, and has the

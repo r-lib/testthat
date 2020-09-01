@@ -25,15 +25,16 @@ local_reproducible_output(
 The test is skipped if \code{l10n_info()$`UTF-8`} is \code{FALSE}.}
 }
 \description{
-\code{local_test_context()} is run automatically by \code{test_that()} but you may want to run it
-yourself if you want to replicate test results interactively. If
-run inside a function, the effects are automatically reversed when the
+\code{local_test_context()} is run automatically by \code{test_that()} but you may
+want to run it yourself if you want to replicate test results interactively.
+If run inside a function, the effects are automatically reversed when the
 function exits; if running in the global environment, use
 \code{\link[withr:defer]{withr::deferred_run()}} to undo.
 
-\code{local_reproducible_output()} allows overriding the settings
-inside a test, if you want to test Unicode and colored output
-or non-standard width.
+\code{local_reproducible_output()} is run automatically by \code{test_that()} in the
+3rd edition. You might want to call it to override the the default settings
+inside a test, if you want to test Unicode and coloured output or
+non-standard width.
 }
 \details{
 \code{local_test_context()} and \code{local_reproducible_output()}
