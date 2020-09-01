@@ -86,20 +86,6 @@ test_that("% is not treated as sprintf format specifier (#445)", {
   expect_equal("%", "%")
 })
 
-
-# expect_reference --------------------------------------------------------
-
-test_that("succeeds only when same object", {
-  x <- y <- 1
-  expect_success(expect_reference(x, y))
-  expect_failure(expect_reference(x, 1))
-})
-
-test_that("returns value", {
-  one <- 1
-  expect_equal(expect_reference(one, one), 1)
-})
-
 # 2nd edition ---------------------------------------------------
 
 test_that("useful message if objects equal but not identical", {
