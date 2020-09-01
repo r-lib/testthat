@@ -41,10 +41,11 @@ test_that("updates by default", {
   expect_success(expect_known_output(cat("oops"), file))
 })
 
-test_that("works in non-UTF-8 locale", {
+test_that("works with utf-8 output", {
   text <- c("\u00fc", "\u2a5d", "\u6211", "\u0438")
 
   if (tolower(Sys.info()[["sysname"]]) == "Windows") {
+    # windows has poor utf-8 support
     expect_known_output(cat(text, sep = "\n"), "test-expect-known-win.txt")
   } else {
     expect_known_output(cat(text, sep = "\n"), "test-expect-known.txt")
