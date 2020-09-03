@@ -51,11 +51,11 @@
 expect_condition() check that code throws an error, warning, message,
 or condition with a message that matches regexp, or a class that inherits
 from class. See below for more details.
-If the code throws conditions that don't match regexp/class they will
-bubble up outside of the expectation, so if they're important you'll need
-to catch them with additional expect_message()/expect_warning() calls,
-or if they're unimportant you can ignore with
-suppressMessages()/suppressWarnings()." />
+New in the 3rd edition, if the code throws conditions that don't match
+regexp/class they will bubble up outside of the expectation, so if
+they're important you'll need to catch them with additional
+expect_message()/expect_warning() calls, or if they're unimportant you
+can ignore with suppressMessages()/suppressWarnings()." />
 <meta property="og:image" content="https://testthat.r-lib.org/logo.png" />
 
 
@@ -203,11 +203,11 @@ suppressMessages()/suppressWarnings()." />
 <code>expect_condition()</code> check that code throws an error, warning, message,
 or condition with a message that matches <code>regexp</code>, or a class that inherits
 from <code>class</code>. See below for more details.</p>
-<p>If the code throws conditions that don't match <code>regexp</code>/<code>class</code> they will
-bubble up outside of the expectation, so if they're important you'll need
-to catch them with additional <code>expect_message()</code>/<code>expect_warning()</code> calls,
-or if they're unimportant you can ignore with
-<code><a href='https://rdrr.io/r/base/message.html'>suppressMessages()</a></code>/<code><a href='https://rdrr.io/r/base/warning.html'>suppressWarnings()</a></code>.</p>
+<p>New in the 3rd edition, if the code throws conditions that don't match
+<code>regexp</code>/<code>class</code> they will bubble up outside of the expectation, so if
+they're important you'll need to catch them with additional
+<code>expect_message()</code>/<code>expect_warning()</code> calls, or if they're unimportant you
+can ignore with <code><a href='https://rdrr.io/r/base/message.html'>suppressMessages()</a></code>/<code><a href='https://rdrr.io/r/base/warning.html'>suppressWarnings()</a></code>.</p>
     </div>
 
     <pre class="usage"><span class='fu'>expect_error</span>(
@@ -318,8 +318,8 @@ You can learn more about custom conditions at
 short, errors are S3 classes and you can generate a custom class and check
 for it using <code>class</code> instead of <code>regexp</code>.</p>
 <p>If you are using <code>expect_error()</code> to check that an error message is
-formatted in such a way that it makes sense to a human, we now recommend
-using <code><a href='verify_output.html'>verify_output()</a></code> instead.</p>
+formatted in such a way that it makes sense to a human, we recommend
+using <code><a href='expect_snapshot.html'>expect_snapshot()</a></code> instead.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other expectations: 
