@@ -58,7 +58,7 @@ Suggests:
 VignetteBuilder: 
     knitr
 Config/testthat/edition: 3
-Config/testthat/parallel: false
+Config/testthat/parallel: true
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE, r6 = FALSE)
 RoxygenNote: 7.1.1
