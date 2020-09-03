@@ -131,3 +131,35 @@ test_that("only matching condition is captured, others bubble up", {
   }
   expect_error(expect_condition(f2(), "Hi"), "Bye")
 })
+
+# second edition ----------------------------------------------------------
+
+test_that("other conditions are swallowed", {
+  f <- function(...) {
+    conds <- c(...)
+    for (cond in conds) {
+      switch(cond,
+        message = message("message"),
+        warning = warning("warning"),
+        error = stop("error"),
+        condition = signal("signal", class = "signal")
+      )
+    }
+  }
+
+  local_edition(2)
+  # if condition text doesn't match, expectation fails (not errors)
+  expect_failure(expect_error(f("error"), "not a match"))
+  expect_failure(expect_warning(f("warning"), "not a match"))
+  expect_failure(expect_message(f("message"), "not a match"))
+  expect_failure(expect_condition(f("condition"), "not a match"))
+
+  # if error/condition class doesn't match, expectation fails
+  expect_failure(expect_error(f("error"), class = "not a match"))
+  expect_failure(expect_condition(f("message"), class = "not a match"))
+
+  # expect_message() and expect_warning() swallow all messages/warnings
+  expect_message(expect_message(f("message", "message")), NA)
+  expect_warning(expect_warning(f("warning", "warning")), NA)
+})
+

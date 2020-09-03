@@ -17,6 +17,16 @@ Learn more in `vignette("third-edition")`.
    but while writing it uncovered some bugs in the existing comparison
    code.
    
+* `expect_error()`, `expect_warning()`, `expect_message()`, and 
+  `expect_condition()` now all use the same underlying logic: they
+  capture the first condition that matches `class`/`regexp` and
+  allow anything else to bubble up (#998/#1052). They also warn if 
+  there are unexpected arguments that are never used.
+
+* The `all` argument to `expect_message()` and `expect_warning()` is now
+  deprecated. It was never a particularly good idea or well documented, 
+  and is now superseded by the new condition capturing behaviour.
+
 * `expect_equivalent()`, `expect_reference()`, `expect_is()` and 
   `expect_that()` are deprecated.
 
@@ -49,23 +59,12 @@ Learn more in `vignette("third-edition")`.
 * `expect_error()` no longer encourages you to use `class`. This advice 
   one type of fragility at the expense of creating a different type (#1013).
 
-* `expect_error()`, `expect_warning()`, `expect_message()`, and 
-  `expect_condition()` now all use the same underlying logic: they
-  capture the first condition that matches `class`/`regexp` and
-  allow anything else to bubble up (#998/#1052). They also warn if 
-  there are unexpected arguments that are never used.
-
-* The `all` argument to `expect_message()` and `expect_warning()` is now
-  deprecated. It was never a particularly good idea or well documented, 
-  and is now superseded by the new condition capturing behaviour.
-
 * New family of snapshot expectations (`expect_snapshot_output()`, 
   `expect_snapshot_value()` and more), as documented in 
   `vignette("snapshotting")`. These are only available in the 3rd edition.
   
     `expect_snapshot_file()` along with `snapshot_review()` help snapshot
     more complex data, with initial support for images and data frames (#1050).
-  
 
 ## Fixures
 
