@@ -50,10 +50,10 @@ test_files_parallel <- function(
   # TODO: support timeouts. 20-30s for each file by default?
 
   num_workers <- min(default_num_cpus(), length(test_paths))
-  message(
+  inform(paste0(
     "Starting ", num_workers, " test process",
     if (num_workers != 1) "es"
-  )
+  ))
 
   # Set up work queue ------------------------------------------
   queue <- NULL

@@ -142,7 +142,7 @@ task_q <- R6::R6Class(
     },
 
     handle_error = function(msg, task_no) {
-      message("\n") # get out of the progress bar, if any
+      inform("\n") # get out of the progress bar, if any
       fun <- private$tasks$fun[[task_no]]
       file <- private$tasks$args[[task_no]][[1]]
       if (is.null(fun)) {
