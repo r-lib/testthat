@@ -51,30 +51,14 @@ Learn more in `vignette("third-edition")`.
 * `with_mock()` and `local_mock()` are deprecated; please use the mockr
   or mockery packages instead (#1099).
 
-## Expectations
+## Snapshot testing
 
-* `expect_true()`, `expect_false()`, and `expect_null()` now use waldo to
-  produce more informative failures.
+New family of snapshot expectations (`expect_snapshot()`, `expect_snapshot_output()`, `expect_snapshot_error()`, and `expect_snapshot_value()`) provide "snapshot" tests, where the expected results are stored in separate files in `test/testthat/_snaps`. They're useful whenever it's painful to store expected results directly in the test files.
 
-* `expect_error()` no longer encourages you to use `class`. This advice 
-  one type of fragility at the expense of creating a different type (#1013).
+`expect_snapshot_file()` along with `snapshot_review()` help snapshot
+more complex data, with initial support for text files, images, and data frames (#1050).
 
-* New family of snapshot expectations (`expect_snapshot_output()`, 
-  `expect_snapshot_value()` and more), as documented in 
-  `vignette("snapshotting")`. These are only available in the 3rd edition.
-  
-    `expect_snapshot_file()` along with `snapshot_review()` help snapshot
-    more complex data, with initial support for images and data frames (#1050).
-
-## Fixures
-
-* New `vignette("test-fixtures")` describes test fixtures; i.e. how to 
-  temporarily and cleanly change global state in order to test parts of
-  your code that otherwise would be hard to run (#1042). `setup()` and 
-  `teardown()` are superseded in favour of test fixtures.
-
-* New `teardown_env()` for use with `withr::defer()`. This allows you to
-  run code after all other tests have been run.
+See `vignette("snapshotting")` for more details.
 
 ## Reporters
 
@@ -112,6 +96,16 @@ Learn more in `vignette("third-edition")`.
   
 * Catch C++ tests now provide detailed results for each test. 
   To upgrade existing code, re-run `testthat::use_catch()` (#1008).
+
+## Fixures
+
+* New `vignette("test-fixtures")` describes test fixtures; i.e. how to 
+  temporarily and cleanly change global state in order to test parts of
+  your code that otherwise would be hard to run (#1042). `setup()` and 
+  `teardown()` are superseded in favour of test fixtures.
+
+* New `teardown_env()` for use with `withr::defer()`. This allows you to
+  run code after all other tests have been run.
 
 ## Skips
 
@@ -157,8 +151,14 @@ Learn more in `vignette("third-edition")`.
 * `context_start_file()` is now exported for external reporters (#983, #1082).
   It now only strips first instance of prefix/suffix (#1041, @stufield).
 
+* `expect_error()` no longer encourages you to use `class`. This advice 
+  one type of fragility at the expense of creating a different type (#1013).
+
 * `expect_known_failure()` has been removed. As far as I can tell it was
   only ever used by testthat, and is rather fragile.
+
+* `expect_true()`, `expect_false()`, and `expect_null()` now use waldo to
+  produce more informative failures.
 
 * `verify_output()` no longer always fails if output contains a carriage 
   return character ("\r") (#1048). It uses the `pdf()` device instead of 
