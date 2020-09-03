@@ -11,6 +11,10 @@ test_that("runs all tests and records output", {
   df <- as.data.frame(res)
   df$user <- df$system <- df$real <- df$result <- NULL
 
+  # Order varies if tests run in parallel
+  df <- df[order(df$file), ]
+  rownames(df) <- NULL
+
   local_reproducible_output(width = 200)
   local_edition(3) # set to 2 in ./test_dir
   expect_snapshot_output(print(df))

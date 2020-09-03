@@ -79,8 +79,7 @@ test_dir <- function(path,
     lifecycle::deprecate_warn("3.0.0", "test_dir(wrap = )")
   }
 
-  want_parallel <- find_parallel(path, load_package, package) &&
-    !is_parallel()
+  want_parallel <- find_parallel(path, load_package, package)
 
   if (is.null(reporter)) {
     if (want_parallel) {
