@@ -200,13 +200,19 @@ queue_setup <- function(test_paths,
 
   test_package <- test_package %||% Sys.getenv("TESTTHAT_PKG")
 
-  # TODO: meaningful error if startup fails
-  load_hook <- expr(asNamespace("testthat")$queue_process_setup(
-    test_package = !!test_package,
-    test_dir = !!test_dir,
-    load_helpers = !!load_helpers,
-    load_package = !!load_package
-  ))
+  # First we load the package "manually", in case it is testthat itself
+  load_hook <- expr({
+    switch(!!load_package,
+      installed = library(!!test_package, character.only = TRUE),
+      source = pkgload::load_all(!!test_dir, helpers = FALSE, quiet = TRUE)
+    )
+    asNamespace("testthat")$queue_process_setup(
+      test_package = !!test_package,
+      test_dir = !!test_dir,
+      load_helpers = !!load_helpers,
+      load_package = "none"
+    )
+  })
   queue <- task_q$new(concurrency = num_workers, load_hook = load_hook)
 
   fun <- transport_fun(function(path) asNamespace("testthat")$queue_task(path))
