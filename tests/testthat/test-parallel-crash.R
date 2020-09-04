@@ -1,6 +1,7 @@
 
 test_that("crash", {
   skip_on_cran()
+  withr::local_envvar(c(TESTTHAT_PARALLEL = "TRUE"))
 
   do <- function() {
     err <- NULL

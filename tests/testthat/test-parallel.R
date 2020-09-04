@@ -25,6 +25,7 @@ test_that("detect number of cpus to use", {
 })
 
 test_that("ok", {
+  withr::local_envvar(c(TESTTHAT_PARALLEL = "TRUE"))
   ret <- test_pkg_in_subprocess(test_path("test-parallel", "ok"))
   tdf <- as.data.frame(ret)
   expect_equal(tdf$failed, c(0,1,0))

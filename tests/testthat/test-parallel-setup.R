@@ -1,5 +1,6 @@
 
 test_that("error in parallel setup code", {
+  withr::local_envvar(c(TESTTHAT_PARALLEL = "TRUE"))
   err <- tryCatch(
     suppressMessages(testthat::test_local(
       test_path("test-parallel", "setup"),
