@@ -28,7 +28,8 @@ In any case, testthat will never start more subprocesses than test files.
 Each worker begins by loading testthat and the package being tested.
 It then runs any setup files (so if you have existing setup files you'll need to make sure they work when executed in parallel).
 
-testthat then starts sending test files to workers in alphabetical order: as soon as a subprocess has finished, it receives another file, until all files are done.
+testthat runs test *files* in parallel.
+Once the worker pool is initialized, testthat then starts sending test files to workers, by default in alphabetical order: as soon as a subprocess has finished, it receives another file, until all files are done.
 This means that state is persisted across test files: options are *not* reset, loaded packages are *not* unloaded, the global environment is *not* cleared, etc.
 You are responsible for making sure each file leaves the world as it finds it.
 
@@ -63,8 +64,9 @@ That's because most tests take less than a second to run, and the slowest test (
 
 ### Default reporters
 
-See `default_reporter()` for how testthat selects the default reporter.
+See `default_reporter()` for how testthat selects the default reporter for `devtools::test()` and `testthat::test_local()`.
 In short, testthat selects `ProgressReporter` for non-parallel and `ParallelProgressReporter` for parallel tests by default.
+(Other testthat test functions, like `test_check()`, `test_file()` , etc. select different reporters by default.)
 
 ### Parallel support
 
@@ -94,7 +96,7 @@ The other built-in reporters all support parallel tests, with some subtle differ
     If you want to use `cat()` or `message()` for print-debugging test cases, then the best is to temporarily run tests sequentially, by changing the `Config` entry in `DESCRIPTION` or selecting a non-parallel reporter, e.g. the `CheckReporter`:
 
     ``` {.r}
-    devtools::test(filter = "badtest", repoter = "check")
+    devtools::test(filter = "badtest", reporter = "check")
     ```
 
 ### Writing parallel reporters
