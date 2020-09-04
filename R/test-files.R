@@ -70,7 +70,14 @@ test_dir <- function(path,
 
   load_package <- arg_match(load_package)
 
-  test_paths <- find_test_scripts(path, filter = filter, ..., full.names = FALSE)
+  start_first <- find_test_start_first(path, load_package, package)
+  test_paths <- find_test_scripts(
+    path,
+    filter = filter,
+    ...,
+    full.names = FALSE,
+    start_first = start_first
+  )
   if (length(test_paths) == 0) {
     abort("No test files found")
   }
@@ -280,13 +287,21 @@ local_teardown_env <- function(env = parent.frame()) {
 #' @param path path to tests
 #' @param invert If `TRUE` return files which **don't** match.
 #' @param ... Additional arguments passed to [grepl()] to control filtering.
+#' @param start_first A character vector of file patterns (globs, see
+#'   [utils::glob2rx()]). The patterns are for the file names (base names),
+#'   not for the whole paths. testthat starts the files matching the
+#'   first pattern first,  then the ones matching the second, etc. and then
+#'   the rest of the files, alphabetically. Parallel tests tend to finish
+#'   quicker if you start the slowest files first. `NULL` means alphabetical
+#'   order.
 #' @inheritParams test_dir
 #' @return A character vector of paths
 #' @keywords internal
 #' @export
-find_test_scripts <- function(path, filter = NULL, invert = FALSE, ..., full.names = TRUE) {
+find_test_scripts <- function(path, filter = NULL, invert = FALSE, ..., full.names = TRUE, start_first = NULL) {
   files <- dir(path, "^test.*\\.[rR]$", full.names = full.names)
-  filter_test_scripts(files, filter, invert, ...)
+  files <- filter_test_scripts(files, filter, invert, ...)
+  order_test_scripts(files, start_first)
 }
 
 filter_test_scripts <- function(files, filter = NULL, invert = FALSE, ...) {
@@ -299,4 +314,32 @@ filter_test_scripts <- function(files, filter = NULL, invert = FALSE, ...) {
     which_files <- !which_files
   }
   files[which_files]
+}
+
+find_test_start_first <- function(path, load_package, package) {
+  # Make sure we get the local package package if not "installed"
+  if (load_package != "installed") package <- NULL
+  desc <- find_description(path, package)
+  if (is.null(desc)) {
+    return(NULL)
+  }
+
+  conf <- desc$get_field("Config/testthat/start-first", NULL)
+  if (is.null(conf)) {
+    return(NULL)
+  }
+
+  trimws(strsplit(conf, ",")[[1]])
+}
+
+order_test_scripts <- function(paths, start_first) {
+  if (is.null(start_first)) return(paths)
+  filemap <- data.frame(
+    stringsAsFactors = FALSE,
+    base = sub("\\.[rR]$", "", sub("^test[-_\\.]?", "", basename(paths))),
+    orig = paths
+  )
+  rxs <- utils::glob2rx(start_first)
+  mch <- lapply(rxs, function(rx) filemap$orig[grep(rx, filemap$base)])
+  unique(c(unlist(mch), paths))
 }
