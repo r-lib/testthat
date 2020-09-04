@@ -263,6 +263,7 @@ queue_teardown <- function(queue) {
 
   clean_fn <- function() {
     withr::deferred_run(.GlobalEnv)
+    quit(save = "no", status = 1L, runLast = TRUE)
   }
 
   topoll <- list()
