@@ -270,7 +270,6 @@ queue_teardown <- function(queue) {
   for (i in seq_len(num)) {
     if (!is.null(tasks$worker[[i]])) {
       tasks$worker[[i]]$call(clean_fn)
-      close(tasks$worker[[i]]$get_input_connection())
       topoll <- c(topoll, tasks$worker[[i]]$get_poll_connection())
     }
   }
