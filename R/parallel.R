@@ -283,6 +283,10 @@ queue_teardown <- function(queue) {
 
   for (i in seq_len(num)) {
     if (!is.null(tasks$worker[[i]])) {
+      tryCatch(
+        close(tasks$worker[[i]]$get_input_connection()),
+        error = function(e) NULL
+      )
       if (ps::ps_is_supported()) {
         tasks$worker[[i]]$kill_tree()
       } else {
