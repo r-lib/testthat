@@ -274,7 +274,9 @@ queue_teardown <- function(queue) {
     }
   }
 
-  limit <- Sys.time() + 1
+  # Give covr time to write out the coverage files
+  if (in_covr()) grace <- 30L else grace <- 3L
+  limit <- Sys.time() + grace
   while (length(topoll) > 0 && (timeout <- limit - Sys.time()) > 0) {
     timeout <- as.double(timeout, units = "secs") * 1000
     pr <- processx::poll(topoll, as.integer(timeout))
