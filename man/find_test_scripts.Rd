@@ -4,7 +4,14 @@
 \alias{find_test_scripts}
 \title{Find test files}
 \usage{
-find_test_scripts(path, filter = NULL, invert = FALSE, ..., full.names = TRUE)
+find_test_scripts(
+  path,
+  filter = NULL,
+  invert = FALSE,
+  ...,
+  full.names = TRUE,
+  start_first = NULL
+)
 }
 \arguments{
 \item{path}{path to tests}
@@ -16,6 +23,14 @@ name after it's stripped of \code{"test-"} and \code{".R"}.}
 \item{invert}{If \code{TRUE} return files which \strong{don't} match.}
 
 \item{...}{Additional arguments passed to \code{\link[=grepl]{grepl()}} to control filtering.}
+
+\item{start_first}{A character vector of file patterns (globs, see
+\code{\link[utils:glob2rx]{utils::glob2rx()}}). The patterns are for the file names (base names),
+not for the whole paths. testthat starts the files matching the
+first pattern first,  then the ones matching the second, etc. and then
+the rest of the files, alphabetically. Parallel tests tend to finish
+quicker if you start the slowest files first. \code{NULL} means alphabetical
+order.}
 }
 \value{
 A character vector of paths
