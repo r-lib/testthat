@@ -152,8 +152,10 @@
 <p>testthat 3.0.0 introduces the idea of an “edition” of testthat. An edition is a bundle of behaviours that you have to explicitly choose to use, allowing us to make otherwise backward incompatible changes. This is particularly important for testthat since it has a very large number of packages that use it (almost 5,000 at last count). Choosing to use the 3rd edition allows you to use our latest recommendations for ongoing and new work, while historical packages continue to use the old behaviour.</p>
 <p>(We don’t anticipate creating new editions very often, and they’ll always be matched with major version, i.e. if there’s another edition, it’ll be the fourth edition and will come with testthat 4.0.0.)</p>
 <p>This vignette shows you how to activate the 3rd edition, introduces the main features, and discusses common challenges when upgrading a package. If you have a problem that this vignette doesn’t cover, please let me know, as it’s likely that the problem also affects others.</p>
-<div class="sourceCode" id="cb1"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">testthat</span>)
-<span class="fu"><a href="../reference/local_edition.html">local_edition</a></span>(<span class="fl">3</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb1"><pre class="downlit">
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="http://testthat.r-lib.org">testthat</a></span>)
+<span class="fu"><a href="../reference/local_edition.html">local_edition</a></span>(<span class="fl">3</span>)
+</pre></div>
 <div id="activating" class="section level2">
 <h2 class="hasAnchor">
 <a href="#activating" class="anchor"></a>Activating</h2>
@@ -161,17 +163,21 @@
 <pre><code>Config/testthat/edition: 3</code></pre>
 <p>This will activate the 3rd edition for every test in your package.</p>
 <p>You can also control the edition used for indvidual tests with <code><a href="../reference/local_edition.html">testthat::local_edition()</a></code>:</p>
-<div class="sourceCode" id="cb3"><html><body><pre class="r"><span class="fu"><a href="../reference/test_that.html">test_that</a></span>(<span class="st">"I can use the 3rd edition"</span>, {
+<div class="sourceCode" id="cb3"><pre class="downlit">
+<span class="fu"><a href="../reference/test_that.html">test_that</a></span>(<span class="st">"I can use the 3rd edition"</span>, {
   <span class="fu"><a href="../reference/local_edition.html">local_edition</a></span>(<span class="fl">3</span>)
   <span class="fu"><a href="../reference/logical-expectations.html">expect_true</a></span>(<span class="fl">TRUE</span>)
 })
-<span class="co">#&gt; Test passed 🌈</span></pre></body></html></div>
+<span class="co">#&gt; Test passed 🥳</span>
+</pre></div>
 <p>This is also useful if you’ve switched to the 3rd edition and have a couple of tests that fail. You can use <code><a href="../reference/local_edition.html">local_edition(2)</a></code> to revert back to the old behaviour, giving you some breathing room to figure out the underlying issue.</p>
-<div class="sourceCode" id="cb4"><html><body><pre class="r"><span class="fu"><a href="../reference/test_that.html">test_that</a></span>(<span class="st">"I want to use the 2nd edition"</span>, {
+<div class="sourceCode" id="cb4"><pre class="downlit">
+<span class="fu"><a href="../reference/test_that.html">test_that</a></span>(<span class="st">"I want to use the 2nd edition"</span>, {
   <span class="fu"><a href="../reference/local_edition.html">local_edition</a></span>(<span class="fl">2</span>)
   <span class="fu"><a href="../reference/logical-expectations.html">expect_true</a></span>(<span class="fl">TRUE</span>)
 })
-<span class="co">#&gt; Test passed 🎉</span></pre></body></html></div>
+<span class="co">#&gt; Test passed 🎊</span>
+</pre></div>
 </div>
 <div id="changes" class="section level2">
 <h2 class="hasAnchor">
@@ -205,26 +211,28 @@
 <div id="waldo" class="section level3">
 <h3 class="hasAnchor">
 <a href="#waldo" class="anchor"></a>waldo</h3>
-<p>Probably the the biggest day-to-day difference (and the biggest reason to upgrade!) is the use of <a href="https://waldo.r-lib.org/reference/compare.html"><code><a href="https://rdrr.io/pkg/waldo/man/compare.html">waldo::compare()</a></code></a> inside of <code><a href="../reference/equality-expectations.html">expect_equal()</a></code> and <code><a href="../reference/equality-expectations.html">expect_identical()</a></code>. The goal of waldo is to find and concisely describe the difference between a pair of R objects, and it’s designed specifically to help you figure out what’s gone wrong in your unit tests.</p>
-<div class="sourceCode" id="cb5"><html><body><pre class="r"><span class="no">f1</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span>(<span class="no">letters</span>[<span class="fl">1</span>:<span class="fl">3</span>])
-<span class="no">f2</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">ordered</a></span>(<span class="no">letters</span>[<span class="fl">1</span>:<span class="fl">3</span>], <span class="kw">levels</span> <span class="kw">=</span> <span class="no">letters</span>[<span class="fl">1</span>:<span class="fl">4</span>])
+<p>Probably the the biggest day-to-day difference (and the biggest reason to upgrade!) is the use of <a href="https://waldo.r-lib.org/reference/compare.html"><code>waldo::compare()</code></a> inside of <code><a href="../reference/equality-expectations.html">expect_equal()</a></code> and <code><a href="../reference/equality-expectations.html">expect_identical()</a></code>. The goal of waldo is to find and concisely describe the difference between a pair of R objects, and it’s designed specifically to help you figure out what’s gone wrong in your unit tests.</p>
+<div class="sourceCode" id="cb5"><pre class="downlit">
+<span class="kw">f1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span>(<span class="kw">letters</span>[<span class="fl">1</span><span class="op">:</span><span class="fl">3</span>])
+<span class="kw">f2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">ordered</a></span>(<span class="kw">letters</span>[<span class="fl">1</span><span class="op">:</span><span class="fl">3</span>], levels = <span class="kw">letters</span>[<span class="fl">1</span><span class="op">:</span><span class="fl">4</span>])
 
 <span class="fu"><a href="../reference/local_edition.html">local_edition</a></span>(<span class="fl">2</span>)
-<span class="fu"><a href="../reference/equality-expectations.html">expect_equal</a></span>(<span class="no">f1</span>, <span class="no">f2</span>)
+<span class="fu"><a href="../reference/equality-expectations.html">expect_equal</a></span>(<span class="kw">f1</span>, <span class="kw">f2</span>)
 <span class="co">#&gt; Error: `f1` not equal to `f2`.</span>
 <span class="co">#&gt; Attributes: &lt; Component "class": Lengths (1, 2) differ (string compare on first 1) &gt;</span>
 <span class="co">#&gt; Attributes: &lt; Component "class": 1 string mismatch &gt;</span>
 <span class="co">#&gt; Attributes: &lt; Component "levels": Lengths (3, 4) differ (string compare on first 3) &gt;</span>
 
 <span class="fu"><a href="../reference/local_edition.html">local_edition</a></span>(<span class="fl">3</span>)
-<span class="fu"><a href="../reference/equality-expectations.html">expect_equal</a></span>(<span class="no">f1</span>, <span class="no">f2</span>)
+<span class="fu"><a href="../reference/equality-expectations.html">expect_equal</a></span>(<span class="kw">f1</span>, <span class="kw">f2</span>)
 <span class="co">#&gt; Error: `f1` (`actual`) not equal to `f2` (`expected`).</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; `class(actual)`:             "factor"</span>
 <span class="co">#&gt; `class(expected)`: "ordered" "factor"</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; `levels(actual)`:   "a" "b" "c"    </span>
-<span class="co">#&gt; `levels(expected)`: "a" "b" "c" "d"</span></pre></body></html></div>
+<span class="co">#&gt; `levels(expected)`: "a" "b" "c" "d"</span>
+</pre></div>
 <p>waldo looks even better in your console because it carefully uses colours to help highlight the differences.</p>
 <p>The use of waldo also makes precise the difference between <code><a href="../reference/equality-expectations.html">expect_equal()</a></code> and <code><a href="../reference/equality-expectations.html">expect_identical()</a></code>: <code><a href="../reference/equality-expectations.html">expect_equal()</a></code> sets <code>tolerance</code> so that waldo will ignore small numerical differences arising from floating point computation. Otherwise the functions are identical (HA HA).</p>
 <p>This change is likely to result in the most work during an upgrade, because waldo can give slightly different results to both <code><a href="https://rdrr.io/r/base/identical.html">identical()</a></code> and <code><a href="https://rdrr.io/r/base/all.equal.html">all.equal()</a></code> in moderately common situations. I believe on the whole the differences are meaningful and useful, so you’ll need to handle them by tweaking your tests. The following changes are most likely to affect you:</p>
@@ -233,19 +241,21 @@
 <li><p><code><a href="../reference/equality-expectations.html">expect_equal()</a></code> used a combination of <code><a href="https://rdrr.io/r/base/all.equal.html">all.equal()</a></code> and a home-grown <code><a href="../reference/compare.html">testthat::compare()</a></code> which unfortunately used a slightly different definition of tolerance. Now <code><a href="../reference/equality-expectations.html">expect_equal()</a></code> always uses the same defintion of tolerance everywhere, which may require tweaks to your exising tolerance values.</p></li>
 <li>
 <p><code><a href="../reference/equality-expectations.html">expect_equal()</a></code> previously ignored timezone differences when one object had the current timezone set implicitly (with <code>""</code>) and the other had it set explictly:</p>
-<div class="sourceCode" id="cb6"><html><body><pre class="r"><span class="no">dt1</span> <span class="kw">&lt;-</span> <span class="no">dt2</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/ISOdatetime.html">ISOdatetime</a></span>(<span class="fl">2020</span>, <span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span>, <span class="fl">4</span>, <span class="fl">0</span>)
-<span class="fu"><a href="https://rdrr.io/r/base/attr.html">attr</a></span>(<span class="no">dt1</span>, <span class="st">"tzone"</span>) <span class="kw">&lt;-</span> <span class="st">""</span>
-<span class="fu"><a href="https://rdrr.io/r/base/attr.html">attr</a></span>(<span class="no">dt2</span>, <span class="st">"tzone"</span>) <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/timezones.html">Sys.timezone</a></span>()
+<div class="sourceCode" id="cb6"><pre class="downlit">
+<span class="kw">dt1</span> <span class="op">&lt;-</span> <span class="kw">dt2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/ISOdatetime.html">ISOdatetime</a></span>(<span class="fl">2020</span>, <span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span>, <span class="fl">4</span>, <span class="fl">0</span>)
+<span class="fu"><a href="https://rdrr.io/r/base/attr.html">attr</a></span>(<span class="kw">dt1</span>, <span class="st">"tzone"</span>) <span class="op">&lt;-</span> <span class="st">""</span>
+<span class="fu"><a href="https://rdrr.io/r/base/attr.html">attr</a></span>(<span class="kw">dt2</span>, <span class="st">"tzone"</span>) <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/timezones.html">Sys.timezone</a></span>()
 
 <span class="fu"><a href="../reference/local_edition.html">local_edition</a></span>(<span class="fl">2</span>)
-<span class="fu"><a href="../reference/equality-expectations.html">expect_equal</a></span>(<span class="no">dt1</span>, <span class="no">dt2</span>)
+<span class="fu"><a href="../reference/equality-expectations.html">expect_equal</a></span>(<span class="kw">dt1</span>, <span class="kw">dt2</span>)
 
 <span class="fu"><a href="../reference/local_edition.html">local_edition</a></span>(<span class="fl">3</span>)
-<span class="fu"><a href="../reference/equality-expectations.html">expect_equal</a></span>(<span class="no">dt1</span>, <span class="no">dt2</span>)
+<span class="fu"><a href="../reference/equality-expectations.html">expect_equal</a></span>(<span class="kw">dt1</span>, <span class="kw">dt2</span>)
 <span class="co">#&gt; Error: `dt1` (`actual`) not equal to `dt2` (`expected`).</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; `attr(actual, 'tzone')`:   ""   </span>
-<span class="co">#&gt; `attr(expected, 'tzone')`: "UTC"</span></pre></body></html></div>
+<span class="co">#&gt; `attr(expected, 'tzone')`: "UTC"</span>
+</pre></div>
 </li>
 </ul>
 </div>
@@ -284,7 +294,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.0.</p>
 </div>
 
       </footer>

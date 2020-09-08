@@ -155,7 +155,9 @@
 <li><p>You’re relying on features that not all operating systems possess, and want to make sure your code doesn’t run on a platform where it doesn’t work. This platform tends to be Windows, since amongst other things, it lacks full utf8 support.</p></li>
 <li><p>You’re writing your tests for multiple versions of R or multiple versions of a dependency and you want to skip when a feature isn’t available. You generally don’t need to skip tests if a suggested package is not installed. This is only needed in exceptional circumstances, e.g. when a package is not available on some operating system.</p></li>
 </ul>
-<div class="sourceCode" id="cb1"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">testthat</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb1"><pre class="downlit">
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="http://testthat.r-lib.org">testthat</a></span>)
+</pre></div>
 <div id="basics" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basics" class="anchor"></a>Basics</h2>
@@ -176,21 +178,25 @@
 <h2 class="hasAnchor">
 <a href="#helpers" class="anchor"></a>Helpers</h2>
 <p>If you find yourself using the same <code><a href="../reference/skip.html">skip_if()</a></code>/<code><a href="../reference/skip.html">skip_if_not()</a></code> expression across multiple tests, it’s a good idea to create a helper function. This function should start with <code>skip_</code> and live somewhere in your <code>R/</code> directory.</p>
-<div class="sourceCode" id="cb3"><html><body><pre class="r"><span class="no">skip_if_Tuesday</span> <span class="kw">&lt;-</span> <span class="kw">function</span>() {
-  <span class="kw">if</span> (<span class="fu"><a href="https://rdrr.io/r/base/as.POSIXlt.html">as.POSIXlt</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.Date</a></span>())$<span class="no">wday</span> <span class="kw">==</span> <span class="fl">2</span>) {
+<div class="sourceCode" id="cb3"><pre class="downlit">
+<span class="kw">skip_if_Tuesday</span> <span class="op">&lt;-</span> <span class="fu">function</span>() {
+  <span class="co">if</span> (<span class="fu"><a href="https://rdrr.io/r/base/as.POSIXlt.html">as.POSIXlt</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.Date</a></span>())<span class="op">$</span><span class="kw">wday</span> <span class="op">==</span> <span class="fl">2</span>) {
     <span class="fu"><a href="../reference/skip.html">skip</a></span>(<span class="st">"Not run on Tuesday"</span>)
   }
-}</pre></body></html></div>
+}
+</pre></div>
 <p>It’s important to test your skip helpers because it’s easy to miss if you’re skipping more often than desired, and the test code is never run. This is unlikely to happen locally (since you’ll see the skipped tests in the summary), but is quite possible in continuous integration.</p>
 <p>For that reason, it’s a good idea to add a test that you skip is activated when you expect. skips are a special type of error, so you can test that they occur with <code><a href="../reference/expect_error.html">expect_error()</a></code>. The basic code looks like this:</p>
-<div class="sourceCode" id="cb4"><html><body><pre class="r"><span class="fu"><a href="../reference/test_that.html">test_that</a></span>(<span class="st">"skips work"</span>, {
+<div class="sourceCode" id="cb4"><pre class="downlit">
+<span class="fu"><a href="../reference/test_that.html">test_that</a></span>(<span class="st">"skips work"</span>, {
   <span class="co"># Test that a skip happens</span>
-  <span class="fu"><a href="../reference/expect_error.html">expect_error</a></span>(<span class="fu"><a href="../reference/skip.html">skip</a></span>(<span class="st">"Hi"</span>), <span class="kw">class</span> <span class="kw">=</span> <span class="st">"skip"</span>)
-
+  <span class="fu"><a href="../reference/expect_error.html">expect_error</a></span>(<span class="fu"><a href="../reference/skip.html">skip</a></span>(<span class="st">"Hi"</span>), class = <span class="st">"skip"</span>)  
+  
   <span class="co"># Test that a skip doesn't happen</span>
-  <span class="fu"><a href="../reference/expect_error.html">expect_error</a></span>(<span class="st">"Hi"</span>, <span class="fl">NA</span>, <span class="kw">class</span> <span class="kw">=</span> <span class="st">"skip"</span>)
+  <span class="fu"><a href="../reference/expect_error.html">expect_error</a></span>(<span class="st">"Hi"</span>, <span class="fl">NA</span>, class = <span class="st">"skip"</span>)  
 })
-<span class="co">#&gt; Test passed 🎊</span></pre></body></html></div>
+<span class="co">#&gt; Test passed 🥇</span>
+</pre></div>
 </div>
   </div>
 
@@ -209,7 +215,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.0.</p>
 </div>
 
       </footer>

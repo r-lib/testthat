@@ -228,9 +228,10 @@ source code for a few.</p>
 <code><a href='TeamcityReporter.html'>TeamcityReporter</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>path</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='testthat_examples.html'>testthat_example</a></span>(<span class='st'>"success"</span>)
+    <pre class="examples"><div class='input'><span class='kw'>path</span> <span class='op'>&lt;-</span> <span class='fu'><a href='testthat_examples.html'>testthat_example</a></span>(<span class='st'>"success"</span>)
 
-<span class='fu'><a href='test_file.html'>test_file</a></span>(<span class='no'>path</span>)</div><div class='output co'>#&gt; 
+<span class='fu'><a href='test_file.html'>test_file</a></span>(<span class='kw'>path</span>)
+</div><div class='output co'>#&gt; 
 #&gt; ══ <span style='font-weight: bold;'>Testing test-success.R</span><span> ══════════════════════════════════════════════════════
 #&gt; [ </span><span style='color: #BBBB00;'>FAIL</span><span> 0 | </span><span style='color: #BB00BB;'>WARN</span><span> 0 | </span><span style='color: #0000BB;'>SKIP</span><span> 0 | </span><span style='color: #00BB00;'>PASS</span><span> 0 ][ </span><span style='color: #BBBB00;'>FAIL</span><span> 0 | </span><span style='color: #BB00BB;'>WARN</span><span> 0 | </span><span style='color: #0000BB;'>SKIP</span><span> 0 | </span><span style='color: #00BB00;'>PASS</span><span> 1 ][ </span><span style='color: #BBBB00;'>FAIL</span><span> 0 | </span><span style='color: #BB00BB;'>WARN</span><span> 0 | </span><span style='color: #0000BB;'>SKIP</span><span> 1 | </span><span style='color: #00BB00;'>PASS</span><span> 1 ][ </span><span style='color: #BBBB00;'>FAIL</span><span> 0 | </span><span style='color: #BB00BB;'>WARN</span><span> 1 | </span><span style='color: #0000BB;'>SKIP</span><span> 1 | </span><span style='color: #00BB00;'>PASS</span><span> 1 ][ </span><span style='color: #BBBB00;'>FAIL</span><span> 0 | </span><span style='color: #BB00BB;'>WARN</span><span> 1 | </span><span style='color: #0000BB;'>SKIP</span><span> 1 | </span><span style='color: #00BB00;'>PASS</span><span> 2 ][ </span><span style='color: #BBBB00;'>FAIL</span><span> 0 | </span><span style='color: #BB00BB;'>WARN</span><span> 1 | </span><span style='color: #0000BB;'>SKIP</span><span> 1 | </span><span style='color: #00BB00;'>PASS</span><span> 3 ][ </span><span style='color: #BBBB00;'>FAIL</span><span> 0 | </span><span style='color: #BB00BB;'>WARN</span><span> 1 | </span><span style='color: #0000BB;'>SKIP</span><span> 1 | </span><span style='color: #00BB00;'>PASS</span><span> 4 ]
 #&gt; 
@@ -245,7 +246,8 @@ source code for a few.</p>
 #&gt; </span><span style='color: #555555;'> 3. </span><span>rlang::eval_bare(expr, quo_get_env(quo))
 #&gt; 
 #&gt; [ </span><span style='color: #BBBB00;'>FAIL</span><span> 0 | </span><span style='color: #BB00BB;'>WARN</span><span> 1 | </span><span style='color: #0000BB;'>SKIP</span><span> 1 | </span><span style='color: #00BB00;'>PASS</span><span> 4 ]</div><div class='input'><span class='co'># Override the default by supplying the name of a reporter</span>
-<span class='fu'><a href='test_file.html'>test_file</a></span>(<span class='no'>path</span>, <span class='kw'>reporter</span> <span class='kw'>=</span> <span class='st'>"minimal"</span>)</div><div class='output co'>#&gt; .SW...</div></span></pre>
+<span class='fu'><a href='test_file.html'>test_file</a></span>(<span class='kw'>path</span>, reporter = <span class='st'>"minimal"</span>)
+</div><div class='output co'>#&gt; .SW...</div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -261,7 +263,7 @@ source code for a few.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.0.</p>
 </div>
 
       </footer>

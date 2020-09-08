@@ -208,11 +208,11 @@ Tests live in tests/testthat." />
 <p>Tests live in <code>tests/testthat</code>.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>test_package</span>(<span class='no'>package</span>, <span class='kw'>reporter</span> <span class='kw'>=</span> <span class='fu'><a href='default_reporter.html'>check_reporter</a></span>(), <span class='no'>...</span>)
+    <pre class="usage"><span class='fu'>test_package</span>(<span class='kw'>package</span>, reporter = <span class='fu'><a href='default_reporter.html'>check_reporter</a></span>(), <span class='kw'>...</span>)
 
-<span class='fu'>test_check</span>(<span class='no'>package</span>, <span class='kw'>reporter</span> <span class='kw'>=</span> <span class='fu'><a href='default_reporter.html'>check_reporter</a></span>(), <span class='no'>...</span>)
+<span class='fu'>test_check</span>(<span class='kw'>package</span>, reporter = <span class='fu'><a href='default_reporter.html'>check_reporter</a></span>(), <span class='kw'>...</span>)
 
-<span class='fu'>test_local</span>(<span class='kw'>path</span> <span class='kw'>=</span> <span class='st'>"."</span>, <span class='kw'>reporter</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>)</pre>
+<span class='fu'>test_local</span>(path = <span class='st'>"."</span>, reporter = <span class='kw'>NULL</span>, <span class='kw'>...</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -246,10 +246,11 @@ as a string (e.g. "summary") or as an R6 object
     
 
 <p>To run testthat automatically from <code>R CMD check</code>, make sure you have
-a <code>tests/testthat.R</code> that contains:</p><pre><span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>testthat</span>)
-<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>yourpackage</span>)
+a <code>tests/testthat.R</code> that contains:</p><pre><span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='kw'><a href='http://testthat.r-lib.org'>testthat</a></span>)
+<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='kw'>yourpackage</span>)
 
-<span class='fu'>test_check</span>(<span class='st'>"yourpackage"</span>)</pre>
+<span class='fu'>test_check</span>(<span class='st'>"yourpackage"</span>)
+</pre>
 
     <h2 class="hasAnchor" id="special-files"><a class="anchor" href="#special-files"></a>Special files</h2>
 
@@ -298,7 +299,7 @@ and objects.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.0.</p>
 </div>
 
       </footer>

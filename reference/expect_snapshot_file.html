@@ -214,7 +214,7 @@ of ensuring that output is as reproducible as possible, e.g. automatically
 skipping tests where it's known that images can't be reproduced exactly.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>expect_snapshot_file</span>(<span class='no'>path</span>, <span class='kw'>name</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/basename.html'>basename</a></span>(<span class='no'>path</span>), <span class='kw'>binary</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>cran</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+    <pre class="usage"><span class='fu'>expect_snapshot_file</span>(<span class='kw'>path</span>, name = <span class='fu'><a href='https://rdrr.io/r/base/basename.html'>basename</a></span>(<span class='kw'>path</span>), binary = <span class='fl'>TRUE</span>, cran = <span class='fl'>FALSE</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -246,32 +246,34 @@ expectations will still fail if <code>x</code> errors.</p></td>
     <pre class="examples"><div class='input'>
 <span class='co'># To use expect_snapshot_file() you'll typically need to start by writing</span>
 <span class='co'># a helper function that creates a file from your code, returning a path</span>
-<span class='no'>save_png</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>(<span class='no'>code</span>, <span class='no'>width</span> <span class='kw'>=</span> <span class='fl'>400</span>, <span class='no'>height</span> <span class='kw'>=</span> <span class='fl'>400</span>) {
-  <span class='no'>path</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempfile</a></span>(<span class='kw'>fileext</span> <span class='kw'>=</span> <span class='st'>".png"</span>)
-  <span class='fu'><a href='https://rdrr.io/r/grDevices/png.html'>png</a></span>(<span class='no'>path</span>, <span class='kw'>width</span> <span class='kw'>=</span> <span class='no'>width</span>, <span class='kw'>height</span> <span class='kw'>=</span> <span class='no'>height</span>)
+<span class='kw'>save_png</span> <span class='op'>&lt;-</span> <span class='fu'>function</span>(<span class='kw'>code</span>, <span class='kw'>width</span> = <span class='fl'>400</span>, <span class='kw'>height</span> = <span class='fl'>400</span>) {
+  <span class='kw'>path</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempfile</a></span>(fileext = <span class='st'>".png"</span>)
+  <span class='fu'><a href='https://rdrr.io/r/grDevices/png.html'>png</a></span>(<span class='kw'>path</span>, width = <span class='kw'>width</span>, height = <span class='kw'>height</span>)
   <span class='fu'><a href='https://rdrr.io/r/base/on.exit.html'>on.exit</a></span>(<span class='fu'><a href='https://rdrr.io/r/grDevices/dev.html'>dev.off</a></span>())
-  <span class='no'>code</span>
+  <span class='kw'>code</span>
 
-  <span class='no'>path</span>
+  <span class='kw'>path</span>
 }
-<span class='no'>path</span> <span class='kw'>&lt;-</span> <span class='fu'>save_png</span>(<span class='fu'><a href='https://rdrr.io/r/base/plot.html'>plot</a></span>(<span class='fl'>1</span>:<span class='fl'>5</span>))
-<span class='no'>path</span></div><div class='output co'>#&gt; [1] "/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpSykvFM/fileb912f60130e.png"</div><div class='input'>
-<span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
-<span class='fu'>expect_snapshot_file</span>(<span class='fu'>save_png</span>(<span class='fu'><a href='https://rdrr.io/r/graphics/hist.html'>hist</a></span>(<span class='no'>mtcars</span>)), <span class='st'>"plot.png"</span>)
+<span class='kw'>path</span> <span class='op'>&lt;-</span> <span class='fu'>save_png</span>(<span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span>(<span class='fl'>1</span><span class='op'>:</span><span class='fl'>5</span>))
+<span class='kw'>path</span>
+</div><div class='output co'>#&gt; [1] "/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmppUBQd4/file97e1842b774.png"</div><div class='input'>
+<span class='co'>if</span> (<span class='fl'>FALSE</span>) {
+<span class='fu'>expect_snapshot_file</span>(<span class='fu'>save_png</span>(<span class='fu'><a href='https://rdrr.io/r/graphics/hist.html'>hist</a></span>(<span class='kw'>mtcars</span>)), <span class='st'>"plot.png"</span>)
 }
 
 <span class='co'># You'd then also provide a helper that skip tests where you can't</span>
 <span class='co'># be sure of producing exactly the same output</span>
-<span class='no'>expect_snapshot_plot</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>(<span class='no'>name</span>, <span class='no'>code</span>) {
+<span class='kw'>expect_snapshot_plot</span> <span class='op'>&lt;-</span> <span class='fu'>function</span>(<span class='kw'>name</span>, <span class='kw'>code</span>) {
   <span class='co'># Other packages might affect results</span>
   <span class='fu'><a href='skip.html'>skip_if_not_installed</a></span>(<span class='st'>"ggplot2"</span>, <span class='st'>"2.0.0"</span>)
   <span class='co'># Or maybe the output is different on some operation systems</span>
   <span class='fu'><a href='skip.html'>skip_on_os</a></span>(<span class='st'>"windows"</span>)
   <span class='co'># You'll need to carefully think about and experiment with these skips</span>
 
-  <span class='no'>path</span> <span class='kw'>&lt;-</span> <span class='fu'>save_png</span>(<span class='no'>code</span>)
-  <span class='fu'>expect_snapshot_file</span>(<span class='no'>path</span>, <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span>(<span class='no'>name</span>, <span class='st'>".png"</span>))
-}</div></pre>
+  <span class='kw'>path</span> <span class='op'>&lt;-</span> <span class='fu'>save_png</span>(<span class='kw'>code</span>)
+  <span class='fu'>expect_snapshot_file</span>(<span class='kw'>path</span>, <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span>(<span class='kw'>name</span>, <span class='st'>".png"</span>))
+}
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -287,7 +289,7 @@ expectations will still fail if <code>x</code> errors.</p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.0.</p>
 </div>
 
       </footer>

@@ -194,7 +194,14 @@
     <p>Find test files</p>
     </div>
 
-    <pre class="usage"><span class='fu'>find_test_scripts</span>(<span class='no'>path</span>, <span class='kw'>filter</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>invert</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='no'>...</span>, <span class='kw'>full.names</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+    <pre class="usage"><span class='fu'>find_test_scripts</span>(
+  <span class='kw'>path</span>,
+  filter = <span class='kw'>NULL</span>,
+  invert = <span class='fl'>FALSE</span>,
+  <span class='kw'>...</span>,
+  full.names = <span class='fl'>TRUE</span>,
+  start_first = <span class='kw'>NULL</span>
+)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -217,6 +224,16 @@ name after it's stripped of <code>"test-"</code> and <code>".R"</code>.</p></td>
       <th>...</th>
       <td><p>Additional arguments passed to <code><a href='https://rdrr.io/r/base/grep.html'>grepl()</a></code> to control filtering.</p></td>
     </tr>
+    <tr>
+      <th>start_first</th>
+      <td><p>A character vector of file patterns (globs, see
+<code><a href='https://rdrr.io/r/utils/glob2rx.html'>utils::glob2rx()</a></code>). The patterns are for the file names (base names),
+not for the whole paths. testthat starts the files matching the
+first pattern first,  then the ones matching the second, etc. and then
+the rest of the files, alphabetically. Parallel tests tend to finish
+quicker if you start the slowest files first. <code>NULL</code> means alphabetical
+order.</p></td>
+    </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
@@ -238,7 +255,7 @@ name after it's stripped of <code>"test-"</code> and <code>".R"</code>.</p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.0.</p>
 </div>
 
       </footer>

@@ -211,22 +211,22 @@ and <code>1L</code> are treated as equal.</p>
     </div>
 
     <pre class="usage"><span class='fu'>expect_equal</span>(
-  <span class='no'>object</span>,
-  <span class='no'>expected</span>,
-  <span class='no'>...</span>,
-  <span class='kw'>tolerance</span> <span class='kw'>=</span> <span class='kw'>if</span> (<span class='fu'><a href='local_edition.html'>edition_get</a></span>() <span class='kw'>&gt;=</span> <span class='fl'>3</span>) <span class='fu'><a href='compare.html'>testthat_tolerance</a></span>(),
-  <span class='kw'>info</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>label</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>expected.label</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
+  <span class='kw'>object</span>,
+  <span class='kw'>expected</span>,
+  <span class='kw'>...</span>,
+  tolerance = <span class='co'>if</span> (<span class='fu'><a href='local_edition.html'>edition_get</a></span>() <span class='op'>&gt;=</span> <span class='fl'>3</span>) <span class='fu'><a href='compare.html'>testthat_tolerance</a></span>(),
+  info = <span class='kw'>NULL</span>,
+  label = <span class='kw'>NULL</span>,
+  expected.label = <span class='kw'>NULL</span>
 )
 
 <span class='fu'>expect_identical</span>(
-  <span class='no'>object</span>,
-  <span class='no'>expected</span>,
-  <span class='kw'>info</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>label</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>expected.label</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='no'>...</span>
+  <span class='kw'>object</span>,
+  <span class='kw'>expected</span>,
+  info = <span class='kw'>NULL</span>,
+  label = <span class='kw'>NULL</span>,
+  expected.label = <span class='kw'>NULL</span>,
+  <span class='kw'>...</span>
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -292,14 +292,15 @@ use only.</p></td>
 <code><a href='logical-expectations.html'>logical-expectations</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>a</span> <span class='kw'>&lt;-</span> <span class='fl'>10</span>
-<span class='fu'>expect_equal</span>(<span class='no'>a</span>, <span class='fl'>10</span>)
+    <pre class="examples"><div class='input'><span class='kw'>a</span> <span class='op'>&lt;-</span> <span class='fl'>10</span>
+<span class='fu'>expect_equal</span>(<span class='kw'>a</span>, <span class='fl'>10</span>)
 
 <span class='co'># Use expect_equal() when testing for numeric equality</span>
-<span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
-<span class='fu'>expect_identical</span>(<span class='fu'><a href='https://rdrr.io/r/base/MathFun.html'>sqrt</a></span>(<span class='fl'>2</span>) ^ <span class='fl'>2</span>, <span class='fl'>2</span>)
+<span class='co'>if</span> (<span class='fl'>FALSE</span>) {
+<span class='fu'>expect_identical</span>(<span class='fu'><a href='https://rdrr.io/r/base/MathFun.html'>sqrt</a></span>(<span class='fl'>2</span>) <span class='op'>^</span> <span class='fl'>2</span>, <span class='fl'>2</span>)
 }
-<span class='fu'>expect_equal</span>(<span class='fu'><a href='https://rdrr.io/r/base/MathFun.html'>sqrt</a></span>(<span class='fl'>2</span>) ^ <span class='fl'>2</span>, <span class='fl'>2</span>)</div></pre>
+<span class='fu'>expect_equal</span>(<span class='fu'><a href='https://rdrr.io/r/base/MathFun.html'>sqrt</a></span>(<span class='fl'>2</span>) <span class='op'>^</span> <span class='fl'>2</span>, <span class='fl'>2</span>)
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -315,7 +316,7 @@ use only.</p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.0.</p>
 </div>
 
       </footer>

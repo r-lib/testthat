@@ -198,19 +198,19 @@ This will produce an informative message, but will not cause the test
 suite to fail.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>skip</span>(<span class='no'>message</span>)
+    <pre class="usage"><span class='fu'>skip</span>(<span class='kw'>message</span>)
 
-<span class='fu'>skip_if_not</span>(<span class='no'>condition</span>, <span class='kw'>message</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/deparse.html'>deparse</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/substitute.html'>substitute</a></span>(<span class='no'>condition</span>)))
+<span class='fu'>skip_if_not</span>(<span class='kw'>condition</span>, message = <span class='fu'><a href='https://rdrr.io/r/base/deparse.html'>deparse</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/substitute.html'>substitute</a></span>(<span class='kw'>condition</span>)))
 
-<span class='fu'>skip_if</span>(<span class='no'>condition</span>, <span class='kw'>message</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
+<span class='fu'>skip_if</span>(<span class='kw'>condition</span>, message = <span class='kw'>NULL</span>)
 
-<span class='fu'>skip_if_not_installed</span>(<span class='no'>pkg</span>, <span class='kw'>minimum_version</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
+<span class='fu'>skip_if_not_installed</span>(<span class='kw'>pkg</span>, minimum_version = <span class='kw'>NULL</span>)
 
-<span class='fu'>skip_if_offline</span>(<span class='kw'>host</span> <span class='kw'>=</span> <span class='st'>"r-project.org"</span>)
+<span class='fu'>skip_if_offline</span>(host = <span class='st'>"r-project.org"</span>)
 
 <span class='fu'>skip_on_cran</span>()
 
-<span class='fu'>skip_on_os</span>(<span class='no'>os</span>)
+<span class='fu'>skip_on_os</span>(<span class='kw'>os</span>)
 
 <span class='fu'>skip_on_travis</span>()
 
@@ -222,7 +222,7 @@ suite to fail.</p>
 
 <span class='fu'>skip_on_bioc</span>()
 
-<span class='fu'>skip_if_translated</span>(<span class='kw'>msgid</span> <span class='kw'>=</span> <span class='st'>"'%s' not found"</span>)</pre>
+<span class='fu'>skip_if_translated</span>(msgid = <span class='st'>"'%s' not found"</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -293,7 +293,7 @@ or cannot be loaded (useful for suggested packages).  It loads the package as
 a side effect, because the package is likely to be used anyway.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) <span class='fu'>skip</span>(<span class='st'>"No internet connection"</span>)
+    <pre class="examples"><div class='input'><span class='co'>if</span> (<span class='fl'>FALSE</span>) <span class='fu'>skip</span>(<span class='st'>"No internet connection"</span>)
 
 <span class='co'>## The following are only meaningful when put in test files and</span>
 <span class='co'>## run with `test_file`, `test_dir`, `test_check`, etc.</span>
@@ -303,7 +303,8 @@ a side effect, because the package is likely to be used anyway.</p>
   <span class='fu'>skip</span>(<span class='st'>'skip'</span>)
   <span class='fu'><a href='equality-expectations.html'>expect_equal</a></span>(<span class='fl'>1</span>, <span class='fl'>2</span>)     <span class='co'># this one skipped</span>
   <span class='fu'><a href='equality-expectations.html'>expect_equal</a></span>(<span class='fl'>1</span>, <span class='fl'>3</span>)     <span class='co'># this one is also skipped</span>
-})</div><div class='output co'>#&gt; ── <span style='color: #0000BB;font-weight: bold;'>Skip</span><span style='font-weight: bold;'> (&lt;text&gt;:8:3): skip example</span><span> ─────────────────────────────────────────────
+})
+</div><div class='output co'>#&gt; ── <span style='color: #0000BB;font-weight: bold;'>Skip</span><span style='font-weight: bold;'> (&lt;text&gt;:8:3): skip example</span><span> ─────────────────────────────────────────────
 #&gt; Reason: skip
 #&gt; </div></span></pre>
   </div>
@@ -321,7 +322,7 @@ a side effect, because the package is likely to be used anyway.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.0.</p>
 </div>
 
       </footer>

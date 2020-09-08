@@ -204,19 +204,19 @@ and friends to bubble up unmatched conditions. If you just want to silence
 unimportant warnings, use <code><a href='https://rdrr.io/r/base/warning.html'>suppressWarnings()</a></code>.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>capture_condition</span>(<span class='no'>code</span>, <span class='kw'>entrace</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+    <pre class="usage"><span class='fu'>capture_condition</span>(<span class='kw'>code</span>, entrace = <span class='fl'>FALSE</span>)
 
-<span class='fu'>capture_error</span>(<span class='no'>code</span>, <span class='kw'>entrace</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+<span class='fu'>capture_error</span>(<span class='kw'>code</span>, entrace = <span class='fl'>FALSE</span>)
 
-<span class='fu'>capture_expectation</span>(<span class='no'>code</span>, <span class='kw'>entrace</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+<span class='fu'>capture_expectation</span>(<span class='kw'>code</span>, entrace = <span class='fl'>FALSE</span>)
 
-<span class='fu'>capture_message</span>(<span class='no'>code</span>, <span class='kw'>entrace</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+<span class='fu'>capture_message</span>(<span class='kw'>code</span>, entrace = <span class='fl'>FALSE</span>)
 
-<span class='fu'>capture_warning</span>(<span class='no'>code</span>, <span class='kw'>entrace</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+<span class='fu'>capture_warning</span>(<span class='kw'>code</span>, entrace = <span class='fl'>FALSE</span>)
 
-<span class='fu'>capture_messages</span>(<span class='no'>code</span>)
+<span class='fu'>capture_messages</span>(<span class='kw'>code</span>)
 
-<span class='fu'>capture_warnings</span>(<span class='no'>code</span>)</pre>
+<span class='fu'>capture_warnings</span>(<span class='kw'>code</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -239,17 +239,22 @@ return a condition object. <code>capture_messages()</code> and <code>capture_war
 return a character vector of message text.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>f</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>() {
+    <pre class="examples"><div class='input'><span class='kw'>f</span> <span class='op'>&lt;-</span> <span class='fu'>function</span>() {
   <span class='fu'><a href='https://rdrr.io/r/base/message.html'>message</a></span>(<span class='st'>"First"</span>)
   <span class='fu'><a href='https://rdrr.io/r/base/warning.html'>warning</a></span>(<span class='st'>"Second"</span>)
   <span class='fu'><a href='https://rdrr.io/r/base/message.html'>message</a></span>(<span class='st'>"Third"</span>)
 }
 
-<span class='fu'>capture_message</span>(<span class='fu'>f</span>())</div><div class='output co'>#&gt; &lt;simpleMessage in message("First"): First
-#&gt; &gt;</div><div class='input'><span class='fu'>capture_messages</span>(<span class='fu'>f</span>())</div><div class='output co'>#&gt; <span class='warning'>Warning: Second</span></div><div class='output co'>#&gt; [1] "First\n" "Third\n"</div><div class='input'>
-<span class='fu'>capture_warning</span>(<span class='fu'>f</span>())</div><div class='output co'>#&gt; <span class='message'>First</span></div><div class='output co'>#&gt; &lt;simpleWarning in f(): Second&gt;</div><div class='input'><span class='fu'>capture_warnings</span>(<span class='fu'>f</span>())</div><div class='output co'>#&gt; <span class='message'>First</span></div><div class='output co'>#&gt; <span class='message'>Third</span></div><div class='output co'>#&gt; [1] "Second"</div><div class='input'>
+<span class='fu'>capture_message</span>(<span class='fu'>f</span>())
+</div><div class='output co'>#&gt; &lt;simpleMessage in message("First"): First
+#&gt; &gt;</div><div class='input'><span class='fu'>capture_messages</span>(<span class='fu'>f</span>())
+</div><div class='output co'>#&gt; <span class='warning'>Warning: Second</span></div><div class='output co'>#&gt; [1] "First\n" "Third\n"</div><div class='input'>
+<span class='fu'>capture_warning</span>(<span class='fu'>f</span>())
+</div><div class='output co'>#&gt; <span class='message'>First</span></div><div class='output co'>#&gt; &lt;simpleWarning in f(): Second&gt;</div><div class='input'><span class='fu'>capture_warnings</span>(<span class='fu'>f</span>())
+</div><div class='output co'>#&gt; <span class='message'>First</span></div><div class='output co'>#&gt; <span class='message'>Third</span></div><div class='output co'>#&gt; [1] "Second"</div><div class='input'>
 <span class='co'># Condition will capture anything</span>
-<span class='fu'>capture_condition</span>(<span class='fu'>f</span>())</div><div class='output co'>#&gt; &lt;simpleMessage in message("First"): First
+<span class='fu'>capture_condition</span>(<span class='fu'>f</span>())
+</div><div class='output co'>#&gt; &lt;simpleMessage in message("First"): First
 #&gt; &gt;</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
@@ -266,7 +271,7 @@ return a character vector of message text.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.0.</p>
 </div>
 
       </footer>

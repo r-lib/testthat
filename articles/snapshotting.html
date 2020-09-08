@@ -157,30 +157,37 @@
 <li><p>Binary formats like plots or images, which are very difficult to describe in code: i.e. the plot looks right, the error message is useful to a human, the print method uses colour effectively.</p></li>
 </ul>
 <p>For these situations, testthat provides an alternative mechanism: snapshot tests. Instead of using code to describe expected output, snapshot tests (also known as <a href="https://ro-che.info/articles/2017-12-04-golden-tests">golden tests</a>) record results in a separate human readable file. Snapshot tests in testthat are inspired primarily by <a href="https://jestjs.io/docs/en/snapshot-testing">Jest</a>, thanks to a number of very useful discussions with Joe Cheng.</p>
-<div class="sourceCode" id="cb1"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">testthat</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb1"><pre class="downlit">
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="http://testthat.r-lib.org">testthat</a></span>)
+</pre></div>
 <div id="basic-workflow" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basic-workflow" class="anchor"></a>Basic workflow</h2>
 <p>We’ll illustrate the basic workflow with a simple function that generates an HTML heading. It can optionally include an <code>id</code> attribute, which allows you to construct a link directly to that heading.</p>
-<div class="sourceCode" id="cb2"><html><body><pre class="r"><span class="no">bullets</span> <span class="kw">&lt;-</span> <span class="kw">function</span>(<span class="no">text</span>, <span class="no">id</span> <span class="kw">=</span> <span class="kw">NULL</span>) {
+<div class="sourceCode" id="cb2"><pre class="downlit">
+<span class="kw">bullets</span> <span class="op">&lt;-</span> <span class="fu">function</span>(<span class="kw">text</span>, <span class="kw">id</span> = <span class="kw">NULL</span>) {
   <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span>(
-    <span class="st">"&lt;ul"</span>, <span class="kw">if</span> (!<span class="fu"><a href="https://rdrr.io/r/base/NULL.html">is.null</a></span>(<span class="no">id</span>)) <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span>(<span class="st">" id=\""</span>, <span class="no">id</span>, <span class="st">"\""</span>), <span class="st">"&gt;\n"</span>,
-    <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span>(<span class="st">"  &lt;li&gt;"</span>, <span class="no">text</span>, <span class="st">"&lt;/li&gt;\n"</span>, <span class="kw">collapse</span> <span class="kw">=</span> <span class="st">""</span>),
+    <span class="st">"&lt;ul"</span>, <span class="co">if</span> (<span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NULL.html">is.null</a></span>(<span class="kw">id</span>)) <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span>(<span class="st">" id=\""</span>, <span class="kw">id</span>, <span class="st">"\""</span>), <span class="st">"&gt;\n"</span>, 
+    <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span>(<span class="st">"  &lt;li&gt;"</span>, <span class="kw">text</span>, <span class="st">"&lt;/li&gt;\n"</span>, collapse = <span class="st">""</span>),
     <span class="st">"&lt;/ul&gt;\n"</span>
   )
 }
-<span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span>(<span class="fu">bullets</span>(<span class="st">"a"</span>, <span class="kw">id</span> <span class="kw">=</span> <span class="st">"x"</span>))
+<span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span>(<span class="fu">bullets</span>(<span class="st">"a"</span>, id = <span class="st">"x"</span>))
 <span class="co">#&gt; &lt;ul id="x"&gt;</span>
 <span class="co">#&gt;   &lt;li&gt;a&lt;/li&gt;</span>
-<span class="co">#&gt; &lt;/ul&gt;</span></pre></body></html></div>
+<span class="co">#&gt; &lt;/ul&gt;</span>
+</pre></div>
 <p>Testing this simple function is relatively painful. To write the test you have to carefully escape the newlines and quotes. And then when you re-read the test in the future, all that escaping makes it hard to tell exactly what it’s supposed to return.</p>
-<div class="sourceCode" id="cb3"><html><body><pre class="r"><span class="fu"><a href="../reference/test_that.html">test_that</a></span>(<span class="st">"bullets"</span>, {
+<div class="sourceCode" id="cb3"><pre class="downlit">
+<span class="fu"><a href="../reference/test_that.html">test_that</a></span>(<span class="st">"bullets"</span>, {
   <span class="fu"><a href="../reference/equality-expectations.html">expect_equal</a></span>(<span class="fu">bullets</span>(<span class="st">"a"</span>), <span class="st">"&lt;ul&gt;\n  &lt;li&gt;a&lt;/li&gt;\n&lt;/ul&gt;\n"</span>)
-  <span class="fu"><a href="../reference/equality-expectations.html">expect_equal</a></span>(<span class="fu">bullets</span>(<span class="st">"a"</span>, <span class="kw">id</span> <span class="kw">=</span> <span class="st">"x"</span>), <span class="st">"&lt;ul id=\"x\"&gt;\n  &lt;li&gt;a&lt;/li&gt;\n&lt;/ul&gt;\n"</span>)
+  <span class="fu"><a href="../reference/equality-expectations.html">expect_equal</a></span>(<span class="fu">bullets</span>(<span class="st">"a"</span>, id = <span class="st">"x"</span>), <span class="st">"&lt;ul id=\"x\"&gt;\n  &lt;li&gt;a&lt;/li&gt;\n&lt;/ul&gt;\n"</span>)
 })
-<span class="co">#&gt; Test passed 🥇</span></pre></body></html></div>
+<span class="co">#&gt; Test passed 🥇</span>
+</pre></div>
 <p>This is a great place to use snapshot testing. To do this we make two changes to our code: we use <code><a href="../reference/expect_snapshot.html">expect_snapshot_output()</a></code> instead of <code><a href="../reference/equality-expectations.html">expect_equal()</a></code>, and wrap the call in <code><a href="https://rdrr.io/r/base/cat.html">cat()</a></code> (to avoid <code>[1]</code> in the output, like I my first interactive example).</p>
-<div class="sourceCode" id="cb4"><html><body><pre class="r"><span class="fu"><a href="../reference/test_that.html">test_that</a></span>(<span class="st">"bullets"</span>, {
+<div class="sourceCode" id="cb4"><pre class="downlit">
+<span class="fu"><a href="../reference/test_that.html">test_that</a></span>(<span class="st">"bullets"</span>, {
   <span class="fu"><a href="../reference/expect_snapshot.html">expect_snapshot_output</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span>(<span class="fu">bullets</span>(<span class="st">"a"</span>)))
   <span class="fu"><a href="../reference/expect_snapshot.html">expect_snapshot_output</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span>(<span class="fu">bullets</span>(<span class="st">"a"</span>, <span class="st">"b"</span>)))
 })
@@ -194,19 +201,23 @@
 <span class="co">#&gt; Adding new snapshot:</span>
 <span class="co">#&gt; &lt;ul id="b"&gt;</span>
 <span class="co">#&gt;   &lt;li&gt;a&lt;/li&gt;</span>
-<span class="co">#&gt; &lt;/ul&gt;</span></pre></body></html></div>
+<span class="co">#&gt; &lt;/ul&gt;</span>
+</pre></div>
 <p>We we run the test for the first time, it automatically generates reference output, and prints it, so that you can visually confirm that it’s correct. The output is automatically saved in <code>_snaps/{name}.R</code>. The name of the snapshot matches your test file name — e.g. if your test is <code>test-pizza.R</code> then your snapshot will be saved in <code>test/testthat/_snaps/pizza.md</code>. As the file name suggests, this is a markdown file, which I’ll explain shortly.</p>
 <p>If you run the test again, it’ll succeed:</p>
-<div class="sourceCode" id="cb5"><html><body><pre class="r"><span class="fu"><a href="../reference/test_that.html">test_that</a></span>(<span class="st">"bullets"</span>, {
+<div class="sourceCode" id="cb5"><pre class="downlit">
+<span class="fu"><a href="../reference/test_that.html">test_that</a></span>(<span class="st">"bullets"</span>, {
   <span class="fu"><a href="../reference/expect_snapshot.html">expect_snapshot_output</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span>(<span class="fu">bullets</span>(<span class="st">"a"</span>)))
   <span class="fu"><a href="../reference/expect_snapshot.html">expect_snapshot_output</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span>(<span class="fu">bullets</span>(<span class="st">"a"</span>, <span class="st">"b"</span>)))
 })
-<span class="co">#&gt; Test passed 🎊</span></pre></body></html></div>
+<span class="co">#&gt; Test passed 🎊</span>
+</pre></div>
 <p>But if you change the underlying code, say to tweak the indenting, the test will fail:</p>
-<div class="sourceCode" id="cb6"><html><body><pre class="r"><span class="no">bullets</span> <span class="kw">&lt;-</span> <span class="kw">function</span>(<span class="no">text</span>, <span class="no">id</span> <span class="kw">=</span> <span class="kw">NULL</span>) {
+<div class="sourceCode" id="cb6"><pre class="downlit">
+<span class="kw">bullets</span> <span class="op">&lt;-</span> <span class="fu">function</span>(<span class="kw">text</span>, <span class="kw">id</span> = <span class="kw">NULL</span>) {
   <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span>(
-    <span class="st">"&lt;ul"</span>, <span class="kw">if</span> (!<span class="fu"><a href="https://rdrr.io/r/base/NULL.html">is.null</a></span>(<span class="no">id</span>)) <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span>(<span class="st">" id=\""</span>, <span class="no">id</span>, <span class="st">"\""</span>), <span class="st">"&gt;\n"</span>,
-    <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span>(<span class="st">"&lt;li&gt;"</span>, <span class="no">text</span>, <span class="st">"&lt;/li&gt;\n"</span>, <span class="kw">collapse</span> <span class="kw">=</span> <span class="st">""</span>),
+    <span class="st">"&lt;ul"</span>, <span class="co">if</span> (<span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NULL.html">is.null</a></span>(<span class="kw">id</span>)) <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span>(<span class="st">" id=\""</span>, <span class="kw">id</span>, <span class="st">"\""</span>), <span class="st">"&gt;\n"</span>, 
+    <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span>(<span class="st">"&lt;li&gt;"</span>, <span class="kw">text</span>, <span class="st">"&lt;/li&gt;\n"</span>, collapse = <span class="st">""</span>),
     <span class="st">"&lt;/ul&gt;\n"</span>
   )
 }
@@ -226,7 +237,8 @@
 <span class="co">#&gt; `current`:  "&lt;ul id=\"b\"&gt;" "&lt;li&gt;a&lt;/li&gt;"   "&lt;/ul&gt;"</span>
 <span class="co">#&gt; `previous`: "&lt;ul id=\"b\"&gt;" "  &lt;li&gt;a&lt;/li&gt;" "&lt;/ul&gt;"</span>
 <span class="co">#&gt; </span>
-<span class="co">#&gt; Run `snapshot_accept('pizza')` if this is a deliberate change</span></pre></body></html></div>
+<span class="co">#&gt; Run `snapshot_accept('pizza')` if this is a deliberate change</span>
+</pre></div>
 <p>If this is a deliberate change, you can follow the advice in the message and update the snapshots for that file by running <code><a href="../reference/snapshot_accept.html">snapshot_accept("pizza")</a></code>; otherwise you can fix the bug and your tests will pass once more. (You can also accept snapshot for all files with <code><a href="../reference/snapshot_accept.html">snapshot_accept()</a></code>).</p>
 <div id="snapshot-format" class="section level3">
 <h3 class="hasAnchor">
@@ -304,7 +316,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.0.</p>
 </div>
 
       </footer>

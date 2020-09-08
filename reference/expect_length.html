@@ -194,7 +194,7 @@
     <p>Does code return a vector with the specified length?</p>
     </div>
 
-    <pre class="usage"><span class='fu'>expect_length</span>(<span class='no'>object</span>, <span class='no'>n</span>)</pre>
+    <pre class="usage"><span class='fu'>expect_length</span>(<span class='kw'>object</span>, <span class='kw'>n</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -229,11 +229,12 @@ within a function or for loop. See <a href='quasi_label.html'>quasi_label</a> fo
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'>expect_length</span>(<span class='fl'>1</span>, <span class='fl'>1</span>)
-<span class='fu'>expect_length</span>(<span class='fl'>1</span>:<span class='fl'>10</span>, <span class='fl'>10</span>)
+<span class='fu'>expect_length</span>(<span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span>, <span class='fl'>10</span>)
 
-<span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
-<span class='fu'>expect_length</span>(<span class='fl'>1</span>:<span class='fl'>10</span>, <span class='fl'>1</span>)
-}</div></pre>
+<span class='co'>if</span> (<span class='fl'>FALSE</span>) {
+<span class='fu'>expect_length</span>(<span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span>, <span class='fl'>1</span>)
+}
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -249,7 +250,7 @@ within a function or for loop. See <a href='quasi_label.html'>quasi_label</a> fo
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.0.</p>
 </div>
 
       </footer>

@@ -213,12 +213,12 @@ from the previous run, you'll need to use <code>git diff</code> or similar.</p>
     </div>
 
     <pre class="usage"><span class='fu'>verify_output</span>(
-  <span class='no'>path</span>,
-  <span class='no'>code</span>,
-  <span class='kw'>width</span> <span class='kw'>=</span> <span class='fl'>80</span>,
-  <span class='kw'>crayon</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>unicode</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>env</span> <span class='kw'>=</span> <span class='fu'>caller_env</span>()
+  <span class='kw'>path</span>,
+  <span class='kw'>code</span>,
+  width = <span class='fl'>80</span>,
+  crayon = <span class='fl'>FALSE</span>,
+  unicode = <span class='fl'>FALSE</span>,
+  env = <span class='fu'>caller_env</span>()
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -280,12 +280,14 @@ presentation.</p>
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># The first argument would usually be `test_path("informative-name.txt"`)</span>
 <span class='co'># but that is not permitted in examples</span>
-<span class='no'>path</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempfile</a></span>()
-<span class='fu'>verify_output</span>(<span class='no'>path</span>, {
-   <span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='no'>mtcars</span>)
-   <span class='fu'><a href='https://rdrr.io/r/base/Log.html'>log</a></span>(-<span class='fl'>10</span>)
-   <span class='st'>"a"</span> * <span class='fl'>3</span>
-})</div><div class='output co'>#&gt; <span class='warning'>Warning: Creating reference output</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/writeLines.html'>writeLines</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/readLines.html'>readLines</a></span>(<span class='no'>path</span>))</div><div class='output co'>#&gt; &gt; head(mtcars)
+<span class='kw'>path</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempfile</a></span>()
+<span class='fu'>verify_output</span>(<span class='kw'>path</span>, {
+   <span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='kw'>mtcars</span>)
+   <span class='fu'><a href='https://rdrr.io/r/base/Log.html'>log</a></span>(<span class='op'>-</span><span class='fl'>10</span>)
+   <span class='st'>"a"</span> <span class='op'>*</span> <span class='fl'>3</span>
+})
+</div><div class='output co'>#&gt; <span class='warning'>Warning: Creating reference output</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/writeLines.html'>writeLines</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/readLines.html'>readLines</a></span>(<span class='kw'>path</span>))
+</div><div class='output co'>#&gt; &gt; head(mtcars)
 #&gt;                    mpg cyl disp  hp drat    wt  qsec vs am gear carb
 #&gt; Mazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
 #&gt; Mazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4
@@ -305,21 +307,23 @@ presentation.</p>
 <span class='co'># Use strings to create comments in the output</span>
 <span class='fu'>verify_output</span>(<span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempfile</a></span>(), {
    <span class='st'>"Print method"</span>
-   <span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='no'>mtcars</span>)
+   <span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='kw'>mtcars</span>)
 
    <span class='st'>"Warning"</span>
-   <span class='fu'><a href='https://rdrr.io/r/base/Log.html'>log</a></span>(-<span class='fl'>10</span>)
+   <span class='fu'><a href='https://rdrr.io/r/base/Log.html'>log</a></span>(<span class='op'>-</span><span class='fl'>10</span>)
 
    <span class='st'>"Error"</span>
-   <span class='st'>"a"</span> * <span class='fl'>3</span>
-})</div><div class='output co'>#&gt; <span class='warning'>Warning: Creating reference output</span></div><div class='input'>
+   <span class='st'>"a"</span> <span class='op'>*</span> <span class='fl'>3</span>
+})
+</div><div class='output co'>#&gt; <span class='warning'>Warning: Creating reference output</span></div><div class='input'>
 <span class='co'># Use strings starting with # to create headings</span>
 <span class='fu'>verify_output</span>(<span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempfile</a></span>(), {
    <span class='st'>"# Base functions"</span>
-   <span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='no'>mtcars</span>)
-   <span class='fu'><a href='https://rdrr.io/r/base/Log.html'>log</a></span>(-<span class='fl'>10</span>)
-   <span class='st'>"a"</span> * <span class='fl'>3</span>
-})</div><div class='output co'>#&gt; <span class='warning'>Warning: Creating reference output</span></div></pre>
+   <span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='kw'>mtcars</span>)
+   <span class='fu'><a href='https://rdrr.io/r/base/Log.html'>log</a></span>(<span class='op'>-</span><span class='fl'>10</span>)
+   <span class='st'>"a"</span> <span class='op'>*</span> <span class='fl'>3</span>
+})
+</div><div class='output co'>#&gt; <span class='warning'>Warning: Creating reference output</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -335,7 +339,7 @@ presentation.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.0.</p>
 </div>
 
       </footer>

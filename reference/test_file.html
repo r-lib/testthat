@@ -198,7 +198,7 @@ Helper, setup, and teardown files located in the same directory as the
 test will also be run.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>test_file</span>(<span class='no'>path</span>, <span class='kw'>reporter</span> <span class='kw'>=</span> <span class='fu'><a href='default_reporter.html'>default_compact_reporter</a></span>(), <span class='kw'>package</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>test_file</span>(<span class='kw'>path</span>, reporter = <span class='fu'><a href='default_reporter.html'>default_compact_reporter</a></span>(), package = <span class='kw'>NULL</span>, <span class='kw'>...</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -260,8 +260,9 @@ package's namespace environment, so that tests can access internal functions
 and objects.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>path</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='testthat_examples.html'>testthat_example</a></span>(<span class='st'>"success"</span>)
-<span class='fu'>test_file</span>(<span class='no'>path</span>)</div><div class='output co'>#&gt; 
+    <pre class="examples"><div class='input'><span class='kw'>path</span> <span class='op'>&lt;-</span> <span class='fu'><a href='testthat_examples.html'>testthat_example</a></span>(<span class='st'>"success"</span>)
+<span class='fu'>test_file</span>(<span class='kw'>path</span>)
+</div><div class='output co'>#&gt; 
 #&gt; ══ <span style='font-weight: bold;'>Testing test-success.R</span><span> ══════════════════════════════════════════════════════
 #&gt; [ </span><span style='color: #BBBB00;'>FAIL</span><span> 0 | </span><span style='color: #BB00BB;'>WARN</span><span> 0 | </span><span style='color: #0000BB;'>SKIP</span><span> 0 | </span><span style='color: #00BB00;'>PASS</span><span> 0 ][ </span><span style='color: #BBBB00;'>FAIL</span><span> 0 | </span><span style='color: #BB00BB;'>WARN</span><span> 0 | </span><span style='color: #0000BB;'>SKIP</span><span> 0 | </span><span style='color: #00BB00;'>PASS</span><span> 1 ][ </span><span style='color: #BBBB00;'>FAIL</span><span> 0 | </span><span style='color: #BB00BB;'>WARN</span><span> 0 | </span><span style='color: #0000BB;'>SKIP</span><span> 1 | </span><span style='color: #00BB00;'>PASS</span><span> 1 ][ </span><span style='color: #BBBB00;'>FAIL</span><span> 0 | </span><span style='color: #BB00BB;'>WARN</span><span> 1 | </span><span style='color: #0000BB;'>SKIP</span><span> 1 | </span><span style='color: #00BB00;'>PASS</span><span> 1 ][ </span><span style='color: #BBBB00;'>FAIL</span><span> 0 | </span><span style='color: #BB00BB;'>WARN</span><span> 1 | </span><span style='color: #0000BB;'>SKIP</span><span> 1 | </span><span style='color: #00BB00;'>PASS</span><span> 2 ][ </span><span style='color: #BBBB00;'>FAIL</span><span> 0 | </span><span style='color: #BB00BB;'>WARN</span><span> 1 | </span><span style='color: #0000BB;'>SKIP</span><span> 1 | </span><span style='color: #00BB00;'>PASS</span><span> 3 ][ </span><span style='color: #BBBB00;'>FAIL</span><span> 0 | </span><span style='color: #BB00BB;'>WARN</span><span> 1 | </span><span style='color: #0000BB;'>SKIP</span><span> 1 | </span><span style='color: #00BB00;'>PASS</span><span> 4 ]
 #&gt; 
@@ -275,7 +276,8 @@ and objects.</p>
 #&gt; </span><span style='color: #555555;'> 2. </span><span>testthat::quasi_label(enquo(object), label, arg = "object")
 #&gt; </span><span style='color: #555555;'> 3. </span><span>rlang::eval_bare(expr, quo_get_env(quo))
 #&gt; 
-#&gt; [ </span><span style='color: #BBBB00;'>FAIL</span><span> 0 | </span><span style='color: #BB00BB;'>WARN</span><span> 1 | </span><span style='color: #0000BB;'>SKIP</span><span> 1 | </span><span style='color: #00BB00;'>PASS</span><span> 4 ]</div><div class='input'><span class='fu'>test_file</span>(<span class='no'>path</span>, <span class='kw'>reporter</span> <span class='kw'>=</span> <span class='st'>"minimal"</span>)</div><div class='output co'>#&gt; .SW...</div></span></pre>
+#&gt; [ </span><span style='color: #BBBB00;'>FAIL</span><span> 0 | </span><span style='color: #BB00BB;'>WARN</span><span> 1 | </span><span style='color: #0000BB;'>SKIP</span><span> 1 | </span><span style='color: #00BB00;'>PASS</span><span> 4 ]</div><div class='input'><span class='fu'>test_file</span>(<span class='kw'>path</span>, reporter = <span class='st'>"minimal"</span>)
+</div><div class='output co'>#&gt; .SW...</div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -291,7 +293,7 @@ and objects.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.0.</p>
 </div>
 
       </footer>

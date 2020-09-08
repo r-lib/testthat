@@ -198,9 +198,9 @@ particularly useful to a pre-condition or mark a test as not yet
 implemented.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>fail</span>(<span class='kw'>message</span> <span class='kw'>=</span> <span class='st'>"Failure has been forced"</span>, <span class='kw'>info</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
+    <pre class="usage"><span class='fu'>fail</span>(message = <span class='st'>"Failure has been forced"</span>, info = <span class='kw'>NULL</span>)
 
-<span class='fu'>succeed</span>(<span class='kw'>message</span> <span class='kw'>=</span> <span class='st'>"Success has been forced"</span>, <span class='kw'>info</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+<span class='fu'>succeed</span>(message = <span class='st'>"Success has been forced"</span>, info = <span class='kw'>NULL</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -218,10 +218,11 @@ for backward compatibility only and new expectations should not use it.</p></td>
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
+    <pre class="examples"><div class='input'><span class='co'>if</span> (<span class='fl'>FALSE</span>) {
 <span class='fu'><a href='test_that.html'>test_that</a></span>(<span class='st'>"this test fails"</span>, <span class='fu'>fail</span>())
 <span class='fu'><a href='test_that.html'>test_that</a></span>(<span class='st'>"this test succeeds"</span>, <span class='fu'>succeed</span>())
-}</div></pre>
+}
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -237,7 +238,7 @@ for backward compatibility only and new expectations should not use it.</p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.0.</p>
 </div>
 
       </footer>
