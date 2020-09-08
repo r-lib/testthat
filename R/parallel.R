@@ -319,7 +319,8 @@ SubprocessReporter <- R6::R6Class("SubprocessReporter",
     add_result = function(context, test, result) {
       if (inherits(result, "expectation_success")) {
         # Strip bulky components to reduce data transfer cost
-        result[] <- result[c("message", "test")]
+        result[["srcref"]] <- NULL
+        result[["trace"]] <- NULL
       }
       private$event("add_result", context, test, result)
     },
