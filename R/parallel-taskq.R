@@ -67,13 +67,7 @@ task_q <- R6::R6Class(
           } else if (msg$code == PROCESS_DONE) {
             private$tasks$state[[i]] <- "ready"
           } else if (msg$code %in% PROCESS_FAILURES) {
-            file <- private$tasks$args[[i]][[1]]
-            abort(
-              paste0("testthat subprocess exited in file `", file, "`"),
-              test_file = file,
-              parent = msg$err,
-              class = c("testthat_process_error", "testthat_error")
-            )
+            private$handle_error(msg, i)
           } else {
             file <- private$tasks$args[[i]][[1]]
             errmsg <- paste0(
@@ -145,6 +139,32 @@ task_q <- R6::R6Class(
                                          private$tasks$args[[i]])
         }
       })
+    },
+
+    handle_error = function(msg, task_no) {
+      inform("\n") # get out of the progress bar, if any
+      fun <- private$tasks$fun[[task_no]]
+      file <- private$tasks$args[[task_no]][[1]]
+      if (is.null(fun)) {
+        msg$err$stdout <- msg$stdout
+        msg$err$stderr <- msg$stderr
+        abort(
+          paste0(
+            "testthat subprocess failed to start, stderr:\n",
+            msg$err$stderr
+          ),
+          test_file = NULL,
+          parent = msg$err,
+          class = c("testthat_process_error", "testthat_error")
+        )
+      } else {
+        abort(
+          paste0("testthat subprocess exited in file `", file, "`"),
+          test_file = file,
+          parent = msg$err,
+          class = c("testthat_process_error", "testthat_error")
+        )
+      }
     }
   )
 )
