@@ -290,13 +290,19 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
 CompactProgressReporter <- R6::R6Class("CompactProgressReporter",
   inherit = ProgressReporter,
   public = list(
-    initialize = function(min_time = Inf, ...) {
+    # Is this being run by RStudio's test file button?
+    rstudio = FALSE,
+
+    initialize = function(rstudio = FALSE, min_time = Inf, ...) {
+      self$rstudio <- rstudio
       super$initialize(min_time = min_time, ...)
     },
 
     start_file = function(name) {
-      self$cat_line()
-      self$rule(cli::style_bold(paste0("Testing ", name)), line = 2)
+      if (!self$rstudio) {
+        self$cat_line()
+        self$rule(cli::style_bold(paste0("Testing ", name)), line = 2)
+      }
       super$start_file(name)
     },
 
@@ -327,7 +333,7 @@ CompactProgressReporter <- R6::R6Class("CompactProgressReporter",
         self$cat_line()
       } else if (self$is_full()) {
         self$cat_line(" Terminated early")
-      } else {
+      } else if (!self$rstudio) {
         self$cat_line(crayon::bold(" Done!"))
       }
     },

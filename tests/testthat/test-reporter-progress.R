@@ -50,3 +50,16 @@ test_that("compact display is informative", {
     test_path("reporters/tests.R")
   )
 })
+
+test_that("display of successes only is compact", {
+  expect_snapshot_reporter(
+    CompactProgressReporter$new(),
+    test_path("reporters/successes.R")
+  )
+
+  # And even more compact if in RStudio pane
+  expect_snapshot_reporter(
+    CompactProgressReporter$new(rstudio = TRUE),
+    test_path("reporters/successes.R")
+  )
+})

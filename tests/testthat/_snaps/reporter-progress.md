@@ -302,3 +302,29 @@
     
     [ FAIL 4 | WARN 1 | SKIP 2 | PASS 1 ]
 
+# display of successes only is compact
+
+    
+    == Testing reporters/successes.R ===============================================
+    
+    [ FAIL 0 | WARN 0 | SKIP 0 | PASS 0 ]
+    [ FAIL 0 | WARN 0 | SKIP 0 | PASS 1 ]
+    [ FAIL 0 | WARN 0 | SKIP 0 | PASS 2 ]
+    [ FAIL 0 | WARN 0 | SKIP 0 | PASS 3 ]
+    [ FAIL 0 | WARN 0 | SKIP 0 | PASS 4 ]
+    [ FAIL 0 | WARN 0 | SKIP 0 | PASS 5 ]
+    [ FAIL 0 | WARN 0 | SKIP 0 | PASS 6 ]
+    [ FAIL 0 | WARN 0 | SKIP 0 | PASS 7 ] Done!
+
+---
+
+    
+    [ FAIL 0 | WARN 0 | SKIP 0 | PASS 0 ]
+    [ FAIL 0 | WARN 0 | SKIP 0 | PASS 1 ]
+    [ FAIL 0 | WARN 0 | SKIP 0 | PASS 2 ]
+    [ FAIL 0 | WARN 0 | SKIP 0 | PASS 3 ]
+    [ FAIL 0 | WARN 0 | SKIP 0 | PASS 4 ]
+    [ FAIL 0 | WARN 0 | SKIP 0 | PASS 5 ]
+    [ FAIL 0 | WARN 0 | SKIP 0 | PASS 6 ]
+    [ FAIL 0 | WARN 0 | SKIP 0 | PASS 7 ]
+
