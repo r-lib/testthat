@@ -25,16 +25,7 @@ test_that("teardowns runs in order", {
   expect_length(file_teardown_env$queue, 0)
 })
 
-
-# Cross-test check --------------------------------------------------------
-
-test_that("file is created", {
-  # test-testthat-2 confirms that this is deleted.
-  write_lines("test", "teardown.txt")
-  expect_true(file.exists("teardown.txt"))
-})
-
-local_edition(2)
-teardown({
-  file.remove("teardown.txt")
+test_that("teardown run after tests complete", {
+  test_file(test_path("test-teardown/test-teardown.R"), "silent")
+  expect_false(file.exists(test_path("test-teardown/teardown.txt")))
 })
