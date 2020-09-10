@@ -49,7 +49,8 @@
 <meta property="og:title" content="Snapshot testing for whole files — expect_snapshot_file" />
 <meta property="og:description" content="Whole file snapshot testing is designed for testing objects that don't have
 a convenient textual representation, with initial support for images
-(.png, .jpg, .svg) and data frames (.csv).
+(.png, .jpg, .svg), data frames (.csv), and text files
+(.R, .txt, .json, ...).
 The first time expect_snapshot_file() is run, it will create
 _snaps/{test}/{name}.{ext} containing reference output. Future runs will
 be compared to this reference: if different, the test will fail and the new
@@ -203,7 +204,8 @@ skipping tests where it's known that images can't be reproduced exactly." />
     <div class="ref-description">
     <p>Whole file snapshot testing is designed for testing objects that don't have
 a convenient textual representation, with initial support for images
-(<code>.png</code>, <code>.jpg</code>, <code>.svg</code>) and data frames (<code>.csv</code>).</p>
+(<code>.png</code>, <code>.jpg</code>, <code>.svg</code>), data frames (<code>.csv</code>), and text files
+(<code>.R</code>, <code>.txt</code>, <code>.json</code>, ...).</p>
 <p>The first time <code>expect_snapshot_file()</code> is run, it will create
 <code>_snaps/{test}/{name}.{ext}</code> containing reference output. Future runs will
 be compared to this reference: if different, the test will fail and the new
@@ -256,7 +258,7 @@ expectations will still fail if <code>x</code> errors.</p></td>
 }
 <span class='kw'>path</span> <span class='op'>&lt;-</span> <span class='fu'>save_png</span>(<span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span>(<span class='fl'>1</span><span class='op'>:</span><span class='fl'>5</span>))
 <span class='kw'>path</span>
-</div><div class='output co'>#&gt; [1] "/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmppUBQd4/file97e1842b774.png"</div><div class='input'>
+</div><div class='output co'>#&gt; [1] "/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpJzB1JW/file14cb72987566.png"</div><div class='input'>
 <span class='co'>if</span> (<span class='fl'>FALSE</span>) {
 <span class='fu'>expect_snapshot_file</span>(<span class='fu'>save_png</span>(<span class='fu'><a href='https://rdrr.io/r/graphics/hist.html'>hist</a></span>(<span class='kw'>mtcars</span>)), <span class='st'>"plot.png"</span>)
 }
