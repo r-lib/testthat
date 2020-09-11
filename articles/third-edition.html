@@ -153,7 +153,7 @@
 <p>(We don’t anticipate creating new editions very often, and they’ll always be matched with major version, i.e. if there’s another edition, it’ll be the fourth edition and will come with testthat 4.0.0.)</p>
 <p>This vignette shows you how to activate the 3rd edition, introduces the main features, and discusses common challenges when upgrading a package. If you have a problem that this vignette doesn’t cover, please let me know, as it’s likely that the problem also affects others.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit">
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="http://testthat.r-lib.org">testthat</a></span>)
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="https://testthat.r-lib.org">testthat</a></span>)
 <span class="fu"><a href="../reference/local_edition.html">local_edition</a></span>(<span class="fl">3</span>)
 </pre></div>
 <div id="activating" class="section level2">
@@ -176,7 +176,7 @@
   <span class="fu"><a href="../reference/local_edition.html">local_edition</a></span>(<span class="fl">2</span>)
   <span class="fu"><a href="../reference/logical-expectations.html">expect_true</a></span>(<span class="fl">TRUE</span>)
 })
-<span class="co">#&gt; Test passed 🎉</span>
+<span class="co">#&gt; Test passed 😀</span>
 </pre></div>
 </div>
 <div id="changes" class="section level2">
@@ -186,7 +186,7 @@
 <ul>
 <li><p>A number of outdated functions are now <strong>deprecated</strong>, so you’ll be warned about them every time you run your tests (but they won’t cause <code>R CMD check</code> to fail).</p></li>
 <li><p>testthat no longer silently swallows <strong>messages</strong>; you now need to deliberately handle them.</p></li>
-<li><p><code><a href="../reference/equality-expectations.html">expect_equal()</a></code> and <code><a href="../reference/equality-expectations.html">expect_identical()</a></code> now use the <a href="http://waldo.r-lib.org/"><strong>waldo</strong></a> package instead of <code><a href="https://rdrr.io/r/base/identical.html">identical()</a></code> and <code><a href="https://rdrr.io/r/base/all.equal.html">all.equal()</a></code>. This makes them more consistent and provides an enhanced display of differences when a test fails.</p></li>
+<li><p><code><a href="../reference/equality-expectations.html">expect_equal()</a></code> and <code><a href="../reference/equality-expectations.html">expect_identical()</a></code> now use the <a href="https://waldo.r-lib.org/"><strong>waldo</strong></a> package instead of <code><a href="https://rdrr.io/r/base/identical.html">identical()</a></code> and <code><a href="https://rdrr.io/r/base/all.equal.html">all.equal()</a></code>. This makes them more consistent and provides an enhanced display of differences when a test fails.</p></li>
 </ul>
 <div id="deprecations" class="section level3">
 <h3 class="hasAnchor">

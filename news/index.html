@@ -474,7 +474,7 @@
 <h2 class="hasAnchor">
 <a href="#breaking-api-changes" class="anchor"></a>Breaking API changes</h2>
 <ul>
-<li><p>“Can’t mock functions in base packages”: You can no longer use <code><a href="../reference/with_mock.html">with_mock()</a></code> to mock functions in base packages, because this no longer works in R-devel due to changes with the byte code compiler. I recommend using <a href="https://github.com/n-s-f/mockery">mockery</a> or <a href="https://github.com/krlmlr/mockr">mockr</a> instead.</p></li>
+<li><p>“Can’t mock functions in base packages”: You can no longer use <code><a href="../reference/with_mock.html">with_mock()</a></code> to mock functions in base packages, because this no longer works in R-devel due to changes with the byte code compiler. I recommend using <a href="https://github.com/r-lib/mockery">mockery</a> or <a href="https://github.com/krlmlr/mockr">mockr</a> instead.</p></li>
 <li>
 <p>The order of arguments to <code><a href="../reference/expect_equivalent.html">expect_equivalent()</a></code> and <code><a href="../reference/expect_error.html">expect_error()</a></code> has changed slightly as both now pass <code>...</code> on another function. This reveals itself with a number of different errors, like:</p>
 <ul>
@@ -756,7 +756,7 @@
 <li><p>Comparing integers to non-numbers doesn’t raise errors anymore, and falls back to string comparison if objects have different lengths. Complex numbers are compared using the same routine (<a href='https://github.com/r-lib/testthat/issues/309'>#309</a>, <a href='https://github.com/krlmlr'>@krlmlr</a>).</p></li>
 <li><p><code><a href="../reference/compare.html">compare.numeric()</a></code> and <code><a href="../reference/compare.html">compare.character()</a></code> received another overhaul. This should improve behaviour of edge cases, and provides a strong foundation for further work. Added <code><a href="../reference/compare.html">compare.POSIXt()</a></code> for better reporting of datetime differences.</p></li>
 <li><p><code><a href="../reference/equality-expectations.html">expect_identical()</a></code> and <code><a href="../reference/oldskool.html">is_identical_to()</a></code> now use <code><a href="../reference/compare.html">compare()</a></code> for more detailed output of differences (<a href='https://github.com/r-lib/testthat/issues/319'>#319</a>, <a href='https://github.com/krlmlr'>@krlmlr</a>).</p></li>
-<li><p>Added <a href="https://github.com/philsquared/Catch">Catch</a> v1.2.1 for unit testing of C++ code. See <code>?use_catch()</code> for more details. (<a href='https://github.com/kevinushey'>@kevinushey</a>)</p></li>
+<li><p>Added <a href="https://github.com/catchorg/Catch2">Catch</a> v1.2.1 for unit testing of C++ code. See <code>?use_catch()</code> for more details. (<a href='https://github.com/kevinushey'>@kevinushey</a>)</p></li>
 </ul>
 </div>
 </div>
