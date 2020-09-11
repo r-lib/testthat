@@ -1,35 +1,19 @@
 ## revdepcheck results
 
-We checked 2499 reverse dependencies (2484 from CRAN + 15 from BioConductor), comparing R CMD check results across CRAN and dev versions of this package.
+We checked 4350 reverse dependencies, comparing R CMD check results across CRAN and dev versions of this package.
 
- * We saw 21 new problems
- * We failed to check 56 packages
+ * We saw 25 new problems
+ * We failed to check 39 packages
 
 Issues with CRAN packages are summarised below.
 
 ### New problems
 (This reports the first line of each new failure)
 
-* bayesCT
+* coil
   checking tests ... ERROR
 
-* cde
-  checking examples ... ERROR
-
-* cleancall
-  checking tests ... ERROR
-
-* geoelectrics
-  checking whether package ‘geoelectrics’ can be installed ... WARNING
-  checking contents of ‘data’ directory ... WARNING
-
-* gMOIP
-  checking whether package ‘gMOIP’ can be installed ... WARNING
-
-* gWidgets2RGtk2
-  checking tests ... ERROR
-
-* HandTill2001
+* DiceKriging
   checking tests ... ERROR
 
 * hyperSpec
@@ -38,37 +22,65 @@ Issues with CRAN packages are summarised below.
 * IncDTW
   checking tests ... ERROR
 
-* jstor
+* ldaPrototype
   checking tests ... ERROR
 
 * markmyassignment
   checking tests ... ERROR
 
-* Morpho
-  checking whether package ‘Morpho’ can be installed ... WARNING
-
-* msm
+* mcmcr
   checking tests ... ERROR
 
-* ndtv
-  checking running R code from vignettes ... ERROR
+* mlr3pipelines
+  checking tests ... ERROR
+
+* mlrCPO
+  checking tests ... ERROR
+
+* MoMPCA
+  checking tests ... ERROR
+
+* pak
+  checking tests ... ERROR
+
+* patrick
+  checking tests ... ERROR
 
 * ps
   checking tests ... ERROR
 
-* RcmdrPlugin.lfstat
+* pyMTurkR
   checking tests ... ERROR
 
-* rotor
+* renv
+  checking package dependencies ... ERROR
+
+* revdbayes
+  checking tests ... ERROR
+
+* rlang
   checking tests ... ERROR
 
 * rvgtest
   checking tests ... ERROR
 
-* santoku
+* shinyEventLogger
   checking tests ... ERROR
 
-* sars
+* storr
+  checking examples ... ERROR
+  checking tests ... ERROR
+
+* thor
+  checking tests ... ERROR
+
+* threshr
+  checking tests ... ERROR
+
+* treeclim
+  checking tests ... ERROR
+
+* unitizer
   checking tests ... ERROR
 
 * vdiffr
@@ -76,59 +88,42 @@ Issues with CRAN packages are summarised below.
 
 ### Failed to check
 
-* backShift          (NA)
-* bdclean            (NA)
-* bibliometrix       (NA)
-* biolink            (NA)
-* bioOED             (NA)
-* bsts               (NA)
-* butcher            (NA)
-* carbonate          (NA)
-* CausalImpact       (NA)
-* cbar               (NA)
-* chicane            (NA)
-* choroplethr        (NA)
-* decisionSupport    (NA)
-* dimRed             (NA)
-* dispRity           (NA)
-* dmdScheme          (NA)
-* doRNG              (NA)
-* elementR           (NA)
-* EML                (NA)
-* finbif             (NA)
-* GALLO              (NA)
-* geojson            (NA)
-* geonapi            (NA)
-* ghibli             (NA)
-* Greg               (NA)
-* hadron             (NA)
-* hNMF               (NA)
-* HyRiM              (NA)
-* ICAMS              (NA)
-* jqr                (NA)
-* Luminescence       (NA)
-* metagam            (NA)
-* MGMS2              (NA)
-* mlrCPO             (NA)
-* MoMPCA             (NA)
-* o2geosocial        (NA)
-* ows4R              (NA)
-* phylobase          (NA)
-* PortfolioAnalytics (NA)
-* provTraceR         (NA)
-* rags2ridges        (NA)
-* redland            (NA)
-* ReIns              (NA)
-* rmRNAseq           (NA)
-* rstanarm           (NA)
-* salesforcer        (NA)
-* seqgendiff         (NA)
-* smartdata          (NA)
-* SMITIDvisu         (NA)
-* snotelr            (NA)
-* ssh                (NA)
-* tmap               (NA)
-* treespace          (NA)
-* utiml              (NA)
-* wilson             (NA)
-* wrswoR             (NA)
+* ActivePathways        (NA)
+* av                    (NA)
+* batchtools            (NA)
+* Boom                  (NA)
+* butcher               (NA)
+* CB2                   (NA)
+* CompareCausalNetworks (NA)
+* dataone               (NA)
+* datapack              (NA)
+* decisionSupport       (NA)
+* doRNG                 (NA)
+* EML                   (NA)
+* fingertipscharts      (NA)
+* ghibli                (NA)
+* gWidgets2tcltk        (NA)
+* hNMF                  (NA)
+* jqr                   (NA)
+* jstor                 (NA)
+* kmcudaR               (NA)
+* loon                  (NA)
+* metagam               (NA)
+* osmplotr              (NA)
+* penaltyLearning       (NA)
+* phylopath             (NA)
+* PortfolioAnalytics    (NA)
+* rdflib                (NA)
+* redland               (NA)
+* ReIns                 (NA)
+* rrd                   (NA)
+* semantic.dashboard    (NA)
+* sen2r                 (NA)
+* seqgendiff            (NA)
+* Seurat                (NA)
+* smartdata             (NA)
+* SMITIDvisu            (NA)
+* spectralAnalysis      (NA)
+* ssh                   (NA)
+* stablespec            (NA)
+* wrswoR                (NA)

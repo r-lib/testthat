@@ -1,242 +1,14 @@
-# bayesCT
+# coil
 
 <details>
 
-* Version: 0.99.3
-* GitHub: https://github.com/thevaachandereng/bayesCT
-* Source code: https://github.com/cran/bayesCT
-* Date/Publication: 2020-07-01 09:30:02 UTC
-* Number of recursive dependencies: 109
-
-Run `cloud_details(, "bayesCT")` for more info
-
-</details>
-
-## Newly broken
-
-*   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Last 13 lines of output:
-        4. │   │ ├─testthat:::.capture(...)
-        5. │   │ │ └─base::withCallingHandlers(...)
-        6. │   │ └─rlang::eval_bare(quo_get_expr(.quo), quo_get_env(.quo))
-        7. │   └─testthat:::cnd_matcher(class %||% base_class, regexp, ...)
-        8. ├─bayesCT::pw_exp_impute(time = 0.1, hazard = 0.02, cutpoint = 10)
-        9. │ └─base::stop("cutpoint needs to be null if length of hazard is 1!")
-       10. └─base::.handleSimpleError(...)
-       11.   └─testthat:::h(simpleError(msg, call))
-      
-      ══ testthat results  ═══════════════════════════════════════════════════════════
-      ERROR (test_pw_exp.R:25:3): The piecewise exponential impute are
-      
-      [ FAIL 1 | WARN 0 | SKIP 0 | PASS 72 ]
-      Error: Test failures
-      Execution halted
-    ```
-
-# cde
-
-<details>
-
-* Version: 0.4.1
-* GitHub: https://github.com/ropensci/cde
-* Source code: https://github.com/cran/cde
-* Date/Publication: 2019-09-04 08:40:02 UTC
-* Number of recursive dependencies: 39
-
-Run `cloud_details(, "cde")` for more info
-
-</details>
-
-## Newly broken
-
-*   checking examples ... ERROR
-    ```
-    Running examples in ‘cde-Ex.R’ failed
-    The error most likely occurred in:
-    
-    > ### Name: get_rnag
-    > ### Title: Retrieve Reasons for Not Achieving Good Status
-    > ### Aliases: get_rnag
-    > 
-    > ### ** Examples
-    > 
-    > # get all RNAG issues identified for waterbody GB112071065700
-    > get_rnag("GB112071065700", "WBID")
-    trying URL 'http://environment.data.gov.uk/catchment-planning/data/reason-for-failure.csv?waterBody=GB112071065700&_view=csv'
-    Error in names(cde_data) <- gsub(".", "_", names(cde_data), fixed = TRUE) : 
-      attempt to set an attribute on NULL
-    Calls: get_rnag -> download_cde
-    Execution halted
-    ```
-
-## In both
-
-*   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Last 13 lines of output:
-      ==================================================
-      downloaded 113 KB
-      
-      trying URL 'http://environment.data.gov.uk/catchment-planning/RiverBasinDistrict/6/classification?item=all&status=all&format=csv'
-      Content type 'application/octet-stream' length 1856286 bytes (1.8 MB)
-      ==================================================
-      downloaded 1.8 MB
-      
-      ══ testthat results  ═══════════════════════════════════════════════════════════
-      ERROR (test-get_rnag.r:59:3): specifying type for WB download returns a message
-      ERROR (test-plot_&_print.r:6:3): plotting WBID data results in error
-      
-      [ FAIL 2 | WARN 0 | SKIP 0 | PASS 64 ]
-      Error: Test failures
-      Execution halted
-    ```
-
-# cleancall
-
-<details>
-
-* Version: 0.1.1
-* GitHub: https://github.com/r-lib/cleancall
-* Source code: https://github.com/cran/cleancall
-* Date/Publication: 2020-01-12 00:30:02 UTC
-* Number of recursive dependencies: 35
-
-Run `cloud_details(, "cleancall")` for more info
-
-</details>
-
-## Newly broken
-
-*   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Last 13 lines of output:
-       25.                       └─testthat:::test_code(desc, code, env = parent.frame(), reporter = reporter)
-       26.                         └─base::tryCatch(...)
-       27.                           └─base:::tryCatchList(expr, classes, parentenv, handlers)
-       28.                             ├─base:::tryCatchOne(...)
-       29.                             │ └─base:::doTryCatch(return(expr), name, parentenv, handler)
-       30.                             └─base:::tryCatchList(expr, names[-nh], parentenv, handlers[-nh])
-       31.                               └─base:::tryCatchOne(expr, names, parentenv, handlers[[1L]])
-      
-      ══ testthat results  ═══════════════════════════════════════════════════════════
-      ERROR (test-cleancall.R:19:3): handlers can jump
-      ERROR (test-cleancall.R:17:1): (code run outside of `test_that()`)
-      
-      [ FAIL 2 | WARN 0 | SKIP 0 | PASS 4 ]
-      Error: Test failures
-      Execution halted
-    ```
-
-# geoelectrics
-
-<details>
-
-* Version: 0.2.0
-* GitHub: https://github.com/kleebaum/geoelectrics
-* Source code: https://github.com/cran/geoelectrics
-* Date/Publication: 2018-08-28 14:24:26 UTC
-* Number of recursive dependencies: 65
-
-Run `cloud_details(, "geoelectrics")` for more info
-
-</details>
-
-## Newly broken
-
-*   checking whether package ‘geoelectrics’ can be installed ... WARNING
-    ```
-    Found the following significant warnings:
-      Warning: 'rgl.init' failed, running with 'rgl.useNULL = TRUE'.
-    See ‘/tmp/workdir/geoelectrics/new/geoelectrics.Rcheck/00install.out’ for details.
-    ```
-
-*   checking contents of ‘data’ directory ... WARNING
-    ```
-    Output for data("sinkhole", package = "geoelectrics"):
-      Warning messages:
-      1: In rgl.init(initValue, onlyNULL) : RGL: unable to open X11 display
-      2: 'rgl.init' failed, running with 'rgl.useNULL = TRUE'. 
-    ```
-
-# gMOIP
-
-<details>
-
-* Version: 1.4.3
-* GitHub: https://github.com/relund/gMOIP
-* Source code: https://github.com/cran/gMOIP
-* Date/Publication: 2020-02-20 15:10:02 UTC
-* Number of recursive dependencies: 99
-
-Run `cloud_details(, "gMOIP")` for more info
-
-</details>
-
-## Newly broken
-
-*   checking whether package ‘gMOIP’ can be installed ... WARNING
-    ```
-    Found the following significant warnings:
-      Warning: 'rgl.init' failed, running with 'rgl.useNULL = TRUE'.
-    See ‘/tmp/workdir/gMOIP/new/gMOIP.Rcheck/00install.out’ for details.
-    ```
-
-# gWidgets2RGtk2
-
-<details>
-
-* Version: 1.0-7
-* GitHub: https://github.com/jverzani/gWidgets2RGtk2
-* Source code: https://github.com/cran/gWidgets2RGtk2
-* Date/Publication: 2018-01-04 14:48:14 UTC
-* Number of recursive dependencies: 28
-
-Run `cloud_details(, "gWidgets2RGtk2")` for more info
-
-</details>
-
-## Newly broken
-
-*   checking tests ... ERROR
-    ```
-      Running ‘run-tests.R’
-    Running the tests in ‘tests/run-tests.R’ failed.
-    Last 13 lines of output:
-      > f <- Filter(function(x) !grepl("README", x), f)
-      > f <- Filter(function(x) !grepl("html", x), f)
-      > 
-      > sapply(f, function(i) {
-      +   message("testing ", i)
-      +   source(i)
-      + })
-      testing /opt/R/3.6.3/lib/R/library/gWidgets2/tests/button.R
-      Loading required package: gWidgets2RGtk2
-      Loading required package: memoise
-      Loading required package: RGtk2
-      R session is headless; GTK+ not initialized.
-      Error in guiToolkit() : Can't load RGtk2
-      Calls: sapply ... withVisible -> eval -> eval -> gwindow -> guiToolkit
-      Execution halted
-    ```
-
-# HandTill2001
-
-<details>
-
-* Version: 1.0.0
+* Version: 1.2.1
 * GitHub: NA
-* Source code: https://github.com/cran/HandTill2001
-* Date/Publication: 2019-12-19 17:30:05 UTC
-* Number of recursive dependencies: 84
+* Source code: https://github.com/cran/coil
+* Date/Publication: 2020-02-03 19:30:09 UTC
+* Number of recursive dependencies: 53
 
-Run `cloud_details(, "HandTill2001")` for more info
+Run `cloud_details(, "coil")` for more info
 
 </details>
 
@@ -244,34 +16,128 @@ Run `cloud_details(, "HandTill2001")` for more info
 
 *   checking tests ... ERROR
     ```
-      Running ‘runit.R’
       Running ‘testthat.R’
     Running the tests in ‘tests/testthat.R’ failed.
     Last 13 lines of output:
-        4. │   │ ├─testthat:::.capture(...)
-        5. │   │ │ └─base::withCallingHandlers(...)
-        6. │   │ └─rlang::eval_bare(quo_get_expr(.quo), quo_get_env(.quo))
-        7. │   └─testthat:::cnd_matcher(class %||% base_class, regexp, ...)
-        8. ├─HandTill2001:::throw(string)
-        9. │ └─base::stop(condition)
-       10. └─(function (cnd) ...
+      
+          frame
+      
+      > 
+      > test_check("coil")
+      ── FAILURE (test_subsetPHMM.r:29:2): PHMMs can be subset as expected ───────────
+      small_good$stop_codons not equal to FALSE.
+      1 element mismatch
       
       ══ testthat results  ═══════════════════════════════════════════════════════════
-      Warning (test-classes.R:376:3): extraneous response levels
-      ERROR (test-throw.R:5:3): throw the HandTill2001 exception
+      FAILURE (test_subsetPHMM.r:29:2): PHMMs can be subset as expected
       
-      [ FAIL 1 | WARN 1 | SKIP 0 | PASS 15 ]
+      [ FAIL 1 | WARN 0 | SKIP 0 | PASS 117 ]
       Error: Test failures
       Execution halted
     ```
 
-## In both
+# DiceKriging
 
-*   checking Rd cross-references ... NOTE
+<details>
+
+* Version: 1.5.6
+* GitHub: NA
+* Source code: https://github.com/cran/DiceKriging
+* Date/Publication: 2018-10-08 10:50:13 UTC
+* Number of recursive dependencies: 30
+
+Run `cloud_details(, "DiceKriging")` for more info
+
+</details>
+
+## Newly broken
+
+*   checking tests ... ERROR
     ```
-    Packages unavailable to check Rd xrefs: ‘ROCR’, ‘caTools’
+      Running ‘testthat.R’
+    Running the tests in ‘tests/testthat.R’ failed.
+    Last 13 lines of output:
+          █
+       1. ├─base::source("test-km.R") test-scaling.R:3:0
+       2. │ ├─base::withVisible(eval(ei, envir))
+       3. │ └─base::eval(ei, envir)
+       4. │   └─base::eval(ei, envir)
+       5. └─global::test_that.km(...)
+       6.   └─testthat::test_that(...)
+      
+      ══ testthat results  ═══════════════════════════════════════════════════════════
+      ERROR (test-km.R:43:1): (code run outside of `test_that()`)
+      ERROR (test-scaling.R:3:1): (code run outside of `test_that()`)
+      
+      [ FAIL 2 | WARN 0 | SKIP 0 | PASS 44 ]
+      Error: Test failures
+      Execution halted
     ```
 
+# gWidgets2tcltk
+
+<details>
+
+* Version: 1.0-6
+* GitHub: https://github.com/jverzani/gWidgets2tcltk
+* Source code: https://github.com/cran/gWidgets2tcltk
+* Date/Publication: 2018-09-25 13:20:02 UTC
+* Number of recursive dependencies: 26
+
+Run `cloud_details(, "gWidgets2tcltk")` for more info
+
+</details>
+
+## Newly broken
+
+*   checking whether package ‘gWidgets2tcltk’ can be installed ... ERROR
+    ```
+    Installation failed.
+    See ‘/tmp/workdir/gWidgets2tcltk/new/gWidgets2tcltk.Rcheck/00install.out’ for details.
+    ```
+
+## Installation
+
+### Devel
+
+```
+* installing *source* package ‘gWidgets2tcltk’ ...
+** package ‘gWidgets2tcltk’ successfully unpacked and MD5 sums checked
+** using staged installation
+** R
+** demo
+** inst
+** byte-compile and prepare package for lazy loading
+Warning message:
+In fun(libname, pkgname) : couldn't connect to display ":109"
+Error in structure(.External(.C_dotTclObjv, objv), class = "tclObj") : 
+  [tcl] invalid command name "font".
+
+Error: unable to load R code in package ‘gWidgets2tcltk’
+Execution halted
+ERROR: lazy loading failed for package ‘gWidgets2tcltk’
+* removing ‘/tmp/workdir/gWidgets2tcltk/new/gWidgets2tcltk.Rcheck/gWidgets2tcltk’
+
+```
+### CRAN
+
+```
+* installing *source* package ‘gWidgets2tcltk’ ...
+** package ‘gWidgets2tcltk’ successfully unpacked and MD5 sums checked
+** using staged installation
+** R
+** demo
+** inst
+** byte-compile and prepare package for lazy loading
+** help
+*** installing help indices
+** building package indices
+** testing if installed package can be loaded from temporary location
+** testing if installed package can be loaded from final location
+** testing if installed package keeps a record of temporary installation path
+* DONE (gWidgets2tcltk)
+
+```
 # hyperSpec
 
 <details>
@@ -373,17 +239,17 @@ Run `cloud_details(, "IncDTW")` for more info
     GNU make is a SystemRequirements.
     ```
 
-# jstor
+# ldaPrototype
 
 <details>
 
-* Version: 0.3.9
-* GitHub: https://github.com/ropensci/jstor
-* Source code: https://github.com/cran/jstor
-* Date/Publication: 2020-06-04 04:50:03 UTC
-* Number of recursive dependencies: 69
+* Version: 0.2.0
+* GitHub: https://github.com/JonasRieger/ldaPrototype
+* Source code: https://github.com/cran/ldaPrototype
+* Date/Publication: 2020-07-16 11:10:02 UTC
+* Number of recursive dependencies: 110
 
-Run `cloud_details(, "jstor")` for more info
+Run `cloud_details(, "ldaPrototype")` for more info
 
 </details>
 
@@ -394,19 +260,19 @@ Run `cloud_details(, "jstor")` for more info
       Running ‘testthat.R’
     Running the tests in ‘tests/testthat.R’ failed.
     Last 13 lines of output:
-      > test_check("jstor")
-      ── Skip (test-import-spec.R:62:3): import-spec print method works ──────────────
-      Reason: This test is stupid, should be improved. It depends on the console width
-             which is not a good idea.
       
-      ── Skip (test-journal-overview.R:19:3): out of memory journal list is available 
-      Reason: Downloading was disabled
+      The following object is masked from 'package:data.table':
       
-      ── Skip (test-re-import.R:299:1): files can be written to dir ──────────────────
-      Reason: empty test
+          set
       
-      ── Skip (test-re-import.R:305:1): files are removed ────────────────────────────
-      Reason: empty test
+      The following object is masked from 'package:stats':
+      
+          cutree
+      
+      > 
+      > test_check("ldaPrototype")
+      ── Warning (test_LDABatch.R:146:3): is.LDABatch ────────────────────────────────
+      Parameter(s) num.iterations are duplicated. Take last one(s).
       
       Killed
     ```
@@ -457,50 +323,17 @@ Run `cloud_details(, "markmyassignment")` for more info
       All declared Imports should be used.
     ```
 
-# Morpho
+# mcmcr
 
 <details>
 
-* Version: 2.8
-* GitHub: https://github.com/zarquon42b/Morpho
-* Source code: https://github.com/cran/Morpho
-* Date/Publication: 2020-03-09 13:30:10 UTC
-* Number of recursive dependencies: 108
+* Version: 0.3.0
+* GitHub: https://github.com/poissonconsulting/mcmcr
+* Source code: https://github.com/cran/mcmcr
+* Date/Publication: 2020-07-13 18:10:02 UTC
+* Number of recursive dependencies: 51
 
-Run `cloud_details(, "Morpho")` for more info
-
-</details>
-
-## Newly broken
-
-*   checking whether package ‘Morpho’ can be installed ... WARNING
-    ```
-    Found the following significant warnings:
-      Warning: 'rgl.init' failed, running with 'rgl.useNULL = TRUE'.
-    See ‘/tmp/workdir/Morpho/new/Morpho.Rcheck/00install.out’ for details.
-    ```
-
-## In both
-
-*   checking installed package size ... NOTE
-    ```
-      installed size is 16.3Mb
-      sub-directories of 1Mb or more:
-        data   2.0Mb
-        libs  12.7Mb
-    ```
-
-# msm
-
-<details>
-
-* Version: 1.6.8
-* GitHub: https://github.com/chjackson/msm
-* Source code: https://github.com/cran/msm
-* Date/Publication: 2019-12-16 15:30:02 UTC
-* Number of recursive dependencies: 54
-
-Run `cloud_details(, "msm")` for more info
+Run `cloud_details(, "mcmcr")` for more info
 
 </details>
 
@@ -508,59 +341,220 @@ Run `cloud_details(, "msm")` for more info
 
 *   checking tests ... ERROR
     ```
-      Running ‘test_base.R’
-    Running the tests in ‘tests/test_base.R’ failed.
+      Running ‘testthat.R’
+    Running the tests in ‘tests/testthat.R’ failed.
     Last 13 lines of output:
-      Warning (test_models.r:588:1): error handling: covinits
-      Warning (test_models.r:592:1): error handling: covinits
-      Warning (test_models.r:595:1): error handling: covinits
-      Warning (test_models.r:595:1): error handling: covinits
-      Warning (test_models.r:624:5): error handling: check states
-      Warning (test_models.r:643:5): error handling: check times
-      Warning (test_models.r:643:5): error handling: check times
-      FAILURE (test_models.r:643:5): error handling: check times
-      Warning (test_models.r:667:5): error handling: check model
-      Warning (test_models_misc.r:60:5): misclassification model with est.initprobs
-      Warning (test_models_misc.r:106:5): data inconsistent with initprobs/ematrix
+      Attributes: < Component "row.names": Modes: numeric, character >
+      Attributes: < Component "row.names": target is numeric, current is character >
       
-      [ FAIL 1 | WARN 13 | SKIP 2 | PASS 473 ]
+      ── FAILURE (test-ess.R:23:3): ess.mcmcr as df ──────────────────────────────────
+      ess(mcmcr_example, as_df = TRUE, by = "parameter") not identical to structure(...).
+      Attributes: < Component "row.names": Modes: numeric, character >
+      Attributes: < Component "row.names": target is numeric, current is character >
+      
+      ══ testthat results  ═══════════════════════════════════════════════════════════
+      FAILURE (test-converged.R:11:3): converged.mcmcr
+      FAILURE (test-ess.R:23:3): ess.mcmcr as df
+      
+      [ FAIL 2 | WARN 0 | SKIP 0 | PASS 411 ]
       Error: Test failures
       Execution halted
     ```
 
-# ndtv
+# mlr3pipelines
 
 <details>
 
-* Version: 0.13.0
-* GitHub: https://github.com/statnet/ndtv
-* Source code: https://github.com/cran/ndtv
-* Date/Publication: 2019-05-22 07:20:03 UTC
-* Number of recursive dependencies: 71
+* Version: 0.2.1
+* GitHub: https://github.com/mlr-org/mlr3pipelines
+* Source code: https://github.com/cran/mlr3pipelines
+* Date/Publication: 2020-08-18 07:40:02 UTC
+* Number of recursive dependencies: 153
 
-Run `cloud_details(, "ndtv")` for more info
+Run `cloud_details(, "mlr3pipelines")` for more info
 
 </details>
 
 ## Newly broken
 
-*   checking running R code from vignettes ... ERROR
+*   checking tests ... ERROR
     ```
-    Errors in running code in vignettes:
-    when running code in ‘ndtv.Rnw’
-      ...
-    Optimizing with step length 0.228504484514704.
-    The log-likelihood improved by 4.964.
-    Iteration 4 of at most 20:
-    Optimizing with step length 0.237380477563894.
-    The log-likelihood did not improve.
-    Iteration 5 of at most 20:
-    
-      When sourcing ‘ndtv.R’:
-    Error: Unconstrained MCMC sampling did not mix at all. Optimization cannot continue.
-    Execution halted
-    
-      ‘ndtv.Rnw’... failed
+      Running ‘testthat.R’
+    Running the tests in ‘tests/testthat.R’ failed.
+    Last 13 lines of output:
+      ● empty test (2)
+      
+      ══ testthat results  ═══════════════════════════════════════════════════════════
+      FAILURE (test_Graph.R:221:3): assert_graph test
+      FAILURE (test_Graph.R:233:3): assert_graph test
+      Warning (test_graphlearner.R:281:3): graphlearner predict type inference
+      Warning (test_graphlearner.R:283:3): graphlearner predict type inference
+      Warning (test_graphlearner.R:301:3): graphlearner predict type inference
+      Warning (test_graphlearner.R:303:3): graphlearner predict type inference
+      Warning (test_graphlearner.R:334:3): graphlearner predict type inference
+      Warning (test_multichannels.R:192:3): vararg passes args through as it should
+      
+      [ FAIL 2 | WARN 6 | SKIP 67 | PASS 9888 ]
+      Error: Test failures
+      Execution halted
+    ```
+
+# mlrCPO
+
+<details>
+
+* Version: 0.3.6
+* GitHub: https://github.com/mlr-org/mlrCPO
+* Source code: https://github.com/cran/mlrCPO
+* Date/Publication: 2020-04-06 09:00:03 UTC
+* Number of recursive dependencies: 132
+
+Run `cloud_details(, "mlrCPO")` for more info
+
+</details>
+
+## Newly broken
+
+*   checking tests ... ERROR
+    ```
+      Running ‘run-core.R’
+      Running ‘run-cpo.R’
+    Running the tests in ‘tests/run-cpo.R’ failed.
+    Last 13 lines of output:
+      > library(testthat)
+      > ISTESTING = TRUE  # nolint
+      > test_check("mlrCPO", filter = "^_cpo_")
+      Loading required package: mlrCPO
+      Loading required package: ParamHelpers
+      Loading required package: mlr
+      'mlr' is in maintenance mode since July 2019. Future development
+      efforts will go into its successor 'mlr3' (<https://mlr3.mlr-org.com>).
+      Error: No test files found
+      Backtrace:
+          █
+       1. └─testthat::test_check("mlrCPO", filter = "^_cpo_")
+       2.   └─testthat::test_dir(...)
+      Execution halted
+    ```
+
+# MoMPCA
+
+<details>
+
+* Version: 1.0.0
+* GitHub: NA
+* Source code: https://github.com/cran/MoMPCA
+* Date/Publication: 2020-07-01 09:40:07 UTC
+* Number of recursive dependencies: 82
+
+Run `cloud_details(, "MoMPCA")` for more info
+
+</details>
+
+## Newly broken
+
+*   checking tests ... ERROR
+    ```
+      Running ‘testthat.R’
+    Running the tests in ‘tests/testthat.R’ failed.
+    Last 13 lines of output:
+      > library(testthat)
+      > library(MoMPCA)
+      > 
+      > test_check("MoMPCA")
+      ── Skip (test-init_functions.R:14:3): Check init_Y w/ kmeans_lda ───────────────
+      Reason: On CRAN
+      
+      ── Skip (test-init_functions.R:20:3): Check initializeBeta w/ lda and given cont
+      Reason: On CRAN
+      
+      ── Skip (test-init_functions.R:35:3): Check initializeBeta w/ lda and NULL contr
+      Reason: On CRAN
+      
+      Killed
+    ```
+
+## In both
+
+*   checking data for non-ASCII characters ... NOTE
+    ```
+      Note: found 16 marked UTF-8 strings
+    ```
+
+# pak
+
+<details>
+
+* Version: 0.1.2
+* GitHub: https://github.com/r-lib/pak
+* Source code: https://github.com/cran/pak
+* Date/Publication: 2019-02-19 18:50:08 UTC
+* Number of recursive dependencies: 58
+
+Run `cloud_details(, "pak")` for more info
+
+</details>
+
+## Newly broken
+
+*   checking tests ... ERROR
+    ```
+      Running ‘test-pkgdepends.R’
+    Running the tests in ‘tests/test-pkgdepends.R’ failed.
+    Last 13 lines of output:
+      +       }, add = TRUE)
+      +       test_path <- "pkgdepends"
+      +       asNamespace("testthat")$test_package_dir(
+      +         package = package, test_path = test_path,
+      +         filter = NULL, reporter = "check")
+      +     }
+      +     test()
+      +   }
+      + }
+      > 
+      > do()
+      Error in asNamespace("testthat")$test_package_dir(package = package, test_path = test_path,  : 
+        attempt to apply non-function
+      Calls: do -> test
+      Execution halted
+    ```
+
+# patrick
+
+<details>
+
+* Version: 0.0.1
+* GitHub: NA
+* Source code: https://github.com/cran/patrick
+* Date/Publication: 2018-08-13 14:10:03 UTC
+* Number of recursive dependencies: 34
+
+Run `cloud_details(, "patrick")` for more info
+
+</details>
+
+## Newly broken
+
+*   checking tests ... ERROR
+    ```
+      Running ‘testthat.R’
+    Running the tests in ‘tests/testthat.R’ failed.
+    Last 13 lines of output:
+      ── FAILURE (test-with_parameters.R:21:7): Running tests: fail ──────────────────
+      exp\$message does not match "`case` isn't true".
+      Actual value: "`case` is not TRUE\\n\\n`actual`:   FALSE\\n`expected`: TRUE "
+      
+      ── FAILURE (test-with_parameters.R:21:7): Running tests: null ──────────────────
+      exp\$message does not match "`case` isn't true".
+      Actual value: "`case` is not TRUE\\n\\n`actual` is NULL\\n`expected` is a logical vector \(TRUE\)"
+      
+      ══ testthat results  ═══════════════════════════════════════════════════════════
+      FAILURE (test-with_parameters.R:21:7): Running tests: fail
+      FAILURE (test-with_parameters.R:21:7): Running tests: null
+      
+      [ FAIL 2 | WARN 0 | SKIP 0 | PASS 4 ]
+      Error: Test failures
+      Execution halted
     ```
 
 # ps
@@ -588,7 +582,7 @@ Run `cloud_details(, "ps")` for more info
       ✔ |   6       | winver
       
       ══ Results ═════════════════════════════════════════════════════════════════════
-      Duration: 13.3 s
+      Duration: 11.5 s
       
       ── Skipped tests  ──────────────────────────────────────────────────────────────
       ● Needs working IPv6 connection (1)
@@ -601,17 +595,17 @@ Run `cloud_details(, "ps")` for more info
       Execution halted
     ```
 
-# RcmdrPlugin.lfstat
+# pyMTurkR
 
 <details>
 
-* Version: 0.8.3
+* Version: 1.1.4
 * GitHub: NA
-* Source code: https://github.com/cran/RcmdrPlugin.lfstat
-* Date/Publication: 2018-06-26 10:11:20 UTC
-* Number of recursive dependencies: 130
+* Source code: https://github.com/cran/pyMTurkR
+* Date/Publication: 2020-02-04 13:10:02 UTC
+* Number of recursive dependencies: 51
 
-Run `cloud_details(, "RcmdrPlugin.lfstat")` for more info
+Run `cloud_details(, "pyMTurkR")` for more info
 
 </details>
 
@@ -622,34 +616,116 @@ Run `cloud_details(, "RcmdrPlugin.lfstat")` for more info
       Running ‘testthat.R’
     Running the tests in ‘tests/testthat.R’ failed.
     Last 13 lines of output:
-      The following objects are masked from 'package:base':
+      Reason: CheckAWSKeys() is not TRUE
       
-          as.Date, as.Date.numeric
+      Skip (testxlast2-ApproveAllAssignments.R:81:3): ApproveAllAssignments when Assignments are not found
+      Reason: CheckAWSKeys() is not TRUE
+      ────────────────────────────────────────────────────────────────────────────────
       
-      Loading required package: lmom
-      Loading required package: lattice
-      ── FAILURE (test-wmo-guidelines.r:152:3): 2.8 Extreme value ────────────────────
-      `expect_warning(...)` produced warnings.
+      ══ Results ═════════════════════════════════════════════════════════════════════
+      Duration: 2.2 s
       
-      ══ testthat results  ═══════════════════════════════════════════════════════════
-      FAILURE (test-wmo-guidelines.r:152:3): 2.8 Extreme value
+      ── Skipped tests  ──────────────────────────────────────────────────────────────
+      ● CheckAWSKeys() is not TRUE (58)
       
-      [ FAIL 1 | WARN 0 | SKIP 0 | PASS 55 ]
+      [ FAIL 2 | WARN 5 | SKIP 58 | PASS 38 ]
       Error: Test failures
       Execution halted
     ```
 
-# rotor
+# renv
 
 <details>
 
-* Version: 0.2.4
-* GitHub: https://github.com/s-fleck/rotor
-* Source code: https://github.com/cran/rotor
-* Date/Publication: 2020-01-07 19:10:02 UTC
-* Number of recursive dependencies: 47
+* Version: 0.12.0
+* GitHub: https://github.com/rstudio/renv
+* Source code: https://github.com/cran/renv
+* Date/Publication: 2020-08-28 21:40:02 UTC
+* Number of recursive dependencies: 84
 
-Run `cloud_details(, "rotor")` for more info
+Run `cloud_details(, "renv")` for more info
+
+</details>
+
+## Newly broken
+
+*   checking package dependencies ... ERROR
+    ```
+    Packages suggested but not available:
+      'covr', 'devtools', 'knitr', 'packrat', 'remotes', 'reticulate',
+      'rmarkdown', 'uuid', 'yaml'
+    
+    VignetteBuilder package required for checking but not installed: ‘knitr’
+    
+    The suggested packages are required for a complete check.
+    Checking can be attempted without them by setting the environment
+    variable _R_CHECK_FORCE_SUGGESTS_ to a false value.
+    
+    See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+    manual.
+    ```
+
+## Newly fixed
+
+*   checking tests ... ERROR
+    ```
+      Running ‘testthat.R’
+    Running the tests in ‘tests/testthat.R’ failed.
+    Last 13 lines of output:
+      ● bind_list warns on name collision ............................. [PASS / <0.1s]
+      ● versions are compared as expected ............................. [PASS / <0.1s]
+      ● inject inserts text at expected anchor point .................. [PASS / <0.1s]
+      ● aliased_path() correctly forms aliased path ................... [PASS / <0.1s]
+      ● memoize avoids evaluating expression multiple times ........... [PASS / <0.1s]
+      
+      ══ testthat results  ═══════════════════════════════════════════════════════════
+      [ OK: 358 | SKIPPED: 63 | WARNINGS: 0 | FAILED: 4 ]
+      1. Failure: package installation does not fail with non-writable cache (@test-cache.R#79) 
+      2. Failure: dependencies specified in R Markdown site generators are found (@test-dependencies.R#187) 
+      3. Failure: dependencies specified in R Markdown site generators are found (@test-dependencies.R#192) 
+      4. Failure: library permissions are validated before restore (@test-restore.R#9) 
+      
+      Error: testthat unit tests failed
+      Execution halted
+    ```
+
+*   checking running R code from vignettes ... ERROR
+    ```
+    ...
+    
+      When running vignette ‘python.Rmd’:
+    Error: No such vignette ‘python.Rmd’
+    Execution halted
+    when running code in ‘renv.Rmd’
+      ...
+    
+      When running vignette ‘renv.Rmd’:
+    Error: No such vignette ‘renv.Rmd’
+    Execution halted
+    
+      ‘ci.Rmd’ using ‘UTF-8’... failed
+      ‘collaborating.Rmd’ using ‘UTF-8’... failed
+      ‘docker.Rmd’ using ‘UTF-8’... failed
+      ‘faq.Rmd’ using ‘UTF-8’... failed
+      ‘local-sources.Rmd’ using ‘UTF-8’... failed
+      ‘lockfile.Rmd’ using ‘UTF-8’... failed
+      ‘mran.Rmd’ using ‘UTF-8’... failed
+      ‘packages.Rmd’ using ‘UTF-8’... failed
+      ‘python.Rmd’ using ‘UTF-8’... failed
+      ‘renv.Rmd’ using ‘UTF-8’... failed
+    ```
+
+# revdbayes
+
+<details>
+
+* Version: 1.3.8
+* GitHub: https://github.com/paulnorthrop/revdbayes
+* Source code: https://github.com/cran/revdbayes
+* Date/Publication: 2020-08-31 07:30:02 UTC
+* Number of recursive dependencies: 71
+
+Run `cloud_details(, "revdbayes")` for more info
 
 </details>
 
@@ -659,18 +735,59 @@ Run `cloud_details(, "rotor")` for more info
     ```
       Running ‘testthat.R’
     Running the tests in ‘tests/testthat.R’ failed.
-    Complete output:
-      > library(testthat)
-      > library(rotor)
-      > 
-      > test_check("rotor")
-      ── FAILURE (test_rotate_date.R:320:3): dry_run does not modify the file systen ─
-      `{ ... }` produced messages.
+    Last 13 lines of output:
+      ── ERROR (test-gp.R:35:3): (code run outside of `test_that()`) ─────────────────
+      Error: `desc` must be a string
+      Backtrace:
+          █
+       1. └─revdbayes:::test_function(x, test_string) test-gp.R:35:2
+       2.   └─testthat::test_that(...) test-gp.R:21:2
       
       ══ testthat results  ═══════════════════════════════════════════════════════════
-      FAILURE (test_rotate_date.R:320:3): dry_run does not modify the file systen
+      ERROR (test-bingp.R:37:3): (code run outside of `test_that()`)
+      ERROR (test-gev.R:35:3): (code run outside of `test_that()`)
+      ERROR (test-gp.R:35:3): (code run outside of `test_that()`)
       
-      [ FAIL 1 | WARN 0 | SKIP 0 | PASS 478 ]
+      [ FAIL 3 | WARN 0 | SKIP 0 | PASS 190 ]
+      Error: Test failures
+      Execution halted
+    ```
+
+# rlang
+
+<details>
+
+* Version: 0.4.7
+* GitHub: https://github.com/r-lib/rlang
+* Source code: https://github.com/cran/rlang
+* Date/Publication: 2020-07-09 23:00:18 UTC
+* Number of recursive dependencies: 48
+
+Run `cloud_details(, "rlang")` for more info
+
+</details>
+
+## Newly broken
+
+*   checking tests ... ERROR
+    ```
+      Running ‘sink.R’
+      Running ‘testthat.R’
+    Running the tests in ‘tests/testthat.R’ failed.
+    Last 13 lines of output:
+      ● On CRAN (14)
+      ● Until the workaround is in place (1)
+      ● rlanglibtest cannot be loaded (1)
+      ● test needs crayon (1)
+      
+      ══ testthat results  ═══════════════════════════════════════════════════════════
+      Warning (test-eval-tidy.R:287:3): names are translated to native when creating data mask
+      Warning (test-nse-defuse.R:237:3): serialised unicode in `:=` LHS is unserialised
+      FAILURE (test-trace.R:24:3): tree printing only changes deliberately
+      FAILURE (test-trace.R:51:3): can print tree with collapsed branches
+      FAILURE (test-trace.R:63:3): can print tree with collapsed branches
+      
+      [ FAIL 3 | WARN 2 | SKIP 26 | PASS 2696 ]
       Error: Test failures
       Execution halted
     ```
@@ -696,19 +813,19 @@ Run `cloud_details(, "rvgtest")` for more info
       Running ‘dotestthat.R’
     Running the tests in ‘tests/dotestthat.R’ failed.
     Last 13 lines of output:
-      Error: Argument 'aqdist' is object of class 'unuran' of invalid distribution type.
       Backtrace:
        1. testthat::expect_error(...) test_Runuran.R:100:8
-       7. rvgtest::xerror(...)
+       6. rvgtest::xerror(...)
       
-      ── 3. ERROR (test_ierror.R:324:9): [ie-i31] calling plot.rvgt.ierror: x ────────
-      Error: argument "x" is missing, with no default
+      ── 3. FAILURE (test_ierror.R:324:9): [ie-i31] calling plot.rvgt.ierror: x ──────
+      `plot.rvgt.ierror()` threw an error with unexpected message.
+      Expected match: "'x' is missing."
+      Actual message: "argument \"x\" is missing, with no default"
       Backtrace:
        1. testthat::expect_error(plot.rvgt.ierror(), msg) test_ierror.R:324:8
-       7. rvgtest::plot.rvgt.ierror()
+       6. rvgtest::plot.rvgt.ierror()
       
       ══ DONE ════════════════════════════════════════════════════════════════════════
-      No one gets it right on their first try
       Error: Test failures
       Execution halted
     ```
@@ -718,6 +835,7 @@ Run `cloud_details(, "rvgtest")` for more info
 *   checking R code for possible problems ... NOTE
     ```
     ...
+    uerror : myaqdist: no visible global function definition for ‘uq’
     uerror: no visible global function definition for ‘quantile’
     unuran.distr.class: no visible global function definition for
       ‘unuran.details’
@@ -726,13 +844,12 @@ Run `cloud_details(, "rvgtest")` for more info
     xerror : myaqdist: no visible global function definition for ‘uq’
     xerror: no visible global function definition for ‘quantile’
     Undefined global functions or variables:
-      abline chisq.test is lines pchisq plot pnorm points polygon qnorm
-      quantile rainbow rbinom read.table rnorm runif text uniroot
-      unuran.details unuran.is.inversion uq ur
+      abline chisq.test is lines pchisq pnorm points polygon qnorm quantile
+      rainbow rbinom read.table rnorm runif text uniroot unuran.details
+      unuran.is.inversion uq ur
     Consider adding
       importFrom("grDevices", "rainbow")
-      importFrom("graphics", "abline", "lines", "plot", "points", "polygon",
-                 "text")
+      importFrom("graphics", "abline", "lines", "points", "polygon", "text")
       importFrom("methods", "is")
       importFrom("stats", "chisq.test", "pchisq", "pnorm", "qnorm",
                  "quantile", "rbinom", "rnorm", "runif", "uniroot")
@@ -741,21 +858,85 @@ Run `cloud_details(, "rvgtest")` for more info
     contains 'methods').
     ```
 
-# santoku
+# shinyEventLogger
 
 <details>
 
-* Version: 0.5.0
-* GitHub: https://github.com/hughjonesd/santoku
-* Source code: https://github.com/cran/santoku
-* Date/Publication: 2020-08-27 11:30:09 UTC
-* Number of recursive dependencies: 59
+* Version: 0.1.1
+* GitHub: https://github.com/kalimu/shinyEventLogger
+* Source code: https://github.com/cran/shinyEventLogger
+* Date/Publication: 2019-02-22 10:20:03 UTC
+* Number of recursive dependencies: 101
 
-Run `cloud_details(, "santoku")` for more info
+Run `cloud_details(, "shinyEventLogger")` for more info
 
 </details>
 
 ## Newly broken
+
+*   checking tests ... ERROR
+    ```
+      Running ‘spelling.R’
+      Running ‘testthat.R’
+    Running the tests in ‘tests/testthat.R’ failed.
+    Last 13 lines of output:
+      > library(testthat)
+      > library(shinyEventLogger)
+      > 
+      > test_check("shinyEventLogger")
+      ── FAILURE (???): logging wrapper functions ────────────────────────────────────
+      `log_test(expect_true(FALSE))` does not match "|#2|Error: FALSE isn't true.".
+      Actual value: "|#2|Error: FALSE is not TRUE`actual`:   FALSE`expected`: TRUE "
+      
+      ══ testthat results  ═══════════════════════════════════════════════════════════
+      FAILURE (???): logging wrapper functions
+      
+      [ FAIL 1 | WARN 0 | SKIP 0 | PASS 135 ]
+      Error: Test failures
+      Execution halted
+    ```
+
+# storr
+
+<details>
+
+* Version: 1.2.1
+* GitHub: https://github.com/richfitz/storr
+* Source code: https://github.com/cran/storr
+* Date/Publication: 2018-10-18 11:10:03 UTC
+* Number of recursive dependencies: 49
+
+Run `cloud_details(, "storr")` for more info
+
+</details>
+
+## Newly broken
+
+*   checking examples ... ERROR
+    ```
+    ...
+    Running examples in ‘storr-Ex.R’ failed
+    The error most likely occurred in:
+    
+    > ### Name: test_driver
+    > ### Title: Test a storr driver
+    > ### Aliases: test_driver
+    > 
+    > ### ** Examples
+    > 
+    > ## Testing the environment driver is nice and fast:
+    > if (requireNamespace("testthat")) {
+    +   create_env <- function(dr = NULL, ...) {
+    +     driver_environment(dr$envir, ...)
+    +   }
+    +   test_driver(create_env)
+    + }
+    Loading required namespace: testthat
+    Error in test_files(test_dir = dirname(path), test_package = package,  : 
+      unused argument (start_end_reporter = FALSE)
+    Calls: test_driver -> lapply -> FUN
+    Execution halted
+    ```
 
 *   checking tests ... ERROR
     ```
@@ -764,32 +945,32 @@ Run `cloud_details(, "santoku")` for more info
     Last 13 lines of output:
       
       ── Skipped tests  ──────────────────────────────────────────────────────────────
-      ● On CRAN (1)
+      ● On CRAN (6)
       
       ══ testthat results  ═══════════════════════════════════════════════════════════
-      Warning (test-breaks.R:36:3): brk_left, brk_right
-      Warning (test-breaks.R:40:3): brk_left, brk_right
-      Warning (test-chop.R:30:3): NA, NaN and Inf
-      Warning (test-chop.R:36:3): NA, NaN and Inf
-      Warning (test-labels.R:106:3): lbl_intervals
-      ERROR (test-zzz-systematic.R:122:5): systematic tests
+      ERROR (test-auto.R:2:3): environment
+      ERROR (test-auto.R:7:3): rds
+      ERROR (test-auto.R:16:5): dbi (sqlite)
+      ERROR (test-auto.R:40:3): multistorr (env + rds)
+      ERROR (test-driver-remote.R:9:3): storr spec
+      ERROR (test-spec.R:5:3): reporter handling
       
-      [ FAIL 1 | WARN 5 | SKIP 1 | PASS 292 ]
+      [ FAIL 6 | WARN 0 | SKIP 6 | PASS 285 ]
       Error: Test failures
       Execution halted
     ```
 
-# sars
+# thor
 
 <details>
 
-* Version: 1.2.3
-* GitHub: https://github.com/txm676/sars
-* Source code: https://github.com/cran/sars
-* Date/Publication: 2020-05-31 20:30:03 UTC
-* Number of recursive dependencies: 49
+* Version: 1.1.2
+* GitHub: https://github.com/richfitz/thor
+* Source code: https://github.com/cran/thor
+* Date/Publication: 2020-05-15 14:20:03 UTC
+* Number of recursive dependencies: 43
 
-Run `cloud_details(, "sars")` for more info
+Run `cloud_details(, "thor")` for more info
 
 </details>
 
@@ -800,19 +981,148 @@ Run `cloud_details(, "sars")` for more info
       Running ‘testthat.R’
     Running the tests in ‘tests/testthat.R’ failed.
     Last 13 lines of output:
-      Warning (test_lin_pow.R:26:3): lin_pow returns warning for all identical species
-      FAILURE (test_lin_pow.R:26:3): lin_pow returns warning for all identical species
-      Warning (test_lin_pow.R:26:3): lin_pow returns warning for all identical species
-      Warning (test_lin_pow.R:29:3): lin_pow returns warning for all identical species
-      Warning (test_lin_pow.R:31:3): lin_pow returns warning for all identical species
-      Warning (test_power.R:37:3): sar_power returns warning for all identical species
-      Warning (test_power.R:37:3): sar_power returns warning for all identical species
-      FAILURE (test_power.R:37:3): sar_power returns warning for all identical species
-      Warning (test_power.R:37:3): sar_power returns warning for all identical species
-      Warning (test_power.R:41:3): sar_power returns warning for all identical species
-      Warning (test_power.R:41:3): sar_power returns warning for all identical species
+      Backtrace:
+          █
+       1. └─storr::test_driver(...) test-storr.R:5:2
+       2.   └─base::lapply(...)
+       3.     └─testthat:::FUN(X[[i]], ...)
       
-      [ FAIL 2 | WARN 12 | SKIP 2 | PASS 122 ]
+      ── Skipped tests  ──────────────────────────────────────────────────────────────
+      ● On CRAN (2)
+      
+      ══ testthat results  ═══════════════════════════════════════════════════════════
+      ERROR (test-storr.R:5:3): spec
+      
+      [ FAIL 1 | WARN 0 | SKIP 2 | PASS 509 ]
+      Error: Test failures
+      Execution halted
+    ```
+
+# threshr
+
+<details>
+
+* Version: 1.0.2
+* GitHub: https://github.com/paulnorthrop/threshr
+* Source code: https://github.com/cran/threshr
+* Date/Publication: 2020-09-05 16:50:03 UTC
+* Number of recursive dependencies: 70
+
+Run `cloud_details(, "threshr")` for more info
+
+</details>
+
+## Newly broken
+
+*   checking tests ... ERROR
+    ```
+      Running ‘testthat.R’
+    Running the tests in ‘tests/testthat.R’ failed.
+    Last 13 lines of output:
+      
+      ── ERROR (test-inv_box_cox.R:7:3): (code run outside of `test_that()`) ─────────
+      Error: `desc` must be a string
+      Backtrace:
+          █
+       1. └─testthat::test_that(...) test-inv_box_cox.R:7:2
+      
+      Fitting at threshold number ...
+      1 2 3 4 5 6 7 8 9 10 ══ testthat results  ═══════════════════════════════════════════════════════════
+      ERROR (test-box_cox.R:7:3): (code run outside of `test_that()`)
+      ERROR (test-inv_box_cox.R:7:3): (code run outside of `test_that()`)
+      
+      [ FAIL 2 | WARN 0 | SKIP 0 | PASS 231 ]
+      Error: Test failures
+      Execution halted
+    ```
+
+# treeclim
+
+<details>
+
+* Version: 2.0.3
+* GitHub: NA
+* Source code: https://github.com/cran/treeclim
+* Date/Publication: 2019-03-22 15:20:03 UTC
+* Number of recursive dependencies: 61
+
+Run `cloud_details(, "treeclim")` for more info
+
+</details>
+
+## Newly broken
+
+*   checking tests ... ERROR
+    ```
+      Running ‘testthat.R’
+    Running the tests in ‘tests/testthat.R’ failed.
+    Last 13 lines of output:
+      Warning (test_month_processing.R:7:3): continuity in month sequences is recognized correctly
+      Warning (test_month_processing.R:8:3): continuity in month sequences is recognized correctly
+      Warning (test_month_processing.R:9:3): continuity in month sequences is recognized correctly
+      Warning (test_month_processing.R:10:3): continuity in month sequences is recognized correctly
+      Warning (test_month_processing.R:22:3): ’check_months’ correctly identifies wrong month specs
+      Warning (test_month_processing.R:23:3): ’check_months’ correctly identifies wrong month specs
+      Warning (test_month_processing.R:24:3): ’check_months’ correctly identifies wrong month specs
+      Warning (test_month_processing.R:25:3): ’check_months’ correctly identifies wrong month specs
+      Warning (test_month_processing.R:26:3): ’check_months’ correctly identifies wrong month specs
+      Warning (test_month_processing.R:27:3): ’check_months’ correctly identifies wrong month specs
+      Warning (test_month_processing.R:28:3): ’check_months’ correctly identifies wrong month specs
+      
+      [ FAIL 1 | WARN 14 | SKIP 0 | PASS 147 ]
+      Error: Test failures
+      Execution halted
+    ```
+
+## In both
+
+*   checking installed package size ... NOTE
+    ```
+      installed size is  7.0Mb
+      sub-directories of 1Mb or more:
+        libs   6.6Mb
+    ```
+
+*   checking Rd cross-references ... NOTE
+    ```
+    Package unavailable to check Rd xrefs: ‘dplR’
+    ```
+
+# unitizer
+
+<details>
+
+* Version: 1.4.10
+* GitHub: https://github.com/brodieG/unitizer
+* Source code: https://github.com/cran/unitizer
+* Date/Publication: 2020-05-12 17:00:03 UTC
+* Number of recursive dependencies: 46
+
+Run `cloud_details(, "unitizer")` for more info
+
+</details>
+
+## Newly broken
+
+*   checking tests ... ERROR
+    ```
+      Running ‘aunitizer.R’
+      Running ‘runtt.R’
+    Running the tests in ‘tests/runtt.R’ failed.
+    Last 13 lines of output:
+      ────────────────────────────────────────────────────────────────────────────────
+      
+      
+      
+      
+      ══ Results ═════════════════════════════════════════════════════════════════════
+      Duration: 14.8 s
+      
+      ── Skipped tests  ──────────────────────────────────────────────────────────────
+      ● fails CRAN (2)
+      
+      [ FAIL 10 | WARN 14 | SKIP 2 | PASS 462 ]
+      ══ Terminated early ════════════════════════════════════════════════════════════
       Error: Test failures
       Execution halted
     ```
