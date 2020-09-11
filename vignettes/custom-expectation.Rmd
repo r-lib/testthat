@@ -55,7 +55,7 @@ Next you call `expect()`. This has two arguments:
     
     For historical reasons, most built-in expectations generate these with
     `sprintf()`, but today I'd recommend using the 
-    [glue](http://glue.tidyverse.org) package
+    [glue](https://glue.tidyverse.org) package
 
 ### Invisibly return the input
 

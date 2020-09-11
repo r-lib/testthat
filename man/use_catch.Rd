@@ -11,8 +11,8 @@ use_catch(dir = getwd())
 }
 \description{
 Add the necessary infrastructure to enable C++ unit testing
-in \R packages with
-\href{https://github.com/philsquared/Catch}{Catch} and \code{testthat}.
+in \R packages with \href{https://github.com/catchorg/Catch2}{Catch} and
+\code{testthat}.
 }
 \details{
 Calling \code{use_catch()} will:
@@ -54,7 +54,7 @@ will use that entry point to run your unit tests when detected.
 
 All of the functions provided by Catch are
 available with the \code{CATCH_} prefix -- see
-\href{https://github.com/philsquared/Catch/blob/master/docs/assertions.md}{here}
+\href{https://github.com/catchorg/Catch2/blob/master/docs/assertions.md}{here}
 for a full list. \code{testthat} provides the
 following wrappers, to conform with \code{testthat}'s
 \R interface:
@@ -134,6 +134,6 @@ as necessary within your unit test suite.
 }
 
 \seealso{
-\href{https://github.com/philsquared/Catch}{Catch}, the
-library used to enable C++ unit testing.
+\href{https://github.com/catchorg/Catch2/blob/master/docs/assertions.md}{Catch},
+the library used to enable C++ unit testing.
 }

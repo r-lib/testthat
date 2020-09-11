@@ -23,7 +23,7 @@ reports printed for the summary reporter (default: 10).
 \seealso{
 Useful links:
 \itemize{
-  \item \url{http://testthat.r-lib.org}
+  \item \url{https://testthat.r-lib.org}
   \item \url{https://github.com/r-lib/testthat}
   \item Report bugs at \url{https://github.com/r-lib/testthat/issues}
 }

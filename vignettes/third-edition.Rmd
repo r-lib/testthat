@@ -59,7 +59,7 @@ There are three major changes in the 3rd edition:
 
 -   testthat no longer silently swallows **messages**; you now need to deliberately handle them.
 
--   `expect_equal()` and `expect_identical()` now use the [**waldo**](http://waldo.r-lib.org/) package instead of `identical()` and `all.equal()`. This makes them more consistent and provides an enhanced display of differences when a test fails.
+-   `expect_equal()` and `expect_identical()` now use the [**waldo**](https://waldo.r-lib.org/) package instead of `identical()` and `all.equal()`. This makes them more consistent and provides an enhanced display of differences when a test fails.
 
 ### Deprecations
 

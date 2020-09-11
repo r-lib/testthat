@@ -213,7 +213,7 @@ neatest <- function(x, sig_digits) {
 neatest(pi, 3)
 ```
 
-Each `local_*()` function has a companion `with_()` function, which is a nod to `with()`, and the inspiration for withr's name. We won't use the `with_*()` functions here, but you can learn more about them at [withr.r-lib.org](http://withr.r-lib.org).
+Each `local_*()` function has a companion `with_()` function, which is a nod to `with()`, and the inspiration for withr's name. We won't use the `with_*()` functions here, but you can learn more about them at [withr.r-lib.org](https://withr.r-lib.org).
 
 ## Test fixtures
 

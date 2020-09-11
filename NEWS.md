@@ -452,7 +452,7 @@ This release mostly focusses on an overhaul of how testthat works with condition
 * "Can't mock functions in base packages": You can no longer use `with_mock()` 
   to mock functions in base packages, because this no longer works in 
   R-devel due to changes with the byte code compiler. I recommend using
-  [mockery](https://github.com/n-s-f/mockery) or 
+  [mockery](https://github.com/r-lib/mockery) or 
   [mockr](https://github.com/krlmlr/mockr) instead.
 
 * The order of arguments to `expect_equivalent()` and `expect_error()` has
@@ -882,7 +882,7 @@ The reporters system class has been considerably refactored to make existing rep
 * `expect_identical()` and `is_identical_to()` now use `compare()` for more
   detailed output of differences (#319, @krlmlr).
 
-* Added [Catch](https://github.com/philsquared/Catch) v1.2.1 for unit testing of C++ code.
+* Added [Catch](https://github.com/catchorg/Catch2) v1.2.1 for unit testing of C++ code.
   See `?use_catch()` for more details. (@kevinushey)
 
 # testthat 0.11.0

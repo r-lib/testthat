@@ -34,8 +34,8 @@ happen, testthat:
 
 testthat draws inspiration from the xUnit family of testing packages, as
 well as from many of the innovative ruby testing libraries, like
-[rspec](http://rspec.info/), [testy](https://github.com/ahoward/testy),
-[bacon](https://github.com/chneukirchen/bacon) and
+[rspec](https://rspec.info/), [testy](https://github.com/ahoward/testy),
+[bacon](https://github.com/leahneukirchen/bacon) and
 [cucumber](https://cucumber.io).
 
 testthat is the most popular unit testing package for R and is used by
