@@ -82,10 +82,6 @@ test_dir <- function(path,
     abort("No test files found")
   }
 
-  if (!missing(wrap)) {
-    lifecycle::deprecate_warn("3.0.0", "test_dir(wrap = )")
-  }
-
   want_parallel <- find_parallel(path, load_package, package)
 
   if (is.null(reporter)) {
@@ -107,6 +103,7 @@ test_dir <- function(path,
     env = env,
     stop_on_failure = stop_on_failure,
     stop_on_warning = stop_on_warning,
+    wrap = wrap,
     load_package = load_package,
     parallel = parallel
   )
@@ -150,13 +147,26 @@ test_files <- function(test_dir,
                        env = NULL,
                        stop_on_failure = FALSE,
                        stop_on_warning = FALSE,
+                       wrap = lifecycle::deprecated(),
                        load_package = c("none", "installed", "source"),
                        parallel = FALSE) {
 
   if (parallel) {
+    if (!is_missing(wrap)) {
+      lifecycle::deprecate_stop(
+        "3.0.0", "test_files(wrap = )",
+        details="`wrap = ` may only be used with `parallel = FALSE`"
+      )
+    }
     test_files <- test_files_parallel
   } else {
+    if (!is_missing(wrap)) {
+      lifecycle::deprecate_warn("3.0.0", "test_files(wrap = )")
+    }
     test_files <- test_files_serial
+  }
+  if(is_missing(wrap)) {
+    wrap <- TRUE
   }
 
   test_files(
@@ -168,6 +178,7 @@ test_files <- function(test_dir,
     env = env,
     stop_on_failure = stop_on_failure,
     stop_on_warning = stop_on_warning,
+    wrap = wrap,
     load_package = load_package
   )
 }
@@ -180,13 +191,16 @@ test_files_serial <- function(test_dir,
                        env = NULL,
                        stop_on_failure = FALSE,
                        stop_on_warning = FALSE,
+                       wrap = FALSE,
                        load_package = c("none", "installed", "source")) {
 
   env <- test_files_setup_env(test_package, test_dir, load_package, env)
   test_files_setup_state(test_dir, test_package, load_helpers, env)
   reporters <- test_files_reporter(reporter)
 
-  with_reporter(reporters$multi, lapply(test_paths, test_one_file, env = env))
+  with_reporter(reporters$multi,
+    lapply(test_paths, test_one_file, env = env, wrap = wrap)
+  )
 
   test_files_check(reporters$list$get_results(),
     stop_on_failure = stop_on_failure,
@@ -250,12 +264,12 @@ test_files_check <- function(results, stop_on_failure = TRUE, stop_on_warning = 
   invisible(results)
 }
 
-test_one_file <- function(path, env = test_env()) {
+test_one_file <- function(path, env = test_env(), wrap = FALSE) {
   reporter <- get_reporter()
   on.exit(teardown_run(), add = TRUE)
 
   reporter$start_file(path)
-  source_file(path, child_env(env))
+  source_file(path, child_env(env), wrap = wrap)
   reporter$end_context_if_started()
   reporter$end_file()
 }
