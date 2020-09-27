@@ -71,7 +71,7 @@ test_files_parallel <- function(
   )
 
   with_reporter(reporters$multi, {
-    parallel_update <- reporter$capabilities$parallel_update
+    parallel_update <- reporter$capabilities$parallel_updates
     if (parallel_update) {
       parallel_event_loop_smooth(queue, reporters)
     } else {
