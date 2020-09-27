@@ -41,6 +41,7 @@ test_files_parallel <- function(
                        env = NULL,
                        stop_on_failure = FALSE,
                        stop_on_warning = FALSE,
+                       wrap = TRUE,  # unused, to match test_files_serial
                        load_package = c("none", "installed", "source")
                        ) {
 

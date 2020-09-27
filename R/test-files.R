@@ -191,7 +191,7 @@ test_files_serial <- function(test_dir,
                        env = NULL,
                        stop_on_failure = FALSE,
                        stop_on_warning = FALSE,
-                       wrap = FALSE,
+                       wrap = TRUE,
                        load_package = c("none", "installed", "source")) {
 
   env <- test_files_setup_env(test_package, test_dir, load_package, env)
@@ -264,7 +264,7 @@ test_files_check <- function(results, stop_on_failure = TRUE, stop_on_warning = 
   invisible(results)
 }
 
-test_one_file <- function(path, env = test_env(), wrap = FALSE) {
+test_one_file <- function(path, env = test_env(), wrap = TRUE) {
   reporter <- get_reporter()
   on.exit(teardown_run(), add = TRUE)
 
