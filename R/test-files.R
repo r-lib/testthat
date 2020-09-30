@@ -82,6 +82,10 @@ test_dir <- function(path,
     abort("No test files found")
   }
 
+  if (!is_missing(wrap)) {
+    lifecycle::deprecate_warn("3.0.0", "test_dir(wrap = )")
+  }
+
   want_parallel <- find_parallel(path, load_package, package)
 
   if (is.null(reporter)) {
@@ -93,22 +97,6 @@ test_dir <- function(path,
   }
   reporter <- find_reporter(reporter)
   parallel <- want_parallel && reporter$capabilities$parallel_support
-
-  if (parallel) {
-    if (!is_missing(wrap)) {
-      lifecycle::deprecate_stop(
-        "3.0.0", "test_dir(wrap = )",
-        details=paste0(
-          "`wrap = ` may only be used with serial tests, but detected that  ",
-          "parallel tests requested."
-        )
-      )
-    }
-  } else {
-    if (!is_missing(wrap)) {
-      lifecycle::deprecate_warn("3.0.0", "test_file(wrap = )")
-    }
-  }
 
   test_files(
     test_dir = path,
@@ -163,18 +151,18 @@ test_files <- function(test_dir,
                        env = NULL,
                        stop_on_failure = FALSE,
                        stop_on_warning = FALSE,
-                       wrap = lifecycle::deprecated(),
+                       wrap = TRUE,
                        load_package = c("none", "installed", "source"),
                        parallel = FALSE) {
 
-  if(is_missing(wrap)) {
+  if (is_missing(wrap)) {
     wrap <- TRUE
   }
+  if (!isTRUE(wrap)) {
+    lifecycle::deprecate_warn("3.0.0", "test_dir(wrap = )")
+  }
+
   if (parallel) {
-    if(!isTRUE(wrap)) {
-      warning('`wrap` must be TRUE in parallel mode.')
-      wrap <- TRUE
-    }
     test_files <- test_files_parallel
   } else {
     test_files <- test_files_serial
