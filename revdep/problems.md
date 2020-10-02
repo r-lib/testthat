@@ -1,3 +1,52 @@
+# bigstatsr
+
+<details>
+
+* Version: 1.2.3
+* GitHub: https://github.com/privefl/bigstatsr
+* Source code: https://github.com/cran/bigstatsr
+* Date/Publication: 2020-03-12 13:20:05 UTC
+* Number of recursive dependencies: 93
+
+Run `cloud_details(, "bigstatsr")` for more info
+
+</details>
+
+## Newly broken
+
+*   checking tests ... ERROR
+    ```
+      Running ‘spelling.R’
+      Running ‘testthat.R’
+    Running the tests in ‘tests/testthat.R’ failed.
+    Last 13 lines of output:
+      Warning (test-univLogReg.R:65:5): equality with glm with all data
+      Warning (test-univLogReg.R:65:5): equality with glm with all data
+      Warning (test-univLogReg.R:92:5): equality with glm with only half the data
+      Warning (test-univLogReg.R:92:5): equality with glm with only half the data
+      Warning (test-univLogReg.R:92:5): equality with glm with only half the data
+      Warning (test-univLogReg.R:92:5): equality with glm with only half the data
+      Warning (test-univLogReg.R:92:5): equality with glm with only half the data
+      Warning (test-univLogReg.R:92:5): equality with glm with only half the data
+      Warning (test-univLogReg.R:92:5): equality with glm with only half the data
+      Warning (test-univLogReg.R:92:5): equality with glm with only half the data
+      Warning (test-univLogReg.R:92:5): equality with glm with only half the data
+      
+      [ FAIL 1 | WARN 129 | SKIP 4 | PASS 3997 ]
+      Error: Test failures
+      Execution halted
+    ```
+
+## In both
+
+*   checking installed package size ... NOTE
+    ```
+      installed size is 17.0Mb
+      sub-directories of 1Mb or more:
+        extdata   2.3Mb
+        libs     14.0Mb
+    ```
+
 # coil
 
 <details>
@@ -74,26 +123,142 @@ Run `cloud_details(, "DiceKriging")` for more info
       Execution halted
     ```
 
-# gWidgets2tcltk
+# diffobj
 
 <details>
 
-* Version: 1.0-6
-* GitHub: https://github.com/jverzani/gWidgets2tcltk
-* Source code: https://github.com/cran/gWidgets2tcltk
-* Date/Publication: 2018-09-25 13:20:02 UTC
-* Number of recursive dependencies: 26
+* Version: 0.3.0
+* GitHub: https://github.com/brodieG/diffobj
+* Source code: https://github.com/cran/diffobj
+* Date/Publication: 2020-05-11 11:20:03 UTC
+* Number of recursive dependencies: 37
 
-Run `cloud_details(, "gWidgets2tcltk")` for more info
+Run `cloud_details(, "diffobj")` for more info
 
 </details>
 
 ## Newly broken
 
-*   checking whether package ‘gWidgets2tcltk’ can be installed ... ERROR
+*   checking tests ... ERROR
+    ```
+      Running ‘run.R’
+    Running the tests in ‘tests/run.R’ failed.
+    Last 13 lines of output:
+      ⠏ |   0       | testthat.warnings                                               
+      ⠏ |   0       | warnings                                                        
+      ⠹ |   3       | warnings                                                        
+      ⠴ |   6       | warnings                                                        
+      ✔ |   7       | warnings [0.3 s]
+      
+      ══ Results ═════════════════════════════════════════════════════════════════════
+      Duration: 26.1 s
+      
+      ── Skipped tests  ──────────────────────────────────────────────────────────────
+      ● empty test (3)
+      
+      [ FAIL 4 | WARN 0 | SKIP 3 | PASS 591 ]
+      Error: Test failures
+      Execution halted
+    ```
+
+# ergm.ego
+
+<details>
+
+* Version: 0.5
+* GitHub: https://github.com/statnet/ergm.ego
+* Source code: https://github.com/cran/ergm.ego
+* Date/Publication: 2019-05-31 16:00:03 UTC
+* Number of recursive dependencies: 57
+
+Run `cloud_details(, "ergm.ego")` for more info
+
+</details>
+
+## Newly broken
+
+*   checking tests ... ERROR
+    ```
+    ...
+      Running ‘EgoStat.tests.R’
+      Running ‘boot_jack.R’
+      Running ‘table_ppop.R’
+      Running ‘testthat.R’
+    Running the tests in ‘tests/testthat.R’ failed.
+    Last 13 lines of output:
+      ── Warning (test-statmismatch.R:10:1): (code run outside of `test_that()`) ─────
+      `context()` was deprecated in the 3rd edition.
+      
+      ── ERROR (test-statmismatch.R:15:1): (code run outside of `test_that()`) ───────
+      Error: could not find function "egodata"
+      
+      ══ testthat results  ═══════════════════════════════════════════════════════════
+      Warning (test-degreedist.R:10:1): (code run outside of `test_that()`)
+      ERROR (test-degreedist.R:21:1): (code run outside of `test_that()`)
+      Warning (test-statmismatch.R:10:1): (code run outside of `test_that()`)
+      ERROR (test-statmismatch.R:15:1): (code run outside of `test_that()`)
+      
+      [ FAIL 2 | WARN 2 | SKIP 0 | PASS 0 ]
+      Error: Test failures
+      Execution halted
+    ```
+
+# forecastHybrid
+
+<details>
+
+* Version: 5.0.19
+* GitHub: https://github.com/ellisp/forecastHybrid
+* Source code: https://github.com/cran/forecastHybrid
+* Date/Publication: 2020-08-28 06:30:03 UTC
+* Number of recursive dependencies: 88
+
+Run `cloud_details(, "forecastHybrid")` for more info
+
+</details>
+
+## Newly broken
+
+*   checking examples ... ERROR
+    ```
+    Running examples in ‘forecastHybrid-Ex.R’ failed
+    The error most likely occurred in:
+    
+    > ### Name: cvts
+    > ### Title: Cross validation for time series
+    > ### Aliases: cvts
+    > 
+    > ### ** Examples
+    > 
+    > series <- subset(AirPassengers, end = 50)
+    > cvmod1 <- cvts(series, FUN = snaive,
+    +                windowSize = 25, maxHorizon = 12)
+    Error in serverSocket(port = port) : 
+      creation of server socket failed: port 11142 cannot be opened
+    Calls: cvts -> <Anonymous> -> serverSocket
+    Execution halted
+    ```
+
+# GroupSeq
+
+<details>
+
+* Version: 1.3.5
+* GitHub: https://github.com/rpahl/GroupSeq
+* Source code: https://github.com/cran/GroupSeq
+* Date/Publication: 2018-04-11 15:00:32 UTC
+* Number of recursive dependencies: 24
+
+Run `cloud_details(, "GroupSeq")` for more info
+
+</details>
+
+## Newly broken
+
+*   checking whether package ‘GroupSeq’ can be installed ... ERROR
     ```
     Installation failed.
-    See ‘/tmp/workdir/gWidgets2tcltk/new/gWidgets2tcltk.Rcheck/00install.out’ for details.
+    See ‘/tmp/workdir/GroupSeq/new/GroupSeq.Rcheck/00install.out’ for details.
     ```
 
 ## Installation
@@ -101,33 +266,35 @@ Run `cloud_details(, "gWidgets2tcltk")` for more info
 ### Devel
 
 ```
-* installing *source* package ‘gWidgets2tcltk’ ...
-** package ‘gWidgets2tcltk’ successfully unpacked and MD5 sums checked
+* installing *source* package ‘GroupSeq’ ...
+** package ‘GroupSeq’ successfully unpacked and MD5 sums checked
 ** using staged installation
 ** R
-** demo
-** inst
 ** byte-compile and prepare package for lazy loading
-Warning message:
-In fun(libname, pkgname) : couldn't connect to display ":109"
-Error in structure(.External(.C_dotTclObjv, objv), class = "tclObj") : 
-  [tcl] invalid command name "font".
+Warning in fun(libname, pkgname) : couldn't connect to display ":109"
+** help
+*** installing help indices
+** building package indices
+** testing if installed package can be loaded from temporary location
+Warning in fun(libname, pkgname) : couldn't connect to display ":109"
+Error: package or namespace load failed for ‘GroupSeq’:
+ .onAttach failed in attachNamespace() for 'GroupSeq', details:
+  call: structure(.External(.C_dotTclObjv, objv), class = "tclObj")
+  error: [tcl] invalid command name "toplevel".
 
-Error: unable to load R code in package ‘gWidgets2tcltk’
+Error: loading failed
 Execution halted
-ERROR: lazy loading failed for package ‘gWidgets2tcltk’
-* removing ‘/tmp/workdir/gWidgets2tcltk/new/gWidgets2tcltk.Rcheck/gWidgets2tcltk’
+ERROR: loading failed
+* removing ‘/tmp/workdir/GroupSeq/new/GroupSeq.Rcheck/GroupSeq’
 
 ```
 ### CRAN
 
 ```
-* installing *source* package ‘gWidgets2tcltk’ ...
-** package ‘gWidgets2tcltk’ successfully unpacked and MD5 sums checked
+* installing *source* package ‘GroupSeq’ ...
+** package ‘GroupSeq’ successfully unpacked and MD5 sums checked
 ** using staged installation
 ** R
-** demo
-** inst
 ** byte-compile and prepare package for lazy loading
 ** help
 *** installing help indices
@@ -135,7 +302,7 @@ ERROR: lazy loading failed for package ‘gWidgets2tcltk’
 ** testing if installed package can be loaded from temporary location
 ** testing if installed package can be loaded from final location
 ** testing if installed package keeps a record of temporary installation path
-* DONE (gWidgets2tcltk)
+* DONE (GroupSeq)
 
 ```
 # hyperSpec
@@ -239,166 +406,6 @@ Run `cloud_details(, "IncDTW")` for more info
     GNU make is a SystemRequirements.
     ```
 
-# ldaPrototype
-
-<details>
-
-* Version: 0.2.0
-* GitHub: https://github.com/JonasRieger/ldaPrototype
-* Source code: https://github.com/cran/ldaPrototype
-* Date/Publication: 2020-07-16 11:10:02 UTC
-* Number of recursive dependencies: 110
-
-Run `cloud_details(, "ldaPrototype")` for more info
-
-</details>
-
-## Newly broken
-
-*   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Last 13 lines of output:
-      
-      The following object is masked from 'package:data.table':
-      
-          set
-      
-      The following object is masked from 'package:stats':
-      
-          cutree
-      
-      > 
-      > test_check("ldaPrototype")
-      ── Warning (test_LDABatch.R:146:3): is.LDABatch ────────────────────────────────
-      Parameter(s) num.iterations are duplicated. Take last one(s).
-      
-      Killed
-    ```
-
-# markmyassignment
-
-<details>
-
-* Version: 0.8.2
-* GitHub: NA
-* Source code: https://github.com/cran/markmyassignment
-* Date/Publication: 2019-04-28 19:50:03 UTC
-* Number of recursive dependencies: 45
-
-Run `cloud_details(, "markmyassignment")` for more info
-
-</details>
-
-## Newly broken
-
-*   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Last 13 lines of output:
-       1. └─markmyassignment::mark_my_assignment()
-       2.   └─markmyassignment:::run_test_suite(...)
-       3.     └─testthat::test_dir(...)
-       4.       └─testthat:::test_files(...)
-       5.         └─testthat:::test_files(...)
-       6.           └─testthat:::test_files_check(...)
-      
-      ══ testthat results  ═══════════════════════════════════════════════════════════
-      ERROR (???): mark_my_assignment()
-      FAILURE (test-mark_my_dir.R:11:3): mark_my_dir()
-      ERROR (???): additional tests
-      
-      [ FAIL 3 | WARN 0 | SKIP 0 | PASS 193 ]
-      Error: Test failures
-      Execution halted
-    ```
-
-## In both
-
-*   checking dependencies in R code ... NOTE
-    ```
-    Namespace in Imports field not imported from: ‘lazyeval’
-      All declared Imports should be used.
-    ```
-
-# mcmcr
-
-<details>
-
-* Version: 0.3.0
-* GitHub: https://github.com/poissonconsulting/mcmcr
-* Source code: https://github.com/cran/mcmcr
-* Date/Publication: 2020-07-13 18:10:02 UTC
-* Number of recursive dependencies: 51
-
-Run `cloud_details(, "mcmcr")` for more info
-
-</details>
-
-## Newly broken
-
-*   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Last 13 lines of output:
-      Attributes: < Component "row.names": Modes: numeric, character >
-      Attributes: < Component "row.names": target is numeric, current is character >
-      
-      ── FAILURE (test-ess.R:23:3): ess.mcmcr as df ──────────────────────────────────
-      ess(mcmcr_example, as_df = TRUE, by = "parameter") not identical to structure(...).
-      Attributes: < Component "row.names": Modes: numeric, character >
-      Attributes: < Component "row.names": target is numeric, current is character >
-      
-      ══ testthat results  ═══════════════════════════════════════════════════════════
-      FAILURE (test-converged.R:11:3): converged.mcmcr
-      FAILURE (test-ess.R:23:3): ess.mcmcr as df
-      
-      [ FAIL 2 | WARN 0 | SKIP 0 | PASS 411 ]
-      Error: Test failures
-      Execution halted
-    ```
-
-# mlr3pipelines
-
-<details>
-
-* Version: 0.2.1
-* GitHub: https://github.com/mlr-org/mlr3pipelines
-* Source code: https://github.com/cran/mlr3pipelines
-* Date/Publication: 2020-08-18 07:40:02 UTC
-* Number of recursive dependencies: 153
-
-Run `cloud_details(, "mlr3pipelines")` for more info
-
-</details>
-
-## Newly broken
-
-*   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Last 13 lines of output:
-      ● empty test (2)
-      
-      ══ testthat results  ═══════════════════════════════════════════════════════════
-      FAILURE (test_Graph.R:221:3): assert_graph test
-      FAILURE (test_Graph.R:233:3): assert_graph test
-      Warning (test_graphlearner.R:281:3): graphlearner predict type inference
-      Warning (test_graphlearner.R:283:3): graphlearner predict type inference
-      Warning (test_graphlearner.R:301:3): graphlearner predict type inference
-      Warning (test_graphlearner.R:303:3): graphlearner predict type inference
-      Warning (test_graphlearner.R:334:3): graphlearner predict type inference
-      Warning (test_multichannels.R:192:3): vararg passes args through as it should
-      
-      [ FAIL 2 | WARN 6 | SKIP 67 | PASS 9888 ]
-      Error: Test failures
-      Execution halted
-    ```
-
 # mlrCPO
 
 <details>
@@ -437,17 +444,56 @@ Run `cloud_details(, "mlrCPO")` for more info
       Execution halted
     ```
 
-# MoMPCA
+# mvrsquared
 
 <details>
 
-* Version: 1.0.0
-* GitHub: NA
-* Source code: https://github.com/cran/MoMPCA
-* Date/Publication: 2020-07-01 09:40:07 UTC
-* Number of recursive dependencies: 82
+* Version: 0.1.0
+* GitHub: https://github.com/TommyJones/mvrsquared
+* Source code: https://github.com/cran/mvrsquared
+* Date/Publication: 2020-06-25 06:00:06 UTC
+* Number of recursive dependencies: 94
 
-Run `cloud_details(, "MoMPCA")` for more info
+Run `cloud_details(, "mvrsquared")` for more info
+
+</details>
+
+## Newly broken
+
+*   checking tests ... ERROR
+    ```
+      Running ‘spelling.R’
+      Running ‘testthat.R’
+    Running the tests in ‘tests/testthat.R’ failed.
+    Last 13 lines of output:
+      1/1 mismatches
+      [1] 0.846 - 0.849 == -0.003
+      
+      ── FAILURE (test-mvrsquared.R:50:3): Multithreading works as expected ──────────
+      `r2` not equal to 1 - ss[[1]]/ss[[2]].
+      1/1 mismatches
+      [1] 0.846 - 0.849 == -0.0022
+      
+      ══ testthat results  ═══════════════════════════════════════════════════════════
+      FAILURE (test-mvrsquared.R:44:3): Multithreading works as expected
+      FAILURE (test-mvrsquared.R:50:3): Multithreading works as expected
+      
+      [ FAIL 2 | WARN 0 | SKIP 0 | PASS 23 ]
+      Error: Test failures
+      Execution halted
+    ```
+
+# nestfs
+
+<details>
+
+* Version: 1.0
+* GitHub: https://github.com/mcol/nestfs
+* Source code: https://github.com/cran/nestfs
+* Date/Publication: 2019-09-21 15:30:02 UTC
+* Number of recursive dependencies: 28
+
+Run `cloud_details(, "nestfs")` for more info
 
 </details>
 
@@ -458,27 +504,21 @@ Run `cloud_details(, "MoMPCA")` for more info
       Running ‘testthat.R’
     Running the tests in ‘tests/testthat.R’ failed.
     Last 13 lines of output:
-      > library(testthat)
-      > library(MoMPCA)
-      > 
-      > test_check("MoMPCA")
-      ── Skip (test-init_functions.R:14:3): Check init_Y w/ kmeans_lda ───────────────
-      Reason: On CRAN
+      Component "panel": Lengths (2, 3) differ (string compare on first 2)
+      Component "final.model": 1 string mismatch
+      Component "iter1": Attributes: < Component "row.names": 1 string mismatch >
+      ...
       
-      ── Skip (test-init_functions.R:20:3): Check initializeBeta w/ lda and given cont
-      Reason: On CRAN
+      ── FAILURE (test_forward_selection.R:111:3): univariate filter ─────────────────
+      fs.1$panel has length 2, not length 3.
       
-      ── Skip (test-init_functions.R:35:3): Check initializeBeta w/ lda and NULL contr
-      Reason: On CRAN
+      ══ testthat results  ═══════════════════════════════════════════════════════════
+      FAILURE (test_forward_selection.R:110:3): univariate filter
+      FAILURE (test_forward_selection.R:111:3): univariate filter
       
-      Killed
-    ```
-
-## In both
-
-*   checking data for non-ASCII characters ... NOTE
-    ```
-      Note: found 16 marked UTF-8 strings
+      [ FAIL 2 | WARN 0 | SKIP 0 | PASS 165 ]
+      Error: Test failures
+      Execution halted
     ```
 
 # pak
@@ -519,82 +559,6 @@ Run `cloud_details(, "pak")` for more info
       Execution halted
     ```
 
-# patrick
-
-<details>
-
-* Version: 0.0.1
-* GitHub: NA
-* Source code: https://github.com/cran/patrick
-* Date/Publication: 2018-08-13 14:10:03 UTC
-* Number of recursive dependencies: 34
-
-Run `cloud_details(, "patrick")` for more info
-
-</details>
-
-## Newly broken
-
-*   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Last 13 lines of output:
-      ── FAILURE (test-with_parameters.R:21:7): Running tests: fail ──────────────────
-      exp\$message does not match "`case` isn't true".
-      Actual value: "`case` is not TRUE\\n\\n`actual`:   FALSE\\n`expected`: TRUE "
-      
-      ── FAILURE (test-with_parameters.R:21:7): Running tests: null ──────────────────
-      exp\$message does not match "`case` isn't true".
-      Actual value: "`case` is not TRUE\\n\\n`actual` is NULL\\n`expected` is a logical vector \(TRUE\)"
-      
-      ══ testthat results  ═══════════════════════════════════════════════════════════
-      FAILURE (test-with_parameters.R:21:7): Running tests: fail
-      FAILURE (test-with_parameters.R:21:7): Running tests: null
-      
-      [ FAIL 2 | WARN 0 | SKIP 0 | PASS 4 ]
-      Error: Test failures
-      Execution halted
-    ```
-
-# ps
-
-<details>
-
-* Version: 1.3.4
-* GitHub: https://github.com/r-lib/ps
-* Source code: https://github.com/cran/ps
-* Date/Publication: 2020-08-11 14:30:02 UTC
-* Number of recursive dependencies: 41
-
-Run `cloud_details(, "ps")` for more info
-
-</details>
-
-## Newly broken
-
-*   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Last 13 lines of output:
-      ⠏ |   0       | winver                                                          
-      ✔ |   6       | winver
-      
-      ══ Results ═════════════════════════════════════════════════════════════════════
-      Duration: 11.5 s
-      
-      ── Skipped tests  ──────────────────────────────────────────────────────────────
-      ● Needs working IPv6 connection (1)
-      ● On CRAN (11)
-      ● no terminal (1)
-      ● socat is not available (7)
-      
-      [ FAIL 2 | WARN 0 | SKIP 20 | PASS 416 ]
-      Error: Test failures
-      Execution halted
-    ```
-
 # pyMTurkR
 
 <details>
@@ -623,7 +587,7 @@ Run `cloud_details(, "pyMTurkR")` for more info
       ────────────────────────────────────────────────────────────────────────────────
       
       ══ Results ═════════════════════════════════════════════════════════════════════
-      Duration: 2.2 s
+      Duration: 3.4 s
       
       ── Skipped tests  ──────────────────────────────────────────────────────────────
       ● CheckAWSKeys() is not TRUE (58)
@@ -713,44 +677,6 @@ Run `cloud_details(, "renv")` for more info
       ‘packages.Rmd’ using ‘UTF-8’... failed
       ‘python.Rmd’ using ‘UTF-8’... failed
       ‘renv.Rmd’ using ‘UTF-8’... failed
-    ```
-
-# revdbayes
-
-<details>
-
-* Version: 1.3.8
-* GitHub: https://github.com/paulnorthrop/revdbayes
-* Source code: https://github.com/cran/revdbayes
-* Date/Publication: 2020-08-31 07:30:02 UTC
-* Number of recursive dependencies: 71
-
-Run `cloud_details(, "revdbayes")` for more info
-
-</details>
-
-## Newly broken
-
-*   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Last 13 lines of output:
-      ── ERROR (test-gp.R:35:3): (code run outside of `test_that()`) ─────────────────
-      Error: `desc` must be a string
-      Backtrace:
-          █
-       1. └─revdbayes:::test_function(x, test_string) test-gp.R:35:2
-       2.   └─testthat::test_that(...) test-gp.R:21:2
-      
-      ══ testthat results  ═══════════════════════════════════════════════════════════
-      ERROR (test-bingp.R:37:3): (code run outside of `test_that()`)
-      ERROR (test-gev.R:35:3): (code run outside of `test_that()`)
-      ERROR (test-gp.R:35:3): (code run outside of `test_that()`)
-      
-      [ FAIL 3 | WARN 0 | SKIP 0 | PASS 190 ]
-      Error: Test failures
-      Execution halted
     ```
 
 # rlang
@@ -998,44 +924,6 @@ Run `cloud_details(, "thor")` for more info
       Execution halted
     ```
 
-# threshr
-
-<details>
-
-* Version: 1.0.2
-* GitHub: https://github.com/paulnorthrop/threshr
-* Source code: https://github.com/cran/threshr
-* Date/Publication: 2020-09-05 16:50:03 UTC
-* Number of recursive dependencies: 70
-
-Run `cloud_details(, "threshr")` for more info
-
-</details>
-
-## Newly broken
-
-*   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Last 13 lines of output:
-      
-      ── ERROR (test-inv_box_cox.R:7:3): (code run outside of `test_that()`) ─────────
-      Error: `desc` must be a string
-      Backtrace:
-          █
-       1. └─testthat::test_that(...) test-inv_box_cox.R:7:2
-      
-      Fitting at threshold number ...
-      1 2 3 4 5 6 7 8 9 10 ══ testthat results  ═══════════════════════════════════════════════════════════
-      ERROR (test-box_cox.R:7:3): (code run outside of `test_that()`)
-      ERROR (test-inv_box_cox.R:7:3): (code run outside of `test_that()`)
-      
-      [ FAIL 2 | WARN 0 | SKIP 0 | PASS 231 ]
-      Error: Test failures
-      Execution halted
-    ```
-
 # treeclim
 
 <details>
@@ -1116,7 +1004,7 @@ Run `cloud_details(, "unitizer")` for more info
       
       
       ══ Results ═════════════════════════════════════════════════════════════════════
-      Duration: 14.8 s
+      Duration: 8.3 s
       
       ── Skipped tests  ──────────────────────────────────────────────────────────────
       ● fails CRAN (2)
@@ -1175,5 +1063,43 @@ Run `cloud_details(, "vdiffr")` for more info
     ```
     Namespace in Imports field not imported from: ‘freetypeharfbuzz’
       All declared Imports should be used.
+    ```
+
+# vein
+
+<details>
+
+* Version: 0.9.0
+* GitHub: NA
+* Source code: https://github.com/cran/vein
+* Date/Publication: 2020-09-30 08:00:02 UTC
+* Number of recursive dependencies: 57
+
+Run `cloud_details(, "vein")` for more info
+
+</details>
+
+## Newly broken
+
+*   checking tests ... ERROR
+    ```
+      Running ‘testthat.R’
+    Running the tests in ‘tests/testthat.R’ failed.
+    Last 13 lines of output:
+        4.       └─testthat:::test_files(...)
+        5.         ├─testthat::with_reporter(...)
+        6.         │ ├─base::withRestarts(...)
+        7.         │ │ └─base:::withOneRestart(expr, restarts[[1L]])
+        8.         │ │   └─base:::doWithOneRestart(return(expr), restart)
+        9.         │ └─base::force(code)
+       10.         └─testthat:::parallel_event_loop_chunky(queue, reporters)
+       11.           └─queue$poll(Inf)
+       12.             └─base::lapply(...)
+      <parent: error>
+      Backtrace:
+      █
+      Error in rs_call(self, private, func, args) : R session not ready yet
+      Calls: test_check ... test_dir -> test_files -> test_files -> <Anonymous>
+      Execution halted
     ```
 
