@@ -269,8 +269,12 @@ queue_teardown <- function(queue) {
   topoll <- list()
   for (i in seq_len(num)) {
     if (!is.null(tasks$worker[[i]])) {
-      tasks$worker[[i]]$call(clean_fn)
-      topoll <- c(topoll, tasks$worker[[i]]$get_poll_connection())
+      # The worker might have crashed or exited, so this might fail.
+      # If it does then we'll just ignore that worker
+      tryCatch({
+        tasks$worker[[i]]$call(clean_fn)
+        topoll <- c(topoll, tasks$worker[[i]]$get_poll_connection())
+      }, error = function(e) tasks$worker[i] <- list(NULL))
     }
   }
 
