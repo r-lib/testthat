@@ -121,7 +121,7 @@ waldo_compare <- function(x, y, ..., x_arg = "x", y_arg = "y") {
 }
 
 local_width <- function(width = 80, .env = parent.frame()) {
-  withr::local_options(list(width = width), .local_envir = .env)
+  withr::local_options(list(width = width, cli.width = width), .local_envir = .env)
   withr::local_envvar(list(RSTUDIO_CONSOLE_WIDTH = width), .local_envir = .env)
 }
 
