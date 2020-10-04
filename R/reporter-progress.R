@@ -194,6 +194,7 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
       } else if (expectation_skip(result)) {
         self$n_skip <- self$n_skip + 1
         self$ctxt_n_skip <- self$ctxt_n_skip + 1
+        self$ctxt_issues$push(result)
         self$skips$push(result$message)
       } else if (expectation_warning(result)) {
         self$n_warn <- self$n_warn + 1
