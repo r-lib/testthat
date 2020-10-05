@@ -23,7 +23,7 @@ find_parallel <- function(path, load_package = "source", package = NULL) {
     ed <- as.integer(desc$get_field("Config/testthat/edition", default = 2L))
     if (ed < 3) {
       inform("Running tests in parallel requires the 3rd edition")
-      want_parallel <- FALSE
+      par <- FALSE
     }
   }
 
