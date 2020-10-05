@@ -129,9 +129,9 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
         }
         status <- spinner(self$frames, data$n)
         if (data$n_fail > 0) {
-          status <- crayon::red(status)
+          status <- colourise(status, "failure")
         } else if (data$n_warn > 0) {
-          status <- crayon::magenta(status)
+          status <- colourise(status, "warning")
         }
       }
 
