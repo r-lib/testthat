@@ -283,14 +283,6 @@
     [ FAIL 4 | WARN 0 | SKIP 0 | PASS 1 ]
     [ FAIL 4 | WARN 0 | SKIP 1 | PASS 1 ]
     [ FAIL 4 | WARN 0 | SKIP 2 | PASS 1 ]
-    
-    -- Skip (tests.R:37:3): explicit skips are reported ----------------------------
-    Reason: skip
-    
-    -- Skip (tests.R:40:1): empty tests are implicitly skipped ---------------------
-    Reason: empty test
-    
-    
     [ FAIL 4 | WARN 0 | SKIP 2 | PASS 1 ]
     [ FAIL 4 | WARN 1 | SKIP 2 | PASS 1 ]
     
