@@ -47,7 +47,9 @@
 
 
 <meta property="og:title" content="Verify output — verify_output" />
-<meta property="og:description" content="This is a regression test that records interwoven code and output into a
+<meta property="og:description" content="
+This function is superseded in favour of expect_snapshot() and friends.
+This is a regression test that records interwoven code and output into a
 file, in a similar way to knitting an .Rmd file (but see caveats below).
 verify_output() is designed particularly for testing print methods and error
 messages, where the primary goal is to ensure that the output is helpful to
@@ -200,7 +202,9 @@ from the previous run, you'll need to use git diff or similar." />
     </div>
 
     <div class="ref-description">
-    <p>This is a regression test that records interwoven code and output into a
+    <p><a href='https://www.tidyverse.org/lifecycle/#superseded'><img src='figures/lifecycle-superseded.svg' alt='Superseded lifecycle'></a></p>
+<p>This function is superseded in favour of <code><a href='expect_snapshot.html'>expect_snapshot()</a></code> and friends.</p>
+<p>This is a regression test that records interwoven code and output into a
 file, in a similar way to knitting an <code>.Rmd</code> file (but see caveats below).</p>
 <p><code>verify_output()</code> is designed particularly for testing print methods and error
 messages, where the primary goal is to ensure that the output is helpful to
@@ -277,53 +281,6 @@ messages are often fragile due to implicit dependencies on other packages,
 and failure does not imply incorrect computation, just a change in
 presentation.</p>
 
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># The first argument would usually be `test_path("informative-name.txt"`)</span>
-<span class='co'># but that is not permitted in examples</span>
-<span class='kw'>path</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempfile</a></span>()
-<span class='fu'>verify_output</span>(<span class='kw'>path</span>, {
-   <span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='kw'>mtcars</span>)
-   <span class='fu'><a href='https://rdrr.io/r/base/Log.html'>log</a></span>(<span class='op'>-</span><span class='fl'>10</span>)
-   <span class='st'>"a"</span> <span class='op'>*</span> <span class='fl'>3</span>
-})
-</div><div class='output co'>#&gt; <span class='warning'>Warning: Creating reference output</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/writeLines.html'>writeLines</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/readLines.html'>readLines</a></span>(<span class='kw'>path</span>))
-</div><div class='output co'>#&gt; &gt; head(mtcars)
-#&gt;                    mpg cyl disp  hp drat    wt  qsec vs am gear carb
-#&gt; Mazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
-#&gt; Mazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4
-#&gt; Datsun 710        22.8   4  108  93 3.85 2.320 18.61  1  1    4    1
-#&gt; Hornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44  1  0    3    1
-#&gt; Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2
-#&gt; Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1
-#&gt; 
-#&gt; &gt; log(-10)
-#&gt; Warning in log(-10): NaNs produced
-#&gt; 
-#&gt; [1] NaN
-#&gt; 
-#&gt; &gt; "a" * 3
-#&gt; Error in "a" * 3: non-numeric argument to binary operator
-#&gt; </div><div class='input'>
-<span class='co'># Use strings to create comments in the output</span>
-<span class='fu'>verify_output</span>(<span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempfile</a></span>(), {
-   <span class='st'>"Print method"</span>
-   <span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='kw'>mtcars</span>)
-
-   <span class='st'>"Warning"</span>
-   <span class='fu'><a href='https://rdrr.io/r/base/Log.html'>log</a></span>(<span class='op'>-</span><span class='fl'>10</span>)
-
-   <span class='st'>"Error"</span>
-   <span class='st'>"a"</span> <span class='op'>*</span> <span class='fl'>3</span>
-})
-</div><div class='output co'>#&gt; <span class='warning'>Warning: Creating reference output</span></div><div class='input'>
-<span class='co'># Use strings starting with # to create headings</span>
-<span class='fu'>verify_output</span>(<span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempfile</a></span>(), {
-   <span class='st'>"# Base functions"</span>
-   <span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='kw'>mtcars</span>)
-   <span class='fu'><a href='https://rdrr.io/r/base/Log.html'>log</a></span>(<span class='op'>-</span><span class='fl'>10</span>)
-   <span class='st'>"a"</span> <span class='op'>*</span> <span class='fl'>3</span>
-})
-</div><div class='output co'>#&gt; <span class='warning'>Warning: Creating reference output</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
