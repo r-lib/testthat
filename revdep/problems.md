@@ -144,14 +144,14 @@ Run `cloud_details(, "diffobj")` for more info
       Running ‘run.R’
     Running the tests in ‘tests/run.R’ failed.
     Last 13 lines of output:
-      ⠏ |   0       | testthat.warnings                                               
-      ⠏ |   0       | warnings                                                        
-      ⠹ |   3       | warnings                                                        
+      ⠙ |   2       | warnings                                                        
+      ⠸ |   4       | warnings                                                        
+      ⠼ |   5       | warnings                                                        
       ⠴ |   6       | warnings                                                        
-      ✔ |   7       | warnings [0.3 s]
+      ✔ |   7       | warnings [0.7 s]
       
       ══ Results ═════════════════════════════════════════════════════════════════════
-      Duration: 26.1 s
+      Duration: 44.7 s
       
       ── Skipped tests  ──────────────────────────────────────────────────────────────
       ● empty test (3)
@@ -169,7 +169,7 @@ Run `cloud_details(, "diffobj")` for more info
 * GitHub: https://github.com/statnet/ergm.ego
 * Source code: https://github.com/cran/ergm.ego
 * Date/Publication: 2019-05-31 16:00:03 UTC
-* Number of recursive dependencies: 57
+* Number of recursive dependencies: 58
 
 Run `cloud_details(, "ergm.ego")` for more info
 
@@ -203,40 +203,63 @@ Run `cloud_details(, "ergm.ego")` for more info
       Execution halted
     ```
 
-# forecastHybrid
+## In both
+
+*   checking examples ... WARNING
+    ```
+    ...
+      Warning: 'compact.rle' is deprecated.
+      Warning: 'compact.rle' is deprecated.
+      Warning: 'compact.rle' is deprecated.
+      Warning: 'compact.rle' is deprecated.
+      Warning: 'compact.rle' is deprecated.
+      Warning: 'compact.rle' is deprecated.
+      Warning: 'compact.rle' is deprecated.
+      Warning: 'compact.rle' is deprecated.
+      Warning: 'compact.rle' is deprecated.
+      Warning: 'compact.rle' is deprecated.
+      Warning: 'compact.rle' is deprecated.
+      Warning: 'compact.rle' is deprecated.
+      Warning: 'compact.rle' is deprecated.
+      Warning: 'compact.rle' is deprecated.
+      Warning: 'compact.rle' is deprecated.
+      Warning: 'compact.rle' is deprecated.
+      Warning: 'compact.rle' is deprecated.
+      Warning: 'compact.rle' is deprecated.
+    Deprecated functions may be defunct as soon as of the next release of
+    R.
+    See ?Deprecated.
+    ```
+
+# fdaPDE
 
 <details>
 
-* Version: 5.0.19
-* GitHub: https://github.com/ellisp/forecastHybrid
-* Source code: https://github.com/cran/forecastHybrid
-* Date/Publication: 2020-08-28 06:30:03 UTC
-* Number of recursive dependencies: 88
+* Version: 1.0-9
+* GitHub: NA
+* Source code: https://github.com/cran/fdaPDE
+* Date/Publication: 2020-05-15 15:10:02 UTC
+* Number of recursive dependencies: 66
 
-Run `cloud_details(, "forecastHybrid")` for more info
+Run `cloud_details(, "fdaPDE")` for more info
 
 </details>
 
 ## Newly broken
 
-*   checking examples ... ERROR
+*   checking installed package size ... NOTE
     ```
-    Running examples in ‘forecastHybrid-Ex.R’ failed
-    The error most likely occurred in:
-    
-    > ### Name: cvts
-    > ### Title: Cross validation for time series
-    > ### Aliases: cvts
-    > 
-    > ### ** Examples
-    > 
-    > series <- subset(AirPassengers, end = 50)
-    > cvmod1 <- cvts(series, FUN = snaive,
-    +                windowSize = 25, maxHorizon = 12)
-    Error in serverSocket(port = port) : 
-      creation of server socket failed: port 11142 cannot be opened
-    Calls: cvts -> <Anonymous> -> serverSocket
-    Execution halted
+      installed size is 78.4Mb
+      sub-directories of 1Mb or more:
+        libs  78.0Mb
+    ```
+
+## Newly fixed
+
+*   checking whether package ‘fdaPDE’ can be installed ... ERROR
+    ```
+    Installation failed.
+    See ‘/tmp/workdir/fdaPDE/old/fdaPDE.Rcheck/00install.out’ for details.
     ```
 
 # GroupSeq
@@ -406,6 +429,44 @@ Run `cloud_details(, "IncDTW")` for more info
     GNU make is a SystemRequirements.
     ```
 
+# kiwisR
+
+<details>
+
+* Version: 0.2.0
+* GitHub: https://github.com/rywhale/kiwisR
+* Source code: https://github.com/cran/kiwisR
+* Date/Publication: 2020-07-13 14:20:02 UTC
+* Number of recursive dependencies: 69
+
+Run `cloud_details(, "kiwisR")` for more info
+
+</details>
+
+## Newly broken
+
+*   checking tests ... ERROR
+    ```
+      Running ‘testthat.R’
+    Running the tests in ‘tests/testthat.R’ failed.
+    Last 13 lines of output:
+      > library(testthat)
+      > library(kiwisR)
+      > 
+      > test_check("kiwisR")
+      ── FAILURE (test_ki_station_list.R:71:3): ki_station_list accepts custom return 
+      `stn_cust_retr` not equal to `stn_cust_retr2`.
+      Component "station_id": 76 string mismatches
+      Component "station_no": 76 string mismatches
+      
+      ══ testthat results  ═══════════════════════════════════════════════════════════
+      FAILURE (test_ki_station_list.R:71:3): ki_station_list accepts custom return fields (vector or string)
+      
+      [ FAIL 1 | WARN 0 | SKIP 0 | PASS 54 ]
+      Error: Test failures
+      Execution halted
+    ```
+
 # mlrCPO
 
 <details>
@@ -441,83 +502,6 @@ Run `cloud_details(, "mlrCPO")` for more info
           █
        1. └─testthat::test_check("mlrCPO", filter = "^_cpo_")
        2.   └─testthat::test_dir(...)
-      Execution halted
-    ```
-
-# mvrsquared
-
-<details>
-
-* Version: 0.1.0
-* GitHub: https://github.com/TommyJones/mvrsquared
-* Source code: https://github.com/cran/mvrsquared
-* Date/Publication: 2020-06-25 06:00:06 UTC
-* Number of recursive dependencies: 94
-
-Run `cloud_details(, "mvrsquared")` for more info
-
-</details>
-
-## Newly broken
-
-*   checking tests ... ERROR
-    ```
-      Running ‘spelling.R’
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Last 13 lines of output:
-      1/1 mismatches
-      [1] 0.846 - 0.849 == -0.003
-      
-      ── FAILURE (test-mvrsquared.R:50:3): Multithreading works as expected ──────────
-      `r2` not equal to 1 - ss[[1]]/ss[[2]].
-      1/1 mismatches
-      [1] 0.846 - 0.849 == -0.0022
-      
-      ══ testthat results  ═══════════════════════════════════════════════════════════
-      FAILURE (test-mvrsquared.R:44:3): Multithreading works as expected
-      FAILURE (test-mvrsquared.R:50:3): Multithreading works as expected
-      
-      [ FAIL 2 | WARN 0 | SKIP 0 | PASS 23 ]
-      Error: Test failures
-      Execution halted
-    ```
-
-# nestfs
-
-<details>
-
-* Version: 1.0
-* GitHub: https://github.com/mcol/nestfs
-* Source code: https://github.com/cran/nestfs
-* Date/Publication: 2019-09-21 15:30:02 UTC
-* Number of recursive dependencies: 28
-
-Run `cloud_details(, "nestfs")` for more info
-
-</details>
-
-## Newly broken
-
-*   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Last 13 lines of output:
-      Component "panel": Lengths (2, 3) differ (string compare on first 2)
-      Component "final.model": 1 string mismatch
-      Component "iter1": Attributes: < Component "row.names": 1 string mismatch >
-      ...
-      
-      ── FAILURE (test_forward_selection.R:111:3): univariate filter ─────────────────
-      fs.1$panel has length 2, not length 3.
-      
-      ══ testthat results  ═══════════════════════════════════════════════════════════
-      FAILURE (test_forward_selection.R:110:3): univariate filter
-      FAILURE (test_forward_selection.R:111:3): univariate filter
-      
-      [ FAIL 2 | WARN 0 | SKIP 0 | PASS 165 ]
-      Error: Test failures
       Execution halted
     ```
 
@@ -559,6 +543,44 @@ Run `cloud_details(, "pak")` for more info
       Execution halted
     ```
 
+# ps
+
+<details>
+
+* Version: 1.3.4
+* GitHub: https://github.com/r-lib/ps
+* Source code: https://github.com/cran/ps
+* Date/Publication: 2020-08-11 14:30:02 UTC
+* Number of recursive dependencies: 41
+
+Run `cloud_details(, "ps")` for more info
+
+</details>
+
+## Newly broken
+
+*   checking tests ... ERROR
+    ```
+      Running ‘testthat.R’
+    Running the tests in ‘tests/testthat.R’ failed.
+    Last 13 lines of output:
+      ⠏ |   0       | winver                                                          
+      ✔ |   6       | winver
+      
+      ══ Results ═════════════════════════════════════════════════════════════════════
+      Duration: 12.0 s
+      
+      ── Skipped tests  ──────────────────────────────────────────────────────────────
+      ● Needs working IPv6 connection (1)
+      ● On CRAN (11)
+      ● no terminal (1)
+      ● socat is not available (7)
+      
+      [ FAIL 2 | WARN 0 | SKIP 20 | PASS 416 ]
+      Error: Test failures
+      Execution halted
+    ```
+
 # pyMTurkR
 
 <details>
@@ -587,7 +609,7 @@ Run `cloud_details(, "pyMTurkR")` for more info
       ────────────────────────────────────────────────────────────────────────────────
       
       ══ Results ═════════════════════════════════════════════════════════════════════
-      Duration: 3.4 s
+      Duration: 3.2 s
       
       ── Skipped tests  ──────────────────────────────────────────────────────────────
       ● CheckAWSKeys() is not TRUE (58)
@@ -739,7 +761,6 @@ Run `cloud_details(, "rvgtest")` for more info
       Running ‘dotestthat.R’
     Running the tests in ‘tests/dotestthat.R’ failed.
     Last 13 lines of output:
-      Backtrace:
        1. testthat::expect_error(...) test_Runuran.R:100:8
        6. rvgtest::xerror(...)
       
@@ -752,6 +773,7 @@ Run `cloud_details(, "rvgtest")` for more info
        6. rvgtest::plot.rvgt.ierror()
       
       ══ DONE ════════════════════════════════════════════════════════════════════════
+      Keep trying!
       Error: Test failures
       Execution halted
     ```
@@ -820,6 +842,54 @@ Run `cloud_details(, "shinyEventLogger")` for more info
       [ FAIL 1 | WARN 0 | SKIP 0 | PASS 135 ]
       Error: Test failures
       Execution halted
+    ```
+
+# spectralGraphTopology
+
+<details>
+
+* Version: 0.2.0
+* GitHub: https://github.com/dppalomar/spectralGraphTopology
+* Source code: https://github.com/cran/spectralGraphTopology
+* Date/Publication: 2019-10-12 08:00:03 UTC
+* Number of recursive dependencies: 114
+
+Run `cloud_details(, "spectralGraphTopology")` for more info
+
+</details>
+
+## Newly broken
+
+*   checking tests ... ERROR
+    ```
+      Running ‘testthat.R’
+    Running the tests in ‘tests/testthat.R’ failed.
+    Last 13 lines of output:
+      > library(spectralGraphTopology)
+      > 
+      > test_check("spectralGraphTopology")
+      ── FAILURE (test-learnGraphTopology.R:65:3): learn_bipartite_k_component_graph c
+      graph$convergence is not TRUE
+      
+      `actual`:   FALSE
+      `expected`: TRUE 
+      
+      ══ testthat results  ═══════════════════════════════════════════════════════════
+      FAILURE (test-learnGraphTopology.R:65:3): learn_bipartite_k_component_graph can learn k-component bipartite graph
+      
+      [ FAIL 1 | WARN 0 | SKIP 0 | PASS 91 ]
+      Error: Test failures
+      Execution halted
+    ```
+
+## In both
+
+*   checking installed package size ... NOTE
+    ```
+      installed size is  7.2Mb
+      sub-directories of 1Mb or more:
+        doc    3.1Mb
+        libs   3.7Mb
     ```
 
 # storr
@@ -998,19 +1068,19 @@ Run `cloud_details(, "unitizer")` for more info
       Running ‘runtt.R’
     Running the tests in ‘tests/runtt.R’ failed.
     Last 13 lines of output:
-      ────────────────────────────────────────────────────────────────────────────────
       
+      ✔ |  15       | Unitize 2 [7.6 s]
       
-      
+      ⠏ |   0       | testthat.zzrunlast                                              ALL TESTS COMPLETED!
       
       ══ Results ═════════════════════════════════════════════════════════════════════
-      Duration: 8.3 s
+      Duration: 53.5 s
       
       ── Skipped tests  ──────────────────────────────────────────────────────────────
+      ● empty test (3)
       ● fails CRAN (2)
       
-      [ FAIL 10 | WARN 14 | SKIP 2 | PASS 462 ]
-      ══ Terminated early ════════════════════════════════════════════════════════════
+      [ FAIL 1 | WARN 15 | SKIP 5 | PASS 834 ]
       Error: Test failures
       Execution halted
     ```
@@ -1086,6 +1156,8 @@ Run `cloud_details(, "vein")` for more info
       Running ‘testthat.R’
     Running the tests in ‘tests/testthat.R’ failed.
     Last 13 lines of output:
+        2.   └─testthat::test_dir(...)
+        3.     └─testthat:::test_files(...)
         4.       └─testthat:::test_files(...)
         5.         ├─testthat::with_reporter(...)
         6.         │ ├─base::withRestarts(...)
@@ -1098,8 +1170,6 @@ Run `cloud_details(, "vein")` for more info
       <parent: error>
       Backtrace:
       █
-      Error in rs_call(self, private, func, args) : R session not ready yet
-      Calls: test_check ... test_dir -> test_files -> test_files -> <Anonymous>
       Execution halted
     ```
 
