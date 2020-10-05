@@ -87,10 +87,6 @@ test_dir <- function(path,
   }
 
   want_parallel <- find_parallel(path, load_package, package)
-  if (want_parallel && find_edition(path, package) < 3) {
-    inform("Running tests in parallel requires the 3rd edition")
-    want_parallel <- FALSE
-  }
 
   if (is.null(reporter)) {
     if (want_parallel) {
