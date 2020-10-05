@@ -35,6 +35,10 @@ test on your CI platforms that don't support UTF-8 (e.g. Windows).}
 \item{env}{The environment to evaluate \code{code} in.}
 }
 \description{
+\ifelse{html}{\out{<a href='https://www.tidyverse.org/lifecycle/#superseded'><img src='figures/lifecycle-superseded.svg' alt='Superseded lifecycle'></a>}}{\strong{Superseded}}
+
+This function is superseded in favour of \code{expect_snapshot()} and friends.
+
 This is a regression test that records interwoven code and output into a
 file, in a similar way to knitting an \code{.Rmd} file (but see caveats below).
 
@@ -67,35 +71,4 @@ and failure does not imply incorrect computation, just a change in
 presentation.
 }
 
-\examples{
-# The first argument would usually be `test_path("informative-name.txt"`)
-# but that is not permitted in examples
-path <- tempfile()
-verify_output(path, {
-   head(mtcars)
-   log(-10)
-   "a" * 3
-})
-writeLines(readLines(path))
-
-# Use strings to create comments in the output
-verify_output(tempfile(), {
-   "Print method"
-   head(mtcars)
-
-   "Warning"
-   log(-10)
-
-   "Error"
-   "a" * 3
-})
-
-# Use strings starting with # to create headings
-verify_output(tempfile(), {
-   "# Base functions"
-   head(mtcars)
-   log(-10)
-   "a" * 3
-})
-}
 \keyword{internal}
