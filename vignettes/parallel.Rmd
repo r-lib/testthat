@@ -19,6 +19,10 @@ To take advantage of parallel tests, add the following line to the `DESCRIPTION`
 
     Config/testthat/parallel: true
 
+You'll also need to be using the 3rd edition:
+
+    Config/testthat/edition: 3
+
 ## Basic operation
 
 Starting a new R process is relatively expensive, so testthat begins by creating a pool of workers.
