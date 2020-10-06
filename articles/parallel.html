@@ -151,6 +151,8 @@
     
 <p>To take advantage of parallel tests, add the following line to the <code>DESCRIPTION</code>:</p>
 <pre><code>Config/testthat/parallel: true</code></pre>
+<p>You’ll also need to be using the 3rd edition:</p>
+<pre><code>Config/testthat/edition: 3</code></pre>
 <div id="basic-operation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basic-operation" class="anchor"></a>Basic operation</h2>
@@ -210,7 +212,7 @@
 <li><p>Reporters report all information about a file at once, unless they support <em>parallel updates</em>. E.g. <code>ProgressReporter</code> does not update its display until a test file is complete.</p></li>
 <li>
 <p>The standard output and standard error, i.e. <code><a href="https://rdrr.io/r/base/print.html">print()</a></code>, <code><a href="https://rdrr.io/r/base/cat.html">cat()</a></code>, <code><a href="https://rdrr.io/r/base/message.html">message()</a></code>, etc. output from the test files are lost currently. If you want to use <code><a href="https://rdrr.io/r/base/cat.html">cat()</a></code> or <code><a href="https://rdrr.io/r/base/message.html">message()</a></code> for print-debugging test cases, then the best is to temporarily run tests sequentially, by changing the <code>Config</code> entry in <code>DESCRIPTION</code> or selecting a non-parallel reporter, e.g. the <code>CheckReporter</code>:</p>
-<div class="sourceCode" id="cb3"><pre class="downlit">
+<div class="sourceCode" id="cb4"><pre class="downlit">
 <span class="kw">devtools</span>::<span class="fu">test</span>(filter = <span class="st">"badtest"</span>, reporter = <span class="st">"check"</span>)
 </pre></div>
 </li>
@@ -221,7 +223,7 @@
 <a href="#writing-parallel-reporters" class="anchor"></a>Writing parallel reporters</h3>
 <p>To support parallel tests, a reporter must be able to function when the test files run in a subprocess. For example <code>DebugReporter</code> does not support parallel tests, because it requires direct interaction with the frames in the subprocess. When running in parallel, testthat does not provide location information (source references) for test successes.</p>
 <p>To support parallel tests, a reporter must set <code>self$capabilities$parallel_support</code> to <code>TRUE</code> in its <code>initialize()</code> method:</p>
-<div class="sourceCode" id="cb4"><pre class="downlit">
+<div class="sourceCode" id="cb5"><pre class="downlit">
 <span class="kw">...</span>
 <span class="kw">initialize</span> <span class="op">=</span> <span class="fu">function</span>(<span class="kw">...</span>) {
   <span class="kw">super</span><span class="op">$</span><span class="fu">initialize</span>(<span class="kw">...</span>)
@@ -238,7 +240,7 @@
 <a href="#parallel-updates" class="anchor"></a>Parallel updates</h3>
 <p>The <code>ParallelProgressReporter</code> supports parallel updates. This means that once a message from a subprocess comes in, the reporter is updated immediately. For this to work, a reporter must be able to handle multiple test files concurrently.</p>
 <p>A reporter declares parallel update support by setting <code>self$capabilities$parallel_updates</code> to <code>TRUE</code>:</p>
-<div class="sourceCode" id="cb5"><pre class="downlit">
+<div class="sourceCode" id="cb6"><pre class="downlit">
 <span class="kw">...</span>
 <span class="kw">initialize</span> <span class="op">=</span> <span class="fu">function</span>(<span class="kw">...</span>) {
   <span class="kw">super</span><span class="op">$</span><span class="fu">initialize</span>(<span class="kw">...</span>)
