@@ -128,6 +128,11 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
           return()
         }
         status <- spinner(self$frames, data$n)
+        if (data$n_fail > 0) {
+          status <- colourise(status, "failure")
+        } else if (data$n_warn > 0) {
+          status <- colourise(status, "warning")
+        }
       }
 
       col_format <- function(n, type) {
