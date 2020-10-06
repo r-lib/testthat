@@ -34,7 +34,7 @@ There are two types of \code{.R} file that have special behaviour:
 \item Test files start with \code{test} and are executed in alphabetical order.
 \item Setup files start with \code{setup} and are executed before tests. If
 clean up is needed after all tests have been run, you can use
-\code{withr::defer(clean_up(), teardown_env())}. See \verb{vignette("text-fixtures)}
+\code{withr::defer(clean_up(), teardown_env())}. See \code{vignette("text-fixtures")}
 for more details.
 }
 
