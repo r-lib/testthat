@@ -1,3 +1,48 @@
+# auk
+
+<details>
+
+* Version: 0.4.1
+* GitHub: https://github.com/CornellLabofOrnithology/auk
+* Source code: https://github.com/cran/auk
+* Date/Publication: 2020-04-03 14:00:02 UTC
+* Number of recursive dependencies: 79
+
+Run `cloud_details(, "auk")` for more info
+
+</details>
+
+## Newly broken
+
+*   checking tests ... ERROR
+    ```
+      Running ‘testthat.R’
+    Running the tests in ‘tests/testthat.R’ failed.
+    Last 13 lines of output:
+      Reason: On CRAN
+      
+      ── Skip (test_get-ebird-taxonomy.r:42:3): get_ebird_taxonomy error handling ────
+      Reason: On CRAN
+      
+      ── Skipped tests  ──────────────────────────────────────────────────────────────
+      ● On CRAN (21)
+      
+      ══ testthat results  ═══════════════════════════════════════════════════════════
+      Warning (test_auk-rollup.r:4:3): auk_rollup rolls up to species level
+      ERROR (test_filters.r:39:3): auk_species
+      
+      [ FAIL 1 | WARN 1 | SKIP 21 | PASS 379 ]
+      Error: Test failures
+      Execution halted
+    ```
+
+## In both
+
+*   checking data for non-ASCII characters ... NOTE
+    ```
+      Note: found 552 marked UTF-8 strings
+    ```
+
 # bigstatsr
 
 <details>
@@ -123,44 +168,6 @@ Run `cloud_details(, "DiceKriging")` for more info
       Execution halted
     ```
 
-# diffobj
-
-<details>
-
-* Version: 0.3.0
-* GitHub: https://github.com/brodieG/diffobj
-* Source code: https://github.com/cran/diffobj
-* Date/Publication: 2020-05-11 11:20:03 UTC
-* Number of recursive dependencies: 37
-
-Run `cloud_details(, "diffobj")` for more info
-
-</details>
-
-## Newly broken
-
-*   checking tests ... ERROR
-    ```
-      Running ‘run.R’
-    Running the tests in ‘tests/run.R’ failed.
-    Last 13 lines of output:
-      ⠙ |   2       | warnings                                                        
-      ⠸ |   4       | warnings                                                        
-      ⠼ |   5       | warnings                                                        
-      ⠴ |   6       | warnings                                                        
-      ✔ |   7       | warnings [0.7 s]
-      
-      ══ Results ═════════════════════════════════════════════════════════════════════
-      Duration: 44.7 s
-      
-      ── Skipped tests  ──────────────────────────────────────────────────────────────
-      ● empty test (3)
-      
-      [ FAIL 4 | WARN 0 | SKIP 3 | PASS 591 ]
-      Error: Test failures
-      Execution halted
-    ```
-
 # ergm.ego
 
 <details>
@@ -231,57 +238,26 @@ Run `cloud_details(, "ergm.ego")` for more info
     See ?Deprecated.
     ```
 
-# fdaPDE
+# gWidgets2tcltk
 
 <details>
 
-* Version: 1.0-9
-* GitHub: NA
-* Source code: https://github.com/cran/fdaPDE
-* Date/Publication: 2020-05-15 15:10:02 UTC
-* Number of recursive dependencies: 66
+* Version: 1.0-6
+* GitHub: https://github.com/jverzani/gWidgets2tcltk
+* Source code: https://github.com/cran/gWidgets2tcltk
+* Date/Publication: 2018-09-25 13:20:02 UTC
+* Number of recursive dependencies: 26
 
-Run `cloud_details(, "fdaPDE")` for more info
+Run `cloud_details(, "gWidgets2tcltk")` for more info
 
 </details>
 
 ## Newly broken
 
-*   checking installed package size ... NOTE
-    ```
-      installed size is 78.4Mb
-      sub-directories of 1Mb or more:
-        libs  78.0Mb
-    ```
-
-## Newly fixed
-
-*   checking whether package ‘fdaPDE’ can be installed ... ERROR
+*   checking whether package ‘gWidgets2tcltk’ can be installed ... ERROR
     ```
     Installation failed.
-    See ‘/tmp/workdir/fdaPDE/old/fdaPDE.Rcheck/00install.out’ for details.
-    ```
-
-# GroupSeq
-
-<details>
-
-* Version: 1.3.5
-* GitHub: https://github.com/rpahl/GroupSeq
-* Source code: https://github.com/cran/GroupSeq
-* Date/Publication: 2018-04-11 15:00:32 UTC
-* Number of recursive dependencies: 24
-
-Run `cloud_details(, "GroupSeq")` for more info
-
-</details>
-
-## Newly broken
-
-*   checking whether package ‘GroupSeq’ can be installed ... ERROR
-    ```
-    Installation failed.
-    See ‘/tmp/workdir/GroupSeq/new/GroupSeq.Rcheck/00install.out’ for details.
+    See ‘/tmp/workdir/gWidgets2tcltk/new/gWidgets2tcltk.Rcheck/00install.out’ for details.
     ```
 
 ## Installation
@@ -289,35 +265,33 @@ Run `cloud_details(, "GroupSeq")` for more info
 ### Devel
 
 ```
-* installing *source* package ‘GroupSeq’ ...
-** package ‘GroupSeq’ successfully unpacked and MD5 sums checked
+* installing *source* package ‘gWidgets2tcltk’ ...
+** package ‘gWidgets2tcltk’ successfully unpacked and MD5 sums checked
 ** using staged installation
 ** R
+** demo
+** inst
 ** byte-compile and prepare package for lazy loading
-Warning in fun(libname, pkgname) : couldn't connect to display ":109"
-** help
-*** installing help indices
-** building package indices
-** testing if installed package can be loaded from temporary location
-Warning in fun(libname, pkgname) : couldn't connect to display ":109"
-Error: package or namespace load failed for ‘GroupSeq’:
- .onAttach failed in attachNamespace() for 'GroupSeq', details:
-  call: structure(.External(.C_dotTclObjv, objv), class = "tclObj")
-  error: [tcl] invalid command name "toplevel".
+Warning message:
+In fun(libname, pkgname) : couldn't connect to display ":109"
+Error in structure(.External(.C_dotTclObjv, objv), class = "tclObj") : 
+  [tcl] invalid command name "font".
 
-Error: loading failed
+Error: unable to load R code in package ‘gWidgets2tcltk’
 Execution halted
-ERROR: loading failed
-* removing ‘/tmp/workdir/GroupSeq/new/GroupSeq.Rcheck/GroupSeq’
+ERROR: lazy loading failed for package ‘gWidgets2tcltk’
+* removing ‘/tmp/workdir/gWidgets2tcltk/new/gWidgets2tcltk.Rcheck/gWidgets2tcltk’
 
 ```
 ### CRAN
 
 ```
-* installing *source* package ‘GroupSeq’ ...
-** package ‘GroupSeq’ successfully unpacked and MD5 sums checked
+* installing *source* package ‘gWidgets2tcltk’ ...
+** package ‘gWidgets2tcltk’ successfully unpacked and MD5 sums checked
 ** using staged installation
 ** R
+** demo
+** inst
 ** byte-compile and prepare package for lazy loading
 ** help
 *** installing help indices
@@ -325,7 +299,7 @@ ERROR: loading failed
 ** testing if installed package can be loaded from temporary location
 ** testing if installed package can be loaded from final location
 ** testing if installed package keeps a record of temporary installation path
-* DONE (GroupSeq)
+* DONE (gWidgets2tcltk)
 
 ```
 # hyperSpec
@@ -377,96 +351,6 @@ Run `cloud_details(, "hyperSpec")` for more info
     Packages unavailable to check Rd xrefs: ‘reshape2’, ‘caTools’
     ```
 
-# IncDTW
-
-<details>
-
-* Version: 1.1.3.1
-* GitHub: NA
-* Source code: https://github.com/cran/IncDTW
-* Date/Publication: 2020-04-01 06:02:00 UTC
-* Number of recursive dependencies: 108
-
-Run `cloud_details(, "IncDTW")` for more info
-
-</details>
-
-## Newly broken
-
-*   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Last 13 lines of output:
-      
-      ── Skipped tests  ──────────────────────────────────────────────────────────────
-      ●  (4)
-      ●  there is no bug! (1)
-      ● blabla (1)
-      ● comparison 01-z (1)
-      ● runtime comparison (3)
-      ● speed comparison (2)
-      
-      ══ testthat results  ═══════════════════════════════════════════════════════════
-      ERROR (test_cm.R:62:4): custom dist function
-      
-      [ FAIL 1 | WARN 0 | SKIP 12 | PASS 169 ]
-      Error: Test failures
-      Execution halted
-    ```
-
-## In both
-
-*   checking installed package size ... NOTE
-    ```
-      installed size is  8.2Mb
-      sub-directories of 1Mb or more:
-        libs   6.4Mb
-    ```
-
-*   checking for GNU extensions in Makefiles ... NOTE
-    ```
-    GNU make is a SystemRequirements.
-    ```
-
-# kiwisR
-
-<details>
-
-* Version: 0.2.0
-* GitHub: https://github.com/rywhale/kiwisR
-* Source code: https://github.com/cran/kiwisR
-* Date/Publication: 2020-07-13 14:20:02 UTC
-* Number of recursive dependencies: 69
-
-Run `cloud_details(, "kiwisR")` for more info
-
-</details>
-
-## Newly broken
-
-*   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Last 13 lines of output:
-      > library(testthat)
-      > library(kiwisR)
-      > 
-      > test_check("kiwisR")
-      ── FAILURE (test_ki_station_list.R:71:3): ki_station_list accepts custom return 
-      `stn_cust_retr` not equal to `stn_cust_retr2`.
-      Component "station_id": 76 string mismatches
-      Component "station_no": 76 string mismatches
-      
-      ══ testthat results  ═══════════════════════════════════════════════════════════
-      FAILURE (test_ki_station_list.R:71:3): ki_station_list accepts custom return fields (vector or string)
-      
-      [ FAIL 1 | WARN 0 | SKIP 0 | PASS 54 ]
-      Error: Test failures
-      Execution halted
-    ```
-
 # mlrCPO
 
 <details>
@@ -502,6 +386,45 @@ Run `cloud_details(, "mlrCPO")` for more info
           █
        1. └─testthat::test_check("mlrCPO", filter = "^_cpo_")
        2.   └─testthat::test_dir(...)
+      Execution halted
+    ```
+
+# mvrsquared
+
+<details>
+
+* Version: 0.1.0
+* GitHub: https://github.com/TommyJones/mvrsquared
+* Source code: https://github.com/cran/mvrsquared
+* Date/Publication: 2020-06-25 06:00:06 UTC
+* Number of recursive dependencies: 94
+
+Run `cloud_details(, "mvrsquared")` for more info
+
+</details>
+
+## Newly broken
+
+*   checking tests ... ERROR
+    ```
+      Running ‘spelling.R’
+      Running ‘testthat.R’
+    Running the tests in ‘tests/testthat.R’ failed.
+    Last 13 lines of output:
+      1/1 mismatches
+      [1] 0.848 - 0.849 == -0.001
+      
+      ── FAILURE (test-mvrsquared.R:50:3): Multithreading works as expected ──────────
+      `r2` not equal to 1 - ss[[1]]/ss[[2]].
+      1/1 mismatches
+      [1] 0.848 - 0.849 == -0.000959
+      
+      ══ testthat results  ═══════════════════════════════════════════════════════════
+      FAILURE (test-mvrsquared.R:44:3): Multithreading works as expected
+      FAILURE (test-mvrsquared.R:50:3): Multithreading works as expected
+      
+      [ FAIL 2 | WARN 0 | SKIP 0 | PASS 23 ]
+      Error: Test failures
       Execution halted
     ```
 
@@ -543,44 +466,6 @@ Run `cloud_details(, "pak")` for more info
       Execution halted
     ```
 
-# ps
-
-<details>
-
-* Version: 1.3.4
-* GitHub: https://github.com/r-lib/ps
-* Source code: https://github.com/cran/ps
-* Date/Publication: 2020-08-11 14:30:02 UTC
-* Number of recursive dependencies: 41
-
-Run `cloud_details(, "ps")` for more info
-
-</details>
-
-## Newly broken
-
-*   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Last 13 lines of output:
-      ⠏ |   0       | winver                                                          
-      ✔ |   6       | winver
-      
-      ══ Results ═════════════════════════════════════════════════════════════════════
-      Duration: 12.0 s
-      
-      ── Skipped tests  ──────────────────────────────────────────────────────────────
-      ● Needs working IPv6 connection (1)
-      ● On CRAN (11)
-      ● no terminal (1)
-      ● socat is not available (7)
-      
-      [ FAIL 2 | WARN 0 | SKIP 20 | PASS 416 ]
-      Error: Test failures
-      Execution halted
-    ```
-
 # pyMTurkR
 
 <details>
@@ -609,7 +494,7 @@ Run `cloud_details(, "pyMTurkR")` for more info
       ────────────────────────────────────────────────────────────────────────────────
       
       ══ Results ═════════════════════════════════════════════════════════════════════
-      Duration: 3.2 s
+      Duration: 3.5 s
       
       ── Skipped tests  ──────────────────────────────────────────────────────────────
       ● CheckAWSKeys() is not TRUE (58)
@@ -701,45 +586,6 @@ Run `cloud_details(, "renv")` for more info
       ‘renv.Rmd’ using ‘UTF-8’... failed
     ```
 
-# rlang
-
-<details>
-
-* Version: 0.4.7
-* GitHub: https://github.com/r-lib/rlang
-* Source code: https://github.com/cran/rlang
-* Date/Publication: 2020-07-09 23:00:18 UTC
-* Number of recursive dependencies: 48
-
-Run `cloud_details(, "rlang")` for more info
-
-</details>
-
-## Newly broken
-
-*   checking tests ... ERROR
-    ```
-      Running ‘sink.R’
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Last 13 lines of output:
-      ● On CRAN (14)
-      ● Until the workaround is in place (1)
-      ● rlanglibtest cannot be loaded (1)
-      ● test needs crayon (1)
-      
-      ══ testthat results  ═══════════════════════════════════════════════════════════
-      Warning (test-eval-tidy.R:287:3): names are translated to native when creating data mask
-      Warning (test-nse-defuse.R:237:3): serialised unicode in `:=` LHS is unserialised
-      FAILURE (test-trace.R:24:3): tree printing only changes deliberately
-      FAILURE (test-trace.R:51:3): can print tree with collapsed branches
-      FAILURE (test-trace.R:63:3): can print tree with collapsed branches
-      
-      [ FAIL 3 | WARN 2 | SKIP 26 | PASS 2696 ]
-      Error: Test failures
-      Execution halted
-    ```
-
 # rvgtest
 
 <details>
@@ -773,7 +619,7 @@ Run `cloud_details(, "rvgtest")` for more info
        6. rvgtest::plot.rvgt.ierror()
       
       ══ DONE ════════════════════════════════════════════════════════════════════════
-      Keep trying!
+      Frustration is a natural part of programming :)
       Error: Test failures
       Execution halted
     ```
@@ -842,54 +688,6 @@ Run `cloud_details(, "shinyEventLogger")` for more info
       [ FAIL 1 | WARN 0 | SKIP 0 | PASS 135 ]
       Error: Test failures
       Execution halted
-    ```
-
-# spectralGraphTopology
-
-<details>
-
-* Version: 0.2.0
-* GitHub: https://github.com/dppalomar/spectralGraphTopology
-* Source code: https://github.com/cran/spectralGraphTopology
-* Date/Publication: 2019-10-12 08:00:03 UTC
-* Number of recursive dependencies: 114
-
-Run `cloud_details(, "spectralGraphTopology")` for more info
-
-</details>
-
-## Newly broken
-
-*   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Last 13 lines of output:
-      > library(spectralGraphTopology)
-      > 
-      > test_check("spectralGraphTopology")
-      ── FAILURE (test-learnGraphTopology.R:65:3): learn_bipartite_k_component_graph c
-      graph$convergence is not TRUE
-      
-      `actual`:   FALSE
-      `expected`: TRUE 
-      
-      ══ testthat results  ═══════════════════════════════════════════════════════════
-      FAILURE (test-learnGraphTopology.R:65:3): learn_bipartite_k_component_graph can learn k-component bipartite graph
-      
-      [ FAIL 1 | WARN 0 | SKIP 0 | PASS 91 ]
-      Error: Test failures
-      Execution halted
-    ```
-
-## In both
-
-*   checking installed package size ... NOTE
-    ```
-      installed size is  7.2Mb
-      sub-directories of 1Mb or more:
-        doc    3.1Mb
-        libs   3.7Mb
     ```
 
 # storr
@@ -998,10 +796,10 @@ Run `cloud_details(, "thor")` for more info
 
 <details>
 
-* Version: 2.0.3
-* GitHub: NA
+* Version: 2.0.5.1
+* GitHub: https://github.com/cszang/treeclim
 * Source code: https://github.com/cran/treeclim
-* Date/Publication: 2019-03-22 15:20:03 UTC
+* Date/Publication: 2020-10-08 13:50:02 UTC
 * Number of recursive dependencies: 61
 
 Run `cloud_details(, "treeclim")` for more info
@@ -1009,30 +807,6 @@ Run `cloud_details(, "treeclim")` for more info
 </details>
 
 ## Newly broken
-
-*   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Last 13 lines of output:
-      Warning (test_month_processing.R:7:3): continuity in month sequences is recognized correctly
-      Warning (test_month_processing.R:8:3): continuity in month sequences is recognized correctly
-      Warning (test_month_processing.R:9:3): continuity in month sequences is recognized correctly
-      Warning (test_month_processing.R:10:3): continuity in month sequences is recognized correctly
-      Warning (test_month_processing.R:22:3): ’check_months’ correctly identifies wrong month specs
-      Warning (test_month_processing.R:23:3): ’check_months’ correctly identifies wrong month specs
-      Warning (test_month_processing.R:24:3): ’check_months’ correctly identifies wrong month specs
-      Warning (test_month_processing.R:25:3): ’check_months’ correctly identifies wrong month specs
-      Warning (test_month_processing.R:26:3): ’check_months’ correctly identifies wrong month specs
-      Warning (test_month_processing.R:27:3): ’check_months’ correctly identifies wrong month specs
-      Warning (test_month_processing.R:28:3): ’check_months’ correctly identifies wrong month specs
-      
-      [ FAIL 1 | WARN 14 | SKIP 0 | PASS 147 ]
-      Error: Test failures
-      Execution halted
-    ```
-
-## In both
 
 *   checking installed package size ... NOTE
     ```
@@ -1044,6 +818,16 @@ Run `cloud_details(, "treeclim")` for more info
 *   checking Rd cross-references ... NOTE
     ```
     Package unavailable to check Rd xrefs: ‘dplR’
+    ```
+
+## Newly fixed
+
+*   checking package dependencies ... ERROR
+    ```
+    Package required and available but unsuitable version: ‘testthat’
+    
+    See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+    manual.
     ```
 
 # unitizer
@@ -1069,12 +853,12 @@ Run `cloud_details(, "unitizer")` for more info
     Running the tests in ‘tests/runtt.R’ failed.
     Last 13 lines of output:
       
-      ✔ |  15       | Unitize 2 [7.6 s]
+      ✔ |  15       | Unitize 2 [7.7 s]
       
       ⠏ |   0       | testthat.zzrunlast                                              ALL TESTS COMPLETED!
       
       ══ Results ═════════════════════════════════════════════════════════════════════
-      Duration: 53.5 s
+      Duration: 66.4 s
       
       ── Skipped tests  ──────────────────────────────────────────────────────────────
       ● empty test (3)
@@ -1082,94 +866,6 @@ Run `cloud_details(, "unitizer")` for more info
       
       [ FAIL 1 | WARN 15 | SKIP 5 | PASS 834 ]
       Error: Test failures
-      Execution halted
-    ```
-
-# vdiffr
-
-<details>
-
-* Version: 0.3.2.2
-* GitHub: https://github.com/r-lib/vdiffr
-* Source code: https://github.com/cran/vdiffr
-* Date/Publication: 2020-07-07 06:11:10 UTC
-* Number of recursive dependencies: 104
-
-Run `cloud_details(, "vdiffr")` for more info
-
-</details>
-
-## Newly broken
-
-*   checking tests ... ERROR
-    ```
-    ...
-        ='stroke-width: 1.07; stroke: none; stroke-linecap: square; str
-        oke-linejoin: miter; fill: #595959;' clip-path='url(#cpMjcuODl8
-        NzE0LjUyfDU0NS4xM3wyMi43Nw==)' />                              
-      > <line x1='417.00' y1='545.13' x2='417.00' y2='22.77' style='str
-      : oke-width: 1.07; stroke-linecap: butt;' clip-path='url(#cpMjcuO
-      : Dl8NzE0LjUyfDU0NS4xM3wyMi43Nw==)' />                           
-        <rect x='27.89' y='22.77' width='686.64' height='522.36' style=
-        'stroke-width: 1.07; stroke: #333333;' clip-path='url(#cpMjcuOD
-        l8NzE0LjUyfDU0NS4xM3wyMi43Nw==)' />                            
-        <defs>                                                         
-      
-    Running the tests in ‘tests/testthat.R’ failed.
-    Complete output:
-      > 
-      > if (getRversion() < "4.1.0") {
-      +   library("testthat")
-      +   library("vdiffr")
-      +   test_check("vdiffr")
-      + }
-      Error: Test failures
-      Execution halted
-    ```
-
-## In both
-
-*   checking dependencies in R code ... NOTE
-    ```
-    Namespace in Imports field not imported from: ‘freetypeharfbuzz’
-      All declared Imports should be used.
-    ```
-
-# vein
-
-<details>
-
-* Version: 0.9.0
-* GitHub: NA
-* Source code: https://github.com/cran/vein
-* Date/Publication: 2020-09-30 08:00:02 UTC
-* Number of recursive dependencies: 57
-
-Run `cloud_details(, "vein")` for more info
-
-</details>
-
-## Newly broken
-
-*   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Last 13 lines of output:
-        2.   └─testthat::test_dir(...)
-        3.     └─testthat:::test_files(...)
-        4.       └─testthat:::test_files(...)
-        5.         ├─testthat::with_reporter(...)
-        6.         │ ├─base::withRestarts(...)
-        7.         │ │ └─base:::withOneRestart(expr, restarts[[1L]])
-        8.         │ │   └─base:::doWithOneRestart(return(expr), restart)
-        9.         │ └─base::force(code)
-       10.         └─testthat:::parallel_event_loop_chunky(queue, reporters)
-       11.           └─queue$poll(Inf)
-       12.             └─base::lapply(...)
-      <parent: error>
-      Backtrace:
-      █
       Execution halted
     ```
 
