@@ -1,4 +1,4 @@
-# testthat (development version)
+# testthat 3.0.0
 
 ## 3rd edition
 
