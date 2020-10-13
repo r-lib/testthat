@@ -55,7 +55,7 @@
 #' }
 expect_snapshot_file <- function(path, name = basename(path), binary = TRUE, cran = FALSE) {
   edition_require(3, "expect_snapshot_file()")
-  if (cran && !interactive() && on_cran()) {
+  if (!cran && !interactive() && on_cran()) {
     skip("On CRAN")
   }
 
