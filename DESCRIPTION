@@ -23,7 +23,7 @@ Depends:
     R (>= 3.1)
 Imports:
     brio,
-    callr (>= 3.5.0.9001),
+    callr (>= 3.5.1),
     cli,
     crayon (>= 1.3.4),
     desc,
@@ -43,8 +43,6 @@ Imports:
     utils,
     waldo (>= 0.2.1),
     withr (>= 2.0.0)
-Remotes:
-    r-lib/callr
 Suggests: 
     covr,
     curl (>= 0.9.5),
