@@ -88,12 +88,12 @@ test_files_parallel <- function(
 default_num_cpus <- function() {
   # Use common option, if set
   ncpus <- getOption("Ncpus", NULL)
-  if (!is.null(ncpus) && !is_integer(ncpus)) {
+  if (!is.null(ncpus) && !is.numeric(ncpus)) {
     stop("`getOption(Ncpus)` must be integer")
   }
 
   if (!is.null(ncpus)) {
-    return(ncpus)
+    return(as.integer(ncpus))
   }
 
   # Otherwise detect. If we cannot detect, then compromise.
