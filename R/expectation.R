@@ -190,6 +190,11 @@ as.expectation.skip <- function(x, ..., srcref = NULL) {
 }
 
 #' @export
+as.expectation.skip_silent <- function(x, ..., srcref = NULL) {
+  expectation("skip", structure(cnd_message(x), silent = TRUE), srcref, trace = x[["trace"]])
+}
+
+#' @export
 as.expectation.default <- function(x, srcref = NULL) {
   stop(
     "Don't know how to convert '", paste(class(x), collapse = "', '"),
@@ -234,4 +239,8 @@ expectation_location <- function(x) {
       paste0(basename(filename), ":", x$srcref[1], ":", x$srcref[2])
     }
   }
+}
+
+expectation_silent <- function(x) {
+  isTRUE(attr(x$message, "silent"))
 }

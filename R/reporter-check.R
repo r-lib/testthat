@@ -43,6 +43,10 @@ CheckReporter <- R6::R6Class("CheckReporter",
         self$n_fail <- self$n_fail + 1L
       }
 
+      if (expectation_silent(result)) {
+        return()
+      }
+
       type <- expectation_type(result)
       header <- cli::rule(issue_header(result))
 

@@ -196,6 +196,9 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
       } else if (expectation_skip(result)) {
         self$n_skip <- self$n_skip + 1
         self$ctxt_n_skip <- self$ctxt_n_skip + 1
+        if (!expectation_silent(result)) {
+          self$ctxt_issues$push(result)
+        }
         self$skips$push(result$message)
       } else if (expectation_warning(result)) {
         self$n_warn <- self$n_warn + 1
@@ -434,7 +437,9 @@ ParallelProgressReporter <- R6::R6Class("ParallelProgressReporter",
       } else if (expectation_skip(result)) {
         self$n_skip <- self$n_skip + 1
         self$files[[file]]$n_skip <- self$files[[file]]$n_skip + 1L
-        self$files[[file]]$issues$push(result)
+        if (!expectation_silent(result)) {
+          self$files[[file]]$issues$push(result)
+        }
         self$skips$push(result$message)
       } else if (expectation_warning(result)) {
         self$n_warn <- self$n_warn + 1

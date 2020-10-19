@@ -16,7 +16,7 @@
 \alias{skip_if_translated}
 \title{Skip a test.}
 \usage{
-skip(message)
+skip(message, silent = TRUE)
 
 skip_if_not(condition, message = deparse(substitute(condition)))
 
@@ -44,6 +44,9 @@ skip_if_translated(msgid = "'\%s' not found")
 }
 \arguments{
 \item{message}{A message describing why the test was skipped.}
+
+\item{silent}{Set to \code{FALSE} to show the skip during progress
+and in the summary.}
 
 \item{condition}{Boolean condition to check. \code{skip_if_not()} will skip if
 \code{FALSE}, \code{skip_if()} will skip if \code{TRUE}.}

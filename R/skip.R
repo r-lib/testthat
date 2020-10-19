@@ -40,6 +40,8 @@
 #' a side effect, because the package is likely to be used anyway.
 #'
 #' @param message A message describing why the test was skipped.
+#' @param silent Set to `FALSE` to show the skip during progress
+#'   and in the summary.
 #' @param host A string with a hostname to lookup
 #' @export
 #' @examples
@@ -54,11 +56,11 @@
 #'   expect_equal(1, 2)     # this one skipped
 #'   expect_equal(1, 3)     # this one is also skipped
 #' })
-skip <- function(message) {
+skip <- function(message, silent = TRUE) {
   message <- paste0(message, collapse = "\n")
   cond <- structure(
     list(message = paste0("Reason: ", message)),
-    class = c("skip", "condition")
+    class = c(if (isTRUE(silent)) "skip_silent", "skip", "condition")
   )
   stop(cond)
 }
