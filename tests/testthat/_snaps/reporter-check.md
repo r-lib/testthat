@@ -23,17 +23,18 @@
      2.   \-g()
      3.     \-h()
     
-    -- Skip (tests.R:37:3): explicit skips are reported ----------------------------
+    -- Skip (tests.R:41:3): explicit skips are reported ----------------------------
     Reason: skip
     
-    -- Skip (tests.R:40:1): empty tests are implicitly skipped ---------------------
+    -- Skip (tests.R:44:1): empty tests are implicitly skipped ---------------------
     Reason: empty test
     
-    -- Warning (tests.R:49:3): warnings get backtraces -----------------------------
+    -- Warning (tests.R:53:3): warnings get backtraces -----------------------------
     def
     
     -- Skipped tests  --------------------------------------------------------------
     * empty test (1)
+    * silent skip (1)
     * skip (1)
     
     == testthat results  ===========================================================
@@ -41,7 +42,7 @@
     FAILURE (tests.R:17:3): Failure:2a
     ERROR (tests.R:23:3): Error:1
     ERROR (tests.R:31:3): errors get tracebacks
-    Warning (tests.R:49:3): warnings get backtraces
+    Warning (tests.R:53:3): warnings get backtraces
     
-    [ FAIL 4 | WARN 1 | SKIP 2 | PASS 1 ]
+    [ FAIL 4 | WARN 1 | SKIP 3 | PASS 1 ]
 

@@ -33,8 +33,12 @@ test_that("errors get tracebacks", {
 
 context("Skips")
 
+test_that("skips are only summarized by default", {
+  skip("silent skip")
+})
+
 test_that("explicit skips are reported", {
-  skip("skip")
+  skip("skip", silent = FALSE)
 })
 
 test_that("empty tests are implicitly skipped", {

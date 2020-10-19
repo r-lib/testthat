@@ -23,13 +23,14 @@
      2. g()
      3. h()
     
-    -- Skip (tests.R:37:3): explicit skips are reported ----------------------------
+    Test passed 
+    -- Skip (tests.R:41:3): explicit skips are reported ----------------------------
     Reason: skip
     
-    -- Skip (tests.R:40:1): empty tests are implicitly skipped ---------------------
+    -- Skip (tests.R:44:1): empty tests are implicitly skipped ---------------------
     Reason: empty test
     
-    -- Warning (tests.R:49:3): warnings get backtraces -----------------------------
+    -- Warning (tests.R:53:3): warnings get backtraces -----------------------------
     def
     Backtrace:
      1. f()

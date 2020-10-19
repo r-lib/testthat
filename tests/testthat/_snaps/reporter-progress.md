@@ -283,16 +283,25 @@
     [ FAIL 4 | WARN 0 | SKIP 0 | PASS 1 ]
     [ FAIL 4 | WARN 0 | SKIP 1 | PASS 1 ]
     [ FAIL 4 | WARN 0 | SKIP 2 | PASS 1 ]
-    [ FAIL 4 | WARN 0 | SKIP 2 | PASS 1 ]
-    [ FAIL 4 | WARN 1 | SKIP 2 | PASS 1 ]
+    [ FAIL 4 | WARN 0 | SKIP 3 | PASS 1 ]
     
-    -- Warning (tests.R:49:3): warnings get backtraces -----------------------------
+    -- Skip (tests.R:41:3): explicit skips are reported ----------------------------
+    Reason: skip
+    
+    -- Skip (tests.R:44:1): empty tests are implicitly skipped ---------------------
+    Reason: empty test
+    
+    
+    [ FAIL 4 | WARN 0 | SKIP 3 | PASS 1 ]
+    [ FAIL 4 | WARN 1 | SKIP 3 | PASS 1 ]
+    
+    -- Warning (tests.R:53:3): warnings get backtraces -----------------------------
     def
     Backtrace:
-     1. f() reporters/tests.R:49:2
+     1. f() reporters/tests.R:53:2
     
     
-    [ FAIL 4 | WARN 1 | SKIP 2 | PASS 1 ]
+    [ FAIL 4 | WARN 1 | SKIP 3 | PASS 1 ]
 
 # display of successes only is compact
 

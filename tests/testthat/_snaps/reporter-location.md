@@ -20,16 +20,20 @@
       tests.R:31:3 [error]
     End test: errors get tracebacks
     
-    Start test: explicit skips are reported
+    Start test: skips are only summarized by default
       tests.R:37:3 [skip]
+    End test: skips are only summarized by default
+    
+    Start test: explicit skips are reported
+      tests.R:41:3 [skip]
     End test: explicit skips are reported
     
     Start test: empty tests are implicitly skipped
-      tests.R:40:1 [skip]
+      tests.R:44:1 [skip]
     End test: empty tests are implicitly skipped
     
     Start test: warnings get backtraces
-      tests.R:49:3 [warning]
+      tests.R:53:3 [warning]
     End test: warnings get backtraces
     
 

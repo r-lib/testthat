@@ -16,7 +16,9 @@
     3: h()
     4: stop("!")
     
-    1: skip("skip")
+    1: skip("silent skip")
+    
+    1: skip("skip", silent = FALSE)
     
     1: f()
     2: warning("def")

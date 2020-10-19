@@ -42,6 +42,10 @@
     
     
     ##teamcity[testSuiteStarted name='Skips']
+    ##teamcity[testSuiteStarted name='skips are only summarized by default']
+    ##teamcity[testIgnored name='expectation 1' message='Reason: silent skip']
+    ##teamcity[testSuiteFinished name='skips are only summarized by default']
+    
     ##teamcity[testSuiteStarted name='explicit skips are reported']
     ##teamcity[testIgnored name='expectation 1' message='Reason: skip']
     ##teamcity[testSuiteFinished name='explicit skips are reported']

@@ -1,6 +1,6 @@
 # reporter works
 
-    1..8
+    1..9
     # Context Successes
     ok 1 Success
     # Context Failures
@@ -24,10 +24,11 @@
        2. g() reporters/tests.R:27:7
        3. h() reporters/tests.R:28:7
     # Context Skips
-    ok 6 # SKIP Reason: skip
-    ok 7 # SKIP Reason: empty test
+    ok 6 # SKIP Reason: silent skip
+    ok 7 # SKIP Reason: skip
+    ok 8 # SKIP Reason: empty test
     # Context Warnings
-    ok 8 # WARNING def
+    ok 9 # WARNING def
     Backtrace:
-     1. f() reporters/tests.R:49:2
+     1. f() reporters/tests.R:53:2
 

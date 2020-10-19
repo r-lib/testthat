@@ -4,16 +4,18 @@
     Successes: .
     Failures: 12
     Errors: 34
-    Skips: SS
+    Skips: SSS
     Warnings: W
     
     == Skipped =====================================================================
-    1. explicit skips are reported (tests.R:37:3) - Reason: skip
+    1. skips are only summarized by default (tests.R:37:3) - Reason: silent skip
     
-    2. empty tests are implicitly skipped (tests.R:40:1) - Reason: empty test
+    2. explicit skips are reported (tests.R:41:3) - Reason: skip
+    
+    3. empty tests are implicitly skipped (tests.R:44:1) - Reason: empty test
     
     == Warnings ====================================================================
-    1. warnings get backtraces (tests.R:49:3) - def
+    1. warnings get backtraces (tests.R:53:3) - def
     
     == Failed ======================================================================
     -- 1. FAILURE (tests.R:12:3): Failure:1 ----------------------------------------
@@ -46,16 +48,18 @@
     Successes: 
     Failures: 12
     Errors: 34
-    Skips: SS
+    Skips: SSS
     Warnings: W
     
     == Skipped =====================================================================
-    1. explicit skips are reported (tests.R:37:3) - Reason: skip
+    1. skips are only summarized by default (tests.R:37:3) - Reason: silent skip
     
-    2. empty tests are implicitly skipped (tests.R:40:1) - Reason: empty test
+    2. explicit skips are reported (tests.R:41:3) - Reason: skip
+    
+    3. empty tests are implicitly skipped (tests.R:44:1) - Reason: empty test
     
     == Warnings ====================================================================
-    1. warnings get backtraces (tests.R:49:3) - def
+    1. warnings get backtraces (tests.R:53:3) - def
     
     == Failed ======================================================================
     -- 1. FAILURE (tests.R:12:3): Failure:1 ----------------------------------------
@@ -88,16 +92,18 @@
     Successes: .
     Failures: 12
     Errors: 34
-    Skips: SS
+    Skips: SSS
     Warnings: W
     
     == Skipped =====================================================================
-    1. explicit skips are reported (tests.R:37:3) - Reason: skip
+    1. skips are only summarized by default (tests.R:37:3) - Reason: silent skip
     
-    2. empty tests are implicitly skipped (tests.R:40:1) - Reason: empty test
+    2. explicit skips are reported (tests.R:41:3) - Reason: skip
+    
+    3. empty tests are implicitly skipped (tests.R:44:1) - Reason: empty test
     
     == Warnings ====================================================================
-    1. warnings get backtraces (tests.R:49:3) - def
+    1. warnings get backtraces (tests.R:53:3) - def
     
     == Failed ======================================================================
     -- 1. FAILURE (tests.R:12:3): Failure:1 ----------------------------------------

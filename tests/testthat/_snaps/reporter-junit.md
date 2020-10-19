@@ -31,7 +31,10 @@
      3. h()</error>
         </testcase>
       </testsuite>
-      <testsuite name="Skips" timestamp="1999:12:31 23:59:59" hostname="nodename" tests="2" skipped="2" failures="0" errors="0" time="0">
+      <testsuite name="Skips" timestamp="1999:12:31 23:59:59" hostname="nodename" tests="3" skipped="3" failures="0" errors="0" time="0">
+        <testcase time="0" classname="Skips" name="skips_are_only_summarized_by_default">
+          <skipped/>
+        </testcase>
         <testcase time="0" classname="Skips" name="explicit_skips_are_reported">
           <skipped/>
         </testcase>
