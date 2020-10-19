@@ -17,6 +17,9 @@ RstudioReporter <- R6::R6Class("RstudioReporter",
       if (expectation_success(result)) {
         return()
       }
+      if (expectation_silent(result)) {
+        return()
+      }
 
       loc <- expectation_location(result)
       status <- expectation_type(result)

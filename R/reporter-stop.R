@@ -31,6 +31,9 @@ StopReporter <- R6::R6Class("StopReporter",
       if (expectation_success(result)) {
         return()
       }
+      if (expectation_silent(result)) {
+        return()
+      }
 
       if (expectation_broken(result)) {
         self$n_fail <- self$n_fail + 1
