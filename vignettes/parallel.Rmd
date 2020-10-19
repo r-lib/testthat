@@ -26,7 +26,8 @@ You'll also need to be using the 3rd edition:
 ## Basic operation
 
 Starting a new R process is relatively expensive, so testthat begins by creating a pool of workers.
-The size of the pool will be determined by `getOption("Ncpus")`, then the `TESTTHAT_MAX_CPUS` envvar, then the number of processes reported by `ps::ps_cpu_count()`.
+The size of the pool will be determined by `getOption("Ncpus")`, then the `TESTTHAT_CPUS` envvar.
+If neither are set, then two processes are started.
 In any case, testthat will never start more subprocesses than test files.
 
 Each worker begins by loading testthat and the package being tested.

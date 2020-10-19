@@ -88,30 +88,22 @@ test_files_parallel <- function(
 default_num_cpus <- function() {
   # Use common option, if set
   ncpus <- getOption("Ncpus", NULL)
-  if (!is.null(ncpus) && !is_integer(ncpus)) {
-    stop("`getOption(Ncpus)` must be integer")
-  }
-
   if (!is.null(ncpus)) {
+    ncpus <- suppressWarnings(as.integer(ncpus))
+    if (is.na(ncpus)) abort("`getOption(Ncpus)` must be an integer")
     return(ncpus)
   }
 
-  # Otherwise detect. If we cannot detect, then compromise.
-  if (ps::ps_is_supported()) {
-    ncpus <- ps::ps_cpu_count()
-  } else {
-    ncpus <- 2L
+  # Otherwise use env var if set
+  ncpus <- Sys.getenv("TESTTHAT_CPUS", "")
+  if (ncpus != "") {
+    ncpus <- suppressWarnings(as.integer(ncpus))
+    if (is.na(ncpus)) abort("TESTTHAT_CPUS must be an integer")
+    return(ncpus)
   }
 
-  # But allow capping with an env var
-  max_env <- Sys.getenv("TESTTHAT_MAX_CPUS", "")
-  if (max_env != "") {
-    max_env <- as.integer(max_env)
-    if (is.na(max_env)) abort("TESTTHAT_MAX_CPUS must be an integer")
-    ncpus <- min(ncpus, max_env)
-  }
-
-  ncpus
+  # Otherwise 2
+  2L
 }
 
 parallel_event_loop_smooth <- function(queue, reporters) {
