@@ -277,7 +277,7 @@ compare.numeric <- function(x, y,
 #' @rdname compare
 testthat_tolerance <- function(x) {
   if (identical(capabilities("long.double"), FALSE)) {
-    skip("Long doubles not available and `tolerance` not supplied")
+    skip("Long doubles not available and `tolerance` not supplied", silent = FALSE)
   }
 
   .Machine$double.eps ^ 0.5
