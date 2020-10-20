@@ -68,7 +68,7 @@ expect_snapshot_file <- function(path, name = basename(path), binary = TRUE, cra
 
   lab <- quo_label(enquo(path))
   equal <- snapshotter$take_file_snapshot(name, path, compare)
-  hint <- paste0("Run `snapshot_review('", snapshotter$file, "')` to review changes")
+  hint <- snapshot_hint(snapshotter$file)
 
   expect(
     equal,
@@ -78,6 +78,22 @@ expect_snapshot_file <- function(path, name = basename(path), binary = TRUE, cra
       hint
     )
   )
+}
+
+snapshot_hint <- function(file) {
+  # during R CMD check
+  if (nzchar(Sys.getenv("_R_CHECK_PACKAGE_NAME_", ""))) {
+    return(
+      paste0(
+        "Locate the new and current snapshots",
+        " (locally, look in the check directory;",
+        "on CI download the artifact); ",
+        "and compare files by hand/with your usual tools)"
+        )
+      )
+  }
+
+  paste0("Run `testthat::snapshot_review('", file, "')` to review changes")
 }
 
 snapshot_file_equal <- function(snap_test_dir, snap_name, path, file_equal = compare_file_binary) {
