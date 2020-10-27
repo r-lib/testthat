@@ -97,6 +97,8 @@ See `vignette("snapshotting")` for more details.
 * Catch C++ tests now provide detailed results for each test. 
   To upgrade existing code, re-run `testthat::use_catch()` (#1008).
 
+* Many reporters (e.g. the check reporter) no longer raise an error when any tests fail. Use the `stop_on_failure` argument to `devtools::test()` and `testthat::test_dir()` if your code relies on this. Alternatively, use `reporter = c("check", "fail")` to e.g. create a failing check reporter.
+
 ## Fixures
 
 * New `vignette("test-fixtures")` describes test fixtures; i.e. how to 
