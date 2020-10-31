@@ -152,6 +152,9 @@ skipping tests where it's known that images can't be reproduced exactly." />
   <ul class="dropdown-menu" role="menu">
     <li class="dropdown-header">Releases</li>
     <li>
+      <a href="https://www.tidyverse.org/blog/2020/10/testthat-3-0-0/">Version 3.0.0</a>
+    </li>
+    <li>
       <a href="https://www.tidyverse.org/blog/2019/11/testthat-2-3-0/">Version 2.3.0</a>
     </li>
     <li>
@@ -258,7 +261,7 @@ expectations will still fail if <code>x</code> errors.</p></td>
 }
 <span class='kw'>path</span> <span class='op'>&lt;-</span> <span class='fu'>save_png</span>(<span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span>(<span class='fl'>1</span><span class='op'>:</span><span class='fl'>5</span>))
 <span class='kw'>path</span>
-</div><div class='output co'>#&gt; [1] "/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//Rtmpnagy4U/filef92677d39ae.png"</div><div class='input'>
+</div><div class='output co'>#&gt; [1] "/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//Rtmp7tDQp1/file96810652b06.png"</div><div class='input'>
 <span class='co'>if</span> (<span class='fl'>FALSE</span>) {
 <span class='fu'>expect_snapshot_file</span>(<span class='fu'>save_png</span>(<span class='fu'><a href='https://rdrr.io/r/graphics/hist.html'>hist</a></span>(<span class='kw'>mtcars</span>)), <span class='st'>"plot.png"</span>)
 }
