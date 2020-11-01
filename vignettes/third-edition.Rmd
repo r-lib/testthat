@@ -100,7 +100,7 @@ You'll have to explicit ignore them with `supressMesssages()`, or if they're imp
 
 ### waldo
 
-Probably the the biggest day-to-day difference (and the biggest reason to upgrade!) is the use of [`waldo::compare()`](https://waldo.r-lib.org/reference/compare.html) inside of `expect_equal()` and `expect_identical()`.
+Probably the biggest day-to-day difference (and the biggest reason to upgrade!) is the use of [`waldo::compare()`](https://waldo.r-lib.org/reference/compare.html) inside of `expect_equal()` and `expect_identical()`.
 The goal of waldo is to find and concisely describe the difference between a pair of R objects, and it's designed specifically to help you figure out what's gone wrong in your unit tests.
 
 ```{r, error = TRUE}
