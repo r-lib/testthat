@@ -1,5 +1,9 @@
 # testthat (development version)
 
+* New `testthat.progress.verbose_skips` option. Set to `FALSE` to stop
+  reporting skips as they occur, they will still appear in the summary
+  (#1209, @krlmlr).
+
 # testthat 3.0.0
 
 ## 3rd edition
@@ -80,9 +84,7 @@ See `vignette("snapshotting")` for more details.
   of failures (from option `testthat.progress.max_fails`) after each 
   expectation, rather than at the end of each file (#967). It also gains
   new random praise options that use emoji, and lists skipped tests by type 
-  (#1028). Set the new `testthat.progress.verbose_skips` to `FALSE` to stop
-  reporting skips as they occur, they will still appear in the summary
-  (#1209, @krlmlr).
+  (#1028).
 
 * `StopReporter` adds random praise emoji when a single test passes (#1094).
   It has more refined display of failures, now using the same style 
