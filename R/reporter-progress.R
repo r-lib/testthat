@@ -291,6 +291,10 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
       }
       self$last_update <- time
       TRUE
+    },
+
+    get_verbose_skips = function() {
+      self$verbose_skips
     }
   )
 )
@@ -352,10 +356,6 @@ CompactProgressReporter <- R6::R6Class("CompactProgressReporter",
       self$local_user_output()
       status <- summary_line(self$n_fail, self$n_warn, self$n_skip, self$n_ok)
       self$cat_tight("\r", status)
-    },
-
-    get_verbose_skips = function() {
-      self$verbose_skips
     }
 
   )
