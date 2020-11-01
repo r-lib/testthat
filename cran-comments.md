@@ -10,15 +10,18 @@ There were no ERRORs, WARNINGs, or NOTEs.
 
 ## revdepcheck results
 
-We checked 5104 reverse dependencies, comparing R CMD check results across CRAN and dev versions of this package.
+We checked 5091 reverse dependencies, comparing R CMD check results across CRAN and dev versions of this package.
 
- * We saw 24 new problems
- * We failed to check 135 packages
+ * We saw 15 new problems
+ * We failed to check 63 packages
 
 Issues with CRAN packages are summarised below.
 
 ### New problems
 (This reports the first line of each new failure)
+
+* auk
+  checking tests ... ERROR
 
 * bigstatsr
   checking tests ... ERROR
@@ -29,31 +32,19 @@ Issues with CRAN packages are summarised below.
 * DiceKriging
   checking tests ... ERROR
 
-* diffobj
-  checking tests ... ERROR
-
 * ergm.ego
   checking tests ... ERROR
-
-* fdaPDE
-  checking installed package size ... NOTE
 
 * hyperSpec
   checking examples ... ERROR
 
-* IncDTW
-  checking tests ... ERROR
-
-* kiwisR
-  checking tests ... ERROR
-
 * mlrCPO
   checking tests ... ERROR
 
-* pak
+* mvrsquared
   checking tests ... ERROR
 
-* ps
+* pak
   checking tests ... ERROR
 
 * pyMTurkR
@@ -62,171 +53,81 @@ Issues with CRAN packages are summarised below.
 * renv
   checking package dependencies ... ERROR
 
-* rlang
-  checking tests ... ERROR
-
 * rvgtest
   checking tests ... ERROR
 
 * shinyEventLogger
   checking tests ... ERROR
 
-* spectralGraphTopology
-  checking tests ... ERROR
-
-* storr
-  checking examples ... ERROR
-  checking tests ... ERROR
-
-* thor
-  checking tests ... ERROR
-
 * treeclim
-  checking tests ... ERROR
+  checking installed package size ... NOTE
+  checking Rd cross-references ... NOTE
 
 * unitizer
-  checking tests ... ERROR
-
-* vdiffr
-  checking tests ... ERROR
-
-* vein
   checking tests ... ERROR
 
 ### Failed to check
 
 * ActivePathways        (NA)
-* ADMMsigma             (NA)
-* altair                (NA)
-* arenar                (NA)
-* attachment            (NA)
+* anglr                 (NA)
 * av                    (NA)
 * backShift             (NA)
-* BAS                   (NA)
 * batchtools            (NA)
-* bayesCT               (NA)
-* BayesMRA              (NA)
 * bdchecks              (NA)
 * bdclean               (NA)
-* blockRAR              (NA)
+* blavaan               (NA)
 * Boom                  (NA)
 * butcher               (NA)
 * CB2                   (NA)
-* clustree              (NA)
-* colorednoise          (NA)
+* ceramic               (NA)
 * CompareCausalNetworks (NA)
-* conflicted            (NA)
-* corrcoverage          (NA)
-* covidregionaldata     (NA)
-* cowplot               (NA)
-* ctDNAtools            (NA)
+* crossmap              (NA)
 * dataone               (NA)
 * datapack              (NA)
-* dbmss                 (NA)
 * decisionSupport       (NA)
-* devtools              (NA)
 * diceR                 (NA)
 * dimRed                (NA)
 * dmdScheme             (NA)
 * doRNG                 (NA)
-* DSAIDE                (NA)
-* DSAIRM                (NA)
 * EML                   (NA)
-* entropart             (NA)
-* epigraphdb            (NA)
-* fastpos               (NA)
 * finbif                (NA)
 * finch                 (NA)
 * fingertipscharts      (NA)
-* fishualize            (NA)
-* FSA                   (NA)
-* FSelectorRcpp         (NA)
-* fxtract               (NA)
-* GDINA                 (NA)
+* foieGras              (NA)
 * geojson               (NA)
 * geojsonio             (NA)
-* gert                  (NA)
-* getCRUCLdata          (NA)
-* getTBinR              (NA)
-* ggdist                (NA)
-* ggquiver              (NA)
-* ggsoccer              (NA)
-* ggstatsplot           (NA)
 * ghibli                (NA)
-* golem                 (NA)
-* GroupSeq              (NA)
-* gtsummary             (NA)
-* hddtools              (NA)
+* gWidgets2tcltk        (NA)
 * hNMF                  (NA)
-* htmltools             (NA)
-* immunarch             (NA)
 * jqr                   (NA)
+* jstor                 (NA)
 * kmcudaR               (NA)
-* LDATS                 (NA)
-* linguisticsdown       (NA)
-* lobstr                (NA)
+* lazyraster            (NA)
 * loon                  (NA)
-* LPWC                  (NA)
 * metagam               (NA)
-* metR                  (NA)
-* MIMSunit              (NA)
-* mizer                 (NA)
 * mlr3db                (NA)
 * mlr3pipelines         (NA)
-* MOEADr                (NA)
-* ncdfgeom              (NA)
-* nlmixr                (NA)
-* nprcgenekeepr         (NA)
-* osmdata               (NA)
 * osmplotr              (NA)
-* overviewR             (NA)
-* patchwork             (NA)
 * penaltyLearning       (NA)
 * phylopath             (NA)
-* pkgdown               (NA)
-* PLNmodels             (NA)
-* portalr               (NA)
 * PortfolioAnalytics    (NA)
-* PROsetta              (NA)
-* R62S3                 (NA)
-* radiant.basics        (NA)
-* radiant.data          (NA)
-* radiant.design        (NA)
-* radiant.model         (NA)
-* radiant.multivariate  (NA)
-* rasterpdf             (NA)
+* quadmesh              (NA)
+* ragg                  (NA)
+* rbgm                  (NA)
 * rdflib                (NA)
 * redland               (NA)
 * ReIns                 (NA)
-* RFishBC               (NA)
-* rmdpartials           (NA)
+* reproj                (NA)
 * rrd                   (NA)
-* RSQL                  (NA)
-* rstap                 (NA)
-* sccore                (NA)
-* scorecard             (NA)
-* SCPME                 (NA)
-* SDMtune               (NA)
 * sen2r                 (NA)
 * seqgendiff            (NA)
-* Seurat                (NA)
-* shinipsum             (NA)
-* shiny                 (NA)
-* simhelpers            (NA)
-* siteymlgen            (NA)
-* slga                  (NA)
+* silicate              (NA)
+* smartdata             (NA)
 * SMITIDvisu            (NA)
+* spbabel               (NA)
 * spectralAnalysis      (NA)
-* spiritR               (NA)
-* sport                 (NA)
+* spex                  (NA)
 * ssh                   (NA)
 * stablespec            (NA)
-* stats19               (NA)
-* TestDesign            (NA)
-* tidybayes             (NA)
-* tidytuesdayR          (NA)
-* usethis               (NA)
-* vctrs                 (NA)
-* windfarmGA            (NA)
+* trip                  (NA)
 * wrswoR                (NA)
-* ymlthis               (NA)

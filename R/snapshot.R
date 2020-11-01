@@ -171,7 +171,7 @@ reparse <- function(x) {
 }
 
 expect_snapshot_helper <- function(lab, val, cran = FALSE, save = identity, load = identity) {
-  if (cran && !interactive() && on_cran()) {
+  if (!cran && !interactive() && on_cran()) {
     skip("On CRAN")
   }
 

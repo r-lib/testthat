@@ -1,5 +1,7 @@
 # testthat (development version)
 
+# testthat 3.0.0
+
 ## 3rd edition
 
 testhat 3.0.0 brings with it a 3rd edition that makes a number of breaking

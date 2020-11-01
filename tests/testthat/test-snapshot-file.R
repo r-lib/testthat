@@ -12,7 +12,7 @@ test_that("expect_snapshot_file works", {
   mtcars2 <- mtcars
   # mtcars2$wt[10] <- NA
   write.csv(mtcars2, path)
-  expect_snapshot_file(path, "foo.csv")
+  expect_snapshot_file(path, "foo.csv", binary = FALSE)
 })
 
 test_that("basic workflow", {
