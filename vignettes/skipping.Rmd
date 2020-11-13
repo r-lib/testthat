@@ -16,7 +16,7 @@ knitr::opts_chunk$set(
 
 Some times you have tests that you don't want to run in certain circumstances. This vignette describes how to **skip** tests to avoid execution in undesired environments. Skipping is a relatively advanced topic because in most cases you want all your tests to run everywhere. The most common exceptions are:
 
--   You're testing a web service that occassionally fails, and you don't want to run the tests on CRAN. Or maybe the API requires authentication, and you can only run the tests when you've [securely distributed](https://gargle.r-lib.org/articles/articles/managing-tokens-securely.html) some secrets.
+-   You're testing a web service that occasionally fails, and you don't want to run the tests on CRAN. Or maybe the API requires authentication, and you can only run the tests when you've [securely distributed](https://gargle.r-lib.org/articles/articles/managing-tokens-securely.html) some secrets.
 
 -   You're relying on features that not all operating systems possess, and want to make sure your code doesn't run on a platform where it doesn't work. This platform tends to be Windows, since amongst other things, it lacks full utf8 support.
 
