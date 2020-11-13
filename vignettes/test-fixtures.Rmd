@@ -37,7 +37,7 @@ Most tests are written with an implicit assumption about the starting state, usu
 
 It's also important that your setup and cleanup is easy to use when working interactively. When a test fails, you want to be able to quickly recreate the exact environment in which the test is run so you can interactively experiment to figure out what went wrong.
 
-This article introduces a powerful technqiue that allows you to solve both problems: **test fixtures**. We'll begin with an introduction to the tools that make fixtures possible, then talk about exactly what a test fixture is, and show a few examples.
+This article introduces a powerful technique that allows you to solve both problems: **test fixtures**. We'll begin with an introduction to the tools that make fixtures possible, then talk about exactly what a test fixture is, and show a few examples.
 
 Much of this vignette is derived from <https://www.tidyverse.org/blog/2020/04/self-cleaning-test-fixtures/>; if this is your first encounter with `on.exit()` or `withr::defer()`, I'd recommend starting with that blog as it gives a gentler introduction. This vignette moves a little faster since it's designed as more of a reference doc.
 
