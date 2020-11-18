@@ -22,7 +22,7 @@
 #'   real point to them and you should just put your helper code in `R/`.
 #'
 #' * Teardown files start with `teardown` and are executed after the tests
-#'   are run. Now we recommend interleave setup and cleanup code in `setup-`
+#'   are run. Now we recommend interleave setup and cleanup code in `setup*.R`
 #'   files, making it easier to check that you automatically clean up every
 #'   mess that you make.
 #'
@@ -280,7 +280,7 @@ test_one_file <- function(path, env = test_env(), wrap = TRUE) {
 #' This environment no purpose except as a handle for [withr::defer()]: use
 #' this environment when you want to run code until after all tests have been
 #' run. Typically, you'll use `withr::defer(cleanup(), teardown_env())`
-#' immediately after you've made a mess in a `setup-*.R` file.
+#' immediately after you've made a mess in a `setup*.R` file.
 #'
 #' @export
 teardown_env <- function() {
