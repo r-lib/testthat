@@ -265,7 +265,7 @@ To solve this problem we create a test fixture, which we place in `R/test-helper
 
 ```{r, eval = FALSE}
 local_create_package <- function(dir = file_temp(), env = parent.frame()) {
-  old_project <- proj_get_()
+  old_project <- proj_get()
   
   # create new folder and package
   create_package(dir, open = FALSE) # A
