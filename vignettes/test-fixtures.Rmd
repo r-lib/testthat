@@ -265,7 +265,7 @@ To solve this problem we create a test fixture, which we place in `R/test-helper
 
 ```{r, eval = FALSE}
 local_create_package <- function(dir = file_temp(), env = parent.frame()) {
-  old_project <- proj_get_()
+  old_wd <- getwd()
   
   # create new folder and package
   create_package(dir, open = FALSE) # A
@@ -273,11 +273,7 @@ local_create_package <- function(dir = file_temp(), env = parent.frame()) {
   
   # change working directory
   setwd(dir) # B
-  withr::defer(setwd(old_project), envir = env) # -B
-  
-  # switch to new usethis project
-  proj_set(dir) # C
-  withr::defer(proj_set(old_project, force = TRUE), envir = env) # -C
+  withr::defer(setwd(old_wd), envir = env) # -B
   
   dir
 }
