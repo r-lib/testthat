@@ -69,6 +69,11 @@ jobs:
         if: runner.os == 'Linux'
         run: Rscript -e 'pak::local_system_requirements(execute = TRUE)'
 
+      - name: Install X11
+        if: runner.os == 'macOS'
+        run: |
+          brew cask install xquartz
+
       - name: Install dependencies
         run: |
           pak::local_install_dev_deps(upgrade = TRUE)
