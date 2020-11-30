@@ -1,5 +1,8 @@
 # testthat (development version)
 
+* `skip_if_not()` no longer appends "is not TRUE" to custom messages 
+  (@dpprdan, #1247).
+
 * `expect_snapshot_value()` now passes `...` on to `waldo::compare()` (#1222).
 
 * Fixed a couple of buglets in `auto_test_pacakge()` (@mbojan, #1211, #1214)
