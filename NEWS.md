@@ -1,5 +1,8 @@
 # testthat (development version)
 
+* `local_reproducible_output()` now unsets RSTUDIO envvar, instead of
+  setting it to 0 (#1225).
+
 * Fixed a couple of buglets in `auto_test_pacakge()` (@mbojan, #1211, #1214)
 
 # testthat 3.0.0
