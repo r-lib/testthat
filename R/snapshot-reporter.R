@@ -40,7 +40,7 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
     },
 
     # Called by expectation
-    take_snapshot = function(value, save = identity, load = identity) {
+    take_snapshot = function(value, save = identity, load = identity, ...) {
       self$i <- self$i + 1L
 
       self$new_snaps <- self$snap_append(self$new_snaps, save(value))
@@ -53,7 +53,8 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
 
         comp <- waldo_compare(
           x = old,   x_arg = "old",
-          y = value, y_arg = "new"
+          y = value, y_arg = "new",
+          ...
         )
 
         if (length(comp) > 0L) {

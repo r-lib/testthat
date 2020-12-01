@@ -16,7 +16,8 @@ expect_snapshot_error(x, class = "error", cran = FALSE)
 expect_snapshot_value(
   x,
   style = c("json", "json2", "deparse", "serialize"),
-  cran = FALSE
+  cran = FALSE,
+  ...
 )
 }
 \arguments{
@@ -45,6 +46,9 @@ using R code.
 \code{\link[=serialize]{serialize()}}. This is all but guaranteed to work for any R object,
 but produces a completely opaque serialization.
 }}
+
+\item{...}{For \code{expect_snapshot_value()} only, passed on to
+\code{\link[waldo:compare]{waldo::compare()}} so you can control the details of the comparison.}
 }
 \description{
 \ifelse{html}{\out{<a href='https://www.tidyverse.org/lifecycle/#experimental'><img src='figures/lifecycle-experimental.svg' alt='Experimental lifecycle'></a>}}{\strong{Experimental}}

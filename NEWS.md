@@ -3,6 +3,8 @@
 * `local_reproducible_output()` now unsets RSTUDIO envvar, instead of
   setting it to 0 (#1225).
 
+* `expect_snapshot_value()` now passes `...` on to `waldo::compare()` (#1222).
+
 * Fixed a couple of buglets in `auto_test_pacakge()` (@mbojan, #1211, #1214)
 
 # testthat 3.0.0
@@ -160,7 +162,7 @@ See `vignette("snapshotting")` for more details.
 * `context_start_file()` is now exported for external reporters (#983, #1082).
   It now only strips first instance of prefix/suffix (#1041, @stufield).
 
-* `expect_error()` no longer encourages you to use `class`. This advice 
+* `expect_error()` no longer encourages you to use `class`. This advice removes
   one type of fragility at the expense of creating a different type (#1013).
 
 * `expect_known_failure()` has been removed. As far as I can tell it was
@@ -171,7 +173,7 @@ See `vignette("snapshotting")` for more details.
 
 * `verify_output()` no longer always fails if output contains a carriage 
   return character ("\r") (#1048). It uses the `pdf()` device instead of 
-  `png()` soit work on systems without X11 (#1011). And it uses 
+  `png()` so it works on systems without X11 (#1011). And it uses 
   `waldo::compare()` to give more informative failures.
 
 # testthat 2.3.2

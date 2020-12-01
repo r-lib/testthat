@@ -41,7 +41,7 @@
 #' expect_snapshot_file(save_png(hist(mtcars)), "plot.png")
 #' }
 #'
-#' # You'd then also provide a helper that skip tests where you can't
+#' # You'd then also provide a helper that skips tests where you can't
 #' # be sure of producing exactly the same output
 #' expect_snapshot_plot <- function(name, code) {
 #'   # Other packages might affect results
