@@ -179,15 +179,9 @@ This launches a Shiny app that allows you to visually review each change and app
 
 The display varies based on the file type (currently text files, common image files, and csv files are supported).
 
-In the context `R CMD check`, you cannot run `snapshot_review()`. 
-When the test fails you need to find the two snapshot files (current and new)
-to compare them using your favorite tools (manually?).
-How to find them
-* Locally, you need to look into the check folder. 
-* On continuous integration, you will also need to look into the check folder 
-but first you will need to download the "artifact" of the run, that contains the 
-check folder (if your continuous integration setup does not create artifacts 
-when R CMD check fails, you might want to change that).
+Sometimes the failure occurs in a non-interactive environment where you can't run `snapshot_review()`, e.g. in `R CMD check`.
+In this case, the easiest fix is to retrieve the `.new` file, copy it into the appropriate directory, then run `snapshot_review()` locally.
+If your code was run on a CI platform, you'll need to start by downloading the run "artifact", which contains the check folder.
 
 In most cases, we don't expect you to use `expect_snapshot_file()` directly.
 Instead, you'll use it via a wrapper that does its best to gracefully skip tests when differences in platform or package versions make it unlikely to generate perfectly reproducible output.
