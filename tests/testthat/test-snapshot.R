@@ -53,3 +53,7 @@ test_that("can snapshot values", {
   expect_snapshot_value(x, style = "deparse")
   expect_snapshot_value(x, style = "serialize")
 })
+
+test_that("can control snapshot value details", {
+  expect_snapshot_value(1.2, tolerance = 0.1)
+})
