@@ -22,7 +22,7 @@ knitr::opts_chunk$set(
 >
 > ― Chief Si'ahl
 
-Ideally, a test should leave the world exactly as it found it. But you often need to make some changes in order exercise every part of your code:
+Ideally, a test should leave the world exactly as it found it. But you often need to make some changes in order to exercise every part of your code:
 
 -   Create a file or directory
 -   Create a resource on an external system
