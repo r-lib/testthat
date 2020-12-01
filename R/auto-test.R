@@ -75,7 +75,7 @@ auto_test <- function(code_path, test_path, reporter = default_reporter(),
 auto_test_package <- function(pkg = ".", reporter = default_reporter(), hash = TRUE) {
   reporter <- find_reporter(reporter)
 
-  path <- pkgload::pkg_path(path)
+  path <- pkgload::pkg_path(pkg)
   package <- pkgload::pkg_name(path)
 
   code_path <- file.path(path, c("R", "src"))
@@ -86,7 +86,7 @@ auto_test_package <- function(pkg = ".", reporter = default_reporter(), hash = T
   # Start by loading all code and running all tests
   withr::local_envvar(list("NOT_CRAN" = "true"))
   pkgload::load_all(path)
-  test_dir(test_path, package = package, reporter = reporter$clone(deep = TRUE))
+  test_dir(test_path, package = package, reporter = reporter$clone(deep = TRUE), stop_on_failure = FALSE)
 
   # Next set up watcher to monitor changes
   watcher <- function(added, deleted, modified) {
