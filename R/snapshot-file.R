@@ -80,20 +80,14 @@ expect_snapshot_file <- function(path, name = basename(path), binary = TRUE, cra
   )
 }
 
-snapshot_hint <- function(file) {
-  # during R CMD check
-  if (nzchar(Sys.getenv("_R_CHECK_PACKAGE_NAME_", ""))) {
-    return(
-      paste0(
-        "Locate the new and current snapshots",
-        " (locally, look in the check directory;",
-        "on CI download the artifact); ",
-        "and compare files by hand/with your usual tools)"
-        )
-      )
-  }
-
-  paste0("Run `testthat::snapshot_review('", file, "')` to review changes")
+snapshot_hint <- function(file, ci = on_ci(), check = in_rcmd_check()) {
+  paste0(
+    if (check && ci) "* Download run artifact to retrieve snapshot differences\n",
+    if (check && !ci) "* Locate check directory\n",
+    if (check) "* Copy 'new' snapshot to local test directory\n",
+    if (check) "* ",
+    paste0("Run `testthat::snapshot_review('", file, "')` to review changes")
+  )
 }
 
 snapshot_file_equal <- function(snap_test_dir, snap_name, path, file_equal = compare_file_binary) {

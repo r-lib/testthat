@@ -126,3 +126,7 @@ first_upper <- function(x) {
   substr(x, 1, 1) <- toupper(substr(x, 1, 1))
   x
 }
+
+in_rcmd_check <- function() {
+  nzchar(Sys.getenv("_R_CHECK_PACKAGE_NAME_", ""))
+}

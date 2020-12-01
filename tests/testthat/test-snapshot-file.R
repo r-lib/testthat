@@ -129,13 +129,7 @@ test_that("split_path handles edge cases", {
 })
 
 test_that("snapshot_hint output differs in R CMD check", {
-  withr::with_envvar(
-    new = c("_R_CHECK_PACKAGE_NAME_" = ""),
-    expect_match(snapshot_hint("lala"), "Run")
-  )
-
-  withr::with_envvar(
-    new = c("_R_CHECK_PACKAGE_NAME_" = "something"),
-    expect_match(snapshot_hint("lala"), "Locate")
-  )
+  expect_snapshot(cat(snapshot_hint("lala", check = FALSE, ci = FALSE)))
+  expect_snapshot(cat(snapshot_hint("lala", check = TRUE, ci = FALSE)))
+  expect_snapshot(cat(snapshot_hint("lala", check = TRUE, ci = TRUE)))
 })
