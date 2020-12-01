@@ -227,7 +227,10 @@ test_files_setup_state <- function(test_dir, test_package, load_helpers, env, .e
 
   # Define testing environment
   local_test_directory(test_dir, test_package, .env = .env)
-  withr::local_options(list(topLevelEnvironment = env_parent(env)), .local_envir = .env)
+  withr::local_options(
+    topLevelEnvironment = env_parent(env),
+    .local_envir = .env
+  )
 
   # Load helpers, setup, and teardown (on exit)
   local_teardown_env(.env)

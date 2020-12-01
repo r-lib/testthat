@@ -15,7 +15,7 @@ test_that("returns local path when called from tools::testInstalledPackages", {
 
 test_that("returns full path when called outside tests", {
   withr::local_dir(test_path("test-path-present"))
-  withr::local_envvar(c("TESTTHAT" = "false"))
+  withr::local_envvar("TESTTHAT" = "false")
 
   expect_equal(test_path("empty"), "tests/testthat/empty")
   # even when file doesn't exist
@@ -24,7 +24,7 @@ test_that("returns full path when called outside tests", {
 
 test_that("throws error if can't find tests/testthat", {
   withr::local_dir(test_path("test-path-missing"))
-  withr::local_envvar(c("TESTTHAT" = "false"))
+  withr::local_envvar("TESTTHAT" = "false")
 
   expect_error(test_path("empty"), "Can't find `tests/testthat/`")
 })

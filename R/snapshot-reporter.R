@@ -218,7 +218,7 @@ local_snapshotter <- function(snap_dir = "_snaps", cleanup = FALSE, .env = paren
   }
 
   withr::local_options(
-    list("testthat.snapshotter" = reporter),
+    "testthat.snapshotter" = reporter,
     .local_envir = .env
   )
   reporter

@@ -84,5 +84,10 @@ on disk. If it's different, the expectation will fail, and a new file
 \verb{snap/\{test\}.new.json} will be created. If the change was deliberate,
 you can approve the change with \code{\link[=snapshot_accept]{snapshot_accept()}} and then the tests will
 pass the next time you run them.
+
+Note that snapshotting can onµly work when executing a complete test file
+(with \code{\link[=test_file]{test_file()}}, \code{\link[=test_dir]{test_dir()}}, or friends) because there's otherwise
+no way to figure out the snapshot path. If you run snapshot tests
+interactively, they'll just display the current value.
 }
 

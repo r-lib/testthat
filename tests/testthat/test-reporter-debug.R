@@ -1,5 +1,5 @@
 test_that("produces consistent output", {
-  withr::local_options(list(testthat.edition_ignore = TRUE))
+  withr::local_options(testthat.edition_ignore = TRUE)
   local_edition(2)
   local_mock(
     show_menu = function(choices, title = NULL) {
@@ -8,7 +8,7 @@ test_that("produces consistent output", {
     },
     sink_number = function() 0L
   )
-  withr::local_options(list(testthat_format_srcrefs = FALSE))
+  withr::local_options(testthat_format_srcrefs = FALSE)
   expect_snapshot_reporter(DebugReporter$new())
 })
 

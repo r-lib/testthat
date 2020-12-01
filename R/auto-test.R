@@ -84,7 +84,7 @@ auto_test_package <- function(pkg = ".", reporter = default_reporter(), hash = T
   test_path <- normalizePath(file.path(path, "tests", "testthat"))
 
   # Start by loading all code and running all tests
-  withr::local_envvar(list("NOT_CRAN" = "true"))
+  withr::local_envvar("NOT_CRAN" = "true")
   pkgload::load_all(path)
   test_dir(test_path, package = package, reporter = reporter$clone(deep = TRUE), stop_on_failure = FALSE)
 

@@ -37,6 +37,11 @@
 #' you can approve the change with [snapshot_accept()] and then the tests will
 #' pass the next time you run them.
 #'
+#' Note that snapshotting can onµly work when executing a complete test file
+#' (with [test_file()], [test_dir()], or friends) because there's otherwise
+#' no way to figure out the snapshot path. If you run snapshot tests
+#' interactively, they'll just display the current value.
+#'
 #' @param x Code to evaluate.
 #' @param cran Should these expectations be verified on CRAN? By default,
 #'   they are not, because snapshot tests tend to be fragile because they

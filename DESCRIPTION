@@ -42,7 +42,7 @@ Imports:
     rlang (>= 0.4.9),
     utils,
     waldo (>= 0.2.1),
-    withr (>= 2.0.0)
+    withr (>= 2.3.0)
 Suggests: 
     covr,
     curl (>= 0.9.5),

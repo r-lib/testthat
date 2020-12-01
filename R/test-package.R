@@ -59,7 +59,7 @@ test_local <- function(path = ".", reporter = NULL, ...) {
   package <- pkgload::pkg_name(path)
   test_path <- file.path(pkgload::pkg_path(path), "tests", "testthat")
 
-  withr::local_envvar(c(NOT_CRAN = "true"))
+  withr::local_envvar(NOT_CRAN = "true")
   test_dir(
     test_path,
     package = package,
