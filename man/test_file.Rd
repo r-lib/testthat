@@ -23,7 +23,6 @@ See \link{Reporter} for more details and a list of built-in reporters.}
 A list (invisibly) containing data about the test results.
 }
 \description{
-A variant of \code{\link[=test_dir]{test_dir()}} that only tests a single file within a directory.
 Helper, setup, and teardown files located in the same directory as the
 test will also be run.
 }

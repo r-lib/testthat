@@ -31,6 +31,7 @@ expect_cpp_tests_pass <- function(package) {
 #' @keywords internal
 #' @export
 run_cpp_tests <- function(package) {
+  skip_on_os("solaris")
   check_installed("xml2", "run_cpp_tests()")
 
   run_testthat_tests <- get_routine(package, "run_testthat_tests")

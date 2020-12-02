@@ -58,10 +58,10 @@ warnings.}
 A list (invisibly) containing data about the test results.
 }
 \description{
-Execute code in the specified file, displaying results using a \code{reporter}.
-Use this function when you want to run a single file's worth of tests.
-You are responsible for ensuring that the functions to test are available
-in the global environment.
+This function is the low-level workhorse that powers \code{\link[=test_local]{test_local()}} and
+\code{\link[=test_package]{test_package()}}. Generally, you should not call this function directly.
+In particular, you are responsible for ensuring that the functions to test
+are available in the test \code{env} (e.g. via \code{load_package}).
 }
 \section{Special files}{
 
@@ -96,3 +96,4 @@ package's namespace environment, so that tests can access internal functions
 and objects.
 }
 
+\keyword{internal}

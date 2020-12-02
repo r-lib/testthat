@@ -1,9 +1,9 @@
 #' Run all tests in a directory
 #'
-#' Execute code in the specified file, displaying results using a `reporter`.
-#' Use this function when you want to run a single file's worth of tests.
-#' You are responsible for ensuring that the functions to test are available
-#' in the global environment.
+#' This function is the low-level workhorse that powers [test_local()] and
+#' [test_package()]. Generally, you should not call this function directly.
+#' In particular, you are responsible for ensuring that the functions to test
+#' are available in the test `env` (e.g. via `load_package`).
 #'
 #' @section Special files:
 #' There are two types of `.R` file that have special behaviour:
@@ -51,6 +51,7 @@
 #'   * "installed", uses [library()] to load an installed package.
 #'   * "source", uses [pkgload::load_all()] to a source package.
 #' @param wrap DEPRECATED
+#' @keywords internal
 #' @return A list (invisibly) containing data about the test results.
 #' @inheritParams with_reporter
 #' @inheritParams source_file
@@ -115,7 +116,6 @@ test_dir <- function(path,
 
 #' Run all tests in a single file
 #'
-#' A variant of [test_dir()] that only tests a single file within a directory.
 #' Helper, setup, and teardown files located in the same directory as the
 #' test will also be run.
 #'

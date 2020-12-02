@@ -51,7 +51,7 @@ path <- save_png(plot(1:5))
 path
 
 \dontrun{
-expect_snapshot_file(save_png(hist(mtcars)), "plot.png")
+expect_snapshot_file(save_png(hist(mtcars$mpg)), "plot.png")
 }
 
 # You'd then also provide a helper that skips tests where you can't

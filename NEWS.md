@@ -3,8 +3,18 @@
 * `local_reproducible_output()` now sets the LANGUAGE env var to "en". This
   matches the behaviour of R CMD check in interactive settings (#1213).
 
+* `expect_snapshot_value(style = "deparse")` handles more common R data
+  structures.
+
+* `run_cpp_tests()` is automatically skipped on Solaris since Catch is not
+  supported (#1257).
+
+* `_snaps` directory is automatically removed if it's empty (#1180). 
+
 * `expect_snapshot_file()` gives a hint as to next steps when a failure
   occurs in non-interactive environments (with help from @maelle, #1179).
+  `expect_snapshot_*()` gives a more informative hint when you're running
+  tests interactively (#1226).
 
 * `local_reproducible_output()` now unsets RSTUDIO envvar, instead of
   setting it to 0 (#1225).
