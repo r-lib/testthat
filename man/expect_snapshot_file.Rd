@@ -16,8 +16,7 @@ difference between Windows and Mac/Linux line endings.}
 
 \item{cran}{Should these expectations be verified on CRAN? By default,
 they are not, because snapshot tests tend to be fragile because they
-often rely on minor details of dependencies. Even on CRAN, the
-expectations will still fail if \code{x} errors.}
+often rely on minor details of dependencies.}
 }
 \description{
 Whole file snapshot testing is designed for testing objects that don't have

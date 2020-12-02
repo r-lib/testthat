@@ -1,5 +1,9 @@
 # testthat (development version)
 
+* `expect_snapshot()` gains new `error` argument which controls whether or not
+  an error is expected. If an unexpected error is thrown, or an expected error
+  is not thrown, `expect_snapshot()` will fail (even on CRAN) (#1200).
+
 * `_snaps` directory is automatically removed if it's empty (#1180). 
 
 * `expect_snapshot_file()` gives a hint as to next steps when a failure
