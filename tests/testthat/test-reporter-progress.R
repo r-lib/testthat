@@ -16,7 +16,7 @@ test_that("gracefully handles multiple contexts", {
 
 
 test_that("fails after max_fail tests", {
-  withr::local_options(list(testthat.progress.max_fails = 10))
+  withr::local_options(testthat.progress.max_fails = 10)
   expect_snapshot_reporter(
     ProgressReporter$new(update_interval = 0, min_time = Inf),
     test_path("reporters/fail-many.R")

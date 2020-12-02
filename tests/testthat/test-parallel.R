@@ -1,24 +1,24 @@
 
 test_that("detect number of cpus to use", {
 
-  withr::local_options(list(Ncpus = 100L))
-  withr::local_envvar(list(TESTTHAT_CPUS = NA))
+  withr::local_options(Ncpus = 100L)
+  withr::local_envvar(TESTTHAT_CPUS = NA)
   expect_equal(default_num_cpus(), 100L)
 
-  withr::local_options(list(Ncpus = 100L))
-  withr::local_envvar(list(TESTTHAT_CPUS = 10))
+  withr::local_options(Ncpus = 100L)
+  withr::local_envvar(TESTTHAT_CPUS = 10)
   expect_equal(default_num_cpus(), 100L)
 
   withr::local_options(list(Ncpus = NULL))
-  withr::local_envvar(list(TESTTHAT_CPUS = NA))
+  withr::local_envvar(TESTTHAT_CPUS = NA)
   expect_equal(default_num_cpus(), 2L)
 
   withr::local_options(list(Ncpus = NULL))
-  withr::local_envvar(list(TESTTHAT_CPUS = NA))
+  withr::local_envvar(TESTTHAT_CPUS = NA)
   expect_equal(default_num_cpus(), 2L)
 
   withr::local_options(list(Ncpus = NULL))
-  withr::local_envvar(list(TESTTHAT_CPUS = 13))
+  withr::local_envvar(TESTTHAT_CPUS = 13)
   expect_equal(default_num_cpus(), 13L)
 })
 

@@ -37,6 +37,11 @@
 #' you can approve the change with [snapshot_accept()] and then the tests will
 #' pass the next time you run them.
 #'
+#' Note that snapshotting can onµly work when executing a complete test file
+#' (with [test_file()], [test_dir()], or friends) because there's otherwise
+#' no way to figure out the snapshot path. If you run snapshot tests
+#' interactively, they'll just display the current value.
+#'
 #' @param x Code to evaluate.
 #' @param cran Should these expectations be verified on CRAN? By default,
 #'   they are not, because snapshot tests tend to be fragile because they
@@ -127,11 +132,14 @@ expect_snapshot_error <- function(x, class = "error", cran = FALSE) {
 #'   * `serialize()` produces a binary serialization of the object using
 #'     [serialize()]. This is all but guaranteed to work for any R object,
 #'     but produces a completely opaque serialization.
+#' @param ... For `expect_snapshot_value()` only, passed on to
+#'   [waldo::compare()] so you can control the details of the comparison.
 #' @export
 #' @rdname expect_snapshot
 expect_snapshot_value <- function(x,
                                   style = c("json", "json2", "deparse", "serialize"),
-                                  cran = FALSE) {
+                                  cran = FALSE,
+                                  ...) {
   edition_require(3, "expect_snapshot_value()")
   lab <- quo_label(enquo(x))
 
@@ -150,7 +158,7 @@ expect_snapshot_value <- function(x,
     serialize = function(x) unserialize(jsonlite::base64_dec(x))
   )
 
-  expect_snapshot_helper(lab, x, save = save, load = load, cran = cran)
+  expect_snapshot_helper(lab, x, save = save, load = load, cran = cran, ...)
 }
 
 # Safe environment for evaluating deparsed objects, based on inspection of
@@ -170,8 +178,12 @@ reparse <- function(x) {
   eval(parse(text = x), env)
 }
 
-expect_snapshot_helper <- function(lab, val, cran = FALSE, save = identity, load = identity) {
-  if (cran && !interactive() && on_cran()) {
+expect_snapshot_helper <- function(lab, val,
+                                   cran = FALSE,
+                                   save = identity,
+                                   load = identity,
+                                   ...) {
+  if (!cran && !interactive() && on_cran()) {
     skip("On CRAN")
   }
 
@@ -182,7 +194,7 @@ expect_snapshot_helper <- function(lab, val, cran = FALSE, save = identity, load
     return(invisible())
   }
 
-  comp <- snapshotter$take_snapshot(val, save = save, load = load)
+  comp <- snapshotter$take_snapshot(val, save = save, load = load, ...)
   hint <- paste0("Run `snapshot_accept('", snapshotter$file, "')` if this is a deliberate change")
 
   expect(

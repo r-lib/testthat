@@ -16,7 +16,7 @@ knitr::opts_chunk$set(
 
 Some times you have tests that you don't want to run in certain circumstances. This vignette describes how to **skip** tests to avoid execution in undesired environments. Skipping is a relatively advanced topic because in most cases you want all your tests to run everywhere. The most common exceptions are:
 
--   You're testing a web service that occassionally fails, and you don't want to run the tests on CRAN. Or maybe the API requires authentication, and you can only run the tests when you've [securely distributed](https://gargle.r-lib.org/articles/articles/managing-tokens-securely.html) some secrets.
+-   You're testing a web service that occasionally fails, and you don't want to run the tests on CRAN. Or maybe the API requires authentication, and you can only run the tests when you've [securely distributed](https://gargle.r-lib.org/articles/articles/managing-tokens-securely.html) some secrets.
 
 -   You're relying on features that not all operating systems possess, and want to make sure your code doesn't run on a platform where it doesn't work. This platform tends to be Windows, since amongst other things, it lacks full utf8 support.
 
@@ -30,11 +30,11 @@ library(testthat)
 
 testthat comes with a variety of helpers for the most common situations:
 
--   `skip_on_cran()` skips tests on CRAN. This is useful for slow tests and tests that occassionally fail for reaons outside of your control.
+-   `skip_on_cran()` skips tests on CRAN. This is useful for slow tests and tests that occasionally fail for reasons outside of your control.
 
 -   `skip_on_os()` allows you to skip tests on a specific operating system. Generally, you should strive to avoid this as much as possible (so your code works the same on all platforms), but sometimes it's just not possible.
 
--   `skip_on_ci()` skips tests on most continuous integration platforms (e.g. Travis, Appveyor, GitHub actions).
+-   `skip_on_ci()` skips tests on most continuous integration platforms (e.g. GitHub Actions, Travis, Appveyor).
 
 You can also easily implement your own using either `skip_if()` or `skip_if_not()`, which both take an expression that should yield a single `TRUE` or `FALSE`.
 

@@ -22,7 +22,7 @@ knitr::opts_chunk$set(
 >
 > ― Chief Si'ahl
 
-Ideally, a test should leave the world exactly as it found it. But you often need to make some changes in order exercise every part of your code:
+Ideally, a test should leave the world exactly as it found it. But you often need to make some changes in order to exercise every part of your code:
 
 -   Create a file or directory
 -   Create a resource on an external system
@@ -37,7 +37,7 @@ Most tests are written with an implicit assumption about the starting state, usu
 
 It's also important that your setup and cleanup is easy to use when working interactively. When a test fails, you want to be able to quickly recreate the exact environment in which the test is run so you can interactively experiment to figure out what went wrong.
 
-This article introduces a powerful technqiue that allows you to solve both problems: **test fixtures**. We'll begin with an introduction to the tools that make fixtures possible, then talk about exactly what a test fixture is, and show a few examples.
+This article introduces a powerful technique that allows you to solve both problems: **test fixtures**. We'll begin with an introduction to the tools that make fixtures possible, then talk about exactly what a test fixture is, and show a few examples.
 
 Much of this vignette is derived from <https://www.tidyverse.org/blog/2020/04/self-cleaning-test-fixtures/>; if this is your first encounter with `on.exit()` or `withr::defer()`, I'd recommend starting with that blog as it gives a gentler introduction. This vignette moves a little faster since it's designed as more of a reference doc.
 
@@ -249,10 +249,10 @@ A **test fixture** is just a `local_` function that you use to change state in s
 
 ```{r}
 test_that("message2() output depends on verbose option", {
-  withr::local_options(list(verbose = TRUE))
+  withr::local_options(verbose = TRUE)
   expect_message(message2("Hi!"))
   
-  withr::local_options(list(verbose = FALSE))
+  withr::local_options(verbose = FALSE)
   expect_message(message2("Hi!"), NA)
 })
 ```

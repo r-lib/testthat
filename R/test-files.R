@@ -12,7 +12,7 @@
 #'
 #' * Setup files start with `setup` and are executed before tests. If
 #'   clean up is needed after all tests have been run, you can use
-#'   `withr::defer(clean_up(), teardown_env())`. See `vignette("text-fixtures")`
+#'   `withr::defer(clean_up(), teardown_env())`. See `vignette("test-fixtures")`
 #'   for more details.
 #'
 #' There are two other types of special file that we no longer recommend using:
@@ -227,7 +227,10 @@ test_files_setup_state <- function(test_dir, test_package, load_helpers, env, .e
 
   # Define testing environment
   local_test_directory(test_dir, test_package, .env = .env)
-  withr::local_options(list(topLevelEnvironment = env_parent(env)), .local_envir = .env)
+  withr::local_options(
+    topLevelEnvironment = env_parent(env),
+    .local_envir = .env
+  )
 
   # Load helpers, setup, and teardown (on exit)
   local_teardown_env(.env)
@@ -277,9 +280,9 @@ test_one_file <- function(path, env = test_env(), wrap = TRUE) {
 
 #' Run code after all test files
 #'
-#' This environment no purpose except as a handle for [withr::defer()]: use
-#' this environment when you want to run code until after all tests have been
-#' run. Typically, you'll use `withr::defer(cleanup(), teardown_env())`
+#' This environment has no purpose other than as a handle for [withr::defer()]:
+#' use it when you want to run code after all tests have been run.
+#' Typically, you'll use `withr::defer(cleanup(), teardown_env())`
 #' immediately after you've made a mess in a `setup-*.R` file.
 #'
 #' @export

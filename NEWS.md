@@ -1,5 +1,17 @@
 # testthat (development version)
 
+* `local_reproducible_output()` now unsets RSTUDIO envvar, instead of
+  setting it to 0 (#1225).
+
+* `skip_if_not()` no longer appends "is not TRUE" to custom messages 
+  (@dpprdan, #1247).
+
+* `expect_snapshot_value()` now passes `...` on to `waldo::compare()` (#1222).
+
+* Fixed a couple of buglets in `auto_test_pacakge()` (@mbojan, #1211, #1214)
+
+# testthat 3.0.0
+
 ## 3rd edition
 
 testhat 3.0.0 brings with it a 3rd edition that makes a number of breaking
@@ -97,6 +109,8 @@ See `vignette("snapshotting")` for more details.
 * Catch C++ tests now provide detailed results for each test. 
   To upgrade existing code, re-run `testthat::use_catch()` (#1008).
 
+* Many reporters (e.g. the check reporter) no longer raise an error when any tests fail. Use the `stop_on_failure` argument to `devtools::test()` and `testthat::test_dir()` if your code relies on this. Alternatively, use `reporter = c("check", "fail")` to e.g. create a failing check reporter.
+
 ## Fixures
 
 * New `vignette("test-fixtures")` describes test fixtures; i.e. how to 
@@ -151,7 +165,7 @@ See `vignette("snapshotting")` for more details.
 * `context_start_file()` is now exported for external reporters (#983, #1082).
   It now only strips first instance of prefix/suffix (#1041, @stufield).
 
-* `expect_error()` no longer encourages you to use `class`. This advice 
+* `expect_error()` no longer encourages you to use `class`. This advice removes
   one type of fragility at the expense of creating a different type (#1013).
 
 * `expect_known_failure()` has been removed. As far as I can tell it was
@@ -162,7 +176,7 @@ See `vignette("snapshotting")` for more details.
 
 * `verify_output()` no longer always fails if output contains a carriage 
   return character ("\r") (#1048). It uses the `pdf()` device instead of 
-  `png()` soit work on systems without X11 (#1011). And it uses 
+  `png()` so it works on systems without X11 (#1011). And it uses 
   `waldo::compare()` to give more informative failures.
 
 # testthat 2.3.2

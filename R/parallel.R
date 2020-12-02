@@ -237,7 +237,7 @@ queue_process_setup <- function(test_package, test_dir, load_helpers, load_packa
 queue_task <- function(path) {
   env <- .GlobalEnv$.test_env
 
-  withr::local_envvar(c("TESTTHAT_IS_PARALLEL" = "true"))
+  withr::local_envvar("TESTTHAT_IS_PARALLEL" = "true")
   reporters <- test_files_reporter(SubprocessReporter$new())
   with_reporter(reporters$multi, test_one_file(path, env = env))
   NULL

@@ -41,7 +41,7 @@
 #' expect_snapshot_file(save_png(hist(mtcars)), "plot.png")
 #' }
 #'
-#' # You'd then also provide a helper that skip tests where you can't
+#' # You'd then also provide a helper that skips tests where you can't
 #' # be sure of producing exactly the same output
 #' expect_snapshot_plot <- function(name, code) {
 #'   # Other packages might affect results
@@ -55,7 +55,7 @@
 #' }
 expect_snapshot_file <- function(path, name = basename(path), binary = TRUE, cran = FALSE) {
   edition_require(3, "expect_snapshot_file()")
-  if (cran && !interactive() && on_cran()) {
+  if (!cran && !interactive() && on_cran()) {
     skip("On CRAN")
   }
 

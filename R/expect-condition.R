@@ -407,6 +407,6 @@ compare_messages <- function(messages,
 # Disable rlang backtrace reminders so they don't interfere with
 # expected error messages
 cnd_message <- function(x) {
-  withr::local_options(c(rlang_backtrace_on_error = "none"))
+  withr::local_options(rlang_backtrace_on_error = "none")
   conditionMessage(x)
 }

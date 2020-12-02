@@ -1,6 +1,6 @@
 Package: testthat
 Title: Unit Testing for R
-Version: 2.99.0.9000
+Version: 3.0.0.9000
 Authors@R: 
     c(person(given = "Hadley",
              family = "Wickham",
@@ -24,7 +24,7 @@ Depends:
 Imports:
     brio,
     callr (>= 3.5.1),
-    cli,
+    cli (>= 2.2.0),
     crayon (>= 1.3.4),
     desc,
     digest,
@@ -39,10 +39,10 @@ Imports:
     processx,
     ps (>= 1.3.4),
     R6 (>= 2.2.0),
-    rlang (>= 0.4.1),
+    rlang (>= 0.4.9),
     utils,
     waldo (>= 0.2.1),
-    withr (>= 2.0.0)
+    withr (>= 2.3.0)
 Suggests: 
     covr,
     curl (>= 0.9.5),
