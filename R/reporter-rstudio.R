@@ -27,5 +27,6 @@ RStudioReporter <- R6::R6Class("RStudioReporter",
   )
 )
 
+#' @rdname RStudioReporter
 #' @export
 RstudioReporter <- RStudioReporter
