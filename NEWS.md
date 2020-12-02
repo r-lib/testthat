@@ -1,5 +1,7 @@
 # testthat (development version)
 
+* `_snaps` directory is automatically removed if it's empty (#1180). 
+
 * `expect_snapshot_file()` gives a hint as to next steps when a failure
   occurs in non-interactive environments (with help from @maelle, #1179).
 

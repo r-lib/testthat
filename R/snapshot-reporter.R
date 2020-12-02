@@ -118,8 +118,8 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
         }
       }
 
-      if (length(dir(self$snap_dir) == 0)) {
-        unlink(self$snap_dir)
+      if (length(dir(self$snap_dir)) == 0) {
+        unlink(self$snap_dir, recursive = TRUE)
       }
       rstudio_tickle()
     },
