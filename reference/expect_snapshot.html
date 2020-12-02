@@ -227,17 +227,18 @@ output from code.</p></li>
 <code><a href='expect_known_output.html'>expect_known_value()</a></code>, and <code><a href='expect_known_output.html'>expect_known_hash()</a></code>.)</p>
     </div>
 
-    <pre class="usage"><span class='fu'>expect_snapshot</span>(<span class='kw'>x</span>, cran = <span class='fl'>FALSE</span>)
+    <pre class="usage"><span class='fu'>expect_snapshot</span><span class='op'>(</span><span class='va'>x</span>, cran <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
 
-<span class='fu'>expect_snapshot_output</span>(<span class='kw'>x</span>, cran = <span class='fl'>FALSE</span>)
+<span class='fu'>expect_snapshot_output</span><span class='op'>(</span><span class='va'>x</span>, cran <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
 
-<span class='fu'>expect_snapshot_error</span>(<span class='kw'>x</span>, class = <span class='st'>"error"</span>, cran = <span class='fl'>FALSE</span>)
+<span class='fu'>expect_snapshot_error</span><span class='op'>(</span><span class='va'>x</span>, class <span class='op'>=</span> <span class='st'>"error"</span>, cran <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
 
-<span class='fu'>expect_snapshot_value</span>(
-  <span class='kw'>x</span>,
-  style = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"json"</span>, <span class='st'>"json2"</span>, <span class='st'>"deparse"</span>, <span class='st'>"serialize"</span>),
-  cran = <span class='fl'>FALSE</span>
-)</pre>
+<span class='fu'>expect_snapshot_value</span><span class='op'>(</span>
+  <span class='va'>x</span>,
+  style <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"json"</span>, <span class='st'>"json2"</span>, <span class='st'>"deparse"</span>, <span class='st'>"serialize"</span><span class='op'>)</span>,
+  cran <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  <span class='va'>...</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -275,6 +276,11 @@ using R code.</p></li>
 but produces a completely opaque serialization.</p></li>
 </ul></td>
     </tr>
+    <tr>
+      <th>...</th>
+      <td><p>For <code>expect_snapshot_value()</code> only, passed on to
+<code><a href='https://rdrr.io/pkg/waldo/man/compare.html'>waldo::compare()</a></code> so you can control the details of the comparison.</p></td>
+    </tr>
     </table>
 
     <h2 class="hasAnchor" id="workflow"><a class="anchor" href="#workflow"></a>Workflow</h2>
@@ -295,6 +301,10 @@ on disk. If it's different, the expectation will fail, and a new file
 <code>snap/{test}.new.json</code> will be created. If the change was deliberate,
 you can approve the change with <code><a href='snapshot_accept.html'>snapshot_accept()</a></code> and then the tests will
 pass the next time you run them.</p>
+<p>Note that snapshotting can onµly work when executing a complete test file
+(with <code><a href='test_file.html'>test_file()</a></code>, <code><a href='test_dir.html'>test_dir()</a></code>, or friends) because there's otherwise
+no way to figure out the snapshot path. If you run snapshot tests
+interactively, they'll just display the current value.</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

@@ -201,7 +201,7 @@ in <span style="R">R</span> packages with <a href='https://github.com/catchorg/C
 <code>testthat</code>.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>use_catch</span>(dir = <span class='fu'><a href='https://rdrr.io/r/base/getwd.html'>getwd</a></span>())</pre>
+    <pre class="usage"><span class='fu'>use_catch</span><span class='op'>(</span>dir <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/getwd.html'>getwd</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -283,9 +283,9 @@ package, then you'll need to explicitly export a symbol
 in your package that <code>testthat</code> can use to run your unit
 tests. <code>testthat</code> will look for a routine with one of the names:</p>
 <pre>
-    <span class='kw'>C_run_testthat_tests</span>
-    <span class='kw'>c_run_testthat_tests</span>
-    <span class='kw'>run_testthat_tests</span>
+    <span class='va'>C_run_testthat_tests</span>
+    <span class='va'>c_run_testthat_tests</span>
+    <span class='va'>run_testthat_tests</span>
 </pre>
 
 <p>See <a href='https://cran.r-project.org/doc/manuals/r-release/R-exts.html#Controlling-visibility'>Controlling Visibility</a>

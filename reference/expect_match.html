@@ -197,16 +197,16 @@
     <p>Does a string match a regular expression?</p>
     </div>
 
-    <pre class="usage"><span class='fu'>expect_match</span>(
-  <span class='kw'>object</span>,
-  <span class='kw'>regexp</span>,
-  perl = <span class='fl'>FALSE</span>,
-  fixed = <span class='fl'>FALSE</span>,
-  <span class='kw'>...</span>,
-  all = <span class='fl'>TRUE</span>,
-  info = <span class='kw'>NULL</span>,
-  label = <span class='kw'>NULL</span>
-)</pre>
+    <pre class="usage"><span class='fu'>expect_match</span><span class='op'>(</span>
+  <span class='va'>object</span>,
+  <span class='va'>regexp</span>,
+  perl <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  fixed <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  <span class='va'>...</span>,
+  all <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  info <span class='op'>=</span> <span class='cn'>NULL</span>,
+  label <span class='op'>=</span> <span class='cn'>NULL</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -278,15 +278,15 @@ more detail about the individual arguments.</p>
 <code><a href='logical-expectations.html'>logical-expectations</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>expect_match</span>(<span class='st'>"Testing is fun"</span>, <span class='st'>"fun"</span>)
-<span class='fu'>expect_match</span>(<span class='st'>"Testing is fun"</span>, <span class='st'>"f.n"</span>)
+    <pre class="examples"><div class='input'><span class='fu'>expect_match</span><span class='op'>(</span><span class='st'>"Testing is fun"</span>, <span class='st'>"fun"</span><span class='op'>)</span>
+<span class='fu'>expect_match</span><span class='op'>(</span><span class='st'>"Testing is fun"</span>, <span class='st'>"f.n"</span><span class='op'>)</span>
 
-<span class='co'>if</span> (<span class='fl'>FALSE</span>) {
-<span class='fu'>expect_match</span>(<span class='st'>"Testing is fun"</span>, <span class='st'>"horrible"</span>)
+<span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
+<span class='fu'>expect_match</span><span class='op'>(</span><span class='st'>"Testing is fun"</span>, <span class='st'>"horrible"</span><span class='op'>)</span>
 
 <span class='co'># Zero-length inputs always fail</span>
-<span class='fu'>expect_match</span>(<span class='fu'><a href='https://rdrr.io/r/base/character.html'>character</a></span>(), <span class='st'>"."</span>)
-}
+<span class='fu'>expect_match</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/character.html'>character</a></span><span class='op'>(</span><span class='op'>)</span>, <span class='st'>"."</span><span class='op'>)</span>
+<span class='op'>}</span>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

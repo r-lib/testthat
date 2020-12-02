@@ -211,11 +211,11 @@ Tests live in tests/testthat." />
 <p>Tests live in <code>tests/testthat</code>.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>test_package</span>(<span class='kw'>package</span>, reporter = <span class='fu'><a href='default_reporter.html'>check_reporter</a></span>(), <span class='kw'>...</span>)
+    <pre class="usage"><span class='fu'>test_package</span><span class='op'>(</span><span class='va'>package</span>, reporter <span class='op'>=</span> <span class='fu'><a href='default_reporter.html'>check_reporter</a></span><span class='op'>(</span><span class='op'>)</span>, <span class='va'>...</span><span class='op'>)</span>
 
-<span class='fu'>test_check</span>(<span class='kw'>package</span>, reporter = <span class='fu'><a href='default_reporter.html'>check_reporter</a></span>(), <span class='kw'>...</span>)
+<span class='fu'>test_check</span><span class='op'>(</span><span class='va'>package</span>, reporter <span class='op'>=</span> <span class='fu'><a href='default_reporter.html'>check_reporter</a></span><span class='op'>(</span><span class='op'>)</span>, <span class='va'>...</span><span class='op'>)</span>
 
-<span class='fu'>test_local</span>(path = <span class='st'>"."</span>, reporter = <span class='kw'>NULL</span>, <span class='kw'>...</span>)</pre>
+<span class='fu'>test_local</span><span class='op'>(</span>path <span class='op'>=</span> <span class='st'>"."</span>, reporter <span class='op'>=</span> <span class='cn'>NULL</span>, <span class='va'>...</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -249,10 +249,10 @@ as a string (e.g. "summary") or as an R6 object
     
 
 <p>To run testthat automatically from <code>R CMD check</code>, make sure you have
-a <code>tests/testthat.R</code> that contains:</p><pre><span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='kw'><a href='https://testthat.r-lib.org'>testthat</a></span>)
-<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='kw'>yourpackage</span>)
+a <code>tests/testthat.R</code> that contains:</p><pre><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://testthat.r-lib.org'>testthat</a></span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'>yourpackage</span><span class='op'>)</span>
 
-<span class='fu'>test_check</span>(<span class='st'>"yourpackage"</span>)
+<span class='fu'>test_check</span><span class='op'>(</span><span class='st'>"yourpackage"</span><span class='op'>)</span>
 </pre>
 
     <h2 class="hasAnchor" id="special-files"><a class="anchor" href="#special-files"></a>Special files</h2>
@@ -263,7 +263,7 @@ a <code>tests/testthat.R</code> that contains:</p><pre><span class='fu'><a href=
 <li><p>Test files start with <code>test</code> and are executed in alphabetical order.</p></li>
 <li><p>Setup files start with <code>setup</code> and are executed before tests. If
 clean up is needed after all tests have been run, you can use
-<code><a href='https://withr.r-lib.org/reference/defer.html'>withr::defer(clean_up(), teardown_env())</a></code>. See <code>vignette("text-fixtures")</code>
+<code><a href='https://withr.r-lib.org/reference/defer.html'>withr::defer(clean_up(), teardown_env())</a></code>. See <code><a href='../articles/test-fixtures.html'>vignette("test-fixtures")</a></code>
 for more details.</p></li>
 </ul>
 

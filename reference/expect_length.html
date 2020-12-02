@@ -197,7 +197,7 @@
     <p>Does code return a vector with the specified length?</p>
     </div>
 
-    <pre class="usage"><span class='fu'>expect_length</span>(<span class='kw'>object</span>, <span class='kw'>n</span>)</pre>
+    <pre class="usage"><span class='fu'>expect_length</span><span class='op'>(</span><span class='va'>object</span>, <span class='va'>n</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -231,12 +231,12 @@ within a function or for loop. See <a href='quasi_label.html'>quasi_label</a> fo
 <code><a href='logical-expectations.html'>logical-expectations</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>expect_length</span>(<span class='fl'>1</span>, <span class='fl'>1</span>)
-<span class='fu'>expect_length</span>(<span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span>, <span class='fl'>10</span>)
+    <pre class="examples"><div class='input'><span class='fu'>expect_length</span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>1</span><span class='op'>)</span>
+<span class='fu'>expect_length</span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span>, <span class='fl'>10</span><span class='op'>)</span>
 
-<span class='co'>if</span> (<span class='fl'>FALSE</span>) {
-<span class='fu'>expect_length</span>(<span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span>, <span class='fl'>1</span>)
-}
+<span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
+<span class='fu'>expect_length</span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span>, <span class='fl'>1</span><span class='op'>)</span>
+<span class='op'>}</span>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

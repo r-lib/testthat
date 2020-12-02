@@ -201,20 +201,20 @@ call <code><a href='expect.html'>expect()</a></code> instead. See <code><a href=
 details.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>expectation</span>(<span class='kw'>type</span>, <span class='kw'>message</span>, srcref = <span class='kw'>NULL</span>, trace = <span class='kw'>NULL</span>)
+    <pre class="usage"><span class='fu'>expectation</span><span class='op'>(</span><span class='va'>type</span>, <span class='va'>message</span>, srcref <span class='op'>=</span> <span class='cn'>NULL</span>, trace <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span>
 
-<span class='fu'>new_expectation</span>(
-  <span class='kw'>type</span>,
-  <span class='kw'>message</span>,
-  <span class='kw'>...</span>,
-  srcref = <span class='kw'>NULL</span>,
-  trace = <span class='kw'>NULL</span>,
-  .subclass = <span class='kw'>NULL</span>
-)
+<span class='fu'>new_expectation</span><span class='op'>(</span>
+  <span class='va'>type</span>,
+  <span class='va'>message</span>,
+  <span class='va'>...</span>,
+  srcref <span class='op'>=</span> <span class='cn'>NULL</span>,
+  trace <span class='op'>=</span> <span class='cn'>NULL</span>,
+  .subclass <span class='op'>=</span> <span class='cn'>NULL</span>
+<span class='op'>)</span>
 
-<span class='fu'>exp_signal</span>(<span class='kw'>exp</span>)
+<span class='fu'>exp_signal</span><span class='op'>(</span><span class='va'>exp</span><span class='op'>)</span>
 
-<span class='fu'>is.expectation</span>(<span class='kw'>x</span>)</pre>
+<span class='fu'>is.expectation</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">

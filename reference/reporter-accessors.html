@@ -201,11 +201,11 @@ reporter. Generally, these functions should not be called directly; instead
 use <code>with_reporter()</code> to temporarily change, then reset, the active reporter.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>set_reporter</span>(<span class='kw'>reporter</span>)
+    <pre class="usage"><span class='fu'>set_reporter</span><span class='op'>(</span><span class='va'>reporter</span><span class='op'>)</span>
 
-<span class='fu'>get_reporter</span>()
+<span class='fu'>get_reporter</span><span class='op'>(</span><span class='op'>)</span>
 
-<span class='fu'>with_reporter</span>(<span class='kw'>reporter</span>, <span class='kw'>code</span>, start_end_reporter = <span class='fl'>TRUE</span>)</pre>
+<span class='fu'>with_reporter</span><span class='op'>(</span><span class='va'>reporter</span>, <span class='va'>code</span>, start_end_reporter <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">

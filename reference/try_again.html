@@ -197,7 +197,7 @@
     <p>Try evaluating an expressing multiple times until it succeeds.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>try_again</span>(<span class='kw'>times</span>, <span class='kw'>code</span>)</pre>
+    <pre class="usage"><span class='fu'>try_again</span><span class='op'>(</span><span class='va'>times</span>, <span class='va'>code</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -214,14 +214,14 @@
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>third_try</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/eval.html'>local</a></span>({
-  <span class='kw'>i</span> <span class='op'>&lt;-</span> <span class='fl'>3</span>
-  <span class='fu'>function</span>() {
-    <span class='kw'>i</span> <span class='op'>&lt;&lt;-</span> <span class='kw'>i</span> <span class='op'>-</span> <span class='fl'>1</span>
-    <span class='co'>if</span> (<span class='kw'>i</span> <span class='op'>&gt;</span> <span class='fl'>0</span>) <span class='fu'><a href='fail.html'>fail</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span>(<span class='st'>"i is "</span>, <span class='kw'>i</span>))
-  }
-})
-<span class='fu'>try_again</span>(<span class='fl'>3</span>, <span class='fu'>third_try</span>())
+    <pre class="examples"><div class='input'><span class='va'>third_try</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/eval.html'>local</a></span><span class='op'>(</span><span class='op'>{</span>
+  <span class='va'>i</span> <span class='op'>&lt;-</span> <span class='fl'>3</span>
+  <span class='kw'>function</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>{</span>
+    <span class='va'>i</span> <span class='op'>&lt;&lt;-</span> <span class='va'>i</span> <span class='op'>-</span> <span class='fl'>1</span>
+    <span class='kw'>if</span> <span class='op'>(</span><span class='va'>i</span> <span class='op'>&gt;</span> <span class='fl'>0</span><span class='op'>)</span> <span class='fu'><a href='fail.html'>fail</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span><span class='op'>(</span><span class='st'>"i is "</span>, <span class='va'>i</span><span class='op'>)</span><span class='op'>)</span>
+  <span class='op'>}</span>
+<span class='op'>}</span><span class='op'>)</span>
+<span class='fu'>try_again</span><span class='op'>(</span><span class='fl'>3</span>, <span class='fu'>third_try</span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

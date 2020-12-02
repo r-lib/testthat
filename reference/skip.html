@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Skip a test. — skip • testthat</title>
+<title>Skip a test — skip • testthat</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,10 +46,13 @@
 
 
 
-<meta property="og:title" content="Skip a test. — skip" />
-<meta property="og:description" content="This function allows you to skip a test if it's not currently available.
-This will produce an informative message, but will not cause the test
-suite to fail." />
+<meta property="og:title" content="Skip a test — skip" />
+<meta property="og:description" content="skip_if() and skip_if_not() allow you to skip tests, immediately
+concluding a test_that() block without executing any further expectations.
+This allows you to skip a test without failure, if for some reason it
+can't be run (e.g. it depends on the feature of a specific operating system,
+or it requires a specific version of a package).
+See vignette(&quot;skipping&quot;) for more details." />
 <meta property="og:image" content="https://testthat.r-lib.org/logo.png" />
 
 
@@ -190,42 +193,45 @@ suite to fail." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Skip a test.</h1>
+    <h1>Skip a test</h1>
     <small class="dont-index">Source: <a href='https://github.com/r-lib/testthat/blob/master/R/skip.R'><code>R/skip.R</code></a></small>
     <div class="hidden name"><code>skip.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>This function allows you to skip a test if it's not currently available.
-This will produce an informative message, but will not cause the test
-suite to fail.</p>
+    <p><code>skip_if()</code> and <code>skip_if_not()</code> allow you to skip tests, immediately
+concluding a <code><a href='test_that.html'>test_that()</a></code> block without executing any further expectations.
+This allows you to skip a test without failure, if for some reason it
+can't be run (e.g. it depends on the feature of a specific operating system,
+or it requires a specific version of a package).</p>
+<p>See <code><a href='../articles/skipping.html'>vignette("skipping")</a></code> for more details.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>skip</span>(<span class='kw'>message</span>)
+    <pre class="usage"><span class='fu'>skip</span><span class='op'>(</span><span class='va'>message</span><span class='op'>)</span>
 
-<span class='fu'>skip_if_not</span>(<span class='kw'>condition</span>, message = <span class='fu'><a href='https://rdrr.io/r/base/deparse.html'>deparse</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/substitute.html'>substitute</a></span>(<span class='kw'>condition</span>)))
+<span class='fu'>skip_if_not</span><span class='op'>(</span><span class='va'>condition</span>, message <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span>
 
-<span class='fu'>skip_if</span>(<span class='kw'>condition</span>, message = <span class='kw'>NULL</span>)
+<span class='fu'>skip_if</span><span class='op'>(</span><span class='va'>condition</span>, message <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span>
 
-<span class='fu'>skip_if_not_installed</span>(<span class='kw'>pkg</span>, minimum_version = <span class='kw'>NULL</span>)
+<span class='fu'>skip_if_not_installed</span><span class='op'>(</span><span class='va'>pkg</span>, minimum_version <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span>
 
-<span class='fu'>skip_if_offline</span>(host = <span class='st'>"r-project.org"</span>)
+<span class='fu'>skip_if_offline</span><span class='op'>(</span>host <span class='op'>=</span> <span class='st'>"r-project.org"</span><span class='op'>)</span>
 
-<span class='fu'>skip_on_cran</span>()
+<span class='fu'>skip_on_cran</span><span class='op'>(</span><span class='op'>)</span>
 
-<span class='fu'>skip_on_os</span>(<span class='kw'>os</span>)
+<span class='fu'>skip_on_os</span><span class='op'>(</span><span class='va'>os</span><span class='op'>)</span>
 
-<span class='fu'>skip_on_travis</span>()
+<span class='fu'>skip_on_travis</span><span class='op'>(</span><span class='op'>)</span>
 
-<span class='fu'>skip_on_appveyor</span>()
+<span class='fu'>skip_on_appveyor</span><span class='op'>(</span><span class='op'>)</span>
 
-<span class='fu'>skip_on_ci</span>()
+<span class='fu'>skip_on_ci</span><span class='op'>(</span><span class='op'>)</span>
 
-<span class='fu'>skip_on_covr</span>()
+<span class='fu'>skip_on_covr</span><span class='op'>(</span><span class='op'>)</span>
 
-<span class='fu'>skip_on_bioc</span>()
+<span class='fu'>skip_on_bioc</span><span class='op'>(</span><span class='op'>)</span>
 
-<span class='fu'>skip_if_translated</span>(msgid = <span class='st'>"'%s' not found"</span>)</pre>
+<span class='fu'>skip_if_translated</span><span class='op'>(</span>msgid <span class='op'>=</span> <span class='st'>"'%s' not found"</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -264,50 +270,41 @@ uses a message included in most translation packs. See the complete list in
     </tr>
     </table>
 
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
-
-    <p><code>skip*</code> functions are intended for use within <code><a href='test_that.html'>test_that()</a></code>
-blocks.  All expectations following the <code>skip*</code> statement within the
-same <code>test_that</code> block will be skipped.  Test summaries that report skip
-counts are reporting how many <code>test_that</code> blocks triggered a <code>skip*</code>
-statement, not how many expectations were skipped.</p>
     <h2 class="hasAnchor" id="helpers"><a class="anchor" href="#helpers"></a>Helpers</h2>
 
     
 
-<p><code>skip_if_not()</code> works like <code><a href='https://rdrr.io/r/base/stopifnot.html'>stopifnot()</a></code>, generating
-a message automatically based on the first argument.</p>
-<p><code>skip_if_offline()</code> skips tests if an internet connection is not available
-using <code><a href='https://jeroen.cran.dev/curl/reference/nslookup.html'>curl::nslookup()</a></code>.</p>
-<p><code>skip_on_cran()</code> skips tests on CRAN, using the <code>NOT_CRAN</code>
-environment variable set by devtools.</p>
-<p><code>skip_on_travis()</code> skips tests on Travis CI by inspecting the
-<code>TRAVIS</code> environment variable.</p>
-<p><code>skip_on_appveyor()</code> skips tests on AppVeyor by inspecting the
-<code>APPVEYOR</code> environment variable.</p>
-<p><code>skip_on_ci()</code> skips tests on continuous integration systems by inspecting
-the <code>CI</code> environment variable.</p>
-<p><code>skip_on_covr()</code> skips tests when covr is running by inspecting the
-<code>R_COVR</code> environment variable</p>
-<p><code>skip_on_bioc()</code> skips tests on Bioconductor by inspecting the
-<code>BBS_HOME</code> environment variable.</p>
-<p><code>skip_if_not_installed()</code> skips a tests if a package is not installed
-or cannot be loaded (useful for suggested packages).  It loads the package as
-a side effect, because the package is likely to be used anyway.</p>
+<ul>
+<li><p><code>skip_if_not_installed("pkg")</code> skips tests if package "pkg" is not
+installed or cannot be loaded (using <code><a href='https://rdrr.io/r/base/ns-load.html'>requireNamespace()</a></code>). Generally,
+you can assume that suggested packages are installed, and you do not
+need to check for them specifically, unless they are particularly
+difficult to install.</p></li>
+<li><p><code>skip_if_offline()</code> skips if an internet connection is not available
+(using <code><a href='https://jeroen.cran.dev/curl/reference/nslookup.html'>curl::nslookup()</a></code>).</p></li>
+<li><p><code>skip_if_translated("msg")</code> skips tests if the "msg" is translated.</p></li>
+<li><p><code>skip_on_bioc()</code> skips on Bioconductor (using the <code>BBS_HOME</code> env var).</p></li>
+<li><p><code>skip_on_cran()</code> skips on CRAN (using the <code>NOT_CRAN</code> env var set by
+devtools and friends).</p></li>
+<li><p><code>skip_on_covr()</code> skips when covr is running (using the <code>R_COVR</code> env var).</p></li>
+<li><p><code>skip_on_ci()</code> skips on continuous integration systems like GitHub Actions,
+travis, and appveyor (using the <code>CI</code> env var). It supersedes the older
+<code>skip_on_travis()</code> and <code>skip_on_appveyor()</code> functions.</p></li>
+<li><p><code>skip_on_os()</code> skips on the specified operating system(s) ("windows",
+"mac", "linux", or "solaris").</p></li>
+</ul>
+
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'>if</span> (<span class='fl'>FALSE</span>) <span class='fu'>skip</span>(<span class='st'>"No internet connection"</span>)
+    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='fu'>skip</span><span class='op'>(</span><span class='st'>"No internet connection"</span><span class='op'>)</span>
 
-<span class='co'>## The following are only meaningful when put in test files and</span>
-<span class='co'>## run with `test_file`, `test_dir`, `test_check`, etc.</span>
-
-<span class='fu'><a href='test_that.html'>test_that</a></span>(<span class='st'>"skip example"</span>, {
-  <span class='fu'><a href='equality-expectations.html'>expect_equal</a></span>(<span class='fl'>1</span>, <span class='fl'>1L</span>)    <span class='co'># this expectation runs</span>
-  <span class='fu'>skip</span>(<span class='st'>'skip'</span>)
-  <span class='fu'><a href='equality-expectations.html'>expect_equal</a></span>(<span class='fl'>1</span>, <span class='fl'>2</span>)     <span class='co'># this one skipped</span>
-  <span class='fu'><a href='equality-expectations.html'>expect_equal</a></span>(<span class='fl'>1</span>, <span class='fl'>3</span>)     <span class='co'># this one is also skipped</span>
-})
-</div><div class='output co'>#&gt; ── <span style='color: #0000BB;font-weight: bold;'>Skip</span><span style='font-weight: bold;'> (&lt;text&gt;:8:3): skip example</span><span> ─────────────────────────────────────────────
+<span class='fu'><a href='test_that.html'>test_that</a></span><span class='op'>(</span><span class='st'>"skip example"</span>, <span class='op'>{</span>
+  <span class='fu'><a href='equality-expectations.html'>expect_equal</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>1L</span><span class='op'>)</span>    <span class='co'># this expectation runs</span>
+  <span class='fu'>skip</span><span class='op'>(</span><span class='st'>'skip'</span><span class='op'>)</span>
+  <span class='fu'><a href='equality-expectations.html'>expect_equal</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>2</span><span class='op'>)</span>     <span class='co'># this one skipped</span>
+  <span class='fu'><a href='equality-expectations.html'>expect_equal</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>3</span><span class='op'>)</span>     <span class='co'># this one is also skipped</span>
+<span class='op'>}</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; ── <span style='color: #0000BB;font-weight: bold;'>Skip</span><span style='font-weight: bold;'> (&lt;text&gt;:5:3): skip example</span><span> ─────────────────────────────────────────────
 #&gt; Reason: skip
 #&gt; </div></span></pre>
   </div>

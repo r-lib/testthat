@@ -213,43 +213,43 @@ they're important you'll need to catch them with additional
 can ignore with <code><a href='https://rdrr.io/r/base/message.html'>suppressMessages()</a></code>/<code><a href='https://rdrr.io/r/base/warning.html'>suppressWarnings()</a></code>.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>expect_error</span>(
-  <span class='kw'>object</span>,
-  regexp = <span class='kw'>NULL</span>,
-  class = <span class='kw'>NULL</span>,
-  <span class='kw'>...</span>,
-  info = <span class='kw'>NULL</span>,
-  label = <span class='kw'>NULL</span>
-)
+    <pre class="usage"><span class='fu'>expect_error</span><span class='op'>(</span>
+  <span class='va'>object</span>,
+  regexp <span class='op'>=</span> <span class='cn'>NULL</span>,
+  class <span class='op'>=</span> <span class='cn'>NULL</span>,
+  <span class='va'>...</span>,
+  info <span class='op'>=</span> <span class='cn'>NULL</span>,
+  label <span class='op'>=</span> <span class='cn'>NULL</span>
+<span class='op'>)</span>
 
-<span class='fu'>expect_warning</span>(
-  <span class='kw'>object</span>,
-  regexp = <span class='kw'>NULL</span>,
-  class = <span class='kw'>NULL</span>,
-  <span class='kw'>...</span>,
-  all = <span class='fl'>FALSE</span>,
-  info = <span class='kw'>NULL</span>,
-  label = <span class='kw'>NULL</span>
-)
+<span class='fu'>expect_warning</span><span class='op'>(</span>
+  <span class='va'>object</span>,
+  regexp <span class='op'>=</span> <span class='cn'>NULL</span>,
+  class <span class='op'>=</span> <span class='cn'>NULL</span>,
+  <span class='va'>...</span>,
+  all <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  info <span class='op'>=</span> <span class='cn'>NULL</span>,
+  label <span class='op'>=</span> <span class='cn'>NULL</span>
+<span class='op'>)</span>
 
-<span class='fu'>expect_message</span>(
-  <span class='kw'>object</span>,
-  regexp = <span class='kw'>NULL</span>,
-  class = <span class='kw'>NULL</span>,
-  <span class='kw'>...</span>,
-  all = <span class='fl'>FALSE</span>,
-  info = <span class='kw'>NULL</span>,
-  label = <span class='kw'>NULL</span>
-)
+<span class='fu'>expect_message</span><span class='op'>(</span>
+  <span class='va'>object</span>,
+  regexp <span class='op'>=</span> <span class='cn'>NULL</span>,
+  class <span class='op'>=</span> <span class='cn'>NULL</span>,
+  <span class='va'>...</span>,
+  all <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  info <span class='op'>=</span> <span class='cn'>NULL</span>,
+  label <span class='op'>=</span> <span class='cn'>NULL</span>
+<span class='op'>)</span>
 
-<span class='fu'>expect_condition</span>(
-  <span class='kw'>object</span>,
-  regexp = <span class='kw'>NULL</span>,
-  class = <span class='kw'>NULL</span>,
-  <span class='kw'>...</span>,
-  info = <span class='kw'>NULL</span>,
-  label = <span class='kw'>NULL</span>
-)</pre>
+<span class='fu'>expect_condition</span><span class='op'>(</span>
+  <span class='va'>object</span>,
+  regexp <span class='op'>=</span> <span class='cn'>NULL</span>,
+  class <span class='op'>=</span> <span class='cn'>NULL</span>,
+  <span class='va'>...</span>,
+  info <span class='op'>=</span> <span class='cn'>NULL</span>,
+  label <span class='op'>=</span> <span class='cn'>NULL</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -340,46 +340,46 @@ using <code><a href='expect_snapshot.html'>expect_snapshot()</a></code> instead.
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># Errors ------------------------------------------------------------------</span>
-<span class='kw'>f</span> <span class='op'>&lt;-</span> <span class='fu'>function</span>() <span class='fu'><a href='https://rdrr.io/r/base/stop.html'>stop</a></span>(<span class='st'>"My error!"</span>)
-<span class='fu'>expect_error</span>(<span class='fu'>f</span>())
-<span class='fu'>expect_error</span>(<span class='fu'>f</span>(), <span class='st'>"My error!"</span>)
+<span class='va'>f</span> <span class='op'>&lt;-</span> <span class='kw'>function</span><span class='op'>(</span><span class='op'>)</span> <span class='kw'><a href='https://rdrr.io/r/base/stop.html'>stop</a></span><span class='op'>(</span><span class='st'>"My error!"</span><span class='op'>)</span>
+<span class='fu'>expect_error</span><span class='op'>(</span><span class='fu'>f</span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>
+<span class='fu'>expect_error</span><span class='op'>(</span><span class='fu'>f</span><span class='op'>(</span><span class='op'>)</span>, <span class='st'>"My error!"</span><span class='op'>)</span>
 
 <span class='co'># You can use the arguments of grepl to control the matching</span>
-<span class='fu'>expect_error</span>(<span class='fu'>f</span>(), <span class='st'>"my error!"</span>, ignore.case = <span class='fl'>TRUE</span>)
+<span class='fu'>expect_error</span><span class='op'>(</span><span class='fu'>f</span><span class='op'>(</span><span class='op'>)</span>, <span class='st'>"my error!"</span>, ignore.case <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
 
 <span class='co'># Note that `expect_error()` returns the error object so you can test</span>
 <span class='co'># its components if needed</span>
-<span class='kw'>err</span> <span class='op'>&lt;-</span> <span class='fu'>expect_error</span>(<span class='kw'>rlang</span>::<span class='fu'><a href='https://rlang.r-lib.org/reference/abort.html'>abort</a></span>(<span class='st'>"a"</span>, n = <span class='fl'>10</span>))
-<span class='fu'><a href='equality-expectations.html'>expect_equal</a></span>(<span class='kw'>err</span><span class='op'>$</span><span class='kw'>n</span>, <span class='fl'>10</span>)
+<span class='va'>err</span> <span class='op'>&lt;-</span> <span class='fu'>expect_error</span><span class='op'>(</span><span class='fu'>rlang</span><span class='fu'>::</span><span class='fu'><a href='https://rlang.r-lib.org/reference/abort.html'>abort</a></span><span class='op'>(</span><span class='st'>"a"</span>, n <span class='op'>=</span> <span class='fl'>10</span><span class='op'>)</span><span class='op'>)</span>
+<span class='fu'><a href='equality-expectations.html'>expect_equal</a></span><span class='op'>(</span><span class='va'>err</span><span class='op'>$</span><span class='va'>n</span>, <span class='fl'>10</span><span class='op'>)</span>
 
 <span class='co'># Warnings ------------------------------------------------------------------</span>
-<span class='kw'>f</span> <span class='op'>&lt;-</span> <span class='fu'>function</span>(<span class='kw'>x</span>) {
-  <span class='co'>if</span> (<span class='kw'>x</span> <span class='op'>&lt;</span> <span class='fl'>0</span>) {
-    <span class='fu'><a href='https://rdrr.io/r/base/warning.html'>warning</a></span>(<span class='st'>"*x* is already negative"</span>)
-    <span class='fu'><a href='https://rdrr.io/r/base/function.html'>return</a></span>(<span class='kw'>x</span>)
-  }
-  <span class='op'>-</span><span class='kw'>x</span>
-}
-<span class='fu'>expect_warning</span>(<span class='fu'>f</span>(<span class='op'>-</span><span class='fl'>1</span>))
-<span class='fu'>expect_warning</span>(<span class='fu'>f</span>(<span class='op'>-</span><span class='fl'>1</span>), <span class='st'>"already negative"</span>)
-<span class='fu'>expect_warning</span>(<span class='fu'>f</span>(<span class='fl'>1</span>), <span class='fl'>NA</span>)
+<span class='va'>f</span> <span class='op'>&lt;-</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span> <span class='op'>{</span>
+  <span class='kw'>if</span> <span class='op'>(</span><span class='va'>x</span> <span class='op'>&lt;</span> <span class='fl'>0</span><span class='op'>)</span> <span class='op'>{</span>
+    <span class='kw'><a href='https://rdrr.io/r/base/warning.html'>warning</a></span><span class='op'>(</span><span class='st'>"*x* is already negative"</span><span class='op'>)</span>
+    <span class='kw'><a href='https://rdrr.io/r/base/function.html'>return</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
+  <span class='op'>}</span>
+  <span class='op'>-</span><span class='va'>x</span>
+<span class='op'>}</span>
+<span class='fu'>expect_warning</span><span class='op'>(</span><span class='fu'>f</span><span class='op'>(</span><span class='op'>-</span><span class='fl'>1</span><span class='op'>)</span><span class='op'>)</span>
+<span class='fu'>expect_warning</span><span class='op'>(</span><span class='fu'>f</span><span class='op'>(</span><span class='op'>-</span><span class='fl'>1</span><span class='op'>)</span>, <span class='st'>"already negative"</span><span class='op'>)</span>
+<span class='fu'>expect_warning</span><span class='op'>(</span><span class='fu'>f</span><span class='op'>(</span><span class='fl'>1</span><span class='op'>)</span>, <span class='cn'>NA</span><span class='op'>)</span>
 
 <span class='co'># To test message and output, store results to a variable</span>
-<span class='fu'>expect_warning</span>(<span class='kw'>out</span> <span class='op'>&lt;-</span> <span class='fu'>f</span>(<span class='op'>-</span><span class='fl'>1</span>), <span class='st'>"already negative"</span>)
-<span class='fu'><a href='equality-expectations.html'>expect_equal</a></span>(<span class='kw'>out</span>, <span class='op'>-</span><span class='fl'>1</span>)
+<span class='fu'>expect_warning</span><span class='op'>(</span><span class='va'>out</span> <span class='op'>&lt;-</span> <span class='fu'>f</span><span class='op'>(</span><span class='op'>-</span><span class='fl'>1</span><span class='op'>)</span>, <span class='st'>"already negative"</span><span class='op'>)</span>
+<span class='fu'><a href='equality-expectations.html'>expect_equal</a></span><span class='op'>(</span><span class='va'>out</span>, <span class='op'>-</span><span class='fl'>1</span><span class='op'>)</span>
 
 <span class='co'># Messages ------------------------------------------------------------------</span>
-<span class='kw'>f</span> <span class='op'>&lt;-</span> <span class='fu'>function</span>(<span class='kw'>x</span>) {
-  <span class='co'>if</span> (<span class='kw'>x</span> <span class='op'>&lt;</span> <span class='fl'>0</span>) {
-    <span class='fu'><a href='https://rdrr.io/r/base/message.html'>message</a></span>(<span class='st'>"*x* is already negative"</span>)
-    <span class='fu'><a href='https://rdrr.io/r/base/function.html'>return</a></span>(<span class='kw'>x</span>)
-  }
+<span class='va'>f</span> <span class='op'>&lt;-</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span> <span class='op'>{</span>
+  <span class='kw'>if</span> <span class='op'>(</span><span class='va'>x</span> <span class='op'>&lt;</span> <span class='fl'>0</span><span class='op'>)</span> <span class='op'>{</span>
+    <span class='fu'><a href='https://rdrr.io/r/base/message.html'>message</a></span><span class='op'>(</span><span class='st'>"*x* is already negative"</span><span class='op'>)</span>
+    <span class='kw'><a href='https://rdrr.io/r/base/function.html'>return</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
+  <span class='op'>}</span>
 
-  <span class='op'>-</span><span class='kw'>x</span>
-}
-<span class='fu'>expect_message</span>(<span class='fu'>f</span>(<span class='op'>-</span><span class='fl'>1</span>))
-<span class='fu'>expect_message</span>(<span class='fu'>f</span>(<span class='op'>-</span><span class='fl'>1</span>), <span class='st'>"already negative"</span>)
-<span class='fu'>expect_message</span>(<span class='fu'>f</span>(<span class='fl'>1</span>), <span class='fl'>NA</span>)
+  <span class='op'>-</span><span class='va'>x</span>
+<span class='op'>}</span>
+<span class='fu'>expect_message</span><span class='op'>(</span><span class='fu'>f</span><span class='op'>(</span><span class='op'>-</span><span class='fl'>1</span><span class='op'>)</span><span class='op'>)</span>
+<span class='fu'>expect_message</span><span class='op'>(</span><span class='fu'>f</span><span class='op'>(</span><span class='op'>-</span><span class='fl'>1</span><span class='op'>)</span>, <span class='st'>"already negative"</span><span class='op'>)</span>
+<span class='fu'>expect_message</span><span class='op'>(</span><span class='fu'>f</span><span class='op'>(</span><span class='fl'>1</span><span class='op'>)</span>, <span class='cn'>NA</span><span class='op'>)</span>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

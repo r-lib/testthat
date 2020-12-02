@@ -199,7 +199,7 @@ An old style of testing that's no longer encouraged." />
 <p>An old style of testing that's no longer encouraged.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>expect_that</span>(<span class='kw'>object</span>, <span class='kw'>condition</span>, info = <span class='kw'>NULL</span>, label = <span class='kw'>NULL</span>)</pre>
+    <pre class="usage"><span class='fu'>expect_that</span><span class='op'>(</span><span class='va'>object</span>, <span class='va'>condition</span>, info <span class='op'>=</span> <span class='cn'>NULL</span>, label <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -242,11 +242,11 @@ Use a more specific <code>expect_</code> function instead.</p>
     <div class='dont-index'><p><code><a href='fail.html'>fail()</a></code> for an expectation that always fails.</p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>expect_that</span>(<span class='fl'>5</span> <span class='op'>*</span> <span class='fl'>2</span>, <span class='fu'><a href='oldskool.html'>equals</a></span>(<span class='fl'>10</span>))
-<span class='fu'>expect_that</span>(<span class='fu'><a href='https://rdrr.io/r/base/MathFun.html'>sqrt</a></span>(<span class='fl'>2</span>) <span class='op'>^</span> <span class='fl'>2</span>, <span class='fu'><a href='oldskool.html'>equals</a></span>(<span class='fl'>2</span>))
-<span class='co'>if</span> (<span class='fl'>FALSE</span>) {
-<span class='fu'>expect_that</span>(<span class='fu'><a href='https://rdrr.io/r/base/MathFun.html'>sqrt</a></span>(<span class='fl'>2</span>) <span class='op'>^</span> <span class='fl'>2</span>, <span class='fu'><a href='oldskool.html'>is_identical_to</a></span>(<span class='fl'>2</span>))
-}
+    <pre class="examples"><div class='input'><span class='fu'>expect_that</span><span class='op'>(</span><span class='fl'>5</span> <span class='op'>*</span> <span class='fl'>2</span>, <span class='fu'><a href='oldskool.html'>equals</a></span><span class='op'>(</span><span class='fl'>10</span><span class='op'>)</span><span class='op'>)</span>
+<span class='fu'>expect_that</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/MathFun.html'>sqrt</a></span><span class='op'>(</span><span class='fl'>2</span><span class='op'>)</span> <span class='op'>^</span> <span class='fl'>2</span>, <span class='fu'><a href='oldskool.html'>equals</a></span><span class='op'>(</span><span class='fl'>2</span><span class='op'>)</span><span class='op'>)</span>
+<span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
+<span class='fu'>expect_that</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/MathFun.html'>sqrt</a></span><span class='op'>(</span><span class='fl'>2</span><span class='op'>)</span> <span class='op'>^</span> <span class='fl'>2</span>, <span class='fu'><a href='oldskool.html'>is_identical_to</a></span><span class='op'>(</span><span class='fl'>2</span><span class='op'>)</span><span class='op'>)</span>
+<span class='op'>}</span>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

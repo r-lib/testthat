@@ -205,28 +205,28 @@ asserting that the values have not changed since the last time that you ran
 them.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>expect_known_output</span>(
-  <span class='kw'>object</span>,
-  <span class='kw'>file</span>,
-  update = <span class='fl'>TRUE</span>,
-  <span class='kw'>...</span>,
-  info = <span class='kw'>NULL</span>,
-  label = <span class='kw'>NULL</span>,
-  print = <span class='fl'>FALSE</span>,
-  width = <span class='fl'>80</span>
-)
+    <pre class="usage"><span class='fu'>expect_known_output</span><span class='op'>(</span>
+  <span class='va'>object</span>,
+  <span class='va'>file</span>,
+  update <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  <span class='va'>...</span>,
+  info <span class='op'>=</span> <span class='cn'>NULL</span>,
+  label <span class='op'>=</span> <span class='cn'>NULL</span>,
+  print <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  width <span class='op'>=</span> <span class='fl'>80</span>
+<span class='op'>)</span>
 
-<span class='fu'>expect_known_value</span>(
-  <span class='kw'>object</span>,
-  <span class='kw'>file</span>,
-  update = <span class='fl'>TRUE</span>,
-  <span class='kw'>...</span>,
-  info = <span class='kw'>NULL</span>,
-  label = <span class='kw'>NULL</span>,
-  version = <span class='fl'>2</span>
-)
+<span class='fu'>expect_known_value</span><span class='op'>(</span>
+  <span class='va'>object</span>,
+  <span class='va'>file</span>,
+  update <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  <span class='va'>...</span>,
+  info <span class='op'>=</span> <span class='cn'>NULL</span>,
+  label <span class='op'>=</span> <span class='cn'>NULL</span>,
+  version <span class='op'>=</span> <span class='fl'>2</span>
+<span class='op'>)</span>
 
-<span class='fu'>expect_known_hash</span>(<span class='kw'>object</span>, hash = <span class='kw'>NULL</span>)</pre>
+<span class='fu'>expect_known_hash</span><span class='op'>(</span><span class='va'>object</span>, hash <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -306,19 +306,19 @@ synchronised back to the source package.</p>
 please use <code><a href='expect_snapshot.html'>expect_snapshot_output()</a></code> and friends instead.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>tmp</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempfile</a></span>()
+    <pre class="examples"><div class='input'><span class='va'>tmp</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempfile</a></span><span class='op'>(</span><span class='op'>)</span>
 
 <span class='co'># The first run always succeeds</span>
-<span class='fu'>expect_known_output</span>(<span class='kw'>mtcars</span>[<span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span>, ], <span class='kw'>tmp</span>, print = <span class='fl'>TRUE</span>)
+<span class='fu'>expect_known_output</span><span class='op'>(</span><span class='va'>mtcars</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span>, <span class='op'>]</span>, <span class='va'>tmp</span>, print <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; <span class='warning'>Warning: Creating reference output</span></div><div class='input'>
 <span class='co'># Subsequent runs will succeed only if the file is unchanged</span>
 <span class='co'># This will succeed:</span>
-<span class='fu'>expect_known_output</span>(<span class='kw'>mtcars</span>[<span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span>, ], <span class='kw'>tmp</span>, print = <span class='fl'>TRUE</span>)
+<span class='fu'>expect_known_output</span><span class='op'>(</span><span class='va'>mtcars</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span>, <span class='op'>]</span>, <span class='va'>tmp</span>, print <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
 
-<span class='co'>if</span> (<span class='fl'>FALSE</span>) {
+<span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
 <span class='co'># This will fail</span>
-<span class='fu'>expect_known_output</span>(<span class='kw'>mtcars</span>[<span class='fl'>1</span><span class='op'>:</span><span class='fl'>9</span>, ], <span class='kw'>tmp</span>, print = <span class='fl'>TRUE</span>)
-}
+<span class='fu'>expect_known_output</span><span class='op'>(</span><span class='va'>mtcars</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>9</span>, <span class='op'>]</span>, <span class='va'>tmp</span>, print <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
+<span class='op'>}</span>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

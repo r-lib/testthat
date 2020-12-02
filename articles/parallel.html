@@ -216,9 +216,8 @@
 <li><p>Reporters report all information about a file at once, unless they support <em>parallel updates</em>. E.g. <code>ProgressReporter</code> does not update its display until a test file is complete.</p></li>
 <li>
 <p>The standard output and standard error, i.e. <code><a href="https://rdrr.io/r/base/print.html">print()</a></code>, <code><a href="https://rdrr.io/r/base/cat.html">cat()</a></code>, <code><a href="https://rdrr.io/r/base/message.html">message()</a></code>, etc. output from the test files are lost currently. If you want to use <code><a href="https://rdrr.io/r/base/cat.html">cat()</a></code> or <code><a href="https://rdrr.io/r/base/message.html">message()</a></code> for print-debugging test cases, then the best is to temporarily run tests sequentially, by changing the <code>Config</code> entry in <code>DESCRIPTION</code> or selecting a non-parallel reporter, e.g. the <code>CheckReporter</code>:</p>
-<div class="sourceCode" id="cb4"><pre class="downlit">
-<span class="kw">devtools</span>::<span class="fu">test</span>(filter = <span class="st">"badtest"</span>, reporter = <span class="st">"check"</span>)
-</pre></div>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">devtools</span><span class="fu">::</span><span class="fu">test</span><span class="op">(</span>filter <span class="op">=</span> <span class="st">"badtest"</span>, reporter <span class="op">=</span> <span class="st">"check"</span><span class="op">)</span></code></pre></div>
 </li>
 </ul>
 </div>
@@ -227,15 +226,14 @@
 <a href="#writing-parallel-reporters" class="anchor"></a>Writing parallel reporters</h3>
 <p>To support parallel tests, a reporter must be able to function when the test files run in a subprocess. For example <code>DebugReporter</code> does not support parallel tests, because it requires direct interaction with the frames in the subprocess. When running in parallel, testthat does not provide location information (source references) for test successes.</p>
 <p>To support parallel tests, a reporter must set <code>self$capabilities$parallel_support</code> to <code>TRUE</code> in its <code>initialize()</code> method:</p>
-<div class="sourceCode" id="cb5"><pre class="downlit">
-<span class="kw">...</span>
-<span class="kw">initialize</span> <span class="op">=</span> <span class="fu">function</span>(<span class="kw">...</span>) {
-  <span class="kw">super</span><span class="op">$</span><span class="fu">initialize</span>(<span class="kw">...</span>)
-  <span class="kw">self</span><span class="op">$</span><span class="kw">capabilities</span><span class="op">$</span><span class="kw">parallel_support</span> <span class="op">&lt;-</span> <span class="fl">TRUE</span>
-  <span class="kw">...</span>
-}
-<span class="kw">...</span>
-</pre></div>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">...</span>
+<span class="va">initialize</span> <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">...</span><span class="op">)</span> <span class="op">{</span>
+  <span class="va">super</span><span class="op">$</span><span class="fu">initialize</span><span class="op">(</span><span class="va">...</span><span class="op">)</span>
+  <span class="va">self</span><span class="op">$</span><span class="va">capabilities</span><span class="op">$</span><span class="va">parallel_support</span> <span class="op">&lt;-</span> <span class="cn">TRUE</span>
+  <span class="va">...</span>
+<span class="op">}</span>
+<span class="va">...</span></code></pre></div>
 <p>When running in parallel, testthat runs the reporter in the main process, and relays information between the reporter and the test code transparently. (Currently the reporter does not even know that the tests are running in parallel.)</p>
 <p>If a reporter does not support parallel updates (see below), then testthat internally caches all calls to the reporter methods from subprocesses, until a test file is complete. This is because these reporters are not prepared for running multiple test files concurrently. Once a test file is complete, testthat calls the reporter’s <code>$start_file()</code> method, relays all <code>$start_test()</code> , <code>$end_test()</code>, <code>$add_result()</code>, etc. calls in the order they came in from the subprocess, and calls <code>$end_file()</code> .</p>
 </div>
@@ -244,16 +242,15 @@
 <a href="#parallel-updates" class="anchor"></a>Parallel updates</h3>
 <p>The <code>ParallelProgressReporter</code> supports parallel updates. This means that once a message from a subprocess comes in, the reporter is updated immediately. For this to work, a reporter must be able to handle multiple test files concurrently.</p>
 <p>A reporter declares parallel update support by setting <code>self$capabilities$parallel_updates</code> to <code>TRUE</code>:</p>
-<div class="sourceCode" id="cb6"><pre class="downlit">
-<span class="kw">...</span>
-<span class="kw">initialize</span> <span class="op">=</span> <span class="fu">function</span>(<span class="kw">...</span>) {
-  <span class="kw">super</span><span class="op">$</span><span class="fu">initialize</span>(<span class="kw">...</span>)
-  <span class="kw">self</span><span class="op">$</span><span class="kw">capabilities</span><span class="op">$</span><span class="kw">parallel_support</span> <span class="op">&lt;-</span> <span class="fl">TRUE</span>
-  <span class="kw">self</span><span class="op">$</span><span class="kw">capabilities</span><span class="op">$</span><span class="kw">parallel_updates</span> <span class="op">&lt;-</span> <span class="fl">TRUE</span>
-  <span class="kw">...</span>
-}
-<span class="kw">...</span>
-</pre></div>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">...</span>
+<span class="va">initialize</span> <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">...</span><span class="op">)</span> <span class="op">{</span>
+  <span class="va">super</span><span class="op">$</span><span class="fu">initialize</span><span class="op">(</span><span class="va">...</span><span class="op">)</span>
+  <span class="va">self</span><span class="op">$</span><span class="va">capabilities</span><span class="op">$</span><span class="va">parallel_support</span> <span class="op">&lt;-</span> <span class="cn">TRUE</span>
+  <span class="va">self</span><span class="op">$</span><span class="va">capabilities</span><span class="op">$</span><span class="va">parallel_updates</span> <span class="op">&lt;-</span> <span class="cn">TRUE</span>
+  <span class="va">...</span>
+<span class="op">}</span>
+<span class="va">...</span></code></pre></div>
 <p>For these reporters, testthat does not cache the messages from the subprocesses. Instead, when a message comes in:</p>
 <ul>
 <li><p>It calls the <code>$start_file()</code> method, letting the reporter know which file the following calls apply to. This means that the reporter can receive multiple <code>$start_file()</code> calls for the same file.</p></li>
