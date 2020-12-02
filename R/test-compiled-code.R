@@ -31,6 +31,9 @@ expect_cpp_tests_pass <- function(package) {
 #' @keywords internal
 #' @export
 run_cpp_tests <- function(package) {
+  # Catch does not work with the Solaris compilers
+  if (Sys.info()[["sysname"]] == "SunOS") return()
+
   check_installed("xml2", "run_cpp_tests()")
 
   run_testthat_tests <- get_routine(package, "run_testthat_tests")
