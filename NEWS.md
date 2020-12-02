@@ -1,5 +1,8 @@
 # testthat (development version)
 
+* `expect_snapshot_value(style = "deparse")` handles more common R data
+  structures.
+
 * `run_cpp_tests()` is automatically skipped on Solaris since Catch is not
   supported (#1257).
 

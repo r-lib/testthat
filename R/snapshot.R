@@ -165,11 +165,14 @@ expect_snapshot_value <- function(x,
 # https://github.com/wch/r-source/blob/5234fe7b40aad8d3929d240c83203fa97d8c79fc/src/main/deparse.c#L845
 reparse <- function(x) {
   env <- env(emptyenv(),
+    c = c,
     list = list,
     quote = quote,
+    structure = structure,
     expression = expression,
     `function` = `function`,
     new = methods::new,
+    getClass = methods::getClass,
     pairlist = pairlist,
     alist = alist,
     as.pairlist = as.pairlist
