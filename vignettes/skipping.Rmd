@@ -60,12 +60,12 @@ skip_if_Tuesday <- function() {
 
 It's important to test your skip helpers because it's easy to miss if you're skipping more often than desired, and the test code is never run. This is unlikely to happen locally (since you'll see the skipped tests in the summary), but is quite possible in continuous integration.
 
-For that reason, it's a good idea to add a test that you skip is activated when you expect. skips are a special type of error, so you can test that they occur with `expect_error()`. The basic code looks like this:
+For that reason, it's a good idea to add a test that you skip is activated when you expect. skips are a special type of error, so you can test that they occur with `expect_condition()`. The basic code looks like this:
 
 ```{r}
 test_that("skips work", {
   # Test that a skip happens
-  expect_error(skip("Hi"), class = "skip")  
+  expect_condition(skip("Hi"), class = "skip")  
   
   # Test that a skip doesn't happen
   expect_error("Hi", NA, class = "skip")  
