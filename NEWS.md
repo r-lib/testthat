@@ -1,5 +1,8 @@
 # testthat (development version)
 
+* `local_reproducible_output()` now sets the LANGUAGE env var to "en". This
+  matches the behaviour of R CMD check in interactive settings (#1213).
+
 * `expect_snapshot_file()` gives a hint as to next steps when a failure
   occurs in non-interactive environments (with help from @maelle, #1179).
 
