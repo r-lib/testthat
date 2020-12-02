@@ -1,5 +1,8 @@
 # testthat (development version)
 
+* `run_cpp_tests()` is automatically skipped on Solaris since Catch is not
+  supported (#1257).
+
 * `_snaps` directory is automatically removed if it's empty (#1180). 
 
 * `expect_snapshot_file()` gives a hint as to next steps when a failure
