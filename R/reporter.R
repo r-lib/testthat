@@ -45,6 +45,9 @@ Reporter <- R6::R6Class("Reporter",
     out = NULL,
 
     initialize = function(file = getOption("testthat.output_file", stdout())) {
+      if (is.character(file)) {
+        file <- normalizePath(file, mustWork = FALSE)
+      }
       self$out <- file
       if (is.character(self$out) && file.exists(self$out)) {
         # If writing to a file, overwrite it if it exists
