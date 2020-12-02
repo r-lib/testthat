@@ -4,6 +4,8 @@
 
 * `expect_snapshot_file()` gives a hint as to next steps when a failure
   occurs in non-interactive environments (with help from @maelle, #1179).
+  `expect_snapshot_*()` gives a more informative hint when you're running
+  tests interactively (#1226).
 
 * `local_reproducible_output()` now unsets RSTUDIO envvar, instead of
   setting it to 0 (#1225).

@@ -189,8 +189,7 @@ expect_snapshot_helper <- function(lab, val,
 
   snapshotter <- get_snapshotter()
   if (is.null(snapshotter)) {
-    cat("No snapshotter active. Current value: \n")
-    cat(save(val), sep = "\n")
+    snapshot_not_available(paste0("Current value:\n", save(val)))
     return(invisible())
   }
 
@@ -206,6 +205,14 @@ expect_snapshot_helper <- function(lab, val,
       hint
     )
   )
+}
+
+snapshot_not_available <- function(message) {
+  inform(c(
+    crayon::bold("Can't compare snapshot to reference when testing interactively"),
+    i = "Run `devtools::test()` or `testthat::test_file()` to see changes",
+    i = message
+  ))
 }
 
 local_snapshot_dir <- function(snap_names, .env = parent.frame()) {
