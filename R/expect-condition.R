@@ -6,10 +6,11 @@
 #' or condition with a message that matches `regexp`, or a class that inherits
 #' from `class`. See below for more details.
 #'
-#' New in the 3rd edition, if the code throws conditions that don't match
-#' `regexp`/`class` they will bubble up outside of the expectation, so if
-#' they're important you'll need to catch them with additional
-#' `expect_message()`/`expect_warning()` calls, or if they're unimportant you
+#' In the 3rd edition, these functions match a single condition. All
+#' additional and non-matching (if `regexp` or `class` are used) conditions
+#' will bubble up outside the expectation. If these additional conditions
+#' are important you'll need to catch them with additional
+#' `expect_message()`/`expect_warning()` calls; if they're unimportant you
 #' can ignore with [suppressMessages()]/[suppressWarnings()].
 #'
 #' @section Testing `message` vs `class`:
