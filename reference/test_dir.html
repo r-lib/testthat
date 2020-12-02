@@ -47,10 +47,10 @@
 
 
 <meta property="og:title" content="Run all tests in a directory — test_dir" />
-<meta property="og:description" content="Execute code in the specified file, displaying results using a reporter.
-Use this function when you want to run a single file's worth of tests.
-You are responsible for ensuring that the functions to test are available
-in the global environment." />
+<meta property="og:description" content="This function is the low-level workhorse that powers test_local() and
+test_package(). Generally, you should not call this function directly.
+In particular, you are responsible for ensuring that the functions to test
+are available in the test env (e.g. via load_package)." />
 <meta property="og:image" content="https://testthat.r-lib.org/logo.png" />
 
 
@@ -197,10 +197,10 @@ in the global environment." />
     </div>
 
     <div class="ref-description">
-    <p>Execute code in the specified file, displaying results using a <code>reporter</code>.
-Use this function when you want to run a single file's worth of tests.
-You are responsible for ensuring that the functions to test are available
-in the global environment.</p>
+    <p>This function is the low-level workhorse that powers <code><a href='test_package.html'>test_local()</a></code> and
+<code><a href='test_package.html'>test_package()</a></code>. Generally, you should not call this function directly.
+In particular, you are responsible for ensuring that the functions to test
+are available in the test <code>env</code> (e.g. via <code>load_package</code>).</p>
     </div>
 
     <pre class="usage"><span class='fu'>test_dir</span><span class='op'>(</span>
