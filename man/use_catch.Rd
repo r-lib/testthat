@@ -30,6 +30,13 @@ showcases how you might use Catch to write a unit test,
 \code{tools::package_native_routine_registration_skeleton()} is invoked.
 }
 
+You will also need to:
+\itemize{
+\item Add xml2 to Suggests, with e.g. \code{usethis::use_package("xml2", "Suggests")}
+\item Add testthat to LinkingTo, with e.g.
+\code{usethis::use_package("testthat", "LinkingTo")}
+}
+
 C++ unit tests can be added to C++ source files within the
 \code{src} directory of your package, with a format similar
 to \R code tested with \code{testthat}. Here's a simple example
