@@ -12,7 +12,7 @@
 #'
 #' * Setup files start with `setup` and are executed before tests. If
 #'   clean up is needed after all tests have been run, you can use
-#'   `withr::defer(clean_up(), teardown_env())`. See `vignette("text-fixtures")`
+#'   `withr::defer(clean_up(), teardown_env())`. See `vignette("test-fixtures")`
 #'   for more details.
 #'
 #' There are two other types of special file that we no longer recommend using:
