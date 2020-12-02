@@ -179,6 +179,10 @@ This launches a Shiny app that allows you to visually review each change and app
 
 The display varies based on the file type (currently text files, common image files, and csv files are supported).
 
+Sometimes the failure occurs in a non-interactive environment where you can't run `snapshot_review()`, e.g. in `R CMD check`.
+In this case, the easiest fix is to retrieve the `.new` file, copy it into the appropriate directory, then run `snapshot_review()` locally.
+If your code was run on a CI platform, you'll need to start by downloading the run "artifact", which contains the check folder.
+
 In most cases, we don't expect you to use `expect_snapshot_file()` directly.
 Instead, you'll use it via a wrapper that does its best to gracefully skip tests when differences in platform or package versions make it unlikely to generate perfectly reproducible output.
 
