@@ -20,6 +20,19 @@ expect_cpp_tests_pass <- function(package) {
   expect(tests_passed, paste("C++ unit tests:", info, sep = "\n"))
 }
 
+report_catch_expectation <- function(type, message) {
+  reporter <- get_reporter()
+  reporter$start_context(context = "Catch")
+  reporter$start_test(context = "Catch", test = "Catch")
+  reporter$add_result(
+    context = "Catch",
+    test = "Catch",
+    result = expectation(type, message)
+  )
+  reporter$end_test(context = "Catch", test = "Catch")
+  reporter$end_context(context = "Catch")
+}
+
 #' Do C++ tests past?
 #'
 #' Test compiled code in the package `package`. A call to this function will
@@ -31,8 +44,10 @@ expect_cpp_tests_pass <- function(package) {
 #' @keywords internal
 #' @export
 run_cpp_tests <- function(package) {
-  # Catch does not work with the Solaris compilers
-  if (Sys.info()[["sysname"]] == "SunOS") return()
+  if (Sys.info()[["sysname"]] == "SunOS") {
+    report_catch_expectation("skip", "Catch is not supported on Solaris")
+    return()
+  }
 
   check_installed("xml2", "run_cpp_tests()")
 
@@ -47,13 +62,7 @@ run_cpp_tests <- function(package) {
   },
     error = function(e) {
       catch_error <- TRUE
-      reporter <- get_reporter()
-
-      reporter$start_context(context = "Catch")
-      reporter$start_test(context = "Catch", test = "Catch")
-      reporter$add_result(context = "Catch", test = "Catch", result = expectation("failure", e$message))
-      reporter$end_test(context = "Catch", test = "Catch")
-      reporter$end_context(context = "Catch")
+      report_catch_expectation("failure", e$message)
     }
   )
 
