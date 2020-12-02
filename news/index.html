@@ -196,6 +196,7 @@
 <a href="#testthat-development-version" class="anchor"></a>testthat (development version)<small> Unreleased </small>
 </h1>
 <ul>
+<li><p><code><a href="../reference/expect_snapshot.html">expect_snapshot_value(style = "deparse")</a></code> handles more common R data structures.</p></li>
 <li><p><code><a href="../reference/expect_cpp_tests_pass.html">run_cpp_tests()</a></code> is automatically skipped on Solaris since Catch is not supported (<a href='https://github.com/r-lib/testthat/issues/1257'>#1257</a>).</p></li>
 <li><p><code>_snaps</code> directory is automatically removed if it’s empty (<a href='https://github.com/r-lib/testthat/issues/1180'>#1180</a>).</p></li>
 <li><p><code><a href="../reference/expect_snapshot_file.html">expect_snapshot_file()</a></code> gives a hint as to next steps when a failure occurs in non-interactive environments (with help from <a href='https://github.com/maelle'>@maelle</a>, <a href='https://github.com/r-lib/testthat/issues/1179'>#1179</a>). <code>expect_snapshot_*()</code> gives a more informative hint when you’re running tests interactively (<a href='https://github.com/r-lib/testthat/issues/1226'>#1226</a>).</p></li>
