@@ -52,9 +52,11 @@ If you find yourself using the same `skip_if()`/`skip_if_not()` expression acros
 
 ```{r}
 skip_if_Tuesday <- function() {
-  if (as.POSIXlt(Sys.Date())$wday == 2) {
-    skip("Not run on Tuesday")
+  if (as.POSIXlt(Sys.Date())$wday != 2) {
+    return(invisible(TRUE))
   }
+  
+  skip("Not run on Tuesday")
 }
 ```
 
