@@ -1,7 +1,6 @@
 # testthat (development version)
 
-* `RstudioReporter` has been renamed to `RStudioReporter`. The older
-  `RstudioReporter` is still available, for backwards compatibility.
+* `RstudioReporter` has been renamed to `RStudioReporter`.
 
 * `expect_snapshot_file()` gives a hint as to next steps when a failure
   occurs in non-interactive environments (with help from @maelle, #1179).
