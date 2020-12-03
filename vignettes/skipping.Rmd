@@ -64,7 +64,7 @@ It's important to test your skip helpers because it's easy to miss if you're ski
 
 For that reason, it's a good idea to add a test that you skip is activated when you expect. skips are a special type of error, so you can test that they occur with `expect_condition()`.
 
-If you define a custom skipper that skips tests when an enviroment variable `DANGEROUS` is set,
+If you define a custom skipper that skips tests when an environment variable `DANGEROUS` is set,
 
 ```{r}
 skip_if_dangerous <- function() {
