@@ -275,11 +275,14 @@ quotes (otherwise the default is locale dependent, see <code><a href='https://rd
 details).</p></li>
 </ul>
 
-<p><code>local_test_context()</code> also sets envvars <code>RSTUDIO = 0</code> (which ensures that RStudio is never
-detected as running), and <code>TESTTHAT = "true"</code> (which ensures that
-<code><a href='is_testing.html'>is_testing()</a></code> returns <code>TRUE)</code>, and sets collation locale to "C"
-(which ensures that character sorting the same regardless of current
-locale).</p>
+<p>And modifies the following env vars:</p><ul>
+<li><p>Unsets <code>RSTUDIO</code>, which ensures that RStudio is never detected as running.</p></li>
+<li><p>Sets <code>TESTTHAT = "true"</code>, which ensures that <code><a href='is_testing.html'>is_testing()</a></code> returns <code>TRUE</code>.</p></li>
+<li><p>Sets <code>LANGUAGE = "en"</code>, which ensures that no message translation occurs.</p></li>
+</ul>
+
+<p>Finally, it sets the collation locale to "C", which ensures that character
+sorting the same regardless of system locale.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/eval.html'>local</a></span><span class='op'>(</span><span class='op'>{</span>

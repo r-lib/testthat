@@ -196,6 +196,7 @@
 <a href="#testthat-development-version" class="anchor"></a>testthat (development version)<small> Unreleased </small>
 </h1>
 <ul>
+<li><p><code><a href="../reference/local_test_context.html">local_reproducible_output()</a></code> now sets the LANGUAGE env var to “en”. This matches the behaviour of R CMD check in interactive settings (<a href='https://github.com/r-lib/testthat/issues/1213'>#1213</a>).</p></li>
 <li><p><code><a href="../reference/use_catch.html">use_catch()</a></code> makes it more clear that your package also needs to suggest xml2 (<a href='https://github.com/r-lib/testthat/issues/1235'>#1235</a>).</p></li>
 <li><p><code><a href="../reference/expect_snapshot.html">expect_snapshot_value(style = "deparse")</a></code> handles more common R data structures.</p></li>
 <li><p><code><a href="../reference/expect_cpp_tests_pass.html">run_cpp_tests()</a></code> is automatically skipped on Solaris since Catch is not supported (<a href='https://github.com/r-lib/testthat/issues/1257'>#1257</a>).</p></li>
