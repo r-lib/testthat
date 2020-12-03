@@ -3,6 +3,9 @@
 * `local_reproducible_output()` now sets the LANGUAGE env var to "en". This
   matches the behaviour of R CMD check in interactive settings (#1213).
 
+* `use_catch()` makes it more clear that your package also needs to suggest 
+  xml2 (#1235).
+
 * `expect_snapshot_value(style = "deparse")` handles more common R data
   structures.
 
