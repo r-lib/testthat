@@ -31,10 +31,10 @@
     <loc>https://testthat.r-lib.org/reference/ProgressReporter.html</loc>
   </url>
   <url>
-    <loc>https://testthat.r-lib.org/reference/Reporter.html</loc>
+    <loc>https://testthat.r-lib.org/reference/RStudioReporter.html</loc>
   </url>
   <url>
-    <loc>https://testthat.r-lib.org/reference/RstudioReporter.html</loc>
+    <loc>https://testthat.r-lib.org/reference/Reporter.html</loc>
   </url>
   <url>
     <loc>https://testthat.r-lib.org/reference/SilentReporter.html</loc>
