@@ -107,14 +107,14 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
       if (all(tests %in% self$test_file_seen)) {
         # clean up if we've seen all files
         test_names <- context_name(tests)
-        outdated <- c(
+        outdated <- union(
           snapshot_outdated(self$snap_dir, test_names),
           snapshot_file_outdated(self$snap_dir, test_names, self$snap_file_seen)
         )
 
         if (length(outdated) > 0) {
           inform(c("Deleting unused snapshots:", outdated))
-          unlink(outdated)
+          unlink(outdated, recursive = TRUE)
         }
       }
 
