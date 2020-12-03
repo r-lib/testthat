@@ -1,5 +1,7 @@
 # testthat (development version)
 
+* `RstudioReporter` has been renamed to `RStudioReporter`.
+
 * `local_reproducible_output()` now sets the LANGUAGE env var to "en". This
   matches the behaviour of R CMD check in interactive settings (#1213).
 
