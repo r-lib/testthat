@@ -135,7 +135,7 @@ snapshot_file_outdated <- function(snap_dir, tests_seen = character(), snaps_see
     dirname(snap_names) %in% tests_seen
   ]
 
-  c(tests_outdated, snaps_outdated)
+  unique(c(tests_outdated, snaps_outdated))
 }
 
 # Helpers -----------------------------------------------------------------
