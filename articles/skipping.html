@@ -183,21 +183,35 @@
 <p>If you find yourself using the same <code><a href="../reference/skip.html">skip_if()</a></code>/<code><a href="../reference/skip.html">skip_if_not()</a></code> expression across multiple tests, it’s a good idea to create a helper function. This function should start with <code>skip_</code> and live somewhere in your <code>R/</code> directory.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">skip_if_Tuesday</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="op">)</span> <span class="op">{</span>
-  <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/as.POSIXlt.html">as.POSIXlt</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.Date</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">$</span><span class="va">wday</span> <span class="op">==</span> <span class="fl">2</span><span class="op">)</span> <span class="op">{</span>
-    <span class="fu"><a href="../reference/skip.html">skip</a></span><span class="op">(</span><span class="st">"Not run on Tuesday"</span><span class="op">)</span>
+  <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/as.POSIXlt.html">as.POSIXlt</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.Date</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">$</span><span class="va">wday</span> <span class="op">!=</span> <span class="fl">2</span><span class="op">)</span> <span class="op">{</span>
+    <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/invisible.html">invisible</a></span><span class="op">(</span><span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span>
   <span class="op">}</span>
+  
+  <span class="fu"><a href="../reference/skip.html">skip</a></span><span class="op">(</span><span class="st">"Not run on Tuesday"</span><span class="op">)</span>
 <span class="op">}</span></code></pre></div>
 <p>It’s important to test your skip helpers because it’s easy to miss if you’re skipping more often than desired, and the test code is never run. This is unlikely to happen locally (since you’ll see the skipped tests in the summary), but is quite possible in continuous integration.</p>
-<p>For that reason, it’s a good idea to add a test that you skip is activated when you expect. skips are a special type of error, so you can test that they occur with <code><a href="../reference/expect_error.html">expect_error()</a></code>. The basic code looks like this:</p>
+<p>For that reason, it’s a good idea to add a test that you skip is activated when you expect. skips are a special type of condition, so you can test for their presence/absence with <code><a href="../reference/expect_error.html">expect_condition()</a></code>. For example, imagine that you’ve defined a custom skipper that skips tests whenever an environment variable <code>DANGER</code> is set:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/test_that.html">test_that</a></span><span class="op">(</span><span class="st">"skips work"</span>, <span class="op">{</span>
-  <span class="co"># Test that a skip happens</span>
-  <span class="fu"><a href="../reference/expect_error.html">expect_error</a></span><span class="op">(</span><span class="fu"><a href="../reference/skip.html">skip</a></span><span class="op">(</span><span class="st">"Hi"</span><span class="op">)</span>, class <span class="op">=</span> <span class="st">"skip"</span><span class="op">)</span>  
+<code class="sourceCode R"><span class="va">skip_if_dangerous</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="op">)</span> <span class="op">{</span>
+  <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/identical.html">identical</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Sys.getenv.html">Sys.getenv</a></span><span class="op">(</span><span class="st">"DANGER"</span><span class="op">)</span>, <span class="st">""</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
+    <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/invisible.html">invisible</a></span><span class="op">(</span><span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span>
+  <span class="op">}</span>
   
+  <span class="fu"><a href="../reference/skip.html">skip</a></span><span class="op">(</span><span class="st">"Not run in dangerous enviromnents"</span><span class="op">)</span>
+<span class="op">}</span></code></pre></div>
+<p>Then you can use <code><a href="../reference/expect_error.html">expect_condition()</a></code> to test that it skips tests when it should, and doesn’t skip when it shouldn’t:</p>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/test_that.html">test_that</a></span><span class="op">(</span><span class="st">"skip_if_dangerous work"</span>, <span class="op">{</span>
+  <span class="co"># Test that a skip happens</span>
+  <span class="fu">withr</span><span class="fu">::</span><span class="fu"><a href="https://withr.r-lib.org/reference/with_envvar.html">local_envvar</a></span><span class="op">(</span>DANGER <span class="op">=</span> <span class="st">"yes"</span><span class="op">)</span>
+  <span class="fu"><a href="../reference/expect_error.html">expect_condition</a></span><span class="op">(</span><span class="fu">skip_if_dangerous</span><span class="op">(</span><span class="op">)</span>, class <span class="op">=</span> <span class="st">"skip"</span><span class="op">)</span> 
+
   <span class="co"># Test that a skip doesn't happen</span>
-  <span class="fu"><a href="../reference/expect_error.html">expect_error</a></span><span class="op">(</span><span class="st">"Hi"</span>, <span class="cn">NA</span>, class <span class="op">=</span> <span class="st">"skip"</span><span class="op">)</span>  
+  <span class="fu">withr</span><span class="fu">::</span><span class="fu"><a href="https://withr.r-lib.org/reference/with_envvar.html">local_envvar</a></span><span class="op">(</span>DANGER <span class="op">=</span> <span class="st">""</span><span class="op">)</span>
+  <span class="fu"><a href="../reference/expect_error.html">expect_condition</a></span><span class="op">(</span><span class="fu">skip_if_dangerous</span><span class="op">(</span><span class="op">)</span>, <span class="cn">NA</span>, class <span class="op">=</span> <span class="st">"skip"</span><span class="op">)</span>
 <span class="op">}</span><span class="op">)</span>
-<span class="co">#&gt; Test passed 🥇</span></code></pre></div>
+<span class="co">#&gt; Test passed 🎉</span></code></pre></div>
+<p>Testing <code>skip_if_Tuesday()</code> is harder because there’s no way to control the skipping from the outside. That means you’d need to “mock” it’s behaviour in a test, using the <a href="https://github.com/r-lib/mockery">mockery</a> or <a href="https://krlmlr.github.io/mockr/">mockr</a> packages.</p>
 </div>
   </div>
 
