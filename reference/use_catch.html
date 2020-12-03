@@ -228,6 +228,12 @@ showcases how you might use Catch to write a unit test,</p></li>
 <code><a href='https://rdrr.io/r/tools/package_native_routine_registration_skeleton.html'>tools::package_native_routine_registration_skeleton()</a></code> is invoked.</p></li>
 </ol>
 
+<p>You will also need to:</p><ul>
+<li><p>Add xml2 to Suggests, with e.g. <code><a href='https://usethis.r-lib.org/reference/use_package.html'>usethis::use_package("xml2", "Suggests")</a></code></p></li>
+<li><p>Add testthat to LinkingTo, with e.g.
+<code><a href='https://usethis.r-lib.org/reference/use_package.html'>usethis::use_package("testthat", "LinkingTo")</a></code></p></li>
+</ul>
+
 <p>C++ unit tests can be added to C++ source files within the
 <code>src</code> directory of your package, with a format similar
 to <span style="R">R</span> code tested with <code>testthat</code>. Here's a simple example
