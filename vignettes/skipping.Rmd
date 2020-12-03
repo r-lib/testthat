@@ -66,11 +66,11 @@ If you define a custom skipper that skips tests when an enviroment variable `DAN
 
 ```{r}
 skip_if_dangerous <- function() {
-  if (nzchar(Sys.getenv("DANGEROUS"))) {
-    skip("Not run in dangerous enviromnents")
+  if (!nzchar(Sys.getenv("DANGEROUS"))) {
+    return(invisible(TRUE))
   }
   
-  return(invisible(TRUE))
+  skip("Not run in dangerous enviromnents")
 }
 ```
 
