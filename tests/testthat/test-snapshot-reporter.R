@@ -12,7 +12,7 @@ test_that("basic workflow", {
   snapper <- local_snapshotter(tempfile(), cleanup = TRUE)
   snapper$start_file("snapshot-2")
   # output if not active (because test not set here)
-  expect_output(expect_snapshot_output("x"), "No snapshotter active")
+  expect_message(expect_snapshot_output("x"), "Can't compare")
 
   # warns on first creation
   snapper$start_file("snapshot-2", "test")

@@ -41,11 +41,14 @@
 #'   quotes (otherwise the default is locale dependent, see [sQuote()] for
 #'   details).
 #'
-#' `local_test_context()` also sets envvars `RSTUDIO = 0` (which ensures that RStudio is never
-#' detected as running), and `TESTTHAT = "true"` (which ensures that
-#' [is_testing()] returns `TRUE)`, and sets collation locale to "C"
-#' (which ensures that character sorting the same regardless of current
-#' locale).
+#' And modifies the following env vars:
+#'
+#' * Unsets `RSTUDIO`, which ensures that RStudio is never detected as running.
+#' * Sets `TESTTHAT = "true"`, which ensures that [is_testing()] returns `TRUE`.
+#' * Sets `LANGUAGE = "en"`, which ensures that no message translation occurs.
+#'
+#' Finally, it sets the collation locale to "C", which ensures that character
+#' sorting the same regardless of system locale.
 #'
 #' @export
 #' @keywords internal
@@ -101,7 +104,11 @@ local_reproducible_output <- function(width = 80,
     rlang_interactive = FALSE,
     .local_envir = .env
   )
-  withr::local_envvar(RSTUDIO = NA, .local_envir = .env)
+  withr::local_envvar(
+    RSTUDIO = NA,
+    LANGUAGE = "en",
+    .local_envir = .env
+  )
   withr::local_collate("C", .local_envir = .env)
 }
 

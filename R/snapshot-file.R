@@ -38,7 +38,7 @@
 #' path
 #'
 #' \dontrun{
-#' expect_snapshot_file(save_png(hist(mtcars)), "plot.png")
+#' expect_snapshot_file(save_png(hist(mtcars$mpg)), "plot.png")
 #' }
 #'
 #' # You'd then also provide a helper that skips tests where you can't
@@ -61,8 +61,8 @@ expect_snapshot_file <- function(path, name = basename(path), binary = TRUE, cra
 
   snapshotter <- get_snapshotter()
   if (is.null(snapshotter)) {
-    cat("No snapshotter active. New path: ", path, "\n", sep = "")
-    return()
+    snapshot_not_available(paste0("New path: ", path))
+    return(invisible())
   }
   compare <- if (binary) compare_file_binary else compare_file_text
 
@@ -135,7 +135,7 @@ snapshot_file_outdated <- function(snap_dir, tests_seen = character(), snaps_see
     dirname(snap_names) %in% tests_seen
   ]
 
-  c(tests_outdated, snaps_outdated)
+  unique(c(tests_outdated, snaps_outdated))
 }
 
 # Helpers -----------------------------------------------------------------

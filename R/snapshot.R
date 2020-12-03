@@ -165,11 +165,14 @@ expect_snapshot_value <- function(x,
 # https://github.com/wch/r-source/blob/5234fe7b40aad8d3929d240c83203fa97d8c79fc/src/main/deparse.c#L845
 reparse <- function(x) {
   env <- env(emptyenv(),
+    c = c,
     list = list,
     quote = quote,
+    structure = structure,
     expression = expression,
     `function` = `function`,
     new = methods::new,
+    getClass = methods::getClass,
     pairlist = pairlist,
     alist = alist,
     as.pairlist = as.pairlist
@@ -189,8 +192,7 @@ expect_snapshot_helper <- function(lab, val,
 
   snapshotter <- get_snapshotter()
   if (is.null(snapshotter)) {
-    cat("No snapshotter active. Current value: \n")
-    cat(save(val), sep = "\n")
+    snapshot_not_available(paste0("Current value:\n", save(val)))
     return(invisible())
   }
 
@@ -206,6 +208,14 @@ expect_snapshot_helper <- function(lab, val,
       hint
     )
   )
+}
+
+snapshot_not_available <- function(message) {
+  inform(c(
+    crayon::bold("Can't compare snapshot to reference when testing interactively"),
+    i = "Run `devtools::test()` or `testthat::test_file()` to see changes",
+    i = message
+  ))
 }
 
 local_snapshot_dir <- function(snap_names, .env = parent.frame()) {
