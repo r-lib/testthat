@@ -45,35 +45,50 @@
 #' @param x Code to evaluate.
 #' @param cran Should these expectations be verified on CRAN? By default,
 #'   they are not, because snapshot tests tend to be fragile because they
-#'   often rely on minor details of dependencies. Even on CRAN, the
-#'   expectations will still fail if `x` errors.
+#'   often rely on minor details of dependencies.
+#' @param error Do you expect the code to throw an error? The expectation
+#'   will fail (even on CRAN) if an unexpected error is thrown or the
+#'   expected error is not thrown.
 #' @export
-expect_snapshot <- function(x, cran = FALSE) {
+expect_snapshot <- function(x, cran = FALSE, error = FALSE) {
   edition_require(3, "expect_snapshot()")
 
   x <- enquo(x)
-  out <- verify_exec(quo_get_expr(x), quo_get_env(x), snapshot_replay)
+
+  # Execute code, capturing last error
+  state <- new_environment(list(error = NULL))
+  out <- verify_exec(quo_get_expr(x), quo_get_env(x), {
+    function(x) snapshot_replay(x, state)
+  })
+
+  # Use expect_error() machinery to confirm that error is as expected
+  msg <- compare_condition_3e("error", state$error, quo_label(x), error)
+  if (!is.null(msg)) {
+    expect(FALSE, msg, trace = state$error[["trace"]])
+  }
+
   expect_snapshot_helper("code", out, cran = cran,
     save = function(x) paste0(x, collapse = "\n"),
     load = function(x) split_by_line(x)[[1]]
   )
 }
 
-snapshot_replay <- function(x) {
+snapshot_replay <- function(x, state) {
   UseMethod("snapshot_replay", x)
 }
 #' @export
-snapshot_replay.character <- function(x) {
+snapshot_replay.character <- function(x, state) {
   c("Output", indent(split_lines(x)))
 }
 #' @export
-snapshot_replay.source <- function(x) {
+snapshot_replay.source <- function(x, state) {
   c("Code", indent(split_lines(x$src)))
 }
 #' @export
-snapshot_replay.condition <- function(x) {
+snapshot_replay.condition <- function(x, state) {
   msg <- cnd_message(x)
   if (inherits(x, "error")) {
+    state$error <- x
     type <- "Error"
   } else if (inherits(x, "warning")) {
     type <- "Warning"

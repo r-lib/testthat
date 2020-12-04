@@ -13,7 +13,12 @@ test_that("can snapshot everything", {
     warn("3")
     abort("4")
   }
-  expect_snapshot(f())
+  expect_snapshot(f(), error = TRUE)
+})
+
+test_that("always checks error status", {
+  expect_failure(expect_snapshot(stop("!"), error = FALSE))
+  expect_failure(expect_snapshot(print("!"), error = TRUE))
 })
 
 test_that("snapshot handles multi-line input", {
@@ -38,7 +43,7 @@ test_that("captures custom classes", {
     warn("Goodbye", class = "testthat_farewell")
     abort("Eeek!", class = "testthat_scream")
   }
-  expect_snapshot(f())
+  expect_snapshot(f(), error = TRUE)
 })
 
 test_that("even with multiple lines", {

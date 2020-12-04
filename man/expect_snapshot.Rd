@@ -7,7 +7,7 @@
 \alias{expect_snapshot_value}
 \title{Snapshot testing}
 \usage{
-expect_snapshot(x, cran = FALSE)
+expect_snapshot(x, cran = FALSE, error = FALSE)
 
 expect_snapshot_output(x, cran = FALSE)
 
@@ -25,8 +25,11 @@ expect_snapshot_value(
 
 \item{cran}{Should these expectations be verified on CRAN? By default,
 they are not, because snapshot tests tend to be fragile because they
-often rely on minor details of dependencies. Even on CRAN, the
-expectations will still fail if \code{x} errors.}
+often rely on minor details of dependencies.}
+
+\item{error}{Do you expect the code to throw an error? The expectation
+will fail (even on CRAN) if an unexpected error is thrown or the
+expected error is not thrown.}
 
 \item{class}{Expected class of condition, e.g. use \code{error} for errors,
 \code{warning} for warnings, \code{message} for messages. The expectation will
