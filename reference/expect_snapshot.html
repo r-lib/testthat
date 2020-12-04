@@ -227,7 +227,7 @@ output from code.</p></li>
 <code><a href='expect_known_output.html'>expect_known_value()</a></code>, and <code><a href='expect_known_output.html'>expect_known_hash()</a></code>.)</p>
     </div>
 
-    <pre class="usage"><span class='fu'>expect_snapshot</span><span class='op'>(</span><span class='va'>x</span>, cran <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
+    <pre class="usage"><span class='fu'>expect_snapshot</span><span class='op'>(</span><span class='va'>x</span>, cran <span class='op'>=</span> <span class='cn'>FALSE</span>, error <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
 
 <span class='fu'>expect_snapshot_output</span><span class='op'>(</span><span class='va'>x</span>, cran <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
 
@@ -251,8 +251,13 @@ output from code.</p></li>
       <th>cran</th>
       <td><p>Should these expectations be verified on CRAN? By default,
 they are not, because snapshot tests tend to be fragile because they
-often rely on minor details of dependencies. Even on CRAN, the
-expectations will still fail if <code>x</code> errors.</p></td>
+often rely on minor details of dependencies.</p></td>
+    </tr>
+    <tr>
+      <th>error</th>
+      <td><p>Do you expect the code to throw an error? The expectation
+will fail (even on CRAN) if an unexpected error is thrown or the
+expected error is not thrown.</p></td>
     </tr>
     <tr>
       <th>class</th>
