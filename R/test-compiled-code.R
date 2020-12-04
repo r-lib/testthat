@@ -31,6 +31,7 @@ expect_cpp_tests_pass <- function(package) {
 #' @keywords internal
 #' @export
 run_cpp_tests <- function(package) {
+  skip_on_os("solaris")
   check_installed("xml2", "run_cpp_tests()")
 
   run_testthat_tests <- get_routine(package, "run_testthat_tests")
@@ -152,6 +153,12 @@ run_cpp_tests <- function(package) {
 #' 4. Create a file `R/catch-routine-registration.R`, which ensures that
 #'    \R will automatically register this routine when
 #'    `tools::package_native_routine_registration_skeleton()` is invoked.
+#'
+#' You will also need to:
+#'
+#' * Add xml2 to Suggests, with e.g. `usethis::use_package("xml2", "Suggests")`
+#' * Add testthat to LinkingTo, with e.g.
+#'   `usethis::use_package("testthat", "LinkingTo")`
 #'
 #' C++ unit tests can be added to C++ source files within the
 #' `src` directory of your package, with a format similar
@@ -315,6 +322,7 @@ use_catch <- function(dir = getwd()) {
 
   message("> Added C++ unit testing infrastructure.")
   message("> Please ensure you have 'LinkingTo: testthat' in your DESCRIPTION.")
+  message("> Please ensure you have 'Suggests: xml2' in your DESCRIPTION.")
   message("> Please ensure you have 'useDynLib(", pkg, ", .registration = TRUE)' in your NAMESPACE.")
 }
 

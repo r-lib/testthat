@@ -4,6 +4,20 @@
   an error is expected. If an unexpected error is thrown, or an expected error
   is not thrown, `expect_snapshot()` will fail (even on CRAN) (#1200).
 
+* `RstudioReporter` has been renamed to `RStudioReporter`.
+
+* `local_reproducible_output()` now sets the LANGUAGE env var to "en". This
+  matches the behaviour of R CMD check in interactive settings (#1213).
+
+* `use_catch()` makes it more clear that your package also needs to suggest 
+  xml2 (#1235).
+
+* `expect_snapshot_value(style = "deparse")` handles more common R data
+  structures.
+
+* `run_cpp_tests()` is automatically skipped on Solaris since Catch is not
+  supported (#1257).
+
 * `_snaps` directory is automatically removed if it's empty (#1180). 
 
 * `expect_snapshot_file()` gives a hint as to next steps when a failure
@@ -19,7 +33,7 @@
 
 * `expect_snapshot_value()` now passes `...` on to `waldo::compare()` (#1222).
 
-* Fixed a couple of buglets in `auto_test_pacakge()` (@mbojan, #1211, #1214)
+* Fixed a couple of buglets in `auto_test_package()` (@mbojan, #1211, #1214)
 
 # testthat 3.0.0
 
