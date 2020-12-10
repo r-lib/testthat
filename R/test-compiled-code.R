@@ -47,11 +47,10 @@ run_cpp_tests <- function(package) {
       catch_error <- TRUE
       reporter <- get_reporter()
 
-      reporter$start_context(context = "Catch")
+      context_start("Catch")
       reporter$start_test(context = "Catch", test = "Catch")
       reporter$add_result(context = "Catch", test = "Catch", result = expectation("failure", e$message))
       reporter$end_test(context = "Catch", test = "Catch")
-      reporter$end_context(context = "Catch")
     }
   )
 
@@ -67,7 +66,7 @@ run_cpp_tests <- function(package) {
   for (context in contexts) {
     context_name <- sub(" [|][^|]+$", "", xml2::xml_attr(context, "name"))
 
-    get_reporter()$start_context(context = context_name)
+    context_start(context_name)
 
     tests <- xml2::xml_find_all(context, "./Section")
     for (test in tests) {
@@ -126,8 +125,6 @@ run_cpp_tests <- function(package) {
 
       get_reporter()$end_test(context = context_name, test = test_name)
     }
-
-    get_reporter()$end_context(context = context_name)
   }
 }
 
