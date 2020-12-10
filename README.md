@@ -21,14 +21,14 @@ possible, so that you get a visceral satisfaction from writing tests.
 Testing should be addictive, so you do it all the time. To make that
 happen, testthat:
 
-  - Provides functions that make it easy to describe what you expect a
+-   Provides functions that make it easy to describe what you expect a
     function to do, including catching errors, warnings, and messages.
 
-  - Easily integrates in your existing workflow, whether it’s informal
+-   Easily integrates in your existing workflow, whether it’s informal
     testing on the command line, building test suites, or using R CMD
     check.
 
-  - Displays test progress visually, showing a pass, fail, or error for
+-   Displays test progress visually, showing a pass, fail, or error for
     every expectation. If you’re using the terminal or a recent version
     of RStudio, it’ll even colour the output.
 
