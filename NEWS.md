@@ -2,6 +2,8 @@
 
 * `CheckReporter` now always shows the full test name (#1268).
 
+* Catch tests are no longer reported multiple times (#1237).
+
 * `expect_snapshot()` gains new `error` argument which controls whether or not
   an error is expected. If an unexpected error is thrown, or an expected error
   is not thrown, `expect_snapshot()` will fail (even on CRAN) (#1200).
