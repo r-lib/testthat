@@ -1,5 +1,7 @@
 # testthat (development version)
 
+* `CheckReporter` now always shows the full test name (#1268).
+
 * Catch tests are no longer reported multiple times (#1237).
 
 * `expect_snapshot()` gains new `error` argument which controls whether or not

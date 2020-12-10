@@ -44,7 +44,8 @@ CheckReporter <- R6::R6Class("CheckReporter",
       }
 
       type <- expectation_type(result)
-      header <- cli::rule(issue_header(result))
+      msg <- issue_header(result)
+      header <- cli::rule(msg, width = max(nchar(msg) + 6, 80))
 
       self$local_user_output()
       self$cat_line(header)
