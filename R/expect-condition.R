@@ -329,7 +329,7 @@ compare_condition_2e <- function(cond, lab, regexp = NULL, class = NULL, ...,
   message <- cnd_message(cond)
 
   ok_class <- is.null(class) || inherits(cond, class)
-  ok_msg <- is.null(regexp) || grepl(regexp, message, ...)
+  ok_msg <- is.null(regexp) || any(grepl(regexp, message, ...))
 
   # All good
   if (ok_msg && ok_class) {
