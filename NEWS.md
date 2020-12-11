@@ -1,12 +1,14 @@
 # testthat (development version)
 
+* A warning is given when snapshots are discarded due to reusing the same
+  test name (#1278, @krlmlr).
+
 * New `testthat.progress.verbose_skips` option. Set to `FALSE` to stop
   reporting skips as they occur, they will still appear in the summary
   (#1209, @krlmlr).
 
 * `CheckReporter` now always shows the full test name (#1268).
 
-* Catch tests are no longer reported multiple times (#1237).
 * Catch C++ tests are no longer reported multiple times (#1237) and
   are automatically skipped on Solaris since Catch is not supported (#1257).
   `use_catch()` makes it more clear that your package needs to suggest 
