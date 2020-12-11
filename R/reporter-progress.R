@@ -291,10 +291,6 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
       }
       self$last_update <- time
       TRUE
-    },
-
-    get_verbose_skips = function() {
-      self$verbose_skips
     }
   )
 )
@@ -444,7 +440,7 @@ ParallelProgressReporter <- R6::R6Class("ParallelProgressReporter",
       } else if (expectation_skip(result)) {
         self$n_skip <- self$n_skip + 1
         self$files[[file]]$n_skip <- self$files[[file]]$n_skip + 1L
-        if (self$get_verbose_skips()) {
+        if (self$verbose_skips) {
           self$files[[file]]$issues$push(result)
         }
         self$skips$push(result$message)
