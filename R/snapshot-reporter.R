@@ -35,6 +35,9 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
       self$test <- test
       self$i <- 0L
 
+      if (length(self$cur_snaps[[test]]) > 0) {
+        testthat_warn("Duplicate test, discarding previous snapshot")
+      }
       self$cur_snaps[[test]] <- list()
       self$new_snaps[[test]] <- list()
     },
