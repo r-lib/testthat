@@ -1,5 +1,9 @@
 # testthat (development version)
 
+* New `testthat.progress.verbose_skips` option. Set to `FALSE` to stop
+  reporting skips as they occur, they will still appear in the summary
+  (#1209, @krlmlr).
+
 * `CheckReporter` now always shows the full test name (#1268).
 
 * Catch tests are no longer reported multiple times (#1237).
