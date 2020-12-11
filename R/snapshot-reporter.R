@@ -36,7 +36,7 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
       self$i <- 0L
 
       if (length(self$cur_snaps[[test]]) > 0) {
-        testthat_warn(paste0("Duplicate test, discarding snapshot: ", test))
+        testthat_warn("Duplicate test, discarding snapshot")
       }
       self$cur_snaps[[test]] <- list()
       self$new_snaps[[test]] <- list()
@@ -90,7 +90,7 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
         self$cur_snaps[[self$test]] <- self$old_snaps[[self$test]]
 
         if (self$i > 0) {
-          testthat_warn(paste0("Snapshots reset after error/skip: ", test))
+          testthat_warn("Snapshots reset after error/skip")
         }
       }
     },
