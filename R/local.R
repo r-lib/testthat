@@ -41,11 +41,14 @@
 #'   quotes (otherwise the default is locale dependent, see [sQuote()] for
 #'   details).
 #'
-#' `local_test_context()` also sets envvars `RSTUDIO = 0` (which ensures that RStudio is never
-#' detected as running), and `TESTTHAT = "true"` (which ensures that
-#' [is_testing()] returns `TRUE)`, and sets collation locale to "C"
-#' (which ensures that character sorting the same regardless of current
-#' locale).
+#' And modifies the following env vars:
+#'
+#' * Unsets `RSTUDIO`, which ensures that RStudio is never detected as running.
+#' * Sets `TESTTHAT = "true"`, which ensures that [is_testing()] returns `TRUE`.
+#' * Sets `LANGUAGE = "en"`, which ensures that no message translation occurs.
+#'
+#' Finally, it sets the collation locale to "C", which ensures that character
+#' sorting the same regardless of system locale.
 #'
 #' @export
 #' @keywords internal
@@ -58,7 +61,7 @@
 #'   cat("\n")
 #' })
 local_test_context <- function(.env = parent.frame()) {
-  withr::local_envvar(list(TESTTHAT = "true"), .local_envir = .env)
+  withr::local_envvar(TESTTHAT = "true", .local_envir = .env)
   if (edition_get() >= 3) {
     local_reproducible_output(.env = .env)
   }
@@ -92,18 +95,20 @@ local_reproducible_output <- function(width = 80,
 
   local_width(width = width, .env = .env)
   withr::local_options(
-    list(
-      crayon.enabled = crayon,
-      cli.dynamic = FALSE,
-      cli.unicode = unicode,
-      useFancyQuotes = FALSE,
-      lifecycle_verbosity = "warning",
-      OutDec = ".",
-      rlang_interactive = FALSE
-    ),
+    crayon.enabled = crayon,
+    cli.dynamic = FALSE,
+    cli.unicode = unicode,
+    useFancyQuotes = FALSE,
+    lifecycle_verbosity = "warning",
+    OutDec = ".",
+    rlang_interactive = FALSE,
     .local_envir = .env
   )
-  withr::local_envvar(c(RSTUDIO = "0"), .local_envir = .env)
+  withr::local_envvar(
+    RSTUDIO = NA,
+    LANGUAGE = "en",
+    .local_envir = .env
+  )
   withr::local_collate("C", .local_envir = .env)
 }
 
@@ -121,8 +126,8 @@ waldo_compare <- function(x, y, ..., x_arg = "x", y_arg = "y") {
 }
 
 local_width <- function(width = 80, .env = parent.frame()) {
-  withr::local_options(list(width = width, cli.width = width), .local_envir = .env)
-  withr::local_envvar(list(RSTUDIO_CONSOLE_WIDTH = width), .local_envir = .env)
+  withr::local_options(width = width, cli.width = width, .local_envir = .env)
+  withr::local_envvar(RSTUDIO_CONSOLE_WIDTH = width, .local_envir = .env)
 }
 
 
@@ -139,17 +144,18 @@ local_test_directory <- function(path, package = NULL, .env = parent.frame()) {
   local_edition(find_edition(path, package), .env = .env)
 
   withr::local_dir(path, .local_envir = .env)
-  withr::local_envvar(c(
+  withr::local_envvar(
     R_TESTS = "",
     TESTTHAT = "true",
-    TESTTHAT_PKG = package
-  ), .local_envir = .env)
+    TESTTHAT_PKG = package,
+    .local_envir = .env
+  )
 }
 
 local_interactive_reporter <- function(.env = parent.frame()) {
   # Definitely not on CRAN
-  withr::local_envvar(c(NOT_CRAN = "true"), .local_envir = .env)
-  withr::local_options(list(testthat_interactive = TRUE), .local_envir = .env)
+  withr::local_envvar(NOT_CRAN = "true", .local_envir = .env)
+  withr::local_options(testthat_interactive = TRUE, .local_envir = .env)
 
   # Use edition from working directory
   local_edition(find_edition("."), .env = .env)

@@ -16,8 +16,7 @@ difference between Windows and Mac/Linux line endings.}
 
 \item{cran}{Should these expectations be verified on CRAN? By default,
 they are not, because snapshot tests tend to be fragile because they
-often rely on minor details of dependencies. Even on CRAN, the
-expectations will still fail if \code{x} errors.}
+often rely on minor details of dependencies.}
 }
 \description{
 Whole file snapshot testing is designed for testing objects that don't have
@@ -51,10 +50,10 @@ path <- save_png(plot(1:5))
 path
 
 \dontrun{
-expect_snapshot_file(save_png(hist(mtcars)), "plot.png")
+expect_snapshot_file(save_png(hist(mtcars$mpg)), "plot.png")
 }
 
-# You'd then also provide a helper that skip tests where you can't
+# You'd then also provide a helper that skips tests where you can't
 # be sure of producing exactly the same output
 expect_snapshot_plot <- function(name, code) {
   # Other packages might affect results

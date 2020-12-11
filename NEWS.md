@@ -4,6 +4,42 @@
   reporting skips as they occur, they will still appear in the summary
   (#1209, @krlmlr).
 
+* `CheckReporter` now always shows the full test name (#1268).
+
+* Catch tests are no longer reported multiple times (#1237).
+* Catch C++ tests are no longer reported multiple times (#1237) and
+  are automatically skipped on Solaris since Catch is not supported (#1257).
+  `use_catch()` makes it more clear that your package needs to suggest 
+  xml2 (#1235).
+
+* `auto_test_package()` works once again  (@mbojan, #1211, #1214)
+
+* `expect_snapshot()` gains new `error` argument which controls whether or not
+  an error is expected. If an unexpected error is thrown, or an expected error
+  is not thrown, `expect_snapshot()` will fail (even on CRAN) (#1200).
+
+* `expect_snapshot_value(style = "deparse")` handles more common R data
+  structures.
+  
+* `expect_snapshot_value()` now passes `...` on to `waldo::compare()` (#1222).
+
+* `expect_snapshot_file()` gives a hint as to next steps when a failure
+  occurs in non-interactive environments (with help from @maelle, #1179).
+  `expect_snapshot_*()` gives a more informative hint when you're running
+  tests interactively (#1226).
+
+* `expect_snapshot_*()` automatically removes the `_snaps` directory if
+  it's empty (#1180). 
+
+* `local_reproducible_output()` now sets the LANGUAGE env var to "en". This
+  matches the behaviour of R CMD check in interactive settings (#1213).
+  It also now unsets RSTUDIO envvar, instead of setting it to 0 (#1225).
+
+* `RstudioReporter` has been renamed to `RStudioReporter`.
+
+* `skip_if_not()` no longer appends "is not TRUE" to custom messages 
+  (@dpprdan, #1247).
+
 # testthat 3.0.0
 
 ## 3rd edition
@@ -103,6 +139,8 @@ See `vignette("snapshotting")` for more details.
 * Catch C++ tests now provide detailed results for each test. 
   To upgrade existing code, re-run `testthat::use_catch()` (#1008).
 
+* Many reporters (e.g. the check reporter) no longer raise an error when any tests fail. Use the `stop_on_failure` argument to `devtools::test()` and `testthat::test_dir()` if your code relies on this. Alternatively, use `reporter = c("check", "fail")` to e.g. create a failing check reporter.
+
 ## Fixures
 
 * New `vignette("test-fixtures")` describes test fixtures; i.e. how to 
@@ -157,7 +195,7 @@ See `vignette("snapshotting")` for more details.
 * `context_start_file()` is now exported for external reporters (#983, #1082).
   It now only strips first instance of prefix/suffix (#1041, @stufield).
 
-* `expect_error()` no longer encourages you to use `class`. This advice 
+* `expect_error()` no longer encourages you to use `class`. This advice removes
   one type of fragility at the expense of creating a different type (#1013).
 
 * `expect_known_failure()` has been removed. As far as I can tell it was
@@ -168,7 +206,7 @@ See `vignette("snapshotting")` for more details.
 
 * `verify_output()` no longer always fails if output contains a carriage 
   return character ("\r") (#1048). It uses the `pdf()` device instead of 
-  `png()` soit work on systems without X11 (#1011). And it uses 
+  `png()` so it works on systems without X11 (#1011). And it uses 
   `waldo::compare()` to give more informative failures.
 
 # testthat 2.3.2

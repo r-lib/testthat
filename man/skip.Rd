@@ -14,11 +14,11 @@
 \alias{skip_on_covr}
 \alias{skip_on_bioc}
 \alias{skip_if_translated}
-\title{Skip a test.}
+\title{Skip a test}
 \usage{
 skip(message)
 
-skip_if_not(condition, message = deparse(substitute(condition)))
+skip_if_not(condition, message = NULL)
 
 skip_if(condition, message = NULL)
 
@@ -62,53 +62,39 @@ uses a message included in most translation packs. See the complete list in
 \href{https://github.com/wch/r-source/blob/master/src/library/base/po/R-base.pot}{\code{R-base.pot}}.}
 }
 \description{
-This function allows you to skip a test if it's not currently available.
-This will produce an informative message, but will not cause the test
-suite to fail.
-}
-\details{
-\verb{skip*} functions are intended for use within \code{\link[=test_that]{test_that()}}
-blocks.  All expectations following the \code{skip*} statement within the
-same \code{test_that} block will be skipped.  Test summaries that report skip
-counts are reporting how many \code{test_that} blocks triggered a \verb{skip*}
-statement, not how many expectations were skipped.
+\code{skip_if()} and \code{skip_if_not()} allow you to skip tests, immediately
+concluding a \code{\link[=test_that]{test_that()}} block without executing any further expectations.
+This allows you to skip a test without failure, if for some reason it
+can't be run (e.g. it depends on the feature of a specific operating system,
+or it requires a specific version of a package).
+
+See \code{vignette("skipping")} for more details.
 }
 \section{Helpers}{
 
-\code{skip_if_not()} works like \code{\link[=stopifnot]{stopifnot()}}, generating
-a message automatically based on the first argument.
-
-\code{skip_if_offline()} skips tests if an internet connection is not available
-using \code{\link[curl:nslookup]{curl::nslookup()}}.
-
-\code{skip_on_cran()} skips tests on CRAN, using the \code{NOT_CRAN}
-environment variable set by devtools.
-
-\code{skip_on_travis()} skips tests on Travis CI by inspecting the
-\code{TRAVIS} environment variable.
-
-\code{skip_on_appveyor()} skips tests on AppVeyor by inspecting the
-\code{APPVEYOR} environment variable.
-
-\code{skip_on_ci()} skips tests on continuous integration systems by inspecting
-the \code{CI} environment variable.
-
-\code{skip_on_covr()} skips tests when covr is running by inspecting the
-\code{R_COVR} environment variable
-
-\code{skip_on_bioc()} skips tests on Bioconductor by inspecting the
-\code{BBS_HOME} environment variable.
-
-\code{skip_if_not_installed()} skips a tests if a package is not installed
-or cannot be loaded (useful for suggested packages).  It loads the package as
-a side effect, because the package is likely to be used anyway.
+\itemize{
+\item \code{skip_if_not_installed("pkg")} skips tests if package "pkg" is not
+installed or cannot be loaded (using \code{requireNamespace()}). Generally,
+you can assume that suggested packages are installed, and you do not
+need to check for them specifically, unless they are particularly
+difficult to install.
+\item \code{skip_if_offline()} skips if an internet connection is not available
+(using \code{\link[curl:nslookup]{curl::nslookup()}}).
+\item \code{skip_if_translated("msg")} skips tests if the "msg" is translated.
+\item \code{skip_on_bioc()} skips on Bioconductor (using the \code{BBS_HOME} env var).
+\item \code{skip_on_cran()} skips on CRAN (using the \code{NOT_CRAN} env var set by
+devtools and friends).
+\item \code{skip_on_covr()} skips when covr is running (using the \code{R_COVR} env var).
+\item \code{skip_on_ci()} skips on continuous integration systems like GitHub Actions,
+travis, and appveyor (using the \code{CI} env var). It supersedes the older
+\code{skip_on_travis()} and \code{skip_on_appveyor()} functions.
+\item \code{skip_on_os()} skips on the specified operating system(s) ("windows",
+"mac", "linux", or "solaris").
+}
 }
 
 \examples{
 if (FALSE) skip("No internet connection")
-
-## The following are only meaningful when put in test files and
-## run with `test_file`, `test_dir`, `test_check`, etc.
 
 test_that("skip example", {
   expect_equal(1, 1L)    # this expectation runs

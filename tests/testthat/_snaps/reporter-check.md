@@ -45,3 +45,13 @@
     
     [ FAIL 4 | WARN 1 | SKIP 2 | PASS 1 ]
 
+# doesn't truncate long lines
+
+    -- FAILURE (long-test.R:2:3): That very long test messages are not truncated because they contain useful information that you probably want to read --
+    Failure has been forced
+    
+    == testthat results  ===========================================================
+    FAILURE (long-test.R:2:3): That very long test messages are not truncated because they contain useful information that you probably want to read
+    
+    [ FAIL 1 | WARN 0 | SKIP 0 | PASS 0 ]
+

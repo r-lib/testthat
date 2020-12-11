@@ -47,7 +47,7 @@ test_that("can control numeric tolerance", {
   if (getRversion() < "3.6.0" && is.null(getOption("warnPartialMatchArgs"))) {
     options(warnPartialMatchArgs = FALSE)
   }
-  withr::local_options(list(warnPartialMatchArgs = FALSE))
+  withr::local_options(warnPartialMatchArgs = FALSE)
   expect_success(expect_equal(x1, x2, tol = 1e-5))
 
   local_edition(3)
@@ -72,7 +72,7 @@ test_that("provide useful feedback on failure", {
   expect_snapshot_error(expect_equal(1, "a"))
 
   local_edition(2)
-  withr::local_options(list(testthat.edition_ignore = TRUE))
+  withr::local_options(testthat.edition_ignore = TRUE)
   expect_snapshot_error(expect_identical(1, "a"))
   expect_snapshot_error(expect_equal(1, "a"))
 })
