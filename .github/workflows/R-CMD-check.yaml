@@ -67,7 +67,9 @@ jobs:
 
       - name: Install system dependencies
         if: runner.os == 'Linux'
-        run: Rscript -e 'pak::local_system_requirements(execute = TRUE)'
+        run: |
+          Rscript -e 'pak::local_system_requirements(execute = TRUE)'
+          sudo apt-get install libgit2-dev
 
       - name: Install X11
         if: runner.os == 'macOS'
