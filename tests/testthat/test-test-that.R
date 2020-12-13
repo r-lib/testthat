@@ -148,6 +148,7 @@ test_that("can signal warnings and messages without restart", {
 })
 
 test_that("braces required in testthat 3e", {
+  local_edition(3)
   expect_warning(
     test_that("", expect_true(TRUE))
   )
