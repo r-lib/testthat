@@ -130,6 +130,9 @@
     <loc>https://testthat.r-lib.org/reference/expect_output.html</loc>
   </url>
   <url>
+    <loc>https://testthat.r-lib.org/reference/expect_output_file.html</loc>
+  </url>
+  <url>
     <loc>https://testthat.r-lib.org/reference/expect_reference.html</loc>
   </url>
   <url>

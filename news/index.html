@@ -543,7 +543,7 @@
 <a href="#known-good-values" class="anchor"></a>Known good values</h3>
 <p>We have identified a useful family of expectations that compares the results of an expression to a known good value stored in a file. They are designed to be use in conjunction with git so that you can see what precisely has changed, and revert it if needed.</p>
 <ul>
-<li><p><code><a href="../reference/expect_known_output.html">expect_known_output()</a></code> replaces <code><a href="../reference/expect_known_output.html">expect_output_file()</a></code>, which has been soft-deprecated. It now defaults to <code>update = TRUE</code> and warn, rather than failing on the first run. It gains a <code>print</code> argument to automatically print the input (<a href='https://github.com/r-lib/testthat/issues/627'>#627</a>). It also sets the width option to 80 to ensure consistent output across environments (<a href='https://github.com/r-lib/testthat/issues/514'>#514</a>)</p></li>
+<li><p><code><a href="../reference/expect_known_output.html">expect_known_output()</a></code> replaces <code><a href="../reference/expect_output_file.html">expect_output_file()</a></code>, which has been soft-deprecated. It now defaults to <code>update = TRUE</code> and warn, rather than failing on the first run. It gains a <code>print</code> argument to automatically print the input (<a href='https://github.com/r-lib/testthat/issues/627'>#627</a>). It also sets the width option to 80 to ensure consistent output across environments (<a href='https://github.com/r-lib/testthat/issues/514'>#514</a>)</p></li>
 <li><p><code><a href="../reference/expect_known_output.html">expect_known_value()</a></code> replaces <code><a href="../reference/expect_known_output.html">expect_equal_to_reference()</a></code>, which has been soft-deprecated. It gains an update argument defaulting to <code>TRUE</code>. This changes behaviour from the previous version, and soft-deprecated <code><a href="../reference/expect_known_output.html">expect_equal_to_reference()</a></code> gets <code>update = FALSE</code>.</p></li>
 <li><p><code>expect_known_failure()</code> stored and compares the failure message from an expectation. It’s a useful regression test when developing informative failure messges for your own expectations.</p></li>
 </ul>
@@ -680,7 +680,7 @@
 <a href="#testthat-101" class="anchor"></a>testthat 1.0.1<small> 2016-04-21 </small>
 </h1>
 <ul>
-<li><p>New <code><a href="../reference/expect_known_output.html">expect_output_file()</a></code> to compare output of a function with a text file, and optionally update it (<a href='https://github.com/r-lib/testthat/issues/443'>#443</a>, <a href='https://github.com/krlmlr'>@krlmlr</a>).</p></li>
+<li><p>New <code><a href="../reference/expect_output_file.html">expect_output_file()</a></code> to compare output of a function with a text file, and optionally update it (<a href='https://github.com/r-lib/testthat/issues/443'>#443</a>, <a href='https://github.com/krlmlr'>@krlmlr</a>).</p></li>
 <li><p>Properly scoped use + compilation of C++ unit testing code using Catch to <code>gcc</code> and <code>clang</code> only, as Catch includes code that does not strictly conform to the C++98 standard. (<a href='https://github.com/kevinushey'>@kevinushey</a>)</p></li>
 <li><p>Fixed an out-of-bounds memory access when routing Catch output through <code>Rprintf()</code>. (<a href='https://github.com/kevinushey'>@kevinushey</a>)</p></li>
 <li>
