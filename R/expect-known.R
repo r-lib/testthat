@@ -103,10 +103,39 @@ compare_file <- function(path, lines, ..., update = TRUE, info = NULL) {
   )
 }
 
+#' Expectations: is the output or the value equal to a known good value?
+#'
+#' `expect_output_file()` behaves identically to [expect_known_output()].
+#'
+#' @section 3rd edition:
+#' `r lifecycle::badge("deprecated")`
+#'
+#' `expect_output_file()` is deprecated in the 3rd edition;
+#' please use [expect_snapshot_output()] and friends instead.
+#'
 #' @export
-#' @rdname expect_known_output
-#' @usage NULL
-expect_output_file <- expect_known_output
+#' @keywords internal
+expect_output_file <- function(object, file,
+                               update = TRUE,
+                               ...,
+                               info = NULL,
+                               label = NULL,
+                               print = FALSE,
+                               width = 80) {
+
+  # Code is a copy of expect_known_output()
+  edition_deprecate(3, "expect_output_file()",
+                    "Please use `expect_snapshot_output()` instead"
+  )
+
+  act <- list()
+  act$quo <- enquo(object)
+  act$lab <- label %||% quo_label(act$quo)
+  act <- append(act, eval_with_output(object, print = print, width = width))
+
+  compare_file(file, act$out, update = update, info = info, ...)
+  invisible(act$val)
+}
 
 #' @export
 #' @rdname expect_known_output
