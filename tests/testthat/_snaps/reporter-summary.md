@@ -16,22 +16,22 @@
     1. warnings get backtraces (tests.R:49:3) - def
     
     == Failed ======================================================================
-    -- 1. FAILURE (tests.R:12:3): Failure:1 ----------------------------------------
+    -- 1. Failure (tests.R:12:3): Failure:1 ----------------------------------------
     FALSE is not TRUE
     
     `actual`:   FALSE
     `expected`: TRUE 
     
-    -- 2. FAILURE (tests.R:17:3): Failure:2a ---------------------------------------
+    -- 2. Failure (tests.R:17:3): Failure:2a ---------------------------------------
     FALSE is not TRUE
     
     `actual`:   FALSE
     `expected`: TRUE 
     
-    -- 3. ERROR (tests.R:23:3): Error:1 --------------------------------------------
+    -- 3. Error (tests.R:23:3): Error:1 --------------------------------------------
     Error: stop
     
-    -- 4. ERROR (tests.R:31:3): errors get tracebacks ------------------------------
+    -- 4. Error (tests.R:31:3): errors get tracebacks ------------------------------
     Error: !
     Backtrace:
      1. f() reporters/tests.R:31:2
@@ -58,22 +58,22 @@
     1. warnings get backtraces (tests.R:49:3) - def
     
     == Failed ======================================================================
-    -- 1. FAILURE (tests.R:12:3): Failure:1 ----------------------------------------
+    -- 1. Failure (tests.R:12:3): Failure:1 ----------------------------------------
     FALSE is not TRUE
     
     `actual`:   FALSE
     `expected`: TRUE 
     
-    -- 2. FAILURE (tests.R:17:3): Failure:2a ---------------------------------------
+    -- 2. Failure (tests.R:17:3): Failure:2a ---------------------------------------
     FALSE is not TRUE
     
     `actual`:   FALSE
     `expected`: TRUE 
     
-    -- 3. ERROR (tests.R:23:3): Error:1 --------------------------------------------
+    -- 3. Error (tests.R:23:3): Error:1 --------------------------------------------
     Error: stop
     
-    -- 4. ERROR (tests.R:31:3): errors get tracebacks ------------------------------
+    -- 4. Error (tests.R:31:3): errors get tracebacks ------------------------------
     Error: !
     Backtrace:
      1. f() reporters/tests.R:31:2
@@ -100,13 +100,13 @@
     1. warnings get backtraces (tests.R:49:3) - def
     
     == Failed ======================================================================
-    -- 1. FAILURE (tests.R:12:3): Failure:1 ----------------------------------------
+    -- 1. Failure (tests.R:12:3): Failure:1 ----------------------------------------
     FALSE is not TRUE
     
     `actual`:   FALSE
     `expected`: TRUE 
     
-    -- 2. FAILURE (tests.R:17:3): Failure:2a ---------------------------------------
+    -- 2. Failure (tests.R:17:3): Failure:2a ---------------------------------------
     FALSE is not TRUE
     
     `actual`:   FALSE

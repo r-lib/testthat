@@ -25,43 +25,30 @@ CheckReporter <- R6::R6Class("CheckReporter",
     },
 
     add_result = function(context, test, result) {
-      if (expectation_success(result)) {
+      if (expectation_broken(result)) {
+        self$n_fail <- self$n_fail + 1L
+        self$problems$push(result)
+      } else if (expectation_warning(result)) {
+        self$n_warn <- self$n_warn + 1L
+      } else if (expectation_skip(result)) {
+        self$n_skip <- self$n_skip + 1L
+        self$skips$push(result$message)
+      } else {
         self$n_ok <- self$n_ok + 1L
         return()
       }
 
-      if (!expectation_skip(result)) {
-        self$problems$push(result)
-      }
-
-      if (expectation_skip(result)) {
-        self$n_skip <- self$n_skip + 1L
-        self$skips$push(result$message)
-      } else if (expectation_warning(result)) {
-        self$n_warn <- self$n_warn + 1L
-      } else {
-        self$n_fail <- self$n_fail + 1L
-      }
-
-      type <- expectation_type(result)
-      msg <- issue_header(result)
-      header <- cli::rule(msg, width = max(nchar(msg) + 6, 80))
-
+      # Report brief status: this was if the session crashes, you have
+      # some rough idea of where it occurred.
       self$local_user_output()
-      self$cat_line(header)
-      if (expectation_warning(result)) {
-        # A lot of CRAN packages have warnings so showing full traceback
-        # makes it hard to see failures
-        self$cat_line(result$message)
-      } else {
-        self$cat_line(format(result, simplify = "none"))
-      }
-      self$cat_line()
+      self$cat_line("* ", issue_header(result, pad = TRUE))
     },
 
     end_reporter = function() {
+
       if (self$n_skip > 0) {
-        self$rule("Skipped tests ", line = 1)
+        self$cat_line()
+        self$rule("Skipped tests", line = 2)
         self$cat_line(skip_bullets(self$skips$as_list()))
         self$cat_line()
       }
@@ -72,9 +59,9 @@ CheckReporter <- R6::R6Class("CheckReporter",
       }
 
       saveRDS(problems, "testthat-problems.rds")
-      self$rule("testthat results ", line = 2)
-      self$cat_line(vapply(problems, issue_header, character(1)))
-      self$cat_line()
+      self$rule("Failed tests", line = 2)
+      self$cat_line(vapply(problems, issue_summary, character(1), rule = TRUE, simplify = "none"))
+       self$cat_line()
       self$cat_line(summary_line(self$n_fail, self$n_warn, self$n_skip, self$n_ok))
     }
   )

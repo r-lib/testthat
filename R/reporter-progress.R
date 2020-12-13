@@ -478,25 +478,28 @@ spinner <- function(frames, i) {
   frames[((i - 1) %% length(frames)) + 1]
 }
 
-issue_header <- function(x) {
+issue_header <- function(x, pad = FALSE) {
   type <- expectation_type(x)
   if (has_colour()) {
     type <- colourise(first_upper(type), type)
   } else {
-    type <- if (expectation_broken(x)) toupper(type) else first_upper(type)
+    type <- first_upper(type)
+  }
+  if (pad) {
+   type <- strpad(type, 7)
   }
 
   loc <- expectation_location(x)
   paste0(type, " (", loc, "): ", x$test)
 }
 
-issue_summary <- function(x, rule = FALSE) {
+issue_summary <- function(x, rule = FALSE, simplify = "branch") {
   header <- crayon::bold(issue_header(x))
   if (rule) {
-    header <- cli::rule(header)
+    header <- cli::rule(header, width = max(nchar(header) + 6, 80))
   }
 
-  paste0(header, "\n", format(x))
+  paste0(header, "\n", format(x, simplify = simplify))
 }
 
 strpad <- function(x, width = cli::console_width()) {
