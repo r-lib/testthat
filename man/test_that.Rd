@@ -10,8 +10,8 @@ test_that(desc, code)
 \item{desc}{test name.  Names should be kept as brief as possible, as they
 are often used as line prefixes.}
 
-\item{code}{test code containing expectations.  Braces \code{{}} should be used
-to surround the code even if it is only a single expression.}
+\item{code}{test code containing expectations.  Braces (\code{{}}) should always be
+used in order to get accurate location data for test failures.}
 }
 \description{
 A test encapsulates a series of expectations about small, self-contained
