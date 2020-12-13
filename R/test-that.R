@@ -41,7 +41,7 @@ test_that <- function(desc, code) {
 
   code <- substitute(code)
 
-  if (!is.call(code) || !identical(code[[1]], sym("{"))) {
+  if (!is_call(code, "{")) {
     warn("The `code` argument to `test_that()` must be a braced expression to get accurate file-line information for failures.")
   }
 
