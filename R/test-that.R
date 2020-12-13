@@ -12,7 +12,8 @@
 #'
 #' @param desc test name.  Names should be kept as brief as possible, as they
 #'   are often used as line prefixes.
-#' @param code test code containing expectations
+#' @param code test code containing expectations.  Braces `{}` should be used
+#'   to surround the code even if it is only a single expression.
 #' @export
 #' @examples
 #' test_that("trigonometric functions match identities", {
@@ -39,6 +40,11 @@ test_that <- function(desc, code) {
   local_test_context()
 
   code <- substitute(code)
+
+  if (!is.call(code) || !identical(code[[1]], sym("{"))) {
+    warn("The `code` argument to `test_that()` must be a braced expression to get accurate file-line information for failures.")
+  }
+
   test_code(desc, code, env = parent.frame(), reporter = reporter)
 }
 
