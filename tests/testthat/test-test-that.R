@@ -146,3 +146,17 @@ test_that("can signal warnings and messages without restart", {
   return("Skipping following test because it verbosely registers the warning")
   expect_null(signalCondition(warning_cnd("foo")))
 })
+
+test_that("braces required in testthat 3e", {
+  expect_warning(
+    test_that("", expect_true(TRUE))
+  )
+})
+
+test_that("no braces required in testthat 2e", {
+  local_edition(2)
+  expect_warning(
+    test_that("", expect_true(TRUE)),
+    NA
+  )
+})
