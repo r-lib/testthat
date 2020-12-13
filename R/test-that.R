@@ -12,8 +12,8 @@
 #'
 #' @param desc test name.  Names should be kept as brief as possible, as they
 #'   are often used as line prefixes.
-#' @param code test code containing expectations.  Braces `{}` should be used
-#'   to surround the code even if it is only a single expression.
+#' @param code test code containing expectations.  Braces (`{}`) should always be 
+#'   used in order to get accurate location data for test failures.
 #' @export
 #' @examples
 #' test_that("trigonometric functions match identities", {
