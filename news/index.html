@@ -196,6 +196,7 @@
 <a href="#testthat-development-version" class="anchor"></a>testthat (development version)<small> Unreleased </small>
 </h1>
 <ul>
+<li><p><code><a href="../reference/test_that.html">test_that()</a></code> now warns in edition 3 if code is given without braces, because in this case the source of an error can’t be easily traced (<a href='https://github.com/r-lib/testthat/issues/1280'>#1280</a>, <a href='https://github.com/krlmlr'>@krlmlr</a>).</p></li>
 <li><p>A warning is given when snapshots are discarded due to reusing the same test name (<a href='https://github.com/r-lib/testthat/issues/1278'>#1278</a>, <a href='https://github.com/krlmlr'>@krlmlr</a>).</p></li>
 <li><p>New <code>testthat.progress.verbose_skips</code> option. Set to <code>FALSE</code> to stop reporting skips as they occur, they will still appear in the summary (<a href='https://github.com/r-lib/testthat/issues/1209'>#1209</a>, <a href='https://github.com/krlmlr'>@krlmlr</a>).</p></li>
 <li><p><code>CheckReporter</code> now always shows the full test name (<a href='https://github.com/r-lib/testthat/issues/1268'>#1268</a>).</p></li>
