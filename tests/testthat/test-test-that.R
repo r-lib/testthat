@@ -17,14 +17,14 @@ test_that("errors are captured", {
   g <- function() stop("I made a mistake", call. = FALSE)
 
   reporter <- with_reporter("silent", {
-    test_that("", f())
+    test_that("", { f() } )
   })
   expect_equal(length(reporter$expectations()), 1)
 })
 
 test_that("errors captured even when looking for messages", {
   reporter <- with_reporter("silent", {
-    test_that("", expect_message(stop("a")))
+    test_that("", { expect_message(stop("a")) } )
   })
   expect_equal(length(reporter$expectations()), 1)
   expect_true(expectation_error(reporter$expectations()[[1L]]))
@@ -32,7 +32,7 @@ test_that("errors captured even when looking for messages", {
 
 test_that("errors captured even when looking for warnings", {
   reporter <- with_reporter("silent", {
-    test_that("", expect_warning(stop()))
+    test_that("", { expect_warning(stop()) } )
   })
   expect_equal(length(reporter$expectations()), 1)
   expect_true(expectation_error(reporter$expectations()[[1L]]))
@@ -53,33 +53,33 @@ test_that("infinite recursion is captured", {
   reporter <- with_reporter("silent", {
     withr::with_options(
       list(expressions = sys.nframe() + 100),
-      test_that("", f())
+      test_that("", { f() })
     )
   })
   expect_equal(length(reporter$expectations()), 1)
 })
 
 test_that("return value from test_that", {
-  with_reporter("", success <- test_that("success", succeed()))
+  with_reporter("", success <- test_that("success", { succeed() } ))
   expect_true(success)
-  with_reporter("", success <- test_that("success", expect(TRUE, "Yes!")))
+  with_reporter("", success <- test_that("success", { expect(TRUE, "Yes!") }))
   expect_true(success)
 
-  with_reporter("", error <- test_that("error", barf))
+  with_reporter("", error <- test_that("error", { barf } ))
   expect_false(error)
 
-  with_reporter("", failure <- test_that("failure", expect_true(FALSE)))
+  with_reporter("", failure <- test_that("failure", { expect_true(FALSE) } ))
   expect_false(failure)
-  with_reporter("", failure <- test_that("failure", fail()))
+  with_reporter("", failure <- test_that("failure", { fail() } ))
   expect_false(failure)
-  with_reporter("", success <- test_that("failure", expect(FALSE, "No!")))
-  expect_false(failure)
+  with_reporter("", success <- test_that("failure", { expect(FALSE, "No!") } ))
+  expect_false(success)
 
-  with_reporter("", skip <- test_that("skip", skip("skipping")))
+  with_reporter("", skip <- test_that("skip", { skip("skipping") } ))
   expect_false(skip)
   # No tests = automatically generated skip
   with_reporter("", skip <- test_that("success", {}))
-  expect_false(success)
+  expect_false(skip)
 })
 
 # Line numbering ----------------------------------------------------------
@@ -145,4 +145,19 @@ test_that("can signal warnings and messages without restart", {
 
   return("Skipping following test because it verbosely registers the warning")
   expect_null(signalCondition(warning_cnd("foo")))
+})
+
+test_that("braces required in testthat 3e", {
+  local_edition(3)
+  expect_warning(
+    test_that("", expect_true(TRUE))
+  )
+})
+
+test_that("no braces required in testthat 2e", {
+  local_edition(2)
+  expect_warning(
+    test_that("", expect_true(TRUE)),
+    NA
+  )
 })
