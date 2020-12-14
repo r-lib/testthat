@@ -1,5 +1,7 @@
 # testthat (development version)
 
+* `test_that()` now warns in edition 3 if code is given without braces, because in this case the source of an error can't be easily traced (#1280, @krlmlr).
+
 * A warning is given when snapshots are discarded due to reusing the same
   test name (#1278, @krlmlr).
 
