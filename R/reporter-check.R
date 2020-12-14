@@ -10,15 +10,13 @@ CheckReporter <- R6::R6Class("CheckReporter",
   public = list(
     problems = NULL,
     skips = NULL,
-
+    warnings = NULL,
     n_ok = 0L,
-    n_skip = 0L,
-    n_fail = 0L,
-    n_warn = 0L,
 
     initialize = function(...) {
       self$capabilities$parallel_support <- TRUE
       self$problems <- Stack$new()
+      self$warnings <- Stack$new()
       self$skips <- Stack$new()
 
       super$initialize(...)
@@ -26,55 +24,58 @@ CheckReporter <- R6::R6Class("CheckReporter",
 
     add_result = function(context, test, result) {
       if (expectation_broken(result)) {
-        self$n_fail <- self$n_fail + 1L
         self$problems$push(result)
       } else if (expectation_warning(result)) {
-        self$n_warn <- self$n_warn + 1L
+        self$warnings$push(result)
       } else if (expectation_skip(result)) {
-        self$n_skip <- self$n_skip + 1L
         self$skips$push(result$message)
       } else {
         self$n_ok <- self$n_ok + 1L
-        return()
       }
-
-      # Report brief status: this was if the session crashes, you have
-      # some rough idea of where it occurred.
-      self$local_user_output()
-      self$cat_line("* ", issue_header(result, pad = TRUE))
     },
 
     end_reporter = function() {
-
-      if (self$n_skip > 0) {
-        self$cat_line()
+      if (self$skips$size() > 0) {
         self$rule("Skipped tests", line = 2)
         self$cat_line(skip_bullets(self$skips$as_list()))
         self$cat_line()
       }
 
-      problems <- self$problems$as_list()
-      if (length(problems) == 0) {
-        return()
+      if (self$warnings$size() > 0) {
+        warnings <- self$warnings$as_list()
+
+        self$rule("Warnings", line = 2)
+        self$cat_line(map_chr(warnings, issue_summary, rule = TRUE))
+        self$cat_line()
       }
 
-      saveRDS(problems, "testthat-problems.rds")
-      self$rule("Failed tests", line = 2)
-      self$cat_line(vapply(problems, issue_summary, character(1), rule = TRUE, simplify = "none"))
-       self$cat_line()
-      self$cat_line(summary_line(self$n_fail, self$n_warn, self$n_skip, self$n_ok))
+      if (self$problems$size() > 0) {
+        problems <- self$problems$as_list()
+        saveRDS(problems, "testthat-problems.rds")
+
+        self$rule("Failed tests", line = 2)
+        self$cat_line(map_chr(problems, issue_summary, rule = TRUE, simplify = "none"))
+        self$cat_line()
+      }
+
+      self$cat_line(summary_line(
+        n_fail = self$problems$size(),
+        n_warn = self$warnings$size(),
+        n_skip = self$skips$size(),
+        n_pass = self$n_ok
+      ))
     }
   )
 )
 
-summary_line <- function(n_fail, n_warn, n_skip, n_ok) {
+summary_line <- function(n_fail, n_warn, n_skip, n_pass) {
   # Ordered from most important to least important
   paste0(
     "[ ",
     colourise("FAIL", "failure"), " ", n_fail, " | ",
     colourise("WARN", "warn"),    " ", n_warn, " | ",
     colourise("SKIP", "skip"),    " ", n_skip, " | ",
-    colourise("PASS", "success"), " ", n_ok,
+    colourise("PASS", "success"), " ", n_pass,
     " ]"
   )
 }

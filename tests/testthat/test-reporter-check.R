@@ -11,3 +11,9 @@ test_that("doesn't truncate long lines", {
 
   expect_snapshot_reporter(CheckReporter$new(), test_path("reporters/long-test.R"))
 })
+
+test_that("always shows summary", {
+  on.exit(unlink(test_path("testthat-problems.rds")))
+
+  expect_snapshot_reporter(CheckReporter$new(), test_path("reporters/successes.R"))
+})

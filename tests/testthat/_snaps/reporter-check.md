@@ -1,16 +1,14 @@
 # basic report works
 
-    * Failure (tests.R:12:3): Failure:1
-    * Failure (tests.R:17:3): Failure:2a
-    * Error   (tests.R:23:3): Error:1
-    * Error   (tests.R:31:3): errors get tracebacks
-    * Skip    (tests.R:37:3): explicit skips are reported
-    * Skip    (tests.R:40:1): empty tests are implicitly skipped
-    * Warning (tests.R:49:3): warnings get backtraces
-    
     == Skipped tests ===============================================================
     * empty test (1)
     * skip (1)
+    
+    == Warnings ====================================================================
+    -- Warning (tests.R:49:3): warnings get backtraces -----------------------------
+    def
+    Backtrace:
+     1. f() reporters/tests.R:49:2
     
     == Failed tests ================================================================
     -- Failure (tests.R:12:3): Failure:1 -------------------------------------------
@@ -37,10 +35,13 @@
 
 # doesn't truncate long lines
 
-    * Failure (long-test.R:2:3): That very long test messages are not truncated because they contain useful information that you probably want to read
     == Failed tests ================================================================
     -- Failure (long-test.R:2:3): That very long test messages are not truncated because they contain useful information that you probably want to read --
     Failure has been forced
     
     [ FAIL 1 | WARN 0 | SKIP 0 | PASS 0 ]
+
+# always shows summary
+
+    [ FAIL 0 | WARN 0 | SKIP 0 | PASS 7 ]
 
