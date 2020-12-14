@@ -1,9 +1,9 @@
 ## revdepcheck results
 
-We checked 5389 reverse dependencies (5344 from CRAN + 45 from BioConductor), comparing R CMD check results across CRAN and dev versions of this package.
+We checked 5352 reverse dependencies, comparing R CMD check results across CRAN and dev versions of this package.
 
- * We saw 4 new problems
- * We failed to check 55 packages
+ * We saw 6 new problems
+ * We failed to check 49 packages
 
 Issues with CRAN packages are summarised below.
 
@@ -16,10 +16,16 @@ Issues with CRAN packages are summarised below.
 * finetune
   checking tests ... ERROR
 
-* gWidgets2RGtk2
+* git2rdata
   checking tests ... ERROR
 
-* restatapi
+* gtfs2gps
+  checking tests ... ERROR
+
+* here
+  checking tests ... ERROR
+
+* r2dii.match
   checking tests ... ERROR
 
 ### Failed to check
@@ -27,40 +33,38 @@ Issues with CRAN packages are summarised below.
 * ActivePathways        (NA)
 * backShift             (NA)
 * Boom                  (NA)
-* broom                 (NA)
 * bsts                  (NA)
 * butcher               (NA)
 * CausalImpact          (NA)
 * CB2                   (NA)
 * cbar                  (NA)
 * CompareCausalNetworks (NA)
+* crossmap              (NA)
+* dabestr               (NA)
 * diceR                 (NA)
 * dimRed                (NA)
 * duckdb                (NA)
-* ENMTools              (NA)
 * enviGCMS              (NA)
+* fdapace               (NA)
 * finbif                (NA)
 * ggstatsplot           (NA)
 * glmmTMB               (NA)
+* GroupSeq              (NA)
 * gWidgets2tcltk        (NA)
 * hNMF                  (NA)
 * ipc                   (NA)
-* jstor                 (NA)
 * kmcudaR               (NA)
-* latrend               (NA)
 * loon                  (NA)
 * mapdeck               (NA)
-* mdsOpt                (NA)
 * metagam               (NA)
-* micompr               (NA)
 * mlr3pipelines         (NA)
+* MoMPCA                (NA)
 * OpenMx                (NA)
 * osmplotr              (NA)
 * penaltyLearning       (NA)
 * phylopath             (NA)
 * precautionary         (NA)
 * qtl2                  (NA)
-* raptr                 (NA)
 * ReIns                 (NA)
 * RNiftyReg             (NA)
 * sarsop                (NA)
@@ -68,14 +72,10 @@ Issues with CRAN packages are summarised below.
 * Seurat                (NA)
 * smartdata             (NA)
 * SMITIDvisu            (NA)
-* spacey                (NA)
-* spatialwidget         (NA)
 * spectralAnalysis      (NA)
-* stablespec            (NA)
+* spsurvey              (NA)
 * statsExpressions      (NA)
-* supervisedPRIM        (NA)
 * symengine             (NA)
 * torch                 (NA)
-* TSdist                (NA)
 * volesti               (NA)
 * wrswoR                (NA)

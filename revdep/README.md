@@ -1,116 +1,67 @@
 # Revdeps
 
-## Failed to check (100)
+## Failed to check (49)
 
 |package                                      |version |error  |warning |note |
 |:--------------------------------------------|:-------|:------|:-------|:----|
-|NA                                           |?       |       |        |     |
 |ActivePathways                               |?       |       |        |     |
-|NA                                           |?       |       |        |     |
-|NA                                           |?       |       |        |     |
 |backShift                                    |?       |       |        |     |
-|NA                                           |?       |       |        |     |
-|NA                                           |?       |       |        |     |
-|NA                                           |?       |       |        |     |
 |Boom                                         |0.9.6   |1      |        |     |
-|NA                                           |?       |       |        |     |
-|NA                                           |?       |       |        |     |
-|broom                                        |?       |       |        |     |
 |bsts                                         |?       |       |        |     |
 |butcher                                      |?       |       |        |     |
 |CausalImpact                                 |?       |       |        |     |
 |CB2                                          |?       |       |        |     |
 |cbar                                         |?       |       |        |     |
-|NA                                           |?       |       |        |     |
 |CompareCausalNetworks                        |?       |       |        |     |
-|NA                                           |?       |       |        |     |
-|NA                                           |?       |       |        |     |
+|crossmap                                     |?       |       |        |     |
+|dabestr                                      |?       |       |        |     |
 |diceR                                        |?       |       |        |     |
 |dimRed                                       |?       |       |        |     |
-|NA                                           |?       |       |        |     |
-|NA                                           |?       |       |        |     |
-|NA                                           |?       |       |        |     |
-|NA                                           |?       |       |        |     |
-|[duckdb](failures.md#duckdb)                 |0.2.2-1 |__+1__ |        |-1   |
-|ENMTools                                     |?       |       |        |     |
+|duckdb                                       |0.2.3   |1      |        |     |
 |enviGCMS                                     |?       |       |        |     |
-|NA                                           |?       |       |        |     |
+|[fdapace](failures.md#fdapace)               |0.5.5   |__+1__ |        |-1   |
 |finbif                                       |0.3.1   |1      |        |     |
-|NA                                           |?       |       |        |     |
-|NA                                           |?       |       |        |     |
-|ggstatsplot                                  |0.6.5   |1      |        |     |
+|ggstatsplot                                  |0.6.6   |1      |        |     |
 |[glmmTMB](failures.md#glmmtmb)               |1.0.2.1 |__+1__ |        |-1   |
-|NA                                           |?       |       |        |     |
-|NA                                           |?       |       |        |     |
+|[GroupSeq](failures.md#groupseq)             |1.3.5   |__+1__ |        |     |
 |[gWidgets2tcltk](failures.md#gwidgets2tcltk) |1.0-6   |__+1__ |        |     |
-|NA                                           |?       |       |        |     |
 |hNMF                                         |?       |       |        |     |
 |ipc                                          |?       |       |        |     |
-|NA                                           |?       |       |        |     |
-|jstor                                        |?       |       |        |     |
-|NA                                           |?       |       |        |     |
 |kmcudaR                                      |1.1.0   |1      |        |     |
-|latrend                                      |1.0.1   |1      |        |     |
-|NA                                           |?       |       |        |     |
-|NA                                           |?       |       |        |     |
 |loon                                         |?       |       |        |     |
-|mapdeck                                      |0.3.4   |1      |        |     |
-|mdsOpt                                       |0.5-1   |1      |        |     |
+|[mapdeck](failures.md#mapdeck)               |0.3.4   |__+1__ |        |-1   |
 |metagam                                      |?       |       |        |     |
-|NA                                           |?       |       |        |     |
-|micompr                                      |?       |       |        |     |
 |mlr3pipelines                                |?       |       |        |     |
-|NA                                           |?       |       |        |     |
-|NA                                           |?       |       |        |     |
-|NA                                           |?       |       |        |     |
+|MoMPCA                                       |?       |       |        |     |
 |OpenMx                                       |2.18.1  |1      |        |     |
 |osmplotr                                     |?       |       |        |     |
-|NA                                           |?       |       |        |     |
-|NA                                           |?       |       |        |     |
 |penaltyLearning                              |?       |       |        |     |
-|NA                                           |?       |       |        |     |
-|NA                                           |?       |       |        |     |
 |phylopath                                    |?       |       |        |     |
-|NA                                           |?       |       |        |     |
 |precautionary                                |0.1-5   |1      |        |     |
-|[qtl2](failures.md#qtl2)                     |0.22-11 |__+1__ |-1      |-2   |
-|NA                                           |?       |       |        |     |
-|raptr                                        |?       |       |        |     |
+|[qtl2](failures.md#qtl2)                     |0.22-11 |__+1__ |        |-1   |
 |ReIns                                        |?       |       |        |     |
-|NA                                           |?       |       |        |     |
-|NA                                           |?       |       |        |     |
-|NA                                           |?       |       |        |     |
 |[RNiftyReg](failures.md#rniftyreg)           |2.7.0   |__+1__ |        |-1   |
-|NA                                           |?       |       |        |     |
-|[sarsop](failures.md#sarsop)                 |0.6.5   |__+1__ |        |-1   |
-|NA                                           |?       |       |        |     |
+|[sarsop](failures.md#sarsop)                 |0.6.6   |__+1__ |        |-1   |
 |seqgendiff                                   |?       |       |        |     |
 |Seurat                                       |?       |       |        |     |
-|NA                                           |?       |       |        |     |
 |smartdata                                    |?       |       |        |     |
 |SMITIDvisu                                   |?       |       |        |     |
-|NA                                           |?       |       |        |     |
-|spacey                                       |?       |       |        |     |
-|spatialwidget                                |0.2.3   |1      |        |     |
 |spectralAnalysis                             |?       |       |        |     |
-|stablespec                                   |?       |       |        |     |
-|statsExpressions                             |0.6.1   |1      |        |     |
-|supervisedPRIM                               |2.0.0   |1      |        |     |
+|spsurvey                                     |?       |       |        |     |
+|statsExpressions                             |0.6.2   |1      |        |     |
 |[symengine](failures.md#symengine)           |0.1.5   |__+1__ |        |-2   |
-|NA                                           |?       |       |        |     |
-|NA                                           |?       |       |        |     |
 |[torch](failures.md#torch)                   |0.1.1   |__+1__ |        |-1   |
-|TSdist                                       |3.7     |1      |        |     |
-|NA                                           |?       |       |        |     |
 |[volesti](failures.md#volesti)               |1.1.2   |__+1__ |        |-1   |
 |wrswoR                                       |?       |       |        |     |
 
-## New problems (4)
+## New problems (6)
 
-|package                                      |version |error  |warning |note |
-|:--------------------------------------------|:-------|:------|:-------|:----|
-|[dm](problems.md#dm)                         |0.1.9   |__+1__ |        |     |
-|[finetune](problems.md#finetune)             |0.0.1   |__+1__ |        |1    |
-|[gWidgets2RGtk2](problems.md#gwidgets2rgtk2) |1.0-7   |__+1__ |        |     |
-|[restatapi](problems.md#restatapi)           |0.8.10  |__+1__ |        |     |
+|package                               |version |error  |warning |note |
+|:-------------------------------------|:-------|:------|:-------|:----|
+|[dm](problems.md#dm)                  |0.1.9   |__+1__ |        |     |
+|[finetune](problems.md#finetune)      |0.0.1   |__+1__ |        |1    |
+|[git2rdata](problems.md#git2rdata)    |0.2.1   |__+1__ |        |     |
+|[gtfs2gps](problems.md#gtfs2gps)      |1.3-2   |__+1__ |        |     |
+|[here](problems.md#here)              |1.0.0   |__+1__ |        |     |
+|[r2dii.match](problems.md#r2diimatch) |0.0.7   |__+1__ |        |     |
 
