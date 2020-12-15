@@ -74,6 +74,372 @@ Status: 1 ERROR, 1 NOTE
 
 
 ```
+# AnchorRegression
+
+<details>
+
+* Version: 0.1.1
+* GitHub: https://github.com/simzim96/AnchorRegression
+* Source code: https://github.com/cran/AnchorRegression
+* Date/Publication: 2020-12-09 08:50:02 UTC
+* Number of recursive dependencies: 60
+
+Run `cloud_details(, "AnchorRegression")` for more info
+
+</details>
+
+## Error before installation
+
+### Devel
+
+```
+* using log directory ‘/tmp/workdir/AnchorRegression/new/AnchorRegression.Rcheck’
+* using R version 4.0.3 (2020-10-10)
+* using platform: x86_64-pc-linux-gnu (64-bit)
+* using session charset: UTF-8
+* using options ‘--no-manual --no-build-vignettes’
+* checking for file ‘AnchorRegression/DESCRIPTION’ ... OK
+* checking extension type ... Package
+* this is package ‘AnchorRegression’ version ‘0.1.1’
+* package encoding: UTF-8
+* checking package namespace information ... OK
+...
+* checking for code/documentation mismatches ... OK
+* checking Rd \usage sections ... OK
+* checking Rd contents ... OK
+* checking for unstated dependencies in examples ... OK
+* checking examples ... OK
+* checking for unstated dependencies in ‘tests’ ... OK
+* checking tests ... OK
+  Running ‘testthat.R’
+* DONE
+Status: 1 NOTE
+
+
+
+
+
+```
+### CRAN
+
+```
+* using log directory ‘/tmp/workdir/AnchorRegression/old/AnchorRegression.Rcheck’
+* using R version 4.0.3 (2020-10-10)
+* using platform: x86_64-pc-linux-gnu (64-bit)
+* using session charset: UTF-8
+* using options ‘--no-manual --no-build-vignettes’
+* checking for file ‘AnchorRegression/DESCRIPTION’ ... OK
+* checking extension type ... Package
+* this is package ‘AnchorRegression’ version ‘0.1.1’
+* package encoding: UTF-8
+* checking package namespace information ... OK
+...
+* checking for code/documentation mismatches ... OK
+* checking Rd \usage sections ... OK
+* checking Rd contents ... OK
+* checking for unstated dependencies in examples ... OK
+* checking examples ... OK
+* checking for unstated dependencies in ‘tests’ ... OK
+* checking tests ... OK
+  Running ‘testthat.R’
+* DONE
+Status: 1 NOTE
+
+
+
+
+
+```
+# ArchaeoPhases
+
+<details>
+
+* Version: 1.5
+* GitHub: https://github.com/ArchaeoStat/ArchaeoPhases
+* Source code: https://github.com/cran/ArchaeoPhases
+* Date/Publication: 2020-12-01 13:10:03 UTC
+* Number of recursive dependencies: 119
+
+Run `cloud_details(, "ArchaeoPhases")` for more info
+
+</details>
+
+## Error before installation
+
+### Devel
+
+```
+* using log directory ‘/tmp/workdir/ArchaeoPhases/new/ArchaeoPhases.Rcheck’
+* using R version 4.0.3 (2020-10-10)
+* using platform: x86_64-pc-linux-gnu (64-bit)
+* using session charset: UTF-8
+* using options ‘--no-manual --no-build-vignettes’
+* checking for file ‘ArchaeoPhases/DESCRIPTION’ ... OK
+* checking extension type ... Package
+* this is package ‘ArchaeoPhases’ version ‘1.5’
+* package encoding: UTF-8
+* checking package namespace information ... OK
+...
+* checking Rd contents ... OK
+* checking for unstated dependencies in examples ... OK
+* checking contents of ‘data’ directory ... OK
+* checking data for non-ASCII characters ... OK
+* checking data for ASCII and uncompressed saves ... OK
+* checking installed files from ‘inst/doc’ ... OK
+* checking files in ‘vignettes’ ... OK
+* checking examples ... OK
+* DONE
+Status: 2 NOTEs
+
+
+
+
+
+```
+### CRAN
+
+```
+* using log directory ‘/tmp/workdir/ArchaeoPhases/old/ArchaeoPhases.Rcheck’
+* using R version 4.0.3 (2020-10-10)
+* using platform: x86_64-pc-linux-gnu (64-bit)
+* using session charset: UTF-8
+* using options ‘--no-manual --no-build-vignettes’
+* checking for file ‘ArchaeoPhases/DESCRIPTION’ ... OK
+* checking extension type ... Package
+* this is package ‘ArchaeoPhases’ version ‘1.5’
+* package encoding: UTF-8
+* checking package namespace information ... OK
+...
+* checking Rd contents ... OK
+* checking for unstated dependencies in examples ... OK
+* checking contents of ‘data’ directory ... OK
+* checking data for non-ASCII characters ... OK
+* checking data for ASCII and uncompressed saves ... OK
+* checking installed files from ‘inst/doc’ ... OK
+* checking files in ‘vignettes’ ... OK
+* checking examples ... OK
+* DONE
+Status: 2 NOTEs
+
+
+
+
+
+```
+# ARTool
+
+<details>
+
+* Version: 0.10.8
+* GitHub: https://github.com/mjskay/ARTool
+* Source code: https://github.com/cran/ARTool
+* Date/Publication: 2020-10-31 07:30:09 UTC
+* Number of recursive dependencies: 132
+
+Run `cloud_details(, "ARTool")` for more info
+
+</details>
+
+## In both
+
+*   checking whether package ‘ARTool’ can be installed ... ERROR
+    ```
+    Installation failed.
+    See ‘/tmp/workdir/ARTool/new/ARTool.Rcheck/00install.out’ for details.
+    ```
+
+## Installation
+
+### Devel
+
+```
+* installing *source* package ‘ARTool’ ...
+** package ‘ARTool’ successfully unpacked and MD5 sums checked
+** using staged installation
+** R
+** data
+** inst
+** byte-compile and prepare package for lazy loading
+Error in loadNamespace(j <- i[[1L]], c(lib.loc, .libPaths()), versionCheck = vI[[j]]) : 
+  there is no package called ‘forcats’
+Calls: <Anonymous> ... loadNamespace -> withRestarts -> withOneRestart -> doWithOneRestart
+Execution halted
+ERROR: lazy loading failed for package ‘ARTool’
+* removing ‘/tmp/workdir/ARTool/new/ARTool.Rcheck/ARTool’
+
+
+```
+### CRAN
+
+```
+* installing *source* package ‘ARTool’ ...
+** package ‘ARTool’ successfully unpacked and MD5 sums checked
+** using staged installation
+** R
+** data
+** inst
+** byte-compile and prepare package for lazy loading
+Error in loadNamespace(j <- i[[1L]], c(lib.loc, .libPaths()), versionCheck = vI[[j]]) : 
+  there is no package called ‘forcats’
+Calls: <Anonymous> ... loadNamespace -> withRestarts -> withOneRestart -> doWithOneRestart
+Execution halted
+ERROR: lazy loading failed for package ‘ARTool’
+* removing ‘/tmp/workdir/ARTool/old/ARTool.Rcheck/ARTool’
+
+
+```
+# AzureKusto
+
+<details>
+
+* Version: 1.0.6
+* GitHub: https://github.com/Azure/AzureKusto
+* Source code: https://github.com/cran/AzureKusto
+* Date/Publication: 2020-04-27 05:30:02 UTC
+* Number of recursive dependencies: 68
+
+Run `cloud_details(, "AzureKusto")` for more info
+
+</details>
+
+## Error before installation
+
+### Devel
+
+```
+* using log directory ‘/tmp/workdir/AzureKusto/new/AzureKusto.Rcheck’
+* using R version 4.0.3 (2020-10-10)
+* using platform: x86_64-pc-linux-gnu (64-bit)
+* using session charset: UTF-8
+* using options ‘--no-manual --no-build-vignettes’
+* checking for file ‘AzureKusto/DESCRIPTION’ ... OK
+* this is package ‘AzureKusto’ version ‘1.0.6’
+* package encoding: UTF-8
+* checking package namespace information ... OK
+* checking package dependencies ... NOTE
+...
+* checking for unstated dependencies in ‘tests’ ... OK
+* checking tests ... OK
+  Running ‘testthat.R’
+* checking for unstated dependencies in vignettes ... OK
+* checking package vignettes in ‘inst/doc’ ... OK
+* checking running R code from vignettes ... NONE
+  ‘AzureKusto.Rmd’ using ‘UTF-8’... OK
+* checking re-building of vignette outputs ... SKIPPED
+* DONE
+Status: 2 NOTEs
+
+
+
+
+
+```
+### CRAN
+
+```
+* using log directory ‘/tmp/workdir/AzureKusto/old/AzureKusto.Rcheck’
+* using R version 4.0.3 (2020-10-10)
+* using platform: x86_64-pc-linux-gnu (64-bit)
+* using session charset: UTF-8
+* using options ‘--no-manual --no-build-vignettes’
+* checking for file ‘AzureKusto/DESCRIPTION’ ... OK
+* this is package ‘AzureKusto’ version ‘1.0.6’
+* package encoding: UTF-8
+* checking package namespace information ... OK
+* checking package dependencies ... NOTE
+...
+* checking for unstated dependencies in ‘tests’ ... OK
+* checking tests ... OK
+  Running ‘testthat.R’
+* checking for unstated dependencies in vignettes ... OK
+* checking package vignettes in ‘inst/doc’ ... OK
+* checking running R code from vignettes ... NONE
+  ‘AzureKusto.Rmd’ using ‘UTF-8’... OK
+* checking re-building of vignette outputs ... SKIPPED
+* DONE
+Status: 2 NOTEs
+
+
+
+
+
+```
+# AzureVM
+
+<details>
+
+* Version: 2.2.2
+* GitHub: https://github.com/Azure/AzureVM
+* Source code: https://github.com/cran/AzureVM
+* Date/Publication: 2020-10-14 23:50:07 UTC
+* Number of recursive dependencies: 59
+
+Run `cloud_details(, "AzureVM")` for more info
+
+</details>
+
+## Error before installation
+
+### Devel
+
+```
+* using log directory ‘/tmp/workdir/AzureVM/new/AzureVM.Rcheck’
+* using R version 4.0.3 (2020-10-10)
+* using platform: x86_64-pc-linux-gnu (64-bit)
+* using session charset: UTF-8
+* using options ‘--no-manual --no-build-vignettes’
+* checking for file ‘AzureVM/DESCRIPTION’ ... OK
+* this is package ‘AzureVM’ version ‘2.2.2’
+* checking package namespace information ... OK
+* checking package dependencies ... NOTE
+Package suggested but not available for checking: ‘rmarkdown’
+...
+* checking for unstated dependencies in ‘tests’ ... OK
+* checking tests ... OK
+  Running ‘testthat.R’
+* checking for unstated dependencies in vignettes ... OK
+* checking package vignettes in ‘inst/doc’ ... OK
+* checking running R code from vignettes ... NONE
+  ‘intro.rmd’ using ‘utf8’... OK
+* checking re-building of vignette outputs ... SKIPPED
+* DONE
+Status: 1 NOTE
+
+
+
+
+
+```
+### CRAN
+
+```
+* using log directory ‘/tmp/workdir/AzureVM/old/AzureVM.Rcheck’
+* using R version 4.0.3 (2020-10-10)
+* using platform: x86_64-pc-linux-gnu (64-bit)
+* using session charset: UTF-8
+* using options ‘--no-manual --no-build-vignettes’
+* checking for file ‘AzureVM/DESCRIPTION’ ... OK
+* this is package ‘AzureVM’ version ‘2.2.2’
+* checking package namespace information ... OK
+* checking package dependencies ... NOTE
+Package suggested but not available for checking: ‘rmarkdown’
+...
+* checking for unstated dependencies in ‘tests’ ... OK
+* checking tests ... OK
+  Running ‘testthat.R’
+* checking for unstated dependencies in vignettes ... OK
+* checking package vignettes in ‘inst/doc’ ... OK
+* checking running R code from vignettes ... NONE
+  ‘intro.rmd’ using ‘utf8’... OK
+* checking re-building of vignette outputs ... SKIPPED
+* DONE
+Status: 1 NOTE
+
+
+
+
+
+```
 # backShift
 
 <details>
@@ -150,6 +516,810 @@ Status: 2 NOTEs
 
 
 ```
+# Ball
+
+<details>
+
+* Version: 1.3.9
+* GitHub: https://github.com/Mamba413/Ball
+* Source code: https://github.com/cran/Ball
+* Date/Publication: 2019-12-17 08:40:02 UTC
+* Number of recursive dependencies: 54
+
+Run `cloud_details(, "Ball")` for more info
+
+</details>
+
+## Error before installation
+
+### Devel
+
+```
+* using log directory ‘/tmp/workdir/Ball/new/Ball.Rcheck’
+* using R version 4.0.3 (2020-10-10)
+* using platform: x86_64-pc-linux-gnu (64-bit)
+* using session charset: UTF-8
+* using options ‘--no-manual --no-build-vignettes’
+* checking for file ‘Ball/DESCRIPTION’ ... OK
+* checking extension type ... Package
+* this is package ‘Ball’ version ‘1.3.9’
+* package encoding: UTF-8
+* checking package namespace information ... OK
+...
+* checking use of PKG_*FLAGS in Makefiles ... OK
+* checking compiled code ... OK
+* checking installed files from ‘inst/doc’ ... OK
+* checking files in ‘vignettes’ ... OK
+* checking examples ... OK
+* checking for unstated dependencies in ‘tests’ ... OK
+* checking tests ... OK
+  Running ‘testthat.R’
+* DONE
+Status: 1 WARNING
+
+
+
+
+
+```
+### CRAN
+
+```
+* using log directory ‘/tmp/workdir/Ball/old/Ball.Rcheck’
+* using R version 4.0.3 (2020-10-10)
+* using platform: x86_64-pc-linux-gnu (64-bit)
+* using session charset: UTF-8
+* using options ‘--no-manual --no-build-vignettes’
+* checking for file ‘Ball/DESCRIPTION’ ... OK
+* checking extension type ... Package
+* this is package ‘Ball’ version ‘1.3.9’
+* package encoding: UTF-8
+* checking package namespace information ... OK
+...
+* checking use of PKG_*FLAGS in Makefiles ... OK
+* checking compiled code ... OK
+* checking installed files from ‘inst/doc’ ... OK
+* checking files in ‘vignettes’ ... OK
+* checking examples ... OK
+* checking for unstated dependencies in ‘tests’ ... OK
+* checking tests ... OK
+  Running ‘testthat.R’
+* DONE
+Status: 1 WARNING
+
+
+
+
+
+```
+# BatchExperiments
+
+<details>
+
+* Version: 1.4.2
+* GitHub: https://github.com/tudo-r/BatchExperiments
+* Source code: https://github.com/cran/BatchExperiments
+* Date/Publication: 2017-11-30 18:10:29 UTC
+* Number of recursive dependencies: 55
+
+Run `cloud_details(, "BatchExperiments")` for more info
+
+</details>
+
+## In both
+
+*   checking whether package ‘BatchExperiments’ can be installed ... ERROR
+    ```
+    Installation failed.
+    See ‘/tmp/workdir/BatchExperiments/new/BatchExperiments.Rcheck/00install.out’ for details.
+    ```
+
+## Installation
+
+### Devel
+
+```
+* installing *source* package ‘BatchExperiments’ ...
+** package ‘BatchExperiments’ successfully unpacked and MD5 sums checked
+** using staged installation
+** R
+** inst
+** byte-compile and prepare package for lazy loading
+Error: package or namespace load failed for ‘BatchJobs’ in loadNamespace(j <- i[[1L]], c(lib.loc, .libPaths()), versionCheck = vI[[j]]):
+ there is no package called ‘memoise’
+Error: package ‘BatchJobs’ could not be loaded
+Execution halted
+ERROR: lazy loading failed for package ‘BatchExperiments’
+* removing ‘/tmp/workdir/BatchExperiments/new/BatchExperiments.Rcheck/BatchExperiments’
+
+
+```
+### CRAN
+
+```
+* installing *source* package ‘BatchExperiments’ ...
+** package ‘BatchExperiments’ successfully unpacked and MD5 sums checked
+** using staged installation
+** R
+** inst
+** byte-compile and prepare package for lazy loading
+Error: package or namespace load failed for ‘BatchJobs’ in loadNamespace(j <- i[[1L]], c(lib.loc, .libPaths()), versionCheck = vI[[j]]):
+ there is no package called ‘memoise’
+Error: package ‘BatchJobs’ could not be loaded
+Execution halted
+ERROR: lazy loading failed for package ‘BatchExperiments’
+* removing ‘/tmp/workdir/BatchExperiments/old/BatchExperiments.Rcheck/BatchExperiments’
+
+
+```
+# BayesCombo
+
+<details>
+
+* Version: 1.0
+* GitHub: https://github.com/stanlazic/BayesCombo
+* Source code: https://github.com/cran/BayesCombo
+* Date/Publication: 2017-02-08 12:20:17
+* Number of recursive dependencies: 47
+
+Run `cloud_details(, "BayesCombo")` for more info
+
+</details>
+
+## Error before installation
+
+### Devel
+
+```
+* using log directory ‘/tmp/workdir/BayesCombo/new/BayesCombo.Rcheck’
+* using R version 4.0.3 (2020-10-10)
+* using platform: x86_64-pc-linux-gnu (64-bit)
+* using session charset: UTF-8
+* using options ‘--no-manual --no-build-vignettes’
+* checking for file ‘BayesCombo/DESCRIPTION’ ... OK
+* this is package ‘BayesCombo’ version ‘1.0’
+* checking package namespace information ... OK
+* checking package dependencies ... NOTE
+Package suggested but not available for checking: ‘rmarkdown’
+...
+* checking for unstated dependencies in ‘tests’ ... OK
+* checking tests ... OK
+  Running ‘test-all.R’
+* checking for unstated dependencies in vignettes ... OK
+* checking package vignettes in ‘inst/doc’ ... OK
+* checking running R code from vignettes ... NONE
+  ‘BayesCombo_vignette.Rmd’ using ‘UTF-8’... OK
+* checking re-building of vignette outputs ... SKIPPED
+* DONE
+Status: 1 NOTE
+
+
+
+
+
+```
+### CRAN
+
+```
+* using log directory ‘/tmp/workdir/BayesCombo/old/BayesCombo.Rcheck’
+* using R version 4.0.3 (2020-10-10)
+* using platform: x86_64-pc-linux-gnu (64-bit)
+* using session charset: UTF-8
+* using options ‘--no-manual --no-build-vignettes’
+* checking for file ‘BayesCombo/DESCRIPTION’ ... OK
+* this is package ‘BayesCombo’ version ‘1.0’
+* checking package namespace information ... OK
+* checking package dependencies ... NOTE
+Package suggested but not available for checking: ‘rmarkdown’
+...
+* checking for unstated dependencies in ‘tests’ ... OK
+* checking tests ... OK
+  Running ‘test-all.R’
+* checking for unstated dependencies in vignettes ... OK
+* checking package vignettes in ‘inst/doc’ ... OK
+* checking running R code from vignettes ... NONE
+  ‘BayesCombo_vignette.Rmd’ using ‘UTF-8’... OK
+* checking re-building of vignette outputs ... SKIPPED
+* DONE
+Status: 1 NOTE
+
+
+
+
+
+```
+# bayesdfa
+
+<details>
+
+* Version: 0.1.6
+* GitHub: https://github.com/fate-ewi/bayesdfa
+* Source code: https://github.com/cran/bayesdfa
+* Date/Publication: 2020-09-20 22:30:02 UTC
+* Number of recursive dependencies: 82
+
+Run `cloud_details(, "bayesdfa")` for more info
+
+</details>
+
+## In both
+
+*   checking whether package ‘bayesdfa’ can be installed ... ERROR
+    ```
+    Installation failed.
+    See ‘/tmp/workdir/bayesdfa/new/bayesdfa.Rcheck/00install.out’ for details.
+    ```
+
+## Installation
+
+### Devel
+
+```
+* installing *source* package ‘bayesdfa’ ...
+** package ‘bayesdfa’ successfully unpacked and MD5 sums checked
+** using staged installation
+** libs
+"/opt/R/4.0.3/lib/R/bin/Rscript" -e "source(file.path('..', 'tools', 'make_cc.R')); make_cc(commandArgs(TRUE))" stan_files/corr.stan
+Wrote C++ file "stan_files/corr.cc"
+
+
+g++ -std=gnu++14 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG -I"../inst/include" -I"/opt/R/4.0.3/lib/R/site-library/StanHeaders/include/src" -DBOOST_DISABLE_ASSERTS -DEIGEN_NO_DEBUG -DBOOST_MATH_OVERFLOW_ERROR_POLICY=errno_on_error -I'/opt/R/4.0.3/lib/R/site-library/StanHeaders/include' -I'/opt/R/4.0.3/lib/R/site-library/rstan/include' -I'/opt/R/4.0.3/lib/R/site-library/BH/include' -I'/opt/R/4.0.3/lib/R/site-library/Rcpp/include' -I'/opt/R/4.0.3/lib/R/site-library/RcppEigen/include' -I/usr/local/include   -fpic  -g -O2  -c stan_files/corr.cc -o stan_files/corr.o
+In file included from /opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/Core:392,
+...
+/opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/src/Core/Product.h:132:22:   required from ‘Eigen::internal::dense_product_base<Lhs, Rhs, Option, 6>::operator const Scalar() const [with Lhs = Eigen::Product<Eigen::CwiseBinaryOp<Eigen::internal::scalar_product_op<double, double>, const Eigen::CwiseNullaryOp<Eigen::internal::scalar_constant_op<double>, const Eigen::Matrix<double, 1, -1> >, const Eigen::Transpose<Eigen::Matrix<double, -1, 1> > >, Eigen::Matrix<double, -1, -1>, 0>; Rhs = Eigen::Matrix<double, -1, 1>; int Option = 0; Eigen::internal::dense_product_base<Lhs, Rhs, Option, 6>::Scalar = double]’
+/opt/R/4.0.3/lib/R/site-library/StanHeaders/include/src/stan/mcmc/hmc/hamiltonians/dense_e_metric.hpp:23:56:   required from ‘double stan::mcmc::dense_e_metric<Model, BaseRNG>::T(stan::mcmc::dense_e_point&) [with Model = model_dfa_namespace::model_dfa; BaseRNG = boost::random::additive_combine_engine<boost::random::linear_congruential_engine<unsigned int, 40014, 0, 2147483563>, boost::random::linear_congruential_engine<unsigned int, 40692, 0, 2147483399> >]’
+/opt/R/4.0.3/lib/R/site-library/StanHeaders/include/src/stan/mcmc/hmc/hamiltonians/dense_e_metric.hpp:22:10:   required from here
+/opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/src/Core/DenseCoeffsBase.h:55:30: warning: ignoring attributes on template argument ‘Eigen::internal::packet_traits<double>::type’ {aka ‘__vector(2) double’} [-Wignored-attributes]
+g++: fatal error: Killed signal terminated program cc1plus
+compilation terminated.
+make: *** [/opt/R/4.0.3/lib/R/etc/Makeconf:179: stan_files/dfa.o] Error 1
+rm stan_files/dfa.cc stan_files/corr.cc stan_files/hmm_gaussian.cc
+ERROR: compilation failed for package ‘bayesdfa’
+* removing ‘/tmp/workdir/bayesdfa/new/bayesdfa.Rcheck/bayesdfa’
+
+
+```
+### CRAN
+
+```
+* installing *source* package ‘bayesdfa’ ...
+** package ‘bayesdfa’ successfully unpacked and MD5 sums checked
+** using staged installation
+** libs
+"/opt/R/4.0.3/lib/R/bin/Rscript" -e "source(file.path('..', 'tools', 'make_cc.R')); make_cc(commandArgs(TRUE))" stan_files/corr.stan
+Wrote C++ file "stan_files/corr.cc"
+
+
+g++ -std=gnu++14 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG -I"../inst/include" -I"/opt/R/4.0.3/lib/R/site-library/StanHeaders/include/src" -DBOOST_DISABLE_ASSERTS -DEIGEN_NO_DEBUG -DBOOST_MATH_OVERFLOW_ERROR_POLICY=errno_on_error -I'/opt/R/4.0.3/lib/R/site-library/StanHeaders/include' -I'/opt/R/4.0.3/lib/R/site-library/rstan/include' -I'/opt/R/4.0.3/lib/R/site-library/BH/include' -I'/opt/R/4.0.3/lib/R/site-library/Rcpp/include' -I'/opt/R/4.0.3/lib/R/site-library/RcppEigen/include' -I/usr/local/include   -fpic  -g -O2  -c stan_files/corr.cc -o stan_files/corr.o
+In file included from /opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/Core:392,
+...
+/opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/src/Core/Product.h:132:22:   required from ‘Eigen::internal::dense_product_base<Lhs, Rhs, Option, 6>::operator const Scalar() const [with Lhs = Eigen::Product<Eigen::CwiseBinaryOp<Eigen::internal::scalar_product_op<double, double>, const Eigen::CwiseNullaryOp<Eigen::internal::scalar_constant_op<double>, const Eigen::Matrix<double, 1, -1> >, const Eigen::Transpose<Eigen::Matrix<double, -1, 1> > >, Eigen::Matrix<double, -1, -1>, 0>; Rhs = Eigen::Matrix<double, -1, 1>; int Option = 0; Eigen::internal::dense_product_base<Lhs, Rhs, Option, 6>::Scalar = double]’
+/opt/R/4.0.3/lib/R/site-library/StanHeaders/include/src/stan/mcmc/hmc/hamiltonians/dense_e_metric.hpp:23:56:   required from ‘double stan::mcmc::dense_e_metric<Model, BaseRNG>::T(stan::mcmc::dense_e_point&) [with Model = model_dfa_namespace::model_dfa; BaseRNG = boost::random::additive_combine_engine<boost::random::linear_congruential_engine<unsigned int, 40014, 0, 2147483563>, boost::random::linear_congruential_engine<unsigned int, 40692, 0, 2147483399> >]’
+/opt/R/4.0.3/lib/R/site-library/StanHeaders/include/src/stan/mcmc/hmc/hamiltonians/dense_e_metric.hpp:22:10:   required from here
+/opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/src/Core/DenseCoeffsBase.h:55:30: warning: ignoring attributes on template argument ‘Eigen::internal::packet_traits<double>::type’ {aka ‘__vector(2) double’} [-Wignored-attributes]
+g++: fatal error: Killed signal terminated program cc1plus
+compilation terminated.
+make: *** [/opt/R/4.0.3/lib/R/etc/Makeconf:179: stan_files/dfa.o] Error 1
+rm stan_files/dfa.cc stan_files/corr.cc stan_files/hmm_gaussian.cc
+ERROR: compilation failed for package ‘bayesdfa’
+* removing ‘/tmp/workdir/bayesdfa/old/bayesdfa.Rcheck/bayesdfa’
+
+
+```
+# bayesGAM
+
+<details>
+
+* Version: 0.0.1
+* GitHub: NA
+* Source code: https://github.com/cran/bayesGAM
+* Date/Publication: 2020-11-18 10:20:06 UTC
+* Number of recursive dependencies: 85
+
+Run `cloud_details(, "bayesGAM")` for more info
+
+</details>
+
+## In both
+
+*   checking whether package ‘bayesGAM’ can be installed ... ERROR
+    ```
+    Installation failed.
+    See ‘/tmp/workdir/bayesGAM/new/bayesGAM.Rcheck/00install.out’ for details.
+    ```
+
+## Installation
+
+### Devel
+
+```
+* installing *source* package ‘bayesGAM’ ...
+** package ‘bayesGAM’ successfully unpacked and MD5 sums checked
+** using staged installation
+** libs
+
+
+g++ -std=gnu++14 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG -I"../inst/include" -I"/opt/R/4.0.3/lib/R/site-library/StanHeaders/include/src" -DBOOST_DISABLE_ASSERTS -DEIGEN_NO_DEBUG -DBOOST_MATH_OVERFLOW_ERROR_POLICY=errno_on_error -I'/opt/R/4.0.3/lib/R/site-library/BH/include' -I'/opt/R/4.0.3/lib/R/site-library/Rcpp/include' -I'/opt/R/4.0.3/lib/R/site-library/RcppEigen/include' -I'/opt/R/4.0.3/lib/R/site-library/RcppParallel/include' -I'/opt/R/4.0.3/lib/R/site-library/rstan/include' -I'/opt/R/4.0.3/lib/R/site-library/StanHeaders/include' -I/usr/local/include   -I'/opt/R/4.0.3/lib/R/site-library/RcppParallel/include' -D_REENTRANT -DSTAN_THREADS   -fpic  -g -O2  -c RcppExports.cpp -o RcppExports.o
+In file included from /opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/Core:392,
+                 from /opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/Dense:1,
+                 from /opt/R/4.0.3/lib/R/site-library/RcppEigen/include/RcppEigenForward.h:30,
+...
+/opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/src/Core/ProductEvaluators.h:35:90:   required from ‘Eigen::internal::evaluator<Eigen::Product<Lhs, Rhs, Option> >::evaluator(const XprType&) [with Lhs = Eigen::Product<Eigen::CwiseBinaryOp<Eigen::internal::scalar_product_op<double, double>, const Eigen::CwiseNullaryOp<Eigen::internal::scalar_constant_op<double>, const Eigen::Matrix<double, 1, -1> >, const Eigen::Transpose<Eigen::Matrix<double, -1, 1> > >, Eigen::Matrix<double, -1, -1>, 0>; Rhs = Eigen::Matrix<double, -1, 1>; int Options = 0; Eigen::internal::evaluator<Eigen::Product<Lhs, Rhs, Option> >::XprType = Eigen::Product<Eigen::Product<Eigen::CwiseBinaryOp<Eigen::internal::scalar_product_op<double, double>, const Eigen::CwiseNullaryOp<Eigen::internal::scalar_constant_op<double>, const Eigen::Matrix<double, 1, -1> >, const Eigen::Transpose<Eigen::Matrix<double, -1, 1> > >, Eigen::Matrix<double, -1, -1>, 0>, Eigen::Matrix<double, -1, 1>, 0>]’
+/opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/src/Core/Product.h:132:22:   required from ‘Eigen::internal::dense_product_base<Lhs, Rhs, Option, 6>::operator const Scalar() const [with Lhs = Eigen::Product<Eigen::CwiseBinaryOp<Eigen::internal::scalar_product_op<double, double>, const Eigen::CwiseNullaryOp<Eigen::internal::scalar_constant_op<double>, const Eigen::Matrix<double, 1, -1> >, const Eigen::Transpose<Eigen::Matrix<double, -1, 1> > >, Eigen::Matrix<double, -1, -1>, 0>; Rhs = Eigen::Matrix<double, -1, 1>; int Option = 0; Eigen::internal::dense_product_base<Lhs, Rhs, Option, 6>::Scalar = double]’
+/opt/R/4.0.3/lib/R/site-library/StanHeaders/include/src/stan/mcmc/hmc/hamiltonians/dense_e_metric.hpp:23:56:   required from ‘double stan::mcmc::dense_e_metric<Model, BaseRNG>::T(stan::mcmc::dense_e_point&) [with Model = model_multresponse_continuous_namespace::model_multresponse_continuous; BaseRNG = boost::random::additive_combine_engine<boost::random::linear_congruential_engine<unsigned int, 40014, 0, 2147483563>, boost::random::linear_congruential_engine<unsigned int, 40692, 0, 2147483399> >]’
+/opt/R/4.0.3/lib/R/site-library/StanHeaders/include/src/stan/mcmc/hmc/hamiltonians/dense_e_metric.hpp:22:10:   required from here
+/opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/src/Core/DenseCoeffsBase.h:55:30: warning: ignoring attributes on template argument ‘Eigen::internal::packet_traits<double>::type’ {aka ‘__vector(2) double’} [-Wignored-attributes]
+g++: fatal error: Killed signal terminated program cc1plus
+compilation terminated.
+make: *** [/opt/R/4.0.3/lib/R/etc/Makeconf:179: stanExports_multresponse_continuous.o] Error 1
+ERROR: compilation failed for package ‘bayesGAM’
+* removing ‘/tmp/workdir/bayesGAM/new/bayesGAM.Rcheck/bayesGAM’
+
+
+```
+### CRAN
+
+```
+* installing *source* package ‘bayesGAM’ ...
+** package ‘bayesGAM’ successfully unpacked and MD5 sums checked
+** using staged installation
+** libs
+
+
+g++ -std=gnu++14 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG -I"../inst/include" -I"/opt/R/4.0.3/lib/R/site-library/StanHeaders/include/src" -DBOOST_DISABLE_ASSERTS -DEIGEN_NO_DEBUG -DBOOST_MATH_OVERFLOW_ERROR_POLICY=errno_on_error -I'/opt/R/4.0.3/lib/R/site-library/BH/include' -I'/opt/R/4.0.3/lib/R/site-library/Rcpp/include' -I'/opt/R/4.0.3/lib/R/site-library/RcppEigen/include' -I'/opt/R/4.0.3/lib/R/site-library/RcppParallel/include' -I'/opt/R/4.0.3/lib/R/site-library/rstan/include' -I'/opt/R/4.0.3/lib/R/site-library/StanHeaders/include' -I/usr/local/include   -I'/opt/R/4.0.3/lib/R/site-library/RcppParallel/include' -D_REENTRANT -DSTAN_THREADS   -fpic  -g -O2  -c RcppExports.cpp -o RcppExports.o
+In file included from /opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/Core:392,
+                 from /opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/Dense:1,
+                 from /opt/R/4.0.3/lib/R/site-library/RcppEigen/include/RcppEigenForward.h:30,
+...
+/opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/src/Core/ProductEvaluators.h:35:90:   required from ‘Eigen::internal::evaluator<Eigen::Product<Lhs, Rhs, Option> >::evaluator(const XprType&) [with Lhs = Eigen::Product<Eigen::CwiseBinaryOp<Eigen::internal::scalar_product_op<double, double>, const Eigen::CwiseNullaryOp<Eigen::internal::scalar_constant_op<double>, const Eigen::Matrix<double, 1, -1> >, const Eigen::Transpose<Eigen::Matrix<double, -1, 1> > >, Eigen::Matrix<double, -1, -1>, 0>; Rhs = Eigen::Matrix<double, -1, 1>; int Options = 0; Eigen::internal::evaluator<Eigen::Product<Lhs, Rhs, Option> >::XprType = Eigen::Product<Eigen::Product<Eigen::CwiseBinaryOp<Eigen::internal::scalar_product_op<double, double>, const Eigen::CwiseNullaryOp<Eigen::internal::scalar_constant_op<double>, const Eigen::Matrix<double, 1, -1> >, const Eigen::Transpose<Eigen::Matrix<double, -1, 1> > >, Eigen::Matrix<double, -1, -1>, 0>, Eigen::Matrix<double, -1, 1>, 0>]’
+/opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/src/Core/Product.h:132:22:   required from ‘Eigen::internal::dense_product_base<Lhs, Rhs, Option, 6>::operator const Scalar() const [with Lhs = Eigen::Product<Eigen::CwiseBinaryOp<Eigen::internal::scalar_product_op<double, double>, const Eigen::CwiseNullaryOp<Eigen::internal::scalar_constant_op<double>, const Eigen::Matrix<double, 1, -1> >, const Eigen::Transpose<Eigen::Matrix<double, -1, 1> > >, Eigen::Matrix<double, -1, -1>, 0>; Rhs = Eigen::Matrix<double, -1, 1>; int Option = 0; Eigen::internal::dense_product_base<Lhs, Rhs, Option, 6>::Scalar = double]’
+/opt/R/4.0.3/lib/R/site-library/StanHeaders/include/src/stan/mcmc/hmc/hamiltonians/dense_e_metric.hpp:23:56:   required from ‘double stan::mcmc::dense_e_metric<Model, BaseRNG>::T(stan::mcmc::dense_e_point&) [with Model = model_glmm_discrete_namespace::model_glmm_discrete; BaseRNG = boost::random::additive_combine_engine<boost::random::linear_congruential_engine<unsigned int, 40014, 0, 2147483563>, boost::random::linear_congruential_engine<unsigned int, 40692, 0, 2147483399> >]’
+/opt/R/4.0.3/lib/R/site-library/StanHeaders/include/src/stan/mcmc/hmc/hamiltonians/dense_e_metric.hpp:22:10:   required from here
+/opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/src/Core/DenseCoeffsBase.h:55:30: warning: ignoring attributes on template argument ‘Eigen::internal::packet_traits<double>::type’ {aka ‘__vector(2) double’} [-Wignored-attributes]
+g++: fatal error: Killed signal terminated program cc1plus
+compilation terminated.
+make: *** [/opt/R/4.0.3/lib/R/etc/Makeconf:179: stanExports_glmm_discrete.o] Error 1
+ERROR: compilation failed for package ‘bayesGAM’
+* removing ‘/tmp/workdir/bayesGAM/old/bayesGAM.Rcheck/bayesGAM’
+
+
+```
+# BayesMRA
+
+<details>
+
+* Version: 1.0.0
+* GitHub: https://github.com/jtipton25/BayesMRA
+* Source code: https://github.com/cran/BayesMRA
+* Date/Publication: 2020-08-18 09:52:11 UTC
+* Number of recursive dependencies: 76
+
+Run `cloud_details(, "BayesMRA")` for more info
+
+</details>
+
+## Error before installation
+
+### Devel
+
+```
+* using log directory ‘/tmp/workdir/BayesMRA/new/BayesMRA.Rcheck’
+* using R version 4.0.3 (2020-10-10)
+* using platform: x86_64-pc-linux-gnu (64-bit)
+* using session charset: UTF-8
+* using options ‘--no-manual --no-build-vignettes’
+* checking for file ‘BayesMRA/DESCRIPTION’ ... OK
+* checking extension type ... Package
+* this is package ‘BayesMRA’ version ‘1.0.0’
+* package encoding: UTF-8
+* checking package namespace information ... OK
+...
+* checking use of PKG_*FLAGS in Makefiles ... OK
+* checking compiled code ... OK
+* checking installed files from ‘inst/doc’ ... OK
+* checking files in ‘vignettes’ ... OK
+* checking examples ... OK
+* checking for unstated dependencies in ‘tests’ ... OK
+* checking tests ... OK
+  Running ‘testthat.R’
+* DONE
+Status: 1 WARNING, 1 NOTE
+
+
+
+
+
+```
+### CRAN
+
+```
+* using log directory ‘/tmp/workdir/BayesMRA/old/BayesMRA.Rcheck’
+* using R version 4.0.3 (2020-10-10)
+* using platform: x86_64-pc-linux-gnu (64-bit)
+* using session charset: UTF-8
+* using options ‘--no-manual --no-build-vignettes’
+* checking for file ‘BayesMRA/DESCRIPTION’ ... OK
+* checking extension type ... Package
+* this is package ‘BayesMRA’ version ‘1.0.0’
+* package encoding: UTF-8
+* checking package namespace information ... OK
+...
+* checking use of PKG_*FLAGS in Makefiles ... OK
+* checking compiled code ... OK
+* checking installed files from ‘inst/doc’ ... OK
+* checking files in ‘vignettes’ ... OK
+* checking examples ... OK
+* checking for unstated dependencies in ‘tests’ ... OK
+* checking tests ... OK
+  Running ‘testthat.R’
+* DONE
+Status: 1 WARNING, 1 NOTE
+
+
+
+
+
+```
+# bioOED
+
+<details>
+
+* Version: 0.2.1
+* GitHub: NA
+* Source code: https://github.com/cran/bioOED
+* Date/Publication: 2019-08-07 15:00:02 UTC
+* Number of recursive dependencies: 123
+
+Run `cloud_details(, "bioOED")` for more info
+
+</details>
+
+## Error before installation
+
+### Devel
+
+```
+* using log directory ‘/tmp/workdir/bioOED/new/bioOED.Rcheck’
+* using R version 4.0.3 (2020-10-10)
+* using platform: x86_64-pc-linux-gnu (64-bit)
+* using session charset: UTF-8
+* using options ‘--no-manual --no-build-vignettes’
+* checking for file ‘bioOED/DESCRIPTION’ ... OK
+* checking extension type ... Package
+* this is package ‘bioOED’ version ‘0.2.1’
+* checking package namespace information ... OK
+* checking package dependencies ... ERROR
+Package required but not available: ‘MEIGOR’
+
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
+* DONE
+Status: 1 ERROR
+
+
+
+
+
+```
+### CRAN
+
+```
+* using log directory ‘/tmp/workdir/bioOED/old/bioOED.Rcheck’
+* using R version 4.0.3 (2020-10-10)
+* using platform: x86_64-pc-linux-gnu (64-bit)
+* using session charset: UTF-8
+* using options ‘--no-manual --no-build-vignettes’
+* checking for file ‘bioOED/DESCRIPTION’ ... OK
+* checking extension type ... Package
+* this is package ‘bioOED’ version ‘0.2.1’
+* checking package namespace information ... OK
+* checking package dependencies ... ERROR
+Package required but not available: ‘MEIGOR’
+
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
+* DONE
+Status: 1 ERROR
+
+
+
+
+
+```
+# blavaan
+
+<details>
+
+* Version: 0.3-12
+* GitHub: NA
+* Source code: https://github.com/cran/blavaan
+* Date/Publication: 2020-11-12 07:10:03 UTC
+* Number of recursive dependencies: 114
+
+Run `cloud_details(, "blavaan")` for more info
+
+</details>
+
+## In both
+
+*   checking whether package ‘blavaan’ can be installed ... ERROR
+    ```
+    Installation failed.
+    See ‘/tmp/workdir/blavaan/new/blavaan.Rcheck/00install.out’ for details.
+    ```
+
+## Installation
+
+### Devel
+
+```
+* installing *source* package ‘blavaan’ ...
+** package ‘blavaan’ successfully unpacked and MD5 sums checked
+** using staged installation
+** libs
+"/opt/R/4.0.3/lib/R/bin/Rscript" -e "source(file.path('..', 'tools', 'make_cc.R')); make_cc(commandArgs(TRUE))" stan_files/stanmarg.stan
+Wrote C++ file "stan_files/stanmarg.cc"
+
+
+g++ -std=gnu++14 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG -I"../inst/include" -I"/opt/R/4.0.3/lib/R/site-library/StanHeaders/include/src" -DBOOST_DISABLE_ASSERTS -DEIGEN_NO_DEBUG -I'/opt/R/4.0.3/lib/R/site-library/StanHeaders/include' -I'/opt/R/4.0.3/lib/R/site-library/rstan/include' -I'/opt/R/4.0.3/lib/R/site-library/BH/include' -I'/opt/R/4.0.3/lib/R/site-library/Rcpp/include' -I'/opt/R/4.0.3/lib/R/site-library/RcppEigen/include' -I'/opt/R/4.0.3/lib/R/site-library/RcppParallel/include' -I/usr/local/include   -I'/opt/R/4.0.3/lib/R/site-library/RcppParallel/include' -D_REENTRANT -DSTAN_THREADS   -fpic  -g -O2  -c stan_files/stanmarg.cc -o stan_files/stanmarg.o
+In file included from /opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/Core:392,
+...
+/opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/src/Core/Product.h:132:22:   required from ‘Eigen::internal::dense_product_base<Lhs, Rhs, Option, 6>::operator const Scalar() const [with Lhs = Eigen::Product<Eigen::CwiseBinaryOp<Eigen::internal::scalar_product_op<double, double>, const Eigen::CwiseNullaryOp<Eigen::internal::scalar_constant_op<double>, const Eigen::Matrix<double, 1, -1> >, const Eigen::Transpose<Eigen::Matrix<double, -1, 1> > >, Eigen::Matrix<double, -1, -1>, 0>; Rhs = Eigen::Matrix<double, -1, 1>; int Option = 0; Eigen::internal::dense_product_base<Lhs, Rhs, Option, 6>::Scalar = double]’
+/opt/R/4.0.3/lib/R/site-library/StanHeaders/include/src/stan/mcmc/hmc/hamiltonians/dense_e_metric.hpp:23:56:   required from ‘double stan::mcmc::dense_e_metric<Model, BaseRNG>::T(stan::mcmc::dense_e_point&) [with Model = model_stanmarg_namespace::model_stanmarg; BaseRNG = boost::random::additive_combine_engine<boost::random::linear_congruential_engine<unsigned int, 40014, 0, 2147483563>, boost::random::linear_congruential_engine<unsigned int, 40692, 0, 2147483399> >]’
+/opt/R/4.0.3/lib/R/site-library/StanHeaders/include/src/stan/mcmc/hmc/hamiltonians/dense_e_metric.hpp:22:10:   required from here
+/opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/src/Core/DenseCoeffsBase.h:55:30: warning: ignoring attributes on template argument ‘Eigen::internal::packet_traits<double>::type’ {aka ‘__vector(2) double’} [-Wignored-attributes]
+g++: fatal error: Killed signal terminated program cc1plus
+compilation terminated.
+make: *** [/opt/R/4.0.3/lib/R/etc/Makeconf:179: stan_files/stanmarg.o] Error 1
+rm stan_files/stanmarg.cc
+ERROR: compilation failed for package ‘blavaan’
+* removing ‘/tmp/workdir/blavaan/new/blavaan.Rcheck/blavaan’
+
+
+```
+### CRAN
+
+```
+* installing *source* package ‘blavaan’ ...
+** package ‘blavaan’ successfully unpacked and MD5 sums checked
+** using staged installation
+** libs
+"/opt/R/4.0.3/lib/R/bin/Rscript" -e "source(file.path('..', 'tools', 'make_cc.R')); make_cc(commandArgs(TRUE))" stan_files/stanmarg.stan
+Wrote C++ file "stan_files/stanmarg.cc"
+
+
+g++ -std=gnu++14 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG -I"../inst/include" -I"/opt/R/4.0.3/lib/R/site-library/StanHeaders/include/src" -DBOOST_DISABLE_ASSERTS -DEIGEN_NO_DEBUG -I'/opt/R/4.0.3/lib/R/site-library/StanHeaders/include' -I'/opt/R/4.0.3/lib/R/site-library/rstan/include' -I'/opt/R/4.0.3/lib/R/site-library/BH/include' -I'/opt/R/4.0.3/lib/R/site-library/Rcpp/include' -I'/opt/R/4.0.3/lib/R/site-library/RcppEigen/include' -I'/opt/R/4.0.3/lib/R/site-library/RcppParallel/include' -I/usr/local/include   -I'/opt/R/4.0.3/lib/R/site-library/RcppParallel/include' -D_REENTRANT -DSTAN_THREADS   -fpic  -g -O2  -c stan_files/stanmarg.cc -o stan_files/stanmarg.o
+In file included from /opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/Core:392,
+...
+/opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/src/Core/Product.h:132:22:   required from ‘Eigen::internal::dense_product_base<Lhs, Rhs, Option, 6>::operator const Scalar() const [with Lhs = Eigen::Product<Eigen::CwiseBinaryOp<Eigen::internal::scalar_product_op<double, double>, const Eigen::CwiseNullaryOp<Eigen::internal::scalar_constant_op<double>, const Eigen::Matrix<double, 1, -1> >, const Eigen::Transpose<Eigen::Matrix<double, -1, 1> > >, Eigen::Matrix<double, -1, -1>, 0>; Rhs = Eigen::Matrix<double, -1, 1>; int Option = 0; Eigen::internal::dense_product_base<Lhs, Rhs, Option, 6>::Scalar = double]’
+/opt/R/4.0.3/lib/R/site-library/StanHeaders/include/src/stan/mcmc/hmc/hamiltonians/dense_e_metric.hpp:23:56:   required from ‘double stan::mcmc::dense_e_metric<Model, BaseRNG>::T(stan::mcmc::dense_e_point&) [with Model = model_stanmarg_namespace::model_stanmarg; BaseRNG = boost::random::additive_combine_engine<boost::random::linear_congruential_engine<unsigned int, 40014, 0, 2147483563>, boost::random::linear_congruential_engine<unsigned int, 40692, 0, 2147483399> >]’
+/opt/R/4.0.3/lib/R/site-library/StanHeaders/include/src/stan/mcmc/hmc/hamiltonians/dense_e_metric.hpp:22:10:   required from here
+/opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/src/Core/DenseCoeffsBase.h:55:30: warning: ignoring attributes on template argument ‘Eigen::internal::packet_traits<double>::type’ {aka ‘__vector(2) double’} [-Wignored-attributes]
+g++: fatal error: Killed signal terminated program cc1plus
+compilation terminated.
+make: *** [/opt/R/4.0.3/lib/R/etc/Makeconf:179: stan_files/stanmarg.o] Error 1
+rm stan_files/stanmarg.cc
+ERROR: compilation failed for package ‘blavaan’
+* removing ‘/tmp/workdir/blavaan/old/blavaan.Rcheck/blavaan’
+
+
+```
+# bmgarch
+
+<details>
+
+* Version: 1.0.0
+* GitHub: https://github.com/ph-rast/bmgarch
+* Source code: https://github.com/cran/bmgarch
+* Date/Publication: 2020-09-17 13:00:03 UTC
+* Number of recursive dependencies: 80
+
+Run `cloud_details(, "bmgarch")` for more info
+
+</details>
+
+## In both
+
+*   checking whether package ‘bmgarch’ can be installed ... ERROR
+    ```
+    Installation failed.
+    See ‘/tmp/workdir/bmgarch/new/bmgarch.Rcheck/00install.out’ for details.
+    ```
+
+## Installation
+
+### Devel
+
+```
+* installing *source* package ‘bmgarch’ ...
+** package ‘bmgarch’ successfully unpacked and MD5 sums checked
+** using staged installation
+** libs
+"/opt/R/4.0.3/lib/R/bin/Rscript" -e "source(file.path('..', 'tools', 'make_cc.R')); make_cc(commandArgs(TRUE))" stan_files/forecastCCC.stan
+Wrote C++ file "stan_files/forecastCCC.cc"
+
+
+g++ -std=gnu++14 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG -I"../inst/include" -I"/opt/R/4.0.3/lib/R/site-library/StanHeaders/include/src" -DBOOST_DISABLE_ASSERTS -DEIGEN_NO_DEBUG -DBOOST_MATH_OVERFLOW_ERROR_POLICY=errno_on_error -I'/opt/R/4.0.3/lib/R/site-library/BH/include' -I'/opt/R/4.0.3/lib/R/site-library/Rcpp/include' -I'/opt/R/4.0.3/lib/R/site-library/RcppEigen/include' -I'/opt/R/4.0.3/lib/R/site-library/rstan/include' -I'/opt/R/4.0.3/lib/R/site-library/StanHeaders/include' -I/usr/local/include   -fpic  -g -O2  -c stan_files/forecastCCC.cc -o stan_files/forecastCCC.o
+In file included from /opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/Core:392,
+...
+/opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/src/Core/Product.h:132:22:   required from ‘Eigen::internal::dense_product_base<Lhs, Rhs, Option, 6>::operator const Scalar() const [with Lhs = Eigen::Product<Eigen::CwiseBinaryOp<Eigen::internal::scalar_product_op<double, double>, const Eigen::CwiseNullaryOp<Eigen::internal::scalar_constant_op<double>, const Eigen::Matrix<double, 1, -1> >, const Eigen::Transpose<Eigen::Matrix<double, -1, 1> > >, Eigen::Matrix<double, -1, -1>, 0>; Rhs = Eigen::Matrix<double, -1, 1>; int Option = 0; Eigen::internal::dense_product_base<Lhs, Rhs, Option, 6>::Scalar = double]’
+/opt/R/4.0.3/lib/R/site-library/StanHeaders/include/src/stan/mcmc/hmc/hamiltonians/dense_e_metric.hpp:23:56:   required from ‘double stan::mcmc::dense_e_metric<Model, BaseRNG>::T(stan::mcmc::dense_e_point&) [with Model = model_BEKKMGARCH_namespace::model_BEKKMGARCH; BaseRNG = boost::random::additive_combine_engine<boost::random::linear_congruential_engine<unsigned int, 40014, 0, 2147483563>, boost::random::linear_congruential_engine<unsigned int, 40692, 0, 2147483399> >]’
+/opt/R/4.0.3/lib/R/site-library/StanHeaders/include/src/stan/mcmc/hmc/hamiltonians/dense_e_metric.hpp:22:10:   required from here
+/opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/src/Core/DenseCoeffsBase.h:55:30: warning: ignoring attributes on template argument ‘Eigen::internal::packet_traits<double>::type’ {aka ‘__vector(2) double’} [-Wignored-attributes]
+g++: fatal error: Killed signal terminated program cc1plus
+compilation terminated.
+make: *** [/opt/R/4.0.3/lib/R/etc/Makeconf:179: stan_files/BEKKMGARCH.o] Error 1
+rm stan_files/BEKKMGARCH.cc stan_files/forecastCCC.cc
+ERROR: compilation failed for package ‘bmgarch’
+* removing ‘/tmp/workdir/bmgarch/new/bmgarch.Rcheck/bmgarch’
+
+
+```
+### CRAN
+
+```
+* installing *source* package ‘bmgarch’ ...
+** package ‘bmgarch’ successfully unpacked and MD5 sums checked
+** using staged installation
+** libs
+"/opt/R/4.0.3/lib/R/bin/Rscript" -e "source(file.path('..', 'tools', 'make_cc.R')); make_cc(commandArgs(TRUE))" stan_files/forecastCCC.stan
+Wrote C++ file "stan_files/forecastCCC.cc"
+
+
+g++ -std=gnu++14 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG -I"../inst/include" -I"/opt/R/4.0.3/lib/R/site-library/StanHeaders/include/src" -DBOOST_DISABLE_ASSERTS -DEIGEN_NO_DEBUG -DBOOST_MATH_OVERFLOW_ERROR_POLICY=errno_on_error -I'/opt/R/4.0.3/lib/R/site-library/BH/include' -I'/opt/R/4.0.3/lib/R/site-library/Rcpp/include' -I'/opt/R/4.0.3/lib/R/site-library/RcppEigen/include' -I'/opt/R/4.0.3/lib/R/site-library/rstan/include' -I'/opt/R/4.0.3/lib/R/site-library/StanHeaders/include' -I/usr/local/include   -fpic  -g -O2  -c stan_files/forecastCCC.cc -o stan_files/forecastCCC.o
+In file included from /opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/Core:392,
+...
+/opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/src/Core/Product.h:132:22:   required from ‘Eigen::internal::dense_product_base<Lhs, Rhs, Option, 6>::operator const Scalar() const [with Lhs = Eigen::Product<Eigen::CwiseBinaryOp<Eigen::internal::scalar_product_op<double, double>, const Eigen::CwiseNullaryOp<Eigen::internal::scalar_constant_op<double>, const Eigen::Matrix<double, 1, -1> >, const Eigen::Transpose<Eigen::Matrix<double, -1, 1> > >, Eigen::Matrix<double, -1, -1>, 0>; Rhs = Eigen::Matrix<double, -1, 1>; int Option = 0; Eigen::internal::dense_product_base<Lhs, Rhs, Option, 6>::Scalar = double]’
+/opt/R/4.0.3/lib/R/site-library/StanHeaders/include/src/stan/mcmc/hmc/hamiltonians/dense_e_metric.hpp:23:56:   required from ‘double stan::mcmc::dense_e_metric<Model, BaseRNG>::T(stan::mcmc::dense_e_point&) [with Model = model_BEKKMGARCH_namespace::model_BEKKMGARCH; BaseRNG = boost::random::additive_combine_engine<boost::random::linear_congruential_engine<unsigned int, 40014, 0, 2147483563>, boost::random::linear_congruential_engine<unsigned int, 40692, 0, 2147483399> >]’
+/opt/R/4.0.3/lib/R/site-library/StanHeaders/include/src/stan/mcmc/hmc/hamiltonians/dense_e_metric.hpp:22:10:   required from here
+/opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/src/Core/DenseCoeffsBase.h:55:30: warning: ignoring attributes on template argument ‘Eigen::internal::packet_traits<double>::type’ {aka ‘__vector(2) double’} [-Wignored-attributes]
+g++: fatal error: Killed signal terminated program cc1plus
+compilation terminated.
+make: *** [/opt/R/4.0.3/lib/R/etc/Makeconf:179: stan_files/BEKKMGARCH.o] Error 1
+rm stan_files/BEKKMGARCH.cc stan_files/forecastCCC.cc
+ERROR: compilation failed for package ‘bmgarch’
+* removing ‘/tmp/workdir/bmgarch/old/bmgarch.Rcheck/bmgarch’
+
+
+```
+# BMRSr
+
+<details>
+
+* Version: 1.0.1
+* GitHub: NA
+* Source code: https://github.com/cran/BMRSr
+* Date/Publication: 2020-05-18 13:20:02 UTC
+* Number of recursive dependencies: 80
+
+Run `cloud_details(, "BMRSr")` for more info
+
+</details>
+
+## Error before installation
+
+### Devel
+
+```
+* using log directory ‘/tmp/workdir/BMRSr/new/BMRSr.Rcheck’
+* using R version 4.0.3 (2020-10-10)
+* using platform: x86_64-pc-linux-gnu (64-bit)
+* using session charset: UTF-8
+* using options ‘--no-manual --no-build-vignettes’
+* checking for file ‘BMRSr/DESCRIPTION’ ... OK
+* checking extension type ... Package
+* this is package ‘BMRSr’ version ‘1.0.1’
+* package encoding: UTF-8
+* checking package namespace information ... OK
+...
+* checking for unstated dependencies in ‘tests’ ... OK
+* checking tests ... OK
+  Running ‘testthat.R’
+* checking for unstated dependencies in vignettes ... OK
+* checking package vignettes in ‘inst/doc’ ... OK
+* checking running R code from vignettes ... NONE
+  ‘using_BMRSr.Rmd’ using ‘UTF-8’... OK
+* checking re-building of vignette outputs ... SKIPPED
+* DONE
+Status: 1 NOTE
+
+
+
+
+
+```
+### CRAN
+
+```
+* using log directory ‘/tmp/workdir/BMRSr/old/BMRSr.Rcheck’
+* using R version 4.0.3 (2020-10-10)
+* using platform: x86_64-pc-linux-gnu (64-bit)
+* using session charset: UTF-8
+* using options ‘--no-manual --no-build-vignettes’
+* checking for file ‘BMRSr/DESCRIPTION’ ... OK
+* checking extension type ... Package
+* this is package ‘BMRSr’ version ‘1.0.1’
+* package encoding: UTF-8
+* checking package namespace information ... OK
+...
+* checking for unstated dependencies in ‘tests’ ... OK
+* checking tests ... OK
+  Running ‘testthat.R’
+* checking for unstated dependencies in vignettes ... OK
+* checking package vignettes in ‘inst/doc’ ... OK
+* checking running R code from vignettes ... NONE
+  ‘using_BMRSr.Rmd’ using ‘UTF-8’... OK
+* checking re-building of vignette outputs ... SKIPPED
+* DONE
+Status: 1 NOTE
+
+
+
+
+
+```
+# BNPdensity
+
+<details>
+
+* Version: 2020.3.4
+* GitHub: NA
+* Source code: https://github.com/cran/BNPdensity
+* Date/Publication: 2020-03-08 09:20:02 UTC
+* Number of recursive dependencies: 76
+
+Run `cloud_details(, "BNPdensity")` for more info
+
+</details>
+
+## In both
+
+*   checking whether package ‘BNPdensity’ can be installed ... ERROR
+    ```
+    Installation failed.
+    See ‘/tmp/workdir/BNPdensity/new/BNPdensity.Rcheck/00install.out’ for details.
+    ```
+
+## Installation
+
+### Devel
+
+```
+* installing *source* package ‘BNPdensity’ ...
+** package ‘BNPdensity’ successfully unpacked and MD5 sums checked
+** using staged installation
+** R
+** data
+*** moving datasets to lazyload DB
+** byte-compile and prepare package for lazy loading
+Error in loadNamespace(i, c(lib.loc, .libPaths()), versionCheck = vI[[i]]) : 
+  there is no package called ‘scales’
+Calls: <Anonymous> ... loadNamespace -> withRestarts -> withOneRestart -> doWithOneRestart
+Execution halted
+ERROR: lazy loading failed for package ‘BNPdensity’
+* removing ‘/tmp/workdir/BNPdensity/new/BNPdensity.Rcheck/BNPdensity’
+
+
+```
+### CRAN
+
+```
+* installing *source* package ‘BNPdensity’ ...
+** package ‘BNPdensity’ successfully unpacked and MD5 sums checked
+** using staged installation
+** R
+** data
+*** moving datasets to lazyload DB
+** byte-compile and prepare package for lazy loading
+Error in loadNamespace(i, c(lib.loc, .libPaths()), versionCheck = vI[[i]]) : 
+  there is no package called ‘scales’
+Calls: <Anonymous> ... loadNamespace -> withRestarts -> withOneRestart -> doWithOneRestart
+Execution halted
+ERROR: lazy loading failed for package ‘BNPdensity’
+* removing ‘/tmp/workdir/BNPdensity/old/BNPdensity.Rcheck/BNPdensity’
+
+
+```
 # Boom
 
 <details>
@@ -182,20 +1352,20 @@ Run `cloud_details(, "Boom")` for more info
 ** using staged installation
 ** libs
 g++ -std=gnu++11 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG -I. -I../inst/include -IBmath -Imath/cephes -DADD_ -DR_NO_REMAP -DEIGEN_WARNINGS_DISABLED  -I/usr/local/include   -fpic  -g -O2  -c boom_r_tools.cpp -o boom_r_tools.o
-g++ -std=gnu++11 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG -I. -I../inst/include -IBmath -Imath/cephes -DADD_ -DR_NO_REMAP -DEIGEN_WARNINGS_DISABLED  -I/usr/local/include   -fpic  -g -O2  -c create_point_process.cpp -o create_point_process.o
+g++ -std=gnu++11 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG -I. -I../inst/include -IBmath -Imath/cephes -DADD_ -DR_NO_REMAP -DEIGEN_WARNINGS_DISABLED  -I/usr/local/include   -fpic  -g -O2  -c create_poisson_process.cpp -o create_poisson_process.o
 g++ -std=gnu++11 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG -I. -I../inst/include -IBmath -Imath/cephes -DADD_ -DR_NO_REMAP -DEIGEN_WARNINGS_DISABLED  -I/usr/local/include   -fpic  -g -O2  -c create_mixture_component.cpp -o create_mixture_component.o
 g++ -std=gnu++11 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG -I. -I../inst/include -IBmath -Imath/cephes -DADD_ -DR_NO_REMAP -DEIGEN_WARNINGS_DISABLED  -I/usr/local/include   -fpic  -g -O2  -c parse_model_formula.cpp -o parse_model_formula.o
 g++ -std=gnu++11 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG -I. -I../inst/include -IBmath -Imath/cephes -DADD_ -DR_NO_REMAP -DEIGEN_WARNINGS_DISABLED  -I/usr/local/include   -fpic  -g -O2  -c extract_mixture_data.cpp -o extract_mixture_data.o
 g++ -std=gnu++11 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG -I. -I../inst/include -IBmath -Imath/cephes -DADD_ -DR_NO_REMAP -DEIGEN_WARNINGS_DISABLED  -I/usr/local/include   -fpic  -g -O2  -c seed_rng_from_R.cpp -o seed_rng_from_R.o
 ...
-../inst/include/Eigen/src/Core/Matrix.h:296:31:   required from ‘Eigen::Matrix<_Scalar, _Rows, _Cols, _Options, _MaxRows, _MaxCols>::Matrix(const T&) [with T = Eigen::Product<Eigen::Transpose<const Eigen::Map<const Eigen::Matrix<double, -1, -1>, 0, Eigen::Stride<0, 0> > >, Eigen::Map<const Eigen::Matrix<double, -1, -1>, 0, Eigen::Stride<0, 0> >, 0>; _Scalar = double; int _Rows = -1; int _Cols = -1; int _Options = 0; int _MaxRows = -1; int _MaxCols = -1]’
-../inst/include/Eigen/src/Core/AssignEvaluator.h:796:41:   required from ‘void Eigen::internal::call_assignment(Dst&, const Src&, const Func&, typename Eigen::internal::enable_if<Eigen::internal::evaluator_assume_aliasing<Src>::value, void*>::type) [with Dst = Eigen::Map<Eigen::Matrix<double, -1, -1> >; Src = Eigen::Product<Eigen::Transpose<const Eigen::Map<const Eigen::Matrix<double, -1, -1>, 0, Eigen::Stride<0, 0> > >, Eigen::Map<const Eigen::Matrix<double, -1, -1>, 0, Eigen::Stride<0, 0> >, 0>; Func = Eigen::internal::assign_op<double, double>; typename Eigen::internal::enable_if<Eigen::internal::evaluator_assume_aliasing<Src>::value, void*>::type = void*]’
-../inst/include/Eigen/src/Core/AssignEvaluator.h:782:18:   required from ‘void Eigen::internal::call_assignment(Dst&, const Src&) [with Dst = Eigen::Map<Eigen::Matrix<double, -1, -1> >; Src = Eigen::Product<Eigen::Transpose<const Eigen::Map<const Eigen::Matrix<double, -1, -1>, 0, Eigen::Stride<0, 0> > >, Eigen::Map<const Eigen::Matrix<double, -1, -1>, 0, Eigen::Stride<0, 0> >, 0>]’
-../inst/include/Eigen/src/Core/Assign.h:66:28:   required from ‘Derived& Eigen::MatrixBase<Derived>::operator=(const Eigen::DenseBase<OtherDerived>&) [with OtherDerived = Eigen::Product<Eigen::Transpose<const Eigen::Map<const Eigen::Matrix<double, -1, -1>, 0, Eigen::Stride<0, 0> > >, Eigen::Map<const Eigen::Matrix<double, -1, -1>, 0, Eigen::Stride<0, 0> >, 0>; Derived = Eigen::Map<Eigen::Matrix<double, -1, -1> >]’
-LinAlg/Matrix.cpp:668:65:   required from here
 ../inst/include/Eigen/src/Core/DenseCoeffsBase.h:650:34: warning: ignoring attributes on template argument ‘Eigen::internal::packet_traits<double>::type’ {aka ‘__vector(2) double’} [-Wignored-attributes]
   650 |   return internal::first_aligned<int(unpacket_traits<DefaultPacketType>::alignment),Derived>(m);
       |                                  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+LinAlg/Vector.cpp:1032:1: fatal error: error writing to /tmp/ccmOXjL1.s: Cannot allocate memory
+ 1032 | }  // namespace BOOM
+      | ^
+compilation terminated.
+make: *** [/opt/R/4.0.3/lib/R/etc/Makeconf:181: LinAlg/Vector.o] Error 1
 ERROR: compilation failed for package ‘Boom’
 * removing ‘/tmp/workdir/Boom/new/Boom.Rcheck/Boom’
 
@@ -209,7 +1379,7 @@ ERROR: compilation failed for package ‘Boom’
 ** using staged installation
 ** libs
 g++ -std=gnu++11 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG -I. -I../inst/include -IBmath -Imath/cephes -DADD_ -DR_NO_REMAP -DEIGEN_WARNINGS_DISABLED  -I/usr/local/include   -fpic  -g -O2  -c boom_r_tools.cpp -o boom_r_tools.o
-g++ -std=gnu++11 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG -I. -I../inst/include -IBmath -Imath/cephes -DADD_ -DR_NO_REMAP -DEIGEN_WARNINGS_DISABLED  -I/usr/local/include   -fpic  -g -O2  -c create_point_process.cpp -o create_point_process.o
+g++ -std=gnu++11 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG -I. -I../inst/include -IBmath -Imath/cephes -DADD_ -DR_NO_REMAP -DEIGEN_WARNINGS_DISABLED  -I/usr/local/include   -fpic  -g -O2  -c create_poisson_process.cpp -o create_poisson_process.o
 g++ -std=gnu++11 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG -I. -I../inst/include -IBmath -Imath/cephes -DADD_ -DR_NO_REMAP -DEIGEN_WARNINGS_DISABLED  -I/usr/local/include   -fpic  -g -O2  -c create_mixture_component.cpp -o create_mixture_component.o
 g++ -std=gnu++11 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG -I. -I../inst/include -IBmath -Imath/cephes -DADD_ -DR_NO_REMAP -DEIGEN_WARNINGS_DISABLED  -I/usr/local/include   -fpic  -g -O2  -c parse_model_formula.cpp -o parse_model_formula.o
 g++ -std=gnu++11 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG -I. -I../inst/include -IBmath -Imath/cephes -DADD_ -DR_NO_REMAP -DEIGEN_WARNINGS_DISABLED  -I/usr/local/include   -fpic  -g -O2  -c extract_mixture_data.cpp -o extract_mixture_data.o
@@ -225,6 +1395,84 @@ LinAlg/Matrix.cpp:668:65:   required from here
       |                                  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ERROR: compilation failed for package ‘Boom’
 * removing ‘/tmp/workdir/Boom/old/Boom.Rcheck/Boom’
+
+
+```
+# BoutrosLab.plotting.general
+
+<details>
+
+* Version: 6.0.1
+* GitHub: NA
+* Source code: https://github.com/cran/BoutrosLab.plotting.general
+* Date/Publication: 2020-08-05 09:52:26 UTC
+* Number of recursive dependencies: 55
+
+Run `cloud_details(, "BoutrosLab.plotting.general")` for more info
+
+</details>
+
+## In both
+
+*   checking whether package ‘BoutrosLab.plotting.general’ can be installed ... ERROR
+    ```
+    Installation failed.
+    See ‘/tmp/workdir/BoutrosLab.plotting.general/new/BoutrosLab.plotting.general.Rcheck/00install.out’ for details.
+    ```
+
+## Installation
+
+### Devel
+
+```
+* installing *source* package ‘BoutrosLab.plotting.general’ ...
+** package ‘BoutrosLab.plotting.general’ successfully unpacked and MD5 sums checked
+** using staged installation
+** libs
+** arch - 
+gcc -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG   -I/usr/local/include   -fpic  -g -O2  -c ks.c -o ks.o
+gcc -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG   -I/usr/local/include   -fpic  -g -O2  -c init.c -o init.o
+gcc -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG   -I/usr/local/include   -fpic  -g -O2  -c distance.c -o distance.o
+/opt/R/4.0.3/lib/R/bin/R CMD SHLIB -o BoutrosLab.plotting.general.so ks.o init.o distance.o 
+make[1]: Entering directory '/tmp/workdir/BoutrosLab.plotting.general/new/BoutrosLab.plotting.general.Rcheck/00_pkg_src/BoutrosLab.plotting.general/src'
+...
+** data
+*** moving datasets to lazyload DB
+** inst
+** byte-compile and prepare package for lazy loading
+Error: package or namespace load failed for ‘latticeExtra’ in loadNamespace(j <- i[[1L]], c(lib.loc, .libPaths()), versionCheck = vI[[j]]):
+ there is no package called ‘png’
+Error: package ‘latticeExtra’ could not be loaded
+Execution halted
+ERROR: lazy loading failed for package ‘BoutrosLab.plotting.general’
+* removing ‘/tmp/workdir/BoutrosLab.plotting.general/new/BoutrosLab.plotting.general.Rcheck/BoutrosLab.plotting.general’
+
+
+```
+### CRAN
+
+```
+* installing *source* package ‘BoutrosLab.plotting.general’ ...
+** package ‘BoutrosLab.plotting.general’ successfully unpacked and MD5 sums checked
+** using staged installation
+** libs
+** arch - 
+gcc -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG   -I/usr/local/include   -fpic  -g -O2  -c ks.c -o ks.o
+gcc -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG   -I/usr/local/include   -fpic  -g -O2  -c init.c -o init.o
+gcc -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG   -I/usr/local/include   -fpic  -g -O2  -c distance.c -o distance.o
+/opt/R/4.0.3/lib/R/bin/R CMD SHLIB -o BoutrosLab.plotting.general.so ks.o init.o distance.o 
+make[1]: Entering directory '/tmp/workdir/BoutrosLab.plotting.general/old/BoutrosLab.plotting.general.Rcheck/00_pkg_src/BoutrosLab.plotting.general/src'
+...
+** data
+*** moving datasets to lazyload DB
+** inst
+** byte-compile and prepare package for lazy loading
+Error: package or namespace load failed for ‘latticeExtra’ in loadNamespace(j <- i[[1L]], c(lib.loc, .libPaths()), versionCheck = vI[[j]]):
+ there is no package called ‘png’
+Error: package ‘latticeExtra’ could not be loaded
+Execution halted
+ERROR: lazy loading failed for package ‘BoutrosLab.plotting.general’
+* removing ‘/tmp/workdir/BoutrosLab.plotting.general/old/BoutrosLab.plotting.general.Rcheck/BoutrosLab.plotting.general’
 
 
 ```
@@ -434,6 +1682,78 @@ Status: 1 ERROR
 
 
 ```
+# CausalQueries
+
+<details>
+
+* Version: 0.0.3
+* GitHub: NA
+* Source code: https://github.com/cran/CausalQueries
+* Date/Publication: 2020-06-03 16:20:09 UTC
+* Number of recursive dependencies: 95
+
+Run `cloud_details(, "CausalQueries")` for more info
+
+</details>
+
+## Error before installation
+
+### Devel
+
+```
+* using log directory ‘/tmp/workdir/CausalQueries/new/CausalQueries.Rcheck’
+* using R version 4.0.3 (2020-10-10)
+* using platform: x86_64-pc-linux-gnu (64-bit)
+* using session charset: UTF-8
+* using options ‘--no-manual --no-build-vignettes’
+* checking for file ‘CausalQueries/DESCRIPTION’ ... OK
+* checking extension type ... Package
+* this is package ‘CausalQueries’ version ‘0.0.3’
+* package encoding: UTF-8
+* checking package namespace information ... OK
+* checking package dependencies ... ERROR
+Package required but not available: ‘stringr’
+
+Package suggested but not available for checking: ‘rmarkdown’
+
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
+* DONE
+Status: 1 ERROR
+
+
+
+
+
+```
+### CRAN
+
+```
+* using log directory ‘/tmp/workdir/CausalQueries/old/CausalQueries.Rcheck’
+* using R version 4.0.3 (2020-10-10)
+* using platform: x86_64-pc-linux-gnu (64-bit)
+* using session charset: UTF-8
+* using options ‘--no-manual --no-build-vignettes’
+* checking for file ‘CausalQueries/DESCRIPTION’ ... OK
+* checking extension type ... Package
+* this is package ‘CausalQueries’ version ‘0.0.3’
+* package encoding: UTF-8
+* checking package namespace information ... OK
+* checking package dependencies ... ERROR
+Package required but not available: ‘stringr’
+
+Package suggested but not available for checking: ‘rmarkdown’
+
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
+* DONE
+Status: 1 ERROR
+
+
+
+
+
+```
 # CB2
 
 <details>
@@ -502,17 +1822,17 @@ Status: 1 ERROR
 
 
 ```
-# cbar
+# CCAMLRGIS
 
 <details>
 
-* Version: 0.1.3
-* GitHub: https://github.com/zedoul/cbar
-* Source code: https://github.com/cran/cbar
-* Date/Publication: 2017-10-24 13:20:22 UTC
-* Number of recursive dependencies: 66
+* Version: 3.0.6
+* GitHub: https://github.com/ccamlr/CCAMLRGIS
+* Source code: https://github.com/cran/CCAMLRGIS
+* Date/Publication: 2020-09-10 06:40:12 UTC
+* Number of recursive dependencies: 57
 
-Run `cloud_details(, "cbar")` for more info
+Run `cloud_details(, "CCAMLRGIS")` for more info
 
 </details>
 
@@ -521,22 +1841,27 @@ Run `cloud_details(, "cbar")` for more info
 ### Devel
 
 ```
-* using log directory ‘/tmp/workdir/cbar/new/cbar.Rcheck’
+* using log directory ‘/tmp/workdir/CCAMLRGIS/new/CCAMLRGIS.Rcheck’
 * using R version 4.0.3 (2020-10-10)
 * using platform: x86_64-pc-linux-gnu (64-bit)
 * using session charset: UTF-8
 * using options ‘--no-manual --no-build-vignettes’
-* checking for file ‘cbar/DESCRIPTION’ ... OK
+* checking for file ‘CCAMLRGIS/DESCRIPTION’ ... OK
 * checking extension type ... Package
-* this is package ‘cbar’ version ‘0.1.3’
+* this is package ‘CCAMLRGIS’ version ‘3.0.6’
+* package encoding: UTF-8
 * checking package namespace information ... OK
-* checking package dependencies ... ERROR
-Packages required but not available: 'Boom', 'bsts'
-
-See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
-manual.
+...
+* checking if there is a namespace ... OK
+* checking for executable files ... OK
+* checking for hidden files and directories ... OK
+* checking for portable file names ... OK
+* checking for sufficient/correct file permissions ... OK
+* checking whether package ‘CCAMLRGIS’ can be installed ... ERROR
+Installation failed.
+See ‘/tmp/workdir/CCAMLRGIS/new/CCAMLRGIS.Rcheck/00install.out’ for details.
 * DONE
-Status: 1 ERROR
+Status: 1 ERROR, 1 NOTE
 
 
 
@@ -546,25 +1871,340 @@ Status: 1 ERROR
 ### CRAN
 
 ```
-* using log directory ‘/tmp/workdir/cbar/old/cbar.Rcheck’
+* using log directory ‘/tmp/workdir/CCAMLRGIS/old/CCAMLRGIS.Rcheck’
 * using R version 4.0.3 (2020-10-10)
 * using platform: x86_64-pc-linux-gnu (64-bit)
 * using session charset: UTF-8
 * using options ‘--no-manual --no-build-vignettes’
-* checking for file ‘cbar/DESCRIPTION’ ... OK
+* checking for file ‘CCAMLRGIS/DESCRIPTION’ ... OK
 * checking extension type ... Package
-* this is package ‘cbar’ version ‘0.1.3’
+* this is package ‘CCAMLRGIS’ version ‘3.0.6’
+* package encoding: UTF-8
 * checking package namespace information ... OK
-* checking package dependencies ... ERROR
-Packages required but not available: 'Boom', 'bsts'
-
-See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
-manual.
+...
+* checking if there is a namespace ... OK
+* checking for executable files ... OK
+* checking for hidden files and directories ... OK
+* checking for portable file names ... OK
+* checking for sufficient/correct file permissions ... OK
+* checking whether package ‘CCAMLRGIS’ can be installed ... ERROR
+Installation failed.
+See ‘/tmp/workdir/CCAMLRGIS/old/CCAMLRGIS.Rcheck/00install.out’ for details.
 * DONE
-Status: 1 ERROR
+Status: 1 ERROR, 1 NOTE
 
 
 
+
+
+```
+# CHNOSZ
+
+<details>
+
+* Version: 1.4.0
+* GitHub: NA
+* Source code: https://github.com/cran/CHNOSZ
+* Date/Publication: 2020-11-11 13:50:22 UTC
+* Number of recursive dependencies: 51
+
+Run `cloud_details(, "CHNOSZ")` for more info
+
+</details>
+
+## Error before installation
+
+### Devel
+
+```
+* using log directory ‘/tmp/workdir/CHNOSZ/new/CHNOSZ.Rcheck’
+* using R version 4.0.3 (2020-10-10)
+* using platform: x86_64-pc-linux-gnu (64-bit)
+* using session charset: UTF-8
+* using options ‘--no-manual --no-build-vignettes’
+* checking for file ‘CHNOSZ/DESCRIPTION’ ... OK
+* this is package ‘CHNOSZ’ version ‘1.4.0’
+* package encoding: UTF-8
+* checking package namespace information ... OK
+* checking package dependencies ... NOTE
+...
+* checking package vignettes in ‘inst/doc’ ... OK
+* checking running R code from vignettes ... NONE
+  ‘OBIGT.Rmd’ using ‘UTF-8’... OK
+  ‘anintro.Rmd’ using ‘UTF-8’... OK
+  ‘eos-regress.Rmd’ using ‘UTF-8’... OK
+  ‘equilibrium.Rmd’ using ‘UTF-8’... OK
+  ‘multi-metal.Rmd’ using ‘UTF-8’... OK
+* checking re-building of vignette outputs ... SKIPPED
+* DONE
+Status: 1 NOTE
+
+
+
+
+
+```
+### CRAN
+
+```
+* using log directory ‘/tmp/workdir/CHNOSZ/old/CHNOSZ.Rcheck’
+* using R version 4.0.3 (2020-10-10)
+* using platform: x86_64-pc-linux-gnu (64-bit)
+* using session charset: UTF-8
+* using options ‘--no-manual --no-build-vignettes’
+* checking for file ‘CHNOSZ/DESCRIPTION’ ... OK
+* this is package ‘CHNOSZ’ version ‘1.4.0’
+* package encoding: UTF-8
+* checking package namespace information ... OK
+* checking package dependencies ... NOTE
+...
+* checking package vignettes in ‘inst/doc’ ... OK
+* checking running R code from vignettes ... NONE
+  ‘OBIGT.Rmd’ using ‘UTF-8’... OK
+  ‘anintro.Rmd’ using ‘UTF-8’... OK
+  ‘eos-regress.Rmd’ using ‘UTF-8’... OK
+  ‘equilibrium.Rmd’ using ‘UTF-8’... OK
+  ‘multi-metal.Rmd’ using ‘UTF-8’... OK
+* checking re-building of vignette outputs ... SKIPPED
+* DONE
+Status: 1 NOTE
+
+
+
+
+
+```
+# CISE
+
+<details>
+
+* Version: 0.1.0
+* GitHub: NA
+* Source code: https://github.com/cran/CISE
+* Date/Publication: 2018-04-05 15:19:31 UTC
+* Number of recursive dependencies: 63
+
+Run `cloud_details(, "CISE")` for more info
+
+</details>
+
+## Error before installation
+
+### Devel
+
+```
+* using log directory ‘/tmp/workdir/CISE/new/CISE.Rcheck’
+* using R version 4.0.3 (2020-10-10)
+* using platform: x86_64-pc-linux-gnu (64-bit)
+* using session charset: UTF-8
+* using options ‘--no-manual --no-build-vignettes’
+* checking for file ‘CISE/DESCRIPTION’ ... OK
+* checking extension type ... Package
+* this is package ‘CISE’ version ‘0.1.0’
+* checking package namespace information ... OK
+* checking package dependencies ... NOTE
+...
+* checking for unstated dependencies in ‘tests’ ... OK
+* checking tests ... OK
+  Running ‘testthat.R’
+* checking for unstated dependencies in vignettes ... OK
+* checking package vignettes in ‘inst/doc’ ... OK
+* checking running R code from vignettes ... NONE
+  ‘CISE_vignette.Rmd’ using ‘UTF-8’... OK
+* checking re-building of vignette outputs ... SKIPPED
+* DONE
+Status: 1 NOTE
+
+
+
+
+
+```
+### CRAN
+
+```
+* using log directory ‘/tmp/workdir/CISE/old/CISE.Rcheck’
+* using R version 4.0.3 (2020-10-10)
+* using platform: x86_64-pc-linux-gnu (64-bit)
+* using session charset: UTF-8
+* using options ‘--no-manual --no-build-vignettes’
+* checking for file ‘CISE/DESCRIPTION’ ... OK
+* checking extension type ... Package
+* this is package ‘CISE’ version ‘0.1.0’
+* checking package namespace information ... OK
+* checking package dependencies ... NOTE
+...
+* checking for unstated dependencies in ‘tests’ ... OK
+* checking tests ... OK
+  Running ‘testthat.R’
+* checking for unstated dependencies in vignettes ... OK
+* checking package vignettes in ‘inst/doc’ ... OK
+* checking running R code from vignettes ... NONE
+  ‘CISE_vignette.Rmd’ using ‘UTF-8’... OK
+* checking re-building of vignette outputs ... SKIPPED
+* DONE
+Status: 1 NOTE
+
+
+
+
+
+```
+# ClimMobTools
+
+<details>
+
+* Version: 0.3.5
+* GitHub: https://github.com/agrobioinfoservices/ClimMobTools
+* Source code: https://github.com/cran/ClimMobTools
+* Date/Publication: 2020-05-08 14:30:02 UTC
+* Number of recursive dependencies: 71
+
+Run `cloud_details(, "ClimMobTools")` for more info
+
+</details>
+
+## Error before installation
+
+### Devel
+
+```
+* using log directory ‘/tmp/workdir/ClimMobTools/new/ClimMobTools.Rcheck’
+* using R version 4.0.3 (2020-10-10)
+* using platform: x86_64-pc-linux-gnu (64-bit)
+* using session charset: UTF-8
+* using options ‘--no-manual --no-build-vignettes’
+* checking for file ‘ClimMobTools/DESCRIPTION’ ... OK
+* checking extension type ... Package
+* this is package ‘ClimMobTools’ version ‘0.3.5’
+* package encoding: UTF-8
+* checking package namespace information ... OK
+...
+* checking if there is a namespace ... OK
+* checking for executable files ... OK
+* checking for hidden files and directories ... OK
+* checking for portable file names ... OK
+* checking for sufficient/correct file permissions ... OK
+* checking whether package ‘ClimMobTools’ can be installed ... ERROR
+Installation failed.
+See ‘/tmp/workdir/ClimMobTools/new/ClimMobTools.Rcheck/00install.out’ for details.
+* DONE
+Status: 1 ERROR, 1 WARNING
+
+
+
+
+
+```
+### CRAN
+
+```
+* using log directory ‘/tmp/workdir/ClimMobTools/old/ClimMobTools.Rcheck’
+* using R version 4.0.3 (2020-10-10)
+* using platform: x86_64-pc-linux-gnu (64-bit)
+* using session charset: UTF-8
+* using options ‘--no-manual --no-build-vignettes’
+* checking for file ‘ClimMobTools/DESCRIPTION’ ... OK
+* checking extension type ... Package
+* this is package ‘ClimMobTools’ version ‘0.3.5’
+* package encoding: UTF-8
+* checking package namespace information ... OK
+...
+* checking if there is a namespace ... OK
+* checking for executable files ... OK
+* checking for hidden files and directories ... OK
+* checking for portable file names ... OK
+* checking for sufficient/correct file permissions ... OK
+* checking whether package ‘ClimMobTools’ can be installed ... ERROR
+Installation failed.
+See ‘/tmp/workdir/ClimMobTools/old/ClimMobTools.Rcheck/00install.out’ for details.
+* DONE
+Status: 1 ERROR, 1 WARNING
+
+
+
+
+
+```
+# CLVTools
+
+<details>
+
+* Version: 0.7.0
+* GitHub: https://github.com/bachmannpatrick/CLVTools
+* Source code: https://github.com/cran/CLVTools
+* Date/Publication: 2020-08-26 20:10:02 UTC
+* Number of recursive dependencies: 86
+
+Run `cloud_details(, "CLVTools")` for more info
+
+</details>
+
+## Newly broken
+
+*   checking whether package ‘CLVTools’ can be installed ... ERROR
+    ```
+    Installation failed.
+    See ‘/tmp/workdir/CLVTools/new/CLVTools.Rcheck/00install.out’ for details.
+    ```
+
+## Newly fixed
+
+*   checking installed package size ... NOTE
+    ```
+      installed size is 15.4Mb
+      sub-directories of 1Mb or more:
+        libs  14.2Mb
+    ```
+
+## Installation
+
+### Devel
+
+```
+* installing *source* package ‘CLVTools’ ...
+** package ‘CLVTools’ successfully unpacked and MD5 sums checked
+** using staged installation
+** libs
+g++ -std=gnu++11 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG  -I'/opt/R/4.0.3/lib/R/site-library/Rcpp/include' -I'/opt/R/4.0.3/lib/R/site-library/RcppArmadillo/include' -I'/opt/R/4.0.3/lib/R/site-library/RcppGSL/include' -I/usr/local/include  -fopenmp -fpic  -g -O2  -c RcppExports.cpp -o RcppExports.o
+g++ -std=gnu++11 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG  -I'/opt/R/4.0.3/lib/R/site-library/Rcpp/include' -I'/opt/R/4.0.3/lib/R/site-library/RcppArmadillo/include' -I'/opt/R/4.0.3/lib/R/site-library/RcppGSL/include' -I/usr/local/include  -fopenmp -fpic  -g -O2  -c bgnbd_CET.cpp -o bgnbd_CET.o
+g++ -std=gnu++11 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG  -I'/opt/R/4.0.3/lib/R/site-library/Rcpp/include' -I'/opt/R/4.0.3/lib/R/site-library/RcppArmadillo/include' -I'/opt/R/4.0.3/lib/R/site-library/RcppGSL/include' -I/usr/local/include  -fopenmp -fpic  -g -O2  -c bgnbd_LL.cpp -o bgnbd_LL.o
+g++ -std=gnu++11 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG  -I'/opt/R/4.0.3/lib/R/site-library/Rcpp/include' -I'/opt/R/4.0.3/lib/R/site-library/RcppArmadillo/include' -I'/opt/R/4.0.3/lib/R/site-library/RcppGSL/include' -I/usr/local/include  -fopenmp -fpic  -g -O2  -c bgnbd_PAlive.cpp -o bgnbd_PAlive.o
+g++ -std=gnu++11 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG  -I'/opt/R/4.0.3/lib/R/site-library/Rcpp/include' -I'/opt/R/4.0.3/lib/R/site-library/RcppArmadillo/include' -I'/opt/R/4.0.3/lib/R/site-library/RcppGSL/include' -I/usr/local/include  -fopenmp -fpic  -g -O2  -c bgnbd_expectation.cpp -o bgnbd_expectation.o
+bgnbd_expectation.cpp:71:1: fatal error: error writing to /tmp/ccWp9Kk1.s: No space left on device
+   71 | }
+      | ^
+compilation terminated.
+make: *** [/opt/R/4.0.3/lib/R/etc/Makeconf:181: bgnbd_expectation.o] Error 1
+ERROR: compilation failed for package ‘CLVTools’
+* removing ‘/tmp/workdir/CLVTools/new/CLVTools.Rcheck/CLVTools’
+
+
+```
+### CRAN
+
+```
+* installing *source* package ‘CLVTools’ ...
+** package ‘CLVTools’ successfully unpacked and MD5 sums checked
+** using staged installation
+** libs
+g++ -std=gnu++11 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG  -I'/opt/R/4.0.3/lib/R/site-library/Rcpp/include' -I'/opt/R/4.0.3/lib/R/site-library/RcppArmadillo/include' -I'/opt/R/4.0.3/lib/R/site-library/RcppGSL/include' -I/usr/local/include  -fopenmp -fpic  -g -O2  -c RcppExports.cpp -o RcppExports.o
+g++ -std=gnu++11 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG  -I'/opt/R/4.0.3/lib/R/site-library/Rcpp/include' -I'/opt/R/4.0.3/lib/R/site-library/RcppArmadillo/include' -I'/opt/R/4.0.3/lib/R/site-library/RcppGSL/include' -I/usr/local/include  -fopenmp -fpic  -g -O2  -c bgnbd_CET.cpp -o bgnbd_CET.o
+g++ -std=gnu++11 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG  -I'/opt/R/4.0.3/lib/R/site-library/Rcpp/include' -I'/opt/R/4.0.3/lib/R/site-library/RcppArmadillo/include' -I'/opt/R/4.0.3/lib/R/site-library/RcppGSL/include' -I/usr/local/include  -fopenmp -fpic  -g -O2  -c bgnbd_LL.cpp -o bgnbd_LL.o
+g++ -std=gnu++11 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG  -I'/opt/R/4.0.3/lib/R/site-library/Rcpp/include' -I'/opt/R/4.0.3/lib/R/site-library/RcppArmadillo/include' -I'/opt/R/4.0.3/lib/R/site-library/RcppGSL/include' -I/usr/local/include  -fopenmp -fpic  -g -O2  -c bgnbd_PAlive.cpp -o bgnbd_PAlive.o
+g++ -std=gnu++11 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG  -I'/opt/R/4.0.3/lib/R/site-library/Rcpp/include' -I'/opt/R/4.0.3/lib/R/site-library/RcppArmadillo/include' -I'/opt/R/4.0.3/lib/R/site-library/RcppGSL/include' -I/usr/local/include  -fopenmp -fpic  -g -O2  -c bgnbd_expectation.cpp -o bgnbd_expectation.o
+g++ -std=gnu++11 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG  -I'/opt/R/4.0.3/lib/R/site-library/Rcpp/include' -I'/opt/R/4.0.3/lib/R/site-library/RcppArmadillo/include' -I'/opt/R/4.0.3/lib/R/site-library/RcppGSL/include' -I/usr/local/include  -fopenmp -fpic  -g -O2  -c clv_vectorized.cpp -o clv_vectorized.o
+...
+** help
+*** installing help indices
+*** copying figures
+** building package indices
+** installing vignettes
+** testing if installed package can be loaded from temporary location
+** checking absolute paths in shared objects and dynamic libraries
+** testing if installed package can be loaded from final location
+** testing if installed package keeps a record of temporary installation path
+* DONE (CLVTools)
 
 
 ```
@@ -644,6 +2284,282 @@ Status: 1 NOTE
 
 
 ```
+# ComplexUpset
+
+<details>
+
+* Version: 0.7.3
+* GitHub: https://github.com/krassowski/complex-upset
+* Source code: https://github.com/cran/ComplexUpset
+* Date/Publication: 2020-12-08 09:30:02 UTC
+* Number of recursive dependencies: 114
+
+Run `cloud_details(, "ComplexUpset")` for more info
+
+</details>
+
+## Error before installation
+
+### Devel
+
+```
+* using log directory ‘/tmp/workdir/ComplexUpset/new/ComplexUpset.Rcheck’
+* using R version 4.0.3 (2020-10-10)
+* using platform: x86_64-pc-linux-gnu (64-bit)
+* using session charset: UTF-8
+* using options ‘--no-manual --no-build-vignettes’
+* checking for file ‘ComplexUpset/DESCRIPTION’ ... OK
+* checking extension type ... Package
+* this is package ‘ComplexUpset’ version ‘0.7.3’
+* package encoding: UTF-8
+* checking package namespace information ... OK
+...
+* checking installed files from ‘inst/doc’ ... OK
+* checking files in ‘vignettes’ ... OK
+* checking examples ... OK
+* checking for unstated dependencies in vignettes ... OK
+* checking package vignettes in ‘inst/doc’ ... OK
+* checking running R code from vignettes ... NONE
+  ‘Examples_R.Rmd’ using ‘UTF-8’... OK
+* checking re-building of vignette outputs ... SKIPPED
+* DONE
+Status: 1 NOTE
+
+
+
+
+
+```
+### CRAN
+
+```
+* using log directory ‘/tmp/workdir/ComplexUpset/old/ComplexUpset.Rcheck’
+* using R version 4.0.3 (2020-10-10)
+* using platform: x86_64-pc-linux-gnu (64-bit)
+* using session charset: UTF-8
+* using options ‘--no-manual --no-build-vignettes’
+* checking for file ‘ComplexUpset/DESCRIPTION’ ... OK
+* checking extension type ... Package
+* this is package ‘ComplexUpset’ version ‘0.7.3’
+* package encoding: UTF-8
+* checking package namespace information ... OK
+...
+* checking installed files from ‘inst/doc’ ... OK
+* checking files in ‘vignettes’ ... OK
+* checking examples ... OK
+* checking for unstated dependencies in vignettes ... OK
+* checking package vignettes in ‘inst/doc’ ... OK
+* checking running R code from vignettes ... NONE
+  ‘Examples_R.Rmd’ using ‘UTF-8’... OK
+* checking re-building of vignette outputs ... SKIPPED
+* DONE
+Status: 1 NOTE
+
+
+
+
+
+```
+# CondIndTests
+
+<details>
+
+* Version: 0.1.5
+* GitHub: https://github.com/christinaheinze/nonlinearICP-and-CondIndTests
+* Source code: https://github.com/cran/CondIndTests
+* Date/Publication: 2019-11-12 06:50:21 UTC
+* Number of recursive dependencies: 62
+
+Run `cloud_details(, "CondIndTests")` for more info
+
+</details>
+
+## In both
+
+*   checking whether package ‘CondIndTests’ can be installed ... ERROR
+    ```
+    Installation failed.
+    See ‘/tmp/workdir/CondIndTests/new/CondIndTests.Rcheck/00install.out’ for details.
+    ```
+
+## Installation
+
+### Devel
+
+```
+* installing *source* package ‘CondIndTests’ ...
+** package ‘CondIndTests’ successfully unpacked and MD5 sums checked
+** using staged installation
+** R
+** inst
+** byte-compile and prepare package for lazy loading
+Error in loadNamespace(j <- i[[1L]], c(lib.loc, .libPaths()), versionCheck = vI[[j]]) : 
+  there is no package called ‘rbibutils’
+Calls: <Anonymous> ... loadNamespace -> withRestarts -> withOneRestart -> doWithOneRestart
+Execution halted
+ERROR: lazy loading failed for package ‘CondIndTests’
+* removing ‘/tmp/workdir/CondIndTests/new/CondIndTests.Rcheck/CondIndTests’
+
+
+```
+### CRAN
+
+```
+* installing *source* package ‘CondIndTests’ ...
+** package ‘CondIndTests’ successfully unpacked and MD5 sums checked
+** using staged installation
+** R
+** inst
+** byte-compile and prepare package for lazy loading
+Error in loadNamespace(j <- i[[1L]], c(lib.loc, .libPaths()), versionCheck = vI[[j]]) : 
+  there is no package called ‘rbibutils’
+Calls: <Anonymous> ... loadNamespace -> withRestarts -> withOneRestart -> doWithOneRestart
+Execution halted
+ERROR: lazy loading failed for package ‘CondIndTests’
+* removing ‘/tmp/workdir/CondIndTests/old/CondIndTests.Rcheck/CondIndTests’
+
+
+```
+# coRanking
+
+<details>
+
+* Version: 0.2.1
+* GitHub: https://github.com/gdkrmr/coRanking
+* Source code: https://github.com/cran/coRanking
+* Date/Publication: 2020-02-12 13:10:03 UTC
+* Number of recursive dependencies: 49
+
+Run `cloud_details(, "coRanking")` for more info
+
+</details>
+
+## Error before installation
+
+### Devel
+
+```
+* using log directory ‘/tmp/workdir/coRanking/new/coRanking.Rcheck’
+* using R version 4.0.3 (2020-10-10)
+* using platform: x86_64-pc-linux-gnu (64-bit)
+* using session charset: UTF-8
+* using options ‘--no-manual --no-build-vignettes’
+* checking for file ‘coRanking/DESCRIPTION’ ... OK
+* this is package ‘coRanking’ version ‘0.2.1’
+* package encoding: UTF-8
+* checking package namespace information ... OK
+* checking package dependencies ... NOTE
+...
+* checking for unstated dependencies in ‘tests’ ... OK
+* checking tests ... OK
+  Running ‘testthat.R’
+* checking for unstated dependencies in vignettes ... OK
+* checking package vignettes in ‘inst/doc’ ... OK
+* checking running R code from vignettes ... NONE
+  ‘coranking.Rmd’ using ‘UTF-8’... OK
+* checking re-building of vignette outputs ... SKIPPED
+* DONE
+Status: 1 NOTE
+
+
+
+
+
+```
+### CRAN
+
+```
+* using log directory ‘/tmp/workdir/coRanking/old/coRanking.Rcheck’
+* using R version 4.0.3 (2020-10-10)
+* using platform: x86_64-pc-linux-gnu (64-bit)
+* using session charset: UTF-8
+* using options ‘--no-manual --no-build-vignettes’
+* checking for file ‘coRanking/DESCRIPTION’ ... OK
+* this is package ‘coRanking’ version ‘0.2.1’
+* package encoding: UTF-8
+* checking package namespace information ... OK
+* checking package dependencies ... NOTE
+...
+* checking for unstated dependencies in ‘tests’ ... OK
+* checking tests ... OK
+  Running ‘testthat.R’
+* checking for unstated dependencies in vignettes ... OK
+* checking package vignettes in ‘inst/doc’ ... OK
+* checking running R code from vignettes ... NONE
+  ‘coranking.Rmd’ using ‘UTF-8’... OK
+* checking re-building of vignette outputs ... SKIPPED
+* DONE
+Status: 1 NOTE
+
+
+
+
+
+```
+# CovidMutations
+
+<details>
+
+* Version: 0.1.3
+* GitHub: https://github.com/MSQ-123/CovidMutations
+* Source code: https://github.com/cran/CovidMutations
+* Date/Publication: 2020-09-18 12:00:39 UTC
+* Number of recursive dependencies: 113
+
+Run `cloud_details(, "CovidMutations")` for more info
+
+</details>
+
+## In both
+
+*   checking whether package ‘CovidMutations’ can be installed ... ERROR
+    ```
+    Installation failed.
+    See ‘/tmp/workdir/CovidMutations/new/CovidMutations.Rcheck/00install.out’ for details.
+    ```
+
+## Installation
+
+### Devel
+
+```
+* installing *source* package ‘CovidMutations’ ...
+** package ‘CovidMutations’ successfully unpacked and MD5 sums checked
+** using staged installation
+** R
+** data
+*** moving datasets to lazyload DB
+** inst
+** byte-compile and prepare package for lazy loading
+Error in loadNamespace(j <- i[[1L]], c(lib.loc, .libPaths()), versionCheck = vI[[j]]) : 
+  there is no package called ‘purrr’
+Calls: <Anonymous> ... loadNamespace -> withRestarts -> withOneRestart -> doWithOneRestart
+Execution halted
+ERROR: lazy loading failed for package ‘CovidMutations’
+* removing ‘/tmp/workdir/CovidMutations/new/CovidMutations.Rcheck/CovidMutations’
+
+
+```
+### CRAN
+
+```
+* installing *source* package ‘CovidMutations’ ...
+** package ‘CovidMutations’ successfully unpacked and MD5 sums checked
+** using staged installation
+** R
+** data
+*** moving datasets to lazyload DB
+** inst
+** byte-compile and prepare package for lazy loading
+Error in loadNamespace(j <- i[[1L]], c(lib.loc, .libPaths()), versionCheck = vI[[j]]) : 
+  there is no package called ‘purrr’
+Calls: <Anonymous> ... loadNamespace -> withRestarts -> withOneRestart -> doWithOneRestart
+Execution halted
+ERROR: lazy loading failed for package ‘CovidMutations’
+* removing ‘/tmp/workdir/CovidMutations/old/CovidMutations.Rcheck/CovidMutations’
+
+
+```
 # crossmap
 
 <details>
@@ -684,9 +2600,6 @@ Run `cloud_details(, "crossmap")` for more info
 * checking package namespace information ... OK
 * checking package dependencies ... OK
 ...
-* checking Rd metadata ... OK
-* checking Rd cross-references ... OK
-* checking for missing documentation entries ... OK
 * checking for code/documentation mismatches ... OK
 * checking Rd \usage sections ... OK
 * checking Rd contents ... OK
@@ -694,23 +2607,104 @@ Run `cloud_details(, "crossmap")` for more info
 * checking examples ... OK
 * checking for unstated dependencies in ‘tests’ ... OK
 * checking tests ...
+  Running ‘testthat.R’
+* DONE
+Status: 1 ERROR
 
 
 
 
 
 ```
-# dabestr
+# ctsem
 
 <details>
 
-* Version: 0.3.0
-* GitHub: https://github.com/ACCLAB/dabestr
-* Source code: https://github.com/cran/dabestr
-* Date/Publication: 2020-07-13 06:50:03 UTC
-* Number of recursive dependencies: 130
+* Version: 3.3.11
+* GitHub: https://github.com/cdriveraus/ctsem
+* Source code: https://github.com/cran/ctsem
+* Date/Publication: 2020-09-16 11:10:04 UTC
+* Number of recursive dependencies: 131
 
-Run `cloud_details(, "dabestr")` for more info
+Run `cloud_details(, "ctsem")` for more info
+
+</details>
+
+## In both
+
+*   checking whether package ‘ctsem’ can be installed ... ERROR
+    ```
+    Installation failed.
+    See ‘/tmp/workdir/ctsem/new/ctsem.Rcheck/00install.out’ for details.
+    ```
+
+## Installation
+
+### Devel
+
+```
+* installing *source* package ‘ctsem’ ...
+** package ‘ctsem’ successfully unpacked and MD5 sums checked
+** using staged installation
+** libs
+"/opt/R/4.0.3/lib/R/bin/Rscript" -e "source(file.path('..', 'tools', 'make_cc.R')); make_cc(commandArgs(TRUE))" stan_files/ctsm.stan
+Wrote C++ file "stan_files/ctsm.cc"
+
+
+g++ -std=gnu++14 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG -I"../inst/include" -I"/opt/R/4.0.3/lib/R/site-library/StanHeaders/include/src" -DBOOST_DISABLE_ASSERTS -DEIGEN_NO_DEBUG -DBOOST_MATH_OVERFLOW_ERROR_POLICY=errno_on_error -DRCPP_PARALLEL_USE_TBB=1 -I'/opt/R/4.0.3/lib/R/site-library/BH/include' -I'/opt/R/4.0.3/lib/R/site-library/Rcpp/include' -I'/opt/R/4.0.3/lib/R/site-library/RcppEigen/include' -I'/opt/R/4.0.3/lib/R/site-library/RcppParallel/include' -I'/opt/R/4.0.3/lib/R/site-library/rstan/include' -I'/opt/R/4.0.3/lib/R/site-library/StanHeaders/include' -I/usr/local/include   -I'/opt/R/4.0.3/lib/R/site-library/RcppParallel/include' -D_REENTRANT -DSTAN_THREADS   -fpic  -g -O2  -c stan_files/ctsm.cc -o stan_files/ctsm.o
+In file included from /opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/Core:392,
+...
+/opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/src/Core/Matrix.h:377:29:   required from ‘Eigen::Matrix<_Scalar, _Rows, _Cols, _Options, _MaxRows, _MaxCols>::Matrix(const Eigen::EigenBase<OtherDerived>&) [with OtherDerived = Eigen::Solve<Eigen::ColPivHouseholderQR<Eigen::Matrix<double, -1, -1, 1, -1, -1> >, Eigen::CwiseUnaryView<Eigen::MatrixBase<Eigen::Map<Eigen::Matrix<stan::math::vari*, -1, -1> > >::adj_Op, Eigen::Map<Eigen::Matrix<stan::math::vari*, -1, -1> > > >; _Scalar = double; int _Rows = -1; int _Cols = -1; int _Options = 0; int _MaxRows = -1; int _MaxCols = -1]’
+/opt/R/4.0.3/lib/R/site-library/StanHeaders/include/stan/math/rev/mat/fun/mdivide_left.hpp:63:14:   required from ‘void stan::math::internal::mdivide_left_vv_vari<R1, C1, R2, C2>::chain() [with int R1 = -1; int C1 = -1; int R2 = -1; int C2 = -1]’
+/opt/R/4.0.3/lib/R/site-library/StanHeaders/include/stan/math/rev/mat/fun/mdivide_left.hpp:61:16:   required from here
+/opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/src/Core/CoreEvaluators.h:960:8: warning: ignoring attributes on template argument ‘Eigen::internal::packet_traits<double>::type’ {aka ‘__vector(2) double’} [-Wignored-attributes]
+g++: fatal error: Killed signal terminated program cc1plus
+compilation terminated.
+make: *** [/opt/R/4.0.3/lib/R/etc/Makeconf:179: stan_files/ctsm.o] Error 1
+rm stan_files/ctsm.cc
+ERROR: compilation failed for package ‘ctsem’
+* removing ‘/tmp/workdir/ctsem/new/ctsem.Rcheck/ctsem’
+
+
+```
+### CRAN
+
+```
+* installing *source* package ‘ctsem’ ...
+** package ‘ctsem’ successfully unpacked and MD5 sums checked
+** using staged installation
+** libs
+"/opt/R/4.0.3/lib/R/bin/Rscript" -e "source(file.path('..', 'tools', 'make_cc.R')); make_cc(commandArgs(TRUE))" stan_files/ctsm.stan
+Wrote C++ file "stan_files/ctsm.cc"
+
+
+g++ -std=gnu++14 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG -I"../inst/include" -I"/opt/R/4.0.3/lib/R/site-library/StanHeaders/include/src" -DBOOST_DISABLE_ASSERTS -DEIGEN_NO_DEBUG -DBOOST_MATH_OVERFLOW_ERROR_POLICY=errno_on_error -DRCPP_PARALLEL_USE_TBB=1 -I'/opt/R/4.0.3/lib/R/site-library/BH/include' -I'/opt/R/4.0.3/lib/R/site-library/Rcpp/include' -I'/opt/R/4.0.3/lib/R/site-library/RcppEigen/include' -I'/opt/R/4.0.3/lib/R/site-library/RcppParallel/include' -I'/opt/R/4.0.3/lib/R/site-library/rstan/include' -I'/opt/R/4.0.3/lib/R/site-library/StanHeaders/include' -I/usr/local/include   -I'/opt/R/4.0.3/lib/R/site-library/RcppParallel/include' -D_REENTRANT -DSTAN_THREADS   -fpic  -g -O2  -c stan_files/ctsm.cc -o stan_files/ctsm.o
+In file included from /opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/Core:392,
+...
+/opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/src/Core/Matrix.h:377:29:   required from ‘Eigen::Matrix<_Scalar, _Rows, _Cols, _Options, _MaxRows, _MaxCols>::Matrix(const Eigen::EigenBase<OtherDerived>&) [with OtherDerived = Eigen::Solve<Eigen::ColPivHouseholderQR<Eigen::Matrix<double, -1, -1, 1, -1, -1> >, Eigen::CwiseUnaryView<Eigen::MatrixBase<Eigen::Map<Eigen::Matrix<stan::math::vari*, -1, -1> > >::adj_Op, Eigen::Map<Eigen::Matrix<stan::math::vari*, -1, -1> > > >; _Scalar = double; int _Rows = -1; int _Cols = -1; int _Options = 0; int _MaxRows = -1; int _MaxCols = -1]’
+/opt/R/4.0.3/lib/R/site-library/StanHeaders/include/stan/math/rev/mat/fun/mdivide_left.hpp:63:14:   required from ‘void stan::math::internal::mdivide_left_vv_vari<R1, C1, R2, C2>::chain() [with int R1 = -1; int C1 = -1; int R2 = -1; int C2 = -1]’
+/opt/R/4.0.3/lib/R/site-library/StanHeaders/include/stan/math/rev/mat/fun/mdivide_left.hpp:61:16:   required from here
+/opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/src/Core/CoreEvaluators.h:960:8: warning: ignoring attributes on template argument ‘Eigen::internal::packet_traits<double>::type’ {aka ‘__vector(2) double’} [-Wignored-attributes]
+g++: fatal error: Killed signal terminated program cc1plus
+compilation terminated.
+make: *** [/opt/R/4.0.3/lib/R/etc/Makeconf:179: stan_files/ctsm.o] Error 1
+rm stan_files/ctsm.cc
+ERROR: compilation failed for package ‘ctsem’
+* removing ‘/tmp/workdir/ctsem/old/ctsem.Rcheck/ctsem’
+
+
+```
+# CVXR
+
+<details>
+
+* Version: 1.0-8
+* GitHub: https://github.com/cvxgrp/CVXR
+* Source code: https://github.com/cran/CVXR
+* Date/Publication: 2020-09-13 15:20:11 UTC
+* Number of recursive dependencies: 67
+
+Run `cloud_details(, "CVXR")` for more info
 
 </details>
 
@@ -719,7 +2713,27 @@ Run `cloud_details(, "dabestr")` for more info
 ### Devel
 
 ```
-
+* using log directory ‘/tmp/workdir/CVXR/new/CVXR.Rcheck’
+* using R version 4.0.3 (2020-10-10)
+* using platform: x86_64-pc-linux-gnu (64-bit)
+* using session charset: UTF-8
+* using options ‘--no-manual --no-build-vignettes’
+* checking for file ‘CVXR/DESCRIPTION’ ... OK
+* checking extension type ... Package
+* this is package ‘CVXR’ version ‘1.0-8’
+* package encoding: UTF-8
+* checking package namespace information ... OK
+...
+* checking for unstated dependencies in ‘tests’ ... OK
+* checking tests ... OK
+  Running ‘group00.R’
+  Running ‘group01.R’
+  Running ‘group02.R’
+  Running ‘group03.R’
+  Running ‘group04.R’
+  Running ‘group05.R’
+* DONE
+Status: 2 NOTEs
 
 
 
@@ -729,30 +2743,246 @@ Run `cloud_details(, "dabestr")` for more info
 ### CRAN
 
 ```
-* using log directory ‘/tmp/workdir/dabestr/old/dabestr.Rcheck’
+* using log directory ‘/tmp/workdir/CVXR/old/CVXR.Rcheck’
 * using R version 4.0.3 (2020-10-10)
 * using platform: x86_64-pc-linux-gnu (64-bit)
 * using session charset: UTF-8
 * using options ‘--no-manual --no-build-vignettes’
-* checking for file ‘dabestr/DESCRIPTION’ ... OK
+* checking for file ‘CVXR/DESCRIPTION’ ... OK
 * checking extension type ... Package
-* this is package ‘dabestr’ version ‘0.3.0’
+* this is package ‘CVXR’ version ‘1.0-8’
 * package encoding: UTF-8
 * checking package namespace information ... OK
 ...
-Errors in running code in vignettes:
-when running code in ‘using-dabestr.Rmd’
-  ...
+* checking for unstated dependencies in ‘tests’ ... OK
+* checking tests ... OK
+  Running ‘group00.R’
+  Running ‘group01.R’
+  Running ‘group02.R’
+  Running ‘group03.R’
+  Running ‘group04.R’
+  Running ‘group05.R’
+* DONE
+Status: 2 NOTEs
 
-... incomplete output.  Crash?
 
-  ‘using-dabestr.Rmd’ using ‘UTF-8’... failed to complete the test
+
+
+
+```
+# DAISIE
+
+<details>
+
+* Version: 3.0.1
+* GitHub: NA
+* Source code: https://github.com/cran/DAISIE
+* Date/Publication: 2020-08-26 10:00:07 UTC
+* Number of recursive dependencies: 112
+
+Run `cloud_details(, "DAISIE")` for more info
+
+</details>
+
+## Error before installation
+
+### Devel
+
+```
+* using log directory ‘/tmp/workdir/DAISIE/new/DAISIE.Rcheck’
+* using R version 4.0.3 (2020-10-10)
+* using platform: x86_64-pc-linux-gnu (64-bit)
+* using session charset: UTF-8
+* using options ‘--no-manual --no-build-vignettes’
+* checking for file ‘DAISIE/DESCRIPTION’ ... OK
+* checking extension type ... Package
+* this is package ‘DAISIE’ version ‘3.0.1’
+* package encoding: UTF-8
+* checking package namespace information ... OK
+...
+  Running ‘testthat.R’
+* checking for unstated dependencies in vignettes ... OK
+* checking package vignettes in ‘inst/doc’ ... OK
+* checking running R code from vignettes ... NONE
+  ‘demo_CSvsIW.Rmd’ using ‘UTF-8’... OK
+  ‘demo_optimize.Rmd’ using ‘UTF-8’... OK
+  ‘demo_sim.Rmd’ using ‘UTF-8’... OK
 * checking re-building of vignette outputs ... SKIPPED
 * DONE
-Status: 2 ERRORs, 2 NOTEs
+Status: 1 NOTE
 
 
 
+
+
+```
+### CRAN
+
+```
+* using log directory ‘/tmp/workdir/DAISIE/old/DAISIE.Rcheck’
+* using R version 4.0.3 (2020-10-10)
+* using platform: x86_64-pc-linux-gnu (64-bit)
+* using session charset: UTF-8
+* using options ‘--no-manual --no-build-vignettes’
+* checking for file ‘DAISIE/DESCRIPTION’ ... OK
+* checking extension type ... Package
+* this is package ‘DAISIE’ version ‘3.0.1’
+* package encoding: UTF-8
+* checking package namespace information ... OK
+...
+  Running ‘testthat.R’
+* checking for unstated dependencies in vignettes ... OK
+* checking package vignettes in ‘inst/doc’ ... OK
+* checking running R code from vignettes ... NONE
+  ‘demo_CSvsIW.Rmd’ using ‘UTF-8’... OK
+  ‘demo_optimize.Rmd’ using ‘UTF-8’... OK
+  ‘demo_sim.Rmd’ using ‘UTF-8’... OK
+* checking re-building of vignette outputs ... SKIPPED
+* DONE
+Status: 1 NOTE
+
+
+
+
+
+```
+# DataSpaceR
+
+<details>
+
+* Version: 0.7.4
+* GitHub: https://github.com/ropensci/DataSpaceR
+* Source code: https://github.com/cran/DataSpaceR
+* Date/Publication: 2020-08-26 17:00:07 UTC
+* Number of recursive dependencies: 65
+
+Run `cloud_details(, "DataSpaceR")` for more info
+
+</details>
+
+## Error before installation
+
+### Devel
+
+```
+* using log directory ‘/tmp/workdir/DataSpaceR/new/DataSpaceR.Rcheck’
+* using R version 4.0.3 (2020-10-10)
+* using platform: x86_64-pc-linux-gnu (64-bit)
+* using session charset: UTF-8
+* using options ‘--no-manual --no-build-vignettes’
+* checking for file ‘DataSpaceR/DESCRIPTION’ ... OK
+* checking extension type ... Package
+* this is package ‘DataSpaceR’ version ‘0.7.4’
+* package encoding: UTF-8
+* checking package namespace information ... OK
+...
+* checking for unstated dependencies in vignettes ... OK
+* checking package vignettes in ‘inst/doc’ ... OK
+* checking running R code from vignettes ... NONE
+  ‘DataSpaceR.Rmd’ using ‘UTF-8’... OK
+  ‘Monoconal_Antibody_Data.Rmd’ using ‘UTF-8’... OK
+  ‘Non_Integrated_Datasets.Rmd’ using ‘UTF-8’... OK
+  ‘Publication_Data.Rmd’ using ‘UTF-8’... OK
+* checking re-building of vignette outputs ... SKIPPED
+* DONE
+Status: 1 NOTE
+
+
+
+
+
+```
+### CRAN
+
+```
+* using log directory ‘/tmp/workdir/DataSpaceR/old/DataSpaceR.Rcheck’
+* using R version 4.0.3 (2020-10-10)
+* using platform: x86_64-pc-linux-gnu (64-bit)
+* using session charset: UTF-8
+* using options ‘--no-manual --no-build-vignettes’
+* checking for file ‘DataSpaceR/DESCRIPTION’ ... OK
+* checking extension type ... Package
+* this is package ‘DataSpaceR’ version ‘0.7.4’
+* package encoding: UTF-8
+* checking package namespace information ... OK
+...
+* checking for unstated dependencies in vignettes ... OK
+* checking package vignettes in ‘inst/doc’ ... OK
+* checking running R code from vignettes ... NONE
+  ‘DataSpaceR.Rmd’ using ‘UTF-8’... OK
+  ‘Monoconal_Antibody_Data.Rmd’ using ‘UTF-8’... OK
+  ‘Non_Integrated_Datasets.Rmd’ using ‘UTF-8’... OK
+  ‘Publication_Data.Rmd’ using ‘UTF-8’... OK
+* checking re-building of vignette outputs ... SKIPPED
+* DONE
+Status: 1 NOTE
+
+
+
+
+
+```
+# DecisionAnalysis
+
+<details>
+
+* Version: 1.1.0
+* GitHub: https://github.com/AFIT-R/DecisionAnalysis
+* Source code: https://github.com/cran/DecisionAnalysis
+* Date/Publication: 2020-05-22 08:00:06 UTC
+* Number of recursive dependencies: 86
+
+Run `cloud_details(, "DecisionAnalysis")` for more info
+
+</details>
+
+## In both
+
+*   checking whether package ‘DecisionAnalysis’ can be installed ... ERROR
+    ```
+    Installation failed.
+    See ‘/tmp/workdir/DecisionAnalysis/new/DecisionAnalysis.Rcheck/00install.out’ for details.
+    ```
+
+## Installation
+
+### Devel
+
+```
+* installing *source* package ‘DecisionAnalysis’ ...
+** package ‘DecisionAnalysis’ successfully unpacked and MD5 sums checked
+** using staged installation
+** R
+** data
+*** moving datasets to lazyload DB
+** inst
+** byte-compile and prepare package for lazy loading
+Error in loadNamespace(i, c(lib.loc, .libPaths()), versionCheck = vI[[i]]) : 
+  there is no package called ‘stringi’
+Calls: <Anonymous> ... loadNamespace -> withRestarts -> withOneRestart -> doWithOneRestart
+Execution halted
+ERROR: lazy loading failed for package ‘DecisionAnalysis’
+* removing ‘/tmp/workdir/DecisionAnalysis/new/DecisionAnalysis.Rcheck/DecisionAnalysis’
+
+
+```
+### CRAN
+
+```
+* installing *source* package ‘DecisionAnalysis’ ...
+** package ‘DecisionAnalysis’ successfully unpacked and MD5 sums checked
+** using staged installation
+** R
+** data
+*** moving datasets to lazyload DB
+** inst
+** byte-compile and prepare package for lazy loading
+Error in loadNamespace(i, c(lib.loc, .libPaths()), versionCheck = vI[[i]]) : 
+  there is no package called ‘stringi’
+Calls: <Anonymous> ... loadNamespace -> withRestarts -> withOneRestart -> doWithOneRestart
+Execution halted
+ERROR: lazy loading failed for package ‘DecisionAnalysis’
+* removing ‘/tmp/workdir/DecisionAnalysis/old/DecisionAnalysis.Rcheck/DecisionAnalysis’
 
 
 ```
@@ -900,88 +3130,17 @@ Status: 2 ERRORs, 2 NOTEs
 
 
 ```
-# duckdb
+# doc2concrete
 
 <details>
 
-* Version: 0.2.3
-* GitHub: https://github.com/cwida/duckdb
-* Source code: https://github.com/cran/duckdb
-* Date/Publication: 2020-12-12 15:50:03 UTC
-* Number of recursive dependencies: 46
+* Version: 0.5.0
+* GitHub: NA
+* Source code: https://github.com/cran/doc2concrete
+* Date/Publication: 2020-11-16 12:50:03 UTC
+* Number of recursive dependencies: 128
 
-Run `cloud_details(, "duckdb")` for more info
-
-</details>
-
-## In both
-
-*   checking whether package ‘duckdb’ can be installed ... ERROR
-    ```
-    Installation failed.
-    See ‘/tmp/workdir/duckdb/new/duckdb.Rcheck/00install.out’ for details.
-    ```
-
-## Installation
-
-### Devel
-
-```
-* installing *source* package ‘duckdb’ ...
-** package ‘duckdb’ successfully unpacked and MD5 sums checked
-** using staged installation
-** libs
-g++ -std=gnu++11 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG -I. -DDUCKDB_DISABLE_PRINT -Iduckdb/src/include -Iduckdb/third_party/fmt/include -Iduckdb/third_party/re2 -Iduckdb/third_party/miniz -Iduckdb/third_party/utf8proc/include -Iduckdb/third_party/utf8proc -Iduckdb/third_party/libpg_query/include -Iduckdb/third_party/libpg_query -Iduckdb/third_party/concurrentqueue -Iduckdb/extension/parquet/include -Iduckdb/third_party/parquet -Iduckdb/third_party/snappy -Iduckdb/third_party/thrift -Iduckdb/third_party/zstd -Iduckdb  -I/usr/local/include   -fpic  -g -O2  -c duckdbr.cpp -o duckdbr.o
-g++ -std=gnu++11 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG -I. -DDUCKDB_DISABLE_PRINT -Iduckdb/src/include -Iduckdb/third_party/fmt/include -Iduckdb/third_party/re2 -Iduckdb/third_party/miniz -Iduckdb/third_party/utf8proc/include -Iduckdb/third_party/utf8proc -Iduckdb/third_party/libpg_query/include -Iduckdb/third_party/libpg_query -Iduckdb/third_party/concurrentqueue -Iduckdb/extension/parquet/include -Iduckdb/third_party/parquet -Iduckdb/third_party/snappy -Iduckdb/third_party/thrift -Iduckdb/third_party/zstd -Iduckdb  -I/usr/local/include   -fpic  -g -O2  -c duckdb/extension/parquet/parquet-extension.cpp -o duckdb/extension/parquet/parquet-extension.o
-g++ -std=gnu++11 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG -I. -DDUCKDB_DISABLE_PRINT -Iduckdb/src/include -Iduckdb/third_party/fmt/include -Iduckdb/third_party/re2 -Iduckdb/third_party/miniz -Iduckdb/third_party/utf8proc/include -Iduckdb/third_party/utf8proc -Iduckdb/third_party/libpg_query/include -Iduckdb/third_party/libpg_query -Iduckdb/third_party/concurrentqueue -Iduckdb/extension/parquet/include -Iduckdb/third_party/parquet -Iduckdb/third_party/snappy -Iduckdb/third_party/thrift -Iduckdb/third_party/zstd -Iduckdb  -I/usr/local/include   -fpic  -g -O2  -c duckdb/extension/parquet/parquet_reader.cpp -o duckdb/extension/parquet/parquet_reader.o
-g++ -std=gnu++11 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG -I. -DDUCKDB_DISABLE_PRINT -Iduckdb/src/include -Iduckdb/third_party/fmt/include -Iduckdb/third_party/re2 -Iduckdb/third_party/miniz -Iduckdb/third_party/utf8proc/include -Iduckdb/third_party/utf8proc -Iduckdb/third_party/libpg_query/include -Iduckdb/third_party/libpg_query -Iduckdb/third_party/concurrentqueue -Iduckdb/extension/parquet/include -Iduckdb/third_party/parquet -Iduckdb/third_party/snappy -Iduckdb/third_party/thrift -Iduckdb/third_party/zstd -Iduckdb  -I/usr/local/include   -fpic  -g -O2  -c duckdb/extension/parquet/parquet_timestamp.cpp -o duckdb/extension/parquet/parquet_timestamp.o
-g++ -std=gnu++11 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG -I. -DDUCKDB_DISABLE_PRINT -Iduckdb/src/include -Iduckdb/third_party/fmt/include -Iduckdb/third_party/re2 -Iduckdb/third_party/miniz -Iduckdb/third_party/utf8proc/include -Iduckdb/third_party/utf8proc -Iduckdb/third_party/libpg_query/include -Iduckdb/third_party/libpg_query -Iduckdb/third_party/concurrentqueue -Iduckdb/extension/parquet/include -Iduckdb/third_party/parquet -Iduckdb/third_party/snappy -Iduckdb/third_party/thrift -Iduckdb/third_party/zstd -Iduckdb  -I/usr/local/include   -fpic  -g -O2  -c duckdb/extension/parquet/parquet_writer.cpp -o duckdb/extension/parquet/parquet_writer.o
-g++ -std=gnu++11 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG -I. -DDUCKDB_DISABLE_PRINT -Iduckdb/src/include -Iduckdb/third_party/fmt/include -Iduckdb/third_party/re2 -Iduckdb/third_party/miniz -Iduckdb/third_party/utf8proc/include -Iduckdb/third_party/utf8proc -Iduckdb/third_party/libpg_query/include -Iduckdb/third_party/libpg_query -Iduckdb/third_party/concurrentqueue -Iduckdb/extension/parquet/include -Iduckdb/third_party/parquet -Iduckdb/third_party/snappy -Iduckdb/third_party/thrift -Iduckdb/third_party/zstd -Iduckdb  -I/usr/local/include   -fpic  -g -O2  -c duckdb/amalgamation-1.cpp -o duckdb/amalgamation-1.o
-In file included from duckdb/amalgamation-1.cpp:173:
-duckdb/src/execution/expression_executor/execute_fmake: *** [/opt/R/4.0.3/lib/R/etc/Makeconf:181: duckdb/amalgamation-1.o] Error 1
-ERROR: compilation failed for package ‘duckdb’
-* removing ‘/tmp/workdir/duckdb/new/duckdb.Rcheck/duckdb’
-
-
-```
-### CRAN
-
-```
-* installing *source* package ‘duckdb’ ...
-** package ‘duckdb’ successfully unpacked and MD5 sums checked
-** using staged installation
-** libs
-g++ -std=gnu++11 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG -I. -DDUCKDB_DISABLE_PRINT -Iduckdb/src/include -Iduckdb/third_party/fmt/include -Iduckdb/third_party/re2 -Iduckdb/third_party/miniz -Iduckdb/third_party/utf8proc/include -Iduckdb/third_party/utf8proc -Iduckdb/third_party/libpg_query/include -Iduckdb/third_party/libpg_query -Iduckdb/third_party/concurrentqueue -Iduckdb/extension/parquet/include -Iduckdb/third_party/parquet -Iduckdb/third_party/snappy -Iduckdb/third_party/thrift -Iduckdb/third_party/zstd -Iduckdb  -I/usr/local/include   -fpic  -g -O2  -c duckdbr.cpp -o duckdbr.o
-g++ -std=gnu++11 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG -I. -DDUCKDB_DISABLE_PRINT -Iduckdb/src/include -Iduckdb/third_party/fmt/include -Iduckdb/third_party/re2 -Iduckdb/third_party/miniz -Iduckdb/third_party/utf8proc/include -Iduckdb/third_party/utf8proc -Iduckdb/third_party/libpg_query/include -Iduckdb/third_party/libpg_query -Iduckdb/third_party/concurrentqueue -Iduckdb/extension/parquet/include -Iduckdb/third_party/parquet -Iduckdb/third_party/snappy -Iduckdb/third_party/thrift -Iduckdb/third_party/zstd -Iduckdb  -I/usr/local/include   -fpic  -g -O2  -c duckdb/extension/parquet/parquet-extension.cpp -o duckdb/extension/parquet/parquet-extension.o
-g++ -std=gnu++11 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG -I. -DDUCKDB_DISABLE_PRINT -Iduckdb/src/include -Iduckdb/third_party/fmt/include -Iduckdb/third_party/re2 -Iduckdb/third_party/miniz -Iduckdb/third_party/utf8proc/include -Iduckdb/third_party/utf8proc -Iduckdb/third_party/libpg_query/include -Iduckdb/third_party/libpg_query -Iduckdb/third_party/concurrentqueue -Iduckdb/extension/parquet/include -Iduckdb/third_party/parquet -Iduckdb/third_party/snappy -Iduckdb/third_party/thrift -Iduckdb/third_party/zstd -Iduckdb  -I/usr/local/include   -fpic  -g -O2  -c duckdb/extension/parquet/parquet_reader.cpp -o duckdb/extension/parquet/parquet_reader.o
-g++ -std=gnu++11 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG -I. -DDUCKDB_DISABLE_PRINT -Iduckdb/src/include -Iduckdb/third_party/fmt/include -Iduckdb/third_party/re2 -Iduckdb/third_party/miniz -Iduckdb/third_party/utf8proc/include -Iduckdb/third_party/utf8proc -Iduckdb/third_party/libpg_query/include -Iduckdb/third_party/libpg_query -Iduckdb/third_party/concurrentqueue -Iduckdb/extension/parquet/include -Iduckdb/third_party/parquet -Iduckdb/third_party/snappy -Iduckdb/third_party/thrift -Iduckdb/third_party/zstd -Iduckdb  -I/usr/local/include   -fpic  -g -O2  -c duckdb/extension/parquet/parquet_timestamp.cpp -o duckdb/extension/parquet/parquet_timestamp.o
-g++ -std=gnu++11 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG -I. -DDUCKDB_DISABLE_PRINT -Iduckdb/src/include -Iduckdb/third_party/fmt/include -Iduckdb/third_party/re2 -Iduckdb/third_party/miniz -Iduckdb/third_party/utf8proc/include -Iduckdb/third_party/utf8proc -Iduckdb/third_party/libpg_query/include -Iduckdb/third_party/libpg_query -Iduckdb/third_party/concurrentqueue -Iduckdb/extension/parquet/include -Iduckdb/third_party/parquet -Iduckdb/third_party/snappy -Iduckdb/third_party/thrift -Iduckdb/third_party/zstd -Iduckdb  -I/usr/local/include   -fpic  -g -O2  -c duckdb/extension/parquet/parquet_writer.cpp -o duckdb/extension/parquet/parquet_writer.o
-g++ -std=gnu++11 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG -I. -DDUCKDB_DISABLE_PRINT -Iduckdb/src/include -Iduckdb/third_party/fmt/include -Iduckdb/third_party/re2 -Iduckdb/third_party/miniz -Iduckdb/third_party/utf8proc/include -Iduckdb/third_party/utf8proc -Iduckdb/third_party/libpg_query/include -Iduckdb/third_party/libpg_query -Iduckdb/third_party/concurrentqueue -Iduckdb/extension/parquet/include -Iduckdb/third_party/parquet -Iduckdb/third_party/snappy -Iduckdb/third_party/thrift -Iduckdb/third_party/zstd -Iduckdb  -I/usr/local/include   -fpic  -g -O2  -c duckdb/amalgamation-1.cpp -o duckdb/amalgamation-1.o
-...
-g++ -std=gnu++11 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG -I. -DDUCKDB_DISABLE_PRINT -Iduckdb/src/include -Iduckdb/third_party/fmt/include -Iduckdb/third_party/re2 -Iduckdb/third_party/miniz -Iduckdb/third_party/utf8proc/include -Iduckdb/third_party/utf8proc -Iduckdb/third_party/libpg_query/include -Iduckdb/third_party/libpg_query -Iduckdb/third_party/concurrentqueue -Iduckdb/extension/parquet/include -Iduckdb/third_party/parquet -Iduckdb/third_party/snappy -Iduckdb/third_party/thrift -Iduckdb/third_party/zstd -Iduckdb  -I/usr/local/include   -fpic  -g -O2  -c duckdb/amalgamation-8.cpp -o duckdb/amalgamation-8.o
-g++ -std=gnu++11 -shared -L/opt/R/4.0.3/lib/R/lib -L/usr/local/lib -o duckdb.so duckdbr.o duckdb/extension/parquet/parquet-extension.o duckdb/extension/parquet/parquet_reader.o duckdb/extension/parquet/parquet_timestamp.o duckdb/extension/parquet/parquet_writer.o duckdb/amalgamation-1.o duckdb/amalgamation-2.o duckdb/amalgamation-3.o duckdb/amalgamation-4.o duckdb/amalgamation-5.o duckdb/amalgamation-6.o duckdb/amalgamation-7.o duckdb/third_party/fmt/format.o duckdb/third_party/libpg_query/pg_functions.o duckdb/third_party/libpg_query/postgres_parser.o duckdb/third_party/libpg_query/src_backend_nodes_list.o duckdb/third_party/libpg_query/src_backend_nodes_makefuncs.o duckdb/third_party/libpg_query/src_backend_nodes_value.o duckdb/third_party/libpg_query/src_backend_parser_gram.o duckdb/third_party/libpg_query/src_backend_parser_parser.o duckdb/third_party/libpg_query/src_backend_parser_scan.o duckdb/third_party/libpg_query/src_backend_parser_scansup.o duckdb/third_party/libpg_query/src_common_keywords.o duckdb/third_party/miniz/miniz.o duckdb/third_party/parquet/parquet_constants.o duckdb/third_party/parquet/parquet_types.o duckdb/third_party/re2/re2/bitstate.o duckdb/third_party/re2/re2/compile.o duckdb/third_party/re2/re2/dfa.o duckdb/third_party/re2/re2/filtered_re2.o duckdb/third_party/re2/re2/mimics_pcre.o duckdb/third_party/re2/re2/nfa.o duckdb/third_party/re2/re2/onepass.o duckdb/third_party/re2/re2/parse.o duckdb/third_party/re2/re2/perl_groups.o duckdb/third_party/re2/re2/prefilter.o duckdb/third_party/re2/re2/prefilter_tree.o duckdb/third_party/re2/re2/prog.o duckdb/third_party/re2/re2/re2.o duckdb/third_party/re2/re2/regexp.o duckdb/third_party/re2/re2/set.o duckdb/third_party/re2/re2/simplify.o duckdb/third_party/re2/re2/stringpiece.o duckdb/third_party/re2/re2/tostring.o duckdb/third_party/re2/re2/unicode_casefold.o duckdb/third_party/re2/re2/unicode_groups.o duckdb/third_party/re2/util/rune.o duckdb/third_party/re2/util/strutil.o duckdb/third_party/snappy/snappy-sinksource.o duckdb/third_party/snappy/snappy.o duckdb/third_party/thrift/thrift/protocol/TProtocol.o duckdb/third_party/thrift/thrift/transport/TBufferTransports.o duckdb/third_party/thrift/thrift/transport/TTransportException.o duckdb/third_party/utf8proc/utf8proc.o duckdb/third_party/utf8proc/utf8proc_wrapper.o duckdb/third_party/zstd/common/entropy_common.o duckdb/third_party/zstd/common/error_private.o duckdb/third_party/zstd/common/fse_decompress.o duckdb/third_party/zstd/common/xxhash.o duckdb/third_party/zstd/common/zstd_common.o duckdb/third_party/zstd/compress/fse_compress.o duckdb/third_party/zstd/compress/hist.o duckdb/third_party/zstd/compress/huf_compress.o duckdb/third_party/zstd/compress/zstd_compress.o duckdb/third_party/zstd/compress/zstd_compress_literals.o duckdb/third_party/zstd/compress/zstd_compress_sequences.o duckdb/third_party/zstd/compress/zstd_compress_superblock.o duckdb/third_party/zstd/compress/zstd_double_fast.o duckdb/third_party/zstd/compress/zstd_fast.o duckdb/third_party/zstd/compress/zstd_lazy.o duckdb/third_party/zstd/compress/zstd_ldm.o duckdb/third_party/zstd/compress/zstd_opt.o duckdb/third_party/zstd/decompress/huf_decompress.o duckdb/third_party/zstd/decompress/zstd_ddict.o duckdb/third_party/zstd/decompress/zstd_decompress.o duckdb/third_party/zstd/decompress/zstd_decompress_block.o duckdb/amalgamation-8.o -L/opt/R/4.0.3/lib/R/lib -lR
-installing to /tmp/workdir/duckdb/old/duckdb.Rcheck/00LOCK-duckdb/00new/duckdb/libs
-** R
-Warning in dir.create(outCodeDir) :
-  cannot create dir '/tmp/workdir/duckdb/old/duckdb.Rcheck/00LOCK-duckdb/00new/duckdb/R', reason 'No space left on device'
-Error in .install_package_code_files(".", instdir) : 
-  cannot open directory '/tmp/workdir/duckdb/old/duckdb.Rcheck/00LOCK-duckdb/00new/duckdb/R'
-ERROR: unable to collate and parse R files for package ‘duckdb’
-* removing ‘/tmp/workdir/duckdb/old/duckdb.Rcheck/duckdb’
-
-
-```
-# enviGCMS
-
-<details>
-
-* Version: 0.6.6
-* GitHub: https://github.com/yufree/enviGCMS
-* Source code: https://github.com/cran/enviGCMS
-* Date/Publication: 2020-06-04 15:20:06 UTC
-* Number of recursive dependencies: 145
-
-Run `cloud_details(, "enviGCMS")` for more info
+Run `cloud_details(, "doc2concrete")` for more info
 
 </details>
 
@@ -990,25 +3149,81 @@ Run `cloud_details(, "enviGCMS")` for more info
 ### Devel
 
 ```
-* using log directory ‘/tmp/workdir/enviGCMS/new/enviGCMS.Rcheck’
+
+
+
+
+
+
+```
+### CRAN
+
+```
+* using log directory ‘/tmp/workdir/doc2concrete/old/doc2concrete.Rcheck’
 * using R version 4.0.3 (2020-10-10)
 * using platform: x86_64-pc-linux-gnu (64-bit)
 * using session charset: UTF-8
 * using options ‘--no-manual --no-build-vignettes’
-* checking for file ‘enviGCMS/DESCRIPTION’ ... OK
+* checking for file ‘doc2concrete/DESCRIPTION’ ... OK
 * checking extension type ... Package
-* this is package ‘enviGCMS’ version ‘0.6.6’
+* this is package ‘doc2concrete’ version ‘0.5.0’
 * package encoding: UTF-8
 * checking package namespace information ... OK
 ...
+* checking for unstated dependencies in ‘tests’ ... OK
 * checking tests ... OK
   Running ‘testthat.R’
 * checking for unstated dependencies in vignettes ... OK
 * checking package vignettes in ‘inst/doc’ ... OK
 * checking running R code from vignettes ... NONE
-  ‘GCMSDA.Rmd’ using ‘UTF-8’... OK
-  ‘PooledQC.Rmd’ using ‘UTF-8’... OK
+  ‘doc2concrete.Rmd’ using ‘UTF-8’... OK
 * checking re-building of vignette outputs ... SKIPPED
+* DONE
+Status: 1 NOTE
+
+
+
+
+
+```
+# DramaAnalysis
+
+<details>
+
+* Version: 3.0.2
+* GitHub: https://github.com/quadrama/DramaAnalysis
+* Source code: https://github.com/cran/DramaAnalysis
+* Date/Publication: 2020-09-18 15:00:07 UTC
+* Number of recursive dependencies: 85
+
+Run `cloud_details(, "DramaAnalysis")` for more info
+
+</details>
+
+## Error before installation
+
+### Devel
+
+```
+* using log directory ‘/tmp/workdir/DramaAnalysis/new/DramaAnalysis.Rcheck’
+* using R version 4.0.3 (2020-10-10)
+* using platform: x86_64-pc-linux-gnu (64-bit)
+* using session charset: UTF-8
+* using options ‘--no-manual --no-build-vignettes’
+* checking for file ‘DramaAnalysis/DESCRIPTION’ ... OK
+* checking extension type ... Package
+* this is package ‘DramaAnalysis’ version ‘3.0.2’
+* package encoding: UTF-8
+* checking package namespace information ... OK
+...
+* checking for unstated dependencies in examples ... OK
+* checking contents of ‘data’ directory ... OK
+* checking data for non-ASCII characters ... OK
+* checking data for ASCII and uncompressed saves ... OK
+* checking examples ... OK
+* checking for unstated dependencies in ‘tests’ ... OK
+* checking tests ... OK
+  Running ‘testthat.R’
 * DONE
 Status: 1 NOTE
 
@@ -1020,24 +3235,224 @@ Status: 1 NOTE
 ### CRAN
 
 ```
-* using log directory ‘/tmp/workdir/enviGCMS/old/enviGCMS.Rcheck’
+* using log directory ‘/tmp/workdir/DramaAnalysis/old/DramaAnalysis.Rcheck’
 * using R version 4.0.3 (2020-10-10)
 * using platform: x86_64-pc-linux-gnu (64-bit)
 * using session charset: UTF-8
 * using options ‘--no-manual --no-build-vignettes’
-* checking for file ‘enviGCMS/DESCRIPTION’ ... OK
+* checking for file ‘DramaAnalysis/DESCRIPTION’ ... OK
 * checking extension type ... Package
-* this is package ‘enviGCMS’ version ‘0.6.6’
+* this is package ‘DramaAnalysis’ version ‘3.0.2’
 * package encoding: UTF-8
 * checking package namespace information ... OK
 ...
+* checking for unstated dependencies in examples ... OK
+* checking contents of ‘data’ directory ... OK
+* checking data for non-ASCII characters ... OK
+* checking data for ASCII and uncompressed saves ... OK
+* checking examples ... OK
+* checking for unstated dependencies in ‘tests’ ... OK
+* checking tests ... OK
+  Running ‘testthat.R’
+* DONE
+Status: 1 NOTE
+
+
+
+
+
+```
+# DriveML
+
+<details>
+
+* Version: 0.1.0
+* GitHub: NA
+* Source code: https://github.com/cran/DriveML
+* Date/Publication: 2020-06-04 09:50:06 UTC
+* Number of recursive dependencies: 117
+
+Run `cloud_details(, "DriveML")` for more info
+
+</details>
+
+## Error before installation
+
+### Devel
+
+```
+* using log directory ‘/tmp/workdir/DriveML/new/DriveML.Rcheck’
+* using R version 4.0.3 (2020-10-10)
+* using platform: x86_64-pc-linux-gnu (64-bit)
+* using session charset: UTF-8
+* using options ‘--no-manual --no-build-vignettes’
+* checking for file ‘DriveML/DESCRIPTION’ ... OK
+* checking extension type ... Package
+* this is package ‘DriveML’ version ‘0.1.0’
+* package encoding: UTF-8
+* checking package namespace information ... OK
+* checking package dependencies ... ERROR
+Package required but not available: ‘rmarkdown’
+
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
+* DONE
+Status: 1 ERROR
+
+
+
+
+
+```
+### CRAN
+
+```
+* using log directory ‘/tmp/workdir/DriveML/old/DriveML.Rcheck’
+* using R version 4.0.3 (2020-10-10)
+* using platform: x86_64-pc-linux-gnu (64-bit)
+* using session charset: UTF-8
+* using options ‘--no-manual --no-build-vignettes’
+* checking for file ‘DriveML/DESCRIPTION’ ... OK
+* checking extension type ... Package
+* this is package ‘DriveML’ version ‘0.1.0’
+* package encoding: UTF-8
+* checking package namespace information ... OK
+* checking package dependencies ... ERROR
+Package required but not available: ‘rmarkdown’
+
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
+* DONE
+Status: 1 ERROR
+
+
+
+
+
+```
+# DSAIDE
+
+<details>
+
+* Version: 0.8.3
+* GitHub: https://github.com/ahgroup/DSAIDE
+* Source code: https://github.com/cran/DSAIDE
+* Date/Publication: 2020-01-09 00:20:03 UTC
+* Number of recursive dependencies: 123
+
+Run `cloud_details(, "DSAIDE")` for more info
+
+</details>
+
+## Error before installation
+
+### Devel
+
+```
+* using log directory ‘/tmp/workdir/DSAIDE/new/DSAIDE.Rcheck’
+* using R version 4.0.3 (2020-10-10)
+* using platform: x86_64-pc-linux-gnu (64-bit)
+* using session charset: UTF-8
+* using options ‘--no-manual --no-build-vignettes’
+* checking for file ‘DSAIDE/DESCRIPTION’ ... OK
+* checking extension type ... Package
+* this is package ‘DSAIDE’ version ‘0.8.3’
+* package encoding: UTF-8
+* checking package namespace information ... OK
+...
+* checking if there is a namespace ... OK
+* checking for executable files ... OK
+* checking for hidden files and directories ... OK
+* checking for portable file names ... OK
+* checking for sufficient/correct file permissions ... OK
+* checking whether package ‘DSAIDE’ can be installed ... ERROR
+Installation failed.
+See ‘/tmp/workdir/DSAIDE/new/DSAIDE.Rcheck/00install.out’ for details.
+* DONE
+Status: 1 ERROR, 1 NOTE
+
+
+
+
+
+```
+### CRAN
+
+```
+* using log directory ‘/tmp/workdir/DSAIDE/old/DSAIDE.Rcheck’
+* using R version 4.0.3 (2020-10-10)
+* using platform: x86_64-pc-linux-gnu (64-bit)
+* using session charset: UTF-8
+* using options ‘--no-manual --no-build-vignettes’
+* checking for file ‘DSAIDE/DESCRIPTION’ ... OK
+* checking extension type ... Package
+* this is package ‘DSAIDE’ version ‘0.8.3’
+* package encoding: UTF-8
+* checking package namespace information ... OK
+...
+* checking if there is a namespace ... OK
+* checking for executable files ... OK
+* checking for hidden files and directories ... OK
+* checking for portable file names ... OK
+* checking for sufficient/correct file permissions ... OK
+* checking whether package ‘DSAIDE’ can be installed ... ERROR
+Installation failed.
+See ‘/tmp/workdir/DSAIDE/old/DSAIDE.Rcheck/00install.out’ for details.
+* DONE
+Status: 1 ERROR, 1 NOTE
+
+
+
+
+
+```
+# earthtide
+
+<details>
+
+* Version: 0.0.10
+* GitHub: https://github.com/jkennel/earthtide
+* Source code: https://github.com/cran/earthtide
+* Date/Publication: 2020-03-13 18:10:03 UTC
+* Number of recursive dependencies: 50
+
+Run `cloud_details(, "earthtide")` for more info
+
+</details>
+
+## Error before installation
+
+### Devel
+
+```
+
+
+
+
+
+
+```
+### CRAN
+
+```
+* using log directory ‘/tmp/workdir/earthtide/old/earthtide.Rcheck’
+* using R version 4.0.3 (2020-10-10)
+* using platform: x86_64-pc-linux-gnu (64-bit)
+* using session charset: UTF-8
+* using options ‘--no-manual --no-build-vignettes’
+* checking for file ‘earthtide/DESCRIPTION’ ... OK
+* checking extension type ... Package
+* this is package ‘earthtide’ version ‘0.0.10’
+* package encoding: UTF-8
+* checking package namespace information ... OK
+...
+* checking for unstated dependencies in ‘tests’ ... OK
 * checking tests ... OK
   Running ‘testthat.R’
 * checking for unstated dependencies in vignettes ... OK
 * checking package vignettes in ‘inst/doc’ ... OK
 * checking running R code from vignettes ... NONE
-  ‘GCMSDA.Rmd’ using ‘UTF-8’... OK
-  ‘PooledQC.Rmd’ using ‘UTF-8’... OK
+  ‘introduction.Rmd’ using ‘UTF-8’... OK
 * checking re-building of vignette outputs ... SKIPPED
 * DONE
 Status: 1 NOTE
@@ -1047,35 +3462,102 @@ Status: 1 NOTE
 
 
 ```
-# fdapace
+# EcotoneFinder
 
 <details>
 
-* Version: 0.5.5
-* GitHub: https://github.com/functionaldata/tPACE
-* Source code: https://github.com/cran/fdapace
-* Date/Publication: 2020-07-29 05:10:20 UTC
-* Number of recursive dependencies: 112
+* Version: 0.2.2
+* GitHub: NA
+* Source code: https://github.com/cran/EcotoneFinder
+* Date/Publication: 2020-11-23 08:00:09 UTC
+* Number of recursive dependencies: 131
 
-Run `cloud_details(, "fdapace")` for more info
+Run `cloud_details(, "EcotoneFinder")` for more info
 
 </details>
 
-## Newly broken
+## Error before installation
 
-*   checking whether package ‘fdapace’ can be installed ... ERROR
+### Devel
+
+```
+* using log directory ‘/tmp/workdir/EcotoneFinder/new/EcotoneFinder.Rcheck’
+* using R version 4.0.3 (2020-10-10)
+* using platform: x86_64-pc-linux-gnu (64-bit)
+* using session charset: UTF-8
+* using options ‘--no-manual --no-build-vignettes’
+* checking for file ‘EcotoneFinder/DESCRIPTION’ ... OK
+* checking extension type ... Package
+* this is package ‘EcotoneFinder’ version ‘0.2.2’
+* package encoding: UTF-8
+* checking package namespace information ... OK
+...
+* checking for code/documentation mismatches ... OK
+* checking Rd \usage sections ... OK
+* checking Rd contents ... OK
+* checking for unstated dependencies in examples ... OK
+* checking examples ... OK
+* checking for unstated dependencies in ‘tests’ ... OK
+* checking tests ... OK
+  Running ‘testthat.R’
+* DONE
+Status: 2 NOTEs
+
+
+
+
+
+```
+### CRAN
+
+```
+* using log directory ‘/tmp/workdir/EcotoneFinder/old/EcotoneFinder.Rcheck’
+* using R version 4.0.3 (2020-10-10)
+* using platform: x86_64-pc-linux-gnu (64-bit)
+* using session charset: UTF-8
+* using options ‘--no-manual --no-build-vignettes’
+* checking for file ‘EcotoneFinder/DESCRIPTION’ ... OK
+* checking extension type ... Package
+* this is package ‘EcotoneFinder’ version ‘0.2.2’
+* package encoding: UTF-8
+* checking package namespace information ... OK
+...
+* checking for code/documentation mismatches ... OK
+* checking Rd \usage sections ... OK
+* checking Rd contents ... OK
+* checking for unstated dependencies in examples ... OK
+* checking examples ... OK
+* checking for unstated dependencies in ‘tests’ ... OK
+* checking tests ... OK
+  Running ‘testthat.R’
+* DONE
+Status: 2 NOTEs
+
+
+
+
+
+```
+# EdSurvey
+
+<details>
+
+* Version: 2.6.1
+* GitHub: NA
+* Source code: https://github.com/cran/EdSurvey
+* Date/Publication: 2020-09-02 20:50:03 UTC
+* Number of recursive dependencies: 122
+
+Run `cloud_details(, "EdSurvey")` for more info
+
+</details>
+
+## In both
+
+*   checking whether package ‘EdSurvey’ can be installed ... ERROR
     ```
     Installation failed.
-    See ‘/tmp/workdir/fdapace/new/fdapace.Rcheck/00install.out’ for details.
-    ```
-
-## Newly fixed
-
-*   checking installed package size ... NOTE
-    ```
-      installed size is 73.1Mb
-      sub-directories of 1Mb or more:
-        libs  71.5Mb
+    See ‘/tmp/workdir/EdSurvey/new/EdSurvey.Rcheck/00install.out’ for details.
     ```
 
 ## Installation
@@ -1083,54 +3565,557 @@ Run `cloud_details(, "fdapace")` for more info
 ### Devel
 
 ```
-* installing *source* package ‘fdapace’ ...
-** package ‘fdapace’ successfully unpacked and MD5 sums checked
+* installing *source* package ‘EdSurvey’ ...
+** package ‘EdSurvey’ successfully unpacked and MD5 sums checked
 ** using staged installation
-** libs
-g++ -std=gnu++11 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG  -I'/opt/R/4.0.3/lib/R/site-library/Rcpp/include' -I'/opt/R/4.0.3/lib/R/site-library/RcppEigen/include' -I/usr/local/include   -fpic  -g -O2  -c CPPlwls1d.cpp -o CPPlwls1d.o
-In file included from /opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/Core:392,
-                 from /opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/Dense:1,
-                 from /opt/R/4.0.3/lib/R/site-library/RcppEigen/include/RcppEigenForward.h:30,
-                 from /opt/R/4.0.3/lib/R/site-library/RcppEigen/include/RcppEigen.h:25,
-                 from CPPlwls1d.cpp:1:
-...
-/opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/src/Core/ProductEvaluators.h:35:90:   required from ‘Eigen::internal::evaluator<Eigen::Product<Lhs, Rhs, Option> >::evaluator(const XprType&) [with Lhs = Eigen::Matrix<double, 1, 4>; Rhs = Eigen::Solve<Eigen::ColPivHouseholderQR<Eigen::Matrix<double, 4, 4> >, Eigen::Matrix<double, 4, 1> >; int Options = 0; Eigen::internal::evaluator<Eigen::Product<Lhs, Rhs, Option> >::XprType = Eigen::Product<Eigen::Matrix<double, 1, 4>, Eigen::Solve<Eigen::ColPivHouseholderQR<Eigen::Matrix<double, 4, 4> >, Eigen::Matrix<double, 4, 1> >, 0>]’
-/opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/src/Core/Product.h:132:22:   required from ‘Eigen::internal::dense_product_base<Lhs, Rhs, Option, 6>::operator const Scalar() const [with Lhs = Eigen::Matrix<double, 1, 4>; Rhs = Eigen::Solve<Eigen::ColPivHouseholderQR<Eigen::Matrix<double, 4, 4> >, Eigen::Matrix<double, 4, 1> >; int Option = 0; Eigen::internal::dense_product_base<Lhs, Rhs, Option, 6>::Scalar = double]’
-interp2lin.cpp:124:56:   required from here
-/opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/src/Core/CoreEvaluators.h:960:8: warning: ignoring attributes on template argument ‘Eigen::internal::packet_traits<double>::type’ {aka ‘__vector(2) double’} [-Wignored-attributes]
-g++ -std=gnu++11 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG  -I'/opt/R/4.0.3/lib/R/site-library/Rcpp/include' -I'/opt/R/4.0.3/lib/R/site-library/RcppEigen/include' -I/usr/local/include   -fpic  -g -O2  -c trapzRcpp.cpp -o trapzRcpp.o
-g++ -std=gnu++11 -shared -L/opt/R/4.0.3/lib/R/lib -L/usr/local/lib -o fdapace.so CPPlwls1d.o GetIndCEScoresCPP.o GetIndCEScoresCPPnewInd.o RCPPmean.o RCPPvar.o RcppExports.o RcppPseudoApprox.o Rcppsort.o Rmullwlsk.o RmullwlskCC.o RmullwlskCCsort2.o RmullwlskUniversal.o RmullwlskUniversalDeriv.o RrotatedMullwlsk.o cumtrapzRcpp.o dropZeroElementsXYWin.o interp2lin.o trapzRcpp.o -L/opt/R/4.0.3/lib/R/lib -lR
-collect2: error: ld returned 1 exit status
-make: *** [/opt/R/4.0.3/lib/R/share/make/shlib.mk:10: fdapace.so] Error 1
-ERROR: compilation failed for package ‘fdapace’
-* removing ‘/tmp/workdir/fdapace/new/fdapace.Rcheck/fdapace’
+** R
+** inst
+** byte-compile and prepare package for lazy loading
+Error in loadNamespace(i, c(lib.loc, .libPaths()), versionCheck = vI[[i]]) : 
+  there is no package called ‘colorspace’
+Calls: <Anonymous> ... loadNamespace -> withRestarts -> withOneRestart -> doWithOneRestart
+Execution halted
+ERROR: lazy loading failed for package ‘EdSurvey’
+* removing ‘/tmp/workdir/EdSurvey/new/EdSurvey.Rcheck/EdSurvey’
 
 
 ```
 ### CRAN
 
 ```
-* installing *source* package ‘fdapace’ ...
-** package ‘fdapace’ successfully unpacked and MD5 sums checked
+* installing *source* package ‘EdSurvey’ ...
+** package ‘EdSurvey’ successfully unpacked and MD5 sums checked
+** using staged installation
+** R
+** inst
+** byte-compile and prepare package for lazy loading
+Error in loadNamespace(i, c(lib.loc, .libPaths()), versionCheck = vI[[i]]) : 
+  there is no package called ‘colorspace’
+Calls: <Anonymous> ... loadNamespace -> withRestarts -> withOneRestart -> doWithOneRestart
+Execution halted
+ERROR: lazy loading failed for package ‘EdSurvey’
+* removing ‘/tmp/workdir/EdSurvey/old/EdSurvey.Rcheck/EdSurvey’
+
+
+```
+# effectsize
+
+<details>
+
+* Version: 0.4.1
+* GitHub: https://github.com/easystats/effectsize
+* Source code: https://github.com/cran/effectsize
+* Date/Publication: 2020-12-07 15:40:08 UTC
+* Number of recursive dependencies: 215
+
+Run `cloud_details(, "effectsize")` for more info
+
+</details>
+
+## Error before installation
+
+### Devel
+
+```
+* using log directory ‘/tmp/workdir/effectsize/new/effectsize.Rcheck’
+* using R version 4.0.3 (2020-10-10)
+* using platform: x86_64-pc-linux-gnu (64-bit)
+* using session charset: UTF-8
+* using options ‘--no-manual --no-build-vignettes’
+* checking for file ‘effectsize/DESCRIPTION’ ... OK
+* checking extension type ... Package
+* this is package ‘effectsize’ version ‘0.4.1’
+* package encoding: UTF-8
+* checking package namespace information ... OK
+...
+  ‘anovaES.Rmd’ using ‘UTF-8’... OK
+  ‘bayesian_models.Rmd’ using ‘UTF-8’... OK
+  ‘convert.Rmd’ using ‘UTF-8’... OK
+  ‘from_test_statistics.Rmd’ using ‘UTF-8’... OK
+  ‘interpret.Rmd’ using ‘UTF-8’... OK
+  ‘standardize_data.Rmd’ using ‘UTF-8’... OK
+  ‘standardize_parameters.Rmd’ using ‘UTF-8’... OK
+* checking re-building of vignette outputs ... SKIPPED
+* DONE
+Status: 1 NOTE
+
+
+
+
+
+```
+### CRAN
+
+```
+
+
+
+
+
+
+```
+# EGRET
+
+<details>
+
+* Version: 3.0.2
+* GitHub: https://github.com/USGS-R/EGRET
+* Source code: https://github.com/cran/EGRET
+* Date/Publication: 2019-02-08 22:43:33 UTC
+* Number of recursive dependencies: 80
+
+Run `cloud_details(, "EGRET")` for more info
+
+</details>
+
+## Error before installation
+
+### Devel
+
+```
+* using log directory ‘/tmp/workdir/EGRET/new/EGRET.Rcheck’
+* using R version 4.0.3 (2020-10-10)
+* using platform: x86_64-pc-linux-gnu (64-bit)
+* using session charset: UTF-8
+* using options ‘--no-manual --no-build-vignettes’
+* checking for file ‘EGRET/DESCRIPTION’ ... OK
+* checking extension type ... Package
+* this is package ‘EGRET’ version ‘3.0.2’
+* checking package namespace information ... OK
+* checking package dependencies ... NOTE
+...
+* checking files in ‘vignettes’ ... NOTE
+Files named as vignettes but with no recognized vignette engine:
+   ‘vignettes/EGRET.Rnw’
+(Is a VignetteBuilder field missing?)
+* checking examples ... OK
+* checking for unstated dependencies in ‘tests’ ... OK
+* checking tests ... OK
+  Running ‘testthat.R’
+* DONE
+Status: 2 NOTEs
+
+
+
+
+
+```
+### CRAN
+
+```
+* using log directory ‘/tmp/workdir/EGRET/old/EGRET.Rcheck’
+* using R version 4.0.3 (2020-10-10)
+* using platform: x86_64-pc-linux-gnu (64-bit)
+* using session charset: UTF-8
+* using options ‘--no-manual --no-build-vignettes’
+* checking for file ‘EGRET/DESCRIPTION’ ... OK
+* checking extension type ... Package
+* this is package ‘EGRET’ version ‘3.0.2’
+* checking package namespace information ... OK
+* checking package dependencies ... NOTE
+...
+* checking files in ‘vignettes’ ... NOTE
+Files named as vignettes but with no recognized vignette engine:
+   ‘vignettes/EGRET.Rnw’
+(Is a VignetteBuilder field missing?)
+* checking examples ... OK
+* checking for unstated dependencies in ‘tests’ ... OK
+* checking tests ... OK
+  Running ‘testthat.R’
+* DONE
+Status: 2 NOTEs
+
+
+
+
+
+```
+# EML
+
+<details>
+
+* Version: 2.0.4
+* GitHub: https://github.com/ropensci/EML
+* Source code: https://github.com/cran/EML
+* Date/Publication: 2020-11-10 16:00:02 UTC
+* Number of recursive dependencies: 98
+
+Run `cloud_details(, "EML")` for more info
+
+</details>
+
+## Error before installation
+
+### Devel
+
+```
+* using log directory ‘/tmp/workdir/EML/new/EML.Rcheck’
+* using R version 4.0.3 (2020-10-10)
+* using platform: x86_64-pc-linux-gnu (64-bit)
+* using session charset: UTF-8
+* using options ‘--no-manual --no-build-vignettes’
+* checking for file ‘EML/DESCRIPTION’ ... OK
+* checking extension type ... Package
+* this is package ‘EML’ version ‘2.0.4’
+* package encoding: UTF-8
+* checking package namespace information ... OK
+* checking package dependencies ... ERROR
+Package required but not available: ‘rmarkdown’
+
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
+* DONE
+Status: 1 ERROR
+
+
+
+
+
+```
+### CRAN
+
+```
+* using log directory ‘/tmp/workdir/EML/old/EML.Rcheck’
+* using R version 4.0.3 (2020-10-10)
+* using platform: x86_64-pc-linux-gnu (64-bit)
+* using session charset: UTF-8
+* using options ‘--no-manual --no-build-vignettes’
+* checking for file ‘EML/DESCRIPTION’ ... OK
+* checking extension type ... Package
+* this is package ‘EML’ version ‘2.0.4’
+* package encoding: UTF-8
+* checking package namespace information ... OK
+* checking package dependencies ... ERROR
+Package required but not available: ‘rmarkdown’
+
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
+* DONE
+Status: 1 ERROR
+
+
+
+
+
+```
+# EpiModel
+
+<details>
+
+* Version: 2.0.3
+* GitHub: https://github.com/statnet/EpiModel
+* Source code: https://github.com/cran/EpiModel
+* Date/Publication: 2020-11-09 21:40:13 UTC
+* Number of recursive dependencies: 100
+
+Run `cloud_details(, "EpiModel")` for more info
+
+</details>
+
+## Error before installation
+
+### Devel
+
+```
+* using log directory ‘/tmp/workdir/EpiModel/new/EpiModel.Rcheck’
+* using R version 4.0.3 (2020-10-10)
+* using platform: x86_64-pc-linux-gnu (64-bit)
+* using session charset: UTF-8
+* using options ‘--no-manual --no-build-vignettes’
+* checking for file ‘EpiModel/DESCRIPTION’ ... OK
+* this is package ‘EpiModel’ version ‘2.0.3’
+* package encoding: UTF-8
+* checking package namespace information ... OK
+* checking package dependencies ... NOTE
+...
+* checking line endings in C/C++/Fortran sources/headers ... OK
+* checking compiled code ... OK
+* checking installed files from ‘inst/doc’ ... OK
+* checking files in ‘vignettes’ ... OK
+* checking examples ... OK
+* checking for unstated dependencies in ‘tests’ ... OK
+* checking tests ... OK
+  Running ‘test-all.R’
+* DONE
+Status: 1 NOTE
+
+
+
+
+
+```
+### CRAN
+
+```
+* using log directory ‘/tmp/workdir/EpiModel/old/EpiModel.Rcheck’
+* using R version 4.0.3 (2020-10-10)
+* using platform: x86_64-pc-linux-gnu (64-bit)
+* using session charset: UTF-8
+* using options ‘--no-manual --no-build-vignettes’
+* checking for file ‘EpiModel/DESCRIPTION’ ... OK
+* this is package ‘EpiModel’ version ‘2.0.3’
+* package encoding: UTF-8
+* checking package namespace information ... OK
+* checking package dependencies ... NOTE
+...
+* checking line endings in C/C++/Fortran sources/headers ... OK
+* checking compiled code ... OK
+* checking installed files from ‘inst/doc’ ... OK
+* checking files in ‘vignettes’ ... OK
+* checking examples ... OK
+* checking for unstated dependencies in ‘tests’ ... OK
+* checking tests ... OK
+  Running ‘test-all.R’
+* DONE
+Status: 1 NOTE
+
+
+
+
+
+```
+# EvidenceSynthesis
+
+<details>
+
+* Version: 0.2.1
+* GitHub: https://github.com/OHDSI/EvidenceSynthesis
+* Source code: https://github.com/cran/EvidenceSynthesis
+* Date/Publication: 2020-11-20 10:30:22 UTC
+* Number of recursive dependencies: 105
+
+Run `cloud_details(, "EvidenceSynthesis")` for more info
+
+</details>
+
+## Error before installation
+
+### Devel
+
+```
+* using log directory ‘/tmp/workdir/EvidenceSynthesis/new/EvidenceSynthesis.Rcheck’
+* using R version 4.0.3 (2020-10-10)
+* using platform: x86_64-pc-linux-gnu (64-bit)
+* using session charset: UTF-8
+* using options ‘--no-manual --no-build-vignettes’
+* checking for file ‘EvidenceSynthesis/DESCRIPTION’ ... OK
+* checking extension type ... Package
+* this is package ‘EvidenceSynthesis’ version ‘0.2.1’
+* package encoding: UTF-8
+* checking package namespace information ... OK
+...
+   13.                   └─base::loadNamespace(j <- i[[1L]], c(lib.loc, .libPaths()), versionCheck = vI[[j]])
+   14.                     └─base::withRestarts(stop(cond), retry_loadNamespace = function() NULL)
+   15.                       └─base:::withOneRestart(expr, restarts[[1L]])
+   16.                         └─base:::doWithOneRestart(return(expr), restart)
+  
+  [ FAIL 2 | WARN 0 | SKIP 0 | PASS 5 ]
+  Error: Test failures
+  Execution halted
+* DONE
+Status: 2 ERRORs, 1 NOTE
+
+
+
+
+
+```
+### CRAN
+
+```
+* using log directory ‘/tmp/workdir/EvidenceSynthesis/old/EvidenceSynthesis.Rcheck’
+* using R version 4.0.3 (2020-10-10)
+* using platform: x86_64-pc-linux-gnu (64-bit)
+* using session charset: UTF-8
+* using options ‘--no-manual --no-build-vignettes’
+* checking for file ‘EvidenceSynthesis/DESCRIPTION’ ... OK
+* checking extension type ... Package
+* this is package ‘EvidenceSynthesis’ version ‘0.2.1’
+* package encoding: UTF-8
+* checking package namespace information ... OK
+...
+  
+  ══ testthat results  ═══════════════════════════════════════════════════════════
+  ERROR (test-llAproximations.R:11:1): (code run outside of `test_that()`)
+  ERROR (test-nonNormalMetaAnalysis.R:43:1): (code run outside of `test_that()`)
+  
+  [ FAIL 2 | WARN 0 | SKIP 0 | PASS 5 ]
+  Error: Test failures
+  Execution halted
+* DONE
+Status: 2 ERRORs, 1 NOTE
+
+
+
+
+
+```
+# fastpos
+
+<details>
+
+* Version: 0.4.1
+* GitHub: https://github.com/johannes-titz/fastpos
+* Source code: https://github.com/cran/fastpos
+* Date/Publication: 2020-09-29 08:50:08 UTC
+* Number of recursive dependencies: 65
+
+Run `cloud_details(, "fastpos")` for more info
+
+</details>
+
+## Newly broken
+
+*   checking whether package ‘fastpos’ can be installed ... ERROR
+    ```
+    Installation failed.
+    See ‘/tmp/workdir/fastpos/new/fastpos.Rcheck/00install.out’ for details.
+    ```
+
+## Newly fixed
+
+*   checking tests ... ERROR
+    ```
+      Running ‘testthat.R’
+    Running the tests in ‘tests/testthat.R’ failed.
+    Last 13 lines of output:
+      > library(testthat)
+      > library(fastpos)
+      > 
+      > test_check("fastpos")
+      ── Warning (test-fastpos.R:2:1): (code run outside of `test_that()`) ───────────
+      59 simulation[s] did not reach the corridor of
+                  stability.
+      Increase sample_size_max and rerun the simulation.
+      
+      ── Warning (test-fastpos.R:4:1): (code run outside of `test_that()`) ───────────
+      338 simulation[s] did not reach the corridor of
+                  stability.
+      Increase sample_size_max and rerun the simulation.
+      
+      Killed
+    ```
+
+## Installation
+
+### Devel
+
+```
+* installing *source* package ‘fastpos’ ...
+** package ‘fastpos’ successfully unpacked and MD5 sums checked
 ** using staged installation
 ** libs
-g++ -std=gnu++11 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG  -I'/opt/R/4.0.3/lib/R/site-library/Rcpp/include' -I'/opt/R/4.0.3/lib/R/site-library/RcppEigen/include' -I/usr/local/include   -fpic  -g -O2  -c CPPlwls1d.cpp -o CPPlwls1d.o
-In file included from /opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/Core:392,
-                 from /opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/Dense:1,
-                 from /opt/R/4.0.3/lib/R/site-library/RcppEigen/include/RcppEigenForward.h:30,
-                 from /opt/R/4.0.3/lib/R/site-library/RcppEigen/include/RcppEigen.h:25,
-                 from CPPlwls1d.cpp:1:
+g++ -std=gnu++11 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG  -I'/opt/R/4.0.3/lib/R/site-library/Rcpp/include' -I'/opt/R/4.0.3/lib/R/site-library/RcppArmadillo/include' -I'/opt/R/4.0.3/lib/R/site-library/RcppProgress/include' -I/usr/local/include  -fopenmp -fpic  -g -O2  -c RcppExports.cpp -o RcppExports.o
+g++: fatal error: Killed signal terminated program cc1plus
+compilation terminated.
+make: *** [/opt/R/4.0.3/lib/R/etc/Makeconf:181: RcppExports.o] Error 1
+ERROR: compilation failed for package ‘fastpos’
+* removing ‘/tmp/workdir/fastpos/new/fastpos.Rcheck/fastpos’
+
+
+```
+### CRAN
+
+```
+* installing *source* package ‘fastpos’ ...
+** package ‘fastpos’ successfully unpacked and MD5 sums checked
+** using staged installation
+** libs
+g++ -std=gnu++11 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG  -I'/opt/R/4.0.3/lib/R/site-library/Rcpp/include' -I'/opt/R/4.0.3/lib/R/site-library/RcppArmadillo/include' -I'/opt/R/4.0.3/lib/R/site-library/RcppProgress/include' -I/usr/local/include  -fopenmp -fpic  -g -O2  -c RcppExports.cpp -o RcppExports.o
+g++ -std=gnu++11 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG  -I'/opt/R/4.0.3/lib/R/site-library/Rcpp/include' -I'/opt/R/4.0.3/lib/R/site-library/RcppArmadillo/include' -I'/opt/R/4.0.3/lib/R/site-library/RcppProgress/include' -I/usr/local/include  -fopenmp -fpic  -g -O2  -c rcpparma.cpp -o rcpparma.o
+g++ -std=gnu++11 -shared -L/opt/R/4.0.3/lib/R/lib -L/usr/local/lib -o fastpos.so RcppExports.o rcpparma.o -fopenmp -llapack -lblas -lgfortran -lm -lquadmath -L/opt/R/4.0.3/lib/R/lib -lR
+installing to /tmp/workdir/fastpos/old/fastpos.Rcheck/00LOCK-fastpos/00new/fastpos/libs
+** R
+** inst
 ...
-** byte-compile and prepare package for lazy loading
 ** help
 *** installing help indices
+*** copying figures
 ** building package indices
 ** installing vignettes
 ** testing if installed package can be loaded from temporary location
 ** checking absolute paths in shared objects and dynamic libraries
 ** testing if installed package can be loaded from final location
 ** testing if installed package keeps a record of temporary installation path
-* DONE (fdapace)
+* DONE (fastpos)
+
+
+```
+# fdaPDE
+
+<details>
+
+* Version: 1.0-9
+* GitHub: NA
+* Source code: https://github.com/cran/fdaPDE
+* Date/Publication: 2020-05-15 15:10:02 UTC
+* Number of recursive dependencies: 76
+
+Run `cloud_details(, "fdaPDE")` for more info
+
+</details>
+
+## In both
+
+*   checking whether package ‘fdaPDE’ can be installed ... ERROR
+    ```
+    Installation failed.
+    See ‘/tmp/workdir/fdaPDE/new/fdaPDE.Rcheck/00install.out’ for details.
+    ```
+
+## Installation
+
+### Devel
+
+```
+* installing *source* package ‘fdaPDE’ ...
+** package ‘fdaPDE’ successfully unpacked and MD5 sums checked
+** using staged installation
+** libs
+g++ -std=gnu++11 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG  -I'/opt/R/4.0.3/lib/R/site-library/RcppEigen/include' -I/usr/local/include   -fpic  -g -O2  -c FEMeval.cpp -o FEMeval.o
+In file included from /opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/Core:392,
+                 from /opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/StdVector:14,
+                 from fdaPDE.h:27,
+                 from FEMeval.cpp:11:
+/opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/src/Core/arch/SSE/PacketMath.h:60:39: warning: ignoring attributes on template argument ‘__m128’ {aka ‘__vector(4) float’} [-Wignored-attributes]
+...
+/opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/src/SVD/BDCSVD.h:137:5:   required from ‘Eigen::BDCSVD<MatrixType>::BDCSVD(const MatrixType&, unsigned int) [with _MatrixType = Eigen::Matrix<double, -1, -1>; Eigen::BDCSVD<MatrixType>::MatrixType = Eigen::Matrix<double, -1, -1>]’
+mixedFEFPCA_imp.h:241:26:   required from ‘void MixedFEFPCABase<Integrator, ORDER, mydim, ndim>::computeCumulativePercentageExplained() [with Integrator = IntegratorTetrahedronP2; int ORDER = 1; int mydim = 3; int ndim = 3]’
+mixedFEFPCA_imp.h:373:87:   required from ‘void MixedFEFPCA<Integrator, ORDER, mydim, ndim>::apply() [with Integrator = IntegratorTetrahedronP2; int ORDER = 1; int mydim = 3; int ndim = 3]’
+mixedFEFPCA_imp.h:344:6:   required from here
+/opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/src/Core/CoreEvaluators.h:960:8: warning: ignoring attributes on template argument ‘Eigen::internal::packet_traits<double>::type’ {aka ‘__vector(2) double’} [-Wignored-attributes]
+g++: fatal error: Killed signal terminated program cc1plus
+compilation terminated.
+make: *** [/opt/R/4.0.3/lib/R/etc/Makeconf:181: fdaPDE.o] Error 1
+ERROR: compilation failed for package ‘fdaPDE’
+* removing ‘/tmp/workdir/fdaPDE/new/fdaPDE.Rcheck/fdaPDE’
+
+
+```
+### CRAN
+
+```
+* installing *source* package ‘fdaPDE’ ...
+** package ‘fdaPDE’ successfully unpacked and MD5 sums checked
+** using staged installation
+** libs
+g++ -std=gnu++11 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG  -I'/opt/R/4.0.3/lib/R/site-library/RcppEigen/include' -I/usr/local/include   -fpic  -g -O2  -c FEMeval.cpp -o FEMeval.o
+In file included from /opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/Core:392,
+                 from /opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/StdVector:14,
+                 from fdaPDE.h:27,
+                 from FEMeval.cpp:11:
+/opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/src/Core/arch/SSE/PacketMath.h:60:39: warning: ignoring attributes on template argument ‘__m128’ {aka ‘__vector(4) float’} [-Wignored-attributes]
+...
+/opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/src/SVD/BDCSVD.h:137:5:   required from ‘Eigen::BDCSVD<MatrixType>::BDCSVD(const MatrixType&, unsigned int) [with _MatrixType = Eigen::Matrix<double, -1, -1>; Eigen::BDCSVD<MatrixType>::MatrixType = Eigen::Matrix<double, -1, -1>]’
+mixedFEFPCA_imp.h:241:26:   required from ‘void MixedFEFPCABase<Integrator, ORDER, mydim, ndim>::computeCumulativePercentageExplained() [with Integrator = IntegratorTetrahedronP2; int ORDER = 1; int mydim = 3; int ndim = 3]’
+mixedFEFPCA_imp.h:373:87:   required from ‘void MixedFEFPCA<Integrator, ORDER, mydim, ndim>::apply() [with Integrator = IntegratorTetrahedronP2; int ORDER = 1; int mydim = 3; int ndim = 3]’
+mixedFEFPCA_imp.h:344:6:   required from here
+/opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/src/Core/CoreEvaluators.h:960:8: warning: ignoring attributes on template argument ‘Eigen::internal::packet_traits<double>::type’ {aka ‘__vector(2) double’} [-Wignored-attributes]
+g++: fatal error: Killed signal terminated program cc1plus
+compilation terminated.
+make: *** [/opt/R/4.0.3/lib/R/etc/Makeconf:181: fdaPDE.o] Error 1
+ERROR: compilation failed for package ‘fdaPDE’
+* removing ‘/tmp/workdir/fdaPDE/old/fdaPDE.Rcheck/fdaPDE’
 
 
 ```
@@ -1212,26 +4197,26 @@ ERROR: loading failed
 
 
 ```
-# ggstatsplot
+# ForeCA
 
 <details>
 
-* Version: 0.6.6
-* GitHub: https://github.com/IndrajeetPatil/ggstatsplot
-* Source code: https://github.com/cran/ggstatsplot
-* Date/Publication: 2020-12-03 10:40:02 UTC
-* Number of recursive dependencies: 201
+* Version: 0.2.7
+* GitHub: https://github.com/gmgeorg/ForeCA
+* Source code: https://github.com/cran/ForeCA
+* Date/Publication: 2020-06-29 12:40:42 UTC
+* Number of recursive dependencies: 61
 
-Run `cloud_details(, "ggstatsplot")` for more info
+Run `cloud_details(, "ForeCA")` for more info
 
 </details>
 
 ## In both
 
-*   checking whether package ‘ggstatsplot’ can be installed ... ERROR
+*   checking whether package ‘ForeCA’ can be installed ... ERROR
     ```
     Installation failed.
-    See ‘/tmp/workdir/ggstatsplot/new/ggstatsplot.Rcheck/00install.out’ for details.
+    See ‘/tmp/workdir/ForeCA/new/ForeCA.Rcheck/00install.out’ for details.
     ```
 
 ## Installation
@@ -1239,74 +4224,170 @@ Run `cloud_details(, "ggstatsplot")` for more info
 ### Devel
 
 ```
-* installing *source* package ‘ggstatsplot’ ...
-** package ‘ggstatsplot’ successfully unpacked and MD5 sums checked
+* installing *source* package ‘ForeCA’ ...
+** package ‘ForeCA’ successfully unpacked and MD5 sums checked
 ** using staged installation
 ** R
-** data
-*** moving datasets to lazyload DB
 ** inst
 ** byte-compile and prepare package for lazy loading
-Error in loadNamespace(j <- i[[1L]], c(lib.loc, .libPaths()), versionCheck = vI[[j]]) : 
-  there is no package called ‘metaBMA’
+Error in loadNamespace(i, c(lib.loc, .libPaths()), versionCheck = vI[[i]]) : 
+  there is no package called ‘stringr’
 Calls: <Anonymous> ... loadNamespace -> withRestarts -> withOneRestart -> doWithOneRestart
 Execution halted
-ERROR: lazy loading failed for package ‘ggstatsplot’
-* removing ‘/tmp/workdir/ggstatsplot/new/ggstatsplot.Rcheck/ggstatsplot’
+ERROR: lazy loading failed for package ‘ForeCA’
+* removing ‘/tmp/workdir/ForeCA/new/ForeCA.Rcheck/ForeCA’
 
 
 ```
 ### CRAN
 
 ```
-* installing *source* package ‘ggstatsplot’ ...
-** package ‘ggstatsplot’ successfully unpacked and MD5 sums checked
+* installing *source* package ‘ForeCA’ ...
+** package ‘ForeCA’ successfully unpacked and MD5 sums checked
 ** using staged installation
 ** R
-** data
-*** moving datasets to lazyload DB
 ** inst
 ** byte-compile and prepare package for lazy loading
-Error in loadNamespace(j <- i[[1L]], c(lib.loc, .libPaths()), versionCheck = vI[[j]]) : 
-  there is no package called ‘metaBMA’
+Error in loadNamespace(i, c(lib.loc, .libPaths()), versionCheck = vI[[i]]) : 
+  there is no package called ‘stringr’
 Calls: <Anonymous> ... loadNamespace -> withRestarts -> withOneRestart -> doWithOneRestart
 Execution halted
-ERROR: lazy loading failed for package ‘ggstatsplot’
-* removing ‘/tmp/workdir/ggstatsplot/old/ggstatsplot.Rcheck/ggstatsplot’
+ERROR: lazy loading failed for package ‘ForeCA’
+* removing ‘/tmp/workdir/ForeCA/old/ForeCA.Rcheck/ForeCA’
 
 
 ```
-# glmmTMB
+# NA
 
 <details>
 
-* Version: 1.0.2.1
-* GitHub: https://github.com/glmmTMB/glmmTMB
-* Source code: https://github.com/cran/glmmTMB
-* Date/Publication: 2020-07-02 11:30:17 UTC
-* Number of recursive dependencies: 159
+* Version: NA
+* GitHub: NA
+* Source code: https://github.com/cran/NA
+* Number of recursive dependencies: 0
 
-Run `cloud_details(, "glmmTMB")` for more info
+Run `cloud_details(, "NA")` for more info
 
 </details>
 
-## Newly broken
+## Error before installation
 
-*   checking whether package ‘glmmTMB’ can be installed ... ERROR
+### Devel
+
+```
+
+
+
+
+
+
+```
+### CRAN
+
+```
+
+
+
+
+
+
+```
+# GADMTools
+
+<details>
+
+* Version: 3.8-1
+* GitHub: https://github.com/IamKDO/GADMTools
+* Source code: https://github.com/cran/GADMTools
+* Date/Publication: 2020-03-05 12:30:08 UTC
+* Number of recursive dependencies: 105
+
+Run `cloud_details(, "GADMTools")` for more info
+
+</details>
+
+## Error before installation
+
+### Devel
+
+```
+* using log directory ‘/tmp/workdir/GADMTools/new/GADMTools.Rcheck’
+* using R version 4.0.3 (2020-10-10)
+* using platform: x86_64-pc-linux-gnu (64-bit)
+* using session charset: UTF-8
+* using options ‘--no-manual --no-build-vignettes’
+* checking for file ‘GADMTools/DESCRIPTION’ ... OK
+* checking extension type ... Package
+* this is package ‘GADMTools’ version ‘3.8-1’
+* package encoding: UTF-8
+* checking package namespace information ... OK
+...
+* checking contents of ‘data’ directory ... OK
+* checking data for non-ASCII characters ... NOTE
+  Note: found 19 marked UTF-8 strings
+* checking data for ASCII and uncompressed saves ... OK
+* checking sizes of PDF files under ‘inst/doc’ ... OK
+* checking installed files from ‘inst/doc’ ... OK
+* checking files in ‘vignettes’ ... OK
+* checking examples ... OK
+* DONE
+Status: 2 NOTEs
+
+
+
+
+
+```
+### CRAN
+
+```
+* using log directory ‘/tmp/workdir/GADMTools/old/GADMTools.Rcheck’
+* using R version 4.0.3 (2020-10-10)
+* using platform: x86_64-pc-linux-gnu (64-bit)
+* using session charset: UTF-8
+* using options ‘--no-manual --no-build-vignettes’
+* checking for file ‘GADMTools/DESCRIPTION’ ... OK
+* checking extension type ... Package
+* this is package ‘GADMTools’ version ‘3.8-1’
+* package encoding: UTF-8
+* checking package namespace information ... OK
+...
+* checking contents of ‘data’ directory ... OK
+* checking data for non-ASCII characters ... NOTE
+  Note: found 19 marked UTF-8 strings
+* checking data for ASCII and uncompressed saves ... OK
+* checking sizes of PDF files under ‘inst/doc’ ... OK
+* checking installed files from ‘inst/doc’ ... OK
+* checking files in ‘vignettes’ ... OK
+* checking examples ... OK
+* DONE
+Status: 2 NOTEs
+
+
+
+
+
+```
+# GARCOM
+
+<details>
+
+* Version: 1.2.0
+* GitHub: NA
+* Source code: https://github.com/cran/GARCOM
+* Date/Publication: 2020-10-16 13:40:02 UTC
+* Number of recursive dependencies: 55
+
+Run `cloud_details(, "GARCOM")` for more info
+
+</details>
+
+## In both
+
+*   checking whether package ‘GARCOM’ can be installed ... ERROR
     ```
     Installation failed.
-    See ‘/tmp/workdir/glmmTMB/new/glmmTMB.Rcheck/00install.out’ for details.
-    ```
-
-## Newly fixed
-
-*   checking installed package size ... NOTE
-    ```
-      installed size is 64.6Mb
-      sub-directories of 1Mb or more:
-        doc         1.2Mb
-        libs       60.9Mb
-        test_data   1.2Mb
+    See ‘/tmp/workdir/GARCOM/new/GARCOM.Rcheck/00install.out’ for details.
     ```
 
 ## Installation
@@ -1314,77 +4395,561 @@ Run `cloud_details(, "glmmTMB")` for more info
 ### Devel
 
 ```
-* installing *source* package ‘glmmTMB’ ...
-** package ‘glmmTMB’ successfully unpacked and MD5 sums checked
+* installing *source* package ‘GARCOM’ ...
+** package ‘GARCOM’ successfully unpacked and MD5 sums checked
+** using staged installation
+** R
+** data
+*** moving datasets to lazyload DB
+** inst
+** byte-compile and prepare package for lazy loading
+Error in loadNamespace(i, c(lib.loc, .libPaths()), versionCheck = vI[[i]]) : 
+  there is no package called ‘vegan’
+Calls: <Anonymous> ... loadNamespace -> withRestarts -> withOneRestart -> doWithOneRestart
+Execution halted
+ERROR: lazy loading failed for package ‘GARCOM’
+* removing ‘/tmp/workdir/GARCOM/new/GARCOM.Rcheck/GARCOM’
+
+
+```
+### CRAN
+
+```
+* installing *source* package ‘GARCOM’ ...
+** package ‘GARCOM’ successfully unpacked and MD5 sums checked
+** using staged installation
+** R
+** data
+*** moving datasets to lazyload DB
+** inst
+** byte-compile and prepare package for lazy loading
+Error in loadNamespace(i, c(lib.loc, .libPaths()), versionCheck = vI[[i]]) : 
+  there is no package called ‘vegan’
+Calls: <Anonymous> ... loadNamespace -> withRestarts -> withOneRestart -> doWithOneRestart
+Execution halted
+ERROR: lazy loading failed for package ‘GARCOM’
+* removing ‘/tmp/workdir/GARCOM/old/GARCOM.Rcheck/GARCOM’
+
+
+```
+# gastempt
+
+<details>
+
+* Version: 0.5.1
+* GitHub: https://github.com/dmenne/gastempt
+* Source code: https://github.com/cran/gastempt
+* Date/Publication: 2020-07-29 17:00:03 UTC
+* Number of recursive dependencies: 126
+
+Run `cloud_details(, "gastempt")` for more info
+
+</details>
+
+## In both
+
+*   checking whether package ‘gastempt’ can be installed ... ERROR
+    ```
+    Installation failed.
+    See ‘/tmp/workdir/gastempt/new/gastempt.Rcheck/00install.out’ for details.
+    ```
+
+## Installation
+
+### Devel
+
+```
+* installing *source* package ‘gastempt’ ...
+** package ‘gastempt’ successfully unpacked and MD5 sums checked
+** using staged installation
+Error in loadNamespace(name) : there is no package called ‘rstantools’
+Calls: :: ... loadNamespace -> withRestarts -> withOneRestart -> doWithOneRestart
+Execution halted
+ERROR: configuration failed for package ‘gastempt’
+* removing ‘/tmp/workdir/gastempt/new/gastempt.Rcheck/gastempt’
+
+
+```
+### CRAN
+
+```
+* installing *source* package ‘gastempt’ ...
+** package ‘gastempt’ successfully unpacked and MD5 sums checked
+** using staged installation
+Error in loadNamespace(name) : there is no package called ‘rstantools’
+Calls: :: ... loadNamespace -> withRestarts -> withOneRestart -> doWithOneRestart
+Execution halted
+ERROR: configuration failed for package ‘gastempt’
+* removing ‘/tmp/workdir/gastempt/old/gastempt.Rcheck/gastempt’
+
+
+```
+# GauPro
+
+<details>
+
+* Version: 0.2.2
+* GitHub: NA
+* Source code: https://github.com/cran/GauPro
+* Date/Publication: 2017-09-11 08:22:23 UTC
+* Number of recursive dependencies: 52
+
+Run `cloud_details(, "GauPro")` for more info
+
+</details>
+
+## Error before installation
+
+### Devel
+
+```
+* using log directory ‘/tmp/workdir/GauPro/new/GauPro.Rcheck’
+* using R version 4.0.3 (2020-10-10)
+* using platform: x86_64-pc-linux-gnu (64-bit)
+* using session charset: UTF-8
+* using options ‘--no-manual --no-build-vignettes’
+* checking for file ‘GauPro/DESCRIPTION’ ... OK
+* checking extension type ... Package
+* this is package ‘GauPro’ version ‘0.2.2’
+* checking package namespace information ... OK
+* checking package dependencies ... NOTE
+...
+* checking package vignettes in ‘inst/doc’ ... OK
+* checking running R code from vignettes ... NONE
+  ‘CrossValidationErrorCorrection.Rmd’ using ‘UTF-8’... OK
+  ‘GauPro.Rmd’ using ‘UTF-8’... OK
+  ‘IntroductionToGPs.Rmd’ using ‘UTF-8’... OK
+  ‘derivatives.Rmd’ using ‘UTF-8’... OK
+  ‘surface_derivatives.Rmd’ using ‘UTF-8’... OK
+* checking re-building of vignette outputs ... SKIPPED
+* DONE
+Status: 2 NOTEs
+
+
+
+
+
+```
+### CRAN
+
+```
+* using log directory ‘/tmp/workdir/GauPro/old/GauPro.Rcheck’
+* using R version 4.0.3 (2020-10-10)
+* using platform: x86_64-pc-linux-gnu (64-bit)
+* using session charset: UTF-8
+* using options ‘--no-manual --no-build-vignettes’
+* checking for file ‘GauPro/DESCRIPTION’ ... OK
+* checking extension type ... Package
+* this is package ‘GauPro’ version ‘0.2.2’
+* checking package namespace information ... OK
+* checking package dependencies ... NOTE
+...
+* checking package vignettes in ‘inst/doc’ ... OK
+* checking running R code from vignettes ... NONE
+  ‘CrossValidationErrorCorrection.Rmd’ using ‘UTF-8’... OK
+  ‘GauPro.Rmd’ using ‘UTF-8’... OK
+  ‘IntroductionToGPs.Rmd’ using ‘UTF-8’... OK
+  ‘derivatives.Rmd’ using ‘UTF-8’... OK
+  ‘surface_derivatives.Rmd’ using ‘UTF-8’... OK
+* checking re-building of vignette outputs ... SKIPPED
+* DONE
+Status: 2 NOTEs
+
+
+
+
+
+```
+# GeoMongo
+
+<details>
+
+* Version: 1.0.1
+* GitHub: https://github.com/mlampros/GeoMongo
+* Source code: https://github.com/cran/GeoMongo
+* Date/Publication: 2017-09-09 15:03:13 UTC
+* Number of recursive dependencies: 62
+
+Run `cloud_details(, "GeoMongo")` for more info
+
+</details>
+
+## Error before installation
+
+### Devel
+
+```
+* using log directory ‘/tmp/workdir/GeoMongo/new/GeoMongo.Rcheck’
+* using R version 4.0.3 (2020-10-10)
+* using platform: x86_64-pc-linux-gnu (64-bit)
+* using session charset: UTF-8
+* using options ‘--no-manual --no-build-vignettes’
+* checking for file ‘GeoMongo/DESCRIPTION’ ... OK
+* checking extension type ... Package
+* this is package ‘GeoMongo’ version ‘1.0.1’
+* package encoding: UTF-8
+* checking package namespace information ... OK
+* checking package dependencies ... ERROR
+Package required but not available: ‘geojsonR’
+
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
+* DONE
+Status: 1 ERROR
+
+
+
+
+
+```
+### CRAN
+
+```
+* using log directory ‘/tmp/workdir/GeoMongo/old/GeoMongo.Rcheck’
+* using R version 4.0.3 (2020-10-10)
+* using platform: x86_64-pc-linux-gnu (64-bit)
+* using session charset: UTF-8
+* using options ‘--no-manual --no-build-vignettes’
+* checking for file ‘GeoMongo/DESCRIPTION’ ... OK
+* checking extension type ... Package
+* this is package ‘GeoMongo’ version ‘1.0.1’
+* package encoding: UTF-8
+* checking package namespace information ... OK
+* checking package dependencies ... ERROR
+Package required but not available: ‘geojsonR’
+
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
+* DONE
+Status: 1 ERROR
+
+
+
+
+
+```
+# GetBCBData
+
+<details>
+
+* Version: 0.5
+* GitHub: https://github.com/msperlin/GetBCBData
+* Source code: https://github.com/cran/GetBCBData
+* Date/Publication: 2019-04-23 10:10:29 UTC
+* Number of recursive dependencies: 106
+
+Run `cloud_details(, "GetBCBData")` for more info
+
+</details>
+
+## Error before installation
+
+### Devel
+
+```
+* using log directory ‘/tmp/workdir/GetBCBData/new/GetBCBData.Rcheck’
+* using R version 4.0.3 (2020-10-10)
+* using platform: x86_64-pc-linux-gnu (64-bit)
+* using session charset: UTF-8
+* using options ‘--no-manual --no-build-vignettes’
+* checking for file ‘GetBCBData/DESCRIPTION’ ... OK
+* checking extension type ... Package
+* this is package ‘GetBCBData’ version ‘0.5’
+* package encoding: UTF-8
+* checking package namespace information ... OK
+* checking package dependencies ... ERROR
+Package required but not available: ‘curl’
+
+Package suggested but not available for checking: ‘rmarkdown’
+
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
+* DONE
+Status: 1 ERROR
+
+
+
+
+
+```
+### CRAN
+
+```
+* using log directory ‘/tmp/workdir/GetBCBData/old/GetBCBData.Rcheck’
+* using R version 4.0.3 (2020-10-10)
+* using platform: x86_64-pc-linux-gnu (64-bit)
+* using session charset: UTF-8
+* using options ‘--no-manual --no-build-vignettes’
+* checking for file ‘GetBCBData/DESCRIPTION’ ... OK
+* checking extension type ... Package
+* this is package ‘GetBCBData’ version ‘0.5’
+* package encoding: UTF-8
+* checking package namespace information ... OK
+* checking package dependencies ... ERROR
+Package required but not available: ‘curl’
+
+Package suggested but not available for checking: ‘rmarkdown’
+
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
+* DONE
+Status: 1 ERROR
+
+
+
+
+
+```
+# GetoptLong
+
+<details>
+
+* Version: 1.0.4
+* GitHub: https://github.com/jokergoo/GetoptLong
+* Source code: https://github.com/cran/GetoptLong
+* Date/Publication: 2020-10-19 10:10:02 UTC
+* Number of recursive dependencies: 48
+
+Run `cloud_details(, "GetoptLong")` for more info
+
+</details>
+
+## Error before installation
+
+### Devel
+
+```
+* using log directory ‘/tmp/workdir/GetoptLong/new/GetoptLong.Rcheck’
+* using R version 4.0.3 (2020-10-10)
+* using platform: x86_64-pc-linux-gnu (64-bit)
+* using session charset: UTF-8
+* using options ‘--no-manual --no-build-vignettes’
+* checking for file ‘GetoptLong/DESCRIPTION’ ... OK
+* checking extension type ... Package
+* this is package ‘GetoptLong’ version ‘1.0.4’
+* checking package namespace information ... OK
+* checking package dependencies ... NOTE
+...
+* checking tests ... OK
+  Running ‘test-all.R’
+* checking for unstated dependencies in vignettes ... OK
+* checking package vignettes in ‘inst/doc’ ... OK
+* checking running R code from vignettes ... NONE
+  ‘GetoptLong.Rmd’ using ‘UTF-8’... OK
+  ‘variable_interpolation.Rmd’ using ‘UTF-8’... OK
+* checking re-building of vignette outputs ... SKIPPED
+* DONE
+Status: 1 NOTE
+
+
+
+
+
+```
+### CRAN
+
+```
+* using log directory ‘/tmp/workdir/GetoptLong/old/GetoptLong.Rcheck’
+* using R version 4.0.3 (2020-10-10)
+* using platform: x86_64-pc-linux-gnu (64-bit)
+* using session charset: UTF-8
+* using options ‘--no-manual --no-build-vignettes’
+* checking for file ‘GetoptLong/DESCRIPTION’ ... OK
+* checking extension type ... Package
+* this is package ‘GetoptLong’ version ‘1.0.4’
+* checking package namespace information ... OK
+* checking package dependencies ... NOTE
+...
+* checking tests ... OK
+  Running ‘test-all.R’
+* checking for unstated dependencies in vignettes ... OK
+* checking package vignettes in ‘inst/doc’ ... OK
+* checking running R code from vignettes ... NONE
+  ‘GetoptLong.Rmd’ using ‘UTF-8’... OK
+  ‘variable_interpolation.Rmd’ using ‘UTF-8’... OK
+* checking re-building of vignette outputs ... SKIPPED
+* DONE
+Status: 1 NOTE
+
+
+
+
+
+```
+# GGIR
+
+<details>
+
+* Version: 2.2-0
+* GitHub: https://github.com/wadpac/GGIR
+* Source code: https://github.com/cran/GGIR
+* Date/Publication: 2020-11-22 14:40:02 UTC
+* Number of recursive dependencies: 80
+
+Run `cloud_details(, "GGIR")` for more info
+
+</details>
+
+## Error before installation
+
+### Devel
+
+```
+* using log directory ‘/tmp/workdir/GGIR/new/GGIR.Rcheck’
+* using R version 4.0.3 (2020-10-10)
+* using platform: x86_64-pc-linux-gnu (64-bit)
+* using session charset: UTF-8
+* using options ‘--no-manual --no-build-vignettes’
+* checking for file ‘GGIR/DESCRIPTION’ ... OK
+* checking extension type ... Package
+* this is package ‘GGIR’ version ‘2.2-0’
+* checking package namespace information ... OK
+* checking package dependencies ... NOTE
+...
+* checking tests ... OK
+  Running ‘testthat.R’
+* checking for unstated dependencies in vignettes ... OK
+* checking package vignettes in ‘inst/doc’ ... OK
+* checking running R code from vignettes ... NONE
+  ‘ExternalFunction.Rmd’ using ‘UTF-8’... OK
+  ‘GGIR.Rmd’ using ‘UTF-8’... OK
+* checking re-building of vignette outputs ... SKIPPED
+* DONE
+Status: 2 NOTEs
+
+
+
+
+
+```
+### CRAN
+
+```
+* using log directory ‘/tmp/workdir/GGIR/old/GGIR.Rcheck’
+* using R version 4.0.3 (2020-10-10)
+* using platform: x86_64-pc-linux-gnu (64-bit)
+* using session charset: UTF-8
+* using options ‘--no-manual --no-build-vignettes’
+* checking for file ‘GGIR/DESCRIPTION’ ... OK
+* checking extension type ... Package
+* this is package ‘GGIR’ version ‘2.2-0’
+* checking package namespace information ... OK
+* checking package dependencies ... NOTE
+...
+* checking tests ... OK
+  Running ‘testthat.R’
+* checking for unstated dependencies in vignettes ... OK
+* checking package vignettes in ‘inst/doc’ ... OK
+* checking running R code from vignettes ... NONE
+  ‘ExternalFunction.Rmd’ using ‘UTF-8’... OK
+  ‘GGIR.Rmd’ using ‘UTF-8’... OK
+* checking re-building of vignette outputs ... SKIPPED
+* DONE
+Status: 2 NOTEs
+
+
+
+
+
+```
+# glmmfields
+
+<details>
+
+* Version: 0.1.4
+* GitHub: https://github.com/seananderson/glmmfields
+* Source code: https://github.com/cran/glmmfields
+* Date/Publication: 2020-07-09 05:50:03 UTC
+* Number of recursive dependencies: 95
+
+Run `cloud_details(, "glmmfields")` for more info
+
+</details>
+
+## In both
+
+*   checking whether package ‘glmmfields’ can be installed ... ERROR
+    ```
+    Installation failed.
+    See ‘/tmp/workdir/glmmfields/new/glmmfields.Rcheck/00install.out’ for details.
+    ```
+
+## Installation
+
+### Devel
+
+```
+* installing *source* package ‘glmmfields’ ...
+** package ‘glmmfields’ successfully unpacked and MD5 sums checked
 ** using staged installation
 ** libs
-g++ -std=gnu++11 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG  -I'/opt/R/4.0.3/lib/R/site-library/TMB/include' -I'/opt/R/4.0.3/lib/R/site-library/RcppEigen/include' -I/usr/local/include   -fpic  -g -O2  -c glmmTMB.cpp -o glmmTMB.o
+"/opt/R/4.0.3/lib/R/bin/Rscript" -e "source(file.path('..', 'tools', 'make_cc.R')); make_cc(commandArgs(TRUE))" stan_files/glmmfields.stan
+Wrote C++ file "stan_files/glmmfields.cc"
+
+
+g++ -std=gnu++14 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG -I"../inst/include" -I"/opt/R/4.0.3/lib/R/site-library/StanHeaders/include/src" -DBOOST_DISABLE_ASSERTS -DEIGEN_NO_DEBUG -DBOOST_MATH_OVERFLOW_ERROR_POLICY=errno_on_error -I'/opt/R/4.0.3/lib/R/site-library/BH/include' -I'/opt/R/4.0.3/lib/R/site-library/Rcpp/include' -I'/opt/R/4.0.3/lib/R/site-library/RcppEigen/include' -I'/opt/R/4.0.3/lib/R/site-library/rstan/include' -I'/opt/R/4.0.3/lib/R/site-library/StanHeaders/include' -I/usr/local/include   -fpic  -g -O2  -c stan_files/glmmfields.cc -o stan_files/glmmfields.o
 In file included from /opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/Core:392,
-                 from /opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/Dense:1,
-                 from /opt/R/4.0.3/lib/R/site-library/TMB/include/TMB.hpp:53,
-                 from glmmTMB.cpp:1:
-/opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/src/Core/arch/SSE/PacketMath.h:60:39: warning: ignoring attributes on template argument ‘__m128’ {aka ‘__vector(4) float’} [-Wignored-attributes]
 ...
-  259 |     while(size) ptr[--size].~T();
-      |     ^~~~~
-glmmTMB.cpp: At global scope:
-glmmTMB.cpp:911:1: fatal error: error writing to /tmp/ccOA31m7.s: No space left on device
-  911 | }
-      | ^
+/opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/src/Core/Product.h:132:22:   required from ‘Eigen::internal::dense_product_base<Lhs, Rhs, Option, 6>::operator const Scalar() const [with Lhs = Eigen::Product<Eigen::CwiseBinaryOp<Eigen::internal::scalar_product_op<double, double>, const Eigen::CwiseNullaryOp<Eigen::internal::scalar_constant_op<double>, const Eigen::Matrix<double, 1, -1> >, const Eigen::Transpose<Eigen::Matrix<double, -1, 1> > >, Eigen::Matrix<double, -1, -1>, 0>; Rhs = Eigen::Matrix<double, -1, 1>; int Option = 0; Eigen::internal::dense_product_base<Lhs, Rhs, Option, 6>::Scalar = double]’
+/opt/R/4.0.3/lib/R/site-library/StanHeaders/include/src/stan/mcmc/hmc/hamiltonians/dense_e_metric.hpp:23:56:   required from ‘double stan::mcmc::dense_e_metric<Model, BaseRNG>::T(stan::mcmc::dense_e_point&) [with Model = model_glmmfields_namespace::model_glmmfields; BaseRNG = boost::random::additive_combine_engine<boost::random::linear_congruential_engine<unsigned int, 40014, 0, 2147483563>, boost::random::linear_congruential_engine<unsigned int, 40692, 0, 2147483399> >]’
+/opt/R/4.0.3/lib/R/site-library/StanHeaders/include/src/stan/mcmc/hmc/hamiltonians/dense_e_metric.hpp:22:10:   required from here
+/opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/src/Core/DenseCoeffsBase.h:55:30: warning: ignoring attributes on template argument ‘Eigen::internal::packet_traits<double>::type’ {aka ‘__vector(2) double’} [-Wignored-attributes]
+g++: fatal error: Killed signal terminated program cc1plus
 compilation terminated.
-make: *** [/opt/R/4.0.3/lib/R/etc/Makeconf:181: glmmTMB.o] Error 1
-ERROR: compilation failed for package ‘glmmTMB’
-* removing ‘/tmp/workdir/glmmTMB/new/glmmTMB.Rcheck/glmmTMB’
+make: *** [/opt/R/4.0.3/lib/R/etc/Makeconf:179: stan_files/glmmfields.o] Error 1
+rm stan_files/glmmfields.cc
+ERROR: compilation failed for package ‘glmmfields’
+* removing ‘/tmp/workdir/glmmfields/new/glmmfields.Rcheck/glmmfields’
 
 
 ```
 ### CRAN
 
 ```
-* installing *source* package ‘glmmTMB’ ...
-** package ‘glmmTMB’ successfully unpacked and MD5 sums checked
+* installing *source* package ‘glmmfields’ ...
+** package ‘glmmfields’ successfully unpacked and MD5 sums checked
 ** using staged installation
 ** libs
-g++ -std=gnu++11 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG  -I'/opt/R/4.0.3/lib/R/site-library/TMB/include' -I'/opt/R/4.0.3/lib/R/site-library/RcppEigen/include' -I/usr/local/include   -fpic  -g -O2  -c glmmTMB.cpp -o glmmTMB.o
+"/opt/R/4.0.3/lib/R/bin/Rscript" -e "source(file.path('..', 'tools', 'make_cc.R')); make_cc(commandArgs(TRUE))" stan_files/glmmfields.stan
+Wrote C++ file "stan_files/glmmfields.cc"
+
+
+g++ -std=gnu++14 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG -I"../inst/include" -I"/opt/R/4.0.3/lib/R/site-library/StanHeaders/include/src" -DBOOST_DISABLE_ASSERTS -DEIGEN_NO_DEBUG -DBOOST_MATH_OVERFLOW_ERROR_POLICY=errno_on_error -I'/opt/R/4.0.3/lib/R/site-library/BH/include' -I'/opt/R/4.0.3/lib/R/site-library/Rcpp/include' -I'/opt/R/4.0.3/lib/R/site-library/RcppEigen/include' -I'/opt/R/4.0.3/lib/R/site-library/rstan/include' -I'/opt/R/4.0.3/lib/R/site-library/StanHeaders/include' -I/usr/local/include   -fpic  -g -O2  -c stan_files/glmmfields.cc -o stan_files/glmmfields.o
 In file included from /opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/Core:392,
-                 from /opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/Dense:1,
-                 from /opt/R/4.0.3/lib/R/site-library/TMB/include/TMB.hpp:53,
-                 from glmmTMB.cpp:1:
-/opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/src/Core/arch/SSE/PacketMath.h:60:39: warning: ignoring attributes on template argument ‘__m128’ {aka ‘__vector(4) float’} [-Wignored-attributes]
 ...
-** byte-compile and prepare package for lazy loading
-** help
-*** installing help indices
-** building package indices
-** installing vignettes
-** testing if installed package can be loaded from temporary location
-** checking absolute paths in shared objects and dynamic libraries
-** testing if installed package can be loaded from final location
-** testing if installed package keeps a record of temporary installation path
-* DONE (glmmTMB)
+/opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/src/Core/Product.h:132:22:   required from ‘Eigen::internal::dense_product_base<Lhs, Rhs, Option, 6>::operator const Scalar() const [with Lhs = Eigen::Product<Eigen::CwiseBinaryOp<Eigen::internal::scalar_product_op<double, double>, const Eigen::CwiseNullaryOp<Eigen::internal::scalar_constant_op<double>, const Eigen::Matrix<double, 1, -1> >, const Eigen::Transpose<Eigen::Matrix<double, -1, 1> > >, Eigen::Matrix<double, -1, -1>, 0>; Rhs = Eigen::Matrix<double, -1, 1>; int Option = 0; Eigen::internal::dense_product_base<Lhs, Rhs, Option, 6>::Scalar = double]’
+/opt/R/4.0.3/lib/R/site-library/StanHeaders/include/src/stan/mcmc/hmc/hamiltonians/dense_e_metric.hpp:23:56:   required from ‘double stan::mcmc::dense_e_metric<Model, BaseRNG>::T(stan::mcmc::dense_e_point&) [with Model = model_glmmfields_namespace::model_glmmfields; BaseRNG = boost::random::additive_combine_engine<boost::random::linear_congruential_engine<unsigned int, 40014, 0, 2147483563>, boost::random::linear_congruential_engine<unsigned int, 40692, 0, 2147483399> >]’
+/opt/R/4.0.3/lib/R/site-library/StanHeaders/include/src/stan/mcmc/hmc/hamiltonians/dense_e_metric.hpp:22:10:   required from here
+/opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/src/Core/DenseCoeffsBase.h:55:30: warning: ignoring attributes on template argument ‘Eigen::internal::packet_traits<double>::type’ {aka ‘__vector(2) double’} [-Wignored-attributes]
+g++: fatal error: Killed signal terminated program cc1plus
+compilation terminated.
+make: *** [/opt/R/4.0.3/lib/R/etc/Makeconf:179: stan_files/glmmfields.o] Error 1
+rm stan_files/glmmfields.cc
+ERROR: compilation failed for package ‘glmmfields’
+* removing ‘/tmp/workdir/glmmfields/old/glmmfields.Rcheck/glmmfields’
 
 
 ```
-# GroupSeq
+# gMOIP
 
 <details>
 
-* Version: 1.3.5
-* GitHub: https://github.com/rpahl/GroupSeq
-* Source code: https://github.com/cran/GroupSeq
-* Date/Publication: 2018-04-11 15:00:32 UTC
-* Number of recursive dependencies: 34
+* Version: 1.4.3
+* GitHub: https://github.com/relund/gMOIP
+* Source code: https://github.com/cran/gMOIP
+* Date/Publication: 2020-02-20 15:10:02 UTC
+* Number of recursive dependencies: 103
 
-Run `cloud_details(, "GroupSeq")` for more info
+Run `cloud_details(, "gMOIP")` for more info
 
 </details>
 
-## Newly broken
+## In both
 
-*   checking whether package ‘GroupSeq’ can be installed ... ERROR
+*   checking whether package ‘gMOIP’ can be installed ... ERROR
     ```
     Installation failed.
-    See ‘/tmp/workdir/GroupSeq/new/GroupSeq.Rcheck/00install.out’ for details.
+    See ‘/tmp/workdir/gMOIP/new/gMOIP.Rcheck/00install.out’ for details.
     ```
 
 ## Installation
@@ -1392,45 +4957,36 @@ Run `cloud_details(, "GroupSeq")` for more info
 ### Devel
 
 ```
-* installing *source* package ‘GroupSeq’ ...
-** package ‘GroupSeq’ successfully unpacked and MD5 sums checked
+* installing *source* package ‘gMOIP’ ...
+** package ‘gMOIP’ successfully unpacked and MD5 sums checked
 ** using staged installation
 ** R
+** inst
 ** byte-compile and prepare package for lazy loading
-Warning in fun(libname, pkgname) : couldn't connect to display ":109"
-** help
-*** installing help indices
-** building package indices
-** testing if installed package can be loaded from temporary location
-...
-Warning in fun(libname, pkgname) : couldn't connect to display ":109"
-Error: package or namespace load failed for ‘GroupSeq’:
- .onAttach failed in attachNamespace() for 'GroupSeq', details:
-  call: structure(.External(.C_dotTclObjv, objv), class = "tclObj")
-  error: [tcl] invalid command name "toplevel".
-
-Error: loading failed
+Error in loadNamespace(i, c(lib.loc, .libPaths()), versionCheck = vI[[i]]) : 
+  there is no package called ‘scales’
+Calls: <Anonymous> ... loadNamespace -> withRestarts -> withOneRestart -> doWithOneRestart
 Execution halted
-ERROR: loading failed
-* removing ‘/tmp/workdir/GroupSeq/new/GroupSeq.Rcheck/GroupSeq’
+ERROR: lazy loading failed for package ‘gMOIP’
+* removing ‘/tmp/workdir/gMOIP/new/gMOIP.Rcheck/gMOIP’
 
 
 ```
 ### CRAN
 
 ```
-* installing *source* package ‘GroupSeq’ ...
-** package ‘GroupSeq’ successfully unpacked and MD5 sums checked
+* installing *source* package ‘gMOIP’ ...
+** package ‘gMOIP’ successfully unpacked and MD5 sums checked
 ** using staged installation
 ** R
+** inst
 ** byte-compile and prepare package for lazy loading
-** help
-*** installing help indices
-** building package indices
-** testing if installed package can be loaded from temporary location
-** testing if installed package can be loaded from final location
-** testing if installed package keeps a record of temporary installation path
-* DONE (GroupSeq)
+Error in loadNamespace(i, c(lib.loc, .libPaths()), versionCheck = vI[[i]]) : 
+  there is no package called ‘scales’
+Calls: <Anonymous> ... loadNamespace -> withRestarts -> withOneRestart -> doWithOneRestart
+Execution halted
+ERROR: lazy loading failed for package ‘gMOIP’
+* removing ‘/tmp/workdir/gMOIP/old/gMOIP.Rcheck/gMOIP’
 
 
 ```
@@ -1500,6 +5056,76 @@ ERROR: lazy loading failed for package ‘gWidgets2tcltk’
 
 
 ```
+# HCT
+
+<details>
+
+* Version: 0.1.0
+* GitHub: NA
+* Source code: https://github.com/cran/HCT
+* Date/Publication: 2018-08-02 12:30:12 UTC
+* Number of recursive dependencies: 63
+
+Run `cloud_details(, "HCT")` for more info
+
+</details>
+
+## In both
+
+*   checking whether package ‘HCT’ can be installed ... ERROR
+    ```
+    Installation failed.
+    See ‘/tmp/workdir/HCT/new/HCT.Rcheck/00install.out’ for details.
+    ```
+
+## Installation
+
+### Devel
+
+```
+* installing *source* package ‘HCT’ ...
+** package ‘HCT’ successfully unpacked and MD5 sums checked
+** using staged installation
+** R
+** data
+*** moving datasets to lazyload DB
+Warning: namespace ‘rstan’ is not available and has been replaced
+by .GlobalEnv when processing object ‘hct220ALSFRS’
+Warning: namespace ‘rstan’ is not available and has been replaced
+by .GlobalEnv when processing object ‘hct220ALSFRS’
+** byte-compile and prepare package for lazy loading
+Error: package or namespace load failed for ‘ggplot2’ in loadNamespace(i, c(lib.loc, .libPaths()), versionCheck = vI[[i]]):
+ there is no package called ‘gtable’
+Error: package ‘ggplot2’ could not be loaded
+Execution halted
+ERROR: lazy loading failed for package ‘HCT’
+* removing ‘/tmp/workdir/HCT/new/HCT.Rcheck/HCT’
+
+
+```
+### CRAN
+
+```
+* installing *source* package ‘HCT’ ...
+** package ‘HCT’ successfully unpacked and MD5 sums checked
+** using staged installation
+** R
+** data
+*** moving datasets to lazyload DB
+Warning: namespace ‘rstan’ is not available and has been replaced
+by .GlobalEnv when processing object ‘hct220ALSFRS’
+Warning: namespace ‘rstan’ is not available and has been replaced
+by .GlobalEnv when processing object ‘hct220ALSFRS’
+** byte-compile and prepare package for lazy loading
+Error: package or namespace load failed for ‘ggplot2’ in loadNamespace(i, c(lib.loc, .libPaths()), versionCheck = vI[[i]]):
+ there is no package called ‘gtable’
+Error: package ‘ggplot2’ could not be loaded
+Execution halted
+ERROR: lazy loading failed for package ‘HCT’
+* removing ‘/tmp/workdir/HCT/old/HCT.Rcheck/HCT’
+
+
+```
 # hNMF
 
 <details>
@@ -1566,6 +5192,364 @@ Status: 1 ERROR
 
 
 ```
+# hsstan
+
+<details>
+
+* Version: 0.8
+* GitHub: https://github.com/mcol/hsstan
+* Source code: https://github.com/cran/hsstan
+* Date/Publication: 2020-06-29 17:40:07 UTC
+* Number of recursive dependencies: 66
+
+Run `cloud_details(, "hsstan")` for more info
+
+</details>
+
+## Newly broken
+
+*   checking whether package ‘hsstan’ can be installed ... ERROR
+    ```
+    Installation failed.
+    See ‘/tmp/workdir/hsstan/new/hsstan.Rcheck/00install.out’ for details.
+    ```
+
+## Newly fixed
+
+*   checking installed package size ... NOTE
+    ```
+      installed size is 128.3Mb
+      sub-directories of 1Mb or more:
+        libs  127.8Mb
+    ```
+
+*   checking for GNU extensions in Makefiles ... NOTE
+    ```
+    GNU make is a SystemRequirements.
+    ```
+
+## Installation
+
+### Devel
+
+```
+* installing *source* package ‘hsstan’ ...
+** package ‘hsstan’ successfully unpacked and MD5 sums checked
+** using staged installation
+** libs
+
+
+g++ -std=gnu++14 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG -I"../inst/include" -I"/opt/R/4.0.3/lib/R/site-library/StanHeaders/include/src" -DBOOST_DISABLE_ASSERTS -DEIGEN_NO_DEBUG -DBOOST_MATH_OVERFLOW_ERROR_POLICY=errno_on_error -I'/opt/R/4.0.3/lib/R/site-library/BH/include' -I'/opt/R/4.0.3/lib/R/site-library/Rcpp/include' -I'/opt/R/4.0.3/lib/R/site-library/RcppEigen/include' -I'/opt/R/4.0.3/lib/R/site-library/StanHeaders/include' -I'/opt/R/4.0.3/lib/R/site-library/rstan/include' -I/usr/local/include   -I'/opt/R/4.0.3/lib/R/site-library/RcppParallel/include' -D_REENTRANT -DSTAN_THREADS   -fpic  -g -O2  -c RcppExports.cpp -o RcppExports.o
+In file included from /opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/Core:392,
+                 from /opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/Dense:1,
+                 from /opt/R/4.0.3/lib/R/site-library/RcppEigen/include/RcppEigenForward.h:30,
+...
+/opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/src/Core/DenseCoeffsBase.h:55:30: warning: ignoring attributes on template argument ‘Eigen::internal::packet_traits<double>::type’ {aka ‘__vector(2) double’} [-Wignored-attributes]
+   55 |                      >::type PacketReturnType;
+      |                              ^~~~~~~~~~~~~~~~
+stanExports_base.cc:32:1: fatal error: error writing to /tmp/ccN15uGF.s: No space left on device
+   32 | }
+      | ^
+compilation terminated.
+make: *** [/opt/R/4.0.3/lib/R/etc/Makeconf:179: stanExports_base.o] Error 1
+ERROR: compilation failed for package ‘hsstan’
+* removing ‘/tmp/workdir/hsstan/new/hsstan.Rcheck/hsstan’
+
+
+```
+### CRAN
+
+```
+* installing *source* package ‘hsstan’ ...
+** package ‘hsstan’ successfully unpacked and MD5 sums checked
+** using staged installation
+** libs
+
+
+g++ -std=gnu++14 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG -I"../inst/include" -I"/opt/R/4.0.3/lib/R/site-library/StanHeaders/include/src" -DBOOST_DISABLE_ASSERTS -DEIGEN_NO_DEBUG -DBOOST_MATH_OVERFLOW_ERROR_POLICY=errno_on_error -I'/opt/R/4.0.3/lib/R/site-library/BH/include' -I'/opt/R/4.0.3/lib/R/site-library/Rcpp/include' -I'/opt/R/4.0.3/lib/R/site-library/RcppEigen/include' -I'/opt/R/4.0.3/lib/R/site-library/StanHeaders/include' -I'/opt/R/4.0.3/lib/R/site-library/rstan/include' -I/usr/local/include   -I'/opt/R/4.0.3/lib/R/site-library/RcppParallel/include' -D_REENTRANT -DSTAN_THREADS   -fpic  -g -O2  -c RcppExports.cpp -o RcppExports.o
+In file included from /opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/Core:392,
+                 from /opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/Dense:1,
+                 from /opt/R/4.0.3/lib/R/site-library/RcppEigen/include/RcppEigenForward.h:30,
+...
+Found more than one class "Rcpp_model_base" in cache; using the first, from namespace 'rstan'
+Also defined by ‘hsstan’
+** checking absolute paths in shared objects and dynamic libraries
+** testing if installed package can be loaded from final location
+Found more than one class "Rcpp_model_base" in cache; using the first, from namespace 'rstan'
+Also defined by ‘hsstan’
+Found more than one class "Rcpp_model_base" in cache; using the first, from namespace 'rstan'
+Also defined by ‘hsstan’
+** testing if installed package keeps a record of temporary installation path
+* DONE (hsstan)
+
+
+```
+# HTSSIP
+
+<details>
+
+* Version: 1.4.1
+* GitHub: NA
+* Source code: https://github.com/cran/HTSSIP
+* Date/Publication: 2019-09-13 22:30:02 UTC
+* Number of recursive dependencies: 138
+
+Run `cloud_details(, "HTSSIP")` for more info
+
+</details>
+
+## Error before installation
+
+### Devel
+
+```
+* using log directory ‘/tmp/workdir/HTSSIP/new/HTSSIP.Rcheck’
+* using R version 4.0.3 (2020-10-10)
+* using platform: x86_64-pc-linux-gnu (64-bit)
+* using session charset: UTF-8
+* using options ‘--no-manual --no-build-vignettes’
+* checking for file ‘HTSSIP/DESCRIPTION’ ... OK
+* checking extension type ... Package
+* this is package ‘HTSSIP’ version ‘1.4.1’
+* package encoding: UTF-8
+* checking package namespace information ... OK
+* checking package dependencies ... ERROR
+Packages required but not available: 'DESeq2', 'phyloseq'
+
+Package suggested but not available for checking: ‘rmarkdown’
+
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
+* DONE
+Status: 1 ERROR
+
+
+
+
+
+```
+### CRAN
+
+```
+* using log directory ‘/tmp/workdir/HTSSIP/old/HTSSIP.Rcheck’
+* using R version 4.0.3 (2020-10-10)
+* using platform: x86_64-pc-linux-gnu (64-bit)
+* using session charset: UTF-8
+* using options ‘--no-manual --no-build-vignettes’
+* checking for file ‘HTSSIP/DESCRIPTION’ ... OK
+* checking extension type ... Package
+* this is package ‘HTSSIP’ version ‘1.4.1’
+* package encoding: UTF-8
+* checking package namespace information ... OK
+* checking package dependencies ... ERROR
+Packages required but not available: 'DESeq2', 'phyloseq'
+
+Package suggested but not available for checking: ‘rmarkdown’
+
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
+* DONE
+Status: 1 ERROR
+
+
+
+
+
+```
+# HydeNet
+
+<details>
+
+* Version: 0.10.11
+* GitHub: https://github.com/nutterb/HydeNet
+* Source code: https://github.com/cran/HydeNet
+* Date/Publication: 2020-07-06 15:20:13 UTC
+* Number of recursive dependencies: 95
+
+Run `cloud_details(, "HydeNet")` for more info
+
+</details>
+
+## Error before installation
+
+### Devel
+
+```
+* using log directory ‘/tmp/workdir/HydeNet/new/HydeNet.Rcheck’
+* using R version 4.0.3 (2020-10-10)
+* using platform: x86_64-pc-linux-gnu (64-bit)
+* using session charset: UTF-8
+* using options ‘--no-manual --no-build-vignettes’
+* checking for file ‘HydeNet/DESCRIPTION’ ... OK
+* checking extension type ... Package
+* this is package ‘HydeNet’ version ‘0.10.11’
+* checking package namespace information ... OK
+* checking package dependencies ... ERROR
+Package required but not available: ‘graph’
+
+Package suggested but not available for checking: ‘rmarkdown’
+
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
+* DONE
+Status: 1 ERROR
+
+
+
+
+
+```
+### CRAN
+
+```
+* using log directory ‘/tmp/workdir/HydeNet/old/HydeNet.Rcheck’
+* using R version 4.0.3 (2020-10-10)
+* using platform: x86_64-pc-linux-gnu (64-bit)
+* using session charset: UTF-8
+* using options ‘--no-manual --no-build-vignettes’
+* checking for file ‘HydeNet/DESCRIPTION’ ... OK
+* checking extension type ... Package
+* this is package ‘HydeNet’ version ‘0.10.11’
+* checking package namespace information ... OK
+* checking package dependencies ... ERROR
+Package required but not available: ‘graph’
+
+Package suggested but not available for checking: ‘rmarkdown’
+
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
+* DONE
+Status: 1 ERROR
+
+
+
+
+
+```
+# HyRiM
+
+<details>
+
+* Version: 2.0.0
+* GitHub: NA
+* Source code: https://github.com/cran/HyRiM
+* Date/Publication: 2020-04-23 08:50:02 UTC
+* Number of recursive dependencies: 61
+
+Run `cloud_details(, "HyRiM")` for more info
+
+</details>
+
+## In both
+
+*   checking whether package ‘HyRiM’ can be installed ... ERROR
+    ```
+    Installation failed.
+    See ‘/tmp/workdir/HyRiM/new/HyRiM.Rcheck/00install.out’ for details.
+    ```
+
+## Installation
+
+### Devel
+
+```
+* installing *source* package ‘HyRiM’ ...
+** package ‘HyRiM’ successfully unpacked and MD5 sums checked
+** using staged installation
+** R
+** inst
+** byte-compile and prepare package for lazy loading
+Error in loadNamespace(j <- i[[1L]], c(lib.loc, .libPaths()), versionCheck = vI[[j]]) : 
+  there is no package called ‘base64enc’
+Calls: <Anonymous> ... loadNamespace -> withRestarts -> withOneRestart -> doWithOneRestart
+Execution halted
+ERROR: lazy loading failed for package ‘HyRiM’
+* removing ‘/tmp/workdir/HyRiM/new/HyRiM.Rcheck/HyRiM’
+
+
+```
+### CRAN
+
+```
+* installing *source* package ‘HyRiM’ ...
+** package ‘HyRiM’ successfully unpacked and MD5 sums checked
+** using staged installation
+** R
+** inst
+** byte-compile and prepare package for lazy loading
+Error in loadNamespace(j <- i[[1L]], c(lib.loc, .libPaths()), versionCheck = vI[[j]]) : 
+  there is no package called ‘base64enc’
+Calls: <Anonymous> ... loadNamespace -> withRestarts -> withOneRestart -> doWithOneRestart
+Execution halted
+ERROR: lazy loading failed for package ‘HyRiM’
+* removing ‘/tmp/workdir/HyRiM/old/HyRiM.Rcheck/HyRiM’
+
+
+```
+# IETD
+
+<details>
+
+* Version: 1.0.0
+* GitHub: NA
+* Source code: https://github.com/cran/IETD
+* Date/Publication: 2020-03-10 08:50:06 UTC
+* Number of recursive dependencies: 62
+
+Run `cloud_details(, "IETD")` for more info
+
+</details>
+
+## In both
+
+*   checking whether package ‘IETD’ can be installed ... ERROR
+    ```
+    Installation failed.
+    See ‘/tmp/workdir/IETD/new/IETD.Rcheck/00install.out’ for details.
+    ```
+
+## Installation
+
+### Devel
+
+```
+* installing *source* package ‘IETD’ ...
+** package ‘IETD’ successfully unpacked and MD5 sums checked
+** using staged installation
+** R
+** data
+*** moving datasets to lazyload DB
+** inst
+** byte-compile and prepare package for lazy loading
+Error in loadNamespace(i, c(lib.loc, .libPaths()), versionCheck = vI[[i]]) : 
+  there is no package called ‘iterators’
+Calls: <Anonymous> ... loadNamespace -> withRestarts -> withOneRestart -> doWithOneRestart
+Execution halted
+ERROR: lazy loading failed for package ‘IETD’
+* removing ‘/tmp/workdir/IETD/new/IETD.Rcheck/IETD’
+
+
+```
+### CRAN
+
+```
+* installing *source* package ‘IETD’ ...
+** package ‘IETD’ successfully unpacked and MD5 sums checked
+** using staged installation
+** R
+** data
+*** moving datasets to lazyload DB
+** inst
+** byte-compile and prepare package for lazy loading
+Error in loadNamespace(i, c(lib.loc, .libPaths()), versionCheck = vI[[i]]) : 
+  there is no package called ‘iterators’
+Calls: <Anonymous> ... loadNamespace -> withRestarts -> withOneRestart -> doWithOneRestart
+Execution halted
+ERROR: lazy loading failed for package ‘IETD’
+* removing ‘/tmp/workdir/IETD/old/IETD.Rcheck/IETD’
+
+
+```
 # ipc
 
 <details>
@@ -1606,8 +5590,6 @@ Run `cloud_details(, "ipc")` for more info
 * package encoding: UTF-8
 * checking package namespace information ... OK
 ...
-* checking for missing documentation entries ... OK
-* checking for code/documentation mismatches ... OK
 * checking Rd \usage sections ... OK
 * checking Rd contents ... OK
 * checking for unstated dependencies in examples ... OK
@@ -1615,7 +5597,125 @@ Run `cloud_details(, "ipc")` for more info
 * checking files in ‘vignettes’ ... OK
 * checking examples ... OK
 * checking for unstated dependencies in ‘tests’ ... OK
-* checking tests ...
+* checking tests ... ERROR
+  Running ‘testthat.R’
+* checking for unstated dependencies in vignettes ...
+
+
+
+
+
+```
+# IPDFileCheck
+
+<details>
+
+* Version: 0.6.4
+* GitHub: NA
+* Source code: https://github.com/cran/IPDFileCheck
+* Date/Publication: 2020-11-20 10:30:18 UTC
+* Number of recursive dependencies: 108
+
+Run `cloud_details(, "IPDFileCheck")` for more info
+
+</details>
+
+## In both
+
+*   checking whether package ‘IPDFileCheck’ can be installed ... ERROR
+    ```
+    Installation failed.
+    See ‘/tmp/workdir/IPDFileCheck/new/IPDFileCheck.Rcheck/00install.out’ for details.
+    ```
+
+## Installation
+
+### Devel
+
+```
+* installing *source* package ‘IPDFileCheck’ ...
+** package ‘IPDFileCheck’ successfully unpacked and MD5 sums checked
+** using staged installation
+** R
+** inst
+** byte-compile and prepare package for lazy loading
+Error in loadNamespace(i, c(lib.loc, .libPaths()), versionCheck = vI[[i]]) : 
+  there is no package called ‘sp’
+Calls: <Anonymous> ... loadNamespace -> withRestarts -> withOneRestart -> doWithOneRestart
+Execution halted
+ERROR: lazy loading failed for package ‘IPDFileCheck’
+* removing ‘/tmp/workdir/IPDFileCheck/new/IPDFileCheck.Rcheck/IPDFileCheck’
+
+
+```
+### CRAN
+
+```
+* installing *source* package ‘IPDFileCheck’ ...
+** package ‘IPDFileCheck’ successfully unpacked and MD5 sums checked
+** using staged installation
+** R
+** inst
+** byte-compile and prepare package for lazy loading
+Error in loadNamespace(i, c(lib.loc, .libPaths()), versionCheck = vI[[i]]) : 
+  there is no package called ‘sp’
+Calls: <Anonymous> ... loadNamespace -> withRestarts -> withOneRestart -> doWithOneRestart
+Execution halted
+ERROR: lazy loading failed for package ‘IPDFileCheck’
+* removing ‘/tmp/workdir/IPDFileCheck/old/IPDFileCheck.Rcheck/IPDFileCheck’
+
+
+```
+# jstor
+
+<details>
+
+* Version: 0.3.9
+* GitHub: https://github.com/ropensci/jstor
+* Source code: https://github.com/cran/jstor
+* Date/Publication: 2020-06-04 04:50:03 UTC
+* Number of recursive dependencies: 73
+
+Run `cloud_details(, "jstor")` for more info
+
+</details>
+
+## Error before installation
+
+### Devel
+
+```
+
+
+
+
+
+
+```
+### CRAN
+
+```
+* using log directory ‘/tmp/workdir/jstor/old/jstor.Rcheck’
+* using R version 4.0.3 (2020-10-10)
+* using platform: x86_64-pc-linux-gnu (64-bit)
+* using session charset: UTF-8
+* using options ‘--no-manual --no-build-vignettes’
+* checking for file ‘jstor/DESCRIPTION’ ... OK
+* this is package ‘jstor’ version ‘0.3.9’
+* package encoding: UTF-8
+* checking package namespace information ... OK
+* checking package dependencies ... OK
+...
+  Killed
+* checking for unstated dependencies in vignettes ... OK
+* checking package vignettes in ‘inst/doc’ ... OK
+* checking running R code from vignettes ... NONE
+  ‘Introduction.Rmd’ using ‘UTF-8’... OK
+  ‘automating-file-import.Rmd’ using ‘UTF-8’... OK
+  ‘known-quirks.Rmd’ using ‘UTF-8’... OK
+* checking re-building of vignette outputs ... SKIPPED
+* DONE
+Status: 1 ERROR
 
 
 
@@ -1700,6 +5800,158 @@ ERROR: configuration failed for package ‘kmcudaR’
 
 
 ```
+# LAWBL
+
+<details>
+
+* Version: 1.3.0
+* GitHub: https://github.com/Jinsong-Chen/LAWBL
+* Source code: https://github.com/cran/LAWBL
+* Date/Publication: 2020-11-03 20:10:02 UTC
+* Number of recursive dependencies: 49
+
+Run `cloud_details(, "LAWBL")` for more info
+
+</details>
+
+## Error before installation
+
+### Devel
+
+```
+* using log directory ‘/tmp/workdir/LAWBL/new/LAWBL.Rcheck’
+* using R version 4.0.3 (2020-10-10)
+* using platform: x86_64-pc-linux-gnu (64-bit)
+* using session charset: UTF-8
+* using options ‘--no-manual --no-build-vignettes’
+* checking for file ‘LAWBL/DESCRIPTION’ ... OK
+* checking extension type ... Package
+* this is package ‘LAWBL’ version ‘1.3.0’
+* package encoding: UTF-8
+* checking package namespace information ... OK
+...
+  Running ‘testthat.R’
+* checking for unstated dependencies in vignettes ... OK
+* checking package vignettes in ‘inst/doc’ ... OK
+* checking running R code from vignettes ... NONE
+  ‘gpcfa-examples.Rmd’ using ‘UTF-8’... OK
+  ‘pcfa-examples.Rmd’ using ‘UTF-8’... OK
+  ‘pcirm-examples.Rmd’ using ‘UTF-8’... OK
+* checking re-building of vignette outputs ... SKIPPED
+* DONE
+Status: 1 NOTE
+
+
+
+
+
+```
+### CRAN
+
+```
+* using log directory ‘/tmp/workdir/LAWBL/old/LAWBL.Rcheck’
+* using R version 4.0.3 (2020-10-10)
+* using platform: x86_64-pc-linux-gnu (64-bit)
+* using session charset: UTF-8
+* using options ‘--no-manual --no-build-vignettes’
+* checking for file ‘LAWBL/DESCRIPTION’ ... OK
+* checking extension type ... Package
+* this is package ‘LAWBL’ version ‘1.3.0’
+* package encoding: UTF-8
+* checking package namespace information ... OK
+...
+  Running ‘testthat.R’
+* checking for unstated dependencies in vignettes ... OK
+* checking package vignettes in ‘inst/doc’ ... OK
+* checking running R code from vignettes ... NONE
+  ‘gpcfa-examples.Rmd’ using ‘UTF-8’... OK
+  ‘pcfa-examples.Rmd’ using ‘UTF-8’... OK
+  ‘pcirm-examples.Rmd’ using ‘UTF-8’... OK
+* checking re-building of vignette outputs ... SKIPPED
+* DONE
+Status: 1 NOTE
+
+
+
+
+
+```
+# LearnGeom
+
+<details>
+
+* Version: 1.5
+* GitHub: NA
+* Source code: https://github.com/cran/LearnGeom
+* Date/Publication: 2020-07-14 16:00:03 UTC
+* Number of recursive dependencies: 46
+
+Run `cloud_details(, "LearnGeom")` for more info
+
+</details>
+
+## Error before installation
+
+### Devel
+
+```
+* using log directory ‘/tmp/workdir/LearnGeom/new/LearnGeom.Rcheck’
+* using R version 4.0.3 (2020-10-10)
+* using platform: x86_64-pc-linux-gnu (64-bit)
+* using session charset: UTF-8
+* using options ‘--no-manual --no-build-vignettes’
+* checking for file ‘LearnGeom/DESCRIPTION’ ... OK
+* this is package ‘LearnGeom’ version ‘1.5’
+* checking package namespace information ... OK
+* checking package dependencies ... NOTE
+Package suggested but not available for checking: ‘rmarkdown’
+...
+* checking for missing documentation entries ... OK
+* checking for code/documentation mismatches ... OK
+* checking Rd \usage sections ... OK
+* checking Rd contents ... OK
+* checking for unstated dependencies in examples ... OK
+* checking sizes of PDF files under ‘inst/doc’ ... OK
+* checking installed files from ‘inst/doc’ ... OK
+* checking examples ... OK
+* DONE
+Status: 1 NOTE
+
+
+
+
+
+```
+### CRAN
+
+```
+* using log directory ‘/tmp/workdir/LearnGeom/old/LearnGeom.Rcheck’
+* using R version 4.0.3 (2020-10-10)
+* using platform: x86_64-pc-linux-gnu (64-bit)
+* using session charset: UTF-8
+* using options ‘--no-manual --no-build-vignettes’
+* checking for file ‘LearnGeom/DESCRIPTION’ ... OK
+* this is package ‘LearnGeom’ version ‘1.5’
+* checking package namespace information ... OK
+* checking package dependencies ... NOTE
+Package suggested but not available for checking: ‘rmarkdown’
+...
+* checking for missing documentation entries ... OK
+* checking for code/documentation mismatches ... OK
+* checking Rd \usage sections ... OK
+* checking Rd contents ... OK
+* checking for unstated dependencies in examples ... OK
+* checking sizes of PDF files under ‘inst/doc’ ... OK
+* checking installed files from ‘inst/doc’ ... OK
+* checking examples ... OK
+* DONE
+Status: 1 NOTE
+
+
+
+
+
+```
 # loon
 
 <details>
@@ -1776,38 +6028,90 @@ Status: 1 ERROR, 1 NOTE
 
 
 ```
-# mapdeck
+# LoopRig
 
 <details>
 
-* Version: 0.3.4
-* GitHub: https://github.com/SymbolixAU/mapdeck
-* Source code: https://github.com/cran/mapdeck
-* Date/Publication: 2020-09-04 05:22:10 UTC
-* Number of recursive dependencies: 83
+* Version: 0.1.1
+* GitHub: NA
+* Source code: https://github.com/cran/LoopRig
+* Date/Publication: 2019-12-20 13:40:09 UTC
+* Number of recursive dependencies: 64
 
-Run `cloud_details(, "mapdeck")` for more info
+Run `cloud_details(, "LoopRig")` for more info
 
 </details>
 
-## Newly broken
+## Error before installation
 
-*   checking whether package ‘mapdeck’ can be installed ... ERROR
+### Devel
+
+```
+* using log directory ‘/tmp/workdir/LoopRig/new/LoopRig.Rcheck’
+* using R version 4.0.3 (2020-10-10)
+* using platform: x86_64-pc-linux-gnu (64-bit)
+* using session charset: UTF-8
+* using options ‘--no-manual --no-build-vignettes’
+* checking for file ‘LoopRig/DESCRIPTION’ ... OK
+* this is package ‘LoopRig’ version ‘0.1.1’
+* checking package namespace information ... OK
+* checking package dependencies ... ERROR
+Package required but not available: ‘GenomicRanges’
+
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
+* DONE
+Status: 1 ERROR
+
+
+
+
+
+```
+### CRAN
+
+```
+* using log directory ‘/tmp/workdir/LoopRig/old/LoopRig.Rcheck’
+* using R version 4.0.3 (2020-10-10)
+* using platform: x86_64-pc-linux-gnu (64-bit)
+* using session charset: UTF-8
+* using options ‘--no-manual --no-build-vignettes’
+* checking for file ‘LoopRig/DESCRIPTION’ ... OK
+* this is package ‘LoopRig’ version ‘0.1.1’
+* checking package namespace information ... OK
+* checking package dependencies ... ERROR
+Package required but not available: ‘GenomicRanges’
+
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
+* DONE
+Status: 1 ERROR
+
+
+
+
+
+```
+# LowWAFOMNX
+
+<details>
+
+* Version: 1.1.1
+* GitHub: NA
+* Source code: https://github.com/cran/LowWAFOMNX
+* Date/Publication: 2017-08-25 03:16:24 UTC
+* Number of recursive dependencies: 55
+
+Run `cloud_details(, "LowWAFOMNX")` for more info
+
+</details>
+
+## In both
+
+*   checking whether package ‘LowWAFOMNX’ can be installed ... ERROR
     ```
     Installation failed.
-    See ‘/tmp/workdir/mapdeck/new/mapdeck.Rcheck/00install.out’ for details.
-    ```
-
-## Newly fixed
-
-*   checking installed package size ... NOTE
-    ```
-      installed size is 76.1Mb
-      sub-directories of 1Mb or more:
-        data          1.3Mb
-        doc           1.6Mb
-        htmlwidgets   2.3Mb
-        libs         70.5Mb
+    See ‘/tmp/workdir/LowWAFOMNX/new/LowWAFOMNX.Rcheck/00install.out’ for details.
     ```
 
 ## Installation
@@ -1815,51 +6119,188 @@ Run `cloud_details(, "mapdeck")` for more info
 ### Devel
 
 ```
-* installing *source* package ‘mapdeck’ ...
-** package ‘mapdeck’ successfully unpacked and MD5 sums checked
+* installing *source* package ‘LowWAFOMNX’ ...
+** package ‘LowWAFOMNX’ successfully unpacked and MD5 sums checked
 ** using staged installation
 ** libs
-g++ -std=gnu++11 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG -DSTRICT_R_HEADERS -DBOOST_NO_AUTO_PTR -I'/opt/R/4.0.3/lib/R/site-library/BH/include' -I'/opt/R/4.0.3/lib/R/site-library/colourvalues/include' -I'/opt/R/4.0.3/lib/R/site-library/geojsonsf/include' -I'/opt/R/4.0.3/lib/R/site-library/geometries/include' -I'/opt/R/4.0.3/lib/R/site-library/jsonify/include' -I'/opt/R/4.0.3/lib/R/site-library/rapidjsonr/include' -I'/opt/R/4.0.3/lib/R/site-library/Rcpp/include' -I'/opt/R/4.0.3/lib/R/site-library/sfheaders/include' -I'/opt/R/4.0.3/lib/R/site-library/spatialwidget/include' -I/usr/local/include  -I../inst/include -fpic  -g -O2  -c RcppExports.cpp -o RcppExports.o
-g++ -std=gnu++11 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG -DSTRICT_R_HEADERS -DBOOST_NO_AUTO_PTR -I'/opt/R/4.0.3/lib/R/site-library/BH/include' -I'/opt/R/4.0.3/lib/R/site-library/colourvalues/include' -I'/opt/R/4.0.3/lib/R/site-library/geojsonsf/include' -I'/opt/R/4.0.3/lib/R/site-library/geometries/include' -I'/opt/R/4.0.3/lib/R/site-library/jsonify/include' -I'/opt/R/4.0.3/lib/R/site-library/rapidjsonr/include' -I'/opt/R/4.0.3/lib/R/site-library/Rcpp/include' -I'/opt/R/4.0.3/lib/R/site-library/sfheaders/include' -I'/opt/R/4.0.3/lib/R/site-library/spatialwidget/include' -I/usr/local/include  -I../inst/include -fpic  -g -O2  -c aggregate.cpp -o aggregate.o
-g++ -std=gnu++11 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG -DSTRICT_R_HEADERS -DBOOST_NO_AUTO_PTR -I'/opt/R/4.0.3/lib/R/site-library/BH/include' -I'/opt/R/4.0.3/lib/R/site-library/colourvalues/include' -I'/opt/R/4.0.3/lib/R/site-library/geojsonsf/include' -I'/opt/R/4.0.3/lib/R/site-library/geometries/include' -I'/opt/R/4.0.3/lib/R/site-library/jsonify/include' -I'/opt/R/4.0.3/lib/R/site-library/rapidjsonr/include' -I'/opt/R/4.0.3/lib/R/site-library/Rcpp/include' -I'/opt/R/4.0.3/lib/R/site-library/sfheaders/include' -I'/opt/R/4.0.3/lib/R/site-library/spatialwidget/include' -I/usr/local/include  -I../inst/include -fpic  -g -O2  -c geojson.cpp -o geojson.o
-g++ -std=gnu++11 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG -DSTRICT_R_HEADERS -DBOOST_NO_AUTO_PTR -I'/opt/R/4.0.3/lib/R/site-library/BH/include' -I'/opt/R/4.0.3/lib/R/site-library/colourvalues/include' -I'/opt/R/4.0.3/lib/R/site-library/geojsonsf/include' -I'/opt/R/4.0.3/lib/R/site-library/geometries/include' -I'/opt/R/4.0.3/lib/R/site-library/jsonify/include' -I'/opt/R/4.0.3/lib/R/site-library/rapidjsonr/include' -I'/opt/R/4.0.3/lib/R/site-library/Rcpp/include' -I'/opt/R/4.0.3/lib/R/site-library/sfheaders/include' -I'/opt/R/4.0.3/lib/R/site-library/spatialwidget/include' -I/usr/local/include  -I../inst/include -fpic  -g -O2  -c mesh.cpp -o mesh.o
-g++ -std=gnu++11 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG -DSTRICT_R_HEADERS -DBOOST_NO_AUTO_PTR -I'/opt/R/4.0.3/lib/R/site-library/BH/include' -I'/opt/R/4.0.3/lib/R/site-library/colourvalues/include' -I'/opt/R/4.0.3/lib/R/site-library/geojsonsf/include' -I'/opt/R/4.0.3/lib/R/site-library/geometries/include' -I'/opt/R/4.0.3/lib/R/site-library/jsonify/include' -I'/opt/R/4.0.3/lib/R/site-library/rapidjsonr/include' -I'/opt/R/4.0.3/lib/R/site-library/Rcpp/include' -I'/opt/R/4.0.3/lib/R/site-library/sfheaders/include' -I'/opt/R/4.0.3/lib/R/site-library/spatialwidget/include' -I/usr/local/include  -I../inst/include -fpic  -g -O2  -c od.cpp -o od.o
-g++ -std=gnu++11 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG -DSTRICT_R_HEADERS -DBOOST_NO_AUTO_PTR -I'/opt/R/4.0.3/lib/R/site-library/BH/include' -I'/opt/R/4.0.3/lib/R/site-library/colourvalues/include' -I'/opt/R/4.0.3/lib/R/site-library/geojsonsf/include' -I'/opt/R/4.0.3/lib/R/site-library/geometries/include' -I'/opt/R/4.0.3/lib/R/site-library/jsonify/include' -I'/opt/R/4.0.3/lib/R/site-library/rapidjsonr/include' -I'/opt/R/4.0.3/lib/R/site-library/Rcpp/include' -I'/opt/R/4.0.3/lib/R/site-library/sfheaders/include' -I'/opt/R/4.0.3/lib/R/site-library/spatialwidget/include' -I/usr/local/include  -I../inst/include -fpic  -g -O2  -c path.cpp -o path.o
-g++ -std=gnu++11 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG -DSTRICT_R_HEADERS -DBOOST_NO_AUTO_PTR -I'/opt/R/4.0.3/lib/R/site-library/BH/include' -I'/opt/R/4.0.3/lib/R/site-library/colourvalues/include' -I'/opt/R/4.0.3/lib/R/site-library/geojsonsf/include' -I'/opt/R/4.0.3/lib/R/site-library/geometries/include' -I'/opt/R/4.0.3/lib/R/site-library/jsonify/include' -I'/opt/R/4.0.3/lib/R/site-library/rapidjsonr/include' -I'/opt/R/4.0.3/lib/R/site-library/Rcpp/include' -I'/opt/R/4.0.3/lib/R/site-library/sfheaders/include' -I'/opt/R/4.0.3/lib/R/site-library/spatialwidget/include' -I/usr/local/include  -I../inst/include -fpic  -g -O2  -c point.cpp -o point.o
-g++ -std=gnu++11 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG -DSTRICT_R_HEADERS -DBOOST_NO_AUTO_PTR -I'/opt/R/4.0.3/lib/R/site-library/BH/include' -I'/opt/R/4.0.3/lib/R/site-library/colourvalues/include' -I'/opt/R/4.0.3/lib/R/site-library/geojsonsf/include' -I'/opt/R/4.0.3/lib/R/site-library/geometries/include' -I'/opt/R/4.0.3/lib/R/site-library/jsonify/include' -I'/opt/R/4.0.3/lib/R/site-library/rapidjsonr/include' -I'/opt/R/4.0.3/lib/R/site-library/Rcpp/include' -I'/opt/R/4.0.3/lib/R/site-library/sfheaders/include' -I'/opt/R/4.0.3/lib/R/site-library/spatialwidget/include' -I/usr/local/include  -I../inst/include -fpic  -g -O2  -c polygon.cpp -o polygon.o
-g++ -std=gnu++11 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG -DSTRICT_R_HEADERS -DBOOST_NO_AUTO_PTR -I'/opt/R/4.0.3/lib/R/site-library/BH/include' -I'/opt/R/4.0.3/lib/R/site-library/colourvalues/include' -I'/opt/R/4.0.3/lib/R/site-library/geojsonsf/include' -I'/opt/R/4.0.3/lib/R/site-library/geometries/include' -I'/opt/R/4.0.3/lib/R/site-library/jsonify/include' -I'/opt/R/4.0.3/lib/R/site-library/rapidjsonr/include' -I'/opt/R/4.0.3/lib/R/site-library/Rcpp/include' -I'/opt/R/4.0.3/lib/R/site-library/sfheaders/include' -I'/opt/R/4.0.3/lib/R/site-library/spatialwidget/include' -I/usr/local/include  -I../inst/include -fpic  -g -O2  -c text.cpp -o text.o
-/tmp/ccF55lQ2.s: Assembler messages:
-/tmp/ccF55lQ2.s: Fatal error: can't close text.o: No space left on device
-make: *** [/opt/R/4.0.3/lib/R/etc/Makeconf:181: text.o] Error 1
-ERROR: compilation failed for package ‘mapdeck’
-* removing ‘/tmp/workdir/mapdeck/new/mapdeck.Rcheck/mapdeck’
+g++ -std=gnu++11 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG -D__STDC_CONSTANT_MACROS -DIN_RCPP -DIN_CRAN -DUSE_DF -DBINARY_DF  -I'/opt/R/4.0.3/lib/R/site-library/Rcpp/include' -I/usr/local/include   -fpic  -g -O2  -c DigitalNet.cpp -o DigitalNet.o
+g++ -std=gnu++11 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG -D__STDC_CONSTANT_MACROS -DIN_RCPP -DIN_CRAN -DUSE_DF -DBINARY_DF  -I'/opt/R/4.0.3/lib/R/site-library/Rcpp/include' -I/usr/local/include   -fpic  -g -O2  -c RcppExports.cpp -o RcppExports.o
+g++ -std=gnu++11 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG -D__STDC_CONSTANT_MACROS -DIN_RCPP -DIN_CRAN -DUSE_DF -DBINARY_DF  -I'/opt/R/4.0.3/lib/R/site-library/Rcpp/include' -I/usr/local/include   -fpic  -g -O2  -c RcppLowWAFOMNX.cpp -o RcppLowWAFOMNX.o
+g++ -std=gnu++11 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG -D__STDC_CONSTANT_MACROS -DIN_RCPP -DIN_CRAN -DUSE_DF -DBINARY_DF  -I'/opt/R/4.0.3/lib/R/site-library/Rcpp/include' -I/usr/local/include   -fpic  -g -O2  -c nb64.cpp -o nb64.o
+g++ -std=gnu++11 -shared -L/opt/R/4.0.3/lib/R/lib -L/usr/local/lib -o LowWAFOMNX.so DigitalNet.o RcppExports.o RcppLowWAFOMNX.o nb64.o -L/opt/R/4.0.3/lib/R/lib -lR
+installing to /tmp/workdir/LowWAFOMNX/new/LowWAFOMNX.Rcheck/00LOCK-LowWAFOMNX/00new/LowWAFOMNX/libs
+** R
+** inst
+** byte-compile and prepare package for lazy loading
+Error in loadNamespace(j <- i[[1L]], c(lib.loc, .libPaths()), versionCheck = vI[[j]]) : 
+  there is no package called ‘memoise’
+Calls: <Anonymous> ... loadNamespace -> withRestarts -> withOneRestart -> doWithOneRestart
+Execution halted
+ERROR: lazy loading failed for package ‘LowWAFOMNX’
+* removing ‘/tmp/workdir/LowWAFOMNX/new/LowWAFOMNX.Rcheck/LowWAFOMNX’
 
 
 ```
 ### CRAN
 
 ```
-* installing *source* package ‘mapdeck’ ...
-** package ‘mapdeck’ successfully unpacked and MD5 sums checked
+* installing *source* package ‘LowWAFOMNX’ ...
+** package ‘LowWAFOMNX’ successfully unpacked and MD5 sums checked
 ** using staged installation
 ** libs
-g++ -std=gnu++11 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG -DSTRICT_R_HEADERS -DBOOST_NO_AUTO_PTR -I'/opt/R/4.0.3/lib/R/site-library/BH/include' -I'/opt/R/4.0.3/lib/R/site-library/colourvalues/include' -I'/opt/R/4.0.3/lib/R/site-library/geojsonsf/include' -I'/opt/R/4.0.3/lib/R/site-library/geometries/include' -I'/opt/R/4.0.3/lib/R/site-library/jsonify/include' -I'/opt/R/4.0.3/lib/R/site-library/rapidjsonr/include' -I'/opt/R/4.0.3/lib/R/site-library/Rcpp/include' -I'/opt/R/4.0.3/lib/R/site-library/sfheaders/include' -I'/opt/R/4.0.3/lib/R/site-library/spatialwidget/include' -I/usr/local/include  -I../inst/include -fpic  -g -O2  -c RcppExports.cpp -o RcppExports.o
-g++ -std=gnu++11 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG -DSTRICT_R_HEADERS -DBOOST_NO_AUTO_PTR -I'/opt/R/4.0.3/lib/R/site-library/BH/include' -I'/opt/R/4.0.3/lib/R/site-library/colourvalues/include' -I'/opt/R/4.0.3/lib/R/site-library/geojsonsf/include' -I'/opt/R/4.0.3/lib/R/site-library/geometries/include' -I'/opt/R/4.0.3/lib/R/site-library/jsonify/include' -I'/opt/R/4.0.3/lib/R/site-library/rapidjsonr/include' -I'/opt/R/4.0.3/lib/R/site-library/Rcpp/include' -I'/opt/R/4.0.3/lib/R/site-library/sfheaders/include' -I'/opt/R/4.0.3/lib/R/site-library/spatialwidget/include' -I/usr/local/include  -I../inst/include -fpic  -g -O2  -c aggregate.cpp -o aggregate.o
-g++ -std=gnu++11 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG -DSTRICT_R_HEADERS -DBOOST_NO_AUTO_PTR -I'/opt/R/4.0.3/lib/R/site-library/BH/include' -I'/opt/R/4.0.3/lib/R/site-library/colourvalues/include' -I'/opt/R/4.0.3/lib/R/site-library/geojsonsf/include' -I'/opt/R/4.0.3/lib/R/site-library/geometries/include' -I'/opt/R/4.0.3/lib/R/site-library/jsonify/include' -I'/opt/R/4.0.3/lib/R/site-library/rapidjsonr/include' -I'/opt/R/4.0.3/lib/R/site-library/Rcpp/include' -I'/opt/R/4.0.3/lib/R/site-library/sfheaders/include' -I'/opt/R/4.0.3/lib/R/site-library/spatialwidget/include' -I/usr/local/include  -I../inst/include -fpic  -g -O2  -c geojson.cpp -o geojson.o
-g++ -std=gnu++11 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG -DSTRICT_R_HEADERS -DBOOST_NO_AUTO_PTR -I'/opt/R/4.0.3/lib/R/site-library/BH/include' -I'/opt/R/4.0.3/lib/R/site-library/colourvalues/include' -I'/opt/R/4.0.3/lib/R/site-library/geojsonsf/include' -I'/opt/R/4.0.3/lib/R/site-library/geometries/include' -I'/opt/R/4.0.3/lib/R/site-library/jsonify/include' -I'/opt/R/4.0.3/lib/R/site-library/rapidjsonr/include' -I'/opt/R/4.0.3/lib/R/site-library/Rcpp/include' -I'/opt/R/4.0.3/lib/R/site-library/sfheaders/include' -I'/opt/R/4.0.3/lib/R/site-library/spatialwidget/include' -I/usr/local/include  -I../inst/include -fpic  -g -O2  -c mesh.cpp -o mesh.o
-g++ -std=gnu++11 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG -DSTRICT_R_HEADERS -DBOOST_NO_AUTO_PTR -I'/opt/R/4.0.3/lib/R/site-library/BH/include' -I'/opt/R/4.0.3/lib/R/site-library/colourvalues/include' -I'/opt/R/4.0.3/lib/R/site-library/geojsonsf/include' -I'/opt/R/4.0.3/lib/R/site-library/geometries/include' -I'/opt/R/4.0.3/lib/R/site-library/jsonify/include' -I'/opt/R/4.0.3/lib/R/site-library/rapidjsonr/include' -I'/opt/R/4.0.3/lib/R/site-library/Rcpp/include' -I'/opt/R/4.0.3/lib/R/site-library/sfheaders/include' -I'/opt/R/4.0.3/lib/R/site-library/spatialwidget/include' -I/usr/local/include  -I../inst/include -fpic  -g -O2  -c od.cpp -o od.o
-g++ -std=gnu++11 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG -DSTRICT_R_HEADERS -DBOOST_NO_AUTO_PTR -I'/opt/R/4.0.3/lib/R/site-library/BH/include' -I'/opt/R/4.0.3/lib/R/site-library/colourvalues/include' -I'/opt/R/4.0.3/lib/R/site-library/geojsonsf/include' -I'/opt/R/4.0.3/lib/R/site-library/geometries/include' -I'/opt/R/4.0.3/lib/R/site-library/jsonify/include' -I'/opt/R/4.0.3/lib/R/site-library/rapidjsonr/include' -I'/opt/R/4.0.3/lib/R/site-library/Rcpp/include' -I'/opt/R/4.0.3/lib/R/site-library/sfheaders/include' -I'/opt/R/4.0.3/lib/R/site-library/spatialwidget/include' -I/usr/local/include  -I../inst/include -fpic  -g -O2  -c path.cpp -o path.o
-...
+g++ -std=gnu++11 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG -D__STDC_CONSTANT_MACROS -DIN_RCPP -DIN_CRAN -DUSE_DF -DBINARY_DF  -I'/opt/R/4.0.3/lib/R/site-library/Rcpp/include' -I/usr/local/include   -fpic  -g -O2  -c DigitalNet.cpp -o DigitalNet.o
+g++ -std=gnu++11 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG -D__STDC_CONSTANT_MACROS -DIN_RCPP -DIN_CRAN -DUSE_DF -DBINARY_DF  -I'/opt/R/4.0.3/lib/R/site-library/Rcpp/include' -I/usr/local/include   -fpic  -g -O2  -c RcppExports.cpp -o RcppExports.o
+g++ -std=gnu++11 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG -D__STDC_CONSTANT_MACROS -DIN_RCPP -DIN_CRAN -DUSE_DF -DBINARY_DF  -I'/opt/R/4.0.3/lib/R/site-library/Rcpp/include' -I/usr/local/include   -fpic  -g -O2  -c RcppLowWAFOMNX.cpp -o RcppLowWAFOMNX.o
+g++ -std=gnu++11 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG -D__STDC_CONSTANT_MACROS -DIN_RCPP -DIN_CRAN -DUSE_DF -DBINARY_DF  -I'/opt/R/4.0.3/lib/R/site-library/Rcpp/include' -I/usr/local/include   -fpic  -g -O2  -c nb64.cpp -o nb64.o
+g++ -std=gnu++11 -shared -L/opt/R/4.0.3/lib/R/lib -L/usr/local/lib -o LowWAFOMNX.so DigitalNet.o RcppExports.o RcppLowWAFOMNX.o nb64.o -L/opt/R/4.0.3/lib/R/lib -lR
+installing to /tmp/workdir/LowWAFOMNX/old/LowWAFOMNX.Rcheck/00LOCK-LowWAFOMNX/00new/LowWAFOMNX/libs
+** R
+** inst
 ** byte-compile and prepare package for lazy loading
-** help
-*** installing help indices
-** building package indices
-** installing vignettes
-** testing if installed package can be loaded from temporary location
-** checking absolute paths in shared objects and dynamic libraries
-** testing if installed package can be loaded from final location
-** testing if installed package keeps a record of temporary installation path
-* DONE (mapdeck)
+Error in loadNamespace(j <- i[[1L]], c(lib.loc, .libPaths()), versionCheck = vI[[j]]) : 
+  there is no package called ‘memoise’
+Calls: <Anonymous> ... loadNamespace -> withRestarts -> withOneRestart -> doWithOneRestart
+Execution halted
+ERROR: lazy loading failed for package ‘LowWAFOMNX’
+* removing ‘/tmp/workdir/LowWAFOMNX/old/LowWAFOMNX.Rcheck/LowWAFOMNX’
+
+
+```
+# LSX
+
+<details>
+
+* Version: 0.9.5
+* GitHub: NA
+* Source code: https://github.com/cran/LSX
+* Date/Publication: 2020-11-20 06:40:02 UTC
+* Number of recursive dependencies: 112
+
+Run `cloud_details(, "LSX")` for more info
+
+</details>
+
+## In both
+
+*   checking whether package ‘LSX’ can be installed ... ERROR
+    ```
+    Installation failed.
+    See ‘/tmp/workdir/LSX/new/LSX.Rcheck/00install.out’ for details.
+    ```
+
+## Installation
+
+### Devel
+
+```
+* installing *source* package ‘LSX’ ...
+** package ‘LSX’ successfully unpacked and MD5 sums checked
+** using staged installation
+** R
+** data
+*** moving datasets to lazyload DB
+** byte-compile and prepare package for lazy loading
+Error: package or namespace load failed for ‘quanteda’ in loadNamespace(j <- i[[1L]], c(lib.loc, .libPaths()), versionCheck = vI[[j]]):
+ there is no package called ‘munsell’
+Error: package ‘quanteda’ could not be loaded
+Execution halted
+ERROR: lazy loading failed for package ‘LSX’
+* removing ‘/tmp/workdir/LSX/new/LSX.Rcheck/LSX’
+
+
+```
+### CRAN
+
+```
+* installing *source* package ‘LSX’ ...
+** package ‘LSX’ successfully unpacked and MD5 sums checked
+** using staged installation
+** R
+** data
+*** moving datasets to lazyload DB
+** byte-compile and prepare package for lazy loading
+Error: package or namespace load failed for ‘quanteda’ in loadNamespace(j <- i[[1L]], c(lib.loc, .libPaths()), versionCheck = vI[[j]]):
+ there is no package called ‘munsell’
+Error: package ‘quanteda’ could not be loaded
+Execution halted
+ERROR: lazy loading failed for package ‘LSX’
+* removing ‘/tmp/workdir/LSX/old/LSX.Rcheck/LSX’
+
+
+```
+# MBNMAtime
+
+<details>
+
+* Version: 0.1.3
+* GitHub: NA
+* Source code: https://github.com/cran/MBNMAtime
+* Date/Publication: 2020-03-04 15:50:06 UTC
+* Number of recursive dependencies: 84
+
+Run `cloud_details(, "MBNMAtime")` for more info
+
+</details>
+
+## Error before installation
+
+### Devel
+
+```
+* using log directory ‘/tmp/workdir/MBNMAtime/new/MBNMAtime.Rcheck’
+* using R version 4.0.3 (2020-10-10)
+* using platform: x86_64-pc-linux-gnu (64-bit)
+* using session charset: UTF-8
+* using options ‘--no-manual --no-build-vignettes’
+* checking for file ‘MBNMAtime/DESCRIPTION’ ... OK
+* checking extension type ... Package
+* this is package ‘MBNMAtime’ version ‘0.1.3’
+* package encoding: UTF-8
+* checking package namespace information ... OK
+...
+* checking for unstated dependencies in ‘tests’ ... OK
+* checking tests ... OK
+  Running ‘testthat.R’
+* checking for unstated dependencies in vignettes ... OK
+* checking package vignettes in ‘inst/doc’ ... OK
+* checking running R code from vignettes ... NONE
+  ‘MBNMAtime.Rmd’ using ‘UTF-8’... OK
+* checking re-building of vignette outputs ... SKIPPED
+* DONE
+Status: 2 NOTEs
+
+
+
+
+
+```
+### CRAN
+
+```
+* using log directory ‘/tmp/workdir/MBNMAtime/old/MBNMAtime.Rcheck’
+* using R version 4.0.3 (2020-10-10)
+* using platform: x86_64-pc-linux-gnu (64-bit)
+* using session charset: UTF-8
+* using options ‘--no-manual --no-build-vignettes’
+* checking for file ‘MBNMAtime/DESCRIPTION’ ... OK
+* checking extension type ... Package
+* this is package ‘MBNMAtime’ version ‘0.1.3’
+* package encoding: UTF-8
+* checking package namespace information ... OK
+...
+* checking for unstated dependencies in ‘tests’ ... OK
+* checking tests ... OK
+  Running ‘testthat.R’
+* checking for unstated dependencies in vignettes ... OK
+* checking package vignettes in ‘inst/doc’ ... OK
+* checking running R code from vignettes ... NONE
+  ‘MBNMAtime.Rmd’ using ‘UTF-8’... OK
+* checking re-building of vignette outputs ... SKIPPED
+* DONE
+Status: 2 NOTEs
+
+
+
 
 
 ```
@@ -1932,6 +6373,84 @@ Status: 1 ERROR
 
 
 
+
+
+```
+# mlpack
+
+<details>
+
+* Version: 3.4.2
+* GitHub: https://github.com/mlpack/mlpack
+* Source code: https://github.com/cran/mlpack
+* Date/Publication: 2020-12-08 17:40:06 UTC
+* Number of recursive dependencies: 38
+
+Run `cloud_details(, "mlpack")` for more info
+
+</details>
+
+## In both
+
+*   checking whether package ‘mlpack’ can be installed ... ERROR
+    ```
+    Installation failed.
+    See ‘/tmp/workdir/mlpack/new/mlpack.Rcheck/00install.out’ for details.
+    ```
+
+## Installation
+
+### Devel
+
+```
+* installing *source* package ‘mlpack’ ...
+** package ‘mlpack’ successfully unpacked and MD5 sums checked
+** using staged installation
+** libs
+g++ -std=gnu++11 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG  -I'/opt/R/4.0.3/lib/R/site-library/Rcpp/include' -I'/opt/R/4.0.3/lib/R/site-library/RcppArmadillo/include' -I'/opt/R/4.0.3/lib/R/site-library/BH/include' -I'/opt/R/4.0.3/lib/R/site-library/RcppEnsmallen/include' -I/usr/local/include  -DBOOST_MATH_PROMOTE_DOUBLE_POLICY=false -I. -fopenmp -fpic  -g -O2  -c RcppExports.cpp -o RcppExports.o
+In file included from /opt/R/4.0.3/lib/R/site-library/BH/include/boost/scoped_ptr.hpp:13,
+                 from /opt/R/4.0.3/lib/R/site-library/BH/include/boost/archive/detail/basic_iarchive.hpp:23,
+                 from /opt/R/4.0.3/lib/R/site-library/BH/include/boost/serialization/map.hpp:24,
+                 from ./mlpack/prereqs.hpp:91,
+                 from ./mlpack/core/data/extension.hpp:16,
+...
+                 from ./rcpp_mlpack.h:16,
+                 from cf.cpp:7:
+/usr/include/c++/9/bits/unique_ptr.h:53:28: note: declared here
+   53 |   template<typename> class auto_ptr;
+      |                            ^~~~~~~~
+g++: fatal error: Killed signal terminated program cc1plus
+compilation terminated.
+make: *** [/opt/R/4.0.3/lib/R/etc/Makeconf:181: cf.o] Error 1
+ERROR: compilation failed for package ‘mlpack’
+* removing ‘/tmp/workdir/mlpack/new/mlpack.Rcheck/mlpack’
+
+
+```
+### CRAN
+
+```
+* installing *source* package ‘mlpack’ ...
+** package ‘mlpack’ successfully unpacked and MD5 sums checked
+** using staged installation
+** libs
+g++ -std=gnu++11 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG  -I'/opt/R/4.0.3/lib/R/site-library/Rcpp/include' -I'/opt/R/4.0.3/lib/R/site-library/RcppArmadillo/include' -I'/opt/R/4.0.3/lib/R/site-library/BH/include' -I'/opt/R/4.0.3/lib/R/site-library/RcppEnsmallen/include' -I/usr/local/include  -DBOOST_MATH_PROMOTE_DOUBLE_POLICY=false -I. -fopenmp -fpic  -g -O2  -c RcppExports.cpp -o RcppExports.o
+In file included from /opt/R/4.0.3/lib/R/site-library/BH/include/boost/scoped_ptr.hpp:13,
+                 from /opt/R/4.0.3/lib/R/site-library/BH/include/boost/archive/detail/basic_iarchive.hpp:23,
+                 from /opt/R/4.0.3/lib/R/site-library/BH/include/boost/serialization/map.hpp:24,
+                 from ./mlpack/prereqs.hpp:91,
+                 from ./mlpack/core/data/extension.hpp:16,
+...
+                 from ../inst/include/mlpack.h:15,
+                 from RcppExports.cpp:4:
+/usr/include/c++/9/bits/unique_ptr.h:53:28: note: declared here
+   53 |   template<typename> class auto_ptr;
+      |                            ^~~~~~~~
+g++: fatal error: Killed signal terminated program cc1plus
+compilation terminated.
+make: *** [/opt/R/4.0.3/lib/R/etc/Makeconf:181: RcppExports.o] Error 1
+ERROR: compilation failed for package ‘mlpack’
+* removing ‘/tmp/workdir/mlpack/old/mlpack.Rcheck/mlpack’
 
 
 ```
@@ -2011,17 +6530,17 @@ Status: 1 ERROR, 2 NOTEs
 
 
 ```
-# MoMPCA
+# MODIStsp
 
 <details>
 
-* Version: 1.0.0
-* GitHub: NA
-* Source code: https://github.com/cran/MoMPCA
-* Date/Publication: 2020-07-01 09:40:07 UTC
-* Number of recursive dependencies: 85
+* Version: 2.0.5
+* GitHub: https://github.com/ropensci/MODIStsp
+* Source code: https://github.com/cran/MODIStsp
+* Date/Publication: 2020-12-12 15:40:02 UTC
+* Number of recursive dependencies: 149
 
-Run `cloud_details(, "MoMPCA")` for more info
+Run `cloud_details(, "MODIStsp")` for more info
 
 </details>
 
@@ -2030,7 +6549,27 @@ Run `cloud_details(, "MoMPCA")` for more info
 ### Devel
 
 ```
-
+* using log directory ‘/tmp/workdir/MODIStsp/new/MODIStsp.Rcheck’
+* using R version 4.0.3 (2020-10-10)
+* using platform: x86_64-pc-linux-gnu (64-bit)
+* using session charset: UTF-8
+* using options ‘--no-manual --no-build-vignettes’
+* checking for file ‘MODIStsp/DESCRIPTION’ ... OK
+* checking extension type ... Package
+* this is package ‘MODIStsp’ version ‘2.0.5’
+* package encoding: UTF-8
+* checking package namespace information ... OK
+...
+---
+> All Done!
+  Running ‘testthat.R’
+* checking for unstated dependencies in vignettes ... OK
+* checking package vignettes in ‘inst/doc’ ... OK
+* checking running R code from vignettes ... NONE
+  ‘MODIStsp.Rmd’ using ‘UTF-8’... OK
+* checking re-building of vignette outputs ... SKIPPED
+* DONE
+Status: 1 NOTE
 
 
 
@@ -2040,53 +6579,53 @@ Run `cloud_details(, "MoMPCA")` for more info
 ### CRAN
 
 ```
-* using log directory ‘/tmp/workdir/MoMPCA/old/MoMPCA.Rcheck’
+* using log directory ‘/tmp/workdir/MODIStsp/old/MODIStsp.Rcheck’
 * using R version 4.0.3 (2020-10-10)
 * using platform: x86_64-pc-linux-gnu (64-bit)
 * using session charset: UTF-8
 * using options ‘--no-manual --no-build-vignettes’
-* checking for file ‘MoMPCA/DESCRIPTION’ ... OK
+* checking for file ‘MODIStsp/DESCRIPTION’ ... OK
 * checking extension type ... Package
-* this is package ‘MoMPCA’ version ‘1.0.0’
+* this is package ‘MODIStsp’ version ‘2.0.5’
 * package encoding: UTF-8
 * checking package namespace information ... OK
 ...
-* checking for unstated dependencies in examples ... OK
-* checking contents of ‘data’ directory ... OK
-* checking data for non-ASCII characters ... NOTE
-  Note: found 16 marked UTF-8 strings
-* checking data for ASCII and uncompressed saves ... OK
-* checking installed files from ‘inst/doc’ ... OK
-* checking files in ‘vignettes’ ... OK
-* checking examples ... OK
-* checking for unstated dependencies in ‘tests’ ... OK
-* checking tests ...
+---
+> All Done!
+  Running ‘testthat.R’
+* checking for unstated dependencies in vignettes ... OK
+* checking package vignettes in ‘inst/doc’ ... OK
+* checking running R code from vignettes ... NONE
+  ‘MODIStsp.Rmd’ using ‘UTF-8’... OK
+* checking re-building of vignette outputs ... SKIPPED
+* DONE
+Status: 1 NOTE
 
 
 
 
 
 ```
-# OpenMx
+# MonteCarlo
 
 <details>
 
-* Version: 2.18.1
-* GitHub: https://github.com/OpenMx/OpenMx
-* Source code: https://github.com/cran/OpenMx
-* Date/Publication: 2020-08-28 07:50:12 UTC
-* Number of recursive dependencies: 75
+* Version: 1.0.6
+* GitHub: https://github.com/FunWithR/MonteCarlo
+* Source code: https://github.com/cran/MonteCarlo
+* Date/Publication: 2019-01-31 11:13:20 UTC
+* Number of recursive dependencies: 73
 
-Run `cloud_details(, "OpenMx")` for more info
+Run `cloud_details(, "MonteCarlo")` for more info
 
 </details>
 
 ## In both
 
-*   checking whether package ‘OpenMx’ can be installed ... ERROR
+*   checking whether package ‘MonteCarlo’ can be installed ... ERROR
     ```
     Installation failed.
-    See ‘/tmp/workdir/OpenMx/new/OpenMx.Rcheck/00install.out’ for details.
+    See ‘/tmp/workdir/MonteCarlo/new/MonteCarlo.Rcheck/00install.out’ for details.
     ```
 
 ## Installation
@@ -2094,54 +6633,252 @@ Run `cloud_details(, "OpenMx")` for more info
 ### Devel
 
 ```
-* installing *source* package ‘OpenMx’ ...
-** package ‘OpenMx’ successfully unpacked and MD5 sums checked
+* installing *source* package ‘MonteCarlo’ ...
+** package ‘MonteCarlo’ successfully unpacked and MD5 sums checked
 ** using staged installation
-NOTE: ./configure is not an autoconf generated script.
-Change default C/C++ compiler and default compile flags by editing ~/.R/Makevars
-** libs
-g++ -std=gnu++14 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG  -I'/opt/R/4.0.3/lib/R/site-library/Rcpp/include' -I'/opt/R/4.0.3/lib/R/site-library/RcppEigen/include' -I'/opt/R/4.0.3/lib/R/site-library/StanHeaders/include' -I'/opt/R/4.0.3/lib/R/site-library/BH/include' -I'/opt/R/4.0.3/lib/R/site-library/rpf/include' -I/usr/local/include  -fopenmp       -fpic  -g -O2  -c Compute.cpp -o Compute.o
-In file included from /opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/Core:392,
-                 from /opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/Dense:1,
-                 from /opt/R/4.0.3/lib/R/site-library/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:13,
-...
-      |                                 ^~~~~~
-/opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/src/Core/products/GeneralBlockPanelKernel.h:1846:33: warning: ignoring attributes on template argument ‘Eigen::internal::packet_traits<double>::type’ {aka ‘__vector(2) double’} [-Wignored-attributes]
-Compute.cpp: At global scope:
-Compute.cpp:5501:1: fatal error: error writing to /tmp/cc4Zlq0x.s: No space left on device
- 5501 | }
-      | ^
-compilation terminated.
-make: *** [/opt/R/4.0.3/lib/R/etc/Makeconf:181: Compute.o] Error 1
-ERROR: compilation failed for package ‘OpenMx’
-* removing ‘/tmp/workdir/OpenMx/new/OpenMx.Rcheck/OpenMx’
+** R
+** inst
+** byte-compile and prepare package for lazy loading
+Error in loadNamespace(j <- i[[1L]], c(lib.loc, .libPaths()), versionCheck = vI[[j]]) : 
+  there is no package called ‘Rcpp’
+Calls: <Anonymous> ... loadNamespace -> withRestarts -> withOneRestart -> doWithOneRestart
+Execution halted
+ERROR: lazy loading failed for package ‘MonteCarlo’
+* removing ‘/tmp/workdir/MonteCarlo/new/MonteCarlo.Rcheck/MonteCarlo’
 
 
 ```
 ### CRAN
 
 ```
-* installing *source* package ‘OpenMx’ ...
-** package ‘OpenMx’ successfully unpacked and MD5 sums checked
+* installing *source* package ‘MonteCarlo’ ...
+** package ‘MonteCarlo’ successfully unpacked and MD5 sums checked
 ** using staged installation
-NOTE: ./configure is not an autoconf generated script.
-Change default C/C++ compiler and default compile flags by editing ~/.R/Makevars
-** libs
-g++ -std=gnu++14 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG  -I'/opt/R/4.0.3/lib/R/site-library/Rcpp/include' -I'/opt/R/4.0.3/lib/R/site-library/RcppEigen/include' -I'/opt/R/4.0.3/lib/R/site-library/StanHeaders/include' -I'/opt/R/4.0.3/lib/R/site-library/BH/include' -I'/opt/R/4.0.3/lib/R/site-library/rpf/include' -I/usr/local/include  -fopenmp       -fpic  -g -O2  -c Compute.cpp -o Compute.o
-In file included from /opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/Core:392,
-                 from /opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/Dense:1,
-                 from /opt/R/4.0.3/lib/R/site-library/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:13,
+** R
+** inst
+** byte-compile and prepare package for lazy loading
+Error in loadNamespace(j <- i[[1L]], c(lib.loc, .libPaths()), versionCheck = vI[[j]]) : 
+  there is no package called ‘Rcpp’
+Calls: <Anonymous> ... loadNamespace -> withRestarts -> withOneRestart -> doWithOneRestart
+Execution halted
+ERROR: lazy loading failed for package ‘MonteCarlo’
+* removing ‘/tmp/workdir/MonteCarlo/old/MonteCarlo.Rcheck/MonteCarlo’
+
+
+```
+# moonBook
+
+<details>
+
+* Version: 0.2.3
+* GitHub: https://github.com/cardiomoon/moonBook
+* Source code: https://github.com/cran/moonBook
+* Date/Publication: 2018-07-23 05:40:02 UTC
+* Number of recursive dependencies: 81
+
+Run `cloud_details(, "moonBook")` for more info
+
+</details>
+
+## Newly broken
+
+*   checking whether package ‘moonBook’ can be installed ... ERROR
+    ```
+    Installation failed.
+    See ‘/tmp/workdir/moonBook/new/moonBook.Rcheck/00install.out’ for details.
+    ```
+
+## Newly fixed
+
+*   checking dependencies in R code ... NOTE
+    ```
+    Namespace in Imports field not imported from: ‘purrr’
+      All declared Imports should be used.
+    ```
+
+## Installation
+
+### Devel
+
+```
+* installing *source* package ‘moonBook’ ...
+** package ‘moonBook’ successfully unpacked and MD5 sums checked
+** using staged installation
+** R
+** data
+*** moving datasets to lazyload DB
+** inst
+** byte-compile and prepare package for lazy loading
+** help
+*** installing help indices
 ...
-/opt/R/4.0.3/lib/R/site-library/StanHeaders/include/stan/math/rev/mat/functor/adj_jac_apply.hpp:531:8:   required from here
-/opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/src/Core/DenseCoeffsBase.h:650:34: warning: ignoring attributes on template argument ‘Eigen::internal::packet_traits<double>::type’ {aka ‘__vector(2) double’} [-Wignored-attributes]
-  650 |   return internal::first_aligned<int(unpacket_traits<DefaultPacketType>::alignment),Derived>(m);
-      |                                  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-/tmp/ccBBDyqg.s: Assembler messages:
-/tmp/ccBBDyqg.s: Fatal error: can't write 3887 bytes to section .debug_str of omxMLFitFunction.o: 'No space left on device'
-/tmp/ccBBDyqg.s: Fatal error: can't close omxMLFitFunction.o: No space left on device
-make: *** [/opt/R/4.0.3/lib/R/etc/Makeconf:181: omxMLFitFunction.o] Error 1
-ERROR: compilation failed for package ‘OpenMx’
-* removing ‘/tmp/workdir/OpenMx/old/OpenMx.Rcheck/OpenMx’
+** building package indices
+** installing vignettes
+** testing if installed package can be loaded from temporary location
+** testing if installed package can be loaded from final location
+Error in as.list.environment(base::getNamespace("moonBook"), all.names = TRUE) : 
+  lazy-load database '/tmp/workdir/moonBook/new/moonBook.Rcheck/moonBook/R/moonBook.rdb' is corrupt
+Calls: <Anonymous> ... withCallingHandlers -> <Anonymous> -> <Anonymous> -> as.list.environment
+Execution halted
+ERROR: loading failed
+* removing ‘/tmp/workdir/moonBook/new/moonBook.Rcheck/moonBook’
+
+
+```
+### CRAN
+
+```
+* installing *source* package ‘moonBook’ ...
+** package ‘moonBook’ successfully unpacked and MD5 sums checked
+** using staged installation
+** R
+** data
+*** moving datasets to lazyload DB
+** inst
+** byte-compile and prepare package for lazy loading
+** help
+*** installing help indices
+*** copying figures
+** building package indices
+** installing vignettes
+** testing if installed package can be loaded from temporary location
+** testing if installed package can be loaded from final location
+** testing if installed package keeps a record of temporary installation path
+* DONE (moonBook)
+
+
+```
+# multinma
+
+<details>
+
+* Version: 0.2.0
+* GitHub: https://github.com/dmphillippo/multinma
+* Source code: https://github.com/cran/multinma
+* Date/Publication: 2020-12-04 15:10:02 UTC
+* Number of recursive dependencies: 149
+
+Run `cloud_details(, "multinma")` for more info
+
+</details>
+
+## In both
+
+*   checking whether package ‘multinma’ can be installed ... ERROR
+    ```
+    Installation failed.
+    See ‘/tmp/workdir/multinma/new/multinma.Rcheck/00install.out’ for details.
+    ```
+
+## Installation
+
+### Devel
+
+```
+* installing *source* package ‘multinma’ ...
+** package ‘multinma’ successfully unpacked and MD5 sums checked
+** using staged installation
+DIAGNOSTIC(S) FROM PARSER:
+Info: integer division implicitly rounds to integer. Found int division: nint / int_thin
+ Positive values rounded down, negative values rounded up or down in platform-dependent way.
+
+DIAGNOSTIC(S) FROM PARSER:
+Info: integer division implicitly rounds to integer. Found int division: nint / int_thin
+ Positive values rounded down, negative values rounded up or down in platform-dependent way.
+...
+/opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/src/Core/ProductEvaluators.h:35:90:   required from ‘Eigen::internal::evaluator<Eigen::Product<Lhs, Rhs, Option> >::evaluator(const XprType&) [with Lhs = Eigen::Product<Eigen::CwiseBinaryOp<Eigen::internal::scalar_product_op<double, double>, const Eigen::CwiseNullaryOp<Eigen::internal::scalar_constant_op<double>, const Eigen::Matrix<double, 1, -1> >, const Eigen::Transpose<Eigen::Matrix<double, -1, 1> > >, Eigen::Matrix<double, -1, -1>, 0>; Rhs = Eigen::Matrix<double, -1, 1>; int Options = 0; Eigen::internal::evaluator<Eigen::Product<Lhs, Rhs, Option> >::XprType = Eigen::Product<Eigen::Product<Eigen::CwiseBinaryOp<Eigen::internal::scalar_product_op<double, double>, const Eigen::CwiseNullaryOp<Eigen::internal::scalar_constant_op<double>, const Eigen::Matrix<double, 1, -1> >, const Eigen::Transpose<Eigen::Matrix<double, -1, 1> > >, Eigen::Matrix<double, -1, -1>, 0>, Eigen::Matrix<double, -1, 1>, 0>]’
+/opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/src/Core/Product.h:132:22:   required from ‘Eigen::internal::dense_product_base<Lhs, Rhs, Option, 6>::operator const Scalar() const [with Lhs = Eigen::Product<Eigen::CwiseBinaryOp<Eigen::internal::scalar_product_op<double, double>, const Eigen::CwiseNullaryOp<Eigen::internal::scalar_constant_op<double>, const Eigen::Matrix<double, 1, -1> >, const Eigen::Transpose<Eigen::Matrix<double, -1, 1> > >, Eigen::Matrix<double, -1, -1>, 0>; Rhs = Eigen::Matrix<double, -1, 1>; int Option = 0; Eigen::internal::dense_product_base<Lhs, Rhs, Option, 6>::Scalar = double]’
+/opt/R/4.0.3/lib/R/site-library/StanHeaders/include/src/stan/mcmc/hmc/hamiltonians/dense_e_metric.hpp:23:56:   required from ‘double stan::mcmc::dense_e_metric<Model, BaseRNG>::T(stan::mcmc::dense_e_point&) [with Model = model_binomial_1par_namespace::model_binomial_1par; BaseRNG = boost::random::additive_combine_engine<boost::random::linear_congruential_engine<unsigned int, 40014, 0, 2147483563>, boost::random::linear_congruential_engine<unsigned int, 40692, 0, 2147483399> >]’
+/opt/R/4.0.3/lib/R/site-library/StanHeaders/include/src/stan/mcmc/hmc/hamiltonians/dense_e_metric.hpp:22:10:   required from here
+/opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/src/Core/DenseCoeffsBase.h:55:30: warning: ignoring attributes on template argument ‘Eigen::internal::packet_traits<double>::type’ {aka ‘__vector(2) double’} [-Wignored-attributes]
+g++: fatal error: Killed signal terminated program cc1plus
+compilation terminated.
+make: *** [/opt/R/4.0.3/lib/R/etc/Makeconf:179: stanExports_binomial_1par.o] Error 1
+ERROR: compilation failed for package ‘multinma’
+* removing ‘/tmp/workdir/multinma/new/multinma.Rcheck/multinma’
+
+
+```
+### CRAN
+
+```
+* installing *source* package ‘multinma’ ...
+** package ‘multinma’ successfully unpacked and MD5 sums checked
+** using staged installation
+DIAGNOSTIC(S) FROM PARSER:
+Info: integer division implicitly rounds to integer. Found int division: nint / int_thin
+ Positive values rounded down, negative values rounded up or down in platform-dependent way.
+
+DIAGNOSTIC(S) FROM PARSER:
+Info: integer division implicitly rounds to integer. Found int division: nint / int_thin
+ Positive values rounded down, negative values rounded up or down in platform-dependent way.
+...
+/opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/src/Core/ProductEvaluators.h:35:90:   required from ‘Eigen::internal::evaluator<Eigen::Product<Lhs, Rhs, Option> >::evaluator(const XprType&) [with Lhs = Eigen::Product<Eigen::CwiseBinaryOp<Eigen::internal::scalar_product_op<double, double>, const Eigen::CwiseNullaryOp<Eigen::internal::scalar_constant_op<double>, const Eigen::Matrix<double, 1, -1> >, const Eigen::Transpose<Eigen::Matrix<double, -1, 1> > >, Eigen::Matrix<double, -1, -1>, 0>; Rhs = Eigen::Matrix<double, -1, 1>; int Options = 0; Eigen::internal::evaluator<Eigen::Product<Lhs, Rhs, Option> >::XprType = Eigen::Product<Eigen::Product<Eigen::CwiseBinaryOp<Eigen::internal::scalar_product_op<double, double>, const Eigen::CwiseNullaryOp<Eigen::internal::scalar_constant_op<double>, const Eigen::Matrix<double, 1, -1> >, const Eigen::Transpose<Eigen::Matrix<double, -1, 1> > >, Eigen::Matrix<double, -1, -1>, 0>, Eigen::Matrix<double, -1, 1>, 0>]’
+/opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/src/Core/Product.h:132:22:   required from ‘Eigen::internal::dense_product_base<Lhs, Rhs, Option, 6>::operator const Scalar() const [with Lhs = Eigen::Product<Eigen::CwiseBinaryOp<Eigen::internal::scalar_product_op<double, double>, const Eigen::CwiseNullaryOp<Eigen::internal::scalar_constant_op<double>, const Eigen::Matrix<double, 1, -1> >, const Eigen::Transpose<Eigen::Matrix<double, -1, 1> > >, Eigen::Matrix<double, -1, -1>, 0>; Rhs = Eigen::Matrix<double, -1, 1>; int Option = 0; Eigen::internal::dense_product_base<Lhs, Rhs, Option, 6>::Scalar = double]’
+/opt/R/4.0.3/lib/R/site-library/StanHeaders/include/src/stan/mcmc/hmc/hamiltonians/dense_e_metric.hpp:23:56:   required from ‘double stan::mcmc::dense_e_metric<Model, BaseRNG>::T(stan::mcmc::dense_e_point&) [with Model = model_binomial_1par_namespace::model_binomial_1par; BaseRNG = boost::random::additive_combine_engine<boost::random::linear_congruential_engine<unsigned int, 40014, 0, 2147483563>, boost::random::linear_congruential_engine<unsigned int, 40692, 0, 2147483399> >]’
+/opt/R/4.0.3/lib/R/site-library/StanHeaders/include/src/stan/mcmc/hmc/hamiltonians/dense_e_metric.hpp:22:10:   required from here
+/opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/src/Core/DenseCoeffsBase.h:55:30: warning: ignoring attributes on template argument ‘Eigen::internal::packet_traits<double>::type’ {aka ‘__vector(2) double’} [-Wignored-attributes]
+g++: fatal error: Killed signal terminated program cc1plus
+compilation terminated.
+make: *** [/opt/R/4.0.3/lib/R/etc/Makeconf:179: stanExports_binomial_1par.o] Error 1
+ERROR: compilation failed for package ‘multinma’
+* removing ‘/tmp/workdir/multinma/old/multinma.Rcheck/multinma’
+
+
+```
+# ompr.roi
+
+<details>
+
+* Version: 0.8.0
+* GitHub: https://github.com/dirkschumacher/ompr.roi
+* Source code: https://github.com/cran/ompr.roi
+* Date/Publication: 2018-06-11 19:45:03 UTC
+* Number of recursive dependencies: 47
+
+Run `cloud_details(, "ompr.roi")` for more info
+
+</details>
+
+## Error before installation
+
+### Devel
+
+```
+* using log directory ‘/tmp/workdir/ompr.roi/new/ompr.roi.Rcheck’
+* using R version 4.0.3 (2020-10-10)
+* using platform: x86_64-pc-linux-gnu (64-bit)
+* using session charset: UTF-8
+* using options ‘--no-manual --no-build-vignettes’
+* checking for file ‘ompr.roi/DESCRIPTION’ ... OK
+* checking extension type ... Package
+* this is package ‘ompr.roi’ version ‘0.8.0’
+* checking package namespace information ... OK
+* checking package dependencies ... OK
+...
+* checking for code/documentation mismatches ... OK
+* checking Rd \usage sections ... OK
+* checking Rd contents ... OK
+* checking for unstated dependencies in examples ... OK
+* checking examples ... OK
+* checking for unstated dependencies in ‘tests’ ... OK
+* checking tests ... OK
+  Running ‘testthat.R’
+* DONE
+Status: OK
+
+
+
+
+
+```
+### CRAN
+
+```
+
+
+
+
 
 
 ```
@@ -2208,6 +6945,66 @@ Status: 1 ERROR
 
 
 
+
+
+```
+# ouxy
+
+<details>
+
+* Version: 2.1
+* GitHub: https://github.com/djhwueng/ououcir
+* Source code: https://github.com/cran/ouxy
+* Date/Publication: 2020-05-28 05:00:02 UTC
+* Number of recursive dependencies: 152
+
+Run `cloud_details(, "ouxy")` for more info
+
+</details>
+
+## In both
+
+*   checking whether package ‘ouxy’ can be installed ... ERROR
+    ```
+    Installation failed.
+    See ‘/tmp/workdir/ouxy/new/ouxy.Rcheck/00install.out’ for details.
+    ```
+
+## Installation
+
+### Devel
+
+```
+* installing *source* package ‘ouxy’ ...
+** package ‘ouxy’ successfully unpacked and MD5 sums checked
+** using staged installation
+** R
+** data
+** byte-compile and prepare package for lazy loading
+Error in loadNamespace(j <- i[[1L]], c(lib.loc, .libPaths()), versionCheck = vI[[j]]) : 
+  there is no package called ‘adegenet’
+Calls: <Anonymous> ... loadNamespace -> withRestarts -> withOneRestart -> doWithOneRestart
+Execution halted
+ERROR: lazy loading failed for package ‘ouxy’
+* removing ‘/tmp/workdir/ouxy/new/ouxy.Rcheck/ouxy’
+
+
+```
+### CRAN
+
+```
+* installing *source* package ‘ouxy’ ...
+** package ‘ouxy’ successfully unpacked and MD5 sums checked
+** using staged installation
+** R
+** data
+** byte-compile and prepare package for lazy loading
+Error in loadNamespace(j <- i[[1L]], c(lib.loc, .libPaths()), versionCheck = vI[[j]]) : 
+  there is no package called ‘adegenet’
+Calls: <Anonymous> ... loadNamespace -> withRestarts -> withOneRestart -> doWithOneRestart
+Execution halted
+ERROR: lazy loading failed for package ‘ouxy’
+* removing ‘/tmp/workdir/ouxy/old/ouxy.Rcheck/ouxy’
 
 
 ```
@@ -2353,100 +7150,35 @@ Status: 1 ERROR
 
 
 ```
-# precautionary
+# RcppAlgos
 
 <details>
 
-* Version: 0.1-5
-* GitHub: NA
-* Source code: https://github.com/cran/precautionary
-* Date/Publication: 2020-11-03 06:30:02 UTC
-* Number of recursive dependencies: 141
+* Version: 2.4.1
+* GitHub: https://github.com/jwood000/RcppAlgos
+* Source code: https://github.com/cran/RcppAlgos
+* Date/Publication: 2020-03-24 07:10:04 UTC
+* Number of recursive dependencies: 47
 
-Run `cloud_details(, "precautionary")` for more info
-
-</details>
-
-## In both
-
-*   checking whether package ‘precautionary’ can be installed ... ERROR
-    ```
-    Installation failed.
-    See ‘/tmp/workdir/precautionary/new/precautionary.Rcheck/00install.out’ for details.
-    ```
-
-## Installation
-
-### Devel
-
-```
-* installing *source* package ‘precautionary’ ...
-** package ‘precautionary’ successfully unpacked and MD5 sums checked
-** using staged installation
-** R
-** demo
-** exec
-** inst
-** byte-compile and prepare package for lazy loading
-Error: package or namespace load failed for ‘escalation’ in loadNamespace(j <- i[[1L]], c(lib.loc, .libPaths()), versionCheck = vI[[j]]):
- there is no package called ‘trialr’
-Error: package ‘escalation’ could not be loaded
-Execution halted
-ERROR: lazy loading failed for package ‘precautionary’
-* removing ‘/tmp/workdir/precautionary/new/precautionary.Rcheck/precautionary’
-
-
-```
-### CRAN
-
-```
-* installing *source* package ‘precautionary’ ...
-** package ‘precautionary’ successfully unpacked and MD5 sums checked
-** using staged installation
-** R
-** demo
-** exec
-** inst
-** byte-compile and prepare package for lazy loading
-Error: package or namespace load failed for ‘escalation’ in loadNamespace(j <- i[[1L]], c(lib.loc, .libPaths()), versionCheck = vI[[j]]):
- there is no package called ‘trialr’
-Error: package ‘escalation’ could not be loaded
-Execution halted
-ERROR: lazy loading failed for package ‘precautionary’
-* removing ‘/tmp/workdir/precautionary/old/precautionary.Rcheck/precautionary’
-
-
-```
-# qtl2
-
-<details>
-
-* Version: 0.22-11
-* GitHub: https://github.com/rqtl/qtl2
-* Source code: https://github.com/cran/qtl2
-* Date/Publication: 2020-07-10 15:50:02 UTC
-* Number of recursive dependencies: 106
-
-Run `cloud_details(, "qtl2")` for more info
+Run `cloud_details(, "RcppAlgos")` for more info
 
 </details>
 
 ## Newly broken
 
-*   checking whether package ‘qtl2’ can be installed ... ERROR
+*   checking whether package ‘RcppAlgos’ can be installed ... ERROR
     ```
     Installation failed.
-    See ‘/tmp/workdir/qtl2/new/qtl2.Rcheck/00install.out’ for details.
+    See ‘/tmp/workdir/RcppAlgos/new/RcppAlgos.Rcheck/00install.out’ for details.
     ```
 
 ## Newly fixed
 
 *   checking installed package size ... NOTE
     ```
-      installed size is 88.2Mb
+      installed size is 41.2Mb
       sub-directories of 1Mb or more:
-        extdata   3.3Mb
-        libs     83.6Mb
+        libs  40.0Mb
     ```
 
 ## Installation
@@ -2454,54 +7186,54 @@ Run `cloud_details(, "qtl2")` for more info
 ### Devel
 
 ```
-* installing *source* package ‘qtl2’ ...
-** package ‘qtl2’ successfully unpacked and MD5 sums checked
+* installing *source* package ‘RcppAlgos’ ...
+** package ‘RcppAlgos’ successfully unpacked and MD5 sums checked
 ** using staged installation
 ** libs
-g++ -std=gnu++11 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG  -I'/opt/R/4.0.3/lib/R/site-library/Rcpp/include' -I'/opt/R/4.0.3/lib/R/site-library/RcppEigen/include' -I/usr/local/include   -fpic  -g -O2  -c RcppExports.cpp -o RcppExports.o
-In file included from /opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/Core:392,
-                 from /opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/Dense:1,
-                 from /opt/R/4.0.3/lib/R/site-library/RcppEigen/include/RcppEigenForward.h:30,
-                 from /opt/R/4.0.3/lib/R/site-library/RcppEigen/include/RcppEigen.h:25,
-                 from RcppExports.cpp:4:
+g++ -std=gnu++11 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG -I../inst/include/ -I'/opt/R/4.0.3/lib/R/site-library/Rcpp/include' -I'/opt/R/4.0.3/lib/R/site-library/RcppThread/include' -I/usr/local/include   -fpic  -g -O2  -c BigNumCount.cpp -o BigNumCount.o
+g++ -std=gnu++11 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG -I../inst/include/ -I'/opt/R/4.0.3/lib/R/site-library/Rcpp/include' -I'/opt/R/4.0.3/lib/R/site-library/RcppThread/include' -I/usr/local/include   -fpic  -g -O2  -c CheckReturn.cpp -o CheckReturn.o
+g++ -std=gnu++11 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG -I../inst/include/ -I'/opt/R/4.0.3/lib/R/site-library/Rcpp/include' -I'/opt/R/4.0.3/lib/R/site-library/RcppThread/include' -I/usr/local/include   -fpic  -g -O2  -c CombPermMaster.cpp -o CombPermMaster.o
+g++ -std=gnu++11 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG -I../inst/include/ -I'/opt/R/4.0.3/lib/R/site-library/Rcpp/include' -I'/opt/R/4.0.3/lib/R/site-library/RcppThread/include' -I/usr/local/include   -fpic  -g -O2  -c CombinationResults.cpp -o CombinationResults.o
+g++ -std=gnu++11 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG -I../inst/include/ -I'/opt/R/4.0.3/lib/R/site-library/Rcpp/include' -I'/opt/R/4.0.3/lib/R/site-library/RcppThread/include' -I/usr/local/include   -fpic  -g -O2  -c CombinatoricsApply.cpp -o CombinatoricsApply.o
+g++ -std=gnu++11 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG -I../inst/include/ -I'/opt/R/4.0.3/lib/R/site-library/Rcpp/include' -I'/opt/R/4.0.3/lib/R/site-library/RcppThread/include' -I/usr/local/include   -fpic  -g -O2  -c CombinatoricsCount.cpp -o CombinatoricsCount.o
 ...
-/opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/src/Householder/HouseholderSequence.h:333:46:   required from ‘void Eigen::HouseholderSequence<VectorsType, CoeffsType, Side>::applyThisOnTheLeft(Dest&, Workspace&) const [with Dest = Eigen::Matrix<double, -1, 1>; Workspace = Eigen::Matrix<double, 1, 1, 1, 1, 1>; VectorsType = Eigen::Matrix<double, -1, -1>; CoeffsType = Eigen::Matrix<double, -1, 1>; int Side = 1]’
-/opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/src/Householder/HouseholderSequence.h:308:7:   required from ‘void Eigen::HouseholderSequence<VectorsType, CoeffsType, Side>::applyThisOnTheLeft(Dest&) const [with Dest = Eigen::Matrix<double, -1, 1>; VectorsType = Eigen::Matrix<double, -1, -1>; CoeffsType = Eigen::Matrix<double, -1, 1>; int Side = 1]’
-/opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/src/Householder/HouseholderSequence.h:360:7:   required from ‘typename Eigen::internal::matrix_type_times_scalar_type<typename Eigen::internal::traits<Eigen::HouseholderSequence<VectorsType, CoeffsType, Side> >::Scalar, OtherDerived>::Type Eigen::HouseholderSequence<VectorsType, CoeffsType, Side>::operator*(const Eigen::MatrixBase<OtherDerived>&) const [with OtherDerived = Eigen::Matrix<double, -1, 1>; VectorsType = Eigen::Matrix<double, -1, -1>; CoeffsType = Eigen::Matrix<double, -1, 1>; int Side = 1; typename Eigen::internal::matrix_type_times_scalar_type<typename Eigen::internal::traits<Eigen::HouseholderSequence<VectorsType, CoeffsType, Side> >::Scalar, OtherDerived>::Type = Eigen::Matrix<double, -1, 1>]’
-linreg_eigen.cpp:192:58:   required from here
-/opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/src/Core/CoreEvaluators.h:960:8: warning: ignoring attributes on template argument ‘Eigen::internal::packet_traits<double>::type’ {aka ‘__vector(2) double’} [-Wignored-attributes]
-/tmp/ccRtft5Z.s: Assembler messages:
-/tmp/ccRtft5Z.s: Fatal error: can't close linreg_eigen.o: No space left on device
-make: *** [/opt/R/4.0.3/lib/R/etc/Makeconf:181: linreg_eigen.o] Error 1
-ERROR: compilation failed for package ‘qtl2’
-* removing ‘/tmp/workdir/qtl2/new/qtl2.Rcheck/qtl2’
+g++ -std=gnu++11 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG -I../inst/include/ -I'/opt/R/4.0.3/lib/R/site-library/Rcpp/include' -I'/opt/R/4.0.3/lib/R/site-library/RcppThread/include' -I/usr/local/include   -fpic  -g -O2  -c ComboClass.cpp -o ComboClass.o
+g++ -std=gnu++11 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG -I../inst/include/ -I'/opt/R/4.0.3/lib/R/site-library/Rcpp/include' -I'/opt/R/4.0.3/lib/R/site-library/RcppThread/include' -I/usr/local/include   -fpic  -g -O2  -c ComboClassUtils.cpp -o ComboClassUtils.o
+g++ -std=gnu++11 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG -I../inst/include/ -I'/opt/R/4.0.3/lib/R/site-library/Rcpp/include' -I'/opt/R/4.0.3/lib/R/site-library/RcppThread/include' -I/usr/local/include   -fpic  -g -O2  -c ComboFunClass.cpp -o ComboFunClass.o
+ComboFunClass.cpp:463:1: fatal error: error writing to /tmp/ccxb2d3L.s: No space left on device
+  463 | }
+      | ^
+compilation terminated.
+make: *** [/opt/R/4.0.3/lib/R/etc/Makeconf:181: ComboFunClass.o] Error 1
+ERROR: compilation failed for package ‘RcppAlgos’
+* removing ‘/tmp/workdir/RcppAlgos/new/RcppAlgos.Rcheck/RcppAlgos’
 
 
 ```
 ### CRAN
 
 ```
-* installing *source* package ‘qtl2’ ...
-** package ‘qtl2’ successfully unpacked and MD5 sums checked
+* installing *source* package ‘RcppAlgos’ ...
+** package ‘RcppAlgos’ successfully unpacked and MD5 sums checked
 ** using staged installation
 ** libs
-g++ -std=gnu++11 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG  -I'/opt/R/4.0.3/lib/R/site-library/Rcpp/include' -I'/opt/R/4.0.3/lib/R/site-library/RcppEigen/include' -I/usr/local/include   -fpic  -g -O2  -c RcppExports.cpp -o RcppExports.o
-In file included from /opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/Core:392,
-                 from /opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/Dense:1,
-                 from /opt/R/4.0.3/lib/R/site-library/RcppEigen/include/RcppEigenForward.h:30,
-                 from /opt/R/4.0.3/lib/R/site-library/RcppEigen/include/RcppEigen.h:25,
-                 from RcppExports.cpp:4:
+g++ -std=gnu++11 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG -I../inst/include/ -I'/opt/R/4.0.3/lib/R/site-library/Rcpp/include' -I'/opt/R/4.0.3/lib/R/site-library/RcppThread/include' -I/usr/local/include   -fpic  -g -O2  -c BigNumCount.cpp -o BigNumCount.o
+g++ -std=gnu++11 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG -I../inst/include/ -I'/opt/R/4.0.3/lib/R/site-library/Rcpp/include' -I'/opt/R/4.0.3/lib/R/site-library/RcppThread/include' -I/usr/local/include   -fpic  -g -O2  -c CheckReturn.cpp -o CheckReturn.o
+g++ -std=gnu++11 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG -I../inst/include/ -I'/opt/R/4.0.3/lib/R/site-library/Rcpp/include' -I'/opt/R/4.0.3/lib/R/site-library/RcppThread/include' -I/usr/local/include   -fpic  -g -O2  -c CombPermMaster.cpp -o CombPermMaster.o
+g++ -std=gnu++11 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG -I../inst/include/ -I'/opt/R/4.0.3/lib/R/site-library/Rcpp/include' -I'/opt/R/4.0.3/lib/R/site-library/RcppThread/include' -I/usr/local/include   -fpic  -g -O2  -c CombinationResults.cpp -o CombinationResults.o
+g++ -std=gnu++11 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG -I../inst/include/ -I'/opt/R/4.0.3/lib/R/site-library/Rcpp/include' -I'/opt/R/4.0.3/lib/R/site-library/RcppThread/include' -I/usr/local/include   -fpic  -g -O2  -c CombinatoricsApply.cpp -o CombinatoricsApply.o
+g++ -std=gnu++11 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG -I../inst/include/ -I'/opt/R/4.0.3/lib/R/site-library/Rcpp/include' -I'/opt/R/4.0.3/lib/R/site-library/RcppThread/include' -I/usr/local/include   -fpic  -g -O2  -c CombinatoricsCount.cpp -o CombinatoricsCount.o
 ...
-** inst
 ** byte-compile and prepare package for lazy loading
 ** help
 *** installing help indices
 ** building package indices
+** installing vignettes
 ** testing if installed package can be loaded from temporary location
 ** checking absolute paths in shared objects and dynamic libraries
 ** testing if installed package can be loaded from final location
 ** testing if installed package keeps a record of temporary installation path
-* DONE (qtl2)
+* DONE (RcppAlgos)
 
 
 ```
@@ -2581,36 +7313,26 @@ Status: 3 NOTEs
 
 
 ```
-# RNiftyReg
+# rmdcev
 
 <details>
 
-* Version: 2.7.0
-* GitHub: https://github.com/jonclayden/RNiftyReg
-* Source code: https://github.com/cran/RNiftyReg
-* Date/Publication: 2020-09-12 05:51:01 UTC
-* Number of recursive dependencies: 53
+* Version: 1.2.4
+* GitHub: https://github.com/plloydsmith/rmdcev
+* Source code: https://github.com/cran/rmdcev
+* Date/Publication: 2020-09-30 18:40:02 UTC
+* Number of recursive dependencies: 83
 
-Run `cloud_details(, "RNiftyReg")` for more info
+Run `cloud_details(, "rmdcev")` for more info
 
 </details>
 
-## Newly broken
+## In both
 
-*   checking whether package ‘RNiftyReg’ can be installed ... ERROR
+*   checking whether package ‘rmdcev’ can be installed ... ERROR
     ```
     Installation failed.
-    See ‘/tmp/workdir/RNiftyReg/new/RNiftyReg.Rcheck/00install.out’ for details.
-    ```
-
-## Newly fixed
-
-*   checking installed package size ... NOTE
-    ```
-      installed size is 124.2Mb
-      sub-directories of 1Mb or more:
-        extdata    2.0Mb
-        libs     122.1Mb
+    See ‘/tmp/workdir/rmdcev/new/rmdcev.Rcheck/00install.out’ for details.
     ```
 
 ## Installation
@@ -2618,86 +7340,77 @@ Run `cloud_details(, "RNiftyReg")` for more info
 ### Devel
 
 ```
-* installing *source* package ‘RNiftyReg’ ...
-** package ‘RNiftyReg’ successfully unpacked and MD5 sums checked
+* installing *source* package ‘rmdcev’ ...
+** package ‘rmdcev’ successfully unpacked and MD5 sums checked
 ** using staged installation
-checking whether the C++ compiler works... yes
-checking for C++ compiler default output file name... a.out
-checking for suffix of executables... 
-checking whether we are cross compiling... no
-checking for suffix of object files... o
-checking whether we are using the GNU C++ compiler... yes
-checking whether g++ -std=gnu++11 accepts -g... yes
+** libs
+
+
+g++ -std=gnu++14 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG -I"../inst/include" -I"/opt/R/4.0.3/lib/R/site-library/StanHeaders/include/src" -DBOOST_DISABLE_ASSERTS -DEIGEN_NO_DEBUG -DBOOST_MATH_OVERFLOW_ERROR_POLICY=errno_on_error -I'/opt/R/4.0.3/lib/R/site-library/BH/include' -I'/opt/R/4.0.3/lib/R/site-library/Rcpp/include' -I'/opt/R/4.0.3/lib/R/site-library/RcppEigen/include' -I'/opt/R/4.0.3/lib/R/site-library/RcppParallel/include' -I'/opt/R/4.0.3/lib/R/site-library/rstan/include' -I'/opt/R/4.0.3/lib/R/site-library/StanHeaders/include' -I/usr/local/include   -I'/opt/R/4.0.3/lib/R/site-library/RcppParallel/include' -D_REENTRANT -DSTAN_THREADS   -fpic  -g -O2  -c RcppExports.cpp -o RcppExports.o
+In file included from /opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/Core:392,
+                 from /opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/Dense:1,
+                 from /opt/R/4.0.3/lib/R/site-library/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:13,
 ...
-/opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/src/Core/Matrix.h:245:29:   required from ‘Eigen::Matrix<_Scalar, _Rows, _Cols, _Options, _MaxRows, _MaxCols>& Eigen::Matrix<_Scalar, _Rows, _Cols, _Options, _MaxRows, _MaxCols>::operator=(const Eigen::ReturnByValue<OtherDerived>&) [with OtherDerived = Eigen::MatrixSquareRootReturnValue<Eigen::Matrix<double, 4, 4> >; _Scalar = double; int _Rows = 4; int _Cols = 4; int _Options = 0; int _MaxRows = 4; int _MaxCols = 4]’
-reg-lib/cpu/_reg_maths_eigen.cpp:234:15:   required from here
-/opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/src/Core/DenseCoeffsBase.h:650:34: warning: ignoring attributes on template argument ‘Eigen::internal::packet_traits<double>::type’ {aka ‘__vector(2) double’} [-Wignored-attributes]
-  650 |   return internal::first_aligned<int(unpacket_traits<DefaultPacketType>::alignment),Derived>(m);
-      |                                  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-/tmp/cchQRek2.s: Assembler messages:
-/tmp/cchQRek2.s: Fatal error: can't close reg-lib/cpu/_reg_maths_eigen.o: No space left on device
-make: *** [/opt/R/4.0.3/lib/R/etc/Makeconf:181: reg-lib/cpu/_reg_maths_eigen.o] Error 1
-ERROR: compilation failed for package ‘RNiftyReg’
-* removing ‘/tmp/workdir/RNiftyReg/new/RNiftyReg.Rcheck/RNiftyReg’
+/opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/src/Core/ProductEvaluators.h:35:90:   required from ‘Eigen::internal::evaluator<Eigen::Product<Lhs, Rhs, Option> >::evaluator(const XprType&) [with Lhs = Eigen::Product<Eigen::CwiseBinaryOp<Eigen::internal::scalar_product_op<double, double>, const Eigen::CwiseNullaryOp<Eigen::internal::scalar_constant_op<double>, const Eigen::Matrix<double, 1, -1> >, const Eigen::Transpose<Eigen::Matrix<double, -1, 1> > >, Eigen::Matrix<double, -1, -1>, 0>; Rhs = Eigen::Matrix<double, -1, 1>; int Options = 0; Eigen::internal::evaluator<Eigen::Product<Lhs, Rhs, Option> >::XprType = Eigen::Product<Eigen::Product<Eigen::CwiseBinaryOp<Eigen::internal::scalar_product_op<double, double>, const Eigen::CwiseNullaryOp<Eigen::internal::scalar_constant_op<double>, const Eigen::Matrix<double, 1, -1> >, const Eigen::Transpose<Eigen::Matrix<double, -1, 1> > >, Eigen::Matrix<double, -1, -1>, 0>, Eigen::Matrix<double, -1, 1>, 0>]’
+/opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/src/Core/Product.h:132:22:   required from ‘Eigen::internal::dense_product_base<Lhs, Rhs, Option, 6>::operator const Scalar() const [with Lhs = Eigen::Product<Eigen::CwiseBinaryOp<Eigen::internal::scalar_product_op<double, double>, const Eigen::CwiseNullaryOp<Eigen::internal::scalar_constant_op<double>, const Eigen::Matrix<double, 1, -1> >, const Eigen::Transpose<Eigen::Matrix<double, -1, 1> > >, Eigen::Matrix<double, -1, -1>, 0>; Rhs = Eigen::Matrix<double, -1, 1>; int Option = 0; Eigen::internal::dense_product_base<Lhs, Rhs, Option, 6>::Scalar = double]’
+/opt/R/4.0.3/lib/R/site-library/StanHeaders/include/src/stan/mcmc/hmc/hamiltonians/dense_e_metric.hpp:23:56:   required from ‘double stan::mcmc::dense_e_metric<Model, BaseRNG>::T(stan::mcmc::dense_e_point&) [with Model = model_mdcev_namespace::model_mdcev; BaseRNG = boost::random::additive_combine_engine<boost::random::linear_congruential_engine<unsigned int, 40014, 0, 2147483563>, boost::random::linear_congruential_engine<unsigned int, 40692, 0, 2147483399> >]’
+/opt/R/4.0.3/lib/R/site-library/StanHeaders/include/src/stan/mcmc/hmc/hamiltonians/dense_e_metric.hpp:22:10:   required from here
+/opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/src/Core/DenseCoeffsBase.h:55:30: warning: ignoring attributes on template argument ‘Eigen::internal::packet_traits<double>::type’ {aka ‘__vector(2) double’} [-Wignored-attributes]
+g++: fatal error: Killed signal terminated program cc1plus
+compilation terminated.
+make: *** [/opt/R/4.0.3/lib/R/etc/Makeconf:179: stanExports_mdcev.o] Error 1
+ERROR: compilation failed for package ‘rmdcev’
+* removing ‘/tmp/workdir/rmdcev/new/rmdcev.Rcheck/rmdcev’
 
 
 ```
 ### CRAN
 
 ```
-* installing *source* package ‘RNiftyReg’ ...
-** package ‘RNiftyReg’ successfully unpacked and MD5 sums checked
+* installing *source* package ‘rmdcev’ ...
+** package ‘rmdcev’ successfully unpacked and MD5 sums checked
 ** using staged installation
-checking whether the C++ compiler works... yes
-checking for C++ compiler default output file name... a.out
-checking for suffix of executables... 
-checking whether we are cross compiling... no
-checking for suffix of object files... o
-checking whether we are using the GNU C++ compiler... yes
-checking whether g++ -std=gnu++11 accepts -g... yes
+** libs
+
+
+g++ -std=gnu++14 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG -I"../inst/include" -I"/opt/R/4.0.3/lib/R/site-library/StanHeaders/include/src" -DBOOST_DISABLE_ASSERTS -DEIGEN_NO_DEBUG -DBOOST_MATH_OVERFLOW_ERROR_POLICY=errno_on_error -I'/opt/R/4.0.3/lib/R/site-library/BH/include' -I'/opt/R/4.0.3/lib/R/site-library/Rcpp/include' -I'/opt/R/4.0.3/lib/R/site-library/RcppEigen/include' -I'/opt/R/4.0.3/lib/R/site-library/RcppParallel/include' -I'/opt/R/4.0.3/lib/R/site-library/rstan/include' -I'/opt/R/4.0.3/lib/R/site-library/StanHeaders/include' -I/usr/local/include   -I'/opt/R/4.0.3/lib/R/site-library/RcppParallel/include' -D_REENTRANT -DSTAN_THREADS   -fpic  -g -O2  -c RcppExports.cpp -o RcppExports.o
+In file included from /opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/Core:392,
+                 from /opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/Dense:1,
+                 from /opt/R/4.0.3/lib/R/site-library/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:13,
 ...
-** inst
-** byte-compile and prepare package for lazy loading
-** help
-*** installing help indices
-** building package indices
-** testing if installed package can be loaded from temporary location
-** checking absolute paths in shared objects and dynamic libraries
-** testing if installed package can be loaded from final location
-** testing if installed package keeps a record of temporary installation path
-* DONE (RNiftyReg)
+/opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/src/Core/ProductEvaluators.h:35:90:   required from ‘Eigen::internal::evaluator<Eigen::Product<Lhs, Rhs, Option> >::evaluator(const XprType&) [with Lhs = Eigen::Product<Eigen::CwiseBinaryOp<Eigen::internal::scalar_product_op<double, double>, const Eigen::CwiseNullaryOp<Eigen::internal::scalar_constant_op<double>, const Eigen::Matrix<double, 1, -1> >, const Eigen::Transpose<Eigen::Matrix<double, -1, 1> > >, Eigen::Matrix<double, -1, -1>, 0>; Rhs = Eigen::Matrix<double, -1, 1>; int Options = 0; Eigen::internal::evaluator<Eigen::Product<Lhs, Rhs, Option> >::XprType = Eigen::Product<Eigen::Product<Eigen::CwiseBinaryOp<Eigen::internal::scalar_product_op<double, double>, const Eigen::CwiseNullaryOp<Eigen::internal::scalar_constant_op<double>, const Eigen::Matrix<double, 1, -1> >, const Eigen::Transpose<Eigen::Matrix<double, -1, 1> > >, Eigen::Matrix<double, -1, -1>, 0>, Eigen::Matrix<double, -1, 1>, 0>]’
+/opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/src/Core/Product.h:132:22:   required from ‘Eigen::internal::dense_product_base<Lhs, Rhs, Option, 6>::operator const Scalar() const [with Lhs = Eigen::Product<Eigen::CwiseBinaryOp<Eigen::internal::scalar_product_op<double, double>, const Eigen::CwiseNullaryOp<Eigen::internal::scalar_constant_op<double>, const Eigen::Matrix<double, 1, -1> >, const Eigen::Transpose<Eigen::Matrix<double, -1, 1> > >, Eigen::Matrix<double, -1, -1>, 0>; Rhs = Eigen::Matrix<double, -1, 1>; int Option = 0; Eigen::internal::dense_product_base<Lhs, Rhs, Option, 6>::Scalar = double]’
+/opt/R/4.0.3/lib/R/site-library/StanHeaders/include/src/stan/mcmc/hmc/hamiltonians/dense_e_metric.hpp:23:56:   required from ‘double stan::mcmc::dense_e_metric<Model, BaseRNG>::T(stan::mcmc::dense_e_point&) [with Model = model_mdcev_namespace::model_mdcev; BaseRNG = boost::random::additive_combine_engine<boost::random::linear_congruential_engine<unsigned int, 40014, 0, 2147483563>, boost::random::linear_congruential_engine<unsigned int, 40692, 0, 2147483399> >]’
+/opt/R/4.0.3/lib/R/site-library/StanHeaders/include/src/stan/mcmc/hmc/hamiltonians/dense_e_metric.hpp:22:10:   required from here
+/opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/src/Core/DenseCoeffsBase.h:55:30: warning: ignoring attributes on template argument ‘Eigen::internal::packet_traits<double>::type’ {aka ‘__vector(2) double’} [-Wignored-attributes]
+g++: fatal error: Killed signal terminated program cc1plus
+compilation terminated.
+make: *** [/opt/R/4.0.3/lib/R/etc/Makeconf:179: stanExports_mdcev.o] Error 1
+ERROR: compilation failed for package ‘rmdcev’
+* removing ‘/tmp/workdir/rmdcev/old/rmdcev.Rcheck/rmdcev’
 
 
 ```
-# sarsop
+# rstanarm
 
 <details>
 
-* Version: 0.6.6
-* GitHub: https://github.com/boettiger-lab/sarsop
-* Source code: https://github.com/cran/sarsop
-* Date/Publication: 2020-12-12 06:30:03 UTC
-* Number of recursive dependencies: 105
+* Version: 2.21.1
+* GitHub: https://github.com/stan-dev/rstanarm
+* Source code: https://github.com/cran/rstanarm
+* Date/Publication: 2020-07-20 18:20:03 UTC
+* Number of recursive dependencies: 130
 
-Run `cloud_details(, "sarsop")` for more info
+Run `cloud_details(, "rstanarm")` for more info
 
 </details>
 
-## Newly broken
+## In both
 
-*   checking whether package ‘sarsop’ can be installed ... ERROR
+*   checking whether package ‘rstanarm’ can be installed ... ERROR
     ```
     Installation failed.
-    See ‘/tmp/workdir/sarsop/new/sarsop.Rcheck/00install.out’ for details.
-    ```
-
-## Newly fixed
-
-*   checking installed package size ... NOTE
-    ```
-      installed size is 76.9Mb
-      sub-directories of 1Mb or more:
-        bin  76.0Mb
+    See ‘/tmp/workdir/rstanarm/new/rstanarm.Rcheck/00install.out’ for details.
     ```
 
 ## Installation
@@ -2705,54 +7418,132 @@ Run `cloud_details(, "sarsop")` for more info
 ### Devel
 
 ```
-* installing *source* package ‘sarsop’ ...
-** package ‘sarsop’ successfully unpacked and MD5 sums checked
+* installing *source* package ‘rstanarm’ ...
+** package ‘rstanarm’ successfully unpacked and MD5 sums checked
 ** using staged installation
 ** libs
-g++ -std=gnu++11 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG -Iappl-0.96 -Iappl-0.96/MathLib -Iappl-0.96/Algorithms -Iappl-0.96/Algorithms/HSVI -Iappl-0.96/Algorithms/SARSOP -Iappl-0.96/Models/MOMDP -Iappl-0.96/Models/MOMDP/CoLoc -Iappl-0.96/OfflineSolver -Iappl-0.96/Bounds -Iappl-0.96/Core -Iappl-0.96/Parser/Cassandra -Iappl-0.96/Parser/Cassandra/include -Iappl-0.96/Parser -Iappl-0.96/Parser/POMDPX -Iappl-0.96/Utils -Iappl-0.96/Simulator -Iappl-0.96/Evaluator -Iappl-0.96/Controller -I'/opt/R/4.0.3/lib/R/site-library/BH/include' -I/usr/local/include   -fpic  -g -O2  -c readme.cpp -o readme.o
-gcc -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG -Iappl-0.96 -Iappl-0.96/MathLib -Iappl-0.96/Algorithms -Iappl-0.96/Algorithms/HSVI -Iappl-0.96/Algorithms/SARSOP -Iappl-0.96/Models/MOMDP -Iappl-0.96/Models/MOMDP/CoLoc -Iappl-0.96/OfflineSolver -Iappl-0.96/Bounds -Iappl-0.96/Core -Iappl-0.96/Parser/Cassandra -Iappl-0.96/Parser/Cassandra/include -Iappl-0.96/Parser -Iappl-0.96/Parser/POMDPX -Iappl-0.96/Utils -Iappl-0.96/Simulator -Iappl-0.96/Evaluator -Iappl-0.96/Controller -I'/opt/R/4.0.3/lib/R/site-library/BH/include' -I/usr/local/include   -fpic  -g -O2  -c zzz.c -o zzz.o
-g++ -std=gnu++11 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG -Iappl-0.96 -Iappl-0.96/MathLib -Iappl-0.96/Algorithms -Iappl-0.96/Algorithms/HSVI -Iappl-0.96/Algorithms/SARSOP -Iappl-0.96/Models/MOMDP -Iappl-0.96/Models/MOMDP/CoLoc -Iappl-0.96/OfflineSolver -Iappl-0.96/Bounds -Iappl-0.96/Core -Iappl-0.96/Parser/Cassandra -Iappl-0.96/Parser/Cassandra/include -Iappl-0.96/Parser -Iappl-0.96/Parser/POMDPX -Iappl-0.96/Utils -Iappl-0.96/Simulator -Iappl-0.96/Evaluator -Iappl-0.96/Controller -I'/opt/R/4.0.3/lib/R/site-library/BH/include' -I/usr/local/include   -fpic  -g -O2  -c appl-0.96/Models/MOMDP/BeliefTransitionMOMDP.cpp -o appl-0.96/Models/MOMDP/BeliefTransitionMOMDP.o
-In file included from /opt/R/4.0.3/lib/R/site-library/BH/include/boost/smart_ptr/shared_ptr.hpp:28,
-                 from appl-0.96/Core/MObject.h:7,
-                 from appl-0.96/Models/MOMDP/IVariableValue.h:7,
+"/opt/R/4.0.3/lib/R/bin/Rscript" -e "source(file.path('..', 'tools', 'make_cc.R')); make_cc(commandArgs(TRUE))" stan_files/polr.stan
+Wrote C++ file "stan_files/polr.cc"
+
+
+g++ -std=gnu++14 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG -I"../inst/include" -I"/opt/R/4.0.3/lib/R/site-library/StanHeaders/include/src" -DBOOST_DISABLE_ASSERTS -DEIGEN_NO_DEBUG -I'/opt/R/4.0.3/lib/R/site-library/StanHeaders/include' -I'/opt/R/4.0.3/lib/R/site-library/rstan/include' -I'/opt/R/4.0.3/lib/R/site-library/BH/include' -I'/opt/R/4.0.3/lib/R/site-library/Rcpp/include' -I'/opt/R/4.0.3/lib/R/site-library/RcppEigen/include' -I'/opt/R/4.0.3/lib/R/site-library/RcppParallel/include' -I/usr/local/include  `"/opt/R/4.0.3/lib/R/bin/Rscript" -e "RcppParallel::CxxFlags()"` `"/opt/R/4.0.3/lib/R/bin/Rscript" -e "StanHeaders:::CxxFlags()"` -fpic  -g -O2  -c stan_files/polr.cc -o stan_files/polr.o
+In file included from /opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/Core:392,
 ...
-Warning in file.append(to[okay], from[okay]) :
-  write error during file append
-Warning in file.append(to[okay], from[okay]) :
-  write error during file append
-Warning in file.append(to[okay], from[okay]) :
-  write error during file append
-** byte-compile and prepare package for lazy loading
-Fatal error: cannot create 'R_TempDir'
-ERROR: lazy loading failed for package ‘sarsop’
-* removing ‘/tmp/workdir/sarsop/new/sarsop.Rcheck/sarsop’
+/opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/src/Core/Product.h:132:22:   required from ‘Eigen::internal::dense_product_base<Lhs, Rhs, Option, 6>::operator const Scalar() const [with Lhs = Eigen::Product<Eigen::CwiseBinaryOp<Eigen::internal::scalar_product_op<double, double>, const Eigen::CwiseNullaryOp<Eigen::internal::scalar_constant_op<double>, const Eigen::Matrix<double, 1, -1> >, const Eigen::Transpose<Eigen::Matrix<double, -1, 1> > >, Eigen::Matrix<double, -1, -1>, 0>; Rhs = Eigen::Matrix<double, -1, 1>; int Option = 0; Eigen::internal::dense_product_base<Lhs, Rhs, Option, 6>::Scalar = double]’
+/opt/R/4.0.3/lib/R/site-library/StanHeaders/include/src/stan/mcmc/hmc/hamiltonians/dense_e_metric.hpp:23:56:   required from ‘double stan::mcmc::dense_e_metric<Model, BaseRNG>::T(stan::mcmc::dense_e_point&) [with Model = model_jm_namespace::model_jm; BaseRNG = boost::random::additive_combine_engine<boost::random::linear_congruential_engine<unsigned int, 40014, 0, 2147483563>, boost::random::linear_congruential_engine<unsigned int, 40692, 0, 2147483399> >]’
+/opt/R/4.0.3/lib/R/site-library/StanHeaders/include/src/stan/mcmc/hmc/hamiltonians/dense_e_metric.hpp:22:10:   required from here
+/opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/src/Core/DenseCoeffsBase.h:55:30: warning: ignoring attributes on template argument ‘Eigen::internal::packet_traits<double>::type’ {aka ‘__vector(2) double’} [-Wignored-attributes]
+g++: fatal error: Killed signal terminated program cc1plus
+compilation terminated.
+make: *** [/opt/R/4.0.3/lib/R/etc/Makeconf:179: stan_files/jm.o] Error 1
+rm stan_files/jm.cc stan_files/polr.cc
+ERROR: compilation failed for package ‘rstanarm’
+* removing ‘/tmp/workdir/rstanarm/new/rstanarm.Rcheck/rstanarm’
 
 
 ```
 ### CRAN
 
 ```
-* installing *source* package ‘sarsop’ ...
-** package ‘sarsop’ successfully unpacked and MD5 sums checked
+* installing *source* package ‘rstanarm’ ...
+** package ‘rstanarm’ successfully unpacked and MD5 sums checked
 ** using staged installation
 ** libs
-g++ -std=gnu++11 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG -Iappl-0.96 -Iappl-0.96/MathLib -Iappl-0.96/Algorithms -Iappl-0.96/Algorithms/HSVI -Iappl-0.96/Algorithms/SARSOP -Iappl-0.96/Models/MOMDP -Iappl-0.96/Models/MOMDP/CoLoc -Iappl-0.96/OfflineSolver -Iappl-0.96/Bounds -Iappl-0.96/Core -Iappl-0.96/Parser/Cassandra -Iappl-0.96/Parser/Cassandra/include -Iappl-0.96/Parser -Iappl-0.96/Parser/POMDPX -Iappl-0.96/Utils -Iappl-0.96/Simulator -Iappl-0.96/Evaluator -Iappl-0.96/Controller -I'/opt/R/4.0.3/lib/R/site-library/BH/include' -I/usr/local/include   -fpic  -g -O2  -c readme.cpp -o readme.o
-gcc -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG -Iappl-0.96 -Iappl-0.96/MathLib -Iappl-0.96/Algorithms -Iappl-0.96/Algorithms/HSVI -Iappl-0.96/Algorithms/SARSOP -Iappl-0.96/Models/MOMDP -Iappl-0.96/Models/MOMDP/CoLoc -Iappl-0.96/OfflineSolver -Iappl-0.96/Bounds -Iappl-0.96/Core -Iappl-0.96/Parser/Cassandra -Iappl-0.96/Parser/Cassandra/include -Iappl-0.96/Parser -Iappl-0.96/Parser/POMDPX -Iappl-0.96/Utils -Iappl-0.96/Simulator -Iappl-0.96/Evaluator -Iappl-0.96/Controller -I'/opt/R/4.0.3/lib/R/site-library/BH/include' -I/usr/local/include   -fpic  -g -O2  -c zzz.c -o zzz.o
-g++ -std=gnu++11 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG -Iappl-0.96 -Iappl-0.96/MathLib -Iappl-0.96/Algorithms -Iappl-0.96/Algorithms/HSVI -Iappl-0.96/Algorithms/SARSOP -Iappl-0.96/Models/MOMDP -Iappl-0.96/Models/MOMDP/CoLoc -Iappl-0.96/OfflineSolver -Iappl-0.96/Bounds -Iappl-0.96/Core -Iappl-0.96/Parser/Cassandra -Iappl-0.96/Parser/Cassandra/include -Iappl-0.96/Parser -Iappl-0.96/Parser/POMDPX -Iappl-0.96/Utils -Iappl-0.96/Simulator -Iappl-0.96/Evaluator -Iappl-0.96/Controller -I'/opt/R/4.0.3/lib/R/site-library/BH/include' -I/usr/local/include   -fpic  -g -O2  -c appl-0.96/Models/MOMDP/BeliefTransitionMOMDP.cpp -o appl-0.96/Models/MOMDP/BeliefTransitionMOMDP.o
-In file included from /opt/R/4.0.3/lib/R/site-library/BH/include/boost/smart_ptr/shared_ptr.hpp:28,
-                 from appl-0.96/Core/MObject.h:7,
-                 from appl-0.96/Models/MOMDP/IVariableValue.h:7,
+"/opt/R/4.0.3/lib/R/bin/Rscript" -e "source(file.path('..', 'tools', 'make_cc.R')); make_cc(commandArgs(TRUE))" stan_files/polr.stan
+Wrote C++ file "stan_files/polr.cc"
+
+
+g++ -std=gnu++14 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG -I"../inst/include" -I"/opt/R/4.0.3/lib/R/site-library/StanHeaders/include/src" -DBOOST_DISABLE_ASSERTS -DEIGEN_NO_DEBUG -I'/opt/R/4.0.3/lib/R/site-library/StanHeaders/include' -I'/opt/R/4.0.3/lib/R/site-library/rstan/include' -I'/opt/R/4.0.3/lib/R/site-library/BH/include' -I'/opt/R/4.0.3/lib/R/site-library/Rcpp/include' -I'/opt/R/4.0.3/lib/R/site-library/RcppEigen/include' -I'/opt/R/4.0.3/lib/R/site-library/RcppParallel/include' -I/usr/local/include  `"/opt/R/4.0.3/lib/R/bin/Rscript" -e "RcppParallel::CxxFlags()"` `"/opt/R/4.0.3/lib/R/bin/Rscript" -e "StanHeaders:::CxxFlags()"` -fpic  -g -O2  -c stan_files/polr.cc -o stan_files/polr.o
+In file included from /opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/Core:392,
 ...
-** byte-compile and prepare package for lazy loading
-** help
-*** installing help indices
-*** copying figures
-** building package indices
-** testing if installed package can be loaded from temporary location
-** checking absolute paths in shared objects and dynamic libraries
-** testing if installed package can be loaded from final location
-** testing if installed package keeps a record of temporary installation path
-* DONE (sarsop)
+/opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/src/Core/Product.h:132:22:   required from ‘Eigen::internal::dense_product_base<Lhs, Rhs, Option, 6>::operator const Scalar() const [with Lhs = Eigen::Product<Eigen::CwiseBinaryOp<Eigen::internal::scalar_product_op<double, double>, const Eigen::CwiseNullaryOp<Eigen::internal::scalar_constant_op<double>, const Eigen::Matrix<double, 1, -1> >, const Eigen::Transpose<Eigen::Matrix<double, -1, 1> > >, Eigen::Matrix<double, -1, -1>, 0>; Rhs = Eigen::Matrix<double, -1, 1>; int Option = 0; Eigen::internal::dense_product_base<Lhs, Rhs, Option, 6>::Scalar = double]’
+/opt/R/4.0.3/lib/R/site-library/StanHeaders/include/src/stan/mcmc/hmc/hamiltonians/dense_e_metric.hpp:23:56:   required from ‘double stan::mcmc::dense_e_metric<Model, BaseRNG>::T(stan::mcmc::dense_e_point&) [with Model = model_jm_namespace::model_jm; BaseRNG = boost::random::additive_combine_engine<boost::random::linear_congruential_engine<unsigned int, 40014, 0, 2147483563>, boost::random::linear_congruential_engine<unsigned int, 40692, 0, 2147483399> >]’
+/opt/R/4.0.3/lib/R/site-library/StanHeaders/include/src/stan/mcmc/hmc/hamiltonians/dense_e_metric.hpp:22:10:   required from here
+/opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/src/Core/DenseCoeffsBase.h:55:30: warning: ignoring attributes on template argument ‘Eigen::internal::packet_traits<double>::type’ {aka ‘__vector(2) double’} [-Wignored-attributes]
+g++: fatal error: Killed signal terminated program cc1plus
+compilation terminated.
+make: *** [/opt/R/4.0.3/lib/R/etc/Makeconf:179: stan_files/jm.o] Error 1
+rm stan_files/jm.cc stan_files/polr.cc
+ERROR: compilation failed for package ‘rstanarm’
+* removing ‘/tmp/workdir/rstanarm/old/rstanarm.Rcheck/rstanarm’
+
+
+```
+# rstap
+
+<details>
+
+* Version: 1.0.3
+* GitHub: https://github.com/biostatistics4socialimpact/rstap
+* Source code: https://github.com/cran/rstap
+* Date/Publication: 2019-02-06 20:30:03 UTC
+* Number of recursive dependencies: 109
+
+Run `cloud_details(, "rstap")` for more info
+
+</details>
+
+## In both
+
+*   checking whether package ‘rstap’ can be installed ... ERROR
+    ```
+    Installation failed.
+    See ‘/tmp/workdir/rstap/new/rstap.Rcheck/00install.out’ for details.
+    ```
+
+## Installation
+
+### Devel
+
+```
+* installing *source* package ‘rstap’ ...
+** package ‘rstap’ successfully unpacked and MD5 sums checked
+** using staged installation
+** libs
+"/opt/R/4.0.3/lib/R/bin/Rscript" -e "source(file.path('..', 'tools', 'make_cc.R')); make_cc(commandArgs(TRUE))" stan_files/stap_binomial.stan
+Wrote C++ file "stan_files/stap_binomial.cc"
+g++ -std=gnu++14 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG -I"../inst/include" -I"`"/opt/R/4.0.3/lib/R/bin/Rscript" --vanilla -e "cat(system.file('include', 'src', package = 'StanHeaders'))"`" -DBOOST_RESULT_OF_USE_TR1 -DBOOST_NO_DECLTYPE -DBOOST_DISABLE_ASSERTS -DEIGEN_NO_DEBUG -DBOOST_MATH_OVERFLOW_ERROR_POLICY=errno_on_error  -I'/opt/R/4.0.3/lib/R/site-library/StanHeaders/include' -I'/opt/R/4.0.3/lib/R/site-library/rstan/include' -I'/opt/R/4.0.3/lib/R/site-library/BH/include' -I'/opt/R/4.0.3/lib/R/site-library/Rcpp/include' -I'/opt/R/4.0.3/lib/R/site-library/RcppEigen/include' -I/usr/local/include   -fpic  -g -O2  -c stan_files/stap_binomial.cc -o stan_files/stap_binomial.o
+In file included from /opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/Core:392,
+                 from /opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/Dense:1,
+                 from /opt/R/4.0.3/lib/R/site-library/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:13,
+...
+/opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/src/Core/Product.h:132:22:   required from ‘Eigen::internal::dense_product_base<Lhs, Rhs, Option, 6>::operator const Scalar() const [with Lhs = Eigen::Product<Eigen::CwiseBinaryOp<Eigen::internal::scalar_product_op<double, double>, const Eigen::CwiseNullaryOp<Eigen::internal::scalar_constant_op<double>, const Eigen::Matrix<double, 1, -1> >, const Eigen::Transpose<Eigen::Matrix<double, -1, 1> > >, Eigen::Matrix<double, -1, -1>, 0>; Rhs = Eigen::Matrix<double, -1, 1>; int Option = 0; Eigen::internal::dense_product_base<Lhs, Rhs, Option, 6>::Scalar = double]’
+/opt/R/4.0.3/lib/R/site-library/StanHeaders/include/src/stan/mcmc/hmc/hamiltonians/dense_e_metric.hpp:23:56:   required from ‘double stan::mcmc::dense_e_metric<Model, BaseRNG>::T(stan::mcmc::dense_e_point&) [with Model = model_stap_binomial_namespace::model_stap_binomial; BaseRNG = boost::random::additive_combine_engine<boost::random::linear_congruential_engine<unsigned int, 40014, 0, 2147483563>, boost::random::linear_congruential_engine<unsigned int, 40692, 0, 2147483399> >]’
+/opt/R/4.0.3/lib/R/site-library/StanHeaders/include/src/stan/mcmc/hmc/hamiltonians/dense_e_metric.hpp:22:10:   required from here
+/opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/src/Core/DenseCoeffsBase.h:55:30: warning: ignoring attributes on template argument ‘Eigen::internal::packet_traits<double>::type’ {aka ‘__vector(2) double’} [-Wignored-attributes]
+g++: fatal error: Killed signal terminated program cc1plus
+compilation terminated.
+make: *** [/opt/R/4.0.3/lib/R/etc/Makeconf:179: stan_files/stap_binomial.o] Error 1
+rm stan_files/stap_binomial.cc
+ERROR: compilation failed for package ‘rstap’
+* removing ‘/tmp/workdir/rstap/new/rstap.Rcheck/rstap’
+
+
+```
+### CRAN
+
+```
+* installing *source* package ‘rstap’ ...
+** package ‘rstap’ successfully unpacked and MD5 sums checked
+** using staged installation
+** libs
+"/opt/R/4.0.3/lib/R/bin/Rscript" -e "source(file.path('..', 'tools', 'make_cc.R')); make_cc(commandArgs(TRUE))" stan_files/stap_binomial.stan
+Wrote C++ file "stan_files/stap_binomial.cc"
+g++ -std=gnu++14 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG -I"../inst/include" -I"`"/opt/R/4.0.3/lib/R/bin/Rscript" --vanilla -e "cat(system.file('include', 'src', package = 'StanHeaders'))"`" -DBOOST_RESULT_OF_USE_TR1 -DBOOST_NO_DECLTYPE -DBOOST_DISABLE_ASSERTS -DEIGEN_NO_DEBUG -DBOOST_MATH_OVERFLOW_ERROR_POLICY=errno_on_error  -I'/opt/R/4.0.3/lib/R/site-library/StanHeaders/include' -I'/opt/R/4.0.3/lib/R/site-library/rstan/include' -I'/opt/R/4.0.3/lib/R/site-library/BH/include' -I'/opt/R/4.0.3/lib/R/site-library/Rcpp/include' -I'/opt/R/4.0.3/lib/R/site-library/RcppEigen/include' -I/usr/local/include   -fpic  -g -O2  -c stan_files/stap_binomial.cc -o stan_files/stap_binomial.o
+In file included from /opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/Core:392,
+                 from /opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/Dense:1,
+                 from /opt/R/4.0.3/lib/R/site-library/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:13,
+...
+/opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/src/Core/Product.h:132:22:   required from ‘Eigen::internal::dense_product_base<Lhs, Rhs, Option, 6>::operator const Scalar() const [with Lhs = Eigen::Product<Eigen::CwiseBinaryOp<Eigen::internal::scalar_product_op<double, double>, const Eigen::CwiseNullaryOp<Eigen::internal::scalar_constant_op<double>, const Eigen::Matrix<double, 1, -1> >, const Eigen::Transpose<Eigen::Matrix<double, -1, 1> > >, Eigen::Matrix<double, -1, -1>, 0>; Rhs = Eigen::Matrix<double, -1, 1>; int Option = 0; Eigen::internal::dense_product_base<Lhs, Rhs, Option, 6>::Scalar = double]’
+/opt/R/4.0.3/lib/R/site-library/StanHeaders/include/src/stan/mcmc/hmc/hamiltonians/dense_e_metric.hpp:23:56:   required from ‘double stan::mcmc::dense_e_metric<Model, BaseRNG>::T(stan::mcmc::dense_e_point&) [with Model = model_stap_binomial_namespace::model_stap_binomial; BaseRNG = boost::random::additive_combine_engine<boost::random::linear_congruential_engine<unsigned int, 40014, 0, 2147483563>, boost::random::linear_congruential_engine<unsigned int, 40692, 0, 2147483399> >]’
+/opt/R/4.0.3/lib/R/site-library/StanHeaders/include/src/stan/mcmc/hmc/hamiltonians/dense_e_metric.hpp:22:10:   required from here
+/opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/src/Core/DenseCoeffsBase.h:55:30: warning: ignoring attributes on template argument ‘Eigen::internal::packet_traits<double>::type’ {aka ‘__vector(2) double’} [-Wignored-attributes]
+g++: fatal error: Killed signal terminated program cc1plus
+compilation terminated.
+make: *** [/opt/R/4.0.3/lib/R/etc/Makeconf:179: stan_files/stap_binomial.o] Error 1
+rm stan_files/stap_binomial.cc
+ERROR: compilation failed for package ‘rstap’
+* removing ‘/tmp/workdir/rstap/old/rstap.Rcheck/rstap’
 
 
 ```
@@ -2840,7 +7631,7 @@ Status: 1 ERROR
 * GitHub: https://github.com/satijalab/seurat
 * Source code: https://github.com/cran/Seurat
 * Date/Publication: 2020-09-26 04:30:12 UTC
-* Number of recursive dependencies: 228
+* Number of recursive dependencies: 229
 
 Run `cloud_details(, "Seurat")` for more info
 
@@ -2902,72 +7693,6 @@ Status: 2 NOTEs
   Running ‘testthat.R’
 * DONE
 Status: 2 NOTEs
-
-
-
-
-
-```
-# smartdata
-
-<details>
-
-* Version: 1.0.3
-* GitHub: https://github.com/ncordon/smartdata
-* Source code: https://github.com/cran/smartdata
-* Date/Publication: 2019-12-18 17:40:02 UTC
-* Number of recursive dependencies: 282
-
-Run `cloud_details(, "smartdata")` for more info
-
-</details>
-
-## Error before installation
-
-### Devel
-
-```
-* using log directory ‘/tmp/workdir/smartdata/new/smartdata.Rcheck’
-* using R version 4.0.3 (2020-10-10)
-* using platform: x86_64-pc-linux-gnu (64-bit)
-* using session charset: UTF-8
-* using options ‘--no-manual --no-build-vignettes’
-* checking for file ‘smartdata/DESCRIPTION’ ... OK
-* this is package ‘smartdata’ version ‘1.0.3’
-* package encoding: UTF-8
-* checking package namespace information ... OK
-* checking package dependencies ... ERROR
-Packages required but not available: 'adaptiveGPCA', 'imbalance', 'missMDA'
-
-See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
-manual.
-* DONE
-Status: 1 ERROR
-
-
-
-
-
-```
-### CRAN
-
-```
-* using log directory ‘/tmp/workdir/smartdata/old/smartdata.Rcheck’
-* using R version 4.0.3 (2020-10-10)
-* using platform: x86_64-pc-linux-gnu (64-bit)
-* using session charset: UTF-8
-* using options ‘--no-manual --no-build-vignettes’
-* checking for file ‘smartdata/DESCRIPTION’ ... OK
-* this is package ‘smartdata’ version ‘1.0.3’
-* package encoding: UTF-8
-* checking package namespace information ... OK
-* checking package dependencies ... ERROR
-Packages required but not available: 'adaptiveGPCA', 'imbalance', 'missMDA'
-
-See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
-manual.
-* DONE
-Status: 1 ERROR
 
 
 
@@ -3116,17 +7841,17 @@ Status: 1 ERROR
 
 
 ```
-# spsurvey
+# stablespec
 
 <details>
 
-* Version: 4.1.4
-* GitHub: NA
-* Source code: https://github.com/cran/spsurvey
-* Date/Publication: 2020-09-18 08:20:03 UTC
-* Number of recursive dependencies: 93
+* Version: 0.3.0
+* GitHub: https://github.com/rahmarid/stablespec
+* Source code: https://github.com/cran/stablespec
+* Date/Publication: 2017-04-05 03:27:52 UTC
+* Number of recursive dependencies: 101
 
-Run `cloud_details(, "spsurvey")` for more info
+Run `cloud_details(, "stablespec")` for more info
 
 </details>
 
@@ -3135,35 +7860,20 @@ Run `cloud_details(, "spsurvey")` for more info
 ### Devel
 
 ```
-
-
-
-
-
-
-```
-### CRAN
-
-```
-* using log directory ‘/tmp/workdir/spsurvey/old/spsurvey.Rcheck’
+* using log directory ‘/tmp/workdir/stablespec/new/stablespec.Rcheck’
 * using R version 4.0.3 (2020-10-10)
 * using platform: x86_64-pc-linux-gnu (64-bit)
 * using session charset: UTF-8
 * using options ‘--no-manual --no-build-vignettes’
-* checking for file ‘spsurvey/DESCRIPTION’ ... OK
-* this is package ‘spsurvey’ version ‘4.1.4’
-* package encoding: UTF-8
+* checking for file ‘stablespec/DESCRIPTION’ ... OK
+* checking extension type ... Package
+* this is package ‘stablespec’ version ‘0.3.0’
 * checking package namespace information ... OK
-* checking package dependencies ... OK
-...
-  ‘CDF_Deconvolution.Rmd’ using ‘UTF-8’... OK
-  ‘Change_Analysis.Rmd’ using ‘UTF-8’... OK
-  ‘Finite_Analysis.Rmd’ using ‘UTF-8’... OK
-  ‘Finite_Design.Rmd’ using ‘UTF-8’... OK
-  ‘Linear_Analysis.Rmd’ using ‘UTF-8’... OK
-  ‘Linear_Design.Rmd’ using ‘UTF-8’... OK
-  ‘Risk_Analysis.Rmd’ using ‘UTF-8’... OK
-* checking re-building of vignette outputs ... SKIPPED
+* checking package dependencies ... ERROR
+Packages required but not available: 'ggm', 'graph', 'Rgraphviz'
+
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
 * DONE
 Status: 1 ERROR
 
@@ -3172,335 +7882,28 @@ Status: 1 ERROR
 
 
 ```
-# statsExpressions
-
-<details>
-
-* Version: 0.6.2
-* GitHub: https://github.com/IndrajeetPatil/statsExpressions
-* Source code: https://github.com/cran/statsExpressions
-* Date/Publication: 2020-12-08 10:30:03 UTC
-* Number of recursive dependencies: 174
-
-Run `cloud_details(, "statsExpressions")` for more info
-
-</details>
-
-## In both
-
-*   checking whether package ‘statsExpressions’ can be installed ... ERROR
-    ```
-    Installation failed.
-    See ‘/tmp/workdir/statsExpressions/new/statsExpressions.Rcheck/00install.out’ for details.
-    ```
-
-## Installation
-
-### Devel
-
-```
-* installing *source* package ‘statsExpressions’ ...
-** package ‘statsExpressions’ successfully unpacked and MD5 sums checked
-** using staged installation
-** R
-** data
-*** moving datasets to lazyload DB
-** inst
-** byte-compile and prepare package for lazy loading
-Error in loadNamespace(j <- i[[1L]], c(lib.loc, .libPaths()), versionCheck = vI[[j]]) : 
-  there is no package called ‘metaBMA’
-Calls: <Anonymous> ... loadNamespace -> withRestarts -> withOneRestart -> doWithOneRestart
-Execution halted
-ERROR: lazy loading failed for package ‘statsExpressions’
-* removing ‘/tmp/workdir/statsExpressions/new/statsExpressions.Rcheck/statsExpressions’
-
-
-```
 ### CRAN
 
 ```
-* installing *source* package ‘statsExpressions’ ...
-** package ‘statsExpressions’ successfully unpacked and MD5 sums checked
-** using staged installation
-** R
-** data
-*** moving datasets to lazyload DB
-** inst
-** byte-compile and prepare package for lazy loading
-Error in loadNamespace(j <- i[[1L]], c(lib.loc, .libPaths()), versionCheck = vI[[j]]) : 
-  there is no package called ‘metaBMA’
-Calls: <Anonymous> ... loadNamespace -> withRestarts -> withOneRestart -> doWithOneRestart
-Execution halted
-ERROR: lazy loading failed for package ‘statsExpressions’
-* removing ‘/tmp/workdir/statsExpressions/old/statsExpressions.Rcheck/statsExpressions’
+* using log directory ‘/tmp/workdir/stablespec/old/stablespec.Rcheck’
+* using R version 4.0.3 (2020-10-10)
+* using platform: x86_64-pc-linux-gnu (64-bit)
+* using session charset: UTF-8
+* using options ‘--no-manual --no-build-vignettes’
+* checking for file ‘stablespec/DESCRIPTION’ ... OK
+* checking extension type ... Package
+* this is package ‘stablespec’ version ‘0.3.0’
+* checking package namespace information ... OK
+* checking package dependencies ... ERROR
+Packages required but not available: 'ggm', 'graph', 'Rgraphviz'
+
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
+* DONE
+Status: 1 ERROR
 
 
-```
-# symengine
 
-<details>
-
-* Version: 0.1.5
-* GitHub: https://github.com/symengine/symengine.R
-* Source code: https://github.com/cran/symengine
-* Date/Publication: 2020-07-06 12:00:02 UTC
-* Number of recursive dependencies: 50
-
-Run `cloud_details(, "symengine")` for more info
-
-</details>
-
-## Newly broken
-
-*   checking whether package ‘symengine’ can be installed ... ERROR
-    ```
-    Installation failed.
-    See ‘/tmp/workdir/symengine/new/symengine.Rcheck/00install.out’ for details.
-    ```
-
-## Newly fixed
-
-*   checking installed package size ... NOTE
-    ```
-      installed size is 60.2Mb
-      sub-directories of 1Mb or more:
-        libs  59.3Mb
-    ```
-
-*   checking for GNU extensions in Makefiles ... NOTE
-    ```
-    GNU make is a SystemRequirements.
-    ```
-
-## Installation
-
-### Devel
-
-```
-* installing *source* package ‘symengine’ ...
-** package ‘symengine’ successfully unpacked and MD5 sums checked
-** using staged installation
-====== configuring symengine R package ======
-== current working directory
-/tmp/workdir/symengine/new/symengine.Rcheck/00_pkg_src/symengine
-==
-== cmake:
-/usr/bin/cmake
-cmake version 3.16.3
-...
-make[3]: *** [symengine/CMakeFiles/symengine.dir/build.make:925: symengine/libsymengine.a] Error 1
-make[3]: *** Deleting file 'symengine/libsymengine.a'
-make[3]: Leaving directory '/tmp/workdir/symengine/new/symengine.Rcheck/00_pkg_src/symengine/src/upstream'
-make[2]: *** [CMakeFiles/Makefile2:114: symengine/CMakeFiles/symengine.dir/all] Error 2
-make[2]: Leaving directory '/tmp/workdir/symengine/new/symengine.Rcheck/00_pkg_src/symengine/src/upstream'
-make[1]: *** [Makefile:141: all] Error 2
-make[1]: Leaving directory '/tmp/workdir/symengine/new/symengine.Rcheck/00_pkg_src/symengine/src/upstream'
-make: *** [Makevars:15: do_upstream] Error 2
-ERROR: compilation failed for package ‘symengine’
-* removing ‘/tmp/workdir/symengine/new/symengine.Rcheck/symengine’
-
-
-```
-### CRAN
-
-```
-* installing *source* package ‘symengine’ ...
-** package ‘symengine’ successfully unpacked and MD5 sums checked
-** using staged installation
-====== configuring symengine R package ======
-== current working directory
-/tmp/workdir/symengine/old/symengine.Rcheck/00_pkg_src/symengine
-==
-== cmake:
-/usr/bin/cmake
-cmake version 3.16.3
-...
-Creating a generic function for ‘rep.int’ from package ‘base’ in package ‘symengine’
-** help
-*** installing help indices
-** building package indices
-** installing vignettes
-** testing if installed package can be loaded from temporary location
-** checking absolute paths in shared objects and dynamic libraries
-** testing if installed package can be loaded from final location
-** testing if installed package keeps a record of temporary installation path
-* DONE (symengine)
-
-
-```
-# torch
-
-<details>
-
-* Version: 0.1.1
-* GitHub: https://github.com/mlverse/torch
-* Source code: https://github.com/cran/torch
-* Date/Publication: 2020-10-20 21:10:02 UTC
-* Number of recursive dependencies: 58
-
-Run `cloud_details(, "torch")` for more info
-
-</details>
-
-## Newly broken
-
-*   checking whether package ‘torch’ can be installed ... ERROR
-    ```
-    Installation failed.
-    See ‘/tmp/workdir/torch/new/torch.Rcheck/00install.out’ for details.
-    ```
-
-## Newly fixed
-
-*   checking installed package size ... NOTE
-    ```
-      installed size is 157.8Mb
-      sub-directories of 1Mb or more:
-        R       3.1Mb
-        help    2.8Mb
-        libs  151.4Mb
-    ```
-
-## Installation
-
-### Devel
-
-```
-* installing *source* package ‘torch’ ...
-** package ‘torch’ successfully unpacked and MD5 sums checked
-** using staged installation
-** libs
-g++ -std=gnu++11 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG  -I'/opt/R/4.0.3/lib/R/site-library/Rcpp/include' -I/usr/local/include   -fpic  -g -O2  -c RcppExports.cpp -o RcppExports.o
-g++ -std=gnu++11 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG  -I'/opt/R/4.0.3/lib/R/site-library/Rcpp/include' -I/usr/local/include   -fpic  -g -O2  -c autograd.cpp -o autograd.o
-g++ -std=gnu++11 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG  -I'/opt/R/4.0.3/lib/R/site-library/Rcpp/include' -I/usr/local/include   -fpic  -g -O2  -c contrib.cpp -o contrib.o
-g++ -std=gnu++11 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG  -I'/opt/R/4.0.3/lib/R/site-library/Rcpp/include' -I/usr/local/include   -fpic  -g -O2  -c cuda.cpp -o cuda.o
-g++ -std=gnu++11 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG  -I'/opt/R/4.0.3/lib/R/site-library/Rcpp/include' -I/usr/local/include   -fpic  -g -O2  -c device.cpp -o device.o
-In file included from device.cpp:2:
-...
-Renaming torch lib to torchpkg
-"/opt/R/4.0.3/lib/R/bin/Rscript" "../tools/renamelib.R"
-installing to /tmp/workdir/torch/new/torch.Rcheck/00LOCK-torch/00new/torch/libs
-** R
-Warning in dir.create(outCodeDir) :
-  cannot create dir '/tmp/workdir/torch/new/torch.Rcheck/00LOCK-torch/00new/torch/R', reason 'No space left on device'
-Error in .install_package_code_files(".", instdir) : 
-  cannot open directory '/tmp/workdir/torch/new/torch.Rcheck/00LOCK-torch/00new/torch/R'
-ERROR: unable to collate and parse R files for package ‘torch’
-* removing ‘/tmp/workdir/torch/new/torch.Rcheck/torch’
-
-
-```
-### CRAN
-
-```
-* installing *source* package ‘torch’ ...
-** package ‘torch’ successfully unpacked and MD5 sums checked
-** using staged installation
-** libs
-g++ -std=gnu++11 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG  -I'/opt/R/4.0.3/lib/R/site-library/Rcpp/include' -I/usr/local/include   -fpic  -g -O2  -c RcppExports.cpp -o RcppExports.o
-g++ -std=gnu++11 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG  -I'/opt/R/4.0.3/lib/R/site-library/Rcpp/include' -I/usr/local/include   -fpic  -g -O2  -c autograd.cpp -o autograd.o
-g++ -std=gnu++11 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG  -I'/opt/R/4.0.3/lib/R/site-library/Rcpp/include' -I/usr/local/include   -fpic  -g -O2  -c contrib.cpp -o contrib.o
-g++ -std=gnu++11 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG  -I'/opt/R/4.0.3/lib/R/site-library/Rcpp/include' -I/usr/local/include   -fpic  -g -O2  -c cuda.cpp -o cuda.o
-g++ -std=gnu++11 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG  -I'/opt/R/4.0.3/lib/R/site-library/Rcpp/include' -I/usr/local/include   -fpic  -g -O2  -c device.cpp -o device.o
-In file included from device.cpp:2:
-...
-** help
-*** installing help indices
-*** copying figures
-** building package indices
-** installing vignettes
-** testing if installed package can be loaded from temporary location
-** checking absolute paths in shared objects and dynamic libraries
-** testing if installed package can be loaded from final location
-** testing if installed package keeps a record of temporary installation path
-* DONE (torch)
-
-
-```
-# volesti
-
-<details>
-
-* Version: 1.1.2
-* GitHub: https://github.com/GeomScale/volume_approximation
-* Source code: https://github.com/cran/volesti
-* Date/Publication: 2020-10-19 09:20:03 UTC
-* Number of recursive dependencies: 39
-
-Run `cloud_details(, "volesti")` for more info
-
-</details>
-
-## Newly broken
-
-*   checking whether package ‘volesti’ can be installed ... ERROR
-    ```
-    Installation failed.
-    See ‘/tmp/workdir/volesti/new/volesti.Rcheck/00install.out’ for details.
-    ```
-
-## Newly fixed
-
-*   checking installed package size ... NOTE
-    ```
-      installed size is 139.6Mb
-      sub-directories of 1Mb or more:
-        libs  139.2Mb
-    ```
-
-## Installation
-
-### Devel
-
-```
-* installing *source* package ‘volesti’ ...
-** package ‘volesti’ successfully unpacked and MD5 sums checked
-** using staged installation
-** libs
-g++ -std=gnu++11 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG -Iexternal -Iexternal/lpsolve/headers/run_headers -Iexternal/minimum_ellipsoid -Iinclude -Iinclude/convex_bodies/spectrahedra -I'/opt/R/4.0.3/lib/R/site-library/Rcpp/include' -I'/opt/R/4.0.3/lib/R/site-library/RcppEigen/include' -I'/opt/R/4.0.3/lib/R/site-library/BH/include' -I/usr/local/include  -DBOOST_NO_AUTO_PTR -fpic  -g -O2  -c RcppExports.cpp -o RcppExports.o
-In file included from /opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/Core:392,
-                 from /opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/Dense:1,
-                 from /opt/R/4.0.3/lib/R/site-library/RcppEigen/include/RcppEigenForward.h:30,
-                 from /opt/R/4.0.3/lib/R/site-library/RcppEigen/include/RcppEigen.h:25,
-                 from RcppExports.cpp:4:
-...
-include/convex_bodies/zpolytope.h:192:9:   required from ‘void Zonotope<Point>::init(unsigned int, const MT&, const VT&) [with Point = point<Cartesian<double> >; Zonotope<Point>::MT = Eigen::Matrix<double, -1, -1>; typename Point::FT = double; Zonotope<Point>::VT = Eigen::Matrix<double, -1, 1>; typename K::FT = double]’
-exact_vol.cpp:111:59:   required from here
-/opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/src/Core/CoreEvaluators.h:960:8: warning: ignoring attributes on template argument ‘Eigen::internal::packet_traits<double>::type’ {aka ‘__vector(2) double’} [-Wignored-attributes]
-exact_vol.cpp:119:1: fatal error: error writing to /tmp/ccXakZWD.s: No space left on device
-  119 | }
-      | ^
-compilation terminated.
-make: *** [/opt/R/4.0.3/lib/R/etc/Makeconf:181: exact_vol.o] Error 1
-ERROR: compilation failed for package ‘volesti’
-* removing ‘/tmp/workdir/volesti/new/volesti.Rcheck/volesti’
-
-
-```
-### CRAN
-
-```
-* installing *source* package ‘volesti’ ...
-** package ‘volesti’ successfully unpacked and MD5 sums checked
-** using staged installation
-** libs
-g++ -std=gnu++11 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG -Iexternal -Iexternal/lpsolve/headers/run_headers -Iexternal/minimum_ellipsoid -Iinclude -Iinclude/convex_bodies/spectrahedra -I'/opt/R/4.0.3/lib/R/site-library/Rcpp/include' -I'/opt/R/4.0.3/lib/R/site-library/RcppEigen/include' -I'/opt/R/4.0.3/lib/R/site-library/BH/include' -I/usr/local/include  -DBOOST_NO_AUTO_PTR -fpic  -g -O2  -c RcppExports.cpp -o RcppExports.o
-In file included from /opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/Core:392,
-                 from /opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/Dense:1,
-                 from /opt/R/4.0.3/lib/R/site-library/RcppEigen/include/RcppEigenForward.h:30,
-                 from /opt/R/4.0.3/lib/R/site-library/RcppEigen/include/RcppEigen.h:25,
-                 from RcppExports.cpp:4:
-...
-** inst
-** byte-compile and prepare package for lazy loading
-** help
-*** installing help indices
-** building package indices
-** testing if installed package can be loaded from temporary location
-** checking absolute paths in shared objects and dynamic libraries
-** testing if installed package can be loaded from final location
-** testing if installed package keeps a record of temporary installation path
-* DONE (volesti)
 
 
 ```
