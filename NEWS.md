@@ -1,26 +1,21 @@
 # testthat (development version)
 
-* `test_that()` now warns in edition 3 if code is given without braces, because in this case the source of an error can't be easily traced (#1280, @krlmlr).
-
-* A warning is given when snapshots are discarded due to reusing the same
-  test name (#1278, @krlmlr).
-
 * New `testthat.progress.verbose_skips` option. Set to `FALSE` to stop
-  reporting skips as they occur, they will still appear in the summary
+  reporting skips as they occur; they will still appear in the summary
   (#1209, @krlmlr).
 
-* `CheckReporter` results have been tweaked based on feedback from running
+* `CheckReporter` results have been tweaked based on experiences from running
   R CMD check on many packages. Hopefully it should now be easier to see
   the biggest problems (i.e. failures and errors) while still having
-  skips and warnings available to check if needed. Additionaly, the full
-  test name is always shown, no matter how long (#1268)
+  skips and warnings available to check if needed (#1274). And now the full 
+  test name is always shown, no matter how long (#1268).
 
 * Catch C++ tests are no longer reported multiple times (#1237) and
   are automatically skipped on Solaris since Catch is not supported (#1257).
   `use_catch()` makes it more clear that your package needs to suggest 
   xml2 (#1235).
 
-* `auto_test_package()` works once again  (@mbojan, #1211, #1214)
+* `auto_test_package()` works once again (@mbojan, #1211, #1214).
 
 * `expect_snapshot()` gains new `error` argument which controls whether or not
   an error is expected. If an unexpected error is thrown, or an expected error
@@ -37,7 +32,8 @@
   tests interactively (#1226).
 
 * `expect_snapshot_*()` automatically removes the `_snaps` directory if
-  it's empty (#1180). 
+  it's empty (#1180). It also warns if snapshots are discarded because tests
+  have duplicated names (#1278, @krlmlr).
 
 * `local_reproducible_output()` now sets the LANGUAGE env var to "en". This
   matches the behaviour of R CMD check in interactive settings (#1213).
@@ -47,6 +43,9 @@
 
 * `skip_if_not()` no longer appends "is not TRUE" to custom messages 
   (@dpprdan, #1247).
+
+* `test_that()` now warns (3e only) if code doesn't have braces, since 
+  that makes it hard to track the source of an error (#1280, @krlmlr).
 
 # testthat 3.0.0
 
