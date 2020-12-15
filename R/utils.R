@@ -114,3 +114,7 @@ first_upper <- function(x) {
 in_rcmd_check <- function() {
   nzchar(Sys.getenv("_R_CHECK_PACKAGE_NAME_", ""))
 }
+
+map_chr <- function(.x, .f, ...) {
+  vapply(.x, .f, FUN.VALUE = character(1), ...)
+}

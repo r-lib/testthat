@@ -6,7 +6,7 @@
     - |   0 1     | reporters/error-setup                                           
     x |   0 1     | reporters/error-setup
     --------------------------------------------------------------------------------
-    ERROR (error-setup.R:6:1): (code run outside of `test_that()`)
+    Error (error-setup.R:6:1): (code run outside of `test_that()`)
     Error: !
     Backtrace:
      1. testthat::setup(f()) reporters/error-setup.R:6:0
@@ -50,61 +50,61 @@
     - |   0 9     | reporters/fail-many                                             
     x |   0 10     | reporters/fail-many
     --------------------------------------------------------------------------------
-    FAILURE (fail-many.R:3:5): Example
+    Failure (fail-many.R:3:5): Example
     FALSE is not TRUE
     
     `actual`:   FALSE
     `expected`: TRUE 
     
-    FAILURE (fail-many.R:3:5): Example
+    Failure (fail-many.R:3:5): Example
     FALSE is not TRUE
     
     `actual`:   FALSE
     `expected`: TRUE 
     
-    FAILURE (fail-many.R:3:5): Example
+    Failure (fail-many.R:3:5): Example
     FALSE is not TRUE
     
     `actual`:   FALSE
     `expected`: TRUE 
     
-    FAILURE (fail-many.R:3:5): Example
+    Failure (fail-many.R:3:5): Example
     FALSE is not TRUE
     
     `actual`:   FALSE
     `expected`: TRUE 
     
-    FAILURE (fail-many.R:3:5): Example
+    Failure (fail-many.R:3:5): Example
     FALSE is not TRUE
     
     `actual`:   FALSE
     `expected`: TRUE 
     
-    FAILURE (fail-many.R:3:5): Example
+    Failure (fail-many.R:3:5): Example
     FALSE is not TRUE
     
     `actual`:   FALSE
     `expected`: TRUE 
     
-    FAILURE (fail-many.R:3:5): Example
+    Failure (fail-many.R:3:5): Example
     FALSE is not TRUE
     
     `actual`:   FALSE
     `expected`: TRUE 
     
-    FAILURE (fail-many.R:3:5): Example
+    Failure (fail-many.R:3:5): Example
     FALSE is not TRUE
     
     `actual`:   FALSE
     `expected`: TRUE 
     
-    FAILURE (fail-many.R:3:5): Example
+    Failure (fail-many.R:3:5): Example
     FALSE is not TRUE
     
     `actual`:   FALSE
     `expected`: TRUE 
     
-    FAILURE (fail-many.R:3:5): Example
+    Failure (fail-many.R:3:5): Example
     FALSE is not TRUE
     
     `actual`:   FALSE
@@ -165,19 +165,19 @@
     - |   1 7 1   | reporters/backtraces                                            
     x |   1 7 1   | reporters/backtraces
     --------------------------------------------------------------------------------
-    ERROR (backtraces.R:6:3): errors thrown at block level are entraced
+    Error (backtraces.R:6:3): errors thrown at block level are entraced
     Error: foo
     Backtrace:
      1. f() reporters/backtraces.R:6:2
      2. g() reporters/backtraces.R:4:7
     
-    ERROR (backtraces.R:11:3): errors thrown from a quasi-labelled argument are entraced
+    Error (backtraces.R:11:3): errors thrown from a quasi-labelled argument are entraced
     Error: foo
     Backtrace:
      1. testthat::expect_s3_class(foo(), "foo") reporters/backtraces.R:11:2
      4. foo()
     
-    ERROR (backtraces.R:18:3): errors thrown from a quasi-labelled argument are entraced (deep case)
+    Error (backtraces.R:18:3): errors thrown from a quasi-labelled argument are entraced (deep case)
     Error: foo
     Backtrace:
      1. testthat::expect_s3_class(f(), "foo") reporters/backtraces.R:18:2
@@ -185,7 +185,7 @@
      5. g() reporters/backtraces.R:16:7
      9. foo()
     
-    ERROR (backtraces.R:28:3): errors thrown from a quasi-labelled argument are entraced (deep deep case)
+    Error (backtraces.R:28:3): errors thrown from a quasi-labelled argument are entraced (deep deep case)
     Error: foobar
     Backtrace:
      1. f() reporters/backtraces.R:28:2
@@ -193,14 +193,14 @@
      6. foo()
      7. bar() reporters/backtraces.R:22:9
     
-    ERROR (backtraces.R:35:3): failed expect_error() prints a backtrace
+    Error (backtraces.R:35:3): failed expect_error() prints a backtrace
     Error: bar
     Backtrace:
      1. testthat::expect_error(f(), "foo") reporters/backtraces.R:35:2
      7. f()
      8. signaller() reporters/backtraces.R:32:7
     
-    ERROR (backtraces.R:43:3): Errors are inspected with `conditionMessage()`
+    Error (backtraces.R:43:3): Errors are inspected with `conditionMessage()`
     Error: dispatched
     
     Warning (backtraces.R:50:3): also get backtraces for warnings
@@ -209,7 +209,7 @@
      1. foo() reporters/backtraces.R:50:2
      2. bar() reporters/backtraces.R:47:9
     
-    ERROR (backtraces.R:58:3): deep stacks are trimmed
+    Error (backtraces.R:58:3): deep stacks are trimmed
     Error: This is deep
     Backtrace:
       1. f(25) reporters/backtraces.R:58:2
@@ -252,13 +252,13 @@
     [ FAIL 1 | WARN 0 | SKIP 0 | PASS 1 ]
     [ FAIL 2 | WARN 0 | SKIP 0 | PASS 1 ]
     
-    -- FAILURE (tests.R:12:3): Failure:1 -------------------------------------------
+    -- Failure (tests.R:12:3): Failure:1 -------------------------------------------
     FALSE is not TRUE
     
     `actual`:   FALSE
     `expected`: TRUE 
     
-    -- FAILURE (tests.R:17:3): Failure:2a ------------------------------------------
+    -- Failure (tests.R:17:3): Failure:2a ------------------------------------------
     FALSE is not TRUE
     
     `actual`:   FALSE
@@ -269,10 +269,10 @@
     [ FAIL 3 | WARN 0 | SKIP 0 | PASS 1 ]
     [ FAIL 4 | WARN 0 | SKIP 0 | PASS 1 ]
     
-    -- ERROR (tests.R:23:3): Error:1 -----------------------------------------------
+    -- Error (tests.R:23:3): Error:1 -----------------------------------------------
     Error: stop
     
-    -- ERROR (tests.R:31:3): errors get tracebacks ---------------------------------
+    -- Error (tests.R:31:3): errors get tracebacks ---------------------------------
     Error: !
     Backtrace:
      1. f()

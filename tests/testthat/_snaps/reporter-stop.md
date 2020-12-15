@@ -1,22 +1,22 @@
 # produces useful output
 
     Test passed 
-    -- FAILURE (tests.R:12:3): Failure:1 -------------------------------------------
+    -- Failure (tests.R:12:3): Failure:1 -------------------------------------------
     FALSE is not TRUE
     
     `actual`:   FALSE
     `expected`: TRUE 
     
-    -- FAILURE (tests.R:17:3): Failure:2a ------------------------------------------
+    -- Failure (tests.R:17:3): Failure:2a ------------------------------------------
     FALSE is not TRUE
     
     `actual`:   FALSE
     `expected`: TRUE 
     
-    -- ERROR (tests.R:23:3): Error:1 -----------------------------------------------
+    -- Error (tests.R:23:3): Error:1 -----------------------------------------------
     Error: stop
     
-    -- ERROR (tests.R:31:3): errors get tracebacks ---------------------------------
+    -- Error (tests.R:31:3): errors get tracebacks ---------------------------------
     Error: !
     Backtrace:
      1. f()
@@ -37,13 +37,13 @@
 
 # stop stops at first failure
 
-    -- FAILURE (fail.R:4:3): two failures ------------------------------------------
+    -- Failure (fail.R:4:3): two failures ------------------------------------------
     FALSE is not TRUE
     
     `actual`:   FALSE
     `expected`: TRUE 
     
-    -- FAILURE (fail.R:5:3): two failures ------------------------------------------
+    -- Failure (fail.R:5:3): two failures ------------------------------------------
     TRUE is not FALSE
     
     `actual`:   TRUE 

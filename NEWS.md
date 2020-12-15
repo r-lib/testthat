@@ -9,7 +9,11 @@
   reporting skips as they occur, they will still appear in the summary
   (#1209, @krlmlr).
 
-* `CheckReporter` now always shows the full test name (#1268).
+* `CheckReporter` results have been tweaked based on feedback from running
+  R CMD check on many packages. Hopefully it should now be easier to see
+  the biggest problems (i.e. failures and errors) while still having
+  skips and warnings available to check if needed. Additionaly, the full
+  test name is always shown, no matter how long (#1268)
 
 * Catch C++ tests are no longer reported multiple times (#1237) and
   are automatically skipped on Solaris since Catch is not supported (#1257).
