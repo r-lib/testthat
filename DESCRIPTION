@@ -1,6 +1,6 @@
 Package: testthat
 Title: Unit Testing for R
-Version: 3.0.0.9000
+Version: 3.0.1
 Authors@R: 
     c(person(given = "Hadley",
              family = "Wickham",
