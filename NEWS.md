@@ -1,3 +1,5 @@
+# testthat (development version)
+
 # testthat 3.0.1
 
 * New `testthat.progress.verbose_skips` option. Set to `FALSE` to stop
