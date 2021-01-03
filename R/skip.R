@@ -72,7 +72,7 @@ skip_empty <- function() {
 #'   `FALSE`, `skip_if()` will skip if `TRUE`.
 skip_if_not <- function(condition, message = NULL) {
   if (is.null(message)) {
-    message <- paste(paste(deparse(substitute(condition)), collapse = " "), "is not TRUE")
+    message <- paste(deparse1(substitute(condition)), "is not TRUE")
   }
   if (!isTRUE(condition)) {
     skip(message)
@@ -83,7 +83,7 @@ skip_if_not <- function(condition, message = NULL) {
 #' @rdname skip
 skip_if <- function(condition, message = NULL) {
   if (is.null(message)) {
-    message <- paste(paste(deparse(substitute(condition)), collapse = " "), "is TRUE")
+    message <- paste(deparse1(substitute(condition)), "is TRUE")
   }
   if (isTRUE(condition)) {
     skip(message)

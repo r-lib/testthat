@@ -51,6 +51,9 @@ strrep <- function(x, times) {
   }, list(x = x, times = times), MoreArgs = list()), use.names = FALSE)
 }
 
+# Backport for R < 4.0
+deparse1 <- function(expr, ...) paste(deparse(expr, ...), collapse = " ")
+
 can_entrace <- function(cnd) {
   !inherits(cnd, "Throwable")
 }
