@@ -52,7 +52,7 @@ strrep <- function(x, times) {
 }
 
 # Backport for R < 4.0
-deparse1 <- function(expr, ...) paste(deparse(expr, ...), collapse = " ")
+deparse1 <- function(expr, ...) paste(deparse(expr, ...), collapse = "\n")
 
 can_entrace <- function(cnd) {
   !inherits(cnd, "Throwable")
