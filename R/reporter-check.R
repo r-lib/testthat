@@ -57,6 +57,8 @@ CheckReporter <- R6::R6Class("CheckReporter",
         self$rule("Failed tests", line = 2)
         self$cat_line(map_chr(problems, issue_summary, rule = TRUE, simplify = "none"))
         self$cat_line()
+      } else {
+        unlink("testthat-problems.rds")
       }
 
       self$cat_line(summary_line(
