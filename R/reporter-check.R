@@ -52,7 +52,7 @@ CheckReporter <- R6::R6Class("CheckReporter",
 
       if (self$problems$size() > 0) {
         problems <- self$problems$as_list()
-        saveRDS(problems, "testthat-problems.rds")
+        saveRDS(problems, "testthat-problems.rds", version = 2)
 
         self$rule("Failed tests", line = 2)
         self$cat_line(map_chr(problems, issue_summary, rule = TRUE, simplify = "none"))
