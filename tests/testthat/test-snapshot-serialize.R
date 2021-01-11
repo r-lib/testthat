@@ -1,3 +1,12 @@
+test_that("snapshot output doesn't use ANSI escapes", {
+  expect_snapshot(
+    cli::cli_alert_success("Success!")
+  )
+  expect_snapshot_output(
+    cli::cli_alert_success("Output!")
+  )
+})
+
 test_that("single test case can roundtrip", {
   x <- list(test = '[1] "x"')
   x_snap <- snap_to_md(x)
