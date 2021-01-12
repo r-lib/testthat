@@ -25,7 +25,7 @@
 #' * `width` (default: 80) to control the width of printed output (usually this
 #'   varies with the size of your console).
 #'
-#' In addition, `local_test_context()` sets the following options:
+#' In addition, `local_reproducible_output()` sets the following options:
 #'
 #' * `cli.dynamic = FALSE` so that tests assume that they are not run in
 #'   a dynamic console (i.e. one where you can move the cursor around).

@@ -51,7 +51,7 @@ terminal that supports colour).
 varies with the size of your console).
 }
 
-In addition, \code{local_test_context()} sets the following options:
+In addition, \code{local_reproducible_output()} sets the following options:
 \itemize{
 \item \code{cli.dynamic = FALSE} so that tests assume that they are not run in
 a dynamic console (i.e. one where you can move the cursor around).
