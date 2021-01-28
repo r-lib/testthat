@@ -74,7 +74,7 @@ jobs:
       - name: Install X11
         if: runner.os == 'macOS'
         run: |
-          brew cask install xquartz
+          brew install --cask xquartz
 
       - name: Install dependencies
         run: |
