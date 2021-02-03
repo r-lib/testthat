@@ -83,7 +83,7 @@ Most of these functions have not been recommended for a number of years, but bef
 
 -   `expect_equivalent()` has been deprecated since it is now equivalent (HA HA) to `expect_equal(ignore_attr = TRUE)`.
 
--   `setup()` an `teardown()` are deprecated in favour of test fixtures.
+-   `setup()` and `teardown()` are deprecated in favour of test fixtures.
     See `vignette("test-fixtures")` for details.
 
 -   `expect_known_output()`, `expect_known_value()`, `expect_known_hash()`, and `expect_equal_to_reference()` are all deprecated in favour of `expect_snapshot_output()` and `expect_snapshot_value()`.
