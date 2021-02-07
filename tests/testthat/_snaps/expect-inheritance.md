@@ -1,3 +1,11 @@
+# expect_s[34]_class can check not S3/S4
+
+    factor() is an S3 object
+
+---
+
+    A() is an S4 object
+
 # test_s4_class respects class hierarchy
 
     C() inherits from 'C'/'A'/'B'/'list'/'vector' not 'D'.

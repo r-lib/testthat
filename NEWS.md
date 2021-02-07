@@ -1,5 +1,8 @@
 # testthat (development version)
 
+* `expect_s3_class()` and `expect_s4_class()` can now check that an object
+  _isn't_ an S3 or S4 object by supplying `NA` to the second argument (#1321).
+
 * `expect_s3_class()` and `expect_s4_class()` format class names in a less
   confusing way (#1322).
 

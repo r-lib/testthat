@@ -18,6 +18,15 @@ test_that("expect_s3/s4_class fails if appropriate type", {
   expect_failure(expect_s4_class(factor(), "double"), "not an S4 object")
 })
 
+test_that("expect_s[34]_class can check not S3/S4", {
+  expect_success(expect_s3_class(1, NA))
+  expect_snapshot_failure(expect_s3_class(factor(), NA))
+
+  A <- methods::setClass("A", contains = "list")
+  expect_success(expect_s4_class(1, NA))
+  expect_snapshot_failure(expect_s4_class(A(), NA))
+})
+
 test_that("test_s4_class respects class hierarchy", {
   A <- methods::setClass("A", contains = "list")
   B <- methods::setClass("B", contains = "list")
