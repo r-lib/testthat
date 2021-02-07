@@ -27,6 +27,27 @@
     Error <rlang_error>
       4
 
+# multiple outputs of same type are collapsed
+
+    Code
+      x <- 1
+      y <- 1
+      {
+        message("a")
+        message("b")
+      }
+    Message <simpleMessage>
+      a
+      b
+    Code
+      {
+        warn("a")
+        warn("b")
+      }
+    Warning <warning>
+      a
+      b
+
 # snapshot handles multi-line input
 
     Code
