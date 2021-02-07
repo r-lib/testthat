@@ -13,9 +13,11 @@ test_that("doesn't truncate long lines", {
 })
 
 test_that("always shows summary", {
-  on.exit(unlink(test_path("testthat-problems.rds")))
+  file.create(test_path("testthat-problems.rds"))
 
   expect_snapshot_reporter(CheckReporter$new(), test_path("reporters/successes.R"))
+  # and cleans up testthat-problems
+  expect_false(file.exists(test_path("testthat-problems.rds")))
 })
 
 test_that("shows warnings when not on CRAN", {
