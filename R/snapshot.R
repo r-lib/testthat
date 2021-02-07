@@ -167,7 +167,7 @@ expect_snapshot_value <- function(x,
     serialize = function(x) jsonlite::base64_enc(serialize(x, NULL, version = 2))
   )
   load <- switch(style,
-    json = function(x) jsonlite::fromJSON(x, simplifyVector = FALSE),
+    json = function(x) jsonlite::fromJSON(x, simplifyVector = TRUE),
     json2 = function(x) jsonlite::unserializeJSON(x),
     deparse = function(x) reparse(x),
     serialize = function(x) unserialize(jsonlite::base64_dec(x))

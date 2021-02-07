@@ -59,6 +59,11 @@ test_that("can snapshot values", {
   expect_snapshot_value(x, style = "serialize")
 })
 
+test_that("default can snapshot vectors", {
+  expect_snapshot_value(c(NA, 1:5))
+  expect_snapshot_value(c(NA, letters[1:5]))
+})
+
 test_that("can control snapshot value details", {
   expect_snapshot_value(1.2, tolerance = 0.1)
 })

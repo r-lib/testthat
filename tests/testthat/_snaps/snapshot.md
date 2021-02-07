@@ -119,8 +119,16 @@
 
 ---
 
-    WAoAAAACAAMGAwACAwAAAAATAAAABAAAABAAAAABAAQACQAAAAFhAAAADgAAAAE/+AAAAAAA
+    WAoAAAACAAQAAwACAwAAAAATAAAABAAAABAAAAABAAQACQAAAAFhAAAADgAAAAE/+AAAAAAA
     AAAAAA0AAAABAAAAAQAAAAoAAAABAAAAAQ==
+
+# default can snapshot vectors
+
+    ["NA", 1, 2, 3, 4, 5]
+
+---
+
+    [null, "a", "b", "c", "d", "e"]
 
 # can control snapshot value details
 
