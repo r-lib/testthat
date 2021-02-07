@@ -1,5 +1,8 @@
 # testthat (development version)
 
+* `CheckReporter` now only records warnings when not on CRAN. Otherwise 
+  failed CRAN revdep checks tend to be cluttered up with warnings (#1300).
+
 * `expect_s3_class()` and `expect_s4_class()` can now check that an object
   _isn't_ an S3 or S4 object by supplying `NA` to the second argument (#1321).
 

@@ -42,7 +42,7 @@ CheckReporter <- R6::R6Class("CheckReporter",
       }
 
       # Don't show warnings in revdep checks in order to focus on failures
-      if (self$warnings$size() > 0 && !is_revdep_check()) {
+      if (self$warnings$size() > 0 && !on_cran()) {
         warnings <- self$warnings$as_list()
 
         self$rule("Warnings", line = 2)
@@ -79,8 +79,4 @@ summary_line <- function(n_fail, n_warn, n_skip, n_pass) {
     colourise("PASS", "success"), " ", n_pass,
     " ]"
   )
-}
-
-is_revdep_check <- function() {
-  !identical(Sys.getenv("DEV_PACKAGE_NAME"), "")
 }
