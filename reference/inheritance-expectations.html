@@ -54,8 +54,10 @@ the vocabulary used here.
 expect_type(x, type) checks that typeof(x) is type.
 expect_s3_class(x, class) checks that x is an S3 object that
 inherits() from class
+expect_s3_class(x, NA) checks that x isn't an S3 object.
 expect_s4_class(x, class) checks that x is an S4 object that
 is() class.
+expect_s4_class(x, NA) checks that x isn't an S4 object.
 
 
 See expect_vector() for testing properties of objects created by vctrs." />
@@ -211,8 +213,10 @@ the vocabulary used here.</p><ul>
 <li><p><code>expect_type(x, type)</code> checks that <code><a href='https://rdrr.io/r/base/typeof.html'>typeof(x)</a></code> is <code>type</code>.</p></li>
 <li><p><code>expect_s3_class(x, class)</code> checks that <code>x</code> is an S3 object that
 <code><a href='https://rdrr.io/r/base/class.html'>inherits()</a></code> from <code>class</code></p></li>
+<li><p><code>expect_s3_class(x, NA)</code> checks that <code>x</code> isn't an S3 object.</p></li>
 <li><p><code>expect_s4_class(x, class)</code> checks that <code>x</code> is an S4 object that
 <code>is()</code> <code>class</code>.</p></li>
+<li><p><code>expect_s4_class(x, NA)</code> checks that <code>x</code> isn't an S4 object.</p></li>
 </ul>
 
 <p>See <code><a href='expect_vector.html'>expect_vector()</a></code> for testing properties of objects created by vctrs.</p>
@@ -239,7 +243,9 @@ within a function or for loop. See <a href='quasi_label.html'>quasi_label</a> fo
     </tr>
     <tr>
       <th>class</th>
-      <td><p>character vector of class names</p></td>
+      <td><p>Either a character vector of class names, or
+for <code>expect_s3_class()</code> and <code>expect_s4_class()</code>, an <code>NA</code> to assert
+that <code>object</code> isn't an S3 or S4 object.</p></td>
     </tr>
     <tr>
       <th>exact</th>
