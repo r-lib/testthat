@@ -162,7 +162,7 @@ test_files <- function(test_dir,
     lifecycle::deprecate_warn("3.0.0", "test_dir(wrap = )")
   }
 
-  if (parallel) {
+  if (parallel && length(test_paths) > 1) {
     test_files <- test_files_parallel
   } else {
     test_files <- test_files_serial
