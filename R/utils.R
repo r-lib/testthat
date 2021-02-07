@@ -4,8 +4,6 @@ magrittr::`%>%`
 
 null <- function(...) invisible()
 
-klass <- function(x) paste(class(x), collapse = "/")
-
 # Tools for finding srcrefs -----------------------------------------------
 
 find_first_srcref <- function(start) {

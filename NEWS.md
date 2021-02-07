@@ -1,5 +1,8 @@
 # testthat (development version)
 
+* `expect_s3_class()` and `expect_s4_class()` format class names in a less
+  confusing way (#1322).
+
 # testthat 3.0.1
 
 * New `testthat.progress.verbose_skips` option. Set to `FALSE` to stop

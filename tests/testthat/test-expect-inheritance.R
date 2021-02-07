@@ -30,14 +30,15 @@ test_that("test_s4_class respects class hierarchy", {
 
   expect_success(expect_s4_class(C(), "A"))
   expect_success(expect_s4_class(C(), "B"))
-  expect_failure(expect_s4_class(C(), "D"), "inherits from `C/A/B/list/vector`")
+  expect_snapshot_failure(expect_s4_class(C(), "D"))
 })
 
 test_that("test_s3_class respects class hierarchy", {
   x <- structure(list(), class = c("a", "b"))
   expect_success(expect_s3_class(x, "a"))
   expect_success(expect_s3_class(x, "b"))
-  expect_failure(expect_s3_class(x, "c"), "inherits from `a/b`")
+  expect_snapshot_failure(expect_s3_class(x, "c"))
+  expect_snapshot_failure(expect_s3_class(x, c("c", "d")))
 })
 
 test_that("test_s3_class can request exact match", {

@@ -47,7 +47,7 @@ expect_type <- function(object, type) {
 
   expect(
     identical(act_type, type),
-    sprintf("%s has type `%s`, not `%s`.", act$lab, act_type, type)
+    sprintf("%s has type %s, not %s.", act$lab, format_class(act_type), format_class(type))
   )
   invisible(act$val)
 }
@@ -61,8 +61,8 @@ expect_s3_class <- function(object, class, exact = FALSE) {
   stopifnot(is.character(class))
 
   act <- quasi_label(enquo(object), arg = "object")
-  act$class <- klass(act$val)
-  exp_lab <- paste(class, collapse = "/")
+  act$class <- format_class(class(act$val))
+  exp_lab <- format_class(class)
 
   if (!isS3(act$val)) {
     fail(sprintf("%s is not an S3 object", act$lab))
@@ -71,12 +71,12 @@ expect_s3_class <- function(object, class, exact = FALSE) {
   if (exact) {
     expect(
       identical(class(act$val), class),
-      sprintf("%s has class `%s`, not `%s`.", act$lab, act$class, exp_lab)
+      sprintf("%s has class %s, not %s.", act$lab, act$class, exp_lab)
     )
   } else {
     expect(
       inherits(act$val, class),
-      sprintf("%s inherits from `%s` not `%s`.", act$lab, act$class, exp_lab)
+      sprintf("%s inherits from %s not %s.", act$lab, act$class, exp_lab)
     )
   }
   invisible(act$val)
@@ -88,8 +88,8 @@ expect_s4_class <- function(object, class) {
   stopifnot(is.character(class))
 
   act <- quasi_label(enquo(object), arg = "object")
-  act_val_lab <- paste(methods::is(object), collapse = "/")
-  exp_lab <- paste(class, collapse = "/")
+  act_val_lab <- format_class(methods::is(object))
+  exp_lab <- format_class(class)
 
   if (!isS4(act$val)) {
     fail(sprintf("%s is not an S4 object", act$lab))
@@ -97,7 +97,7 @@ expect_s4_class <- function(object, class) {
 
   expect(
     methods::is(act$val, class),
-    sprintf("%s inherits from `%s` not `%s`.", act$lab, act_val_lab, exp_lab)
+    sprintf("%s inherits from %s not %s.", act$lab, act_val_lab, exp_lab)
   )
   invisible(act$val)
 }
@@ -130,8 +130,8 @@ expect_is <- function(object, class, info = NULL, label = NULL) {
 
 
   act <- quasi_label(enquo(object), label, arg = "object")
-  act$class <- klass(act$val)
-  exp_lab <- paste(class, collapse = "/")
+  act$class <- format_class(class(act$val))
+  exp_lab <- format_class(class(class))
 
   expect(
     inherits(act$val, class),
@@ -139,4 +139,9 @@ expect_is <- function(object, class, info = NULL, label = NULL) {
     info = info
   )
   invisible(act$val)
+}
+
+
+format_class <- function(x) {
+  paste0(encodeString(x, quote = "'"), collapse = "/")
 }
