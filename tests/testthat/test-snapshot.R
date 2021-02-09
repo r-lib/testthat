@@ -16,6 +16,15 @@ test_that("can snapshot everything", {
   expect_snapshot(f(), error = TRUE)
 })
 
+test_that("multiple outputs of same type are collapsed", {
+  expect_snapshot({
+    x <- 1
+    y <- 1
+    {message("a"); message("b")}
+    {warn("a"); warn("b")}
+  })
+})
+
 test_that("always checks error status", {
   expect_failure(expect_snapshot(stop("!"), error = FALSE))
   expect_failure(expect_snapshot(print("!"), error = TRUE))
