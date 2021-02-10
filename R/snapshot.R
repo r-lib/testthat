@@ -27,7 +27,7 @@
 #'
 #' It's important to review the JSON files and commit them to git. They are
 #' designed to be human readable, and you should always review new additions
-#' to ensure that the salient information has been capture. They should also
+#' to ensure that the salient information has been captured. They should also
 #' be carefully reviewed in pull requests, to make sure that snapshots have
 #' updated in the expected way.
 #'
@@ -37,7 +37,7 @@
 #' you can approve the change with [snapshot_accept()] and then the tests will
 #' pass the next time you run them.
 #'
-#' Note that snapshotting can onµly work when executing a complete test file
+#' Note that snapshotting can only work when executing a complete test file
 #' (with [test_file()], [test_dir()], or friends) because there's otherwise
 #' no way to figure out the snapshot path. If you run snapshot tests
 #' interactively, they'll just display the current value.
