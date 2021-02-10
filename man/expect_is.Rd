@@ -12,7 +12,9 @@ expect_is(object, class, info = NULL, label = NULL)
 Supports limited unquoting to make it easier to generate readable failures
 within a function or for loop. See \link{quasi_label} for more details.}
 
-\item{class}{character vector of class names}
+\item{class}{Either a character vector of class names, or
+for \code{expect_s3_class()} and \code{expect_s4_class()}, an \code{NA} to assert
+that \code{object} isn't an S3 or S4 object.}
 }
 \description{
 \ifelse{html}{\out{<a href='https://www.tidyverse.org/lifecycle/#superseded'><img src='figures/lifecycle-superseded.svg' alt='Superseded lifecycle'></a>}}{\strong{Superseded}}

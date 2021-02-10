@@ -22,7 +22,9 @@ within a function or for loop. See \link{quasi_label} for more details.}
 
 \item{type}{String giving base type (as returned by \code{\link[=typeof]{typeof()}}).}
 
-\item{class}{character vector of class names}
+\item{class}{Either a character vector of class names, or
+for \code{expect_s3_class()} and \code{expect_s4_class()}, an \code{NA} to assert
+that \code{object} isn't an S3 or S4 object.}
 
 \item{exact}{If \code{FALSE}, the default, checks that \code{object} inherits
 from \code{class}. If \code{TRUE}, checks that object has a class that's identical
@@ -35,8 +37,10 @@ the vocabulary used here.
 \item \code{expect_type(x, type)} checks that \code{typeof(x)} is \code{type}.
 \item \code{expect_s3_class(x, class)} checks that \code{x} is an S3 object that
 \code{\link[=inherits]{inherits()}} from \code{class}
+\item \code{expect_s3_class(x, NA)} checks that \code{x} isn't an S3 object.
 \item \code{expect_s4_class(x, class)} checks that \code{x} is an S4 object that
 \code{\link[=is]{is()}} \code{class}.
+\item \code{expect_s4_class(x, NA)} checks that \code{x} isn't an S4 object.
 }
 
 See \code{\link[=expect_vector]{expect_vector()}} for testing properties of objects created by vctrs.

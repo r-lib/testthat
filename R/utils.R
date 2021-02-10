@@ -4,8 +4,6 @@ magrittr::`%>%`
 
 null <- function(...) invisible()
 
-klass <- function(x) paste(class(x), collapse = "/")
-
 # Tools for finding srcrefs -----------------------------------------------
 
 find_first_srcref <- function(start) {
@@ -50,6 +48,9 @@ strrep <- function(x, times) {
     paste0(replicate(times, x), collapse = "")
   }, list(x = x, times = times), MoreArgs = list()), use.names = FALSE)
 }
+
+# Backport for R < 4.0
+deparse1 <- function(expr, ...) paste(deparse(expr, ...), collapse = "\n")
 
 can_entrace <- function(cnd) {
   !inherits(cnd, "Throwable")

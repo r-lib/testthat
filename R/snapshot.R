@@ -78,11 +78,11 @@ snapshot_replay <- function(x, state) {
 }
 #' @export
 snapshot_replay.character <- function(x, state) {
-  c("Output", indent(split_lines(x)))
+  c(snap_header(state, "Output"), indent(split_lines(x)))
 }
 #' @export
 snapshot_replay.source <- function(x, state) {
-  c("Code", indent(split_lines(x$src)))
+  c(snap_header(state, "Code"), indent(split_lines(x$src)))
 }
 #' @export
 snapshot_replay.condition <- function(x, state) {
@@ -101,7 +101,14 @@ snapshot_replay.condition <- function(x, state) {
 
   class <- paste0(type, " <", class(x)[[1]], ">")
 
-  c(class, indent(split_lines(msg)))
+  c(snap_header(state, class), indent(split_lines(msg)))
+}
+
+snap_header <- function(state, header) {
+  if (!identical(state$header, header)) {
+    state$header <- header
+    header
+  }
 }
 
 #' @export

@@ -42,7 +42,7 @@ CheckReporter <- R6::R6Class("CheckReporter",
       }
 
       # Don't show warnings in revdep checks in order to focus on failures
-      if (self$warnings$size() > 0 && !is_revdep_check()) {
+      if (self$warnings$size() > 0 && !on_cran()) {
         warnings <- self$warnings$as_list()
 
         self$rule("Warnings", line = 2)
@@ -52,11 +52,14 @@ CheckReporter <- R6::R6Class("CheckReporter",
 
       if (self$problems$size() > 0) {
         problems <- self$problems$as_list()
-        saveRDS(problems, "testthat-problems.rds")
+        saveRDS(problems, "testthat-problems.rds", version = 2)
 
         self$rule("Failed tests", line = 2)
         self$cat_line(map_chr(problems, issue_summary, rule = TRUE, simplify = "none"))
         self$cat_line()
+      } else {
+        # clean up
+        unlink("testthat-problems.rds")
       }
 
       self$cat_line(summary_line(
@@ -79,8 +82,4 @@ summary_line <- function(n_fail, n_warn, n_skip, n_pass) {
     colourise("PASS", "success"), " ", n_pass,
     " ]"
   )
-}
-
-is_revdep_check <- function() {
-  !identical(Sys.getenv("DEV_PACKAGE_NAME"), "")
 }

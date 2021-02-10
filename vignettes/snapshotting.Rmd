@@ -69,7 +69,7 @@ test_that("bullets", {
 ```
 
 This is a great place to use snapshot testing.
-To do this we make two changes to our code: we use `expect_snapshot_output()` instead of `expect_equal()`, and wrap the call in `cat()` (to avoid `[1]` in the output, like I my first interactive example).
+To do this we make two changes to our code: we use `expect_snapshot_output()` instead of `expect_equal()`, and wrap the call in `cat()` (to avoid `[1]` in the output, like in my first interactive example).
 
 ```{r}
 test_that("bullets", {
@@ -84,7 +84,7 @@ snapper$end_file()
 snapper$start_file("pizza", "test")
 ```
 
-We we run the test for the first time, it automatically generates reference output, and prints it, so that you can visually confirm that it's correct.
+When we run the test for the first time, it automatically generates reference output, and prints it, so that you can visually confirm that it's correct.
 The output is automatically saved in `_snaps/{name}.R`.
 The name of the snapshot matches your test file name --- e.g. if your test is `test-pizza.R` then your snapshot will be saved in `test/testthat/_snaps/pizza.md`.
 As the file name suggests, this is a markdown file, which I'll explain shortly.

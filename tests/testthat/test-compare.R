@@ -40,7 +40,7 @@ test_that("classes must be identical", {
   c1 <- "a"
   c2 <- structure("a", class = "mycharacter")
 
-  expect_match(compare(c1, c2)$message, "character is not mycharacter")
+  expect_match(compare(c1, c2)$message, "'character' is not 'mycharacter'")
 })
 
 test_that("attributes must be identical", {
@@ -120,8 +120,8 @@ test_that("classes must be identical", {
   f1 <- factor("a")
   f2 <- factor("a", ordered = TRUE)
 
-  expect_match(compare(1L, f1)$message, "integer is not factor")
-  expect_match(compare(1L, f2)$message, "integer is not ordered/factor")
+  expect_match(compare(1L, f1)$message, "'integer' is not 'factor'")
+  expect_match(compare(1L, f2)$message, "'integer' is not 'ordered'/'factor'")
 })
 
 test_that("attributes must be identical", {
@@ -183,7 +183,7 @@ test_that("both POSIXt classes are compatible", {
 })
 
 test_that("other classes are not", {
-  expect_match(compare(Sys.time(), 1)$message, "POSIXct/POSIXt is not numeric")
+  expect_match(compare(Sys.time(), 1)$message, "'POSIXct'/'POSIXt' is not 'numeric'")
 })
 
 test_that("base lengths must be identical", {
