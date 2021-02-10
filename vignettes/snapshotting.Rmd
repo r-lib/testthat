@@ -69,7 +69,7 @@ test_that("bullets", {
 ```
 
 This is a great place to use snapshot testing.
-To do this we make two changes to our code: we use `expect_snapshot_output()` instead of `expect_equal()`, and wrap the call in `cat()` (to avoid `[1]` in the output, like I my first interactive example).
+To do this we make two changes to our code: we use `expect_snapshot_output()` instead of `expect_equal()`, and wrap the call in `cat()` (to avoid `[1]` in the output, like in my first interactive example).
 
 ```{r}
 test_that("bullets", {
