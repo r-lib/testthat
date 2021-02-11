@@ -50,10 +50,9 @@ expect_that <- function(object, condition, info = NULL, label = NULL) {
 #' test_that("this test fails", fail())
 #' test_that("this test succeeds", succeed())
 #' }
-fail <- function(message = "Failure has been forced", info = NULL) {
-  expect(FALSE, message, info = info)
+fail <- function(message = "Failure has been forced", info = NULL, trace = NULL) {
+  expect(FALSE, message, info = info, trace = trace %||% test_trace(2))
 }
-
 
 #' @rdname fail
 #' @export

@@ -58,3 +58,13 @@ test_that("deep stacks are trimmed", {
   f(25)
 })
 
+# Expectations ----------------------------------------------------------------
+f <- function() g()
+g <- function() h()
+h <- function() expect_true(FALSE)
+
+f()
+
+test_that("nested expectations get backtraces", {
+  f()
+})

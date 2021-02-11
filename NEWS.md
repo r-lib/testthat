@@ -1,5 +1,9 @@
 # testthat (development version)
 
+* Failing expectations now include a backtrace when they're not called directly
+  from within `test_that()` but are instead wrapped in some helper function 
+  (#1307).
+  
 * `CheckReporter` now only records warnings when not on CRAN. Otherwise 
   failed CRAN revdep checks tend to be cluttered up with warnings (#1300).
   It automatically cleans up `testthat-problems.rds` left over from previous

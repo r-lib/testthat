@@ -163,7 +163,9 @@
     | |   0 6 1   | reporters/backtraces                                            
     / |   1 6 1   | reporters/backtraces                                            
     - |   1 7 1   | reporters/backtraces                                            
-    x |   1 7 1   | reporters/backtraces
+    \ |   1 8 1   | reporters/backtraces                                            
+    | |   1 9 1   | reporters/backtraces                                            
+    x |   1 9 1   | reporters/backtraces
     --------------------------------------------------------------------------------
     Error (backtraces.R:6:3): errors thrown at block level are entraced
     Error: foo
@@ -233,10 +235,32 @@
      24. f(x - 1) reporters/backtraces.R:56:4
      25. f(x - 1) reporters/backtraces.R:56:4
      26. f(x - 1) reporters/backtraces.R:56:4
+    
+    Failure (backtraces.R:66:1): (code run outside of `test_that()`)
+    FALSE is not TRUE
+    
+    `actual`:   FALSE
+    `expected`: TRUE 
+    Backtrace:
+     1. f() reporters/backtraces.R:66:0
+     2. g() reporters/backtraces.R:62:5
+     3. h() reporters/backtraces.R:63:5
+     4. testthat::expect_true(FALSE) reporters/backtraces.R:64:5
+    
+    Failure (backtraces.R:69:3): nested expectations get backtraces
+    FALSE is not TRUE
+    
+    `actual`:   FALSE
+    `expected`: TRUE 
+    Backtrace:
+     1. f() reporters/backtraces.R:69:2
+     2. g() reporters/backtraces.R:62:5
+     3. h() reporters/backtraces.R:63:5
+     4. testthat::expect_true(FALSE) reporters/backtraces.R:64:5
     --------------------------------------------------------------------------------
     
     == Results =====================================================================
-    [ FAIL 7 | WARN 1 | SKIP 0 | PASS 1 ]
+    [ FAIL 9 | WARN 1 | SKIP 0 | PASS 1 ]
     
     I believe in you!
 
@@ -263,6 +287,9 @@
     
     `actual`:   FALSE
     `expected`: TRUE 
+    Backtrace:
+     1. f()
+     2. testthat::expect_true(FALSE)
     
     
     [ FAIL 2 | WARN 0 | SKIP 0 | PASS 1 ]

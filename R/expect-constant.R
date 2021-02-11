@@ -77,7 +77,8 @@ expect_waldo_constant <- function(act, constant, info) {
       act$lab, deparse(constant),
       paste0(comp, collapse = "\n\n")
     ),
-    info = info
+    info = info,
+    trace = test_trace(2)
   )
 
   invisible(act$val)

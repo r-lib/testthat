@@ -31,6 +31,8 @@ source_file <- function(path, env = test_env(), chdir = TRUE,
     old_dir <- setwd(dirname(path))
     on.exit(setwd(old_dir), add = TRUE)
   }
+
+  withr::local_options(testthat_topenv = env)
   if (wrap) {
     invisible(test_code(NULL, exprs, env))
   } else {

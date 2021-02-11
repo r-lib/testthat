@@ -19,12 +19,13 @@
 expect_vector <- function(object, ptype = NULL, size = NULL) {
   act <- quasi_label(enquo(object), arg = "object")
 
+  message <- NULL
   tryCatch(
     vctrs::vec_assert(act$val, ptype = ptype, size = size, arg = act$lab),
     vctrs_error_assert = function(e) {
-      expect(FALSE, e$message)
+      message <<- e$message
     }
   )
 
-  expect(TRUE, "success")
+  expect(is.null(message), message)
 }

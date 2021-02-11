@@ -48,8 +48,28 @@ expect <- function(ok, failure_message, info = NULL, srcref = NULL, trace = NULL
     }
   }
 
+  if (ok) {
+    # Never capture trace back for successes
+    trace <- NULL
+  } else {
+    # Always capture trace if for failures; but only show if there's at least
+    # one function apart from the expectation
+    trace <- trace %||% test_trace(2)
+    if (trace_length(trace) <= 1) {
+      trace <- NULL
+    }
+  }
+
   exp <- expectation(type, message, srcref = srcref, trace = trace)
   exp_signal(exp)
+}
+
+
+test_trace <- function(parents = 1) {
+  trace_back(
+    top = getOption("testthat_topenv"),
+    bottom = parents + 1
+  )
 }
 
 #' Construct an expectation object

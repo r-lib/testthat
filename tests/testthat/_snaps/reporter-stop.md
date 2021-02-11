@@ -12,6 +12,9 @@
     
     `actual`:   FALSE
     `expected`: TRUE 
+    Backtrace:
+     1. f()
+     2. testthat::expect_true(FALSE)
     
     -- Error (tests.R:23:3): Error:1 -----------------------------------------------
     Error: stop
