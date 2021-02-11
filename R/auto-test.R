@@ -115,7 +115,8 @@ auto_test_package <- function(pkg = ".", reporter = default_reporter(), hash = T
         test_dir = test_path,
         test_package = package,
         test_paths = tests,
-        env = env, reporter = reporter$clone(deep = TRUE)
+        env = env, 
+        reporter = reporter$clone(deep = TRUE)
       )
     }
 
