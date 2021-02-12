@@ -123,7 +123,7 @@ expect_waldo_equal <- function(type, act, exp, info, ...) {
       paste0(comp, collapse = "\n\n")
     ),
     info = info,
-    trace = test_trace(2)
+    trace_env = caller_env(1)
   )
 
   invisible(act$val)

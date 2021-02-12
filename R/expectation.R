@@ -11,6 +11,10 @@
 #'   supplied when you need to forward a srcref captured elsewhere.
 #' @param trace An optional backtrace created by [rlang::trace_back()].
 #'   When supplied, the expectation is displayed with the backtrace.
+#' @param trace_env If `is.null(trace)`, this is used to automatically
+#'   generate a traceback running from `test_code()`/`test_file()` to
+#'   `trace_env`. You'll generally only need to set this if you're wrapping
+#'   an expectation inside another function.
 #' @return An expectation object. Signals the expectation condition
 #'   with a `continue_test` restart.
 #'
@@ -31,7 +35,11 @@
 #'
 #' @seealso [exp_signal()]
 #' @export
-expect <- function(ok, failure_message, info = NULL, srcref = NULL, trace = NULL) {
+expect <- function(ok, failure_message,
+                   info = NULL,
+                   srcref = NULL,
+                   trace = NULL,
+                   trace_env = caller_env(1)) {
   type <- if (ok) "success" else "failure"
 
   # Preserve existing API which appear to be used in package test code
@@ -48,13 +56,15 @@ expect <- function(ok, failure_message, info = NULL, srcref = NULL, trace = NULL
     }
   }
 
-  if (ok) {
-    # Never capture trace back for successes
-    trace <- NULL
-  } else {
-    # Always capture trace if for failures; but only show if there's at least
-    # one function apart from the expectation
-    trace <- trace %||% test_trace(2)
+  if (!ok) {
+    if (is.null(trace)) {
+      trace <- trace_back(
+        top = getOption("testthat_topenv"),
+        bottom = trace_env
+      )
+    }
+
+    # Only show if there's at least one function apart from the expectation
     if (trace_length(trace) <= 1) {
       trace <- NULL
     }
@@ -64,13 +74,6 @@ expect <- function(ok, failure_message, info = NULL, srcref = NULL, trace = NULL
   exp_signal(exp)
 }
 
-
-test_trace <- function(parents = 1) {
-  trace_back(
-    top = getOption("testthat_topenv"),
-    bottom = parents + 1
-  )
-}
 
 #' Construct an expectation object
 #'

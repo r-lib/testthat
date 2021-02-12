@@ -100,7 +100,7 @@ compare_file <- function(path, lines, ..., update = TRUE, info = NULL) {
       encodeString(path, quote = "'"), paste0(comp, collapse = "\n\n")
     ),
     info = info,
-    trace = test_trace(2)
+    trace_env = caller_env(1)
   )
 }
 
