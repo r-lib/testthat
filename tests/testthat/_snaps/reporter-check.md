@@ -21,6 +21,10 @@
     
     `actual`:   FALSE
     `expected`: TRUE 
+    Backtrace:
+        x
+     1. \-f() reporters/tests.R:17:2
+     2.   \-testthat::expect_true(FALSE) reporters/tests.R:16:7
     -- Error (tests.R:23:3): Error:1 -----------------------------------------------
     Error: stop
     -- Error (tests.R:31:3): errors get tracebacks ---------------------------------
@@ -68,6 +72,10 @@
     
     `actual`:   FALSE
     `expected`: TRUE 
+    Backtrace:
+        x
+     1. \-f() reporters/tests.R:17:2
+     2.   \-testthat::expect_true(FALSE) reporters/tests.R:16:7
     -- Error (tests.R:23:3): Error:1 -----------------------------------------------
     Error: stop
     -- Error (tests.R:31:3): errors get tracebacks ---------------------------------

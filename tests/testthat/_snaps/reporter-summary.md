@@ -27,6 +27,9 @@
     
     `actual`:   FALSE
     `expected`: TRUE 
+    Backtrace:
+     1. f() reporters/tests.R:17:2
+     2. testthat::expect_true(FALSE) reporters/tests.R:16:7
     
     -- 3. Error (tests.R:23:3): Error:1 --------------------------------------------
     Error: stop
@@ -69,6 +72,9 @@
     
     `actual`:   FALSE
     `expected`: TRUE 
+    Backtrace:
+     1. f() reporters/tests.R:17:2
+     2. testthat::expect_true(FALSE) reporters/tests.R:16:7
     
     -- 3. Error (tests.R:23:3): Error:1 --------------------------------------------
     Error: stop
@@ -111,6 +117,9 @@
     
     `actual`:   FALSE
     `expected`: TRUE 
+    Backtrace:
+     1. f() reporters/tests.R:17:2
+     2. testthat::expect_true(FALSE) reporters/tests.R:16:7
       ... and 2 more
     
     

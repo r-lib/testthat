@@ -99,7 +99,8 @@ compare_file <- function(path, lines, ..., update = TRUE, info = NULL) {
       "Results have changed from known value recorded in %s.\n\n%s",
       encodeString(path, quote = "'"), paste0(comp, collapse = "\n\n")
     ),
-    info = info
+    info = info,
+    trace_env = caller_env()
   )
 }
 

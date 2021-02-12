@@ -122,7 +122,8 @@ expect_waldo_equal <- function(type, act, exp, info, ...) {
       exp$lab, "`expected`",
       paste0(comp, collapse = "\n\n")
     ),
-    info = info
+    info = info,
+    trace_env = caller_env()
   )
 
   invisible(act$val)

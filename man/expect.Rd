@@ -4,7 +4,14 @@
 \alias{expect}
 \title{The building block of all \code{expect_} functions}
 \usage{
-expect(ok, failure_message, info = NULL, srcref = NULL, trace = NULL)
+expect(
+  ok,
+  failure_message,
+  info = NULL,
+  srcref = NULL,
+  trace = NULL,
+  trace_env = caller_env()
+)
 }
 \arguments{
 \item{ok}{\code{TRUE} or \code{FALSE} indicating if the expectation was successful.}
@@ -19,6 +26,11 @@ supplied when you need to forward a srcref captured elsewhere.}
 
 \item{trace}{An optional backtrace created by \code{\link[rlang:trace_back]{rlang::trace_back()}}.
 When supplied, the expectation is displayed with the backtrace.}
+
+\item{trace_env}{If \code{is.null(trace)}, this is used to automatically
+generate a traceback running from \code{test_code()}/\code{test_file()} to
+\code{trace_env}. You'll generally only need to set this if you're wrapping
+an expectation inside another function.}
 }
 \value{
 An expectation object. Signals the expectation condition

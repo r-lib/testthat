@@ -228,7 +228,8 @@ expect_snapshot_helper <- function(lab, val,
       lab,
       paste0(comp, collapse = "\n\n"),
       hint
-    )
+    ),
+    trace_env = caller_env()
   )
 }
 
