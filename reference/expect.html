@@ -199,7 +199,14 @@ vignette(&quot;custom-expectation&quot;) for details." />
 <code><a href='../articles/custom-expectation.html'>vignette("custom-expectation")</a></code> for details.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>expect</span><span class='op'>(</span><span class='va'>ok</span>, <span class='va'>failure_message</span>, info <span class='op'>=</span> <span class='cn'>NULL</span>, srcref <span class='op'>=</span> <span class='cn'>NULL</span>, trace <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>expect</span><span class='op'>(</span>
+  <span class='va'>ok</span>,
+  <span class='va'>failure_message</span>,
+  info <span class='op'>=</span> <span class='cn'>NULL</span>,
+  srcref <span class='op'>=</span> <span class='cn'>NULL</span>,
+  trace <span class='op'>=</span> <span class='cn'>NULL</span>,
+  trace_env <span class='op'>=</span> <span class='fu'>caller_env</span><span class='op'>(</span><span class='op'>)</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -226,6 +233,13 @@ supplied when you need to forward a srcref captured elsewhere.</p></td>
       <th>trace</th>
       <td><p>An optional backtrace created by <code><a href='https://rlang.r-lib.org/reference/trace_back.html'>rlang::trace_back()</a></code>.
 When supplied, the expectation is displayed with the backtrace.</p></td>
+    </tr>
+    <tr>
+      <th>trace_env</th>
+      <td><p>If <code><a href='https://rdrr.io/r/base/NULL.html'>is.null(trace)</a></code>, this is used to automatically
+generate a traceback running from <code>test_code()</code>/<code><a href='test_file.html'>test_file()</a></code> to
+<code>trace_env</code>. You'll generally only need to set this if you're wrapping
+an expectation inside another function.</p></td>
     </tr>
     </table>
 

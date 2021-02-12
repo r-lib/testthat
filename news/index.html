@@ -196,6 +196,7 @@
 <a href="#testthat-development-version" class="anchor"></a>testthat (development version)<small> Unreleased </small>
 </h1>
 <ul>
+<li><p>Failing expectations now include a backtrace when they’re not called directly from within <code><a href="../reference/test_that.html">test_that()</a></code> but are instead wrapped in some helper function (<a href='https://github.com/r-lib/testthat/issues/1307'>#1307</a>).</p></li>
 <li><p><code>CheckReporter</code> now only records warnings when not on CRAN. Otherwise failed CRAN revdep checks tend to be cluttered up with warnings (<a href='https://github.com/r-lib/testthat/issues/1300'>#1300</a>). It automatically cleans up <code>testthat-problems.rds</code> left over from previous runs if the latest run is succesful (<a href='https://github.com/r-lib/testthat/issues/1314'>#1314</a>).</p></li>
 <li><p><code><a href="../reference/inheritance-expectations.html">expect_s3_class()</a></code> and <code><a href="../reference/inheritance-expectations.html">expect_s4_class()</a></code> can now check that an object <em>isn’t</em> an S3 or S4 object by supplying <code>NA</code> to the second argument (<a href='https://github.com/r-lib/testthat/issues/1321'>#1321</a>).</p></li>
 <li><p><code><a href="../reference/inheritance-expectations.html">expect_s3_class()</a></code> and <code><a href="../reference/inheritance-expectations.html">expect_s4_class()</a></code> format class names in a less confusing way (<a href='https://github.com/r-lib/testthat/issues/1322'>#1322</a>).</p></li>

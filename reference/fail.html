@@ -201,7 +201,11 @@ particularly useful to a pre-condition or mark a test as not yet
 implemented.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>fail</span><span class='op'>(</span>message <span class='op'>=</span> <span class='st'>"Failure has been forced"</span>, info <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span>
+    <pre class="usage"><span class='fu'>fail</span><span class='op'>(</span>
+  message <span class='op'>=</span> <span class='st'>"Failure has been forced"</span>,
+  info <span class='op'>=</span> <span class='cn'>NULL</span>,
+  trace_env <span class='op'>=</span> <span class='fu'>caller_env</span><span class='op'>(</span><span class='op'>)</span>
+<span class='op'>)</span>
 
 <span class='fu'>succeed</span><span class='op'>(</span>message <span class='op'>=</span> <span class='st'>"Success has been forced"</span>, info <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></pre>
 
@@ -216,6 +220,13 @@ implemented.</p>
       <th>info</th>
       <td><p>Character vector continuing additional information. Included
 for backward compatibility only and new expectations should not use it.</p></td>
+    </tr>
+    <tr>
+      <th>trace_env</th>
+      <td><p>If <code><a href='https://rdrr.io/r/base/NULL.html'>is.null(trace)</a></code>, this is used to automatically
+generate a traceback running from <code>test_code()</code>/<code><a href='test_file.html'>test_file()</a></code> to
+<code>trace_env</code>. You'll generally only need to set this if you're wrapping
+an expectation inside another function.</p></td>
     </tr>
     </table>
 
