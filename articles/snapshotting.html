@@ -185,29 +185,40 @@
   <span class="fu"><a href="../reference/equality-expectations.html">expect_equal</a></span><span class="op">(</span><span class="fu">bullets</span><span class="op">(</span><span class="st">"a"</span>, id <span class="op">=</span> <span class="st">"x"</span><span class="op">)</span>, <span class="st">"&lt;ul id=\"x\"&gt;\n  &lt;li&gt;a&lt;/li&gt;\n&lt;/ul&gt;\n"</span><span class="op">)</span>
 <span class="op">}</span><span class="op">)</span>
 <span class="co">#&gt; Test passed 🥇</span></code></pre></div>
-<p>This is a great place to use snapshot testing. To do this we make two changes to our code: we use <code><a href="../reference/expect_snapshot.html">expect_snapshot_output()</a></code> instead of <code><a href="../reference/equality-expectations.html">expect_equal()</a></code>, and wrap the call in <code><a href="https://rdrr.io/r/base/cat.html">cat()</a></code> (to avoid <code>[1]</code> in the output, like in my first interactive example).</p>
+<p>This is a great place to use snapshot testing. To do this we make two changes to our code:</p>
+<ul>
+<li><p>We use <code><a href="../reference/expect_snapshot.html">expect_snapshot()</a></code> instead of <code><a href="../reference/equality-expectations.html">expect_equal()</a></code></p></li>
+<li><p>We wrap the call in <code><a href="https://rdrr.io/r/base/cat.html">cat()</a></code> (to avoid <code>[1]</code> in the output, like in my first interactive example).</p></li>
+</ul>
+<p>This yields the following test:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/test_that.html">test_that</a></span><span class="op">(</span><span class="st">"bullets"</span>, <span class="op">{</span>
-  <span class="fu"><a href="../reference/expect_snapshot.html">expect_snapshot_output</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="fu">bullets</span><span class="op">(</span><span class="st">"a"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
-  <span class="fu"><a href="../reference/expect_snapshot.html">expect_snapshot_output</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="fu">bullets</span><span class="op">(</span><span class="st">"a"</span>, <span class="st">"b"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
+  <span class="fu"><a href="../reference/expect_snapshot.html">expect_snapshot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="fu">bullets</span><span class="op">(</span><span class="st">"a"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
+  <span class="fu"><a href="../reference/expect_snapshot.html">expect_snapshot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="fu">bullets</span><span class="op">(</span><span class="st">"a"</span>, <span class="st">"b"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
 <span class="op">}</span><span class="op">)</span>
 <span class="co">#&gt; ── Warning (&lt;text&gt;:2:3): bullets ───────────────────────────────────────────────</span>
 <span class="co">#&gt; Adding new snapshot:</span>
-<span class="co">#&gt; &lt;ul&gt;</span>
-<span class="co">#&gt;   &lt;li&gt;a&lt;/li&gt;</span>
-<span class="co">#&gt; &lt;/ul&gt;</span>
+<span class="co">#&gt; Code</span>
+<span class="co">#&gt;   cat(bullets("a"))</span>
+<span class="co">#&gt; Output</span>
+<span class="co">#&gt;   &lt;ul&gt;</span>
+<span class="co">#&gt;     &lt;li&gt;a&lt;/li&gt;</span>
+<span class="co">#&gt;   &lt;/ul&gt;</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; ── Warning (&lt;text&gt;:3:3): bullets ───────────────────────────────────────────────</span>
 <span class="co">#&gt; Adding new snapshot:</span>
-<span class="co">#&gt; &lt;ul id="b"&gt;</span>
-<span class="co">#&gt;   &lt;li&gt;a&lt;/li&gt;</span>
-<span class="co">#&gt; &lt;/ul&gt;</span></code></pre></div>
+<span class="co">#&gt; Code</span>
+<span class="co">#&gt;   cat(bullets("a", "b"))</span>
+<span class="co">#&gt; Output</span>
+<span class="co">#&gt;   &lt;ul id="b"&gt;</span>
+<span class="co">#&gt;     &lt;li&gt;a&lt;/li&gt;</span>
+<span class="co">#&gt;   &lt;/ul&gt;</span></code></pre></div>
 <p>When we run the test for the first time, it automatically generates reference output, and prints it, so that you can visually confirm that it’s correct. The output is automatically saved in <code>_snaps/{name}.R</code>. The name of the snapshot matches your test file name — e.g. if your test is <code>test-pizza.R</code> then your snapshot will be saved in <code>test/testthat/_snaps/pizza.md</code>. As the file name suggests, this is a markdown file, which I’ll explain shortly.</p>
 <p>If you run the test again, it’ll succeed:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/test_that.html">test_that</a></span><span class="op">(</span><span class="st">"bullets"</span>, <span class="op">{</span>
-  <span class="fu"><a href="../reference/expect_snapshot.html">expect_snapshot_output</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="fu">bullets</span><span class="op">(</span><span class="st">"a"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
-  <span class="fu"><a href="../reference/expect_snapshot.html">expect_snapshot_output</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="fu">bullets</span><span class="op">(</span><span class="st">"a"</span>, <span class="st">"b"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
+  <span class="fu"><a href="../reference/expect_snapshot.html">expect_snapshot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="fu">bullets</span><span class="op">(</span><span class="st">"a"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
+  <span class="fu"><a href="../reference/expect_snapshot.html">expect_snapshot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="fu">bullets</span><span class="op">(</span><span class="st">"a"</span>, <span class="st">"b"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
 <span class="op">}</span><span class="op">)</span>
 <span class="co">#&gt; Test passed 🎊</span></code></pre></div>
 <p>But if you change the underlying code, say to tweak the indenting, the test will fail:</p>
@@ -220,22 +231,26 @@
   <span class="op">)</span>
 <span class="op">}</span>
 <span class="fu"><a href="../reference/test_that.html">test_that</a></span><span class="op">(</span><span class="st">"bullets"</span>, <span class="op">{</span>
-  <span class="fu"><a href="../reference/expect_snapshot.html">expect_snapshot_output</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="fu">bullets</span><span class="op">(</span><span class="st">"a"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
-  <span class="fu"><a href="../reference/expect_snapshot.html">expect_snapshot_output</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="fu">bullets</span><span class="op">(</span><span class="st">"a"</span>, <span class="st">"b"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
+  <span class="fu"><a href="../reference/expect_snapshot.html">expect_snapshot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="fu">bullets</span><span class="op">(</span><span class="st">"a"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
+  <span class="fu"><a href="../reference/expect_snapshot.html">expect_snapshot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="fu">bullets</span><span class="op">(</span><span class="st">"a"</span>, <span class="st">"b"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
 <span class="op">}</span><span class="op">)</span>
 <span class="co">#&gt; ── Failure (&lt;text&gt;:9:3): bullets ───────────────────────────────────────────────</span>
-<span class="co">#&gt; Snapshot of `cat(bullets("a"))` has changed:</span>
-<span class="co">#&gt; `old`: "&lt;ul&gt;" "  &lt;li&gt;a&lt;/li&gt;" "&lt;/ul&gt;"</span>
-<span class="co">#&gt; `new`: "&lt;ul&gt;" "&lt;li&gt;a&lt;/li&gt;"   "&lt;/ul&gt;"</span>
+<span class="co">#&gt; Snapshot of code has changed:</span>
+<span class="co">#&gt; `old[2:6]`: "  cat(bullets(\"a\"))" "Output" "  &lt;ul&gt;" "    &lt;li&gt;a&lt;/li&gt;" "  &lt;/ul&gt;"</span>
+<span class="co">#&gt; `new[2:6]`: "  cat(bullets(\"a\"))" "Output" "  &lt;ul&gt;" "  &lt;li&gt;a&lt;/li&gt;"   "  &lt;/ul&gt;"</span>
 <span class="co">#&gt; </span>
-<span class="co">#&gt; Run `snapshot_accept('pizza')` if this is a deliberate change</span>
+<span class="co">#&gt; Run `snapshot_accept('snapshotting.Rmd')` if this is a deliberate change</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; ── Failure (&lt;text&gt;:10:3): bullets ──────────────────────────────────────────────</span>
-<span class="co">#&gt; Snapshot of `cat(bullets("a", "b"))` has changed:</span>
-<span class="co">#&gt; `old`: "&lt;ul id=\"b\"&gt;" "  &lt;li&gt;a&lt;/li&gt;" "&lt;/ul&gt;"</span>
-<span class="co">#&gt; `new`: "&lt;ul id=\"b\"&gt;" "&lt;li&gt;a&lt;/li&gt;"   "&lt;/ul&gt;"</span>
+<span class="co">#&gt; Snapshot of code has changed:</span>
+<span class="co">#&gt;     old                            | new                               </span>
+<span class="co">#&gt; [2] "  cat(bullets(\"a\", \"b\"))" | "  cat(bullets(\"a\", \"b\"))" [2]</span>
+<span class="co">#&gt; [3] "Output"                       | "Output"                       [3]</span>
+<span class="co">#&gt; [4] "  &lt;ul id=\"b\"&gt;"              | "  &lt;ul id=\"b\"&gt;"              [4]</span>
+<span class="co">#&gt; [5] "    &lt;li&gt;a&lt;/li&gt;"               - "  &lt;li&gt;a&lt;/li&gt;"                 [5]</span>
+<span class="co">#&gt; [6] "  &lt;/ul&gt;"                      | "  &lt;/ul&gt;"                      [6]</span>
 <span class="co">#&gt; </span>
-<span class="co">#&gt; Run `snapshot_accept('pizza')` if this is a deliberate change</span></code></pre></div>
+<span class="co">#&gt; Run `snapshot_accept('snapshotting.Rmd')` if this is a deliberate change</span></code></pre></div>
 <p>If this is a deliberate change, you can follow the advice in the message and update the snapshots for that file by running <code><a href="../reference/snapshot_accept.html">snapshot_accept("pizza")</a></code>; otherwise you can fix the bug and your tests will pass once more. (You can also accept snapshot for all files with <code><a href="../reference/snapshot_accept.html">snapshot_accept()</a></code>).</p>
 <div id="snapshot-format" class="section level3">
 <h3 class="hasAnchor">
@@ -261,14 +276,80 @@
 <p>Because the snapshot output uses the name of the current test file and the current test, snapshot expectations don’t really work when run interactively at the console. Since they can’t automatically find the reference output, they instead just print the current value for manual inspection.</p>
 </div>
 </div>
+<div id="other-types-of-output" class="section level2">
+<h2 class="hasAnchor">
+<a href="#other-types-of-output" class="anchor"></a>Other types of output</h2>
+<p>So far we’ve focussed on snapshot tests for output printed to the console. But <code><a href="../reference/expect_snapshot.html">expect_snapshot()</a></code> also captures messages, errors, and warnings. The following function generates a some output, a message, and a warning:</p>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">f</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="op">)</span> <span class="op">{</span>
+  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="st">"Hello"</span><span class="op">)</span>
+  <span class="fu"><a href="https://rdrr.io/r/base/message.html">message</a></span><span class="op">(</span><span class="st">"Hi!"</span><span class="op">)</span>
+  <span class="kw"><a href="https://rdrr.io/r/base/warning.html">warning</a></span><span class="op">(</span><span class="st">"How are you?"</span><span class="op">)</span>
+<span class="op">}</span></code></pre></div>
+<p>And <code><a href="../reference/expect_snapshot.html">expect_snapshot()</a></code> captures them all:</p>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/test_that.html">test_that</a></span><span class="op">(</span><span class="st">"f() makes lots of noice"</span>, <span class="op">{</span>
+  <span class="fu"><a href="../reference/expect_snapshot.html">expect_snapshot</a></span><span class="op">(</span><span class="fu">f</span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
+<span class="op">}</span><span class="op">)</span>
+<span class="co">#&gt; ── Warning (&lt;text&gt;:2:3): f() makes lots of noice ───────────────────────────────</span>
+<span class="co">#&gt; Adding new snapshot:</span>
+<span class="co">#&gt; Code</span>
+<span class="co">#&gt;   f()</span>
+<span class="co">#&gt; Output</span>
+<span class="co">#&gt;   [1] "Hello"</span>
+<span class="co">#&gt; Message &lt;simpleMessage&gt;</span>
+<span class="co">#&gt;   Hi!</span>
+<span class="co">#&gt; Warning &lt;simpleWarning&gt;</span>
+<span class="co">#&gt;   How are you?</span></code></pre></div>
+<p>Capturing errors is <em>slightly</em> more difficult because <code><a href="../reference/expect_snapshot.html">expect_snapshot()</a></code> will fail when there’s an error:</p>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/test_that.html">test_that</a></span><span class="op">(</span><span class="st">"you can't add a number and a letter"</span>, <span class="op">{</span>
+  <span class="fu"><a href="../reference/expect_snapshot.html">expect_snapshot</a></span><span class="op">(</span><span class="fl">1</span> <span class="op">+</span> <span class="st">"a"</span><span class="op">)</span>
+<span class="op">}</span><span class="op">)</span>
+<span class="co">#&gt; ── Failure (&lt;text&gt;:2:3): you can't add a number and a letter ───────────────────</span>
+<span class="co">#&gt; `1 + "a"` threw an unexpected error.</span>
+<span class="co">#&gt; Message: non-numeric argument to binary operator</span>
+<span class="co">#&gt; Class:   simpleError/error/condition</span></code></pre></div>
+<p>This is a safety valve that ensures that you don’t accidentally write broken code. To deliberately snapshot an error, you’ll have to specifically request it with <code>error = TRUE</code>:</p>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/test_that.html">test_that</a></span><span class="op">(</span><span class="st">"you can't add a number and a letter"</span>, <span class="op">{</span>
+  <span class="fu"><a href="../reference/expect_snapshot.html">expect_snapshot</a></span><span class="op">(</span><span class="fl">1</span> <span class="op">+</span> <span class="st">"a"</span>, error <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
+<span class="op">}</span><span class="op">)</span>
+<span class="co">#&gt; ── Warning (&lt;text&gt;:2:3): you can't add a number and a letter ───────────────────</span>
+<span class="co">#&gt; Adding new snapshot:</span>
+<span class="co">#&gt; Code</span>
+<span class="co">#&gt;   1 + "a"</span>
+<span class="co">#&gt; Error &lt;simpleError&gt;</span>
+<span class="co">#&gt;   non-numeric argument to binary operator</span></code></pre></div>
+<p>When the code gets longer, I like to put <code>error = TRUE</code> up front so it’s a little more obvious:</p>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/test_that.html">test_that</a></span><span class="op">(</span><span class="st">"you can't add weird thngs"</span>, <span class="op">{</span>
+  <span class="fu"><a href="../reference/expect_snapshot.html">expect_snapshot</a></span><span class="op">(</span>error <span class="op">=</span> <span class="cn">TRUE</span>, <span class="op">{</span>
+    <span class="fl">1</span> <span class="op">+</span> <span class="st">"a"</span>
+    <span class="va">mtcars</span> <span class="op">+</span> <span class="va">iris</span>
+    <span class="va">mean</span> <span class="op">+</span> <span class="va">sum</span>
+  <span class="op">}</span><span class="op">)</span>
+<span class="op">}</span><span class="op">)</span>
+<span class="co">#&gt; ── Warning (&lt;text&gt;:2:3): you can't add weird thngs ─────────────────────────────</span>
+<span class="co">#&gt; Adding new snapshot:</span>
+<span class="co">#&gt; Code</span>
+<span class="co">#&gt;   1 + "a"</span>
+<span class="co">#&gt; Error &lt;simpleError&gt;</span>
+<span class="co">#&gt;   non-numeric argument to binary operator</span>
+<span class="co">#&gt; Code</span>
+<span class="co">#&gt;   mtcars + iris</span>
+<span class="co">#&gt; Error &lt;simpleError&gt;</span>
+<span class="co">#&gt;   '+' only defined for equally-sized data frames</span>
+<span class="co">#&gt; Code</span>
+<span class="co">#&gt;   mean + sum</span>
+<span class="co">#&gt; Error &lt;simpleError&gt;</span>
+<span class="co">#&gt;   non-numeric argument to binary operator</span></code></pre></div>
+</div>
 <div id="other-types-of-snapshot" class="section level2">
 <h2 class="hasAnchor">
 <a href="#other-types-of-snapshot" class="anchor"></a>Other types of snapshot</h2>
-<p><code><a href="../reference/expect_snapshot.html">expect_snapshot_output()</a></code> is probably the most commonly used snapshot function but there are a few other variants that are useful in other case.</p>
-<ul>
-<li><p><code><a href="../reference/expect_snapshot.html">expect_snapshot_error()</a></code> works like <code><a href="../reference/expect_snapshot.html">expect_snapshot_output()</a></code> but captures an error message, rather than console output.</p></li>
-<li><p><code><a href="../reference/expect_snapshot.html">expect_snapshot_value()</a></code> checks that the value of any R object stays the same. It has a number of serialisation approaches built-in that offer a tradeoff between accuracy and human readability.</p></li>
-</ul>
+<p><code><a href="../reference/expect_snapshot.html">expect_snapshot()</a></code> is the most used snapshot function because it records everything: the code you run, printed output, messages, warnings, and errors. But sometimes you just want to capture the output or errors in which you might want to use <code><a href="../reference/expect_snapshot.html">expect_snapshot_output()</a></code> or <code><a href="../reference/expect_snapshot.html">expect_snapshot_error()</a></code>.</p>
+<p>Or rather than caring about side-effects, you may want to check that the value of an R object stays the same. In this case, you can use <code><a href="../reference/expect_snapshot.html">expect_snapshot_value()</a></code> which offers a number of serialisation approaches that provide a tradeoff between accuracy and human readability.</p>
 </div>
 <div id="whole-file-snapshotting" class="section level2">
 <h2 class="hasAnchor">
