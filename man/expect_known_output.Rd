@@ -86,7 +86,7 @@ synchronised back to the source package.
 }
 \section{3rd edition}{
 
-\ifelse{html}{\figure{lifecycle-deprecated.svg}{options: alt='Deprecated lifecycle'}}{\strong{Deprecated}}
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}}
 
 \code{expect_known_output()} and friends are deprecated in the 3rd edition;
 please use \code{\link[=expect_snapshot_output]{expect_snapshot_output()}} and friends instead.

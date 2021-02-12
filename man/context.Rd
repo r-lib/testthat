@@ -10,7 +10,7 @@ context(desc)
 \item{desc}{description of context.  Should start with a capital letter.}
 }
 \description{
-\ifelse{html}{\out{<a href='https://www.tidyverse.org/lifecycle/#superseded'><img src='figures/lifecycle-superseded.svg' alt='Superseded lifecycle'></a>}}{\strong{Superseded}}
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#superseded}{\figure{lifecycle-superseded.svg}{options: alt='[Superseded]'}}}{\strong{[Superseded]}}
 
 Use of \code{context()} is no longer recommended. Instead omit it, and messages
 will use the name of the file instead. This ensures that the context and
@@ -22,7 +22,7 @@ in a single file if you so choose.
 }
 \section{3rd edition}{
 
-\ifelse{html}{\figure{lifecycle-deprecated.svg}{options: alt='Deprecated lifecycle'}}{\strong{Deprecated}}
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}}
 
 \code{context()} is deprecated in the third edition, and the equivalent
 information is instead recorded by the test file name.

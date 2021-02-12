@@ -12,7 +12,7 @@ is_informative_error(x, ...)
 \item{...}{These dots are for future extensions and must be empty.}
 }
 \description{
-\ifelse{html}{\figure{lifecycle-deprecated.svg}{options: alt='Deprecated lifecycle'}}{\strong{Deprecated}}
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}}
 
 \code{is_informative_error()} is a generic predicate that indicates
 whether testthat users should explicitly test for an error
