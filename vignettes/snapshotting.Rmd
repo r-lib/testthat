@@ -38,7 +38,7 @@ library(testthat)
 ```{r include = FALSE}
 snapper <- testthat:::SnapshotReporter$new()
 options(testthat.snapshotter = snapper)
-snapper$start_file("pizza", "test")
+snapper$start_file("snapshotting.Rmd", "test")
 ```
 
 ## Basic workflow
@@ -87,7 +87,7 @@ test_that("bullets", {
 ```{r, include = FALSE}
 # Reset snapshot test
 snapper$end_file()
-snapper$start_file("pizza", "test")
+snapper$start_file("snapshotting.Rmd", "test")
 ```
 
 When we run the test for the first time, it automatically generates reference output, and prints it, so that you can visually confirm that it's correct.
@@ -107,7 +107,7 @@ test_that("bullets", {
 ```{r, include = FALSE}
 # Reset snapshot test
 snapper$end_file()
-snapper$start_file("pizza", "test")
+snapper$start_file("snapshotting.Rmd", "test")
 ```
 
 But if you change the underlying code, say to tweak the indenting, the test will fail:
@@ -162,18 +162,36 @@ Since they can't automatically find the reference output, they instead just prin
 
 ## Other types of output
 
-### Messages and warnings
+So far we've focussed on snapshot tests for output printed to the console.
+But `expect_snapshot()` also captures messages, errors, and warnings.
+The following function generates a some output, a message, and a warning:
 
-### Errors
+```{r}
+f <- function() {
+  print("Hello")
+  message("Hi!")
+  warning("How are you?")
+}
+```
 
-You can also use `expect_snapshot()` to check that errors produce the output that you expect --- but you'll need to set the `error = TRUE` argument.
-This is a safety valve that ensures that you don't accidentally write code that errors; you have to specifically opt into it.
+And `expect_snapshot()` captures them all:
+
+```{r}
+test_that("f() makes lots of noice", {
+  expect_snapshot(f())
+})
+```
+
+Capturing errors is *slightly* more difficult because `expect_snapshot()` will fail when there's an error:
 
 ```{r}
 test_that("you can't add a number and a letter", {
   expect_snapshot(1 + "a")
 })
 ```
+
+This is a safety valve that ensures that you don't accidentally write broken code.
+To deliberately snapshot an error, you'll have to specifically request it with `error = TRUE`:
 
 ```{r}
 test_that("you can't add a number and a letter", {
@@ -192,40 +210,6 @@ test_that("you can't add weird thngs", {
   })
 })
 ```
-
-### Advanced snapshotting
-
-If you are making heavy use of [custom conditions](https://adv-r.hadley.nz/conditions.html#custom-conditions), you may want to check that the error both generates a useful message for humans and has the class that you expect:
-
-```{r}
-abort_bad_argument <- function(arg, must, not = NULL) {
-  msg <- glue::glue("`{arg}` must {must}")
-  if (!is.null(not)) {
-    not <- typeof(not)
-    msg <- glue::glue("{msg}; not {not}.")
-  }
-  
-  abort("error_bad_argument", 
-    message = msg, 
-    arg = arg, 
-    must = must, 
-    not = not
-  )
-}
-```
-
-A convenient way to test such code is to place use `expect_error()` inside of `expect_snapshot()`:
-
-```{r}
-test_that("custom condition captures correct corrolaries", {
-  expect_snapshot({
-    (expect_error(abort_bad_argument("x", "be an integer")))
-  })
-})
-```
-
-Here we take advantage of the fact that `expect_error()` returns the captured condition invisibly, and we can force it to be visible by wrapping in `()`.
-Th
 
 ## Other types of snapshot
 
