@@ -42,6 +42,7 @@ test_that("updates by default", {
 })
 
 test_that("works in non-UTF-8 locale", {
+  skip_on_cran()
   text <- c("\u00fc", "\u2a5d", "\u6211", "\u0438")
   file <- tempfile()
   write_lines(text, file)
