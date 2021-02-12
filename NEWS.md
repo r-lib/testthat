@@ -1,4 +1,4 @@
-# testthat (development version)
+# testthat 3.0.2
 
 * Failing expectations now include a backtrace when they're not called directly
   from within `test_that()` but are instead wrapped in some helper function 
