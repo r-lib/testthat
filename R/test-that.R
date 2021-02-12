@@ -186,6 +186,8 @@ test_code <- function(test, code, env = test_env(), reporter = get_reporter(), s
   old <- options(rlang_trace_top_env = test_env)[[1]]
   on.exit(options(rlang_trace_top_env = old), add = TRUE)
 
+  withr::local_options(testthat_topenv = test_env)
+
   tryCatch(
     withCallingHandlers(
       {

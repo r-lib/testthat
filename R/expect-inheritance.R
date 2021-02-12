@@ -74,8 +74,7 @@ expect_s3_class <- function(object, class, exact = FALSE) {
   } else if (is.character(class)) {
     if (!isS3(act$val)) {
       fail(sprintf("%s is not an S3 object", act$lab))
-    }
-    if (exact) {
+    } else if (exact) {
       expect(
         identical(class(act$val), class),
         sprintf("%s has class %s, not %s.", act$lab, act$class, exp_lab)
@@ -108,11 +107,12 @@ expect_s4_class <- function(object, class) {
   } else if (is.character(class)) {
     if (!isS4(act$val)) {
       fail(sprintf("%s is not an S4 object", act$lab))
+    } else {
+      expect(
+        methods::is(act$val, class),
+        sprintf("%s inherits from %s not %s.", act$lab, act_val_lab, exp_lab)
+      )
     }
-    expect(
-      methods::is(act$val, class),
-      sprintf("%s inherits from %s not %s.", act$lab, act_val_lab, exp_lab)
-    )
   } else {
     abort("`class` must be a NA or a character vector")
   }
