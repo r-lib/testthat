@@ -10,7 +10,7 @@ expect(
   info = NULL,
   srcref = NULL,
   trace = NULL,
-  trace_env = caller_env(1)
+  trace_env = caller_env()
 )
 }
 \arguments{

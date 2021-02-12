@@ -39,7 +39,7 @@ expect <- function(ok, failure_message,
                    info = NULL,
                    srcref = NULL,
                    trace = NULL,
-                   trace_env = caller_env(1)) {
+                   trace_env = caller_env()) {
   type <- if (ok) "success" else "failure"
 
   # Preserve existing API which appear to be used in package test code

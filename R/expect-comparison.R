@@ -37,7 +37,7 @@ expect_compare <- function(operator = c("<", "<=", ">", ">="), act, exp) {
   expect(
     if (!is.na(cmp)) cmp else FALSE,
     sprintf("%s is %s %s. Difference: %.3g", act$lab, msg, exp$lab, act$val - exp$val),
-    trace_env = caller_env(1)
+    trace_env = caller_env()
   )
   invisible(act$val)
 }

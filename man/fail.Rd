@@ -8,7 +8,7 @@
 fail(
   message = "Failure has been forced",
   info = NULL,
-  trace_env = caller_env(1)
+  trace_env = caller_env()
 )
 
 succeed(message = "Success has been forced", info = NULL)
