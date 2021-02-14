@@ -17,6 +17,10 @@
 * `expect_s3_class()` and `expect_s4_class()` format class names in a less
   confusing way (#1322).
 
+* `expect_snapshot()` collapses multiple adjacent headings of the same, so
+  that, e.g., if you have multiple lines of code in a row, you'll only see
+  one "Code:" heading (#1311).
+
 # testthat 3.0.1
 
 * New `testthat.progress.verbose_skips` option. Set to `FALSE` to stop
