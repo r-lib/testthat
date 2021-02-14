@@ -205,6 +205,7 @@
 <li><p><code>CheckReporter</code> now only records warnings when not on CRAN. Otherwise failed CRAN revdep checks tend to be cluttered up with warnings (<a href='https://github.com/r-lib/testthat/issues/1300'>#1300</a>). It automatically cleans up <code>testthat-problems.rds</code> left over from previous runs if the latest run is succesful (<a href='https://github.com/r-lib/testthat/issues/1314'>#1314</a>).</p></li>
 <li><p><code><a href="../reference/inheritance-expectations.html">expect_s3_class()</a></code> and <code><a href="../reference/inheritance-expectations.html">expect_s4_class()</a></code> can now check that an object <em>isn’t</em> an S3 or S4 object by supplying <code>NA</code> to the second argument (<a href='https://github.com/r-lib/testthat/issues/1321'>#1321</a>).</p></li>
 <li><p><code><a href="../reference/inheritance-expectations.html">expect_s3_class()</a></code> and <code><a href="../reference/inheritance-expectations.html">expect_s4_class()</a></code> format class names in a less confusing way (<a href='https://github.com/r-lib/testthat/issues/1322'>#1322</a>).</p></li>
+<li><p><code><a href="../reference/expect_snapshot.html">expect_snapshot()</a></code> collapses multiple adjacent headings of the same, so that, e.g., if you have multiple lines of code in a row, you’ll only see one “Code:” heading (<a href='https://github.com/r-lib/testthat/issues/1311'>#1311</a>).</p></li>
 </ul>
 </div>
     <div id="testthat-301" class="section level1">
