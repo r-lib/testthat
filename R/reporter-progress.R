@@ -383,7 +383,7 @@ ParallelProgressReporter <- R6::R6Class("ParallelProgressReporter",
         self$files[[file]] <- list(
           issues = Stack$new(),
           n_fail = 0L,
-          n_skip_ = 0L,
+          n_skip = 0L,
           n_warn = 0L,
           n_ok = 0L,
           name = context_name(file),
