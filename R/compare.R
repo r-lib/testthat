@@ -76,7 +76,7 @@ same_class <- function(x, y) {
   identical(class(x), class(y))
 }
 diff_class <- function(x, y) {
-  difference(fmt = "Classes differ: %s is not %s", klass(x), klass(y))
+  difference(fmt = "Classes differ: %s is not %s", format_class(class(x)), format_class(class(y)))
 }
 
 same_attr <- function(x, y) {

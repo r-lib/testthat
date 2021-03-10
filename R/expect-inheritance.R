@@ -8,13 +8,17 @@
 #' * `expect_type(x, type)` checks that `typeof(x)` is `type`.
 #' * `expect_s3_class(x, class)` checks that `x` is an S3 object that
 #'   [inherits()] from `class`
+#' * `expect_s3_class(x, NA)` checks that `x` isn't an S3 object.
 #' * `expect_s4_class(x, class)` checks that `x` is an S4 object that
 #'   [is()] `class`.
+#' * `expect_s4_class(x, NA)` checks that `x` isn't an S4 object.
 #'
 #' See [expect_vector()] for testing properties of objects created by vctrs.
 #'
 #' @param type String giving base type (as returned by [typeof()]).
-#' @param class character vector of class names
+#' @param class Either a character vector of class names, or
+#'  for `expect_s3_class()` and `expect_s4_class()`, an `NA` to assert
+#'  that `object` isn't an S3 or S4 object.
 #' @inheritParams expect_that
 #' @family expectations
 #' @examples
@@ -47,7 +51,7 @@ expect_type <- function(object, type) {
 
   expect(
     identical(act_type, type),
-    sprintf("%s has type `%s`, not `%s`.", act$lab, act_type, type)
+    sprintf("%s has type %s, not %s.", act$lab, format_class(act_type), format_class(type))
   )
   invisible(act$val)
 }
@@ -58,47 +62,61 @@ expect_type <- function(object, type) {
 #'   from `class`. If `TRUE`, checks that object has a class that's identical
 #'   to `class`.
 expect_s3_class <- function(object, class, exact = FALSE) {
-  stopifnot(is.character(class))
-
   act <- quasi_label(enquo(object), arg = "object")
-  act$class <- klass(act$val)
-  exp_lab <- paste(class, collapse = "/")
+  act$class <- format_class(class(act$val))
+  exp_lab <- format_class(class)
 
-  if (!isS3(act$val)) {
-    fail(sprintf("%s is not an S3 object", act$lab))
-  }
-
-  if (exact) {
+  if (identical(class, NA)) {
     expect(
-      identical(class(act$val), class),
-      sprintf("%s has class `%s`, not `%s`.", act$lab, act$class, exp_lab)
+      isS3(object) == !is.na(class),
+      sprintf("%s is an S3 object", act$lab)
     )
+  } else if (is.character(class)) {
+    if (!isS3(act$val)) {
+      fail(sprintf("%s is not an S3 object", act$lab))
+    }
+    if (exact) {
+      expect(
+        identical(class(act$val), class),
+        sprintf("%s has class %s, not %s.", act$lab, act$class, exp_lab)
+      )
+    } else {
+      expect(
+        inherits(act$val, class),
+        sprintf("%s inherits from %s not %s.", act$lab, act$class, exp_lab)
+      )
+    }
   } else {
-    expect(
-      inherits(act$val, class),
-      sprintf("%s inherits from `%s` not `%s`.", act$lab, act$class, exp_lab)
-    )
+    abort("`class` must be a NA or a character vector")
   }
+
   invisible(act$val)
 }
 
 #' @export
 #' @rdname inheritance-expectations
 expect_s4_class <- function(object, class) {
-  stopifnot(is.character(class))
-
   act <- quasi_label(enquo(object), arg = "object")
-  act_val_lab <- paste(methods::is(object), collapse = "/")
-  exp_lab <- paste(class, collapse = "/")
+  act_val_lab <- format_class(methods::is(object))
+  exp_lab <- format_class(class)
 
-  if (!isS4(act$val)) {
-    fail(sprintf("%s is not an S4 object", act$lab))
+  if (identical(class, NA)) {
+    expect(
+      isS4(object) == !is.na(class),
+      sprintf("%s is an S4 object", act$lab)
+    )
+  } else if (is.character(class)) {
+    if (!isS4(act$val)) {
+      fail(sprintf("%s is not an S4 object", act$lab))
+    }
+    expect(
+      methods::is(act$val, class),
+      sprintf("%s inherits from %s not %s.", act$lab, act_val_lab, exp_lab)
+    )
+  } else {
+    abort("`class` must be a NA or a character vector")
   }
 
-  expect(
-    methods::is(act$val, class),
-    sprintf("%s inherits from `%s` not `%s`.", act$lab, act_val_lab, exp_lab)
-  )
   invisible(act$val)
 }
 
@@ -130,8 +148,8 @@ expect_is <- function(object, class, info = NULL, label = NULL) {
 
 
   act <- quasi_label(enquo(object), label, arg = "object")
-  act$class <- klass(act$val)
-  exp_lab <- paste(class, collapse = "/")
+  act$class <- format_class(class(act$val))
+  exp_lab <- format_class(class(class))
 
   expect(
     inherits(act$val, class),
@@ -139,4 +157,9 @@ expect_is <- function(object, class, info = NULL, label = NULL) {
     info = info
   )
   invisible(act$val)
+}
+
+
+format_class <- function(x) {
+  paste0(encodeString(x, quote = "'"), collapse = "/")
 }
