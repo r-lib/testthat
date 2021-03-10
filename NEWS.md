@@ -17,6 +17,16 @@ Learn more in `vignette("third-edition")`.
    but while writing it uncovered some bugs in the existing comparison
    code.
    
+* `expect_error()`, `expect_warning()`, `expect_message()`, and 
+  `expect_condition()` now all use the same underlying logic: they
+  capture the first condition that matches `class`/`regexp` and
+  allow anything else to bubble up (#998/#1052). They also warn if 
+  there are unexpected arguments that are never used.
+
+* The `all` argument to `expect_message()` and `expect_warning()` is now
+  deprecated. It was never a particularly good idea or well documented, 
+  and is now superseded by the new condition capturing behaviour.
+
 * `expect_equivalent()`, `expect_reference()`, `expect_is()` and 
   `expect_that()` are deprecated.
 
@@ -31,44 +41,24 @@ Learn more in `vignette("third-edition")`.
   and `expect_equal_to_reference()` are all deprecated in favour of
   `expect_snapshot_output()` and `expect_snapshot_value()`.
   
+* `test_that()` now sets a number of options and env vars to make output as 
+  reproducible as possible (#1044). Many of these options were previously 
+  set in various places (in `devtools::test()`, `test_dir()`, `test_file()`,
+  or `verify_output()`) but they have now been centralised. You can use in
+  your own code, or when debugging tests interactively with
+  `local_test_context()`.
+
 * `with_mock()` and `local_mock()` are deprecated; please use the mockr
   or mockery packages instead (#1099).
 
-## Expectations
+## Snapshot testing
 
-* `expect_true()`, `expect_false()`, and `expect_null()` now use waldo to
-  produce more informative failures.
+New family of snapshot expectations (`expect_snapshot()`, `expect_snapshot_output()`, `expect_snapshot_error()`, and `expect_snapshot_value()`) provide "snapshot" tests, where the expected results are stored in separate files in `test/testthat/_snaps`. They're useful whenever it's painful to store expected results directly in the test files.
 
-* `expect_error()` no longer encourages you to use `class`. This advice 
-  one type of fragility at the expense of creating a different type (#1013).
+`expect_snapshot_file()` along with `snapshot_review()` help snapshot
+more complex data, with initial support for text files, images, and data frames (#1050).
 
-* `expect_error()`, `expect_warning()`, `expect_message()`, and 
-  `expect_condition()` now all use the same underlying logic: they
-  capture the first condition that matches `class`/`regexp` and
-  allow anything else to bubble up (#998/#1052). They also warn if 
-  there are unexpected arguments that are never used.
-
-* The `all` argument to `expect_message()` and `expect_warning()` is now
-  deprecated. It was never a particularly good idea or well documented, 
-  and is now superseded by the new condition capturing behaviour.
-
-* New family of snapshot expectations (`expect_snapshot_output()`, 
-  `expect_snapshot_value()` and more), as documented in 
-  `vignette("snapshotting")`. These are only available in the 3rd edition.
-  
-    `expect_snapshot_file()` along with `snapshot_review()` help snapshot
-    more complex data, with initial support for images and data frames (#1050).
-  
-
-## Fixures
-
-* New `vignette("test-fixtures")` describes test fixtures; i.e. how to 
-  temporarily and cleanly change global state in order to test parts of
-  your code that otherwise would be hard to run (#1042). `setup()` and 
-  `teardown()` are superseded in favour of test fixtures.
-
-* New `teardown_env()` for use with `withr::defer()`. This allows you to
-  run code after all other tests have been run.
+See `vignette("snapshotting")` for more details.
 
 ## Reporters
 
@@ -107,6 +97,16 @@ Learn more in `vignette("third-edition")`.
 * Catch C++ tests now provide detailed results for each test. 
   To upgrade existing code, re-run `testthat::use_catch()` (#1008).
 
+## Fixures
+
+* New `vignette("test-fixtures")` describes test fixtures; i.e. how to 
+  temporarily and cleanly change global state in order to test parts of
+  your code that otherwise would be hard to run (#1042). `setup()` and 
+  `teardown()` are superseded in favour of test fixtures.
+
+* New `teardown_env()` for use with `withr::defer()`. This allows you to
+  run code after all other tests have been run.
+
 ## Skips
 
 * New `vignette("skipping")` gives more general information on skipping
@@ -122,12 +122,7 @@ Learn more in `vignette("third-edition")`.
   instead it produces a more informative summary of all failures, errors,
   warnings, and skips that occurred inside the test.
 
-* `test_that()` now sets a number of options and env vars to make output as 
-  reproducible as possible (#1044). Many of these options were previously 
-  set in various places (in `devtools::test()`, `test_dir()`, `test_file()`,
-  or `verify_output()`) but they have now been centralised. You can use in
-  your own code, or when debugging tests interactively with
-  `local_test_context()`.
+* `test_that()` now errors if `desc` is not a string (#1161).
   
 * `test_file()` now runs helper, setup, and teardown code, and has the
   same arguments as `test_dir()` (#968). Long deprecated `encoding` argument 
@@ -156,8 +151,14 @@ Learn more in `vignette("third-edition")`.
 * `context_start_file()` is now exported for external reporters (#983, #1082).
   It now only strips first instance of prefix/suffix (#1041, @stufield).
 
+* `expect_error()` no longer encourages you to use `class`. This advice 
+  one type of fragility at the expense of creating a different type (#1013).
+
 * `expect_known_failure()` has been removed. As far as I can tell it was
   only ever used by testthat, and is rather fragile.
+
+* `expect_true()`, `expect_false()`, and `expect_null()` now use waldo to
+  produce more informative failures.
 
 * `verify_output()` no longer always fails if output contains a carriage 
   return character ("\r") (#1048). It uses the `pdf()` device instead of 

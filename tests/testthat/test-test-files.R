@@ -1,12 +1,14 @@
 # test_dir() --------------------------------------------------------------
 
 test_that("stops on failure", {
+  withr::local_envvar(c(TESTTHAT_PARALLEL = "FALSE"))
   expect_error(
     test_dir(test_path("test_dir"), reporter = "silent")
   )
 })
 
 test_that("runs all tests and records output", {
+  withr::local_envvar(c(TESTTHAT_PARALLEL = "FALSE"))
   res <- test_dir(test_path("test_dir"), reporter = "silent", stop_on_failure = FALSE)
   df <- as.data.frame(res)
   df$user <- df$system <- df$real <- df$result <- NULL
@@ -17,6 +19,7 @@ test_that("runs all tests and records output", {
 })
 
 test_that("complains if no files", {
+  withr::local_envvar(c(TESTTHAT_PARALLEL = "FALSE"))
   path <- tempfile()
   dir.create(path)
 
@@ -24,6 +27,7 @@ test_that("complains if no files", {
 })
 
 test_that("can control if failures generate errors", {
+  withr::local_envvar(c(TESTTHAT_PARALLEL = "FALSE"))
   test_error <- function(...) {
     test_dir(test_path("test-error"), reporter = "silent", ...)
   }
@@ -33,6 +37,7 @@ test_that("can control if failures generate errors", {
 })
 
 test_that("can control if warnings errors", {
+  withr::local_envvar(c(TESTTHAT_PARALLEL = "FALSE"))
   test_warning <- function(...) {
     test_dir(test_path("test-warning"), reporter = "silent", ...)
   }

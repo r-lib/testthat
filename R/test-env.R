@@ -17,7 +17,7 @@ is_testing <- function() {
 #' @export
 #' @rdname is_testing
 is_parallel <- function() {
-  identical(Sys.getenv("TESTTHAT_PARALLEL"), "true")
+  identical(Sys.getenv("TESTTHAT_IS_PARALLEL"), "true")
 }
 
 #' @export

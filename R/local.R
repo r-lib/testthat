@@ -1,15 +1,16 @@
 #' Locally set options for maximal test reproducibility
 #'
 #' @description
-#' `local_test_context()` is run automatically by `test_that()` but you may want to run it
-#' yourself if you want to replicate test results interactively. If
-#' run inside a function, the effects are automatically reversed when the
+#' `local_test_context()` is run automatically by `test_that()` but you may
+#' want to run it yourself if you want to replicate test results interactively.
+#' If run inside a function, the effects are automatically reversed when the
 #' function exits; if running in the global environment, use
 #' [withr::deferred_run()] to undo.
 #'
-#' `local_reproducible_output()` allows overriding the settings
-#' inside a test, if you want to test Unicode and colored output
-#' or non-standard width.
+#' `local_reproducible_output()` is run automatically by `test_that()` in the
+#' 3rd edition. You might want to call it to override the the default settings
+#' inside a test, if you want to test Unicode and coloured output or
+#' non-standard width.
 #'
 #' @details
 #' `local_test_context()` and `local_reproducible_output()`
@@ -58,7 +59,9 @@
 #' })
 local_test_context <- function(.env = parent.frame()) {
   withr::local_envvar(list(TESTTHAT = "true"), .local_envir = .env)
-  local_reproducible_output(.env = .env)
+  if (edition_get() >= 3) {
+    local_reproducible_output(.env = .env)
+  }
 }
 
 #' @export

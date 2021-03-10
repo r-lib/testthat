@@ -91,11 +91,11 @@ the captured condition.
 or condition with a message that matches \code{regexp}, or a class that inherits
 from \code{class}. See below for more details.
 
-If the code throws conditions that don't match \code{regexp}/\code{class} they will
-bubble up outside of the expectation, so if they're important you'll need
-to catch them with additional \code{expect_message()}/\code{expect_warning()} calls,
-or if they're unimportant you can ignore with
-\code{\link[=suppressMessages]{suppressMessages()}}/\code{\link[=suppressWarnings]{suppressWarnings()}}.
+New in the 3rd edition, if the code throws conditions that don't match
+\code{regexp}/\code{class} they will bubble up outside of the expectation, so if
+they're important you'll need to catch them with additional
+\code{expect_message()}/\code{expect_warning()} calls, or if they're unimportant you
+can ignore with \code{\link[=suppressMessages]{suppressMessages()}}/\code{\link[=suppressWarnings]{suppressWarnings()}}.
 }
 \section{Testing \code{message} vs \code{class}}{
 
@@ -112,8 +112,8 @@ short, errors are S3 classes and you can generate a custom class and check
 for it using \code{class} instead of \code{regexp}.
 
 If you are using \code{expect_error()} to check that an error message is
-formatted in such a way that it makes sense to a human, we now recommend
-using \code{\link[=verify_output]{verify_output()}} instead.
+formatted in such a way that it makes sense to a human, we recommend
+using \code{\link[=expect_snapshot]{expect_snapshot()}} instead.
 }
 
 \examples{

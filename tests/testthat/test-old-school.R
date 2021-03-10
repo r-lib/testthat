@@ -60,7 +60,7 @@ test_that("old school output tests still work", {
   local_edition(2L)
 
   expect_success(expect_that(stop("!"), throws_error()))
-  expect_warning(expect_success(expect_that(warning("!"), gives_warning())), "deprecated")
+  expect_success(expect_that(warning("!"), gives_warning()))
   expect_success(expect_that(message("!"), shows_message()))
   expect_success(expect_that(print("!"), prints_text()))
 })

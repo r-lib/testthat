@@ -6,11 +6,11 @@
 #' or condition with a message that matches `regexp`, or a class that inherits
 #' from `class`. See below for more details.
 #'
-#' If the code throws conditions that don't match `regexp`/`class` they will
-#' bubble up outside of the expectation, so if they're important you'll need
-#' to catch them with additional `expect_message()`/`expect_warning()` calls,
-#' or if they're unimportant you can ignore with
-#' [suppressMessages()]/[suppressWarnings()].
+#' New in the 3rd edition, if the code throws conditions that don't match
+#' `regexp`/`class` they will bubble up outside of the expectation, so if
+#' they're important you'll need to catch them with additional
+#' `expect_message()`/`expect_warning()` calls, or if they're unimportant you
+#' can ignore with [suppressMessages()]/[suppressWarnings()].
 #'
 #' @section Testing `message` vs `class`:
 #' When checking that code generates an error, it's important to check that the
@@ -26,8 +26,8 @@
 #' for it using `class` instead of `regexp`.
 #'
 #' If you are using `expect_error()` to check that an error message is
-#' formatted in such a way that it makes sense to a human, we now recommend
-#' using [verify_output()] instead.
+#' formatted in such a way that it makes sense to a human, we recommend
+#' using [expect_snapshot()] instead.
 #'
 #' @export
 #' @family expectations
@@ -95,13 +95,24 @@ expect_error <- function(object,
                          info = NULL,
                          label = NULL
                          ) {
-  expect_condition_matching("error", {{ object }},
-    regexp = regexp,
-    class = class,
-    ...,
-    info = info,
-    label = label
-  )
+
+  if (edition_get() >= 3) {
+    expect_condition_matching("error", {{ object }},
+      regexp = regexp,
+      class = class,
+      ...,
+      info = info,
+      label = label
+    )
+  } else {
+    act <- quasi_capture(enquo(object), label, capture_error, entrace = TRUE)
+    msg <- compare_condition_2e(act$cap, act$lab, regexp = regexp, class = class, ...)
+
+    # Access error fields with `[[` rather than `$` because the
+    # `$.Throwable` from the rJava package throws with unknown fields
+    expect(is.null(msg), msg, info = info, trace = act$cap[["trace"]])
+    invisible(act$val %||% act$cap)
+  }
 }
 
 
@@ -116,19 +127,29 @@ expect_warning <- function(object,
                            label = NULL
                            ) {
 
-  if (!missing(all)) {
-    warn("The `all` argument is deprecated")
+  if (edition_get() >= 3) {
+    if (!missing(all)) {
+      warn("The `all` argument is deprecated")
+    }
+
+    expect_condition_matching("warning", {{ object }},
+      regexp = regexp,
+      class = class,
+      ...,
+      info = info,
+      label = label
+    )
+  } else {
+    act <- quasi_capture(enquo(object), label, capture_warnings)
+    msg <- compare_messages(
+      act$cap, act$lab, regexp = regexp, all = all, ...,
+      cond_type = "warnings"
+    )
+    expect(is.null(msg), msg, info = info)
+
+    invisible(act$val)
   }
-
-  expect_condition_matching("warning", {{ object }},
-    regexp = regexp,
-    class = class,
-    ...,
-    info = info,
-    label = label
-  )
 }
-
 
 #' @export
 #' @rdname expect_error
@@ -140,13 +161,22 @@ expect_message <- function(object,
                            info = NULL,
                            label = NULL
                            ) {
-  expect_condition_matching("message", {{ object }},
-    regexp = regexp,
-    class = class,
-    ...,
-    info = info,
-    label = label
-  )
+
+  if (edition_get() >= 3) {
+    expect_condition_matching("message", {{ object }},
+      regexp = regexp,
+      class = class,
+      ...,
+      info = info,
+      label = label
+    )
+  } else {
+    act <- quasi_capture(enquo(object), label, capture_messages)
+    msg <- compare_messages(act$cap, act$lab, regexp = regexp, all = all, ...)
+    expect(is.null(msg), msg, info = info)
+
+    invisible(act$val)
+  }
 }
 
 #' @export
@@ -159,13 +189,24 @@ expect_condition <- function(object,
                              label = NULL
                              ) {
 
-  expect_condition_matching("condition", {{ object }},
-    regexp = regexp,
-    class = class,
-    ...,
-    info = info,
-    label = label
-  )
+  if (edition_get() >= 3) {
+    expect_condition_matching("condition", {{ object }},
+      regexp = regexp,
+      class = class,
+      ...,
+      info = info,
+      label = label
+    )
+  } else {
+    act <- quasi_capture(enquo(object), label, capture_condition, entrace = TRUE)
+    msg <- compare_condition_2e(
+      act$cap, act$lab, regexp = regexp, class = class, ...,
+      cond_type = "condition"
+    )
+    expect(is.null(msg), msg, info = info, trace = act$cap[["trace"]])
+
+    invisible(act$val %||% act$cap)
+  }
 }
 
 expect_condition_matching <- function(base_class,
@@ -183,7 +224,7 @@ expect_condition_matching <- function(base_class,
   )
 
   expected <- !identical(regexp, NA)
-  msg <- compare_condition(base_class, act$cap, act$lab, expected)
+  msg <- compare_condition_3e(base_class, act$cap, act$lab, expected)
 
   # Access error fields with `[[` rather than `$` because the
   # `$.Throwable` from the rJava package throws with unknown fields
@@ -239,7 +280,7 @@ capture_matching_condition <- function(expr, matches) {
 
 # Helpers -----------------------------------------------------------------
 
-compare_condition <- function(cond_type, cond, lab, expected) {
+compare_condition_3e <- function(cond_type, cond, lab, expected) {
   if (expected) {
     if (is.null(cond)) {
       sprintf("%s did not throw the expected %s.", lab, cond_type)
@@ -259,6 +300,108 @@ compare_condition <- function(cond_type, cond, lab, expected) {
       NULL
     }
   }
+}
+
+compare_condition_2e <- function(cond, lab, regexp = NULL, class = NULL, ...,
+                              cond_type = "error") {
+
+  # Expecting no condition
+  if (identical(regexp, NA)) {
+    if (!is.null(cond)) {
+      return(sprintf(
+        "%s threw an %s.\nMessage: %s\nClass:   %s",
+        lab,
+        cond_type,
+        cnd_message(cond),
+        paste(class(cond), collapse = "/")
+      ))
+    } else {
+      return()
+    }
+  }
+
+  # Otherwise we're definitely expecting a condition
+  if (is.null(cond)) {
+    return(sprintf("%s did not throw an %s.", lab, cond_type))
+  }
+
+  message <- cnd_message(cond)
+
+  ok_class <- is.null(class) || inherits(cond, class)
+  ok_msg <- is.null(regexp) || grepl(regexp, message, ...)
+
+  # All good
+  if (ok_msg && ok_class) {
+    return()
+  }
+
+  problems <- c(if (!ok_class) "class", if (!ok_msg) "message")
+
+  details <- c(
+    if (!ok_class) {
+      sprintf(
+        "Expected class: %s\nActual class:   %s\nMessage:        %s",
+        paste0(class, collapse = "/"),
+        paste0(class(cond), collapse = "/"),
+        message
+      )
+    },
+    if (!ok_msg) {
+      sprintf(
+        "Expected match: %s\nActual message: %s",
+        encodeString(regexp, quote = '"'),
+        encodeString(message, quote = '"')
+      )
+    }
+  )
+
+  sprintf(
+    "%s threw an %s with unexpected %s.\n%s",
+    lab,
+    cond_type,
+    paste(problems, collapse = " and "),
+    paste(details, collapse = "\n")
+  )
+}
+
+compare_messages <- function(messages,
+                             lab,
+                             regexp = NA, ...,
+                             all = FALSE,
+                             cond_type = "messages") {
+  bullets <- paste0("* ", messages, collapse = "\n")
+  # Expecting no messages
+  if (identical(regexp, NA)) {
+    if (length(messages) > 0) {
+      return(sprintf("%s generated %s:\n%s", lab, cond_type, bullets))
+    } else {
+      return()
+    }
+  }
+
+  # Otherwise we're definitely expecting messages
+  if (length(messages) == 0) {
+    return(sprintf("%s did not produce any %s.", lab, cond_type))
+  }
+
+  if (is.null(regexp)) {
+    return()
+  }
+
+  matched <- grepl(regexp, messages, ...)
+
+  # all/any ok
+  if ((all && all(matched)) || (!all && any(matched))) {
+    return()
+  }
+
+  sprintf(
+    "%s produced unexpected %s.\n%s\n%s",
+    lab,
+    cond_type,
+    paste0("Expected match: ", encodeString(regexp)),
+    paste0("Actual values:\n", bullets)
+  )
 }
 
 # Disable rlang backtrace reminders so they don't interfere with

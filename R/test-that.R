@@ -27,6 +27,10 @@
 #' })
 #' }
 test_that <- function(desc, code) {
+  if (!is.character(desc) || length(desc) != 1) {
+    abort("`desc` must be a string")
+  }
+
   reporter <- get_reporter()
   if (is.null(reporter)) {
     reporter <- local_interactive_reporter()

@@ -37,7 +37,7 @@ test_files_parallel <- function(
                        test_package,
                        test_paths,
                        load_helpers = TRUE,
-                       reporter = default_reporter(),
+                       reporter = default_parallel_reporter(),
                        env = NULL,
                        stop_on_failure = FALSE,
                        stop_on_warning = FALSE,
@@ -50,10 +50,10 @@ test_files_parallel <- function(
   # TODO: support timeouts. 20-30s for each file by default?
 
   num_workers <- min(default_num_cpus(), length(test_paths))
-  message(
+  inform(paste0(
     "Starting ", num_workers, " test process",
     if (num_workers != 1) "es"
-  )
+  ))
 
   # Set up work queue ------------------------------------------
   queue <- NULL
@@ -200,13 +200,19 @@ queue_setup <- function(test_paths,
 
   test_package <- test_package %||% Sys.getenv("TESTTHAT_PKG")
 
-  # TODO: meaningful error if startup fails
-  load_hook <- expr(asNamespace("testthat")$queue_process_setup(
-    test_package = !!test_package,
-    test_dir = !!test_dir,
-    load_helpers = !!load_helpers,
-    load_package = !!load_package
-  ))
+  # First we load the package "manually", in case it is testthat itself
+  load_hook <- expr({
+    switch(!!load_package,
+      installed = library(!!test_package, character.only = TRUE),
+      source = pkgload::load_all(!!test_dir, helpers = FALSE, quiet = TRUE)
+    )
+    asNamespace("testthat")$queue_process_setup(
+      test_package = !!test_package,
+      test_dir = !!test_dir,
+      load_helpers = !!load_helpers,
+      load_package = "none"
+    )
+  })
   queue <- task_q$new(concurrency = num_workers, load_hook = load_hook)
 
   fun <- transport_fun(function(path) asNamespace("testthat")$queue_task(path))
@@ -238,7 +244,7 @@ queue_process_setup <- function(test_package, test_dir, load_helpers, load_packa
 queue_task <- function(path) {
   env <- .GlobalEnv$.test_env
 
-  withr::local_envvar(c("TESTTHAT_PARALLEL" = "true"))
+  withr::local_envvar(c("TESTTHAT_IS_PARALLEL" = "true"))
   reporters <- test_files_reporter(SubprocessReporter$new())
   with_reporter(reporters$multi, test_one_file(path, env = env))
   NULL
@@ -257,18 +263,20 @@ queue_teardown <- function(queue) {
 
   clean_fn <- function() {
     withr::deferred_run(.GlobalEnv)
+    quit(save = "no", status = 1L, runLast = TRUE)
   }
 
   topoll <- list()
   for (i in seq_len(num)) {
     if (!is.null(tasks$worker[[i]])) {
       tasks$worker[[i]]$call(clean_fn)
-      close(tasks$worker[[i]]$get_input_connection())
       topoll <- c(topoll, tasks$worker[[i]]$get_poll_connection())
     }
   }
 
-  limit <- Sys.time() + 1
+  # Give covr time to write out the coverage files
+  if (in_covr()) grace <- 30L else grace <- 3L
+  limit <- Sys.time() + grace
   while (length(topoll) > 0 && (timeout <- limit - Sys.time()) > 0) {
     timeout <- as.double(timeout, units = "secs") * 1000
     pr <- processx::poll(topoll, as.integer(timeout))
@@ -277,8 +285,15 @@ queue_teardown <- function(queue) {
 
   for (i in seq_len(num)) {
     if (!is.null(tasks$worker[[i]])) {
-      # TODO: kill_tree() only works on Linux, Win, macOS
-      tasks$worker[[i]]$kill_tree()
+      tryCatch(
+        close(tasks$worker[[i]]$get_input_connection()),
+        error = function(e) NULL
+      )
+      if (ps::ps_is_supported()) {
+        tasks$worker[[i]]$kill_tree()
+      } else {
+        tasks$worker[[i]]$kill()
+      }
     }
   }
 }
@@ -306,7 +321,8 @@ SubprocessReporter <- R6::R6Class("SubprocessReporter",
     add_result = function(context, test, result) {
       if (inherits(result, "expectation_success")) {
         # Strip bulky components to reduce data transfer cost
-        result[] <- result[c("message", "test")]
+        result[["srcref"]] <- NULL
+        result[["trace"]] <- NULL
       }
       private$event("add_result", context, test, result)
     },

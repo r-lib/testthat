@@ -149,7 +149,12 @@ Because the snapshot output uses the the name of the current test file and the c
 
 `expect_snapshot()`, `expect_snapshot_output()`, `expect_snapshot_error()`, and `expect_snapshot_value()` all store their snapshots in a single file per test. But that doesn't work for all file types --- for example, what happens if you want to snapshot an image? `expect_snapshot_file()` provides an alternative workflow that generates one snapshot per expectation, rather than one file per test. Assuming you're in `test-burger.R` then the snapshot created by `expect_snapshot_file(code_that_returns_path_to_file(), "toppings.png")` would be saved in `tests/testthat/_snaps/burger/toppings.png`. If a future change in the code creates a a different file it will be saved in `tests/testthat/_snaps/burger/toppings.new.png`.
 
-Unlike `expect_snapshot()` and friends, `expect_snapshot()` can't automatically provide an automatic diff when the test fails. Instead you'll need to call `snapshot_review()`. This launches a Shiny app that allows you to visually review each change and approve it if it's deliberate.
+Unlike `expect_snapshot()` and friends, `expect_snapshot()` can't automatically provide an automatic diff when the test fails. Instead you'll need to call `snapshot_review()`. This launches a Shiny app that allows you to visually review each change and approve it if it's deliberate:
+
+![](review-image.png)
+![](review-text.png)
+
+The display varies based on the file type (currently text files, common image files, and csv files are supported).
 
 In most cases, we don't expect you to use `expect_snapshot_file()` directly. Instead, you'll use it via a wrapper that does its best to gracefully skip tests when differences in platform or package versions make it unlikely to generate perfectly reproducible output.
 

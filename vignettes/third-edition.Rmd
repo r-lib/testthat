@@ -124,6 +124,18 @@ This change is likely to result in the most work during an upgrade, because wald
     expect_equal(dt1, dt2)
     ```
 
+### Reproducible output
+
+In the third edition, `test_that()` automatically calls `local_reproducible_output()` which automatically sets a number of options and environment variables to ensure output is as reproducible across systems. This includes setting:
+
+-   `options(crayon.enabled = FALSE)` and `options(cli.unicode = FALSE)` so that the crayon and cli packages produce raw ASCII output.
+
+-   `Sys.setLocale("LC_COLLATE" = "C")` so that sorting a character vector returns the same order regardless of the system language.
+
+-   `options(width = 80)` so print methods always generate the same output regardless of your actual console width.
+
+See the documentation for more details.
+
 ## Alternatives
 
 You might wonder why we came up with the idea of an "edition", rather than creating a new package like testthat3. We decided against making a new package because the 2nd and 3rd edition share a very large amount of code, so making a new package would have substantially increased the maintenance burden: the majority of bugs would've needed to be fixed in two places.
