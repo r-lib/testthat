@@ -90,7 +90,7 @@ compare_file <- function(path, lines, ..., update = TRUE, info = NULL) {
 
   comp <- waldo_compare(
     x = old_lines, x_arg = "old",
-    y = enc2utf8(lines), y_arg = "new",
+    y = lines, y_arg = "new",
     ...
   )
   expect(

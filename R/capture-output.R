@@ -53,6 +53,12 @@ eval_with_output <- function(code, print = FALSE, width = 80) {
     withr::with_output_sink(path, testthat_print(result$value), append = TRUE)
   }
 
+  # Reencode as UTF-8 on Windows
+  if (Sys.info()[["sysname"]] == "Windows") {
+    text <- rawToChar(readBin(path, character(1), n = file.size(path)))
+    brio::write_lines(enc2utf8(text), path)
+  }
+
   list(
     val = result$value,
     vis = result$visible,
