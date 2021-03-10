@@ -5,7 +5,7 @@
 #'
 #' @export
 #' @family reporters
-RstudioReporter <- R6::R6Class("RstudioReporter",
+RStudioReporter <- R6::R6Class("RStudioReporter",
   inherit = Reporter,
   public = list(
     initialize = function(...) {

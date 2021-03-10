@@ -1,63 +1,14 @@
-# bigstatsr
+# dm
 
 <details>
 
-* Version: 1.2.3
-* GitHub: https://github.com/privefl/bigstatsr
-* Source code: https://github.com/cran/bigstatsr
-* Date/Publication: 2020-03-12 13:20:05 UTC
-* Number of recursive dependencies: 93
+* Version: 0.1.9
+* GitHub: https://github.com/krlmlr/dm
+* Source code: https://github.com/cran/dm
+* Date/Publication: 2020-11-18 20:50:03 UTC
+* Number of recursive dependencies: 123
 
-Run `cloud_details(, "bigstatsr")` for more info
-
-</details>
-
-## Newly broken
-
-*   checking tests ... ERROR
-    ```
-      Running ‘spelling.R’
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Last 13 lines of output:
-      Warning (test-univLogReg.R:65:5): equality with glm with all data
-      Warning (test-univLogReg.R:65:5): equality with glm with all data
-      Warning (test-univLogReg.R:92:5): equality with glm with only half the data
-      Warning (test-univLogReg.R:92:5): equality with glm with only half the data
-      Warning (test-univLogReg.R:92:5): equality with glm with only half the data
-      Warning (test-univLogReg.R:92:5): equality with glm with only half the data
-      Warning (test-univLogReg.R:92:5): equality with glm with only half the data
-      Warning (test-univLogReg.R:92:5): equality with glm with only half the data
-      Warning (test-univLogReg.R:92:5): equality with glm with only half the data
-      Warning (test-univLogReg.R:92:5): equality with glm with only half the data
-      Warning (test-univLogReg.R:92:5): equality with glm with only half the data
-      
-      [ FAIL 1 | WARN 129 | SKIP 4 | PASS 3997 ]
-      Error: Test failures
-      Execution halted
-    ```
-
-## In both
-
-*   checking installed package size ... NOTE
-    ```
-      installed size is 17.0Mb
-      sub-directories of 1Mb or more:
-        extdata   2.3Mb
-        libs     14.0Mb
-    ```
-
-# coil
-
-<details>
-
-* Version: 1.2.1
-* GitHub: NA
-* Source code: https://github.com/cran/coil
-* Date/Publication: 2020-02-03 19:30:09 UTC
-* Number of recursive dependencies: 53
-
-Run `cloud_details(, "coil")` for more info
+Run `cloud_details(, "dm")` for more info
 
 </details>
 
@@ -68,200 +19,286 @@ Run `cloud_details(, "coil")` for more info
       Running ‘testthat.R’
     Running the tests in ‘tests/testthat.R’ failed.
     Last 13 lines of output:
+      Warning (test-zoom.R:105:3): dm_update_tbl() works
+      Warning (test-zoom.R:105:3): dm_update_tbl() works
+      Warning (test-zoom.R:105:3): dm_update_tbl() works
+      Warning (test-zoom.R:105:3): dm_update_tbl() works
+      Warning (test-zoom.R:105:3): dm_update_tbl() works
+      Warning (test-zoom.R:105:3): dm_update_tbl() works
+      Warning (test-zoom.R:105:3): dm_update_tbl() works
+      Warning (test-zoom.R:105:3): dm_update_tbl() works
+      Warning (test-zoom.R:105:3): dm_update_tbl() works
       
-          frame
-      
-      > 
-      > test_check("coil")
-      ── FAILURE (test_subsetPHMM.r:29:2): PHMMs can be subset as expected ───────────
-      small_good$stop_codons not equal to FALSE.
-      1 element mismatch
-      
-      ══ testthat results  ═══════════════════════════════════════════════════════════
-      FAILURE (test_subsetPHMM.r:29:2): PHMMs can be subset as expected
-      
-      [ FAIL 1 | WARN 0 | SKIP 0 | PASS 117 ]
+      [ FAIL 10 | WARN 1761 | SKIP 58 | PASS 746 ]
       Error: Test failures
+      In addition: Warning message:
+      call dbDisconnect() when finished working with a connection 
       Execution halted
     ```
 
-# DiceKriging
+# fdapace
 
 <details>
 
-* Version: 1.5.6
-* GitHub: NA
-* Source code: https://github.com/cran/DiceKriging
-* Date/Publication: 2018-10-08 10:50:13 UTC
-* Number of recursive dependencies: 30
+* Version: 0.5.5
+* GitHub: https://github.com/functionaldata/tPACE
+* Source code: https://github.com/cran/fdapace
+* Date/Publication: 2020-07-29 05:10:20 UTC
+* Number of recursive dependencies: 112
 
-Run `cloud_details(, "DiceKriging")` for more info
+Run `cloud_details(, "fdapace")` for more info
 
 </details>
 
 ## Newly broken
 
-*   checking tests ... ERROR
+*   checking whether package ‘fdapace’ can be installed ... ERROR
     ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Last 13 lines of output:
-          █
-       1. ├─base::source("test-km.R") test-scaling.R:3:0
-       2. │ ├─base::withVisible(eval(ei, envir))
-       3. │ └─base::eval(ei, envir)
-       4. │   └─base::eval(ei, envir)
-       5. └─global::test_that.km(...)
-       6.   └─testthat::test_that(...)
-      
-      ══ testthat results  ═══════════════════════════════════════════════════════════
-      ERROR (test-km.R:43:1): (code run outside of `test_that()`)
-      ERROR (test-scaling.R:3:1): (code run outside of `test_that()`)
-      
-      [ FAIL 2 | WARN 0 | SKIP 0 | PASS 44 ]
-      Error: Test failures
-      Execution halted
-    ```
-
-# diffobj
-
-<details>
-
-* Version: 0.3.0
-* GitHub: https://github.com/brodieG/diffobj
-* Source code: https://github.com/cran/diffobj
-* Date/Publication: 2020-05-11 11:20:03 UTC
-* Number of recursive dependencies: 37
-
-Run `cloud_details(, "diffobj")` for more info
-
-</details>
-
-## Newly broken
-
-*   checking tests ... ERROR
-    ```
-      Running ‘run.R’
-    Running the tests in ‘tests/run.R’ failed.
-    Last 13 lines of output:
-      ⠙ |   2       | warnings                                                        
-      ⠸ |   4       | warnings                                                        
-      ⠼ |   5       | warnings                                                        
-      ⠴ |   6       | warnings                                                        
-      ✔ |   7       | warnings [0.7 s]
-      
-      ══ Results ═════════════════════════════════════════════════════════════════════
-      Duration: 44.7 s
-      
-      ── Skipped tests  ──────────────────────────────────────────────────────────────
-      ● empty test (3)
-      
-      [ FAIL 4 | WARN 0 | SKIP 3 | PASS 591 ]
-      Error: Test failures
-      Execution halted
-    ```
-
-# ergm.ego
-
-<details>
-
-* Version: 0.5
-* GitHub: https://github.com/statnet/ergm.ego
-* Source code: https://github.com/cran/ergm.ego
-* Date/Publication: 2019-05-31 16:00:03 UTC
-* Number of recursive dependencies: 58
-
-Run `cloud_details(, "ergm.ego")` for more info
-
-</details>
-
-## Newly broken
-
-*   checking tests ... ERROR
-    ```
-    ...
-      Running ‘EgoStat.tests.R’
-      Running ‘boot_jack.R’
-      Running ‘table_ppop.R’
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Last 13 lines of output:
-      ── Warning (test-statmismatch.R:10:1): (code run outside of `test_that()`) ─────
-      `context()` was deprecated in the 3rd edition.
-      
-      ── ERROR (test-statmismatch.R:15:1): (code run outside of `test_that()`) ───────
-      Error: could not find function "egodata"
-      
-      ══ testthat results  ═══════════════════════════════════════════════════════════
-      Warning (test-degreedist.R:10:1): (code run outside of `test_that()`)
-      ERROR (test-degreedist.R:21:1): (code run outside of `test_that()`)
-      Warning (test-statmismatch.R:10:1): (code run outside of `test_that()`)
-      ERROR (test-statmismatch.R:15:1): (code run outside of `test_that()`)
-      
-      [ FAIL 2 | WARN 2 | SKIP 0 | PASS 0 ]
-      Error: Test failures
-      Execution halted
-    ```
-
-## In both
-
-*   checking examples ... WARNING
-    ```
-    ...
-      Warning: 'compact.rle' is deprecated.
-      Warning: 'compact.rle' is deprecated.
-      Warning: 'compact.rle' is deprecated.
-      Warning: 'compact.rle' is deprecated.
-      Warning: 'compact.rle' is deprecated.
-      Warning: 'compact.rle' is deprecated.
-      Warning: 'compact.rle' is deprecated.
-      Warning: 'compact.rle' is deprecated.
-      Warning: 'compact.rle' is deprecated.
-      Warning: 'compact.rle' is deprecated.
-      Warning: 'compact.rle' is deprecated.
-      Warning: 'compact.rle' is deprecated.
-      Warning: 'compact.rle' is deprecated.
-      Warning: 'compact.rle' is deprecated.
-      Warning: 'compact.rle' is deprecated.
-      Warning: 'compact.rle' is deprecated.
-      Warning: 'compact.rle' is deprecated.
-      Warning: 'compact.rle' is deprecated.
-    Deprecated functions may be defunct as soon as of the next release of
-    R.
-    See ?Deprecated.
-    ```
-
-# fdaPDE
-
-<details>
-
-* Version: 1.0-9
-* GitHub: NA
-* Source code: https://github.com/cran/fdaPDE
-* Date/Publication: 2020-05-15 15:10:02 UTC
-* Number of recursive dependencies: 66
-
-Run `cloud_details(, "fdaPDE")` for more info
-
-</details>
-
-## Newly broken
-
-*   checking installed package size ... NOTE
-    ```
-      installed size is 78.4Mb
-      sub-directories of 1Mb or more:
-        libs  78.0Mb
+    Installation failed.
+    See ‘/tmp/workdir/fdapace/new/fdapace.Rcheck/00install.out’ for details.
     ```
 
 ## Newly fixed
 
-*   checking whether package ‘fdaPDE’ can be installed ... ERROR
+*   checking installed package size ... NOTE
     ```
-    Installation failed.
-    See ‘/tmp/workdir/fdaPDE/old/fdaPDE.Rcheck/00install.out’ for details.
+      installed size is 73.1Mb
+      sub-directories of 1Mb or more:
+        libs  71.5Mb
     ```
 
+## Installation
+
+### Devel
+
+```
+* installing *source* package ‘fdapace’ ...
+** package ‘fdapace’ successfully unpacked and MD5 sums checked
+** using staged installation
+** libs
+g++ -std=gnu++11 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG  -I'/opt/R/4.0.3/lib/R/site-library/Rcpp/include' -I'/opt/R/4.0.3/lib/R/site-library/RcppEigen/include' -I/usr/local/include   -fpic  -g -O2  -c CPPlwls1d.cpp -o CPPlwls1d.o
+In file included from /opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/Core:392,
+                 from /opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/Dense:1,
+                 from /opt/R/4.0.3/lib/R/site-library/RcppEigen/include/RcppEigenForward.h:30,
+                 from /opt/R/4.0.3/lib/R/site-library/RcppEigen/include/RcppEigen.h:25,
+                 from CPPlwls1d.cpp:1:
+...
+/opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/src/Core/ProductEvaluators.h:35:90:   required from ‘Eigen::internal::evaluator<Eigen::Product<Lhs, Rhs, Option> >::evaluator(const XprType&) [with Lhs = Eigen::Matrix<double, 1, 4>; Rhs = Eigen::Solve<Eigen::ColPivHouseholderQR<Eigen::Matrix<double, 4, 4> >, Eigen::Matrix<double, 4, 1> >; int Options = 0; Eigen::internal::evaluator<Eigen::Product<Lhs, Rhs, Option> >::XprType = Eigen::Product<Eigen::Matrix<double, 1, 4>, Eigen::Solve<Eigen::ColPivHouseholderQR<Eigen::Matrix<double, 4, 4> >, Eigen::Matrix<double, 4, 1> >, 0>]’
+/opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/src/Core/Product.h:132:22:   required from ‘Eigen::internal::dense_product_base<Lhs, Rhs, Option, 6>::operator const Scalar() const [with Lhs = Eigen::Matrix<double, 1, 4>; Rhs = Eigen::Solve<Eigen::ColPivHouseholderQR<Eigen::Matrix<double, 4, 4> >, Eigen::Matrix<double, 4, 1> >; int Option = 0; Eigen::internal::dense_product_base<Lhs, Rhs, Option, 6>::Scalar = double]’
+interp2lin.cpp:124:56:   required from here
+/opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/src/Core/CoreEvaluators.h:960:8: warning: ignoring attributes on template argument ‘Eigen::internal::packet_traits<double>::type’ {aka ‘__vector(2) double’} [-Wignored-attributes]
+g++ -std=gnu++11 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG  -I'/opt/R/4.0.3/lib/R/site-library/Rcpp/include' -I'/opt/R/4.0.3/lib/R/site-library/RcppEigen/include' -I/usr/local/include   -fpic  -g -O2  -c trapzRcpp.cpp -o trapzRcpp.o
+g++ -std=gnu++11 -shared -L/opt/R/4.0.3/lib/R/lib -L/usr/local/lib -o fdapace.so CPPlwls1d.o GetIndCEScoresCPP.o GetIndCEScoresCPPnewInd.o RCPPmean.o RCPPvar.o RcppExports.o RcppPseudoApprox.o Rcppsort.o Rmullwlsk.o RmullwlskCC.o RmullwlskCCsort2.o RmullwlskUniversal.o RmullwlskUniversalDeriv.o RrotatedMullwlsk.o cumtrapzRcpp.o dropZeroElementsXYWin.o interp2lin.o trapzRcpp.o -L/opt/R/4.0.3/lib/R/lib -lR
+collect2: error: ld returned 1 exit status
+make: *** [/opt/R/4.0.3/lib/R/share/make/shlib.mk:10: fdapace.so] Error 1
+ERROR: compilation failed for package ‘fdapace’
+* removing ‘/tmp/workdir/fdapace/new/fdapace.Rcheck/fdapace’
+
+
+```
+### CRAN
+
+```
+* installing *source* package ‘fdapace’ ...
+** package ‘fdapace’ successfully unpacked and MD5 sums checked
+** using staged installation
+** libs
+g++ -std=gnu++11 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG  -I'/opt/R/4.0.3/lib/R/site-library/Rcpp/include' -I'/opt/R/4.0.3/lib/R/site-library/RcppEigen/include' -I/usr/local/include   -fpic  -g -O2  -c CPPlwls1d.cpp -o CPPlwls1d.o
+In file included from /opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/Core:392,
+                 from /opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/Dense:1,
+                 from /opt/R/4.0.3/lib/R/site-library/RcppEigen/include/RcppEigenForward.h:30,
+                 from /opt/R/4.0.3/lib/R/site-library/RcppEigen/include/RcppEigen.h:25,
+                 from CPPlwls1d.cpp:1:
+...
+** byte-compile and prepare package for lazy loading
+** help
+*** installing help indices
+** building package indices
+** installing vignettes
+** testing if installed package can be loaded from temporary location
+** checking absolute paths in shared objects and dynamic libraries
+** testing if installed package can be loaded from final location
+** testing if installed package keeps a record of temporary installation path
+* DONE (fdapace)
+
+
+```
+# finetune
+
+<details>
+
+* Version: 0.0.1
+* GitHub: https://github.com/tidymodels/finetune
+* Source code: https://github.com/cran/finetune
+* Date/Publication: 2020-11-20 10:30:15 UTC
+* Number of recursive dependencies: 153
+
+Run `cloud_details(, "finetune")` for more info
+
+</details>
+
+## Newly broken
+
+*   checking tests ... ERROR
+    ```
+      Running ‘helpers.R’
+      Running ‘spelling.R’
+      Running ‘testthat.R’
+    Running the tests in ‘tests/testthat.R’ failed.
+    Last 13 lines of output:
+      Warning (test-sa-decision.R:31:5): simulated annealing decisions
+      Warning (test-sa-decision.R:31:5): simulated annealing decisions
+      Warning (test-sa-decision.R:31:5): simulated annealing decisions
+      Warning (test-sa-decision.R:31:5): simulated annealing decisions
+      Warning (test-sa-decision.R:31:5): simulated annealing decisions
+    ...
+      Warning (test-sa-decision.R:31:5): simulated annealing decisions
+      Warning (test-sa-decision.R:31:5): simulated annealing decisions
+      Warning (test-sa-decision.R:31:5): simulated annealing decisions
+      Warning (test-sa-decision.R:31:5): simulated annealing decisions
+      Warning (test-sa-decision.R:31:5): simulated annealing decisions
+      Warning (test-sa-decision.R:31:5): simulated annealing decisions
+      
+      [ FAIL 1 | WARN 120 | SKIP 13 | PASS 181 ]
+      Error: Test failures
+      Execution halted
+    ```
+
+## In both
+
+*   checking dependencies in R code ... NOTE
+    ```
+    Namespace in Imports field not imported from: ‘yardstick’
+      All declared Imports should be used.
+    ```
+
+# git2rdata
+
+<details>
+
+* Version: 0.2.1
+* GitHub: https://github.com/ropensci/git2rdata
+* Source code: https://github.com/cran/git2rdata
+* Date/Publication: 2020-03-02 15:30:02 UTC
+* Number of recursive dependencies: 68
+
+Run `cloud_details(, "git2rdata")` for more info
+
+</details>
+
+## Newly broken
+
+*   checking tests ... ERROR
+    ```
+      Running ‘testthat.R’
+    Running the tests in ‘tests/testthat.R’ failed.
+    Last 13 lines of output:
+      > library(git2rdata)
+      > 
+      > test_check("git2rdata")
+      ── FAILURE (test_d_recent_commit.R:82:1): (code run outside of `test_that()`) ──
+      all(output$commit %in% c(cm_1$sha, cm_2$sha)) is not TRUE
+      
+      `actual`:   FALSE
+      `expected`: TRUE 
+      
+      ══ testthat results  ═══════════════════════════════════════════════════════════
+      FAILURE (test_d_recent_commit.R:82:1): (code run outside of `test_that()`)
+      
+      [ FAIL 1 | WARN 0 | SKIP 0 | PASS 336 ]
+      Error: Test failures
+      Execution halted
+    ```
+
+# glmmTMB
+
+<details>
+
+* Version: 1.0.2.1
+* GitHub: https://github.com/glmmTMB/glmmTMB
+* Source code: https://github.com/cran/glmmTMB
+* Date/Publication: 2020-07-02 11:30:17 UTC
+* Number of recursive dependencies: 159
+
+Run `cloud_details(, "glmmTMB")` for more info
+
+</details>
+
+## Newly broken
+
+*   checking whether package ‘glmmTMB’ can be installed ... ERROR
+    ```
+    Installation failed.
+    See ‘/tmp/workdir/glmmTMB/new/glmmTMB.Rcheck/00install.out’ for details.
+    ```
+
+## Newly fixed
+
+*   checking installed package size ... NOTE
+    ```
+      installed size is 64.6Mb
+      sub-directories of 1Mb or more:
+        doc         1.2Mb
+        libs       60.9Mb
+        test_data   1.2Mb
+    ```
+
+## Installation
+
+### Devel
+
+```
+* installing *source* package ‘glmmTMB’ ...
+** package ‘glmmTMB’ successfully unpacked and MD5 sums checked
+** using staged installation
+** libs
+g++ -std=gnu++11 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG  -I'/opt/R/4.0.3/lib/R/site-library/TMB/include' -I'/opt/R/4.0.3/lib/R/site-library/RcppEigen/include' -I/usr/local/include   -fpic  -g -O2  -c glmmTMB.cpp -o glmmTMB.o
+In file included from /opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/Core:392,
+                 from /opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/Dense:1,
+                 from /opt/R/4.0.3/lib/R/site-library/TMB/include/TMB.hpp:53,
+                 from glmmTMB.cpp:1:
+/opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/src/Core/arch/SSE/PacketMath.h:60:39: warning: ignoring attributes on template argument ‘__m128’ {aka ‘__vector(4) float’} [-Wignored-attributes]
+...
+  259 |     while(size) ptr[--size].~T();
+      |     ^~~~~
+glmmTMB.cpp: At global scope:
+glmmTMB.cpp:911:1: fatal error: error writing to /tmp/ccOA31m7.s: No space left on device
+  911 | }
+      | ^
+compilation terminated.
+make: *** [/opt/R/4.0.3/lib/R/etc/Makeconf:181: glmmTMB.o] Error 1
+ERROR: compilation failed for package ‘glmmTMB’
+* removing ‘/tmp/workdir/glmmTMB/new/glmmTMB.Rcheck/glmmTMB’
+
+
+```
+### CRAN
+
+```
+* installing *source* package ‘glmmTMB’ ...
+** package ‘glmmTMB’ successfully unpacked and MD5 sums checked
+** using staged installation
+** libs
+g++ -std=gnu++11 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG  -I'/opt/R/4.0.3/lib/R/site-library/TMB/include' -I'/opt/R/4.0.3/lib/R/site-library/RcppEigen/include' -I/usr/local/include   -fpic  -g -O2  -c glmmTMB.cpp -o glmmTMB.o
+In file included from /opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/Core:392,
+                 from /opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/Dense:1,
+                 from /opt/R/4.0.3/lib/R/site-library/TMB/include/TMB.hpp:53,
+                 from glmmTMB.cpp:1:
+/opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/src/Core/arch/SSE/PacketMath.h:60:39: warning: ignoring attributes on template argument ‘__m128’ {aka ‘__vector(4) float’} [-Wignored-attributes]
+...
+** byte-compile and prepare package for lazy loading
+** help
+*** installing help indices
+** building package indices
+** installing vignettes
+** testing if installed package can be loaded from temporary location
+** checking absolute paths in shared objects and dynamic libraries
+** testing if installed package can be loaded from final location
+** testing if installed package keeps a record of temporary installation path
+* DONE (glmmTMB)
+
+
+```
 # GroupSeq
 
 <details>
@@ -270,7 +307,7 @@ Run `cloud_details(, "fdaPDE")` for more info
 * GitHub: https://github.com/rpahl/GroupSeq
 * Source code: https://github.com/cran/GroupSeq
 * Date/Publication: 2018-04-11 15:00:32 UTC
-* Number of recursive dependencies: 24
+* Number of recursive dependencies: 34
 
 Run `cloud_details(, "GroupSeq")` for more info
 
@@ -299,6 +336,7 @@ Warning in fun(libname, pkgname) : couldn't connect to display ":109"
 *** installing help indices
 ** building package indices
 ** testing if installed package can be loaded from temporary location
+...
 Warning in fun(libname, pkgname) : couldn't connect to display ":109"
 Error: package or namespace load failed for ‘GroupSeq’:
  .onAttach failed in attachNamespace() for 'GroupSeq', details:
@@ -309,6 +347,7 @@ Error: loading failed
 Execution halted
 ERROR: loading failed
 * removing ‘/tmp/workdir/GroupSeq/new/GroupSeq.Rcheck/GroupSeq’
+
 
 ```
 ### CRAN
@@ -327,67 +366,19 @@ ERROR: loading failed
 ** testing if installed package keeps a record of temporary installation path
 * DONE (GroupSeq)
 
+
 ```
-# hyperSpec
+# gtfs2gps
 
 <details>
 
-* Version: 0.99-20200527
-* GitHub: https://github.com/cbeleites/hyperSpec
-* Source code: https://github.com/cran/hyperSpec
-* Date/Publication: 2020-05-29 00:00:03 UTC
-* Number of recursive dependencies: 128
+* Version: 1.3-2
+* GitHub: https://github.com/ipeaGIT/gtfs2gps
+* Source code: https://github.com/cran/gtfs2gps
+* Date/Publication: 2020-11-05 17:30:12 UTC
+* Number of recursive dependencies: 77
 
-Run `cloud_details(, "hyperSpec")` for more info
-
-</details>
-
-## Newly broken
-
-*   checking examples ... ERROR
-    ```
-    ...
-    isample: .....
-    .levelplot: ....
-    Arith: .........
-    read.dat.Witec: SSSSS
-    as.wide.df: .....
-    any_wl: .......
-    decomposition: .........
-    wl.eval: .........
-    apply: ....
-    .cluster.wavelengths: ...
-    read.zip.Renishaw: S
-    read.spc.Shimadzu: .
-    read.ENVI: SSSSS
-    spc.rubberband: ....
-    read.txt.Renishaw: SSSSS
-    vanderMonde: ......
-    plotmat: .
-    .all.equal: .........
-    .labels: ....Error in get_reporter()$.end_context() : attempt to apply non-function
-    Calls: hy.unittest ... withRestarts -> withOneRestart -> doWithOneRestart -> force
-    Execution halted
-    ```
-
-## In both
-
-*   checking Rd cross-references ... NOTE
-    ```
-    Packages unavailable to check Rd xrefs: ‘reshape2’, ‘caTools’
-    ```
-
-# IncDTW
-
-<details>
-
-* Version: 1.1.3.1
-* GitHub: NA
-* Source code: https://github.com/cran/IncDTW
-* Date/Publication: 2020-04-01 06:02:00 UTC
-* Number of recursive dependencies: 108
-
-Run `cloud_details(, "IncDTW")` for more info
+Run `cloud_details(, "gtfs2gps")` for more info
 
 </details>
 
@@ -398,48 +389,100 @@ Run `cloud_details(, "IncDTW")` for more info
       Running ‘testthat.R’
     Running the tests in ‘tests/testthat.R’ failed.
     Last 13 lines of output:
-      
-      ── Skipped tests  ──────────────────────────────────────────────────────────────
-      ●  (4)
-      ●  there is no bug! (1)
-      ● blabla (1)
-      ● comparison 01-z (1)
-      ● runtime comparison (3)
-      ● speed comparison (2)
+       10. │         └─future:::resolve.list(...)
+       11. │           ├─future::value(obj, stdout = FALSE, signal = FALSE)
+       12. │           └─future:::value.Future(obj, stdout = FALSE, signal = FALSE)
+       13. │             ├─future::result(future)
+       14. │             └─future:::result.MulticoreFuture(future)
+       15. └─data.table::rbindlist(.)
       
       ══ testthat results  ═══════════════════════════════════════════════════════════
-      ERROR (test_cm.R:62:4): custom dist function
+      Warning (test_gtfs2gps.R:71:5): gtfs2gps
+      Warning (test_gtfs2gps.R:71:5): gtfs2gps
+      ERROR (test_gtfs2gps.R:71:5): gtfs2gps
       
-      [ FAIL 1 | WARN 0 | SKIP 12 | PASS 169 ]
+      [ FAIL 1 | WARN 2 | SKIP 0 | PASS 158 ]
       Error: Test failures
       Execution halted
     ```
 
-## In both
-
-*   checking installed package size ... NOTE
-    ```
-      installed size is  8.2Mb
-      sub-directories of 1Mb or more:
-        libs   6.4Mb
-    ```
-
-*   checking for GNU extensions in Makefiles ... NOTE
-    ```
-    GNU make is a SystemRequirements.
-    ```
-
-# kiwisR
+# gWidgets2tcltk
 
 <details>
 
-* Version: 0.2.0
-* GitHub: https://github.com/rywhale/kiwisR
-* Source code: https://github.com/cran/kiwisR
-* Date/Publication: 2020-07-13 14:20:02 UTC
-* Number of recursive dependencies: 69
+* Version: 1.0-6
+* GitHub: https://github.com/jverzani/gWidgets2tcltk
+* Source code: https://github.com/cran/gWidgets2tcltk
+* Date/Publication: 2018-09-25 13:20:02 UTC
+* Number of recursive dependencies: 36
 
-Run `cloud_details(, "kiwisR")` for more info
+Run `cloud_details(, "gWidgets2tcltk")` for more info
+
+</details>
+
+## Newly broken
+
+*   checking whether package ‘gWidgets2tcltk’ can be installed ... ERROR
+    ```
+    Installation failed.
+    See ‘/tmp/workdir/gWidgets2tcltk/new/gWidgets2tcltk.Rcheck/00install.out’ for details.
+    ```
+
+## Installation
+
+### Devel
+
+```
+* installing *source* package ‘gWidgets2tcltk’ ...
+** package ‘gWidgets2tcltk’ successfully unpacked and MD5 sums checked
+** using staged installation
+** R
+** demo
+** inst
+** byte-compile and prepare package for lazy loading
+Warning message:
+In fun(libname, pkgname) : couldn't connect to display ":109"
+Error in structure(.External(.C_dotTclObjv, objv), class = "tclObj") : 
+  [tcl] invalid command name "font".
+
+Error: unable to load R code in package ‘gWidgets2tcltk’
+Execution halted
+ERROR: lazy loading failed for package ‘gWidgets2tcltk’
+* removing ‘/tmp/workdir/gWidgets2tcltk/new/gWidgets2tcltk.Rcheck/gWidgets2tcltk’
+
+
+```
+### CRAN
+
+```
+* installing *source* package ‘gWidgets2tcltk’ ...
+** package ‘gWidgets2tcltk’ successfully unpacked and MD5 sums checked
+** using staged installation
+** R
+** demo
+** inst
+** byte-compile and prepare package for lazy loading
+** help
+*** installing help indices
+** building package indices
+** testing if installed package can be loaded from temporary location
+** testing if installed package can be loaded from final location
+** testing if installed package keeps a record of temporary installation path
+* DONE (gWidgets2tcltk)
+
+
+```
+# here
+
+<details>
+
+* Version: 1.0.0
+* GitHub: https://github.com/r-lib/here
+* Source code: https://github.com/cran/here
+* Date/Publication: 2020-11-15 17:10:02 UTC
+* Number of recursive dependencies: 66
+
+Run `cloud_details(, "here")` for more info
 
 </details>
 
@@ -450,373 +493,209 @@ Run `cloud_details(, "kiwisR")` for more info
       Running ‘testthat.R’
     Running the tests in ‘tests/testthat.R’ failed.
     Last 13 lines of output:
-      > library(testthat)
-      > library(kiwisR)
-      > 
-      > test_check("kiwisR")
-      ── FAILURE (test_ki_station_list.R:71:3): ki_station_list accepts custom return 
-      `stn_cust_retr` not equal to `stn_cust_retr2`.
-      Component "station_id": 76 string mismatches
-      Component "station_no": 76 string mismatches
+      Class:   simpleError/error/condition
+      
+      -- Skip (test-i_am.R:23:3): i_am() fails with useful message -------------------
+      Reason: On CRAN
+      
+      ── Skipped tests  ──────────────────────────────────────────────────────────────
+      ● On CRAN (5)
       
       ══ testthat results  ═══════════════════════════════════════════════════════════
-      FAILURE (test_ki_station_list.R:71:3): ki_station_list accepts custom return fields (vector or string)
+      FAILURE (test-i_am.R:23:3): i_am() fails with useful message
       
-      [ FAIL 1 | WARN 0 | SKIP 0 | PASS 54 ]
+      [ FAIL 1 | WARN 0 | SKIP 5 | PASS 6 ]
       Error: Test failures
+      No snapshots to update
       Execution halted
     ```
 
-# mlrCPO
+# mapdeck
 
 <details>
 
-* Version: 0.3.6
-* GitHub: https://github.com/mlr-org/mlrCPO
-* Source code: https://github.com/cran/mlrCPO
-* Date/Publication: 2020-04-06 09:00:03 UTC
-* Number of recursive dependencies: 132
+* Version: 0.3.4
+* GitHub: https://github.com/SymbolixAU/mapdeck
+* Source code: https://github.com/cran/mapdeck
+* Date/Publication: 2020-09-04 05:22:10 UTC
+* Number of recursive dependencies: 83
 
-Run `cloud_details(, "mlrCPO")` for more info
+Run `cloud_details(, "mapdeck")` for more info
 
 </details>
 
 ## Newly broken
 
-*   checking tests ... ERROR
+*   checking whether package ‘mapdeck’ can be installed ... ERROR
     ```
-      Running ‘run-core.R’
-      Running ‘run-cpo.R’
-    Running the tests in ‘tests/run-cpo.R’ failed.
-    Last 13 lines of output:
-      > library(testthat)
-      > ISTESTING = TRUE  # nolint
-      > test_check("mlrCPO", filter = "^_cpo_")
-      Loading required package: mlrCPO
-      Loading required package: ParamHelpers
-      Loading required package: mlr
-      'mlr' is in maintenance mode since July 2019. Future development
-      efforts will go into its successor 'mlr3' (<https://mlr3.mlr-org.com>).
-      Error: No test files found
-      Backtrace:
-          █
-       1. └─testthat::test_check("mlrCPO", filter = "^_cpo_")
-       2.   └─testthat::test_dir(...)
-      Execution halted
-    ```
-
-# pak
-
-<details>
-
-* Version: 0.1.2
-* GitHub: https://github.com/r-lib/pak
-* Source code: https://github.com/cran/pak
-* Date/Publication: 2019-02-19 18:50:08 UTC
-* Number of recursive dependencies: 58
-
-Run `cloud_details(, "pak")` for more info
-
-</details>
-
-## Newly broken
-
-*   checking tests ... ERROR
-    ```
-      Running ‘test-pkgdepends.R’
-    Running the tests in ‘tests/test-pkgdepends.R’ failed.
-    Last 13 lines of output:
-      +       }, add = TRUE)
-      +       test_path <- "pkgdepends"
-      +       asNamespace("testthat")$test_package_dir(
-      +         package = package, test_path = test_path,
-      +         filter = NULL, reporter = "check")
-      +     }
-      +     test()
-      +   }
-      + }
-      > 
-      > do()
-      Error in asNamespace("testthat")$test_package_dir(package = package, test_path = test_path,  : 
-        attempt to apply non-function
-      Calls: do -> test
-      Execution halted
-    ```
-
-# ps
-
-<details>
-
-* Version: 1.3.4
-* GitHub: https://github.com/r-lib/ps
-* Source code: https://github.com/cran/ps
-* Date/Publication: 2020-08-11 14:30:02 UTC
-* Number of recursive dependencies: 41
-
-Run `cloud_details(, "ps")` for more info
-
-</details>
-
-## Newly broken
-
-*   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Last 13 lines of output:
-      ⠏ |   0       | winver                                                          
-      ✔ |   6       | winver
-      
-      ══ Results ═════════════════════════════════════════════════════════════════════
-      Duration: 12.0 s
-      
-      ── Skipped tests  ──────────────────────────────────────────────────────────────
-      ● Needs working IPv6 connection (1)
-      ● On CRAN (11)
-      ● no terminal (1)
-      ● socat is not available (7)
-      
-      [ FAIL 2 | WARN 0 | SKIP 20 | PASS 416 ]
-      Error: Test failures
-      Execution halted
-    ```
-
-# pyMTurkR
-
-<details>
-
-* Version: 1.1.4
-* GitHub: NA
-* Source code: https://github.com/cran/pyMTurkR
-* Date/Publication: 2020-02-04 13:10:02 UTC
-* Number of recursive dependencies: 51
-
-Run `cloud_details(, "pyMTurkR")` for more info
-
-</details>
-
-## Newly broken
-
-*   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Last 13 lines of output:
-      Reason: CheckAWSKeys() is not TRUE
-      
-      Skip (testxlast2-ApproveAllAssignments.R:81:3): ApproveAllAssignments when Assignments are not found
-      Reason: CheckAWSKeys() is not TRUE
-      ────────────────────────────────────────────────────────────────────────────────
-      
-      ══ Results ═════════════════════════════════════════════════════════════════════
-      Duration: 3.2 s
-      
-      ── Skipped tests  ──────────────────────────────────────────────────────────────
-      ● CheckAWSKeys() is not TRUE (58)
-      
-      [ FAIL 2 | WARN 5 | SKIP 58 | PASS 38 ]
-      Error: Test failures
-      Execution halted
-    ```
-
-# renv
-
-<details>
-
-* Version: 0.12.0
-* GitHub: https://github.com/rstudio/renv
-* Source code: https://github.com/cran/renv
-* Date/Publication: 2020-08-28 21:40:02 UTC
-* Number of recursive dependencies: 84
-
-Run `cloud_details(, "renv")` for more info
-
-</details>
-
-## Newly broken
-
-*   checking package dependencies ... ERROR
-    ```
-    Packages suggested but not available:
-      'covr', 'devtools', 'knitr', 'packrat', 'remotes', 'reticulate',
-      'rmarkdown', 'uuid', 'yaml'
-    
-    VignetteBuilder package required for checking but not installed: ‘knitr’
-    
-    The suggested packages are required for a complete check.
-    Checking can be attempted without them by setting the environment
-    variable _R_CHECK_FORCE_SUGGESTS_ to a false value.
-    
-    See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
-    manual.
+    Installation failed.
+    See ‘/tmp/workdir/mapdeck/new/mapdeck.Rcheck/00install.out’ for details.
     ```
 
 ## Newly fixed
 
-*   checking tests ... ERROR
+*   checking installed package size ... NOTE
     ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Last 13 lines of output:
-      ● bind_list warns on name collision ............................. [PASS / <0.1s]
-      ● versions are compared as expected ............................. [PASS / <0.1s]
-      ● inject inserts text at expected anchor point .................. [PASS / <0.1s]
-      ● aliased_path() correctly forms aliased path ................... [PASS / <0.1s]
-      ● memoize avoids evaluating expression multiple times ........... [PASS / <0.1s]
-      
-      ══ testthat results  ═══════════════════════════════════════════════════════════
-      [ OK: 358 | SKIPPED: 63 | WARNINGS: 0 | FAILED: 4 ]
-      1. Failure: package installation does not fail with non-writable cache (@test-cache.R#79) 
-      2. Failure: dependencies specified in R Markdown site generators are found (@test-dependencies.R#187) 
-      3. Failure: dependencies specified in R Markdown site generators are found (@test-dependencies.R#192) 
-      4. Failure: library permissions are validated before restore (@test-restore.R#9) 
-      
-      Error: testthat unit tests failed
-      Execution halted
+      installed size is 76.1Mb
+      sub-directories of 1Mb or more:
+        data          1.3Mb
+        doc           1.6Mb
+        htmlwidgets   2.3Mb
+        libs         70.5Mb
     ```
 
-*   checking running R code from vignettes ... ERROR
-    ```
-    ...
-    
-      When running vignette ‘python.Rmd’:
-    Error: No such vignette ‘python.Rmd’
-    Execution halted
-    when running code in ‘renv.Rmd’
-      ...
-    
-      When running vignette ‘renv.Rmd’:
-    Error: No such vignette ‘renv.Rmd’
-    Execution halted
-    
-      ‘ci.Rmd’ using ‘UTF-8’... failed
-      ‘collaborating.Rmd’ using ‘UTF-8’... failed
-      ‘docker.Rmd’ using ‘UTF-8’... failed
-      ‘faq.Rmd’ using ‘UTF-8’... failed
-      ‘local-sources.Rmd’ using ‘UTF-8’... failed
-      ‘lockfile.Rmd’ using ‘UTF-8’... failed
-      ‘mran.Rmd’ using ‘UTF-8’... failed
-      ‘packages.Rmd’ using ‘UTF-8’... failed
-      ‘python.Rmd’ using ‘UTF-8’... failed
-      ‘renv.Rmd’ using ‘UTF-8’... failed
-    ```
+## Installation
 
-# rlang
+### Devel
+
+```
+* installing *source* package ‘mapdeck’ ...
+** package ‘mapdeck’ successfully unpacked and MD5 sums checked
+** using staged installation
+** libs
+g++ -std=gnu++11 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG -DSTRICT_R_HEADERS -DBOOST_NO_AUTO_PTR -I'/opt/R/4.0.3/lib/R/site-library/BH/include' -I'/opt/R/4.0.3/lib/R/site-library/colourvalues/include' -I'/opt/R/4.0.3/lib/R/site-library/geojsonsf/include' -I'/opt/R/4.0.3/lib/R/site-library/geometries/include' -I'/opt/R/4.0.3/lib/R/site-library/jsonify/include' -I'/opt/R/4.0.3/lib/R/site-library/rapidjsonr/include' -I'/opt/R/4.0.3/lib/R/site-library/Rcpp/include' -I'/opt/R/4.0.3/lib/R/site-library/sfheaders/include' -I'/opt/R/4.0.3/lib/R/site-library/spatialwidget/include' -I/usr/local/include  -I../inst/include -fpic  -g -O2  -c RcppExports.cpp -o RcppExports.o
+g++ -std=gnu++11 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG -DSTRICT_R_HEADERS -DBOOST_NO_AUTO_PTR -I'/opt/R/4.0.3/lib/R/site-library/BH/include' -I'/opt/R/4.0.3/lib/R/site-library/colourvalues/include' -I'/opt/R/4.0.3/lib/R/site-library/geojsonsf/include' -I'/opt/R/4.0.3/lib/R/site-library/geometries/include' -I'/opt/R/4.0.3/lib/R/site-library/jsonify/include' -I'/opt/R/4.0.3/lib/R/site-library/rapidjsonr/include' -I'/opt/R/4.0.3/lib/R/site-library/Rcpp/include' -I'/opt/R/4.0.3/lib/R/site-library/sfheaders/include' -I'/opt/R/4.0.3/lib/R/site-library/spatialwidget/include' -I/usr/local/include  -I../inst/include -fpic  -g -O2  -c aggregate.cpp -o aggregate.o
+g++ -std=gnu++11 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG -DSTRICT_R_HEADERS -DBOOST_NO_AUTO_PTR -I'/opt/R/4.0.3/lib/R/site-library/BH/include' -I'/opt/R/4.0.3/lib/R/site-library/colourvalues/include' -I'/opt/R/4.0.3/lib/R/site-library/geojsonsf/include' -I'/opt/R/4.0.3/lib/R/site-library/geometries/include' -I'/opt/R/4.0.3/lib/R/site-library/jsonify/include' -I'/opt/R/4.0.3/lib/R/site-library/rapidjsonr/include' -I'/opt/R/4.0.3/lib/R/site-library/Rcpp/include' -I'/opt/R/4.0.3/lib/R/site-library/sfheaders/include' -I'/opt/R/4.0.3/lib/R/site-library/spatialwidget/include' -I/usr/local/include  -I../inst/include -fpic  -g -O2  -c geojson.cpp -o geojson.o
+g++ -std=gnu++11 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG -DSTRICT_R_HEADERS -DBOOST_NO_AUTO_PTR -I'/opt/R/4.0.3/lib/R/site-library/BH/include' -I'/opt/R/4.0.3/lib/R/site-library/colourvalues/include' -I'/opt/R/4.0.3/lib/R/site-library/geojsonsf/include' -I'/opt/R/4.0.3/lib/R/site-library/geometries/include' -I'/opt/R/4.0.3/lib/R/site-library/jsonify/include' -I'/opt/R/4.0.3/lib/R/site-library/rapidjsonr/include' -I'/opt/R/4.0.3/lib/R/site-library/Rcpp/include' -I'/opt/R/4.0.3/lib/R/site-library/sfheaders/include' -I'/opt/R/4.0.3/lib/R/site-library/spatialwidget/include' -I/usr/local/include  -I../inst/include -fpic  -g -O2  -c mesh.cpp -o mesh.o
+g++ -std=gnu++11 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG -DSTRICT_R_HEADERS -DBOOST_NO_AUTO_PTR -I'/opt/R/4.0.3/lib/R/site-library/BH/include' -I'/opt/R/4.0.3/lib/R/site-library/colourvalues/include' -I'/opt/R/4.0.3/lib/R/site-library/geojsonsf/include' -I'/opt/R/4.0.3/lib/R/site-library/geometries/include' -I'/opt/R/4.0.3/lib/R/site-library/jsonify/include' -I'/opt/R/4.0.3/lib/R/site-library/rapidjsonr/include' -I'/opt/R/4.0.3/lib/R/site-library/Rcpp/include' -I'/opt/R/4.0.3/lib/R/site-library/sfheaders/include' -I'/opt/R/4.0.3/lib/R/site-library/spatialwidget/include' -I/usr/local/include  -I../inst/include -fpic  -g -O2  -c od.cpp -o od.o
+g++ -std=gnu++11 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG -DSTRICT_R_HEADERS -DBOOST_NO_AUTO_PTR -I'/opt/R/4.0.3/lib/R/site-library/BH/include' -I'/opt/R/4.0.3/lib/R/site-library/colourvalues/include' -I'/opt/R/4.0.3/lib/R/site-library/geojsonsf/include' -I'/opt/R/4.0.3/lib/R/site-library/geometries/include' -I'/opt/R/4.0.3/lib/R/site-library/jsonify/include' -I'/opt/R/4.0.3/lib/R/site-library/rapidjsonr/include' -I'/opt/R/4.0.3/lib/R/site-library/Rcpp/include' -I'/opt/R/4.0.3/lib/R/site-library/sfheaders/include' -I'/opt/R/4.0.3/lib/R/site-library/spatialwidget/include' -I/usr/local/include  -I../inst/include -fpic  -g -O2  -c path.cpp -o path.o
+g++ -std=gnu++11 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG -DSTRICT_R_HEADERS -DBOOST_NO_AUTO_PTR -I'/opt/R/4.0.3/lib/R/site-library/BH/include' -I'/opt/R/4.0.3/lib/R/site-library/colourvalues/include' -I'/opt/R/4.0.3/lib/R/site-library/geojsonsf/include' -I'/opt/R/4.0.3/lib/R/site-library/geometries/include' -I'/opt/R/4.0.3/lib/R/site-library/jsonify/include' -I'/opt/R/4.0.3/lib/R/site-library/rapidjsonr/include' -I'/opt/R/4.0.3/lib/R/site-library/Rcpp/include' -I'/opt/R/4.0.3/lib/R/site-library/sfheaders/include' -I'/opt/R/4.0.3/lib/R/site-library/spatialwidget/include' -I/usr/local/include  -I../inst/include -fpic  -g -O2  -c point.cpp -o point.o
+g++ -std=gnu++11 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG -DSTRICT_R_HEADERS -DBOOST_NO_AUTO_PTR -I'/opt/R/4.0.3/lib/R/site-library/BH/include' -I'/opt/R/4.0.3/lib/R/site-library/colourvalues/include' -I'/opt/R/4.0.3/lib/R/site-library/geojsonsf/include' -I'/opt/R/4.0.3/lib/R/site-library/geometries/include' -I'/opt/R/4.0.3/lib/R/site-library/jsonify/include' -I'/opt/R/4.0.3/lib/R/site-library/rapidjsonr/include' -I'/opt/R/4.0.3/lib/R/site-library/Rcpp/include' -I'/opt/R/4.0.3/lib/R/site-library/sfheaders/include' -I'/opt/R/4.0.3/lib/R/site-library/spatialwidget/include' -I/usr/local/include  -I../inst/include -fpic  -g -O2  -c polygon.cpp -o polygon.o
+g++ -std=gnu++11 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG -DSTRICT_R_HEADERS -DBOOST_NO_AUTO_PTR -I'/opt/R/4.0.3/lib/R/site-library/BH/include' -I'/opt/R/4.0.3/lib/R/site-library/colourvalues/include' -I'/opt/R/4.0.3/lib/R/site-library/geojsonsf/include' -I'/opt/R/4.0.3/lib/R/site-library/geometries/include' -I'/opt/R/4.0.3/lib/R/site-library/jsonify/include' -I'/opt/R/4.0.3/lib/R/site-library/rapidjsonr/include' -I'/opt/R/4.0.3/lib/R/site-library/Rcpp/include' -I'/opt/R/4.0.3/lib/R/site-library/sfheaders/include' -I'/opt/R/4.0.3/lib/R/site-library/spatialwidget/include' -I/usr/local/include  -I../inst/include -fpic  -g -O2  -c text.cpp -o text.o
+/tmp/ccF55lQ2.s: Assembler messages:
+/tmp/ccF55lQ2.s: Fatal error: can't close text.o: No space left on device
+make: *** [/opt/R/4.0.3/lib/R/etc/Makeconf:181: text.o] Error 1
+ERROR: compilation failed for package ‘mapdeck’
+* removing ‘/tmp/workdir/mapdeck/new/mapdeck.Rcheck/mapdeck’
+
+
+```
+### CRAN
+
+```
+* installing *source* package ‘mapdeck’ ...
+** package ‘mapdeck’ successfully unpacked and MD5 sums checked
+** using staged installation
+** libs
+g++ -std=gnu++11 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG -DSTRICT_R_HEADERS -DBOOST_NO_AUTO_PTR -I'/opt/R/4.0.3/lib/R/site-library/BH/include' -I'/opt/R/4.0.3/lib/R/site-library/colourvalues/include' -I'/opt/R/4.0.3/lib/R/site-library/geojsonsf/include' -I'/opt/R/4.0.3/lib/R/site-library/geometries/include' -I'/opt/R/4.0.3/lib/R/site-library/jsonify/include' -I'/opt/R/4.0.3/lib/R/site-library/rapidjsonr/include' -I'/opt/R/4.0.3/lib/R/site-library/Rcpp/include' -I'/opt/R/4.0.3/lib/R/site-library/sfheaders/include' -I'/opt/R/4.0.3/lib/R/site-library/spatialwidget/include' -I/usr/local/include  -I../inst/include -fpic  -g -O2  -c RcppExports.cpp -o RcppExports.o
+g++ -std=gnu++11 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG -DSTRICT_R_HEADERS -DBOOST_NO_AUTO_PTR -I'/opt/R/4.0.3/lib/R/site-library/BH/include' -I'/opt/R/4.0.3/lib/R/site-library/colourvalues/include' -I'/opt/R/4.0.3/lib/R/site-library/geojsonsf/include' -I'/opt/R/4.0.3/lib/R/site-library/geometries/include' -I'/opt/R/4.0.3/lib/R/site-library/jsonify/include' -I'/opt/R/4.0.3/lib/R/site-library/rapidjsonr/include' -I'/opt/R/4.0.3/lib/R/site-library/Rcpp/include' -I'/opt/R/4.0.3/lib/R/site-library/sfheaders/include' -I'/opt/R/4.0.3/lib/R/site-library/spatialwidget/include' -I/usr/local/include  -I../inst/include -fpic  -g -O2  -c aggregate.cpp -o aggregate.o
+g++ -std=gnu++11 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG -DSTRICT_R_HEADERS -DBOOST_NO_AUTO_PTR -I'/opt/R/4.0.3/lib/R/site-library/BH/include' -I'/opt/R/4.0.3/lib/R/site-library/colourvalues/include' -I'/opt/R/4.0.3/lib/R/site-library/geojsonsf/include' -I'/opt/R/4.0.3/lib/R/site-library/geometries/include' -I'/opt/R/4.0.3/lib/R/site-library/jsonify/include' -I'/opt/R/4.0.3/lib/R/site-library/rapidjsonr/include' -I'/opt/R/4.0.3/lib/R/site-library/Rcpp/include' -I'/opt/R/4.0.3/lib/R/site-library/sfheaders/include' -I'/opt/R/4.0.3/lib/R/site-library/spatialwidget/include' -I/usr/local/include  -I../inst/include -fpic  -g -O2  -c geojson.cpp -o geojson.o
+g++ -std=gnu++11 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG -DSTRICT_R_HEADERS -DBOOST_NO_AUTO_PTR -I'/opt/R/4.0.3/lib/R/site-library/BH/include' -I'/opt/R/4.0.3/lib/R/site-library/colourvalues/include' -I'/opt/R/4.0.3/lib/R/site-library/geojsonsf/include' -I'/opt/R/4.0.3/lib/R/site-library/geometries/include' -I'/opt/R/4.0.3/lib/R/site-library/jsonify/include' -I'/opt/R/4.0.3/lib/R/site-library/rapidjsonr/include' -I'/opt/R/4.0.3/lib/R/site-library/Rcpp/include' -I'/opt/R/4.0.3/lib/R/site-library/sfheaders/include' -I'/opt/R/4.0.3/lib/R/site-library/spatialwidget/include' -I/usr/local/include  -I../inst/include -fpic  -g -O2  -c mesh.cpp -o mesh.o
+g++ -std=gnu++11 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG -DSTRICT_R_HEADERS -DBOOST_NO_AUTO_PTR -I'/opt/R/4.0.3/lib/R/site-library/BH/include' -I'/opt/R/4.0.3/lib/R/site-library/colourvalues/include' -I'/opt/R/4.0.3/lib/R/site-library/geojsonsf/include' -I'/opt/R/4.0.3/lib/R/site-library/geometries/include' -I'/opt/R/4.0.3/lib/R/site-library/jsonify/include' -I'/opt/R/4.0.3/lib/R/site-library/rapidjsonr/include' -I'/opt/R/4.0.3/lib/R/site-library/Rcpp/include' -I'/opt/R/4.0.3/lib/R/site-library/sfheaders/include' -I'/opt/R/4.0.3/lib/R/site-library/spatialwidget/include' -I/usr/local/include  -I../inst/include -fpic  -g -O2  -c od.cpp -o od.o
+g++ -std=gnu++11 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG -DSTRICT_R_HEADERS -DBOOST_NO_AUTO_PTR -I'/opt/R/4.0.3/lib/R/site-library/BH/include' -I'/opt/R/4.0.3/lib/R/site-library/colourvalues/include' -I'/opt/R/4.0.3/lib/R/site-library/geojsonsf/include' -I'/opt/R/4.0.3/lib/R/site-library/geometries/include' -I'/opt/R/4.0.3/lib/R/site-library/jsonify/include' -I'/opt/R/4.0.3/lib/R/site-library/rapidjsonr/include' -I'/opt/R/4.0.3/lib/R/site-library/Rcpp/include' -I'/opt/R/4.0.3/lib/R/site-library/sfheaders/include' -I'/opt/R/4.0.3/lib/R/site-library/spatialwidget/include' -I/usr/local/include  -I../inst/include -fpic  -g -O2  -c path.cpp -o path.o
+...
+** byte-compile and prepare package for lazy loading
+** help
+*** installing help indices
+** building package indices
+** installing vignettes
+** testing if installed package can be loaded from temporary location
+** checking absolute paths in shared objects and dynamic libraries
+** testing if installed package can be loaded from final location
+** testing if installed package keeps a record of temporary installation path
+* DONE (mapdeck)
+
+
+```
+# qtl2
 
 <details>
 
-* Version: 0.4.7
-* GitHub: https://github.com/r-lib/rlang
-* Source code: https://github.com/cran/rlang
-* Date/Publication: 2020-07-09 23:00:18 UTC
-* Number of recursive dependencies: 48
+* Version: 0.22-11
+* GitHub: https://github.com/rqtl/qtl2
+* Source code: https://github.com/cran/qtl2
+* Date/Publication: 2020-07-10 15:50:02 UTC
+* Number of recursive dependencies: 106
 
-Run `cloud_details(, "rlang")` for more info
+Run `cloud_details(, "qtl2")` for more info
 
 </details>
 
 ## Newly broken
 
-*   checking tests ... ERROR
+*   checking whether package ‘qtl2’ can be installed ... ERROR
     ```
-      Running ‘sink.R’
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Last 13 lines of output:
-      ● On CRAN (14)
-      ● Until the workaround is in place (1)
-      ● rlanglibtest cannot be loaded (1)
-      ● test needs crayon (1)
-      
-      ══ testthat results  ═══════════════════════════════════════════════════════════
-      Warning (test-eval-tidy.R:287:3): names are translated to native when creating data mask
-      Warning (test-nse-defuse.R:237:3): serialised unicode in `:=` LHS is unserialised
-      FAILURE (test-trace.R:24:3): tree printing only changes deliberately
-      FAILURE (test-trace.R:51:3): can print tree with collapsed branches
-      FAILURE (test-trace.R:63:3): can print tree with collapsed branches
-      
-      [ FAIL 3 | WARN 2 | SKIP 26 | PASS 2696 ]
-      Error: Test failures
-      Execution halted
+    Installation failed.
+    See ‘/tmp/workdir/qtl2/new/qtl2.Rcheck/00install.out’ for details.
     ```
 
-# rvgtest
+## Newly fixed
+
+*   checking installed package size ... NOTE
+    ```
+      installed size is 88.2Mb
+      sub-directories of 1Mb or more:
+        extdata   3.3Mb
+        libs     83.6Mb
+    ```
+
+## Installation
+
+### Devel
+
+```
+* installing *source* package ‘qtl2’ ...
+** package ‘qtl2’ successfully unpacked and MD5 sums checked
+** using staged installation
+** libs
+g++ -std=gnu++11 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG  -I'/opt/R/4.0.3/lib/R/site-library/Rcpp/include' -I'/opt/R/4.0.3/lib/R/site-library/RcppEigen/include' -I/usr/local/include   -fpic  -g -O2  -c RcppExports.cpp -o RcppExports.o
+In file included from /opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/Core:392,
+                 from /opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/Dense:1,
+                 from /opt/R/4.0.3/lib/R/site-library/RcppEigen/include/RcppEigenForward.h:30,
+                 from /opt/R/4.0.3/lib/R/site-library/RcppEigen/include/RcppEigen.h:25,
+                 from RcppExports.cpp:4:
+...
+/opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/src/Householder/HouseholderSequence.h:333:46:   required from ‘void Eigen::HouseholderSequence<VectorsType, CoeffsType, Side>::applyThisOnTheLeft(Dest&, Workspace&) const [with Dest = Eigen::Matrix<double, -1, 1>; Workspace = Eigen::Matrix<double, 1, 1, 1, 1, 1>; VectorsType = Eigen::Matrix<double, -1, -1>; CoeffsType = Eigen::Matrix<double, -1, 1>; int Side = 1]’
+/opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/src/Householder/HouseholderSequence.h:308:7:   required from ‘void Eigen::HouseholderSequence<VectorsType, CoeffsType, Side>::applyThisOnTheLeft(Dest&) const [with Dest = Eigen::Matrix<double, -1, 1>; VectorsType = Eigen::Matrix<double, -1, -1>; CoeffsType = Eigen::Matrix<double, -1, 1>; int Side = 1]’
+/opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/src/Householder/HouseholderSequence.h:360:7:   required from ‘typename Eigen::internal::matrix_type_times_scalar_type<typename Eigen::internal::traits<Eigen::HouseholderSequence<VectorsType, CoeffsType, Side> >::Scalar, OtherDerived>::Type Eigen::HouseholderSequence<VectorsType, CoeffsType, Side>::operator*(const Eigen::MatrixBase<OtherDerived>&) const [with OtherDerived = Eigen::Matrix<double, -1, 1>; VectorsType = Eigen::Matrix<double, -1, -1>; CoeffsType = Eigen::Matrix<double, -1, 1>; int Side = 1; typename Eigen::internal::matrix_type_times_scalar_type<typename Eigen::internal::traits<Eigen::HouseholderSequence<VectorsType, CoeffsType, Side> >::Scalar, OtherDerived>::Type = Eigen::Matrix<double, -1, 1>]’
+linreg_eigen.cpp:192:58:   required from here
+/opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/src/Core/CoreEvaluators.h:960:8: warning: ignoring attributes on template argument ‘Eigen::internal::packet_traits<double>::type’ {aka ‘__vector(2) double’} [-Wignored-attributes]
+/tmp/ccRtft5Z.s: Assembler messages:
+/tmp/ccRtft5Z.s: Fatal error: can't close linreg_eigen.o: No space left on device
+make: *** [/opt/R/4.0.3/lib/R/etc/Makeconf:181: linreg_eigen.o] Error 1
+ERROR: compilation failed for package ‘qtl2’
+* removing ‘/tmp/workdir/qtl2/new/qtl2.Rcheck/qtl2’
+
+
+```
+### CRAN
+
+```
+* installing *source* package ‘qtl2’ ...
+** package ‘qtl2’ successfully unpacked and MD5 sums checked
+** using staged installation
+** libs
+g++ -std=gnu++11 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG  -I'/opt/R/4.0.3/lib/R/site-library/Rcpp/include' -I'/opt/R/4.0.3/lib/R/site-library/RcppEigen/include' -I/usr/local/include   -fpic  -g -O2  -c RcppExports.cpp -o RcppExports.o
+In file included from /opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/Core:392,
+                 from /opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/Dense:1,
+                 from /opt/R/4.0.3/lib/R/site-library/RcppEigen/include/RcppEigenForward.h:30,
+                 from /opt/R/4.0.3/lib/R/site-library/RcppEigen/include/RcppEigen.h:25,
+                 from RcppExports.cpp:4:
+...
+** inst
+** byte-compile and prepare package for lazy loading
+** help
+*** installing help indices
+** building package indices
+** testing if installed package can be loaded from temporary location
+** checking absolute paths in shared objects and dynamic libraries
+** testing if installed package can be loaded from final location
+** testing if installed package keeps a record of temporary installation path
+* DONE (qtl2)
+
+
+```
+# r2dii.match
 
 <details>
 
-* Version: 0.7.4
-* GitHub: NA
-* Source code: https://github.com/cran/rvgtest
-* Date/Publication: 2014-02-26 15:11:17
-* Number of recursive dependencies: 25
+* Version: 0.0.7
+* GitHub: https://github.com/2DegreesInvesting/r2dii.match
+* Source code: https://github.com/cran/r2dii.match
+* Date/Publication: 2020-12-03 15:10:02 UTC
+* Number of recursive dependencies: 68
 
-Run `cloud_details(, "rvgtest")` for more info
-
-</details>
-
-## Newly broken
-
-*   checking tests ... ERROR
-    ```
-      Running ‘dotestthat.R’
-    Running the tests in ‘tests/dotestthat.R’ failed.
-    Last 13 lines of output:
-       1. testthat::expect_error(...) test_Runuran.R:100:8
-       6. rvgtest::xerror(...)
-      
-      ── 3. FAILURE (test_ierror.R:324:9): [ie-i31] calling plot.rvgt.ierror: x ──────
-      `plot.rvgt.ierror()` threw an error with unexpected message.
-      Expected match: "'x' is missing."
-      Actual message: "argument \"x\" is missing, with no default"
-      Backtrace:
-       1. testthat::expect_error(plot.rvgt.ierror(), msg) test_ierror.R:324:8
-       6. rvgtest::plot.rvgt.ierror()
-      
-      ══ DONE ════════════════════════════════════════════════════════════════════════
-      Keep trying!
-      Error: Test failures
-      Execution halted
-    ```
-
-## In both
-
-*   checking R code for possible problems ... NOTE
-    ```
-    ...
-    uerror : myaqdist: no visible global function definition for ‘uq’
-    uerror: no visible global function definition for ‘quantile’
-    unuran.distr.class: no visible global function definition for
-      ‘unuran.details’
-    xerror: no visible global function definition for ‘is’
-    xerror: no visible global function definition for ‘unuran.is.inversion’
-    xerror : myaqdist: no visible global function definition for ‘uq’
-    xerror: no visible global function definition for ‘quantile’
-    Undefined global functions or variables:
-      abline chisq.test is lines pchisq pnorm points polygon qnorm quantile
-      rainbow rbinom read.table rnorm runif text uniroot unuran.details
-      unuran.is.inversion uq ur
-    Consider adding
-      importFrom("grDevices", "rainbow")
-      importFrom("graphics", "abline", "lines", "points", "polygon", "text")
-      importFrom("methods", "is")
-      importFrom("stats", "chisq.test", "pchisq", "pnorm", "qnorm",
-                 "quantile", "rbinom", "rnorm", "runif", "uniroot")
-      importFrom("utils", "read.table")
-    to your NAMESPACE file (and ensure that your DESCRIPTION Imports field
-    contains 'methods').
-    ```
-
-# shinyEventLogger
-
-<details>
-
-* Version: 0.1.1
-* GitHub: https://github.com/kalimu/shinyEventLogger
-* Source code: https://github.com/cran/shinyEventLogger
-* Date/Publication: 2019-02-22 10:20:03 UTC
-* Number of recursive dependencies: 101
-
-Run `cloud_details(, "shinyEventLogger")` for more info
+Run `cloud_details(, "r2dii.match")` for more info
 
 </details>
 
@@ -828,348 +707,463 @@ Run `cloud_details(, "shinyEventLogger")` for more info
       Running ‘testthat.R’
     Running the tests in ‘tests/testthat.R’ failed.
     Last 13 lines of output:
-      > library(testthat)
-      > library(shinyEventLogger)
-      > 
-      > test_check("shinyEventLogger")
-      ── FAILURE (???): logging wrapper functions ────────────────────────────────────
-      `log_test(expect_true(FALSE))` does not match "|#2|Error: FALSE isn't true.".
-      Actual value: "|#2|Error: FALSE is not TRUE`actual`:   FALSE`expected`: TRUE "
+      Warning (test-restructure_ald.R:8:3): may input add_sector_and_borderline(data)
+      Warning (test-restructure_ald.R:8:3): may input add_sector_and_borderline(data)
+      Warning (test-uniquify_id_column.R:7:3): uniquify_id_column overwrites id_ultimate_parent
+      Warning (test-uniquify_id_column.R:7:3): uniquify_id_column overwrites id_ultimate_parent
+      Warning (test-uniquify_id_column.R:7:3): uniquify_id_column overwrites id_ultimate_parent
+      Warning (test-uniquify_id_column.R:21:3): uniquify_id_column overwrites id_direct_loantaker
+      Warning (test-uniquify_id_column.R:21:3): uniquify_id_column overwrites id_direct_loantaker
+      Warning (test-uniquify_id_column.R:21:3): uniquify_id_column overwrites id_direct_loantaker
+      Warning (???): uniquify_id_column prints its output (fix not returned result)
+      Warning (???): uniquify_id_column prints its output (fix not returned result)
+      Warning (???): uniquify_id_column prints its output (fix not returned result)
       
-      ══ testthat results  ═══════════════════════════════════════════════════════════
-      FAILURE (???): logging wrapper functions
-      
-      [ FAIL 1 | WARN 0 | SKIP 0 | PASS 135 ]
+      [ FAIL 2 | WARN 503 | SKIP 6 | PASS 168 ]
       Error: Test failures
       Execution halted
     ```
 
-# spectralGraphTopology
+# RNiftyReg
 
 <details>
 
-* Version: 0.2.0
-* GitHub: https://github.com/dppalomar/spectralGraphTopology
-* Source code: https://github.com/cran/spectralGraphTopology
-* Date/Publication: 2019-10-12 08:00:03 UTC
-* Number of recursive dependencies: 114
+* Version: 2.7.0
+* GitHub: https://github.com/jonclayden/RNiftyReg
+* Source code: https://github.com/cran/RNiftyReg
+* Date/Publication: 2020-09-12 05:51:01 UTC
+* Number of recursive dependencies: 53
 
-Run `cloud_details(, "spectralGraphTopology")` for more info
+Run `cloud_details(, "RNiftyReg")` for more info
 
 </details>
 
 ## Newly broken
 
-*   checking tests ... ERROR
+*   checking whether package ‘RNiftyReg’ can be installed ... ERROR
     ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Last 13 lines of output:
-      > library(spectralGraphTopology)
-      > 
-      > test_check("spectralGraphTopology")
-      ── FAILURE (test-learnGraphTopology.R:65:3): learn_bipartite_k_component_graph c
-      graph$convergence is not TRUE
-      
-      `actual`:   FALSE
-      `expected`: TRUE 
-      
-      ══ testthat results  ═══════════════════════════════════════════════════════════
-      FAILURE (test-learnGraphTopology.R:65:3): learn_bipartite_k_component_graph can learn k-component bipartite graph
-      
-      [ FAIL 1 | WARN 0 | SKIP 0 | PASS 91 ]
-      Error: Test failures
-      Execution halted
+    Installation failed.
+    See ‘/tmp/workdir/RNiftyReg/new/RNiftyReg.Rcheck/00install.out’ for details.
     ```
 
-## In both
+## Newly fixed
 
 *   checking installed package size ... NOTE
     ```
-      installed size is  7.2Mb
+      installed size is 124.2Mb
       sub-directories of 1Mb or more:
-        doc    3.1Mb
-        libs   3.7Mb
+        extdata    2.0Mb
+        libs     122.1Mb
     ```
 
-# storr
+## Installation
+
+### Devel
+
+```
+* installing *source* package ‘RNiftyReg’ ...
+** package ‘RNiftyReg’ successfully unpacked and MD5 sums checked
+** using staged installation
+checking whether the C++ compiler works... yes
+checking for C++ compiler default output file name... a.out
+checking for suffix of executables... 
+checking whether we are cross compiling... no
+checking for suffix of object files... o
+checking whether we are using the GNU C++ compiler... yes
+checking whether g++ -std=gnu++11 accepts -g... yes
+...
+/opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/src/Core/Matrix.h:245:29:   required from ‘Eigen::Matrix<_Scalar, _Rows, _Cols, _Options, _MaxRows, _MaxCols>& Eigen::Matrix<_Scalar, _Rows, _Cols, _Options, _MaxRows, _MaxCols>::operator=(const Eigen::ReturnByValue<OtherDerived>&) [with OtherDerived = Eigen::MatrixSquareRootReturnValue<Eigen::Matrix<double, 4, 4> >; _Scalar = double; int _Rows = 4; int _Cols = 4; int _Options = 0; int _MaxRows = 4; int _MaxCols = 4]’
+reg-lib/cpu/_reg_maths_eigen.cpp:234:15:   required from here
+/opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/src/Core/DenseCoeffsBase.h:650:34: warning: ignoring attributes on template argument ‘Eigen::internal::packet_traits<double>::type’ {aka ‘__vector(2) double’} [-Wignored-attributes]
+  650 |   return internal::first_aligned<int(unpacket_traits<DefaultPacketType>::alignment),Derived>(m);
+      |                                  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/tmp/cchQRek2.s: Assembler messages:
+/tmp/cchQRek2.s: Fatal error: can't close reg-lib/cpu/_reg_maths_eigen.o: No space left on device
+make: *** [/opt/R/4.0.3/lib/R/etc/Makeconf:181: reg-lib/cpu/_reg_maths_eigen.o] Error 1
+ERROR: compilation failed for package ‘RNiftyReg’
+* removing ‘/tmp/workdir/RNiftyReg/new/RNiftyReg.Rcheck/RNiftyReg’
+
+
+```
+### CRAN
+
+```
+* installing *source* package ‘RNiftyReg’ ...
+** package ‘RNiftyReg’ successfully unpacked and MD5 sums checked
+** using staged installation
+checking whether the C++ compiler works... yes
+checking for C++ compiler default output file name... a.out
+checking for suffix of executables... 
+checking whether we are cross compiling... no
+checking for suffix of object files... o
+checking whether we are using the GNU C++ compiler... yes
+checking whether g++ -std=gnu++11 accepts -g... yes
+...
+** inst
+** byte-compile and prepare package for lazy loading
+** help
+*** installing help indices
+** building package indices
+** testing if installed package can be loaded from temporary location
+** checking absolute paths in shared objects and dynamic libraries
+** testing if installed package can be loaded from final location
+** testing if installed package keeps a record of temporary installation path
+* DONE (RNiftyReg)
+
+
+```
+# sarsop
 
 <details>
 
-* Version: 1.2.1
-* GitHub: https://github.com/richfitz/storr
-* Source code: https://github.com/cran/storr
-* Date/Publication: 2018-10-18 11:10:03 UTC
-* Number of recursive dependencies: 49
+* Version: 0.6.6
+* GitHub: https://github.com/boettiger-lab/sarsop
+* Source code: https://github.com/cran/sarsop
+* Date/Publication: 2020-12-12 06:30:03 UTC
+* Number of recursive dependencies: 105
 
-Run `cloud_details(, "storr")` for more info
+Run `cloud_details(, "sarsop")` for more info
 
 </details>
 
 ## Newly broken
 
-*   checking examples ... ERROR
+*   checking whether package ‘sarsop’ can be installed ... ERROR
     ```
-    ...
-    Running examples in ‘storr-Ex.R’ failed
-    The error most likely occurred in:
-    
-    > ### Name: test_driver
-    > ### Title: Test a storr driver
-    > ### Aliases: test_driver
-    > 
-    > ### ** Examples
-    > 
-    > ## Testing the environment driver is nice and fast:
-    > if (requireNamespace("testthat")) {
-    +   create_env <- function(dr = NULL, ...) {
-    +     driver_environment(dr$envir, ...)
-    +   }
-    +   test_driver(create_env)
-    + }
-    Loading required namespace: testthat
-    Error in test_files(test_dir = dirname(path), test_package = package,  : 
-      unused argument (start_end_reporter = FALSE)
-    Calls: test_driver -> lapply -> FUN
-    Execution halted
+    Installation failed.
+    See ‘/tmp/workdir/sarsop/new/sarsop.Rcheck/00install.out’ for details.
     ```
 
-*   checking tests ... ERROR
+## Newly fixed
+
+*   checking installed package size ... NOTE
     ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Last 13 lines of output:
-      
-      ── Skipped tests  ──────────────────────────────────────────────────────────────
-      ● On CRAN (6)
-      
-      ══ testthat results  ═══════════════════════════════════════════════════════════
-      ERROR (test-auto.R:2:3): environment
-      ERROR (test-auto.R:7:3): rds
-      ERROR (test-auto.R:16:5): dbi (sqlite)
-      ERROR (test-auto.R:40:3): multistorr (env + rds)
-      ERROR (test-driver-remote.R:9:3): storr spec
-      ERROR (test-spec.R:5:3): reporter handling
-      
-      [ FAIL 6 | WARN 0 | SKIP 6 | PASS 285 ]
-      Error: Test failures
-      Execution halted
+      installed size is 76.9Mb
+      sub-directories of 1Mb or more:
+        bin  76.0Mb
     ```
 
-# thor
+## Installation
+
+### Devel
+
+```
+* installing *source* package ‘sarsop’ ...
+** package ‘sarsop’ successfully unpacked and MD5 sums checked
+** using staged installation
+** libs
+g++ -std=gnu++11 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG -Iappl-0.96 -Iappl-0.96/MathLib -Iappl-0.96/Algorithms -Iappl-0.96/Algorithms/HSVI -Iappl-0.96/Algorithms/SARSOP -Iappl-0.96/Models/MOMDP -Iappl-0.96/Models/MOMDP/CoLoc -Iappl-0.96/OfflineSolver -Iappl-0.96/Bounds -Iappl-0.96/Core -Iappl-0.96/Parser/Cassandra -Iappl-0.96/Parser/Cassandra/include -Iappl-0.96/Parser -Iappl-0.96/Parser/POMDPX -Iappl-0.96/Utils -Iappl-0.96/Simulator -Iappl-0.96/Evaluator -Iappl-0.96/Controller -I'/opt/R/4.0.3/lib/R/site-library/BH/include' -I/usr/local/include   -fpic  -g -O2  -c readme.cpp -o readme.o
+gcc -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG -Iappl-0.96 -Iappl-0.96/MathLib -Iappl-0.96/Algorithms -Iappl-0.96/Algorithms/HSVI -Iappl-0.96/Algorithms/SARSOP -Iappl-0.96/Models/MOMDP -Iappl-0.96/Models/MOMDP/CoLoc -Iappl-0.96/OfflineSolver -Iappl-0.96/Bounds -Iappl-0.96/Core -Iappl-0.96/Parser/Cassandra -Iappl-0.96/Parser/Cassandra/include -Iappl-0.96/Parser -Iappl-0.96/Parser/POMDPX -Iappl-0.96/Utils -Iappl-0.96/Simulator -Iappl-0.96/Evaluator -Iappl-0.96/Controller -I'/opt/R/4.0.3/lib/R/site-library/BH/include' -I/usr/local/include   -fpic  -g -O2  -c zzz.c -o zzz.o
+g++ -std=gnu++11 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG -Iappl-0.96 -Iappl-0.96/MathLib -Iappl-0.96/Algorithms -Iappl-0.96/Algorithms/HSVI -Iappl-0.96/Algorithms/SARSOP -Iappl-0.96/Models/MOMDP -Iappl-0.96/Models/MOMDP/CoLoc -Iappl-0.96/OfflineSolver -Iappl-0.96/Bounds -Iappl-0.96/Core -Iappl-0.96/Parser/Cassandra -Iappl-0.96/Parser/Cassandra/include -Iappl-0.96/Parser -Iappl-0.96/Parser/POMDPX -Iappl-0.96/Utils -Iappl-0.96/Simulator -Iappl-0.96/Evaluator -Iappl-0.96/Controller -I'/opt/R/4.0.3/lib/R/site-library/BH/include' -I/usr/local/include   -fpic  -g -O2  -c appl-0.96/Models/MOMDP/BeliefTransitionMOMDP.cpp -o appl-0.96/Models/MOMDP/BeliefTransitionMOMDP.o
+In file included from /opt/R/4.0.3/lib/R/site-library/BH/include/boost/smart_ptr/shared_ptr.hpp:28,
+                 from appl-0.96/Core/MObject.h:7,
+                 from appl-0.96/Models/MOMDP/IVariableValue.h:7,
+...
+Warning in file.append(to[okay], from[okay]) :
+  write error during file append
+Warning in file.append(to[okay], from[okay]) :
+  write error during file append
+Warning in file.append(to[okay], from[okay]) :
+  write error during file append
+** byte-compile and prepare package for lazy loading
+Fatal error: cannot create 'R_TempDir'
+ERROR: lazy loading failed for package ‘sarsop’
+* removing ‘/tmp/workdir/sarsop/new/sarsop.Rcheck/sarsop’
+
+
+```
+### CRAN
+
+```
+* installing *source* package ‘sarsop’ ...
+** package ‘sarsop’ successfully unpacked and MD5 sums checked
+** using staged installation
+** libs
+g++ -std=gnu++11 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG -Iappl-0.96 -Iappl-0.96/MathLib -Iappl-0.96/Algorithms -Iappl-0.96/Algorithms/HSVI -Iappl-0.96/Algorithms/SARSOP -Iappl-0.96/Models/MOMDP -Iappl-0.96/Models/MOMDP/CoLoc -Iappl-0.96/OfflineSolver -Iappl-0.96/Bounds -Iappl-0.96/Core -Iappl-0.96/Parser/Cassandra -Iappl-0.96/Parser/Cassandra/include -Iappl-0.96/Parser -Iappl-0.96/Parser/POMDPX -Iappl-0.96/Utils -Iappl-0.96/Simulator -Iappl-0.96/Evaluator -Iappl-0.96/Controller -I'/opt/R/4.0.3/lib/R/site-library/BH/include' -I/usr/local/include   -fpic  -g -O2  -c readme.cpp -o readme.o
+gcc -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG -Iappl-0.96 -Iappl-0.96/MathLib -Iappl-0.96/Algorithms -Iappl-0.96/Algorithms/HSVI -Iappl-0.96/Algorithms/SARSOP -Iappl-0.96/Models/MOMDP -Iappl-0.96/Models/MOMDP/CoLoc -Iappl-0.96/OfflineSolver -Iappl-0.96/Bounds -Iappl-0.96/Core -Iappl-0.96/Parser/Cassandra -Iappl-0.96/Parser/Cassandra/include -Iappl-0.96/Parser -Iappl-0.96/Parser/POMDPX -Iappl-0.96/Utils -Iappl-0.96/Simulator -Iappl-0.96/Evaluator -Iappl-0.96/Controller -I'/opt/R/4.0.3/lib/R/site-library/BH/include' -I/usr/local/include   -fpic  -g -O2  -c zzz.c -o zzz.o
+g++ -std=gnu++11 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG -Iappl-0.96 -Iappl-0.96/MathLib -Iappl-0.96/Algorithms -Iappl-0.96/Algorithms/HSVI -Iappl-0.96/Algorithms/SARSOP -Iappl-0.96/Models/MOMDP -Iappl-0.96/Models/MOMDP/CoLoc -Iappl-0.96/OfflineSolver -Iappl-0.96/Bounds -Iappl-0.96/Core -Iappl-0.96/Parser/Cassandra -Iappl-0.96/Parser/Cassandra/include -Iappl-0.96/Parser -Iappl-0.96/Parser/POMDPX -Iappl-0.96/Utils -Iappl-0.96/Simulator -Iappl-0.96/Evaluator -Iappl-0.96/Controller -I'/opt/R/4.0.3/lib/R/site-library/BH/include' -I/usr/local/include   -fpic  -g -O2  -c appl-0.96/Models/MOMDP/BeliefTransitionMOMDP.cpp -o appl-0.96/Models/MOMDP/BeliefTransitionMOMDP.o
+In file included from /opt/R/4.0.3/lib/R/site-library/BH/include/boost/smart_ptr/shared_ptr.hpp:28,
+                 from appl-0.96/Core/MObject.h:7,
+                 from appl-0.96/Models/MOMDP/IVariableValue.h:7,
+...
+** byte-compile and prepare package for lazy loading
+** help
+*** installing help indices
+*** copying figures
+** building package indices
+** testing if installed package can be loaded from temporary location
+** checking absolute paths in shared objects and dynamic libraries
+** testing if installed package can be loaded from final location
+** testing if installed package keeps a record of temporary installation path
+* DONE (sarsop)
+
+
+```
+# symengine
+
+<details>
+
+* Version: 0.1.5
+* GitHub: https://github.com/symengine/symengine.R
+* Source code: https://github.com/cran/symengine
+* Date/Publication: 2020-07-06 12:00:02 UTC
+* Number of recursive dependencies: 50
+
+Run `cloud_details(, "symengine")` for more info
+
+</details>
+
+## Newly broken
+
+*   checking whether package ‘symengine’ can be installed ... ERROR
+    ```
+    Installation failed.
+    See ‘/tmp/workdir/symengine/new/symengine.Rcheck/00install.out’ for details.
+    ```
+
+## Newly fixed
+
+*   checking installed package size ... NOTE
+    ```
+      installed size is 60.2Mb
+      sub-directories of 1Mb or more:
+        libs  59.3Mb
+    ```
+
+*   checking for GNU extensions in Makefiles ... NOTE
+    ```
+    GNU make is a SystemRequirements.
+    ```
+
+## Installation
+
+### Devel
+
+```
+* installing *source* package ‘symengine’ ...
+** package ‘symengine’ successfully unpacked and MD5 sums checked
+** using staged installation
+====== configuring symengine R package ======
+== current working directory
+/tmp/workdir/symengine/new/symengine.Rcheck/00_pkg_src/symengine
+==
+== cmake:
+/usr/bin/cmake
+cmake version 3.16.3
+...
+make[3]: *** [symengine/CMakeFiles/symengine.dir/build.make:925: symengine/libsymengine.a] Error 1
+make[3]: *** Deleting file 'symengine/libsymengine.a'
+make[3]: Leaving directory '/tmp/workdir/symengine/new/symengine.Rcheck/00_pkg_src/symengine/src/upstream'
+make[2]: *** [CMakeFiles/Makefile2:114: symengine/CMakeFiles/symengine.dir/all] Error 2
+make[2]: Leaving directory '/tmp/workdir/symengine/new/symengine.Rcheck/00_pkg_src/symengine/src/upstream'
+make[1]: *** [Makefile:141: all] Error 2
+make[1]: Leaving directory '/tmp/workdir/symengine/new/symengine.Rcheck/00_pkg_src/symengine/src/upstream'
+make: *** [Makevars:15: do_upstream] Error 2
+ERROR: compilation failed for package ‘symengine’
+* removing ‘/tmp/workdir/symengine/new/symengine.Rcheck/symengine’
+
+
+```
+### CRAN
+
+```
+* installing *source* package ‘symengine’ ...
+** package ‘symengine’ successfully unpacked and MD5 sums checked
+** using staged installation
+====== configuring symengine R package ======
+== current working directory
+/tmp/workdir/symengine/old/symengine.Rcheck/00_pkg_src/symengine
+==
+== cmake:
+/usr/bin/cmake
+cmake version 3.16.3
+...
+Creating a generic function for ‘rep.int’ from package ‘base’ in package ‘symengine’
+** help
+*** installing help indices
+** building package indices
+** installing vignettes
+** testing if installed package can be loaded from temporary location
+** checking absolute paths in shared objects and dynamic libraries
+** testing if installed package can be loaded from final location
+** testing if installed package keeps a record of temporary installation path
+* DONE (symengine)
+
+
+```
+# torch
+
+<details>
+
+* Version: 0.1.1
+* GitHub: https://github.com/mlverse/torch
+* Source code: https://github.com/cran/torch
+* Date/Publication: 2020-10-20 21:10:02 UTC
+* Number of recursive dependencies: 58
+
+Run `cloud_details(, "torch")` for more info
+
+</details>
+
+## Newly broken
+
+*   checking whether package ‘torch’ can be installed ... ERROR
+    ```
+    Installation failed.
+    See ‘/tmp/workdir/torch/new/torch.Rcheck/00install.out’ for details.
+    ```
+
+## Newly fixed
+
+*   checking installed package size ... NOTE
+    ```
+      installed size is 157.8Mb
+      sub-directories of 1Mb or more:
+        R       3.1Mb
+        help    2.8Mb
+        libs  151.4Mb
+    ```
+
+## Installation
+
+### Devel
+
+```
+* installing *source* package ‘torch’ ...
+** package ‘torch’ successfully unpacked and MD5 sums checked
+** using staged installation
+** libs
+g++ -std=gnu++11 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG  -I'/opt/R/4.0.3/lib/R/site-library/Rcpp/include' -I/usr/local/include   -fpic  -g -O2  -c RcppExports.cpp -o RcppExports.o
+g++ -std=gnu++11 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG  -I'/opt/R/4.0.3/lib/R/site-library/Rcpp/include' -I/usr/local/include   -fpic  -g -O2  -c autograd.cpp -o autograd.o
+g++ -std=gnu++11 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG  -I'/opt/R/4.0.3/lib/R/site-library/Rcpp/include' -I/usr/local/include   -fpic  -g -O2  -c contrib.cpp -o contrib.o
+g++ -std=gnu++11 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG  -I'/opt/R/4.0.3/lib/R/site-library/Rcpp/include' -I/usr/local/include   -fpic  -g -O2  -c cuda.cpp -o cuda.o
+g++ -std=gnu++11 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG  -I'/opt/R/4.0.3/lib/R/site-library/Rcpp/include' -I/usr/local/include   -fpic  -g -O2  -c device.cpp -o device.o
+In file included from device.cpp:2:
+...
+Renaming torch lib to torchpkg
+"/opt/R/4.0.3/lib/R/bin/Rscript" "../tools/renamelib.R"
+installing to /tmp/workdir/torch/new/torch.Rcheck/00LOCK-torch/00new/torch/libs
+** R
+Warning in dir.create(outCodeDir) :
+  cannot create dir '/tmp/workdir/torch/new/torch.Rcheck/00LOCK-torch/00new/torch/R', reason 'No space left on device'
+Error in .install_package_code_files(".", instdir) : 
+  cannot open directory '/tmp/workdir/torch/new/torch.Rcheck/00LOCK-torch/00new/torch/R'
+ERROR: unable to collate and parse R files for package ‘torch’
+* removing ‘/tmp/workdir/torch/new/torch.Rcheck/torch’
+
+
+```
+### CRAN
+
+```
+* installing *source* package ‘torch’ ...
+** package ‘torch’ successfully unpacked and MD5 sums checked
+** using staged installation
+** libs
+g++ -std=gnu++11 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG  -I'/opt/R/4.0.3/lib/R/site-library/Rcpp/include' -I/usr/local/include   -fpic  -g -O2  -c RcppExports.cpp -o RcppExports.o
+g++ -std=gnu++11 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG  -I'/opt/R/4.0.3/lib/R/site-library/Rcpp/include' -I/usr/local/include   -fpic  -g -O2  -c autograd.cpp -o autograd.o
+g++ -std=gnu++11 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG  -I'/opt/R/4.0.3/lib/R/site-library/Rcpp/include' -I/usr/local/include   -fpic  -g -O2  -c contrib.cpp -o contrib.o
+g++ -std=gnu++11 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG  -I'/opt/R/4.0.3/lib/R/site-library/Rcpp/include' -I/usr/local/include   -fpic  -g -O2  -c cuda.cpp -o cuda.o
+g++ -std=gnu++11 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG  -I'/opt/R/4.0.3/lib/R/site-library/Rcpp/include' -I/usr/local/include   -fpic  -g -O2  -c device.cpp -o device.o
+In file included from device.cpp:2:
+...
+** help
+*** installing help indices
+*** copying figures
+** building package indices
+** installing vignettes
+** testing if installed package can be loaded from temporary location
+** checking absolute paths in shared objects and dynamic libraries
+** testing if installed package can be loaded from final location
+** testing if installed package keeps a record of temporary installation path
+* DONE (torch)
+
+
+```
+# volesti
 
 <details>
 
 * Version: 1.1.2
-* GitHub: https://github.com/richfitz/thor
-* Source code: https://github.com/cran/thor
-* Date/Publication: 2020-05-15 14:20:03 UTC
-* Number of recursive dependencies: 43
+* GitHub: https://github.com/GeomScale/volume_approximation
+* Source code: https://github.com/cran/volesti
+* Date/Publication: 2020-10-19 09:20:03 UTC
+* Number of recursive dependencies: 39
 
-Run `cloud_details(, "thor")` for more info
-
-</details>
-
-## Newly broken
-
-*   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Last 13 lines of output:
-      Backtrace:
-          █
-       1. └─storr::test_driver(...) test-storr.R:5:2
-       2.   └─base::lapply(...)
-       3.     └─testthat:::FUN(X[[i]], ...)
-      
-      ── Skipped tests  ──────────────────────────────────────────────────────────────
-      ● On CRAN (2)
-      
-      ══ testthat results  ═══════════════════════════════════════════════════════════
-      ERROR (test-storr.R:5:3): spec
-      
-      [ FAIL 1 | WARN 0 | SKIP 2 | PASS 509 ]
-      Error: Test failures
-      Execution halted
-    ```
-
-# treeclim
-
-<details>
-
-* Version: 2.0.3
-* GitHub: NA
-* Source code: https://github.com/cran/treeclim
-* Date/Publication: 2019-03-22 15:20:03 UTC
-* Number of recursive dependencies: 61
-
-Run `cloud_details(, "treeclim")` for more info
+Run `cloud_details(, "volesti")` for more info
 
 </details>
 
 ## Newly broken
 
-*   checking tests ... ERROR
+*   checking whether package ‘volesti’ can be installed ... ERROR
     ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Last 13 lines of output:
-      Warning (test_month_processing.R:7:3): continuity in month sequences is recognized correctly
-      Warning (test_month_processing.R:8:3): continuity in month sequences is recognized correctly
-      Warning (test_month_processing.R:9:3): continuity in month sequences is recognized correctly
-      Warning (test_month_processing.R:10:3): continuity in month sequences is recognized correctly
-      Warning (test_month_processing.R:22:3): ’check_months’ correctly identifies wrong month specs
-      Warning (test_month_processing.R:23:3): ’check_months’ correctly identifies wrong month specs
-      Warning (test_month_processing.R:24:3): ’check_months’ correctly identifies wrong month specs
-      Warning (test_month_processing.R:25:3): ’check_months’ correctly identifies wrong month specs
-      Warning (test_month_processing.R:26:3): ’check_months’ correctly identifies wrong month specs
-      Warning (test_month_processing.R:27:3): ’check_months’ correctly identifies wrong month specs
-      Warning (test_month_processing.R:28:3): ’check_months’ correctly identifies wrong month specs
-      
-      [ FAIL 1 | WARN 14 | SKIP 0 | PASS 147 ]
-      Error: Test failures
-      Execution halted
+    Installation failed.
+    See ‘/tmp/workdir/volesti/new/volesti.Rcheck/00install.out’ for details.
     ```
 
-## In both
+## Newly fixed
 
 *   checking installed package size ... NOTE
     ```
-      installed size is  7.0Mb
+      installed size is 139.6Mb
       sub-directories of 1Mb or more:
-        libs   6.6Mb
+        libs  139.2Mb
     ```
 
-*   checking Rd cross-references ... NOTE
-    ```
-    Package unavailable to check Rd xrefs: ‘dplR’
-    ```
+## Installation
 
-# unitizer
+### Devel
 
-<details>
+```
+* installing *source* package ‘volesti’ ...
+** package ‘volesti’ successfully unpacked and MD5 sums checked
+** using staged installation
+** libs
+g++ -std=gnu++11 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG -Iexternal -Iexternal/lpsolve/headers/run_headers -Iexternal/minimum_ellipsoid -Iinclude -Iinclude/convex_bodies/spectrahedra -I'/opt/R/4.0.3/lib/R/site-library/Rcpp/include' -I'/opt/R/4.0.3/lib/R/site-library/RcppEigen/include' -I'/opt/R/4.0.3/lib/R/site-library/BH/include' -I/usr/local/include  -DBOOST_NO_AUTO_PTR -fpic  -g -O2  -c RcppExports.cpp -o RcppExports.o
+In file included from /opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/Core:392,
+                 from /opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/Dense:1,
+                 from /opt/R/4.0.3/lib/R/site-library/RcppEigen/include/RcppEigenForward.h:30,
+                 from /opt/R/4.0.3/lib/R/site-library/RcppEigen/include/RcppEigen.h:25,
+                 from RcppExports.cpp:4:
+...
+include/convex_bodies/zpolytope.h:192:9:   required from ‘void Zonotope<Point>::init(unsigned int, const MT&, const VT&) [with Point = point<Cartesian<double> >; Zonotope<Point>::MT = Eigen::Matrix<double, -1, -1>; typename Point::FT = double; Zonotope<Point>::VT = Eigen::Matrix<double, -1, 1>; typename K::FT = double]’
+exact_vol.cpp:111:59:   required from here
+/opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/src/Core/CoreEvaluators.h:960:8: warning: ignoring attributes on template argument ‘Eigen::internal::packet_traits<double>::type’ {aka ‘__vector(2) double’} [-Wignored-attributes]
+exact_vol.cpp:119:1: fatal error: error writing to /tmp/ccXakZWD.s: No space left on device
+  119 | }
+      | ^
+compilation terminated.
+make: *** [/opt/R/4.0.3/lib/R/etc/Makeconf:181: exact_vol.o] Error 1
+ERROR: compilation failed for package ‘volesti’
+* removing ‘/tmp/workdir/volesti/new/volesti.Rcheck/volesti’
 
-* Version: 1.4.10
-* GitHub: https://github.com/brodieG/unitizer
-* Source code: https://github.com/cran/unitizer
-* Date/Publication: 2020-05-12 17:00:03 UTC
-* Number of recursive dependencies: 46
 
-Run `cloud_details(, "unitizer")` for more info
+```
+### CRAN
 
-</details>
+```
+* installing *source* package ‘volesti’ ...
+** package ‘volesti’ successfully unpacked and MD5 sums checked
+** using staged installation
+** libs
+g++ -std=gnu++11 -I"/opt/R/4.0.3/lib/R/include" -DNDEBUG -Iexternal -Iexternal/lpsolve/headers/run_headers -Iexternal/minimum_ellipsoid -Iinclude -Iinclude/convex_bodies/spectrahedra -I'/opt/R/4.0.3/lib/R/site-library/Rcpp/include' -I'/opt/R/4.0.3/lib/R/site-library/RcppEigen/include' -I'/opt/R/4.0.3/lib/R/site-library/BH/include' -I/usr/local/include  -DBOOST_NO_AUTO_PTR -fpic  -g -O2  -c RcppExports.cpp -o RcppExports.o
+In file included from /opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/Core:392,
+                 from /opt/R/4.0.3/lib/R/site-library/RcppEigen/include/Eigen/Dense:1,
+                 from /opt/R/4.0.3/lib/R/site-library/RcppEigen/include/RcppEigenForward.h:30,
+                 from /opt/R/4.0.3/lib/R/site-library/RcppEigen/include/RcppEigen.h:25,
+                 from RcppExports.cpp:4:
+...
+** inst
+** byte-compile and prepare package for lazy loading
+** help
+*** installing help indices
+** building package indices
+** testing if installed package can be loaded from temporary location
+** checking absolute paths in shared objects and dynamic libraries
+** testing if installed package can be loaded from final location
+** testing if installed package keeps a record of temporary installation path
+* DONE (volesti)
 
-## Newly broken
 
-*   checking tests ... ERROR
-    ```
-      Running ‘aunitizer.R’
-      Running ‘runtt.R’
-    Running the tests in ‘tests/runtt.R’ failed.
-    Last 13 lines of output:
-      
-      ✔ |  15       | Unitize 2 [7.6 s]
-      
-      ⠏ |   0       | testthat.zzrunlast                                              ALL TESTS COMPLETED!
-      
-      ══ Results ═════════════════════════════════════════════════════════════════════
-      Duration: 53.5 s
-      
-      ── Skipped tests  ──────────────────────────────────────────────────────────────
-      ● empty test (3)
-      ● fails CRAN (2)
-      
-      [ FAIL 1 | WARN 15 | SKIP 5 | PASS 834 ]
-      Error: Test failures
-      Execution halted
-    ```
-
-# vdiffr
-
-<details>
-
-* Version: 0.3.2.2
-* GitHub: https://github.com/r-lib/vdiffr
-* Source code: https://github.com/cran/vdiffr
-* Date/Publication: 2020-07-07 06:11:10 UTC
-* Number of recursive dependencies: 104
-
-Run `cloud_details(, "vdiffr")` for more info
-
-</details>
-
-## Newly broken
-
-*   checking tests ... ERROR
-    ```
-    ...
-        ='stroke-width: 1.07; stroke: none; stroke-linecap: square; str
-        oke-linejoin: miter; fill: #595959;' clip-path='url(#cpMjcuODl8
-        NzE0LjUyfDU0NS4xM3wyMi43Nw==)' />                              
-      > <line x1='417.00' y1='545.13' x2='417.00' y2='22.77' style='str
-      : oke-width: 1.07; stroke-linecap: butt;' clip-path='url(#cpMjcuO
-      : Dl8NzE0LjUyfDU0NS4xM3wyMi43Nw==)' />                           
-        <rect x='27.89' y='22.77' width='686.64' height='522.36' style=
-        'stroke-width: 1.07; stroke: #333333;' clip-path='url(#cpMjcuOD
-        l8NzE0LjUyfDU0NS4xM3wyMi43Nw==)' />                            
-        <defs>                                                         
-      
-    Running the tests in ‘tests/testthat.R’ failed.
-    Complete output:
-      > 
-      > if (getRversion() < "4.1.0") {
-      +   library("testthat")
-      +   library("vdiffr")
-      +   test_check("vdiffr")
-      + }
-      Error: Test failures
-      Execution halted
-    ```
-
-## In both
-
-*   checking dependencies in R code ... NOTE
-    ```
-    Namespace in Imports field not imported from: ‘freetypeharfbuzz’
-      All declared Imports should be used.
-    ```
-
-# vein
-
-<details>
-
-* Version: 0.9.0
-* GitHub: NA
-* Source code: https://github.com/cran/vein
-* Date/Publication: 2020-09-30 08:00:02 UTC
-* Number of recursive dependencies: 57
-
-Run `cloud_details(, "vein")` for more info
-
-</details>
-
-## Newly broken
-
-*   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Last 13 lines of output:
-        2.   └─testthat::test_dir(...)
-        3.     └─testthat:::test_files(...)
-        4.       └─testthat:::test_files(...)
-        5.         ├─testthat::with_reporter(...)
-        6.         │ ├─base::withRestarts(...)
-        7.         │ │ └─base:::withOneRestart(expr, restarts[[1L]])
-        8.         │ │   └─base:::doWithOneRestart(return(expr), restart)
-        9.         │ └─base::force(code)
-       10.         └─testthat:::parallel_event_loop_chunky(queue, reporters)
-       11.           └─queue$poll(Inf)
-       12.             └─base::lapply(...)
-      <parent: error>
-      Backtrace:
-      █
-      Execution halted
-    ```
-
+```

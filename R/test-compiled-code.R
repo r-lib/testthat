@@ -31,6 +31,7 @@ expect_cpp_tests_pass <- function(package) {
 #' @keywords internal
 #' @export
 run_cpp_tests <- function(package) {
+  skip_on_os("solaris")
   check_installed("xml2", "run_cpp_tests()")
 
   run_testthat_tests <- get_routine(package, "run_testthat_tests")
@@ -46,11 +47,10 @@ run_cpp_tests <- function(package) {
       catch_error <- TRUE
       reporter <- get_reporter()
 
-      reporter$start_context(context = "Catch")
+      context_start("Catch")
       reporter$start_test(context = "Catch", test = "Catch")
       reporter$add_result(context = "Catch", test = "Catch", result = expectation("failure", e$message))
       reporter$end_test(context = "Catch", test = "Catch")
-      reporter$end_context(context = "Catch")
     }
   )
 
@@ -66,7 +66,7 @@ run_cpp_tests <- function(package) {
   for (context in contexts) {
     context_name <- sub(" [|][^|]+$", "", xml2::xml_attr(context, "name"))
 
-    get_reporter()$start_context(context = context_name)
+    context_start(context_name)
 
     tests <- xml2::xml_find_all(context, "./Section")
     for (test in tests) {
@@ -125,8 +125,6 @@ run_cpp_tests <- function(package) {
 
       get_reporter()$end_test(context = context_name, test = test_name)
     }
-
-    get_reporter()$end_context(context = context_name)
   }
 }
 
@@ -152,6 +150,12 @@ run_cpp_tests <- function(package) {
 #' 4. Create a file `R/catch-routine-registration.R`, which ensures that
 #'    \R will automatically register this routine when
 #'    `tools::package_native_routine_registration_skeleton()` is invoked.
+#'
+#' You will also need to:
+#'
+#' * Add xml2 to Suggests, with e.g. `usethis::use_package("xml2", "Suggests")`
+#' * Add testthat to LinkingTo, with e.g.
+#'   `usethis::use_package("testthat", "LinkingTo")`
 #'
 #' C++ unit tests can be added to C++ source files within the
 #' `src` directory of your package, with a format similar
@@ -315,6 +319,7 @@ use_catch <- function(dir = getwd()) {
 
   message("> Added C++ unit testing infrastructure.")
   message("> Please ensure you have 'LinkingTo: testthat' in your DESCRIPTION.")
+  message("> Please ensure you have 'Suggests: xml2' in your DESCRIPTION.")
   message("> Please ensure you have 'useDynLib(", pkg, ", .registration = TRUE)' in your NAMESPACE.")
 }
 

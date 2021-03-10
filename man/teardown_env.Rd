@@ -7,8 +7,8 @@
 teardown_env()
 }
 \description{
-This environment no purpose except as a handle for \code{\link[withr:defer]{withr::defer()}}: use
-this environment when you want to run code until after all tests have been
-run. Typically, you'll use \code{withr::defer(cleanup(), teardown_env())}
+This environment has no purpose other than as a handle for \code{\link[withr:defer]{withr::defer()}}:
+use it when you want to run code after all tests have been run.
+Typically, you'll use \code{withr::defer(cleanup(), teardown_env())}
 immediately after you've made a mess in a \verb{setup-*.R} file.
 }

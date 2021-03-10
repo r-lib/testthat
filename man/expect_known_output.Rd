@@ -2,7 +2,6 @@
 % Please edit documentation in R/expect-known.R
 \name{expect_known_output}
 \alias{expect_known_output}
-\alias{expect_output_file}
 \alias{expect_known_value}
 \alias{expect_equal_to_reference}
 \alias{expect_known_hash}

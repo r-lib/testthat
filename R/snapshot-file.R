@@ -38,10 +38,10 @@
 #' path
 #'
 #' \dontrun{
-#' expect_snapshot_file(save_png(hist(mtcars)), "plot.png")
+#' expect_snapshot_file(save_png(hist(mtcars$mpg)), "plot.png")
 #' }
 #'
-#' # You'd then also provide a helper that skip tests where you can't
+#' # You'd then also provide a helper that skips tests where you can't
 #' # be sure of producing exactly the same output
 #' expect_snapshot_plot <- function(name, code) {
 #'   # Other packages might affect results
@@ -55,20 +55,20 @@
 #' }
 expect_snapshot_file <- function(path, name = basename(path), binary = TRUE, cran = FALSE) {
   edition_require(3, "expect_snapshot_file()")
-  if (cran && !interactive() && on_cran()) {
+  if (!cran && !interactive() && on_cran()) {
     skip("On CRAN")
   }
 
   snapshotter <- get_snapshotter()
   if (is.null(snapshotter)) {
-    cat("No snapshotter active. New path: ", path, "\n", sep = "")
-    return()
+    snapshot_not_available(paste0("New path: ", path))
+    return(invisible())
   }
   compare <- if (binary) compare_file_binary else compare_file_text
 
   lab <- quo_label(enquo(path))
   equal <- snapshotter$take_file_snapshot(name, path, compare)
-  hint <- paste0("Run `snapshot_review('", snapshotter$file, "')` to review changes")
+  hint <- snapshot_hint(snapshotter$file, name)
 
   expect(
     equal,
@@ -77,6 +77,18 @@ expect_snapshot_file <- function(path, name = basename(path), binary = TRUE, cra
       lab, paste0(snapshotter$file, "/", name),
       hint
     )
+  )
+}
+
+snapshot_hint <- function(test, name, ci = on_ci(), check = in_rcmd_check()) {
+  path <- paste0("tests/testthat/_snaps/", test, "/", new_name(name))
+
+  paste0(
+    if (check && ci) "* Download and unzip run artifact\n",
+    if (check && !ci) "* Locate check directory\n",
+    if (check) paste0("* Copy '", path, "' to local test directory\n"),
+    if (check) "* ",
+    paste0("Run `testthat::snapshot_review('", test, "')` to review changes")
   )
 }
 
@@ -123,7 +135,7 @@ snapshot_file_outdated <- function(snap_dir, tests_seen = character(), snaps_see
     dirname(snap_names) %in% tests_seen
   ]
 
-  c(tests_outdated, snaps_outdated)
+  unique(c(tests_outdated, snaps_outdated))
 }
 
 # Helpers -----------------------------------------------------------------

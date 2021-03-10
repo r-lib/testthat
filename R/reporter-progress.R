@@ -27,6 +27,7 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
     skips = NULL,
 
     max_fail = NULL,
+    verbose_skips = NULL,
     n_ok = 0,
     n_skip = 0,
     n_warn = 0,
@@ -49,11 +50,13 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
                           max_failures = getOption("testthat.progress.max_fails", 10L),
                           min_time = 0.1,
                           update_interval = 0.1,
+                          verbose_skips = getOption("testthat.progress.verbose_skips", TRUE),
                           ...) {
       super$initialize(...)
       self$capabilities$parallel_support <- TRUE
-      self$max_fail <- max_failures
       self$show_praise <- show_praise
+      self$max_fail <- max_failures
+      self$verbose_skips <- !rlang::is_false(verbose_skips)
       self$min_time <- min_time
       self$update_interval <- update_interval
 
@@ -205,7 +208,9 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
       } else if (expectation_skip(result)) {
         self$n_skip <- self$n_skip + 1
         self$ctxt_n_skip <- self$ctxt_n_skip + 1
-        self$ctxt_issues$push(result)
+        if (self$verbose_skips) {
+          self$ctxt_issues$push(result)
+        }
         self$skips$push(result$message)
       } else if (expectation_warning(result)) {
         self$n_warn <- self$n_warn + 1
@@ -444,7 +449,9 @@ ParallelProgressReporter <- R6::R6Class("ParallelProgressReporter",
       } else if (expectation_skip(result)) {
         self$n_skip <- self$n_skip + 1
         self$files[[file]]$n_skip <- self$files[[file]]$n_skip + 1L
-        self$files[[file]]$issues$push(result)
+        if (self$verbose_skips) {
+          self$files[[file]]$issues$push(result)
+        }
         self$skips$push(result$message)
       } else if (expectation_warning(result)) {
         self$n_warn <- self$n_warn + 1

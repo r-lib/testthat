@@ -37,38 +37,58 @@
 #' you can approve the change with [snapshot_accept()] and then the tests will
 #' pass the next time you run them.
 #'
+#' Note that snapshotting can onµly work when executing a complete test file
+#' (with [test_file()], [test_dir()], or friends) because there's otherwise
+#' no way to figure out the snapshot path. If you run snapshot tests
+#' interactively, they'll just display the current value.
+#'
 #' @param x Code to evaluate.
 #' @param cran Should these expectations be verified on CRAN? By default,
 #'   they are not, because snapshot tests tend to be fragile because they
-#'   often rely on minor details of dependencies. Even on CRAN, the
-#'   expectations will still fail if `x` errors.
+#'   often rely on minor details of dependencies.
+#' @param error Do you expect the code to throw an error? The expectation
+#'   will fail (even on CRAN) if an unexpected error is thrown or the
+#'   expected error is not thrown.
 #' @export
-expect_snapshot <- function(x, cran = FALSE) {
+expect_snapshot <- function(x, cran = FALSE, error = FALSE) {
   edition_require(3, "expect_snapshot()")
 
   x <- enquo(x)
-  out <- verify_exec(quo_get_expr(x), quo_get_env(x), snapshot_replay)
+
+  # Execute code, capturing last error
+  state <- new_environment(list(error = NULL))
+  out <- verify_exec(quo_get_expr(x), quo_get_env(x), {
+    function(x) snapshot_replay(x, state)
+  })
+
+  # Use expect_error() machinery to confirm that error is as expected
+  msg <- compare_condition_3e("error", state$error, quo_label(x), error)
+  if (!is.null(msg)) {
+    expect(FALSE, msg, trace = state$error[["trace"]])
+  }
+
   expect_snapshot_helper("code", out, cran = cran,
     save = function(x) paste0(x, collapse = "\n"),
     load = function(x) split_by_line(x)[[1]]
   )
 }
 
-snapshot_replay <- function(x) {
+snapshot_replay <- function(x, state) {
   UseMethod("snapshot_replay", x)
 }
 #' @export
-snapshot_replay.character <- function(x) {
+snapshot_replay.character <- function(x, state) {
   c("Output", indent(split_lines(x)))
 }
 #' @export
-snapshot_replay.source <- function(x) {
+snapshot_replay.source <- function(x, state) {
   c("Code", indent(split_lines(x$src)))
 }
 #' @export
-snapshot_replay.condition <- function(x) {
+snapshot_replay.condition <- function(x, state) {
   msg <- cnd_message(x)
   if (inherits(x, "error")) {
+    state$error <- x
     type <- "Error"
   } else if (inherits(x, "warning")) {
     type <- "Warning"
@@ -127,11 +147,14 @@ expect_snapshot_error <- function(x, class = "error", cran = FALSE) {
 #'   * `serialize()` produces a binary serialization of the object using
 #'     [serialize()]. This is all but guaranteed to work for any R object,
 #'     but produces a completely opaque serialization.
+#' @param ... For `expect_snapshot_value()` only, passed on to
+#'   [waldo::compare()] so you can control the details of the comparison.
 #' @export
 #' @rdname expect_snapshot
 expect_snapshot_value <- function(x,
                                   style = c("json", "json2", "deparse", "serialize"),
-                                  cran = FALSE) {
+                                  cran = FALSE,
+                                  ...) {
   edition_require(3, "expect_snapshot_value()")
   lab <- quo_label(enquo(x))
 
@@ -150,18 +173,21 @@ expect_snapshot_value <- function(x,
     serialize = function(x) unserialize(jsonlite::base64_dec(x))
   )
 
-  expect_snapshot_helper(lab, x, save = save, load = load, cran = cran)
+  expect_snapshot_helper(lab, x, save = save, load = load, cran = cran, ...)
 }
 
 # Safe environment for evaluating deparsed objects, based on inspection of
 # https://github.com/wch/r-source/blob/5234fe7b40aad8d3929d240c83203fa97d8c79fc/src/main/deparse.c#L845
 reparse <- function(x) {
   env <- env(emptyenv(),
+    c = c,
     list = list,
     quote = quote,
+    structure = structure,
     expression = expression,
     `function` = `function`,
     new = methods::new,
+    getClass = methods::getClass,
     pairlist = pairlist,
     alist = alist,
     as.pairlist = as.pairlist
@@ -170,19 +196,22 @@ reparse <- function(x) {
   eval(parse(text = x), env)
 }
 
-expect_snapshot_helper <- function(lab, val, cran = FALSE, save = identity, load = identity) {
-  if (cran && !interactive() && on_cran()) {
+expect_snapshot_helper <- function(lab, val,
+                                   cran = FALSE,
+                                   save = identity,
+                                   load = identity,
+                                   ...) {
+  if (!cran && !interactive() && on_cran()) {
     skip("On CRAN")
   }
 
   snapshotter <- get_snapshotter()
   if (is.null(snapshotter)) {
-    cat("No snapshotter active. Current value: \n")
-    cat(save(val), sep = "\n")
+    snapshot_not_available(paste0("Current value:\n", save(val)))
     return(invisible())
   }
 
-  comp <- snapshotter$take_snapshot(val, save = save, load = load)
+  comp <- snapshotter$take_snapshot(val, save = save, load = load, ...)
   hint <- paste0("Run `snapshot_accept('", snapshotter$file, "')` if this is a deliberate change")
 
   expect(
@@ -194,6 +223,14 @@ expect_snapshot_helper <- function(lab, val, cran = FALSE, save = identity, load
       hint
     )
   )
+}
+
+snapshot_not_available <- function(message) {
+  inform(c(
+    crayon::bold("Can't compare snapshot to reference when testing interactively"),
+    i = "Run `devtools::test()` or `testthat::test_file()` to see changes",
+    i = message
+  ))
 }
 
 local_snapshot_dir <- function(snap_names, .env = parent.frame()) {

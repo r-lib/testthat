@@ -33,7 +33,7 @@ Other reporters:
 \code{\link{MinimalReporter}},
 \code{\link{MultiReporter}},
 \code{\link{ProgressReporter}},
-\code{\link{RstudioReporter}},
+\code{\link{RStudioReporter}},
 \code{\link{SilentReporter}},
 \code{\link{StopReporter}},
 \code{\link{SummaryReporter}},

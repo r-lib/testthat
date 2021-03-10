@@ -6,10 +6,11 @@
 #' or condition with a message that matches `regexp`, or a class that inherits
 #' from `class`. See below for more details.
 #'
-#' New in the 3rd edition, if the code throws conditions that don't match
-#' `regexp`/`class` they will bubble up outside of the expectation, so if
-#' they're important you'll need to catch them with additional
-#' `expect_message()`/`expect_warning()` calls, or if they're unimportant you
+#' In the 3rd edition, these functions match a single condition. All
+#' additional and non-matching (if `regexp` or `class` are used) conditions
+#' will bubble up outside the expectation. If these additional conditions
+#' are important you'll need to catch them with additional
+#' `expect_message()`/`expect_warning()` calls; if they're unimportant you
 #' can ignore with [suppressMessages()]/[suppressWarnings()].
 #'
 #' @section Testing `message` vs `class`:
@@ -328,7 +329,7 @@ compare_condition_2e <- function(cond, lab, regexp = NULL, class = NULL, ...,
   message <- cnd_message(cond)
 
   ok_class <- is.null(class) || inherits(cond, class)
-  ok_msg <- is.null(regexp) || grepl(regexp, message, ...)
+  ok_msg <- is.null(regexp) || any(grepl(regexp, message, ...))
 
   # All good
   if (ok_msg && ok_class) {
@@ -407,6 +408,6 @@ compare_messages <- function(messages,
 # Disable rlang backtrace reminders so they don't interfere with
 # expected error messages
 cnd_message <- function(x) {
-  withr::local_options(c(rlang_backtrace_on_error = "none"))
+  withr::local_options(rlang_backtrace_on_error = "none")
   conditionMessage(x)
 }

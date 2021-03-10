@@ -7,7 +7,7 @@
 \alias{expect_snapshot_value}
 \title{Snapshot testing}
 \usage{
-expect_snapshot(x, cran = FALSE)
+expect_snapshot(x, cran = FALSE, error = FALSE)
 
 expect_snapshot_output(x, cran = FALSE)
 
@@ -16,7 +16,8 @@ expect_snapshot_error(x, class = "error", cran = FALSE)
 expect_snapshot_value(
   x,
   style = c("json", "json2", "deparse", "serialize"),
-  cran = FALSE
+  cran = FALSE,
+  ...
 )
 }
 \arguments{
@@ -24,8 +25,11 @@ expect_snapshot_value(
 
 \item{cran}{Should these expectations be verified on CRAN? By default,
 they are not, because snapshot tests tend to be fragile because they
-often rely on minor details of dependencies. Even on CRAN, the
-expectations will still fail if \code{x} errors.}
+often rely on minor details of dependencies.}
+
+\item{error}{Do you expect the code to throw an error? The expectation
+will fail (even on CRAN) if an unexpected error is thrown or the
+expected error is not thrown.}
 
 \item{class}{Expected class of condition, e.g. use \code{error} for errors,
 \code{warning} for warnings, \code{message} for messages. The expectation will
@@ -45,6 +49,9 @@ using R code.
 \code{\link[=serialize]{serialize()}}. This is all but guaranteed to work for any R object,
 but produces a completely opaque serialization.
 }}
+
+\item{...}{For \code{expect_snapshot_value()} only, passed on to
+\code{\link[waldo:compare]{waldo::compare()}} so you can control the details of the comparison.}
 }
 \description{
 \ifelse{html}{\out{<a href='https://www.tidyverse.org/lifecycle/#experimental'><img src='figures/lifecycle-experimental.svg' alt='Experimental lifecycle'></a>}}{\strong{Experimental}}
@@ -84,5 +91,10 @@ on disk. If it's different, the expectation will fail, and a new file
 \verb{snap/\{test\}.new.json} will be created. If the change was deliberate,
 you can approve the change with \code{\link[=snapshot_accept]{snapshot_accept()}} and then the tests will
 pass the next time you run them.
+
+Note that snapshotting can onµly work when executing a complete test file
+(with \code{\link[=test_file]{test_file()}}, \code{\link[=test_dir]{test_dir()}}, or friends) because there's otherwise
+no way to figure out the snapshot path. If you run snapshot tests
+interactively, they'll just display the current value.
 }
 

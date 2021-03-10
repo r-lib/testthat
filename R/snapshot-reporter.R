@@ -35,12 +35,15 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
       self$test <- test
       self$i <- 0L
 
+      if (length(self$cur_snaps[[test]]) > 0) {
+        testthat_warn("Duplicate test, discarding previous snapshot")
+      }
       self$cur_snaps[[test]] <- list()
       self$new_snaps[[test]] <- list()
     },
 
     # Called by expectation
-    take_snapshot = function(value, save = identity, load = identity) {
+    take_snapshot = function(value, save = identity, load = identity, ...) {
       self$i <- self$i + 1L
 
       self$new_snaps <- self$snap_append(self$new_snaps, save(value))
@@ -53,7 +56,8 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
 
         comp <- waldo_compare(
           x = old,   x_arg = "old",
-          y = value, y_arg = "new"
+          y = value, y_arg = "new",
+          ...
         )
 
         if (length(comp) > 0L) {
@@ -106,19 +110,19 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
       if (all(tests %in% self$test_file_seen)) {
         # clean up if we've seen all files
         test_names <- context_name(tests)
-        outdated <- c(
+        outdated <- union(
           snapshot_outdated(self$snap_dir, test_names),
           snapshot_file_outdated(self$snap_dir, test_names, self$snap_file_seen)
         )
 
         if (length(outdated) > 0) {
           inform(c("Deleting unused snapshots:", outdated))
-          unlink(outdated)
+          unlink(outdated, recursive = TRUE)
         }
       }
 
-      if (length(dir(self$snap_dir) == 0)) {
-        unlink(self$snap_dir)
+      if (length(dir(self$snap_dir)) == 0) {
+        unlink(self$snap_dir, recursive = TRUE)
       }
       rstudio_tickle()
     },
@@ -218,7 +222,7 @@ local_snapshotter <- function(snap_dir = "_snaps", cleanup = FALSE, .env = paren
   }
 
   withr::local_options(
-    list("testthat.snapshotter" = reporter),
+    "testthat.snapshotter" = reporter,
     .local_envir = .env
   )
   reporter

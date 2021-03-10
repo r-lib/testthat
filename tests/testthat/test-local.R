@@ -4,6 +4,7 @@ test_that("expected options are set by default", {
   expect_false(is_interactive())
   expect_equal(Sys.getenv("R_TESTS"), "")
   expect_equal(edition_get(), 3L)
+  expect_equal(Sys.getenv("RSTUDIO"), "")
 })
 
 test_that("can override usual options", {

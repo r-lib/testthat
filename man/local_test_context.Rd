@@ -68,11 +68,15 @@ quotes (otherwise the default is locale dependent, see \code{\link[=sQuote]{sQuo
 details).
 }
 
-\code{local_test_context()} also sets envvars \code{RSTUDIO = 0} (which ensures that RStudio is never
-detected as running), and \code{TESTTHAT = "true"} (which ensures that
-\code{\link[=is_testing]{is_testing()}} returns \verb{TRUE)}, and sets collation locale to "C"
-(which ensures that character sorting the same regardless of current
-locale).
+And modifies the following env vars:
+\itemize{
+\item Unsets \code{RSTUDIO}, which ensures that RStudio is never detected as running.
+\item Sets \code{TESTTHAT = "true"}, which ensures that \code{\link[=is_testing]{is_testing()}} returns \code{TRUE}.
+\item Sets \code{LANGUAGE = "en"}, which ensures that no message translation occurs.
+}
+
+Finally, it sets the collation locale to "C", which ensures that character
+sorting the same regardless of system locale.
 }
 \examples{
 local({

@@ -1,52 +1,46 @@
-#' Skip a test.
+#' Skip a test
 #'
-#' This function allows you to skip a test if it's not currently available.
-#' This will produce an informative message, but will not cause the test
-#' suite to fail.
+#' @description
+#' `skip_if()` and `skip_if_not()` allow you to skip tests, immediately
+#' concluding a [test_that()] block without executing any further expectations.
+#' This allows you to skip a test without failure, if for some reason it
+#' can't be run (e.g. it depends on the feature of a specific operating system,
+#' or it requires a specific version of a package).
 #'
-#' `skip*` functions are intended for use within [test_that()]
-#' blocks.  All expectations following the \code{skip*} statement within the
-#' same `test_that` block will be skipped.  Test summaries that report skip
-#' counts are reporting how many `test_that` blocks triggered a `skip*`
-#' statement, not how many expectations were skipped.
+#' See `vignette("skipping")` for more details.
 #'
 #' @section Helpers:
-#' `skip_if_not()` works like [stopifnot()], generating
-#' a message automatically based on the first argument.
 #'
-#' `skip_if_offline()` skips tests if an internet connection is not available
-#' using [curl::nslookup()].
+#' * `skip_if_not_installed("pkg")` skips tests if package "pkg" is not
+#'   installed or cannot be loaded (using `requireNamespace()`). Generally,
+#'   you can assume that suggested packages are installed, and you do not
+#'   need to check for them specifically, unless they are particularly
+#'   difficult to install.
 #'
-#' `skip_on_cran()` skips tests on CRAN, using the `NOT_CRAN`
-#' environment variable set by devtools.
+#' * `skip_if_offline()` skips if an internet connection is not available
+#'   (using [curl::nslookup()]).
 #'
-#' `skip_on_travis()` skips tests on Travis CI by inspecting the
-#' `TRAVIS` environment variable.
+#' * `skip_if_translated("msg")` skips tests if the "msg" is translated.
 #'
-#' `skip_on_appveyor()` skips tests on AppVeyor by inspecting the
-#' `APPVEYOR` environment variable.
+#' * `skip_on_bioc()` skips on Bioconductor (using the `BBS_HOME` env var).
 #'
-#' `skip_on_ci()` skips tests on continuous integration systems by inspecting
-#' the `CI` environment variable.
+#' * `skip_on_cran()` skips on CRAN (using the `NOT_CRAN` env var set by
+#'    devtools and friends).
 #'
-#' `skip_on_covr()` skips tests when covr is running by inspecting the
-#' `R_COVR` environment variable
+#' * `skip_on_covr()` skips when covr is running (using the `R_COVR` env var).
 #'
-#' `skip_on_bioc()` skips tests on Bioconductor by inspecting the
-#' `BBS_HOME` environment variable.
+#' * `skip_on_ci()` skips on continuous integration systems like GitHub Actions,
+#'    travis, and appveyor (using the `CI` env var). It supersedes the older
+#'    `skip_on_travis()` and `skip_on_appveyor()` functions.
 #'
-#' `skip_if_not_installed()` skips a tests if a package is not installed
-#' or cannot be loaded (useful for suggested packages).  It loads the package as
-#' a side effect, because the package is likely to be used anyway.
+#' * `skip_on_os()` skips on the specified operating system(s) ("windows",
+#'   "mac", "linux", or "solaris").
 #'
 #' @param message A message describing why the test was skipped.
 #' @param host A string with a hostname to lookup
 #' @export
 #' @examples
 #' if (FALSE) skip("No internet connection")
-#'
-#' ## The following are only meaningful when put in test files and
-#' ## run with `test_file`, `test_dir`, `test_check`, etc.
 #'
 #' test_that("skip example", {
 #'   expect_equal(1, 1L)    # this expectation runs
@@ -76,8 +70,10 @@ skip_empty <- function() {
 #' @rdname skip
 #' @param condition Boolean condition to check. `skip_if_not()` will skip if
 #'   `FALSE`, `skip_if()` will skip if `TRUE`.
-skip_if_not <- function(condition, message = deparse(substitute(condition))) {
-  message <- paste0(message, " is not TRUE")
+skip_if_not <- function(condition, message = NULL) {
+  if (is.null(message)) {
+    message <- paste0(deparse(substitute(condition)), " is not TRUE")
+  }
   if (!isTRUE(condition)) {
     skip(message)
   }
@@ -87,7 +83,7 @@ skip_if_not <- function(condition, message = deparse(substitute(condition))) {
 #' @rdname skip
 skip_if <- function(condition, message = NULL) {
   if (is.null(message)) {
-    message <- paste(deparse(substitute(condition)), " is TRUE")
+    message <- paste0(deparse(substitute(condition)), " is TRUE")
   }
   if (isTRUE(condition)) {
     skip(message)
@@ -146,7 +142,7 @@ skip_on_os <- function(os) {
   sysname <- tolower(Sys.info()[["sysname"]])
 
   switch(sysname,
-    windows = if ("windows" %in% os) skip("On windows"),
+    windows = if ("windows" %in% os) skip("On Windows"),
     darwin =  if ("mac" %in% os) skip("On Mac"),
     linux =   if ("linux" %in% os) skip("On Linux"),
     sunos =   if ("solaris" %in% os) skip("On Solaris")

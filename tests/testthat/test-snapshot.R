@@ -13,7 +13,12 @@ test_that("can snapshot everything", {
     warn("3")
     abort("4")
   }
-  expect_snapshot(f())
+  expect_snapshot(f(), error = TRUE)
+})
+
+test_that("always checks error status", {
+  expect_failure(expect_snapshot(stop("!"), error = FALSE))
+  expect_failure(expect_snapshot(print("!"), error = TRUE))
 })
 
 test_that("snapshot handles multi-line input", {
@@ -38,7 +43,7 @@ test_that("captures custom classes", {
     warn("Goodbye", class = "testthat_farewell")
     abort("Eeek!", class = "testthat_scream")
   }
-  expect_snapshot(f())
+  expect_snapshot(f(), error = TRUE)
 })
 
 test_that("even with multiple lines", {
@@ -52,4 +57,18 @@ test_that("can snapshot values", {
   expect_snapshot_value(x, style = "json2")
   expect_snapshot_value(x, style = "deparse")
   expect_snapshot_value(x, style = "serialize")
+})
+
+test_that("can control snapshot value details", {
+  expect_snapshot_value(1.2, tolerance = 0.1)
+})
+
+test_that("reparse handles common cases", {
+  roundtrip <- function(x) reparse(deparse(x))
+  expect_equal(roundtrip(c(1, 2, 3)), c(1, 2, 3))
+  expect_equal(roundtrip(list(1, 2, 3)), list(1, 2, 3))
+  expect_equal(roundtrip(mtcars), mtcars)
+
+  f <- function(x) x + 1
+  expect_equal(roundtrip(f), f, ignore_function_env = TRUE)
 })

@@ -62,6 +62,8 @@ reference:
 
 news:
   releases:
+  - text: "Version 3.0.0"
+    href: https://www.tidyverse.org/blog/2020/10/testthat-3-0-0/
   - text: "Version 2.3.0"
     href: https://www.tidyverse.org/blog/2019/11/testthat-2-3-0/
   - text: "Version 2.1.0"

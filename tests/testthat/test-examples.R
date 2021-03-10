@@ -6,6 +6,6 @@ test_that("test_examples works with installed packages", {
 })
 
 test_that("test_examples fails if no examples", {
-  withr::local_envvar(list(TESTTHAT_PKG = ""))
+  withr::local_envvar(TESTTHAT_PKG = "")
   expect_error(test_examples("asdf"), "Could not find examples")
 })

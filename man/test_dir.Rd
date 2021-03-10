@@ -58,10 +58,10 @@ warnings.}
 A list (invisibly) containing data about the test results.
 }
 \description{
-Execute code in the specified file, displaying results using a \code{reporter}.
-Use this function when you want to run a single file's worth of tests.
-You are responsible for ensuring that the functions to test are available
-in the global environment.
+This function is the low-level workhorse that powers \code{\link[=test_local]{test_local()}} and
+\code{\link[=test_package]{test_package()}}. Generally, you should not call this function directly.
+In particular, you are responsible for ensuring that the functions to test
+are available in the test \code{env} (e.g. via \code{load_package}).
 }
 \section{Special files}{
 
@@ -70,7 +70,7 @@ There are two types of \code{.R} file that have special behaviour:
 \item Test files start with \code{test} and are executed in alphabetical order.
 \item Setup files start with \code{setup} and are executed before tests. If
 clean up is needed after all tests have been run, you can use
-\code{withr::defer(clean_up(), teardown_env())}. See \code{vignette("text-fixtures")}
+\code{withr::defer(clean_up(), teardown_env())}. See \code{vignette("test-fixtures")}
 for more details.
 }
 
@@ -96,3 +96,4 @@ package's namespace environment, so that tests can access internal functions
 and objects.
 }
 
+\keyword{internal}
