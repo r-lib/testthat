@@ -71,7 +71,7 @@ remove_source <- function(x) {
   }
 }
 
-# Need to stip environment and source references to make lightweight
+# Need to strip environment and source references to make lightweight
 # function suitable to send to another process
 transport_fun <- function(f) {
   environment(f) <- .GlobalEnv

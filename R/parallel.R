@@ -41,6 +41,7 @@ test_files_parallel <- function(
                        env = NULL,
                        stop_on_failure = FALSE,
                        stop_on_warning = FALSE,
+                       wrap = TRUE,  # unused, to match test_files signature
                        load_package = c("none", "installed", "source")
                        ) {
 
@@ -70,8 +71,8 @@ test_files_parallel <- function(
   )
 
   with_reporter(reporters$multi, {
-    parallel_update <- reporter$capabilities$parallel_update
-    if (parallel_update) {
+    parallel_updates <- reporter$capabilities$parallel_updates
+    if (parallel_updates) {
       parallel_event_loop_smooth(queue, reporters)
     } else {
       parallel_event_loop_chunky(queue, reporters)
@@ -269,8 +270,12 @@ queue_teardown <- function(queue) {
   topoll <- list()
   for (i in seq_len(num)) {
     if (!is.null(tasks$worker[[i]])) {
-      tasks$worker[[i]]$call(clean_fn)
-      topoll <- c(topoll, tasks$worker[[i]]$get_poll_connection())
+      # The worker might have crashed or exited, so this might fail.
+      # If it does then we'll just ignore that worker
+      tryCatch({
+        tasks$worker[[i]]$call(clean_fn)
+        topoll <- c(topoll, tasks$worker[[i]]$get_poll_connection())
+      }, error = function(e) tasks$worker[i] <- list(NULL))
     }
   }
 

@@ -17,3 +17,4 @@ RoxygenNote: 7.1.1
 Suggests: 
     testthat
 Config/testthat/parallel: true
+Config/testthat/edition: 3

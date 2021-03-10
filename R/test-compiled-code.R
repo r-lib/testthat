@@ -133,8 +133,8 @@ run_cpp_tests <- function(package) {
 #' Use Catch for C++ Unit Testing
 #'
 #' Add the necessary infrastructure to enable C++ unit testing
-#' in \R packages with
-#' \href{https://github.com/philsquared/Catch}{Catch} and `testthat`.
+#' in \R packages with [Catch](https://github.com/catchorg/Catch2) and
+#' `testthat`.
 #'
 #' Calling `use_catch()` will:
 #'
@@ -176,7 +176,7 @@ run_cpp_tests <- function(package) {
 #'
 #' All of the functions provided by Catch are
 #' available with the `CATCH_` prefix -- see
-#' \href{https://github.com/philsquared/Catch/blob/master/docs/assertions.md}{here}
+#' [here](https://github.com/catchorg/Catch2/blob/master/docs/assertions.md)
 #' for a full list. `testthat` provides the
 #' following wrappers, to conform with `testthat`'s
 #' \R interface:
@@ -251,8 +251,8 @@ run_cpp_tests <- function(package) {
 #' as necessary within your unit test suite.
 #'
 #' @export
-#' @seealso \href{https://github.com/philsquared/Catch}{Catch}, the
-#'   library used to enable C++ unit testing.
+#' @seealso [Catch](https://github.com/catchorg/Catch2/blob/master/docs/assertions.md),
+#'   the library used to enable C++ unit testing.
 use_catch <- function(dir = getwd()) {
   desc_path <- file.path(dir, "DESCRIPTION")
   if (!file.exists(desc_path)) {

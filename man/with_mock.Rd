@@ -77,6 +77,6 @@ test_that("plus(1, 1) == 3", {
 })
 }
 \references{
-Suraj Gupta (2012): \href{http://obeautifulcode.com/R/How-R-Searches-And-Finds-Stuff}{How R Searches And Finds Stuff}
+Suraj Gupta (2012): \href{http://blog.obeautifulcode.com/R/How-R-Searches-And-Finds-Stuff/}{How R Searches And Finds Stuff}
 }
 \keyword{internal}

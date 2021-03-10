@@ -1,5 +1,6 @@
-release_date: ???
-rel_release_date: ???
-my_news_url: ???
-release_version: ???
-release_details: ???
+release_date: Oct 12
+rel_release_date: one week
+my_news_url: https://github.com/r-lib/testthat/blob/master/NEWS.md#testthat-development-version
+release_version: 3.0.0
+release_details: >
+  Please let me know if there's anything I can do to help :)
