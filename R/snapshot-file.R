@@ -3,7 +3,8 @@
 #' @description
 #' Whole file snapshot testing is designed for testing objects that don't have
 #' a convenient textual representation, with initial support for images
-#' (`.png`, `.jpg`, `.svg`) and data frames (`.csv`).
+#' (`.png`, `.jpg`, `.svg`), data frames (`.csv`), and text files
+#' (`.R`, `.txt`, `.json`, ...).
 #'
 #' The first time `expect_snapshot_file()` is run, it will create
 #' `_snaps/{test}/{name}.{ext}` containing reference output. Future runs will

@@ -22,7 +22,8 @@ expectations will still fail if \code{x} errors.}
 \description{
 Whole file snapshot testing is designed for testing objects that don't have
 a convenient textual representation, with initial support for images
-(\code{.png}, \code{.jpg}, \code{.svg}) and data frames (\code{.csv}).
+(\code{.png}, \code{.jpg}, \code{.svg}), data frames (\code{.csv}), and text files
+(\code{.R}, \code{.txt}, \code{.json}, ...).
 
 The first time \code{expect_snapshot_file()} is run, it will create
 \verb{_snaps/\{test\}/\{name\}.\{ext\}} containing reference output. Future runs will

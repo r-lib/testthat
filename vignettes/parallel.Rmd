@@ -58,7 +58,20 @@ There is some overhead associated with running tests in parallel:
 
 This overhead generally means that if you have many test files that take a short amount of time, you're unlikely to see a huge benefit by using parallel tests.
 For example, testthat itself takes about 10s to run tests in serial, and 8s to run the tests in parallel.
-That's because most tests take less than a second to run, and the slowest test (which takes 3s) is started last.
+
+### Changing the order of the test files
+
+By default testthat starts the test files in alphabetical order.
+If you have a few number of test files that take longer than the rest, then this might not be the best order.
+Ideally the slow files would start first, as the whole test suite will take at least as much time as its slowest test file.
+You can change the order with the `Config/testthat/start-first` option in `DESCRIPTION`.
+For example testthat currently has:
+
+    Config/testthat/start-first: watcher, parallel*
+
+The format is a comma separated list of glob patterns, see `?utils::glob2rx`.
+The matching test files will start first.
+(The `test-` prefix is ignored.)
 
 ## Reporters
 
