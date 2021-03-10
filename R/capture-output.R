@@ -55,8 +55,8 @@ eval_with_output <- function(code, print = FALSE, width = 80) {
 
   # Reencode as UTF-8 on Windows
   if (Sys.info()[["sysname"]] == "Windows") {
-    text <- rawToChar(readBin(path, raw(1), n = file.size(path)))
-    brio::write_file(enc2utf8(text), path)
+    text <- readLines(path)
+    brio::write_lines(enc2utf8(text), path)
   }
 
   list(
