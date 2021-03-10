@@ -16,7 +16,10 @@
           <failure type="failure" message="FALSE is not TRUE (tests.R:17:3)">FALSE is not TRUE
     
     `actual`:   FALSE
-    `expected`: TRUE </failure>
+    `expected`: TRUE 
+    Backtrace:
+     1. f()
+     2. testthat::expect_true(FALSE)</failure>
         </testcase>
       </testsuite>
       <testsuite name="Errors" timestamp="1999:12:31 23:59:59" hostname="nodename" tests="2" skipped="0" failures="0" errors="2" time="0">

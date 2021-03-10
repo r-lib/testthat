@@ -36,7 +36,7 @@ return a condition object. \code{capture_messages()} and \code{capture_warnings}
 return a character vector of message text.
 }
 \description{
-\ifelse{html}{\out{<a href='https://www.tidyverse.org/lifecycle/#superseded'><img src='figures/lifecycle-superseded.svg' alt='Superseded lifecycle'></a>}}{\strong{Superseded}}
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#superseded}{\figure{lifecycle-superseded.svg}{options: alt='[Superseded]'}}}{\strong{[Superseded]}}
 
 These functions allow you to capture the side-effects of a function call
 including printed output, messages and warnings. We no longer recommend

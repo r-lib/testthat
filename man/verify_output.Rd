@@ -35,7 +35,7 @@ test on your CI platforms that don't support UTF-8 (e.g. Windows).}
 \item{env}{The environment to evaluate \code{code} in.}
 }
 \description{
-\ifelse{html}{\out{<a href='https://www.tidyverse.org/lifecycle/#superseded'><img src='figures/lifecycle-superseded.svg' alt='Superseded lifecycle'></a>}}{\strong{Superseded}}
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#superseded}{\figure{lifecycle-superseded.svg}{options: alt='[Superseded]'}}}{\strong{[Superseded]}}
 
 This function is superseded in favour of \code{expect_snapshot()} and friends.
 

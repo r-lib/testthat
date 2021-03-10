@@ -65,6 +65,7 @@ expect_snapshot <- function(x, cran = FALSE, error = FALSE) {
   msg <- compare_condition_3e("error", state$error, quo_label(x), error)
   if (!is.null(msg)) {
     expect(FALSE, msg, trace = state$error[["trace"]])
+    return()
   }
 
   expect_snapshot_helper("code", out, cran = cran,
@@ -228,7 +229,8 @@ expect_snapshot_helper <- function(lab, val,
       lab,
       paste0(comp, collapse = "\n\n"),
       hint
-    )
+    ),
+    trace_env = caller_env()
   )
 }
 

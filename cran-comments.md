@@ -1,133 +1,78 @@
-## Test environments
-
-* local OS X install (R-release)
-* travis-ci.org (R-3.1, R-3.2, R-3.3, R-oldrel, R-release, R-devel)
-* win-builder (R-devel)
-
 ## R CMD check results
 
 There were no ERRORs, WARNINGs, or NOTEs.
 
 ## revdepcheck results
 
-We checked 5091 reverse dependencies, comparing R CMD check results across CRAN and dev versions of this package.
+We checked 5538 reverse dependencies (5537 from CRAN + 1 from Bioconductor), comparing R CMD check results across CRAN and dev versions of this package.
 
- * We saw 15 new problems
- * We failed to check 63 packages
+ * We saw 4 new problems - but all were false positives
+ * We failed to check 46 packages
 
 Issues with CRAN packages are summarised below.
 
 ### New problems
 (This reports the first line of each new failure)
 
-* auk
-  checking tests ... ERROR
-
-* bigstatsr
-  checking tests ... ERROR
-
-* coil
-  checking tests ... ERROR
-
-* DiceKriging
-  checking tests ... ERROR
-
-* ergm.ego
-  checking tests ... ERROR
-
-* hyperSpec
+* glassdoor
   checking examples ... ERROR
 
-* mlrCPO
+* HRM
+  checking dependencies in R code ... NOTE
+
+* IMEC
+  checking examples ... ERROR
   checking tests ... ERROR
 
-* mvrsquared
-  checking tests ... ERROR
-
-* pak
-  checking tests ... ERROR
-
-* pyMTurkR
-  checking tests ... ERROR
-
-* renv
-  checking package dependencies ... ERROR
-
-* rvgtest
-  checking tests ... ERROR
-
-* shinyEventLogger
-  checking tests ... ERROR
-
-* treeclim
-  checking installed package size ... NOTE
-  checking Rd cross-references ... NOTE
-
-* unitizer
-  checking tests ... ERROR
+* InterfaceqPCR
+  checking examples ... ERROR
+  checking whether package ‘InterfaceqPCR’ can be installed ... WARNING
 
 ### Failed to check
 
 * ActivePathways        (NA)
-* anglr                 (NA)
-* av                    (NA)
 * backShift             (NA)
-* batchtools            (NA)
-* bdchecks              (NA)
-* bdclean               (NA)
+* bayesdfa              (NA)
+* bayesGAM              (NA)
 * blavaan               (NA)
+* bmgarch               (NA)
 * Boom                  (NA)
+* bsts                  (NA)
 * butcher               (NA)
+* CausalImpact          (NA)
 * CB2                   (NA)
-* ceramic               (NA)
+* cbar                  (NA)
 * CompareCausalNetworks (NA)
 * crossmap              (NA)
-* dataone               (NA)
-* datapack              (NA)
-* decisionSupport       (NA)
+* ctsem                 (NA)
 * diceR                 (NA)
 * dimRed                (NA)
-* dmdScheme             (NA)
-* doRNG                 (NA)
-* EML                   (NA)
-* finbif                (NA)
-* finch                 (NA)
-* fingertipscharts      (NA)
-* foieGras              (NA)
-* geojson               (NA)
-* geojsonio             (NA)
-* ghibli                (NA)
+* EpiNow2               (NA)
+* fastpos               (NA)
+* fdaPDE                (NA)
+* gastempt              (NA)
+* glmmfields            (NA)
 * gWidgets2tcltk        (NA)
 * hNMF                  (NA)
-* jqr                   (NA)
 * jstor                 (NA)
 * kmcudaR               (NA)
-* lazyraster            (NA)
 * loon                  (NA)
 * metagam               (NA)
-* mlr3db                (NA)
+* mlpack                (NA)
 * mlr3pipelines         (NA)
+* multinma              (NA)
 * osmplotr              (NA)
 * penaltyLearning       (NA)
 * phylopath             (NA)
-* PortfolioAnalytics    (NA)
-* quadmesh              (NA)
-* ragg                  (NA)
-* rbgm                  (NA)
-* rdflib                (NA)
-* redland               (NA)
 * ReIns                 (NA)
-* reproj                (NA)
-* rrd                   (NA)
-* sen2r                 (NA)
+* rmdcev                (NA)
+* rstanarm              (NA)
+* rstap                 (NA)
 * seqgendiff            (NA)
-* silicate              (NA)
+* Seurat                (NA)
 * smartdata             (NA)
 * SMITIDvisu            (NA)
-* spbabel               (NA)
+* SPARSEMODr            (NA)
 * spectralAnalysis      (NA)
-* spex                  (NA)
-* ssh                   (NA)
 * stablespec            (NA)
-* trip                  (NA)
 * wrswoR                (NA)

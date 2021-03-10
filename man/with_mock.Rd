@@ -24,7 +24,7 @@ For expert use only.}
 The result of the last unnamed parameter
 }
 \description{
-\ifelse{html}{\out{<a href='https://www.tidyverse.org/lifecycle/#superseded'><img src='figures/lifecycle-superseded.svg' alt='Superseded lifecycle'></a>}}{\strong{Superseded}}
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#superseded}{\figure{lifecycle-superseded.svg}{options: alt='[Superseded]'}}}{\strong{[Superseded]}}
 
 \code{with_mock()} and \code{local_mock()} are superseded in favour of the more
 rigorous techniques found in the \href{https://krlmlr.github.io/mockr/}{mockr}
@@ -43,7 +43,7 @@ make a wrapper function in your own package..
 }
 \section{3rd edition}{
 
-\ifelse{html}{\figure{lifecycle-deprecated.svg}{options: alt='Deprecated lifecycle'}}{\strong{Deprecated}}
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}}
 
 \code{with_mock()} and \code{local_mock()} are deprecated in the third edition.
 }

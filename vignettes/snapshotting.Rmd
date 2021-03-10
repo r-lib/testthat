@@ -38,7 +38,7 @@ library(testthat)
 ```{r include = FALSE}
 snapper <- testthat:::SnapshotReporter$new()
 options(testthat.snapshotter = snapper)
-snapper$start_file("pizza", "test")
+snapper$start_file("snapshotting.Rmd", "test")
 ```
 
 ## Basic workflow
@@ -69,19 +69,25 @@ test_that("bullets", {
 ```
 
 This is a great place to use snapshot testing.
-To do this we make two changes to our code: we use `expect_snapshot_output()` instead of `expect_equal()`, and wrap the call in `cat()` (to avoid `[1]` in the output, like in my first interactive example).
+To do this we make two changes to our code:
+
+-   We use `expect_snapshot()` instead of `expect_equal()`
+
+-   We wrap the call in `cat()` (to avoid `[1]` in the output, like in my first interactive example).
+
+This yields the following test:
 
 ```{r}
 test_that("bullets", {
-  expect_snapshot_output(cat(bullets("a")))
-  expect_snapshot_output(cat(bullets("a", "b")))
+  expect_snapshot(cat(bullets("a")))
+  expect_snapshot(cat(bullets("a", "b")))
 })
 ```
 
 ```{r, include = FALSE}
 # Reset snapshot test
 snapper$end_file()
-snapper$start_file("pizza", "test")
+snapper$start_file("snapshotting.Rmd", "test")
 ```
 
 When we run the test for the first time, it automatically generates reference output, and prints it, so that you can visually confirm that it's correct.
@@ -93,15 +99,15 @@ If you run the test again, it'll succeed:
 
 ```{r}
 test_that("bullets", {
-  expect_snapshot_output(cat(bullets("a")))
-  expect_snapshot_output(cat(bullets("a", "b")))
+  expect_snapshot(cat(bullets("a")))
+  expect_snapshot(cat(bullets("a", "b")))
 })
 ```
 
 ```{r, include = FALSE}
 # Reset snapshot test
 snapper$end_file()
-snapper$start_file("pizza", "test")
+snapper$start_file("snapshotting.Rmd", "test")
 ```
 
 But if you change the underlying code, say to tweak the indenting, the test will fail:
@@ -115,8 +121,8 @@ bullets <- function(text, id = NULL) {
   )
 }
 test_that("bullets", {
-  expect_snapshot_output(cat(bullets("a")))
-  expect_snapshot_output(cat(bullets("a", "b")))
+  expect_snapshot(cat(bullets("a")))
+  expect_snapshot(cat(bullets("a", "b")))
 })
 ```
 
@@ -154,14 +160,64 @@ Within a test, each snapshot expectation is indented by four spaces, i.e. as cod
 Because the snapshot output uses the name of the current test file and the current test, snapshot expectations don't really work when run interactively at the console.
 Since they can't automatically find the reference output, they instead just print the current value for manual inspection.
 
+## Other types of output
+
+So far we've focussed on snapshot tests for output printed to the console.
+But `expect_snapshot()` also captures messages, errors, and warnings.
+The following function generates a some output, a message, and a warning:
+
+```{r}
+f <- function() {
+  print("Hello")
+  message("Hi!")
+  warning("How are you?")
+}
+```
+
+And `expect_snapshot()` captures them all:
+
+```{r}
+test_that("f() makes lots of noice", {
+  expect_snapshot(f())
+})
+```
+
+Capturing errors is *slightly* more difficult because `expect_snapshot()` will fail when there's an error:
+
+```{r}
+test_that("you can't add a number and a letter", {
+  expect_snapshot(1 + "a")
+})
+```
+
+This is a safety valve that ensures that you don't accidentally write broken code.
+To deliberately snapshot an error, you'll have to specifically request it with `error = TRUE`:
+
+```{r}
+test_that("you can't add a number and a letter", {
+  expect_snapshot(1 + "a", error = TRUE)
+})
+```
+
+When the code gets longer, I like to put `error = TRUE` up front so it's a little more obvious:
+
+```{r}
+test_that("you can't add weird thngs", {
+  expect_snapshot(error = TRUE, {
+    1 + "a"
+    mtcars + iris
+    mean + sum
+  })
+})
+```
+
 ## Other types of snapshot
 
-`expect_snapshot_output()` is probably the most commonly used snapshot function but there are a few other variants that are useful in other case.
+`expect_snapshot()` is the most used snapshot function because it records everything: the code you run, printed output, messages, warnings, and errors.
+But sometimes you just want to capture the output or errors in which you might want to use `expect_snapshot_output()` or `expect_snapshot_error()`.
 
--   `expect_snapshot_error()` works like `expect_snapshot_output()` but captures an error message, rather than console output.
-
--   `expect_snapshot_value()` checks that the value of any R object stays the same.
-    It has a number of serialisation approaches built-in that offer a tradeoff between accuracy and human readability.
+Or rather than caring about side-effects, you may want to check that the value of an R object stays the same.
+In this case, you can use `expect_snapshot_value()` which offers a number of serialisation approaches that provide a tradeoff between accuracy and human readability.
 
 ## Whole file snapshotting
 

@@ -41,7 +41,7 @@ two symbols. It is for expert use only.
 }
 \section{3rd edition}{
 
-\ifelse{html}{\figure{lifecycle-deprecated.svg}{options: alt='Deprecated lifecycle'}}{\strong{Deprecated}}
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}}
 
 \code{expect_reference()} is deprecated in the third edition. If you know what
 you're doing, and you really need this behaviour, just use \code{is_reference()}
