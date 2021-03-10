@@ -52,8 +52,8 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
         old <- load(old_raw)
 
         comp <- waldo_compare(
-          x = value, x_arg = "current",
-          y = old,   y_arg = "previous"
+          x = old,   x_arg = "old",
+          y = value, y_arg = "new"
         )
 
         if (length(comp) > 0L) {
