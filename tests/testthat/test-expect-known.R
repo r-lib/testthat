@@ -42,6 +42,7 @@ test_that("updates by default", {
 })
 
 test_that("works with utf-8 output", {
+  skip_on_cran()
   text <- c("\u00fc", "\u2a5d", "\u6211", "\u0438")
 
   if (Sys.info()[["sysname"]] == "Windows") {
