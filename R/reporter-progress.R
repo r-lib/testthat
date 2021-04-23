@@ -1,7 +1,7 @@
 #' Test reporter: interactive progress bar of errors.
 #'
 #' @description
-#' `ProgressReporter` is designed for interactively use. It's goal is to
+#' `ProgressReporter` is designed for interactive use. Its goal is to
 #' give you actionable insights to help you understand the status of your
 #' code. This reporter also praises you from time-to-time if all your tests
 #' pass. It's the default reporter for [test_dir()].
