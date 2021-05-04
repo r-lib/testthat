@@ -231,7 +231,9 @@ expect_condition_matching <- function(base_class,
   # `$.Throwable` from the rJava package throws with unknown fields
   expect(is.null(msg), msg, info = info, trace = act$cap[["trace"]])
 
-  invisible(act$val %||% act$cap)
+  # If a condition was expected, return it. Otherwise return the value
+  # of the expression.
+  invisible(if (expected) act$cap else act$val)
 }
 
 # -------------------------------------------------------------------------
