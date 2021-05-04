@@ -69,15 +69,19 @@ expect_snapshot_failure <- function(x) {
 }
 
 expect_snapshot_reporter <- function(reporter, path = test_path("reporters/tests.R")) {
-  withr::local_rng_version("3.3")
-  withr::with_seed(1014, {
-    expect_snapshot_output(
-      with_reporter(
-        reporter,
-        test_one_file(path)
-      )
-    )
-  })
+  local_rng_version("3.3")
+  set.seed(1014)
+  # withr::local_seed(1014)
+
+  expect_snapshot_output(
+    with_reporter(reporter, test_one_file(path))
+  )
+}
+
+# to work around https://github.com/r-lib/withr/issues/167
+local_rng_version <- function(version, .local_envir = parent.frame()) {
+  withr::defer(RNGversion(getRversion()), envir = .local_envir)
+  suppressWarnings(RNGversion(version))
 }
 
 # Use specifically for testthat tests in order to override the
