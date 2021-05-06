@@ -16,7 +16,7 @@ snap_from_md <- function(lines) {
   names(tests) <- gsub("^# ", "", lines[h2])
 
   split_tests <- function(lines) {
-    sep <- grepl("^-{3, }", lines)
+    sep <- grepl("^-{3,}", lines)
     case_group <- cumsum(sep)
 
     # Remove first line and last line, separator, line above and line below
