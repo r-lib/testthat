@@ -1,5 +1,9 @@
 # testthat (development version)
 
+* `expect_snapshot_file()` gains a `compare` argument (#1378,
+  @nbenn). This is a customisation point for how to compare old and
+  new snapshot files.
+
 * `expect_snapshot()` no longer deletes snapshots when an unexpected
   error occurs.
 

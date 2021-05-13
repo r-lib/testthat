@@ -21,6 +21,7 @@
 #' @param name Snapshot name, taken from `path` by default.
 #' @param binary If `FALSE`, files are compared line-by-line, ignoring the
 #'   difference between Windows and Mac/Linux line endings.
+#' @param compare A function used for comparison
 #' @inheritParams expect_snapshot
 #'
 #' @section Announcing snapshots:
@@ -72,7 +73,7 @@
 #'   path <- save_png(code)
 #'   expect_snapshot_file(path, name)
 #' }
-expect_snapshot_file <- function(path, name = basename(path), binary = TRUE, cran = FALSE) {
+expect_snapshot_file <- function(path, name = basename(path), binary = TRUE, cran = FALSE, compare = NULL) {
   edition_require(3, "expect_snapshot_file()")
   if (!cran && !interactive() && on_cran()) {
     skip("On CRAN")
@@ -83,7 +84,10 @@ expect_snapshot_file <- function(path, name = basename(path), binary = TRUE, cra
     snapshot_not_available(paste0("New path: ", path))
     return(invisible())
   }
-  compare <- if (binary) compare_file_binary else compare_file_text
+  
+  if (is.null(compare)) {
+    compare <- if (binary) compare_file_binary else compare_file_text
+  }
 
   lab <- quo_label(enquo(path))
   equal <- snapshotter$take_file_snapshot(name, path, compare)
