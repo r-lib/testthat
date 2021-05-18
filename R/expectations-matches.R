@@ -1,17 +1,17 @@
 #' Does a string match a regular expression?
 #'
 #' @details
-#' `expect_match()` is a wrapper around [grep()]. See its documentation for
+#' `expect_match()` is a wrapper around [grepl()]. See its documentation for
 #' more detail about the individual arguments. `expect_no_match()` provides
 #' the complementary case, checking that a string *does not* match a regular
 #' expression.
 #'
 #' @inheritParams expect_that
-#' @inheritParams base::grep
+#' @inheritParams base::grepl
 #' @param regexp Regular expression to test against.
 #' @param all Should all elements of actual value match `regexp` (TRUE),
 #'   or does only one need to match (FALSE).
-#' @inheritDotParams base::grep -pattern -x -perl -fixed -invert -value
+#' @inheritDotParams base::grepl -pattern -x -perl -fixed
 #' @family expectations
 #' @keywords internal
 #' @export
@@ -46,7 +46,7 @@ expect_match <- function(object, regexp, perl = FALSE, fixed = FALSE, ..., all =
     all = all,
     info = info,
     label = label,
-    invert = FALSE
+    negate = FALSE
   )
 }
 
@@ -73,22 +73,15 @@ expect_no_match <- function(object, regexp, perl = FALSE, fixed = FALSE, ..., al
     all = all,
     info = info,
     label = label,
-    invert = TRUE
+    negate = TRUE
   )
 }
 
 expect_match_ <- function(act, regexp, perl = FALSE, fixed = FALSE, ..., all = TRUE,
-                         info = NULL, label = NULL, invert = FALSE) {
+                         info = NULL, label = NULL, negate = FALSE) {
 
-  matches <- grep(
-    regexp,
-    act$val,
-    perl = perl,
-    fixed = fixed,
-    invert = invert,
-    ...
-  )
-
+  matches <- grepl(regexp, act$val, perl = perl, fixed = fixed, ...)
+  condition <- if (negate) !matches else matches
   escape <- if (fixed) identity else escape_regex
 
   if (length(act$val) == 1) {
@@ -100,9 +93,9 @@ expect_match_ <- function(act, regexp, perl = FALSE, fixed = FALSE, ..., all = T
     )
   }
   expect(
-    if (all) length(matches) == length(act$val) else length(matches) > 0,
+    if (all) all(condition) else any(condition),
     sprintf(
-      if (invert) "%s does match %s.\n%s" else "%s does not match %s.\n%s",
+      if (negate) "%s does match %s.\n%s" else "%s does not match %s.\n%s",
       escape(act$lab),
       encodeString(regexp, quote = '"'),
       values
@@ -111,4 +104,3 @@ expect_match_ <- function(act, regexp, perl = FALSE, fixed = FALSE, ..., all = T
   )
   invisible(act$val)
 }
-

@@ -41,7 +41,7 @@ within a function or for loop. See \link{quasi_label} for more details.}
     matched as is.  Overrides all conflicting arguments.}
 
 \item{...}{
-  Arguments passed on to \code{\link[base:grep]{base::grep}}
+  Arguments passed on to \code{\link[base:grep]{base::grepl}}
   \describe{
     \item{\code{ignore.case}}{if \code{FALSE}, the pattern matching is \emph{case
       sensitive} and if \code{TRUE}, case is ignored during matching.}
@@ -63,7 +63,7 @@ alternatives in \link{quasi_label}.}
 Does a string match a regular expression?
 }
 \details{
-\code{expect_match()} is a wrapper around \code{\link[=grep]{grep()}}. See its documentation for
+\code{expect_match()} is a wrapper around \code{\link[=grepl]{grepl()}}. See its documentation for
 more detail about the individual arguments. \code{expect_no_match()} provides
 the complementary case, checking that a string \emph{does not} match a regular
 expression.
