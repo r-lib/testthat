@@ -29,3 +29,10 @@ test_that("prints multiple unmatched values", {
   )
   expect_match(err$message, "does not match")
 })
+
+test_that("expect_no_match works", {
+  expect_success(expect_no_match("[a]", "[b]"))
+  expect_success(expect_no_match("[a]", "[b]", fixed = TRUE))
+  expect_failure(expect_no_match("te*st", "e*", fixed = TRUE), escape_regex("te*st"))
+  expect_failure(expect_no_match("test", "TEST", ignore.case = TRUE), "test")
+})

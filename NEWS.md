@@ -2,6 +2,10 @@
 
 * Condition expectations now consistently return the expected
   condition instead of the return value (#1371).
+  
+* New expectation: `expect_no_match()`. It complements `expect_match()` by
+  checking if a string **doesn't match** a regular expression
+  (@michaelquinn32, #1381).
 
 
 # testthat 3.0.2
