@@ -206,6 +206,17 @@
   all <span class='op'>=</span> <span class='cn'>TRUE</span>,
   info <span class='op'>=</span> <span class='cn'>NULL</span>,
   label <span class='op'>=</span> <span class='cn'>NULL</span>
+<span class='op'>)</span>
+
+<span class='fu'>expect_no_match</span><span class='op'>(</span>
+  <span class='va'>object</span>,
+  <span class='va'>regexp</span>,
+  perl <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  fixed <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  <span class='va'>...</span>,
+  all <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  info <span class='op'>=</span> <span class='cn'>NULL</span>,
+  label <span class='op'>=</span> <span class='cn'>NULL</span>
 <span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -244,7 +255,7 @@ within a function or for loop. See <a href='quasi_label.html'>quasi_label</a> fo
     <tr>
       <th>all</th>
       <td><p>Should all elements of actual value match <code>regexp</code> (TRUE),
-or does only one need to match (FALSE)</p></td>
+or does only one need to match (FALSE).</p></td>
     </tr>
     <tr>
       <th>info</th>
@@ -261,7 +272,16 @@ alternatives in <a href='quasi_label.html'>quasi_label</a>.</p></td>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p><code>expect_match()</code> is a wrapper around <code><a href='https://rdrr.io/r/base/grep.html'>grepl()</a></code>. See its documentation for
-more detail about the individual arguments.</p>
+more detail about the individual arguments. <code>expect_no_match()</code> provides
+the complementary case, checking that a string <em>does not</em> match a regular
+expression.</p>
+    <h2 class="hasAnchor" id="functions"><a class="anchor" href="#functions"></a>Functions</h2>
+
+    
+<ul>
+<li><p><code>expect_no_match</code>: Check that a string doesn't match a regular
+expression.</p></li>
+</ul>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other expectations: 
@@ -280,6 +300,7 @@ more detail about the individual arguments.</p>
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'>expect_match</span><span class='op'>(</span><span class='st'>"Testing is fun"</span>, <span class='st'>"fun"</span><span class='op'>)</span>
 <span class='fu'>expect_match</span><span class='op'>(</span><span class='st'>"Testing is fun"</span>, <span class='st'>"f.n"</span><span class='op'>)</span>
+<span class='fu'>expect_no_match</span><span class='op'>(</span><span class='st'>"Testing is fun"</span>, <span class='st'>"horrible"</span><span class='op'>)</span>
 
 <span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
 <span class='fu'>expect_match</span><span class='op'>(</span><span class='st'>"Testing is fun"</span>, <span class='st'>"horrible"</span><span class='op'>)</span>
