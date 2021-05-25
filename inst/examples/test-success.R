@@ -3,7 +3,7 @@ test_that("one plus one is two", {
 })
 
 test_that("you can skip tests if needed", {
-  skip("This tests hasn't been written yet")
+  skip("This test hasn't been written yet")
 })
 
 test_that("some tests have warnings", {
