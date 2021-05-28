@@ -68,14 +68,9 @@ local_edition <- function(x, .env = parent.frame()) {
 }
 
 edition_set <- function(x) {
-  if (is_zap(x)) {
-    old <- env_get(testthat_env, "edition", default = 2L)
-    env_unbind(testthat_env, "edition")
-    old
-  } else {
-    env_poke(testthat_env, "edition", x)
-  }
+  env_poke(testthat_env, "edition", x)
 }
+
 
 #' @export
 #' @rdname local_edition
