@@ -31,7 +31,7 @@ but doesn't check for a specific value.
   Arguments passed on to \code{\link[=expect_match]{expect_match}}
   \describe{
     \item{\code{all}}{Should all elements of actual value match \code{regexp} (TRUE),
-or does only one need to match (FALSE)}
+or does only one need to match (FALSE).}
     \item{\code{perl}}{logical.  Should Perl-compatible regexps be used?}
     \item{\code{fixed}}{logical.  If \code{TRUE}, \code{pattern} is a string to be
     matched as is.  Overrides all conflicting arguments.}

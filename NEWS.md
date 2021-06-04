@@ -2,10 +2,14 @@
 
 * Condition expectations now consistently return the expected
   condition instead of the return value (#1371).
-  
-* Support setting the testthat edition via an environment variable
-  (`TESTTHAT_EDITION`) as well (#1386, @michaelquinn32).
 
+* New expectation: `expect_no_match()`. It complements `expect_match()` by
+  checking if a string **doesn't match** a regular expression
+  (@michaelquinn32, #1381).
+  
+ * Support setting the testthat edition via an environment variable
+  (`TESTTHAT_EDITION`) as well (@michaelquinn32, #1386).
+ 
 # testthat 3.0.2
 
 * Failing expectations now include a backtrace when they're not called directly
