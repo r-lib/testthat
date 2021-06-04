@@ -1,4 +1,8 @@
 find_edition <- function(path, package = NULL) {
+  from_environment <- Sys.getenv("TESTTHAT_EDITION")
+  if (nzchar(from_environment)) {
+    return(as.integer(from_environment))
+  }
   desc <- find_description(path, package)
   if (is.null(desc)) {
     return(2L)
@@ -58,18 +62,15 @@ edition_name <- function(x) {
 #' @param .env Environment that controls scope of changes. For expert use only.
 #' @keywords internal
 local_edition <- function(x, .env = parent.frame()) {
-  stopifnot(is.numeric(x) && length(x) == 1)
+  stopifnot(is_zap(x) || (is.numeric(x) && length(x) == 1))
   old <- edition_set(x)
   withr::defer(edition_set(old), envir = .env)
 }
 
 edition_set <- function(x) {
-  if (is_zap(x)) {
-    env_unbind(testthat_env, "edition")
-  } else {
-    env_poke(testthat_env, "edition", x)
-  }
+  env_poke(testthat_env, "edition", x)
 }
+
 
 #' @export
 #' @rdname local_edition
@@ -80,3 +81,4 @@ edition_get <- function() {
     find_edition(".")
   }
 }
+
