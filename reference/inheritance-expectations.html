@@ -276,21 +276,21 @@ to <code>class</code>.</p></td>
 <span class='fu'>expect_s3_class</span><span class='op'>(</span><span class='va'>x</span>, <span class='st'>"data.frame"</span><span class='op'>)</span>
 <span class='fu'><a href='expect_success.html'>show_failure</a></span><span class='op'>(</span><span class='fu'>expect_s4_class</span><span class='op'>(</span><span class='va'>x</span>, <span class='st'>"data.frame"</span><span class='op'>)</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; <span style='font-weight: bold;'>Failed expectation:
-#&gt; </span><span>`x` is not an S4 object</div><div class='input'><span class='co'># A data frame is built from a list:</span>
+#&gt; </span>`x` is not an S4 object</div><div class='input'><span class='co'># A data frame is built from a list:</span>
 <span class='fu'>expect_type</span><span class='op'>(</span><span class='va'>x</span>, <span class='st'>"list"</span><span class='op'>)</span>
 
 <span class='co'># An integer vector is an atomic vector of type "integer"</span>
 <span class='fu'>expect_type</span><span class='op'>(</span><span class='va'>x</span><span class='op'>$</span><span class='va'>x</span>, <span class='st'>"integer"</span><span class='op'>)</span>
 <span class='co'># It is not an S3 object</span>
 <span class='fu'><a href='expect_success.html'>show_failure</a></span><span class='op'>(</span><span class='fu'>expect_s3_class</span><span class='op'>(</span><span class='va'>x</span><span class='op'>$</span><span class='va'>x</span>, <span class='st'>"integer"</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; </span><span style='font-weight: bold;'>Failed expectation:
-#&gt; </span><span>x$x is not an S3 object</div><div class='input'>
+</div><div class='output co'>#&gt; <span style='font-weight: bold;'>Failed expectation:
+#&gt; </span>x$x is not an S3 object</div><div class='input'>
 <span class='co'># Above, we requested data.frame() converts strings to factors:</span>
 <span class='fu'><a href='expect_success.html'>show_failure</a></span><span class='op'>(</span><span class='fu'>expect_type</span><span class='op'>(</span><span class='va'>x</span><span class='op'>$</span><span class='va'>y</span>, <span class='st'>"character"</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; </span><span style='font-weight: bold;'>Failed expectation:
-#&gt; </span><span>x$y has type 'integer', not 'character'.</div><div class='input'><span class='fu'>expect_s3_class</span><span class='op'>(</span><span class='va'>x</span><span class='op'>$</span><span class='va'>y</span>, <span class='st'>"factor"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span style='font-weight: bold;'>Failed expectation:
+#&gt; </span>x$y has type 'integer', not 'character'.</div><div class='input'><span class='fu'>expect_s3_class</span><span class='op'>(</span><span class='va'>x</span><span class='op'>$</span><span class='va'>y</span>, <span class='st'>"factor"</span><span class='op'>)</span>
 <span class='fu'>expect_type</span><span class='op'>(</span><span class='va'>x</span><span class='op'>$</span><span class='va'>y</span>, <span class='st'>"integer"</span><span class='op'>)</span>
-</div></span></pre>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

@@ -248,17 +248,17 @@ the results.</p>
 <span class='co'># that caused the problem:</span>
 <span class='fu'><a href='expect_success.html'>show_failure</a></span><span class='op'>(</span><span class='fu'><a href='equality-expectations.html'>expect_equal</a></span><span class='op'>(</span><span class='fu'>f</span><span class='op'>(</span><span class='va'>i</span><span class='op'>)</span>, <span class='va'>i</span> <span class='op'>*</span> <span class='fl'>10</span><span class='op'>)</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; <span style='font-weight: bold;'>Failed expectation:
-#&gt; </span><span>f(i) not equal to i * 10.
+#&gt; </span>f(i) not equal to i * 10.
 #&gt; 1/1 mismatches
 #&gt; [1] 90 - 100 == -10</div><div class='input'>
 <span class='co'># To overcome this issue, testthat allows you to unquote expressions using</span>
 <span class='co'># !!. This causes the failure message to show the value rather than the</span>
 <span class='co'># variable name</span>
 <span class='fu'><a href='expect_success.html'>show_failure</a></span><span class='op'>(</span><span class='fu'><a href='equality-expectations.html'>expect_equal</a></span><span class='op'>(</span><span class='fu'>f</span><span class='op'>(</span><span class='op'>!</span><span class='op'>!</span><span class='va'>i</span><span class='op'>)</span>, <span class='op'>!</span><span class='op'>!</span><span class='op'>(</span><span class='va'>i</span> <span class='op'>*</span> <span class='fl'>10</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; </span><span style='font-weight: bold;'>Failed expectation:
-#&gt; </span><span>f(10) not equal to 100.
+</div><div class='output co'>#&gt; <span style='font-weight: bold;'>Failed expectation:
+#&gt; </span>f(10) not equal to 100.
 #&gt; 1/1 mismatches
-#&gt; [1] 90 - 100 == -10</div></span></pre>
+#&gt; [1] 90 - 100 == -10</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
