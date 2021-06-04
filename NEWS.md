@@ -4,7 +4,7 @@
   condition instead of the return value (#1371).
   
 * Support setting the testthat edition via an environment variable
-  (`TESTTHAT_EDITION`) as well (#1386, michaelquinn32@).
+  (`TESTTHAT_EDITION`) as well (#1386, @michaelquinn32).
 
 # testthat 3.0.2
 
