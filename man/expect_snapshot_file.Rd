@@ -2,9 +2,12 @@
 % Please edit documentation in R/snapshot-file.R
 \name{expect_snapshot_file}
 \alias{expect_snapshot_file}
+\alias{announce_snapshot_file}
 \title{Snapshot testing for whole files}
 \usage{
 expect_snapshot_file(path, name = basename(path), binary = TRUE, cran = FALSE)
+
+announce_snapshot_file(path, name = basename(path))
 }
 \arguments{
 \item{path}{Path to file to snapshot.}
@@ -34,6 +37,18 @@ We generally expect this function to be used via a wrapper that takes care
 of ensuring that output is as reproducible as possible, e.g. automatically
 skipping tests where it's known that images can't be reproduced exactly.
 }
+\section{Announcing snapshots}{
+
+testthat automatically detects dangling snapshots that have been
+written to the \verb{_snaps} directory but which no longer have
+corresponding R code to generate them. These dangling files are
+automatically deleted so they don't clutter the snapshot
+directory. However we want to preserve snapshot files when the R
+code wasn't executed because of an unexpected error or because of a
+\code{\link[=skip]{skip()}}. Let testthat know about these files by calling
+\code{announce_snapshot_file()} before \code{expect_snapshot_file()}.
+}
+
 \examples{
 
 # To use expect_snapshot_file() you'll typically need to start by writing

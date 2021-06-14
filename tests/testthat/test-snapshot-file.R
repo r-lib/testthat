@@ -34,6 +34,14 @@ test_that("basic workflow", {
   snapper$end_file()
 })
 
+test_that("can announce snapshot file", {
+  snapper <- local_snapshotter(tempfile(), cleanup = TRUE)
+  snapper$start_file("snapshot-announce", "test")
+  announce_snapshot_file(name = "bar.svg")
+  expect_true("snapshot-announce/bar.svg" %in% names(snapper$snap_file_seen))
+})
+
+
 # snapshot_file_equal -----------------------------------------------------
 
 test_that("warns on first creation", {

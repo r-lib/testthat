@@ -21,6 +21,17 @@
 #' @param binary If `FALSE`, files are compared line-by-line, ignoring the
 #'   difference between Windows and Mac/Linux line endings.
 #' @inheritParams expect_snapshot
+#'
+#' @section Announcing snapshots:
+#' testthat automatically detects dangling snapshots that have been
+#' written to the `_snaps` directory but which no longer have
+#' corresponding R code to generate them. These dangling files are
+#' automatically deleted so they don't clutter the snapshot
+#' directory. However we want to preserve snapshot files when the R
+#' code wasn't executed because of an unexpected error or because of a
+#' [skip()]. Let testthat know about these files by calling
+#' `announce_snapshot_file()` before `expect_snapshot_file()`.
+#'
 #' @export
 #' @examples
 #'
@@ -78,6 +89,17 @@ expect_snapshot_file <- function(path, name = basename(path), binary = TRUE, cra
       hint
     )
   )
+}
+
+#' @rdname expect_snapshot_file
+#' @export
+announce_snapshot_file <- function(path, name = basename(path)) {
+  edition_require(3, "announce_snapshot_file()")
+
+  snapshotter <- get_snapshotter()
+  if (!is.null(snapshotter)) {
+    snapshotter$announce_file_snapshot(name)
+  }
 }
 
 snapshot_hint <- function(test, name, ci = on_ci(), check = in_rcmd_check()) {
