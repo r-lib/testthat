@@ -26,7 +26,7 @@ test_that("multiple outputs of same type are collapsed", {
 })
 
 test_that("always checks error status", {
-  expect_failure(expect_snapshot(stop("!"), error = FALSE))
+  expect_error(expect_snapshot(stop("!"), error = FALSE))
   expect_failure(expect_snapshot(print("!"), error = TRUE))
 })
 
