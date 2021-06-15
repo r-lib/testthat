@@ -196,6 +196,7 @@
 <a href="#testthat-development-version" class="anchor"></a>testthat (development version)<small> Unreleased </small>
 </h1>
 <ul>
+<li><p><code><a href="../reference/expect_snapshot.html">expect_snapshot()</a></code> no longer deletes snapshots when an unexpected error occurs.</p></li>
 <li><p>Condition expectations now consistently return the expected condition instead of the return value (<a href='https://github.com/r-lib/testthat/issues/1371'>#1371</a>).</p></li>
 <li><p>New expectation: <code><a href="../reference/expect_match.html">expect_no_match()</a></code>. It complements <code><a href="../reference/expect_match.html">expect_match()</a></code> by checking if a string <strong>doesn’t match</strong> a regular expression (<a href='https://github.com/michaelquinn32'>@michaelquinn32</a>, <a href='https://github.com/r-lib/testthat/issues/1381'>#1381</a>).</p></li>
 <li><p>Support setting the testthat edition via an environment variable (<code>TESTTHAT_EDITION</code>) as well (<a href='https://github.com/michaelquinn32'>@michaelquinn32</a>, <a href='https://github.com/r-lib/testthat/issues/1386'>#1386</a>).</p></li>
