@@ -169,7 +169,7 @@
 <a href="#common-problems" class="anchor"></a>Common problems</h2>
 <ul>
 <li><p>If tests fail stochastically (i.e. they sometimes work and sometimes fail) you may have accidentally introduced a dependency between your test files. This sort of dependency is hard to track down due to the random nature, and you’ll need to check all tests to make sure that they’re not accidentally changing global state.</p></li>
-<li><p>If you use <a href="https://testthat.r-lib.org/articles/test-fixtures.html#package">packaged scope test fixtures</a>, you’ll need to review them to make sure that they work in parallel. For example, if you were previously creating a temporary database in the test directory, you’d need to instead create it in the session temporary directory so that each process gets its on independent version.</p></li>
+<li><p>If you use <a href="https://testthat.r-lib.org/articles/test-fixtures.html#package">packaged scope test fixtures</a>, you’ll need to review them to make sure that they work in parallel. For example, if you were previously creating a temporary database in the test directory, you’d need to instead create it in the session temporary directory so that each process gets its own independent version.</p></li>
 </ul>
 </div>
 <div id="performance" class="section level2">
