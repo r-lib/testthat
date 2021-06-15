@@ -25,6 +25,7 @@ classnameOK <- function(text) {
 #' \url{http://llg.cubic.org/docs/junit/}
 #'
 #' @export
+#' @family reporters
 JunitReporter <- R6::R6Class("JunitReporter",
   inherit = Reporter,
   public = list(
