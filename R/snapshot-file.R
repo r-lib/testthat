@@ -16,7 +16,8 @@
 #' of ensuring that output is as reproducible as possible, e.g. automatically
 #' skipping tests where it's known that images can't be reproduced exactly.
 #'
-#' @param path Path to file to snapshot.
+#' @param path Path to file to snapshot. Optional for
+#'   `announce_snapshot_file()` if `name` is supplied.
 #' @param name Snapshot name, taken from `path` by default.
 #' @param binary If `FALSE`, files are compared line-by-line, ignoring the
 #'   difference between Windows and Mac/Linux line endings.
@@ -61,8 +62,15 @@
 #'   skip_on_os("windows")
 #'   # You'll need to carefully think about and experiment with these skips
 #'
+#'   name <- paste0(name, ".png")
+#'
+#'   # Announce the file before touching `code`. This way, if `code`
+#'   # unexpectedly fails or skips, testthat will not auto-delete the
+#'   # corresponding snapshot file.
+#'   announce_snapshot_file(name = name)
+#'
 #'   path <- save_png(code)
-#'   expect_snapshot_file(path, paste0(name, ".png"))
+#'   expect_snapshot_file(path, name)
 #' }
 expect_snapshot_file <- function(path, name = basename(path), binary = TRUE, cran = FALSE) {
   edition_require(3, "expect_snapshot_file()")
