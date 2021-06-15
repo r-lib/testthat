@@ -64,7 +64,11 @@ expect_snapshot <- function(x, cran = FALSE, error = FALSE) {
   # Use expect_error() machinery to confirm that error is as expected
   msg <- compare_condition_3e("error", state$error, quo_label(x), error)
   if (!is.null(msg)) {
-    expect(FALSE, msg, trace = state$error[["trace"]])
+    if (error) {
+      expect(FALSE, msg, trace = state$error[["trace"]])
+    } else {
+      exp_signal(expectation("error", msg, state$error[["trace"]]))
+    }
     return()
   }
 

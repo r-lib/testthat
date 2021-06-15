@@ -1,5 +1,8 @@
 # testthat (development version)
 
+* `expect_snapshot()` no longer deletes snapshots when an unexpected
+  error occurs.
+
 * Condition expectations now consistently return the expected
   condition instead of the return value (#1371).
 
