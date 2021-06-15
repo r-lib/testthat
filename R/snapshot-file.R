@@ -92,7 +92,7 @@ expect_snapshot_file <- function(path, name = basename(path), binary = TRUE, cra
   expect(
     equal,
     sprintf(
-      "Shapshot of %s to '%s' has changed\n%s",
+      "Snapshot of %s to '%s' has changed\n%s",
       lab, paste0(snapshotter$file, "/", name),
       hint
     )
