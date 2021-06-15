@@ -11,6 +11,7 @@ report is design to ensure that you see something useful there.
 Other reporters: 
 \code{\link{DebugReporter}},
 \code{\link{FailReporter}},
+\code{\link{JunitReporter}},
 \code{\link{ListReporter}},
 \code{\link{LocationReporter}},
 \code{\link{MinimalReporter}},
