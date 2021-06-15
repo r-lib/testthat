@@ -6,7 +6,7 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
     file = NULL,
     test = NULL,
     test_file_seen = character(),
-    snap_file_seen = character(),
+    snap_file_seen = new_environment(),
     i = 0,
     file_changed = FALSE,
 
@@ -73,10 +73,14 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
       }
     },
 
-    take_file_snapshot = function(name, path, file_equal) {
-      snap_dir <- file.path(self$snap_dir, self$file)
-      self$snap_file_seen <- c(file.path(self$file, name), self$snap_file_seen)
+    announce_file_snapshot = function(name) {
+      self$snap_file_seen[[file.path(self$file, name)]] <- TRUE
+    },
 
+    take_file_snapshot = function(name, path, file_equal) {
+      self$announce_file_snapshot(name)
+
+      snap_dir <- file.path(self$snap_dir, self$file)
       snapshot_file_equal(snap_dir, name, path, file_equal)
     },
 
@@ -112,7 +116,7 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
         test_names <- context_name(tests)
         outdated <- union(
           snapshot_outdated(self$snap_dir, test_names),
-          snapshot_file_outdated(self$snap_dir, test_names, self$snap_file_seen)
+          snapshot_file_outdated(self$snap_dir, test_names, names(self$snap_file_seen))
         )
 
         if (length(outdated) > 0) {
