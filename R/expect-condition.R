@@ -13,6 +13,10 @@
 #' `expect_message()`/`expect_warning()` calls; if they're unimportant you
 #' can ignore with [suppressMessages()]/[suppressWarnings()].
 #'
+#' It can be tricky to test for a combination of different conditions,
+#' such as a message followed by an error. [expect_snapshot()] is
+#' often an easier alternative for these more complex cases.
+#'
 #' @section Testing `message` vs `class`:
 #' When checking that code generates an error, it's important to check that the
 #' error is the one you expect. There are two ways to do this. The first

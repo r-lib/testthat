@@ -97,6 +97,10 @@ will bubble up outside the expectation. If these additional conditions
 are important you'll need to catch them with additional
 \code{expect_message()}/\code{expect_warning()} calls; if they're unimportant you
 can ignore with \code{\link[=suppressMessages]{suppressMessages()}}/\code{\link[=suppressWarnings]{suppressWarnings()}}.
+
+It can be tricky to test for a combination of different conditions,
+such as a message followed by an error. \code{\link[=expect_snapshot]{expect_snapshot()}} is
+often an easier alternative for these more complex cases.
 }
 \section{Testing \code{message} vs \code{class}}{
 
