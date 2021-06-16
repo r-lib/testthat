@@ -1,4 +1,4 @@
-# testthat (development version)
+# testthat 3.0.3
 
 * `expect_snapshot_file()` gains a `compare` argument (#1378,
   @nbenn). This is a customisation point for how to compare old and
