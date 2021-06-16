@@ -1,6 +1,10 @@
 test_that("expect_snapshot_file works", {
   skip_if_not(getRversion() >= "3.6.0")
-  expect_snapshot_file(write_tmp_lines(letters), "foo.r", binary = FALSE)
+  expect_snapshot_file(
+    write_tmp_lines(letters),
+    "foo.r",
+    compare = compare_file_text
+  )
 
   path <- tempfile()
   png(path, width = 300, height = 300, type = "cairo")
@@ -12,7 +16,19 @@ test_that("expect_snapshot_file works", {
   mtcars2 <- mtcars
   # mtcars2$wt[10] <- NA
   write.csv(mtcars2, path)
-  expect_snapshot_file(path, "foo.csv", binary = FALSE)
+  expect_snapshot_file(
+    path,
+    "foo.csv",
+    compare = compare_file_text
+  )
+
+  # Deprecated `binary` argument still works
+  withr::local_options(lifecycle_verbosity = "quiet")
+  expect_snapshot_file(
+    path,
+    "foo.csv",
+    binary = FALSE
+  )
 })
 
 test_that("basic workflow", {

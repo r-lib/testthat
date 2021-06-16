@@ -19,8 +19,12 @@
 #' @param path Path to file to snapshot. Optional for
 #'   `announce_snapshot_file()` if `name` is supplied.
 #' @param name Snapshot name, taken from `path` by default.
-#' @param binary If `FALSE`, files are compared line-by-line, ignoring the
-#'   difference between Windows and Mac/Linux line endings.
+#' @param binary `r lifecycle::badge("deprecated")` Please use the
+#'   `compare` argument instead.
+#' @param compare A function used for comparison taking `old` and
+#'   `new` arguments. By default this is `compare_file_binary`. Set it
+#'   to `compare_file_text` to compare files line-by-line, ignoring
+#'   the difference between Windows and Mac/Linux line endings.
 #' @inheritParams expect_snapshot
 #'
 #' @section Announcing snapshots:
@@ -72,7 +76,11 @@
 #'   path <- save_png(code)
 #'   expect_snapshot_file(path, name)
 #' }
-expect_snapshot_file <- function(path, name = basename(path), binary = TRUE, cran = FALSE) {
+expect_snapshot_file <- function(path,
+                                 name = basename(path),
+                                 binary = lifecycle::deprecated(),
+                                 cran = FALSE,
+                                 compare =  compare_file_binary) {
   edition_require(3, "expect_snapshot_file()")
   if (!cran && !interactive() && on_cran()) {
     skip("On CRAN")
@@ -83,7 +91,15 @@ expect_snapshot_file <- function(path, name = basename(path), binary = TRUE, cra
     snapshot_not_available(paste0("New path: ", path))
     return(invisible())
   }
-  compare <- if (binary) compare_file_binary else compare_file_text
+
+  if (!is_missing(binary)) {
+    lifecycle::deprecate_soft(
+      "3.0.3",
+      "expect_snapshot_file(binary = )",
+      "expect_snapshot_file(compare = )"
+    )
+    compare <- if (binary) compare_file_binary else compare_file_text
+  }
 
   lab <- quo_label(enquo(path))
   equal <- snapshotter$take_file_snapshot(name, path, compare)
@@ -215,12 +231,16 @@ local_snap_dir <- function(paths, .env = parent.frame()) {
   dir
 }
 
+#' @rdname expect_snapshot_file
+#' @param old,new Paths to old and new snapshot files.
+#' @export
 compare_file_binary <- function(old, new) {
   old <- brio::read_file_raw(old)
   new <- brio::read_file_raw(new)
   identical(old, new)
 }
-
+#' @rdname expect_snapshot_file
+#' @export
 compare_file_text <- function(old, new) {
   old <- brio::read_lines(old)
   new <- brio::read_lines(new)

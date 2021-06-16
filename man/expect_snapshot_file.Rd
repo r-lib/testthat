@@ -3,11 +3,23 @@
 \name{expect_snapshot_file}
 \alias{expect_snapshot_file}
 \alias{announce_snapshot_file}
+\alias{compare_file_binary}
+\alias{compare_file_text}
 \title{Snapshot testing for whole files}
 \usage{
-expect_snapshot_file(path, name = basename(path), binary = TRUE, cran = FALSE)
+expect_snapshot_file(
+  path,
+  name = basename(path),
+  binary = lifecycle::deprecated(),
+  cran = FALSE,
+  compare = compare_file_binary
+)
 
 announce_snapshot_file(path, name = basename(path))
+
+compare_file_binary(old, new)
+
+compare_file_text(old, new)
 }
 \arguments{
 \item{path}{Path to file to snapshot. Optional for
@@ -15,12 +27,19 @@ announce_snapshot_file(path, name = basename(path))
 
 \item{name}{Snapshot name, taken from \code{path} by default.}
 
-\item{binary}{If \code{FALSE}, files are compared line-by-line, ignoring the
-difference between Windows and Mac/Linux line endings.}
+\item{binary}{\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}} Please use the
+\code{compare} argument instead.}
 
 \item{cran}{Should these expectations be verified on CRAN? By default,
 they are not, because snapshot tests tend to be fragile because they
 often rely on minor details of dependencies.}
+
+\item{compare}{A function used for comparison taking \code{old} and
+\code{new} arguments. By default this is \code{compare_file_binary}. Set it
+to \code{compare_file_text} to compare files line-by-line, ignoring
+the difference between Windows and Mac/Linux line endings.}
+
+\item{old, new}{Paths to old and new snapshot files.}
 }
 \description{
 Whole file snapshot testing is designed for testing objects that don't have

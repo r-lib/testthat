@@ -1,5 +1,14 @@
 # testthat (development version)
 
+* `expect_snapshot_file()` gains a `compare` argument (#1378,
+  @nbenn). This is a customisation point for how to compare old and
+  new snapshot files.
+  
+  The functions `compare_file_binary()` and `compare_file_text()` are
+  now exported from testthat to be supplied as `compare`
+  argument. These implement the same behaviour as the old `binary`
+  argument which is now deprecated.
+
 * `expect_snapshot()` no longer deletes snapshots when an unexpected
   error occurs.
 
