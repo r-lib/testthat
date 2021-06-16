@@ -219,9 +219,19 @@ of ensuring that output is as reproducible as possible, e.g. automatically
 skipping tests where it's known that images can't be reproduced exactly.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>expect_snapshot_file</span><span class='op'>(</span><span class='va'>path</span>, name <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/basename.html'>basename</a></span><span class='op'>(</span><span class='va'>path</span><span class='op'>)</span>, binary <span class='op'>=</span> <span class='cn'>TRUE</span>, cran <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
+    <pre class="usage"><span class='fu'>expect_snapshot_file</span><span class='op'>(</span>
+  <span class='va'>path</span>,
+  name <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/basename.html'>basename</a></span><span class='op'>(</span><span class='va'>path</span><span class='op'>)</span>,
+  binary <span class='op'>=</span> <span class='fu'>lifecycle</span><span class='fu'>::</span><span class='fu'><a href='https://lifecycle.r-lib.org/reference/deprecated.html'>deprecated</a></span><span class='op'>(</span><span class='op'>)</span>,
+  cran <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  compare <span class='op'>=</span> <span class='va'>compare_file_binary</span>
+<span class='op'>)</span>
 
-<span class='fu'>announce_snapshot_file</span><span class='op'>(</span><span class='va'>path</span>, name <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/basename.html'>basename</a></span><span class='op'>(</span><span class='va'>path</span><span class='op'>)</span><span class='op'>)</span></pre>
+<span class='fu'>announce_snapshot_file</span><span class='op'>(</span><span class='va'>path</span>, name <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/basename.html'>basename</a></span><span class='op'>(</span><span class='va'>path</span><span class='op'>)</span><span class='op'>)</span>
+
+<span class='fu'>compare_file_binary</span><span class='op'>(</span><span class='va'>old</span>, <span class='va'>new</span><span class='op'>)</span>
+
+<span class='fu'>compare_file_text</span><span class='op'>(</span><span class='va'>old</span>, <span class='va'>new</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -237,14 +247,25 @@ skipping tests where it's known that images can't be reproduced exactly.</p>
     </tr>
     <tr>
       <th>binary</th>
-      <td><p>If <code>FALSE</code>, files are compared line-by-line, ignoring the
-difference between Windows and Mac/Linux line endings.</p></td>
+      <td><p><a href='https://lifecycle.r-lib.org/articles/stages.html#deprecated'><img src='figures/lifecycle-deprecated.svg' alt='[Deprecated]' /></a> Please use the
+<code>compare</code> argument instead.</p></td>
     </tr>
     <tr>
       <th>cran</th>
       <td><p>Should these expectations be verified on CRAN? By default,
 they are not, because snapshot tests tend to be fragile because they
 often rely on minor details of dependencies.</p></td>
+    </tr>
+    <tr>
+      <th>compare</th>
+      <td><p>A function used for comparison taking <code>old</code> and
+<code>new</code> arguments. By default this is <code>compare_file_binary</code>. Set it
+to <code>compare_file_text</code> to compare files line-by-line, ignoring
+the difference between Windows and Mac/Linux line endings.</p></td>
+    </tr>
+    <tr>
+      <th>old, new</th>
+      <td><p>Paths to old and new snapshot files.</p></td>
     </tr>
     </table>
 
@@ -275,7 +296,7 @@ code wasn't executed because of an unexpected error or because of a
 <span class='op'>}</span>
 <span class='va'>path</span> <span class='op'>&lt;-</span> <span class='fu'>save_png</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>5</span><span class='op'>)</span><span class='op'>)</span>
 <span class='va'>path</span>
-</div><div class='output co'>#&gt; [1] "/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//Rtmpc25sC3/file8a11a2f5d47.png"</div><div class='input'>
+</div><div class='output co'>#&gt; [1] "/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpYNSr8g/file9991f6b901b.png"</div><div class='input'>
 <span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
 <span class='fu'>expect_snapshot_file</span><span class='op'>(</span><span class='fu'>save_png</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/graphics/hist.html'>hist</a></span><span class='op'>(</span><span class='va'>mtcars</span><span class='op'>$</span><span class='va'>mpg</span><span class='op'>)</span><span class='op'>)</span>, <span class='st'>"plot.png"</span><span class='op'>)</span>
 <span class='op'>}</span>

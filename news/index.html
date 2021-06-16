@@ -196,6 +196,10 @@
 <a href="#testthat-development-version" class="anchor"></a>testthat (development version)<small> Unreleased </small>
 </h1>
 <ul>
+<li>
+<p><code><a href="../reference/expect_snapshot_file.html">expect_snapshot_file()</a></code> gains a <code>compare</code> argument (<a href='https://github.com/r-lib/testthat/issues/1378'>#1378</a>, <a href='https://github.com/nbenn'>@nbenn</a>). This is a customisation point for how to compare old and new snapshot files.</p>
+<p>The functions <code><a href="../reference/expect_snapshot_file.html">compare_file_binary()</a></code> and <code><a href="../reference/expect_snapshot_file.html">compare_file_text()</a></code> are now exported from testthat to be supplied as <code>compare</code> argument. These implement the same behaviour as the old <code>binary</code> argument which is now deprecated.</p>
+</li>
 <li><p><code><a href="../reference/expect_snapshot.html">expect_snapshot()</a></code> no longer deletes snapshots when an unexpected error occurs.</p></li>
 <li><p>New <code><a href="../reference/expect_snapshot_file.html">announce_snapshot_file()</a></code> function for developers of testthat extensions. Announcing a snapshot file allows testthat to preserve files that were not generated because of an unexpected error or a <code><a href="../reference/skip.html">skip()</a></code> (<a href='https://github.com/r-lib/testthat/issues/1393'>#1393</a>). Unannounced files are automatically deleted during cleanup if the generating code isn’t called.</p></li>
 <li><p>New expectation: <code><a href="../reference/expect_match.html">expect_no_match()</a></code>. It complements <code><a href="../reference/expect_match.html">expect_match()</a></code> by checking if a string <strong>doesn’t match</strong> a regular expression (<a href='https://github.com/michaelquinn32'>@michaelquinn32</a>, <a href='https://github.com/r-lib/testthat/issues/1381'>#1381</a>).</p></li>
