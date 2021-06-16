@@ -2,14 +2,12 @@
 
 * `expect_snapshot()` no longer deletes snapshots when an unexpected
   error occurs.
+
 * New `announce_snapshot_file()` function for developers of testthat
   extensions. Announcing a snapshot file allows testthat to preserve
   files that were not generated because of an unexpected error or a
   `skip()` (#1393). Unannounced files are automatically deleted during
   cleanup if the generating code isn't called.
-
-* Condition expectations now consistently return the expected
-  condition instead of the return value (#1371).
 
 * New expectation: `expect_no_match()`. It complements `expect_match()` by
   checking if a string **doesn't match** a regular expression
