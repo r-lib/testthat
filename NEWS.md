@@ -1,7 +1,35 @@
 # testthat (development version)
 
 * Condition expectations now consistently return the expected
-  condition instead of the return value (#1371).
+  condition instead of the return value (#1371). Previously, they
+  would only return the condition if the return value was `NULL`,
+  leading to inconsistent behaviour.
+  
+  This is a breaking change (it only affects edition 3). Where you
+  could previously do:
+  
+  ```
+  expect_equal(expect_warning(f(), "warning"), "value")
+  ```
+  
+  You must now use condition expectations on the outside:
+  
+  ```
+  expect_warning(expect_equal(f(), "value"), "warning")
+  
+  # Equivalently, save the value before inspection
+  expect_warning(value <- f(), "warning")
+  expect_equal(value, "value")
+  
+  # If you use `=` instead of `<-` be sure to disambiguate
+  # assignment and argument passing with braces
+  expect_warning({ value = f() }, "warning")
+  expect_equal(value, "value")
+  ```
+  
+  This breaking change makes testthat more consistent. It also makes
+  it possible to inspect both the value and the warning, which would
+  require additional tools otherwise.
 
 # testthat 3.0.3
 
