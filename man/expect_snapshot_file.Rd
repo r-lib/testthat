@@ -10,7 +10,7 @@
 expect_snapshot_file(
   path,
   name = basename(path),
-  binary = NULL,
+  binary = lifecycle::deprecated(),
   cran = FALSE,
   compare = compare_file_binary
 )
@@ -27,8 +27,8 @@ compare_file_text(old, new)
 
 \item{name}{Snapshot name, taken from \code{path} by default.}
 
-\item{binary}{If \code{FALSE}, files are compared line-by-line, ignoring the
-difference between Windows and Mac/Linux line endings.}
+\item{binary}{\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}} Please use the
+\code{compare} argument instead.}
 
 \item{cran}{Should these expectations be verified on CRAN? By default,
 they are not, because snapshot tests tend to be fragile because they

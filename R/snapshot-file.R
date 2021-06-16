@@ -19,8 +19,8 @@
 #' @param path Path to file to snapshot. Optional for
 #'   `announce_snapshot_file()` if `name` is supplied.
 #' @param name Snapshot name, taken from `path` by default.
-#' @param binary If `FALSE`, files are compared line-by-line, ignoring the
-#'   difference between Windows and Mac/Linux line endings.
+#' @param binary `r lifecycle::badge("deprecated")` Please use the
+#'   `compare` argument instead.
 #' @param compare A function used for comparison taking `old` and
 #'   `new` arguments. By default this is `compare_file_binary`. Set it
 #'   to `compare_file_text` to compare files line-by-line, ignoring
@@ -78,7 +78,7 @@
 #' }
 expect_snapshot_file <- function(path,
                                  name = basename(path),
-                                 binary = NULL,
+                                 binary = lifecycle::deprecated(),
                                  cran = FALSE,
                                  compare =  compare_file_binary) {
   edition_require(3, "expect_snapshot_file()")
@@ -92,7 +92,12 @@ expect_snapshot_file <- function(path,
     return(invisible())
   }
 
-  if (!is_null(binary)) {
+  if (!is_missing(binary)) {
+    lifecycle::deprecate_soft(
+      "3.0.3",
+      "expect_snapshot_file(binary = )",
+      "expect_snapshot_file(compare = )"
+    )
     compare <- if (binary) compare_file_binary else compare_file_text
   }
 
