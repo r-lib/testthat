@@ -1,5 +1,8 @@
 # testthat (development version)
 
+* Condition expectations now consistently return the expected
+  condition instead of the return value (#1371).
+
 # testthat 3.0.3
 
 * `expect_snapshot_file()` gains a `compare` argument (#1378,
