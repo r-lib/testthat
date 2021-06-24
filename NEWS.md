@@ -58,6 +58,9 @@
  * Support setting the testthat edition via an environment variable
   (`TESTTHAT_EDITION`) as well (@michaelquinn32, #1386).
  
+* The vendored Catch code used for `use_catch()` now uses an constant value for the stack size rather than relying on SIGSTKSZ.
+  This fixes compatibility for recent glibc versions where SIGSTKSZ is no longer a constant.
+
 # testthat 3.0.2
 
 * Failing expectations now include a backtrace when they're not called directly
