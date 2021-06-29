@@ -104,3 +104,12 @@ test_that("skips and unexpected errors reset snapshots", {
   titles <- c("errors reset snapshots", "skips reset snapshots")
   expect_true(all(titles %in% names(snaps)))
 })
+
+test_that("`expect_error()` can fail inside `expect_snapshot()`", {
+  out <- test_file(
+    test_path("test-snapshot", "test-expect-condition.R"),
+    reporter = NULL
+  )
+  err <- out[[1]]$results[[1]]
+  expect_match(err$message, "did not throw the expected error")
+})
