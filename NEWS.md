@@ -1,5 +1,9 @@
 # testthat (development version)
 
+* Fixed an issue that caused errors and early termination of tests on
+  R <= 3.6 when a failing condition expectation was signalled inside a
+  snapshot.
+
 * Condition expectations now consistently return the expected
   condition instead of the return value (#1371). Previously, they
   would only return the condition if the return value was `NULL`,
