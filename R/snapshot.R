@@ -67,7 +67,7 @@ expect_snapshot <- function(x, cran = FALSE, error = FALSE) {
     if (error) {
       expect(FALSE, msg, trace = state$error[["trace"]])
     } else {
-      exp_signal(expectation("error", msg, state$error[["trace"]]))
+      exp_signal(expectation("error", msg, trace = state$error[["trace"]]))
     }
     return()
   }
