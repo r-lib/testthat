@@ -196,6 +196,7 @@
 <a href="#testthat-development-version" class="anchor"></a>testthat (development version)<small> Unreleased </small>
 </h1>
 <ul>
+<li><p>Fixed an issue that caused errors and early termination of tests on R &lt;= 3.6 when a failing condition expectation was signalled inside a snapshot.</p></li>
 <li>
 <p>Condition expectations now consistently return the expected condition instead of the return value (<a href='https://github.com/r-lib/testthat/issues/1371'>#1371</a>). Previously, they would only return the condition if the return value was <code>NULL</code>, leading to inconsistent behaviour.</p>
 <p>This is a breaking change (it only affects edition 3). Where you could previously do:</p>
