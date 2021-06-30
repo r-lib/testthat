@@ -1,7 +1,13 @@
 # testthat (development version)
 
-* The vendored Catch code used for `use_catch()` now uses an constant value for the stack size rather than relying on SIGSTKSZ.
-  This fixes compatibility for recent glibc versions where SIGSTKSZ is no longer a constant.
+* The vendored Catch code used for `use_catch()` now uses an constant
+  value for the stack size rather than relying on SIGSTKSZ. This
+  fixes compatibility for recent glibc versions where SIGSTKSZ is no
+  longer a constant.
+
+* Fixed an issue that caused errors and early termination of tests on
+  R <= 3.6 when a failing condition expectation was signalled inside a
+  snapshot.
 
 * Condition expectations now consistently return the expected
   condition instead of the return value (#1371). Previously, they
