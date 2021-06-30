@@ -1,4 +1,4 @@
-# testthat (development version)
+# testthat 3.0.4
 
 * The vendored Catch code used for `use_catch()` now uses an constant
   value for the stack size rather than relying on SIGSTKSZ. This
