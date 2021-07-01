@@ -98,7 +98,7 @@ non-standard width." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">testthat</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">3.0.3.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">3.0.4.9000</span>
       </span>
     </div>
 
@@ -287,16 +287,16 @@ sorting the same regardless of system locale.</p>
     <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/eval.html'>local</a></span><span class='op'>(</span><span class='op'>{</span>
   <span class='fu'>local_test_context</span><span class='op'>(</span><span class='op'>)</span>
   <span class='fu'><a href='https://rdrr.io/r/base/cat.html'>cat</a></span><span class='op'>(</span><span class='fu'>crayon</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/crayon/man/crayon.html'>blue</a></span><span class='op'>(</span><span class='st'>"Text will not be colored"</span><span class='op'>)</span><span class='op'>)</span>
-  <span class='fu'><a href='https://rdrr.io/r/base/cat.html'>cat</a></span><span class='op'>(</span><span class='fu'>cli</span><span class='fu'>::</span><span class='va'><a href='https://rdrr.io/pkg/cli/man/symbol.html'>symbol</a></span><span class='op'>$</span><span class='va'>ellipsis</span><span class='op'>)</span>
+  <span class='fu'><a href='https://rdrr.io/r/base/cat.html'>cat</a></span><span class='op'>(</span><span class='fu'>cli</span><span class='fu'>::</span><span class='va'><a href='https://cli.r-lib.org/reference/symbol.html'>symbol</a></span><span class='op'>$</span><span class='va'>ellipsis</span><span class='op'>)</span>
   <span class='fu'><a href='https://rdrr.io/r/base/cat.html'>cat</a></span><span class='op'>(</span><span class='st'>"\n"</span><span class='op'>)</span>
 <span class='op'>}</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; <span style='color: #0000BB;'>Text will not be colored</span>…</div><div class='input'>
-<span class='va'>ellipsis</span> <span class='op'>&lt;-</span> <span class='fu'>cli</span><span class='fu'>::</span><span class='va'><a href='https://rdrr.io/pkg/cli/man/symbol.html'>symbol</a></span><span class='op'>$</span><span class='va'>ellipsis</span>
+<span class='va'>ellipsis</span> <span class='op'>&lt;-</span> <span class='fu'>cli</span><span class='fu'>::</span><span class='va'><a href='https://cli.r-lib.org/reference/symbol.html'>symbol</a></span><span class='op'>$</span><span class='va'>ellipsis</span>
 <span class='fu'><a href='test_that.html'>test_that</a></span><span class='op'>(</span><span class='st'>"test ellipsis"</span>, <span class='op'>{</span>
-  <span class='fu'><a href='equality-expectations.html'>expect_equal</a></span><span class='op'>(</span><span class='va'>ellipsis</span>, <span class='fu'>cli</span><span class='fu'>::</span><span class='va'><a href='https://rdrr.io/pkg/cli/man/symbol.html'>symbol</a></span><span class='op'>$</span><span class='va'>ellipsis</span><span class='op'>)</span>
+  <span class='fu'><a href='equality-expectations.html'>expect_equal</a></span><span class='op'>(</span><span class='va'>ellipsis</span>, <span class='fu'>cli</span><span class='fu'>::</span><span class='va'><a href='https://cli.r-lib.org/reference/symbol.html'>symbol</a></span><span class='op'>$</span><span class='va'>ellipsis</span><span class='op'>)</span>
 
   <span class='fu'>local_reproducible_output</span><span class='op'>(</span>unicode <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
-  <span class='fu'><a href='equality-expectations.html'>expect_equal</a></span><span class='op'>(</span><span class='va'>ellipsis</span>, <span class='fu'>cli</span><span class='fu'>::</span><span class='va'><a href='https://rdrr.io/pkg/cli/man/symbol.html'>symbol</a></span><span class='op'>$</span><span class='va'>ellipsis</span><span class='op'>)</span>
+  <span class='fu'><a href='equality-expectations.html'>expect_equal</a></span><span class='op'>(</span><span class='va'>ellipsis</span>, <span class='fu'>cli</span><span class='fu'>::</span><span class='va'><a href='https://cli.r-lib.org/reference/symbol.html'>symbol</a></span><span class='op'>$</span><span class='va'>ellipsis</span><span class='op'>)</span>
 <span class='op'>}</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; <span style='color: #00BB00;'>Test passed</span> 😸</div></pre>
   </div>
