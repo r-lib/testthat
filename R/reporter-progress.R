@@ -383,7 +383,7 @@ ParallelProgressReporter <- R6::R6Class("ParallelProgressReporter",
         self$files[[file]] <- list(
           issues = Stack$new(),
           n_fail = 0L,
-          n_skip_ = 0L,
+          n_skip = 0L,
           n_warn = 0L,
           n_ok = 0L,
           name = context_name(file),
@@ -439,7 +439,7 @@ ParallelProgressReporter <- R6::R6Class("ParallelProgressReporter",
         self$files[[file]]$issues$push(result)
       } else if (expectation_skip(result)) {
         self$n_skip <- self$n_skip + 1
-        self$files[[file]]$n_skip_ <- self$files[[file]]$n_skip_ + 1L
+        self$files[[file]]$n_skip <- self$files[[file]]$n_skip + 1L
         if (self$verbose_skips) {
           self$files[[file]]$issues$push(result)
         }
