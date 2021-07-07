@@ -159,7 +159,7 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
       if (complete && time > self$min_time) {
         message <- paste0(
           message,
-          cli::col_cyan(sprintf(" [%.1f s]", time))
+          cli::col_grey(sprintf(" [%.1fs]", time))
         )
       }
 
