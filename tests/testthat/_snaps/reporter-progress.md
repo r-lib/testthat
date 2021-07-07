@@ -1,10 +1,10 @@
 # captures error before first test
 
-    v |  OK F W S | Context
+    v | F W S  OK | Context
     
-    / |   0       | reporters/error-setup                                           
-    - |   0 1     | reporters/error-setup                                           
-    x |   0 1     | reporters/error-setup
+    / |         0 | reporters/error-setup                                           
+    - | 1       0 | reporters/error-setup                                           
+    x | 1       0 | reporters/error-setup
     --------------------------------------------------------------------------------
     Error (error-setup.R:6:1): (code run outside of `test_that()`)
     Error: !
@@ -22,12 +22,12 @@
 
 # gracefully handles multiple contexts
 
-    v |  OK F W S | Context
+    v | F W S  OK | Context
     
-    / |   0       | reporters/context                                               
-    / |   0       | my context                                                      
-    - |   1       | my context                                                      
-    v |   1       | my context
+    / |         0 | reporters/context                                               
+    / |         0 | my context                                                      
+    - |         1 | my context                                                      
+    v |         1 | my context
     
     == Results =====================================================================
     [ FAIL 0 | WARN 0 | SKIP 0 | PASS 1 ]
@@ -36,19 +36,19 @@
 
 # fails after max_fail tests
 
-    v |  OK F W S | Context
+    v | F W S  OK | Context
     
-    / |   0       | reporters/fail-many                                             
-    - |   0 1     | reporters/fail-many                                             
-    \ |   0 2     | reporters/fail-many                                             
-    | |   0 3     | reporters/fail-many                                             
-    / |   0 4     | reporters/fail-many                                             
-    - |   0 5     | reporters/fail-many                                             
-    \ |   0 6     | reporters/fail-many                                             
-    | |   0 7     | reporters/fail-many                                             
-    / |   0 8     | reporters/fail-many                                             
-    - |   0 9     | reporters/fail-many                                             
-    x |   0 10     | reporters/fail-many
+    / |         0 | reporters/fail-many                                             
+    - | 1       0 | reporters/fail-many                                             
+    \ | 2       0 | reporters/fail-many                                             
+    | | 3       0 | reporters/fail-many                                             
+    / | 4       0 | reporters/fail-many                                             
+    - | 5       0 | reporters/fail-many                                             
+    \ | 6       0 | reporters/fail-many                                             
+    | | 7       0 | reporters/fail-many                                             
+    / | 8       0 | reporters/fail-many                                             
+    - | 9       0 | reporters/fail-many                                             
+    x | 10       0 | reporters/fail-many
     --------------------------------------------------------------------------------
     Failure (fail-many.R:3:5): Example
     FALSE is not TRUE
@@ -121,17 +121,17 @@
 
 # can fully suppress incremental updates
 
-    v |  OK F W S | Context
+    v | F W S  OK | Context
     
-    / |   0       | reporters/successes                                             
-    - |   1       | reporters/successes                                             
-    \ |   2       | reporters/successes                                             
-    | |   3       | reporters/successes                                             
-    / |   4       | reporters/successes                                             
-    - |   5       | reporters/successes                                             
-    \ |   6       | reporters/successes                                             
-    | |   7       | reporters/successes                                             
-    v |   7       | reporters/successes
+    / |         0 | reporters/successes                                             
+    - |         1 | reporters/successes                                             
+    \ |         2 | reporters/successes                                             
+    | |         3 | reporters/successes                                             
+    / |         4 | reporters/successes                                             
+    - |         5 | reporters/successes                                             
+    \ |         6 | reporters/successes                                             
+    | |         7 | reporters/successes                                             
+    v |         7 | reporters/successes
     
     == Results =====================================================================
     [ FAIL 0 | WARN 0 | SKIP 0 | PASS 7 ]
@@ -140,9 +140,9 @@
 
 ---
 
-    v |  OK F W S | Context
+    v | F W S  OK | Context
     
-    v |   7       | reporters/successes
+    v |         7 | reporters/successes
     
     == Results =====================================================================
     [ FAIL 0 | WARN 0 | SKIP 0 | PASS 7 ]
@@ -151,21 +151,21 @@
 
 # reports backtraces
 
-    v |  OK F W S | Context
+    v | F W S  OK | Context
     
-    / |   0       | reporters/backtraces                                            
-    - |   0 1     | reporters/backtraces                                            
-    \ |   0 2     | reporters/backtraces                                            
-    | |   0 3     | reporters/backtraces                                            
-    / |   0 4     | reporters/backtraces                                            
-    - |   0 5     | reporters/backtraces                                            
-    \ |   0 6     | reporters/backtraces                                            
-    | |   0 6 1   | reporters/backtraces                                            
-    / |   1 6 1   | reporters/backtraces                                            
-    - |   1 7 1   | reporters/backtraces                                            
-    \ |   1 8 1   | reporters/backtraces                                            
-    | |   1 9 1   | reporters/backtraces                                            
-    x |   1 9 1   | reporters/backtraces
+    / |         0 | reporters/backtraces                                            
+    - | 1       0 | reporters/backtraces                                            
+    \ | 2       0 | reporters/backtraces                                            
+    | | 3       0 | reporters/backtraces                                            
+    / | 4       0 | reporters/backtraces                                            
+    - | 5       0 | reporters/backtraces                                            
+    \ | 6       0 | reporters/backtraces                                            
+    | | 6 1     0 | reporters/backtraces                                            
+    / | 6 1     1 | reporters/backtraces                                            
+    - | 7 1     1 | reporters/backtraces                                            
+    \ | 8 1     1 | reporters/backtraces                                            
+    | | 9 1     1 | reporters/backtraces                                            
+    x | 9 1     1 | reporters/backtraces
     --------------------------------------------------------------------------------
     Error (backtraces.R:6:3): errors thrown at block level are entraced
     Error: foo
