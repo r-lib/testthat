@@ -1,5 +1,8 @@
 # testthat (development version)
 
+* `expect_snapshot_value(style = "deparse")` now works with negative values
+  (#1342).
+
 * Condition expectations now consistently return the expected
   condition instead of the return value (#1371). Previously, they
   would only return the condition if the return value was `NULL`,

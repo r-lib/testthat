@@ -74,6 +74,7 @@ test_that("can control snapshot value details", {
 
 test_that("reparse handles common cases", {
   roundtrip <- function(x) reparse(deparse(x))
+  expect_equal(roundtrip(-1), -1)
   expect_equal(roundtrip(c(1, 2, 3)), c(1, 2, 3))
   expect_equal(roundtrip(list(1, 2, 3)), list(1, 2, 3))
   expect_equal(roundtrip(mtcars), mtcars)
