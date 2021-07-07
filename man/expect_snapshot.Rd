@@ -98,3 +98,6 @@ no way to figure out the snapshot path. If you run snapshot tests
 interactively, they'll just display the current value.
 }
 
+\seealso{
+\code{\link[=browser2]{browser2()}} to debug code running inside \code{expect_snapshot()}.
+}

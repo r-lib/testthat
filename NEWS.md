@@ -1,5 +1,8 @@
 # testthat (development version)
 
+* New `browser2()` function to debug code running `expect_snapshot()`
+  and equivalent. It temporarily diverts any output back to `stdout`.
+
 * Condition expectations now consistently return the expected
   condition instead of the return value (#1371). Previously, they
   would only return the condition if the return value was `NULL`,

@@ -49,6 +49,8 @@
 #' @param error Do you expect the code to throw an error? The expectation
 #'   will fail (even on CRAN) if an unexpected error is thrown or the
 #'   expected error is not thrown.
+#'
+#' @seealso [browser2()] to debug code running inside `expect_snapshot()`.
 #' @export
 expect_snapshot <- function(x, cran = FALSE, error = FALSE) {
   edition_require(3, "expect_snapshot()")
@@ -262,3 +264,30 @@ local_snapshot_dir <- function(snap_names, .env = parent.frame()) {
 }
 
 indent <- function(x) paste0("  ", x)
+
+#' Call `browser()` with sinks temporarily diverted to `stdout`
+#'
+#' `browser2()` is useful to browse through code when an output sink
+#' like `testthat::expect_snapshot()` is on the stack. The sinks are
+#' restored to avoid disturbing the snapshot tests. Of course you will
+#' still get failures if you're browsing through any `cat()` code (or
+#' equivalent) that should be captured by a snapshot.
+#'
+#' @param ...,skipCalls Arguments passed to `browser()`.
+#' @param frame The execution environment in which to register an
+#'   `on.exit` expression to restore any existing sinks.
+#' @export
+browser2 <- function(...,
+                     skipCalls = 0,
+                     frame = parent.frame()) {
+  if (!identical(stdout(), getConnection(1))) {
+    sink(getConnection(1))
+    withr::defer(sink(), envir = frame)
+  }
+
+  # Calling `browser()` on exit avoids RStudio displaying the
+  # `browser2()` location. We still need one `n` to get to the
+  # expected place. Ideally `skipCalls` would not skip but exit the
+  # contexts.
+  on.exit(browser(..., skipCalls = skipCalls + 1))
+}
