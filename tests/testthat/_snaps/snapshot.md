@@ -147,7 +147,7 @@
 
     1.1
 
-# default tolerance compatible with json
+# tolerance passed to check_roundtrip
 
     0.9
 
