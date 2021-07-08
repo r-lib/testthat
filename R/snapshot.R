@@ -49,8 +49,11 @@
 #' @param error Do you expect the code to throw an error? The expectation
 #'   will fail (even on CRAN) if an unexpected error is thrown or the
 #'   expected error is not thrown.
+#' @param scrub Optionally, a function to scrub sensitive or stochastic
+#'   text from the output. Should take a character vector of lines as input
+#'   and return a modified character vector as output.
 #' @export
-expect_snapshot <- function(x, cran = FALSE, error = FALSE) {
+expect_snapshot <- function(x, cran = FALSE, error = FALSE, scrub = NULL) {
   edition_require(3, "expect_snapshot()")
 
   x <- enquo(x)
@@ -58,7 +61,7 @@ expect_snapshot <- function(x, cran = FALSE, error = FALSE) {
   # Execute code, capturing last error
   state <- new_environment(list(error = NULL))
   out <- verify_exec(quo_get_expr(x), quo_get_env(x), {
-    function(x) snapshot_replay(x, state)
+    function(x) snapshot_replay(x, state, scrub)
   })
 
   # Use expect_error() machinery to confirm that error is as expected
@@ -78,19 +81,19 @@ expect_snapshot <- function(x, cran = FALSE, error = FALSE) {
   )
 }
 
-snapshot_replay <- function(x, state) {
+snapshot_replay <- function(x, state, scrub = NULL) {
   UseMethod("snapshot_replay", x)
 }
 #' @export
-snapshot_replay.character <- function(x, state) {
-  c(snap_header(state, "Output"), indent(split_lines(x)))
+snapshot_replay.character <- function(x, state, scrub = NULL) {
+  c(snap_header(state, "Output"), snapshot_lines(x, scrub))
 }
 #' @export
-snapshot_replay.source <- function(x, state) {
-  c(snap_header(state, "Code"), indent(split_lines(x$src)))
+snapshot_replay.source <- function(x, state, scrub = NULL) {
+  c(snap_header(state, "Code"), snapshot_lines(x$src))
 }
 #' @export
-snapshot_replay.condition <- function(x, state) {
+snapshot_replay.condition <- function(x, state, scrub = NULL) {
   msg <- cnd_message(x)
   if (inherits(x, "error")) {
     state$error <- x
@@ -106,7 +109,16 @@ snapshot_replay.condition <- function(x, state) {
 
   class <- paste0(type, " <", class(x)[[1]], ">")
 
-  c(snap_header(state, class), indent(split_lines(msg)))
+  c(snap_header(state, class), snapshot_lines(msg, scrub))
+}
+
+snapshot_lines <- function(x, scrub = NULL) {
+  x <- split_lines(x)
+  if (!is.null(scrub)) {
+    x <- scrub(x)
+  }
+  x <- indent(x)
+  x
 }
 
 snap_header <- function(state, header) {

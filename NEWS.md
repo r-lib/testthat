@@ -1,5 +1,11 @@
 # testthat (development version)
 
+* `expect_snapshot()` gains a `scrub` argument, which should be a function that
+  takes a character vector of lines and returns a modified character vector
+  of lines. This makes it easy to remove sensitive (e.g. API keys) or 
+  stochastic (e.g. random temporary directory names) from snapshot output 
+  (#1345).
+
 * `expect_snapshot_value()` now has an explicit `tolerance` which uses the 
   testthat default, thus making it more like `expect_equal()` rather than
   `expect_identical()`. Set to `NULL` if you want precise comparisons (#1309).
