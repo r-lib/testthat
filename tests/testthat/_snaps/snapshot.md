@@ -147,3 +147,7 @@
 
     1.1
 
+# default tolerance compatible with json
+
+    0.9
+

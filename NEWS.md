@@ -1,5 +1,9 @@
 # testthat (development version)
 
+* `expect_snapshot_value()` now has an explicit `tolerance` which uses the 
+  testthat default, thus making it more like `expect_equal()` rather than
+  `expect_identical()`. Set to `NULL` if you want precise comparisons (#1309).
+
 * `testthat_tolerance()` no longer has an unused argument.
 
 * `expect_snapshot_value(style = "deparse")` now works with negative values

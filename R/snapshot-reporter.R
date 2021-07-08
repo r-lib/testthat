@@ -43,7 +43,7 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
     },
 
     # Called by expectation
-    take_snapshot = function(value, save = identity, load = identity, ...) {
+    take_snapshot = function(value, save = identity, load = identity, ..., tolerance = testthat_tolerance()) {
       self$i <- self$i + 1L
 
       self$new_snaps <- self$snap_append(self$new_snaps, save(value))
@@ -57,7 +57,8 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
         comp <- waldo_compare(
           x = old,   x_arg = "old",
           y = value, y_arg = "new",
-          ...
+          ...,
+          tolerance = tolerance
         )
 
         if (length(comp) > 0L) {
@@ -65,7 +66,7 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
         }
         comp
       } else {
-        check_roundtrip(value, load(save(value)))
+        check_roundtrip(value, load(save(value)), ..., tolerance = tolerance)
 
         self$cur_snaps <- self$snap_append(self$cur_snaps, save(value))
         testthat_warn(paste0("Adding new snapshot:\n", save(value)))
@@ -179,8 +180,8 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
   )
 )
 
-check_roundtrip <- function(x, y) {
-  check <- waldo_compare(x, y, x_arg = "value", y_arg = "roundtrip")
+check_roundtrip <- function(x, y, ..., tolerance = testthat_tolerance()) {
+  check <- waldo_compare(x, y, x_arg = "value", y_arg = "roundtrip", ..., tolerance = tolerance)
   if (length(check) > 0) {
     abort(c(
       paste0("Serialization round-trip is not symmetric.\n\n", check, "\n"),

@@ -17,6 +17,7 @@ expect_snapshot_value(
   x,
   style = c("json", "json2", "deparse", "serialize"),
   cran = FALSE,
+  tolerance = testthat_tolerance(),
   ...
 )
 }
@@ -49,6 +50,12 @@ using R code.
 \code{\link[=serialize]{serialize()}}. This is all but guaranteed to work for any R object,
 but produces a completely opaque serialization.
 }}
+
+\item{tolerance}{Numerical tolerance: any differences (in the sense of
+\code{\link[base:all.equal]{base::all.equal()}}) smaller than this value will be ignored.
+
+The default tolerance is \code{sqrt(.Machine$double.eps)}, unless long doubles
+are not available, in which case the test is skipped.}
 
 \item{...}{For \code{expect_snapshot_value()} only, passed on to
 \code{\link[waldo:compare]{waldo::compare()}} so you can control the details of the comparison.}

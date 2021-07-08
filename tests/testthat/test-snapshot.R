@@ -72,6 +72,10 @@ test_that("can control snapshot value details", {
   expect_snapshot_value(1.2, tolerance = 0.1)
 })
 
+test_that("tolerance passed to check_roundtrip", {
+  expect_snapshot_value(0.900000000000001, style = "json")
+})
+
 test_that("reparse handles common cases", {
   roundtrip <- function(x) reparse(deparse(x))
   expect_equal(roundtrip(-1), -1)
