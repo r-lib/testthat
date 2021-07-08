@@ -237,6 +237,7 @@ output from code.</p></li>
   <span class='va'>x</span>,
   style <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"json"</span>, <span class='st'>"json2"</span>, <span class='st'>"deparse"</span>, <span class='st'>"serialize"</span><span class='op'>)</span>,
   cran <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  tolerance <span class='op'>=</span> <span class='fu'><a href='compare.html'>testthat_tolerance</a></span><span class='op'>(</span><span class='op'>)</span>,
   <span class='va'>...</span>
 <span class='op'>)</span></pre>
 
@@ -280,6 +281,13 @@ using R code.</p></li>
 <code><a href='https://rdrr.io/r/base/serialize.html'>serialize()</a></code>. This is all but guaranteed to work for any R object,
 but produces a completely opaque serialization.</p></li>
 </ul></td>
+    </tr>
+    <tr>
+      <th>tolerance</th>
+      <td><p>Numerical tolerance: any differences (in the sense of
+<code><a href='https://rdrr.io/r/base/all.equal.html'>base::all.equal()</a></code>) smaller than this value will be ignored.</p>
+<p>The default tolerance is <code><a href='https://rdrr.io/r/base/MathFun.html'>sqrt(.Machine$double.eps)</a></code>, unless long doubles
+are not available, in which case the test is skipped.</p></td>
     </tr>
     <tr>
       <th>...</th>
