@@ -98,11 +98,12 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
 
     show_header = function() {
       self$cat_line(
-        cli::symbol$tick, " |  OK ",
+        colourise(cli::symbol$tick, "success"), " | ",
         colourise("F", "failure"), " ",
         colourise("W", "warning"), " ",
-        colourise("S", "skip"), " | ",
-        "Context"
+        colourise("S", "skip"), " ",
+        colourise(" OK", "success"),
+        " | ", "Context"
       )
     },
 
@@ -142,22 +143,23 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
         if (n == 0) {
           " "
         } else {
-          n
+          colourise(n, type)
         }
       }
 
       message <- paste0(
-        status, " | ", sprintf("%3d", data$n_ok), " ",
+        status, " | ",
         col_format(data$n_fail, "fail"), " ",
         col_format(data$n_warn, "warn"), " ",
-        col_format(data$n_skip, "skip"), " | ",
-        data$name
+        col_format(data$n_skip, "skip"), " ",
+        sprintf("%3d", data$n_ok),
+        " | ", data$name
       )
 
       if (complete && time > self$min_time) {
         message <- paste0(
           message,
-          cli::col_cyan(sprintf(" [%.1f s]", time))
+          cli::col_grey(sprintf(" [%.1fs]", time))
         )
       }
 
