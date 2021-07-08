@@ -275,7 +275,7 @@ compare.numeric <- function(x, y,
 
 #' @export
 #' @rdname compare
-testthat_tolerance <- function(x) {
+testthat_tolerance <- function() {
   if (identical(capabilities("long.double"), FALSE)) {
     skip("Long doubles not available and `tolerance` not supplied")
   }

@@ -1,5 +1,7 @@
 # testthat (development version)
 
+* `testthat_tolerance()` no longer has an unused argument.
+
 * `expect_snapshot_value(style = "deparse")` now works with negative values
   (#1342).
 
