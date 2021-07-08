@@ -52,7 +52,6 @@
 #' sorting the same regardless of system locale.
 #'
 #' @export
-#' @keywords internal
 #' @param .env Environment to use for scoping; expert use only.
 #' @examples
 #' local({

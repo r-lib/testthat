@@ -93,4 +93,3 @@ test_that("test ellipsis", {
   expect_equal(ellipsis, cli::symbol$ellipsis)
 })
 }
-\keyword{internal}
