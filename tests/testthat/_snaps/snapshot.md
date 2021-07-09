@@ -61,6 +61,13 @@
     Error <rlang_error>
       <redacted>
 
+---
+
+    Code
+      print("secret")
+    Output
+      [1] "****"
+
 # snapshot handles multi-line input
 
     Code

@@ -55,6 +55,9 @@
 #' @export
 expect_snapshot <- function(x, cran = FALSE, error = FALSE, scrub = NULL) {
   edition_require(3, "expect_snapshot()")
+  if (!is.null(scrub)) {
+    scrub <- as_function(scrub)
+  }
 
   x <- enquo(x)
 

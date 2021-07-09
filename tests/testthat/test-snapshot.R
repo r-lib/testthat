@@ -34,6 +34,9 @@ test_that("can scrub output/messages/warnings/errors", {
   }
   redact <- function(x) gsub("secret", "<redacted>", x)
   expect_snapshot(secret(), scrub = redact, error = TRUE)
+
+  # Or with an inline fun
+  expect_snapshot(print("secret"), scrub = ~ gsub("secret", "****", .x))
 })
 
 test_that("always checks error status", {
