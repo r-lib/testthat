@@ -7,18 +7,19 @@
 \alias{expect_snapshot_value}
 \title{Snapshot testing}
 \usage{
-expect_snapshot(x, cran = FALSE, error = FALSE)
+expect_snapshot(x, cran = FALSE, error = FALSE, variant = NULL)
 
-expect_snapshot_output(x, cran = FALSE)
+expect_snapshot_output(x, cran = FALSE, variant = NULL)
 
-expect_snapshot_error(x, class = "error", cran = FALSE)
+expect_snapshot_error(x, class = "error", cran = FALSE, variant = NULL)
 
 expect_snapshot_value(
   x,
   style = c("json", "json2", "deparse", "serialize"),
   cran = FALSE,
   tolerance = testthat_tolerance(),
-  ...
+  ...,
+  variant = NULL
 )
 }
 \arguments{
@@ -31,6 +32,11 @@ often rely on minor details of dependencies.}
 \item{error}{Do you expect the code to throw an error? The expectation
 will fail (even on CRAN) if an unexpected error is thrown or the
 expected error is not thrown.}
+
+\item{variant}{If not-\code{NULL}, results will be saved in
+\verb{_snaps/\{variant\}/\{test.md\}}. This allows you to create different snapshots
+for different scenarios, like different operating systems or different
+R versions.}
 
 \item{class}{Expected class of condition, e.g. use \code{error} for errors,
 \code{warning} for warnings, \code{message} for messages. The expectation will

@@ -43,7 +43,12 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
     },
 
     # Called by expectation
-    take_snapshot = function(value, save = identity, load = identity, ..., tolerance = testthat_tolerance()) {
+    take_snapshot = function(value,
+                             save = identity,
+                             load = identity,
+                             ...,
+                             tolerance = testthat_tolerance(),
+                             variant = NULL) {
       self$i <- self$i + 1L
 
       self$new_snaps <- self$snap_append(self$new_snaps, save(value))
@@ -78,7 +83,7 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
       self$snap_file_seen[[file.path(self$file, name)]] <- TRUE
     },
 
-    take_file_snapshot = function(name, path, file_equal) {
+    take_file_snapshot = function(name, path, file_equal, variant = NULL) {
       self$announce_file_snapshot(name)
 
       snap_dir <- file.path(self$snap_dir, self$file)
