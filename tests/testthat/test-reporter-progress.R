@@ -42,6 +42,13 @@ test_that("reports backtraces", {
   )
 })
 
+test_that("records skips", {
+  expect_snapshot_reporter(
+    ProgressReporter$new(update_interval = 0, min_time = Inf),
+    test_path("reporters/skips.R")
+  )
+})
+
 # compact display ---------------------------------------------------------
 
 test_that("compact display is informative", {

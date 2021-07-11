@@ -510,7 +510,10 @@ strpad <- function(x, width = cli::console_width()) {
 }
 
 skip_bullets <- function(skips) {
-  skips <- gsub("Reason: ", "", unlist(skips))
+  skips <- unlist(skips)
+  skips <- gsub("Reason: ", "", skips)
+  skips <- gsub(":?\n(\n|.)+", "", skips) # only show first line
+
   tbl <- table(skips)
   paste0(cli::symbol$bullet, " ", names(tbl), " (", tbl, ")")
 }
