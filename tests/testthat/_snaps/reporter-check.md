@@ -1,7 +1,7 @@
 # basic report works
 
     == Skipped tests ===============================================================
-    * empty test (1)
+    * empty test (2)
     * skip (1)
     
     == Warnings ====================================================================
@@ -35,7 +35,7 @@
      2.   \-g() reporters/tests.R:27:7
      3.     \-h() reporters/tests.R:28:7
     
-    [ FAIL 4 | WARN 1 | SKIP 2 | PASS 1 ]
+    [ FAIL 4 | WARN 1 | SKIP 3 | PASS 1 ]
 
 # doesn't truncate long lines
 
@@ -52,7 +52,7 @@
 # shows warnings when not on CRAN
 
     == Skipped tests ===============================================================
-    * empty test (1)
+    * empty test (2)
     * skip (1)
     
     == Warnings ====================================================================
@@ -86,5 +86,5 @@
      2.   \-g() reporters/tests.R:27:7
      3.     \-h() reporters/tests.R:28:7
     
-    [ FAIL 4 | WARN 1 | SKIP 2 | PASS 1 ]
+    [ FAIL 4 | WARN 1 | SKIP 3 | PASS 1 ]
 

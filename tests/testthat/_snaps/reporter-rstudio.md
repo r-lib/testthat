@@ -7,4 +7,5 @@
     tests.R:37:3 [skip] explicit skips are reported. Reason: skip
     tests.R:40:1 [skip] empty tests are implicitly skipped. Reason: empty test
     tests.R:49:3 [warning] warnings get backtraces. def
+    tests.R:45:1 [skip] warnings get backtraces. Reason: empty test
 

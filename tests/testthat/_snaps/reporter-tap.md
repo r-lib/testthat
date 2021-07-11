@@ -1,6 +1,6 @@
 # reporter works
 
-    1..8
+    1..9
     # Context Successes
     ok 1 Success
     # Context Failures
@@ -33,4 +33,5 @@
     ok 8 # WARNING def
     Backtrace:
      1. f() reporters/tests.R:49:2
+    ok 9 # SKIP Reason: empty test
 
