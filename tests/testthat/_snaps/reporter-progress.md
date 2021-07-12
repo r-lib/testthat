@@ -346,14 +346,18 @@
     
     [ FAIL 4 | WARN 0 | SKIP 2 | PASS 1 ]
     [ FAIL 4 | WARN 1 | SKIP 2 | PASS 1 ]
+    [ FAIL 4 | WARN 1 | SKIP 3 | PASS 1 ]
     
     -- Warning (tests.R:49:3): warnings get backtraces -----------------------------
     def
     Backtrace:
      1. f() reporters/tests.R:49:2
     
+    -- Skip (tests.R:45:1): warnings get backtraces --------------------------------
+    Reason: empty test
     
-    [ FAIL 4 | WARN 1 | SKIP 2 | PASS 1 ]
+    
+    [ FAIL 4 | WARN 1 | SKIP 3 | PASS 1 ]
 
 # display of successes only is compact
 

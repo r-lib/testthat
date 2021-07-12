@@ -37,6 +37,9 @@
     Backtrace:
      1. f()
     
+    -- Skip (tests.R:45:1): warnings get backtraces --------------------------------
+    Reason: empty test
+    
 
 # stop stops at first failure
 

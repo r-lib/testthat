@@ -1,5 +1,9 @@
 # testthat (development version)
 
+* Tests that generate only warnings or messages (and don't contain any
+  expectations) now automatically and correctly generate an "empty test"
+  skip.
+
 * Multi-line skips only show the first line in the skip summary.
 
 * `expect_snapshot_value()` now has an explicit `tolerance` which uses the 
