@@ -30,6 +30,7 @@
     
     Start test: warnings get backtraces
       tests.R:49:3 [warning]
+      tests.R:45:1 [skip]
     End test: warnings get backtraces
     
 

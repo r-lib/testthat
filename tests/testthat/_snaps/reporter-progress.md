@@ -264,6 +264,32 @@
     
     I believe in you!
 
+# records skips
+
+    v | F W S  OK | Context
+    
+    / |         0 | reporters/skips                                                 
+    - |     1   0 | reporters/skips                                                 
+    \ |     2   0 | reporters/skips                                                 
+    v |     2   0 | reporters/skips
+    --------------------------------------------------------------------------------
+    Skip (skips.R:2:3): regular skip
+    Reason: regular skip
+    
+    Skip (skips.R:6:3): skip with details
+    Reason: longer skip:
+    this is what happened
+    --------------------------------------------------------------------------------
+    
+    == Results =====================================================================
+    -- Skipped tests  --------------------------------------------------------------
+    * longer skip (1)
+    * regular skip (1)
+    
+    [ FAIL 0 | WARN 0 | SKIP 2 | PASS 0 ]
+    
+    You rock!
+
 # compact display is informative
 
     
@@ -320,14 +346,18 @@
     
     [ FAIL 4 | WARN 0 | SKIP 2 | PASS 1 ]
     [ FAIL 4 | WARN 1 | SKIP 2 | PASS 1 ]
+    [ FAIL 4 | WARN 1 | SKIP 3 | PASS 1 ]
     
     -- Warning (tests.R:49:3): warnings get backtraces -----------------------------
     def
     Backtrace:
      1. f() reporters/tests.R:49:2
     
+    -- Skip (tests.R:45:1): warnings get backtraces --------------------------------
+    Reason: empty test
     
-    [ FAIL 4 | WARN 1 | SKIP 2 | PASS 1 ]
+    
+    [ FAIL 4 | WARN 1 | SKIP 3 | PASS 1 ]
 
 # display of successes only is compact
 

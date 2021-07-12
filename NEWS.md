@@ -6,6 +6,12 @@
   stochastic (e.g. random temporary directory names) from snapshot output 
   (#1345).
 
+* Tests that generate only warnings or messages (and don't contain any
+  expectations) now automatically and correctly generate an "empty test"
+  skip.
+
+* Multi-line skips only show the first line in the skip summary.
+
 * `expect_snapshot_value()` now has an explicit `tolerance` which uses the 
   testthat default, thus making it more like `expect_equal()` rather than
   `expect_identical()`. Set to `NULL` if you want precise comparisons (#1309).

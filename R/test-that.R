@@ -141,7 +141,6 @@ test_code <- function(test, code, env = test_env(), reporter = get_reporter(), s
   handle_warning <- function(e) {
     # When options(warn) < 0, warnings are expected to be ignored.
     if (getOption("warn") < 0) {
-      handled <<- TRUE
       return()
     }
 
@@ -155,13 +154,11 @@ test_code <- function(test, code, env = test_env(), reporter = get_reporter(), s
       e <- cnd_entrace(e)
     }
 
-    handled <<- TRUE
     register_expectation(e, 5)
 
     maybe_restart("muffleWarning")
   }
   handle_message <- function(e) {
-    handled <<- TRUE
     if (edition_get() < 3) {
      maybe_restart("muffleMessage")
     }

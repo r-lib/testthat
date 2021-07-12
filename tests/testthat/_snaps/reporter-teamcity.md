@@ -57,6 +57,7 @@
     ##teamcity[testSuiteStarted name='warnings get backtraces']
     ##teamcity[testStarted name='expectation 1']
     ##teamcity[testFinished name='expectation 1']
+    ##teamcity[testIgnored name='expectation 2' message='Reason: empty test']
     ##teamcity[testSuiteFinished name='warnings get backtraces']
     
     ##teamcity[testSuiteFinished name='Warnings']
