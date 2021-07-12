@@ -25,6 +25,20 @@ test_that("multiple outputs of same type are collapsed", {
   })
 })
 
+test_that("can scrub output/messages/warnings/errors", {
+  secret <- function() {
+    print("secret")
+    message("secret")
+    warn("secret")
+    abort("secret")
+  }
+  redact <- function(x) gsub("secret", "<redacted>", x)
+  expect_snapshot(secret(), transform = redact, error = TRUE)
+
+  # Or with an inline fun
+  expect_snapshot(print("secret"), transform = ~ gsub("secret", "****", .x))
+})
+
 test_that("always checks error status", {
   expect_error(expect_snapshot(stop("!"), error = FALSE))
   expect_failure(expect_snapshot(print("!"), error = TRUE))

@@ -48,6 +48,26 @@
       a
       b
 
+# can scrub output/messages/warnings/errors
+
+    Code
+      secret()
+    Output
+      [1] "<redacted>"
+    Message <simpleMessage>
+      <redacted>
+    Warning <warning>
+      <redacted>
+    Error <rlang_error>
+      <redacted>
+
+---
+
+    Code
+      print("secret")
+    Output
+      [1] "****"
+
 # snapshot handles multi-line input
 
     Code
