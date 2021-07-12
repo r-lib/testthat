@@ -227,7 +227,7 @@ output from code.</p></li>
 <code><a href='expect_known_output.html'>expect_known_value()</a></code>, and <code><a href='expect_known_output.html'>expect_known_hash()</a></code>.)</p>
     </div>
 
-    <pre class="usage"><span class='fu'>expect_snapshot</span><span class='op'>(</span><span class='va'>x</span>, cran <span class='op'>=</span> <span class='cn'>FALSE</span>, error <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
+    <pre class="usage"><span class='fu'>expect_snapshot</span><span class='op'>(</span><span class='va'>x</span>, cran <span class='op'>=</span> <span class='cn'>FALSE</span>, error <span class='op'>=</span> <span class='cn'>FALSE</span>, transform <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span>
 
 <span class='fu'>expect_snapshot_output</span><span class='op'>(</span><span class='va'>x</span>, cran <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
 
@@ -259,6 +259,12 @@ often rely on minor details of dependencies.</p></td>
       <td><p>Do you expect the code to throw an error? The expectation
 will fail (even on CRAN) if an unexpected error is thrown or the
 expected error is not thrown.</p></td>
+    </tr>
+    <tr>
+      <th>transform</th>
+      <td><p>Optionally, a function to scrub sensitive or stochastic
+text from the output. Should take a character vector of lines as input
+and return a modified character vector as output.</p></td>
     </tr>
     <tr>
       <th>class</th>

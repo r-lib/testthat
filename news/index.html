@@ -196,6 +196,7 @@
 <a href="#testthat-development-version" class="anchor"></a>testthat (development version)<small> Unreleased </small>
 </h1>
 <ul>
+<li><p><code><a href="../reference/expect_snapshot.html">expect_snapshot()</a></code> gains a <code>transform</code> argument, which should be a function that takes a character vector of lines and returns a modified character vector of lines. This makes it easy to remove sensitive (e.g. API keys) or stochastic (e.g. random temporary directory names) from snapshot output (<a href='https://github.com/r-lib/testthat/issues/1345'>#1345</a>).</p></li>
 <li><p>Tests that generate only warnings or messages (and don’t contain any expectations) now automatically and correctly generate an “empty test” skip.</p></li>
 <li><p>Multi-line skips only show the first line in the skip summary.</p></li>
 <li><p><code><a href="../reference/expect_snapshot.html">expect_snapshot_value()</a></code> now has an explicit <code>tolerance</code> which uses the testthat default, thus making it more like <code><a href="../reference/equality-expectations.html">expect_equal()</a></code> rather than <code><a href="../reference/equality-expectations.html">expect_identical()</a></code>. Set to <code>NULL</code> if you want precise comparisons (<a href='https://github.com/r-lib/testthat/issues/1309'>#1309</a>).</p></li>
