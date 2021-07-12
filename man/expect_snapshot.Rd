@@ -7,7 +7,7 @@
 \alias{expect_snapshot_value}
 \title{Snapshot testing}
 \usage{
-expect_snapshot(x, cran = FALSE, error = FALSE, scrub = NULL)
+expect_snapshot(x, cran = FALSE, error = FALSE, transform = NULL)
 
 expect_snapshot_output(x, cran = FALSE)
 
@@ -32,7 +32,7 @@ often rely on minor details of dependencies.}
 will fail (even on CRAN) if an unexpected error is thrown or the
 expected error is not thrown.}
 
-\item{scrub}{Optionally, a function to scrub sensitive or stochastic
+\item{transform}{Optionally, a function to scrub sensitive or stochastic
 text from the output. Should take a character vector of lines as input
 and return a modified character vector as output.}
 

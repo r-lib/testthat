@@ -1,6 +1,6 @@
 # testthat (development version)
 
-* `expect_snapshot()` gains a `scrub` argument, which should be a function that
+* `expect_snapshot()` gains a `transform` argument, which should be a function that
   takes a character vector of lines and returns a modified character vector
   of lines. This makes it easy to remove sensitive (e.g. API keys) or 
   stochastic (e.g. random temporary directory names) from snapshot output 

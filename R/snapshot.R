@@ -49,14 +49,14 @@
 #' @param error Do you expect the code to throw an error? The expectation
 #'   will fail (even on CRAN) if an unexpected error is thrown or the
 #'   expected error is not thrown.
-#' @param scrub Optionally, a function to scrub sensitive or stochastic
+#' @param transform Optionally, a function to scrub sensitive or stochastic
 #'   text from the output. Should take a character vector of lines as input
 #'   and return a modified character vector as output.
 #' @export
-expect_snapshot <- function(x, cran = FALSE, error = FALSE, scrub = NULL) {
+expect_snapshot <- function(x, cran = FALSE, error = FALSE, transform = NULL) {
   edition_require(3, "expect_snapshot()")
-  if (!is.null(scrub)) {
-    scrub <- as_function(scrub)
+  if (!is.null(transform)) {
+    transform <- as_function(transform)
   }
 
   x <- enquo(x)
@@ -64,7 +64,7 @@ expect_snapshot <- function(x, cran = FALSE, error = FALSE, scrub = NULL) {
   # Execute code, capturing last error
   state <- new_environment(list(error = NULL))
   out <- verify_exec(quo_get_expr(x), quo_get_env(x), {
-    function(x) snapshot_replay(x, state, scrub)
+    function(x) snapshot_replay(x, state, transform)
   })
 
   # Use expect_error() machinery to confirm that error is as expected
@@ -84,19 +84,19 @@ expect_snapshot <- function(x, cran = FALSE, error = FALSE, scrub = NULL) {
   )
 }
 
-snapshot_replay <- function(x, state, scrub = NULL) {
+snapshot_replay <- function(x, state, transform = NULL) {
   UseMethod("snapshot_replay", x)
 }
 #' @export
-snapshot_replay.character <- function(x, state, scrub = NULL) {
-  c(snap_header(state, "Output"), snapshot_lines(x, scrub))
+snapshot_replay.character <- function(x, state, transform = NULL) {
+  c(snap_header(state, "Output"), snapshot_lines(x, transform))
 }
 #' @export
-snapshot_replay.source <- function(x, state, scrub = NULL) {
+snapshot_replay.source <- function(x, state, transform = NULL) {
   c(snap_header(state, "Code"), snapshot_lines(x$src))
 }
 #' @export
-snapshot_replay.condition <- function(x, state, scrub = NULL) {
+snapshot_replay.condition <- function(x, state, transform = NULL) {
   msg <- cnd_message(x)
   if (inherits(x, "error")) {
     state$error <- x
@@ -112,13 +112,13 @@ snapshot_replay.condition <- function(x, state, scrub = NULL) {
 
   class <- paste0(type, " <", class(x)[[1]], ">")
 
-  c(snap_header(state, class), snapshot_lines(msg, scrub))
+  c(snap_header(state, class), snapshot_lines(msg, transform))
 }
 
-snapshot_lines <- function(x, scrub = NULL) {
+snapshot_lines <- function(x, transform = NULL) {
   x <- split_lines(x)
-  if (!is.null(scrub)) {
-    x <- scrub(x)
+  if (!is.null(transform)) {
+    x <- transform(x)
   }
   x <- indent(x)
   x
