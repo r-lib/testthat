@@ -35,7 +35,7 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
       self$test <- test
       self$i <- 0L
 
-      if (length(self$cur_snaps[[test]]) > 0) {
+      if (length(self$cur_snaps[["default"]][[test]]) > 0) {
         testthat_warn("Duplicate test, discarding previous snapshot")
       }
       self$cur_snaps[[test]] <- list()
@@ -51,11 +51,12 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
                              variant = NULL) {
       self$i <- self$i + 1L
 
-      self$new_snaps <- self$snap_append(self$new_snaps, save(value))
+      variant <- variant %||% "default"
+      self$new_snaps <- self$snap_append(self$new_snaps, save(value), variant)
 
       if (self$has_snapshot(self$i)) {
-        old_raw <- self$old_snaps[[self$test]][[self$i]]
-        self$cur_snaps <- self$snap_append(self$cur_snaps, old_raw)
+        old_raw <- self$old_snaps[[variant]][[self$test]][[self$i]]
+        self$cur_snaps <- self$snap_append(self$cur_snaps, old_raw, variant)
 
         old <- load(old_raw)
 
@@ -73,7 +74,7 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
       } else {
         check_roundtrip(value, load(save(value)), ..., tolerance = tolerance)
 
-        self$cur_snaps <- self$snap_append(self$cur_snaps, save(value))
+        self$cur_snaps <- self$snap_append(self$cur_snaps, save(value), variant)
         testthat_warn(paste0("Adding new snapshot:\n", save(value)))
         character()
       }
@@ -86,7 +87,11 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
     take_file_snapshot = function(name, path, file_equal, variant = NULL) {
       self$announce_file_snapshot(name)
 
-      snap_dir <- file.path(self$snap_dir, self$file)
+      if (is.null(variant)) {
+        snap_dir <- file.path(self$snap_dir, self$file)
+      } else {
+        snap_dir <- file.path(self$snap_dir, variant, self$file)
+      }
       snapshot_file_equal(snap_dir, name, path, file_equal)
     },
 
@@ -116,6 +121,7 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
       }
     },
     end_reporter = function() {
+      # TODO: adjust for variants
       tests <- find_test_scripts(".", full.names = FALSE)
       if (all(tests %in% self$test_file_seen)) {
         # clean up if we've seen all files
@@ -147,13 +153,16 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
       i <= length(self$old_snaps[[self$test]])
     },
 
-    snap_append = function(data, snap) {
-      data[[self$test]] <- c(data[[self$test]], list(snap))
+    snap_append = function(data, snap, variant) {
+      variant <- variant %||% "default"
+      data[[self$test]][[variant]] <- c(data[[self$test]][[variant]], list(snap))
       data
     },
 
     # File management ----------------------------------------------------------
     snaps_read = function(suffix = "") {
+      # TODO: read each variant, then invert list
+
       if (file.exists(self$snap_path(suffix))) {
         lines <- read_lines(self$snap_path(suffix))
         snap_from_md(lines)
@@ -162,6 +171,8 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
       }
     },
     snaps_write = function(data, suffix = "") {
+      # TODO: invert data to get variant/test
+
       data <- compact(data)
       if (length(data) > 0) {
         out <- snap_to_md(data)
@@ -173,14 +184,15 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
       }
     },
     snaps_delete = function(suffix = "") {
+      # Only ever deletes
       unlink(self$snap_path(suffix))
     },
     snaps_cleanup = function() {
       self$snaps_delete()
       self$snaps_delete(".new")
     },
-    snap_path = function(suffix = "") {
-      file.path("_snaps", paste0(self$file, suffix, ".md"))
+    snap_path = function(variant = NULL, suffix = "") {
+      file.path("_snaps", variant, paste0(self$file, suffix, ".md"))
     }
   )
 )
