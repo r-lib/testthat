@@ -158,11 +158,10 @@ format.expectation_success <- function(x, ...) {
 
 #' @export
 format.expectation <- function(x, simplify = "branch", ...) {
-  message <- exp_message(x)
   # Access error fields with `[[` rather than `$` because the
   # `$.Throwable` from the rJava package throws with unknown fields
   if (is.null(x[["trace"]]) || trace_length(x[["trace"]]) == 0L) {
-    return(message)
+    return(x$message)
   }
 
   max_frames <- if (simplify == "branch") 20 else NULL
@@ -173,16 +172,8 @@ format.expectation <- function(x, simplify = "branch", ...) {
     ...,
     max_frames = max_frames
   )
-  lines <- c(message, crayon::bold("Backtrace:"), trace_lines)
+  lines <- c(x$message, crayon::bold("Backtrace:"), trace_lines)
   paste(lines, collapse = "\n")
-}
-
-exp_message <- function(x) {
-  if (expectation_error(x)) {
-    paste0("Error: ", x$message)
-  } else {
-    x$message
-  }
 }
 
 # as.expectation ----------------------------------------------------------
@@ -199,7 +190,13 @@ as.expectation.expectation <- function(x, srcref = NULL) {
 
 #' @export
 as.expectation.error <- function(x, srcref = NULL) {
-  expectation("error", cnd_message(x), srcref, trace = x[["trace"]])
+  if (is.null(x$call)) {
+    msg <- paste0("Error: ", cnd_message(x))
+  } else {
+    msg <- paste0("Error in ", expr_deparse(x$call[1]), ": ", cnd_message(x))
+  }
+
+  expectation("error", msg, srcref, trace = x[["trace"]])
 }
 
 #' @export
