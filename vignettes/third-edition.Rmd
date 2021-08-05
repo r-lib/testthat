@@ -134,6 +134,8 @@ Alternatively, you might want to capture them all in a snapshot test:
 expect_snapshot(f())
 ```
 
+The same principle also applies to `expect_message()`, but message handling has changed in a more radical way, as described next.
+
 ### Messages
 
 For reasons that I can no longer remember, testthat silently ignores all messages.
@@ -206,3 +208,4 @@ We decided against making a new package because the 2nd and 3rd edition share a 
 
 If you're a programmer in other languages, you might wonder why we can't rely on [semantic versioning](https://semver.org).
 The main reason is that CRAN checks all packages that use testthat with the latest version of testthat, so simply incrementing the major version number doesn't actually help with reducing R CMD check failures on CRAN.
+
