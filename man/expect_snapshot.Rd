@@ -36,9 +36,8 @@ expected error is not thrown.}
 text from the output. Should take a character vector of lines as input
 and return a modified character vector as output.}
 
-\item{class}{Expected class of condition, e.g. use \code{error} for errors,
-\code{warning} for warnings, \code{message} for messages. The expectation will
-always fail (even on CRAN) if a condition of this class isn't seen
+\item{class}{Class of expect error condition. The expectation will
+always fail (even on CRAN) if an error of this class isn't seen
 when executing \code{x}.}
 
 \item{style}{Serialization style to use:
