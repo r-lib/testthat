@@ -51,7 +51,7 @@
 expect_condition() check that code throws an error, warning, message,
 or condition with a message that matches regexp, or a class that inherits
 from class. See below for more details.
-In the 3rd edition, these functions match a single condition. All
+In the 3rd edition, these functions match (at most) a single condition. All
 additional and non-matching (if regexp or class are used) conditions
 will bubble up outside the expectation. If these additional conditions
 are important you'll need to catch them with additional
@@ -210,7 +210,7 @@ often an easier alternative for these more complex cases." />
 <code>expect_condition()</code> check that code throws an error, warning, message,
 or condition with a message that matches <code>regexp</code>, or a class that inherits
 from <code>class</code>. See below for more details.</p>
-<p>In the 3rd edition, these functions match a single condition. All
+<p>In the 3rd edition, these functions match (at most) a single condition. All
 additional and non-matching (if <code>regexp</code> or <code>class</code> are used) conditions
 will bubble up outside the expectation. If these additional conditions
 are important you'll need to catch them with additional
