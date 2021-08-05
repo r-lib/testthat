@@ -81,7 +81,8 @@ Most of these functions have not been recommended for a number of years, but bef
 -   The very old `expect_that()` syntax is now deprecated.
     This was an overly clever API that I regretted even before the release of testthat 1.0.0.
 
--   `expect_equivalent()` has been deprecated since it is now equivalent (HA HA) to `expect_equal(ignore_attr = TRUE)`.
+-   `expect_equivalent()` has been deprecated since it is similar to `expect_equal(ignore_attr = TRUE)` -- though note that
+    `expect_equivalent()` also ignored differences in object names [(#1241)](https://github.com/r-lib/testthat/issues/1241).
 
 -   `setup()` and `teardown()` are deprecated in favour of test fixtures.
     See `vignette("test-fixtures")` for details.
