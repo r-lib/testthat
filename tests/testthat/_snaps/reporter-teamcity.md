@@ -28,13 +28,13 @@
     ##teamcity[testSuiteStarted name='Errors']
     ##teamcity[testSuiteStarted name='Error:1']
     ##teamcity[testStarted name='expectation 1']
-    ##teamcity[testFailed name='expectation 1' message='Error: stop' details='']
+    ##teamcity[testFailed name='expectation 1' message='Error in eval(): stop' details='']
     ##teamcity[testFinished name='expectation 1']
     ##teamcity[testSuiteFinished name='Error:1']
     
     ##teamcity[testSuiteStarted name='errors get tracebacks']
     ##teamcity[testStarted name='expectation 1']
-    ##teamcity[testFailed name='expectation 1' message='Error: !' details='Backtrace:|n 1. f()|n 2. g()|n 3. h()']
+    ##teamcity[testFailed name='expectation 1' message='Error in h(): !' details='Backtrace:|n 1. f()|n 2. g()|n 3. h()']
     ##teamcity[testFinished name='expectation 1']
     ##teamcity[testSuiteFinished name='errors get tracebacks']
     

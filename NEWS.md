@@ -1,5 +1,8 @@
 # testthat (development version)
 
+* Errors in test blocks now display the call if stored in the condition object
+  (#1418).
+
 * `expect_snapshot()` gains a `transform` argument, which should be a function that
   takes a character vector of lines and returns a modified character vector
   of lines. This makes it easy to remove sensitive (e.g. API keys) or 

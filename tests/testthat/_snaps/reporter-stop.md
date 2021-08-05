@@ -17,10 +17,10 @@
      2. testthat::expect_true(FALSE)
     
     -- Error (tests.R:23:3): Error:1 -----------------------------------------------
-    Error: stop
+    Error in eval(): stop
     
     -- Error (tests.R:31:3): errors get tracebacks ---------------------------------
-    Error: !
+    Error in h(): !
     Backtrace:
      1. f()
      2. g()
