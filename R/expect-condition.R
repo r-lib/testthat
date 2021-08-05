@@ -6,7 +6,7 @@
 #' or condition with a message that matches `regexp`, or a class that inherits
 #' from `class`. See below for more details.
 #'
-#' In the 3rd edition, these functions match a single condition. All
+#' In the 3rd edition, these functions match (at most) a single condition. All
 #' additional and non-matching (if `regexp` or `class` are used) conditions
 #' will bubble up outside the expectation. If these additional conditions
 #' are important you'll need to catch them with additional

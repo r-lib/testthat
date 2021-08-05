@@ -91,7 +91,7 @@ the captured condition.
 or condition with a message that matches \code{regexp}, or a class that inherits
 from \code{class}. See below for more details.
 
-In the 3rd edition, these functions match a single condition. All
+In the 3rd edition, these functions match (at most) a single condition. All
 additional and non-matching (if \code{regexp} or \code{class} are used) conditions
 will bubble up outside the expectation. If these additional conditions
 are important you'll need to catch them with additional

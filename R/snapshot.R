@@ -145,9 +145,8 @@ expect_snapshot_output <- function(x, cran = FALSE) {
   )
 }
 
-#' @param class Expected class of condition, e.g. use `error` for errors,
-#'   `warning` for warnings, `message` for messages. The expectation will
-#'   always fail (even on CRAN) if a condition of this class isn't seen
+#' @param class Class of expect error condition. The expectation will
+#'   always fail (even on CRAN) if an error of this class isn't seen
 #'   when executing `x`.
 #' @export
 #' @rdname expect_snapshot
