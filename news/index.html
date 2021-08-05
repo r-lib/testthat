@@ -196,6 +196,7 @@
 <a href="#testthat-development-version" class="anchor"></a>testthat (development version)<small> Unreleased </small>
 </h1>
 <ul>
+<li><p>Errors in test blocks now display the call if stored in the condition object (<a href='https://github.com/r-lib/testthat/issues/1418'>#1418</a>).</p></li>
 <li><p><code><a href="../reference/expect_snapshot.html">expect_snapshot()</a></code> gains a <code>transform</code> argument, which should be a function that takes a character vector of lines and returns a modified character vector of lines. This makes it easy to remove sensitive (e.g. API keys) or stochastic (e.g. random temporary directory names) from snapshot output (<a href='https://github.com/r-lib/testthat/issues/1345'>#1345</a>).</p></li>
 <li><p>Tests that generate only warnings or messages (and don’t contain any expectations) now automatically and correctly generate an “empty test” skip.</p></li>
 <li><p>Multi-line skips only show the first line in the skip summary.</p></li>
