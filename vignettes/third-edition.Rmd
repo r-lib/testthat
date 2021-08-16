@@ -208,4 +208,3 @@ We decided against making a new package because the 2nd and 3rd edition share a 
 
 If you're a programmer in other languages, you might wonder why we can't rely on [semantic versioning](https://semver.org).
 The main reason is that CRAN checks all packages that use testthat with the latest version of testthat, so simply incrementing the major version number doesn't actually help with reducing R CMD check failures on CRAN.
-
