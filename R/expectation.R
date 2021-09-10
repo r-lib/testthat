@@ -193,7 +193,7 @@ as.expectation.error <- function(x, srcref = NULL) {
   if (is.null(x$call)) {
     msg <- paste0("Error: ", cnd_message(x))
   } else {
-    msg <- paste0("Error in ", as_label(x$call[1]), ": ", cnd_message(x))
+    msg <- paste0("Error in `", as_label(x$call[1]), "`: ", cnd_message(x))
   }
 
   expectation("error", msg, srcref, trace = x[["trace"]])

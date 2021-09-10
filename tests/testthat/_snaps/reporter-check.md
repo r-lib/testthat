@@ -26,9 +26,9 @@
      1. \-f() reporters/tests.R:17:2
      2.   \-testthat::expect_true(FALSE) reporters/tests.R:16:7
     -- Error (tests.R:23:3): Error:1 -----------------------------------------------
-    Error in eval(): stop
+    Error in `eval()`: stop
     -- Error (tests.R:31:3): errors get tracebacks ---------------------------------
-    Error in h(): !
+    Error in `h()`: !
     Backtrace:
         x
      1. \-f() reporters/tests.R:31:2
@@ -77,9 +77,9 @@
      1. \-f() reporters/tests.R:17:2
      2.   \-testthat::expect_true(FALSE) reporters/tests.R:16:7
     -- Error (tests.R:23:3): Error:1 -----------------------------------------------
-    Error in eval(): stop
+    Error in `eval()`: stop
     -- Error (tests.R:31:3): errors get tracebacks ---------------------------------
-    Error in h(): !
+    Error in `h()`: !
     Backtrace:
         x
      1. \-f() reporters/tests.R:31:2
