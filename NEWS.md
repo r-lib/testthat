@@ -1,5 +1,9 @@
 # testthat (development version)
 
+* `local_reproducible_output()` now sets the `max.print` option to 99999 
+  (the default), so your tests are unaffected by any changes you might've
+  made in your `.Rprofile` (1367).
+
 * Errors in test blocks now display the call if stored in the condition object
   (#1418).
 

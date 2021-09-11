@@ -18,6 +18,7 @@ test_that("local context is 'as promised' inside test_that()", {
   expect_equal(getOption("OutDec"), ".")
   expect_false(getOption("rlang_interactive"))
   expect_false(getOption("useFancyQuotes"))
+  expect_equal(getOption("max.print"), 99999)
 
   expect_equal(Sys.getenv("RSTUDIO"), "")
   expect_equal(Sys.getenv("LANGUAGE"), "en")
