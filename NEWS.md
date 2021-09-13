@@ -1,5 +1,8 @@
 # testthat (development version)
 
+* When run interactively, `test_that()` now correctly errors when an expectation
+  fails (#1430).
+
 * Uncaught errors now show their class (#1426).
 
 * `local_reproducible_output()` now sets the `max.print` option to 99999 

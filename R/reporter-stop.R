@@ -1,6 +1,6 @@
-#' Test reporter: stop on error.
+#' Test reporter: stop on error
 #'
-#' The default reporter, executed when `expect_that` is run interactively.
+#' The default reporter used when [expect_that()] is run interactively.
 #' It responds by [stop()]ping on failures and doing nothing otherwise. This
 #' will ensure that a failing test will raise an error.
 #'
@@ -50,9 +50,10 @@ StopReporter <- R6::R6Class("StopReporter",
 
       messages <- vapply(failures, issue_summary, rule = TRUE, character(1))
       self$cat_line(messages, "\n")
-
-      if (self$stop_reporter && self$n_fail > 1) {
-        stop_reporter("Test failed")
+    },
+    stop_if_needed = function() {
+      if (self$stop_reporter && self$n_fail > 0) {
+        abort("Test failed")
       }
     }
   )

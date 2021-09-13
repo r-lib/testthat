@@ -41,19 +41,3 @@
     Reason: empty test
     
 
-# stop stops at first failure
-
-    -- Failure (fail.R:4:3): two failures ------------------------------------------
-    FALSE is not TRUE
-    
-    `actual`:   FALSE
-    `expected`: TRUE 
-    
-    -- Failure (fail.R:5:3): two failures ------------------------------------------
-    TRUE is not FALSE
-    
-    `actual`:   TRUE 
-    `expected`: FALSE
-    
-    Test failed 
-
