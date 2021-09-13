@@ -17,3 +17,23 @@ test_that("long vectors get ...", {
     paste0('c("', long, '", ...)')
   )
 })
+
+test_that("produces useful summaries for function calls", {
+  expect_snapshot({
+    expr_label(quote(foo(
+      a = "this is a long argument",
+      b = "this is a long argument",
+      c = "this is a long argument"
+    )))
+
+    expr_label(quote(
+      arg + arg + arg + arg + arg + arg + arg + arg + arg + arg + arg + arg
+    ))
+    expr_label(quote(
+      arg + (arg + arg + arg + arg + arg + arg + arg + arg + arg + arg + arg)
+    ))
+
+    expr_label(quote(function(a, b, c) { a + b + c}))
+
+  })
+})
