@@ -32,6 +32,7 @@
 #' * `lifecycle_verbosity = "warning"` so that every lifecycle problem always
 #'   generates a warning (otherwise deprecated functions don't generate a
 #'   warning every time).
+#' * `max.print = 99999` so the same number of values are printed.
 #' * `OutDec = "."` so numbers always uses `.` as the decimal point
 #'   (European users sometimes set `OutDec = ","`).
 #' * `rlang_interactive = FALSE` so that [rlang::is_interactive()] returns
@@ -102,7 +103,8 @@ local_reproducible_output <- function(width = 80,
     lifecycle_verbosity = "warning",
     OutDec = ".",
     rlang_interactive = FALSE,
-    .local_envir = .env
+    max.print = 99999,
+    .local_envir = .env,
   )
   withr::local_envvar(
     RSTUDIO = NA,

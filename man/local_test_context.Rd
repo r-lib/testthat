@@ -56,6 +56,7 @@ in a terminal that supports colour).
 \item \code{lifecycle_verbosity = "warning"} so that every lifecycle problem always
 generates a warning (otherwise deprecated functions don't generate a
 warning every time).
+\item \code{max.print = 99999} so the same number of values are printed.
 \item \code{OutDec = "."} so numbers always uses \code{.} as the decimal point
 (European users sometimes set \code{OutDec = ","}).
 \item \code{rlang_interactive = FALSE} so that \code{\link[rlang:is_interactive]{rlang::is_interactive()}} returns
