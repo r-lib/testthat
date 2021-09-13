@@ -3,6 +3,8 @@
 * When run interactively, `test_that()` now correctly errors when an expectation
   fails (#1430).
 
+* Uncaught errors now show their class (#1426).
+
 * `local_reproducible_output()` now sets the `max.print` option to 99999 
   (the default), so your tests are unaffected by any changes you might've
   made in your `.Rprofile` (1367).
