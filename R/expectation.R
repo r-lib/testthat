@@ -148,7 +148,9 @@ is.expectation <- function(x) inherits(x, "expectation")
 
 #' @export
 print.expectation <- function(x, ...) {
-  cat(format(x), "\n")
+  cat(cli::style_bold("<", paste0(class(x), collapse = "/"), ">"), "\n", sep = "")
+  cat(format(x), "\n", sep = "")
+  invisible(x)
 }
 
 #' @export
