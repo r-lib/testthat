@@ -250,7 +250,8 @@
 <span class="co">#&gt; [5] "    &lt;li&gt;a&lt;/li&gt;"               - "  &lt;li&gt;a&lt;/li&gt;"                 [5]</span>
 <span class="co">#&gt; [6] "  &lt;/ul&gt;"                      | "  &lt;/ul&gt;"                      [6]</span>
 <span class="co">#&gt; </span>
-<span class="co">#&gt; Run `snapshot_accept('snapshotting.Rmd')` if this is a deliberate change</span></code></pre></div>
+<span class="co">#&gt; Run `snapshot_accept('snapshotting.Rmd')` if this is a deliberate change</span>
+<span class="co">#&gt; Error: Test failed</span></code></pre></div>
 <p>If this is a deliberate change, you can follow the advice in the message and update the snapshots for that file by running <code><a href="../reference/snapshot_accept.html">snapshot_accept("pizza")</a></code>; otherwise you can fix the bug and your tests will pass once more. (You can also accept snapshot for all files with <code><a href="../reference/snapshot_accept.html">snapshot_accept()</a></code>).</p>
 <div id="snapshot-format" class="section level3">
 <h3 class="hasAnchor">
@@ -309,7 +310,8 @@
 <span class="co">#&gt; ── Error (&lt;text&gt;:2:3): you can't add a number and a letter ─────────────────────</span>
 <span class="co">#&gt; `1 + "a"` threw an unexpected error.</span>
 <span class="co">#&gt; Message: non-numeric argument to binary operator</span>
-<span class="co">#&gt; Class:   simpleError/error/condition</span></code></pre></div>
+<span class="co">#&gt; Class:   simpleError/error/condition</span>
+<span class="co">#&gt; Error: Test failed</span></code></pre></div>
 <p>This is a safety valve that ensures that you don’t accidentally write broken code. To deliberately snapshot an error, you’ll have to specifically request it with <code>error = TRUE</code>:</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/test_that.html">test_that</a></span><span class="op">(</span><span class="st">"you can't add a number and a letter"</span>, <span class="op">{</span>

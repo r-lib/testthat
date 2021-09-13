@@ -196,6 +196,7 @@
 <a href="#testthat-development-version" class="anchor"></a>testthat (development version)<small> Unreleased </small>
 </h1>
 <ul>
+<li><p>When run interactively, <code><a href="../reference/test_that.html">test_that()</a></code> now correctly errors when an expectation fails (<a href='https://github.com/r-lib/testthat/issues/1430'>#1430</a>).</p></li>
 <li><p>Uncaught errors now show their class (<a href='https://github.com/r-lib/testthat/issues/1426'>#1426</a>).</p></li>
 <li><p><code><a href="../reference/local_test_context.html">local_reproducible_output()</a></code> now sets the <code>max.print</code> option to 99999 (the default), so your tests are unaffected by any changes you might’ve made in your <code>.Rprofile</code> (1367).</p></li>
 <li><p>Errors in test blocks now display the call if stored in the condition object (<a href='https://github.com/r-lib/testthat/issues/1418'>#1418</a>).</p></li>
