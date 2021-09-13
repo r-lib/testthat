@@ -2,7 +2,7 @@
 
 * `local_reproducible_output()` now sets the `max.print` option to 99999 
   (the default), so your tests are unaffected by any changes you might've
-  made in your `.Rprofile` (1367).
+  made in your `.Rprofile` (#1367).
 
 * Errors in test blocks now display the call if stored in the condition object
   (#1418).
@@ -27,6 +27,8 @@
 
 * `expect_snapshot_value(style = "deparse")` now works with negative values
   (#1342).
+  
+* `snapshot_outdated()` now supports filenames containing a `.` (#1425, @ms609).
 
 * Condition expectations now consistently return the expected
   condition instead of the return value (#1371). Previously, they
