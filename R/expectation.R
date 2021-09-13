@@ -196,7 +196,7 @@ as.expectation.error <- function(x, srcref = NULL) {
   if (is.null(x$call)) {
     header <- paste0("Error: ")
   } else {
-    header <- paste0("Error in `", as_label(x$call[1]), "`: ")
+    header <- paste0("Error in ", summarise_call(x$call), ": ")
   }
 
   msg <- paste0(
@@ -205,6 +205,14 @@ as.expectation.error <- function(x, srcref = NULL) {
   )
 
   expectation("error", msg, srcref, trace = x[["trace"]])
+}
+
+summarise_call <- function(x) {
+  if (env_has(ns_env("rlang"), "format_error_call")) {
+    format_error_call(x)
+  } else {
+    paste0("`", as_label(x[1]), "`")
+  }
 }
 
 is_simple_error <- function(x) {
