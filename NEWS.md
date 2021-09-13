@@ -1,5 +1,8 @@
 # testthat (development version)
 
+* `expr_label()`, which is used to concisely describe expressions used in
+  expectations, now does a better job of summarising infix function (#1442).
+
 * When run interactively, `test_that()` now correctly errors when an expectation
   fails (#1430).
 
