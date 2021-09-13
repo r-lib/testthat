@@ -211,7 +211,7 @@ summarise_call <- function(x) {
   if (env_has(ns_env("rlang"), "format_error_call")) {
     format_error_call(x)
   } else {
-    paste0("`", as_label(x$call[1]), "`")
+    paste0("`", as_label(x[1]), "`")
   }
 }
 
