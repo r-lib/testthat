@@ -85,12 +85,11 @@ local({
   cat(cli::symbol$ellipsis)
   cat("\n")
 })
-
-ellipsis <- cli::symbol$ellipsis
 test_that("test ellipsis", {
-  expect_equal(ellipsis, cli::symbol$ellipsis)
+  local_reproducible_output(unicode = FALSE)
+  expect_equal(cli::symbol$ellipsis, "...")
 
   local_reproducible_output(unicode = TRUE)
-  expect_equal(ellipsis, cli::symbol$ellipsis)
+  expect_equal(cli::symbol$ellipsis, "\u2026")
 })
 }
