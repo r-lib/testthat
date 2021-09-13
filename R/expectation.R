@@ -195,10 +195,18 @@ as.expectation.error <- function(x, srcref = NULL) {
   if (is.null(x$call)) {
     msg <- paste0("Error: ", cnd_message(x))
   } else {
-    msg <- paste0("Error in `", as_label(x$call[1]), "`: ", cnd_message(x))
+    msg <- paste0("Error in ", summarise_call(x$call), ": ", cnd_message(x))
   }
 
   expectation("error", msg, srcref, trace = x[["trace"]])
+}
+
+summarise_call <- function(x) {
+  if (env_has(ns_env("rlang"), "format_error_call")) {
+    format_error_call(x)
+  } else {
+    paste0("`", as_label(x$call[1]), "`")
+  }
 }
 
 #' @export
