@@ -203,6 +203,7 @@
      8. signaller() reporters/backtraces.R:32:7
     
     Error (backtraces.R:43:3): Errors are inspected with `conditionMessage()`
+    <foobar/rlang_error/error/condition>
     Error: dispatched
     
     Warning (backtraces.R:50:3): also get backtraces for warnings
