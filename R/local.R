@@ -163,8 +163,9 @@ local_interactive_reporter <- function(.env = parent.frame()) {
   local_edition(find_edition("."), .env = .env)
 
   # Use StopReporter
-  reporter <- StopReporter$new(stop_reporter = FALSE)
+  reporter <- StopReporter$new()
   old <- set_reporter(reporter)
+  withr::defer(reporter$stop_if_needed(), envir = .env)
   withr::defer(set_reporter(old), envir = .env)
 
   reporter
