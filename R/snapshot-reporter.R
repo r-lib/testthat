@@ -193,8 +193,9 @@ check_roundtrip <- function(x, y, ..., tolerance = testthat_tolerance()) {
 snapshot_outdated <- function(path, tests) {
   snaps <- dir(path, full.names = TRUE)
   snaps <- snaps[!grepl(".new.", snaps, fixed = TRUE)]
-  snap_name <- tools::file_path_sans_ext(basename(snaps))
-  outdated <- !snap_name %in% tests
+  snap_name <- basename(snaps)
+  outdated <- !(snap_name %in% tests |
+                  tools::file_path_sans_ext(snap_name) %in% tests)
   snaps[outdated]
 }
 
