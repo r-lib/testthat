@@ -1,5 +1,8 @@
 # testthat (development version)
 
+* `expr_label()`, which is used to concisely describe expressions used in
+  expectations, now does a better job of summarising infix function (#1442).
+
 * Uncaught errors now show their class (#1426).
 
 * `local_reproducible_output()` now sets the `max.print` option to 99999 
