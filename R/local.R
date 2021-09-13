@@ -75,13 +75,12 @@ local_test_context <- function(.env = parent.frame()) {
 #'   The test is skipped if `` l10n_info()$`UTF-8` `` is `FALSE`.
 #' @rdname local_test_context
 #' @examples
-#'
-#' ellipsis <- cli::symbol$ellipsis
 #' test_that("test ellipsis", {
-#'   expect_equal(ellipsis, cli::symbol$ellipsis)
+#'   local_reproducible_output(unicode = FALSE)
+#'   expect_equal(cli::symbol$ellipsis, "...")
 #'
 #'   local_reproducible_output(unicode = TRUE)
-#'   expect_equal(ellipsis, cli::symbol$ellipsis)
+#'   expect_equal(cli::symbol$ellipsis, "\u2026")
 #' })
 local_reproducible_output <- function(width = 80,
                                       crayon = FALSE,
