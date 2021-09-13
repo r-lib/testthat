@@ -192,11 +192,17 @@ as.expectation.expectation <- function(x, srcref = NULL) {
 
 #' @export
 as.expectation.error <- function(x, srcref = NULL) {
+
   if (is.null(x$call)) {
-    msg <- paste0("Error: ", cnd_message(x))
+    header <- paste0("Error: ")
   } else {
-    msg <- paste0("Error in ", summarise_call(x$call), ": ", cnd_message(x))
+    header <- paste0("Error in ", summarise_call(x$call), ": ")
   }
+
+  msg <- paste0(
+    if (!is_simple_error(x)) paste0("<", paste(class(x), collapse = "/"), ">\n"),
+    header, cnd_message(x)
+  )
 
   expectation("error", msg, srcref, trace = x[["trace"]])
 }
@@ -207,6 +213,10 @@ summarise_call <- function(x) {
   } else {
     paste0("`", as_label(x$call[1]), "`")
   }
+}
+
+is_simple_error <- function(x) {
+  class(x)[[1]] %in% c("simpleError", "rlang_error")
 }
 
 #' @export
