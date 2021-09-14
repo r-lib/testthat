@@ -9,7 +9,8 @@ test_that("can establish local snapshotter for testing", {
 })
 
 test_that("basic workflow", {
-  snapper <- local_snapshotter(tempfile(), cleanup = TRUE)
+  path <- withr::local_tempdir()
+  snapper <- local_snapshotter(path)
   snapper$start_file("snapshot-2")
   # output if not active (because test not set here)
   expect_message(expect_snapshot_output("x"), "Can't compare")
@@ -18,34 +19,35 @@ test_that("basic workflow", {
   snapper$start_file("snapshot-2", "test")
   expect_warning(expect_snapshot_output("x"), "Adding new")
   snapper$end_file()
-  expect_true(file.exists("_snaps/snapshot-2.md"))
-  expect_false(file.exists("_snaps/snapshot-2.new.md"))
+  expect_true(file.exists(file.path(path, "snapshot-2.md")))
+  expect_false(file.exists(file.path(path, "snapshot-2.new.md")))
 
   # succeeds if unchanged
   snapper$start_file("snapshot-2", "test")
   expect_success(expect_snapshot_output("x"))
   snapper$end_file()
-  expect_true(file.exists("_snaps/snapshot-2.md"))
-  expect_false(file.exists("_snaps/snapshot-2.new.md"))
+  expect_true(file.exists(file.path(path, "snapshot-2.md")))
+  expect_false(file.exists(file.path(path, "snapshot-2.new.md")))
 
   # fails if changed
   snapper$start_file("snapshot-2", "test")
   expect_failure(expect_snapshot_output("y"))
   snapper$end_file()
-  expect_true(file.exists("_snaps/snapshot-2.md"))
-  expect_true(file.exists("_snaps/snapshot-2.new.md"))
+  expect_true(file.exists(file.path(path, "snapshot-2.md")))
+  expect_true(file.exists(file.path(path, "snapshot-2.new.md")))
 })
 
 test_that("removing tests removes snap file", {
-  snapper <- local_snapshotter(tempfile(), cleanup = TRUE)
+  path <- withr::local_tempdir()
+  snapper <- local_snapshotter(path)
   snapper$start_file("snapshot-3", "test")
   expect_warning(expect_snapshot_output("x"), "Adding new")
   snapper$end_file()
-  expect_true(file.exists("_snaps/snapshot-3.md"))
+  expect_true(file.exists(file.path(path, "snapshot-3.md")))
 
   snapper$start_file("snapshot-3", "test")
   snapper$end_file()
-  expect_false(file.exists("_snaps/snapshot-3.md"))
+  expect_false(file.exists(file.path(path, "snapshot-3.md")))
 })
 
 test_that("errors if can't roundtrip", {
