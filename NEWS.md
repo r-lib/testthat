@@ -1,5 +1,8 @@
 # testthat (development version)
 
+* `skip_on_os()` gains an `arch` argument so you can also choose to skip
+  selected architectures (#1421). 
+
 * `expr_label()`, which is used to concisely describe expressions used in
   expectations, now does a better job of summarising infix function (#1442).
 
