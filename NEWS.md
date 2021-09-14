@@ -1,5 +1,13 @@
 # testthat (development version)
 
+* If a test containing multiple snapshots fails (or skips) in between snapshots,
+  the later snapshots are now silently restored. (Previously this warned and
+  reset all snapshots, not just later snapshots).
+  
+* If you have multiple tests with the same name that use snapshots (not a good 
+  idea), you will no longer getting a warning but instead the snapshots 
+  will get aggregated.
+
 * Multi-line skips only show the first line in the skip summary.
 
 * `expect_snapshot_value()` now has an explicit `tolerance` which uses the 
