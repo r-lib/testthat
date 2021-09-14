@@ -35,8 +35,14 @@ test_that("conditionMessage() is called during conversion", {
   expect_identical(as.expectation(wrn)$message, "dispatched")
 
   err <- error_cnd("foobar", message = "wrong")
-  expect_identical(as.expectation(err)$message, "dispatched")
+  expect_match(as.expectation(err)$message, "Error: dispatched")
 
   err <- cnd(c("foobar", "skip"), message = "wrong")
   expect_identical(as.expectation(err)$message, "dispatched")
+})
+
+test_that("error message includes call", {
+  f <- function() stop("Error!")
+  cnd <- catch_cnd(f())
+  expect_equal(format(as.expectation(cnd)), "Error in `f()`: Error!")
 })

@@ -68,13 +68,35 @@ expr_label <- function(x) {
   } else {
     chr <- deparse(x)
     if (length(chr) > 1) {
-      if (identical(x[[1]], quote(`function`))) {
+      if (is_call(x, "function")) {
         x[[3]] <- quote(...)
-        chr <- paste(deparse(x), collapse = "\n")
+      } else if (is_call_infix(x)) {
+        left <- deparse(x[[2]], width.cutoff = 29)
+        right <- deparse(x[[3]], width.cutoff = 28)
+
+        if (length(left) > 1) {
+          x[[2]] <- quote(expr = ...)
+        }
+        if (length(right) > 1) {
+          x[[3]] <- quote(expr = ...)
+        }
       } else {
-        chr <- paste(deparse(as.call(list(x[[1]], quote(...)))), collapse = "\n")
+        x <- call2(x[[1]], quote(expr = ...))
       }
     }
-    chr
+    paste(deparse(x), collapse = "\n")
   }
+}
+
+is_call_infix <- function(x) {
+  if (!is_call(x, n = 2)) {
+    return(FALSE)
+  }
+
+  name <- as.character(x[[1]])
+  base <- c(
+    ":", "::", ":::", "$", "@", "^", "*", "/", "+", "-", ">", ">=",
+    "<", "<=", "==", "!=", "!", "&", "&&", "|", "||", "~", "<-", "<<-"
+  )
+  name %in% base || grepl("^%.*%$", name)
 }

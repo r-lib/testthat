@@ -11,13 +11,12 @@ Authors@R:
       person(given = "R Core team",
              role = "ctb",
              comment = "Implementation of utils::recover()"))
-Description: Software testing is important, but, in part because
-    it is frustrating and boring, many of us avoid it. 'testthat' is a
-    testing framework for R that is easy to learn and use, and integrates
-    with your existing 'workflow'.
+Description: Software testing is important, but, in part because it is
+    frustrating and boring, many of us avoid it. 'testthat' is a testing
+    framework for R that is easy to learn and use, and integrates with
+    your existing 'workflow'.
 License: MIT + file LICENSE
-URL: https://testthat.r-lib.org,
-    https://github.com/r-lib/testthat
+URL: https://testthat.r-lib.org, https://github.com/r-lib/testthat
 BugReports: https://github.com/r-lib/testthat/issues
 Depends: 
     R (>= 3.1)
@@ -61,4 +60,4 @@ Config/testthat/edition: 3
 Config/testthat/start-first: watcher, parallel*
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE, r6 = FALSE)
-RoxygenNote: 7.1.1
+RoxygenNote: 7.1.2

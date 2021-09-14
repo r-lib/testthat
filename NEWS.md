@@ -8,6 +8,34 @@
   idea), you will no longer getting a warning but instead the snapshots 
   will get aggregated.
 
+* `skip_on_os()` gains an `arch` argument so you can also choose to skip
+  selected architectures (#1421). 
+
+* `expr_label()`, which is used to concisely describe expressions used in
+  expectations, now does a better job of summarising infix function (#1442).
+
+* When run interactively, `test_that()` now correctly errors when an expectation
+  fails (#1430).
+
+* Uncaught errors now show their class (#1426).
+
+* `local_reproducible_output()` now sets the `max.print` option to 99999 
+  (the default), so your tests are unaffected by any changes you might've
+  made in your `.Rprofile` (1367).
+
+* Errors in test blocks now display the call if stored in the condition object
+  (#1418).
+
+* `expect_snapshot()` gains a `transform` argument, which should be a function that
+  takes a character vector of lines and returns a modified character vector
+  of lines. This makes it easy to remove sensitive (e.g. API keys) or 
+  stochastic (e.g. random temporary directory names) from snapshot output 
+  (#1345).
+
+* Tests that generate only warnings or messages (and don't contain any
+  expectations) now automatically and correctly generate an "empty test"
+  skip.
+
 * Multi-line skips only show the first line in the skip summary.
 
 * `expect_snapshot_value()` now has an explicit `tolerance` which uses the 

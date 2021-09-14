@@ -24,11 +24,11 @@ test_that("detect number of cpus to use", {
 
 test_that("ok", {
   withr::local_envvar(c(TESTTHAT_PARALLEL = "TRUE"))
-  ret <- test_local(
+  suppressMessages(ret <- test_local(
     test_path("test-parallel", "ok"),
     reporter = "silent",
     stop_on_failure = FALSE
-  )
+  ))
   tdf <- as.data.frame(ret)
   tdf <- tdf[order(tdf$file), ]
   expect_equal(tdf$failed, c(0,1,0))

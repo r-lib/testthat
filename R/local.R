@@ -32,6 +32,7 @@
 #' * `lifecycle_verbosity = "warning"` so that every lifecycle problem always
 #'   generates a warning (otherwise deprecated functions don't generate a
 #'   warning every time).
+#' * `max.print = 99999` so the same number of values are printed.
 #' * `OutDec = "."` so numbers always uses `.` as the decimal point
 #'   (European users sometimes set `OutDec = ","`).
 #' * `rlang_interactive = FALSE` so that [rlang::is_interactive()] returns
@@ -74,13 +75,12 @@ local_test_context <- function(.env = parent.frame()) {
 #'   The test is skipped if `` l10n_info()$`UTF-8` `` is `FALSE`.
 #' @rdname local_test_context
 #' @examples
-#'
-#' ellipsis <- cli::symbol$ellipsis
 #' test_that("test ellipsis", {
-#'   expect_equal(ellipsis, cli::symbol$ellipsis)
+#'   local_reproducible_output(unicode = FALSE)
+#'   expect_equal(cli::symbol$ellipsis, "...")
 #'
 #'   local_reproducible_output(unicode = TRUE)
-#'   expect_equal(ellipsis, cli::symbol$ellipsis)
+#'   expect_equal(cli::symbol$ellipsis, "\u2026")
 #' })
 local_reproducible_output <- function(width = 80,
                                       crayon = FALSE,
@@ -102,7 +102,8 @@ local_reproducible_output <- function(width = 80,
     lifecycle_verbosity = "warning",
     OutDec = ".",
     rlang_interactive = FALSE,
-    .local_envir = .env
+    max.print = 99999,
+    .local_envir = .env,
   )
   withr::local_envvar(
     RSTUDIO = NA,
@@ -161,8 +162,9 @@ local_interactive_reporter <- function(.env = parent.frame()) {
   local_edition(find_edition("."), .env = .env)
 
   # Use StopReporter
-  reporter <- StopReporter$new(stop_reporter = FALSE)
+  reporter <- StopReporter$new()
   old <- set_reporter(reporter)
+  withr::defer(reporter$stop_if_needed(), envir = .env)
   withr::defer(set_reporter(old), envir = .env)
 
   reporter

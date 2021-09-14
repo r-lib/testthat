@@ -7,7 +7,13 @@
 \alias{expect_snapshot_value}
 \title{Snapshot testing}
 \usage{
-expect_snapshot(x, cran = FALSE, error = FALSE, variant = NULL)
+expect_snapshot(
+  x,
+  cran = FALSE,
+  error = FALSE,
+  transform = NULL,
+  variant = NULL
+)
 
 expect_snapshot_output(x, cran = FALSE, variant = NULL)
 
@@ -33,14 +39,17 @@ often rely on minor details of dependencies.}
 will fail (even on CRAN) if an unexpected error is thrown or the
 expected error is not thrown.}
 
+\item{transform}{Optionally, a function to scrub sensitive or stochastic
+text from the output. Should take a character vector of lines as input
+and return a modified character vector as output.}
+
 \item{variant}{If not-\code{NULL}, results will be saved in
 \verb{_snaps/\{variant\}/\{test.md\}}. This allows you to create different snapshots
 for different scenarios, like different operating systems or different
 R versions.}
 
-\item{class}{Expected class of condition, e.g. use \code{error} for errors,
-\code{warning} for warnings, \code{message} for messages. The expectation will
-always fail (even on CRAN) if a condition of this class isn't seen
+\item{class}{Class of expect error condition. The expectation will
+always fail (even on CRAN) if an error of this class isn't seen
 when executing \code{x}.}
 
 \item{style}{Serialization style to use:

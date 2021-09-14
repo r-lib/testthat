@@ -7,7 +7,7 @@
     x | 1       0 | reporters/error-setup
     --------------------------------------------------------------------------------
     Error (error-setup.R:6:1): (code run outside of `test_that()`)
-    Error: !
+    Error in `h()`: !
     Backtrace:
      1. testthat::setup(f()) reporters/error-setup.R:6:0
      3. f()
@@ -168,19 +168,19 @@
     x | 9 1     1 | reporters/backtraces
     --------------------------------------------------------------------------------
     Error (backtraces.R:6:3): errors thrown at block level are entraced
-    Error: foo
+    Error in `g()`: foo
     Backtrace:
      1. f() reporters/backtraces.R:6:2
      2. g() reporters/backtraces.R:4:7
     
     Error (backtraces.R:11:3): errors thrown from a quasi-labelled argument are entraced
-    Error: foo
+    Error in `foo()`: foo
     Backtrace:
      1. testthat::expect_s3_class(foo(), "foo") reporters/backtraces.R:11:2
      4. foo()
     
     Error (backtraces.R:18:3): errors thrown from a quasi-labelled argument are entraced (deep case)
-    Error: foo
+    Error in `foo()`: foo
     Backtrace:
      1. testthat::expect_s3_class(f(), "foo") reporters/backtraces.R:18:2
      4. f()
@@ -188,7 +188,7 @@
      9. foo()
     
     Error (backtraces.R:28:3): errors thrown from a quasi-labelled argument are entraced (deep deep case)
-    Error: foobar
+    Error in `bar()`: foobar
     Backtrace:
      1. f() reporters/backtraces.R:28:2
      2. g() reporters/backtraces.R:25:7
@@ -196,13 +196,14 @@
      7. bar() reporters/backtraces.R:22:9
     
     Error (backtraces.R:35:3): failed expect_error() prints a backtrace
-    Error: bar
+    Error in `signaller()`: bar
     Backtrace:
      1. testthat::expect_error(f(), "foo") reporters/backtraces.R:35:2
      7. f()
      8. signaller() reporters/backtraces.R:32:7
     
     Error (backtraces.R:43:3): Errors are inspected with `conditionMessage()`
+    <foobar/rlang_error/error/condition>
     Error: dispatched
     
     Warning (backtraces.R:50:3): also get backtraces for warnings
@@ -212,7 +213,7 @@
      2. bar() reporters/backtraces.R:47:9
     
     Error (backtraces.R:58:3): deep stacks are trimmed
-    Error: This is deep
+    Error in `f()`: This is deep
     Backtrace:
       1. f(25) reporters/backtraces.R:58:2
       2. f(x - 1) reporters/backtraces.R:56:4
@@ -323,10 +324,10 @@
     [ FAIL 4 | WARN 0 | SKIP 0 | PASS 1 ]
     
     -- Error (tests.R:23:3): Error:1 -----------------------------------------------
-    Error: stop
+    Error in `eval()`: stop
     
     -- Error (tests.R:31:3): errors get tracebacks ---------------------------------
-    Error: !
+    Error in `h()`: !
     Backtrace:
      1. f()
      2. g()
@@ -346,14 +347,18 @@
     
     [ FAIL 4 | WARN 0 | SKIP 2 | PASS 1 ]
     [ FAIL 4 | WARN 1 | SKIP 2 | PASS 1 ]
+    [ FAIL 4 | WARN 1 | SKIP 3 | PASS 1 ]
     
     -- Warning (tests.R:49:3): warnings get backtraces -----------------------------
     def
     Backtrace:
      1. f() reporters/tests.R:49:2
     
+    -- Skip (tests.R:45:1): warnings get backtraces --------------------------------
+    Reason: empty test
     
-    [ FAIL 4 | WARN 1 | SKIP 2 | PASS 1 ]
+    
+    [ FAIL 4 | WARN 1 | SKIP 3 | PASS 1 ]
 
 # display of successes only is compact
 

@@ -53,17 +53,23 @@
 #'   `_snaps/{variant}/{test.md}`. This allows you to create different snapshots
 #'   for different scenarios, like different operating systems or different
 #'   R versions.
+#' @param transform Optionally, a function to scrub sensitive or stochastic
+#'   text from the output. Should take a character vector of lines as input
+#'   and return a modified character vector as output.
 #' @export
-expect_snapshot <- function(x, cran = FALSE, error = FALSE, variant = NULL) {
+expect_snapshot <- function(x, cran = FALSE, error = FALSE, transform = NULL, variant = NULL) {
   edition_require(3, "expect_snapshot()")
   check_variant(variant)
+  if (!is.null(transform)) {
+    transform <- as_function(transform)
+  }
 
   x <- enquo(x)
 
   # Execute code, capturing last error
   state <- new_environment(list(error = NULL))
   out <- verify_exec(quo_get_expr(x), quo_get_env(x), {
-    function(x) snapshot_replay(x, state)
+    function(x) snapshot_replay(x, state, transform)
   })
 
   # Use expect_error() machinery to confirm that error is as expected
@@ -85,19 +91,19 @@ expect_snapshot <- function(x, cran = FALSE, error = FALSE, variant = NULL) {
   )
 }
 
-snapshot_replay <- function(x, state) {
+snapshot_replay <- function(x, state, transform = NULL) {
   UseMethod("snapshot_replay", x)
 }
 #' @export
-snapshot_replay.character <- function(x, state) {
-  c(snap_header(state, "Output"), indent(split_lines(x)))
+snapshot_replay.character <- function(x, state, transform = NULL) {
+  c(snap_header(state, "Output"), snapshot_lines(x, transform))
 }
 #' @export
-snapshot_replay.source <- function(x, state) {
-  c(snap_header(state, "Code"), indent(split_lines(x$src)))
+snapshot_replay.source <- function(x, state, transform = NULL) {
+  c(snap_header(state, "Code"), snapshot_lines(x$src))
 }
 #' @export
-snapshot_replay.condition <- function(x, state) {
+snapshot_replay.condition <- function(x, state, transform = NULL) {
   msg <- cnd_message(x)
   if (inherits(x, "error")) {
     state$error <- x
@@ -113,7 +119,16 @@ snapshot_replay.condition <- function(x, state) {
 
   class <- paste0(type, " <", class(x)[[1]], ">")
 
-  c(snap_header(state, class), indent(split_lines(msg)))
+  c(snap_header(state, class), snapshot_lines(msg, transform))
+}
+
+snapshot_lines <- function(x, transform = NULL) {
+  x <- split_lines(x)
+  if (!is.null(transform)) {
+    x <- transform(x)
+  }
+  x <- indent(x)
+  x
 }
 
 snap_header <- function(state, header) {
@@ -140,9 +155,8 @@ expect_snapshot_output <- function(x, cran = FALSE, variant = NULL) {
   )
 }
 
-#' @param class Expected class of condition, e.g. use `error` for errors,
-#'   `warning` for warnings, `message` for messages. The expectation will
-#'   always fail (even on CRAN) if a condition of this class isn't seen
+#' @param class Class of expect error condition. The expectation will
+#'   always fail (even on CRAN) if an error of this class isn't seen
 #'   when executing `x`.
 #' @export
 #' @rdname expect_snapshot
