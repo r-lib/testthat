@@ -36,8 +36,7 @@ library(testthat)
 ```
 
 ```{r include = FALSE}
-snapper <- testthat:::SnapshotReporter$new()
-options(testthat.snapshotter = snapper)
+snapper <- local_snapshotter(cleanup = TRUE)
 snapper$start_file("snapshotting.Rmd", "test")
 ```
 
@@ -261,7 +260,3 @@ This section describes some of the previous attempts and why we believe the new 
     The requirement to produce a path for each individual expectation makes it even more painful to use.
 
 -   `expect_known_value()` and `expect_known_hash()` have all the disadvantages of `expect_known_output()`, but also produce binary output meaning that you can't easily review test differences in pull requests.
-
-```{r, include = FALSE}
-snapper$snaps_cleanup()
-```
