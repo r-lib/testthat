@@ -129,12 +129,6 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
       !is.null(self$file) && !is.null(self$test)
     },
 
-    snap_append = function(data, snap, variant) {
-      variant <- variant %||% "default"
-      data[[self$test]][[variant]] <- c(data[[self$test]][[variant]], list(snap))
-      data
-    },
-
     # File management ----------------------------------------------------------
     snaps_cleanup = function() {
       self$cur_snaps$delete()
