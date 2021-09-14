@@ -75,12 +75,12 @@ test_that("errors in test doesn't change snapshot", {
   expect_warning(expect_snapshot_output("x"), NA)
   snapper$end_file()
 
-  # Warns if snapshot already happened
+  # No warning if snapshot already happened
   snapper$start_file("snapshot-5", "test")
   expect_snapshot_output("x")
   expect_warning(
     snapper$add_result(NULL, NULL, as.expectation(simpleError("error"))),
-    "reset"
+    NA
   )
   snapper$end_file()
 })
