@@ -1,6 +1,6 @@
 
 test_that("can establish local snapshotter for testing", {
-  snapper <- local_snapshotter(cleanup = TRUE)
+  snapper <- local_snapshotter()
 
   snapper$start_file("snapshot-1", "test")
   expect_true(snapper$is_active())
@@ -51,14 +51,14 @@ test_that("removing tests removes snap file", {
 })
 
 test_that("errors if can't roundtrip", {
-  snapper <- local_snapshotter(cleanup = TRUE)
+  snapper <- local_snapshotter()
   snapper$start_file("snapshot-4", "test")
 
   expect_error(expect_snapshot_value(NULL), "not symmetric")
 })
 
 test_that("errors in test doesn't change snapshot", {
-  snapper <- local_snapshotter(tempfile(), cleanup = TRUE)
+  snapper <- local_snapshotter()
 
   # First run
   snapper$start_file("snapshot-5", "test")

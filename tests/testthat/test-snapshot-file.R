@@ -32,7 +32,7 @@ test_that("expect_snapshot_file works", {
 })
 
 test_that("basic workflow", {
-  snapper <- local_snapshotter(tempfile(), cleanup = TRUE)
+  snapper <- local_snapshotter()
 
   # warns on first run
   snapper$start_file("snapshot-6", "test")
@@ -51,7 +51,7 @@ test_that("basic workflow", {
 })
 
 test_that("can announce snapshot file", {
-  snapper <- local_snapshotter(tempfile(), cleanup = TRUE)
+  snapper <- local_snapshotter()
   snapper$start_file("snapshot-announce", "test")
   announce_snapshot_file(name = "bar.svg")
   expect_true("snapshot-announce/bar.svg" %in% names(snapper$snap_file_seen))

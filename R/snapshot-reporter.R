@@ -178,7 +178,7 @@ get_snapshotter <- function() {
 #'
 #' @export
 #' @keywords internal
-local_snapshotter <- function(snap_dir = "_snaps", cleanup = FALSE, .env = parent.frame()) {
+local_snapshotter <- function(snap_dir = tempfile(), cleanup = FALSE, .env = parent.frame()) {
   reporter <- SnapshotReporter$new(snap_dir = snap_dir)
   if (cleanup) {
     withr::defer(reporter$snaps_cleanup(), envir = .env)
