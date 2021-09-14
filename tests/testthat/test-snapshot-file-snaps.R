@@ -31,14 +31,20 @@ test_that("can reset snapshots", {
 
   snaps1$append("test1", NULL, "1")
   snaps1$append("test1", NULL, "2")
-  snaps2$append("test1", NULL, "3")
+  snaps1$append("test2", NULL, "3")
+
+  snaps2$append("test1", NULL, "4")
 
   snaps2$reset("test1", snaps1)
-  expect_equal(snaps2$snaps$test1, c("3", "2"))
+  expect_equal(snaps2$snaps$test1, c("4", "2"))
+
+  # And can copy complete snapshot
+  snaps2$reset("test2", snaps1)
+  expect_equal(snaps2$snaps$test2, "3")
 
   # And shouldn't change if we reset again
   snaps2$reset("test1", snaps1)
-  expect_equal(snaps2$snaps$test1, c("3", "2"))
+  expect_equal(snaps2$snaps$test1, c("4", "2"))
 })
 
 test_that("can round trip cur to old snaps", {

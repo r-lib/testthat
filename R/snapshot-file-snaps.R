@@ -36,7 +36,9 @@ FileSnaps <- R6::R6Class("FileSnaps", public = list(
   reset = function(test, old) {
     cur_test <- self$snaps[[test]]
     old_test <- old$snaps[[test]]
-    if (length(old_test) > length(cur_test)) {
+    if (length(cur_test) == 0) {
+      self$snaps[[test]] <- old_test
+    } else if (length(old_test) > length(cur_test)) {
       self$snaps[[test]] <- c(cur_test, old_test[-seq_along(cur_test)])
     }
   },
