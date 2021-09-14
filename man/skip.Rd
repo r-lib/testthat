@@ -28,7 +28,7 @@ skip_if_offline(host = "r-project.org")
 
 skip_on_cran()
 
-skip_on_os(os)
+skip_on_os(os, arch = NULL)
 
 skip_on_travis()
 
@@ -54,8 +54,13 @@ skip_if_translated(msgid = "'\%s' not found")
 
 \item{host}{A string with a hostname to lookup}
 
-\item{os}{Character vector of system names. Supported values are
-\code{"windows"}, \code{"mac"}, \code{"linux"} and \code{"solaris"}.}
+\item{os}{Character vector of one or more operating systems to skip on.
+Supported values are \code{"windows"}, \code{"mac"}, \code{"linux"}, and \code{"solaris"}.}
+
+\item{arch}{Character vector of one or more architectures to skip on.
+Common values include \code{"i386"} (32 bit), \code{"x86_64"} (64 bit), and
+\code{"aarch64"} (M1 mac). Supplying \code{arch} makes the test stricter; i.e. both
+\code{os} and \code{arch} must match in order for the test to be skipped.}
 
 \item{msgid}{R message identifier used to check for translation: the default
 uses a message included in most translation packs. See the complete list in

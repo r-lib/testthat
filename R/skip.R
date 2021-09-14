@@ -131,25 +131,48 @@ skip_on_cran <- function() {
 on_cran <- function() !identical(Sys.getenv("NOT_CRAN"), "true")
 
 #' @export
-#' @param os Character vector of system names. Supported values are
-#'   `"windows"`, `"mac"`, `"linux"` and `"solaris"`.
+#' @param os Character vector of one or more operating systems to skip on.
+#'   Supported values are `"windows"`, `"mac"`, `"linux"`, and `"solaris"`.
+#' @param arch Character vector of one or more architectures to skip on.
+#'   Common values include `"i386"` (32 bit), `"x86_64"` (64 bit), and
+#'   `"aarch64"` (M1 mac). Supplying `arch` makes the test stricter; i.e. both
+#'   `os` and `arch` must match in order for the test to be skipped.
 #' @rdname skip
-skip_on_os <- function(os) {
+skip_on_os <- function(os, arch = NULL) {
   os <- match.arg(
-    os, c("windows", "mac", "linux", "solaris"),
+    os,
+    choices = c("windows", "mac", "linux", "solaris"),
     several.ok = TRUE
   )
-  sysname <- tolower(Sys.info()[["sysname"]])
 
-  switch(sysname,
-    windows = if ("windows" %in% os) skip("On Windows"),
-    darwin =  if ("mac" %in% os) skip("On Mac"),
-    linux =   if ("linux" %in% os) skip("On Linux"),
-    sunos =   if ("solaris" %in% os) skip("On Solaris")
+  msg <- switch(system_os(),
+    windows = if ("windows" %in% os) "On Windows",
+    darwin =  if ("mac" %in% os) "On Mac",
+    linux =   if ("linux" %in% os) "On Linux",
+    sunos =   if ("solaris" %in% os) "On Solaris"
   )
 
-  invisible(TRUE)
+  if (!is.null(arch) && !is.null(msg)) {
+    if (!is.character(arch)) {
+      abort("`arch` must be a character vector")
+    }
+
+    if (system_arch() %in% arch) {
+      msg <- paste(msg, system_arch())
+    } else {
+      msg <- NULL
+    }
+  }
+
+  if (is.null(msg)) {
+    invisible(TRUE)
+  } else {
+    skip(msg)
+  }
 }
+
+system_os <- function() tolower(Sys.info()[["sysname"]])
+system_arch <- function() R.version$arch
 
 #' @export
 #' @rdname skip
