@@ -49,10 +49,12 @@
 #' @param error Do you expect the code to throw an error? The expectation
 #'   will fail (even on CRAN) if an unexpected error is thrown or the
 #'   expected error is not thrown.
-#' @param variant If not-`NULL`, results will be saved in
-#'   `_snaps/{variant}/{test.md}`. This allows you to create different snapshots
-#'   for different scenarios, like different operating systems or different
-#'   R versions.
+#' @param variant `r lifecycle::badge("experimental")`
+#'   If not-`NULL`, results will be saved in `_snaps/{variant}/{test.md}`.
+#'   This allows you to create different snapshots for different scenarios,
+#'   like different operating systems or different R versions. The variant
+#'   should be a single string of alphanumeric characters suitable for use
+#'   as a directory name.
 #' @param transform Optionally, a function to scrub sensitive or stochastic
 #'   text from the output. Should take a character vector of lines as input
 #'   and return a modified character vector as output.

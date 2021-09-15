@@ -43,10 +43,12 @@ expected error is not thrown.}
 text from the output. Should take a character vector of lines as input
 and return a modified character vector as output.}
 
-\item{variant}{If not-\code{NULL}, results will be saved in
-\verb{_snaps/\{variant\}/\{test.md\}}. This allows you to create different snapshots
-for different scenarios, like different operating systems or different
-R versions.}
+\item{variant}{\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
+If not-\code{NULL}, results will be saved in \verb{_snaps/\{variant\}/\{test.md\}}.
+This allows you to create different snapshots for different scenarios,
+like different operating systems or different R versions. The variant
+should be a single string of alphanumeric characters suitable for use
+as a directory name.}
 
 \item{class}{Class of expect error condition. The expectation will
 always fail (even on CRAN) if an error of this class isn't seen
