@@ -79,7 +79,11 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
     take_file_snapshot = function(name, path, file_equal, variant = NULL) {
       self$announce_file_snapshot(name)
 
-      snap_dir <- file.path(self$snap_dir, self$file)
+      if (is.null(variant)) {
+        snap_dir <- file.path(self$snap_dir, self$file)
+      } else {
+        snap_dir <- file.path(self$snap_dir, variant, self$file)
+      }
       snapshot_file_equal(snap_dir, name, path, file_equal)
     },
     # Also called from announce_snapshot_file()

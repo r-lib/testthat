@@ -31,6 +31,15 @@ test_that("expect_snapshot_file works", {
   )
 })
 
+test_that("expect_snapshot_file works with variant", {
+  expect_snapshot_file(
+    write_tmp_lines(version$nickname),
+    "nickname.txt",
+    compare = compare_file_text,
+    variant = r_version()
+  )
+})
+
 test_that("basic workflow", {
   snapper <- local_snapshotter()
 
