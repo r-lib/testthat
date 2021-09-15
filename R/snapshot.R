@@ -298,15 +298,10 @@ snapshot_not_available <- function(message) {
 }
 
 local_snapshot_dir <- function(snap_names, .env = parent.frame()) {
-  path <- tempfile()
-  withr::defer(unlink(path))
-
+  path <- withr::local_tempdir(.local_envir = .env)
   dir.create(file.path(path, "_snaps"), recursive = TRUE)
 
-  snap_paths <- file.path(
-    path, "_snaps",
-    c(paste0(snap_names, ".new.md"), paste0(snap_names, ".md"))
-  )
+  snap_paths <- file.path(path, "_snaps", paste0(snap_names, ".md"))
   lapply(snap_paths, write_lines, text = "")
 
   path
