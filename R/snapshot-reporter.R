@@ -7,6 +7,7 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
     test = NULL,
     test_file_seen = character(),
     snap_file_seen = new_environment(),
+    variants_seen = character(),
     file_changed = FALSE,
 
     old_snaps = NULL,
@@ -43,6 +44,7 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
                              ...,
                              tolerance = testthat_tolerance(),
                              variant = NULL) {
+      self$variants_seen <- union(self$variants_seen, variant)
       i <- self$new_snaps$append(self$test, variant, save(value))
 
       old_raw <- self$old_snaps$get(self$test, variant, i)
@@ -62,17 +64,24 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
         }
         comp
       } else {
-        check_roundtrip(value, load(save(value)), ..., tolerance = tolerance)
+        value_enc <- save(value)
+        check_roundtrip(value, load(value_enc), ..., tolerance = tolerance)
 
-        self$cur_snaps$append(self$test, variant, save(value))
-        testthat_warn(paste0("Adding new snapshot:\n", save(value)))
+        self$cur_snaps$append(self$test, variant, value_enc)
+        testthat_warn(paste0(
+          "Adding new snapshot",
+          if (variant != "_default") paste0(" to variant '", variant, "'"),
+          ":\n",
+          value_enc
+        ))
         character()
       }
     },
 
-
     take_file_snapshot = function(name, path, file_equal, variant = NULL) {
       self$announce_file_snapshot(name)
+      self$variants_seen <- union(self$variants_seen, variant)
+
       snap_dir <- file.path(self$snap_dir, self$file)
       snapshot_file_equal(snap_dir, name, path, file_equal)
     },
@@ -110,7 +119,11 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
         test_names <- context_name(tests)
         outdated <- union(
           snapshot_outdated(self$snap_dir, test_names),
-          snapshot_file_outdated(self$snap_dir, test_names, names(self$snap_file_seen))
+          snapshot_file_outdated(self$snap_dir,
+            tests_seen = test_names,
+            snaps_seen = names(self$snap_file_seen),
+            variants_seen = self$variants_seen
+          )
         )
 
         if (length(outdated) > 0) {
@@ -150,6 +163,8 @@ check_roundtrip <- function(x, y, ..., tolerance = testthat_tolerance()) {
 
 snapshot_outdated <- function(path, tests) {
   snaps <- dir(path, full.names = TRUE)
+  snaps <- snaps[!file.info(snaps)$isdir]
+
   snaps <- snaps[!grepl(".new.", snaps, fixed = TRUE)]
   snap_name <- tools::file_path_sans_ext(basename(snaps))
   outdated <- !snap_name %in% tests

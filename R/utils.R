@@ -119,3 +119,5 @@ in_rcmd_check <- function() {
 map_chr <- function(.x, .f, ...) {
   vapply(.x, .f, FUN.VALUE = character(1), ...)
 }
+
+r_version <- function() paste0("R", getRversion()[, 1:2])

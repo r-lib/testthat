@@ -166,18 +166,23 @@ snapshot_file_equal <- function(snap_test_dir, snap_name, path, file_equal = com
   }
 }
 
-snapshot_file_outdated <- function(snap_dir, tests_seen = character(), snaps_seen = character()) {
-  # 1) Entire test file deleted/moved. Need to delete _snaps/test/
+snapshot_file_outdated <- function(
+    snap_dir,
+    tests_seen = character(),
+    snaps_seen = character(),
+    variants_seen = character()) {
+
+  # 1) Entire test file deleted/moved. Need to delete _snaps/{test}/
   # Recognise because missing from tests_seen
   tests <- list.dirs(snap_dir, recursive = FALSE)
-  tests_outdated <- tests[!basename(tests) %in% tests_seen]
+  tests_outdated <- tests[!basename(tests) %in% c(tests_seen, variants_seen)]
 
-  # 2) Single test deleted. Need to delete _snaps/test/foo.txt
+  # 2) Single test deleted. Need to delete _snaps/{test}/foo.txt
   # Recognise because missing from snap_seens
   snaps <- dir(snap_dir, recursive = TRUE, full.names = TRUE)
   snap_names <- dir(snap_dir, recursive = TRUE, full.names = FALSE)
 
-  # Remove all files in the root snapshot directory - those are managed by
+  # Exclude all files in the root snapshot directory - those are managed by
   # snapshot_outdated()
   base <- snaps %in% dir(snap_dir, full.names = TRUE)
   snaps <- snaps[!base]
