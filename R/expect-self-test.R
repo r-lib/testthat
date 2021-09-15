@@ -74,7 +74,7 @@ expect_snapshot_reporter <- function(reporter, path = test_path("reporters/tests
   # withr::local_seed(1014)
 
   expect_snapshot_output(
-    with_reporter(reporter, test_one_file(path))
+    with_reporter(reporter, test_one_file(path)), variant = "_default"
   )
 }
 
