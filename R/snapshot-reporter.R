@@ -125,12 +125,6 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
 
     is_active = function() {
       !is.null(self$file) && !is.null(self$test)
-    },
-
-    # File management ----------------------------------------------------------
-    snaps_cleanup = function() {
-      self$cur_snaps$delete()
-      self$new_snaps$delete()
     }
   )
 )
@@ -168,10 +162,11 @@ get_snapshotter <- function() {
 #'
 #' @export
 #' @keywords internal
-local_snapshotter <- function(snap_dir = tempfile(), cleanup = FALSE, .env = parent.frame()) {
+local_snapshotter <- function(snap_dir = NULL, cleanup = FALSE, .env = parent.frame()) {
+  snap_dir <- snap_dir %||% withr::local_tempdir(.local_envir = .env)
   reporter <- SnapshotReporter$new(snap_dir = snap_dir)
-  if (cleanup) {
-    withr::defer(reporter$snaps_cleanup(), envir = .env)
+  if (!isFALSE(cleanup)) {
+    abort("`cleanup` is deprecated")
   }
 
   withr::local_options(
