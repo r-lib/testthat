@@ -80,7 +80,7 @@ expect_snapshot_reporter <- function(reporter, path = test_path("reporters/tests
 
 # to work around https://github.com/r-lib/withr/issues/167
 local_rng_version <- function(version, .local_envir = parent.frame()) {
-  withr::defer(RNGversion(getRversion()), envir = .local_envir)
+  withr::defer(RNGversion(as.character(getRversion())), envir = .local_envir)
   suppressWarnings(RNGversion(version))
 }
 
