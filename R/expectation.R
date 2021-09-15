@@ -211,7 +211,8 @@ summarise_call <- function(x) {
   if (env_has(ns_env("rlang"), "format_error_call")) {
     format_error_call(x)
   } else {
-    paste0("`", as_label(x[1]), "`")
+    call <- if (is_call_infix(x)) expr_deparse(x) else as_label(x[1])
+    paste0("`", call, "`")
   }
 }
 
