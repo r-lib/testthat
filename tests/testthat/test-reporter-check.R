@@ -9,14 +9,7 @@ test_that("basic report works", {
 test_that("doesn't truncate long lines", {
   on.exit(unlink(test_path("testthat-problems.rds")))
 
-  local_rng_version("3.3")
-  set.seed(1014)
-  # withr::local_seed(1014)
-
-  rep <- CheckReporter$new()
-  with_reporter(rep, test_one_file(test_path("reporters/long-test.R")))
-
-  expect_snapshot_output(with_reporter(rep, test_one_file(test_path("reporters/long-test.R"))))
+  expect_snapshot_reporter(CheckReporter$new(), test_path("reporters/long-test.R"))
 })
 
 test_that("always shows summary", {
