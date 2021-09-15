@@ -59,7 +59,7 @@
 #' @export
 expect_snapshot <- function(x, cran = FALSE, error = FALSE, transform = NULL, variant = NULL) {
   edition_require(3, "expect_snapshot()")
-  check_variant(variant)
+  variant <- check_variant(variant)
   if (!is.null(transform)) {
     transform <- as_function(transform)
   }
@@ -142,7 +142,7 @@ snap_header <- function(state, header) {
 #' @rdname expect_snapshot
 expect_snapshot_output <- function(x, cran = FALSE, variant = NULL) {
   edition_require(3, "expect_snapshot_output()")
-  check_variant(variant)
+  variant <- check_variant(variant)
 
   lab <- quo_label(enquo(x))
   val <- capture_output_lines(x, print = TRUE, width = NULL)
@@ -162,7 +162,7 @@ expect_snapshot_output <- function(x, cran = FALSE, variant = NULL) {
 #' @rdname expect_snapshot
 expect_snapshot_error <- function(x, class = "error", cran = FALSE, variant = NULL) {
   edition_require(3, "expect_snapshot_error()")
-  check_variant(variant)
+  variant <- check_variant(variant)
 
   lab <- quo_label(enquo(x))
   val <- capture_matching_condition(x, cnd_matcher(class))
@@ -199,7 +199,7 @@ expect_snapshot_value <- function(x,
                                   ...,
                                   variant = NULL) {
   edition_require(3, "expect_snapshot_value()")
-  check_variant(variant)
+  variant <- check_variant(variant)
   lab <- quo_label(enquo(x))
 
   style <- arg_match(style)
@@ -313,7 +313,11 @@ local_snapshot_dir <- function(snap_names, .env = parent.frame()) {
 indent <- function(x) paste0("  ", x)
 
 check_variant <- function(x) {
-  if (!is_string(x) && !is.null(x)) {
+  if (is.null(x)) {
+    "_default"
+  } else if (is_string(x)) {
+    x
+  } else {
     abort("If supplied, `variant` must be a string")
   }
 }

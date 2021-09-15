@@ -1,5 +1,5 @@
-# Manage a test files worth of snapshots - once variants are implemented
-# this may correspond to more than one snapshot file.
+# Manage a test files worth of snapshots - if the test file uses variants, this
+# will correspond to multiple output files.
 FileSnaps <- R6::R6Class("FileSnaps", public = list(
   snap_path = NULL,
   file = NULL,
@@ -11,16 +11,20 @@ FileSnaps <- R6::R6Class("FileSnaps", public = list(
     self$file <- file
     self$type <- arg_match(type)
 
-    if (self$type == "old" && file.exists(self$path())) {
-      lines <- read_lines(self$path())
-      self$snaps <- snap_from_md(lines)
+    if (self$type == "old") {
+      # Find variants
+      variants <- c("_default", dirs(self$snap_path))
+      paths <- set_names(self$path(variants), variants)
+      paths <- paths[file.exists(paths)]
+
+      self$snaps <- lapply(paths, read_snaps)
     } else {
-      self$snaps <- list()
+      self$snaps <- list(`_default` = list())
     }
   },
 
   get = function(test, variant, i) {
-    test_snaps <- self$snaps[[test]]
+    test_snaps <- self$snaps[[variant]][[test]]
     if (i > length(test_snaps)) {
       NULL
     } else {
@@ -29,38 +33,52 @@ FileSnaps <- R6::R6Class("FileSnaps", public = list(
   },
 
   append = function(test, variant, data) {
-    self$snaps[[test]] <- c(self$snaps[[test]], data)
-    length(self$snaps[[test]])
+    self$snaps[[variant]][[test]] <- c(self$snaps[[variant]][[test]], data)
+    length(self$snaps[[variant]][[test]])
   },
 
   reset = function(test, old) {
-    cur_test <- self$snaps[[test]]
-    old_test <- old$snaps[[test]]
-    if (length(cur_test) == 0) {
-      self$snaps[[test]] <- old_test
-    } else if (length(old_test) > length(cur_test)) {
-      self$snaps[[test]] <- c(cur_test, old_test[-seq_along(cur_test)])
+    for (variant in names(self$snaps)) {
+      cur_test <- self$snaps[[variant]][[test]]
+      old_test <- old$snaps[[variant]][[test]]
+
+      if (length(cur_test) == 0) {
+        self$snaps[[variant]][[test]] <- old_test
+      } else if (length(old_test) > length(cur_test)) {
+        self$snaps[[variant]][[test]] <- c(cur_test, old_test[-seq_along(cur_test)])
+      }
     }
+    invisible()
   },
 
   write = function() {
-    snaps <- compact(self$snaps)
-    if (length(snaps) > 0) {
-      out <- snap_to_md(snaps)
-      # trim off last line since write_lines() adds one
-      out <- gsub("\n$", "", out)
-      write_lines(out, self$path())
-    } else {
-      self$delete()
+    for (variant in names(self$snaps)) {
+      write_snaps(
+        self$snaps[[variant]],
+        self$path(variant),
+        delete = variant == "_default"
+      )
     }
+    invisible()
   },
 
   delete = function() {
     unlink(self$path())
+    invisible()
   },
 
-  path = function() {
-    name <- paste0(self$file, if (self$type == "new") ".new", ".md")
-    file.path(self$snap_path, name)
+  filename = function() {
+    paste0(self$file, if (self$type == "new") ".new", ".md")
+  },
+
+  path = function(variant = "_default") {
+    ifelse(variant == "_default",
+      file.path(self$snap_path, self$filename()),
+      file.path(self$snap_path, variant, self$filename())
+    )
   }
 ))
+
+dirs <- function(path) {
+  list.dirs(path, recursive = FALSE, full.names = FALSE)
+}

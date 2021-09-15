@@ -31,6 +31,30 @@ snap_from_md <- function(lines) {
   lapply(tests, split_tests)
 }
 
+read_snaps <- function(path) {
+  if (file.exists(path)) {
+    lines <- read_lines(path)
+    snap_from_md(lines)
+  } else {
+    list()
+  }
+}
+
+write_snaps <- function(snaps, path, delete = FALSE) {
+  snaps <- compact(snaps)
+  if (length(snaps) == 0) {
+    if (delete) {
+      unlink(path)
+    }
+    return()
+  }
+
+  out <- snap_to_md(snaps)
+  # trim off last line since write_lines() adds one
+  out <- gsub("\n$", "", out)
+  write_lines(out, path)
+}
+
 # Helpers -----------------------------------------------------------------
 
 indent_add <- function(x, prefix = "    ") {
