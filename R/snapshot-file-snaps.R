@@ -53,10 +53,15 @@ FileSnaps <- R6::R6Class("FileSnaps", public = list(
 
   write = function() {
     for (variant in names(self$snaps)) {
+      default <- variant == "_default"
+      if (!default) {
+        dir.create(file.path(self$snap_path, variant), showWarnings = FALSE)
+      }
+
       write_snaps(
         self$snaps[[variant]],
         self$path(variant),
-        delete = variant == "_default"
+        delete = default
       )
     }
     invisible()

@@ -60,6 +60,7 @@ test_that("can round trip cur to old snaps", {
   cur <- FileSnaps$new(path, "file", "cur")
   cur$append("test1", "_default", "1")
   cur$append("test2", "_default", "2")
+  cur$append("test2", "windows", "3")
   cur$write()
 
   old <- FileSnaps$new(path, "file", "old")
