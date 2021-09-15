@@ -169,13 +169,13 @@ snapshot_file_equal <- function(snap_test_dir, snap_name, path, file_equal = com
 snapshot_file_outdated <- function(
     snap_dir,
     tests_seen = character(),
-    snaps_seen = character(),
-    variants_seen = character()) {
+    snaps_seen = character()) {
 
   # 1) Entire test file deleted/moved. Need to delete _snaps/{test}/
   # Recognise because missing from tests_seen
   tests <- list.dirs(snap_dir, recursive = FALSE)
-  tests_outdated <- tests[!basename(tests) %in% c(tests_seen, variants_seen)]
+  tests_outdated <- tests[!basename(tests) %in% tests_seen]
+  tests_outdated <- tests_outdated[!dir_is_variant(tests_outdated, tests_seen)]
 
   # 2) Single test deleted. Need to delete _snaps/{test}/foo.txt
   # Recognise because missing from snap_seens
@@ -194,6 +194,13 @@ snapshot_file_outdated <- function(
   ]
 
   unique(c(tests_outdated, snaps_outdated))
+}
+
+# Know it's a variant if it contains an .md snapshot from a test
+dir_is_variant <- function(paths, tests_seen) {
+  test_paths <- paste0(tests_seen, ".md")
+  files <- lapply(paths, dir)
+  map_lgl(files, ~ any(test_paths %in% .x))
 }
 
 # Helpers -----------------------------------------------------------------

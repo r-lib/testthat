@@ -7,7 +7,6 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
     test = NULL,
     test_file_seen = character(),
     snap_file_seen = new_environment(),
-    variants_seen = character(),
     file_changed = FALSE,
 
     old_snaps = NULL,
@@ -44,7 +43,6 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
                              ...,
                              tolerance = testthat_tolerance(),
                              variant = NULL) {
-      self$variants_seen <- union(self$variants_seen, variant)
       i <- self$new_snaps$append(self$test, variant, save(value))
 
       old_raw <- self$old_snaps$get(self$test, variant, i)
@@ -80,7 +78,6 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
 
     take_file_snapshot = function(name, path, file_equal, variant = NULL) {
       self$announce_file_snapshot(name)
-      self$variants_seen <- union(self$variants_seen, variant)
 
       snap_dir <- file.path(self$snap_dir, self$file)
       snapshot_file_equal(snap_dir, name, path, file_equal)
@@ -121,8 +118,7 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
           snapshot_outdated(self$snap_dir, test_names),
           snapshot_file_outdated(self$snap_dir,
             tests_seen = test_names,
-            snaps_seen = names(self$snap_file_seen),
-            variants_seen = self$variants_seen
+            snaps_seen = names(self$snap_file_seen)
           )
         )
 
