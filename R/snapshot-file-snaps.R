@@ -34,7 +34,7 @@ FileSnaps <- R6::R6Class("FileSnaps", public = list(
 
   append = function(test, variant, data) {
     if (!has_name(self$snaps, variant)) {
-      # Needed for R < 3.6 ?
+      # Needed for R < 3.6
       self$snaps[[variant]] <- list()
     }
 
