@@ -131,7 +131,9 @@ f() %>%
 Alternatively, you might want to capture them all in a snapshot test:
 
 ```{r}
-expect_snapshot(f())
+test_that("f() produces expected outputs/messages/warnings", {
+  expect_snapshot(f())  
+})
 ```
 
 The same principle also applies to `expect_message()`, but message handling has changed in a more radical way, as described next.
