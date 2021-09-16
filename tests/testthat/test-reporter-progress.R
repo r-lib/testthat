@@ -19,7 +19,7 @@ test_that("fails after max_fail tests", {
   withr::local_options(testthat.progress.max_fails = 10)
   expect_snapshot_reporter(
     ProgressReporter$new(update_interval = 0, min_time = Inf),
-    test_path("reporters/fail-many.R")
+    test_path(c("reporters/fail-many.R", "reporters/fail.R"))
   )
 })
 

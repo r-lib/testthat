@@ -189,6 +189,18 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
       self$show_status(complete = TRUE, time = time[[3]])
 
       self$report_issues(self$ctxt_issues)
+
+      if (self$is_full()) {
+        snapshotter <- get_snapshotter()
+        if (!is.null(snapshotter)) {
+          snapshotter$end_file()
+        }
+
+        stop_reporter(paste0(
+          "Maximum number of failures exceeded; quitting early.\n",
+          "You can increase this number by setting `options(testthat.progress.max_fails)`"
+        ))
+      }
     },
 
     add_result = function(context, test, result) {
@@ -212,15 +224,6 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
       } else {
         self$n_ok <- self$n_ok + 1
         self$ctxt_n_ok <- self$ctxt_n_ok + 1
-      }
-
-      if (self$is_full()) {
-        self$local_user_output()
-        self$end_context()
-        stop_reporter(paste0(
-          "Maximum number of failures exceeded; quitting early.\n",
-          "You can increase this number by setting `options(testthat.progress.max_fails)`"
-        ))
       }
 
       self$show_status()

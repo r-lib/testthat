@@ -48,8 +48,16 @@
     | | 7       0 | reporters/fail-many                                             
     / | 8       0 | reporters/fail-many                                             
     - | 9       0 | reporters/fail-many                                             
-    x | 10       0 | reporters/fail-many
+    \ | 10       0 | reporters/fail-many                                            
+    | | 11       0 | reporters/fail-many                                            
+    x | 11       0 | reporters/fail-many
     --------------------------------------------------------------------------------
+    Failure (fail-many.R:3:5): Example
+    FALSE is not TRUE
+    
+    `actual`:   FALSE
+    `expected`: TRUE 
+    
     Failure (fail-many.R:3:5): Example
     FALSE is not TRUE
     
@@ -114,7 +122,7 @@
     You can increase this number by setting `options(testthat.progress.max_fails)` 
     
     == Results =====================================================================
-    [ FAIL 10 | WARN 0 | SKIP 0 | PASS 0 ]
+    [ FAIL 11 | WARN 0 | SKIP 0 | PASS 0 ]
     == Terminated early ============================================================
     
     I believe in you!

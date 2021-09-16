@@ -1,5 +1,9 @@
 # testthat (development version)
 
+* `ProgressReporter` (the default only) now stops at the end of a file; this 
+  ensures that you see the results of all related tests, and ensures that 
+  snapshots are handled consistently (#1402).
+
 * `expect_snapshot()` is no longer experimental.
 
 * `expect_snapshot()` and friends gets an experimental new `variant` argument 
