@@ -85,8 +85,6 @@ are not available, in which case the test is skipped.}
 \code{\link[waldo:compare]{waldo::compare()}} so you can control the details of the comparison.}
 }
 \description{
-\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
-
 Snapshot tests (aka golden tests) are similar to unit tests except that the
 expected result is stored in a separate file that is managed by testthat.
 Snapshot tests are useful for when the expected value is large, or when

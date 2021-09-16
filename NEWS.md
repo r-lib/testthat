@@ -1,5 +1,7 @@
 # testthat (development version)
 
+* `expect_snapshot()` is no longer experimental.
+
 * `expect_snapshot()` and friends gets an experimental new `variant` argument 
   which causes the snapshot to be saved in `_snaps/{variant}/{test}.md` instead 
   of `_snaps/{test}.md`. This allows you to generate (and compare) unique

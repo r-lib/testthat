@@ -1,8 +1,6 @@
 #' Snapshot testing
 #'
 #' @description
-#' `r lifecycle::badge("experimental")`
-#'
 #' Snapshot tests (aka golden tests) are similar to unit tests except that the
 #' expected result is stored in a separate file that is managed by testthat.
 #' Snapshot tests are useful for when the expected value is large, or when
