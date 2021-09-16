@@ -196,23 +196,26 @@
   <span class="fu"><a href="../reference/expect_snapshot.html">expect_snapshot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="fu">bullets</span><span class="op">(</span><span class="st">"a"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
   <span class="fu"><a href="../reference/expect_snapshot.html">expect_snapshot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="fu">bullets</span><span class="op">(</span><span class="st">"a"</span>, <span class="st">"b"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
 <span class="op">}</span><span class="op">)</span>
-<span class="co">#&gt; ── Warning (&lt;text&gt;:2:3): bullets ───────────────────────────────────────────────</span>
-<span class="co">#&gt; Adding new snapshot:</span>
+<span class="co">#&gt; Can't compare snapshot to reference when testing interactively</span>
+<span class="co">#&gt; i Run `devtools::test()` or `testthat::test_file()` to see changes</span>
+<span class="co">#&gt; i Current value:</span>
 <span class="co">#&gt; Code</span>
 <span class="co">#&gt;   cat(bullets("a"))</span>
 <span class="co">#&gt; Output</span>
 <span class="co">#&gt;   &lt;ul&gt;</span>
 <span class="co">#&gt;     &lt;li&gt;a&lt;/li&gt;</span>
 <span class="co">#&gt;   &lt;/ul&gt;</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; ── Warning (&lt;text&gt;:3:3): bullets ───────────────────────────────────────────────</span>
-<span class="co">#&gt; Adding new snapshot:</span>
+<span class="co">#&gt; Can't compare snapshot to reference when testing interactively</span>
+<span class="co">#&gt; i Run `devtools::test()` or `testthat::test_file()` to see changes</span>
+<span class="co">#&gt; i Current value:</span>
 <span class="co">#&gt; Code</span>
 <span class="co">#&gt;   cat(bullets("a", "b"))</span>
 <span class="co">#&gt; Output</span>
 <span class="co">#&gt;   &lt;ul id="b"&gt;</span>
 <span class="co">#&gt;     &lt;li&gt;a&lt;/li&gt;</span>
-<span class="co">#&gt;   &lt;/ul&gt;</span></code></pre></div>
+<span class="co">#&gt;   &lt;/ul&gt;</span>
+<span class="co">#&gt; ── Skip (???): bullets ─────────────────────────────────────────────────────────</span>
+<span class="co">#&gt; Reason: empty test</span></code></pre></div>
 <p>When we run the test for the first time, it automatically generates reference output, and prints it, so that you can visually confirm that it’s correct. The output is automatically saved in <code>_snaps/{name}.R</code>. The name of the snapshot matches your test file name — e.g. if your test is <code>test-pizza.R</code> then your snapshot will be saved in <code>test/testthat/_snaps/pizza.md</code>. As the file name suggests, this is a markdown file, which I’ll explain shortly.</p>
 <p>If you run the test again, it’ll succeed:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
@@ -220,7 +223,26 @@
   <span class="fu"><a href="../reference/expect_snapshot.html">expect_snapshot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="fu">bullets</span><span class="op">(</span><span class="st">"a"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
   <span class="fu"><a href="../reference/expect_snapshot.html">expect_snapshot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="fu">bullets</span><span class="op">(</span><span class="st">"a"</span>, <span class="st">"b"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
 <span class="op">}</span><span class="op">)</span>
-<span class="co">#&gt; Test passed 🎊</span></code></pre></div>
+<span class="co">#&gt; Can't compare snapshot to reference when testing interactively</span>
+<span class="co">#&gt; i Run `devtools::test()` or `testthat::test_file()` to see changes</span>
+<span class="co">#&gt; i Current value:</span>
+<span class="co">#&gt; Code</span>
+<span class="co">#&gt;   cat(bullets("a"))</span>
+<span class="co">#&gt; Output</span>
+<span class="co">#&gt;   &lt;ul&gt;</span>
+<span class="co">#&gt;     &lt;li&gt;a&lt;/li&gt;</span>
+<span class="co">#&gt;   &lt;/ul&gt;</span>
+<span class="co">#&gt; Can't compare snapshot to reference when testing interactively</span>
+<span class="co">#&gt; i Run `devtools::test()` or `testthat::test_file()` to see changes</span>
+<span class="co">#&gt; i Current value:</span>
+<span class="co">#&gt; Code</span>
+<span class="co">#&gt;   cat(bullets("a", "b"))</span>
+<span class="co">#&gt; Output</span>
+<span class="co">#&gt;   &lt;ul id="b"&gt;</span>
+<span class="co">#&gt;     &lt;li&gt;a&lt;/li&gt;</span>
+<span class="co">#&gt;   &lt;/ul&gt;</span>
+<span class="co">#&gt; ── Skip (???): bullets ─────────────────────────────────────────────────────────</span>
+<span class="co">#&gt; Reason: empty test</span></code></pre></div>
 <p>But if you change the underlying code, say to tweak the indenting, the test will fail:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">bullets</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">text</span>, <span class="va">id</span> <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span> <span class="op">{</span>
@@ -234,24 +256,26 @@
   <span class="fu"><a href="../reference/expect_snapshot.html">expect_snapshot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="fu">bullets</span><span class="op">(</span><span class="st">"a"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
   <span class="fu"><a href="../reference/expect_snapshot.html">expect_snapshot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="fu">bullets</span><span class="op">(</span><span class="st">"a"</span>, <span class="st">"b"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
 <span class="op">}</span><span class="op">)</span>
-<span class="co">#&gt; ── Failure (&lt;text&gt;:9:3): bullets ───────────────────────────────────────────────</span>
-<span class="co">#&gt; Snapshot of code has changed:</span>
-<span class="co">#&gt; `old[2:6]`: "  cat(bullets(\"a\"))" "Output" "  &lt;ul&gt;" "    &lt;li&gt;a&lt;/li&gt;" "  &lt;/ul&gt;"</span>
-<span class="co">#&gt; `new[2:6]`: "  cat(bullets(\"a\"))" "Output" "  &lt;ul&gt;" "  &lt;li&gt;a&lt;/li&gt;"   "  &lt;/ul&gt;"</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Run `snapshot_accept('snapshotting.Rmd')` if this is a deliberate change</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; ── Failure (&lt;text&gt;:10:3): bullets ──────────────────────────────────────────────</span>
-<span class="co">#&gt; Snapshot of code has changed:</span>
-<span class="co">#&gt;     old                            | new                               </span>
-<span class="co">#&gt; [2] "  cat(bullets(\"a\", \"b\"))" | "  cat(bullets(\"a\", \"b\"))" [2]</span>
-<span class="co">#&gt; [3] "Output"                       | "Output"                       [3]</span>
-<span class="co">#&gt; [4] "  &lt;ul id=\"b\"&gt;"              | "  &lt;ul id=\"b\"&gt;"              [4]</span>
-<span class="co">#&gt; [5] "    &lt;li&gt;a&lt;/li&gt;"               - "  &lt;li&gt;a&lt;/li&gt;"                 [5]</span>
-<span class="co">#&gt; [6] "  &lt;/ul&gt;"                      | "  &lt;/ul&gt;"                      [6]</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Run `snapshot_accept('snapshotting.Rmd')` if this is a deliberate change</span>
-<span class="co">#&gt; Error: Test failed</span></code></pre></div>
+<span class="co">#&gt; Can't compare snapshot to reference when testing interactively</span>
+<span class="co">#&gt; i Run `devtools::test()` or `testthat::test_file()` to see changes</span>
+<span class="co">#&gt; i Current value:</span>
+<span class="co">#&gt; Code</span>
+<span class="co">#&gt;   cat(bullets("a"))</span>
+<span class="co">#&gt; Output</span>
+<span class="co">#&gt;   &lt;ul&gt;</span>
+<span class="co">#&gt;   &lt;li&gt;a&lt;/li&gt;</span>
+<span class="co">#&gt;   &lt;/ul&gt;</span>
+<span class="co">#&gt; Can't compare snapshot to reference when testing interactively</span>
+<span class="co">#&gt; i Run `devtools::test()` or `testthat::test_file()` to see changes</span>
+<span class="co">#&gt; i Current value:</span>
+<span class="co">#&gt; Code</span>
+<span class="co">#&gt;   cat(bullets("a", "b"))</span>
+<span class="co">#&gt; Output</span>
+<span class="co">#&gt;   &lt;ul id="b"&gt;</span>
+<span class="co">#&gt;   &lt;li&gt;a&lt;/li&gt;</span>
+<span class="co">#&gt;   &lt;/ul&gt;</span>
+<span class="co">#&gt; ── Skip (???): bullets ─────────────────────────────────────────────────────────</span>
+<span class="co">#&gt; Reason: empty test</span></code></pre></div>
 <p>If this is a deliberate change, you can follow the advice in the message and update the snapshots for that file by running <code><a href="../reference/snapshot_accept.html">snapshot_accept("pizza")</a></code>; otherwise you can fix the bug and your tests will pass once more. (You can also accept snapshot for all files with <code><a href="../reference/snapshot_accept.html">snapshot_accept()</a></code>).</p>
 <div id="snapshot-format" class="section level3">
 <h3 class="hasAnchor">
@@ -292,8 +316,9 @@
 <code class="sourceCode R"><span class="fu"><a href="../reference/test_that.html">test_that</a></span><span class="op">(</span><span class="st">"f() makes lots of noice"</span>, <span class="op">{</span>
   <span class="fu"><a href="../reference/expect_snapshot.html">expect_snapshot</a></span><span class="op">(</span><span class="fu">f</span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
 <span class="op">}</span><span class="op">)</span>
-<span class="co">#&gt; ── Warning (&lt;text&gt;:2:3): f() makes lots of noice ───────────────────────────────</span>
-<span class="co">#&gt; Adding new snapshot:</span>
+<span class="co">#&gt; Can't compare snapshot to reference when testing interactively</span>
+<span class="co">#&gt; i Run `devtools::test()` or `testthat::test_file()` to see changes</span>
+<span class="co">#&gt; i Current value:</span>
 <span class="co">#&gt; Code</span>
 <span class="co">#&gt;   f()</span>
 <span class="co">#&gt; Output</span>
@@ -301,7 +326,9 @@
 <span class="co">#&gt; Message &lt;simpleMessage&gt;</span>
 <span class="co">#&gt;   Hi!</span>
 <span class="co">#&gt; Warning &lt;simpleWarning&gt;</span>
-<span class="co">#&gt;   How are you?</span></code></pre></div>
+<span class="co">#&gt;   How are you?</span>
+<span class="co">#&gt; ── Skip (???): f() makes lots of noice ─────────────────────────────────────────</span>
+<span class="co">#&gt; Reason: empty test</span></code></pre></div>
 <p>Capturing errors is <em>slightly</em> more difficult because <code><a href="../reference/expect_snapshot.html">expect_snapshot()</a></code> will fail when there’s an error:</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/test_that.html">test_that</a></span><span class="op">(</span><span class="st">"you can't add a number and a letter"</span>, <span class="op">{</span>
@@ -317,12 +344,15 @@
 <code class="sourceCode R"><span class="fu"><a href="../reference/test_that.html">test_that</a></span><span class="op">(</span><span class="st">"you can't add a number and a letter"</span>, <span class="op">{</span>
   <span class="fu"><a href="../reference/expect_snapshot.html">expect_snapshot</a></span><span class="op">(</span><span class="fl">1</span> <span class="op">+</span> <span class="st">"a"</span>, error <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
 <span class="op">}</span><span class="op">)</span>
-<span class="co">#&gt; ── Warning (&lt;text&gt;:2:3): you can't add a number and a letter ───────────────────</span>
-<span class="co">#&gt; Adding new snapshot:</span>
+<span class="co">#&gt; Can't compare snapshot to reference when testing interactively</span>
+<span class="co">#&gt; i Run `devtools::test()` or `testthat::test_file()` to see changes</span>
+<span class="co">#&gt; i Current value:</span>
 <span class="co">#&gt; Code</span>
 <span class="co">#&gt;   1 + "a"</span>
 <span class="co">#&gt; Error &lt;simpleError&gt;</span>
-<span class="co">#&gt;   non-numeric argument to binary operator</span></code></pre></div>
+<span class="co">#&gt;   non-numeric argument to binary operator</span>
+<span class="co">#&gt; ── Skip (???): you can't add a number and a letter ─────────────────────────────</span>
+<span class="co">#&gt; Reason: empty test</span></code></pre></div>
 <p>When the code gets longer, I like to put <code>error = TRUE</code> up front so it’s a little more obvious:</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/test_that.html">test_that</a></span><span class="op">(</span><span class="st">"you can't add weird thngs"</span>, <span class="op">{</span>
@@ -332,8 +362,9 @@
     <span class="va">mean</span> <span class="op">+</span> <span class="va">sum</span>
   <span class="op">}</span><span class="op">)</span>
 <span class="op">}</span><span class="op">)</span>
-<span class="co">#&gt; ── Warning (&lt;text&gt;:2:3): you can't add weird thngs ─────────────────────────────</span>
-<span class="co">#&gt; Adding new snapshot:</span>
+<span class="co">#&gt; Can't compare snapshot to reference when testing interactively</span>
+<span class="co">#&gt; i Run `devtools::test()` or `testthat::test_file()` to see changes</span>
+<span class="co">#&gt; i Current value:</span>
 <span class="co">#&gt; Code</span>
 <span class="co">#&gt;   1 + "a"</span>
 <span class="co">#&gt; Error &lt;simpleError&gt;</span>
@@ -345,7 +376,9 @@
 <span class="co">#&gt; Code</span>
 <span class="co">#&gt;   mean + sum</span>
 <span class="co">#&gt; Error &lt;simpleError&gt;</span>
-<span class="co">#&gt;   non-numeric argument to binary operator</span></code></pre></div>
+<span class="co">#&gt;   non-numeric argument to binary operator</span>
+<span class="co">#&gt; ── Skip (???): you can't add weird thngs ───────────────────────────────────────</span>
+<span class="co">#&gt; Reason: empty test</span></code></pre></div>
 </div>
 <div id="other-types-of-snapshot" class="section level2">
 <h2 class="hasAnchor">

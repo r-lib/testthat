@@ -196,6 +196,9 @@
 <a href="#testthat-development-version" class="anchor"></a>testthat (development version)<small> Unreleased </small>
 </h1>
 <ul>
+<li><p><code><a href="../reference/expect_snapshot.html">expect_snapshot()</a></code> and friends gets an experimental new <code>variant</code> argument which causes the snapshot to be saved in <code>_snaps/{variant}/{test}.md</code> instead of <code>_snaps/{test}.md</code>. This allows you to generate (and compare) unique snapshots for different scenarios like operating system or R version (<a href='https://github.com/r-lib/testthat/issues/1143'>#1143</a>).</p></li>
+<li><p>If a test containing multiple snapshots fails (or skips) in between snapshots, the later snapshots are now silently restored. (Previously this warned and reset all snapshots, not just later snapshots).</p></li>
+<li><p>If you have multiple tests with the same name that use snapshots (not a good idea), you will no longer getting a warning but instead the snapshots will be aggregated across the tests.</p></li>
 <li><p><code><a href="../reference/skip.html">skip_on_os()</a></code> gains an <code>arch</code> argument so you can also choose to skip selected architectures (<a href='https://github.com/r-lib/testthat/issues/1421'>#1421</a>).</p></li>
 <li><p><code>expr_label()</code>, which is used to concisely describe expressions used in expectations, now does a better job of summarising infix function (<a href='https://github.com/r-lib/testthat/issues/1442'>#1442</a>).</p></li>
 <li><p>When run interactively, <code><a href="../reference/test_that.html">test_that()</a></code> now correctly errors when an expectation fails (<a href='https://github.com/r-lib/testthat/issues/1430'>#1430</a>).</p></li>
