@@ -164,20 +164,20 @@
 <p>The usual way to activate the 3rd edition is to add a line to your <code>DESCRIPTION</code>:</p>
 <pre><code>Config/testthat/edition: 3</code></pre>
 <p>This will activate the 3rd edition for every test in your package.</p>
-<p>You can also control the edition used for indvidual tests with <code><a href="../reference/local_edition.html">testthat::local_edition()</a></code>:</p>
+<p>You can also control the edition used for individual tests with <code><a href="../reference/local_edition.html">testthat::local_edition()</a></code>:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/test_that.html">test_that</a></span><span class="op">(</span><span class="st">"I can use the 3rd edition"</span>, <span class="op">{</span>
   <span class="fu"><a href="../reference/local_edition.html">local_edition</a></span><span class="op">(</span><span class="fl">3</span><span class="op">)</span>
   <span class="fu"><a href="../reference/logical-expectations.html">expect_true</a></span><span class="op">(</span><span class="cn">TRUE</span><span class="op">)</span>
 <span class="op">}</span><span class="op">)</span>
-<span class="co">#&gt; Test passed 🎉</span></code></pre></div>
+<span class="co">#&gt; Test passed 😸</span></code></pre></div>
 <p>This is also useful if you’ve switched to the 3rd edition and have a couple of tests that fail. You can use <code><a href="../reference/local_edition.html">local_edition(2)</a></code> to revert back to the old behaviour, giving you some breathing room to figure out the underlying issue.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/test_that.html">test_that</a></span><span class="op">(</span><span class="st">"I want to use the 2nd edition"</span>, <span class="op">{</span>
   <span class="fu"><a href="../reference/local_edition.html">local_edition</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span>
   <span class="fu"><a href="../reference/logical-expectations.html">expect_true</a></span><span class="op">(</span><span class="cn">TRUE</span><span class="op">)</span>
 <span class="op">}</span><span class="op">)</span>
-<span class="co">#&gt; Test passed 😀</span></code></pre></div>
+<span class="co">#&gt; Test passed 🥇</span></code></pre></div>
 </div>
 <div id="changes" class="section level2">
 <h2 class="hasAnchor">
@@ -234,16 +234,20 @@
   <span class="fu"><a href="https://rdrr.io/r/base/warning.html">suppressWarnings</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <p>Alternatively, you might want to capture them all in a snapshot test:</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/expect_snapshot.html">expect_snapshot</a></span><span class="op">(</span><span class="fu">f</span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
+<code class="sourceCode R"><span class="fu"><a href="../reference/test_that.html">test_that</a></span><span class="op">(</span><span class="st">"f() produces expected outputs/messages/warnings"</span>, <span class="op">{</span>
+  <span class="fu"><a href="../reference/expect_snapshot.html">expect_snapshot</a></span><span class="op">(</span><span class="fu">f</span><span class="op">(</span><span class="op">)</span><span class="op">)</span>  
+<span class="op">}</span><span class="op">)</span>
 <span class="co">#&gt; Can't compare snapshot to reference when testing interactively</span>
-<span class="co">#&gt; ℹ Run `devtools::test()` or `testthat::test_file()` to see changes</span>
-<span class="co">#&gt; ℹ Current value:</span>
+<span class="co">#&gt; i Run `devtools::test()` or `testthat::test_file()` to see changes</span>
+<span class="co">#&gt; i Current value:</span>
 <span class="co">#&gt; Code</span>
 <span class="co">#&gt;   f()</span>
 <span class="co">#&gt; Warning &lt;simpleWarning&gt;</span>
 <span class="co">#&gt;   First warning</span>
 <span class="co">#&gt;   Second warning</span>
-<span class="co">#&gt;   Third warning</span></code></pre></div>
+<span class="co">#&gt;   Third warning</span>
+<span class="co">#&gt; ── Skip (???): f() produces expected outputs/messages/warnings ─────────────────</span>
+<span class="co">#&gt; Reason: empty test</span></code></pre></div>
 <p>The same principle also applies to <code><a href="../reference/expect_error.html">expect_message()</a></code>, but message handling has changed in a more radical way, as described next.</p>
 </div>
 <div id="messages" class="section level3">
