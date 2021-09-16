@@ -34,7 +34,7 @@
      2. testthat::expect_true(FALSE) reporters/tests.R:16:7
     
     -- 3. Error (tests.R:23:3): Error:1 --------------------------------------------
-    Error in `eval()`: stop
+    Error in `eval(code, test_env)`: stop
     
     -- 4. Error (tests.R:31:3): errors get tracebacks ------------------------------
     Error in `h()`: !
@@ -81,7 +81,7 @@
      2. testthat::expect_true(FALSE) reporters/tests.R:16:7
     
     -- 3. Error (tests.R:23:3): Error:1 --------------------------------------------
-    Error in `eval()`: stop
+    Error in `eval(code, test_env)`: stop
     
     -- 4. Error (tests.R:31:3): errors get tracebacks ------------------------------
     Error in `h()`: !

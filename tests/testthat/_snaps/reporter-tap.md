@@ -19,7 +19,7 @@
        2. testthat::expect_true(FALSE) reporters/tests.R:16:7
     # Context Errors
     not ok 4 Error:1
-      Error in `eval()`: stop
+      Error in `eval(code, test_env)`: stop
     not ok 5 errors get tracebacks
       Error in `h()`: !
       Backtrace:

@@ -24,7 +24,7 @@
       </testsuite>
       <testsuite name="Errors" timestamp="1999:12:31 23:59:59" hostname="nodename" tests="2" skipped="0" failures="0" errors="2" time="0">
         <testcase time="0" classname="Errors" name="Error_1">
-          <error type="error" message="Error in `eval()`: stop (tests.R:23:3)">Error in `eval()`: stop</error>
+          <error type="error" message="Error in `eval(code, test_env)`: stop (tests.R:23:3)">Error in `eval(code, test_env)`: stop</error>
         </testcase>
         <testcase time="0" classname="Errors" name="errors_get_tracebacks">
           <error type="error" message="Error in `h()`: ! (tests.R:31:3)">Error in `h()`: !
