@@ -2,11 +2,8 @@
 
 * `expect_snapshot()` and friends gets an experimental new `variant` argument 
   which causes the snapshot to be saved in `_snaps/{variant}/{test}.md` instead 
-  of `_snaps/{test}.md`. This allows you to generate (and compare) different
-  snapshots for different scenarios like operating system or R version.
-  This should be used sparingly because it's easy to miss that an automated
-  test is creating a new variant and not actually comparing to a previous 
-  reference (#1143).
+  of `_snaps/{test}.md`. This allows you to generate (and compare) unique
+  snapshots for different scenarios like operating system or R version (#1143).
 
 * If a test containing multiple snapshots fails (or skips) in between snapshots,
   the later snapshots are now silently restored. (Previously this warned and

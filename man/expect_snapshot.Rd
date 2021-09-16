@@ -44,11 +44,18 @@ text from the output. Should take a character vector of lines as input
 and return a modified character vector as output.}
 
 \item{variant}{\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
-If not-\code{NULL}, results will be saved in \verb{_snaps/\{variant\}/\{test.md\}}.
-This allows you to create different snapshots for different scenarios,
-like different operating systems or different R versions. The variant
-should be a single string of alphanumeric characters suitable for use
-as a directory name.}
+
+If not-\code{NULL}, results will be saved in \verb{_snaps/\{variant\}/\{test.md\}},
+so \code{variant} must be a single string of alphanumeric characters suitable
+for use as a directory name.
+
+You can variants to deal with cases where the snapshot output varies
+and you want to capture and test the variations. Common use cases include
+variations for operating system, R version, or version of key dependency.
+Variants are an advanced feature. When you use them, you'll need to
+carefully think about your testing strategy to ensure that all important
+variants are covered by automated tests, and ensure that you have a way
+to get snapshot changes out of your CI system and back into the repo.}
 
 \item{class}{Class of expect error condition. The expectation will
 always fail (even on CRAN) if an error of this class isn't seen

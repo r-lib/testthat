@@ -50,11 +50,18 @@
 #'   will fail (even on CRAN) if an unexpected error is thrown or the
 #'   expected error is not thrown.
 #' @param variant `r lifecycle::badge("experimental")`
-#'   If not-`NULL`, results will be saved in `_snaps/{variant}/{test.md}`.
-#'   This allows you to create different snapshots for different scenarios,
-#'   like different operating systems or different R versions. The variant
-#'   should be a single string of alphanumeric characters suitable for use
-#'   as a directory name.
+#'
+#'   If not-`NULL`, results will be saved in `_snaps/{variant}/{test.md}`,
+#'   so `variant` must be a single string of alphanumeric characters suitable
+#'   for use as a directory name.
+#'
+#'   You can variants to deal with cases where the snapshot output varies
+#'   and you want to capture and test the variations. Common use cases include
+#'   variations for operating system, R version, or version of key dependency.
+#'   Variants are an advanced feature. When you use them, you'll need to
+#'   carefully think about your testing strategy to ensure that all important
+#'   variants are covered by automated tests, and ensure that you have a way
+#'   to get snapshot changes out of your CI system and back into the repo.
 #' @param transform Optionally, a function to scrub sensitive or stochastic
 #'   text from the output. Should take a character vector of lines as input
 #'   and return a modified character vector as output.
