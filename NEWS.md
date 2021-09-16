@@ -1,5 +1,18 @@
 # testthat (development version)
 
+* `expect_snapshot()` and friends gets an experimental new `variant` argument 
+  which causes the snapshot to be saved in `_snaps/{variant}/{test}.md` instead 
+  of `_snaps/{test}.md`. This allows you to generate (and compare) unique
+  snapshots for different scenarios like operating system or R version (#1143).
+
+* If a test containing multiple snapshots fails (or skips) in between snapshots,
+  the later snapshots are now silently restored. (Previously this warned and
+  reset all snapshots, not just later snapshots).
+  
+* If you have multiple tests with the same name that use snapshots (not a good 
+  idea), you will no longer getting a warning but instead the snapshots 
+  will be aggregated across the tests.
+
 * `skip_on_os()` gains an `arch` argument so you can also choose to skip
   selected architectures (#1421). 
 

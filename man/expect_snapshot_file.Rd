@@ -12,7 +12,8 @@ expect_snapshot_file(
   name = basename(path),
   binary = lifecycle::deprecated(),
   cran = FALSE,
-  compare = compare_file_binary
+  compare = compare_file_binary,
+  variant = NULL
 )
 
 announce_snapshot_file(path, name = basename(path))
@@ -38,6 +39,11 @@ often rely on minor details of dependencies.}
 \code{new} arguments. By default this is \code{compare_file_binary}. Set it
 to \code{compare_file_text} to compare files line-by-line, ignoring
 the difference between Windows and Mac/Linux line endings.}
+
+\item{variant}{If not-\code{NULL}, results will be saved in
+\verb{_snaps/\{variant\}/\{test\}/\{name\}.\{ext\}}. This allows you to create
+different snapshots for different scenarios, like different operating
+systems or different R versions.}
 
 \item{old, new}{Paths to old and new snapshot files.}
 }

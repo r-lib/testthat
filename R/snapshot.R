@@ -49,12 +49,26 @@
 #' @param error Do you expect the code to throw an error? The expectation
 #'   will fail (even on CRAN) if an unexpected error is thrown or the
 #'   expected error is not thrown.
+#' @param variant `r lifecycle::badge("experimental")`
+#'
+#'   If not-`NULL`, results will be saved in `_snaps/{variant}/{test.md}`,
+#'   so `variant` must be a single string of alphanumeric characters suitable
+#'   for use as a directory name.
+#'
+#'   You can variants to deal with cases where the snapshot output varies
+#'   and you want to capture and test the variations. Common use cases include
+#'   variations for operating system, R version, or version of key dependency.
+#'   Variants are an advanced feature. When you use them, you'll need to
+#'   carefully think about your testing strategy to ensure that all important
+#'   variants are covered by automated tests, and ensure that you have a way
+#'   to get snapshot changes out of your CI system and back into the repo.
 #' @param transform Optionally, a function to scrub sensitive or stochastic
 #'   text from the output. Should take a character vector of lines as input
 #'   and return a modified character vector as output.
 #' @export
-expect_snapshot <- function(x, cran = FALSE, error = FALSE, transform = NULL) {
+expect_snapshot <- function(x, cran = FALSE, error = FALSE, transform = NULL, variant = NULL) {
   edition_require(3, "expect_snapshot()")
+  variant <- check_variant(variant)
   if (!is.null(transform)) {
     transform <- as_function(transform)
   }
@@ -78,9 +92,11 @@ expect_snapshot <- function(x, cran = FALSE, error = FALSE, transform = NULL) {
     return()
   }
 
-  expect_snapshot_helper("code", out, cran = cran,
+  expect_snapshot_helper("code", out,
+    cran = cran,
     save = function(x) paste0(x, collapse = "\n"),
-    load = function(x) split_by_line(x)[[1]]
+    load = function(x) split_by_line(x)[[1]],
+    variant = variant
   )
 }
 
@@ -133,15 +149,18 @@ snap_header <- function(state, header) {
 
 #' @export
 #' @rdname expect_snapshot
-expect_snapshot_output <- function(x, cran = FALSE) {
+expect_snapshot_output <- function(x, cran = FALSE, variant = NULL) {
   edition_require(3, "expect_snapshot_output()")
+  variant <- check_variant(variant)
 
   lab <- quo_label(enquo(x))
   val <- capture_output_lines(x, print = TRUE, width = NULL)
 
-  expect_snapshot_helper(lab, val, cran = cran,
+  expect_snapshot_helper(lab, val,
+    cran = cran,
     save = function(x) paste0(x, collapse = "\n"),
-    load = function(x) split_by_line(x)[[1]]
+    load = function(x) split_by_line(x)[[1]],
+    variant = variant
   )
 }
 
@@ -150,8 +169,9 @@ expect_snapshot_output <- function(x, cran = FALSE) {
 #'   when executing `x`.
 #' @export
 #' @rdname expect_snapshot
-expect_snapshot_error <- function(x, class = "error", cran = FALSE) {
+expect_snapshot_error <- function(x, class = "error", cran = FALSE, variant = NULL) {
   edition_require(3, "expect_snapshot_error()")
+  variant <- check_variant(variant)
 
   lab <- quo_label(enquo(x))
   val <- capture_matching_condition(x, cnd_matcher(class))
@@ -159,7 +179,10 @@ expect_snapshot_error <- function(x, class = "error", cran = FALSE) {
     fail(sprintf("%s did not throw error of class '%s'", lab, class))
   }
 
-  expect_snapshot_helper(lab, conditionMessage(val), cran = cran)
+  expect_snapshot_helper(lab, conditionMessage(val),
+    cran = cran,
+    variant = variant
+  )
 }
 
 #' @param style Serialization style to use:
@@ -182,8 +205,10 @@ expect_snapshot_value <- function(x,
                                   style = c("json", "json2", "deparse", "serialize"),
                                   cran = FALSE,
                                   tolerance = testthat_tolerance(),
-                                  ...) {
+                                  ...,
+                                  variant = NULL) {
   edition_require(3, "expect_snapshot_value()")
+  variant <- check_variant(variant)
   lab <- quo_label(enquo(x))
 
   style <- arg_match(style)
@@ -201,7 +226,14 @@ expect_snapshot_value <- function(x,
     serialize = function(x) unserialize(jsonlite::base64_dec(x))
   )
 
-  expect_snapshot_helper(lab, x, save = save, load = load, cran = cran, tolerance = tolerance, ...)
+  expect_snapshot_helper(lab, x,
+    save = save,
+    load = load,
+    cran = cran,
+    ...,
+    tolerance = tolerance,
+    variant = variant
+  )
 }
 
 # Safe environment for evaluating deparsed objects, based on inspection of
@@ -229,8 +261,10 @@ expect_snapshot_helper <- function(lab, val,
                                    cran = FALSE,
                                    save = identity,
                                    load = identity,
+                                   ...,
                                    tolerance = testthat_tolerance(),
-                                   ...) {
+                                   variant = NULL
+                                   ) {
   if (!cran && !interactive() && on_cran()) {
     skip("On CRAN")
   }
@@ -241,7 +275,13 @@ expect_snapshot_helper <- function(lab, val,
     return(invisible())
   }
 
-  comp <- snapshotter$take_snapshot(val, save = save, load = load, ..., tolerance = tolerance)
+  comp <- snapshotter$take_snapshot(val,
+    save = save,
+    load = load,
+    ...,
+    tolerance = tolerance,
+    variant = variant
+  )
   hint <- paste0("Run `snapshot_accept('", snapshotter$file, "')` if this is a deliberate change")
 
   expect(
@@ -265,18 +305,23 @@ snapshot_not_available <- function(message) {
 }
 
 local_snapshot_dir <- function(snap_names, .env = parent.frame()) {
-  path <- tempfile()
-  withr::defer(unlink(path))
-
+  path <- withr::local_tempdir(.local_envir = .env)
   dir.create(file.path(path, "_snaps"), recursive = TRUE)
 
-  snap_paths <- file.path(
-    path, "_snaps",
-    c(paste0(snap_names, ".new.md"), paste0(snap_names, ".md"))
-  )
+  snap_paths <- file.path(path, "_snaps", paste0(snap_names, ".md"))
   lapply(snap_paths, write_lines, text = "")
 
   path
 }
 
 indent <- function(x) paste0("  ", x)
+
+check_variant <- function(x) {
+  if (is.null(x)) {
+    "_default"
+  } else if (is_string(x)) {
+    x
+  } else {
+    abort("If supplied, `variant` must be a string")
+  }
+}

@@ -1,3 +1,7 @@
+test_that("can access nickname", {
+  expect_snapshot(version$nickname, variant = r_version())
+})
+
 test_that("can snapshot output", {
   foo <- function() cat("y")
   expect_snapshot_output(foo())
