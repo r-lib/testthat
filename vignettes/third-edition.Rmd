@@ -37,7 +37,7 @@ The usual way to activate the 3rd edition is to add a line to your `DESCRIPTION`
 
 This will activate the 3rd edition for every test in your package.
 
-You can also control the edition used for indvidual tests with `testthat::local_edition()`:
+You can also control the edition used for individual tests with `testthat::local_edition()`:
 
 ```{r}
 test_that("I can use the 3rd edition", {
