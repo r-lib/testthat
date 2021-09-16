@@ -46,7 +46,7 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
     file_name = "",
 
     initialize = function(show_praise = TRUE,
-                          max_failures = getOption("testthat.progress.max_fails", 10L),
+                          max_failures = testthat_max_fails(),
                           min_time = 0.1,
                           update_interval = 0.1,
                           verbose_skips = getOption("testthat.progress.verbose_skips", TRUE),
@@ -197,8 +197,8 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
         }
 
         stop_reporter(paste0(
-          "Maximum number of failures exceeded; quitting early.\n",
-          "You can increase this number by setting `options(testthat.progress.max_fails)`"
+          "Maximum number of failures exceeded; quitting at end of file.\n",
+          "Increase this number with (e.g.) `Sys.setenv('TESTTHAT_MAX_FAILS' = Inf)`"
         ))
       }
     },
@@ -299,6 +299,16 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
     }
   )
 )
+
+testthat_max_fails <- function() {
+  val <- getOption("testthat.progress.max_fails")
+
+  if (is.null(val)) {
+    env <- Sys.getenv("TESTTHAT_MAX_FAILS")
+    val <- if (!identical(env, "")) as.numeric(env) else 10
+  }
+  val
+}
 
 #' @export
 #' @rdname ProgressReporter

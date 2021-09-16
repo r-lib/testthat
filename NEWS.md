@@ -2,7 +2,11 @@
 
 * `ProgressReporter` (the default only) now stops at the end of a file; this 
   ensures that you see the results of all related tests, and ensures that 
-  snapshots are handled consistently (#1402).
+  snapshots are handled consistently (#1402). 
+  
+* `ProgressReporter` now uses an env var to adjust the maximum number of 
+  failures. This makes it easier to adjust when the tests are run in a
+  subprocess, as is common when using RStudio (#1450).
 
 * `expect_snapshot()` is no longer experimental.
 

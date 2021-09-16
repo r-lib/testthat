@@ -118,8 +118,8 @@
     `actual`:   FALSE
     `expected`: TRUE 
     --------------------------------------------------------------------------------
-    Maximum number of failures exceeded; quitting early.
-    You can increase this number by setting `options(testthat.progress.max_fails)` 
+    Maximum number of failures exceeded; quitting at end of file.
+    Increase this number with (e.g.) `Sys.setenv('TESTTHAT_MAX_FAILS' = Inf)` 
     
     == Results =====================================================================
     [ FAIL 11 | WARN 0 | SKIP 0 | PASS 0 ]
