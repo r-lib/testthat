@@ -213,7 +213,7 @@
      2. bar() reporters/backtraces.R:47:9
     
     Error (backtraces.R:58:3): deep stacks are trimmed
-    Error in `f()`: This is deep
+    Error in `f(x - 1)`: This is deep
     Backtrace:
       1. f(25) reporters/backtraces.R:58:2
       2. f(x - 1) reporters/backtraces.R:56:4
@@ -324,7 +324,7 @@
     [ FAIL 4 | WARN 0 | SKIP 0 | PASS 1 ]
     
     -- Error (tests.R:23:3): Error:1 -----------------------------------------------
-    Error in `eval()`: stop
+    Error in `eval(code, test_env)`: stop
     
     -- Error (tests.R:31:3): errors get tracebacks ---------------------------------
     Error in `h()`: !

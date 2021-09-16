@@ -28,7 +28,7 @@
     ##teamcity[testSuiteStarted name='Errors']
     ##teamcity[testSuiteStarted name='Error:1']
     ##teamcity[testStarted name='expectation 1']
-    ##teamcity[testFailed name='expectation 1' message='Error in `eval()`: stop' details='']
+    ##teamcity[testFailed name='expectation 1' message='Error in `eval(code, test_env)`: stop' details='']
     ##teamcity[testFinished name='expectation 1']
     ##teamcity[testSuiteFinished name='Error:1']
     
