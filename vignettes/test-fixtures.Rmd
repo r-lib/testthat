@@ -2,7 +2,7 @@
 title: "Test fixtures"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{test-fixtures}
+  %\VignetteIndexEntry{Test fixtures}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
