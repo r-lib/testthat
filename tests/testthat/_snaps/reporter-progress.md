@@ -48,7 +48,9 @@
     | | 7       0 | reporters/fail-many                                             
     / | 8       0 | reporters/fail-many                                             
     - | 9       0 | reporters/fail-many                                             
-    x | 10       0 | reporters/fail-many
+    \ | 10       0 | reporters/fail-many                                            
+    | | 11       0 | reporters/fail-many                                            
+    x | 11       0 | reporters/fail-many
     --------------------------------------------------------------------------------
     Failure (fail-many.R:3:5): Example
     FALSE is not TRUE
@@ -109,12 +111,18 @@
     
     `actual`:   FALSE
     `expected`: TRUE 
+    
+    Failure (fail-many.R:3:5): Example
+    FALSE is not TRUE
+    
+    `actual`:   FALSE
+    `expected`: TRUE 
     --------------------------------------------------------------------------------
-    Maximum number of failures exceeded; quitting early.
-    You can increase this number by setting `options(testthat.progress.max_fails)` 
+    Maximum number of failures exceeded; quitting at end of file.
+    Increase this number with (e.g.) `Sys.setenv('TESTTHAT_MAX_FAILS' = Inf)` 
     
     == Results =====================================================================
-    [ FAIL 10 | WARN 0 | SKIP 0 | PASS 0 ]
+    [ FAIL 11 | WARN 0 | SKIP 0 | PASS 0 ]
     == Terminated early ============================================================
     
     I believe in you!
