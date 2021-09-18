@@ -57,15 +57,11 @@ quasi_capture <- function(.quo, .label, .capture, ...) {
 }
 
 expr_label <- function(x) {
-  if (is.atomic(x)) {
-    x <- deparse(x)
-    if (length(x) > 1) {
-      x <- paste0(x[[1]], "...)")
-    }
-    x
+  if (is_syntactic_literal(x)) {
+    deparse1(x)
   } else if (is.name(x)) {
     paste0("`", as.character(x), "`")
-  } else {
+  } else if (is_call(x)) {
     chr <- deparse(x)
     if (length(chr) > 1) {
       if (is_call(x, "function")) {
@@ -84,7 +80,14 @@ expr_label <- function(x) {
         x <- call2(x[[1]], quote(expr = ...))
       }
     }
-    paste(deparse(x), collapse = "\n")
+    deparse1(x)
+  } else {
+    # Any other object that's been inlined in
+    x <- deparse(x)
+    if (length(x) > 1) {
+      x <- paste0(x[[1]], "...)")
+    }
+    x
   }
 }
 

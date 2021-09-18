@@ -1,4 +1,4 @@
-# produces useful summaries for function calls
+# produces useful summaries for long calls
 
     Code
       expr_label(quote(foo(a = "this is a long argument", b = "this is a long argument",
@@ -21,4 +21,11 @@
       }))
     Output
       [1] "function(a, b, c) ..."
+
+# informative error for missing arg
+
+    Code
+      expect_equal()
+    Error <simpleError>
+      argument `object` is missing, with no default.
 
