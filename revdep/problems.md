@@ -183,82 +183,6 @@ Run `cloud_details(, "crosstable")` for more info
       Execution halted
     ```
 
-# ebreg
-
-<details>
-
-* Version: 0.1.3
-* GitHub: NA
-* Source code: https://github.com/cran/ebreg
-* Date/Publication: 2021-05-26 13:10:06 UTC
-* Number of recursive dependencies: 46
-
-Run `cloud_details(, "ebreg")` for more info
-
-</details>
-
-## Newly broken
-
-*   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Last 13 lines of output:
-      > 
-      > test_check("ebreg")
-      ══ Failed tests ════════════════════════════════════════════════════════════════
-      ── Error (test_ebproject.R:106:3): returned values have the right size ─────────
-      Error in `chol.default(V)`: the leading minor of order 2 is not positive definite
-      Backtrace:
-          █
-       1. └─ebreg::ebreg(...) test_ebproject.R:106:2
-       2.   └─ebreg:::get.lm.stuff(S.new, y, X)
-       3.     ├─base::chol(V)
-       4.     └─base::chol.default(V)
-      
-      [ FAIL 1 | WARN 0 | SKIP 0 | PASS 7 ]
-      Error: Test failures
-      Execution halted
-    ```
-
-# egor
-
-<details>
-
-* Version: 1.21.7
-* GitHub: https://github.com/tilltnet/egor
-* Source code: https://github.com/cran/egor
-* Date/Publication: 2021-07-01 16:20:02 UTC
-* Number of recursive dependencies: 88
-
-Run `cloud_details(, "egor")` for more info
-
-</details>
-
-## Newly broken
-
-*   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Last 13 lines of output:
-       10. ├─dplyr::select(., -V1, -V2)
-       11. ├─dplyr::left_join(., aaties, by = c(from = ".srcID", to = ".tgtID"))
-       12. ├─dplyr::mutate(...)
-       13. ├─dplyr:::mutate.data.frame(...)
-       14. │ └─dplyr:::mutate_cols(.data, ..., caller_env = caller_env())
-       15. │   ├─base::withCallingHandlers(...)
-       16. │   └─mask$eval_all_mutate(quo)
-       17. ├─base::factor(...)
-       18. │ └─base::stop(...)
-       19. └─base::.handleSimpleError(...)
-       20.   └─dplyr:::h(simpleError(msg, call))
-      
-      [ FAIL 1 | WARN 0 | SKIP 1 | PASS 217 ]
-      Error: Test failures
-      Execution halted
-    ```
-
 # fundiversity
 
 <details>
@@ -343,44 +267,6 @@ Run `cloud_details(, "googleAnalyticsR")` for more info
       Execution halted
     ```
 
-# gtfstools
-
-<details>
-
-* Version: 0.1.0
-* GitHub: https://github.com/ipeaGIT/gtfstools
-* Source code: https://github.com/cran/gtfstools
-* Date/Publication: 2021-02-23 09:00:02 UTC
-* Number of recursive dependencies: 72
-
-Run `cloud_details(, "gtfstools")` for more info
-
-</details>
-
-## Newly broken
-
-*   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Last 13 lines of output:
-      ══ Failed tests ════════════════════════════════════════════════════════════════
-      ── Error (test-read_gtfs.R:90:3): results in a gtfs object (if no parsing failure happens) ──
-      Error: `.fn` must be a string, a symbol, a call, or a function
-      Backtrace:
-          █
-       1. └─base::lapply(gtfs, expect_s3_class, "data.table") test-read_gtfs.R:90:2
-       2.   └─testthat:::FUN(X[[i]], ...)
-       3.     └─testthat::quasi_label(enquo(object), arg = "object")
-       4.       ├─label %||% expr_label(expr)
-       5.       └─testthat:::expr_label(expr)
-       6.         └─rlang::call2(x[[1]], quote(expr = ...))
-      
-      [ FAIL 1 | WARN 0 | SKIP 0 | PASS 463 ]
-      Error: Test failures
-      Execution halted
-    ```
-
 # hms
 
 <details>
@@ -417,51 +303,6 @@ Run `cloud_details(, "hms")` for more info
       [ FAIL 4 | WARN 0 | SKIP 1 | PASS 197 ]
       Error: Test failures
       Execution halted
-    ```
-
-# htmltools
-
-<details>
-
-* Version: 0.5.2
-* GitHub: https://github.com/rstudio/htmltools
-* Source code: https://github.com/cran/htmltools
-* Date/Publication: 2021-08-25 13:50:02 UTC
-* Number of recursive dependencies: 55
-
-Run `cloud_details(, "htmltools")` for more info
-
-</details>
-
-## Newly broken
-
-*   checking tests ... ERROR
-    ```
-      Running ‘test-all.R’
-    Running the tests in ‘tests/test-all.R’ failed.
-    Last 13 lines of output:
-      
-      ══ Failed tests ════════════════════════════════════════════════════════════════
-      ── Error (test-deps.r:232:3): able to resolve HTML scripts supplied with & without integrity ──
-      Error: `.fn` must be a string, a symbol, a call, or a function
-      Backtrace:
-          █
-       1. └─testthat::expect_equal(...) test-deps.r:232:2
-       2.   └─testthat::quasi_label(enquo(object), label, arg = "object")
-       3.     ├─label %||% expr_label(expr)
-       4.     └─testthat:::expr_label(expr)
-       5.       └─rlang::call2(x[[1]], quote(expr = ...))
-      
-      [ FAIL 1 | WARN 0 | SKIP 5 | PASS 2020 ]
-      Error: Test failures
-      Execution halted
-    ```
-
-## In both
-
-*   checking package dependencies ... NOTE
-    ```
-    Package which this enhances but not available for checking: ‘knitr’
     ```
 
 # httptest
@@ -501,49 +342,6 @@ Run `cloud_details(, "httptest")` for more info
       [ FAIL 2 | WARN 0 | SKIP 12 | PASS 286 ]
       Error: Test failures
       Execution halted
-    ```
-
-# InterfaceqPCR
-
-<details>
-
-* Version: 1.0
-* GitHub: NA
-* Source code: https://github.com/cran/InterfaceqPCR
-* Date/Publication: 2017-04-01 06:30:13 UTC
-* Number of recursive dependencies: 40
-
-Run `cloud_details(, "InterfaceqPCR")` for more info
-
-</details>
-
-## Newly broken
-
-*   checking examples ... ERROR
-    ```
-    Running examples in ‘InterfaceqPCR-Ex.R’ failed
-    The error most likely occurred in:
-    
-    > ### Name: InterfaceqPCR-package
-    > ### Title: GUI to Analyse qPCR Results after PMA Treatment or not
-    > ### Aliases: InterfaceqPCR-package InterfaceqPCR
-    > 
-    > ### ** Examples
-    > 
-    > 
-    > Start_qPCR()
-    Warning in tclRequire("BWidget") : Tcl package 'BWidget' not found
-    Error in structure(.External(.C_dotTclObjv, objv), class = "tclObj") : 
-      [tcl] invalid command name "toplevel".
-    Calls: Start_qPCR ... tktoplevel -> tkwidget -> tcl -> .Tcl.objv -> structure
-    Execution halted
-    ```
-
-*   checking whether package ‘InterfaceqPCR’ can be installed ... WARNING
-    ```
-    Found the following significant warnings:
-      Warning: loading Rplot failed
-    See ‘/tmp/workdir/InterfaceqPCR/new/InterfaceqPCR.Rcheck/00install.out’ for details.
     ```
 
 # lifecycle
@@ -702,57 +500,6 @@ Run `cloud_details(, "r2dii.match")` for more info
       Execution halted
     ```
 
-# rbedrock
-
-<details>
-
-* Version: 0.1.1
-* GitHub: https://github.com/reedacartwright/rbedrock
-* Source code: https://github.com/cran/rbedrock
-* Date/Publication: 2021-09-11 23:40:02 UTC
-* Number of recursive dependencies: 51
-
-Run `cloud_details(, "rbedrock")` for more info
-
-</details>
-
-## Newly broken
-
-*   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Last 13 lines of output:
-      > library(testthat)
-      > library(rbedrock)
-      > 
-      > test_check("rbedrock")
-      ══ Failed tests ════════════════════════════════════════════════════════════════
-      ── Failure (test_entities.R:36:5): put_entities_data writes Entities data ──────
-      `dat` not equal to `dat2`.
-      Component "@10:0:0:50": Component 4: Component 4: Component 4: Component 2: Modes: logical, numeric
-      Component "@10:0:0:50": Component 4: Component 4: Component 4: Component 2: Attributes: < target is NULL, current is list >
-      Component "@10:0:0:50": Component 4: Component 4: Component 4: Component 2: target is logical, current is rbedrock_nbt
-      
-      [ FAIL 1 | WARN 0 | SKIP 0 | PASS 431 ]
-      Error: Test failures
-      Execution halted
-    ```
-
-## In both
-
-*   checking installed package size ... NOTE
-    ```
-      installed size is  7.2Mb
-      sub-directories of 1Mb or more:
-        libs   6.3Mb
-    ```
-
-*   checking for GNU extensions in Makefiles ... NOTE
-    ```
-    GNU make is a SystemRequirements.
-    ```
-
 # readr
 
 <details>
@@ -801,44 +548,6 @@ Run `cloud_details(, "readr")` for more info
         libs   9.4Mb
     ```
 
-# remotes
-
-<details>
-
-* Version: 2.4.0
-* GitHub: https://github.com/r-lib/remotes
-* Source code: https://github.com/cran/remotes
-* Date/Publication: 2021-06-02 18:20:02 UTC
-* Number of recursive dependencies: 60
-
-Run `cloud_details(, "remotes")` for more info
-
-</details>
-
-## Newly broken
-
-*   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Last 13 lines of output:
-      ══ Failed tests ════════════════════════════════════════════════════════════════
-      ── Error (test-parse-git.R:125:5): parse_repo_spec, github ─────────────────────
-      Error: Can't create call to non-callable object
-      Backtrace:
-          █
-       1. └─remotes:::expect_equal_named_lists(...) test-parse-git.R:125:4
-       2.   └─testthat::expect_equal(!!object, !!expected) helper.R:30:2
-       3.     └─testthat::quasi_label(enquo(object), label, arg = "object")
-       4.       ├─label %||% expr_label(expr)
-       5.       └─testthat:::expr_label(expr)
-       6.         └─rlang::call2(x[[1]], quote(expr = ...))
-      
-      [ FAIL 1 | WARN 0 | SKIP 77 | PASS 412 ]
-      Error: Test failures
-      Execution halted
-    ```
-
 # rlang
 
 <details>
@@ -885,38 +594,6 @@ Run `cloud_details(, "rlang")` for more info
     Package which this enhances but not available for checking: ‘winch’
     ```
 
-# RNiftyReg
-
-<details>
-
-* Version: 2.7.0
-* GitHub: https://github.com/jonclayden/RNiftyReg
-* Source code: https://github.com/cran/RNiftyReg
-* Date/Publication: 2020-09-12 05:51:01 UTC
-* Number of recursive dependencies: 50
-
-Run `cloud_details(, "RNiftyReg")` for more info
-
-</details>
-
-## Newly broken
-
-*   checking installed package size ... NOTE
-    ```
-      installed size is 125.0Mb
-      sub-directories of 1Mb or more:
-        extdata    2.0Mb
-        libs     122.8Mb
-    ```
-
-## Newly fixed
-
-*   checking whether package ‘RNiftyReg’ can be installed ... ERROR
-    ```
-    Installation failed.
-    See ‘/tmp/workdir/RNiftyReg/old/RNiftyReg.Rcheck/00install.out’ for details.
-    ```
-
 # SDraw
 
 <details>
@@ -933,29 +610,35 @@ Run `cloud_details(, "SDraw")` for more info
 
 ## Newly broken
 
+*   checking whether package ‘SDraw’ can be installed ... ERROR
+    ```
+    Installation failed.
+    See ‘/tmp/workdir/SDraw/new/SDraw.Rcheck/00install.out’ for details.
+    ```
+
+## Newly fixed
+
 *   checking tests ... ERROR
     ```
       Running ‘testthat.R’
     Running the tests in ‘tests/testthat.R’ failed.
     Last 13 lines of output:
-        error: cannot popen '/usr/bin/which 'uname' 2>/dev/null', probable reason 'Cannot allocate memory'
-       running command 'uname -a' had status 139
-       internal error -3 in R_decompress1
-      2: package ‘utils’ in options("defaultPackages") was not found 
-      3: package ‘grDevices’ in options("defaultPackages") was not found 
-      4: package ‘graphics’ in options("defaultPackages") was not found 
-      4: 5: In get(Info[i, 1], envir = env) :In get(Info[i, 1], envir = env) : internal error -3 in R_decompress1
-      5: package ‘graphics’ in options("defaultPackages") was not found 
-       internal error -3 in R_decompress1
-      6: package ‘stats’ in options("defaultPackages") was not found 
-      6: In get(Info[i, 1], envir = env) : internal error -3 in R_decompress1
-      7: package ‘stats’ in options("defaultPackages") was not found 
-      Error: package or namespace load failed for ‘graphics’ in get(Info[i, 1], envir = env):
-       lazy-load database '/opt/R/4.0.3/lib/R/library/grDevices/R/grDevices.rdb' is corrupt
-      Killed
+      3: package ‘methods’ in options("defaultPackages") was not found 
+      Error: package or namespace load failed for ‘methods’:
+       .onLoad failed in loadNamespace() for 'methods', details:
+        call: getGeneric("$")
+        error: lazy-load database '/opt/R/4.0.3/lib/R/library/methods/R/methods.rdb' is corrupt
+      During startup - Warning messages:
+      1: package "methods" in options("defaultPackages") was not found 
+      2: In getGeneric("$") : internal error -3 in R_decompress1
+      3: package ‘methods’ in options("defaultPackages") was not found 
+      Error: .onLoad failed in loadNamespace() for 'methods', details:
+        call: getGeneric("$")
+        error: lazy-load database '/opt/R/4.0.3/lib/R/library/methods/R/methods.rdb' is corrupt
+      In addition: Warning message:
+      In getGeneric("$") : internal error -3 in R_decompress1
+      Execution halted
     ```
-
-## In both
 
 *   checking dependencies in R code ... NOTE
     ```
@@ -963,6 +646,47 @@ Run `cloud_details(, "SDraw")` for more info
       All declared Imports should be used.
     ```
 
+## Installation
+
+### Devel
+
+```
+* installing *source* package ‘SDraw’ ...
+** package ‘SDraw’ successfully unpacked and MD5 sums checked
+** using staged installation
+** R
+** data
+*** moving datasets to lazyload DB
+** inst
+** byte-compile and prepare package for lazy loading
+Killed
+ERROR: lazy loading failed for package ‘SDraw’
+* removing ‘/tmp/workdir/SDraw/new/SDraw.Rcheck/SDraw’
+
+
+```
+### CRAN
+
+```
+* installing *source* package ‘SDraw’ ...
+** package ‘SDraw’ successfully unpacked and MD5 sums checked
+** using staged installation
+** R
+** data
+*** moving datasets to lazyload DB
+** inst
+** byte-compile and prepare package for lazy loading
+** help
+*** installing help indices
+** building package indices
+** installing vignettes
+** testing if installed package can be loaded from temporary location
+** testing if installed package can be loaded from final location
+** testing if installed package keeps a record of temporary installation path
+* DONE (SDraw)
+
+
+```
 # shinymeta
 
 <details>
@@ -999,102 +723,6 @@ Run `cloud_details(, "shinymeta")` for more info
       * report/template.Rmd
       Error: Test failures
       Execution halted
-    ```
-
-# statgenGxE
-
-<details>
-
-* Version: 1.0.4
-* GitHub: https://github.com/Biometris/statgenGxE
-* Source code: https://github.com/cran/statgenGxE
-* Date/Publication: 2021-01-07 16:20:03 UTC
-* Number of recursive dependencies: 90
-
-Run `cloud_details(, "statgenGxE")` for more info
-
-</details>
-
-## Newly broken
-
-*   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Last 13 lines of output:
-       6.         └─rlang::call2(x[[1]], quote(expr = ...))
-      ── Error (test-plots.R:376:3): stability plot gives correct output types ───────
-      Error: Can't create call to non-callable object
-      Backtrace:
-          █
-       1. └─base::lapply(X = p1, FUN = expect_is, "ggplot") test-plots.R:376:2
-       2.   └─testthat:::FUN(X[[i]], ...)
-       3.     └─testthat::quasi_label(enquo(object), label, arg = "object")
-       4.       ├─label %||% expr_label(expr)
-       5.       └─testthat:::expr_label(expr)
-       6.         └─rlang::call2(x[[1]], quote(expr = ...))
-      
-      [ FAIL 2 | WARN 37 | SKIP 16 | PASS 435 ]
-      Error: Test failures
-      Execution halted
-    ```
-
-## In both
-
-*   checking package dependencies ... NOTE
-    ```
-    Package suggested but not available for checking: ‘asreml’
-    ```
-
-# statgenSTA
-
-<details>
-
-* Version: 1.0.8
-* GitHub: https://github.com/Biometris/statgenSTA
-* Source code: https://github.com/cran/statgenSTA
-* Date/Publication: 2021-05-25 11:30:03 UTC
-* Number of recursive dependencies: 89
-
-Run `cloud_details(, "statgenSTA")` for more info
-
-</details>
-
-## Newly broken
-
-*   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Last 13 lines of output:
-       6.         └─rlang::call2(x[[1]], quote(expr = ...))
-      ── Error (test-STAplots.R:50:3): STA spatial plot gives correct output types ───
-      Error: Can't create call to non-callable object
-      Backtrace:
-          █
-       1. └─base::lapply(X = p1[[1]][[1]], FUN = expect_is, "ggplot") test-STAplots.R:50:2
-       2.   └─testthat:::FUN(X[[i]], ...)
-       3.     └─testthat::quasi_label(enquo(object), label, arg = "object")
-       4.       ├─label %||% expr_label(expr)
-       5.       └─testthat:::expr_label(expr)
-       6.         └─rlang::call2(x[[1]], quote(expr = ...))
-      
-      [ FAIL 2 | WARN 0 | SKIP 6 | PASS 771 ]
-      Error: Test failures
-      Execution halted
-    ```
-
-## In both
-
-*   checking package dependencies ... NOTE
-    ```
-    Package suggested but not available for checking: ‘asreml’
-    ```
-
-*   checking dependencies in R code ... NOTE
-    ```
-    Namespace in Imports field not imported from: ‘mapproj’
-      All declared Imports should be used.
     ```
 
 # taylor
@@ -1232,44 +860,6 @@ Run `cloud_details(, "tidyr")` for more info
       Note: found 24 marked UTF-8 strings
     ```
 
-# Tplyr
-
-<details>
-
-* Version: 0.4.1
-* GitHub: https://github.com/atorus-research/Tplyr
-* Source code: https://github.com/cran/Tplyr
-* Date/Publication: 2021-07-13 16:20:02 UTC
-* Number of recursive dependencies: 116
-
-Run `cloud_details(, "Tplyr")` for more info
-
-</details>
-
-## Newly broken
-
-*   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Last 13 lines of output:
-      ── Error (test-get_numeric.R:145:3): Multiple layers gives a list of statistics data in a list for those layers ──
-      Error: Can't create call to non-callable object
-      Backtrace:
-          █
-       1. └─purrr::walk(dat_list, expect_type, type = "list") test-get_numeric.R:145:2
-       2.   └─purrr::map(.x, .f, ...)
-       3.     └─testthat:::.f(.x[[i]], ...)
-       4.       └─testthat::quasi_label(enquo(object), arg = "object")
-       5.         ├─label %||% expr_label(expr)
-       6.         └─testthat:::expr_label(expr)
-       7.           └─rlang::call2(x[[1]], quote(expr = ...))
-      
-      [ FAIL 2 | WARN 0 | SKIP 0 | PASS 668 ]
-      Error: Test failures
-      Execution halted
-    ```
-
 # TreeTools
 
 <details>
@@ -1358,44 +948,6 @@ Run `cloud_details(, "tsna")` for more info
       Execution halted
     ```
 
-# vctrs
-
-<details>
-
-* Version: 0.3.8
-* GitHub: https://github.com/r-lib/vctrs
-* Source code: https://github.com/cran/vctrs
-* Date/Publication: 2021-04-29 16:00:03 UTC
-* Number of recursive dependencies: 69
-
-Run `cloud_details(, "vctrs")` for more info
-
-</details>
-
-## Newly broken
-
-*   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Last 13 lines of output:
-      ══ Failed tests ════════════════════════════════════════════════════════════════
-      ── Error (test-type-data-frame.R:142:3): warn about lossy coercions ────────────
-      Error: Can't create call to non-callable object
-      Backtrace:
-          █
-       1. └─vctrs:::expect_lossy(...) test-type-data-frame.R:142:2
-       2.   └─vctrs:::expect_identical(!!out, !!result) helper-expectations.R:11:2
-       3.     └─testthat::quasi_label(enquo(object), label, arg = "object") helper-vctrs.R:52:2
-       4.       ├─label %||% expr_label(expr)
-       5.       └─testthat:::expr_label(expr)
-       6.         └─rlang::call2(x[[1]], quote(expr = ...))
-      
-      [ FAIL 1 | WARN 0 | SKIP 34 | PASS 4129 ]
-      Error: Test failures
-      Execution halted
-    ```
-
 # vegawidget
 
 <details>
@@ -1430,82 +982,6 @@ Run `cloud_details(, "vegawidget")` for more info
       `expected$$schema` is a character vector ('https://vega.github.io/schema/vega-lite/v4.json')
       
       [ FAIL 1 | WARN 0 | SKIP 7 | PASS 71 ]
-      Error: Test failures
-      Execution halted
-    ```
-
-# wk
-
-<details>
-
-* Version: 0.5.0
-* GitHub: https://github.com/paleolimbot/wk
-* Source code: https://github.com/cran/wk
-* Date/Publication: 2021-07-13 04:50:02 UTC
-* Number of recursive dependencies: 43
-
-Run `cloud_details(, "wk")` for more info
-
-</details>
-
-## Newly broken
-
-*   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Last 13 lines of output:
-      > test_check("wk")
-      ══ Failed tests ════════════════════════════════════════════════════════════════
-      ── Error (test-compat-vctrs.R:205:5): vec_c() propagates the crs attribute ─────
-      Error: Can't create call to non-callable object
-      Backtrace:
-          █
-       1. └─testthat::expect_identical(...) test-compat-vctrs.R:205:4
-       2.   └─testthat::quasi_label(enquo(expected), expected.label, arg = "expected")
-       3.     ├─label %||% expr_label(expr)
-       4.     └─testthat:::expr_label(expr)
-       5.       └─rlang::call2(x[[1]], quote(expr = ...))
-      
-      [ FAIL 1 | WARN 0 | SKIP 0 | PASS 960 ]
-      Error: Test failures
-      Execution halted
-    ```
-
-# zeallot
-
-<details>
-
-* Version: 0.1.0
-* GitHub: https://github.com/nteetor/zeallot
-* Source code: https://github.com/cran/zeallot
-* Date/Publication: 2018-01-28 16:14:13 UTC
-* Number of recursive dependencies: 44
-
-Run `cloud_details(, "zeallot")` for more info
-
-</details>
-
-## Newly broken
-
-*   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Last 13 lines of output:
-      Error: Can't create call to non-callable object
-      Backtrace:
-          █
-       1. └─zeallot:::expect_equalish(...) test-pair-off.R:77:2
-       2.   ├─base::eval(bquote(expect_equal(.(object), .(expected), check.attributes = FALSE))) test-pair-off.R:4:2
-       3.   │ └─base::eval(bquote(expect_equal(.(object), .(expected), check.attributes = FALSE)))
-       4.   └─testthat::expect_equal(...)
-       5.     └─testthat::quasi_label(enquo(object), label, arg = "object")
-       6.       ├─label %||% expr_label(expr)
-       7.       └─testthat:::expr_label(expr)
-       8.         └─rlang::call2(x[[1]], quote(expr = ...))
-      
-      [ FAIL 7 | WARN 0 | SKIP 1 | PASS 141 ]
       Error: Test failures
       Execution halted
     ```
