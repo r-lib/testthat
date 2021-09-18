@@ -166,7 +166,7 @@ local_snapshotter <- function(snap_dir = NULL, cleanup = FALSE, .env = parent.fr
   snap_dir <- snap_dir %||% withr::local_tempdir(.local_envir = .env)
   reporter <- SnapshotReporter$new(snap_dir = snap_dir)
   if (!identical(cleanup, FALSE)) {
-    abort("`cleanup` is deprecated")
+    warn("`cleanup` is deprecated")
   }
 
   withr::local_options(
