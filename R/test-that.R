@@ -43,7 +43,10 @@ test_that <- function(desc, code) {
 
   if (edition_get() >= 3) {
     if (!is_call(code, "{")) {
-      warn("The `code` argument to `test_that()` must be a braced expression to get accurate file-line information for failures.")
+      warn(
+        "The `code` argument to `test_that()` must be a braced expression to get accurate file-line information for failures.",
+        class = "testthat_braces_warning"
+      )
     }
   }
 
