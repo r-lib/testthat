@@ -153,6 +153,18 @@ test_that("cnd expectations consistently return condition (#1371)", {
   expect_equal(expect_error(f("return value", NULL), regexp = NA), "return value")
 })
 
+test_that("cli width wrapping doesn't affect text matching", {
+  skip_if_not_installed("cli", "3.0.2")
+  skip_if_not_installed("rlang", "1.0.0")
+
+  local_use_cli()
+
+  expect_error(
+    abort("foobarbaz foobarbaz foobarbaz foobarbaz foobarbaz foobarbaz foobarbaz foobarbaz foobarbaz foobarbaz foobarbaz"),
+    "foobarbaz foobarbaz foobarbaz foobarbaz foobarbaz foobarbaz foobarbaz foobarbaz foobarbaz foobarbaz foobarbaz"
+  )
+})
+
 
 # second edition ----------------------------------------------------------
 
