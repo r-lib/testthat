@@ -51,100 +51,6 @@ Run `cloud_details(, "amber")` for more info
       All declared Imports should be used.
     ```
 
-# bignum
-
-<details>
-
-* Version: 0.2.1
-* GitHub: https://github.com/davidchall/bignum
-* Source code: https://github.com/cran/bignum
-* Date/Publication: 2021-06-17 07:40:06 UTC
-* Number of recursive dependencies: 45
-
-Run `cloud_details(, "bignum")` for more info
-
-</details>
-
-## Newly broken
-
-*   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Last 13 lines of output:
-      > 
-      > test_check("bignum")
-      ══ Skipped tests ═══════════════════════════════════════════════════════════════
-      • On CRAN (22)
-      
-      ══ Failed tests ════════════════════════════════════════════════════════════════
-      ── Failure (test-biginteger.R:153:3): difficult cases work ─────────────────────
-      expect_warning(biginteger(c(1, 1e-10)), class = "bignum_warning_cast_lossy") (`actual`) not equal to biginteger(c("1", "0")) (`expected`).
-      
-      `actual` is an S3 object of class <bignum_warning_cast_lossy/vctrs_error_cast_lossy/warning/condition>, a list
-      `expected` is an S3 object of class <bignum_biginteger/bignum_vctr/vctrs_vctr>, a character vector
-      
-      [ FAIL 1 | WARN 0 | SKIP 22 | PASS 459 ]
-      Error: Test failures
-      Execution halted
-    ```
-
-## In both
-
-*   checking installed package size ... NOTE
-    ```
-      installed size is 14.0Mb
-      sub-directories of 1Mb or more:
-        libs  13.7Mb
-    ```
-
-# clock
-
-<details>
-
-* Version: 0.4.0
-* GitHub: https://github.com/r-lib/clock
-* Source code: https://github.com/cran/clock
-* Date/Publication: 2021-07-22 19:00:02 UTC
-* Number of recursive dependencies: 54
-
-Run `cloud_details(, "clock")` for more info
-
-</details>
-
-## Newly broken
-
-*   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Last 13 lines of output:
-      `actual$message` is a character vector ('Failed to parse 1 string at location 1. Returning `NA` at that location.')
-      `expected$message` is absent
-      
-      `actual$trace` is an S3 object of class <rlang_trace>, a list
-      `expected$trace` is absent
-      
-      `actual$ticks` is absent
-      `expected$ticks` is an integer vector (NA)
-      
-      `actual$ticks_of_day` is absent
-      `expected$ticks_of_day` is an integer vector (NA)
-      
-      [ FAIL 1 | WARN 0 | SKIP 221 | PASS 976 ]
-      Error: Test failures
-      Execution halted
-    ```
-
-## In both
-
-*   checking installed package size ... NOTE
-    ```
-      installed size is 48.7Mb
-      sub-directories of 1Mb or more:
-        libs  47.1Mb
-    ```
-
 # crosstable
 
 <details>
@@ -183,52 +89,6 @@ Run `cloud_details(, "crosstable")` for more info
       Execution halted
     ```
 
-# fundiversity
-
-<details>
-
-* Version: 0.2.0
-* GitHub: https://github.com/Bisaloo/fundiversity
-* Source code: https://github.com/cran/fundiversity
-* Date/Publication: 2021-05-14 07:40:16 UTC
-* Number of recursive dependencies: 66
-
-Run `cloud_details(, "fundiversity")` for more info
-
-</details>
-
-## Newly broken
-
-*   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Last 13 lines of output:
-      > 
-      > if (requireNamespace("testthat", quietly = TRUE)) {
-      +   library(testthat)
-      +   options(fundiversity.memoise = TRUE)
-      +   test_check("fundiversity")
-      + }
-      ══ Failed tests ════════════════════════════════════════════════════════════════
-      ── Failure (test-fric_intersect.R:80:3): Functional Richness Intersection edge cases ──
-      expect_message(fd_fric_intersect(traits_birds[1:4, ], site_sp_birds)[["FRic_intersect"]])[c(1, 2, 3)] absent from NA_real_
-      ── Failure (test-fric_intersect.R:80:3): Functional Richness Intersection edge cases ──
-      NA_real_[1] absent from expect_message(fd_fric_intersect(traits_birds[1:4, ], site_sp_birds)[["FRic_intersect"]])
-      
-      [ FAIL 2 | WARN 0 | SKIP 0 | PASS 155 ]
-      Error: Test failures
-      Execution halted
-    ```
-
-## In both
-
-*   checking dependencies in R code ... NOTE
-    ```
-    Namespace in Imports field not imported from: ‘geometry’
-      All declared Imports should be used.
-    ```
-
 # googleAnalyticsR
 
 <details>
@@ -237,7 +97,7 @@ Run `cloud_details(, "fundiversity")` for more info
 * GitHub: https://github.com/MarkEdmondson1234/googleAnalyticsR
 * Source code: https://github.com/cran/googleAnalyticsR
 * Date/Publication: 2021-04-17 09:20:02 UTC
-* Number of recursive dependencies: 104
+* Number of recursive dependencies: 105
 
 Run `cloud_details(, "googleAnalyticsR")` for more info
 
@@ -267,17 +127,17 @@ Run `cloud_details(, "googleAnalyticsR")` for more info
       Execution halted
     ```
 
-# hms
+# ichimoku
 
 <details>
 
-* Version: 1.1.0
-* GitHub: https://github.com/tidyverse/hms
-* Source code: https://github.com/cran/hms
-* Date/Publication: 2021-05-17 17:20:15 UTC
-* Number of recursive dependencies: 34
+* Version: 1.2.1
+* GitHub: https://github.com/shikokuchuo/ichimoku
+* Source code: https://github.com/cran/ichimoku
+* Date/Publication: 2021-09-23 16:00:02 UTC
+* Number of recursive dependencies: 88
 
-Run `cloud_details(, "hms")` for more info
+Run `cloud_details(, "ichimoku")` for more info
 
 </details>
 
@@ -288,111 +148,31 @@ Run `cloud_details(, "hms")` for more info
       Running ‘testthat.R’
     Running the tests in ‘tests/testthat.R’ failed.
     Last 13 lines of output:
-          █
-       1. └─hms:::expect_hms_equal(...) test-coercion-deprecated.R:4:2
-       2.   └─testthat::expect_s3_class(x, "hms") helper-compare.R:2:2
-      ── Error (test-coercion-deprecated.R:4:3): coercion in ─────────────────────────
-      Error in `eval_bare(expr, quo_get_env(quo))`: 'list' object cannot be coerced to type 'double'
-      Backtrace:
-          █
-       1. └─hms:::expect_hms_equal(...) test-coercion-deprecated.R:4:2
-       2.   └─testthat::expect_equal(as.numeric(x), as.numeric(y)) helper-compare.R:4:2
-       3.     └─testthat::quasi_label(enquo(object), label, arg = "object")
-       4.       └─rlang::eval_bare(expr, quo_get_env(quo))
-      
-      [ FAIL 4 | WARN 0 | SKIP 1 | PASS 197 ]
-      Error: Test failures
-      Execution halted
-    ```
-
-# httptest
-
-<details>
-
-* Version: 4.0.0
-* GitHub: https://github.com/nealrichardson/httptest
-* Source code: https://github.com/cran/httptest
-* Date/Publication: 2021-02-01 06:10:04 UTC
-* Number of recursive dependencies: 57
-
-Run `cloud_details(, "httptest")` for more info
-
-</details>
-
-## Newly broken
-
-*   checking tests ... ERROR
-    ```
-      Running ‘spelling.R’
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Last 13 lines of output:
-      ══ Skipped tests ═══════════════════════════════════════════════════════════════
-      • On CRAN (8)
-      • TODO: handle URL escaping (1)
-      • TODO: prettify when simplify=FALSE (1)
-      • third_edition is TRUE (2)
-      
+      Direction              "long"            
+      Start                  1587337200        
+      End                    1608681600        
+      Ticker                 "sample_ohlc_data"
       ══ Failed tests ════════════════════════════════════════════════════════════════
-      ── Failure (test-fake-http.R:118:3): fake_request gets covered directly (not just in tracer) ──
-      expect_message(...) inherits from 'simpleMessage'/'message'/'condition' not 'response'.
-      ── Failure (test-fake-http.R:125:3): fake_request gets covered directly (not just in tracer) ──
-      expect_message(...) inherits from 'simpleMessage'/'message'/'condition' not 'response'.
+      ── Failure (test-plot.R:14:3): extraplot ok ────────────────────────────────────
+      expect_warning(extraplot(cloud), "'type' not specified") inherits from 'simpleWarning'/'warning'/'condition' not 'ggplot'.
+      ── Failure (test-plot.R:15:3): extraplot ok ────────────────────────────────────
+      expect_warning(extraplot(cloud, type = "line"), "'custom' not specified") inherits from 'simpleWarning'/'warning'/'condition' not 'ggplot'.
+      ── Failure (test-plot.R:16:3): extraplot ok ────────────────────────────────────
+      expect_warning(...) inherits from 'simpleWarning'/'warning'/'condition' not 'ggplot'.
       
-      [ FAIL 2 | WARN 0 | SKIP 12 | PASS 286 ]
+      [ FAIL 3 | WARN 0 | SKIP 0 | PASS 141 ]
       Error: Test failures
       Execution halted
-    ```
-
-# lifecycle
-
-<details>
-
-* Version: 1.0.0
-* GitHub: https://github.com/r-lib/lifecycle
-* Source code: https://github.com/cran/lifecycle
-* Date/Publication: 2021-02-15 15:20:06 UTC
-* Number of recursive dependencies: 51
-
-Run `cloud_details(, "lifecycle")` for more info
-
-</details>
-
-## Newly broken
-
-*   checking examples ... ERROR
-    ```
-    Running examples in ‘lifecycle-Ex.R’ failed
-    The error most likely occurred in:
-    
-    > ### Name: verbosity
-    > ### Title: Control the verbosity of deprecation signals
-    > ### Aliases: verbosity
-    > 
-    > ### ** Examples
-    > 
-    > if (rlang::is_installed("testthat")) {
-    ...
-    
-    ── Failure (???): mytool is deprecated ─────────────────────────────────────────
-    `mytool()` did not throw the expected error.
-    Backtrace:
-     1. rlang::with_options(...)
-     2. testthat::expect_error(mytool(), class = "defunctError")
-     3. testthat:::expect_condition_matching(...)
-    
-    Error: Test failed
-    Execution halted
     ```
 
 # param6
 
 <details>
 
-* Version: 0.2.1
+* Version: 0.2.2
 * GitHub: https://github.com/xoopR/param6
 * Source code: https://github.com/cran/param6
-* Date/Publication: 2021-07-29 08:50:05 UTC
+* Date/Publication: 2021-09-22 10:40:06 UTC
 * Number of recursive dependencies: 38
 
 Run `cloud_details(, "param6")` for more info
@@ -423,17 +203,17 @@ Run `cloud_details(, "param6")` for more info
       Execution halted
     ```
 
-# pavo
+# rio
 
 <details>
 
-* Version: 2.7.0
-* GitHub: https://github.com/rmaia/pavo
-* Source code: https://github.com/cran/pavo
-* Date/Publication: 2021-03-23 11:40:02 UTC
-* Number of recursive dependencies: 85
+* Version: 0.5.27
+* GitHub: https://github.com/leeper/rio
+* Source code: https://github.com/cran/rio
+* Date/Publication: 2021-06-21 07:10:01 UTC
+* Number of recursive dependencies: 77
 
-Run `cloud_details(, "pavo")` for more info
+Run `cloud_details(, "rio")` for more info
 
 </details>
 
@@ -441,111 +221,24 @@ Run `cloud_details(, "pavo")` for more info
 
 *   checking tests ... ERROR
     ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
+      Running ‘test-all.R’
+    Running the tests in ‘tests/test-all.R’ failed.
     Last 13 lines of output:
-      Error in `seq_len(nrow(rspecdata))`: argument must be coercible to non-negative integer
-      Backtrace:
-          █
-       1. ├─testthat::expect_error(vismodel(flowers_NIR), "wavelength range") test-vismodel.R:33:2
-       2. │ └─testthat:::expect_condition_matching(...)
-       3. │   └─testthat:::quasi_capture(...)
-       4. │     ├─testthat:::.capture(...)
-       5. │     │ └─base::withCallingHandlers(...)
-       6. │     └─rlang::eval_bare(quo_get_expr(.quo), quo_get_env(.quo))
-       7. └─pavo::vismodel(flowers_NIR)
-       8.   └─pavo:::isolate_wl(rspecdata, keep = "wl")
-      
-      [ FAIL 18 | WARN 39 | SKIP 7 | PASS 370 ]
-      Error: Test failures
-      Execution halted
-    ```
-
-# r2dii.match
-
-<details>
-
-* Version: 0.0.10
-* GitHub: https://github.com/2DegreesInvesting/r2dii.match
-* Source code: https://github.com/cran/r2dii.match
-* Date/Publication: 2021-06-29 21:00:02 UTC
-* Number of recursive dependencies: 66
-
-Run `cloud_details(, "r2dii.match")` for more info
-
-</details>
-
-## Newly broken
-
-*   checking tests ... ERROR
-    ```
-      Running ‘spelling.R’
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Last 13 lines of output:
-      > 
-      > test_check("r2dii.match")
-      ══ Skipped tests ═══════════════════════════════════════════════════════════════
-      • On CRAN (6)
-      
-      ══ Failed tests ════════════════════════════════════════════════════════════════
-      ── Failure (test-match_name.R:47:3): w/ missing values at all levels outputs 0-row ──
-      nrow(out) (`actual`) not equal to 0L (`expected`).
-      
-      `actual` is NULL
-      `expected` is an integer vector (0)
-      
-      [ FAIL 1 | WARN 0 | SKIP 6 | PASS 169 ]
-      Error: Test failures
-      Execution halted
-    ```
-
-# readr
-
-<details>
-
-* Version: 2.0.1
-* GitHub: https://github.com/tidyverse/readr
-* Source code: https://github.com/cran/readr
-* Date/Publication: 2021-08-10 15:40:02 UTC
-* Number of recursive dependencies: 70
-
-Run `cloud_details(, "readr")` for more info
-
-</details>
-
-## Newly broken
-
-*   checking tests ... ERROR
-    ```
-      Running ‘first_edition.R’
-      Running ‘second_edition.R’
-    Running the tests in ‘tests/second_edition.R’ failed.
-    Last 13 lines of output:
-      
-      ══ Skipped tests ═══════════════════════════════════════════════════════════════
-      • On CRAN (7)
-      • edition_first() is not TRUE (14)
-      
-      ══ Failed tests ════════════════════════════════════════════════════════════════
-      ── Failure (test-read-lines.R:15:3): read_lines handles embedded nuls ──────────
-      `res` (`actual`) not equal to c("a,b,c", "1,2,", "3,4,5") (`expected`).
-      
-      `actual` is an S3 object of class <vroom_parse_issue/warning/condition>, a list
-      `expected` is a character vector ('a,b,c', '1,2,', '3,4,5')
-      
-      [ FAIL 1 | WARN 0 | SKIP 21 | PASS 731 ]
-      Error: Test failures
-      Execution halted
-    ```
-
-## In both
-
-*   checking installed package size ... NOTE
-    ```
-      installed size is 10.3Mb
-      sub-directories of 1Mb or more:
-        libs   9.4Mb
+      37: test_code(NULL, exprs, env)
+      38: source_file(path, child_env(env), wrap = wrap)
+      39: FUN(X[[i]], ...)
+      40: lapply(test_paths, test_one_file, env = env, wrap = wrap)
+      41: doTryCatch(return(expr), name, parentenv, handler)
+      42: tryCatchOne(expr, names, parentenv, handlers[[1L]])
+      43: tryCatchList(expr, classes, parentenv, handlers)
+      44: tryCatch(code, testthat_abort_reporter = function(cnd) {    cat(conditionMessage(cnd), "\n")    NULL})
+      45: with_reporter(reporters$multi, lapply(test_paths, test_one_file,     env = env, wrap = wrap))
+      46: test_files(test_dir = test_dir, test_package = test_package,     test_paths = test_paths, load_helpers = load_helpers, reporter = reporter,     env = env, stop_on_failure = stop_on_failure, stop_on_warning = stop_on_warning,     wrap = wrap, load_package = load_package)
+      47: test_files(test_dir = path, test_paths = test_paths, test_package = package,     reporter = reporter, load_helpers = load_helpers, env = env,     stop_on_failure = stop_on_failure, stop_on_warning = stop_on_warning,     wrap = wrap, load_package = load_package, parallel = parallel)
+      48: test_dir("testthat", package = package, reporter = reporter,     ..., load_package = "installed")
+      49: test_check("rio", reporter = "summary")
+      An irrecoverable exception occurred. R is aborting now ...
+      Segmentation fault (core dumped)
     ```
 
 # rlang
@@ -594,110 +287,17 @@ Run `cloud_details(, "rlang")` for more info
     Package which this enhances but not available for checking: ‘winch’
     ```
 
-# SDraw
+# shiny
 
 <details>
 
-* Version: 2.1.13
-* GitHub: https://github.com/tmcd82070/SDraw
-* Source code: https://github.com/cran/SDraw
-* Date/Publication: 2020-07-03 16:20:09 UTC
-* Number of recursive dependencies: 127
+* Version: 1.7.0
+* GitHub: https://github.com/rstudio/shiny
+* Source code: https://github.com/cran/shiny
+* Date/Publication: 2021-09-22 10:20:02 UTC
+* Number of recursive dependencies: 105
 
-Run `cloud_details(, "SDraw")` for more info
-
-</details>
-
-## Newly broken
-
-*   checking whether package ‘SDraw’ can be installed ... ERROR
-    ```
-    Installation failed.
-    See ‘/tmp/workdir/SDraw/new/SDraw.Rcheck/00install.out’ for details.
-    ```
-
-## Newly fixed
-
-*   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Last 13 lines of output:
-      3: package ‘methods’ in options("defaultPackages") was not found 
-      Error: package or namespace load failed for ‘methods’:
-       .onLoad failed in loadNamespace() for 'methods', details:
-        call: getGeneric("$")
-        error: lazy-load database '/opt/R/4.0.3/lib/R/library/methods/R/methods.rdb' is corrupt
-      During startup - Warning messages:
-      1: package "methods" in options("defaultPackages") was not found 
-      2: In getGeneric("$") : internal error -3 in R_decompress1
-      3: package ‘methods’ in options("defaultPackages") was not found 
-      Error: .onLoad failed in loadNamespace() for 'methods', details:
-        call: getGeneric("$")
-        error: lazy-load database '/opt/R/4.0.3/lib/R/library/methods/R/methods.rdb' is corrupt
-      In addition: Warning message:
-      In getGeneric("$") : internal error -3 in R_decompress1
-      Execution halted
-    ```
-
-*   checking dependencies in R code ... NOTE
-    ```
-    Namespace in Imports field not imported from: ‘covr’
-      All declared Imports should be used.
-    ```
-
-## Installation
-
-### Devel
-
-```
-* installing *source* package ‘SDraw’ ...
-** package ‘SDraw’ successfully unpacked and MD5 sums checked
-** using staged installation
-** R
-** data
-*** moving datasets to lazyload DB
-** inst
-** byte-compile and prepare package for lazy loading
-Killed
-ERROR: lazy loading failed for package ‘SDraw’
-* removing ‘/tmp/workdir/SDraw/new/SDraw.Rcheck/SDraw’
-
-
-```
-### CRAN
-
-```
-* installing *source* package ‘SDraw’ ...
-** package ‘SDraw’ successfully unpacked and MD5 sums checked
-** using staged installation
-** R
-** data
-*** moving datasets to lazyload DB
-** inst
-** byte-compile and prepare package for lazy loading
-** help
-*** installing help indices
-** building package indices
-** installing vignettes
-** testing if installed package can be loaded from temporary location
-** testing if installed package can be loaded from final location
-** testing if installed package keeps a record of temporary installation path
-* DONE (SDraw)
-
-
-```
-# shinymeta
-
-<details>
-
-* Version: 0.2.0.1
-* GitHub: https://github.com/rstudio/shinymeta
-* Source code: https://github.com/cran/shinymeta
-* Date/Publication: 2021-06-15 15:20:02 UTC
-* Number of recursive dependencies: 91
-
-Run `cloud_details(, "shinymeta")` for more info
+Run `cloud_details(, "shiny")` for more info
 
 </details>
 
@@ -708,156 +308,31 @@ Run `cloud_details(, "shinymeta")` for more info
       Running ‘testthat.R’
     Running the tests in ‘tests/testthat.R’ failed.
     Last 13 lines of output:
-        8.       │   │ └─domain$wrapSync(expr)
-        9.       │   ├─shiny::withReactiveDomain(...)
-       10.       │   │ └─promises::with_promise_domain(...)
-       11.       │   │   └─domain$wrapSync(expr)
-       12.       │   │     └─base::force(expr)
-       13.       │   └─env$runWith(self, func)
-       14.       │     └─shiny:::contextFunc()
-       15.       │       └─shiny::..stacktraceon..(expr)
-       16.       └─testthat::expect_equal(...) test-comments.R:192:2
+      `expected` is a character vector ('', NA)
+      ── Failure (test-utils.R:233:3): dateYMD works ─────────────────────────────────
+      expect_warning(dateYMD(c("2019/11/05", NA))) (`actual`) not identical to c("2019/11/05", NA) (`expected`).
       
-      [ FAIL 4 | WARN 22 | SKIP 4 | PASS 201 ]
-      Deleting unused snapshots:
-      * report/template.Rmd
-      Error: Test failures
-      Execution halted
-    ```
-
-# taylor
-
-<details>
-
-* Version: 0.2.0
-* GitHub: https://github.com/wjakethompson/taylor
-* Source code: https://github.com/cran/taylor
-* Date/Publication: 2021-08-17 08:00:02 UTC
-* Number of recursive dependencies: 66
-
-Run `cloud_details(, "taylor")` for more info
-
-</details>
-
-## Newly broken
-
-*   checking tests ... ERROR
-    ```
-      Running ‘spelling.R’
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Last 13 lines of output:
-      * ggplot2-color-scales/red-fill-d.svg
-      * ggplot2-color-scales/reputation-color-b.svg
-      * ggplot2-color-scales/reputation-color-c.svg
-      * ggplot2-color-scales/reputation-color-d.svg
-      * ggplot2-color-scales/reputation-fill-b.svg
-      * ggplot2-color-scales/reputation-fill-c.svg
-      * ggplot2-color-scales/reputation-fill-d.svg
-      * ggplot2-color-scales/speak-now-color-b.svg
-      * ggplot2-color-scales/speak-now-color-c.svg
-      * ggplot2-color-scales/speak-now-color-d.svg
-      * ggplot2-color-scales/speak-now-fill-b.svg
-      * ggplot2-color-scales/speak-now-fill-c.svg
-      * ggplot2-color-scales/speak-now-fill-d.svg
+      `actual` is an S3 object of class <simpleWarning/warning/condition>, a list
+      `expected` is a character vector ('2019/11/05', NA)
+      ── Failure (test-utils.R:237:3): dateYMD works ─────────────────────────────────
+      expect_warning(dateYMD(c("2019/11/05", ""))) (`actual`) not identical to c("2019/11/05", "") (`expected`).
+      
+      `actual` is an S3 object of class <simpleWarning/warning/condition>, a list
+      `expected` is a character vector ('2019/11/05', '')
+      
+      [ FAIL 5 | WARN 0 | SKIP 13 | PASS 1535 ]
       Error: Test failures
       Execution halted
     ```
 
 ## In both
 
-*   checking dependencies in R code ... NOTE
+*   checking installed package size ... NOTE
     ```
-    Namespace in Imports field not imported from: ‘methods’
-      All declared Imports should be used.
-    ```
-
-*   checking data for non-ASCII characters ... NOTE
-    ```
-      Note: found 594 marked UTF-8 strings
-    ```
-
-# term
-
-<details>
-
-* Version: 0.3.2
-* GitHub: https://github.com/poissonconsulting/term
-* Source code: https://github.com/cran/term
-* Date/Publication: 2021-09-06 14:50:02 UTC
-* Number of recursive dependencies: 45
-
-Run `cloud_details(, "term")` for more info
-
-</details>
-
-## Newly broken
-
-*   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Last 13 lines of output:
-      ══ Failed tests ════════════════════════════════════════════════════════════════
-      ── Failure (test-npars.R:31:3): npars.term invalid elements ────────────────────
-      expect_warning(npars(new_term(c("a[2]", "b c")))) (`actual`) not identical to 2L (`expected`).
-      
-      `actual` is an S3 object of class <simpleWarning/warning/condition>, a list
-      `expected` is an integer vector (2)
-      ── Failure (test-npars.R:45:3): npars.term scalar invalid elements ─────────────
-      expect_warning(npars(new_term(c("a[2]", "b c")), scalar = TRUE)) (`actual`) not identical to 1L (`expected`).
-      
-      `actual` is an S3 object of class <simpleWarning/warning/condition>, a list
-      `expected` is an integer vector (1)
-      
-      [ FAIL 2 | WARN 0 | SKIP 1 | PASS 544 ]
-      Error: Test failures
-      Execution halted
-    ```
-
-# tidyr
-
-<details>
-
-* Version: 1.1.3
-* GitHub: https://github.com/tidyverse/tidyr
-* Source code: https://github.com/cran/tidyr
-* Date/Publication: 2021-03-03 09:20:06 UTC
-* Number of recursive dependencies: 68
-
-Run `cloud_details(, "tidyr")` for more info
-
-</details>
-
-## Newly broken
-
-*   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Last 13 lines of output:
-      Names of `out` ('message', 'trace', 'internal') don't match 'x_x', 'y_x'
-      ── Failure (test-nest.R:299:3): unnest has mutate semantics ────────────────────
-      out$z (`actual`) not equal to 2:5 (`expected`).
-      
-      `actual` is NULL
-      `expected` is an integer vector (2, 3, 4, 5)
-      ── Failure (test-nest.R:314:3): .id creates vector of names for vector unnest ──
-      out$name (`actual`) not equal to c("a", "b", "b") (`expected`).
-      
-      `actual` is NULL
-      `expected` is a character vector ('a', 'b', 'b')
-      
-      [ FAIL 3 | WARN 0 | SKIP 0 | PASS 645 ]
-      Error: Test failures
-      Execution halted
-    ```
-
-## In both
-
-*   checking data for non-ASCII characters ... NOTE
-    ```
-      Note: found 24 marked UTF-8 strings
+      installed size is 10.1Mb
+      sub-directories of 1Mb or more:
+        R     1.6Mb
+        www   7.2Mb
     ```
 
 # TreeTools
@@ -868,7 +343,7 @@ Run `cloud_details(, "tidyr")` for more info
 * GitHub: https://github.com/ms609/TreeTools
 * Source code: https://github.com/cran/TreeTools
 * Date/Publication: 2021-09-08 08:00:07 UTC
-* Number of recursive dependencies: 77
+* Number of recursive dependencies: 78
 
 Run `cloud_details(, "TreeTools")` for more info
 
@@ -907,47 +382,6 @@ Run `cloud_details(, "TreeTools")` for more info
         libs   6.8Mb
     ```
 
-# tsna
-
-<details>
-
-* Version: 0.3.3
-* GitHub: NA
-* Source code: https://github.com/cran/tsna
-* Date/Publication: 2021-04-23 19:50:02 UTC
-* Number of recursive dependencies: 62
-
-Run `cloud_details(, "tsna")` for more info
-
-</details>
-
-## Newly broken
-
-*   checking tests ... ERROR
-    ```
-      Running ‘degree_tests.R’
-      Running ‘density_tests.R’
-      Running ‘durations_tests.R’
-      Running ‘fromDissTests.R’
-      Running ‘pShift_tests.R’
-      Running ‘path_tests.R’
-      Running ‘reachable_tests.R’
-      Running ‘statsWrapper_tests.R’
-    Running the tests in ‘tests/statsWrapper_tests.R’ failed.
-    Last 13 lines of output:
-    ...
-        6. tsna::tErgmStats(moodyContactSim, "foo")
-        7. base::lapply(...)
-        8. tsna:::FUN(X[[i]], ...)
-       10. ergm:::summary_formula.network(as.formula(paste("net", formula)))
-       11. ergm::ergm_model(object, basis, ...)
-       12. ergm::call.ErgmTerm(...)
-       13. statnet.common::locate_prefixed_function(...)
-      
-      Error: Test failed
-      Execution halted
-    ```
-
 # vegawidget
 
 <details>
@@ -956,7 +390,7 @@ Run `cloud_details(, "tsna")` for more info
 * GitHub: https://github.com/vegawidget/vegawidget
 * Source code: https://github.com/cran/vegawidget
 * Date/Publication: 2021-01-12 08:40:08 UTC
-* Number of recursive dependencies: 103
+* Number of recursive dependencies: 104
 
 Run `cloud_details(, "vegawidget")` for more info
 
