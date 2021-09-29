@@ -20,22 +20,26 @@ test_that("preserves variants", {
 })
 
 test_that("detects outdated snapshot files", {
-  dir <- local_snap_dir(c("a/foo.txt", "b/foo.txt"))
+  dir <- local_snap_dir(c("a/foo.txt", "b/foo.txt", "b/foo.new.txt"))
 
   expect_equal(
     snapshot_outdated(dir, character(), character()),
-    c("a/foo.txt", "b/foo.txt")
+    c("a/foo.txt", "b/foo.new.txt", "b/foo.txt")
   )
   expect_equal(
-    snapshot_outdated(dir, "a", "a/foo.txt"),
-    "b/foo.txt"
+    snapshot_outdated(dir, character(), "a/foo.txt"),
+    c("b/foo.new.txt", "b/foo.txt")
   )
   expect_equal(
-    snapshot_outdated(dir, c("a", "b"), c("a/foo.txt", "b/foo.txt")),
+    snapshot_outdated(dir, character(), "b/foo.txt"),
+    "a/foo.txt"
+  )
+  expect_equal(
+    snapshot_outdated(dir, character(), c("a/foo.txt", "b/foo.txt")),
     character()
   )
 })
-#
+
 test_that("detects individual snapshots files to remove", {
   dir <- local_snap_dir(c("a/a1", "a/a2", "b/b1"))
   expect_equal(
