@@ -70,7 +70,7 @@ test_that("can announce snapshot file", {
 # snapshot_file_equal -----------------------------------------------------
 
 test_that("warns on first creation", {
-  path <- write_tmp_lines(letters[[1]])
+  path <- write_tmp_lines("a")
   withr::defer(unlink(file.path(tempdir(), "test.txt")))
 
   # Warns on first run
@@ -85,10 +85,15 @@ test_that("warns on first creation", {
   expect_false(file.exists(file.path(tempdir(), "test.new.txt")))
 
   # Changed returns FALSE
-  path2 <- write_tmp_lines(letters[[2]])
+  path2 <- write_tmp_lines("b")
   expect_false(snapshot_file_equal(tempdir(), "test.txt", path2))
   expect_true(file.exists(file.path(tempdir(), "test.txt")))
   expect_true(file.exists(file.path(tempdir(), "test.new.txt")))
+
+  # Changing again overwrites
+  path2 <- write_tmp_lines("c")
+  expect_false(snapshot_file_equal(tempdir(), "test.txt", path2))
+  expect_equal(read_lines(file.path(tempdir(), "test.new.txt")), "c")
 
   # Unchanged cleans up
   expect_true(snapshot_file_equal(tempdir(), "test.txt", path))

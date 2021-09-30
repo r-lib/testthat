@@ -15,6 +15,9 @@
   stochastic (e.g. random temporary directory names) from snapshot output 
   (#1345).
 
+* `expect_snapshot_file()` now replaces previous `.new` snapshot if code
+  fails again with a different value.
+
 * `expect_snapshot_value()` now has an explicit `tolerance` argument which 
   uses the testthat default, thus making it more like `expect_equal()` rather 
   than `expect_identical()`. Set it to `NULL` if you want precise comparisons 
