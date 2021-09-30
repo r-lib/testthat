@@ -37,10 +37,15 @@ snapshot_expected <- function(
   is_variant <- dir_contains(snap_dirs, c(snaps, snap_files_seen))
   variants <- basename(snap_dirs[is_variant])
 
+  snap_files_seen_new <- paste0(
+    tools::file_path_sans_ext(snap_files_seen),
+    ".new.", tools::file_ext(snap_files_seen)
+  )
+
   sort(c(
     snaps,
     outer(variants, snaps, file.path),
-    snap_files_seen,
+    snap_files_seen, snap_files_seen_new,
     outer(variants, snap_files_seen, file.path)
   ))
 }
