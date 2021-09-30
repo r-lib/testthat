@@ -152,7 +152,7 @@ snapshot_file_equal <- function(snap_test_dir, snap_name, path, file_equal = com
   if (file.exists(cur_path)) {
     eq <- file_equal(cur_path, path)
     if (!eq) {
-      file.copy(path, new_path)
+      file.copy(path, new_path, overwrite = TRUE)
     } else {
       # in case it exists from a previous run
       unlink(new_path)
