@@ -34,33 +34,6 @@
 #' @return The result of the last unnamed parameter
 #' @references Suraj Gupta (2012): \href{http://blog.obeautifulcode.com/R/How-R-Searches-And-Finds-Stuff/}{How R Searches And Finds Stuff}
 #' @export
-#' @examples
-#' add_one <- function(x) x + 1
-#' expect_equal(add_one(2), 3)
-#' with_mock(
-#'   add_one = function(x) x - 1,
-#'   expect_equal(add_one(2), 1)
-#' )
-#' square_add_one <- function(x) add_one(x)^2
-#' expect_equal(square_add_one(2), 9)
-#' expect_equal(
-#'   with_mock(
-#'     add_one = function(x) x - 1,
-#'     square_add_one(2)
-#'   ),
-#'   1
-#' )
-#'
-#' # local_mock() -------------------------------
-#' plus <- function(x, y) x + y
-#' test_that("plus(1, 1) == 2", {
-#'   expect_equal(plus(1, 1), 2)
-#' })
-#'
-#' test_that("plus(1, 1) == 3", {
-#'   local_mock(plus = function(x, y) 3)
-#'   expect_equal(plus(1, 1), 3)
-#' })
 with_mock <- function(..., .env = topenv()) {
   edition_deprecate(3, "with_mock()",
     "Please use mockr or mockery packages instead"
