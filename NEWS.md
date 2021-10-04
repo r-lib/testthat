@@ -1,5 +1,8 @@
 # testthat (development version)
 
+* New expectation, `expect_shape()`, for testing the shape (i.e., the `length()`,
+  `nrow()` and/or `ncol()`, or `dim()`, all in one place (#1423, @michaelchirico).
+
 # testthat 3.1.0
 
 ## Snapshot tests

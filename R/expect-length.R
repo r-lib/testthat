@@ -1,6 +1,7 @@
 #' Does code return a vector with the specified length?
 #'
-#' @seealso [expect_vector()] to make assertions about the "size" of a vector
+#' @seealso [expect_vector()] to make assertions about the "size" of a vector,
+#'   [expect_shape()] for more general assertions about object "shape".
 #' @inheritParams expect_that
 #' @param n Expected length.
 #' @family expectations
@@ -24,4 +25,85 @@ expect_length <- function(object, n) {
   )
 
   invisible(act$val)
+}
+
+#' Does code return an object with the specified shape?
+#'
+#' By "shape", we mean an object's [dim()], or, for one-dimensional objects,
+#'   it's [length()]. Thus this is an extension of [expect_length()] to more
+#'   general objects like [data.frame()], [matrix()], and [array()].
+#' To wit, first, the object's `dim()` is checked. If non-`NULL`, it is compared
+#'   to `shape` (or one/both of `nrow`, `ncol`, if they are supplied, in which
+#'   case they take precedence). If `dim(object)` is `NULL`, `length(object)`
+#'   is compared to `shape`.
+#'
+#' @seealso [expect_length()] to specifically make assertions about the
+#'   [length()] of a vector.
+#' @inheritParams expect_that
+#' @param shape Expected shape, an integer vector.
+#' @family expectations
+#' @export
+#' @examples
+expect_shape = function(object, shape, nrow, ncol) {
+  stopifnot(
+    missing(shape) || is.numeric(shape),
+    missing(nrow) || is.numeric(nrow),
+    missing(ncol) || is.numeric(ncol)
+  )
+
+  dim_object <- dim(object)
+  if (is.null(dim_object)) {
+    if (missing(shape)) {
+      stop("`shape` must be provided for one-dimensional inputs")
+    }
+    return(expect_length(object, shape))
+  }
+
+  act <- quasi_label(enquo(object), arg = "object")
+  # testing dim
+  if (missing(nrow) && missing(ncol)) {
+    act$shape <- dim_object
+
+    expect(
+      isTRUE(all.equal(act$shape, shape)),
+      sprintf("%s has shape (%s), not (%s).", act$lab, toString(act$shape), toString(shape))
+    )
+
+    return(act$val)
+  }
+
+  # testing only ncol
+  if (missing(nrow)) {
+    act$ncol <- dim_object[2L]
+
+    expect(
+      act$ncol == ncol,
+      sprintf("%s has %i columns, not %i.", act$lab, act$ncol, ncol)
+    )
+
+    return(act$val)
+  }
+
+  # testing only nrow
+  if (missing(ncol)) {
+    act$nrow <- dim_object[1L]
+
+    expect(
+      act$nrow == nrow,
+      sprintf("%s has %i rows, not %i.", act$lab, act$nrow, nrow)
+    )
+
+    return(act$val)
+  }
+
+  # testing both nrow & ncol (useful, e.g., for testing dim(.)[1:2] for arrays
+  act$nrow <- dim_object[1L]
+  act$ncol <- dim_object[2L]
+
+  expect(
+    act$nrow == nrow && act$ncol == ncol,
+    sprintf("%s has %i rows and %i columns, not %i rows and %i columns", act$lab, act$nrow, act$ncol, nrow, ncol)
+  )
+
+  return(act$val)
 }
