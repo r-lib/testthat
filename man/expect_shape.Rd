@@ -13,6 +13,8 @@ expect_shape(object, shape, nrow, ncol)
   within a function or for loop. See [quasi_label] for more details.}
 
 \item{shape}{Expected shape, an integer vector.}
+\item{nrow}{Expected number of rows, numeric.}
+\item{ncol}{Expected number of columns, numeric.}
 }
 \description{
 By "shape", we mean an object's [dim()], or, for one-dimensional objects,

@@ -41,6 +41,8 @@ expect_length <- function(object, n) {
 #'   [length()] of a vector.
 #' @inheritParams expect_that
 #' @param shape Expected shape, an integer vector.
+#' @param nrow Expected number of rows, numeric.
+#' @param ncol Expected number of columns, numeric.
 #' @family expectations
 #' @export
 #' @examples
