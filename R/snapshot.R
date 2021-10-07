@@ -128,6 +128,13 @@ snapshot_replay.condition <- function(x, state, transform = NULL) {
 
   c(snap_header(state, class), snapshot_lines(msg, transform))
 }
+#' @export
+snapshot_replay.rlang_error <- function(x, state, transform = NULL) {
+  state$error <- x
+  msg <- format(x, backtrace = FALSE)
+
+  c(snap_header(state, "Error"), snapshot_lines(msg, transform))
+}
 
 snapshot_lines <- function(x, transform = NULL) {
   x <- split_lines(x)
