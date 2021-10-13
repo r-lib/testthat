@@ -44,3 +44,8 @@ test_that("returns input", {
   out <- expect_shape(x, 2)
   expect_identical(out, x)
 })
+
+test_that("at least one argument is required", {
+  expect_error(expect_shape(1:10), "`shape` must be provided for one-dimensional inputs", fixed = TRUE)
+  expect_error(expect_shape(cbind(1:2)), "`shape` must be provided if `nrow` and `ncol` are not")
+})

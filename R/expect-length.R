@@ -62,50 +62,44 @@ expect_shape = function(object, shape, nrow, ncol) {
   }
 
   act <- quasi_label(enquo(object), arg = "object")
-  # testing dim
+
   if (missing(nrow) && missing(ncol)) {
+    # testing dim
+    if (missing(shape)) {
+      stop("`shape` must be provided if `nrow` and `ncol` are not")
+    }
     act$shape <- dim_object
 
     expect(
       isTRUE(all.equal(act$shape, shape)),
       sprintf("%s has shape (%s), not (%s).", act$lab, toString(act$shape), toString(shape))
     )
-
-    return(act$val)
-  }
-
-  # testing only ncol
-  if (missing(nrow)) {
+  } else if (missing(nrow) && !missing(ncol)) {
+    # testing only ncol
     act$ncol <- dim_object[2L]
 
     expect(
       act$ncol == ncol,
       sprintf("%s has %i columns, not %i.", act$lab, act$ncol, ncol)
     )
-
-    return(act$val)
-  }
-
-  # testing only nrow
-  if (missing(ncol)) {
+  } else if (!missing(nrow) && missing(ncol)) {
+    # testing only nrow
     act$nrow <- dim_object[1L]
 
     expect(
       act$nrow == nrow,
       sprintf("%s has %i rows, not %i.", act$lab, act$nrow, nrow)
     )
+  } else {
+    # testing both nrow & ncol (useful, e.g., for testing dim(.)[1:2] for arrays
+    act$nrow <- dim_object[1L]
+    act$ncol <- dim_object[2L]
 
-    return(act$val)
+    expect(
+      act$nrow == nrow && act$ncol == ncol,
+      sprintf("%s has %i rows and %i columns, not %i rows and %i columns", act$lab, act$nrow, act$ncol, nrow, ncol)
+    )
   }
-
-  # testing both nrow & ncol (useful, e.g., for testing dim(.)[1:2] for arrays
-  act$nrow <- dim_object[1L]
-  act$ncol <- dim_object[2L]
-
-  expect(
-    act$nrow == nrow && act$ncol == ncol,
-    sprintf("%s has %i rows and %i columns, not %i rows and %i columns", act$lab, act$nrow, act$ncol, nrow, ncol)
-  )
 
   return(act$val)
 }
