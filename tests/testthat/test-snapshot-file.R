@@ -31,16 +31,22 @@ test_that("expect_snapshot_file works", {
   )
 })
 
+
 test_that("expect_snapshot_file works in a different directory", {
   skip_if_not(getRversion() >= "3.6.0")
   current_wd <- getwd()
   path <- tempfile()
   dir.create(path)
 
-  withr::defer(setwd(current_wd))
+  withr::defer({
+    setwd(current_wd)
+    unlink(path)
+  })
+
   setwd(path)
 
   brio::write_lines("a", "a.txt")
+
   # expect no warning
   expect_warning(
     expect_snapshot_file("a.txt"),
