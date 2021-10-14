@@ -146,6 +146,10 @@ snapshot_hint <- function(test, name, ci = on_ci(), check = in_rcmd_check()) {
 }
 
 snapshot_file_equal <- function(snap_test_dir, snap_name, path, file_equal = compare_file_binary) {
+  if (!file.exists(path)) {
+    abort(paste0("`", path, "` not found"))
+  }
+
   cur_path <- file.path(snap_test_dir, snap_name)
   new_path <- new_name(cur_path)
 

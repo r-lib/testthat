@@ -79,6 +79,13 @@ test_that("warns on first creation", {
     "new file snapshot"
   )
 
+  # Errors on non-existing file
+  expect_error(
+    expect_true(snapshot_file_equal(tempdir(), "test.txt", "doesnt-exist.txt")),
+    "`doesnt-exist.txt` not found"
+  )
+
+
   # Unchanged returns TRUE
   expect_true(snapshot_file_equal(tempdir(), "test.txt", path))
   expect_true(file.exists(file.path(tempdir(), "test.txt")))
@@ -99,6 +106,11 @@ test_that("warns on first creation", {
   expect_true(snapshot_file_equal(tempdir(), "test.txt", path))
   expect_true(file.exists(file.path(tempdir(), "test.txt")))
   expect_false(file.exists(file.path(tempdir(), "test.new.txt")))
+
+  # Different directory works
+  withr::with_tempdir(
+    expect_true(snapshot_file_equal(tempdir(), "test.txt", path))
+  )
 })
 
 # helpers -----------------------------------------------------------------
