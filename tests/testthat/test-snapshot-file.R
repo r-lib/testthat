@@ -31,6 +31,19 @@ test_that("expect_snapshot_file works", {
   )
 })
 
+test_that("expect_snapshot_file works in a different directory", {
+  skip_if_not(getRversion() >= "3.6.0")
+  current_wd <- getwd()
+  path <- tempfile()
+  dir.create(path)
+
+  setwd(path)
+  withr::defer(setwd(current_wd))
+
+  brio::write_lines("a", "a.txt")
+  expect_snapshot_file("a.txt")
+})
+
 test_that("expect_snapshot_file works with variant", {
   expect_snapshot_file(
     write_tmp_lines(version$nickname),
@@ -106,11 +119,6 @@ test_that("warns on first creation", {
   expect_true(snapshot_file_equal(tempdir(), "test.txt", path))
   expect_true(file.exists(file.path(tempdir(), "test.txt")))
   expect_false(file.exists(file.path(tempdir(), "test.new.txt")))
-
-  # Different directory works
-  withr::with_tempdir(
-    expect_true(snapshot_file_equal(tempdir(), "test.txt", path))
-  )
 })
 
 # helpers -----------------------------------------------------------------
