@@ -1,4 +1,8 @@
 # testthat (development version)
+  
+* `expect_snapshot_file()` now errors if the file being snapshot does not exist; 
+  `SnapshotReporter` also now treats the file as an absolute path (#1476, 
+  @malcolmbarrett)
 
 # testthat 3.1.0
 
