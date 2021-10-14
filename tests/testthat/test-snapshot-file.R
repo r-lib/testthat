@@ -45,7 +45,7 @@ test_that("expect_snapshot_file works in a different directory", {
 
   setwd(path)
 
-  brio::write_lines("a", "a.txt")
+  brio::write_lines("a", "a.txt", eol = "\r\n")
 
   # expect no warning
   expect_warning(
