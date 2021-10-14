@@ -37,11 +37,15 @@ test_that("expect_snapshot_file works in a different directory", {
   path <- tempfile()
   dir.create(path)
 
-  setwd(path)
   withr::defer(setwd(current_wd))
+  setwd(path)
 
   brio::write_lines("a", "a.txt")
-  expect_snapshot_file("a.txt")
+  # expect no warning
+  expect_warning(
+    expect_snapshot_file("a.txt"),
+    regexp = NA
+  )
 })
 
 test_that("expect_snapshot_file works with variant", {
