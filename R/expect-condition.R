@@ -40,7 +40,7 @@
 #' @param regexp Regular expression to test against.
 #'   * A character vector giving a regular expression that must match the
 #'     error message.
-#'   * If `NULL`, the default, asserts that there should be a error,
+#'   * If `NULL`, the default, asserts that there should be an error,
 #'     but doesn't test for a specific value.
 #'   * If `NA`, asserts that there should be no errors.
 #' @inheritDotParams expect_match -object -regexp -info -label -all
