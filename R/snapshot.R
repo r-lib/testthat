@@ -134,7 +134,8 @@ snapshot_lines <- function(x, transform = NULL) {
   if (!is.null(transform)) {
     x <- transform(x)
   }
-  x <- indent(x)
+  # if transform() wiped out the full message, don't indent, #1487
+  if (length(x)) x <- indent(x)
   x
 }
 
