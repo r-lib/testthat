@@ -111,3 +111,20 @@ test_that("`expect_snapshot()` does not inject", {
     expect_equal(x, call("!", call("!", quote(foo))))
   })
 })
+
+test_that("can print condition classes", {
+  f <- function() {
+    message("foo")
+    warning("bar")
+    stop("baz")
+  }
+  expect_snapshot(error = TRUE, cnd_class = TRUE, f())
+})
+
+test_that("errors and warnings are folded", {
+  f <- function() {
+    warning("foo")
+    stop("bar")
+  }
+  expect_snapshot(error = TRUE, f())
+})

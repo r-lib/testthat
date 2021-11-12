@@ -4,6 +4,17 @@
   like `!!`.
 
 * Fixed bug in expectations with long inputs that use `::` (#1472).
+* Snapshots now use rlang to print error and warning messages,
+  including the `Error:` and `Warning:` prefixes. This means the
+  `call` field of conditions is now displayed in snapshots if present.
+
+* By default, snapshots no longer show the class of errors, warnings,
+  and messages. Set the new argument `cnd_class = TRUE` to restore the
+  old behaviour.
+
+  We decided to change the default to prevent distracting snapshot
+  diffing as upstream packages add error classes. For instance, the
+  development version of R is adding classes to basic errors.
 
 
 # testthat 3.1.0
