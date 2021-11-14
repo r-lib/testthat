@@ -312,7 +312,8 @@ local_snapshot_dir <- function(snap_names, .env = parent.frame()) {
   path
 }
 
-indent <- function(x) paste0("  ", x)
+# if transform() wiped out the full message, don't indent, #1487
+indent <- function(x) if (length(x)) paste0("  ", x) else x
 
 check_variant <- function(x) {
   if (is.null(x)) {
