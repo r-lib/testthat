@@ -253,7 +253,7 @@ alternatives in <a href='quasi_label.html'>quasi_label</a>.</p></td>
     <tr>
       <th>width</th>
       <td><p>Number of characters per line of output. This does not
-inherit from <code><a href='https://rdrr.io/r/base/options.html'>getOption("width")</a></code> so that tests always use the same
+inherit from <code>getOption("width")</code> so that tests always use the same
 output width, minimising spurious differences.</p></td>
     </tr>
     </table>
@@ -277,25 +277,26 @@ output width, minimising spurious differences.</p></td>
 <code><a href='logical-expectations.html'>logical-expectations</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span><span class='op'>(</span><span class='va'>mtcars</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; 'data.frame':	32 obs. of  11 variables:
-#&gt;  $ mpg : num  21 21 22.8 21.4 18.7 18.1 14.3 24.4 22.8 19.2 ...
-#&gt;  $ cyl : num  6 6 4 6 8 6 8 4 4 6 ...
-#&gt;  $ disp: num  160 160 108 258 360 ...
-#&gt;  $ hp  : num  110 110 93 110 175 105 245 62 95 123 ...
-#&gt;  $ drat: num  3.9 3.9 3.85 3.08 3.15 2.76 3.21 3.69 3.92 3.92 ...
-#&gt;  $ wt  : num  2.62 2.88 2.32 3.21 3.44 ...
-#&gt;  $ qsec: num  16.5 17 18.6 19.4 17 ...
-#&gt;  $ vs  : num  0 0 1 1 0 1 0 1 1 1 ...
-#&gt;  $ am  : num  1 1 1 0 0 0 0 0 0 0 ...
-#&gt;  $ gear: num  4 4 4 3 3 3 3 4 4 4 ...
-#&gt;  $ carb: num  4 4 1 1 2 1 4 2 2 4 ...</div><div class='input'><span class='fu'>expect_output</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span><span class='op'>(</span><span class='va'>mtcars</span><span class='op'>)</span>, <span class='st'>"32 obs"</span><span class='op'>)</span>
-<span class='fu'>expect_output</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span><span class='op'>(</span><span class='va'>mtcars</span><span class='op'>)</span>, <span class='st'>"11 variables"</span><span class='op'>)</span>
-
-<span class='co'># You can use the arguments of grepl to control the matching</span>
-<span class='fu'>expect_output</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span><span class='op'>(</span><span class='va'>mtcars</span><span class='op'>)</span>, <span class='st'>"11 VARIABLES"</span>, ignore.case <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
-<span class='fu'>expect_output</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span><span class='op'>(</span><span class='va'>mtcars</span><span class='op'>)</span>, <span class='st'>"$ mpg"</span>, fixed <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
-</div></pre>
+    <pre class="examples"><span class='r-in'><span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span><span class='op'>(</span><span class='va'>mtcars</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 'data.frame':	32 obs. of  11 variables:</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  $ mpg : num  21 21 22.8 21.4 18.7 18.1 14.3 24.4 22.8 19.2 ...</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  $ cyl : num  6 6 4 6 8 6 8 4 4 6 ...</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  $ disp: num  160 160 108 258 360 ...</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  $ hp  : num  110 110 93 110 175 105 245 62 95 123 ...</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  $ drat: num  3.9 3.9 3.85 3.08 3.15 2.76 3.21 3.69 3.92 3.92 ...</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  $ wt  : num  2.62 2.88 2.32 3.21 3.44 ...</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  $ qsec: num  16.5 17 18.6 19.4 17 ...</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  $ vs  : num  0 0 1 1 0 1 0 1 1 1 ...</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  $ am  : num  1 1 1 0 0 0 0 0 0 0 ...</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  $ gear: num  4 4 4 3 3 3 3 4 4 4 ...</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  $ carb: num  4 4 1 1 2 1 4 2 2 4 ...</span>
+<span class='r-in'><span class='fu'>expect_output</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span><span class='op'>(</span><span class='va'>mtcars</span><span class='op'>)</span>, <span class='st'>"32 obs"</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'>expect_output</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span><span class='op'>(</span><span class='va'>mtcars</span><span class='op'>)</span>, <span class='st'>"11 variables"</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># You can use the arguments of grepl to control the matching</span></span>
+<span class='r-in'><span class='fu'>expect_output</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span><span class='op'>(</span><span class='va'>mtcars</span><span class='op'>)</span>, <span class='st'>"11 VARIABLES"</span>, ignore.case <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'>expect_output</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span><span class='op'>(</span><span class='va'>mtcars</span><span class='op'>)</span>, <span class='st'>"$ mpg"</span>, fixed <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

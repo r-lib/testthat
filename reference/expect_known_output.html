@@ -274,7 +274,7 @@ visible, print the result using <code><a href='capture_output.html'>testthat_pri
     <tr>
       <th>width</th>
       <td><p>Number of characters per line of output. This does not
-inherit from <code><a href='https://rdrr.io/r/base/options.html'>getOption("width")</a></code> so that tests always use the same
+inherit from <code>getOption("width")</code> so that tests always use the same
 output width, minimising spurious differences.</p></td>
     </tr>
     <tr>
@@ -309,20 +309,21 @@ synchronised back to the source package.</p>
 please use <code><a href='expect_snapshot.html'>expect_snapshot_output()</a></code> and friends instead.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='va'>tmp</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempfile</a></span><span class='op'>(</span><span class='op'>)</span>
-
-<span class='co'># The first run always succeeds</span>
-<span class='fu'>expect_known_output</span><span class='op'>(</span><span class='va'>mtcars</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span>, <span class='op'>]</span>, <span class='va'>tmp</span>, print <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='warning'>Warning: Creating reference output</span></div><div class='input'>
-<span class='co'># Subsequent runs will succeed only if the file is unchanged</span>
-<span class='co'># This will succeed:</span>
-<span class='fu'>expect_known_output</span><span class='op'>(</span><span class='va'>mtcars</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span>, <span class='op'>]</span>, <span class='va'>tmp</span>, print <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
-
-<span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
-<span class='co'># This will fail</span>
-<span class='fu'>expect_known_output</span><span class='op'>(</span><span class='va'>mtcars</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>9</span>, <span class='op'>]</span>, <span class='va'>tmp</span>, print <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
-<span class='op'>}</span>
-</div></pre>
+    <pre class="examples"><span class='r-in'><span class='va'>tmp</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempfile</a></span><span class='op'>(</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># The first run always succeeds</span></span>
+<span class='r-in'><span class='fu'>expect_known_output</span><span class='op'>(</span><span class='va'>mtcars</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span>, <span class='op'>]</span>, <span class='va'>tmp</span>, print <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></span>
+<span class='r-wrn co'><span class='r-pr'>#&gt;</span> <span class='warning'>Warning: </span>Creating reference output</span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># Subsequent runs will succeed only if the file is unchanged</span></span>
+<span class='r-in'><span class='co'># This will succeed:</span></span>
+<span class='r-in'><span class='fu'>expect_known_output</span><span class='op'>(</span><span class='va'>mtcars</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span>, <span class='op'>]</span>, <span class='va'>tmp</span>, print <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span></span>
+<span class='r-in'><span class='co'># This will fail</span></span>
+<span class='r-in'><span class='fu'>expect_known_output</span><span class='op'>(</span><span class='va'>mtcars</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>9</span>, <span class='op'>]</span>, <span class='va'>tmp</span>, print <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></span>
+<span class='r-in'><span class='op'>}</span></span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

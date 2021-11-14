@@ -245,23 +245,32 @@ return a condition object. <code>capture_messages()</code> and <code>capture_war
 return a character vector of message text.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='va'>f</span> <span class='op'>&lt;-</span> <span class='kw'>function</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>{</span>
-  <span class='fu'><a href='https://rdrr.io/r/base/message.html'>message</a></span><span class='op'>(</span><span class='st'>"First"</span><span class='op'>)</span>
-  <span class='kw'><a href='https://rdrr.io/r/base/warning.html'>warning</a></span><span class='op'>(</span><span class='st'>"Second"</span><span class='op'>)</span>
-  <span class='fu'><a href='https://rdrr.io/r/base/message.html'>message</a></span><span class='op'>(</span><span class='st'>"Third"</span><span class='op'>)</span>
-<span class='op'>}</span>
-
-<span class='fu'>capture_message</span><span class='op'>(</span><span class='fu'>f</span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; &lt;simpleMessage in message("First"): First
-#&gt; &gt;</div><div class='input'><span class='fu'>capture_messages</span><span class='op'>(</span><span class='fu'>f</span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='warning'>Warning: Second</span></div><div class='output co'>#&gt; [1] "First\n" "Third\n"</div><div class='input'>
-<span class='fu'>capture_warning</span><span class='op'>(</span><span class='fu'>f</span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'>First</span></div><div class='output co'>#&gt; &lt;simpleWarning in f(): Second&gt;</div><div class='input'><span class='fu'>capture_warnings</span><span class='op'>(</span><span class='fu'>f</span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'>First</span></div><div class='output co'>#&gt; <span class='message'>Third</span></div><div class='output co'>#&gt; [1] "Second"</div><div class='input'>
-<span class='co'># Condition will capture anything</span>
-<span class='fu'>capture_condition</span><span class='op'>(</span><span class='fu'>f</span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; &lt;simpleMessage in message("First"): First
-#&gt; &gt;</div></pre>
+    <pre class="examples"><span class='r-in'><span class='va'>f</span> <span class='op'>&lt;-</span> <span class='kw'>function</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>{</span></span>
+<span class='r-in'>  <span class='fu'><a href='https://rdrr.io/r/base/message.html'>message</a></span><span class='op'>(</span><span class='st'>"First"</span><span class='op'>)</span></span>
+<span class='r-in'>  <span class='kw'><a href='https://rdrr.io/r/base/warning.html'>warning</a></span><span class='op'>(</span><span class='st'>"Second"</span><span class='op'>)</span></span>
+<span class='r-in'>  <span class='fu'><a href='https://rdrr.io/r/base/message.html'>message</a></span><span class='op'>(</span><span class='st'>"Third"</span><span class='op'>)</span></span>
+<span class='r-in'><span class='op'>}</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='fu'>capture_message</span><span class='op'>(</span><span class='fu'>f</span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> &lt;simpleMessage in message("First"): First</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> &gt;</span>
+<span class='r-in'><span class='fu'>capture_messages</span><span class='op'>(</span><span class='fu'>f</span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-wrn co'><span class='r-pr'>#&gt;</span> <span class='warning'>Warning: </span>Second</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "First\n" "Third\n"</span>
+<span class='r-in'></span>
+<span class='r-in'><span class='fu'>capture_warning</span><span class='op'>(</span><span class='fu'>f</span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> First</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> &lt;simpleWarning in f(): Second&gt;</span>
+<span class='r-in'><span class='fu'>capture_warnings</span><span class='op'>(</span><span class='fu'>f</span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> First</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> Third</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "Second"</span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># Condition will capture anything</span></span>
+<span class='r-in'><span class='fu'>capture_condition</span><span class='op'>(</span><span class='fu'>f</span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> &lt;simpleMessage in message("First"): First</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> &gt;</span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

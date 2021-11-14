@@ -202,7 +202,7 @@ immediately after you've made a mess in a setup-*.R file." />
     <div class="ref-description">
     <p>This environment has no purpose other than as a handle for <code><a href='https://withr.r-lib.org/reference/defer.html'>withr::defer()</a></code>:
 use it when you want to run code after all tests have been run.
-Typically, you'll use <code><a href='https://withr.r-lib.org/reference/defer.html'>withr::defer(cleanup(), teardown_env())</a></code>
+Typically, you'll use <code>withr::defer(cleanup(), teardown_env())</code>
 immediately after you've made a mess in a <code>setup-*.R</code> file.</p>
     </div>
 

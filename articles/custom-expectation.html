@@ -199,9 +199,9 @@
 <a href="#invisibly-return-the-input" class="anchor"></a>Invisibly return the input</h3>
 <p>Expectation functions are called primarily for their side-effects (triggering a failure), so should invisibly return their input, <code>act$val</code>. This allows expectations to be chained:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">mtcars</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="../reference/inheritance-expectations.html">expect_type</a></span><span class="op">(</span><span class="st">"list"</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="../reference/inheritance-expectations.html">expect_s3_class</a></span><span class="op">(</span><span class="st">"data.frame"</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+<code class="sourceCode R"><span class="va">mtcars</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="../reference/inheritance-expectations.html">expect_type</a></span><span class="op">(</span><span class="st">"list"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="../reference/inheritance-expectations.html">expect_s3_class</a></span><span class="op">(</span><span class="st">"data.frame"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
   <span class="fu"><a href="../reference/expect_length.html">expect_length</a></span><span class="op">(</span><span class="fl">11</span><span class="op">)</span></code></pre></div>
 </div>
 </div>
@@ -235,7 +235,7 @@
   <span class="fu"><a href="../reference/expect_success.html">expect_success</a></span><span class="op">(</span><span class="fu"><a href="../reference/expect_length.html">expect_length</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, <span class="fl">10</span><span class="op">)</span><span class="op">)</span>
   <span class="fu"><a href="../reference/expect_success.html">expect_success</a></span><span class="op">(</span><span class="fu"><a href="../reference/expect_length.html">expect_length</a></span><span class="op">(</span><span class="va">letters</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">]</span>, <span class="fl">5</span><span class="op">)</span><span class="op">)</span>
 <span class="op">}</span><span class="op">)</span>
-<span class="co">#&gt; Test passed 🥳</span></code></pre></div>
+<span class="co">#&gt; Test passed 😀</span></code></pre></div>
 </div>
   </div>
 

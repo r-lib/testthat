@@ -313,7 +313,7 @@ but produces a completely opaque serialization.</p></li>
       <th>tolerance</th>
       <td><p>Numerical tolerance: any differences (in the sense of
 <code><a href='https://rdrr.io/r/base/all.equal.html'>base::all.equal()</a></code>) smaller than this value will be ignored.</p>
-<p>The default tolerance is <code><a href='https://rdrr.io/r/base/MathFun.html'>sqrt(.Machine$double.eps)</a></code>, unless long doubles
+<p>The default tolerance is <code>sqrt(.Machine$double.eps)</code>, unless long doubles
 are not available, in which case the test is skipped.</p></td>
     </tr>
     <tr>

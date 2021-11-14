@@ -173,14 +173,14 @@
   <span class="fu"><a href="../reference/local_edition.html">local_edition</a></span><span class="op">(</span><span class="fl">3</span><span class="op">)</span>
   <span class="fu"><a href="../reference/logical-expectations.html">expect_true</a></span><span class="op">(</span><span class="cn">TRUE</span><span class="op">)</span>
 <span class="op">}</span><span class="op">)</span>
-<span class="co">#&gt; Test passed 😸</span></code></pre></div>
-<p>This is also useful if you’ve switched to the 3rd edition and have a couple of tests that fail. You can use <code><a href="../reference/local_edition.html">local_edition(2)</a></code> to revert back to the old behaviour, giving you some breathing room to figure out the underlying issue.</p>
+<span class="co">#&gt; Test passed 🥇</span></code></pre></div>
+<p>This is also useful if you’ve switched to the 3rd edition and have a couple of tests that fail. You can use <code>local_edition(2)</code> to revert back to the old behaviour, giving you some breathing room to figure out the underlying issue.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/test_that.html">test_that</a></span><span class="op">(</span><span class="st">"I want to use the 2nd edition"</span>, <span class="op">{</span>
   <span class="fu"><a href="../reference/local_edition.html">local_edition</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span>
   <span class="fu"><a href="../reference/logical-expectations.html">expect_true</a></span><span class="op">(</span><span class="cn">TRUE</span><span class="op">)</span>
 <span class="op">}</span><span class="op">)</span>
-<span class="co">#&gt; Test passed 🥇</span></code></pre></div>
+<span class="co">#&gt; Test passed 🎉</span></code></pre></div>
 </div>
 <div id="changes" class="section level2">
 <h2 class="hasAnchor">
@@ -199,7 +199,7 @@
 <li><p><code><a href="../reference/context.html">context()</a></code> is formally deprecated. testthat has been moving away from <code><a href="../reference/context.html">context()</a></code> in favour of file names for quite some time, and now you’ll be strongly encouraged remove these calls from your tests.</p></li>
 <li><p><code><a href="../reference/expect_is.html">expect_is()</a></code> is deprecated in favour of the more specific <code><a href="../reference/inheritance-expectations.html">expect_type()</a></code>, <code><a href="../reference/inheritance-expectations.html">expect_s3_class()</a></code>, and <code><a href="../reference/inheritance-expectations.html">expect_s4_class()</a></code>. This ensures that you check the expected class along with the expected OO system.</p></li>
 <li><p>The very old <code><a href="../reference/expect_that.html">expect_that()</a></code> syntax is now deprecated. This was an overly clever API that I regretted even before the release of testthat 1.0.0.</p></li>
-<li><p><code><a href="../reference/expect_equivalent.html">expect_equivalent()</a></code> has been deprecated since it is now equivalent (HA HA) to <code><a href="../reference/equality-expectations.html">expect_equal(ignore_attr = TRUE)</a></code>. The main difference is that it won’t ignore names; so you’ll need an explicit <code><a href="https://rdrr.io/r/base/unname.html">unname()</a></code> if you deliberately want to ignore names.</p></li>
+<li><p><code><a href="../reference/expect_equivalent.html">expect_equivalent()</a></code> has been deprecated since it is now equivalent (HA HA) to <code>expect_equal(ignore_attr = TRUE)</code>. The main difference is that it won’t ignore names; so you’ll need an explicit <code><a href="https://rdrr.io/r/base/unname.html">unname()</a></code> if you deliberately want to ignore names.</p></li>
 <li><p><code><a href="../reference/teardown.html">setup()</a></code> and <code><a href="../reference/teardown.html">teardown()</a></code> are deprecated in favour of test fixtures. See <code><a href="../articles/test-fixtures.html">vignette("test-fixtures")</a></code> for details.</p></li>
 <li><p><code><a href="../reference/expect_known_output.html">expect_known_output()</a></code>, <code><a href="../reference/expect_known_output.html">expect_known_value()</a></code>, <code><a href="../reference/expect_known_output.html">expect_known_hash()</a></code>, and <code><a href="../reference/expect_known_output.html">expect_equal_to_reference()</a></code> are all deprecated in favour of <code><a href="../reference/expect_snapshot.html">expect_snapshot_output()</a></code> and <code><a href="../reference/expect_snapshot.html">expect_snapshot_value()</a></code>.</p></li>
 <li><p><code><a href="../reference/with_mock.html">with_mock()</a></code> and <code><a href="../reference/with_mock.html">local_mock()</a></code> are deprecated; please use the <a href="https://krlmlr.github.io/mockr/">mockr</a> or <a href="https://github.com/r-lib/mockery#mockery">mockery</a> instead.</p></li>
@@ -227,13 +227,13 @@
 <span class="co">#&gt; Warning in f(): Third warning</span></code></pre></div>
 <p>You can either add additional expectations to catch these warnings, or silence them all with <code>supressWarnings()</code>:</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">f</span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="../reference/expect_error.html">expect_warning</a></span><span class="op">(</span><span class="st">"First"</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="../reference/expect_error.html">expect_warning</a></span><span class="op">(</span><span class="st">"Second"</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+<code class="sourceCode R"><span class="fu">f</span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="../reference/expect_error.html">expect_warning</a></span><span class="op">(</span><span class="st">"First"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="../reference/expect_error.html">expect_warning</a></span><span class="op">(</span><span class="st">"Second"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
   <span class="fu"><a href="../reference/expect_error.html">expect_warning</a></span><span class="op">(</span><span class="st">"Third"</span><span class="op">)</span>
 
-<span class="fu">f</span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="../reference/expect_error.html">expect_warning</a></span><span class="op">(</span><span class="st">"First"</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+<span class="fu">f</span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="../reference/expect_error.html">expect_warning</a></span><span class="op">(</span><span class="st">"First"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
   <span class="fu"><a href="https://rdrr.io/r/base/warning.html">suppressWarnings</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <p>Alternatively, you might want to capture them all in a snapshot test:</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
@@ -312,9 +312,9 @@
 <a href="#reproducible-output" class="anchor"></a>Reproducible output</h3>
 <p>In the third edition, <code><a href="../reference/test_that.html">test_that()</a></code> automatically calls <code><a href="../reference/local_test_context.html">local_reproducible_output()</a></code> which automatically sets a number of options and environment variables to ensure output is as reproducible across systems. This includes setting:</p>
 <ul>
-<li><p><code><a href="https://rdrr.io/r/base/options.html">options(crayon.enabled = FALSE)</a></code> and <code><a href="https://rdrr.io/r/base/options.html">options(cli.unicode = FALSE)</a></code> so that the crayon and cli packages produce raw ASCII output.</p></li>
+<li><p><code>options(crayon.enabled = FALSE)</code> and <code>options(cli.unicode = FALSE)</code> so that the crayon and cli packages produce raw ASCII output.</p></li>
 <li><p><code>Sys.setLocale("LC_COLLATE" = "C")</code> so that sorting a character vector returns the same order regardless of the system language.</p></li>
-<li><p><code><a href="https://rdrr.io/r/base/options.html">options(width = 80)</a></code> so print methods always generate the same output regardless of your actual console width.</p></li>
+<li><p><code>options(width = 80)</code> so print methods always generate the same output regardless of your actual console width.</p></li>
 </ul>
 <p>See the documentation for more details.</p>
 </div>

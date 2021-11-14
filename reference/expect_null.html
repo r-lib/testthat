@@ -199,7 +199,7 @@ check for it either with expect_equal(x, NULL) or expect_type(x, &quot;NULL&quot
 
     <div class="ref-description">
     <p>This is a special case because <code>NULL</code> is a singleton so it's possible
-check for it either with <code><a href='equality-expectations.html'>expect_equal(x, NULL)</a></code> or <code><a href='inheritance-expectations.html'>expect_type(x, "NULL")</a></code>.</p>
+check for it either with <code>expect_equal(x, NULL)</code> or <code>expect_type(x, "NULL")</code>.</p>
     </div>
 
     <pre class="usage"><span class='fu'>expect_null</span><span class='op'>(</span><span class='va'>object</span>, info <span class='op'>=</span> <span class='cn'>NULL</span>, label <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></pre>
@@ -241,16 +241,17 @@ alternatives in <a href='quasi_label.html'>quasi_label</a>.</p></td>
 <code><a href='logical-expectations.html'>logical-expectations</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='va'>x</span> <span class='op'>&lt;-</span> <span class='cn'>NULL</span>
-<span class='va'>y</span> <span class='op'>&lt;-</span> <span class='fl'>10</span>
-
-<span class='fu'>expect_null</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
-<span class='fu'><a href='expect_success.html'>show_failure</a></span><span class='op'>(</span><span class='fu'>expect_null</span><span class='op'>(</span><span class='va'>y</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='font-weight: bold;'>Failed expectation:
-#&gt; </span>`y` is not NULL
-#&gt; 
-#&gt; `actual` is <span style='color: #00BB00;'>a double vector</span> (10)
-#&gt; `expected` is <span style='color: #00BB00;'>NULL</span></div></pre>
+    <pre class="examples"><span class='r-in'><span class='va'>x</span> <span class='op'>&lt;-</span> <span class='cn'>NULL</span></span>
+<span class='r-in'><span class='va'>y</span> <span class='op'>&lt;-</span> <span class='fl'>10</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='fu'>expect_null</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'><a href='expect_success.html'>show_failure</a></span><span class='op'>(</span><span class='fu'>expect_null</span><span class='op'>(</span><span class='va'>y</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='font-weight: bold;'>Failed expectation:</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> `y` is not NULL</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> `actual` is <span style='color: #00BB00;'>a double vector</span> (10)</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> `expected` is <span style='color: #00BB00;'>NULL</span></span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

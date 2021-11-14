@@ -223,7 +223,7 @@ visible, print the result using <code>testthat_print()</code>.</p></td>
     <tr>
       <th>width</th>
       <td><p>Number of characters per line of output. This does not
-inherit from <code><a href='https://rdrr.io/r/base/options.html'>getOption("width")</a></code> so that tests always use the same
+inherit from <code>getOption("width")</code> so that tests always use the same
 output width, minimising spurious differences.</p></td>
     </tr>
     </table>
@@ -239,19 +239,23 @@ to <code><a href='https://rdrr.io/r/base/print.html'>print()</a></code>, giving 
 object in tests, if needed.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>capture_output</span><span class='op'>(</span><span class='op'>{</span>
-  <span class='fu'><a href='https://rdrr.io/r/base/cat.html'>cat</a></span><span class='op'>(</span><span class='st'>"Hi!\n"</span><span class='op'>)</span>
-  <span class='fu'><a href='https://rdrr.io/r/base/cat.html'>cat</a></span><span class='op'>(</span><span class='st'>"Bye\n"</span><span class='op'>)</span>
-<span class='op'>}</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] "Hi!\nBye"</div><div class='input'>
-<span class='fu'>capture_output_lines</span><span class='op'>(</span><span class='op'>{</span>
-  <span class='fu'><a href='https://rdrr.io/r/base/cat.html'>cat</a></span><span class='op'>(</span><span class='st'>"Hi!\n"</span><span class='op'>)</span>
-  <span class='fu'><a href='https://rdrr.io/r/base/cat.html'>cat</a></span><span class='op'>(</span><span class='st'>"Bye\n"</span><span class='op'>)</span>
-<span class='op'>}</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] "Hi!" "Bye"</div><div class='input'>
-<span class='fu'>capture_output</span><span class='op'>(</span><span class='st'>"Hi"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] ""</div><div class='input'><span class='fu'>capture_output</span><span class='op'>(</span><span class='st'>"Hi"</span>, print <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] "[1] \"Hi\""</div></pre>
+    <pre class="examples"><span class='r-in'><span class='fu'>capture_output</span><span class='op'>(</span><span class='op'>{</span></span>
+<span class='r-in'>  <span class='fu'><a href='https://rdrr.io/r/base/cat.html'>cat</a></span><span class='op'>(</span><span class='st'>"Hi!\n"</span><span class='op'>)</span></span>
+<span class='r-in'>  <span class='fu'><a href='https://rdrr.io/r/base/cat.html'>cat</a></span><span class='op'>(</span><span class='st'>"Bye\n"</span><span class='op'>)</span></span>
+<span class='r-in'><span class='op'>}</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "Hi!\nBye"</span>
+<span class='r-in'></span>
+<span class='r-in'><span class='fu'>capture_output_lines</span><span class='op'>(</span><span class='op'>{</span></span>
+<span class='r-in'>  <span class='fu'><a href='https://rdrr.io/r/base/cat.html'>cat</a></span><span class='op'>(</span><span class='st'>"Hi!\n"</span><span class='op'>)</span></span>
+<span class='r-in'>  <span class='fu'><a href='https://rdrr.io/r/base/cat.html'>cat</a></span><span class='op'>(</span><span class='st'>"Bye\n"</span><span class='op'>)</span></span>
+<span class='r-in'><span class='op'>}</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "Hi!" "Bye"</span>
+<span class='r-in'></span>
+<span class='r-in'><span class='fu'>capture_output</span><span class='op'>(</span><span class='st'>"Hi"</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] ""</span>
+<span class='r-in'><span class='fu'>capture_output</span><span class='op'>(</span><span class='st'>"Hi"</span>, print <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "[1] \"Hi\""</span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
