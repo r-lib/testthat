@@ -171,3 +171,9 @@
 
     0.9
 
+# `expect_snapshot()` does not inject
+
+    Code
+      x <- quote(!!foo)
+      expect_equal(x, call("!", call("!", quote(foo))))
+

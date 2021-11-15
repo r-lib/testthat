@@ -1,5 +1,9 @@
 # testthat (development version)
 
+* `expect_snapshot()` no longer processes rlang injection operators
+  like `!!`.
+
+
 # testthat 3.1.0
 
 ## Snapshot tests
