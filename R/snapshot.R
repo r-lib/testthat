@@ -71,7 +71,7 @@ expect_snapshot <- function(x, cran = FALSE, error = FALSE, transform = NULL, va
     transform <- as_function(transform)
   }
 
-  x <- enquo(x)
+  x <- enquo0(x)
 
   # Execute code, capturing last error
   state <- new_environment(list(error = NULL))

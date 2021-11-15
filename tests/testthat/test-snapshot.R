@@ -104,3 +104,10 @@ test_that("reparse handles common cases", {
   f <- function(x) x + 1
   expect_equal(roundtrip(f), f, ignore_function_env = TRUE)
 })
+
+test_that("`expect_snapshot()` does not inject", {
+  expect_snapshot({
+    x <- quote(!!foo)
+    expect_equal(x, call("!", call("!", quote(foo))))
+  })
+})
