@@ -90,6 +90,26 @@ test_that("% is not treated as sprintf format specifier (#445)", {
   expect_equal("%", "%")
 })
 
+test_that("is_call_infix() handles complex calls (#1472)", {
+  expect_false(is_call_infix(quote(
+    base::any(
+      c(veryyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy_long_name = TRUE),
+      na.rm = TRUE
+    )
+  )))
+
+  withr::local_envvar(
+    "_R_CHECK_LENGTH_1_LOGIC2_" = "TRUE",
+    )
+  expect_true(
+    base::any(
+      c(veryyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy_long_name = TRUE),
+      na.rm = TRUE
+    )
+  )
+})
+
+
 # 2nd edition ---------------------------------------------------
 
 test_that("useful message if objects equal but not identical", {

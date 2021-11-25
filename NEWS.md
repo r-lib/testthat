@@ -3,6 +3,8 @@
 * `expect_snapshot()` no longer processes rlang injection operators
   like `!!`.
 
+* Fixed bug in expectations with long inputs that use `::` (#1472).
+
 
 # testthat 3.1.0
 
