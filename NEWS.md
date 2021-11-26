@@ -6,7 +6,8 @@
 * Fixed bug in expectations with long inputs that use `::` (#1472).
 
 * Condition expectations like `expect_error()` now match across the
-  ancestry of chained errors (#1493).
+  ancestry of chained errors (#1493). You can disable this by setting
+  the new `inherit` argument to `FALSE`.
 
 
 # testthat 3.1.0

@@ -46,6 +46,8 @@
 #' @inheritDotParams expect_match -object -regexp -info -label -all
 #' @param class Instead of supplying a regular expression, you can also supply
 #'   a class name. This is useful for "classed" conditions.
+#' @param inherit Whether to match `regexp` and `class` across the
+#'   ancestry of chained errors.
 #' @param all *DEPRECATED* If you need to test multiple warnings/messages
 #'   you now need to use multiple calls to `expect_message()`/
 #'   `expect_warning()`
@@ -97,21 +99,29 @@ expect_error <- function(object,
                          regexp = NULL,
                          class = NULL,
                          ...,
+                         inherit = TRUE,
                          info = NULL,
-                         label = NULL
-                         ) {
+                         label = NULL) {
 
   if (edition_get() >= 3) {
     expect_condition_matching("error", {{ object }},
       regexp = regexp,
       class = class,
       ...,
+      inherit = inherit,
       info = info,
       label = label
     )
   } else {
     act <- quasi_capture(enquo(object), label, capture_error, entrace = TRUE)
-    msg <- compare_condition_2e(act$cap, act$lab, regexp = regexp, class = class, ...)
+    msg <- compare_condition_2e(
+      act$cap,
+      act$lab,
+      regexp = regexp,
+      class = class,
+      ...,
+      inherit = inherit
+    )
 
     # Access error fields with `[[` rather than `$` because the
     # `$.Throwable` from the rJava package throws with unknown fields
@@ -127,10 +137,10 @@ expect_warning <- function(object,
                            regexp = NULL,
                            class = NULL,
                            ...,
+                           inherit = TRUE,
                            all = FALSE,
                            info = NULL,
-                           label = NULL
-                           ) {
+                           label = NULL) {
 
   if (edition_get() >= 3) {
     if (!missing(all)) {
@@ -141,6 +151,7 @@ expect_warning <- function(object,
       regexp = regexp,
       class = class,
       ...,
+      inherit = inherit,
       info = info,
       label = label
     )
@@ -162,16 +173,17 @@ expect_message <- function(object,
                            regexp = NULL,
                            class = NULL,
                            ...,
+                           inherit = TRUE,
                            all = FALSE,
                            info = NULL,
-                           label = NULL
-                           ) {
+                           label = NULL) {
 
   if (edition_get() >= 3) {
     expect_condition_matching("message", {{ object }},
       regexp = regexp,
       class = class,
       ...,
+      inherit = inherit,
       info = info,
       label = label
     )
@@ -190,22 +202,28 @@ expect_condition <- function(object,
                              regexp = NULL,
                              class = NULL,
                              ...,
+                             inherit = TRUE,
                              info = NULL,
-                             label = NULL
-                             ) {
+                             label = NULL) {
 
   if (edition_get() >= 3) {
     expect_condition_matching("condition", {{ object }},
       regexp = regexp,
       class = class,
       ...,
+      inherit = inherit,
       info = info,
       label = label
     )
   } else {
     act <- quasi_capture(enquo(object), label, capture_condition, entrace = TRUE)
     msg <- compare_condition_2e(
-      act$cap, act$lab, regexp = regexp, class = class, ...,
+      act$cap,
+      act$lab,
+      regexp = regexp,
+      class = class,
+      ...,
+      inherit = inherit,
       cond_type = "condition"
     )
     expect(is.null(msg), msg, info = info, trace = act$cap[["trace"]])
@@ -219,13 +237,23 @@ expect_condition_matching <- function(base_class,
                                       regexp = NULL,
                                       class = NULL,
                                       ...,
+                                      inherit = TRUE,
                                       info = NULL,
                                       label = NULL) {
   ellipsis::check_dots_used(action = warn)
 
+  matcher <- cnd_matcher(
+    class %||% base_class,
+    regexp,
+    ...,
+    inherit = inherit
+  )
+
   act <- quasi_capture(
-    enquo(object), label, capture_matching_condition,
-    matches = cnd_matcher(class %||% base_class, regexp, ...)
+    enquo(object),
+    label,
+    capture_matching_condition,
+    matches = matcher
   )
 
   expected <- !identical(regexp, NA)
@@ -242,7 +270,7 @@ expect_condition_matching <- function(base_class,
 
 # -------------------------------------------------------------------------
 
-cnd_matcher <- function(class, pattern = NULL, ...) {
+cnd_matcher <- function(class, pattern = NULL, ..., inherit = TRUE) {
   if (!is_string(class)) {
     abort("`class` must be a single string")
   }
@@ -250,10 +278,16 @@ cnd_matcher <- function(class, pattern = NULL, ...) {
     abort("`pattern` must be a single string, NULL, or NA")
   }
 
-  if (is.null(pattern) || isNA(pattern)) {
-    function(cnd) cnd_inherits(cnd, class)
-  } else {
-    function(cnd) cnd_matches(cnd, class, pattern, ...)
+  function(cnd) {
+    if (!inherit) {
+      cnd$parent <- NULL
+    }
+
+    if (is.null(pattern) || isNA(pattern)) {
+      cnd_inherits(cnd, class)
+    } else {
+      cnd_matches(cnd, class, pattern, ...)
+    }
   }
 }
 
@@ -327,8 +361,13 @@ compare_condition_3e <- function(cond_type, cond, lab, expected) {
   }
 }
 
-compare_condition_2e <- function(cond, lab, regexp = NULL, class = NULL, ...,
-                              cond_type = "error") {
+compare_condition_2e <- function(cond,
+                                 lab,
+                                 regexp = NULL,
+                                 class = NULL,
+                                 ...,
+                                 inherit = TRUE,
+                                 cond_type = "error") {
 
   # Expecting no condition
   if (identical(regexp, NA)) {
@@ -350,10 +389,9 @@ compare_condition_2e <- function(cond, lab, regexp = NULL, class = NULL, ...,
     return(sprintf("%s did not throw an %s.", lab, cond_type))
   }
 
-  ok_class <- is.null(class) || cnd_inherits(cond, class)
-  ok_msg <- is.null(regexp) || cnd_some(cond, function(x) {
-     any(grepl(regexp, cnd_message(x), ...))
-  })
+  matches <- cnd_matches_2e(cond, class, regexp, inherit, ...)
+  ok_class <- matches[["class"]]
+  ok_msg <- matches[["msg"]]
 
   # All good
   if (ok_msg && ok_class) {
@@ -389,6 +427,20 @@ compare_condition_2e <- function(cond, lab, regexp = NULL, class = NULL, ...,
     paste(details, collapse = "\n")
   )
 }
+
+cnd_matches_2e <- function(cnd, class, regexp, inherit, ...) {
+  if (!inherit) {
+    cnd$parent <- NULL
+  }
+
+  ok_class <- is.null(class) || cnd_inherits(cnd, class)
+  ok_msg <- is.null(regexp) || cnd_some(cnd, function(x) {
+    any(grepl(regexp, cnd_message(x), ...))
+  })
+
+  c(class = ok_class, msg = ok_msg)
+}
+
 
 compare_messages <- function(messages,
                              lab,
