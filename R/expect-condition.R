@@ -251,14 +251,32 @@ cnd_matcher <- function(class, pattern = NULL, ...) {
   }
 
   if (is.null(pattern) || isNA(pattern)) {
-    function(cnd) {
-      inherits(cnd, class)
-    }
+    function(cnd) cnd_inherits(cnd, class)
   } else {
-    function(cnd) {
-      inherits(cnd, class) && grepl(pattern, conditionMessage(cnd), ...)
-    }
+    function(cnd) cnd_matches(cnd, class, pattern, ...)
   }
+}
+
+cnd_inherits <- function(cnd, class) {
+  cnd_some(cnd, ~ inherits(.x, class))
+}
+cnd_matches <- function(cnd, class, pattern, ...) {
+  cnd_some(cnd, function(x) {
+     inherits(x, class) && grepl(pattern, conditionMessage(x), ...)
+  })
+}
+cnd_some <- function(.cnd, .p, ...) {
+  .p <- as_function(.p)
+
+  while (is_condition(.cnd)) {
+    if (.p(.cnd, ...)) {
+      return(TRUE)
+    }
+
+    .cnd <- .cnd$parent
+  }
+
+  FALSE
 }
 
 capture_matching_condition <- function(expr, matches) {
@@ -332,10 +350,10 @@ compare_condition_2e <- function(cond, lab, regexp = NULL, class = NULL, ...,
     return(sprintf("%s did not throw an %s.", lab, cond_type))
   }
 
-  message <- cnd_message(cond)
-
-  ok_class <- is.null(class) || inherits(cond, class)
-  ok_msg <- is.null(regexp) || any(grepl(regexp, message, ...))
+  ok_class <- is.null(class) || cnd_inherits(cond, class)
+  ok_msg <- is.null(regexp) || cnd_some(cond, function(x) {
+     any(grepl(regexp, cnd_message(x), ...))
+  })
 
   # All good
   if (ok_msg && ok_class) {
@@ -343,6 +361,7 @@ compare_condition_2e <- function(cond, lab, regexp = NULL, class = NULL, ...,
   }
 
   problems <- c(if (!ok_class) "class", if (!ok_msg) "message")
+  message <- cnd_message(cond)
 
   details <- c(
     if (!ok_class) {
