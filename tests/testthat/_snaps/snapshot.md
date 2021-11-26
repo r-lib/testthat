@@ -177,32 +177,3 @@
       x <- quote(!!foo)
       expect_equal(x, call("!", call("!", quote(foo))))
 
-# full condition message is printed with rlang
-
-    Code
-      abort("Title.", parent = foo)
-    Condition
-      Error:
-        Title.
-      Caused by error:
-        Title parent.
-
-# can print condition classes
-
-    Code
-      f()
-    Message <simpleMessage>
-      foo
-    Condition <simpleWarning>
-      Warning in `f()`: bar
-    Condition <simpleError>
-      Error in `f()`: baz
-
-# errors and warnings are folded
-
-    Code
-      f()
-    Condition
-      Warning in `f()`: foo
-      Error in `f()`: bar
-
