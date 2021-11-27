@@ -280,7 +280,7 @@ expect_snapshot_helper <- function(lab, val,
     tolerance = tolerance,
     variant = variant
   )
-  hint <- paste0("Run `snapshot_review('", snapshotter$file, "')` to review the change or `snapshot_accept('", snapshotter$file, "')` if is deliberate.")
+  hint <- paste0("Run `snapshot_review('", snapshotter$file, "')` to review the change or `snapshot_accept('", snapshotter$file, "')` if it is deliberate.")
 
   expect(
     length(comp) == 0,
