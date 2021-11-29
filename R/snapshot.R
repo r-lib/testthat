@@ -63,8 +63,16 @@
 #' @param transform Optionally, a function to scrub sensitive or stochastic
 #'   text from the output. Should take a character vector of lines as input
 #'   and return a modified character vector as output.
+#' @param cnd_class Whether to include the class of messages,
+#'   warnings, and errors in the snapshot. Only the most specific
+#'   class is included, i.e. the first element of `class(cnd)`.
 #' @export
-expect_snapshot <- function(x, cran = FALSE, error = FALSE, transform = NULL, variant = NULL) {
+expect_snapshot <- function(x,
+                            cran = FALSE,
+                            error = FALSE,
+                            transform = NULL,
+                            variant = NULL,
+                            cnd_class = FALSE) {
   edition_require(3, "expect_snapshot()")
   variant <- check_variant(variant)
   if (!is.null(transform)) {
@@ -75,9 +83,15 @@ expect_snapshot <- function(x, cran = FALSE, error = FALSE, transform = NULL, va
 
   # Execute code, capturing last error
   state <- new_environment(list(error = NULL))
-  out <- verify_exec(quo_get_expr(x), quo_get_env(x), {
-    function(x) snapshot_replay(x, state, transform)
-  })
+  replay <- function(x) {
+    snapshot_replay(
+      x,
+      state,
+      transform = transform,
+      cnd_class = cnd_class
+    )
+  }
+  out <- verify_exec(quo_get_expr(x), quo_get_env(x), replay)
 
   # Use expect_error() machinery to confirm that error is as expected
   msg <- compare_condition_3e("error", state$error, quo_label(x), error)
@@ -98,19 +112,52 @@ expect_snapshot <- function(x, cran = FALSE, error = FALSE, transform = NULL, va
   )
 }
 
-snapshot_replay <- function(x, state, transform = NULL) {
+snapshot_replay <- function(x, state, ..., transform = NULL) {
   UseMethod("snapshot_replay", x)
 }
 #' @export
-snapshot_replay.character <- function(x, state, transform = NULL) {
+snapshot_replay.character <- function(x, state, ..., transform = NULL) {
   c(snap_header(state, "Output"), snapshot_lines(x, transform))
 }
 #' @export
-snapshot_replay.source <- function(x, state, transform = NULL) {
+snapshot_replay.source <- function(x, state, ..., transform = NULL) {
   c(snap_header(state, "Code"), snapshot_lines(x$src))
 }
 #' @export
-snapshot_replay.condition <- function(x, state, transform = NULL) {
+snapshot_replay.condition <- function(x,
+                                      state,
+                                      ...,
+                                      transform = NULL,
+                                      cnd_class = FALSE) {
+  if (!use_rlang_1_0()) {
+    return(snapshot_replay_condition_legacy(
+      x,
+      state,
+      transform = transform
+    ))
+  }
+
+  cnd_message <- env_get(ns_env("rlang"), "cnd_message")
+
+  if (inherits(x, "message")) {
+    msg <- cnd_message(x)
+    type <- "Message"
+  } else {
+    if (inherits(x, "error")) {
+      state$error <- x
+    }
+    msg <- cnd_message(x, prefix = TRUE)
+    type <- "Condition"
+  }
+
+  if (cnd_class) {
+    type <- paste0(type, " <", class(x)[[1]], ">")
+  }
+
+  c(snap_header(state, type), snapshot_lines(msg, transform))
+}
+
+snapshot_replay_condition_legacy <- function(x, state, transform = NULL) {
   msg <- cnd_message(x)
   if (inherits(x, "error")) {
     state$error <- x

@@ -12,7 +12,8 @@ expect_snapshot(
   cran = FALSE,
   error = FALSE,
   transform = NULL,
-  variant = NULL
+  variant = NULL,
+  cnd_class = FALSE
 )
 
 expect_snapshot_output(x, cran = FALSE, variant = NULL)
@@ -56,6 +57,10 @@ Variants are an advanced feature. When you use them, you'll need to
 carefully think about your testing strategy to ensure that all important
 variants are covered by automated tests, and ensure that you have a way
 to get snapshot changes out of your CI system and back into the repo.}
+
+\item{cnd_class}{Whether to include the class of messages,
+warnings, and errors in the snapshot. Only the most specific
+class is included, i.e. the first element of \code{class(cnd)}.}
 
 \item{class}{Class of expect error condition. The expectation will
 always fail (even on CRAN) if an error of this class isn't seen

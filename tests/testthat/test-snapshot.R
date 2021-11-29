@@ -111,3 +111,52 @@ test_that("`expect_snapshot()` does not inject", {
     expect_equal(x, call("!", call("!", quote(foo))))
   })
 })
+
+test_that("full condition message is printed with rlang", {
+  local_use_rlang_1_0()
+
+  expect_snapshot(
+    error = TRUE,
+    variant = rlang_version(),
+    {
+      foo <- error_cnd("foo", message = "Title parent.")
+      abort("Title.", parent = foo)
+    }
+  )
+})
+
+test_that("can print with and without condition classes", {
+  local_use_rlang_1_0()
+
+  f <- function() {
+    message("foo")
+    warning("bar")
+    stop("baz")
+  }
+  expect_snapshot(
+    error = TRUE,
+    cnd_class = TRUE,
+    variant = rlang_version(),
+    f()
+  )
+  expect_snapshot(
+    error = TRUE,
+    cnd_class = FALSE,
+    variant = rlang_version(),
+    f()
+  )
+})
+
+test_that("errors and warnings are folded", {
+  local_use_rlang_1_0()
+
+  f <- function() {
+    warning("foo")
+    stop("bar")
+  }
+  expect_snapshot(
+    error = TRUE,
+    variant = rlang_version(),
+    f()
+  )
+})
