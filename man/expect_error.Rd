@@ -12,6 +12,7 @@ expect_error(
   regexp = NULL,
   class = NULL,
   ...,
+  inherit = TRUE,
   info = NULL,
   label = NULL
 )
@@ -21,6 +22,7 @@ expect_warning(
   regexp = NULL,
   class = NULL,
   ...,
+  inherit = TRUE,
   all = FALSE,
   info = NULL,
   label = NULL
@@ -31,6 +33,7 @@ expect_message(
   regexp = NULL,
   class = NULL,
   ...,
+  inherit = TRUE,
   all = FALSE,
   info = NULL,
   label = NULL
@@ -41,6 +44,7 @@ expect_condition(
   regexp = NULL,
   class = NULL,
   ...,
+  inherit = TRUE,
   info = NULL,
   label = NULL
 )
@@ -70,6 +74,9 @@ a class name. This is useful for "classed" conditions.}
     \item{\code{fixed}}{logical.  If \code{TRUE}, \code{pattern} is a string to be
     matched as is.  Overrides all conflicting arguments.}
   }}
+
+\item{inherit}{Whether to match \code{regexp} and \code{class} across the
+ancestry of chained errors.}
 
 \item{info}{Extra information to be included in the message. This argument
 is soft-deprecated and should not be used in new code. Instead see

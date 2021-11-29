@@ -165,6 +165,21 @@ test_that("cli width wrapping doesn't affect text matching", {
   )
 })
 
+test_that("can match parent conditions (#1493)", {
+  parent <- error_cnd("foo", message = "Parent message.")
+  f <- function() abort("Tilt.", parent = parent)
+
+  expect_error(f(), class = "foo")
+  expect_error(f(), "^Parent message.$")
+
+  # Pattern and class must match the same condition
+  expect_error(expect_error(f(), "Tilt.", class = "foo"))
+
+  # Can disable parent matching
+  expect_error(expect_error(f(), class = "foo", inherit = FALSE))
+  expect_error(expect_error(f(), "Parent message.", inherit = FALSE))
+})
+
 
 # second edition ----------------------------------------------------------
 
@@ -197,3 +212,16 @@ test_that("other conditions are swallowed", {
   expect_warning(expect_warning(f("warning", "warning")), NA)
 })
 
+test_that("can match parent conditions (edition 2, #1493)", {
+  local_edition(2)
+
+  parent <- error_cnd("foo", message = "Parent message.")
+  f <- function() abort("Tilt.", parent = parent)
+
+  expect_error(f(), class = "foo")
+  expect_error(f(), "^Parent message.$")
+
+  # Can disable parent matching
+  expect_error(expect_error(f(), class = "foo", inherit = FALSE))
+  expect_error(expect_error(f(), "Parent message.", inherit = FALSE))
+})

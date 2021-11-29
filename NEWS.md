@@ -5,6 +5,10 @@
 
 * Fixed bug in expectations with long inputs that use `::` (#1472).
 
+* Condition expectations like `expect_error()` now match across the
+  ancestry of chained errors (#1493). You can disable this by setting
+  the new `inherit` argument to `FALSE`.
+
 * Added preliminary support for rlang 1.0 errors. It is disabled by
   default for the time being. To activate it, specify `rlang (>=
   1.0.0)` in your `DESCRIPTION` file (or `>= 0.99.0.9001` if you're
@@ -33,7 +37,6 @@
 
   If you depend on rlang 1.0 (see above), the default is already set
   to `FALSE`.
-
 
 # testthat 3.1.0
 
