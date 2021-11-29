@@ -201,6 +201,7 @@
 <ul>
 <li><p><code><a href="../reference/expect_snapshot.html">expect_snapshot()</a></code> no longer processes rlang injection operators like <code>!!</code>.</p></li>
 <li><p>Fixed bug in expectations with long inputs that use <code>::</code> (<a href='https://github.com/r-lib/testthat/issues/1472'>#1472</a>).</p></li>
+<li><p>Condition expectations like <code><a href="../reference/expect_error.html">expect_error()</a></code> now match across the ancestry of chained errors (<a href='https://github.com/r-lib/testthat/issues/1493'>#1493</a>). You can disable this by setting the new <code>inherit</code> argument to <code>FALSE</code>.</p></li>
 <li>
 <p>Added preliminary support for rlang 1.0 errors. It is disabled by default for the time being. To activate it, specify <code>rlang (&gt;= 1.0.0)</code> in your <code>DESCRIPTION</code> file (or <code>&gt;= 0.99.0.9001</code> if you’re using the dev version).</p>
 <p>Once activated, snapshots will now use rlang to print error and warning messages, including the <code>Error:</code> and <code>Warning:</code> prefixes. This means the <code>call</code> field of conditions is now displayed in snapshots if present. Parent error messages are also displayed. Following this change, all snapshots including error and warning messages need to be revalidated.</p>
