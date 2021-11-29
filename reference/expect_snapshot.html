@@ -233,7 +233,8 @@ output from code.</p></li>
   cran <span class='op'>=</span> <span class='cn'>FALSE</span>,
   error <span class='op'>=</span> <span class='cn'>FALSE</span>,
   transform <span class='op'>=</span> <span class='cn'>NULL</span>,
-  variant <span class='op'>=</span> <span class='cn'>NULL</span>
+  variant <span class='op'>=</span> <span class='cn'>NULL</span>,
+  cnd_class <span class='op'>=</span> <span class='cn'>FALSE</span>
 <span class='op'>)</span>
 
 <span class='fu'>expect_snapshot_output</span><span class='op'>(</span><span class='va'>x</span>, cran <span class='op'>=</span> <span class='cn'>FALSE</span>, variant <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span>
@@ -287,6 +288,12 @@ Variants are an advanced feature. When you use them, you'll need to
 carefully think about your testing strategy to ensure that all important
 variants are covered by automated tests, and ensure that you have a way
 to get snapshot changes out of your CI system and back into the repo.</p></td>
+    </tr>
+    <tr>
+      <th>cnd_class</th>
+      <td><p>Whether to include the class of messages,
+warnings, and errors in the snapshot. Only the most specific
+class is included, i.e. the first element of <code>class(cnd)</code>.</p></td>
     </tr>
     <tr>
       <th>class</th>

@@ -201,6 +201,16 @@
 <ul>
 <li><p><code><a href="../reference/expect_snapshot.html">expect_snapshot()</a></code> no longer processes rlang injection operators like <code>!!</code>.</p></li>
 <li><p>Fixed bug in expectations with long inputs that use <code>::</code> (<a href='https://github.com/r-lib/testthat/issues/1472'>#1472</a>).</p></li>
+<li>
+<p>Added preliminary support for rlang 1.0 errors. It is disabled by default for the time being. To activate it, specify <code>rlang (&gt;= 1.0.0)</code> in your <code>DESCRIPTION</code> file (or <code>&gt;= 0.99.0.9001</code> if you’re using the dev version).</p>
+<p>Once activated, snapshots will now use rlang to print error and warning messages, including the <code>Error:</code> and <code>Warning:</code> prefixes. This means the <code>call</code> field of conditions is now displayed in snapshots if present. Parent error messages are also displayed. Following this change, all snapshots including error and warning messages need to be revalidated.</p>
+<p>We will enable the new rlang 1.0 output unconditionally in a future release.</p>
+</li>
+<li>
+<p><code><a href="../reference/expect_snapshot.html">expect_snapshot()</a></code> gains a new argument <code>cnd_class</code> to control whether to show the class of errors, warnings, and messages.</p>
+<p>The default is currently unchanged so that condition classes keep being included in snapshots. However, we plan to change the default to <code>FALSE</code> in an upcoming release to prevent distracting snapshot diffing as upstream packages add error classes. For instance, the development version of R is currently adding classes to basic errors, which causes spurious snapshot changes when testing against R-devel on CI.</p>
+<p>If you depend on rlang 1.0 (see above), the default is already set to <code>FALSE</code>.</p>
+</li>
 </ul>
 </div>
     <div id="testthat-310" class="section level1">
