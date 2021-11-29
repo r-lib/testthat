@@ -9,6 +9,34 @@
   ancestry of chained errors (#1493). You can disable this by setting
   the new `inherit` argument to `FALSE`.
 
+* Added preliminary support for rlang 1.0 errors. It is disabled by
+  default for the time being. To activate it, specify `rlang (>=
+  1.0.0)` in your `DESCRIPTION` file (or `>= 0.99.0.9001` if you're
+  using the dev version).
+
+  Once activated, snapshots will now use rlang to print error and
+  warning messages, including the `Error:` and `Warning:`
+  prefixes. This means the `call` field of conditions is now displayed
+  in snapshots if present. Parent error messages are also displayed.
+  Following this change, all snapshots including error and warning
+  messages need to be revalidated.
+
+  We will enable the new rlang 1.0 output unconditionally in a future
+  release.
+
+* `expect_snapshot()` gains a new argument `cnd_class` to control
+  whether to show the class of errors, warnings, and messages.
+
+  The default is currently unchanged so that condition classes keep
+  being included in snapshots. However, we plan to change the default
+  to `FALSE` in an upcoming release to prevent distracting snapshot
+  diffing as upstream packages add error classes. For instance, the
+  development version of R is currently adding classes to basic
+  errors, which causes spurious snapshot changes when testing against
+  R-devel on CI.
+
+  If you depend on rlang 1.0 (see above), the default is already set
+  to `FALSE`.
 
 # testthat 3.1.0
 
