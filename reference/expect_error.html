@@ -229,7 +229,6 @@ often an easier alternative for these more complex cases.</p>
   regexp <span class='op'>=</span> <span class='cn'>NULL</span>,
   class <span class='op'>=</span> <span class='cn'>NULL</span>,
   <span class='va'>...</span>,
-  inherit <span class='op'>=</span> <span class='cn'>TRUE</span>,
   info <span class='op'>=</span> <span class='cn'>NULL</span>,
   label <span class='op'>=</span> <span class='cn'>NULL</span>
 <span class='op'>)</span>
@@ -239,7 +238,6 @@ often an easier alternative for these more complex cases.</p>
   regexp <span class='op'>=</span> <span class='cn'>NULL</span>,
   class <span class='op'>=</span> <span class='cn'>NULL</span>,
   <span class='va'>...</span>,
-  inherit <span class='op'>=</span> <span class='cn'>TRUE</span>,
   all <span class='op'>=</span> <span class='cn'>FALSE</span>,
   info <span class='op'>=</span> <span class='cn'>NULL</span>,
   label <span class='op'>=</span> <span class='cn'>NULL</span>
@@ -250,7 +248,6 @@ often an easier alternative for these more complex cases.</p>
   regexp <span class='op'>=</span> <span class='cn'>NULL</span>,
   class <span class='op'>=</span> <span class='cn'>NULL</span>,
   <span class='va'>...</span>,
-  inherit <span class='op'>=</span> <span class='cn'>TRUE</span>,
   all <span class='op'>=</span> <span class='cn'>FALSE</span>,
   info <span class='op'>=</span> <span class='cn'>NULL</span>,
   label <span class='op'>=</span> <span class='cn'>NULL</span>
@@ -261,7 +258,6 @@ often an easier alternative for these more complex cases.</p>
   regexp <span class='op'>=</span> <span class='cn'>NULL</span>,
   class <span class='op'>=</span> <span class='cn'>NULL</span>,
   <span class='va'>...</span>,
-  inherit <span class='op'>=</span> <span class='cn'>TRUE</span>,
   info <span class='op'>=</span> <span class='cn'>NULL</span>,
   label <span class='op'>=</span> <span class='cn'>NULL</span>
 <span class='op'>)</span></pre>
@@ -298,11 +294,6 @@ a class name. This is useful for "classed" conditions.</p></td>
     matched as is.  Overrides all conflicting arguments.</p></dd>
   
 </dl></td>
-    </tr>
-    <tr>
-      <th>inherit</th>
-      <td><p>Whether to match <code>regexp</code> and <code>class</code> across the
-ancestry of chained errors.</p></td>
     </tr>
     <tr>
       <th>info</th>
