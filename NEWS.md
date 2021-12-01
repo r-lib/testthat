@@ -1,10 +1,5 @@
 # testthat (development version)
 
-* `expect_snapshot()` no longer processes rlang injection operators
-  like `!!`.
-
-* Fixed bug in expectations with long inputs that use `::` (#1472).
-
 * Condition expectations like `expect_error()` now match across the
   ancestry of chained errors (#1493). You can disable this by setting
   the new `inherit` argument to `FALSE`.
@@ -37,6 +32,11 @@
 
   If you depend on rlang 1.0 (see above), the default is already set
   to `FALSE`.
+
+* `expect_snapshot()` no longer processes rlang injection operators
+  like `!!`.
+
+* Fixed bug in expectations with long inputs that use `::` (#1472).
 
 # testthat 3.1.0
 
