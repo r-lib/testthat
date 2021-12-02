@@ -127,7 +127,7 @@ JunitReporter <- R6::R6Class("JunitReporter",
         xml2::xml_text(failure) <- crayon::strip_style(format(result))
         self$failures <- self$failures + 1
       } else if (expectation_skip(result)) {
-        xml2::xml_add_child(testcase, "skipped")
+        skipped <- xml2::xml_add_child(testcase, "skipped", message = first_line(result))
         self$skipped <- self$skipped + 1
       }
     },

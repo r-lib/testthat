@@ -36,16 +36,16 @@
       </testsuite>
       <testsuite name="Skips" timestamp="1999:12:31 23:59:59" hostname="nodename" tests="2" skipped="2" failures="0" errors="0" time="0">
         <testcase time="0" classname="Skips" name="explicit_skips_are_reported">
-          <skipped/>
+          <skipped message="Reason: skip (tests.R:37:3)"/>
         </testcase>
         <testcase time="0" classname="Skips" name="empty_tests_are_implicitly_skipped">
-          <skipped/>
+          <skipped message="Reason: empty test (tests.R:40:1)"/>
         </testcase>
       </testsuite>
       <testsuite name="Warnings" timestamp="1999:12:31 23:59:59" hostname="nodename" tests="2" skipped="1" failures="0" errors="0" time="0">
         <testcase time="0" classname="Warnings" name="warnings_get_backtraces"/>
         <testcase time="0" classname="Warnings" name="warnings_get_backtraces">
-          <skipped/>
+          <skipped message="Reason: empty test (tests.R:45:1)"/>
         </testcase>
       </testsuite>
     </testsuites>
