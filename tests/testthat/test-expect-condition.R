@@ -68,6 +68,15 @@ test_that("can capture Throwable conditions from rJava", {
   expect_error(throw("foo"), "foo", class = "Throwable")
 })
 
+test_that("expected conditions are typically returned invisibly", {
+  # TODO: This currently fails
+  expect_invisible(expect_error(abort("Oh no!")))
+})
+
+test_that("expected conditions are returned visibly while in a snapshotter (#1471)", {
+  expect_snapshot(expect_error(abort("Oh no!")))
+})
+
 # expect_warning() ----------------------------------------------------------
 
 test_that("warnings are converted to errors when options('warn') >= 2", {

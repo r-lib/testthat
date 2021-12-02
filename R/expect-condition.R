@@ -264,8 +264,17 @@ expect_condition_matching <- function(base_class,
   expect(is.null(msg), msg, info = info, trace = act$cap[["trace"]])
 
   # If a condition was expected, return it. Otherwise return the value
-  # of the expression.
-  invisible(if (expected) act$cap else act$val)
+  # of the expression. If we are returning the condition and we are in
+  # a snapshotter, return it visibly so the snapshotter can capture it
+  if (expected) {
+    if (in_snapshotter()) {
+      act$cap
+    } else {
+      invisible(act$cap)
+    }
+  } else {
+    invisible(act$val)
+  }
 }
 
 # -------------------------------------------------------------------------

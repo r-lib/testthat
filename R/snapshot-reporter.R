@@ -155,6 +155,16 @@ get_snapshotter <- function() {
   x
 }
 
+in_snapshotter <- function() {
+  x <- getOption("testthat.snapshotter")
+
+  if (is.null(x)) {
+    return(FALSE)
+  }
+
+  x$is_active()
+}
+
 #' Instantiate local snapshotting context
 #'
 #' Needed if you want to run snapshot tests outside of the usual testthat

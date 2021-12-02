@@ -12,3 +12,11 @@
     Message: dispatched!
     Class:   foobar/rlang_error/error/condition
 
+# expected conditions are returned visibly while in a snapshotter (#1471)
+
+    Code
+      expect_error(abort("Oh no!"))
+    Output
+      <error/rlang_error>
+      Oh no!
+
