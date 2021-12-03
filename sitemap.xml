@@ -1,7 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://testthat.r-lib.org/404.html</loc>
+  </url>
+  <url>
+    <loc>https://testthat.r-lib.org/LICENSE-text.html</loc>
+  </url>
+  <url>
+    <loc>https://testthat.r-lib.org/LICENSE.html</loc>
+  </url>
+  <url>
+    <loc>https://testthat.r-lib.org/articles/custom-expectation.html</loc>
+  </url>
+  <url>
+    <loc>https://testthat.r-lib.org/articles/index.html</loc>
+  </url>
+  <url>
+    <loc>https://testthat.r-lib.org/articles/parallel.html</loc>
+  </url>
+  <url>
+    <loc>https://testthat.r-lib.org/articles/skipping.html</loc>
+  </url>
+  <url>
+    <loc>https://testthat.r-lib.org/articles/snapshotting.html</loc>
+  </url>
+  <url>
+    <loc>https://testthat.r-lib.org/articles/test-fixtures.html</loc>
+  </url>
+  <url>
+    <loc>https://testthat.r-lib.org/articles/third-edition.html</loc>
+  </url>
+  <url>
+    <loc>https://testthat.r-lib.org/authors.html</loc>
+  </url>
+  <url>
     <loc>https://testthat.r-lib.org/index.html</loc>
+  </url>
+  <url>
+    <loc>https://testthat.r-lib.org/news/index.html</loc>
   </url>
   <url>
     <loc>https://testthat.r-lib.org/reference/CheckReporter.html</loc>
@@ -169,6 +205,9 @@
     <loc>https://testthat.r-lib.org/reference/find_test_scripts.html</loc>
   </url>
   <url>
+    <loc>https://testthat.r-lib.org/reference/index.html</loc>
+  </url>
+  <url>
     <loc>https://testthat.r-lib.org/reference/inheritance-expectations.html</loc>
   </url>
   <url>
@@ -278,23 +317,5 @@
   </url>
   <url>
     <loc>https://testthat.r-lib.org/reference/with_mock.html</loc>
-  </url>
-  <url>
-    <loc>https://testthat.r-lib.org/articles/custom-expectation.html</loc>
-  </url>
-  <url>
-    <loc>https://testthat.r-lib.org/articles/parallel.html</loc>
-  </url>
-  <url>
-    <loc>https://testthat.r-lib.org/articles/skipping.html</loc>
-  </url>
-  <url>
-    <loc>https://testthat.r-lib.org/articles/snapshotting.html</loc>
-  </url>
-  <url>
-    <loc>https://testthat.r-lib.org/articles/test-fixtures.html</loc>
-  </url>
-  <url>
-    <loc>https://testthat.r-lib.org/articles/third-edition.html</loc>
   </url>
 </urlset>

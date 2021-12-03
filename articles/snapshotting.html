@@ -32,6 +32,8 @@
 </script>
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -44,18 +46,12 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">testthat</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">3.1.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">3.1.0.9000</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-<li>
-  <a href="../index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
 <li>
   <a href="../reference/index.html">Reference</a>
 </li>
@@ -95,31 +91,32 @@
   <ul class="dropdown-menu" role="menu">
 <li class="dropdown-header">Releases</li>
     <li>
-      <a href="https://www.tidyverse.org/blog/2021/10/testthat-3-1/">Version 3.1.0</a>
+      <a href="https://www.tidyverse.org/blog/2021/10/testthat-3-1/" class="external-link">Version 3.1.0</a>
     </li>
     <li>
-      <a href="https://www.tidyverse.org/blog/2020/10/testthat-3-0-0/">Version 3.0.0</a>
+      <a href="https://www.tidyverse.org/blog/2020/10/testthat-3-0-0/" class="external-link">Version 3.0.0</a>
     </li>
     <li>
-      <a href="https://www.tidyverse.org/blog/2019/11/testthat-2-3-0/">Version 2.3.0</a>
+      <a href="https://www.tidyverse.org/blog/2019/11/testthat-2-3-0/" class="external-link">Version 2.3.0</a>
     </li>
     <li>
-      <a href="https://www.tidyverse.org/articles/2019/04/testthat-2-1-0/">Version 2.1.0</a>
+      <a href="https://www.tidyverse.org/articles/2019/04/testthat-2-1-0/" class="external-link">Version 2.1.0</a>
     </li>
     <li>
-      <a href="https://www.tidyverse.org/articles/2017/12/testthat-2-0-0/">Version 2.0.0</a>
+      <a href="https://www.tidyverse.org/articles/2017/12/testthat-2-0-0/" class="external-link">Version 2.0.0</a>
     </li>
     <li>
-      <a href="https://blog.rstudio.com/2016/04/29/testthat-1-0-0/">Version 1.0.0</a>
+      <a href="https://blog.rstudio.com/2016/04/29/testthat-1-0-0/" class="external-link">Version 1.0.0</a>
     </li>
     <li>
-      <a href="https://blog.rstudio.com/2015/05/29/testthat-0-10-0/">Version 0.10.0</a>
+      <a href="https://blog.rstudio.com/2015/05/29/testthat-0-10-0/" class="external-link">Version 0.10.0</a>
     </li>
     <li>
-      <a href="https://blog.rstudio.com/2014/09/23/testthat-0-9/">Version 0.9.0</a>
+      <a href="https://blog.rstudio.com/2014/09/23/testthat-0-9/" class="external-link">Version 0.9.0</a>
     </li>
     <li class="divider">
-    <li>
+    </li>
+<li>
       <a href="../news/index.html">Changelog</a>
     </li>
   </ul>
@@ -127,7 +124,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/r-lib/testthat/">
+  <a href="https://github.com/r-lib/testthat/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -148,7 +145,7 @@
       <h1 data-toc-skip>Snapshot tests</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/r-lib/testthat/blob/master/vignettes/snapshotting.Rmd"><code>vignettes/snapshotting.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/r-lib/testthat/blob/HEAD/vignettes/snapshotting.Rmd" class="external-link"><code>vignettes/snapshotting.Rmd</code></a></small>
       <div class="hidden name"><code>snapshotting.Rmd</code></div>
 
     </div>
@@ -162,22 +159,22 @@
 <li><p>Output that is large, making it painful to define the reference output, and bloating the size of the test file and making it hard to navigate.</p></li>
 <li><p>Binary formats like plots or images, which are very difficult to describe in code: i.e. the plot looks right, the error message is useful to a human, the print method uses colour effectively.</p></li>
 </ul>
-<p>For these situations, testthat provides an alternative mechanism: snapshot tests. Instead of using code to describe expected output, snapshot tests (also known as <a href="https://ro-che.info/articles/2017-12-04-golden-tests">golden tests</a>) record results in a separate human readable file. Snapshot tests in testthat are inspired primarily by <a href="https://jestjs.io/docs/en/snapshot-testing">Jest</a>, thanks to a number of very useful discussions with Joe Cheng.</p>
+<p>For these situations, testthat provides an alternative mechanism: snapshot tests. Instead of using code to describe expected output, snapshot tests (also known as <a href="https://ro-che.info/articles/2017-12-04-golden-tests" class="external-link">golden tests</a>) record results in a separate human readable file. Snapshot tests in testthat are inspired primarily by <a href="https://jestjs.io/docs/en/snapshot-testing" class="external-link">Jest</a>, thanks to a number of very useful discussions with Joe Cheng.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://testthat.r-lib.org">testthat</a></span><span class="op">)</span></code></pre></div>
-<div id="basic-workflow" class="section level2">
-<h2 class="hasAnchor">
-<a href="#basic-workflow" class="anchor"></a>Basic workflow</h2>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://testthat.r-lib.org">testthat</a></span><span class="op">)</span></code></pre></div>
+<div class="section level2">
+<h2 id="basic-workflow">Basic workflow<a class="anchor" aria-label="anchor" href="#basic-workflow"></a>
+</h2>
 <p>We’ll illustrate the basic workflow with a simple function that generates an HTML heading. It can optionally include an <code>id</code> attribute, which allows you to construct a link directly to that heading.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">bullets</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">text</span>, <span class="va">id</span> <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span> <span class="op">{</span>
-  <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span>
-    <span class="st">"&lt;ul"</span>, <span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NULL.html">is.null</a></span><span class="op">(</span><span class="va">id</span><span class="op">)</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="st">" id=\""</span>, <span class="va">id</span>, <span class="st">"\""</span><span class="op">)</span>, <span class="st">"&gt;\n"</span>, 
-    <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="st">"  &lt;li&gt;"</span>, <span class="va">text</span>, <span class="st">"&lt;/li&gt;\n"</span>, collapse <span class="op">=</span> <span class="st">""</span><span class="op">)</span>,
+  <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span>
+    <span class="st">"&lt;ul"</span>, <span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NULL.html" class="external-link">is.null</a></span><span class="op">(</span><span class="va">id</span><span class="op">)</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="st">" id=\""</span>, <span class="va">id</span>, <span class="st">"\""</span><span class="op">)</span>, <span class="st">"&gt;\n"</span>, 
+    <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="st">"  &lt;li&gt;"</span>, <span class="va">text</span>, <span class="st">"&lt;/li&gt;\n"</span>, collapse <span class="op">=</span> <span class="st">""</span><span class="op">)</span>,
     <span class="st">"&lt;/ul&gt;\n"</span>
   <span class="op">)</span>
 <span class="op">}</span>
-<span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="fu">bullets</span><span class="op">(</span><span class="st">"a"</span>, id <span class="op">=</span> <span class="st">"x"</span><span class="op">)</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="fu">bullets</span><span class="op">(</span><span class="st">"a"</span>, id <span class="op">=</span> <span class="st">"x"</span><span class="op">)</span><span class="op">)</span>
 <span class="co">#&gt; &lt;ul id="x"&gt;</span>
 <span class="co">#&gt;   &lt;li&gt;a&lt;/li&gt;</span>
 <span class="co">#&gt; &lt;/ul&gt;</span></code></pre></div>
@@ -187,102 +184,102 @@
   <span class="fu"><a href="../reference/equality-expectations.html">expect_equal</a></span><span class="op">(</span><span class="fu">bullets</span><span class="op">(</span><span class="st">"a"</span><span class="op">)</span>, <span class="st">"&lt;ul&gt;\n  &lt;li&gt;a&lt;/li&gt;\n&lt;/ul&gt;\n"</span><span class="op">)</span>
   <span class="fu"><a href="../reference/equality-expectations.html">expect_equal</a></span><span class="op">(</span><span class="fu">bullets</span><span class="op">(</span><span class="st">"a"</span>, id <span class="op">=</span> <span class="st">"x"</span><span class="op">)</span>, <span class="st">"&lt;ul id=\"x\"&gt;\n  &lt;li&gt;a&lt;/li&gt;\n&lt;/ul&gt;\n"</span><span class="op">)</span>
 <span class="op">}</span><span class="op">)</span>
-<span class="co">#&gt; Test passed 🥇</span></code></pre></div>
+<span class="co">#&gt; <span style="color: #00BB00;">Test passed</span> 🥇</span></code></pre></div>
 <p>This is a great place to use snapshot testing. To do this we make two changes to our code:</p>
 <ul>
 <li><p>We use <code><a href="../reference/expect_snapshot.html">expect_snapshot()</a></code> instead of <code><a href="../reference/equality-expectations.html">expect_equal()</a></code></p></li>
-<li><p>We wrap the call in <code><a href="https://rdrr.io/r/base/cat.html">cat()</a></code> (to avoid <code>[1]</code> in the output, like in my first interactive example).</p></li>
+<li><p>We wrap the call in <code><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat()</a></code> (to avoid <code>[1]</code> in the output, like in my first interactive example).</p></li>
 </ul>
 <p>This yields the following test:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/test_that.html">test_that</a></span><span class="op">(</span><span class="st">"bullets"</span>, <span class="op">{</span>
-  <span class="fu"><a href="../reference/expect_snapshot.html">expect_snapshot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="fu">bullets</span><span class="op">(</span><span class="st">"a"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
-  <span class="fu"><a href="../reference/expect_snapshot.html">expect_snapshot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="fu">bullets</span><span class="op">(</span><span class="st">"a"</span>, <span class="st">"b"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
+  <span class="fu"><a href="../reference/expect_snapshot.html">expect_snapshot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="fu">bullets</span><span class="op">(</span><span class="st">"a"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
+  <span class="fu"><a href="../reference/expect_snapshot.html">expect_snapshot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="fu">bullets</span><span class="op">(</span><span class="st">"a"</span>, <span class="st">"b"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
 <span class="op">}</span><span class="op">)</span>
-<span class="co">#&gt; Can't compare snapshot to reference when testing interactively</span>
-<span class="co">#&gt; i Run `devtools::test()` or `testthat::test_file()` to see changes</span>
-<span class="co">#&gt; i Current value:</span>
+<span class="co">#&gt; <span style="font-weight: bold;">Can't compare snapshot to reference when testing interactively</span></span>
+<span class="co">#&gt; <span style="color: #0000BB;">i</span> Run `devtools::test()` or `testthat::test_file()` to see changes</span>
+<span class="co">#&gt; <span style="color: #0000BB;">i</span> Current value:</span>
 <span class="co">#&gt; Code</span>
 <span class="co">#&gt;   cat(bullets("a"))</span>
 <span class="co">#&gt; Output</span>
 <span class="co">#&gt;   &lt;ul&gt;</span>
 <span class="co">#&gt;     &lt;li&gt;a&lt;/li&gt;</span>
 <span class="co">#&gt;   &lt;/ul&gt;</span>
-<span class="co">#&gt; Can't compare snapshot to reference when testing interactively</span>
-<span class="co">#&gt; i Run `devtools::test()` or `testthat::test_file()` to see changes</span>
-<span class="co">#&gt; i Current value:</span>
+<span class="co">#&gt; <span style="font-weight: bold;">Can't compare snapshot to reference when testing interactively</span></span>
+<span class="co">#&gt; <span style="color: #0000BB;">i</span> Run `devtools::test()` or `testthat::test_file()` to see changes</span>
+<span class="co">#&gt; <span style="color: #0000BB;">i</span> Current value:</span>
 <span class="co">#&gt; Code</span>
 <span class="co">#&gt;   cat(bullets("a", "b"))</span>
 <span class="co">#&gt; Output</span>
 <span class="co">#&gt;   &lt;ul id="b"&gt;</span>
 <span class="co">#&gt;     &lt;li&gt;a&lt;/li&gt;</span>
 <span class="co">#&gt;   &lt;/ul&gt;</span>
-<span class="co">#&gt; ── Skip (???): bullets ─────────────────────────────────────────────────────────</span>
+<span class="co">#&gt; ── <span style="color: #0000BB; font-weight: bold;">Skip</span><span style="font-weight: bold;"> (???): bullets</span> ─────────────────────────────────────────────────────────</span>
 <span class="co">#&gt; Reason: empty test</span></code></pre></div>
 <p>When we run the test for the first time, it automatically generates reference output, and prints it, so that you can visually confirm that it’s correct. The output is automatically saved in <code>_snaps/{name}.R</code>. The name of the snapshot matches your test file name — e.g. if your test is <code>test-pizza.R</code> then your snapshot will be saved in <code>test/testthat/_snaps/pizza.md</code>. As the file name suggests, this is a markdown file, which I’ll explain shortly.</p>
 <p>If you run the test again, it’ll succeed:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/test_that.html">test_that</a></span><span class="op">(</span><span class="st">"bullets"</span>, <span class="op">{</span>
-  <span class="fu"><a href="../reference/expect_snapshot.html">expect_snapshot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="fu">bullets</span><span class="op">(</span><span class="st">"a"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
-  <span class="fu"><a href="../reference/expect_snapshot.html">expect_snapshot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="fu">bullets</span><span class="op">(</span><span class="st">"a"</span>, <span class="st">"b"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
+  <span class="fu"><a href="../reference/expect_snapshot.html">expect_snapshot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="fu">bullets</span><span class="op">(</span><span class="st">"a"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
+  <span class="fu"><a href="../reference/expect_snapshot.html">expect_snapshot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="fu">bullets</span><span class="op">(</span><span class="st">"a"</span>, <span class="st">"b"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
 <span class="op">}</span><span class="op">)</span>
-<span class="co">#&gt; Can't compare snapshot to reference when testing interactively</span>
-<span class="co">#&gt; i Run `devtools::test()` or `testthat::test_file()` to see changes</span>
-<span class="co">#&gt; i Current value:</span>
+<span class="co">#&gt; <span style="font-weight: bold;">Can't compare snapshot to reference when testing interactively</span></span>
+<span class="co">#&gt; <span style="color: #0000BB;">i</span> Run `devtools::test()` or `testthat::test_file()` to see changes</span>
+<span class="co">#&gt; <span style="color: #0000BB;">i</span> Current value:</span>
 <span class="co">#&gt; Code</span>
 <span class="co">#&gt;   cat(bullets("a"))</span>
 <span class="co">#&gt; Output</span>
 <span class="co">#&gt;   &lt;ul&gt;</span>
 <span class="co">#&gt;     &lt;li&gt;a&lt;/li&gt;</span>
 <span class="co">#&gt;   &lt;/ul&gt;</span>
-<span class="co">#&gt; Can't compare snapshot to reference when testing interactively</span>
-<span class="co">#&gt; i Run `devtools::test()` or `testthat::test_file()` to see changes</span>
-<span class="co">#&gt; i Current value:</span>
+<span class="co">#&gt; <span style="font-weight: bold;">Can't compare snapshot to reference when testing interactively</span></span>
+<span class="co">#&gt; <span style="color: #0000BB;">i</span> Run `devtools::test()` or `testthat::test_file()` to see changes</span>
+<span class="co">#&gt; <span style="color: #0000BB;">i</span> Current value:</span>
 <span class="co">#&gt; Code</span>
 <span class="co">#&gt;   cat(bullets("a", "b"))</span>
 <span class="co">#&gt; Output</span>
 <span class="co">#&gt;   &lt;ul id="b"&gt;</span>
 <span class="co">#&gt;     &lt;li&gt;a&lt;/li&gt;</span>
 <span class="co">#&gt;   &lt;/ul&gt;</span>
-<span class="co">#&gt; ── Skip (???): bullets ─────────────────────────────────────────────────────────</span>
+<span class="co">#&gt; ── <span style="color: #0000BB; font-weight: bold;">Skip</span><span style="font-weight: bold;"> (???): bullets</span> ─────────────────────────────────────────────────────────</span>
 <span class="co">#&gt; Reason: empty test</span></code></pre></div>
 <p>But if you change the underlying code, say to tweak the indenting, the test will fail:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">bullets</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">text</span>, <span class="va">id</span> <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span> <span class="op">{</span>
-  <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span>
-    <span class="st">"&lt;ul"</span>, <span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NULL.html">is.null</a></span><span class="op">(</span><span class="va">id</span><span class="op">)</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="st">" id=\""</span>, <span class="va">id</span>, <span class="st">"\""</span><span class="op">)</span>, <span class="st">"&gt;\n"</span>, 
-    <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="st">"&lt;li&gt;"</span>, <span class="va">text</span>, <span class="st">"&lt;/li&gt;\n"</span>, collapse <span class="op">=</span> <span class="st">""</span><span class="op">)</span>,
+  <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span>
+    <span class="st">"&lt;ul"</span>, <span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NULL.html" class="external-link">is.null</a></span><span class="op">(</span><span class="va">id</span><span class="op">)</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="st">" id=\""</span>, <span class="va">id</span>, <span class="st">"\""</span><span class="op">)</span>, <span class="st">"&gt;\n"</span>, 
+    <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="st">"&lt;li&gt;"</span>, <span class="va">text</span>, <span class="st">"&lt;/li&gt;\n"</span>, collapse <span class="op">=</span> <span class="st">""</span><span class="op">)</span>,
     <span class="st">"&lt;/ul&gt;\n"</span>
   <span class="op">)</span>
 <span class="op">}</span>
 <span class="fu"><a href="../reference/test_that.html">test_that</a></span><span class="op">(</span><span class="st">"bullets"</span>, <span class="op">{</span>
-  <span class="fu"><a href="../reference/expect_snapshot.html">expect_snapshot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="fu">bullets</span><span class="op">(</span><span class="st">"a"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
-  <span class="fu"><a href="../reference/expect_snapshot.html">expect_snapshot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="fu">bullets</span><span class="op">(</span><span class="st">"a"</span>, <span class="st">"b"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
+  <span class="fu"><a href="../reference/expect_snapshot.html">expect_snapshot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="fu">bullets</span><span class="op">(</span><span class="st">"a"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
+  <span class="fu"><a href="../reference/expect_snapshot.html">expect_snapshot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="fu">bullets</span><span class="op">(</span><span class="st">"a"</span>, <span class="st">"b"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
 <span class="op">}</span><span class="op">)</span>
-<span class="co">#&gt; Can't compare snapshot to reference when testing interactively</span>
-<span class="co">#&gt; i Run `devtools::test()` or `testthat::test_file()` to see changes</span>
-<span class="co">#&gt; i Current value:</span>
+<span class="co">#&gt; <span style="font-weight: bold;">Can't compare snapshot to reference when testing interactively</span></span>
+<span class="co">#&gt; <span style="color: #0000BB;">i</span> Run `devtools::test()` or `testthat::test_file()` to see changes</span>
+<span class="co">#&gt; <span style="color: #0000BB;">i</span> Current value:</span>
 <span class="co">#&gt; Code</span>
 <span class="co">#&gt;   cat(bullets("a"))</span>
 <span class="co">#&gt; Output</span>
 <span class="co">#&gt;   &lt;ul&gt;</span>
 <span class="co">#&gt;   &lt;li&gt;a&lt;/li&gt;</span>
 <span class="co">#&gt;   &lt;/ul&gt;</span>
-<span class="co">#&gt; Can't compare snapshot to reference when testing interactively</span>
-<span class="co">#&gt; i Run `devtools::test()` or `testthat::test_file()` to see changes</span>
-<span class="co">#&gt; i Current value:</span>
+<span class="co">#&gt; <span style="font-weight: bold;">Can't compare snapshot to reference when testing interactively</span></span>
+<span class="co">#&gt; <span style="color: #0000BB;">i</span> Run `devtools::test()` or `testthat::test_file()` to see changes</span>
+<span class="co">#&gt; <span style="color: #0000BB;">i</span> Current value:</span>
 <span class="co">#&gt; Code</span>
 <span class="co">#&gt;   cat(bullets("a", "b"))</span>
 <span class="co">#&gt; Output</span>
 <span class="co">#&gt;   &lt;ul id="b"&gt;</span>
 <span class="co">#&gt;   &lt;li&gt;a&lt;/li&gt;</span>
 <span class="co">#&gt;   &lt;/ul&gt;</span>
-<span class="co">#&gt; ── Skip (???): bullets ─────────────────────────────────────────────────────────</span>
+<span class="co">#&gt; ── <span style="color: #0000BB; font-weight: bold;">Skip</span><span style="font-weight: bold;"> (???): bullets</span> ─────────────────────────────────────────────────────────</span>
 <span class="co">#&gt; Reason: empty test</span></code></pre></div>
 <p>If this is a deliberate change, you can follow the advice in the message and update the snapshots for that file by running <code>snapshot_accept("pizza")</code>; otherwise you can fix the bug and your tests will pass once more. (You can also accept snapshot for all files with <code><a href="../reference/snapshot_accept.html">snapshot_accept()</a></code>).</p>
-<div id="snapshot-format" class="section level3">
-<h3 class="hasAnchor">
-<a href="#snapshot-format" class="anchor"></a>Snapshot format</h3>
+<div class="section level3">
+<h3 id="snapshot-format">Snapshot format<a class="anchor" aria-label="anchor" href="#snapshot-format"></a>
+</h3>
 <p>Snapshots are recorded using a subset of markdown. You might wonder why we use markdown? It’s important that snapshots be readable by humans, because humans have to look at it during code reviews. Reviewers often don’t run your code but still want to understand the changes.</p>
 <p>Here’s the snapshot file generated by the test above:</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu"># bullets</span></span>
@@ -298,30 +295,30 @@
 <span id="cb7-11"><a href="#cb7-11"></a><span class="bn">    &lt;/ul&gt;</span></span></code></pre></div>
 <p>Each test starts with <code># {test name}</code>, a level 1 heading. Within a test, each snapshot expectation is indented by four spaces, i.e. as code, and are separated by <code>---</code>, a horizontal rule.</p>
 </div>
-<div id="interactive-usage" class="section level3">
-<h3 class="hasAnchor">
-<a href="#interactive-usage" class="anchor"></a>Interactive usage</h3>
+<div class="section level3">
+<h3 id="interactive-usage">Interactive usage<a class="anchor" aria-label="anchor" href="#interactive-usage"></a>
+</h3>
 <p>Because the snapshot output uses the name of the current test file and the current test, snapshot expectations don’t really work when run interactively at the console. Since they can’t automatically find the reference output, they instead just print the current value for manual inspection.</p>
 </div>
 </div>
-<div id="other-types-of-output" class="section level2">
-<h2 class="hasAnchor">
-<a href="#other-types-of-output" class="anchor"></a>Other types of output</h2>
+<div class="section level2">
+<h2 id="other-types-of-output">Other types of output<a class="anchor" aria-label="anchor" href="#other-types-of-output"></a>
+</h2>
 <p>So far we’ve focussed on snapshot tests for output printed to the console. But <code><a href="../reference/expect_snapshot.html">expect_snapshot()</a></code> also captures messages, errors, and warnings. The following function generates a some output, a message, and a warning:</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">f</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="op">)</span> <span class="op">{</span>
-  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="st">"Hello"</span><span class="op">)</span>
-  <span class="fu"><a href="https://rdrr.io/r/base/message.html">message</a></span><span class="op">(</span><span class="st">"Hi!"</span><span class="op">)</span>
-  <span class="kw"><a href="https://rdrr.io/r/base/warning.html">warning</a></span><span class="op">(</span><span class="st">"How are you?"</span><span class="op">)</span>
+  <span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="st">"Hello"</span><span class="op">)</span>
+  <span class="fu"><a href="https://rdrr.io/r/base/message.html" class="external-link">message</a></span><span class="op">(</span><span class="st">"Hi!"</span><span class="op">)</span>
+  <span class="kw"><a href="https://rdrr.io/r/base/warning.html" class="external-link">warning</a></span><span class="op">(</span><span class="st">"How are you?"</span><span class="op">)</span>
 <span class="op">}</span></code></pre></div>
 <p>And <code><a href="../reference/expect_snapshot.html">expect_snapshot()</a></code> captures them all:</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/test_that.html">test_that</a></span><span class="op">(</span><span class="st">"f() makes lots of noice"</span>, <span class="op">{</span>
   <span class="fu"><a href="../reference/expect_snapshot.html">expect_snapshot</a></span><span class="op">(</span><span class="fu">f</span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
 <span class="op">}</span><span class="op">)</span>
-<span class="co">#&gt; Can't compare snapshot to reference when testing interactively</span>
-<span class="co">#&gt; i Run `devtools::test()` or `testthat::test_file()` to see changes</span>
-<span class="co">#&gt; i Current value:</span>
+<span class="co">#&gt; <span style="font-weight: bold;">Can't compare snapshot to reference when testing interactively</span></span>
+<span class="co">#&gt; <span style="color: #0000BB;">i</span> Run `devtools::test()` or `testthat::test_file()` to see changes</span>
+<span class="co">#&gt; <span style="color: #0000BB;">i</span> Current value:</span>
 <span class="co">#&gt; Code</span>
 <span class="co">#&gt;   f()</span>
 <span class="co">#&gt; Output</span>
@@ -330,14 +327,14 @@
 <span class="co">#&gt;   Hi!</span>
 <span class="co">#&gt; Warning &lt;simpleWarning&gt;</span>
 <span class="co">#&gt;   How are you?</span>
-<span class="co">#&gt; ── Skip (???): f() makes lots of noice ─────────────────────────────────────────</span>
+<span class="co">#&gt; ── <span style="color: #0000BB; font-weight: bold;">Skip</span><span style="font-weight: bold;"> (???): f() makes lots of noice</span> ─────────────────────────────────────────</span>
 <span class="co">#&gt; Reason: empty test</span></code></pre></div>
 <p>Capturing errors is <em>slightly</em> more difficult because <code><a href="../reference/expect_snapshot.html">expect_snapshot()</a></code> will fail when there’s an error:</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/test_that.html">test_that</a></span><span class="op">(</span><span class="st">"you can't add a number and a letter"</span>, <span class="op">{</span>
   <span class="fu"><a href="../reference/expect_snapshot.html">expect_snapshot</a></span><span class="op">(</span><span class="fl">1</span> <span class="op">+</span> <span class="st">"a"</span><span class="op">)</span>
 <span class="op">}</span><span class="op">)</span>
-<span class="co">#&gt; ── Error (&lt;text&gt;:2:3): you can't add a number and a letter ─────────────────────</span>
+<span class="co">#&gt; ── <span style="color: #FFAF00; font-weight: bold;">Error</span><span style="font-weight: bold;"> (&lt;text&gt;:2:3): you can't add a number and a letter</span> ───────────────────────────</span>
 <span class="co">#&gt; `1 + "a"` threw an unexpected error.</span>
 <span class="co">#&gt; Message: non-numeric argument to binary operator</span>
 <span class="co">#&gt; Class:   simpleError/error/condition</span>
@@ -347,14 +344,14 @@
 <code class="sourceCode R"><span class="fu"><a href="../reference/test_that.html">test_that</a></span><span class="op">(</span><span class="st">"you can't add a number and a letter"</span>, <span class="op">{</span>
   <span class="fu"><a href="../reference/expect_snapshot.html">expect_snapshot</a></span><span class="op">(</span><span class="fl">1</span> <span class="op">+</span> <span class="st">"a"</span>, error <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
 <span class="op">}</span><span class="op">)</span>
-<span class="co">#&gt; Can't compare snapshot to reference when testing interactively</span>
-<span class="co">#&gt; i Run `devtools::test()` or `testthat::test_file()` to see changes</span>
-<span class="co">#&gt; i Current value:</span>
+<span class="co">#&gt; <span style="font-weight: bold;">Can't compare snapshot to reference when testing interactively</span></span>
+<span class="co">#&gt; <span style="color: #0000BB;">i</span> Run `devtools::test()` or `testthat::test_file()` to see changes</span>
+<span class="co">#&gt; <span style="color: #0000BB;">i</span> Current value:</span>
 <span class="co">#&gt; Code</span>
 <span class="co">#&gt;   1 + "a"</span>
 <span class="co">#&gt; Error &lt;simpleError&gt;</span>
 <span class="co">#&gt;   non-numeric argument to binary operator</span>
-<span class="co">#&gt; ── Skip (???): you can't add a number and a letter ─────────────────────────────</span>
+<span class="co">#&gt; ── <span style="color: #0000BB; font-weight: bold;">Skip</span><span style="font-weight: bold;"> (???): you can't add a number and a letter</span> ─────────────────────────────</span>
 <span class="co">#&gt; Reason: empty test</span></code></pre></div>
 <p>When the code gets longer, I like to put <code>error = TRUE</code> up front so it’s a little more obvious:</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
@@ -365,9 +362,9 @@
     <span class="va">mean</span> <span class="op">+</span> <span class="va">sum</span>
   <span class="op">}</span><span class="op">)</span>
 <span class="op">}</span><span class="op">)</span>
-<span class="co">#&gt; Can't compare snapshot to reference when testing interactively</span>
-<span class="co">#&gt; i Run `devtools::test()` or `testthat::test_file()` to see changes</span>
-<span class="co">#&gt; i Current value:</span>
+<span class="co">#&gt; <span style="font-weight: bold;">Can't compare snapshot to reference when testing interactively</span></span>
+<span class="co">#&gt; <span style="color: #0000BB;">i</span> Run `devtools::test()` or `testthat::test_file()` to see changes</span>
+<span class="co">#&gt; <span style="color: #0000BB;">i</span> Current value:</span>
 <span class="co">#&gt; Code</span>
 <span class="co">#&gt;   1 + "a"</span>
 <span class="co">#&gt; Error &lt;simpleError&gt;</span>
@@ -380,18 +377,18 @@
 <span class="co">#&gt;   mean + sum</span>
 <span class="co">#&gt; Error &lt;simpleError&gt;</span>
 <span class="co">#&gt;   non-numeric argument to binary operator</span>
-<span class="co">#&gt; ── Skip (???): you can't add weird thngs ───────────────────────────────────────</span>
+<span class="co">#&gt; ── <span style="color: #0000BB; font-weight: bold;">Skip</span><span style="font-weight: bold;"> (???): you can't add weird thngs</span> ───────────────────────────────────────</span>
 <span class="co">#&gt; Reason: empty test</span></code></pre></div>
 </div>
-<div id="other-types-of-snapshot" class="section level2">
-<h2 class="hasAnchor">
-<a href="#other-types-of-snapshot" class="anchor"></a>Other types of snapshot</h2>
+<div class="section level2">
+<h2 id="other-types-of-snapshot">Other types of snapshot<a class="anchor" aria-label="anchor" href="#other-types-of-snapshot"></a>
+</h2>
 <p><code><a href="../reference/expect_snapshot.html">expect_snapshot()</a></code> is the most used snapshot function because it records everything: the code you run, printed output, messages, warnings, and errors. But sometimes you just want to capture the output or errors in which you might want to use <code><a href="../reference/expect_snapshot.html">expect_snapshot_output()</a></code> or <code><a href="../reference/expect_snapshot.html">expect_snapshot_error()</a></code>.</p>
 <p>Or rather than caring about side-effects, you may want to check that the value of an R object stays the same. In this case, you can use <code><a href="../reference/expect_snapshot.html">expect_snapshot_value()</a></code> which offers a number of serialisation approaches that provide a tradeoff between accuracy and human readability.</p>
 </div>
-<div id="whole-file-snapshotting" class="section level2">
-<h2 class="hasAnchor">
-<a href="#whole-file-snapshotting" class="anchor"></a>Whole file snapshotting</h2>
+<div class="section level2">
+<h2 id="whole-file-snapshotting">Whole file snapshotting<a class="anchor" aria-label="anchor" href="#whole-file-snapshotting"></a>
+</h2>
 <p><code><a href="../reference/expect_snapshot.html">expect_snapshot()</a></code>, <code><a href="../reference/expect_snapshot.html">expect_snapshot_output()</a></code>, <code><a href="../reference/expect_snapshot.html">expect_snapshot_error()</a></code>, and <code><a href="../reference/expect_snapshot.html">expect_snapshot_value()</a></code> all store their snapshots in a single file per test. But that doesn’t work for all file types — for example, what happens if you want to snapshot an image? <code><a href="../reference/expect_snapshot_file.html">expect_snapshot_file()</a></code> provides an alternative workflow that generates one snapshot per expectation, rather than one file per test. Assuming you’re in <code>test-burger.R</code> then the snapshot created by <code>expect_snapshot_file(code_that_returns_path_to_file(), "toppings.png")</code> would be saved in <code>tests/testthat/_snaps/burger/toppings.png</code>. If a future change in the code creates a different file it will be saved in <code>tests/testthat/_snaps/burger/toppings.new.png</code>.</p>
 <p>Unlike <code><a href="../reference/expect_snapshot.html">expect_snapshot()</a></code> and friends, <code><a href="../reference/expect_snapshot_file.html">expect_snapshot_file()</a></code> can’t provide an automatic diff when the test fails. Instead you’ll need to call <code><a href="../reference/snapshot_accept.html">snapshot_review()</a></code>. This launches a Shiny app that allows you to visually review each change and approve it if it’s deliberate:</p>
 <p><img src="review-image.png"><img src="review-text.png"></p>
@@ -399,9 +396,9 @@
 <p>Sometimes the failure occurs in a non-interactive environment where you can’t run <code><a href="../reference/snapshot_accept.html">snapshot_review()</a></code>, e.g. in <code>R CMD check</code>. In this case, the easiest fix is to retrieve the <code>.new</code> file, copy it into the appropriate directory, then run <code><a href="../reference/snapshot_accept.html">snapshot_review()</a></code> locally. If your code was run on a CI platform, you’ll need to start by downloading the run “artifact”, which contains the check folder.</p>
 <p>In most cases, we don’t expect you to use <code><a href="../reference/expect_snapshot_file.html">expect_snapshot_file()</a></code> directly. Instead, you’ll use it via a wrapper that does its best to gracefully skip tests when differences in platform or package versions make it unlikely to generate perfectly reproducible output.</p>
 </div>
-<div id="previous-work" class="section level2">
-<h2 class="hasAnchor">
-<a href="#previous-work" class="anchor"></a>Previous work</h2>
+<div class="section level2">
+<h2 id="previous-work">Previous work<a class="anchor" aria-label="anchor" href="#previous-work"></a>
+</h2>
 <p>This is not the first time that testthat has attempted to provide snapshot testing (although it’s the first time I knew what other languages called them). This section describes some of the previous attempts and why we believe the new approach is better.</p>
 <ul>
 <li>
@@ -429,11 +426,13 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by <a href="http://hadley.nz">Hadley Wickham</a>, <a href="https://www.rstudio.com"><img src="https://www.tidyverse.org/rstudio-logo.svg" alt="RStudio" height="24"></a>.</p>
+  <p></p>
+<p>Developed by <a href="http://hadley.nz" class="external-link">Hadley Wickham</a>, <a href="https://www.rstudio.com" class="external-link"><img src="https://www.tidyverse.org/rstudio-logo.svg" alt="RStudio" width="72"></a>.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
 </div>
 
       </footer>
@@ -441,6 +440,8 @@
 
   
 
+
+  
 
   </body>
 </html>

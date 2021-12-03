@@ -32,6 +32,8 @@
 </script>
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -44,18 +46,12 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">testthat</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">3.1.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">3.1.0.9000</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-<li>
-  <a href="../index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
 <li>
   <a href="../reference/index.html">Reference</a>
 </li>
@@ -95,31 +91,32 @@
   <ul class="dropdown-menu" role="menu">
 <li class="dropdown-header">Releases</li>
     <li>
-      <a href="https://www.tidyverse.org/blog/2021/10/testthat-3-1/">Version 3.1.0</a>
+      <a href="https://www.tidyverse.org/blog/2021/10/testthat-3-1/" class="external-link">Version 3.1.0</a>
     </li>
     <li>
-      <a href="https://www.tidyverse.org/blog/2020/10/testthat-3-0-0/">Version 3.0.0</a>
+      <a href="https://www.tidyverse.org/blog/2020/10/testthat-3-0-0/" class="external-link">Version 3.0.0</a>
     </li>
     <li>
-      <a href="https://www.tidyverse.org/blog/2019/11/testthat-2-3-0/">Version 2.3.0</a>
+      <a href="https://www.tidyverse.org/blog/2019/11/testthat-2-3-0/" class="external-link">Version 2.3.0</a>
     </li>
     <li>
-      <a href="https://www.tidyverse.org/articles/2019/04/testthat-2-1-0/">Version 2.1.0</a>
+      <a href="https://www.tidyverse.org/articles/2019/04/testthat-2-1-0/" class="external-link">Version 2.1.0</a>
     </li>
     <li>
-      <a href="https://www.tidyverse.org/articles/2017/12/testthat-2-0-0/">Version 2.0.0</a>
+      <a href="https://www.tidyverse.org/articles/2017/12/testthat-2-0-0/" class="external-link">Version 2.0.0</a>
     </li>
     <li>
-      <a href="https://blog.rstudio.com/2016/04/29/testthat-1-0-0/">Version 1.0.0</a>
+      <a href="https://blog.rstudio.com/2016/04/29/testthat-1-0-0/" class="external-link">Version 1.0.0</a>
     </li>
     <li>
-      <a href="https://blog.rstudio.com/2015/05/29/testthat-0-10-0/">Version 0.10.0</a>
+      <a href="https://blog.rstudio.com/2015/05/29/testthat-0-10-0/" class="external-link">Version 0.10.0</a>
     </li>
     <li>
-      <a href="https://blog.rstudio.com/2014/09/23/testthat-0-9/">Version 0.9.0</a>
+      <a href="https://blog.rstudio.com/2014/09/23/testthat-0-9/" class="external-link">Version 0.9.0</a>
     </li>
     <li class="divider">
-    <li>
+    </li>
+<li>
       <a href="../news/index.html">Changelog</a>
     </li>
   </ul>
@@ -127,7 +124,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/r-lib/testthat/">
+  <a href="https://github.com/r-lib/testthat/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -148,7 +145,7 @@
       <h1 data-toc-skip>Custom expectations</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/r-lib/testthat/blob/master/vignettes/custom-expectation.Rmd"><code>vignettes/custom-expectation.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/r-lib/testthat/blob/HEAD/vignettes/custom-expectation.Rmd" class="external-link"><code>vignettes/custom-expectation.Rmd</code></a></small>
       <div class="hidden name"><code>custom-expectation.Rmd</code></div>
 
     </div>
@@ -156,77 +153,77 @@
     
     
 <p>This vignette shows you how to create custom expectations that work identically to the built-in <code>expect_</code> functions. Since these functions will need to be loaded when your package is loaded for testing, it is recommended that <code>expect_</code> functions be defined in <code>test-helpers.R</code> in your packages <code>R/</code> directory.</p>
-<div id="creating-an-expectation" class="section level2">
-<h2 class="hasAnchor">
-<a href="#creating-an-expectation" class="anchor"></a>Creating an expectation</h2>
+<div class="section level2">
+<h2 id="creating-an-expectation">Creating an expectation<a class="anchor" aria-label="anchor" href="#creating-an-expectation"></a>
+</h2>
 <p>There are three main parts to writing an expectation, as illustrated by <code><a href="../reference/expect_length.html">expect_length()</a></code>:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">expect_length</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">object</span>, <span class="va">n</span><span class="op">)</span> <span class="op">{</span>
   <span class="co"># 1. Capture object and label</span>
-  <span class="va">act</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/quasi_label.html">quasi_label</a></span><span class="op">(</span><span class="fu">rlang</span><span class="fu">::</span><span class="fu"><a href="https://rlang.r-lib.org/reference/nse-defuse.html">enquo</a></span><span class="op">(</span><span class="va">object</span><span class="op">)</span>, arg <span class="op">=</span> <span class="st">"object"</span><span class="op">)</span>
+  <span class="va">act</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/quasi_label.html">quasi_label</a></span><span class="op">(</span><span class="fu">rlang</span><span class="fu">::</span><span class="fu"><a href="https://rlang.r-lib.org/reference/nse-defuse.html" class="external-link">enquo</a></span><span class="op">(</span><span class="va">object</span><span class="op">)</span>, arg <span class="op">=</span> <span class="st">"object"</span><span class="op">)</span>
 
   <span class="co"># 2. Call expect()</span>
-  <span class="va">act</span><span class="op">$</span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">act</span><span class="op">$</span><span class="va">val</span><span class="op">)</span>
+  <span class="va">act</span><span class="op">$</span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">act</span><span class="op">$</span><span class="va">val</span><span class="op">)</span>
   <span class="fu"><a href="../reference/expect.html">expect</a></span><span class="op">(</span>
     <span class="va">act</span><span class="op">$</span><span class="va">n</span> <span class="op">==</span> <span class="va">n</span>,
-    <span class="fu"><a href="https://rdrr.io/r/base/sprintf.html">sprintf</a></span><span class="op">(</span><span class="st">"%s has length %i, not length %i."</span>, <span class="va">act</span><span class="op">$</span><span class="va">lab</span>, <span class="va">act</span><span class="op">$</span><span class="va">n</span>, <span class="va">n</span><span class="op">)</span>
+    <span class="fu"><a href="https://rdrr.io/r/base/sprintf.html" class="external-link">sprintf</a></span><span class="op">(</span><span class="st">"%s has length %i, not length %i."</span>, <span class="va">act</span><span class="op">$</span><span class="va">lab</span>, <span class="va">act</span><span class="op">$</span><span class="va">n</span>, <span class="va">n</span><span class="op">)</span>
   <span class="op">)</span>
 
   <span class="co"># 3. Invisibly return the value</span>
-  <span class="fu"><a href="https://rdrr.io/r/base/invisible.html">invisible</a></span><span class="op">(</span><span class="va">act</span><span class="op">$</span><span class="va">val</span><span class="op">)</span>
+  <span class="fu"><a href="https://rdrr.io/r/base/invisible.html" class="external-link">invisible</a></span><span class="op">(</span><span class="va">act</span><span class="op">$</span><span class="va">val</span><span class="op">)</span>
 <span class="op">}</span></code></pre></div>
 </div>
-<div id="quasi-labelling" class="section level2">
-<h2 class="hasAnchor">
-<a href="#quasi-labelling" class="anchor"></a>Quasi-labelling</h2>
+<div class="section level2">
+<h2 id="quasi-labelling">Quasi-labelling<a class="anchor" aria-label="anchor" href="#quasi-labelling"></a>
+</h2>
 <p>The first step in any expectation is to capture the actual object, and generate a label for it to use if a failure occur. All testthat expectations support quasiquotation so that you can unquote variables. This makes it easier to generate good labels when the expectation is called from a function or within a for loop.</p>
 <p>By convention, the first argument to every <code>expect_</code> function is called <code>object</code>, and you capture it’s value (<code>val</code>) and label (<code>lab</code>) with <code>act &lt;- quasi_label(enquo(object))</code>, where <code>act</code> is short for actual.</p>
-<div id="verify-the-expectation" class="section level3">
-<h3 class="hasAnchor">
-<a href="#verify-the-expectation" class="anchor"></a>Verify the expectation</h3>
+<div class="section level3">
+<h3 id="verify-the-expectation">Verify the expectation<a class="anchor" aria-label="anchor" href="#verify-the-expectation"></a>
+</h3>
 <p>Next, you should verify the expectation. This often involves a little computation (here just figuring out the <code>length</code>), and you should typically store the results back into the <code>act</code> object.</p>
 <p>Next you call <code><a href="../reference/expect.html">expect()</a></code>. This has two arguments:</p>
 <ol style="list-style-type: decimal">
 <li><p><code>ok</code>: was the expectation successful? This is usually easy to write</p></li>
 <li>
 <p><code>failure_message</code>: What informative error message should be reported to the user so that they can diagnose the problem. This is often hard to write!</p>
-<p>For historical reasons, most built-in expectations generate these with <code><a href="https://rdrr.io/r/base/sprintf.html">sprintf()</a></code>, but today I’d recommend using the <a href="https://glue.tidyverse.org">glue</a> package</p>
+<p>For historical reasons, most built-in expectations generate these with <code><a href="https://rdrr.io/r/base/sprintf.html" class="external-link">sprintf()</a></code>, but today I’d recommend using the <a href="https://glue.tidyverse.org" class="external-link">glue</a> package</p>
 </li>
 </ol>
 </div>
-<div id="invisibly-return-the-input" class="section level3">
-<h3 class="hasAnchor">
-<a href="#invisibly-return-the-input" class="anchor"></a>Invisibly return the input</h3>
+<div class="section level3">
+<h3 id="invisibly-return-the-input">Invisibly return the input<a class="anchor" aria-label="anchor" href="#invisibly-return-the-input"></a>
+</h3>
 <p>Expectation functions are called primarily for their side-effects (triggering a failure), so should invisibly return their input, <code>act$val</code>. This allows expectations to be chained:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">mtcars</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
-  <span class="fu"><a href="../reference/inheritance-expectations.html">expect_type</a></span><span class="op">(</span><span class="st">"list"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
-  <span class="fu"><a href="../reference/inheritance-expectations.html">expect_s3_class</a></span><span class="op">(</span><span class="st">"data.frame"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+<code class="sourceCode R"><span class="va">mtcars</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="../reference/inheritance-expectations.html">expect_type</a></span><span class="op">(</span><span class="st">"list"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="../reference/inheritance-expectations.html">expect_s3_class</a></span><span class="op">(</span><span class="st">"data.frame"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> 
   <span class="fu"><a href="../reference/expect_length.html">expect_length</a></span><span class="op">(</span><span class="fl">11</span><span class="op">)</span></code></pre></div>
 </div>
 </div>
-<div id="succeed-and-fail" class="section level2">
-<h2 class="hasAnchor">
-<a href="#succeed-and-fail" class="anchor"></a><code>succeed()</code> and <code>fail()</code>
+<div class="section level2">
+<h2 id="succeed-and-fail">
+<code>succeed()</code> and <code>fail()</code><a class="anchor" aria-label="anchor" href="#succeed-and-fail"></a>
 </h2>
 <p>For expectations with more complex logic governing when success or failure occurs, you can use <code><a href="../reference/fail.html">succeed()</a></code> and <code><a href="../reference/fail.html">fail()</a></code>. These are simple wrappers around <code><a href="../reference/expect.html">expect()</a></code> that allow you to write code that looks like this:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">expect_length</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">object</span>, <span class="va">n</span><span class="op">)</span> <span class="op">{</span>
-  <span class="va">act</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/quasi_label.html">quasi_label</a></span><span class="op">(</span><span class="fu">rlang</span><span class="fu">::</span><span class="fu"><a href="https://rlang.r-lib.org/reference/nse-defuse.html">enquo</a></span><span class="op">(</span><span class="va">object</span><span class="op">)</span>, arg <span class="op">=</span> <span class="st">"object"</span><span class="op">)</span>
+  <span class="va">act</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/quasi_label.html">quasi_label</a></span><span class="op">(</span><span class="fu">rlang</span><span class="fu">::</span><span class="fu"><a href="https://rlang.r-lib.org/reference/nse-defuse.html" class="external-link">enquo</a></span><span class="op">(</span><span class="va">object</span><span class="op">)</span>, arg <span class="op">=</span> <span class="st">"object"</span><span class="op">)</span>
 
-  <span class="va">act</span><span class="op">$</span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">act</span><span class="op">$</span><span class="va">val</span><span class="op">)</span>
+  <span class="va">act</span><span class="op">$</span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">act</span><span class="op">$</span><span class="va">val</span><span class="op">)</span>
   <span class="kw">if</span> <span class="op">(</span><span class="va">act</span><span class="op">$</span><span class="va">n</span> <span class="op">==</span> <span class="va">n</span><span class="op">)</span> <span class="op">{</span>
     <span class="fu"><a href="../reference/fail.html">succeed</a></span><span class="op">(</span><span class="op">)</span>
-    <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/invisible.html">invisible</a></span><span class="op">(</span><span class="va">act</span><span class="op">$</span><span class="va">val</span><span class="op">)</span><span class="op">)</span>
+    <span class="kw"><a href="https://rdrr.io/r/base/function.html" class="external-link">return</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/invisible.html" class="external-link">invisible</a></span><span class="op">(</span><span class="va">act</span><span class="op">$</span><span class="va">val</span><span class="op">)</span><span class="op">)</span>
   <span class="op">}</span>
 
-  <span class="va">message</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sprintf.html">sprintf</a></span><span class="op">(</span><span class="st">"%s has length %i, not length %i."</span>, <span class="va">act</span><span class="op">$</span><span class="va">lab</span>, <span class="va">act</span><span class="op">$</span><span class="va">n</span>, <span class="va">n</span><span class="op">)</span>
+  <span class="va">message</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sprintf.html" class="external-link">sprintf</a></span><span class="op">(</span><span class="st">"%s has length %i, not length %i."</span>, <span class="va">act</span><span class="op">$</span><span class="va">lab</span>, <span class="va">act</span><span class="op">$</span><span class="va">n</span>, <span class="va">n</span><span class="op">)</span>
   <span class="fu"><a href="../reference/fail.html">fail</a></span><span class="op">(</span><span class="va">message</span><span class="op">)</span>
 <span class="op">}</span></code></pre></div>
 </div>
-<div id="testing-your-expectations" class="section level2">
-<h2 class="hasAnchor">
-<a href="#testing-your-expectations" class="anchor"></a>Testing your expectations</h2>
+<div class="section level2">
+<h2 id="testing-your-expectations">Testing your expectations<a class="anchor" aria-label="anchor" href="#testing-your-expectations"></a>
+</h2>
 <p>Use the expectations <code><a href="../reference/expect_success.html">expect_success()</a></code> and <code><a href="../reference/expect_success.html">expect_failure()</a></code> to test your expectation.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/test_that.html">test_that</a></span><span class="op">(</span><span class="st">"length computed correctly"</span>, <span class="op">{</span>
@@ -235,7 +232,7 @@
   <span class="fu"><a href="../reference/expect_success.html">expect_success</a></span><span class="op">(</span><span class="fu"><a href="../reference/expect_length.html">expect_length</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, <span class="fl">10</span><span class="op">)</span><span class="op">)</span>
   <span class="fu"><a href="../reference/expect_success.html">expect_success</a></span><span class="op">(</span><span class="fu"><a href="../reference/expect_length.html">expect_length</a></span><span class="op">(</span><span class="va">letters</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">]</span>, <span class="fl">5</span><span class="op">)</span><span class="op">)</span>
 <span class="op">}</span><span class="op">)</span>
-<span class="co">#&gt; Test passed 🎉</span></code></pre></div>
+<span class="co">#&gt; <span style="color: #00BB00;">Test passed</span> 🥳</span></code></pre></div>
 </div>
   </div>
 
@@ -250,11 +247,13 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by <a href="http://hadley.nz">Hadley Wickham</a>, <a href="https://www.rstudio.com"><img src="https://www.tidyverse.org/rstudio-logo.svg" alt="RStudio" height="24"></a>.</p>
+  <p></p>
+<p>Developed by <a href="http://hadley.nz" class="external-link">Hadley Wickham</a>, <a href="https://www.rstudio.com" class="external-link"><img src="https://www.tidyverse.org/rstudio-logo.svg" alt="RStudio" width="72"></a>.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
 </div>
 
       </footer>
@@ -262,6 +261,8 @@
 
   
 
+
+  
 
   </body>
 </html>

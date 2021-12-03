@@ -32,6 +32,8 @@
 </script>
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -44,18 +46,12 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">testthat</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">3.1.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">3.1.0.9000</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-<li>
-  <a href="../index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
 <li>
   <a href="../reference/index.html">Reference</a>
 </li>
@@ -95,31 +91,32 @@
   <ul class="dropdown-menu" role="menu">
 <li class="dropdown-header">Releases</li>
     <li>
-      <a href="https://www.tidyverse.org/blog/2021/10/testthat-3-1/">Version 3.1.0</a>
+      <a href="https://www.tidyverse.org/blog/2021/10/testthat-3-1/" class="external-link">Version 3.1.0</a>
     </li>
     <li>
-      <a href="https://www.tidyverse.org/blog/2020/10/testthat-3-0-0/">Version 3.0.0</a>
+      <a href="https://www.tidyverse.org/blog/2020/10/testthat-3-0-0/" class="external-link">Version 3.0.0</a>
     </li>
     <li>
-      <a href="https://www.tidyverse.org/blog/2019/11/testthat-2-3-0/">Version 2.3.0</a>
+      <a href="https://www.tidyverse.org/blog/2019/11/testthat-2-3-0/" class="external-link">Version 2.3.0</a>
     </li>
     <li>
-      <a href="https://www.tidyverse.org/articles/2019/04/testthat-2-1-0/">Version 2.1.0</a>
+      <a href="https://www.tidyverse.org/articles/2019/04/testthat-2-1-0/" class="external-link">Version 2.1.0</a>
     </li>
     <li>
-      <a href="https://www.tidyverse.org/articles/2017/12/testthat-2-0-0/">Version 2.0.0</a>
+      <a href="https://www.tidyverse.org/articles/2017/12/testthat-2-0-0/" class="external-link">Version 2.0.0</a>
     </li>
     <li>
-      <a href="https://blog.rstudio.com/2016/04/29/testthat-1-0-0/">Version 1.0.0</a>
+      <a href="https://blog.rstudio.com/2016/04/29/testthat-1-0-0/" class="external-link">Version 1.0.0</a>
     </li>
     <li>
-      <a href="https://blog.rstudio.com/2015/05/29/testthat-0-10-0/">Version 0.10.0</a>
+      <a href="https://blog.rstudio.com/2015/05/29/testthat-0-10-0/" class="external-link">Version 0.10.0</a>
     </li>
     <li>
-      <a href="https://blog.rstudio.com/2014/09/23/testthat-0-9/">Version 0.9.0</a>
+      <a href="https://blog.rstudio.com/2014/09/23/testthat-0-9/" class="external-link">Version 0.9.0</a>
     </li>
     <li class="divider">
-    <li>
+    </li>
+<li>
       <a href="../news/index.html">Changelog</a>
     </li>
   </ul>
@@ -127,7 +124,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/r-lib/testthat/">
+  <a href="https://github.com/r-lib/testthat/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -148,7 +145,7 @@
       <h1 data-toc-skip>Skipping tests</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/r-lib/testthat/blob/master/vignettes/skipping.Rmd"><code>vignettes/skipping.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/r-lib/testthat/blob/HEAD/vignettes/skipping.Rmd" class="external-link"><code>vignettes/skipping.Rmd</code></a></small>
       <div class="hidden name"><code>skipping.Rmd</code></div>
 
     </div>
@@ -157,15 +154,15 @@
     
 <p>Some times you have tests that you don’t want to run in certain circumstances. This vignette describes how to <strong>skip</strong> tests to avoid execution in undesired environments. Skipping is a relatively advanced topic because in most cases you want all your tests to run everywhere. The most common exceptions are:</p>
 <ul>
-<li><p>You’re testing a web service that occasionally fails, and you don’t want to run the tests on CRAN. Or maybe the API requires authentication, and you can only run the tests when you’ve <a href="https://gargle.r-lib.org/articles/articles/managing-tokens-securely.html">securely distributed</a> some secrets.</p></li>
+<li><p>You’re testing a web service that occasionally fails, and you don’t want to run the tests on CRAN. Or maybe the API requires authentication, and you can only run the tests when you’ve <a href="https://gargle.r-lib.org/articles/articles/managing-tokens-securely.html" class="external-link">securely distributed</a> some secrets.</p></li>
 <li><p>You’re relying on features that not all operating systems possess, and want to make sure your code doesn’t run on a platform where it doesn’t work. This platform tends to be Windows, since amongst other things, it lacks full utf8 support.</p></li>
 <li><p>You’re writing your tests for multiple versions of R or multiple versions of a dependency and you want to skip when a feature isn’t available. You generally don’t need to skip tests if a suggested package is not installed. This is only needed in exceptional circumstances, e.g. when a package is not available on some operating system.</p></li>
 </ul>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://testthat.r-lib.org">testthat</a></span><span class="op">)</span></code></pre></div>
-<div id="basics" class="section level2">
-<h2 class="hasAnchor">
-<a href="#basics" class="anchor"></a>Basics</h2>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://testthat.r-lib.org">testthat</a></span><span class="op">)</span></code></pre></div>
+<div class="section level2">
+<h2 id="basics">Basics<a class="anchor" aria-label="anchor" href="#basics"></a>
+</h2>
 <p>testthat comes with a variety of helpers for the most common situations:</p>
 <ul>
 <li><p><code><a href="../reference/skip.html">skip_on_cran()</a></code> skips tests on CRAN. This is useful for slow tests and tests that occasionally fail for reasons outside of your control.</p></li>
@@ -179,14 +176,14 @@
 ● On CRAN (1)</code></pre>
 <p>You should keep an on eye this when developing interactively to make sure that you’re not accidentally skipping the wrong things.</p>
 </div>
-<div id="helpers" class="section level2">
-<h2 class="hasAnchor">
-<a href="#helpers" class="anchor"></a>Helpers</h2>
+<div class="section level2">
+<h2 id="helpers">Helpers<a class="anchor" aria-label="anchor" href="#helpers"></a>
+</h2>
 <p>If you find yourself using the same <code><a href="../reference/skip.html">skip_if()</a></code>/<code><a href="../reference/skip.html">skip_if_not()</a></code> expression across multiple tests, it’s a good idea to create a helper function. This function should start with <code>skip_</code> and live somewhere in your <code>R/</code> directory.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">skip_if_Tuesday</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="op">)</span> <span class="op">{</span>
-  <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/as.POSIXlt.html">as.POSIXlt</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.Date</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">$</span><span class="va">wday</span> <span class="op">!=</span> <span class="fl">2</span><span class="op">)</span> <span class="op">{</span>
-    <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/invisible.html">invisible</a></span><span class="op">(</span><span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span>
+  <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/as.POSIXlt.html" class="external-link">as.POSIXlt</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html" class="external-link">Sys.Date</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">$</span><span class="va">wday</span> <span class="op">!=</span> <span class="fl">2</span><span class="op">)</span> <span class="op">{</span>
+    <span class="kw"><a href="https://rdrr.io/r/base/function.html" class="external-link">return</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/invisible.html" class="external-link">invisible</a></span><span class="op">(</span><span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span>
   <span class="op">}</span>
   
   <span class="fu"><a href="../reference/skip.html">skip</a></span><span class="op">(</span><span class="st">"Not run on Tuesday"</span><span class="op">)</span>
@@ -195,8 +192,8 @@
 <p>For that reason, it’s a good idea to add a test that you skip is activated when you expect. skips are a special type of condition, so you can test for their presence/absence with <code><a href="../reference/expect_error.html">expect_condition()</a></code>. For example, imagine that you’ve defined a custom skipper that skips tests whenever an environment variable <code>DANGER</code> is set:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">skip_if_dangerous</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="op">)</span> <span class="op">{</span>
-  <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/identical.html">identical</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Sys.getenv.html">Sys.getenv</a></span><span class="op">(</span><span class="st">"DANGER"</span><span class="op">)</span>, <span class="st">""</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
-    <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/invisible.html">invisible</a></span><span class="op">(</span><span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span>
+  <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/identical.html" class="external-link">identical</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Sys.getenv.html" class="external-link">Sys.getenv</a></span><span class="op">(</span><span class="st">"DANGER"</span><span class="op">)</span>, <span class="st">""</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
+    <span class="kw"><a href="https://rdrr.io/r/base/function.html" class="external-link">return</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/invisible.html" class="external-link">invisible</a></span><span class="op">(</span><span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span>
   <span class="op">}</span>
   
   <span class="fu"><a href="../reference/skip.html">skip</a></span><span class="op">(</span><span class="st">"Not run in dangerous enviromnents"</span><span class="op">)</span>
@@ -205,15 +202,15 @@
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/test_that.html">test_that</a></span><span class="op">(</span><span class="st">"skip_if_dangerous work"</span>, <span class="op">{</span>
   <span class="co"># Test that a skip happens</span>
-  <span class="fu">withr</span><span class="fu">::</span><span class="fu"><a href="https://withr.r-lib.org/reference/with_envvar.html">local_envvar</a></span><span class="op">(</span>DANGER <span class="op">=</span> <span class="st">"yes"</span><span class="op">)</span>
+  <span class="fu">withr</span><span class="fu">::</span><span class="fu"><a href="https://withr.r-lib.org/reference/with_envvar.html" class="external-link">local_envvar</a></span><span class="op">(</span>DANGER <span class="op">=</span> <span class="st">"yes"</span><span class="op">)</span>
   <span class="fu"><a href="../reference/expect_error.html">expect_condition</a></span><span class="op">(</span><span class="fu">skip_if_dangerous</span><span class="op">(</span><span class="op">)</span>, class <span class="op">=</span> <span class="st">"skip"</span><span class="op">)</span> 
 
   <span class="co"># Test that a skip doesn't happen</span>
-  <span class="fu">withr</span><span class="fu">::</span><span class="fu"><a href="https://withr.r-lib.org/reference/with_envvar.html">local_envvar</a></span><span class="op">(</span>DANGER <span class="op">=</span> <span class="st">""</span><span class="op">)</span>
+  <span class="fu">withr</span><span class="fu">::</span><span class="fu"><a href="https://withr.r-lib.org/reference/with_envvar.html" class="external-link">local_envvar</a></span><span class="op">(</span>DANGER <span class="op">=</span> <span class="st">""</span><span class="op">)</span>
   <span class="fu"><a href="../reference/expect_error.html">expect_condition</a></span><span class="op">(</span><span class="fu">skip_if_dangerous</span><span class="op">(</span><span class="op">)</span>, <span class="cn">NA</span>, class <span class="op">=</span> <span class="st">"skip"</span><span class="op">)</span>
 <span class="op">}</span><span class="op">)</span>
-<span class="co">#&gt; Test passed 🎉</span></code></pre></div>
-<p>Testing <code>skip_if_Tuesday()</code> is harder because there’s no way to control the skipping from the outside. That means you’d need to “mock” its behaviour in a test, using the <a href="https://github.com/r-lib/mockery">mockery</a> or <a href="https://krlmlr.github.io/mockr/">mockr</a> packages.</p>
+<span class="co">#&gt; <span style="color: #00BB00;">Test passed</span> 🎉</span></code></pre></div>
+<p>Testing <code>skip_if_Tuesday()</code> is harder because there’s no way to control the skipping from the outside. That means you’d need to “mock” its behaviour in a test, using the <a href="https://github.com/r-lib/mockery" class="external-link">mockery</a> or <a href="https://krlmlr.github.io/mockr/" class="external-link">mockr</a> packages.</p>
 </div>
   </div>
 
@@ -228,11 +225,13 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by <a href="http://hadley.nz">Hadley Wickham</a>, <a href="https://www.rstudio.com"><img src="https://www.tidyverse.org/rstudio-logo.svg" alt="RStudio" height="24"></a>.</p>
+  <p></p>
+<p>Developed by <a href="http://hadley.nz" class="external-link">Hadley Wickham</a>, <a href="https://www.rstudio.com" class="external-link"><img src="https://www.tidyverse.org/rstudio-logo.svg" alt="RStudio" width="72"></a>.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
 </div>
 
       </footer>
@@ -240,6 +239,8 @@
 
   
 
+
+  
 
   </body>
 </html>
