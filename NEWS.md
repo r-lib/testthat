@@ -1,3 +1,5 @@
+# testthat (development version)
+
 # testthat 3.1.1
 
 * Condition expectations like `expect_error()` now match across the
