@@ -1,27 +1,19 @@
 # Revdeps
 
-## Failed to check (111)
+## Failed to check (40)
 
 |package               |version |error |warning |note |
 |:---------------------|:-------|:-----|:-------|:----|
 |ActiveDriverWGS       |?       |      |        |     |
 |adjclust              |?       |      |        |     |
-|AhoCorasickTrie       |?       |      |        |     |
 |backShift             |?       |      |        |     |
-|NA                    |?       |      |        |     |
 |BaseSet               |?       |      |        |     |
 |bedr                  |?       |      |        |     |
 |bio3d                 |?       |      |        |     |
-|biomartr              |?       |      |        |     |
 |bioOED                |?       |      |        |     |
-|NA                    |?       |      |        |     |
-|NA                    |?       |      |        |     |
 |bnclassify            |?       |      |        |     |
 |bnmonitor             |?       |      |        |     |
 |bold                  |?       |      |        |     |
-|Boom                  |0.9.7   |1     |        |     |
-|NA                    |?       |      |        |     |
-|NA                    |?       |      |        |     |
 |chicane               |?       |      |        |     |
 |clustDRM              |?       |      |        |     |
 |clustermole           |?       |      |        |     |
@@ -32,103 +24,24 @@
 |CovidMutations        |?       |      |        |     |
 |cowplot               |?       |      |        |     |
 |cRegulome             |?       |      |        |     |
-|CSESA                 |?       |      |        |     |
-|deeptime              |?       |      |        |     |
 |DGCA                  |?       |      |        |     |
 |DGEobj                |?       |      |        |     |
-|DGEobj.utils          |?       |      |        |     |
 |DIscBIO               |?       |      |        |     |
-|dispRity              |?       |      |        |     |
-|NA                    |?       |      |        |     |
 |DRomics               |?       |      |        |     |
-|NA                    |?       |      |        |     |
-|NA                    |?       |      |        |     |
-|NA                    |?       |      |        |     |
-|ecocomDP              |?       |      |        |     |
-|NA                    |?       |      |        |     |
-|fishtree              |?       |      |        |     |
 |FREEtree              |?       |      |        |     |
 |FSelectorRcpp         |?       |      |        |     |
-|galah                 |?       |      |        |     |
 |GALLO                 |?       |      |        |     |
-|NA                    |?       |      |        |     |
 |GMMAT                 |?       |      |        |     |
-|NA                    |?       |      |        |     |
-|NA                    |?       |      |        |     |
-|helminthR             |?       |      |        |     |
 |HEMDAG                |?       |      |        |     |
-|NA                    |?       |      |        |     |
-|hillR                 |?       |      |        |     |
-|hisse                 |?       |      |        |     |
 |HTSSIP                |?       |      |        |     |
 |ICAMS                 |?       |      |        |     |
-|NA                    |?       |      |        |     |
-|kdensity              |?       |      |        |     |
-|loon.ggplot           |?       |      |        |     |
-|loon.shiny            |?       |      |        |     |
-|loon.tourr            |?       |      |        |     |
 |LoopRig               |?       |      |        |     |
 |MAGEE                 |?       |      |        |     |
-|mapr                  |?       |      |        |     |
-|mauricer              |?       |      |        |     |
-|NA                    |?       |      |        |     |
-|metacoder             |?       |      |        |     |
-|NA                    |?       |      |        |     |
-|myTAI                 |?       |      |        |     |
 |NetLogoR              |?       |      |        |     |
-|nLTT                  |?       |      |        |     |
-|nodeSub               |?       |      |        |     |
-|ouxy                  |?       |      |        |     |
-|paleotree             |?       |      |        |     |
-|NA                    |?       |      |        |     |
-|performance           |?       |      |        |     |
-|phyr                  |?       |      |        |     |
 |Platypus              |?       |      |        |     |
-|PLNmodels             |?       |      |        |     |
-|pmc                   |?       |      |        |     |
-|NA                    |?       |      |        |     |
 |RAM                   |?       |      |        |     |
-|rbison                |?       |      |        |     |
-|NA                    |?       |      |        |     |
-|NA                    |?       |      |        |     |
-|NA                    |?       |      |        |     |
-|rhierbaps             |?       |      |        |     |
-|rmangal               |?       |      |        |     |
-|rnoaa                 |?       |      |        |     |
-|rusda                 |?       |      |        |     |
 |SCRIP                 |?       |      |        |     |
-|secsse                |?       |      |        |     |
 |Signac                |?       |      |        |     |
-|NA                    |?       |      |        |     |
-|SMITIDstruct          |?       |      |        |     |
-|SMITIDvisu            |?       |      |        |     |
-|spocc                 |?       |      |        |     |
-|NA                    |?       |      |        |     |
-|taxizedb              |?       |      |        |     |
-|taxlist               |?       |      |        |     |
 |TGS                   |?       |      |        |     |
-|traitdataform         |?       |      |        |     |
-|traits                |?       |      |        |     |
-|treedata.table        |?       |      |        |     |
 |TreeDist              |?       |      |        |     |
-|treespace             |?       |      |        |     |
-|treestartr            |?       |      |        |     |
-|vegtable              |?       |      |        |     |
-|vivid                 |?       |      |        |     |
-
-## New problems (11)
-
-|package                                      |version |error     |warning |note   |
-|:--------------------------------------------|:-------|:---------|:-------|:------|
-|[aprof](problems.md#aprof)                   |0.4.1   |-1        |        |__+1__ |
-|[coro](problems.md#coro)                     |1.0.1   |-1 __+1__ |__+1__  |__+1__ |
-|[DArand](problems.md#darand)                 |0.0.1.1 |__+1__    |        |       |
-|[DockerParallel](problems.md#dockerparallel) |1.0.4   |-1        |__+1__  |       |
-|[kgc](problems.md#kgc)                       |1.0.0.2 |          |__+1__  |       |
-|[MakefileR](problems.md#makefiler)           |1.0     |-1        |__+1__  |       |
-|[PakPMICS2018hh](problems.md#pakpmics2018hh) |0.1.0   |-1        |__+1__  |       |
-|[PetfindeR](problems.md#petfinder)           |2.1.0   |-1        |__+1__  |__+1__ |
-|[Q7](problems.md#q7)                         |0.1.0   |-1        |__+1__  |       |
-|[restrictedMVN](problems.md#restrictedmvn)   |1.0     |__+1__    |        |       |
-|[tidyquant](problems.md#tidyquant)           |1.0.3   |-1        |__+1__  |2      |
 
