@@ -154,7 +154,7 @@ snapshot_replay.condition <- function(x,
     type <- paste0(type, " <", class(x)[[1]], ">")
   }
 
-  c(snap_header(state, type), snapshot_lines(msg, transform))
+  c(snap_header(state, type), snapshot_lines(msg, transform, keep_empty = TRUE))
 }
 
 snapshot_replay_condition_legacy <- function(x, state, transform = NULL) {
@@ -173,15 +173,15 @@ snapshot_replay_condition_legacy <- function(x, state, transform = NULL) {
 
   class <- paste0(type, " <", class(x)[[1]], ">")
 
-  c(snap_header(state, class), snapshot_lines(msg, transform))
+  c(snap_header(state, class), snapshot_lines(msg, transform, keep_empty = TRUE))
 }
 
-snapshot_lines <- function(x, transform = NULL) {
+snapshot_lines <- function(x, transform = NULL, keep_empty = FALSE) {
   x <- split_lines(x)
   if (!is.null(transform)) {
     x <- transform(x)
   }
-  x <- indent(x)
+  x <- indent(x, keep_empty = keep_empty)
   x
 }
 
@@ -360,7 +360,13 @@ local_snapshot_dir <- function(snap_names, .env = parent.frame()) {
 }
 
 # if transform() wiped out the full message, don't indent, #1487
-indent <- function(x) if (length(x)) paste0("  ", x) else x
+indent <- function(x, keep_empty = FALSE) {
+  if (keep_empty || length(x)) {
+    paste0("  ", x)
+  } else {
+    x
+  }
+}
 
 check_variant <- function(x) {
   if (is.null(x)) {
