@@ -1,5 +1,9 @@
 # testthat (development version)
 
+* `local_reproducible_output()` now sets the global option
+  `cli.num_colors` in addition to `crayon.enabled`.
+
+
 # testthat 3.1.1
 
 * Condition expectations like `expect_error()` now match across the

@@ -1,7 +1,8 @@
 test_that("can supress colours", {
   op <- options(
     crayon.enabled = TRUE,
-    testthat.use_colours = TRUE
+    testthat.use_colours = TRUE,
+    cli.num_colors = 8L
   )
   check <- crayon::has_style(colourise("X"))
   # Must restore original options before expectation is triggered
