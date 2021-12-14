@@ -38,6 +38,8 @@
   If you depend on rlang 1.0 (see above), the default is already set
   to `FALSE`.
 
+* JUnit reporter now includes skip messages/reasons (@rfineman, #1507)
+
 # testthat 3.1.0
 
 ## Snapshot tests
