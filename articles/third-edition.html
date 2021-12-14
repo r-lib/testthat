@@ -170,14 +170,14 @@
   <span class="fu"><a href="../reference/local_edition.html">local_edition</a></span><span class="op">(</span><span class="fl">3</span><span class="op">)</span>
   <span class="fu"><a href="../reference/logical-expectations.html">expect_true</a></span><span class="op">(</span><span class="cn">TRUE</span><span class="op">)</span>
 <span class="op">}</span><span class="op">)</span>
-<span class="co">#&gt; <span style="color: #00BB00;">Test passed</span> 🥳</span></code></pre></div>
+<span class="co">#&gt; <span style="color: #00BB00;">Test passed</span> 😀</span></code></pre></div>
 <p>This is also useful if you’ve switched to the 3rd edition and have a couple of tests that fail. You can use <code>local_edition(2)</code> to revert back to the old behaviour, giving you some breathing room to figure out the underlying issue.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/test_that.html">test_that</a></span><span class="op">(</span><span class="st">"I want to use the 2nd edition"</span>, <span class="op">{</span>
   <span class="fu"><a href="../reference/local_edition.html">local_edition</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span>
   <span class="fu"><a href="../reference/logical-expectations.html">expect_true</a></span><span class="op">(</span><span class="cn">TRUE</span><span class="op">)</span>
 <span class="op">}</span><span class="op">)</span>
-<span class="co">#&gt; <span style="color: #00BB00;">Test passed</span> 🥳</span></code></pre></div>
+<span class="co">#&gt; <span style="color: #00BB00;">Test passed</span> 🌈</span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="changes">Changes<a class="anchor" aria-label="anchor" href="#changes"></a>
@@ -237,9 +237,9 @@
 <code class="sourceCode R"><span class="fu"><a href="../reference/test_that.html">test_that</a></span><span class="op">(</span><span class="st">"f() produces expected outputs/messages/warnings"</span>, <span class="op">{</span>
   <span class="fu"><a href="../reference/expect_snapshot.html">expect_snapshot</a></span><span class="op">(</span><span class="fu">f</span><span class="op">(</span><span class="op">)</span><span class="op">)</span>  
 <span class="op">}</span><span class="op">)</span>
-<span class="co">#&gt; <span style="font-weight: bold;">Can't compare snapshot to reference when testing interactively</span></span>
-<span class="co">#&gt; <span style="color: #0000BB;">i</span> Run `devtools::test()` or `testthat::test_file()` to see changes</span>
-<span class="co">#&gt; <span style="color: #0000BB;">i</span> Current value:</span>
+<span class="co">#&gt; Can't compare snapshot to reference when testing interactively</span>
+<span class="co">#&gt; i Run `devtools::test()` or `testthat::test_file()` to see changes</span>
+<span class="co">#&gt; i Current value:</span>
 <span class="co">#&gt; Code</span>
 <span class="co">#&gt;   f()</span>
 <span class="co">#&gt; Warning &lt;simpleWarning&gt;</span>
