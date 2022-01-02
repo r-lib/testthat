@@ -60,6 +60,7 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
       self$update_interval <- update_interval
 
       self$skips <- Stack$new()
+      self$ctxt_issues <- Stack$new()
 
       # Capture at init so not affected by test settings
       self$frames <- cli::get_spinner()$frames
