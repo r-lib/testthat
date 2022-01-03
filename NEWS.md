@@ -3,6 +3,8 @@
 * `local_reproducible_output()` now sets the global option
   `cli.num_colors` in addition to `crayon.enabled`.
 
+* `expect_snapshot()` no longer inadvertently trims trailing new lines off
+  of errors and messages (#1509).
 
 # testthat 3.1.1
 
