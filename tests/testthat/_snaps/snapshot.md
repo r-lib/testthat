@@ -22,9 +22,9 @@
       [1] "1"
     Message <simpleMessage>
       2
-    Warning <warning>
+    Warning <simpleWarning>
       3
-    Error <rlang_error>
+    Error <simpleError>
       4
 
 # empty lines are preserved
@@ -37,12 +37,28 @@
     Message <simpleMessage>
       2
       
-    Warning <warning>
+    Warning <simpleWarning>
       3
       
-    Error <rlang_error>
+    Error <simpleError>
       4
       
+
+---
+
+    Code
+      f()
+    Output
+      1
+      
+    Message
+      2
+      
+    Condition
+      Warning in `f()`:
+      3
+      Error in `f()`:
+      ! 4
 
 # multiple outputs of same type are collapsed
 
@@ -58,10 +74,10 @@
       b
     Code
       {
-        warn("a")
-        warn("b")
+        warning("a")
+        warning("b")
       }
-    Warning <warning>
+    Warning <simpleWarning>
       a
       b
 
@@ -73,9 +89,9 @@
       [1] "<redacted>"
     Message <simpleMessage>
       <redacted>
-    Warning <warning>
+    Warning <simpleWarning>
       <redacted>
-    Error <rlang_error>
+    Error <simpleError>
       <redacted>
 
 ---

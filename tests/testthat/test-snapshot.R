@@ -14,8 +14,8 @@ test_that("can snapshot everything", {
   f <- function() {
     print("1")
     message("2")
-    warn("3")
-    abort("4")
+    warning("3")
+    stop("4")
   }
   expect_snapshot(f(), error = TRUE)
 })
@@ -24,9 +24,12 @@ test_that("empty lines are preserved", {
   f <- function() {
     cat("1\n\n")
     message("2\n")
-    warn("3\n")
-    abort("4\n\n")
+    warning("3\n")
+    stop("4\n\n")
   }
+  expect_snapshot(f(), error = TRUE)
+
+  local_use_rlang_1_0()
   expect_snapshot(f(), error = TRUE)
 })
 
@@ -35,7 +38,7 @@ test_that("multiple outputs of same type are collapsed", {
     x <- 1
     y <- 1
     {message("a"); message("b")}
-    {warn("a"); warn("b")}
+    {warning("a"); warning("b")}
   })
 })
 
@@ -43,8 +46,8 @@ test_that("can scrub output/messages/warnings/errors", {
   secret <- function() {
     print("secret")
     message("secret")
-    warn("secret")
-    abort("secret")
+    warning("secret")
+    stop("secret")
   }
   redact <- function(x) gsub("secret", "<redacted>", x)
   expect_snapshot(secret(), transform = redact, error = TRUE)

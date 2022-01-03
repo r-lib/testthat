@@ -5,9 +5,9 @@
       abort("Title.", parent = foo)
     Condition
       Error:
-        Title.
+      ! Title.
       Caused by error:
-        Title parent.
+      ! Title parent.
 
 # can print with and without condition classes
 
@@ -16,9 +16,11 @@
     Message <simpleMessage>
       foo
     Condition <simpleWarning>
-      Warning in `f()`: bar
+      Warning in `f()`:
+      bar
     Condition <simpleError>
-      Error in `f()`: baz
+      Error in `f()`:
+      ! baz
 
 ---
 
@@ -27,14 +29,18 @@
     Message
       foo
     Condition
-      Warning in `f()`: bar
-      Error in `f()`: baz
+      Warning in `f()`:
+      bar
+      Error in `f()`:
+      ! baz
 
 # errors and warnings are folded
 
     Code
       f()
     Condition
-      Warning in `f()`: foo
-      Error in `f()`: bar
+      Warning in `f()`:
+      foo
+      Error in `f()`:
+      ! bar
 
