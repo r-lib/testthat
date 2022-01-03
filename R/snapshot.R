@@ -159,9 +159,11 @@ snapshot_replay.condition <- function(x,
 
 snapshot_replay_condition_legacy <- function(x, state, transform = NULL) {
   msg <- cnd_message(x)
+
   if (inherits(x, "error")) {
     state$error <- x
     type <- "Error"
+    msg <- sub("\n$", "", msg)
   } else if (inherits(x, "warning")) {
     type <- "Warning"
   } else if (inherits(x, "message")) {
@@ -171,6 +173,7 @@ snapshot_replay_condition_legacy <- function(x, state, transform = NULL) {
     type <- "Condition"
   }
 
+  msg <- paste0(msg, "\n")
   class <- paste0(type, " <", class(x)[[1]], ">")
 
   c(snap_header(state, class), snapshot_lines(msg, transform))
