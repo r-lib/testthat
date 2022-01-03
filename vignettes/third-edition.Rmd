@@ -37,7 +37,7 @@ The usual way to activate the 3rd edition is to add a line to your `DESCRIPTION`
 
 This will activate the 3rd edition for every test in your package.
 
-You can also control the edition used for indvidual tests with `testthat::local_edition()`:
+You can also control the edition used for individual tests with `testthat::local_edition()`:
 
 ```{r}
 test_that("I can use the 3rd edition", {
@@ -82,6 +82,7 @@ Most of these functions have not been recommended for a number of years, but bef
     This was an overly clever API that I regretted even before the release of testthat 1.0.0.
 
 -   `expect_equivalent()` has been deprecated since it is now equivalent (HA HA) to `expect_equal(ignore_attr = TRUE)`.
+    The main difference is that it won't ignore names; so you'll need an explicit `unname()` if you deliberately want to ignore names.
 
 -   `setup()` and `teardown()` are deprecated in favour of test fixtures.
     See `vignette("test-fixtures")` for details.
@@ -91,6 +92,51 @@ Most of these functions have not been recommended for a number of years, but bef
 -   `with_mock()` and `local_mock()` are deprecated; please use the [mockr](https://krlmlr.github.io/mockr/) or [mockery](https://github.com/r-lib/mockery#mockery) instead.
 
 Fixing these deprecation warnings should be straightforward.
+
+### Warnings
+
+In the second edition, `expect_warning()` swallows all warnings regardless of whether or not they match the `regexp` or `class`:
+
+```{r}
+f <- function() {
+  warning("First warning")
+  warning("Second warning")
+  warning("Third warning")
+}
+
+local_edition(2)
+expect_warning(f(), "First")
+```
+
+In the third edition, `expect_warning()` captures at most one warning so the others will bubble up:
+
+```{r}
+local_edition(3)
+expect_warning(f(), "First")
+```
+
+You can either add additional expectations to catch these warnings, or silence them all with `supressWarnings()`:
+
+```{r}
+f() %>% 
+  expect_warning("First") %>% 
+  expect_warning("Second") %>% 
+  expect_warning("Third")
+
+f() %>% 
+  expect_warning("First") %>% 
+  suppressWarnings()
+```
+
+Alternatively, you might want to capture them all in a snapshot test:
+
+```{r}
+test_that("f() produces expected outputs/messages/warnings", {
+  expect_snapshot(f())  
+})
+```
+
+The same principle also applies to `expect_message()`, but message handling has changed in a more radical way, as described next.
 
 ### Messages
 

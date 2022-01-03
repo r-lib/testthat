@@ -24,10 +24,10 @@
       </testsuite>
       <testsuite name="Errors" timestamp="1999:12:31 23:59:59" hostname="nodename" tests="2" skipped="0" failures="0" errors="2" time="0">
         <testcase time="0" classname="Errors" name="Error_1">
-          <error type="error" message="stop (tests.R:23:3)">Error: stop</error>
+          <error type="error" message="Error in `eval(code, test_env)`: stop (tests.R:23:3)">Error in `eval(code, test_env)`: stop</error>
         </testcase>
         <testcase time="0" classname="Errors" name="errors_get_tracebacks">
-          <error type="error" message="! (tests.R:31:3)">Error: !
+          <error type="error" message="Error in `h()`: ! (tests.R:31:3)">Error in `h()`: !
     Backtrace:
      1. f()
      2. g()
@@ -42,8 +42,11 @@
           <skipped/>
         </testcase>
       </testsuite>
-      <testsuite name="Warnings" timestamp="1999:12:31 23:59:59" hostname="nodename" tests="1" skipped="0" failures="0" errors="0" time="0">
+      <testsuite name="Warnings" timestamp="1999:12:31 23:59:59" hostname="nodename" tests="2" skipped="1" failures="0" errors="0" time="0">
         <testcase time="0" classname="Warnings" name="warnings_get_backtraces"/>
+        <testcase time="0" classname="Warnings" name="warnings_get_backtraces">
+          <skipped/>
+        </testcase>
       </testsuite>
     </testsuites>
 

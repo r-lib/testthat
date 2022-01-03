@@ -45,10 +45,10 @@ with_reporter <- function(reporter, code, start_end_reporter = TRUE) {
     reporter$start_reporter()
   }
 
-  withRestarts(
-    testthat_abort_reporter = function() NULL,
-    force(code)
-  )
+  tryCatch(code, testthat_abort_reporter = function(cnd) {
+    cat(conditionMessage(cnd), "\n")
+    NULL
+  })
 
   if (start_end_reporter) {
     reporter$end_reporter()
@@ -58,12 +58,8 @@ with_reporter <- function(reporter, code, start_end_reporter = TRUE) {
 }
 
 stop_reporter <- function(message) {
-  if (is.null(findRestart("testthat_abort_reporter"))) {
-    abort(message)
-  } else {
-    cat(message, "\n")
-    invokeRestart("testthat_abort_reporter")
-  }
+  signal(message, "testthat_abort_reporter")
+  abort(message)
 }
 
 #' Find reporter object given name or object.

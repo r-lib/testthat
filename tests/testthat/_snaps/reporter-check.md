@@ -1,7 +1,7 @@
 # basic report works
 
     == Skipped tests ===============================================================
-    * empty test (1)
+    * empty test (2)
     * skip (1)
     
     == Warnings ====================================================================
@@ -26,16 +26,16 @@
      1. \-f() reporters/tests.R:17:2
      2.   \-testthat::expect_true(FALSE) reporters/tests.R:16:7
     -- Error (tests.R:23:3): Error:1 -----------------------------------------------
-    Error: stop
+    Error in `eval(code, test_env)`: stop
     -- Error (tests.R:31:3): errors get tracebacks ---------------------------------
-    Error: !
+    Error in `h()`: !
     Backtrace:
         x
      1. \-f() reporters/tests.R:31:2
      2.   \-g() reporters/tests.R:27:7
      3.     \-h() reporters/tests.R:28:7
     
-    [ FAIL 4 | WARN 1 | SKIP 2 | PASS 1 ]
+    [ FAIL 4 | WARN 1 | SKIP 3 | PASS 1 ]
 
 # doesn't truncate long lines
 
@@ -52,7 +52,7 @@
 # shows warnings when not on CRAN
 
     == Skipped tests ===============================================================
-    * empty test (1)
+    * empty test (2)
     * skip (1)
     
     == Warnings ====================================================================
@@ -77,14 +77,14 @@
      1. \-f() reporters/tests.R:17:2
      2.   \-testthat::expect_true(FALSE) reporters/tests.R:16:7
     -- Error (tests.R:23:3): Error:1 -----------------------------------------------
-    Error: stop
+    Error in `eval(code, test_env)`: stop
     -- Error (tests.R:31:3): errors get tracebacks ---------------------------------
-    Error: !
+    Error in `h()`: !
     Backtrace:
         x
      1. \-f() reporters/tests.R:31:2
      2.   \-g() reporters/tests.R:27:7
      3.     \-h() reporters/tests.R:28:7
     
-    [ FAIL 4 | WARN 1 | SKIP 2 | PASS 1 ]
+    [ FAIL 4 | WARN 1 | SKIP 3 | PASS 1 ]
 

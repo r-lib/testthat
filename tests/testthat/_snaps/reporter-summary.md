@@ -5,12 +5,14 @@
     Failures: 12
     Errors: 34
     Skips: SS
-    Warnings: W
+    Warnings: WS
     
     == Skipped =====================================================================
     1. explicit skips are reported (tests.R:37:3) - Reason: skip
     
     2. empty tests are implicitly skipped (tests.R:40:1) - Reason: empty test
+    
+    3. warnings get backtraces (tests.R:45:1) - Reason: empty test
     
     == Warnings ====================================================================
     1. warnings get backtraces (tests.R:49:3) - def
@@ -32,10 +34,10 @@
      2. testthat::expect_true(FALSE) reporters/tests.R:16:7
     
     -- 3. Error (tests.R:23:3): Error:1 --------------------------------------------
-    Error: stop
+    Error in `eval(code, test_env)`: stop
     
     -- 4. Error (tests.R:31:3): errors get tracebacks ------------------------------
-    Error: !
+    Error in `h()`: !
     Backtrace:
      1. f() reporters/tests.R:31:2
      2. g() reporters/tests.R:27:7
@@ -50,12 +52,14 @@
     Failures: 12
     Errors: 34
     Skips: SS
-    Warnings: W
+    Warnings: WS
     
     == Skipped =====================================================================
     1. explicit skips are reported (tests.R:37:3) - Reason: skip
     
     2. empty tests are implicitly skipped (tests.R:40:1) - Reason: empty test
+    
+    3. warnings get backtraces (tests.R:45:1) - Reason: empty test
     
     == Warnings ====================================================================
     1. warnings get backtraces (tests.R:49:3) - def
@@ -77,10 +81,10 @@
      2. testthat::expect_true(FALSE) reporters/tests.R:16:7
     
     -- 3. Error (tests.R:23:3): Error:1 --------------------------------------------
-    Error: stop
+    Error in `eval(code, test_env)`: stop
     
     -- 4. Error (tests.R:31:3): errors get tracebacks ------------------------------
-    Error: !
+    Error in `h()`: !
     Backtrace:
      1. f() reporters/tests.R:31:2
      2. g() reporters/tests.R:27:7
@@ -95,12 +99,14 @@
     Failures: 12
     Errors: 34
     Skips: SS
-    Warnings: W
+    Warnings: WS
     
     == Skipped =====================================================================
     1. explicit skips are reported (tests.R:37:3) - Reason: skip
     
     2. empty tests are implicitly skipped (tests.R:40:1) - Reason: empty test
+    
+    3. warnings get backtraces (tests.R:45:1) - Reason: empty test
     
     == Warnings ====================================================================
     1. warnings get backtraces (tests.R:49:3) - def

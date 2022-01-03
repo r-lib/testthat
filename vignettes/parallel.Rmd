@@ -46,7 +46,7 @@ Because files are run in alphabetical order, you may want to rename your slowest
     This sort of dependency is hard to track down due to the random nature, and you'll need to check all tests to make sure that they're not accidentally changing global state.
 
 -   If you use [packaged scope test fixtures](https://testthat.r-lib.org/articles/test-fixtures.html#package), you'll need to review them to make sure that they work in parallel.
-    For example, if you were previously creating a temporary database in the test directory, you'd need to instead create it in the session temporary directory so that each process gets its on independent version.
+    For example, if you were previously creating a temporary database in the test directory, you'd need to instead create it in the session temporary directory so that each process gets its own independent version.
 
 ## Performance
 

@@ -12,6 +12,7 @@ expect_error(
   regexp = NULL,
   class = NULL,
   ...,
+  inherit = TRUE,
   info = NULL,
   label = NULL
 )
@@ -21,6 +22,7 @@ expect_warning(
   regexp = NULL,
   class = NULL,
   ...,
+  inherit = TRUE,
   all = FALSE,
   info = NULL,
   label = NULL
@@ -31,6 +33,7 @@ expect_message(
   regexp = NULL,
   class = NULL,
   ...,
+  inherit = TRUE,
   all = FALSE,
   info = NULL,
   label = NULL
@@ -41,6 +44,7 @@ expect_condition(
   regexp = NULL,
   class = NULL,
   ...,
+  inherit = TRUE,
   info = NULL,
   label = NULL
 )
@@ -55,7 +59,7 @@ within a function or for loop. See \link{quasi_label} for more details.}
 \itemize{
 \item A character vector giving a regular expression that must match the
 error message.
-\item If \code{NULL}, the default, asserts that there should be a error,
+\item If \code{NULL}, the default, asserts that there should be an error,
 but doesn't test for a specific value.
 \item If \code{NA}, asserts that there should be no errors.
 }}
@@ -70,6 +74,9 @@ a class name. This is useful for "classed" conditions.}
     \item{\code{fixed}}{logical.  If \code{TRUE}, \code{pattern} is a string to be
     matched as is.  Overrides all conflicting arguments.}
   }}
+
+\item{inherit}{Whether to match \code{regexp} and \code{class} across the
+ancestry of chained errors.}
 
 \item{info}{Extra information to be included in the message. This argument
 is soft-deprecated and should not be used in new code. Instead see
@@ -91,12 +98,16 @@ the captured condition.
 or condition with a message that matches \code{regexp}, or a class that inherits
 from \code{class}. See below for more details.
 
-In the 3rd edition, these functions match a single condition. All
+In the 3rd edition, these functions match (at most) a single condition. All
 additional and non-matching (if \code{regexp} or \code{class} are used) conditions
 will bubble up outside the expectation. If these additional conditions
 are important you'll need to catch them with additional
 \code{expect_message()}/\code{expect_warning()} calls; if they're unimportant you
 can ignore with \code{\link[=suppressMessages]{suppressMessages()}}/\code{\link[=suppressWarnings]{suppressWarnings()}}.
+
+It can be tricky to test for a combination of different conditions,
+such as a message followed by an error. \code{\link[=expect_snapshot]{expect_snapshot()}} is
+often an easier alternative for these more complex cases.
 }
 \section{Testing \code{message} vs \code{class}}{
 

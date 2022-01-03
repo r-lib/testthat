@@ -1,19 +1,19 @@
-#' Create a test.
+#' Run a test
 #'
-#' A test encapsulates a series of expectations about small, self-contained
-#' set of functionality. Each test is contained in a \link{context} and
-#' contains multiple expectations.
+#' @description
+#' A test encapsulates a series of expectations about a small, self-contained
+#' set of functionality. Each test lives in a file and contains multiple
+#' expectations, like [expect_equal()] or [expect_error()].
 #'
 #' Tests are evaluated in their own environments, and should not affect
 #' global state.
 #'
-#' When run from the command line, tests return `NULL` if all
-#' expectations are met, otherwise it raises an error.
-#'
-#' @param desc test name.  Names should be kept as brief as possible, as they
-#'   are often used as line prefixes.
-#' @param code test code containing expectations.  Braces (`{}`) should always be
-#'   used in order to get accurate location data for test failures.
+#' @param desc Test name. Names should be brief, but evocative. They are
+#'   only used by humans, so do you
+#' @param code Test code containing expectations. Braces (`{}`) should always
+#'   be used in order to get accurate location data for test failures.
+#' @return When run interactively, returns `invisible(TRUE)` if all tests
+#'   pass, otherwise throws an error.
 #' @export
 #' @examples
 #' test_that("trigonometric functions match identities", {
@@ -21,7 +21,7 @@
 #'   expect_equal(cos(pi / 4), 1 / sqrt(2))
 #'   expect_equal(tan(pi / 4), 1)
 #' })
-#' # Failing test:
+#'
 #' \dontrun{
 #' test_that("trigonometric functions match identities", {
 #'   expect_equal(sin(pi / 4), 1)
@@ -43,7 +43,10 @@ test_that <- function(desc, code) {
 
   if (edition_get() >= 3) {
     if (!is_call(code, "{")) {
-      warn("The `code` argument to `test_that()` must be a braced expression to get accurate file-line information for failures.")
+      warn(
+        "The `code` argument to `test_that()` must be a braced expression to get accurate file-line information for failures.",
+        class = "testthat_braces_warning"
+      )
     }
   }
 
@@ -141,7 +144,6 @@ test_code <- function(test, code, env = test_env(), reporter = get_reporter(), s
   handle_warning <- function(e) {
     # When options(warn) < 0, warnings are expected to be ignored.
     if (getOption("warn") < 0) {
-      handled <<- TRUE
       return()
     }
 
@@ -155,13 +157,11 @@ test_code <- function(test, code, env = test_env(), reporter = get_reporter(), s
       e <- cnd_entrace(e)
     }
 
-    handled <<- TRUE
     register_expectation(e, 5)
 
     maybe_restart("muffleWarning")
   }
   handle_message <- function(e) {
-    handled <<- TRUE
     if (edition_get() < 3) {
      maybe_restart("muffleMessage")
     }

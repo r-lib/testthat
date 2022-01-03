@@ -117,5 +117,12 @@ in_rcmd_check <- function() {
 }
 
 map_chr <- function(.x, .f, ...) {
+  .f <- as_function(.f)
   vapply(.x, .f, FUN.VALUE = character(1), ...)
 }
+map_lgl <- function(.x, .f, ...) {
+  .f <- as_function(.f)
+  vapply(.x, .f, FUN.VALUE = logical(1), ...)
+}
+
+r_version <- function() paste0("R", getRversion()[, 1:2])

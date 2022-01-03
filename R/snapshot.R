@@ -1,8 +1,6 @@
 #' Snapshot testing
 #'
 #' @description
-#' `r lifecycle::badge("experimental")`
-#'
 #' Snapshot tests (aka golden tests) are similar to unit tests except that the
 #' expected result is stored in a separate file that is managed by testthat.
 #' Snapshot tests are useful for when the expected value is large, or when
@@ -49,44 +47,117 @@
 #' @param error Do you expect the code to throw an error? The expectation
 #'   will fail (even on CRAN) if an unexpected error is thrown or the
 #'   expected error is not thrown.
+#' @param variant `r lifecycle::badge("experimental")`
+#'
+#'   If not-`NULL`, results will be saved in `_snaps/{variant}/{test.md}`,
+#'   so `variant` must be a single string of alphanumeric characters suitable
+#'   for use as a directory name.
+#'
+#'   You can variants to deal with cases where the snapshot output varies
+#'   and you want to capture and test the variations. Common use cases include
+#'   variations for operating system, R version, or version of key dependency.
+#'   Variants are an advanced feature. When you use them, you'll need to
+#'   carefully think about your testing strategy to ensure that all important
+#'   variants are covered by automated tests, and ensure that you have a way
+#'   to get snapshot changes out of your CI system and back into the repo.
+#' @param transform Optionally, a function to scrub sensitive or stochastic
+#'   text from the output. Should take a character vector of lines as input
+#'   and return a modified character vector as output.
+#' @param cnd_class Whether to include the class of messages,
+#'   warnings, and errors in the snapshot. Only the most specific
+#'   class is included, i.e. the first element of `class(cnd)`.
 #' @export
-expect_snapshot <- function(x, cran = FALSE, error = FALSE) {
+expect_snapshot <- function(x,
+                            cran = FALSE,
+                            error = FALSE,
+                            transform = NULL,
+                            variant = NULL,
+                            cnd_class = FALSE) {
   edition_require(3, "expect_snapshot()")
+  variant <- check_variant(variant)
+  if (!is.null(transform)) {
+    transform <- as_function(transform)
+  }
 
-  x <- enquo(x)
+  x <- enquo0(x)
 
   # Execute code, capturing last error
   state <- new_environment(list(error = NULL))
-  out <- verify_exec(quo_get_expr(x), quo_get_env(x), {
-    function(x) snapshot_replay(x, state)
-  })
+  replay <- function(x) {
+    snapshot_replay(
+      x,
+      state,
+      transform = transform,
+      cnd_class = cnd_class
+    )
+  }
+  out <- verify_exec(quo_get_expr(x), quo_get_env(x), replay)
 
   # Use expect_error() machinery to confirm that error is as expected
   msg <- compare_condition_3e("error", state$error, quo_label(x), error)
   if (!is.null(msg)) {
-    expect(FALSE, msg, trace = state$error[["trace"]])
+    if (error) {
+      expect(FALSE, msg, trace = state$error[["trace"]])
+    } else {
+      exp_signal(expectation("error", msg, trace = state$error[["trace"]]))
+    }
     return()
   }
 
-  expect_snapshot_helper("code", out, cran = cran,
+  expect_snapshot_helper("code", out,
+    cran = cran,
     save = function(x) paste0(x, collapse = "\n"),
-    load = function(x) split_by_line(x)[[1]]
+    load = function(x) split_by_line(x)[[1]],
+    variant = variant
   )
 }
 
-snapshot_replay <- function(x, state) {
+snapshot_replay <- function(x, state, ..., transform = NULL) {
   UseMethod("snapshot_replay", x)
 }
 #' @export
-snapshot_replay.character <- function(x, state) {
-  c(snap_header(state, "Output"), indent(split_lines(x)))
+snapshot_replay.character <- function(x, state, ..., transform = NULL) {
+  c(snap_header(state, "Output"), snapshot_lines(x, transform))
 }
 #' @export
-snapshot_replay.source <- function(x, state) {
-  c(snap_header(state, "Code"), indent(split_lines(x$src)))
+snapshot_replay.source <- function(x, state, ..., transform = NULL) {
+  c(snap_header(state, "Code"), snapshot_lines(x$src))
 }
 #' @export
-snapshot_replay.condition <- function(x, state) {
+snapshot_replay.condition <- function(x,
+                                      state,
+                                      ...,
+                                      transform = NULL,
+                                      cnd_class = FALSE) {
+  if (!use_rlang_1_0()) {
+    return(snapshot_replay_condition_legacy(
+      x,
+      state,
+      transform = transform
+    ))
+  }
+
+  cnd_message <- env_get(ns_env("rlang"), "cnd_message")
+
+  if (inherits(x, "message")) {
+    msg <- cnd_message(x)
+    type <- "Message"
+  } else {
+    if (inherits(x, "error")) {
+      state$error <- x
+    }
+    msg <- cnd_message(x, prefix = TRUE)
+    type <- "Condition"
+  }
+
+  if (cnd_class) {
+    type <- paste0(type, " <", class(x)[[1]], ">")
+  }
+
+  c(snap_header(state, type), snapshot_lines(msg, transform))
+}
+
+snapshot_replay_condition_legacy <- function(x, state, transform = NULL) {
   msg <- cnd_message(x)
   if (inherits(x, "error")) {
     state$error <- x
@@ -102,7 +173,16 @@ snapshot_replay.condition <- function(x, state) {
 
   class <- paste0(type, " <", class(x)[[1]], ">")
 
-  c(snap_header(state, class), indent(split_lines(msg)))
+  c(snap_header(state, class), snapshot_lines(msg, transform))
+}
+
+snapshot_lines <- function(x, transform = NULL) {
+  x <- split_lines(x)
+  if (!is.null(transform)) {
+    x <- transform(x)
+  }
+  x <- indent(x)
+  x
 }
 
 snap_header <- function(state, header) {
@@ -114,26 +194,29 @@ snap_header <- function(state, header) {
 
 #' @export
 #' @rdname expect_snapshot
-expect_snapshot_output <- function(x, cran = FALSE) {
+expect_snapshot_output <- function(x, cran = FALSE, variant = NULL) {
   edition_require(3, "expect_snapshot_output()")
+  variant <- check_variant(variant)
 
   lab <- quo_label(enquo(x))
   val <- capture_output_lines(x, print = TRUE, width = NULL)
 
-  expect_snapshot_helper(lab, val, cran = cran,
+  expect_snapshot_helper(lab, val,
+    cran = cran,
     save = function(x) paste0(x, collapse = "\n"),
-    load = function(x) split_by_line(x)[[1]]
+    load = function(x) split_by_line(x)[[1]],
+    variant = variant
   )
 }
 
-#' @param class Expected class of condition, e.g. use `error` for errors,
-#'   `warning` for warnings, `message` for messages. The expectation will
-#'   always fail (even on CRAN) if a condition of this class isn't seen
+#' @param class Class of expect error condition. The expectation will
+#'   always fail (even on CRAN) if an error of this class isn't seen
 #'   when executing `x`.
 #' @export
 #' @rdname expect_snapshot
-expect_snapshot_error <- function(x, class = "error", cran = FALSE) {
+expect_snapshot_error <- function(x, class = "error", cran = FALSE, variant = NULL) {
   edition_require(3, "expect_snapshot_error()")
+  variant <- check_variant(variant)
 
   lab <- quo_label(enquo(x))
   val <- capture_matching_condition(x, cnd_matcher(class))
@@ -141,7 +224,10 @@ expect_snapshot_error <- function(x, class = "error", cran = FALSE) {
     fail(sprintf("%s did not throw error of class '%s'", lab, class))
   }
 
-  expect_snapshot_helper(lab, conditionMessage(val), cran = cran)
+  expect_snapshot_helper(lab, conditionMessage(val),
+    cran = cran,
+    variant = variant
+  )
 }
 
 #' @param style Serialization style to use:
@@ -158,12 +244,16 @@ expect_snapshot_error <- function(x, class = "error", cran = FALSE) {
 #' @param ... For `expect_snapshot_value()` only, passed on to
 #'   [waldo::compare()] so you can control the details of the comparison.
 #' @export
+#' @inheritParams compare
 #' @rdname expect_snapshot
 expect_snapshot_value <- function(x,
                                   style = c("json", "json2", "deparse", "serialize"),
                                   cran = FALSE,
-                                  ...) {
+                                  tolerance = testthat_tolerance(),
+                                  ...,
+                                  variant = NULL) {
   edition_require(3, "expect_snapshot_value()")
+  variant <- check_variant(variant)
   lab <- quo_label(enquo(x))
 
   style <- arg_match(style)
@@ -181,13 +271,21 @@ expect_snapshot_value <- function(x,
     serialize = function(x) unserialize(jsonlite::base64_dec(x))
   )
 
-  expect_snapshot_helper(lab, x, save = save, load = load, cran = cran, ...)
+  expect_snapshot_helper(lab, x,
+    save = save,
+    load = load,
+    cran = cran,
+    ...,
+    tolerance = tolerance,
+    variant = variant
+  )
 }
 
 # Safe environment for evaluating deparsed objects, based on inspection of
 # https://github.com/wch/r-source/blob/5234fe7b40aad8d3929d240c83203fa97d8c79fc/src/main/deparse.c#L845
 reparse <- function(x) {
   env <- env(emptyenv(),
+    `-` = `-`,
     c = c,
     list = list,
     quote = quote,
@@ -208,7 +306,10 @@ expect_snapshot_helper <- function(lab, val,
                                    cran = FALSE,
                                    save = identity,
                                    load = identity,
-                                   ...) {
+                                   ...,
+                                   tolerance = testthat_tolerance(),
+                                   variant = NULL
+                                   ) {
   if (!cran && !interactive() && on_cran()) {
     skip("On CRAN")
   }
@@ -219,7 +320,13 @@ expect_snapshot_helper <- function(lab, val,
     return(invisible())
   }
 
-  comp <- snapshotter$take_snapshot(val, save = save, load = load, ...)
+  comp <- snapshotter$take_snapshot(val,
+    save = save,
+    load = load,
+    ...,
+    tolerance = tolerance,
+    variant = variant
+  )
   hint <- paste0("Run `snapshot_accept('", snapshotter$file, "')` if this is a deliberate change")
 
   expect(
@@ -243,18 +350,24 @@ snapshot_not_available <- function(message) {
 }
 
 local_snapshot_dir <- function(snap_names, .env = parent.frame()) {
-  path <- tempfile()
-  withr::defer(unlink(path))
-
+  path <- withr::local_tempdir(.local_envir = .env)
   dir.create(file.path(path, "_snaps"), recursive = TRUE)
 
-  snap_paths <- file.path(
-    path, "_snaps",
-    c(paste0(snap_names, ".new.md"), paste0(snap_names, ".md"))
-  )
+  snap_paths <- file.path(path, "_snaps", paste0(snap_names, ".md"))
   lapply(snap_paths, brio::write_lines, text = "")
 
   path
 }
 
-indent <- function(x) paste0("  ", x)
+# if transform() wiped out the full message, don't indent, #1487
+indent <- function(x) if (length(x)) paste0("  ", x) else x
+
+check_variant <- function(x) {
+  if (is.null(x)) {
+    "_default"
+  } else if (is_string(x)) {
+    x
+  } else {
+    abort("If supplied, `variant` must be a string")
+  }
+}

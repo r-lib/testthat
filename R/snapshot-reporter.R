@@ -7,7 +7,6 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
     test = NULL,
     test_file_seen = character(),
     snap_file_seen = character(),
-    i = 0,
     file_changed = FALSE,
 
     old_snaps = NULL,
@@ -20,44 +19,42 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
 
     start_file = function(path, test = NULL) {
       self$file <- context_name(path)
-      self$test_file_seen <- c(self$test_file_seen, path)
+      self$test_file_seen <- c(self$test_file_seen, self$file)
 
       self$file_changed <- FALSE
-      self$old_snaps <- self$snaps_read()
-      self$cur_snaps <- list()
-      self$new_snaps <- list()
+
+      self$old_snaps <- FileSnaps$new(self$snap_dir, self$file, type = "old")
+      self$cur_snaps <- FileSnaps$new(self$snap_dir, self$file, type = "cur")
+      self$new_snaps <- FileSnaps$new(self$snap_dir, self$file, type = "new")
 
       if (!is.null(test)) {
         self$start_test(NULL, test)
       }
     },
+
     start_test = function(context, test) {
       self$test <- test
-      self$i <- 0L
-
-      if (length(self$cur_snaps[[test]]) > 0) {
-        testthat_warn("Duplicate test, discarding previous snapshot")
-      }
-      self$cur_snaps[[test]] <- list()
-      self$new_snaps[[test]] <- list()
     },
 
     # Called by expectation
-    take_snapshot = function(value, save = identity, load = identity, ...) {
-      self$i <- self$i + 1L
+    take_snapshot = function(value,
+                             save = identity,
+                             load = identity,
+                             ...,
+                             tolerance = testthat_tolerance(),
+                             variant = NULL) {
+      i <- self$new_snaps$append(self$test, variant, save(value))
 
-      self$new_snaps <- self$snap_append(self$new_snaps, save(value))
-
-      if (self$has_snapshot(self$i)) {
-        old_raw <- self$old_snaps[[self$test]][[self$i]]
-        self$cur_snaps <- self$snap_append(self$cur_snaps, old_raw)
-
+      old_raw <- self$old_snaps$get(self$test, variant, i)
+      if (!is.null(old_raw)) {
+        self$cur_snaps$append(self$test, variant, old_raw)
         old <- load(old_raw)
 
         comp <- waldo_compare(
           x = old,   x_arg = "old",
           y = value, y_arg = "new",
-          ...
+          ...,
+          tolerance = tolerance
         )
 
         if (length(comp) > 0L) {
@@ -65,19 +62,33 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
         }
         comp
       } else {
-        check_roundtrip(value, load(save(value)))
+        value_enc <- save(value)
+        check_roundtrip(value, load(value_enc), ..., tolerance = tolerance)
 
-        self$cur_snaps <- self$snap_append(self$cur_snaps, save(value))
-        testthat_warn(paste0("Adding new snapshot:\n", save(value)))
+        self$cur_snaps$append(self$test, variant, value_enc)
+        testthat_warn(paste0(
+          "Adding new snapshot",
+          if (variant != "_default") paste0(" to variant '", variant, "'"),
+          ":\n",
+          value_enc
+        ))
         character()
       }
     },
 
-    take_file_snapshot = function(name, path, file_equal) {
-      snap_dir <- file.path(self$snap_dir, self$file)
-      self$snap_file_seen <- c(file.path(self$file, name), self$snap_file_seen)
+    take_file_snapshot = function(name, path, file_equal, variant = NULL) {
+      self$announce_file_snapshot(name)
 
+      if (is.null(variant)) {
+        snap_dir <- file.path(self$snap_dir, self$file)
+      } else {
+        snap_dir <- file.path(self$snap_dir, variant, self$file)
+      }
       snapshot_file_equal(snap_dir, name, path, file_equal)
+    },
+    # Also called from announce_snapshot_file()
+    announce_file_snapshot = function(name) {
+      self$snap_file_seen <- c(self$snap_file_seen, file.path(self$file, name))
     },
 
     add_result = function(context, test, result) {
@@ -85,46 +96,31 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
         return()
       }
 
-      # If expectation errors or skips reset all snapshots
+      # If expectation errors or skips, need to reset remaining snapshots
       if (expectation_error(result) || expectation_skip(result)) {
-        self$cur_snaps[[self$test]] <- self$old_snaps[[self$test]]
-
-        if (self$i > 0) {
-          testthat_warn("Snapshots reset after error/skip")
-        }
+        self$cur_snaps$reset(self$test, self$old_snaps)
       }
     },
 
     end_file = function() {
       dir.create(self$snap_dir, showWarnings = FALSE)
 
-      self$snaps_write(self$cur_snaps)
+      self$cur_snaps$write()
       if (self$file_changed) {
-        self$snaps_write(self$new_snaps, ".new")
+        self$new_snaps$write()
       } else {
-        self$snaps_delete(".new")
+        self$new_snaps$delete()
       }
     },
     end_reporter = function() {
-      tests <- find_test_scripts(".", full.names = FALSE)
+      # clean up if we've seen all files
+      tests <- context_name(find_test_scripts(".", full.names = FALSE))
       if (all(tests %in% self$test_file_seen)) {
-        # clean up if we've seen all files
-        test_names <- context_name(tests)
-        outdated <- union(
-          snapshot_outdated(self$snap_dir, test_names),
-          snapshot_file_outdated(self$snap_dir, test_names, self$snap_file_seen)
+        snapshot_cleanup(self$snap_dir,
+          test_files_seen = self$test_file_seen,
+          snap_files_seen = self$snap_file_seen
         )
-
-        if (length(outdated) > 0) {
-          inform(c("Deleting unused snapshots:", outdated))
-          unlink(outdated, recursive = TRUE)
-        }
       }
-
-      if (length(dir(self$snap_dir)) == 0) {
-        unlink(self$snap_dir, recursive = TRUE)
-      }
-      rstudio_tickle()
     },
 
     is_active = function() {
@@ -175,22 +171,15 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
   )
 )
 
-check_roundtrip <- function(x, y) {
-  check <- waldo_compare(x, y, x_arg = "value", y_arg = "roundtrip")
+
+check_roundtrip <- function(x, y, ..., tolerance = testthat_tolerance()) {
+  check <- waldo_compare(x, y, x_arg = "value", y_arg = "roundtrip", ..., tolerance = tolerance)
   if (length(check) > 0) {
     abort(c(
       paste0("Serialization round-trip is not symmetric.\n\n", check, "\n"),
       i = "You may need to consider serialization `style`")
     )
   }
-}
-
-snapshot_outdated <- function(path, tests) {
-  snaps <- dir(path, full.names = TRUE)
-  snaps <- snaps[!grepl(".new.", snaps, fixed = TRUE)]
-  snap_name <- tools::file_path_sans_ext(basename(snaps))
-  outdated <- !snap_name %in% tests
-  snaps[outdated]
 }
 
 # set/get active snapshot reporter ----------------------------------------
@@ -215,10 +204,11 @@ get_snapshotter <- function() {
 #'
 #' @export
 #' @keywords internal
-local_snapshotter <- function(snap_dir = "_snaps", cleanup = FALSE, .env = parent.frame()) {
+local_snapshotter <- function(snap_dir = NULL, cleanup = FALSE, .env = parent.frame()) {
+  snap_dir <- snap_dir %||% withr::local_tempdir(.local_envir = .env)
   reporter <- SnapshotReporter$new(snap_dir = snap_dir)
-  if (cleanup) {
-    withr::defer(reporter$snaps_cleanup(), envir = .env)
+  if (!identical(cleanup, FALSE)) {
+    warn("`cleanup` is deprecated")
   }
 
   withr::local_options(

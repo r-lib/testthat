@@ -1,6 +1,6 @@
 # reporter works
 
-    1..8
+    1..9
     # Context Successes
     ok 1 Success
     # Context Failures
@@ -19,9 +19,9 @@
        2. testthat::expect_true(FALSE) reporters/tests.R:16:7
     # Context Errors
     not ok 4 Error:1
-      Error: stop
+      Error in `eval(code, test_env)`: stop
     not ok 5 errors get tracebacks
-      Error: !
+      Error in `h()`: !
       Backtrace:
        1. f() reporters/tests.R:31:2
        2. g() reporters/tests.R:27:7
@@ -33,4 +33,5 @@
     ok 8 # WARNING def
     Backtrace:
      1. f() reporters/tests.R:49:2
+    ok 9 # SKIP Reason: empty test
 

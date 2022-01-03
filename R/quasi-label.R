@@ -57,24 +57,54 @@ quasi_capture <- function(.quo, .label, .capture, ...) {
 }
 
 expr_label <- function(x) {
-  if (is.atomic(x)) {
+  if (is_syntactic_literal(x)) {
+    deparse1(x)
+  } else if (is.name(x)) {
+    paste0("`", as.character(x), "`")
+  } else if (is_call(x)) {
+    chr <- deparse(x)
+    if (length(chr) > 1) {
+      if (is_call(x, "function")) {
+        x[[3]] <- quote(...)
+      } else if (is_call_infix(x)) {
+        left <- deparse(x[[2]], width.cutoff = 29)
+        right <- deparse(x[[3]], width.cutoff = 28)
+
+        if (length(left) > 1) {
+          x[[2]] <- quote(expr = ...)
+        }
+        if (length(right) > 1) {
+          x[[3]] <- quote(expr = ...)
+        }
+      } else {
+        x <- call2(x[[1]], quote(expr = ...))
+      }
+    }
+    deparse1(x)
+  } else {
+    # Any other object that's been inlined in
     x <- deparse(x)
     if (length(x) > 1) {
       x <- paste0(x[[1]], "...)")
     }
     x
-  } else if (is.name(x)) {
-    paste0("`", as.character(x), "`")
-  } else {
-    chr <- deparse(x)
-    if (length(chr) > 1) {
-      if (identical(x[[1]], quote(`function`))) {
-        x[[3]] <- quote(...)
-        chr <- paste(deparse(x), collapse = "\n")
-      } else {
-        chr <- paste(deparse(as.call(list(x[[1]], quote(...)))), collapse = "\n")
-      }
-    }
-    chr
   }
+}
+
+is_call_infix <- function(x) {
+  if (!is_call(x, n = 2)) {
+    return(FALSE)
+  }
+
+  fn <- x[[1]]
+  if (!is_symbol(fn)) {
+    return(FALSE)
+  }
+
+  name <- as_string(fn)
+  base <- c(
+    ":", "::", ":::", "$", "@", "^", "*", "/", "+", "-", ">", ">=",
+    "<", "<=", "==", "!=", "!", "&", "&&", "|", "||", "~", "<-", "<<-"
+  )
+  name %in% base || grepl("^%.*%$", name)
 }

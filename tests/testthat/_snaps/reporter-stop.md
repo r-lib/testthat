@@ -17,10 +17,10 @@
      2. testthat::expect_true(FALSE)
     
     -- Error (tests.R:23:3): Error:1 -----------------------------------------------
-    Error: stop
+    Error in `eval(code, test_env)`: stop
     
     -- Error (tests.R:31:3): errors get tracebacks ---------------------------------
-    Error: !
+    Error in `h()`: !
     Backtrace:
      1. f()
      2. g()
@@ -37,20 +37,7 @@
     Backtrace:
      1. f()
     
-
-# stop stops at first failure
-
-    -- Failure (fail.R:4:3): two failures ------------------------------------------
-    FALSE is not TRUE
+    -- Skip (tests.R:45:1): warnings get backtraces --------------------------------
+    Reason: empty test
     
-    `actual`:   FALSE
-    `expected`: TRUE 
-    
-    -- Failure (fail.R:5:3): two failures ------------------------------------------
-    TRUE is not FALSE
-    
-    `actual`:   TRUE 
-    `expected`: FALSE
-    
-    Test failed 
 

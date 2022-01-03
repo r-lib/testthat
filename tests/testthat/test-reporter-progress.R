@@ -14,12 +14,19 @@ test_that("gracefully handles multiple contexts", {
   )
 })
 
+test_that("can control max fails with env var or option", {
+  withr::local_envvar(TESTTHAT_MAX_FAILS = 11)
+  expect_equal(testthat_max_fails(), 11)
+
+  withr::local_options(testthat.progress.max_fails = 12)
+  expect_equal(testthat_max_fails(), 12)
+})
 
 test_that("fails after max_fail tests", {
   withr::local_options(testthat.progress.max_fails = 10)
   expect_snapshot_reporter(
     ProgressReporter$new(update_interval = 0, min_time = Inf),
-    test_path("reporters/fail-many.R")
+    test_path(c("reporters/fail-many.R", "reporters/fail.R"))
   )
 })
 
@@ -39,6 +46,13 @@ test_that("reports backtraces", {
   expect_snapshot_reporter(
     ProgressReporter$new(update_interval = 0, min_time = Inf),
     test_path("reporters/backtraces.R")
+  )
+})
+
+test_that("records skips", {
+  expect_snapshot_reporter(
+    ProgressReporter$new(update_interval = 0, min_time = Inf),
+    test_path("reporters/skips.R")
   )
 })
 

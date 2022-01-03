@@ -1,4 +1,4 @@
 # reporter as expected
 
-    .FFEESSW
+    .FFEESSWS
 

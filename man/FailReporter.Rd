@@ -12,6 +12,7 @@ best combined with another reporter, such as the
 Other reporters: 
 \code{\link{CheckReporter}},
 \code{\link{DebugReporter}},
+\code{\link{JunitReporter}},
 \code{\link{ListReporter}},
 \code{\link{LocationReporter}},
 \code{\link{MinimalReporter}},

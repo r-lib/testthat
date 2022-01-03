@@ -16,7 +16,7 @@ snap_from_md <- function(lines) {
   names(tests) <- gsub("^# ", "", lines[h2])
 
   split_tests <- function(lines) {
-    sep <- grepl("^-{3, }", lines)
+    sep <- grepl("^-{3,}", lines)
     case_group <- cumsum(sep)
 
     # Remove first line and last line, separator, line above and line below
@@ -29,6 +29,30 @@ snap_from_md <- function(lines) {
   }
 
   lapply(tests, split_tests)
+}
+
+read_snaps <- function(path) {
+  if (file.exists(path)) {
+    lines <- brio::read_lines(path)
+    snap_from_md(lines)
+  } else {
+    list()
+  }
+}
+
+write_snaps <- function(snaps, path, delete = FALSE) {
+  snaps <- compact(snaps)
+  if (length(snaps) == 0) {
+    if (delete) {
+      unlink(path)
+    }
+    return()
+  }
+
+  out <- snap_to_md(snaps)
+  # trim off last line since write_lines() adds one
+  out <- gsub("\n$", "", out)
+  brio::write_lines(out, path)
 }
 
 # Helpers -----------------------------------------------------------------

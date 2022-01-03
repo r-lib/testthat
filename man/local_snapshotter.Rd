@@ -4,7 +4,7 @@
 \alias{local_snapshotter}
 \title{Instantiate local snapshotting context}
 \usage{
-local_snapshotter(snap_dir = "_snaps", cleanup = FALSE, .env = parent.frame())
+local_snapshotter(snap_dir = NULL, cleanup = FALSE, .env = parent.frame())
 }
 \description{
 Needed if you want to run snapshot tests outside of the usual testthat

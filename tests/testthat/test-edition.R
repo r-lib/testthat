@@ -31,3 +31,12 @@ test_that("edition for testthat is 3", {
 test_that("edition for non-package dir is 2", {
   expect_equal(find_edition(tempdir()), 2)
 })
+
+test_that("can set the edition via an environment variable", {
+  local_edition(zap())
+  withr::local_envvar(TESTTHAT_EDITION = 2)
+  expect_equal(edition_get(), 2)
+
+  withr::local_envvar(TESTTHAT_EDITION = 3)
+  expect_equal(edition_get(), 3)
+})

@@ -32,7 +32,7 @@ compare(x, y, ...)
   max_diffs = 9
 )
 
-testthat_tolerance(x)
+testthat_tolerance()
 
 \method{compare}{POSIXt}(x, y, tolerance = 0.001, ..., max_diffs = 9)
 }

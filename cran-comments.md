@@ -4,75 +4,54 @@ There were no ERRORs, WARNINGs, or NOTEs.
 
 ## revdepcheck results
 
-We checked 5538 reverse dependencies (5537 from CRAN + 1 from Bioconductor), comparing R CMD check results across CRAN and dev versions of this package.
+We checked 6398 reverse dependencies, comparing R CMD check results across CRAN and dev versions of this package.
 
- * We saw 4 new problems - but all were false positives
- * We failed to check 46 packages
+ * We saw 0 new problems
+ * We failed to check 40 packages
 
 Issues with CRAN packages are summarised below.
 
-### New problems
-(This reports the first line of each new failure)
-
-* glassdoor
-  checking examples ... ERROR
-
-* HRM
-  checking dependencies in R code ... NOTE
-
-* IMEC
-  checking examples ... ERROR
-  checking tests ... ERROR
-
-* InterfaceqPCR
-  checking examples ... ERROR
-  checking whether package ‘InterfaceqPCR’ can be installed ... WARNING
-
 ### Failed to check
 
-* ActivePathways        (NA)
+The root cause of most these failures to check is that they depend on bioconductor packages, which we don't currently install on our cloud check infrastructure. We'll work on this in the near future.
+
+* ActiveDriverWGS       (NA)
+* adjclust              (NA)
 * backShift             (NA)
-* bayesdfa              (NA)
-* bayesGAM              (NA)
-* blavaan               (NA)
-* bmgarch               (NA)
-* Boom                  (NA)
-* bsts                  (NA)
-* butcher               (NA)
-* CausalImpact          (NA)
-* CB2                   (NA)
-* cbar                  (NA)
+* BaseSet               (NA)
+* bedr                  (NA)
+* bio3d                 (NA)
+* bioOED                (NA)
+* bnclassify            (NA)
+* bnmonitor             (NA)
+* bold                  (NA)
+* chicane               (NA)
+* clustDRM              (NA)
+* clustermole           (NA)
+* clustree              (NA)
 * CompareCausalNetworks (NA)
-* crossmap              (NA)
-* ctsem                 (NA)
-* diceR                 (NA)
-* dimRed                (NA)
-* EpiNow2               (NA)
-* fastpos               (NA)
-* fdaPDE                (NA)
-* gastempt              (NA)
-* glmmfields            (NA)
-* gWidgets2tcltk        (NA)
-* hNMF                  (NA)
-* jstor                 (NA)
-* kmcudaR               (NA)
-* loon                  (NA)
-* metagam               (NA)
-* mlpack                (NA)
-* mlr3pipelines         (NA)
-* multinma              (NA)
-* osmplotr              (NA)
-* penaltyLearning       (NA)
-* phylopath             (NA)
-* ReIns                 (NA)
-* rmdcev                (NA)
-* rstanarm              (NA)
-* rstap                 (NA)
-* seqgendiff            (NA)
-* Seurat                (NA)
-* smartdata             (NA)
-* SMITIDvisu            (NA)
-* SPARSEMODr            (NA)
-* spectralAnalysis      (NA)
-* stablespec            (NA)
-* wrswoR                (NA)
+* conos                 (NA)
+* corncob               (NA)
+* CovidMutations        (NA)
+* cowplot               (NA)
+* cRegulome             (NA)
+* DGCA                  (NA)
+* DGEobj                (NA)
+* DIscBIO               (NA)
+* DRomics               (NA)
+* FREEtree              (NA)
+* FSelectorRcpp         (NA)
+* GALLO                 (NA)
+* GMMAT                 (NA)
+* HEMDAG                (NA)
+* HTSSIP                (NA)
+* ICAMS                 (NA)
+* LoopRig               (NA)
+* MAGEE                 (NA)
+* NetLogoR              (NA)
+* Platypus              (NA)
+* RAM                   (NA)
+* SCRIP                 (NA)
+* Signac                (NA)
+* TGS                   (NA)
+* TreeDist              (NA)

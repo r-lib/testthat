@@ -2,21 +2,50 @@
 % Please edit documentation in R/snapshot-file.R
 \name{expect_snapshot_file}
 \alias{expect_snapshot_file}
+\alias{announce_snapshot_file}
+\alias{compare_file_binary}
+\alias{compare_file_text}
 \title{Snapshot testing for whole files}
 \usage{
-expect_snapshot_file(path, name = basename(path), binary = TRUE, cran = FALSE)
+expect_snapshot_file(
+  path,
+  name = basename(path),
+  binary = lifecycle::deprecated(),
+  cran = FALSE,
+  compare = compare_file_binary,
+  variant = NULL
+)
+
+announce_snapshot_file(path, name = basename(path))
+
+compare_file_binary(old, new)
+
+compare_file_text(old, new)
 }
 \arguments{
-\item{path}{Path to file to snapshot.}
+\item{path}{Path to file to snapshot. Optional for
+\code{announce_snapshot_file()} if \code{name} is supplied.}
 
 \item{name}{Snapshot name, taken from \code{path} by default.}
 
-\item{binary}{If \code{FALSE}, files are compared line-by-line, ignoring the
-difference between Windows and Mac/Linux line endings.}
+\item{binary}{\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}} Please use the
+\code{compare} argument instead.}
 
 \item{cran}{Should these expectations be verified on CRAN? By default,
 they are not, because snapshot tests tend to be fragile because they
 often rely on minor details of dependencies.}
+
+\item{compare}{A function used for comparison taking \code{old} and
+\code{new} arguments. By default this is \code{compare_file_binary}. Set it
+to \code{compare_file_text} to compare files line-by-line, ignoring
+the difference between Windows and Mac/Linux line endings.}
+
+\item{variant}{If not-\code{NULL}, results will be saved in
+\verb{_snaps/\{variant\}/\{test\}/\{name\}.\{ext\}}. This allows you to create
+different snapshots for different scenarios, like different operating
+systems or different R versions.}
+
+\item{old, new}{Paths to old and new snapshot files.}
 }
 \description{
 Whole file snapshot testing is designed for testing objects that don't have
@@ -34,6 +63,18 @@ We generally expect this function to be used via a wrapper that takes care
 of ensuring that output is as reproducible as possible, e.g. automatically
 skipping tests where it's known that images can't be reproduced exactly.
 }
+\section{Announcing snapshots}{
+
+testthat automatically detects dangling snapshots that have been
+written to the \verb{_snaps} directory but which no longer have
+corresponding R code to generate them. These dangling files are
+automatically deleted so they don't clutter the snapshot
+directory. However we want to preserve snapshot files when the R
+code wasn't executed because of an unexpected error or because of a
+\code{\link[=skip]{skip()}}. Let testthat know about these files by calling
+\code{announce_snapshot_file()} before \code{expect_snapshot_file()}.
+}
+
 \examples{
 
 # To use expect_snapshot_file() you'll typically need to start by writing
@@ -62,7 +103,14 @@ expect_snapshot_plot <- function(name, code) {
   skip_on_os("windows")
   # You'll need to carefully think about and experiment with these skips
 
+  name <- paste0(name, ".png")
+
+  # Announce the file before touching `code`. This way, if `code`
+  # unexpectedly fails or skips, testthat will not auto-delete the
+  # corresponding snapshot file.
+  announce_snapshot_file(name = name)
+
   path <- save_png(code)
-  expect_snapshot_file(path, paste0(name, ".png"))
+  expect_snapshot_file(path, name)
 }
 }

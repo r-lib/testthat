@@ -2,9 +2,9 @@
 % Please edit documentation in R/reporter-stop.R
 \name{StopReporter}
 \alias{StopReporter}
-\title{Test reporter: stop on error.}
+\title{Test reporter: stop on error}
 \description{
-The default reporter, executed when \code{expect_that} is run interactively.
+The default reporter used when \code{\link[=expect_that]{expect_that()}} is run interactively.
 It responds by \code{\link[=stop]{stop()}}ping on failures and doing nothing otherwise. This
 will ensure that a failing test will raise an error.
 }
@@ -18,6 +18,7 @@ Other reporters:
 \code{\link{CheckReporter}},
 \code{\link{DebugReporter}},
 \code{\link{FailReporter}},
+\code{\link{JunitReporter}},
 \code{\link{ListReporter}},
 \code{\link{LocationReporter}},
 \code{\link{MinimalReporter}},

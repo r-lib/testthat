@@ -2,9 +2,21 @@
 % Please edit documentation in R/expectations-matches.R
 \name{expect_match}
 \alias{expect_match}
+\alias{expect_no_match}
 \title{Does a string match a regular expression?}
 \usage{
 expect_match(
+  object,
+  regexp,
+  perl = FALSE,
+  fixed = FALSE,
+  ...,
+  all = TRUE,
+  info = NULL,
+  label = NULL
+)
+
+expect_no_match(
   object,
   regexp,
   perl = FALSE,
@@ -39,7 +51,7 @@ within a function or for loop. See \link{quasi_label} for more details.}
   }}
 
 \item{all}{Should all elements of actual value match \code{regexp} (TRUE),
-or does only one need to match (FALSE)}
+or does only one need to match (FALSE).}
 
 \item{info}{Extra information to be included in the message. This argument
 is soft-deprecated and should not be used in new code. Instead see
@@ -52,11 +64,20 @@ Does a string match a regular expression?
 }
 \details{
 \code{expect_match()} is a wrapper around \code{\link[=grepl]{grepl()}}. See its documentation for
-more detail about the individual arguments.
+more detail about the individual arguments. \code{expect_no_match()} provides
+the complementary case, checking that a string \emph{does not} match a regular
+expression.
 }
+\section{Functions}{
+\itemize{
+\item \code{expect_no_match}: Check that a string doesn't match a regular
+expression.
+}}
+
 \examples{
 expect_match("Testing is fun", "fun")
 expect_match("Testing is fun", "f.n")
+expect_no_match("Testing is fun", "horrible")
 
 \dontrun{
 expect_match("Testing is fun", "horrible")

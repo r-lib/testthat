@@ -22,3 +22,22 @@ Execution time and some other details are also recorded.
 References for the jUnit XML format:
 \url{http://llg.cubic.org/docs/junit/}
 }
+\seealso{
+Other reporters: 
+\code{\link{CheckReporter}},
+\code{\link{DebugReporter}},
+\code{\link{FailReporter}},
+\code{\link{ListReporter}},
+\code{\link{LocationReporter}},
+\code{\link{MinimalReporter}},
+\code{\link{MultiReporter}},
+\code{\link{ProgressReporter}},
+\code{\link{RStudioReporter}},
+\code{\link{Reporter}},
+\code{\link{SilentReporter}},
+\code{\link{StopReporter}},
+\code{\link{SummaryReporter}},
+\code{\link{TapReporter}},
+\code{\link{TeamcityReporter}}
+}
+\concept{reporters}

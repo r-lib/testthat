@@ -1,14 +1,19 @@
 url: https://testthat.r-lib.org
 
+development:
+  mode: auto
+
+template:
+  package: tidytemplate
+  bootstrap: 5
+
+  includes:
+    in_header: |
+      <script defer data-domain="testthat.r-lib.org,all.tidyverse.org" src="https://plausible.io/js/plausible.js"></script>
 home:
-  strip_header: true
   links:
   - text: Learn more
     href: http://r-pkgs.org/tests.html
-
-template:
-  params:
-    ganalytics: UA-115082821-1
 
 reference:
 - title: Expectations
@@ -32,6 +37,7 @@ reference:
   - expect_invisible
   - expect_output
   - expect_silent
+  - local_reproducible_output
 
 - title: Snapshot testing
   contents:
@@ -62,6 +68,8 @@ reference:
 
 news:
   releases:
+  - text: "Version 3.1.0"
+    href: https://www.tidyverse.org/blog/2021/10/testthat-3-1/
   - text: "Version 3.0.0"
     href: https://www.tidyverse.org/blog/2020/10/testthat-3-0-0/
   - text: "Version 2.3.0"

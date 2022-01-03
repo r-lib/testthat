@@ -26,7 +26,7 @@ test_that("ListReporter - exception outside of test_that()", {
   # the 2nd result should be the exception
   expect_true(is.na(df$test[2])) # no test name
   expect_true(df$error[2])       # it was an error
-  expect_identical(conditionMessage(res[[2]]$results[[1]]), 'dying outside of tests')
+  expect_match(res[[2]]$results[[1]]$message, "dying outside of tests")
 })
 
 
