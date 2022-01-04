@@ -11,6 +11,7 @@ local_reproducible_output(
   width = 80,
   crayon = FALSE,
   unicode = FALSE,
+  lang = "en",
   .env = parent.frame()
 )
 }
@@ -23,6 +24,12 @@ local_reproducible_output(
 
 \item{unicode}{Value of the \code{"cli.unicode"} option.
 The test is skipped if \code{l10n_info()$`UTF-8`} is \code{FALSE}.}
+
+\item{lang}{Optionally, supply a BCP47 language code to set the language
+used for translating error messages. This is a lower case two letter
+\href{https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes}{ISO 639 country code},
+optionally followed by "_" or "-" and an upper case two letter
+\href{https://en.wikipedia.org/wiki/ISO_3166-2}{ISO 3166 region code}.}
 }
 \description{
 \code{local_test_context()} is run automatically by \code{test_that()} but you may
