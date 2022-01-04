@@ -1,4 +1,8 @@
 # testthat (development version)
+  
+* `expect_snapshot_file()` now errors if the file being snapshot does not exist; 
+  `SnapshotReporter` also now treats the file directory as an absolute path 
+  (#1476, @malcolmbarrett)
 
 * testthat now uses brio for all reading and writing (#1120). This
   ensures that snapshots always use "\n" to separate lines (#1516).
