@@ -1,7 +1,8 @@
 # testthat (development version)
 
-* testthat now uses brio for all reading and writing (#1120).
-
+* testthat now uses brio for all reading and writing (#1120). This
+  ensures that snapshots always use "\n" to separate lines (#1516).
+  
 * `local_reproducible_output()` now sets the global option
   `cli.num_colors` in addition to `crayon.enabled`.
 
