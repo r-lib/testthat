@@ -7,6 +7,8 @@
   `SnapshotReporter` also now treats the file directory as an absolute path 
   (#1476, @malcolmbarrett)
 
+* `skip_if_offline()` now automatically calls `skip_on_cran()` (#1479).
+
 * testthat now uses brio for all reading and writing (#1120). This
   ensures that snapshots always use "\n" to separate lines (#1516).
   

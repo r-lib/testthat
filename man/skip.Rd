@@ -84,7 +84,7 @@ you can assume that suggested packages are installed, and you do not
 need to check for them specifically, unless they are particularly
 difficult to install.
 \item \code{skip_if_offline()} skips if an internet connection is not available
-(using \code{\link[curl:nslookup]{curl::nslookup()}}).
+(using \code{\link[curl:nslookup]{curl::nslookup()}}) or if the test is run on CRAN.
 \item \code{skip_if_translated("msg")} skips tests if the "msg" is translated.
 \item \code{skip_on_bioc()} skips on Bioconductor (using the \code{BBS_HOME} env var).
 \item \code{skip_on_cran()} skips on CRAN (using the \code{NOT_CRAN} env var set by

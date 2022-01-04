@@ -18,7 +18,7 @@
 #'   difficult to install.
 #'
 #' * `skip_if_offline()` skips if an internet connection is not available
-#'   (using [curl::nslookup()]).
+#'   (using [curl::nslookup()]) or if the test is run on CRAN.
 #'
 #' * `skip_if_translated("msg")` skips tests if the "msg" is translated.
 #'
@@ -115,6 +115,7 @@ skip_if_not_installed <- function(pkg, minimum_version = NULL) {
 #' @export
 #' @rdname skip
 skip_if_offline <- function(host = "r-project.org") {
+  skip_on_cran()
   skip_if_not_installed("curl")
   has_internet <- !is.null(curl::nslookup(host, error = FALSE))
   if (!has_internet) {
