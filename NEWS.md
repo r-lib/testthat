@@ -1,5 +1,8 @@
 # testthat (development version)
   
+* `local_reproducible_output()` gains a `lang` argument so that you can 
+  optionally override the language used to translate error messages (#1483).
+
 * `expect_snapshot_file()` now errors if the file being snapshot does not exist; 
   `SnapshotReporter` also now treats the file directory as an absolute path 
   (#1476, @malcolmbarrett)
