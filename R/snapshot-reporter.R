@@ -125,46 +125,6 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
 
     is_active = function() {
       !is.null(self$file) && !is.null(self$test)
-    },
-    has_snapshot = function(i) {
-      if (!has_name(self$old_snaps, self$test)) {
-        return(FALSE)
-      }
-      i <= length(self$old_snaps[[self$test]])
-    },
-
-    snap_append = function(data, snap) {
-      data[[self$test]] <- c(data[[self$test]], list(snap))
-      data
-    },
-
-    # File management ----------------------------------------------------------
-    snaps_read = function(suffix = "") {
-      if (file.exists(self$snap_path(suffix))) {
-        lines <- brio::read_lines(self$snap_path(suffix))
-        snap_from_md(lines)
-      } else {
-        list()
-      }
-    },
-    snaps_write = function(data, suffix = "") {
-      data <- compact(data)
-      if (length(data) > 0) {
-        out <- snap_to_md(data)
-        brio::write_file(out, self$snap_path(suffix))
-      } else {
-        self$snaps_delete(suffix)
-      }
-    },
-    snaps_delete = function(suffix = "") {
-      unlink(self$snap_path(suffix))
-    },
-    snaps_cleanup = function() {
-      self$snaps_delete()
-      self$snaps_delete(".new")
-    },
-    snap_path = function(suffix = "") {
-      file.path("_snaps", paste0(self$file, suffix, ".md"))
     }
   )
 )
