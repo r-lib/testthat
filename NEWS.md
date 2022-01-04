@@ -1,5 +1,7 @@
 # testthat (development version)
 
+* testthat now uses brio for all reading and writing (#1120).
+
 * `local_reproducible_output()` now sets the global option
   `cli.num_colors` in addition to `crayon.enabled`.
 
