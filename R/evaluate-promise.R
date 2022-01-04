@@ -28,11 +28,9 @@ evaluate_promise <- function(code, print = FALSE) {
     maybe_restart("muffleMessage")
   }
 
-  temp <- file()
-  on.exit(close(temp))
-
+  path <- withr::local_tempfile()
   result <- withr::with_output_sink(
-    temp,
+    path,
     withCallingHandlers(
       withVisible(code),
       warning = handle_warning,
@@ -41,10 +39,10 @@ evaluate_promise <- function(code, print = FALSE) {
   )
 
   if (result$visible && print) {
-    withr::with_output_sink(temp, print(result$value))
+    withr::with_output_sink(path, print(result$value), append = TRUE)
   }
 
-  output <- paste0(read_lines(temp), collapse = "\n")
+  output <- paste0(brio::read_lines(path), collapse = "\n")
 
   list(
     result = result$value,

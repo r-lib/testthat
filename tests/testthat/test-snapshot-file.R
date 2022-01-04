@@ -93,7 +93,7 @@ test_that("warns on first creation", {
   # Changing again overwrites
   path2 <- write_tmp_lines("c")
   expect_false(snapshot_file_equal(tempdir(), "test.txt", path2))
-  expect_equal(read_lines(file.path(tempdir(), "test.new.txt")), "c")
+  expect_equal(brio::read_lines(file.path(tempdir(), "test.new.txt")), "c")
 
   # Unchanged cleans up
   expect_true(snapshot_file_equal(tempdir(), "test.txt", path))

@@ -138,7 +138,7 @@ JunitReporter <- R6::R6Class("JunitReporter",
       } else if (inherits(self$out, "connection")) {
         file <- tempfile()
         xml2::write_xml(self$doc, file, format = TRUE)
-        write_lines(read_lines(file), self$out)
+        cat(brio::read_file(file), file = self$out)
       } else {
         stop("unsupported output type: ", toString(self$out))
       }

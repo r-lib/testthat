@@ -15,7 +15,7 @@ source_file <- function(path, env = test_env(), chdir = TRUE,
   stopifnot(file.exists(path))
   stopifnot(is.environment(env))
 
-  lines <- read_lines(path)
+  lines <- brio::read_lines(path)
   srcfile <- srcfilecopy(path, lines, file.info(path)[1, "mtime"], isFile = TRUE)
 
   ## We need to parse from a connection, because parse() has a bug,
