@@ -1,9 +1,13 @@
 # testthat (development version)
 
-* `expect_snapshot()` no longer processes rlang injection operators
-  like `!!`.
+* testthat now uses brio for all reading and writing (#1120). This
+  ensures that snapshots always use "\n" to separate lines (#1516).
+  
+* `local_reproducible_output()` now sets the global option
+  `cli.num_colors` in addition to `crayon.enabled`.
 
-* Fixed bug in expectations with long inputs that use `::` (#1472).
+
+# testthat 3.1.1
 
 * Condition expectations like `expect_error()` now match across the
   ancestry of chained errors (#1493). You can disable this by setting
@@ -39,6 +43,11 @@
   to `FALSE`.
 
 * JUnit reporter now includes skip messages/reasons (@rfineman, #1507)
+
+* `expect_snapshot()` no longer processes rlang injection operators
+  like `!!`.
+
+* Fixed bug in expectations with long inputs that use `::` (#1472).
 
 # testthat 3.1.0
 

@@ -1,6 +1,6 @@
 Package: testthat
 Title: Unit Testing for R
-Version: 3.1.0.9000
+Version: 3.1.1.9000
 Authors@R: 
     c(person(given = "Hadley",
              family = "Wickham",
@@ -58,6 +58,7 @@ VignetteBuilder:
     knitr
 Config/testthat/edition: 3
 Config/testthat/start-first: watcher, parallel*
+Config/Needs/website: tidyverse/tidytemplate
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE, r6 = FALSE)
-RoxygenNote: 7.1.2.9000
+RoxygenNote: 7.1.2

@@ -1,56 +1,53 @@
 ## revdepcheck results
 
-We checked 607 reverse dependencies, comparing R CMD check results across CRAN and dev versions of this package.
+We checked 6398 reverse dependencies, comparing R CMD check results across CRAN and dev versions of this package.
 
- * We saw 10 new problems
- * We failed to check 12 packages
+ * We saw 0 new problems
+ * We failed to check 40 packages
 
 Issues with CRAN packages are summarised below.
 
-### New problems
-(This reports the first line of each new failure)
-
-* amber
-  checking tests ... ERROR
-
-* crosstable
-  checking tests ... ERROR
-
-* googleAnalyticsR
-  checking tests ... ERROR
-
-* ichimoku
-  checking tests ... ERROR
-
-* param6
-  checking tests ... ERROR
-
-* rio
-  checking tests ... ERROR
-
-* rlang
-  checking tests ... ERROR
-
-* shiny
-  checking tests ... ERROR
-
-* TreeTools
-  checking tests ... ERROR
-
-* vegawidget
-  checking tests ... ERROR
-
 ### Failed to check
 
-* doMIsaul   (NA)
-* dynplot    (NA)
-* gpboost    (NA)
-* quanteda   (NA)
-* rbison     (NA)
-* rmdcev     (NA)
-* RNiftyReg  (NA)
-* seqgendiff (NA)
-* shattering (NA)
-* stablespec (NA)
-* superb     (NA)
-* tinyarray  (NA)
+The root cause of most these failures to check is that they depend on bioconductor packages, which we don't currently install on our cloud check infrastructure. We'll work on this in the near future.
+
+* ActiveDriverWGS       (NA)
+* adjclust              (NA)
+* backShift             (NA)
+* BaseSet               (NA)
+* bedr                  (NA)
+* bio3d                 (NA)
+* bioOED                (NA)
+* bnclassify            (NA)
+* bnmonitor             (NA)
+* bold                  (NA)
+* chicane               (NA)
+* clustDRM              (NA)
+* clustermole           (NA)
+* clustree              (NA)
+* CompareCausalNetworks (NA)
+* conos                 (NA)
+* corncob               (NA)
+* CovidMutations        (NA)
+* cowplot               (NA)
+* cRegulome             (NA)
+* DGCA                  (NA)
+* DGEobj                (NA)
+* DIscBIO               (NA)
+* DRomics               (NA)
+* FREEtree              (NA)
+* FSelectorRcpp         (NA)
+* GALLO                 (NA)
+* GMMAT                 (NA)
+* HEMDAG                (NA)
+* HTSSIP                (NA)
+* ICAMS                 (NA)
+* LoopRig               (NA)
+* MAGEE                 (NA)
+* NetLogoR              (NA)
+* Platypus              (NA)
+* RAM                   (NA)
+* SCRIP                 (NA)
+* Signac                (NA)
+* TGS                   (NA)
+* TreeDist              (NA)

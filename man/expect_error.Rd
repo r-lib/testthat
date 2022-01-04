@@ -59,7 +59,7 @@ within a function or for loop. See \link{quasi_label} for more details.}
 \itemize{
 \item A character vector giving a regular expression that must match the
 error message.
-\item If \code{NULL}, the default, asserts that there should be a error,
+\item If \code{NULL}, the default, asserts that there should be an error,
 but doesn't test for a specific value.
 \item If \code{NA}, asserts that there should be no errors.
 }}
