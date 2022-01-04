@@ -69,7 +69,6 @@ test_that("can capture Throwable conditions from rJava", {
 })
 
 test_that("expected conditions are typically returned invisibly", {
-  # TODO: This currently fails
   expect_invisible(expect_error(abort("Oh no!")))
 })
 

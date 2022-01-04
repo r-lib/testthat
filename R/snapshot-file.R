@@ -87,6 +87,7 @@ expect_snapshot_file <- function(path,
                                  compare =  compare_file_binary,
                                  variant = NULL) {
   edition_require(3, "expect_snapshot_file()")
+  withr::local_options("testthat.in_snapshot" = TRUE)
   if (!cran && !interactive() && on_cran()) {
     skip("On CRAN")
   }

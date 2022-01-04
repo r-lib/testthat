@@ -74,6 +74,8 @@ expect_snapshot <- function(x,
                             variant = NULL,
                             cnd_class = FALSE) {
   edition_require(3, "expect_snapshot()")
+  withr::local_options("testthat.in_snapshot" = TRUE)
+
   variant <- check_variant(variant)
   if (!is.null(transform)) {
     transform <- as_function(transform)
@@ -196,6 +198,7 @@ snap_header <- function(state, header) {
 #' @rdname expect_snapshot
 expect_snapshot_output <- function(x, cran = FALSE, variant = NULL) {
   edition_require(3, "expect_snapshot_output()")
+  withr::local_options("testthat.in_snapshot" = TRUE)
   variant <- check_variant(variant)
 
   lab <- quo_label(enquo(x))
@@ -216,6 +219,7 @@ expect_snapshot_output <- function(x, cran = FALSE, variant = NULL) {
 #' @rdname expect_snapshot
 expect_snapshot_error <- function(x, class = "error", cran = FALSE, variant = NULL) {
   edition_require(3, "expect_snapshot_error()")
+  withr::local_options("testthat.in_snapshot" = TRUE)
   variant <- check_variant(variant)
 
   lab <- quo_label(enquo(x))
@@ -253,6 +257,7 @@ expect_snapshot_value <- function(x,
                                   ...,
                                   variant = NULL) {
   edition_require(3, "expect_snapshot_value()")
+  withr::local_options("testthat.in_snapshot" = TRUE)
   variant <- check_variant(variant)
   lab <- quo_label(enquo(x))
 

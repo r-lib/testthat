@@ -156,13 +156,7 @@ get_snapshotter <- function() {
 }
 
 in_snapshotter <- function() {
-  x <- getOption("testthat.snapshotter")
-
-  if (is.null(x)) {
-    return(FALSE)
-  }
-
-  x$is_active()
+  isTRUE(getOption("testthat.in_snapshot"))
 }
 
 #' Instantiate local snapshotting context
