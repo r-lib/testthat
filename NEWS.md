@@ -1,5 +1,8 @@
 # testthat (development version)
 
+* `test_that()` no longer inappropriately skips when calling `expect_equal()`
+  when you've temporarily set the locale to non-UTF-8 (#1285).
+
 * `local_reproducible_output()` now sets the global option
   `cli.num_colors` in addition to `crayon.enabled`.
 

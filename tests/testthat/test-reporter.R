@@ -16,3 +16,8 @@ test_that("can control output with file arg/option", {
   )
   expect_snapshot_output(read_lines(path))
 })
+
+test_that("should not automatically skip in non-utf-8 locales", {
+  withr::local_locale(LC_CTYPE = "C")
+  expect_true(TRUE)
+})
