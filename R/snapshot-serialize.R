@@ -50,9 +50,7 @@ write_snaps <- function(snaps, path, delete = FALSE) {
   }
 
   out <- snap_to_md(snaps)
-  # trim off last line since write_lines() adds one
-  out <- gsub("\n$", "", out)
-  brio::write_lines(out, path)
+  brio::write_file(out, path)
 }
 
 # Helpers -----------------------------------------------------------------

@@ -151,9 +151,7 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
       data <- compact(data)
       if (length(data) > 0) {
         out <- snap_to_md(data)
-        # trim off last line since write_lines() adds one
-        out <- gsub("\n$", "", out)
-        brio::write_lines(out, self$snap_path(suffix))
+        brio::write_file(out, self$snap_path(suffix))
       } else {
         self$snaps_delete(suffix)
       }
