@@ -28,9 +28,7 @@ evaluate_promise <- function(code, print = FALSE) {
     maybe_restart("muffleMessage")
   }
 
-  path <- tempfile()
-  withr::defer(unlink(path))
-
+  path <- withr::local_tempfile()
   result <- withr::with_output_sink(
     path,
     withCallingHandlers(

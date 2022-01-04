@@ -42,8 +42,7 @@ capture_output_lines <- function(code, print = FALSE, width = 80) {
 }
 
 eval_with_output <- function(code, print = FALSE, width = 80) {
-  path <- tempfile()
-  withr::defer(unlink(path))
+  path <- withr::local_tempfile()
 
   if (!is.null(width)) {
     local_width(width)
