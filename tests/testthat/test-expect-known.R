@@ -43,14 +43,10 @@ test_that("updates by default", {
 
 test_that("works with utf-8 output", {
   skip_on_cran()
-  text <- c("\u00fc", "\u2a5d", "\u6211", "\u0438")
+  skip_on_os("windows")
 
-  if (Sys.info()[["sysname"]] == "Windows") {
-    # windows has poor utf-8 support
-    expect_known_output(cat(text, sep = "\n"), "test-expect-known-win.txt")
-  } else {
-    expect_known_output(cat(text, sep = "\n"), "test-expect-known.txt")
-  }
+  text <- c("\u00fc", "\u2a5d", "\u6211", "\u0438")
+  expect_known_output(cat(text, sep = "\n"), "test-expect-known.txt")
 })
 
 test_that("Warning for non-UTF-8 reference files", {
