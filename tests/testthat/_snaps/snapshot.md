@@ -44,22 +44,6 @@
       4
       
 
----
-
-    Code
-      f()
-    Output
-      1
-      
-    Message
-      2
-      
-    Condition
-      Warning in `f()`:
-      3
-      Error in `f()`:
-      ! 4
-
 # multiple outputs of same type are collapsed
 
     Code

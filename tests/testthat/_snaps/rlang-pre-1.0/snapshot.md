@@ -1,3 +1,20 @@
+# empty lines are preserved
+
+    Code
+      f()
+    Output
+      1
+      
+    Message <simpleMessage>
+      2
+      
+    Warning <simpleWarning>
+      3
+      
+    Error <simpleError>
+      4
+      
+
 # full condition message is printed with rlang
 
     Code

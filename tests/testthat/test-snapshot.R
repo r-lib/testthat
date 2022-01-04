@@ -30,7 +30,7 @@ test_that("empty lines are preserved", {
   expect_snapshot(f(), error = TRUE)
 
   local_use_rlang_1_0()
-  expect_snapshot(f(), error = TRUE)
+  expect_snapshot(f(), error = TRUE, variant = rlang_version())
 })
 
 test_that("multiple outputs of same type are collapsed", {
