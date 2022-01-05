@@ -30,3 +30,11 @@
       Updating snapshots:
       * foo/a.md
 
+---
+
+    Code
+      snapshot_accept("foo/a", path = path)
+    Message <message>
+      Updating snapshots:
+      * foo/a.md
+

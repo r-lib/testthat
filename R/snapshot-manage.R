@@ -132,12 +132,6 @@ snapshot_meta <- function(files = NULL, path = "tests/testthat") {
 
   snap_file <- basename(dirname(cur)) != "_snaps"
   snap_test <- ifelse(snap_file, basename(dirname(cur)), gsub("\\.md$", "", basename(cur)))
-  if (!is.null(files)) {
-    selected <- snap_test %in% context_name(basename(files))
-    cur <- cur[selected]
-    snap_file <- snap_file[selected]
-    snap_test <- snap_test[selected]
-  }
 
   if (length(cur) == 0) {
     new <- character()
@@ -160,5 +154,10 @@ snapshot_meta <- function(files = NULL, path = "tests/testthat") {
   out <- out[!is.na(out$new), , drop = FALSE]
   out <- out[order(out$test, out$cur), , drop = FALSE]
   rownames(out) <- NULL
+
+  if (!is.null(files)) {
+    out <- out[out$name %in% paste0(files, ".md"), , drop = FALSE]
+  }
+
   out
 }
