@@ -1,5 +1,7 @@
 # testthat (development version)
 
+* `snapshot_accept()` now works better with variants (#1508).
+
 * Snapshot cleanup also removes all empty directories (#1457).
 
 * `.new` file snapshots variants are no longer immediately deleted after
