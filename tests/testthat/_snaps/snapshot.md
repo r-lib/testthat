@@ -22,9 +22,9 @@
       [1] "1"
     Message <simpleMessage>
       2
-    Warning <warning>
+    Warning <simpleWarning>
       3
-    Error <rlang_error>
+    Error <simpleError>
       4
 
 # multiple outputs of same type are collapsed
@@ -41,10 +41,10 @@
       b
     Code
       {
-        warn("a")
-        warn("b")
+        warning("a")
+        warning("b")
       }
-    Warning <warning>
+    Warning <simpleWarning>
       a
       b
 
@@ -56,9 +56,9 @@
       [1] "<redacted>"
     Message <simpleMessage>
       <redacted>
-    Warning <warning>
+    Warning <simpleWarning>
       <redacted>
-    Error <rlang_error>
+    Error <simpleError>
       <redacted>
 
 ---
