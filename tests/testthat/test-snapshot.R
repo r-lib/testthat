@@ -14,8 +14,8 @@ test_that("can snapshot everything", {
   f <- function() {
     print("1")
     message("2")
-    warn("3")
-    abort("4")
+    warning("3")
+    stop("4")
   }
   expect_snapshot(f(), error = TRUE)
 })
@@ -25,7 +25,7 @@ test_that("multiple outputs of same type are collapsed", {
     x <- 1
     y <- 1
     {message("a"); message("b")}
-    {warn("a"); warn("b")}
+    {warning("a"); warning("b")}
   })
 })
 
@@ -33,8 +33,8 @@ test_that("can scrub output/messages/warnings/errors", {
   secret <- function() {
     print("secret")
     message("secret")
-    warn("secret")
-    abort("secret")
+    warning("secret")
+    stop("secret")
   }
   redact <- function(x) gsub("secret", "<redacted>", x)
   expect_snapshot(secret(), transform = redact, error = TRUE)
@@ -46,6 +46,18 @@ test_that("can scrub output/messages/warnings/errors", {
 test_that("always checks error status", {
   expect_error(expect_snapshot(stop("!"), error = FALSE))
   expect_failure(expect_snapshot(print("!"), error = TRUE))
+})
+
+test_that("can capture error/warning messages", {
+  expect_snapshot_error(stop("This is an error"))
+  expect_snapshot_warning(warning("This is a warning"))
+})
+
+test_that("can check error/warning classes", {
+  expect_snapshot(expect_snapshot_error(1), error = TRUE)
+  expect_snapshot(expect_snapshot_error(1, class = "myerror"), error = TRUE)
+  expect_snapshot(expect_snapshot_warning(1), error = TRUE)
+  expect_snapshot(expect_snapshot_warning(1, class = "mywarning"), error = TRUE)
 })
 
 test_that("snapshot handles multi-line input", {
