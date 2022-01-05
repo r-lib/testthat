@@ -59,6 +59,10 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
 
         if (length(comp) > 0L) {
           self$file_changed <- TRUE
+        } else {
+          # Use the old value for the new snapshot so the snapshot remains
+          # unchanged if the values compare as equal
+          self$new_snaps$set(self$test, variant, i, old_raw)
         }
         comp
       } else {
