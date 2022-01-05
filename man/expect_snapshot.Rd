@@ -103,10 +103,10 @@ the intent of the code is something that can only be verified by a human
 \item \code{expect_snapshot()} captures all messages, warnings, errors, and
 output from code.
 \item \code{expect_snapshot_output()} captures just output printed to the console.
-\item \code{expect_snapshot_error()} captures the first error message and
-optionally check its class.
-\item \code{expect_snapshot_warning()} captures the first error message and
-optionally check its class.
+\item \code{expect_snapshot_error()} captures an error message and
+optionally checks its class.
+\item \code{expect_snapshot_warning()} captures a warning message and
+optionally checks its class.
 \item \code{expect_snapshot_value()} captures the return value.
 }
 

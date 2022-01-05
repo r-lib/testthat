@@ -11,10 +11,10 @@
 #' * `expect_snapshot()` captures all messages, warnings, errors, and
 #'    output from code.
 #' * `expect_snapshot_output()` captures just output printed to the console.
-#' * `expect_snapshot_error()` captures the first error message and
-#'   optionally check its class.
-#' * `expect_snapshot_warning()` captures the first error message and
-#'   optionally check its class.
+#' * `expect_snapshot_error()` captures an error message and
+#'   optionally checks its class.
+#' * `expect_snapshot_warning()` captures a warning message and
+#'   optionally checks its class.
 #' * `expect_snapshot_value()` captures the return value.
 #'
 #' (These functions supersede [verify_output()], [expect_known_output()],
