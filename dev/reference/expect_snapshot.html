@@ -8,7 +8,10 @@ vignette("snapshotting").
 expect_snapshot() captures all messages, warnings, errors, and
 output from code.
 expect_snapshot_output() captures just output printed to the console.
-expect_snapshot_error() captures just error messages.
+expect_snapshot_error() captures an error message and
+optionally checks its class.
+expect_snapshot_warning() captures a warning message and
+optionally checks its class.
 expect_snapshot_value() captures the return value.
 
 
@@ -22,7 +25,10 @@ vignette("snapshotting").
 expect_snapshot() captures all messages, warnings, errors, and
 output from code.
 expect_snapshot_output() captures just output printed to the console.
-expect_snapshot_error() captures just error messages.
+expect_snapshot_error() captures an error message and
+optionally checks its class.
+expect_snapshot_warning() captures a warning message and
+optionally checks its class.
 expect_snapshot_value() captures the return value.
 
 
@@ -106,7 +112,10 @@ the intent of the code is something that can only be verified by a human
 <code><a href="../articles/snapshotting.html">vignette("snapshotting")</a></code>.</p><ul><li><p><code>expect_snapshot()</code> captures all messages, warnings, errors, and
 output from code.</p></li>
 <li><p><code>expect_snapshot_output()</code> captures just output printed to the console.</p></li>
-<li><p><code>expect_snapshot_error()</code> captures just error messages.</p></li>
+<li><p><code>expect_snapshot_error()</code> captures an error message and
+optionally checks its class.</p></li>
+<li><p><code>expect_snapshot_warning()</code> captures a warning message and
+optionally checks its class.</p></li>
 <li><p><code>expect_snapshot_value()</code> captures the return value.</p></li>
 </ul><p>(These functions supersede <code><a href="verify_output.html">verify_output()</a></code>, <code><a href="expect_known_output.html">expect_known_output()</a></code>,
 <code><a href="expect_known_output.html">expect_known_value()</a></code>, and <code><a href="expect_known_output.html">expect_known_hash()</a></code>.)</p>
@@ -126,6 +135,8 @@ output from code.</p></li>
 <span class="fu">expect_snapshot_output</span><span class="op">(</span><span class="va">x</span>, cran <span class="op">=</span> <span class="cn">FALSE</span>, variant <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span>
 
 <span class="fu">expect_snapshot_error</span><span class="op">(</span><span class="va">x</span>, class <span class="op">=</span> <span class="st">"error"</span>, cran <span class="op">=</span> <span class="cn">FALSE</span>, variant <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span>
+
+<span class="fu">expect_snapshot_warning</span><span class="op">(</span><span class="va">x</span>, class <span class="op">=</span> <span class="st">"warning"</span>, cran <span class="op">=</span> <span class="cn">FALSE</span>, variant <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span>
 
 <span class="fu">expect_snapshot_value</span><span class="op">(</span>
   <span class="va">x</span>,
@@ -170,7 +181,7 @@ to get snapshot changes out of your CI system and back into the repo.</p></dd>
 warnings, and errors in the snapshot. Only the most specific
 class is included, i.e. the first element of <code>class(cnd)</code>.</p></dd>
 <dt>class</dt>
-<dd><p>Class of expect error condition. The expectation will
+<dd><p>Class of expected error or warning. The expectation will
 always fail (even on CRAN) if an error of this class isn't seen
 when executing <code>x</code>.</p></dd>
 <dt>style</dt>
