@@ -21,9 +21,14 @@
 #' @param name Snapshot name, taken from `path` by default.
 #' @param binary `r lifecycle::badge("deprecated")` Please use the
 #'   `compare` argument instead.
-#' @param compare A function used for comparison taking `old` and
-#'   `new` arguments. By default this is `compare_file_binary`. Set it
-#'   to `compare_file_text` to compare files line-by-line, ignoring
+#' @param compare A function used to compare the snapshot files. It should take
+#'   two inputs, the paths to the `old` and `new` snapshot, and return either
+#'   `TRUE` or `FALSE`. This defaults to `compare_file_text` if `name` has
+#'   extension `.r`, `.R`, `.Rmd`, `.md`, or `.txt`, and otherwise uses
+#'   `compare_file_binary`.
+#'
+#'   `compare_file_binary()` compares byte-by-byte and
+#'   `compare_file_text()` compares lines-by-line, ignoring
 #'   the difference between Windows and Mac/Linux line endings.
 #' @param variant If not-`NULL`, results will be saved in
 #'   `_snaps/{variant}/{test}/{name}.{ext}`. This allows you to create
@@ -84,7 +89,8 @@ expect_snapshot_file <- function(path,
                                  name = basename(path),
                                  binary = lifecycle::deprecated(),
                                  cran = FALSE,
-                                 compare =  compare_file_binary,
+                                 compare = NULL,
+                                 transform = NULL,
                                  variant = NULL) {
   edition_require(3, "expect_snapshot_file()")
   if (!cran && !interactive() && on_cran()) {
@@ -106,6 +112,17 @@ expect_snapshot_file <- function(path,
       "expect_snapshot_file(compare = )"
     )
     compare <- if (binary) compare_file_binary else compare_file_text
+  }
+  if (is.null(compare)) {
+    ext <- tools::file_ext(name)
+    is_text <- ext %in% c("r", "R", "txt", "md", "Rmd")
+    compare <- if (is_text) compare_file_text else compare_file_binary
+  }
+
+  if (!is.null(transform)) {
+    lines <- brio::read_lines(path)
+    lines <- transform(lines)
+    brio::write_lines(lines, path)
   }
 
   lab <- quo_label(enquo(path))
