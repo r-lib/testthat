@@ -327,7 +327,12 @@ expect_snapshot_helper <- function(lab, val,
     tolerance = tolerance,
     variant = variant
   )
-  hint <- paste0("Run `snapshot_accept('", snapshotter$file, "')` if this is a deliberate change")
+  if (is.null(variant) || variant == "_default") {
+    name <- snapshotter$file
+  } else {
+    name <- file.path(variant, snapshotter$file)
+  }
+  hint <- paste0("Run `snapshot_accept('", name, "')` if this is a deliberate change")
 
   expect(
     length(comp) == 0,
