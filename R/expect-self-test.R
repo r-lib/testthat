@@ -69,6 +69,10 @@ expect_snapshot_failure <- function(x) {
 }
 
 expect_snapshot_reporter <- function(reporter, paths = test_path("reporters/tests.R")) {
+  if (packageVersion("rlang") >= "0.99") {
+    skip("reporter tests currently only work with pre-1.0.0 rlang")
+  }
+
   local_rng_version("3.3")
   set.seed(1014)
   # withr::local_seed(1014)
