@@ -357,7 +357,12 @@ expect_snapshot_helper <- function(lab, val,
     tolerance = tolerance,
     variant = variant
   )
-  hint <- paste0("Run `snapshot_accept('", snapshotter$file, "')` if this is a deliberate change")
+  if (is.null(variant) || variant == "_default") {
+    name <- snapshotter$file
+  } else {
+    name <- file.path(variant, snapshotter$file)
+  }
+  hint <- paste0("Run `snapshot_accept('", name, "')` if this is a deliberate change")
 
   expect(
     length(comp) == 0,
@@ -382,6 +387,11 @@ snapshot_not_available <- function(message) {
 local_snapshot_dir <- function(snap_names, .env = parent.frame()) {
   path <- withr::local_tempdir(.local_envir = .env)
   dir.create(file.path(path, "_snaps"), recursive = TRUE)
+
+  dirs <- setdiff(unique(dirname(snap_names)), ".")
+  for (dir in dirs) {
+    dir.create(file.path(path, "_snaps", dir), recursive = TRUE, showWarnings = FALSE)
+  }
 
   snap_paths <- file.path(path, "_snaps", paste0(snap_names, ".md"))
   lapply(snap_paths, brio::write_lines, text = "")
