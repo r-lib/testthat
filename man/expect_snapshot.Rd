@@ -4,6 +4,7 @@
 \alias{expect_snapshot}
 \alias{expect_snapshot_output}
 \alias{expect_snapshot_error}
+\alias{expect_snapshot_warning}
 \alias{expect_snapshot_value}
 \title{Snapshot testing}
 \usage{
@@ -19,6 +20,8 @@ expect_snapshot(
 expect_snapshot_output(x, cran = FALSE, variant = NULL)
 
 expect_snapshot_error(x, class = "error", cran = FALSE, variant = NULL)
+
+expect_snapshot_warning(x, class = "warning", cran = FALSE, variant = NULL)
 
 expect_snapshot_value(
   x,
@@ -62,7 +65,7 @@ to get snapshot changes out of your CI system and back into the repo.}
 warnings, and errors in the snapshot. Only the most specific
 class is included, i.e. the first element of \code{class(cnd)}.}
 
-\item{class}{Class of expect error condition. The expectation will
+\item{class}{Class of expected error or warning. The expectation will
 always fail (even on CRAN) if an error of this class isn't seen
 when executing \code{x}.}
 
@@ -100,7 +103,10 @@ the intent of the code is something that can only be verified by a human
 \item \code{expect_snapshot()} captures all messages, warnings, errors, and
 output from code.
 \item \code{expect_snapshot_output()} captures just output printed to the console.
-\item \code{expect_snapshot_error()} captures just error messages.
+\item \code{expect_snapshot_error()} captures an error message and
+optionally checks its class.
+\item \code{expect_snapshot_warning()} captures a warning message and
+optionally checks its class.
 \item \code{expect_snapshot_value()} captures the return value.
 }
 

@@ -68,6 +68,42 @@
     Output
       [1] "****"
 
+# can capture error/warning messages
+
+    This is an error
+
+---
+
+    This is a warning
+
+# can check error/warning classes
+
+    Code
+      expect_snapshot_error(1)
+    Error <expectation_failure>
+      1 did not generate error
+
+---
+
+    Code
+      expect_snapshot_error(1, class = "myerror")
+    Error <expectation_failure>
+      1 did not generate error with class 'myerror'
+
+---
+
+    Code
+      expect_snapshot_warning(1)
+    Error <expectation_failure>
+      1 did not generate warning
+
+---
+
+    Code
+      expect_snapshot_warning(1, class = "mywarning")
+    Error <expectation_failure>
+      1 did not generate warning with class 'mywarning'
+
 # snapshot handles multi-line input
 
     Code
