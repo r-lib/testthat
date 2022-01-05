@@ -1,5 +1,7 @@
 # testthat (development version)
 
+* Snapshot cleanup also removes all empty directories (#1457).
+
 * `.new` file snapshots variants are no longer immediately deleted after
   creation (#1468).
   

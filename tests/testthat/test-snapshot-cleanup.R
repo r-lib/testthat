@@ -6,6 +6,16 @@ test_that("snapshot cleanup makes nice message if needed", {
   })
 })
 
+test_that("deletes empty dirs", {
+  dir <- local_snap_dir(character())
+  dir.create(file.path(dir, "a", "b", "c"), recursive = TRUE)
+  dir.create(file.path(dir, "b"), recursive = TRUE)
+  dir.create(file.path(dir, "c"), recursive = TRUE)
+
+  snapshot_cleanup(dir)
+  expect_equal(dir(dir), character())
+})
+
 test_that("detects outdated snapshots", {
   dir <- local_snap_dir(c("a.md", "b.md", "b.new.md"))
   expect_equal(snapshot_outdated(dir, c("a", "b")), character())
