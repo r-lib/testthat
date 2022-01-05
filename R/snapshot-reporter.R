@@ -14,7 +14,7 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
     new_snaps = NULL,
 
     initialize = function(snap_dir = "_snaps") {
-      self$snap_dir <- snap_dir
+      self$snap_dir <- normalizePath(snap_dir, mustWork = FALSE)
     },
 
     start_file = function(path, test = NULL) {

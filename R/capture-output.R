@@ -42,21 +42,20 @@ capture_output_lines <- function(code, print = FALSE, width = 80) {
 }
 
 eval_with_output <- function(code, print = FALSE, width = 80) {
-  temp <- file()
-  on.exit(close(temp), add = TRUE)
+  path <- withr::local_tempfile()
 
   if (!is.null(width)) {
     local_width(width)
   }
-  result <- withr::with_output_sink(temp, withVisible(code))
+  result <- withr::with_output_sink(path, withVisible(code))
   if (result$visible && print) {
-    withr::with_output_sink(temp, testthat_print(result$value))
+    withr::with_output_sink(path, testthat_print(result$value), append = TRUE)
   }
 
   list(
     val = result$value,
     vis = result$visible,
-    out = read_lines(temp, encoding = "unknown")
+    out = brio::read_lines(path)
   )
 }
 

@@ -127,7 +127,7 @@ JunitReporter <- R6::R6Class("JunitReporter",
         xml2::xml_text(failure) <- crayon::strip_style(format(result))
         self$failures <- self$failures + 1
       } else if (expectation_skip(result)) {
-        xml2::xml_add_child(testcase, "skipped")
+        xml2::xml_add_child(testcase, "skipped", message = first_line(result))
         self$skipped <- self$skipped + 1
       }
     },
@@ -138,7 +138,7 @@ JunitReporter <- R6::R6Class("JunitReporter",
       } else if (inherits(self$out, "connection")) {
         file <- tempfile()
         xml2::write_xml(self$doc, file, format = TRUE)
-        write_lines(read_lines(file), self$out)
+        cat(brio::read_file(file), file = self$out)
       } else {
         stop("unsupported output type: ", toString(self$out))
       }

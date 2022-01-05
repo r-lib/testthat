@@ -1,10 +1,28 @@
 # testthat (development version)
 
+* Snapshot cleanup also removes all empty directories (#1457).
+
+* `.new` file snapshots variants are no longer immediately deleted after
+  creation (#1468).
+  
+* `local_reproducible_output()` gains a `lang` argument so that you can 
+  optionally override the language used to translate error messages (#1483).
+
+* `expect_snapshot_file()` now errors if the file being snapshot does not exist; 
+  `SnapshotReporter` also now treats the file directory as an absolute path 
+  (#1476, @malcolmbarrett)
+
+* `skip_if_offline()` now automatically calls `skip_on_cran()` (#1479).
+
+* testthat now uses brio for all reading and writing (#1120). This
+  ensures that snapshots always use "\n" to separate lines (#1516).
+  
 * `local_reproducible_output()` now sets the global option
   `cli.num_colors` in addition to `crayon.enabled`.
 
 * `expect_snapshot()` no longer inadvertently trims trailing new lines off
   of errors and messages (#1509).
+* JUnit reporter now includes skip messages/reasons (@rfineman, #1507)
 
 # testthat 3.1.1
 

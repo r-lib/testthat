@@ -41,7 +41,7 @@ Imports:
     rlang (>= 0.4.9),
     utils,
     waldo (>= 0.2.4),
-    withr (>= 2.3.0)
+    withr (>= 2.4.3)
 Suggests: 
     covr,
     curl (>= 0.9.5),
@@ -58,6 +58,7 @@ VignetteBuilder:
     knitr
 Config/testthat/edition: 3
 Config/testthat/start-first: watcher, parallel*
+Config/Needs/website: tidyverse/tidytemplate
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE, r6 = FALSE)
 RoxygenNote: 7.1.2
