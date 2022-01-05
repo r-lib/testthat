@@ -1,4 +1,7 @@
 # testthat (development version)
+
+* `.new` file snapshots variants are no longer immediately deleted after
+  creation (#1468).
   
 * `local_reproducible_output()` gains a `lang` argument so that you can 
   optionally override the language used to translate error messages (#1483).

@@ -45,8 +45,10 @@ snapshot_expected <- function(
   sort(c(
     snaps,
     outer(variants, snaps, file.path),
-    snap_files_seen, snap_files_seen_new,
-    outer(variants, snap_files_seen, file.path)
+    snap_files_seen,
+    outer(variants, snap_files_seen, file.path),
+    snap_files_seen_new,
+    outer(variants, snap_files_seen_new, file.path)
   ))
 }
 

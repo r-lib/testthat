@@ -17,6 +17,10 @@ test_that("detects outdated snapshots", {
 test_that("preserves variants", {
   dir <- local_snap_dir(c("a.md", "windows/a.md", "windows/b.md"))
   expect_equal(snapshot_outdated(dir, "a"), "windows/b.md")
+
+  # Doesn't delete new files in variants
+  dir <- local_snap_dir(c("a.md", "windows/a.md", "windows/a.new.md"))
+  expect_equal(snapshot_outdated(dir, "a"), character())
 })
 
 test_that("detects outdated snapshot files", {
