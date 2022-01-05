@@ -126,3 +126,10 @@ map_lgl <- function(.x, .f, ...) {
 }
 
 r_version <- function() paste0("R", getRversion()[, 1:2])
+
+# Waiting on https://github.com/r-lib/withr/pull/188
+local_tempfile1 <- function(lines, env = parent.frame()) {
+  path <- withr::local_tempfile(.local_envir = env)
+  writeLines(lines, path)
+  path
+}
