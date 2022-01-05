@@ -155,7 +155,7 @@ test_that("cnd expectations consistently return condition (#1371)", {
 
 test_that("cli width wrapping doesn't affect text matching", {
   skip_if_not_installed("cli", "3.0.2")
-  skip_if_not_installed("rlang", "1.0.0")
+  skip_if_not_installed("rlang", "0.99.0.9001")
 
   local_use_cli()
 
