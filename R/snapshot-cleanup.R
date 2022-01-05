@@ -12,6 +12,11 @@ snapshot_cleanup <- function(path, test_files_seen = character(), snap_files_see
   empty <- dirs[map_lgl(dirs, is_dir_empty)]
   unlink(empty, recursive = TRUE)
 
+  # Delete snapshot folder
+  if (is_dir_empty(path)) { 
+    unlink(path, recursive = TRUE) 
+  }
+
   rstudio_tickle()
 
   invisible(outdated)

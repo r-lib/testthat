@@ -61,6 +61,18 @@ test_that("always checks error status", {
   expect_failure(expect_snapshot(print("!"), error = TRUE))
 })
 
+test_that("can capture error/warning messages", {
+  expect_snapshot_error(stop("This is an error"))
+  expect_snapshot_warning(warning("This is a warning"))
+})
+
+test_that("can check error/warning classes", {
+  expect_snapshot(expect_snapshot_error(1), error = TRUE)
+  expect_snapshot(expect_snapshot_error(1, class = "myerror"), error = TRUE)
+  expect_snapshot(expect_snapshot_warning(1), error = TRUE)
+  expect_snapshot(expect_snapshot_warning(1, class = "mywarning"), error = TRUE)
+})
+
 test_that("snapshot handles multi-line input", {
   expect_snapshot({
     1 + 2

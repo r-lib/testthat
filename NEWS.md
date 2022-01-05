@@ -3,6 +3,16 @@
 * `expect_snapshot()` no longer inadvertently trims trailing new lines off
   of errors and messages (#1509).
 
+* If a snapshot has a different value, but compares as equal (e.g. because 
+  you've set a numeric tolerance), the saved values are no longer changed if
+  there's another difference in the file.
+
+* New `expect_snapshot_warning()` to match `expect_snapshot_error()` (#1532).
+
+* `expect_snapshot_file()` gains a `transform` argument to match 
+  `expect_snapshot()` (#1474). `compare` now defaults to `NULL`, automatically 
+  guessing the comparison type based on the extension.
+
 * Snapshot cleanup also removes all empty directories (#1457).
 
 * `.new` file snapshots variants are no longer immediately deleted after
