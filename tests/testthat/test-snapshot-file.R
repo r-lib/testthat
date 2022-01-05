@@ -81,6 +81,12 @@ test_that("can announce snapshot file", {
   expect_equal(snapper$snap_file_seen, "snapshot-announce/bar.svg")
 })
 
+test_that("can transform snapshot contents", {
+  path <- local_tempfile1(c("secret", "ssh secret squirrel"))
+
+  redact <- function(x) gsub("secret", "<redacted>", x)
+  expect_snapshot_file(path, "secret.txt", transform = redact)
+})
 
 # snapshot_file_equal -----------------------------------------------------
 

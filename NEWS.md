@@ -1,5 +1,9 @@
 # testthat (development version)
 
+* `expect_snapshot_file()` gains a `transform` argument to match 
+  `expect_snapshot()` (#1474). `compare` now defaults to `NULL`, automatically 
+  guessing the comparison type based on the extension.
+
 * Snapshot cleanup also removes all empty directories (#1457).
 
 * `.new` file snapshots variants are no longer immediately deleted after
