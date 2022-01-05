@@ -1,5 +1,7 @@
 # testthat (development version)
 
+* New `expect_snapshot_warning()` to match `expect_snapshot_error()` (#1532).
+
 * `expect_snapshot_file()` gains a `transform` argument to match 
   `expect_snapshot()` (#1474). `compare` now defaults to `NULL`, automatically 
   guessing the comparison type based on the extension.
