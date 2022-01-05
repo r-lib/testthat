@@ -1,5 +1,10 @@
 # testthat (development version)
 
+* `snapshot_accept()` now works better with variants (#1508).
+
+* `expect_snapshot()` now only adds a `.new` file for the variants that 
+  actually changed, not all variants.
+
 * If a snapshot has a different value, but compares as equal (e.g. because 
   you've set a numeric tolerance), the saved values are no longer changed if
   there's another difference in the file.
