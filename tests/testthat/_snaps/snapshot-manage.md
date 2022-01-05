@@ -22,3 +22,11 @@
       Updating snapshots:
       * a.md
 
+# can work with variants
+
+    Code
+      snapshot_accept(path = path)
+    Message <message>
+      Updating snapshots:
+      * foo/a.md
+

@@ -17,7 +17,7 @@ snapshot_accept <- function(files = NULL, path = "tests/testthat") {
     return(invisible())
   }
 
-  inform(c("Updating snapshots:", basename(changed$cur)))
+  inform(c("Updating snapshots:", changed$name))
   unlink(changed$cur)
   file.rename(changed$new, changed$cur)
 
