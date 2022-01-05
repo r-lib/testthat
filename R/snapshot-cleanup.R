@@ -13,7 +13,7 @@ snapshot_cleanup <- function(path, test_files_seen = character(), snap_files_see
   unlink(empty, recursive = TRUE)
 
   # Delete snapshot folder
-  if (length(dir(path)) == 0) { 
+  if (is_dir_empty(path)) { 
     unlink(path, recursive = TRUE) 
   }
 
