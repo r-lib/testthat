@@ -76,6 +76,9 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
           ":\n",
           value_enc
         ))
+        if (on_ci()) {
+          stop("A CI error may be required to retrieve the new snapshot variant as an artifact; failing.")
+        }
         character()
       }
     },
