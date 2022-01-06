@@ -3,6 +3,17 @@
 * `expect_snapshot()` no longer inadvertently trims trailing new lines off
   of errors and messages (#1509).
 
+* `test_that()` no longer inappropriately skips when calling `expect_equal()`
+  when you've temporarily set the locale to non-UTF-8 (#1285).
+
+* When a snapshot changes the hint also mentions that you can use 
+  `snapshot_review()` (#1500, @DanChaltiel).
+
+* `snapshot_accept()` now works better with variants (#1508).
+
+* `expect_snapshot()` now only adds a `.new` file for the variants that 
+  actually changed, not all variants.
+
 * If a snapshot has a different value, but compares as equal (e.g. because 
   you've set a numeric tolerance), the saved values are no longer changed if
   there's another difference in the file.
