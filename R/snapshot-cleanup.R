@@ -1,18 +1,29 @@
 snapshot_cleanup <- function(path, test_files_seen = character(), snap_files_seen = character()) {
   outdated <- snapshot_outdated(path, test_files_seen, snap_files_seen)
-  if (length(outdated) == 0) {
-    return(invisible())
+
+  if (length(outdated) > 0) {
+    inform(c("Deleting unused snapshots:", outdated))
+    unlink(file.path(path, outdated), recursive = TRUE)
   }
 
-  inform(c("Deleting unused snapshots:", outdated))
-  unlink(file.path(path, outdated), recursive = TRUE)
+  # Delete empty directories:
+  # nest dir() inside list.dirs() to avoid picking up `.` directories
+  dirs <- list.dirs(dir(path, full.names = TRUE))
+  empty <- dirs[map_lgl(dirs, is_dir_empty)]
+  unlink(empty, recursive = TRUE)
 
-  if (length(dir(path)) == 0) {
-    unlink(path, recursive = TRUE)
+  # Delete snapshot folder
+  if (is_dir_empty(path)) { 
+    unlink(path, recursive = TRUE) 
   }
+
   rstudio_tickle()
 
   invisible(outdated)
+}
+
+is_dir_empty <- function(x) {
+  length(dir(x, recursive = TRUE)) == 0
 }
 
 snapshot_outdated <- function(path, test_files_seen = character(), snap_files_seen = character()) {
@@ -45,8 +56,10 @@ snapshot_expected <- function(
   sort(c(
     snaps,
     outer(variants, snaps, file.path),
-    snap_files_seen, snap_files_seen_new,
-    outer(variants, snap_files_seen, file.path)
+    snap_files_seen,
+    outer(variants, snap_files_seen, file.path),
+    snap_files_seen_new,
+    outer(variants, snap_files_seen_new, file.path)
   ))
 }
 

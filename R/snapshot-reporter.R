@@ -7,21 +7,21 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
     test = NULL,
     test_file_seen = character(),
     snap_file_seen = character(),
-    file_changed = FALSE,
+    variants_changed = FALSE,
 
     old_snaps = NULL,
     cur_snaps = NULL,
     new_snaps = NULL,
 
     initialize = function(snap_dir = "_snaps") {
-      self$snap_dir <- snap_dir
+      self$snap_dir <- normalizePath(snap_dir, mustWork = FALSE)
     },
 
     start_file = function(path, test = NULL) {
       self$file <- context_name(path)
       self$test_file_seen <- c(self$test_file_seen, self$file)
 
-      self$file_changed <- FALSE
+      self$variants_changed <- character()
 
       self$old_snaps <- FileSnaps$new(self$snap_dir, self$file, type = "old")
       self$cur_snaps <- FileSnaps$new(self$snap_dir, self$file, type = "cur")
@@ -58,7 +58,11 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
         )
 
         if (length(comp) > 0L) {
-          self$file_changed <- TRUE
+          self$variants_changed <- union(self$variants_changed, variant)
+        } else {
+          # Use the old value for the new snapshot so the snapshot remains
+          # unchanged if the values compare as equal
+          self$new_snaps$set(self$test, variant, i, old_raw)
         }
         comp
       } else {
@@ -106,8 +110,9 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
       dir.create(self$snap_dir, showWarnings = FALSE)
 
       self$cur_snaps$write()
-      if (self$file_changed) {
-        self$new_snaps$write()
+
+      if (length(self$variants_changed) >= 1) {
+        self$new_snaps$write(self$variants_changed)
       } else {
         self$new_snaps$delete()
       }
@@ -125,6 +130,10 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
 
     is_active = function() {
       !is.null(self$file) && !is.null(self$test)
+    },
+
+    snap_files = function() {
+      dir(self$snap_dir, recursive = TRUE)
     }
   )
 )

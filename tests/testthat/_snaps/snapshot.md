@@ -22,9 +22,9 @@
       [1] "1"
     Message <simpleMessage>
       2
-    Warning <warning>
+    Warning <simpleWarning>
       3
-    Error <rlang_error>
+    Error <simpleError>
       4
 
 # multiple outputs of same type are collapsed
@@ -41,10 +41,10 @@
       b
     Code
       {
-        warn("a")
-        warn("b")
+        warning("a")
+        warning("b")
       }
-    Warning <warning>
+    Warning <simpleWarning>
       a
       b
 
@@ -56,9 +56,9 @@
       [1] "<redacted>"
     Message <simpleMessage>
       <redacted>
-    Warning <warning>
+    Warning <simpleWarning>
       <redacted>
-    Error <rlang_error>
+    Error <simpleError>
       <redacted>
 
 ---
@@ -67,6 +67,42 @@
       print("secret")
     Output
       [1] "****"
+
+# can capture error/warning messages
+
+    This is an error
+
+---
+
+    This is a warning
+
+# can check error/warning classes
+
+    Code
+      expect_snapshot_error(1)
+    Error <expectation_failure>
+      1 did not generate error
+
+---
+
+    Code
+      expect_snapshot_error(1, class = "myerror")
+    Error <expectation_failure>
+      1 did not generate error with class 'myerror'
+
+---
+
+    Code
+      expect_snapshot_warning(1)
+    Error <expectation_failure>
+      1 did not generate warning
+
+---
+
+    Code
+      expect_snapshot_warning(1, class = "mywarning")
+    Error <expectation_failure>
+      1 did not generate warning with class 'mywarning'
 
 # snapshot handles multi-line input
 
@@ -176,4 +212,17 @@
     Code
       x <- quote(!!foo)
       expect_equal(x, call("!", call("!", quote(foo))))
+
+# hint is informative
+
+    Code
+      cat(snapshot_accept_hint("_default", "bar.R"))
+    Output
+      * Run `snapshot_accept('bar.R')` to accept the change
+      * Run `snapshot_review('bar.R')` to interactively review the change
+    Code
+      cat(snapshot_accept_hint("foo", "bar.R"))
+    Output
+      * Run `snapshot_accept('foo/bar.R')` to accept the change
+      * Run `snapshot_review('foo/bar.R')` to interactively review the change
 

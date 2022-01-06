@@ -24,7 +24,7 @@ test_that("creates file on first run", {
 
 test_that("igores incomplete last line", {
   file <- tempfile()
-  write_lines("Hi!", file)
+  writeLines("Hi!", file)
   expect_success(expect_known_output(cat("Hi!"), file))
   expect_success(expect_known_output(cat("Hi!\n"), file))
   expect_failure(expect_known_output(cat("Hi!\n\n"), file))
@@ -33,28 +33,20 @@ test_that("igores incomplete last line", {
 
 test_that("updates by default", {
   file <- tempfile()
-  write_lines("Hi!", file)
+  writeLines("Hi!", file)
   expect_failure(expect_known_output(cat("oops"), file, update = FALSE))
 
-  expect_equal(read_lines(file), "Hi!")
+  expect_equal(readLines(file), "Hi!")
   expect_failure(expect_known_output(cat("oops"), file, update = TRUE))
   expect_success(expect_known_output(cat("oops"), file))
 })
 
-test_that("works in non-UTF-8 locale", {
+test_that("works with utf-8 output", {
   skip_on_cran()
-  text <- c("\u00fc", "\u2a5d", "\u6211", "\u0438")
-  file <- tempfile()
-  write_lines(text, file)
+  skip_on_os("windows")
 
-  expect_success(expect_known_output(cat(text, sep = "\n"), file, update = FALSE))
-  withr::with_locale(
-    c(LC_CTYPE = "C"),
-    {
-      expect_false(l10n_info()$`UTF-8`)
-      expect_success(expect_known_output(cat(text, sep = "\n"), file, update = FALSE))
-    }
-  )
+  text <- c("\u00fc", "\u2a5d", "\u6211", "\u0438")
+  expect_known_output(cat(text, sep = "\n"), "test-expect-known.txt")
 })
 
 test_that("Warning for non-UTF-8 reference files", {

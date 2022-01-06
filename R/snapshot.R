@@ -11,7 +11,10 @@
 #' * `expect_snapshot()` captures all messages, warnings, errors, and
 #'    output from code.
 #' * `expect_snapshot_output()` captures just output printed to the console.
-#' * `expect_snapshot_error()` captures just error messages.
+#' * `expect_snapshot_error()` captures an error message and
+#'   optionally checks its class.
+#' * `expect_snapshot_warning()` captures a warning message and
+#'   optionally checks its class.
 #' * `expect_snapshot_value()` captures the return value.
 #'
 #' (These functions supersede [verify_output()], [expect_known_output()],
@@ -209,22 +212,49 @@ expect_snapshot_output <- function(x, cran = FALSE, variant = NULL) {
   )
 }
 
-#' @param class Class of expect error condition. The expectation will
+#' @param class Class of expected error or warning. The expectation will
 #'   always fail (even on CRAN) if an error of this class isn't seen
 #'   when executing `x`.
 #' @export
 #' @rdname expect_snapshot
 expect_snapshot_error <- function(x, class = "error", cran = FALSE, variant = NULL) {
   edition_require(3, "expect_snapshot_error()")
+  expect_snapshot_condition(
+    "error", {{x}},
+    class = class,
+    cran = cran,
+    variant = variant
+  )
+}
+
+#' @export
+#' @rdname expect_snapshot
+expect_snapshot_warning <- function(x, class = "warning", cran = FALSE, variant = NULL) {
+  edition_require(3, "expect_snapshot_warning()")
+  expect_snapshot_condition(
+    "warning", {{x}},
+    class = class,
+    cran = cran,
+    variant = variant
+  )
+}
+
+expect_snapshot_condition <- function(base_class, x, class, cran = FALSE, variant = NULL) {
   variant <- check_variant(variant)
 
   lab <- quo_label(enquo(x))
   val <- capture_matching_condition(x, cnd_matcher(class))
   if (is.null(val)) {
-    fail(sprintf("%s did not throw error of class '%s'", lab, class))
+    if (base_class == class) {
+      fail(sprintf("%s did not generate %s", lab, base_class))
+    } else {
+      fail(sprintf("%s did not generate %s with class '%s'", lab, base_class, class))
+    }
   }
 
-  expect_snapshot_helper(lab, conditionMessage(val),
+  expect_snapshot_helper(
+    lab,
+    conditionMessage(val),
     cran = cran,
     variant = variant
   )
@@ -327,7 +357,8 @@ expect_snapshot_helper <- function(lab, val,
     tolerance = tolerance,
     variant = variant
   )
-  hint <- paste0("Run `snapshot_accept('", snapshotter$file, "')` if this is a deliberate change")
+
+  hint <- snapshot_accept_hint(variant, snapshotter$file)
 
   expect(
     length(comp) == 0,
@@ -338,6 +369,19 @@ expect_snapshot_helper <- function(lab, val,
       hint
     ),
     trace_env = caller_env()
+  )
+}
+
+snapshot_accept_hint <- function(variant, file) {
+  if (is.null(variant) || variant == "_default") {
+    name <- file
+  } else {
+    name <- file.path(variant, file)
+  }
+
+  paste0(
+    "* Run `snapshot_accept('", name, "')` to accept the change\n",
+    "* Run `snapshot_review('", name, "')` to interactively review the change"
   )
 }
 
@@ -353,8 +397,13 @@ local_snapshot_dir <- function(snap_names, .env = parent.frame()) {
   path <- withr::local_tempdir(.local_envir = .env)
   dir.create(file.path(path, "_snaps"), recursive = TRUE)
 
+  dirs <- setdiff(unique(dirname(snap_names)), ".")
+  for (dir in dirs) {
+    dir.create(file.path(path, "_snaps", dir), recursive = TRUE, showWarnings = FALSE)
+  }
+
   snap_paths <- file.path(path, "_snaps", paste0(snap_names, ".md"))
-  lapply(snap_paths, write_lines, text = "")
+  lapply(snap_paths, brio::write_lines, text = "")
 
   path
 }

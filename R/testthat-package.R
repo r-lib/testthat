@@ -14,6 +14,7 @@
 "_PACKAGE"
 
 #' @import rlang
+#' @importFrom brio writeLines readLines
 #' @useDynLib testthat, .registration = TRUE
 NULL
 
