@@ -1,5 +1,8 @@
 # testthat (development version)
 
+* `test_that()` no longer inappropriately skips when calling `expect_equal()`
+  when you've temporarily set the locale to non-UTF-8 (#1285).
+
 * When a snapshot changes the hint also mentions that you can use 
   `snapshot_review()` (#1500, @DanChaltiel).
 

@@ -66,9 +66,11 @@ Reporter <- R6::R6Class("Reporter",
       local_reproducible_output(
         width = self$width,
         crayon = self$crayon,
-        unicode = self$unicode,
         .env = .env
       )
+      # Can't set unicode with local_reproducible_output() because it can
+      # generate a skip if you're temporarily using a non-UTF-8 locale
+      withr::local_options(cli.unicode = self$unicode, .local_envir = .env)
     },
 
     cat_tight = function(...) {
