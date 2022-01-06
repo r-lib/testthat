@@ -213,3 +213,16 @@
       x <- quote(!!foo)
       expect_equal(x, call("!", call("!", quote(foo))))
 
+# hint is informative
+
+    Code
+      cat(snapshot_accept_hint("_default", "bar.R"))
+    Output
+      * Run `snapshot_accept('bar.R')` to accept the change
+      * Run `snapshot_review('bar.R')` to interactively review the change
+    Code
+      cat(snapshot_accept_hint("foo", "bar.R"))
+    Output
+      * Run `snapshot_accept('foo/bar.R')` to accept the change
+      * Run `snapshot_review('foo/bar.R')` to interactively review the change
+
