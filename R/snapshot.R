@@ -160,16 +160,18 @@ snapshot_replay.condition <- function(x,
   c(snap_header(state, type), snapshot_lines(msg, transform))
 }
 
-snapshot_replay_condition_legacy <- function(x, state, transform = NULL) {
+snapshot_replay_condition_legacy <- function(x, state = env(), transform = NULL) {
   msg <- cnd_message(x)
+
   if (inherits(x, "error")) {
     state$error <- x
     type <- "Error"
+    msg <- add_implict_nl(msg)
   } else if (inherits(x, "warning")) {
     type <- "Warning"
+    msg <- paste0(msg, "\n")
   } else if (inherits(x, "message")) {
     type <- "Message"
-    msg <- sub("\n$", "", msg)
   } else {
     type <- "Condition"
   }
@@ -186,6 +188,14 @@ snapshot_lines <- function(x, transform = NULL) {
   }
   x <- indent(x)
   x
+}
+
+add_implict_nl <- function(x) {
+  if (substr(x, nchar(x), nchar(x)) == "\n") {
+    x
+  } else {
+    paste0(x, "\n")
+  }
 }
 
 snap_header <- function(state, header) {

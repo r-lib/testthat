@@ -1,5 +1,8 @@
 # testthat (development version)
 
+* `expect_snapshot()` no longer inadvertently trims trailing new lines off
+  of errors and messages (#1509).
+
 * `test_that()` no longer inappropriately skips when calling `expect_equal()`
   when you've temporarily set the locale to non-UTF-8 (#1285).
 
