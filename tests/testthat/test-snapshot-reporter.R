@@ -73,6 +73,26 @@ test_that("only create new files for changed variants", {
   )
 })
 
+test_that("only reverting change in variant deletes .new", {
+  snapper <- local_snapshotter()
+  snapper$start_file("variants", "test")
+  expect_warning(expect_snapshot_output("x", variant = "a"), "Adding new")
+  snapper$end_file()
+  expect_setequal(snapper$snap_files(), "a/variants.md")
+
+  # failure
+  snapper$start_file("variants", "test")
+  expect_failure(expect_snapshot_output("y", variant = "a"))
+  snapper$end_file()
+  expect_setequal(snapper$snap_files(), c("a/variants.md", "a/variants.new.md"))
+
+  # success
+  snapper$start_file("variants", "test")
+  expect_success(expect_snapshot_output("x", variant = "a"))
+  snapper$end_file()
+  expect_setequal(snapper$snap_files(), "a/variants.md")
+})
+
 
 test_that("removing tests removes snap file", {
   path <- withr::local_tempdir()
