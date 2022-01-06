@@ -1,5 +1,8 @@
 # testthat (development version)
 
+* When a snapshot changes the hint also mentions that you can use 
+  `snapshot_review()` (#1500, @DanChaltiel).
+
 * `snapshot_accept()` now works better with variants (#1508).
 
 * `expect_snapshot()` now only adds a `.new` file for the variants that 
