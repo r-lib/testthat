@@ -368,13 +368,19 @@ expect_snapshot_helper <- function(lab, val,
     variant = variant
   )
 
+  if (!identical(variant, "_default")) {
+    variant_lab <- paste0(" (variant '", variant, "')")
+  } else {
+    variant_lab <- ""
+  }
   hint <- snapshot_accept_hint(variant, snapshotter$file)
 
   expect(
     length(comp) == 0,
     sprintf(
-      "Snapshot of %s has changed:\n%s\n\n%s",
+      "Snapshot of %s has changed%s:\n%s\n\n%s",
       lab,
+      variant_lab,
       paste0(comp, collapse = "\n\n"),
       hint
     ),

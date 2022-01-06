@@ -7,7 +7,8 @@
   when you've temporarily set the locale to non-UTF-8 (#1285).
 
 * When a snapshot changes the hint also mentions that you can use 
-  `snapshot_review()` (#1500, @DanChaltiel).
+  `snapshot_review()` (#1500, @DanChaltiel) and the message tells you what 
+  variant is active (#1540).
 
 * `snapshot_accept()` now works better with variants (#1508).
 
