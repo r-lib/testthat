@@ -75,22 +75,23 @@ test_that("only create new files for changed variants", {
 
 test_that("only reverting change in variant deletes .new", {
   snapper <- local_snapshotter()
-  snapper$start_file("variants", "test")
+  snapper$start_file("v", "test")
   expect_warning(expect_snapshot_output("x", variant = "a"), "Adding new")
+  expect_warning(expect_snapshot_output("x", variant = "b"), "Adding new")
   snapper$end_file()
-  expect_setequal(snapper$snap_files(), "a/variants.md")
+  expect_setequal(snapper$snap_files(), c("a/v.md", "b/v.md"))
 
   # failure
-  snapper$start_file("variants", "test")
+  snapper$start_file("v", "test")
   expect_failure(expect_snapshot_output("y", variant = "a"))
   snapper$end_file()
-  expect_setequal(snapper$snap_files(), c("a/variants.md", "a/variants.new.md"))
+  expect_setequal(snapper$snap_files(), c("a/v.md", "b/v.md", "a/v.new.md"))
 
   # success
-  snapper$start_file("variants", "test")
+  snapper$start_file("v", "test")
   expect_success(expect_snapshot_output("x", variant = "a"))
   snapper$end_file()
-  expect_setequal(snapper$snap_files(), "a/variants.md")
+  expect_setequal(snapper$snap_files(), c("a/v.md", "b/v.md"))
 })
 
 
