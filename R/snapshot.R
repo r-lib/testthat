@@ -111,7 +111,8 @@ expect_snapshot <- function(x,
     cran = cran,
     save = function(x) paste0(x, collapse = "\n"),
     load = function(x) split_by_line(x)[[1]],
-    variant = variant
+    variant = variant,
+    trace_env = caller_env()
   )
 }
 
@@ -208,7 +209,8 @@ expect_snapshot_output <- function(x, cran = FALSE, variant = NULL) {
     cran = cran,
     save = function(x) paste0(x, collapse = "\n"),
     load = function(x) split_by_line(x)[[1]],
-    variant = variant
+    variant = variant,
+    trace_env = caller_env()
   )
 }
 
@@ -256,7 +258,8 @@ expect_snapshot_condition <- function(base_class, x, class, cran = FALSE, varian
     lab,
     conditionMessage(val),
     cran = cran,
-    variant = variant
+    variant = variant,
+    trace_env = caller_env()
   )
 }
 
@@ -307,7 +310,8 @@ expect_snapshot_value <- function(x,
     cran = cran,
     ...,
     tolerance = tolerance,
-    variant = variant
+    variant = variant,
+    trace_env = caller_env()
   )
 }
 
@@ -338,7 +342,8 @@ expect_snapshot_helper <- function(lab, val,
                                    load = identity,
                                    ...,
                                    tolerance = testthat_tolerance(),
-                                   variant = NULL
+                                   variant = NULL,
+                                   trace_env = caller_env()
                                    ) {
   if (!cran && !interactive() && on_cran()) {
     skip("On CRAN")
@@ -356,7 +361,7 @@ expect_snapshot_helper <- function(lab, val,
     ...,
     tolerance = tolerance,
     variant = variant,
-    trace_env = caller_env()
+    trace_env = trace_env
   )
 
   hint <- snapshot_accept_hint(variant, snapshotter$file)
@@ -369,7 +374,7 @@ expect_snapshot_helper <- function(lab, val,
       paste0(comp, collapse = "\n\n"),
       hint
     ),
-    trace_env = caller_env()
+    trace_env = trace_env
   )
 }
 
