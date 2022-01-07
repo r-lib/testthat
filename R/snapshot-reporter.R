@@ -14,7 +14,7 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
     cur_snaps = NULL,
     new_snaps = NULL,
 
-    initialize = function(snap_dir = "_snaps", fail_on_new = on_ci()) {
+    initialize = function(snap_dir = "_snaps", fail_on_new = FALSE) {
       self$snap_dir <- normalizePath(snap_dir, mustWork = FALSE)
       self$fail_on_new <- fail_on_new
     },
@@ -189,9 +189,9 @@ get_snapshotter <- function() {
 #'
 #' @export
 #' @keywords internal
-local_snapshotter <- function(snap_dir = NULL, cleanup = FALSE, .env = parent.frame()) {
+local_snapshotter <- function(snap_dir = NULL, cleanup = FALSE, fail_on_new = FALSE, .env = parent.frame()) {
   snap_dir <- snap_dir %||% withr::local_tempdir(.local_envir = .env)
-  reporter <- SnapshotReporter$new(snap_dir = snap_dir, fail_on_new = FALSE)
+  reporter <- SnapshotReporter$new(snap_dir = snap_dir, fail_on_new = fail_on_new)
   if (!identical(cleanup, FALSE)) {
     warn("`cleanup` is deprecated")
   }
