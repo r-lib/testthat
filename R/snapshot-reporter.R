@@ -90,7 +90,7 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
       }
     },
 
-    take_file_snapshot = function(name, path, file_equal, variant = NULL) {
+    take_file_snapshot = function(name, path, file_equal, variant = NULL, trace_env = NULL) {
       self$announce_file_snapshot(name)
 
       if (is.null(variant)) {
@@ -98,8 +98,16 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
       } else {
         snap_dir <- file.path(self$snap_dir, variant, self$file)
       }
-      snapshot_file_equal(snap_dir, name, path, file_equal)
+      snapshot_file_equal(
+        snap_test_dir = snap_dir,
+        snap_name = name,
+        path = path,
+        file_equal = file_equal,
+        fail_on_new = self$fail_on_new,
+        trace_env = trace_env
+      )
     },
+
     # Also called from announce_snapshot_file()
     announce_file_snapshot = function(name) {
       self$snap_file_seen <- c(self$snap_file_seen, file.path(self$file, name))
