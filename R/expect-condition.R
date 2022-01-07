@@ -153,7 +153,8 @@ expect_warning <- function(object,
       ...,
       inherit = inherit,
       info = info,
-      label = label
+      label = label,
+      trace_env = caller_env()
     )
   } else {
     act <- quasi_capture(enquo(object), label, capture_warnings)
@@ -185,7 +186,8 @@ expect_message <- function(object,
       ...,
       inherit = inherit,
       info = info,
-      label = label
+      label = label,
+      trace_env = caller_env()
     )
   } else {
     act <- quasi_capture(enquo(object), label, capture_messages)
@@ -213,7 +215,8 @@ expect_condition <- function(object,
       ...,
       inherit = inherit,
       info = info,
-      label = label
+      label = label,
+      trace_env = caller_env()
     )
   } else {
     act <- quasi_capture(enquo(object), label, capture_condition, entrace = TRUE)
@@ -239,7 +242,8 @@ expect_condition_matching <- function(base_class,
                                       ...,
                                       inherit = TRUE,
                                       info = NULL,
-                                      label = NULL) {
+                                      label = NULL,
+                                      trace_env = caller_env()) {
   ellipsis::check_dots_used(action = warn)
 
   matcher <- cnd_matcher(
@@ -261,7 +265,7 @@ expect_condition_matching <- function(base_class,
 
   # Access error fields with `[[` rather than `$` because the
   # `$.Throwable` from the rJava package throws with unknown fields
-  expect(is.null(msg), msg, info = info, trace = act$cap[["trace"]])
+  expect(is.null(msg), msg, info = info, trace = act$cap[["trace"]], trace_env = trace_env)
 
   # If a condition was expected, return it. Otherwise return the value
   # of the expression.
