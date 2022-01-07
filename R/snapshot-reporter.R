@@ -8,13 +8,15 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
     test_file_seen = character(),
     snap_file_seen = character(),
     variants_changed = FALSE,
+    fail_on_new = FALSE,
 
     old_snaps = NULL,
     cur_snaps = NULL,
     new_snaps = NULL,
 
-    initialize = function(snap_dir = "_snaps") {
+    initialize = function(snap_dir = "_snaps", fail_on_new = on_ci()) {
       self$snap_dir <- normalizePath(snap_dir, mustWork = FALSE)
+      self$fail_on_new <- fail_on_new
     },
 
     start_file = function(path, test = NULL) {
@@ -75,11 +77,11 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
         message <- paste0(
           "Adding new snapshot",
           if (variant != "_default") paste0(" for variant '", variant, "'"),
-          if (on_ci()) " in CI",
+          if (self$fail_on_new) " in CI",
           ":\n",
           value_enc
         )
-        if (on_ci()) {
+        if (self$fail_on_new) {
           fail(message, trace_env = trace_env)
         } else {
           testthat_warn(message)
@@ -181,7 +183,7 @@ get_snapshotter <- function() {
 #' @keywords internal
 local_snapshotter <- function(snap_dir = NULL, cleanup = FALSE, .env = parent.frame()) {
   snap_dir <- snap_dir %||% withr::local_tempdir(.local_envir = .env)
-  reporter <- SnapshotReporter$new(snap_dir = snap_dir)
+  reporter <- SnapshotReporter$new(snap_dir = snap_dir, fail_on_new = FALSE)
   if (!identical(cleanup, FALSE)) {
     warn("`cleanup` is deprecated")
   }
