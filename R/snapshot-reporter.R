@@ -42,7 +42,8 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
                              load = identity,
                              ...,
                              tolerance = testthat_tolerance(),
-                             variant = NULL) {
+                             variant = NULL,
+                             trace_env = NULL) {
       i <- self$new_snaps$append(self$test, variant, save(value))
 
       old_raw <- self$old_snaps$get(self$test, variant, i)
@@ -71,20 +72,17 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
 
         self$cur_snaps$append(self$test, variant, value_enc)
 
-        if (!on_ci()) {
-          testthat_warn(paste0(
-            "Adding new snapshot",
-            if (variant != "_default") paste0(" to variant '", variant, "'"),
-            ":\n",
-            value_enc
-          ))
+        message <- paste0(
+          "Adding new snapshot",
+          if (variant != "_default") paste0(" for variant '", variant, "'"),
+          if (on_ci()) " in CI",
+          ":\n",
+          value_enc
+        )
+        if (on_ci()) {
+          fail(message, trace_env = trace_env)
         } else {
-          fail(paste0(
-            "Creating new snapshot",
-            if (variant != "_default") paste0(" for variant '", variant, "'"),
-            " in CI:\n",
-            value_enc
-          ))
+          testthat_warn(message)
         }
         character()
       }

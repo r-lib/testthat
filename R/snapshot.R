@@ -355,7 +355,8 @@ expect_snapshot_helper <- function(lab, val,
     load = load,
     ...,
     tolerance = tolerance,
-    variant = variant
+    variant = variant,
+    trace_env = caller_env()
   )
 
   hint <- snapshot_accept_hint(variant, snapshotter$file)
