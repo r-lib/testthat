@@ -138,7 +138,7 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
     end_reporter = function() {
       # clean up if we've seen all files
       tests <- context_name(find_test_scripts(".", full.names = FALSE))
-      if (all(tests %in% self$test_file_seen)) {
+      if (!on_ci() && all(tests %in% self$test_file_seen)) {
         snapshot_cleanup(self$snap_dir,
           test_files_seen = self$test_file_seen,
           snap_files_seen = self$snap_file_seen
