@@ -70,14 +70,21 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
         check_roundtrip(value, load(value_enc), ..., tolerance = tolerance)
 
         self$cur_snaps$append(self$test, variant, value_enc)
-        testthat_warn(paste0(
-          "Adding new snapshot",
-          if (variant != "_default") paste0(" to variant '", variant, "'"),
-          ":\n",
-          value_enc
-        ))
-        if (on_ci()) {
-          stop("A CI error may be required to retrieve the new snapshot variant as an artifact; failing.")
+
+        if (!on_ci()) {
+          testthat_warn(paste0(
+            "Adding new snapshot",
+            if (variant != "_default") paste0(" to variant '", variant, "'"),
+            ":\n",
+            value_enc
+          ))
+        } else {
+          fail(paste0(
+            "Creating new snapshot",
+            if (variant != "_default") paste0(" for variant '", variant, "'"),
+            " in CI:\n",
+            value_enc
+          ))
         }
         character()
       }
