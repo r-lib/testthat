@@ -111,10 +111,12 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
 
       self$cur_snaps$write()
 
-      if (length(self$variants_changed) >= 1) {
-        self$new_snaps$write(self$variants_changed)
-      } else {
-        self$new_snaps$delete()
+      for (variant in self$new_snaps$variants()) {
+        if (variant %in% self$variants_changed) {
+          self$new_snaps$write(variant)
+        } else {
+          self$new_snaps$delete(variant)
+        }
       }
     },
     end_reporter = function() {
