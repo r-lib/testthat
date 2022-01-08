@@ -52,8 +52,6 @@
 # always shows summary
 
     [ FAIL 0 | WARN 0 | SKIP 0 | PASS 7 ]
-    
-    [ FAIL 0 | WARN 0 | SKIP 0 | PASS 7 ]
 
 # shows warnings when not on CRAN
 
