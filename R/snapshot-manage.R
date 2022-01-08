@@ -5,9 +5,10 @@
 #'    modified snapshot. This is particularly useful for whole file snapshots
 #'    created by `expect_snapshot_file()`.
 #'
-#' @param files Optionally, filter affects to snapshots from specified test
-#'   files. Can be full path to test (`tests/testthat/test-foo.R`), file name
-#'   (`test-foo.R`), or test name (`foo`).
+#' @param files Optionally, filter effects to snapshots from specified files.
+#'   This can be a snapshot name (e.g. `foo` or `foo.md`), a snapshot file name
+#'   (e.g. `testfile/foo.txt`), or a snapshot file directory (e.g. `testfile/`).
+#'
 #' @param path Path to tests.
 #' @export
 snapshot_accept <- function(files = NULL, path = "tests/testthat") {
@@ -156,8 +157,14 @@ snapshot_meta <- function(files = NULL, path = "tests/testthat") {
   rownames(out) <- NULL
 
   if (!is.null(files)) {
-    ext <- ifelse(tools::file_ext(files) == "", ".md", "")
-    out <- out[out$name %in% paste0(files, ext) | out$test %in% files, , drop = FALSE]
+    is_dir <- substr(files, nchar(files), nchar(files)) == "/"
+    dirs <- files[is_dir]
+    files <- files[!is_dir]
+
+    dirs <- substr(dirs, 1, nchar(dirs) - 1)
+    files <- ifelse(tools::file_ext(files) == "", paste0(files, ".md"), files)
+
+    out <- out[out$name %in% files | out$test %in% dirs, , drop = FALSE]
   }
 
   out

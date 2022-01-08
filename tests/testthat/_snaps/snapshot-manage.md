@@ -33,7 +33,7 @@
 ---
 
     Code
-      snapshot_accept("test", path = path)
+      snapshot_accept("test/", path = path)
     Message <message>
       Updating snapshots:
       * test/a.txt

@@ -1,5 +1,9 @@
 # testthat (development version)
 
+* `snapshot_accept()` and `snapshot_review()` now work with exactly the same
+  file specification which can be a snapshot name, a file name, or a directory
+  (#1546).
+
 * `expect_snapshot()` no longer inadvertently trims trailing new lines off
   of errors and messages (#1509).
 

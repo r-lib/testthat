@@ -18,7 +18,7 @@ test_that("can accept specific files", {
 
   # or whole directory
   path <- local_snapshot_dir(c("test/a.txt", "test/a.new.txt"))
-  expect_snapshot(snapshot_accept("test", path = path))
+  expect_snapshot(snapshot_accept("test/", path = path))
   expect_equal(dir(file.path(path, "_snaps"), recursive = TRUE), "test/a.txt")
 
 })
