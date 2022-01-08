@@ -418,7 +418,7 @@ local_snapshot_dir <- function(snap_names, .env = parent.frame()) {
     dir.create(file.path(path, "_snaps", dir), recursive = TRUE, showWarnings = FALSE)
   }
 
-  snap_paths <- file.path(path, "_snaps", paste0(snap_names, ".md"))
+  snap_paths <- file.path(path, "_snaps", snap_names)
   lapply(snap_paths, brio::write_lines, text = "")
 
   path
