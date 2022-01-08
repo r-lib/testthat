@@ -156,7 +156,8 @@ snapshot_meta <- function(files = NULL, path = "tests/testthat") {
   rownames(out) <- NULL
 
   if (!is.null(files)) {
-    out <- out[out$name %in% paste0(files, ".md"), , drop = FALSE]
+    ext <- ifelse(tools::file_ext(files) == "", ".md", "")
+    out <- out[out$name %in% paste0(files, ext) | out$test %in% files, , drop = FALSE]
   }
 
   out
