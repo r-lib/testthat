@@ -8,7 +8,7 @@ articles:
   snapshotting: snapshotting.html
   test-fixtures: test-fixtures.html
   third-edition: third-edition.html
-last_built: 2022-01-08T20:16Z
+last_built: 2022-01-09T18:49Z
 urls:
   reference: https://testthat.r-lib.org/reference
   article: https://testthat.r-lib.org/articles
