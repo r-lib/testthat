@@ -1,7 +1,18 @@
 # testthat (development version)
 
+* `snapshot_accept()` and `snapshot_review()` now work with exactly the same
+  file specification which can be a snapshot name, a file name, or a directory
+  (#1546).
+
+* `expect_snapshot()` no longer inadvertently trims trailing new lines off
+  of errors and messages (#1509).
+
+* `test_that()` no longer inappropriately skips when calling `expect_equal()`
+  when you've temporarily set the locale to non-UTF-8 (#1285).
+
 * When a snapshot changes the hint also mentions that you can use 
-  `snapshot_review()` (#1500, @DanChaltiel).
+  `snapshot_review()` (#1500, @DanChaltiel) and the message tells you what 
+  variant is active (#1540).
 
 * `snapshot_accept()` now works better with variants (#1508).
 

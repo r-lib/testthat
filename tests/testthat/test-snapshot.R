@@ -20,6 +20,16 @@ test_that("can snapshot everything", {
   expect_snapshot(f(), error = TRUE)
 })
 
+test_that("empty lines are preserved", {
+  f <- function() {
+    cat("1\n\n")
+    message("2\n")
+    warning("3\n")
+    stop("4\n\n")
+  }
+  expect_snapshot(f(), error = TRUE)
+})
+
 test_that("multiple outputs of same type are collapsed", {
   expect_snapshot({
     x <- 1

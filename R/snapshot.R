@@ -161,16 +161,18 @@ snapshot_replay.condition <- function(x,
   c(snap_header(state, type), snapshot_lines(msg, transform))
 }
 
-snapshot_replay_condition_legacy <- function(x, state, transform = NULL) {
+snapshot_replay_condition_legacy <- function(x, state = env(), transform = NULL) {
   msg <- cnd_message(x)
+
   if (inherits(x, "error")) {
     state$error <- x
     type <- "Error"
+    msg <- add_implict_nl(msg)
   } else if (inherits(x, "warning")) {
     type <- "Warning"
+    msg <- paste0(msg, "\n")
   } else if (inherits(x, "message")) {
     type <- "Message"
-    msg <- sub("\n$", "", msg)
   } else {
     type <- "Condition"
   }
@@ -187,6 +189,14 @@ snapshot_lines <- function(x, transform = NULL) {
   }
   x <- indent(x)
   x
+}
+
+add_implict_nl <- function(x) {
+  if (substr(x, nchar(x), nchar(x)) == "\n") {
+    x
+  } else {
+    paste0(x, "\n")
+  }
 }
 
 snap_header <- function(state, header) {
@@ -364,13 +374,19 @@ expect_snapshot_helper <- function(lab, val,
     trace_env = trace_env
   )
 
+  if (!identical(variant, "_default")) {
+    variant_lab <- paste0(" (variant '", variant, "')")
+  } else {
+    variant_lab <- ""
+  }
   hint <- snapshot_accept_hint(variant, snapshotter$file)
 
   expect(
     length(comp) == 0,
     sprintf(
-      "Snapshot of %s has changed:\n%s\n\n%s",
+      "Snapshot of %s has changed%s:\n%s\n\n%s",
       lab,
+      variant_lab,
       paste0(comp, collapse = "\n\n"),
       hint
     ),
@@ -408,7 +424,7 @@ local_snapshot_dir <- function(snap_names, .env = parent.frame()) {
     dir.create(file.path(path, "_snaps", dir), recursive = TRUE, showWarnings = FALSE)
   }
 
-  snap_paths <- file.path(path, "_snaps", paste0(snap_names, ".md"))
+  snap_paths <- file.path(path, "_snaps", snap_names)
   lapply(snap_paths, brio::write_lines, text = "")
 
   path

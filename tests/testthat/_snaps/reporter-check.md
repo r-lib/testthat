@@ -1,5 +1,7 @@
 # basic report works
 
+    [ FAIL 4 | WARN 1 | SKIP 3 | PASS 1 ]
+    
     == Skipped tests ===============================================================
     * empty test (2)
     * skip (1)
@@ -39,6 +41,8 @@
 
 # doesn't truncate long lines
 
+    [ FAIL 1 | WARN 0 | SKIP 0 | PASS 0 ]
+    
     == Failed tests ================================================================
     -- Failure (long-test.R:2:3): That very long test messages are not truncated because they contain useful information that you probably want to read --
     Failure has been forced
@@ -51,6 +55,8 @@
 
 # shows warnings when not on CRAN
 
+    [ FAIL 4 | WARN 1 | SKIP 3 | PASS 1 ]
+    
     == Skipped tests ===============================================================
     * empty test (2)
     * skip (1)

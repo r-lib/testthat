@@ -27,6 +27,23 @@
     Error <simpleError>
       4
 
+# empty lines are preserved
+
+    Code
+      f()
+    Output
+      1
+      
+    Message <simpleMessage>
+      2
+      
+    Warning <simpleWarning>
+      3
+      
+    Error <simpleError>
+      4
+      
+
 # multiple outputs of same type are collapsed
 
     Code

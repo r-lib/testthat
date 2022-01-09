@@ -76,9 +76,13 @@ FileSnaps <- R6::R6Class("FileSnaps", public = list(
     invisible()
   },
 
-  delete = function() {
-    unlink(self$path())
+  delete = function(variant = "_default") {
+    unlink(self$path(variant))
     invisible()
+  },
+
+  variants = function() {
+    names(self$snaps)
   },
 
   filename = function() {

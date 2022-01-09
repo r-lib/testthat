@@ -22,6 +22,22 @@
       Updating snapshots:
       * a.md
 
+---
+
+    Code
+      snapshot_accept("test/a.txt", path = path)
+    Message <message>
+      Updating snapshots:
+      * test/a.txt
+
+---
+
+    Code
+      snapshot_accept("test/", path = path)
+    Message <message>
+      Updating snapshots:
+      * test/a.txt
+
 # can work with variants
 
     Code
