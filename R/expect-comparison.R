@@ -66,11 +66,13 @@ expect_lt <- function(object, expected, label = NULL, expected.label = NULL) {
 
 #' @export
 #' @rdname comparison-expectations
-expect_lte <- function(object, expected, label = NULL, expected.label = NULL) {
+expect_lte <- function(object, expected,
+                       label = NULL, expected.label = NULL,
+                       tolerance = 0) {
   act <- quasi_label(enquo(object), label, arg = "object")
   exp <- quasi_label(enquo(expected), expected.label, arg = "expected")
 
-  expect_compare("<=", act, exp)
+  expect_compare("<=", act, exp, tolerance)
 }
 
 #' @export
@@ -84,11 +86,13 @@ expect_gt <- function(object, expected, label = NULL, expected.label = NULL) {
 
 #' @export
 #' @rdname comparison-expectations
-expect_gte <- function(object, expected, label = NULL, expected.label = NULL) {
+expect_gte <- function(object, expected,
+                       label = NULL, expected.label = NULL,
+                       tolerance = 0) {
   act <- quasi_label(enquo(object), label, arg = "object")
   exp <- quasi_label(enquo(expected), expected.label, arg = "expected")
 
-  expect_compare(">=", act, exp)
+  expect_compare(">=", act, exp, tolerance)
 }
 
 
