@@ -2,6 +2,8 @@
 #'
 #' @inheritParams expect_equal
 #' @param expected Single numeric value to compare.
+#' @param tolerance Non-negative scalar. For non-strict inequality comparisons,
+#'  the supplied value is propagated to all.equal(). Defaults to 0.
 #' @family expectations
 #' @examples
 #' a <- 9

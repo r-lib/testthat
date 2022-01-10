@@ -10,11 +10,23 @@
 \usage{
 expect_lt(object, expected, label = NULL, expected.label = NULL)
 
-expect_lte(object, expected, label = NULL, expected.label = NULL)
+expect_lte(
+  object,
+  expected,
+  label = NULL,
+  expected.label = NULL,
+  tolerance = 0
+)
 
 expect_gt(object, expected, label = NULL, expected.label = NULL)
 
-expect_gte(object, expected, label = NULL, expected.label = NULL)
+expect_gte(
+  object,
+  expected,
+  label = NULL,
+  expected.label = NULL,
+  tolerance = 0
+)
 }
 \arguments{
 \item{object}{Computation and value to compare it to.
@@ -30,6 +42,9 @@ use only.}
 
 \item{expected.label}{Used to customise failure messages. For expert
 use only.}
+
+\item{tolerance}{Non-negative scalar. For non-strict inequality comparisons,
+the supplied value is propagated to all.equal(). Defaults to 0.}
 }
 \description{
 Does code return a number greater/less than the expected value?
