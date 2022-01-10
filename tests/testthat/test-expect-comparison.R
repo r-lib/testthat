@@ -35,6 +35,24 @@ test_that("comparisons with NA work", {
   expect_failure(expect_gte(NA_real_, NA_real_))
 })
 
+test_that("comparisons with tolerance work", {
+  expect_success(expect_lte(0, 0 - 1e-5, tolerance = 1e-5))
+  expect_success(expect_gte(0, 0 + 1e-7, tolerance = 1e-7))
+
+  expect_failure(expect_lte(0, 0 - 1.1e-5, tolerance = 1e-5))
+  expect_failure(expect_gte(0, 0 + 1.1e-7, tolerance = 1e-7))
+})
+
+test_that("tolerance is ignored for strict inequalities", {
+  pseudo_act <- list(val = 0)
+  pseudo_exp <- list(val = 1)
+
+  expect_message(
+    expect_compare("<", pseudo_act, pseudo_exp, tolerance = 1e-7),
+    "Tolerance \\(1e-07\\) will be ignored for operator '<'."
+  )
+})
+
 test_that("comparisons with more complicated objects work", {
   time <- Sys.time()
   time2 <- time + 1
