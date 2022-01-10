@@ -19,9 +19,23 @@
 #' @name comparison-expectations
 NULL
 
-expect_compare <- function(operator = c("<", "<=", ">", ">="), act, exp) {
+expect_compare <- function(operator = c("<", "<=", ">", ">="),
+                           act, exp,
+                           tolerance = 0) {
   operator <- match.arg(operator)
-  op <- match.fun(operator)
+
+  if (operator %in% c("<=", ">=")) {
+    eq <- isTRUE(all.equal(act$val, exp$val, tolerance = tolerance, check.attributes = TRUE))
+    # Fence against all.equal(NA, NA) and all.equal(NULL, NULL) being TRUE
+    eq <- eq && !any(is.na(act$val) | is.null(act$val))
+  } else {
+    eq <- FALSE
+    if (tolerance != 0) {
+      message(sprintf("Tolerance (%g) will be ignored for operator '%s'.", tolerance, operator))
+    }
+  }
+
+  op <- match.fun(substr(operator, 1, 1))
 
   msg <- c(
     "<" =  "not strictly less than",
@@ -30,7 +44,7 @@ expect_compare <- function(operator = c("<", "<=", ">", ">="), act, exp) {
     ">=" = "not more than"
   )[[operator]]
 
-  cmp <- op(act$val, exp$val)
+  cmp <- op(act$val, exp$val) | eq
   if (length(cmp) != 1 || !is.logical(cmp)) {
     abort("Result of comparison must be a single logical value")
   }
