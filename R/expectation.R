@@ -266,7 +266,7 @@ expectation_location <- function(x) {
       paste0("Line ", x$srcref[1])
     } else {
       loc <- paste0(basename(filename), ":", x$srcref[1], ":", x$srcref[2])
-      filepath <- paste0("file::", file.path(srcfile$wd, filename), "#", x$srcref[1], ",", x$srcref[2])
+      filepath <- paste0("file://", file.path(srcfile$wd, filename), "#", x$srcref[1], ",", x$srcref[2])
       cli::style_hyperlink(loc, filepath)
     }
   }
