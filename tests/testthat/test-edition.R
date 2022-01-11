@@ -6,6 +6,17 @@ test_that("can locally override edition", {
   expect_equal(edition_get(), 2)
 })
 
+test_that("only existing editions can be set", {
+  expect_error(
+    local_edition(5),
+    regexp = "Available editions are 2 and 3"
+  )
+  expect_error(
+    local_edition(-1),
+    regexp = "Available editions are 2 and 3"
+  )
+})
+
 test_that("deprecation only fired for newer edition", {
   local_edition(2)
   expect_warning(edition_deprecate(3, "old stuff"), NA)
