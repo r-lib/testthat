@@ -78,7 +78,12 @@ framework For expert use only.</p>
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">local_snapshotter</span><span class="op">(</span>snap_dir <span class="op">=</span> <span class="cn">NULL</span>, cleanup <span class="op">=</span> <span class="cn">FALSE</span>, .env <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sys.parent.html" class="external-link">parent.frame</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">local_snapshotter</span><span class="op">(</span>
+  snap_dir <span class="op">=</span> <span class="cn">NULL</span>,
+  cleanup <span class="op">=</span> <span class="cn">FALSE</span>,
+  fail_on_new <span class="op">=</span> <span class="cn">FALSE</span>,
+  .env <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sys.parent.html" class="external-link">parent.frame</a></span><span class="op">(</span><span class="op">)</span>
+<span class="op">)</span></code></pre></div>
     </div>
 
 
