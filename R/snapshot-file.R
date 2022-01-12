@@ -126,7 +126,11 @@ expect_snapshot_file <- function(path,
   }
 
   lab <- quo_label(enquo(path))
-  equal <- snapshotter$take_file_snapshot(name, path, compare, variant = variant)
+  equal <- snapshotter$take_file_snapshot(name, path,
+    file_equal = compare,
+    variant = variant,
+    trace_env = caller_env()
+  )
   hint <- snapshot_review_hint(snapshotter$file, name)
 
   expect(
@@ -162,7 +166,7 @@ snapshot_review_hint <- function(test, name, ci = on_ci(), check = in_rcmd_check
   )
 }
 
-snapshot_file_equal <- function(snap_test_dir, snap_name, path, file_equal = compare_file_binary) {
+snapshot_file_equal <- function(snap_test_dir, snap_name, path, file_equal = compare_file_binary, fail_on_new = FALSE, trace_env = NULL) {
   if (!file.exists(path)) {
     abort(paste0("`", path, "` not found"))
   }
@@ -182,7 +186,14 @@ snapshot_file_equal <- function(snap_test_dir, snap_name, path, file_equal = com
   } else {
     dir.create(snap_test_dir, showWarnings = FALSE, recursive = TRUE)
     file.copy(path, cur_path)
-    testthat_warn(paste0("Adding new file snapshot: '", cur_path, "'"))
+
+    message <- paste0("Adding new file snapshot: 'tests/testhat/_snaps/", snap_name, "'")
+    if (fail_on_new) {
+      fail(message, trace_env = trace_env)
+    } else {
+      testthat_warn(message)
+    }
+
     TRUE
   }
 }
