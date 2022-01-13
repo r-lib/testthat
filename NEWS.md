@@ -1,55 +1,49 @@
 # testthat (development version)
 
-* `snapshot_accept()` and `snapshot_review()` now work with exactly the same
-  file specification which can be a snapshot name, a file name, or a directory
-  (#1546).
+* testthat now uses brio for all reading and writing (#1120). This
+  ensures that snapshots always use "\n" to separate lines (#1516).
 
 * `expect_snapshot()` no longer inadvertently trims trailing new lines off
   of errors and messages (#1509).
 
-* `test_that()` no longer inappropriately skips when calling `expect_equal()`
-  when you've temporarily set the locale to non-UTF-8 (#1285).
-
-* When a snapshot changes the hint also mentions that you can use 
-  `snapshot_review()` (#1500, @DanChaltiel) and the message tells you what 
-  variant is active (#1540).
-
-* `snapshot_accept()` now works better with variants (#1508).
+* If `expect_snapshot()` generates a snapshot with different value but
+  still compares as equal (e.g. because you've set a numeric tolerance), the 
+  saved values no longer update if another snapshot in the same file changes.
 
 * `expect_snapshot()` now only adds a `.new` file for the variants that 
-  actually changed, not all variants.
-
-* If a snapshot has a different value, but compares as equal (e.g. because 
-  you've set a numeric tolerance), the saved values are no longer changed if
-  there's another difference in the file.
-
-* New `expect_snapshot_warning()` to match `expect_snapshot_error()` (#1532).
+  actually changed, not all variants, while `expect_snapshot_file()` with
+  variant with no longer immediately deletes `.new` files (#1468).
 
 * `expect_snapshot_file()` gains a `transform` argument to match 
   `expect_snapshot()` (#1474). `compare` now defaults to `NULL`, automatically 
   guessing the comparison type based on the extension.
 
-* Snapshot cleanup also removes all empty directories (#1457).
-
-* `.new` file snapshots variants are no longer immediately deleted after
-  creation (#1468).
-  
-* `local_reproducible_output()` gains a `lang` argument so that you can 
-  optionally override the language used to translate error messages (#1483).
-
 * `expect_snapshot_file()` now errors if the file being snapshot does not exist; 
   `SnapshotReporter` also now treats the file directory as an absolute path 
   (#1476, @malcolmbarrett)
 
+* New `expect_snapshot_warning()` to match `expect_snapshot_error()` (#1532).
+
+* `JUnitReporter` now includes skip messages/reasons (@rfineman, #1507)
+
+* `local_reproducible_output()` gains a `lang` argument so that you can 
+  optionally override the language used to translate error messages (#1483).
+  It also sets the global option `cli.num_colors` in addition to 
+  `crayon.enabled`.
+
+* `test_that()` no longer inappropriately skips when calling `expect_equal()`
+  when you've temporarily set the locale to non-UTF-8 (#1285).
+
 * `skip_if_offline()` now automatically calls `skip_on_cran()` (#1479).
 
-* testthat now uses brio for all reading and writing (#1120). This
-  ensures that snapshots always use "\n" to separate lines (#1516).
-  
-* `local_reproducible_output()` now sets the global option
-  `cli.num_colors` in addition to `crayon.enabled`.
+* `snapshot_accept()` and `snapshot_review()` now work with exactly the same
+  file specification which can be a snapshot name, a file name, or a directory
+  (#1546). They both work better with variants (#1508). Snapshot cleanup also 
+  removes all empty directories (#1457).
 
-* JUnit reporter now includes skip messages/reasons (@rfineman, #1507)
+* When a snapshot changes the hint also mentions that you can use 
+  `snapshot_review()` (#1500, @DanChaltiel) and the message tells you what 
+  variant is active (#1540).
 
 # testthat 3.1.1
 
