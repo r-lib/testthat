@@ -404,7 +404,7 @@ snapshot_accept_hint <- function(variant, file) {
   code_accept <- paste0("snapshot_accept('", name, "')")
   code_review <- paste0("snapshot_review('", name, "')")
   link <- function(code) {
-    cli::hyperlink(code, paste0("rstudio:run:testthat::", code))
+    cli::style_hyperlink(code, paste0("rstudio:run:testthat::", code))
   }
   paste0(
     "* Run `", link(code_accept), "` to accept the change\n",

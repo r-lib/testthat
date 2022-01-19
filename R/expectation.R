@@ -265,8 +265,10 @@ expectation_location <- function(x) {
     if (identical(filename, "")) {
       paste0("Line ", x$srcref[1])
     } else {
-      loc <- paste0(basename(filename), ":", x$srcref[1], ":", x$srcref[2])
-      cli::hyperlink_file(loc, file.path(srcfile$wd, filename), line = x$srcref[1], col = x$srcref[2])
+      cli::style_hyperlink(
+        paste0(basename(filename)             , ":", x$srcref[1], ":", x$srcref[2]),
+        paste0(file.path(srcfile$wd, filename), ":", x$srcref[1], ":", x$srcref[2])
+      )
     }
   }
 }
