@@ -1,4 +1,4 @@
-# testthat (development version)
+# testthat 3.1.2
 
 * testthat now uses brio for all reading and writing (#1120). This
   ensures that snapshots always use "\n" to separate lines (#1516).
