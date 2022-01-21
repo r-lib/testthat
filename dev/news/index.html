@@ -10,14 +10,14 @@
     
     <a class="navbar-brand me-2" href="../index.html">testthat</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">3.1.1.9000</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">3.1.2.9000</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div id="navbar" class="collapse navbar-collapse ms-2">
+    <div id="navbar" class="collapse navbar-collapse ms-3">
       <ul class="navbar-nav me-auto"><li class="nav-item">
   <a class="nav-link" href="../reference/index.html">Reference</a>
 </li>
@@ -70,23 +70,22 @@
 
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="development version" id="testthat-development-version">testthat (development version)<a class="anchor" aria-label="anchor" href="#testthat-development-version"></a></h2>
-<ul><li><p><code><a href="../reference/snapshot_accept.html">snapshot_accept()</a></code> and <code><a href="../reference/snapshot_accept.html">snapshot_review()</a></code> now work with exactly the same file specification which can be a snapshot name, a file name, or a directory (<a href="https://github.com/r-lib/testthat/issues/1546" class="external-link">#1546</a>).</p></li>
+</div>
+    <div class="section level2">
+<h2 class="pkg-version" data-toc-text="3.1.2" id="testthat-312">testthat 3.1.2<a class="anchor" aria-label="anchor" href="#testthat-312"></a></h2><p class="text-muted">CRAN release: 2022-01-20</p>
+<ul><li><p>testthat now uses brio for all reading and writing (<a href="https://github.com/r-lib/testthat/issues/1120" class="external-link">#1120</a>). This ensures that snapshots always use “” to separate lines (<a href="https://github.com/r-lib/testthat/issues/1516" class="external-link">#1516</a>).</p></li>
 <li><p><code><a href="../reference/expect_snapshot.html">expect_snapshot()</a></code> no longer inadvertently trims trailing new lines off of errors and messages (<a href="https://github.com/r-lib/testthat/issues/1509" class="external-link">#1509</a>).</p></li>
-<li><p><code><a href="../reference/test_that.html">test_that()</a></code> no longer inappropriately skips when calling <code><a href="../reference/equality-expectations.html">expect_equal()</a></code> when you’ve temporarily set the locale to non-UTF-8 (<a href="https://github.com/r-lib/testthat/issues/1285" class="external-link">#1285</a>).</p></li>
-<li><p>When a snapshot changes the hint also mentions that you can use <code><a href="../reference/snapshot_accept.html">snapshot_review()</a></code> (<a href="https://github.com/r-lib/testthat/issues/1500" class="external-link">#1500</a>, <a href="https://github.com/DanChaltiel" class="external-link">@DanChaltiel</a>) and the message tells you what variant is active (<a href="https://github.com/r-lib/testthat/issues/1540" class="external-link">#1540</a>).</p></li>
-<li><p><code><a href="../reference/snapshot_accept.html">snapshot_accept()</a></code> now works better with variants (<a href="https://github.com/r-lib/testthat/issues/1508" class="external-link">#1508</a>).</p></li>
-<li><p><code><a href="../reference/expect_snapshot.html">expect_snapshot()</a></code> now only adds a <code>.new</code> file for the variants that actually changed, not all variants.</p></li>
-<li><p>If a snapshot has a different value, but compares as equal (e.g. because you’ve set a numeric tolerance), the saved values are no longer changed if there’s another difference in the file.</p></li>
-<li><p>New <code><a href="../reference/expect_snapshot.html">expect_snapshot_warning()</a></code> to match <code><a href="../reference/expect_snapshot.html">expect_snapshot_error()</a></code> (<a href="https://github.com/r-lib/testthat/issues/1532" class="external-link">#1532</a>).</p></li>
+<li><p>If <code><a href="../reference/expect_snapshot.html">expect_snapshot()</a></code> generates a snapshot with different value but still compares as equal (e.g. because you’ve set a numeric tolerance), the saved values no longer update if another snapshot in the same file changes.</p></li>
+<li><p><code><a href="../reference/expect_snapshot.html">expect_snapshot()</a></code> now only adds a <code>.new</code> file for the variants that actually changed, not all variants, while <code><a href="../reference/expect_snapshot_file.html">expect_snapshot_file()</a></code> with variant with no longer immediately deletes <code>.new</code> files (<a href="https://github.com/r-lib/testthat/issues/1468" class="external-link">#1468</a>).</p></li>
 <li><p><code><a href="../reference/expect_snapshot_file.html">expect_snapshot_file()</a></code> gains a <code>transform</code> argument to match <code><a href="../reference/expect_snapshot.html">expect_snapshot()</a></code> (<a href="https://github.com/r-lib/testthat/issues/1474" class="external-link">#1474</a>). <code>compare</code> now defaults to <code>NULL</code>, automatically guessing the comparison type based on the extension.</p></li>
-<li><p>Snapshot cleanup also removes all empty directories (<a href="https://github.com/r-lib/testthat/issues/1457" class="external-link">#1457</a>).</p></li>
-<li><p><code>.new</code> file snapshots variants are no longer immediately deleted after creation (<a href="https://github.com/r-lib/testthat/issues/1468" class="external-link">#1468</a>).</p></li>
-<li><p><code><a href="../reference/local_test_context.html">local_reproducible_output()</a></code> gains a <code>lang</code> argument so that you can optionally override the language used to translate error messages (<a href="https://github.com/r-lib/testthat/issues/1483" class="external-link">#1483</a>).</p></li>
 <li><p><code><a href="../reference/expect_snapshot_file.html">expect_snapshot_file()</a></code> now errors if the file being snapshot does not exist; <code>SnapshotReporter</code> also now treats the file directory as an absolute path (<a href="https://github.com/r-lib/testthat/issues/1476" class="external-link">#1476</a>, <a href="https://github.com/malcolmbarrett" class="external-link">@malcolmbarrett</a>)</p></li>
+<li><p>New <code><a href="../reference/expect_snapshot.html">expect_snapshot_warning()</a></code> to match <code><a href="../reference/expect_snapshot.html">expect_snapshot_error()</a></code> (<a href="https://github.com/r-lib/testthat/issues/1532" class="external-link">#1532</a>).</p></li>
+<li><p><code>JUnitReporter</code> now includes skip messages/reasons (<a href="https://github.com/rfineman" class="external-link">@rfineman</a>, <a href="https://github.com/r-lib/testthat/issues/1507" class="external-link">#1507</a>)</p></li>
+<li><p><code><a href="../reference/local_test_context.html">local_reproducible_output()</a></code> gains a <code>lang</code> argument so that you can optionally override the language used to translate error messages (<a href="https://github.com/r-lib/testthat/issues/1483" class="external-link">#1483</a>). It also sets the global option <code>cli.num_colors</code> in addition to <code>crayon.enabled</code>.</p></li>
+<li><p><code><a href="../reference/test_that.html">test_that()</a></code> no longer inappropriately skips when calling <code><a href="../reference/equality-expectations.html">expect_equal()</a></code> when you’ve temporarily set the locale to non-UTF-8 (<a href="https://github.com/r-lib/testthat/issues/1285" class="external-link">#1285</a>).</p></li>
 <li><p><code><a href="../reference/skip.html">skip_if_offline()</a></code> now automatically calls <code><a href="../reference/skip.html">skip_on_cran()</a></code> (<a href="https://github.com/r-lib/testthat/issues/1479" class="external-link">#1479</a>).</p></li>
-<li><p>testthat now uses brio for all reading and writing (<a href="https://github.com/r-lib/testthat/issues/1120" class="external-link">#1120</a>). This ensures that snapshots always use “” to separate lines (<a href="https://github.com/r-lib/testthat/issues/1516" class="external-link">#1516</a>).</p></li>
-<li><p><code><a href="../reference/local_test_context.html">local_reproducible_output()</a></code> now sets the global option <code>cli.num_colors</code> in addition to <code>crayon.enabled</code>.</p></li>
-<li><p>JUnit reporter now includes skip messages/reasons (<a href="https://github.com/rfineman" class="external-link">@rfineman</a>, <a href="https://github.com/r-lib/testthat/issues/1507" class="external-link">#1507</a>)</p></li>
+<li><p><code><a href="../reference/snapshot_accept.html">snapshot_accept()</a></code> and <code><a href="../reference/snapshot_accept.html">snapshot_review()</a></code> now work with exactly the same file specification which can be a snapshot name, a file name, or a directory (<a href="https://github.com/r-lib/testthat/issues/1546" class="external-link">#1546</a>). They both work better with variants (<a href="https://github.com/r-lib/testthat/issues/1508" class="external-link">#1508</a>). Snapshot cleanup also removes all empty directories (<a href="https://github.com/r-lib/testthat/issues/1457" class="external-link">#1457</a>).</p></li>
+<li><p>When a snapshot changes the hint also mentions that you can use <code><a href="../reference/snapshot_accept.html">snapshot_review()</a></code> (<a href="https://github.com/r-lib/testthat/issues/1500" class="external-link">#1500</a>, <a href="https://github.com/DanChaltiel" class="external-link">@DanChaltiel</a>) and the message tells you what variant is active (<a href="https://github.com/r-lib/testthat/issues/1540" class="external-link">#1540</a>).</p></li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="3.1.1" id="testthat-311">testthat 3.1.1<a class="anchor" aria-label="anchor" href="#testthat-311"></a></h2><p class="text-muted">CRAN release: 2021-12-03</p>
@@ -787,7 +786,7 @@
 </div>
 
 <div class="pkgdown-footer-right">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
 </div>
 
   </div></footer></body></html>
