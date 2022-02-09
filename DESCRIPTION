@@ -56,6 +56,8 @@ Suggests:
     xml2
 VignetteBuilder: 
     knitr
+Remotes:
+    r-lib/rlang
 Config/testthat/edition: 3
 Config/testthat/start-first: watcher, parallel*
 Config/Needs/website: tidyverse/tidytemplate
