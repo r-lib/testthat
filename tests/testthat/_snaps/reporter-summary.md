@@ -30,8 +30,10 @@
     `actual`:   FALSE
     `expected`: TRUE 
     Backtrace:
-     1. f() reporters/tests.R:17:2
-     2. testthat::expect_true(FALSE) reporters/tests.R:16:7
+     1. f()
+          at reporters/tests.R:17:2
+     2. testthat::expect_true(FALSE)
+          at reporters/tests.R:16:7
     
     -- 3. Error (tests.R:23:3): Error:1 --------------------------------------------
     Error in `eval(code, test_env)`: stop
@@ -39,9 +41,12 @@
     -- 4. Error (tests.R:31:3): errors get tracebacks ------------------------------
     Error in `h()`: !
     Backtrace:
-     1. f() reporters/tests.R:31:2
-     2. g() reporters/tests.R:27:7
-     3. h() reporters/tests.R:28:7
+     1. f()
+          at reporters/tests.R:31:2
+     2. g()
+          at reporters/tests.R:27:7
+     3. h()
+          at reporters/tests.R:28:7
     
     == DONE ========================================================================
 
@@ -77,8 +82,10 @@
     `actual`:   FALSE
     `expected`: TRUE 
     Backtrace:
-     1. f() reporters/tests.R:17:2
-     2. testthat::expect_true(FALSE) reporters/tests.R:16:7
+     1. f()
+          at reporters/tests.R:17:2
+     2. testthat::expect_true(FALSE)
+          at reporters/tests.R:16:7
     
     -- 3. Error (tests.R:23:3): Error:1 --------------------------------------------
     Error in `eval(code, test_env)`: stop
@@ -86,9 +93,12 @@
     -- 4. Error (tests.R:31:3): errors get tracebacks ------------------------------
     Error in `h()`: !
     Backtrace:
-     1. f() reporters/tests.R:31:2
-     2. g() reporters/tests.R:27:7
-     3. h() reporters/tests.R:28:7
+     1. f()
+          at reporters/tests.R:31:2
+     2. g()
+          at reporters/tests.R:27:7
+     3. h()
+          at reporters/tests.R:28:7
     
     == DONE ========================================================================
 
@@ -124,8 +134,10 @@
     `actual`:   FALSE
     `expected`: TRUE 
     Backtrace:
-     1. f() reporters/tests.R:17:2
-     2. testthat::expect_true(FALSE) reporters/tests.R:16:7
+     1. f()
+          at reporters/tests.R:17:2
+     2. testthat::expect_true(FALSE)
+          at reporters/tests.R:16:7
       ... and 2 more
     
     

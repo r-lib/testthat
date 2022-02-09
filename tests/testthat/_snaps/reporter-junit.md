@@ -19,7 +19,9 @@
     `expected`: TRUE 
     Backtrace:
      1. f()
-     2. testthat::expect_true(FALSE)</failure>
+          at reporters/tests.R:17:2
+     2. testthat::expect_true(FALSE)
+          at reporters/tests.R:16:7</failure>
         </testcase>
       </testsuite>
       <testsuite name="Errors" timestamp="1999:12:31 23:59:59" hostname="nodename" tests="2" skipped="0" failures="0" errors="2" time="0">
@@ -30,8 +32,11 @@
           <error type="error" message="Error in `h()`: ! (tests.R:31:3)">Error in `h()`: !
     Backtrace:
      1. f()
+          at reporters/tests.R:31:2
      2. g()
-     3. h()</error>
+          at reporters/tests.R:27:7
+     3. h()
+          at reporters/tests.R:28:7</error>
         </testcase>
       </testsuite>
       <testsuite name="Skips" timestamp="1999:12:31 23:59:59" hostname="nodename" tests="2" skipped="2" failures="0" errors="0" time="0">

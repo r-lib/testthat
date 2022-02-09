@@ -9,10 +9,14 @@
     Error (error-setup.R:6:1): (code run outside of `test_that()`)
     Error in `h()`: !
     Backtrace:
-     1. testthat::setup(f()) reporters/error-setup.R:6:0
+     1. testthat::setup(f())
+          at reporters/error-setup.R:6:0
      3. f()
-     4. g() reporters/error-setup.R:1:5
-     5. h() reporters/error-setup.R:2:5
+          at rlang/R/eval-tidy.R:121:2
+     4. g()
+          at reporters/error-setup.R:1:5
+     5. h()
+          at reporters/error-setup.R:2:5
     --------------------------------------------------------------------------------
     
     == Results =====================================================================
@@ -167,83 +171,116 @@
     | | 3       0 | reporters/backtraces                                            
     / | 4       0 | reporters/backtraces                                            
     - | 5       0 | reporters/backtraces                                            
-    \ | 6       0 | reporters/backtraces                                            
+    \ | 5 1     0 | reporters/backtraces                                            
     | | 6 1     0 | reporters/backtraces                                            
-    / | 6 1     1 | reporters/backtraces                                            
-    - | 7 1     1 | reporters/backtraces                                            
-    \ | 8 1     1 | reporters/backtraces                                            
-    | | 9 1     1 | reporters/backtraces                                            
-    x | 9 1     1 | reporters/backtraces
+    / | 6 2     0 | reporters/backtraces                                            
+    - | 6 2     1 | reporters/backtraces                                            
+    \ | 7 2     1 | reporters/backtraces                                            
+    | | 8 2     1 | reporters/backtraces                                            
+    / | 9 2     1 | reporters/backtraces                                            
+    x | 9 2     1 | reporters/backtraces
     --------------------------------------------------------------------------------
     Error (backtraces.R:6:3): errors thrown at block level are entraced
     Error in `g()`: foo
     Backtrace:
-     1. f() reporters/backtraces.R:6:2
-     2. g() reporters/backtraces.R:4:7
+     1. f()
+          at reporters/backtraces.R:6:2
+     2. g()
+          at reporters/backtraces.R:4:7
     
     Error (backtraces.R:11:3): errors thrown from a quasi-labelled argument are entraced
     Error in `foo()`: foo
     Backtrace:
-     1. testthat::expect_s3_class(foo(), "foo") reporters/backtraces.R:11:2
+     1. testthat::expect_s3_class(foo(), "foo")
+          at reporters/backtraces.R:11:2
      4. foo()
+          at rlang/R/eval.R:96:2
     
     Error (backtraces.R:18:3): errors thrown from a quasi-labelled argument are entraced (deep case)
     Error in `foo()`: foo
     Backtrace:
-     1. testthat::expect_s3_class(f(), "foo") reporters/backtraces.R:18:2
+     1. testthat::expect_s3_class(f(), "foo")
+          at reporters/backtraces.R:18:2
      4. f()
-     5. g() reporters/backtraces.R:16:7
+          at rlang/R/eval.R:96:2
+     5. g()
+          at reporters/backtraces.R:16:7
      9. foo()
+          at rlang/R/eval.R:96:2
     
     Error (backtraces.R:28:3): errors thrown from a quasi-labelled argument are entraced (deep deep case)
     Error in `bar()`: foobar
     Backtrace:
-     1. f() reporters/backtraces.R:28:2
-     2. g() reporters/backtraces.R:25:7
+     1. f()
+          at reporters/backtraces.R:28:2
+     2. g()
+          at reporters/backtraces.R:25:7
      6. foo()
-     7. bar() reporters/backtraces.R:22:9
+          at rlang/R/eval.R:96:2
+     7. bar()
+          at reporters/backtraces.R:22:9
     
     Error (backtraces.R:35:3): failed expect_error() prints a backtrace
     Error in `signaller()`: bar
     Backtrace:
-     1. testthat::expect_error(f(), "foo") reporters/backtraces.R:35:2
+     1. testthat::expect_error(f(), "foo")
+          at reporters/backtraces.R:35:2
      7. f()
-     8. signaller() reporters/backtraces.R:32:7
+          at rlang/R/eval.R:96:2
+     8. signaller()
+          at reporters/backtraces.R:32:7
+    
+    Warning (backtraces.R:39:3): Errors are inspected with `conditionMessage()`
+    `scoped_bindings()` is deprecated as of rlang 0.4.2.
+    Please use `local_bindings()` instead.
+    This warning is displayed once per session.
+    Backtrace:
+     1. rlang::scoped_bindings(.env = globalenv(), conditionMessage.foobar = function(...) "dispatched")
+          at reporters/backtraces.R:39:2
+     2. rlang:::signal_soft_deprecated(...)
+          at rlang/R/lifecycle-deprecated.R:993:2
+     3. rlang:::warn_deprecated(msg, id)
+          at rlang/R/compat-lifecycle.R:104:4
+     4. base .Signal(msg = msg)
+          at rlang/R/compat-lifecycle.R:149:2
     
     Error (backtraces.R:43:3): Errors are inspected with `conditionMessage()`
     <foobar/rlang_error/error/condition>
-    Error: dispatched
+    Error in `eval(code, test_env)`: dispatched
+    Backtrace:
     
     Warning (backtraces.R:50:3): also get backtraces for warnings
     foobar
     Backtrace:
-     1. foo() reporters/backtraces.R:50:2
-     2. bar() reporters/backtraces.R:47:9
+     1. foo()
+          at reporters/backtraces.R:50:2
+     2. bar()
+          at reporters/backtraces.R:47:9
     
     Error (backtraces.R:58:3): deep stacks are trimmed
     Error in `f(x - 1)`: This is deep
     Backtrace:
-      1. f(25) reporters/backtraces.R:58:2
-      2. f(x - 1) reporters/backtraces.R:56:4
-      3. f(x - 1) reporters/backtraces.R:56:4
-      4. f(x - 1) reporters/backtraces.R:56:4
-      5. f(x - 1) reporters/backtraces.R:56:4
-      6. f(x - 1) reporters/backtraces.R:56:4
-      7. f(x - 1) reporters/backtraces.R:56:4
-      8. f(x - 1) reporters/backtraces.R:56:4
-      9. f(x - 1) reporters/backtraces.R:56:4
-     10. f(x - 1) reporters/backtraces.R:56:4
+      1. f(25)
+           at reporters/backtraces.R:58:2
+      2. f(x - 1)
+           at reporters/backtraces.R:56:4
+      3. f(x - 1)
+           at reporters/backtraces.R:56:4
+      4. f(x - 1)
+           at reporters/backtraces.R:56:4
+      5. f(x - 1)
+           at reporters/backtraces.R:56:4
          ...
-     17. f(x - 1) reporters/backtraces.R:56:4
-     18. f(x - 1) reporters/backtraces.R:56:4
-     19. f(x - 1) reporters/backtraces.R:56:4
-     20. f(x - 1) reporters/backtraces.R:56:4
-     21. f(x - 1) reporters/backtraces.R:56:4
-     22. f(x - 1) reporters/backtraces.R:56:4
-     23. f(x - 1) reporters/backtraces.R:56:4
-     24. f(x - 1) reporters/backtraces.R:56:4
-     25. f(x - 1) reporters/backtraces.R:56:4
-     26. f(x - 1) reporters/backtraces.R:56:4
+     22. f(x - 1)
+           at reporters/backtraces.R:56:4
+     23. f(x - 1)
+           at reporters/backtraces.R:56:4
+     24. f(x - 1)
+           at reporters/backtraces.R:56:4
+     25. f(x - 1)
+           at reporters/backtraces.R:56:4
+     26. f(x - 1)
+           at reporters/backtraces.R:56:4
     
     Failure (backtraces.R:66:1): (code run outside of `test_that()`)
     FALSE is not TRUE
@@ -251,10 +288,14 @@
     `actual`:   FALSE
     `expected`: TRUE 
     Backtrace:
-     1. f() reporters/backtraces.R:66:0
-     2. g() reporters/backtraces.R:62:5
-     3. h() reporters/backtraces.R:63:5
-     4. testthat::expect_true(FALSE) reporters/backtraces.R:64:5
+     1. f()
+          at reporters/backtraces.R:66:0
+     2. g()
+          at reporters/backtraces.R:62:5
+     3. h()
+          at reporters/backtraces.R:63:5
+     4. testthat::expect_true(FALSE)
+          at reporters/backtraces.R:64:5
     
     Failure (backtraces.R:69:3): nested expectations get backtraces
     FALSE is not TRUE
@@ -262,14 +303,18 @@
     `actual`:   FALSE
     `expected`: TRUE 
     Backtrace:
-     1. f() reporters/backtraces.R:69:2
-     2. g() reporters/backtraces.R:62:5
-     3. h() reporters/backtraces.R:63:5
-     4. testthat::expect_true(FALSE) reporters/backtraces.R:64:5
+     1. f()
+          at reporters/backtraces.R:69:2
+     2. g()
+          at reporters/backtraces.R:62:5
+     3. h()
+          at reporters/backtraces.R:63:5
+     4. testthat::expect_true(FALSE)
+          at reporters/backtraces.R:64:5
     --------------------------------------------------------------------------------
     
     == Results =====================================================================
-    [ FAIL 9 | WARN 1 | SKIP 0 | PASS 1 ]
+    [ FAIL 9 | WARN 2 | SKIP 0 | PASS 1 ]
     
     I believe in you!
 
@@ -324,7 +369,9 @@
     `expected`: TRUE 
     Backtrace:
      1. f()
+          at reporters/tests.R:17:2
      2. testthat::expect_true(FALSE)
+          at reporters/tests.R:16:7
     
     
     [ FAIL 2 | WARN 0 | SKIP 0 | PASS 1 ]
@@ -338,8 +385,11 @@
     Error in `h()`: !
     Backtrace:
      1. f()
+          at reporters/tests.R:31:2
      2. g()
+          at reporters/tests.R:27:7
      3. h()
+          at reporters/tests.R:28:7
     
     
     [ FAIL 4 | WARN 0 | SKIP 0 | PASS 1 ]
@@ -360,7 +410,8 @@
     -- Warning (tests.R:49:3): warnings get backtraces -----------------------------
     def
     Backtrace:
-     1. f() reporters/tests.R:49:2
+     1. f()
+          at reporters/tests.R:49:2
     
     -- Skip (tests.R:45:1): warnings get backtraces --------------------------------
     Reason: empty test
