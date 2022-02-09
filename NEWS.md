@@ -1,5 +1,11 @@
 # testthat (development version)
 
+* Package that explicitly depend on rlang in their description file
+  are now opting into a new snapshot display for errors, warnings, and
+  messages. This display will eventually become the default for all
+  packages.
+
+
 # testthat 3.1.2
 
 * testthat now uses brio for all reading and writing (#1120). This

@@ -152,10 +152,8 @@ local_test_directory <- function(path, package = NULL, .env = parent.frame()) {
   # Set edition before changing working directory in case path is relative
   local_edition(find_edition(path, package), .env = .env)
 
-  rlang_dep <- find_dep_version("rlang", path, package)
-
   withr::local_options(
-    "testthat:::rlang_dep" = rlang_dep,
+    "testthat:::rlang_dep" = has_dep("rlang", path, package),
     .local_envir = .env
   )
   withr::local_dir(
