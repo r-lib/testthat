@@ -20,12 +20,13 @@
       f()
     Output
       [1] "1"
-    Message <simpleMessage>
+    Message
       2
-    Warning <simpleWarning>
+    Condition
+      Warning in `f()`:
       3
-    Error <simpleError>
-      4
+      Error in `f()`:
+      ! 4
 
 # empty lines are preserved
 
@@ -34,15 +35,14 @@
     Output
       1
       
-    Message <simpleMessage>
+    Message
       2
       
-    Warning <simpleWarning>
+    Condition
+      Warning in `f()`:
       3
-      
-    Error <simpleError>
-      4
-      
+      Error in `f()`:
+      ! 4
 
 # multiple outputs of same type are collapsed
 
@@ -53,7 +53,7 @@
         message("a")
         message("b")
       }
-    Message <simpleMessage>
+    Message
       a
       b
     Code
@@ -61,8 +61,10 @@
         warning("a")
         warning("b")
       }
-    Warning <simpleWarning>
+    Condition
+      Warning:
       a
+      Warning:
       b
 
 # can scrub output/messages/warnings/errors
@@ -71,12 +73,13 @@
       secret()
     Output
       [1] "<redacted>"
-    Message <simpleMessage>
+    Message
       <redacted>
-    Warning <simpleWarning>
+    Condition
+      Warning in `<redacted>()`:
       <redacted>
-    Error <simpleError>
-      <redacted>
+      Error in `<redacted>()`:
+      ! <redacted>
 
 ---
 
@@ -97,29 +100,33 @@
 
     Code
       expect_snapshot_error(1)
-    Error <expectation_failure>
-      1 did not generate error
+    Condition
+      Error:
+      ! 1 did not generate error
 
 ---
 
     Code
       expect_snapshot_error(1, class = "myerror")
-    Error <expectation_failure>
-      1 did not generate error with class 'myerror'
+    Condition
+      Error:
+      ! 1 did not generate error with class 'myerror'
 
 ---
 
     Code
       expect_snapshot_warning(1)
-    Error <expectation_failure>
-      1 did not generate warning
+    Condition
+      Error:
+      ! 1 did not generate warning
 
 ---
 
     Code
       expect_snapshot_warning(1, class = "mywarning")
-    Error <expectation_failure>
-      1 did not generate warning with class 'mywarning'
+    Condition
+      Error:
+      ! 1 did not generate warning with class 'mywarning'
 
 # snapshot handles multi-line input
 
@@ -150,12 +157,13 @@
 
     Code
       f()
-    Message <testthat_greeting>
+    Message
       Hello
-    Warning <testthat_farewell>
+    Condition
+      Warning:
       Goodbye
-    Error <testthat_scream>
-      Eeek!
+      Error in `f()`:
+      ! Eeek!
 
 # even with multiple lines
 
