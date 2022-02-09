@@ -36,7 +36,7 @@ test_that("failed expect_error() prints a backtrace", {
 })
 
 test_that("Errors are inspected with `conditionMessage()`", {
-  rlang::scoped_bindings(
+  rlang::local_bindings(
     .env = globalenv(),
     conditionMessage.foobar = function(...) "dispatched"
   )

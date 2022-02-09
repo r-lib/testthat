@@ -13,7 +13,7 @@ test_that("can record all types of output", {
 })
 
 test_that("can record all types of output", {
-  scoped_bindings(
+  local_bindings(
     .env = global_env(),
     conditionMessage.foobar = function(cnd) {
       paste("Dispatched!", cnd$message)

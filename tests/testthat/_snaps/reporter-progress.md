@@ -171,14 +171,13 @@
     | | 3       0 | reporters/backtraces                                            
     / | 4       0 | reporters/backtraces                                            
     - | 5       0 | reporters/backtraces                                            
-    \ | 5 1     0 | reporters/backtraces                                            
+    \ | 6       0 | reporters/backtraces                                            
     | | 6 1     0 | reporters/backtraces                                            
-    / | 6 2     0 | reporters/backtraces                                            
-    - | 6 2     1 | reporters/backtraces                                            
-    \ | 7 2     1 | reporters/backtraces                                            
-    | | 8 2     1 | reporters/backtraces                                            
-    / | 9 2     1 | reporters/backtraces                                            
-    x | 9 2     1 | reporters/backtraces
+    / | 6 1     1 | reporters/backtraces                                            
+    - | 7 1     1 | reporters/backtraces                                            
+    \ | 8 1     1 | reporters/backtraces                                            
+    | | 9 1     1 | reporters/backtraces                                            
+    x | 9 1     1 | reporters/backtraces
     --------------------------------------------------------------------------------
     Error (backtraces.R:6:3): errors thrown at block level are entraced
     Error in `g()`: foo
@@ -229,20 +228,6 @@
           at rlang/R/eval.R:96:2
      8. signaller()
           at reporters/backtraces.R:32:7
-    
-    Warning (backtraces.R:39:3): Errors are inspected with `conditionMessage()`
-    `scoped_bindings()` is deprecated as of rlang 0.4.2.
-    Please use `local_bindings()` instead.
-    This warning is displayed once per session.
-    Backtrace:
-     1. rlang::scoped_bindings(.env = globalenv(), conditionMessage.foobar = function(...) "dispatched")
-          at reporters/backtraces.R:39:2
-     2. rlang:::signal_soft_deprecated(...)
-          at rlang/R/lifecycle-deprecated.R:993:2
-     3. rlang:::warn_deprecated(msg, id)
-          at rlang/R/compat-lifecycle.R:104:4
-     4. base .Signal(msg = msg)
-          at rlang/R/compat-lifecycle.R:149:2
     
     Error (backtraces.R:43:3): Errors are inspected with `conditionMessage()`
     <foobar/rlang_error/error/condition>
@@ -314,7 +299,7 @@
     --------------------------------------------------------------------------------
     
     == Results =====================================================================
-    [ FAIL 9 | WARN 2 | SKIP 0 | PASS 1 ]
+    [ FAIL 9 | WARN 1 | SKIP 0 | PASS 1 ]
     
     I believe in you!
 
