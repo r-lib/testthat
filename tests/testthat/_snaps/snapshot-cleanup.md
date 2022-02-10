@@ -2,7 +2,7 @@
 
     Code
       snapshot_cleanup(dir)
-    Message <message>
+    Message <rlang_message>
       Deleting unused snapshots:
       * a.md
       * b.md
