@@ -294,7 +294,8 @@
 <span class="co">#&gt; `1 + "a"` threw an unexpected error.</span>
 <span class="co">#&gt; Message: non-numeric argument to binary operator</span>
 <span class="co">#&gt; Class:   simpleError/error/condition</span>
-<span class="co">#&gt; Error: Test failed</span></code></pre></div>
+<span class="co">#&gt; <span style="color: #BBBB00; font-weight: bold;">Error</span><span style="font-weight: bold;">:</span></span>
+<span class="co">#&gt; <span style="color: #BBBB00;">!</span> Test failed</span></code></pre></div>
 <p>This is a safety valve that ensures that you don’t accidentally write broken code. To deliberately snapshot an error, you’ll have to specifically request it with <code>error = TRUE</code>:</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/test_that.html">test_that</a></span><span class="op">(</span><span class="st">"you can't add a number and a letter"</span>, <span class="op">{</span>
