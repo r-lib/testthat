@@ -1,82 +1,42 @@
 ## revdepcheck results
 
-We checked 6495 reverse dependencies (6466 from CRAN + 29 from Bioconductor), comparing R CMD check results across CRAN and dev versions of this package.
+We checked 6607 reverse dependencies (6601 from CRAN + 6 from Bioconductor), comparing R CMD check results across CRAN and dev versions of this package.
 
- * We saw 4 new problems
- * We failed to check 56 packages
+ * We saw 5 new problems
+ * We failed to check 13 packages
 
 Issues with CRAN packages are summarised below.
 
 ### New problems
 (This reports the first line of each new failure)
 
-* ATbounds
+* batata
+  checking tests ... ERROR
+
+* benthos
   checking re-building of vignette outputs ... WARNING
 
-* cli
-  checking tests ... ERROR
+* cdcfluview
+  checking examples ... ERROR
 
-* crosstable
-  checking tests ... ERROR
+* hetu
+  checking re-building of vignette outputs ... WARNING
 
-* khroma
+* lightgbm
   checking tests ... ERROR
 
 ### Failed to check
 
-* apisensr       (NA)
-* bayesmodels    (NA)
-* Boom           (NA)
-* brranching     (NA)
-* bsts           (NA)
-* CausalImpact   (NA)
-* cbar           (NA)
-* Claddis        (NA)
-* conos          (NA)
-* corHMM         (NA)
-* ctsem          (NA)
-* DAISIE         (NA)
-* DAMOCLES       (NA)
-* DDD            (NA)
-* deeptime       (NA)
-* dispRity       (NA)
-* fishtree       (NA)
-* geocmeans      (NA)
-* hillR          (NA)
-* hisse          (NA)
-* kdensity       (NA)
-* lidaRtRee      (NA)
-* loon.ggplot    (NA)
-* loon.shiny     (NA)
-* loon.tourr     (NA)
-* MonoPhy        (NA)
-* nLTT           (NA)
-* nodeSub        (NA)
-* OUwie          (NA)
-* ouxy           (NA)
-* paleotree      (NA)
-* PCMBase        (NA)
-* PhylogeneticEM (NA)
-* phyr           (NA)
-* Platypus       (NA)
-* pmc            (NA)
-* quickcheck     (NA)
-* RAM            (NA)
-* rbcb           (NA)
-* RCLabels       (NA)
-* RevGadgets     (NA)
-* Revticulate    (NA)
-* rhierbaps      (NA)
-* RNeXML         (NA)
-* Rogue          (NA)
-* RPANDA         (NA)
-* SADISA         (NA)
-* secsse         (NA)
-* simMetric      (NA)
-* spatialprobit  (NA)
-* TBRDist        (NA)
-* treedata.table (NA)
-* TreeSearch     (NA)
-* treespace      (NA)
-* treestartr     (NA)
-* vivid          (NA)
+* bayesmodels  (NA)
+* Boom         (NA)
+* bsts         (NA)
+* CausalImpact (NA)
+* cbar         (NA)
+* conos        (NA)
+* ctsem        (NA)
+* geocmeans    (NA)
+* lidaRtRee    (NA)
+* loon.ggplot  (NA)
+* loon.shiny   (NA)
+* loon.tourr   (NA)
+* vivid        (NA)
