@@ -94,9 +94,6 @@
   </div>
 </nav><div class="container template-article" id="container">
 
-
-
-
 <div class="row">
   <main id="main"><div class="page-header">
       <img src="../logo.png" class="logo" alt=""><h1>Test fixtures</h1>
@@ -177,7 +174,7 @@
   
   <span class="fu"><a href="../reference/expect_output.html">expect_output</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">pi</span><span class="op">)</span>, <span class="st">"3"</span><span class="op">)</span>
 <span class="op">}</span><span class="op">)</span>
-<span class="co">#&gt; <span style="color: #00BB00;">Test passed</span> 🎊</span>
+<span class="co">#&gt; <span style="color: #00BB00;">Test passed</span> 🎉</span>
 <span class="va">pi</span>
 <span class="co">#&gt; [1] 3.141593</span></code></pre></div>
 <p>There are three main drawbacks to <code><a href="https://rdrr.io/r/base/on.exit.html" class="external-link">on.exit()</a></code>:</p>
@@ -256,7 +253,7 @@
   <span class="fu">local_digits</span><span class="op">(</span><span class="fl">3</span><span class="op">)</span>
   <span class="fu"><a href="../reference/expect_output.html">expect_output</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html" class="external-link">exp</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span><span class="op">)</span>, <span class="st">"2.72"</span><span class="op">)</span>
 <span class="op">}</span><span class="op">)</span>
-<span class="co">#&gt; <span style="color: #00BB00;">Test passed</span> 🎉</span>
+<span class="co">#&gt; <span style="color: #00BB00;">Test passed</span> 🥇</span>
 
 <span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html" class="external-link">exp</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span><span class="op">)</span>
 <span class="co">#&gt; [1] 2.718282</span></code></pre></div>
@@ -339,7 +336,7 @@
 <span class="co">#&gt; now dyn.load("/home/runner/work/_temp/Library/glue/libs/glue.so") ...</span>
 <span class="co">#&gt; now dyn.load("/home/runner/work/_temp/Library/utf8/libs/utf8.so") ...</span>
 <span class="co">#&gt; now dyn.load("/home/runner/work/_temp/Library/vctrs/libs/vctrs.so") ...</span>
-<span class="co">#&gt; <span style="color: #00BB00;">Test passed</span> 🌈</span></code></pre></div>
+<span class="co">#&gt; <span style="color: #00BB00;">Test passed</span> 😸</span></code></pre></div>
 <div class="section level3">
 <h3 id="case-study-usethis">Case study: usethis<a class="anchor" aria-label="anchor" href="#case-study-usethis"></a>
 </h3>
@@ -365,14 +362,14 @@
 <span class="op">}</span></code></pre></div>
 <p>Note that the cleanup automatically unfolds in the opposite order from the setup. Setup is <code>A</code>, then <code>B</code>, then <code>C</code>; cleanup is <code>-C</code>, then <code>-B</code>, then <code>-A</code>. This is important because we must create directory <code>dir</code> before we can make it the working directory; and we must restore the original working directory before we can delete <code>dir</code>; we can’t delete <code>dir</code> while it’s still the working directory!</p>
 <p><code>local_create_package()</code> is used in over 170 tests. Here’s one example that checks that <code><a href="https://usethis.r-lib.org/reference/use_roxygen_md.html" class="external-link">usethis::use_roxygen_md()</a></code> does the setup necessary to use roxygen2 in a package, with markdown support turned on. All 3 expectations consult the DESCRIPTION file, directly or indirectly. So it’s very convenient that <code>local_create_package()</code> creates a minimal package, with a valid <code>DESCRIPTION</code> file, for us to test against. And when the test is done — poof! — the package is gone.</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">test_that</span>(<span class="st">"use_roxygen_md() adds DESCRIPTION fields"</span>, {</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  pkg <span class="ot">&lt;-</span> <span class="fu">local_create_package</span>()</span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">use_roxygen_md</span>()</span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">expect_true</span>(<span class="fu">uses_roxygen_md</span>())</span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">expect_equal</span>(desc<span class="sc">::</span><span class="fu">desc_get</span>(<span class="st">"Roxygen"</span>, pkg)[[<span class="dv">1</span>]], <span class="st">"list(markdown = TRUE)"</span>)<span class="er">)</span></span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">expect_true</span>(desc<span class="sc">::</span><span class="fu">desc_has_fields</span>(<span class="st">"RoxygenNote"</span>, pkg))</span>
-<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" title="1"><span class="kw">test_that</span>(<span class="st">"use_roxygen_md() adds DESCRIPTION fields"</span>, {</a>
+<a class="sourceLine" id="cb16-2" title="2">  pkg &lt;-<span class="st"> </span><span class="kw">local_create_package</span>()</a>
+<a class="sourceLine" id="cb16-3" title="3">  <span class="kw">use_roxygen_md</span>()</a>
+<a class="sourceLine" id="cb16-4" title="4">  </a>
+<a class="sourceLine" id="cb16-5" title="5">  <span class="kw">expect_true</span>(<span class="kw">uses_roxygen_md</span>())</a>
+<a class="sourceLine" id="cb16-6" title="6">  <span class="kw">expect_equal</span>(desc<span class="op">::</span><span class="kw">desc_get</span>(<span class="st">"Roxygen"</span>, pkg)[[<span class="dv">1</span>]], <span class="st">"list(markdown = TRUE)"</span>)<span class="er">)</span></a>
+<a class="sourceLine" id="cb16-7" title="7">  <span class="kw">expect_true</span>(desc<span class="op">::</span><span class="kw">desc_has_fields</span>(<span class="st">"RoxygenNote"</span>, pkg))</a>
+<a class="sourceLine" id="cb16-8" title="8">})</a></code></pre></div>
 </div>
 </div>
 <div class="section level2">
