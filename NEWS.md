@@ -52,6 +52,9 @@
 * When a snapshot changes the hint also mentions that you can use 
   `snapshot_review()` (#1500, @DanChaltiel) and the message tells you what 
   variant is active (#1540).
+* JUnit reporter now includes skip messages/reasons (@rfineman, #1507). 
+
+* Test results show hyperlinks to failed expectation when supported (#1544). 
 
 # testthat 3.1.1
 

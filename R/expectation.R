@@ -260,11 +260,16 @@ expectation_location <- function(x) {
   if (is.null(x$srcref)) {
     "???"
   } else {
-    filename <- attr(x$srcref, "srcfile")$filename
+    srcfile <- attr(x$srcref, "srcfile")
+    filename <- srcfile$filename
     if (identical(filename, "")) {
       paste0("Line ", x$srcref[1])
     } else {
-      paste0(basename(filename), ":", x$srcref[1], ":", x$srcref[2])
+      cli::style_hyperlink(
+        paste0(basename(filename), ":", x$srcref[1], ":", x$srcref[2]),
+        paste0("file://", file.path(srcfile$wd, filename)),
+        params = c(line = x$srcref[1], col = x$srcref[2])
+      )
     }
   }
 }
