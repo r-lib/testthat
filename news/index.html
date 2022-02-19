@@ -10,7 +10,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">testthat</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">3.1.2</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">3.1.3</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -69,6 +69,19 @@
     </div>
 
     <div class="section level2">
+<h2 class="pkg-version" data-toc-text="3.1.3" id="testthat-313">testthat 3.1.3<a class="anchor" aria-label="anchor" href="#testthat-313"></a></h2>
+<ul><li>
+<p>Package that explicitly depend on rlang in their description file are now opting into a new snapshot display for errors, warnings, and messages. Previously this only concerned packages that explicitly depended on rlang &gt;= 1.0.0. This display will eventually become the default for all packages.</p>
+<p>Changes include:</p>
+<ul><li><p>Condition classes are no longer included in the snapshot by default. This is to avoid snapshot noise when upstream code adds or changes a class. For instance, r-devel has added classes to base errors.</p></li>
+<li>
+<p>Warnings and errors are now printed with rlang, including the <code>call</code> field. This makes it easy to monitor the full appearance of warning and error messages as they are displayed to users.</p>
+<p>This change is part of a push towards mentioning the useful context of an error as part of messages, see the release notes of rlang 1.0.0 for more about this.</p>
+</li>
+</ul></li>
+<li><p>Test results show hyperlinks to failed expectation when supported (<a href="https://github.com/r-lib/testthat/issues/1544" class="external-link">#1544</a>).</p></li>
+</ul></div>
+    <div class="section level2">
 <h2 class="pkg-version" data-toc-text="3.1.2" id="testthat-312">testthat 3.1.2<a class="anchor" aria-label="anchor" href="#testthat-312"></a></h2><p class="text-muted">CRAN release: 2022-01-20</p>
 <ul><li><p>testthat now uses brio for all reading and writing (<a href="https://github.com/r-lib/testthat/issues/1120" class="external-link">#1120</a>). This ensures that snapshots always use “” to separate lines (<a href="https://github.com/r-lib/testthat/issues/1516" class="external-link">#1516</a>).</p></li>
 <li><p><code><a href="../reference/expect_snapshot.html">expect_snapshot()</a></code> no longer inadvertently trims trailing new lines off of errors and messages (<a href="https://github.com/r-lib/testthat/issues/1509" class="external-link">#1509</a>).</p></li>
@@ -83,6 +96,7 @@
 <li><p><code><a href="../reference/skip.html">skip_if_offline()</a></code> now automatically calls <code><a href="../reference/skip.html">skip_on_cran()</a></code> (<a href="https://github.com/r-lib/testthat/issues/1479" class="external-link">#1479</a>).</p></li>
 <li><p><code><a href="../reference/snapshot_accept.html">snapshot_accept()</a></code> and <code><a href="../reference/snapshot_accept.html">snapshot_review()</a></code> now work with exactly the same file specification which can be a snapshot name, a file name, or a directory (<a href="https://github.com/r-lib/testthat/issues/1546" class="external-link">#1546</a>). They both work better with variants (<a href="https://github.com/r-lib/testthat/issues/1508" class="external-link">#1508</a>). Snapshot cleanup also removes all empty directories (<a href="https://github.com/r-lib/testthat/issues/1457" class="external-link">#1457</a>).</p></li>
 <li><p>When a snapshot changes the hint also mentions that you can use <code><a href="../reference/snapshot_accept.html">snapshot_review()</a></code> (<a href="https://github.com/r-lib/testthat/issues/1500" class="external-link">#1500</a>, <a href="https://github.com/DanChaltiel" class="external-link">@DanChaltiel</a>) and the message tells you what variant is active (<a href="https://github.com/r-lib/testthat/issues/1540" class="external-link">#1540</a>).</p></li>
+<li><p>JUnit reporter now includes skip messages/reasons (<a href="https://github.com/rfineman" class="external-link">@rfineman</a>, <a href="https://github.com/r-lib/testthat/issues/1507" class="external-link">#1507</a>).</p></li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="3.1.1" id="testthat-311">testthat 3.1.1<a class="anchor" aria-label="anchor" href="#testthat-311"></a></h2><p class="text-muted">CRAN release: 2021-12-03</p>

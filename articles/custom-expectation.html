@@ -35,7 +35,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">testthat</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">3.1.2</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">3.1.3</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -115,7 +115,7 @@
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">expect_length</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">object</span>, <span class="va">n</span><span class="op">)</span> <span class="op">{</span>
   <span class="co"># 1. Capture object and label</span>
-  <span class="va">act</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/quasi_label.html">quasi_label</a></span><span class="op">(</span><span class="fu">rlang</span><span class="fu">::</span><span class="fu"><a href="https://rlang.r-lib.org/reference/nse-defuse.html" class="external-link">enquo</a></span><span class="op">(</span><span class="va">object</span><span class="op">)</span>, arg <span class="op">=</span> <span class="st">"object"</span><span class="op">)</span>
+  <span class="va">act</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/quasi_label.html">quasi_label</a></span><span class="op">(</span><span class="fu">rlang</span><span class="fu">::</span><span class="fu"><a href="https://rlang.r-lib.org/reference/enquo.html" class="external-link">enquo</a></span><span class="op">(</span><span class="va">object</span><span class="op">)</span>, arg <span class="op">=</span> <span class="st">"object"</span><span class="op">)</span>
 
   <span class="co"># 2. Call expect()</span>
   <span class="va">act</span><span class="op">$</span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">act</span><span class="op">$</span><span class="va">val</span><span class="op">)</span>
@@ -164,7 +164,7 @@
 <p>For expectations with more complex logic governing when success or failure occurs, you can use <code><a href="../reference/fail.html">succeed()</a></code> and <code><a href="../reference/fail.html">fail()</a></code>. These are simple wrappers around <code><a href="../reference/expect.html">expect()</a></code> that allow you to write code that looks like this:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">expect_length</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">object</span>, <span class="va">n</span><span class="op">)</span> <span class="op">{</span>
-  <span class="va">act</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/quasi_label.html">quasi_label</a></span><span class="op">(</span><span class="fu">rlang</span><span class="fu">::</span><span class="fu"><a href="https://rlang.r-lib.org/reference/nse-defuse.html" class="external-link">enquo</a></span><span class="op">(</span><span class="va">object</span><span class="op">)</span>, arg <span class="op">=</span> <span class="st">"object"</span><span class="op">)</span>
+  <span class="va">act</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/quasi_label.html">quasi_label</a></span><span class="op">(</span><span class="fu">rlang</span><span class="fu">::</span><span class="fu"><a href="https://rlang.r-lib.org/reference/enquo.html" class="external-link">enquo</a></span><span class="op">(</span><span class="va">object</span><span class="op">)</span>, arg <span class="op">=</span> <span class="st">"object"</span><span class="op">)</span>
 
   <span class="va">act</span><span class="op">$</span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">act</span><span class="op">$</span><span class="va">val</span><span class="op">)</span>
   <span class="kw">if</span> <span class="op">(</span><span class="va">act</span><span class="op">$</span><span class="va">n</span> <span class="op">==</span> <span class="va">n</span><span class="op">)</span> <span class="op">{</span>
@@ -187,7 +187,7 @@
   <span class="fu"><a href="../reference/expect_success.html">expect_success</a></span><span class="op">(</span><span class="fu"><a href="../reference/expect_length.html">expect_length</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, <span class="fl">10</span><span class="op">)</span><span class="op">)</span>
   <span class="fu"><a href="../reference/expect_success.html">expect_success</a></span><span class="op">(</span><span class="fu"><a href="../reference/expect_length.html">expect_length</a></span><span class="op">(</span><span class="va">letters</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">]</span>, <span class="fl">5</span><span class="op">)</span><span class="op">)</span>
 <span class="op">}</span><span class="op">)</span>
-<span class="co">#&gt; <span style="color: #00BB00;">Test passed</span> 🌈</span></code></pre></div>
+<span class="co">#&gt; <span style="color: #00BB00;">Test passed</span> 🥳</span></code></pre></div>
 </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside>
