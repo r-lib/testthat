@@ -2,8 +2,26 @@
 
 * Package that explicitly depend on rlang in their description file
   are now opting into a new snapshot display for errors, warnings, and
-  messages. This display will eventually become the default for all
-  packages.
+  messages. Previously this only concerned packages that explicitly
+  depended on rlang >= 1.0.0. This display will eventually become the
+  default for all packages.
+
+  Changes include:
+
+  - Condition classes are no longer included in the snapshot by
+    default. This is to avoid snapshot noise when upstream code adds
+    or changes a class. For instance, r-devel has added classes to
+    base errors.
+
+  - Warnings and errors are now printed with rlang, including the
+    `call` field. This makes it easy to monitor the full appearance of
+    warning and error messages as they are displayed to users.
+
+    This change is part of a push towards mentioning the useful
+    context of an error as part of messages, see the release notes of
+    rlang 1.0.0 for more about this.
+
+* Test results show hyperlinks to failed expectation when supported (#1544). 
 
 
 # testthat 3.1.2
@@ -54,7 +72,6 @@
   variant is active (#1540).
 * JUnit reporter now includes skip messages/reasons (@rfineman, #1507). 
 
-* Test results show hyperlinks to failed expectation when supported (#1544). 
 
 # testthat 3.1.1
 
