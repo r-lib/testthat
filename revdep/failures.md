@@ -1,70 +1,4 @@
-[1m# bayesmodels[22m
-
-<details>
-
-* Version: 0.1.1
-* GitHub: https://github.com/AlbertoAlmuinha/bayesmodels
-* Source code: https://github.com/cran/bayesmodels
-* Date/Publication: 2021-06-28 21:30:02 UTC
-* Number of recursive dependencies: 254
-
-Run `cloud_details(, "bayesmodels")` for more info
-
-</details>
-
-[1m## Error before installation[22m
-
-[1m### Devel[22m
-
-```
-* using log directory ‘/tmp/workdir/bayesmodels/new/bayesmodels.Rcheck’
-* using R version 4.1.1 (2021-08-10)
-* using platform: x86_64-pc-linux-gnu (64-bit)
-* using session charset: UTF-8
-* using option ‘--no-manual’
-* checking for file ‘bayesmodels/DESCRIPTION’ ... OK
-* this is package ‘bayesmodels’ version ‘0.1.1’
-* package encoding: UTF-8
-* checking package namespace information ... OK
-* checking package dependencies ... ERROR
-Package required but not available: ‘bsts’
-
-See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
-manual.
-* DONE
-Status: 1 ERROR
-
-
-
-
-
-```
-[1m### CRAN[22m
-
-```
-* using log directory ‘/tmp/workdir/bayesmodels/old/bayesmodels.Rcheck’
-* using R version 4.1.1 (2021-08-10)
-* using platform: x86_64-pc-linux-gnu (64-bit)
-* using session charset: UTF-8
-* using option ‘--no-manual’
-* checking for file ‘bayesmodels/DESCRIPTION’ ... OK
-* this is package ‘bayesmodels’ version ‘0.1.1’
-* package encoding: UTF-8
-* checking package namespace information ... OK
-* checking package dependencies ... ERROR
-Package required but not available: ‘bsts’
-
-See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
-manual.
-* DONE
-Status: 1 ERROR
-
-
-
-
-
-```
-[1m# Boom[22m
+# Boom
 
 <details>
 
@@ -78,17 +12,17 @@ Run `cloud_details(, "Boom")` for more info
 
 </details>
 
-[1m## In both[22m
+## In both
 
-*   [31mchecking whether package ‘Boom’ can be installed ... ERROR[39m
+*   checking whether package ‘Boom’ can be installed ... ERROR
     ```
     Installation failed.
     See ‘/tmp/workdir/Boom/new/Boom.Rcheck/00install.out’ for details.
     ```
 
-[1m## Installation[22m
+## Installation
 
-[1m### Devel[22m
+### Devel
 
 ```
 * installing *source* package ‘Boom’ ...
@@ -115,7 +49,7 @@ ERROR: compilation failed for package ‘Boom’
 
 
 ```
-[1m### CRAN[22m
+### CRAN
 
 ```
 * installing *source* package ‘Boom’ ...
@@ -142,7 +76,7 @@ ERROR: compilation failed for package ‘Boom’
 
 
 ```
-[1m# bsts[22m
+# bsts
 
 <details>
 
@@ -156,9 +90,9 @@ Run `cloud_details(, "bsts")` for more info
 
 </details>
 
-[1m## Error before installation[22m
+## Error before installation
 
-[1m### Devel[22m
+### Devel
 
 ```
 * using log directory ‘/tmp/workdir/bsts/new/bsts.Rcheck’
@@ -183,7 +117,7 @@ Status: 1 ERROR
 
 
 ```
-[1m### CRAN[22m
+### CRAN
 
 ```
 * using log directory ‘/tmp/workdir/bsts/old/bsts.Rcheck’
@@ -208,7 +142,7 @@ Status: 1 ERROR
 
 
 ```
-[1m# CausalImpact[22m
+# CausalImpact
 
 <details>
 
@@ -222,9 +156,9 @@ Run `cloud_details(, "CausalImpact")` for more info
 
 </details>
 
-[1m## Error before installation[22m
+## Error before installation
 
-[1m### Devel[22m
+### Devel
 
 ```
 * using log directory ‘/tmp/workdir/CausalImpact/new/CausalImpact.Rcheck’
@@ -248,7 +182,7 @@ Status: 1 ERROR
 
 
 ```
-[1m### CRAN[22m
+### CRAN
 
 ```
 * using log directory ‘/tmp/workdir/CausalImpact/old/CausalImpact.Rcheck’
@@ -272,7 +206,7 @@ Status: 1 ERROR
 
 
 ```
-[1m# cbar[22m
+# cbar
 
 <details>
 
@@ -286,9 +220,9 @@ Run `cloud_details(, "cbar")` for more info
 
 </details>
 
-[1m## Error before installation[22m
+## Error before installation
 
-[1m### Devel[22m
+### Devel
 
 ```
 * using log directory ‘/tmp/workdir/cbar/new/cbar.Rcheck’
@@ -313,7 +247,7 @@ Status: 1 ERROR
 
 
 ```
-[1m### CRAN[22m
+### CRAN
 
 ```
 * using log directory ‘/tmp/workdir/cbar/old/cbar.Rcheck’
@@ -338,7 +272,7 @@ Status: 1 ERROR
 
 
 ```
-[1m# NA[22m
+# NA
 
 <details>
 
@@ -351,19 +285,9 @@ Run `cloud_details(, "NA")` for more info
 
 </details>
 
-[1m## Error before installation[22m
+## Error before installation
 
-[1m### Devel[22m
-
-```
-
-
-
-
-
-
-```
-[1m### CRAN[22m
+### Devel
 
 ```
 
@@ -373,7 +297,17 @@ Run `cloud_details(, "NA")` for more info
 
 
 ```
-[1m# NA[22m
+### CRAN
+
+```
+
+
+
+
+
+
+```
+# NA
 
 <details>
 
@@ -386,19 +320,9 @@ Run `cloud_details(, "NA")` for more info
 
 </details>
 
-[1m## Error before installation[22m
+## Error before installation
 
-[1m### Devel[22m
-
-```
-
-
-
-
-
-
-```
-[1m### CRAN[22m
+### Devel
 
 ```
 
@@ -408,7 +332,17 @@ Run `cloud_details(, "NA")` for more info
 
 
 ```
-[1m# conos[22m
+### CRAN
+
+```
+
+
+
+
+
+
+```
+# conos
 
 <details>
 
@@ -416,23 +350,23 @@ Run `cloud_details(, "NA")` for more info
 * GitHub: https://github.com/kharchenkolab/conos
 * Source code: https://github.com/cran/conos
 * Date/Publication: 2022-01-21 09:12:56 UTC
-* Number of recursive dependencies: 238
+* Number of recursive dependencies: 234
 
 Run `cloud_details(, "conos")` for more info
 
 </details>
 
-[1m## In both[22m
+## In both
 
-*   [31mchecking whether package ‘conos’ can be installed ... ERROR[39m
+*   checking whether package ‘conos’ can be installed ... ERROR
     ```
     Installation failed.
     See ‘/tmp/workdir/conos/new/conos.Rcheck/00install.out’ for details.
     ```
 
-[1m## Installation[22m
+## Installation
 
-[1m### Devel[22m
+### Devel
 
 ```
 * installing *source* package ‘conos’ ...
@@ -459,7 +393,7 @@ ERROR: lazy loading failed for package ‘conos’
 
 
 ```
-[1m### CRAN[22m
+### CRAN
 
 ```
 * installing *source* package ‘conos’ ...
@@ -486,7 +420,7 @@ ERROR: lazy loading failed for package ‘conos’
 
 
 ```
-[1m# NA[22m
+# NA
 
 <details>
 
@@ -499,19 +433,9 @@ Run `cloud_details(, "NA")` for more info
 
 </details>
 
-[1m## Error before installation[22m
+## Error before installation
 
-[1m### Devel[22m
-
-```
-
-
-
-
-
-
-```
-[1m### CRAN[22m
+### Devel
 
 ```
 
@@ -521,31 +445,41 @@ Run `cloud_details(, "NA")` for more info
 
 
 ```
-[1m# ctsem[22m
+### CRAN
+
+```
+
+
+
+
+
+
+```
+# ctsem
 
 <details>
 
-* Version: 3.5.4
+* Version: 3.5.5
 * GitHub: https://github.com/cdriveraus/ctsem
 * Source code: https://github.com/cran/ctsem
-* Date/Publication: 2021-07-23 16:40:02 UTC
+* Date/Publication: 2022-02-16 10:20:26 UTC
 * Number of recursive dependencies: 125
 
 Run `cloud_details(, "ctsem")` for more info
 
 </details>
 
-[1m## In both[22m
+## In both
 
-*   [31mchecking whether package ‘ctsem’ can be installed ... ERROR[39m
+*   checking whether package ‘ctsem’ can be installed ... ERROR
     ```
     Installation failed.
     See ‘/tmp/workdir/ctsem/new/ctsem.Rcheck/00install.out’ for details.
     ```
 
-[1m## Installation[22m
+## Installation
 
-[1m### Devel[22m
+### Devel
 
 ```
 * installing *source* package ‘ctsem’ ...
@@ -559,10 +493,10 @@ Info: integer division implicitly rounds to integer. Found int division: d * d -
 
 Wrote C++ file "stan_files/ctsm.cc"
 ...
+stan_files/ctsm.hpp: In member function ‘T__ model_ctsm_namespace::model_ctsm::log_prob(std::vector<T_l>&, std::vector<int>&, std::ostream*) const [with bool propto__ = false; bool jacobian__ = true; T__ = double]’:
+stan_files/ctsm.hpp:2348:9: note: variable tracking size limit exceeded with ‘-fvar-tracking-assignments’, retrying without
  2348 |     T__ log_prob(std::vector<T__>& params_r__,
       |         ^~~~~~~~
-stan_files/ctsm.hpp: In member function ‘T__ model_ctsm_namespace::model_ctsm::log_prob(std::vector<T_l>&, std::vector<int>&, std::ostream*) const [with bool propto__ = false; bool jacobian__ = false; T__ = double]’:
-stan_files/ctsm.hpp:2348:9: note: variable tracking size limit exceeded with ‘-fvar-tracking-assignments’, retrying without
 g++: fatal error: Killed signal terminated program cc1plus
 compilation terminated.
 make: *** [/opt/R/4.1.1/lib/R/etc/Makeconf:175: stan_files/ctsm.o] Error 1
@@ -572,7 +506,7 @@ ERROR: compilation failed for package ‘ctsem’
 
 
 ```
-[1m### CRAN[22m
+### CRAN
 
 ```
 * installing *source* package ‘ctsem’ ...
@@ -586,10 +520,10 @@ Info: integer division implicitly rounds to integer. Found int division: d * d -
 
 Wrote C++ file "stan_files/ctsm.cc"
 ...
+stan_files/ctsm.hpp: In member function ‘T__ model_ctsm_namespace::model_ctsm::log_prob(std::vector<T_l>&, std::vector<int>&, std::ostream*) const [with bool propto__ = false; bool jacobian__ = true; T__ = double]’:
+stan_files/ctsm.hpp:2348:9: note: variable tracking size limit exceeded with ‘-fvar-tracking-assignments’, retrying without
  2348 |     T__ log_prob(std::vector<T__>& params_r__,
       |         ^~~~~~~~
-stan_files/ctsm.hpp: In member function ‘T__ model_ctsm_namespace::model_ctsm::log_prob(std::vector<T_l>&, std::vector<int>&, std::ostream*) const [with bool propto__ = false; bool jacobian__ = false; T__ = double]’:
-stan_files/ctsm.hpp:2348:9: note: variable tracking size limit exceeded with ‘-fvar-tracking-assignments’, retrying without
 g++: fatal error: Killed signal terminated program cc1plus
 compilation terminated.
 make: *** [/opt/R/4.1.1/lib/R/etc/Makeconf:175: stan_files/ctsm.o] Error 1
@@ -599,7 +533,67 @@ ERROR: compilation failed for package ‘ctsem’
 
 
 ```
-[1m# NA[22m
+# ENMTools
+
+<details>
+
+* Version: 1.0.5
+* GitHub: NA
+* Source code: https://github.com/cran/ENMTools
+* Date/Publication: 2021-06-25 10:40:02 UTC
+* Number of recursive dependencies: 275
+
+Run `cloud_details(, "ENMTools")` for more info
+
+</details>
+
+## In both
+
+*   checking whether package ‘ENMTools’ can be installed ... ERROR
+    ```
+    Installation failed.
+    See ‘/tmp/workdir/ENMTools/new/ENMTools.Rcheck/00install.out’ for details.
+    ```
+
+## Installation
+
+### Devel
+
+```
+* installing *source* package ‘ENMTools’ ...
+** package ‘ENMTools’ successfully unpacked and MD5 sums checked
+** using staged installation
+** R
+** data
+*** moving datasets to lazyload DB
+** inst
+** byte-compile and prepare package for lazy loading
+Error: object ‘rpoispp’ is not exported by 'namespace:spatstat.core'
+Execution halted
+ERROR: lazy loading failed for package ‘ENMTools’
+* removing ‘/tmp/workdir/ENMTools/new/ENMTools.Rcheck/ENMTools’
+
+
+```
+### CRAN
+
+```
+* installing *source* package ‘ENMTools’ ...
+** package ‘ENMTools’ successfully unpacked and MD5 sums checked
+** using staged installation
+** R
+** data
+*** moving datasets to lazyload DB
+** inst
+** byte-compile and prepare package for lazy loading
+Error: object ‘rpoispp’ is not exported by 'namespace:spatstat.core'
+Execution halted
+ERROR: lazy loading failed for package ‘ENMTools’
+* removing ‘/tmp/workdir/ENMTools/old/ENMTools.Rcheck/ENMTools’
+
+
+```
+# NA
 
 <details>
 
@@ -612,19 +606,9 @@ Run `cloud_details(, "NA")` for more info
 
 </details>
 
-[1m## Error before installation[22m
+## Error before installation
 
-[1m### Devel[22m
-
-```
-
-
-
-
-
-
-```
-[1m### CRAN[22m
+### Devel
 
 ```
 
@@ -634,7 +618,17 @@ Run `cloud_details(, "NA")` for more info
 
 
 ```
-[1m# geocmeans[22m
+### CRAN
+
+```
+
+
+
+
+
+
+```
+# geocmeans
 
 <details>
 
@@ -648,9 +642,9 @@ Run `cloud_details(, "geocmeans")` for more info
 
 </details>
 
-[1m## Error before installation[22m
+## Error before installation
 
-[1m### Devel[22m
+### Devel
 
 ```
 * using log directory ‘/tmp/workdir/geocmeans/new/geocmeans.Rcheck’
@@ -676,7 +670,7 @@ Status: 1 ERROR
 
 
 ```
-[1m### CRAN[22m
+### CRAN
 
 ```
 * using log directory ‘/tmp/workdir/geocmeans/old/geocmeans.Rcheck’
@@ -702,7 +696,7 @@ Status: 1 ERROR
 
 
 ```
-[1m# NA[22m
+# NA
 
 <details>
 
@@ -715,19 +709,9 @@ Run `cloud_details(, "NA")` for more info
 
 </details>
 
-[1m## Error before installation[22m
+## Error before installation
 
-[1m### Devel[22m
-
-```
-
-
-
-
-
-
-```
-[1m### CRAN[22m
+### Devel
 
 ```
 
@@ -737,7 +721,17 @@ Run `cloud_details(, "NA")` for more info
 
 
 ```
-[1m# lidaRtRee[22m
+### CRAN
+
+```
+
+
+
+
+
+
+```
+# lidaRtRee
 
 <details>
 
@@ -745,15 +739,15 @@ Run `cloud_details(, "NA")` for more info
 * GitHub: NA
 * Source code: https://github.com/cran/lidaRtRee
 * Date/Publication: 2021-12-09 13:30:02 UTC
-* Number of recursive dependencies: 141
+* Number of recursive dependencies: 133
 
 Run `cloud_details(, "lidaRtRee")` for more info
 
 </details>
 
-[1m## Error before installation[22m
+## Error before installation
 
-[1m### Devel[22m
+### Devel
 
 ```
 * using log directory ‘/tmp/workdir/lidaRtRee/new/lidaRtRee.Rcheck’
@@ -779,7 +773,7 @@ Status: 1 ERROR
 
 
 ```
-[1m### CRAN[22m
+### CRAN
 
 ```
 * using log directory ‘/tmp/workdir/lidaRtRee/old/lidaRtRee.Rcheck’
@@ -805,7 +799,7 @@ Status: 1 ERROR
 
 
 ```
-[1m# loon.ggplot[22m
+# loon.ggplot
 
 <details>
 
@@ -819,9 +813,9 @@ Run `cloud_details(, "loon.ggplot")` for more info
 
 </details>
 
-[1m## Error before installation[22m
+## Error before installation
 
-[1m### Devel[22m
+### Devel
 
 ```
 * using log directory ‘/tmp/workdir/loon.ggplot/new/loon.ggplot.Rcheck’
@@ -849,7 +843,7 @@ Status: 1 ERROR
 
 
 ```
-[1m### CRAN[22m
+### CRAN
 
 ```
 * using log directory ‘/tmp/workdir/loon.ggplot/old/loon.ggplot.Rcheck’
@@ -877,7 +871,7 @@ Status: 1 ERROR
 
 
 ```
-[1m# loon.shiny[22m
+# loon.shiny
 
 <details>
 
@@ -891,9 +885,9 @@ Run `cloud_details(, "loon.shiny")` for more info
 
 </details>
 
-[1m## Error before installation[22m
+## Error before installation
 
-[1m### Devel[22m
+### Devel
 
 ```
 * using log directory ‘/tmp/workdir/loon.shiny/new/loon.shiny.Rcheck’
@@ -919,7 +913,7 @@ Status: 1 ERROR
 
 
 ```
-[1m### CRAN[22m
+### CRAN
 
 ```
 * using log directory ‘/tmp/workdir/loon.shiny/old/loon.shiny.Rcheck’
@@ -945,7 +939,7 @@ Status: 1 ERROR
 
 
 ```
-[1m# loon.tourr[22m
+# loon.tourr
 
 <details>
 
@@ -959,9 +953,9 @@ Run `cloud_details(, "loon.tourr")` for more info
 
 </details>
 
-[1m## Error before installation[22m
+## Error before installation
 
-[1m### Devel[22m
+### Devel
 
 ```
 * using log directory ‘/tmp/workdir/loon.tourr/new/loon.tourr.Rcheck’
@@ -987,7 +981,7 @@ Status: 1 ERROR
 
 
 ```
-[1m### CRAN[22m
+### CRAN
 
 ```
 * using log directory ‘/tmp/workdir/loon.tourr/old/loon.tourr.Rcheck’
@@ -1013,7 +1007,7 @@ Status: 1 ERROR
 
 
 ```
-[1m# NA[22m
+# NA
 
 <details>
 
@@ -1026,19 +1020,9 @@ Run `cloud_details(, "NA")` for more info
 
 </details>
 
-[1m## Error before installation[22m
+## Error before installation
 
-[1m### Devel[22m
-
-```
-
-
-
-
-
-
-```
-[1m### CRAN[22m
+### Devel
 
 ```
 
@@ -1048,7 +1032,17 @@ Run `cloud_details(, "NA")` for more info
 
 
 ```
-[1m# vivid[22m
+### CRAN
+
+```
+
+
+
+
+
+
+```
+# vivid
 
 <details>
 
@@ -1062,9 +1056,9 @@ Run `cloud_details(, "vivid")` for more info
 
 </details>
 
-[1m## Error before installation[22m
+## Error before installation
 
-[1m### Devel[22m
+### Devel
 
 ```
 * using log directory ‘/tmp/workdir/vivid/new/vivid.Rcheck’
@@ -1094,7 +1088,7 @@ Status: 2 NOTEs
 
 
 ```
-[1m### CRAN[22m
+### CRAN
 
 ```
 * using log directory ‘/tmp/workdir/vivid/old/vivid.Rcheck’
