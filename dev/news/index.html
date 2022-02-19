@@ -86,7 +86,7 @@
 <li><p><code><a href="../reference/test_that.html">test_that()</a></code> no longer inappropriately skips when calling <code><a href="../reference/equality-expectations.html">expect_equal()</a></code> when you’ve temporarily set the locale to non-UTF-8 (<a href="https://github.com/r-lib/testthat/issues/1285" class="external-link">#1285</a>).</p></li>
 <li><p><code><a href="../reference/skip.html">skip_if_offline()</a></code> now automatically calls <code><a href="../reference/skip.html">skip_on_cran()</a></code> (<a href="https://github.com/r-lib/testthat/issues/1479" class="external-link">#1479</a>).</p></li>
 <li><p><code><a href="../reference/snapshot_accept.html">snapshot_accept()</a></code> and <code><a href="../reference/snapshot_accept.html">snapshot_review()</a></code> now work with exactly the same file specification which can be a snapshot name, a file name, or a directory (<a href="https://github.com/r-lib/testthat/issues/1546" class="external-link">#1546</a>). They both work better with variants (<a href="https://github.com/r-lib/testthat/issues/1508" class="external-link">#1508</a>). Snapshot cleanup also removes all empty directories (<a href="https://github.com/r-lib/testthat/issues/1457" class="external-link">#1457</a>).</p></li>
-<li>When a snapshot changes the hint also mentions that you can use <code><a href="../reference/snapshot_accept.html">snapshot_review()</a></code> (<a href="https://github.com/r-lib/testthat/issues/1500" class="external-link">#1500</a>, <a href="https://github.com/DanChaltiel" class="external-link">@DanChaltiel</a>) and the message tells you what variant is active (<a href="https://github.com/r-lib/testthat/issues/1540" class="external-link">#1540</a>).</li>
+<li><p>When a snapshot changes the hint also mentions that you can use <code><a href="../reference/snapshot_accept.html">snapshot_review()</a></code> (<a href="https://github.com/r-lib/testthat/issues/1500" class="external-link">#1500</a>, <a href="https://github.com/DanChaltiel" class="external-link">@DanChaltiel</a>) and the message tells you what variant is active (<a href="https://github.com/r-lib/testthat/issues/1540" class="external-link">#1540</a>).</p></li>
 <li><p>JUnit reporter now includes skip messages/reasons (<a href="https://github.com/rfineman" class="external-link">@rfineman</a>, <a href="https://github.com/r-lib/testthat/issues/1507" class="external-link">#1507</a>).</p></li>
 <li><p>Test results show hyperlinks to failed expectation when supported (<a href="https://github.com/r-lib/testthat/issues/1544" class="external-link">#1544</a>).</p></li>
 </ul></div>
@@ -94,7 +94,7 @@
 <h2 class="pkg-version" data-toc-text="3.1.1" id="testthat-311">testthat 3.1.1<a class="anchor" aria-label="anchor" href="#testthat-311"></a></h2><p class="text-muted">CRAN release: 2021-12-03</p>
 <ul><li><p>Condition expectations like <code><a href="../reference/expect_error.html">expect_error()</a></code> now match across the ancestry of chained errors (<a href="https://github.com/r-lib/testthat/issues/1493" class="external-link">#1493</a>). You can disable this by setting the new <code>inherit</code> argument to <code>FALSE</code>.</p></li>
 <li>
-<p>Added preliminary support for rlang 1.0 errors. It is disabled by default for the time being. To activate it, specify <code>rlang (&gt;= 1.0.0)</code> in your <code>DESCRIPTION</code> file (or <code>&gt;= 0.99.0.9001</code> if you’re using the dev version).</p>
+<p>Added preliminary support for rlang 1.0 errors. It is disabled by default for the time being. To activate it, specify <code>rlang (&gt;=   1.0.0)</code> in your <code>DESCRIPTION</code> file (or <code>&gt;= 0.99.0.9001</code> if you’re using the dev version).</p>
 <p>Once activated, snapshots will now use rlang to print error and warning messages, including the <code>Error:</code> and <code>Warning:</code> prefixes. This means the <code>call</code> field of conditions is now displayed in snapshots if present. Parent error messages are also displayed. Following this change, all snapshots including error and warning messages need to be revalidated.</p>
 <p>We will enable the new rlang 1.0 output unconditionally in a future release.</p>
 </li>
@@ -247,7 +247,7 @@
 <li><p><code><a href="../reference/expect_error.html">expect_error()</a></code> no longer encourages you to use <code>class</code>. This advice removes one type of fragility at the expense of creating a different type (<a href="https://github.com/r-lib/testthat/issues/1013" class="external-link">#1013</a>).</p></li>
 <li><p><code>expect_known_failure()</code> has been removed. As far as I can tell it was only ever used by testthat, and is rather fragile.</p></li>
 <li><p><code><a href="../reference/logical-expectations.html">expect_true()</a></code>, <code><a href="../reference/logical-expectations.html">expect_false()</a></code>, and <code><a href="../reference/expect_null.html">expect_null()</a></code> now use waldo to produce more informative failures.</p></li>
-<li><p><code><a href="../reference/verify_output.html">verify_output()</a></code> no longer always fails if output contains a carriage return character (") (<a href="https://github.com/r-lib/testthat/issues/1048" class="external-link">#1048</a>). It uses the <code><a href="https://rdrr.io/r/grDevices/pdf.html" class="external-link">pdf()</a></code> device instead of <code><a href="https://rdrr.io/r/grDevices/png.html" class="external-link">png()</a></code> so it works on systems without X11 (<a href="https://github.com/r-lib/testthat/issues/1011" class="external-link">#1011</a>). And it uses <code><a href="https://waldo.r-lib.org/reference/compare.html" class="external-link">waldo::compare()</a></code> to give more informative failures.</p></li>
+<li><p><code><a href="../reference/verify_output.html">verify_output()</a></code> no longer always fails if output contains a carriage return character (“) (<a href="https://github.com/r-lib/testthat/issues/1048" class="external-link">#1048</a>). It uses the <code><a href="https://rdrr.io/r/grDevices/pdf.html" class="external-link">pdf()</a></code> device instead of <code><a href="https://rdrr.io/r/grDevices/png.html" class="external-link">png()</a></code> so it works on systems without X11 (<a href="https://github.com/r-lib/testthat/issues/1011" class="external-link">#1011</a>). And it uses <code><a href="https://waldo.r-lib.org/reference/compare.html" class="external-link">waldo::compare()</a></code> to give more informative failures.</p></li>
 </ul></div>
 </div>
     <div class="section level2">
@@ -495,7 +495,8 @@
 </ul></div>
 <div class="section level3">
 <h3 id="minor-improvements-and-bug-fixes-2-0-0">Minor improvements and bug fixes<a class="anchor" aria-label="anchor" href="#minor-improvements-and-bug-fixes-2-0-0"></a></h3>
-<ul><li>Updated Catch to 1.9.6. <code>testthat</code> now understands and makes use of the package routine registration mechanism required by CRAN with R &gt;= 3.4.0.
+<ul><li>
+<p>Updated Catch to 1.9.6. <code>testthat</code> now understands and makes use of the package routine registration mechanism required by CRAN with R &gt;= 3.4.0.</p>
 <ol class="example" style="list-style-type: decimal"><li>
 </li></ol></li>
 <li><p>Better reporting for deeply nested failures, limiting the stack trace to the first and last 10 entries (<a href="https://github.com/r-lib/testthat/issues/474" class="external-link">#474</a>).</p></li>
@@ -532,7 +533,8 @@
 <ul><li><p>New <code><a href="../reference/expect_output_file.html">expect_output_file()</a></code> to compare output of a function with a text file, and optionally update it (<a href="https://github.com/r-lib/testthat/issues/443" class="external-link">#443</a>, <a href="https://github.com/krlmlr" class="external-link">@krlmlr</a>).</p></li>
 <li><p>Properly scoped use + compilation of C++ unit testing code using Catch to <code>gcc</code> and <code>clang</code> only, as Catch includes code that does not strictly conform to the C++98 standard. (2)</p></li>
 <li><p>Fixed an out-of-bounds memory access when routing Catch output through <code>Rprintf()</code>. (2)</p></li>
-<li>Ensure that unit tests run on R-oldrel (remove use of <code><a href="https://rdrr.io/r/base/files2.html" class="external-link">dir.exists()</a></code>).
+<li>
+<p>Ensure that unit tests run on R-oldrel (remove use of <code><a href="https://rdrr.io/r/base/files2.html" class="external-link">dir.exists()</a></code>).</p>
 <ol start="2" class="example" style="list-style-type: decimal"><li>
 </li></ol></li>
 <li><p>Improved overriding of calls to <code>exit()</code> within Catch, to ensure compatibility with GCC 6.0. (<a href="https://github.com/krlmlr" class="external-link">@krlmlr</a>)</p></li>
