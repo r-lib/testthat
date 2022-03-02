@@ -1,3 +1,11 @@
+# testthat (development)
+
+* The `lifecycle_verbosity` global option is now preserved by
+  `test_that()` if already set. This makes it possible to set it
+  outside of `test_that()` blocks, so that it applies to a whole test
+  file.
+
+
 # testthat 3.1.3
 
 * Package that explicitly depend on rlang in their description file
