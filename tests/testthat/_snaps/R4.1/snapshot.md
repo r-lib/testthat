@@ -1,7 +1,6 @@
 # can access nickname
 
     Code
-      version$nickname
+      r_version()
     Output
-      [1] "Bird Hippie"
-
+      [1] "R4.1"
