@@ -146,22 +146,22 @@ task_q <- R6::R6Class(
       fun <- private$tasks$fun[[task_no]]
       file <- private$tasks$args[[task_no]][[1]]
       if (is.null(fun)) {
-        msg$err$stdout <- msg$stdout
-        msg$err$stderr <- msg$stderr
+        msg$error$stdout <- msg$stdout
+        msg$error$stderr <- msg$stderr
         abort(
           paste0(
             "testthat subprocess failed to start, stderr:\n",
-            msg$err$stderr
+            msg$error$stderr
           ),
           test_file = NULL,
-          parent = msg$err,
+          parent = msg$error,
           class = c("testthat_process_error", "testthat_error")
         )
       } else {
         abort(
           paste0("testthat subprocess exited in file `", file, "`"),
           test_file = file,
-          parent = msg$err,
+          parent = msg$error,
           class = c("testthat_process_error", "testthat_error")
         )
       }
