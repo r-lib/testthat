@@ -7,6 +7,7 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
     test = NULL,
     test_file_seen = character(),
     snap_file_seen = character(),
+    snap_file_saved = character(),
     variants_changed = FALSE,
     fail_on_new = FALSE,
 
@@ -22,6 +23,7 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
     start_file = function(path, test = NULL) {
       self$file <- context_name(path)
       self$test_file_seen <- c(self$test_file_seen, self$file)
+      self$snap_file_saved <- character()
 
       self$variants_changed <- character()
 
@@ -98,6 +100,19 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
       } else {
         snap_dir <- file.path(self$snap_dir, variant, self$file)
       }
+
+      save_path <- file.path(snap_dir, name)
+      if (save_path %in% self$snap_file_saved) {
+        fail(
+          paste0(
+            "Snapshot file '", name, "' has already been saved.",
+            " Please provide a unique snapshot file name"
+          ),
+          trace_env = trace_env
+        )
+      }
+      self$snap_file_saved <- c(self$snap_file_saved, save_path)
+
       snapshot_file_equal(
         snap_test_dir = snap_dir,
         snap_name = name,
