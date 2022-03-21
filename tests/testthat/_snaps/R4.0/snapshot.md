@@ -1,7 +1,7 @@
 # can access nickname
 
     Code
-      version$nickname
+      r_version()
     Output
-      [1] "Shake and Throw"
+      [1] "R4.0"
 
