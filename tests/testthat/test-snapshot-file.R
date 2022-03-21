@@ -26,7 +26,7 @@ test_that("expect_snapshot_file works", {
   withr::local_options(lifecycle_verbosity = "quiet")
   expect_snapshot_file(
     path,
-    "foo.csv",
+    "foo-binary.csv",
     binary = FALSE
   )
 })
