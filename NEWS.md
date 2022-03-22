@@ -23,6 +23,8 @@
 
 * Test results show hyperlinks to failed expectation when supported (#1544). 
 
+* `expect_snapshot_file(name=)` must have a unique file path. If a snapshot file attempts to be
+  saved with a duplicate `name`, an error will be thrown. (#1592)
 
 # testthat 3.1.2
 
