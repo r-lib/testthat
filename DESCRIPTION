@@ -22,7 +22,6 @@ Depends:
     R (>= 3.1)
 Imports:
     brio,
-    callr (>= 3.5.1),
     cli (>= 3.1.1),
     crayon (>= 1.3.4),
     desc,
@@ -35,19 +34,20 @@ Imports:
     methods,
     pkgload,
     praise,
-    processx,
-    ps (>= 1.3.4),
     R6 (>= 2.2.0),
     rlang (>= 1.0.2),
     utils,
     waldo (>= 0.3.1),
     withr (>= 2.4.3)
 Suggests: 
+    callr (>= 3.5.1),
     covr,
     curl (>= 0.9.5),
     diffviewer (>= 0.1.0),
     knitr,
     mockery,
+    processx,
+    ps (>= 1.3.4),
     rmarkdown,
     rstudioapi,
     shiny,
