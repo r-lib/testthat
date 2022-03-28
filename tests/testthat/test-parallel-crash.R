@@ -1,6 +1,8 @@
 test_that("crash", {
   skip_on_cran()
   skip_on_covr()
+  skip_if_not_installed("callr")
+
   withr::local_envvar(TESTTHAT_PARALLEL = "TRUE")
 
   do <- function() {
