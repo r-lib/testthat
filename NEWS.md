@@ -1,4 +1,4 @@
-# testthat 3.1.3
+# testthat (development version)
 
 * Package that explicitly depend on rlang in their description file
   are now opting into a new snapshot display for errors, warnings, and
