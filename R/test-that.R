@@ -130,6 +130,23 @@ test_code <- function(test, code, env = test_env(), reporter = get_reporter(), s
     e[["handled"]] <- TRUE
     test_error <<- e
   }
+  handle_package_not_found_error <- function(e) {
+    pkg <- Sys.getenv("TESTTHAT_PKG")
+    if (!nzchar(pkg)) {
+      return(zap())
+    }
+
+    desc <- desc::desc(package = pkg)
+    if (is.null(desc)) {
+      return(zap())
+    }
+
+    if (e$package %in% desc$get_list("Suggests")) {
+      skip_if_not_installed(e$package)
+    }
+
+    zap()
+  }
   handle_fatal <- function(e) {
     handled <<- TRUE
     # Error caught in handle_error() has precedence
@@ -203,6 +220,7 @@ test_code <- function(test, code, env = test_env(), reporter = get_reporter(), s
         }
       },
       expectation = handle_expectation,
+      packageNotFoundError = handle_package_not_found_error,
       skip =        handle_skip,
       warning =     handle_warning,
       message =     handle_message,

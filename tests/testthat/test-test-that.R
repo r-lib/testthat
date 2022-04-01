@@ -161,3 +161,19 @@ test_that("no braces required in testthat 2e", {
     NA
   )
 })
+
+test_that("packageNotFoundError causes skips for Suggested packages", {
+  path <- test_path("testSuggestsSkip")
+  results <- test_local(
+    path,
+    reporter = "silent",
+    stop_on_failure = FALSE
+  )
+
+  skip <- results[[1]]$results[[1]]
+  expect_s3_class(skip, "expectation_skip")
+  expect_match(conditionMessage(skip), "foobarbaz cannot be loaded")
+
+  fail <- results[[2]]$results[[1]]
+  expect_s3_class(fail, "error")
+})
