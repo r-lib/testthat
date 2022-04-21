@@ -1,5 +1,7 @@
 # testthat (development version)
 
+* Fix bug revealed by fix to another bug in cli (#1606).
+
 # testthat 3.1.3
 
 * Package that explicitly depend on rlang in their description file
