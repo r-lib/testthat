@@ -26,7 +26,7 @@ test_that("expect_snapshot_file works", {
   withr::local_options(lifecycle_verbosity = "quiet")
   expect_snapshot_file(
     path,
-    "foo.csv",
+    "foo-binary.csv",
     binary = FALSE
   )
 })
@@ -48,10 +48,23 @@ test_that("expect_snapshot_file works in a different directory", {
 
 test_that("expect_snapshot_file works with variant", {
   expect_snapshot_file(
-    write_tmp_lines(version$nickname),
+    write_tmp_lines(r_version()),
     "nickname.txt",
     compare = compare_file_text,
     variant = r_version()
+  )
+})
+
+test_that("expect_snapshot_file finds duplicate snapshot files", {
+  # Save to the same file as in previous test
+  expect_error(
+    expect_snapshot_file(
+      write_tmp_lines(r_version()),
+      "nickname.txt",
+      compare = compare_file_text,
+      variant = r_version()
+    ),
+    "provide a unique snapshot file name"
   )
 })
 
