@@ -521,14 +521,14 @@ issue_header <- function(x, pad = FALSE) {
 issue_summary <- function(x, rule = FALSE, simplify = "branch") {
   header <- crayon::bold(issue_header(x))
   if (rule) {
-    header <- cli::rule(header, width = max(nchar(header) + 6, 80))
+    header <- cli::rule(header, width = max(cli::ansi_nchar(header) + 6, 80))
   }
 
   paste0(header, "\n", format(x, simplify = simplify))
 }
 
 strpad <- function(x, width = cli::console_width()) {
-  n <- pmax(0, width - crayon::col_nchar(x))
+  n <- pmax(0, width - cli::ansi_nchar(x))
   paste0(x, strrep(" ", n))
 }
 
