@@ -184,7 +184,7 @@ test_that("errors and warnings are folded", {
 })
 
 test_that("hint is informative", {
-  withr::local_envvar(RSTUDIO_CLI_HYPERLINKS = "true")
+  withr::local_options(cli.hyperlink = TRUE)
 
   expect_snapshot({
     cat(snapshot_accept_hint("_default", "bar.R"))
