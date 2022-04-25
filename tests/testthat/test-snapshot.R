@@ -1,5 +1,5 @@
-test_that("can access nickname", {
-  expect_snapshot(version$nickname, variant = r_version())
+test_that("variants save different values", {
+  expect_snapshot(r_version(), variant = r_version())
 })
 
 test_that("can snapshot output", {
