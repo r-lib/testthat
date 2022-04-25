@@ -1,4 +1,4 @@
-# testthat (development version)
+# testthat 3.1.4
 
 * Minor tweaks to output for latest cli (#1606).
 
