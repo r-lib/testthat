@@ -1,6 +1,6 @@
 # testthat (development version)
 
-* Fix bug revealed by fix to another bug in cli (#1606).
+* Minor tweaks to output for latest cli (#1606).
 
 # testthat 3.1.3
 
