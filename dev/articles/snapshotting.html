@@ -252,10 +252,10 @@
 <span class="op">}</span></code></pre></div>
 <p>And <code><a href="../reference/expect_snapshot.html">expect_snapshot()</a></code> captures them all:</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/test_that.html">test_that</a></span><span class="op">(</span><span class="st">"f() makes lots of noice"</span>, <span class="op">{</span>
+<code class="sourceCode R"><span class="fu"><a href="../reference/test_that.html">test_that</a></span><span class="op">(</span><span class="st">"f() makes lots of noise"</span>, <span class="op">{</span>
   <span class="fu"><a href="../reference/expect_snapshot.html">expect_snapshot</a></span><span class="op">(</span><span class="fu">f</span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
 <span class="op">}</span><span class="op">)</span>
-<span class="co">#&gt; ── <span style="color: #BB00BB; font-weight: bold;">Warning</span><span style="font-weight: bold;"> (&lt;text&gt;:2:3): f() makes lots of noice</span> ───────────────────────────────</span>
+<span class="co">#&gt; ── <span style="color: #BB00BB; font-weight: bold;">Warning</span><span style="font-weight: bold;"> (&lt;text&gt;:2:3): f() makes lots of noise</span> ───────────────────────────────</span>
 <span class="co">#&gt; Adding new snapshot:</span>
 <span class="co">#&gt; Code</span>
 <span class="co">#&gt;   f()</span>
