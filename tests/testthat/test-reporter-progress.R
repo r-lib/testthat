@@ -1,4 +1,8 @@
 test_that("captures error before first test", {
+  # Backtrace srcrefs failure
+  skip_on_covr()
+  skip_if(is.null(attr(rlang::eval_bare, "srcref")))
+
   local_output_override()
 
   expect_snapshot_reporter(
@@ -43,6 +47,10 @@ test_that("can fully suppress incremental updates", {
 })
 
 test_that("reports backtraces", {
+  # Avoid failures because of different srcrefs in backtraces
+  skip_on_covr()
+  skip_if(is.null(attr(rlang::eval_bare, "srcref")))
+
   expect_snapshot_reporter(
     ProgressReporter$new(update_interval = 0, min_time = Inf),
     test_path("reporters/backtraces.R")

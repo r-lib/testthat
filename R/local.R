@@ -121,15 +121,18 @@ local_reproducible_output <- function(width = 80,
   withr::local_collate("C", .local_envir = .env)
 }
 
-waldo_compare <- function(x, y, ..., x_arg = "x", y_arg = "y") {
-
+local_reporter_output <- function(.env = parent.frame()) {
   reporter <- get_reporter()
   if (!is.null(reporter)) {
-    # Need to very carefully isolate this change to this function - can not set
-    # in expectation functions because part of expectation handling bubbles
-    # up through calling handlers, which are run before on.exit()
-    reporter$local_user_output()
+    reporter$local_user_output(.env)
   }
+}
+
+waldo_compare <- function(x, y, ..., x_arg = "x", y_arg = "y") {
+  # Need to very carefully isolate this change to this function - can not set
+  # in expectation functions because part of expectation handling bubbles
+  # up through calling handlers, which are run before on.exit()
+  local_reporter_output()
 
   waldo::compare(x, y,..., x_arg = x_arg, y_arg = y_arg)
 }
@@ -152,10 +155,8 @@ local_test_directory <- function(path, package = NULL, .env = parent.frame()) {
   # Set edition before changing working directory in case path is relative
   local_edition(find_edition(path, package), .env = .env)
 
-  rlang_dep <- find_dep_version("rlang", path, package)
-
   withr::local_options(
-    "testthat:::rlang_dep" = rlang_dep,
+    "testthat:::rlang_dep" = has_dep("rlang", path, package),
     .local_envir = .env
   )
   withr::local_dir(

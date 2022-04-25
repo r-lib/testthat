@@ -1,5 +1,7 @@
-
 test_that("crash", {
+  # https://github.com/r-lib/rlang/commit/c84d52b6
+  skip_if_not_installed("rlang", "1.0.1.9000")
+
   skip_on_cran()
   skip_on_covr()
   withr::local_envvar(TESTTHAT_PARALLEL = "TRUE")

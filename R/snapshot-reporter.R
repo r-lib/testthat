@@ -101,6 +101,7 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
       snapshot_file_equal(
         snap_test_dir = snap_dir,
         snap_name = name,
+        snap_variant = variant,
         path = path,
         file_equal = file_equal,
         fail_on_new = self$fail_on_new,

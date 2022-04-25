@@ -1,5 +1,5 @@
-test_that("can access nickname", {
-  expect_snapshot(version$nickname, variant = r_version())
+test_that("variants save different values", {
+  expect_snapshot(r_version(), variant = r_version())
 })
 
 test_that("can snapshot output", {
@@ -184,6 +184,8 @@ test_that("errors and warnings are folded", {
 })
 
 test_that("hint is informative", {
+  withr::local_options(cli.hyperlink = TRUE)
+
   expect_snapshot({
     cat(snapshot_accept_hint("_default", "bar.R"))
     cat(snapshot_accept_hint("foo", "bar.R"))

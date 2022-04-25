@@ -103,8 +103,11 @@ find_dep_version <- function(name, path, package = NULL) {
 
   dep[[2]]
 }
+has_dep <- function(name, path, package = NULL) {
+  !is.null(find_dep_version(name, path, package = package))
+}
 
 use_rlang_1_0 <- function() {
-  ver <- peek_option("testthat:::rlang_dep")
-  is_string(ver) && package_version(ver) >= "0.99.0.9001"
+  rlang::is_true(peek_option("testthat:::rlang_dep")) &&
+    is_installed("rlang", version = "0.99.0.9001")
 }
