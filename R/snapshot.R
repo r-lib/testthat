@@ -395,6 +395,8 @@ expect_snapshot_helper <- function(lab, val,
 }
 
 snapshot_accept_hint <- function(variant, file) {
+  local_reporter_output()
+
   if (is.null(variant) || variant == "_default") {
     name <- file
   } else {
