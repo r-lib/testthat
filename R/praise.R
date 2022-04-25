@@ -20,7 +20,7 @@ praise <- function() {
     "\U0001f308 Your tests are over the rainbow \U0001f308",
     "\U0001f9ff Your tests look perfect \U0001f9ff",
     "\U0001f3af Your tests hit the mark \U0001f3af",
-    "\U0001f41d Your tests are the bees knees \U0001f41d",
+    "\U0001f41d Your tests are the bee's knees \U0001f41d",
     "\U0001f4a3 Your tests are da bomb \U0001f4a3",
     "\U0001f525 Your tests are lit \U0001f525"
   )
