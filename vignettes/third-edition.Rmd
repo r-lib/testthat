@@ -203,6 +203,15 @@ This includes setting:
 
 See the documentation for more details.
 
+## Upgrading
+
+The changes lend themselves to the following workflow for upgrading from the 2nd to the 3rd edition:
+
+1. Activate edition 3. You can let [`usethis::use_testthat(3)`](https://usethis.r-lib.org/reference/use_testthat.html) do this for you.
+2. Remove or replace deprecated functions, going over the list of above.
+3. If your output got noisy, quiet things down by either capturing or suppressing warnings and messages.
+4. Inspect test outputs if objects are not "all equal" anymore.
+
 ## Alternatives
 
 You might wonder why we came up with the idea of an "edition", rather than creating a new package like testthat3.
