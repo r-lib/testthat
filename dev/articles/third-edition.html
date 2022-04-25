@@ -133,7 +133,7 @@
   <span class="fu"><a href="../reference/local_edition.html">local_edition</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span>
   <span class="fu"><a href="../reference/logical-expectations.html">expect_true</a></span><span class="op">(</span><span class="cn">TRUE</span><span class="op">)</span>
 <span class="op">}</span><span class="op">)</span>
-<span class="co">#&gt; <span style="color: #00BB00;">Test passed</span> 🎉</span></code></pre></div>
+<span class="co">#&gt; <span style="color: #00BB00;">Test passed</span> 😸</span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="changes">Changes<a class="anchor" aria-label="anchor" href="#changes"></a>
@@ -271,6 +271,17 @@
 </ul>
 <p>See the documentation for more details.</p>
 </div>
+</div>
+<div class="section level2">
+<h2 id="upgrading">Upgrading<a class="anchor" aria-label="anchor" href="#upgrading"></a>
+</h2>
+<p>The changes lend themselves to the following workflow for upgrading from the 2nd to the 3rd edition:</p>
+<ol style="list-style-type: decimal">
+<li>Activate edition 3. You can let <a href="https://usethis.r-lib.org/reference/use_testthat.html" class="external-link"><code>usethis::use_testthat(3)</code></a> do this for you.</li>
+<li>Remove or replace deprecated functions, going over the list of above.</li>
+<li>If your output got noisy, quiet things down by either capturing or suppressing warnings and messages.</li>
+<li>Inspect test outputs if objects are not “all equal” anymore.</li>
+</ol>
 </div>
 <div class="section level2">
 <h2 id="alternatives">Alternatives<a class="anchor" aria-label="anchor" href="#alternatives"></a>
