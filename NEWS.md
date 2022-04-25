@@ -1,3 +1,7 @@
+# testthat (development version)
+
+* Minor tweaks to output for latest cli (#1606).
+
 # testthat 3.1.3
 
 * Package that explicitly depend on rlang in their description file
