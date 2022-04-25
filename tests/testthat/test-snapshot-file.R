@@ -48,8 +48,8 @@ test_that("expect_snapshot_file works in a different directory", {
 
 test_that("expect_snapshot_file works with variant", {
   expect_snapshot_file(
-    write_tmp_lines(version$nickname),
-    "nickname.txt",
+    write_tmp_lines(r_version()),
+    "version.txt",
     compare = compare_file_text,
     variant = r_version()
   )
@@ -96,35 +96,35 @@ test_that("warns on first creation", {
 
   # Warns on first run
   expect_warning(
-    expect_true(snapshot_file_equal(tempdir(), "test.txt", path)),
+    expect_true(snapshot_file_equal(tempdir(), "test.txt", NULL, path)),
     "new file snapshot"
   )
 
   # Errors on non-existing file
   expect_error(
-    expect_true(snapshot_file_equal(tempdir(), "test.txt", "doesnt-exist.txt")),
+    expect_true(snapshot_file_equal(tempdir(), "test.txt", NULL, "doesnt-exist.txt")),
     "`doesnt-exist.txt` not found"
   )
 
 
   # Unchanged returns TRUE
-  expect_true(snapshot_file_equal(tempdir(), "test.txt", path))
+  expect_true(snapshot_file_equal(tempdir(), "test.txt", NULL, path))
   expect_true(file.exists(file.path(tempdir(), "test.txt")))
   expect_false(file.exists(file.path(tempdir(), "test.new.txt")))
 
   # Changed returns FALSE
   path2 <- write_tmp_lines("b")
-  expect_false(snapshot_file_equal(tempdir(), "test.txt", path2))
+  expect_false(snapshot_file_equal(tempdir(), "test.txt", NULL, path2))
   expect_true(file.exists(file.path(tempdir(), "test.txt")))
   expect_true(file.exists(file.path(tempdir(), "test.new.txt")))
 
   # Changing again overwrites
   path2 <- write_tmp_lines("c")
-  expect_false(snapshot_file_equal(tempdir(), "test.txt", path2))
+  expect_false(snapshot_file_equal(tempdir(), "test.txt", NULL, path2))
   expect_equal(brio::read_lines(file.path(tempdir(), "test.new.txt")), "c")
 
   # Unchanged cleans up
-  expect_true(snapshot_file_equal(tempdir(), "test.txt", path))
+  expect_true(snapshot_file_equal(tempdir(), "test.txt", NULL, path))
   expect_true(file.exists(file.path(tempdir(), "test.txt")))
   expect_false(file.exists(file.path(tempdir(), "test.new.txt")))
 })
