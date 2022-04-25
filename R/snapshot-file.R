@@ -166,7 +166,7 @@ snapshot_review_hint <- function(test, name, ci = on_ci(), check = in_rcmd_check
   )
 }
 
-snapshot_file_equal <- function(snap_test_dir, snap_name, path, file_equal = compare_file_binary, fail_on_new = FALSE, trace_env = NULL) {
+snapshot_file_equal <- function(snap_test_dir, snap_name, snap_variant, path, file_equal = compare_file_binary, fail_on_new = FALSE, trace_env = NULL) {
   if (!file.exists(path)) {
     abort(paste0("`", path, "` not found"))
   }
@@ -187,7 +187,11 @@ snapshot_file_equal <- function(snap_test_dir, snap_name, path, file_equal = com
     dir.create(snap_test_dir, showWarnings = FALSE, recursive = TRUE)
     file.copy(path, cur_path)
 
-    message <- paste0("Adding new file snapshot: 'tests/testhat/_snaps/", snap_name, "'")
+    message <- paste0(
+      "Adding new file snapshot: 'tests/testhat/_snaps/",
+      snap_variant, if (!is.null(snap_variant)) "/",
+      snap_name, "'"
+    )
     if (fail_on_new) {
       fail(message, trace_env = trace_env)
     } else {
