@@ -10,7 +10,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">testthat</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">3.1.3</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">3.1.4</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -68,6 +68,9 @@
       <small>Source: <a href="https://github.com/r-lib/testthat/blob/HEAD/NEWS.md" class="external-link"><code>NEWS.md</code></a></small>
     </div>
 
+    <div class="section level2">
+<h2 class="pkg-version" data-toc-text="3.1.4" id="testthat-314">testthat 3.1.4<a class="anchor" aria-label="anchor" href="#testthat-314"></a></h2>
+<ul><li>Minor tweaks to output for latest cli (<a href="https://github.com/r-lib/testthat/issues/1606" class="external-link">#1606</a>).</li></ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="3.1.3" id="testthat-313">testthat 3.1.3<a class="anchor" aria-label="anchor" href="#testthat-313"></a></h2><p class="text-muted">CRAN release: 2022-03-29</p>
 <ul><li>
@@ -139,8 +142,7 @@
 <span class="fu"><a href="../reference/expect_error.html">expect_warning</a></span><span class="op">(</span><span class="va">value</span> <span class="op">&lt;-</span> <span class="fu">f</span><span class="op">(</span><span class="op">)</span>, <span class="st">"warning"</span><span class="op">)</span>
 <span class="fu"><a href="../reference/equality-expectations.html">expect_equal</a></span><span class="op">(</span><span class="va">value</span>, <span class="st">"value"</span><span class="op">)</span></code></pre>
 <p>This breaking change makes testthat more consistent. It also makes it possible to inspect both the value and the warning, which would otherwise require additional tools.</p>
-</li>
-</ul></div>
+</li></ul></div>
 <div class="section level3">
 <h3 id="minor-improvements-and-bug-fixes-3-1-0">Minor improvements and bug fixes<a class="anchor" aria-label="anchor" href="#minor-improvements-and-bug-fixes-3-1-0"></a></h3>
 <ul><li><p>Errors in test blocks now display the call if stored in the condition object (<a href="https://github.com/r-lib/testthat/issues/1418" class="external-link">#1418</a>). Uncaught errors now show their class (<a href="https://github.com/r-lib/testthat/issues/1426" class="external-link">#1426</a>).</p></li>
@@ -260,8 +262,7 @@
 </div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="2.3.2" id="testthat-232">testthat 2.3.2<a class="anchor" aria-label="anchor" href="#testthat-232"></a></h2><p class="text-muted">CRAN release: 2020-03-02</p>
-<ul><li>Fix R CMD check issues</li>
-</ul></div>
+<ul><li>Fix R CMD check issues</li></ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="2.3.1" id="testthat-231">testthat 2.3.1<a class="anchor" aria-label="anchor" href="#testthat-231"></a></h2><p class="text-muted">CRAN release: 2019-12-01</p>
 <ul><li><p>The last version of testthat introduced a performance regression in error assertions (<a href="https://github.com/r-lib/testthat/issues/963" class="external-link">#963</a>). To fix it, you need to install rlang 0.4.2.</p></li>
@@ -301,14 +302,12 @@
 </div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="2.2.1" id="testthat-221">testthat 2.2.1<a class="anchor" aria-label="anchor" href="#testthat-221"></a></h2><p class="text-muted">CRAN release: 2019-07-25</p>
-<ul><li>Repair regression in <code><a href="../reference/test_examples.html">test_rd()</a></code> and add a couple of tests to hopefully detect the problem earlier in the future.</li>
-</ul></div>
+<ul><li>Repair regression in <code><a href="../reference/test_examples.html">test_rd()</a></code> and add a couple of tests to hopefully detect the problem earlier in the future.</li></ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="2.2.0" id="testthat-220">testthat 2.2.0<a class="anchor" aria-label="anchor" href="#testthat-220"></a></h2><p class="text-muted">CRAN release: 2019-07-22</p>
 <div class="section level3">
 <h3 id="new-features-2-2-0">New features<a class="anchor" aria-label="anchor" href="#new-features-2-2-0"></a></h3>
-<ul><li>New <code><a href="../reference/verify_output.html">verify_output()</a></code> is designed for testing output aimed at humans (most commonly print methods and error messages). It is a regression test that saves output in a way that makes it easy to review. It is automatically skipped on CRAN (<a href="https://github.com/r-lib/testthat/issues/782" class="external-link">#782</a>, <a href="https://github.com/r-lib/testthat/issues/834" class="external-link">#834</a>).</li>
-</ul></div>
+<ul><li>New <code><a href="../reference/verify_output.html">verify_output()</a></code> is designed for testing output aimed at humans (most commonly print methods and error messages). It is a regression test that saves output in a way that makes it easy to review. It is automatically skipped on CRAN (<a href="https://github.com/r-lib/testthat/issues/782" class="external-link">#782</a>, <a href="https://github.com/r-lib/testthat/issues/834" class="external-link">#834</a>).</li></ul></div>
 <div class="section level3">
 <h3 id="minor-improvements-and-bug-fixes-2-2-0">Minor improvements and bug fixes<a class="anchor" aria-label="anchor" href="#minor-improvements-and-bug-fixes-2-2-0"></a></h3>
 <ul><li><p><code>as.data.frame.testthat_results()</code> now always returns a data frame with 13 columns (<a href="https://github.com/jozefhajnala" class="external-link">@jozefhajnala</a>, <a href="https://github.com/r-lib/testthat/issues/887" class="external-link">#887</a>).</p></li>
@@ -327,8 +326,7 @@
 </div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="2.1.1" id="testthat-211">testthat 2.1.1<a class="anchor" aria-label="anchor" href="#testthat-211"></a></h2><p class="text-muted">CRAN release: 2019-04-23</p>
-<ul><li>Fix test failures in strict latin1 locale</li>
-</ul></div>
+<ul><li>Fix test failures in strict latin1 locale</li></ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="2.1.0" id="testthat-210">testthat 2.1.0<a class="anchor" aria-label="anchor" href="#testthat-210"></a></h2><p class="text-muted">CRAN release: 2019-04-22</p>
 <div class="section level3">
@@ -390,8 +388,7 @@
 </div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="2.0.1" id="testthat-201">testthat 2.0.1<a class="anchor" aria-label="anchor" href="#testthat-201"></a></h2><p class="text-muted">CRAN release: 2018-10-13</p>
-<ul><li>Fix failing tests with devtools 2.0.0</li>
-</ul></div>
+<ul><li>Fix failing tests with devtools 2.0.0</li></ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="2.0.0" id="testthat-200">testthat 2.0.0<a class="anchor" aria-label="anchor" href="#testthat-200"></a></h2><p class="text-muted">CRAN release: 2017-12-13</p>
 <div class="section level3">
@@ -499,14 +496,12 @@
 <div class="section level3">
 <h3 id="deprecated-functions-2-0-0">Deprecated functions<a class="anchor" aria-label="anchor" href="#deprecated-functions-2-0-0"></a></h3>
 <ul><li>
-<code><a href="../reference/oldskool.html">is_null()</a></code> and <code><a href="../reference/oldskool.html">matches()</a></code> have been deprecated because they conflict with other functions in the tidyverse (<a href="https://github.com/r-lib/testthat/issues/523" class="external-link">#523</a>).</li>
-</ul></div>
+<code><a href="../reference/oldskool.html">is_null()</a></code> and <code><a href="../reference/oldskool.html">matches()</a></code> have been deprecated because they conflict with other functions in the tidyverse (<a href="https://github.com/r-lib/testthat/issues/523" class="external-link">#523</a>).</li></ul></div>
 <div class="section level3">
 <h3 id="minor-improvements-and-bug-fixes-2-0-0">Minor improvements and bug fixes<a class="anchor" aria-label="anchor" href="#minor-improvements-and-bug-fixes-2-0-0"></a></h3>
 <ul><li>
 <p>Updated Catch to 1.9.6. <code>testthat</code> now understands and makes use of the package routine registration mechanism required by CRAN with R &gt;= 3.4.0.</p>
-<ol class="example" style="list-style-type: decimal"><li>
-</li></ol></li>
+<ol class="example" style="list-style-type: decimal"><li></ol></li>
 <li><p>Better reporting for deeply nested failures, limiting the stack trace to the first and last 10 entries (<a href="https://github.com/r-lib/testthat/issues/474" class="external-link">#474</a>).</p></li>
 <li><p>Bare expectations notify the reporter once again. This is achieved by running all tests inside <code>test_code()</code> by default (<a href="https://github.com/r-lib/testthat/issues/427" class="external-link">#427</a>, <a href="https://github.com/r-lib/testthat/issues/498" class="external-link">#498</a>). This behaviour can be overridden by setting <code>wrap = FALSE</code> in <code><a href="../reference/test_dir.html">test_dir()</a></code> and friends (<a href="https://github.com/r-lib/testthat/issues/586" class="external-link">#586</a>).</p></li>
 <li><p><code><a href="../reference/auto_test.html">auto_test()</a></code> and <code><a href="../reference/auto_test_package.html">auto_test_package()</a></code> provide <code>hash</code> parameter to enable switching to faster, time-stamp-based modification detection (<a href="https://github.com/r-lib/testthat/issues/598" class="external-link">#598</a>, <a href="https://github.com/katrinleinweber" class="external-link">@katrinleinweber</a>). <code><a href="../reference/auto_test_package.html">auto_test_package()</a></code> works correctly on windows (<a href="https://github.com/r-lib/testthat/issues/465" class="external-link">#465</a>).</p></li>
@@ -534,8 +529,7 @@
 </div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="1.0.2" id="testthat-102">testthat 1.0.2<a class="anchor" aria-label="anchor" href="#testthat-102"></a></h2><p class="text-muted">CRAN release: 2016-04-23</p>
-<ul><li>Ensure <code>std::logic_error()</code> constructed with <code>std::string()</code> argument, to avoid build errors on Solaris.</li>
-</ul></div>
+<ul><li>Ensure <code>std::logic_error()</code> constructed with <code>std::string()</code> argument, to avoid build errors on Solaris.</li></ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="1.0.1" id="testthat-101">testthat 1.0.1<a class="anchor" aria-label="anchor" href="#testthat-101"></a></h2><p class="text-muted">CRAN release: 2016-04-21</p>
 <ul><li><p>New <code><a href="../reference/expect_output_file.html">expect_output_file()</a></code> to compare output of a function with a text file, and optionally update it (<a href="https://github.com/r-lib/testthat/issues/443" class="external-link">#443</a>, <a href="https://github.com/krlmlr" class="external-link">@krlmlr</a>).</p></li>
@@ -543,8 +537,7 @@
 <li><p>Fixed an out-of-bounds memory access when routing Catch output through <code>Rprintf()</code>. (2)</p></li>
 <li>
 <p>Ensure that unit tests run on R-oldrel (remove use of <code><a href="https://rdrr.io/r/base/files2.html" class="external-link">dir.exists()</a></code>).</p>
-<ol start="2" class="example" style="list-style-type: decimal"><li>
-</li></ol></li>
+<ol start="2" class="example" style="list-style-type: decimal"><li></ol></li>
 <li><p>Improved overriding of calls to <code>exit()</code> within Catch, to ensure compatibility with GCC 6.0. (<a href="https://github.com/krlmlr" class="external-link">@krlmlr</a>)</p></li>
 <li><p>Hardened formatting of difference messages, previously the presence of <code>%</code> characters could affect the output (<a href="https://github.com/r-lib/testthat/issues/446" class="external-link">#446</a>, <a href="https://github.com/krlmlr" class="external-link">@krlmlr</a>).</p></li>
 <li><p>Fixed errors in <code><a href="../reference/equality-expectations.html">expect_equal()</a></code> when comparing numeric vectors with and without attributes (<a href="https://github.com/r-lib/testthat/issues/453" class="external-link">#453</a>, <a href="https://github.com/krlmlr" class="external-link">@krlmlr</a>).</p></li>
@@ -664,8 +657,7 @@
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.9.1" id="testthat-091">testthat 0.9.1<a class="anchor" aria-label="anchor" href="#testthat-091"></a></h2><p class="text-muted">CRAN release: 2014-10-01</p>
-<ul><li>Bump R version dependency</li>
-</ul></div>
+<ul><li>Bump R version dependency</li></ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.9" id="testthat-09">testthat 0.9<a class="anchor" aria-label="anchor" href="#testthat-09"></a></h2><p class="text-muted">CRAN release: 2014-09-22</p>
 <div class="section level3">
@@ -689,8 +681,7 @@
 <div class="section level3">
 <h3 id="deprecated-functions-0-9">Deprecated functions<a class="anchor" aria-label="anchor" href="#deprecated-functions-0-9"></a></h3>
 <ul><li>
-<code>library_if_available()</code> has been deprecated.</li>
-</ul></div>
+<code>library_if_available()</code> has been deprecated.</li></ul></div>
 </div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.8.1" id="testthat-081">testthat 0.8.1<a class="anchor" aria-label="anchor" href="#testthat-081"></a></h2><p class="text-muted">CRAN release: 2014-02-22</p>
@@ -757,8 +748,7 @@
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.5" id="testthat-05">testthat 0.5<a class="anchor" aria-label="anchor" href="#testthat-05"></a></h2><p class="text-muted">CRAN release: 2011-06-01</p>
-<ul><li>bare expectations now correctly throw errors again</li>
-</ul></div>
+<ul><li>bare expectations now correctly throw errors again</li></ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.4" id="testthat-04">testthat 0.4<a class="anchor" aria-label="anchor" href="#testthat-04"></a></h2><p class="text-muted">CRAN release: 2011-03-20</p>
 <ul><li><p>autotest correctly loads code and executes tests in same environment</p></li>
@@ -797,7 +787,7 @@
 </div>
 
 <div class="pkgdown-footer-right">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
 </div>
 
   </div></footer></body></html>
