@@ -6,7 +6,7 @@
 #' are available in the test `env` (e.g. via `load_package`).
 #'
 #' @section Special files:
-#' There are two types of `.R` file that have special behaviour:
+#' Certain `.R` files have special significance in testthat:
 #'
 #' * Test files start with `test` and are executed in alphabetical order.
 #'
@@ -15,14 +15,17 @@
 #'   `withr::defer(clean_up(), teardown_env())`. See `vignette("test-fixtures")`
 #'   for more details.
 #'
-#' There are two other types of special file that we no longer recommend using:
-#'
 #' * Helper files start with `helper` and are executed before tests are
-#'   run. They're also loaded by `devtools::load_all()`, so there's no
-#'   real point to them and you should just put your helper code in `R/`.
+#'   run and, unlike setup files, are also loaded by `devtools::load_all()`.
+#'   Helper files can be necessary for side-effect-y code that you need to run
+#'   when developing the package interactively. It's certainly possible to
+#'   define custom test utilities in a helper file, but they can usually be
+#'   defined below `R/`, just like any other internal function.
+#'
+#' There is another type of special file that we no longer recommend using:
 #'
 #' * Teardown files start with `teardown` and are executed after the tests
-#'   are run. Now we recommend interleave setup and cleanup code in `setup-`
+#'   are run. Now we recommend interleaving setup and cleanup code in `setup-`
 #'   files, making it easier to check that you automatically clean up every
 #'   mess that you make.
 #'
