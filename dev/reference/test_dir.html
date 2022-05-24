@@ -142,16 +142,19 @@ warnings.</p></dd>
     <h2 id="special-files">Special files<a class="anchor" aria-label="anchor" href="#special-files"></a></h2>
     
 
-<p>There are two types of <code>.R</code> file that have special behaviour:</p><ul><li><p>Test files start with <code>test</code> and are executed in alphabetical order.</p></li>
+<p>Certain <code>.R</code> files have special significance in testthat:</p><ul><li><p>Test files start with <code>test</code> and are executed in alphabetical order.</p></li>
 <li><p>Setup files start with <code>setup</code> and are executed before tests. If
 clean up is needed after all tests have been run, you can use
 <code>withr::defer(clean_up(), teardown_env())</code>. See <code><a href="../articles/test-fixtures.html">vignette("test-fixtures")</a></code>
 for more details.</p></li>
-</ul><p>There are two other types of special file that we no longer recommend using:</p><ul><li><p>Helper files start with <code>helper</code> and are executed before tests are
-run. They're also loaded by <code>devtools::load_all()</code>, so there's no
-real point to them and you should just put your helper code in <code>R/</code>.</p></li>
-<li><p>Teardown files start with <code>teardown</code> and are executed after the tests
-are run. Now we recommend interleave setup and cleanup code in <code>setup-</code>
+<li><p>Helper files start with <code>helper</code> and are executed before tests are
+run and, unlike setup files, are also loaded by <code>devtools::load_all()</code>.
+Helper files can be necessary for side-effect-y code that you need to run
+when developing the package interactively. It's certainly possible to
+define custom test utilities in a helper file, but they can usually be
+defined below <code>R/</code>, just like any other internal function.</p></li>
+</ul><p>There is another type of special file that we no longer recommend using:</p><ul><li><p>Teardown files start with <code>teardown</code> and are executed after the tests
+are run. Now we recommend interleaving setup and cleanup code in <code>setup-</code>
 files, making it easier to check that you automatically clean up every
 mess that you make.</p></li>
 </ul><p>All other files are ignored by testthat.</p>
