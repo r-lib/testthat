@@ -167,7 +167,7 @@ snapshot_replay_condition_legacy <- function(x, state = env(), transform = NULL)
   if (inherits(x, "error")) {
     state$error <- x
     type <- "Error"
-    msg <- add_implict_nl(msg)
+    msg <- add_implicit_nl(msg)
   } else if (inherits(x, "warning")) {
     type <- "Warning"
     msg <- paste0(msg, "\n")
@@ -191,7 +191,7 @@ snapshot_lines <- function(x, transform = NULL) {
   x
 }
 
-add_implict_nl <- function(x) {
+add_implicit_nl <- function(x) {
   if (substr(x, nchar(x), nchar(x)) == "\n") {
     x
   } else {
