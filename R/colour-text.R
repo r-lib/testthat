@@ -7,7 +7,7 @@ colourise <- function(text, as = c("success", "skip", "warning", "failure", "err
 }
 
 has_colour <- function() {
-  isTRUE(getOption("testthat.use_colours", TRUE)) && crayon::has_color()
+  isTRUE(getOption("testthat.use_colours", TRUE)) && cli::num_ansi_colors() > 1L
 }
 
 testthat_style <- function(type = c("success", "skip", "warning", "failure", "error")) {
