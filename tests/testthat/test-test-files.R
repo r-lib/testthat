@@ -1,14 +1,20 @@
 # test_dir() --------------------------------------------------------------
 
 test_that("stops on failure", {
-  withr::local_envvar(TESTTHAT_PARALLEL = "FALSE")
+  withr::local_envvar(c(
+    TESTTHAT_PARALLEL = "TRUE",
+    TESTTHAT_GHA_SUMMARY = "FALSE"
+  ))
   expect_error(
     test_dir(test_path("test_dir"), reporter = "silent")
   )
 })
 
 test_that("runs all tests and records output", {
-  withr::local_envvar(TESTTHAT_PARALLEL = "FALSE")
+  withr::local_envvar(c(
+    TESTTHAT_PARALLEL = "TRUE",
+    TESTTHAT_GHA_SUMMARY = "FALSE"
+  ))
   res <- test_dir(test_path("test_dir"), reporter = "silent", stop_on_failure = FALSE)
   df <- as.data.frame(res)
   df$user <- df$system <- df$real <- df$result <- NULL
@@ -27,7 +33,10 @@ test_that("complains if no files", {
 })
 
 test_that("can control if failures generate errors", {
-  withr::local_envvar(TESTTHAT_PARALLEL = "FALSE")
+  withr::local_envvar(c(
+    TESTTHAT_PARALLEL = "TRUE",
+    TESTTHAT_GHA_SUMMARY = "FALSE"
+  ))
   test_error <- function(...) {
     test_dir(test_path("test-error"), reporter = "silent", ...)
   }
@@ -37,7 +46,11 @@ test_that("can control if failures generate errors", {
 })
 
 test_that("can control if warnings errors", {
-  withr::local_envvar(TESTTHAT_PARALLEL = "FALSE")
+  withr::local_envvar(c(
+    TESTTHAT_PARALLEL = "TRUE",
+    TESTTHAT_GHA_SUMMARY = "FALSE"
+  ))
+
   test_warning <- function(...) {
     test_dir(test_path("test-warning"), reporter = "silent", ...)
   }
@@ -49,6 +62,10 @@ test_that("can control if warnings errors", {
 # test_file ---------------------------------------------------------------
 
 test_that("can test single file", {
+  withr::local_envvar(c(
+    TESTTHAT_PARALLEL = "TRUE",
+    TESTTHAT_GHA_SUMMARY = "FALSE"
+  ))
   out <- test_file(test_path("test_dir/test-basic.R"), reporter = "silent")
   expect_length(out, 5)
 })

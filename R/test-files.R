@@ -204,6 +204,8 @@ test_files_serial <- function(test_dir,
     lapply(test_paths, test_one_file, env = env, wrap = wrap)
   )
 
+  create_gha_summary(reporters$list$get_results())
+
   test_files_check(reporters$list$get_results(),
     stop_on_failure = stop_on_failure,
     stop_on_warning = stop_on_warning

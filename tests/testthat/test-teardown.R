@@ -26,6 +26,7 @@ test_that("teardowns runs in order", {
 })
 
 test_that("teardown run after tests complete", {
+  withr::local_envvar(TESTTHAT_GHA_SUMMARY = "FALSE")
   test_file(test_path("test-teardown/test-teardown.R"), "silent")
   expect_false(file.exists(test_path("test-teardown/teardown.txt")))
 })
