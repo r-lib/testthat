@@ -2,7 +2,7 @@
 
 test_that("stops on failure", {
   withr::local_envvar(c(
-    TESTTHAT_PARALLEL = "TRUE",
+    TESTTHAT_PARALLEL = "FALSE",
     TESTTHAT_GHA_SUMMARY = "FALSE"
   ))
   expect_error(
@@ -12,7 +12,7 @@ test_that("stops on failure", {
 
 test_that("runs all tests and records output", {
   withr::local_envvar(c(
-    TESTTHAT_PARALLEL = "TRUE",
+    TESTTHAT_PARALLEL = "FALSE",
     TESTTHAT_GHA_SUMMARY = "FALSE"
   ))
   res <- test_dir(test_path("test_dir"), reporter = "silent", stop_on_failure = FALSE)
@@ -34,7 +34,7 @@ test_that("complains if no files", {
 
 test_that("can control if failures generate errors", {
   withr::local_envvar(c(
-    TESTTHAT_PARALLEL = "TRUE",
+    TESTTHAT_PARALLEL = "FALSE",
     TESTTHAT_GHA_SUMMARY = "FALSE"
   ))
   test_error <- function(...) {
@@ -47,7 +47,7 @@ test_that("can control if failures generate errors", {
 
 test_that("can control if warnings errors", {
   withr::local_envvar(c(
-    TESTTHAT_PARALLEL = "TRUE",
+    TESTTHAT_PARALLEL = "FALSE",
     TESTTHAT_GHA_SUMMARY = "FALSE"
   ))
 
@@ -63,7 +63,7 @@ test_that("can control if warnings errors", {
 
 test_that("can test single file", {
   withr::local_envvar(c(
-    TESTTHAT_PARALLEL = "TRUE",
+    TESTTHAT_PARALLEL = "FALSE",
     TESTTHAT_GHA_SUMMARY = "FALSE"
   ))
   out <- test_file(test_path("test_dir/test-basic.R"), reporter = "silent")
