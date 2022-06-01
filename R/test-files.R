@@ -137,6 +137,8 @@ test_file <- function(path, reporter = default_compact_reporter(), package = NUL
     stop("`path` does not exist", call. = FALSE)
   }
 
+  withr::local_envvar(TESTTHAT_GHA_SUMMARY = "false")
+
   test_files(
     test_dir = dirname(path),
     test_package = package,
