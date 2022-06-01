@@ -11,6 +11,7 @@ create_gha_summary <- function(results) {
   p <- function(...) cat(..., file = out, append = TRUE)
 
   # header
+  p("<details>\n")
   p("# Test results\n\n")
   p("| FAIL | WARN | SKIP | PASS | Context | Test | Time |\n")
   p("|-----:|-----:|-----:|-----:|:--------|:-----|:-----|\n")
@@ -30,6 +31,8 @@ create_gha_summary <- function(results) {
     "|", sprintf("%.3f s", totals$time),
     "|\n"
   ))
+
+  p("</details>\n")
 
   invisible(results)
 }
