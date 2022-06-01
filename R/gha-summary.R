@@ -8,10 +8,14 @@ create_gha_summary <- function(results) {
     return()
   }
 
-  out <- file(out, open = "wba", encoding = "UTF-8")
+  out <- file(out, open = "a+b", encoding = "unknown")
   on.exit(close(out), add = TRUE)
 
-  p <- function(...) cat(..., file = out, append = TRUE)
+  p <- function(...) {
+    s <- paste0(...)
+    Encoding(s) <- "unknown"
+    cat(s, file = out, append = TRUE)
+  }
   fmt_time <- function(x) sprintf("%.3fs", x)
 
   results <- lapply(results, gha_summarize_test)
