@@ -61,7 +61,7 @@ create_gha_summary <- function(results) {
     ))
   }
 
-  p("\n</details>\n")
+  p("\n</details>\n\n\n")
 
   invisible(results)
 }
