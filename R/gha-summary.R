@@ -9,51 +9,37 @@ create_gha_summary <- function(results) {
   }
 
   p <- function(...) cat(..., file = out, append = TRUE)
+  fmt_time <- function(x) sprintf("%.3fs", x)
 
-  # header
-  p("<details>\n\n")
-  p("# Test results\n\n")
-  p("| FAIL | WARN | SKIP | PASS | Context | Test | Time |\n")
-  p("|-----:|-----:|-----:|-----:|:--------|:-----|:-----|\n")
+  results <- lapply(results, gha_summarize_test)
+  totals <- list(
+    n_fail = sum(vapply(results, "[[", integer(1), "n_fail")),
+    n_warn = sum(vapply(results, "[[", integer(1), "n_warn")),
+    n_skip = sum(vapply(results, "[[", integer(1), "n_skip")),
+    n_ok   = sum(vapply(results, "[[", integer(1), "n_ok")),
+    real   = sum(vapply(results, "[[", double(1), "real"))
+  )
 
-  # one line per test
-  per_test <- lapply(results, gha_file_summary, p = p)
+  # summary
+  p("### Test summary\n\n")
+  p("| \u274c FAIL | \u26a0 WARN | \u23ed\ufe0f SKIP | \u2705 PASS | \u23f1 Time |\n")
+  p("|------------:|------------:|------------------:|------------:|:------------|\n")
 
-  # totals
-  totals <- lapply(do.call(rbind, per_test), sum)
   p(paste0(
-    "|", totals$fail,
-    "|", totals$warn,
-    "|", totals$skip,
-    "|", totals$ok,
-    "|", "Total",
-    "|", "",
-    "|", sprintf("%.3f s", totals$time),
+    "|", if (totals$n_fail > 0) paste0("\u274c **", totals$n_fail, "**"),
+    "|", if (totals$n_warn > 0) paste0("\u26a0 **", totals$n_warn, "**"),
+    "|", if (totals$n_skip > 0) paste0("\u23ed\ufe0f **", totals$n_skip, "**"),
+    "|", paste0("\u2705 **", totals$n_ok, "**"),
+    "|", fmt_time(totals$real),
     "|\n"
   ))
 
-  p("\n</details>\n")
+  # tests with issues
+  p("\n<details>\n\n")
 
-  invisible(results)
-}
-
-gha_file_summary <- function(result, p) {
-
-  n_fail <- n_skip <- n_warn <- n_ok <- 0L
-  for (exp in result$results) {
-    if (expectation_broken(exp)) {
-      n_fail <- n_fail + 1L
-    } else if (expectation_skip(exp)) {
-      n_skip <- n_skip + 1L
-    } else if (expectation_warning(exp)) {
-      n_warn <- n_warn + 1L
-    } else {
-      n_ok <- n_ok + 1L
-    }
-  }
-
-  ctx <- context_name(result$file)
-  time <- sprintf("%.3f s", result$real)
+  p("### Test details\n\n")
+  p("| \u274c FAIL | \u26a0 WARN | \u23ed\ufe0f SKIP | \u2705 PASS | context | test | \u23f1 Time |\n")
+  p("|------------:|------------:|------------------:|------------:|:--------|:-----|:------------|\n")
 
   escape <- function(x) {
     x <- gsub("|", "\\|", x, fixed = TRUE)
@@ -61,23 +47,39 @@ gha_file_summary <- function(result, p) {
     x
   }
 
-  p(paste0(
-    "|", n_fail,
-    "|", n_warn,
-    "|", n_skip,
-    "|", n_ok,
-    "|", escape(ctx),
-    "|", escape(result$test),
-    "|", time,
-    "|\n"
-  ))
+  issues <- Filter(function(x) length(x$results) != x$n_ok, results)
+  for (issue in issues) {
+    p(paste0(
+      "|", if (issue$n_fail > 0) paste0("\u274c **", issue$n_fail, "**"),
+      "|", if (issue$n_warn > 0) paste0("\u26a0 **", issue$n_warn, "**"),
+      "|", if (issue$n_skip > 0) paste0("\u23ed\ufe0f **", issue$n_skip, "**"),
+      "|", if (issue$n_ok   > 0) paste0("\u2705 **", issue$n_ok, "**"),
+      "|", escape(context_name(issue$file)),
+      "|", escape(issue$test),
+      "|", fmt_time(issue$real),
+      "|\n"
+    ))
+  }
 
-  data.frame(
-    stringsAsFactors = FALSE,
-    fail = n_fail,
-    skip = n_skip,
-    warn = n_warn,
-    ok = n_ok,
-    time = result$real
-  )
+  p("\n</details>\n")
+
+  invisible(results)
+}
+
+gha_summarize_test <- function(test) {
+
+  test$n_fail <- test$n_skip <- test$n_warn <- test$n_ok <- 0L
+  for (exp in test$results) {
+    if (expectation_broken(exp)) {
+      test$n_fail <- test$n_fail + 1L
+    } else if (expectation_skip(exp)) {
+      test$n_skip <- test$n_skip + 1L
+    } else if (expectation_warning(exp)) {
+      test$n_warn <- test$n_warn + 1L
+    } else {
+      test$n_ok <- test$n_ok + 1L
+    }
+  }
+
+  test
 }
