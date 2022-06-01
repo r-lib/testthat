@@ -1,5 +1,17 @@
 # testthat (development version)
 
+* You can now configure the behaviour of the implicit
+  `devtools::load_all()` call performed by `devtools::test()` in your
+  package DESCRIPTION file (#1636). To disable exports of internal
+  functions and of testthat helpers, use:
+
+  ```
+  Config/testthat/load-all: list(export_all = FALSE, helpers = FALSE)
+  ```
+
+  Helpers are now attached on the search path by default after calling
+  `devtools::test()`.
+
 # testthat 3.1.4
 
 * Minor tweaks to output for latest cli (#1606).
