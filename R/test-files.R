@@ -53,6 +53,12 @@
 #'   * "none", the default, doesn't load the package.
 #'   * "installed", uses [library()] to load an installed package.
 #'   * "source", uses [pkgload::load_all()] to a source package.
+#'     To configure the arguments passed to `load_all()`, add this
+#'     field in your DESCRIPTION file:
+#'
+#'     ```
+#'     Config/testthat/load-all: list(export_all = FALSE, helpers = FALSE)
+#'     ```
 #' @param wrap DEPRECATED
 #' @keywords internal
 #' @return A list (invisibly) containing data about the test results.
@@ -217,13 +223,45 @@ test_files_setup_env <- function(test_package,
   library(testthat)
 
   load_package <- arg_match(load_package)
-  switch(load_package,
-    none = {},
-    installed = library(test_package, character.only = TRUE),
-    source = pkgload::load_all(test_dir, helpers = FALSE, quiet = TRUE)
-  )
+  if (load_package == "installed") {
+    library(test_package, character.only = TRUE)
+  } else if (load_package == "source") {
+    # Allow configuring what we export to the search path (#1636)
+    args <- find_load_all_args(test_dir)
+    pkgload::load_all(
+      test_dir,
+      export_all = args[["export_all"]],
+      helpers = args[["helpers"]],
+      quiet = TRUE
+    )
+  }
 
   env %||% test_env(test_package)
+}
+
+find_load_all_args <- function(path) {
+  default <- list(export_all = TRUE, helpers = TRUE)
+
+  desc <- find_description(path)
+  if (is.null(desc)) {
+    return(default)
+  }
+
+  args <- desc$get_field("Config/testthat/load-all", default = NULL)
+  if (is.null(args)) {
+    return(default)
+  }
+
+  args <- parse_expr(args)
+  if (!is_call(args, "list")) {
+    abort("`Config/testthat/load-all` must be a list.", call = NULL)
+  }
+
+  args <- as.list(args[-1])
+  list(
+    export_all = args[["export_all"]] %||% default[["export_all"]],
+    helpers = args[["helpers"]] %||% default[["helpers"]]
+  )
 }
 
 test_files_setup_state <- function(test_dir, test_package, load_helpers, env, .env = parent.frame()) {
