@@ -131,7 +131,10 @@ warnings.</p></dd>
 <dt>load_package</dt>
 <dd><p>Strategy to use for load package code:</p><ul><li><p>"none", the default, doesn't load the package.</p></li>
 <li><p>"installed", uses <code><a href="https://rdrr.io/r/base/library.html" class="external-link">library()</a></code> to load an installed package.</p></li>
-<li><p>"source", uses <code><a href="https://rdrr.io/pkg/pkgload/man/load_all.html" class="external-link">pkgload::load_all()</a></code> to a source package.</p></li>
+<li><p>"source", uses <code><a href="https://rdrr.io/pkg/pkgload/man/load_all.html" class="external-link">pkgload::load_all()</a></code> to a source package.
+To configure the arguments passed to <code>load_all()</code>, add this
+field in your DESCRIPTION file:</p>
+<p></p><div class="sourceCode"><pre><code></code></pre><p></p></div></li>
 </ul></dd>
 </dl></div>
     <div class="section level2">

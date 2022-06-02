@@ -68,7 +68,13 @@
       <small>Source: <a href="https://github.com/r-lib/testthat/blob/HEAD/NEWS.md" class="external-link"><code>NEWS.md</code></a></small>
     </div>
 
-    <div class="section level2"><h2 class="pkg-version" data-toc-text="development version" id="testthat-development-version">testthat (development version)<a class="anchor" aria-label="anchor" href="#testthat-development-version"></a></h2></div>
+    <div class="section level2">
+<h2 class="pkg-version" data-toc-text="development version" id="testthat-development-version">testthat (development version)<a class="anchor" aria-label="anchor" href="#testthat-development-version"></a></h2>
+<ul><li>
+<p>You can now configure the behaviour of the implicit <code>devtools::load_all()</code> call performed by <code>devtools::test()</code> in your package DESCRIPTION file (<a href="https://github.com/r-lib/testthat/issues/1636" class="external-link">#1636</a>). To disable exports of internal functions and of testthat helpers, use:</p>
+<pre><code><span class="va">Config</span><span class="op">/</span><span class="va">testthat</span><span class="op">/</span><span class="va">load</span><span class="op">-</span><span class="va">all</span><span class="op">:</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>export_all <span class="op">=</span> <span class="cn">FALSE</span>, helpers <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></code></pre>
+<p>Helpers are now attached on the search path by default after calling <code>devtools::test()</code>.</p>
+</li></ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="3.1.4" id="testthat-314">testthat 3.1.4<a class="anchor" aria-label="anchor" href="#testthat-314"></a></h2><p class="text-muted">CRAN release: 2022-04-26</p>
 <ul><li>Minor tweaks to output for latest cli (<a href="https://github.com/r-lib/testthat/issues/1606" class="external-link">#1606</a>).</li></ul></div>
@@ -435,7 +441,7 @@
 <h4 id="quasiquotation-support-2-0-0">Quasiquotation support<a class="anchor" aria-label="anchor" href="#quasiquotation-support-2-0-0"></a></h4>
 <p>All expectations can now use unquoting (<a href="https://github.com/r-lib/testthat/issues/626" class="external-link">#626</a>). This makes it much easier to generate informative failure messages when running tests in a for loop.</p>
 <p>For example take this test:</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
 <span class="va">f</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">i</span><span class="op">)</span> <span class="kw">if</span> <span class="op">(</span><span class="va">i</span> <span class="op">&gt;</span> <span class="fl">3</span><span class="op">)</span> <span class="va">i</span> <span class="op">*</span> <span class="fl">9</span> <span class="kw">else</span> <span class="va">i</span> <span class="op">*</span> <span class="fl">10</span>
 
@@ -443,7 +449,7 @@
   <span class="fu"><a href="../reference/equality-expectations.html">expect_equal</a></span><span class="op">(</span><span class="fu">f</span><span class="op">(</span><span class="va">i</span><span class="op">)</span>, <span class="va">i</span> <span class="op">*</span> <span class="fl">10</span><span class="op">)</span>
 <span class="op">}</span></code></pre></div>
 <p>When it fails, you’ll see the message <code>Error: `f(i)` not equal to `i * 10`</code>. That’s hard to diagnose because you don’t know which iteration caused the problem!</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
 <span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">)</span> <span class="op">{</span>
   <span class="fu"><a href="../reference/equality-expectations.html">expect_equal</a></span><span class="op">(</span><span class="fu">f</span><span class="op">(</span><span class="op">!</span><span class="op">!</span><span class="va">i</span><span class="op">)</span>, <span class="op">!</span><span class="op">!</span><span class="op">(</span><span class="va">i</span> <span class="op">*</span> <span class="fl">10</span><span class="op">)</span><span class="op">)</span>
@@ -464,7 +470,7 @@
 <ul><li><p>All files are now read and written as UTF-8 (<a href="https://github.com/r-lib/testthat/issues/510" class="external-link">#510</a>, <a href="https://github.com/r-lib/testthat/issues/605" class="external-link">#605</a>).</p></li>
 <li>
 <p><code><a href="../reference/is_testing.html">is_testing()</a></code> allows you to tell if your code is being run inside a testing environment (<a href="https://github.com/r-lib/testthat/issues/631" class="external-link">#631</a>). Rather than taking a run-time dependency on testthat you may want to inline the function into your own package:</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
 <span class="va">is_testing</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="op">)</span> <span class="op">{</span>
   <span class="fu"><a href="https://rdrr.io/r/base/identical.html" class="external-link">identical</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Sys.getenv.html" class="external-link">Sys.getenv</a></span><span class="op">(</span><span class="st">"TESTTHAT"</span><span class="op">)</span>, <span class="st">"true"</span><span class="op">)</span>
@@ -554,7 +560,7 @@
 <h3 id="new-expectations-1-0-0">New expectations<a class="anchor" aria-label="anchor" href="#new-expectations-1-0-0"></a></h3>
 <p>The expectation system got a thorough overhaul (<a href="https://github.com/r-lib/testthat/issues/217" class="external-link">#217</a>). This primarily makes it easier to add new expectations in the future, but also included a thorough review of the documentation, ensuring that related expectations are documented together, and have evocative names.</p>
 <p>One useful change is that most expectations invisibly return the input <code>object</code>. This makes it possible to chain together expectations with magrittr:</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
 <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="st">"a"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> 
   <span class="fu"><a href="../reference/inheritance-expectations.html">expect_type</a></span><span class="op">(</span><span class="st">"integer"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> 
