@@ -22,9 +22,9 @@
 #'
 #' @section Workflow:
 #' The first time that you run a snapshot expectation it will run `x`,
-#' capture the results, and record them in `tests/testthat/_snap/{test}.md`.
+#' capture the results, and record them in `tests/testthat/_snaps/{test}.md`.
 #' Each test file gets its own snapshot file, e.g. `test-foo.R` will get
-#' `_snap/foo.md`.
+#' `_snaps/foo.md`.
 #'
 #' It's important to review the Markdown files and commit them to git. They are
 #' designed to be human readable, and you should always review new additions
@@ -34,7 +34,7 @@
 #'
 #' On subsequent runs, the result of `x` will be compared to the value stored
 #' on disk. If it's different, the expectation will fail, and a new file
-#' `_snap/{test}.new.md` will be created. If the change was deliberate,
+#' `_snaps/{test}.new.md` will be created. If the change was deliberate,
 #' you can approve the change with [snapshot_accept()] and then the tests will
 #' pass the next time you run them.
 #'
