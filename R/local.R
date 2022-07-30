@@ -126,7 +126,7 @@ local_reproducible_output <- function(width = 80,
       "installed without NLS"
     )
 
-    warn(warning_msg, .frequency = "once", .frequency_id = warning_msg)
+    warn(warning_msg, .frequency = "once", .frequency_id = "warn_no_nls")
   }
 
   withr::local_collate("C", .local_envir = .env)
