@@ -7,6 +7,9 @@ praise <- function() {
     "Woot!",
     "Way to go!",
     "Nice code.",
+    "This was a triumph!",
+    "I'm making a note here: Huge success!",
+    "It's hard to overstate my satisfaction.",
     praise::praise("Your tests are ${adjective}!"),
     praise::praise("${EXCLAMATION} - ${adjective} code.")
   )
@@ -53,7 +56,8 @@ encourage <- function() {
     "No one is perfect!",
     "No one gets it right on their first try",
     "Frustration is a natural part of programming :)",
-    "I believe in you!"
+    "I believe in you!",
+    "Just keep on trying until you run out of cake."
   )
 
   sample(x, 1)
