@@ -1,5 +1,8 @@
 # testthat (development version)
 
+* Fixed a warning in R >=4.2.0 on Windows that occurred when using the C++
+  testing infrastructure that testthat provides (#1672).
+
 * You can now configure the behaviour of the implicit
   `devtools::load_all()` call performed by `devtools::test()` in your
   package DESCRIPTION file (#1636). To disable exports of internal
