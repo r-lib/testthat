@@ -4,7 +4,7 @@ concluding a test_that() block without executing any further expectations.
 This allows you to skip a test without failure, if for some reason it
 can't be run (e.g. it depends on the feature of a specific operating system,
 or it requires a specific version of a package).
-See vignette(&quot;skipping&quot;) for more details."><title>Skip a test — skip • testthat</title><!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png"><link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png"><link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png"><link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png"><link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png"><link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png"><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link href="../deps/bootstrap-5.1.0/bootstrap.min.css" rel="stylesheet"><script src="../deps/bootstrap-5.1.0/bootstrap.bundle.min.js"></script><link href="../deps/_Source%20Sans%20Pro-0.4.1/font.css" rel="stylesheet"><link href="../deps/_Source%20Code%20Pro-0.4.1/font.css" rel="stylesheet"><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous"><!-- bootstrap-toc --><script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.js"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Skip a test — skip"><meta property="og:description" content="skip_if() and skip_if_not() allow you to skip tests, immediately
+See vignette(&quot;skipping&quot;) for more details."><title>Skip a test — skip • testthat</title><!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png"><link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png"><link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png"><link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png"><link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png"><link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png"><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link href="../deps/bootstrap-5.1.3/bootstrap.min.css" rel="stylesheet"><script src="../deps/bootstrap-5.1.3/bootstrap.bundle.min.js"></script><link href="../deps/Source_Sans_Pro-0.4.2/font.css" rel="stylesheet"><link href="../deps/Source_Code_Pro-0.4.2/font.css" rel="stylesheet"><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous"><!-- bootstrap-toc --><script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.js"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Skip a test — skip"><meta property="og:description" content="skip_if() and skip_if_not() allow you to skip tests, immediately
 concluding a test_that() block without executing any further expectations.
 This allows you to skip a test without failure, if for some reason it
 can't be run (e.g. it depends on the feature of a specific operating system,
@@ -90,58 +90,73 @@ or it requires a specific version of a package).</p>
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">skip</span><span class="op">(</span><span class="va">message</span><span class="op">)</span>
-
-<span class="fu">skip_if_not</span><span class="op">(</span><span class="va">condition</span>, message <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span>
-
-<span class="fu">skip_if</span><span class="op">(</span><span class="va">condition</span>, message <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span>
-
-<span class="fu">skip_if_not_installed</span><span class="op">(</span><span class="va">pkg</span>, minimum_version <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span>
-
-<span class="fu">skip_if_offline</span><span class="op">(</span>host <span class="op">=</span> <span class="st">"r-project.org"</span><span class="op">)</span>
-
-<span class="fu">skip_on_cran</span><span class="op">(</span><span class="op">)</span>
-
-<span class="fu">skip_on_os</span><span class="op">(</span><span class="va">os</span>, arch <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span>
-
-<span class="fu">skip_on_travis</span><span class="op">(</span><span class="op">)</span>
-
-<span class="fu">skip_on_appveyor</span><span class="op">(</span><span class="op">)</span>
-
-<span class="fu">skip_on_ci</span><span class="op">(</span><span class="op">)</span>
-
-<span class="fu">skip_on_covr</span><span class="op">(</span><span class="op">)</span>
-
-<span class="fu">skip_on_bioc</span><span class="op">(</span><span class="op">)</span>
-
-<span class="fu">skip_if_translated</span><span class="op">(</span>msgid <span class="op">=</span> <span class="st">"'%s' not found"</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">skip</span><span class="op">(</span><span class="va">message</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">skip_if_not</span><span class="op">(</span><span class="va">condition</span>, message <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">skip_if</span><span class="op">(</span><span class="va">condition</span>, message <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">skip_if_not_installed</span><span class="op">(</span><span class="va">pkg</span>, minimum_version <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">skip_if_offline</span><span class="op">(</span>host <span class="op">=</span> <span class="st">"r-project.org"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">skip_on_cran</span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">skip_on_os</span><span class="op">(</span><span class="va">os</span>, arch <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">skip_on_travis</span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">skip_on_appveyor</span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">skip_on_ci</span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">skip_on_covr</span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">skip_on_bioc</span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">skip_if_translated</span><span class="op">(</span>msgid <span class="op">=</span> <span class="st">"'%s' not found"</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
     <dl><dt>message</dt>
 <dd><p>A message describing why the test was skipped.</p></dd>
+
+
 <dt>condition</dt>
 <dd><p>Boolean condition to check. <code>skip_if_not()</code> will skip if
 <code>FALSE</code>, <code>skip_if()</code> will skip if <code>TRUE</code>.</p></dd>
+
+
 <dt>pkg</dt>
 <dd><p>Name of package to check for</p></dd>
+
+
 <dt>minimum_version</dt>
 <dd><p>Minimum required version for the package</p></dd>
+
+
 <dt>host</dt>
 <dd><p>A string with a hostname to lookup</p></dd>
+
+
 <dt>os</dt>
 <dd><p>Character vector of one or more operating systems to skip on.
 Supported values are <code>"windows"</code>, <code>"mac"</code>, <code>"linux"</code>, and <code>"solaris"</code>.</p></dd>
+
+
 <dt>arch</dt>
 <dd><p>Character vector of one or more architectures to skip on.
 Common values include <code>"i386"</code> (32 bit), <code>"x86_64"</code> (64 bit), and
 <code>"aarch64"</code> (M1 mac). Supplying <code>arch</code> makes the test stricter; i.e. both
 <code>os</code> and <code>arch</code> must match in order for the test to be skipped.</p></dd>
+
+
 <dt>msgid</dt>
 <dd><p>R message identifier used to check for translation: the default
 uses a message included in most translation packs. See the complete list in
 <a href="https://github.com/wch/r-source/blob/master/src/library/base/po/R-base.pot" class="external-link"><code>R-base.pot</code></a>.</p></dd>
+
 </dl></div>
     <div class="section level2">
     <h2 id="helpers">Helpers<a class="anchor" aria-label="anchor" href="#helpers"></a></h2>
@@ -168,14 +183,14 @@ travis, and appveyor (using the <code>CI</code> env var). It supersedes the olde
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="fu">skip</span><span class="op">(</span><span class="st">"No internet connection"</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="fu"><a href="test_that.html">test_that</a></span><span class="op">(</span><span class="st">"skip example"</span>, <span class="op">{</span></span>
-<span class="r-in">  <span class="fu"><a href="equality-expectations.html">expect_equal</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">1L</span><span class="op">)</span>    <span class="co"># this expectation runs</span></span>
-<span class="r-in">  <span class="fu">skip</span><span class="op">(</span><span class="st">'skip'</span><span class="op">)</span></span>
-<span class="r-in">  <span class="fu"><a href="equality-expectations.html">expect_equal</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span>     <span class="co"># this one skipped</span></span>
-<span class="r-in">  <span class="fu"><a href="equality-expectations.html">expect_equal</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">3</span><span class="op">)</span>     <span class="co"># this one is also skipped</span></span>
-<span class="r-in"><span class="op">}</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="fu">skip</span><span class="op">(</span><span class="st">"No internet connection"</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu"><a href="test_that.html">test_that</a></span><span class="op">(</span><span class="st">"skip example"</span>, <span class="op">{</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="equality-expectations.html">expect_equal</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">1L</span><span class="op">)</span>    <span class="co"># this expectation runs</span></span></span>
+<span class="r-in"><span>  <span class="fu">skip</span><span class="op">(</span><span class="st">'skip'</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="equality-expectations.html">expect_equal</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span>     <span class="co"># this one skipped</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="equality-expectations.html">expect_equal</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">3</span><span class="op">)</span>     <span class="co"># this one is also skipped</span></span></span>
+<span class="r-in"><span><span class="op">}</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ── <span style="color: #0000BB; font-weight: bold;">Skip</span><span style="font-weight: bold;"> (&lt;text&gt;:5:3): skip example</span> ─────────────────────────────────────────────</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Reason: skip</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
@@ -192,7 +207,7 @@ travis, and appveyor (using the <code>CI</code> env var). It supersedes the olde
 </div>
 
 <div class="pkgdown-footer-right">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
   </div></footer></body></html>
