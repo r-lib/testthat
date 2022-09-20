@@ -70,9 +70,9 @@ a class name. This is useful for "classed" conditions.}
 \item{...}{
   Arguments passed on to \code{\link[=expect_match]{expect_match}}
   \describe{
+    \item{\code{fixed}}{If \code{TRUE}, treats \code{regexp} as a string to be matched exactly
+(not a regular expressions). Overrides \code{perl}.}
     \item{\code{perl}}{logical.  Should Perl-compatible regexps be used?}
-    \item{\code{fixed}}{logical.  If \code{TRUE}, \code{pattern} is a string to be
-    matched as is.  Overrides all conflicting arguments.}
   }}
 
 \item{inherit}{Whether to match \code{regexp} and \code{class} across the
