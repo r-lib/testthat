@@ -125,9 +125,9 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
       data <- self$status_data()
       if (complete) {
         if (data$n_fail > 0) {
-          status <- crayon::red(cli::symbol$cross)
+          status <- cli::col_red(cli::symbol$cross)
         } else {
-          status <- crayon::green(cli::symbol$tick)
+          status <- cli::col_green(cli::symbol$tick)
         }
       } else {
         # Do not print if not enough time has passed since we last printed.
@@ -168,7 +168,7 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
 
       if (pad) {
         message <- strpad(message, self$width)
-        message <- crayon::col_substr(message, 1, self$width)
+        message <- cli::ansi_substr(message, 1, self$width)
       }
 
       if (!complete) {
@@ -246,7 +246,7 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
         colourise(n, if (n == 0) "success" else type)
       }
 
-      self$rule(crayon::bold("Results"), line = 2)
+      self$rule(cli::style_bold("Results"), line = 2)
       time <- proc.time() - self$start_time
       if (time[[3]] > self$min_time) {
         self$cat_line("Duration: ", sprintf("%.1f s", time[[3]]), col = "cyan")
@@ -369,7 +369,7 @@ CompactProgressReporter <- R6::R6Class("CompactProgressReporter",
       } else if (self$is_full()) {
         self$cat_line(" Terminated early")
       } else if (!self$rstudio) {
-        self$cat_line(crayon::bold(" Done!"))
+        self$cat_line(cli::style_bold(" Done!"))
       }
     },
 
@@ -491,7 +491,7 @@ ParallelProgressReporter <- R6::R6Class("ParallelProgressReporter",
         paste(context_name(names(self$files)), collapse = ", ")
       )
       message <- strpad(message, self$width)
-      message <- crayon::col_substr(message, 1, self$width)
+      message <- cli::ansi_substr(message, 1, self$width)
       self$cat_tight(self$cr(), message)
     }
   )
@@ -519,7 +519,7 @@ issue_header <- function(x, pad = FALSE) {
 }
 
 issue_summary <- function(x, rule = FALSE, simplify = "branch") {
-  header <- crayon::bold(issue_header(x))
+  header <- cli::style_bold(issue_header(x))
   if (rule) {
     header <- cli::rule(header, width = max(cli::ansi_nchar(header) + 6, 80))
   }

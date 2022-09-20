@@ -4,7 +4,7 @@ test_that("can supress colours", {
     testthat.use_colours = TRUE,
     cli.num_colors = 8L
   )
-  check <- crayon::has_style(colourise("X"))
+  check <- cli::ansi_has_any(colourise("X"))
   # Must restore original options before expectation is triggered
   options(op)
 
@@ -16,7 +16,7 @@ test_that("We don't have colours if we don't want to", {
     crayon.enabled = TRUE,
     testthat.use_colours = FALSE
   )
-  check <- crayon::has_style(colourise("X"))
+  check <- cli::ansi_has_any(colourise("X"))
   options(op)
 
   expect_false(check)

@@ -10,13 +10,7 @@ expect_setequal(object, expected)
 expect_mapequal(object, expected)
 }
 \arguments{
-\item{object}{Computation and value to compare it to.
-
-Both arguments supports limited unquoting to make it easier to generate
-readable failures within a function or for loop. See \link{quasi_label} for
-more details.}
-
-\item{expected}{Computation and value to compare it to.
+\item{object, expected}{Computation and value to compare it to.
 
 Both arguments supports limited unquoting to make it easier to generate
 readable failures within a function or for loop. See \link{quasi_label} for

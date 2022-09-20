@@ -26,7 +26,7 @@ contained within \code{{}} (similarly to \code{test_that()} calls).}
 
 \item{width}{Width of console output}
 
-\item{crayon}{Enable crayon package colouring?}
+\item{crayon}{Enable cli/crayon package colouring?}
 
 \item{unicode}{Enable cli package UTF-8 symbols? If you set this to
 \code{TRUE}, call \code{skip_if(!cli::is_utf8_output())} to disable the
