@@ -23,7 +23,7 @@ Depends:
 Imports:
     brio,
     callr (>= 3.5.1),
-    cli (>= 3.3.0),
+    cli (>= 3.4.0),
     desc,
     digest,
     ellipsis (>= 0.2.0),
