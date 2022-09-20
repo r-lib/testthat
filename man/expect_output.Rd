@@ -52,7 +52,7 @@ The first argument, invisibly.
 }
 \description{
 Test for output produced by \code{print()} or \code{cat()}. This is best used for
-very simple output; for more complex cases use \code{\link[=verify_output]{verify_output()}}.
+very simple output; for more complex cases use \code{\link[=expect_snapshot]{expect_snapshot()}}.
 }
 \examples{
 str(mtcars)
