@@ -47,7 +47,7 @@ mock_nls <- function(has_nls) function(...) {
   res
 }
 
-test_that("does not warn of install wehn when has NLS capability", {
+test_that("does not warn of install when has NLS capability", {
   skip_on_cran()
   skip_if_not(capabilities("NLS")) # warning will be emitted regardless by withr
 
