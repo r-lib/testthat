@@ -314,7 +314,7 @@ Generally, I think it's better to copy and paste test fixtures across many tests
 
 ### Package
 
-To run code before any test is run, you can create a file called `test/testthat/setup.R`. If the code in this file needs clean up, you can use the special `teardown_env()`:
+To run code before any test is run, you can create a file called `tests/testthat/setup.R`. If the code in this file needs clean up, you can use the special `teardown_env()`:
 
 ```{r, eval = FALSE}
 # Run before any test

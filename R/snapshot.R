@@ -56,7 +56,7 @@
 #'   so `variant` must be a single string of alphanumeric characters suitable
 #'   for use as a directory name.
 #'
-#'   You can variants to deal with cases where the snapshot output varies
+#'   Variants are intended for cases where the snapshot output varies
 #'   and you want to capture and test the variations. Common use cases include
 #'   variations for operating system, R version, or version of key dependency.
 #'   Variants are an advanced feature. When you use them, you'll need to
@@ -167,7 +167,7 @@ snapshot_replay_condition_legacy <- function(x, state = env(), transform = NULL)
   if (inherits(x, "error")) {
     state$error <- x
     type <- "Error"
-    msg <- add_implict_nl(msg)
+    msg <- add_implicit_nl(msg)
   } else if (inherits(x, "warning")) {
     type <- "Warning"
     msg <- paste0(msg, "\n")
@@ -191,7 +191,7 @@ snapshot_lines <- function(x, transform = NULL) {
   x
 }
 
-add_implict_nl <- function(x) {
+add_implicit_nl <- function(x) {
   if (substr(x, nchar(x), nchar(x)) == "\n") {
     x
   } else {
@@ -416,7 +416,7 @@ snapshot_accept_hint <- function(variant, file) {
 
 snapshot_not_available <- function(message) {
   inform(c(
-    crayon::bold("Can't compare snapshot to reference when testing interactively"),
+    cli::style_bold("Can't compare snapshot to reference when testing interactively"),
     i = "Run `devtools::test()` or `testthat::test_file()` to see changes",
     i = message
   ))

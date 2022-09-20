@@ -174,7 +174,7 @@ format.expectation <- function(x, simplify = "branch", ...) {
     ...,
     max_frames = max_frames
   )
-  lines <- c(x$message, crayon::bold("Backtrace:"), trace_lines)
+  lines <- c(x$message, cli::style_bold("Backtrace:"), trace_lines)
   paste(lines, collapse = "\n")
 }
 

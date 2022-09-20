@@ -1,13 +1,14 @@
 colourise <- function(text, as = c("success", "skip", "warning", "failure", "error")) {
   if (has_colour()) {
-    crayon::style(text, testthat_style(as))
+    unclass(cli::make_ansi_style(testthat_style(as))(text))
   } else {
     text
   }
 }
 
 has_colour <- function() {
-  isTRUE(getOption("testthat.use_colours", TRUE)) && crayon::has_color()
+  isTRUE(getOption("testthat.use_colours", TRUE)) &&
+    cli::num_ansi_colors() > 1
 }
 
 testthat_style <- function(type = c("success", "skip", "warning", "failure", "error")) {
