@@ -1,12 +1,9 @@
-# testthat (development)
+# testthat (development version)
 
 * The `lifecycle_verbosity` global option is now preserved by
   `test_that()` if already set. This makes it possible to set it
   outside of `test_that()` blocks, so that it applies to a whole test
   file.
-
-
-# testthat (development version)
 
 * Fixed a warning in R >=4.2.0 on Windows that occurred when using the C++
   testing infrastructure that testthat provides (#1672).
