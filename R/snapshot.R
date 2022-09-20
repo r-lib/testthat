@@ -22,11 +22,11 @@
 #'
 #' @section Workflow:
 #' The first time that you run a snapshot expectation it will run `x`,
-#' capture the results, and record in `tests/testthat/snap/{test}.json`.
+#' capture the results, and record them in `tests/testthat/_snaps/{test}.md`.
 #' Each test file gets its own snapshot file, e.g. `test-foo.R` will get
-#' `snap/foo.json`.
+#' `_snaps/foo.md`.
 #'
-#' It's important to review the JSON files and commit them to git. They are
+#' It's important to review the Markdown files and commit them to git. They are
 #' designed to be human readable, and you should always review new additions
 #' to ensure that the salient information has been captured. They should also
 #' be carefully reviewed in pull requests, to make sure that snapshots have
@@ -34,7 +34,7 @@
 #'
 #' On subsequent runs, the result of `x` will be compared to the value stored
 #' on disk. If it's different, the expectation will fail, and a new file
-#' `snap/{test}.new.json` will be created. If the change was deliberate,
+#' `_snaps/{test}.new.md` will be created. If the change was deliberate,
 #' you can approve the change with [snapshot_accept()] and then the tests will
 #' pass the next time you run them.
 #'
@@ -56,7 +56,7 @@
 #'   so `variant` must be a single string of alphanumeric characters suitable
 #'   for use as a directory name.
 #'
-#'   You can variants to deal with cases where the snapshot output varies
+#'   You can use variants to deal with cases where the snapshot output varies
 #'   and you want to capture and test the variations. Common use cases include
 #'   variations for operating system, R version, or version of key dependency.
 #'   Variants are an advanced feature. When you use them, you'll need to
@@ -167,7 +167,7 @@ snapshot_replay_condition_legacy <- function(x, state = env(), transform = NULL)
   if (inherits(x, "error")) {
     state$error <- x
     type <- "Error"
-    msg <- add_implict_nl(msg)
+    msg <- add_implicit_nl(msg)
   } else if (inherits(x, "warning")) {
     type <- "Warning"
     msg <- paste0(msg, "\n")
@@ -191,7 +191,7 @@ snapshot_lines <- function(x, transform = NULL) {
   x
 }
 
-add_implict_nl <- function(x) {
+add_implicit_nl <- function(x) {
   if (substr(x, nchar(x), nchar(x)) == "\n") {
     x
   } else {
@@ -395,6 +395,8 @@ expect_snapshot_helper <- function(lab, val,
 }
 
 snapshot_accept_hint <- function(variant, file) {
+  local_reporter_output()
+
   if (is.null(variant) || variant == "_default") {
     name <- file
   } else {
@@ -414,7 +416,7 @@ snapshot_accept_hint <- function(variant, file) {
 
 snapshot_not_available <- function(message) {
   inform(c(
-    crayon::bold("Can't compare snapshot to reference when testing interactively"),
+    cli::style_bold("Can't compare snapshot to reference when testing interactively"),
     i = "Run `devtools::test()` or `testthat::test_file()` to see changes",
     i = message
   ))

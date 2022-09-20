@@ -2,14 +2,20 @@
 #'
 #' @description
 #' A test encapsulates a series of expectations about a small, self-contained
-#' set of functionality. Each test lives in a file and contains multiple
-#' expectations, like [expect_equal()] or [expect_error()].
+#' unit of functionality. Each test contains one or more expectations, such as
+#' [expect_equal()] or [expect_error()], and lives in a `test/testhat/test*`
+#' file, often together with other tests that relate to the same function or set
+#' of functions.
 #'
-#' Tests are evaluated in their own environments, and should not affect
-#' global state.
+#' Each test has its own execution environment, so an object created in a test
+#' also dies with the test. Note that this cleanup does not happen automatically
+#' for other aspects of global state, such as session options or filesystem
+#' changes. Avoid changing global state, when possible, and reverse any changes
+#' that you do make.
 #'
-#' @param desc Test name. Names should be brief, but evocative. They are
-#'   only used by humans, so do you
+#' @param desc Test name. Names should be brief, but evocative. It's common to
+#'   write the description so that it reads like a natural sentence, e.g.
+#'   `test_that("multiplication works", { ... })`.
 #' @param code Test code containing expectations. Braces (`{}`) should always
 #'   be used in order to get accurate location data for test failures.
 #' @return When run interactively, returns `invisible(TRUE)` if all tests

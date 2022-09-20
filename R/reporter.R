@@ -57,7 +57,7 @@ Reporter <- R6::R6Class("Reporter",
       # Capture at init so not affected by test settings
       self$width <- cli::console_width()
       self$unicode <- cli::is_utf8_output()
-      self$crayon <- crayon::has_color()
+      self$crayon <- cli::num_ansi_colors() > 1
     },
 
     # To be used when the reporter needs to produce output inside of an active
