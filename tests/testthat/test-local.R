@@ -47,20 +47,7 @@ mock_nls <- function(has_nls) function(...) {
   res
 }
 
-test_that("warns of install without NLS once-per-session", {
-  skip_on_cran()
-
-  mockery::stub(local_reproducible_output, "capabilities", mock_nls(FALSE))
-  reset_warning_verbosity("warn_no_nls")
-
-  # expect first call to emit a warning
-  expect_warning(local_reproducible_output(lang = "fr"))
-
-  # and subsequent calls to be silent
-  expect_silent(local_reproducible_output(lang = "fr"))
-})
-
-test_that("does not warn of install wehn session has NLS capability", {
+test_that("does not warn of install wehn when has NLS capability", {
   skip_on_cran()
   skip_if_not(capabilities("NLS")) # warning will be emitted regardless by withr
 

@@ -120,13 +120,6 @@ local_reproducible_output <- function(width = 80,
 
   if (isTRUE(capabilities("NLS"))) {
     withr::local_language(lang, .local_envir = .env)
-  } else {
-    warning_msg <- paste0(
-      "Local reproducible output can not be checked fully because R is ",
-      "installed without NLS"
-    )
-
-    warn(warning_msg, .frequency = "once", .frequency_id = "warn_no_nls")
   }
 
   withr::local_collate("C", .local_envir = .env)
