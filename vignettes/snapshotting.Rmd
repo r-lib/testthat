@@ -90,7 +90,7 @@ snapper$start_file("snapshotting.Rmd", "test")
 ```
 
 When we run the test for the first time, it automatically generates reference output, and prints it, so that you can visually confirm that it's correct.
-The output is automatically saved in `_snaps/{name}.R`.
+The output is automatically saved in `_snaps/{name}.md`.
 The name of the snapshot matches your test file name --- e.g. if your test is `test-pizza.R` then your snapshot will be saved in `test/testthat/_snaps/pizza.md`.
 As the file name suggests, this is a markdown file, which I'll explain shortly.
 
