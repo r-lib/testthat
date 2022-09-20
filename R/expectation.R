@@ -257,7 +257,7 @@ single_letter_summary <- function(x) {
 }
 
 expectation_location <- function(x) {
-  if (is.null(x$srcref)) {
+  if (!inherits(x$srcref, "srcref")) {
     "???"
   } else {
     srcfile <- attr(x$srcref, "srcfile")
