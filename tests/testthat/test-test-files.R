@@ -81,3 +81,25 @@ test_that("can filter test scripts", {
   expect_equal(filter_test_scripts(x, ".R"), character())
 })
 
+# ----------------------------------------------------------------------
+
+test_that("can configure `load_all()` (#1636)", {
+  path <- test_path("testConfigLoadAll")
+
+  args <- find_load_all_args(path)
+  expect_equal(args, list(export_all = FALSE, helpers = FALSE))
+
+  results <- test_local(path, reporter = "silent")
+  for (res in results) {
+    expect_equal(sum(res[["failed"]]), 0)
+  }
+})
+
+test_that("helpers are attached to the search path after running `devtools::test()`", {
+  # This is FALSE under R CMD check
+  skip_if_not(pkgload::is_dev_package("testthat"))
+
+  expect_true(
+    "rlang_version" %in% names(pkg_env("testthat"))
+  )
+})

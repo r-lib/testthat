@@ -17,7 +17,7 @@ expect_gt(object, expected, label = NULL, expected.label = NULL)
 expect_gte(object, expected, label = NULL, expected.label = NULL)
 }
 \arguments{
-\item{expected}{Single numeric value to compare.}
+\item{object, expected}{A value to compare and its expected bound.}
 
 \item{label, expected.label}{Used to customise failure messages. For expert
 use only.}

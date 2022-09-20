@@ -52,6 +52,11 @@ warnings.}
 \item "none", the default, doesn't load the package.
 \item "installed", uses \code{\link[=library]{library()}} to load an installed package.
 \item "source", uses \code{\link[pkgload:load_all]{pkgload::load_all()}} to a source package.
+To configure the arguments passed to \code{load_all()}, add this
+field in your DESCRIPTION file:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{Config/testthat/load-all: list(export_all = FALSE, helpers = FALSE)
+}\if{html}{\out{</div>}}
 }}
 }
 \value{
