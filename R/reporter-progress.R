@@ -266,7 +266,7 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
         self$rule("Terminated early", line = 2)
       }
 
-      if (!self$show_praise || runif(1) > 0.1) {
+      if (!self$show_praise || stats::runif(1) > 0.1) {
         return()
       }
 
