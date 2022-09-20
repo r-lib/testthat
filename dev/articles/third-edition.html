@@ -126,14 +126,14 @@
 <span>  <span class="fu"><a href="../reference/local_edition.html">local_edition</a></span><span class="op">(</span><span class="fl">3</span><span class="op">)</span></span>
 <span>  <span class="fu"><a href="../reference/logical-expectations.html">expect_true</a></span><span class="op">(</span><span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="op">}</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #00BB00;">Test passed</span> 🥳</span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #00BB00;">Test passed</span> 🎊</span></span></code></pre></div>
 <p>This is also useful if you’ve switched to the 3rd edition and have a couple of tests that fail. You can use <code>local_edition(2)</code> to revert back to the old behaviour, giving you some breathing room to figure out the underlying issue.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/test_that.html">test_that</a></span><span class="op">(</span><span class="st">"I want to use the 2nd edition"</span>, <span class="op">{</span></span>
 <span>  <span class="fu"><a href="../reference/local_edition.html">local_edition</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span></span>
 <span>  <span class="fu"><a href="../reference/logical-expectations.html">expect_true</a></span><span class="op">(</span><span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="op">}</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #00BB00;">Test passed</span> 🎉</span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #00BB00;">Test passed</span> 🎊</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="changes">Changes<a class="anchor" aria-label="anchor" href="#changes"></a>
@@ -178,7 +178,7 @@
 <span><span class="fu"><a href="../reference/expect_error.html">expect_warning</a></span><span class="op">(</span><span class="fu">f</span><span class="op">(</span><span class="op">)</span>, <span class="st">"First"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Warning in f(): Second warning</span></span>
 <span><span class="co">#&gt; Warning in f(): Third warning</span></span></code></pre></div>
-<p>You can either add additional expectations to catch these warnings, or silence them all with <code>supressWarnings()</code>:</p>
+<p>You can either add additional expectations to catch these warnings, or silence them all with <code><a href="https://rdrr.io/r/base/warning.html" class="external-link">suppressWarnings()</a></code>:</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">f</span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="../reference/expect_error.html">expect_warning</a></span><span class="op">(</span><span class="st">"First"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
@@ -209,7 +209,7 @@
 <div class="section level3">
 <h3 id="messages">Messages<a class="anchor" aria-label="anchor" href="#messages"></a>
 </h3>
-<p>For reasons that I can no longer remember, testthat silently ignores all messages. This is inconsistent with other types of output, so as of the 3rd edition, they now bubble up to your test results. You’ll have to explicit ignore them with <code>supressMesssages()</code>, or if they’re important, test for their presence with <code><a href="../reference/expect_error.html">expect_message()</a></code>.</p>
+<p>For reasons that I can no longer remember, testthat silently ignores all messages. This is inconsistent with other types of output, so as of the 3rd edition, they now bubble up to your test results. You’ll have to explicit ignore them with <code><a href="https://rdrr.io/r/base/message.html" class="external-link">suppressMessages()</a></code>, or if they’re important, test for their presence with <code><a href="../reference/expect_error.html">expect_message()</a></code>.</p>
 </div>
 <div class="section level3">
 <h3 id="waldo">waldo<a class="anchor" aria-label="anchor" href="#waldo"></a>
@@ -240,9 +240,9 @@
 <p>This change is likely to result in the most work during an upgrade, because waldo can give slightly different results to both <code><a href="https://rdrr.io/r/base/identical.html" class="external-link">identical()</a></code> and <code><a href="https://rdrr.io/r/base/all.equal.html" class="external-link">all.equal()</a></code> in moderately common situations. I believe on the whole the differences are meaningful and useful, so you’ll need to handle them by tweaking your tests. The following changes are most likely to affect you:</p>
 <ul>
 <li><p><code><a href="../reference/equality-expectations.html">expect_equal()</a></code> previously ignored the environments of formulas and functions. This is most like to arise if you are testing models. It’s worth thinking about what the correct values should be, but if that is to annoying you can opt out of the comparison with <code>ignore_function_env</code> or <code>ignore_formula_env</code>.</p></li>
-<li><p><code><a href="../reference/equality-expectations.html">expect_equal()</a></code> used a combination of <code><a href="https://rdrr.io/r/base/all.equal.html" class="external-link">all.equal()</a></code> and a home-grown <code><a href="../reference/compare.html">testthat::compare()</a></code> which unfortunately used a slightly different definition of tolerance. Now <code><a href="../reference/equality-expectations.html">expect_equal()</a></code> always uses the same defintion of tolerance everywhere, which may require tweaks to your exising tolerance values.</p></li>
+<li><p><code><a href="../reference/equality-expectations.html">expect_equal()</a></code> used a combination of <code><a href="https://rdrr.io/r/base/all.equal.html" class="external-link">all.equal()</a></code> and a home-grown <code><a href="../reference/compare.html">testthat::compare()</a></code> which unfortunately used a slightly different definition of tolerance. Now <code><a href="../reference/equality-expectations.html">expect_equal()</a></code> always uses the same definition of tolerance everywhere, which may require tweaks to your exising tolerance values.</p></li>
 <li>
-<p><code><a href="../reference/equality-expectations.html">expect_equal()</a></code> previously ignored timezone differences when one object had the current timezone set implicitly (with <code>""</code>) and the other had it set explictly:</p>
+<p><code><a href="../reference/equality-expectations.html">expect_equal()</a></code> previously ignored timezone differences when one object had the current timezone set implicitly (with <code>""</code>) and the other had it set explicitly:</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">dt1</span> <span class="op">&lt;-</span> <span class="va">dt2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/ISOdatetime.html" class="external-link">ISOdatetime</a></span><span class="op">(</span><span class="fl">2020</span>, <span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span>, <span class="fl">4</span>, <span class="fl">0</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/attr.html" class="external-link">attr</a></span><span class="op">(</span><span class="va">dt1</span>, <span class="st">"tzone"</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="st">""</span></span>
