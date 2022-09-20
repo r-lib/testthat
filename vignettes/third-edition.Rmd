@@ -115,7 +115,7 @@ local_edition(3)
 expect_warning(f(), "First")
 ```
 
-You can either add additional expectations to catch these warnings, or silence them all with `supressWarnings()`:
+You can either add additional expectations to catch these warnings, or silence them all with `suppressWarnings()`:
 
 ```{r}
 f() %>% 
@@ -142,7 +142,7 @@ The same principle also applies to `expect_message()`, but message handling has 
 
 For reasons that I can no longer remember, testthat silently ignores all messages.
 This is inconsistent with other types of output, so as of the 3rd edition, they now bubble up to your test results.
-You'll have to explicit ignore them with `supressMesssages()`, or if they're important, test for their presence with `expect_message()`.
+You'll have to explicit ignore them with `suppressMessages()`, or if they're important, test for their presence with `expect_message()`.
 
 ### waldo
 
@@ -174,9 +174,9 @@ The following changes are most likely to affect you:
     It's worth thinking about what the correct values should be, but if that is to annoying you can opt out of the comparison with `ignore_function_env` or `ignore_formula_env`.
 
 -   `expect_equal()` used a combination of `all.equal()` and a home-grown `testthat::compare()` which unfortunately used a slightly different definition of tolerance.
-    Now `expect_equal()` always uses the same defintion of tolerance everywhere, which may require tweaks to your exising tolerance values.
+    Now `expect_equal()` always uses the same definition of tolerance everywhere, which may require tweaks to your exising tolerance values.
 
--   `expect_equal()` previously ignored timezone differences when one object had the current timezone set implicitly (with `""`) and the other had it set explictly:
+-   `expect_equal()` previously ignored timezone differences when one object had the current timezone set implicitly (with `""`) and the other had it set explicitly:
 
     ```{r, error = TRUE}
     dt1 <- dt2 <- ISOdatetime(2020, 1, 2, 3, 4, 0)

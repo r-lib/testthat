@@ -70,10 +70,10 @@ expression.
 }
 \section{Functions}{
 \itemize{
-\item \code{expect_no_match}: Check that a string doesn't match a regular
+\item \code{expect_no_match()}: Check that a string doesn't match a regular
 expression.
-}}
 
+}}
 \examples{
 expect_match("Testing is fun", "fun")
 expect_match("Testing is fun", "f.n")

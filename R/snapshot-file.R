@@ -188,7 +188,7 @@ snapshot_file_equal <- function(snap_test_dir, snap_name, snap_variant, path, fi
     file.copy(path, cur_path)
 
     message <- paste0(
-      "Adding new file snapshot: 'tests/testhat/_snaps/",
+      "Adding new file snapshot: 'tests/testthat/_snaps/",
       snap_variant, if (!is.null(snap_variant)) "/",
       snap_name, "'"
     )

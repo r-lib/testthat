@@ -3,7 +3,10 @@
 * `local_reproducible_output` will no longer attempt to set the local language
   when an R version is used that was not compiled with natural language support
   (NLS), which would previously emit non-test-related warnings during testing
-  (@dgkf, #1662)
+  (@dgkf, #1662).
+
+* Fixed a warning in R >=4.2.0 on Windows that occurred when using the C++
+  testing infrastructure that testthat provides (#1672).
 
 * You can now configure the behaviour of the implicit
   `devtools::load_all()` call performed by `devtools::test()` in your
