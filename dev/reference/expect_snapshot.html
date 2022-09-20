@@ -177,7 +177,7 @@ and return a modified character vector as output.</p></dd>
 <p>If not-<code>NULL</code>, results will be saved in <code>_snaps/{variant}/{test.md}</code>,
 so <code>variant</code> must be a single string of alphanumeric characters suitable
 for use as a directory name.</p>
-<p>Variants are intended for cases where the snapshot output varies
+<p>You can use variants to deal with cases where the snapshot output varies
 and you want to capture and test the variations. Common use cases include
 variations for operating system, R version, or version of key dependency.
 Variants are an advanced feature. When you use them, you'll need to
@@ -229,17 +229,17 @@ are not available, in which case the test is skipped.</p></dd>
     
 
 <p>The first time that you run a snapshot expectation it will run <code>x</code>,
-capture the results, and record in <code>tests/testthat/snap/{test}.json</code>.
+capture the results, and record them in <code>tests/testthat/_snaps/{test}.md</code>.
 Each test file gets its own snapshot file, e.g. <code>test-foo.R</code> will get
-<code>snap/foo.json</code>.</p>
-<p>It's important to review the JSON files and commit them to git. They are
+<code>_snaps/foo.md</code>.</p>
+<p>It's important to review the Markdown files and commit them to git. They are
 designed to be human readable, and you should always review new additions
 to ensure that the salient information has been captured. They should also
 be carefully reviewed in pull requests, to make sure that snapshots have
 updated in the expected way.</p>
 <p>On subsequent runs, the result of <code>x</code> will be compared to the value stored
 on disk. If it's different, the expectation will fail, and a new file
-<code>snap/{test}.new.json</code> will be created. If the change was deliberate,
+<code>_snaps/{test}.new.md</code> will be created. If the change was deliberate,
 you can approve the change with <code><a href="snapshot_accept.html">snapshot_accept()</a></code> and then the tests will
 pass the next time you run them.</p>
 <p>Note that snapshotting can only work when executing a complete test file
