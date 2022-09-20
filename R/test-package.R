@@ -44,6 +44,8 @@ test_package <- function(package, reporter = check_reporter(), ...) {
 #' @rdname test_package
 test_check <- function(package, reporter = check_reporter(), ...) {
   require(package, character.only = TRUE)
+  withr::local_envvar(R_CLI_HYPERLINKS = "false")
+
   test_dir(
     "testthat",
     package = package,

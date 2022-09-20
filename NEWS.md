@@ -1,5 +1,8 @@
 # testthat (development version)
 
+* `test_check()` now suppresses hyperlinks since they'll take you to the wrong
+  places (#1648).
+
 * Fixed a warning in R >=4.2.0 on Windows that occurred when using the C++
   testing infrastructure that testthat provides (#1672).
 
