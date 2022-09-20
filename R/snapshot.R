@@ -22,11 +22,11 @@
 #'
 #' @section Workflow:
 #' The first time that you run a snapshot expectation it will run `x`,
-#' capture the results, and record in `tests/testthat/snap/{test}.json`.
+#' capture the results, and record them in `tests/testthat/_snaps/{test}.md`.
 #' Each test file gets its own snapshot file, e.g. `test-foo.R` will get
-#' `snap/foo.json`.
+#' `_snaps/foo.md`.
 #'
-#' It's important to review the JSON files and commit them to git. They are
+#' It's important to review the Markdown files and commit them to git. They are
 #' designed to be human readable, and you should always review new additions
 #' to ensure that the salient information has been captured. They should also
 #' be carefully reviewed in pull requests, to make sure that snapshots have
@@ -34,7 +34,7 @@
 #'
 #' On subsequent runs, the result of `x` will be compared to the value stored
 #' on disk. If it's different, the expectation will fail, and a new file
-#' `snap/{test}.new.json` will be created. If the change was deliberate,
+#' `_snaps/{test}.new.md` will be created. If the change was deliberate,
 #' you can approve the change with [snapshot_accept()] and then the tests will
 #' pass the next time you run them.
 #'
@@ -56,7 +56,7 @@
 #'   so `variant` must be a single string of alphanumeric characters suitable
 #'   for use as a directory name.
 #'
-#'   Variants are intended for cases where the snapshot output varies
+#'   You can use variants to deal with cases where the snapshot output varies
 #'   and you want to capture and test the variations. Common use cases include
 #'   variations for operating system, R version, or version of key dependency.
 #'   Variants are an advanced feature. When you use them, you'll need to
