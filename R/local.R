@@ -110,12 +110,19 @@ local_reproducible_output <- function(width = 80,
     cli.condition_width = Inf,
     cli.num_colors = if (crayon) 8L else 1L,
     useFancyQuotes = FALSE,
-    lifecycle_verbosity = "warning",
     OutDec = ".",
     rlang_interactive = FALSE,
     max.print = 99999,
     .local_envir = .env,
   )
+
+  if (is.null(peek_option("lifecycle_verbosity"))) {
+    withr::local_options(
+      .local_envir = .env,
+      lifecycle_verbosity = "warning"
+    )
+  }
+
   withr::local_envvar(RSTUDIO = NA, .local_envir = .env)
   withr::local_language(lang, .local_envir = .env)
   withr::local_collate("C", .local_envir = .env)

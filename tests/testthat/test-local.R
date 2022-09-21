@@ -39,3 +39,10 @@ test_that("can override translation of error messages", {
   local_reproducible_output(lang = "es")
   expect_error(mean[[1]], "objeto de tipo")
 })
+
+local({
+  local_options(lifecycle_verbosity = "quiet")
+  test_that("lifecycle verbosity is preserved", {
+    expect_equal(peek_option("lifecycle_verbosity"), "quiet")
+  })
+})
