@@ -404,15 +404,15 @@ snapshot_accept_hint <- function(variant, file) {
   }
 
   paste0(
-    cli::format_inline("* Run  to accept the change"), "\n",
-    cli::format_inline("* Run {.run testthat::snapshot_review('{name}')} to interactively review the change")
+    cli::format_inline("* Run {.run testthat::snapshot_accept('{name}')} to accept the change."), "\n",
+    cli::format_inline("* Run {.run testthat::snapshot_review('{name}')} to interactively review the change.")
   )
 }
 
 snapshot_not_available <- function(message) {
-  inform(c(
-    cli::style_bold("Can't compare snapshot to reference when testing interactively"),
-    i = "Run `devtools::test()` or `testthat::test_file()` to see changes",
+  cli::cli_inform(c(
+    "{.strong Can't compare snapshot to reference when testing interactively.}",
+    i = "Run {.run devtools::test()} or `testthat::test_file()` to see changes.",
     i = message
   ))
 }

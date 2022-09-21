@@ -73,7 +73,8 @@ local_test_context <- function(.env = parent.frame()) {
 
 #' @export
 #' @param width Value of the `"width"` option.
-#' @param crayon Value of the `"crayon.enabled"` option.
+#' @param crayon Determines whether or not crayon (now cli) colour
+#'   and hyperlink styles should be applied.
 #' @param unicode Value of the `"cli.unicode"` option.
 #'   The test is skipped if `` l10n_info()$`UTF-8` `` is `FALSE`.
 #' @param lang Optionally, supply a BCP47 language code to set the language
@@ -105,6 +106,7 @@ local_reproducible_output <- function(width = 80,
   local_width(width = width, .env = .env)
   withr::local_options(
     crayon.enabled = crayon,
+    cli.hyperlink_run = crayon,
     cli.dynamic = FALSE,
     cli.unicode = unicode,
     cli.condition_width = Inf,
@@ -116,7 +118,7 @@ local_reproducible_output <- function(width = 80,
     max.print = 99999,
     .local_envir = .env,
   )
-  withr::local_envvar(RSTUDIO = NA, .local_envir = .env)
+  withr::local_envvar(RSTUDIO = if (crayon) 1 else NA, .local_envir = .env)
 
   if (isTRUE(capabilities("NLS"))) {
     withr::local_language(lang, .local_envir = .env)

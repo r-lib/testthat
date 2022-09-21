@@ -187,6 +187,7 @@ test_that("hint is informative", {
   withr::local_options(cli.hyperlink = TRUE)
 
   expect_snapshot({
+    str(cli::ansi_hyperlink_types())
     cat(snapshot_accept_hint("_default", "bar.R"))
     cat(snapshot_accept_hint("foo", "bar.R"))
   })

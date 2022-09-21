@@ -241,13 +241,24 @@
 # hint is informative
 
     Code
+      str(cli::ansi_hyperlink_types())
+    Output
+      List of 4
+       $ href    : logi TRUE
+       $ run     : logi FALSE
+        ..- attr(*, "type")= chr "standard"
+       $ help    : logi FALSE
+        ..- attr(*, "type")= chr "standard"
+       $ vignette: logi FALSE
+        ..- attr(*, "type")= chr "standard"
+    Code
       cat(snapshot_accept_hint("_default", "bar.R"))
     Output
-      * Run `]8;;rstudio:run:testthat::snapshot_accept('bar.R')snapshot_accept('bar.R')]8;;` to accept the change
-      * Run `]8;;rstudio:run:testthat::snapshot_review('bar.R')snapshot_review('bar.R')]8;;` to interactively review the change
+      * Run ]8;;ide:run:testthat::snapshot_accept('bar.R')testthat::snapshot_accept('bar.R')]8;; to accept the change.
+      * Run ]8;;ide:run:testthat::snapshot_review('bar.R')testthat::snapshot_review('bar.R')]8;; to interactively review the change.
     Code
       cat(snapshot_accept_hint("foo", "bar.R"))
     Output
-      * Run `]8;;rstudio:run:testthat::snapshot_accept('foo/bar.R')snapshot_accept('foo/bar.R')]8;;` to accept the change
-      * Run `]8;;rstudio:run:testthat::snapshot_review('foo/bar.R')snapshot_review('foo/bar.R')]8;;` to interactively review the change
+      * Run ]8;;ide:run:testthat::snapshot_accept('foo/bar.R')testthat::snapshot_accept('foo/bar.R')]8;; to accept the change.
+      * Run ]8;;ide:run:testthat::snapshot_review('foo/bar.R')testthat::snapshot_review('foo/bar.R')]8;; to interactively review the change.
 

@@ -20,7 +20,8 @@ local_reproducible_output(
 
 \item{width}{Value of the \code{"width"} option.}
 
-\item{crayon}{Value of the \code{"crayon.enabled"} option.}
+\item{crayon}{Determines whether or not crayon (now cli) colour
+and hyperlink styles should be applied.}
 
 \item{unicode}{Value of the \code{"cli.unicode"} option.
 The test is skipped if \code{l10n_info()$`UTF-8`} is \code{FALSE}.}
