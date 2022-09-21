@@ -39,21 +39,3 @@ test_that("can override translation of error messages", {
   local_reproducible_output(lang = "es")
   expect_error(mean[[1]], "objeto de tipo")
 })
-
-
-mock_nls <- function(has_nls) function(...) {
-  res <- capabilities(...)
-  res[which(names(res) == "NLS")] <- has_nls
-  res
-}
-
-test_that("does not warn of install when has NLS capability", {
-  skip_on_cran()
-  skip_if_not(capabilities("NLS")) # warning will be emitted regardless by withr
-
-  mockery::stub(local_reproducible_output, "capabilities", mock_nls(TRUE))
-  reset_warning_verbosity("warn_no_nls")
-
-  # expect all calls to be silent
-  expect_silent(local_reproducible_output(lang = "fr"))
-})
