@@ -2,7 +2,7 @@
 % Please edit documentation in R/reporter-progress.R
 \name{set_max_fails}
 \alias{set_max_fails}
-\title{Set maximum number of test failures before aborting the run}
+\title{Set maximum number of test failures allowed before aborting the run}
 \usage{
 set_max_fails(n)
 }
