@@ -7178,7 +7178,7 @@ namespace Catch {
         static void shuffle( V& vector ) {
 #ifdef CATCH_CONFIG_CPP11_SHUFFLE
             std::random_device device;
-            std::mt19937 rng(device());
+            std::mt19937 rng( device() );
             std::shuffle( vector.begin(), vector.end(), rng );
 #else
             random_shuffle( vector.begin(), vector.end(), rng );
