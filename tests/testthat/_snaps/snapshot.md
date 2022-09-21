@@ -241,17 +241,6 @@
 # hint is informative
 
     Code
-      str(cli::ansi_hyperlink_types())
-    Output
-      List of 4
-       $ href    : logi TRUE
-       $ run     : logi FALSE
-        ..- attr(*, "type")= chr "standard"
-       $ help    : logi FALSE
-        ..- attr(*, "type")= chr "standard"
-       $ vignette: logi FALSE
-        ..- attr(*, "type")= chr "standard"
-    Code
       cat(snapshot_accept_hint("_default", "bar.R"))
     Output
       * Run ]8;;ide:run:testthat::snapshot_accept('bar.R')testthat::snapshot_accept('bar.R')]8;; to accept the change.
