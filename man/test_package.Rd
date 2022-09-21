@@ -10,7 +10,7 @@ test_package(package, reporter = check_reporter(), ...)
 
 test_check(package, reporter = check_reporter(), ...)
 
-test_local(path = ".", reporter = NULL, ...)
+test_local(path = ".", reporter = NULL, ..., load_package = "source")
 }
 \arguments{
 \item{package}{If these tests belong to a package, the name of the package.}
@@ -24,6 +24,18 @@ See \link{Reporter} for more details and a list of built-in reporters.}
 \item{...}{Additional arguments passed to \code{\link[=test_dir]{test_dir()}}}
 
 \item{path}{Path to directory containing tests.}
+
+\item{load_package}{Strategy to use for load package code:
+\itemize{
+\item "none", the default, doesn't load the package.
+\item "installed", uses \code{\link[=library]{library()}} to load an installed package.
+\item "source", uses \code{\link[pkgload:load_all]{pkgload::load_all()}} to a source package.
+To configure the arguments passed to \code{load_all()}, add this
+field in your DESCRIPTION file:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{Config/testthat/load-all: list(export_all = FALSE, helpers = FALSE)
+}\if{html}{\out{</div>}}
+}}
 }
 \value{
 A list (invisibly) containing data about the test results.

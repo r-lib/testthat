@@ -171,24 +171,35 @@ test_files <- function(test_dir,
     lifecycle::deprecate_warn("3.0.0", "test_dir(wrap = )")
   }
 
+  # Must keep these two blocks in sync
   if (parallel) {
-    test_files <- test_files_parallel
+    test_files_parallel(
+      test_dir = test_dir,
+      test_package = test_package,
+      test_paths = test_paths,
+      load_helpers = load_helpers,
+      reporter = reporter,
+      env = env,
+      stop_on_failure = stop_on_failure,
+      stop_on_warning = stop_on_warning,
+      wrap = wrap,
+      load_package = load_package
+    )
   } else {
-    test_files <- test_files_serial
+    test_files_serial(
+      test_dir = test_dir,
+      test_package = test_package,
+      test_paths = test_paths,
+      load_helpers = load_helpers,
+      reporter = reporter,
+      env = env,
+      stop_on_failure = stop_on_failure,
+      stop_on_warning = stop_on_warning,
+      wrap = wrap,
+      load_package = load_package
+    )
   }
 
-  test_files(
-    test_dir = test_dir,
-    test_package = test_package,
-    test_paths = test_paths,
-    load_helpers = load_helpers,
-    reporter = reporter,
-    env = env,
-    stop_on_failure = stop_on_failure,
-    stop_on_warning = stop_on_warning,
-    wrap = wrap,
-    load_package = load_package
-  )
 }
 
 test_files_serial <- function(test_dir,
@@ -328,6 +339,10 @@ test_one_file <- function(path, env = test_env(), wrap = TRUE) {
 #'
 #' @export
 teardown_env <- function() {
+  if (is.null(testthat_env$teardown_env)) {
+    abort("`teardown_env()` has not been initialized", .internal = TRUE)
+  }
+
   testthat_env$teardown_env
 }
 

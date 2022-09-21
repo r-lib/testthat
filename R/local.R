@@ -117,7 +117,11 @@ local_reproducible_output <- function(width = 80,
     .local_envir = .env,
   )
   withr::local_envvar(RSTUDIO = NA, .local_envir = .env)
-  withr::local_language(lang, .local_envir = .env)
+
+  if (isTRUE(capabilities("NLS"))) {
+    withr::local_language(lang, .local_envir = .env)
+  }
+
   withr::local_collate("C", .local_envir = .env)
 }
 
