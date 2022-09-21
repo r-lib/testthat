@@ -1,5 +1,10 @@
 # testthat (development version)
 
+* `local_reproducible_output` will no longer attempt to set the local language
+  when an R version is used that was not compiled with natural language support
+  (NLS), which would previously emit non-test-related warnings during testing
+  (@dgkf, #1662).
+
 * New `set_max_fails()` helper to make it easier to set the maximum number of
   failures before stopping the test suite. And the advice to set to Inf is
   now clickable (#1628).
