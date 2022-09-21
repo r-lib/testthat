@@ -123,7 +123,7 @@
     `expected`: TRUE 
     --------------------------------------------------------------------------------
     Maximum number of failures exceeded; quitting at end of file.
-    Increase this number with (e.g.) `Sys.setenv('TESTTHAT_MAX_FAILS' = Inf)` 
+    i Increase this number with (e.g.) `testthat::set_max_fails(Inf)` 
     
     == Results =====================================================================
     [ FAIL 11 | WARN 0 | SKIP 0 | PASS 0 ]

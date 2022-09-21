@@ -58,8 +58,11 @@ with_reporter <- function(reporter, code, start_end_reporter = TRUE) {
 }
 
 stop_reporter <- function(message) {
-  signal(message, "testthat_abort_reporter")
-  abort(message)
+  cli::cli_abort(
+    message,
+    class = "testthat_abort_reporter",
+    error_call = NULL
+  )
 }
 
 #' Find reporter object given name or object.

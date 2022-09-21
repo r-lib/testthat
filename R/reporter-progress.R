@@ -206,9 +206,9 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
           snapshotter$end_file()
         }
 
-        stop_reporter(paste0(
-          "Maximum number of failures exceeded; quitting at end of file.\n",
-          "Increase this number with (e.g.) `Sys.setenv('TESTTHAT_MAX_FAILS' = Inf)`"
+        stop_reporter(c(
+          "Maximum number of failures exceeded; quitting at end of file.",
+          i = "Increase this number with (e.g.) {.run testthat::set_max_fails(Inf)}"
         ))
       }
     },
@@ -266,7 +266,7 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
         self$rule("Terminated early", line = 2)
       }
 
-      if (!self$show_praise || runif(1) > 0.1) {
+      if (!self$show_praise || stats::runif(1) > 0.1) {
         return()
       }
 
@@ -539,4 +539,17 @@ skip_bullets <- function(skips) {
 
   tbl <- table(skips)
   paste0(cli::symbol$bullet, " ", names(tbl), " (", tbl, ")")
+}
+
+
+#' Set maximum number of test failures allowed before aborting the run
+#'
+#' This sets the `TESTTHAT_MAX_FAILS` env var which will affect both the
+#' current R process and any processes launched from it.
+#'
+#' @param n Maximum number of failures allowed.
+#' @export
+#' @keywords internal
+set_max_fails <- function(n) {
+  Sys.setenv('TESTTHAT_MAX_FAILS' = n)
 }

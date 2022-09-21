@@ -37,8 +37,8 @@ within a function or for loop. See \link{quasi_label} for more details.}
 
 \item{perl}{logical.  Should Perl-compatible regexps be used?}
 
-\item{fixed}{logical.  If \code{TRUE}, \code{pattern} is a string to be
-    matched as is.  Overrides all conflicting arguments.}
+\item{fixed}{If \code{TRUE}, treats \code{regexp} as a string to be matched exactly
+(not a regular expressions). Overrides \code{perl}.}
 
 \item{...}{
   Arguments passed on to \code{\link[base:grep]{base::grepl}}
