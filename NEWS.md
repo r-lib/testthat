@@ -1,5 +1,9 @@
 # testthat (development version)
 
+* New `set_max_fails()` helper to make it easier to set the maximum number of
+  failures before stopping the test suite. And the advice to set to Inf is
+  now clickable (#1628).
+
 * Fixed a warning in R >=4.2.0 on Windows that occurred when using the C++
   testing infrastructure that testthat provides (#1672).
 
