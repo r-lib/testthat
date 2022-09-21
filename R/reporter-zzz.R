@@ -58,7 +58,7 @@ with_reporter <- function(reporter, code, start_end_reporter = TRUE) {
 }
 
 stop_reporter <- function(message) {
-  signal(message, "testthat_abort_reporter")
+  signal("", class = "testthat_abort_reporter")
   cli::cli_abort(message, error_call = NULL)
 }
 
