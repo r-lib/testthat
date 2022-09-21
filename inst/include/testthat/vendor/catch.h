@@ -7166,10 +7166,13 @@ namespace Catch {
 #define TWOBLUECUBES_CATCH_TEST_CASE_REGISTRY_IMPL_HPP_INCLUDED
 
 #include <algorithm>
-#include <random>
 #include <set>
 #include <sstream>
 #include <vector>
+
+#ifdef CATCH_CONFIG_CPP11_SHUFFLE
+#include <random>
+#endif
 
 namespace Catch {
 
