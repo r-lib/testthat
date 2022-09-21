@@ -542,7 +542,7 @@ skip_bullets <- function(skips) {
 }
 
 
-#' Set maximum number of test failures before aborting the run
+#' Set maximum number of test failures allowed before aborting the run
 #'
 #' This sets the `TESTTHAT_MAX_FAILS` env var which will affect both the
 #' current R process and any processes launched from it.
