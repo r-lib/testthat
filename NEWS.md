@@ -1,5 +1,10 @@
 # testthat (development version)
 
+* Fixed an issue that could prevent compilation of Catch unit tests with
+  LLVM 15. In the interim, packages needing a local workaround can set
+  `PKG_CPPFLAGS = -DCATCH_CONFIG_CPP11_NO_SHUFFLE` in their `src/Makevars`.
+  (@kevinushey, #1687)
+
 * `local_reproducible_output` will no longer attempt to set the local language
   when an R version is used that was not compiled with natural language support
   (NLS), which would previously emit non-test-related warnings during testing

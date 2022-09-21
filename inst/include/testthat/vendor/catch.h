@@ -7165,27 +7165,23 @@ namespace Catch {
 // #included from: catch_test_case_registry_impl.hpp
 #define TWOBLUECUBES_CATCH_TEST_CASE_REGISTRY_IMPL_HPP_INCLUDED
 
-#include <vector>
+#include <algorithm>
 #include <set>
 #include <sstream>
-#include <algorithm>
+#include <vector>
+
+#ifdef CATCH_CONFIG_CPP11_SHUFFLE
+#include <random>
+#endif
 
 namespace Catch {
 
     struct RandomNumberGenerator {
-        typedef std::ptrdiff_t result_type;
-
-        result_type operator()( result_type n ) const { return rand() % n; }
-
-#ifdef CATCH_CONFIG_CPP11_SHUFFLE
-        static constexpr result_type min() { return 0; }
-        static constexpr result_type max() { return 1000000; }
-        result_type operator()() const { return rand() % max(); }
-#endif
         template<typename V>
         static void shuffle( V& vector ) {
-            RandomNumberGenerator rng;
 #ifdef CATCH_CONFIG_CPP11_SHUFFLE
+            std::random_device device;
+            std::mt19937 rng( device() );
             std::shuffle( vector.begin(), vector.end(), rng );
 #else
             random_shuffle( vector.begin(), vector.end(), rng );
