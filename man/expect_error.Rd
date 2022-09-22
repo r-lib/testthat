@@ -61,7 +61,8 @@ within a function or for loop. See \link{quasi_label} for more details.}
 error message.
 \item If \code{NULL}, the default, asserts that there should be an error,
 but doesn't test for a specific value.
-\item If \code{NA}, asserts that there should be no errors.
+\item If \code{NA}, asserts that there should be no errors, but now recommend
+using \code{\link[=expect_without_warning]{expect_without_warning()}} and friends instead.
 }}
 
 \item{class}{Instead of supplying a regular expression, you can also supply
@@ -172,6 +173,10 @@ expect_message(f(-1), "already negative")
 expect_message(f(1), NA)
 }
 \seealso{
+\code{\link[=expect_without_error]{expect_without_error()}}, \code{expect_without_warning()},
+\code{expect_without_message()}, and \code{expect_without_condition()} to assert
+that code runs without errors/warnings/messages/conditions.
+
 Other expectations: 
 \code{\link{comparison-expectations}},
 \code{\link{equality-expectations}},

@@ -42,7 +42,8 @@
 #'     error message.
 #'   * If `NULL`, the default, asserts that there should be an error,
 #'     but doesn't test for a specific value.
-#'   * If `NA`, asserts that there should be no errors.
+#'   * If `NA`, asserts that there should be no errors, but now recommend
+#'     using [expect_without_warning()] and friends instead.
 #' @inheritDotParams expect_match -object -regexp -info -label -all
 #' @param class Instead of supplying a regular expression, you can also supply
 #'   a class name. This is useful for "classed" conditions.
@@ -51,6 +52,9 @@
 #' @param all *DEPRECATED* If you need to test multiple warnings/messages
 #'   you now need to use multiple calls to `expect_message()`/
 #'   `expect_warning()`
+#' @seealso [expect_without_error()], `expect_without_warning()`,
+#'   `expect_without_message()`, and `expect_without_condition()` to assert
+#'   that code runs without errors/warnings/messages/conditions.
 #' @return If `regexp = NA`, the value of the first argument; otherwise
 #'   the captured condition.
 #' @examples
