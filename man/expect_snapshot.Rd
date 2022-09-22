@@ -52,7 +52,7 @@ the intent of the code is something that can only be verified by a human
 (e.g. this is a useful error message). Learn more in
 \code{vignette("snapshotting")}.
 
-\code{expect_snapshot()} executes code like you ran it at the console, and
+\code{expect_snapshot()} runs code as if you had executed it at the console, and
 records the results, including output, messages, warnings, and errors.
 If you just want to compare the result, try \code{\link[=expect_snapshot_value]{expect_snapshot_value()}}.
 }

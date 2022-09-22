@@ -40,7 +40,7 @@ often rely on minor details of dependencies.}
 The default tolerance is \code{sqrt(.Machine$double.eps)}, unless long doubles
 are not available, in which case the test is skipped.}
 
-\item{...}{Passed on to \code{\link[waldo:compare]{waldo::compare()}} to you can control the details of
+\item{...}{Passed on to \code{\link[waldo:compare]{waldo::compare()}} so you can control the details of
 the comparison.}
 
 \item{variant}{If non-\code{NULL}, results will be saved in
@@ -56,7 +56,7 @@ variants are covered by automated tests, and ensure that you have a way
 to get snapshot changes out of your CI system and back into the repo.}
 }
 \description{
-Captures the result of function, flexibly serializing into into a text
+Captures the result of function, flexibly serializing it into a text
 representation that's stored in a snapshot file. See \code{\link[=expect_snapshot]{expect_snapshot()}}
 for more details on snapshot testing.
 }
