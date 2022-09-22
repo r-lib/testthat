@@ -181,6 +181,12 @@
     <loc>https://testthat.r-lib.org/dev/reference/expect_snapshot_file.html</loc>
   </url>
   <url>
+    <loc>https://testthat.r-lib.org/dev/reference/expect_snapshot_output.html</loc>
+  </url>
+  <url>
+    <loc>https://testthat.r-lib.org/dev/reference/expect_snapshot_value.html</loc>
+  </url>
+  <url>
     <loc>https://testthat.r-lib.org/dev/reference/expect_success.html</loc>
   </url>
   <url>

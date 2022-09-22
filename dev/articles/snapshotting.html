@@ -243,7 +243,7 @@
 <div class="section level2">
 <h2 id="other-types-of-output">Other types of output<a class="anchor" aria-label="anchor" href="#other-types-of-output"></a>
 </h2>
-<p>So far we’ve focussed on snapshot tests for output printed to the console. But <code><a href="../reference/expect_snapshot.html">expect_snapshot()</a></code> also captures messages, errors, and warnings. The following function generates a some output, a message, and a warning:</p>
+<p>So far we’ve focussed on snapshot tests for output printed to the console. But <code><a href="../reference/expect_snapshot.html">expect_snapshot()</a></code> also captures messages, errors, and warnings<a class="footnote-ref" tabindex="0" data-bs-toggle="popover" data-bs-content='&lt;p&gt;We no longer recommend &lt;code&gt;&lt;a href="../reference/expect_snapshot_output.html"&gt;expect_snapshot_output()&lt;/a&gt;&lt;/code&gt;, &lt;code&gt;&lt;a href="../reference/expect_snapshot_output.html"&gt;expect_snapshot_warning()&lt;/a&gt;&lt;/code&gt;, or &lt;code&gt;&lt;a href="../reference/expect_snapshot_output.html"&gt;expect_snapshot_error()&lt;/a&gt;&lt;/code&gt;. Just use &lt;code&gt;&lt;a href="../reference/expect_snapshot.html"&gt;expect_snapshot()&lt;/a&gt;&lt;/code&gt;.&lt;/p&gt;'><sup>1</sup></a>. The following function generates a some output, a message, and a warning:</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">f</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="st">"Hello"</span><span class="op">)</span></span>
@@ -312,15 +312,32 @@
 <span><span class="co">#&gt;   non-numeric argument to binary operator</span></span></code></pre></div>
 </div>
 <div class="section level2">
-<h2 id="other-types-of-snapshot">Other types of snapshot<a class="anchor" aria-label="anchor" href="#other-types-of-snapshot"></a>
+<h2 id="snapshotting-values">Snapshotting values<a class="anchor" aria-label="anchor" href="#snapshotting-values"></a>
 </h2>
-<p><code><a href="../reference/expect_snapshot.html">expect_snapshot()</a></code> is the most used snapshot function because it records everything: the code you run, printed output, messages, warnings, and errors. But sometimes you just want to capture the output or errors in which you might want to use <code><a href="../reference/expect_snapshot.html">expect_snapshot_output()</a></code> or <code><a href="../reference/expect_snapshot.html">expect_snapshot_error()</a></code>. This can happen when the associated code is lengthy or doesn’t add much in terms of capturing the test’s intent. <code><a href="../reference/expect_snapshot.html">expect_snapshot_error()</a></code> predates <code><a href="../reference/expect_snapshot.html">expect_snapshot()</a></code> and, if history had unfolded differently, <code>expect_snapshot(error = TRUE, ...)</code> probably would have made <code><a href="../reference/expect_snapshot.html">expect_snapshot_error()</a></code> unnecessary.</p>
-<p>Or rather than caring about side-effects, you may want to check that the value of an R object stays the same. In this case, you can use <code><a href="../reference/expect_snapshot.html">expect_snapshot_value()</a></code> which offers a number of serialisation approaches that provide a tradeoff between accuracy and human readability.</p>
+<p><code><a href="../reference/expect_snapshot.html">expect_snapshot()</a></code> is the most used snapshot function because it records everything: the code you run, printed output, messages, warnings, and errors. If you care about the return value rather than any side-effects, you may might to use <code><a href="../reference/expect_snapshot_value.html">expect_snapshot_value()</a></code> instead. It offers a number of serialisation approaches that provide a tradeoff between accuracy and human readability.</p>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/test_that.html">test_that</a></span><span class="op">(</span><span class="st">"can snapshot a simple list"</span>, <span class="op">{</span></span>
+<span>  <span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>a <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">5</span>, <span class="fl">10</span><span class="op">)</span>, b <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">"elephant"</span>, <span class="st">"banana"</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="../reference/expect_snapshot_value.html">expect_snapshot_value</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span><span class="op">}</span><span class="op">)</span></span>
+<span><span class="co">#&gt; ── <span style="color: #BB00BB; font-weight: bold;">Warning</span><span style="font-weight: bold;"> (&lt;text&gt;:3:3): can snapshot a simple list</span> ────────────────────────────</span></span>
+<span><span class="co">#&gt; Adding new snapshot:</span></span>
+<span><span class="co">#&gt; {</span></span>
+<span><span class="co">#&gt;   "a": [</span></span>
+<span><span class="co">#&gt;     1,</span></span>
+<span><span class="co">#&gt;     5,</span></span>
+<span><span class="co">#&gt;     10</span></span>
+<span><span class="co">#&gt;   ],</span></span>
+<span><span class="co">#&gt;   "b": [</span></span>
+<span><span class="co">#&gt;     "elephant",</span></span>
+<span><span class="co">#&gt;     "banana"</span></span>
+<span><span class="co">#&gt;   ]</span></span>
+<span><span class="co">#&gt; }</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="whole-file-snapshotting">Whole file snapshotting<a class="anchor" aria-label="anchor" href="#whole-file-snapshotting"></a>
 </h2>
-<p><code><a href="../reference/expect_snapshot.html">expect_snapshot()</a></code>, <code><a href="../reference/expect_snapshot.html">expect_snapshot_output()</a></code>, <code><a href="../reference/expect_snapshot.html">expect_snapshot_error()</a></code>, and <code><a href="../reference/expect_snapshot.html">expect_snapshot_value()</a></code> all store their snapshots in a single file per test. But that doesn’t work for all file types — for example, what happens if you want to snapshot an image? <code><a href="../reference/expect_snapshot_file.html">expect_snapshot_file()</a></code> provides an alternative workflow that generates one snapshot per expectation, rather than one file per test. Assuming you’re in <code>test-burger.R</code> then the snapshot created by <code>expect_snapshot_file(code_that_returns_path_to_file(), "toppings.png")</code> would be saved in <code>tests/testthat/_snaps/burger/toppings.png</code>. If a future change in the code creates a different file it will be saved in <code>tests/testthat/_snaps/burger/toppings.new.png</code>.</p>
+<p><code><a href="../reference/expect_snapshot.html">expect_snapshot()</a></code>, <code><a href="../reference/expect_snapshot_output.html">expect_snapshot_output()</a></code>, <code><a href="../reference/expect_snapshot_output.html">expect_snapshot_error()</a></code>, and <code><a href="../reference/expect_snapshot_value.html">expect_snapshot_value()</a></code> all store their snapshots in a single file per test. But that doesn’t work for all file types — for example, what happens if you want to snapshot an image? <code><a href="../reference/expect_snapshot_file.html">expect_snapshot_file()</a></code> provides an alternative workflow that generates one snapshot per expectation, rather than one file per test. Assuming you’re in <code>test-burger.R</code> then the snapshot created by <code>expect_snapshot_file(code_that_returns_path_to_file(), "toppings.png")</code> would be saved in <code>tests/testthat/_snaps/burger/toppings.png</code>. If a future change in the code creates a different file it will be saved in <code>tests/testthat/_snaps/burger/toppings.new.png</code>.</p>
 <p>Unlike <code><a href="../reference/expect_snapshot.html">expect_snapshot()</a></code> and friends, <code><a href="../reference/expect_snapshot_file.html">expect_snapshot_file()</a></code> can’t provide an automatic diff when the test fails. Instead you’ll need to call <code><a href="../reference/snapshot_accept.html">snapshot_review()</a></code>. This launches a Shiny app that allows you to visually review each change and approve it if it’s deliberate:</p>
 <p><img src="review-image.png"><img src="review-text.png"></p>
 <p>The display varies based on the file type (currently text files, common image files, and csv files are supported).</p>
@@ -344,6 +361,7 @@
 <li><p><code><a href="../reference/expect_known_output.html">expect_known_value()</a></code> and <code><a href="../reference/expect_known_output.html">expect_known_hash()</a></code> have all the disadvantages of <code><a href="../reference/expect_known_output.html">expect_known_output()</a></code>, but also produce binary output meaning that you can’t easily review test differences in pull requests.</p></li>
 </ul>
 </div>
+
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside>
 </div>
