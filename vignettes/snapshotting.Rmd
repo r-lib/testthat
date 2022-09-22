@@ -162,8 +162,11 @@ Since they can't automatically find the reference output, they instead just prin
 ## Other types of output
 
 So far we've focussed on snapshot tests for output printed to the console.
-But `expect_snapshot()` also captures messages, errors, and warnings.
+But `expect_snapshot()` also captures messages, errors, and warnings[^1].
 The following function generates a some output, a message, and a warning:
+
+[^1]: We no longer recommend `expect_snapshot_output()`, `expect_snapshot_warning()`, or `expect_snapshot_error()`.
+    Just use `expect_snapshot()`.
 
 ```{r}
 f <- function() {
@@ -210,15 +213,18 @@ test_that("you can't add weird thngs", {
 })
 ```
 
-## Other types of snapshot
+## Snapshotting values
 
 `expect_snapshot()` is the most used snapshot function because it records everything: the code you run, printed output, messages, warnings, and errors.
-But sometimes you just want to capture the output or errors in which you might want to use `expect_snapshot_output()` or `expect_snapshot_error()`.
-This can happen when the associated code is lengthy or doesn't add much in terms of capturing the test's intent.
-`expect_snapshot_error()` predates `expect_snapshot()` and, if history had unfolded differently, `expect_snapshot(error = TRUE, ...)` probably would have made `expect_snapshot_error()` unnecessary.
+If you care about the return value rather than any side-effects, you may might to use `expect_snapshot_value()` instead.
+It offers a number of serialisation approaches that provide a tradeoff between accuracy and human readability.
 
-Or rather than caring about side-effects, you may want to check that the value of an R object stays the same.
-In this case, you can use `expect_snapshot_value()` which offers a number of serialisation approaches that provide a tradeoff between accuracy and human readability.
+```{r}
+test_that("can snapshot a simple list", {
+  x <- list(a = list(1, 5, 10), b = list("elephant", "banana"))
+  expect_snapshot_value(x)
+})
+```
 
 ## Whole file snapshotting
 
