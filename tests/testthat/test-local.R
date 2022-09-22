@@ -39,3 +39,9 @@ test_that("can override translation of error messages", {
   local_reproducible_output(lang = "es")
   expect_error(mean[[1]], "objeto de tipo")
 })
+
+test_that("can force cli to display run hyperlinks", {
+  expect_snapshot(cat(cli::format_inline("{.run f()}")))
+  local_reproducible_output(crayon = TRUE, rstudio = TRUE)
+  expect_snapshot(cat(cli::format_inline("{.run f()}")))
+})

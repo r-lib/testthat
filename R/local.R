@@ -77,6 +77,7 @@ local_test_context <- function(.env = parent.frame()) {
 #'   and hyperlink styles should be applied.
 #' @param unicode Value of the `"cli.unicode"` option.
 #'   The test is skipped if `` l10n_info()$`UTF-8` `` is `FALSE`.
+#' @param rstudio Should we pretend that we're inside of RStudio?
 #' @param lang Optionally, supply a BCP47 language code to set the language
 #'   used for translating error messages. This is a lower case two letter
 #'   [ISO 639 country code](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes),
@@ -94,6 +95,7 @@ local_test_context <- function(.env = parent.frame()) {
 local_reproducible_output <- function(width = 80,
                                       crayon = FALSE,
                                       unicode = FALSE,
+                                      rstudio = FALSE,
                                       lang = "en",
                                       .env = parent.frame()) {
 
@@ -106,7 +108,6 @@ local_reproducible_output <- function(width = 80,
   local_width(width = width, .env = .env)
   withr::local_options(
     crayon.enabled = crayon,
-    cli.hyperlink_run = crayon,
     cli.dynamic = FALSE,
     cli.unicode = unicode,
     cli.condition_width = Inf,
@@ -118,7 +119,7 @@ local_reproducible_output <- function(width = 80,
     max.print = 99999,
     .local_envir = .env,
   )
-  withr::local_envvar(RSTUDIO = if (crayon) 1 else NA, .local_envir = .env)
+  withr::local_envvar(RSTUDIO = if (rstudio) 1 else NA, .local_envir = .env)
 
   if (isTRUE(capabilities("NLS"))) {
     withr::local_language(lang, .local_envir = .env)

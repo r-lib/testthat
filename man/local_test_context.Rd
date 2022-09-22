@@ -11,6 +11,7 @@ local_reproducible_output(
   width = 80,
   crayon = FALSE,
   unicode = FALSE,
+  rstudio = FALSE,
   lang = "en",
   .env = parent.frame()
 )
@@ -25,6 +26,8 @@ and hyperlink styles should be applied.}
 
 \item{unicode}{Value of the \code{"cli.unicode"} option.
 The test is skipped if \code{l10n_info()$`UTF-8`} is \code{FALSE}.}
+
+\item{rstudio}{Should we pretend that we're inside of RStudio?}
 
 \item{lang}{Optionally, supply a BCP47 language code to set the language
 used for translating error messages. This is a lower case two letter
