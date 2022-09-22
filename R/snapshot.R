@@ -8,7 +8,7 @@
 #' (e.g. this is a useful error message). Learn more in
 #' `vignette("snapshotting")`.
 #'
-#' `expect_snapshot()` executes code like you ran it at the console, and
+#' `expect_snapshot()` runs code as if you had executed it at the console, and
 #' records the results, including output, messages, warnings, and errors.
 #' If you just want to compare the result, try [expect_snapshot_value()].
 #'
@@ -281,7 +281,7 @@ expect_snapshot_condition <- function(base_class, x, class, cran = FALSE, varian
 
 #' Snapshot testing for values
 #'
-#' Captures the result of function, flexibly serializing into into a text
+#' Captures the result of function, flexibly serializing it into a text
 #' representation that's stored in a snapshot file. See [expect_snapshot()]
 #' for more details on snapshot testing.
 #'
@@ -296,7 +296,7 @@ expect_snapshot_condition <- function(base_class, x, class, cran = FALSE, varian
 #'   * `serialize()` produces a binary serialization of the object using
 #'     [serialize()]. This is all but guaranteed to work for any R object,
 #'     but produces a completely opaque serialization.
-#' @param ... Passed on to [waldo::compare()] to you can control the details of
+#' @param ... Passed on to [waldo::compare()] so you can control the details of
 #'   the comparison.
 #' @inheritParams expect_snapshot
 #' @inheritParams compare
