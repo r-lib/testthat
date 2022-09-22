@@ -1,7 +1,7 @@
 #' Does code print output to the console?
 #'
 #' Test for output produced by `print()` or `cat()`. This is best used for
-#' very simple output; for more complex cases use [verify_output()].
+#' very simple output; for more complex cases use [expect_snapshot()].
 #'
 #' @export
 #' @family expectations
