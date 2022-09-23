@@ -108,6 +108,7 @@ local_reproducible_output <- function(width = 80,
   local_width(width = width, .env = .env)
   withr::local_options(
     crayon.enabled = crayon,
+    # cli.hyperlink = crayon && rstudio,
     cli.dynamic = FALSE,
     cli.unicode = unicode,
     cli.condition_width = Inf,
@@ -119,7 +120,12 @@ local_reproducible_output <- function(width = 80,
     max.print = 99999,
     .local_envir = .env,
   )
-  withr::local_envvar(RSTUDIO = if (rstudio) 1 else NA, .local_envir = .env)
+  withr::local_envvar(
+    RSTUDIO = if (rstudio) 1 else NA,
+    RSTUDIO_SESSION_PID = if (rstudio) Sys.getpid() else NA,
+    RSTUDIO_CHILD_PROCESS_PANE = if (rstudio) "build" else NA,
+    .local_envir = .env
+  )
 
   if (isTRUE(capabilities("NLS"))) {
     withr::local_language(lang, .local_envir = .env)

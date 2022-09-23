@@ -1,14 +1,25 @@
-# can force cli to display run hyperlinks
+# can force cli to display RStudio style hyperlinks
 
     Code
-      cat(cli::format_inline("{.run f()}"))
+      str(cli::ansi_hyperlink_types())
     Output
-      `f()`
+      List of 4
+       $ href    : logi FALSE
+       $ run     : logi FALSE
+       $ help    : logi FALSE
+       $ vignette: logi FALSE
 
 ---
 
     Code
-      cat(cli::format_inline("{.run f()}"))
+      str(cli::ansi_hyperlink_types())
     Output
-      ]8;;ide:run:f()f()]8;;
+      List of 4
+       $ href    : logi TRUE
+       $ run     : logi TRUE
+        ..- attr(*, "type")= chr "rstudio"
+       $ help    : logi TRUE
+        ..- attr(*, "type")= chr "rstudio"
+       $ vignette: logi TRUE
+        ..- attr(*, "type")= chr "rstudio"
 

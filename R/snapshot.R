@@ -394,14 +394,23 @@ expect_snapshot_helper <- function(lab, val,
   )
 }
 
-snapshot_accept_hint <- function(variant, file) {
-  local_reporter_output()
+some_function <- function() {
+  str(cli::ansi_hyperlink_types())
+}
+
+snapshot_accept_hint <- function(variant, file, reset_output = TRUE) {
+  if (reset_output) {
+    local_reporter_output()
+  } else {
+    str(cli::ansi_hyperlink_types())
+  }
 
   if (is.null(variant) || variant == "_default") {
     name <- file
   } else {
     name <- file.path(variant, file)
   }
+
 
   paste0(
     cli::format_inline("* Run {.run testthat::snapshot_accept('{name}')} to accept the change."), "\n",

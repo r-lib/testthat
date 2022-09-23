@@ -183,11 +183,26 @@ test_that("errors and warnings are folded", {
   )
 })
 
-test_that("hint is informative", {
-  withr::local_options(cli.hyperlink = TRUE)
+# test_that("hint is informative", {
+#   expect_snapshot({
+#     cat(snapshot_accept_hint("_default", "bar.R", reset_output = FALSE))
+#     cat(snapshot_accept_hint("foo", "bar.R", reset_output = FALSE))
+#   })
+#
+#   local_reproducible_output(crayon = TRUE, rstudio = TRUE)
+#
+#   expect_snapshot({
+#     cat(snapshot_accept_hint("_default", "bar.R", reset_output = FALSE))
+#     cat(snapshot_accept_hint("foo", "bar.R", reset_output = FALSE))
+#   })
+# })
 
+test_that("snapshot hint" ,{
   expect_snapshot({
-    cat(snapshot_accept_hint("_default", "bar.R"))
-    cat(snapshot_accept_hint("foo", "bar.R"))
+    str(cli::ansi_hyperlink_types())
+  })
+  local_reproducible_output(crayon = TRUE, rstudio = TRUE)
+  expect_snapshot({
+    str(cli::ansi_hyperlink_types())
   })
 })
