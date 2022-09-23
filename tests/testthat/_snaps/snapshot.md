@@ -238,28 +238,16 @@
       x <- quote(!!foo)
       expect_equal(x, call("!", call("!", quote(foo))))
 
-# snapshot hint
+# hint is informative
 
     Code
-      str(cli::ansi_hyperlink_types())
+      cat(snapshot_accept_hint("_default", "bar.R", reset_output = FALSE))
     Output
-      List of 4
-       $ href    : logi FALSE
-       $ run     : logi FALSE
-       $ help    : logi FALSE
-       $ vignette: logi FALSE
-
----
-
+      * Run ]8;;ide:run:testthat::snapshot_accept('bar.R')testthat::snapshot_accept('bar.R')]8;; to accept the change.
+      * Run ]8;;ide:run:testthat::snapshot_review('bar.R')testthat::snapshot_review('bar.R')]8;; to interactively review the change.
     Code
-      str(cli::ansi_hyperlink_types())
+      cat(snapshot_accept_hint("foo", "bar.R", reset_output = FALSE))
     Output
-      List of 4
-       $ href    : logi TRUE
-       $ run     : logi TRUE
-        ..- attr(*, "type")= chr "rstudio"
-       $ help    : logi TRUE
-        ..- attr(*, "type")= chr "rstudio"
-       $ vignette: logi TRUE
-        ..- attr(*, "type")= chr "rstudio"
+      * Run ]8;;ide:run:testthat::snapshot_accept('foo/bar.R')testthat::snapshot_accept('foo/bar.R')]8;; to accept the change.
+      * Run ]8;;ide:run:testthat::snapshot_review('foo/bar.R')testthat::snapshot_review('foo/bar.R')]8;; to interactively review the change.
 

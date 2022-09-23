@@ -80,7 +80,7 @@ test_that("display of successes only is compact", {
   )
 
   # And even more compact if in RStudio pane
-  Sys.setenv("RSTUDIO" = 1)
+  local_reproducible_output(rstudio = TRUE)
   expect_snapshot_reporter(
     CompactProgressReporter$new(),
     test_path("reporters/successes.R")
