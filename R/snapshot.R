@@ -426,7 +426,7 @@ snapshot_accept_hint <- function(variant, file, reset_output = TRUE) {
 snapshot_not_available <- function(message) {
   cli::cli_inform(c(
     "{.strong Can't compare snapshot to reference when testing interactively.}",
-    i = "Run {.run devtools::test()} or `testthat::test_file()` to see changes.",
+    i = "Run {.run devtools::test()} or {.code testthat::test_file()} to see changes.",
     i = message
   ))
 }
