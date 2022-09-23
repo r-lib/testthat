@@ -8,17 +8,9 @@
 #' (e.g. this is a useful error message). Learn more in
 #' `vignette("snapshotting")`.
 #'
-#' * `expect_snapshot()` captures all messages, warnings, errors, and
-#'    output from code.
-#' * `expect_snapshot_output()` captures just output printed to the console.
-#' * `expect_snapshot_error()` captures an error message and
-#'   optionally checks its class.
-#' * `expect_snapshot_warning()` captures a warning message and
-#'   optionally checks its class.
-#' * `expect_snapshot_value()` captures the return value.
-#'
-#' (These functions supersede [verify_output()], [expect_known_output()],
-#' [expect_known_value()], and [expect_known_hash()].)
+#' `expect_snapshot()` runs code as if you had executed it at the console, and
+#' records the results, including output, messages, warnings, and errors.
+#' If you just want to compare the result, try [expect_snapshot_value()].
 #'
 #' @section Workflow:
 #' The first time that you run a snapshot expectation it will run `x`,
@@ -50,11 +42,9 @@
 #' @param error Do you expect the code to throw an error? The expectation
 #'   will fail (even on CRAN) if an unexpected error is thrown or the
 #'   expected error is not thrown.
-#' @param variant `r lifecycle::badge("experimental")`
-#'
-#'   If not-`NULL`, results will be saved in `_snaps/{variant}/{test.md}`,
-#'   so `variant` must be a single string of alphanumeric characters suitable
-#'   for use as a directory name.
+#' @param variant If non-`NULL`, results will be saved in
+#'   `_snaps/{variant}/{test.md}`, so `variant` must be a single string
+#'   suitable for use as a directory name.
 #'
 #'   You can use variants to deal with cases where the snapshot output varies
 #'   and you want to capture and test the variations. Common use cases include
@@ -206,8 +196,24 @@ snap_header <- function(state, header) {
   }
 }
 
+#' Snapshot helpers
+#'
+#' @description
+#' `r lifecycle::badge("questioning")`
+#'
+#' These snapshotting functions are questioning because they were developed
+#' before [expect_snapshot()] and we're not sure that they still have a
+#' role to play.
+#'
+#' * `expect_snapshot_output()` captures just output printed to the console.
+#' * `expect_snapshot_error()` captures an error message and
+#'   optionally checks its class.
+#' * `expect_snapshot_warning()` captures a warning message and
+#'   optionally checks its class.
+#'
+#' @inheritParams expect_snapshot
+#' @keywords internal
 #' @export
-#' @rdname expect_snapshot
 expect_snapshot_output <- function(x, cran = FALSE, variant = NULL) {
   edition_require(3, "expect_snapshot_output()")
   variant <- check_variant(variant)
@@ -228,7 +234,7 @@ expect_snapshot_output <- function(x, cran = FALSE, variant = NULL) {
 #'   always fail (even on CRAN) if an error of this class isn't seen
 #'   when executing `x`.
 #' @export
-#' @rdname expect_snapshot
+#' @rdname expect_snapshot_output
 expect_snapshot_error <- function(x, class = "error", cran = FALSE, variant = NULL) {
   edition_require(3, "expect_snapshot_error()")
   expect_snapshot_condition(
@@ -240,7 +246,7 @@ expect_snapshot_error <- function(x, class = "error", cran = FALSE, variant = NU
 }
 
 #' @export
-#' @rdname expect_snapshot
+#' @rdname expect_snapshot_output
 expect_snapshot_warning <- function(x, class = "warning", cran = FALSE, variant = NULL) {
   edition_require(3, "expect_snapshot_warning()")
   expect_snapshot_condition(
@@ -273,6 +279,12 @@ expect_snapshot_condition <- function(base_class, x, class, cran = FALSE, varian
   )
 }
 
+#' Snapshot testing for values
+#'
+#' Captures the result of function, flexibly serializing it into a text
+#' representation that's stored in a snapshot file. See [expect_snapshot()]
+#' for more details on snapshot testing.
+#'
 #' @param style Serialization style to use:
 #'   * `json` uses [jsonlite::fromJSON()] and [jsonlite::toJSON()]. This
 #'      produces the simplest output but only works for relatively simple
@@ -284,11 +296,11 @@ expect_snapshot_condition <- function(base_class, x, class, cran = FALSE, varian
 #'   * `serialize()` produces a binary serialization of the object using
 #'     [serialize()]. This is all but guaranteed to work for any R object,
 #'     but produces a completely opaque serialization.
-#' @param ... For `expect_snapshot_value()` only, passed on to
-#'   [waldo::compare()] so you can control the details of the comparison.
-#' @export
+#' @param ... Passed on to [waldo::compare()] so you can control the details of
+#'   the comparison.
+#' @inheritParams expect_snapshot
 #' @inheritParams compare
-#' @rdname expect_snapshot
+#' @export
 expect_snapshot_value <- function(x,
                                   style = c("json", "json2", "deparse", "serialize"),
                                   cran = FALSE,

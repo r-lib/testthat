@@ -41,7 +41,9 @@ reference:
 
 - title: Snapshot testing
   contents:
-  - starts_with("expect_snapshot_")
+  - expect_snapshot
+  - expect_snapshot_value
+  - expect_snapshot_file
   - starts_with("snapshot_")
 
 - title: Test helpers

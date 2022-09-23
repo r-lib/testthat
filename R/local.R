@@ -127,7 +127,7 @@ local_reproducible_output <- function(width = 80,
     .local_envir = .env
   )
 
-  if (isTRUE(capabilities("NLS"))) {
+  if (isTRUE(capabilities("NLS")) && Sys.getenv("LANG") != "C") {
     withr::local_language(lang, .local_envir = .env)
   }
 
