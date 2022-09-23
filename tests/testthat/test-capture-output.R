@@ -3,7 +3,7 @@ test_that("multiplication works", {
   latin1 <- "M\xe4chler"
   Encoding(latin1) <- "latin1"
 
-  expect_equal(capture_output(cat(latin1)), utf8)
+  expect_equal(capture_output_lines(cat(latin1)), utf8)
 })
 
 test_that("capture output captures output", {
