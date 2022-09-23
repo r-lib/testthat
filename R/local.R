@@ -124,6 +124,7 @@ local_reproducible_output <- function(width = 80,
     RSTUDIO = if (rstudio) 1 else NA,
     RSTUDIO_SESSION_PID = if (rstudio) Sys.getpid() else NA,
     RSTUDIO_CHILD_PROCESS_PANE = if (rstudio) "build" else NA,
+    RSTUDIO_CLI_HYPERLINKS = if (rstudio) 1 else NA,
     .local_envir = .env
   )
 
