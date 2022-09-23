@@ -7,7 +7,7 @@
 
 [![CRAN
 status](https://www.r-pkg.org/badges/version/testthat)](https://cran.r-project.org/package=testthat)
-[![R-CMD-check](https://github.com/r-lib/testthat/workflows/R-CMD-check/badge.svg)](https://github.com/r-lib/testthat/actions)
+[![R-CMD-check](https://github.com/r-lib/testthat/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/r-lib/testthat/actions/workflows/R-CMD-check.yaml)
 [![Codecov test
 coverage](https://codecov.io/gh/r-lib/testthat/branch/main/graph/badge.svg)](https://app.codecov.io/gh/r-lib/testthat?branch=main)
 <!-- badges: end -->
@@ -20,16 +20,16 @@ possible, so that you get a visceral satisfaction from writing tests.
 Testing should be addictive, so you do it all the time. To make that
 happen, testthat:
 
--   Provides functions that make it easy to describe what you expect a
-    function to do, including catching errors, warnings, and messages.
+- Provides functions that make it easy to describe what you expect a
+  function to do, including catching errors, warnings, and messages.
 
--   Easily integrates in your existing workflow, whether it’s informal
-    testing on the command line, building test suites, or using R CMD
-    check.
+- Easily integrates in your existing workflow, whether it’s informal
+  testing on the command line, building test suites, or using R CMD
+  check.
 
--   Displays test progress visually, showing a pass, fail, or error for
-    every expectation. If you’re using the terminal or a recent version
-    of RStudio, it’ll even colour the output.
+- Displays test progress visually, showing a pass, fail, or error for
+  every expectation. If you’re using the terminal or a recent version of
+  RStudio, it’ll even colour the output.
 
 testthat draws inspiration from the xUnit family of testing packages, as
 well as from many of the innovative ruby testing libraries, like
