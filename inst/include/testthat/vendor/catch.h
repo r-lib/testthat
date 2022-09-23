@@ -7184,7 +7184,7 @@ namespace Catch {
             std::mt19937 rng( device() );
             std::shuffle( vector.begin(), vector.end(), rng );
 #else
-            random_shuffle( vector.begin(), vector.end(), rng );
+            std::random_shuffle( vector.begin(), vector.end() );
 #endif
         }
     };
