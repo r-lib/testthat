@@ -108,7 +108,7 @@ local_reproducible_output <- function(width = 80,
   local_width(width = width, .env = .env)
   withr::local_options(
     crayon.enabled = crayon,
-    # cli.hyperlink = crayon && rstudio,
+    cli.hyperlink = crayon && rstudio,
     cli.dynamic = FALSE,
     cli.unicode = unicode,
     cli.condition_width = Inf,
