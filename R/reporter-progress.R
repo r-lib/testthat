@@ -325,11 +325,7 @@ testthat_max_fails <- function() {
 CompactProgressReporter <- R6::R6Class("CompactProgressReporter",
   inherit = ProgressReporter,
   public = list(
-    # Is this being run by RStudio's test file button?
-    rstudio = FALSE,
-
-    initialize = function(rstudio = FALSE, min_time = Inf, ...) {
-      self$rstudio <- rstudio
+    initialize = function(min_time = Inf, ...) {
       super$initialize(min_time = min_time, ...)
     },
 

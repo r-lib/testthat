@@ -1,5 +1,8 @@
 # testthat (development version)
 
+* `test_check()` now suppresses hyperlinks since they'll take you to the wrong
+  places (#1648).
+
 * Fixed an issue that could prevent compilation of Catch unit tests with
   LLVM 15. In the interim, packages needing a local workaround can set
   `PKG_CPPFLAGS = -DCATCH_CONFIG_CPP11_NO_SHUFFLE` in their `src/Makevars`.
