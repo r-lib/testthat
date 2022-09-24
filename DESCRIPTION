@@ -1,16 +1,12 @@
 Package: testthat
 Title: Unit Testing for R
 Version: 3.1.4.9000
-Authors@R: 
-    c(person(given = "Hadley",
-             family = "Wickham",
-             role = c("aut", "cre"),
-             email = "hadley@rstudio.com"),
-      person(given = "RStudio",
-             role = c("cph", "fnd")),
-      person(given = "R Core team",
-             role = "ctb",
-             comment = "Implementation of utils::recover()"))
+Authors@R: c(
+    person("Hadley", "Wickham", , "hadley@rstudio.com", role = c("aut", "cre")),
+    person("RStudio", role = c("cph", "fnd")),
+    person("R Core team", role = "ctb",
+           comment = "Implementation of utils::recover()")
+  )
 Description: Software testing is important, but, in part because it is
     frustrating and boring, many of us avoid it. 'testthat' is a testing
     framework for R that is easy to learn and use, and integrates with
@@ -55,9 +51,9 @@ Suggests:
     xml2
 VignetteBuilder: 
     knitr
+Config/Needs/website: tidyverse/tidytemplate
 Config/testthat/edition: 3
 Config/testthat/start-first: watcher, parallel*
-Config/Needs/website: tidyverse/tidytemplate
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE, r6 = FALSE)
 RoxygenNote: 7.2.1
