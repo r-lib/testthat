@@ -54,12 +54,11 @@ eval_with_output <- function(code, print = FALSE, width = 80) {
   }
 
   # A sink() will always write in the native encoding, so we read with
-  # readLines and convert to UTF-8
-
+  # base::readLines() then convert to UTF-8
   list(
     val = result$value,
     vis = result$visible,
-    out = enc2utf8(readLines(path))
+    out = enc2utf8(base::readLines(path, warn = FALSE))
   )
 }
 
