@@ -25,16 +25,3 @@ test_that("capture_messages captures messages", {
   })
   expect_equal(out, c("a\n", "b\n")) # message adds LF by default
 })
-
-test_that("capture output captures output", {
-  out1 <- capture_output(print(1:5))
-  out2 <- capture_output(1:5, print = TRUE)
-
-  expect_equal(out1, "[1] 1 2 3 4 5")
-  expect_equal(out2, "[1] 1 2 3 4 5")
-})
-
-test_that("capture output doesn't print invisible things", {
-  out <- capture_output(invisible(1), print = TRUE)
-  expect_equal(out, "")
-})

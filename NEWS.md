@@ -1,5 +1,8 @@
 # testthat (development version)
 
+* Improve way `capture_output()` handles encoding thanks to suggestion from
+  Kurt Hornik.
+
 * `test_check()` now suppresses hyperlinks since they'll take you to the wrong
   places (#1648).
 
