@@ -33,7 +33,8 @@ so you'll typically want to make it narrower by either supplying \code{message}
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
 
 These expectations are the opposite of \code{\link[=expect_error]{expect_error()}},
-\code{expect_warning()}, \code{expect_message()}, and \code{expect_condition()}. They assert the absence of an error, warning, or message, respectively.
+\code{expect_warning()}, \code{expect_message()}, and \code{expect_condition()}. They
+assert the absence of an error, warning, or message, respectively.
 }
 \examples{
 expect_without_warning(1 + 1)

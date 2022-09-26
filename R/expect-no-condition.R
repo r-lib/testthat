@@ -4,7 +4,8 @@
 #' `r lifecycle::badge("experimental")`
 #'
 #' These expectations are the opposite of [expect_error()],
-#' `expect_warning()`, `expect_message()`, and `expect_condition()`. They assert the absence of an error, warning, or message, respectively.
+#' `expect_warning()`, `expect_message()`, and `expect_condition()`. They
+#' assert the absence of an error, warning, or message, respectively.
 #'
 #' @inheritParams expect_error
 #' @param message,class The default usage with `message = NULL, class = NULL`
@@ -27,7 +28,6 @@
 #' # warning does match so causes a failure:
 #' try(expect_without_warning(foo(), message = "problem"))
 expect_without_error <- function(object,
-
                                  ...,
                                  message = NULL,
                                  class = NULL) {
