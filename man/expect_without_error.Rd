@@ -31,7 +31,9 @@ want to be more specific about the condition you are hoping \strong{not} to see,
 i.e. the condition that motivated you to write the test.  Similar to
 \code{expect_error()} and friends, you can specify the \code{message} (a regular
 expression that the message of the condition must match) and/or the
-\code{class} (a class the condition must inherit from).
+\code{class} (a class the condition must inherit from). This ensures that
+the message/warnings you don't want never recur, while allowing new
+messages/warnings to bubble up for you to deal with.
 
 Note that you should only use \code{message} with errors/warnings/messages
 that you generate, or that base R generates (which tend to be stable).

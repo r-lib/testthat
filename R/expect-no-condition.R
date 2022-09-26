@@ -16,7 +16,9 @@
 #'   i.e. the condition that motivated you to write the test.  Similar to
 #'   `expect_error()` and friends, you can specify the `message` (a regular
 #'   expression that the message of the condition must match) and/or the
-#'   `class` (a class the condition must inherit from).
+#'   `class` (a class the condition must inherit from). This ensures that
+#'   the message/warnings you don't want never recur, while allowing new
+#'   messages/warnings to bubble up for you to deal with.
 #'
 #'   Note that you should only use `message` with errors/warnings/messages
 #'   that you generate, or that base R generates (which tend to be stable).
