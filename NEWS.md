@@ -4,6 +4,9 @@
   `expect_without_message()`, and `expect_without_condition()` for asserting
   the code runs without an error, warning, message, or condition (#1679).
 
+* Improve way `capture_output()` handles encoding thanks to suggestion from
+  Kurt Hornik.
+
 * `test_check()` now suppresses hyperlinks since they'll take you to the wrong
   places (#1648).
 
