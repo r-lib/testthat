@@ -1,6 +1,6 @@
 # testthat (development version)
 
-* New `expect_without_error()`, `expect_without_warning()`, 
+* New experimental `expect_without_error()`, `expect_without_warning()`, 
   `expect_without_message()`, and `expect_without_condition()` for asserting
   the code runs without an error, warning, message, or condition (#1679).
 

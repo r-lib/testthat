@@ -1,5 +1,8 @@
 #' Does code run without error, warning, message, or other condition?
 #'
+#' @description
+#' `r lifecycle::badge("experimental")`
+#'
 #' These expectations are the opposite of [expect_error()],
 #' `expect_warning()`, `expect_message()`, and `expect_condition()`. They assert the absence of an error, warning, or message, respectively.
 #'
