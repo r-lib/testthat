@@ -61,8 +61,8 @@ within a function or for loop. See \link{quasi_label} for more details.}
 error message.
 \item If \code{NULL}, the default, asserts that there should be an error,
 but doesn't test for a specific value.
-\item If \code{NA}, asserts that there should be no errors, but now recommend
-using \code{\link[=expect_without_warning]{expect_without_warning()}} and friends instead.
+\item If \code{NA}, asserts that there should be no errors, but we now recommend
+using \code{\link[=expect_without_error]{expect_without_error()}} and friends instead.
 }}
 
 \item{class}{Instead of supplying a regular expression, you can also supply

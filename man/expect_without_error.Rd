@@ -5,7 +5,7 @@
 \alias{expect_without_warning}
 \alias{expect_without_message}
 \alias{expect_without_condition}
-\title{Does code running without error, warning, message, or other condition?}
+\title{Does code run without error, warning, message, or other condition?}
 \usage{
 expect_without_error(object, ..., message = NULL, class = NULL)
 
@@ -23,16 +23,15 @@ within a function or for loop. See \link{quasi_label} for more details.}
 
 \item{...}{These dots are for future extensions and must be empty.}
 
-\item{message, class}{The default usage with \verb{message = NULL, clas = NULL}
+\item{message, class}{The default usage with \verb{message = NULL, class = NULL}
 will match any error/warning/message/condition. This is a broad assertion
 so you'll typically want to make it narrower by either supplying \code{message}
 (a regular expression that must match the message of the condition) or
 \code{class} (which the condition must inherit from).}
 }
 \description{
-These expectations assert the opposite of \code{\link[=expect_error]{expect_error()}},
-\code{expect_warning()}, \code{expect_message()}, and \code{expect_condition()}, namely
-that the code runs without error, warning, or message respectively.
+These expectations are the opposite of \code{\link[=expect_error]{expect_error()}},
+\code{expect_warning()}, \code{expect_message()}, and \code{expect_condition()}. They assert the absence of an error, warning, or message, respectively.
 }
 \examples{
 expect_without_warning(1 + 1)
