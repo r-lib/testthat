@@ -42,8 +42,8 @@
 #'     error message.
 #'   * If `NULL`, the default, asserts that there should be an error,
 #'     but doesn't test for a specific value.
-#'   * If `NA`, asserts that there should be no errors, but now recommend
-#'     using [expect_without_warning()] and friends instead.
+#'   * If `NA`, asserts that there should be no errors, but we now recommend
+#'     using [expect_without_error()] and friends instead.
 #' @inheritDotParams expect_match -object -regexp -info -label -all
 #' @param class Instead of supplying a regular expression, you can also supply
 #'   a class name. This is useful for "classed" conditions.

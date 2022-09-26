@@ -2,7 +2,7 @@
 
 * New `expect_without_error()`, `expect_without_warning()`, 
   `expect_without_message()`, and `expect_without_condition()` for asserting
-  the code runs with a error, warning, message, or condition (#1679).
+  the code runs without an error, warning, message, or condition (#1679).
 
 * `test_check()` now suppresses hyperlinks since they'll take you to the wrong
   places (#1648).

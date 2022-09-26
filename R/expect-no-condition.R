@@ -1,11 +1,10 @@
-#' Does code running without error, warning, message, or other condition?
+#' Does code run without error, warning, message, or other condition?
 #'
-#' These expectations assert the opposite of [expect_error()],
-#' `expect_warning()`, `expect_message()`, and `expect_condition()`, namely
-#' that the code runs without error, warning, or message respectively.
+#' These expectations are the opposite of [expect_error()],
+#' `expect_warning()`, `expect_message()`, and `expect_condition()`. They assert the absence of an error, warning, or message, respectively.
 #'
 #' @inheritParams expect_error
-#' @param message,class The default usage with `message = NULL, clas = NULL`
+#' @param message,class The default usage with `message = NULL, class = NULL`
 #'   will match any error/warning/message/condition. This is a broad assertion
 #'   so you'll typically want to make it narrower by either supplying `message`
 #'   (a regular expression that must match the message of the condition) or
@@ -28,8 +27,7 @@ expect_without_error <- function(object,
 
                                  ...,
                                  message = NULL,
-                                 class = NULL
-                                 ) {
+                                 class = NULL) {
   check_dots_empty()
   expect_without_("error", {{ object }}, ..., regexp = message, class = class)
 }
