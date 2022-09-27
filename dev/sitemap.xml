@@ -157,6 +157,9 @@
     <loc>https://testthat.r-lib.org/dev/reference/expect_named.html</loc>
   </url>
   <url>
+    <loc>https://testthat.r-lib.org/dev/reference/expect_no_error.html</loc>
+  </url>
+  <url>
     <loc>https://testthat.r-lib.org/dev/reference/expect_null.html</loc>
   </url>
   <url>
