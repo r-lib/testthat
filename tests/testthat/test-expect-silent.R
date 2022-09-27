@@ -9,3 +9,10 @@ test_that("checks for any type of output", {
 test_that("returns first argument", {
   expect_equal(expect_silent(1), 1)
 })
+
+test_that("deprecations are ignored", {
+  foo <- function() {
+    lifecycle::deprecate_warn("1.0.0", "foo()")
+  }
+  expect_success(expect_silent(foo))
+})

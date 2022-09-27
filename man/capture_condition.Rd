@@ -22,7 +22,7 @@ capture_warning(code, entrace = FALSE)
 
 capture_messages(code)
 
-capture_warnings(code)
+capture_warnings(code, ignore_deprecation = FALSE)
 }
 \arguments{
 \item{code}{Code to evaluate}

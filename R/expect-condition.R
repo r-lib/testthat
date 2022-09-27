@@ -167,7 +167,7 @@ expect_warning <- function(object,
       trace_env = caller_env()
     )
   } else {
-    act <- quasi_capture(enquo(object), label, capture_warnings)
+    act <- quasi_capture(enquo(object), label, capture_warnings, ignore_deprecation = identical(regexp, NA))
     msg <- compare_messages(
       act$cap, act$lab, regexp = regexp, all = all, ...,
       cond_type = "warnings"
@@ -229,6 +229,7 @@ expect_condition <- function(object,
       trace_env = caller_env()
     )
   } else {
+
     act <- quasi_capture(enquo(object), label, capture_condition, entrace = TRUE)
     msg <- compare_condition_2e(
       act$cap,
@@ -260,7 +261,8 @@ expect_condition_matching <- function(base_class,
     class %||% base_class,
     regexp,
     ...,
-    inherit = inherit
+    inherit = inherit,
+    ignore_deprecation = identical(regexp, NA)
   )
 
   act <- quasi_capture(
@@ -284,7 +286,7 @@ expect_condition_matching <- function(base_class,
 
 # -------------------------------------------------------------------------
 
-cnd_matcher <- function(class, pattern = NULL, ..., inherit = TRUE) {
+cnd_matcher <- function(class, pattern = NULL, ..., inherit = TRUE, ignore_deprecation = TRUE) {
   if (!is_string(class)) {
     abort("`class` must be a single string")
   }
@@ -297,12 +299,20 @@ cnd_matcher <- function(class, pattern = NULL, ..., inherit = TRUE) {
       cnd$parent <- NULL
     }
 
+    if (ignore_deprecation && is_deprecation(cnd)) {
+      return(FALSE)
+    }
+
     if (is.null(pattern) || isNA(pattern)) {
       cnd_inherits(cnd, class)
     } else {
       cnd_matches(cnd, class, pattern, ...)
     }
   }
+}
+
+is_deprecation <- function(x) {
+  inherits(x, "lifecycle_warning_deprecated")
 }
 
 cnd_inherits <- function(cnd, class) {

@@ -1,5 +1,11 @@
 # testthat (development version)
 
+* Deprecation warnings are no longer captured by `expect_warning(code, NA)`,
+  `expect_no_warning(code)`, or `expect_silent(code)`. This ensures that they 
+  bubble up to the top level so that you can address them (#1680). If you want 
+  to assert that code does not throw a deprecation warning, use
+  `expect_no_condition(code(), class = "lifecycle_warning_deprecation")`.
+
 * New experimental `expect_no_error()`, `expect_no_warning()`, 
   `expect_no_message()`, and `expect_no_condition()` for asserting
   the code runs without an error, warning, message, or condition (#1679).

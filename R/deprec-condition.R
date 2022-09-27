@@ -96,12 +96,16 @@ capture_messages <- function(code) {
 
 #' @export
 #' @rdname capture_condition
-capture_warnings <- function(code) {
+capture_warnings <- function(code, ignore_deprecation = FALSE) {
   out <- Stack$new()
 
   withCallingHandlers(
     code,
     warning = function(condition) {
+      if (ignore_deprecation && is_deprecation(condition)) {
+        return()
+      }
+
       out$push(condition)
       maybe_restart("muffleWarning")
     }

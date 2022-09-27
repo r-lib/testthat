@@ -18,8 +18,10 @@
 evaluate_promise <- function(code, print = FALSE) {
   warnings <- Stack$new()
   handle_warning <- function(condition) {
-    warnings$push(condition)
-    maybe_restart("muffleWarning")
+    if (!is_deprecation(condition)) {
+      warnings$push(condition)
+      maybe_restart("muffleWarning")
+    }
   }
 
   messages <- Stack$new()
