@@ -34,6 +34,7 @@ reference:
 - subtitle: Side-effects
   contents:
   - expect_error
+  - expect_no_error
   - expect_invisible
   - expect_output
   - expect_silent

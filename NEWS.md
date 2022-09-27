@@ -1,5 +1,9 @@
 # testthat (development version)
 
+* New experimental `expect_no_error()`, `expect_no_warning()`, 
+  `expect_no_message()`, and `expect_no_condition()` for asserting
+  the code runs without an error, warning, message, or condition (#1679).
+
 * Fixed a warning in R >=4.2.0 on Windows that occurred when using the C++
   testing infrastructure that testthat provides (#1672).
 
