@@ -29,61 +29,61 @@
 #' @inheritParams rlang::args_dots_empty
 #' @export
 #' @examples
-#' expect_without_warning(1 + 1)
+#' expect_no_warning(1 + 1)
 #'
 #' foo <- function(x) {
 #'   warning("This is a problem!")
 #' }
 #'
 #' # warning doesn't match so bubbles up:
-#' expect_without_warning(foo(), message = "bananas")
+#' expect_no_warning(foo(), message = "bananas")
 #'
 #' # warning does match so causes a failure:
-#' try(expect_without_warning(foo(), message = "problem"))
-expect_without_error <- function(object,
+#' try(expect_no_warning(foo(), message = "problem"))
+expect_no_error <- function(object,
                                  ...,
                                  message = NULL,
                                  class = NULL) {
   check_dots_empty()
-  expect_without_("error", {{ object }}, ..., regexp = message, class = class)
+  expect_no_("error", {{ object }}, ..., regexp = message, class = class)
 }
 
 
 #' @export
-#' @rdname expect_without_error
-expect_without_warning <- function(object,
+#' @rdname expect_no_error
+expect_no_warning <- function(object,
                                    ...,
                                    message = NULL,
                                    class = NULL
                                    ) {
   check_dots_empty()
-  expect_without_("warning", {{ object }}, ..., regexp = message, class = class)
+  expect_no_("warning", {{ object }}, ..., regexp = message, class = class)
 }
 
 #' @export
-#' @rdname expect_without_error
-expect_without_message <- function(object,
+#' @rdname expect_no_error
+expect_no_message <- function(object,
                                    ...,
                                    message = NULL,
                                    class = NULL
                                    ) {
   check_dots_empty()
-  expect_without_("messsage", {{ object }}, ..., regexp = message, class = class)
+  expect_no_("messsage", {{ object }}, ..., regexp = message, class = class)
 }
 
 #' @export
-#' @rdname expect_without_error
-expect_without_condition <- function(object,
+#' @rdname expect_no_error
+expect_no_condition <- function(object,
                                      ...,
                                      message = NULL,
                                      class = NULL
                                      ) {
   check_dots_empty()
-  expect_without_("condition", {{ object }}, ..., regexp = message, class = class)
+  expect_no_("condition", {{ object }}, ..., regexp = message, class = class)
 }
 
 
-expect_without_ <- function(base_class,
+expect_no_ <- function(base_class,
                             object,
                             regexp = NULL,
                             class = NULL,

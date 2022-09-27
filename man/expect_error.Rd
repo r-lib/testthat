@@ -62,7 +62,7 @@ error message.
 \item If \code{NULL}, the default, asserts that there should be an error,
 but doesn't test for a specific value.
 \item If \code{NA}, asserts that there should be no errors, but we now recommend
-using \code{\link[=expect_without_error]{expect_without_error()}} and friends instead.
+using \code{\link[=expect_no_error]{expect_no_error()}} and friends instead.
 }
 
 Note that you should only use \code{message} with errors/warnings/messages
@@ -179,8 +179,8 @@ expect_message(f(-1), "already negative")
 expect_message(f(1), NA)
 }
 \seealso{
-\code{\link[=expect_without_error]{expect_without_error()}}, \code{expect_without_warning()},
-\code{expect_without_message()}, and \code{expect_without_condition()} to assert
+\code{\link[=expect_no_error]{expect_no_error()}}, \code{expect_no_warning()},
+\code{expect_no_message()}, and \code{expect_no_condition()} to assert
 that code runs without errors/warnings/messages/conditions.
 
 Other expectations: 

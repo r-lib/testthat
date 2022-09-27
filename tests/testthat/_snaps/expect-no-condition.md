@@ -1,7 +1,7 @@
 # matched conditions give informative message
 
     Code
-      expect_without_warning(foo())
+      expect_no_warning(foo())
     Condition
       Error:
       ! Expected `foo()` to run without any warnings.
@@ -9,7 +9,7 @@
         Warning:
         This is a problem!
     Code
-      expect_without_warning(foo(), message = "problem")
+      expect_no_warning(foo(), message = "problem")
     Condition
       Error:
       ! Expected `foo()` to run without any warnings matching pattern 'problem'.
@@ -17,7 +17,7 @@
         Warning:
         This is a problem!
     Code
-      expect_without_warning(foo(), class = "test")
+      expect_no_warning(foo(), class = "test")
     Condition
       Error:
       ! Expected `foo()` to run without any warnings of class 'test'.
@@ -25,7 +25,7 @@
         Warning:
         This is a problem!
     Code
-      expect_without_warning(foo(), message = "problem", class = "test")
+      expect_no_warning(foo(), message = "problem", class = "test")
     Condition
       Error:
       ! Expected `foo()` to run without any warnings of class 'test' matching pattern 'problem'.
