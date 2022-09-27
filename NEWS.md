@@ -4,11 +4,6 @@
   `expect_no_message()`, and `expect_no_condition()` for asserting
   the code runs without an error, warning, message, or condition (#1679).
 
-* Improve way `capture_output()` handles encoding thanks to suggestion from
-  Kurt Hornik.
-
-* `test_check()` now suppresses hyperlinks since they'll take you to the wrong
-  places (#1648).
 * Fixed a warning in R >=4.2.0 on Windows that occurred when using the C++
   testing infrastructure that testthat provides (#1672).
 
