@@ -96,6 +96,22 @@
 
     This is a warning
 
+# snapshot captures deprecations
+
+    Code
+      foo()
+    Condition
+      Warning:
+      `foo()` was deprecated in testthat 1.0.0.
+
+---
+
+    `foo()` was deprecated in testthat 1.0.0.
+
+---
+
+    `foo()` was deprecated in testthat 1.0.0.
+
 # can check error/warning classes
 
     Code
