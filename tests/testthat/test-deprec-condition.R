@@ -17,3 +17,13 @@ test_that("is_informative_error returns TRUE for basic errors", {
     expect_false(is_informative(abort("!", class = "error_custom")))
   )
 })
+
+test_that("capture_warnings can ignore deprecation warnings", {
+  foo <- function() {
+    lifecycle::deprecate_warn("1.0.0", "foo()")
+  }
+  expect_warning(
+    expect_equal(capture_warnings(foo(), TRUE), character()),
+    class = "lifecycle_warning_deprecated"
+  )
+})

@@ -89,7 +89,11 @@ expect_no_ <- function(base_class,
                             class = NULL,
                             error_call = caller_env()) {
 
-  matcher <- cnd_matcher(class %||% base_class, regexp)
+  matcher <- cnd_matcher(
+    class %||% base_class,
+    pattern = regexp,
+    ignore_deprecation = base_class == "warning" && is.null(regexp) && is.null(class)
+  )
 
   capture <- function(code) {
     try_fetch(

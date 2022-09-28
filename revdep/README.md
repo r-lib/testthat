@@ -5,7 +5,7 @@
 |package      |version |error |warning |note |
 |:------------|:-------|:-----|:-------|:----|
 |Boom         |0.9.10  |1     |        |     |
-|bsts         |?       |      |        |     |
+|CausalImpact |?       |      |        |     |
 |NA           |?       |      |        |     |
 |ctsem        |3.7.1   |1     |        |     |
 |NA           |?       |      |        |     |
@@ -34,12 +34,15 @@
 |vivid        |?       |      |        |     |
 |NA           |?       |      |        |     |
 
-## New problems (4)
+## New problems (7)
 
-|package  |version |error  |warning |note |
-|:--------|:-------|:------|:-------|:----|
+|package    |version |error  |warning |note |
+|:----------|:-------|:------|:-------|:----|
+|[batata](problems.md#batata)|0.2.1   |__+1__ |        |1    |
 |[brew](problems.md#brew)|1.0-7   |__+1__ |        |     |
 |[freshr](problems.md#freshr)|1.0.1   |__+1__ |        |     |
-|[lightgbm](problems.md#lightgbm)|3.3.2   |__+1__ |        |1    |
+|[log4r](problems.md#log4r)|0.4.2   |__+1__ |        |     |
+|[r2dii.plot](problems.md#r2diiplot)|0.3.0   |__+1__ |        |     |
+|[reprex](problems.md#reprex)|2.0.2   |__+1__ |        |     |
 |[WeMix](problems.md#wemix)|3.2.2   |__+1__ |1       |     |
 

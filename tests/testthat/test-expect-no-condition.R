@@ -24,3 +24,13 @@ test_that("matched conditions give informative message", {
     expect_no_warning(foo(), message = "problem", class = "test")
   })
 })
+
+test_that("deprecations always bubble up", {
+  foo <- function() {
+    lifecycle::deprecate_warn("1.0.0", "foo()")
+  }
+  expect_warning(
+    expect_no_warning(foo()),
+    class = "lifecycle_warning_deprecated"
+  )
+})

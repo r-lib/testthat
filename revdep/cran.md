@@ -1,8 +1,8 @@
 ## revdepcheck results
 
-We checked 7102 reverse dependencies (7089 from CRAN + 13 from Bioconductor), comparing R CMD check results across CRAN and dev versions of this package.
+We checked 7109 reverse dependencies (7096 from CRAN + 13 from Bioconductor), comparing R CMD check results across CRAN and dev versions of this package.
 
- * We saw 4 new problems
+ * We saw 7 new problems
  * We failed to check 16 packages
 
 Issues with CRAN packages are summarised below.
@@ -10,13 +10,22 @@ Issues with CRAN packages are summarised below.
 ### New problems
 (This reports the first line of each new failure)
 
+* batata
+  checking tests ... ERROR
+
 * brew
   checking tests ... ERROR
 
 * freshr
   checking tests ... ERROR
 
-* lightgbm
+* log4r
+  checking tests ... ERROR
+
+* r2dii.plot
+  checking tests ... ERROR
+
+* reprex
   checking tests ... ERROR
 
 * WeMix
@@ -25,7 +34,7 @@ Issues with CRAN packages are summarised below.
 ### Failed to check
 
 * Boom         (NA)
-* bsts         (NA)
+* CausalImpact (NA)
 * ctsem        (NA)
 * elbird       (NA)
 * ggPMX        (NA)

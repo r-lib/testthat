@@ -86,6 +86,30 @@ test_that("can silence warnings", {
   withr::with_options(c(warn = -1), warning("foo"))
 })
 
+test_that("when checking for no warnings, exclude deprecation warnings", {
+  foo <- function() {
+    lifecycle::deprecate_warn("1.0.0", "foo()")
+  }
+  expect_warning(
+    expect_warning(foo(), NA),
+    class = "lifecycle_warning_deprecated"
+  )
+})
+
+test_that("when checking for no warnings, exclude deprecation warnings (2e)", {
+  local_edition(2)
+
+  foo <- function() {
+    options(lifecycle_verbosity = "warning")
+    lifecycle::deprecate_warn("1.0.0", "foo()")
+  }
+
+  expect_warning(
+    expect_warning(foo(), NA),
+    class = "lifecycle_warning_deprecated"
+  )
+})
+
 # expect_message ----------------------------------------------------------
 
 test_that("regexp = NA checks for absence of message", {
