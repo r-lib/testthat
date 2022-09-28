@@ -41,45 +41,45 @@
 #' # warning does match so causes a failure:
 #' try(expect_no_warning(foo(), message = "problem"))
 expect_no_error <- function(object,
-                                 ...,
-                                 message = NULL,
-                                 class = NULL) {
+                            ...,
+                            message = NULL,
+                            class = NULL) {
   check_dots_empty()
-  expect_no_("error", {{ object }}, ..., regexp = message, class = class)
+  expect_no_("error", {{ object }}, regexp = message, class = class)
 }
 
 
 #' @export
 #' @rdname expect_no_error
 expect_no_warning <- function(object,
-                                   ...,
-                                   message = NULL,
-                                   class = NULL
-                                   ) {
+                              ...,
+                              message = NULL,
+                              class = NULL
+                              ) {
   check_dots_empty()
-  expect_no_("warning", {{ object }}, ..., regexp = message, class = class)
+  expect_no_("warning", {{ object }}, regexp = message, class = class)
 }
 
 #' @export
 #' @rdname expect_no_error
 expect_no_message <- function(object,
-                                   ...,
-                                   message = NULL,
-                                   class = NULL
-                                   ) {
+                              ...,
+                              message = NULL,
+                              class = NULL
+                              ) {
   check_dots_empty()
-  expect_no_("messsage", {{ object }}, ..., regexp = message, class = class)
+  expect_no_("messsage", {{ object }}, regexp = message, class = class)
 }
 
 #' @export
 #' @rdname expect_no_error
 expect_no_condition <- function(object,
-                                     ...,
-                                     message = NULL,
-                                     class = NULL
-                                     ) {
+                                ...,
+                                message = NULL,
+                                class = NULL
+                                ) {
   check_dots_empty()
-  expect_no_("condition", {{ object }}, ..., regexp = message, class = class)
+  expect_no_("condition", {{ object }}, regexp = message, class = class)
 }
 
 
@@ -87,11 +87,9 @@ expect_no_ <- function(base_class,
                             object,
                             regexp = NULL,
                             class = NULL,
-                            ...,
                             error_call = caller_env()) {
 
-  check_dots_used(action = warn, call = error_call)
-  matcher <- cnd_matcher(class %||% base_class, regexp, ...)
+  matcher <- cnd_matcher(class %||% base_class, regexp)
 
   capture <- function(code) {
     try_fetch(
