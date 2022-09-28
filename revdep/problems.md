@@ -1,3 +1,48 @@
+# batata
+
+<details>
+
+* Version: 0.2.1
+* GitHub: https://github.com/feddelegrand7/batata
+* Source code: https://github.com/cran/batata
+* Date/Publication: 2021-03-08 09:50:02 UTC
+* Number of recursive dependencies: 62
+
+Run `cloud_details(, "batata")` for more info
+
+</details>
+
+## Newly broken
+
+*   checking tests ... ERROR
+    ```
+      Running ‘testthat.R’
+    Running the tests in ‘tests/testthat.R’ failed.
+    Last 13 lines of output:
+      
+      ══ Failed tests ════════════════════════════════════════════════════════════════
+      ── Failure ('test-display_starred.R:8'): display_starred() returns a character vector ──
+      `output` has type 'NULL', not 'character'.
+      ── Failure ('test-display_starred.R:14'): display_starred() returns a vector
+                of length superior than 0 ──
+      length(output) is not strictly more than 0. Difference: 0
+      ── Failure ('test-display_starred.R:20'): display_starred() returns a coherent length ──
+      length(output2) not equal to 10.
+      1/1 mismatches
+      [1] 0 - 10 == -10
+      
+      [ FAIL 3 | WARN 0 | SKIP 1 | PASS 38 ]
+      Error: Test failures
+      Execution halted
+    ```
+
+## In both
+
+*   checking LazyData ... NOTE
+    ```
+      'LazyData' is specified without a 'data' directory
+    ```
+
 # brew
 
 <details>
@@ -66,7 +111,7 @@ Run `cloud_details(, "freshr")` for more info
       > library(freshr)
       > 
       > test_check("freshr")
-      Test passed 😸
+      Test passed 😀
       [ FAIL 0 | WARN 0 | SKIP 0 | PASS 1 ]
       Error in teardown_env() : `teardown_env()` has not been initialized
       ℹ This is an internal error that was detected in the testthat package.
@@ -75,17 +120,17 @@ Run `cloud_details(, "freshr")` for more info
       Execution halted
     ```
 
-# lightgbm
+# log4r
 
 <details>
 
-* Version: 3.3.2
-* GitHub: https://github.com/Microsoft/LightGBM
-* Source code: https://github.com/cran/lightgbm
-* Date/Publication: 2022-01-14 13:12:42 UTC
-* Number of recursive dependencies: 34
+* Version: 0.4.2
+* GitHub: https://github.com/johnmyleswhite/log4r
+* Source code: https://github.com/cran/log4r
+* Date/Publication: 2021-11-04 05:20:02 UTC
+* Number of recursive dependencies: 65
 
-Run `cloud_details(, "lightgbm")` for more info
+Run `cloud_details(, "log4r")` for more info
 
 </details>
 
@@ -93,33 +138,102 @@ Run `cloud_details(, "lightgbm")` for more info
 
 *   checking tests ... ERROR
     ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
+      Running ‘run-all.R’
+    Running the tests in ‘tests/run-all.R’ failed.
     Last 13 lines of output:
+      Backtrace:
+          ▆
+       1. ├─testthat::expect_silent(appender("INFO", "Message")) at test-appenders.R:20:2
+       2. │ └─testthat:::quasi_capture(enquo(object), NULL, evaluate_promise)
+       3. │   ├─testthat (local) .capture(...)
+       4. │   │ ├─withr::with_output_sink(...)
+       5. │   │ │ └─base::force(code)
+       6. │   │ ├─base::withCallingHandlers(...)
+       7. │   │ └─base::withVisible(code)
+       8. │   └─rlang::eval_bare(quo_get_expr(.quo), quo_get_env(.quo))
+       9. └─log4r (local) appender("INFO", "Message")
       
-      71. Feature penalties work properly ('test_parameters.R:14') - lgb.train: Found the following passed through '...': num_leaves, learning_rate, objective, feature_penalty, metric. These will be used, but in future releases of lightgbm, this warning will become an error. Add these to 'params' instead. See ?lgb.train for documentation on how to call this function.
-      
-      72. Feature penalties work properly ('test_parameters.R:14') - lgb.train: Found the following passed through '...': num_leaves, learning_rate, objective, feature_penalty, metric. These will be used, but in future releases of lightgbm, this warning will become an error. Add these to 'params' instead. See ?lgb.train for documentation on how to call this function.
-      
-      73. Feature penalties work properly ('test_parameters.R:14') - lgb.train: Found the following passed through '...': num_leaves, learning_rate, objective, feature_penalty, metric. These will be used, but in future releases of lightgbm, this warning will become an error. Add these to 'params' instead. See ?lgb.train for documentation on how to call this function.
-      
-      ══ Failed ══════════════════════════════════════════════════════════════════════
-      ── 1. Failure ('test_lgb.Booster.R:474'): Booster$eval() should work on a Datase
-      `eval_in_mem` not identical to `eval_from_file`.
-      Objects equal but not identical
-      
-      ══ DONE ════════════════════════════════════════════════════════════════════════
+      [ FAIL 1 | WARN 0 | SKIP 2 | PASS 81 ]
       Error: Test failures
       Execution halted
     ```
 
-## In both
+# r2dii.plot
 
-*   checking installed package size ... NOTE
+<details>
+
+* Version: 0.3.0
+* GitHub: https://github.com/2DegreesInvesting/r2dii.plot
+* Source code: https://github.com/cran/r2dii.plot
+* Date/Publication: 2022-05-05 23:20:10 UTC
+* Number of recursive dependencies: 91
+
+Run `cloud_details(, "r2dii.plot")` for more info
+
+</details>
+
+## Newly broken
+
+*   checking tests ... ERROR
     ```
-      installed size is 82.4Mb
-      sub-directories of 1Mb or more:
-        libs  81.8Mb
+      Running ‘spelling.R’
+      Running ‘testthat.R’
+    Running the tests in ‘tests/testthat.R’ failed.
+    Last 13 lines of output:
+      `plot_techmix(example_tech_mix())` did not generate error with class 'warning'
+      Backtrace:
+          ▆
+       1. └─testthat::expect_snapshot_error(...) at test-plot_techmix.R:296:2
+       2.   └─testthat:::expect_snapshot_condition(...)
+      ── Failure ('test-plot_trajectory.R:204'): throws expected warning about API change ──
+      `plot_trajectory(example_market_share())` did not generate error with class 'warning'
+      Backtrace:
+          ▆
+       1. └─testthat::expect_snapshot_error(...) at test-plot_trajectory.R:204:2
+       2.   └─testthat:::expect_snapshot_condition(...)
+      
+      [ FAIL 3 | WARN 3 | SKIP 43 | PASS 103 ]
+      Error: Test failures
+      Execution halted
+    ```
+
+# reprex
+
+<details>
+
+* Version: 2.0.2
+* GitHub: https://github.com/tidyverse/reprex
+* Source code: https://github.com/cran/reprex
+* Date/Publication: 2022-08-17 07:40:05 UTC
+* Number of recursive dependencies: 81
+
+Run `cloud_details(, "reprex")` for more info
+
+</details>
+
+## Newly broken
+
+*   checking tests ... ERROR
+    ```
+      Running ‘spelling.R’
+      Running ‘testthat.R’
+    Running the tests in ‘tests/testthat.R’ failed.
+    Last 13 lines of output:
+      
+      ══ Skipped tests ═══════════════════════════════════════════════════════════════
+      • On CRAN (65)
+      
+      ══ Failed tests ════════════════════════════════════════════════════════════════
+      ── Failure ('test-utils-io.R:16'): retrofit_files() works ──────────────────────
+      `x <- retrofit_files(wd = "this", outfile = "that")` did not generate warning
+      Backtrace:
+          ▆
+       1. └─testthat::expect_snapshot_warning(...) at test-utils-io.R:16:2
+       2.   └─testthat:::expect_snapshot_condition(...)
+      
+      [ FAIL 1 | WARN 1 | SKIP 65 | PASS 63 ]
+      Error: Test failures
+      Execution halted
     ```
 
 # WeMix
@@ -150,10 +264,10 @@ Run `cloud_details(, "WeMix")` for more info
       ══ Failed tests ════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
       ── Failure ('test-1-main.R:111'): Agrees with lme4 3,handles missing data ──────
       unname(wm2$vars) not equal to unname(lmewm2vars)^2.
-      3/3 mismatches (average diff: 0.0235)
-      [1] 583.6 - 583.5 ==  0.06607
-      [2]  33.3 -  33.3 == -0.00220
-      [3] 657.2 - 657.2 == -0.00231
+      3/3 mismatches (average diff: 0.0369)
+      [1] 582.9 - 583.0 == -0.101022
+      [2]  33.8 -  33.8 ==  0.000533
+      [3] 656.5 - 656.5 ==  0.009146
       
       [ FAIL 1 | WARN 0 | SKIP 12 | PASS 89 ]
       Error: Test failures
@@ -172,8 +286,8 @@ Run `cloud_details(, "WeMix")` for more info
     Cross release updates are only supported with
       update-tlmgr-latest(.sh/.exe) --update
     See https://tug.org/texlive/upgrade.html for details.
-    
-    tlmgr: Local TeX Live (2021) is older than remote repository (2022).
+    Warning in system2("tlmgr", args, ...) :
+      running command ''tlmgr' search --file --global '/colortbl.sty'' had status 1
     ...
     Error: processing vignette 'Weighted_Linear_Mixed_Effects_Models.Rmd' failed with diagnostics:
     LaTeX failed to compile /tmp/workdir/WeMix/new/WeMix.Rcheck/vign_test/WeMix/vignettes/Weighted_Linear_Mixed_Effects_Models.tex. See https://yihui.org/tinytex/r/#debugging for debugging tips. See Weighted_Linear_Mixed_Effects_Models.log for more info.
