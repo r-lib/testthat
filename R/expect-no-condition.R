@@ -91,18 +91,18 @@ expect_no_ <- function(base_class,
                             error_call = caller_env()) {
 
   check_dots_used(action = warn, call = error_call)
-  matcher <- cnd_matcher(class %||% base_class, regexp, ...)
-
-  ignore_deprec <- base_class == "warning" && is.null(regexp) && is.null(class)
+  matcher <- cnd_matcher(
+    class %||% base_class,
+    pattern = regexp,
+    ...,
+    ignore_deprecation = base_class == "warning" && is.null(regexp) && is.null(class)
+  )
 
   capture <- function(code) {
     try_fetch(
       code,
       !!base_class := function(cnd) {
         if (!matcher(cnd)) {
-          return(zap())
-        }
-        if (!ignore_deprec && is_deprecation(cnd)) {
           return(zap())
         }
 

@@ -262,7 +262,7 @@ expect_condition_matching <- function(base_class,
     regexp,
     ...,
     inherit = inherit,
-    ignore_deprecation = identical(regexp, NA)
+    ignore_deprecation = base_class == "warning" && identical(regexp, NA)
   )
 
   act <- quasi_capture(
@@ -286,7 +286,7 @@ expect_condition_matching <- function(base_class,
 
 # -------------------------------------------------------------------------
 
-cnd_matcher <- function(class, pattern = NULL, ..., inherit = TRUE, ignore_deprecation = TRUE) {
+cnd_matcher <- function(class, pattern = NULL, ..., inherit = TRUE, ignore_deprecation = FALSE) {
   if (!is_string(class)) {
     abort("`class` must be a single string")
   }
