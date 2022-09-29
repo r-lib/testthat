@@ -61,7 +61,7 @@ Reporter <- R6::R6Class("Reporter",
       self$unicode <- cli::is_utf8_output()
       self$crayon <- cli::num_ansi_colors() > 1
       self$rstudio <- Sys.getenv("RSTUDIO") == "1"
-      self$hyperlinks <- self$crayon && cli::ansi_hyperlink_types()[["run"]]
+      self$hyperlinks <- cli::ansi_hyperlink_types()[["run"]]
     },
 
     # To be used when the reporter needs to produce output inside of an active
