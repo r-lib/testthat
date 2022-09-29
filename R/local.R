@@ -74,10 +74,11 @@ local_test_context <- function(.env = parent.frame()) {
 #' @export
 #' @param width Value of the `"width"` option.
 #' @param crayon Determines whether or not crayon (now cli) colour
-#'   and hyperlink styles should be applied.
+#'   should be applied.
 #' @param unicode Value of the `"cli.unicode"` option.
 #'   The test is skipped if `` l10n_info()$`UTF-8` `` is `FALSE`.
 #' @param rstudio Should we pretend that we're inside of RStudio?
+#' @param hyperlinks Should we use ANSI hyperlinks.
 #' @param lang Optionally, supply a BCP47 language code to set the language
 #'   used for translating error messages. This is a lower case two letter
 #'   [ISO 639 country code](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes),
@@ -96,6 +97,7 @@ local_reproducible_output <- function(width = 80,
                                       crayon = FALSE,
                                       unicode = FALSE,
                                       rstudio = FALSE,
+                                      hyperlinks = FALSE,
                                       lang = "en",
                                       .env = parent.frame()) {
 
@@ -108,7 +110,10 @@ local_reproducible_output <- function(width = 80,
   local_width(width = width, .env = .env)
   withr::local_options(
     crayon.enabled = crayon,
-    cli.hyperlink = crayon && rstudio,
+    cli.hyperlink = hyperlinks,
+    cli.hyperlink_run = hyperlinks,
+    cli.hyperlink_help = hyperlinks,
+    cli.hyperlink_vignette = hyperlinks,
     cli.dynamic = FALSE,
     cli.unicode = unicode,
     cli.condition_width = Inf,

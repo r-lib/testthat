@@ -12,6 +12,7 @@ local_reproducible_output(
   crayon = FALSE,
   unicode = FALSE,
   rstudio = FALSE,
+  hyperlinks = FALSE,
   lang = "en",
   .env = parent.frame()
 )
@@ -22,12 +23,14 @@ local_reproducible_output(
 \item{width}{Value of the \code{"width"} option.}
 
 \item{crayon}{Determines whether or not crayon (now cli) colour
-and hyperlink styles should be applied.}
+should be applied.}
 
 \item{unicode}{Value of the \code{"cli.unicode"} option.
 The test is skipped if \code{l10n_info()$`UTF-8`} is \code{FALSE}.}
 
 \item{rstudio}{Should we pretend that we're inside of RStudio?}
+
+\item{hyperlinks}{Should we use ANSI hyperlinks.}
 
 \item{lang}{Optionally, supply a BCP47 language code to set the language
 used for translating error messages. This is a lower case two letter

@@ -42,6 +42,7 @@ Reporter <- R6::R6Class("Reporter",
     unicode = TRUE,
     crayon = TRUE,
     rstudio = TRUE,
+    hyperlinks = TRUE,
 
     out = NULL,
 
@@ -60,6 +61,7 @@ Reporter <- R6::R6Class("Reporter",
       self$unicode <- cli::is_utf8_output()
       self$crayon <- cli::num_ansi_colors() > 1
       self$rstudio <- Sys.getenv("RSTUDIO") == "1"
+      self$hyperlinks <- self$crayon && cli::ansi_hyperlink_types()[["run"]]
     },
 
     # To be used when the reporter needs to produce output inside of an active
@@ -69,6 +71,7 @@ Reporter <- R6::R6Class("Reporter",
         width = self$width,
         crayon = self$crayon,
         rstudio = self$rstudio,
+        hyperlinks = self$hyperlinks,
         .env = .env
       )
       # Can't set unicode with local_reproducible_output() because it can
