@@ -45,7 +45,7 @@ test_that("can force cli to display RStudio style hyperlinks", {
     str(cli::ansi_hyperlink_types())
   })
 
-  local_reproducible_output(crayon = TRUE, rstudio = TRUE)
+  local_reproducible_output(crayon = TRUE, hyperlinks = TRUE, rstudio = TRUE)
   expect_snapshot({
     str(cli::ansi_hyperlink_types())
   })

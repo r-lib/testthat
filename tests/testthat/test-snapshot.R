@@ -194,7 +194,7 @@ test_that("errors and warnings are folded", {
 })
 
 test_that("hint is informative", {
-  local_reproducible_output(crayon = TRUE, rstudio = TRUE)
+  local_reproducible_output(crayon = TRUE, hyperlinks = TRUE, rstudio = TRUE)
 
   expect_snapshot({
     cat(snapshot_accept_hint("_default", "bar.R", reset_output = FALSE))
