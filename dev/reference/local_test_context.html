@@ -106,6 +106,7 @@ non-standard width.</p>
 <span>  crayon <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  unicode <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  rstudio <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  hyperlinks <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  lang <span class="op">=</span> <span class="st">"en"</span>,</span>
 <span>  .env <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sys.parent.html" class="external-link">parent.frame</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="op">)</span></span></code></pre></div>
@@ -123,7 +124,7 @@ non-standard width.</p>
 
 <dt>crayon</dt>
 <dd><p>Determines whether or not crayon (now cli) colour
-and hyperlink styles should be applied.</p></dd>
+should be applied.</p></dd>
 
 
 <dt>unicode</dt>
@@ -133,6 +134,10 @@ The test is skipped if <code>l10n_info()$`UTF-8`</code> is <code>FALSE</code>.</
 
 <dt>rstudio</dt>
 <dd><p>Should we pretend that we're inside of RStudio?</p></dd>
+
+
+<dt>hyperlinks</dt>
+<dd><p>Should we use ANSI hyperlinks.</p></dd>
 
 
 <dt>lang</dt>
@@ -197,7 +202,7 @@ sorting the same regardless of system locale.</p>
 <span class="r-in"><span>  <span class="fu">local_reproducible_output</span><span class="op">(</span>unicode <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="fu"><a href="equality-expectations.html">expect_equal</a></span><span class="op">(</span><span class="fu">cli</span><span class="fu">::</span><span class="va"><a href="https://cli.r-lib.org/reference/symbol.html" class="external-link">symbol</a></span><span class="op">$</span><span class="va">ellipsis</span>, <span class="st">"\u2026"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">Test passed</span> 🥳</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">Test passed</span> 😸</span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
