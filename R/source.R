@@ -40,7 +40,7 @@ source_file <- function(path, env = test_env(), chdir = TRUE,
       invisible(eval(exprs, env)),
       error = function(err) {
         abort(
-          paste0("Failed to source ", encodeString(path, quote = '"')),
+          paste0("In path: ", encodeString(path, quote = '"')),
           parent = err
         )
       }

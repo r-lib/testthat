@@ -4,7 +4,7 @@
       source_file(test_path("reporters/error-setup.R"), wrap = FALSE)
     Condition
       Error in `source_file()`:
-      ! Failed to source "reporters/error-setup.R"
+      ! In path: "reporters/error-setup.R"
       Caused by error in `h()`:
       ! !
 
