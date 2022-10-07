@@ -36,7 +36,7 @@ source_file <- function(path, env = test_env(), chdir = TRUE,
   if (wrap) {
     invisible(test_code(NULL, exprs, env))
   } else {
-    tryCatch(
+    withCallingHandlers(
       invisible(eval(exprs, env)),
       error = function(err) {
         abort(
@@ -53,7 +53,9 @@ source_file <- function(path, env = test_env(), chdir = TRUE,
 source_dir <- function(path, pattern = "\\.[rR]$", env = test_env(),
                        chdir = TRUE, wrap = TRUE) {
   files <- normalizePath(sort(dir(path, pattern, full.names = TRUE)))
-  lapply(files, source_file, env = env, chdir = chdir, wrap = wrap)
+  lapply(files, function(path) {
+    source_file(path, env = env, chdir = chdir, wrap = wrap)
+  })
 }
 
 #' @rdname source_file
