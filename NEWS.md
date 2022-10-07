@@ -1,4 +1,4 @@
-# testthat (development version)
+# testthat 3.1.5
 
 * Deprecation warnings are no longer captured by `expect_warning(code, NA)`,
   `expect_no_warning(code)`, or `expect_silent(code)`. This ensures that they 
