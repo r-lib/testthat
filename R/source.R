@@ -36,7 +36,15 @@ source_file <- function(path, env = test_env(), chdir = TRUE,
   if (wrap) {
     invisible(test_code(NULL, exprs, env))
   } else {
-    invisible(eval(exprs, env))
+    tryCatch(
+      invisible(eval(exprs, env)),
+      error = function(err) {
+        abort(
+          paste0("Failed to source ", encodeString(path, quote = '"')),
+          parent = err
+        )
+      }
+    )
   }
 }
 
