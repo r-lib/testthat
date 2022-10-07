@@ -1,6 +1,6 @@
 # Revdeps
 
-## Failed to check (29)
+## Failed to check (31)
 
 |package      |version |error |warning |note |
 |:------------|:-------|:-----|:-------|:----|
@@ -12,16 +12,18 @@
 |elbird       |0.2.5   |1     |        |     |
 |ggPMX        |?       |      |        |     |
 |NA           |?       |      |        |     |
+|NA           |?       |      |        |     |
 |loon.ggplot  |?       |      |        |     |
 |loon.shiny   |?       |      |        |     |
 |loon.tourr   |?       |      |        |     |
 |NA           |?       |      |        |     |
+|NA           |?       |      |        |     |
+|mlrCPO       |0.3.7-4 |1     |        |     |
 |nlmixr2      |?       |      |        |     |
 |nlmixr2extra |?       |      |        |     |
 |nlmixr2plot  |?       |      |        |     |
 |NA           |?       |      |        |     |
 |OpenMx       |?       |      |        |     |
-|NA           |?       |      |        |     |
 |NA           |?       |      |        |     |
 |rPBK         |0.2.0   |1     |        |     |
 |NA           |?       |      |        |     |
@@ -34,15 +36,10 @@
 |vivid        |?       |      |        |     |
 |NA           |?       |      |        |     |
 
-## New problems (7)
+## New problems (2)
 
-|package    |version |error  |warning |note |
-|:----------|:-------|:------|:-------|:----|
-|[batata](problems.md#batata)|0.2.1   |__+1__ |        |1    |
-|[brew](problems.md#brew)|1.0-7   |__+1__ |        |     |
-|[freshr](problems.md#freshr)|1.0.1   |__+1__ |        |     |
-|[log4r](problems.md#log4r)|0.4.2   |__+1__ |        |     |
-|[r2dii.plot](problems.md#r2diiplot)|0.3.0   |__+1__ |        |     |
-|[reprex](problems.md#reprex)|2.0.2   |__+1__ |        |     |
-|[WeMix](problems.md#wemix)|3.2.2   |__+1__ |1       |     |
+|package      |version |error  |warning |note |
+|:------------|:-------|:------|:-------|:----|
+|[datagovindia](problems.md#datagovindia)|1.0.5   |       |__+1__  |     |
+|[hyperSpec](problems.md#hyperspec)|0.100.0 |__+1__ |        |1    |
 

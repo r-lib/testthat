@@ -461,14 +461,49 @@ Run `cloud_details(, "NA")` for more info
 
 
 ```
+# NA
+
+<details>
+
+* Version: NA
+* GitHub: NA
+* Source code: https://github.com/cran/NA
+* Number of recursive dependencies: 0
+
+Run `cloud_details(, "NA")` for more info
+
+</details>
+
+## Error before installation
+
+### Devel
+
+```
+
+
+
+
+
+
+```
+### CRAN
+
+```
+
+
+
+
+
+
+```
 # loon.ggplot
 
 <details>
 
-* Version: 1.3.1
+* Version: 1.3.2
 * GitHub: https://github.com/great-northern-diver/loon.ggplot
 * Source code: https://github.com/cran/loon.ggplot
-* Date/Publication: 2022-02-07 21:50:06 UTC
+* Date/Publication: 2022-10-03 14:50:02 UTC
 * Number of recursive dependencies: 104
 
 Run `cloud_details(, "loon.ggplot")` for more info
@@ -487,7 +522,7 @@ Run `cloud_details(, "loon.ggplot")` for more info
 * using option ‘--no-manual’
 * checking for file ‘loon.ggplot/DESCRIPTION’ ... OK
 * checking extension type ... Package
-* this is package ‘loon.ggplot’ version ‘1.3.1’
+* this is package ‘loon.ggplot’ version ‘1.3.2’
 * package encoding: UTF-8
 * checking package namespace information ... OK
 * checking package dependencies ... ERROR
@@ -515,7 +550,7 @@ Status: 1 ERROR
 * using option ‘--no-manual’
 * checking for file ‘loon.ggplot/DESCRIPTION’ ... OK
 * checking extension type ... Package
-* this is package ‘loon.ggplot’ version ‘1.3.1’
+* this is package ‘loon.ggplot’ version ‘1.3.2’
 * package encoding: UTF-8
 * checking package namespace information ... OK
 * checking package dependencies ... ERROR
@@ -701,6 +736,101 @@ Run `cloud_details(, "NA")` for more info
 
 
 
+
+
+```
+# NA
+
+<details>
+
+* Version: NA
+* GitHub: NA
+* Source code: https://github.com/cran/NA
+* Number of recursive dependencies: 0
+
+Run `cloud_details(, "NA")` for more info
+
+</details>
+
+## Error before installation
+
+### Devel
+
+```
+
+
+
+
+
+
+```
+### CRAN
+
+```
+
+
+
+
+
+
+```
+# mlrCPO
+
+<details>
+
+* Version: 0.3.7-4
+* GitHub: https://github.com/mlr-org/mlrCPO
+* Source code: https://github.com/cran/mlrCPO
+* Date/Publication: 2022-07-20 14:00:02 UTC
+* Number of recursive dependencies: 156
+
+Run `cloud_details(, "mlrCPO")` for more info
+
+</details>
+
+## In both
+
+*   checking whether package ‘mlrCPO’ can be installed ... ERROR
+    ```
+    Installation failed.
+    See ‘/tmp/workdir/mlrCPO/new/mlrCPO.Rcheck/00install.out’ for details.
+    ```
+
+## Installation
+
+### Devel
+
+```
+* installing *source* package ‘mlrCPO’ ...
+** package ‘mlrCPO’ successfully unpacked and MD5 sums checked
+** using staged installation
+** R
+** inst
+** byte-compile and prepare package for lazy loading
+Error in declareFilterCPO(c("randomForestSRC_importance", "randomForestSRC.rfsrc")) : 
+  None of the methods randomForestSRC_importance,randomForestSRC.rfsrc could be found
+Error: unable to load R code in package ‘mlrCPO’
+Execution halted
+ERROR: lazy loading failed for package ‘mlrCPO’
+* removing ‘/tmp/workdir/mlrCPO/new/mlrCPO.Rcheck/mlrCPO’
+
+
+```
+### CRAN
+
+```
+* installing *source* package ‘mlrCPO’ ...
+** package ‘mlrCPO’ successfully unpacked and MD5 sums checked
+** using staged installation
+** R
+** inst
+** byte-compile and prepare package for lazy loading
+Error in declareFilterCPO(c("randomForestSRC_importance", "randomForestSRC.rfsrc")) : 
+  None of the methods randomForestSRC_importance,randomForestSRC.rfsrc could be found
+Error: unable to load R code in package ‘mlrCPO’
+Execution halted
+ERROR: lazy loading failed for package ‘mlrCPO’
+* removing ‘/tmp/workdir/mlrCPO/old/mlrCPO.Rcheck/mlrCPO’
 
 
 ```
@@ -1009,41 +1139,6 @@ Status: 4 NOTEs
 * checking re-building of vignette outputs ... OK
 * DONE
 Status: 4 NOTEs
-
-
-
-
-
-```
-# NA
-
-<details>
-
-* Version: NA
-* GitHub: NA
-* Source code: https://github.com/cran/NA
-* Number of recursive dependencies: 0
-
-Run `cloud_details(, "NA")` for more info
-
-</details>
-
-## Error before installation
-
-### Devel
-
-```
-
-
-
-
-
-
-```
-### CRAN
-
-```
-
 
 
 
