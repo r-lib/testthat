@@ -160,6 +160,9 @@
     <loc>https://testthat.r-lib.org/reference/expect_named.html</loc>
   </url>
   <url>
+    <loc>https://testthat.r-lib.org/reference/expect_no_error.html</loc>
+  </url>
+  <url>
     <loc>https://testthat.r-lib.org/reference/expect_null.html</loc>
   </url>
   <url>
@@ -182,6 +185,12 @@
   </url>
   <url>
     <loc>https://testthat.r-lib.org/reference/expect_snapshot_file.html</loc>
+  </url>
+  <url>
+    <loc>https://testthat.r-lib.org/reference/expect_snapshot_output.html</loc>
+  </url>
+  <url>
+    <loc>https://testthat.r-lib.org/reference/expect_snapshot_value.html</loc>
   </url>
   <url>
     <loc>https://testthat.r-lib.org/reference/expect_success.html</loc>
@@ -254,6 +263,9 @@
   </url>
   <url>
     <loc>https://testthat.r-lib.org/reference/safe_digest.html</loc>
+  </url>
+  <url>
+    <loc>https://testthat.r-lib.org/reference/set_max_fails.html</loc>
   </url>
   <url>
     <loc>https://testthat.r-lib.org/reference/skip.html</loc>

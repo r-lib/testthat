@@ -14,9 +14,9 @@
 <link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png">
 <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png">
 <script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="../deps/bootstrap-5.1.0/bootstrap.min.css" rel="stylesheet">
-<script src="../deps/bootstrap-5.1.0/bootstrap.bundle.min.js"></script><link href="../deps/_Source%20Sans%20Pro-0.4.1/font.css" rel="stylesheet">
-<link href="../deps/_Source%20Code%20Pro-0.4.1/font.css" rel="stylesheet">
+<link href="../deps/bootstrap-5.1.3/bootstrap.min.css" rel="stylesheet">
+<script src="../deps/bootstrap-5.1.3/bootstrap.bundle.min.js"></script><link href="../deps/Source_Sans_Pro-0.4.2/font.css" rel="stylesheet">
+<link href="../deps/Source_Code_Pro-0.4.2/font.css" rel="stylesheet">
 <!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- bootstrap-toc --><script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.js"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="testthat 3e">
@@ -35,7 +35,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">testthat</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">3.1.4</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">3.1.5</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -97,7 +97,7 @@
 
 
 <div class="row">
-  <main id="main"><div class="page-header">
+  <main id="main" class="col-md-9"><div class="page-header">
       <img src="../logo.png" class="logo" alt=""><h1>testthat 3e</h1>
             
       
@@ -111,28 +111,28 @@
 <p>(We don’t anticipate creating new editions very often, and they’ll always be matched with major version, i.e. if there’s another edition, it’ll be the fourth edition and will come with testthat 4.0.0.)</p>
 <p>This vignette shows you how to activate the 3rd edition, introduces the main features, and discusses common challenges when upgrading a package. If you have a problem that this vignette doesn’t cover, please let me know, as it’s likely that the problem also affects others.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://testthat.r-lib.org">testthat</a></span><span class="op">)</span>
-<span class="fu"><a href="../reference/local_edition.html">local_edition</a></span><span class="op">(</span><span class="fl">3</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://testthat.r-lib.org">testthat</a></span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/local_edition.html">local_edition</a></span><span class="op">(</span><span class="fl">3</span><span class="op">)</span></span></code></pre></div>
 <div class="section level2">
 <h2 id="activating">Activating<a class="anchor" aria-label="anchor" href="#activating"></a>
 </h2>
 <p>The usual way to activate the 3rd edition is to add a line to your <code>DESCRIPTION</code>:</p>
-<pre><code><span class="va">Config</span><span class="op">/</span><span class="va">testthat</span><span class="op">/</span><span class="va">edition</span><span class="op">:</span> <span class="fl">3</span></code></pre>
+<pre><code><span><span class="va">Config</span><span class="op">/</span><span class="va">testthat</span><span class="op">/</span><span class="va">edition</span><span class="op">:</span> <span class="fl">3</span></span></code></pre>
 <p>This will activate the 3rd edition for every test in your package.</p>
 <p>You can also control the edition used for individual tests with <code><a href="../reference/local_edition.html">testthat::local_edition()</a></code>:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/test_that.html">test_that</a></span><span class="op">(</span><span class="st">"I can use the 3rd edition"</span>, <span class="op">{</span>
-  <span class="fu"><a href="../reference/local_edition.html">local_edition</a></span><span class="op">(</span><span class="fl">3</span><span class="op">)</span>
-  <span class="fu"><a href="../reference/logical-expectations.html">expect_true</a></span><span class="op">(</span><span class="cn">TRUE</span><span class="op">)</span>
-<span class="op">}</span><span class="op">)</span>
-<span class="co">#&gt; <span style="color: #00BB00;">Test passed</span> 😸</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/test_that.html">test_that</a></span><span class="op">(</span><span class="st">"I can use the 3rd edition"</span>, <span class="op">{</span></span>
+<span>  <span class="fu"><a href="../reference/local_edition.html">local_edition</a></span><span class="op">(</span><span class="fl">3</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="../reference/logical-expectations.html">expect_true</a></span><span class="op">(</span><span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="op">}</span><span class="op">)</span></span>
+<span><span class="co">#&gt; <span style="color: #00BB00;">Test passed</span> 😀</span></span></code></pre></div>
 <p>This is also useful if you’ve switched to the 3rd edition and have a couple of tests that fail. You can use <code>local_edition(2)</code> to revert back to the old behaviour, giving you some breathing room to figure out the underlying issue.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/test_that.html">test_that</a></span><span class="op">(</span><span class="st">"I want to use the 2nd edition"</span>, <span class="op">{</span>
-  <span class="fu"><a href="../reference/local_edition.html">local_edition</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span>
-  <span class="fu"><a href="../reference/logical-expectations.html">expect_true</a></span><span class="op">(</span><span class="cn">TRUE</span><span class="op">)</span>
-<span class="op">}</span><span class="op">)</span>
-<span class="co">#&gt; <span style="color: #00BB00;">Test passed</span> 🌈</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/test_that.html">test_that</a></span><span class="op">(</span><span class="st">"I want to use the 2nd edition"</span>, <span class="op">{</span></span>
+<span>  <span class="fu"><a href="../reference/local_edition.html">local_edition</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="../reference/logical-expectations.html">expect_true</a></span><span class="op">(</span><span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="op">}</span><span class="op">)</span></span>
+<span><span class="co">#&gt; <span style="color: #00BB00;">Test passed</span> 🌈</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="changes">Changes<a class="anchor" aria-label="anchor" href="#changes"></a>
@@ -153,7 +153,7 @@
 <li><p>The very old <code><a href="../reference/expect_that.html">expect_that()</a></code> syntax is now deprecated. This was an overly clever API that I regretted even before the release of testthat 1.0.0.</p></li>
 <li><p><code><a href="../reference/expect_equivalent.html">expect_equivalent()</a></code> has been deprecated since it is now equivalent (HA HA) to <code>expect_equal(ignore_attr = TRUE)</code>. The main difference is that it won’t ignore names; so you’ll need an explicit <code><a href="https://rdrr.io/r/base/unname.html" class="external-link">unname()</a></code> if you deliberately want to ignore names.</p></li>
 <li><p><code><a href="../reference/teardown.html">setup()</a></code> and <code><a href="../reference/teardown.html">teardown()</a></code> are deprecated in favour of test fixtures. See <code><a href="../articles/test-fixtures.html">vignette("test-fixtures")</a></code> for details.</p></li>
-<li><p><code><a href="../reference/expect_known_output.html">expect_known_output()</a></code>, <code><a href="../reference/expect_known_output.html">expect_known_value()</a></code>, <code><a href="../reference/expect_known_output.html">expect_known_hash()</a></code>, and <code><a href="../reference/expect_known_output.html">expect_equal_to_reference()</a></code> are all deprecated in favour of <code><a href="../reference/expect_snapshot.html">expect_snapshot_output()</a></code> and <code><a href="../reference/expect_snapshot.html">expect_snapshot_value()</a></code>.</p></li>
+<li><p><code><a href="../reference/expect_known_output.html">expect_known_output()</a></code>, <code><a href="../reference/expect_known_output.html">expect_known_value()</a></code>, <code><a href="../reference/expect_known_output.html">expect_known_hash()</a></code>, and <code><a href="../reference/expect_known_output.html">expect_equal_to_reference()</a></code> are all deprecated in favour of <code><a href="../reference/expect_snapshot_output.html">expect_snapshot_output()</a></code> and <code><a href="../reference/expect_snapshot_value.html">expect_snapshot_value()</a></code>.</p></li>
 <li><p><code><a href="../reference/with_mock.html">with_mock()</a></code> and <code><a href="../reference/with_mock.html">local_mock()</a></code> are deprecated; please use the <a href="https://krlmlr.github.io/mockr/" class="external-link">mockr</a> or <a href="https://github.com/r-lib/mockery#mockery" class="external-link">mockery</a> instead.</p></li>
 </ul>
 <p>Fixing these deprecation warnings should be straightforward.</p>
@@ -163,99 +163,93 @@
 </h3>
 <p>In the second edition, <code><a href="../reference/expect_error.html">expect_warning()</a></code> swallows all warnings regardless of whether or not they match the <code>regexp</code> or <code>class</code>:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">f</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="op">)</span> <span class="op">{</span>
-  <span class="kw"><a href="https://rdrr.io/r/base/warning.html" class="external-link">warning</a></span><span class="op">(</span><span class="st">"First warning"</span><span class="op">)</span>
-  <span class="kw"><a href="https://rdrr.io/r/base/warning.html" class="external-link">warning</a></span><span class="op">(</span><span class="st">"Second warning"</span><span class="op">)</span>
-  <span class="kw"><a href="https://rdrr.io/r/base/warning.html" class="external-link">warning</a></span><span class="op">(</span><span class="st">"Third warning"</span><span class="op">)</span>
-<span class="op">}</span>
-
-<span class="fu"><a href="../reference/local_edition.html">local_edition</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span>
-<span class="fu"><a href="../reference/expect_error.html">expect_warning</a></span><span class="op">(</span><span class="fu">f</span><span class="op">(</span><span class="op">)</span>, <span class="st">"First"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">f</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="kw"><a href="https://rdrr.io/r/base/warning.html" class="external-link">warning</a></span><span class="op">(</span><span class="st">"First warning"</span><span class="op">)</span></span>
+<span>  <span class="kw"><a href="https://rdrr.io/r/base/warning.html" class="external-link">warning</a></span><span class="op">(</span><span class="st">"Second warning"</span><span class="op">)</span></span>
+<span>  <span class="kw"><a href="https://rdrr.io/r/base/warning.html" class="external-link">warning</a></span><span class="op">(</span><span class="st">"Third warning"</span><span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="fu"><a href="../reference/local_edition.html">local_edition</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/expect_error.html">expect_warning</a></span><span class="op">(</span><span class="fu">f</span><span class="op">(</span><span class="op">)</span>, <span class="st">"First"</span><span class="op">)</span></span></code></pre></div>
 <p>In the third edition, <code><a href="../reference/expect_error.html">expect_warning()</a></code> captures at most one warning so the others will bubble up:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/local_edition.html">local_edition</a></span><span class="op">(</span><span class="fl">3</span><span class="op">)</span>
-<span class="fu"><a href="../reference/expect_error.html">expect_warning</a></span><span class="op">(</span><span class="fu">f</span><span class="op">(</span><span class="op">)</span>, <span class="st">"First"</span><span class="op">)</span>
-<span class="co">#&gt; Warning in f(): Second warning</span>
-<span class="co">#&gt; Warning in f(): Third warning</span></code></pre></div>
-<p>You can either add additional expectations to catch these warnings, or silence them all with <code>supressWarnings()</code>:</p>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/local_edition.html">local_edition</a></span><span class="op">(</span><span class="fl">3</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/expect_error.html">expect_warning</a></span><span class="op">(</span><span class="fu">f</span><span class="op">(</span><span class="op">)</span>, <span class="st">"First"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Warning in f(): Second warning</span></span>
+<span><span class="co">#&gt; Warning in f(): Third warning</span></span></code></pre></div>
+<p>You can either add additional expectations to catch these warnings, or silence them all with <code><a href="https://rdrr.io/r/base/warning.html" class="external-link">suppressWarnings()</a></code>:</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">f</span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> 
-  <span class="fu"><a href="../reference/expect_error.html">expect_warning</a></span><span class="op">(</span><span class="st">"First"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> 
-  <span class="fu"><a href="../reference/expect_error.html">expect_warning</a></span><span class="op">(</span><span class="st">"Second"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> 
-  <span class="fu"><a href="../reference/expect_error.html">expect_warning</a></span><span class="op">(</span><span class="st">"Third"</span><span class="op">)</span>
-
-<span class="fu">f</span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> 
-  <span class="fu"><a href="../reference/expect_error.html">expect_warning</a></span><span class="op">(</span><span class="st">"First"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> 
-  <span class="fu"><a href="https://rdrr.io/r/base/warning.html" class="external-link">suppressWarnings</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu">f</span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="../reference/expect_error.html">expect_warning</a></span><span class="op">(</span><span class="st">"First"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="../reference/expect_error.html">expect_warning</a></span><span class="op">(</span><span class="st">"Second"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="../reference/expect_error.html">expect_warning</a></span><span class="op">(</span><span class="st">"Third"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">f</span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="../reference/expect_error.html">expect_warning</a></span><span class="op">(</span><span class="st">"First"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/warning.html" class="external-link">suppressWarnings</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p>Alternatively, you might want to capture them all in a snapshot test:</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/test_that.html">test_that</a></span><span class="op">(</span><span class="st">"f() produces expected outputs/messages/warnings"</span>, <span class="op">{</span>
-  <span class="fu"><a href="../reference/expect_snapshot.html">expect_snapshot</a></span><span class="op">(</span><span class="fu">f</span><span class="op">(</span><span class="op">)</span><span class="op">)</span>  
-<span class="op">}</span><span class="op">)</span>
-<span class="co">#&gt; Can't compare snapshot to reference when testing interactively</span>
-<span class="co">#&gt; i Run `devtools::test()` or `testthat::test_file()` to see changes</span>
-<span class="co">#&gt; i Current value:</span>
-<span class="co">#&gt; Code</span>
-<span class="co">#&gt;   f()</span>
-<span class="co">#&gt; Warning &lt;simpleWarning&gt;</span>
-<span class="co">#&gt;   First warning</span>
-<span class="co">#&gt;   Second warning</span>
-<span class="co">#&gt;   Third warning</span>
-<span class="co">#&gt; ── <span style="color: #0000BB; font-weight: bold;">Skip</span><span style="font-weight: bold;"> (???): f() produces expected outputs/messages/warnings</span> ─────────────────</span>
-<span class="co">#&gt; Reason: empty test</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/test_that.html">test_that</a></span><span class="op">(</span><span class="st">"f() produces expected outputs/messages/warnings"</span>, <span class="op">{</span></span>
+<span>  <span class="fu"><a href="../reference/expect_snapshot.html">expect_snapshot</a></span><span class="op">(</span><span class="fu">f</span><span class="op">(</span><span class="op">)</span><span class="op">)</span>  </span>
+<span><span class="op">}</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Can't compare snapshot to reference when testing interactively.</span></span>
+<span><span class="co">#&gt; i Run `devtools::test()` or `testthat::test_file()` to see changes.</span></span>
+<span><span class="co">#&gt; i Current value: Code f() Warning &lt;simpleWarning&gt; First warning Second warning Third warning</span></span>
+<span><span class="co">#&gt; ── <span style="color: #0000BB; font-weight: bold;">Skip</span><span style="font-weight: bold;"> (???): f() produces expected outputs/messages/warnings</span> ─────────────────</span></span>
+<span><span class="co">#&gt; Reason: empty test</span></span></code></pre></div>
 <p>The same principle also applies to <code><a href="../reference/expect_error.html">expect_message()</a></code>, but message handling has changed in a more radical way, as described next.</p>
 </div>
 <div class="section level3">
 <h3 id="messages">Messages<a class="anchor" aria-label="anchor" href="#messages"></a>
 </h3>
-<p>For reasons that I can no longer remember, testthat silently ignores all messages. This is inconsistent with other types of output, so as of the 3rd edition, they now bubble up to your test results. You’ll have to explicit ignore them with <code>supressMesssages()</code>, or if they’re important, test for their presence with <code><a href="../reference/expect_error.html">expect_message()</a></code>.</p>
+<p>For reasons that I can no longer remember, testthat silently ignores all messages. This is inconsistent with other types of output, so as of the 3rd edition, they now bubble up to your test results. You’ll have to explicit ignore them with <code><a href="https://rdrr.io/r/base/message.html" class="external-link">suppressMessages()</a></code>, or if they’re important, test for their presence with <code><a href="../reference/expect_error.html">expect_message()</a></code>.</p>
 </div>
 <div class="section level3">
 <h3 id="waldo">waldo<a class="anchor" aria-label="anchor" href="#waldo"></a>
 </h3>
 <p>Probably the biggest day-to-day difference (and the biggest reason to upgrade!) is the use of <a href="https://waldo.r-lib.org/reference/compare.html" class="external-link"><code>waldo::compare()</code></a> inside of <code><a href="../reference/equality-expectations.html">expect_equal()</a></code> and <code><a href="../reference/equality-expectations.html">expect_identical()</a></code>. The goal of waldo is to find and concisely describe the difference between a pair of R objects, and it’s designed specifically to help you figure out what’s gone wrong in your unit tests.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">f1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="va">letters</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span><span class="op">)</span>
-<span class="va">f2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">ordered</a></span><span class="op">(</span><span class="va">letters</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span>, levels <span class="op">=</span> <span class="va">letters</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">]</span><span class="op">)</span>
-
-<span class="fu"><a href="../reference/local_edition.html">local_edition</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span>
-<span class="fu"><a href="../reference/equality-expectations.html">expect_equal</a></span><span class="op">(</span><span class="va">f1</span>, <span class="va">f2</span><span class="op">)</span>
-<span class="co">#&gt; Error: `f1` not equal to `f2`.</span>
-<span class="co">#&gt; Attributes: &lt; Component "class": Lengths (1, 2) differ (string compare on first 1) &gt;</span>
-<span class="co">#&gt; Attributes: &lt; Component "class": 1 string mismatch &gt;</span>
-<span class="co">#&gt; Attributes: &lt; Component "levels": Lengths (3, 4) differ (string compare on first 3) &gt;</span>
-
-<span class="fu"><a href="../reference/local_edition.html">local_edition</a></span><span class="op">(</span><span class="fl">3</span><span class="op">)</span>
-<span class="fu"><a href="../reference/equality-expectations.html">expect_equal</a></span><span class="op">(</span><span class="va">f1</span>, <span class="va">f2</span><span class="op">)</span>
-<span class="co">#&gt; Error: `f1` (`actual`) not equal to `f2` (`expected`).</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; `class(actual)`:   <span style="color: #00BB00;">"factor"</span>          </span>
-<span class="co">#&gt; `class(expected)`: <span style="color: #00BB00;">"ordered"</span> <span style="color: #00BB00;">"factor"</span></span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; `levels(actual)`:   <span style="color: #555555;">"a"</span> <span style="color: #555555;">"b"</span> <span style="color: #555555;">"c"</span>    </span>
-<span class="co">#&gt; `levels(expected)`: <span style="color: #555555;">"a"</span> <span style="color: #555555;">"b"</span> <span style="color: #555555;">"c"</span> <span style="color: #0000BB;">"d"</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">f1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="va">letters</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span><span class="op">)</span></span>
+<span><span class="va">f2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">ordered</a></span><span class="op">(</span><span class="va">letters</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span>, levels <span class="op">=</span> <span class="va">letters</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">]</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="../reference/local_edition.html">local_edition</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/equality-expectations.html">expect_equal</a></span><span class="op">(</span><span class="va">f1</span>, <span class="va">f2</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Error: `f1` not equal to `f2`.</span></span>
+<span><span class="co">#&gt; Attributes: &lt; Component "class": Lengths (1, 2) differ (string compare on first 1) &gt;</span></span>
+<span><span class="co">#&gt; Attributes: &lt; Component "class": 1 string mismatch &gt;</span></span>
+<span><span class="co">#&gt; Attributes: &lt; Component "levels": Lengths (3, 4) differ (string compare on first 3) &gt;</span></span>
+<span></span>
+<span><span class="fu"><a href="../reference/local_edition.html">local_edition</a></span><span class="op">(</span><span class="fl">3</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/equality-expectations.html">expect_equal</a></span><span class="op">(</span><span class="va">f1</span>, <span class="va">f2</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Error: `f1` (`actual`) not equal to `f2` (`expected`).</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; `class(actual)`:   <span style="color: #00BB00;">"factor"</span>          </span></span>
+<span><span class="co">#&gt; `class(expected)`: <span style="color: #00BB00;">"ordered"</span> <span style="color: #00BB00;">"factor"</span></span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; `levels(actual)`:   <span style="color: #555555;">"a"</span> <span style="color: #555555;">"b"</span> <span style="color: #555555;">"c"</span>    </span></span>
+<span><span class="co">#&gt; `levels(expected)`: <span style="color: #555555;">"a"</span> <span style="color: #555555;">"b"</span> <span style="color: #555555;">"c"</span> <span style="color: #0000BB;">"d"</span></span></span></code></pre></div>
 <p>waldo looks even better in your console because it carefully uses colours to help highlight the differences.</p>
 <p>The use of waldo also makes precise the difference between <code><a href="../reference/equality-expectations.html">expect_equal()</a></code> and <code><a href="../reference/equality-expectations.html">expect_identical()</a></code>: <code><a href="../reference/equality-expectations.html">expect_equal()</a></code> sets <code>tolerance</code> so that waldo will ignore small numerical differences arising from floating point computation. Otherwise the functions are identical (HA HA).</p>
 <p>This change is likely to result in the most work during an upgrade, because waldo can give slightly different results to both <code><a href="https://rdrr.io/r/base/identical.html" class="external-link">identical()</a></code> and <code><a href="https://rdrr.io/r/base/all.equal.html" class="external-link">all.equal()</a></code> in moderately common situations. I believe on the whole the differences are meaningful and useful, so you’ll need to handle them by tweaking your tests. The following changes are most likely to affect you:</p>
 <ul>
 <li><p><code><a href="../reference/equality-expectations.html">expect_equal()</a></code> previously ignored the environments of formulas and functions. This is most like to arise if you are testing models. It’s worth thinking about what the correct values should be, but if that is to annoying you can opt out of the comparison with <code>ignore_function_env</code> or <code>ignore_formula_env</code>.</p></li>
-<li><p><code><a href="../reference/equality-expectations.html">expect_equal()</a></code> used a combination of <code><a href="https://rdrr.io/r/base/all.equal.html" class="external-link">all.equal()</a></code> and a home-grown <code><a href="../reference/compare.html">testthat::compare()</a></code> which unfortunately used a slightly different definition of tolerance. Now <code><a href="../reference/equality-expectations.html">expect_equal()</a></code> always uses the same defintion of tolerance everywhere, which may require tweaks to your exising tolerance values.</p></li>
+<li><p><code><a href="../reference/equality-expectations.html">expect_equal()</a></code> used a combination of <code><a href="https://rdrr.io/r/base/all.equal.html" class="external-link">all.equal()</a></code> and a home-grown <code><a href="../reference/compare.html">testthat::compare()</a></code> which unfortunately used a slightly different definition of tolerance. Now <code><a href="../reference/equality-expectations.html">expect_equal()</a></code> always uses the same definition of tolerance everywhere, which may require tweaks to your exising tolerance values.</p></li>
 <li>
-<p><code><a href="../reference/equality-expectations.html">expect_equal()</a></code> previously ignored timezone differences when one object had the current timezone set implicitly (with <code>""</code>) and the other had it set explictly:</p>
+<p><code><a href="../reference/equality-expectations.html">expect_equal()</a></code> previously ignored timezone differences when one object had the current timezone set implicitly (with <code>""</code>) and the other had it set explicitly:</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">dt1</span> <span class="op">&lt;-</span> <span class="va">dt2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/ISOdatetime.html" class="external-link">ISOdatetime</a></span><span class="op">(</span><span class="fl">2020</span>, <span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span>, <span class="fl">4</span>, <span class="fl">0</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/attr.html" class="external-link">attr</a></span><span class="op">(</span><span class="va">dt1</span>, <span class="st">"tzone"</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="st">""</span>
-<span class="fu"><a href="https://rdrr.io/r/base/attr.html" class="external-link">attr</a></span><span class="op">(</span><span class="va">dt2</span>, <span class="st">"tzone"</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/timezones.html" class="external-link">Sys.timezone</a></span><span class="op">(</span><span class="op">)</span>
-
-<span class="fu"><a href="../reference/local_edition.html">local_edition</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span>
-<span class="fu"><a href="../reference/equality-expectations.html">expect_equal</a></span><span class="op">(</span><span class="va">dt1</span>, <span class="va">dt2</span><span class="op">)</span>
-
-<span class="fu"><a href="../reference/local_edition.html">local_edition</a></span><span class="op">(</span><span class="fl">3</span><span class="op">)</span>
-<span class="fu"><a href="../reference/equality-expectations.html">expect_equal</a></span><span class="op">(</span><span class="va">dt1</span>, <span class="va">dt2</span><span class="op">)</span>
-<span class="co">#&gt; Error: `dt1` (`actual`) not equal to `dt2` (`expected`).</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; `attr(actual, 'tzone')`:   <span style="color: #00BB00;">""</span>   </span>
-<span class="co">#&gt; `attr(expected, 'tzone')`: <span style="color: #00BB00;">"UTC"</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">dt1</span> <span class="op">&lt;-</span> <span class="va">dt2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/ISOdatetime.html" class="external-link">ISOdatetime</a></span><span class="op">(</span><span class="fl">2020</span>, <span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span>, <span class="fl">4</span>, <span class="fl">0</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/attr.html" class="external-link">attr</a></span><span class="op">(</span><span class="va">dt1</span>, <span class="st">"tzone"</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="st">""</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/attr.html" class="external-link">attr</a></span><span class="op">(</span><span class="va">dt2</span>, <span class="st">"tzone"</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/timezones.html" class="external-link">Sys.timezone</a></span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="../reference/local_edition.html">local_edition</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/equality-expectations.html">expect_equal</a></span><span class="op">(</span><span class="va">dt1</span>, <span class="va">dt2</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="../reference/local_edition.html">local_edition</a></span><span class="op">(</span><span class="fl">3</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/equality-expectations.html">expect_equal</a></span><span class="op">(</span><span class="va">dt1</span>, <span class="va">dt2</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Error: `dt1` (`actual`) not equal to `dt2` (`expected`).</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; `attr(actual, 'tzone')`:   <span style="color: #00BB00;">""</span>   </span></span>
+<span><span class="co">#&gt; `attr(expected, 'tzone')`: <span style="color: #00BB00;">"UTC"</span></span></span></code></pre></div>
 </li>
 </ul>
 </div>
@@ -303,7 +297,7 @@
 
 <div class="pkgdown-footer-right">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
   </div></footer>
