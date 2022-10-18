@@ -15,7 +15,7 @@
 #' This works by using some C code to temporarily modify the mocked function
 #' _in place_. On exit, all functions are restored to their previous state.
 #' This is somewhat abusive of R's internals so use with care. In particular,
-#' functions in base packages cannot be mocked; to work aroud you'll need to
+#' functions in base packages cannot be mocked; to work around you'll need to
 #' make a wrapper function in your own package..
 #'
 #' @section 3rd edition:
