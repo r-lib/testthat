@@ -169,11 +169,14 @@ test_that("packageNotFoundError causes skips for Suggested packages", {
     reporter = "silent",
     stop_on_failure = FALSE
   )
+  results
 
-  skip <- results[[1]]$results[[1]]
-  expect_s3_class(skip, "expectation_skip")
-  expect_match(conditionMessage(skip), "foobarbaz cannot be loaded")
+  for (res in results[1:2]) {
+    skip <- res$results[[1]]
+    expect_s3_class(skip, "expectation_skip")
+    expect_match(conditionMessage(skip), "foobarbaz cannot be loaded")
+  }
 
-  fail <- results[[2]]$results[[1]]
+  fail <- results[[3]]$results[[1]]
   expect_s3_class(fail, "error")
 })

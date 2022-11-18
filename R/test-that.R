@@ -130,7 +130,7 @@ test_code <- function(test, code, env = test_env(), reporter = get_reporter(), s
     e[["handled"]] <- TRUE
     test_error <<- e
   }
-  handle_package_not_found_error <- function(e) {
+  handle_package_not_found_error <- function(missing_pkg) {
     pkg <- Sys.getenv("TESTTHAT_PKG")
     if (!nzchar(pkg)) {
       return(zap())
@@ -141,8 +141,8 @@ test_code <- function(test, code, env = test_env(), reporter = get_reporter(), s
       return(zap())
     }
 
-    if (e$package %in% desc$get_list("Suggests")) {
-      skip_if_not_installed(e$package)
+    if (missing_pkg %in% desc$get_list("Suggests")) {
+      skip_if_not_installed(missing_pkg)
     }
 
     zap()
@@ -220,7 +220,8 @@ test_code <- function(test, code, env = test_env(), reporter = get_reporter(), s
         }
       },
       expectation = handle_expectation,
-      packageNotFoundError = handle_package_not_found_error,
+      rlib_error_package_not_found = function(cnd) handle_package_not_found_error(cnd$pkg),
+      packageNotFoundError = function(cnd) handle_package_not_found_error(cnd$package),
       skip =        handle_skip,
       warning =     handle_warning,
       message =     handle_message,
