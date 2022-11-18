@@ -163,6 +163,9 @@ test_that("no braces required in testthat 2e", {
 })
 
 test_that("packageNotFoundError causes skips for Suggested packages", {
+  # No `packageNotFoundError` on old R versions
+  skip_if(getRversion() < "3.6.0")
+
   path <- test_path("testSuggestsSkip")
   results <- test_local(
     path,
