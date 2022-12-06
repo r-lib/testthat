@@ -15,8 +15,8 @@
 <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png">
 <script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="../deps/bootstrap-5.1.3/bootstrap.min.css" rel="stylesheet">
-<script src="../deps/bootstrap-5.1.3/bootstrap.bundle.min.js"></script><link href="../deps/Source_Sans_Pro-0.4.2/font.css" rel="stylesheet">
-<link href="../deps/Source_Code_Pro-0.4.2/font.css" rel="stylesheet">
+<script src="../deps/bootstrap-5.1.3/bootstrap.bundle.min.js"></script><link href="../deps/Source_Sans_Pro-0.4.4/font.css" rel="stylesheet">
+<link href="../deps/Source_Code_Pro-0.4.4/font.css" rel="stylesheet">
 <!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- bootstrap-toc --><script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.js"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="testthat 3e">
@@ -108,61 +108,113 @@
 
     
     
-<p>testthat 3.0.0 introduces the idea of an “edition” of testthat. An edition is a bundle of behaviours that you have to explicitly choose to use, allowing us to make otherwise backward incompatible changes. This is particularly important for testthat since it has a very large number of packages that use it (almost 5,000 at last count). Choosing to use the 3rd edition allows you to use our latest recommendations for ongoing and new work, while historical packages continue to use the old behaviour.</p>
-<p>(We don’t anticipate creating new editions very often, and they’ll always be matched with major version, i.e. if there’s another edition, it’ll be the fourth edition and will come with testthat 4.0.0.)</p>
-<p>This vignette shows you how to activate the 3rd edition, introduces the main features, and discusses common challenges when upgrading a package. If you have a problem that this vignette doesn’t cover, please let me know, as it’s likely that the problem also affects others.</p>
+<p>testthat 3.0.0 introduces the idea of an “edition” of testthat. An
+edition is a bundle of behaviours that you have to explicitly choose to
+use, allowing us to make otherwise backward incompatible changes. This
+is particularly important for testthat since it has a very large number
+of packages that use it (almost 5,000 at last count). Choosing to use
+the 3rd edition allows you to use our latest recommendations for ongoing
+and new work, while historical packages continue to use the old
+behaviour.</p>
+<p>(We don’t anticipate creating new editions very often, and they’ll
+always be matched with major version, i.e. if there’s another edition,
+it’ll be the fourth edition and will come with testthat 4.0.0.)</p>
+<p>This vignette shows you how to activate the 3rd edition, introduces
+the main features, and discusses common challenges when upgrading a
+package. If you have a problem that this vignette doesn’t cover, please
+let me know, as it’s likely that the problem also affects others.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://testthat.r-lib.org">testthat</a></span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/local_edition.html">local_edition</a></span><span class="op">(</span><span class="fl">3</span><span class="op">)</span></span></code></pre></div>
 <div class="section level2">
 <h2 id="activating">Activating<a class="anchor" aria-label="anchor" href="#activating"></a>
 </h2>
-<p>The usual way to activate the 3rd edition is to add a line to your <code>DESCRIPTION</code>:</p>
+<p>The usual way to activate the 3rd edition is to add a line to your
+<code>DESCRIPTION</code>:</p>
 <pre><code><span><span class="va">Config</span><span class="op">/</span><span class="va">testthat</span><span class="op">/</span><span class="va">edition</span><span class="op">:</span> <span class="fl">3</span></span></code></pre>
-<p>This will activate the 3rd edition for every test in your package.</p>
-<p>You can also control the edition used for individual tests with <code><a href="../reference/local_edition.html">testthat::local_edition()</a></code>:</p>
+<p>This will activate the 3rd edition for every test in your
+package.</p>
+<p>You can also control the edition used for individual tests with
+<code><a href="../reference/local_edition.html">testthat::local_edition()</a></code>:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/test_that.html">test_that</a></span><span class="op">(</span><span class="st">"I can use the 3rd edition"</span>, <span class="op">{</span></span>
 <span>  <span class="fu"><a href="../reference/local_edition.html">local_edition</a></span><span class="op">(</span><span class="fl">3</span><span class="op">)</span></span>
 <span>  <span class="fu"><a href="../reference/logical-expectations.html">expect_true</a></span><span class="op">(</span><span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="op">}</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #00BB00;">Test passed</span> 🌈</span></span></code></pre></div>
-<p>This is also useful if you’ve switched to the 3rd edition and have a couple of tests that fail. You can use <code>local_edition(2)</code> to revert back to the old behaviour, giving you some breathing room to figure out the underlying issue.</p>
+<span><span class="co">#&gt; <span style="color: #00BB00;">Test passed</span> 🥇</span></span></code></pre></div>
+<p>This is also useful if you’ve switched to the 3rd edition and have a
+couple of tests that fail. You can use <code>local_edition(2)</code> to
+revert back to the old behaviour, giving you some breathing room to
+figure out the underlying issue.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/test_that.html">test_that</a></span><span class="op">(</span><span class="st">"I want to use the 2nd edition"</span>, <span class="op">{</span></span>
 <span>  <span class="fu"><a href="../reference/local_edition.html">local_edition</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span></span>
 <span>  <span class="fu"><a href="../reference/logical-expectations.html">expect_true</a></span><span class="op">(</span><span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="op">}</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #00BB00;">Test passed</span> 🥇</span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #00BB00;">Test passed</span> 😸</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="changes">Changes<a class="anchor" aria-label="anchor" href="#changes"></a>
 </h2>
 <p>There are three major changes in the 3rd edition:</p>
 <ul>
-<li><p>A number of outdated functions are now <strong>deprecated</strong>, so you’ll be warned about them every time you run your tests (but they won’t cause <code>R CMD check</code> to fail).</p></li>
-<li><p>testthat no longer silently swallows <strong>messages</strong>; you now need to deliberately handle them.</p></li>
-<li><p><code><a href="../reference/equality-expectations.html">expect_equal()</a></code> and <code><a href="../reference/equality-expectations.html">expect_identical()</a></code> now use the <a href="https://waldo.r-lib.org/" class="external-link"><strong>waldo</strong></a> package instead of <code><a href="https://rdrr.io/r/base/identical.html" class="external-link">identical()</a></code> and <code><a href="https://rdrr.io/r/base/all.equal.html" class="external-link">all.equal()</a></code>. This makes them more consistent and provides an enhanced display of differences when a test fails.</p></li>
+<li><p>A number of outdated functions are now
+<strong>deprecated</strong>, so you’ll be warned about them every time
+you run your tests (but they won’t cause <code>R CMD check</code> to
+fail).</p></li>
+<li><p>testthat no longer silently swallows <strong>messages</strong>;
+you now need to deliberately handle them.</p></li>
+<li><p><code><a href="../reference/equality-expectations.html">expect_equal()</a></code> and <code><a href="../reference/equality-expectations.html">expect_identical()</a></code>
+now use the <a href="https://waldo.r-lib.org/" class="external-link"><strong>waldo</strong></a> package
+instead of <code><a href="https://rdrr.io/r/base/identical.html" class="external-link">identical()</a></code> and <code><a href="https://rdrr.io/r/base/all.equal.html" class="external-link">all.equal()</a></code>. This
+makes them more consistent and provides an enhanced display of
+differences when a test fails.</p></li>
 </ul>
 <div class="section level3">
 <h3 id="deprecations">Deprecations<a class="anchor" aria-label="anchor" href="#deprecations"></a>
 </h3>
-<p>A number of outdated functions have been deprecated. Most of these functions have not been recommended for a number of years, but before the introduction of the edition idea, I didn’t have a good way of preventing people from using them without breaking a lot of code on CRAN.</p>
+<p>A number of outdated functions have been deprecated. Most of these
+functions have not been recommended for a number of years, but before
+the introduction of the edition idea, I didn’t have a good way of
+preventing people from using them without breaking a lot of code on
+CRAN.</p>
 <ul>
-<li><p><code><a href="../reference/context.html">context()</a></code> is formally deprecated. testthat has been moving away from <code><a href="../reference/context.html">context()</a></code> in favour of file names for quite some time, and now you’ll be strongly encouraged remove these calls from your tests.</p></li>
-<li><p><code><a href="../reference/expect_is.html">expect_is()</a></code> is deprecated in favour of the more specific <code><a href="../reference/inheritance-expectations.html">expect_type()</a></code>, <code><a href="../reference/inheritance-expectations.html">expect_s3_class()</a></code>, and <code><a href="../reference/inheritance-expectations.html">expect_s4_class()</a></code>. This ensures that you check the expected class along with the expected OO system.</p></li>
-<li><p>The very old <code><a href="../reference/expect_that.html">expect_that()</a></code> syntax is now deprecated. This was an overly clever API that I regretted even before the release of testthat 1.0.0.</p></li>
-<li><p><code><a href="../reference/expect_equivalent.html">expect_equivalent()</a></code> has been deprecated since it is now equivalent (HA HA) to <code>expect_equal(ignore_attr = TRUE)</code>. The main difference is that it won’t ignore names; so you’ll need an explicit <code><a href="https://rdrr.io/r/base/unname.html" class="external-link">unname()</a></code> if you deliberately want to ignore names.</p></li>
-<li><p><code><a href="../reference/teardown.html">setup()</a></code> and <code><a href="../reference/teardown.html">teardown()</a></code> are deprecated in favour of test fixtures. See <code><a href="../articles/test-fixtures.html">vignette("test-fixtures")</a></code> for details.</p></li>
-<li><p><code><a href="../reference/expect_known_output.html">expect_known_output()</a></code>, <code><a href="../reference/expect_known_output.html">expect_known_value()</a></code>, <code><a href="../reference/expect_known_output.html">expect_known_hash()</a></code>, and <code><a href="../reference/expect_known_output.html">expect_equal_to_reference()</a></code> are all deprecated in favour of <code><a href="../reference/expect_snapshot_output.html">expect_snapshot_output()</a></code> and <code><a href="../reference/expect_snapshot_value.html">expect_snapshot_value()</a></code>.</p></li>
-<li><p><code><a href="../reference/with_mock.html">with_mock()</a></code> and <code><a href="../reference/with_mock.html">local_mock()</a></code> are deprecated; please use the <a href="https://krlmlr.github.io/mockr/" class="external-link">mockr</a> or <a href="https://github.com/r-lib/mockery#mockery" class="external-link">mockery</a> instead.</p></li>
+<li><p><code><a href="../reference/context.html">context()</a></code> is formally deprecated. testthat has been
+moving away from <code><a href="../reference/context.html">context()</a></code> in favour of file names for
+quite some time, and now you’ll be strongly encouraged remove these
+calls from your tests.</p></li>
+<li><p><code><a href="../reference/expect_is.html">expect_is()</a></code> is deprecated in favour of the more
+specific <code><a href="../reference/inheritance-expectations.html">expect_type()</a></code>, <code><a href="../reference/inheritance-expectations.html">expect_s3_class()</a></code>, and
+<code><a href="../reference/inheritance-expectations.html">expect_s4_class()</a></code>. This ensures that you check the expected
+class along with the expected OO system.</p></li>
+<li><p>The very old <code><a href="../reference/expect_that.html">expect_that()</a></code> syntax is now deprecated.
+This was an overly clever API that I regretted even before the release
+of testthat 1.0.0.</p></li>
+<li><p><code><a href="../reference/expect_equivalent.html">expect_equivalent()</a></code> has been deprecated since it is
+now equivalent (HA HA) to <code>expect_equal(ignore_attr = TRUE)</code>.
+The main difference is that it won’t ignore names; so you’ll need an
+explicit <code><a href="https://rdrr.io/r/base/unname.html" class="external-link">unname()</a></code> if you deliberately want to ignore
+names.</p></li>
+<li><p><code><a href="../reference/teardown.html">setup()</a></code> and <code><a href="../reference/teardown.html">teardown()</a></code> are deprecated
+in favour of test fixtures. See <code><a href="../articles/test-fixtures.html">vignette("test-fixtures")</a></code>
+for details.</p></li>
+<li><p><code><a href="../reference/expect_known_output.html">expect_known_output()</a></code>,
+<code><a href="../reference/expect_known_output.html">expect_known_value()</a></code>, <code><a href="../reference/expect_known_output.html">expect_known_hash()</a></code>, and
+<code><a href="../reference/expect_known_output.html">expect_equal_to_reference()</a></code> are all deprecated in favour of
+<code><a href="../reference/expect_snapshot_output.html">expect_snapshot_output()</a></code> and
+<code><a href="../reference/expect_snapshot_value.html">expect_snapshot_value()</a></code>.</p></li>
+<li><p><code><a href="../reference/with_mock.html">with_mock()</a></code> and <code><a href="../reference/with_mock.html">local_mock()</a></code> are
+deprecated; please use the <a href="https://krlmlr.github.io/mockr/" class="external-link">mockr</a> or <a href="https://github.com/r-lib/mockery#mockery" class="external-link">mockery</a>
+instead.</p></li>
 </ul>
 <p>Fixing these deprecation warnings should be straightforward.</p>
 </div>
 <div class="section level3">
 <h3 id="warnings">Warnings<a class="anchor" aria-label="anchor" href="#warnings"></a>
 </h3>
-<p>In the second edition, <code><a href="../reference/expect_error.html">expect_warning()</a></code> swallows all warnings regardless of whether or not they match the <code>regexp</code> or <code>class</code>:</p>
+<p>In the second edition, <code><a href="../reference/expect_error.html">expect_warning()</a></code> swallows all
+warnings regardless of whether or not they match the <code>regexp</code>
+or <code>class</code>:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">f</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="kw"><a href="https://rdrr.io/r/base/warning.html" class="external-link">warning</a></span><span class="op">(</span><span class="st">"First warning"</span><span class="op">)</span></span>
@@ -172,13 +224,15 @@
 <span></span>
 <span><span class="fu"><a href="../reference/local_edition.html">local_edition</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/expect_error.html">expect_warning</a></span><span class="op">(</span><span class="fu">f</span><span class="op">(</span><span class="op">)</span>, <span class="st">"First"</span><span class="op">)</span></span></code></pre></div>
-<p>In the third edition, <code><a href="../reference/expect_error.html">expect_warning()</a></code> captures at most one warning so the others will bubble up:</p>
+<p>In the third edition, <code><a href="../reference/expect_error.html">expect_warning()</a></code> captures at most
+one warning so the others will bubble up:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/local_edition.html">local_edition</a></span><span class="op">(</span><span class="fl">3</span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/expect_error.html">expect_warning</a></span><span class="op">(</span><span class="fu">f</span><span class="op">(</span><span class="op">)</span>, <span class="st">"First"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Warning in f(): Second warning</span></span>
 <span><span class="co">#&gt; Warning in f(): Third warning</span></span></code></pre></div>
-<p>You can either add additional expectations to catch these warnings, or silence them all with <code><a href="https://rdrr.io/r/base/warning.html" class="external-link">suppressWarnings()</a></code>:</p>
+<p>You can either add additional expectations to catch these warnings,
+or silence them all with <code><a href="https://rdrr.io/r/base/warning.html" class="external-link">suppressWarnings()</a></code>:</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">f</span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="../reference/expect_error.html">expect_warning</a></span><span class="op">(</span><span class="st">"First"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
@@ -188,7 +242,8 @@
 <span><span class="fu">f</span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="../reference/expect_error.html">expect_warning</a></span><span class="op">(</span><span class="st">"First"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/warning.html" class="external-link">suppressWarnings</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<p>Alternatively, you might want to capture them all in a snapshot test:</p>
+<p>Alternatively, you might want to capture them all in a snapshot
+test:</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/test_that.html">test_that</a></span><span class="op">(</span><span class="st">"f() produces expected outputs/messages/warnings"</span>, <span class="op">{</span></span>
 <span>  <span class="fu"><a href="../reference/expect_snapshot.html">expect_snapshot</a></span><span class="op">(</span><span class="fu">f</span><span class="op">(</span><span class="op">)</span><span class="op">)</span>  </span>
@@ -198,17 +253,30 @@
 <span><span class="co">#&gt; i Current value: Code f() Warning &lt;simpleWarning&gt; First warning Second warning Third warning</span></span>
 <span><span class="co">#&gt; ── <span style="color: #0000BB; font-weight: bold;">Skip</span><span style="font-weight: bold;"> (???): f() produces expected outputs/messages/warnings</span> ─────────────────</span></span>
 <span><span class="co">#&gt; Reason: empty test</span></span></code></pre></div>
-<p>The same principle also applies to <code><a href="../reference/expect_error.html">expect_message()</a></code>, but message handling has changed in a more radical way, as described next.</p>
+<p>The same principle also applies to <code><a href="../reference/expect_error.html">expect_message()</a></code>, but
+message handling has changed in a more radical way, as described
+next.</p>
 </div>
 <div class="section level3">
 <h3 id="messages">Messages<a class="anchor" aria-label="anchor" href="#messages"></a>
 </h3>
-<p>For reasons that I can no longer remember, testthat silently ignores all messages. This is inconsistent with other types of output, so as of the 3rd edition, they now bubble up to your test results. You’ll have to explicit ignore them with <code><a href="https://rdrr.io/r/base/message.html" class="external-link">suppressMessages()</a></code>, or if they’re important, test for their presence with <code><a href="../reference/expect_error.html">expect_message()</a></code>.</p>
+<p>For reasons that I can no longer remember, testthat silently ignores
+all messages. This is inconsistent with other types of output, so as of
+the 3rd edition, they now bubble up to your test results. You’ll have to
+explicit ignore them with <code><a href="https://rdrr.io/r/base/message.html" class="external-link">suppressMessages()</a></code>, or if they’re
+important, test for their presence with
+<code><a href="../reference/expect_error.html">expect_message()</a></code>.</p>
 </div>
 <div class="section level3">
 <h3 id="waldo">waldo<a class="anchor" aria-label="anchor" href="#waldo"></a>
 </h3>
-<p>Probably the biggest day-to-day difference (and the biggest reason to upgrade!) is the use of <a href="https://waldo.r-lib.org/reference/compare.html" class="external-link"><code>waldo::compare()</code></a> inside of <code><a href="../reference/equality-expectations.html">expect_equal()</a></code> and <code><a href="../reference/equality-expectations.html">expect_identical()</a></code>. The goal of waldo is to find and concisely describe the difference between a pair of R objects, and it’s designed specifically to help you figure out what’s gone wrong in your unit tests.</p>
+<p>Probably the biggest day-to-day difference (and the biggest reason to
+upgrade!) is the use of <a href="https://waldo.r-lib.org/reference/compare.html" class="external-link"><code>waldo::compare()</code></a>
+inside of <code><a href="../reference/equality-expectations.html">expect_equal()</a></code> and
+<code><a href="../reference/equality-expectations.html">expect_identical()</a></code>. The goal of waldo is to find and
+concisely describe the difference between a pair of R objects, and it’s
+designed specifically to help you figure out what’s gone wrong in your
+unit tests.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">f1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="va">letters</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span><span class="op">)</span></span>
 <span><span class="va">f2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">ordered</a></span><span class="op">(</span><span class="va">letters</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span>, levels <span class="op">=</span> <span class="va">letters</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">]</span><span class="op">)</span></span>
@@ -229,14 +297,36 @@
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; `levels(actual)`:   <span style="color: #555555;">"a"</span> <span style="color: #555555;">"b"</span> <span style="color: #555555;">"c"</span>    </span></span>
 <span><span class="co">#&gt; `levels(expected)`: <span style="color: #555555;">"a"</span> <span style="color: #555555;">"b"</span> <span style="color: #555555;">"c"</span> <span style="color: #0000BB;">"d"</span></span></span></code></pre></div>
-<p>waldo looks even better in your console because it carefully uses colours to help highlight the differences.</p>
-<p>The use of waldo also makes precise the difference between <code><a href="../reference/equality-expectations.html">expect_equal()</a></code> and <code><a href="../reference/equality-expectations.html">expect_identical()</a></code>: <code><a href="../reference/equality-expectations.html">expect_equal()</a></code> sets <code>tolerance</code> so that waldo will ignore small numerical differences arising from floating point computation. Otherwise the functions are identical (HA HA).</p>
-<p>This change is likely to result in the most work during an upgrade, because waldo can give slightly different results to both <code><a href="https://rdrr.io/r/base/identical.html" class="external-link">identical()</a></code> and <code><a href="https://rdrr.io/r/base/all.equal.html" class="external-link">all.equal()</a></code> in moderately common situations. I believe on the whole the differences are meaningful and useful, so you’ll need to handle them by tweaking your tests. The following changes are most likely to affect you:</p>
+<p>waldo looks even better in your console because it carefully uses
+colours to help highlight the differences.</p>
+<p>The use of waldo also makes precise the difference between
+<code><a href="../reference/equality-expectations.html">expect_equal()</a></code> and <code><a href="../reference/equality-expectations.html">expect_identical()</a></code>:
+<code><a href="../reference/equality-expectations.html">expect_equal()</a></code> sets <code>tolerance</code> so that waldo
+will ignore small numerical differences arising from floating point
+computation. Otherwise the functions are identical (HA HA).</p>
+<p>This change is likely to result in the most work during an upgrade,
+because waldo can give slightly different results to both
+<code><a href="https://rdrr.io/r/base/identical.html" class="external-link">identical()</a></code> and <code><a href="https://rdrr.io/r/base/all.equal.html" class="external-link">all.equal()</a></code> in moderately
+common situations. I believe on the whole the differences are meaningful
+and useful, so you’ll need to handle them by tweaking your tests. The
+following changes are most likely to affect you:</p>
 <ul>
-<li><p><code><a href="../reference/equality-expectations.html">expect_equal()</a></code> previously ignored the environments of formulas and functions. This is most like to arise if you are testing models. It’s worth thinking about what the correct values should be, but if that is to annoying you can opt out of the comparison with <code>ignore_function_env</code> or <code>ignore_formula_env</code>.</p></li>
-<li><p><code><a href="../reference/equality-expectations.html">expect_equal()</a></code> used a combination of <code><a href="https://rdrr.io/r/base/all.equal.html" class="external-link">all.equal()</a></code> and a home-grown <code><a href="../reference/compare.html">testthat::compare()</a></code> which unfortunately used a slightly different definition of tolerance. Now <code><a href="../reference/equality-expectations.html">expect_equal()</a></code> always uses the same definition of tolerance everywhere, which may require tweaks to your exising tolerance values.</p></li>
+<li><p><code><a href="../reference/equality-expectations.html">expect_equal()</a></code> previously ignored the environments
+of formulas and functions. This is most like to arise if you are testing
+models. It’s worth thinking about what the correct values should be, but
+if that is to annoying you can opt out of the comparison with
+<code>ignore_function_env</code> or
+<code>ignore_formula_env</code>.</p></li>
+<li><p><code><a href="../reference/equality-expectations.html">expect_equal()</a></code> used a combination of
+<code><a href="https://rdrr.io/r/base/all.equal.html" class="external-link">all.equal()</a></code> and a home-grown
+<code><a href="../reference/compare.html">testthat::compare()</a></code> which unfortunately used a slightly
+different definition of tolerance. Now <code><a href="../reference/equality-expectations.html">expect_equal()</a></code>
+always uses the same definition of tolerance everywhere, which may
+require tweaks to your exising tolerance values.</p></li>
 <li>
-<p><code><a href="../reference/equality-expectations.html">expect_equal()</a></code> previously ignored timezone differences when one object had the current timezone set implicitly (with <code>""</code>) and the other had it set explicitly:</p>
+<p><code><a href="../reference/equality-expectations.html">expect_equal()</a></code> previously ignored timezone
+differences when one object had the current timezone set implicitly
+(with <code>""</code>) and the other had it set explicitly:</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">dt1</span> <span class="op">&lt;-</span> <span class="va">dt2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/ISOdatetime.html" class="external-link">ISOdatetime</a></span><span class="op">(</span><span class="fl">2020</span>, <span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span>, <span class="fl">4</span>, <span class="fl">0</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/attr.html" class="external-link">attr</a></span><span class="op">(</span><span class="va">dt1</span>, <span class="st">"tzone"</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="st">""</span></span>
@@ -257,11 +347,19 @@
 <div class="section level3">
 <h3 id="reproducible-output">Reproducible output<a class="anchor" aria-label="anchor" href="#reproducible-output"></a>
 </h3>
-<p>In the third edition, <code><a href="../reference/test_that.html">test_that()</a></code> automatically calls <code><a href="../reference/local_test_context.html">local_reproducible_output()</a></code> which automatically sets a number of options and environment variables to ensure output is as reproducible across systems. This includes setting:</p>
+<p>In the third edition, <code><a href="../reference/test_that.html">test_that()</a></code> automatically calls
+<code><a href="../reference/local_test_context.html">local_reproducible_output()</a></code> which automatically sets a
+number of options and environment variables to ensure output is as
+reproducible across systems. This includes setting:</p>
 <ul>
-<li><p><code>options(crayon.enabled = FALSE)</code> and <code>options(cli.unicode = FALSE)</code> so that the crayon and cli packages produce raw ASCII output.</p></li>
-<li><p><code>Sys.setLocale("LC_COLLATE" = "C")</code> so that sorting a character vector returns the same order regardless of the system language.</p></li>
-<li><p><code>options(width = 80)</code> so print methods always generate the same output regardless of your actual console width.</p></li>
+<li><p><code>options(crayon.enabled = FALSE)</code> and
+<code>options(cli.unicode = FALSE)</code> so that the crayon and cli
+packages produce raw ASCII output.</p></li>
+<li><p><code>Sys.setLocale("LC_COLLATE" = "C")</code> so that sorting a
+character vector returns the same order regardless of the system
+language.</p></li>
+<li><p><code>options(width = 80)</code> so print methods always generate
+the same output regardless of your actual console width.</p></li>
 </ul>
 <p>See the documentation for more details.</p>
 </div>
@@ -269,19 +367,33 @@
 <div class="section level2">
 <h2 id="upgrading">Upgrading<a class="anchor" aria-label="anchor" href="#upgrading"></a>
 </h2>
-<p>The changes lend themselves to the following workflow for upgrading from the 2nd to the 3rd edition:</p>
+<p>The changes lend themselves to the following workflow for upgrading
+from the 2nd to the 3rd edition:</p>
 <ol style="list-style-type: decimal">
-<li>Activate edition 3. You can let <a href="https://usethis.r-lib.org/reference/use_testthat.html" class="external-link"><code>usethis::use_testthat(3)</code></a> do this for you.</li>
-<li>Remove or replace deprecated functions, going over the list of above.</li>
-<li>If your output got noisy, quiet things down by either capturing or suppressing warnings and messages.</li>
+<li>Activate edition 3. You can let <a href="https://usethis.r-lib.org/reference/use_testthat.html" class="external-link"><code>usethis::use_testthat(3)</code></a>
+do this for you.</li>
+<li>Remove or replace deprecated functions, going over the list of
+above.</li>
+<li>If your output got noisy, quiet things down by either capturing or
+suppressing warnings and messages.</li>
 <li>Inspect test outputs if objects are not “all equal” anymore.</li>
 </ol>
 </div>
 <div class="section level2">
 <h2 id="alternatives">Alternatives<a class="anchor" aria-label="anchor" href="#alternatives"></a>
 </h2>
-<p>You might wonder why we came up with the idea of an “edition”, rather than creating a new package like testthat3. We decided against making a new package because the 2nd and 3rd edition share a very large amount of code, so making a new package would have substantially increased the maintenance burden: the majority of bugs would’ve needed to be fixed in two places.</p>
-<p>If you’re a programmer in other languages, you might wonder why we can’t rely on <a href="https://semver.org" class="external-link">semantic versioning</a>. The main reason is that CRAN checks all packages that use testthat with the latest version of testthat, so simply incrementing the major version number doesn’t actually help with reducing R CMD check failures on CRAN.</p>
+<p>You might wonder why we came up with the idea of an “edition”, rather
+than creating a new package like testthat3. We decided against making a
+new package because the 2nd and 3rd edition share a very large amount of
+code, so making a new package would have substantially increased the
+maintenance burden: the majority of bugs would’ve needed to be fixed in
+two places.</p>
+<p>If you’re a programmer in other languages, you might wonder why we
+can’t rely on <a href="https://semver.org" class="external-link">semantic versioning</a>. The
+main reason is that CRAN checks all packages that use testthat with the
+latest version of testthat, so simply incrementing the major version
+number doesn’t actually help with reducing R CMD check failures on
+CRAN.</p>
 </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside>

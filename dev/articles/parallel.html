@@ -15,8 +15,8 @@
 <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png">
 <script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="../deps/bootstrap-5.1.3/bootstrap.min.css" rel="stylesheet">
-<script src="../deps/bootstrap-5.1.3/bootstrap.bundle.min.js"></script><link href="../deps/Source_Sans_Pro-0.4.2/font.css" rel="stylesheet">
-<link href="../deps/Source_Code_Pro-0.4.2/font.css" rel="stylesheet">
+<script src="../deps/bootstrap-5.1.3/bootstrap.bundle.min.js"></script><link href="../deps/Source_Sans_Pro-0.4.4/font.css" rel="stylesheet">
+<link href="../deps/Source_Code_Pro-0.4.4/font.css" rel="stylesheet">
 <!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- bootstrap-toc --><script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.js"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Running tests in parallel">
@@ -108,24 +108,50 @@
 
     
     
-<p>To take advantage of parallel tests, add the following line to the <code>DESCRIPTION</code>:</p>
+<p>To take advantage of parallel tests, add the following line to the
+<code>DESCRIPTION</code>:</p>
 <pre><code><span><span class="va">Config</span><span class="op">/</span><span class="va">testthat</span><span class="op">/</span><span class="va">parallel</span><span class="op">:</span> <span class="va">true</span></span></code></pre>
 <p>You’ll also need to be using the 3rd edition:</p>
 <pre><code><span><span class="va">Config</span><span class="op">/</span><span class="va">testthat</span><span class="op">/</span><span class="va">edition</span><span class="op">:</span> <span class="fl">3</span></span></code></pre>
 <div class="section level2">
 <h2 id="basic-operation">Basic operation<a class="anchor" aria-label="anchor" href="#basic-operation"></a>
 </h2>
-<p>Starting a new R process is relatively expensive, so testthat begins by creating a pool of workers. The size of the pool will be determined by <code>getOption("Ncpus")</code>, then the <code>TESTTHAT_CPUS</code> envvar. If neither are set, then two processes are started. In any case, testthat will never start more subprocesses than test files.</p>
-<p>Each worker begins by loading testthat and the package being tested. It then runs any setup files (so if you have existing setup files you’ll need to make sure they work when executed in parallel).</p>
-<p>testthat runs test <em>files</em> in parallel. Once the worker pool is initialized, testthat then starts sending test files to workers, by default in alphabetical order: as soon as a subprocess has finished, it receives another file, until all files are done. This means that state is persisted across test files: options are <em>not</em> reset, loaded packages are <em>not</em> unloaded, the global environment is <em>not</em> cleared, etc. You are responsible for making sure each file leaves the world as it finds it.</p>
-<p>Because files are run in alphabetical order, you may want to rename your slowest test files so that they start first, e.g. <code>test-1-slowest.R</code>, <code>test-2-next-slowest.R</code>, etc.</p>
+<p>Starting a new R process is relatively expensive, so testthat begins
+by creating a pool of workers. The size of the pool will be determined
+by <code>getOption("Ncpus")</code>, then the <code>TESTTHAT_CPUS</code>
+envvar. If neither are set, then two processes are started. In any case,
+testthat will never start more subprocesses than test files.</p>
+<p>Each worker begins by loading testthat and the package being tested.
+It then runs any setup files (so if you have existing setup files you’ll
+need to make sure they work when executed in parallel).</p>
+<p>testthat runs test <em>files</em> in parallel. Once the worker pool
+is initialized, testthat then starts sending test files to workers, by
+default in alphabetical order: as soon as a subprocess has finished, it
+receives another file, until all files are done. This means that state
+is persisted across test files: options are <em>not</em> reset, loaded
+packages are <em>not</em> unloaded, the global environment is
+<em>not</em> cleared, etc. You are responsible for making sure each file
+leaves the world as it finds it.</p>
+<p>Because files are run in alphabetical order, you may want to rename
+your slowest test files so that they start first,
+e.g. <code>test-1-slowest.R</code>, <code>test-2-next-slowest.R</code>,
+etc.</p>
 </div>
 <div class="section level2">
 <h2 id="common-problems">Common problems<a class="anchor" aria-label="anchor" href="#common-problems"></a>
 </h2>
 <ul>
-<li><p>If tests fail stochastically (i.e. they sometimes work and sometimes fail) you may have accidentally introduced a dependency between your test files. This sort of dependency is hard to track down due to the random nature, and you’ll need to check all tests to make sure that they’re not accidentally changing global state.</p></li>
-<li><p>If you use <a href="https://testthat.r-lib.org/articles/test-fixtures.html#package">packaged scope test fixtures</a>, you’ll need to review them to make sure that they work in parallel. For example, if you were previously creating a temporary database in the test directory, you’d need to instead create it in the session temporary directory so that each process gets its own independent version.</p></li>
+<li><p>If tests fail stochastically (i.e. they sometimes work and
+sometimes fail) you may have accidentally introduced a dependency
+between your test files. This sort of dependency is hard to track down
+due to the random nature, and you’ll need to check all tests to make
+sure that they’re not accidentally changing global state.</p></li>
+<li><p>If you use <a href="https://testthat.r-lib.org/articles/test-fixtures.html#package">packaged
+scope test fixtures</a>, you’ll need to review them to make sure that
+they work in parallel. For example, if you were previously creating a
+temporary database in the test directory, you’d need to instead create
+it in the session temporary directory so that each process gets its own
+independent version.</p></li>
 </ul>
 </div>
 <div class="section level2">
@@ -133,17 +159,35 @@
 </h2>
 <p>There is some overhead associated with running tests in parallel:</p>
 <ul>
-<li><p>Startup cost is linear in the number of subprocesses, because we need to create them in a loop. This is about 50ms on my laptop. Each subprocess needs to load testthat and the tested package, this happens in parallel, and we cannot do too much about it.</p></li>
-<li><p>Clean up time is again linear in the number of subprocesses, and it about 80ms per subprocess on my laptop.</p></li>
-<li><p>It seems that sending a message (i.e. a passing or failing expectation) is about 2ms currently. This is the total cost that includes sending the message, receiving it, and replying it to a non-parallel reporter.</p></li>
+<li><p>Startup cost is linear in the number of subprocesses, because we
+need to create them in a loop. This is about 50ms on my laptop. Each
+subprocess needs to load testthat and the tested package, this happens
+in parallel, and we cannot do too much about it.</p></li>
+<li><p>Clean up time is again linear in the number of subprocesses, and
+it about 80ms per subprocess on my laptop.</p></li>
+<li><p>It seems that sending a message (i.e. a passing or failing
+expectation) is about 2ms currently. This is the total cost that
+includes sending the message, receiving it, and replying it to a
+non-parallel reporter.</p></li>
 </ul>
-<p>This overhead generally means that if you have many test files that take a short amount of time, you’re unlikely to see a huge benefit by using parallel tests. For example, testthat itself takes about 10s to run tests in serial, and 8s to run the tests in parallel.</p>
+<p>This overhead generally means that if you have many test files that
+take a short amount of time, you’re unlikely to see a huge benefit by
+using parallel tests. For example, testthat itself takes about 10s to
+run tests in serial, and 8s to run the tests in parallel.</p>
 <div class="section level3">
 <h3 id="changing-the-order-of-the-test-files">Changing the order of the test files<a class="anchor" aria-label="anchor" href="#changing-the-order-of-the-test-files"></a>
 </h3>
-<p>By default testthat starts the test files in alphabetical order. If you have a few number of test files that take longer than the rest, then this might not be the best order. Ideally the slow files would start first, as the whole test suite will take at least as much time as its slowest test file. You can change the order with the <code>Config/testthat/start-first</code> option in <code>DESCRIPTION</code>. For example testthat currently has:</p>
+<p>By default testthat starts the test files in alphabetical order. If
+you have a few number of test files that take longer than the rest, then
+this might not be the best order. Ideally the slow files would start
+first, as the whole test suite will take at least as much time as its
+slowest test file. You can change the order with the
+<code>Config/testthat/start-first</code> option in
+<code>DESCRIPTION</code>. For example testthat currently has:</p>
 <pre><code>Config/testthat/start-first: watcher, parallel*</code></pre>
-<p>The format is a comma separated list of glob patterns, see <code><a href="https://rdrr.io/r/utils/glob2rx.html" class="external-link">?utils::glob2rx</a></code>. The matching test files will start first. (The <code>test-</code> prefix is ignored.)</p>
+<p>The format is a comma separated list of glob patterns, see
+<code><a href="https://rdrr.io/r/utils/glob2rx.html" class="external-link">?utils::glob2rx</a></code>. The matching test files will start first.
+(The <code>test-</code> prefix is ignored.)</p>
 </div>
 </div>
 <div class="section level2">
@@ -152,25 +196,55 @@
 <div class="section level3">
 <h3 id="default-reporters">Default reporters<a class="anchor" aria-label="anchor" href="#default-reporters"></a>
 </h3>
-<p>See <code><a href="../reference/default_reporter.html">default_reporter()</a></code> for how testthat selects the default reporter for <code>devtools::test()</code> and <code><a href="../reference/test_package.html">testthat::test_local()</a></code>. In short, testthat selects <code>ProgressReporter</code> for non-parallel and <code>ParallelProgressReporter</code> for parallel tests by default. (Other testthat test functions, like <code><a href="../reference/test_package.html">test_check()</a></code>, <code><a href="../reference/test_file.html">test_file()</a></code> , etc. select different reporters by default.)</p>
+<p>See <code><a href="../reference/default_reporter.html">default_reporter()</a></code> for how testthat selects the
+default reporter for <code>devtools::test()</code> and
+<code><a href="../reference/test_package.html">testthat::test_local()</a></code>. In short, testthat selects
+<code>ProgressReporter</code> for non-parallel and
+<code>ParallelProgressReporter</code> for parallel tests by default.
+(Other testthat test functions, like <code><a href="../reference/test_package.html">test_check()</a></code>,
+<code><a href="../reference/test_file.html">test_file()</a></code> , etc. select different reporters by
+default.)</p>
 </div>
 <div class="section level3">
 <h3 id="parallel-support">Parallel support<a class="anchor" aria-label="anchor" href="#parallel-support"></a>
 </h3>
-<p>Most reporters support parallel tests. If a reporter is passed to <code>devtools::test()</code>, <code><a href="../reference/test_dir.html">testthat::test_dir()</a></code>, etc. directly, and it does not support parallel tests, then testthat runs the test files sequentially.</p>
-<p>Currently the following reporters <em>don’t</em> support parallel tests:</p>
+<p>Most reporters support parallel tests. If a reporter is passed to
+<code>devtools::test()</code>, <code><a href="../reference/test_dir.html">testthat::test_dir()</a></code>, etc.
+directly, and it does not support parallel tests, then testthat runs the
+test files sequentially.</p>
+<p>Currently the following reporters <em>don’t</em> support parallel
+tests:</p>
 <ul>
-<li><p><code>DebugReporter</code>, because it is not currently possible to debug subprocesses.</p></li>
-<li><p><code>JunitReporter</code>, because this reporter records timing information for each test block, and this is currently only available for reporters that support multiple active test files. (See “Writing parallel reporters” below.)</p></li>
-<li><p><code>LocationReporter</code> because testthat currently does not include location information for successful tests when running in parallel, to minimize messaging between the processes.</p></li>
-<li><p><code>StopReporter</code>, as this is a reporter that testthat uses for interactive <code><a href="../reference/expect_that.html">expect_that()</a></code> calls.</p></li>
+<li><p><code>DebugReporter</code>, because it is not currently possible
+to debug subprocesses.</p></li>
+<li><p><code>JunitReporter</code>, because this reporter records timing
+information for each test block, and this is currently only available
+for reporters that support multiple active test files. (See “Writing
+parallel reporters” below.)</p></li>
+<li><p><code>LocationReporter</code> because testthat currently does not
+include location information for successful tests when running in
+parallel, to minimize messaging between the processes.</p></li>
+<li><p><code>StopReporter</code>, as this is a reporter that testthat
+uses for interactive <code><a href="../reference/expect_that.html">expect_that()</a></code> calls.</p></li>
 </ul>
-<p>The other built-in reporters all support parallel tests, with some subtle differences:</p>
+<p>The other built-in reporters all support parallel tests, with some
+subtle differences:</p>
 <ul>
-<li><p>Reporters that stop after a certain number of failures can only stop at the end of a test file.</p></li>
-<li><p>Reporters report all information about a file at once, unless they support <em>parallel updates</em>. E.g. <code>ProgressReporter</code> does not update its display until a test file is complete.</p></li>
+<li><p>Reporters that stop after a certain number of failures can only
+stop at the end of a test file.</p></li>
+<li><p>Reporters report all information about a file at once, unless
+they support <em>parallel updates</em>. E.g.
+<code>ProgressReporter</code> does not update its display until a test
+file is complete.</p></li>
 <li>
-<p>The standard output and standard error, i.e. <code><a href="https://rdrr.io/r/base/print.html" class="external-link">print()</a></code>, <code><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat()</a></code>, <code><a href="https://rdrr.io/r/base/message.html" class="external-link">message()</a></code>, etc. output from the test files are lost currently. If you want to use <code><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat()</a></code> or <code><a href="https://rdrr.io/r/base/message.html" class="external-link">message()</a></code> for print-debugging test cases, then the best is to temporarily run tests sequentially, by changing the <code>Config</code> entry in <code>DESCRIPTION</code> or selecting a non-parallel reporter, e.g. the <code>CheckReporter</code>:</p>
+<p>The standard output and standard error,
+i.e. <code><a href="https://rdrr.io/r/base/print.html" class="external-link">print()</a></code>, <code><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat()</a></code>, <code><a href="https://rdrr.io/r/base/message.html" class="external-link">message()</a></code>,
+etc. output from the test files are lost currently. If you want to use
+<code><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat()</a></code> or <code><a href="https://rdrr.io/r/base/message.html" class="external-link">message()</a></code> for print-debugging test
+cases, then the best is to temporarily run tests sequentially, by
+changing the <code>Config</code> entry in <code>DESCRIPTION</code> or
+selecting a non-parallel reporter, e.g. the
+<code>CheckReporter</code>:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">devtools</span><span class="fu">::</span><span class="fu">test</span><span class="op">(</span>filter <span class="op">=</span> <span class="st">"badtest"</span>, reporter <span class="op">=</span> <span class="st">"check"</span><span class="op">)</span></span></code></pre></div>
 </li>
@@ -179,8 +253,15 @@
 <div class="section level3">
 <h3 id="writing-parallel-reporters">Writing parallel reporters<a class="anchor" aria-label="anchor" href="#writing-parallel-reporters"></a>
 </h3>
-<p>To support parallel tests, a reporter must be able to function when the test files run in a subprocess. For example <code>DebugReporter</code> does not support parallel tests, because it requires direct interaction with the frames in the subprocess. When running in parallel, testthat does not provide location information (source references) for test successes.</p>
-<p>To support parallel tests, a reporter must set <code>self$capabilities$parallel_support</code> to <code>TRUE</code> in its <code>initialize()</code> method:</p>
+<p>To support parallel tests, a reporter must be able to function when
+the test files run in a subprocess. For example
+<code>DebugReporter</code> does not support parallel tests, because it
+requires direct interaction with the frames in the subprocess. When
+running in parallel, testthat does not provide location information
+(source references) for test successes.</p>
+<p>To support parallel tests, a reporter must set
+<code>self$capabilities$parallel_support</code> to <code>TRUE</code> in
+its <code>initialize()</code> method:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">...</span></span>
 <span><span class="va">initialize</span> <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">...</span><span class="op">)</span> <span class="op">{</span></span>
@@ -189,14 +270,30 @@
 <span>  <span class="va">...</span></span>
 <span><span class="op">}</span></span>
 <span><span class="va">...</span></span></code></pre></div>
-<p>When running in parallel, testthat runs the reporter in the main process, and relays information between the reporter and the test code transparently. (Currently the reporter does not even know that the tests are running in parallel.)</p>
-<p>If a reporter does not support parallel updates (see below), then testthat internally caches all calls to the reporter methods from subprocesses, until a test file is complete. This is because these reporters are not prepared for running multiple test files concurrently. Once a test file is complete, testthat calls the reporter’s <code>$start_file()</code> method, relays all <code>$start_test()</code> , <code>$end_test()</code>, <code>$add_result()</code>, etc. calls in the order they came in from the subprocess, and calls <code>$end_file()</code> .</p>
+<p>When running in parallel, testthat runs the reporter in the main
+process, and relays information between the reporter and the test code
+transparently. (Currently the reporter does not even know that the tests
+are running in parallel.)</p>
+<p>If a reporter does not support parallel updates (see below), then
+testthat internally caches all calls to the reporter methods from
+subprocesses, until a test file is complete. This is because these
+reporters are not prepared for running multiple test files concurrently.
+Once a test file is complete, testthat calls the reporter’s
+<code>$start_file()</code> method, relays all <code>$start_test()</code>
+, <code>$end_test()</code>, <code>$add_result()</code>, etc. calls in
+the order they came in from the subprocess, and calls
+<code>$end_file()</code> .</p>
 </div>
 <div class="section level3">
 <h3 id="parallel-updates">Parallel updates<a class="anchor" aria-label="anchor" href="#parallel-updates"></a>
 </h3>
-<p>The <code>ParallelProgressReporter</code> supports parallel updates. This means that once a message from a subprocess comes in, the reporter is updated immediately. For this to work, a reporter must be able to handle multiple test files concurrently.</p>
-<p>A reporter declares parallel update support by setting <code>self$capabilities$parallel_updates</code> to <code>TRUE</code>:</p>
+<p>The <code>ParallelProgressReporter</code> supports parallel updates.
+This means that once a message from a subprocess comes in, the reporter
+is updated immediately. For this to work, a reporter must be able to
+handle multiple test files concurrently.</p>
+<p>A reporter declares parallel update support by setting
+<code>self$capabilities$parallel_updates</code> to
+<code>TRUE</code>:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">...</span></span>
 <span><span class="va">initialize</span> <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">...</span><span class="op">)</span> <span class="op">{</span></span>
@@ -206,12 +303,22 @@
 <span>  <span class="va">...</span></span>
 <span><span class="op">}</span></span>
 <span><span class="va">...</span></span></code></pre></div>
-<p>For these reporters, testthat does not cache the messages from the subprocesses. Instead, when a message comes in:</p>
+<p>For these reporters, testthat does not cache the messages from the
+subprocesses. Instead, when a message comes in:</p>
 <ul>
-<li><p>It calls the <code>$start_file()</code> method, letting the reporter know which file the following calls apply to. This means that the reporter can receive multiple <code>$start_file()</code> calls for the same file.</p></li>
-<li><p>Then relays the message from the subprocess, calling the appropriate <code>$start_test()</code> , <code>$add_result()</code>, etc. method.</p></li>
+<li><p>It calls the <code>$start_file()</code> method, letting the
+reporter know which file the following calls apply to. This means that
+the reporter can receive multiple <code>$start_file()</code> calls for
+the same file.</p></li>
+<li><p>Then relays the message from the subprocess, calling the
+appropriate <code>$start_test()</code> , <code>$add_result()</code>,
+etc. method.</p></li>
 </ul>
-<p>testthat also calls the new <code>$update()</code> method of the reporter regularly, even if it does not receive any messages from the subprocess. (Currently aims to do this every 100ms, but there are no guarantees.) The <code>$update()</code> method may implement a spinner to let the user know that the tests are running.</p>
+<p>testthat also calls the new <code>$update()</code> method of the
+reporter regularly, even if it does not receive any messages from the
+subprocess. (Currently aims to do this every 100ms, but there are no
+guarantees.) The <code>$update()</code> method may implement a spinner
+to let the user know that the tests are running.</p>
 </div>
 </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
