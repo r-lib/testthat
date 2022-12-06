@@ -69,11 +69,17 @@ inline int rand() { return 42; }
 inline void exit(int) throw() {}
 
 }
-# include "vendor/catch.h"
 
 // Implement an output stream that avoids writing to stdout / stderr.
+// See also https://github.com/r-lib/testthat/issues/1715.
 extern "C" void Rprintf(const char*, ...);
 extern "C" void R_FlushConsole();
+
+# include <cstdio>
+# define sprintf Rprintf
+# define sprintf_s Rprintf
+
+# include "vendor/catch.h"
 
 namespace testthat {
 
