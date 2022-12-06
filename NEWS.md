@@ -1,4 +1,7 @@
-# testthat (development version)
+# testthat 3.1.6
+
+* Fixed CRAN warning about usage of `sprintf()` in `Catch.h` (#1715).
+
 
 # testthat 3.1.5
 
