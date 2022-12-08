@@ -1,4 +1,4 @@
-# testthat (development version)
+# testthat 3.1.6
 
 * The embedded version of Catch no longer uses `sprintf()`.
 
