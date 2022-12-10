@@ -15,8 +15,8 @@
 <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png">
 <script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="../deps/bootstrap-5.1.3/bootstrap.min.css" rel="stylesheet">
-<script src="../deps/bootstrap-5.1.3/bootstrap.bundle.min.js"></script><link href="../deps/Source_Sans_Pro-0.4.2/font.css" rel="stylesheet">
-<link href="../deps/Source_Code_Pro-0.4.2/font.css" rel="stylesheet">
+<script src="../deps/bootstrap-5.1.3/bootstrap.bundle.min.js"></script><link href="../deps/Source_Sans_Pro-0.4.4/font.css" rel="stylesheet">
+<link href="../deps/Source_Code_Pro-0.4.4/font.css" rel="stylesheet">
 <!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- bootstrap-toc --><script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.js"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Skipping tests">
@@ -35,7 +35,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">testthat</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">3.1.5</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">3.1.6</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -107,34 +107,66 @@
 
     
     
-<p>Some times you have tests that you don’t want to run in certain circumstances. This vignette describes how to <strong>skip</strong> tests to avoid execution in undesired environments. Skipping is a relatively advanced topic because in most cases you want all your tests to run everywhere. The most common exceptions are:</p>
+<p>Some times you have tests that you don’t want to run in certain
+circumstances. This vignette describes how to <strong>skip</strong>
+tests to avoid execution in undesired environments. Skipping is a
+relatively advanced topic because in most cases you want all your tests
+to run everywhere. The most common exceptions are:</p>
 <ul>
-<li><p>You’re testing a web service that occasionally fails, and you don’t want to run the tests on CRAN. Or maybe the API requires authentication, and you can only run the tests when you’ve <a href="https://gargle.r-lib.org/articles/articles/managing-tokens-securely.html" class="external-link">securely distributed</a> some secrets.</p></li>
-<li><p>You’re relying on features that not all operating systems possess, and want to make sure your code doesn’t run on a platform where it doesn’t work. This platform tends to be Windows, since amongst other things, it lacks full utf8 support.</p></li>
-<li><p>You’re writing your tests for multiple versions of R or multiple versions of a dependency and you want to skip when a feature isn’t available. You generally don’t need to skip tests if a suggested package is not installed. This is only needed in exceptional circumstances, e.g. when a package is not available on some operating system.</p></li>
+<li><p>You’re testing a web service that occasionally fails, and you
+don’t want to run the tests on CRAN. Or maybe the API requires
+authentication, and you can only run the tests when you’ve <a href="https://gargle.r-lib.org/articles/articles/managing-tokens-securely.html" class="external-link">securely
+distributed</a> some secrets.</p></li>
+<li><p>You’re relying on features that not all operating systems
+possess, and want to make sure your code doesn’t run on a platform where
+it doesn’t work. This platform tends to be Windows, since amongst other
+things, it lacks full utf8 support.</p></li>
+<li><p>You’re writing your tests for multiple versions of R or multiple
+versions of a dependency and you want to skip when a feature isn’t
+available. You generally don’t need to skip tests if a suggested package
+is not installed. This is only needed in exceptional circumstances,
+e.g. when a package is not available on some operating system.</p></li>
 </ul>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://testthat.r-lib.org">testthat</a></span><span class="op">)</span></span></code></pre></div>
 <div class="section level2">
 <h2 id="basics">Basics<a class="anchor" aria-label="anchor" href="#basics"></a>
 </h2>
-<p>testthat comes with a variety of helpers for the most common situations:</p>
+<p>testthat comes with a variety of helpers for the most common
+situations:</p>
 <ul>
-<li><p><code><a href="../reference/skip.html">skip_on_cran()</a></code> skips tests on CRAN. This is useful for slow tests and tests that occasionally fail for reasons outside of your control.</p></li>
-<li><p><code><a href="../reference/skip.html">skip_on_os()</a></code> allows you to skip tests on a specific operating system. Generally, you should strive to avoid this as much as possible (so your code works the same on all platforms), but sometimes it’s just not possible.</p></li>
-<li><p><code><a href="../reference/skip.html">skip_on_ci()</a></code> skips tests on most continuous integration platforms (e.g. GitHub Actions, Travis, Appveyor).</p></li>
+<li><p><code><a href="../reference/skip.html">skip_on_cran()</a></code> skips tests on CRAN. This is useful
+for slow tests and tests that occasionally fail for reasons outside of
+your control.</p></li>
+<li><p><code><a href="../reference/skip.html">skip_on_os()</a></code> allows you to skip tests on a specific
+operating system. Generally, you should strive to avoid this as much as
+possible (so your code works the same on all platforms), but sometimes
+it’s just not possible.</p></li>
+<li><p><code><a href="../reference/skip.html">skip_on_ci()</a></code> skips tests on most continuous
+integration platforms (e.g. GitHub Actions, Travis, Appveyor).</p></li>
 </ul>
-<p>You can also easily implement your own using either <code><a href="../reference/skip.html">skip_if()</a></code> or <code><a href="../reference/skip.html">skip_if_not()</a></code>, which both take an expression that should yield a single <code>TRUE</code> or <code>FALSE</code>.</p>
-<p>All reporters show which tests as skipped. As of testthat 3.0.0, ProgressReporter (used interactively) and CheckReporter (used inside of <code>R CMD check</code>) also display a summary of skips across all tests. It looks something like this:</p>
+<p>You can also easily implement your own using either
+<code><a href="../reference/skip.html">skip_if()</a></code> or <code><a href="../reference/skip.html">skip_if_not()</a></code>, which both take an
+expression that should yield a single <code>TRUE</code> or
+<code>FALSE</code>.</p>
+<p>All reporters show which tests as skipped. As of testthat 3.0.0,
+ProgressReporter (used interactively) and CheckReporter (used inside of
+<code>R CMD check</code>) also display a summary of skips across all
+tests. It looks something like this:</p>
 <pre><code>── Skipped tests  ───────────────────────────────────────────────────────
 ● No token (3)
 ● On CRAN (1)</code></pre>
-<p>You should keep an on eye this when developing interactively to make sure that you’re not accidentally skipping the wrong things.</p>
+<p>You should keep an on eye this when developing interactively to make
+sure that you’re not accidentally skipping the wrong things.</p>
 </div>
 <div class="section level2">
 <h2 id="helpers">Helpers<a class="anchor" aria-label="anchor" href="#helpers"></a>
 </h2>
-<p>If you find yourself using the same <code><a href="../reference/skip.html">skip_if()</a></code>/<code><a href="../reference/skip.html">skip_if_not()</a></code> expression across multiple tests, it’s a good idea to create a helper function. This function should start with <code>skip_</code> and live somewhere in your <code>R/</code> directory.</p>
+<p>If you find yourself using the same
+<code><a href="../reference/skip.html">skip_if()</a></code>/<code><a href="../reference/skip.html">skip_if_not()</a></code> expression across
+multiple tests, it’s a good idea to create a helper function. This
+function should start with <code>skip_</code> and live somewhere in your
+<code>R/</code> directory.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">skip_if_Tuesday</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/as.POSIXlt.html" class="external-link">as.POSIXlt</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html" class="external-link">Sys.Date</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">$</span><span class="va">wday</span> <span class="op">!=</span> <span class="fl">2</span><span class="op">)</span> <span class="op">{</span></span>
@@ -143,8 +175,16 @@
 <span>  </span>
 <span>  <span class="fu"><a href="../reference/skip.html">skip</a></span><span class="op">(</span><span class="st">"Not run on Tuesday"</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div>
-<p>It’s important to test your skip helpers because it’s easy to miss if you’re skipping more often than desired, and the test code is never run. This is unlikely to happen locally (since you’ll see the skipped tests in the summary), but is quite possible in continuous integration.</p>
-<p>For that reason, it’s a good idea to add a test that you skip is activated when you expect. skips are a special type of condition, so you can test for their presence/absence with <code><a href="../reference/expect_error.html">expect_condition()</a></code>. For example, imagine that you’ve defined a custom skipper that skips tests whenever an environment variable <code>DANGER</code> is set:</p>
+<p>It’s important to test your skip helpers because it’s easy to miss if
+you’re skipping more often than desired, and the test code is never run.
+This is unlikely to happen locally (since you’ll see the skipped tests
+in the summary), but is quite possible in continuous integration.</p>
+<p>For that reason, it’s a good idea to add a test that you skip is
+activated when you expect. skips are a special type of condition, so you
+can test for their presence/absence with
+<code><a href="../reference/expect_error.html">expect_condition()</a></code>. For example, imagine that you’ve
+defined a custom skipper that skips tests whenever an environment
+variable <code>DANGER</code> is set:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">skip_if_dangerous</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/identical.html" class="external-link">identical</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Sys.getenv.html" class="external-link">Sys.getenv</a></span><span class="op">(</span><span class="st">"DANGER"</span><span class="op">)</span>, <span class="st">""</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
@@ -153,7 +193,8 @@
 <span>  </span>
 <span>  <span class="fu"><a href="../reference/skip.html">skip</a></span><span class="op">(</span><span class="st">"Not run in dangerous enviromnents"</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div>
-<p>Then you can use <code><a href="../reference/expect_error.html">expect_condition()</a></code> to test that it skips tests when it should, and doesn’t skip when it shouldn’t:</p>
+<p>Then you can use <code><a href="../reference/expect_error.html">expect_condition()</a></code> to test that it
+skips tests when it should, and doesn’t skip when it shouldn’t:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/test_that.html">test_that</a></span><span class="op">(</span><span class="st">"skip_if_dangerous work"</span>, <span class="op">{</span></span>
 <span>  <span class="co"># Test that a skip happens</span></span>
@@ -164,8 +205,10 @@
 <span>  <span class="fu">withr</span><span class="fu">::</span><span class="fu"><a href="https://withr.r-lib.org/reference/with_envvar.html" class="external-link">local_envvar</a></span><span class="op">(</span>DANGER <span class="op">=</span> <span class="st">""</span><span class="op">)</span></span>
 <span>  <span class="fu"><a href="../reference/expect_error.html">expect_condition</a></span><span class="op">(</span><span class="fu">skip_if_dangerous</span><span class="op">(</span><span class="op">)</span>, <span class="cn">NA</span>, class <span class="op">=</span> <span class="st">"skip"</span><span class="op">)</span></span>
 <span><span class="op">}</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #00BB00;">Test passed</span> 😸</span></span></code></pre></div>
-<p>Testing <code>skip_if_Tuesday()</code> is harder because there’s no way to control the skipping from the outside. That means you’d need to “mock” its behaviour in a test, using the <a href="https://github.com/r-lib/mockery" class="external-link">mockery</a> or <a href="https://krlmlr.github.io/mockr/" class="external-link">mockr</a> packages.</p>
+<span><span class="co">#&gt; <span style="color: #00BB00;">Test passed</span> 🌈</span></span></code></pre></div>
+<p>Testing <code>skip_if_Tuesday()</code> is harder because there’s no
+way to control the skipping from the outside. That means you’d need to
+“mock” its behaviour in a test, using the <a href="https://github.com/r-lib/mockery" class="external-link">mockery</a> or <a href="https://krlmlr.github.io/mockr/" class="external-link">mockr</a> packages.</p>
 </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside>
