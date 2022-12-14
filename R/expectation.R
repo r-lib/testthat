@@ -265,7 +265,7 @@ expectation_location <- function(x) {
     if (identical(filename, "")) {
       paste0("Line ", x$srcref[1])
     } else {
-      cli::format_inline("{.file {filename}:{x$srcref[1]}}")
+      cli::format_inline("{.file {filename}:{x$srcref[1]}:{x$srcref[2]}}")
     }
   }
 }
