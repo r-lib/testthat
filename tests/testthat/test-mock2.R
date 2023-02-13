@@ -10,6 +10,7 @@ test_that("with_mocked_env() validates its inputs", {
   expect_snapshot(error = TRUE, {
     with_mocked_env(1)
     with_mocked_env(f, function() 2)
+    with_mocked_env(f, x = 2)
   })
 })
 
