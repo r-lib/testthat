@@ -28,7 +28,7 @@ These functions represent a second attempt at bringing mocking to testthat,
 incorporating what we've learned from mockr and mockery There are
 two styles of mocking:
 \itemize{
-\item \code{local_mocked_bindings()} and \code{local_mocked_bindings()} work by temporarily
+\item \code{with_mocked_bindings()} and \code{local_mocked_bindings()} work by temporarily
 changing variable bindings in the package namespace. It affects the
 operation of every function in the current package, but only the current
 package.
