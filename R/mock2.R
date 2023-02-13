@@ -34,20 +34,26 @@ with_mocked_env <- function(f, ...) {
 #' @export
 #' @rdname with_mocked_env
 #' @param code Code to execute with specified bindings.
-with_mocked_bindings <- function(code, ...) {
+with_mocked_bindings <- function(code, ..., .package = NULL) {
   quo <- enquo(code)
-  local_mocked_bindings(...)
+  local_mocked_bindings(..., .package = .package)
   code
 }
 
 #' @export
 #' @param .env Environment that defines effect scope. For expert use only.
+#' @param .package The name of the package where mocked functions should be
+#'   inserted. Generally, you should not need to supply this as it will be
+#'   automatically detected when whole package tests are run or when there's
+#'   one package under active development (i.e. loaded with
+#'   [pkgload::load_all()]).
 #' @rdname with_mocked_env
-local_mocked_bindings <- function(..., .env = caller_env()) {
+local_mocked_bindings <- function(..., .package = NULL, .env = caller_env()) {
   bindings <- list2(...)
   check_bindings(bindings)
 
-  ns_env <- ns_env(dev_package())
+  .package <- .package %||% dev_package()
+  ns_env <- ns_env(.package)
 
   # Unlock bindings and set values
   nms <- names(bindings)

@@ -8,9 +8,9 @@
 \usage{
 with_mocked_env(f, ...)
 
-with_mocked_bindings(code, ...)
+with_mocked_bindings(code, ..., .package = NULL)
 
-local_mocked_bindings(..., .env = caller_env())
+local_mocked_bindings(..., .package = NULL, .env = caller_env())
 }
 \arguments{
 \item{f}{A function.}
@@ -18,6 +18,12 @@ local_mocked_bindings(..., .env = caller_env())
 \item{...}{Name-value pairs providing functions to mock.}
 
 \item{code}{Code to execute with specified bindings.}
+
+\item{.package}{The name of the package where mocked functions should be
+inserted. Generally, you should not need to supply this as it will be
+automatically detected when whole package tests are run or when there's
+one package under active development (i.e. loaded with
+\code{\link[pkgload:load_all]{pkgload::load_all()}}).}
 
 \item{.env}{Environment that defines effect scope. For expert use only.}
 }
