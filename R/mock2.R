@@ -7,7 +7,7 @@
 #' incorporating what we've learned from mockr and mockery There are
 #' two styles of mocking:
 #'
-#' * `local_mocked_bindings()` and `local_mocked_bindings()` work by temporarily
+#' * `with_mocked_bindings()` and `local_mocked_bindings()` work by temporarily
 #'   changing variable bindings in the package namespace. It affects the
 #'   operation of every function in the current package, but only the current
 #'   package.
@@ -27,7 +27,7 @@ with_mocked_env <- function(f, ...) {
   bindings <- list2(...)
   check_bindings(bindings)
 
-  new_env <- child_env(get_env(f), !!!bindings)
+  new_env <- env(get_env(f), !!!bindings)
   set_env(f, new_env)
 }
 
@@ -89,7 +89,7 @@ check_bindings <- function(x, error_call = caller_env()) {
   is_fun <- map_lgl(x, is.function)
   if (!any(is_fun)) {
     cli::cli_abort(
-      "All emeents of {.arg ...} must be functions.",
+      "All elements of {.arg ...} must be functions.",
       call = error_call
     )
   }
