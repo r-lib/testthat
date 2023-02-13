@@ -49,15 +49,11 @@ local_mocked_bindings <- function(..., .env = caller_env()) {
 
   ns_env <- ns_env(dev_package())
 
-  # Unlock bindings, if needed
+  # Unlock bindings and set values
   nms <- names(bindings)
-  locked <- env_binding_are_locked(ns_env, nms)
-  env_binding_unlock(ns_env, nms[locked])
+  locked <- env_binding_unlock(ns_env, nms)
   withr::defer(env_binding_lock(ns_env, nms[locked]), envir = .env)
-
-  # Set values
-  old_ns <- env_bind(ns_env, !!!bindings)
-  withr::defer(env_bind(ns_env, !!!old_ns), envir = .env)
+  local_bindings(!!!bindings, .env = ns_env, .frame = .env)
 
   invisible()
 }
