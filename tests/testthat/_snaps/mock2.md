@@ -1,18 +1,13 @@
-# with_mocked_env() validates its inputs
+# with_mocked_bindings() validates its inputs
 
     Code
-      with_mocked_env(1)
+      with_mocked_bindings(1 + 1, function() 2)
     Condition
-      Error in `with_mocked_env()`:
-      ! `f` must be a function, not a number.
-    Code
-      with_mocked_env(f, function() 2)
-    Condition
-      Error in `with_mocked_env()`:
+      Error in `local_mocked_bindings()`:
       ! All elements of `...` must be named.
     Code
-      with_mocked_env(f, x = 2)
+      with_mocked_bindings(1 + 1, x = 2)
     Condition
-      Error in `with_mocked_env()`:
+      Error in `local_mocked_bindings()`:
       ! All elements of `...` must be functions.
 

@@ -4,50 +4,23 @@
 #' `r lifecycle::badge("experimental")`
 #'
 #' These functions represent a second attempt at bringing mocking to testthat,
-#' incorporating what we've learned from mockr and mockery There are
-#' two styles of mocking:
+#' incorporating what we've learned from the mockr, mockery, and mockthat package.
 #'
-#' * `with_mocked_bindings()` and `local_mocked_bindings()` work by temporarily
-#'   changing variable bindings in the package namespace. It affects the
-#'   operation of every function in the current package, but only the current
-#'   package.
-#'
-#' * `with_mocked_env()` modifies a function, inserting a new environment in the
-#'   chain of parents with the specified bindings. It can mock any function,
-#'   but because it creates a new function, it doesn't affect any functions
-#'   that use that function.
+#' `with_mocked_bindings()` and `local_mocked_bindings()` work by temporarily
+#' changing variable bindings in the namespace of namespace `.package`.
+#' Generally, it's only safe to mock packages that you own. If you mock other
+#' packages, we recommend using `skip_on_cran()` to avoid CRAN failures if the
+#' implementation changes.
 #'
 #' @export
-#' @param f A function.
 #' @param ... Name-value pairs providing functions to mock.
-with_mocked_env <- function(f, ...) {
-  if (!is.function(f)) {
-    cli::cli_abort("{.arg f} must be a function, not {.obj_type_friendly {f}}.")
-  }
-  bindings <- list2(...)
-  check_bindings(bindings)
-
-  new_env <- env(get_env(f), !!!bindings)
-  set_env(f, new_env)
-}
-
-#' @export
-#' @rdname with_mocked_env
 #' @param code Code to execute with specified bindings.
-with_mocked_bindings <- function(code, ..., .package = NULL) {
-  quo <- enquo(code)
-  local_mocked_bindings(..., .package = .package)
-  code
-}
-
-#' @export
 #' @param .env Environment that defines effect scope. For expert use only.
 #' @param .package The name of the package where mocked functions should be
 #'   inserted. Generally, you should not need to supply this as it will be
 #'   automatically detected when whole package tests are run or when there's
 #'   one package under active development (i.e. loaded with
 #'   [pkgload::load_all()]).
-#' @rdname with_mocked_env
 local_mocked_bindings <- function(..., .package = NULL, .env = caller_env()) {
   bindings <- list2(...)
   check_bindings(bindings)
@@ -63,6 +36,15 @@ local_mocked_bindings <- function(..., .package = NULL, .env = caller_env()) {
 
   invisible()
 }
+
+#' @rdname local_mocked_bindings
+#' @export
+with_mocked_bindings <- function(code, ..., .package = NULL) {
+  quo <- enquo(code)
+  local_mocked_bindings(..., .package = .package)
+  code
+}
+
 
 dev_package <- function() {
   if (is_testing() && testing_package() != "") {
