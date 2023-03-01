@@ -1,5 +1,8 @@
 # testthat (development version)
 
+* Experimental new `with_mocked_bindings()` and `local_mocked_bindings()` 
+  (#1739).
+
 # testthat 3.1.6
 
 * The embedded version of Catch no longer uses `sprintf()`.
