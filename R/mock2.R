@@ -12,6 +12,8 @@
 #' packages, we recommend using `skip_on_cran()` to avoid CRAN failures if the
 #' implementation changes.
 #'
+#' These functions do not currently affect registered S3 methods.
+#'
 #' @export
 #' @param ... Name-value pairs providing functions to mock.
 #' @param code Code to execute with specified bindings.
@@ -77,4 +79,13 @@ check_bindings <- function(x, error_call = caller_env()) {
       call = error_call
     )
   }
+}
+
+# In package
+mockable_generic <- function(x) {
+  UseMethod("mockable_generic")
+}
+#' @export
+mockable_generic.integer <- function(x) {
+  1
 }

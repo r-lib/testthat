@@ -33,4 +33,6 @@ changing variable bindings in the namespace of namespace \code{.package}.
 Generally, it's only safe to mock packages that you own. If you mock other
 packages, we recommend using \code{skip_on_cran()} to avoid CRAN failures if the
 implementation changes.
+
+These functions do not currently affect registered S3 methods.
 }
