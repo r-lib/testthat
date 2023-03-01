@@ -1,4 +1,4 @@
-# testthat (development version)
+# testthat 3.1.7
 
 * `expect_setequal()` gives more actionable feedback (#1657).
 
