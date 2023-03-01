@@ -23,6 +23,13 @@ test_that("error for non-vectors", {
   expect_error(expect_setequal(sum, sum), "be vectors")
 })
 
+test_that("useful message on faillure", {
+  x <- c("a", "b")
+  y <- c("b", "c")
+
+  expect_snapshot_failure(expect_setequal(x, y))
+})
+
 # mapequal ----------------------------------------------------------------
 
 test_that("ignores order", {

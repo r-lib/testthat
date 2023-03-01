@@ -1,5 +1,7 @@
 # testthat (development version)
 
+* `expect_setequal()` gives more actionable feedback (#1657).
+
 * Experimental new `with_mocked_bindings()` and `local_mocked_bindings()` 
   (#1739).
 
