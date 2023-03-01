@@ -141,7 +141,7 @@ package.</p>
 <span>  <span class="fu"><a href="../reference/local_edition.html">local_edition</a></span><span class="op">(</span><span class="fl">3</span><span class="op">)</span></span>
 <span>  <span class="fu"><a href="../reference/logical-expectations.html">expect_true</a></span><span class="op">(</span><span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="op">}</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #00BB00;">Test passed</span> 🎉</span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #00BB00;">Test passed</span> 😀</span></span></code></pre></div>
 <p>This is also useful if you’ve switched to the 3rd edition and have a
 couple of tests that fail. You can use <code>local_edition(2)</code> to
 revert back to the old behaviour, giving you some breathing room to
@@ -151,7 +151,7 @@ figure out the underlying issue.</p>
 <span>  <span class="fu"><a href="../reference/local_edition.html">local_edition</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span></span>
 <span>  <span class="fu"><a href="../reference/logical-expectations.html">expect_true</a></span><span class="op">(</span><span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="op">}</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #00BB00;">Test passed</span> 🥳</span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #00BB00;">Test passed</span> 😸</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="changes">Changes<a class="anchor" aria-label="anchor" href="#changes"></a>
@@ -250,7 +250,13 @@ test:</p>
 <span><span class="op">}</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Can't compare snapshot to reference when testing interactively.</span></span>
 <span><span class="co">#&gt; i Run `devtools::test()` or `testthat::test_file()` to see changes.</span></span>
-<span><span class="co">#&gt; i Current value: Code f() Warning &lt;simpleWarning&gt; First warning Second warning Third warning</span></span>
+<span><span class="co">#&gt; Current value:</span></span>
+<span><span class="co">#&gt; Code</span></span>
+<span><span class="co">#&gt;   f()</span></span>
+<span><span class="co">#&gt; Warning &lt;simpleWarning&gt;</span></span>
+<span><span class="co">#&gt;   First warning</span></span>
+<span><span class="co">#&gt;   Second warning</span></span>
+<span><span class="co">#&gt;   Third warning</span></span>
 <span><span class="co">#&gt; ── <span style="color: #0000BB; font-weight: bold;">Skip</span><span style="font-weight: bold;"> (???): f() produces expected outputs/messages/warnings</span> ─────────────────</span></span>
 <span><span class="co">#&gt; Reason: empty test</span></span></code></pre></div>
 <p>The same principle also applies to <code><a href="../reference/expect_error.html">expect_message()</a></code>, but
