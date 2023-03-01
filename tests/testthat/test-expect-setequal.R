@@ -24,10 +24,13 @@ test_that("error for non-vectors", {
 })
 
 test_that("useful message on faillure", {
-  x <- c("a", "b")
-  y <- c("b", "c")
+  x1 <- c("a", "b")
+  x2 <- c("b", "c")
+  y1 <- 1:3
+  y2 <- 2:50
 
-  expect_snapshot_failure(expect_setequal(x, y))
+  expect_snapshot_failure(expect_setequal(x1, x2))
+  expect_snapshot_failure(expect_setequal(y1, y2))
 })
 
 # mapequal ----------------------------------------------------------------

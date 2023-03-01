@@ -36,11 +36,11 @@ expect_setequal <- function(object, expected) {
 
   if (any(exp_miss) || any(act_miss)) {
     fail(paste0(
-      act$lab, " and ", exp$lab, " don't have the same values\n",
+      act$lab, " (`actual`) and ", exp$lab, " (`expected`) don't have the same values.\n",
       if (any(exp_miss))
-        paste0("* Missing from expected: ",  strings(act$val[act_miss]), "\n"),
+        paste0("* Only in `actual`:   ",  values(act$val[act_miss]), "\n"),
       if (any(act_miss))
-        paste0("* Missing from actual: ",  strings(exp$val[exp_miss]), "\n")
+        paste0("* Only in `expected`: ",  values(exp$val[exp_miss]), "\n")
     ))
   } else {
     succeed()
@@ -49,15 +49,18 @@ expect_setequal <- function(object, expected) {
   invisible(act$val)
 }
 
-strings <- function(x) {
+values <- function(x) {
   has_extra <- length(x) > 10
   if (has_extra) {
     x <- x[1:9]
   }
+  if (is.character(x)) {
+    x <- encodeString(x, quote = '"')
+  }
 
-  out <- paste0(encodeString(x, quote = '"'), collapse = ", ")
+  out <- paste0(x, collapse = ", ")
   if (has_extra) {
-    paste0(out, ", ...")
+    out <- paste0(out, ", ...")
   }
   out
 }
