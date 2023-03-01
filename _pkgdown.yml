@@ -62,6 +62,7 @@ reference:
 
 - title: Reporters
   contents:
+  - Reporter
   - ends_with("Reporter")
 
 - title: Mocking

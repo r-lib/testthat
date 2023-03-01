@@ -99,7 +99,7 @@ travis, and appveyor (using the \code{CI} env var). It supersedes the older
 }
 
 \examples{
-if (FALSE) skip("No internet connection")
+if (FALSE) skip("Some Important Requirement is not available")
 
 test_that("skip example", {
   expect_equal(1, 1L)    # this expectation runs

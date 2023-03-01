@@ -13,7 +13,9 @@ test_that("basic workflow", {
   snapper <- local_snapshotter(path)
   snapper$start_file("snapshot-2")
   # output if not active (because test not set here)
-  expect_message(expect_snapshot_output("x"), "Can't compare")
+  expect_snapshot_output("x") %>%
+    expect_message("Can't compare") %>%
+    expect_output("Current value:\n[1] \"x\"", fixed = TRUE)
 
   # warns on first creation
   snapper$start_file("snapshot-2", "test")
