@@ -42,11 +42,11 @@ local_mocked_bindings <- function(..., .package = NULL, .env = caller_env()) {
 #' @rdname local_mocked_bindings
 #' @export
 with_mocked_bindings <- function(code, ..., .package = NULL) {
-  quo <- enquo(code)
   local_mocked_bindings(..., .package = .package)
   code
 }
 
+# helpers -----------------------------------------------------------------
 
 dev_package <- function() {
   if (is_testing() && testing_package() != "") {
