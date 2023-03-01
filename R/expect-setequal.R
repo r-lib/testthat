@@ -32,41 +32,40 @@ expect_setequal <- function(object, expected) {
   }
 
   act_miss <- !act$val %in% exp$val
-  if (any(act_miss)) {
-    fail(
-      paste0(act$lab, "[", locations(act_miss), "] absent from ", exp$lab)
-    )
-  }
-
   exp_miss <- !exp$val %in% act$val
-  if (any(exp_miss)) {
-    fail(
-      paste0(exp$lab, "[", locations(exp_miss), "] absent from ", act$lab)
-    )
-  }
 
-  if (!any(exp_miss) && !any(act_miss)) {
+  if (any(exp_miss) || any(act_miss)) {
+    fail(paste0(
+      act$lab, " (`actual`) and ", exp$lab, " (`expected`) don't have the same values.\n",
+      if (any(exp_miss))
+        paste0("* Only in `actual`:   ",  values(act$val[act_miss]), "\n"),
+      if (any(act_miss))
+        paste0("* Only in `expected`: ",  values(exp$val[exp_miss]), "\n")
+    ))
+  } else {
     succeed()
   }
 
   invisible(act$val)
 }
 
-is_vector <- function(x) is.list(x) || (is.atomic(x) && !is.null(x))
-
-locations <- function(i) {
-  loc <- which(i)
-  if (length(loc) == 1) {
-    return(loc)
+values <- function(x) {
+  has_extra <- length(x) > 10
+  if (has_extra) {
+    x <- x[1:9]
+  }
+  if (is.character(x)) {
+    x <- encodeString(x, quote = '"')
   }
 
-  if (length(loc) > 10) {
-    loc <- c(loc[1:9], "...")
+  out <- paste0(x, collapse = ", ")
+  if (has_extra) {
+    out <- paste0(out, ", ...")
   }
-
-  paste0("c(", paste0(loc, collapse = ", "), ")")
+  out
 }
 
+is_vector <- function(x) is.list(x) || (is.atomic(x) && !is.null(x))
 
 #' @export
 #' @rdname expect_setequal
