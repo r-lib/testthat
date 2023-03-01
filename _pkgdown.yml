@@ -64,6 +64,10 @@ reference:
   contents:
   - ends_with("Reporter")
 
+- title: Mocking
+  contents:
+  - with_mocked_bindings
+
 - title: Expectation internals
   contents:
   - expect
