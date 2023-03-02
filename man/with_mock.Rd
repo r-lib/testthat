@@ -48,7 +48,4 @@ make a wrapper function in your own package..
 \code{with_mock()} and \code{local_mock()} are deprecated in the third edition.
 }
 
-\references{
-Suraj Gupta (2012): \href{http://blog.obeautifulcode.com/R/How-R-Searches-And-Finds-Stuff/}{How R Searches And Finds Stuff}
-}
 \keyword{internal}
