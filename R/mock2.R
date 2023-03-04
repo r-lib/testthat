@@ -30,11 +30,19 @@ local_mocked_bindings <- function(..., .package = NULL, .env = caller_env()) {
   .package <- .package %||% dev_package()
   ns_env <- ns_env(.package)
 
-  # Unlock bindings and set values
-  nms <- names(bindings)
-  locked <- env_binding_unlock(ns_env, nms)
-  withr::defer(env_binding_lock(ns_env, nms[locked]), envir = .env)
-  local_bindings(!!!bindings, .env = ns_env, .frame = .env)
+  in_pkg <- env_has(ns_env, names(bindings))
+
+  # Bindings in package
+  bindings_pkg <- bindings[in_pkg]
+  nms_pkg <- names(bindings_pkg)
+  locked <- env_binding_unlock(ns_env, nms_pkg)
+  withr::defer(env_binding_lock(ns_env, nms_pkg[locked]), envir = .env)
+  local_bindings(!!!bindings_pkg, .env = ns_env, .frame = .env)
+
+  # Bindings in imports
+  bindings_imports <- bindings[!in_pkg]
+  imports_env <- parent.env(ns_env)
+  local_bindings(!!!bindings_imports, .env = imports_env, .frame = .env)
 
   invisible()
 }
