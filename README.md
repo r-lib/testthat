@@ -52,8 +52,8 @@ advice and concrete examples.
 install.packages("testthat")
 
 # Or the development version from GitHub:
-# install.packages("devtools")
-devtools::install_github("r-lib/testthat")
+# install.packages("pak")
+pak::pak("r-lib/testthat")
 ```
 
 ## Usage
