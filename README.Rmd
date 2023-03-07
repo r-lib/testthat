@@ -12,7 +12,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-# testthat <img src="man/figures/logo.png" align="right" />
+# testthat <a href="https://testthat.r-lib.org"><img src="man/figures/logo.png" align="right" height="138" /></a>
 
 <!-- badges: start -->
 [![CRAN status](https://www.r-pkg.org/badges/version/testthat)](https://cran.r-project.org/package=testthat)
