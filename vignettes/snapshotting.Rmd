@@ -238,7 +238,23 @@ Unlike `expect_snapshot()` and friends, `expect_snapshot_file()` can't provide a
 Instead you'll need to call `snapshot_review()`.
 This launches a Shiny app that allows you to visually review each change and approve it if it's deliberate:
 
-![](review-image.png) ![](review-text.png)
+```{r}
+#| echo: false
+#| fig-alt: Screenshot of the Shiny app for reviewing snapshot
+#|     changes to images. It shows the changes to a png file of 
+#|     a plot created in a snapshot test. There is a button 
+#|     to accept the changed snapshot, or to skip it.
+knitr::include_graphics("review-image.png")
+```
+
+```{r}
+#| echo: false
+#| fig-alt: Screenshot of the Shiny app for reviewing snapshot
+#|     changes to text files. It shows the changes to a .R file 
+#|     created in a snapshot test, where a line has been removed. 
+#|     There is a button to accept the changed snapshot, or to skip it.
+knitr::include_graphics("review-text.png")
+```
 
 The display varies based on the file type (currently text files, common image files, and csv files are supported).
 
