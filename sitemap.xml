@@ -229,6 +229,9 @@
     <loc>https://testthat.r-lib.org/reference/local_edition.html</loc>
   </url>
   <url>
+    <loc>https://testthat.r-lib.org/reference/local_mocked_bindings.html</loc>
+  </url>
+  <url>
     <loc>https://testthat.r-lib.org/reference/local_snapshotter.html</loc>
   </url>
   <url>
