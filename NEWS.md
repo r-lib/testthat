@@ -1,5 +1,7 @@
 # testthat (development version)
 
+# testthat 3.1.7
+
 * `expect_setequal()` gives more actionable feedback (#1657).
 
 * `expect_snapshot()` no longer elides new lines when run interactively (#1726).

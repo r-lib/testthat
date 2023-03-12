@@ -32,7 +32,6 @@
 #'   For expert use only.
 #' @keywords internal
 #' @return The result of the last unnamed parameter
-#' @references Suraj Gupta (2012): \href{http://blog.obeautifulcode.com/R/How-R-Searches-And-Finds-Stuff/}{How R Searches And Finds Stuff}
 #' @export
 with_mock <- function(..., .env = topenv()) {
   edition_deprecate(3, "with_mock()",
