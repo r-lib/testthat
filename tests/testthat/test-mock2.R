@@ -14,11 +14,14 @@ test_that("local_mocked_bindings affects local bindings", {
   expect_equal(test_mock1(), 10)
 })
 
-test_that("can mock bindings that don't exist", {
-  local_mocked_bindings(f = function() "x")
-  expect_equal(test_mock1(), 10)
+test_that("can't mock bindings that don't exist", {
+  expect_snapshot(local_mocked_bindings(f = function() "x"), error = TRUE)
 })
 
+test_that("can mock bindings from imports", {
+  local_mocked_bindings(identity = function(...) "x")
+  expect_equal(test_mock1(), "x")
+})
 
 test_that("local_mocked_bindings affects S3 methods", {
   skip("currently fails")

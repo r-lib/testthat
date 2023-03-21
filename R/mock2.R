@@ -30,19 +30,26 @@ local_mocked_bindings <- function(..., .package = NULL, .env = caller_env()) {
   .package <- .package %||% dev_package()
   ns_env <- ns_env(.package)
 
-  in_pkg <- env_has(ns_env, names(bindings))
+  bindings_found <- rep_named(names(bindings), FALSE)
 
   # Bindings in package
-  bindings_pkg <- bindings[in_pkg]
-  nms_pkg <- names(bindings_pkg)
-  locked <- env_binding_unlock(ns_env, nms_pkg)
-  withr::defer(env_binding_lock(ns_env, nms_pkg[locked]), envir = .env)
-  local_bindings(!!!bindings_pkg, .env = ns_env, .frame = .env)
+  in_pkg <- env_has(ns_env, names(bindings))
+  local_env_bind(ns_env, bindings[in_pkg], frame = .env)
+  bindings_found[in_pkg] <- TRUE
 
   # Bindings in imports
-  bindings_imports <- bindings[!in_pkg]
-  imports_env <- parent.env(ns_env)
-  local_bindings(!!!bindings_imports, .env = imports_env, .frame = .env)
+  for (env in env_parents(ns_env)) {
+    this_bindings <- env_has(env, names(bindings)) & !bindings_found
+    if (sum(this_bindings) > 0) {
+      local_env_bind(env, bindings[this_bindings], frame = .env)
+      bindings_found <- bindings_found | this_bindings
+    }
+  }
+
+  if (any(!bindings_found)) {
+    missing <- names(bindings)[!bindings_found]
+    cli::cli_abort("Can't find binding for {.arg {missing}}")
+  }
 
   invisible()
 }
@@ -55,6 +62,18 @@ with_mocked_bindings <- function(code, ..., .package = NULL) {
 }
 
 # helpers -----------------------------------------------------------------
+
+# Wrapper around local_bindings() that automatically unlocks and takes
+# list of bindings.
+local_env_bind <- function(env, bindings, frame = caller_env()) {
+  nms <- names(bindings)
+  locked <- env_binding_unlock(env, nms)
+  withr::defer(env_binding_lock(env, nms[locked]), envir = frame)
+
+  local_bindings(!!!bindings, .env = env, .frame = frame)
+
+  invisible()
+}
 
 dev_package <- function() {
   if (is_testing() && testing_package() != "") {

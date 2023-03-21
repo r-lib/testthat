@@ -1,3 +1,11 @@
+# can't mock bindings that don't exist
+
+    Code
+      local_mocked_bindings(f = function() "x")
+    Condition
+      Error in `local_mocked_bindings()`:
+      ! Can't find binding for `f`
+
 # with_mocked_bindings() validates its inputs
 
     Code

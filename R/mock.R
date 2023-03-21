@@ -153,6 +153,6 @@ is_base_pkg <- function(x) {
 }
 
 test_mock1 <- function() {
-  test_mock2()
+  identity(test_mock2())
 }
 test_mock2 <- function() 10
