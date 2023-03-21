@@ -275,23 +275,28 @@ find_load_all_args <- function(path) {
   )
 }
 
-test_files_setup_state <- function(test_dir, test_package, load_helpers, env, .env = parent.frame()) {
-
+test_files_setup_state <- function(
+    test_dir,
+    test_package,
+    load_helpers,
+    env,
+    exit_frame = parent.frame()
+) {
   # Define testing environment
-  local_test_directory(test_dir, test_package, .env = .env)
+  local_test_directory(test_dir, test_package, .env = exit_frame)
   withr::local_options(
     topLevelEnvironment = env_parent(env),
-    .local_envir = .env
+    .local_envir = exit_frame
   )
 
   # Load helpers, setup, and teardown (on exit)
-  local_teardown_env(.env)
+  local_teardown_env(exit_frame)
   if (load_helpers) {
     source_test_helpers(".", env)
   }
   source_test_setup(".", env)
-  withr::defer(withr::deferred_run(teardown_env()), .env) # new school
-  withr::defer(source_test_teardown(".", env), .env)      # old school
+  withr::defer(withr::deferred_run(teardown_env()), exit_frame) # new school
+  withr::defer(source_test_teardown(".", env), exit_frame)      # old school
 }
 
 test_files_reporter <- function(reporter, .env = parent.frame()) {
