@@ -14,5 +14,10 @@ A character vector giving the path.
 }
 \description{
 This function is designed to work both interactively and during tests,
-locating files in the \code{tests/testthat} directory
+locating files in the \code{tests/testthat} directory.
 }
+\section{Warning}{
+
+\code{test_path()} will work in test files, but not in helper files.
+}
+
