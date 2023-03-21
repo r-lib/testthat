@@ -323,7 +323,7 @@ test_one_file <- function(path, env = test_env(), wrap = TRUE) {
   on.exit(teardown_run(), add = TRUE)
 
   reporter$start_file(path)
-  source_file(path, child_env(env), wrap = wrap)
+  source_file(path, env(env), wrap = wrap)
   reporter$end_context_if_started()
   reporter$end_file()
 }
@@ -348,7 +348,7 @@ teardown_env <- function() {
 
 local_teardown_env <- function(env = parent.frame()) {
   old <- testthat_env$teardown_env
-  testthat_env$teardown_env <- child_env(emptyenv())
+  testthat_env$teardown_env <- env(emptyenv())
   withr::defer(testthat_env$teardown_env <- old, env)
 
   invisible()
