@@ -37,7 +37,7 @@ testing_package <- function() {
 #' @export
 test_env <- function(package = NULL) {
   if (is.null(package)) {
-    child_env(globalenv())
+    env(globalenv())
   } else {
     # Must clone environment so that during R CMD check, it's not locked
     # preventing creation of S4 classes
