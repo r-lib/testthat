@@ -22,6 +22,7 @@ task_q <- R6::R6Class(
   "task_q",
   public = list(
     initialize = function(concurrency = 4L, ...) {
+      rlang::check_installed(c("callr", "processx", "ps"))
       private$start_workers(concurrency, ...)
       invisible(self)
     },
