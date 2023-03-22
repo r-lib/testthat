@@ -16,6 +16,17 @@ test_that("local_mocked_bindings affects local bindings", {
   expect_equal(test_mock_package(), "y")
 })
 
+test_that("unlocks and relocks binding if needed", {
+  expect_true(env_binding_are_locked(base_env(), "identity"))
+
+  local({
+    local_mocked_bindings(identity = function(...) "x")
+    expect_false(env_binding_are_locked(base_env(), "identity"))
+  })
+
+  expect_true(env_binding_are_locked(base_env(), "identity"))
+})
+
 test_that("can make wrapper", {
   local_mock_x <- function(env = caller_env()) {
     local_mocked_bindings(test_mock_package2 = function() "x", .env = env)
