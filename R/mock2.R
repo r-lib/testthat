@@ -114,8 +114,13 @@ test_mock_package2 <- function() "y"
 test_mock_base <- function() {
   identity("y")
 }
+
 test_mock_imports <- function() {
   as.character(sym("x"))
+}
+
+test_mock_namespaced <- function() {
+  as.character(rlang::sym("x"))
 }
 
 test_mock_method <- function(x) {

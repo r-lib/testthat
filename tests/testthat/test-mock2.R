@@ -48,6 +48,11 @@ test_that("can mock bindings from base", {
   expect_equal(test_mock_base(), "x")
 })
 
+test_that("can mock binding in another package", {
+  local_mocked_bindings(sym = function(...) "x", .package = "rlang")
+  expect_equal(test_mock_namespaced(), "x")
+})
+
 test_that("can mock S3 methods", {
   skip("currently fails")
 
