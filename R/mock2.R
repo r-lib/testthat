@@ -30,16 +30,15 @@ local_mocked_bindings <- function(..., .package = NULL, .env = caller_env()) {
   .package <- .package %||% dev_package()
   ns_env <- ns_env(.package)
 
-  # Rebind bindings, first looking in package namespace, then imports,
-  # then the base namespace, then the global environment
+  # Rebind, first looking in package namespace, then imports, then the base
+  # namespace, then the global environment
   envs <- c(list(ns_env), env_parents(ns_env))
   bindings_found <- rep_named(names(bindings), FALSE)
   for (env in envs) {
     this_bindings <- env_has(env, names(bindings)) & !bindings_found
-    if (sum(this_bindings) > 0) {
-      local_env_bind(env, bindings[this_bindings], frame = .env)
-      bindings_found <- bindings_found | this_bindings
-    }
+
+    local_env_bind(env, bindings[this_bindings], frame = .env)
+    bindings_found <- bindings_found | this_bindings
   }
 
   if (any(!bindings_found)) {
