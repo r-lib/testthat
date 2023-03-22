@@ -1,49 +1,32 @@
 test_that("with_mocked_bindings affects local bindings", {
-  out <- with_mocked_bindings(test_mock1(), test_mock2 = function() "x")
+  out <- with_mocked_bindings(
+    test_mock_package(),
+    test_mock_package2 = function() "x"
+  )
   expect_equal(out, "x")
-
-  expect_equal(test_mock1(), 10)
+  expect_equal(test_mock_package(), "y")
 })
 
 test_that("local_mocked_bindings affects local bindings", {
   local({
-    local_mocked_bindings(test_mock2 = function() "x")
-    expect_equal(test_mock1(), "x")
+    local_mocked_bindings(test_mock_package2 = function() "x")
+    expect_equal(test_mock_package(), "x")
   })
 
-  expect_equal(test_mock1(), 10)
-})
-
-test_that("can't mock bindings that don't exist", {
-  expect_snapshot(local_mocked_bindings(f = function() "x"), error = TRUE)
-})
-
-test_that("can mock bindings from imports", {
-  local_mocked_bindings(identity = function(...) "x")
-  expect_equal(test_mock1(), "x")
-})
-
-test_that("local_mocked_bindings affects S3 methods", {
-  skip("currently fails")
-
-  local({
-    local_mocked_bindings(mockable_generic.integer = function(x) 2)
-    expect_equal(mockable_generic(1L), 2)
-  })
-  expect_equal(mockable_generic(1L), 1)
+  expect_equal(test_mock_package(), "y")
 })
 
 test_that("can make wrapper", {
   local_mock_x <- function(env = caller_env()) {
-    local_mocked_bindings(test_mock2 = function() "x", .env = env)
+    local_mocked_bindings(test_mock_package2 = function() "x", .env = env)
   }
 
   local({
     local_mock_x()
-    expect_equal(test_mock1(), "x")
+    expect_equal(test_mock_package(), "x")
   })
 
-  expect_equal(test_mock1(), 10)
+  expect_equal(test_mock_package(), "y")
 })
 
 test_that("with_mocked_bindings() validates its inputs", {
@@ -51,4 +34,30 @@ test_that("with_mocked_bindings() validates its inputs", {
     with_mocked_bindings(1 + 1, function() 2)
     with_mocked_bindings(1 + 1, x = 2)
   })
+})
+
+# -------------------------------------------------------------------------
+
+test_that("can mock bindings from imports", {
+  local_mocked_bindings(readLines = function(...) "x")
+  expect_equal(test_mock_imports(), "x")
+})
+
+test_that("can mock bindings from base", {
+  local_mocked_bindings(identity = function(...) "x")
+  expect_equal(test_mock_base(), "x")
+})
+
+test_that("can mock S3 methods", {
+  skip("currently fails")
+
+  local({
+    local_mocked_bindings(test_mock_method.integer = function(...) "x")
+    expect_equal(test_mock_method(1L), "x")
+  })
+  expect_equal(test_mock_method(1L), "y")
+})
+
+test_that("can't mock bindings that don't exist", {
+  expect_snapshot(local_mocked_bindings(f = function() "x"), error = TRUE)
 })
