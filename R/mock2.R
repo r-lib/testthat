@@ -37,7 +37,7 @@ local_mocked_bindings <- function(..., .package = NULL, .env = caller_env()) {
   for (env in envs) {
     this_bindings <- env_has(env, names(bindings)) & !bindings_found
 
-    local_env_bind(env, bindings[this_bindings], frame = .env)
+    local_bindings_unlock(!!!bindings[this_bindings], .env = env, .frame = .env)
     bindings_found <- bindings_found | this_bindings
   }
 
@@ -60,12 +60,17 @@ with_mocked_bindings <- function(code, ..., .package = NULL) {
 
 # Wrapper around local_bindings() that automatically unlocks and takes
 # list of bindings.
-local_env_bind <- function(env, bindings, frame = caller_env()) {
-  nms <- names(bindings)
-  locked <- env_binding_unlock(env, nms)
-  withr::defer(env_binding_lock(env, nms[locked]), envir = frame)
+local_bindings_unlock <- function(..., .env = .frame, .frame = caller_env()) {
+  bindings <- list2(...)
+  if (length(bindings) == 0) {
+    return()
+  }
 
-  local_bindings(!!!bindings, .env = env, .frame = frame)
+  nms <- names(bindings)
+  locked <- env_binding_unlock(.env, nms)
+  withr::defer(env_binding_lock(.env, nms[locked]), envir = .frame)
+
+  local_bindings(!!!bindings, .env = .env, .frame = .frame)
 
   invisible()
 }
