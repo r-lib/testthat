@@ -1,5 +1,8 @@
 # testthat (development version)
 
+* `with_mocked_bindings()` and `local_mocked_bindings()` can now bind in the
+  imports namespace too.
+
 # testthat 3.1.7
 
 * `expect_setequal()` gives more actionable feedback (#1657).

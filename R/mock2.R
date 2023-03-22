@@ -30,11 +30,21 @@ local_mocked_bindings <- function(..., .package = NULL, .env = caller_env()) {
   .package <- .package %||% dev_package()
   ns_env <- ns_env(.package)
 
-  # Unlock bindings and set values
-  nms <- names(bindings)
-  locked <- env_binding_unlock(ns_env, nms)
-  withr::defer(env_binding_lock(ns_env, nms[locked]), envir = .env)
-  local_bindings(!!!bindings, .env = ns_env, .frame = .env)
+  # Rebind, first looking in package namespace, then imports, then the base
+  # namespace, then the global environment
+  envs <- c(list(ns_env), env_parents(ns_env))
+  bindings_found <- rep_named(names(bindings), FALSE)
+  for (env in envs) {
+    this_bindings <- env_has(env, names(bindings)) & !bindings_found
+
+    local_bindings_unlock(!!!bindings[this_bindings], .env = env, .frame = .env)
+    bindings_found <- bindings_found | this_bindings
+  }
+
+  if (any(!bindings_found)) {
+    missing <- names(bindings)[!bindings_found]
+    cli::cli_abort("Can't find binding for {.arg {missing}}")
+  }
 
   invisible()
 }
@@ -47,6 +57,23 @@ with_mocked_bindings <- function(code, ..., .package = NULL) {
 }
 
 # helpers -----------------------------------------------------------------
+
+# Wrapper around local_bindings() that automatically unlocks and takes
+# list of bindings.
+local_bindings_unlock <- function(..., .env = .frame, .frame = caller_env()) {
+  bindings <- list2(...)
+  if (length(bindings) == 0) {
+    return()
+  }
+
+  nms <- names(bindings)
+  locked <- env_binding_unlock(.env, nms)
+  withr::defer(env_binding_lock(.env, nms[locked]), envir = .frame)
+
+  local_bindings(!!!bindings, .env = .env, .frame = .frame)
+
+  invisible()
+}
 
 dev_package <- function() {
   if (is_testing() && testing_package() != "") {
@@ -81,11 +108,29 @@ check_bindings <- function(x, error_call = caller_env()) {
   }
 }
 
-# In package
-mockable_generic <- function(x) {
-  UseMethod("mockable_generic")
+# For testing -------------------------------------------------------------
+
+test_mock_package <- function() {
+  test_mock_package2()
+}
+test_mock_package2 <- function() "y"
+
+test_mock_base <- function() {
+  identity("y")
+}
+
+test_mock_imports <- function() {
+  as.character(sym("x"))
+}
+
+test_mock_namespaced <- function() {
+  as.character(rlang::sym("x"))
+}
+
+test_mock_method <- function(x) {
+  UseMethod("test_mock_method")
 }
 #' @export
-mockable_generic.integer <- function(x) {
-  1
+test_mock_method.integer <- function(x) {
+  "y"
 }
