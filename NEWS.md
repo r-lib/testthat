@@ -1,5 +1,7 @@
 # testthat (development version)
 
+* `test_path()` now works when called within helper files (#1562).
+
 * `with_mocked_bindings()` and `local_mocked_bindings()` can now bind in the
   imports namespace too.
 
