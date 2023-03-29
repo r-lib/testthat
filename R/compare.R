@@ -273,8 +273,12 @@ compare.numeric <- function(x, y,
   }
 }
 
+#' Default numeric tolerance
+#'
+#' testthat's default numeric tolerance is `r testthat_tolerance()`.
+#'
+#' @keywords internal
 #' @export
-#' @rdname compare
 testthat_tolerance <- function() {
   if (identical(capabilities("long.double"), FALSE)) {
     skip("Long doubles not available and `tolerance` not supplied")
