@@ -2,9 +2,12 @@
 % Please edit documentation in R/describe.R
 \name{describe}
 \alias{describe}
+\alias{it}
 \title{describe: a BDD testing language}
 \usage{
 describe(description, code)
+
+it(description, code = NULL)
 }
 \arguments{
 \item{description}{description of the feature}
