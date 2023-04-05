@@ -5,7 +5,6 @@
 \alias{compare.default}
 \alias{compare.character}
 \alias{compare.numeric}
-\alias{testthat_tolerance}
 \alias{compare.POSIXt}
 \title{Provide human-readable comparison of two objects}
 \usage{
@@ -31,8 +30,6 @@ compare(x, y, ...)
   ...,
   max_diffs = 9
 )
-
-testthat_tolerance()
 
 \method{compare}{POSIXt}(x, y, tolerance = 0.001, ..., max_diffs = 9)
 }

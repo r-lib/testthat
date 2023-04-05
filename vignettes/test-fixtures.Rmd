@@ -308,7 +308,7 @@ If you move the `local_()` call outside of a `test_that()` block, it will affect
 
 -   If you would otherwise have called the fixture in every test, you've saved yourself a bunch of work and duplicate code.
 
--   But on the downside, if you a test fails and you want to recreate the failure in an interactive environment so you can debug, you need to remember to run all the setup code at the top of the file first.
+-   On the downside, if your test fails and you want to recreate the failure in an interactive environment so you can debug, you need to remember to run all the setup code at the top of the file first.
 
 Generally, I think it's better to copy and paste test fixtures across many tests --- sure, it adds some duplication to your code, but it makes debugging test failures so much easier.
 
