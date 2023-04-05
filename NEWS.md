@@ -1,6 +1,6 @@
 # testthat (development version)
 
-* `skip_on_bioconductor()` now uses documented environment variable
+* `skip_on_bioc()` now uses the documented environment variable
   (`IS_BIOC_BUILD_MACHINE`) (#1712).
 
 * `with_mocked_bindings()` and `local_mocked_bindings()` can now bind in the

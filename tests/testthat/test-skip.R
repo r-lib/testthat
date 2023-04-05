@@ -89,7 +89,7 @@ test_that("superseded CI skips still work", {
   expect_no_skip(skip_on_travis())
   expect_no_skip(skip_on_appveyor())
 
-  withr::local_envvar(TRAVIS = "true", APPVEYOR = "True")
+  withr::local_envvar(TRAVIS = "true", APPVEYOR = "true")
   expect_snapshot_skip(skip_on_travis())
   expect_snapshot_skip(skip_on_appveyor())
 })

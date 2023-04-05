@@ -239,7 +239,7 @@ skip_if_translated <- function(msgid = "'%s' not found") {
 #' Superseded skip functions
 #'
 #' * `skip_on_travis()` and `skip_on_appveyor()` have been superseded by
-#'   `skip_on_ci()`.
+#'   [skip_on_ci()].
 #'
 #' @export
 #' @keywords internal

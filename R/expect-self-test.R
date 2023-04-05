@@ -48,7 +48,7 @@ expect_failure <- function(expr, message = NULL, ...) {
 }
 
 expect_snapshot_skip <- function(x) {
-  expect_snapshot_error(x, "skip")
+  expect_snapshot_error(x, class = "skip")
 }
 expect_no_skip <- function(code) {
   expect_no_condition(code, class = "skip")
