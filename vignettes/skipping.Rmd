@@ -109,8 +109,8 @@ is_testing <- function() {
 ```
 
 It might look like the code appears to still have a runtime dependency on testthat, because of the call to `testthat::skip()`.
-But `testthat::skip` is only ever run when you're inside a test, where you can assume that testthat is installed.
+But `testthat::skip()` is only executed during a test run, which implies that testthat is installed.
 
 We have mixed feelings about this approach.
 On the one hand, it feels elegant and concise, and it absolutely guarantees that you'll never miss a needed skip in one of your tests.
-On the other hand, it mixed code and tests in an unusual way, and it when you're focused on the tests, the existence of a skip in code is easy to miss.
+On the other hand, it mixes code and tests in an unusual way, and when you're focused on the tests, it's easy to miss the fact that a package function contains a `skip()`.
