@@ -3,6 +3,8 @@
 * `skip_on_bioc()` now uses the documented environment variable
   (`IS_BIOC_BUILD_MACHINE`) (#1712).
 
+* `test_path()` now works when called within helper files (#1562).
+
 * `it()` now calls `local_test_context()` so that it behaves more
   similarly to `test_that()` (#1731), and is now exported so that you
   can more easily run BDD tests interactively (#1587)
