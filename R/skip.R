@@ -121,14 +121,8 @@ skip_if_not_installed <- function(pkg, minimum_version = NULL) {
 skip_if_offline <- function(host = "r-project.org") {
   skip_on_cran()
   skip_if_not_installed("curl")
-
-  if (!has_internet(host)) {
-    skip("offline")
-  } else {
-    invisible()
-  }
+  skip_if_not(has_internet(host), "offline")
 }
-
 has_internet <- function(host) {
   !is.null(curl::nslookup(host, error = FALSE))
 }
@@ -138,8 +132,6 @@ has_internet <- function(host) {
 skip_on_cran <- function() {
   skip_if(on_cran(), "On CRAN")
 }
-
-on_cran <- function() !env_var_is_true("NOT_CRAN")
 
 #' @export
 #' @param os Character vector of one or more operating systems to skip on.
@@ -188,39 +180,19 @@ system_arch <- function() R.version$arch
 #' @export
 #' @rdname skip
 skip_on_ci <- function() {
-  if (on_ci()) {
-    skip("On CI")
-  } else {
-    invisible()
-  }
-}
-
-on_ci <- function() {
- env_var_is_true("CI")
-}
-
-in_covr <- function() {
-  env_var_is_true("R_COVR")
+  skip_if(on_ci(), skip("On CI"))
 }
 
 #' @export
 #' @rdname skip
 skip_on_covr <- function() {
-  if (in_covr()) {
-    skip("On covr")
-  } else {
-    invisible()
-  }
+  skip_if(in_covr(), "On covr")
 }
 
 #' @export
 #' @rdname skip
 skip_on_bioc <- function() {
-  if (env_var_is_true("IS_BIOC_BUILD_MACHINE")) {
-    skip("On Bioconductor")
-  } else {
-    invisible()
-  }
+  skip_if(on_bioc(), "On Bioconductor")
 }
 
 #' @export
@@ -229,11 +201,10 @@ skip_on_bioc <- function() {
 #'   [`R-base.pot`](https://github.com/wch/r-source/blob/master/src/library/base/po/R-base.pot).
 #' @rdname skip
 skip_if_translated <- function(msgid = "'%s' not found") {
-  if (gettext(msgid, domain = "R") != msgid) {
-    skip(paste0("\"", msgid, "\" is translated"))
-  } else {
-    invisible()
-  }
+  skip_if(
+    gettext(msgid, domain = "R") != msgid,
+    paste0("\"", msgid, "\" is translated")
+  )
 }
 
 #' Superseded skip functions
@@ -247,22 +218,30 @@ skip_if_translated <- function(msgid = "'%s' not found") {
 #' @export
 #' @keywords internal
 skip_on_travis <- function() {
-  if (env_var_is_true("TRAVIS")) {
-    skip("On Travis")
-  } else {
-    invisible()
-  }
+  skip_if(env_var_is_true("TRAVIS"), "On Travis")
 }
 
 #' @export
 #' @rdname skip_on_travis
 skip_on_appveyor <- function() {
-  if (env_var_is_true("APPVEYOR")) {
-    skip("On Appveyor")
-  } else {
-    invisible()
-  }
+  skip_if(env_var_is_true("APPVEYOR"), "On Appveyor")
 }
 
+# helpers -----------------------------------------------------------------
 
-env_var_is_true <- function(x) isTRUE(as.logical(Sys.getenv(x, "false")))
+on_ci <- function() {
+ env_var_is_true("CI")
+}
+in_covr <- function() {
+  env_var_is_true("R_COVR")
+}
+on_bioc <- function() {
+  env_var_is_true("IS_BIOC_BUILD_MACHINE")
+}
+on_cran <- function() {
+  !env_var_is_true("NOT_CRAN")
+}
+
+env_var_is_true <- function(x) {
+  isTRUE(as.logical(Sys.getenv(x, "false")))
+}
