@@ -1,5 +1,8 @@
 # testthat (development version)
 
+* `skip_on_bioc()` now uses the documented environment variable
+  (`IS_BIOC_BUILD_MACHINE`) (#1712).
+
 * `test_path()` now works when called within helper files (#1562).
 
 * `it()` now calls `local_test_context()` so that it behaves more

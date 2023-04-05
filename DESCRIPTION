@@ -42,7 +42,6 @@ Suggests:
     curl (>= 0.9.5),
     diffviewer (>= 0.1.0),
     knitr,
-    mockery,
     rmarkdown,
     rstudioapi,
     shiny,
