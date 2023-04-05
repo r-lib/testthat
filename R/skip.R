@@ -238,6 +238,9 @@ skip_if_translated <- function(msgid = "'%s' not found") {
 
 #' Superseded skip functions
 #'
+#' @description
+#' `r lifecycle::badge("superseded")`
+#'
 #' * `skip_on_travis()` and `skip_on_appveyor()` have been superseded by
 #'   [skip_on_ci()].
 #'

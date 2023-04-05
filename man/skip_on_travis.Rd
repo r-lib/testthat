@@ -10,6 +10,7 @@ skip_on_travis()
 skip_on_appveyor()
 }
 \description{
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#superseded}{\figure{lifecycle-superseded.svg}{options: alt='[Superseded]'}}}{\strong{[Superseded]}}
 \itemize{
 \item \code{skip_on_travis()} and \code{skip_on_appveyor()} have been superseded by
 \code{skip_on_ci()}.
