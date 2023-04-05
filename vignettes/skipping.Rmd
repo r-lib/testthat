@@ -62,7 +62,7 @@ You should keep an on eye this when developing interactively to make sure that y
 ## Helpers
 
 If you find yourself using the same `skip_if()`/`skip_if_not()` expression across multiple tests, it's a good idea to create a helper function.
-This function should start with `skip_` and live in a `test/helper-{something}.R`:
+This function should start with `skip_` and live in a `test/helper-{something}.R` file:
 
 ```{r}
 skip_if_dangerous <- function() {
