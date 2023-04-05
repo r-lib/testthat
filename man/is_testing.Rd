@@ -20,6 +20,8 @@ testing_package()
 }
 
 These are thin wrappers that retrieve the values of environment variables.
-To avoid creating a run-time dependency on testthat, you can inline the
-source of these functions directly into your package.
+You will usually want to avoid a runtime dependency on testthat, i.e. you
+won't want to use testthat in the code below \verb{R/}. In that case, you should
+inline the source of these functions into your package, in whatever location
+you are using for any other test helper functions.
 }
