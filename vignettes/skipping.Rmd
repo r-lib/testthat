@@ -51,9 +51,11 @@ All reporters show which tests as skipped.
 As of testthat 3.0.0, ProgressReporter (used interactively) and CheckReporter (used inside of `R CMD check`) also display a summary of skips across all tests.
 It looks something like this:
 
-    ── Skipped tests  ───────────────────────────────────────────────────────
-    ● No token (3)
-    ● On CRAN (1)
+```         
+── Skipped tests  ───────────────────────────────────────────────────────
+● No token (3)
+● On CRAN (1)
+```
 
 You should keep an on eye this when developing interactively to make sure that you're not accidentally skipping the wrong things.
 
