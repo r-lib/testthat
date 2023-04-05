@@ -89,7 +89,8 @@ Most of these functions have not been recommended for a number of years, but bef
 
 -   `expect_known_output()`, `expect_known_value()`, `expect_known_hash()`, and `expect_equal_to_reference()` are all deprecated in favour of `expect_snapshot_output()` and `expect_snapshot_value()`.
 
--   `with_mock()` and `local_mock()` are deprecated; please use the [mockr](https://krlmlr.github.io/mockr/) or [mockery](https://github.com/r-lib/mockery#mockery) instead.
+-   `with_mock()` and `local_mock()` are deprecated; please use 
+`with_mocked_bindings()` or `local_mocked_bindings()` instead.
 
 Fixing these deprecation warnings should be straightforward.
 

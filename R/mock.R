@@ -34,9 +34,7 @@
 #' @return The result of the last unnamed parameter
 #' @export
 with_mock <- function(..., .env = topenv()) {
-  edition_deprecate(3, "with_mock()",
-    "Please use mockr or mockery packages instead"
-  )
+  edition_deprecate(3, "with_mock()", "Please use with_mocked_bindings() instead")
 
   dots <- eval(substitute(alist(...)))
   mock_qual_names <- names(dots)
@@ -71,9 +69,7 @@ with_mock <- function(..., .env = topenv()) {
 #' @export
 #' @rdname with_mock
 local_mock <- function(..., .env = topenv(), .local_envir = parent.frame()) {
-  edition_deprecate(3, "local_mock()",
-    "Please use mockr or mockery packages instead"
-  )
+  edition_deprecate(3, "local_mock()", "Please use local_mocked_bindings() instead")
 
   mocks <- extract_mocks(list(...), .env = .env)
   on_exit <- bquote(
