@@ -4,5 +4,5 @@
       test_path("empty")
     Condition
       Error in `test_path()`:
-      ! Can find 'tests/testthat'.
+      ! Can't find 'tests/testthat'.
 
