@@ -56,32 +56,39 @@
 #' })
 
 describe <- function(description, code) {
-  is_invalid_description <- function(description) {
-    !is.character(description) || length(description) != 1 ||
-      nchar(description) == 0
-  }
-
-  if (is_invalid_description(description)) {
-    stop("description must be a string of at least length 1")
-  }
+  check_string(description, allow_empty = FALSE)
+  describe_description <- description
 
   # prepares a new environment for each it-block
   describe_environment <- new.env(parent = parent.frame())
-  describe_environment$it <- function(it_description, it_code = NULL) {
-    if (is_invalid_description(it_description)) {
-      stop("it-description must be a string of at least length 1")
-    }
-    if (missing(it_code)) return()
+  describe_environment$it <- function(description, code = NULL) {
+    check_string(description, allow_empty = FALSE)
+    code <- substitute(code)
 
-    test_description <- paste0(description, ": ", it_description)
-    test_code(
-      test_description,
-      substitute(it_code),
-      env = describe_environment,
-      skip_on_empty = FALSE
-    )
+    description <- paste0(describe_description, ": ", description)
+    describe_it(description, code, describe_environment)
   }
 
   eval(substitute(code), describe_environment)
   invisible()
+}
+
+describe_it <- function(description, code, env = parent.frame()) {
+  local_test_context()
+
+  test_code(
+    description,
+    code,
+    env = env,
+    skip_on_empty = FALSE
+  )
+}
+
+#' @export
+#' @rdname describe
+it <- function(description, code = NULL) {
+  check_string(description, allow_empty = FALSE)
+
+  code <- substitute(code)
+  describe_it(description, code)
 }

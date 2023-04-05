@@ -51,57 +51,66 @@ All reporters show which tests as skipped.
 As of testthat 3.0.0, ProgressReporter (used interactively) and CheckReporter (used inside of `R CMD check`) also display a summary of skips across all tests.
 It looks something like this:
 
-    ── Skipped tests  ───────────────────────────────────────────────────────
-    ● No token (3)
-    ● On CRAN (1)
+```         
+── Skipped tests  ───────────────────────────────────────────────────────
+● No token (3)
+● On CRAN (1)
+```
 
 You should keep an on eye this when developing interactively to make sure that you're not accidentally skipping the wrong things.
 
 ## Helpers
 
 If you find yourself using the same `skip_if()`/`skip_if_not()` expression across multiple tests, it's a good idea to create a helper function.
-This function should start with `skip_` and live somewhere in your `R/` directory.
-
-```{r}
-skip_if_Tuesday <- function() {
-  if (as.POSIXlt(Sys.Date())$wday != 2) {
-    return(invisible(TRUE))
-  }
-  
-  skip("Not run on Tuesday")
-}
-```
-
-It's important to test your skip helpers because it's easy to miss if you're skipping more often than desired, and the test code is never run.
-This is unlikely to happen locally (since you'll see the skipped tests in the summary), but is quite possible in continuous integration.
-
-For that reason, it's a good idea to add a test that you skip is activated when you expect.
-skips are a special type of condition, so you can test for their presence/absence with `expect_condition()`.
-For example, imagine that you've defined a custom skipper that skips tests whenever an environment variable `DANGER` is set:
+This function should start with `skip_` and live in a `test/helper-{something}.R` file:
 
 ```{r}
 skip_if_dangerous <- function() {
-  if (identical(Sys.getenv("DANGER"), "")) {
-    return(invisible(TRUE))
+  if (!identical(Sys.getenv("DANGER"), "")) {
+    skip("Not run in dangerous environments.")
+  } else {
+    invisible()
   }
-  
-  skip("Not run in dangerous enviromnents")
 }
 ```
 
-Then you can use `expect_condition()` to test that it skips tests when it should, and doesn't skip when it shouldn't:
+## Embedding `skip()` in package functions
 
-```{r}
-test_that("skip_if_dangerous work", {
-  # Test that a skip happens
-  withr::local_envvar(DANGER = "yes")
-  expect_condition(skip_if_dangerous(), class = "skip") 
+Another useful technique that can sometimes be useful is to build a `skip()` directly into a package function.
+For example take a look at [`pkgdown:::convert_markdown_to_html()`](https://github.com/r-lib/pkgdown/blob/v2.0.7/R/markdown.R#L95-L106), which absolutely, positively cannot work if the Pandoc tool is unavailable:
 
-  # Test that a skip doesn't happen
-  withr::local_envvar(DANGER = "")
-  expect_condition(skip_if_dangerous(), NA, class = "skip")
-})
+```{r eval = FALSE}
+convert_markdown_to_html <- function(in_path, out_path, ...) {
+  if (rmarkdown::pandoc_available("2.0")) {
+    from <- "markdown+gfm_auto_identifiers-citations+emoji+autolink_bare_uris"
+  } else if (rmarkdown::pandoc_available("1.12.3")) {
+    from <- "markdown_github-hard_line_breaks+tex_math_dollars+tex_math_single_backslash+header_attributes"
+  } else {
+    if (is_testing()) {
+      testthat::skip("Pandoc not available")
+    } else {
+      abort("Pandoc not available")
+    }
+  }
+  
+  ...
+}
 ```
 
-Testing `skip_if_Tuesday()` is harder because there's no way to control the skipping from the outside.
-That means you'd need to "mock" its behaviour in a test, using the [mockery](https://github.com/r-lib/mockery) or [mockr](https://krlmlr.github.io/mockr/) packages.
+If Pandoc is not available when `convert_markdown_to_html()` executes, it throws an error *unless* it appears to be part of a test run, in which case the test is skipped.
+This is an alternative to implementing a custom skipper, e.g. `skip_if_no_pandoc()`, and inserting it into many of pkgdown's tests.
+
+We don't want pkgdown to have a runtime dependency on testthat, so pkgdown includes a copy of `testthat::is_testing()`:
+
+```{r eval = FALSE}
+is_testing <- function() {
+  identical(Sys.getenv("TESTTHAT"), "true")
+}
+```
+
+It might look like the code appears to still have a runtime dependency on testthat, because of the call to `testthat::skip()`.
+But `testthat::skip()` is only executed during a test run, which implies that testthat is installed.
+
+We have mixed feelings about this approach.
+On the one hand, it feels elegant and concise, and it absolutely guarantees that you'll never miss a needed skip in one of your tests.
+On the other hand, it mixes code and tests in an unusual way, and when you're focused on the tests, it's easy to miss the fact that a package function contains a `skip()`.

@@ -2,6 +2,10 @@
 
 * `test_path()` now works when called within helper files (#1562).
 
+* `it()` now calls `local_test_context()` so that it behaves more
+  similarly to `test_that()` (#1731), and is now exported so that you
+  can more easily run BDD tests interactively (#1587)
+
 * `with_mocked_bindings()` and `local_mocked_bindings()` can now bind in the
   imports namespace too.
 
