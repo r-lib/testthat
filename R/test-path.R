@@ -1,10 +1,10 @@
-#' Locate file in testing directory
+#' Locate a file in the testing directory
 #'
 #' Many tests require some external file (e.g. a `.csv` if you're testing a
 #' data import function) but the working directory varies depending on the way
-#' that you're running the test (e.g. interactively, with `devtools::tests()`,
+#' that you're running the test (e.g. interactively, with `devtools::test()`,
 #' or with `R CMD check`). `test_path()` understands these variations and
-#' automatically generates a path relatively to `tests/testthat`, regardless of
+#' automatically generates a path relative to `tests/testthat`, regardless of
 #' where that directory might reside relative to the current working directory.
 #'
 #' @param ... Character vectors giving path components.
@@ -25,7 +25,7 @@ test_path <- function(...) {
     base <- "tests/testthat"
 
     if (!dir.exists(base)) {
-      cli::cli_abort("Can find {.path {base}}.")
+      cli::cli_abort("Can't find {.path {base}}.")
     }
   }
 

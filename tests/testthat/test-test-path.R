@@ -12,7 +12,7 @@ test_that("is vectorised", {
   expect_equal(test_path("x", c("a", "b")), c("x/a", "x/b"))
 })
 
-test_that("uses local path when called in from test_file()/tools::testInstalledPackages()", {
+test_that("uses local path when called from test_file()/tools::testInstalledPackages()", {
   withr::local_envvar(TESTTHAT = "true")
   withr::local_options(testthat_interactive = FALSE)
 
