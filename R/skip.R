@@ -180,7 +180,7 @@ system_arch <- function() R.version$arch
 #' @export
 #' @rdname skip
 skip_on_ci <- function() {
-  skip_if(on_ci(), skip("On CI"))
+  skip_if(on_ci(), "On CI")
 }
 
 #' @export
