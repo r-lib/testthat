@@ -14,7 +14,7 @@
 \alias{skip_if_translated}
 \title{Skip a test}
 \usage{
-skip(message)
+skip(message = "Skipping")
 
 skip_if_not(condition, message = NULL)
 
