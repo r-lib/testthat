@@ -33,6 +33,7 @@ test_that("skip on os checks os names", {
 })
 
 test_that("can skip on multiple oses", {
+  skip_if_not_installed("mockery")
   mockery::stub(skip_on_os, "system_os", function() "windows")
 
   expect_skip(skip_on_os("windows"))
@@ -42,6 +43,7 @@ test_that("can skip on multiple oses", {
 })
 
 test_that("can refine os with arch", {
+  skip_if_not_installed("mockery")
   mockery::stub(skip_on_os, "system_os", function() "windows")
   mockery::stub(skip_on_os, "system_arch", function() "i386")
 
