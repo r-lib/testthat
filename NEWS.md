@@ -7,7 +7,10 @@
   can more easily run BDD tests interactively (#1587)
 
 * `with_mocked_bindings()` and `local_mocked_bindings()` can now bind in the
-  imports namespace too.
+  imports namespace too. This changes makes them very close in capability
+  for `with_mock()` and `local_mock()` so those functions now recommend
+  `with_mocked_bindings()` and `local_mocked_bindings()` rather than functions
+  from the mockr/mockery packages.
 
 # testthat 3.1.7
 
