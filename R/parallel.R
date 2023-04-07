@@ -227,7 +227,7 @@ queue_process_setup <- function(test_package, test_dir, load_helpers, load_packa
     test_package = test_package,
     load_helpers = load_helpers,
     env = env,
-    .env = .GlobalEnv
+    frame = .GlobalEnv
   )
 
   # Save test environment in global env where it can easily be retrieved

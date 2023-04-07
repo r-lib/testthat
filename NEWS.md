@@ -1,5 +1,35 @@
 # testthat (development version)
 
+* `skip_on_bioc()` now uses the documented environment variable
+  (`IS_BIOC_BUILD_MACHINE`) (#1712).
+
+* `test_path()` now works when called within helper files (#1562).
+
+* `it()` now calls `local_test_context()` so that it behaves more
+  similarly to `test_that()` (#1731), and is now exported so that you
+  can more easily run BDD tests interactively (#1587)
+
+* `with_mocked_bindings()` and `local_mocked_bindings()` can now bind in the
+  imports namespace too. This changes makes them very close in capability
+  for `with_mock()` and `local_mock()` so those functions now recommend
+  `with_mocked_bindings()` and `local_mocked_bindings()` rather than functions
+  from the mockr/mockery packages.
+
+# testthat 3.1.7
+
+* `expect_setequal()` gives more actionable feedback (#1657).
+
+* `expect_snapshot()` no longer elides new lines when run interactively (#1726).
+
+* Experimental new `with_mocked_bindings()` and `local_mocked_bindings()` 
+  (#1739).
+
+# testthat 3.1.6
+
+* The embedded version of Catch no longer uses `sprintf()`.
+
+# testthat 3.1.5
+
 * Deprecation warnings are no longer captured by `expect_warning(code, NA)`,
   `expect_no_warning(code)`, or `expect_silent(code)`. This ensures that they 
   bubble up to the top level so that you can address them (#1680). If you want 

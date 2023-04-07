@@ -275,23 +275,28 @@ find_load_all_args <- function(path) {
   )
 }
 
-test_files_setup_state <- function(test_dir, test_package, load_helpers, env, .env = parent.frame()) {
-
+test_files_setup_state <- function(
+    test_dir,
+    test_package,
+    load_helpers,
+    env,
+    frame = parent.frame()
+) {
   # Define testing environment
-  local_test_directory(test_dir, test_package, .env = .env)
+  local_test_directory(test_dir, test_package, .env = frame)
   withr::local_options(
     topLevelEnvironment = env_parent(env),
-    .local_envir = .env
+    .local_envir = frame
   )
 
   # Load helpers, setup, and teardown (on exit)
-  local_teardown_env(.env)
+  local_teardown_env(frame)
   if (load_helpers) {
     source_test_helpers(".", env)
   }
   source_test_setup(".", env)
-  withr::defer(withr::deferred_run(teardown_env()), .env) # new school
-  withr::defer(source_test_teardown(".", env), .env)      # old school
+  withr::defer(withr::deferred_run(teardown_env()), frame) # new school
+  withr::defer(source_test_teardown(".", env), frame)      # old school
 }
 
 test_files_reporter <- function(reporter, .env = parent.frame()) {
@@ -323,7 +328,7 @@ test_one_file <- function(path, env = test_env(), wrap = TRUE) {
   on.exit(teardown_run(), add = TRUE)
 
   reporter$start_file(path)
-  source_file(path, child_env(env), wrap = wrap)
+  source_file(path, env(env), wrap = wrap)
   reporter$end_context_if_started()
   reporter$end_file()
 }
@@ -348,7 +353,7 @@ teardown_env <- function() {
 
 local_teardown_env <- function(env = parent.frame()) {
   old <- testthat_env$teardown_env
-  testthat_env$teardown_env <- child_env(emptyenv())
+  testthat_env$teardown_env <- env(emptyenv())
   withr::defer(testthat_env$teardown_env <- old, env)
 
   invisible()

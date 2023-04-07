@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# testthat <img src="man/figures/logo.png" align="right" />
+# testthat <a href="https://testthat.r-lib.org"><img src="man/figures/logo.png" align="right" height="138" alt="" /></a>
 
 <!-- badges: start -->
 
@@ -52,8 +52,8 @@ advice and concrete examples.
 install.packages("testthat")
 
 # Or the development version from GitHub:
-# install.packages("devtools")
-devtools::install_github("r-lib/testthat")
+# install.packages("pak")
+pak::pak("r-lib/testthat")
 ```
 
 ## Usage

@@ -19,16 +19,16 @@ describe("describe", {
     })
   })
 
-  it("has to have a description for the block", {
-    expect_error(describe({}))
-    expect_error(describe("", {}))
-    expect_error(describe("test", {it()}))
-    expect_error(describe("test", {it("")}))
-  })
+  it("has to have a valid description for the block", {
+    expect_snapshot(error = TRUE, {
+      describe()
+      describe("")
+      describe(c("a", "b"))
 
-  it("has to have a description of length 1", {
-    expect_error(describe(c("a", "b"), {}))
-    expect_error(describe("test", {it(c("a", "b"))}))
+      it()
+      it("")
+      it(c("a", "b"))
+    })
   })
 
   someInternalVariable <- 1

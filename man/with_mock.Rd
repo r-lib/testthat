@@ -26,20 +26,13 @@ The result of the last unnamed parameter
 \description{
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#superseded}{\figure{lifecycle-superseded.svg}{options: alt='[Superseded]'}}}{\strong{[Superseded]}}
 
-\code{with_mock()} and \code{local_mock()} are superseded in favour of the more
-rigorous techniques found in the \href{https://krlmlr.github.io/mockr/}{mockr}
-and \href{https://github.com/r-lib/mockery#mockery}{mockery} packages.
+\code{with_mock()} and \code{local_mock()} are superseded in favour of
+\code{\link[=with_mocked_bindings]{with_mocked_bindings()}} and \code{\link[=local_mocked_bindings]{local_mocked_bindings()}}.
 
-Mocking allows you to temporary replace the implementation of functions
-within a package, which useful for testing code that relies on functions
-that are slow, have unintended side effects or access resources that may
-not be available when testing.
-
-This works by using some C code to temporarily modify the mocked function
+These works by using some C code to temporarily modify the mocked function
 \emph{in place}. On exit, all functions are restored to their previous state.
-This is somewhat abusive of R's internals so use with care. In particular,
-functions in base packages cannot be mocked; to work aroud you'll need to
-make a wrapper function in your own package..
+This is abusive of R's internals, which makes it dangerous, and no longer
+recommended.
 }
 \section{3rd edition}{
 
@@ -48,7 +41,4 @@ make a wrapper function in your own package..
 \code{with_mock()} and \code{local_mock()} are deprecated in the third edition.
 }
 
-\references{
-Suraj Gupta (2012): \href{http://blog.obeautifulcode.com/R/How-R-Searches-And-Finds-Stuff/}{How R Searches And Finds Stuff}
-}
 \keyword{internal}
