@@ -1,5 +1,9 @@
 # testthat (development version)
 
+* `source_file()`, which is used by various parts of the helper and 
+  setup/teardown machinery, now reports the file name in the case of 
+  errors (#1704).
+
 * `skip_on_bioc()` now uses the documented environment variable
   (`IS_BIOC_BUILD_MACHINE`) (#1712).
 
