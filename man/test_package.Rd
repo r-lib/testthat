@@ -47,7 +47,8 @@ A list (invisibly) containing data about the test results.
 \item \code{test_check()} checks a package during \verb{R CMD check}.
 }
 
-Tests live in \code{tests/testthat}.
+See \code{vignette("special-files")} to learn about the various files that
+testthat works with.
 }
 \section{\verb{R CMD check}}{
 
@@ -59,34 +60,6 @@ library(yourpackage)
 
 test_check("yourpackage")
 }\if{html}{\out{</div>}}
-}
-
-\section{Special files}{
-
-Certain \code{.R} files have special significance in testthat:
-\itemize{
-\item Test files start with \code{test} and are executed in alphabetical order.
-\item Setup files start with \code{setup} and are executed before tests. If
-clean up is needed after all tests have been run, you can use
-\code{withr::defer(clean_up(), teardown_env())}. See \code{vignette("test-fixtures")}
-for more details.
-\item Helper files start with \code{helper} and are executed before tests are
-run and, unlike setup files, are also loaded by \code{devtools::load_all()}.
-Helper files can be necessary for side-effect-y code that you need to run
-when developing the package interactively. It's certainly possible to
-define custom test utilities in a helper file, but they can usually be
-defined below \verb{R/}, just like any other internal function.
-}
-
-There is another type of special file that we no longer recommend using:
-\itemize{
-\item Teardown files start with \code{teardown} and are executed after the tests
-are run. Now we recommend interleaving setup and cleanup code in \verb{setup-}
-files, making it easier to check that you automatically clean up every
-mess that you make.
-}
-
-All other files are ignored by testthat.
 }
 
 \section{Environments}{
