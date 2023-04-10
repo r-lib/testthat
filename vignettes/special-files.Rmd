@@ -19,12 +19,12 @@ knitr::opts_chunk$set(
 library(testthat)
 ```
 
-This vignette describes the various special files that testthat works with: test, helper, and setup files.
+This vignette describes the various special files that testthat understands: test, helper, setup/teardown, snapshot, and everything else.
 
 ## Test files
 
 These are the bread and butter of testthat.
-Test files live in `tests/testthat`, start with either `test-` or `test_`, and end with `.r` or `.R`.
+Test files live in `tests/testthat/`, start with either `test-` or `test_`, and end with `.r` or `.R`.
 We recommend organising your test files so that there's a one-to-one correspondence between the files in `R/` and the files in `tests/testthat/` so that (e.g.) `R/myfile.R` has a matching `tests/testthat/test-myfile.R`.
 This correspondence is maintained by functions like `usethis::use_r()` and `usethis::use_test()` and is taken advantage of by functions like `devtools::test_active_file()` and `devtools::test_coverage_active_file()`.
 
@@ -33,14 +33,14 @@ In principle, you should be able to be run your test files in any order or even 
 
 ## Helper files
 
-Helper files live in `tests/testtthat`, start with `helper`, and end with `.r` or `.R`.
+Helper files live in `tests/testtthat/`, start with `helper`, and end with `.r` or `.R`.
 They are sourced by `devtools::load_all()` (so they're available interactively when developing your packages) and by `test_check()` and friends (so that they're available no matter how your tests are executed).
 
 Helper files are a useful place for functions that you've extracted from repeated code in your tests, whether that be test fixtures (`vignette("test-fixtures")`), custom expectations (`vignette("custom-expectations")`), or skip helpers (`vignette("skipping")`).
 
 ## Setup files
 
-Setup files live in `tests/testthat`, start with `setup`, and end with `.r` or `.R`.
+Setup files live in `tests/testthat/`, start with `setup`, and end with `.r` or `.R`.
 Typically there is only one setup file which, by convention, is `tests/testthat/setup.R`.
 Setup files are sourced by `test_check()` and friends (so that they're available no matter how your tests are executed), but they are *not* sourced by `devtools::load_all()`.
 
@@ -71,7 +71,18 @@ withr::local_options(
 )
 ```
 
-## Teardown files
+### Teardown files
 
-Teardown files live in `tests/testhat`, start with `teardown` and end with `.r` or `.R`.
+Teardown files live in `tests/testhat/`, start with `teardown` and end with `.r` or `.R`.
 They are executed after the tests are run, but we no longer recommend using them as it's easier to check that you clean up every mess that you make if you interleave setup and tear down code as described above.
+
+## Snapshot files
+
+Snapshot files live in `tests/testthat/_snaps/`.
+Snapshot file are named automatically based on the name of the test file so that `tests/testthat/test-one.R` will generated `tests/testthat/_snaps/one.md`.
+Learn more about snapshot tests in `vignette("snapshotting")`.
+
+## Other files and folders
+
+Other files and folders in `tests/testthat/` are ignored by testthat, making them a good place to store persistent test data.
+Since the precise location of the `test/testthat/` directory varies slightly depending on how you're running the test, we recommend creating paths to these files and directories using `test_path()`.
