@@ -12,9 +12,9 @@ library(testthat)
 knitr::opts_chunk$set(collapse = TRUE, comment = "#>")
 ```
 
-This vignette shows you how to create custom expectations that work identically to the built-in `expect_` functions.  Since these functions will need to be loaded when your package is loaded for testing, it is recommended that `expect_` functions be defined in `test-helpers.R` in your packages `R/` directory.
+This vignette shows you how to create custom expectations that work identically to the built-in `expect_` functions. Since these functions will need to be loaded in order for your tests to work, we recommend putting them in an appropriately named helper file, i.e. `tests/testthat/helper-expectations.R`.
 
-## Creating an expectation
+## Expectation basics
 
 There are three main parts to writing an expectation, as illustrated by `expect_length()`:
 
@@ -35,7 +35,7 @@ expect_length <- function(object, n) {
 }
 ```
 
-## Quasi-labelling
+### Quasi-labelling
 
 The first step in any expectation is to capture the actual object, and generate a label for it to use if a failure occur. All testthat expectations support quasiquotation so that you can unquote variables. This makes it easier to generate good labels when the expectation is called from a function or within a for loop.
 
@@ -85,17 +85,4 @@ expect_length <- function(object, n) {
   message <- sprintf("%s has length %i, not length %i.", act$lab, act$n, n)
   fail(message)
 }
-```
-
-## Testing your expectations
-
-Use the expectations `expect_success()` and `expect_failure()` to test your expectation.
-
-```{r}
-test_that("length computed correctly", {
-  expect_success(expect_length(1, 1))
-  expect_failure(expect_length(1, 2), "has length 1, not length 2.")
-  expect_success(expect_length(1:10, 10))
-  expect_success(expect_length(letters[1:5], 5))
-})
 ```

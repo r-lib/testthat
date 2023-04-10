@@ -1,5 +1,8 @@
 # testthat (development version)
 
+* New `vignette("special-files")` describes the various special files
+  that testthat uses (#1638).
+
 * `skip_on_bioc()` now uses the documented environment variable
   (`IS_BIOC_BUILD_MACHINE`) (#1712).
 
