@@ -30,9 +30,8 @@ The result of the last unnamed parameter
 \code{\link[=with_mocked_bindings]{with_mocked_bindings()}} and \code{\link[=local_mocked_bindings]{local_mocked_bindings()}}.
 
 These works by using some C code to temporarily modify the mocked function
-\emph{in place}. On exit, all functions are restored to their previous state.
-This is abusive of R's internals, which makes it dangerous, and no longer
-recommended.
+\emph{in place}. This is abusive of R's internals, which makes it dangerous, and
+no longer recommended.
 }
 \section{3rd edition}{
 

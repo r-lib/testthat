@@ -35,8 +35,7 @@ See \link{Reporter} for more details and a list of built-in reporters.}
 
 \item{...}{Additional arguments passed to \code{\link[=grepl]{grepl()}} to control filtering.}
 
-\item{load_helpers}{Source helper files before running the tests?
-See \code{\link[=source_test_helpers]{source_test_helpers()}} for more details.}
+\item{load_helpers}{Source helper files before running the tests?}
 
 \item{stop_on_failure}{If \code{TRUE}, throw an error if any tests fail.}
 
@@ -67,35 +66,10 @@ This function is the low-level workhorse that powers \code{\link[=test_local]{te
 \code{\link[=test_package]{test_package()}}. Generally, you should not call this function directly.
 In particular, you are responsible for ensuring that the functions to test
 are available in the test \code{env} (e.g. via \code{load_package}).
-}
-\section{Special files}{
 
-Certain \code{.R} files have special significance in testthat:
-\itemize{
-\item Test files start with \code{test} and are executed in alphabetical order.
-\item Setup files start with \code{setup} and are executed before tests. If
-clean up is needed after all tests have been run, you can use
-\code{withr::defer(clean_up(), teardown_env())}. See \code{vignette("test-fixtures")}
-for more details.
-\item Helper files start with \code{helper} and are executed before tests are
-run and, unlike setup files, are also loaded by \code{devtools::load_all()}.
-Helper files can be necessary for side-effect-y code that you need to run
-when developing the package interactively. It's certainly possible to
-define custom test utilities in a helper file, but they can usually be
-defined below \verb{R/}, just like any other internal function.
+See \code{vignette("special-files")} to learn more about the conventions for test,
+helper, and setup files that testthat uses, and what you might use each for.
 }
-
-There is another type of special file that we no longer recommend using:
-\itemize{
-\item Teardown files start with \code{teardown} and are executed after the tests
-are run. Now we recommend interleaving setup and cleanup code in \verb{setup-}
-files, making it easier to check that you automatically clean up every
-mess that you make.
-}
-
-All other files are ignored by testthat.
-}
-
 \section{Environments}{
 
 Each test is run in a clean environment to keep tests as isolated as

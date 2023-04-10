@@ -1,35 +1,13 @@
 #' Run all tests in a directory
 #'
+#' @description
 #' This function is the low-level workhorse that powers [test_local()] and
 #' [test_package()]. Generally, you should not call this function directly.
 #' In particular, you are responsible for ensuring that the functions to test
 #' are available in the test `env` (e.g. via `load_package`).
 #'
-#' @section Special files:
-#' Certain `.R` files have special significance in testthat:
-#'
-#' * Test files start with `test` and are executed in alphabetical order.
-#'
-#' * Setup files start with `setup` and are executed before tests. If
-#'   clean up is needed after all tests have been run, you can use
-#'   `withr::defer(clean_up(), teardown_env())`. See `vignette("test-fixtures")`
-#'   for more details.
-#'
-#' * Helper files start with `helper` and are executed before tests are
-#'   run and, unlike setup files, are also loaded by `devtools::load_all()`.
-#'   Helper files can be necessary for side-effect-y code that you need to run
-#'   when developing the package interactively. It's certainly possible to
-#'   define custom test utilities in a helper file, but they can usually be
-#'   defined below `R/`, just like any other internal function.
-#'
-#' There is another type of special file that we no longer recommend using:
-#'
-#' * Teardown files start with `teardown` and are executed after the tests
-#'   are run. Now we recommend interleaving setup and cleanup code in `setup-`
-#'   files, making it easier to check that you automatically clean up every
-#'   mess that you make.
-#'
-#' All other files are ignored by testthat.
+#' See `vignette("special-files")` to learn more about the conventions for test,
+#' helper, and setup files that testthat uses, and what you might use each for.
 #'
 #' @section Environments:
 #' Each test is run in a clean environment to keep tests as isolated as
@@ -45,7 +23,6 @@
 #' @param env Environment in which to execute the tests. Expert use only.
 #' @param ... Additional arguments passed to [grepl()] to control filtering.
 #' @param load_helpers Source helper files before running the tests?
-#'   See [source_test_helpers()] for more details.
 #' @param stop_on_failure If `TRUE`, throw an error if any tests fail.
 #' @param stop_on_warning If `TRUE`, throw an error if any tests generate
 #'   warnings.
@@ -126,10 +103,9 @@ test_dir <- function(path,
 #' Run all tests in a single file
 #'
 #' Helper, setup, and teardown files located in the same directory as the
-#' test will also be run.
+#' test will also be run. See `vignette("special-files")` for details.
 #'
 #' @inherit test_dir return params
-#' @inheritSection test_dir Special files
 #' @inheritSection test_dir Environments
 #' @param path Path to file.
 #' @param ... Additional parameters passed on to `test_dir()`

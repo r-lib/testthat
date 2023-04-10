@@ -4,6 +4,9 @@
   setup/teardown machinery, now reports the file name in the case of 
   errors (#1704).
 
+* New `vignette("special-files")` describes the various special files
+  that testthat uses (#1638).
+
 * `skip_on_bioc()` now uses the documented environment variable
   (`IS_BIOC_BUILD_MACHINE`) (#1712).
 
