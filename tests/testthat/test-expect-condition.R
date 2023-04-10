@@ -28,9 +28,17 @@ test_that("class = string matches class of error", {
   expect_error(expect_error(blah(), class = "blech"), class = "blah")
 })
 
+test_that("base_class must match when class is set", {
+  foo <- function() warn("foo", class = "bar")
+  expect_warning(expect_failure(expect_error(foo(), class = "bar")))
+  expect_success(expect_warning(foo(), class = "bar"))
+})
+
 test_that("check type of class and pattern", {
-  expect_error(expect_error(stop("!"), regexp = 1), "single string")
-  expect_error(expect_error(stop("!"), class = 1), "single string")
+  expect_snapshot(error = TRUE, {
+    expect_error(stop("!"), regexp = 1)
+    expect_error(stop("!"), class = 1)
+  })
 })
 
 test_that("... passed on to grepl", {

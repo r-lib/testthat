@@ -6,6 +6,19 @@
 
     "OK" did not throw the expected error.
 
+# check type of class and pattern
+
+    Code
+      expect_error(stop("!"), regexp = 1)
+    Condition
+      Error in `expect_error()`:
+      ! `pattern` must be a single string, `NA`, or `NULL`, not the number 1.
+    Code
+      expect_error(stop("!"), class = 1)
+    Condition
+      Error in `expect_error()`:
+      ! `class` must be a single string or `NULL`, not the number 1.
+
 # message method is called when expecting error
 
     `fb()` threw an unexpected error.

@@ -1,5 +1,9 @@
 # testthat (development version)
 
+* `expect_error()`, `expect_warning()`, and `expect_message()` now correctly
+  enforce that the condition is of the expected base class (e.g. error, 
+  warning, messsage) even when the `class` argument is used (#1168).
+
 * New `vignette("special-files")` describes the various special files
   that testthat uses (#1638).
 
