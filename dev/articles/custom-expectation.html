@@ -55,6 +55,7 @@
     <a class="dropdown-item" href="../articles/parallel.html">Running tests in parallel</a>
     <a class="dropdown-item" href="../articles/skipping.html">Skipping tests</a>
     <a class="dropdown-item" href="../articles/snapshotting.html">Snapshot tests</a>
+    <a class="dropdown-item" href="../articles/special-files.html">Special files</a>
     <a class="dropdown-item" href="../articles/test-fixtures.html">Test fixtures</a>
     <a class="dropdown-item" href="../articles/third-edition.html">testthat 3e</a>
   </div>
@@ -110,12 +111,11 @@
     
 <p>This vignette shows you how to create custom expectations that work
 identically to the built-in <code>expect_</code> functions. Since these
-functions will need to be loaded when your package is loaded for
-testing, it is recommended that <code>expect_</code> functions be
-defined in <code>test-helpers.R</code> in your packages <code>R/</code>
-directory.</p>
+functions will need to be loaded in order for your tests to work, we
+recommend putting them in an appropriately named helper file,
+i.e. <code>tests/testthat/helper-expectations.R</code>.</p>
 <div class="section level2">
-<h2 id="creating-an-expectation">Creating an expectation<a class="anchor" aria-label="anchor" href="#creating-an-expectation"></a>
+<h2 id="expectation-basics">Expectation basics<a class="anchor" aria-label="anchor" href="#expectation-basics"></a>
 </h2>
 <p>There are three main parts to writing an expectation, as illustrated
 by <code><a href="../reference/expect_length.html">expect_length()</a></code>:</p>
@@ -134,10 +134,9 @@ by <code><a href="../reference/expect_length.html">expect_length()</a></code>:</
 <span>  <span class="co"># 3. Invisibly return the value</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/invisible.html" class="external-link">invisible</a></span><span class="op">(</span><span class="va">act</span><span class="op">$</span><span class="va">val</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div>
-</div>
-<div class="section level2">
-<h2 id="quasi-labelling">Quasi-labelling<a class="anchor" aria-label="anchor" href="#quasi-labelling"></a>
-</h2>
+<div class="section level3">
+<h3 id="quasi-labelling">Quasi-labelling<a class="anchor" aria-label="anchor" href="#quasi-labelling"></a>
+</h3>
 <p>The first step in any expectation is to capture the actual object,
 and generate a label for it to use if a failure occur. All testthat
 expectations support quasiquotation so that you can unquote variables.
@@ -148,6 +147,7 @@ function is called <code>object</code>, and you capture it’s value
 (<code>val</code>) and label (<code>lab</code>) with
 <code>act &lt;- quasi_label(enquo(object))</code>, where
 <code>act</code> is short for actual.</p>
+</div>
 <div class="section level3">
 <h3 id="verify-the-expectation">Verify the expectation<a class="anchor" aria-label="anchor" href="#verify-the-expectation"></a>
 </h3>
@@ -203,20 +203,6 @@ this:</p>
 <span>  <span class="va">message</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sprintf.html" class="external-link">sprintf</a></span><span class="op">(</span><span class="st">"%s has length %i, not length %i."</span>, <span class="va">act</span><span class="op">$</span><span class="va">lab</span>, <span class="va">act</span><span class="op">$</span><span class="va">n</span>, <span class="va">n</span><span class="op">)</span></span>
 <span>  <span class="fu"><a href="../reference/fail.html">fail</a></span><span class="op">(</span><span class="va">message</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div>
-</div>
-<div class="section level2">
-<h2 id="testing-your-expectations">Testing your expectations<a class="anchor" aria-label="anchor" href="#testing-your-expectations"></a>
-</h2>
-<p>Use the expectations <code><a href="../reference/expect_success.html">expect_success()</a></code> and
-<code><a href="../reference/expect_success.html">expect_failure()</a></code> to test your expectation.</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/test_that.html">test_that</a></span><span class="op">(</span><span class="st">"length computed correctly"</span>, <span class="op">{</span></span>
-<span>  <span class="fu"><a href="../reference/expect_success.html">expect_success</a></span><span class="op">(</span><span class="fu"><a href="../reference/expect_length.html">expect_length</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span></span>
-<span>  <span class="fu"><a href="../reference/expect_success.html">expect_failure</a></span><span class="op">(</span><span class="fu"><a href="../reference/expect_length.html">expect_length</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span>, <span class="st">"has length 1, not length 2."</span><span class="op">)</span></span>
-<span>  <span class="fu"><a href="../reference/expect_success.html">expect_success</a></span><span class="op">(</span><span class="fu"><a href="../reference/expect_length.html">expect_length</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, <span class="fl">10</span><span class="op">)</span><span class="op">)</span></span>
-<span>  <span class="fu"><a href="../reference/expect_success.html">expect_success</a></span><span class="op">(</span><span class="fu"><a href="../reference/expect_length.html">expect_length</a></span><span class="op">(</span><span class="va">letters</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">]</span>, <span class="fl">5</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="op">}</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #00BB00;">Test passed</span> 🥇</span></span></code></pre></div>
 </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside>
