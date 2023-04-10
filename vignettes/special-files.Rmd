@@ -25,10 +25,11 @@ This vignette describes the various special files that testthat works with: test
 
 These are the bread and butter of testthat.
 Test files live in `tests/testthat`, start with either `test-` or `test_`, and end with `.r` or `.R`.
-We recommend organising your test files so that there's a one-to-one correspondence between the files in `R/` and the files in `tests/testthat/` so that (e.g.) `R/file-one.R` has a matching `tests/testthat/test-file-one.R`.
-This correspondence is maintained by functions like `usethis::use_r()` and `usethis::use_test()` and is respected by functions like `devtools::test_active_file()` and `devtools::test_coverage_active_file()`.
+We recommend organising your test files so that there's a one-to-one correspondence between the files in `R/` and the files in `tests/testthat/` so that (e.g.) `R/myfile.R` has a matching `tests/testthat/test-myfile.R`.
+This correspondence is maintained by functions like `usethis::use_r()` and `usethis::use_test()` and is taken advantage of by functions like `devtools::test_active_file()` and `devtools::test_coverage_active_file()`.
 
 Test files are executed in alphabetical order, but you should strive to avoid dependencies between test files.
+In principle, you should be able to be run your test files in any order or even at the same time.
 
 ## Helper files
 
@@ -40,18 +41,17 @@ Helper files are a useful place for functions that you've extracted from repeate
 ## Setup files
 
 Setup files live in `tests/testthat`, start with `setup`, and end with `.r` or `.R`.
-Typically there is only one setup function which by convention is placed in `tests/testthat/setup.R`.
-Set up files are sourced by `test_check()` and friends (so that they're available no matter how your tests are executed), but they are *not* sourced by `devtools::load_all()`.
+Typically there is only one setup file which, by convention, is `tests/testthat/setup.R`.
+Setup files are sourced by `test_check()` and friends (so that they're available no matter how your tests are executed), but they are *not* sourced by `devtools::load_all()`.
 
 Setup files are good place to put truly global test setup that would be impractical to build into every single test and that might be tailored for test execution in non-interactive or remote environments.
 Examples:
 
 -   Turning off behaviour aimed at an interactive user, such as messaging or writing to the clipboard.
--   Loading a credential for auth.
 -   Setting up a cache folder.
 
 If any of your setup should be reversed after test execution (i.e. it needs to be torn down), we recommend maintaining that teardown code alongside the setup code, in `setup.R`, because this makes it easier to ensure they stay in sync.
-The artificial environment `teardown_env()` exists as a magical handle to use in `withr::defer()` and `withr::local_*()` / `withr::with_*()`.
+The artificial environment `teardown_env()` exists as a magical handle to use in `withr::defer()` and `withr::local_*()`.
 A legacy approach (which still works, but is no longer recommended) is to put teardown code in `tests/testthat/teardown.R`.
 
 Here's a `setup.R` example from the reprex package, where we turn off clipboard and HTML preview functionality during testing:
