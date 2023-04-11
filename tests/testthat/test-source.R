@@ -39,3 +39,9 @@ test_that("source_file always uses UTF-8 encoding", {
   run_test("German_Germany.1252")
   run_test(Sys.getlocale("LC_CTYPE"))
 })
+
+test_that("source_file wraps error", {
+  expect_snapshot(error = TRUE, {
+    source_file(test_path("reporters/error-setup.R"), wrap = FALSE)
+  })
+})

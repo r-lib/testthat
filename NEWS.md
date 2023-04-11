@@ -4,6 +4,10 @@
   enforce that the condition is of the expected base class (e.g. error, 
   warning, messsage) even when the `class` argument is used (#1168).
 
+* `source_file()`, which is used by various parts of the helper and 
+  setup/teardown machinery, now reports the file name in the case of 
+  errors (#1704).
+
 * New `vignette("special-files")` describes the various special files
   that testthat uses (#1638).
 
