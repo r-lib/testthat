@@ -1,5 +1,7 @@
 # testthat (development version)
 
+* `expect_snapshot()` differences no longer use quotes.
+
 * `source_file()`, which is used by various parts of the helper and 
   setup/teardown machinery, now reports the file name in the case of 
   errors (#1704).
