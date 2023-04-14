@@ -403,9 +403,9 @@ human readability.</p>
 <p><code><a href="../reference/expect_snapshot.html">expect_snapshot()</a></code>,
 <code><a href="../reference/expect_snapshot_output.html">expect_snapshot_output()</a></code>,
 <code><a href="../reference/expect_snapshot_output.html">expect_snapshot_error()</a></code>, and
-<code><a href="../reference/expect_snapshot_value.html">expect_snapshot_value()</a></code> all store their snapshots in a
-single file per test. But that doesn’t work for all file types — for
-example, what happens if you want to snapshot an image?
+<code><a href="../reference/expect_snapshot_value.html">expect_snapshot_value()</a></code> use one snapshot file per test
+file. But that doesn’t work for all file types — for example, what
+happens if you want to snapshot an image?
 <code><a href="../reference/expect_snapshot_file.html">expect_snapshot_file()</a></code> provides an alternative workflow
 that generates one snapshot per expectation, rather than one file per
 test. Assuming you’re in <code>test-burger.R</code> then the snapshot
