@@ -4,21 +4,21 @@
   enforce that the condition is of the expected base class (e.g. error, 
   warning, messsage) even when the `class` argument is used (#1168).
 
-* `source_file()`, which is used by various parts of the helper and 
-  setup/teardown machinery, now reports the file name in the case of 
-  errors (#1704).
-
-* New `vignette("special-files")` describes the various special files
-  that testthat uses (#1638).
+* `it()` now calls `local_test_context()` so that it behaves more
+  similarly to `test_that()` (#1731), and is now exported so that you
+  can more easily run BDD tests interactively (#1587)
 
 * `skip_on_bioc()` now uses the documented environment variable
   (`IS_BIOC_BUILD_MACHINE`) (#1712).
 
+* `source_file()`, which is used by various parts of the helper and 
+  setup/teardown machinery, now reports the file name in the case of 
+  errors (#1704).
+
 * `test_path()` now works when called within helper files (#1562).
 
-* `it()` now calls `local_test_context()` so that it behaves more
-  similarly to `test_that()` (#1731), and is now exported so that you
-  can more easily run BDD tests interactively (#1587)
+* New `vignette("special-files")` describes the various special files
+  that testthat uses (#1638).
 
 * `with_mocked_bindings()` and `local_mocked_bindings()` can now bind in the
   imports namespace too. This changes makes them very close in capability
