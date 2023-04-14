@@ -228,7 +228,7 @@ test_that("can snapshot a simple list", {
 
 ## Whole file snapshotting
 
-`expect_snapshot()`, `expect_snapshot_output()`, `expect_snapshot_error()`, and `expect_snapshot_value()` all store their snapshots in a single file per test.
+`expect_snapshot()`, `expect_snapshot_output()`, `expect_snapshot_error()`, and `expect_snapshot_value()` use one snapshot file per test file.
 But that doesn't work for all file types --- for example, what happens if you want to snapshot an image?
 `expect_snapshot_file()` provides an alternative workflow that generates one snapshot per expectation, rather than one file per test.
 Assuming you're in `test-burger.R` then the snapshot created by `expect_snapshot_file(code_that_returns_path_to_file(), "toppings.png")` would be saved in `tests/testthat/_snaps/burger/toppings.png`.
