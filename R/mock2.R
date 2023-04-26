@@ -30,15 +30,40 @@ local_mocked_bindings <- function(..., .package = NULL, .env = caller_env()) {
   .package <- .package %||% dev_package()
   ns_env <- ns_env(.package)
 
-  # Rebind, first looking in package namespace, then imports, then the base
+  # Rebind, first looking in namespace, then imports, then the base
   # namespace, then the global environment
   envs <- c(list(ns_env), env_parents(ns_env))
   bindings_found <- rep_named(names(bindings), FALSE)
   for (env in envs) {
     this_bindings <- env_has(env, names(bindings)) & !bindings_found
 
-    local_bindings_unlock(!!!bindings[this_bindings], .env = env, .frame = .env)
+    local_bindings_unlock(
+      !!!bindings[this_bindings],
+      .env = env,
+      .frame = .env
+    )
     bindings_found <- bindings_found | this_bindings
+  }
+
+  # If needed, also mock in the package environment so we can call directly
+  if (is_attached(paste0("package:", .package))) {
+    pkg_env <- pkg_env(.package)
+    pkg_bindings <- env_has(pkg_env, names(bindings))
+    local_bindings_unlock(
+      !!!bindings[pkg_bindings],
+      .env = pkg_env,
+      .frame = .env
+    )
+  }
+  # And in the current testing environment
+  test_env <- testthat_env$current_test_env
+  if (!is.null(test_env)) {
+    test_bindings <- env_has(test_env, names(bindings))
+    local_bindings_unlock(
+      !!!bindings[test_bindings],
+      .env = test_env,
+      .frame = .env
+    )
   }
 
   if (any(!bindings_found)) {
@@ -133,4 +158,16 @@ test_mock_method <- function(x) {
 #' @export
 test_mock_method.integer <- function(x) {
   "y"
+}
+
+
+show_bindings <- function(name, env = caller_env()) {
+  envs <- env_parents(env)
+  has_binding <- Filter(function(env) env_has(env, name), envs)
+  lapply(has_binding, env_desc)
+  invisible()
+}
+
+env_desc <- function(env) {
+  cat(obj_address(env), ": ", env_name(env), "\n", sep = "")
 }

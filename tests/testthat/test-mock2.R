@@ -49,6 +49,11 @@ test_that("with_mocked_bindings() validates its inputs", {
 
 # -------------------------------------------------------------------------
 
+test_that("can mock directly", {
+  local_mocked_bindings(test_mock_package = function(...) "x")
+  expect_equal(test_mock_package(), "x")
+})
+
 test_that("can mock bindings from imports", {
   local_mocked_bindings(readLines = function(...) "x")
   expect_equal(test_mock_imports(), "x")
@@ -65,8 +70,6 @@ test_that("can mock binding in another package", {
 })
 
 test_that("can mock S3 methods", {
-  skip("currently fails")
-
   local({
     local_mocked_bindings(test_mock_method.integer = function(...) "x")
     expect_equal(test_mock_method(1L), "x")
@@ -77,3 +80,4 @@ test_that("can mock S3 methods", {
 test_that("can't mock bindings that don't exist", {
   expect_snapshot(local_mocked_bindings(f = function() "x"), error = TRUE)
 })
+

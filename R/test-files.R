@@ -190,6 +190,9 @@ test_files_serial <- function(test_dir,
                        load_package = c("none", "installed", "source")) {
 
   env <- test_files_setup_env(test_package, test_dir, load_package, env)
+  # record testing env for mocks
+  local_bindings(current_test_env = env, .env = testthat_env)
+
   test_files_setup_state(test_dir, test_package, load_helpers, env)
   reporters <- test_files_reporter(reporter)
 
