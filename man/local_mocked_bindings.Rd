@@ -36,3 +36,58 @@ implementation changes.
 
 These functions do not currently affect registered S3 methods.
 }
+\section{Use}{
+There are three places that the function you are trying to mock might
+come from: inside your package, imported from an external package via
+the \code{NAMESPACE}, called from an external package with \code{::}. The first
+two cases you can mock the same way. For example, take this code:
+
+\if{html}{\out{<div class="sourceCode R">}}\preformatted{function_to_mocked <- function() \{
+  another_function()
+\}
+}\if{html}{\out{</div>}}
+
+It doesn't matter whether you wrote \code{another_function()} or you've
+imported it from another package with \verb{@import} or \verb{@importFrom},
+you mock it the same way:
+
+\if{html}{\out{<div class="sourceCode R">}}\preformatted{local_mocked_bindings(
+  another_function = function(...) "new_value"
+)
+}\if{html}{\out{</div>}}
+
+It's hard to mock functions in other packages that you call with \code{::}.
+For example, take this minor variation:
+
+\if{html}{\out{<div class="sourceCode R">}}\preformatted{function_to_mocked <- function() \{
+  anotherpackage::another_function()
+\}
+}\if{html}{\out{</div>}}
+
+To mock here, you'll need to modify \code{another_function()} inside the
+\code{anotherpackage} package. You \emph{can} do this by supplying the \code{.package}
+argument:
+
+\if{html}{\out{<div class="sourceCode R">}}\preformatted{local_mocked_bindings(
+  another_function = function(...) "new_value",
+  .package = "anotherpackage"
+)
+}\if{html}{\out{</div>}}
+
+But it's not great to modify a namespace that you don't own. Instead
+you can either import the function into your package, or you can make
+a wrapper funtion that you can mock:
+
+\if{html}{\out{<div class="sourceCode R">}}\preformatted{function_to_mocked <- function() \{
+  my_wrapper()
+\}
+my_wrapper <- function(...) \{
+  anotherpackage::another_function()
+\}
+
+local_mocked_bindings(
+  my_wrapper = function(...) "new_value"
+)
+}\if{html}{\out{</div>}}
+}
+

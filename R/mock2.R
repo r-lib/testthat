@@ -14,6 +14,66 @@
 #'
 #' These functions do not currently affect registered S3 methods.
 #'
+#' # Use
+#'
+#' There are three places that the function you are trying to mock might
+#' come from: inside your package, imported from an external package via
+#' the `NAMESPACE`, called from an external package with `::`. The first
+#' two cases you can mock the same way. For example, take this code:
+#'
+#' ```R
+#' function_to_mocked <- function() {
+#'   another_function()
+#' }
+#' ```
+#'
+#' It doesn't matter whether you wrote `another_function()` or you've
+#' imported it from another package with `@import` or `@importFrom`,
+#' you mock it the same way:
+#'
+#' ```R
+#' local_mocked_bindings(
+#'   another_function = function(...) "new_value"
+#' )
+#' ```
+#'
+#' It's hard to mock functions in other packages that you call with `::`.
+#' For example, take this minor variation:
+#'
+#' ```R
+#' function_to_mocked <- function() {
+#'   anotherpackage::another_function()
+#' }
+#' ```
+#'
+#' To mock here, you'll need to modify `another_function()` inside the
+#' `anotherpackage` package. You _can_ do this by supplying the `.package`
+#' argument:
+#'
+#' ```R
+#' local_mocked_bindings(
+#'   another_function = function(...) "new_value",
+#'   .package = "anotherpackage"
+#' )
+#' ```
+#'
+#' But it's not great to modify a namespace that you don't own. Instead
+#' you can either import the function into your package, or you can make
+#' a wrapper funtion that you can mock:
+#'
+#' ```R
+#' function_to_mocked <- function() {
+#'   my_wrapper()
+#' }
+#' my_wrapper <- function(...) {
+#'   anotherpackage::another_function()
+#' }
+#'
+#' local_mocked_bindings(
+#'   my_wrapper = function(...) "new_value"
+#' )
+#' ```
+#'
 #' @export
 #' @param ... Name-value pairs providing functions to mock.
 #' @param code Code to execute with specified bindings.
