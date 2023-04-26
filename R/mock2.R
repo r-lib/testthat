@@ -4,13 +4,12 @@
 #' `r lifecycle::badge("experimental")`
 #'
 #' These functions represent a second attempt at bringing mocking to testthat,
-#' incorporating what we've learned from the mockr, mockery, and mockthat package.
+#' incorporating what we've learned from the mockr, mockery, and mockthat
+#' packages.
 #'
 #' `with_mocked_bindings()` and `local_mocked_bindings()` work by temporarily
 #' changing variable bindings in the namespace of namespace `.package`.
-#' Generally, it's only safe to mock packages that you own. If you mock other
-#' packages, we recommend using `skip_on_cran()` to avoid CRAN failures if the
-#' implementation changes.
+#' Generally, it's only safe to mock packages that you own.
 #'
 #' These functions do not currently affect registered S3 methods.
 #'
@@ -57,9 +56,12 @@
 #' )
 #' ```
 #'
-#' But it's not great to modify a namespace that you don't own. Instead
-#' you can either import the function into your package, or you can make
-#' a wrapper funtion that you can mock:
+#' But it's not great to modify a namespace that you don't own. And if you
+#' do use this technique, we recommend using `skip_on_cran()` to avoid CRAN
+#' failures if the implementation changes.
+#'
+#' Instead you can either import the function into your package, or you can
+#' make a wrapper function that you can mock:
 #'
 #' ```R
 #' function_to_mocked <- function() {

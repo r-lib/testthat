@@ -26,13 +26,12 @@ one package under active development (i.e. loaded with
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
 
 These functions represent a second attempt at bringing mocking to testthat,
-incorporating what we've learned from the mockr, mockery, and mockthat package.
+incorporating what we've learned from the mockr, mockery, and mockthat
+packages.
 
 \code{with_mocked_bindings()} and \code{local_mocked_bindings()} work by temporarily
 changing variable bindings in the namespace of namespace \code{.package}.
-Generally, it's only safe to mock packages that you own. If you mock other
-packages, we recommend using \code{skip_on_cran()} to avoid CRAN failures if the
-implementation changes.
+Generally, it's only safe to mock packages that you own.
 
 These functions do not currently affect registered S3 methods.
 }
@@ -74,9 +73,12 @@ argument:
 )
 }\if{html}{\out{</div>}}
 
-But it's not great to modify a namespace that you don't own. Instead
-you can either import the function into your package, or you can make
-a wrapper funtion that you can mock:
+But it's not great to modify a namespace that you don't own. And if you
+do use this technique, we recommend using \code{skip_on_cran()} to avoid CRAN
+failures if the implementation changes.
+
+Instead you can either import the function into your package, or you can
+make a wrapper function that you can mock:
 
 \if{html}{\out{<div class="sourceCode R">}}\preformatted{function_to_mocked <- function() \{
   my_wrapper()
