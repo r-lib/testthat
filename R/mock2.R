@@ -145,11 +145,11 @@ test_mock_base <- function() {
 }
 
 test_mock_imports <- function() {
-  as.character(sym("x"))
+  as.character(sym("y"))
 }
 
 test_mock_namespaced <- function() {
-  as.character(rlang::sym("x"))
+  as.character(rlang::sym("y"))
 }
 
 test_mock_method <- function(x) {

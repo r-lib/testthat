@@ -55,7 +55,7 @@ test_that("can mock directly", {
 })
 
 test_that("can mock bindings from imports", {
-  local_mocked_bindings(readLines = function(...) "x")
+  local_mocked_bindings(sym = function(...) "x")
   expect_equal(test_mock_imports(), "x")
 })
 
