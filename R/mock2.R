@@ -9,7 +9,7 @@
 #'
 #' `with_mocked_bindings()` and `local_mocked_bindings()` work by temporarily
 #' changing variable bindings in the namespace of namespace `.package`.
-#' Generally, it's only safe to mock packages that you own.
+#' Generally, it's only safe to mock functions that you own, i.e. functions in the package you are testing.
 #'
 #' These functions do not currently affect registered S3 methods.
 #'
@@ -21,13 +21,13 @@
 #' two cases you can mock the same way. For example, take this code:
 #'
 #' ```R
-#' function_to_mocked <- function() {
+#' some_function <- function() {
 #'   another_function()
 #' }
 #' ```
 #'
-#' It doesn't matter whether you wrote `another_function()` or you've
-#' imported it from another package with `@import` or `@importFrom`,
+#' It doesn't matter whether `another_function()` is defined by your package or you've
+#' imported it from a dependency with `@import` or `@importFrom`,
 #' you mock it the same way:
 #'
 #' ```R
@@ -36,11 +36,11 @@
 #' )
 #' ```
 #'
-#' It's hard to mock functions in other packages that you call with `::`.
+#' It's trickier to mock functions in other packages that you call with `::`.
 #' For example, take this minor variation:
 #'
 #' ```R
-#' function_to_mocked <- function() {
+#' some_function <- function() {
 #'   anotherpackage::another_function()
 #' }
 #' ```
@@ -56,7 +56,7 @@
 #' )
 #' ```
 #'
-#' But it's not great to modify a namespace that you don't own. And if you
+#' But it's a bit fraught to modify a namespace that you don't own. Therefore, if you
 #' do use this technique, we recommend using `skip_on_cran()` to avoid CRAN
 #' failures if the implementation changes.
 #'
@@ -64,11 +64,11 @@
 #' make a wrapper function that you can mock:
 #'
 #' ```R
-#' function_to_mocked <- function() {
+#' some_function <- function() {
 #'   my_wrapper()
 #' }
 #' my_wrapper <- function(...) {
-#'   anotherpackage::another_function()
+#'   anotherpackage::another_function(...)
 #' }
 #'
 #' local_mocked_bindings(
