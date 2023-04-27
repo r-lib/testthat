@@ -3,17 +3,96 @@
 #' @description
 #' `r lifecycle::badge("experimental")`
 #'
+#' `with_mocked_bindings()` and `local_mocked_bindings()` provide tools for
+#' "mocking", temporarily redefining a function so that it behaves differently
+#' during tests. This is helpful for testing functions that depend on external
+#' state (i.e. reading a value from a file or a website, or pretending a package
+#' is or isn't installed).
+#'
 #' These functions represent a second attempt at bringing mocking to testthat,
-#' incorporating what we've learned from the mockr, mockery, and mockthat package.
+#' incorporating what we've learned from the mockr, mockery, and mockthat
+#' packages.
 #'
-#' `with_mocked_bindings()` and `local_mocked_bindings()` work by temporarily
-#' changing variable bindings in the namespace of namespace `.package`.
-#' Generally, it's only safe to mock packages that you own. If you mock other
-#' packages, we recommend using `skip_on_cran()` to avoid CRAN failures if the
-#' implementation changes.
+#' # Use
 #'
-#' These functions do not currently affect registered S3 methods.
+#' There are four places that the function you are trying to mock might
+#' come from:
 #'
+#' * Internal to your package.
+#' * Imported from an external package via the `NAMESPACE`.
+#' * The base environment.
+#' * Called from an external package with `::`.
+#'
+#' They are described in turn below.
+#'
+#' ## Internal & imported functions
+#'
+#' You mock internal and imported functions the same way. For example, take
+#' this code:
+#'
+#' ```R
+#' some_function <- function() {
+#'   another_function()
+#' }
+#' ```
+#'
+#' It doesn't matter whether `another_function()` is defined by your package
+#' or you've imported it from a dependency with `@import` or `@importFrom`,
+#' you mock it the same way:
+#'
+#' ```R
+#' local_mocked_bindings(
+#'   another_function = function(...) "new_value"
+#' )
+#' ```
+#'
+#' ## Base functions
+#'
+#' Note that it's not possible to mock functions in the base namespace
+#' (i.e. functions that you can use without explicitly importing them)
+#' since currently we don't know of a way to to mock them without potentially
+#' affecting all running code. If you need to mock a base function, you'll
+#' need to create a wrapper, as described below.
+#'
+#' ## Namespaced calls
+#'
+#' It's trickier to mock functions in other packages that you call with `::`.
+#' For example, take this minor variation:
+#'
+#' ```R
+#' some_function <- function() {
+#'   anotherpackage::another_function()
+#' }
+#' ```
+#'
+#' To mock here, you'll need to modify `another_function()` inside the
+#' `anotherpackage` package. You _can_ do this by supplying the `.package`
+#' argument:
+#'
+#' ```R
+#' local_mocked_bindings(
+#'   another_function = function(...) "new_value",
+#'   .package = "anotherpackage"
+#' )
+#' ```
+#'
+#' But it's not a great idea to mock a namespace that you don't own because
+#' it affects all code in that package, not just code in your package. Instead,
+#' it's safer to either import the function into your package, or make a wrapper
+#' that you can mock:
+#'
+#' ```R
+#' some_function <- function() {
+#'   my_wrapper()
+#' }
+#' my_wrapper <- function(...) {
+#'   anotherpackage::another_function(...)
+#' }
+#'
+#' local_mocked_bindings(
+#'   my_wrapper = function(...) "new_value"
+#' )
+#' ```
 #' @export
 #' @param ... Name-value pairs providing functions to mock.
 #' @param code Code to execute with specified bindings.
@@ -30,15 +109,26 @@ local_mocked_bindings <- function(..., .package = NULL, .env = caller_env()) {
   .package <- .package %||% dev_package()
   ns_env <- ns_env(.package)
 
-  # Rebind, first looking in package namespace, then imports, then the base
-  # namespace, then the global environment
-  envs <- c(list(ns_env), env_parents(ns_env))
+  # Rebind in namespace, imports, and the global environment
+  envs <- list(ns_env, env_parent(ns_env), globalenv())
   bindings_found <- rep_named(names(bindings), FALSE)
   for (env in envs) {
-    this_bindings <- env_has(env, names(bindings)) & !bindings_found
+    local_bindings_rebind(!!!bindings, .env = env, .frame = .env)
+    bindings_found <- bindings_found | env_has(env, names(bindings))
+  }
 
-    local_bindings_unlock(!!!bindings[this_bindings], .env = env, .frame = .env)
-    bindings_found <- bindings_found | this_bindings
+  # And mock S3 methods
+  methods_env <- ns_env[[".__S3MethodsTable__."]]
+  local_bindings_rebind(!!!bindings, .env = methods_env, .frame = .env)
+
+  # If needed, also mock in the package environment so we can call directly
+  if (is_attached(paste0("package:", .package))) {
+    local_bindings_rebind(!!!bindings, .env = pkg_env(.package), .frame = .env)
+  }
+  # And in the current testing environment
+  test_env <- testthat_env$current_test_env
+  if (!is.null(test_env)) {
+    local_bindings_rebind(!!!bindings, .env = test_env, .frame = .env)
   }
 
   if (any(!bindings_found)) {
@@ -58,10 +148,13 @@ with_mocked_bindings <- function(code, ..., .package = NULL) {
 
 # helpers -----------------------------------------------------------------
 
-# Wrapper around local_bindings() that automatically unlocks and takes
-# list of bindings.
-local_bindings_unlock <- function(..., .env = .frame, .frame = caller_env()) {
+# Wrapper around local_bindings() that only rebinds existing values,
+# automatically unlocking as needed. We can only rebind because most of
+# these environments are locked, meaning we can't add new bindings.
+local_bindings_rebind <- function(..., .env = .frame, .frame = caller_env()) {
   bindings <- list2(...)
+  bindings <- bindings[env_has(.env, names(bindings))]
+
   if (length(bindings) == 0) {
     return()
   }
@@ -110,21 +203,21 @@ check_bindings <- function(x, error_call = caller_env()) {
 
 # For testing -------------------------------------------------------------
 
-test_mock_package <- function() {
-  test_mock_package2()
+test_mock_direct <- function() {
+  "y"
 }
-test_mock_package2 <- function() "y"
 
-test_mock_base <- function() {
-  identity("y")
+test_mock_internal <- function() {
+  test_mock_internal2()
 }
+test_mock_internal2 <- function() "y"
 
 test_mock_imports <- function() {
-  as.character(sym("x"))
+  as.character(sym("y"))
 }
 
 test_mock_namespaced <- function() {
-  as.character(rlang::sym("x"))
+  as.character(rlang::sym("y"))
 }
 
 test_mock_method <- function(x) {
@@ -133,4 +226,16 @@ test_mock_method <- function(x) {
 #' @export
 test_mock_method.integer <- function(x) {
   "y"
+}
+
+
+show_bindings <- function(name, env = caller_env()) {
+  envs <- env_parents(env)
+  has_binding <- Filter(function(env) env_has(env, name), envs)
+  lapply(has_binding, env_desc)
+  invisible()
+}
+
+env_desc <- function(env) {
+  cat(obj_address(env), ": ", env_name(env), "\n", sep = "")
 }

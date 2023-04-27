@@ -20,11 +20,11 @@
 * New `vignette("special-files")` describes the various special files
   that testthat uses (#1638).
 
-* `with_mocked_bindings()` and `local_mocked_bindings()` can now bind in the
-  imports namespace too. This changes makes them very close in capability
-  for `with_mock()` and `local_mock()` so those functions now recommend
-  `with_mocked_bindings()` and `local_mocked_bindings()` rather than functions
-  from the mockr/mockery packages.
+* `with_mocked_bindings()` and `local_mocked_bindings()` now also bind in the
+  imports namespace and can mock S3 methods. These changes make them good 
+  substitutes for the deprecated functions `with_mock()` and `local_mock()`, so 
+  those older functions now recommend switching to the newer equivalents 
+  instead of using the mockr or mockery packages.
 
 # testthat 3.1.7
 
