@@ -98,6 +98,10 @@ local_mocked_bindings <- function(..., .package = NULL, .env = caller_env()) {
     bindings_found <- bindings_found | env_has(env, names(bindings))
   }
 
+  # And mock S3 methods
+  methods_env <- ns_env[[".__S3MethodsTable__."]]
+  local_bindings_rebind(!!!bindings, .env = methods_env, .frame = .env)
+
   # If needed, also mock in the package environment so we can call directly
   if (is_attached(paste0("package:", .package))) {
     local_bindings_rebind(!!!bindings, .env = pkg_env(.package), .frame = .env)
