@@ -36,10 +36,14 @@ incorporating what we've learned from the mockr, mockery, and mockthat
 packages.
 }
 \section{Use}{
-There are three places that the function you are trying to mock might
+There are four places that the function you are trying to mock might
 come from: inside your package, imported from an external package via
-the \code{NAMESPACE}, called from an external package with \code{::}. The first
-two cases you can mock the same way. For example, take this code:
+the \code{NAMESPACE}, from the base environment, called from an external
+package with \code{::}.
+\subsection{Internal & imported functions}{
+
+You mock internal and imported functions the same way. For example, take
+this code:
 
 \if{html}{\out{<div class="sourceCode R">}}\preformatted{some_function <- function() \{
   another_function()
@@ -54,6 +58,18 @@ you mock it the same way:
   another_function = function(...) "new_value"
 )
 }\if{html}{\out{</div>}}
+}
+
+\subsection{Base functions}{
+
+Note that it's not possible to mock functions in the base namespace
+(i.e. functions that you can use without explicitly importing then)
+since currently we don't know of a way to to mock them without potentially
+affecting all running code. If you need to mock a base function, you'll
+need to create a wrapper, as described below.
+}
+
+\subsection{Namespaced calls}{
 
 It's trickier to mock functions in other packages that you call with \code{::}.
 For example, take this minor variation:
@@ -89,5 +105,6 @@ local_mocked_bindings(
   my_wrapper = function(...) "new_value"
 )
 }\if{html}{\out{</div>}}
+}
 }
 

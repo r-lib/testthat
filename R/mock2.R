@@ -15,10 +15,15 @@
 #'
 #' # Use
 #'
-#' There are three places that the function you are trying to mock might
+#' There are four places that the function you are trying to mock might
 #' come from: inside your package, imported from an external package via
-#' the `NAMESPACE`, called from an external package with `::`. The first
-#' two cases you can mock the same way. For example, take this code:
+#' the `NAMESPACE`, from the base environment, called from an external
+#' package with `::`.
+#'
+#' ## Internal & imported functions
+#'
+#' You mock internal and imported functions the same way. For example, take
+#' this code:
 #'
 #' ```R
 #' some_function <- function() {
@@ -35,6 +40,16 @@
 #'   another_function = function(...) "new_value"
 #' )
 #' ```
+#'
+#' ## Base functions
+#'
+#' Note that it's not possible to mock functions in the base namespace
+#' (i.e. functions that you can use without explicitly importing then)
+#' since currently we don't know of a way to to mock them without potentially
+#' affecting all running code. If you need to mock a base function, you'll
+#' need to create a wrapper, as described below.
+#'
+#' ## Namespaced calls
 #'
 #' It's trickier to mock functions in other packages that you call with `::`.
 #' For example, take this minor variation:
@@ -89,9 +104,8 @@ local_mocked_bindings <- function(..., .package = NULL, .env = caller_env()) {
   .package <- .package %||% dev_package()
   ns_env <- ns_env(.package)
 
-  # Rebind, first looking in namespace, then imports, then the base
-  # namespace, then the global environment
-  envs <- c(list(ns_env), env_parents(ns_env))
+  # Rebind in namespace, imports, and the global environment
+  envs <- list(ns_env, env_parent(ns_env), globalenv())
   bindings_found <- rep_named(names(bindings), FALSE)
   for (env in envs) {
     local_bindings_rebind(!!!bindings, .env = env, .frame = .env)

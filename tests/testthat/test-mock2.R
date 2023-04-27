@@ -17,14 +17,15 @@ test_that("local_mocked_bindings affects local bindings", {
 })
 
 test_that("unlocks and relocks binding if needed", {
-  expect_true(env_binding_are_locked(base_env(), "identity"))
+  ns_env <- ns_env("testthat")
+  expect_true(env_binding_are_locked(ns_env, "test_mock_package"))
 
   local({
-    local_mocked_bindings(identity = function(...) "x")
-    expect_false(env_binding_are_locked(base_env(), "identity"))
+    local_mocked_bindings(test_mock_package = function(...) "x")
+    expect_false(env_binding_are_locked(ns_env, "test_mock_package"))
   })
 
-  expect_true(env_binding_are_locked(base_env(), "identity"))
+  expect_true(env_binding_are_locked(ns_env, "test_mock_package"))
 })
 
 test_that("can make wrapper", {
@@ -59,12 +60,7 @@ test_that("can mock bindings from imports", {
   expect_equal(test_mock_imports(), "x")
 })
 
-test_that("can mock bindings from base", {
-  local_mocked_bindings(identity = function(...) "x")
-  expect_equal(test_mock_base(), "x")
-})
-
-test_that("can mock binding in another package", {
+test_that("can mock bindings in another package", {
   local_mocked_bindings(sym = function(...) "x", .package = "rlang")
   expect_equal(test_mock_namespaced(), "x")
 })
