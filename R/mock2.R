@@ -16,9 +16,14 @@
 #' # Use
 #'
 #' There are four places that the function you are trying to mock might
-#' come from: inside your package, imported from an external package via
-#' the `NAMESPACE`, from the base environment, called from an external
-#' package with `::`.
+#' come from:
+#'
+#' * Internal to your package.
+#' * Imported from an external package via the `NAMESPACE`.
+#' * The base environment.
+#' * Called from an external package with `::`.
+#'
+#' They are described in turn below.
 #'
 #' ## Internal & imported functions
 #'

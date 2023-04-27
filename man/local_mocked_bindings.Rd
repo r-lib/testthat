@@ -26,7 +26,7 @@ one package under active development (i.e. loaded with
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
 
 \code{with_mocked_bindings()} and \code{local_mocked_bindings()} provide tools for
-"mocking", temporarily redefining an function so that it behaves differently
+"mocking", temporarily redefining a function so that it behaves differently
 during tests. This is helpful for testing functions that depend on external
 state (i.e. reading a value from a file or a website, or pretending a package
 is or isn't installed).
@@ -37,9 +37,15 @@ packages.
 }
 \section{Use}{
 There are four places that the function you are trying to mock might
-come from: inside your package, imported from an external package via
-the \code{NAMESPACE}, from the base environment, called from an external
-package with \code{::}.
+come from:
+\itemize{
+\item Internal to your package.
+\item Imported from an external package via the \code{NAMESPACE}.
+\item The base environment.
+\item Called from an external package with \code{::}.
+}
+
+They are described in turn below.
 \subsection{Internal & imported functions}{
 
 You mock internal and imported functions the same way. For example, take
@@ -63,7 +69,7 @@ you mock it the same way:
 \subsection{Base functions}{
 
 Note that it's not possible to mock functions in the base namespace
-(i.e. functions that you can use without explicitly importing then)
+(i.e. functions that you can use without explicitly importing them)
 since currently we don't know of a way to to mock them without potentially
 affecting all running code. If you need to mock a base function, you'll
 need to create a wrapper, as described below.
@@ -91,7 +97,7 @@ argument:
 
 But it's not a great idea to mock a namespace that you don't own because
 it affects all code in that package, not just code in your package. Instead,
-we either importing the function into your package, or making a wrapper
+it's safer to either import the function into your package, or make a wrapper
 that you can mock:
 
 \if{html}{\out{<div class="sourceCode R">}}\preformatted{some_function <- function() \{
