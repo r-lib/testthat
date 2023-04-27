@@ -94,35 +94,18 @@ local_mocked_bindings <- function(..., .package = NULL, .env = caller_env()) {
   envs <- c(list(ns_env), env_parents(ns_env))
   bindings_found <- rep_named(names(bindings), FALSE)
   for (env in envs) {
-    this_bindings <- env_has(env, names(bindings)) & !bindings_found
-
-    local_bindings_unlock(
-      !!!bindings[this_bindings],
-      .env = env,
-      .frame = .env
-    )
-    bindings_found <- bindings_found | this_bindings
+    local_bindings_rebind(!!!bindings, .env = env, .frame = .env)
+    bindings_found <- bindings_found | env_has(env, names(bindings))
   }
 
   # If needed, also mock in the package environment so we can call directly
   if (is_attached(paste0("package:", .package))) {
-    pkg_env <- pkg_env(.package)
-    pkg_bindings <- env_has(pkg_env, names(bindings))
-    local_bindings_unlock(
-      !!!bindings[pkg_bindings],
-      .env = pkg_env,
-      .frame = .env
-    )
+    local_bindings_rebind(!!!bindings, .env = pkg_env(.package), .frame = .env)
   }
   # And in the current testing environment
   test_env <- testthat_env$current_test_env
   if (!is.null(test_env)) {
-    test_bindings <- env_has(test_env, names(bindings))
-    local_bindings_unlock(
-      !!!bindings[test_bindings],
-      .env = test_env,
-      .frame = .env
-    )
+    local_bindings_rebind(!!!bindings, .env = test_env, .frame = .env)
   }
 
   if (any(!bindings_found)) {
@@ -142,10 +125,13 @@ with_mocked_bindings <- function(code, ..., .package = NULL) {
 
 # helpers -----------------------------------------------------------------
 
-# Wrapper around local_bindings() that automatically unlocks and takes
-# list of bindings.
-local_bindings_unlock <- function(..., .env = .frame, .frame = caller_env()) {
+# Wrapper around local_bindings() that only rebinds existing values,
+# automatically unlocking as needed. We can only rebind because most of
+# these environments are locked, meaning we can't add new bindings.
+local_bindings_rebind <- function(..., .env = .frame, .frame = caller_env()) {
   bindings <- list2(...)
+  bindings <- bindings[env_has(.env, names(bindings))]
+
   if (length(bindings) == 0) {
     return()
   }
