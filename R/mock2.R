@@ -198,14 +198,14 @@ check_bindings <- function(x, error_call = caller_env()) {
 
 # For testing -------------------------------------------------------------
 
-test_mock_package <- function() {
-  test_mock_package2()
+test_mock_direct <- function() {
+  "y"
 }
-test_mock_package2 <- function() "y"
 
-test_mock_base <- function() {
-  identity("y")
+test_mock_internal <- function() {
+  test_mock_internal2()
 }
+test_mock_internal2 <- function() "y"
 
 test_mock_imports <- function() {
   as.character(sym("y"))
