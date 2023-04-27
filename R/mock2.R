@@ -4,7 +4,7 @@
 #' `r lifecycle::badge("experimental")`
 #'
 #' `with_mocked_bindings()` and `local_mocked_bindings()` provide tools for
-#' "mocking", temporarily redefining an function so that it behaves differently
+#' "mocking", temporarily redefining a function so that it behaves differently
 #' during tests. This is helpful for testing functions that depend on external
 #' state (i.e. reading a value from a file or a website, or pretending a package
 #' is or isn't installed).
@@ -44,7 +44,7 @@
 #' ## Base functions
 #'
 #' Note that it's not possible to mock functions in the base namespace
-#' (i.e. functions that you can use without explicitly importing then)
+#' (i.e. functions that you can use without explicitly importing them)
 #' since currently we don't know of a way to to mock them without potentially
 #' affecting all running code. If you need to mock a base function, you'll
 #' need to create a wrapper, as described below.
@@ -73,7 +73,7 @@
 #'
 #' But it's not a great idea to mock a namespace that you don't own because
 #' it affects all code in that package, not just code in your package. Instead,
-#' we either importing the function into your package, or making a wrapper
+#' it's safer to either import the function into your package, or make a wrapper
 #' that you can mock:
 #'
 #' ```R
