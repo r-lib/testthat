@@ -25,15 +25,15 @@ one package under active development (i.e. loaded with
 \description{
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
 
+\code{with_mocked_bindings()} and \code{local_mocked_bindings()} provide tools for
+"mocking", temporarily redefining an function so that it behaves differently
+during tests. This is helpful for testing functions that depend on external
+state (i.e. reading a value from a file or a website, or pretending a package
+is or isn't installed).
+
 These functions represent a second attempt at bringing mocking to testthat,
 incorporating what we've learned from the mockr, mockery, and mockthat
 packages.
-
-\code{with_mocked_bindings()} and \code{local_mocked_bindings()} work by temporarily
-changing variable bindings in the namespace of namespace \code{.package}.
-Generally, it's only safe to mock packages that you own.
-
-These functions do not currently affect registered S3 methods.
 }
 \section{Use}{
 There are three places that the function you are trying to mock might
@@ -41,13 +41,13 @@ come from: inside your package, imported from an external package via
 the \code{NAMESPACE}, called from an external package with \code{::}. The first
 two cases you can mock the same way. For example, take this code:
 
-\if{html}{\out{<div class="sourceCode R">}}\preformatted{function_to_mocked <- function() \{
+\if{html}{\out{<div class="sourceCode R">}}\preformatted{some_function <- function() \{
   another_function()
 \}
 }\if{html}{\out{</div>}}
 
-It doesn't matter whether you wrote \code{another_function()} or you've
-imported it from another package with \verb{@import} or \verb{@importFrom},
+It doesn't matter whether \code{another_function()} is defined by your package
+or you've imported it from a dependency with \verb{@import} or \verb{@importFrom},
 you mock it the same way:
 
 \if{html}{\out{<div class="sourceCode R">}}\preformatted{local_mocked_bindings(
@@ -55,10 +55,10 @@ you mock it the same way:
 )
 }\if{html}{\out{</div>}}
 
-It's hard to mock functions in other packages that you call with \code{::}.
+It's trickier to mock functions in other packages that you call with \code{::}.
 For example, take this minor variation:
 
-\if{html}{\out{<div class="sourceCode R">}}\preformatted{function_to_mocked <- function() \{
+\if{html}{\out{<div class="sourceCode R">}}\preformatted{some_function <- function() \{
   anotherpackage::another_function()
 \}
 }\if{html}{\out{</div>}}
@@ -73,18 +73,16 @@ argument:
 )
 }\if{html}{\out{</div>}}
 
-But it's not great to modify a namespace that you don't own. And if you
-do use this technique, we recommend using \code{skip_on_cran()} to avoid CRAN
-failures if the implementation changes.
+But it's not a great idea to mock a namespace that you don't own because
+it affects all code in that package, not just code in your package. Instead,
+we either importing the function into your package, or making a wrapper
+that you can mock:
 
-Instead you can either import the function into your package, or you can
-make a wrapper function that you can mock:
-
-\if{html}{\out{<div class="sourceCode R">}}\preformatted{function_to_mocked <- function() \{
+\if{html}{\out{<div class="sourceCode R">}}\preformatted{some_function <- function() \{
   my_wrapper()
 \}
 my_wrapper <- function(...) \{
-  anotherpackage::another_function()
+  anotherpackage::another_function(...)
 \}
 
 local_mocked_bindings(

@@ -3,15 +3,15 @@
 #' @description
 #' `r lifecycle::badge("experimental")`
 #'
+#' `with_mocked_bindings()` and `local_mocked_bindings()` provide tools for
+#' "mocking", temporarily redefining an function so that it behaves differently
+#' during tests. This is helpful for testing functions that depend on external
+#' state (i.e. reading a value from a file or a website, or pretending a package
+#' is or isn't installed).
+#'
 #' These functions represent a second attempt at bringing mocking to testthat,
 #' incorporating what we've learned from the mockr, mockery, and mockthat
 #' packages.
-#'
-#' `with_mocked_bindings()` and `local_mocked_bindings()` work by temporarily
-#' changing variable bindings in the namespace of namespace `.package`.
-#' Generally, it's only safe to mock functions that you own, i.e. functions in the package you are testing.
-#'
-#' These functions do not currently affect registered S3 methods.
 #'
 #' # Use
 #'
@@ -26,8 +26,8 @@
 #' }
 #' ```
 #'
-#' It doesn't matter whether `another_function()` is defined by your package or you've
-#' imported it from a dependency with `@import` or `@importFrom`,
+#' It doesn't matter whether `another_function()` is defined by your package
+#' or you've imported it from a dependency with `@import` or `@importFrom`,
 #' you mock it the same way:
 #'
 #' ```R
@@ -56,12 +56,10 @@
 #' )
 #' ```
 #'
-#' But it's a bit fraught to modify a namespace that you don't own. Therefore, if you
-#' do use this technique, we recommend using `skip_on_cran()` to avoid CRAN
-#' failures if the implementation changes.
-#'
-#' Instead you can either import the function into your package, or you can
-#' make a wrapper function that you can mock:
+#' But it's not a great idea to mock a namespace that you don't own because
+#' it affects all code in that package, not just code in your package. Instead,
+#' we either importing the function into your package, or making a wrapper
+#' that you can mock:
 #'
 #' ```R
 #' some_function <- function() {
@@ -75,7 +73,6 @@
 #'   my_wrapper = function(...) "new_value"
 #' )
 #' ```
-#'
 #' @export
 #' @param ... Name-value pairs providing functions to mock.
 #' @param code Code to execute with specified bindings.
