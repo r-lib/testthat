@@ -35,7 +35,7 @@ Imports:
     R6 (>= 2.2.0),
     rlang (>= 1.1.0),
     utils,
-    waldo (>= 0.4.0.9000),
+    waldo (>= 0.5.0),
     withr (>= 2.4.3)
 Suggests: 
     covr,
@@ -56,5 +56,3 @@ Config/testthat/start-first: watcher, parallel*
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE, r6 = FALSE)
 RoxygenNote: 7.2.3
-Remotes:  
-    r-lib/waldo
