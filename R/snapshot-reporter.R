@@ -57,7 +57,8 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
           x = old,   x_arg = "old",
           y = value, y_arg = "new",
           ...,
-          tolerance = tolerance
+          tolerance = tolerance,
+          quote_strings = FALSE
         )
 
         if (length(comp) > 0L) {
