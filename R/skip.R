@@ -202,10 +202,15 @@ skip_on_bioc <- function() {
 #' @rdname skip
 skip_if_translated <- function(msgid = "'%s' not found") {
   skip_if(
-    gettext(msgid, domain = "R") != msgid,
+    gettext(msgid) != msgid,
     paste0("\"", msgid, "\" is translated")
   )
 }
+
+gettext <- function(msgid, domain = "R") {
+  base::gettext(msgid, domain = domain)
+}
+
 
 #' Superseded skip functions
 #'

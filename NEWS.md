@@ -5,24 +5,31 @@
 * `source_file()`, which is used by various parts of the helper and 
   setup/teardown machinery, now reports the file name in the case of 
   errors (#1704).
-
-* New `vignette("special-files")` describes the various special files
-  that testthat uses (#1638).
-
-* `skip_on_bioc()` now uses the documented environment variable
-  (`IS_BIOC_BUILD_MACHINE`) (#1712).
-
-* `test_path()` now works when called within helper files (#1562).
+* `expect_error()`, `expect_warning()`, and `expect_message()` now correctly
+  enforce that the condition is of the expected base class (e.g. error, 
+  warning, messsage) even when the `class` argument is used (#1168).
 
 * `it()` now calls `local_test_context()` so that it behaves more
   similarly to `test_that()` (#1731), and is now exported so that you
   can more easily run BDD tests interactively (#1587)
 
-* `with_mocked_bindings()` and `local_mocked_bindings()` can now bind in the
-  imports namespace too. This changes makes them very close in capability
-  for `with_mock()` and `local_mock()` so those functions now recommend
-  `with_mocked_bindings()` and `local_mocked_bindings()` rather than functions
-  from the mockr/mockery packages.
+* `skip_on_bioc()` now uses the documented environment variable
+  (`IS_BIOC_BUILD_MACHINE`) (#1712).
+
+* `source_file()`, which is used by various parts of the helper and 
+  setup/teardown machinery, now reports the file name in the case of 
+  errors (#1704).
+
+* `test_path()` now works when called within helper files (#1562).
+
+* New `vignette("special-files")` describes the various special files
+  that testthat uses (#1638).
+
+* `with_mocked_bindings()` and `local_mocked_bindings()` now also bind in the
+  imports namespace and can mock S3 methods. These changes make them good 
+  substitutes for the deprecated functions `with_mock()` and `local_mock()`, so 
+  those older functions now recommend switching to the newer equivalents 
+  instead of using the mockr or mockery packages.
 
 # testthat 3.1.7
 

@@ -258,11 +258,13 @@ expect_condition_matching <- function(base_class,
   ellipsis::check_dots_used(action = warn)
 
   matcher <- cnd_matcher(
-    class %||% base_class,
+    base_class,
+    class,
     regexp,
     ...,
     inherit = inherit,
-    ignore_deprecation = base_class == "warning" && identical(regexp, NA)
+    ignore_deprecation = base_class == "warning" && identical(regexp, NA),
+    error_call = trace_env
   )
 
   act <- quasi_capture(
@@ -286,13 +288,15 @@ expect_condition_matching <- function(base_class,
 
 # -------------------------------------------------------------------------
 
-cnd_matcher <- function(class, pattern = NULL, ..., inherit = TRUE, ignore_deprecation = FALSE) {
-  if (!is_string(class)) {
-    abort("`class` must be a single string")
-  }
-  if (!is_string(pattern) && !is.null(pattern) && !isNA(pattern)) {
-    abort("`pattern` must be a single string, NULL, or NA")
-  }
+cnd_matcher <- function(base_class,
+                        class = NULL,
+                        pattern = NULL,
+                        ...,
+                        inherit = TRUE,
+                        ignore_deprecation = FALSE,
+                        error_call = caller_env()) {
+  check_string(class, allow_null = TRUE, call = error_call)
+  check_string(pattern, allow_null = TRUE, allow_na = TRUE, call = error_call)
 
   function(cnd) {
     if (!inherit) {
@@ -303,26 +307,31 @@ cnd_matcher <- function(class, pattern = NULL, ..., inherit = TRUE, ignore_depre
       return(FALSE)
     }
 
-    if (is.null(pattern) || isNA(pattern)) {
-      cnd_inherits(cnd, class)
-    } else {
-      cnd_matches(cnd, class, pattern, ...)
+    matcher <- function(x) {
+      if (!inherits(x, base_class)) {
+        return(FALSE)
+      }
+      if (!is.null(class) && !inherits(x, class)) {
+        return(FALSE)
+      }
+      if (!is.null(pattern) && !isNA(pattern)) {
+        grepl(pattern, conditionMessage(x), ...)
+      } else {
+        TRUE
+      }
     }
+    cnd_some(cnd, matcher)
   }
+}
+
+has_classes <- function(x, classes) {
+  all(classes %in% class(x))
 }
 
 is_deprecation <- function(x) {
   inherits(x, "lifecycle_warning_deprecated")
 }
 
-cnd_inherits <- function(cnd, class) {
-  cnd_some(cnd, ~ inherits(.x, class))
-}
-cnd_matches <- function(cnd, class, pattern, ...) {
-  cnd_some(cnd, function(x) {
-     inherits(x, class) && grepl(pattern, conditionMessage(x), ...)
-  })
-}
 cnd_some <- function(.cnd, .p, ...) {
   .p <- as_function(.p)
 

@@ -222,6 +222,9 @@ queue_process_setup <- function(test_package, test_dir, load_helpers, load_packa
     test_dir,
     load_package
   )
+  # record testing env for mocks
+  local_bindings(current_test_env = env, .env = testthat_env)
+
   asNamespace("testthat")$test_files_setup_state(
     test_dir = test_dir,
     test_package = test_package,
