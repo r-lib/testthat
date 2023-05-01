@@ -2,26 +2,20 @@
 
 There were no ERRORs, WARNINGs, or NOTEs.
 
-## revdepcheck results
+We checked 7489 reverse dependencies, comparing R CMD check results across CRAN and dev versions of this package.
 
-We checked 7097 reverse dependencies (7083 from CRAN + 14 from Bioconductor), comparing R CMD check results across CRAN and dev versions of this package. We failed to check 17 packages (listed below) but did not otherwise see any problems.
+ * We saw 8 new problems. We sent patches to all affect packages 2 weeks ago:
+   https://github.com/r-lib/testthat/issues/1775
+ * We failed to check 9 packages
 
 ### Failed to check
 
-* Boom         (NA)
-* CausalImpact (NA)
-* ctsem        (NA)
-* elbird       (NA)
-* ggPMX        (NA)
-* loon.ggplot  (NA)
-* loon.shiny   (NA)
-* loon.tourr   (NA)
-* mlrCPO       (NA)
-* nlmixr2      (NA)
-* nlmixr2extra (NA)
-* nlmixr2plot  (NA)
-* OpenMx       (NA)
-* rPBK         (NA)
-* SSVS         (NA)
-* tidySEM      (NA)
-* vivid        (NA)
+* Boom        (NA)
+* ctsem       (NA)
+* fdaPDE      (NA)
+* gllvm       (NA)
+* loon.ggplot (NA)
+* loon.shiny  (NA)
+* loon.tourr  (NA)
+* vivid       (NA)
+* xtensor     (NA)
