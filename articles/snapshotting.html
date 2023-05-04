@@ -35,7 +35,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">testthat</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">3.1.7</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">3.1.8</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -54,6 +54,7 @@
     <a class="dropdown-item" href="../articles/parallel.html">Running tests in parallel</a>
     <a class="dropdown-item" href="../articles/skipping.html">Skipping tests</a>
     <a class="dropdown-item" href="../articles/snapshotting.html">Snapshot tests</a>
+    <a class="dropdown-item" href="../articles/special-files.html">Special files</a>
     <a class="dropdown-item" href="../articles/test-fixtures.html">Test fixtures</a>
     <a class="dropdown-item" href="../articles/third-edition.html">testthat 3e</a>
   </div>
@@ -222,24 +223,24 @@ the test will fail:</p>
 <span><span class="op">}</span><span class="op">)</span></span>
 <span><span class="co">#&gt; ── <span style="color: #BBBB00; font-weight: bold;">Failure</span><span style="font-weight: bold;"> ('</span><span style="color: #0000BB; font-weight: bold;">&lt;text&gt;:9:3</span><span style="font-weight: bold;">'): bullets</span> ─────────────────────────────────────────────</span></span>
 <span><span class="co">#&gt; Snapshot of code has changed:</span></span>
-<span><span class="co">#&gt;     old                     | new                        </span></span>
-<span><span class="co">#&gt; [2] <span style="color: #555555;">"  cat(bullets(\"a\"))"</span> | <span style="color: #555555;">"  cat(bullets(\"a\"))"</span> [2]</span></span>
-<span><span class="co">#&gt; [3] <span style="color: #555555;">"Output"</span>                | <span style="color: #555555;">"Output"</span>                [3]</span></span>
-<span><span class="co">#&gt; [4] <span style="color: #555555;">"  &lt;ul&gt;"</span>                | <span style="color: #555555;">"  &lt;ul&gt;"</span>                [4]</span></span>
-<span><span class="co">#&gt; [5] <span style="color: #00BB00;">"    &lt;li&gt;a&lt;/li&gt;"</span>        - <span style="color: #00BB00;">"  &lt;li&gt;a&lt;/li&gt;"</span>          [5]</span></span>
-<span><span class="co">#&gt; [6] <span style="color: #555555;">"  &lt;/ul&gt;"</span>               | <span style="color: #555555;">"  &lt;/ul&gt;"</span>               [6]</span></span>
+<span><span class="co">#&gt;     old                 | new                    </span></span>
+<span><span class="co">#&gt; [2] <span style="color: #555555;">  cat(bullets("a"))</span> | <span style="color: #555555;">  cat(bullets("a"))</span> [2]</span></span>
+<span><span class="co">#&gt; [3] <span style="color: #555555;">Output</span>              | <span style="color: #555555;">Output</span>              [3]</span></span>
+<span><span class="co">#&gt; [4] <span style="color: #555555;">  &lt;ul&gt;</span>              | <span style="color: #555555;">  &lt;ul&gt;</span>              [4]</span></span>
+<span><span class="co">#&gt; [5] <span style="color: #00BB00;">    &lt;li&gt;a&lt;/li&gt;</span>      - <span style="color: #00BB00;">  &lt;li&gt;a&lt;/li&gt;</span>        [5]</span></span>
+<span><span class="co">#&gt; [6] <span style="color: #555555;">  &lt;/ul&gt;</span>             | <span style="color: #555555;">  &lt;/ul&gt;</span>             [6]</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; * Run `testthat::snapshot_accept('snapshotting.Rmd')` to accept the change.</span></span>
 <span><span class="co">#&gt; * Run `testthat::snapshot_review('snapshotting.Rmd')` to interactively review the change.</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; ── <span style="color: #BBBB00; font-weight: bold;">Failure</span><span style="font-weight: bold;"> ('</span><span style="color: #0000BB; font-weight: bold;">&lt;text&gt;:10:3</span><span style="font-weight: bold;">'): bullets</span> ────────────────────────────────────────────</span></span>
 <span><span class="co">#&gt; Snapshot of code has changed:</span></span>
-<span><span class="co">#&gt;     old                            | new                               </span></span>
-<span><span class="co">#&gt; [2] <span style="color: #555555;">"  cat(bullets(\"a\", \"b\"))"</span> | <span style="color: #555555;">"  cat(bullets(\"a\", \"b\"))"</span> [2]</span></span>
-<span><span class="co">#&gt; [3] <span style="color: #555555;">"Output"</span>                       | <span style="color: #555555;">"Output"</span>                       [3]</span></span>
-<span><span class="co">#&gt; [4] <span style="color: #555555;">"  &lt;ul id=\"b\"&gt;"</span>              | <span style="color: #555555;">"  &lt;ul id=\"b\"&gt;"</span>              [4]</span></span>
-<span><span class="co">#&gt; [5] <span style="color: #00BB00;">"    &lt;li&gt;a&lt;/li&gt;"</span>               - <span style="color: #00BB00;">"  &lt;li&gt;a&lt;/li&gt;"</span>                 [5]</span></span>
-<span><span class="co">#&gt; [6] <span style="color: #555555;">"  &lt;/ul&gt;"</span>                      | <span style="color: #555555;">"  &lt;/ul&gt;"</span>                      [6]</span></span>
+<span><span class="co">#&gt;     old                      | new                         </span></span>
+<span><span class="co">#&gt; [2] <span style="color: #555555;">  cat(bullets("a", "b"))</span> | <span style="color: #555555;">  cat(bullets("a", "b"))</span> [2]</span></span>
+<span><span class="co">#&gt; [3] <span style="color: #555555;">Output</span>                   | <span style="color: #555555;">Output</span>                   [3]</span></span>
+<span><span class="co">#&gt; [4] <span style="color: #555555;">  &lt;ul id="b"&gt;</span>            | <span style="color: #555555;">  &lt;ul id="b"&gt;</span>            [4]</span></span>
+<span><span class="co">#&gt; [5] <span style="color: #00BB00;">    &lt;li&gt;a&lt;/li&gt;</span>           - <span style="color: #00BB00;">  &lt;li&gt;a&lt;/li&gt;</span>             [5]</span></span>
+<span><span class="co">#&gt; [6] <span style="color: #555555;">  &lt;/ul&gt;</span>                  | <span style="color: #555555;">  &lt;/ul&gt;</span>                  [6]</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; * Run `testthat::snapshot_accept('snapshotting.Rmd')` to accept the change.</span></span>
 <span><span class="co">#&gt; * Run `testthat::snapshot_review('snapshotting.Rmd')` to interactively review the change.</span></span>
@@ -401,9 +402,9 @@ human readability.</p>
 <p><code><a href="../reference/expect_snapshot.html">expect_snapshot()</a></code>,
 <code><a href="../reference/expect_snapshot_output.html">expect_snapshot_output()</a></code>,
 <code><a href="../reference/expect_snapshot_output.html">expect_snapshot_error()</a></code>, and
-<code><a href="../reference/expect_snapshot_value.html">expect_snapshot_value()</a></code> all store their snapshots in a
-single file per test. But that doesn’t work for all file types — for
-example, what happens if you want to snapshot an image?
+<code><a href="../reference/expect_snapshot_value.html">expect_snapshot_value()</a></code> use one snapshot file per test
+file. But that doesn’t work for all file types — for example, what
+happens if you want to snapshot an image?
 <code><a href="../reference/expect_snapshot_file.html">expect_snapshot_file()</a></code> provides an alternative workflow
 that generates one snapshot per expectation, rather than one file per
 test. Assuming you’re in <code>test-burger.R</code> then the snapshot
@@ -419,7 +420,8 @@ the test fails. Instead you’ll need to call
 <code><a href="../reference/snapshot_accept.html">snapshot_review()</a></code>. This launches a Shiny app that allows
 you to visually review each change and approve it if it’s
 deliberate:</p>
-<p><img src="review-image.png"><img src="review-text.png"></p>
+<p><img src="review-image.png" alt="Screenshot of the Shiny app for reviewing snapshot changes to images. It shows the changes to a png file of a plot created in a snapshot test. There is a button to accept the changed snapshot, or to skip it."></p>
+<p><img src="review-text.png" alt="Screenshot of the Shiny app for reviewing snapshot changes to text files. It shows the changes to a .R file created in a snapshot test, where a line has been removed. There is a button to accept the changed snapshot, or to skip it."></p>
 <p>The display varies based on the file type (currently text files,
 common image files, and csv files are supported).</p>
 <p>Sometimes the failure occurs in a non-interactive environment where
@@ -479,7 +481,7 @@ requests.</p></li>
   <footer><div class="container">
   <div class="pkgdown-footer-left">
   <p></p>
-<p>Developed by <a href="http://hadley.nz" class="external-link">Hadley Wickham</a>, <a href="https://www.rstudio.com" class="external-link"><img src="https://www.tidyverse.org/rstudio-logo.svg" alt="RStudio" width="72"></a>.</p>
+<p>Developed by <a href="http://hadley.nz" class="external-link">Hadley Wickham</a>, <a href="https://www.posit.co" class="external-link"><img src="https://www.tidyverse.org/posit-logo.svg" alt="Posit" height="16" style="margin-bottom: 3px;"></a>.</p>
 </div>
 
 <div class="pkgdown-footer-right">

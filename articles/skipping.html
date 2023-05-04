@@ -35,7 +35,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">testthat</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">3.1.7</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">3.1.8</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -54,6 +54,7 @@
     <a class="dropdown-item" href="../articles/parallel.html">Running tests in parallel</a>
     <a class="dropdown-item" href="../articles/skipping.html">Skipping tests</a>
     <a class="dropdown-item" href="../articles/snapshotting.html">Snapshot tests</a>
+    <a class="dropdown-item" href="../articles/special-files.html">Special files</a>
     <a class="dropdown-item" href="../articles/test-fixtures.html">Test fixtures</a>
     <a class="dropdown-item" href="../articles/third-edition.html">testthat 3e</a>
   </div>
@@ -165,50 +166,64 @@ sure that you’re not accidentally skipping the wrong things.</p>
 <p>If you find yourself using the same
 <code><a href="../reference/skip.html">skip_if()</a></code>/<code><a href="../reference/skip.html">skip_if_not()</a></code> expression across
 multiple tests, it’s a good idea to create a helper function. This
-function should start with <code>skip_</code> and live somewhere in your
-<code>R/</code> directory.</p>
+function should start with <code>skip_</code> and live in a
+<code>test/helper-{something}.R</code> file:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">skip_if_Tuesday</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/as.POSIXlt.html" class="external-link">as.POSIXlt</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html" class="external-link">Sys.Date</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">$</span><span class="va">wday</span> <span class="op">!=</span> <span class="fl">2</span><span class="op">)</span> <span class="op">{</span></span>
-<span>    <span class="kw"><a href="https://rdrr.io/r/base/function.html" class="external-link">return</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/invisible.html" class="external-link">invisible</a></span><span class="op">(</span><span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span>
-<span>  <span class="op">}</span></span>
-<span>  </span>
-<span>  <span class="fu"><a href="../reference/skip.html">skip</a></span><span class="op">(</span><span class="st">"Not run on Tuesday"</span><span class="op">)</span></span>
-<span><span class="op">}</span></span></code></pre></div>
-<p>It’s important to test your skip helpers because it’s easy to miss if
-you’re skipping more often than desired, and the test code is never run.
-This is unlikely to happen locally (since you’ll see the skipped tests
-in the summary), but is quite possible in continuous integration.</p>
-<p>For that reason, it’s a good idea to add a test that you skip is
-activated when you expect. skips are a special type of condition, so you
-can test for their presence/absence with
-<code><a href="../reference/expect_error.html">expect_condition()</a></code>. For example, imagine that you’ve
-defined a custom skipper that skips tests whenever an environment
-variable <code>DANGER</code> is set:</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">skip_if_dangerous</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/identical.html" class="external-link">identical</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Sys.getenv.html" class="external-link">Sys.getenv</a></span><span class="op">(</span><span class="st">"DANGER"</span><span class="op">)</span>, <span class="st">""</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
-<span>    <span class="kw"><a href="https://rdrr.io/r/base/function.html" class="external-link">return</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/invisible.html" class="external-link">invisible</a></span><span class="op">(</span><span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/identical.html" class="external-link">identical</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Sys.getenv.html" class="external-link">Sys.getenv</a></span><span class="op">(</span><span class="st">"DANGER"</span><span class="op">)</span>, <span class="st">""</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>    <span class="fu"><a href="../reference/skip.html">skip</a></span><span class="op">(</span><span class="st">"Not run in dangerous environments."</span><span class="op">)</span></span>
+<span>  <span class="op">}</span> <span class="kw">else</span> <span class="op">{</span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/base/invisible.html" class="external-link">invisible</a></span><span class="op">(</span><span class="op">)</span></span>
+<span>  <span class="op">}</span></span>
+<span><span class="op">}</span></span></code></pre></div>
+</div>
+<div class="section level2">
+<h2 id="embedding-skip-in-package-functions">Embedding <code>skip()</code> in package functions<a class="anchor" aria-label="anchor" href="#embedding-skip-in-package-functions"></a>
+</h2>
+<p>Another useful technique that can sometimes be useful is to build a
+<code><a href="../reference/skip.html">skip()</a></code> directly into a package function. For example take a
+look at <a href="https://github.com/r-lib/pkgdown/blob/v2.0.7/R/markdown.R#L95-L106" class="external-link"><code>pkgdown:::convert_markdown_to_html()</code></a>,
+which absolutely, positively cannot work if the Pandoc tool is
+unavailable:</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">convert_markdown_to_html</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">in_path</span>, <span class="va">out_path</span>, <span class="va">...</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="kw">if</span> <span class="op">(</span><span class="fu">rmarkdown</span><span class="fu">::</span><span class="fu"><a href="https://pkgs.rstudio.com/rmarkdown/reference/pandoc_available.html" class="external-link">pandoc_available</a></span><span class="op">(</span><span class="st">"2.0"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>    <span class="va">from</span> <span class="op">&lt;-</span> <span class="st">"markdown+gfm_auto_identifiers-citations+emoji+autolink_bare_uris"</span></span>
+<span>  <span class="op">}</span> <span class="kw">else</span> <span class="kw">if</span> <span class="op">(</span><span class="fu">rmarkdown</span><span class="fu">::</span><span class="fu"><a href="https://pkgs.rstudio.com/rmarkdown/reference/pandoc_available.html" class="external-link">pandoc_available</a></span><span class="op">(</span><span class="st">"1.12.3"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>    <span class="va">from</span> <span class="op">&lt;-</span> <span class="st">"markdown_github-hard_line_breaks+tex_math_dollars+tex_math_single_backslash+header_attributes"</span></span>
+<span>  <span class="op">}</span> <span class="kw">else</span> <span class="op">{</span></span>
+<span>    <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="../reference/is_testing.html">is_testing</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>      <span class="fu">testthat</span><span class="fu">::</span><span class="fu"><a href="../reference/skip.html">skip</a></span><span class="op">(</span><span class="st">"Pandoc not available"</span><span class="op">)</span></span>
+<span>    <span class="op">}</span> <span class="kw">else</span> <span class="op">{</span></span>
+<span>      <span class="fu">abort</span><span class="op">(</span><span class="st">"Pandoc not available"</span><span class="op">)</span></span>
+<span>    <span class="op">}</span></span>
 <span>  <span class="op">}</span></span>
 <span>  </span>
-<span>  <span class="fu"><a href="../reference/skip.html">skip</a></span><span class="op">(</span><span class="st">"Not run in dangerous enviromnents"</span><span class="op">)</span></span>
+<span>  <span class="va">...</span></span>
 <span><span class="op">}</span></span></code></pre></div>
-<p>Then you can use <code><a href="../reference/expect_error.html">expect_condition()</a></code> to test that it
-skips tests when it should, and doesn’t skip when it shouldn’t:</p>
+<p>If Pandoc is not available when
+<code>convert_markdown_to_html()</code> executes, it throws an error
+<em>unless</em> it appears to be part of a test run, in which case the
+test is skipped. This is an alternative to implementing a custom
+skipper, e.g. <code>skip_if_no_pandoc()</code>, and inserting it into
+many of pkgdown’s tests.</p>
+<p>We don’t want pkgdown to have a runtime dependency on testthat, so
+pkgdown includes a copy of <code><a href="../reference/is_testing.html">testthat::is_testing()</a></code>:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/test_that.html">test_that</a></span><span class="op">(</span><span class="st">"skip_if_dangerous work"</span>, <span class="op">{</span></span>
-<span>  <span class="co"># Test that a skip happens</span></span>
-<span>  <span class="fu">withr</span><span class="fu">::</span><span class="fu"><a href="https://withr.r-lib.org/reference/with_envvar.html" class="external-link">local_envvar</a></span><span class="op">(</span>DANGER <span class="op">=</span> <span class="st">"yes"</span><span class="op">)</span></span>
-<span>  <span class="fu"><a href="../reference/expect_error.html">expect_condition</a></span><span class="op">(</span><span class="fu">skip_if_dangerous</span><span class="op">(</span><span class="op">)</span>, class <span class="op">=</span> <span class="st">"skip"</span><span class="op">)</span> </span>
-<span></span>
-<span>  <span class="co"># Test that a skip doesn't happen</span></span>
-<span>  <span class="fu">withr</span><span class="fu">::</span><span class="fu"><a href="https://withr.r-lib.org/reference/with_envvar.html" class="external-link">local_envvar</a></span><span class="op">(</span>DANGER <span class="op">=</span> <span class="st">""</span><span class="op">)</span></span>
-<span>  <span class="fu"><a href="../reference/expect_error.html">expect_condition</a></span><span class="op">(</span><span class="fu">skip_if_dangerous</span><span class="op">(</span><span class="op">)</span>, <span class="cn">NA</span>, class <span class="op">=</span> <span class="st">"skip"</span><span class="op">)</span></span>
-<span><span class="op">}</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #00BB00;">Test passed</span> 😀</span></span></code></pre></div>
-<p>Testing <code>skip_if_Tuesday()</code> is harder because there’s no
-way to control the skipping from the outside. That means you’d need to
-“mock” its behaviour in a test, using the <a href="https://github.com/r-lib/mockery" class="external-link">mockery</a> or <a href="https://krlmlr.github.io/mockr/" class="external-link">mockr</a> packages.</p>
+<code class="sourceCode R"><span><span class="va">is_testing</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/identical.html" class="external-link">identical</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Sys.getenv.html" class="external-link">Sys.getenv</a></span><span class="op">(</span><span class="st">"TESTTHAT"</span><span class="op">)</span>, <span class="st">"true"</span><span class="op">)</span></span>
+<span><span class="op">}</span></span></code></pre></div>
+<p>It might look like the code appears to still have a runtime
+dependency on testthat, because of the call to
+<code><a href="../reference/skip.html">testthat::skip()</a></code>. But <code><a href="../reference/skip.html">testthat::skip()</a></code> is only
+executed during a test run, which implies that testthat is
+installed.</p>
+<p>We have mixed feelings about this approach. On the one hand, it feels
+elegant and concise, and it absolutely guarantees that you’ll never miss
+a needed skip in one of your tests. On the other hand, it mixes code and
+tests in an unusual way, and when you’re focused on the tests, it’s easy
+to miss the fact that a package function contains a
+<code><a href="../reference/skip.html">skip()</a></code>.</p>
 </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside>
@@ -220,7 +235,7 @@ way to control the skipping from the outside. That means you’d need to
   <footer><div class="container">
   <div class="pkgdown-footer-left">
   <p></p>
-<p>Developed by <a href="http://hadley.nz" class="external-link">Hadley Wickham</a>, <a href="https://www.rstudio.com" class="external-link"><img src="https://www.tidyverse.org/rstudio-logo.svg" alt="RStudio" width="72"></a>.</p>
+<p>Developed by <a href="http://hadley.nz" class="external-link">Hadley Wickham</a>, <a href="https://www.posit.co" class="external-link"><img src="https://www.tidyverse.org/posit-logo.svg" alt="Posit" height="16" style="margin-bottom: 3px;"></a>.</p>
 </div>
 
 <div class="pkgdown-footer-right">
