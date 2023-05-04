@@ -10,7 +10,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">testthat</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">3.1.7.9000</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">3.1.8.9000</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -71,6 +71,9 @@
 
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="development version" id="testthat-development-version">testthat (development version)<a class="anchor" aria-label="anchor" href="#testthat-development-version"></a></h2>
+</div>
+    <div class="section level2">
+<h2 class="pkg-version" data-toc-text="3.1.8" id="testthat-318">testthat 3.1.8<a class="anchor" aria-label="anchor" href="#testthat-318"></a></h2><p class="text-muted">CRAN release: 2023-05-04</p>
 <ul><li><p><code><a href="../reference/expect_snapshot.html">expect_snapshot()</a></code> differences no longer use quotes.</p></li>
 <li><p><code><a href="../reference/expect_error.html">expect_error()</a></code>, <code><a href="../reference/expect_error.html">expect_warning()</a></code>, and <code><a href="../reference/expect_error.html">expect_message()</a></code> now correctly enforce that the condition is of the expected base class (e.g. error, warning, messsage) even when the <code>class</code> argument is used (<a href="https://github.com/r-lib/testthat/issues/1168" class="external-link">#1168</a>).</p></li>
 <li><p><code><a href="../reference/describe.html">it()</a></code> now calls <code><a href="../reference/local_test_context.html">local_test_context()</a></code> so that it behaves more similarly to <code><a href="../reference/test_that.html">test_that()</a></code> (<a href="https://github.com/r-lib/testthat/issues/1731" class="external-link">#1731</a>), and is now exported so that you can more easily run BDD tests interactively (<a href="https://github.com/r-lib/testthat/issues/1587" class="external-link">#1587</a>)</p></li>
