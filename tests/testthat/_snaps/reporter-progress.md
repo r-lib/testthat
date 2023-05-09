@@ -9,13 +9,12 @@
     Error ('reporters/error-setup.R:6:1'): (code run outside of `test_that()`)
     Error in `h()`: !
     Backtrace:
-     1. testthat::setup(f())
-          at reporters/error-setup.R:6:0
-     3. f()
-     4. g()
-          at reporters/error-setup.R:1:5
-     5. h()
-          at reporters/error-setup.R:2:5
+        x
+     1. +-testthat::setup(f()) at reporters/error-setup.R:6:0
+     2. | \-rlang::eval_tidy(enquo(code), env = env) at testthat/R/teardown.R:58:2
+     3. \-f()
+     4.   \-g() at reporters/error-setup.R:1:5
+     5.     \-h() at reporters/error-setup.R:2:5
     --------------------------------------------------------------------------------
     
     == Results =====================================================================
@@ -181,85 +180,102 @@
     Error ('reporters/backtraces.R:6:3'): errors thrown at block level are entraced
     Error in `g()`: foo
     Backtrace:
-     1. f()
-          at reporters/backtraces.R:6:2
-     2. g()
-          at reporters/backtraces.R:4:7
+        x
+     1. \-f() at reporters/backtraces.R:6:2
+     2.   \-g() at reporters/backtraces.R:4:7
     
     Error ('reporters/backtraces.R:11:3'): errors thrown from a quasi-labelled argument are entraced
     Error in `foo()`: foo
     Backtrace:
-     1. testthat::expect_s3_class(foo(), "foo")
-          at reporters/backtraces.R:11:2
-     4. foo()
+        x
+     1. +-testthat::expect_s3_class(foo(), "foo") at reporters/backtraces.R:11:2
+     2. | \-testthat::quasi_label(enquo(object), arg = "object") at testthat/R/expect-inheritance.R:65:2
+     3. |   \-rlang::eval_bare(expr, quo_get_env(quo)) at testthat/R/quasi-label.R:45:2
+     4. \-foo()
     
     Error ('reporters/backtraces.R:18:3'): errors thrown from a quasi-labelled argument are entraced (deep case)
     Error in `foo()`: foo
     Backtrace:
-     1. testthat::expect_s3_class(f(), "foo")
-          at reporters/backtraces.R:18:2
-     4. f()
-     5. g()
-          at reporters/backtraces.R:16:7
-     9. foo()
+        x
+     1. +-testthat::expect_s3_class(f(), "foo") at reporters/backtraces.R:18:2
+     2. | \-testthat::quasi_label(enquo(object), arg = "object") at testthat/R/expect-inheritance.R:65:2
+     3. |   \-rlang::eval_bare(expr, quo_get_env(quo)) at testthat/R/quasi-label.R:45:2
+     4. \-f()
+     5.   \-g() at reporters/backtraces.R:16:7
+     6.     +-testthat::expect_s3_class(foo(), "foo") at reporters/backtraces.R:17:7
+     7.     | \-testthat::quasi_label(enquo(object), arg = "object") at testthat/R/expect-inheritance.R:65:2
+     8.     |   \-rlang::eval_bare(expr, quo_get_env(quo)) at testthat/R/quasi-label.R:45:2
+     9.     \-foo()
     
     Error ('reporters/backtraces.R:28:3'): errors thrown from a quasi-labelled argument are entraced (deep deep case)
     Error in `bar()`: foobar
     Backtrace:
-     1. f()
-          at reporters/backtraces.R:28:2
-     2. g()
-          at reporters/backtraces.R:25:7
-     6. foo()
-     7. bar()
-          at reporters/backtraces.R:22:9
+        x
+     1. \-f() at reporters/backtraces.R:28:2
+     2.   \-g() at reporters/backtraces.R:25:7
+     3.     +-testthat::expect_s3_class(foo(), "foo") at reporters/backtraces.R:26:7
+     4.     | \-testthat::quasi_label(enquo(object), arg = "object") at testthat/R/expect-inheritance.R:65:2
+     5.     |   \-rlang::eval_bare(expr, quo_get_env(quo)) at testthat/R/quasi-label.R:45:2
+     6.     \-foo()
+     7.       \-bar() at reporters/backtraces.R:22:9
     
     Error ('reporters/backtraces.R:35:3'): failed expect_error() prints a backtrace
     Error in `signaller()`: bar
     Backtrace:
-     1. testthat::expect_error(f(), "foo")
-          at reporters/backtraces.R:35:2
-     7. f()
-     8. signaller()
-          at reporters/backtraces.R:32:7
+        x
+     1. +-testthat::expect_error(f(), "foo") at reporters/backtraces.R:35:2
+     2. | \-testthat:::expect_condition_matching(...) at testthat/R/expect-condition.R:117:4
+     3. |   \-testthat:::quasi_capture(...) at testthat/R/expect-condition.R:270:2
+     4. |     +-testthat (local) .capture(...) at testthat/R/quasi-label.R:54:2
+     5. |     | \-base::withCallingHandlers(...) at testthat/R/expect-condition.R:353:2
+     6. |     \-rlang::eval_bare(quo_get_expr(.quo), quo_get_env(.quo))
+     7. \-f()
+     8.   \-signaller() at reporters/backtraces.R:32:7
     
     Error ('reporters/backtraces.R:43:3'): Errors are inspected with `conditionMessage()`
     <foobar/rlang_error/error/condition>
     Error in `eval(code, test_env)`: dispatched
     Backtrace:
+        x
+     1. \-rlang::abort("Wrong message", "foobar") at reporters/backtraces.R:43:2
     
     Warning ('reporters/backtraces.R:50:3'): also get backtraces for warnings
     foobar
     Backtrace:
-     1. foo()
-          at reporters/backtraces.R:50:2
-     2. bar()
-          at reporters/backtraces.R:47:9
+        x
+     1. \-foo() at reporters/backtraces.R:50:2
+     2.   \-bar() at reporters/backtraces.R:47:9
     
     Error ('reporters/backtraces.R:58:3'): deep stacks are trimmed
     Error in `f(x - 1)`: This is deep
     Backtrace:
-      1. f(25)
-           at reporters/backtraces.R:58:2
-      2. f(x - 1)
-           at reporters/backtraces.R:56:4
-      3. f(x - 1)
-           at reporters/backtraces.R:56:4
-      4. f(x - 1)
-           at reporters/backtraces.R:56:4
-      5. f(x - 1)
-           at reporters/backtraces.R:56:4
-         ...
-     22. f(x - 1)
-           at reporters/backtraces.R:56:4
-     23. f(x - 1)
-           at reporters/backtraces.R:56:4
-     24. f(x - 1)
-           at reporters/backtraces.R:56:4
-     25. f(x - 1)
-           at reporters/backtraces.R:56:4
-     26. f(x - 1)
-           at reporters/backtraces.R:56:4
+         x
+      1. \-f(25) at reporters/backtraces.R:58:2
+      2.   \-f(x - 1) at reporters/backtraces.R:56:4
+      3.     \-f(x - 1) at reporters/backtraces.R:56:4
+      4.       \-f(x - 1) at reporters/backtraces.R:56:4
+      5.         \-f(x - 1) at reporters/backtraces.R:56:4
+      6.           \-f(x - 1) at reporters/backtraces.R:56:4
+      7.             \-f(x - 1) at reporters/backtraces.R:56:4
+      8.               \-f(x - 1) at reporters/backtraces.R:56:4
+      9.                 \-f(x - 1) at reporters/backtraces.R:56:4
+     10.                   \-f(x - 1) at reporters/backtraces.R:56:4
+     11.                     \-f(x - 1) at reporters/backtraces.R:56:4
+     12.                       \-f(x - 1) at reporters/backtraces.R:56:4
+     13.                         \-f(x - 1) at reporters/backtraces.R:56:4
+     14.                           \-f(x - 1) at reporters/backtraces.R:56:4
+     15.                             \-f(x - 1) at reporters/backtraces.R:56:4
+     16.                               \-f(x - 1) at reporters/backtraces.R:56:4
+     17.                                 \-f(x - 1) at reporters/backtraces.R:56:4
+     18.                                   \-f(x - 1) at reporters/backtraces.R:56:4
+     19.                                     \-f(x - 1) at reporters/backtraces.R:56:4
+     20.                                       \-f(x - 1) at reporters/backtraces.R:56:4
+     21.                                         \-f(x - 1) at reporters/backtraces.R:56:4
+     22.                                           \-f(x - 1) at reporters/backtraces.R:56:4
+     23.                                             \-f(x - 1) at reporters/backtraces.R:56:4
+     24.                                               \-f(x - 1) at reporters/backtraces.R:56:4
+     25.                                                 \-f(x - 1) at reporters/backtraces.R:56:4
+     26.                                                   \-f(x - 1) at reporters/backtraces.R:56:4
     
     Failure ('reporters/backtraces.R:66:1'): (code run outside of `test_that()`)
     FALSE is not TRUE
@@ -267,14 +283,11 @@
     `actual`:   FALSE
     `expected`: TRUE 
     Backtrace:
-     1. f()
-          at reporters/backtraces.R:66:0
-     2. g()
-          at reporters/backtraces.R:62:5
-     3. h()
-          at reporters/backtraces.R:63:5
-     4. testthat::expect_true(FALSE)
-          at reporters/backtraces.R:64:5
+        x
+     1. \-f() at reporters/backtraces.R:66:0
+     2.   \-g() at reporters/backtraces.R:62:5
+     3.     \-h() at reporters/backtraces.R:63:5
+     4.       \-testthat::expect_true(FALSE) at reporters/backtraces.R:64:5
     
     Failure ('reporters/backtraces.R:69:3'): nested expectations get backtraces
     FALSE is not TRUE
@@ -282,14 +295,11 @@
     `actual`:   FALSE
     `expected`: TRUE 
     Backtrace:
-     1. f()
-          at reporters/backtraces.R:69:2
-     2. g()
-          at reporters/backtraces.R:62:5
-     3. h()
-          at reporters/backtraces.R:63:5
-     4. testthat::expect_true(FALSE)
-          at reporters/backtraces.R:64:5
+        x
+     1. \-f() at reporters/backtraces.R:69:2
+     2.   \-g() at reporters/backtraces.R:62:5
+     3.     \-h() at reporters/backtraces.R:63:5
+     4.       \-testthat::expect_true(FALSE) at reporters/backtraces.R:64:5
     --------------------------------------------------------------------------------
     
     == Results =====================================================================
@@ -347,10 +357,9 @@
     `actual`:   FALSE
     `expected`: TRUE 
     Backtrace:
-     1. f()
-          at reporters/tests.R:17:2
-     2. testthat::expect_true(FALSE)
-          at reporters/tests.R:16:7
+        x
+     1. \-f() at reporters/tests.R:17:2
+     2.   \-testthat::expect_true(FALSE) at reporters/tests.R:16:7
     
     
     [ FAIL 2 | WARN 0 | SKIP 0 | PASS 1 ]
@@ -363,12 +372,10 @@
     -- Error ('reporters/tests.R:31:3'): errors get tracebacks ---------------------
     Error in `h()`: !
     Backtrace:
-     1. f()
-          at reporters/tests.R:31:2
-     2. g()
-          at reporters/tests.R:27:7
-     3. h()
-          at reporters/tests.R:28:7
+        x
+     1. \-f() at reporters/tests.R:31:2
+     2.   \-g() at reporters/tests.R:27:7
+     3.     \-h() at reporters/tests.R:28:7
     
     
     [ FAIL 4 | WARN 0 | SKIP 0 | PASS 1 ]
@@ -389,8 +396,8 @@
     -- Warning ('reporters/tests.R:49:3'): warnings get backtraces -----------------
     def
     Backtrace:
-     1. f()
-          at reporters/tests.R:49:2
+        x
+     1. \-f() at reporters/tests.R:49:2
     
     -- Skip ('reporters/tests.R:45:1'): warnings get backtraces --------------------
     Reason: empty test

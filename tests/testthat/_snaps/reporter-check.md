@@ -10,8 +10,8 @@
     -- Warning ('reporters/tests.R:49:3'): warnings get backtraces -----------------
     def
     Backtrace:
-     1. f()
-          at reporters/tests.R:49:2
+        x
+     1. \-f() at reporters/tests.R:49:2
     
     == Failed tests ================================================================
     -- Failure ('reporters/tests.R:12:3'): Failure:1 -------------------------------
@@ -66,8 +66,8 @@
     -- Warning ('reporters/tests.R:49:3'): warnings get backtraces -----------------
     def
     Backtrace:
-     1. f()
-          at reporters/tests.R:49:2
+        x
+     1. \-f() at reporters/tests.R:49:2
     
     == Failed tests ================================================================
     -- Failure ('reporters/tests.R:12:3'): Failure:1 -------------------------------

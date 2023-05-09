@@ -166,14 +166,7 @@ format.expectation <- function(x, simplify = "none", ...) {
     return(x$message)
   }
 
-  max_frames <- if (simplify == "branch") 20 else NULL
-
-  trace_lines <- format(
-    x$trace,
-    simplify = simplify,
-    ...,
-    max_frames = max_frames
-  )
+  trace_lines <- format(x$trace, simplify = simplify, ...)
   lines <- c(x$message, cli::style_bold("Backtrace:"), trace_lines)
   paste(lines, collapse = "\n")
 }

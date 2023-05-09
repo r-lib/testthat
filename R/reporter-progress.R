@@ -514,7 +514,7 @@ issue_header <- function(x, pad = FALSE) {
   paste0(type, " (", loc, "): ", x$test)
 }
 
-issue_summary <- function(x, rule = FALSE, simplify = "branch") {
+issue_summary <- function(x, rule = FALSE, simplify = "none") {
   header <- cli::style_bold(issue_header(x))
   if (rule) {
     header <- cli::rule(header, width = max(cli::ansi_nchar(header) + 6, 80))
