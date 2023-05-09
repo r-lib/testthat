@@ -159,7 +159,7 @@ format.expectation_success <- function(x, ...) {
 }
 
 #' @export
-format.expectation <- function(x, simplify = "branch", ...) {
+format.expectation <- function(x, simplify = "none", ...) {
   # Access error fields with `[[` rather than `$` because the
   # `$.Throwable` from the rJava package throws with unknown fields
   if (is.null(x[["trace"]]) || trace_length(x[["trace"]]) == 0L) {

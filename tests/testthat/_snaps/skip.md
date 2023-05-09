@@ -30,15 +30,11 @@
 
 ---
 
-    Reason: Installed testthat is version 3.1.7.9000; but 9999.9999.999 is required
+    Reason: Installed testthat is version 3.1.8.9000; but 9999.9999.999 is required
 
 ---
 
     Reason: offline
-
-# skip_on_cran() works as expected
-
-    Reason: On CRAN
 
 # skip_on_ci() works as expected
 
