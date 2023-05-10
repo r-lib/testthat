@@ -11,7 +11,7 @@
     def
     Backtrace:
         x
-     1. \-f() at reporters/tests.R:49:2
+     1. \-f()
     
     == Failed tests ================================================================
     -- Failure ('reporters/tests.R:12:3'): Failure:1 -------------------------------
@@ -26,17 +26,17 @@
     `expected`: TRUE 
     Backtrace:
         x
-     1. \-f() at reporters/tests.R:17:2
-     2.   \-testthat::expect_true(FALSE) at reporters/tests.R:16:7
+     1. \-f()
+     2.   \-testthat::expect_true(FALSE)
     -- Error ('reporters/tests.R:23:3'): Error:1 -----------------------------------
     Error in `eval(code, test_env)`: stop
     -- Error ('reporters/tests.R:31:3'): errors get tracebacks ---------------------
     Error in `h()`: !
     Backtrace:
         x
-     1. \-f() at reporters/tests.R:31:2
-     2.   \-g() at reporters/tests.R:27:7
-     3.     \-h() at reporters/tests.R:28:7
+     1. \-f()
+     2.   \-g()
+     3.     \-h()
     
     [ FAIL 4 | WARN 1 | SKIP 3 | PASS 1 ]
 
@@ -67,7 +67,7 @@
     def
     Backtrace:
         x
-     1. \-f() at reporters/tests.R:49:2
+     1. \-f()
     
     == Failed tests ================================================================
     -- Failure ('reporters/tests.R:12:3'): Failure:1 -------------------------------
@@ -82,17 +82,17 @@
     `expected`: TRUE 
     Backtrace:
         x
-     1. \-f() at reporters/tests.R:17:2
-     2.   \-testthat::expect_true(FALSE) at reporters/tests.R:16:7
+     1. \-f()
+     2.   \-testthat::expect_true(FALSE)
     -- Error ('reporters/tests.R:23:3'): Error:1 -----------------------------------
     Error in `eval(code, test_env)`: stop
     -- Error ('reporters/tests.R:31:3'): errors get tracebacks ---------------------
     Error in `h()`: !
     Backtrace:
         x
-     1. \-f() at reporters/tests.R:31:2
-     2.   \-g() at reporters/tests.R:27:7
-     3.     \-h() at reporters/tests.R:28:7
+     1. \-f()
+     2.   \-g()
+     3.     \-h()
     
     [ FAIL 4 | WARN 1 | SKIP 3 | PASS 1 ]
 

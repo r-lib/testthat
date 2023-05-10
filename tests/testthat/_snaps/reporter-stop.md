@@ -14,8 +14,8 @@
     `expected`: TRUE 
     Backtrace:
         x
-     1. \-f() at reporters/tests.R:17:2
-     2.   \-testthat::expect_true(FALSE) at reporters/tests.R:16:7
+     1. \-f()
+     2.   \-testthat::expect_true(FALSE)
     
     -- Error ('reporters/tests.R:23:3'): Error:1 -----------------------------------
     Error in `eval(code, test_env)`: stop
@@ -24,9 +24,9 @@
     Error in `h()`: !
     Backtrace:
         x
-     1. \-f() at reporters/tests.R:31:2
-     2.   \-g() at reporters/tests.R:27:7
-     3.     \-h() at reporters/tests.R:28:7
+     1. \-f()
+     2.   \-g()
+     3.     \-h()
     
     -- Skip ('reporters/tests.R:37:3'): explicit skips are reported ----------------
     Reason: skip
@@ -38,7 +38,7 @@
     def
     Backtrace:
         x
-     1. \-f() at reporters/tests.R:49:2
+     1. \-f()
     
     -- Skip ('reporters/tests.R:45:1'): warnings get backtraces --------------------
     Reason: empty test
