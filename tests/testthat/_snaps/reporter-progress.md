@@ -246,7 +246,7 @@
      1. \-foo() at reporters/backtraces.R:50:2
      2.   \-bar() at reporters/backtraces.R:47:9
     
-    Error ('reporters/backtraces.R:58:3'): deep stacks are trimmed
+    Error ('reporters/backtraces.R:58:3'): deep stacks are shown
     Error in `f(x - 1)`: This is deep
     Backtrace:
          x
