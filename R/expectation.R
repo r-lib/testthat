@@ -159,14 +159,14 @@ format.expectation_success <- function(x, ...) {
 }
 
 #' @export
-format.expectation <- function(x, simplify = "none", ...) {
+format.expectation <- function(x, ...) {
   # Access error fields with `[[` rather than `$` because the
   # `$.Throwable` from the rJava package throws with unknown fields
   if (is.null(x[["trace"]]) || trace_length(x[["trace"]]) == 0L) {
     return(x$message)
   }
 
-  trace_lines <- format(x$trace, simplify = simplify, ...)
+  trace_lines <- format(x$trace, ...)
   lines <- c(x$message, cli::style_bold("Backtrace:"), trace_lines)
   paste(lines, collapse = "\n")
 }
