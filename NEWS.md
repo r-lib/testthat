@@ -1,5 +1,8 @@
 # testthat (development version)
 
+* testthat no longer truncates tracebacks and uses rlang's default tree
+  display.
+
 # testthat 3.1.8
 
 * `expect_snapshot()` differences no longer use quotes.

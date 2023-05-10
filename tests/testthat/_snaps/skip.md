@@ -30,7 +30,7 @@
 
 ---
 
-    Reason: Installed testthat is version 3.1.7.9000; but 9999.9999.999 is required
+    Reason: Installed testthat is version 3.0.0; but 9999.9999.999 is required
 
 ---
 

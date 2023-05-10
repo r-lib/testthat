@@ -73,6 +73,7 @@ expect_snapshot_failure <- function(x) {
 }
 
 expect_snapshot_reporter <- function(reporter, paths = test_path("reporters/tests.R")) {
+  local_options(rlang_trace_format_srcrefs = FALSE)
   local_rng_version("3.3")
   set.seed(1014)
   # withr::local_seed(1014)
