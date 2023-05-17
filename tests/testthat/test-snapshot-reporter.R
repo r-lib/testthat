@@ -146,6 +146,7 @@ test_that("errors in test doesn't change snapshot", {
 })
 
 test_that("skips and unexpected errors reset snapshots", {
+  withr::local_envvar(TESTTHAT_GHA_SUMMARY = "FALSE")
   regenerate <- FALSE
 
   if (regenerate) {
@@ -168,6 +169,7 @@ test_that("skips and unexpected errors reset snapshots", {
 })
 
 test_that("`expect_error()` can fail inside `expect_snapshot()`", {
+  withr::local_envvar(TESTTHAT_GHA_SUMMARY = "FALSE")
   out <- test_file(
     test_path("test-snapshot", "test-expect-condition.R"),
     reporter = NULL

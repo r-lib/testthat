@@ -1,7 +1,10 @@
 
 test_that("teardown error", {
   skip("teardown errors are ignored")
-  withr::local_envvar(TESTTHAT_PARALLEL = "TRUE")
+  withr::local_envvar(c(
+    TESTTHAT_PARALLEL = "TRUE",
+    TESTTHAT_GHA_SUMMARY = "FALSE"
+  ))
   err <- tryCatch(
     suppressMessages(testthat::test_local(
       test_path("test-parallel", "teardown"),

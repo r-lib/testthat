@@ -23,7 +23,10 @@ test_that("detect number of cpus to use", {
 })
 
 test_that("ok", {
-  withr::local_envvar(c(TESTTHAT_PARALLEL = "TRUE"))
+  withr::local_envvar(c(
+    TESTTHAT_PARALLEL = "TRUE",
+    TESTTHAT_GHA_SUMMARY = "FALSE"
+  ))
   suppressMessages(ret <- test_local(
     test_path("test-parallel", "ok"),
     reporter = "silent",

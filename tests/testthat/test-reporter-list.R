@@ -1,6 +1,7 @@
 
 # regression test: test_file() used to crash with a NULL reporter
 test_that("ListReporter with test_file and NULL reporter", {
+  withr::local_envvar(TESTTHAT_GHA_SUMMARY = "FALSE")
   test_file_path <- 'test-list-reporter/test-exercise-list-reporter.R'
   expect_error(test_file(test_path(test_file_path), reporter = NULL), NA)
 })
@@ -9,6 +10,7 @@ test_that("ListReporter with test_file and NULL reporter", {
 # of a test (test_that() call).
 # N.B: the exception here happens between two tests: "before" and "after"
 test_that("ListReporter - exception outside of test_that()", {
+  withr::local_envvar(TESTTHAT_GHA_SUMMARY = "FALSE")
   test_file_path <- 'test-list-reporter/test-exception-outside-tests.R'
   res <- test_file(test_path(test_file_path), reporter = NULL)
 
@@ -31,6 +33,7 @@ test_that("ListReporter - exception outside of test_that()", {
 
 
 test_that("captures error if only thing in file", {
+  withr::local_envvar(TESTTHAT_GHA_SUMMARY = "FALSE")
   test_file_path <- 'test-list-reporter/test-only-error.R'
   res <- test_file(test_path(test_file_path), reporter = NULL)
 
@@ -40,6 +43,7 @@ test_that("captures error if only thing in file", {
 
 # ListReporter on a "standard" test file: 2 contexts, passing, failing and crashing tests
 test_that("exercise ListReporter", {
+  withr::local_envvar(TESTTHAT_GHA_SUMMARY = "FALSE")
   test_file_path <- 'test-list-reporter/test-exercise-list-reporter.R'
   res <- test_file(test_path(test_file_path), reporter = NULL)
   expect_s3_class(res, "testthat_results")
@@ -60,6 +64,7 @@ test_that("exercise ListReporter", {
 
 # bare expectations are ignored
 test_that("ListReporter and bare expectations", {
+  withr::local_envvar(TESTTHAT_GHA_SUMMARY = "FALSE")
   test_file_path <- 'test-list-reporter/test-bare-expectations.R'
   res <- test_file(test_path(test_file_path), reporter = NULL)
 
