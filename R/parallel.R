@@ -73,9 +73,9 @@ test_files_parallel <- function(
   with_reporter(reporters$multi, {
     parallel_updates <- reporter$capabilities$parallel_updates
     if (parallel_updates) {
-      parallel_event_loop_smooth(queue, reporters)
+      parallel_event_loop_smooth(queue, reporters, test_dir)
     } else {
-      parallel_event_loop_chunky(queue, reporters)
+      parallel_event_loop_chunky(queue, reporters, test_dir)
     }
   })
 
@@ -106,7 +106,7 @@ default_num_cpus <- function() {
   2L
 }
 
-parallel_event_loop_smooth <- function(queue, reporters) {
+parallel_event_loop_smooth <- function(queue, reporters, test_dir) {
   update_interval <- 0.1
   next_update <- proc.time()[[3]] + update_interval
 
@@ -131,18 +131,26 @@ parallel_event_loop_smooth <- function(queue, reporters) {
       }
 
       if (m$cmd != "DONE") {
-        reporters$multi$start_file(m$filename)
-        do.call(reporters$multi[[m$cmd]], m$args)
-        updated <- TRUE
+        # Set working directory so expect_location() generates correct links
+        withr::with_dir(test_dir, {
+          reporters$multi$start_file(m$filename)
+          do.call(reporters$multi[[m$cmd]], m$args)
+          updated <- TRUE
+        })
       }
     }
 
     # We need to spin, even if there were no events
-    if (!updated) reporters$multi$update()
+    if (!updated) {
+      # Set working directory so expect_location() generates correct links
+      withr::with_dir(test_dir, {
+        reporters$multi$update()
+      })
+    }
   }
 }
 
-parallel_event_loop_chunky <- function(queue, reporters) {
+parallel_event_loop_chunky <- function(queue, reporters, test_dir) {
   files <- list()
   while (!queue$is_idle()) {
     msgs <- queue$poll(Inf)
@@ -162,8 +170,11 @@ parallel_event_loop_chunky <- function(queue, reporters) {
       if (m$cmd != "DONE") {
         files[[m$filename]] <- append(files[[m$filename]], list(m))
       } else {
-        replay_events(reporters$multi, files[[m$filename]])
-        reporters$multi$end_context_if_started()
+        # Set working directory so expect_location() generates correct links
+        withr::with_dir(test_dir, {
+          replay_events(reporters$multi, files[[m$filename]])
+          reporters$multi$end_context_if_started()
+        })
         files[[m$filename]] <- NULL
       }
     }

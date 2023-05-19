@@ -149,10 +149,8 @@ test_files <- function(test_dir,
 
   # Must keep these two blocks in sync
   if (parallel) {
-    # Set working directory so expect_location() generates correct links
-    withr::local_dir(test_dir)
     test_files_parallel(
-      test_dir = ".",
+      test_dir = test_dir,
       test_package = test_package,
       test_paths = test_paths,
       load_helpers = load_helpers,
