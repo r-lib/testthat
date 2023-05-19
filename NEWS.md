@@ -1,5 +1,7 @@
 # testthat (development version)
 
+* When using parallel tests, links to failed tests etc now work (#1787).
+
 * testthat no longer truncates tracebacks and uses rlang's default tree
   display.
 
