@@ -274,7 +274,6 @@ test_files_setup_state <- function(
     source_test_helpers(".", env)
   }
   source_test_setup(".", env)
-  withr::defer(withr::deferred_run(teardown_env()), frame) # new school
   withr::defer(source_test_teardown(".", env), frame)      # old school
 }
 
@@ -330,12 +329,12 @@ teardown_env <- function() {
   testthat_env$teardown_env
 }
 
-local_teardown_env <- function(env = parent.frame()) {
-  old <- testthat_env$teardown_env
-  testthat_env$teardown_env <- env(emptyenv())
-  withr::defer(testthat_env$teardown_env <- old, env)
-
-  invisible()
+local_teardown_env <- function(frame = parent.frame()) {
+  local_bindings(
+    teardown_env = frame,
+    .env = testthat_env,
+    .frame = frame
+  )
 }
 
 #' Find test files
