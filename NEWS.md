@@ -1,5 +1,7 @@
 # testthat (development version)
 
+* `skip_on_cran()` no longer skips (errors) when run interactively.
+
 * When using parallel tests, links to failed tests etc now work (#1787).
 
 * testthat no longer truncates tracebacks and uses rlang's default tree

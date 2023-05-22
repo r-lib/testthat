@@ -61,6 +61,10 @@ test_that("skip_on_cran() works as expected", {
 
   withr::local_envvar(NOT_CRAN = "false")
   expect_snapshot_skip(skip_on_cran())
+
+  withr::local_options(rlang_interactive = TRUE)
+  expect_no_skip(skip_on_cran())
+
 })
 
 
