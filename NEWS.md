@@ -1,5 +1,7 @@
 # testthat (development version)
 
+* `skip_on_cran()` no longer skips (errors) when run interactively.
+
 * `testthat::teardown_env()` works in more cases.
 
 * When using parallel tests, links to failed tests etc now work (#1787).
