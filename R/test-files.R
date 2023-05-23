@@ -277,12 +277,13 @@ test_files_setup_state <- function(
   withr::defer(source_test_teardown(".", env), frame)      # old school
 }
 
-test_files_reporter <- function(reporter, .env = parent.frame()) {
+test_files_reporter <- function(reporter, .env = parent.frame(), snapshot = TRUE) {
   lister <- ListReporter$new()
   reporters <- list(
     find_reporter(reporter),
     lister, # track data
-    local_snapshotter("_snaps", fail_on_new = FALSE, .env = .env) # for snapshots
+    if (snapshot)
+      local_snapshotter("_snaps", fail_on_new = FALSE, .env = .env) # for snapshots
   )
   list(
     multi = MultiReporter$new(reporters = compact(reporters)),

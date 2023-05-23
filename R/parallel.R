@@ -46,7 +46,9 @@ test_files_parallel <- function(
                        ) {
 
 
-  reporters <- test_files_reporter(reporter)
+  # we don't want to run the snapshot reported in the parent process,
+  # because SubprocessReporter never calls take_snapshot() etc
+  reporters <- test_files_reporter(reporter, snapshot = FALSE)
 
   # TODO: support timeouts. 20-30s for each file by default?
 
