@@ -123,6 +123,14 @@ snapshot_replay.condition <- function(x,
                                       ...,
                                       transform = NULL,
                                       cnd_class = FALSE) {
+  if (!use_rlang_1_0()) {
+    return(snapshot_replay_condition_legacy(
+      x,
+      state,
+      transform = transform
+    ))
+  }
+
   cnd_message <- env_get(ns_env("rlang"), "cnd_message")
 
   if (inherits(x, "message")) {
@@ -141,6 +149,27 @@ snapshot_replay.condition <- function(x,
   }
 
   c(snap_header(state, type), snapshot_lines(msg, transform))
+}
+
+snapshot_replay_condition_legacy <- function(x, state = env(), transform = NULL) {
+  msg <- cnd_message(x)
+
+  if (inherits(x, "error")) {
+    state$error <- x
+    type <- "Error"
+    msg <- add_implicit_nl(msg)
+  } else if (inherits(x, "warning")) {
+    type <- "Warning"
+    msg <- paste0(msg, "\n")
+  } else if (inherits(x, "message")) {
+    type <- "Message"
+  } else {
+    type <- "Condition"
+  }
+
+  class <- paste0(type, " <", class(x)[[1]], ">")
+
+  c(snap_header(state, class), snapshot_lines(msg, transform))
 }
 
 snapshot_lines <- function(x, transform = NULL) {
