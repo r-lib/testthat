@@ -314,10 +314,9 @@ output, a message, and a warning:</p>
 <span><span class="co">#&gt;   f()</span></span>
 <span><span class="co">#&gt; Output</span></span>
 <span><span class="co">#&gt;   [1] "Hello"</span></span>
-<span><span class="co">#&gt; Message</span></span>
+<span><span class="co">#&gt; Message &lt;simpleMessage&gt;</span></span>
 <span><span class="co">#&gt;   Hi!</span></span>
-<span><span class="co">#&gt; Condition</span></span>
-<span><span class="co">#&gt;   Warning in `f()`:</span></span>
+<span><span class="co">#&gt; Warning &lt;simpleWarning&gt;</span></span>
 <span><span class="co">#&gt;   How are you?</span></span></code></pre></div>
 <p>Capturing errors is <em>slightly</em> more difficult because
 <code><a href="../reference/expect_snapshot.html">expect_snapshot()</a></code> will fail when there’s an error:</p>
@@ -342,9 +341,8 @@ specifically request it with <code>error = TRUE</code>:</p>
 <span><span class="co">#&gt; Adding new snapshot:</span></span>
 <span><span class="co">#&gt; Code</span></span>
 <span><span class="co">#&gt;   1 + "a"</span></span>
-<span><span class="co">#&gt; Condition</span></span>
-<span><span class="co">#&gt;   Error in `1 + "a"`:</span></span>
-<span><span class="co">#&gt;   ! non-numeric argument to binary operator</span></span></code></pre></div>
+<span><span class="co">#&gt; Error &lt;simpleError&gt;</span></span>
+<span><span class="co">#&gt;   non-numeric argument to binary operator</span></span></code></pre></div>
 <p>When the code gets longer, I like to put <code>error = TRUE</code> up
 front so it’s a little more obvious:</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
@@ -359,19 +357,16 @@ front so it’s a little more obvious:</p>
 <span><span class="co">#&gt; Adding new snapshot:</span></span>
 <span><span class="co">#&gt; Code</span></span>
 <span><span class="co">#&gt;   1 + "a"</span></span>
-<span><span class="co">#&gt; Condition</span></span>
-<span><span class="co">#&gt;   Error in `1 + "a"`:</span></span>
-<span><span class="co">#&gt;   ! non-numeric argument to binary operator</span></span>
+<span><span class="co">#&gt; Error &lt;simpleError&gt;</span></span>
+<span><span class="co">#&gt;   non-numeric argument to binary operator</span></span>
 <span><span class="co">#&gt; Code</span></span>
 <span><span class="co">#&gt;   mtcars + iris</span></span>
-<span><span class="co">#&gt; Condition</span></span>
-<span><span class="co">#&gt;   Error in `Ops.data.frame()`:</span></span>
-<span><span class="co">#&gt;   ! '+' only defined for equally-sized data frames</span></span>
+<span><span class="co">#&gt; Error &lt;simpleError&gt;</span></span>
+<span><span class="co">#&gt;   '+' only defined for equally-sized data frames</span></span>
 <span><span class="co">#&gt; Code</span></span>
 <span><span class="co">#&gt;   mean + sum</span></span>
-<span><span class="co">#&gt; Condition</span></span>
-<span><span class="co">#&gt;   Error in `mean + sum`:</span></span>
-<span><span class="co">#&gt;   ! non-numeric argument to binary operator</span></span></code></pre></div>
+<span><span class="co">#&gt; Error &lt;simpleError&gt;</span></span>
+<span><span class="co">#&gt;   non-numeric argument to binary operator</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="snapshotting-values">Snapshotting values<a class="anchor" aria-label="anchor" href="#snapshotting-values"></a>
