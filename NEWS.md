@@ -1,5 +1,8 @@
 # testthat (development version)
 
+* Experimental `is_snapshotting()` to determine if code is running inside a 
+  snapshot test (#1796).
+
 * All packages, regardless of whether or not they use rlang, now
   use the new snapshot display for errors, warnings, and messages.
 
