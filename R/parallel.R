@@ -46,7 +46,7 @@ test_files_parallel <- function(
                        ) {
 
 
-  reporters <- test_files_reporter(reporter)
+  reporters <- test_files_reporter(reporter, parallel = TRUE)
 
   # TODO: support timeouts. 20-30s for each file by default?
 
@@ -70,13 +70,15 @@ test_files_parallel <- function(
     load_package = load_package
   )
 
-  with_reporter(reporters$multi, {
-    parallel_updates <- reporter$capabilities$parallel_updates
-    if (parallel_updates) {
-      parallel_event_loop_smooth(queue, reporters, test_dir)
-    } else {
-      parallel_event_loop_chunky(queue, reporters, test_dir)
-    }
+  withr::with_dir(test_dir, {
+    with_reporter(reporters$multi, {
+      parallel_updates <- reporter$capabilities$parallel_updates
+      if (parallel_updates) {
+        parallel_event_loop_smooth(queue, reporters, ".")
+      } else {
+        parallel_event_loop_chunky(queue, reporters, ".")
+      }
+    })
   })
 
   test_files_check(reporters$list$get_results(),

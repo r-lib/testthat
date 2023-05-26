@@ -8,6 +8,7 @@ local_snapshotter(
   snap_dir = NULL,
   cleanup = FALSE,
   fail_on_new = FALSE,
+  parallel = FALSE,
   .env = parent.frame()
 )
 }

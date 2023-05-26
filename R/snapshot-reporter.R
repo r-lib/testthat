@@ -9,14 +9,16 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
     snap_file_seen = character(),
     variants_changed = FALSE,
     fail_on_new = FALSE,
+    parallel = FALSE,
 
     old_snaps = NULL,
     cur_snaps = NULL,
     new_snaps = NULL,
 
-    initialize = function(snap_dir = "_snaps", fail_on_new = FALSE) {
+    initialize = function(snap_dir = "_snaps", fail_on_new = FALSE, parallel = FALSE) {
       self$snap_dir <- normalizePath(snap_dir, mustWork = FALSE)
       self$fail_on_new <- fail_on_new
+      self$parallel <- parallel
     },
 
     start_file = function(path, test = NULL) {
@@ -127,6 +129,11 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
     },
 
     end_file = function() {
+      if (self$parallel) {
+        # This is only needs to be done in the child threads.
+        return()
+      }
+
       dir.create(self$snap_dir, showWarnings = FALSE)
 
       self$cur_snaps$write()
@@ -193,9 +200,13 @@ get_snapshotter <- function() {
 #'
 #' @export
 #' @keywords internal
-local_snapshotter <- function(snap_dir = NULL, cleanup = FALSE, fail_on_new = FALSE, .env = parent.frame()) {
+local_snapshotter <- function(snap_dir = NULL, cleanup = FALSE, fail_on_new = FALSE, parallel = FALSE, .env = parent.frame()) {
   snap_dir <- snap_dir %||% withr::local_tempdir(.local_envir = .env)
-  reporter <- SnapshotReporter$new(snap_dir = snap_dir, fail_on_new = fail_on_new)
+  reporter <- SnapshotReporter$new(
+    snap_dir = snap_dir,
+    fail_on_new = fail_on_new,
+    parallel = parallel
+  )
   if (!identical(cleanup, FALSE)) {
     warn("`cleanup` is deprecated")
   }
