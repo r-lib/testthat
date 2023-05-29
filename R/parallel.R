@@ -46,7 +46,7 @@ test_files_parallel <- function(
                        ) {
 
 
-  reporters <- test_files_reporter(reporter, parallel = TRUE)
+  reporters <- test_files_reporter(reporter)
 
   # TODO: support timeouts. 20-30s for each file by default?
 
