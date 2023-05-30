@@ -103,6 +103,7 @@ test_that("snapshots are removed if test file is removed", {
   dir.create(tmp <- tempfile("testthat-snap-"))
   file.copy(test_path("test-parallel", "snap"), tmp, recursive = TRUE)
   unlink(file.path(tmp, "snap", "tests", "testthat", "test-snap-2.R"))
+  withr::local_envvar(CI = NA_character_)
   suppressMessages(ret <- test_local(
     file.path(tmp, "snap"),
     reporter = "silent",
