@@ -37,6 +37,7 @@ test_that("ok", {
 
 test_that("snapshots", {
   withr::local_envvar(c(TESTTHAT_PARALLEL = "TRUE"))
+  on.exit(unlink(tmp, recursive = TRUE), add = TRUE)
   dir.create(tmp <- tempfile("testthat-snap-"))
   file.copy(test_path("test-parallel", "snap"), tmp, recursive = TRUE)
   suppressMessages(ret <- test_local(
@@ -55,6 +56,7 @@ test_that("snapshots", {
 
 test_that("new snapshots are added", {
   withr::local_envvar(c(TESTTHAT_PARALLEL = "TRUE"))
+  on.exit(unlink(tmp, recursive = TRUE), add = TRUE)
   dir.create(tmp <- tempfile("testthat-snap-"))
   file.copy(test_path("test-parallel", "snap"), tmp, recursive = TRUE)
   unlink(file.path(tmp, "snap", "tests", "testthat", "_snaps", "snap-2.md"))
@@ -74,6 +76,7 @@ test_that("new snapshots are added", {
 
 test_that("snapshots are removed if test file has no snapshots", {
   withr::local_envvar(c(TESTTHAT_PARALLEL = "TRUE"))
+  on.exit(unlink(tmp, recursive = TRUE), add = TRUE)
   dir.create(tmp <- tempfile("testthat-snap-"))
   file.copy(test_path("test-parallel", "snap"), tmp, recursive = TRUE)
   writeLines(
@@ -96,6 +99,7 @@ test_that("snapshots are removed if test file has no snapshots", {
 
 test_that("snapshots are removed if test file is removed", {
   withr::local_envvar(c(TESTTHAT_PARALLEL = "TRUE"))
+  on.exit(unlink(tmp, recursive = TRUE), add = TRUE)
   dir.create(tmp <- tempfile("testthat-snap-"))
   file.copy(test_path("test-parallel", "snap"), tmp, recursive = TRUE)
   unlink(file.path(tmp, "snap", "tests", "testthat", "test-snap-2.R"))
