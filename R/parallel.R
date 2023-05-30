@@ -45,9 +45,6 @@ test_files_parallel <- function(
                        load_package = c("none", "installed", "source")
                        ) {
 
-
-  reporters <- test_files_reporter(reporter)
-
   # TODO: support timeouts. 20-30s for each file by default?
 
   num_workers <- min(default_num_cpus(), length(test_paths))
@@ -71,6 +68,7 @@ test_files_parallel <- function(
   )
 
   withr::with_dir(test_dir, {
+    reporters <- test_files_reporter_parallel(reporter)
     with_reporter(reporters$multi, {
       parallel_updates <- reporter$capabilities$parallel_updates
       if (parallel_updates) {
@@ -79,11 +77,29 @@ test_files_parallel <- function(
         parallel_event_loop_chunky(queue, reporters, ".")
       }
     })
-  })
 
-  test_files_check(reporters$list$get_results(),
-    stop_on_failure = stop_on_failure,
-    stop_on_warning = stop_on_warning
+    test_files_check(reporters$list$get_results(),
+      stop_on_failure = stop_on_failure,
+      stop_on_warning = stop_on_warning
+    )
+  })
+}
+
+test_files_reporter_parallel <- function(reporter, .env = parent.frame()) {
+  lister <- ListReporter$new()
+  snapshotter <- MainprocessSnapshotReporter$new("_snaps", fail_on_new = FALSE)
+  reporters <- list(
+    find_reporter(reporter),
+    lister, # track data
+    snapshotter
+  )
+  withr::local_options(
+    "testthat.snapshotter" = snapshotter,
+    .local_envir = .env
+  )
+  list(
+    multi = MultiReporter$new(reporters = compact(reporters)),
+    list = lister
   )
 }
 
@@ -133,21 +149,21 @@ parallel_event_loop_smooth <- function(queue, reporters, test_dir) {
       }
 
       if (m$cmd != "DONE") {
-        # Set working directory so expect_location() generates correct links
-        withr::with_dir(test_dir, {
-          reporters$multi$start_file(m$filename)
+        reporters$multi$start_file(m$filename)
+        reporters$multi$start_test(m$context, m$test)
+        if (m$type == "snapshotter") {
+          snapshotter <- getOption("testthat.snapshotter")
+          do.call(snapshotter[[m$cmd]], m$args)
+        } else {
           do.call(reporters$multi[[m$cmd]], m$args)
           updated <- TRUE
-        })
+        }
       }
     }
 
     # We need to spin, even if there were no events
     if (!updated) {
-      # Set working directory so expect_location() generates correct links
-      withr::with_dir(test_dir, {
-        reporters$multi$update()
-      })
+      reporters$multi$update()
     }
   }
 }
@@ -172,11 +188,8 @@ parallel_event_loop_chunky <- function(queue, reporters, test_dir) {
       if (m$cmd != "DONE") {
         files[[m$filename]] <- append(files[[m$filename]], list(m))
       } else {
-        # Set working directory so expect_location() generates correct links
-        withr::with_dir(test_dir, {
-          replay_events(reporters$multi, files[[m$filename]])
-          reporters$multi$end_context_if_started()
-        })
+        replay_events(reporters$multi, files[[m$filename]])
+        reporters$multi$end_context_if_started()
         files[[m$filename]] <- NULL
       }
     }
@@ -184,8 +197,13 @@ parallel_event_loop_chunky <- function(queue, reporters, test_dir) {
 }
 
 replay_events <- function(reporter, events) {
-  for (event in events) {
-    do.call(reporter[[event$cmd]], event$args)
+  snapshotter <- getOption("testthat.snapshotter")
+  for (m in events) {
+    if (m$type == "snapshotter") {
+      do.call(snapshotter[[m$cmd]], m$args)
+    } else {
+      do.call(reporter[[m$cmd]], m$args)
+    }
   }
 }
 
@@ -254,8 +272,17 @@ queue_task <- function(path) {
   env <- .GlobalEnv$.test_env
 
   withr::local_envvar("TESTTHAT_IS_PARALLEL" = "true")
-  reporters <- test_files_reporter(SubprocessReporter$new())
-  with_reporter(reporters$multi, test_one_file(path, env = env))
+  snapshotter <- SubprocessSnapshotReporter$new(
+    snap_dir = "_snaps",
+    fail_on_new = FALSE
+  )
+  withr::local_options(testthat.snapshotter = snapshotter)
+  reporters <- list(
+    SubprocessReporter$new(),
+    snapshotter
+  )
+  multi <- MultiReporter$new(reporters = reporters)
+  with_reporter(multi, test_one_file(path, env = env))
   NULL
 }
 
@@ -326,9 +353,12 @@ SubprocessReporter <- R6::R6Class("SubprocessReporter",
       private$event("start_file", filename)
     },
     start_test = function(context, test) {
+      private$context <- context
+      private$test <- test
       private$event("start_test", context, test)
     },
     start_context = function(context) {
+      private$context <- context
       private$event("start_context", context)
     },
     add_result = function(context, test, result) {
@@ -355,11 +385,16 @@ SubprocessReporter <- R6::R6Class("SubprocessReporter",
 
   private = list(
     filename = NULL,
+    context = NULL,
+    test = NULL,
     event = function(cmd, ...) {
       msg <- list(
         code = PROCESS_MSG,
+        type = "reporter",
         cmd = cmd,
         filename = private$filename,
+        context = private$context,
+        test = private$test,
         time = proc.time()[[3]],
         args = list(...)
       )
