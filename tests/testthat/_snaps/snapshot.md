@@ -267,3 +267,26 @@
       * Run ]8;;ide:run:testthat::snapshot_accept('foo/bar.R')testthat::snapshot_accept('foo/bar.R')]8;; to accept the change.
       * Run ]8;;ide:run:testthat::snapshot_review('foo/bar.R')testthat::snapshot_review('foo/bar.R')]8;; to interactively review the change.
 
+# is_snapshotting is true in snapshots
+
+    Code
+      is_snapshotting()
+    Output
+      [1] TRUE
+
+---
+
+    true
+
+---
+
+    [1] TRUE
+
+---
+
+    Is snapshotting!
+
+---
+
+    Is snapshotting!
+

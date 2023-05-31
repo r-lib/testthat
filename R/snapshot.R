@@ -84,7 +84,9 @@ expect_snapshot <- function(x,
       cnd_class = cnd_class
     )
   }
-  out <- verify_exec(quo_get_expr(x), quo_get_env(x), replay)
+  with_is_snapshotting(
+    out <- verify_exec(quo_get_expr(x), quo_get_env(x), replay)
+  )
 
   # Use expect_error() machinery to confirm that error is as expected
   msg <- compare_condition_3e("error", state$error, quo_label(x), error)
@@ -219,7 +221,9 @@ expect_snapshot_output <- function(x, cran = FALSE, variant = NULL) {
   variant <- check_variant(variant)
 
   lab <- quo_label(enquo(x))
-  val <- capture_output_lines(x, print = TRUE, width = NULL)
+  with_is_snapshotting(
+    val <- capture_output_lines(x, print = TRUE, width = NULL)
+  )
 
   expect_snapshot_helper(lab, val,
     cran = cran,
@@ -261,7 +265,9 @@ expect_snapshot_condition <- function(base_class, x, class, cran = FALSE, varian
   variant <- check_variant(variant)
 
   lab <- quo_label(enquo(x))
-  val <- capture_matching_condition(x, cnd_matcher(class))
+  with_is_snapshotting(
+    val <- capture_matching_condition(x, cnd_matcher(class))
+  )
   if (is.null(val)) {
     if (base_class == class) {
       fail(sprintf("%s did not generate %s", lab, base_class))
@@ -326,6 +332,7 @@ expect_snapshot_value <- function(x,
     serialize = function(x) unserialize(jsonlite::base64_dec(x))
   )
 
+  with_is_snapshotting(force(x))
   expect_snapshot_helper(lab, x,
     save = save,
     load = load,
@@ -457,4 +464,21 @@ check_variant <- function(x) {
   } else {
     abort("If supplied, `variant` must be a string")
   }
+}
+
+with_is_snapshotting <- function(code) {
+  withr::local_options(testthat_is_snapshotting = TRUE)
+  code
+}
+
+#' Is the code currently run within a snapshot test?
+#'
+#' This is often useful to compute a default argument for `quiet`. You
+#' often want to deliberatey suppress output for tests but still track
+#' it when snapshotting: `quiet = is_testing() && !is_snapshotting() `
+#'
+#' @export
+#' @keywords internal
+is_snapshotting <- function() {
+  getOption("testthat_is_snapshotting", FALSE)
 }

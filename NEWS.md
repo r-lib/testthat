@@ -1,5 +1,11 @@
 # testthat (development version)
 
+* Experimental `is_snapshotting()` to determine if code is running inside a 
+  snapshot test (#1796).
+
+* All packages, regardless of whether or not they use rlang, now
+  use the new snapshot display for errors, warnings, and messages.
+
 * `skip_on_cran()` no longer skips (errors) when run interactively.
 
 * `testthat::teardown_env()` works in more cases.
