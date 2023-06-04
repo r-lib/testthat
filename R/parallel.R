@@ -230,6 +230,11 @@ queue_setup <- function(test_paths,
       installed = library(!!test_package, character.only = TRUE),
       source = pkgload::load_all(!!test_dir, helpers = FALSE, quiet = TRUE)
     )
+
+    options(
+      cli.hyperlink = !!cli::ansi_has_hyperlink_support()
+    )
+
     asNamespace("testthat")$queue_process_setup(
       test_package = !!test_package,
       test_dir = !!test_dir,

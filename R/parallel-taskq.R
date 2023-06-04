@@ -111,10 +111,7 @@ task_q <- R6::R6Class(
         fun = nl,
         args = nl,
         worker = nl)
-      rsopts <- callr::r_session_options(
-        ...,
-        cli.hyperlink = cli::ansi_has_hyperlink_support()
-      )
+      rsopts <- callr::r_session_options(...)
       for (i in seq_len(concurrency)) {
         rs <- callr::r_session$new(rsopts, wait = FALSE)
         private$tasks$worker[[i]] <- rs
