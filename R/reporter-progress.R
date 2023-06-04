@@ -27,7 +27,6 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
     skips = NULL,
 
     max_fail = NULL,
-    verbose_skips = NULL,
     n_ok = 0,
     n_skip = 0,
     n_warn = 0,
@@ -50,13 +49,11 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
                           max_failures = testthat_max_fails(),
                           min_time = 0.1,
                           update_interval = 0.1,
-                          verbose_skips = getOption("testthat.progress.verbose_skips", TRUE),
                           ...) {
       super$initialize(...)
       self$capabilities$parallel_support <- TRUE
       self$show_praise <- show_praise
       self$max_fail <- max_failures
-      self$verbose_skips <- !rlang::is_false(verbose_skips)
       self$min_time <- min_time
       self$update_interval <- update_interval
 
@@ -223,10 +220,7 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
       } else if (expectation_skip(result)) {
         self$n_skip <- self$n_skip + 1
         self$ctxt_n_skip <- self$ctxt_n_skip + 1
-        if (self$verbose_skips) {
-          self$ctxt_issues$push(result)
-        }
-        self$skips$push(result$message)
+        self$skips$push(result)
       } else if (expectation_warning(result)) {
         self$n_warn <- self$n_warn + 1
         self$ctxt_n_warn <- self$ctxt_n_warn + 1
@@ -253,11 +247,7 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
         self$cat_line()
       }
 
-      if (self$n_skip > 0) {
-        self$rule("Skipped tests ", line = 1)
-        self$cat_line(skip_bullets(self$skips$as_list()))
-        self$cat_line()
-      }
+      skip_report(self)
 
       status <- summary_line(self$n_fail, self$n_warn, self$n_skip, self$n_ok)
       self$cat_line(status)
@@ -359,6 +349,8 @@ CompactProgressReporter <- R6::R6Class("CompactProgressReporter",
     },
 
     end_reporter = function() {
+      skip_report(self)
+
       if (self$n_fail > 0 || self$n_warn > 0 || self$n_skip > 0) {
         self$show_status()
         self$cat_line()
@@ -461,10 +453,8 @@ ParallelProgressReporter <- R6::R6Class("ParallelProgressReporter",
       } else if (expectation_skip(result)) {
         self$n_skip <- self$n_skip + 1
         self$files[[file]]$n_skip <- self$files[[file]]$n_skip + 1L
-        if (self$verbose_skips) {
-          self$files[[file]]$issues$push(result)
-        }
-        self$skips$push(result$message)
+        self$files[[file]]$issues$push(result)
+        self$skips$push(result)
       } else if (expectation_warning(result)) {
         self$n_warn <- self$n_warn + 1
         self$files[[file]]$n_warn <- self$files[[file]]$n_warn + 1L
@@ -528,14 +518,34 @@ strpad <- function(x, width = cli::console_width()) {
   paste0(x, strrep(" ", n))
 }
 
-skip_bullets <- function(skips) {
-  skips <- unlist(skips)
-  skips <- gsub("Reason: ", "", skips)
-  skips <- gsub(":?\n(\n|.)+", "", skips) # only show first line
+skip_report <- function(reporter, line = 1) {
+  n <- reporter$skips$size()
+  if (n == 0) {
+    return()
+  }
 
-  tbl <- table(skips)
-  paste0(cli::symbol$bullet, " ", names(tbl), " (", tbl, ")")
+  reporter$rule(paste0("Skipped tests (", n, ")"), line = line)
+  reporter$cat_line(skip_bullets(reporter$skips$as_list()))
+  reporter$cat_line()
 }
+
+
+skip_bullets <- function(skips) {
+  message <- map_chr(skips, "[[", "message")
+  message <- gsub("Reason: ", "", message)
+  message <- gsub(":?\n(\n|.)+", "", message) # only show first line
+
+  locs <- map_chr(skips, expectation_location)
+  locs_by_skip <- split(locs, message)
+  n <- lengths(locs_by_skip)
+  skip_summary <- map_chr(locs_by_skip, paste, collapse = ", ")
+
+  bullets <- paste0(
+    cli::symbol$bullet, " ", names(locs_by_skip), " (", n, "): ", skip_summary
+  )
+  cli::ansi_strwrap(bullets, exdent = 2)
+}
+
 
 
 #' Set maximum number of test failures allowed before aborting the run

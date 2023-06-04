@@ -1,5 +1,9 @@
 # testthat (development version)
 
+* Skips are now only shown in end of reporter summaries, not as tests are run.
+  This makes them less intrusive in interactive tests while still allowing
+  you to verify that the correct tests are skipped (#1801).
+
 * Experimental `is_snapshotting()` to determine if code is running inside a 
   snapshot test (#1796).
 
