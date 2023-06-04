@@ -56,17 +56,18 @@ test_that("skip_if_not_installed() works as expected", {
 })
 
 test_that("skip_on_cran() works as expected", {
+  skip_on_cran()
+
   withr::local_envvar(NOT_CRAN = "true")
   expect_no_skip(skip_on_cran())
 
   withr::local_envvar(NOT_CRAN = "false")
-  expect_snapshot_skip(skip_on_cran())
+  expect_snapshot_skip(skip_on_cran(), cran = TRUE)
 
   withr::local_options(rlang_interactive = TRUE)
   expect_no_skip(skip_on_cran())
 
 })
-
 
 test_that("skip_on_ci() works as expected", {
   withr::local_envvar(CI = "false")
