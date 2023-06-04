@@ -224,6 +224,8 @@ queue_setup <- function(test_paths,
 
   test_package <- test_package %||% Sys.getenv("TESTTHAT_PKG")
 
+  hyperlinks <- cli::ansi_has_hyperlink_support()
+
   # First we load the package "manually", in case it is testthat itself
   load_hook <- expr({
     switch(!!load_package,
@@ -231,8 +233,10 @@ queue_setup <- function(test_paths,
       source = pkgload::load_all(!!test_dir, helpers = FALSE, quiet = TRUE)
     )
 
+    # Ensure snapshot can generate hyperlinks for snapshot_accept()
     options(
-      cli.hyperlink = !!cli::ansi_has_hyperlink_support()
+      cli.hyperlink = !!hyperlinks,
+      cli.hyperlink_run = !!hyperlinks
     )
 
     asNamespace("testthat")$queue_process_setup(
