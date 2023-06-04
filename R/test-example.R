@@ -61,9 +61,11 @@ test_example <- function(path, title = path) {
 
   env <- new.env(parent = globalenv())
 
-  ok <- test_code(title,
-    parse(ex_path, encoding = "UTF-8"),
+  ok <- test_code(
+    test = title,
+    code = parse(ex_path, encoding = "UTF-8"),
     env = env,
+    default_reporter = StopReporter$new(),
     skip_on_empty = FALSE
   )
   if (ok) succeed(path)
