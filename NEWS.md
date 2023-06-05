@@ -1,5 +1,8 @@
 # testthat (development version)
 
+* New `is_checking()` returns `TRUE` when your tests are run by `R CMD CHECK`
+  (i.e. by `test_check()`) (#1795).
+
 * Only report test files that take longer than a second (#1806).
 
 * Links generate for snapshot hints now work when using parallel tests (#1802).

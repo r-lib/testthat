@@ -3,6 +3,7 @@
 \name{is_testing}
 \alias{is_testing}
 \alias{is_parallel}
+\alias{is_checking}
 \alias{testing_package}
 \title{Determine testing status}
 \usage{
@@ -10,12 +11,16 @@ is_testing()
 
 is_parallel()
 
+is_checking()
+
 testing_package()
 }
 \description{
 \itemize{
 \item \code{is_testing()} determine if code is being run as part of a test
 \item \code{is_parallel()} if the test is being run in parallel.
+\item \code{is_checking()} if the tests run as part of \verb{R CMD check} (i.e. by
+\code{\link[=test_check]{test_check()}}).
 \item \code{testing_package()} gives name of the package being tested.
 }
 
