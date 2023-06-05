@@ -3,7 +3,8 @@
 testing content:
 is_testing() is TRUE when run inside a test.
 is_parallel() is TRUE if the test is run in parallel.
-is_snapshot() is TRUE when run inside a snapshot test.
+is_checking() is TRUE when the tests run as part of R CMD check
+(i.e. by test_check()).
 testing_package() gives name of the package being tested.
 
 
@@ -14,7 +15,8 @@ just copy the implementation of these functions in a utils.R or similar."><title
 testing content:
 is_testing() is TRUE when run inside a test.
 is_parallel() is TRUE if the test is run in parallel.
-is_snapshot() is TRUE when run inside a snapshot test.
+is_checking() is TRUE when the tests run as part of R CMD check
+(i.e. by test_check()).
 testing_package() gives name of the package being tested.
 
 
@@ -96,7 +98,8 @@ just copy the implementation of these functions in a utils.R or similar."><meta 
     <p>These functions help you determine if you code is running in a particular
 testing content:</p><ul><li><p><code>is_testing()</code> is <code>TRUE</code> when run inside a test.</p></li>
 <li><p><code>is_parallel()</code> is <code>TRUE</code> if the test is run in parallel.</p></li>
-<li><p><code>is_snapshot()</code> is <code>TRUE</code> when run inside a snapshot test.</p></li>
+<li><p><code>is_checking()</code> is <code>TRUE</code> when the tests run as part of <code>R CMD check</code>
+(i.e. by <code><a href="test_package.html">test_check()</a></code>).</p></li>
 <li><p><code>testing_package()</code> gives name of the package being tested.</p></li>
 </ul><p>A common use of these functions is to compute a default value for a <code>quiet</code>
 argument with <code>is_testing() &amp;&amp; !is_snapshotting()</code>. In this case, you'll
@@ -109,6 +112,8 @@ just copy the implementation of these functions in a <code>utils.R</code> or sim
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">is_testing</span><span class="op">(</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu">is_parallel</span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">is_checking</span><span class="op">(</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu">is_snapshot</span><span class="op">(</span><span class="op">)</span></span>
 <span></span>
