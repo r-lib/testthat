@@ -148,7 +148,7 @@ expect_contains <- function(object, expected) {
 }
 
 #' @export
-#' @rdname expect_in
+#' @rdname expect_setequal
 expect_in <- function(object, expected) {
   act <- quasi_label(enquo(object), arg = "object")
   exp <- quasi_label(enquo(expected), arg = "expected")

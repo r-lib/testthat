@@ -4,6 +4,7 @@
 \alias{expect_setequal}
 \alias{expect_mapequal}
 \alias{expect_contains}
+\alias{expect_in}
 \title{Does code return a vector containing the expected values?}
 \usage{
 expect_setequal(object, expected)
@@ -11,6 +12,8 @@ expect_setequal(object, expected)
 expect_mapequal(object, expected)
 
 expect_contains(object, expected)
+
+expect_in(object, expected)
 }
 \arguments{
 \item{object, expected}{Computation and value to compare it to.
