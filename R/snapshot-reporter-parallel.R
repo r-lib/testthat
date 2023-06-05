@@ -58,8 +58,8 @@ SubprocessSnapshotReporter <- R6::R6Class("SubprocessSnapshotReporter",
         type = "snapshotter",
         cmd = cmd,
         filename = private$filename,
-        context = context,
-        test = test,
+        context = private$context,
+        test = private$test,
         time = NULL,
         args = list(...)
       )
