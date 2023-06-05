@@ -15,3 +15,14 @@ test_that("is_checking respects env var", {
   withr::local_envvar(TESTTHAT_IS_CHECKING = "false")
   expect_false(is_checking())
 })
+
+test_that("is_snapshot() is true in snapshots", {
+  local_edition(3) # why is this needed?
+  expect_false(is_snapshot())
+
+  expect_snapshot(is_snapshot())
+  expect_snapshot_value(is_snapshot())
+  expect_snapshot_output(is_snapshot())
+  expect_snapshot_warning(if (is_snapshot()) warning("Is snapshotting!"))
+  expect_snapshot_error(if (is_snapshot()) stop("Is snapshotting!"))
+})
