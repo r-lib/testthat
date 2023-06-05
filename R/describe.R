@@ -80,6 +80,7 @@ describe_it <- function(description, code, env = parent.frame()) {
     description,
     code,
     env = env,
+    default_reporter = local_interactive_reporter(),
     skip_on_empty = FALSE
   )
 }
