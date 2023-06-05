@@ -41,7 +41,7 @@ working directory). This is hard to debug, because it's very hard to figure
 out which test made the change.
 
 Luckily testthat provides a tool to figure out if tests are changing global
-state. You can write a function called \code{testthat_state} and
+state. You can write a function called \code{testthat_state()} and
 testthat will run it before and after each test, store the results, then
 report if there are any differences. For example, if you wanted to see if
 any of your tests were changing options or environment variables, you could
@@ -59,7 +59,7 @@ write:
 the global state, in which case you might want to modify this function
 to ignore those values.)
 
-Other problem that can be troublesome to resolve are CRAN check notes that
+Other problems that can be troublesome to resolve are CRAN check notes that
 report things like connections being left open. You can easily debug
 that problem with:
 
