@@ -136,7 +136,7 @@ expect_contains <- function(object, expected) {
 
   if (any(exp_miss)) {
     fail(paste0(
-      act$lab, " (`actual`) doesn't contain all the values in ", exp$lab, " (`expected)`.\n",
+      act$lab, " (`actual`) doesn't contain all the values in ", exp$lab, " (`expected`).\n",
       paste0("* Missing from `actual`: ",  values(exp$val[exp_miss]), "\n"),
       paste0("* Present in `actual`:   ",  values(act$val), "\n")
     ))
@@ -161,7 +161,7 @@ expect_in <- function(object, expected) {
 
   if (any(act_miss)) {
     fail(paste0(
-      "All values of ", act$lab, " (`actual`) aren't contained in ", exp$lab, " (`expected`).\n",
+      act$lab, " (`actual`) isn't fully contained within ", exp$lab, " (`expected`).\n",
       paste0("* Missing from `expected`: ",  values(act$val[act_miss]), "\n"),
       paste0("* Present in `expected`:   ",  values(exp$val), "\n")
     ))
