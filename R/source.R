@@ -34,7 +34,12 @@ source_file <- function(path, env = test_env(), chdir = TRUE,
 
   withr::local_options(testthat_topenv = env)
   if (wrap) {
-    invisible(test_code(NULL, exprs, env))
+    invisible(test_code(
+      test = NULL,
+      code = exprs,
+      env = env,
+      default_reporter = StopReporter$new()
+    ))
   } else {
     withCallingHandlers(
       invisible(eval(exprs, env)),
