@@ -53,6 +53,14 @@ test_that("can scrub output/messages/warnings/errors", {
   expect_snapshot(print("secret"), transform = ~ gsub("secret", "****", .x))
 })
 
+test_that("can define automatic transformer", {
+  local_bindings(
+    testthat_snapshot_transform = function(x) gsub("abc", "ABC", x),
+    .env = the$testing_env
+  )
+  expect_snapshot(print(c("abc", "def")))
+})
+
 test_that("always checks error status", {
   expect_error(expect_snapshot(stop("!"), error = FALSE))
   expect_failure(expect_snapshot(print("!"), error = TRUE))

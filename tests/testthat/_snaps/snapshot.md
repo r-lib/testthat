@@ -88,6 +88,13 @@
     Output
       [1] "****"
 
+# can define automatic transformer
+
+    Code
+      print(c("abc", "def"))
+    Output
+      [1] "ABC" "def"
+
 # can capture error/warning messages
 
     This is an error

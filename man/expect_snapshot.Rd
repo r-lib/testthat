@@ -26,7 +26,11 @@ expected error is not thrown.}
 
 \item{transform}{Optionally, a function to scrub sensitive or stochastic
 text from the output. Should take a character vector of lines as input
-and return a modified character vector as output.}
+and return a modified character vector as output.
+
+If you want to automatically transform every snapshot, you can define
+a function called \code{testthat_snapshot_transform()} in a helper, and it
+will be automatically used when \code{transform} is \code{NULL}.}
 
 \item{variant}{If non-\code{NULL}, results will be saved in
 \verb{_snaps/\{variant\}/\{test.md\}}, so \code{variant} must be a single string

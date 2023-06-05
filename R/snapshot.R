@@ -56,6 +56,11 @@
 #' @param transform Optionally, a function to scrub sensitive or stochastic
 #'   text from the output. Should take a character vector of lines as input
 #'   and return a modified character vector as output.
+#'
+#'   If you want to automatically transform every snapshot, you can define
+#'   a function called `testthat_snapshot_transform()` in a helper, and it
+#'   will be automatically used when `transform` is `NULL`.
+#'
 #' @param cnd_class Whether to include the class of messages,
 #'   warnings, and errors in the snapshot. Only the most specific
 #'   class is included, i.e. the first element of `class(cnd)`.
@@ -70,6 +75,8 @@ expect_snapshot <- function(x,
   variant <- check_variant(variant)
   if (!is.null(transform)) {
     transform <- as_function(transform)
+  } else {
+    transform <- the$testing_env$testthat_snapshot_transform
   }
 
   x <- enquo0(x)

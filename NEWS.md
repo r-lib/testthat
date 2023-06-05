@@ -1,5 +1,9 @@
 # testthat (development version)
 
+* `expect_snapshot()` now will automatically use a function called 
+  `testthat_snapshot_transform` as the `transform` argument if it's found
+  in the testing environment (#1803).
+
 * Only report test files that take longer than a second (#1806).
 
 * Links generate for snapshot hints now work when using parallel tests (#1802).

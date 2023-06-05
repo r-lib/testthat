@@ -30,6 +30,9 @@
 #'   `compare_file_binary()` compares byte-by-byte and
 #'   `compare_file_text()` compares lines-by-line, ignoring
 #'   the difference between Windows and Mac/Linux line endings.
+#' @param transform Optionally, a function to scrub sensitive or stochastic
+#'   text from the output. Should take a character vector of lines as input
+#'   and return a modified character vector as output.
 #' @param variant If not-`NULL`, results will be saved in
 #'   `_snaps/{variant}/{test}/{name}.{ext}`. This allows you to create
 #'   different snapshots for different scenarios, like different operating
