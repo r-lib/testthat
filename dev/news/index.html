@@ -71,16 +71,13 @@
 
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="development version" id="testthat-development-version">testthat (development version)<a class="anchor" aria-label="anchor" href="#testthat-development-version"></a></h2>
-<ul><li><p>New <code><a href="../reference/is_testing.html">is_checking()</a></code> returns <code>TRUE</code> when your tests are run by <code>R CMD CHECK</code> (i.e. by <code><a href="../reference/test_package.html">test_check()</a></code>) (<a href="https://github.com/r-lib/testthat/issues/1795" class="external-link">#1795</a>).</p></li>
-<li><p>Skips are now only shown at the end of reporter summaries, not as tests are run. This makes them less intrusive in interactive tests while still allowing you to verify that the correct tests are skipped (<a href="https://github.com/r-lib/testthat/issues/1801" class="external-link">#1801</a>).</p></li>
-<li><p>Experimental <code>is_snapshotting()</code> to determine if code is running inside a</p></li>
-<li><p>Only report test files that take longer than a second (<a href="https://github.com/r-lib/testthat/issues/1806" class="external-link">#1806</a>).</p></li>
-<li><p>Links generate for snapshot hints now work when using parallel tests (<a href="https://github.com/r-lib/testthat/issues/1802" class="external-link">#1802</a>).</p></li>
-<li><p>New <code><a href="../reference/is_testing.html">is_snapshot()</a></code> to determine if code is running inside a snapshot test (<a href="https://github.com/r-lib/testthat/issues/1796" class="external-link">#1796</a>).</p></li>
+<ul><li><p>Skips are now only shown at the end of reporter summaries, not as tests are run. This makes them less intrusive in interactive tests while still allowing you to verify that the correct tests are skipped (<a href="https://github.com/r-lib/testthat/issues/1801" class="external-link">#1801</a>).</p></li>
+<li><p><code>ProgressReporter</code> only reports the run time of test files that take longer than 1s, rather than 0.1s. (<a href="https://github.com/r-lib/testthat/issues/1806" class="external-link">#1806</a>).</p></li>
+<li><p>New <code><a href="../reference/is_testing.html">is_snapshot()</a></code> returns <code>TRUE</code> if code is running inside a snapshot test (<a href="https://github.com/r-lib/testthat/issues/1796" class="external-link">#1796</a>) and <code><a href="../reference/is_testing.html">is_checking()</a></code> returns <code>TRUE</code> if test is running inside of <code>R CMD check</code> (<a href="https://github.com/r-lib/testthat/issues/1795" class="external-link">#1795</a>)</p></li>
 <li><p>All packages, regardless of whether or not they use rlang, now use the new snapshot display for errors, warnings, and messages.</p></li>
 <li><p><code><a href="../reference/skip.html">skip_on_cran()</a></code> no longer skips (errors) when run interactively.</p></li>
 <li><p><code><a href="../reference/teardown_env.html">testthat::teardown_env()</a></code> works in more cases.</p></li>
-<li><p>When using parallel tests, links to failed tests etc now work (<a href="https://github.com/r-lib/testthat/issues/1787" class="external-link">#1787</a>).</p></li>
+<li><p>When using parallel tests, links to failed tests (<a href="https://github.com/r-lib/testthat/issues/1787" class="external-link">#1787</a>) and running links for snapshot hints (<a href="https://github.com/r-lib/testthat/issues/1802" class="external-link">#1802</a>) now works.</p></li>
 <li><p>testthat no longer truncates tracebacks and uses rlang’s default tree display.</p></li>
 </ul></div>
     <div class="section level2">
