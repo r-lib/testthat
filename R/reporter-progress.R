@@ -453,7 +453,6 @@ ParallelProgressReporter <- R6::R6Class("ParallelProgressReporter",
       } else if (expectation_skip(result)) {
         self$n_skip <- self$n_skip + 1
         self$files[[file]]$n_skip <- self$files[[file]]$n_skip + 1L
-        self$files[[file]]$issues$push(result)
         self$skips$push(result)
       } else if (expectation_warning(result)) {
         self$n_warn <- self$n_warn + 1
