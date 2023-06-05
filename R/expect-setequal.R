@@ -117,3 +117,28 @@ check_names_ok <- function(x, label) {
     stop("All elements in `", label, "` must be named")
   }
 }
+
+#' @export
+#' @rdname expect_setequal
+expect_contains <- function(object, expected) {
+  act <- quasi_label(enquo(object), arg = "object")
+  exp <- quasi_label(enquo(expected), arg = "expected")
+
+  if (!is_vector(act$val) || !is_vector(exp$val)) {
+    abort("`object` and `expected` must both be vectors")
+  }
+
+  exp_miss <- !exp$val %in% act$val
+
+  if (any(exp_miss)) {
+    fail(paste0(
+      act$lab, " doesn't contain all the values in ", exp$lab, ".\n",
+      paste0("* Missing from `actual`: ",  values(exp$val[exp_miss]), "\n"),
+      paste0("* Present in `actual`:   ",  values(act$val), "\n")
+    ))
+  } else {
+    succeed()
+  }
+
+  invisible(act$val)
+}

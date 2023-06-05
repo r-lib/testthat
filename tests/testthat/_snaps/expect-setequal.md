@@ -12,3 +12,17 @@
     * Only in `expected`: 4, 5, 6, 7, 8, 9, 10, 11, 12, ...
     
 
+---
+
+    `x1` doesn't contain all the values in `x2`.
+    * Missing from `actual`: "d"
+    * Present in `actual`:   "a", "b", "c"
+    
+
+---
+
+    `x1` doesn't contain all the values in `x3`.
+    * Missing from `actual`: "d", "e"
+    * Present in `actual`:   "a", "b", "c"
+    
+

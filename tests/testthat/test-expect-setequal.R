@@ -77,3 +77,22 @@ test_that("succeeds if comparing empty named and unnamed vectors", {
   expect_warning(expect_success(expect_mapequal(x2, x1)))
   expect_warning(expect_success(expect_mapequal(x2, x2)))
 })
+
+
+# contains ----------------------------------------------------------------
+
+test_that("succeeds when appropriate", {
+  expect_success(expect_contains(letters, "a"))
+  expect_success(expect_contains(letters, letters))
+  expect_success(expect_contains(letters, character()))
+})
+
+test_that("useful message on faillure", {
+  x1 <- c("a", "b", "c")
+  x2 <- c("c", "d")
+  x3 <- c("d", "e")
+
+  expect_snapshot_failure(expect_contains(x1, x2))
+  expect_snapshot_failure(expect_contains(x1, x3))
+})
+
