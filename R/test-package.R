@@ -46,6 +46,8 @@ test_check <- function(package, reporter = check_reporter(), ...) {
   require(package, character.only = TRUE)
   options(cli.hyperlink = FALSE)
 
+  withr::local_envvar(TESTTHAT_IS_CHECKING = "true")
+
   test_dir(
     "testthat",
     package = package,
