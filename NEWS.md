@@ -1,6 +1,6 @@
 # testthat (development version)
 
-* Skips are now only shown in end of reporter summaries, not as tests are run.
+* Skips are now only shown at the end of reporter summaries, not as tests are run.
   This makes them less intrusive in interactive tests while still allowing
   you to verify that the correct tests are skipped (#1801).
 
