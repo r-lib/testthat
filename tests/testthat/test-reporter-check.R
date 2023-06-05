@@ -1,5 +1,5 @@
 test_that("basic report works", {
-  withr::defer(file.remove(test_path("testthat-problems.rds")))
+  withr::defer(unlink(test_path("testthat-problems.rds")))
   expect_snapshot_reporter(CheckReporter$new())
 
   rds <- test_path("testthat-problems.rds")

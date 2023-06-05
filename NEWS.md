@@ -1,5 +1,10 @@
 # testthat (development version)
 
+* Skips are now only shown at the end of reporter summaries, not as tests are run.
+  This makes them less intrusive in interactive tests while still allowing
+  you to verify that the correct tests are skipped (#1801).
+
+* Experimental `is_snapshotting()` to determine if code is running inside a 
 * Only report test files that take longer than a second (#1806).
 
 * Links generate for snapshot hints now work when using parallel tests (#1802).
