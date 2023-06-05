@@ -191,7 +191,7 @@ test_files_serial <- function(test_dir,
 
   env <- test_files_setup_env(test_package, test_dir, load_package, env)
   # record testing env for mocks
-  local_bindings(current_test_env = env, .env = testthat_env)
+  local_testing_env(env)
 
   test_files_setup_state(test_dir, test_package, load_helpers, env)
   reporters <- test_files_reporter(reporter)
@@ -322,19 +322,15 @@ test_one_file <- function(path, env = test_env(), wrap = TRUE) {
 #'
 #' @export
 teardown_env <- function() {
-  if (is.null(testthat_env$teardown_env)) {
+  if (is.null(the$teardown_env)) {
     abort("`teardown_env()` has not been initialized", .internal = TRUE)
   }
 
-  testthat_env$teardown_env
+  the$teardown_env
 }
 
 local_teardown_env <- function(frame = parent.frame()) {
-  local_bindings(
-    teardown_env = frame,
-    .env = testthat_env,
-    .frame = frame
-  )
+  local_bindings(teardown_env = frame, .env = the, .frame = frame)
 }
 
 #' Find test files
