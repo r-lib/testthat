@@ -13,6 +13,46 @@
 #' changes. Avoid changing global state, when possible, and reverse any changes
 #' that you do make.
 #'
+#' # Detecting changes to global state
+#'
+#' One of the most pernicious challenges to debug is when a test runs fine
+#' in your test suite, but fails when you run it interactively (or similarly,
+#' it fails randomly when running your tests in parallel). One of the most
+#' common causes of this problem is accidentally changing global state in a
+#' previous test (e.g. changing an option, an environment variable, or the
+#' working directory). This is hard to debug, because it's very hard to figure
+#' out which test made the change.
+#'
+#' Luckily testthat provides a tool to figure out if tests are changing global
+#' state. You can write a function called `testthat_state` and
+#' testthat will run it before and after each test, store the results, then
+#' report if there are any differences. For example, if you wanted to see if
+#' any of your tests were changing options or environment variables, you could
+#' write:
+#'
+#' ```R
+#' testthat_state <- function() {
+#'   list(
+#'     options = options(),
+#'     envvars = Sys.getenv()
+#'   )
+#' }
+#' ```
+#'
+#' (You might discover other packages outside your control are changing
+#' the global state, in which case you might want to modify this function
+#' to ignore those values.)
+#'
+#' Other problem that can be troublesome to resolve are CRAN check notes that
+#' report things like connections being left open. You can easily debug
+#' that problem with:
+#'
+#' ```R
+#' testthat_state <- function() {
+#'   getAllConnections()
+#' }
+#' ```
+#'
 #' @param desc Test name. Names should be brief, but evocative. It's common to
 #'   write the description so that it reads like a natural sentence, e.g.
 #'   `test_that("multiplication works", { ... })`.
@@ -192,6 +232,7 @@ test_code <- function(test, code, env, default_reporter, skip_on_empty = TRUE) {
 
   withr::local_options(testthat_topenv = test_env)
 
+  before <- testthat_state_callback()
   tryCatch(
     withCallingHandlers(
       {
@@ -211,7 +252,28 @@ test_code <- function(test, code, env, default_reporter, skip_on_empty = TRUE) {
     # skip silently terminate code
     skip  = function(e) {}
   )
+  after <- testthat_state_callback()
 
+  if (!is.null(test)) {
+    diffs <- waldo_compare(before, after, x_arg = "before", y_arg = "after")
+
+    if (length(diffs) > 0) {
+      srcref <- attr(sys.call(-1), "srcref")
+      cnd <- warning_cnd(
+        message = c("Global state has changed:", set_names(format(diffs), "")),
+        call = env,
+        srcref = srcref
+      )
+      register_expectation(cnd, 0)
+    }
+  }
 
   invisible(ok)
+}
+
+testthat_state <- NULL
+
+testthat_state_callback <- function() {
+  fun <- the$testing_env$testthat_state %||% function() NULL
+  fun()
 }
