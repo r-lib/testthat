@@ -18,7 +18,7 @@
 #' @useDynLib testthat, .registration = TRUE
 NULL
 
-testthat_env <- new.env(parent = emptyenv())
+the <- new.env(parent = emptyenv())
 
 
 # The following block is used by usethis to automatically manage

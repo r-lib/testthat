@@ -224,12 +224,21 @@ queue_setup <- function(test_paths,
 
   test_package <- test_package %||% Sys.getenv("TESTTHAT_PKG")
 
+  hyperlinks <- cli::ansi_has_hyperlink_support()
+
   # First we load the package "manually", in case it is testthat itself
   load_hook <- expr({
     switch(!!load_package,
       installed = library(!!test_package, character.only = TRUE),
       source = pkgload::load_all(!!test_dir, helpers = FALSE, quiet = TRUE)
     )
+
+    # Ensure snapshot can generate hyperlinks for snapshot_accept()
+    options(
+      cli.hyperlink = !!hyperlinks,
+      cli.hyperlink_run = !!hyperlinks
+    )
+
     asNamespace("testthat")$queue_process_setup(
       test_package = !!test_package,
       test_dir = !!test_dir,
@@ -253,8 +262,6 @@ queue_process_setup <- function(test_package, test_dir, load_helpers, load_packa
     test_dir,
     load_package
   )
-  # record testing env for mocks
-  local_bindings(current_test_env = env, .env = testthat_env)
 
   asNamespace("testthat")$test_files_setup_state(
     test_dir = test_dir,
@@ -264,13 +271,12 @@ queue_process_setup <- function(test_package, test_dir, load_helpers, load_packa
     frame = .GlobalEnv
   )
 
-  # Save test environment in global env where it can easily be retrieved
-  .GlobalEnv$.test_env <- env
+  # record testing env for mocks & queue_task
+  # manual implementation of local_testing_env()
+  the$testing_env <- env
 }
 
 queue_task <- function(path) {
-  env <- .GlobalEnv$.test_env
-
   withr::local_envvar("TESTTHAT_IS_PARALLEL" = "true")
   snapshotter <- SubprocessSnapshotReporter$new(
     snap_dir = "_snaps",
@@ -282,7 +288,7 @@ queue_task <- function(path) {
     snapshotter
   )
   multi <- MultiReporter$new(reporters = reporters)
-  with_reporter(multi, test_one_file(path, env = env))
+  with_reporter(multi, test_one_file(path, env = the$testing_env))
   NULL
 }
 

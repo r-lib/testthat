@@ -126,7 +126,7 @@ local_mocked_bindings <- function(..., .package = NULL, .env = caller_env()) {
     local_bindings_rebind(!!!bindings, .env = pkg_env(.package), .frame = .env)
   }
   # And in the current testing environment
-  test_env <- testthat_env$current_test_env
+  test_env <- the$testing_env
   if (!is.null(test_env)) {
     local_bindings_rebind(!!!bindings, .env = test_env, .frame = .env)
   }
@@ -144,6 +144,10 @@ local_mocked_bindings <- function(..., .package = NULL, .env = caller_env()) {
 with_mocked_bindings <- function(code, ..., .package = NULL) {
   local_mocked_bindings(..., .package = .package)
   code
+}
+
+local_testing_env <- function(env, frame = caller_env()) {
+  local_bindings(testing_env = env, .env = the, .frame = frame)
 }
 
 # helpers -----------------------------------------------------------------

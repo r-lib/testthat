@@ -95,11 +95,6 @@ test_that("can configure `load_all()` (#1636)", {
   }
 })
 
-test_that("helpers are attached to the search path after running `devtools::test()`", {
-  # This is FALSE under R CMD check
-  skip_if_not(pkgload::is_dev_package("testthat"))
-
-  expect_true(
-    "rlang_version" %in% names(pkg_env("testthat"))
-  )
+test_that("helpers are included in the testing environment", {
+  expect_true("rlang_version" %in% names(the$testing_env))
 })

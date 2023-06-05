@@ -5,6 +5,11 @@
   you to verify that the correct tests are skipped (#1801).
 
 * Experimental `is_snapshotting()` to determine if code is running inside a 
+* Only report test files that take longer than a second (#1806).
+
+* Links generate for snapshot hints now work when using parallel tests (#1802).
+
+* New `is_snapshot()` to determine if code is running inside a 
   snapshot test (#1796).
 
 * All packages, regardless of whether or not they use rlang, now

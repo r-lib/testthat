@@ -22,15 +22,15 @@ NULL
 #' @rdname reporter-accessors
 #' @export
 set_reporter <- function(reporter) {
-  old <- testthat_env$reporter
-  testthat_env$reporter <- reporter
+  old <- the$reporter
+  the$reporter <- reporter
   invisible(old)
 }
 
 #' @rdname reporter-accessors
 #' @export
 get_reporter <- function() {
-  testthat_env$reporter
+  the$reporter
 }
 
 #' @rdname reporter-accessors

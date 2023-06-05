@@ -63,23 +63,15 @@ edition_name <- function(x) {
 #' @keywords internal
 local_edition <- function(x, .env = parent.frame()) {
   stopifnot(is_zap(x) || (is.numeric(x) && length(x) == 1))
-  old <- edition_set(x)
-  withr::defer(edition_set(old), envir = .env)
-}
 
-edition_set <- function(x) {
-  env_poke(testthat_env, "edition", x)
+  local_bindings(edition = x, .env = the, .frame = .env)
 }
 
 
 #' @export
 #' @rdname local_edition
 edition_get <- function() {
-  if (env_has(testthat_env, "edition")) {
-    env_get(testthat_env, "edition", default = 2L)
-  } else {
-    find_edition(".")
-  }
+  the$edition %||% find_edition(".")
 }
 
 
