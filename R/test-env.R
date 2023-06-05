@@ -6,7 +6,8 @@
 #'
 #' * `is_testing()` is `TRUE` when run inside a test.
 #' * `is_parallel()` is `TRUE` if the test is run in parallel.
-#' * `is_snapshot()` is `TRUE` when run inside a snapshot test.
+#' * `is_checking()` is `TRUE` when the tests run as part of `R CMD check`
+#'   (i.e. by [test_check()]).
 #' * `testing_package()` gives name of the package being tested.
 #'
 #' A common use of these functions is to compute a default value for a `quiet`
@@ -23,6 +24,12 @@ is_testing <- function() {
 #' @rdname is_testing
 is_parallel <- function() {
   identical(Sys.getenv("TESTTHAT_IS_PARALLEL"), "true")
+}
+
+#' @export
+#' @rdname is_testing
+is_checking <- function() {
+  identical(Sys.getenv("TESTTHAT_IS_CHECKING"), "true")
 }
 
 #' @export

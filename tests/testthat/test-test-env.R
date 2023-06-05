@@ -8,6 +8,14 @@ test_that("Cannot create S4 class without special behaviour", {
   expect_error(setClass("MyClass2"), NA)
 })
 
+test_that("is_checking respects env var", {
+  withr::local_envvar(TESTTHAT_IS_CHECKING = "true")
+  expect_true(is_checking())
+
+  withr::local_envvar(TESTTHAT_IS_CHECKING = "false")
+  expect_false(is_checking())
+})
+
 test_that("is_snapshot() is true in snapshots", {
   local_edition(3) # why is this needed?
   expect_false(is_snapshot())

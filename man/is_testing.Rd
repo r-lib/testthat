@@ -3,6 +3,7 @@
 \name{is_testing}
 \alias{is_testing}
 \alias{is_parallel}
+\alias{is_checking}
 \alias{is_snapshot}
 \alias{testing_package}
 \title{Determine testing status}
@@ -10,6 +11,8 @@
 is_testing()
 
 is_parallel()
+
+is_checking()
 
 is_snapshot()
 
@@ -21,7 +24,8 @@ testing content:
 \itemize{
 \item \code{is_testing()} is \code{TRUE} when run inside a test.
 \item \code{is_parallel()} is \code{TRUE} if the test is run in parallel.
-\item \code{is_snapshot()} is \code{TRUE} when run inside a snapshot test.
+\item \code{is_checking()} is \code{TRUE} when the tests run as part of \verb{R CMD check}
+(i.e. by \code{\link[=test_check]{test_check()}}).
 \item \code{testing_package()} gives name of the package being tested.
 }
 
