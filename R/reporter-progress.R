@@ -19,7 +19,7 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
   inherit = Reporter,
   public = list(
     show_praise = TRUE,
-    min_time = 0.1,
+    min_time = 1,
     start_time = NULL,
     last_update = NULL,
     update_interval = NULL,
@@ -48,7 +48,7 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
 
     initialize = function(show_praise = TRUE,
                           max_failures = testthat_max_fails(),
-                          min_time = 0.1,
+                          min_time = 1,
                           update_interval = 0.1,
                           verbose_skips = getOption("testthat.progress.verbose_skips", TRUE),
                           ...) {

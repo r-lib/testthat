@@ -1,5 +1,7 @@
 # testthat (development version)
 
+* Only report test files that take longer than a second (#1806).
+
 * Links generate for snapshot hints now work when using parallel tests (#1802).
 
 * Experimental `is_snapshotting()` to determine if code is running inside a 
