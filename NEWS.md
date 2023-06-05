@@ -5,7 +5,6 @@
   `expect_true(all(object %in% expected))` but give more informative failure
   messages (#1346).
 
-* Only report test files that take longer than a second (#1806).
 * Skips are now only shown at the end of reporter summaries, not as tests are 
   run. This makes them less intrusive in interactive tests while still allowing
   you to verify that the correct tests are skipped (#1801).
