@@ -1,4 +1,4 @@
-# is_snapshotting is true in snapshots
+# is_snapshot() is true in snapshots
 
     Code
       is_snapshot()
