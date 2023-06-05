@@ -3,7 +3,8 @@
 * If you define a function called `testthat_state()`, testthat will call it
   before and after every test and report if there are any differences. This
   is very useful for detecting if any of your tests have made changes to 
-  global state (like options, env vars, or connections) (#1674).
+  global state (like options, env vars, or connections) (#1674). This 
+  function was inspired by renv's testing infrastructure.
 
 * Only report test files that take longer than a second (#1806).
 
