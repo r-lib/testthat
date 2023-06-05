@@ -161,7 +161,7 @@ exactly what it’s supposed to return.</p>
 <span>  <span class="fu"><a href="../reference/equality-expectations.html">expect_equal</a></span><span class="op">(</span><span class="fu">bullets</span><span class="op">(</span><span class="st">"a"</span><span class="op">)</span>, <span class="st">"&lt;ul&gt;\n  &lt;li&gt;a&lt;/li&gt;\n&lt;/ul&gt;\n"</span><span class="op">)</span></span>
 <span>  <span class="fu"><a href="../reference/equality-expectations.html">expect_equal</a></span><span class="op">(</span><span class="fu">bullets</span><span class="op">(</span><span class="st">"a"</span>, id <span class="op">=</span> <span class="st">"x"</span><span class="op">)</span>, <span class="st">"&lt;ul id=\"x\"&gt;\n  &lt;li&gt;a&lt;/li&gt;\n&lt;/ul&gt;\n"</span><span class="op">)</span></span>
 <span><span class="op">}</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #00BB00;">Test passed</span> 🥇</span></span></code></pre></div>
+<span><span class="co">#&gt; Test passed</span></span></code></pre></div>
 <p>This is a great place to use snapshot testing. To do this we make two
 changes to our code:</p>
 <ul>
@@ -176,7 +176,7 @@ in the output, like in my first interactive example).</p></li>
 <span>  <span class="fu"><a href="../reference/expect_snapshot.html">expect_snapshot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="fu">bullets</span><span class="op">(</span><span class="st">"a"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
 <span>  <span class="fu"><a href="../reference/expect_snapshot.html">expect_snapshot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="fu">bullets</span><span class="op">(</span><span class="st">"a"</span>, <span class="st">"b"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="op">}</span><span class="op">)</span></span>
-<span><span class="co">#&gt; ── <span style="color: #BB00BB; font-weight: bold;">Warning</span><span style="font-weight: bold;"> ('</span><span style="color: #0000BB; font-weight: bold;">&lt;text&gt;:2:3</span><span style="font-weight: bold;">'): bullets</span> ─────────────────────────────────────────────</span></span>
+<span><span class="co">#&gt; -- Warning ('&lt;text&gt;:2:3'): bullets ---------------------------------------------</span></span>
 <span><span class="co">#&gt; Adding new snapshot:</span></span>
 <span><span class="co">#&gt; Code</span></span>
 <span><span class="co">#&gt;   cat(bullets("a"))</span></span>
@@ -185,7 +185,7 @@ in the output, like in my first interactive example).</p></li>
 <span><span class="co">#&gt;     &lt;li&gt;a&lt;/li&gt;</span></span>
 <span><span class="co">#&gt;   &lt;/ul&gt;</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; ── <span style="color: #BB00BB; font-weight: bold;">Warning</span><span style="font-weight: bold;"> ('</span><span style="color: #0000BB; font-weight: bold;">&lt;text&gt;:3:3</span><span style="font-weight: bold;">'): bullets</span> ─────────────────────────────────────────────</span></span>
+<span><span class="co">#&gt; -- Warning ('&lt;text&gt;:3:3'): bullets ---------------------------------------------</span></span>
 <span><span class="co">#&gt; Adding new snapshot:</span></span>
 <span><span class="co">#&gt; Code</span></span>
 <span><span class="co">#&gt;   cat(bullets("a", "b"))</span></span>
@@ -207,7 +207,7 @@ this is a markdown file, which I’ll explain shortly.</p>
 <span>  <span class="fu"><a href="../reference/expect_snapshot.html">expect_snapshot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="fu">bullets</span><span class="op">(</span><span class="st">"a"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
 <span>  <span class="fu"><a href="../reference/expect_snapshot.html">expect_snapshot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="fu">bullets</span><span class="op">(</span><span class="st">"a"</span>, <span class="st">"b"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="op">}</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #00BB00;">Test passed</span> 🎊</span></span></code></pre></div>
+<span><span class="co">#&gt; Test passed</span></span></code></pre></div>
 <p>But if you change the underlying code, say to tweak the indenting,
 the test will fail:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
@@ -222,26 +222,26 @@ the test will fail:</p>
 <span>  <span class="fu"><a href="../reference/expect_snapshot.html">expect_snapshot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="fu">bullets</span><span class="op">(</span><span class="st">"a"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
 <span>  <span class="fu"><a href="../reference/expect_snapshot.html">expect_snapshot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="fu">bullets</span><span class="op">(</span><span class="st">"a"</span>, <span class="st">"b"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="op">}</span><span class="op">)</span></span>
-<span><span class="co">#&gt; ── <span style="color: #BBBB00; font-weight: bold;">Failure</span><span style="font-weight: bold;"> ('</span><span style="color: #0000BB; font-weight: bold;">&lt;text&gt;:9:3</span><span style="font-weight: bold;">'): bullets</span> ─────────────────────────────────────────────</span></span>
+<span><span class="co">#&gt; -- Failure ('&lt;text&gt;:9:3'): bullets ---------------------------------------------</span></span>
 <span><span class="co">#&gt; Snapshot of code has changed:</span></span>
 <span><span class="co">#&gt;     old                 | new                    </span></span>
-<span><span class="co">#&gt; [2] <span style="color: #555555;">  cat(bullets("a"))</span> | <span style="color: #555555;">  cat(bullets("a"))</span> [2]</span></span>
-<span><span class="co">#&gt; [3] <span style="color: #555555;">Output</span>              | <span style="color: #555555;">Output</span>              [3]</span></span>
-<span><span class="co">#&gt; [4] <span style="color: #555555;">  &lt;ul&gt;</span>              | <span style="color: #555555;">  &lt;ul&gt;</span>              [4]</span></span>
-<span><span class="co">#&gt; [5] <span style="color: #00BB00;">    &lt;li&gt;a&lt;/li&gt;</span>      - <span style="color: #00BB00;">  &lt;li&gt;a&lt;/li&gt;</span>        [5]</span></span>
-<span><span class="co">#&gt; [6] <span style="color: #555555;">  &lt;/ul&gt;</span>             | <span style="color: #555555;">  &lt;/ul&gt;</span>             [6]</span></span>
+<span><span class="co">#&gt; [2]   cat(bullets("a")) |   cat(bullets("a")) [2]</span></span>
+<span><span class="co">#&gt; [3] Output              | Output              [3]</span></span>
+<span><span class="co">#&gt; [4]   &lt;ul&gt;              |   &lt;ul&gt;              [4]</span></span>
+<span><span class="co">#&gt; [5]     &lt;li&gt;a&lt;/li&gt;      -   &lt;li&gt;a&lt;/li&gt;        [5]</span></span>
+<span><span class="co">#&gt; [6]   &lt;/ul&gt;             |   &lt;/ul&gt;             [6]</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; * Run `testthat::snapshot_accept('snapshotting.Rmd')` to accept the change.</span></span>
 <span><span class="co">#&gt; * Run `testthat::snapshot_review('snapshotting.Rmd')` to interactively review the change.</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; ── <span style="color: #BBBB00; font-weight: bold;">Failure</span><span style="font-weight: bold;"> ('</span><span style="color: #0000BB; font-weight: bold;">&lt;text&gt;:10:3</span><span style="font-weight: bold;">'): bullets</span> ────────────────────────────────────────────</span></span>
+<span><span class="co">#&gt; -- Failure ('&lt;text&gt;:10:3'): bullets --------------------------------------------</span></span>
 <span><span class="co">#&gt; Snapshot of code has changed:</span></span>
 <span><span class="co">#&gt;     old                      | new                         </span></span>
-<span><span class="co">#&gt; [2] <span style="color: #555555;">  cat(bullets("a", "b"))</span> | <span style="color: #555555;">  cat(bullets("a", "b"))</span> [2]</span></span>
-<span><span class="co">#&gt; [3] <span style="color: #555555;">Output</span>                   | <span style="color: #555555;">Output</span>                   [3]</span></span>
-<span><span class="co">#&gt; [4] <span style="color: #555555;">  &lt;ul id="b"&gt;</span>            | <span style="color: #555555;">  &lt;ul id="b"&gt;</span>            [4]</span></span>
-<span><span class="co">#&gt; [5] <span style="color: #00BB00;">    &lt;li&gt;a&lt;/li&gt;</span>           - <span style="color: #00BB00;">  &lt;li&gt;a&lt;/li&gt;</span>             [5]</span></span>
-<span><span class="co">#&gt; [6] <span style="color: #555555;">  &lt;/ul&gt;</span>                  | <span style="color: #555555;">  &lt;/ul&gt;</span>                  [6]</span></span>
+<span><span class="co">#&gt; [2]   cat(bullets("a", "b")) |   cat(bullets("a", "b")) [2]</span></span>
+<span><span class="co">#&gt; [3] Output                   | Output                   [3]</span></span>
+<span><span class="co">#&gt; [4]   &lt;ul id="b"&gt;            |   &lt;ul id="b"&gt;            [4]</span></span>
+<span><span class="co">#&gt; [5]     &lt;li&gt;a&lt;/li&gt;           -   &lt;li&gt;a&lt;/li&gt;             [5]</span></span>
+<span><span class="co">#&gt; [6]   &lt;/ul&gt;                  |   &lt;/ul&gt;                  [6]</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; * Run `testthat::snapshot_accept('snapshotting.Rmd')` to accept the change.</span></span>
 <span><span class="co">#&gt; * Run `testthat::snapshot_review('snapshotting.Rmd')` to interactively review the change.</span></span>
@@ -308,7 +308,7 @@ output, a message, and a warning:</p>
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/test_that.html">test_that</a></span><span class="op">(</span><span class="st">"f() makes lots of noise"</span>, <span class="op">{</span></span>
 <span>  <span class="fu"><a href="../reference/expect_snapshot.html">expect_snapshot</a></span><span class="op">(</span><span class="fu">f</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="op">}</span><span class="op">)</span></span>
-<span><span class="co">#&gt; ── <span style="color: #BB00BB; font-weight: bold;">Warning</span><span style="font-weight: bold;"> ('</span><span style="color: #0000BB; font-weight: bold;">&lt;text&gt;:2:3</span><span style="font-weight: bold;">'): f() makes lots of noise</span> ─────────────────────────────</span></span>
+<span><span class="co">#&gt; -- Warning ('&lt;text&gt;:2:3'): f() makes lots of noise -----------------------------</span></span>
 <span><span class="co">#&gt; Adding new snapshot:</span></span>
 <span><span class="co">#&gt; Code</span></span>
 <span><span class="co">#&gt;   f()</span></span>
@@ -324,7 +324,7 @@ output, a message, and a warning:</p>
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/test_that.html">test_that</a></span><span class="op">(</span><span class="st">"you can't add a number and a letter"</span>, <span class="op">{</span></span>
 <span>  <span class="fu"><a href="../reference/expect_snapshot.html">expect_snapshot</a></span><span class="op">(</span><span class="fl">1</span> <span class="op">+</span> <span class="st">"a"</span><span class="op">)</span></span>
 <span><span class="op">}</span><span class="op">)</span></span>
-<span><span class="co">#&gt; ── <span style="color: #BBBB00; font-weight: bold;">Error</span><span style="font-weight: bold;"> ('</span><span style="color: #0000BB; font-weight: bold;">&lt;text&gt;:2:3</span><span style="font-weight: bold;">'): you can't add a number and a letter</span> ───────────────────</span></span>
+<span><span class="co">#&gt; -- Error ('&lt;text&gt;:2:3'): you can't add a number and a letter -------------------</span></span>
 <span><span class="co">#&gt; `1 + "a"` threw an unexpected error.</span></span>
 <span><span class="co">#&gt; Message: non-numeric argument to binary operator</span></span>
 <span><span class="co">#&gt; Class:   simpleError/error/condition</span></span>
@@ -337,7 +337,7 @@ specifically request it with <code>error = TRUE</code>:</p>
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/test_that.html">test_that</a></span><span class="op">(</span><span class="st">"you can't add a number and a letter"</span>, <span class="op">{</span></span>
 <span>  <span class="fu"><a href="../reference/expect_snapshot.html">expect_snapshot</a></span><span class="op">(</span><span class="fl">1</span> <span class="op">+</span> <span class="st">"a"</span>, error <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="op">}</span><span class="op">)</span></span>
-<span><span class="co">#&gt; ── <span style="color: #BB00BB; font-weight: bold;">Warning</span><span style="font-weight: bold;"> ('</span><span style="color: #0000BB; font-weight: bold;">&lt;text&gt;:2:3</span><span style="font-weight: bold;">'): you can't add a number and a letter</span> ─────────────────</span></span>
+<span><span class="co">#&gt; -- Warning ('&lt;text&gt;:2:3'): you can't add a number and a letter -----------------</span></span>
 <span><span class="co">#&gt; Adding new snapshot:</span></span>
 <span><span class="co">#&gt; Code</span></span>
 <span><span class="co">#&gt;   1 + "a"</span></span>
@@ -353,7 +353,7 @@ front so it’s a little more obvious:</p>
 <span>    <span class="va">mean</span> <span class="op">+</span> <span class="va">sum</span></span>
 <span>  <span class="op">}</span><span class="op">)</span></span>
 <span><span class="op">}</span><span class="op">)</span></span>
-<span><span class="co">#&gt; ── <span style="color: #BB00BB; font-weight: bold;">Warning</span><span style="font-weight: bold;"> ('</span><span style="color: #0000BB; font-weight: bold;">&lt;text&gt;:2:3</span><span style="font-weight: bold;">'): you can't add weird thngs</span> ───────────────────────────</span></span>
+<span><span class="co">#&gt; -- Warning ('&lt;text&gt;:2:3'): you can't add weird thngs ---------------------------</span></span>
 <span><span class="co">#&gt; Adding new snapshot:</span></span>
 <span><span class="co">#&gt; Code</span></span>
 <span><span class="co">#&gt;   1 + "a"</span></span>
@@ -383,7 +383,7 @@ human readability.</p>
 <span>  <span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>a <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">5</span>, <span class="fl">10</span><span class="op">)</span>, b <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">"elephant"</span>, <span class="st">"banana"</span><span class="op">)</span><span class="op">)</span></span>
 <span>  <span class="fu"><a href="../reference/expect_snapshot_value.html">expect_snapshot_value</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
 <span><span class="op">}</span><span class="op">)</span></span>
-<span><span class="co">#&gt; ── <span style="color: #BB00BB; font-weight: bold;">Warning</span><span style="font-weight: bold;"> ('</span><span style="color: #0000BB; font-weight: bold;">&lt;text&gt;:3:3</span><span style="font-weight: bold;">'): can snapshot a simple list</span> ──────────────────────────</span></span>
+<span><span class="co">#&gt; -- Warning ('&lt;text&gt;:3:3'): can snapshot a simple list --------------------------</span></span>
 <span><span class="co">#&gt; Adding new snapshot:</span></span>
 <span><span class="co">#&gt; {</span></span>
 <span><span class="co">#&gt;   "a": [</span></span>
