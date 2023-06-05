@@ -467,18 +467,7 @@ check_variant <- function(x) {
 }
 
 with_is_snapshotting <- function(code) {
-  withr::local_options(testthat_is_snapshotting = TRUE)
+  withr::local_envvar(TESTTHAT_IS_SNAPSHOT = "true")
   code
 }
 
-#' Is the code currently run within a snapshot test?
-#'
-#' This is often useful to compute a default argument for `quiet`. You
-#' often want to deliberatey suppress output for tests but still track
-#' it when snapshotting: `quiet = is_testing() && !is_snapshotting() `
-#'
-#' @export
-#' @keywords internal
-is_snapshotting <- function() {
-  getOption("testthat_is_snapshotting", FALSE)
-}
