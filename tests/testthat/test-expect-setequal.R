@@ -86,7 +86,7 @@ test_that("expect_contains() succeeds when appropriate", {
   expect_success(expect_contains(letters, character()))
 })
 
-test_that("expect_contains() gives useful message on faillure", {
+test_that("expect_contains() gives useful message on failure", {
   x1 <- c("a", "b", "c")
   x2 <- c("c", "d")
   x3 <- c("d", "e")
