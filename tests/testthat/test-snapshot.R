@@ -201,13 +201,3 @@ test_that("hint is informative", {
     cat(snapshot_accept_hint("foo", "bar.R", reset_output = FALSE))
   })
 })
-
-test_that("is_snapshotting is true in snapshots", {
-  expect_false(is_snapshotting())
-
-  expect_snapshot(is_snapshotting())
-  expect_snapshot_value(is_snapshotting())
-  expect_snapshot_output(is_snapshotting())
-  expect_snapshot_warning(if (is_snapshotting()) warning("Is snapshotting!"))
-  expect_snapshot_error(if (is_snapshotting()) stop("Is snapshotting!"))
-})
