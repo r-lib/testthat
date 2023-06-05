@@ -23,9 +23,12 @@ more details.}
 \itemize{
 \item \code{expect_setequal(x, y)} tests that every element of \code{x} occurs in \code{y},
 and that every element of \code{y} occurs in \code{x}.
+\item \code{expect_contains(x, y)} tests that \code{x} contains every element of \code{y}
+(i.e. \code{y} is a subset of \code{x}).
+\item \code{expect_in(x, y)} tests every element of \code{x} is in \code{y}
+(i.e. \code{x} is a subset of \code{y}).
 \item \code{expect_mapequal(x, y)} tests that \code{x} and \code{y} have the same names, and
 that \code{x[names(y)]} equals \code{y}.
-\item \code{expect_contains(x, y)} tests that every element of \code{y} occurs in \code{x}.
 }
 }
 \details{

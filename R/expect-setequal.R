@@ -2,9 +2,12 @@
 #'
 #' * `expect_setequal(x, y)` tests that every element of `x` occurs in `y`,
 #'    and that every element of `y` occurs in `x`.
+#' * `expect_contains(x, y)` tests that `x` contains every element of `y`
+#'   (i.e. `y` is a subset of `x`).
+#' * `expect_in(x, y)` tests every element of `x` is in `y`
+#'   (i.e. `x` is a subset of `y`).
 #' * `expect_mapequal(x, y)` tests that `x` and `y` have the same names, and
 #'    that `x[names(y)]` equals `y`.
-#' * `expect_contains(x, y)` tests that every element of `y` occurs in `x`.
 #'
 #' Note that `expect_setequal()` ignores names, and you will be warned if both
 #' `object` and `expected` have them.
@@ -133,9 +136,34 @@ expect_contains <- function(object, expected) {
 
   if (any(exp_miss)) {
     fail(paste0(
-      act$lab, " doesn't contain all the values in ", exp$lab, ".\n",
+      act$lab, " (`actual`) doesn't contain all the values in ", exp$lab, " (`expected)`.\n",
       paste0("* Missing from `actual`: ",  values(exp$val[exp_miss]), "\n"),
       paste0("* Present in `actual`:   ",  values(act$val), "\n")
+    ))
+  } else {
+    succeed()
+  }
+
+  invisible(act$val)
+}
+
+#' @export
+#' @rdname expect_in
+expect_in <- function(object, expected) {
+  act <- quasi_label(enquo(object), arg = "object")
+  exp <- quasi_label(enquo(expected), arg = "expected")
+
+  if (!is_vector(act$val) || !is_vector(exp$val)) {
+    abort("`object` and `expected` must both be vectors")
+  }
+
+  act_miss <- !act$val %in% exp$val
+
+  if (any(act_miss)) {
+    fail(paste0(
+      "All values of ", act$lab, " (`actual`) aren't contained in ", exp$lab, " (`expected`).\n",
+      paste0("* Missing from `expected`: ",  values(act$val[act_miss]), "\n"),
+      paste0("* Present in `expected`:   ",  values(exp$val), "\n")
     ))
   } else {
     succeed()

@@ -1,8 +1,9 @@
 # testthat (development version)
 
-* New `expect_contains(object, expected)` that works similarly to 
-  `expect_true(all(expected %in% object))` but gives more informative output
-  on failure (#1346).
+* New `expect_contains()` and `expect_in()` that works similarly to 
+  `expect_true(all(expected %in% object))` or 
+  `expect_true(all(object %in% expected))` but give more informative failure
+  messages (#1346).
 
 * Only report test files that take longer than a second (#1806).
 
