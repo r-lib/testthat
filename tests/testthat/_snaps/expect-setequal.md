@@ -12,7 +12,7 @@
     * Only in `expected`: 4, 5, 6, 7, 8, 9, 10, 11, 12, ...
     
 
----
+# expect_contains() gives useful message on faillure
 
     `x1` doesn't contain all the values in `x2`.
     * Missing from `actual`: "d"

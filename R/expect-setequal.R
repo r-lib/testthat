@@ -4,6 +4,7 @@
 #'    and that every element of `y` occurs in `x`.
 #' * `expect_mapequal(x, y)` tests that `x` and `y` have the same names, and
 #'    that `x[names(y)]` equals `y`.
+#' * `expect_contains(x, y)` tests that every element of `y` occurs in `x`.
 #'
 #' Note that `expect_setequal()` ignores names, and you will be warned if both
 #' `object` and `expected` have them.
