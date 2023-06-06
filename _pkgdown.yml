@@ -52,6 +52,7 @@ reference:
   - is_testing
   - skip
   - teardown_env
+  - set_state_inspector
 
 - title: Run tests
   contents:
