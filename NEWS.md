@@ -1,7 +1,7 @@
 # testthat (development version)
 
-* If you define a function called `testthat_state()`, testthat will call it
-  before and after every test and report if there are any differences. This
+* `set_state_inspector()` allows to to register a function that's called
+  before and after every test, reporting on any differences. This
   is very useful for detecting if any of your tests have made changes to 
   global state (like options, env vars, or connections) (#1674). This 
   function was inspired by renv's testing infrastructure.

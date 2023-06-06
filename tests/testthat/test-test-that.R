@@ -162,15 +162,3 @@ test_that("no braces required in testthat 2e", {
     NA
   )
 })
-
-test_that("can detect state changes", {
-  local_edition(3) # Why are these needed for R CMD check?
-  local_reproducible_output()
-
-  local_options(x = NULL)
-  local_mocked_bindings(
-    testthat_state = function() list(x = getOption("x"))
-  )
-
-  expect_snapshot_reporter(CheckReporter$new(), test_path("reporters/state-change.R"))
-})

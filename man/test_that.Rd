@@ -31,44 +31,6 @@ for other aspects of global state, such as session options or filesystem
 changes. Avoid changing global state, when possible, and reverse any changes
 that you do make.
 }
-\section{Detecting changes to global state}{
-One of the most pernicious challenges to debug is when a test runs fine
-in your test suite, but fails when you run it interactively (or similarly,
-it fails randomly when running your tests in parallel). One of the most
-common causes of this problem is accidentally changing global state in a
-previous test (e.g. changing an option, an environment variable, or the
-working directory). This is hard to debug, because it's very hard to figure
-out which test made the change.
-
-Luckily testthat provides a tool to figure out if tests are changing global
-state. You can write a function called \code{testthat_state()} and
-testthat will run it before and after each test, store the results, then
-report if there are any differences. For example, if you wanted to see if
-any of your tests were changing options or environment variables, you could
-write:
-
-\if{html}{\out{<div class="sourceCode R">}}\preformatted{testthat_state <- function() \{
-  list(
-    options = options(),
-    envvars = Sys.getenv()
-  )
-\}
-}\if{html}{\out{</div>}}
-
-(You might discover other packages outside your control are changing
-the global state, in which case you might want to modify this function
-to ignore those values.)
-
-Other problems that can be troublesome to resolve are CRAN check notes that
-report things like connections being left open. You can easily debug
-that problem with:
-
-\if{html}{\out{<div class="sourceCode R">}}\preformatted{testthat_state <- function() \{
-  getAllConnections()
-\}
-}\if{html}{\out{</div>}}
-}
-
 \examples{
 test_that("trigonometric functions match identities", {
   expect_equal(sin(pi / 4), 1 / sqrt(2))

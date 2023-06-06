@@ -1,3 +1,11 @@
+# set_state_inspector() verifies its inputs
+
+    Code
+      set_state_inspector(function(x) 123)
+    Condition
+      Error in `set_state_inspector()`:
+      ! `fun` must be a zero-arg function, or NULL
+
 # can detect state changes
 
     [ FAIL 0 | WARN 1 | SKIP 0 | PASS 1 ]
