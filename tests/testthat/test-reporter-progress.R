@@ -71,6 +71,11 @@ test_that("display of successes only is compact", {
     test_path("reporters/successes.R")
   )
 
+  expect_snapshot_reporter(
+    CompactProgressReporter$new(),
+    test_path("reporters/skips.R")
+  )
+
   # And even more compact if in RStudio pane
   local_reproducible_output(rstudio = TRUE)
   expect_snapshot_reporter(

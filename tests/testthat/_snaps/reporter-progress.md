@@ -353,7 +353,6 @@
      1. \-f()
      2.   \-testthat::expect_true(FALSE)
     
-    
     [ FAIL 2 | WARN 0 | SKIP 0 | PASS 1 ]
     [ FAIL 3 | WARN 0 | SKIP 0 | PASS 1 ]
     [ FAIL 4 | WARN 0 | SKIP 0 | PASS 1 ]
@@ -368,7 +367,6 @@
      1. \-f()
      2.   \-g()
      3.     \-h()
-    
     
     [ FAIL 4 | WARN 0 | SKIP 0 | PASS 1 ]
     [ FAIL 4 | WARN 0 | SKIP 1 | PASS 1 ]
@@ -403,6 +401,20 @@
     [ FAIL 0 | WARN 0 | SKIP 0 | PASS 5 ]
     [ FAIL 0 | WARN 0 | SKIP 0 | PASS 6 ]
     [ FAIL 0 | WARN 0 | SKIP 0 | PASS 7 ] Done!
+
+---
+
+    
+    == Testing reporters/skips.R ===================================================
+    
+    [ FAIL 0 | WARN 0 | SKIP 0 | PASS 0 ]
+    [ FAIL 0 | WARN 0 | SKIP 1 | PASS 0 ]
+    [ FAIL 0 | WARN 0 | SKIP 2 | PASS 0 ]
+    
+    -- Skipped tests (2) -----------------------------------------------------------
+    * longer skip (1): 'reporters/skips.R:6:3'
+    * regular skip (1): 'reporters/skips.R:2:3'
+    
 
 ---
 

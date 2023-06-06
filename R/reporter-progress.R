@@ -345,18 +345,25 @@ CompactProgressReporter <- R6::R6Class("CompactProgressReporter",
       self$cat_tight(paste(summary, collapse = "\n\n"))
 
       self$cat_line()
-      self$cat_line()
     },
 
     end_reporter = function() {
-      skip_report(self)
+      had_feedback <- self$n_fail > 0 || self$n_warn > 0
 
-      if (self$n_fail > 0 || self$n_warn > 0 || self$n_skip > 0) {
+      if (self$n_skip > 0) {
+        if (!had_feedback) {
+          self$cat_line()
+        }
+        self$cat_line()
+        skip_report(self)
+      }
+
+      if (had_feedback) {
         self$show_status()
         self$cat_line()
       } else if (self$is_full()) {
         self$cat_line(" Terminated early")
-      } else if (!self$rstudio) {
+      } else if (self$n_skip == 0 && !self$rstudio) {
         self$cat_line(cli::style_bold(" Done!"))
       }
     },
