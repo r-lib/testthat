@@ -48,7 +48,7 @@ set_state_inspector <- function(callback) {
     cli::cli_abort("{.arg callback} must be a zero-arg function, or NULL")
   }
 
-  the$state_inspector <- fun
+  the$state_inspector <- callback
   invisible()
 }
 

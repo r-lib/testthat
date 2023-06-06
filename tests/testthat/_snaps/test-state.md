@@ -4,7 +4,7 @@
       set_state_inspector(function(x) 123)
     Condition
       Error in `set_state_inspector()`:
-      ! `fun` must be a zero-arg function, or NULL
+      ! `callback` must be a zero-arg function, or NULL
 
 # can detect state changes
 
