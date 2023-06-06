@@ -192,6 +192,7 @@ test_code <- function(test, code, env, default_reporter, skip_on_empty = TRUE) {
 
   withr::local_options(testthat_topenv = test_env)
 
+  before <- inspect_state()
   tryCatch(
     withCallingHandlers(
       {
@@ -211,7 +212,14 @@ test_code <- function(test, code, env, default_reporter, skip_on_empty = TRUE) {
     # skip silently terminate code
     skip  = function(e) {}
   )
+  after <- inspect_state()
 
+  if (!is.null(test)) {
+    cnd <- testthat_state_condition(before, after, call = sys.call(-1))
+    if (!is.null(cnd)) {
+      register_expectation(cnd, 0)
+    }
+  }
 
   invisible(ok)
 }

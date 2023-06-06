@@ -48,6 +48,7 @@ test_that("failures are errors", {
 })
 
 test_that("infinite recursion is captured", {
+  skip_on_covr()
   f <- function() f()
 
   reporter <- with_reporter("silent", {
