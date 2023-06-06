@@ -2,9 +2,9 @@
 
     [ FAIL 4 | WARN 1 | SKIP 3 | PASS 1 ]
     
-    == Skipped tests ===============================================================
-    * empty test (2)
-    * skip (1)
+    == Skipped tests (3) ===========================================================
+    * empty test (2): 'reporters/tests.R:40:1', 'reporters/tests.R:45:1'
+    * skip (1): 'reporters/tests.R:37:3'
     
     == Warnings ====================================================================
     -- Warning ('reporters/tests.R:49:3'): warnings get backtraces -----------------
@@ -58,9 +58,9 @@
 
     [ FAIL 4 | WARN 1 | SKIP 3 | PASS 1 ]
     
-    == Skipped tests ===============================================================
-    * empty test (2)
-    * skip (1)
+    == Skipped tests (3) ===========================================================
+    * empty test (2): 'reporters/tests.R:40:1', 'reporters/tests.R:45:1'
+    * skip (1): 'reporters/tests.R:37:3'
     
     == Warnings ====================================================================
     -- Warning ('reporters/tests.R:49:3'): warnings get backtraces -----------------

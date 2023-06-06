@@ -1,15 +1,19 @@
 #' Determine testing status
 #'
 #' @description
-#' * `is_testing()` determine if code is being run as part of a test
-#' * `is_parallel()` if the test is being run in parallel.
+#' These functions help you determine if you code is running in a particular
+#' testing content:
+#'
+#' * `is_testing()` is `TRUE` when run inside a test.
+#' * `is_parallel()` is `TRUE` if the test is run in parallel.
+#' * `is_checking()` is `TRUE` when the tests run as part of `R CMD check`
+#'   (i.e. by [test_check()]).
 #' * `testing_package()` gives name of the package being tested.
 #'
-#' These are thin wrappers that retrieve the values of environment variables.
-#' You will usually want to avoid a runtime dependency on testthat, i.e. you
-#' won't want to use testthat in the code below `R/`. In that case, you should
-#' inline the source of these functions into your package, in whatever location
-#' you are using for any other test helper functions.
+#' A common use of these functions is to compute a default value for a `quiet`
+#' argument with `is_testing() && !is_snapshotting()`. In this case, you'll
+#' want to avoid an run-time dependency on testthat, in which case you should
+#' just copy the implementation of these functions in a `utils.R` or similar.
 #'
 #' @export
 is_testing <- function() {
@@ -20,6 +24,18 @@ is_testing <- function() {
 #' @rdname is_testing
 is_parallel <- function() {
   identical(Sys.getenv("TESTTHAT_IS_PARALLEL"), "true")
+}
+
+#' @export
+#' @rdname is_testing
+is_checking <- function() {
+  identical(Sys.getenv("TESTTHAT_IS_CHECKING"), "true")
+}
+
+#' @export
+#' @rdname is_testing
+is_snapshot <- function() {
+  identical(Sys.getenv("TESTTHAT_IS_SNAPSHOT"), "true")
 }
 
 #' @export

@@ -3,6 +3,8 @@
 \name{is_testing}
 \alias{is_testing}
 \alias{is_parallel}
+\alias{is_checking}
+\alias{is_snapshot}
 \alias{testing_package}
 \title{Determine testing status}
 \usage{
@@ -10,18 +12,25 @@ is_testing()
 
 is_parallel()
 
+is_checking()
+
+is_snapshot()
+
 testing_package()
 }
 \description{
+These functions help you determine if you code is running in a particular
+testing content:
 \itemize{
-\item \code{is_testing()} determine if code is being run as part of a test
-\item \code{is_parallel()} if the test is being run in parallel.
+\item \code{is_testing()} is \code{TRUE} when run inside a test.
+\item \code{is_parallel()} is \code{TRUE} if the test is run in parallel.
+\item \code{is_checking()} is \code{TRUE} when the tests run as part of \verb{R CMD check}
+(i.e. by \code{\link[=test_check]{test_check()}}).
 \item \code{testing_package()} gives name of the package being tested.
 }
 
-These are thin wrappers that retrieve the values of environment variables.
-You will usually want to avoid a runtime dependency on testthat, i.e. you
-won't want to use testthat in the code below \verb{R/}. In that case, you should
-inline the source of these functions into your package, in whatever location
-you are using for any other test helper functions.
+A common use of these functions is to compute a default value for a \code{quiet}
+argument with \code{is_testing() && !is_snapshotting()}. In this case, you'll
+want to avoid an run-time dependency on testthat, in which case you should
+just copy the implementation of these functions in a \code{utils.R} or similar.
 }

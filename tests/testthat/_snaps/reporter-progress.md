@@ -315,19 +315,11 @@
     - |     1   0 | reporters/skips                                                 
     \ |     2   0 | reporters/skips                                                 
     v |     2   0 | reporters/skips
-    --------------------------------------------------------------------------------
-    Skip ('reporters/skips.R:2:3'): regular skip
-    Reason: regular skip
-    
-    Skip ('reporters/skips.R:6:3'): skip with details
-    Reason: longer skip:
-    this is what happened
-    --------------------------------------------------------------------------------
     
     == Results =====================================================================
-    -- Skipped tests  --------------------------------------------------------------
-    * longer skip (1)
-    * regular skip (1)
+    -- Skipped tests (2) -----------------------------------------------------------
+    * longer skip (1): 'reporters/skips.R:6:3'
+    * regular skip (1): 'reporters/skips.R:2:3'
     
     [ FAIL 0 | WARN 0 | SKIP 2 | PASS 0 ]
     
@@ -381,14 +373,6 @@
     [ FAIL 4 | WARN 0 | SKIP 0 | PASS 1 ]
     [ FAIL 4 | WARN 0 | SKIP 1 | PASS 1 ]
     [ FAIL 4 | WARN 0 | SKIP 2 | PASS 1 ]
-    
-    -- Skip ('reporters/tests.R:37:3'): explicit skips are reported ----------------
-    Reason: skip
-    
-    -- Skip ('reporters/tests.R:40:1'): empty tests are implicitly skipped ---------
-    Reason: empty test
-    
-    
     [ FAIL 4 | WARN 0 | SKIP 2 | PASS 1 ]
     [ FAIL 4 | WARN 1 | SKIP 2 | PASS 1 ]
     [ FAIL 4 | WARN 1 | SKIP 3 | PASS 1 ]
@@ -399,8 +383,9 @@
         x
      1. \-f()
     
-    -- Skip ('reporters/tests.R:45:1'): warnings get backtraces --------------------
-    Reason: empty test
+    -- Skipped tests (3) -----------------------------------------------------------
+    * empty test (2): 'reporters/tests.R:40:1', 'reporters/tests.R:45:1'
+    * skip (1): 'reporters/tests.R:37:3'
     
     
     [ FAIL 4 | WARN 1 | SKIP 3 | PASS 1 ]

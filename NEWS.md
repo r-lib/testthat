@@ -7,11 +7,21 @@
   function was inspired by renv's testing infrastructure.
 
 * Only report test files that take longer than a second (#1806).
+* New `expect_contains()` and `expect_in()` that works similarly to 
+  `expect_true(all(expected %in% object))` or 
+  `expect_true(all(object %in% expected))` but give more informative failure
+  messages (#1346).
 
-* Links generate for snapshot hints now work when using parallel tests (#1802).
+* Skips are now only shown at the end of reporter summaries, not as tests are 
+  run. This makes them less intrusive in interactive tests while still allowing
+  you to verify that the correct tests are skipped (#1801).
 
-* Experimental `is_snapshotting()` to determine if code is running inside a 
-  snapshot test (#1796).
+* `ProgressReporter` only reports the run time of test files that take longer 
+  than 1s, rather than 0.1s. (#1806).
+
+* New `is_snapshot()` returns `TRUE` if code is running inside a snapshot test
+  (#1796) and `is_checking()` returns `TRUE` if test is running inside of 
+  `R CMD check` (#1795)
 
 * All packages, regardless of whether or not they use rlang, now
   use the new snapshot display for errors, warnings, and messages.
@@ -20,10 +30,12 @@
 
 * `testthat::teardown_env()` works in more cases.
 
-* When using parallel tests, links to failed tests etc now work (#1787).
+* When using parallel tests, links to failed tests (#1787) and
+  running links for snapshot hints (#1802) now works.
 
 * testthat no longer truncates tracebacks and uses rlang's default tree
   display.
+
 
 # testthat 3.1.8
 
