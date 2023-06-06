@@ -18,7 +18,8 @@
   you to verify that the correct tests are skipped (#1801).
 
 * `ProgressReporter` only reports the run time of test files that take longer 
-  than 1s, rather than 0.1s. (#1806).
+  than 1s, rather than 0.1s. (#1806) and re-displays all failures at the end
+  of the results.
 
 * New `is_snapshot()` returns `TRUE` if code is running inside a snapshot test
   (#1796) and `is_checking()` returns `TRUE` if test is running inside of 

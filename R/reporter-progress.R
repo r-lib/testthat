@@ -25,6 +25,7 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
     update_interval = NULL,
 
     skips = NULL,
+    problems = NULL,
 
     max_fail = NULL,
     n_ok = 0,
@@ -58,6 +59,7 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
       self$update_interval <- update_interval
 
       self$skips <- Stack$new()
+      self$problems <- Stack$new()
       self$ctxt_issues <- Stack$new()
 
       # Capture at init so not affected by test settings
@@ -217,6 +219,7 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
         self$n_fail <- self$n_fail + 1
         self$ctxt_n_fail <- self$ctxt_n_fail + 1
         self$ctxt_issues$push(result)
+        self$problems$push(result)
       } else if (expectation_skip(result)) {
         self$n_skip <- self$n_skip + 1
         self$ctxt_n_skip <- self$ctxt_n_skip + 1
@@ -248,6 +251,15 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
       }
 
       skip_report(self)
+
+      if (self$problems$size() > 0) {
+        problems <- self$problems$as_list()
+        self$rule("Failed tests", line = 1)
+        for (problem in problems) {
+          self$cat_line(issue_summary(problem))
+          self$cat_line()
+        }
+      }
 
       status <- summary_line(self$n_fail, self$n_warn, self$n_skip, self$n_ok)
       self$cat_line(status)
@@ -457,6 +469,7 @@ ParallelProgressReporter <- R6::R6Class("ParallelProgressReporter",
         self$n_fail <- self$n_fail + 1
         self$files[[file]]$n_fail <- self$files[[file]]$n_fail + 1L
         self$files[[file]]$issues$push(result)
+        self$problems$push(result)
       } else if (expectation_skip(result)) {
         self$n_skip <- self$n_skip + 1
         self$files[[file]]$n_skip <- self$files[[file]]$n_skip + 1L

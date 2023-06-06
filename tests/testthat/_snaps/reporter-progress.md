@@ -18,6 +18,17 @@
     --------------------------------------------------------------------------------
     
     == Results =====================================================================
+    -- Failed tests ----------------------------------------------------------------
+    Error ('reporters/error-setup.R:6:1'): (code run outside of `test_that()`)
+    Error in `h()`: !
+    Backtrace:
+        x
+     1. +-testthat::setup(f())
+     2. | \-rlang::eval_tidy(enquo(code), env = env)
+     3. \-f()
+     4.   \-g()
+     5.     \-h()
+    
     [ FAIL 1 | WARN 0 | SKIP 0 | PASS 0 ]
     
     I believe in you!
@@ -124,6 +135,73 @@
     i Increase this number with (e.g.) `testthat::set_max_fails(Inf)` 
     
     == Results =====================================================================
+    -- Failed tests ----------------------------------------------------------------
+    Failure ('reporters/fail-many.R:3:5'): Example
+    FALSE is not TRUE
+    
+    `actual`:   FALSE
+    `expected`: TRUE 
+    
+    Failure ('reporters/fail-many.R:3:5'): Example
+    FALSE is not TRUE
+    
+    `actual`:   FALSE
+    `expected`: TRUE 
+    
+    Failure ('reporters/fail-many.R:3:5'): Example
+    FALSE is not TRUE
+    
+    `actual`:   FALSE
+    `expected`: TRUE 
+    
+    Failure ('reporters/fail-many.R:3:5'): Example
+    FALSE is not TRUE
+    
+    `actual`:   FALSE
+    `expected`: TRUE 
+    
+    Failure ('reporters/fail-many.R:3:5'): Example
+    FALSE is not TRUE
+    
+    `actual`:   FALSE
+    `expected`: TRUE 
+    
+    Failure ('reporters/fail-many.R:3:5'): Example
+    FALSE is not TRUE
+    
+    `actual`:   FALSE
+    `expected`: TRUE 
+    
+    Failure ('reporters/fail-many.R:3:5'): Example
+    FALSE is not TRUE
+    
+    `actual`:   FALSE
+    `expected`: TRUE 
+    
+    Failure ('reporters/fail-many.R:3:5'): Example
+    FALSE is not TRUE
+    
+    `actual`:   FALSE
+    `expected`: TRUE 
+    
+    Failure ('reporters/fail-many.R:3:5'): Example
+    FALSE is not TRUE
+    
+    `actual`:   FALSE
+    `expected`: TRUE 
+    
+    Failure ('reporters/fail-many.R:3:5'): Example
+    FALSE is not TRUE
+    
+    `actual`:   FALSE
+    `expected`: TRUE 
+    
+    Failure ('reporters/fail-many.R:3:5'): Example
+    FALSE is not TRUE
+    
+    `actual`:   FALSE
+    `expected`: TRUE 
+    
     [ FAIL 11 | WARN 0 | SKIP 0 | PASS 0 ]
     == Terminated early ============================================================
     
@@ -303,6 +381,124 @@
     --------------------------------------------------------------------------------
     
     == Results =====================================================================
+    -- Failed tests ----------------------------------------------------------------
+    Error ('reporters/backtraces.R:6:3'): errors thrown at block level are entraced
+    Error in `g()`: foo
+    Backtrace:
+        x
+     1. \-f()
+     2.   \-g()
+    
+    Error ('reporters/backtraces.R:11:3'): errors thrown from a quasi-labelled argument are entraced
+    Error in `foo()`: foo
+    Backtrace:
+        x
+     1. +-testthat::expect_s3_class(foo(), "foo")
+     2. | \-testthat::quasi_label(enquo(object), arg = "object")
+     3. |   \-rlang::eval_bare(expr, quo_get_env(quo))
+     4. \-foo()
+    
+    Error ('reporters/backtraces.R:18:3'): errors thrown from a quasi-labelled argument are entraced (deep case)
+    Error in `foo()`: foo
+    Backtrace:
+        x
+     1. +-testthat::expect_s3_class(f(), "foo")
+     2. | \-testthat::quasi_label(enquo(object), arg = "object")
+     3. |   \-rlang::eval_bare(expr, quo_get_env(quo))
+     4. \-f()
+     5.   \-g()
+     6.     +-testthat::expect_s3_class(foo(), "foo")
+     7.     | \-testthat::quasi_label(enquo(object), arg = "object")
+     8.     |   \-rlang::eval_bare(expr, quo_get_env(quo))
+     9.     \-foo()
+    
+    Error ('reporters/backtraces.R:28:3'): errors thrown from a quasi-labelled argument are entraced (deep deep case)
+    Error in `bar()`: foobar
+    Backtrace:
+        x
+     1. \-f()
+     2.   \-g()
+     3.     +-testthat::expect_s3_class(foo(), "foo")
+     4.     | \-testthat::quasi_label(enquo(object), arg = "object")
+     5.     |   \-rlang::eval_bare(expr, quo_get_env(quo))
+     6.     \-foo()
+     7.       \-bar()
+    
+    Error ('reporters/backtraces.R:35:3'): failed expect_error() prints a backtrace
+    Error in `signaller()`: bar
+    Backtrace:
+        x
+     1. +-testthat::expect_error(f(), "foo")
+     2. | \-testthat:::expect_condition_matching(...)
+     3. |   \-testthat:::quasi_capture(...)
+     4. |     +-testthat (local) .capture(...)
+     5. |     | \-base::withCallingHandlers(...)
+     6. |     \-rlang::eval_bare(quo_get_expr(.quo), quo_get_env(.quo))
+     7. \-f()
+     8.   \-signaller()
+    
+    Error ('reporters/backtraces.R:43:3'): Errors are inspected with `conditionMessage()`
+    <foobar/rlang_error/error/condition>
+    Error in `eval(code, test_env)`: dispatched
+    Backtrace:
+        x
+     1. \-rlang::abort("Wrong message", "foobar")
+    
+    Error ('reporters/backtraces.R:58:3'): deep stacks are shown
+    Error in `f(x - 1)`: This is deep
+    Backtrace:
+         x
+      1. \-f(25)
+      2.   \-f(x - 1)
+      3.     \-f(x - 1)
+      4.       \-f(x - 1)
+      5.         \-f(x - 1)
+      6.           \-f(x - 1)
+      7.             \-f(x - 1)
+      8.               \-f(x - 1)
+      9.                 \-f(x - 1)
+     10.                   \-f(x - 1)
+     11.                     \-f(x - 1)
+     12.                       \-f(x - 1)
+     13.                         \-f(x - 1)
+     14.                           \-f(x - 1)
+     15.                             \-f(x - 1)
+     16.                               \-f(x - 1)
+     17.                                 \-f(x - 1)
+     18.                                   \-f(x - 1)
+     19.                                     \-f(x - 1)
+     20.                                       \-f(x - 1)
+     21.                                         \-f(x - 1)
+     22.                                           \-f(x - 1)
+     23.                                             \-f(x - 1)
+     24.                                               \-f(x - 1)
+     25.                                                 \-f(x - 1)
+     26.                                                   \-f(x - 1)
+    
+    Failure ('reporters/backtraces.R:66:1'): (code run outside of `test_that()`)
+    FALSE is not TRUE
+    
+    `actual`:   FALSE
+    `expected`: TRUE 
+    Backtrace:
+        x
+     1. \-f()
+     2.   \-g()
+     3.     \-h()
+     4.       \-testthat::expect_true(FALSE)
+    
+    Failure ('reporters/backtraces.R:69:3'): nested expectations get backtraces
+    FALSE is not TRUE
+    
+    `actual`:   FALSE
+    `expected`: TRUE 
+    Backtrace:
+        x
+     1. \-f()
+     2.   \-g()
+     3.     \-h()
+     4.       \-testthat::expect_true(FALSE)
+    
     [ FAIL 9 | WARN 1 | SKIP 0 | PASS 1 ]
     
     I believe in you!
