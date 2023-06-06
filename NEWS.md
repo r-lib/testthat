@@ -1,5 +1,10 @@
 # testthat (development version)
 
+* New `expect_contains()` and `expect_in()` that works similarly to 
+  `expect_true(all(expected %in% object))` or 
+  `expect_true(all(object %in% expected))` but give more informative failure
+  messages (#1346).
+
 * Skips are now only shown at the end of reporter summaries, not as tests are 
   run. This makes them less intrusive in interactive tests while still allowing
   you to verify that the correct tests are skipped (#1801).
