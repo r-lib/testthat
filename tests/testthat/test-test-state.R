@@ -3,9 +3,6 @@ test_that("set_state_inspector() verifies its inputs", {
 })
 
 test_that("can detect state changes", {
-  local_edition(3) # Why are these needed for R CMD check?
-  local_reproducible_output()
-
   local_options(x = NULL)
   set_state_inspector(function() list(x = getOption("x")))
   withr::defer(set_state_inspector(NULL))
