@@ -7,6 +7,7 @@
   function was inspired by renv's testing infrastructure.
 
 * Only report test files that take longer than a second (#1806).
+
 * New `expect_contains()` and `expect_in()` that works similarly to 
   `expect_true(all(expected %in% object))` or 
   `expect_true(all(object %in% expected))` but give more informative failure
@@ -35,7 +36,6 @@
 
 * testthat no longer truncates tracebacks and uses rlang's default tree
   display.
-
 
 # testthat 3.1.8
 
