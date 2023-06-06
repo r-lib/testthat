@@ -274,6 +274,9 @@
     <loc>https://testthat.r-lib.org/dev/reference/set_max_fails.html</loc>
   </url>
   <url>
+    <loc>https://testthat.r-lib.org/dev/reference/set_state_inspector.html</loc>
+  </url>
+  <url>
     <loc>https://testthat.r-lib.org/dev/reference/skip.html</loc>
   </url>
   <url>
