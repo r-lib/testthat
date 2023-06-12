@@ -1,93 +1,14 @@
-# bookdown
+# appler
 
 <details>
 
-* Version: 0.33
-* GitHub: https://github.com/rstudio/bookdown
-* Source code: https://github.com/cran/bookdown
-* Date/Publication: 2023-03-06 23:50:02 UTC
-* Number of recursive dependencies: 73
+* Version: 0.2.0
+* GitHub: https://github.com/ashbaldry/appler
+* Source code: https://github.com/cran/appler
+* Date/Publication: 2023-02-02 20:00:02 UTC
+* Number of recursive dependencies: 61
 
-Run `revdepcheck::cloud_details(, "bookdown")` for more info
-
-</details>
-
-## Newly broken
-
-*   checking tests ... ERROR
-    ```
-      Running ‘test-all.R’
-      Running ‘test-rmd.R’
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Last 13 lines of output:
-      ══ Skipped tests ═══════════════════════════════════════════════════════════════
-      • On CRAN (9)
-      
-      ══ Failed tests ════════════════════════════════════════════════════════════════
-      ── Error ('test-bs4_book.R:4:1'): (code run outside of `test_that()`) ──────────
-    ...
-      Error in `vapply(bs4_book_deps(), skip_if_not_installed, logical(1L), USE.NAMES = FALSE)`: values must be length 1,
-       but FUN(X[[1]]) result is length 0
-      Backtrace:
-          ▆
-       1. └─bookdown:::skip_if_bs4_book_deps_missing() at test-bs4_book.R:4:0
-       2.   └─base::vapply(...) at tests/testthat/helper-bs4_book.R:4:2
-      
-      [ FAIL 1 | WARN 0 | SKIP 9 | PASS 57 ]
-      Error: Test failures
-      Execution halted
-    ```
-
-# crosstable
-
-<details>
-
-* Version: 0.6.1
-* GitHub: https://github.com/DanChaltiel/crosstable
-* Source code: https://github.com/cran/crosstable
-* Date/Publication: 2023-04-04 15:50:05 UTC
-* Number of recursive dependencies: 137
-
-Run `revdepcheck::cloud_details(, "crosstable")` for more info
-
-</details>
-
-## Newly broken
-
-*   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Last 13 lines of output:
-      ══ Skipped tests ═══════════════════════════════════════════════════════════════
-      • On CRAN (35)
-      • On Linux (12)
-      
-      ══ Failed tests ════════════════════════════════════════════════════════════════
-      ── Failure ('test-by_factor.R:290:3'): By multiple errors ──────────────────────
-      `.` did not throw the expected error.
-      Backtrace:
-          ▆
-       1. ├─... %>% expect_error(class = "crosstable_all_na_by_warning") at test-by_factor.R:290:2
-       2. └─testthat::expect_error(., class = "crosstable_all_na_by_warning")
-      
-      [ FAIL 1 | WARN 3 | SKIP 47 | PASS 329 ]
-      Error: Test failures
-      Execution halted
-    ```
-
-# curl
-
-<details>
-
-* Version: 5.0.0
-* GitHub: https://github.com/jeroen/curl
-* Source code: https://github.com/cran/curl
-* Date/Publication: 2023-01-12 18:10:01 UTC
-* Number of recursive dependencies: 59
-
-Run `revdepcheck::cloud_details(, "curl")` for more info
+Run `revdepcheck::cloud_details(, "appler")` for more info
 
 </details>
 
@@ -97,236 +18,183 @@ Run `revdepcheck::cloud_details(, "curl")` for more info
     ```
     Error(s) in re-building vignettes:
       ...
-    --- re-building ‘intro.Rmd’ using rmarkdown
-    Quitting from lines 48-52 (intro.Rmd) 
-    Error: processing vignette 'intro.Rmd' failed with diagnostics:
-    lexical error: invalid char in json text.
-                                           <html>  <head><title>502 Bad Ga
-                         (right here) ------^
+    --- re-building ‘introduction.Rmd’ using rmarkdown
     
-    --- failed re-building ‘intro.Rmd’
-    
-    --- re-building ‘windows.Rmd’ using rmarkdown
-    --- finished re-building ‘windows.Rmd’
+    Quitting from lines 86-88 [lookup] (introduction.Rmd)
+    Error: processing vignette 'introduction.Rmd' failed with diagnostics:
+    Service Unavailable (HTTP 503).
+    --- failed re-building ‘introduction.Rmd’
     
     SUMMARY: processing the following file failed:
-      ‘intro.Rmd’
+      ‘introduction.Rmd’
     
     Error: Vignette re-building failed.
     Execution halted
     ```
 
-## Newly fixed
+## In both
+
+*   checking data for non-ASCII characters ... NOTE
+    ```
+      Note: found 1 marked UTF-8 string
+    ```
+
+# batata
+
+<details>
+
+* Version: 0.2.1
+* GitHub: https://github.com/feddelegrand7/batata
+* Source code: https://github.com/cran/batata
+* Date/Publication: 2021-03-08 09:50:02 UTC
+* Number of recursive dependencies: 64
+
+Run `revdepcheck::cloud_details(, "batata")` for more info
+
+</details>
+
+## Newly broken
 
 *   checking tests ... ERROR
     ```
-      Running ‘engine.R’
-      Comparing ‘engine.Rout’ to ‘engine.Rout.save’ ...4d3
-    < Using libcurl 7.68.0 with GnuTLS/3.6.13
-      Running ‘spelling.R’
       Running ‘testthat.R’
     Running the tests in ‘tests/testthat.R’ failed.
     Last 13 lines of output:
-      + }
-      This is libcurl version 7.68.0 with GnuTLS/3.6.13 
-      Using test server: http://hb.opencpu.org 
-    ...
-      ══ Skipped tests ═══════════════════════════════════════════════════════════════
-      • On CRAN (3)
       
       ══ Failed tests ════════════════════════════════════════════════════════════════
-      ── Failure ('test-handle.R:130:3'): Custom URL parser ──────────────────────────
-      `curl_fetch_memory("httpbin.org/delay/10", handle = h)` did not throw an error.
+      ── Failure ('test-display_starred.R:8:3'): display_starred() returns a character vector ──
+      `output` has type 'NULL', not 'character'.
+      ── Failure ('test-display_starred.R:14:3'): display_starred() returns a vector
+                of length superior than 0 ──
+      length(output) is not strictly more than 0. Difference: 0
+      ── Failure ('test-display_starred.R:20:3'): display_starred() returns a coherent length ──
+      length(output2) not equal to 10.
+      1/1 mismatches
+      [1] 0 - 10 == -10
       
-      [ FAIL 1 | WARN 0 | SKIP 3 | PASS 218 ]
+      [ FAIL 3 | WARN 2 | SKIP 1 | PASS 38 ]
       Error: Test failures
       Execution halted
     ```
 
 ## In both
 
-*   checking compiled code ... NOTE
+*   checking LazyData ... NOTE
     ```
-    File ‘curl/libs/curl.so’:
-      Found non-API call to R: ‘R_new_custom_connection’
-    
-    Compiled code should not call non-API entry points in R.
-    
-    See ‘Writing portable packages’ in the ‘Writing R Extensions’ manual.
+      'LazyData' is specified without a 'data' directory
     ```
 
-# extras
+# bayes4psy
+
+<details>
+
+* Version: 1.2.11
+* GitHub: https://github.com/bstatcomp/bayes4psy
+* Source code: https://github.com/cran/bayes4psy
+* Date/Publication: 2023-03-22 20:30:02 UTC
+* Number of recursive dependencies: 99
+
+Run `revdepcheck::cloud_details(, "bayes4psy")` for more info
+
+</details>
+
+## Newly broken
+
+*   checking tests ... ERROR
+    ```
+      Running ‘testthat.R’
+    Running the tests in ‘tests/testthat.R’ failed.
+    Last 13 lines of output:
+      17: test_code(test = NULL, code = exprs, env = env, default_reporter = StopReporter$new())
+      18: source_file(path, env(env), wrap = wrap)
+      19: FUN(X[[i]], ...)
+      20: lapply(test_paths, test_one_file, env = env, wrap = wrap)
+      21: doTryCatch(return(expr), name, parentenv, handler)
+      22: tryCatchOne(expr, names, parentenv, handlers[[1L]])
+      23: tryCatchList(expr, classes, parentenv, handlers)
+      24: tryCatch(code, testthat_abort_reporter = function(cnd) {    cat(conditionMessage(cnd), "\n")    NULL})
+      25: with_reporter(reporters$multi, lapply(test_paths, test_one_file,     env = env, wrap = wrap))
+      26: test_files_serial(test_dir = test_dir, test_package = test_package,     test_paths = test_paths, load_helpers = load_helpers, reporter = reporter,     env = env, stop_on_failure = stop_on_failure, stop_on_warning = stop_on_warning,     wrap = wrap, load_package = load_package)
+      27: test_files(test_dir = path, test_paths = test_paths, test_package = package,     reporter = reporter, load_helpers = load_helpers, env = env,     stop_on_failure = stop_on_failure, stop_on_warning = stop_on_warning,     wrap = wrap, load_package = load_package, parallel = parallel)
+      28: test_dir("testthat", package = package, reporter = reporter,     ..., load_package = "installed")
+      29: test_check("bayes4psy")
+      An irrecoverable exception occurred. R is aborting now ...
+      Segmentation fault (core dumped)
+    ```
+
+## In both
+
+*   checking installed package size ... NOTE
+    ```
+      installed size is 156.3Mb
+      sub-directories of 1Mb or more:
+        libs  154.2Mb
+    ```
+
+*   checking for GNU extensions in Makefiles ... NOTE
+    ```
+    GNU make is a SystemRequirements.
+    ```
+
+# covidcast
 
 <details>
 
 * Version: 0.5.0
-* GitHub: https://github.com/poissonconsulting/extras
-* Source code: https://github.com/cran/extras
-* Date/Publication: 2022-10-30 04:20:02 UTC
-* Number of recursive dependencies: 61
+* GitHub: https://github.com/cmu-delphi/covidcast
+* Source code: https://github.com/cran/covidcast
+* Date/Publication: 2023-06-01 20:10:02 UTC
+* Number of recursive dependencies: 93
 
-Run `revdepcheck::cloud_details(, "extras")` for more info
-
-</details>
-
-## Newly broken
-
-*   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Last 13 lines of output:
-      ══ Failed tests ════════════════════════════════════════════════════════════════
-      ── Error ('test-bern.R:47:3'): rbern ───────────────────────────────────────────
-      Error in `expect_error(rbern(NA, 1), NA_real_)`: `pattern` must be a single string, `NA`, or `NULL`, not a numeric `NA`.
-      Backtrace:
-          ▆
-       1. └─testthat::expect_error(...) at test-bern.R:47:2
-       2.   └─testthat:::expect_condition_matching(...)
-       3.     └─testthat:::cnd_matcher(...)
-       4.       └─testthat:::check_string(...)
-       5.         └─testthat:::stop_input_type(...)
-       6.           └─rlang::abort(message, ..., call = call, arg = arg)
-      
-      [ FAIL 1 | WARN 0 | SKIP 0 | PASS 1002 ]
-      Error: Test failures
-      Execution halted
-    ```
-
-# morpheus
-
-<details>
-
-* Version: 1.0-4
-* GitHub: https://github.com/yagu0/morpheus
-* Source code: https://github.com/cran/morpheus
-* Date/Publication: 2023-02-09 11:20:12 UTC
-* Number of recursive dependencies: 103
-
-Run `revdepcheck::cloud_details(, "morpheus")` for more info
+Run `revdepcheck::cloud_details(, "covidcast")` for more info
 
 </details>
 
 ## Newly broken
 
-*   checking tests ... ERROR
+*   checking re-building of vignette outputs ... ERROR
     ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Last 13 lines of output:
-      
-      ══ Skipped tests ═══════════════════════════════════════════════════════════════
-      • empty test (1)
-      
-      ══ Failed tests ════════════════════════════════════════════════════════════════
-      ── Error ('test-optimParams.R:102:5'): W computed in C and in R are the same ───
-      Error in `eS$vectors %*% diag(sqrt(pmax(ev, 0)), p) %*% t(X)`: non-conformable arguments
-      Backtrace:
-          ▆
-       1. └─morpheus::generateSampleIO(n, theta$p, theta$beta, theta$b, link) at test-optimParams.R:102:4
-       2.   └─MASS::mvrnorm(classes[i], zero_mean, id_sigma)
-      
-      [ FAIL 1 | WARN 0 | SKIP 1 | PASS 314 ]
-      Error: Test failures
-      Execution halted
-    ```
-
-# PKNCA
-
-<details>
-
-* Version: 0.10.1
-* GitHub: https://github.com/billdenney/pknca
-* Source code: https://github.com/cran/PKNCA
-* Date/Publication: 2023-01-11 10:23:28 UTC
-* Number of recursive dependencies: 136
-
-Run `revdepcheck::cloud_details(, "PKNCA")` for more info
-
-</details>
-
-## Newly broken
-
-*   checking tests ... ERROR
-    ```
-      Running ‘spelling.R’
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Last 13 lines of output:
-      
-          filter
-      
-      > 
-      > test_check("PKNCA")
-      Found column named duration, using it for the attribute of the same name.
-      [ FAIL 1 | WARN 0 | SKIP 0 | PASS 1649 ]
-      
-      ══ Failed tests ════════════════════════════════════════════════════════════════
-      ── Failure ('test-class-PKNCAdose.R:443:3'): setDuration ───────────────────────
-      `expect_error(...)` did not throw the expected warning.
-      
-      [ FAIL 1 | WARN 0 | SKIP 0 | PASS 1649 ]
-      Error: Test failures
-      Execution halted
-    ```
-
-# rlang
-
-<details>
-
-* Version: 1.1.0
-* GitHub: https://github.com/r-lib/rlang
-* Source code: https://github.com/cran/rlang
-* Date/Publication: 2023-03-14 08:20:06 UTC
-* Number of recursive dependencies: 69
-
-Run `revdepcheck::cloud_details(, "rlang")` for more info
-
-</details>
-
-## Newly broken
-
-*   checking tests ... ERROR
-    ```
-      Running ‘sink.R’
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Last 13 lines of output:
-        7. └─rlang (local) f(foo)
-        8.   └─rlang::check_dots_empty(error = hnd) at test-dots-ellipsis.R:95:7
-        9.     └─rlang:::action_dots(...)
-       10.       ├─rlang (local) try_dots(...)
-       11.       │ └─rlang::try_fetch(expr, error = error)
-       12.       │   ├─base::tryCatch(...)
-       13.       │   │ └─base (local) tryCatchList(expr, classes, parentenv, handlers)
-       14.       │   │   └─base (local) tryCatchOne(expr, names, parentenv, handlers[[1L]])
-       15.       │   │     └─base (local) doTryCatch(return(expr), name, parentenv, handler)
-       16.       │   └─base::withCallingHandlers(...)
-       17.       └─rlang (local) action(...)
-      
-      [ FAIL 1 | WARN 2 | SKIP 249 | PASS 3869 ]
-      Error: Test failures
-      Execution halted
+    Error(s) in re-building vignettes:
+    --- re-building ‘correlation-utils.Rmd’ using rmarkdown
+    --- finished re-building ‘correlation-utils.Rmd’
+    
+    --- re-building ‘covidcast.Rmd’ using rmarkdown
+    --- finished re-building ‘covidcast.Rmd’
+    
+    --- re-building ‘external-data.Rmd’ using rmarkdown
+    --- finished re-building ‘external-data.Rmd’
+    
+    ...
+    ℹ In index: 1.
+    Caused by error in `match.arg()`:
+    ! 'arg' should be one of "day", "week"
+    --- failed re-building ‘plotting-signals.Rmd’
+    
+    SUMMARY: processing the following files failed:
+      ‘multi-signals.Rmd’ ‘plotting-signals.Rmd’
+    
+    Error: Vignette re-building failed.
+    Execution halted
     ```
 
 ## In both
 
-*   checking package dependencies ... NOTE
+*   checking data for non-ASCII characters ... NOTE
     ```
-    Package which this enhances but not available for checking: ‘winch’
+      Note: found 20 marked UTF-8 strings
     ```
 
-# tinytiger
+# paws.common
 
 <details>
 
-* Version: 0.0.4
-* GitHub: https://github.com/alarm-redist/tinytiger
-* Source code: https://github.com/cran/tinytiger
-* Date/Publication: 2022-08-27 13:40:02 UTC
-* Number of recursive dependencies: 63
+* Version: 0.5.6
+* GitHub: NA
+* Source code: https://github.com/cran/paws.common
+* Date/Publication: 2023-03-06 12:20:02 UTC
+* Number of recursive dependencies: 46
 
-Run `revdepcheck::cloud_details(, "tinytiger")` for more info
+Run `revdepcheck::cloud_details(, "paws.common")` for more info
 
 </details>
 
@@ -337,19 +205,57 @@ Run `revdepcheck::cloud_details(, "tinytiger")` for more info
       Running ‘testthat.R’
     Running the tests in ‘tests/testthat.R’ failed.
     Last 13 lines of output:
+      1/1 mismatches
+      x[1]: "qQ9YF6l[2/\\_Q:7M'[KJyfY4]5H4sChI\"V6,GD(*28\"%7o0UdiC)FCeJm?HISuy?1XQ6&D
+      x[1]: 4cKlJcBp-)S~'Od<f`)N<<t(8$SIe(&1r$x73|.0R=3ctS 0idH'g([AZuBp%]TcEiz:g+I#OJ
+      x[1]: +vp{Vo7{J^nTXu\"77|3'Ps+>z!cq-,&LUEr401#AnM%N2 ZYA^$a'OX<K'7?!662fe=:`l4\v
+      x[1]: Yktbz_AZ/lN/&~UqDJ{'#NJ3s#}tVs?yN?_#u$FGF2[]DT(!#zU[~ :XxP&pe ,?!va{bLA}AP
+      x[1]: cDAa;$/{{W5e5S@e/1Eu4!XA{U^)@Ui\":\x8fnTfP}[Tg'[-;.QjpvF~c<`R3%#;_=%-~`...
+      y[1]: "qQ9YF6l[2/\\_Q:7M'[KJyfY4]5H4sChI\"V6,GD(*28\"%7o0UdiC)FCeJm?HISuy?1XQ6&D
+      y[1]: 4cKlJcBp-)S~'Od<f`)N<<t(8$SIe(&1r$x73|.0R=3ctS 0idH'g([AZuBp%]TcEiz:g+I#OJ
+      y[1]: +vp{Vo7{J^nTXu\"77|3'Ps+>z!cq-,&LUEr401#AnM%N2 ZYA^$a'OX<K'7?!662fe=:`l4%0
+      y[1]: BYktbz_AZ/lN/&~UqDJ{'#NJ3s#}tVs?yN?_#u$FGF2[]DT(!#zU[~ :XxP&pe ,?!va{bLA}A
+      y[1]: PcDAa;$/{{W5e5S@e/1Eu4!XA{U^)@Ui\":%8FnTfP}[Tg'[-;.QjpvF~c<`R3%#;_=%-~`...
       
-      ══ Failed tests ════════════════════════════════════════════════════════════════
-      ── Error ('test-puma.R:2:3'): tt_puma works ────────────────────────────────────
-      Error in `value[[3L]](cond)`: HTTP error 503.
-      Backtrace:
-          ▆
-       1. └─tinytiger:::maybe_304(tt_puma("DE")) at test-puma.R:2:2
-       2.   └─base::tryCatch(...) at tests/testthat/setup.R:5:2
-       3.     └─base (local) tryCatchList(expr, classes, parentenv, handlers)
-       4.       └─base (local) tryCatchOne(expr, names, parentenv, handlers[[1L]])
-       5.         └─value[[3L]](cond)
+      [ FAIL 1 | WARN 0 | SKIP 9 | PASS 741 ]
+      Error: Test failures
+      Execution halted
+    ```
+
+# xpose
+
+<details>
+
+* Version: 0.4.16
+* GitHub: https://github.com/UUPharmacometrics/xpose
+* Source code: https://github.com/cran/xpose
+* Date/Publication: 2023-04-18 20:50:02 UTC
+* Number of recursive dependencies: 109
+
+Run `revdepcheck::cloud_details(, "xpose")` for more info
+
+</details>
+
+## Newly broken
+
+*   checking tests ... ERROR
+    ```
+      Running ‘testthat.R’
+    Running the tests in ‘tests/testthat.R’ failed.
+    Last 13 lines of output:
+        4. │     ├─purrr:::with_indexed_errors(...)
+        5. │     │ └─base::withCallingHandlers(...)
+        6. │     ├─purrr:::call_with_cleanup(...)
+        7. │     └─xpose (local) .f(.x[[i]], ...)
+        8. │       └─base::do.call(...) at tests/testthat/helper-test_that_for_all.R:20:6
+        9. ├─testthat (local) `<fn>`(...)
+       10. │ └─base::new.env(parent = env)
+       11. └─base::.handleSimpleError(...)
+       12.   └─purrr (local) h(simpleError(msg, call))
+       13.     └─cli::cli_abort(...)
+       14.       └─rlang::abort(...)
       
-      [ FAIL 1 | WARN 0 | SKIP 1 | PASS 41 ]
+      [ FAIL 1 | WARN 0 | SKIP 7 | PASS 380 ]
       Error: Test failures
       Execution halted
     ```

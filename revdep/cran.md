@@ -1,47 +1,45 @@
 ## revdepcheck results
 
-We checked 7489 reverse dependencies, comparing R CMD check results across CRAN and dev versions of this package.
+We checked 7602 reverse dependencies, comparing R CMD check results across CRAN and dev versions of this package.
 
- * We saw 8 new problems
- * We failed to check 9 packages
+ * We saw 6 new problems
+ * We failed to check 13 packages
 
 Issues with CRAN packages are summarised below.
 
 ### New problems
 (This reports the first line of each new failure)
 
-* bookdown
-  checking tests ... ERROR
-
-* crosstable
-  checking tests ... ERROR
-
-* curl
+* appler
   checking re-building of vignette outputs ... ERROR
 
-* extras
+* batata
   checking tests ... ERROR
 
-* morpheus
+* bayes4psy
   checking tests ... ERROR
 
-* PKNCA
+* covidcast
+  checking re-building of vignette outputs ... ERROR
+
+* paws.common
   checking tests ... ERROR
 
-* rlang
-  checking tests ... ERROR
-
-* tinytiger
+* xpose
   checking tests ... ERROR
 
 ### Failed to check
 
-* Boom        (NA)
-* ctsem       (NA)
-* fdaPDE      (NA)
-* gllvm       (NA)
-* loon.ggplot (NA)
-* loon.shiny  (NA)
-* loon.tourr  (NA)
-* vivid       (NA)
-* xtensor     (NA)
+* Boom         (NA)
+* CausalImpact (NA)
+* ctsem        (NA)
+* fdaPDE       (NA)
+* gllvm        (NA)
+* loon.ggplot  (NA)
+* loon.shiny   (NA)
+* loon.tourr   (NA)
+* Platypus     (NA)
+* rstanarm     (NA)
+* tidyfit      (NA)
+* vivid        (NA)
+* xtensor      (NA)

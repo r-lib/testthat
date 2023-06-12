@@ -1,21 +1,35 @@
-## R CMD check results
+## revdepcheck results
 
-There were no ERRORs, WARNINGs, or NOTEs.
+We checked 7602 reverse dependencies, comparing R CMD check results across CRAN and dev versions of this package.
 
-We checked 7489 reverse dependencies, comparing R CMD check results across CRAN and dev versions of this package.
+ * We saw 6 new problems - I reviewed these and I'm reasonable certain that
+   they're stochastic failures unrelated to testthat.
+   
+ * We failed to check 13 packages
 
- * We saw 8 new problems. We sent patches to all affect packages 2 weeks ago:
-   https://github.com/r-lib/testthat/issues/1775
- * We failed to check 9 packages
+Issues with CRAN packages are summarised below.
+
+### New problems
+
+* appler
+* batata
+* bayes4psy
+* covidcast
+* paws.common
+* xpose
 
 ### Failed to check
 
-* Boom        (NA)
-* ctsem       (NA)
-* fdaPDE      (NA)
-* gllvm       (NA)
-* loon.ggplot (NA)
-* loon.shiny  (NA)
-* loon.tourr  (NA)
-* vivid       (NA)
-* xtensor     (NA)
+* Boom         (NA)
+* CausalImpact (NA)
+* ctsem        (NA)
+* fdaPDE       (NA)
+* gllvm        (NA)
+* loon.ggplot  (NA)
+* loon.shiny   (NA)
+* loon.tourr   (NA)
+* Platypus     (NA)
+* rstanarm     (NA)
+* tidyfit      (NA)
+* vivid        (NA)
+* xtensor      (NA)

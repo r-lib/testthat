@@ -36,13 +36,13 @@ g++ -std=gnu++17 -I"/opt/R/4.2.1/lib/R/include" -DNDEBUG -I. -I../inst/include -
 g++ -std=gnu++17 -I"/opt/R/4.2.1/lib/R/include" -DNDEBUG -I. -I../inst/include -IBmath -Imath/cephes -DADD_ -DR_NO_REMAP -DEIGEN_WARNINGS_DISABLED  -I/usr/local/include   -fpic  -g -O2  -c extract_mixture_data.cpp -o extract_mixture_data.o
 g++ -std=gnu++17 -I"/opt/R/4.2.1/lib/R/include" -DNDEBUG -I. -I../inst/include -IBmath -Imath/cephes -DADD_ -DR_NO_REMAP -DEIGEN_WARNINGS_DISABLED  -I/usr/local/include   -fpic  -g -O2  -c seed_rng_from_R.cpp -o seed_rng_from_R.o
 ...
-../inst/include/Eigen/src/Core/AssignEvaluator.h:890:49:   [ skipping 17 instantiation contexts, use -ftemplate-backtrace-limit=0 to disable ]
-../inst/include/Eigen/src/Householder/HouseholderSequence.h:399:46:   required from ‘void Eigen::HouseholderSequence<VectorsType, CoeffsType, Side>::applyThisOnTheLeft(Dest&, Workspace&, bool) const [with Dest = Eigen::Matrix<double, -1, -1>; Workspace = Eigen::Matrix<double, -1, 1>; VectorsType = Eigen::Matrix<double, -1, -1>; CoeffsType = Eigen::Matrix<double, -1, 1>; int Side = 1]’
-../inst/include/Eigen/src/Householder/HouseholderSequence.h:320:11:   required from ‘void Eigen::HouseholderSequence<VectorsType, CoeffsType, Side>::evalTo(Dest&, Workspace&) const [with Dest = Eigen::Matrix<double, -1, -1>; Workspace = Eigen::Matrix<double, -1, 1>; VectorsType = Eigen::Matrix<double, -1, -1>; CoeffsType = Eigen::Matrix<double, -1, 1>; int Side = 1]’
-../inst/include/Eigen/src/Eigenvalues/RealSchur.h:278:5:   required from ‘Eigen::RealSchur<MatrixType>& Eigen::RealSchur<_MatrixType>::compute(const Eigen::EigenBase<OtherDerived>&, bool) [with InputType = Eigen::Map<const Eigen::Matrix<double, -1, -1>, 0, Eigen::Stride<0, 0> >; _MatrixType = Eigen::Matrix<double, -1, -1>]’
-../inst/include/Eigen/src/Eigenvalues/EigenSolver.h:389:3:   required from ‘Eigen::EigenSolver<MatrixType>& Eigen::EigenSolver<_MatrixType>::compute(const Eigen::EigenBase<OtherDerived>&, bool) [with InputType = Eigen::Map<const Eigen::Matrix<double, -1, -1>, 0, Eigen::Stride<0, 0> >; _MatrixType = Eigen::Matrix<double, -1, -1>]’
-../inst/include/Eigen/src/Eigenvalues/EigenSolver.h:156:7:   required from ‘Eigen::EigenSolver<_MatrixType>::EigenSolver(const Eigen::EigenBase<OtherDerived>&, bool) [with InputType = Eigen::Map<const Eigen::Matrix<double, -1, -1>, 0, Eigen::Stride<0, 0> >; _MatrixType = Eigen::Matrix<double, -1, -1>]’
-LinAlg/Eigen.cpp:37:62:   required from here
+../inst/include/Eigen/src/Core/AssignEvaluator.h:890:49:   [ skipping 16 instantiation contexts, use -ftemplate-backtrace-limit=0 to disable ]
+../inst/include/Eigen/src/Householder/BlockHouseholder.h:102:19:   required from ‘void Eigen::internal::apply_block_householder_on_the_left(MatrixType&, const VectorsType&, const CoeffsType&, bool) [with MatrixType = Eigen::Block<Eigen::Matrix<double, -1, -1>, -1, -1, false>; VectorsType = Eigen::Block<Eigen::Matrix<double, -1, -1>, -1, -1, false>; CoeffsType = Eigen::VectorBlock<const Eigen::Matrix<double, -1, 1>, -1>]’
+../inst/include/Eigen/src/Householder/HouseholderSequence.h:399:46:   required from ‘void Eigen::HouseholderSequence<VectorsType, CoeffsType, Side>::applyThisOnTheLeft(Dest&, Workspace&, bool) const [with Dest = Eigen::Matrix<double, -1, -1>; Workspace = Eigen::Matrix<double, 1, -1>; VectorsType = Eigen::Matrix<double, -1, -1>; CoeffsType = Eigen::Matrix<double, -1, 1>; int Side = 1]’
+../inst/include/Eigen/src/SVD/JacobiSVD.h:236:9:   required from ‘bool Eigen::internal::qr_preconditioner_impl<MatrixType, 2, 0, true>::run(Eigen::JacobiSVD<MatrixType, 2>&, const MatrixType&) [with MatrixType = Eigen::Matrix<double, -1, -1>]’
+../inst/include/Eigen/src/SVD/JacobiSVD.h:692:5:   required from ‘Eigen::JacobiSVD<MatrixType, QRPreconditioner>& Eigen::JacobiSVD<MatrixType, QRPreconditioner>::compute(const MatrixType&, unsigned int) [with _MatrixType = Eigen::Matrix<double, -1, -1>; int QRPreconditioner = 2; Eigen::JacobiSVD<MatrixType, QRPreconditioner>::MatrixType = Eigen::Matrix<double, -1, -1>]’
+../inst/include/Eigen/src/SVD/JacobiSVD.h:549:7:   required from ‘Eigen::JacobiSVD<MatrixType, QRPreconditioner>::JacobiSVD(const MatrixType&, unsigned int) [with _MatrixType = Eigen::Matrix<double, -1, -1>; int QRPreconditioner = 2; Eigen::JacobiSVD<MatrixType, QRPreconditioner>::MatrixType = Eigen::Matrix<double, -1, -1>]’
+LinAlg/Matrix.cpp:811:67:   required from here
 ../inst/include/Eigen/src/Core/CoreEvaluators.h:1042:8: warning: ignoring attributes on template argument ‘Eigen::internal::packet_traits<double>::type’ {aka ‘__vector(2) double’} [-Wignored-attributes]
 ERROR: compilation failed for package ‘Boom’
 * removing ‘/tmp/workdir/Boom/new/Boom.Rcheck/Boom’
@@ -63,16 +63,80 @@ g++ -std=gnu++17 -I"/opt/R/4.2.1/lib/R/include" -DNDEBUG -I. -I../inst/include -
 g++ -std=gnu++17 -I"/opt/R/4.2.1/lib/R/include" -DNDEBUG -I. -I../inst/include -IBmath -Imath/cephes -DADD_ -DR_NO_REMAP -DEIGEN_WARNINGS_DISABLED  -I/usr/local/include   -fpic  -g -O2  -c extract_mixture_data.cpp -o extract_mixture_data.o
 g++ -std=gnu++17 -I"/opt/R/4.2.1/lib/R/include" -DNDEBUG -I. -I../inst/include -IBmath -Imath/cephes -DADD_ -DR_NO_REMAP -DEIGEN_WARNINGS_DISABLED  -I/usr/local/include   -fpic  -g -O2  -c seed_rng_from_R.cpp -o seed_rng_from_R.o
 ...
-../inst/include/Eigen/src/Core/AssignEvaluator.h:890:49:   [ skipping 17 instantiation contexts, use -ftemplate-backtrace-limit=0 to disable ]
-../inst/include/Eigen/src/Householder/HouseholderSequence.h:399:46:   required from ‘void Eigen::HouseholderSequence<VectorsType, CoeffsType, Side>::applyThisOnTheLeft(Dest&, Workspace&, bool) const [with Dest = Eigen::Matrix<double, -1, -1>; Workspace = Eigen::Matrix<double, -1, 1>; VectorsType = Eigen::Matrix<double, -1, -1>; CoeffsType = Eigen::Matrix<double, -1, 1>; int Side = 1]’
-../inst/include/Eigen/src/Householder/HouseholderSequence.h:320:11:   required from ‘void Eigen::HouseholderSequence<VectorsType, CoeffsType, Side>::evalTo(Dest&, Workspace&) const [with Dest = Eigen::Matrix<double, -1, -1>; Workspace = Eigen::Matrix<double, -1, 1>; VectorsType = Eigen::Matrix<double, -1, -1>; CoeffsType = Eigen::Matrix<double, -1, 1>; int Side = 1]’
-../inst/include/Eigen/src/Eigenvalues/RealSchur.h:278:5:   required from ‘Eigen::RealSchur<MatrixType>& Eigen::RealSchur<_MatrixType>::compute(const Eigen::EigenBase<OtherDerived>&, bool) [with InputType = Eigen::Map<const Eigen::Matrix<double, -1, -1>, 0, Eigen::Stride<0, 0> >; _MatrixType = Eigen::Matrix<double, -1, -1>]’
-../inst/include/Eigen/src/Eigenvalues/EigenSolver.h:389:3:   required from ‘Eigen::EigenSolver<MatrixType>& Eigen::EigenSolver<_MatrixType>::compute(const Eigen::EigenBase<OtherDerived>&, bool) [with InputType = Eigen::Map<const Eigen::Matrix<double, -1, -1>, 0, Eigen::Stride<0, 0> >; _MatrixType = Eigen::Matrix<double, -1, -1>]’
-../inst/include/Eigen/src/Eigenvalues/EigenSolver.h:156:7:   required from ‘Eigen::EigenSolver<_MatrixType>::EigenSolver(const Eigen::EigenBase<OtherDerived>&, bool) [with InputType = Eigen::Map<const Eigen::Matrix<double, -1, -1>, 0, Eigen::Stride<0, 0> >; _MatrixType = Eigen::Matrix<double, -1, -1>]’
-LinAlg/Eigen.cpp:37:62:   required from here
+../inst/include/Eigen/src/Core/AssignEvaluator.h:890:49:   [ skipping 16 instantiation contexts, use -ftemplate-backtrace-limit=0 to disable ]
+../inst/include/Eigen/src/Householder/BlockHouseholder.h:102:19:   required from ‘void Eigen::internal::apply_block_householder_on_the_left(MatrixType&, const VectorsType&, const CoeffsType&, bool) [with MatrixType = Eigen::Block<Eigen::Matrix<double, -1, -1>, -1, -1, false>; VectorsType = Eigen::Block<Eigen::Matrix<double, -1, -1>, -1, -1, false>; CoeffsType = Eigen::VectorBlock<const Eigen::Matrix<double, -1, 1>, -1>]’
+../inst/include/Eigen/src/Householder/HouseholderSequence.h:399:46:   required from ‘void Eigen::HouseholderSequence<VectorsType, CoeffsType, Side>::applyThisOnTheLeft(Dest&, Workspace&, bool) const [with Dest = Eigen::Matrix<double, -1, -1>; Workspace = Eigen::Matrix<double, 1, -1>; VectorsType = Eigen::Matrix<double, -1, -1>; CoeffsType = Eigen::Matrix<double, -1, 1>; int Side = 1]’
+../inst/include/Eigen/src/SVD/JacobiSVD.h:236:9:   required from ‘bool Eigen::internal::qr_preconditioner_impl<MatrixType, 2, 0, true>::run(Eigen::JacobiSVD<MatrixType, 2>&, const MatrixType&) [with MatrixType = Eigen::Matrix<double, -1, -1>]’
+../inst/include/Eigen/src/SVD/JacobiSVD.h:692:5:   required from ‘Eigen::JacobiSVD<MatrixType, QRPreconditioner>& Eigen::JacobiSVD<MatrixType, QRPreconditioner>::compute(const MatrixType&, unsigned int) [with _MatrixType = Eigen::Matrix<double, -1, -1>; int QRPreconditioner = 2; Eigen::JacobiSVD<MatrixType, QRPreconditioner>::MatrixType = Eigen::Matrix<double, -1, -1>]’
+../inst/include/Eigen/src/SVD/JacobiSVD.h:549:7:   required from ‘Eigen::JacobiSVD<MatrixType, QRPreconditioner>::JacobiSVD(const MatrixType&, unsigned int) [with _MatrixType = Eigen::Matrix<double, -1, -1>; int QRPreconditioner = 2; Eigen::JacobiSVD<MatrixType, QRPreconditioner>::MatrixType = Eigen::Matrix<double, -1, -1>]’
+LinAlg/Matrix.cpp:811:67:   required from here
 ../inst/include/Eigen/src/Core/CoreEvaluators.h:1042:8: warning: ignoring attributes on template argument ‘Eigen::internal::packet_traits<double>::type’ {aka ‘__vector(2) double’} [-Wignored-attributes]
 ERROR: compilation failed for package ‘Boom’
 * removing ‘/tmp/workdir/Boom/old/Boom.Rcheck/Boom’
+
+
+```
+# CausalImpact
+
+<details>
+
+* Version: 1.3.0
+* GitHub: NA
+* Source code: https://github.com/cran/CausalImpact
+* Date/Publication: 2022-11-09 08:40:40 UTC
+* Number of recursive dependencies: 79
+
+Run `revdepcheck::cloud_details(, "CausalImpact")` for more info
+
+</details>
+
+## Error before installation
+
+### Devel
+
+```
+* using log directory ‘/tmp/workdir/CausalImpact/new/CausalImpact.Rcheck’
+* using R version 4.2.1 (2022-06-23)
+* using platform: x86_64-pc-linux-gnu (64-bit)
+* using session charset: UTF-8
+* using option ‘--no-manual’
+* checking for file ‘CausalImpact/DESCRIPTION’ ... OK
+* this is package ‘CausalImpact’ version ‘1.3.0’
+* checking package namespace information ... OK
+* checking package dependencies ... ERROR
+Packages required but not available: 'bsts', 'Boom'
+
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
+* DONE
+Status: 1 ERROR
+
+
+
+
+
+```
+### CRAN
+
+```
+* using log directory ‘/tmp/workdir/CausalImpact/old/CausalImpact.Rcheck’
+* using R version 4.2.1 (2022-06-23)
+* using platform: x86_64-pc-linux-gnu (64-bit)
+* using session charset: UTF-8
+* using option ‘--no-manual’
+* checking for file ‘CausalImpact/DESCRIPTION’ ... OK
+* this is package ‘CausalImpact’ version ‘1.3.0’
+* checking package namespace information ... OK
+* checking package dependencies ... ERROR
+Packages required but not available: 'bsts', 'Boom'
+
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
+* DONE
+Status: 1 ERROR
+
+
+
 
 
 ```
@@ -114,11 +178,11 @@ Info: integer division implicitly rounds to integer. Found int division: d * d -
 
 DIAGNOSTIC(S) FROM PARSER:
 ...
-In file included from stanExports_ctsm.cc:5:
-stanExports_ctsm.h: In member function ‘T__ model_ctsm_namespace::model_ctsm::log_prob(std::vector<T_l>&, std::vector<int>&, std::ostream*) const [with bool propto__ = false; bool jacobian__ = true; T__ = double]’:
-stanExports_ctsm.h:2091:9: note: variable tracking size limit exceeded with ‘-fvar-tracking-assignments’, retrying without
- 2091 |     T__ log_prob(std::vector<T__>& params_r__,
-      |         ^~~~~~~~
+/opt/R/4.2.1/lib/R/site-library/RcppEigen/include/Eigen/src/Core/ProductEvaluators.h:35:90:   required from ‘Eigen::internal::evaluator<Eigen::Product<Lhs, Rhs, Option> >::evaluator(const XprType&) [with Lhs = Eigen::Product<Eigen::CwiseBinaryOp<Eigen::internal::scalar_product_op<double, double>, const Eigen::CwiseNullaryOp<Eigen::internal::scalar_constant_op<double>, const Eigen::Matrix<double, 1, -1> >, const Eigen::Transpose<Eigen::Matrix<double, -1, 1> > >, Eigen::Matrix<double, -1, -1>, 0>; Rhs = Eigen::Matrix<double, -1, 1>; int Options = 0; Eigen::internal::evaluator<Eigen::Product<Lhs, Rhs, Option> >::XprType = Eigen::Product<Eigen::Product<Eigen::CwiseBinaryOp<Eigen::internal::scalar_product_op<double, double>, const Eigen::CwiseNullaryOp<Eigen::internal::scalar_constant_op<double>, const Eigen::Matrix<double, 1, -1> >, const Eigen::Transpose<Eigen::Matrix<double, -1, 1> > >, Eigen::Matrix<double, -1, -1>, 0>, Eigen::Matrix<double, -1, 1>, 0>]’
+/opt/R/4.2.1/lib/R/site-library/RcppEigen/include/Eigen/src/Core/Product.h:132:22:   required from ‘Eigen::internal::dense_product_base<Lhs, Rhs, Option, 6>::operator const Scalar() const [with Lhs = Eigen::Product<Eigen::CwiseBinaryOp<Eigen::internal::scalar_product_op<double, double>, const Eigen::CwiseNullaryOp<Eigen::internal::scalar_constant_op<double>, const Eigen::Matrix<double, 1, -1> >, const Eigen::Transpose<Eigen::Matrix<double, -1, 1> > >, Eigen::Matrix<double, -1, -1>, 0>; Rhs = Eigen::Matrix<double, -1, 1>; int Option = 0; Eigen::internal::dense_product_base<Lhs, Rhs, Option, 6>::Scalar = double]’
+/opt/R/4.2.1/lib/R/site-library/StanHeaders/include/src/stan/mcmc/hmc/hamiltonians/dense_e_metric.hpp:22:56:   required from ‘double stan::mcmc::dense_e_metric<Model, BaseRNG>::T(stan::mcmc::dense_e_point&) [with Model = model_ctsm_namespace::model_ctsm; BaseRNG = boost::random::additive_combine_engine<boost::random::linear_congruential_engine<unsigned int, 40014, 0, 2147483563>, boost::random::linear_congruential_engine<unsigned int, 40692, 0, 2147483399> >]’
+/opt/R/4.2.1/lib/R/site-library/StanHeaders/include/src/stan/mcmc/hmc/hamiltonians/dense_e_metric.hpp:21:10:   required from here
+/opt/R/4.2.1/lib/R/site-library/RcppEigen/include/Eigen/src/Core/DenseCoeffsBase.h:55:30: warning: ignoring attributes on template argument ‘Eigen::internal::packet_traits<double>::type’ {aka ‘__vector(2) double’} [-Wignored-attributes]
 g++: fatal error: Killed signal terminated program cc1plus
 compilation terminated.
 make: *** [/opt/R/4.2.1/lib/R/etc/Makeconf:175: stanExports_ctsm.o] Error 1
@@ -141,11 +205,11 @@ Info: integer division implicitly rounds to integer. Found int division: d * d -
 
 DIAGNOSTIC(S) FROM PARSER:
 ...
-In file included from stanExports_ctsm.cc:5:
-stanExports_ctsm.h: In member function ‘T__ model_ctsm_namespace::model_ctsm::log_prob(std::vector<T_l>&, std::vector<int>&, std::ostream*) const [with bool propto__ = false; bool jacobian__ = true; T__ = double]’:
-stanExports_ctsm.h:2091:9: note: variable tracking size limit exceeded with ‘-fvar-tracking-assignments’, retrying without
- 2091 |     T__ log_prob(std::vector<T__>& params_r__,
-      |         ^~~~~~~~
+/opt/R/4.2.1/lib/R/site-library/RcppEigen/include/Eigen/src/Core/ProductEvaluators.h:35:90:   required from ‘Eigen::internal::evaluator<Eigen::Product<Lhs, Rhs, Option> >::evaluator(const XprType&) [with Lhs = Eigen::Product<Eigen::CwiseBinaryOp<Eigen::internal::scalar_product_op<double, double>, const Eigen::CwiseNullaryOp<Eigen::internal::scalar_constant_op<double>, const Eigen::Matrix<double, 1, -1> >, const Eigen::Transpose<Eigen::Matrix<double, -1, 1> > >, Eigen::Matrix<double, -1, -1>, 0>; Rhs = Eigen::Matrix<double, -1, 1>; int Options = 0; Eigen::internal::evaluator<Eigen::Product<Lhs, Rhs, Option> >::XprType = Eigen::Product<Eigen::Product<Eigen::CwiseBinaryOp<Eigen::internal::scalar_product_op<double, double>, const Eigen::CwiseNullaryOp<Eigen::internal::scalar_constant_op<double>, const Eigen::Matrix<double, 1, -1> >, const Eigen::Transpose<Eigen::Matrix<double, -1, 1> > >, Eigen::Matrix<double, -1, -1>, 0>, Eigen::Matrix<double, -1, 1>, 0>]’
+/opt/R/4.2.1/lib/R/site-library/RcppEigen/include/Eigen/src/Core/Product.h:132:22:   required from ‘Eigen::internal::dense_product_base<Lhs, Rhs, Option, 6>::operator const Scalar() const [with Lhs = Eigen::Product<Eigen::CwiseBinaryOp<Eigen::internal::scalar_product_op<double, double>, const Eigen::CwiseNullaryOp<Eigen::internal::scalar_constant_op<double>, const Eigen::Matrix<double, 1, -1> >, const Eigen::Transpose<Eigen::Matrix<double, -1, 1> > >, Eigen::Matrix<double, -1, -1>, 0>; Rhs = Eigen::Matrix<double, -1, 1>; int Option = 0; Eigen::internal::dense_product_base<Lhs, Rhs, Option, 6>::Scalar = double]’
+/opt/R/4.2.1/lib/R/site-library/StanHeaders/include/src/stan/mcmc/hmc/hamiltonians/dense_e_metric.hpp:22:56:   required from ‘double stan::mcmc::dense_e_metric<Model, BaseRNG>::T(stan::mcmc::dense_e_point&) [with Model = model_ctsm_namespace::model_ctsm; BaseRNG = boost::random::additive_combine_engine<boost::random::linear_congruential_engine<unsigned int, 40014, 0, 2147483563>, boost::random::linear_congruential_engine<unsigned int, 40692, 0, 2147483399> >]’
+/opt/R/4.2.1/lib/R/site-library/StanHeaders/include/src/stan/mcmc/hmc/hamiltonians/dense_e_metric.hpp:21:10:   required from here
+/opt/R/4.2.1/lib/R/site-library/RcppEigen/include/Eigen/src/Core/DenseCoeffsBase.h:55:30: warning: ignoring attributes on template argument ‘Eigen::internal::packet_traits<double>::type’ {aka ‘__vector(2) double’} [-Wignored-attributes]
 g++: fatal error: Killed signal terminated program cc1plus
 compilation terminated.
 make: *** [/opt/R/4.2.1/lib/R/etc/Makeconf:175: stanExports_ctsm.o] Error 1
@@ -512,6 +576,236 @@ See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
 manual.
 * DONE
 Status: 1 ERROR
+
+
+
+
+
+```
+# Platypus
+
+<details>
+
+* Version: 3.4.1
+* GitHub: NA
+* Source code: https://github.com/cran/Platypus
+* Date/Publication: 2022-08-15 07:20:20 UTC
+* Number of recursive dependencies: 354
+
+Run `revdepcheck::cloud_details(, "Platypus")` for more info
+
+</details>
+
+## Error before installation
+
+### Devel
+
+```
+* using log directory ‘/tmp/workdir/Platypus/new/Platypus.Rcheck’
+* using R version 4.2.1 (2022-06-23)
+* using platform: x86_64-pc-linux-gnu (64-bit)
+* using session charset: UTF-8
+* using option ‘--no-manual’
+* checking for file ‘Platypus/DESCRIPTION’ ... OK
+* checking extension type ... Package
+* this is package ‘Platypus’ version ‘3.4.1’
+* package encoding: UTF-8
+* checking package namespace information ... OK
+...
+* checking installed files from ‘inst/doc’ ... OK
+* checking files in ‘vignettes’ ... OK
+* checking examples ... OK
+* checking for unstated dependencies in vignettes ... OK
+* checking package vignettes in ‘inst/doc’ ... OK
+* checking running R code from vignettes ... NONE
+  ‘PlatypusV3_agedCNS.Rmd’ using ‘UTF-8’... OK
+* checking re-building of vignette outputs ... OK
+* DONE
+Status: 3 WARNINGs, 2 NOTEs
+
+
+
+
+
+```
+### CRAN
+
+```
+* using log directory ‘/tmp/workdir/Platypus/old/Platypus.Rcheck’
+* using R version 4.2.1 (2022-06-23)
+* using platform: x86_64-pc-linux-gnu (64-bit)
+* using session charset: UTF-8
+* using option ‘--no-manual’
+* checking for file ‘Platypus/DESCRIPTION’ ... OK
+* checking extension type ... Package
+* this is package ‘Platypus’ version ‘3.4.1’
+* package encoding: UTF-8
+* checking package namespace information ... OK
+...
+* checking installed files from ‘inst/doc’ ... OK
+* checking files in ‘vignettes’ ... OK
+* checking examples ... OK
+* checking for unstated dependencies in vignettes ... OK
+* checking package vignettes in ‘inst/doc’ ... OK
+* checking running R code from vignettes ... NONE
+  ‘PlatypusV3_agedCNS.Rmd’ using ‘UTF-8’... OK
+* checking re-building of vignette outputs ... OK
+* DONE
+Status: 3 WARNINGs, 2 NOTEs
+
+
+
+
+
+```
+# rstanarm
+
+<details>
+
+* Version: 2.21.4
+* GitHub: https://github.com/stan-dev/rstanarm
+* Source code: https://github.com/cran/rstanarm
+* Date/Publication: 2023-04-08 15:30:02 UTC
+* Number of recursive dependencies: 137
+
+Run `revdepcheck::cloud_details(, "rstanarm")` for more info
+
+</details>
+
+## In both
+
+*   checking whether package ‘rstanarm’ can be installed ... ERROR
+    ```
+    Installation failed.
+    See ‘/tmp/workdir/rstanarm/new/rstanarm.Rcheck/00install.out’ for details.
+    ```
+
+## Installation
+
+### Devel
+
+```
+* installing *source* package ‘rstanarm’ ...
+** package ‘rstanarm’ successfully unpacked and MD5 sums checked
+** using staged installation
+** libs
+"/opt/R/4.2.1/lib/R/bin/Rscript" -e "source(file.path('..', 'tools', 'make_cc.R')); make_cc(commandArgs(TRUE))" stan_files/lm.stan
+Wrote C++ file "stan_files/lm.cc"
+
+
+g++ -std=gnu++17 -I"/opt/R/4.2.1/lib/R/include" -DNDEBUG -I"../inst/include" -I"/opt/R/4.2.1/lib/R/site-library/StanHeaders/include/src" -DBOOST_DISABLE_ASSERTS -DEIGEN_NO_DEBUG -DBOOST_MATH_OVERFLOW_ERROR_POLICY=errno_on_error  -D_HAS_AUTO_PTR_ETC=0 -I'/opt/R/4.2.1/lib/R/site-library/StanHeaders/include' -I'/opt/R/4.2.1/lib/R/site-library/rstan/include' -I'/opt/R/4.2.1/lib/R/site-library/BH/include' -I'/opt/R/4.2.1/lib/R/site-library/Rcpp/include' -I'/opt/R/4.2.1/lib/R/site-library/RcppEigen/include' -I'/opt/R/4.2.1/lib/R/site-library/RcppParallel/include' -I/usr/local/include   -I'/opt/R/4.2.1/lib/R/site-library/RcppParallel/include' -D_REENTRANT -DSTAN_THREADS   -fpic  -g -O2  -c stan_files/lm.cc -o stan_files/lm.o
+In file included from /opt/R/4.2.1/lib/R/site-library/RcppEigen/include/Eigen/Core:397,
+...
+stan_files/jm.hpp: In member function ‘void model_jm_namespace::model_jm::ctor_body(stan::io::var_context&, unsigned int, std::ostream*)’:
+stan_files/jm.hpp:4877:10: note: variable tracking size limit exceeded with ‘-fvar-tracking-assignments’, retrying without
+ 4877 |     void ctor_body(stan::io::var_context& context__,
+      |          ^~~~~~~~~
+g++: fatal error: Killed signal terminated program cc1plus
+compilation terminated.
+make: *** [/opt/R/4.2.1/lib/R/etc/Makeconf:175: stan_files/jm.o] Error 1
+rm stan_files/jm.cc stan_files/binomial.cc stan_files/lm.cc stan_files/count.cc stan_files/mvmer.cc
+ERROR: compilation failed for package ‘rstanarm’
+* removing ‘/tmp/workdir/rstanarm/new/rstanarm.Rcheck/rstanarm’
+
+
+```
+### CRAN
+
+```
+* installing *source* package ‘rstanarm’ ...
+** package ‘rstanarm’ successfully unpacked and MD5 sums checked
+** using staged installation
+** libs
+"/opt/R/4.2.1/lib/R/bin/Rscript" -e "source(file.path('..', 'tools', 'make_cc.R')); make_cc(commandArgs(TRUE))" stan_files/lm.stan
+Wrote C++ file "stan_files/lm.cc"
+
+
+g++ -std=gnu++17 -I"/opt/R/4.2.1/lib/R/include" -DNDEBUG -I"../inst/include" -I"/opt/R/4.2.1/lib/R/site-library/StanHeaders/include/src" -DBOOST_DISABLE_ASSERTS -DEIGEN_NO_DEBUG -DBOOST_MATH_OVERFLOW_ERROR_POLICY=errno_on_error  -D_HAS_AUTO_PTR_ETC=0 -I'/opt/R/4.2.1/lib/R/site-library/StanHeaders/include' -I'/opt/R/4.2.1/lib/R/site-library/rstan/include' -I'/opt/R/4.2.1/lib/R/site-library/BH/include' -I'/opt/R/4.2.1/lib/R/site-library/Rcpp/include' -I'/opt/R/4.2.1/lib/R/site-library/RcppEigen/include' -I'/opt/R/4.2.1/lib/R/site-library/RcppParallel/include' -I/usr/local/include   -I'/opt/R/4.2.1/lib/R/site-library/RcppParallel/include' -D_REENTRANT -DSTAN_THREADS   -fpic  -g -O2  -c stan_files/lm.cc -o stan_files/lm.o
+In file included from /opt/R/4.2.1/lib/R/site-library/RcppEigen/include/Eigen/Core:397,
+...
+stan_files/jm.hpp: In member function ‘void model_jm_namespace::model_jm::ctor_body(stan::io::var_context&, unsigned int, std::ostream*)’:
+stan_files/jm.hpp:4877:10: note: variable tracking size limit exceeded with ‘-fvar-tracking-assignments’, retrying without
+ 4877 |     void ctor_body(stan::io::var_context& context__,
+      |          ^~~~~~~~~
+g++: fatal error: Killed signal terminated program cc1plus
+compilation terminated.
+make: *** [/opt/R/4.2.1/lib/R/etc/Makeconf:175: stan_files/jm.o] Error 1
+rm stan_files/jm.cc stan_files/binomial.cc stan_files/lm.cc stan_files/count.cc stan_files/mvmer.cc
+ERROR: compilation failed for package ‘rstanarm’
+* removing ‘/tmp/workdir/rstanarm/old/rstanarm.Rcheck/rstanarm’
+
+
+```
+# tidyfit
+
+<details>
+
+* Version: 0.6.4
+* GitHub: https://github.com/jpfitzinger/tidyfit
+* Source code: https://github.com/cran/tidyfit
+* Date/Publication: 2023-05-20 15:40:02 UTC
+* Number of recursive dependencies: 165
+
+Run `revdepcheck::cloud_details(, "tidyfit")` for more info
+
+</details>
+
+## Error before installation
+
+### Devel
+
+```
+* using log directory ‘/tmp/workdir/tidyfit/new/tidyfit.Rcheck’
+* using R version 4.2.1 (2022-06-23)
+* using platform: x86_64-pc-linux-gnu (64-bit)
+* using session charset: UTF-8
+* using option ‘--no-manual’
+* checking for file ‘tidyfit/DESCRIPTION’ ... OK
+* checking extension type ... Package
+* this is package ‘tidyfit’ version ‘0.6.4’
+* package encoding: UTF-8
+* checking package namespace information ... OK
+...
+  ‘Flowchart.Rmd’ using ‘UTF-8’... OK
+  ‘Predicting_Boston_House_Prices.Rmd’ using ‘UTF-8’... OK
+  ‘Bootstrapping_Confidence_Intervals.Rmd’ using ‘UTF-8’... OK
+  ‘Feature_Selection.Rmd’ using ‘UTF-8’... OK
+  ‘Multinomial_Classification.Rmd’ using ‘UTF-8’... OK
+  ‘Rolling_Window_Time_Series_Regression.Rmd’ using ‘UTF-8’... OK
+  ‘Time-varying_parameters_vs_rolling_windows.Rmd’ using ‘UTF-8’... OK
+* checking re-building of vignette outputs ... OK
+* DONE
+Status: 2 ERRORs, 1 NOTE
+
+
+
+
+
+```
+### CRAN
+
+```
+* using log directory ‘/tmp/workdir/tidyfit/old/tidyfit.Rcheck’
+* using R version 4.2.1 (2022-06-23)
+* using platform: x86_64-pc-linux-gnu (64-bit)
+* using session charset: UTF-8
+* using option ‘--no-manual’
+* checking for file ‘tidyfit/DESCRIPTION’ ... OK
+* checking extension type ... Package
+* this is package ‘tidyfit’ version ‘0.6.4’
+* package encoding: UTF-8
+* checking package namespace information ... OK
+...
+  ‘Flowchart.Rmd’ using ‘UTF-8’... OK
+  ‘Predicting_Boston_House_Prices.Rmd’ using ‘UTF-8’... OK
+  ‘Bootstrapping_Confidence_Intervals.Rmd’ using ‘UTF-8’... OK
+  ‘Feature_Selection.Rmd’ using ‘UTF-8’... OK
+  ‘Multinomial_Classification.Rmd’ using ‘UTF-8’... OK
+  ‘Rolling_Window_Time_Series_Regression.Rmd’ using ‘UTF-8’... OK
+  ‘Time-varying_parameters_vs_rolling_windows.Rmd’ using ‘UTF-8’... OK
+* checking re-building of vignette outputs ... OK
+* DONE
+Status: 2 ERRORs, 1 NOTE
 
 
 
