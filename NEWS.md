@@ -1,39 +1,34 @@
 # testthat (development version)
 
+* New `expect_contains()` and `expect_in()` that works similarly to 
+  `expect_true(all(expected %in% object))` or 
+  `expect_true(all(object %in% expected))` but give more informative failure
+  messages (#1346).
+
+* New `is_snapshot()` returns `TRUE` if code is running inside a snapshot test
+  (#1796) and `is_checking()` returns `TRUE` if test is running inside of 
+  `R CMD check` (#1795)
+
+* `ProgressReporter` only reports the run time of test files that take longer 
+  than 1s, rather than 0.1s. (#1806) and re-displays all failures at the end
+  of the results. Skips are now only shown at the end of reporter summaries, 
+  not as tests are run. This makes them less intrusive in interactive tests 
+  while still allowing you to verify that the correct tests are skipped (#1801).
+  When using parallel tests, links to failed tests (#1787) and links to 
+  accept/review snapshot (#1802) now work.
+
 * `set_state_inspector()` allows to to register a function that's called
   before and after every test, reporting on any differences. This
   is very useful for detecting if any of your tests have made changes to 
   global state (like options, env vars, or connections) (#1674). This 
   function was inspired by renv's testing infrastructure.
 
-* Only report test files that take longer than a second (#1806).
+* `skip_on_cran()` no longer skips (errors) when run interactively.
 
-* New `expect_contains()` and `expect_in()` that works similarly to 
-  `expect_true(all(expected %in% object))` or 
-  `expect_true(all(object %in% expected))` but give more informative failure
-  messages (#1346).
-
-* Skips are now only shown at the end of reporter summaries, not as tests are 
-  run. This makes them less intrusive in interactive tests while still allowing
-  you to verify that the correct tests are skipped (#1801).
-
-* `ProgressReporter` only reports the run time of test files that take longer 
-  than 1s, rather than 0.1s. (#1806) and re-displays all failures at the end
-  of the results.
-
-* New `is_snapshot()` returns `TRUE` if code is running inside a snapshot test
-  (#1796) and `is_checking()` returns `TRUE` if test is running inside of 
-  `R CMD check` (#1795)
+* `teardown_env()` works in more cases.
 
 * All packages, regardless of whether or not they use rlang, now
   use the new snapshot display for errors, warnings, and messages.
-
-* `skip_on_cran()` no longer skips (errors) when run interactively.
-
-* `testthat::teardown_env()` works in more cases.
-
-* When using parallel tests, links to failed tests (#1787) and
-  running links for snapshot hints (#1802) now works.
 
 * testthat no longer truncates tracebacks and uses rlang's default tree
   display.
