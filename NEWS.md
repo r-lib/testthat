@@ -1,4 +1,4 @@
-# testthat (development version)
+# testthat 3.1.9
 
 * New `expect_contains()` and `expect_in()` that works similarly to 
   `expect_true(all(expected %in% object))` or 
