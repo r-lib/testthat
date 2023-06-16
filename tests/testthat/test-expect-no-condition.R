@@ -2,14 +2,14 @@
 test_that("expect_no_* conditions behave as expected", {
 
   # base R
-  expect_error(expect_no_error(stop("error")))
-  expect_error(expect_no_warning(warning("warning")))
-  expect_error(expect_no_message(message("message")))
+  expect_snapshot_failure(expect_no_error(stop("error")))
+  expect_snapshot_failure(expect_no_warning(warning("warning")))
+  expect_snapshot_failure(expect_no_message(message("message")))
 
   # rlang equivalents
-  expect_error(expect_no_error(abort("error")))
-  expect_error(expect_no_warning(warn("warning")))
-  expect_error(expect_no_message(inform("message")))
+  expect_snapshot_failure(expect_no_error(abort("error")))
+  expect_snapshot_failure(expect_no_warning(warn("warning")))
+  expect_snapshot_failure(expect_no_message(inform("message")))
 
 })
 

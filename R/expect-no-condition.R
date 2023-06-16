@@ -111,8 +111,8 @@ expect_no_ <- function(base_class,
           "."
         )
         actual <- paste0(
-          "Actually got a <", class(cnd)[[1]], ">:\n",
-          indent_lines(rlang::cnd_message(cnd, prefix = TRUE))
+          "Actually got a <", class(cnd)[[1]], "> with text:\n",
+          indent_lines(rlang::cnd_message(cnd))
         )
         message <- format_error_bullets(c(expected, i = actual))
         fail(message, trace_env = error_call)
