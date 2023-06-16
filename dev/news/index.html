@@ -10,7 +10,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">testthat</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">3.1.8.9000</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">3.1.9.9000</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -71,6 +71,9 @@
 
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="development version" id="testthat-development-version">testthat (development version)<a class="anchor" aria-label="anchor" href="#testthat-development-version"></a></h2>
+</div>
+    <div class="section level2">
+<h2 class="pkg-version" data-toc-text="3.1.9" id="testthat-319">testthat 3.1.9<a class="anchor" aria-label="anchor" href="#testthat-319"></a></h2><p class="text-muted">CRAN release: 2023-06-15</p>
 <ul><li><p>New <code><a href="../reference/expect_setequal.html">expect_contains()</a></code> and <code><a href="../reference/expect_setequal.html">expect_in()</a></code> that works similarly to <code>expect_true(all(expected %in% object))</code> or <code>expect_true(all(object %in% expected))</code> but give more informative failure messages (<a href="https://github.com/r-lib/testthat/issues/1346" class="external-link">#1346</a>).</p></li>
 <li><p>New <code><a href="../reference/is_testing.html">is_snapshot()</a></code> returns <code>TRUE</code> if code is running inside a snapshot test (<a href="https://github.com/r-lib/testthat/issues/1796" class="external-link">#1796</a>) and <code><a href="../reference/is_testing.html">is_checking()</a></code> returns <code>TRUE</code> if test is running inside of <code>R CMD check</code> (<a href="https://github.com/r-lib/testthat/issues/1795" class="external-link">#1795</a>)</p></li>
 <li><p><code>ProgressReporter</code> only reports the run time of test files that take longer than 1s, rather than 0.1s. (<a href="https://github.com/r-lib/testthat/issues/1806" class="external-link">#1806</a>) and re-displays all failures at the end of the results. Skips are now only shown at the end of reporter summaries, not as tests are run. This makes them less intrusive in interactive tests while still allowing you to verify that the correct tests are skipped (<a href="https://github.com/r-lib/testthat/issues/1801" class="external-link">#1801</a>). When using parallel tests, links to failed tests (<a href="https://github.com/r-lib/testthat/issues/1787" class="external-link">#1787</a>) and links to accept/review snapshot (<a href="https://github.com/r-lib/testthat/issues/1802" class="external-link">#1802</a>) now work.</p></li>
