@@ -68,7 +68,7 @@ expect_no_message <- function(object,
                               class = NULL
                               ) {
   check_dots_empty()
-  expect_no_("messsage", {{ object }}, regexp = message, class = class)
+  expect_no_("message", {{ object }}, regexp = message, class = class)
 }
 
 #' @export

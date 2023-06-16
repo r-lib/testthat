@@ -39,7 +39,7 @@
 
 * `expect_error()`, `expect_warning()`, and `expect_message()` now correctly
   enforce that the condition is of the expected base class (e.g. error, 
-  warning, messsage) even when the `class` argument is used (#1168).
+  warning, message) even when the `class` argument is used (#1168).
 
 * `it()` now calls `local_test_context()` so that it behaves more
   similarly to `test_that()` (#1731), and is now exported so that you
@@ -481,7 +481,7 @@ Learn more in `vignette("third-edition")`.
 
 * Messages are no longer automatically silenced. Either use 
   `suppressMessages()` to hide unimportant messages, or
-  `expect_messsage()` to catch important messages (#1095).
+  `expect_message()` to catch important messages (#1095).
   
 * `setup()` and `teardown()` are deprecated in favour of test fixtures.
   See `vignette("test-fixtures")` for more details.
