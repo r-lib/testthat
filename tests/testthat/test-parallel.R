@@ -28,6 +28,7 @@ test_that("ok", {
   # parallel compatible, and they'll not run in parallel
   capture.output(suppressMessages(ret <- test_local(
     test_path("test-parallel", "ok"),
+    reporter = "summary",
     stop_on_failure = FALSE
   )))
   tdf <- as.data.frame(ret)
@@ -42,6 +43,7 @@ test_that("fail", {
   # parallel compatible, and they'll not run in parallel
   capture.output(suppressMessages(ret <- test_local(
     test_path("test-parallel", "fail"),
+    reporter = "summary",
     stop_on_failure = FALSE
   )))
   tdf <- as.data.frame(ret)
@@ -58,6 +60,7 @@ test_that("snapshots", {
   # parallel compatible, and they'll not run in parallel
   capture.output(suppressMessages(ret <- test_local(
     file.path(tmp, "snap"),
+    reporter = "summary",
     stop_on_failure = FALSE
   )))
   tdf <- as.data.frame(ret)
@@ -79,6 +82,7 @@ test_that("new snapshots are added", {
   # parallel compatible, and they'll not run in parallel
   capture.output(suppressMessages(ret <- test_local(
     file.path(tmp, "snap"),
+    reporter = "summary",
     stop_on_failure = FALSE
   )))
   tdf <- as.data.frame(ret)
@@ -103,6 +107,7 @@ test_that("snapshots are removed if test file has no snapshots", {
   # parallel compatible, and they'll not run in parallel
   capture.output(suppressMessages(ret <- test_local(
     file.path(tmp, "snap"),
+    reporter = "summary",
     stop_on_failure = FALSE
   )))
   tdf <- as.data.frame(ret)
@@ -125,7 +130,7 @@ test_that("snapshots are removed if test file is removed", {
   # parallel compatible, and they'll not run in parallel
   capture.output(suppressMessages(ret <- test_local(
     file.path(tmp, "snap"),
-    reporter = "silent",
+    reporter = "summary",
     stop_on_failure = FALSE
   )))
   tdf <- as.data.frame(ret)

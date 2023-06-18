@@ -4,7 +4,8 @@ test_that("startup error", {
   withr::local_envvar(TESTTHAT_PARALLEL = "TRUE")
   err <- tryCatch(
     capture.output(suppressMessages(testthat::test_local(
-      test_path("test-parallel", "startup")
+      test_path("test-parallel", "startup"),
+      reporter = "summary"
     ))),
     error = function(e) e
   )

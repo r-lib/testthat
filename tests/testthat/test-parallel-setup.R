@@ -4,7 +4,8 @@ test_that("error in parallel setup code", {
   withr::local_envvar(TESTTHAT_PARALLEL = "TRUE")
   err <- tryCatch(
     capture.output(suppressMessages(testthat::test_local(
-      test_path("test-parallel", "setup")
+      test_path("test-parallel", "setup"),
+      reporter = "summary"
     ))),
     error = function(e) e
   )
