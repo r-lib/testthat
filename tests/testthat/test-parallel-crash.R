@@ -9,7 +9,7 @@ test_that("crash", {
   do <- function() {
     err <- NULL
     tryCatch(
-      testthat::test_local(".", reporter = "silent", stop_on_failure = FALSE),
+      testthat::test_local(".", reporter = "summary", stop_on_failure = FALSE),
       error = function(e) err <<- e
     )
     err

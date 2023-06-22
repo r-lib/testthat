@@ -24,15 +24,31 @@ test_that("detect number of cpus to use", {
 
 test_that("ok", {
   withr::local_envvar(c(TESTTHAT_PARALLEL = "TRUE"))
-  suppressMessages(ret <- test_local(
+  # we cannot run these with the silent reporter, because it is not
+  # parallel compatible, and they'll not run in parallel
+  capture.output(suppressMessages(ret <- test_local(
     test_path("test-parallel", "ok"),
-    reporter = "silent",
+    reporter = "summary",
     stop_on_failure = FALSE
-  ))
+  )))
   tdf <- as.data.frame(ret)
   tdf <- tdf[order(tdf$file), ]
   expect_equal(tdf$failed, c(0,1,0))
   expect_equal(tdf$skipped, c(FALSE, FALSE, TRUE))
+})
+
+test_that("fail", {
+  withr::local_envvar(c(TESTTHAT_PARALLEL = "TRUE"))
+  # we cannot run these with the silent reporter, because it is not
+  # parallel compatible, and they'll not run in parallel
+  capture.output(suppressMessages(ret <- test_local(
+    test_path("test-parallel", "fail"),
+    reporter = "summary",
+    stop_on_failure = FALSE
+  )))
+  tdf <- as.data.frame(ret)
+  tdf <- tdf[order(tdf$file), ]
+  expect_equal(tdf$failed, c(1))
 })
 
 test_that("snapshots", {
@@ -40,11 +56,13 @@ test_that("snapshots", {
   on.exit(unlink(tmp, recursive = TRUE), add = TRUE)
   dir.create(tmp <- tempfile("testthat-snap-"))
   file.copy(test_path("test-parallel", "snap"), tmp, recursive = TRUE)
-  suppressMessages(ret <- test_local(
+  # we cannot run these with the silent reporter, because it is not
+  # parallel compatible, and they'll not run in parallel
+  capture.output(suppressMessages(ret <- test_local(
     file.path(tmp, "snap"),
-    reporter = "silent",
+    reporter = "summary",
     stop_on_failure = FALSE
-  ))
+  )))
   tdf <- as.data.frame(ret)
   tdf <- tdf[order(tdf$file), ]
   expect_equal(tdf$failed, c(0,0,1))
@@ -60,11 +78,13 @@ test_that("new snapshots are added", {
   dir.create(tmp <- tempfile("testthat-snap-"))
   file.copy(test_path("test-parallel", "snap"), tmp, recursive = TRUE)
   unlink(file.path(tmp, "snap", "tests", "testthat", "_snaps", "snap-2.md"))
-  suppressMessages(ret <- test_local(
+  # we cannot run these with the silent reporter, because it is not
+  # parallel compatible, and they'll not run in parallel
+  capture.output(suppressMessages(ret <- test_local(
     file.path(tmp, "snap"),
-    reporter = "silent",
+    reporter = "summary",
     stop_on_failure = FALSE
-  ))
+  )))
   tdf <- as.data.frame(ret)
   tdf <- tdf[order(tdf$file), ]
   expect_equal(tdf$failed, c(0,0,1))
@@ -83,11 +103,13 @@ test_that("snapshots are removed if test file has no snapshots", {
     "test_that(\"2\", { expect_true(TRUE) })",
     file.path(tmp, "snap", "tests", "testthat", "test-snap-2.R")
   )
-  suppressMessages(ret <- test_local(
+  # we cannot run these with the silent reporter, because it is not
+  # parallel compatible, and they'll not run in parallel
+  capture.output(suppressMessages(ret <- test_local(
     file.path(tmp, "snap"),
-    reporter = "silent",
+    reporter = "summary",
     stop_on_failure = FALSE
-  ))
+  )))
   tdf <- as.data.frame(ret)
   tdf <- tdf[order(tdf$file), ]
   expect_equal(tdf$failed, c(0,0,1))
@@ -104,11 +126,13 @@ test_that("snapshots are removed if test file is removed", {
   file.copy(test_path("test-parallel", "snap"), tmp, recursive = TRUE)
   unlink(file.path(tmp, "snap", "tests", "testthat", "test-snap-2.R"))
   withr::local_envvar(CI = NA_character_)
-  suppressMessages(ret <- test_local(
+  # we cannot run these with the silent reporter, because it is not
+  # parallel compatible, and they'll not run in parallel
+  capture.output(suppressMessages(ret <- test_local(
     file.path(tmp, "snap"),
-    reporter = "silent",
+    reporter = "summary",
     stop_on_failure = FALSE
-  ))
+  )))
   tdf <- as.data.frame(ret)
   tdf <- tdf[order(tdf$file), ]
   expect_equal(tdf$failed, c(0,1))

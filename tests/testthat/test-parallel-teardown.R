@@ -3,10 +3,10 @@ test_that("teardown error", {
   skip("teardown errors are ignored")
   withr::local_envvar(TESTTHAT_PARALLEL = "TRUE")
   err <- tryCatch(
-    suppressMessages(testthat::test_local(
+    capture.output(suppressMessages(testthat::test_local(
       test_path("test-parallel", "teardown"),
-      reporter = "silent"
-    )),
+      reporter = "summary"
+    ))),
     error = function(e) e
   )
   expect_s3_class(err, "testthat_process_error")
