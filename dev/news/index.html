@@ -71,7 +71,9 @@
 
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="development version" id="testthat-development-version">testthat (development version)<a class="anchor" aria-label="anchor" href="#testthat-development-version"></a></h2>
-</div>
+<ul><li>
+<code>testthat</code> now sets the <code>_R_CHECK_BROWSER_NONINTERACTIVE_</code> environment variable when running tests. This should ensure that left-over <code><a href="https://rdrr.io/r/base/browser.html" class="external-link">browser()</a></code> statements will trigger an error if encountered while running tests. This functionality is only enabled with R (&gt;= 4.3.0). (<a href="https://github.com/r-lib/testthat/issues/1825" class="external-link">#1825</a>)</li>
+</ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="3.1.9" id="testthat-319">testthat 3.1.9<a class="anchor" aria-label="anchor" href="#testthat-319"></a></h2><p class="text-muted">CRAN release: 2023-06-15</p>
 <ul><li><p>New <code><a href="../reference/expect_setequal.html">expect_contains()</a></code> and <code><a href="../reference/expect_setequal.html">expect_in()</a></code> that works similarly to <code>expect_true(all(expected %in% object))</code> or <code>expect_true(all(object %in% expected))</code> but give more informative failure messages (<a href="https://github.com/r-lib/testthat/issues/1346" class="external-link">#1346</a>).</p></li>
