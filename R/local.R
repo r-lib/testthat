@@ -65,7 +65,7 @@
 #'   cat("\n")
 #' })
 local_test_context <- function(.env = parent.frame()) {
-  withr::local_envvar(TESTTHAT = "true", .local_envir = .env)
+  withr::local_envvar("_R_CHECK_BROWSER_NONINTERACTIVE_" = "true", TESTTHAT = "true", .local_envir = .env)
   if (edition_get() >= 3) {
     local_reproducible_output(.env = .env)
   }

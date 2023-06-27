@@ -1,5 +1,10 @@
 # testthat (development version)
 
+* `testthat` now sets the `_R_CHECK_BROWSER_NONINTERACTIVE_` environment variable
+  when running tests. This should ensure that left-over `browser()` statements
+  will trigger an error if encountered while running tests. This functionality
+  is only enabled with R (>= 4.3.0). (#1825)
+
 # testthat 3.1.9
 
 * New `expect_contains()` and `expect_in()` that works similarly to 
