@@ -20,17 +20,17 @@ testing_package()
 }
 \description{
 These functions help you determine if you code is running in a particular
-testing content:
+testing context:
 \itemize{
-\item \code{is_testing()} is \code{TRUE} when run inside a test.
-\item \code{is_parallel()} is \code{TRUE} if the test is run in parallel.
-\item \code{is_checking()} is \code{TRUE} when the tests run as part of \verb{R CMD check}
-(i.e. by \code{\link[=test_check]{test_check()}}).
+\item \code{is_testing()} is \code{TRUE} inside a test.
+\item \code{is_snapshot()} is \code{TRUE} inside a snapshot test
+\item \code{is_checking()} is \code{TRUE} inside of \verb{R CMD check} (i.e. by \code{\link[=test_check]{test_check()}}).
+\item \code{is_parallel()} is \code{TRUE} if the tests are run in parallel.
 \item \code{testing_package()} gives name of the package being tested.
 }
 
 A common use of these functions is to compute a default value for a \code{quiet}
-argument with \code{is_testing() && !is_snapshotting()}. In this case, you'll
+argument with \code{is_testing() && !is_snapshot()}. In this case, you'll
 want to avoid an run-time dependency on testthat, in which case you should
-just copy the implementation of these functions in a \code{utils.R} or similar.
+just copy the implementation of these functions into a \code{utils.R} or similar.
 }
