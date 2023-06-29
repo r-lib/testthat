@@ -1,5 +1,7 @@
 # testthat (development version)
 
+* Fix for upcoming R-devel release.
+
 * `testthat` now sets the `_R_CHECK_BROWSER_NONINTERACTIVE_` environment variable
   when running tests. This should ensure that left-over `browser()` statements
   will trigger an error if encountered while running tests. This functionality
