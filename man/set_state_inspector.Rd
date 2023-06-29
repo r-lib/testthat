@@ -44,6 +44,6 @@ that problem with:
 
 \if{html}{\out{<div class="sourceCode R">}}\preformatted{set_state_inspector(function() \{
   getAllConnections()
-\}
+\})
 }\if{html}{\out{</div>}}
 }

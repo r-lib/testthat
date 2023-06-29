@@ -36,7 +36,7 @@
 #' ```R
 #' set_state_inspector(function() {
 #'   getAllConnections()
-#' }
+#' })
 #' ```
 #'
 #' @export
