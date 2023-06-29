@@ -105,7 +105,7 @@ test_that("equal_to_ref does not overwrite existing", {
 })
 
 test_that("serializes to version 2 by default", {
-  skip_if(getRversion() < 3.5)
+  skip_if(getRversion() < "3.5")
   tmp_rds <- tempfile(fileext = ".rds")
   on.exit(unlink(tmp_rds))
 
@@ -118,7 +118,7 @@ test_that("serializes to version 2 by default", {
 })
 
 test_that("version 3 is possible", {
-  skip_if(getRversion() < 3.5)
+  skip_if(getRversion() < "3.5")
   tmp_rds <- tempfile(fileext = ".rds")
   on.exit(unlink(tmp_rds))
 
