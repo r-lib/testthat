@@ -30,7 +30,7 @@ Imports:
     methods,
     pkgload (>= 1.3.0),
     praise,
-    processx,
+    processx (>= 3.8.2),
     ps (>= 1.3.4),
     R6 (>= 2.2.0),
     rlang (>= 1.1.0),
