@@ -1,4 +1,4 @@
-# testthat (development version)
+# testthat 3.1.10
 
 * Fix for upcoming R-devel release.
 
