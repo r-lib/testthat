@@ -23,14 +23,14 @@ test_that("error for non-vectors", {
   expect_error(expect_setequal(sum, sum), "be vectors")
 })
 
-test_that("useful message on faillure", {
-  x1 <- c("a", "b")
-  x2 <- c("b", "c")
-  y1 <- 1:3
-  y2 <- 2:50
+test_that("useful message on failure", {
+  expect_snapshot_failure(expect_setequal(1:2, 2))
+  expect_snapshot_failure(expect_setequal(2, 2:3))
+  expect_snapshot_failure(expect_setequal(1:2, 2:3))
+})
 
-  expect_snapshot_failure(expect_setequal(x1, x2))
-  expect_snapshot_failure(expect_setequal(y1, y2))
+test_that("truncates long vectors", {
+  expect_snapshot_failure(expect_setequal(1:2, 1:50))
 })
 
 # mapequal ----------------------------------------------------------------
