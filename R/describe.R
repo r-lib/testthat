@@ -1,6 +1,6 @@
 #' describe: a BDD testing language
 #'
-#' A simple BDD DSL for writing tests. The language is similiar to RSpec for
+#' A simple BDD DSL for writing tests. The language is similar to RSpec for
 #' Ruby or Mocha for JavaScript. BDD tests read like sentences and it should
 #' thus be easier to understand what the specification of a function/component
 #' is.

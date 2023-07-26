@@ -22,7 +22,7 @@ test_that("creates file on first run", {
   expect_true(file.exists(file))
 })
 
-test_that("igores incomplete last line", {
+test_that("ignores incomplete last line", {
   file <- tempfile()
   writeLines("Hi!", file)
   expect_success(expect_known_output(cat("Hi!"), file))

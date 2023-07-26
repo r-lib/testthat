@@ -1,4 +1,4 @@
-test_that("can supress colours", {
+test_that("can suppress colours", {
   op <- options(
     crayon.enabled = TRUE,
     testthat.use_colours = TRUE,

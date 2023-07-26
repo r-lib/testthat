@@ -32,7 +32,7 @@ test_that("source_file always uses UTF-8 encoding", {
   }
 
   ## Try to read it in latin1 and UTF-8 locales
-  ## They have diffefent names on Unix and Windows
+  ## They have different names on Unix and Windows
   run_test("en_US.ISO8859-1")
   run_test("en_US.UTF-8")
   run_test("English_United States.1252")

@@ -204,7 +204,7 @@ test_that("you can't add a number and a letter", {
 When the code gets longer, I like to put `error = TRUE` up front so it's a little more obvious:
 
 ```{r}
-test_that("you can't add weird thngs", {
+test_that("you can't add weird things", {
   expect_snapshot(error = TRUE, {
     1 + "a"
     mtcars + iris
@@ -273,7 +273,7 @@ This section describes some of the previous attempts and why we believe the new 
 -   `verify_output()` has three main drawbacks:
 
     -   You have to supply a path where the output will be saved.
-        This seems like a small issue, but thinking of a good name, and managing the difference between interactive and test-time paths introduces a suprising amount of friction.
+        This seems like a small issue, but thinking of a good name, and managing the difference between interactive and test-time paths introduces a surprising amount of friction.
 
     -   It always overwrites the previous result; automatically assuming that the changes are correct.
         That means you have to use it with git and it's easy to accidentally accept unwanted changes.
