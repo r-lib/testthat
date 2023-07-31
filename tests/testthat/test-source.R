@@ -45,3 +45,29 @@ test_that("source_file wraps error", {
     source_file(test_path("reporters/error-setup.R"), wrap = FALSE)
   })
 })
+
+
+# filter_label -------------------------------------------------------------
+
+test_that("can find only matching test", {
+  code <- exprs(
+    f(),
+    test_that("foo", {}),
+    test_that("bar", {}),
+    g()
+  )
+  expect_equal(filter_label(code, "foo"), code[c(1, 2, 4)])
+  expect_equal(filter_label(code, "bar"), code[c(1, 3, 4)])
+  expect_snapshot(filter_label(code, "baz"), error = TRUE)
+})
+
+test_that("errors if duplicate labels", {
+  code <- exprs(
+    f(),
+    test_that("baz", {}),
+    test_that("baz", {}),
+    g()
+  )
+
+  expect_snapshot(filter_label(code, "baz"), error = TRUE)
+})
