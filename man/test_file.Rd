@@ -4,7 +4,13 @@
 \alias{test_file}
 \title{Run all tests in a single file}
 \usage{
-test_file(path, reporter = default_compact_reporter(), package = NULL, ...)
+test_file(
+  path,
+  reporter = default_compact_reporter(),
+  label = NULL,
+  package = NULL,
+  ...
+)
 }
 \arguments{
 \item{path}{Path to file.}
@@ -14,6 +20,9 @@ as a string (e.g. "summary") or as an R6 object
 (e.g. \code{SummaryReporter$new()}).
 
 See \link{Reporter} for more details and a list of built-in reporters.}
+
+\item{label}{Optionally, supply a string here to run only tests that
+with this exact label.}
 
 \item{package}{If these tests belong to a package, the name of the package.}
 
@@ -37,5 +46,6 @@ and objects.
 \examples{
 path <- testthat_example("success")
 test_file(path)
+test_file(path, label = "some tests have warnings")
 test_file(path, reporter = "minimal")
 }
