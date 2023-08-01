@@ -62,7 +62,7 @@ test_that("can find only matching test", {
 })
 
 test_that("preserve srcrefs", {
-  code <- parse(text = '
+  code <- parse(keep.source = TRUE, text = '
     test_that("foo", {
       # this is a comment
     })
