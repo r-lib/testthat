@@ -61,6 +61,16 @@ test_that("can find only matching test", {
   expect_snapshot(filter_label(code, "baz"), error = TRUE)
 })
 
+test_that("preserve srcrefs", {
+  code <- parse(text = '
+    test_that("foo", {
+      # this is a comment
+    })
+  ')
+  expect_snapshot(filter_label(code, "foo"))
+})
+
+
 test_that("errors if duplicate labels", {
   code <- exprs(
     f(),

@@ -16,6 +16,15 @@
       Error:
       ! Failed to find test with specified label
 
+# preserve srcrefs
+
+    Code
+      filter_label(code, "foo")
+    Output
+      expression(test_that("foo", {
+            # this is a comment
+          }))
+
 # errors if duplicate labels
 
     Code
