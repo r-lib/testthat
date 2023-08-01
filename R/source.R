@@ -5,13 +5,18 @@
 #' @param path Path to files.
 #' @param pattern Regular expression used to filter files.
 #' @param env Environment in which to evaluate code.
+#' @param desc If not-`NULL`, will run only test with this `desc`ription.
 #' @param chdir Change working directory to `dirname(path)`?
 #' @param wrap Automatically wrap all code within [test_that()]? This ensures
 #'   that all expectations are reported, even if outside a test block.
 #' @export
 #' @keywords internal
-source_file <- function(path, env = test_env(), chdir = TRUE,
-                        wrap = TRUE) {
+source_file <- function(path,
+                        env = test_env(),
+                        chdir = TRUE,
+                        desc = NULL,
+                        wrap = TRUE,
+                        error_call = caller_env()) {
   stopifnot(file.exists(path))
   stopifnot(is.environment(env))
 
@@ -23,6 +28,7 @@ source_file <- function(path, env = test_env(), chdir = TRUE,
   con <- textConnection(lines, encoding = "UTF-8")
   on.exit(try(close(con), silent = TRUE), add = TRUE)
   exprs <- parse(con, n = -1, srcfile = srcfile, encoding = "UTF-8")
+  exprs <- filter_desc(exprs, desc, error_call = error_call)
 
   n <- length(exprs)
   if (n == 0L) return(invisible())
@@ -46,11 +52,50 @@ source_file <- function(path, env = test_env(), chdir = TRUE,
       error = function(err) {
         abort(
           paste0("In path: ", encodeString(path, quote = '"')),
-          parent = err
+          parent = err,
+          call = error_call
         )
       }
     )
   }
+}
+
+filter_desc <- function(exprs, desc = NULL, error_call = caller_env()) {
+  if (is.null(desc)) {
+    return(exprs)
+  }
+
+  found <- FALSE
+  include <- rep(FALSE, length(exprs))
+
+  for (i in seq_along(exprs)) {
+    expr <- exprs[[i]]
+
+    if (!is_call(expr, "test_that", n = 2)) {
+      if (!found) {
+        include[[i]] <- TRUE
+      }
+    } else {
+      if (!is_string(expr[[2]]))
+        next
+
+      test_desc <- as.character(expr[[2]])
+      if (test_desc != desc)
+        next
+
+      if (found) {
+        abort("Found multiple tests with specified description", call = error_call)
+      }
+      include[[i]] <- TRUE
+      found <- TRUE
+    }
+  }
+
+  if (!found) {
+    abort("Failed to find test with specified description", call = error_call)
+  }
+
+  exprs[include]
 }
 
 #' @rdname source_file
