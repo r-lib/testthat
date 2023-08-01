@@ -76,7 +76,14 @@
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">source_file</span><span class="op">(</span><span class="va">path</span>, env <span class="op">=</span> <span class="fu"><a href="test_env.html">test_env</a></span><span class="op">(</span><span class="op">)</span>, chdir <span class="op">=</span> <span class="cn">TRUE</span>, wrap <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">source_file</span><span class="op">(</span></span>
+<span>  <span class="va">path</span>,</span>
+<span>  env <span class="op">=</span> <span class="fu"><a href="test_env.html">test_env</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  chdir <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  desc <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  wrap <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  error_call <span class="op">=</span> <span class="fu">caller_env</span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu">source_dir</span><span class="op">(</span></span>
 <span>  <span class="va">path</span>,</span>
@@ -105,6 +112,10 @@
 
 <dt>chdir</dt>
 <dd><p>Change working directory to <code>dirname(path)</code>?</p></dd>
+
+
+<dt>desc</dt>
+<dd><p>If not-<code>NULL</code>, will run only test with this <code>desc</code>ription.</p></dd>
 
 
 <dt>wrap</dt>
