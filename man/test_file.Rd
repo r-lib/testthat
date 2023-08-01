@@ -2,12 +2,12 @@
 % Please edit documentation in R/test-files.R
 \name{test_file}
 \alias{test_file}
-\title{Run all tests in a single file}
+\title{Run tests in a single file}
 \usage{
 test_file(
   path,
   reporter = default_compact_reporter(),
-  label = NULL,
+  desc = NULL,
   package = NULL,
   ...
 )
@@ -21,8 +21,8 @@ as a string (e.g. "summary") or as an R6 object
 
 See \link{Reporter} for more details and a list of built-in reporters.}
 
-\item{label}{Optionally, supply a string here to run only tests that
-with this exact label.}
+\item{desc}{Optionally, supply a string here to run only a single
+tests that with this \code{desc}ription.}
 
 \item{package}{If these tests belong to a package, the name of the package.}
 
@@ -46,6 +46,6 @@ and objects.
 \examples{
 path <- testthat_example("success")
 test_file(path)
-test_file(path, label = "some tests have warnings")
+test_file(path, desc = "some tests have warnings")
 test_file(path, reporter = "minimal")
 }

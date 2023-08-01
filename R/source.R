@@ -5,7 +5,7 @@
 #' @param path Path to files.
 #' @param pattern Regular expression used to filter files.
 #' @param env Environment in which to evaluate code.
-#' @param label If not-`NULL`, will run only test with this label.
+#' @param desc If not-`NULL`, will run only test with this `desc`ription.
 #' @param chdir Change working directory to `dirname(path)`?
 #' @param wrap Automatically wrap all code within [test_that()]? This ensures
 #'   that all expectations are reported, even if outside a test block.
@@ -14,7 +14,7 @@
 source_file <- function(path,
                         env = test_env(),
                         chdir = TRUE,
-                        label = NULL,
+                        desc = NULL,
                         wrap = TRUE,
                         error_call = caller_env()) {
   stopifnot(file.exists(path))
@@ -28,7 +28,7 @@ source_file <- function(path,
   con <- textConnection(lines, encoding = "UTF-8")
   on.exit(try(close(con), silent = TRUE), add = TRUE)
   exprs <- parse(con, n = -1, srcfile = srcfile, encoding = "UTF-8")
-  exprs <- filter_label(exprs, label, error_call = error_call)
+  exprs <- filter_desc(exprs, desc, error_call = error_call)
 
   n <- length(exprs)
   if (n == 0L) return(invisible())
@@ -60,8 +60,8 @@ source_file <- function(path,
   }
 }
 
-filter_label <- function(exprs, label = NULL, error_call = caller_env()) {
-  if (is.null(label)) {
+filter_desc <- function(exprs, desc = NULL, error_call = caller_env()) {
+  if (is.null(desc)) {
     return(exprs)
   }
 
@@ -72,17 +72,19 @@ filter_label <- function(exprs, label = NULL, error_call = caller_env()) {
     expr <- exprs[[i]]
 
     if (!is_call(expr, "test_that", n = 2)) {
-      include[[i]] <- TRUE
+      if (!found) {
+        include[[i]] <- TRUE
+      }
     } else {
       if (!is_string(expr[[2]]))
         next
 
-      test_label <- as.character(expr[[2]])
-      if (test_label != label)
+      test_desc <- as.character(expr[[2]])
+      if (test_desc != desc)
         next
 
       if (found) {
-        abort("Found multiple tests with specified label", call = error_call)
+        abort("Found multiple tests with specified description", call = error_call)
       }
       include[[i]] <- TRUE
       found <- TRUE
@@ -90,7 +92,7 @@ filter_label <- function(exprs, label = NULL, error_call = caller_env()) {
   }
 
   if (!found) {
-    abort("Failed to find test with specified label", call = error_call)
+    abort("Failed to find test with specified description", call = error_call)
   }
 
   exprs[include]

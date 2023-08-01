@@ -100,7 +100,7 @@ test_dir <- function(path,
   )
 }
 
-#' Run all tests in a single file
+#' Run tests in a single file
 #'
 #' Helper, setup, and teardown files located in the same directory as the
 #' test will also be run. See `vignette("special-files")` for details.
@@ -109,17 +109,17 @@ test_dir <- function(path,
 #' @inheritSection test_dir Environments
 #' @param path Path to file.
 #' @param ... Additional parameters passed on to `test_dir()`
-#' @param label Optionally, supply a string here to run only tests that
-#'   with this exact label.
+#' @param desc Optionally, supply a string here to run only a single
+#'   tests that with this `desc`ription.
 #' @export
 #' @examples
 #' path <- testthat_example("success")
 #' test_file(path)
-#' test_file(path, label = "some tests have warnings")
+#' test_file(path, desc = "some tests have warnings")
 #' test_file(path, reporter = "minimal")
 test_file <- function(path,
                       reporter = default_compact_reporter(),
-                      label = NULL,
+                      desc = NULL,
                       package = NULL,
                       ...) {
   if (!file.exists(path)) {
@@ -131,7 +131,7 @@ test_file <- function(path,
     test_package = package,
     test_paths = basename(path),
     reporter = reporter,
-    label = label,
+    desc = desc,
     ...
   )
 }
@@ -144,7 +144,7 @@ test_files <- function(test_dir,
                        env = NULL,
                        stop_on_failure = FALSE,
                        stop_on_warning = FALSE,
-                       label = NULL,
+                       desc = NULL,
                        wrap = TRUE,
                        load_package = c("none", "installed", "source"),
                        parallel = FALSE,
@@ -181,7 +181,7 @@ test_files <- function(test_dir,
       env = env,
       stop_on_failure = stop_on_failure,
       stop_on_warning = stop_on_warning,
-      label = label,
+      desc = desc,
       wrap = wrap,
       load_package = load_package,
       error_call = error_call
@@ -198,7 +198,7 @@ test_files_serial <- function(test_dir,
                        env = NULL,
                        stop_on_failure = FALSE,
                        stop_on_warning = FALSE,
-                       label = NULL,
+                       desc = NULL,
                        wrap = TRUE,
                        load_package = c("none", "installed", "source"),
                        error_call = caller_env()) {
@@ -215,7 +215,7 @@ test_files_serial <- function(test_dir,
       test_paths,
       test_one_file,
       env = env,
-      label = label,
+      desc = desc,
       wrap = wrap,
       error_call = error_call
     )
@@ -324,7 +324,7 @@ test_files_check <- function(results, stop_on_failure = TRUE, stop_on_warning = 
 
 test_one_file <- function(path,
                           env = test_env(),
-                          label = NULL,
+                          desc = NULL,
                           wrap = TRUE,
                           error_call = caller_env()) {
   reporter <- get_reporter()
@@ -335,7 +335,7 @@ test_one_file <- function(path,
     path,
     env = env(env),
     wrap = wrap,
-    label = label,
+    desc = desc,
     error_call = error_call
   )
   reporter$end_context_if_started()

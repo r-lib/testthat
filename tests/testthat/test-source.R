@@ -53,12 +53,13 @@ test_that("can find only matching test", {
   code <- exprs(
     f(),
     test_that("foo", {}),
+    g(),
     test_that("bar", {}),
-    g()
+    h()
   )
-  expect_equal(filter_label(code, "foo"), code[c(1, 2, 4)])
-  expect_equal(filter_label(code, "bar"), code[c(1, 3, 4)])
-  expect_snapshot(filter_label(code, "baz"), error = TRUE)
+  expect_equal(filter_desc(code, "foo"), code[c(1, 2)])
+  expect_equal(filter_desc(code, "bar"), code[c(1, 3, 4)])
+  expect_snapshot(filter_desc(code, "baz"), error = TRUE)
 })
 
 test_that("preserve srcrefs", {
@@ -67,7 +68,7 @@ test_that("preserve srcrefs", {
       # this is a comment
     })
   ')
-  expect_snapshot(filter_label(code, "foo"))
+  expect_snapshot(filter_desc(code, "foo"))
 })
 
 
@@ -79,5 +80,5 @@ test_that("errors if duplicate labels", {
     g()
   )
 
-  expect_snapshot(filter_label(code, "baz"), error = TRUE)
+  expect_snapshot(filter_desc(code, "baz"), error = TRUE)
 })

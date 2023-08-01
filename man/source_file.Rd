@@ -12,7 +12,7 @@ source_file(
   path,
   env = test_env(),
   chdir = TRUE,
-  label = NULL,
+  desc = NULL,
   wrap = TRUE,
   error_call = caller_env()
 )
@@ -38,7 +38,7 @@ source_test_teardown(path = "tests/testthat", env = test_env())
 
 \item{chdir}{Change working directory to \code{dirname(path)}?}
 
-\item{label}{If not-\code{NULL}, will run only test with this label.}
+\item{desc}{If not-\code{NULL}, will run only test with this \code{desc}ription.}
 
 \item{wrap}{Automatically wrap all code within \code{\link[=test_that]{test_that()}}? This ensures
 that all expectations are reported, even if outside a test block.}
