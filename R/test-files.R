@@ -251,7 +251,7 @@ test_files_setup_env <- function(test_package,
 }
 
 find_load_all_args <- function(path) {
-  default <- list(export_all = TRUE, helpers = TRUE)
+  default <- list(export_all = TRUE, helpers = FALSE)
 
   desc <- find_description(path)
   if (is.null(desc)) {
