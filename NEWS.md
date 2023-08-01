@@ -1,5 +1,7 @@
 # testthat (development version)
 
+* Helpers should no longer be run twice.
+
 * `expect_setequal()` correctly displays results when only one of actual and
   expected is missing values (#1835).
 
