@@ -70,11 +70,6 @@ srcref_inside <- function(needle, haystack) {
     sign_pair(needle[3:4], haystack[3:4]) >= 0
 }
 
-sys_calls <- function(...) {
-  idx <- sys_index(...)
-  sys.calls()[idx]
-}
-
 sys_index <- function(bottom = NULL, top = caller_env(), trim_testthat = FALSE) {
   frames <- sys.frames()
   if (is.null(bottom)) {
@@ -82,14 +77,12 @@ sys_index <- function(bottom = NULL, top = caller_env(), trim_testthat = FALSE) 
   } else {
     bottom_idx <- Position(function(env) identical(bottom, env), frames)
     if (is.na(bottom_idx)) {
-      return(NULL)
       abort("Can't find `bottom` on stack")
     }
   }
 
   top_idx <- Position(function(env) identical(top, env), frames)
   if (is.na(top_idx)) {
-    return(NULL)
     abort("Can't find `top` on stack")
   }
 
