@@ -1,5 +1,11 @@
 # testthat (development version)
 
+* testthat uses an improved algorithm for finding the srcref associated with
+  an expectation/error/warning/skip. It now looks for the most recent call
+  that has known source and is found inside the `test_that()` call. This
+  generally gives more specific locations than the previous approach and
+  gives much better locations if an error occurs in an exit handler.
+
 * Helpers should no longer be run twice.
 
 * `test_file()` gains a `desc` argument which allows you to run a single 
