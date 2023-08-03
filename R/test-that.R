@@ -171,15 +171,7 @@ test_code <- function(test, code, env, default_reporter, skip_on_empty = TRUE) {
   handle_skip <- function(e) {
     handled <<- TRUE
 
-    if (inherits(e, "skip_empty")) {
-      # If we get here, `code` has already finished its evaluation.
-      # Find the srcref in the `test_that()` frame above.
-      debug_end <- -1
-    } else {
-      frame <- sys.frame(-2)
-      debug_end <- 2
-    }
-
+    debug_end <- if (inherits(e, "skip_empty")) -1 else 2
     register_expectation(e, debug_end)
     signalCondition(e)
   }
