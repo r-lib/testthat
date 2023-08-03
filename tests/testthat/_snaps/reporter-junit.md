@@ -13,7 +13,7 @@
     `expected`: TRUE </failure>
         </testcase>
         <testcase time="0" classname="Failures" name="Failure_2a">
-          <failure type="failure" message="FALSE is not TRUE ('reporters/tests.R:17:3')">FALSE is not TRUE
+          <failure type="failure" message="FALSE is not TRUE ('reporters/tests.R:16:8')">FALSE is not TRUE
     
     `actual`:   FALSE
     `expected`: TRUE 
@@ -28,7 +28,7 @@
           <error type="error" message="Error in `eval(code, test_env)`: stop ('reporters/tests.R:23:3')">Error in `eval(code, test_env)`: stop</error>
         </testcase>
         <testcase time="0" classname="Errors" name="errors_get_tracebacks">
-          <error type="error" message="Error in `h()`: ! ('reporters/tests.R:31:3')">Error in `h()`: !
+          <error type="error" message="Error in `h()`: ! ('reporters/tests.R:29:8')">Error in `h()`: !
     Backtrace:
         x
      1. \-f()

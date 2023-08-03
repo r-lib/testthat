@@ -7,7 +7,7 @@
     * skip (1): 'reporters/tests.R:37:3'
     
     == Warnings ====================================================================
-    -- Warning ('reporters/tests.R:49:3'): warnings get backtraces -----------------
+    -- Warning ('reporters/tests.R:47:5'): warnings get backtraces -----------------
     def
     Backtrace:
         x
@@ -19,7 +19,7 @@
     
     `actual`:   FALSE
     `expected`: TRUE 
-    -- Failure ('reporters/tests.R:17:3'): Failure:2a ------------------------------
+    -- Failure ('reporters/tests.R:16:8'): Failure:2a ------------------------------
     FALSE is not TRUE
     
     `actual`:   FALSE
@@ -30,7 +30,7 @@
      2.   \-testthat::expect_true(FALSE)
     -- Error ('reporters/tests.R:23:3'): Error:1 -----------------------------------
     Error in `eval(code, test_env)`: stop
-    -- Error ('reporters/tests.R:31:3'): errors get tracebacks ---------------------
+    -- Error ('reporters/tests.R:29:8'): errors get tracebacks ---------------------
     Error in `h()`: !
     Backtrace:
         x
@@ -63,7 +63,7 @@
     * skip (1): 'reporters/tests.R:37:3'
     
     == Warnings ====================================================================
-    -- Warning ('reporters/tests.R:49:3'): warnings get backtraces -----------------
+    -- Warning ('reporters/tests.R:47:5'): warnings get backtraces -----------------
     def
     Backtrace:
         x
@@ -75,7 +75,7 @@
     
     `actual`:   FALSE
     `expected`: TRUE 
-    -- Failure ('reporters/tests.R:17:3'): Failure:2a ------------------------------
+    -- Failure ('reporters/tests.R:16:8'): Failure:2a ------------------------------
     FALSE is not TRUE
     
     `actual`:   FALSE
@@ -86,7 +86,7 @@
      2.   \-testthat::expect_true(FALSE)
     -- Error ('reporters/tests.R:23:3'): Error:1 -----------------------------------
     Error in `eval(code, test_env)`: stop
-    -- Error ('reporters/tests.R:31:3'): errors get tracebacks ---------------------
+    -- Error ('reporters/tests.R:29:8'): errors get tracebacks ---------------------
     Error in `h()`: !
     Backtrace:
         x
