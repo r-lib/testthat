@@ -81,15 +81,14 @@ sys_index <- function(bottom = NULL, top = caller_env(), trim_testthat = FALSE) 
 
   idx <- seq2(bottom_idx, top_idx)
 
-  parents <- sys.parents()[idx]
-
+  # Remove calls from inside testthat to make debugging on testthat itself
+  # easier, since load_all() will keep srcrefs for testthat functions.
   if (trim_testthat) {
-    parents <- sys.parents()[idx] # remember to handle 0
+    parents <- sys.parents()[idx]
     funs <- lapply(parents, sys.function)
-    # try looking at lapply(frames, topenv) instead
     envs <- lapply(funs, environment)
     names <- map_chr(envs, environmentName)
-    idx <- idx[!names %in% c("testthat", "base")]
+    idx <- idx[names != "testthat"]
   }
 
   idx
