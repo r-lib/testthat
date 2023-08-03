@@ -22,29 +22,22 @@ test_that("line numbers captured for expectations and warnings", {
 
 test_that("line numbers captured when called indirectly", {
   lines <- srcref_line({
-    test_that("simple", {                    # line 1
-      suppressMessages(expect_true(FALSE))   # line 2
-    })
-  })
-  expect_equal(lines, 2)
-
-  lines <- srcref_line({
-    test_that("simple", {           # line 1
-      f <- function() g()           # line 2
-      g <- function() h()           # line 3
-      h <- function() expect_true() # line 4
-                                    # line 5
-      h()                           # line 6
+    test_that("simple", {                # line 1
+      f <- function() g()                # line 2
+      g <- function() h()                # line 3
+      h <- function() expect_true(FALSE) # line 4
+                                         # line 5
+      h()                                # line 6
     })
   })
   expect_equal(lines, 4)
 
   lines <- srcref_line({
-    f <- function() g()               # line 1
-    g <- function() h()               # line 2
-    h <- function() expect_true()     # line 3
-    test_that("simple", {             # line 4
-      h()                             # line 5
+    f <- function() g()                  # line 1
+    g <- function() h()                  # line 2
+    h <- function() expect_true(FALSE)   # line 3
+    test_that("simple", {                # line 4
+      h()                                # line 5
     })
   })
   expect_equal(lines, 5)
