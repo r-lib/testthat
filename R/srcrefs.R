@@ -1,4 +1,3 @@
-
 find_expectation_srcref <- function(test_code_frame = NULL, top = caller_env()) {
   # First find the call the user made that lead to test_code(). This is usually
   # test_that() but might be it() or a user defined wrapper. We assume it's the

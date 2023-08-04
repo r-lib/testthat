@@ -1,4 +1,3 @@
-
 srcref_line <- function(code) {
   srcref <- attr(substitute(code), "srcref")
   if (!is.list(srcref)) {
