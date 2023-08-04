@@ -53,7 +53,7 @@ StopReporter <- R6::R6Class("StopReporter",
     },
     stop_if_needed = function() {
       if (self$stop_reporter && self$n_fail > 0) {
-        abort("Test failed")
+        abort("Test failed", call = NULL)
       }
     }
   )

@@ -6,7 +6,7 @@
     - | 1       0 | reporters/error-setup                                           
     x | 1       0 | reporters/error-setup
     --------------------------------------------------------------------------------
-    Error ('test-reporter-progress.R:4:3'): (code run outside of `test_that()`)
+    Error ('reporters/error-setup.R:3:6'): (code run outside of `test_that()`)
     Error in `h()`: !
     Backtrace:
         x
@@ -19,7 +19,7 @@
     
     == Results =====================================================================
     -- Failed tests ----------------------------------------------------------------
-    Error ('test-reporter-progress.R:4:3'): (code run outside of `test_that()`)
+    Error ('reporters/error-setup.R:3:6'): (code run outside of `test_that()`)
     Error in `h()`: !
     Backtrace:
         x
@@ -355,7 +355,7 @@
      25.                                                 \-f(x - 1)
      26.                                                   \-f(x - 1)
     
-    Failure ('test-reporter-progress.R:46:3'): (code run outside of `test_that()`)
+    Failure ('reporters/backtraces.R:64:6'): (code run outside of `test_that()`)
     FALSE is not TRUE
     
     `actual`:   FALSE
@@ -475,7 +475,7 @@
      25.                                                 \-f(x - 1)
      26.                                                   \-f(x - 1)
     
-    Failure ('test-reporter-progress.R:46:3'): (code run outside of `test_that()`)
+    Failure ('reporters/backtraces.R:64:6'): (code run outside of `test_that()`)
     FALSE is not TRUE
     
     `actual`:   FALSE

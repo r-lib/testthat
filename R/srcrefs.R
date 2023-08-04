@@ -1,21 +1,25 @@
 find_expectation_srcref <- function(test_code_frame = NULL, top = caller_env()) {
-  # First find the call the user made that lead to test_code(). This is usually
-  # test_that() but might be it() or a user defined wrapper. We assume it's the
-  # bottom-most call prior to test_code() that has a srcref
-  testthat_srcref <- find_srcref(
-    top = test_code_frame,
-    trim_testthat = TRUE
-  )
-  if (is.null(testthat_srcref)) {
+  # It's not possible to give useful srcrefs interactively so don't even try
+  path <- getOption("testthat_path")
+  if (is.null(path)) {
     return(NULL)
   }
 
-  # Now we can find the bottom-most call with a srcref that's found inside
-  # the call to test_that()
+  # Scope our search to the current file loaded with source_file()
+  file_srcref <- srcref(srcfile(path), c(1, 1, 1e5, 1e5))
+
+  # Now attempt to narrow the scope to a call that leads to test_code(). That's
+  # usually test_that() but might be describe(), it(), or another wrapper.
+  testthat_srcref <- find_srcref(
+    top = test_code_frame,
+    container = file_srcref
+  )
+
+  # Now we can find the bottom-most call with a srcref that's inside that scope
   call_srcref <- find_srcref(
     top = top,
     bottom = test_code_frame,
-    container = testthat_srcref
+    container = testthat_srcref %||% file_srcref
   )
 
   # If we can't find that we fall back to the test
@@ -24,10 +28,9 @@ find_expectation_srcref <- function(test_code_frame = NULL, top = caller_env()) 
 
 find_srcref <- function(bottom = NULL,
                         top = caller_env(),
-                        trim_testthat = TRUE,
                         container = NULL) {
 
-  idx <- sys_index(bottom, top, trim_testthat = trim_testthat)
+  idx <- sys_index(bottom, top)
   calls <- sys.calls()[rev(idx)]
 
   for (call in calls) {
@@ -62,7 +65,7 @@ srcref_inside <- function(needle, haystack) {
     sign_pair(needle[3:4], haystack[3:4]) >= 0
 }
 
-sys_index <- function(bottom = NULL, top = caller_env(), trim_testthat = FALSE) {
+sys_index <- function(bottom = NULL, top = caller_env()) {
   frames <- sys.frames()
   if (is.null(bottom)) {
     bottom_idx <- 1
@@ -78,17 +81,5 @@ sys_index <- function(bottom = NULL, top = caller_env(), trim_testthat = FALSE) 
     abort("Can't find `top` on stack")
   }
 
-  idx <- seq2(bottom_idx, top_idx)
-
-  # Remove calls from inside testthat to make debugging on testthat itself
-  # easier, since load_all() will keep srcrefs for testthat functions.
-  if (trim_testthat) {
-    parents <- sys.parents()[idx]
-    funs <- lapply(parents, sys.function)
-    envs <- lapply(funs, environment)
-    names <- map_chr(envs, environmentName)
-    idx <- idx[names != "testthat"]
-  }
-
-  idx
+  seq2(bottom_idx, top_idx)
 }

@@ -147,7 +147,7 @@ skip_summary <- function(x, label) {
   header <- paste0(label, ". ", x$test)
 
   paste0(
-    colourise(header, "skip"), " (", expectation_location(x), ") - ", x$message
+    colourise(header, "skip"), expectation_location(x, " (", ")"), " - ", x$message
   )
 }
 
