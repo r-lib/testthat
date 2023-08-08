@@ -249,16 +249,12 @@ single_letter_summary <- function(x) {
   )
 }
 
-expectation_location <- function(x) {
-  if (!inherits(x$srcref, "srcref")) {
-    "???"
-  } else {
-    srcfile <- attr(x$srcref, "srcfile")
-    filename <- srcfile$filename
-    if (identical(filename, "")) {
-      paste0("Line ", x$srcref[1])
-    } else {
-      cli::format_inline("{.file {filename}:{x$srcref[1]}:{x$srcref[2]}}")
-    }
+expectation_location <- function(x, prefix = "", suffix = "") {
+  srcref <- x$srcref
+  if (!inherits(srcref, "srcref")) {
+    return("")
   }
+
+  filename <- attr(srcref, "srcfile")$filename
+  cli::format_inline("{prefix}{.file {filename}:{srcref[1]}:{srcref[2]}}{suffix}")
 }

@@ -111,8 +111,8 @@ JunitReporter <- R6::R6Class("JunitReporter",
       )
 
       first_line <- function(x) {
-        loc <- expectation_location(x)
-        paste0(strsplit(x$message, split = "\n")[[1]][1], " (", loc, ")")
+        loc <- expectation_location(x, " (", ")")
+        paste0(strsplit(x$message, split = "\n")[[1]][1], loc)
       }
 
       # add an extra XML child node if not a success

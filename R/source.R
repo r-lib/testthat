@@ -38,7 +38,7 @@ source_file <- function(path,
     on.exit(setwd(old_dir), add = TRUE)
   }
 
-  withr::local_options(testthat_topenv = env)
+  withr::local_options(testthat_topenv = env, testthat_path = path)
   if (wrap) {
     invisible(test_code(
       test = NULL,

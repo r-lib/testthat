@@ -59,6 +59,7 @@ test_that <- function(desc, code) {
 # `$.Throwable` from the rJava package throws with unknown fields
 test_code <- function(test, code, env, default_reporter, skip_on_empty = TRUE) {
 
+  frame <- caller_env()
   reporter <- get_reporter() %||% default_reporter
 
   if (!is.null(test)) {
@@ -71,14 +72,12 @@ test_code <- function(test, code, env, default_reporter, skip_on_empty = TRUE) {
   # @param debug_end How many frames should be skipped to find the
   #   last relevant frame call. Only useful for the DebugReporter.
   register_expectation <- function(e, debug_end) {
-    # Find test environment on the stack
-    start <- eval_bare(quote(base::sys.nframe()), test_env) + 1L
-
-    srcref <- e[["srcref"]] %||% find_first_srcref(start)
+    srcref <- e[["srcref"]] %||% find_expectation_srcref(frame)
     e <- as.expectation(e, srcref = srcref)
 
     # Data for the DebugReporter
     if (debug_end >= 0) {
+      start <- eval_bare(quote(base::sys.nframe()), test_env) + 1L
       e$start_frame <- start
       e$end_frame <- sys.nframe() - debug_end - 1L
     }
@@ -89,7 +88,6 @@ test_code <- function(test, code, env, default_reporter, skip_on_empty = TRUE) {
     reporter$add_result(context = reporter$.context, test = test, result = e)
   }
 
-  frame <- sys.nframe()
   # Any error will be assigned to this variable first
   # In case of stack overflow, no further processing (not even a call to
   # signalCondition() ) might be possible
@@ -173,15 +171,7 @@ test_code <- function(test, code, env, default_reporter, skip_on_empty = TRUE) {
   handle_skip <- function(e) {
     handled <<- TRUE
 
-    if (inherits(e, "skip_empty")) {
-      # If we get here, `code` has already finished its evaluation.
-      # Find the srcref in the `test_that()` frame above.
-      e$srcref <- find_first_srcref(frame - 1)
-      debug_end <- -1
-    } else {
-      debug_end <- 2
-    }
-
+    debug_end <- if (inherits(e, "skip_empty")) -1 else 2
     register_expectation(e, debug_end)
     signalCondition(e)
   }
