@@ -10,7 +10,8 @@ find_test_scripts(
   invert = FALSE,
   ...,
   full.names = TRUE,
-  start_first = NULL
+  start_first = NULL,
+  recursive = FALSE
 )
 }
 \arguments{
@@ -31,6 +32,8 @@ first pattern first,  then the ones matching the second, etc. and then
 the rest of the files, alphabetically. Parallel tests tend to finish
 quicker if you start the slowest files first. \code{NULL} means alphabetical
 order.}
+
+\item{recursive}{If \code{TRUE} Test that will search for test files in the nested directories.}
 }
 \value{
 A character vector of paths

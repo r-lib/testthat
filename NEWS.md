@@ -13,6 +13,8 @@
 
 * `expect_setequal()` correctly displays results when only one of actual and
   expected is missing values (#1835).
+  
+* `test_dir()` gains a `recursive` argument which allows test files in nested directories (#1605).
 
 # testthat 3.1.10
 

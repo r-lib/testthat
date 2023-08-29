@@ -19,3 +19,24 @@
     16   test-helper.R                                       helper test  1      0   FALSE FALSE       0      1
     17     test-skip.R                                        Skips skip  1      0    TRUE FALSE       0      0
 
+# runs all tests in nested directories and records output
+
+                                file context                                      test nb failed skipped error warning passed
+    1    nested_folder/test-errors.R                                            simple  0      0   FALSE  TRUE       0      0
+    2    nested_folder/test-errors.R                                 after one success  1      0   FALSE  TRUE       0      1
+    3    nested_folder/test-errors.R                                 after one failure  1      1   FALSE  TRUE       0      0
+    4    nested_folder/test-errors.R                                       in the test  0      0   FALSE  TRUE       0      0
+    5    nested_folder/test-errors.R                                   in expect_error  1      0   FALSE FALSE       0      1
+    6  nested_folder/test-failures.R                                  just one failure  1      1   FALSE FALSE       0      0
+    7  nested_folder/test-failures.R                                one failure on two  2      1   FALSE FALSE       0      1
+    8  nested_folder/test-failures.R                                        no failure  2      0   FALSE FALSE       0      2
+    9      nested_folder/test-skip.R                                        Skips skip  1      0    TRUE FALSE       0      0
+    10                  test-basic.R                     logical tests act as expected  2      0   FALSE FALSE       0      2
+    11                  test-basic.R                   logical tests ignore attributes  2      0   FALSE FALSE       0      2
+    12                  test-basic.R                                    equality holds  2      0   FALSE FALSE       0      2
+    13                  test-basic.R         can't access variables from other tests 2  1      0    TRUE FALSE       0      0
+    14                  test-basic.R         can't access variables from other tests 1  1      0   FALSE FALSE       0      1
+    15                  test-empty.R                                        empty test  1      0    TRUE FALSE       0      0
+    16                  test-empty.R                             empty test with error  0      0   FALSE  TRUE       0      0
+    17                 test-helper.R                                       helper test  1      0   FALSE FALSE       0      1
+

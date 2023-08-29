@@ -26,6 +26,7 @@
 #' @param stop_on_failure If `TRUE`, throw an error if any tests fail.
 #' @param stop_on_warning If `TRUE`, throw an error if any tests generate
 #'   warnings.
+#' @param recursive If `TRUE` Test that will search for test files in the nested directories.
 #' @param load_package Strategy to use for load package code:
 #'   * "none", the default, doesn't load the package.
 #'   * "installed", uses [library()] to load an installed package.
@@ -52,6 +53,7 @@ test_dir <- function(path,
                      stop_on_warning = FALSE,
                      wrap = lifecycle::deprecated(),
                      package = NULL,
+                     recursive = FALSE,
                      load_package = c("none", "installed", "source")
                      ) {
 
@@ -63,7 +65,8 @@ test_dir <- function(path,
     filter = filter,
     ...,
     full.names = FALSE,
-    start_first = start_first
+    start_first = start_first,
+    recursive = recursive
   )
   if (length(test_paths) == 0) {
     abort("No test files found")
@@ -380,8 +383,8 @@ local_teardown_env <- function(frame = parent.frame()) {
 #' @return A character vector of paths
 #' @keywords internal
 #' @export
-find_test_scripts <- function(path, filter = NULL, invert = FALSE, ..., full.names = TRUE, start_first = NULL) {
-  files <- dir(path, "^test.*\\.[rR]$", full.names = full.names)
+find_test_scripts <- function(path, filter = NULL, invert = FALSE, ..., full.names = TRUE, start_first = NULL, recursive = FALSE) {
+  files <- dir(path, "^test.*\\.[rR]$", full.names = full.names, recursive = recursive)
   files <- filter_test_scripts(files, filter, invert, ...)
   order_test_scripts(files, start_first)
 }
