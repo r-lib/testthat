@@ -242,6 +242,10 @@ test_mock_method.integer <- function(x) {
   "y"
 }
 
+test_mock_base <- function() {
+  interactive()
+}
+interactive <- NULL
 
 show_bindings <- function(name, env = caller_env()) {
   envs <- env_parents(env)
