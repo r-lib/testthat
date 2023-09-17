@@ -96,5 +96,5 @@ test_that("can configure `load_all()` (#1636)", {
 })
 
 test_that("helpers are included in the testing environment", {
-  expect_true("rlang_version" %in% names(the$testing_env))
+  expect_true("abcdefghi" %in% names(the$testing_env))
 })
