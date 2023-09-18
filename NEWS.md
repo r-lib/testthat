@@ -1,5 +1,8 @@
 # testthat (development version)
 
+* All packages, regardless of whether or not they use rlang 1.0.0, now
+  use the new snapshot display for errors, warnings, and messages (#1856).
+
 * testthat uses an improved algorithm for finding the srcref associated with
   an expectation/error/warning/skip. It now looks for the most recent call
   that has known source and is found inside the `test_that()` call. This
@@ -51,9 +54,6 @@
 * `skip_on_cran()` no longer skips (errors) when run interactively.
 
 * `teardown_env()` works in more cases.
-
-* All packages, regardless of whether or not they use rlang, now
-  use the new snapshot display for errors, warnings, and messages.
 
 * testthat no longer truncates tracebacks and uses rlang's default tree
   display.
