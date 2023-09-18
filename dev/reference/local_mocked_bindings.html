@@ -155,11 +155,17 @@ you mock it the same way:</p>
 <h3 id="base-functions">Base functions<a class="anchor" aria-label="anchor" href="#base-functions"></a></h3>
 
 
-<p>Note that it's not possible to mock functions in the base namespace
-(i.e. functions that you can use without explicitly importing them)
-since currently we don't know of a way to to mock them without potentially
-affecting all running code. If you need to mock a base function, you'll
-need to create a wrapper, as described below.</p>
+<p>To mock a function in the base package, you need to make sure that you
+have a binding for this function in your package. It's easiest to do this
+by binding the value to <code>NULL</code>. For example, if you wanted to mock
+<code><a href="https://rdrr.io/r/base/interactive.html" class="external-link">interactive()</a></code> in your package, you'd need to include this code somewhere
+in your package:</p>
+<p></p><div class="sourceCode R"><pre><code><span><span class="va">interactive</span> <span class="op">&lt;-</span> <span class="cn">NULL</span></span></code></pre><p></p></div>
+<p>Why is this necessary? <code>with_mocked_bindings()</code> and <code>local_mocked_bindings()</code>
+work by temporarily modifying the bindings within your package's namespace.
+When these tests are running inside of <code>R CMD check</code> the namespace is locked
+which means it's not possible to create new bindings so you need to make sure
+that the binding exists already.</p>
 </div>
 
 <div class="section">
