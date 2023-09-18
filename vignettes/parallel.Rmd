@@ -17,11 +17,23 @@ knitr::opts_chunk$set(collapse = TRUE, comment = "#>")
 
 To take advantage of parallel tests, add the following line to the `DESCRIPTION`:
 
-    Config/testthat/parallel: true
+```         
+Config/testthat/parallel: true
+```
 
 You'll also need to be using the 3rd edition:
 
-    Config/testthat/edition: 3
+```         
+Config/testthat/edition: 3
+```
+
+By default, parallel testthat will use 2 cores.
+To customise that value for your local computer we recommend adding an entry for `TESTTHAT_CPUS` to your `.Rprofile`.
+The easiest way to do that is use `usethis::edit_r_profile()` and then add something like the following:
+
+```         
+TESTTHAT_CPUS=4
+```
 
 ## Basic operation
 
@@ -37,8 +49,6 @@ testthat runs test *files* in parallel.
 Once the worker pool is initialized, testthat then starts sending test files to workers, by default in alphabetical order: as soon as a subprocess has finished, it receives another file, until all files are done.
 This means that state is persisted across test files: options are *not* reset, loaded packages are *not* unloaded, the global environment is *not* cleared, etc.
 You are responsible for making sure each file leaves the world as it finds it.
-
-Because files are run in alphabetical order, you may want to rename your slowest test files so that they start first, e.g. `test-1-slowest.R`, `test-2-next-slowest.R`, etc.
 
 ## Common problems
 
@@ -72,7 +82,9 @@ Ideally the slow files would start first, as the whole test suite will take at l
 You can change the order with the `Config/testthat/start-first` option in `DESCRIPTION`.
 For example testthat currently has:
 
-    Config/testthat/start-first: watcher, parallel*
+```         
+Config/testthat/start-first: watcher, parallel*
+```
 
 The format is a comma separated list of glob patterns, see `?utils::glob2rx`.
 The matching test files will start first.
@@ -113,7 +125,7 @@ The other built-in reporters all support parallel tests, with some subtle differ
 -   The standard output and standard error, i.e. `print()`, `cat()`, `message()`, etc. output from the test files are lost currently.
     If you want to use `cat()` or `message()` for print-debugging test cases, then the best is to temporarily run tests sequentially, by changing the `Config` entry in `DESCRIPTION` or selecting a non-parallel reporter, e.g. the `CheckReporter`:
 
-    ``` {.r}
+    ``` r
     devtools::test(filter = "badtest", reporter = "check")
     ```
 
@@ -125,7 +137,7 @@ When running in parallel, testthat does not provide location information (source
 
 To support parallel tests, a reporter must set `self$capabilities$parallel_support` to `TRUE` in its `initialize()` method:
 
-``` {.r}
+``` r
 ...
 initialize = function(...) {
   super$initialize(...)
@@ -150,7 +162,7 @@ For this to work, a reporter must be able to handle multiple test files concurre
 
 A reporter declares parallel update support by setting `self$capabilities$parallel_updates` to `TRUE`:
 
-``` {.r}
+``` r
 ...
 initialize = function(...) {
   super$initialize(...)
