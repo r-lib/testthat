@@ -81,3 +81,19 @@ test_that("can mock base functions with in-package bindings", {
   local_mocked_bindings(interactive = function() TRUE)
   expect_equal(test_mock_base(), TRUE)
 })
+
+test_that("can mock r6 classes", {
+  local({
+    local_mocked_bindings(
+      test_mock_r6class = R6::R6Class(
+        "test_mock_class",
+        public = list(
+          initalize = function(...) {},
+          val = "x"
+        )
+      )
+    )
+    expect_equal(test_mock_r6_internal(), "x")
+  })
+  expect_equal(test_mock_r6_internal(), "y")
+})

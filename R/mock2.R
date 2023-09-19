@@ -206,7 +206,7 @@ check_bindings <- function(x, error_call = caller_env()) {
     )
   }
 
-  is_fun <- map_lgl(x, is.function)
+  is_fun <- map_lgl(x, is.function) | map_lgl(x, R6::is.R6Class)
   if (!any(is_fun)) {
     cli::cli_abort(
       "All elements of {.arg ...} must be functions.",
@@ -246,6 +246,19 @@ test_mock_base <- function() {
   interactive()
 }
 interactive <- NULL
+
+test_mock_r6class <- R6::R6Class(
+  "test_mock_class",
+  public = list(
+    initalize = function(...) {},
+    val = "y"
+  )
+)
+
+test_mock_r6_internal <- function() {
+  m <- test_mock_r6class$new()
+  m$val
+}
 
 show_bindings <- function(name, env = caller_env()) {
   envs <- env_parents(env)
