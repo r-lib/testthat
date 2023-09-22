@@ -122,7 +122,7 @@ test_that("check_roundtrip() gives nice error", {
   local_bindings(crayon = FALSE, .env = get_reporter())
 
   wrapper <- function(...) check_roundtrip(...)
-  expect_snapshot(wrapper(NULL, list(), style = "json"), error = TRUE)
+  expect_snapshot(wrapper(NULL, list(), label = "foo", style = "json"), error = TRUE)
 })
 
 test_that("errors in test doesn't change snapshot", {

@@ -1,10 +1,10 @@
 # check_roundtrip() gives nice error
 
     Code
-      wrapper(NULL, list(), style = "json")
+      wrapper(NULL, list(), label = "foo", style = "json")
     Condition
       Error in `wrapper()`:
-      ! Object could not be safely serialized with `style = "json"`.
+      ! `foo` could not be safely serialized with `style = "json"`.
         Serializing then deserializing the object returned something new:
       
       `original` is NULL
