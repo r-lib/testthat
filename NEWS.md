@@ -1,5 +1,7 @@
 # testthat (development version)
 
+* `skip_if_offline()` now errors if you don't have curl installed (#1854).
+
 * All packages, regardless of whether or not they use rlang 1.0.0, now
   use the new snapshot display for errors, warnings, and messages (#1856).
 
