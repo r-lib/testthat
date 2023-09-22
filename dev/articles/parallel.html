@@ -109,19 +109,29 @@
 
     
     
-<p>To take advantage of parallel tests, add the following line to the
-<code>DESCRIPTION</code>:</p>
+<div class="section level2">
+<h2 id="setup">Setup<a class="anchor" aria-label="anchor" href="#setup"></a>
+</h2>
+<p>To enable parallel testing, you must first be using the 3rd edition<a class="footnote-ref" tabindex="0" data-bs-toggle="popover" data-bs-content='&lt;p&gt;See &lt;code&gt;&lt;a href="../articles/third-edition.html"&gt;vignette("third-edition")&lt;/a&gt;&lt;/code&gt; for
+details.&lt;/p&gt;'><sup>1</sup></a>. Then add
+the following line to the <code>DESCRIPTION</code>:</p>
 <pre><code><span><span class="va">Config</span><span class="op">/</span><span class="va">testthat</span><span class="op">/</span><span class="va">parallel</span><span class="op">:</span> <span class="va">true</span></span></code></pre>
-<p>You’ll also need to be using the 3rd edition:</p>
-<pre><code><span><span class="va">Config</span><span class="op">/</span><span class="va">testthat</span><span class="op">/</span><span class="va">edition</span><span class="op">:</span> <span class="fl">3</span></span></code></pre>
+<p>By default, testthat will use <code>getOption("Ncpus", 2)</code>
+cores. To increase that value for your development machine we recommend
+setting <code>TESTTHAT_CPUS</code> in your <code>.Renviron</code>. The
+easiest way to do that is call <code><a href="https://usethis.r-lib.org/reference/edit.html" class="external-link">usethis::edit_r_environ()</a></code>
+and then add something like the following:</p>
+<pre><code><span><span class="va">TESTTHAT_CPUS</span><span class="op">=</span><span class="fl">4</span></span></code></pre>
+<p>Tests are run in alphabetical order by default, but you can often
+improve performance by starting the slowest tests first. Specify these
+tests by supplying a comma separated list of glob patterns<a class="footnote-ref" tabindex="0" data-bs-toggle="popover" data-bs-content='&lt;p&gt;See &lt;code&gt;&lt;a href="https://rdrr.io/r/utils/glob2rx.html" class="external-link"&gt;?utils::glob2rx&lt;/a&gt;&lt;/code&gt; for details&lt;/p&gt;'><sup>2</sup></a> to the
+<code>Config/testthat/start-first</code> field in your
+<code>DESCRIPTION</code>, e.g.:</p>
+<pre><code>Config/testthat/start-first: watcher, parallel*</code></pre>
+</div>
 <div class="section level2">
 <h2 id="basic-operation">Basic operation<a class="anchor" aria-label="anchor" href="#basic-operation"></a>
 </h2>
-<p>Starting a new R process is relatively expensive, so testthat begins
-by creating a pool of workers. The size of the pool will be determined
-by <code>getOption("Ncpus")</code>, then the <code>TESTTHAT_CPUS</code>
-envvar. If neither are set, then two processes are started. In any case,
-testthat will never start more subprocesses than test files.</p>
 <p>Each worker begins by loading testthat and the package being tested.
 It then runs any setup files (so if you have existing setup files you’ll
 need to make sure they work when executed in parallel).</p>
@@ -133,10 +143,6 @@ is persisted across test files: options are <em>not</em> reset, loaded
 packages are <em>not</em> unloaded, the global environment is
 <em>not</em> cleared, etc. You are responsible for making sure each file
 leaves the world as it finds it.</p>
-<p>Because files are run in alphabetical order, you may want to rename
-your slowest test files so that they start first,
-e.g. <code>test-1-slowest.R</code>, <code>test-2-next-slowest.R</code>,
-etc.</p>
 </div>
 <div class="section level2">
 <h2 id="common-problems">Common problems<a class="anchor" aria-label="anchor" href="#common-problems"></a>
@@ -146,7 +152,8 @@ etc.</p>
 sometimes fail) you may have accidentally introduced a dependency
 between your test files. This sort of dependency is hard to track down
 due to the random nature, and you’ll need to check all tests to make
-sure that they’re not accidentally changing global state.</p></li>
+sure that they’re not accidentally changing global state.
+<code><a href="../reference/set_state_inspector.html">set_state_inspector()</a></code> will make this easier.</p></li>
 <li><p>If you use <a href="https://testthat.r-lib.org/articles/test-fixtures.html#package">packaged
 scope test fixtures</a>, you’ll need to review them to make sure that
 they work in parallel. For example, if you were previously creating a
@@ -175,21 +182,6 @@ non-parallel reporter.</p></li>
 take a short amount of time, you’re unlikely to see a huge benefit by
 using parallel tests. For example, testthat itself takes about 10s to
 run tests in serial, and 8s to run the tests in parallel.</p>
-<div class="section level3">
-<h3 id="changing-the-order-of-the-test-files">Changing the order of the test files<a class="anchor" aria-label="anchor" href="#changing-the-order-of-the-test-files"></a>
-</h3>
-<p>By default testthat starts the test files in alphabetical order. If
-you have a few number of test files that take longer than the rest, then
-this might not be the best order. Ideally the slow files would start
-first, as the whole test suite will take at least as much time as its
-slowest test file. You can change the order with the
-<code>Config/testthat/start-first</code> option in
-<code>DESCRIPTION</code>. For example testthat currently has:</p>
-<pre><code>Config/testthat/start-first: watcher, parallel*</code></pre>
-<p>The format is a comma separated list of glob patterns, see
-<code><a href="https://rdrr.io/r/utils/glob2rx.html" class="external-link">?utils::glob2rx</a></code>. The matching test files will start first.
-(The <code>test-</code> prefix is ignored.)</p>
-</div>
 </div>
 <div class="section level2">
 <h2 id="reporters">Reporters<a class="anchor" aria-label="anchor" href="#reporters"></a>
@@ -322,6 +314,7 @@ guarantees.) The <code>$update()</code> method may implement a spinner
 to let the user know that the tests are running.</p>
 </div>
 </div>
+
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside>
 </div>
