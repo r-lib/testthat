@@ -1,5 +1,8 @@
 # testthat (development version)
 
+* `expect_snapshot_value()` has an improved error if the object can't be
+  safely seriazlied using the specified `style` (#1771).
+
 * `skip_if_offline()` now errors if you don't have curl installed (#1854).
 
 * All packages, regardless of whether or not they use rlang 1.0.0, now

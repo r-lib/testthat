@@ -71,7 +71,6 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
         comp
       } else {
         value_enc <- save(value)
-        check_roundtrip(value, load(value_enc), ..., tolerance = tolerance)
 
         self$cur_snaps$append(self$test, variant, value_enc)
 
@@ -161,12 +160,22 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
 )
 
 
-check_roundtrip <- function(x, y, ..., tolerance = testthat_tolerance()) {
-  check <- waldo_compare(x, y, x_arg = "value", y_arg = "roundtrip", ..., tolerance = tolerance)
+check_roundtrip <- function(x,
+                            y,
+                            style,
+                            ...,
+                            tolerance = testthat_tolerance(),
+                            error_call = caller_env()) {
+  check <- waldo_compare(x, y, x_arg = "original", y_arg = "new", ..., tolerance = tolerance)
   if (length(check) > 0) {
     abort(c(
-      paste0("Serialization round-trip is not symmetric.\n\n", check, "\n"),
-      i = "You may need to consider serialization `style`")
+      paste0("Object could not be safely serialized with `style = \"", style, "\"`."),
+      " " = paste0(
+        "Serializing then deserializing the object returned something new:\n\n",
+        check, "\n"
+      ),
+      i = "You may need to try a different `style`."),
+      call = error_call
     )
   }
 }
