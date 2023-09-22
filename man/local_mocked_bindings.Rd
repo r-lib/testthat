@@ -13,10 +13,11 @@ with_mocked_bindings(code, ..., .package = NULL)
 \item{...}{Name-value pairs providing functions to mock.}
 
 \item{.package}{The name of the package where mocked functions should be
-inserted. Generally, you should not need to supply this as it will be
-automatically detected when whole package tests are run or when there's
-one package under active development (i.e. loaded with
-\code{\link[pkgload:load_all]{pkgload::load_all()}}).}
+inserted. Generally, you should not supply this as it will be automatically
+detected when whole package tests are run or when there's one package
+under active development (i.e. loaded with \code{\link[pkgload:load_all]{pkgload::load_all()}}).
+We don't recommend using this to mock functions in other packages
+as you should not modify namespaces that you don't own.}
 
 \item{.env}{Environment that defines effect scope. For expert use only.}
 
@@ -94,20 +95,12 @@ For example, take this minor variation:
 \}
 }\if{html}{\out{</div>}}
 
-To mock here, you'll need to modify \code{another_function()} inside the
+To mock this function, you'd need to modify \code{another_function()} inside the
 \code{anotherpackage} package. You \emph{can} do this by supplying the \code{.package}
-argument:
-
-\if{html}{\out{<div class="sourceCode R">}}\preformatted{local_mocked_bindings(
-  another_function = function(...) "new_value",
-  .package = "anotherpackage"
-)
-}\if{html}{\out{</div>}}
-
-But it's not a great idea to mock a namespace that you don't own because
-it affects all code in that package, not just code in your package. Instead,
-it's safer to either import the function into your package, or make a wrapper
-that you can mock:
+argument to \code{local_mocked_bindings()} but we don't recommend it because
+it will affect all code in that package, not just code in your package.
+Instead, it's safer to either import the function into your package, or make
+a wrapper that you can mock:
 
 \if{html}{\out{<div class="sourceCode R">}}\preformatted{some_function <- function() \{
   my_wrapper()
