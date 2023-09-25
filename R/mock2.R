@@ -78,7 +78,7 @@
 #' To mock this function, you'd need to modify `another_function()` inside the
 #' `anotherpackage` package. You _can_ do this by supplying the `.package`
 #' argument to `local_mocked_bindings()` but we don't recommend it because
-#' it will affect all code in that package, not just code in your package.
+#' it will affect all calls to `anotherpackage::another_function()`, not just the calls originating in your package.
 #' Instead, it's safer to either import the function into your package, or make
 #' a wrapper that you can mock:
 #'
@@ -102,7 +102,7 @@
 #'   inserted. Generally, you should not supply this as it will be automatically
 #'   detected when whole package tests are run or when there's one package
 #'   under active development (i.e. loaded with [pkgload::load_all()]).
-#'   We don't recommend using this to mock functions in other packages
+#'   We don't recommend using this to mock functions in other packages,
 #'   as you should not modify namespaces that you don't own.
 local_mocked_bindings <- function(..., .package = NULL, .env = caller_env()) {
   bindings <- list2(...)
