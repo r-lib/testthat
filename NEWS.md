@@ -1,5 +1,8 @@
 # testthat (development version)
 
+* The skip column is now two characters wide to have a consistent width in case
+  10 or more tests are skipped in a single file (@mgirlich, #1844).
+
 * Helpers should no longer be run twice.
 
 * `test_file()` gains a `desc` argument which allows you to run a single 
