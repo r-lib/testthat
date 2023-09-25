@@ -113,10 +113,11 @@ packages.</p>
 
 <dt>.package</dt>
 <dd><p>The name of the package where mocked functions should be
-inserted. Generally, you should not need to supply this as it will be
-automatically detected when whole package tests are run or when there's
-one package under active development (i.e. loaded with
-<code><a href="https://pkgload.r-lib.org/reference/load_all.html" class="external-link">pkgload::load_all()</a></code>).</p></dd>
+inserted. Generally, you should not supply this as it will be automatically
+detected when whole package tests are run or when there's one package
+under active development (i.e. loaded with <code><a href="https://pkgload.r-lib.org/reference/load_all.html" class="external-link">pkgload::load_all()</a></code>).
+We don't recommend using this to mock functions in other packages,
+as you should not modify namespaces that you don't own.</p></dd>
 
 
 <dt>.env</dt>
@@ -177,17 +178,12 @@ For example, take this minor variation:</p>
 <p></p><div class="sourceCode R"><pre><code><span><span class="va">some_function</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="fu">anotherpackage</span><span class="fu">::</span><span class="fu">another_function</span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre><p></p></div>
-<p>To mock here, you'll need to modify <code>another_function()</code> inside the
+<p>To mock this function, you'd need to modify <code>another_function()</code> inside the
 <code>anotherpackage</code> package. You <em>can</em> do this by supplying the <code>.package</code>
-argument:</p>
-<p></p><div class="sourceCode R"><pre><code><span><span class="fu"><a href="../reference/local_mocked_bindings.html">local_mocked_bindings</a></span><span class="op">(</span></span>
-<span>  another_function <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">...</span><span class="op">)</span> <span class="st">"new_value"</span>,</span>
-<span>  .package <span class="op">=</span> <span class="st">"anotherpackage"</span></span>
-<span><span class="op">)</span></span></code></pre><p></p></div>
-<p>But it's not a great idea to mock a namespace that you don't own because
-it affects all code in that package, not just code in your package. Instead,
-it's safer to either import the function into your package, or make a wrapper
-that you can mock:</p>
+argument to <code>local_mocked_bindings()</code> but we don't recommend it because
+it will affect all calls to <code>anotherpackage::another_function()</code>, not just
+the calls originating in your package. Instead, it's safer to either import
+the function into your package, or make a wrapper that you can mock:</p>
 <p></p><div class="sourceCode R"><pre><code><span><span class="va">some_function</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="fu">my_wrapper</span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="op">}</span></span>
