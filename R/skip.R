@@ -249,7 +249,7 @@ on_bioc <- function() {
   env_var_is_true("IS_BIOC_BUILD_MACHINE")
 }
 on_cran <- function() {
-  !is_interactive() && !env_var_is_true("NOT_CRAN")
+  !interactive() && !env_var_is_true("NOT_CRAN")
 }
 
 env_var_is_true <- function(x) {
