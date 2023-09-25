@@ -15,20 +15,35 @@ library(testthat)
 knitr::opts_chunk$set(collapse = TRUE, comment = "#>")
 ```
 
-To take advantage of parallel tests, add the following line to the `DESCRIPTION`:
+## Setup
 
-    Config/testthat/parallel: true
+To enable parallel testing, you must first be using the 3rd edition[^1].
+Then add the following line to the `DESCRIPTION`:
 
-You'll also need to be using the 3rd edition:
+[^1]: See `vignette("third-edition")` for details.
 
-    Config/testthat/edition: 3
+```         
+Config/testthat/parallel: true
+```
+
+By default, testthat will use `getOption("Ncpus", 2)` cores.
+To increase that value for your development machine we recommend setting `TESTTHAT_CPUS` in your `.Renviron`.
+The easiest way to do that is call `usethis::edit_r_environ()` and then add something like the following:
+
+```         
+TESTTHAT_CPUS=4
+```
+
+Tests are run in alphabetical order by default, but you can often improve performance by starting the slowest tests first.
+Specify these tests by supplying a comma separated list of glob patterns[^2] to the `Config/testthat/start-first` field in your `DESCRIPTION`, e.g.:
+
+[^2]: See `?utils::glob2rx` for details
+
+```         
+Config/testthat/start-first: watcher, parallel*
+```
 
 ## Basic operation
-
-Starting a new R process is relatively expensive, so testthat begins by creating a pool of workers.
-The size of the pool will be determined by `getOption("Ncpus")`, then the `TESTTHAT_CPUS` envvar.
-If neither are set, then two processes are started.
-In any case, testthat will never start more subprocesses than test files.
 
 Each worker begins by loading testthat and the package being tested.
 It then runs any setup files (so if you have existing setup files you'll need to make sure they work when executed in parallel).
@@ -38,12 +53,11 @@ Once the worker pool is initialized, testthat then starts sending test files to 
 This means that state is persisted across test files: options are *not* reset, loaded packages are *not* unloaded, the global environment is *not* cleared, etc.
 You are responsible for making sure each file leaves the world as it finds it.
 
-Because files are run in alphabetical order, you may want to rename your slowest test files so that they start first, e.g. `test-1-slowest.R`, `test-2-next-slowest.R`, etc.
-
 ## Common problems
 
 -   If tests fail stochastically (i.e. they sometimes work and sometimes fail) you may have accidentally introduced a dependency between your test files.
     This sort of dependency is hard to track down due to the random nature, and you'll need to check all tests to make sure that they're not accidentally changing global state.
+    `set_state_inspector()` will make this easier.
 
 -   If you use [packaged scope test fixtures](https://testthat.r-lib.org/articles/test-fixtures.html#package), you'll need to review them to make sure that they work in parallel.
     For example, if you were previously creating a temporary database in the test directory, you'd need to instead create it in the session temporary directory so that each process gets its own independent version.
@@ -63,20 +77,6 @@ There is some overhead associated with running tests in parallel:
 
 This overhead generally means that if you have many test files that take a short amount of time, you're unlikely to see a huge benefit by using parallel tests.
 For example, testthat itself takes about 10s to run tests in serial, and 8s to run the tests in parallel.
-
-### Changing the order of the test files
-
-By default testthat starts the test files in alphabetical order.
-If you have a few number of test files that take longer than the rest, then this might not be the best order.
-Ideally the slow files would start first, as the whole test suite will take at least as much time as its slowest test file.
-You can change the order with the `Config/testthat/start-first` option in `DESCRIPTION`.
-For example testthat currently has:
-
-    Config/testthat/start-first: watcher, parallel*
-
-The format is a comma separated list of glob patterns, see `?utils::glob2rx`.
-The matching test files will start first.
-(The `test-` prefix is ignored.)
 
 ## Reporters
 
@@ -113,7 +113,7 @@ The other built-in reporters all support parallel tests, with some subtle differ
 -   The standard output and standard error, i.e. `print()`, `cat()`, `message()`, etc. output from the test files are lost currently.
     If you want to use `cat()` or `message()` for print-debugging test cases, then the best is to temporarily run tests sequentially, by changing the `Config` entry in `DESCRIPTION` or selecting a non-parallel reporter, e.g. the `CheckReporter`:
 
-    ``` {.r}
+    ``` r
     devtools::test(filter = "badtest", reporter = "check")
     ```
 
@@ -125,7 +125,7 @@ When running in parallel, testthat does not provide location information (source
 
 To support parallel tests, a reporter must set `self$capabilities$parallel_support` to `TRUE` in its `initialize()` method:
 
-``` {.r}
+``` r
 ...
 initialize = function(...) {
   super$initialize(...)
@@ -150,7 +150,7 @@ For this to work, a reporter must be able to handle multiple test files concurre
 
 A reporter declares parallel update support by setting `self$capabilities$parallel_updates` to `TRUE`:
 
-``` {.r}
+``` r
 ...
 initialize = function(...) {
   super$initialize(...)

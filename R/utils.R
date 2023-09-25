@@ -4,21 +4,6 @@ magrittr::`%>%`
 
 null <- function(...) invisible()
 
-# Tools for finding srcrefs -----------------------------------------------
-
-find_first_srcref <- function(start) {
-  calls <- sys.calls()
-  calls <- calls[seq2(start, length(calls))]
-
-  for (call in calls) {
-    srcref <- attr(call, "srcref")
-    if (!is.null(srcref)) {
-      return(srcref)
-    }
-  }
-  NULL
-}
-
 escape_regex <- function(x) {
   chars <- c("*", ".", "?", "^", "+", "$", "|", "(", ")", "[", "]", "{", "}", "\\")
   gsub(paste0("([\\", paste0(collapse = "\\", chars), "])"), "\\\\\\1", x, perl = TRUE)

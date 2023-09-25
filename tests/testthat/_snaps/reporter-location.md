@@ -9,7 +9,7 @@
     End test: Failure:1
     
     Start test: Failure:2a
-      'reporters/tests.R:17:3' [failure]
+      'reporters/tests.R:16:8' [failure]
     End test: Failure:2a
     
     Start test: Error:1
@@ -17,7 +17,7 @@
     End test: Error:1
     
     Start test: errors get tracebacks
-      'reporters/tests.R:31:3' [error]
+      'reporters/tests.R:29:8' [error]
     End test: errors get tracebacks
     
     Start test: explicit skips are reported
@@ -29,7 +29,7 @@
     End test: empty tests are implicitly skipped
     
     Start test: warnings get backtraces
-      'reporters/tests.R:49:3' [warning]
+      'reporters/tests.R:47:5' [warning]
       'reporters/tests.R:45:1' [skip]
     End test: warnings get backtraces
     

@@ -68,11 +68,20 @@ you mock it the same way:
 
 \subsection{Base functions}{
 
-Note that it's not possible to mock functions in the base namespace
-(i.e. functions that you can use without explicitly importing them)
-since currently we don't know of a way to to mock them without potentially
-affecting all running code. If you need to mock a base function, you'll
-need to create a wrapper, as described below.
+To mock a function in the base package, you need to make sure that you
+have a binding for this function in your package. It's easiest to do this
+by binding the value to \code{NULL}. For example, if you wanted to mock
+\code{interactive()} in your package, you'd need to include this code somewhere
+in your package:
+
+\if{html}{\out{<div class="sourceCode R">}}\preformatted{interactive <- NULL
+}\if{html}{\out{</div>}}
+
+Why is this necessary? \code{with_mocked_bindings()} and \code{local_mocked_bindings()}
+work by temporarily modifying the bindings within your package's namespace.
+When these tests are running inside of \verb{R CMD check} the namespace is locked
+which means it's not possible to create new bindings so you need to make sure
+that the binding exists already.
 }
 
 \subsection{Namespaced calls}{

@@ -528,8 +528,7 @@ issue_header <- function(x, pad = FALSE) {
    type <- strpad(type, 7)
   }
 
-  loc <- expectation_location(x)
-  paste0(type, " (", loc, "): ", x$test)
+  paste0(type, expectation_location(x, " (", ")"), ": ", x$test)
 }
 
 issue_summary <- function(x, rule = FALSE) {

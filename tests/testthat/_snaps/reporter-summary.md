@@ -15,7 +15,7 @@
     3. warnings get backtraces ('reporters/tests.R:45:1') - Reason: empty test
     
     == Warnings ====================================================================
-    1. warnings get backtraces ('reporters/tests.R:49:3') - def
+    1. warnings get backtraces ('reporters/tests.R:47:5') - def
     
     == Failed ======================================================================
     -- 1. Failure ('reporters/tests.R:12:3'): Failure:1 ----------------------------
@@ -24,7 +24,7 @@
     `actual`:   FALSE
     `expected`: TRUE 
     
-    -- 2. Failure ('reporters/tests.R:17:3'): Failure:2a ---------------------------
+    -- 2. Failure ('reporters/tests.R:16:8'): Failure:2a ---------------------------
     FALSE is not TRUE
     
     `actual`:   FALSE
@@ -37,7 +37,7 @@
     -- 3. Error ('reporters/tests.R:23:3'): Error:1 --------------------------------
     Error in `eval(code, test_env)`: stop
     
-    -- 4. Error ('reporters/tests.R:31:3'): errors get tracebacks ------------------
+    -- 4. Error ('reporters/tests.R:29:8'): errors get tracebacks ------------------
     Error in `h()`: !
     Backtrace:
         x
@@ -64,7 +64,7 @@
     3. warnings get backtraces ('reporters/tests.R:45:1') - Reason: empty test
     
     == Warnings ====================================================================
-    1. warnings get backtraces ('reporters/tests.R:49:3') - def
+    1. warnings get backtraces ('reporters/tests.R:47:5') - def
     
     == Failed ======================================================================
     -- 1. Failure ('reporters/tests.R:12:3'): Failure:1 ----------------------------
@@ -73,7 +73,7 @@
     `actual`:   FALSE
     `expected`: TRUE 
     
-    -- 2. Failure ('reporters/tests.R:17:3'): Failure:2a ---------------------------
+    -- 2. Failure ('reporters/tests.R:16:8'): Failure:2a ---------------------------
     FALSE is not TRUE
     
     `actual`:   FALSE
@@ -86,7 +86,7 @@
     -- 3. Error ('reporters/tests.R:23:3'): Error:1 --------------------------------
     Error in `eval(code, test_env)`: stop
     
-    -- 4. Error ('reporters/tests.R:31:3'): errors get tracebacks ------------------
+    -- 4. Error ('reporters/tests.R:29:8'): errors get tracebacks ------------------
     Error in `h()`: !
     Backtrace:
         x
@@ -113,7 +113,7 @@
     3. warnings get backtraces ('reporters/tests.R:45:1') - Reason: empty test
     
     == Warnings ====================================================================
-    1. warnings get backtraces ('reporters/tests.R:49:3') - def
+    1. warnings get backtraces ('reporters/tests.R:47:5') - def
     
     == Failed ======================================================================
     -- 1. Failure ('reporters/tests.R:12:3'): Failure:1 ----------------------------
@@ -122,7 +122,7 @@
     `actual`:   FALSE
     `expected`: TRUE 
     
-    -- 2. Failure ('reporters/tests.R:17:3'): Failure:2a ---------------------------
+    -- 2. Failure ('reporters/tests.R:16:8'): Failure:2a ---------------------------
     FALSE is not TRUE
     
     `actual`:   FALSE

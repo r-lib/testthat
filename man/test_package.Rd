@@ -65,8 +65,8 @@ test_check("yourpackage")
 \section{Environments}{
 
 Each test is run in a clean environment to keep tests as isolated as
-possible. For package tests, that environment that inherits from the
-package's namespace environment, so that tests can access internal functions
+possible. For package tests, that environment inherits from the package's
+namespace environment, so that tests can access internal functions
 and objects.
 }
 
