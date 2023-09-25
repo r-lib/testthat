@@ -78,9 +78,9 @@
 #' To mock this function, you'd need to modify `another_function()` inside the
 #' `anotherpackage` package. You _can_ do this by supplying the `.package`
 #' argument to `local_mocked_bindings()` but we don't recommend it because
-#' it will affect all calls to `anotherpackage::another_function()`, not just the calls originating in your package.
-#' Instead, it's safer to either import the function into your package, or make
-#' a wrapper that you can mock:
+#' it will affect all calls to `anotherpackage::another_function()`, not just
+#' the calls originating in your package. Instead, it's safer to either import
+#' the function into your package, or make a wrapper that you can mock:
 #'
 #' ```R
 #' some_function <- function() {
