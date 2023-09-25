@@ -75,21 +75,12 @@
 #' }
 #' ```
 #'
-#' To mock here, you'll need to modify `another_function()` inside the
+#' To mock this function, you'd need to modify `another_function()` inside the
 #' `anotherpackage` package. You _can_ do this by supplying the `.package`
-#' argument:
-#'
-#' ```R
-#' local_mocked_bindings(
-#'   another_function = function(...) "new_value",
-#'   .package = "anotherpackage"
-#' )
-#' ```
-#'
-#' But it's not a great idea to mock a namespace that you don't own because
-#' it affects all code in that package, not just code in your package. Instead,
-#' it's safer to either import the function into your package, or make a wrapper
-#' that you can mock:
+#' argument to `local_mocked_bindings()` but we don't recommend it because
+#' it will affect all calls to `anotherpackage::another_function()`, not just
+#' the calls originating in your package. Instead, it's safer to either import
+#' the function into your package, or make a wrapper that you can mock:
 #'
 #' ```R
 #' some_function <- function() {
@@ -108,10 +99,11 @@
 #' @param code Code to execute with specified bindings.
 #' @param .env Environment that defines effect scope. For expert use only.
 #' @param .package The name of the package where mocked functions should be
-#'   inserted. Generally, you should not need to supply this as it will be
-#'   automatically detected when whole package tests are run or when there's
-#'   one package under active development (i.e. loaded with
-#'   [pkgload::load_all()]).
+#'   inserted. Generally, you should not supply this as it will be automatically
+#'   detected when whole package tests are run or when there's one package
+#'   under active development (i.e. loaded with [pkgload::load_all()]).
+#'   We don't recommend using this to mock functions in other packages,
+#'   as you should not modify namespaces that you don't own.
 local_mocked_bindings <- function(..., .package = NULL, .env = caller_env()) {
   bindings <- list2(...)
   check_bindings(bindings)

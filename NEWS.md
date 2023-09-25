@@ -3,6 +3,9 @@
 * `options(rlang_interactive = TRUE)` no longer causes `skip_on_cran()` to
   not run on CRAN (#1868).
 
+* The skip column is now two characters wide to have a consistent width in case
+  10 or more tests are skipped in a single file (@mgirlich, #1844).
+
 * `skip_if_offline()` now errors if you don't have curl installed (#1854).
 
 * All packages, regardless of whether or not they use rlang 1.0.0, now
