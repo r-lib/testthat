@@ -1,5 +1,8 @@
 # testthat (development version)
 
+* `expect_snapshot_file()` now generates clickable links to review changes 
+  (#1821).
+
 * `options(rlang_interactive = TRUE)` no longer causes `skip_on_cran()` to
   not run on CRAN (#1868).
 

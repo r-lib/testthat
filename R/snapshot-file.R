@@ -154,7 +154,16 @@ announce_snapshot_file <- function(path, name = basename(path)) {
   }
 }
 
-snapshot_review_hint <- function(test, name, ci = on_ci(), check = in_rcmd_check()) {
+snapshot_review_hint <- function(test,
+                                 name,
+                                 ci = on_ci(),
+                                 check = in_rcmd_check(),
+                                 reset_output = TRUE) {
+  if (reset_output) {
+    local_reporter_output()
+  }
+
+
   path <- paste0("tests/testthat/_snaps/", test, "/", new_name(name))
 
   paste0(
@@ -162,7 +171,7 @@ snapshot_review_hint <- function(test, name, ci = on_ci(), check = in_rcmd_check
     if (check && !ci) "* Locate check directory\n",
     if (check) paste0("* Copy '", path, "' to local test directory\n"),
     if (check) "* ",
-    paste0("Run `testthat::snapshot_review('", test, "/')` to review changes")
+    cli::format_inline("Run {.run testthat::snapshot_review('{test}/')} to review changes")
   )
 }
 
