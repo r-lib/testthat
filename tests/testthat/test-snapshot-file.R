@@ -154,6 +154,10 @@ test_that("split_path handles edge cases", {
 })
 
 test_that("snapshot_hint output differs in R CMD check", {
+  snapshot_review_hint <- function(...) {
+    testthat:::snapshot_review_hint(..., reset_output = FALSE)
+  }
+
   expect_snapshot(cat(snapshot_review_hint("lala", "foo.r", check = FALSE, ci = FALSE)))
   expect_snapshot(cat(snapshot_review_hint("lala", "foo.r", check = TRUE, ci = FALSE)))
   expect_snapshot(cat(snapshot_review_hint("lala", "foo.r", check = TRUE, ci = TRUE)))

@@ -62,12 +62,11 @@ test_that("skip_on_cran() works as expected", {
   expect_no_skip(skip_on_cran())
 
   withr::local_envvar(NOT_CRAN = "false")
-  withr::local_options(rlang_interactive = FALSE)
+  local_mocked_bindings(interactive = function() FALSE)
   expect_snapshot_skip(skip_on_cran(), cran = TRUE)
 
-  withr::local_options(rlang_interactive = TRUE)
+  local_mocked_bindings(interactive = function() TRUE)
   expect_no_skip(skip_on_cran())
-
 })
 
 test_that("skip_on_ci() works as expected", {
