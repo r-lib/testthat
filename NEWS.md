@@ -1,5 +1,8 @@
 # testthat (development version)
 
+* `expect_snapshot_value()` has an improved error if the object can't be
+  safely serialized using the specified `style` (#1771).
+
 * `StopReporter()` gains the ability to suppress praise when a test passes.
 
 * `expect_snapshot_file()` now generates clickable links to review changes 

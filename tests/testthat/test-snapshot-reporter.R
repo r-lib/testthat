@@ -114,7 +114,15 @@ test_that("errors if can't roundtrip", {
   snapper <- local_snapshotter()
   snapper$start_file("snapshot-4", "test")
 
-  expect_error(expect_snapshot_value(NULL), "not symmetric")
+  expect_error(expect_snapshot_value(NULL), "safely serialized")
+})
+
+test_that("check_roundtrip() gives nice error", {
+  # disable crayon usage
+  local_bindings(crayon = FALSE, .env = get_reporter())
+
+  wrapper <- function(...) check_roundtrip(...)
+  expect_snapshot(wrapper(NULL, list(), label = "foo", style = "json"), error = TRUE)
 })
 
 test_that("errors in test doesn't change snapshot", {

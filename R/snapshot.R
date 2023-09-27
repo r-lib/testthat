@@ -305,6 +305,14 @@ expect_snapshot_value <- function(x,
   )
 
   with_is_snapshotting(force(x))
+  check_roundtrip(
+    x,
+    load(save(x)),
+    label = lab,
+    style = style,
+    tolerance = tolerance
+  )
+
   expect_snapshot_helper(lab, x,
     save = save,
     load = load,
