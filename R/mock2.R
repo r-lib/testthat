@@ -1,8 +1,6 @@
 #' Mocking tools
 #'
 #' @description
-#' `r lifecycle::badge("experimental")`
-#'
 #' `with_mocked_bindings()` and `local_mocked_bindings()` provide tools for
 #' "mocking", temporarily redefining a function so that it behaves differently
 #' during tests. This is helpful for testing functions that depend on external

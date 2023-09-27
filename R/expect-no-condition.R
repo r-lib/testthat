@@ -1,8 +1,6 @@
 #' Does code run without error, warning, message, or other condition?
 #'
 #' @description
-#' `r lifecycle::badge("experimental")`
-#'
 #' These expectations are the opposite of [expect_error()],
 #' `expect_warning()`, `expect_message()`, and `expect_condition()`. They
 #' assert the absence of an error, warning, or message, respectively.
@@ -11,7 +9,7 @@
 #' @param message,class The default, `message = NULL, class = NULL`,
 #'   will fail if there is any error/warning/message/condition.
 #'
-#'   If many cases, particularly when testing warnings and message, you will
+#'   In many cases, particularly when testing warnings and messages, you will
 #'   want to be more specific about the condition you are hoping **not** to see,
 #'   i.e. the condition that motivated you to write the test.  Similar to
 #'   `expect_error()` and friends, you can specify the `message` (a regular

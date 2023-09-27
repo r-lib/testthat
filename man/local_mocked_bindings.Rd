@@ -24,8 +24,6 @@ as you should not modify namespaces that you don't own.}
 \item{code}{Code to execute with specified bindings.}
 }
 \description{
-\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
-
 \code{with_mocked_bindings()} and \code{local_mocked_bindings()} provide tools for
 "mocking", temporarily redefining a function so that it behaves differently
 during tests. This is helpful for testing functions that depend on external
