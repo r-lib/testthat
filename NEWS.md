@@ -1,5 +1,7 @@
 # testthat (development version)
 
+* `StopReporter()` gains the ability to suppress praise when a test passes.
+
 * `expect_snapshot_file()` now generates clickable links to review changes 
   (#1821).
 
