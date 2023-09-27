@@ -71,7 +71,9 @@
 
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="development version" id="testthat-development-version">testthat (development version)<a class="anchor" aria-label="anchor" href="#testthat-development-version"></a></h2>
-<ul><li><p><code>options(rlang_interactive = TRUE)</code> no longer causes <code><a href="../reference/skip.html">skip_on_cran()</a></code> to not run on CRAN (<a href="https://github.com/r-lib/testthat/issues/1868" class="external-link">#1868</a>).</p></li>
+<ul><li><p><code><a href="../reference/StopReporter.html">StopReporter()</a></code> gains the ability to suppress praise when a test passes.</p></li>
+<li><p><code><a href="../reference/expect_snapshot_file.html">expect_snapshot_file()</a></code> now generates clickable links to review changes (<a href="https://github.com/r-lib/testthat/issues/1821" class="external-link">#1821</a>).</p></li>
+<li><p><code>options(rlang_interactive = TRUE)</code> no longer causes <code><a href="../reference/skip.html">skip_on_cran()</a></code> to not run on CRAN (<a href="https://github.com/r-lib/testthat/issues/1868" class="external-link">#1868</a>).</p></li>
 <li><p>The skip column is now two characters wide to have a consistent width in case 10 or more tests are skipped in a single file (<a href="https://github.com/mgirlich" class="external-link">@mgirlich</a>, <a href="https://github.com/r-lib/testthat/issues/1844" class="external-link">#1844</a>).</p></li>
 <li><p><code><a href="../reference/skip.html">skip_if_offline()</a></code> now errors if you don’t have curl installed (<a href="https://github.com/r-lib/testthat/issues/1854" class="external-link">#1854</a>).</p></li>
 <li><p>All packages, regardless of whether or not they use rlang 1.0.0, now use the new snapshot display for errors, warnings, and messages (<a href="https://github.com/r-lib/testthat/issues/1856" class="external-link">#1856</a>).</p></li>
