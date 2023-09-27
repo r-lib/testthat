@@ -1,7 +1,7 @@
 # testthat (development version)
 
 * `expect_snapshot_value()` has an improved error if the object can't be
-  safely seriazlied using the specified `style` (#1771).
+  safely serialized using the specified `style` (#1771).
 
 * `skip_if_offline()` now errors if you don't have curl installed (#1854).
 
