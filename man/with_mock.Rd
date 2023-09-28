@@ -17,7 +17,7 @@ will be evaluated after mocking the functions}
 defaults to the top-level environment.  A character is interpreted as
 package name.}
 
-\item{.local_env}{Environment in which to add exit handler.
+\item{.local_envir}{Environment in which to add exit handler.
 For expert use only.}
 }
 \value{

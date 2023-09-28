@@ -20,7 +20,7 @@
 #' @param .env the environment in which to patch the functions,
 #'   defaults to the top-level environment.  A character is interpreted as
 #'   package name.
-#' @param .local_env Environment in which to add exit handler.
+#' @param .local_envir Environment in which to add exit handler.
 #'   For expert use only.
 #' @keywords internal
 #' @return The result of the last unnamed parameter
