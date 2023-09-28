@@ -193,61 +193,6 @@
     b
     c
 
-# can snapshot values
-
-    [
-      "a",
-      1.5,
-      1,
-      true
-    ]
-
----
-
-    {
-      "type": "list",
-      "attributes": {},
-      "value": [
-        {
-          "type": "character",
-          "attributes": {},
-          "value": ["a"]
-        },
-        {
-          "type": "double",
-          "attributes": {},
-          "value": [1.5]
-        },
-        {
-          "type": "integer",
-          "attributes": {},
-          "value": [1]
-        },
-        {
-          "type": "logical",
-          "attributes": {},
-          "value": [true]
-        }
-      ]
-    }
-
----
-
-    list("a", 1.5, 1L, TRUE)
-
----
-
-    WAoAAAACAAMGAwACAwAAAAATAAAABAAAABAAAAABAAQACQAAAAFhAAAADgAAAAE/+AAAAAAA
-    AAAAAA0AAAABAAAAAQAAAAoAAAABAAAAAQ==
-
-# can control snapshot value details
-
-    1.1
-
-# tolerance passed to check_roundtrip
-
-    0.9
-
 # `expect_snapshot()` does not inject
 
     Code

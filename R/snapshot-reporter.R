@@ -159,28 +159,6 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
   )
 )
 
-
-check_roundtrip <- function(x,
-                            y,
-                            label,
-                            style,
-                            ...,
-                            tolerance = testthat_tolerance(),
-                            error_call = caller_env()) {
-  check <- waldo_compare(x, y, x_arg = "original", y_arg = "new", ..., tolerance = tolerance)
-  if (length(check) > 0) {
-    abort(c(
-      paste0("`", label, "` could not be safely serialized with `style = \"", style, "\"`."),
-      " " = paste0(
-        "Serializing then deserializing the object returned something new:\n\n",
-        check, "\n"
-      ),
-      i = "You may need to try a different `style`."),
-      call = error_call
-    )
-  }
-}
-
 # set/get active snapshot reporter ----------------------------------------
 
 get_snapshotter <- function() {

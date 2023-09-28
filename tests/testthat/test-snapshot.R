@@ -110,33 +110,6 @@ test_that("even with multiple lines", {
   expect_snapshot_output(cat("a\nb\nc\n"))
 })
 
-test_that("can snapshot values", {
-  x <- list("a", 1.5, 1L, TRUE)
-  expect_snapshot_value(x, style = "json")
-  expect_snapshot_value(x, style = "json2")
-  expect_snapshot_value(x, style = "deparse")
-  expect_snapshot_value(x, style = "serialize")
-})
-
-test_that("can control snapshot value details", {
-  expect_snapshot_value(1.2, tolerance = 0.1)
-})
-
-test_that("tolerance passed to check_roundtrip", {
-  expect_snapshot_value(0.900000000000001, style = "json")
-})
-
-test_that("reparse handles common cases", {
-  roundtrip <- function(x) reparse(deparse(x))
-  expect_equal(roundtrip(-1), -1)
-  expect_equal(roundtrip(c(1, 2, 3)), c(1, 2, 3))
-  expect_equal(roundtrip(list(1, 2, 3)), list(1, 2, 3))
-  expect_equal(roundtrip(mtcars), mtcars)
-
-  f <- function(x) x + 1
-  expect_equal(roundtrip(f), f, ignore_function_env = TRUE)
-})
-
 test_that("`expect_snapshot()` does not inject", {
   expect_snapshot({
     x <- quote(!!foo)
