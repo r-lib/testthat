@@ -123,9 +123,9 @@ package_version <- function(x) {
 #' @export
 #' @rdname skip
 skip_if_offline <- function(host = "r-project.org") {
+  skip_on_cran()
   check_installed("curl")
 
-  skip_on_cran()
   skip_if_not(has_internet(host), "offline")
 }
 has_internet <- function(host) {
