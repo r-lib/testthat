@@ -2,11 +2,10 @@
 
 We checked 7822 reverse dependencies, comparing R CMD check results across CRAN and dev versions of this package.
 
- * We saw 15 new problems
+ * We saw 0 new problems
  * We failed to check 13 packages
 
 Issues with CRAN packages are summarised below.
-
 
 ### Failed to check
 
