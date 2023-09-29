@@ -239,14 +239,14 @@ split_path <- function(path) {
   )
 }
 
-write_tmp_lines <- function(lines, ext = ".txt", eol = "\n") {
-  path <- tempfile(fileext = ext)
+write_tmp_lines <- function(lines, ext = ".txt", eol = "\n", envir = caller_env()) {
+  path <- withr::local_tempfile(fileext = ext, .local_envir = envir)
   brio::write_lines(lines, path, eol = eol)
   path
 }
 
 local_snap_dir <- function(paths, .env = parent.frame()) {
-  dir <- tempfile()
+  dir <- withr::local_tempfile(.local_envir = .env)
   withr::defer(unlink(paths), envir = .env)
 
   dirs <- file.path(dir, unique(dirname(paths)))

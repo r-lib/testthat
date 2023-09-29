@@ -31,6 +31,9 @@
 * `expect_setequal()` correctly displays results when only one of actual and
   expected is missing values (#1835).
 
+* `expect_snapshot()` and friends no longer create a temporary file for every
+  invocation.
+
 * `expect_snapshot_file()` now generates clickable links to review changes 
   (#1821).
 

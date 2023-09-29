@@ -1,7 +1,6 @@
 test_that("can control output with file arg/option", {
   # powered through Reporter base class so we only test one reporter
-  path <- tempfile()
-  withr::defer(unlink(path))
+  path <- withr::local_tempfile()
 
   with_reporter(
     MinimalReporter$new(file = path),
