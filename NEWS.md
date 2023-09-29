@@ -1,5 +1,8 @@
 # testthat (development version)
 
+* `is_informative_error()` and the `wrap` argument to `test_dir()` and friends
+  is now defunct.
+
 * `expect_snapshot_value()` has an improved error if the object can't be
   safely serialized using the specified `style` (#1771).
 
