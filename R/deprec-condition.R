@@ -141,25 +141,5 @@ get_messages <- function(x) {
 #' @keywords internal
 #' @export
 is_informative_error <- function(x, ...) {
-  lifecycle::deprecate_warn("3.0.0", "is_informative_error()")
-  ellipsis::check_dots_empty()
-
-  if (!inherits(x, "error")) {
-    return(TRUE)
-  }
-
-  if (inherits(x, c("simpleError", "Rcpp::eval_error", "Rcpp::exception"))) {
-    return(FALSE)
-  }
-
-  if (inherits_only(x, c("rlang_error", "error", "condition"))) {
-    return(FALSE)
-  }
-
-  UseMethod("is_informative_error")
-}
-
-#' @export
-is_informative_error.default <- function(x, ...) {
-  TRUE
+  lifecycle::deprecate_stop("3.0.0", "is_informative_error()")
 }
