@@ -129,7 +129,7 @@ get_messages <- function(x) {
 #' has been deprecated.
 #'
 #' @param x An error object.
-#' @inheritParams ellipsis::dots_empty
+#' @inheritParams rlang::args_dots_empty
 #'
 #' @details
 #' A few classes are hard-coded as uninformative:
