@@ -20,7 +20,7 @@ test_that("runs all tests and records output", {
 
 test_that("complains if no files", {
   withr::local_envvar(TESTTHAT_PARALLEL = "FALSE")
-  path <- tempfile()
+  path <- withr::local_tempfile()
   dir.create(path)
 
   expect_error(test_dir(path), "test files")

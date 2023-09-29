@@ -136,7 +136,7 @@ JunitReporter <- R6::R6Class("JunitReporter",
       if (is.character(self$out)) {
         xml2::write_xml(self$doc, self$out, format = TRUE)
       } else if (inherits(self$out, "connection")) {
-        file <- tempfile()
+        file <- withr::local_tempfile()
         xml2::write_xml(self$doc, file, format = TRUE)
         cat(brio::read_file(file), file = self$out)
       } else {
