@@ -85,6 +85,7 @@
 <h3 id="minor-features-and-bug-fixes-development-version">Minor features and bug fixes<a class="anchor" aria-label="anchor" href="#minor-features-and-bug-fixes-development-version"></a></h3>
 <ul><li><p>Helpers are no longer be run twice.</p></li>
 <li><p><code><a href="../reference/expect_setequal.html">expect_setequal()</a></code> correctly displays results when only one of actual and expected is missing values (<a href="https://github.com/r-lib/testthat/issues/1835" class="external-link">#1835</a>).</p></li>
+<li><p><code><a href="../reference/expect_snapshot.html">expect_snapshot()</a></code> and friends no longer create a temporary file for every invocation.</p></li>
 <li><p><code><a href="../reference/expect_snapshot_file.html">expect_snapshot_file()</a></code> now generates clickable links to review changes (<a href="https://github.com/r-lib/testthat/issues/1821" class="external-link">#1821</a>).</p></li>
 <li><p><code><a href="../reference/expect_snapshot_value.html">expect_snapshot_value()</a></code> has an improved error if the object can’t be safely serialized using the specified <code>style</code> (<a href="https://github.com/r-lib/testthat/issues/1771" class="external-link">#1771</a>).</p></li>
 <li><p><code>options(rlang_interactive = TRUE)</code> no longer causes <code><a href="../reference/skip.html">skip_on_cran()</a></code> to not run on CRAN (<a href="https://github.com/r-lib/testthat/issues/1868" class="external-link">#1868</a>).</p></li>
