@@ -71,20 +71,29 @@
 
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="development version" id="testthat-development-version">testthat (development version)<a class="anchor" aria-label="anchor" href="#testthat-development-version"></a></h2>
+<div class="section level3">
+<h3 id="lifecycle-changes-development-version">Lifecycle changes<a class="anchor" aria-label="anchor" href="#lifecycle-changes-development-version"></a></h3>
 <ul><li><p><code><a href="../reference/is_informative_error.html">is_informative_error()</a></code> and the <code>wrap</code> argument to <code><a href="../reference/test_dir.html">test_dir()</a></code> and friends are now defunct.</p></li>
-<li><p><code><a href="../reference/expect_snapshot_value.html">expect_snapshot_value()</a></code> has an improved error if the object can’t be safely serialized using the specified <code>style</code> (<a href="https://github.com/r-lib/testthat/issues/1771" class="external-link">#1771</a>).</p></li>
 <li><p><code><a href="../reference/expect_no_error.html">expect_no_error()</a></code>, <code><a href="../reference/expect_no_error.html">expect_no_warning()</a></code>, <code><a href="../reference/expect_no_error.html">expect_no_message()</a></code>, <code><a href="../reference/expect_no_error.html">expect_no_condition()</a></code>, <code><a href="../reference/local_mocked_bindings.html">local_mocked_bindings()</a></code>, and <code><a href="../reference/local_mocked_bindings.html">with_mocked_bindings()</a></code> are now stable, not experimental.</p></li>
-<li><p><code><a href="../reference/StopReporter.html">StopReporter()</a></code> gains the ability to suppress praise when a test passes.</p></li>
-<li><p><code><a href="../reference/expect_snapshot_file.html">expect_snapshot_file()</a></code> now generates clickable links to review changes (<a href="https://github.com/r-lib/testthat/issues/1821" class="external-link">#1821</a>).</p></li>
-<li><p><code>options(rlang_interactive = TRUE)</code> no longer causes <code><a href="../reference/skip.html">skip_on_cran()</a></code> to not run on CRAN (<a href="https://github.com/r-lib/testthat/issues/1868" class="external-link">#1868</a>).</p></li>
-<li><p>The skip column is now two characters wide to have a consistent width in case 10 or more tests are skipped in a single file (<a href="https://github.com/mgirlich" class="external-link">@mgirlich</a>, <a href="https://github.com/r-lib/testthat/issues/1844" class="external-link">#1844</a>).</p></li>
-<li><p><code><a href="../reference/skip.html">skip_if_offline()</a></code> now errors if you don’t have curl installed (<a href="https://github.com/r-lib/testthat/issues/1854" class="external-link">#1854</a>).</p></li>
-<li><p>All packages, regardless of whether or not they use rlang 1.0.0, now use the new snapshot display for errors, warnings, and messages (<a href="https://github.com/r-lib/testthat/issues/1856" class="external-link">#1856</a>).</p></li>
-<li><p>testthat uses an improved algorithm for finding the srcref associated with an expectation/error/warning/skip. It now looks for the most recent call that has known source and is found inside the <code><a href="../reference/test_that.html">test_that()</a></code> call. This generally gives more specific locations than the previous approach and gives much better locations if an error occurs in an exit handler.</p></li>
-<li><p>Helpers should no longer be run twice.</p></li>
-<li><p><code><a href="../reference/test_file.html">test_file()</a></code> gains a <code>desc</code> argument which allows you to run a single test from a file (<a href="https://github.com/r-lib/testthat/issues/1776" class="external-link">#1776</a>).</p></li>
-<li><p><code><a href="../reference/expect_setequal.html">expect_setequal()</a></code> correctly displays results when only one of actual and expected is missing values (<a href="https://github.com/r-lib/testthat/issues/1835" class="external-link">#1835</a>).</p></li>
 </ul></div>
+<div class="section level3">
+<h3 id="new-features-development-version">New features<a class="anchor" aria-label="anchor" href="#new-features-development-version"></a></h3>
+<ul><li><p>All packages, regardless of whether or not they use rlang 1.0.0, now use the new snapshot display for errors, warnings, and messages (<a href="https://github.com/r-lib/testthat/issues/1856" class="external-link">#1856</a>). This no longer shows the class name, instead focussing on a display that more closely mimics what you’ll see interactively, including showing the error call.</p></li>
+<li><p>testthat uses an improved algorithm for finding the srcref associated with an expectation/error/warning/skip. It now looks for the most recent call that has known source and is found inside the <code><a href="../reference/test_that.html">test_that()</a></code> call. This generally gives more specific locations than the previous approach and gives much better locations if an error occurs in an exit handler.</p></li>
+</ul></div>
+<div class="section level3">
+<h3 id="minor-features-and-bug-fixes-development-version">Minor features and bug fixes<a class="anchor" aria-label="anchor" href="#minor-features-and-bug-fixes-development-version"></a></h3>
+<ul><li><p>Helpers are no longer be run twice.</p></li>
+<li><p><code><a href="../reference/expect_setequal.html">expect_setequal()</a></code> correctly displays results when only one of actual and expected is missing values (<a href="https://github.com/r-lib/testthat/issues/1835" class="external-link">#1835</a>).</p></li>
+<li><p><code><a href="../reference/expect_snapshot_file.html">expect_snapshot_file()</a></code> now generates clickable links to review changes (<a href="https://github.com/r-lib/testthat/issues/1821" class="external-link">#1821</a>).</p></li>
+<li><p><code><a href="../reference/expect_snapshot_value.html">expect_snapshot_value()</a></code> has an improved error if the object can’t be safely serialized using the specified <code>style</code> (<a href="https://github.com/r-lib/testthat/issues/1771" class="external-link">#1771</a>).</p></li>
+<li><p><code>options(rlang_interactive = TRUE)</code> no longer causes <code><a href="../reference/skip.html">skip_on_cran()</a></code> to not run on CRAN (<a href="https://github.com/r-lib/testthat/issues/1868" class="external-link">#1868</a>).</p></li>
+<li><p><code><a href="../reference/skip.html">skip_if_offline()</a></code> now errors if you don’t have curl installed (<a href="https://github.com/r-lib/testthat/issues/1854" class="external-link">#1854</a>).</p></li>
+<li><p><code>StopReporter</code> gains the ability to suppress praise when a test passes.</p></li>
+<li><p><code>ProgressReporter</code> now uses is a two characters wide skip column in order to have a consistent width when 10 or more tests are skipped in a single file (<a href="https://github.com/mgirlich" class="external-link">@mgirlich</a>, <a href="https://github.com/r-lib/testthat/issues/1844" class="external-link">#1844</a>).</p></li>
+<li><p><code><a href="../reference/test_file.html">test_file()</a></code> gains a <code>desc</code> argument which allows you to run a single test from a file (<a href="https://github.com/r-lib/testthat/issues/1776" class="external-link">#1776</a>).</p></li>
+</ul></div>
+</div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="3.1.10" id="testthat-3110">testthat 3.1.10<a class="anchor" aria-label="anchor" href="#testthat-3110"></a></h2><p class="text-muted">CRAN release: 2023-07-06</p>
 <ul><li><p>Fix for upcoming R-devel release.</p></li>
