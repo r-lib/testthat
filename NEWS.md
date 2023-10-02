@@ -1,4 +1,4 @@
-# testthat (development version)
+# testthat 3.2.0
 
 ## Lifecycle changes
 
