@@ -23,15 +23,14 @@
   generally gives more specific locations than the previous approach and
   gives much better locations if an error occurs in an exit handler.
 
-
 ## Minor features and bug fixes
 
-* Helpers are no longer be run twice.
+* Helpers are no longer run twice.
 
 * `expect_setequal()` correctly displays results when only one of actual and
-  expected is missing values (#1835).
+  expected is missing elements (#1835).
 
-* `expect_snapshot()` and friends no longer create a temporary file for every
+* `expect_snapshot()` and friends no longer create a temporary file on every
   invocation.
 
 * `expect_snapshot_file()` now generates clickable links to review changes 
