@@ -51,6 +51,7 @@ expect_snapshot_value <- function(x,
     load(save(x)),
     label = lab,
     style = style,
+    ...,
     tolerance = tolerance
   )
 

@@ -8,6 +8,10 @@ test_that("can snapshot values", {
 
 test_that("can control snapshot value details", {
   expect_snapshot_value(1.2, tolerance = 0.1)
+
+  # including through ...
+  f <- ~ 1
+  expect_snapshot_value(f, style = "serialize", ignore_formula_env = TRUE)
 })
 
 test_that("tolerance passed to check_roundtrip", {
