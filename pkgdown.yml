@@ -9,7 +9,7 @@ articles:
   special-files: special-files.html
   test-fixtures: test-fixtures.html
   third-edition: third-edition.html
-last_built: 2023-07-07T13:30Z
+last_built: 2023-10-07T19:30Z
 urls:
   reference: https://testthat.r-lib.org/reference
   article: https://testthat.r-lib.org/articles
